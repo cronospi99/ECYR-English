@@ -300,3 +300,45 @@
   .ielts-app .ix-cand { flex-direction: column; gap: 0; }
   .ielts-app .ix-cand span:nth-child(2) { display: none; }
 }
+
+/* ---------- theme-safe surfaces ----------
+   The engine paints some cards with fixed light pastels inline (SKILL_CARDS
+   bg/tint) or with the inverted --ix-strong ink. Text follows the theme, so in
+   dark mode it was white on pastel. Derive those surfaces from the theme. */
+.ielts-app .hs-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--hs-ink, var(--blue)) 9%, var(--card)),
+    color-mix(in srgb, var(--hs-ink, var(--blue)) 15%, var(--card))
+  );
+}
+.ielts-app .hs-icon { background: color-mix(in srgb, var(--hs-ink, var(--blue)) 18%, var(--card)); box-shadow: none; }
+.ielts-app .hs-card p,
+.ielts-app .hs-band span { color: var(--label-2); }
+.dark .ielts-app .hs-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--hs-ink, var(--blue)) 22%, var(--card)),
+    color-mix(in srgb, var(--hs-ink, var(--blue)) 30%, var(--card))
+  );
+}
+.dark .ielts-app .hs-go { background: var(--fill); color: var(--label); }
+
+/* Audio player, descriptor table header and the descriptors pill: tinted
+   surfaces instead of a bright inverted strip in dark mode. */
+.ielts-app .audio-player {
+  background: color-mix(in srgb, var(--indigo) 12%, var(--card));
+  color: var(--label);
+  box-shadow: inset 0 0 0 0.5px var(--separator);
+}
+.ielts-app .audio-player .playbtn { background: var(--indigo); color: #fff; }
+.ielts-app .bd-table thead th { background: var(--fill-2); color: var(--label-2); }
+.ielts-app .bd-launch { background: var(--fill-2); color: var(--label); border-color: transparent; }
+
+/* Small mono eyebrows in teal were ~2:1 on white; keep the hue, raise contrast. */
+.ielts-app .t1-gen-label,
+.ielts-app [style*="color:var(--teal)"] { color: color-mix(in srgb, var(--teal) 62%, var(--label)) !important; }
+.ielts-app .audio-player .info { color: var(--label-2); }
+.ielts-app .audio-player .info b { color: var(--label); }
+.ielts-app .audio-player .rate select { background-color: var(--card); color: var(--label); border-color: var(--separator); }
+.ielts-app .key-box h4 { color: color-mix(in srgb, var(--yellow) 55%, var(--label)); }
