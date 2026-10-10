@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "ECYR English \u2014 CEFR A1\u2013C1 learning platform with lessons, games, IELTS simulator and AI coach.",
+  "description": "ECYR English — CEFR A1–C1 learning platform with lessons, games, IELTS simulator and AI coach.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -32,6 +32,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "postcss": "^8.5.29",
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9.3",
     "vite": "^8.3.4"

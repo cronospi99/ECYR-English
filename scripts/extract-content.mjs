@@ -99,3 +99,44 @@ for (const lvl of LEVELS) {
     (w.EM_COUNTRIES || []).map(({ lat: _lat, lng: _lng, ...c }) => c),
   );
 }
+
+// ------------------------------------------------- Verb Quest (Verb Lab) ----
+// The data lives as top-level consts inside a script that also drives the DOM,
+// so each declaration is sliced out by bracket matching and evaluated alone.
+function sliceDecl(source, name) {
+  const start = source.indexOf(`const ${name} =`);
+  if (start < 0) throw new Error(`Verb Quest: ${name} not found`);
+  let i = source.indexOf('=', start) + 1;
+  while (/\s/.test(source[i])) i++;
+  const open = source[i];
+  const close = open === '[' ? ']' : '}';
+  let depth = 0;
+  let quote = null;
+  for (let j = i; j < source.length; j++) {
+    const ch = source[j];
+    if (quote) {
+      if (ch === '\\') j++;
+      else if (ch === quote) quote = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'" || ch === '`') quote = ch;
+    else if (ch === open) depth++;
+    else if (ch === close && --depth === 0) return source.slice(i, j + 1);
+  }
+  throw new Error(`Verb Quest: ${name} is unbalanced`);
+}
+{
+  const html = fs.readFileSync(path.join(root, 'content-src/verb-quest/verb-quest.html'), 'utf8');
+  const sandbox = { out: {} };
+  vm.createContext(sandbox);
+  for (const name of ['VERBS', 'PV_VERBS', 'VP_DATA', 'VP_FEEDBACK']) {
+    vm.runInContext(`out.${name} = ${sliceDecl(html, name)};`, sandbox, { timeout: 5000 });
+  }
+  const { VERBS, PV_VERBS, VP_DATA, VP_FEEDBACK } = JSON.parse(JSON.stringify(sandbox.out));
+  write('verb-lab', {
+    verbs: VERBS,
+    phrasalFamilies: Object.entries(PV_VERBS).map(([verb, f]) => ({ verb, ...f })),
+    patterns: VP_DATA,
+    patternFeedback: VP_FEEDBACK,
+  });
+}

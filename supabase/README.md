@@ -1,8 +1,8 @@
 # Backend (Supabase)
 
 Un solo proyecto de Supabase para toda la plataforma: **ECYR English** y el
-**IELTS Simulator** embebido (`public/apps/ielts`) comparten usuarios, perfiles,
-clases y sesión.
+**IELTS Simulator** integrado (`src/features/ielts`) comparten usuarios, perfiles,
+clases, sesión y el mismo cliente.
 
 ## Puesta en marcha en un proyecto nuevo
 
@@ -44,8 +44,8 @@ VITE_SUPABASE_URL=https://<tu-ref>.supabase.co
 VITE_SUPABASE_ANON_KEY=sb_publishable_...
 ```
 
-El build escribe esos mismos valores en `apps/ielts/supabase-config.js`, así
-el simulador IELTS usa tu proyecto y comparte la sesión. Redeploy tras cambiarlas.
+El simulador IELTS usa el mismo cliente de Supabase que la app, así que con esas
+dos variables todo queda en tu proyecto. Vuelve a desplegar tras cambiarlas.
 Nunca uses la clave `service_role`/secret en el frontend.
 
 ### 4. IA — Edge Functions

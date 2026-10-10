@@ -1,0 +1,302 @@
+/* =============================================================================
+   IELTS Simulator — ECYR iOS skin
+   -----------------------------------------------------------------------------
+   ielts-base.css keeps the simulator's tested layout (grids, reading split view,
+   recorder, reports). This layer gives it the platform's look: iOS tokens,
+   SF typography, grouped cards, segmented controls, sheets — in light and dark.
+   Selectors are prefixed with .ielts-app and loaded after the base, so equal
+   specificity resolves in favour of the skin.
+   ============================================================================= */
+
+.ielts-app {
+  /* platform tokens consumed by the re-themed base */
+  --ix-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  --ix-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  --ix-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --ix-script: ui-rounded, 'SF Pro Rounded', -apple-system, system-ui, sans-serif;
+  --ix-accent: var(--blue);
+  --ix-surface: var(--card);
+  --ix-surface-2: color-mix(in srgb, var(--label) 3%, var(--card));
+  --ix-fill: var(--fill-2);
+  --ix-strong: color-mix(in srgb, var(--label) 86%, var(--card));
+  --ix-on-strong: var(--card);
+
+  /* the simulator's own palette, re-pointed at the iOS system colours */
+  --ink: var(--label);
+  --ink-2: var(--label);
+  --paper: var(--card);
+  --paper-2: var(--fill-2);
+  --brass: var(--blue);
+  --brass-2: var(--indigo);
+  --coral: var(--red);
+  --teal: var(--green);
+  --azure: var(--blue);
+  --azure-2: var(--cyan);
+  --slate: var(--label-2);
+  --line: var(--separator);
+  --paper-line: var(--separator);
+  --surface: var(--card);
+  --surface-1: var(--card);
+  --surface-2: var(--ix-surface-2);
+  --surface-3: var(--ix-surface-2);
+  --radius: 16px;
+  --shadow: 0 18px 50px -18px rgb(0 0 0 / 0.35);
+  --elev-1: 0 1px 2px rgb(0 0 0 / 0.04), 0 4px 14px -8px rgb(0 0 0 / 0.12);
+  --elev-2: 0 1px 2px rgb(0 0 0 / 0.05), 0 8px 24px -12px rgb(0 0 0 / 0.16);
+  --elev-3: 0 2px 4px rgb(0 0 0 / 0.06), 0 14px 34px -14px rgb(0 0 0 / 0.22);
+  --elev-4: var(--elev-3);
+  --elev-5: var(--elev-3);
+  --ease-out: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  color: var(--label);
+  font-family: var(--ix-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.dark .ielts-app {
+  --ix-surface-2: color-mix(in srgb, var(--label) 6%, var(--card));
+  --elev-1: 0 0 0 0.5px var(--separator);
+  --elev-2: 0 0 0 0.5px var(--separator);
+  --elev-3: 0 0 0 0.5px var(--separator), 0 14px 34px -14px rgb(0 0 0 / 0.6);
+}
+
+/* inline font declarations written by the original templates */
+.ielts-app [style*='Fraunces'] { font-family: var(--ix-display) !important; }
+.ielts-app [style*='IBM Plex'] { font-family: var(--ix-mono) !important; }
+.ielts-app ::selection { background: color-mix(in srgb, var(--blue) 25%, transparent); color: inherit; }
+.ielts-app :focus-visible { outline: 3px solid color-mix(in srgb, var(--blue) 50%, transparent); outline-offset: 2px; }
+
+/* ----------------------------------------------------------------- toolbar --- */
+.ielts-app .ix-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin: 0 0 18px; padding: 8px 8px 8px 16px; border-radius: 16px;
+  background: var(--card); box-shadow: var(--elev-1);
+}
+.ielts-app .ix-cand { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--label-2); min-width: 0; }
+.ielts-app .ix-cand b { color: var(--label); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ielts-app .ix-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.ielts-app .ix-pill {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px; border: 0; border-radius: 999px;
+  background: var(--fill-2); color: var(--label); font: 600 14px/1 var(--ix-sans); cursor: pointer;
+  transition: background-color .2s, transform .15s;
+}
+.ielts-app .ix-pill:hover { background: var(--fill); }
+.ielts-app .ix-pill:active { transform: scale(.96); }
+.ielts-app .ix-pill svg { width: 16px; height: 16px; }
+.ielts-app #bellBtn {
+  position: relative; width: 34px; height: 34px; border: 0; border-radius: 999px; padding: 0;
+  background: var(--fill-2); display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.ielts-app #bellBtn .ico {
+  width: 18px; height: 18px; background: var(--label) !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9'/%3E%3Cpath d='M10.3 21a1.94 1.94 0 0 0 3.4 0'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9'/%3E%3Cpath d='M10.3 21a1.94 1.94 0 0 0 3.4 0'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.ielts-app #bellBtn .dot.count {
+  position: absolute; top: -3px; right: -3px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px;
+  background: var(--red); color: #fff; font: 700 11px/18px var(--ix-sans); text-align: center;
+}
+.ielts-app .ix-hidden { display: none !important; }
+@media (max-width: 640px) {
+  .ielts-app .ix-pill span { display: none; }
+  .ielts-app .ix-pill { padding: 0 10px; }
+  .ielts-app .ix-cand { font-size: 12px; }
+}
+
+/* -------------------------------------------------------------------- panel --- */
+.ielts-app .panel {
+  background: none; box-shadow: none; border-radius: 0; padding: 0; min-height: 400px; color: var(--label);
+}
+.ielts-app .section-title {
+  font-family: var(--ix-display); font-size: 28px; line-height: 34px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 6px;
+}
+.ielts-app .section-sub { color: var(--label-2); font-size: 15px; line-height: 1.55; margin: 0 0 22px; max-width: 72ch; }
+.ielts-app hr.rule { border-top: 0.5px solid var(--separator); }
+.ielts-app .eyebrow, .ielts-app .hero-eyebrow, .ielts-app .task-tag, .ielts-app .ab-title {
+  font-family: var(--ix-sans) !important; letter-spacing: .06em !important; font-weight: 600; color: var(--blue);
+}
+.ielts-app .mono { font-family: var(--ix-mono); }
+
+/* ------------------------------------------------------------------- cards --- */
+.ielts-app .gen-card, .ielts-app .hp, .ielts-app .chart-box, .ielts-app .prompt-card, .ielts-app .mock-card,
+.ielts-app .skill-card, .ielts-app .kpi, .ielts-app .tr-card, .ielts-app .rubric-card, .ielts-app .dcard,
+.ielts-app .sub-card, .ielts-app .acc-card, .ielts-app .stile, .ielts-app .hist-item, .ielts-app .hw-item,
+.ielts-app .transcript-card, .ielts-app .bd-panel, .ielts-app .alib-col, .ielts-app .stu-detail {
+  background: var(--card); border: 0; border-radius: 20px; box-shadow: var(--elev-1);
+}
+.ielts-app .gen-card { padding: 20px 22px; }
+.ielts-app .note-card { background: var(--fill-2); box-shadow: none; color: var(--label-2); }
+.ielts-app .skill-card:hover, .ielts-app .hs-card:hover, .ielts-app .ql-tile:hover, .ielts-app .chart-box:hover { transform: none; box-shadow: var(--elev-2); }
+.ielts-app .skill-card .band, .ielts-app .hs-band, .ielts-app .criterion-row .band, .ielts-app .ar-band,
+.ielts-app .mock-card .mc-band, .ielts-app .kpi-v { font-family: var(--ix-display); font-weight: 700; letter-spacing: -0.02em; }
+.ielts-app .chart-box h3, .ielts-app .qgroup h4 { letter-spacing: .04em; font-weight: 600; color: var(--label-2); }
+.ielts-app .mock-card.done { box-shadow: 0 0 0 2px var(--green), var(--elev-1); }
+.ielts-app .mock-card.next { box-shadow: 0 0 0 2px var(--blue), var(--elev-2); }
+.ielts-app .mock-card .mc-state { color: var(--green); }
+
+/* home */
+.ielts-app .home-hero {
+  border-radius: 24px; box-shadow: var(--elev-1);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--blue) 10%, var(--card)), color-mix(in srgb, var(--purple) 10%, var(--card)));
+}
+.ielts-app .hero-title { font-family: var(--ix-display); font-weight: 800; letter-spacing: -0.03em; }
+.ielts-app .hero-quote { background: color-mix(in srgb, var(--card) 60%, transparent); border-left-color: var(--separator); }
+.ielts-app .hero-quote .hq-rule, .ielts-app .hero-script u { background: var(--blue); }
+.ielts-app .hero-script { font-family: var(--ix-display); font-weight: 700; font-style: italic; font-size: 24px; }
+.ielts-app .hs-card { border: 0; border-radius: 20px; box-shadow: var(--elev-1); }
+.ielts-app .hs-card h3, .ielts-app .hp-head b, .ielts-app .mock-card h4 { font-family: var(--ix-display); font-weight: 700; letter-spacing: -0.01em; }
+.ielts-app .hs-go { background: var(--card); color: var(--blue); }
+.ielts-app .ql-tile { background: var(--fill-2); border: 0; border-radius: 16px; }
+.ielts-app .ql-tile:hover { background: var(--fill); }
+
+/* ----------------------------------------------------------------- buttons --- */
+.ielts-app .btn {
+  border: 0; border-radius: 12px; padding: 11px 20px; font: 600 15px/1.2 var(--ix-sans); letter-spacing: -0.01em;
+  background: var(--blue); color: #fff; box-shadow: none; filter: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none; overflow: visible;
+  transition: transform .2s var(--ease-out), opacity .2s, background-color .2s;
+}
+.ielts-app .btn::after, .ielts-app .btn .glass-ripple { display: none; }
+.ielts-app .btn:hover { transform: none; box-shadow: none; filter: brightness(1.05); }
+.ielts-app .btn:active { transform: scale(.97); box-shadow: none; opacity: .85; }
+.ielts-app .btn:disabled { opacity: .4; }
+.ielts-app .btn.small { padding: 7px 14px; font-size: 14px; border-radius: 999px; }
+.ielts-app .btn.brass { background: linear-gradient(135deg, var(--brand-from), var(--brand-to)); color: #fff; box-shadow: 0 8px 22px -10px rgb(47 107 255 / 0.7); }
+.ielts-app .btn.brass:hover { box-shadow: 0 8px 22px -10px rgb(47 107 255 / 0.8); }
+.ielts-app .btn.coral { background: var(--red); color: #fff; box-shadow: none; }
+.ielts-app .btn.secondary { background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue); }
+.ielts-app .btn.secondary:hover { background: color-mix(in srgb, var(--blue) 20%, transparent); box-shadow: none; }
+.ielts-app .btn.ghost, .ielts-app .btn.ghost.on-dark { background: var(--fill-2); color: var(--label); box-shadow: none; }
+.ielts-app .btn.ghost:hover { background: var(--fill); color: var(--label); box-shadow: none; }
+.ielts-app .skill-card .go, .ielts-app .hp-link { color: var(--blue); border-color: color-mix(in srgb, var(--blue) 40%, transparent); font-family: var(--ix-sans); font-weight: 600; }
+
+/* ---------------------------------------------------- segmented controls --- */
+.ielts-app .write-tabs, .ielts-app .part-nav, .ielts-app .bd-tabs, .ielts-app .band-tabs, .ielts-app .rd-switch {
+  display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 2px; border-radius: 10px; background: var(--fill-2);
+}
+.dark .ielts-app .write-tabs, .dark .ielts-app .part-nav, .dark .ielts-app .bd-tabs, .dark .ielts-app .band-tabs { background: var(--fill); }
+.ielts-app .write-tabs button, .ielts-app .part-nav button, .ielts-app .bd-tab, .ielts-app .band-tab {
+  border: 0; background: transparent; color: var(--label); border-radius: 8px; padding: 7px 14px;
+  font: 500 14px/1.2 var(--ix-sans); box-shadow: none;
+}
+.ielts-app .write-tabs button.active, .ielts-app .part-nav button.active, .ielts-app .bd-tab.active, .ielts-app .band-tab.active {
+  background: var(--card); color: var(--label); box-shadow: 0 3px 8px rgb(0 0 0 / 0.12), 0 3px 1px rgb(0 0 0 / 0.04);
+}
+.dark .ielts-app .write-tabs button.active, .dark .ielts-app .part-nav button.active, .dark .ielts-app .bd-tab.active, .dark .ielts-app .band-tab.active { background: #636366; }
+.ielts-app .band-tab .lbl { font-family: var(--ix-sans); color: var(--label-2); }
+.ielts-app .band-tab.active .lbl { color: var(--label-2); }
+.ielts-app .qstrip button {
+  border: 0; background: var(--fill-2); color: var(--label); border-radius: 999px; font-family: var(--ix-sans); font-weight: 600;
+}
+.ielts-app .qstrip button.active { background: var(--blue); color: #fff; }
+.ielts-app .qstrip button.recorded .qdot { background: var(--orange); }
+.ielts-app .qstrip button.scored .qdot { background: var(--green); }
+.ielts-app .meta-pill { font-family: var(--ix-sans); font-weight: 500; border: 0; background: var(--fill-2); color: var(--label-2); }
+.ielts-app .chip, .ielts-app .hist-chip, .ielts-app .tr-chip, .ielts-app .hes-chip {
+  border: 0; background: var(--fill-2); color: var(--label); border-radius: 999px; font-family: var(--ix-sans);
+}
+.ielts-app .chip.active, .ielts-app .hist-chip.active, .ielts-app .chip.on, .ielts-app .hist-chip.on { background: var(--label); color: var(--bg); }
+
+/* ------------------------------------------------------------------- forms --- */
+.ielts-app input[type='text'], .ielts-app input[type='email'], .ielts-app input[type='password'], .ielts-app input[type='search'],
+.ielts-app input[type='date'], .ielts-app input[type='number'], .ielts-app select, .ielts-app textarea {
+  font-family: var(--ix-sans); color: var(--label); background-color: var(--fill-2); border: 0; border-radius: 10px;
+}
+.ielts-app input::placeholder, .ielts-app textarea::placeholder { color: var(--label-3); }
+.ielts-app textarea:focus, .ielts-app input:focus, .ielts-app select:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 35%, transparent); }
+.ielts-app .q-item input[type='text'] { background: transparent; border-radius: 0; border-bottom: 1.5px solid var(--separator); }
+.ielts-app .q-item input[type='text']:focus { box-shadow: none; border-bottom-color: var(--blue); }
+.ielts-app .q-item .num, .ielts-app .passage .para-label { font-family: var(--ix-sans); color: var(--blue); }
+.ielts-app textarea.essay {
+  font-family: var(--ix-sans); font-size: 16px; line-height: 1.75; background: var(--card); border-radius: 18px; padding: 20px;
+  box-shadow: var(--elev-1);
+}
+.ielts-app .gen-select, .ielts-app .q-item select { border: 0; background: var(--fill-2); border-radius: 8px; padding: 7px 10px; }
+.ielts-app .opt-row, .ielts-app .opt-row-inline { border-radius: 12px; }
+
+/* ----------------------------------------------------- reading / listening --- */
+.ielts-app .passage {
+  font-family: var(--ix-sans); font-size: 17px; line-height: 1.8; color: var(--label);
+  background: var(--card); border: 0; border-radius: 22px; box-shadow: var(--elev-1);
+}
+.ielts-app .passage .passage-title { font-family: var(--ix-display); font-weight: 700; letter-spacing: -0.01em; border-bottom-color: var(--separator); }
+.ielts-app .timerbar {
+  top: 56px; border-radius: 16px; padding: 10px 16px; font-family: var(--ix-sans);
+  background: var(--material-strong); color: var(--label); box-shadow: var(--elev-2);
+  -webkit-backdrop-filter: saturate(180%) blur(24px); backdrop-filter: saturate(180%) blur(24px);
+}
+@media (min-width: 1024px) { .ielts-app .timerbar { top: 12px; } }
+.ielts-app .timerbar .time { color: var(--blue); font-family: var(--ix-sans); font-weight: 700; font-variant-numeric: tabular-nums; }
+.ielts-app .timerbar .time.warn, .ielts-app .timerbar.expired .time { color: var(--red); }
+.ielts-app .timerbar.expired { background: color-mix(in srgb, var(--red) 14%, var(--card)); }
+.ielts-app .timerbar .tb-btn { background: var(--fill-2); color: var(--label); border: 0; border-radius: 999px; font-family: var(--ix-sans); }
+.ielts-app .timerbar .tb-btn:hover { background: var(--fill); }
+.ielts-app .audio-player, .ielts-app .rec-controls { border-radius: 16px; }
+.ielts-app .cue-card { border: 0; border-radius: 20px; box-shadow: 0 0 0 1.5px var(--blue), var(--elev-1); background: var(--card); }
+.ielts-app .answer-report, .ielts-app .score-report .criterion-row { border-color: var(--separator); }
+.ielts-app .answer-report { background: var(--card); border: 0; border-radius: 20px; box-shadow: var(--elev-1); }
+
+/* --------------------------------------------------------------- feedback --- */
+.ielts-app .annotated-text, .ielts-app .gf-cols .gf-card { background: var(--card); border: 0; border-radius: 16px; box-shadow: var(--elev-1); color: var(--label); }
+.ielts-app .hl-green { background: color-mix(in srgb, var(--green) 26%, transparent); border-bottom-color: var(--green); color: inherit; }
+.ielts-app .hl-yellow { background: color-mix(in srgb, var(--yellow) 34%, transparent); border-bottom-color: var(--orange); color: inherit; }
+.ielts-app .hl-red { background: color-mix(in srgb, var(--red) 24%, transparent); border-bottom-color: var(--red); color: inherit; }
+.ielts-app .gf-just { background: color-mix(in srgb, var(--blue) 8%, var(--card)); border-left-color: var(--blue); color: var(--label); }
+.ielts-app .seal { background: linear-gradient(135deg, var(--brand-from), var(--brand-to)); color: #fff; font-family: var(--ix-display);
+  box-shadow: 0 12px 28px -10px rgb(47 107 255 / 0.7); }
+.ielts-app .seal-cefr { background: linear-gradient(135deg, var(--green), var(--teal)); box-shadow: 0 12px 28px -10px rgb(52 199 89 / 0.6); }
+.ielts-app .seal .band-lbl { font-family: var(--ix-sans); }
+.ielts-app .cefr-tag { font-family: var(--ix-sans); background: var(--blue); }
+
+/* -------------------------------------------------------- figures (task 1) --- */
+/* Charts, processes and maps are exam figures: they stay on a light "printed"
+   sheet in dark mode too, the way the paper version would. */
+.ielts-app .t1-box, .ielts-app .t1-svg, .ielts-app .t1-map-fig, .ielts-app .hist-visual {
+  border-radius: 16px;
+}
+.dark .ielts-app .t1-svg, .dark .ielts-app .t1-map-fig { background: #f7f7f2; color: #1c1c1e; }
+
+/* ------------------------------------------------------------------ sheets --- */
+.ielts-app .settings-overlay {
+  background: rgb(0 0 0 / 0.35); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); z-index: 60;
+}
+.ielts-app .settings-modal {
+  border-radius: 28px; padding: 26px; background: var(--card); color: var(--label); box-shadow: var(--shadow);
+  animation: ix-sheet .35s var(--ease-out);
+}
+.ielts-app .settings-modal h3 { font-family: var(--ix-display) !important; font-weight: 700; }
+.ielts-app .settings-modal a { color: var(--blue); }
+.ielts-app .settings-modal input, .ielts-app .settings-modal select { border: 0 !important; background: var(--fill-2) !important; color: var(--label); }
+.ielts-app .disclaimer { background: color-mix(in srgb, var(--orange) 12%, var(--card)); border: 0; border-radius: 14px; color: var(--label); }
+@keyframes ix-sheet { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (max-width: 640px) {
+  .ielts-app .settings-overlay { align-items: flex-end; padding: 0; }
+  .ielts-app .settings-modal { border-radius: 28px 28px 0 0; max-height: 92vh; }
+}
+.ielts-app .notif-pop { background: var(--elevated); border: 0; border-radius: 16px; box-shadow: var(--shadow); color: var(--label); }
+.ielts-app .notif-pop .np-head, .ielts-app .notif-pop .np-item, .ielts-app .notif-pop .np-item span, .ielts-app .notif-pop .np-empty { color: var(--label); }
+.ielts-app .notif-pop .np-item:hover { background: var(--fill-2); }
+.ielts-app .timeout-banner { background: var(--elevated); color: var(--label); border: 0; border-left: 4px solid var(--red); border-radius: 16px; box-shadow: var(--shadow); }
+.ielts-app .timeout-banner b { font-family: var(--ix-display); }
+.ielts-app .timeout-banner button { background: var(--fill-2); color: var(--label); border: 0; border-radius: 999px; }
+.ielts-app .locked-note { background: color-mix(in srgb, var(--red) 10%, var(--card)); border: 0; border-left: 4px solid var(--red); color: var(--label); }
+.ielts-app .tr-bubble { border-radius: 999px; }
+
+/* ------------------------------------------------------------------ tables --- */
+.ielts-app table { border-collapse: collapse; }
+.ielts-app .bd-table th, .ielts-app .roster th, .ielts-app .t1-table th { background: var(--fill-2); color: var(--label-2); font-family: var(--ix-sans); }
+.ielts-app .bd-table td, .ielts-app .roster td, .ielts-app .t1-table td { border-color: var(--separator); }
+
+/* ------------------------------------------------------------ phone layer --- */
+@media (max-width: 820px) {
+  .ielts-app .section-title { font-size: 24px; line-height: 30px; }
+  .ielts-app .passage { border-radius: 18px; }
+  .ielts-app .timerbar { top: 52px; }
+}
+@media (max-width: 640px) {
+  .ielts-app .ix-toolbar { padding: 6px 6px 6px 14px; }
+  .ielts-app .ix-cand { flex-direction: column; gap: 0; }
+  .ielts-app .ix-cand span:nth-child(2) { display: none; }
+}

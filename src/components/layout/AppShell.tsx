@@ -128,6 +128,10 @@ export function AppShell() {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, [pathname]);
+  // Lets the intro curtain (index.html) know the app has rendered.
+  useEffect(() => {
+    requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready')));
+  }, []);
   return (
     <div className="min-h-dvh">
       <Sidebar />

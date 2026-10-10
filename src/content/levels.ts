@@ -1,4 +1,4 @@
-import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide } from './types';
+import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide, VerbLabData } from './types';
 
 export interface LevelMeta {
   id: CefrLevel;
@@ -105,3 +105,4 @@ export const loadJeopardy = () =>
   memo<JeopardyTopic[]>('jeopardy', () => import('./generated/jeopardy-topics.json'));
 export const loadTravelGuides = () =>
   memo<TravelGuide[]>('travel', () => import('./generated/travel-guides.json'));
+export const loadVerbLab = () => memo<VerbLabData>('verblab', () => import('./generated/verb-lab.json'));

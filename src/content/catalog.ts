@@ -58,21 +58,6 @@ export const MODULES: ModuleEntry[] = [
     emoji: '🎡',
   },
   {
-    slug: 'verb-quest',
-    title: 'Verb Quest',
-    subtitle: 'Verb Lab Pro · verbos y pronunciación',
-    description: 'Laboratorio de verbos: formas, tiempos verbales, irregulares y una sección de pronunciación para dominarlos.',
-    kind: 'game',
-    src: '/modules/verb-quest/verb-quest.html',
-    levels: ['A2', 'B1', 'B2'],
-    skills: ['grammar', 'vocabulary'],
-    topics: ['Verbos', 'Tiempos verbales'],
-    mode: 'solo',
-    minutes: 20,
-    accent: 'var(--indigo)',
-    emoji: '🧪',
-  },
-  {
     slug: 'two-truths-colombia',
     title: 'Two Truths & a Lie · Colombia',
     subtitle: '¿Cuál es la mentira?',
@@ -235,4 +220,3 @@ export const MODULES: ModuleEntry[] = [
 export const GAMES = MODULES.filter((m) => m.kind === 'game' || m.kind === 'presentation');
 export const moduleBySlug = (slug: string) => MODULES.find((m) => m.slug === slug);
 
-export const IELTS_APP_SRC = '/apps/ielts/index.html';
