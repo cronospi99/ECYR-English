@@ -144,7 +144,7 @@ function PromptCard({
   };
 
   const next = () => {
-    award({ kind: 'speaking', title: `Speaking: ${p.topic}`, skill: 'speaking', xp: transcript ? 8 : 5, level });
+    award({ kind: 'speaking', title: `Speaking: ${p.topic}`, skill: 'speaking', xp: transcript ? 8 : 5, level, ref: 'practice:speaking' });
     onNext();
   };
 

@@ -107,7 +107,7 @@ export default function PhrasalVerbsPage() {
                   items={quiz}
                   title={`Phrasal verbs ${level === 'all' ? '' : level}`}
                   onFinish={(score) =>
-                    award({ kind: 'flashcards', title: 'Quiz de phrasal verbs', skill: 'vocabulary', xp: 10 + Math.round(score / 10) })
+                    award({ kind: 'flashcards', title: 'Quiz de phrasal verbs', skill: 'vocabulary', xp: 10 + Math.round(score / 10), score, ref: 'practice:phrasal' })
                   }
                 />
               ) : (

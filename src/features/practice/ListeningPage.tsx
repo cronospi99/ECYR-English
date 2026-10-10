@@ -129,7 +129,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
     setChecked(true);
     const ok = gaps.filter((g, i) => norm(answers[i]!) === norm(g)).length;
     const score = Math.round((ok / gaps.length) * 100);
-    award({ kind: 'listening', title: `Dictado: ${clip.title}`, skill: 'listening', xp: 10 + Math.round(score / 10), score, level });
+    award({ kind: 'listening', title: `Dictado: ${clip.title}`, skill: 'listening', xp: 10 + Math.round(score / 10), score, level, ref: 'practice:listening' });
   };
 
   return (
@@ -226,7 +226,6 @@ const norm = (s: string) => s.toLowerCase().replace(/[’']/g, "'").trim();
 
 const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'] as const;
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const IMG_EXT: Record<string, string> = { jan: 'png', feb: 'png' };
 
 function Months() {
   const award = useProgress((s) => s.award);
@@ -259,7 +258,7 @@ function Months() {
         <QuizWithAudio
           key={round}
           items={items}
-          onFinish={(score) => award({ kind: 'listening', title: 'Quiz: meses del año', skill: 'listening', xp: 10 + Math.round(score / 10), score, level: 'A1' })}
+          onFinish={(score) => award({ kind: 'listening', title: 'Quiz: meses del año', skill: 'listening', xp: 10 + Math.round(score / 10), score, level: 'A1', ref: 'practice:listening' })}
         />
         <Button variant="plain" className="mt-2" onClick={() => setRound((r) => r + 1)}>
           Nuevas preguntas
@@ -288,12 +287,12 @@ function MonthTile({ m, name }: { m: string; name: string }) {
       }}
       className={cn('group relative aspect-[4/3] overflow-hidden rounded-[16px] text-left', on && 'ring-ios-blue ring-3')}
     >
-      <img src={`/modules/time-machine/assets/${m}.${IMG_EXT[m] ?? 'jpg'}`} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-105" />
+      <img src={`/grammar/time-machine/months/${m}.webp`} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform group-hover:scale-105" />
       <span className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       <span className="absolute bottom-2 left-3 flex items-center gap-1.5 text-[15px] font-semibold text-white">
         {on ? <Pause size={15} /> : <Play size={15} fill="currentColor" />} {name}
       </span>
-      <audio ref={ref} src={`/modules/time-machine/assets/audio/${m}.m4a`} preload="none" onEnded={() => setOn(false)} />
+      <audio ref={ref} src={`/grammar/time-machine/audio/${m}.m4a`} preload="none" onEnded={() => setOn(false)} />
     </button>
   );
 }
@@ -308,7 +307,7 @@ function QuizWithAudio({ items, onFinish }: { items: (QuizItem & { m: string })[
           <Play size={14} fill="currentColor" /> Escuchar audio
         </Button>
         <span className="text-label-2 text-[13px]">Pregunta {Math.min(i + 1, items.length)}</span>
-        <audio ref={audio} src={`/modules/time-machine/assets/audio/${items[Math.min(i, items.length - 1)]!.m}.m4a`} preload="auto" />
+        <audio ref={audio} src={`/grammar/time-machine/audio/${items[Math.min(i, items.length - 1)]!.m}.m4a`} preload="auto" />
       </div>
       <QuizTracker items={items} onIndex={setI} onFinish={onFinish} />
     </div>

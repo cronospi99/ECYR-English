@@ -268,7 +268,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
   };
   const next = () => {
     if (i + 1 >= pool.length) {
-      award({ kind: 'flashcards', title: 'Verb Lab · sonidos de -ed', skill: 'vocabulary', xp: 5 + score });
+      award({ kind: 'flashcards', title: 'Verb Lab · sonidos de -ed', skill: 'vocabulary', xp: 5 + score, ref: 'verblab:ed' });
     }
     setI(i + 1);
     setPicked(null);
@@ -392,7 +392,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
     setState((s) => {
       const n = { score: s.score + (ok ? 10 + Math.round(left * 10) : 0), streak: ok ? s.streak + 1 : 0, round: s.round + 1 };
       if (n.score > hi.score || n.streak > hi.streak) setHi({ score: Math.max(hi.score, n.score), streak: Math.max(hi.streak, n.streak) });
-      if (n.round % 10 === 0) award({ kind: 'flashcards', title: 'Verb Lab · quiz de formas', skill: 'grammar', xp: Math.round(n.score / 20) + 5 });
+      if (n.round % 10 === 0) award({ kind: 'flashcards', title: 'Verb Lab · quiz de formas', skill: 'grammar', xp: Math.round(n.score / 20) + 5, ref: 'verblab:quiz' });
       return n;
     });
   };
@@ -752,7 +752,7 @@ export function PatternQuizCard({ data, quizId }: { data: VerbLabData; quizId: s
                         setAnswers(next);
                         if (Object.keys(next).length === quiz.questions.length) {
                           const s = Object.entries(next).filter(([k, l]) => fb[k]?.correct === l).length;
-                          award({ kind: 'flashcards', title: `Verb Lab · ${stripTags(quiz.title)}`, skill: 'grammar', xp: 5 + s * 2 });
+                          award({ kind: 'flashcards', title: `Verb Lab · ${stripTags(quiz.title)}`, skill: 'grammar', xp: 5 + s * 2, ref: 'verblab:patterns' });
                         }
                       }}
                       className={cn(

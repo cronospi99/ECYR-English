@@ -60,6 +60,7 @@ function syncIeltsXp(award: ReturnType<typeof useProgress.getState>['award']) {
       skill: SKILL_OF[h.module] ?? 'reading',
       xp: 30,
       score: Math.round((Number(h.band) / 9) * 100),
+      ref: `ielts:${h.module}`,
     }),
   );
   try {

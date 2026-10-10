@@ -63,7 +63,7 @@ export default function CoachPage() {
       const reply = await askCoach({ messages: next, mode, level });
       setMessages([...next, { role: 'model', text: reply || '…' }]);
       if (next.filter((m) => m.role === 'user').length % 3 === 1) {
-        award({ kind: 'coach', title: 'Conversación con el AI Coach', skill: mode === 'chat' ? 'speaking' : 'grammar', xp: 5, level });
+        award({ kind: 'coach', title: 'Conversación con el AI Coach', skill: mode === 'chat' ? 'speaking' : 'grammar', xp: 5, level, ref: `coach:${mode}` });
       }
     } catch (e) {
       setError(e instanceof CoachError ? e.message : 'No se pudo contactar al coach.');

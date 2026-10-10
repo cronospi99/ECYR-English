@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Cloud, CloudOff, Download, GraduationCap, LogOut, Moon, School, Upload, Volume2, Languages, RotateCcw } from 'lucide-react';
+import { Cloud, CloudOff, Download, GraduationCap, LogOut, Moon, School, Upload, Volume2, Languages, RotateCcw, Pencil } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ListGroup, ListRow } from '@/components/ui/List';
@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import { IconTile } from '@/components/ui/IconTile';
 import { Toggle, Spinner } from '@/components/ui/Misc';
 import { Avatar } from '@/components/layout/Avatar';
+import { AvatarEditor } from '@/features/avatar/AvatarEditor';
 import { useAuth } from '@/store/auth';
 import { useSettings, type ThemePref } from '@/store/settings';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
@@ -18,13 +19,61 @@ export default function ProfilePage() {
   return (
     <Page title="Perfil" subtitle="Tu cuenta, tu clase y tus preferencias.">
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="space-y-6">{session ? <Account /> : <AuthCard />}</div>
+        <div className="space-y-6">
+          {session ? (
+            <Account />
+          ) : (
+            <>
+              <LocalHero />
+              <AuthCard />
+            </>
+          )}
+        </div>
         <div className="space-y-6">
           <Preferences />
           <DataSection />
         </div>
       </div>
     </Page>
+  );
+}
+
+// ------------------------------------------------------------------ avatar --
+
+function AvatarHero({ name, children }: { name: string; children?: React.ReactNode }) {
+  const [editing, setEditing] = useState(false);
+  return (
+    <Card className="flex flex-col items-center px-5 pt-7 pb-5 text-center">
+      <button
+        type="button"
+        onClick={() => setEditing(true)}
+        aria-label="Editar avatar"
+        className="group relative rounded-full transition-transform duration-200 ease-ios active:scale-[0.97]"
+      >
+        <Avatar name={name} size={160} />
+        <span
+          aria-hidden
+          className="bg-ios-blue border-card absolute right-1.5 bottom-1.5 flex h-10 w-10 items-center justify-center rounded-full border-[3px] text-white shadow-[0_4px_12px_rgb(0_0_0/0.18)] transition-transform group-hover:scale-105"
+        >
+          <Pencil size={17} />
+        </span>
+      </button>
+      <div className="text-title-2 mt-4 max-w-full truncate">{name}</div>
+      {children}
+      <Button variant="tinted" size="sm" className="mt-4" onClick={() => setEditing(true)}>
+        Editar avatar
+      </Button>
+      <AvatarEditor open={editing} onClose={() => setEditing(false)} name={name} />
+    </Card>
+  );
+}
+
+function LocalHero() {
+  const local = useSettings((s) => s.name);
+  return (
+    <AvatarHero name={local || 'Learner'}>
+      <div className="text-label-2 text-[14px]">Progreso guardado en este dispositivo</div>
+    </AvatarHero>
   );
 }
 
@@ -38,16 +87,12 @@ function Account() {
 
   return (
     <>
-      <Card className="flex items-center gap-4 p-5">
-        <Avatar name={name} size={64} />
-        <div className="min-w-0 flex-1">
-          <div className="text-title-3 truncate">{name}</div>
-          <div className="text-label-2 truncate text-[14px]">{session?.user.email}</div>
-          <div className="text-ios-green mt-1 inline-flex items-center gap-1 text-[13px] font-medium">
-            <Cloud size={14} /> Progreso sincronizado
-          </div>
+      <AvatarHero name={name}>
+        <div className="text-label-2 truncate text-[14px]">{session?.user.email}</div>
+        <div className="text-ios-green mt-1 inline-flex items-center gap-1 text-[13px] font-medium">
+          <Cloud size={14} /> Progreso sincronizado
         </div>
-      </Card>
+      </AvatarHero>
 
       <ListGroup header="Clase">
         <ListRow

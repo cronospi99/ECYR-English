@@ -17,7 +17,7 @@ export default function LearnPage() {
   return (
     <Page title="Aprender" subtitle="Tu ruta de A1 a C1. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
       <Card className="relative mb-6 overflow-hidden">
-        <MountainClimb progress={climb} />
+        <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 rounded-[16px] px-4 py-3">
           <div className="text-label-2 text-[12px] font-medium">Escalada total</div>
           <div className="text-[28px] leading-tight font-extrabold tabular-nums">{Math.round(climb * 100)}%</div>
@@ -39,6 +39,25 @@ export default function LearnPage() {
               Curso de cómic: alfabeto, números, saludos, to be, presente simple… con lecturas y ejercicios en español.
             </p>
             <div className="text-label-2 mt-1 text-[12px]">{Object.keys(topics).length} temas completados</div>
+          </div>
+          <ChevronRight className="text-label-3 shrink-0" />
+        </Card>
+      </Link>
+
+      {/* Interactive grammar modules */}
+      <Link to="/learn/grammar" className="mb-6 block">
+        <Card className="flex items-center gap-4 p-5 transition-transform active:scale-[0.99]">
+          <div className="grid h-20 w-28 shrink-0 grid-cols-2 gap-1 overflow-hidden rounded-[14px]" aria-hidden>
+            {['/covers/time-machine.webp', '/covers/modal-verbs-zone.webp', '/covers/time-family.webp', ''].map((c, i) => (
+              <div key={i} className={cn('bg-cover bg-center', !c && 'brand-gradient')} style={c ? { backgroundImage: `url(${c})` } : undefined} />
+            ))}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="text-ios-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C1</div>
+            <div className="text-title-3">Gramática interactiva</div>
+            <p className="text-label-2 text-subhead line-clamp-2">
+              Time Machine, Time &amp; Family, Modal Verbs y Verb Lab: explicaciones con práctica y corrección al instante.
+            </p>
           </div>
           <ChevronRight className="text-label-3 shrink-0" />
         </Card>

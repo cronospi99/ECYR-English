@@ -51,7 +51,7 @@ Nunca uses la clave `service_role`/secret en el frontend.
 ### 4. IA — Edge Functions
 
 ```bash
-supabase link --project-ref <tu-ref>
+supabase link --project-ref btfncmarxdlortmlfdko
 supabase functions deploy gemini --no-verify-jwt   # IELTS Simulator
 supabase functions deploy coach  --no-verify-jwt   # AI Coach
 supabase secrets set GEMINI_API_KEY=AIza...         # compartida por ambas

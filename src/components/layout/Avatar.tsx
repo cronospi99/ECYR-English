@@ -1,20 +1,11 @@
-import { cn } from '@/lib/cn';
+import { useAvatar, type AvatarConfig } from '@/store/avatar';
+import { AvatarView } from '@/features/avatar/AvatarView';
 
-export function Avatar({ name, size = 36, className }: { name: string; size?: number; className?: string }) {
-  const initials =
-    name
-      .split(/\s+/)
-      .filter(Boolean)
-      .slice(0, 2)
-      .map((w) => w[0]!.toUpperCase())
-      .join('') || '🙂';
-  return (
-    <span
-      className={cn('brand-gradient inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-white', className)}
-      style={{ width: size, height: size, fontSize: size * 0.4 }}
-      aria-hidden
-    >
-      {initials}
-    </span>
-  );
+/**
+ * The learner's avatar. Renders the saved avatar (initials, portrait or
+ * builder) from the avatar store, or a specific `config` when given (previews).
+ */
+export function Avatar({ name, size = 36, className, config }: { name: string; size?: number; className?: string; config?: AvatarConfig }) {
+  const saved = useAvatar((s) => s.config);
+  return <AvatarView config={config ?? saved} name={name} size={size} className={className} />;
 }

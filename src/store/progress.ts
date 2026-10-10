@@ -15,6 +15,8 @@ export interface Activity {
   xp: number;
   score?: number; // 0–100
   level?: CefrLevel;
+  /** What was practised, e.g. "unit:A1-3", "reading:<id>", "game:<slug>" — lets study plans tick tasks off. */
+  ref?: string;
   at: string; // ISO
 }
 
@@ -110,7 +112,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
         set((s) => ({
           units: { ...s.units, [key]: { score: Math.max(prev?.score ?? 0, score), at: new Date().toISOString() } },
         }));
-        useProgress.getState().award({ kind: 'unit', title, skill: 'grammar', xp, score, level });
+        useProgress.getState().award({ kind: 'unit', title, skill: 'grammar', xp, score, level, ref: `unit:${key}` });
       },
 
       completeTopic: (id, score, title) => {
@@ -119,7 +121,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
         set((s) => ({
           topics: { ...s.topics, [id]: { score: Math.max(prev?.score ?? 0, score), at: new Date().toISOString() } },
         }));
-        useProgress.getState().award({ kind: 'topic', title, skill: 'grammar', xp, score, level: 'A1' });
+        useProgress.getState().award({ kind: 'topic', title, skill: 'grammar', xp, score, level: 'A1', ref: `topic:${id}` });
       },
 
       completeReading: (id, score, title, level) => {
@@ -128,14 +130,14 @@ export const useProgress = create<ProgressData & ProgressActions>()(
         set((s) => ({
           readings: { ...s.readings, [id]: { score: Math.max(prev?.score ?? 0, score), at: new Date().toISOString() } },
         }));
-        useProgress.getState().award({ kind: 'reading', title, skill: 'reading', xp, score, level });
+        useProgress.getState().award({ kind: 'reading', title, skill: 'reading', xp, score, level, ref: `reading:${id}` });
       },
 
       playGame: (slug, title) => {
         set((s) => ({
           games: { ...s.games, [slug]: { plays: (s.games[slug]?.plays ?? 0) + 1, lastAt: new Date().toISOString() } },
         }));
-        useProgress.getState().award({ kind: 'game', title, skill: 'speaking', xp: 10 });
+        useProgress.getState().award({ kind: 'game', title, skill: 'speaking', xp: 10, ref: `game:${slug}` });
       },
 
       setTargetLevel: (targetLevel) => set({ targetLevel, updatedAt: new Date().toISOString() }),
