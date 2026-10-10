@@ -6,7 +6,7 @@
   "cleanUrls": false,
   "rewrites": [
     {
-      "source": "/((?!modules/|apps/|vendor/|covers/|assets/|favicon\\.svg|logo\\.svg|manifest\\.webmanifest|robots\\.txt).*)",
+      "source": "/((?!modules/|vendor/|covers/|assets/|favicon\\.svg|logo\\.svg|manifest\\.webmanifest|robots\\.txt).*)",
       "destination": "/index.html"
     }
   ],

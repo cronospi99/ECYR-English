@@ -34,6 +34,7 @@ export function ModuleFrame({
   }, [loaded]);
 
   useEffect(() => {
+    window.dispatchEvent(new Event('app:ready'));
     document.title = `${title} · ECYR English`;
     const onFs = () => setFull(Boolean(document.fullscreenElement));
     document.addEventListener('fullscreenchange', onFs);

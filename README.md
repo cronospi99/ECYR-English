@@ -35,12 +35,19 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   Listening (123 diálogos A1–C1 con dictado + audios reales de los meses), Speaking
   (3.600+ preguntas por nivel y tema con reconocimiento de voz), Writing (tareas por unidad
   con criterios y feedback del coach) y 487 Phrasal Verbs con quiz.
-- **Juegos** — Star Medic Jeopardy, Phrasal Verb Roulette, Verb Quest, Two Truths & a Lie
+- **Juegos** — Star Medic Jeopardy, Phrasal Verb Roulette, Two Truths & a Lie
   (Colombia), Too Good To Be True, Would You Rather Arena, Time Machine, Time & Family,
   Earth Modals Explorer, Modal Verbs Zone, más los 5 libros interactivos y el curso de cómic.
-- **IELTS** — el [IELTS Simulator](https://cronospi99.github.io/IELTS-Simulator-app/)
-  completo integrado (mock tests, práctica libre, modo docente, Language desk, gráficos 3D…),
-  con sus bandas reflejadas en el dashboard y la misma cuenta de Supabase.
+- **IELTS** — el [IELTS Simulator](https://github.com/cronospi99/IELTS-Simulator-app) absorbido
+  dentro de la app (sin iframe): mock tests, práctica libre, modo docente, Language desk, gráficos
+  3D, corrección con IA… con rutas propias (`/ielts/writing`, `/ielts/reading`…), el diseño iOS de la
+  plataforma, la misma sesión de Supabase y sus bandas en el dashboard. El repositorio original
+  sigue aparte como versión independiente.
+- **Verb Lab** — las utilidades de Verb Quest reconstruidas en React: 750 verbos con sus 3 formas,
+  pronunciación de -ed con ejercicio, quiz cronometrado, 32 familias de phrasal verbs y los 10
+  patrones verbales con quizzes. Las lecciones insertan automáticamente la herramienta que
+  corresponde a su gramática (pasado → -ed y verbos irregulares; gerundios → patrones; etc.).
+- **Cortina de entrada** — la animación de apertura del simulador, ahora para toda la app.
 - **AI Coach** — conversación, corrección y explicaciones adaptadas al nivel CEFR.
 - **Progreso** — montaña, XP y rangos, racha, niveles, destrezas, metas e historial.
 - **Perfil** — cuenta (estudiante/docente, código de clase), tema, pistas en español,
@@ -57,16 +64,32 @@ src/
   store/           progress (XP/racha/unidades), auth, settings
 public/
   modules/         juegos y libros originales (HTML interactivos, servidos tal cual)
-  apps/ielts/      IELTS Simulator (repo cronospi99/IELTS-Simulator-app)
   vendor/          React, Babel, three, d3, Chart.js… alojados localmente (sin CDNs)
   covers/          portadas de los juegos
+src/features/ielts/  IELTS Simulator: engine/ (motor importado), styles/ (base aislada + skin iOS)
+src/features/verblab/ Verb Lab (componentes reutilizables + mapeo a unidades)
+content-src/       fuentes que no se publican (Verb Quest original)
 scripts/extract-content.mjs   extrae el contenido de los módulos a JSON tipado
+scripts/import-ielts.mjs      importa/actualiza el simulador desde su repositorio original
 supabase/          setup.sql, migrations/ (01–06) y functions/ (gemini, coach)
 ```
 
 El contenido de los libros vive dentro de los módulos originales (`public/modules`).
 `npm run content:extract` lo evalúa en un sandbox `vm` y genera `src/content/generated/*.json`,
 que la app importa por nivel (cada nivel es un chunk independiente y cacheable).
+
+## IELTS Simulator: cómo se integra
+
+`scripts/import-ielts.mjs` convierte el `index.html` del repositorio original en tres archivos
+propios: el motor (`engine/ielts-engine.js`, con parches verificados para arrancar bajo demanda,
+reportar cambios de módulo al router y leer los colores del tema), sus hojas modales y su CSS de
+maquetación aislado bajo `.ielts-app` con cada color traducido a los tokens iOS. La piel visual
+está en `styles/ielts-skin.css`. Para traer mejoras del original:
+
+```bash
+git clone https://github.com/cronospi99/IELTS-Simulator-app /tmp/ielts
+node scripts/import-ielts.mjs /tmp/ielts/index.html
+```
 
 ## Desarrollo
 

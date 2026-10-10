@@ -25,13 +25,14 @@ export const router = createBrowserRouter([
       { path: 'learn/:level', element: page(() => import('./features/learn/LevelPage')) },
       { path: 'learn/:level/:unit', element: page(() => import('./features/learn/UnitPage')) },
       { path: 'practice', element: page(() => import('./features/practice/PracticePage')) },
+      { path: 'practice/verbs', element: page(() => import('./features/verblab/VerbLabPage')) },
       { path: 'practice/phrasal-verbs', element: page(() => import('./features/practice/PhrasalVerbsPage')) },
       { path: 'practice/reading', element: page(() => import('./features/practice/ReadingPage')) },
       { path: 'practice/listening', element: page(() => import('./features/practice/ListeningPage')) },
       { path: 'practice/speaking', element: page(() => import('./features/practice/SpeakingPage')) },
       { path: 'practice/writing', element: page(() => import('./features/practice/WritingPage')) },
       { path: 'games', element: page(() => import('./features/games/GamesPage')) },
-      { path: 'ielts', element: page(() => import('./features/ielts/IeltsPage')) },
+      { path: 'ielts/:mod?', element: page(() => import('./features/ielts/IeltsPage')) },
       { path: 'coach', element: page(() => import('./features/coach/CoachPage')) },
       { path: 'progress', element: page(() => import('./features/progress/ProgressPage')) },
       { path: 'profile', element: page(() => import('./features/profile/ProfilePage')) },
@@ -40,5 +41,4 @@ export const router = createBrowserRouter([
   },
   // Full-screen players (no chrome)
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
-  { path: 'ielts/simulator', element: page(() => import('./features/ielts/IeltsSimulatorPage')), errorElement: <RouteError /> },
 ]);

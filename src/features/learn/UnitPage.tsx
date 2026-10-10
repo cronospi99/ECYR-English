@@ -35,6 +35,7 @@ import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
 import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
+import { UnitVerbTools } from '../verblab/unitTools';
 
 type Tab = 'overview' | 'vocab' | 'grammar' | 'practice' | 'produce';
 
@@ -74,7 +75,7 @@ export default function UnitPage() {
         )
       }
     >
-      <div className="sticky top-12 z-20 -mx-4 mb-5 px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:px-0">
+      <div className="material sticky top-12 z-20 -mx-4 mb-5 px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[14px] lg:px-2">
         <div className="no-scrollbar overflow-x-auto">
           <Segmented<Tab>
             value={tab}
@@ -99,6 +100,7 @@ export default function UnitPage() {
             {u.grammar.map((g) => (
               <GrammarCard key={g.name} g={g} />
             ))}
+            <UnitVerbTools unit={u} />
           </div>
         )}
         {tab === 'practice' && (

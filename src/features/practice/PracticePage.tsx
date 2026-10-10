@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight } from 'lucide-react';
+import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight, Wrench } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { IconTile } from '@/components/ui/IconTile';
@@ -37,6 +37,14 @@ const AREAS = [
     title: 'Writing',
     body: 'Tareas de escritura de cada unidad con criterios de evaluación y feedback del AI Coach.',
     skill: 'writing' as const,
+  },
+  {
+    to: '/practice/verbs',
+    icon: Wrench,
+    color: 'var(--indigo)',
+    title: 'Verb Lab',
+    body: '750 verbos con sus 3 formas, pronunciación de -ed, quiz cronometrado, 32 familias de phrasal verbs y los 10 patrones verbales.',
+    skill: 'grammar' as const,
   },
   {
     to: '/practice/phrasal-verbs',

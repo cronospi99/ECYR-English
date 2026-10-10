@@ -176,3 +176,61 @@ export interface TravelGuide {
   en: { cans: string[]; shoulds: string[]; musts: string[] };
   es: { cans: string[]; shoulds: string[]; musts: string[] };
 }
+
+// ------------------------------------------------------ Verb Lab (Verb Quest) ----
+
+export type EdSound = 't' | 'd' | 'id';
+
+export interface LabVerb {
+  en: string;
+  past: string;
+  part: string;
+  es: string;
+  emoji: string;
+  type: 'irregular' | 'regular';
+  sound?: EdSound;
+}
+
+export interface PhrasalFamily {
+  verb: string;
+  color: string;
+  grad: string;
+  emoji: string;
+  items: { pv: string; emoji: string; def: string; ex: string }[];
+}
+
+/** Strings may contain light inline markup (<b>, <strong>, <em>, <span class="highlight">). */
+export interface VerbPattern {
+  id: number;
+  title: string;
+  desc: string;
+  formula: [string, string][];
+  examples: [string, string][];
+  groups: [string, string[]][];
+  legend?: string;
+  count?: string;
+  listTitle?: string;
+  noteTitle?: string;
+  notes?: string[];
+  bothCards?: string[][];
+  table?: string[][];
+  icon: string;
+  color: string;
+  exceptions?: [string, string, string][];
+  tip?: string;
+}
+
+export interface PatternQuiz {
+  id: string;
+  title: string;
+  desc: string;
+  questions: { text: string; opts: string[] }[];
+}
+
+export interface VerbLabData {
+  verbs: LabVerb[];
+  phrasalFamilies: PhrasalFamily[];
+  patterns: { patterns: VerbPattern[]; quizzes: PatternQuiz[] };
+  /** patternFeedback[quizId][questionNumber] = { correct: 'A'|'B'…, A: '…', B: '…' } */
+  patternFeedback: Record<string, Record<string, Record<string, string>>>;
+}
