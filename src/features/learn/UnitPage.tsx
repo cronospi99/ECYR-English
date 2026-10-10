@@ -36,6 +36,7 @@ import { cn } from '@/lib/cn';
 import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
 import { UnitVerbTools } from '../verblab/unitTools';
+import { UnitGrammarTools } from '../grammar/unitTools';
 
 type Tab = 'overview' | 'vocab' | 'grammar' | 'practice' | 'produce';
 const TAB_IDS: Tab[] = ['overview', 'vocab', 'grammar', 'practice', 'produce'];
@@ -104,6 +105,7 @@ export default function UnitPage() {
               <GrammarCard key={g.name} g={g} />
             ))}
             <UnitVerbTools unit={u} />
+            <UnitGrammarTools unit={u} level={meta.id} />
           </div>
         )}
         {tab === 'practice' && (
@@ -338,7 +340,7 @@ function GrammarCard({ g }: { g: GrammarPoint }) {
         <div className="mt-5">
           <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">Ejemplos</div>
           <ul className="space-y-2">
-            {[...g.examples, ...(g.more ?? [])].map((e) => (
+            {[...new Set([...g.examples, ...(g.more ?? [])])].map((e) => (
               <li key={e} className="flex items-center gap-2 text-[16px]">
                 <SpeakButton text={e} size={16} />
                 <span className="italic">{e}</span>

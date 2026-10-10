@@ -2,6 +2,7 @@ import { supabase } from './supabase';
 import { useAuth } from '@/store/auth';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
 import { usePlan, planSnapshot, sanitizePlan } from '@/store/plan';
+import { useAvatar } from '@/store/avatar';
 
 /**
  * Keeps the learner's progress in `public.learner_state` (see
@@ -17,13 +18,16 @@ async function pull(userId: string) {
   if (!supabase) return;
   const { data, error } = await supabase.from('learner_state').select('state').eq('user_id', userId).maybeSingle();
   if (error) return console.warn('[sync] pull failed:', error.message);
-  const remote = (data?.state ?? null) as (ProgressData & { plan?: unknown }) | null;
+  const remote = (data?.state ?? null) as (ProgressData & { plan?: unknown; avatar?: { config?: unknown; updatedAt?: unknown } }) | null;
   if (remote) {
     applying = true;
     useProgress.getState().replace(mergeProgress(snapshot(), remote));
     // Study plan: the most recently edited copy wins.
     const plan = sanitizePlan(remote.plan);
     if (plan && plan.updatedAt > usePlan.getState().updatedAt) usePlan.getState().replace(plan);
+    // Avatar: same rule; the config is re-validated by the store.
+    const av = remote.avatar;
+    if (av && typeof av.updatedAt === 'string' && av.updatedAt > useAvatar.getState().updatedAt) useAvatar.getState().replace(av.config, av.updatedAt);
     applying = false;
   }
   pulledFor = userId;
@@ -34,7 +38,7 @@ async function push(userId: string) {
   if (!supabase) return;
   const { error } = await supabase
     .from('learner_state')
-    .upsert({ user_id: userId, state: { ...snapshot(), plan: planSnapshot() }, updated_at: new Date().toISOString() });
+    .upsert({ user_id: userId, state: { ...snapshot(), plan: planSnapshot(), avatar: { config: useAvatar.getState().config, updatedAt: useAvatar.getState().updatedAt } }, updated_at: new Date().toISOString() });
   if (error) console.warn('[sync] push failed:', error.message);
 }
 
@@ -56,4 +60,5 @@ export function startSync() {
   };
   useProgress.subscribe(schedule);
   usePlan.subscribe(schedule);
+  useAvatar.subscribe(schedule);
 }
