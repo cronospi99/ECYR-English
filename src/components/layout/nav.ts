@@ -1,4 +1,4 @@
-import { Home, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, type LucideIcon } from 'lucide-react';
+import { Home, CalendarRange, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, type LucideIcon } from 'lucide-react';
 
 export interface NavItem {
   to: string;
@@ -10,6 +10,7 @@ export interface NavItem {
 
 export const NAV: NavItem[] = [
   { to: '/', label: 'Inicio', icon: Home, color: 'var(--blue)', tab: true },
+  { to: '/plan', label: 'Mi plan', icon: CalendarRange, color: 'var(--indigo)' },
   { to: '/learn', label: 'Aprender', icon: GraduationCap, color: 'var(--green)', tab: true },
   { to: '/practice', label: 'Práctica', icon: Dumbbell, color: 'var(--orange)', tab: true },
   { to: '/games', label: 'Juegos', icon: Gamepad2, color: 'var(--pink)', tab: true },

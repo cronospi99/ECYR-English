@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ComponentType } from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { AppShell } from './components/layout/AppShell';
 import { PageLoader } from './components/ui/Misc';
 import { RouteError } from './features/RouteError';
@@ -22,6 +22,10 @@ export const router = createBrowserRouter([
       { path: 'learn', element: page(() => import('./features/learn/LearnPage')) },
       { path: 'learn/foundations', element: page(() => import('./features/foundations/FoundationsPage')) },
       { path: 'learn/foundations/:topicId', element: page(() => import('./features/foundations/TopicPage')) },
+      { path: 'learn/grammar', element: page(() => import('./features/grammar/GrammarHubPage')) },
+      { path: 'learn/grammar/time-machine', element: page(() => import('./features/grammar/time-machine/TimeMachinePage')) },
+      { path: 'learn/grammar/modals', element: page(() => import('./features/grammar/modals/ModalsPage')) },
+      { path: 'learn/grammar/time-family', element: page(() => import('./features/grammar/time-family/TimeFamilyPage')) },
       { path: 'learn/:level', element: page(() => import('./features/learn/LevelPage')) },
       { path: 'learn/:level/:unit', element: page(() => import('./features/learn/UnitPage')) },
       { path: 'practice', element: page(() => import('./features/practice/PracticePage')) },
@@ -31,6 +35,7 @@ export const router = createBrowserRouter([
       { path: 'practice/listening', element: page(() => import('./features/practice/ListeningPage')) },
       { path: 'practice/speaking', element: page(() => import('./features/practice/SpeakingPage')) },
       { path: 'practice/writing', element: page(() => import('./features/practice/WritingPage')) },
+      { path: 'plan', element: page(() => import('./features/plan/PlanPage')) },
       { path: 'games', element: page(() => import('./features/games/GamesPage')) },
       { path: 'ielts/:mod?', element: page(() => import('./features/ielts/IeltsPage')) },
       { path: 'coach', element: page(() => import('./features/coach/CoachPage')) },
@@ -39,6 +44,14 @@ export const router = createBrowserRouter([
       { path: '*', element: page(() => import('./features/NotFound')) },
     ],
   },
+  // Former "games" that are now grammar modules: keep old links working.
+  ...(
+    [
+      ['time-machine', 'time-machine'],
+      ['time-family', 'time-family'],
+      ['modal-verbs-zone', 'modals'],
+    ] as const
+  ).map(([from, to]) => ({ path: `play/${from}`, element: <Navigate to={`/learn/grammar/${to}`} replace /> })),
   // Full-screen players (no chrome)
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);

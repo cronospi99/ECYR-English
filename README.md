@@ -21,8 +21,14 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
 
 ## Qué incluye
 
-- **Inicio** — nivel actual, montaña con escalador animado, racha, XP diaria, anillos por
-  destreza, plan del día, juegos, IELTS y AI Coach.
+- **Inicio** — “Go For It!”: la montaña a todo el ancho con el escalador y tu nivel, una franja
+  compacta de racha/XP/rango/unidades, tu plan semanal, accesos a las destrezas y una fila “Explora”.
+- **Mi plan (motor de planes semanales)** — eliges qué quieres lograr (avanzar, repasar unidades
+  concretas, preparar el IELTS o un plan equilibrado), nivel, destrezas a reforzar, días y minutos.
+  `src/lib/planner.ts` genera 7 días de tareas reales (unidades, gramática, lecturas, dictados,
+  speaking, writing, Verb Lab, IELTS, juegos), las marca solas a partir del registro de actividad
+  (cada `award()` lleva un `ref`), mide avance por día y destreza, calcula tu perfil de fortalezas
+  (acierto + práctica de 30 días), da recomendaciones y adapta la semana siguiente a tus resultados.
 - **Aprender** — 5 niveles (A1 Interchange Intro · A2 Interchange 1 · B1 Interchange 2 ·
   B2 Passages 1 · C1 Passages 2) con **72 unidades nativas**: resumen y objetivos,
   vocabulario (lista y flashcards con audio), gramática (tablas, errores comunes, diálogos
@@ -35,9 +41,13 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   Listening (123 diálogos A1–C1 con dictado + audios reales de los meses), Speaking
   (3.600+ preguntas por nivel y tema con reconocimiento de voz), Writing (tareas por unidad
   con criterios y feedback del coach) y 487 Phrasal Verbs con quiz.
+- **Gramática interactiva** (`/learn/grammar`) — Time Machine (fechas, meses, ordinales, años y
+  pasado simple), Time & Family (la hora con reloj interactivo, familia y genitivo ’s) y Modal Verbs
+  (modales core, marginales y semi-modales, reglas, trampas y fase bonus), reconstruidos en React
+  a partir de los módulos originales con sus mecánicas y con los errores corregidos, más Verb Lab.
 - **Juegos** — Star Medic Jeopardy, Phrasal Verb Roulette, Two Truths & a Lie
-  (Colombia), Too Good To Be True, Would You Rather Arena, Time Machine, Time & Family,
-  Earth Modals Explorer, Modal Verbs Zone, más los 5 libros interactivos y el curso de cómic.
+  (Colombia), Too Good To Be True, Would You Rather Arena y Earth Modals Explorer, más los 5 libros
+  interactivos y el curso de cómic.
 - **IELTS** — el [IELTS Simulator](https://github.com/cronospi99/IELTS-Simulator-app) absorbido
   dentro de la app (sin iframe): mock tests, práctica libre, modo docente, Language desk, gráficos
   3D, corrección con IA… con rutas propias (`/ielts/writing`, `/ielts/reading`…), el diseño iOS de la
@@ -47,9 +57,12 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   pronunciación de -ed con ejercicio, quiz cronometrado, 32 familias de phrasal verbs y los 10
   patrones verbales con quizzes. Las lecciones insertan automáticamente la herramienta que
   corresponde a su gramática (pasado → -ed y verbos irregulares; gerundios → patrones; etc.).
-- **Cortina de entrada** — la animación de apertura del simulador, ahora para toda la app.
+- **Cortina de entrada** — la animación de apertura del simulador, ahora para toda la app, con el
+  logotipo ECYR English y el lema “Go For It!”.
 - **AI Coach** — conversación, corrección y explicaciones adaptadas al nivel CEFR.
 - **Progreso** — montaña, XP y rangos, racha, niveles, destrezas, metas e historial.
+- **Avatar** — foto de perfil con retratos ilustrados o un avatar vectorial personalizable (piel,
+  peinado, color de pelo, gafas, ropa, fondo, marco…), visible en la barra lateral y el perfil.
 - **Perfil** — cuenta (estudiante/docente, código de clase), tema, pistas en español,
   acento y velocidad de voz, exportar/importar progreso.
 
@@ -59,9 +72,9 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
 src/
   components/      ui/ (iOS kit), layout/, mountain/, charts/, learning/, brand/
   content/         types.ts, levels.ts, catalog.ts, generated/*.json (contenido extraído)
-  features/        home, learn, foundations, practice, games, ielts, coach, progress, profile
-  lib/             supabase, sync, ai, speech, ielts, date
-  store/           progress (XP/racha/unidades), auth, settings
+  features/        home, plan, learn, grammar, foundations, practice, games, ielts, coach, progress, profile, avatar
+  lib/             planner (motor de planes), supabase, sync, ai, speech, ielts, date
+  store/           progress (XP/racha/unidades), plan, avatar, auth, settings
 public/
   modules/         juegos y libros originales (HTML interactivos, servidos tal cual)
   vendor/          React, Babel, three, d3, Chart.js… alojados localmente (sin CDNs)

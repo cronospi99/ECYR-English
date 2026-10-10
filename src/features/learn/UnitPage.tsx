@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   AlertTriangle,
@@ -38,12 +38,15 @@ import NotFound from '../NotFound';
 import { UnitVerbTools } from '../verblab/unitTools';
 
 type Tab = 'overview' | 'vocab' | 'grammar' | 'practice' | 'produce';
+const TAB_IDS: Tab[] = ['overview', 'vocab', 'grammar', 'practice', 'produce'];
 
 export default function UnitPage() {
   const { level = '', unit = '' } = useParams();
   const meta = levelMeta(level);
   const { data, loading } = useAsync(() => (meta ? loadLevel(meta.id) : Promise.resolve(null)), [meta?.id]);
-  const [tab, setTab] = useState<Tab>('overview');
+  const [params, setParams] = useSearchParams();
+  const tab: Tab = TAB_IDS.find((t) => t === params.get('tab')) ?? 'overview';
+  const setTab = (t: Tab) => setParams(t === 'overview' ? {} : { tab: t }, { replace: true });
   const done = useProgress((s) => (meta ? s.units[`${meta.id}-${unit}`] : undefined));
   const completeUnit = useProgress((s) => s.completeUnit);
   const award = useProgress((s) => s.award);
@@ -109,7 +112,7 @@ export default function UnitPage() {
             onFinish={(score) =>
               score >= 70
                 ? completeUnit(meta.id, u.n, score, `${meta.id} · ${unitTitle(u.title)}`)
-                : award({ kind: 'unit', title: `Práctica: ${meta.id} · ${unitTitle(u.title)}`, skill: 'grammar', xp: 5, score, level: meta.id })
+                : award({ kind: 'unit', title: `Práctica: ${meta.id} · ${unitTitle(u.title)}`, skill: 'grammar', xp: 5, score, level: meta.id, ref: `unit:${meta.id}-${u.n}` })
             }
           />
         )}
@@ -259,7 +262,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
   const go = (d: number) => {
     setFlip(false);
     const n = (i + d + items.length) % items.length;
-    if (d > 0 && n === 0) award({ kind: 'flashcards', title: 'Flashcards de vocabulario', skill: 'vocabulary', xp: 10 });
+    if (d > 0 && n === 0) award({ kind: 'flashcards', title: 'Flashcards de vocabulario', skill: 'vocabulary', xp: 10, ref: 'vocab:flashcards' });
     setI(n);
   };
   return (

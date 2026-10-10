@@ -6,6 +6,8 @@
     <title>ECYR English</title>
     <meta name="description" content="Aprende inglés de A1 a C1: lecciones por nivel CEFR, lecturas, audios, juegos, simulador IELTS y coach con IA." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
@@ -34,10 +36,14 @@
       .intro-panels span:nth-child(5){background:#1a2154}
       .intro-inner{position:relative;z-index:2;width:100%;max-width:1080px;padding:0 24px calc(46px + env(safe-area-inset-bottom));display:flex;align-items:flex-end;
         justify-content:space-between;gap:24px;flex-wrap:wrap;transition:opacity .45s cubic-bezier(.25,.46,.45,.94),transform .45s cubic-bezier(.25,.46,.45,.94)}
-      .intro-logo{width:46px;height:46px;margin:0 0 18px;opacity:0;animation:introUp .8s cubic-bezier(.25,.46,.45,.94) .05s forwards}
+      .intro-brand{display:flex;align-items:center;gap:16px;margin:0 0 26px;opacity:0;animation:introUp .8s cubic-bezier(.25,.46,.45,.94) .05s forwards}
+      .intro-logo{width:auto;height:clamp(64px,9vw,92px);flex:none}
+      .intro-word{display:flex;flex-direction:column;line-height:1;color:#fff}
+      .intro-word b{font-weight:800;font-size:clamp(38px,6vw,62px);letter-spacing:-.02em}
+      .intro-word span{font-weight:400;font-size:clamp(13px,1.7vw,18px);letter-spacing:.52em;margin-top:.45em;color:#dfe4ff;text-indent:.04em}
       .intro-eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8ea6ff;margin:0 0 8px;opacity:0;
         animation:introUp .8s cubic-bezier(.25,.46,.45,.94) .15s forwards}
-      .intro-title{font-weight:800;font-size:clamp(30px,5vw,52px);line-height:1.02;letter-spacing:-.03em;color:#fff;margin:0;opacity:0;
+      .intro-title{font-weight:800;font-size:clamp(40px,7vw,84px);line-height:1.02;letter-spacing:-.03em;color:#fff;margin:0;opacity:0;
         animation:introUp .9s cubic-bezier(.25,.46,.45,.94) .28s forwards}
       .intro-title em{font-style:normal;background:linear-gradient(135deg,#5b8bff,#a48bff);-webkit-background-clip:text;background-clip:text;color:transparent}
       .intro-count{font-weight:800;color:#fff;font-size:clamp(56px,11vw,120px);line-height:.9;letter-spacing:-.05em;display:flex;align-items:flex-start;
@@ -58,7 +64,7 @@
       body.intro-active #root{opacity:0;transform:translateY(26px) scale(.988)}
       body.intro-done #root{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform 1s cubic-bezier(.22,1,.36,1)}
       @media (prefers-reduced-motion:reduce){
-        .intro-logo,.intro-eyebrow,.intro-title,.intro-count{animation:none;opacity:1}
+        .intro-brand,.intro-eyebrow,.intro-title,.intro-count{animation:none;opacity:1}
         .intro-panels span,.intro-inner,.intro-bar span,body.intro-done #root{transition:none}
       }
     </style>
@@ -69,12 +75,12 @@
       <div class="intro-panels" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="intro-inner">
         <div class="intro-mark">
-          <svg class="intro-logo" viewBox="0 0 64 64" aria-hidden="true">
-            <defs><linearGradient id="ig" x1="8" y1="58" x2="56" y2="6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2F6BFF"/><stop offset="1" stop-color="#7B5CFF"/></linearGradient></defs>
-            <rect x="8" y="34" width="12" height="22" rx="6" fill="url(#ig)"/><rect x="26" y="22" width="12" height="34" rx="6" fill="url(#ig)"/><rect x="44" y="8" width="12" height="48" rx="6" fill="url(#ig)"/>
-          </svg>
-          <p class="intro-eyebrow">Teacher Esteban Yepes · ECYR English</p>
-          <h1 class="intro-title">Llega a la cima<br /><em>en inglés</em></h1>
+          <div class="intro-brand">
+            <svg class="intro-logo" viewBox="0 0 500 540" aria-hidden="true"><defs> <linearGradient id="ig" x1="20" y1="330" x2="480" y2="190" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#0E70FF"/><stop offset=".4" stop-color="#3F6BFD"/><stop offset=".75" stop-color="#7552FB"/><stop offset="1" stop-color="#A962FD"/> </linearGradient> </defs> <g fill="url(#ig)"> <path d="M20 179Q20 147 52 147H90Q122 147 122 179V240H62Q30 240 20 256Z"/> <path d="M140 130Q140 100 170 100H205Q235 100 235 130V240H140Z"/> <path d="M255 90Q255 58 287 58H320Q352 58 352 90V240L303.5 290L255 240Z"/> <path d="M372 50Q372 18 404 18H441Q473 18 473 50V240H372Z"/> <path d="M20 420Q20 402 38 402H104Q122 402 122 420V502Q122 520 104 520H65Q20 520 20 475Z"/> <rect x="140" y="402" width="95" height="118" rx="18"/> <rect x="255" y="402" width="97" height="118" rx="18"/> <path d="M372 420Q372 402 390 402H455Q473 402 473 420V475Q473 520 428 520H390Q372 520 372 502Z"/> </g> <g fill="none" stroke="#FFFFFF" stroke-width="32" stroke-linejoin="round"> <path d="M122 275H64Q37 275 37 302V341Q37 368 64 368H122M37 321.5H112"/> <path d="M238 275H190Q157 275 157 308V335Q157 368 190 368H238"/> <path d="M387 385V275H438Q470 275 470 307V313Q470 345 438 345H404"/> <path d="M428 345L458 380" stroke-linecap="round"/> </g> <path fill="#FFFFFF" d="M255 260L303.5 310L352 260V297L320 330V385H287V330L255 297Z"/></svg>
+            <div class="intro-word"><b>ECYR</b><span>English</span></div>
+          </div>
+          <p class="intro-eyebrow">Teacher Esteban Yepes</p>
+          <h1 class="intro-title"><em>Go For It!</em></h1>
         </div>
         <div class="intro-count"><span id="introPct">0</span><i>%</i></div>
       </div>

@@ -59,7 +59,7 @@ export function WritingPad({
         messages: [{ role: 'user', text: `TASK: ${prompt}\n\nCRITERIA:\n${(criteria ?? []).map((c) => `- ${c}`).join('\n')}\n\nMY TEXT:\n${text}` }],
       });
       setFeedback(reply);
-      award({ kind: 'writing', title, skill: 'writing', xp: 25, level: level as CefrLevel });
+      award({ kind: 'writing', title, skill: 'writing', xp: 25, level: level as CefrLevel, ref: 'practice:writing' });
     } catch (e) {
       setError(e instanceof CoachError ? e.message : 'No se pudo obtener feedback.');
     } finally {
@@ -68,7 +68,7 @@ export function WritingPad({
   };
 
   const selfCheck = () => {
-    award({ kind: 'writing', title, skill: 'writing', xp: 15, level: level as CefrLevel });
+    award({ kind: 'writing', title, skill: 'writing', xp: 15, level: level as CefrLevel, ref: 'practice:writing' });
     setFeedback('✅ Texto guardado. Revisa la lista de criterios y marca los que cumples.');
   };
 

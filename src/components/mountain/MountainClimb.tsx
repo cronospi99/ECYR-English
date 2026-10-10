@@ -6,8 +6,17 @@ import { cn } from '@/lib/cn';
  * A climber walks the trail up the mountain to `progress` (0–1).
  * Each CEFR level is one stretch of the trail; camps mark where the next begins.
  */
-const TRAIL =
-  'M62 284 C130 278 190 272 236 252 C270 236 250 214 280 200 C320 182 350 176 360 160 C372 140 330 132 352 116 C372 100 410 96 420 80 C426 70 428 62 430 54';
+const TRAIL_TAIL =
+  'C130 278 190 272 236 252 C270 236 250 214 280 200 C320 182 350 176 360 160 C372 140 330 132 352 116 C372 100 410 96 420 80 C426 70 428 62 430 54';
+const TRAIL = `M62 284 ${TRAIL_TAIL}`;
+
+/** In the panoramic layout the trail starts further left, across the foothills. */
+function trailFrom(x0: number) {
+  if (x0 > -40) return TRAIL;
+  const a = x0 + 56;
+  const span = 62 - a;
+  return `M${a} 288 C${a + span * 0.28} 272 ${a + span * 0.52} 296 ${a + span * 0.74} 284 C${a + span * 0.86} 278 ${a + span * 0.94} 286 62 284 ${TRAIL_TAIL}`;
+}
 
 const CAMPS: { at: number; label: string }[] = [
   { at: 0, label: 'A1' },
@@ -34,13 +43,37 @@ export function MountainClimb({
   className,
   showCamps = true,
   label,
+  wide = false,
 }: {
   progress: number;
   className?: string;
   showCamps?: boolean;
   label?: string;
+  /** Panoramic: fills its container's width (up to 340px tall), extending the scenery to the left. */
+  wide?: boolean;
 }) {
   const uid = useId().replace(/:/g, '');
+  const box = useRef<HTMLDivElement>(null);
+  const [x0, setX0] = useState(0);
+  const [height, setHeight] = useState<number | undefined>();
+  useLayoutEffect(() => {
+    const el = box.current;
+    if (!wide || !el) return;
+    const fit = () => {
+      const w = el.clientWidth;
+      if (!w) return;
+      const h = Math.round(Math.min(340, Math.max(170, w / 2)));
+      const viewW = Math.min(1000, Math.max(600, (300 * w) / h));
+      setHeight(h);
+      setX0(Math.round(600 - viewW));
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [wide]);
+  const d = trailFrom(x0);
+  const startPose = useRef({ x: 62, y: 284 });
   const pathRef = useRef<SVGPathElement>(null);
   const [len, setLen] = useState(0);
   const [camps, setCamps] = useState<(Pose & { label: string; at: number })[]>([]);
@@ -52,7 +85,7 @@ export function MountainClimb({
 
   const poseAt = (v: number): Pose => {
     const p = pathRef.current;
-    if (!p || !len) return { x: 62, y: 284, flip: false };
+    if (!p || !len) return { ...startPose.current, flip: false };
     const a = p.getPointAtLength(v * len);
     const b = p.getPointAtLength(Math.min(len, v * len + 4));
     const c = p.getPointAtLength(Math.max(0, v * len - 4));
@@ -63,14 +96,19 @@ export function MountainClimb({
     const p = pathRef.current;
     if (!p) return;
     const l = p.getTotalLength();
+    const s0 = p.getPointAtLength(0);
+    startPose.current = { x: s0.x, y: s0.y };
     setLen(l);
+    setPose((cur) => (mv.get() === 0 ? { x: s0.x, y: s0.y, flip: false } : cur));
     setCamps(
       CAMPS.map((c) => {
         const pt = p.getPointAtLength(c.at * l);
         return { ...c, x: pt.x, y: pt.y, flip: false };
       }),
     );
-  }, []);
+    if (mv.get() > 0) setPose(poseAt(mv.get()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [d]);
 
   useMotionValueEvent(mv, 'change', (v) => setPose(poseAt(v)));
 
@@ -95,10 +133,12 @@ export function MountainClimb({
   const done = len * mv.get();
   const atSummit = target >= 0.999;
 
-  return (
+  const vw = 600 - x0;
+  const svg = (
     <svg
-      viewBox="0 0 600 300"
-      className={cn('block h-auto w-full select-none', className)}
+      viewBox={`${x0} 0 ${vw} 300`}
+      preserveAspectRatio={wide ? 'xMaxYMax slice' : undefined}
+      className={cn('block w-full select-none', wide ? 'h-full' : 'h-auto', className)}
       role="img"
       aria-label={label ?? `Progreso de escalada: ${Math.round(target * 100)}%`}
       style={SKY_VARS}
@@ -127,12 +167,12 @@ export function MountainClimb({
           <stop offset="1" stopColor="#FFD36B" stopOpacity="0" />
         </radialGradient>
         <clipPath id={`frame-${uid}`}>
-          <rect width="600" height="300" rx="0" />
+          <rect x={x0} width={vw} height="300" rx="0" />
         </clipPath>
       </defs>
 
       <g clipPath={`url(#frame-${uid})`}>
-        <rect width="600" height="300" fill={`url(#sky-${uid})`} />
+        <rect x={x0} width={vw} height="300" fill={`url(#sky-${uid})`} />
         <circle cx="520" cy="62" r="54" fill={`url(#sun-${uid})`} />
         <circle cx="520" cy="62" r="18" fill="#FFE08A" />
 
@@ -150,6 +190,27 @@ export function MountainClimb({
           </g>
         </g>
 
+        {x0 < 0 && (
+          <g>
+            <g opacity="0.75" style={{ animation: reduce ? undefined : 'drift 58s linear infinite', animationDelay: '-12s' }}>
+              <g fill="#fff">
+                <ellipse cx={x0 + 120} cy="58" rx="28" ry="9" />
+                <ellipse cx={x0 + 140} cy="51" rx="17" ry="11" />
+              </g>
+            </g>
+            <path
+              d={`M${x0 - 10} 300 L${x0 - 10} 190 L${x0 + 90} 128 L${x0 + 170} 176 L${x0 + 260} 110 L${x0 + 350} 168 L${x0 + 420} 140 L${x0 + 520} 196 L40 300 Z`}
+              fill={`url(#back-${uid})`}
+              opacity="0.4"
+            />
+            <path
+              d={`M${x0 - 10} 300 L${x0 - 10} 236 L${x0 + 110} 184 L${x0 + 200} 220 L${x0 + 300} 170 L${x0 + 420} 226 L${x0 + 520} 204 L60 300 Z`}
+              fill={`url(#mtn-${uid})`}
+              opacity="0.55"
+            />
+            <path d={`M${x0 - 10} 300 L${x0 - 10} 274 C${x0 + 120} 256 ${x0 + 260} 266 ${x0 + 400} 282 C${x0 + 480} 290 0 296 40 300 Z`} fill="#7FA0FF" opacity="0.5" />
+          </g>
+        )}
         {/* back range */}
         <path d="M-10 300 L110 150 L180 205 L265 120 L340 210 L420 160 L520 230 L610 140 L610 300 Z" fill={`url(#back-${uid})`} opacity="0.55" />
 
@@ -165,7 +226,7 @@ export function MountainClimb({
         {/* trail: remaining (dashed) and completed (solid) */}
         <path
           ref={pathRef}
-          d={TRAIL}
+          d={d}
           fill="none"
           stroke="#fff"
           strokeOpacity="0.55"
@@ -175,7 +236,7 @@ export function MountainClimb({
         />
         {len > 0 && (
           <path
-            d={TRAIL}
+            d={d}
             fill="none"
             stroke="#fff"
             strokeWidth="3.5"
@@ -260,5 +321,11 @@ export function MountainClimb({
         </g>
       </g>
     </svg>
+  );
+  if (!wide) return svg;
+  return (
+    <div ref={box} className="relative w-full" style={{ height: height ?? 300 }}>
+      {svg}
+    </div>
   );
 }

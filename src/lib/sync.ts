@@ -1,6 +1,7 @@
 import { supabase } from './supabase';
 import { useAuth } from '@/store/auth';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
+import { usePlan, planSnapshot, sanitizePlan } from '@/store/plan';
 
 /**
  * Keeps the learner's progress in `public.learner_state` (see
@@ -16,10 +17,13 @@ async function pull(userId: string) {
   if (!supabase) return;
   const { data, error } = await supabase.from('learner_state').select('state').eq('user_id', userId).maybeSingle();
   if (error) return console.warn('[sync] pull failed:', error.message);
-  const remote = (data?.state ?? null) as ProgressData | null;
+  const remote = (data?.state ?? null) as (ProgressData & { plan?: unknown }) | null;
   if (remote) {
     applying = true;
     useProgress.getState().replace(mergeProgress(snapshot(), remote));
+    // Study plan: the most recently edited copy wins.
+    const plan = sanitizePlan(remote.plan);
+    if (plan && plan.updatedAt > usePlan.getState().updatedAt) usePlan.getState().replace(plan);
     applying = false;
   }
   pulledFor = userId;
@@ -30,7 +34,7 @@ async function push(userId: string) {
   if (!supabase) return;
   const { error } = await supabase
     .from('learner_state')
-    .upsert({ user_id: userId, state: snapshot(), updated_at: new Date().toISOString() });
+    .upsert({ user_id: userId, state: { ...snapshot(), plan: planSnapshot() }, updated_at: new Date().toISOString() });
   if (error) console.warn('[sync] push failed:', error.message);
 }
 
@@ -44,10 +48,12 @@ export function startSync() {
   const first = useAuth.getState().session?.user.id;
   if (first) void pull(first);
 
-  useProgress.subscribe(() => {
+  const schedule = () => {
     const id = useAuth.getState().session?.user.id;
     if (!id || applying || pulledFor !== id) return;
     clearTimeout(timer);
     timer = setTimeout(() => void push(id), 1500);
-  });
+  };
+  useProgress.subscribe(schedule);
+  usePlan.subscribe(schedule);
 }
