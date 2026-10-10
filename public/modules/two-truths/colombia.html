@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Chango&family=Figtree:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet" />
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #FBF1DE; color: #2A1A12; font-family: 'Figtree', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #2451A6; text-decoration-thickness: 2px; }
+a:hover { color: #B42A63; }
+button { font-family: inherit; }
+@keyframes ttRise { from { opacity: 0; transform: translateY(22px) scale(0.97); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="height:100vh;overflow:hidden;display:flex;flex-direction:column;background:#FBF1DE;">
+
+  <div style="flex:none;">
+    <div style="height:16px;background:conic-gradient(from 135deg at 50% 0, #E9A21B 90deg, transparent 0) 0 0 / 32px 16px repeat-x, #C23B22;"></div>
+    <div style="height:8px;background:#137C76;"></div>
+    <div style="height:16px;background:conic-gradient(from 135deg at 50% 0, #FBF1DE 90deg, transparent 0) 0 0 / 32px 16px repeat-x, #B42A63;"></div>
+  </div>
+
+  <sc-if value="{{ showTimer }}" hint-placeholder-val="{{ false }}">
+    <div style="height:10px;background:#EEDDC0;flex:none;">
+      <div style="height:100%;width:{{ timePct }}%;background:{{ timeColor }};transition:width 900ms linear;"></div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isStart }}" hint-placeholder-val="{{ true }}">
+  <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,2.4vw,56px);align-items:center;padding:clamp(16px,3.2vh,48px) clamp(24px,3.6vw,72px);">
+
+    <div style="display:flex;flex-direction:column;gap:clamp(6px,1.8vh,30px);min-width:0;">
+      <div>
+        <div style="font-weight:800;font-size:clamp(11px,min(1.05vw,1.9vh),19px);letter-spacing:0.22em;text-transform:uppercase;color:#B42A63;">Colombia edition · English A1 → C1</div>
+        <h1 style="font-family:'Chango',sans-serif;font-weight:400;font-size:clamp(24px,min(4.8vw,8vh),104px);line-height:0.98;letter-spacing:-0.01em;margin:clamp(6px,1vh,16px) 0 0;color:#2A1A12;">Two truths<br /><span style="color:#C23B22;">&amp; a lie</span></h1>
+        <p style="font-size:clamp(13px,min(1.35vw,2.4vh),26px);line-height:1.4;font-weight:500;max-width:720px;margin:clamp(8px,1.4vh,20px) 0 0;color:#5B4232;text-wrap:pretty;">Spin the sphere. Three sentences about Colombia appear: two are true, one is a lie. Find the lie.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(4px,1vh,12px);">
+        <div style="font-weight:800;font-size:clamp(11px,min(0.95vw,1.7vh),17px);letter-spacing:0.2em;text-transform:uppercase;color:#7A5F4C;">Category</div>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,0.8vw,14px);">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="8">
+            <button onClick="{{ c.onClick }}" style="cursor:pointer;appearance:none;text-align:left;display:flex;flex-direction:column;overflow:hidden;padding:0;min-height:0;border:3px solid #2A1A12;border-radius:16px;background:{{ c.bg }};color:{{ c.fg }};box-shadow:{{ c.sh }};transform:{{ c.tf }};transition:transform 140ms ease,box-shadow 140ms ease;">
+              <span style="display:block;flex:none;height:clamp(8px,1.1vh,12px);width:100%;background:conic-gradient(from 135deg at 50% 0, {{ c.color }} 90deg, transparent 0) 0 0 / 24px 12px repeat-x, {{ c.band }};"></span>
+              <span style="display:flex;flex-direction:column;gap:2px;padding:clamp(5px,1vh,14px) clamp(8px,0.9vw,16px);">
+                <span style="font-family:'Chango',sans-serif;font-size:clamp(10px,min(1.15vw,2.1vh),22px);overflow-wrap:anywhere;line-height:1.05;">{{ c.name }}</span>
+                <span style="font-weight:700;font-size:clamp(10px,min(0.85vw,1.6vh),15px);letter-spacing:0.08em;opacity:0.85;">{{ c.note }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(4px,1vh,12px);">
+        <div style="font-weight:800;font-size:clamp(11px,min(0.95vw,1.7vh),17px);letter-spacing:0.2em;text-transform:uppercase;color:#7A5F4C;">Levels</div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(6px,0.7vw,12px);">
+          <sc-for list="{{ levelChips }}" as="lv" hint-placeholder-count="5">
+            <button onClick="{{ lv.onClick }}" style="cursor:pointer;appearance:none;min-width:clamp(48px,5.4vw,96px);min-height:clamp(36px,6vh,64px);padding:0 clamp(10px,1vw,20px);border:3px solid #2A1A12;border-radius:999px;background:{{ lv.bg }};color:{{ lv.fg }};font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.4vw,2.6vh),26px);">{{ lv.code }}</button>
+          </sc-for>
+          <span style="flex:none;width:clamp(4px,1.2vw,24px);"></span>
+        <button onClick="{{ start }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#C23B22;color:#FFF7E8;box-shadow:5px 5px 0 #2A1A12;padding:0 clamp(20px,2.6vw,52px);min-height:clamp(36px,6vh,64px);font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.7vw,3vh),32px);">Let’s play</button>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(8px,1vw,16px);">
+          <button onClick="{{ openRoster }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#FFFBF2;color:#2A1A12;box-shadow:3px 3px 0 #2A1A12;padding:0 clamp(12px,1.2vw,22px);min-height:clamp(30px,4.6vh,48px);font-weight:800;font-size:clamp(11px,min(1vw,1.8vh),18px);letter-spacing:0.06em;">{{ rosterLabel }}</button>
+          <div style="font-weight:700;font-size:clamp(11px,min(1vw,1.8vh),19px);letter-spacing:0.06em;color:#5B4232;line-height:1.5;">{{ setupLine }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:min(80vh,42vw);max-width:100%;justify-self:center;aspect-ratio:1 / 1.08;">
+      <canvas data-sphere="1" ref="{{ setCanvas }}" style="width:100%;height:100%;display:block;"></canvas>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;display:flex;flex-direction:column;">
+
+    <div style="flex:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(12px,1.4vw,24px);padding:clamp(8px,1.4vh,18px) clamp(20px,3vw,56px);border-bottom:3px solid #2A1A12;">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,1.1vw,18px);">
+        <span style="font-family:'Chango',sans-serif;font-size:clamp(16px,1.35vw,24px);color:#2A1A12;">Two truths &amp; a lie</span>
+        <span style="border:3px solid #2A1A12;border-radius:999px;padding:6px 16px;background:{{ catColor }};color:{{ catInk }};font-weight:800;font-size:clamp(13px,1vw,18px);letter-spacing:0.08em;text-transform:uppercase;">{{ catName }}</span>
+        <span style="font-weight:800;font-size:clamp(13px,1vw,18px);letter-spacing:0.12em;text-transform:uppercase;color:#5B4232;">Round {{ roundNum }}/{{ roundTotal }}</span>
+        <span style="font-weight:800;font-size:clamp(13px,1vw,18px);letter-spacing:0.12em;text-transform:uppercase;color:#B42A63;">Level {{ level }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:clamp(8px,1vw,16px);">
+        <sc-for list="{{ teams }}" as="t" hint-placeholder-count="2">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px clamp(14px,1.2vw,20px);border:3px solid #2A1A12;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};">
+            <span style="font-weight:800;font-size:clamp(12px,0.95vw,17px);letter-spacing:0.1em;text-transform:uppercase;">{{ t.name }}</span>
+            <span style="font-family:'Chango',sans-serif;font-size:clamp(18px,1.6vw,28px);line-height:1;">{{ t.score }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.3fr);gap:clamp(20px,2.6vw,56px);padding:clamp(12px,2.4vh,36px) clamp(20px,3vw,56px);align-items:center;">
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.6vh,22px);min-width:0;">
+        <div style="height:min(62vh,34vw);max-width:100%;aspect-ratio:1 / 1.08;">
+          <canvas data-sphere="1" ref="{{ setCanvas }}" style="width:100%;height:100%;display:block;"></canvas>
+        </div>
+        <sc-if value="{{ canSpin }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ spin }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#E9A21B;color:#2A1A12;box-shadow:7px 7px 0 #2A1A12;padding:0 clamp(34px,3.2vw,60px);min-height:clamp(52px,7.5vh,84px);font-family:'Chango',sans-serif;font-size:clamp(20px,1.9vw,34px);">Spin the sphere</button>
+        </sc-if>
+        <sc-if value="{{ isSpinning }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height:clamp(52px,7.5vh,84px);display:flex;align-items:center;font-family:'Chango',sans-serif;font-size:clamp(18px,1.6vw,28px);color:#B42A63;">Spinning…</div>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,1.5vh,20px);min-width:0;">
+        <div style="font-family:'Chango',sans-serif;font-size:clamp(20px,min(2.2vw,3.8vh),40px);line-height:1.05;color:#2A1A12;">{{ question }}</div>
+
+        <sc-if value="{{ showSlots }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,18px);">
+            <sc-for list="{{ slots }}" as="s" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:clamp(14px,1.3vw,22px);min-height:clamp(64px,11vh,130px);padding:clamp(8px,1.3vh,20px) clamp(14px,1.3vw,22px);border:3px dashed #BFA689;border-radius:20px;">
+                <span style="flex:none;width:clamp(44px,3.6vw,62px);height:clamp(44px,3.6vw,62px);border-radius:50%;border:3px dashed #BFA689;display:flex;align-items:center;justify-content:center;font-family:'Chango',sans-serif;font-size:clamp(18px,1.6vw,28px);color:#A58C70;">{{ s }}</span>
+                <span style="font-weight:600;font-size:clamp(16px,1.3vw,24px);color:#8A7158;">Spin the sphere to reveal this sentence</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showCards }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:clamp(8px,1.3vh,18px);">
+            <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+              <button onClick="{{ c.onClick }}" style="cursor:{{ c.cur }};appearance:none;text-align:left;display:flex;align-items:center;gap:clamp(14px,1.3vw,22px);min-height:clamp(64px,11vh,130px);padding:clamp(8px,1.3vh,20px) clamp(16px,1.5vw,28px);border:3px solid {{ c.bd }};border-radius:20px;background:{{ c.bg }};color:{{ c.fg }};box-shadow:{{ c.sh }};opacity:{{ c.op }};animation:ttRise 420ms cubic-bezier(.2,.8,.2,1) both;animation-delay:{{ c.delay }};transition:background 180ms ease,box-shadow 180ms ease,opacity 180ms ease;">
+                <span style="flex:none;width:clamp(44px,3.6vw,62px);height:clamp(44px,3.6vw,62px);border-radius:50%;border:3px solid #2A1A12;background:{{ c.badgeBg }};color:{{ c.badgeFg }};display:flex;align-items:center;justify-content:center;font-family:'Chango',sans-serif;font-size:clamp(18px,1.6vw,28px);">{{ c.letter }}</span>
+                <span style="flex:1;min-width:0;font-weight:600;font-size:clamp(16px,min(1.5vw,2.6vh),28px);line-height:1.28;text-wrap:pretty;">{{ c.text }}</span>
+                <sc-if value="{{ c.hasTag }}" hint-placeholder-val="{{ false }}">
+                  <span style="flex:none;align-self:center;border:3px solid #2A1A12;border-radius:999px;padding:6px 14px;background:{{ c.tagBg }};color:{{ c.tagFg }};font-family:'Chango',sans-serif;font-size:clamp(13px,1vw,18px);letter-spacing:0.04em;transform:rotate(-4deg);">{{ c.tag }}</span>
+                </sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:ttRise 300ms ease-out both;display:flex;flex-direction:column;gap:clamp(6px,1vh,14px);">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(8px,1vw,16px);">
+            <div style="font-family:'Chango',sans-serif;font-size:clamp(16px,min(1.5vw,2.6vh),26px);color:{{ verdictColor }};">{{ verdict }}</div>
+              <button onClick="{{ next }}" style="flex:none;cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#2A1A12;color:#FFF7E8;padding:0 clamp(22px,2.4vw,44px);min-height:clamp(40px,6vh,70px);font-family:'Chango',sans-serif;font-size:clamp(15px,min(1.5vw,2.6vh),27px);">{{ nextLabel }}</button>
+            </div>
+            <sc-if value="{{ showFix }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:6px;background:#FFF7E8;border:3px solid #2A1A12;border-radius:18px;padding:clamp(8px,1.2vh,18px) clamp(14px,1.3vw,24px);">
+                <span style="font-weight:800;font-size:clamp(12px,0.9vw,16px);letter-spacing:0.18em;text-transform:uppercase;color:#137C76;">What’s actually true</span>
+                <span style="font-weight:600;font-size:clamp(15px,min(1.3vw,2.3vh),25px);line-height:1.3;color:#2A1A12;text-wrap:pretty;">{{ fix }}</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isEnd }}" hint-placeholder-val="{{ false }}">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(22px,2.6vw,44px);padding:clamp(28px,4.5vw,86px);">
+    <div>
+      <div style="font-weight:800;font-size:clamp(13px,1.05vw,19px);letter-spacing:0.22em;text-transform:uppercase;color:#B42A63;">{{ endKicker }}</div>
+      <h2 style="font-family:'Chango',sans-serif;font-weight:400;font-size:clamp(42px,6vw,110px);line-height:0.95;margin:clamp(10px,1.2vw,20px) 0 0;color:#2A1A12;">{{ endTitle }}</h2>
+      <p style="font-weight:600;font-size:clamp(18px,1.6vw,30px);line-height:1.4;color:#5B4232;margin:clamp(14px,1.5vw,24px) 0 0;">{{ endLine }}</p>
+      <sc-if value="{{ hasBoard }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(8px,0.8vw,12px);margin-top:clamp(12px,2.4vh,28px);">
+          <sc-for list="{{ board }}" as="b" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:10px;padding:5px 18px 5px 5px;border:3px solid #2A1A12;border-radius:999px;background:{{ b.bg }};color:#2A1A12;">
+              <span style="width:clamp(28px,4.4vh,40px);height:clamp(28px,4.4vh,40px);border-radius:50%;background:#2A1A12;color:#FFF7E8;display:flex;align-items:center;justify-content:center;font-family:'Chango',sans-serif;font-size:clamp(12px,1.9vh,17px);">{{ b.rank }}</span>
+              <span style="font-weight:800;font-size:clamp(14px,min(1.2vw,2.3vh),22px);">{{ b.name }}</span>
+              <span style="font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.2vw,2.3vh),22px);">{{ b.pts }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(12px,1.2vw,20px);">
+      <button onClick="{{ again }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#C23B22;color:#FFF7E8;box-shadow:7px 7px 0 #2A1A12;padding:0 clamp(32px,3vw,56px);min-height:clamp(64px,5.4vw,92px);font-family:'Chango',sans-serif;font-size:clamp(20px,1.9vw,34px);">Play again</button>
+      <button onClick="{{ restart }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#FFF7E8;color:#2A1A12;padding:0 clamp(28px,2.6vw,48px);min-height:clamp(64px,5.4vw,92px);font-family:'Chango',sans-serif;font-size:clamp(18px,1.6vw,30px);">Change category</button>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ showRoster }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:20;background:rgba(42,26,18,0.55);display:flex;align-items:center;justify-content:center;padding:clamp(10px,3vh,40px);">
+      <div style="width:min(980px,100%);max-height:100%;overflow:auto;display:flex;flex-direction:column;gap:clamp(10px,2vh,24px);background:#FBF1DE;border:3px solid #2A1A12;border-radius:24px;box-shadow:8px 8px 0 #2A1A12;padding:clamp(14px,3vh,36px) clamp(16px,2.4vw,40px);">
+        <div>
+          <div style="font-family:'Chango',sans-serif;font-size:clamp(20px,min(2.2vw,4vh),38px);color:#2A1A12;">Student names</div>
+          <div style="font-weight:600;font-size:clamp(13px,min(1.1vw,2vh),19px);color:#5B4232;margin-top:4px;">One name per line. Turns rotate through the list, and each student’s points are saved for the final ranking.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(12px,1.6vw,24px);">
+          <sc-for list="{{ rosterGroups }}" as="g" hint-placeholder-count="2">
+            <div style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span style="flex:none;width:18px;height:18px;border-radius:50%;border:3px solid #2A1A12;background:{{ g.color }};"></span>
+                <sc-if value="{{ g.hasTeamName }}" hint-placeholder-val="{{ true }}">
+                  <input value="{{ g.teamName }}" onChange="{{ g.onName }}" placeholder="{{ g.namePh }}" style="flex:1;min-width:0;font-family:'Chango',sans-serif;font-size:clamp(15px,min(1.3vw,2.4vh),22px);color:#2A1A12;background:#FFFBF2;border:3px solid #2A1A12;border-radius:12px;padding:6px 12px;" />
+                </sc-if>
+                <sc-if value="{{ g.noTeamName }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-family:'Chango',sans-serif;font-size:clamp(15px,min(1.3vw,2.4vh),22px);">Whole class</span>
+                </sc-if>
+              </div>
+              <textarea value="{{ g.text }}" onChange="{{ g.onText }}" placeholder="{{ g.ph }}" style="height:clamp(110px,34vh,340px);resize:none;font-family:'Figtree',sans-serif;font-weight:600;font-size:clamp(14px,min(1.2vw,2.2vh),20px);line-height:1.45;color:#2A1A12;background:#FFFBF2;border:3px solid #2A1A12;border-radius:16px;padding:10px 14px;"></textarea>
+              <span style="font-weight:800;font-size:clamp(11px,min(0.9vw,1.7vh),15px);letter-spacing:0.14em;text-transform:uppercase;color:#7A5F4C;">{{ g.countLabel }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;">
+          <button onClick="{{ clearRoster }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#FFFBF2;color:#2A1A12;padding:0 24px;min-height:clamp(40px,6vh,56px);font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.3vw,2.4vh),20px);">Clear</button>
+          <button onClick="{{ closeRoster }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#C23B22;color:#FFF7E8;box-shadow:4px 4px 0 #2A1A12;padding:0 32px;min-height:clamp(40px,6vh,56px);font-family:'Chango',sans-serif;font-size:clamp(14px,min(1.3vw,2.4vh),20px);">Done</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;roundCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6060,&quot;min&quot;:5,&quot;max&quot;:60,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Session&quot;,&quot;label&quot;:&quot;Rounds (All categories)&quot;},&quot;timerSeconds&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:45,&quot;min&quot;:0,&quot;max&quot;:120,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Session&quot;},&quot;teamMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Session&quot;},&quot;showExplanation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Feedback&quot;}}">
+const INK = "#2A1A12", CREAM = "#FFF7E8";
+const LEVELS = ["A1", "A2", "B1", "B2", "C1"];
+const PTS = { A1: 10, A2: 20, B1: 30, B2: 40, C1: 50 };
+const GREEN = "#2F7A2E", RED = "#C23B22";
+
+const CATS = [
+  { id: "science", name: "Science", color: "#137C76", ink: CREAM },
+  { id: "culture", name: "Culture", color: "#B42A63", ink: CREAM },
+  { id: "geography", name: "Geography", color: "#E9A21B", ink: INK },
+  { id: "politics", name: "Politics & history", color: "#2451A6", ink: CREAM },
+  { id: "nature", name: "Nature", color: "#2F7A2E", ink: CREAM },
+  { id: "traditions", name: "Traditions", color: "#C23B22", ink: CREAM },
+  { id: "pop", name: "Pop culture", color: "#6E3AA8", ink: CREAM }
+];
+
+// [level, true, true, lie, correction]
+const DATA = {
+  science: [
+    ["A1", "Colombia is close to the equator.", "Bogotá is a very high city in the mountains.", "Colombia has four seasons every year: spring, summer, autumn and winter.", "Colombia is near the equator, so it has dry seasons and rainy seasons, not four seasons."],
+    ["A1", "Colombia has many volcanoes.", "Coffee is a plant, and it grows very well in Colombia.", "Colombia has no deserts.", "Colombia has deserts, for example in La Guajira and the Tatacoa Desert in Huila."],
+    ["A1", "Colombia has more kinds of birds than any other country.", "The Amazon rainforest is in the south of Colombia.", "The hummingbird is the national bird of Colombia.", "The national bird of Colombia is the Andean condor."],
+    ["A1", "Many rivers in Colombia make electricity.", "Bananas and avocados grow in Colombia.", "Colombia gets most of its electricity from the sun.", "Most of Colombia’s electricity comes from water (hydropower), not from the sun."],
+    ["A2", "Nevado del Ruiz is an active volcano in Colombia.", "In 1985, the eruption of Nevado del Ruiz destroyed the town of Armero.", "Armero was destroyed by hot lava from the volcano.", "Armero was destroyed by a lahar, a fast river of mud, ice and water, not by lava."],
+    ["A2", "Manuel Elkin Patarroyo is a Colombian scientist.", "He worked for many years on a vaccine against malaria.", "Patarroyo won the Nobel Prize in Medicine for his vaccine.", "Patarroyo won the Prince of Asturias Award in 1994. He never won a Nobel Prize."],
+    ["A2", "Colombia has more types of orchids than any other country.", "Colombia’s national tree is the wax palm.", "The wax palm is the shortest palm tree in the world.", "The wax palm is the tallest palm in the world. It can grow to about 60 metres."],
+    ["A2", "Caño Cristales is a river in the Meta region of Colombia.", "People call it “the river of five colours”.", "The bright red colour of Caño Cristales comes from minerals in the water.", "The red colour comes from a water plant called Macarenia clavigera, not from minerals."],
+    ["B1", "In 1958, Colombian engineer Jorge Reynolds Pombo built one of the first external pacemakers.", "A pacemaker helps the heart beat at a regular rhythm.", "His first pacemaker was light enough to carry in a pocket.", "It weighed around 45 kilos and ran on a car battery."],
+    ["B1", "The Tatacoa Desert is technically a dry tropical forest, not a true desert.", "The Tatacoa is a popular place to observe the stars.", "The Tatacoa Desert is in La Guajira, near the Caribbean coast.", "The Tatacoa is in Huila, in the south-centre of the country, between two Andean mountain ranges."],
+    ["B1", "José Celestino Mutis led the Royal Botanical Expedition in New Granada.", "The expedition produced thousands of detailed paintings of plants.", "Mutis was born in Bogotá and never left the country.", "Mutis was born in Cádiz, Spain, and arrived in New Granada in 1760."],
+    ["B1", "Colombia is one of the most biodiverse countries on the planet.", "Colombia has more species of butterflies than any other country.", "The golden poison frog, one of the most toxic animals on Earth, lives in the Amazon.", "The golden poison frog lives only in a small area of the Pacific rainforest in Cauca, not in the Amazon."],
+    ["B2", "Francisco José de Caldas found a way to measure altitude using the boiling point of water.", "Caldas was executed in 1816, during the Spanish reconquest.", "Caldas invented the barometer.", "The barometer already existed. Caldas developed his boiling-point method after his own barometer broke."],
+    ["B2", "Nubia Muñoz is a Colombian epidemiologist.", "Her research helped prove that HPV causes cervical cancer.", "Her work led directly to the first vaccine against malaria.", "Her research helped make the HPV vaccine possible. The malaria work was Patarroyo’s."],
+    ["B2", "Colombia’s first satellite, Libertad 1, was launched in 2007.", "It was built by a university in Bogotá.", "Libertad 1 was launched from a space centre in Colombia.", "It was launched on a Russian rocket from Baikonur, in Kazakhstan. Colombia has no launch site."],
+    ["B2", "Rodolfo Llinás is a Colombian neuroscientist who has worked in New York for decades.", "He has studied how the brain creates our experience of reality.", "Llinás travelled to space to run his own brain experiments.", "Llinás designed experiments for NASA’s Neurolab mission in 1998, but he did not fly into space himself."],
+    ["C1", "The Sierra Nevada de Santa Marta is often described as the world’s highest coastal mountain range.", "Its summits reach roughly 5,700 metres just 42 km from the Caribbean shore.", "Geologically, the Sierra Nevada de Santa Marta is the northernmost branch of the Andes.", "It is an isolated massif, geologically separate from the Andes."],
+    ["C1", "Páramos are high-altitude ecosystems that act like sponges, storing and gradually releasing water.", "The Chingaza páramo supplies most of the drinking water consumed in Bogotá.", "Páramos are an ecosystem found exclusively within Colombia’s borders.", "Páramos also exist in Venezuela, Ecuador, Peru and Costa Rica, although Colombia holds roughly half of the world’s total."],
+    ["C1", "The Colombian Massif is nicknamed the “Estrella Fluvial” because several major rivers rise there.", "The Magdalena flows northwards before emptying into the Caribbean Sea.", "The Cauca river, which also rises in the Colombian Massif, empties into the Pacific Ocean.", "The Cauca flows north and joins the Magdalena, so its water ends up in the Caribbean."],
+    ["C1", "Three branches of the Andes cross Colombia: the Western, Central and Eastern cordilleras.", "Most of Colombia’s active volcanoes are located along the Central Cordillera.", "The Eastern Cordillera is the highest of the three and is home to Nevado del Ruiz.", "Nevado del Ruiz lies in the Central Cordillera, which also holds Colombia’s highest Andean peak, Nevado del Huila."]
+  ],
+  culture: [
+    ["A1", "Gabriel García Márquez was a Colombian writer.", "Arepas are a very popular food in Colombia.", "García Márquez was born in Bogotá.", "He was born in Aracataca, a small town near the Caribbean coast."],
+    ["A1", "Cumbia is a type of music from Colombia.", "Vallenato music uses an accordion.", "The main instrument in traditional cumbia is the guitar.", "Traditional cumbia uses drums and gaita flutes, not guitars."],
+    ["A1", "Fernando Botero was a Colombian artist.", "The people and animals in his art are very big and round.", "Botero only made paintings, never sculptures.", "Botero made many big bronze sculptures too. You can see them in Plaza Botero, Medellín."],
+    ["A1", "Bandeja paisa is a big plate of food from Antioquia.", "Ajiaco is a soup from Bogotá.", "Ajiaco is a cold soup for hot days.", "Ajiaco is a hot soup with chicken, potatoes and corn."],
+    ["A2", "One Hundred Years of Solitude is a famous Colombian novel.", "The story happens in a town called Macondo.", "Macondo is a real town, and you can visit it.", "Macondo is imaginary. It was inspired by Aracataca, the writer’s hometown."],
+    ["A2", "The Gold Museum is in Bogotá.", "It has more than 30,000 gold objects.", "Most of the gold objects in the museum came from Spain.", "The objects were made by indigenous peoples of Colombia before the Spanish arrived."],
+    ["A2", "The sombrero vueltiao is a symbol of Colombia.", "It is made from a plant fibre called caña flecha.", "The sombrero vueltiao comes from the mountains near Bogotá.", "It comes from the Zenú people of Córdoba and Sucre, on the Caribbean side of Colombia."],
+    ["A2", "Obleas are thin wafers filled with arequipe (sweet caramel).", "Aguapanela is a drink made with panela, a type of cane sugar.", "Colombian tamales are usually wrapped in corn leaves.", "In Colombia, tamales are wrapped in plantain or bijao leaves. Corn husks are more typical in Mexico."],
+    ["B1", "García Márquez won the Nobel Prize in Literature in 1982.", "Before becoming a novelist, he worked as a journalist.", "He wrote One Hundred Years of Solitude while he was living in Bogotá.", "He wrote it in Mexico City, and it was first published in Buenos Aires in 1967."],
+    ["B1", "Doris Salcedo is a Colombian artist whose work deals with violence and memory.", "She once created a long crack in the floor of the Tate Modern in London.", "Her crack, called “Shibboleth”, is still open for visitors today.", "The crack was filled in after the exhibition ended, although a thin line is still visible."],
+    ["B1", "UNESCO has recognised vallenato as Intangible Cultural Heritage.", "The Vallenato Legend Festival takes place in Valledupar.", "The three traditional vallenato instruments are the accordion, the guitar and the drum.", "The three are the accordion, the caja (a small drum) and the guacharaca (a scraper). No guitar."],
+    ["B1", "The Botero Museum in Bogotá has free entry.", "Botero donated his own works and his collection of European artists to it.", "Botero refused to paint anything about Colombia’s violence.", "Botero painted violence too, including “The Death of Pablo Escobar” and a series about Abu Ghraib prison."],
+    ["B2", "Magical realism mixes everyday life with supernatural events told as if they were normal.", "García Márquez said his grandmother’s way of telling stories shaped his style.", "García Márquez invented the term “magical realism” himself.", "The term goes back to the German critic Franz Roh in 1925. It was later applied to Latin American fiction."],
+    ["B2", "The marimba music of Colombia’s South Pacific is on UNESCO’s intangible heritage list.", "The marimba’s keys are made from chonta palm wood, with bamboo tubes underneath.", "Marimba music arrived in Colombia through Spanish colonial churches.", "Marimba music has African roots, brought by enslaved Africans and kept alive by their descendants."],
+    ["B2", "Álvaro Mutis, a Colombian poet and novelist, won the Cervantes Prize.", "His best-known character is a sailor called Maqroll el Gaviero.", "Mutis and García Márquez were rivals and hardly ever spoke to each other.", "They were close friends for decades."],
+    ["B2", "Colombian cumbia combines African, indigenous and European elements.", "Indigenous peoples contributed the gaita, a type of flute.", "The accordion, now central to Colombian music, was brought by the Spanish conquistadors.", "The accordion arrived much later, in the 19th century, through European trade on the Caribbean coast."],
+    ["C1", "“La Vorágine” (1924) denounced the exploitation of rubber workers in the Amazon.", "Its author, José Eustasio Rivera, died in New York in 1928.", "Jorge Isaacs wrote his novel “María” as a romantic response to “La Vorágine”.", "“María” was published in 1867, almost sixty years before “La Vorágine”."],
+    ["C1", "San Agustín holds the largest group of religious monuments and megalithic sculptures in South America.", "Tierradentro is renowned for its underground tombs decorated with painted patterns.", "Both sites were built by the Muisca, who also crafted the famous golden “Balsa Muisca”.", "San Agustín and Tierradentro belong to other southern cultures. The Muisca lived in the Eastern Andes, around Bogotá."],
+    ["C1", "San Basilio de Palenque is often called the first free town in the Americas.", "Its inhabitants speak Palenquero, a Spanish-based creole with strong Bantu influence.", "UNESCO inscribed Palenque on its World Heritage list for its colonial architecture.", "UNESCO recognised its cultural space as Intangible Heritage, not its buildings."],
+    ["C1", "In the 1930s and 40s, Débora Arango scandalised Medellín with her paintings of female nudes.", "She is now regarded as a pioneer of modern art in Colombia.", "The Catholic Church praised her work as an expression of traditional values.", "The Church and conservative critics condemned her, and her work was censored for years."]
+  ],
+  geography: [
+    ["A1", "Bogotá is the capital of Colombia.", "Colombia is in South America.", "Colombia is the biggest country in South America.", "Brazil is the biggest. Colombia is the fourth biggest in South America."],
+    ["A1", "Cartagena is a city on the Caribbean coast.", "Medellín is called “the City of Eternal Spring”.", "Cali is a city in the coffee region.", "Cali is in Valle del Cauca. The coffee region cities are Manizales, Pereira and Armenia."],
+    ["A1", "Colombia has a border with Venezuela.", "Colombia has five neighbour countries.", "Colombia has a border with Bolivia.", "Colombia’s neighbours are Panama, Venezuela, Brazil, Peru and Ecuador. Not Bolivia."],
+    ["A1", "Colombia has islands in the Caribbean Sea and in the Pacific Ocean.", "The Magdalena is Colombia’s most important river.", "The island of San Andrés is closer to Colombia than to Nicaragua.", "San Andrés is about 700 km from mainland Colombia, but only about 200 km from Nicaragua."],
+    ["A2", "Colombia is the only South American country with coasts on the Pacific and the Caribbean.", "Leticia is a city in the Amazon.", "You can drive a car from Bogotá to Leticia.", "No road connects Leticia to the rest of Colombia. You arrive by plane or by boat."],
+    ["A2", "Colombia’s highest mountains are near the Caribbean Sea.", "Bogotá is about 2,600 metres above the sea.", "The highest mountain in Colombia is the Nevado del Ruiz volcano.", "The highest are Pico Cristóbal Colón and Pico Simón Bolívar, in the Sierra Nevada de Santa Marta."],
+    ["A2", "Colombia has 32 departments.", "Bogotá is a capital district, not a department.", "Antioquia is the biggest department in size.", "Amazonas is the biggest in size. Antioquia is the department with the most people."],
+    ["A2", "La Guajira is a very dry and windy region.", "It is in the north of Colombia.", "Punta Gallinas, the northern tip of South America, is in Venezuela.", "Punta Gallinas is in La Guajira, Colombia."],
+    ["B1", "There is no road through the Darién Gap between Colombia and Panama.", "It is the only break in the Pan-American Highway.", "The Darién Gap is mostly a flat, dry desert.", "It is thick rainforest, mountains and swamps."],
+    ["B1", "Colombia’s Pacific coast is one of the rainiest places on Earth.", "The town of Lloró, in Chocó, gets over 12,000 mm of rain a year.", "Quibdó, the capital of Chocó, is on the Pacific coast.", "Quibdó is inland, on the banks of the Atrato River."],
+    ["B1", "More than 50 million people live in Colombia.", "About 8 million people live in Bogotá.", "Barranquilla is Colombia’s second-largest city.", "Medellín is second and Cali is third. Barranquilla is fourth."],
+    ["B1", "The Llanos Orientales are huge tropical grasslands.", "Colombia shares this landscape with Venezuela.", "The Llanos are on the Pacific side of the Andes.", "The Llanos lie east of the Andes, in the Orinoco basin."],
+    ["B2", "Malpelo Island, far out in the Pacific, is a UNESCO World Heritage Site.", "It is famous for its huge groups of hammerhead sharks.", "Malpelo has a small fishing village and a hotel for divers.", "Only a small military post is on Malpelo. Divers have to sleep on their boats."],
+    ["B2", "Colombia and Nicaragua had a long legal dispute over the sea around San Andrés.", "In 2012, the International Court of Justice gave Nicaragua a large area of sea.", "The court also gave Nicaragua several of the islands.", "All the islands stayed Colombian. Only the maritime areas changed."],
+    ["B2", "The Magdalena River is roughly 1,500 km long.", "Honda, on the Magdalena, used to be a key river port.", "The Magdalena meets the sea in the bay of Cartagena.", "It meets the sea at Bocas de Ceniza, near Barranquilla."],
+    ["B2", "El Cocuy National Park has the largest glacier area in Colombia.", "Colombia’s glaciers are shrinking fast.", "El Cocuy is part of the Central Cordillera.", "El Cocuy is in the Eastern Cordillera, in Boyacá."],
+    ["C1", "Colombia controls a short stretch of the Amazon River itself, around Leticia.", "Colombia and Peru fought a brief war over Leticia in 1932 and 1933.", "Colombia acquired this “Amazon Trapezium” by purchasing it from Brazil.", "It came from the 1922 Salomón–Lozano Treaty with Peru, and Colombia defended it in the 1932–33 conflict."],
+    ["C1", "Chiribiquete is the largest national park in the world protecting tropical rainforest.", "It contains tens of thousands of ancient rock paintings.", "Visitors can explore Chiribiquete on guided hiking routes.", "Chiribiquete is closed to tourism. It can only be seen from the air."],
+    ["C1", "The Andes enter Colombia from the south and eventually divide into three cordilleras.", "The Cauca River runs between the Western and Central cordilleras.", "The Magdalena River runs between the Western and Central cordilleras.", "The Magdalena runs between the Central and Eastern cordilleras. The Cauca takes the western valley."],
+    ["C1", "Colombia shares maritime boundaries with countries such as Jamaica and Haiti.", "Colombia’s land border with Venezuela is its longest, stretching over 2,200 km.", "Colombia’s shortest land border is the one it shares with Ecuador.", "The shortest is with Panama. The border with Ecuador is roughly twice as long."]
+  ],
+  politics: [
+    ["A1", "Colombia has a president.", "The president lives in the Casa de Nariño, in Bogotá.", "Colombia has a presidential election every six years.", "Presidential elections are every four years."],
+    ["A1", "The Colombian flag is yellow, blue and red.", "The yellow stripe is the biggest.", "The Colombian flag has a star in the middle.", "The flag has no star or symbol. It has three stripes only."],
+    ["A1", "Colombia’s Independence Day is 20 July.", "Simón Bolívar is a hero of Colombian independence.", "Colombia became independent from Portugal.", "Colombia was a colony of Spain. Brazil was the colony of Portugal."],
+    ["A1", "People in Colombia can vote at 18.", "Bogotá has a mayor.", "In Colombia, everybody must vote by law.", "Voting in Colombia is free. Nobody must vote by law."],
+    ["A2", "Colombia’s Congress has two parts: the Senate and the House of Representatives.", "Bogotá’s main square is called Plaza de Bolívar.", "The Congress building is in Medellín.", "Congress meets in the Capitolio Nacional, on Plaza de Bolívar in Bogotá."],
+    ["A2", "Colombia’s money is the peso.", "Gabriel García Márquez is on a Colombian banknote.", "Simón Bolívar is on the 100,000-peso note.", "The 100,000-peso note shows former president Carlos Lleras Restrepo."],
+    ["A2", "The Colombian coat of arms has an Andean condor.", "It also shows the isthmus of Panama with two ships.", "The coat of arms shows a jaguar holding the flag.", "There is no jaguar. It shows a condor, a pomegranate, horns of plenty, a red cap and the isthmus."],
+    ["A2", "In 2016, the government signed a peace agreement with the FARC.", "President Juan Manuel Santos won the Nobel Peace Prize that year.", "Colombians voted “yes” to the first peace agreement in a referendum.", "Colombians narrowly voted “no” (about 50.2%). A revised agreement was then approved by Congress."],
+    ["B1", "The 1991 Constitution replaced one from 1886.", "It recognised Colombia as a multi-ethnic and multicultural nation.", "The 1991 Constitution was written by the president and his ministers.", "It was written by an elected National Constituent Assembly."],
+    ["B1", "Gran Colombia included today’s Colombia, Venezuela, Ecuador and Panama.", "It existed from 1819 to 1831.", "Peru and Bolivia were also part of Gran Colombia.", "Bolívar led their independence too, but they were never part of Gran Colombia."],
+    ["B1", "In 2022, Francia Márquez became Colombia’s first Afro-Colombian vice president.", "Before politics, she was an environmental activist.", "She was elected together with President Iván Duque.", "She was elected with Gustavo Petro. Iván Duque was the previous president."],
+    ["B1", "The Battle of Boyacá in 1819 was key to independence.", "It took place near the city of Tunja.", "The Battle of Boyacá lasted more than a month.", "It lasted only about two hours."],
+    ["B2", "“La Violencia” was a period of conflict between Liberals and Conservatives.", "It grew much worse after Jorge Eliécer Gaitán was assassinated in 1948.", "Gaitán was assassinated while he was serving as president.", "Gaitán was a presidential candidate. He was never president."],
+    ["B2", "The National Front was an agreement for Liberals and Conservatives to share power.", "The two parties alternated the presidency for 16 years.", "Other parties could compete freely for the presidency during that period.", "Other parties were excluded, which later fed armed insurgencies."],
+    ["B2", "The Constitutional Court was created by the 1991 Constitution.", "The “tutela” lets citizens ask a judge to protect their fundamental rights quickly.", "A tutela can only be filed with the help of a lawyer.", "Anyone can file a tutela without a lawyer. That is part of its purpose."],
+    ["B2", "Panama separated from Colombia in 1903.", "The United States supported the separation in order to build the canal.", "Colombia recognised Panama’s independence immediately, in 1903.", "Colombia only recognised it in 1921, after the Thomson–Urrutia Treaty with the US."],
+    ["C1", "The Thousand Days’ War (1899–1902) was fought between Liberals and Conservatives.", "One of the treaties ending it was signed aboard the USS Wisconsin.", "The Liberals won the war and went on to govern for the next three decades.", "The Conservatives prevailed and stayed in power until 1930."],
+    ["C1", "The Palace of Justice siege took place in Bogotá in November 1985.", "It was carried out by the M-19 guerrilla group.", "The M-19 refused to demobilise and remained an armed group into the 2000s.", "The M-19 demobilised in 1990 and took part in the 1991 Constituent Assembly. Gustavo Petro was a member."],
+    ["C1", "The 1886 Constitution centralised power and gave the Catholic Church a special status.", "It was promoted by Rafael Núñez during the period known as “La Regeneración”.", "The 1886 Constitution created the federal “United States of Colombia”.", "That federal name came from the 1863 Rionegro Constitution. The 1886 charter abolished it."],
+    ["C1", "The Special Jurisdiction for Peace (JEP) was created by the 2016 peace agreement.", "It judges crimes committed during the conflict by ex-FARC members and state agents.", "Those who fully confess before the JEP can still receive up to 40 years in prison.", "Those who fully confess face 5 to 8 years of “restrictive” sanctions, not ordinary prison."]
+  ],
+  nature: [
+    ["A1", "Capybaras live in the Llanos of Colombia.", "Pink river dolphins live in the Amazon.", "Wild penguins live on Colombia’s Pacific islands.", "There are no penguins in Colombia. The nearest ones live in Peru and the Galápagos."],
+    ["A1", "The Andean condor is a very big bird.", "It can fly very high over the mountains.", "The condor eats fruit and flowers.", "The condor eats dead animals."],
+    ["A1", "Colombia has many frogs, and some are very colourful.", "Some small frogs in Colombia are poisonous.", "All the colourful frogs in Colombia are safe to touch.", "Bright colours often say “danger”. Many colourful frogs are poisonous."],
+    ["A1", "Whales visit the Pacific coast of Colombia.", "They come to have their babies.", "The whales come to Colombia in December.", "They come from about July to October."],
+    ["A2", "The spectacled bear is the only bear in South America.", "It lives in the Andes mountains.", "The spectacled bear eats mostly meat.", "It eats mostly plants, like bromeliads, fruit and palm hearts."],
+    ["A2", "Capybaras are the biggest rodents in the world.", "They live near rivers and lakes.", "Capybaras cannot swim.", "Capybaras are excellent swimmers."],
+    ["A2", "Tayrona National Park is on the Caribbean coast.", "It has beaches and tropical forest.", "You can swim safely at every beach in Tayrona.", "Many beaches have dangerous currents. Swimming is not allowed at some, like Arrecifes."],
+    ["A2", "Hummingbirds are very common in Colombia.", "Colombia has more than 160 types of hummingbird.", "Hummingbirds can only fly forwards.", "Hummingbirds can fly backwards, and they can stay still in the air."],
+    ["B1", "About 40% of Colombia’s territory is part of the Amazon region.", "Deforestation is a serious problem there.", "Most deforestation in the Colombian Amazon is caused by logging for furniture.", "The main causes are cattle ranching and illegal land grabbing, together with illegal crops and roads."],
+    ["B1", "The Andean condor appears on Colombia’s coat of arms.", "Condors are endangered in Colombia, and few live in the wild.", "Most of Colombia’s condors live in the Amazon rainforest.", "Condors live in the high Andes and in the Sierra Nevada de Santa Marta."],
+    ["B1", "Gorgona Island, in the Pacific, was once a prison.", "Today it is a national natural park.", "The prison closed after a prisoner escaped by swimming to the mainland.", "It closed in 1984 so the island could be protected as a nature park."],
+    ["B1", "Frailejones are plants that grow in páramos.", "They grow very slowly, about one centimetre a year.", "Frailejones have big, bright red flowers.", "Their flowers are yellow, and their leaves are covered in soft silver hairs."],
+    ["B2", "Colombia is considered the second most biodiverse country in the world.", "It ranks first in the world for bird and orchid species.", "It also ranks first in the world for species of mammals.", "It does not. Brazil, for example, has many more mammal species."],
+    ["B2", "The “cocaine hippos” descend from animals Pablo Escobar brought to his ranch.", "Today, more than a hundred live along the Magdalena River.", "The government has declared them a protected native species.", "In 2022 they were officially declared an invasive species."],
+    ["B2", "Sea turtles nest on some of Colombia’s Caribbean beaches.", "The Seaflower reserve around San Andrés protects a large coral reef system.", "Seaflower is the largest coral reef in the world.", "It is one of the largest in the Caribbean. Australia’s Great Barrier Reef is far bigger."],
+    ["B2", "Humpback whales travel over 8,000 km from Antarctica to Colombia’s Pacific.", "Male humpbacks sing complex songs during the breeding season.", "The whales feed heavily in Colombian waters to prepare for the trip back.", "They eat very little in the tropics. They feed in Antarctic waters."],
+    ["C1", "A single golden poison frog carries enough toxin to kill several adult humans.", "Emberá hunters traditionally used frog toxin on their blowgun darts.", "Golden frogs bred in captivity are every bit as toxic as wild ones.", "In captivity they lose their toxicity, because the poison comes from their wild diet."],
+    ["C1", "Colombia’s Páramo Law of 2018 prohibits mining in delimited páramo areas.", "The Santurbán páramo has been at the centre of a long gold-mining dispute.", "The law allows open-pit mining as long as companies replant frailejones afterwards.", "Mining and oil activities are banned outright in delimited páramos. Replanting does not make them legal."],
+    ["C1", "In 2016, the Constitutional Court recognised the Atrato River as a subject of rights.", "The ruling responded largely to pollution from illegal mining.", "The court appointed the President of the Republic as the river’s sole legal guardian.", "Guardianship is shared between a government representative and representatives of local communities."],
+    ["C1", "Colombia’s Chocó region has one of the highest levels of endemic species on Earth.", "It forms part of the Tumbes–Chocó–Magdalena biodiversity hotspot.", "Chocó’s extreme rainfall comes from trade winds carrying moisture from the Caribbean.", "The rain comes from Pacific moisture, pushed inland by westerly winds (the Chocó jet) against the Andes."]
+  ],
+  traditions: [
+    ["A1", "The Barranquilla Carnival is a big party with music and dancing.", "People wear very colourful costumes.", "The Barranquilla Carnival is in December.", "It is in February or March, just before Lent."],
+    ["A1", "Many Colombians eat buñuelos at Christmas.", "Natilla is a sweet Christmas dessert.", "Most Colombian families open Christmas presents on the morning of 25 December.", "Most families open presents at midnight on 24 December."],
+    ["A1", "The Day of the Little Candles is a Colombian tradition.", "Families light candles in front of their houses.", "The Day of the Little Candles is on New Year’s Eve.", "It is on the night of 7 December."],
+    ["A1", "Medellín has a flower festival every year.", "People carry big flower displays on their backs, called silletas.", "The flower festival is in April, in spring.", "It is in August. And Colombia does not have spring!"],
+    ["A2", "On New Year’s Eve, some Colombians walk around the block with a suitcase.", "Other people eat twelve grapes at midnight.", "People wear red underwear to get money in the new year.", "Yellow underwear is for luck and money. Red is for love."],
+    ["A2", "The Novena de Aguinaldos is nine days of prayers before Christmas.", "Families sing Christmas songs called villancicos together.", "The Novena starts on 1 December.", "It starts on 16 December and ends on the 24th."],
+    ["A2", "The Black and White Carnival takes place in Pasto.", "People paint their faces with black paint and white powder.", "The Black and White Carnival happens in July.", "It is celebrated at the beginning of January."],
+    ["A2", "Tejo is a traditional sport where you throw a metal disc.", "The target has small packets of gunpowder that explode.", "Tejo was invented by Spanish soldiers.", "Tejo comes from the Muisca people, more than 500 years ago."],
+    ["B1", "The Vallenato Legend Festival crowns a “king” of the accordion every year.", "The festival takes place in Valledupar.", "The festival was founded by Gabriel García Márquez.", "It was founded in 1968 by Consuelo Araujonoguera, Alfonso López Michelsen and Rafael Escalona."],
+    ["B1", "The Cali Fair is one of the biggest salsa parties in the world.", "Salsa dancers from Cali are famous for their very fast footwork.", "The Cali Fair takes place every June.", "It takes place at the end of the year, from 25 to 30 December."],
+    ["B1", "The Holy Week processions in Popayán are UNESCO Intangible Heritage.", "They have taken place since the 16th century.", "The processions happen during the day so everyone can see the statues.", "They take place at night, lit by candles."],
+    ["B1", "The Wayuu people weave colourful bags called mochilas.", "A single mochila can take weeks to make.", "Wayuu men traditionally weave the mochilas.", "Weaving is traditionally done by Wayuu women."],
+    ["B2", "UNESCO proclaimed the Barranquilla Carnival a Masterpiece of Intangible Heritage in 2003.", "Its opening parade, “La Batalla de Flores”, is a parade of floats.", "The Carnival ends with the symbolic burial of the Marimonda character.", "It ends with the burial of Joselito Carnaval."],
+    ["B2", "The San Pacho festival in Quibdó honours Saint Francis of Assisi.", "It was added to UNESCO’s Intangible Heritage list in 2012.", "The San Pacho festival is celebrated on a single day, 4 October.", "It lasts over two weeks, from 20 September to 5 October."],
+    ["B2", "Joropo is a music and dance from the Llanos.", "It is played with a harp, a cuatro and maracas.", "The llanero cuatro is a guitar with six strings.", "The cuatro has four strings. That is where its name comes from."],
+    ["B2", "The silleteros of Medellín come from the rural area of Santa Elena.", "The silleta was once used to carry people and goods over the mountains.", "The Silleteros Parade began in the 1800s as a religious procession.", "The first Silleteros Parade was held in 1957."],
+    ["C1", "The Carnaval de Negros y Blancos was inscribed on UNESCO’s list in 2009.", "The “Día de Negros” is traditionally linked to enslaved Africans being granted a day of rest.", "The “Día de Blancos” commemorates the arrival of Spanish colonisers in Pasto.", "It is usually traced to a playful incident in Pasto in 1912, when a local man threw talcum powder at his friends."],
+    ["C1", "The Cuadrillas de San Martín in Meta is a horseback tradition dating from 1735.", "Its riders represent Spaniards, Moors, Africans and Indigenous peoples.", "The Cuadrillas are a re-enactment of the Battle of Boyacá.", "They represent the Spanish conquest of the Americas and the old struggle between Moors and Christians."],
+    ["C1", "The Kogi of the Sierra Nevada de Santa Marta regard themselves as the “Elder Brothers”.", "Their spiritual leaders, the mamos, traditionally train for years in near darkness as children.", "The Kogi refer to outsiders as the “Children of the Sun”.", "The Kogi call outsiders the “Younger Brothers”."],
+    ["C1", "The Wayuu resolve disputes through mediators known as palabreros.", "UNESCO recognised this normative system as Intangible Heritage in 2010.", "Palabreros have the authority to impose prison sentences on those found guilty.", "Palabreros mediate compensation, usually paid in livestock or goods. There is no prison."]
+  ],
+  pop: [
+    ["A1", "Shakira is a famous Colombian singer.", "Her song “Hips Don’t Lie” is very famous.", "Shakira is from Medellín.", "Shakira is from Barranquilla."],
+    ["A1", "J Balvin and Karol G are singers from Medellín.", "They sing reggaeton.", "J Balvin’s real name is José Balvin.", "His real name is José Álvaro Osorio Balvín."],
+    ["A1", "James Rodríguez is a Colombian football player.", "He scored the most goals at the 2014 World Cup.", "Colombia won the 2014 World Cup.", "Colombia got to the quarter-finals. Germany won the World Cup."],
+    ["A1", "Encanto is a Disney film about a Colombian family.", "The family is called Madrigal.", "The main character in Encanto is Isabela.", "The main character is Mirabel. Isabela is her sister."],
+    ["A2", "Carlos Vives mixed vallenato with rock and pop.", "He is from Santa Marta.", "Carlos Vives started his career as a football player.", "He started as a TV actor, for example in the series “Escalona”."],
+    ["A2", "“Yo soy Betty, la fea” is a famous Colombian telenovela.", "In the US, it became the series “Ugly Betty”.", "In the telenovela, Betty works in a bank.", "Betty works at a fashion company called Ecomoda."],
+    ["A2", "Egan Bernal is a Colombian cyclist.", "He won the Tour de France in 2019.", "He was the second Colombian to win the Tour de France.", "He was the first Colombian, and the first Latin American, to win it."],
+    ["A2", "Juanes’s song “La Camisa Negra” was a hit in many countries.", "Juanes has won many Latin Grammy awards.", "Juanes first became famous with the band Aterciopelados.", "Juanes started in a metal band called Ekhymosis. Aterciopelados is a different Bogotá band."],
+    ["B1", "Shakira sang the official song of a World Cup, “Waka Waka”.", "Her first albums were recorded in Spanish.", "“Waka Waka” was written for the World Cup in Brazil.", "It was for the 2010 World Cup in South Africa."],
+    ["B1", "“Narcos” is a Netflix series about Pablo Escobar.", "Its lead actor, Wagner Moura, is Brazilian.", "The series was filmed mostly in Mexico.", "The first seasons were filmed mostly in Colombia, in Bogotá and Medellín."],
+    ["B1", "Sofía Vergara is from Barranquilla.", "She became famous in the US with the TV series “Modern Family”.", "Her character in “Modern Family” is called Carmen.", "Her character is Gloria Pritchett."],
+    ["B1", "María Isabel Urrutia won Colombia’s first Olympic gold medal.", "She competed in weightlifting.", "She won her gold medal at the Atlanta Olympics in 1996.", "She won it at the Sydney Olympics in 2000."],
+    ["B2", "“We Don’t Talk About Bruno” reached number one on the US Billboard Hot 100.", "The film’s songs were written by Lin-Manuel Miranda.", "“Colombia, Mi Encanto” by Carlos Vives won the Oscar for Best Original Song.", "The film’s Oscar nominee was “Dos Oruguitas”, and it did not win."],
+    ["B2", "“Embrace of the Serpent” was nominated for an Oscar.", "It was filmed in the Colombian Amazon.", "It won the Oscar for Best Foreign Language Film.", "It was nominated but lost to the Hungarian film “Son of Saul”."],
+    ["B2", "Bomba Estéreo mixes cumbia with electronic music.", "Their song “Fuego” became an international hit.", "Bomba Estéreo was formed in Medellín.", "The band was formed in Bogotá, and its singer, Li Saumet, is from Santa Marta."],
+    ["B2", "Nairo Quintana won the Giro d’Italia in 2014.", "He also won the Vuelta a España in 2016.", "Nairo Quintana won the Tour de France in 2013.", "He came second in 2013. Egan Bernal became the first Colombian winner in 2019."],
+    ["C1", "“Mañana Será Bonito” was the first all-Spanish album by a woman to top the Billboard 200.", "Karol G was born Carolina Giraldo Navarro.", "Karol G launched her career by winning the talent show “El Factor X”.", "She took part in “El Factor X” as a teenager, but she didn’t win."],
+    ["C1", "Guinness recognised “Yo soy Betty, la fea” as the most successful telenovela in history.", "It has been adapted in more than 20 countries.", "The series was originally created in Mexico and later remade in Colombia.", "It was an original Colombian creation by Fernando Gaitán. Mexico later made its own version."],
+    ["C1", "Colombian cumbia became hugely popular in Mexico, particularly in Monterrey.", "Lucho Bermúdez brought porro and cumbia into Colombia’s big-city ballrooms in the 1940s.", "Lucho Bermúdez composed the music of Colombia’s national anthem.", "The anthem’s music was composed by Oreste Síndici, an Italian-born musician, with lyrics by Rafael Núñez."],
+    ["C1", "Radamel Falcao is Colombia’s all-time top scorer.", "He was named after the Brazilian footballer Paulo Roberto Falcão.", "Falcao missed the 2014 World Cup because of a suspension.", "He missed it because of a serious knee injury suffered a few months earlier."]
+  ]
+};
+
+const EXTRA = {
+  science: [
+    ["A1", "In Colombia, days and nights are almost the same length all year.", "Coffee grows well in the mountains of Colombia.", "Bogotá is very hot all year because it is near the equator.", "Bogotá is high in the mountains, so it is cool all year, about 14 °C on average."],
+    ["A1", "Colombia has many rivers.", "Colombia has hot springs, for example in Paipa.", "Snow never falls anywhere in Colombia.", "There is snow on Colombia’s highest mountains, like the Sierra Nevada de Santa Marta and Nevado del Ruiz."],
+    ["A2", "Colombia is one of the biggest coffee producers in the world.", "Most Colombian coffee is the arabica type.", "Colombia is the biggest coffee producer in the world.", "Brazil is the biggest. Colombia is usually third, after Brazil and Vietnam."],
+    ["A2", "Colombia produces many of the world’s emeralds.", "Muzo, in Boyacá, is famous for its emerald mines.", "Colombian emeralds are famous for their deep blue colour.", "Emeralds are green. Colombian emeralds are famous for their deep green colour."],
+    ["B1", "Bogotá’s air has less oxygen than air at sea level, because of the altitude.", "Some visitors to Bogotá feel tired or get headaches at first.", "Water boils at a higher temperature in Bogotá than on the coast.", "At high altitude, water boils at a lower temperature: around 91 °C in Bogotá."],
+    ["B1", "Titanoboa, the largest snake ever found, was discovered in a coal mine in La Guajira.", "It lived about 60 million years ago.", "Titanoboa lived at the same time as the dinosaurs.", "Titanoboa lived a few million years after the dinosaurs disappeared."],
+    ["B2", "Salomón Hakim was a Colombian neurosurgeon.", "In the 1960s, he described a condition called normal-pressure hydrocephalus.", "The valve Hakim invented is used to treat heart problems.", "Hakim’s valve treats hydrocephalus by draining excess fluid from the brain."],
+    ["B2", "The Armero tragedy of 1985 killed more than 20,000 people.", "A hazard map warning of the risk had been published weeks before.", "The 1985 eruption of Nevado del Ruiz was one of the largest eruptions of the 20th century.", "It was a relatively small eruption. The disaster came from lahars, made worse by poorly communicated warnings."],
+    ["C1", "Colombia’s geology is shaped by the Nazca, Caribbean and South American plates.", "The Nazca plate is being subducted beneath South America along the Pacific coast.", "The 1999 earthquake that devastated Armenia, Quindío, originated beneath the Pacific seabed.", "It was a shallow inland earthquake, with its epicentre near Córdoba, Quindío, close to Armenia."],
+    ["C1", "Coffee leaf rust, a fungal disease, seriously damaged Colombian harvests around 2008–2011.", "Cenicafé, the coffee research centre, developed rust-resistant varieties such as Castillo.", "Cenicafé’s resistant varieties were created by genetically modifying coffee plants.", "The resistant varieties were produced through conventional cross-breeding, not genetic modification."]
+  ],
+  culture: [
+    ["A1", "Colombians often drink tinto, a small black coffee.", "Empanadas are a popular street food in Colombia.", "Arepas are made from potatoes.", "Arepas are made from corn (maize)."],
+    ["A1", "Spanish is the main language of Colombia.", "Colombia has more than 60 indigenous languages.", "Portuguese is the official language of Colombia.", "Spanish is the official language. Portuguese is spoken in Brazil."],
+    ["A2", "Lechona is a typical dish from Tolima.", "People often eat it at big parties and celebrations.", "Lechona is a fish dish from the Pacific coast.", "Lechona is roast pork filled with rice and yellow peas."],
+    ["A2", "Rafael Pombo wrote famous poems for children.", "Colombian children still learn his poems at school.", "Rin Rin Renacuajo, one of Pombo’s characters, is a cat.", "Rin Rin Renacuajo is a tadpole, a baby frog."],
+    ["B1", "Teatro Colón in Bogotá opened in 1892.", "It was designed by an Italian architect.", "Teatro Colón is named after a Colombian president.", "It is named after Christopher Columbus (Cristóbal Colón), 400 years after his first voyage."],
+    ["B1", "Ciudad Perdida was built by the Tayrona people.", "It is older than Machu Picchu.", "Ciudad Perdida was discovered by archaeologists in the 1920s.", "It was found by looters in the early 1970s, and archaeologists began studying it in 1976."],
+    ["B2", "Bogotá’s Ibero-American Theatre Festival is one of the largest theatre festivals in the world.", "It was founded by the actress Fanny Mikey.", "Fanny Mikey was born in Colombia and started her career in Cali.", "Fanny Mikey was born in Argentina and moved to Colombia in the 1950s."],
+    ["B2", "Cartagena’s walled city is a UNESCO World Heritage Site.", "The walls were built to protect the port from pirates and enemy fleets.", "The walls were completed just ten years after the city was founded.", "Building the walls took around two centuries. They were completed in the late 18th century."],
+    ["C1", "The Coffee Cultural Landscape was inscribed on UNESCO’s World Heritage list in 2011.", "It covers parts of Caldas, Quindío, Risaralda and Valle del Cauca.", "It was inscribed as a natural site, in recognition of its cloud forests.", "It is a cultural site, recognising generations of small family coffee farms and their towns."],
+    ["C1", "Candelario Obeso is regarded as a founder of Afro-Colombian poetry.", "His collection “Cantos populares de mi tierra” was published in 1877.", "Obeso wrote in formal Castilian so that Bogotá’s literary elite would accept him.", "He deliberately reproduced the speech of Black communities along the Magdalena River."]
+  ],
+  geography: [
+    ["A1", "Colombia has mountains, beaches and rainforests.", "The Pacific Ocean is on the west side of Colombia.", "The Caribbean Sea is in the south of Colombia.", "The Caribbean Sea is in the north. The Amazon is in the south."],
+    ["A1", "Barranquilla is near the sea.", "Bogotá is in the centre of Colombia.", "Medellín is on the Caribbean coast.", "Medellín is in the mountains, in the Aburrá Valley in Antioquia."],
+    ["A2", "Santa Marta is one of the oldest cities in South America.", "It was founded in 1525.", "Santa Marta is on the Pacific coast.", "Santa Marta is on the Caribbean coast."],
+    ["A2", "The Colombian Amazon has very few roads.", "Many people there travel by river.", "The Amazon region has more people than any other region of Colombia.", "Most people live in the Andean region. Very few people live in the Amazon."],
+    ["B1", "Providencia is a small island near San Andrés.", "Many people there speak an English-based Creole.", "San Andrés and Providencia are in the Pacific Ocean.", "San Andrés and Providencia are in the Caribbean Sea."],
+    ["B1", "Lake Guatavita is linked to the legend of El Dorado.", "It is near Bogotá.", "In the 19th century, the lake was drained completely and huge amounts of gold were found.", "Several attempts only partly lowered the water, and they found little gold."],
+    ["B2", "The Orinoco River forms part of the border between Colombia and Venezuela.", "Puerto Carreño is where the Meta River meets the Orinoco.", "The Orinoco empties into the Caribbean Sea near Barranquilla.", "The Orinoco crosses Venezuela and empties into the Atlantic Ocean."],
+    ["B2", "Popayán is known as the “White City”.", "The city was badly damaged by an earthquake in 1983.", "Popayán lies in the Llanos, east of the Andes.", "Popayán is in the Andes, in the department of Cauca, in the southwest."],
+    ["C1", "The Ciénaga Grande de Santa Marta is Colombia’s largest coastal lagoon complex.", "It is both a Ramsar wetland and a UNESCO biosphere reserve.", "Its mangroves recovered fully after the coastal highway was built in the 1950s and 60s.", "The highway cut off the flow of fresh and salt water and killed large areas of mangrove. Recovery has been partial."],
+    ["C1", "The Serranía de la Macarena is geologically linked to the Guiana Shield.", "Caño Cristales runs through it.", "The Macarena is a young volcanic ridge branching off the Eastern Cordillera.", "It is an ancient formation linked to the Guiana Shield, far older than the Andes and not volcanic."]
+  ],
+  politics: [
+    ["A1", "Colombia is a republic.", "The government works in Bogotá.", "Colombia has a king.", "Colombia has a president, not a king."],
+    ["A1", "Colombia has a national anthem.", "Radio stations play the anthem every day at 6 a.m. and 6 p.m.", "The Colombian anthem is very short, with only one verse.", "The anthem has a chorus and eleven verses. People usually sing only the chorus and the first verse."],
+    ["A2", "Colombia remembers the Battle of Boyacá on 7 August.", "7 August is also the day a new president starts.", "New presidents in Colombia start on 1 January.", "New presidents take office on 7 August."],
+    ["A2", "Antonio Nariño translated the Rights of Man into Spanish.", "He was sent to prison for it.", "Nariño did this after independence, in 1830.", "He did it in 1794, under Spanish rule. That is why he went to prison."],
+    ["B1", "Policarpa Salavarrieta is a heroine of independence.", "She worked as a spy for the patriots.", "She died fighting in a battle against the Spanish army.", "She was captured and executed by firing squad in Bogotá in 1817."],
+    ["B1", "The incident of the “Florero de Llorente” happened on 20 July 1810.", "An argument about a borrowed vase started protests in Bogotá.", "The vase belonged to a patriot leader who refused to lend it to the Spanish.", "The vase belonged to José González Llorente, a Spanish merchant who refused to lend it to the criollos."],
+    ["B2", "Women in Colombia first voted in a national vote in 1957.", "Colombia was one of the last Latin American countries to give women the vote.", "Women won the right to vote thanks to the 1991 Constitution.", "Women gained the vote in 1954 and first used it in the 1957 plebiscite."],
+    ["B2", "Gustavo Rojas Pinilla took power in a coup in 1953.", "Television arrived in Colombia during his government, in 1954.", "Rojas Pinilla ruled Colombia for more than ten years.", "He ruled from 1953 until 1957, when he was forced out."],
+    ["C1", "The Bogotazo erupted after Gaitán’s assassination on 9 April 1948.", "It coincided with the Ninth Pan-American Conference being held in Bogotá.", "The riots were confined to Bogotá, while the rest of the country remained calm.", "Unrest spread to many regions, and the violence of the following years intensified dramatically."],
+    ["C1", "The Rionegro Constitution of 1863 created a highly federal state.", "It granted wide autonomy to the so-called sovereign states.", "It established a strong central presidency with a six-year term.", "It set a two-year presidential term and a weak central government. The six-year term came in 1886."]
+  ],
+  nature: [
+    ["A1", "Monkeys live in the forests of Colombia.", "Sloths live in Colombia.", "Sloths are very fast animals.", "Sloths are very slow. They move only a few metres a minute."],
+    ["A1", "Colombia has many beautiful butterflies.", "Some butterflies in Colombia are bright blue.", "Most butterflies in Colombia live for ten years.", "Most butterflies live only a few weeks."],
+    ["A2", "Jaguars live in Colombia.", "The jaguar is the biggest cat in the Americas.", "Jaguars do not like water and never swim.", "Jaguars are strong swimmers and often hunt in rivers."],
+    ["A2", "The Cocora Valley has very tall wax palms.", "You can visit it from the town of Salento.", "The Cocora Valley is in the Amazon rainforest.", "It is in the Andes, in Quindío, in the coffee region."],
+    ["B1", "Colombia has one of the highest numbers of amphibian species in the world.", "Many of its frogs live nowhere else.", "None of Colombia’s frogs are in danger of extinction.", "Many are threatened by habitat loss and by a fungal disease called chytrid."],
+    ["B1", "The Amazon river dolphin is pink.", "Unlike ocean dolphins, it can turn its head from side to side.", "River dolphins are born pink and turn grey as they get older.", "It is the opposite: young dolphins are grey and become pinker with age."],
+    ["B2", "The cotton-top tamarin lives only in northwestern Colombia.", "It is critically endangered.", "Cotton-top tamarins live in large troops of more than fifty animals.", "They live in small family groups, usually of two to nine animals."],
+    ["B2", "The bocachico is an important fish for communities along the Magdalena.", "It migrates upstream in huge shoals, an event known as the “subienda”.", "The subienda happens only once every ten years.", "It happens every year, early in the dry season."],
+    ["C1", "The oilbird, or guácharo, is a nocturnal fruit-eating bird that roosts in caves.", "Like bats, it uses echolocation to navigate in darkness.", "Cueva de los Guácharos National Park, created in 1960, is located in La Guajira.", "It lies in Huila, on the border with Caquetá. It was Colombia’s first national park."],
+    ["C1", "Andean forests are among Colombia’s most threatened ecosystems.", "Most Colombians live in the Andean region, putting heavy pressure on these forests.", "Colombia’s deforestation rate is currently highest in the Andean region.", "Most deforestation today occurs in the Amazon, particularly in Caquetá, Meta and Guaviare."]
+  ],
+  traditions: [
+    ["A1", "Many Colombians celebrate birthdays with a cake.", "Families often meet for lunch on Sundays.", "Colombian children get Christmas presents only from Santa Claus.", "Many children believe their presents come from Niño Dios (baby Jesus)."],
+    ["A1", "Aguardiente is an alcoholic drink from Colombia.", "It tastes of anise.", "Aguardiente is made from potatoes.", "Aguardiente is made from sugar cane."],
+    ["A2", "The Día de los Santos Inocentes is a day for playing jokes.", "Some TV programmes show funny tricks on this day.", "It is on 1 April, like April Fools’ Day.", "It is on 28 December."],
+    ["A2", "Many Colombians eat arepas for breakfast.", "Changua is a soup made with milk and eggs.", "Changua is usually eaten for dinner on the Caribbean coast.", "Changua is a breakfast soup from Bogotá and Boyacá."],
+    ["B1", "The Petronio Álvarez Festival in Cali celebrates the music of the Pacific.", "It is one of the largest Afro-descendant festivals in Latin America.", "The festival is named after a famous salsa singer.", "It is named after Petronio Álvarez, a composer from Buenaventura known for the song “Mi Buenaventura”."],
+    ["B1", "The San Pedro festivals take place in Neiva, Huila.", "Bambuco and sanjuanero are the traditional dances.", "The festival takes place in December.", "It takes place in June and early July, around the feast of Saint Peter."],
+    ["B2", "Mompox is known for its Holy Week processions.", "The town is also famous for its filigree jewellery.", "Mompox filigree is traditionally made from copper.", "It is traditionally made from fine threads of gold and silver."],
+    ["B2", "The Riosucio Carnival in Caldas is also known as the Devil’s Carnival.", "Its central figure is a colourful devil, a symbol of joy.", "The Riosucio Carnival is celebrated every year.", "It is celebrated every two years, in January of odd-numbered years."],
+    ["C1", "The Arhuaco of the Sierra Nevada traditionally wear white clothes woven by hand.", "Men carry a poporo, a gourd containing lime made from crushed seashells.", "The poporo is presented to Arhuaco women as part of the marriage ceremony.", "The poporo is given to young men as a rite of passage into adulthood, and they use it while chewing coca leaves."],
+    ["C1", "Bambuco has long been claimed as Colombia’s “national music”.", "Its rhythm famously combines 3/4 and 6/8 metres.", "Bambuco originated on the Caribbean coast before spreading into the Andes.", "Bambuco is an Andean genre, associated with interior regions such as Huila, Tolima and Cauca."]
+  ],
+  pop: [
+    ["A1", "Maluma is a singer from Medellín.", "He sings reggaeton and pop.", "Maluma is famous as a football player.", "Maluma played football when he was young, but he is famous for his music."],
+    ["A1", "Colombia’s football team usually plays in yellow shirts.", "Fans call the team “La Tricolor”.", "Colombia has never played in a World Cup.", "Colombia has played in several World Cups. The first was in Chile in 1962."],
+    ["A2", "Carlos “El Pibe” Valderrama is a famous Colombian footballer.", "He is famous for his big, curly blond hair.", "Valderrama was a goalkeeper.", "He was a midfielder. The famous goalkeeper was René Higuita."],
+    ["A2", "René Higuita was a Colombian goalkeeper.", "He is famous for the “scorpion kick”.", "Higuita did the scorpion kick in a World Cup match.", "He did it in a friendly match against England at Wembley in 1995."],
+    ["B1", "Mariana Pajón won Olympic gold in BMX racing.", "She won gold medals in London 2012 and Rio 2016.", "Mariana Pajón is from Cali.", "Mariana Pajón is from Medellín."],
+    ["B1", "Rigoberto Urán is a popular Colombian cyclist.", "He finished second in the Tour de France in 2017.", "Urán has won the Giro d’Italia twice.", "He finished second in the Giro twice, in 2013 and 2014, but never won it."],
+    ["B2", "Ciro Guerra directed “Embrace of the Serpent”.", "He co-directed “Birds of Passage” with Cristina Gallego.", "“Birds of Passage” is set among the Emberá people of the Pacific coast.", "It is set among the Wayuu people of La Guajira."],
+    ["B2", "“Café con aroma de mujer” was a hugely popular Colombian telenovela.", "Netflix released a new version in 2021.", "The original version was first broadcast in 2010.", "The original was first broadcast in 1994."],
+    ["C1", "Lucho Herrera was the first Colombian to win a stage of the Tour de France, in 1984.", "He went on to win the Vuelta a España in 1987.", "Herrera was nicknamed “El Tigrillo” for his explosive sprinting.", "He was nicknamed “El Jardinerito” (the little gardener) after his early job, and he was a climber, not a sprinter."],
+    ["C1", "Totó la Momposina has taken the music of the Colombian Caribbean to audiences worldwide.", "She performed in Stockholm when García Márquez received the Nobel Prize in 1982.", "She rose to fame through Bogotá’s rock scene in the 1980s.", "Her music comes from traditional Caribbean genres such as cumbia and bullerengue, learned in her family’s region by the Magdalena River."]
+  ]
+};
+Object.keys(EXTRA).forEach(function (k) { DATA[k] = DATA[k].concat(EXTRA[k]); });
+const TOTAL = CATS.reduce(function (n, c) { return n + DATA[c.id].length; }, 0);
+const PER_LEVEL = Math.min.apply(null, LEVELS.map(function (l) { return CATS.reduce(function (n, c) { return n + DATA[c.id].filter(function (r) { return r[0] === l; }).length; }, 0); }));
+const ROSTER_KEY = "ttl-colombia-roster";
+function parseNames(t) { return (t || "").split(/\n|,/).map(function (x) { return x.trim(); }).filter(Boolean); }
+function hexRgb(h) { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+function mixHex(a, b, t) { const x = hexRgb(a), y = hexRgb(b); return "rgb(" + x.map(function (v, i) { return Math.round(v + (y[i] - v) * t); }).join(",") + ")"; }
+function hexA(h, a) { return "rgba(" + hexRgb(h).join(",") + "," + a + ")"; }
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function catById(id) { return CATS.find(function (c) { return c.id === id; }); }
+
+const SPHERE_COLS = ["#E9A21B", null, "#C23B22", "#B42A63", null, "#137C76", "#2F7A2E", null, "#2451A6", "#6E3AA8", null];
+
+class Component extends DCLogic {
+  state = {
+    phase: "start", cat: "all", picked: { A1: true, A2: true, B1: true, B2: true, C1: true },
+    deck: [], i: 0, stage: "ready", choice: -1, scores: [0, 0], turn: 0, timeLeft: 0, caught: 0,
+    roster: { names: ["Team A", "Team B"], a: "", b: "", cls: "" }, showRoster: false, pIdx: [0, 0], pPts: {}
+  };
+
+  componentDidMount() {
+    try {
+      const r = JSON.parse(localStorage.getItem(ROSTER_KEY) || "null");
+      if (r && r.names) this.setState({ roster: Object.assign({}, this.state.roster, r) });
+    } catch (e) {}
+    this.ensureLoop();
+  }
+
+  setRoster(patch) {
+    const roster = Object.assign({}, this.state.roster, patch);
+    this.setState({ roster: roster });
+    try { localStorage.setItem(ROSTER_KEY, JSON.stringify(roster)); } catch (e) {}
+  }
+  players() { const r = this.state.roster; return this.teamMode() ? [parseNames(r.a), parseNames(r.b)] : [parseNames(r.cls)]; }
+  teamNames() { const n = this.state.roster.names; return [(n[0] || "").trim() || "Team A", (n[1] || "").trim() || "Team B"]; }
+  curPlayer() {
+    const s = this.state, g = this.teamMode() ? s.turn : 0, list = this.players()[g];
+    return list.length ? list[s.pIdx[g] % list.length] : null;
+  }
+
+  ensureLoop() {
+    if (this.loopOn) return;
+    this.loopOn = true;
+    if (!this.pts) this.buildPoints();
+    this.angle = this.angle || 0;
+    if (this.spinStart === undefined) this.spinStart = -1;
+    this.last = performance.now();
+    const loop = () => {
+      const t = performance.now();
+      try {
+        const dt = Math.min(0.05, Math.max(0, (t - this.last) / 1000));
+        this.last = t;
+        let v = 0.35;
+        if (this.spinStart >= 0) {
+          const p = Math.min(1, (t - this.spinStart) / 2400);
+          v += 17 * Math.pow(1 - p, 3);
+          if (p >= 1) this.spinStart = -1;
+        }
+        this.angle += v * dt;
+        const tg = this.tintTarget ? 1 : 0;
+        this.tintMix = (this.tintMix || 0) + (tg - (this.tintMix || 0)) * Math.min(1, dt * 5);
+        if (this.tintTarget && this.tintTarget !== this.tintCol) {
+          const col = this.tintTarget;
+          this.tintCol = col;
+          this.tintPal = { lo: col, hi: mixHex(col, "#FFFFFF", 0.5), dark: mixHex(col, INK, 0.4) };
+        }
+        this.draw();
+      } catch (e) { console.error("sphere", e); }
+    };
+    loop();
+    clearInterval(this.frameT);
+    this.frameT = setInterval(loop, 16);
+    clearInterval(this.timer);
+    this.timer = setInterval(() => {
+      const s = this.state, secs = this.seconds();
+      if (s.phase !== "play" || s.stage !== "shown" || secs <= 0) return;
+      if (s.timeLeft <= 1) this.pick(-1);
+      else this.setState({ timeLeft: s.timeLeft - 1 });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    this.loopOn = false;
+    clearInterval(this.frameT);
+    clearInterval(this.timer);
+    clearTimeout(this.spinT);
+  }
+
+  buildPoints() {
+    const N = 2200, pts = [];
+    for (let i = 0; i < N; i++) {
+      const y = 1 - 2 * (i + 0.5) / N, r = Math.sqrt(1 - y * y), th = i * 2.399963;
+      const x = Math.cos(th) * r, z = Math.sin(th) * r;
+      const lon = Math.atan2(z, x), u = lon / Math.PI * 8;
+      const tri = Math.abs((((u % 2) + 2) % 2) - 1);
+      const band = Math.floor((y + 1) / 2 * 12 + tri * 0.9);
+      const idx = ((band % SPHERE_COLS.length) + SPHERE_COLS.length) % SPHERE_COLS.length, col = SPHERE_COLS[idx];
+      if (col) pts.push({ x: x, y: y, z: z, col: col, k: idx % 2 });
+    }
+    this.pts = pts;
+  }
+
+  setCanvas = (el) => { this.canvas = el; };
+
+  draw() {
+    let c = this.canvas;
+    if (!c || !c.isConnected) {
+      c = document.querySelector("canvas[data-sphere]") || document.querySelector("canvas");
+      this.canvas = c;
+    }
+    if (!c || !this.pts) return;
+    const w = c.clientWidth, h = c.clientHeight;
+    if (!w || !h) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const W = Math.round(w * dpr), H = Math.round(h * dpr);
+    if (c.width !== W || c.height !== H) { c.width = W; c.height = H; }
+    const ctx = c.getContext("2d");
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    const R = Math.min(w, h / 1.08) * 0.44, cx = w / 2, cy = h * 0.46;
+
+    ctx.fillStyle = "rgba(42,26,18,0.14)";
+    ctx.beginPath(); ctx.ellipse(cx, cy + R * 1.13, R * 0.7, R * 0.1, 0, 0, Math.PI * 2); ctx.fill();
+
+    const m = this.tintMix || 0, P = this.tintPal, tinted = m > 0.01 && P;
+    if (tinted) {
+      const hg = ctx.createRadialGradient(cx, cy, R * 0.92, cx, cy, R * 1.13);
+      hg.addColorStop(0, hexA(P.lo, 0.6 * m)); hg.addColorStop(1, hexA(P.lo, 0));
+      ctx.fillStyle = hg;
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.13, 0, Math.PI * 2); ctx.fill();
+    }
+    const g = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
+    g.addColorStop(0, "#FFF9EC"); g.addColorStop(1, "#EFD3A2");
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+    if (tinted) {
+      const g2 = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.4, R * 0.1, cx, cy, R);
+      g2.addColorStop(0, P.hi); g2.addColorStop(1, P.lo);
+      ctx.globalAlpha = m; ctx.fillStyle = g2;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    const a = this.angle, ca = Math.cos(a), sa = Math.sin(a), ct = Math.cos(0.38), st = Math.sin(0.38);
+    const base = R * 0.03;
+    for (let i = 0; i < this.pts.length; i++) {
+      const p = this.pts[i];
+      const x1 = p.x * ca + p.z * sa, z1 = -p.x * sa + p.z * ca;
+      const y2 = p.y * ct - z1 * st, z2 = p.y * st + z1 * ct;
+      if (z2 <= 0.02) continue;
+      const px = cx + x1 * R * 0.97, py = cy + y2 * R * 0.97, pr = base * (0.45 + 0.6 * z2);
+      if (m < 0.99) {
+        ctx.globalAlpha = 1 - m; ctx.fillStyle = p.col;
+        ctx.beginPath(); ctx.arc(px, py, pr, 0, Math.PI * 2); ctx.fill();
+      }
+      if (tinted) {
+        ctx.globalAlpha = m; ctx.fillStyle = p.k ? CREAM : P.dark;
+        ctx.beginPath(); ctx.arc(px, py, pr, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+
+    ctx.lineWidth = Math.max(3, R * 0.014);
+    ctx.strokeStyle = INK;
+    ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+
+    ctx.fillStyle = "rgba(255,255,255,0.4)";
+    ctx.beginPath(); ctx.ellipse(cx - R * 0.42, cy - R * 0.48, R * 0.2, R * 0.1, -0.6, 0, Math.PI * 2); ctx.fill();
+  }
+
+  seconds() { const n = this.props.timerSeconds; return typeof n === "number" ? n : 45; }
+  teamMode() { return this.props.teamMode !== false; }
+  mixedCount() { const n = this.props.roundCount; return typeof n === "number" && n > 0 ? n : 20; }
+  selLevels() { const p = this.state.picked; return LEVELS.filter(function (l) { return p[l]; }); }
+
+  plannedCount() {
+    const sel = this.selLevels(), p = this.state.picked;
+    if (this.state.cat !== "all") return DATA[this.state.cat].filter(function (r) { return p[r[0]]; }).length;
+    return Math.min(this.mixedCount(), sel.length * PER_LEVEL);
+  }
+
+  buildDeck() {
+    const sel = this.selLevels(), cat = this.state.cat;
+    const toRound = function (row, catId) {
+      const s = shuffle([{ t: row[1], lie: false }, { t: row[2], lie: false }, { t: row[3], lie: true }]);
+      return { cat: catId, l: row[0], s: s, fix: row[4] };
+    };
+    let deck = [];
+    if (cat !== "all") {
+      sel.forEach(function (l) {
+        deck = deck.concat(shuffle(DATA[cat].filter(function (r) { return r[0] === l; })).map(function (r) { return toRound(r, cat); }));
+      });
+      return deck;
+    }
+    const pools = {};
+    sel.forEach(function (l) {
+      let all = [];
+      CATS.forEach(function (c) {
+        all = all.concat(DATA[c.id].filter(function (r) { return r[0] === l; }).map(function (r) { return { r: r, c: c.id }; }));
+      });
+      pools[l] = shuffle(all);
+    });
+    const want = this.plannedCount(), taken = {};
+    sel.forEach(function (l) { taken[l] = []; });
+    for (let n = 0; n < want; n++) {
+      const l = sel[n % sel.length];
+      taken[l].push(pools[l][Math.floor(n / sel.length)]);
+    }
+    sel.forEach(function (l) {
+      deck = deck.concat(taken[l].map(function (x) { return toRound(x.r, x.c); }));
+    });
+    return deck;
+  }
+
+  start = () => {
+    this.setState({ phase: "play", deck: this.buildDeck(), i: 0, stage: "ready", choice: -1, scores: [0, 0], turn: 0, caught: 0, timeLeft: this.seconds(), pIdx: [0, 0], pPts: {}, showRoster: false });
+  };
+
+  spin = () => {
+    if (this.state.stage !== "ready") return;
+    this.spinStart = performance.now();
+    this.setState({ stage: "spinning" });
+    clearTimeout(this.spinT);
+    this.spinT = setTimeout(() => this.setState({ stage: "shown", timeLeft: this.seconds() }), 2300);
+  };
+
+  pick(idx) {
+    const s = this.state;
+    if (s.stage !== "shown") return;
+    const r = s.deck[s.i];
+    const ok = idx >= 0 && r.s[idx].lie;
+    const scores = s.scores.slice();
+    const g = this.teamMode() ? s.turn : 0, who = this.curPlayer(), pPts = Object.assign({}, s.pPts);
+    if (ok) scores[g] += PTS[r.l];
+    if (ok && who) { const k = g + "|" + who; pPts[k] = (pPts[k] || 0) + PTS[r.l]; }
+    this.setState({ stage: "answered", choice: idx, scores: scores, pPts: pPts, caught: s.caught + (ok ? 1 : 0) });
+  }
+
+  next = () => {
+    const s = this.state;
+    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); return; }
+    const pIdx = s.pIdx.slice(); pIdx[this.teamMode() ? s.turn : 0]++;
+    this.setState({ i: s.i + 1, stage: "ready", choice: -1, pIdx: pIdx, turn: s.turn === 0 ? 1 : 0 });
+  };
+
+  again = () => this.start();
+  restart = () => this.setState({ phase: "start" });
+
+  toggleLevel(l) {
+    const picked = Object.assign({}, this.state.picked);
+    picked[l] = !picked[l];
+    if (!LEVELS.some(function (x) { return picked[x]; })) picked[l] = true;
+    this.setState({ picked: picked });
+  }
+
+  renderVals() {
+    if (typeof window !== "undefined") setTimeout(() => this.ensureLoop(), 0);
+    const s = this.state, team = this.teamMode(), secs = this.seconds();
+    const sel = this.selLevels();
+    const levelRange = sel.length === 5 ? "A1–C1" : sel.join(" · ");
+
+    const catList = [{ id: "all", name: "All categories", color: "#E9A21B", ink: CREAM }].concat(CATS);
+    const cats = catList.map((c) => {
+      const on = s.cat === c.id;
+      const n = c.id === "all" ? TOTAL : DATA[c.id].length;
+      return {
+        name: c.name, note: n + " rounds",
+        color: c.id === "all" ? "#E9A21B" : c.color,
+        band: c.id === "all" ? "#B42A63" : (on ? INK : "#F3E4C8"),
+        bg: on ? (c.id === "all" ? INK : c.color) : "#FFFBF2",
+        fg: on ? (c.id === "all" ? CREAM : c.ink) : INK,
+        sh: on ? "6px 6px 0 " + INK : "none",
+        tf: on ? "translate(-3px,-3px)" : "none",
+        onClick: () => this.setState({ cat: c.id })
+      };
+    });
+
+    const levelChips = LEVELS.map((l) => {
+      const on = !!s.picked[l];
+      return { code: l, bg: on ? "#2451A6" : "#FFFBF2", fg: on ? CREAM : "#8A7158", onClick: () => this.toggleLevel(l) };
+    });
+
+    const catLabel = s.cat === "all" ? "All categories" : catById(s.cat).name;
+    const setupLine = [catLabel, this.plannedCount() + " rounds", levelRange, team ? "Two teams" : "Whole class"].join("  ·  ");
+
+    const r = s.deck[s.i];
+    const rc = r ? catById(r.cat) : CATS[0];
+    const answered = s.stage === "answered";
+    const lieIdx = r ? r.s.findIndex(function (x) { return x.lie; }) : 0;
+    const letters = ["A", "B", "C"];
+    this.tintTarget = s.phase === "play" && r && (s.stage === "shown" || answered) ? rc.color
+      : (s.phase === "start" && s.cat !== "all" ? catById(s.cat).color : null);
+    const who = s.phase === "play" ? this.curPlayer() : null;
+    const tn = this.teamNames(), pl = this.players(), R = s.roster;
+    const rosterCount = pl.reduce(function (n, l) { return n + l.length; }, 0);
+    const rosterGroups = team ? [0, 1].map((i) => ({
+      hasTeamName: true, noTeamName: false, teamName: R.names[i], namePh: i ? "Team B" : "Team A",
+      onName: (e) => { const n = this.state.roster.names.slice(); n[i] = e.target.value; this.setRoster({ names: n }); },
+      text: i ? R.b : R.a, onText: (e) => this.setRoster(i ? { b: e.target.value } : { a: e.target.value }),
+      ph: "One name per line", countLabel: pl[i].length + (pl[i].length === 1 ? " student" : " students"),
+      color: i ? "#2451A6" : "#C23B22"
+    })) : [{
+      hasTeamName: false, noTeamName: true, teamName: "", namePh: "", onName: null,
+      text: R.cls, onText: (e) => this.setRoster({ cls: e.target.value }),
+      ph: "One name per line", countLabel: pl[0].length + (pl[0].length === 1 ? " student" : " students"), color: "#137C76"
+    }];
+    const board = [];
+    pl.forEach(function (list, g) { list.forEach(function (n) { board.push({ name: n, pts: s.pPts[g + "|" + n] || 0 }); }); });
+    board.sort(function (a, b) { return b.pts - a.pts; });
+    const boardTop = board.slice(0, 10).map(function (b, i) { return { name: b.name, pts: b.pts, rank: i + 1, bg: i === 0 && b.pts > 0 ? "#E9A21B" : "#FFFBF2" }; });
+
+    const cards = (r ? r.s : []).map((x, idx) => {
+      const isPick = idx === s.choice;
+      let bg = "#FFFBF2", fg = INK, bd = INK, sh = "6px 6px 0 " + INK, op = 1;
+      let badgeBg = rc.color, badgeFg = rc.ink, hasTag = false, tag = "", tagBg = CREAM, tagFg = INK;
+      if (answered) {
+        hasTag = true;
+        if (x.lie) {
+          bg = RED; fg = CREAM; badgeBg = CREAM; badgeFg = RED; tag = "The lie"; tagBg = "#E9A21B"; tagFg = INK;
+          sh = "6px 6px 0 " + INK;
+        } else {
+          bg = "#E6F0DA"; badgeBg = GREEN; badgeFg = CREAM; tag = "True"; tagBg = GREEN; tagFg = CREAM;
+          sh = isPick ? "6px 6px 0 " + INK : "none"; op = isPick ? 1 : 0.78;
+        }
+      }
+      return {
+        letter: letters[idx], text: x.t, bg: bg, fg: fg, bd: bd, sh: sh, op: op,
+        badgeBg: badgeBg, badgeFg: badgeFg, hasTag: hasTag, tag: tag, tagBg: tagBg, tagFg: tagFg,
+        delay: (idx * 140) + "ms", cur: s.stage === "shown" ? "pointer" : "default",
+        onClick: () => this.pick(idx)
+      };
+    });
+
+    const ok = answered && s.choice === lieIdx;
+    let verdict = "";
+    if (answered) {
+      if (s.choice === -1) verdict = "Time’s up! The lie was " + letters[lieIdx] + ".";
+      else if (ok) verdict = (who ? who + " caught the lie!" : "You caught the lie!") + "  +" + PTS[r.l] + " points";
+      else verdict = "That one is true. The lie was " + letters[lieIdx] + ".";
+    }
+
+    const names = team ? tn : ["Class"];
+    const teams = names.map(function (n, idx) {
+      const active = team && idx === s.turn && s.phase === "play";
+      return { name: active ? n + " · " + (who || "your turn") : n, score: s.scores[idx], bg: active ? "#E9A21B" : "#FFFBF2", fg: INK };
+    });
+    if (!team && who) teams.push({ name: who + "’s turn", score: s.pPts["0|" + who] || 0, bg: "#E9A21B", fg: INK });
+
+    const total = s.deck.length;
+    let endTitle = "¡Bien hecho!";
+    if (team) {
+      if (s.scores[0] > s.scores[1]) endTitle = tn[0] + " wins!";
+      else if (s.scores[1] > s.scores[0]) endTitle = tn[1] + " wins!";
+      else endTitle = "It’s a draw!";
+    }
+
+    return {
+      isStart: s.phase === "start", isPlay: s.phase === "play", isEnd: s.phase === "end",
+      cats: cats, levelChips: levelChips, setupLine: setupLine, start: this.start, setCanvas: this.setCanvas,
+      catName: rc.name, catColor: rc.color, catInk: rc.ink,
+      roundNum: s.i + 1, roundTotal: total, level: r ? r.l : "",
+      teams: teams,
+      canSpin: s.stage === "ready", isSpinning: s.stage === "spinning", spin: this.spin,
+      question: s.stage === "ready" || s.stage === "spinning" ? "Three sentences are hiding in the sphere…" : "Which one is the lie?",
+      showSlots: s.stage === "ready" || s.stage === "spinning", slots: letters,
+      showCards: s.stage === "shown" || answered, cards: cards,
+      answered: answered, verdict: verdict, verdictColor: ok ? GREEN : RED,
+      showFix: this.props.showExplanation !== false, fix: r ? r.fix : "",
+      next: this.next, nextLabel: s.i + 1 >= total ? "See the results" : "Next round",
+      showTimer: s.phase === "play" && secs > 0 && (s.stage === "shown" || answered),
+      timePct: secs > 0 ? Math.max(0, Math.round(s.timeLeft / secs * 100)) : 100,
+      timeColor: s.timeLeft <= 5 ? RED : "#137C76",
+      endKicker: catLabel + " · " + levelRange,
+      endTitle: endTitle,
+      endLine: s.caught + " of " + total + " lies caught" + (team ? "  ·  " + tn[0] + " " + s.scores[0] + " — " + tn[1] + " " + s.scores[1] : "  ·  " + s.scores[0] + " points"),
+      again: this.again, restart: this.restart,
+      hasBoard: boardTop.length > 0, board: boardTop,
+      showRoster: s.showRoster, rosterGroups: rosterGroups,
+      rosterLabel: rosterCount ? "Students · " + rosterCount : "Add student names",
+      openRoster: () => this.setState({ showRoster: true }),
+      closeRoster: () => this.setState({ showRoster: false }),
+      clearRoster: () => this.setRoster(team ? { a: "", b: "" } : { cls: "" })
+    };
+  }
+}
+</script>
+</body>
+</html>

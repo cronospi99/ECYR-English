@@ -1,0 +1,273 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   iOS semantic tokens (Human Interface Guidelines, light + dark)
+   --------------------------------------------------------------------------- */
+:root {
+  --bg: #f2f2f7; /* systemGroupedBackground */
+  --card: #ffffff; /* secondarySystemGroupedBackground */
+  --elevated: #ffffff;
+  --label: #000000;
+  --label-2: rgb(60 60 67 / 0.6);
+  --label-3: rgb(60 60 67 / 0.3);
+  --separator: rgb(60 60 67 / 0.18);
+  --fill: rgb(120 120 128 / 0.16);
+  --fill-2: rgb(118 118 128 / 0.08);
+  --material: rgb(249 249 251 / 0.72); /* thin material for bars */
+  --material-strong: rgb(255 255 255 / 0.82);
+
+  --blue: #007aff;
+  --green: #34c759;
+  --indigo: #5856d6;
+  --orange: #ff9500;
+  --pink: #ff2d55;
+  --purple: #af52de;
+  --red: #ff3b30;
+  --teal: #30b0c7;
+  --yellow: #ffcc00;
+  --mint: #00c7be;
+  --cyan: #32ade6;
+
+  /* Skill identity colours — validated categorical set (see README › Design) */
+  --skill-listening: #007aff;
+  --skill-reading: #34c759;
+  --skill-writing: #af52de;
+  --skill-speaking: #ff9500;
+
+  --brand-from: #2f6bff;
+  --brand-to: #7b5cff;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #000000;
+  --card: #1c1c1e;
+  --elevated: #2c2c2e;
+  --label: #ffffff;
+  --label-2: rgb(235 235 245 / 0.6);
+  --label-3: rgb(235 235 245 / 0.3);
+  --separator: rgb(84 84 88 / 0.55);
+  --fill: rgb(120 120 128 / 0.36);
+  --fill-2: rgb(118 118 128 / 0.18);
+  --material: rgb(22 22 24 / 0.72);
+  --material-strong: rgb(30 30 32 / 0.82);
+
+  --blue: #0a84ff;
+  --green: #30d158;
+  --indigo: #5e5ce6;
+  --orange: #ff9f0a;
+  --pink: #ff375f;
+  --purple: #bf5af2;
+  --red: #ff453a;
+  --teal: #40c8e0;
+  --yellow: #ffd60a;
+  --mint: #63e6e2;
+  --cyan: #64d2ff;
+
+  --skill-listening: #0a84ff;
+  --skill-reading: #25a244;
+  --skill-writing: #bf5af2;
+  --skill-speaking: #c87400;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', 'Segoe UI', Roboto,
+    system-ui, sans-serif;
+  --font-rounded: ui-rounded, 'SF Pro Rounded', -apple-system, 'Inter', system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-elevated: var(--elevated);
+  --color-label: var(--label);
+  --color-label-2: var(--label-2);
+  --color-label-3: var(--label-3);
+  --color-separator: var(--separator);
+  --color-fill: var(--fill);
+  --color-fill-2: var(--fill-2);
+  --color-material: var(--material);
+
+  --color-ios-blue: var(--blue);
+  --color-ios-green: var(--green);
+  --color-ios-indigo: var(--indigo);
+  --color-ios-orange: var(--orange);
+  --color-ios-pink: var(--pink);
+  --color-ios-purple: var(--purple);
+  --color-ios-red: var(--red);
+  --color-ios-teal: var(--teal);
+  --color-ios-yellow: var(--yellow);
+  --color-ios-mint: var(--mint);
+  --color-ios-cyan: var(--cyan);
+
+  --color-brand: var(--brand-from);
+  --color-brand-2: var(--brand-to);
+
+  --radius-ios: 14px;
+  --radius-card: 22px;
+  --radius-sheet: 28px;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.12);
+  --shadow-float: 0 10px 40px -10px rgb(0 0 0 / 0.25);
+
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-bg text-label font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    letter-spacing: -0.01em;
+    overscroll-behavior-y: none;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--blue) 25%, transparent);
+  }
+  :focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--blue) 55%, transparent);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .material {
+    background: var(--material);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  .material-strong {
+    background: var(--material-strong);
+    -webkit-backdrop-filter: saturate(180%) blur(28px);
+    backdrop-filter: saturate(180%) blur(28px);
+  }
+  .hairline-b {
+    box-shadow: inset 0 -0.5px 0 var(--separator);
+  }
+  .hairline-t {
+    box-shadow: inset 0 0.5px 0 var(--separator);
+  }
+  .text-large-title {
+    @apply text-[34px] leading-[41px] font-bold tracking-[-0.02em];
+  }
+  .text-title-1 {
+    @apply text-[28px] leading-[34px] font-bold tracking-[-0.02em];
+  }
+  .text-title-2 {
+    @apply text-[22px] leading-[28px] font-bold tracking-[-0.015em];
+  }
+  .text-title-3 {
+    @apply text-[20px] leading-[25px] font-semibold tracking-[-0.01em];
+  }
+  .text-headline {
+    @apply text-[17px] leading-[22px] font-semibold;
+  }
+  .text-body {
+    @apply text-[17px] leading-[24px];
+  }
+  .text-callout {
+    @apply text-[16px] leading-[21px];
+  }
+  .text-subhead {
+    @apply text-[15px] leading-[20px];
+  }
+  .text-footnote {
+    @apply text-[13px] leading-[18px];
+  }
+  .text-caption {
+    @apply text-[12px] leading-[16px];
+  }
+  .brand-gradient {
+    background-image: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+  }
+  .brand-text {
+    background-image: linear-gradient(135deg, var(--brand-from), var(--brand-to));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+}
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Climber walk cycle (MountainClimb) */
+@keyframes leg-a {
+  0%,
+  100% {
+    transform: rotate(22deg);
+  }
+  50% {
+    transform: rotate(-22deg);
+  }
+}
+@keyframes leg-b {
+  0%,
+  100% {
+    transform: rotate(-22deg);
+  }
+  50% {
+    transform: rotate(22deg);
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.6px);
+  }
+}
+@keyframes drift {
+  from {
+    transform: translateX(-60px);
+  }
+  to {
+    transform: translateX(460px);
+  }
+}
+@keyframes flag-wave {
+  0%,
+  100% {
+    transform: skewY(0deg) scaleX(1);
+  }
+  50% {
+    transform: skewY(-6deg) scaleX(0.92);
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

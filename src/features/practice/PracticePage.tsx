@@ -1,0 +1,74 @@
+import { Link } from 'react-router-dom';
+import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight } from 'lucide-react';
+import { Page } from '@/components/ui/Page';
+import { Card } from '@/components/ui/Card';
+import { IconTile } from '@/components/ui/IconTile';
+import { useProgress } from '@/store/progress';
+
+const AREAS = [
+  {
+    to: '/practice/reading',
+    icon: BookOpen,
+    color: 'var(--skill-reading)',
+    title: 'Reading',
+    body: 'Lecturas A1 con glosario y 32 guías de viaje por países para practicar can, should y must.',
+    skill: 'reading' as const,
+  },
+  {
+    to: '/practice/listening',
+    icon: Headphones,
+    color: 'var(--skill-listening)',
+    title: 'Listening',
+    body: '123 diálogos de las unidades A1–C1 en voz alta, dictados y audios reales de los meses del año.',
+    skill: 'listening' as const,
+  },
+  {
+    to: '/practice/speaking',
+    icon: Mic,
+    color: 'var(--skill-speaking)',
+    title: 'Speaking',
+    body: '3.600+ preguntas por nivel y tema. Responde con tu micrófono y compara con la respuesta modelo.',
+    skill: 'speaking' as const,
+  },
+  {
+    to: '/practice/writing',
+    icon: PenLine,
+    color: 'var(--skill-writing)',
+    title: 'Writing',
+    body: 'Tareas de escritura de cada unidad con criterios de evaluación y feedback del AI Coach.',
+    skill: 'writing' as const,
+  },
+  {
+    to: '/practice/phrasal-verbs',
+    icon: Shuffle,
+    color: 'var(--orange)',
+    title: 'Phrasal Verbs',
+    body: '487 phrasal verbs de A1 a C1 con traducción, ejemplo y modo quiz.',
+    skill: 'vocabulary' as const,
+  },
+];
+
+export default function PracticePage() {
+  const skillXp = useProgress((s) => s.skillXp);
+  return (
+    <Page title="Práctica" subtitle="Entrena cada destreza por separado. Todo suma XP y te acerca a la cima.">
+      <div className="grid gap-4 md:grid-cols-2">
+        {AREAS.map((a) => (
+          <Link key={a.to} to={a.to}>
+            <Card className="flex h-full items-start gap-4 p-5 transition-transform active:scale-[0.99]">
+              <IconTile icon={a.icon} color={a.color} size={52} />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-title-3">{a.title}</h3>
+                  <span className="text-label-2 text-[13px] tabular-nums">{skillXp[a.skill] ?? 0} XP</span>
+                </div>
+                <p className="text-label-2 text-subhead mt-1 text-pretty">{a.body}</p>
+              </div>
+              <ChevronRight className="text-label-3 mt-1 shrink-0" />
+            </Card>
+          </Link>
+        ))}
+      </div>
+    </Page>
+  );
+}

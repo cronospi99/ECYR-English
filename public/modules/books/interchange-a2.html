@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#050708;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#4fd1b0;text-decoration:none}a:hover{color:#7ee8cd}
+button{font-family:inherit}
+@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(900px)}}
+@keyframes flick{0%,96%,100%{opacity:.16}97%{opacity:.05}98%{opacity:.22}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(79,209,176,.42)}50%{box-shadow:0 0 0 14px rgba(79,209,176,0)}}
+@keyframes cardIn{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes dash{to{stroke-dashoffset:-260}}
+</style>
+<script src="./a2-units.js"></script>
+<script src="./a2-units-b.js"></script>
+<script src="./plus-a2.js"></script>
+<script src="./mixer.js"></script>
+</helmet>
+<div style="position:relative;width:100vw;height:100vh;display:grid;place-items:center;overflow:hidden;background:#050708;filter:{{ tFilter }}">
+<div style="width:1600px;height:900px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale({{ scale }});transform-origin:center">
+<div style="position:absolute;inset:0;overflow:hidden;background:{{ screenBg }};box-shadow:0 0 0 1px #1b2427,0 40px 120px rgba(0,0,0,.8)">
+
+<div style="position:absolute;inset:0;background-image:linear-gradient(rgba(120,160,155,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,155,.055) 1px,transparent 1px);background-size:40px 40px"></div>
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(24,54,50,.55) 0%,rgba(5,7,8,.2) 55%,rgba(0,0,0,.72) 100%)"></div>
+<div style="position:absolute;left:0;right:0;height:170px;background:linear-gradient(rgba(79,209,176,0),rgba(79,209,176,.07),rgba(79,209,176,0));animation:scan 7.5s linear infinite;pointer-events:none;display:{{ crtDisplay }}"></div>
+<div style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.28) 2px 4px);animation:flick 6s linear infinite;display:{{ crtDisplay }}"></div>
+
+<svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="{{ path }}" fill="none" stroke="#101a1b" stroke-width="16" stroke-linecap="square"></path>
+<path d="{{ path }}" fill="none" stroke="#22403c" stroke-width="2"></path>
+<path d="{{ path }}" fill="none" stroke="{{ traceColor }}" stroke-width="2" stroke-dasharray="10 250" style="animation:dash 5s linear infinite"></path>
+</svg>
+
+<sc-for list="{{ checkpoints }}" as="cp" hint-placeholder-count="16">
+<button onClick="{{ cp.onClick }}" style="position:absolute;left:{{ cp.x }}px;top:{{ cp.y }}px;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;z-index:8;transition:transform .14s ease" style-hover="transform:translate(-50%,-54%)">
+<div style="{{ cp.dotStyle }}">{{ cp.num }}</div>
+<div style="display:{{ cp.labelDisplay }};position:absolute;left:50%;transform:translateX(-50%);margin-top:10px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11px;letter-spacing:.6px;color:{{ cp.labelColor }}">{{ cp.name }}</div>
+</button>
+</sc-for>
+
+<div style="position:absolute;left:0;top:0;width:26px;height:26px;z-index:9;pointer-events:none;offset-path:{{ pathCss }};offset-rotate:0deg;offset-distance:{{ pct }};transition:offset-distance .9s cubic-bezier(.6,.02,.2,1)">
+<div style="width:26px;height:26px;border-radius:3px;background:#0a1211;border:1px solid {{ traceColor }};display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;color:{{ traceColor }};animation:{{ pulseAnim }}">&#9679;</div>
+</div>
+
+<div style="position:absolute;top:38px;left:44px;z-index:10">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:5px;color:#4fd1b0">INTERCHANGE&#8201;//&#8201;A2</div>
+<div style="margin-top:9px;font-family:'IBM Plex Mono',monospace;font-size:31px;font-weight:600;letter-spacing:-.4px;color:#e6efec">grammar<span style="color:#4fd1b0">_</span>network</div>
+<div style="margin-top:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.4px;color:#5d6f6c">16 NODES &middot; 32 STRUCTURES &middot; PRE-INTERMEDIATE</div>
+</div>
+
+<div style="position:absolute;top:40px;right:44px;z-index:10;text-align:right;font-family:'IBM Plex Mono',monospace">
+<div style="display:inline-flex;align-items:center;gap:9px;border:1px solid #1e2b2c;background:rgba(10,16,17,.7);padding:9px 13px">
+<div style="width:7px;height:7px;border-radius:50%;background:#d94f45"></div>
+<div style="font-size:11px;letter-spacing:1.6px;color:#8fa39f">SESSION ACTIVE</div>
+</div>
+<div style="margin-top:11px;font-size:11px;line-height:1.9;letter-spacing:1.2px;color:#7e918d">COLOMBIAN &amp; INTERNATIONAL ENGLISH<br>tutoring&#8201;/&#8201;institutional curriculum</div>
+</div>
+
+<div style="position:absolute;bottom:34px;left:44px;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.8px;color:#4fd1b0"><span style="color:#40514e">root@interchange:~$</span> select node &mdash; <span style="color:#7c8b88">click a node, then use &#9664; &#9654; inside</span></div>
+
+<div style="position:absolute;bottom:34px;right:44px;z-index:10;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;color:#7e918d">{{ statusLine }}</div>
+
+</div>
+</div>
+</div>
+
+<button onClick="{{ toggleTheme }}" style="{{ themeBtnStyle }}" title="Switch light / dark">{{ themeBtnLabel }}</button>
+
+
+<sc-if value="{{ mixMini }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ mixShow }}" style="position:fixed;left:16px;bottom:14px;z-index:40;cursor:pointer;padding:9px 14px;border:1px solid #22302f;border-radius:3px;background:#0d1415;color:#7ee8cd;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.6px;box-shadow:0 14px 40px rgba(0,0,0,.6);filter:{{ tFilter }}">&#9679; MIXER</button>
+</sc-if>
+
+<sc-if value="{{ mixPanel }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:16px;bottom:14px;z-index:41;width:322px;display:flex;flex-direction:column;gap:10px;padding:15px 16px;background:#0b1213;border:1px solid #22302f;border-radius:4px;box-shadow:0 14px 40px rgba(0,0,0,.6);filter:{{ tFilter }}">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase">// class mixer</div>
+<button onClick="{{ mixHide }}" style="cursor:pointer;padding:4px 9px;border:1px solid #22302f;border-radius:3px;background:#050708;color:#5e807a;font-family:'IBM Plex Mono',monospace;font-size:10px">X</button>
+</div>
+<div style="display:flex;gap:8px;align-items:stretch">
+<input value="{{ mixInput }}" onChange="{{ mixOnChange }}" onKeyDown="{{ mixOnKey }}" placeholder="e.g. 5 or 5-14" style="flex:1;min-width:0;font-family:'IBM Plex Sans',sans-serif;font-size:17px;padding:9px 11px;border:1px solid #22302f;border-radius:3px;background:#050708;color:#c9f5e8;outline:none" />
+<button onClick="{{ mixGo }}" style="cursor:pointer;flex:none;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.2px;padding:0 16px;border:1px solid #22302f;border-radius:3px;background:#7ee8cd;color:#04100d;box-shadow:none">MIX</button>
+</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.35;color:#5e807a;text-wrap:pretty">{{ mixMsg }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ mixOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:60;background:rgba(2,4,5,.86);display:grid;place-items:center;padding:20px;">
+<div style="width:1020px;max-width:96vw;height:720px;max-height:94vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#080e0f;border:1px solid #22302f;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)">
+
+<button onClick="{{ mixClose }}" style="position:absolute;top:15px;right:17px;z-index:3;width:38px;height:38px;cursor:pointer;border:1px solid #22302f;border-radius:3px;background:#12201f;color:#7ee8cd;font-family:'IBM Plex Mono',monospace;font-size:12px">X</button>
+
+<div style="flex:none;padding:20px 68px 16px 24px;background:#0d1a1a;color:#d6fff3;border-bottom:1px solid #22302f">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2px;opacity:.85">ACTIVITY SET &middot; {{ mix.classesLabel }}</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:21px;line-height:1.3;margin-top:9px">{{ mix.title }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.4;opacity:.9;margin-top:6px;text-wrap:pretty">{{ mix.subtitle }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;opacity:.95;margin-top:7px">{{ mix.unitTitles }}</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+<span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(126,232,205,.35);border-radius:3px;background:rgba(126,232,205,.12);color:#7ee8cd">{{ mix.minutes }}</span>
+<span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(126,232,205,.35);border-radius:3px;background:rgba(126,232,205,.12);color:#7ee8cd">{{ mix.topicCount }} structures</span>
+<span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(126,232,205,.35);border-radius:3px;background:rgba(126,232,205,.12);color:#7ee8cd">{{ mix.questionCount }} follow-ups</span>
+</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;margin-top:9px;opacity:.72;line-height:1.35;text-wrap:pretty">{{ mix.timeNote }}</div>
+</div>
+
+<div style="flex:1;overflow:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin-bottom:10px">THE INPUT &mdash; SAME FOR EVERYONE</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ mix.core.situation }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#5e807a;margin-top:8px">TOPICS IN PLAY &middot; {{ mix.core.themeLine }}</div>
+<div style="background:#050708;border-left:2px solid #7ee8cd;border-radius:0;padding:11px 14px;margin-top:11px">
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#5e807a">THE QUESTION EVERYBODY ANSWERS</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:19px;line-height:1.4;color:#e2fff7;text-wrap:pretty;margin-top:6px">{{ mix.core.question }}</div>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">WRITE THIS ON THE BOARD</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ mixBoard }}" as="bq" hint-placeholder-count="3">
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">&mdash;&nbsp; {{ bq }}</div>
+</sc-for>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">PRESENT &middot; PRACTICE &middot; PRODUCE</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ mixPPP }}" as="ph" hint-placeholder-count="3">
+<div style="background:#050708;border-left:2px solid #7ee8cd;border-radius:0;padding:11px 14px">
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#5e807a">{{ ph.phase }} &middot; {{ ph.minutes }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:5px">{{ ph.text }}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">YOU CHOOSE THE OUTPUT</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ mixMenu }}" as="mo" hint-placeholder-count="5">
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">&#9633;&nbsp; {{ mo }}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; STRUCTURES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixTopics }}" as="tp" hint-placeholder-count="4">
+<div style="background:#050708;border-left:2px solid #7ee8cd;border-radius:0;padding:11px 14px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:17px;line-height:1.4;color:#e2fff7">{{ tp.name }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#5e807a;margin-top:5px">UNIT {{ tp.unit }} &middot; CL. {{ tp.cls }} &middot; {{ tp.unitTitle }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:6px">&ldquo;{{ tp.cue }}&rdquo;</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; WORDS</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixLex }}" as="lx" hint-placeholder-count="1">
+<div style="background:#050708;border-left:2px solid #7ee8cd;border-radius:0;padding:11px 14px">
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#5e807a">UNIT {{ lx.unit }} &middot; {{ lx.unitTitle }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:19px;line-height:1.4;color:#e2fff7;margin-top:6px">{{ lx.terms }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-for list="{{ mixActs }}" as="ac" hint-placeholder-count="2">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;box-shadow:none;padding:16px 18px">
+
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;padding:6px 11px;border-radius:3px;background:#7ee8cd;color:#04100d">{{ ac.tag }}</span>
+<span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a">{{ ac.minutes }} &middot; {{ ac.mode }}</span>
+</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:21px;line-height:1.3;color:#e2fff7;margin-top:11px">{{ ac.name }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:9px">{{ ac.scenario }}</div>
+
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">WHAT THEY PRODUCE</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.45;color:#e2fff7;text-wrap:pretty">{{ ac.product }}</div>
+
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">STAGES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ ac.stages }}" as="st" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;width:25px;height:25px;border-radius:3px;background:#7ee8cd;color:#04100d;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px">{{ st.n }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ st.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">{{ ac.itemsLabel }}</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ ac.items }}" as="it" hint-placeholder-count="4">
+<div style="background:#050708;border-left:2px solid #7ee8cd;border-radius:0;padding:11px 14px">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a">{{ it.label }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:5px">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">DONE WELL WHEN</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ ac.criteria }}" as="cr" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<span style="color:#7ee8cd;font-family:'IBM Plex Sans',sans-serif;font-size:19px;line-height:1.3">&#10003;</span>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ cr }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11px;letter-spacing:2.4px;color:#5e807a;text-transform:uppercase;margin:16px 0 8px">IF THEY FINISH EARLY</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ ac.extension }}</div>
+
+</div>
+</sc-for>
+
+<div style="display:flex;gap:10px;padding-bottom:6px">
+<button onClick="{{ mixGo }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.2px;padding:12px 18px;border:1px solid #22302f;border-radius:3px;background:#7ee8cd;color:#04100d">RE-MIX</button>
+<button onClick="{{ mixClose }}" style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.2px;padding:12px 18px;border:1px solid #22302f;border-radius:3px;background:#12201f;color:#7ee8cd">CLOSE</button>
+</div>
+
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:50;background:rgba(2,4,5,.82);display:grid;place-items:center;padding:22px;filter:{{ tFilter }}">
+<div style="width:1180px;max-width:97vw;height:760px;max-height:95vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#0a0f10;border:1px solid #1e2b2c;box-shadow:0 40px 100px rgba(0,0,0,.7);animation:cardIn .26s ease-out">
+
+<div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#0d1415;border-bottom:1px solid #1a2526;flex:none;font-family:'IBM Plex Mono',monospace">
+<div style="width:9px;height:9px;border-radius:50%;background:#d94f45"></div>
+<div style="width:9px;height:9px;border-radius:50%;background:#d9a13b"></div>
+<div style="width:9px;height:9px;border-radius:50%;background:#2fbf9e"></div>
+<div style="margin-left:8px;font-size:11px;letter-spacing:1.4px;color:#6e817e">{{ unit.node }} &mdash; unit {{ unit.n }} of 16</div>
+<div style="flex:1"></div>
+<button onClick="{{ close }}" style="background:none;border:1px solid #22302f;color:#8fa39f;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.2px;padding:5px 11px;cursor:pointer">ESC</button>
+</div>
+
+<div style="padding:24px 26px 20px;border-bottom:1px solid #16201f;flex:none;display:flex;align-items:flex-start;gap:20px">
+<div style="width:56px;height:56px;flex:none;border:1px solid {{ accent }};display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:22px;color:{{ accent }};background:rgba(255,255,255,.02)">{{ unitPad }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.6px;color:{{ accent }}">CLASSES {{ unit.classes }}</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:32px;letter-spacing:-.5px;color:#e9f1ee;margin-top:6px">{{ unit.title }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;color:#8ea19d;margin-top:6px">{{ unit.theme }}</div>
+</div>
+</div>
+
+<div style="display:flex;gap:6px;padding:14px 26px;background:#080d0e;border-bottom:1px solid #16201f;flex:none;flex-wrap:wrap">
+<sc-for list="{{ tabsView }}" as="tab" hint-placeholder-count="6">
+<button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+</sc-for>
+</div>
+
+<div style="flex:1;overflow:auto;padding:24px 26px 32px;background:#0a0f10">
+
+<sc-if value="{{ isGuide }}" hint-placeholder-val="{{ true }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:14px">// NODE BRIEF</div>
+<div style="border-left:2px solid {{ accent }};padding:4px 0 4px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.62;color:#c3d1cd;text-wrap:pretty">{{ overview.intro }}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px">
+<div style="border:1px solid #1b2626;padding:18px 20px;background:#0c1213">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:14px">OBJECTIVES</div>
+<div style="display:flex;flex-direction:column;gap:13px">
+<sc-for list="{{ goals }}" as="goal" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:12px;color:{{ accent }};padding-top:3px">{{ goal.num }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.5;color:#b9c8c4">{{ goal.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="border:1px solid #1b2626;padding:18px 20px;background:#0c1213">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:14px">STRUCTURES AT THIS NODE</div>
+<div style="display:flex;flex-direction:column;gap:15px">
+<sc-for list="{{ unit.grammar }}" as="g" hint-placeholder-count="2">
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:16px;line-height:1.35;color:#e2ebe8">{{ g.name }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:#7e918d;line-height:1.45;margin-top:4px">{{ g.short }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="margin-top:14px;border:1px solid {{ accent }};padding:18px 20px;background:rgba(255,255,255,.015)">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:{{ accent }};margin-bottom:8px">EXIT CRITERIA</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#cad8d4">{{ overview.outcome }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isVocab }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:14px">// LEXICON &mdash; {{ lexCount }} ENTRIES</div>
+<div style="display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:5px">
+<sc-for list="{{ vocabMenu }}" as="v" hint-placeholder-count="10">
+<button onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.term }}<div style="{{ v.posStyle }}">{{ v.pos }}</div></button>
+</sc-for>
+</div>
+<div style="min-width:0;border:1px solid #1b2626;background:#0c1213">
+<div style="padding:18px 22px;border-bottom:1px solid #1b2626">
+<div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:26px;color:#e9f1ee">{{ vocabItem.term }}</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:{{ accent }};margin-top:5px;text-transform:uppercase">{{ vocabItem.pos }}</div>
+</div>
+<div style="padding:20px 22px;display:flex;flex-direction:column;gap:18px">
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:6px">MEANING</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.5;color:#d3ded9;text-wrap:pretty">{{ vocabItem.def }}</div>
+</div>
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:6px">USAGE</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#b6c5c1;text-wrap:pretty">{{ vocabItem.use }}</div>
+</div>
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:8px">EXAMPLES</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ vocabItem.examples }}" as="ex" hint-placeholder-count="2">
+<div style="border-left:2px solid {{ accent }};background:#0a1011;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.5;color:#cfdcd8">{{ ex }}</div>
+</sc-for>
+</div>
+</div>
+<div style="border-top:1px solid #1b2626;padding-top:14px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:6px">COLLOCATIONS</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.6;color:#7e918d">{{ vocabItem.colloc }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGrammar }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:14px">// SYNTAX MODULES</div>
+<div style="display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:5px">
+<sc-for list="{{ gramMenu }}" as="g" hint-placeholder-count="2">
+<button onClick="{{ g.onClick }}" style="{{ g.style }}">{{ g.name }}<div style="{{ g.posStyle }}">{{ g.short }}</div></button>
+</sc-for>
+</div>
+<div style="min-width:0;border:1px solid #1b2626;background:#0c1213">
+<div style="padding:18px 22px;border-bottom:1px solid #1b2626;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:23px;line-height:1.3;color:#e9f1ee">{{ gramItem.name }}</div>
+<div style="padding:20px 22px;display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:6px">THE RULE</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.58;color:#d3ded9;text-wrap:pretty">{{ gramItem.rule }}</div>
+</div>
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:8px">FORM &amp; PATTERNS</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ gramItem.form }}" as="fm" hint-placeholder-count="4">
+<div style="background:#0a1011;border:1px solid #17201f;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.5;color:#cfdcd8">{{ fm }}</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:10px">HOW IT WORKS IN DETAIL</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ gramItem.notes }}" as="nt" hint-placeholder-count="4">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:13px;color:{{ accent }};padding-top:2px">&#8250;</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#b9c8c4;text-wrap:pretty">{{ nt }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">More examples</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gMore }}" as="ex" hint-placeholder-count="6">
+<div style="background:#050708;border-left:2px solid #7ee8cd;padding:11px 14px"><div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ ex }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasFix }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Wrong &rarr; right</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ gFix }}" as="fx" hint-placeholder-count="3">
+<div style="background:#050708;border-left:2px solid #7ee8cd;padding:11px 14px">
+<div style="display:flex;gap:9px;align-items:flex-start"><span style="color:#ff6b6b;font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.3">&#10007;</span><div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ fx.wrong }}</div></div>
+<div style="display:flex;gap:9px;align-items:flex-start;margin-top:5px"><span style="color:#7ee8cd;font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.5;color:#e2fff7">{{ fx.right }}</div></div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.5;color:#5e807a;margin-top:7px">{{ fx.why }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasContrast }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Easy to confuse &mdash; {{ contrastTitle }}</div>
+<div style="border:1px solid #22302f;border-radius:4px;overflow:hidden">
+<div style="{{ contrastHeadStyle }}">
+<sc-for list="{{ contrastCols }}" as="col" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1.2px;color:#d6fff3">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ contrastRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasSound }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Say it right</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ gSound }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDrill }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Drill &middot; {{ gDrillName }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.5;color:#e2fff7">{{ gDrillPrompt }}</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-top:11px">
+<sc-for list="{{ gDrillItems }}" as="it" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:24px;height:24px;background:#7ee8cd;color:#04100d;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px">{{ it.n }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDialogue }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Hear it in a conversation</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ gDialogue }}" as="ln" hint-placeholder-count="4">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 10px;background:rgba(126,232,205,.12);border:1px solid rgba(126,232,205,.35);color:#7ee8cd;flex:none;min-width:46px;text-align:center">{{ ln.sp }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ ln.line }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDeep }}" hint-placeholder-val="{{ true }}">
+<div style="border:1px solid #1e2b2c;background:#080d0e;padding:18px 20px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:{{ accent }};margin-bottom:8px">DEEP DIVE &mdash; WHY IT WORKS LIKE THIS</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.7;color:#c0cfcb;text-wrap:pretty">{{ gramItem.deep }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasChart }}" hint-placeholder-val="{{ true }}">
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:9px">REFERENCE CHART &mdash; {{ chartTitle }}</div>
+<div style="border:1px solid #1b2626;overflow:hidden">
+<div style="{{ chartHeadStyle }}">
+<sc-for list="{{ chartCols }}" as="col" hint-placeholder-count="3">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;color:#0a0f10;font-weight:600;padding:10px 12px">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ chartRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:1.45;color:#c2d1cd;padding:10px 12px">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#5d6f6c;margin-bottom:8px">EXAMPLES</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ gramItem.examples }}" as="ex" hint-placeholder-count="4">
+<div style="border-left:2px solid {{ accent }};background:#0a1011;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.5;color:#cfdcd8">{{ ex }}</div>
+</sc-for>
+</div>
+</div>
+<div style="border:1px solid #4a2320;background:#160c0b;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2.2px;color:#d94f45;margin-bottom:6px">&#9888; WATCH OUT</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#e0c8c4">{{ gramItem.watch }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSpeaking }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:14px">// PRODUCTION DRILLS</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ unit.speaking }}" as="s" hint-placeholder-count="3">
+<div style="border:1px solid #1b2626;background:#0c1213;padding:18px 20px;display:flex;gap:18px;align-items:flex-start">
+<div style="flex:none;border:1px solid {{ accent }};color:{{ accent }};padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;white-space:nowrap">{{ s.kind }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#c3d1cd">{{ s.text }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTips }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:14px">// KNOWN FAILURE POINTS</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ unit.tips }}" as="tip" hint-placeholder-count="3">
+<div style="border:1px solid #1b2626;background:#0c1213;padding:16px 18px;display:flex;gap:14px;align-items:flex-start">
+<div style="flex:none;font-family:'IBM Plex Mono',monospace;font-size:13px;color:{{ accent }}">$</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#c3d1cd">{{ tip }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+
+<sc-if value="{{ isDynamics }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:{{ accent }}">Dynamics</span>
+<span style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.5;color:#5e807a">Four activities you can run in class, plus writing, homework and a board sequence.</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<sc-for list="{{ dynamics }}" as="d" hint-placeholder-count="4">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:11px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:{{ accent }}">{{ d.name }}</div>
+<div style="flex:none;width:24px;height:24px;background:#7ee8cd;color:#04100d;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px">{{ d.num }}</div>
+</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 10px;background:rgba(126,232,205,.12);border:1px solid rgba(126,232,205,.35);color:#7ee8cd">{{ d.mode }}</span>
+<span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 10px;background:rgba(126,232,205,.12);border:1px solid rgba(126,232,205,.35);color:#7ee8cd">{{ d.minutes }}</span>
+</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ d.how }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.5;color:#5e807a;margin-top:9px">Payoff &mdash; {{ d.payoff }}</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasWriting }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Writing task</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:{{ accent }}">{{ writing.title }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:9px">{{ writing.brief }}</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:11px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 10px;background:rgba(126,232,205,.12);border:1px solid rgba(126,232,205,.35);color:#7ee8cd">{{ writing.length }}</span></div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:11px">
+<sc-for list="{{ writingCriteria }}" as="c" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="color:#7ee8cd;font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ c }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasHomework }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">Homework</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.5;color:#e2fff7">{{ homework.title }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty;margin-top:8px">{{ homework.task }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasBoard }}" hint-placeholder-val="{{ false }}">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:#5e807a;margin-bottom:9px;text-transform:uppercase">On the board, in this order</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ board }}" as="b" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:24px;height:24px;background:#7ee8cd;color:#04100d;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px">{{ b.n }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#a8c4bf;text-wrap:pretty">{{ b.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTest }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:{{ accent }}">Review test</span>
+<span style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.5;color:#5e807a">{{ testScore }}</span>
+</div>
+<sc-for list="{{ testView }}" as="q" hint-placeholder-count="5">
+<div style="background:#0b1213;border:1px solid #1c2827;border-radius:4px;padding:16px 18px">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:24px;height:24px;background:#7ee8cd;color:#04100d;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px">{{ q.n }}</div>
+<div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:17px;line-height:1.5;color:#e2fff7">{{ q.q }}</div>
+</div>
+<div style="margin-top:12px">
+<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.text }}</button>
+</sc-for>
+</div>
+<div style="{{ q.explainStyle }}">{{ q.explain }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2.4px;color:{{ accent }};margin-bottom:16px">// VERIFY</div>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:24px;line-height:1.5;color:#e9f1ee;margin-bottom:24px;max-width:820px">{{ unit.quiz.q }}</div>
+<div style="display:flex;flex-direction:column;gap:8px;max-width:640px">
+<sc-for list="{{ optionsView }}" as="opt" hint-placeholder-count="3">
+<button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.text }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ quizCorrect }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:640px;border:1px solid #2fbf9e;background:#08130f;padding:16px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#bfe6d9"><b style="font-family:'IBM Plex Mono',monospace">ACCESS GRANTED &mdash; </b>{{ quizExplain }}</div>
+</sc-if>
+<sc-if value="{{ quizWrong }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:640px;border:1px solid #d94f45;background:#160c0b;padding:16px 18px;font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.55;color:#e8c9c4"><b style="font-family:'IBM Plex Mono',monospace">DENIED &mdash; </b>{{ quizExplain }}</div>
+</sc-if>
+</sc-if>
+
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 26px;background:#080d0e;border-top:1px solid #16201f;flex:none">
+<button onClick="{{ prev }}" style="{{ prevStyle }}">&#9664; PREV</button>
+<div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.8px;color:#4c5c59">NODE {{ unitPad }} / 16</div>
+<div style="display:flex;gap:8px">
+<button onClick="{{ close }}" style="border:1px solid #22302f;background:none;color:#8fa39f;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;padding:10px 16px;cursor:pointer">NETWORK MAP</button>
+<button onClick="{{ next }}" style="{{ nextStyle }}">NEXT &#9654;</button>
+</div>
+</div>
+
+</div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Terminal&quot;,&quot;Red alert&quot;],&quot;default&quot;:&quot;Terminal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;showNodeLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;animatePacket&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  path = "M 96 214 H 404 Q 448 214 448 258 V 336 Q 448 380 492 380 H 884 Q 928 380 928 336 V 258 Q 928 214 972 214 H 1300 Q 1348 214 1348 262 V 566 Q 1348 610 1304 610 H 1080 Q 1036 610 1036 654 V 726 Q 1036 770 992 770 H 300 Q 256 770 256 726 V 654 Q 256 610 212 610 H 96";
+
+  units = [];
+  state = { scale: this.calcScale(), checkpoints: [], current: null, open: false, activeTab: "guide", pct: "1%", quizChoice: null, vocabIdx: 0, gramIdx: 0, light: this.readMode(), mixInput: "", mixOut: null, mixMsg: "", mixSeed: 0, mixPanel: false, testPick: {} };
+
+  readMode(){ try { return localStorage.getItem("a2-grammar-mode") === "light"; } catch(e){ return false; } }
+  toggleMode(){
+    const light = !this.state.light;
+    try { localStorage.setItem("a2-grammar-mode", light ? "light" : "dark"); } catch(e){}
+    this.setState({ light });
+  }
+  themeVals(){
+    const light = !!this.state.light;
+    const btn = "position:fixed;z-index:60;top:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px 14px;border-radius:999px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:2.2px;transition:background .18s ease,color .18s ease;"
+      + (light
+        ? "background:#ffffff;color:#2b3a38;border:1px solid #cfd8d6;box-shadow:0 4px 18px rgba(0,0,0,.12);"
+        : "background:#0d1415;color:#7ee8cd;border:1px solid #22302f;box-shadow:0 4px 18px rgba(0,0,0,.5);");
+    return {
+      crtDisplay: light ? "none" : "block",
+      tFilter: light ? "invert(1) hue-rotate(180deg) saturate(.9) brightness(.96)" : "none",
+      themeBtnStyle: btn,
+      themeBtnLabel: light ? "\u25D1 LIGHT" : "\u25D0 DARK",
+      toggleTheme: () => this.toggleMode()
+    };
+  }
+
+  calcScale(){
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+    var v = Math.min(w / 1600, h / 900);
+    if (isFinite(v) && v > 0.02){ this._lastScale = v; return v; }
+    return this._lastScale || 1;
+  }
+
+  componentDidMount(){ this._boot(); }
+  _boot(){
+    if (!window.A2_UNITS || window.A2_UNITS.length < 16){ this._bt = setTimeout(() => this._boot(), 60); return; }
+    this.units = window.A2_UNITS;
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("style", "position:absolute;width:0;height:0;overflow:hidden;left:-9999px");
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", this.path);
+    svg.appendChild(p);
+    document.body.appendChild(svg);
+    const total = p.getTotalLength();
+    const n = this.units.length;
+    const cps = this.units.map((u, i) => {
+      const f = 0.015 + i * (0.985 - 0.015) / (n - 1);
+      const pt = p.getPointAtLength(f * total);
+      return { x: Math.round(pt.x), y: Math.round(pt.y), pct: (f * 100).toFixed(2) + "%", num: String(u.n).padStart(2, "0"), name: u.node, color: u.color };
+    });
+    document.body.removeChild(svg);
+    this.pcts = cps.map(c => c.pct);
+    this.setState({ checkpoints: cps, pct: cps[0].pct, scale: this.calcScale() });
+    this._onResize = () => this.setState({ scale: this.calcScale() });
+    window.addEventListener("resize", this._onResize);
+    this._fitTimer = setInterval(() => {
+      var v = this.calcScale();
+      if (Math.abs(v - this.state.scale) > 0.0005) this.setState({ scale: v });
+    }, 250);
+  }
+  componentWillUnmount(){ if (this._fitTimer) clearInterval(this._fitTimer); if (this._onResize) window.removeEventListener("resize", this._onResize); if (this._t) clearTimeout(this._t); if (this._bt) clearTimeout(this._bt); }
+
+  travel(i){ this.setState({ current: i, pct: this.pcts[i], activeTab: "guide", quizChoice: null, vocabIdx: 0, gramIdx: 0, testPick: {} }); }
+  clickCheckpoint(i){
+    const wasOpen = this.state.open;
+    this.travel(i);
+    if (!wasOpen){ if (this._t) clearTimeout(this._t); this._t = setTimeout(() => this.setState({ open: true }), 800); }
+  }
+  next(){ if (this.state.current < this.units.length - 1) this.travel(this.state.current + 1); }
+  prev(){ if (this.state.current > 0) this.travel(this.state.current - 1); }
+  close(){ this.setState({ open: false }); }
+
+
+  mixGo(){
+    if (!window.MIXER || !this.units.length) return;
+    const r = window.MIXER.parse(this.state.mixInput, this.units);
+    if (!r.units.length){
+      this.setState({ mixOut: null, mixMsg: String(this.state.mixInput).trim()
+        ? "Nothing matches that. Try a single class number, a range like 5-14, or \u201cunit 3\u201d."
+        : "Type a class number first \u2014 for example 5, 12-20, or \u201cunit 3\u201d." });
+      return;
+    }
+    const seed = this.state.mixSeed + 1;
+    this.setState({ mixSeed: seed, mixMsg: r.unknown.length ? "Ignored: " + r.unknown.join(", ") : "", mixOut: window.MIXER.build(r.units, { code: "A2", seed: seed }) });
+  }
+  mixVals(){
+    const s = this.state, m = s.mixOut;
+    return {
+      mixInput: s.mixInput,
+      mixMini: !s.mixPanel, mixPanel: s.mixPanel,
+      mixShow: () => this.setState({ mixPanel: true }),
+      mixHide: () => this.setState({ mixPanel: false, mixMsg: "" }),
+      mixMsg: s.mixMsg || "Type class numbers \u2014 get one question that covers them all, and you pick the output.",
+      mixOpen: !!m, mix: m,
+      mixActs: m ? m.acts : [], mixTopics: m ? m.topics : [], mixLex: m ? m.lex : [],
+      mixPPP: m ? m.ppp : [], mixMenu: m ? m.outputMenu : [], mixBoard: m ? m.core.board : [],
+      mixOnChange: e => this.setState({ mixInput: e.target.value }),
+      mixOnKey: e => { if (e.key === "Enter") this.mixGo(); },
+      mixGo: () => this.mixGo(),
+      mixClose: () => this.setState({ mixOut: null })
+    };
+  }
+
+
+  answerTest(qi, oi){
+    const picks = Object.assign({}, this.state.testPick || {});
+    if (picks[qi] != null) return;
+    picks[qi] = oi;
+    this.setState({ testPick: picks });
+  }
+  plusVals(){
+    const s = this.state;
+    const u = (s.current != null && this.units[s.current]) ? this.units[s.current] : null;
+    const g = (u && u.grammar && u.grammar.length) ? u.grammar[Math.min(s.gramIdx, u.grammar.length - 1)] : null;
+    const con = g && g.contrast ? g.contrast : null;
+    const cc = con ? con.cols.length : 0;
+    const cgrid = con ? "display:grid;grid-template-columns:" + (cc === 3 ? "1.1fr 1.2fr 1.6fr" : "repeat(" + cc + ",1fr)") + ";" : "";
+    const test = (u && u.test) ? u.test : [];
+    const picks = s.testPick || {};
+    let score = 0, done = 0;
+    test.forEach((q, i) => { if (picks[i] != null){ done++; if (picks[i] === q.answer) score++; } });
+    const optStyle = (pick, oi, ans) => {
+      let bg = "#0b1213", col = "#c9e8e1";
+      if (pick != null){
+        if (oi === ans){ bg = "#1c6b58"; col = "#e9fffa"; }
+        else if (oi === pick){ bg = "#6b2020"; col = "#e9fffa"; }
+        else { bg = "#0a0f10"; col = "#4a615c"; }
+      }
+      return "display:block;text-align:left;width:100%;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.35;padding:12px 15px;border:1px solid #22302f;margin-bottom:8px;background:" + bg + ";color:" + col;
+    };
+    return {
+      hasMore: !!(g && g.more && g.more.length), gMore: (g && g.more) || [],
+      hasFix: !!(g && g.fix && g.fix.length), gFix: (g && g.fix) || [],
+      hasSound: !!(g && g.sound), gSound: (g && g.sound) || "",
+      hasDrill: !!(g && g.drill), gDrillName: (g && g.drill) ? g.drill.name : "", gDrillPrompt: (g && g.drill) ? g.drill.prompt : "",
+      gDrillItems: (g && g.drill && g.drill.items) ? g.drill.items.map((x, i) => ({ n: i + 1, text: x })) : [],
+      hasDialogue: !!(g && g.dialogue && g.dialogue.length), gDialogue: (g && g.dialogue) || [],
+      hasContrast: !!con, contrastTitle: con ? con.title : "", contrastCols: con ? con.cols : [],
+      contrastHeadStyle: cgrid + "background:#0d1a1a",
+      contrastRows: con ? con.rows.map((r, i) => ({ cells: r, style: cgrid + "background:" + (i % 2 ? "#080e0f" : "#0b1213") + ";border-top:1px solid #1c2827" })) : [],
+      isDynamics: s.activeTab === "dynamics",
+      isTest: s.activeTab === "test",
+      dynamics: (u && u.dynamics) ? u.dynamics.map((d, i) => Object.assign({}, d, { num: i + 1 })) : [],
+      hasWriting: !!(u && u.writing), writing: (u && u.writing) || null,
+      writingCriteria: (u && u.writing && u.writing.criteria) ? u.writing.criteria : [],
+      hasHomework: !!(u && u.homework), homework: (u && u.homework) || null,
+      hasBoard: !!(u && u.board && u.board.length), board: (u && u.board) ? u.board.map((x, i) => ({ n: i + 1, text: x })) : [],
+      testView: test.map((q, i) => ({
+        n: i + 1, q: q.q, explain: q.explain,
+        explainStyle: picks[i] != null ? "margin-top:11px;padding-top:10px;border-top:1px solid #1c2827;font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.5;color:#5e807a" : "display:none",
+        options: q.options.map((text, oi) => ({ text, onClick: () => this.answerTest(i, oi), style: optStyle(picks[i], oi, q.answer) }))
+      })),
+      testScore: done ? score + " / " + test.length + " correct so far" : "Tap one answer per question."
+    };
+  }
+
+  renderVals(){
+    const s = this.state, P = this.props || {};
+    const alert = (P.theme || "Terminal") === "Red alert";
+    const showLabels = P.showNodeLabels !== false;
+    const animate = P.animatePacket !== false;
+    const cur = s.current;
+    const unit = cur != null ? this.units[cur] : null;
+    const accent = unit ? unit.color : (alert ? "#d94f45" : "#4fd1b0");
+    const trace = alert ? "#d94f45" : "#4fd1b0";
+
+    const checkpoints = s.checkpoints.map((c, i) => {
+      const active = i === cur;
+      return { x: c.x, y: c.y, num: c.num, name: c.name,
+        labelDisplay: showLabels ? "block" : "none",
+        labelColor: active ? c.color : "#8ba09b",
+        dotStyle: "width:46px;height:46px;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;background:" + (active ? c.color : "#0b1213") + ";color:" + (active ? "#06100e" : c.color) + ";border:1px solid " + c.color + ";box-shadow:" + (active ? "0 0 26px " + c.color + "66" : "0 0 0 4px rgba(5,7,8,.9)"),
+        onClick: () => this.clickCheckpoint(i) };
+    });
+
+    const _pu = (this.state.current != null && this.units[this.state.current]) ? this.units[this.state.current] : null;
+    const tabsDef = [["guide","01_BRIEF"],["vocab","02_LEXICON"],["grammar","03_SYNTAX"],["speaking","04_DRILLS"],["tips","05_FAILURES"],["quiz","06_VERIFY"]];
+    if (_pu && _pu.dynamics && _pu.dynamics.length) tabsDef.push(["dynamics","DYNAMICS"]);
+    if (_pu && _pu.test && _pu.test.length) tabsDef.push(["test","TEST"]);
+    const tabsView = tabsDef.map(([k, label]) => {
+      const active = s.activeTab === k;
+      return { label, onClick: () => this.setState({ activeTab: k }),
+        style: "font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;cursor:pointer;padding:9px 14px;border:1px solid " + (active ? accent : "#1e2b2c") + ";background:" + (active ? accent : "transparent") + ";color:" + (active ? "#06100e" : "#7e918d") };
+    });
+
+    let optionsView = [];
+    const answered = s.quizChoice != null;
+    if (unit){
+      optionsView = unit.quiz.options.map((text, idx) => {
+        let bd = "#22302f", bg = "#0c1213", col = "#cfdcd8";
+        if (answered){
+          if (idx === unit.quiz.answer){ bd = "#2fbf9e"; bg = "#08130f"; col = "#bfe6d9"; }
+          else if (idx === s.quizChoice){ bd = "#d94f45"; bg = "#160c0b"; col = "#e8c9c4"; }
+          else { col = "#4c5c59"; }
+        }
+        return { text, onClick: () => { if (s.quizChoice == null) this.setState({ quizChoice: idx }); },
+          style: "display:block;text-align:left;width:100%;cursor:" + (answered ? "default" : "pointer") + ";font-family:'IBM Plex Mono',monospace;font-size:17px;line-height:1.4;padding:14px 16px;border:1px solid " + bd + ";background:" + bg + ";color:" + col };
+      });
+    }
+
+    const subBtn = (active) => "display:block;width:100%;text-align:left;cursor:pointer;border:1px solid " + (active ? accent : "#1b2626") + ";padding:11px 13px;font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.3;background:" + (active ? "rgba(255,255,255,.03)" : "#0c1213") + ";color:" + (active ? "#e9f1ee" : "#93a5a1");
+    const vIdx = unit ? Math.min(s.vocabIdx, unit.vocab.length - 1) : 0;
+    const gIdx = unit ? Math.min(s.gramIdx, unit.grammar.length - 1) : 0;
+    const vocabMenu = unit ? unit.vocab.map((v, i) => ({ term: v.term, pos: v.pos, onClick: () => this.setState({ vocabIdx: i }), style: subBtn(i === vIdx), posStyle: "font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;margin-top:4px;color:" + (i === vIdx ? accent : "#55655f") })) : [];
+    const gramMenu = unit ? unit.grammar.map((g, i) => ({ name: g.name, short: g.short, onClick: () => this.setState({ gramIdx: i }), style: subBtn(i === gIdx), posStyle: "font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.4;margin-top:5px;color:" + (i === gIdx ? "#93a5a1" : "#5d6f6c") })) : [];
+
+    const gramItem = unit ? unit.grammar[gIdx] : null;
+    const chart = gramItem && gramItem.chart ? gramItem.chart : null;
+    const cols = chart ? chart.cols.length : 0;
+    const grid = chart ? "display:grid;grid-template-columns:" + (cols === 3 ? "1.1fr 1.2fr 1.6fr" : cols === 4 ? "1fr 1fr 1fr 1.4fr" : "repeat(" + cols + ",1fr)") + ";" : "";
+    const chartRows = chart ? chart.rows.map((r, i) => ({ cells: r, style: grid + "background:" + (i % 2 ? "#0a1011" : "#0c1314") + ";border-top:1px solid #17201f" })) : [];
+
+    const navOn = "border:1px solid " + accent + ";background:" + accent + ";color:#06100e;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;padding:10px 18px;cursor:pointer";
+    const navOff = "border:1px solid #1b2626;background:none;color:#3d4b48;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.4px;padding:10px 18px;cursor:default";
+
+    return {
+      scale: s.scale,
+      path: this.path,
+      pathCss: "path(\"" + this.path + "\")",
+      screenBg: alert ? "#0a0607" : "#070a0b",
+      traceColor: trace,
+      pulseAnim: animate ? "pulse 2.4s ease-out infinite" : "none",
+      statusLine: unit ? "> " + unit.node : "> awaiting selection",
+      checkpoints,
+      pct: s.pct,
+      open: s.open,
+      unit,
+      accent,
+      unitPad: cur != null ? String(cur + 1).padStart(2, "0") : "",
+      overview: unit ? unit.overview : null,
+      goals: unit ? unit.overview.goals.map((t, i) => ({ num: String(i + 1).padStart(2, "0"), text: t })) : [],
+      vocabMenu, gramMenu,
+      vocabItem: unit ? unit.vocab[vIdx] : null,
+      gramItem,
+      hasDeep: !!(gramItem && gramItem.deep),
+      hasChart: !!chart,
+      chartTitle: chart ? chart.title : "",
+      chartCols: chart ? chart.cols : [],
+      chartRows,
+      chartHeadStyle: grid + "background:" + accent,
+      isGuide: s.activeTab === "guide",
+      isVocab: s.activeTab === "vocab",
+      lexCount: (unit && unit.vocab ? unit.vocab.length : 0),
+      isGrammar: s.activeTab === "grammar",
+      isSpeaking: s.activeTab === "speaking",
+      isTips: s.activeTab === "tips",
+      isQuiz: s.activeTab === "quiz",
+      tabsView, optionsView,
+      quizCorrect: answered && unit && s.quizChoice === unit.quiz.answer,
+      quizWrong: answered && unit && s.quizChoice !== unit.quiz.answer,
+      quizExplain: unit ? unit.quiz.explain : "",
+      prevStyle: cur > 0 ? navOn : navOff,
+      nextStyle: (cur != null && cur < this.units.length - 1) ? navOn : navOff,
+      next: () => this.next(), prev: () => this.prev(), close: () => this.close(),
+      ...this.themeVals(),
+      ...this.mixVals(),
+      ...this.plusVals()
+    };
+  }
+}
+</script>
+</body>
+</html>

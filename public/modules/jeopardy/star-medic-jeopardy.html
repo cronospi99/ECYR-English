@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:#05060f; }
+a { color:#35d6ff; text-decoration:none; }
+a:hover { color:#8be9ff; }
+::-webkit-scrollbar { width:0; height:0; }
+@keyframes twinkle { 0%,100%{opacity:.15;} 50%{opacity:1;} }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+@keyframes modalIn { from{opacity:0; transform:translateY(24px) scale(.92);} to{opacity:1; transform:none;} }
+@keyframes trapShake { 0%,100%{transform:translateX(0);} 15%{transform:translateX(-10px) rotate(-1deg);} 30%{transform:translateX(10px) rotate(1deg);} 45%{transform:translateX(-8px);} 60%{transform:translateX(8px);} 75%{transform:translateX(-4px);} }
+@keyframes trapGlow { 0%,100%{text-shadow:0 0 18px rgba(255,59,59,.6), 0 0 40px rgba(255,59,59,.35);} 50%{text-shadow:0 0 34px rgba(255,90,90,1), 0 0 70px rgba(255,59,59,.7);} }
+@keyframes titlePulse { 0%,100%{filter:drop-shadow(0 0 14px rgba(255,212,71,.35));} 50%{filter:drop-shadow(0 0 30px rgba(255,212,71,.7));} }
+@keyframes floatUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:none;} }
+@keyframes badgePop { 0%{transform:scale(.3); opacity:0;} 60%{transform:scale(1.25);} 100%{transform:scale(1); opacity:1;} }
+</style>
+</helmet>
+
+<div style="position:relative; height:100vh; overflow:hidden; font-family:'Rajdhani',system-ui,sans-serif; color:#eaf2ff; background:radial-gradient(1200px 620px at 50% -12%, rgba(40,90,200,.28), transparent 60%), radial-gradient(900px 500px at 90% 110%, rgba(150,60,255,.14), transparent 60%), #05060f;">
+
+  <div style="position:absolute; inset:0; z-index:0; pointer-events:none;">
+    <sc-for list="{{ stars }}" as="st" hint-placeholder-count="40">
+      <div style="position:absolute; left:{{ st.left }}; top:{{ st.top }}; width:{{ st.size }}px; height:{{ st.size }}px; border-radius:50%; background:#dff3ff; box-shadow:0 0 6px #9fd8ff; animation:twinkle {{ st.dur }} ease-in-out {{ st.delay }} infinite;"></div>
+    </sc-for>
+  </div>
+
+  <!-- ===== BOARD (always mounted) ===== -->
+  <div style="position:relative; z-index:5; height:100%; max-width:1600px; margin:0 auto; padding:14px 18px 16px; display:flex; flex-direction:column; gap:10px;">
+
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap; flex:none;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <button onClick="{{ menu }}" title="Back to the main menu" style="font-family:'Orbitron'; font-size:12px; font-weight:700; letter-spacing:1.5px; color:#cfe4ff; background:linear-gradient(180deg,rgba(40,80,160,.7),rgba(10,24,60,.9)); border:1px solid rgba(120,180,255,.5); border-radius:10px; padding:11px 16px; cursor:pointer; box-shadow:0 4px 14px rgba(20,60,140,.35);" style-hover="filter:brightness(1.2); transform:translateY(-1px);">☰ MENU</button>
+        <button onClick="{{ openShare }}" title="Speaking share" style="font-family:'Orbitron'; font-size:12px; font-weight:700; letter-spacing:1.5px; color:#ffe9b5; background:linear-gradient(180deg,rgba(150,110,20,.6),rgba(50,32,4,.9)); border:1px solid rgba(255,200,90,.5); border-radius:10px; padding:11px 16px; cursor:pointer;" style-hover="filter:brightness(1.2); transform:translateY(-1px);">STATS</button>
+        <button onClick="{{ reset }}" style="font-family:'Orbitron'; font-size:12px; font-weight:700; letter-spacing:1.5px; color:#ffd6d6; background:linear-gradient(180deg,#c0392b,#7a1f16); border:1px solid rgba(255,120,120,.6); border-radius:10px; padding:11px 16px; cursor:pointer; box-shadow:0 4px 14px rgba(180,40,30,.4);" style-hover="filter:brightness(1.15); transform:translateY(-1px);">RESET GAME</button>
+        <div>
+          <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(20px,2.6vw,34px); letter-spacing:2px; background:linear-gradient(180deg,#fff2c2,#ffd447 55%,#e9a417); -webkit-background-clip:text; background-clip:text; color:transparent;">STAR&nbsp;GALACTIC&nbsp;TRIVIA</div>
+          <div style="font-family:'Rajdhani'; font-weight:600; font-size:12px; letter-spacing:2px; color:#7fb2ff; text-transform:uppercase; margin-top:2px;">The Speak-Out Mission</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:stretch; gap:14px;">
+        <div onClick="{{ setT1 }}" title="Set Team 1's turn" style="min-width:150px; cursor:pointer; border-radius:14px; padding:12px 18px; background:linear-gradient(160deg,rgba(20,60,140,.55),rgba(8,20,52,.85)); border:2px solid {{ t1Border }}; box-shadow:{{ t1Glow }}; transition:all .25s;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="width:11px; height:11px; border-radius:50%; background:#45a6ff; box-shadow:0 0 10px #45a6ff;"></span>
+            <span style="font-family:'Orbitron'; font-size:13px; font-weight:700; letter-spacing:1px; color:#cfe4ff;">{{ t1Name }}</span>
+            <sc-if value="{{ t1Active }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto; font-family:'Orbitron'; font-size:9px; font-weight:700; letter-spacing:1px; color:#ffd447;">▶ TURN</span></sc-if>
+          </div>
+          <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(24px,2.4vw,32px); line-height:1.05; color:#8fd0ff; text-shadow:0 0 16px rgba(69,166,255,.5); margin-top:2px;">{{ t1Score }}</div>
+        </div>
+        <div onClick="{{ setT2 }}" title="Set Team 2's turn" style="min-width:150px; cursor:pointer; border-radius:14px; padding:12px 18px; background:linear-gradient(160deg,rgba(80,30,140,.5),rgba(18,8,44,.85)); border:2px solid {{ t2Border }}; box-shadow:{{ t2Glow }}; transition:all .25s;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="width:11px; height:11px; border-radius:50%; background:#c06bff; box-shadow:0 0 10px #c06bff;"></span>
+            <span style="font-family:'Orbitron'; font-size:13px; font-weight:700; letter-spacing:1px; color:#ecdcff;">{{ t2Name }}</span>
+            <sc-if value="{{ t2Active }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto; font-family:'Orbitron'; font-size:9px; font-weight:700; letter-spacing:1px; color:#ffd447;">▶ TURN</span></sc-if>
+          </div>
+          <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(24px,2.4vw,32px); line-height:1.05; color:#d7a6ff; text-shadow:0 0 16px rgba(192,107,255,.5); margin-top:2px;">{{ t2Score }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex:none;">
+      <span style="font-family:'Orbitron'; font-size:10px; font-weight:700; letter-spacing:1.5px; color:#7fb2ff;">CEFR LEVEL</span>
+      <sc-for list="{{ levelBtns }}" as="lv" hint-placeholder-count="5">
+        <button onClick="{{ lv.onClick }}" style="{{ lv.style }}">{{ lv.name }}</button>
+      </sc-for>
+      <span style="width:1px; height:24px; background:rgba(90,150,255,.4); margin:0 4px;"></span>
+      <span style="font-family:'Orbitron'; font-size:10px; font-weight:700; letter-spacing:1.5px; color:#7fb2ff;">TOPIC</span>
+      <select value="{{ topic }}" onChange="{{ setTopic }}" style="font-family:'Rajdhani'; font-weight:700; font-size:15px; letter-spacing:.5px; color:#eaf2ff; background:linear-gradient(180deg,#16307a,#0a1636); border:1px solid rgba(90,150,255,.5); border-radius:10px; padding:9px 14px; outline:none; cursor:pointer;">
+        <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="13">
+          <option value="{{ tp.id }}" style="background-color:#0a1636; color:#eaf2ff;">{{ tp.name }}</option>
+        </sc-for>
+      </select>
+      <sc-if value="{{ isTopicLoading }}" hint-placeholder-val="{{ false }}">
+        <span style="font-family:'Rajdhani'; font-weight:700; font-size:13px; color:#ffd447;">loading {{ topicLoadingName }}…</span>
+      </sc-if>
+    </div>
+
+    <div style="flex:1; min-height:0; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); grid-template-rows:auto repeat(5,minmax(0,1fr)); gap:9px;">
+      <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="5">
+        <div style="min-height:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:8px 6px; border-radius:10px; background:linear-gradient(180deg,#16307a,#0a1636); border:1px solid rgba(90,150,255,.35); font-family:'Orbitron'; font-weight:700; font-size:clamp(10px,1.15vw,15px); letter-spacing:1px; color:#ffd447; text-transform:uppercase;">{{ cat.name }}</div>
+      </sc-for>
+
+      <sc-for list="{{ boardCards }}" as="card" hint-placeholder-count="25">
+        <div style="position:relative; min-height:0;">
+          <sc-if value="{{ card.avail }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ card.onOpen }}" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:12px; background:linear-gradient(160deg,#154099,#0c1f5a); border:1px solid rgba(120,190,255,.5); box-shadow:0 8px 20px rgba(0,0,0,.5), inset 0 0 22px rgba(40,110,220,.4); transition:transform .18s, box-shadow .18s, filter .18s;" style-hover="transform:translateY(-4px) scale(1.035); box-shadow:0 14px 30px rgba(20,80,200,.6), inset 0 0 26px rgba(60,150,255,.6); filter:brightness(1.12);">
+              <span style="font-family:'Orbitron'; font-weight:900; font-size:clamp(20px,2.9vw,40px); background:linear-gradient(180deg,#fff2c2,#ffd447 60%,#e39c12); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 2px 0 rgba(0,0,0,.2);"><span style="opacity:.75;">$</span>{{ card.value }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ card.used }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border-radius:12px; background:rgba(10,18,40,.4); border:1px dashed rgba(90,150,255,.18);">
+              <span style="font-family:'Orbitron'; font-weight:700; font-size:16px; color:rgba(140,180,255,.28); text-decoration:line-through;">${{ card.value }}</span>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeShare }}" style="position:fixed; inset:0; z-index:55; display:flex; align-items:center; justify-content:center; padding:30px; background:rgba(3,5,14,.82); animation:fadeIn .25s ease;">
+      <div style="width:min(680px,92vw); max-height:80vh; overflow:auto; position:relative; padding:22px 24px; border-radius:16px; background:linear-gradient(160deg,rgba(16,34,84,.7),rgba(8,14,34,.85)); border:1px solid rgba(90,150,255,.28);">
+        <div style="font-family:'Orbitron'; font-size:10px; font-weight:700; letter-spacing:2px; color:#7fb2ff; margin-bottom:14px;">SPEAKING SHARE · WHO ANSWERED MOST</div>
+        <button onClick="{{ closeShare }}" style="position:absolute; top:14px; right:16px; font-family:'Orbitron'; font-weight:700; font-size:13px; color:#c8d4e8; background:rgba(255,255,255,.07); border:1px solid rgba(150,180,220,.3); border-radius:9px; padding:6px 11px; cursor:pointer;" style-hover="background:rgba(255,255,255,.16); color:#fff;">✕</button>
+        <sc-if value="{{ shareEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'Rajdhani'; font-weight:600; font-size:16px; line-height:1.5; color:rgba(160,195,255,.75);">No answers logged yet. Add students to each team on the menu screen, then credit whoever answers when you award points.</div>
+        </sc-if>
+        <div style="display:grid; gap:11px;">
+          <sc-for list="{{ share }}" as="st" hint-placeholder-count="4">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="{{ st.dotStyle }}"></span>
+              <span style="flex:none; width:130px; font-family:'Rajdhani'; font-weight:700; font-size:16px; color:#e4eeff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ st.name }}</span>
+              <span style="flex:1; height:8px; border-radius:6px; background:rgba(255,255,255,.07);"><span style="{{ st.barStyle }}; display:block;"></span></span>
+              <span style="flex:none; width:78px; text-align:right; font-family:'Orbitron'; font-weight:900; font-size:14px; color:#ffd447;">{{ st.pct }}</span>
+              <span style="flex:none; width:74px; text-align:right; font-family:'Rajdhani'; font-weight:600; font-size:13px; color:rgba(150,190,255,.7);">{{ st.answers }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- ===== INTRO OVERLAY ===== -->
+  <sc-if value="{{ showIntro }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; z-index:60; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:18px 24px; overflow:auto; background:radial-gradient(900px 600px at 50% 30%, rgba(30,70,170,.35), transparent 65%), rgba(3,5,14,.96); animation:fadeIn .5s ease;">
+      <div style="font-family:'Orbitron'; font-weight:700; font-size:clamp(9px,1.2vw,12px); letter-spacing:5px; color:#35d6ff; animation:floatUp .7s ease both;">A GALAXY FAR, FAR AWAY…</div>
+      <h1 style="margin:8px 0 4px; font-family:'Orbitron'; font-weight:900; font-size:clamp(30px,5.4vw,66px); line-height:.95; letter-spacing:3px; background:linear-gradient(180deg,#fff5cf,#ffd447 55%,#e09112); -webkit-background-clip:text; background-clip:text; color:transparent; animation:titlePulse 3s ease-in-out infinite, floatUp .7s .1s ease both;">STAR GALACTIC TRIVIA</h1>
+      <div style="font-family:'Rajdhani'; font-weight:600; font-size:clamp(12px,1.4vw,16px); letter-spacing:3px; color:#9fc4ff; text-transform:uppercase; animation:floatUp .7s .2s ease both;">The Speak-Out Mission</div>
+      <p style="max-width:620px; margin:10px auto 0; font-family:'Rajdhani'; font-weight:500; font-size:clamp(13px,1.4vw,16px); line-height:1.5; color:#bcd2f5; animation:floatUp .7s .3s ease both;">Random topic, useful debates, meaningful conversation, <b style="color:#ffd447;">GO AHEAD AND SPEAK OUT!</b></p>
+
+      <div style="display:flex; gap:16px; margin:16px 0 14px; flex-wrap:wrap; justify-content:center; animation:floatUp .7s .4s ease both;">
+        <div style="text-align:left;">
+          <label style="display:block; font-family:'Orbitron'; font-size:10px; letter-spacing:1px; color:#45a6ff; margin-bottom:6px;">TEAM 1</label>
+          <input value="{{ t1Name }}" onInput="{{ onName1 }}" style="width:200px; font-family:'Rajdhani'; font-weight:700; font-size:18px; color:#eaf2ff; background:rgba(20,50,120,.5); border:1px solid rgba(90,170,255,.5); border-radius:10px; padding:10px 14px; outline:none;">
+          <div style="display:flex; gap:6px; margin-top:8px;">
+            <input value="{{ newS1 }}" onInput="{{ onNewS1 }}" onKeyDown="{{ onNewS1Key }}" placeholder="Add student…" style="width:140px; font-family:'Rajdhani'; font-weight:600; font-size:15px; color:#eaf2ff; background:rgba(20,50,120,.35); border:1px solid rgba(90,170,255,.3); border-radius:9px; padding:8px 12px; outline:none;">
+            <button onClick="{{ addS1 }}" style="font-family:'Orbitron'; font-weight:700; font-size:14px; color:#cfe4ff; background:rgba(47,123,255,.35); border:1px solid rgba(120,180,255,.5); border-radius:9px; padding:8px 13px; cursor:pointer;" style-hover="filter:brightness(1.25);">+</button>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; max-width:200px;">
+            <sc-for list="{{ roster1 }}" as="st" hint-placeholder-count="0">
+              <span style="display:inline-flex; align-items:center; gap:7px; font-family:'Rajdhani'; font-weight:700; font-size:14px; color:#dcecff; background:rgba(47,123,255,.22); border:1px solid rgba(120,180,255,.35); border-radius:20px; padding:4px 6px 4px 11px;">{{ st.name }}<button onClick="{{ st.onRemove }}" style="font-family:'Rajdhani'; font-size:13px; line-height:1; color:#9fc4ff; background:none; border:none; cursor:pointer; padding:2px 4px;" style-hover="color:#ff7b7b;">✕</button></span>
+            </sc-for>
+          </div>
+        </div>
+        <div style="text-align:left;">
+          <label style="display:block; font-family:'Orbitron'; font-size:10px; letter-spacing:1px; color:#c06bff; margin-bottom:6px;">TEAM 2</label>
+          <input value="{{ t2Name }}" onInput="{{ onName2 }}" style="width:200px; font-family:'Rajdhani'; font-weight:700; font-size:18px; color:#eaf2ff; background:rgba(70,25,130,.5); border:1px solid rgba(180,110,255,.5); border-radius:10px; padding:10px 14px; outline:none;">
+          <div style="display:flex; gap:6px; margin-top:8px;">
+            <input value="{{ newS2 }}" onInput="{{ onNewS2 }}" onKeyDown="{{ onNewS2Key }}" placeholder="Add student…" style="width:140px; font-family:'Rajdhani'; font-weight:600; font-size:15px; color:#eaf2ff; background:rgba(70,25,130,.35); border:1px solid rgba(180,110,255,.3); border-radius:9px; padding:8px 12px; outline:none;">
+            <button onClick="{{ addS2 }}" style="font-family:'Orbitron'; font-weight:700; font-size:14px; color:#f2e4ff; background:rgba(162,75,255,.32); border:1px solid rgba(190,120,255,.5); border-radius:9px; padding:8px 13px; cursor:pointer;" style-hover="filter:brightness(1.25);">+</button>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; max-width:200px;">
+            <sc-for list="{{ roster2 }}" as="st" hint-placeholder-count="0">
+              <span style="display:inline-flex; align-items:center; gap:7px; font-family:'Rajdhani'; font-weight:700; font-size:14px; color:#f2e4ff; background:rgba(162,75,255,.2); border:1px solid rgba(190,120,255,.35); border-radius:20px; padding:4px 6px 4px 11px;">{{ st.name }}<button onClick="{{ st.onRemove }}" style="font-family:'Rajdhani'; font-size:13px; line-height:1; color:#d7a6ff; background:none; border:none; cursor:pointer; padding:2px 4px;" style-hover="color:#ff7b7b;">✕</button></span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin:0 0 12px; animation:floatUp .7s .38s ease both;">
+        <label style="display:block; font-family:'Orbitron'; font-size:10px; letter-spacing:1.5px; color:#7fb2ff; margin-bottom:8px;">TOPIC</label>
+        <select value="{{ topic }}" onChange="{{ setTopic }}" style="font-family:'Rajdhani'; font-weight:700; font-size:15px; letter-spacing:.5px; color:#eaf2ff; background:linear-gradient(180deg,#16307a,#0a1636); border:1px solid rgba(90,150,255,.5); border-radius:10px; padding:9px 14px; outline:none; cursor:pointer; font-size:17px; padding:11px 18px;">
+          <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="13">
+            <option value="{{ tp.id }}" style="background-color:#0a1636; color:#eaf2ff;">{{ tp.name }}</option>
+          </sc-for>
+        </select>
+      </div>
+
+      <div style="margin:0 0 14px; animation:floatUp .7s .42s ease both;">
+        <label style="display:block; font-family:'Orbitron'; font-size:10px; letter-spacing:1.5px; color:#7fb2ff; margin-bottom:8px;">DIFFICULTY · CEFR LEVEL</label>
+        <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+          <sc-for list="{{ levelBtns }}" as="lv" hint-placeholder-count="5">
+            <button onClick="{{ lv.onClick }}" style="{{ lv.style }}">{{ lv.name }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <button onClick="{{ begin }}" style="font-family:'Orbitron'; font-weight:900; font-size:18px; letter-spacing:3px; color:#04121f; background:linear-gradient(180deg,#7fe9ff,#26c0ff 60%,#0a86d6); border:none; border-radius:14px; padding:16px 44px; cursor:pointer; box-shadow:0 0 34px rgba(53,214,255,.6); animation:floatUp .7s .5s ease both;" style-hover="filter:brightness(1.12); transform:translateY(-2px);">ENTER THE MISSION →</button>
+    </div>
+  </sc-if>
+
+  <!-- ===== CARD MODAL ===== -->
+  <sc-if value="{{ isOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(2,4,12,.82); backdrop-filter:blur(6px); animation:fadeIn .25s ease;">
+      <div style="position:relative; width:min(780px,95vw); max-height:92vh; overflow:auto; border-radius:22px; padding:34px 36px 30px; background:linear-gradient(160deg,#0c2159,#0a1230); border:1px solid rgba(100,180,255,.42); box-shadow:0 0 70px rgba(40,140,255,.35), inset 0 0 46px rgba(20,60,140,.4); animation:modalIn .35s cubic-bezier(.2,1.2,.3,1);">
+        <button onClick="{{ close }}" style="position:absolute; top:16px; right:16px; width:38px; height:38px; border-radius:10px; font-size:18px; color:#cfe4ff; background:rgba(255,255,255,.06); border:1px solid rgba(150,190,255,.25); cursor:pointer;" style-hover="background:rgba(255,80,80,.25);">✕</button>
+
+        <!-- QUESTION / ANSWER -->
+        <sc-if value="{{ qPhase }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+            <span style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:2px; color:#7fb2ff; text-transform:uppercase;">{{ modalCat }}</span>
+            <span style="font-family:'Orbitron'; font-weight:900; font-size:20px; color:#ffd447;">${{ modalValue }}</span>
+          </div>
+
+          <div style="display:flex; gap:26px; align-items:center; flex-wrap:wrap; justify-content:center;">
+            <div style="position:relative; width:150px; height:150px; flex:none;">
+              <svg width="150" height="150" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="11"></circle>
+                <circle cx="80" cy="80" r="70" fill="none" stroke="{{ ringColor }}" stroke-width="11" stroke-linecap="round" stroke-dasharray="{{ ringCirc }}" stroke-dashoffset="{{ ringOffset }}" transform="rotate(-90 80 80)" style="transition:stroke-dashoffset 1s linear, stroke .3s;"></circle>
+              </svg>
+              <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Orbitron'; font-weight:900; font-size:56px; color:{{ ringColor }};">{{ timerNum }}</div>
+            </div>
+
+            <div style="flex:1; min-width:260px;">
+              <sc-if value="{{ timeUp }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family:'Orbitron'; font-weight:900; font-size:22px; letter-spacing:2px; color:#ff5a5a; margin-bottom:10px; animation:trapGlow 1s ease-in-out infinite;">⏱ TIME'S UP!</div>
+              </sc-if>
+              <div style="font-family:'Rajdhani'; font-weight:600; font-size:clamp(19px,2.6vw,27px); line-height:1.35; color:#eef4ff; text-wrap:pretty;">{{ modalPrompt }}</div>
+
+              <sc-if value="{{ showAnswerText }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:16px; padding:16px 18px; border-radius:12px; background:rgba(53,214,255,.1); border:1px solid rgba(53,214,255,.4);">
+                  <div style="font-family:'Orbitron'; font-size:10px; letter-spacing:2px; color:#35d6ff; margin-bottom:6px;">ANSWER</div>
+                  <div style="font-family:'Rajdhani'; font-weight:700; font-size:clamp(17px,2.2vw,22px); line-height:1.35; color:#dff3ff;">{{ modalAnswer }}</div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:26px; flex-wrap:wrap; justify-content:center;">
+            <sc-if value="{{ canSwap }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ swapQuestion }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:1px; color:#0d2317; background:linear-gradient(180deg,#9ff5c4,#34d17f); border:none; border-radius:11px; padding:13px 20px; cursor:pointer;" style-hover="filter:brightness(1.1); transform:translateY(-1px);">{{ swapLabel }}</button>
+            </sc-if>
+            <sc-if value="{{ showQuestionOnly }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ revealAnswer }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:1px; color:#04121f; background:linear-gradient(180deg,#7fe9ff,#26c0ff); border:none; border-radius:11px; padding:13px 22px; cursor:pointer;" style-hover="filter:brightness(1.1);">REVEAL ANSWER</button>
+            </sc-if>
+            <button onClick="{{ awardT1 }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:.5px; color:#eaf6ff; background:linear-gradient(180deg,#2f7bff,#134fbf); border:1px solid rgba(120,180,255,.5); border-radius:11px; padding:13px 20px; cursor:pointer;" style-hover="filter:brightness(1.12); transform:translateY(-1px);">{{ awardT1Label }}</button>
+            <button onClick="{{ awardT2 }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:.5px; color:#f6ecff; background:linear-gradient(180deg,#a24bff,#6a1fc0); border:1px solid rgba(190,120,255,.5); border-radius:11px; padding:13px 20px; cursor:pointer;" style-hover="filter:brightness(1.12); transform:translateY(-1px);">{{ awardT2Label }}</button>
+            <button onClick="{{ noPoints }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:.5px; color:#c8d4e8; background:rgba(255,255,255,.06); border:1px solid rgba(150,180,220,.3); border-radius:11px; padding:13px 20px; cursor:pointer;" style-hover="background:rgba(255,255,255,.12);">NO POINTS</button>
+          </div>
+        </sc-if>
+
+        <!-- CREDIT A STUDENT -->
+        <sc-if value="{{ creditPhase }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:10px 0 6px;">
+            <div style="font-family:'Orbitron'; font-size:10px; letter-spacing:2px; color:#7fb2ff; margin-bottom:8px;">WHO ANSWERED?</div>
+            <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(20px,3.2vw,28px); color:#ffd447; margin-bottom:20px;">{{ creditTeamName }} · +{{ creditValue }}</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:22px;">
+              <sc-for list="{{ creditChips }}" as="st" hint-placeholder-count="3">
+                <button onClick="{{ st.onPick }}" style="{{ st.style }}" style-hover="filter:brightness(1.2); transform:translateY(-1px);">{{ st.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+              <button onClick="{{ creditCancel }}" style="font-family:'Orbitron'; font-weight:700; font-size:12px; letter-spacing:1px; color:#c8d4e8; background:rgba(255,255,255,.06); border:1px solid rgba(150,180,220,.3); border-radius:11px; padding:12px 18px; cursor:pointer;" style-hover="background:rgba(255,255,255,.12);">← BACK</button>
+              <button onClick="{{ creditSkip }}" style="font-family:'Orbitron'; font-weight:700; font-size:12px; letter-spacing:1px; color:#c8d4e8; background:rgba(255,255,255,.06); border:1px solid rgba(150,180,220,.3); border-radius:11px; padding:12px 18px; cursor:pointer;" style-hover="background:rgba(255,255,255,.12);">TEAM POINTS ONLY</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- TRAP REVEAL -->
+        <sc-if value="{{ trapPhase }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:14px 0 6px;">
+            <div style="font-size:64px; animation:trapShake 1.1s ease-in-out infinite;">⚡</div>
+            <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(30px,6vw,54px); letter-spacing:4px; color:#ff3b3b; margin:8px 0; animation:trapGlow 1.2s ease-in-out infinite;">SITH TRAP!</div>
+
+            <sc-if value="{{ trapChoiceIdle }}" hint-placeholder-val="{{ true }}">
+              <p style="font-family:'Rajdhani'; font-weight:600; font-size:19px; color:#ffc7c7; max-width:460px; margin:0 auto 26px;">The dark side has tampered with this card. Let the Force decide your fate, or wager your own points on the wheel…</p>
+              <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+                <button onClick="{{ revealFate }}" style="font-family:'Orbitron'; font-weight:900; font-size:16px; letter-spacing:2px; color:#1a0505; background:linear-gradient(180deg,#ff8a5c,#ff3b3b 60%,#c11414); border:none; border-radius:13px; padding:15px 32px; cursor:pointer; box-shadow:0 0 32px rgba(255,59,59,.6);" style-hover="filter:brightness(1.1); transform:translateY(-2px);">REVEAL YOUR FATE →</button>
+                <sc-if value="{{ bettingEnabled }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ chooseBet }}" style="font-family:'Orbitron'; font-weight:900; font-size:16px; letter-spacing:2px; color:#1a1204; background:linear-gradient(180deg,#ffe27a,#ffb524 60%,#e08e00); border:none; border-radius:13px; padding:15px 32px; cursor:pointer; box-shadow:0 0 32px rgba(255,180,30,.5);" style-hover="filter:brightness(1.1); transform:translateY(-2px);">🎰 PLACE A BET</button>
+                </sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ trapChoiceBet }}" hint-placeholder-val="{{ false }}">
+              <p style="font-family:'Rajdhani'; font-weight:600; font-size:17px; color:#ffe9b0; max-width:440px; margin:0 auto 18px;">{{ wagerTeamName }} wagers points. Bet small and the wheel can pay big (×1 to ×3); bet more than half the cap and the odds tighten to ×1.5 either way.</p>
+
+              <sc-if value="{{ wagerSpinning }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family:'Orbitron'; font-weight:900; font-size:44px; letter-spacing:2px; color:#ffd447; margin:6px 0 22px; animation:trapShake .3s ease-in-out infinite;">{{ wagerFlicker }}</div>
+              </sc-if>
+
+              <sc-if value="{{ wagerIdleForm }}" hint-placeholder-val="{{ true }}">
+                <div style="margin-bottom:20px;">
+                  <label style="display:block; font-family:'Orbitron'; font-size:10px; letter-spacing:1.5px; color:#ffd8a0; margin-bottom:8px;">WAGER AMOUNT (max {{ wagerTeamScore }} — capped)</label>
+                  <input type="number" min="0" max="{{ wagerTeamScore }}" step="10" value="{{ wagerAmount }}" onInput="{{ onWagerAmount }}" style="width:160px; text-align:center; font-family:'Orbitron'; font-weight:700; font-size:20px; color:#fff2c2; background:rgba(255,255,255,.08); border:1px solid rgba(255,210,110,.4); border-radius:10px; padding:10px 14px; outline:none;">
+                  <div style="margin-top:10px; font-family:'Orbitron'; font-weight:700; font-size:11px; letter-spacing:1.4px; color:#ffb27a;">{{ wagerTierNote }}</div>
+                </div>
+                <div style="display:flex; gap:12px; justify-content:center;">
+                  <button onClick="{{ backToChoice }}" style="font-family:'Orbitron'; font-weight:700; font-size:13px; letter-spacing:1px; color:#e8d4ff; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.25); border-radius:11px; padding:13px 20px; cursor:pointer;" style-hover="background:rgba(255,255,255,.15);">← BACK</button>
+                  <button onClick="{{ spinTrapBet }}" disabled="{{ wagerDisabled }}" style="font-family:'Orbitron'; font-weight:900; font-size:15px; letter-spacing:2px; color:#1a0a04; background:linear-gradient(180deg,#ff8a5c,#ff3b3b 60%,#c11414); border:none; border-radius:13px; padding:14px 30px; cursor:pointer;" style-hover="filter:brightness(1.1);">SPIN THE WHEEL</button>
+                </div>
+              </sc-if>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- TRAP RESULT -->
+        <sc-if value="{{ trapResultPhase }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:12px 0 6px;">
+            <div style="display:inline-flex; align-items:center; justify-content:center; width:110px; height:110px; border-radius:50%; font-family:'Orbitron'; font-weight:900; font-size:40px; color:#fff; background:radial-gradient(circle at 40% 35%, #ffd447, #e05a00); box-shadow:0 0 40px rgba(255,150,40,.6); margin-bottom:18px; animation:badgePop .5s cubic-bezier(.2,1.4,.4,1) both;">{{ trapBadge }}</div>
+            <div style="font-family:'Orbitron'; font-weight:900; font-size:clamp(20px,3.4vw,30px); letter-spacing:1px; color:#ffd447; line-height:1.25; margin-bottom:6px;">{{ trapText }}</div>
+            <p style="font-family:'Rajdhani'; font-weight:600; font-size:16px; color:#bcd2f5; margin:6px auto 24px;">The scores have been updated.</p>
+            <button onClick="{{ close }}" style="font-family:'Orbitron'; font-weight:700; font-size:14px; letter-spacing:2px; color:#04121f; background:linear-gradient(180deg,#7fe9ff,#26c0ff); border:none; border-radius:12px; padding:14px 40px; cursor:pointer;" style-hover="filter:brightness(1.1);">CONTINUE</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;timerSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:30,&quot;min&quot;:5,&quot;max&quot;:30,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;stealAmount&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:300,&quot;min&quot;:100,&quot;max&quot;:500,&quot;step&quot;:100,&quot;unit&quot;:&quot;pts&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;enableSound&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;startingLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;A1&quot;,&quot;options&quot;:[&quot;A1&quot;,&quot;A2&quot;,&quot;B1&quot;,&quot;B2&quot;,&quot;C1&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;bettingEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;trapShuffleSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:18,&quot;min&quot;:8,&quot;max&quot;:60,&quot;step&quot;:2,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Game&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const cats = ["Symptoms", "Common Illnesses", "Homemade Remedies", "Pharmacy Medicine", "Modal Advice"];
+    const values = [100, 200, 300, 400, 500];
+    const contentByLevel = {
+      A1: {
+        "0-100": { p: `Your head hurts a lot. Name the symptom and give advice with SHOULD.`, a: `A headache. "You should rest and drink water."` },
+        "0-200": { p: `Your body temperature is 39°C. Name the symptom and give advice with SHOULD.`, a: `A fever. "You should stay in bed and drink water."` },
+        "0-300": { p: `The room is spinning and you can't stand up straight. Name the symptom.`, a: `Dizziness. "You should sit down and rest."` },
+        "0-400": { p: `Your chest makes a loud noise and you can't stop it at night. Name the symptom.`, a: `A cough. "You should drink warm tea."` },
+        "0-500": { p: `Your stomach hurts after eating too much. Name the symptom and give advice with SHOULDN'T.`, a: `A stomachache. "You shouldn't eat junk food."` },
+        "1-100": { p: `You sneeze all day, your nose is blocked, but you have NO fever. What illness is it?`, a: `A cold. "You should drink hot tea and rest."` },
+        "1-200": { p: `High fever, body aches, and you feel very tired in bed. What illness is it?`, a: `The flu. "You must stay home and rest."` },
+        "1-300": { p: `After eating peanuts your skin has red, itchy spots. What is it?`, a: `An allergy. "You should see a doctor."` },
+        "1-400": { p: `It hurts when you swallow and your voice is weak. What is it?`, a: `A sore throat. "You should drink warm water with honey."` },
+        "1-500": { p: `Your ear hurts a lot and you can't hear well. What illness is it?`, a: `An ear infection. "You should see a doctor."` },
+        "2-100": { p: `For a sore throat, which sweet warm drink do we make at home?`, a: `Honey and lemon tea. "You should drink honey with lemon."` },
+        "2-200": { p: `For a fever, what should you drink a lot of at home? (It is not a medicine.)`, a: `Water. "You should drink a lot of water."` },
+        "2-300": { p: `For a bad stomach, which spicy root do we make tea with?`, a: `Ginger. "You should drink ginger tea."` },
+        "2-400": { p: `For a cold, which hot FOOD makes you feel better?`, a: `Chicken soup. "You should eat hot soup."` },
+        "2-500": { p: `For a headache, what free thing should you do for eight hours?`, a: `Sleep. "You should sleep in a dark, quiet room."` },
+        "3-100": { p: `Your head hurts. What small pill do you buy at the pharmacy?`, a: `A painkiller. "You should take a painkiller."` },
+        "3-200": { p: `You have a bad cough. What liquid medicine do you buy?`, a: `Cough syrup. "You should take cough syrup."` },
+        "3-300": { p: `You cut your finger. What do you put on it?`, a: `A plaster (a bandage). "You should put a plaster on it."` },
+        "3-400": { p: `You want to check your temperature. Which TOOL do you use?`, a: `A thermometer. "You should use a thermometer."` },
+        "3-500": { p: `You have an infection. What strong medicine does the doctor give you?`, a: `Antibiotics. "You must finish all the pills."` },
+        "4-100": { p: `Complete with a modal (possibility): "It ____ be a cold, or it ____ be the flu."`, a: `could / might — "It could be a cold, or it might be the flu."` },
+        "4-200": { p: `Complete with a modal (advice): "You ____ rest when you are sick."`, a: `should — "You should rest when you are sick."` },
+        "4-300": { p: `It's an emergency! Complete: "You ____ call an ambulance."`, a: `must — "You must call an ambulance."` },
+        "4-400": { p: `Your friend has a fever. Give TWO pieces of advice using SHOULD / SHOULDN'T.`, a: `"You should drink water. You shouldn't go to school."` },
+        "4-500": { p: `When do we use MUST and when do we use SHOULD for medical advice?`, a: `MUST = necessary / rules / emergencies. SHOULD = good advice / a recommendation.` }
+      },
+      A2: {
+        "0-100": { p: `Two days ago you felt dizzy and your head hurt all day. Describe it in the PAST SIMPLE.`, a: `You had a headache. "I felt dizzy and my head hurt."` },
+        "0-200": { p: `Last night your temperature went up to 39°C. Use PAST SIMPLE, then give advice with SHOULD.`, a: `You had a fever. "You should stay in bed and drink water."` },
+        "0-300": { p: `This morning you felt dizzy and everything span around you. Use PAST SIMPLE, then give advice.`, a: `You felt dizzy. "You should sit down and drink water."` },
+        "0-400": { p: `This morning you sneezed many times and your nose was running. Use the PAST SIMPLE.`, a: `You had a runny nose. "You should use tissues and rest."` },
+        "0-500": { p: `You ate too much last night and your stomach hurt after dinner. Use PAST SIMPLE + advice with SHOULDN'T.`, a: `You had a stomachache. "You shouldn't eat so much next time."` },
+        "1-100": { p: `You coughed, sneezed and had a runny nose all week. What illness was it? Answer in the PAST SIMPLE.`, a: `It was a cold. "I had a cold last week."` },
+        "1-200": { p: `You USED TO get sick every winter as a child. What illness comes back every winter?`, a: `The flu. "I used to catch the flu every winter."` },
+        "1-300": { p: `Complete with a COMPARATIVE: "My allergy symptoms are ____ (bad) in spring than in winter."`, a: `worse — "My allergy symptoms are worse in spring than in winter."` },
+        "1-400": { p: `You have had a sore throat FOR three days. Use PRESENT PERFECT, then give advice.`, a: `"I have had a sore throat for three days. You should drink warm tea."` },
+        "1-500": { p: `You have had an earache and a headache for two days. Use PRESENT PERFECT, then give advice.`, a: `"I have had an earache for two days. You should see a doctor."` },
+        "2-100": { p: `Use USED TO to describe a childhood remedy for a sore throat.`, a: `"My grandmother used to make honey and lemon tea for sore throats."` },
+        "2-200": { p: `Use QUANTIFIERS: "Drink ____ (a lot of / a little) water when you have a fever."`, a: `a lot of — "You should drink a lot of water."` },
+        "2-300": { p: `Complete with FIRST CONDITIONAL: "If you drink hot soup, you ____ (feel) better."`, a: `will feel — "If you drink hot soup, you will feel better."` },
+        "2-400": { p: `Use QUANTIFIERS: "Eat ____ (a lot of / a little) vitamin C for a cold."`, a: `a lot of — "You should eat a lot of vitamin C."` },
+        "2-500": { p: `Put these steps in order using SEQUENCE ADVERBS: rest, drink tea, sleep early.`, a: `"First rest, then drink tea, and finally sleep early."` },
+        "3-100": { p: `You have pain. Use PRESENT PERFECT: "I ____ (already/take) a painkiller."`, a: `have already taken — "I have already taken a painkiller."` },
+        "3-200": { p: `Complete with FIRST CONDITIONAL: "If you don't take cough syrup, your cough ____ (get) worse."`, a: `will get — "If you don't take cough syrup, your cough will get worse."` },
+        "3-300": { p: `Complete with PASSIVE VOICE (no "by"): "Antibiotics ____ (prescribe) by doctors for infections."`, a: `are prescribed — "Antibiotics are prescribed for infections."` },
+        "3-400": { p: `You checked your temperature yesterday with a special tool. Use PAST SIMPLE.`, a: `"I used a thermometer to check my temperature."` },
+        "3-500": { p: `Complete with a MODAL for necessity: "You ____ finish all the antibiotic pills."`, a: `must — "You must finish all the antibiotic pills."` },
+        "4-100": { p: `Complete with a modal (possibility): "You ____ try some tea, it may help."`, a: `could — "You could try some tea, it may help."` },
+        "4-200": { p: `Report what the doctor said using REPORTED SPEECH. Doctor: "You need more rest."`, a: `"The doctor said (that) I needed more rest."` },
+        "4-300": { p: `Complete with a MODAL for necessity: "In an emergency, you ____ call an ambulance."`, a: `must — "You must call an ambulance."` },
+        "4-400": { p: `Report this advice using REPORTED SPEECH. Doctor: "Don't eat junk food."`, a: `"The doctor told me not to eat junk food."` },
+        "4-500": { p: `Explain the difference between MUST and SHOULD for medical advice, with an example of each.`, a: `MUST = obligation ("You must take this medicine"). SHOULD = advice ("You should rest more").` }
+      },
+      B1: {
+        "0-100": { p: `Describe a patient WHO has a high fever and body aches, using a RELATIVE CLAUSE, then give advice.`, a: `"A patient who has a high fever and body aches should rest and drink fluids."` },
+        "0-200": { p: `Complete with a PAST MODAL OF CERTAINTY: "She has a runny nose and sneezes a lot — she ____ (catch) a cold."`, a: `must have caught — "She must have caught a cold."` },
+        "0-300": { p: `Complete with a PAST MODAL OF CERTAINTY: "She feels dizzy and can't stand up straight — she ____ (not/eat) enough today."`, a: `must not have eaten — "She must not have eaten enough today."` },
+        "0-400": { p: `Complete with SHOULD HAVE + PAST PARTICIPLE: "He didn't wear a coat and now he has a cold. He ____."`, a: `should have worn — "He should have worn a coat."` },
+        "0-500": { p: `Use GET SOMETHING DONE: what does a patient do to check their blood sugar?`, a: `"You should get your blood tested."` },
+        "1-100": { p: `Use a RELATIVE CLAUSE: "A cold is an illness that ____."`, a: `"A cold is an illness that causes coughing and a runny nose."` },
+        "1-200": { p: `Complete with a PASSIVE MODAL: "A high fever ____ (must/see) by a doctor immediately."`, a: `must be seen — "A high fever must be seen by a doctor immediately."` },
+        "1-300": { p: `Complete with SHOULD HAVE + PAST PARTICIPLE: "You ate peanuts and got a rash. You ____."`, a: `should have checked — "You should have checked the ingredients first."` },
+        "1-400": { p: `Use a DEFINING RELATIVE CLAUSE: "A sore throat is a condition ____."`, a: `"…that makes it painful to swallow."` },
+        "1-500": { p: `Complete with SHOULD HAVE + PAST PARTICIPLE: "He swam without earplugs and now has an ear infection. He ____."`, a: `should have worn — "He should have worn earplugs."` },
+        "2-100": { p: `Use an INFINITIVE CLAUSE: "Honey is used ____ (soothe) a sore throat."`, a: `to soothe — "Honey is used to soothe a sore throat."` },
+        "2-200": { p: `Use an INFINITIVE CLAUSE: "Water is used ____ (stay) hydrated during a fever."`, a: `to stay — "Water is used to stay hydrated during a fever."` },
+        "2-300": { p: `Complete with WOULD RATHER: "For a headache, I ____ (rest) than take medicine."`, a: `would rather rest — "I would rather rest than take medicine."` },
+        "2-400": { p: `Use BY + GERUND: how can you fight a cold naturally?`, a: `"You can fight a cold by drinking hot soup and resting."` },
+        "2-500": { p: `Add a TAG QUESTION: "Rest helps you recover faster, ____?"`, a: `doesn't it — "Rest helps you recover faster, doesn't it?"` },
+        "3-100": { p: `Use an INFINITIVE CLAUSE WITH FOR: what is a painkiller for?`, a: `"A painkiller is used for relieving pain."` },
+        "3-200": { p: `Complete with FUTURE PERFECT: "By tomorrow, the cough syrup ____ (start) working."`, a: `will have started — "By tomorrow, the cough syrup will have started working."` },
+        "3-300": { p: `Complete with a PASSIVE MODAL: "This medicine ____ (should/take) with food."`, a: `should be taken — "This medicine should be taken with food."` },
+        "3-400": { p: `Complete with a PASSIVE MODAL: "Your temperature ____ (should/check) with a thermometer every few hours."`, a: `should be checked — "Your temperature should be checked with a thermometer every few hours."` },
+        "3-500": { p: `Use GET SOMETHING DONE for a serious infection: what must you do?`, a: `"You must get an X-ray done to check the infection."` },
+        "4-100": { p: `Complete with a modal for a small possibility: "It ____ be nothing serious, but see a doctor to be sure."`, a: `might — "It might be nothing serious, but see a doctor to be sure."` },
+        "4-200": { p: `Complete with SHOULD HAVE + PAST PARTICIPLE: "She got sick because she ____ (not/rest) enough."`, a: `should have rested — "She should have rested enough."` },
+        "4-300": { p: `Complete with a PASSIVE MODAL for an emergency: "In an emergency, an ambulance ____ (must/call)."`, a: `must be called — "An ambulance must be called."` },
+        "4-400": { p: `Give advice using a DEFINING RELATIVE CLAUSE and SHOULD, describing a patient who has the flu.`, a: `"A patient who has the flu should stay home and drink plenty of fluids."` },
+        "4-500": { p: `Explain when we use PASSIVE MODALS (should be / must be) in medical advice, with an example.`, a: `Passive modals focus on the action, not who does it: "The wound must be cleaned."` }
+      },
+      B2: {
+        "0-100": { p: `Use a REDUCED RELATIVE CLAUSE: "Patients ____ (suffer) from migraines should avoid bright light."`, a: `suffering — "Patients suffering from migraines should avoid bright light."` },
+        "0-200": { p: `Complete with UNLESS: "____ you drink more water, your headache won't go away."`, a: `Unless — "Unless you drink more water, your headache won't go away."` },
+        "0-300": { p: `Use a MODAL OF DEDUCTION: "She keeps losing her balance — her blood pressure ____ be very low."`, a: `must — "Her blood pressure must be very low."` },
+        "0-400": { p: `Use CAUSATIVE HAVE: what does a patient do about a cough that won't go away?`, a: `"You should have your chest examined by a doctor."` },
+        "0-500": { p: `Express REGRET with WISH about a stomachache after eating fast food.`, a: `"I wish I hadn't eaten so much fast food."` },
+        "1-100": { p: `Use the PASSIVE OF PRESENT PERFECT: "The flu ____ (report) in many patients this month."`, a: `has been reported — "The flu has been reported in many patients this month."` },
+        "1-200": { p: `Complete with EVEN IF: "____ you feel better, you should still finish the antibiotics."`, a: `Even if — "Even if you feel better, you should still finish the antibiotics."` },
+        "1-300": { p: `Use PAST HABITUAL (would/used to) to describe a childhood illness that came back often.`, a: `"I would get tonsillitis every year as a child."` },
+        "1-400": { p: `Use a REPORTING CLAUSE (passive): "The virus ____ (say/spread) quickly."`, a: `is said to spread — "The virus is said to spread quickly."` },
+        "1-500": { p: `Use a NON-DEFINING RELATIVE CLAUSE: "An ear infection, ____, often follows a bad cold."`, a: `"…which can cause severe pain, often follows a bad cold."` },
+        "2-100": { p: `Use SO…THAT: describe how strong a honey-and-lemon remedy is for a cough.`, a: `"The honey was so soothing that the cough stopped completely."` },
+        "2-200": { p: `Use the PRESENT UNREAL CONDITIONAL: "If I were you, I ____ (drink) more water for that fever."`, a: `would drink — "If I were you, I would drink more water for that fever."` },
+        "2-300": { p: `Use a GERUND AS SUBJECT: what helps most with nausea?`, a: `"Drinking ginger tea slowly settles the stomach."` },
+        "2-400": { p: `Use DESPITE + noun/gerund: soup helps, but it isn't a cure.`, a: `"Despite being comforting, chicken soup doesn't cure a cold."` },
+        "2-500": { p: `Use a THIRD CONDITIONAL about a remedy you didn't try.`, a: `"If I had drunk that tea earlier, I wouldn't have got worse."` },
+        "3-100": { p: `Use PASSIVE OF FUTURE: "The new medicine ____ (release) next month."`, a: `will be released — "The new medicine will be released next month."` },
+        "3-200": { p: `Use a PHRASAL MODAL OF OBLIGATION: "Patients ____ (have to) complete the full course of antibiotics."`, a: `have to — "Patients have to complete the full course of antibiotics."` },
+        "3-300": { p: `Complete with a MIXED CONDITIONAL: "If she hadn't skipped her medication, she ____ (not/be) sick now."`, a: `wouldn't be — "If she hadn't skipped her medication, she wouldn't be sick now."` },
+        "3-400": { p: `Use a PASSIVE MODAL: "Temperature ____ (should/check) every four hours."`, a: `should be checked — "Temperature should be checked every four hours."` },
+        "3-500": { p: `Add a NEGATIVE TAG QUESTION for an opinion: "This medicine doesn't work well, ____?"`, a: `does it — "This medicine doesn't work well, does it?"` },
+        "4-100": { p: `Explain the difference between COULD and MIGHT for medical possibility, with an example of each.`, a: `Both express possibility, but MIGHT often suggests slightly less certainty: "You could have the flu" / "It might just be a cold."` },
+        "4-200": { p: `Use OUGHT TO for advice, then rewrite it with HAD BETTER.`, a: `"You ought to see a doctor." / "You'd better see a doctor today."` },
+        "4-300": { p: `A MODAL WITH MULTIPLE USES: explain both meanings of "You ____ take this twice a day."`, a: `must (obligation) vs. can (permission) — "You must take this twice a day" / "You can take this if needed."` },
+        "4-400": { p: `Use FUTURE PERFECT to reassure a patient about recovery.`, a: `"By next week, you will have recovered completely."` },
+        "4-500": { p: `Explain the difference between UNLESS and EVEN IF in medical warnings, with an example of each.`, a: `UNLESS = "if not" ("Unless you rest, you won't recover"). EVEN IF = despite a condition ("Even if you feel fine, take the full course").` }
+      },
+      C1: {
+        "0-100": { p: `Use a PHRASAL VERB: what happens when you suddenly faint?`, a: `"She passed out after standing up too quickly."` },
+        "0-200": { p: `Use SUCH…THAT to describe an intense migraine.`, a: `"Such was the pain that she couldn't open her eyes."` },
+        "0-300": { p: `Use FRONTING for emphasis, beginning with "Rarely…", about dizziness.`, a: `"Rarely does dizziness occur without an underlying cause."` },
+        "0-400": { p: `Use a PERFECT PARTICIPLE CLAUSE: "____ (cough) for three weeks, he finally saw a specialist."`, a: `Having coughed — "Having coughed for three weeks, he finally saw a specialist."` },
+        "0-500": { p: `Rewrite with INVERSION: "If you had noticed the symptoms earlier, you would have seen a doctor sooner."`, a: `"Had you noticed the symptoms earlier, you would have seen a doctor sooner."` },
+        "1-100": { p: `Use a PHRASAL VERB meaning "to get an illness": "Last week I ____ a bad flu."`, a: `came down with — "Last week I came down with a bad flu."` },
+        "1-200": { p: `Use a CLEFT SENTENCE ("What…") to emphasize the cause of the outbreak.`, a: `"What caused the outbreak was contaminated water."` },
+        "1-300": { p: `Use WHENEVER to describe when allergy symptoms appear.`, a: `"Whenever pollen counts are high, her allergy symptoms flare up."` },
+        "1-400": { p: `Use a NOUN CLAUSE WITH WHOEVER: who should be tested for the virus?`, a: `"Whoever has been in contact with the patient should be tested."` },
+        "1-500": { p: `Use NOMINALISATION: turn "the ear became infected because he swam" into a formal noun phrase.`, a: `"The infection resulted from prolonged exposure to unclean water."` },
+        "2-100": { p: `Use a PHRASAL VERB meaning "to recover from": how long to recover from a cold?`, a: `get over — "It usually takes a week to get over a cold."` },
+        "2-200": { p: `Use EMPHATIC DO to insist that hydration works during a fever.`, a: `"Drinking plenty of water does help bring a fever down."` },
+        "2-300": { p: `Use the SUBJUNCTIVE: what does a nutritionist recommend for recovery?`, a: `"The nutritionist recommended that the patient eat more vegetables."` },
+        "2-400": { p: `Use a CLEFT SENTENCE to emphasize what really helps a sore throat.`, a: `"What really helps a sore throat is warm salt water."` },
+        "2-500": { p: `Use CONCESSIVE INVERSION with "Much as…" about home remedies.`, a: `"Much as home remedies help, they cannot replace medical treatment."` },
+        "3-100": { p: `Use a PHRASAL VERB: what should you do before taking new medicine, regarding side effects?`, a: `look up — "You should look up the side effects before taking new medicine."` },
+        "3-200": { p: `Use HEDGING LANGUAGE to state a cautious claim about antibiotics.`, a: `"Antibiotics appear to be somewhat less effective when courses are left unfinished."` },
+        "3-300": { p: `Give an OVERVIEW OF PASSIVES describing how vaccines are developed and tested.`, a: `"Vaccines are developed, tested, and approved before they are distributed."` },
+        "3-400": { p: `Use a COMPOUND ADJECTIVE to describe a highly-accurate thermometer used in hospitals.`, a: `"This is a fast-reading, hospital-grade thermometer."` },
+        "3-500": { p: `Use a PASSIVE INFINITIVE: "This medication is ____ (take) strictly as prescribed."`, a: `to be taken — "This medication is to be taken strictly as prescribed."` },
+        "4-100": { p: `Use a NOUN CLAUSE WITH WHATEVER to advise on possibility, choosing between COULD and MIGHT for a vague diagnosis.`, a: `"Whatever it could be, you might want to see a doctor just in case."` },
+        "4-200": { p: `Use INVERSION with "Not only…" to give two pieces of medical advice.`, a: `"Not only should you rest, but you should also stay hydrated."` },
+        "4-300": { p: `Rewrite with INVERSION: "If you should notice chest pain, call emergency services immediately."`, a: `"Should you notice chest pain, call emergency services immediately."` },
+        "4-400": { p: `Use an IDIOM about health to advise on prevention.`, a: `"Prevention is better than cure — it's best to get checked early."` },
+        "4-500": { p: `Using a CLEFT SENTENCE, explain what truly matters most: must vs. should.`, a: `"What truly matters is knowing when advice (should) becomes an obligation (must)."` }
+      }
+    };
+    this.altsByLevel = {};
+    this.altsByLevel.A1 = {
+      "0-100": [{ p: `Your head hurts on ONE side and light hurts your eyes. Name the symptom.`, a: `A headache (a migraine). "You should lie down in the dark."` }, { p: `After six hours of homework your head hurts. Name the symptom + advice.`, a: `A headache. "You should take a break and rest your eyes."` }],
+      "0-200": [{ p: `Your face is hot but you feel cold and you shake. Name the symptom.`, a: `A fever (with chills). "You should stay in bed."` }, { p: `The thermometer says 38.5°C. Name the symptom + advice with SHOULD.`, a: `A fever. "You should drink water and rest."` }],
+      "0-300": [{ p: `You stand up fast and everything goes white for a second. Name the symptom.`, a: `Dizziness. "You should stand up slowly."` }, { p: `On the bus you feel sick and the world moves. Name the symptom.`, a: `Dizziness (travel sickness). "You should look out of the window."` }],
+      "0-400": [{ p: `You make a loud noise from your chest every two minutes. Name the symptom.`, a: `A cough. "You should drink honey tea."` }, { p: `Your throat is dry and you can't stop this noise at night. Name the symptom.`, a: `A cough. "You shouldn't drink cold water."` }],
+      "0-500": [{ p: `Your stomach makes noises and you run to the bathroom. Name the symptom.`, a: `A stomachache. "You should drink water and eat rice."` }, { p: `After a big pizza your stomach feels tight and hurts. Name the symptom.`, a: `A stomachache. "You shouldn't eat so fast."` }],
+      "1-100": [{ p: `Your nose is blocked for three days, no fever. What is the illness?`, a: `A cold. "You should rest and drink tea."` }, { p: `Everybody in class is sneezing in winter. What illness is it?`, a: `A cold. "You should wash your hands."` }],
+      "1-200": [{ p: `Fever 39°C, body pain, and you can't get out of bed. What illness?`, a: `The flu. "You must stay home."` }, { p: `Which illness has a vaccine every winter?`, a: `The flu. "You should get the flu vaccine."` }],
+      "1-300": [{ p: `In spring your eyes are red and you sneeze near flowers. What is it?`, a: `An allergy. "You should take an antihistamine."` }, { p: `You touch a cat and your arms get itchy spots. What is it?`, a: `An allergy. "You shouldn't touch cats."` }],
+      "1-400": [{ p: `You can't sing and swallowing hurts. What is it?`, a: `A sore throat. "You should drink warm tea."` }, { p: `Your throat is red and it hurts to talk. What is it?`, a: `A sore throat. "You shouldn't shout."` }],
+      "1-500": [{ p: `After swimming, one ear hurts and feels full. What illness?`, a: `An ear infection. "You should see a doctor."` }, { p: `A child cries and touches one ear again and again. What illness?`, a: `An ear infection. "You must go to the doctor."` }],
+      "2-100": [{ p: `Which yellow food from bees do we put in tea for a sore throat?`, a: `Honey. "You should drink tea with honey."` }, { p: `For a sore throat, what do you gargle with (water and…)?`, a: `Salt water. "You should gargle with warm salt water."` }],
+      "2-200": [{ p: `For a fever, what wet thing do you put on your head?`, a: `A cold cloth. "You should put a cold cloth on your head."` }, { p: `For a fever, which drink is the best — coffee, water or cola?`, a: `Water. "You should drink water, not cola."` }],
+      "2-300": [{ p: `For a bad stomach, which simple white food is good?`, a: `Rice. "You should eat rice and bananas."` }, { p: `For nausea, which spicy root helps in tea?`, a: `Ginger. "You should drink ginger tea."` }],
+      "2-400": [{ p: `For a cold, which orange fruit gives you vitamin C?`, a: `Oranges. "You should eat oranges."` }, { p: `For a cold, what hot liquid food does your family make?`, a: `Chicken soup. "You should eat hot soup."` }],
+      "2-500": [{ p: `For a headache, what should you do with your phone and the lights?`, a: `Turn them off. "You should sleep in a dark room."` }, { p: `For tired eyes and a headache, how many hours should you sleep?`, a: `Eight hours. "You should sleep eight hours."` }],
+      "3-100": [{ p: `Which pill do you take for pain — paracetamol or vitamins?`, a: `Paracetamol (a painkiller). "You should take a painkiller."` }, { p: `Your tooth hurts at night. What do you take before the dentist?`, a: `A painkiller. "You should take a painkiller."` }],
+      "3-200": [{ p: `For a cough, do you buy syrup or a plaster?`, a: `Syrup. "You should take cough syrup."` }, { p: `Which sweet medicine do children take for a cough?`, a: `Cough syrup. "You should take one spoon."` }],
+      "3-300": [{ p: `Your knee is bleeding a little. What do you put on it?`, a: `A plaster. "You should clean it and put a plaster on it."` }, { p: `What do you use to cover a small cut?`, a: `A plaster (a bandage). "You should cover it."` }],
+      "3-400": [{ p: `Which tool tells you if you have 38°C?`, a: `A thermometer. "You should use a thermometer."` }, { p: `Where do you put a thermometer, and why?`, a: `Under your arm / in your mouth, to check your temperature.` }],
+      "3-500": [{ p: `Which medicine kills bacteria, and who gives it to you?`, a: `Antibiotics, from a doctor. "You must see a doctor."` }, { p: `You feel better after 3 days of antibiotics. What MUST you do?`, a: `Finish them. "You must finish all the pills."` }],
+      "4-100": [{ p: `Complete: "I'm not sure. It ____ be an allergy." (possibility)`, a: `might / could — "It might be an allergy."` }, { p: `Which modal shows we are NOT sure: MUST or MIGHT?`, a: `MIGHT. "It might be a cold."` }],
+      "4-200": [{ p: `Complete: "You ____ drink more water." (advice)`, a: `should — "You should drink more water."` }, { p: `Give advice to a friend with a cough using SHOULD.`, a: `"You should drink warm tea and rest."` }],
+      "4-300": [{ p: `Complete: "In the hospital you ____ be quiet." (a rule)`, a: `must — "You must be quiet."` }, { p: `Which modal do we use for rules and emergencies?`, a: `MUST. "You must call an ambulance."` }],
+      "4-400": [{ p: `Your friend has a stomachache. Give ONE thing to do and ONE not to do.`, a: `"You should drink water. You shouldn't eat fast food."` }, { p: `Complete with SHOULDN'T: "You ____ go to school with a fever."`, a: `shouldn't — "You shouldn't go to school with a fever."` }],
+      "4-500": [{ p: `Say ONE sentence with MUST and ONE with SHOULD about being sick.`, a: `"You must take your medicine. You should rest more."` }, { p: `Is "You should call an ambulance" strong enough in an emergency? Why?`, a: `No — use MUST: "You must call an ambulance." MUST is stronger.` }]
+    };
+    this.altsByLevel.B2 = {
+      "0-100": [{ p: `Use a REDUCED RELATIVE CLAUSE: "Anyone ____ (take) painkillers daily should consult a doctor."`, a: `taking — "Anyone taking painkillers daily should consult a doctor."` }, { p: `Use a PARTICIPLE CLAUSE: "____ (feel) a sharp headache, she lay down."`, a: `Feeling — "Feeling a sharp headache, she lay down."` }],
+      "0-200": [{ p: `Complete with UNLESS: "____ the fever drops, we'll go to hospital."`, a: `Unless — "Unless the fever drops, we'll go to hospital."` }, { p: `Rewrite with UNLESS: "If you don't rest, the migraine will return."`, a: `"Unless you rest, the migraine will return."` }],
+      "0-300": [{ p: `Use a MODAL OF DEDUCTION: "He hasn't eaten all day — he ____ be feeling faint."`, a: `must — "He must be feeling faint."` }, { p: `Use CAN'T for deduction: "She ran 10 km, so she ____ be that dizzy."`, a: `can't — "She can't be that dizzy."` }],
+      "0-400": [{ p: `Use CAUSATIVE GET: what do you do about a persistent cough?`, a: `"You should get your lungs checked."` }, { p: `Use CAUSATIVE HAVE: "I'm going to ____ my chest X-rayed tomorrow."`, a: `have — "I'm going to have my chest X-rayed tomorrow."` }],
+      "0-500": [{ p: `Express REGRET with WISH about not seeing a doctor sooner for stomach pain.`, a: `"I wish I had seen a doctor sooner."` }, { p: `Use IF ONLY about last night's dinner.`, a: `"If only I hadn't eaten that street food."` }],
+      "1-100": [{ p: `Use the PASSIVE OF PRESENT PERFECT: "Three flu cases ____ (confirm) at the clinic."`, a: `have been confirmed — "Three flu cases have been confirmed at the clinic."` }, { p: `Use the PASSIVE OF PAST SIMPLE: "The patient ____ (diagnose) with the flu yesterday."`, a: `was diagnosed — "The patient was diagnosed with the flu yesterday."` }],
+      "1-200": [{ p: `Complete with EVEN IF: "____ the fever goes away, the virus may still be active."`, a: `Even if — "Even if the fever goes away, the virus may still be active."` }, { p: `Use EVEN THOUGH about coming to work with the flu.`, a: `"Even though he felt better, he stayed home."` }],
+      "1-300": [{ p: `Use PAST HABITUAL (would) about seasonal allergies in childhood.`, a: `"Every spring I would sneeze for weeks."` }, { p: `Use USED TO about an allergy you no longer have.`, a: `"I used to be allergic to dust, but I'm not anymore."` }],
+      "1-400": [{ p: `Use a REPORTING CLAUSE (passive): "Antibiotics ____ (believe/be) overprescribed."`, a: `are believed to be — "Antibiotics are believed to be overprescribed."` }, { p: `Use REPORTED SPEECH: Doctor: "Your throat is infected."`, a: `"The doctor said my throat was infected."` }],
+      "1-500": [{ p: `Use a NON-DEFINING RELATIVE CLAUSE: "Dr Ruiz, ____, treated the infection."`, a: `"…who specialises in ear infections, treated the infection."` }, { p: `Join with WHICH: "He ignored the earache. That made it worse."`, a: `"He ignored the earache, which made it worse."` }],
+      "2-100": [{ p: `Use SO…THAT about a salt-water gargle.`, a: `"The gargle was so effective that the pain eased at once."` }, { p: `Use SUCH A…THAT about a honey remedy.`, a: `"It was such a simple remedy that everyone tried it."` }],
+      "2-200": [{ p: `Use the PRESENT UNREAL CONDITIONAL: "If I had a fever, I ____ (stay) in bed."`, a: `would stay — "If I had a fever, I would stay in bed."` }, { p: `Give advice with IF I WERE YOU about a 39°C fever.`, a: `"If I were you, I'd call a doctor tonight."` }],
+      "2-300": [{ p: `Use a GERUND AS SUBJECT: what eases an upset stomach?`, a: `"Eating plain rice helps settle an upset stomach."` }, { p: `Gerund or infinitive: "I avoid ____ (drink) coffee when nauseous."`, a: `drinking — "I avoid drinking coffee when nauseous."` }],
+      "2-400": [{ p: `Use ALTHOUGH: soup comforts you but doesn't cure a cold.`, a: `"Although soup is comforting, it doesn't cure a cold."` }, { p: `Use IN SPITE OF about home remedies and a persistent cold.`, a: `"In spite of all the remedies, the cold lasted a week."` }],
+      "2-500": [{ p: `Use a THIRD CONDITIONAL about ignoring a remedy.`, a: `"If she had rested, she wouldn't have got worse."` }, { p: `Use a THIRD CONDITIONAL about not drinking enough water.`, a: `"If I had drunk more water, I wouldn't have had a headache."` }],
+      "3-100": [{ p: `Use PASSIVE OF FUTURE: "The results ____ (send) to your doctor."`, a: `will be sent — "The results will be sent to your doctor."` }, { p: `Use the PASSIVE: "Painkillers ____ (sell) without a prescription here."`, a: `are sold — "Painkillers are sold without a prescription here."` }],
+      "3-200": [{ p: `Use a PHRASAL MODAL: "Children ____ (not/have to) take this dose."`, a: `don't have to — "Children don't have to take this dose."` }, { p: `Contrast MUSTN'T and DON'T HAVE TO with cough syrup.`, a: `"You mustn't exceed the dose. You don't have to take it with food."` }],
+      "3-300": [{ p: `Use a MIXED CONDITIONAL: "If he had read the label, he ____ (not/feel) ill now."`, a: `wouldn't feel — "If he had read the label, he wouldn't feel ill now."` }, { p: `Use a MIXED CONDITIONAL about a missed pharmacy visit.`, a: `"If I had gone to the pharmacy, I would have the syrup now."` }],
+      "3-400": [{ p: `Use a PASSIVE MODAL: "Thermometers ____ (must/clean) after every use."`, a: `must be cleaned — "Thermometers must be cleaned after every use."` }, { p: `Use a PASSIVE MODAL: "This medicine ____ (can/store) at room temperature."`, a: `can be stored — "This medicine can be stored at room temperature."` }],
+      "3-500": [{ p: `Add a TAG QUESTION: "You've already taken your pills, ____?"`, a: `haven't you — "You've already taken your pills, haven't you?"` }, { p: `Add a TAG QUESTION: "Antibiotics won't help a cold, ____?"`, a: `will they — "Antibiotics won't help a cold, will they?"` }],
+      "4-100": [{ p: `Rank MUST, MIGHT and CAN'T by certainty, with a medical example of each.`, a: `MUST (certain) > MIGHT (possible) > CAN'T (impossible): "It must be flu / It might be flu / It can't be flu."` }, { p: `Complete: "It ____ be serious, but we can't rule it out." (small possibility)`, a: `might — "It might be serious, but we can't rule it out."` }],
+      "4-200": [{ p: `Use HAD BETTER to warn about ignoring chest pain.`, a: `"You'd better not ignore chest pain."` }, { p: `Rewrite with OUGHT TO: "You should drink more water."`, a: `"You ought to drink more water."` }],
+      "4-300": [{ p: `Explain two uses of CAN in a clinic, with an example of each.`, a: `Ability and permission: "I can read the label" / "You can wait here."` }, { p: `Explain the difference between MUSTN'T and NEEDN'T with medication.`, a: `MUSTN'T = prohibited ("You mustn't double the dose"). NEEDN'T = not necessary ("You needn't take it with food").` }],
+      "4-400": [{ p: `Use FUTURE PERFECT: "By Friday, she ____ (finish) the antibiotics."`, a: `will have finished — "By Friday, she will have finished the antibiotics."` }, { p: `Use FUTURE PERFECT CONTINUOUS about a long treatment.`, a: `"By June, he will have been taking that medicine for a year."` }],
+      "4-500": [{ p: `Contrast SHOULD and MUST in hospital instructions, with an example of each.`, a: `SHOULD = recommendation ("You should rest"). MUST = obligation ("You must sign this form").` }, { p: `Explain when EVEN IF is stronger than IF in a health warning.`, a: `EVEN IF concedes the condition: "Even if you feel fine, finish the course" — the advice holds regardless.` }]
+    };
+    this.altsByLevel.C1 = {
+      "0-100": [{ p: `Use a PHRASAL VERB meaning to collapse suddenly, in a warning about heat.`, a: `"He blacked out in the heat and had to be carried inside."` }, { p: `Use a PHRASAL VERB meaning to feel unwell gradually: "I'm ____ with something."`, a: `coming down — "I'm coming down with something."` }],
+      "0-200": [{ p: `Use SO…THAT with INVERSION about a severe headache.`, a: `"So severe was the headache that she could not speak."` }, { p: `Use SUCH…THAT about the intensity of nerve pain.`, a: `"Such was the intensity of the pain that morphine was required."` }],
+      "0-300": [{ p: `Use FRONTING beginning with "Seldom…" about ignoring dizziness.`, a: `"Seldom is dizziness safe to ignore entirely."` }, { p: `Use FRONTING beginning with "Only after…" about a diagnosis.`, a: `"Only after several tests did the cause of the dizziness emerge."` }],
+      "0-400": [{ p: `Use a PERFECT PARTICIPLE CLAUSE: "____ (ignore) the symptoms, he grew worse."`, a: `Having ignored — "Having ignored the symptoms, he grew worse."` }, { p: `Use a PASSIVE PARTICIPLE CLAUSE: "____ (treat) early, most coughs clear quickly."`, a: `Treated — "Treated early, most coughs clear quickly."` }],
+      "0-500": [{ p: `Rewrite with INVERSION: "If I had known about the allergy, I would have warned you."`, a: `"Had I known about the allergy, I would have warned you."` }, { p: `Rewrite with INVERSION: "If it had not been for the nurse, he would have collapsed."`, a: `"Had it not been for the nurse, he would have collapsed."` }],
+      "1-100": [{ p: `Use a PHRASAL VERB meaning symptoms suddenly return: "Her asthma ____ again."`, a: `flared up — "Her asthma flared up again."` }, { p: `Use a PHRASAL VERB meaning to fight off an illness.`, a: `"His immune system shook off the infection within days."` }],
+      "1-200": [{ p: `Use an "It was…that" CLEFT to emphasize when the outbreak began.`, a: `"It was in early spring that the outbreak began."` }, { p: `Use an "All…" CLEFT about treating the flu.`, a: `"All the patient needed was rest and fluids."` }],
+      "1-300": [{ p: `Use NO MATTER HOW about controlling allergy symptoms.`, a: `"No matter how carefully she cleans, the dust triggers her allergy."` }, { p: `Use WHEREVER about seasonal allergies while travelling.`, a: `"Wherever she travels in spring, her allergies follow."` }],
+      "1-400": [{ p: `Use a NOUN CLAUSE WITH WHOEVER about vaccination priority.`, a: `"Whoever is most at risk should be vaccinated first."` }, { p: `Use a NOUN CLAUSE WITH WHATEVER about following instructions.`, a: `"Whatever the doctor prescribes should be taken exactly as directed."` }],
+      "1-500": [{ p: `Use NOMINALISATION: turn "the antibiotics worked quickly" into formal register.`, a: `"The rapid effectiveness of the antibiotics was evident within days."` }, { p: `Use NOMINALISATION for "he recovered slowly".`, a: `"His slow recovery required several weeks of rest."` }],
+      "2-100": [{ p: `Use a PHRASAL VERB meaning to reduce gradually, about a fever.`, a: `"The fever tailed off after two days of rest."` }, { p: `Use a PHRASAL VERB meaning to alleviate: "The tea ____ the soreness."`, a: `eased off — "The soreness eased off after the tea."` }],
+      "2-200": [{ p: `Use EMPHATIC DO to insist that rest matters more than medicine.`, a: `"Rest does matter more than most people realise."` }, { p: `Use EMPHATIC DID about a remedy that worked.`, a: `"The salt-water gargle did work, after all."` }],
+      "2-300": [{ p: `Use the SUBJUNCTIVE after "insist": what does a herbalist insist on?`, a: `"The herbalist insisted that the tea be drunk warm."` }, { p: `Use the SUBJUNCTIVE after "essential": hydration during a fever.`, a: `"It is essential that the patient drink water regularly."` }],
+      "2-400": [{ p: `Use a "The reason…is that" CLEFT about why soup helps.`, a: `"The reason soup helps is that it restores fluids and salt."` }, { p: `Use a "What…" CLEFT about the limits of home remedies.`, a: `"What home remedies cannot do is treat a bacterial infection."` }],
+      "2-500": [{ p: `Use CONCESSIVE INVERSION with "Try as she might…" about a stubborn cough.`, a: `"Try as she might, she could not shake off the cough."` }, { p: `Use "Useful though they are…" about home remedies.`, a: `"Useful though they are, home remedies have clear limits."` }],
+      "3-100": [{ p: `Use a PHRASAL VERB meaning to stop taking a drug gradually.`, a: `"The dose should be tapered off, not stopped abruptly."` }, { p: `Use a PHRASAL VERB meaning to run out: "The pharmacy has ____ of syrup."`, a: `run out — "The pharmacy has run out of syrup."` }],
+      "3-200": [{ p: `Use HEDGING to report an uncertain finding about a painkiller.`, a: `"The painkiller may possibly cause mild drowsiness in some patients."` }, { p: `Rewrite as a hedged claim: "Antibiotics cure all infections."`, a: `"Antibiotics tend to be effective against bacterial, though not viral, infections."` }],
+      "3-300": [{ p: `Describe with PASSIVES how a prescription is filled at a pharmacy.`, a: `"The prescription is checked, the dose is verified, and the medicine is dispensed."` }, { p: `Use a PASSIVE with an agent about drug approval.`, a: `"New medicines are approved by national health authorities."` }],
+      "3-400": [{ p: `Use a COMPOUND ADJECTIVE for a medicine you take once a day.`, a: `"It's a once-a-day, slow-release tablet."` }, { p: `Use a COMPOUND ADJECTIVE for a pharmacy open all night.`, a: `"It's a 24-hour, walk-in pharmacy."` }],
+      "3-500": [{ p: `Use a PASSIVE INFINITIVE: "The dose is not ____ (exceed) under any circumstances."`, a: `to be exceeded — "The dose is not to be exceeded under any circumstances."` }, { p: `Use a PASSIVE INFINITIVE about storage instructions.`, a: `"This syrup is to be kept refrigerated after opening."` }],
+      "4-100": [{ p: `Use a NOUN CLAUSE WITH HOWEVER, hedging a diagnosis.`, a: `"However mild it may seem, it could still warrant a check-up."` }, { p: `Contrast COULD, MIGHT and MAY in a cautious diagnosis.`, a: `"It may be viral; it could be bacterial; it might simply be exhaustion."` }],
+      "4-200": [{ p: `Use INVERSION with "Under no circumstances…" about mixing medicines.`, a: `"Under no circumstances should you mix these two medicines."` }, { p: `Use INVERSION with "No sooner…" about symptoms and treatment.`, a: `"No sooner had she taken the pill than the pain subsided."` }],
+      "4-300": [{ p: `Rewrite with INVERSION: "If you were to faint again, seek help immediately."`, a: `"Were you to faint again, seek help immediately."` }, { p: `Rewrite formally with SHOULD-inversion: "If symptoms persist, consult your doctor."`, a: `"Should symptoms persist, consult your doctor."` }],
+      "4-400": [{ p: `Use an IDIOM meaning fully recovered.`, a: `"After a week's rest she was back on her feet."` }, { p: `Use an IDIOM meaning feeling unwell.`, a: `"He's been under the weather since Monday."` }],
+      "4-500": [{ p: `Use a CLEFT SENTENCE to emphasize what patients most often get wrong.`, a: `"What patients most often get wrong is stopping treatment too early."` }, { p: `Use an "It is…that" CLEFT about the value of prevention.`, a: `"It is prevention that saves the most lives, not treatment."` }]
+    };
+    this.values = values;
+    this.topicList = [
+      { id: "medical", name: "Medical & Health" },
+      { id: "food", name: "Food & Restaurants" },
+      { id: "travel", name: "Travel & Airports" },
+      { id: "school", name: "School & Studying" },
+      { id: "work", name: "Work & Jobs" },
+      { id: "sports", name: "Sports & Fitness" },
+      { id: "tech", name: "Technology & Social Media" },
+      { id: "weather", name: "Weather & Seasons" },
+      { id: "shopping", name: "Shopping & Money" },
+      { id: "house", name: "House & Daily Routine" },
+      { id: "animals", name: "Animals & Nature" },
+      { id: "city", name: "City & Directions" },
+      { id: "holidays", name: "Holidays & Festivals" }
+    ];
+    this.packs = { medical: { name: "Medical & Health", cats, contentByLevel, altsByLevel: this.altsByLevel } };
+    this.cats = cats; this.contentByLevel = contentByLevel;
+    const startLevel = contentByLevel[this.props.startingLevel] ? this.props.startingLevel : "A1";
+    const cards = this.buildCards(startLevel);
+    const stars = [];
+    for (let i = 0; i < 72; i++) {
+      stars.push({
+        id: i,
+        left: (Math.random() * 100).toFixed(2) + "%",
+        top: (Math.random() * 100).toFixed(2) + "%",
+        size: (Math.random() * 2 + 1).toFixed(1),
+        delay: (Math.random() * 4).toFixed(2) + "s",
+        dur: (Math.random() * 3 + 2).toFixed(2) + "s"
+      });
+    }
+    this.stars = stars;
+    this.state = { intro: true, topic: "medical", topicLoading: null, topicError: null, cards, cats, level: startLevel, t1: { name: "Team 1", score: 0 }, t2: { name: "Team 2", score: 0 }, students1: [], students2: [], newS1: "", newS2: "", creditTeam: null, active: 1, open: null, phase: null, timer: this.dur(), timeUp: false, trapText: null, trapKind: null, trapBetLabel: null, trapChoice: null, wagerAmount: 100, wagerSpinning: false, wagerFlicker: null };
+  }
+
+  buildCards(level) {
+    const content = this.contentByLevel[level] || this.contentByLevel.A1;
+    const shuffled = [...this.values];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    const cards = [];
+    this.values.forEach(v => this.cats.forEach((name, c) => {
+      const key = c + "-" + v;
+      const co = content[key] || { p: "", a: "" };
+      const lvlAlts = this.altsByLevel[level] || {};
+      const variants = [{ p: co.p, a: co.a }].concat(lvlAlts[key] || []);
+      cards.push({ id: key, cat: c, catName: name, value: v, isTrap: shuffled[c] === v, prompt: co.p, answer: co.a, variants, vi: 0, used: false });
+    }));
+    return cards;
+  }
+
+  dur() { return this.props.timerSeconds ?? 15; }
+  stealAmt() { return this.props.stealAmount ?? 300; }
+  soundOn() { return this.props.enableSound ?? true; }
+
+  componentDidMount() {
+    this._trapIv = setInterval(() => this.shuffleTrapPositions(), this.props.trapShuffleSeconds ? this.props.trapShuffleSeconds * 1000 : 18000);
+  }
+  shuffleTrapPositions() {
+    if (this.state.open != null) return;
+    this.setState(s => {
+      const free = s.cards.filter(c => !c.used);
+      if (free.length < 2) return null;
+      const trapCount = free.filter(c => c.isTrap).length || 1;
+      const shuffledFree = [...free];
+      for (let i = shuffledFree.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledFree[i], shuffledFree[j]] = [shuffledFree[j], shuffledFree[i]];
+      }
+      const trapIds = new Set(shuffledFree.slice(0, trapCount).map(c => c.id));
+      const cards = s.cards.map(c => c.used ? c : { ...c, isTrap: trapIds.has(c.id) });
+      return { cards };
+    });
+  }
+  componentWillUnmount() { this.stop(); if (this._wiv) clearInterval(this._wiv); if (this._trapIv) clearInterval(this._trapIv); }
+
+  normalisePack(raw) {
+    const contentByLevel = {}, altsByLevel = {};
+    ["A1","A2","B1","B2","C1"].forEach(lvl => {
+      const src = raw.q[lvl] || {};
+      const c = {}, al = {};
+      Object.keys(src).forEach(k => {
+        const list = src[k] || [];
+        if (!list.length) return;
+        c[k] = { p: list[0][0], a: list[0][1] };
+        if (list.length > 1) al[k] = list.slice(1).map(v => ({ p: v[0], a: v[1] }));
+      });
+      contentByLevel[lvl] = c; altsByLevel[lvl] = al;
+    });
+    return { name: raw.name, cats: raw.cats, contentByLevel, altsByLevel };
+  }
+  applyPack(id) {
+    const p = this.packs[id];
+    this.cats = p.cats; this.contentByLevel = p.contentByLevel; this.altsByLevel = p.altsByLevel;
+    this.stop();
+    this.setState(s => ({ topic: id, topicLoading: null, cats: p.cats, cards: this.buildCards(s.level), open: null, phase: null, timeUp: false, trapChoice: null, wagerSpinning: false }));
+  }
+  setTopic(id) {
+    if (!id || id === this.state.topic || this.state.topicLoading) return;
+    if (this.packs[id]) return this.applyPack(id);
+    this.setState({ topicLoading: id });
+    import(`./topics/${id}.js`)
+      .then(m => { this.packs[id] = this.normalisePack(m.default); this.applyPack(id); })
+      .catch(() => this.setState({ topicLoading: null, topicError: id }));
+  }
+
+  setLevel(level) {
+    if (!this.contentByLevel[level] || level === this.state.level) return;
+    this.stop();
+    this.setState({ level, cards: this.buildCards(level), open: null, phase: null, timeUp: false, showWager: false });
+  }
+
+  wagerCap() {
+    const key = this.state.active === 1 ? "t1" : "t2";
+    const card = this.state.cards.find(c => c.id === this.state.open);
+    const byCard = (card ? card.value : 200) * 2;
+    return Math.min(this.state[key].score, byCard);
+  }
+  wagerTier(amount) {
+    const cap = this.wagerCap();
+    const ratio = cap > 0 ? amount / cap : 0;
+    return ratio > 0.5 ? "high" : "low";
+  }
+  wagerCombos(amount) {
+    return this.wagerTier(amount) === "high"
+      ? [{ mult: 1.5, sign: 1 }, { mult: 1, sign: 1 }, { mult: 1, sign: -1 }, { mult: 1.5, sign: -1 }]
+      : [{ mult: 2, sign: 1 }, { mult: 3, sign: 1 }, { mult: 1, sign: 1 }, { mult: 1, sign: -1 }, { mult: 2, sign: -1 }];
+  }
+  chooseBet() {
+    const cap = this.wagerCap();
+    this.setState({ trapChoice: "bet", wagerAmount: cap > 0 ? Math.min(Math.max(10, Math.round(cap / 2 / 10) * 10), cap) : 0 });
+  }
+  backToChoice() { this.setState({ trapChoice: null }); }
+  setWagerAmount(v) {
+    const max = this.wagerCap();
+    let n = parseInt(v, 10); if (isNaN(n) || n < 0) n = 0;
+    if (n > max) n = max;
+    this.setState({ wagerAmount: n });
+  }
+  spinTrapBet() {
+    const id = this.state.open;
+    const key = this.state.active === 1 ? "t1" : "t2";
+    const amount = this.state.wagerAmount;
+    if (!amount || amount <= 0 || this.state.wagerSpinning) return;
+    const combos = this.wagerCombos(amount);
+    const labels = combos.map(c => (c.sign > 0 ? "+×" : "−×") + c.mult);
+    this.setState({ wagerSpinning: true, wagerFlicker: labels[0] });
+    let ticks = 0;
+    this._wiv = setInterval(() => {
+      ticks++;
+      this.tone(220 + Math.random() * 300, 0.05, "square", 0.06);
+      this.setState({ wagerFlicker: labels[Math.floor(Math.random() * labels.length)] });
+      if (ticks > 16) {
+        clearInterval(this._wiv); this._wiv = null;
+        const chosen = combos[Math.floor(Math.random() * combos.length)];
+        const delta = Math.round(amount * chosen.mult) * chosen.sign;
+        const label = (chosen.sign > 0 ? "+×" : "−×") + chosen.mult;
+        this.sfxTrap();
+        this.setState(s => {
+          const t = { ...s[key], score: Math.max(0, s[key].score + delta) };
+          const cards = s.cards.map(c => c.id === id ? { ...c, used: true } : c);
+          const text = `${s[key].name} bet ${amount} and the wheel landed on ${label}!  ${delta >= 0 ? "+" : ""}${delta} points.`;
+          return { [key]: t, cards, wagerSpinning: false, wagerFlicker: null, phase: "trapResult", trapKind: "bet", trapBetLabel: label, trapText: text };
+        });
+      }
+    }, 100);
+  }
+
+  ac() {
+    if (!this.soundOn()) return null;
+    if (!this._ac) { const A = window.AudioContext || window.webkitAudioContext; this._ac = new A(); }
+    if (this._ac.state === "suspended") this._ac.resume();
+    return this._ac;
+  }
+  tone(freq, dur, type, vol) {
+    const ac = this.ac(); if (!ac) return;
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type || "sine"; o.frequency.value = freq;
+    o.connect(g); g.connect(ac.destination);
+    const t = ac.currentTime;
+    g.gain.setValueAtTime(vol || 0.14, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.start(t); o.stop(t + dur);
+  }
+  sfxOpen() { this.tone(320, 0.12, "sawtooth", 0.12); setTimeout(() => this.tone(640, 0.18, "sawtooth", 0.12), 90); }
+  sfxBuzz() { this.tone(130, 0.5, "square", 0.2); setTimeout(() => this.tone(90, 0.5, "square", 0.18), 120); }
+  sfxTrap() { this.tone(90, 0.55, "sawtooth", 0.22); setTimeout(() => this.tone(66, 0.5, "square", 0.2), 160); }
+  sfxTick() { this.tone(900, 0.05, "sine", 0.07); }
+
+  open(id) {
+    const card = this.state.cards.find(c => c.id === id);
+    if (!card || card.used) return;
+    if (card.isTrap) { this.sfxTrap(); this.setState({ open: id, phase: "trap", timeUp: false, trapText: null, trapKind: null, trapBetLabel: null, trapChoice: null }); return; }
+    this.sfxOpen();
+    this.setState({ open: id, phase: "question", timer: this.dur(), timeUp: false });
+    this.start();
+  }
+  start() {
+    this.stop();
+    this._iv = setInterval(() => {
+      this.setState(s => {
+        const n = s.timer - 1;
+        if (n <= 0) { this.stop(); this.sfxBuzz(); return { timer: 0, timeUp: true }; }
+        if (n <= 5) this.sfxTick();
+        return { timer: n };
+      });
+    }, 1000);
+  }
+  stop() { if (this._iv) { clearInterval(this._iv); this._iv = null; } }
+  swapQuestion() {
+    const id = this.state.open;
+    this.setState(s => {
+      const cards = s.cards.map(c => {
+        if (c.id !== id || !c.variants || c.variants.length < 2) return c;
+        const vi = (c.vi + 1) % c.variants.length;
+        return { ...c, vi, prompt: c.variants[vi].p, answer: c.variants[vi].a };
+      });
+      return { cards, phase: "question", timer: this.dur(), timeUp: false };
+    });
+    this.sfxOpen();
+    this.start();
+  }
+  revealAnswer() { this.stop(); this.setState({ phase: "answer" }); }
+  addStudent(team) {
+    const k = team === 1 ? "students1" : "students2";
+    const nk = team === 1 ? "newS1" : "newS2";
+    this.setState(s => {
+      const name = (s[nk] || "").trim();
+      if (!name) return {};
+      if (s[k].some(st => st.name.toLowerCase() === name.toLowerCase())) return { [nk]: "" };
+      return { [k]: [...s[k], { name, answers: 0 }], [nk]: "" };
+    });
+  }
+  removeStudent(team, name) {
+    const k = team === 1 ? "students1" : "students2";
+    this.setState(s => ({ [k]: s[k].filter(st => st.name !== name) }));
+  }
+  award(team) {
+    const k = team === 1 ? "students1" : "students2";
+    if (this.state[k].length) { this.stop(); this.setState({ phase: "credit", creditTeam: team }); return; }
+    this.finishAward(team, null);
+  }
+  finishAward(team, name) {
+    const id = this.state.open;
+    this.stop();
+    this.setState(s => {
+      const card = s.cards.find(c => c.id === id);
+      const key = team === 1 ? "t1" : "t2";
+      const sk = team === 1 ? "students1" : "students2";
+      const t = { ...s[key], score: s[key].score + card.value };
+      const roster = name ? s[sk].map(st => st.name === name ? { ...st, answers: st.answers + 1 } : st) : s[sk];
+      const cards = s.cards.map(c => c.id === id ? { ...c, used: true } : c);
+      return { [key]: t, [sk]: roster, cards, open: null, phase: null, timeUp: false, creditTeam: null, active: team === 1 ? 2 : 1 };
+    });
+  }
+  noPoints() {
+    const id = this.state.open;
+    this.stop();
+    this.setState(s => ({ cards: s.cards.map(c => c.id === id ? { ...c, used: true } : c), open: null, phase: null, timeUp: false, active: s.active === 1 ? 2 : 1 }));
+  }
+  close() { this.stop(); if (this._wiv) { clearInterval(this._wiv); this._wiv = null; } this.setState({ open: null, phase: null, timeUp: false, trapChoice: null }); }
+  revealFate() {
+    const id = this.state.open;
+    const kinds = ["x2", "x3", "steal"];
+    const kind = kinds[Math.floor(Math.random() * kinds.length)];
+    this.sfxTrap();
+    this.setState(s => {
+      const aKey = s.active === 1 ? "t1" : "t2", oKey = s.active === 1 ? "t2" : "t1";
+      let a = { ...s[aKey] }, o = { ...s[oKey] }, text = "";
+      const cardVal = (s.cards.find(c => c.id === id) || { value: 200 }).value;
+      if (kind === "x2") { const g = cardVal * 2; text = `${a.name} wins DOUBLE the card value: +${g} points.`; a.score += g; }
+      else if (kind === "x3") { const g = cardVal * 3; text = `${a.name} wins TRIPLE the card value: +${g} points.`; a.score += g; }
+      else { const amt = Math.min(this.stealAmt(), o.score); if (amt <= 0) { const g = cardVal; text = `${o.name} has nothing to steal — ${a.name} takes +${g} points instead.`; a.score += g; } else { text = `${a.name} STEALS ${amt} points from ${o.name}!`; a.score += amt; o.score -= amt; } }
+      const cards = s.cards.map(c => c.id === id ? { ...c, used: true } : c);
+      return { [aKey]: a, [oKey]: o, cards, phase: "trapResult", trapText: text, trapKind: kind };
+    });
+  }
+  reset() {
+    this.stop();
+    if (this._wiv) { clearInterval(this._wiv); this._wiv = null; }
+    this.setState(s => ({ cards: this.buildCards(s.level), t1: { ...s.t1, score: 0 }, t2: { ...s.t2, score: 0 }, students1: s.students1.map(st => ({ ...st, answers: 0 })), students2: s.students2.map(st => ({ ...st, answers: 0 })), creditTeam: null, active: 1, open: null, phase: null, timeUp: false, trapChoice: null, wagerSpinning: false, wagerFlicker: null }));
+  }
+  setActive(t) { this.setState({ active: t }); }
+  begin() { this.setState({ intro: false }); }
+  openShare() { this.setState({ shareOpen: true }); }
+  closeShare() { this.setState({ shareOpen: false }); }
+  menu() { this.stop(); this.setState({ intro: true, open: null, phase: null, timeUp: false, trapChoice: null, wagerSpinning: false }); }
+  setName(t, v) { const k = t === 1 ? "t1" : "t2"; this.setState(s => ({ [k]: { ...s[k], name: v } })); }
+
+  renderVals() {
+    const s = this.state;
+    const total = this.dur();
+    const open = s.open ? s.cards.find(c => c.id === s.open) : null;
+    const circ = 2 * Math.PI * 70;
+    const ringOffset = circ * (1 - s.timer / total);
+    const ringColor = s.timer <= 5 ? "#ff3b3b" : "#35d6ff";
+    return {
+      showIntro: s.intro,
+      stars: this.stars,
+      t1Name: s.t1.name, t1Score: s.t1.score, t2Name: s.t2.name, t2Score: s.t2.score,
+      t1Active: s.active === 1, t2Active: s.active === 2,
+      t1Border: s.active === 1 ? "#ffd447" : "rgba(90,150,255,.35)",
+      t2Border: s.active === 2 ? "#ffd447" : "rgba(150,110,255,.35)",
+      t1Glow: s.active === 1 ? "0 0 26px rgba(255,212,71,.45)" : "0 6px 16px rgba(0,0,0,.4)",
+      t2Glow: s.active === 2 ? "0 0 26px rgba(255,212,71,.45)" : "0 6px 16px rgba(0,0,0,.4)",
+      cats: s.cats.map(n => ({ name: n })),
+      boardCards: s.cards.map(c => ({ id: c.id, value: c.value, used: c.used, avail: !c.used, onOpen: c.used ? null : () => this.open(c.id) })),
+      begin: () => this.begin(), reset: () => this.reset(), menu: () => this.menu(),
+      setT1: () => this.setActive(1), setT2: () => this.setActive(2),
+      onName1: (e) => this.setName(1, e.target.value), onName2: (e) => this.setName(2, e.target.value),
+      isOpen: !!open,
+      modalCat: open ? open.catName : "", modalValue: open ? open.value : "",
+      modalPrompt: open ? open.prompt : "", modalAnswer: open ? open.answer : "",
+      qPhase: s.phase === "question" || s.phase === "answer",
+      showQuestionOnly: s.phase === "question",
+      showAnswerText: s.phase === "answer",
+      trapPhase: s.phase === "trap",
+      trapResultPhase: s.phase === "trapResult",
+      timeUp: s.timeUp,
+      timerNum: s.timer,
+      ringOffset, ringColor, ringCirc: circ,
+      trapText: s.trapText,
+      trapBadge: s.trapKind === "x2" ? "×2" : s.trapKind === "x3" ? "×3" : s.trapKind === "bet" ? s.trapBetLabel : "⇄",
+      topics: this.topicList.map(t => ({ ...t, current: t.id === s.topic })),
+      topic: s.topic,
+      topicName: (this.topicList.find(t => t.id === s.topic) || {}).name,
+      topicLoadingName: s.topicLoading ? (this.topicList.find(t => t.id === s.topicLoading) || {}).name : null,
+      isTopicLoading: !!s.topicLoading,
+      setTopic: e => this.setTopic(e.target.value),
+      revealAnswer: () => this.revealAnswer(),
+      swapQuestion: () => this.swapQuestion(),
+      canSwap: (() => { const c = s.cards.find(x => x.id === s.open); return !!c && !!c.variants && c.variants.length > 1; })(),
+      swapLabel: (() => { const c = s.cards.find(x => x.id === s.open); return c && c.variants ? `↻ NEW QUESTION (${c.vi + 1}/${c.variants.length})` : "↻ NEW QUESTION"; })(),
+      roster1: s.students1.map(st => ({ name: st.name, answers: st.answers, onRemove: () => this.removeStudent(1, st.name) })),
+      roster2: s.students2.map(st => ({ name: st.name, answers: st.answers, onRemove: () => this.removeStudent(2, st.name) })),
+      newS1: s.newS1, newS2: s.newS2,
+      onNewS1: (e) => this.setState({ newS1: e.target.value }),
+      onNewS2: (e) => this.setState({ newS2: e.target.value }),
+      onNewS1Key: (e) => { if (e.key === "Enter") this.addStudent(1); },
+      onNewS2Key: (e) => { if (e.key === "Enter") this.addStudent(2); },
+      addS1: () => this.addStudent(1), addS2: () => this.addStudent(2),
+      creditPhase: s.phase === "credit",
+      creditTeamName: s.creditTeam === 1 ? s.t1.name : s.creditTeam === 2 ? s.t2.name : "",
+      creditValue: open ? open.value : 0,
+      creditChips: (s.creditTeam === 1 ? s.students1 : s.creditTeam === 2 ? s.students2 : []).map(st => ({
+        label: `${st.name} · ${st.answers}`,
+        onPick: () => this.finishAward(s.creditTeam, st.name),
+        style: `font-family:'Rajdhani'; font-weight:700; font-size:17px; letter-spacing:.5px; color:${s.creditTeam === 1 ? "#dcecff" : "#f2e4ff"}; background:${s.creditTeam === 1 ? "linear-gradient(180deg,rgba(47,123,255,.5),rgba(19,79,191,.55))" : "linear-gradient(180deg,rgba(162,75,255,.45),rgba(106,31,192,.55))"}; border:1px solid ${s.creditTeam === 1 ? "rgba(120,180,255,.55)" : "rgba(190,120,255,.55)"}; border-radius:11px; padding:12px 20px; cursor:pointer;`
+      })),
+      creditSkip: () => this.finishAward(s.creditTeam, null),
+      creditCancel: () => this.setState({ phase: "answer", creditTeam: null }),
+      shareOpen: !!s.shareOpen, openShare: () => this.openShare(), closeShare: () => this.closeShare(),
+      shareEmpty: !s.students1.concat(s.students2).some(st => st.answers > 0),
+      hasShare: s.students1.concat(s.students2).some(st => st.answers > 0),
+      share: (() => {
+        const all = s.students1.map(st => ({ ...st, team: 1 })).concat(s.students2.map(st => ({ ...st, team: 2 })));
+        const total = all.reduce((n, st) => n + st.answers, 0);
+        return all.sort((a, b) => b.answers - a.answers).map(st => {
+          const pct = total ? Math.round(st.answers / total * 100) : 0;
+          return {
+            name: st.name, answers: `${st.answers} ${st.answers === 1 ? "answer" : "answers"}`, pct: pct + "%",
+            barStyle: `height:8px; width:${st.answers ? Math.max(pct, 2) : 0}%; border-radius:6px; background:${st.team === 1 ? "linear-gradient(90deg,#45a6ff,#8fd0ff)" : "linear-gradient(90deg,#a24bff,#d7a6ff)"};`,
+            dotStyle: `width:9px; height:9px; border-radius:50%; flex:none; background:${st.team === 1 ? "#45a6ff" : "#c06bff"};`
+          };
+        });
+      })(),
+      awardT1: () => this.award(1), awardT2: () => this.award(2),
+      awardT1Label: `✓ ${s.t1.name}  +${open ? open.value : 0}`,
+      awardT2Label: `✓ ${s.t2.name}  +${open ? open.value : 0}`,
+      noPoints: () => this.noPoints(), close: () => this.close(), revealFate: () => this.revealFate(),
+      levelBtns: ["A1", "A2", "B1", "B2", "C1"].map(lv => ({
+        name: lv,
+        onClick: () => this.setLevel(lv),
+        style: s.level === lv
+          ? "font-family:'Orbitron'; font-size:11px; font-weight:700; letter-spacing:1px; padding:8px 14px; border-radius:8px; cursor:pointer; background:linear-gradient(180deg,#ffe27a,#ffb524); color:#1a1204; border:1px solid #ffd447; box-shadow:0 0 14px rgba(255,200,60,.5);"
+          : "font-family:'Orbitron'; font-size:11px; font-weight:700; letter-spacing:1px; padding:8px 14px; border-radius:8px; cursor:pointer; background:rgba(255,255,255,.06); color:#9fc4ff; border:1px solid rgba(120,170,255,.3);"
+      })),
+      bettingEnabled: this.props.bettingEnabled !== false,
+      trapChoiceIdle: s.phase === "trap" && !s.trapChoice,
+      trapChoiceBet: s.phase === "trap" && s.trapChoice === "bet",
+      chooseBet: () => this.chooseBet(),
+      backToChoice: () => this.backToChoice(),
+      wagerTeamName: s.active === 1 ? s.t1.name : s.t2.name,
+      wagerTeamScore: this.wagerCap(),
+      wagerAmount: s.wagerAmount,
+      onWagerAmount: (e) => this.setWagerAmount(e.target.value),
+      wagerSpinning: s.wagerSpinning,
+      wagerFlicker: s.wagerFlicker,
+      wagerIdleForm: s.trapChoice === "bet" && !s.wagerSpinning,
+      wagerTierNote: this.wagerTier(s.wagerAmount) === "high"
+        ? "HIGH BET — the wheel pays or takes ×1 to ×1.5 only"
+        : "LOW BET — the wheel can pay ×1, ×2 or ×3 (or take ×1 / ×2)",
+      wagerDisabled: !s.wagerSpinning && (!s.wagerAmount || s.wagerAmount <= 0),
+      spinTrapBet: () => this.spinTrapBet()
+    };
+  }
+}
+</script>
+</body>
+</html>

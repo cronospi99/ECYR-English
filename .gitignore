@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.vercel/
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+# IELTS simulator: private per-browser key file (see public/apps/ielts/config.example.js)
+public/apps/ielts/config.local.js

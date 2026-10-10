@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #07090E; color: #F2F4F8; font-family: 'Instrument Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #6AA5FF; text-decoration-thickness: 2px; }
+a:hover { color: #9DC2FF; }
+button { font-family: inherit; }
+@keyframes tgRise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes tgPulse { 0%, 100% { box-shadow: 0 0 30px rgba(31,111,235,0.34); } 50% { box-shadow: 0 0 52px rgba(31,111,235,0.6); } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;flex-direction:column;background:radial-gradient(120% 90% at 82% -10%, #121A2B 0%, #07090E 62%);">
+
+<sc-if value="{{ isStart }}" hint-placeholder-val="{{ true }}">
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,3.4vw,56px);padding:clamp(28px,4.5vw,86px);">
+  <div style="max-width:1180px;">
+    <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,17px);letter-spacing:0.26em;text-transform:uppercase;color:#6AA5FF;">Vocabulary game &nbsp;·&nbsp; A1 → C1 &nbsp;·&nbsp; CEFR</div>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(46px,8.4vw,148px);line-height:0.85;letter-spacing:-0.035em;margin:clamp(14px,1.6vw,26px) 0 0;color:#FFFFFF;text-shadow:0 0 44px rgba(31,111,235,0.45);">Too&nbsp;good<br />to&nbsp;be&nbsp;true</h1>
+    <p style="font-size:clamp(17px,1.55vw,27px);line-height:1.45;max-width:720px;margin:clamp(18px,2vw,30px) 0 0;color:#AEB8CC;text-wrap:pretty;">Read the offer on screen. Tap the word that fills the gap, carries the meaning, or names the trick. Every answer reveals the word, its level and an example sentence.</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:clamp(12px,1.2vw,18px);">
+    <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,16px);letter-spacing:0.2em;text-transform:uppercase;color:#8D97AB;">Choose levels</div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,1vw,16px);">
+      <sc-for list="{{ levelChips }}" as="lv" hint-placeholder-count="5">
+        <button onClick="{{ lv.onClick }}" style="cursor:pointer;appearance:none;display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:clamp(14px,1.4vw,22px) clamp(20px,2vw,32px);min-width:clamp(112px,10vw,150px);min-height:68px;border:2px solid {{ lv.bd }};background:{{ lv.bg }};color:{{ lv.fg }};box-shadow:{{ lv.sh }};border-radius:3px;transition:box-shadow 160ms ease,border-color 160ms ease;">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,2.4vw,42px);line-height:1;letter-spacing:-0.02em;">{{ lv.code }}</span>
+          <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.85vw,14px);letter-spacing:0.14em;color:{{ lv.mut }};">{{ lv.note }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2vw,36px);">
+    <button onClick="{{ start }}" style="cursor:pointer;appearance:none;border:2px solid #4D8FFF;background:#1F6FEB;color:#FFFFFF;border-radius:3px;animation:tgPulse 3.2s ease-in-out infinite;padding:clamp(18px,1.8vw,30px) clamp(34px,3.4vw,58px);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,2.3vw,40px);letter-spacing:-0.01em;min-height:74px;">Start the round</button>
+    <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,17px);letter-spacing:0.12em;color:#8D97AB;line-height:1.8;text-transform:uppercase;">{{ setupLine }}</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;">
+
+  <div style="height:6px;background:#161D2C;flex:none;">
+    <div style="height:100%;width:{{ timePct }}%;background:{{ timeColor }};box-shadow:{{ timeGlow }};transition:width 900ms linear;"></div>
+  </div>
+
+  <div style="flex:none;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(14px,1.6vw,28px);padding:clamp(14px,1.5vw,26px) clamp(20px,3vw,58px);border-bottom:1px solid #1E2637;background:rgba(7,9,14,0.6);">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:clamp(12px,1.4vw,24px);font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,17px);letter-spacing:0.18em;text-transform:uppercase;color:#8D97AB;">
+      <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(17px,1.5vw,26px);letter-spacing:0.02em;color:#FFFFFF;">Too good to be true</span>
+      <span>Round {{ roundNum }}/{{ roundTotal }}</span>
+      <span style="color:#6AA5FF;">Level {{ level }}</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:clamp(10px,1.2vw,20px);">
+      <sc-for list="{{ teams }}" as="t" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:10px;padding:clamp(8px,0.8vw,13px) clamp(14px,1.3vw,22px);border:2px solid {{ t.bd }};background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.sh }};border-radius:3px;">
+          <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.9vw,15px);letter-spacing:0.16em;text-transform:uppercase;">{{ t.name }}</span>
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(20px,1.9vw,32px);line-height:1;">{{ t.score }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:clamp(24px,3vw,62px);padding:clamp(26px,3vw,62px) clamp(22px,3vw,58px) clamp(30px,3vw,58px);align-items:start;">
+
+    <div style="background:#0E1420;border:2px solid #263148;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,0.03), 0 30px 70px rgba(0,0,0,0.5);transform:rotate(-0.9deg);padding:clamp(22px,2.3vw,44px);display:flex;flex-direction:column;gap:clamp(14px,1.5vw,26px);">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,1vw,18px);">
+        <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.9vw,15px);letter-spacing:0.2em;text-transform:uppercase;background:#1F6FEB;color:#FFFFFF;padding:6px 12px;box-shadow:0 0 22px rgba(31,111,235,0.45);">{{ round.c }}</span>
+        <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.9vw,15px);letter-spacing:0.08em;color:#8D97AB;">{{ round.m }}</span>
+      </div>
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,3.3vw,62px);line-height:0.94;letter-spacing:-0.025em;text-transform:uppercase;color:#FFFFFF;text-shadow:0 0 34px rgba(31,111,235,0.3);text-wrap:balance;">{{ round.h }}</div>
+      <div style="width:64px;height:3px;background:#1F6FEB;box-shadow:0 0 18px rgba(31,111,235,0.7);"></div>
+      <div style="font-size:clamp(18px,1.5vw,28px);line-height:1.42;color:#AEB8CC;text-wrap:pretty;">{{ round.b }}</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,1.9vw,32px);">
+      <div>
+        <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,16px);letter-spacing:0.22em;text-transform:uppercase;color:#6AA5FF;">{{ round.k }}</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(24px,2.5vw,46px);line-height:1.1;letter-spacing:-0.02em;margin-top:clamp(8px,0.9vw,16px);color:#FFFFFF;text-wrap:pretty;">{{ round.p }}</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(12px,1.2vw,20px);">
+        <sc-for list="{{ options }}" as="opt" hint-placeholder-count="3">
+          <button onClick="{{ opt.onClick }}" style="cursor:{{ opt.cur }};appearance:none;text-align:left;display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:clamp(18px,1.7vw,28px);min-height:clamp(118px,10.5vw,168px);border:2px solid {{ opt.bd }};background:{{ opt.bg }};color:{{ opt.fg }};box-shadow:{{ opt.sh }};transform:{{ opt.tf }};border-radius:4px;transition:transform 150ms ease,box-shadow 180ms ease,border-color 180ms ease;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(23px,2.3vw,42px);line-height:1.02;letter-spacing:-0.02em;">{{ opt.word }}</span>
+            <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.9vw,15px);letter-spacing:0.18em;color:{{ opt.mut }};">{{ opt.tag }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:tgRise 240ms ease-out both;border-top:1px solid #1E2637;padding-top:clamp(16px,1.7vw,28px);display:flex;flex-direction:column;gap:clamp(12px,1.2vw,20px);">
+        <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(13px,1.1vw,19px);letter-spacing:0.2em;text-transform:uppercase;color:{{ verdictColor }};">{{ verdict }}</div>
+        <sc-if value="{{ showDef }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:clamp(8px,0.9vw,14px);">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,2.8vw,50px);line-height:1;letter-spacing:-0.02em;color:#FFFFFF;">{{ answerWord }}</span>
+            <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.9vw,15px);letter-spacing:0.18em;background:#1F6FEB;color:#FFFFFF;padding:5px 11px;">{{ answerTag }}</span>
+          </div>
+          <div style="font-size:clamp(17px,1.45vw,27px);line-height:1.4;color:#E4E9F2;text-wrap:pretty;">{{ answerDef }}</div>
+          <div style="font-size:clamp(16px,1.35vw,25px);line-height:1.45;color:#AEB8CC;font-style:italic;border-left:3px solid #1F6FEB;padding-left:clamp(12px,1.1vw,18px);text-wrap:pretty;">{{ answerExample }}</div>
+        </div>
+        </sc-if>
+        <div>
+          <button onClick="{{ next }}" style="cursor:pointer;appearance:none;border:2px solid #394560;background:#161D2C;color:#FFFFFF;border-radius:3px;padding:clamp(14px,1.4vw,24px) clamp(28px,2.6vw,46px);min-height:66px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(19px,1.8vw,32px);letter-spacing:-0.01em;">{{ nextLabel }}</button>
+        </div>
+      </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEnd }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;display:flex;flex-direction:column;gap:clamp(26px,3vw,50px);padding:clamp(28px,4.5vw,86px);">
+  <div>
+    <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,17px);letter-spacing:0.24em;text-transform:uppercase;color:#6AA5FF;">Session complete</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(40px,6.4vw,112px);line-height:0.88;letter-spacing:-0.03em;margin:clamp(12px,1.4vw,22px) 0 0;color:#FFFFFF;text-shadow:0 0 44px rgba(31,111,235,0.45);">{{ endTitle }}</h2>
+    <p style="font-size:clamp(18px,1.6vw,28px);line-height:1.4;color:#AEB8CC;margin:clamp(14px,1.5vw,24px) 0 0;">{{ endLine }}</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:clamp(12px,1.2vw,18px);">
+    <div style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(12px,1vw,16px);letter-spacing:0.2em;text-transform:uppercase;color:#8D97AB;">Words we met</div>
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,1vw,14px);">
+      <sc-for list="{{ wordsMet }}" as="w" hint-placeholder-count="6">
+        <div style="display:flex;align-items:baseline;gap:10px;border:2px solid {{ w.bd }};background:{{ w.bg }};box-shadow:{{ w.sh }};border-radius:3px;padding:clamp(10px,1vw,16px) clamp(14px,1.3vw,22px);">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(19px,1.7vw,30px);line-height:1;color:{{ w.fg }};">{{ w.word }}</span>
+          <span style="font-family:'DM Mono',ui-monospace,monospace;font-size:clamp(11px,0.85vw,14px);letter-spacing:0.16em;color:{{ w.mut }};">{{ w.tag }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <button onClick="{{ restart }}" style="cursor:pointer;appearance:none;border:2px solid #4D8FFF;background:#1F6FEB;color:#FFFFFF;border-radius:3px;box-shadow:0 0 34px rgba(31,111,235,0.45);padding:clamp(18px,1.8vw,30px) clamp(34px,3.4vw,58px);min-height:74px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,2.1vw,38px);">Play again</button>
+  </div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;roundCount&quot;: { &quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 15, &quot;min&quot;: 5, &quot;max&quot;: 30, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Session&quot; },
+  &quot;timerSeconds&quot;: { &quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 25, &quot;min&quot;: 0, &quot;max&quot;: 90, &quot;unit&quot;: &quot;s&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Session&quot; },
+  &quot;teamMode&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Session&quot; },
+  &quot;showDefinition&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Feedback&quot; }
+}">
+const LEVELS = ["A1", "A2", "B1", "B2", "C1"];
+const PTS = { A1: 10, A2: 20, B1: 30, B2: 40, C1: 50 };
+const GOOD = "#3DE79B", BAD = "#FF6B79";
+
+const BANK = [
+  { l:"A1", c:"SMS", h:"Phone — 1 euro", b:"New phone. Only 1 euro. Today only!", m:"From: +44 7•• •• 0091", k:"Fill the gap", p:"This phone is very ___.", o:[["cheap","A1"],["heavy","A1"],["slow","A1"]], a:0, d:"Costing very little money.", e:"The phone is cheap, but the shop has no address." },
+  { l:"A1", c:"Email", h:"You are the winner", b:"Click here and get your money. No work, no cost.", m:"noreply@prize-centre.info", k:"Fill the gap", p:"They say the money is ___ — you pay nothing.", o:[["free","A1"],["open","A1"],["small","A1"]], a:0, d:"You do not pay any money for it.", e:"Nothing is free when a stranger asks for your bank card." },
+  { l:"A1", c:"Shop", h:"Was 100 — now 2", b:"Every item is 2 euros. Delivery is 98 euros.", m:"megadeals-online.shop", k:"Find the meaning", p:"Which word means \"to give money for something\"?", o:[["pay","A1"],["open","A1"],["read","A1"]], a:0, d:"To give money for something.", e:"You pay 2 euros for the shoes and 98 euros for the delivery." },
+  { l:"A1", c:"Advert", h:"Gold watch — 5 euros", b:"Normal price 500 euros. Only five left!", m:"Sponsored", k:"Find the meaning", p:"Which word is the opposite of \"cheap\"?", o:[["expensive","A2"],["happy","A1"],["quiet","A1"]], a:0, d:"Costing a lot of money.", e:"A real gold watch is expensive, so 5 euros is strange." },
+  { l:"A1", c:"Advert", h:"Win a car! Everybody wins!", b:"100% of players get a new car. Play now.", m:"car-lucky-day.net", k:"Name the catch", p:"Everybody gets a car? That is not ___.", o:[["true","A1"],["red","A1"],["old","A1"]], a:0, d:"Real, and not a lie.", e:"It is not true that everybody wins a car." },
+  { l:"A1", c:"Message", h:"Hello friend :)", b:"Send me your bank number and I send you 1,000 euros.", m:"New contact · no photo", k:"Name the catch", p:"A person you do not know is a ___.", o:[["stranger","A2"],["teacher","A1"],["brother","A1"]], a:0, d:"A person you do not know.", e:"Never send your bank number to a stranger." },
+
+  { l:"A2", c:"Shop", h:"50% off — only for you", b:"Today the price falls from 80 to 40 euros. Tomorrow it is 80 again.", m:"Offer ends in 09:58", k:"Find the meaning", p:"Money taken off the normal price is a ___.", o:[["discount","A2"],["delivery","B1"],["receipt","B1"]], a:0, d:"An amount of money taken off the normal price.", e:"The discount looks big, but the \"normal price\" was never real." },
+  { l:"A2", c:"Email", h:"Your monthly prize is ready", b:"Pay a small fee of 10 euros to receive your 5,000 euro prize.", m:"prizes@secure-claim.co", k:"Name the catch", p:"You must pay to get a prize. You should be ___.", o:[["careful","A2"],["lucky","A2"],["quick","A2"]], a:0, d:"Thinking about danger before you act.", e:"Be careful: a real prize never asks you for money first." },
+  { l:"A2", c:"Advert", h:"20 years younger in one night", b:"Our cream works while you sleep. We promise.", m:"Sponsored · glow-lab.store", k:"Find the meaning", p:"Which word means \"to say you will certainly do something\"?", o:[["promise","A2"],["prepare","A2"],["prefer","A2"]], a:0, d:"To say that you will certainly do something.", e:"They promise a lot, but they never say how it works." },
+  { l:"A2", c:"Job ad", h:"Work from home — 5,000 a week", b:"No experience. No interview. Start this afternoon.", m:"Posted 4 minutes ago", k:"Name the catch", p:"This offer sounds ___ to be true.", o:[["too good","A2"],["too slow","A2"],["too late","A2"]], a:0, d:"So good that it is probably a lie.", e:"Five thousand a week for no experience is too good to be true." },
+  { l:"A2", c:"SMS", h:"Free concert tickets", b:"Enter your email password here to claim your two tickets.", m:"link: tickets-claim.cc", k:"Fill the gap", p:"Never share your password. This website is not ___.", o:[["safe","A2"],["loud","A2"],["busy","A2"]], a:0, d:"Not dangerous; it cannot hurt you.", e:"A safe website never asks for your email password." },
+  { l:"A2", c:"Travel", h:"Sea view hotel — 1 euro a night", b:"The photo is of a different hotel, in a different country.", m:"No reviews yet", k:"Name the catch", p:"The advert uses the wrong photo, so the advert is ___.", o:[["false","A2"],["famous","A2"],["finished","A2"]], a:0, d:"Not true or not correct.", e:"The picture is beautiful, but it is false advertising." },
+
+  { l:"B1", c:"Shop", h:"Lifetime money-back promise", b:"We will always take the product back. *Terms apply.", m:"Seller account: 2 days old", k:"Find the meaning", p:"A firm promise that a product will work is a ___.", o:[["guarantee","B1"],["complaint","B1"],["reminder","B1"]], a:0, d:"A firm promise that something will happen or will be repaired.", e:"The guarantee is worthless if the company disappears next month." },
+  { l:"B1", c:"Marketplace", h:"900-euro laptop for 90", b:"Cash only. Meet me at the station. No reviews on my profile.", m:"Private seller", k:"Name the catch", p:"No reviews and cash only — this seller looks ___.", o:[["suspicious","B1"],["generous","B1"],["reliable","B1"]], a:0, d:"Making you feel that something is wrong or dishonest.", e:"Anything cash-only with no reviews should look suspicious to you." },
+  { l:"B1", c:"Advert", h:"100% genuine designer trainers", b:"Made in our own workshop. Box and label included.", m:"Ships from an unknown address", k:"Find the meaning", p:"Which word means \"not real, but made to look real\"?", o:[["fake","B1"],["fresh","A2"],["faded","B2"]], a:0, d:"Not real, but made to look real in order to trick people.", e:"The label is perfect, which is exactly how you spot a good fake." },
+  { l:"B1", c:"App", h:"Cancel any time!", b:"*Cancellation requires twenty-four months of written notice.", m:"Small print, 6pt", k:"Name the catch", p:"The tiny text under the offer is a clear ___ sign.", o:[["warning","B1"],["welcome","A2"],["winning","A2"]], a:0, d:"Something that tells you danger or trouble is possible.", e:"Tiny text under a big promise is a warning sign." },
+  { l:"B1", c:"Email", h:"Send 50, receive 500 tomorrow", b:"Completely safe. Thousands of happy clients. No risk at all.", m:"Reply-to address blocked", k:"Fill the gap", p:"If the money never arrives, you will not get a ___.", o:[["refund","B1"],["receipt","B1"],["reward","B1"]], a:0, d:"Money that is paid back to you.", e:"There is no refund, because there is no real company." },
+  { l:"B1", c:"Advert", h:"Doctors hate this one trick", b:"One pill a day. Lose fifteen kilos in a week. No diet, no exercise.", m:"Sponsored content", k:"Name the catch", p:"We should not ___ an advert like this one.", o:[["trust","B1"],["travel","A1"],["translate","A2"]], a:0, d:"To believe that someone or something is honest and reliable.", e:"Do not trust health claims that no doctor will sign." },
+
+  { l:"B2", c:"Investment", h:"Turn 100 into 10,000. Risk-free.", b:"Our algorithm cannot lose. Withdraw your profits whenever you like.", m:"Unregulated platform", k:"Find the meaning", p:"A dishonest plan for taking people's money is a ___.", o:[["scam","B2"],["surplus","C1"],["setback","B2"]], a:0, d:"A dishonest plan, usually for taking money from people.", e:"\"Risk-free\" and \"cannot lose\" are the signature of a scam." },
+  { l:"B2", c:"Travel", h:"Your free holiday awaits", b:"Flights and hotel included. You cover administration only.", m:"Administration: 640 euros", k:"Name the catch", p:"Costs you were never told about are ___.", o:[["hidden fees","B2"],["gross profits","C1"],["loose change","B2"]], a:0, d:"Extra charges that are not made clear in the offer.", e:"The holiday is free apart from six hundred euros of hidden fees." },
+  { l:"B2", c:"Course", h:"Guaranteed job at a top company", b:"Ninety-eight per cent of our graduates succeed. (Survey size: four.)", m:"Enrol before midnight", k:"Find the meaning", p:"Which verb means \"to make something sound better than it is\"?", o:[["exaggerate","B2"],["evaluate","B2"],["eliminate","B2"]], a:0, d:"To describe something as better, bigger or worse than it really is.", e:"They exaggerate the numbers by surveying only four graduates." },
+  { l:"B2", c:"Advert", h:"Lose weight while you sleep", b:"*Results not typical. Individual results may vary considerably.", m:"Legal notice", k:"Find the meaning", p:"The statement that protects a company from claims is a ___.", o:[["disclaimer","B2"],["declaration","B2"],["dismissal","B2"]], a:0, d:"A statement that limits a company's legal responsibility.", e:"The disclaimer quietly cancels the promise in the headline." },
+  { l:"B2", c:"Rental", h:"City-centre flat, half price", b:"Transfer the deposit today. Viewings are possible after payment.", m:"Landlord currently abroad", k:"Name the catch", p:"Every offer this good has a ___ somewhere.", o:[["catch","B2"],["clash","B2"],["crate","B2"]], a:0, d:"A hidden problem or disadvantage in something that seems good.", e:"The catch is that you pay before you ever see the flat." },
+  { l:"B2", c:"Advert", h:"Before and after — real photos", b:"The \"before\" photo was taken in bad light, in loose clothes, same day.", m:"Same model, one hour apart", k:"Name the catch", p:"An advert that gives a false impression is ___.", o:[["misleading","B2"],["mistaken","B2"],["misplaced","B2"]], a:0, d:"Giving a false idea, often without telling a direct lie.", e:"Nothing in the photo is a lie, yet the whole advert is misleading." },
+
+  { l:"C1", c:"Shop", h:"Certified diamonds — 95% off", b:"Every stone arrives with a certificate. Printed by us, at home.", m:"Certification body: unlisted", k:"Find the meaning", p:"Which adjective means \"false, and intended to deceive\"?", o:[["bogus","C1"],["bespoke","C1"],["buoyant","C1"]], a:0, d:"False or fake, and intended to deceive.", e:"The stones may be real; the certificates are entirely bogus." },
+  { l:"C1", c:"Contract", h:"Unlimited access, forever", b:"\"The provider accepts no liability whatsoever and may vary these terms without notice.\"", m:"Clause 14.3(b)", k:"Find the meaning", p:"The detailed conditions that quietly limit an offer are the ___.", o:[["fine print","C1"],["bottom line","C1"],["broad strokes","C1"]], a:0, d:"The small, detailed part of a contract that restricts what is promised.", e:"The headline sells you the world; the fine print takes it back." },
+  { l:"C1", c:"Message", h:"Are you still thinking about it?", b:"A twelfth friendly message this week, each one a little more insistent.", m:"Unknown number", k:"Find the meaning", p:"Which verb means \"to persuade someone gently and persistently\"?", o:[["coax","C1"],["curb","C1"],["clamp","C1"]], a:0, d:"To persuade someone gently and persistently to do something.", e:"They coax you into one small payment, and then another." },
+  { l:"C1", c:"Charity", h:"Ostensibly a children's charity", b:"Ninety-four per cent of donations are spent on \"awareness\".", m:"No published accounts", k:"Name the catch", p:"Something that seems honest but probably is not is ___.", o:[["dubious","C1"],["decisive","C1"],["durable","B2"]], a:0, d:"Probably not honest or not true; open to doubt.", e:"A charity with no published accounts is dubious at best." },
+  { l:"C1", c:"Email", h:"Your account will be closed", b:"Verify your details within 24 hours using the secure link below.", m:"security@bank-verify-eu.net", k:"Find the meaning", p:"Stealing personal data with fake messages is called ___.", o:[["phishing","C1"],["flagging","C1"],["fielding","C1"]], a:0, d:"Using fake messages to trick people into giving away personal data.", e:"The urgency in the subject line is the whole phishing technique." },
+  { l:"C1", c:"Review", h:"\"This changed my life\" — real customer", b:"The customer exists. She was paid, and given the adjectives to use.", m:"#ad hidden in 14th hashtag", k:"Find the meaning", p:"Which verb means \"to add false details to make a story better\"?", o:[["embellish","C1"],["embezzle","C1"],["embody","C1"]], a:0, d:"To add details to a story, especially untrue ones, to make it more interesting.", e:"She did not invent the review; she was paid to embellish it." }
+];
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+class Component extends DCLogic {
+  state = {
+    phase: "start",
+    picked: {},
+    deck: [],
+    i: 0,
+    answered: false,
+    choice: -1,
+    scores: [0, 0],
+    turn: 0,
+    timeLeft: 0,
+    met: []
+  };
+
+  componentDidMount() {
+    const picked = {};
+    LEVELS.forEach(function (l) { picked[l] = true; });
+    this.setState({ picked: picked });
+    this.timer = setInterval(() => {
+      const s = this.state;
+      const secs = this.seconds();
+      if (s.phase !== "play" || s.answered || secs <= 0) return;
+      if (s.timeLeft <= 1) this.reveal(-1);
+      else this.setState({ timeLeft: s.timeLeft - 1 });
+    }, 1000);
+  }
+
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  seconds() {
+    const n = this.props.timerSeconds;
+    return typeof n === "number" ? n : 25;
+  }
+  teamMode() { return this.props.teamMode !== false; }
+  wanted() {
+    const n = this.props.roundCount;
+    return typeof n === "number" && n > 0 ? n : 15;
+  }
+
+  buildDeck() {
+    const picked = this.state.picked;
+    const on = LEVELS.filter(function (l) { return picked[l]; });
+    const use = on.length ? on : LEVELS;
+    const avail = BANK.filter(function (r) { return use.indexOf(r.l) >= 0; }).length;
+    const want = Math.min(this.wanted(), avail);
+    const pools = {};
+    use.forEach(function (l) { pools[l] = shuffle(BANK.filter(function (r) { return r.l === l; })); });
+    const taken = {};
+    use.forEach(function (l) { taken[l] = []; });
+    // round-robin across the selected levels so every level contributes
+    for (let n = 0; n < want; n++) {
+      const l = use[n % use.length];
+      const pool = pools[l];
+      taken[l].push(pool[Math.floor(n / use.length) % pool.length]);
+    }
+    let deck = [];
+    use.forEach(function (l) { deck = deck.concat(taken[l]); });
+    return deck.map(function (r) {
+      const answer = r.o[r.a];
+      const o = shuffle(r.o);
+      return Object.assign({}, r, { o: o, a: o.indexOf(answer) });
+    });
+  }
+
+  start = () => {
+    this.setState({
+      phase: "play", deck: this.buildDeck(), i: 0, answered: false,
+      choice: -1, scores: [0, 0], turn: 0, timeLeft: this.seconds(), met: []
+    });
+  };
+
+  reveal(idx) {
+    const s = this.state;
+    if (s.answered) return;
+    const r = s.deck[s.i];
+    if (!r) return;
+    const ok = idx === r.a;
+    const scores = s.scores.slice();
+    if (ok) scores[this.teamMode() ? s.turn : 0] += PTS[r.l];
+    this.setState({
+      answered: true, choice: idx, scores: scores,
+      met: s.met.concat([{ word: r.o[r.a][0], tag: r.o[r.a][1], ok: ok }])
+    });
+  }
+
+  next = () => {
+    const s = this.state;
+    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); return; }
+    this.setState({
+      i: s.i + 1, answered: false, choice: -1,
+      turn: s.turn === 0 ? 1 : 0, timeLeft: this.seconds()
+    });
+  };
+
+  restart = () => this.setState({ phase: "start" });
+
+  toggle(l) {
+    const picked = Object.assign({}, this.state.picked);
+    picked[l] = !picked[l];
+    if (!LEVELS.some(function (x) { return picked[x]; })) picked[l] = true;
+    this.setState({ picked: picked });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const secs = this.seconds();
+    const team = this.teamMode();
+    const r = s.deck[s.i] || BANK[0];
+
+    const sel = LEVELS.filter(function (l) { return s.picked[l]; });
+    const selAvail = BANK.filter(function (r) { return sel.indexOf(r.l) >= 0; }).length;
+    const plan = Math.min(this.wanted(), selAvail || 30);
+
+    const levelChips = LEVELS.map((l) => {
+      const on = !!s.picked[l];
+      const k = sel.indexOf(l);
+      const n = sel.length
+        ? Math.floor(plan / sel.length) + (k < plan % sel.length ? 1 : 0)
+        : 0;
+      return {
+        code: l, note: on ? n + (n === 1 ? " round" : " rounds") : "off",
+        onClick: () => this.toggle(l),
+        bg: on ? "rgba(31,111,235,0.18)" : "#0E1420",
+        fg: on ? "#FFFFFF" : "#8D97AB",
+        bd: on ? "#4D8FFF" : "#232C3E",
+        mut: on ? "#9DC2FF" : "#6E7789",
+        sh: on ? "0 0 28px rgba(31,111,235,0.4)" : "none"
+      };
+    });
+
+    const setupLine = [
+      plan + " rounds",
+      sel.length === 5 ? "all five levels" : sel.join(" + "),
+      team ? "two teams" : "solo",
+      secs > 0 ? secs + "s per round" : "no timer"
+    ].join("  ·  ");
+
+    const options = r.o.map((o, idx) => {
+      const isAns = idx === r.a, isPick = idx === s.choice;
+      let bg = "#0E1420", fg = "#FFFFFF", bd = "#263148", mut = "#8D97AB",
+          sh = "0 0 0 1px rgba(255,255,255,0.03)", tf = "none";
+      if (s.answered) {
+        if (isAns) { bg = "rgba(61,231,155,0.14)"; fg = "#8BF5C2"; bd = GOOD; mut = "#79C6A2"; sh = "0 0 40px rgba(61,231,155,0.32)"; tf = "translateY(-3px)"; }
+        else if (isPick) { bg = "rgba(255,107,121,0.13)"; fg = "#FFA8B1"; bd = BAD; mut = "#C98891"; sh = "0 0 32px rgba(255,107,121,0.26)"; }
+        else { bg = "#0A0E16"; fg = "#5C667C"; bd = "#1A2231"; mut = "#4E5666"; sh = "none"; }
+      }
+      return {
+        word: o[0], tag: o[1], bg: bg, fg: fg, bd: bd, mut: mut, sh: sh, tf: tf,
+        cur: s.answered ? "default" : "pointer",
+        onClick: () => this.reveal(idx)
+      };
+    });
+
+    const names = team ? ["Team A", "Team B"] : ["Class"];
+    const teams = names.map(function (n, idx) {
+      const active = team && idx === s.turn && s.phase === "play";
+      return {
+        name: active ? n + " · to play" : n, score: s.scores[idx],
+        bg: active ? "rgba(31,111,235,0.2)" : "#0E1420",
+        fg: active ? "#FFFFFF" : "#C3CBDA",
+        bd: active ? "#4D8FFF" : "#232C3E",
+        sh: active ? "0 0 26px rgba(31,111,235,0.38)" : "none"
+      };
+    });
+
+    const ok = s.answered && s.choice === r.a;
+    const total = s.scores[0] + (team ? s.scores[1] : 0);
+    let endTitle = "Nice work";
+    if (team) {
+      if (s.scores[0] > s.scores[1]) endTitle = "Team A wins";
+      else if (s.scores[1] > s.scores[0]) endTitle = "Team B wins";
+      else endTitle = "A draw";
+    }
+    const right = s.met.filter(function (m) { return m.ok; }).length;
+
+    return {
+      isStart: s.phase === "start", isPlay: s.phase === "play", isEnd: s.phase === "end",
+      levelChips: levelChips, setupLine: setupLine, start: this.start, restart: this.restart,
+      round: r, level: r.l, options: options, teams: teams,
+      roundNum: s.i + 1, roundTotal: s.deck.length || this.wanted(),
+      answered: s.answered, next: this.next,
+      nextLabel: s.i + 1 >= s.deck.length ? "See the results" : "Next offer",
+      verdict: s.choice === -1 ? "Time — the word was" : ok ? "Correct  ·  +" + PTS[r.l] + " points" : "Not this time — the word was",
+      verdictColor: ok ? GOOD : BAD,
+      showDef: this.props.showDefinition !== false,
+      answerWord: r.o[r.a][0], answerTag: "CEFR " + r.o[r.a][1],
+      answerDef: r.d, answerExample: r.e,
+      timePct: secs > 0 ? Math.max(0, Math.round((s.timeLeft / secs) * 100)) : 100,
+      timeColor: secs > 0 && s.timeLeft <= 5 ? BAD : "#1F6FEB",
+      timeGlow: secs > 0 && s.timeLeft <= 5 ? "0 0 18px rgba(255,107,121,0.8)" : "0 0 18px rgba(31,111,235,0.8)",
+      endTitle: endTitle,
+      endLine: right + " of " + s.met.length + " words correct" + (team ? "  ·  Team A " + s.scores[0] + " — Team B " + s.scores[1] : "  ·  " + total + " points"),
+      wordsMet: s.met.map(function (m) {
+        return {
+          word: m.word, tag: m.tag,
+          bg: m.ok ? "rgba(61,231,155,0.12)" : "#0A0E16",
+          fg: m.ok ? "#8BF5C2" : "#5C667C",
+          bd: m.ok ? "#2F9C6E" : "#1A2231",
+          mut: m.ok ? "#79C6A2" : "#4E5666",
+          sh: m.ok ? "0 0 20px rgba(61,231,155,0.18)" : "none"
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

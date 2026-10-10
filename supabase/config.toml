@@ -1,0 +1,10 @@
+# Minimal Supabase CLI config — only what this repo needs.
+# Both functions check the caller's session themselves, so the gateway's
+# legacy JWT check is turned off (it rejects the new publishable keys).
+project_id = "eecqfbxisquimaowhbmg"
+
+[functions.gemini]
+verify_jwt = false
+
+[functions.coach]
+verify_jwt = false

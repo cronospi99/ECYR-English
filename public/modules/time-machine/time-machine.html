@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#080d17; }
+  * { box-sizing:border-box; }
+  a { color:#E8C275; text-decoration:none; border-bottom:1px solid rgba(232,194,117,0.4); }
+  a:hover { color:#F6DDA9; border-bottom-color:#F6DDA9; }
+  @keyframes drift { 0%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(4%,-3%,0) scale(1.08)} 100%{transform:translate3d(0,0,0) scale(1)} }
+  @keyframes rise { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+  ::selection { background:rgba(232,194,117,0.3); }
+  textarea::placeholder, input::placeholder { color:rgba(244,239,230,0.35); }
+  table { border-collapse:collapse; width:100%; }
+  th, td { text-align:left; padding:11px 13px; border-bottom:1px solid rgba(255,255,255,0.1); font-size:14px; line-height:1.45; }
+  th { font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:#79D2C8; border-bottom:1px solid rgba(121,210,200,0.35); white-space:nowrap; }
+  tbody tr:last-child td { border-bottom:none; }
+</style>
+</helmet>
+<div style="position:relative; min-height:100vh; background:radial-gradient(120% 90% at 50% -10%, #16233d 0%, #0b1220 45%, #070b13 100%); font-family:Manrope, system-ui, sans-serif; color:#F4EFE6; overflow-x:hidden; padding-bottom:80px">
+
+  <div style="position:absolute; inset:0; overflow:hidden; pointer-events:none">
+    <div style="position:absolute; top:-160px; left:-120px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle, rgba(121,210,200,0.5), transparent 65%); filter:blur(50px); animation:drift 26s ease-in-out infinite"></div>
+    <div style="position:absolute; top:180px; right:-180px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle, rgba(232,194,117,0.42), transparent 65%); filter:blur(60px); animation:drift 34s ease-in-out infinite reverse"></div>
+    <div style="position:absolute; bottom:-220px; left:35%; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle, rgba(240,138,110,0.32), transparent 65%); filter:blur(70px); animation:drift 40s ease-in-out infinite"></div>
+    <div style="position:absolute; inset:0; opacity:0.4; background-image:linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size:64px 64px; mask-image:radial-gradient(80% 60% at 50% 20%, #000 20%, transparent 85%)"></div>
+  </div>
+
+  <div style="position:sticky; top:0; z-index:20; padding:14px clamp(12px,3vw,28px)">
+    <div style="max-width:1140px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:12px 18px; background:linear-gradient(158deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(255,255,255,0.07), 0 22px 50px -20px rgba(0,0,0,0.7); border-radius:22px">
+      <div style="display:flex; flex-direction:column; gap:2px; margin-right:auto">
+        <div style="font-family:'Bodoni Moda', serif; font-size:21px; letter-spacing:0.16em; text-transform:uppercase">Time Machine</div>
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.2em; color:rgba(244,239,230,0.62); text-transform:uppercase">Dates · Days · Past Tenses</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:rgba(232,194,117,0.16); border:1px solid rgba(232,194,117,0.4); box-shadow:inset 0 1px 0 rgba(255,255,255,0.3)">
+        <span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; color:#F0D9A6">XP</span>
+        <span style="font-family:'Bodoni Moda', serif; font-size:18px; color:#F6E4BC">{{ xp }}</span>
+      </div>
+      <button onClick="{{ toggleEs }}" style="cursor:pointer; display:flex; align-items:center; gap:10px; padding:9px 15px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.2),rgba(255,255,255,0.06)); border:1px solid rgba(255,255,255,0.26); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4)" style-hover="background:linear-gradient(160deg,rgba(255,255,255,0.3),rgba(255,255,255,0.1))">
+        <span style="width:30px; height:16px; border-radius:999px; background:{{ esTrack }}; border:1px solid rgba(255,255,255,0.3); position:relative; display:inline-block">
+          <span style="position:absolute; top:1px; left:{{ esKnob }}; width:12px; height:12px; border-radius:50%; background:#F4EFE6; box-shadow:0 1px 3px rgba(0,0,0,0.5); transition:left 0.22s ease"></span>
+        </span>
+        Pistas ES
+      </button>
+    </div>
+  </div>
+
+  <sc-if value="{{ showHub }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative; z-index:2; max-width:1140px; margin:0 auto; padding:clamp(18px,4vw,40px) clamp(12px,3vw,28px) 0">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:22px; align-items:stretch">
+        <div style="padding:clamp(24px,3vw,38px); background:linear-gradient(158deg,rgba(255,255,255,0.15),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.07), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.22em; color:#79D2C8; text-transform:uppercase; margin-bottom:14px">Learning quest · 10 stages</div>
+          <h1 style="margin:0 0 14px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:clamp(34px,4.6vw,56px); line-height:1.02; text-wrap:pretty">Travel through time in English</h1>
+          <p style="margin:0 0 18px; font-size:16px; line-height:1.6; color:rgba(244,239,230,0.78); max-width:46ch; text-wrap:pretty">Months, dates, years, days of the week, and the four ways English talks about the past. Every stage explains the rule step by step, shows it in a table, warns you about the common mistakes, and then challenges you.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px">
+            <button onClick="{{ startFirst }}" style="cursor:pointer; padding:13px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:14px; font-weight:700; letter-spacing:0.02em; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7), 0 12px 26px -10px rgba(232,194,117,0.7)" style-hover="transform:translateY(-1px)">Start stage 1</button>
+            <button onClick="{{ goTimeline }}" style="cursor:pointer; padding:13px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:14px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.24); box-shadow:inset 0 1px 0 rgba(255,255,255,0.38)" style-hover="background:linear-gradient(160deg,rgba(255,255,255,0.28),rgba(255,255,255,0.09))">Sentence timeline</button>
+            <button onClick="{{ goVideo }}" style="cursor:pointer; padding:13px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:14px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.24); box-shadow:inset 0 1px 0 rgba(255,255,255,0.38)" style-hover="background:linear-gradient(160deg,rgba(255,255,255,0.28),rgba(255,255,255,0.09))">Video activity</button>
+          </div>
+        </div>
+        <div style="position:relative; overflow:hidden; padding:clamp(20px,2.4vw,30px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px; display:flex; flex-direction:column; gap:14px">
+          <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; color:rgba(244,239,230,0.6); text-transform:uppercase">Today's saying</div>
+          <div style="font-family:'Bodoni Moda', serif; font-size:clamp(19px,2vw,25px); line-height:1.28; text-wrap:pretty">“Early to bed, early to rise, makes the man healthy, wealthy and wise”</div>
+          <div style="margin-top:auto; padding:14px 16px; border-radius:18px; background:rgba(121,210,200,0.12); border:1px solid rgba(121,210,200,0.3); box-shadow:inset 0 1px 0 rgba(255,255,255,0.22)">
+            <div style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.2em; color:#79D2C8; text-transform:uppercase; margin-bottom:6px">En español</div>
+            <div style="font-size:15px; color:#F4EFE6">“El que madruga, Dios lo ayuda”</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:baseline; gap:14px; margin:38px 0 16px">
+        <h2 style="margin:0; font-family:'Bodoni Moda', serif; font-weight:600; font-size:26px">Stages</h2>
+        <div style="flex:1; height:1px; background:linear-gradient(90deg, rgba(255,255,255,0.24), transparent)"></div>
+        <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.18em; color:rgba(244,239,230,0.6)">{{ doneCount }}/10 CLEARED</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:16px">
+        <sc-for list="{{ stages }}" as="s" hint-placeholder-count="10">
+          <button onClick="{{ s.open }}" style="cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:10px; padding:20px; border-radius:24px; color:#F4EFE6; background:linear-gradient(158deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 18px 40px -18px rgba(0,0,0,0.65); font-family:Manrope, sans-serif; animation:rise 0.4s ease both" style-hover="background:linear-gradient(158deg,rgba(255,255,255,0.22),rgba(255,255,255,0.08)); transform:translateY(-2px)">
+            <div style="display:flex; align-items:center; gap:10px">
+              <span style="font-family:'Bodoni Moda', serif; font-size:15px; width:30px; height:30px; display:grid; place-items:center; border-radius:50%; background:rgba(232,194,117,0.18); border:1px solid rgba(232,194,117,0.42); color:#F6E4BC">{{ s.num }}</span>
+              <span style="margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:{{ s.markColor }}">{{ s.mark }}</span>
+            </div>
+            <div style="font-family:'Bodoni Moda', serif; font-size:22px; line-height:1.15">{{ s.title }}</div>
+            <div style="font-size:13px; color:rgba(244,239,230,0.66); line-height:1.45">{{ s.blurb }}</div>
+            <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8">{{ s.es }}</div>
+            </sc-if>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showStage }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative; z-index:2; max-width:1140px; margin:0 auto; padding:clamp(14px,3vw,26px) clamp(12px,3vw,28px) 0">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:20px">
+        <button onClick="{{ back }}" style="cursor:pointer; padding:10px 16px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.22); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36)" style-hover="background:linear-gradient(160deg,rgba(255,255,255,0.26),rgba(255,255,255,0.09))">← Stages</button>
+        <div style="display:flex; gap:6px; padding:5px; border-radius:999px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.16); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)">
+          <button onClick="{{ goLearn }}" style="cursor:pointer; padding:9px 18px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:{{ learnColor }}; background:{{ learnBg }}; border:1px solid {{ learnBorder }}">{{ learnLabel }}</button>
+          <button onClick="{{ goPlay }}" style="cursor:pointer; padding:9px 18px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:{{ playColor }}; background:{{ playBg }}; border:1px solid {{ playBorder }}">{{ playLabel }}</button>
+        </div>
+        <div style="margin-left:auto; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.18em; color:rgba(244,239,230,0.55); text-transform:uppercase">Stage {{ stage.num }} / 10</div>
+      </div>
+
+      <div style="padding:clamp(22px,3vw,34px); background:linear-gradient(158deg,rgba(255,255,255,0.15),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.07), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px">
+        <h2 style="margin:0 0 8px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:clamp(28px,3.6vw,42px); line-height:1.05">{{ stage.title }}</h2>
+        <div style="font-size:15.5px; line-height:1.6; color:rgba(244,239,230,0.78); max-width:62ch; text-wrap:pretty">{{ stage.intro }}</div>
+        <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:14px; padding:13px 16px; border-radius:16px; background:rgba(121,210,200,0.12); border:1px solid rgba(121,210,200,0.3); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); font-family:'IBM Plex Mono', monospace; font-size:12.5px; line-height:1.55; color:#BFF0E9">{{ stage.introEs }}</div>
+        </sc-if>
+        <sc-if value="{{ stage.formula }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:20px; padding:16px 18px; border-radius:18px; background:rgba(232,194,117,0.12); border:1px solid rgba(232,194,117,0.34); box-shadow:inset 0 1px 0 rgba(255,255,255,0.26); font-family:'IBM Plex Mono', monospace; font-size:clamp(12.5px,1.5vw,15px); letter-spacing:0.04em; color:#F6E4BC">{{ stage.formula }}</div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ learnOn }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:18px; margin-top:18px">
+
+          <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+            <h3 style="margin:0 0 16px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Step by step</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:14px">
+              <sc-for list="{{ stage.steps }}" as="sp" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; gap:7px; padding:16px; border-radius:20px; background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.13); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)">
+                  <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:#E8C275">STEP {{ sp.n }}</div>
+                  <div style="font-family:'Bodoni Moda', serif; font-size:19px; line-height:1.2">{{ sp.h }}</div>
+                  <div style="font-size:14px; line-height:1.55; color:rgba(244,239,230,0.8)">{{ sp.body }}</div>
+                  <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8; line-height:1.5">{{ sp.es }}</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ isYears }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.6vw,30px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <h3 style="margin:0 0 6px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Reading tip · the two roads of a year</h3>
+              <div style="font-size:14px; color:rgba(244,239,230,0.7); margin-bottom:22px">Do you know how to pronounce the years?</div>
+              <div style="display:flex; flex-direction:column; align-items:center; gap:18px">
+                <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center">
+                  <div style="font-family:'Bodoni Moda', serif; font-size:clamp(44px,7vw,74px); line-height:1; color:#F6E4BC; letter-spacing:0.02em">1983</div>
+                  <div style="font-family:'IBM Plex Mono', monospace; font-size:22px; color:rgba(244,239,230,0.5)">→</div>
+                  <div style="display:flex; gap:10px">
+                    <div style="padding:14px 22px; border-radius:18px; font-family:'Bodoni Moda', serif; font-size:clamp(28px,4vw,42px); line-height:1; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">19</div>
+                    <div style="padding:14px 22px; border-radius:18px; font-family:'Bodoni Moda', serif; font-size:clamp(28px,4vw,42px); line-height:1; color:#101828; background:linear-gradient(160deg,#BFF0E9,#79D2C8); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">83</div>
+                  </div>
+                </div>
+                <div style="width:100%; display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:16px">
+                  <div style="padding:18px; border-radius:22px; background:rgba(232,194,117,0.1); border:1px solid rgba(232,194,117,0.34); box-shadow:inset 0 1px 0 rgba(255,255,255,0.24)">
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:#F0D9A6; margin-bottom:8px">ROAD 1 · SPLIT THE YEAR</div>
+                    <div style="font-size:14.5px; line-height:1.55; margin-bottom:10px">You separate the year in two parts. First you say nineteen (19), and then eighty-three (83).</div>
+                    <div style="font-family:'Bodoni Moda', serif; font-size:22px; color:#F6E4BC">“nineteen eighty-three”</div>
+                    <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8">Divides el año en dos partes: 19 + 83. Es la forma natural.</div>
+                    </sc-if>
+                  </div>
+                  <div style="padding:18px; border-radius:22px; background:rgba(121,210,200,0.1); border:1px solid rgba(121,210,200,0.34); box-shadow:inset 0 1px 0 rgba(255,255,255,0.24)">
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:#BFF0E9; margin-bottom:8px">ROAD 2 · WHOLE NUMBER</div>
+                    <div style="font-size:14.5px; line-height:1.55; margin-bottom:10px">You read the whole number, without splitting it. More formal, and longer.</div>
+                    <div style="font-family:'Bodoni Moda', serif; font-size:20px; color:#BFF0E9">“one thousand nine hundred eighty-three”</div>
+                    <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8">Lees el número completo, sin dividirlo. Más formal.</div>
+                    </sc-if>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isMonths }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px; flex-wrap:wrap">
+                <h3 style="margin:0; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">The twelve months</h3>
+                <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.16em; color:rgba(244,239,230,0.55); text-transform:uppercase">tap ▶ to hear it</div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:14px">
+                <sc-for list="{{ months }}" as="m" hint-placeholder-count="0">
+                  <div style="display:flex; flex-direction:column; gap:8px; padding:14px; border-radius:22px; background:linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.17); box-shadow:inset 0 1px 0 rgba(255,255,255,0.32), 0 14px 30px -16px rgba(0,0,0,0.6)" style-hover="border-color:rgba(232,194,117,0.5)">
+                    <div style="position:relative; border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.9); aspect-ratio:1/1; background-image:{{ m.bgImg }}; background-size:cover; background-position:center"></div>
+                    <div style="display:flex; align-items:center; gap:8px">
+                      <div style="font-family:'Bodoni Moda', serif; font-size:20px">{{ m.name }}</div>
+                      <button onClick="{{ m.play }}" style="cursor:pointer; margin-left:auto; width:28px; height:28px; display:grid; place-items:center; border-radius:50%; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7); font-size:11px" style-hover="transform:scale(1.08)">▶</button>
+                    </div>
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:#E8C275">{{ m.pron }}</div>
+                    <div style="font-size:12.5px; line-height:1.45; color:rgba(244,239,230,0.74)">{{ m.fest }}</div>
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; color:#79D2C8">{{ m.date }}</div>
+                    <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:rgba(191,240,233,0.9); border-top:1px solid rgba(255,255,255,0.12); padding-top:7px">{{ m.es }}</div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showTenseChart }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.6vw,30px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <h3 style="margin:0 0 4px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Chart · where each tense sits in time</h3>
+              <div style="font-size:14px; color:rgba(244,239,230,0.7); margin-bottom:24px">Read the line from left (earlier) to right (now).</div>
+              <div style="position:relative; padding:0 0 34px">
+                <div style="position:absolute; left:0; right:0; bottom:26px; height:2px; background:linear-gradient(90deg, rgba(121,210,200,0.7), rgba(232,194,117,0.9), rgba(255,255,255,0.35))"></div>
+                <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:16px">
+                  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+                    <div style="width:26%; min-width:96px; height:34px; border-radius:12px; background:linear-gradient(160deg,rgba(121,210,200,0.5),rgba(121,210,200,0.16)); border:1px solid rgba(121,210,200,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.35)"></div>
+                    <div style="font-size:14.5px"><span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:#BFF0E9">PAST PERFECT</span> — I <strong>had finished</strong> my homework <em>before</em> the other action.</div>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+                    <div style="width:26%; min-width:96px; margin-left:20%; height:34px; border-radius:12px; background:repeating-linear-gradient(115deg, rgba(255,255,255,0.28) 0 8px, rgba(255,255,255,0.1) 8px 16px); border:1px solid rgba(255,255,255,0.3); box-shadow:inset 0 1px 0 rgba(255,255,255,0.35)"></div>
+                    <div style="font-size:14.5px"><span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:#F4EFE6">PAST CONTINUOUS</span> — I <strong>was walking</strong>: an action in progress, still open.</div>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+                    <div style="width:14px; height:34px; margin-left:38%; border-radius:7px; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)"></div>
+                    <div style="font-size:14.5px"><span style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:#F0D9A6">PAST SIMPLE</span> — I <strong>met</strong> my friend: one finished point.</div>
+                  </div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:rgba(244,239,230,0.55); text-transform:uppercase">
+                  <span>earlier past</span><span>later past</span><span>now</span>
+                </div>
+              </div>
+              <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                <div style="padding:13px 16px; border-radius:16px; background:rgba(121,210,200,0.12); border:1px solid rgba(121,210,200,0.3); font-family:'IBM Plex Mono', monospace; font-size:11.5px; line-height:1.55; color:#BFF0E9">El pasado perfecto ocurre antes; el continuo estaba en progreso; el simple es el punto que ya terminó.</div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-for list="{{ stage.tables }}" as="t" hint-placeholder-count="1">
+            <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <h3 style="margin:0 0 4px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">{{ t.title }}</h3>
+              <div style="font-size:13.5px; color:rgba(244,239,230,0.68); margin-bottom:16px">{{ t.note }}</div>
+              <div style="overflow-x:auto; border-radius:18px; background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.12); box-shadow:inset 0 1px 0 rgba(255,255,255,0.18)">
+                <table>
+                  <thead>
+                    <tr>
+                      <sc-for list="{{ t.cols }}" as="c" hint-placeholder-count="3">
+                        <th>{{ c }}</th>
+                      </sc-for>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <sc-for list="{{ t.rows }}" as="r" hint-placeholder-count="4">
+                      <tr>
+                        <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="3">
+                          <td>{{ cell }}</td>
+                        </sc-for>
+                      </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </sc-for>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:18px">
+            <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <h3 style="margin:0 0 14px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">The rule</h3>
+              <div style="display:flex; flex-direction:column; gap:12px">
+                <sc-for list="{{ stage.points }}" as="p" hint-placeholder-count="3">
+                  <div style="display:flex; gap:12px; align-items:flex-start">
+                    <span style="flex:0 0 auto; margin-top:5px; width:7px; height:7px; border-radius:50%; background:#E8C275; box-shadow:0 0 10px rgba(232,194,117,0.8)"></span>
+                    <div style="display:flex; flex-direction:column; gap:5px">
+                      <div style="font-size:14.5px; line-height:1.55">{{ p.en }}</div>
+                      <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                        <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8; line-height:1.5">{{ p.es }}</div>
+                      </sc-if>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <h3 style="margin:0 0 14px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Examples</h3>
+              <div style="display:flex; flex-direction:column; gap:11px">
+                <sc-for list="{{ stage.examples }}" as="ex" hint-placeholder-count="4">
+                  <div style="padding:13px 15px; border-radius:16px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.13); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)">
+                    <div style="font-size:14.5px; line-height:1.5">{{ ex.en }}</div>
+                    <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:6px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8">{{ ex.es }}</div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(240,138,110,0.14),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(240,138,110,0.3); box-shadow:inset 0 1px 0 rgba(255,255,255,0.32), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+            <h3 style="margin:0 0 14px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Common mistakes</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px">
+              <sc-for list="{{ stage.mistakes }}" as="mk" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; gap:8px; padding:15px; border-radius:18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.13); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)">
+                  <div style="display:flex; align-items:baseline; gap:9px; font-size:14.5px; color:#F7B7A2"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px">✕</span><span style="text-decoration:line-through; text-decoration-color:rgba(247,183,162,0.6)">{{ mk.wrong }}</span></div>
+                  <div style="display:flex; align-items:baseline; gap:9px; font-size:15px; color:#A8E6DC"><span style="font-family:'IBM Plex Mono', monospace; font-size:12px">✓</span><span style="font-weight:600">{{ mk.right }}</span></div>
+                  <div style="font-size:12.5px; line-height:1.5; color:rgba(244,239,230,0.7)">{{ mk.why }}</div>
+                  <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8; line-height:1.5">{{ mk.es }}</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ isVideo }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:18px">
+              <sc-for list="{{ videos }}" as="v" hint-placeholder-count="2">
+                <div style="padding:clamp(16px,2.4vw,24px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+                  <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px">
+                    <h3 style="margin:0; font-family:'Bodoni Moda', serif; font-weight:600; font-size:23px">{{ v.title }}</h3>
+                    <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.16em; color:rgba(244,239,230,0.55); text-transform:uppercase">{{ v.tag }}</div>
+                  </div>
+                  <div style="font-size:14.5px; line-height:1.6; color:rgba(244,239,230,0.8); margin-bottom:16px; max-width:70ch">{{ v.brief }}</div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(290px,1fr)); gap:18px; align-items:start">
+                    <div>
+                      <sc-if value="{{ v.hasEmbed }}" hint-placeholder-val="{{ true }}">
+                        <div style="position:relative; border-radius:18px; overflow:hidden; aspect-ratio:16/9; background:#000; border:1px solid rgba(255,255,255,0.16)">
+                          <iframe src="{{ v.embed }}" title="{{ v.title }}" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen="" style="width:100%; height:100%; border:0; display:block"></iframe>
+                        </div>
+                      </sc-if>
+                      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:14px">
+                        <a href="{{ v.link }}" target="_blank" rel="noopener" style="padding:11px 18px; border-radius:999px; font-size:13px; font-weight:600; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">{{ v.linkLabel }}</a>
+                        <button onClick="{{ v.toggle }}" style="cursor:pointer; padding:11px 18px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.24); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36)">{{ v.toggleLabel }}</button>
+                      </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:10px">
+                      <sc-for list="{{ v.questions }}" as="q" hint-placeholder-count="5">
+                        <div style="padding:14px 16px; border-radius:18px; background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.13); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2)">
+                          <div style="display:flex; gap:10px; align-items:flex-start">
+                            <span style="flex:0 0 auto; font-family:'IBM Plex Mono', monospace; font-size:11px; color:#E8C275; margin-top:3px">{{ q.n }}</span>
+                            <div style="font-size:14.5px; line-height:1.5">{{ q.q }}</div>
+                          </div>
+                          <sc-if value="{{ v.open }}" hint-placeholder-val="{{ false }}">
+                            <div style="margin-top:10px; padding:11px 13px; border-radius:14px; background:rgba(121,210,200,0.13); border:1px solid rgba(121,210,200,0.32)">
+                              <div style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; color:#79D2C8; margin-bottom:5px">ANSWER</div>
+                              <div style="font-size:14.5px; line-height:1.5; color:#F4EFE6">{{ q.a }}</div>
+                            </div>
+                          </sc-if>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display:flex; justify-content:flex-end">
+            <button onClick="{{ goPlay }}" style="cursor:pointer; padding:14px 26px; border-radius:999px; font-family:Manrope, sans-serif; font-size:14px; font-weight:700; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7), 0 14px 30px -12px rgba(232,194,117,0.7)" style-hover="transform:translateY(-1px)">{{ playCta }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ playOn }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:18px; margin-top:18px">
+
+          <sc-if value="{{ timelineOn }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.8vw,32px); background:linear-gradient(158deg,rgba(255,255,255,0.14),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px">
+              <h3 style="margin:0 0 6px; font-family:'Bodoni Moda', serif; font-weight:600; font-size:23px">Type your three moments</h3>
+              <div style="font-size:14px; color:rgba(244,239,230,0.72); margin-bottom:24px; max-width:68ch">Write each action with the verb in its base form — “finish my homework”, “walk to school”, “meet my friend”. The app conjugates them and returns one full sentence that mixes the three past tenses.</div>
+
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:22px">
+                <label style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:#79D2C8; text-transform:uppercase">Subject</label>
+                <input value="{{ tSubject }}" onChange="{{ setSubject }}" placeholder="I" style="width:150px; padding:11px 14px; border-radius:14px; font-family:Manrope, sans-serif; font-size:14.5px; color:#F4EFE6; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); outline:none" style-focus="border-color:rgba(232,194,117,0.6)" />
+                <label style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.18em; color:#79D2C8; text-transform:uppercase">When (optional)</label>
+                <input value="{{ tWhen }}" onChange="{{ setWhen }}" placeholder="yesterday · last Friday · in 1983" style="flex:1; min-width:200px; padding:11px 14px; border-radius:14px; font-family:Manrope, sans-serif; font-size:14.5px; color:#F4EFE6; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); outline:none" style-focus="border-color:rgba(232,194,117,0.6)" />
+              </div>
+
+              <div style="position:relative; padding:6px 0 0">
+                <div style="position:absolute; left:2%; right:2%; top:28px; height:2px; background:linear-gradient(90deg, rgba(121,210,200,0.75), rgba(255,255,255,0.4), rgba(232,194,117,0.9))"></div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:16px">
+                  <sc-for list="{{ nodes }}" as="nd" hint-placeholder-count="3">
+                    <div style="display:flex; flex-direction:column; gap:10px">
+                      <div style="display:flex; align-items:center; gap:10px; height:52px">
+                        <span style="width:16px; height:16px; border-radius:50%; background:{{ nd.dot }}; border:2px solid rgba(255,255,255,0.65); box-shadow:0 0 14px {{ nd.glow }}"></span>
+                        <span style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.16em; color:{{ nd.dot }}; text-transform:uppercase">{{ nd.tense }}</span>
+                      </div>
+                      <div style="padding:16px; border-radius:22px; background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.22); display:flex; flex-direction:column; gap:9px">
+                        <div style="font-family:'Bodoni Moda', serif; font-size:18px">{{ nd.label }}</div>
+                        <div style="font-size:12.5px; line-height:1.5; color:rgba(244,239,230,0.68)">{{ nd.hint }}</div>
+                        <input value="{{ nd.value }}" onChange="{{ nd.set }}" placeholder="{{ nd.ph }}" style="padding:11px 13px; border-radius:14px; font-family:Manrope, sans-serif; font-size:14.5px; color:#F4EFE6; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); outline:none" style-focus="border-color:rgba(232,194,117,0.6)" />
+                        <div style="font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:{{ nd.dot }}">{{ nd.preview }}</div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:20px">
+                <button onClick="{{ buildSentence }}" style="cursor:pointer; padding:13px 24px; border-radius:999px; font-family:Manrope, sans-serif; font-size:14px; font-weight:700; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7), 0 14px 30px -12px rgba(232,194,117,0.7)">Build my sentence</button>
+                <button onClick="{{ loadExample }}" style="cursor:pointer; padding:13px 20px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.24); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36)">Load an example</button>
+                <button onClick="{{ clearTimeline }}" style="cursor:pointer; padding:13px 20px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:rgba(244,239,230,0.8); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18)">Clear</button>
+              </div>
+
+              <sc-if value="{{ hasOutput }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:22px; padding:clamp(18px,2.4vw,26px); border-radius:24px; background:linear-gradient(160deg,rgba(121,210,200,0.16),rgba(255,255,255,0.05)); border:1px solid rgba(121,210,200,0.38); box-shadow:inset 0 1px 0 rgba(255,255,255,0.34), 0 20px 44px -20px rgba(0,0,0,0.65)">
+                  <div style="font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.2em; color:#79D2C8; text-transform:uppercase; margin-bottom:12px">Your full sentence</div>
+                  <div style="font-family:'Bodoni Moda', serif; font-size:clamp(21px,2.8vw,32px); line-height:1.25; text-wrap:pretty">{{ outMain }}</div>
+                  <div style="margin-top:14px; font-size:15px; line-height:1.6; color:rgba(244,239,230,0.86)">{{ outAlt }}</div>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px; margin-top:20px">
+                    <sc-for list="{{ outParts }}" as="pt" hint-placeholder-count="3">
+                      <div style="padding:14px; border-radius:18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14)">
+                        <div style="font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.18em; color:{{ pt.color }}; margin-bottom:6px">{{ pt.tense }}</div>
+                        <div style="font-size:14.5px; line-height:1.5">{{ pt.text }}</div>
+                        <div style="margin-top:6px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(244,239,230,0.6)">{{ pt.formula }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:16px; padding:13px 16px; border-radius:16px; background:rgba(121,210,200,0.12); border:1px solid rgba(121,210,200,0.3); font-family:'IBM Plex Mono', monospace; font-size:11.5px; line-height:1.55; color:#BFF0E9">{{ outEs }}</div>
+                  </sc-if>
+                  <sc-if value="{{ hasIrregular }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:14px; font-size:13.5px; color:rgba(244,239,230,0.78)">Irregular verbs used: <span style="font-family:'IBM Plex Mono', monospace; color:#F6E4BC">{{ irregularList }}</span></div>
+                  </sc-if>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ notebookOn }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.6vw,30px); background:linear-gradient(158deg,rgba(255,255,255,0.14),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px; display:flex; flex-direction:column; gap:14px">
+              <h3 style="margin:0; font-family:'Bodoni Moda', serif; font-weight:600; font-size:23px">Your notebook</h3>
+              <div style="font-size:14px; color:rgba(244,239,230,0.75); max-width:70ch">Answer in the simple past. Write the dates in the English order, and mark every irregular verb you hear.</div>
+              <textarea value="{{ notes }}" onChange="{{ setNotes }}" placeholder="Lebron was born in 1984…" style="min-height:190px; resize:vertical; padding:16px; border-radius:20px; font-family:Manrope, sans-serif; font-size:14.5px; line-height:1.6; color:#F4EFE6; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16); box-shadow:inset 0 1px 0 rgba(255,255,255,0.2); outline:none" style-focus="border-color:rgba(232,194,117,0.6)"></textarea>
+              <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; color:rgba(244,239,230,0.5)">{{ notesState }}</div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ builderOn }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(18px,2.4vw,26px); background:linear-gradient(158deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04)); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.18); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36), 0 22px 50px -20px rgba(0,0,0,0.65); border-radius:26px">
+              <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px">
+                <h3 style="margin:0; font-family:'Bodoni Moda', serif; font-weight:600; font-size:22px">Mini game · build the date</h3>
+                <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.14em; color:rgba(244,239,230,0.55); text-transform:uppercase">tap the pieces in order</div>
+              </div>
+              <div style="min-height:62px; display:flex; flex-wrap:wrap; gap:9px; align-items:center; padding:14px; border-radius:18px; background:rgba(255,255,255,0.05); border:1px dashed rgba(255,255,255,0.24); margin-bottom:14px">
+                <sc-for list="{{ built }}" as="b" hint-placeholder-count="0">
+                  <button onClick="{{ b.remove }}" style="cursor:pointer; padding:9px 15px; border-radius:999px; font-family:'Bodoni Moda', serif; font-size:17px; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">{{ b.text }}</button>
+                </sc-for>
+                <sc-if value="{{ builtEmpty }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-family:'IBM Plex Mono', monospace; font-size:12px; color:rgba(244,239,230,0.4)">Friday, August 12th, 2022 — in the correct order</span>
+                </sc-if>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:9px; margin-bottom:14px">
+                <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+                  <button onClick="{{ c.pick }}" style="cursor:pointer; padding:9px 15px; border-radius:999px; font-family:'Bodoni Moda', serif; font-size:17px; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.22); box-shadow:inset 0 1px 0 rgba(255,255,255,0.34); opacity:{{ c.opacity }}" style-hover="background:linear-gradient(160deg,rgba(255,255,255,0.26),rgba(255,255,255,0.09))">{{ c.text }}</button>
+                </sc-for>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center">
+                <button onClick="{{ checkBuilt }}" style="cursor:pointer; padding:11px 20px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(121,210,200,0.3),rgba(121,210,200,0.1)); border:1px solid rgba(121,210,200,0.45); box-shadow:inset 0 1px 0 rgba(255,255,255,0.3)">Check</button>
+                <button onClick="{{ resetBuilt }}" style="cursor:pointer; padding:11px 20px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13px; font-weight:600; color:rgba(244,239,230,0.8); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18)">Reset</button>
+                <div style="font-size:14px; font-weight:600; color:{{ builtColor }}">{{ builtMsg }}</div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ quizActive }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:clamp(20px,3vw,32px); background:linear-gradient(158deg,rgba(255,255,255,0.14),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px">
+              <div style="display:flex; align-items:center; gap:14px; margin-bottom:18px">
+                <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.18em; color:rgba(244,239,230,0.6)">{{ qLabel }}</div>
+                <div style="flex:1; height:5px; border-radius:999px; background:rgba(255,255,255,0.1); overflow:hidden; box-shadow:inset 0 1px 2px rgba(0,0,0,0.4)">
+                  <div style="height:100%; width:{{ qProgress }}; border-radius:999px; background:linear-gradient(90deg,#79D2C8,#E8C275); transition:width 0.35s ease"></div>
+                </div>
+              </div>
+              <div style="font-family:'Bodoni Moda', serif; font-size:clamp(22px,2.8vw,30px); line-height:1.2; margin-bottom:8px; text-wrap:pretty">{{ cur.prompt }}</div>
+              <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-bottom:16px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:#79D2C8; line-height:1.5">{{ cur.es }}</div>
+              </sc-if>
+              <div style="display:flex; flex-direction:column; gap:10px; margin-top:16px">
+                <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{ o.pick }}" style="cursor:pointer; text-align:left; display:flex; align-items:center; gap:12px; padding:15px 18px; border-radius:18px; font-family:Manrope, sans-serif; font-size:15.5px; font-weight:500; color:#F4EFE6; background:{{ o.bg }}; border:1px solid {{ o.border }}; box-shadow:inset 0 1px 0 rgba(255,255,255,0.28), 0 12px 28px -18px rgba(0,0,0,0.7)" style-hover="border-color:rgba(232,194,117,0.55)">
+                    <span style="flex:0 0 auto; width:24px; height:24px; display:grid; place-items:center; border-radius:50%; font-family:'IBM Plex Mono', monospace; font-size:11px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.22)">{{ o.key }}</span>
+                    <span style="flex:1">{{ o.text }}</span>
+                    <span style="font-family:'IBM Plex Mono', monospace; font-size:13px; color:{{ o.markColor }}">{{ o.mark }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:18px; padding:16px 18px; border-radius:20px; background:{{ fbBg }}; border:1px solid {{ fbBorder }}; box-shadow:inset 0 1px 0 rgba(255,255,255,0.26)">
+                  <div style="font-family:'Bodoni Moda', serif; font-size:19px; margin-bottom:6px; color:{{ fbColor }}">{{ fbTitle }}</div>
+                  <div style="font-size:14.5px; line-height:1.55; color:rgba(244,239,230,0.86)">{{ cur.why }}</div>
+                  <sc-if value="{{ esOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#79D2C8; line-height:1.5">{{ cur.whyEs }}</div>
+                  </sc-if>
+                  <div style="display:flex; justify-content:flex-end; margin-top:14px">
+                    <button onClick="{{ next }}" style="cursor:pointer; padding:12px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13.5px; font-weight:700; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">{{ nextLabel }}</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:clamp(24px,3.4vw,40px); text-align:center; background:linear-gradient(158deg,rgba(255,255,255,0.15),rgba(255,255,255,0.045)); backdrop-filter:blur(26px) saturate(165%); -webkit-backdrop-filter:blur(26px) saturate(165%); border:1px solid rgba(255,255,255,0.2); box-shadow:inset 0 1px 0 rgba(255,255,255,0.4), 0 26px 60px -22px rgba(0,0,0,0.7); border-radius:28px">
+              <div style="font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.22em; color:#79D2C8; text-transform:uppercase; margin-bottom:12px">Stage cleared</div>
+              <div style="font-family:'Bodoni Moda', serif; font-size:clamp(40px,6vw,64px); line-height:1">{{ scoreText }}</div>
+              <div style="font-size:15.5px; color:rgba(244,239,230,0.78); margin:10px 0 22px">{{ scoreMsg }}</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center">
+                <button onClick="{{ retry }}" style="cursor:pointer; padding:13px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13.5px; font-weight:600; color:#F4EFE6; background:linear-gradient(160deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05)); border:1px solid rgba(255,255,255,0.24); box-shadow:inset 0 1px 0 rgba(255,255,255,0.36)">Play again</button>
+                <button onClick="{{ nextStage }}" style="cursor:pointer; padding:13px 22px; border-radius:999px; font-family:Manrope, sans-serif; font-size:13.5px; font-weight:700; color:#101828; background:linear-gradient(160deg,#F6E4BC,#E8C275); border:1px solid rgba(255,255,255,0.5); box-shadow:inset 0 1px 0 rgba(255,255,255,0.7)">{{ nextStageLabel }}</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;esHintsDefault&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Language&quot;}}">
+const M = (name, es, pron, img, audio, fest, date) => ({ name, es, pron, img, audio, fest, date });
+const T = (title, note, cols, rows) => ({ title, note, cols, rows: rows.map(r => ({ cells: r })) });
+
+const MONTHS = [
+  M('January','enero — Día de los Reyes Magos','/yanuari/','assets/jan.png','assets/audio/jan.m4a','Three Kings Day','on January 6th'),
+  M('February','febrero — San Valentín','/febrari/','assets/feb.png','assets/audio/feb.m4a',"St Valentine's Day",'on February 14th'),
+  M('March','marzo — Día de la Mujer','/march/','assets/mar.jpg','assets/audio/mar.m4a',"Women's Day",'on March 8th'),
+  M('April','abril — Día del Niño','/eipriol/','assets/apr.jpg','assets/audio/apr.m4a',"Children's Day",'on April 24th'),
+  M('May','mayo — Día de la Madre','/mei/','assets/may.jpg','assets/audio/may.m4a',"Mother's Day",'on May 9th'),
+  M('June','junio — Día del Padre','/yun/','assets/jun.jpg','assets/audio/jun.m4a',"Father's Day",'on June 20th'),
+  M('July','julio — Día de la Independencia','/yulai/','assets/jul.jpg','assets/audio/jul.m4a','Independence Day','on July 20th'),
+  M('August','agosto — mes de las cometas','/ogost/','assets/aug.jpg','assets/audio/aug.m4a',"Kite's month (kaits)",'all month'),
+  M('September','septiembre — Amor y Amistad','/september/','assets/sep.jpg','assets/audio/sep.m4a','Love and Friendship Day','on September 18th'),
+  M('October','octubre — Halloween','/october/','assets/oct.jpg','assets/audio/oct.m4a','Halloween','on October 31st'),
+  M('November','noviembre — Independencia de Cartagena','/november/','assets/nov.jpg','assets/audio/nov.m4a',"Cartagena's Independence Day",'on November 11th'),
+  M('December','diciembre — Navidad','/december/','assets/dec.jpg','assets/audio/dec.m4a','Christmas Day','on December 25th')
+];
+
+const IRREG = {
+  be:['was','been'], become:['became','become'], begin:['began','begun'], break:['broke','broken'], bring:['brought','brought'],
+  build:['built','built'], buy:['bought','bought'], catch:['caught','caught'], choose:['chose','chosen'], come:['came','come'],
+  cut:['cut','cut'], do:['did','done'], drink:['drank','drunk'], drive:['drove','driven'], eat:['ate','eaten'], fall:['fell','fallen'],
+  feel:['felt','felt'], find:['found','found'], fly:['flew','flown'], forget:['forgot','forgotten'], get:['got','gotten'],
+  give:['gave','given'], go:['went','gone'], grow:['grew','grown'], have:['had','had'], hear:['heard','heard'], hold:['held','held'],
+  keep:['kept','kept'], know:['knew','known'], leave:['left','left'], lose:['lost','lost'], make:['made','made'], meet:['met','met'],
+  pay:['paid','paid'], put:['put','put'], read:['read','read'], ride:['rode','ridden'], run:['ran','run'], say:['said','said'],
+  see:['saw','seen'], sell:['sold','sold'], send:['sent','sent'], sing:['sang','sung'], sit:['sat','sat'], sleep:['slept','slept'],
+  speak:['spoke','spoken'], spend:['spent','spent'], stand:['stood','stood'], swim:['swam','swum'], take:['took','taken'],
+  teach:['taught','taught'], tell:['told','told'], think:['thought','thought'], understand:['understood','understood'],
+  wear:['wore','worn'], win:['won','won'], write:['wrote','written']
+};
+
+const VOWELS = 'aeiou';
+const NO_DOUBLE = 'wxy';
+
+function isCVC(w) {
+  if (w.length < 3) return false;
+  const a = w[w.length - 3], b = w[w.length - 2], c = w[w.length - 1];
+  return VOWELS.indexOf(a) < 0 && VOWELS.indexOf(b) >= 0 && VOWELS.indexOf(c) < 0 && NO_DOUBLE.indexOf(c) < 0;
+}
+function pastOf(v) {
+  const k = v.toLowerCase();
+  if (IRREG[k]) return IRREG[k][0];
+  if (k.slice(-1) === 'e') return k + 'd';
+  if (k.slice(-1) === 'y' && VOWELS.indexOf(k.slice(-2, -1)) < 0) return k.slice(0, -1) + 'ied';
+  if (isCVC(k)) return k + k.slice(-1) + 'ed';
+  return k + 'ed';
+}
+function ppOf(v) {
+  const k = v.toLowerCase();
+  if (IRREG[k]) return IRREG[k][1];
+  return pastOf(k);
+}
+function ingOf(v) {
+  const k = v.toLowerCase();
+  if (k.slice(-2) === 'ie') return k.slice(0, -2) + 'ying';
+  if (k.slice(-1) === 'e' && k.slice(-2) !== 'ee') return k.slice(0, -1) + 'ing';
+  if (isCVC(k)) return k + k.slice(-1) + 'ing';
+  return k + 'ing';
+}
+function splitPhrase(p) {
+  const t = (p || '').trim().replace(/\s+/g, ' ');
+  if (!t) return null;
+  const parts = t.split(' ');
+  return { verb: parts[0], rest: parts.slice(1).join(' ') };
+}
+function join(a, b) { return b ? a + ' ' + b : a; }
+function wasWere(subject) {
+  const s = (subject || 'I').trim().toLowerCase();
+  if (s === 'you' || s === 'we' || s === 'they') return 'were';
+  if (s === 'i' || s === 'he' || s === 'she' || s === 'it') return 'was';
+  if (s.indexOf(' and ') >= 0) return 'were';
+  if (s.slice(-1) === 's' && s.slice(-2) !== 'ss') return 'were';
+  return 'was';
+}
+function lowerSubject(subject) {
+  const s = (subject || 'I').trim();
+  return s === 'I' ? 'I' : s.charAt(0).toLowerCase() === s.charAt(0) ? s : s;
+}
+function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+const STAGES = [
+  {
+    id:'months', num:'01', title:'Months of the Year', es:'Los meses del año',
+    blurb:'Pronunciation, celebrations and the prepositions in / on.',
+    intro:'Every month has a name, a pronunciation and — in Colombia — a celebration. Listen to each month, then check when you use IN and when you use ON.',
+    introEs:'Cada mes tiene nombre, pronunciación y una celebración. Escucha cada mes y revisa cuándo se usa IN y cuándo ON.',
+    formula:'IN + month   ·   ON + full date   →   in January · on January 6th',
+    steps:[
+      { n:'1', h:'Say the name', body:'The twelve names are fixed and always take a capital letter. Listen to the audio and repeat.', es:'Los doce nombres son fijos y siempre llevan mayúscula.' },
+      { n:'2', h:'Choose the preposition', body:'Only a month → IN. Month with the day → ON.', es:'Solo el mes → IN. Mes con día → ON.' },
+      { n:'3', h:'Add the ordinal day', body:'The day is never a plain number: January 6th, March 8th, October 31st.', es:'El día es ordinal, nunca un número simple.' }
+    ],
+    tables:[
+      T('Table · the twelve months', 'Pronunciation as it was taught in class, plus the celebration of each month in Colombia.',
+        ['Month','Pronunciation','Celebration','Date'],
+        MONTHS.map(m => [m.name, m.pron, m.fest, m.date])),
+      T('Table · IN or ON?', 'The preposition depends on how much information the date carries.',
+        ['What you name','Preposition','Example'],
+        [['Only the month','IN','in September'],['Month + day','ON','on September 18th'],['Only the year','IN','in 2020'],['Day of the week','ON','on Friday'],['Part of the day','IN / AT','in the morning · at night']])
+    ],
+    points:[
+      { en:'Months are always written with a capital letter in English.', es:'En inglés los meses SIEMPRE llevan mayúscula.' },
+      { en:'Use IN before a month on its own: In March, we celebrate Women\u2019s Day.', es:'Usa IN antes de un mes solo: in March.' },
+      { en:'Use ON before a complete date with the day: on March 8th.', es:'Usa ON antes de una fecha completa con el día: on March 8th.' },
+      { en:'The day is an ordinal number: 6th, 8th, 14th, 20th, 31st.', es:'El día es un número ordinal: 6th, 8th, 14th, 20th, 31st.' }
+    ],
+    examples:[
+      { en:'In January, in Colombia we celebrate Three Kings Day on January 6th.', es:'En enero celebramos el Día de Reyes el 6 de enero.' },
+      { en:'In September, we celebrate Love and Friendship Day on September 18th.', es:'En septiembre celebramos Amor y Amistad el 18 de septiembre.' },
+      { en:'In August, we celebrate the Kite\u2019s month.', es:'En agosto celebramos el mes de las cometas.' },
+      { en:'In November, we celebrate Cartagena\u2019s Independence Day on November 11th.', es:'En noviembre celebramos la independencia de Cartagena el 11 de noviembre.' }
+    ],
+    mistakes:[
+      { wrong:'in january', right:'in January', why:'Months take a capital letter, always.', es:'Mayúscula inicial obligatoria.' },
+      { wrong:'on January we celebrate…', right:'in January we celebrate…', why:'ON is only used when the day appears.', es:'ON solo va cuando aparece el día.' },
+      { wrong:'on 6 January', right:'on January 6th', why:'Month first, then the ordinal day.', es:'Primero el mes, luego el día ordinal.' }
+    ],
+    quiz:[
+      { prompt:'Choose the correct sentence.', options:['In January we celebrate Three Kings Day.','On January we celebrate Three Kings Day.','In january we celebrate three kings day.'], answer:0, why:'IN goes with a month alone, and the month keeps its capital letter.', whyEs:'IN va con el mes solo, y el mes con mayúscula.', es:'Elige la oración correcta.' },
+      { prompt:'Which month is pronounced /ogost/ ?', options:['August','April','October'], answer:0, why:'August = /ogost/. April is /eipriol/ and October is /october/.', whyEs:'August se pronuncia /ogost/.', es:'¿Qué mes se pronuncia /ogost/?' },
+      { prompt:'We celebrate Love and Friendship Day ___ September 18th.', options:['on','in','at'], answer:0, why:'ON introduces a full date: month + ordinal day.', whyEs:'ON introduce una fecha completa.', es:'Completa la oración.' },
+      { prompt:'In Colombia, Mother\u2019s Day is in…', options:['May','March','June'], answer:0, why:'Mother\u2019s Day is on May 9th; Father\u2019s Day is on June 20th.', whyEs:'El Día de la Madre es el 9 de mayo.', es:'¿En qué mes es el Día de la Madre?' },
+      { prompt:'Which date is written correctly?', options:['on November 11th','on 11 november','in November 11'], answer:0, why:'Capital letter, month first, ordinal day, ON for the full date.', whyEs:'Mayúscula, mes primero, día ordinal y ON.', es:'¿Cuál fecha está bien escrita?' }
+    ]
+  },
+  {
+    id:'dates', num:'02', title:'Writing Dates', es:'Cómo escribir fechas',
+    blurb:'Day of the week, month, ordinal day, year — in that order.',
+    intro:'A complete date in English follows one order: the day of the week, the month, the ordinal day and the year, separated by commas.',
+    introEs:'Una fecha completa en inglés sigue un orden: día de la semana, mes, día ordinal y año, separados por comas.',
+    formula:'Friday,  August  12th,  2022   →   day of the week + month + ordinal day + year',
+    steps:[
+      { n:'1', h:'Start with the day of the week', body:'It opens the date and takes a comma: Friday,', es:'Abre la fecha y lleva coma: Friday,' },
+      { n:'2', h:'Write the month, then the day', body:'The month comes before the number, and the number is ordinal: August 12th', es:'El mes va antes del número, y el número es ordinal.' },
+      { n:'3', h:'Close with the year', body:'A comma separates the day from the year: August 12th, 2022', es:'Una coma separa el día del año.' }
+    ],
+    tables:[
+      T('Table · the four positions of a date', 'Every complete date follows this order, with no exceptions.',
+        ['Position','Element','Example','Note'],
+        [['1','Day of the week','Friday,','Optional, but always first'],['2','Month','August','Capital letter'],['3','Ordinal day','12th,','Never a plain number'],['4','Year','2022','Read as nineteen / twenty + pair']]),
+      T('Chart · ordinal numbers', 'The ending depends on the last digit: 1 → st, 2 → nd, 3 → rd, everything else → th.',
+        ['Number','Ordinal','Number','Ordinal','Number','Ordinal'],
+        [['1','1st','11','11th','21','21st'],['2','2nd','12','12th','22','22nd'],['3','3rd','13','13th','23','23rd'],['4','4th','14','14th','24','24th'],['5','5th','15','15th','30','30th'],['6','6th','20','20th','31','31st']])
+    ],
+    points:[
+      { en:'The order is fixed: day of the week, month, day, year.', es:'El orden es fijo: día de la semana, mes, día, año.' },
+      { en:'Ordinals: 1st, 2nd, 3rd, 4th… 21st, 22nd, 23rd, 31st.', es:'Ordinales: 1st, 2nd, 3rd, 4th… 21st, 31st.' },
+      { en:'A comma goes after the day of the week and after the day number.', es:'La coma va después del día de la semana y después del número del día.' },
+      { en:'ON + date, IN + month or year: on August 12th, in August, in 2022.', es:'ON + fecha, IN + mes o año.' }
+    ],
+    examples:[
+      { en:'Friday, August 12th, 2022', es:'viernes, 12 de agosto de 2022' },
+      { en:'My birthday is on March 3rd.', es:'Mi cumpleaños es el 3 de marzo.' },
+      { en:'The discovery of America was on October 12th, 1492.', es:'El descubrimiento de América fue el 12 de octubre de 1492.' },
+      { en:'The Chernobyl accident was on April 21st, 1986.', es:'El accidente de Chernóbil fue el 21 de abril de 1986.' }
+    ],
+    mistakes:[
+      { wrong:'August 2th', right:'August 2nd', why:'2 → 2nd, 3 → 3rd. Only 4 to 20 take -th.', es:'2 → 2nd, 3 → 3rd. Solo del 4 al 20 se usa -th.' },
+      { wrong:'August 12th, Friday', right:'Friday, August 12th', why:'The day of the week always comes first.', es:'El día de la semana va primero.' },
+      { wrong:'in August 12th', right:'on August 12th', why:'IN is for the month alone; ON is for the exact date.', es:'IN para el mes solo; ON para la fecha exacta.' }
+    ],
+    quiz:[
+      { prompt:'Which date is in the correct order?', options:['Friday, August 12th, 2022','August Friday 12th 2022','12th August, Friday 2022'], answer:0, why:'Day of the week, month, ordinal day, year.', whyEs:'Día de la semana, mes, día ordinal, año.', es:'¿Cuál fecha está en el orden correcto?' },
+      { prompt:'The ordinal number for 2 is…', options:['2nd','2th','2rd'], answer:0, why:'One → 1st, two → 2nd, three → 3rd.', whyEs:'Uno → 1st, dos → 2nd, tres → 3rd.', es:'El ordinal de 2 es…' },
+      { prompt:'My birthday is ___ March 3rd.', options:['on','in','at'], answer:0, why:'ON is used with a specific date.', whyEs:'ON se usa con una fecha específica.', es:'Completa: My birthday is ___ March 3rd.' },
+      { prompt:'Which ordinal is correct for 21?', options:['21st','21th','21nd'], answer:0, why:'21 ends in 1, so it takes -st: twenty-first.', whyEs:'21 termina en 1, entonces lleva -st.', es:'¿Cuál ordinal es correcto para 21?' },
+      { prompt:'How do you read October 12th, 1492?', options:['October twelfth, fourteen ninety-two','October twelve, one four nine two','October twelfth, fourteen hundred two'], answer:0, why:'The day is an ordinal and the year is split in two parts.', whyEs:'El día es ordinal y el año se divide en dos partes.', es:'¿Cómo se lee October 12th, 1492?' }
+    ]
+  },
+  {
+    id:'years', num:'03', title:'Saying the Years', es:'Cómo decir los años',
+    blurb:'Split the year, or read the whole number.',
+    intro:'There are two ways to say a year. You can split it in two parts, or read the whole number. Splitting is the natural, everyday option.',
+    introEs:'Hay dos formas de decir un año: dividirlo en dos partes o leer el número completo. Dividirlo es lo más natural.',
+    formula:'1983  →  19 | 83  →  “nineteen eighty-three”   ·   whole number: “one thousand nine hundred eighty-three”',
+    steps:[
+      { n:'1', h:'Cut the year in half', body:'Four digits become two pairs: 19 | 83. Each pair is read as a single number.', es:'Cuatro dígitos se vuelven dos pares: 19 | 83.' },
+      { n:'2', h:'Say pair one, then pair two', body:'First nineteen (19), then eighty-three (83): “nineteen eighty-three”.', es:'Primero nineteen (19), luego eighty-three (83).' },
+      { n:'3', h:'Or read it whole', body:'Say the complete number: “one thousand nine hundred eighty-three”. Correct, but formal and long.', es:'O lee el número completo: más formal y largo.' }
+    ],
+    tables:[
+      T('Table · the same year, two roads', 'Both readings are correct. The split version is what people use when they speak.',
+        ['Year','Split (natural)','Whole number (formal)'],
+        [['1983','nineteen eighty-three','one thousand nine hundred eighty-three'],['1492','fourteen ninety-two','one thousand four hundred ninety-two'],['1986','nineteen eighty-six','one thousand nine hundred eighty-six'],['1900','nineteen hundred','one thousand nine hundred'],['2005','two thousand five','two thousand five'],['2020','twenty twenty','two thousand twenty']]),
+      T('Table · special cases', 'Not every year splits in the same way.',
+        ['Type of year','Rule','Example'],
+        [['Ends in 00','Use “hundred”','1800 → eighteen hundred'],['2000–2009','two thousand + number','2007 → two thousand seven'],['2010 onwards','Split again','2026 → twenty twenty-six'],['With a date','Month + ordinal day + year','on April 21st, 1986']])
+    ],
+    points:[
+      { en:'Split the year: say the first two digits, then the last two.', es:'Divide el año: primero dos dígitos, luego los otros dos.' },
+      { en:'Read the whole number when you want to be formal or very clear.', es:'Lee el número completo cuando quieras ser formal o muy claro.' },
+      { en:'Years from 2000 to 2009: two thousand + number (2005 = two thousand five).', es:'De 2000 a 2009: two thousand + número.' },
+      { en:'From 2010 the split returns: 2020 = twenty twenty.', es:'Desde 2010 vuelve la división: 2020 = twenty twenty.' }
+    ],
+    examples:[
+      { en:'1983 → nineteen eighty-three', es:'mil novecientos ochenta y tres' },
+      { en:'1492 → fourteen ninety-two', es:'mil cuatrocientos noventa y dos' },
+      { en:'1986 → nineteen eighty-six', es:'mil novecientos ochenta y seis' },
+      { en:'2020 → twenty twenty', es:'dos mil veinte' }
+    ],
+    mistakes:[
+      { wrong:'1983 = nineteen eight three', right:'nineteen eighty-three', why:'The second pair is one number: 83 = eighty-three.', es:'El segundo par es un número: 83 = eighty-three.' },
+      { wrong:'2020 = two zero two zero', right:'twenty twenty', why:'Years are not read digit by digit.', es:'Los años no se leen dígito por dígito.' },
+      { wrong:'in 1986 year', right:'in 1986', why:'The word “year” is not repeated after the number.', es:'No se repite la palabra “year” después del número.' }
+    ],
+    quiz:[
+      { prompt:'1983 split in two parts is…', options:['nineteen eighty-three','one nine eight three','nineteen eight three'], answer:0, why:'19 = nineteen, 83 = eighty-three.', whyEs:'19 = nineteen, 83 = eighty-three.', es:'1983 dividido en dos partes es…' },
+      { prompt:'The whole-number way to say 1983:', options:['one thousand nine hundred eighty-three','one thousand nine eighty three','nineteen thousand eighty-three'], answer:0, why:'That is the complete number, used in formal contexts.', whyEs:'Ese es el número completo, de uso formal.', es:'La forma de número completo para 1983:' },
+      { prompt:'2020 is usually said…', options:['twenty twenty','two zero two zero','two thousand and twenty-zero'], answer:0, why:'From 2010 on, English splits the year again.', whyEs:'Desde 2010 el año se vuelve a dividir.', es:'2020 normalmente se dice…' },
+      { prompt:'Listening task: “Chernobyl Nuclear Accident, 21 April 1986”. Write it in English:', options:['April 21st, 1986 — nineteen eighty-six','21 April, nineteen eight six','April 21th, 1986'], answer:0, why:'Month first, ordinal day, and the year split in two parts.', whyEs:'Mes primero, día ordinal y año dividido.', es:'Escribe la fecha del accidente de Chernóbil en inglés:' },
+      { prompt:'The discovery of America: October 12th, 1492. How do you say the year?', options:['fourteen ninety-two','one four nine two','fourteen hundred nine two'], answer:0, why:'14 = fourteen, 92 = ninety-two.', whyEs:'14 = fourteen, 92 = ninety-two.', es:'¿Cómo se dice el año 1492?' }
+    ]
+  },
+  {
+    id:'days', num:'04', title:'Days of the Week', es:'Los días de la semana',
+    blurb:'On Monday, on Tuesday — and your daily routine.',
+    intro:'Days of the week take a capital letter and the preposition ON. Use the plural when the action repeats every week.',
+    introEs:'Los días llevan mayúscula y la preposición ON. Usa el plural cuando la acción se repite cada semana.',
+    formula:'What do you do on Monday?   →   I + verb + on + day',
+    steps:[
+      { n:'1', h:'Learn the seven names', body:'Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday — all with a capital letter.', es:'Los siete nombres, todos con mayúscula.' },
+      { n:'2', h:'Add ON', body:'A day always takes ON: on Monday, on Friday. Never “in Monday”.', es:'Un día siempre lleva ON, nunca IN.' },
+      { n:'3', h:'Answer the question', body:'What do you do on Monday? → I study English on Monday.', es:'¿Qué haces el lunes? → I study English on Monday.' }
+    ],
+    tables:[
+      T('Table · the seven days and the class question', 'The question from class, with a model answer for each day.',
+        ['Day','En español','Question','Model answer'],
+        [['Monday','lunes','What do you do on Monday?','I study English on Monday.'],['Tuesday','martes','What do you do on Tuesday?','I work on Tuesday.'],['Wednesday','miércoles','What do you do on Wednesday?','I work from 6 am to 11 pm on Wednesday.'],['Thursday','jueves','What do you do on Thursday?','I go to the university on Thursday.'],['Friday','viernes','What do you do on Friday?','I visit my family on Friday.'],['Saturday','sábado','What do you do on Saturday?','I play football on Saturdays.'],['Sunday','domingo','What do you do on Sunday?','I rest on Sunday.']]),
+      T('Table · singular or plural?', 'The plural turns one day into a weekly routine.',
+        ['Form','Meaning','Example'],
+        [['on Monday','one specific Monday','I had an exam on Monday.'],['on Mondays','every Monday','I have English on Mondays.'],['last Monday','the Monday that passed','Last Monday I was in Cali.'],['next Monday','the Monday that comes','Next Monday I travel to Salento.']])
+    ],
+    points:[
+      { en:'Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.', es:'lunes, martes, miércoles, jueves, viernes, sábado, domingo.' },
+      { en:'Always ON with a day: on Friday, not in Friday.', es:'Siempre ON con un día: on Friday.' },
+      { en:'On Mondays (plural) = every Monday.', es:'On Mondays (plural) = todos los lunes.' },
+      { en:'Days always keep the capital letter, like the months.', es:'Los días siempre llevan mayúscula, igual que los meses.' }
+    ],
+    examples:[
+      { en:'What do you do on Monday? — I study English on Monday.', es:'¿Qué haces el lunes? — Estudio inglés el lunes.' },
+      { en:'What do you do on Wednesday? — I work from 6 am to 11 pm.', es:'¿Qué haces el miércoles? — Trabajo de 6 am a 11 pm.' },
+      { en:'On Saturdays I visit my family.', es:'Los sábados visito a mi familia.' },
+      { en:'I rest on Sunday.', es:'Descanso el domingo.' }
+    ],
+    mistakes:[
+      { wrong:'in Monday', right:'on Monday', why:'Days of the week always take ON.', es:'Los días de la semana siempre llevan ON.' },
+      { wrong:'on the Friday', right:'on Friday', why:'No article before the name of the day.', es:'No se usa artículo antes del día.' },
+      { wrong:'every saturday', right:'on Saturdays', why:'The plural already means “every week”.', es:'El plural ya significa “cada semana”.' }
+    ],
+    quiz:[
+      { prompt:'What do you do ___ Monday?', options:['on','in','at'], answer:0, why:'Days of the week always take ON.', whyEs:'Los días siempre llevan ON.', es:'Completa: What do you do ___ Monday?' },
+      { prompt:'“Every Saturday I play football” =', options:['I play football on Saturdays.','I play football in Saturdays.','I play football at Saturday.'], answer:0, why:'The plural with ON expresses a weekly routine.', whyEs:'El plural con ON expresa una rutina semanal.', es:'“Todos los sábados juego fútbol” =' },
+      { prompt:'Which spelling is correct?', options:['Wednesday','wednesday','Wenesday'], answer:0, why:'Wednesday — capital W, and the silent d.', whyEs:'Wednesday — con W mayúscula y la d muda.', es:'¿Cuál es la escritura correcta?' },
+      { prompt:'The day after Thursday is…', options:['Friday','Saturday','Wednesday'], answer:0, why:'Wednesday, Thursday, Friday, Saturday.', whyEs:'miércoles, jueves, viernes, sábado.', es:'El día después de Thursday es…' }
+    ]
+  },
+  {
+    id:'past', num:'05', title:'Past Simple', es:'Pasado simple',
+    blurb:'Finished actions, regular and irregular verbs, adverbs of time.',
+    intro:'The past simple talks about finished actions. You need the verb in past — regular with -ed, or irregular — and normally an adverb of time that says when it happened.',
+    introEs:'El pasado simple habla de acciones terminadas. Necesitas el verbo en pasado (regular con -ed o irregular) y normalmente un adverbio de tiempo.',
+    formula:'Subject + verb in past (regular or irregular) + complement',
+    steps:[
+      { n:'1', h:'Check the verb', body:'Is it regular or irregular? Regular adds -ed; irregular changes its form completely.', es:'¿Es regular o irregular? Regular agrega -ed; irregular cambia de forma.' },
+      { n:'2', h:'Build the sentence', body:'Subject + verb in past + complement: I visited my girlfriend at 5 pm.', es:'Sujeto + verbo en pasado + complemento.' },
+      { n:'3', h:'Add the time', body:'Yesterday, last week, two years ago — the adverb fixes the action in the past.', es:'El adverbio ubica la acción en el pasado.' },
+      { n:'4', h:'For the negative, use didn\u2019t', body:'Didn\u2019t carries the past, so the verb returns to its base form.', es:'Didn\u2019t lleva el pasado, y el verbo vuelve a su forma base.' }
+    ],
+    tables:[
+      T('Table · affirmative, negative, question', 'The verb only shows the past in the affirmative. DID takes over in the other two.',
+        ['Form','Structure','Example'],
+        [['Affirmative','subject + verb in past + complement','I worked from 6 am to 11 pm.'],['Negative','subject + did not / didn\u2019t + base verb','I didn\u2019t call my daughter yesterday.'],['Question','did + subject + base verb?','Did you travel to Salento?'],['Short answer','Yes, I did. / No, I didn\u2019t.','— Did you study? — Yes, I did.']]),
+      T('Table · regular verbs (+ed)', 'The spelling changes a little depending on the ending.',
+        ['Base verb','Rule','Past'],
+        [['work','+ ed','worked'],['visit','+ ed','visited'],['design','+ ed','designed'],['like','ends in e → + d','liked'],['study','consonant + y → ied','studied'],['travel','double the l','travelled'],['stop','C-V-C → double','stopped']]),
+      T('Table · irregular verbs', 'Learn these three columns together — the third one is what the past perfect needs.',
+        ['Base','Past simple','Past participle'],
+        [['be','was / were','been'],['go','went','gone'],['make','made','made'],['buy','bought','bought'],['see','saw','seen'],['write','wrote','written'],['take','took','taken'],['have','had','had'],['win','won','won'],['become','became','become']]),
+      T('Chart · adverbs of time', 'They tell you how far back the action is.',
+        ['Adverb','Distance from now','Example'],
+        [['yesterday','1 day back','I went to the supermarket yesterday.'],['last week','7 days back','Javier did not feed his fish last week.'],['last month','30 days back','Last month, I travelled to Salento.'],['last year','1 year back','Regina designed a new house last year.'],['two years ago','2 years back','They got married two years ago.'],['three weeks ago','21 days back','The lions were visited three weeks ago.']])
+    ],
+    points:[
+      { en:'Regular verbs add -ed: work → worked, visit → visited, travel → travelled.', es:'Los verbos regulares agregan -ed.' },
+      { en:'Irregular verbs change form: go → went, make → made, buy → bought.', es:'Los irregulares cambian de forma: go → went.' },
+      { en:'Negative: subject + did not / didn\u2019t + base verb + complement.', es:'Negativo: sujeto + didn\u2019t + verbo base.' },
+      { en:'Adverbs of time place the action in the past: yesterday, last week, two years ago.', es:'Los adverbios de tiempo ubican la acción en el pasado.' }
+    ],
+    examples:[
+      { en:'I worked from 6 am to 11 pm.', es:'Trabajé de 6 am a 11 pm.' },
+      { en:'I went to the university at 12 pm.', es:'Fui a la universidad a las 12 pm.' },
+      { en:'Regina designed a new house last year.', es:'Regina diseñó una casa nueva el año pasado.' },
+      { en:'Javier did not feed his fish last week.', es:'Javier no alimentó sus peces la semana pasada.' },
+      { en:'I travelled to Salento one month ago.', es:'Viajé a Salento hace un mes.' },
+      { en:'They got married two years ago.', es:'Se casaron hace dos años.' }
+    ],
+    mistakes:[
+      { wrong:'I didn\u2019t called my daughter.', right:'I didn\u2019t call my daughter.', why:'After DIDN\u2019T the verb goes back to its base form.', es:'Después de DIDN\u2019T el verbo va en forma base.' },
+      { wrong:'I go to the university yesterday.', right:'I went to the university yesterday.', why:'With yesterday the verb must be in past.', es:'Con yesterday el verbo debe ir en pasado.' },
+      { wrong:'I travelled Salento last month.', right:'I travelled to Salento last month.', why:'Travel needs TO before the destination.', es:'Travel necesita TO antes del destino.' },
+      { wrong:'She goed home.', right:'She went home.', why:'Go is irregular — no -ed.', es:'Go es irregular, no lleva -ed.' }
+    ],
+    quiz:[
+      { prompt:'I ___ to the university at 12 pm.', options:['went','goed','go'], answer:0, why:'Go is irregular: go → went.', whyEs:'Go es irregular: go → went.', es:'Completa la oración en pasado.' },
+      { prompt:'Negative: I ___ my daughter yesterday.', options:['didn\u2019t call','didn\u2019t called','not called'], answer:0, why:'DIDN\u2019T + base verb.', whyEs:'DIDN\u2019T + verbo base.', es:'Negativo: I ___ my daughter yesterday.' },
+      { prompt:'Regina ___ a new house last year.', options:['designed','design','designs'], answer:0, why:'Regular verb + -ed, because the action is finished.', whyEs:'Verbo regular + -ed, la acción terminó.', es:'Completa: Regina ___ a new house last year.' },
+      { prompt:'Which adverb of time is correct? They got married ___.', options:['two years ago','since two years','last two years'], answer:0, why:'“Ago” counts back from now: two years ago.', whyEs:'“Ago” cuenta desde ahora hacia atrás.', es:'¿Qué adverbio de tiempo es correcto?' },
+      { prompt:'The structure of the past simple is…', options:['Subject + verb in past + complement','Subject + did + verb in past','Subject + was + verb in past'], answer:0, why:'That is the affirmative structure; DID only appears in negatives and questions.', whyEs:'Esa es la estructura afirmativa; DID solo aparece en negativos y preguntas.', es:'La estructura del pasado simple es…' },
+      { prompt:'Javier ___ his fish last week.', options:['did not feed','did not fed','not feed'], answer:0, why:'DID NOT + base verb: feed, not fed.', whyEs:'DID NOT + verbo base: feed.', es:'Completa: Javier ___ his fish last week.' }
+    ]
+  },
+  {
+    id:'tobe', num:'06', title:'Was / Were', es:'El verbo to be en pasado',
+    blurb:'Am and is become was; are becomes were.',
+    intro:'The verb to be has its own past. Am and is become was; are becomes were. The negative is wasn\u2019t / weren\u2019t — never didn\u2019t.',
+    introEs:'El verbo to be tiene su propio pasado: am/is → was, are → were. El negativo es wasn\u2019t / weren\u2019t, nunca didn\u2019t.',
+    formula:'I / she / he / it → WAS      ·      you / we / they → WERE',
+    steps:[
+      { n:'1', h:'Look at the subject', body:'Singular (I, he, she, it) → was. Plural (you, we, they) → were.', es:'Singular → was. Plural → were.' },
+      { n:'2', h:'No verb after it', body:'To be is the verb: She was a musician. There is no second verb in past.', es:'To be ES el verbo: no hay un segundo verbo en pasado.' },
+      { n:'3', h:'Negative without did', body:'was not / wasn\u2019t, were not / weren\u2019t. DID never appears.', es:'wasn\u2019t / weren\u2019t. DID nunca aparece.' }
+    ],
+    tables:[
+      T('Table · present to past', 'The same sentence, one step back in time.',
+        ['Subject','Present','Past','Example'],
+        [['I','am','was','I was a teacher.'],['He / She / It','is','was','Enrique was a soldier.'],['You','are','were','You were at home.'],['We','are','were','My friend and me were colleagues.'],['They','are','were','My parents were married.']]),
+      T('Table · affirmative, negative, question', 'To be builds everything by itself.',
+        ['Form','Was','Were'],
+        [['Affirmative','She was a musician.','They were in Cali.'],['Negative','Juan was not a good student.','The supplies were not in the base.'],['Contraction','wasn\u2019t','weren\u2019t'],['Question','Was she a musician?','Were they in Cali?']]),
+      T('Table · to be vs other verbs in past', 'The classic confusion of this topic.',
+        ['Verb type','Negative','Example'],
+        [['Other verbs','did not + base verb','She did not play the piano.'],['Verb to be','was / were + not','She was not a musician.']])
+    ],
+    points:[
+      { en:'I am a teacher → I was a teacher.', es:'I am a teacher → I was a teacher.' },
+      { en:'My parents are married → My parents were married.', es:'My parents are married → My parents were married.' },
+      { en:'Negative: was not / wasn\u2019t, were not / weren\u2019t.', es:'Negativo: wasn\u2019t, weren\u2019t.' },
+      { en:'To be does not use did in the past.', es:'El verbo to be no usa did en pasado.' }
+    ],
+    examples:[
+      { en:'She was a musician.', es:'Ella era músico.' },
+      { en:'They were in Cali.', es:'Ellos estaban en Cali.' },
+      { en:'Juan was not a good student.', es:'Juan no era un buen estudiante.' },
+      { en:'Last week, I was in Carepa, Antioquia.', es:'La semana pasada estuve en Carepa, Antioquia.' },
+      { en:'The supplies were not in the base.', es:'Los suministros no estaban en la base.' }
+    ],
+    mistakes:[
+      { wrong:'She were a musician.', right:'She was a musician.', why:'She takes was.', es:'She lleva was.' },
+      { wrong:'I didn\u2019t was there.', right:'I wasn\u2019t there.', why:'To be builds its own negative, without did.', es:'To be forma su negativo sin did.' },
+      { wrong:'My parents was married.', right:'My parents were married.', why:'A plural subject takes were.', es:'Un sujeto plural lleva were.' }
+    ],
+    quiz:[
+      { prompt:'She ___ a musician.', options:['was','were','did'], answer:0, why:'She → was.', whyEs:'She → was.', es:'Completa: She ___ a musician.' },
+      { prompt:'My parents ___ married in 1990.', options:['were','was','are'], answer:0, why:'Plural subject → were.', whyEs:'Sujeto plural → were.', es:'Completa: My parents ___ married in 1990.' },
+      { prompt:'Negative: Juan ___ a good student.', options:['was not','did not was','were not'], answer:0, why:'To be forms the negative by itself: was not.', whyEs:'To be forma el negativo solo: was not.', es:'Negativo: Juan ___ a good student.' },
+      { prompt:'Last week, I ___ in Carepa, Antioquia.', options:['was','were','am'], answer:0, why:'I → was, and “last week” asks for the past.', whyEs:'I → was, y “last week” pide pasado.', es:'Completa: Last week, I ___ in Carepa.' },
+      { prompt:'The supplies ___ in the base.', options:['were not','was not','did not were'], answer:0, why:'Supplies is plural → were not.', whyEs:'Supplies es plural → were not.', es:'Completa: The supplies ___ in the base.' }
+    ]
+  },
+  {
+    id:'cont', num:'07', title:'Past Continuous', es:'Pasado continuo',
+    blurb:'Was / were + verb-ing: actions in progress.',
+    intro:'The past continuous describes an action in progress in the past. Take was or were and add the verb with -ing.',
+    introEs:'El pasado continuo describe una acción en progreso en el pasado: was/were + verbo con -ing.',
+    formula:'Subject + was / were + verb-ing + complement',
+    steps:[
+      { n:'1', h:'Pick was or were', body:'Exactly like the verb to be: I/he/she/it → was; you/we/they → were.', es:'Igual que to be: was o were según el sujeto.' },
+      { n:'2', h:'Add -ing to the verb', body:'mop → mopping, drive → driving, run → running. Watch the spelling.', es:'Agrega -ing al verbo, cuidando la ortografía.' },
+      { n:'3', h:'Close with the complement', body:'I was mopping the floor. She was watching TV.', es:'Cierra con el complemento.' }
+    ],
+    tables:[
+      T('Table · the four columns of the sentence', 'The structure taught in class, column by column.',
+        ['Subject','Was / were','Verb -ing','Complement'],
+        [['I','was','mopping','the floor'],['I','was','carving','a chicken'],['She','was','watching','TV'],['He','was','fixing','a box'],['My parents','were','buying','a house'],['They','were','running','late'],['We','were','gaining','weight']]),
+      T('Table · present to past', 'Only the verb to be changes; the -ing form stays.',
+        ['Present continuous','Past continuous'],
+        [['I am watching TV','I was watching TV'],['She is learning French','She was learning French'],['He is running','He was running'],['My parents are getting married','My parents were getting married'],['Jason and Lucia are driving a car','Jason and Lucia were driving a car']]),
+      T('Table · spelling of the -ing form', 'Three simple rules cover almost every verb.',
+        ['Ending','Rule','Example'],
+        [['consonant + e','drop the e','drive → driving'],['C-V-C (one syllable)','double the consonant','run → running · mop → mopping'],['-ie','ie → y','lie → lying'],['everything else','just add -ing','watch → watching']])
+    ],
+    points:[
+      { en:'I am watching TV → I was watching TV.', es:'I am watching TV → I was watching TV.' },
+      { en:'They are running late → They were running late.', es:'They are running late → They were running late.' },
+      { en:'The -ing verb never changes with the subject; only was/were changes.', es:'El verbo -ing no cambia; solo cambia was/were.' },
+      { en:'Watch the spelling: run → running, mop → mopping, drive → driving.', es:'Cuidado con la ortografía: run → running, mop → mopping.' }
+    ],
+    examples:[
+      { en:'I was mopping the floor.', es:'Estaba trapeando el piso.' },
+      { en:'I was carving a chicken.', es:'Estaba trinchando un pollo.' },
+      { en:'She was watching TV.', es:'Ella estaba viendo televisión.' },
+      { en:'My parents were buying a house.', es:'Mis padres estaban comprando una casa.' },
+      { en:'Jason and Lucia were driving a car.', es:'Jason y Lucía estaban conduciendo un carro.' }
+    ],
+    mistakes:[
+      { wrong:'I was mop the floor.', right:'I was mopping the floor.', why:'After was/were the verb takes -ing.', es:'Después de was/were el verbo lleva -ing.' },
+      { wrong:'They was running late.', right:'They were running late.', why:'They is plural → were.', es:'They es plural → were.' },
+      { wrong:'They were runnig late.', right:'They were running late.', why:'Double the final n: run → running.', es:'Se duplica la n final: run → running.' }
+    ],
+    quiz:[
+      { prompt:'I ___ the floor when you called.', options:['was mopping','was mop','were mopping'], answer:0, why:'I → was + verb-ing.', whyEs:'I → was + verbo -ing.', es:'Completa: I ___ the floor when you called.' },
+      { prompt:'They ___ late this morning.', options:['were running','was running','were runnig'], answer:0, why:'They → were, and run doubles the n: running.', whyEs:'They → were, y run duplica la n.', es:'Completa: They ___ late this morning.' },
+      { prompt:'The structure of the past continuous is…', options:['Subject + was/were + verb-ing + complement','Subject + was/were + verb in past','Subject + did + verb-ing'], answer:0, why:'Was or were plus the -ing form.', whyEs:'Was o were más la forma -ing.', es:'La estructura del pasado continuo es…' },
+      { prompt:'She ___ TV when I arrived.', options:['was watching','were watching','was watch'], answer:0, why:'She → was, plus watching.', whyEs:'She → was, más watching.', es:'Completa: She ___ TV when I arrived.' }
+    ]
+  },
+  {
+    id:'perfect', num:'08', title:'Past Perfect', es:'Pasado perfecto',
+    blurb:'Had + past participle: the action before the other action.',
+    intro:'The past perfect is the oldest past. It marks the action that happened before another past action. One form for every subject: had + past participle.',
+    introEs:'El pasado perfecto es el pasado más antiguo: marca la acción que ocurrió antes de otra acción pasada. Una sola forma: had + participio.',
+    formula:'Subject + had + past participle + complement   ·   negative: had not / hadn\u2019t',
+    steps:[
+      { n:'1', h:'Find the two past actions', body:'Two things happened. Decide which one happened first.', es:'Dos cosas pasaron: decide cuál ocurrió primero.' },
+      { n:'2', h:'The first one takes had', body:'HAD never changes: I had, she had, they had.', es:'HAD no cambia nunca con el sujeto.' },
+      { n:'3', h:'Use the past participle', body:'Third column of the irregular verbs: gone, seen, written. Regular verbs keep -ed.', es:'Tercera columna de los irregulares: gone, seen, written.' },
+      { n:'4', h:'Connect the two actions', body:'Use when, before, after or by the time: When I arrived, she had already left.', es:'Conecta con when, before, after o by the time.' }
+    ],
+    tables:[
+      T('Table · the four columns of the sentence', 'One structure, valid for every subject.',
+        ['Subject','Had','Past participle','Complement'],
+        [['I','had','finished','my homework'],['She','had','left','before I arrived'],['They','had','eaten','when the film started'],['We','had','seen','that video before'],['Lebron','had','signed','with Nike before 2004']]),
+      T('Table · past simple vs past perfect', 'The order in time is what decides the tense.',
+        ['Situation','Tense','Example'],
+        [['One finished action','Past simple','I met my friend.'],['The earlier of two actions','Past perfect','I had finished my homework when I met my friend.'],['Action in progress','Past continuous','I was walking to school.'],['All three together','Mixed','I had finished my homework and I was walking to school when I met my friend.']]),
+      T('Table · affirmative, negative, question', 'HAD carries everything.',
+        ['Form','Structure','Example'],
+        [['Affirmative','subject + had + participle','She had studied English before.'],['Negative','subject + had not / hadn\u2019t + participle','She hadn\u2019t studied English before.'],['Question','had + subject + participle?','Had she studied English before?'],['Short answer','Yes, she had. / No, she hadn\u2019t.','— Had you seen it? — No, I hadn\u2019t.']]),
+      T('Table · participles you need most', 'Second and third column side by side, so you never mix them.',
+        ['Base','Past simple','Past participle'],
+        [['go','went','gone'],['see','saw','seen'],['eat','ate','eaten'],['write','wrote','written'],['do','did','done'],['take','took','taken'],['finish','finished','finished'],['study','studied','studied']])
+    ],
+    points:[
+      { en:'HAD is the same for every subject: I had, she had, they had.', es:'HAD es igual para todos los sujetos.' },
+      { en:'The verb goes in the past participle, not the past simple: had gone, not had went.', es:'El verbo va en participio, no en pasado simple.' },
+      { en:'Use it to show which of two past actions happened first.', es:'Úsalo para mostrar cuál de dos acciones pasó primero.' },
+      { en:'Already, just, never and yet often appear between had and the participle.', es:'Already, just, never y yet van entre had y el participio.' }
+    ],
+    examples:[
+      { en:'I had finished my homework when my friend arrived.', es:'Había terminado mi tarea cuando llegó mi amigo.' },
+      { en:'When we got to the cinema, the film had already started.', es:'Cuando llegamos al cine, la película ya había empezado.' },
+      { en:'She had never seen the sea before that trip.', es:'Ella nunca había visto el mar antes de ese viaje.' },
+      { en:'By 2008, Lebron had already signed with Nike.', es:'Para 2008, Lebron ya había firmado con Nike.' },
+      { en:'They hadn\u2019t studied for the exam, so they failed.', es:'No habían estudiado para el examen, así que lo perdieron.' }
+    ],
+    mistakes:[
+      { wrong:'I had went home.', right:'I had gone home.', why:'After HAD you need the participle: gone.', es:'Después de HAD va el participio: gone.' },
+      { wrong:'She has finished it yesterday.', right:'She had finished it yesterday.', why:'With a finished past time, use had, not has.', es:'Con un tiempo pasado terminado se usa had, no has.' },
+      { wrong:'I didn\u2019t had finished.', right:'I hadn\u2019t finished.', why:'HAD builds its own negative, without did.', es:'HAD forma su negativo sin did.' }
+    ],
+    quiz:[
+      { prompt:'When I arrived, the film ___ already started.', options:['had','has','was'], answer:0, why:'The film started before you arrived → past perfect.', whyEs:'La película empezó antes → pasado perfecto.', es:'Completa: When I arrived, the film ___ already started.' },
+      { prompt:'I had ___ my homework before dinner.', options:['finished','finish','finishing'], answer:0, why:'HAD + past participle. Finish is regular: finished.', whyEs:'HAD + participio. Finish es regular.', es:'Completa: I had ___ my homework before dinner.' },
+      { prompt:'Which sentence is correct?', options:['She had gone home.','She had went home.','She had going home.'], answer:0, why:'Go → went (past simple) → gone (participle).', whyEs:'Go → went → gone. Con HAD va gone.', es:'¿Cuál oración es correcta?' },
+      { prompt:'Negative: They ___ studied for the exam.', options:['hadn\u2019t','didn\u2019t had','wasn\u2019t'], answer:0, why:'HAD NOT / HADN\u2019T + participle.', whyEs:'HAD NOT / HADN\u2019T + participio.', es:'Negativo: They ___ studied for the exam.' },
+      { prompt:'Which action happened FIRST? “When Gloria called, Lebron had already left.”', options:['Lebron left','Gloria called','Both at the same time'], answer:0, why:'The past perfect marks the earlier action: he left first.', whyEs:'El pasado perfecto marca la acción anterior.', es:'¿Cuál acción ocurrió primero?' }
+    ]
+  }
+];
+
+const TIMELINE = {
+  id:'timeline', num:'09', title:'Sentence Timeline', es:'Línea de tiempo de oraciones',
+  blurb:'Type three moments; the app returns one full mixed-tense sentence.',
+  intro:'Put three moments on a timeline: what happened before, what was in progress, and the action that cut it. Type each one with the verb in its base form and the app returns one complete sentence that mixes past perfect, past continuous and past simple.',
+  introEs:'Coloca tres momentos en la línea de tiempo: lo que pasó antes, lo que estaba en progreso y la acción que lo interrumpió. Escribe el verbo en forma base y la app devuelve una oración completa con los tres tiempos.',
+  formula:'S + had + participle  ·  S + was/were + verb-ing  ·  when + S + verb in past',
+  steps:[
+    { n:'1', h:'Earlier action', body:'What was already complete? It becomes the past perfect: had + participle.', es:'¿Qué ya estaba terminado? Va en pasado perfecto.' },
+    { n:'2', h:'Background action', body:'What was in progress? It becomes the past continuous: was/were + -ing.', es:'¿Qué estaba en progreso? Va en pasado continuo.' },
+    { n:'3', h:'Main event', body:'What cut the scene? It becomes the past simple, introduced by when.', es:'¿Qué interrumpió la escena? Va en pasado simple, con when.' }
+  ],
+  tables:[
+    T('Table · what the app does with each field', 'Type the base form; the conjugation is automatic.',
+      ['Field','Tense','You type','App returns'],
+      [['Earlier action','Past perfect','finish my homework','had finished my homework'],['Background action','Past continuous','walk to school','was walking to school'],['Main event','Past simple','meet my friend','met my friend'],['When (optional)','Adverb of time','yesterday','Yesterday, …']])
+  ],
+  points:[
+    { en:'The three tenses can live in one sentence when the order in time is clear.', es:'Los tres tiempos pueden convivir en una oración si el orden temporal es claro.' },
+    { en:'WHEN introduces the past simple; the other two set the scene.', es:'WHEN introduce el pasado simple; los otros dos crean la escena.' },
+    { en:'Irregular verbs are detected automatically — check the list under your sentence.', es:'Los verbos irregulares se detectan automáticamente.' }
+  ],
+  examples:[
+    { en:'I had finished my homework, and I was walking to school when I met my friend.', es:'Había terminado mi tarea y estaba caminando a la escuela cuando me encontré con mi amigo.' },
+    { en:'Yesterday, she had eaten dinner, and she was watching TV when the lights went out.', es:'Ayer ella había cenado y estaba viendo televisión cuando se fue la luz.' }
+  ],
+  mistakes:[
+    { wrong:'I had finish my homework.', right:'I had finished my homework.', why:'HAD always takes the participle.', es:'HAD siempre lleva participio.' },
+    { wrong:'I was walk to school.', right:'I was walking to school.', why:'WAS/WERE always take the -ing form.', es:'WAS/WERE siempre llevan la forma -ing.' },
+    { wrong:'when I meet my friend', right:'when I met my friend', why:'WHEN introduces the finished action, in past simple.', es:'WHEN introduce la acción terminada, en pasado simple.' }
+  ],
+  quiz:[], tool:'timeline'
+};
+
+const VIDEO = {
+  id:'video', num:'10', title:'Video Activity', es:'Actividad de video',
+  blurb:'Two Draw My Life videos, with the class questions.',
+  intro:'Listen to the videos, analyse the information and answer the questions. Don\u2019t forget to answer in the simple past.',
+  introEs:'Escucha los videos, analiza la información y responde las preguntas. No olvides responder en pasado simple.',
+  formula:'Watch  →  take notes  →  answer in the simple past',
+  steps:[
+    { n:'1', h:'Watch once without writing', body:'Get the story: who, where, and the big dates.', es:'Mira una vez sin escribir: quién, dónde y las fechas.' },
+    { n:'2', h:'Watch again and take notes', body:'Write every date in the English order: month + ordinal day + year.', es:'Anota cada fecha en el orden inglés.' },
+    { n:'3', h:'Answer in the simple past', body:'Was / were for descriptions, and the past of the verb for actions.', es:'Was/were para descripciones, y el pasado del verbo para acciones.' }
+  ],
+  tables:[
+    T('Table · how to answer each question type', 'Match the question word with the tense you need.',
+      ['Question','Tense you need','Model shape'],
+      [['When was…?','was / were','He was born in 1984.'],['What difficulties did… have?','did + base verb','They did not have money.'],['What was the name of…?','was','His mother was Gloria.'],['How much money did… sign?','did + base verb','He signed for 90 million dollars.'],['When did… become…?','did + base verb','He became the first in 2008.']])
+  ],
+  points:[
+    { en:'Answer in the simple past, in a complete sentence.', es:'Responde en pasado simple, con oración completa.' },
+    { en:'After DID the verb stays in its base form: did not have, did he sign.', es:'Después de DID el verbo va en forma base.' },
+    { en:'Names and places keep their capital letter: Lebron, Gloria, Nike, Vogue.', es:'Los nombres propios llevan mayúscula.' },
+    { en:'Write the dates as month + ordinal day + year.', es:'Escribe las fechas como mes + día ordinal + año.' }
+  ],
+  examples:[
+    { en:'The event is: the discovery of America — October 12th, 1492.', es:'El evento es: el descubrimiento de América — 12 de octubre de 1492.' },
+    { en:'The event is: the Chernobyl nuclear accident — April 21st, 1986.', es:'El evento es: el accidente nuclear de Chernóbil — 21 de abril de 1986.' }
+  ],
+  mistakes:[
+    { wrong:'21 April 1986', right:'April 21st, 1986', why:'In English the month comes first and the day is ordinal.', es:'En inglés el mes va primero y el día es ordinal.' },
+    { wrong:'It happen in 1986.', right:'It happened in 1986.', why:'A finished event needs the past simple.', es:'Un evento terminado necesita pasado simple.' },
+    { wrong:'He did not had money.', right:'He did not have money.', why:'After DID NOT the verb returns to its base form.', es:'Después de DID NOT el verbo va en forma base.' }
+  ],
+  quiz:[], tool:'notebook',
+  videos:[
+    {
+      id:'lebron',
+      title:'Draw My Life: Lebron James',
+      tag:'Video 1 · 8 questions',
+      brief:'Listen to the video about: Draw My Life: Lebron James. Then analyze the information and answer the following questions. Don\u2019t forget to answer in the simple past.',
+      embed:'https://www.youtube-nocookie.com/embed/TLTH6i6fBaQ',
+      link:'https://www.youtube.com/watch?v=TLTH6i6fBaQ',
+      linkLabel:'Open on YouTube',
+      hasEmbed:true,
+      questions:[
+        { n:'01', q:'When was Lebron James born?', a:'Lebron was born in 1984' },
+        { n:'02', q:'What difficulties did Lebron have during his childhood?', a:'they did not have money' },
+        { n:'03', q:'What was the name of his mother?', a:'lebron´s mom is gloria' },
+        { n:'04', q:'What was his nickname when he was young?', a:'the nickname was Mr. basketball' },
+        { n:'05', q:'Who was the famous basketball player that paid attention to Lebron?', a:'the famous basketball player was shaquille' },
+        { n:'06', q:'How much money did Lebron sign with Nike?', a:'Lebron sign for 90 million dollars with nike' },
+        { n:'07', q:'When did he become the first afro-American in Vogue Magazine?', a:'He became the first afro american in vogue magazine was in 2008' }
+      ]
+    },
+    {
+      id:'amelia',
+      title:'Amelia Earhart',
+      tag:'Video 2 · 5 questions',
+      brief:'AMELIA EARHART | Draw My Life | International Women\u2019s Day — questions.',
+      embed:'',
+      link:'https://www.youtube.com/results?search_query=Amelia+Earhart+Draw+My+Life+International+Women%27s+Day',
+      linkLabel:'Find the video on YouTube',
+      hasEmbed:false,
+      questions:[
+        { n:'01', q:'When was she born?', a:'She was born at 24th june 1984' },
+        { n:'02', q:'How were her beginnings?', a:'She began as nurse s smart and she collected newspapers interesting in the world.' },
+        { n:'03', q:'What was her most important success?', a:'she was the first woman to cross the atlantic' },
+        { n:'04', q:'When did Amelia die?', a:'she died in 1937' },
+        { n:'05', q:'What distance did she travel on her plane to cross the Atlantic?', a:'she traveled on her planes is 20 hour 40 minutes' }
+      ]
+    }
+  ]
+};
+
+const ALL = STAGES.concat([TIMELINE, VIDEO]);
+const TARGET = ['Friday,','August','12th,','2022'];
+
+class Component extends DCLogic {
+  state = {
+    screen:'hub', sid:'months', tab:'learn', qi:0, picked:null, correct:0, cleared:{}, es:false,
+    built:[], builtMsg:'', builtOk:null, notes:'', saved:false, order:{}, openVideo:{},
+    tSubject:'I', tWhen:'', t1:'', t2:'', t3:'', out:null
+  };
+
+  componentDidMount() {
+    if (this.props.esHintsDefault) this.setState({ es:true });
+    try { const n = localStorage.getItem('tm-video-notes'); if (n) this.setState({ notes:n }); } catch (e) {}
+    const order = {};
+    ALL.forEach(s => { order[s.id] = s.quiz.map((q, i) => this.shuffle(q.options.length, s.id.length + i * 7)); });
+    this.setState({ order });
+  }
+
+  shuffle(n, seed) {
+    const a = []; for (let i = 0; i < n; i++) a.push(i);
+    let s = seed * 9301 + 49297;
+    for (let i = n - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor((s / 233280) * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+
+  stage() { return ALL.find(s => s.id === this.state.sid) || ALL[0]; }
+
+  open(id) {
+    this.setState({ screen:'stage', sid:id, tab:'learn', qi:0, picked:null, correct:0, built:[], builtMsg:'', builtOk:null });
+    if (window.scrollTo) window.scrollTo(0, 0);
+  }
+
+  pick(i) {
+    if (this.state.picked !== null) return;
+    const st = this.stage(); const q = st.quiz[this.state.qi];
+    const ok = i === q.answer;
+    this.setState(s => ({ picked:i, correct:s.correct + (ok ? 1 : 0) }));
+  }
+
+  next() {
+    const st = this.stage();
+    if (this.state.qi + 1 >= st.quiz.length) {
+      this.setState(s => ({ picked:null, tab:'done', cleared:Object.assign({}, s.cleared, { [st.id]:s.correct }) }));
+    } else {
+      this.setState(s => ({ qi:s.qi + 1, picked:null }));
+    }
+  }
+
+  build() {
+    const s = this.state;
+    const subj = (s.tSubject || 'I').trim() || 'I';
+    const p1 = splitPhrase(s.t1), p2 = splitPhrase(s.t2), p3 = splitPhrase(s.t3);
+    if (!p1 && !p2 && !p3) { this.setState({ out:{ empty:true } }); return; }
+    const irregulars = [];
+    const note = v => { const k = v.toLowerCase(); if (IRREG[k]) irregulars.push(k + ' → ' + IRREG[k][0] + ' → ' + IRREG[k][1]); };
+    const ww = wasWere(subj);
+    const parts = [];
+    let perfect = '', cont = '', simple = '';
+    if (p1) { note(p1.verb); perfect = join('had ' + ppOf(p1.verb), p1.rest); parts.push({ tense:'PAST PERFECT', color:'#BFF0E9', text:subj + ' ' + perfect, formula:'S + had + participle' }); }
+    if (p2) { note(p2.verb); cont = join(ww + ' ' + ingOf(p2.verb), p2.rest); parts.push({ tense:'PAST CONTINUOUS', color:'#F4EFE6', text:subj + ' ' + cont, formula:'S + was/were + verb-ing' }); }
+    if (p3) { note(p3.verb); simple = join(pastOf(p3.verb), p3.rest); parts.push({ tense:'PAST SIMPLE', color:'#F0D9A6', text:subj + ' ' + simple, formula:'S + verb in past' }); }
+
+    const clauses = [];
+    if (perfect) clauses.push(subj + ' ' + perfect);
+    if (cont) clauses.push(subj + ' ' + cont);
+    let main = clauses.join(', and ');
+    if (simple) main = main ? main + ' when ' + subj + ' ' + simple : subj + ' ' + simple;
+    const when = (s.tWhen || '').trim();
+    main = when ? cap(when) + ', ' + main : cap(main);
+    main = main.replace(/\s+/g, ' ').trim() + '.';
+
+    let alt = '';
+    if (perfect && simple) alt = 'By the time ' + subj + ' ' + simple + ', ' + subj + ' ' + perfect + '.';
+    else if (cont && simple) alt = 'While ' + subj + ' ' + cont + ', ' + subj + ' ' + simple + '.';
+
+    this.setState({ out:{ main, alt, parts, irregulars, empty:false } });
+  }
+
+  renderVals() {
+    const s = this.state, st = this.stage();
+    const order = (s.order[st.id] && s.order[st.id][s.qi]) || null;
+    const q = st.quiz[s.qi];
+    const answered = s.picked !== null;
+    const isCorrect = answered && q && s.picked === q.answer;
+    const key = ['A', 'B', 'C', 'D'];
+
+    let options = [];
+    if (q) {
+      const idxs = order || q.options.map((_, i) => i);
+      options = idxs.map((oi, pos) => {
+        const right = oi === q.answer;
+        let bg = 'linear-gradient(160deg,rgba(255,255,255,0.13),rgba(255,255,255,0.04))';
+        let border = 'rgba(255,255,255,0.18)';
+        let mark = '', markColor = 'transparent';
+        if (answered) {
+          if (right) { bg = 'linear-gradient(160deg,rgba(121,210,200,0.32),rgba(121,210,200,0.08))'; border = 'rgba(121,210,200,0.55)'; mark = '✓'; markColor = '#A8E6DC'; }
+          else if (oi === s.picked) { bg = 'linear-gradient(160deg,rgba(240,138,110,0.3),rgba(240,138,110,0.07))'; border = 'rgba(240,138,110,0.5)'; mark = '✕'; markColor = '#F7B7A2'; }
+        }
+        return { text:q.options[oi], key:key[pos], bg, border, mark, markColor, pick:() => this.pick(oi) };
+      });
+    }
+
+    const totalXp = Object.keys(s.cleared).reduce((a, k) => a + s.cleared[k], 0);
+    const idx = ALL.findIndex(x => x.id === st.id);
+    const nxt = ALL[idx + 1];
+    const hasQuiz = st.quiz.length > 0;
+
+    const chips = TARGET.map((t, i) => ({ text:t, opacity:s.built.indexOf(i) >= 0 ? 0.28 : 1, pick:() => { if (s.built.indexOf(i) >= 0) return; this.setState(p => ({ built:p.built.concat([i]), builtMsg:'', builtOk:null })); } }));
+    const built = s.built.map((i, pos) => ({ text:TARGET[i], remove:() => this.setState(p => ({ built:p.built.filter((_, k) => k !== pos), builtMsg:'', builtOk:null })) }));
+
+    const nodeDefs = [
+      { k:'t1', tense:'Past perfect', label:'Earlier action', hint:'What was already finished before everything else.', ph:'finish my homework', dot:'#79D2C8', glow:'rgba(121,210,200,0.7)' },
+      { k:'t2', tense:'Past continuous', label:'Background action', hint:'What was in progress when it happened.', ph:'walk to school', dot:'#F4EFE6', glow:'rgba(255,255,255,0.5)' },
+      { k:'t3', tense:'Past simple', label:'Main event', hint:'The finished action that cut the scene.', ph:'meet my friend', dot:'#E8C275', glow:'rgba(232,194,117,0.75)' }
+    ];
+    const ww = wasWere(s.tSubject);
+    const nodes = nodeDefs.map(n => {
+      const ph = splitPhrase(s[n.k]);
+      let preview = 'base form → conjugated here';
+      if (ph) {
+        if (n.k === 't1') preview = 'had ' + join(ppOf(ph.verb), ph.rest);
+        if (n.k === 't2') preview = ww + ' ' + join(ingOf(ph.verb), ph.rest);
+        if (n.k === 't3') preview = join(pastOf(ph.verb), ph.rest);
+      }
+      return Object.assign({}, n, { value:s[n.k], preview, set:e => { const v = e.target.value; this.setState({ [n.k]:v }); } });
+    });
+
+    const out = s.out;
+    const scorePct = st.quiz.length ? Math.round((s.correct / st.quiz.length) * 100) : 0;
+
+    return {
+      esOn:s.es,
+      esTrack:s.es ? 'rgba(121,210,200,0.75)' : 'rgba(255,255,255,0.16)',
+      esKnob:s.es ? '15px' : '1px',
+      toggleEs:() => this.setState(p => ({ es:!p.es })),
+      xp:totalXp,
+      doneCount:Object.keys(s.cleared).length,
+      showHub:s.screen === 'hub',
+      showStage:s.screen === 'stage',
+      startFirst:() => this.open('months'),
+      goVideo:() => this.open('video'),
+      goTimeline:() => this.open('timeline'),
+      stages:ALL.map(x => ({
+        num:x.num, title:x.title, blurb:x.blurb, es:x.es,
+        mark:s.cleared[x.id] !== undefined ? 'CLEARED' : 'OPEN',
+        markColor:s.cleared[x.id] !== undefined ? '#A8E6DC' : 'rgba(244,239,230,0.45)',
+        open:() => this.open(x.id)
+      })),
+      stage:st,
+      months:MONTHS.map(m => Object.assign({}, m, { bgImg:'url("' + m.img + '")', play:() => { const a = new Audio(m.audio); a.play().catch(() => {}); } })),
+      isMonths:st.id === 'months',
+      isYears:st.id === 'years',
+      isVideo:st.id === 'video',
+      showTenseChart:st.id === 'perfect' || st.id === 'timeline',
+      videos:(st.videos || []).map(v => Object.assign({}, v, {
+        open:!!s.openVideo[v.id],
+        toggleLabel:s.openVideo[v.id] ? 'Hide the answers' : 'Show the answers',
+        toggle:() => this.setState(p => ({ openVideo:Object.assign({}, p.openVideo, { [v.id]:!p.openVideo[v.id] }) }))
+      })),
+      notes:s.notes,
+      notesState:s.saved ? 'Saved on this device' : 'Your notes stay on this device',
+      setNotes:e => { const v = e.target.value; this.setState({ notes:v, saved:true }); try { localStorage.setItem('tm-video-notes', v); } catch (err) {} },
+      learnOn:s.tab === 'learn',
+      playOn:s.tab === 'play' || s.tab === 'done',
+      quizActive:s.tab === 'play' && !!q,
+      quizDone:s.tab === 'done',
+      builderOn:(s.tab === 'play' || s.tab === 'done') && st.id === 'dates',
+      timelineOn:s.tab !== 'learn' && st.tool === 'timeline',
+      notebookOn:s.tab !== 'learn' && st.tool === 'notebook',
+      goLearn:() => this.setState({ tab:'learn' }),
+      goPlay:() => this.setState({ tab:'play', qi:0, picked:null, correct:0 }),
+      learnLabel:st.id === 'video' ? 'Watch' : 'Learn',
+      playLabel:hasQuiz ? 'Play' : st.tool === 'timeline' ? 'Build' : 'Notebook',
+      playCta:hasQuiz ? 'Play this stage →' : st.tool === 'timeline' ? 'Open the timeline →' : 'Open my notebook →',
+      learnColor:s.tab === 'learn' ? '#101828' : '#F4EFE6',
+      learnBg:s.tab === 'learn' ? 'linear-gradient(160deg,#F6E4BC,#E8C275)' : 'transparent',
+      learnBorder:s.tab === 'learn' ? 'rgba(255,255,255,0.5)' : 'transparent',
+      playColor:s.tab !== 'learn' ? '#101828' : '#F4EFE6',
+      playBg:s.tab !== 'learn' ? 'linear-gradient(160deg,#F6E4BC,#E8C275)' : 'transparent',
+      playBorder:s.tab !== 'learn' ? 'rgba(255,255,255,0.5)' : 'transparent',
+      back:() => this.setState({ screen:'hub' }),
+      cur:q || { prompt:'', es:'', why:'', whyEs:'' },
+      options, answered,
+      qLabel:'QUESTION ' + (s.qi + 1) + ' OF ' + st.quiz.length,
+      qProgress:st.quiz.length ? Math.round(((s.qi + (answered ? 1 : 0)) / st.quiz.length) * 100) + '%' : '0%',
+      fbBg:isCorrect ? 'rgba(121,210,200,0.14)' : 'rgba(240,138,110,0.14)',
+      fbBorder:isCorrect ? 'rgba(121,210,200,0.4)' : 'rgba(240,138,110,0.38)',
+      fbColor:isCorrect ? '#A8E6DC' : '#F7B7A2',
+      fbTitle:isCorrect ? 'Correct' : 'Not this one',
+      next:() => this.next(),
+      nextLabel:s.qi + 1 >= st.quiz.length ? 'See my score' : 'Next question',
+      scoreText:s.correct + ' / ' + st.quiz.length,
+      scoreMsg:scorePct === 100 ? 'Perfect. Every rule in place.' : scorePct >= 60 ? 'Good work — read the mistakes again and repeat.' : 'Go back to Learn and try this stage once more.',
+      retry:() => this.setState({ tab:'play', qi:0, picked:null, correct:0 }),
+      nextStage:() => nxt ? this.open(nxt.id) : this.setState({ screen:'hub' }),
+      nextStageLabel:nxt ? 'Stage ' + nxt.num + ' →' : 'Back to stages',
+      built, chips,
+      builtEmpty:s.built.length === 0,
+      builtMsg:s.builtMsg,
+      builtColor:s.builtOk === true ? '#A8E6DC' : s.builtOk === false ? '#F7B7A2' : 'rgba(244,239,230,0.6)',
+      checkBuilt:() => {
+        const ok = s.built.length === TARGET.length && s.built.every((v, i) => v === i);
+        this.setState({ builtOk:ok, builtMsg:ok ? 'Friday, August 12th, 2022 — correct order.' : 'Not yet: day of the week, month, ordinal day, year.' });
+      },
+      resetBuilt:() => this.setState({ built:[], builtMsg:'', builtOk:null }),
+      tSubject:s.tSubject,
+      tWhen:s.tWhen,
+      setSubject:e => { const v = e.target.value; this.setState({ tSubject:v }); },
+      setWhen:e => { const v = e.target.value; this.setState({ tWhen:v }); },
+      nodes,
+      buildSentence:() => this.build(),
+      loadExample:() => this.setState({ tSubject:'I', tWhen:'yesterday', t1:'finish my homework', t2:'walk to school', t3:'meet my friend', out:null }),
+      clearTimeline:() => this.setState({ t1:'', t2:'', t3:'', tWhen:'', out:null }),
+      hasOutput:!!out && !out.empty,
+      outMain:out && out.main ? out.main : '',
+      outAlt:out && out.alt ? 'Another way to say it: ' + out.alt : '',
+      outParts:out && out.parts ? out.parts : [],
+      outEs:'Cada bloque es un tiempo distinto: had + participio (antes), was/were + -ing (en progreso), y el pasado simple con when (la acción que terminó).',
+      hasIrregular:!!(out && out.irregulars && out.irregulars.length),
+      irregularList:out && out.irregulars ? out.irregulars.join('  ·  ') : ''
+    };
+  }
+}
+
+</script>
+</body>
+</html>

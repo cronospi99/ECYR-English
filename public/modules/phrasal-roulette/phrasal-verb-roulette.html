@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#05060f; overflow:hidden; }
+  * { box-sizing:border-box; }
+  a { color:#FBD000; }
+  a:hover { color:#fff; }
+  input { font-family:'Fredoka',sans-serif; }
+  button { font-family:'Press Start 2P',monospace; cursor:pointer; }
+  button:disabled { cursor:not-allowed; }
+  ::-webkit-scrollbar { width:10px; height:10px; }
+  ::-webkit-scrollbar-track { background:rgba(0,0,0,.35); }
+  ::-webkit-scrollbar-thumb { background:#FBD000; border:2px solid #000; }
+  @keyframes floaty { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
+  @keyframes cloudA { from{ background-position:0 0; } to{ background-position:960px 0; } }
+  @keyframes cloudB { from{ background-position:0 0; } to{ background-position:1340px 0; } }
+  @keyframes cloudC { from{ background-position:0 0; } to{ background-position:700px 0; } }
+  @keyframes fallDown { from{ background-position:0 0; } to{ background-position:0 400px; } }
+  @keyframes emberRise { from{ background-position:0 400px; } to{ background-position:0 0; } }
+  @keyframes popIn { 0%{ transform:scale(.6) translateY(30px); opacity:0; } 60%{ transform:scale(1.05) translateY(0); opacity:1; } 100%{ transform:scale(1); opacity:1; } }
+  @keyframes coinSpin { 0%{ transform:scale(1) rotate(0deg);} 50%{ transform:scale(1.3) rotate(180deg);} 100%{ transform:scale(1) rotate(360deg);} }
+  @keyframes glowPulse { 0%,100%{ filter:drop-shadow(0 0 2px rgba(255,255,255,.4)); } 50%{ filter:drop-shadow(0 0 34px #FBD000); } }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+  @keyframes rise { from{ transform:translateY(20px); opacity:0;} to{ transform:translateY(0); opacity:1;} }
+  @keyframes floatUp { 0%{ transform:translate(-50%,-30%) scale(.5); opacity:0; } 22%{ transform:translate(-50%,-70%) scale(1.25); opacity:1; } 100%{ transform:translate(-50%,-190%) scale(.95); opacity:0; } }
+  @keyframes shake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-9px);} 40%{transform:translateX(9px);} 60%{transform:translateX(-5px);} 80%{transform:translateX(5px);} }
+  @keyframes sheen { 0%{ transform:translateX(-140%) skewX(-18deg); } 100%{ transform:translateX(340%) skewX(-18deg); } }
+  @keyframes spinSlow { from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+</style>
+</helmet>
+
+<div style="position:fixed; inset:0; background:#05060f; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+<div style="width:1920px; height:1080px; flex:0 0 auto; font-family:'Fredoka',sans-serif; color:#fff; position:relative; overflow:hidden; transform:scale({{ scale }}); transform-origin:center center; background:{{ t.sky }};">
+
+  <sc-for list="{{ deco }}" as="d" hint-placeholder-count="3">
+    <div style="position:absolute; left:0; right:0; pointer-events:none; background-repeat:repeat; top:{{ d.top }}px; height:{{ d.h }}px; background-size:{{ d.size }}; background-image:{{ d.img }}; animation:{{ d.anim }}; opacity:{{ d.op }};"></div>
+  </sc-for>
+
+  <div style="position:absolute; left:0; right:0; bottom:0; height:84px; border-top:8px solid {{ t.groundEdge }}; background-image:repeating-linear-gradient(90deg,{{ t.ground }} 0 78px,{{ t.ground2 }} 78px 84px), repeating-linear-gradient(0deg,{{ t.ground }} 0 38px,{{ t.ground2 }} 38px 44px);"></div>
+
+  <div style="position:absolute; left:26px; bottom:16px; z-index:90; display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
+    <sc-if value="{{ audioOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width:430px; border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.45); padding:20px; display:flex; flex-direction:column; gap:16px; animation:rise .25s ease-out; background:{{ t.panel }};">
+        <div style="font-family:'Press Start 2P',monospace; font-size:13px; color:{{ t.accent }};">🔊 SOUND EFFECTS</div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <button onClick="{{ toggleSfx }}" style="flex:0 0 150px; font-family:'Press Start 2P',monospace; font-size:10px; padding:12px 8px; border:4px solid #000; box-shadow:0 4px 0 #000; background:{{ sfxBtnBg }}; color:{{ sfxBtnInk }};" style-active="transform:translateY(3px); box-shadow:0 1px 0 #000;">{{ sfxBtnLabel }}</button>
+          <input type="range" min="0" max="100" value="{{ sfxVol }}" onChange="{{ onSfxVol }}" style="flex:1; accent-color:{{ t.accent }}; height:28px;" />
+          <span style="flex:0 0 46px; text-align:right; font-family:'Press Start 2P',monospace; font-size:10px; color:{{ t.text }};">{{ sfxVol }}</span>
+        </div>
+      </div>
+    </sc-if>
+    <button onClick="{{ toggleAudioPanel }}" style="font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 16px; border:5px solid #000; box-shadow:0 5px 0 #000; display:flex; align-items:center; gap:10px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;"><span style="font-size:20px;">{{ audioIcon }}</span>{{ audioBtnLabel }}</button>
+  </div>
+
+  <sc-if value="{{ popShown }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; left:50%; top:46%; z-index:60; pointer-events:none; font-family:'Press Start 2P',monospace; font-size:74px; animation:floatUp 1.1s ease-out forwards; color:{{ popColor }}; text-shadow:6px 6px 0 #000;">{{ popText }}</div>
+  </sc-if>
+
+  <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ true }}">
+  <div style="position:relative; height:100%; padding:26px 40px 100px; display:flex; flex-direction:column;">
+
+    <div style="text-align:center; margin-bottom:22px;">
+      <div style="display:inline-block; position:relative; overflow:hidden; background:#000; border:6px solid {{ t.accent }}; padding:16px 40px; box-shadow:10px 10px 0 rgba(0,0,0,.45); animation:floaty 5s ease-in-out infinite;">
+        <h1 style="margin:0; font-family:'Press Start 2P',monospace; font-size:38px; line-height:1.35; letter-spacing:1px; color:{{ t.accent }}; text-shadow:5px 5px 0 {{ t.titleShadow }};">PHRASAL VERB ROULETTE</h1>
+        <div style="position:absolute; top:0; bottom:0; left:0; width:70px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent); animation:sheen 4.5s ease-in-out infinite;"></div>
+      </div>
+      <p style="margin:14px 0 0; font-size:20px; font-weight:600; color:{{ t.subInk }};">Spin the wheel · get a phrasal verb · build your own example sentence · win coins</p>
+    </div>
+
+    <div style="flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:minmax(0,1fr); gap:24px; align-items:stretch;">
+
+      <div style="background:{{ t.panel }}; border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.4); padding:24px; overflow-y:auto;">
+        <h2 style="margin:0 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">1 · LEVELS</h2>
+        <p style="margin:0 0 16px; font-size:16px; color:{{ t.muted }};">487 phrasal verbs, graded by CEFR level of usage.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <sc-for list="{{ levelChips }}" as="lv" hint-placeholder-count="5">
+            <button onClick="{{ lv.onClick }}" style="font-size:15px; padding:14px 10px; border:5px solid #000; box-shadow:0 6px 0 #000; display:flex; flex-direction:column; align-items:center; gap:6px; background:{{ lv.bg }}; color:{{ lv.fg }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">
+              <span>{{ lv.id }}</span>
+              <span style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:600; opacity:.85;">{{ lv.count }} verbs</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:14px;">
+          <button onClick="{{ selectAllLevels }}" style="flex:1; font-size:11px; padding:12px 8px; border:4px solid #000; box-shadow:0 5px 0 #000; background:{{ t.good }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 2px 0 #000;">ALL</button>
+          <button onClick="{{ clearLevels }}" style="flex:1; font-size:11px; padding:12px 8px; border:4px solid #000; box-shadow:0 5px 0 #000; background:{{ t.alt }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 2px 0 #000;">CLEAR</button>
+        </div>
+
+        <h2 style="margin:26px 0 12px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">2 · GRAPHIC STYLE</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+          <sc-for list="{{ themeChips }}" as="th" hint-placeholder-count="6">
+            <button onClick="{{ th.onClick }}" style="font-size:11px; padding:12px 8px; border:5px solid #000; box-shadow:0 6px 0 #000; display:flex; flex-direction:column; align-items:center; gap:8px; background:{{ th.bg }}; color:{{ th.fg }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">
+              <span style="width:100%; height:26px; border:3px solid #000; background:{{ th.swatch }};"></span>
+              <span>{{ th.label }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ t.panel }}; border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.4); padding:24px; overflow-y:auto;">
+        <h2 style="margin:0 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">3 · ROUNDS</h2>
+        <p style="margin:0 0 14px; font-size:16px; color:{{ t.muted }};">Drag the bar: {{ rounds }} round(s) in this game.</p>
+        <div onPointerDown="{{ onRoundsDown }}" onPointerMove="{{ onRoundsMove }}" onPointerUp="{{ onRoundsUp }}" onPointerLeave="{{ onRoundsUp }}" style="display:flex; gap:2px; padding:7px; background:#000; border:5px solid #000; cursor:ew-resize; touch-action:none;">
+          <sc-for list="{{ roundBlocks }}" as="b" hint-placeholder-count="50">
+            <div style="flex:1; height:44px; border:2px solid rgba(0,0,0,.6); background:{{ b.bg }}; transition:background .12s;"></div>
+          </sc-for>
+        </div>
+        <div style="display:flex; justify-content:space-between; margin-top:8px; font-family:'Press Start 2P',monospace; font-size:11px; color:{{ t.muted }};">
+          <span>1</span>
+          <span style="color:{{ t.accent }}; font-size:16px;">{{ rounds }} ROUNDS</span>
+          <span>100</span>
+        </div>
+
+        <h2 style="margin:26px 0 12px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">4 · AIDS PER PLAYER</h2>
+        <div style="display:flex; gap:8px;">
+          <sc-for list="{{ aidChips }}" as="a" hint-placeholder-count="4">
+            <button onClick="{{ a.onClick }}" style="flex:1; font-size:14px; padding:14px 6px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ a.bg }}; color:{{ a.fg }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">{{ a.label }}</button>
+          </sc-for>
+        </div>
+        <h2 style="margin:26px 0 12px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">5 · PENALTY FOR A WRONG ANSWER</h2>
+        <div style="display:flex; gap:8px;">
+          <sc-for list="{{ penaltyChips }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.onClick }}" style="flex:1; font-size:14px; padding:14px 6px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ p.bg }}; color:{{ p.fg }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">{{ p.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:9px 0 0; font-size:13px; color:{{ t.muted }};">Coins lost on a wrong answer. Boosted questions (x2 / x3) scale the penalty too, on top of any wager.</p>
+
+
+        <h2 style="margin:26px 0 12px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">6 · GAME RULES</h2>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <sc-for list="{{ toggles }}" as="g" hint-placeholder-count="4">
+            <button onClick="{{ g.onClick }}" style="display:flex; align-items:center; gap:12px; text-align:left; font-size:12px; padding:14px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ g.bg }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">
+              <span style="font-size:20px;">{{ g.icon }}</span>
+              <span style="flex:1; line-height:1.7;">{{ g.label }}</span>
+              <span style="font-size:14px; color:{{ g.stateColor }};">{{ g.state }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:{{ t.panel }}; border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.4); padding:24px; display:flex; flex-direction:column; min-height:0; overflow:hidden;">
+        <h2 style="margin:0 0 12px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">7 · TEAM MATCH</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:8px;">
+          <sc-for list="{{ teamChips }}" as="tc" hint-placeholder-count="4">
+            <button onClick="{{ tc.onClick }}" style="font-family:'Press Start 2P',monospace; font-size:10px; padding:14px 4px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ tc.bg }}; color:{{ tc.fg }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">{{ tc.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:9px 0 0; font-size:13px; color:{{ t.muted }};">Players are split round-robin; tap a player's team badge below to move them. Turns alternate between teams and coins add to the team total.</p>
+
+        <h2 style="margin:26px 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">8 · REAL-WORLD PRIZE</h2>
+        <p style="margin:0 0 14px; font-size:16px; color:{{ t.muted }};">What the winner actually gets. Shown on the scoreboard and on the podium.</p>
+        <input value="{{ prizeInput }}" onChange="{{ onPrizeChange }}" placeholder="e.g. No homework this weekend" style="width:100%; box-sizing:border-box; font-size:19px; font-weight:600; padding:14px; border:5px solid #000; background:#fff; color:#111; outline:none;" />
+
+        <h2 style="margin:26px 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">9 · PLAYERS</h2>
+        <p style="margin:0 0 14px; font-size:16px; color:{{ t.muted }};">Type a name and press Enter. Minimum 2.</p>
+        <div style="display:flex; gap:10px;">
+          <input value="{{ nameInput }}" onChange="{{ onNameChange }}" onKeyDown="{{ onNameKey }}" placeholder="Student name…" style="flex:1; font-size:19px; font-weight:600; padding:14px; border:5px solid #000; background:#fff; color:#111; outline:none;" />
+          <button onClick="{{ addStudent }}" style="font-size:13px; padding:14px 16px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ t.accent }}; color:{{ t.accentInk }};" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">ADD</button>
+        </div>
+
+        <div style="flex:1 1 0; min-height:90px; margin-top:16px; display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:6px;">
+          <sc-for list="{{ students }}" as="st" hint-placeholder-count="3">
+            <div style="display:flex; align-items:center; gap:12px; border:4px solid #000; padding:10px 12px; background:{{ t.panel2 }};">
+              <span style="font-family:'Press Start 2P',monospace; font-size:11px; min-width:26px; color:{{ t.accent }};">{{ st.num }}</span>
+              <span style="flex:1; font-size:19px; font-weight:600;">{{ st.name }}</span>
+              <button onClick="{{ st.cycleTeam }}" style="display:{{ st.teamDisplay }}; font-family:'Press Start 2P',monospace; font-size:10px; padding:9px 10px; border:3px solid #000; background:{{ st.teamColor }}; color:#000;">{{ st.teamLabel }}</button>
+              <button onClick="{{ st.remove }}" style="font-size:10px; padding:8px 10px; border:3px solid #000; background:{{ t.bad }}; color:#fff;">X</button>
+            </div>
+          </sc-for>
+        </div>
+
+        <button onClick="{{ startGame }}" disabled="{{ cantStart }}" style="flex:0 0 auto; margin-top:16px; width:100%; font-size:22px; padding:22px; border:6px solid #000; box-shadow:0 9px 0 #000; letter-spacing:1px; background:{{ startBg }}; color:{{ t.accentInk }};" style-active="transform:translateY(6px); box-shadow:0 3px 0 #000;">▶ START GAME</button>
+        <p style="margin:10px 0 0; text-align:center; font-size:15px; color:{{ t.muted }};">{{ startHint }}</p>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isGame }}" hint-placeholder-val="{{ false }}">
+  <div style="position:relative; height:100%; padding:20px 32px 96px; display:grid; grid-template-columns:1fr 372px; gap:24px; align-items:start;">
+
+    <div style="min-height:0;">
+      <div style="display:flex; align-items:center; gap:14px; background:#000; border:5px solid {{ t.accent }}; padding:11px 16px; margin-bottom:12px;">
+        <span style="font-family:'Press Start 2P',monospace; font-size:15px; color:{{ t.accent }};">ROUND {{ roundLabel }}</span>
+        <div style="display:flex; align-items:center; gap:5px;">
+          <button onClick="{{ decRound }}" disabled="{{ decRoundOff }}" style="font-family:'Press Start 2P',monospace; font-size:13px; width:38px; padding:9px 0; border:4px solid #000; box-shadow:0 4px 0 #000; background:{{ decRoundBg }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 1px 0 #000;">-</button>
+          <button onClick="{{ incRound }}" disabled="{{ incRoundOff }}" style="font-family:'Press Start 2P',monospace; font-size:13px; width:38px; padding:9px 0; border:4px solid #000; box-shadow:0 4px 0 #000; background:{{ incRoundBg }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 1px 0 #000;">+</button>
+        </div>
+        <span style="font-family:'Press Start 2P',monospace; font-size:12px; color:{{ t.muted }};">{{ levelsLabel }}</span>
+        <span style="flex:1;"></span>
+        <span style="font-family:'Press Start 2P',monospace; font-size:10px; color:{{ t.muted }};">{{ turnCaption }}</span>
+        <span style="font-family:'Press Start 2P',monospace; font-size:19px; max-width:400px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:{{ t.accent }};">{{ currentName }}</span>
+        <span style="flex:1;"></span>
+        <sc-if value="{{ hasPrize }}" hint-placeholder-val="{{ false }}">
+          <span style="display:inline-flex; align-items:center; gap:8px; border:4px solid #000; padding:7px 12px; background:{{ t.accent }}; max-width:340px; overflow:hidden;">
+            <span style="font-size:15px;">🏆</span>
+            <span style="font-size:15px; font-weight:700; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; color:{{ t.accentInk }};">{{ prizeText }}</span>
+          </span>
+        </sc-if>
+        <button onClick="{{ endMatch }}" style="font-size:11px; padding:10px 12px; border:4px solid #000; background:{{ t.accent }}; color:{{ t.accentInk }};" style-active="transform:translateY(2px);">END MATCH</button>
+        <button onClick="{{ quitGame }}" style="font-size:11px; padding:10px 12px; border:4px solid #000; background:{{ t.bad }}; color:#fff;" style-active="transform:translateY(2px);">MENU</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:480px 1fr; gap:24px; align-items:start;">
+
+        <div style="display:flex; flex-direction:column; align-items:center;">
+          <div style="position:relative; width:480px; height:480px; animation:{{ wheelAnim }};">
+            <div style="position:absolute; left:50%; top:-6px; transform:translateX(-50%); z-index:5; width:0; height:0; border-left:24px solid transparent; border-right:24px solid transparent; border-top:48px solid {{ t.bad }}; filter:drop-shadow(0 4px 0 #000);"></div>
+            <div style="position:absolute; inset:0; border-radius:50%; background:#000; box-shadow:0 12px 0 rgba(0,0,0,.4);"></div>
+            <div style="position:absolute; inset:9px; border-radius:50%; overflow:hidden; transform:rotate({{ rot }}deg); transition:transform 4.6s cubic-bezier(.16,.86,.24,1);">
+              <svg viewBox="0 0 620 620" style="width:100%; height:100%; display:block;">
+                <sc-for list="{{ segments }}" as="sg" hint-placeholder-count="12">
+                  <path d="{{ sg.d }}" fill="{{ sg.fill }}" stroke="#000" stroke-width="4"></path>
+                </sc-for>
+              </svg>
+              <sc-for list="{{ segments }}" as="sg" hint-placeholder-count="12">
+                <div style="position:absolute; white-space:nowrap; font-family:'Fredoka',sans-serif; font-weight:700; font-size:19px; color:#fff; text-shadow:2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 3px 0 #000; left:{{ sg.lx }}%; top:{{ sg.ly }}%; transform:translate(-50%,-50%) rotate({{ sg.lrot }}deg);">{{ sg.label }}</div>
+              </sc-for>
+              <sc-for list="{{ segments }}" as="sg" hint-placeholder-count="12">
+                <sc-if value="{{ sg.bonus }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; width:46px; height:46px; display:flex; align-items:center; justify-content:center; font-size:22px; border-radius:50%; border:4px solid #000; background:#FBD000; box-shadow:0 0 0 4px rgba(255,255,255,.55); left:{{ sg.bx }}%; top:{{ sg.by }}%; transform:translate(-50%,-50%);">🧰</div>
+                </sc-if>
+              </sc-for>
+            </div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:104px; height:104px; border-radius:50%; border:8px solid #000; display:flex; align-items:center; justify-content:center; z-index:4; box-shadow:inset 0 -8px 0 rgba(0,0,0,.2); background:{{ t.accent }};">
+              <span style="font-family:'Press Start 2P',monospace; font-size:30px; color:{{ t.titleShadow }}; animation:{{ hubAnim }};">★</span>
+            </div>
+          </div>
+
+          <button onClick="{{ spin }}" disabled="{{ spinDisabled }}" style="margin-top:18px; font-size:24px; padding:22px 56px; border:6px solid #000; box-shadow:0 10px 0 #000; letter-spacing:2px; background:{{ spinBg }}; color:{{ t.accentInk }};" style-active="transform:translateY(7px); box-shadow:0 3px 0 #000;">{{ spinLabel }}</button>
+
+          <div style="margin-top:18px; width:480px; border:6px solid #000; box-shadow:0 8px 0 rgba(0,0,0,.4); background:{{ t.panel }}; padding:16px;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
+              <span style="font-size:40px;">⏱</span>
+              <span style="font-family:'Press Start 2P',monospace; font-size:64px; line-height:1; color:{{ timerColor }};">{{ timeLabel }}</span>
+            </div>
+            <div style="height:16px; border:4px solid #000; margin-top:14px; background:rgba(0,0,0,.45);">
+              <div style="height:100%; transition:width .95s linear; background:{{ timerColor }}; width:{{ timePct }}%;"></div>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:10px; margin-top:14px;">
+              <button onClick="{{ toggleTimer }}" disabled="{{ noCard }}" style="font-family:'Press Start 2P',monospace; font-size:15px; padding:18px 8px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ toggleTimerBg }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">{{ toggleTimerLabel }}</button>
+              <button onClick="{{ addTime }}" disabled="{{ noCard }}" style="font-family:'Press Start 2P',monospace; font-size:13px; padding:18px 8px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ addTimeBg }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">{{ addTimeLabel }}</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:846px; min-height:0; display:flex; flex-direction:column;">
+          <sc-if value="{{ hasCard }}" hint-placeholder-val="{{ false }}">
+            <div style="flex:1; min-height:0; display:flex; flex-direction:column; border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.4); animation:popIn .42s ease-out; background:{{ t.card }};">
+              <div style="flex:1; min-height:0; overflow-y:auto; padding:18px 18px 4px;">
+
+              <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
+                <span style="font-size:64px;">{{ cardEmoji }}</span>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-family:'Press Start 2P',monospace; font-size:12px; opacity:.65; color:{{ t.cardInk }};">{{ cardFamily }} FAMILY</div>
+                  <div style="font-family:'Press Start 2P',monospace; font-size:44px; margin-top:12px; line-height:1.3; text-wrap:balance; color:{{ cardColor }}; text-shadow:3px 3px 0 rgba(0,0,0,.18);">{{ cardPv }}</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:7px; align-items:flex-end;">
+                  <span style="font-family:'Press Start 2P',monospace; font-size:13px; border:4px solid #000; padding:8px 10px; background:{{ cardColor }}; color:#fff;">{{ cardLevel }}</span>
+                  <sc-if value="{{ hasMult }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-family:'Press Start 2P',monospace; font-size:14px; border:4px solid #000; padding:8px 10px; background:{{ multBg }}; color:#000; animation:coinSpin 2.6s ease-in-out infinite;">{{ multLabel }}</span>
+                  </sc-if>
+                </div>
+              </div>
+
+              <div style="border:4px solid #000; padding:16px; margin-bottom:12px; background:{{ t.taskBg }};">
+                <div style="font-family:'Press Start 2P',monospace; font-size:10px; margin-bottom:10px; color:{{ t.taskInk }};">YOUR TASK</div>
+                <div style="font-size:23px; font-weight:600; line-height:1.45; color:{{ t.cardInk }};">Say an original example sentence using <b style="color:{{ cardColor }};">{{ cardPv }}</b>.</div>
+              </div>
+
+              <sc-if value="{{ hasTense }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:18px; border:4px solid #000; padding:18px 20px; margin-bottom:12px; animation:rise .32s ease-out; background:{{ t.panel2 }};">
+                  <span style="font-size:46px; animation:coinSpin 3.2s ease-in-out infinite;">🎲</span>
+                  <div style="flex:1;">
+                    <div style="font-family:'Press Start 2P',monospace; font-size:12px; margin-bottom:10px; color:{{ t.muted }};">GRAMMAR CHALLENGE</div>
+                    <div style="font-family:'Press Start 2P',monospace; font-size:24px; line-height:1.4; color:{{ t.accent }};">{{ tenseName }}</div>
+                    <div style="font-size:26px; font-weight:700; margin-top:10px; color:{{ t.text }};">{{ tenseHint }}</div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ hasExtra }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; gap:10px; margin-bottom:12px;">
+                  <sc-if value="{{ hasSubject }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:0 0 232px; border:4px solid #000; padding:13px 15px; animation:rise .32s ease-out; background:{{ t.taskBg }};">
+                      <div style="font-family:'Press Start 2P',monospace; font-size:10px; margin-bottom:9px; color:{{ t.taskInk }};">SUBJECT USED</div>
+                      <div style="font-family:'Press Start 2P',monospace; font-size:18px; line-height:1.4; color:{{ t.cardInk }};">{{ subjectLabel }}</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ hasContext }}" hint-placeholder-val="{{ false }}">
+                    <div style="flex:1; min-width:0; border:4px solid #000; padding:13px 15px; animation:rise .32s ease-out; background:{{ t.defBg }};">
+                      <div style="font-family:'Press Start 2P',monospace; font-size:10px; margin-bottom:9px; color:{{ t.taskInk }};">SITUATION</div>
+                      <div style="font-size:20px; font-weight:700; line-height:1.4; color:{{ t.defInk }};">{{ contextLabel }}</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ wagerOn }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:9px; border:4px solid #000; padding:9px 11px; margin-bottom:10px; background:{{ t.panel }};">
+                  <span style="font-size:19px;">🎯</span>
+                  <div style="display:flex; gap:6px; flex:1;">
+                    <sc-for list="{{ wagerOpts }}" as="w" hint-placeholder-count="5">
+                      <button onClick="{{ w.onClick }}" disabled="{{ w.off }}" style="flex:1; font-size:11px; padding:11px 2px; border:4px solid #000; box-shadow:0 4px 0 #000; background:{{ w.bg }}; color:{{ w.fg }};" style-active="transform:translateY(3px); box-shadow:0 1px 0 #000;">{{ w.label }}</button>
+                    </sc-for>
+                  </div>
+                  <span style="font-family:'Press Start 2P',monospace; font-size:11px; white-space:nowrap; color:{{ t.accent }};">{{ wagerNote }}</span>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ aidsOn }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:9px; border:4px solid #000; padding:9px 11px; margin-bottom:10px; background:{{ t.panel }};">
+                  <span style="font-family:'Press Start 2P',monospace; font-size:11px; white-space:nowrap; color:{{ t.accent }};">🧰 {{ aidsLeft }}</span>
+                  <sc-if value="{{ aidGain }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-family:'Press Start 2P',monospace; font-size:9px; line-height:1.7; white-space:nowrap; padding:7px 9px; border:3px solid #000; animation:rise .3s ease-out; background:{{ t.good }}; color:#fff;">🧰 LUCKY!<br />+1 HELP</span>
+                  </sc-if>
+                  <div style="display:flex; gap:6px; flex:1;">
+                    <sc-for list="{{ aids }}" as="a" hint-placeholder-count="6">
+                      <button onClick="{{ a.onClick }}" disabled="{{ a.off }}" style="flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; font-size:8px; line-height:1.4; padding:8px 2px; border:4px solid #000; box-shadow:0 4px 0 #000; background:{{ a.bg }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 1px 0 #000;">
+                        <span style="font-size:17px;">{{ a.icon }}</span>
+                        <span>{{ a.short }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+
+
+              <sc-if value="{{ defHidden }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ revealDef }}" style="width:100%; font-size:13px; padding:17px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ t.alt }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">👁 REVEAL DEFINITION</button>
+              </sc-if>
+
+              <sc-if value="{{ defShown }}" hint-placeholder-val="{{ false }}">
+                <div style="border:4px solid #000; padding:16px; animation:rise .3s ease-out; background:{{ t.defBg }};">
+                  <div style="font-family:'Press Start 2P',monospace; font-size:10px; margin-bottom:10px; color:{{ t.defInk }}; opacity:.7;">DEFINITION</div>
+                  <div style="font-size:23px; font-weight:600; line-height:1.4; color:{{ t.defInk }};">{{ cardDef }}</div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ conjShown }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px; border:4px solid #000; padding:14px 16px; animation:rise .3s ease-out; background:{{ t.defBg }};">
+                  <div style="font-family:'Press Start 2P',monospace; font-size:10px; margin-bottom:12px; color:{{ t.defInk }}; opacity:.7;">CONJUGATION</div>
+                  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px;">
+                    <sc-for list="{{ conjForms }}" as="c" hint-placeholder-count="3">
+                      <div style="border:3px solid #000; padding:11px 12px; background:rgba(0,0,0,.06);">
+                        <div style="font-family:'Press Start 2P',monospace; font-size:8px; line-height:1.7; margin-bottom:7px; color:{{ t.defInk }}; opacity:.6;">{{ c.label }}</div>
+                        <div style="font-size:21px; font-weight:700; color:{{ t.defInk }};">{{ c.form }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ teacherHelp }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px; border:4px solid #000; padding:14px 16px; animation:rise .3s ease-out; background:{{ t.alt }}; color:#fff;">
+                  <div style="font-family:'Press Start 2P',monospace; font-size:10px; line-height:1.9;">🙋 TEACHER HELP — TIMER PAUSED</div>
+                  <div style="margin-top:9px; font-size:19px; font-weight:600;">The teacher gives one clue or builds the sentence together. Restart the timer when the student is ready.</div>
+                </div>
+              </sc-if>
+
+              <div style="margin-top:12px; display:flex; flex-direction:column; gap:10px;">
+                <button onClick="{{ toggleEs }}" style="align-self:flex-start; font-size:11px; padding:12px 14px; border:4px solid #000; box-shadow:0 5px 0 #000; background:{{ t.good }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 2px 0 #000;">{{ esLabel }}</button>
+                <sc-if value="{{ esShown }}" hint-placeholder-val="{{ false }}">
+                  <div style="border:4px solid #000; padding:14px 16px; font-size:21px; font-weight:600; background:{{ t.defBg }}; color:{{ t.defInk }};">🇪🇸 {{ cardEs }}</div>
+                </sc-if>
+              </div>
+
+              <sc-if value="{{ exShown }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:12px; border:4px dashed #000; padding:15px; font-size:20px; background:{{ t.taskBg }}; color:{{ t.cardInk }};">Model: <i>{{ cardEx }}</i></div>
+              </sc-if>
+
+              </div>
+              <sc-if value="{{ wasPassed }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:0 0 auto; margin:0 14px; border:4px solid #000; padding:11px 14px; font-family:'Press Start 2P',monospace; font-size:10px; line-height:1.9; background:{{ t.titleShadow }}; color:#fff;">{{ passNote }}</div>
+              </sc-if>
+              <div style="flex:0 0 auto; display:grid; grid-template-columns:1.35fr 1.35fr 1fr 1fr; gap:8px; padding:11px 14px 14px; border-top:5px solid #000;">
+                <button onClick="{{ markCorrect }}" style="min-height:60px; font-size:13px; line-height:1.6; padding:8px 6px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ t.good }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">✔ CORRECT {{ pointsLabel }}</button>
+                <button onClick="{{ markWrong }}" style="min-height:60px; font-size:13px; line-height:1.6; padding:8px 6px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ t.bad }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">✘ {{ wrongLabel }}</button>
+                <button onClick="{{ passTurn }}" disabled="{{ passDisabled }}" style="min-height:60px; font-size:10px; line-height:1.7; padding:8px 4px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ passBg }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">🔀 PASS<br />RANDOM</button>
+                <button onClick="{{ showModel }}" style="min-height:60px; font-size:10px; line-height:1.7; padding:8px 4px; border:5px solid #000; box-shadow:0 6px 0 #000; background:{{ t.alt }}; color:#fff;" style-active="transform:translateY(4px); box-shadow:0 2px 0 #000;">📖 MODEL<br />SENTENCE</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ noCard }}" hint-placeholder-val="{{ true }}">
+            <div style="flex:1; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; border:5px dashed #fff; padding:40px 28px; text-align:center; background:rgba(0,0,0,.35);">
+              <div style="font-size:150px; margin-bottom:34px; animation:floaty 2.4s ease-in-out infinite;">🎰</div>
+              <div style="font-family:'Press Start 2P',monospace; font-size:30px; line-height:1.8; color:#fff; white-space:pre-line; text-shadow:4px 4px 0 rgba(0,0,0,.35);">{{ idleMessage }}</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+
+    <div style="border:6px solid #000; box-shadow:9px 9px 0 rgba(0,0,0,.4); padding:18px; height:964px; display:flex; flex-direction:column; background:{{ t.panel }};">
+      <h2 style="margin:0 0 4px; font-family:'Press Start 2P',monospace; font-size:16px; color:{{ t.accent }};">🏆 LEADERBOARD</h2>
+      <p style="margin:0 0 14px; font-size:14px; color:{{ t.muted }};">{{ boardNote }}</p>
+      <sc-for list="{{ teamBoard }}" as="tm" hint-placeholder-count="0">
+        <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; border:4px solid #000; background:{{ tm.bg }};">
+          <span style="width:16px; height:16px; border:3px solid #000; background:{{ tm.color }};"></span>
+          <div style="flex:1; min-width:0;">
+            <div style="font-family:'Press Start 2P',monospace; font-size:11px; color:#fff;">{{ tm.name }}</div>
+            <div style="font-size:12px; margin-top:5px; color:{{ t.muted }}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ tm.members }}</div>
+          </div>
+          <span style="font-family:'Press Start 2P',monospace; font-size:16px; color:{{ t.accent }};">{{ tm.score }}</span>
+        </div>
+      </sc-for>
+      <div style="flex:1; min-height:0; display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px;">
+        <sc-for list="{{ board }}" as="p" hint-placeholder-count="6">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 12px; border:4px solid #000; transition:transform .25s; background:{{ p.bg }}; transform:scale({{ p.scale }});">
+            <span style="font-family:'Press Start 2P',monospace; font-size:13px; min-width:32px; color:{{ p.rankColor }};">{{ p.rank }}</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:18px; font-weight:600; color:{{ p.nameColor }}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">{{ p.name }}</div>
+              <div style="font-size:13px; margin-top:3px; color:{{ p.aidColor }};">{{ p.aidDots }}</div>
+            </div>
+            <span style="font-family:'Press Start 2P',monospace; font-size:15px; color:{{ t.accent }};">{{ p.score }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:12px; padding-top:12px; border-top:4px dashed rgba(255,255,255,.22); display:flex; gap:8px;">
+        <input value="{{ joinInput }}" onChange="{{ onJoinChange }}" onKeyDown="{{ onJoinKey }}" placeholder="Late arrival…" style="flex:1; min-width:0; font-size:15px; font-weight:600; padding:10px; border:4px solid #000; background:{{ t.panel2 }}; color:#fff; outline:none;" />
+        <button onClick="{{ joinStudent }}" disabled="{{ joinDisabled }}" style="font-family:'Press Start 2P',monospace; font-size:10px; padding:10px 12px; border:4px solid #000; box-shadow:0 5px 0 #000; background:{{ t.good }}; color:#fff;" style-active="transform:translateY(3px); box-shadow:0 2px 0 #000;">JOIN</button>
+      </div>
+
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isPodium }}" hint-placeholder-val="{{ false }}">
+  <div style="position:relative; height:100%; padding:26px 40px 96px; text-align:center; display:flex; flex-direction:column; align-items:center;">
+    <div style="display:inline-block; background:#000; padding:16px 44px; animation:glowPulse 2s ease-in-out infinite; border:6px solid {{ t.accent }};">
+      <h1 style="margin:0; font-family:'Press Start 2P',monospace; font-size:36px; color:{{ t.accent }}; text-shadow:5px 5px 0 {{ t.titleShadow }};">GAME OVER</h1>
+    </div>
+    <p style="margin:16px 0 22px; font-size:25px; font-weight:600; color:{{ t.subInk }};">{{ winnerLine }}</p>
+
+    <div style="display:flex; align-items:flex-end; justify-content:center; gap:20px; margin-bottom:24px;">
+      <sc-for list="{{ podium }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex; flex-direction:column; align-items:center; width:236px;">
+          <div style="font-size:48px; margin-bottom:8px; animation:coinSpin 2.4s ease-in-out infinite;">{{ p.medal }}</div>
+          <div style="font-size:24px; font-weight:700; margin-bottom:10px; color:{{ t.subInk }};">{{ p.name }}</div>
+          <div style="width:100%; border:6px solid #000; box-shadow:0 8px 0 rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; height:{{ p.h }}px; background:{{ p.color }};">
+            <span style="font-family:'Press Start 2P',monospace; font-size:24px; color:#000;">{{ p.score }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="width:620px; border:6px solid #000; padding:18px; text-align:left; display:flex; flex-direction:column; min-height:0; flex:1; background:{{ t.panel }};">
+      <div style="font-family:'Press Start 2P',monospace; font-size:13px; margin-bottom:12px; color:{{ t.accent }};">FINAL SCORES</div>
+      <div style="flex:1; min-height:0; display:flex; flex-direction:column; gap:8px; overflow-y:auto; padding-right:4px;">
+        <sc-for list="{{ board }}" as="p" hint-placeholder-count="5">
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; border:4px solid #000; background:{{ p.bg }};">
+            <span style="font-family:'Press Start 2P',monospace; font-size:12px; min-width:32px; color:{{ p.rankColor }};">{{ p.rank }}</span>
+            <span style="flex:1; font-size:19px; font-weight:600; color:{{ p.nameColor }};">{{ p.name }}</span>
+            <span style="font-family:'Press Start 2P',monospace; font-size:14px; color:{{ t.accent }};">{{ p.score }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:14px; justify-content:center; margin-top:18px;">
+      <button onClick="{{ revealPrize }}" style="font-size:17px; padding:20px 30px; border:6px solid #000; box-shadow:0 8px 0 #000; background:{{ t.accent }}; color:{{ t.accentInk }};" style-active="transform:translateY(5px); box-shadow:0 3px 0 #000;">🏆 REVEAL THE PRIZE ▶</button>
+    </div>
+
+    <div style="position:absolute; inset:0; z-index:80; background:#000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:34px; text-align:center; padding:60px; transition:opacity 1.5s ease; opacity:{{ endOpacity }}; pointer-events:{{ endPointer }};">
+      <sc-if value="{{ endShowPrize }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'Press Start 2P',monospace; font-size:22px; letter-spacing:2px; color:#9aa0b5; animation:rise .6s ease-out;">THE WINNER IS</div>
+        <div style="font-family:'Press Start 2P',monospace; font-size:64px; line-height:1.3; color:{{ t.accent }}; text-shadow:6px 6px 0 {{ t.titleShadow }}; animation:rise .8s ease-out;">{{ winnerName }}</div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:18px; animation:rise 1.2s ease-out;">
+          <div style="font-family:'Press Start 2P',monospace; font-size:18px; color:#fff;">🏆 AND WINS</div>
+          <div style="max-width:1300px; font-size:56px; font-weight:700; line-height:1.2; color:#fff; text-wrap:balance;">{{ finalPrize }}</div>
+        </div>
+        <div style="display:flex; gap:20px; margin-top:30px; animation:rise 1.6s ease-out;">
+          <button onClick="{{ playAgain }}" style="font-size:19px; padding:22px 34px; border:6px solid #fff; box-shadow:0 8px 0 #444; background:{{ t.accent }}; color:{{ t.accentInk }};" style-active="transform:translateY(5px); box-shadow:0 3px 0 #444;">🔁 NEW MATCH</button>
+          <button onClick="{{ quitGame }}" style="font-size:19px; padding:22px 34px; border:6px solid #fff; box-shadow:0 8px 0 #444; background:{{ t.alt }}; color:#fff;" style-active="transform:translateY(5px); box-shadow:0 3px 0 #444;">🏠 MAIN MENU</button>
+        </div>
+      </sc-if>
+    </div>
+
+  </div>
+  </sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pointsPerCorrect&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:1,&quot;max&quot;:100,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Scoring&quot;}}">
+const THEMES = {
+  overworld: {
+    label: 'OVERWORLD', swatch: 'linear-gradient(#5C94FC,#9AD0FF 60%,#C84C0C 60%)',
+    sky: 'linear-gradient(#5C94FC 0%,#7FB2FF 58%,#9AD0FF 100%)',
+    panel: '#1b1035', panel2: '#2c1c52', muted: '#b9a9e0', text: '#e6ddff',
+    accent: '#FBD000', accentInk: '#000', titleShadow: '#C84C0C', subInk: '#0b2a4a',
+    ground: '#C84C0C', ground2: '#8F3608', groundEdge: '#2b0f04',
+    good: '#00A651', bad: '#E52521', alt: '#4a3a72', hi: '#3a2a68',
+    card: '#ffffff', cardInk: '#1b1035', taskBg: '#FFF4C2', taskInk: '#8F3608', defBg: '#EAF3FF', defInk: '#0b2a4a',
+    deco: [
+      { top: 36, h: 190, size: '960px 190px', op: 0.92, anim: 'cloudA 44s linear infinite', img: 'radial-gradient(circle at 90px 130px,#fff 0 46px,transparent 47px),radial-gradient(circle at 150px 108px,#fff 0 60px,transparent 61px),radial-gradient(circle at 218px 132px,#fff 0 44px,transparent 45px),radial-gradient(circle at 560px 120px,#fff 0 40px,transparent 41px),radial-gradient(circle at 618px 100px,#fff 0 54px,transparent 55px),radial-gradient(circle at 682px 122px,#fff 0 38px,transparent 39px)' },
+      { top: 168, h: 170, size: '1340px 170px', op: 0.6, anim: 'cloudB 76s linear infinite', img: 'radial-gradient(circle at 300px 110px,#fff 0 38px,transparent 39px),radial-gradient(circle at 352px 92px,#fff 0 50px,transparent 51px),radial-gradient(circle at 408px 112px,#fff 0 34px,transparent 35px),radial-gradient(circle at 980px 106px,#fff 0 44px,transparent 45px),radial-gradient(circle at 1044px 90px,#fff 0 56px,transparent 57px)' },
+      { top: 326, h: 150, size: '700px 150px', op: 0.32, anim: 'cloudC 108s linear infinite', img: 'radial-gradient(circle at 120px 96px,#fff 0 30px,transparent 31px),radial-gradient(circle at 166px 82px,#fff 0 40px,transparent 41px),radial-gradient(circle at 214px 98px,#fff 0 28px,transparent 29px)' }
+    ]
+  },
+  underground: {
+    label: 'UNDERGROUND', swatch: 'linear-gradient(#0d1430,#131c3f 60%,#1e293b 60%)',
+    sky: 'linear-gradient(#05060f 0%,#0d1430 55%,#131c3f 100%)',
+    panel: '#0e1730', panel2: '#1a2748', muted: '#8fb3e0', text: '#dce8ff',
+    accent: '#22D3EE', accentInk: '#00212a', titleShadow: '#0e7490', subInk: '#bfe3ff',
+    ground: '#1e293b', ground2: '#0f172a', groundEdge: '#000000',
+    good: '#10B981', bad: '#F43F5E', alt: '#25315a', hi: '#22304f',
+    card: '#f4f8ff', cardInk: '#0e1730', taskBg: '#DDF6FB', taskInk: '#0e7490', defBg: '#E7EDFF', defInk: '#1e2a52',
+    deco: [
+      { top: 60, h: 200, size: '960px 200px', op: 0.85, anim: 'cloudA 38s linear infinite', img: 'radial-gradient(circle at 120px 92px,#FBD000 0 20px,#8F3608 20px 25px,transparent 26px),radial-gradient(circle at 520px 124px,#FBD000 0 16px,#8F3608 16px 20px,transparent 21px),radial-gradient(circle at 800px 70px,#FBD000 0 13px,#8F3608 13px 17px,transparent 18px)' },
+      { top: 250, h: 200, size: '1340px 200px', op: 0.55, anim: 'cloudB 64s linear infinite', img: 'radial-gradient(circle at 300px 110px,#FBD000 0 15px,#8F3608 15px 19px,transparent 20px),radial-gradient(circle at 940px 84px,#FBD000 0 18px,#8F3608 18px 22px,transparent 23px)' },
+      { top: 440, h: 180, size: '700px 180px', op: 0.3, anim: 'cloudC 92s linear infinite', img: 'radial-gradient(circle at 180px 96px,#FBD000 0 11px,#8F3608 11px 14px,transparent 15px),radial-gradient(circle at 520px 60px,#FBD000 0 9px,#8F3608 9px 12px,transparent 13px)' }
+    ]
+  },
+  ice: {
+    label: 'ICE WORLD', swatch: 'linear-gradient(#CDEBFF,#8FD6FF 60%,#6FB6D8 60%)',
+    sky: 'linear-gradient(#CDEBFF 0%,#8FD6FF 55%,#EAF8FF 100%)',
+    panel: '#123a55', panel2: '#1d5578', muted: '#a8dcf5', text: '#eaf8ff',
+    accent: '#7DF9FF', accentInk: '#04303d', titleShadow: '#0E7490', subInk: '#0b3550',
+    ground: '#6FB6D8', ground2: '#3E86AA', groundEdge: '#123a55',
+    good: '#0F9D58', bad: '#E5484D', alt: '#2a6a91', hi: '#1a4d6d',
+    card: '#ffffff', cardInk: '#123a55', taskBg: '#E8F6FF', taskInk: '#0b6b8f', defBg: '#F0FAFF', defInk: '#0b3550',
+    deco: [
+      { top: 0, h: 1080, size: '300px 400px', op: 0.9, anim: 'fallDown 9s linear infinite', img: 'radial-gradient(circle at 40px 60px,#fff 0 5px,transparent 6px),radial-gradient(circle at 160px 180px,#fff 0 4px,transparent 5px),radial-gradient(circle at 250px 320px,#fff 0 6px,transparent 7px),radial-gradient(circle at 100px 300px,#fff 0 3px,transparent 4px)' },
+      { top: 0, h: 1080, size: '420px 400px', op: 0.6, anim: 'fallDown 15s linear infinite', img: 'radial-gradient(circle at 70px 120px,#fff 0 7px,transparent 8px),radial-gradient(circle at 300px 40px,#fff 0 5px,transparent 6px),radial-gradient(circle at 380px 260px,#fff 0 6px,transparent 7px)' },
+      { top: 0, h: 1080, size: '560px 400px', op: 0.4, anim: 'fallDown 24s linear infinite', img: 'radial-gradient(circle at 220px 200px,#fff 0 9px,transparent 10px),radial-gradient(circle at 480px 90px,#fff 0 8px,transparent 9px)' }
+    ]
+  },
+  desert: {
+    label: 'DESERT', swatch: 'linear-gradient(#FFD79A,#F9A03F 60%,#B45309 60%)',
+    sky: 'linear-gradient(#FFE7B8 0%,#FFC46B 50%,#F9A03F 100%)',
+    panel: '#3b2110', panel2: '#5a3417', muted: '#f6cf9b', text: '#fff4e2',
+    accent: '#FFE066', accentInk: '#3b2110', titleShadow: '#B45309', subInk: '#4a2a0c',
+    ground: '#D97706', ground2: '#B45309', groundEdge: '#3b2110',
+    good: '#15803D', bad: '#DC2626', alt: '#6b4220', hi: '#6e3f1a',
+    card: '#fffaf0', cardInk: '#3b2110', taskBg: '#FFF0CC', taskInk: '#92400e', defBg: '#FFF7E8', defInk: '#4a2a0c',
+    deco: [
+      { top: 70, h: 260, size: '1000px 260px', op: 0.5, anim: 'cloudA 52s linear infinite', img: 'radial-gradient(circle at 140px 150px,#fff6e0 0 52px,transparent 53px),radial-gradient(circle at 210px 126px,#fff6e0 0 64px,transparent 65px),radial-gradient(circle at 600px 140px,#fff6e0 0 44px,transparent 45px)' },
+      { top: 300, h: 220, size: '1400px 220px', op: 0.28, anim: 'cloudB 84s linear infinite', img: 'radial-gradient(circle at 320px 130px,#fff 0 40px,transparent 41px),radial-gradient(circle at 1000px 112px,#fff 0 52px,transparent 53px)' },
+      { top: 0, h: 1080, size: '520px 400px', op: 0.3, anim: 'cloudC 96s linear infinite', img: 'radial-gradient(circle at 120px 340px,#FFF1C9 0 4px,transparent 5px),radial-gradient(circle at 400px 250px,#FFE9B0 0 3px,transparent 4px),radial-gradient(circle at 260px 380px,#FFF1C9 0 5px,transparent 6px)' }
+    ]
+  },
+  ghost: {
+    label: 'GHOST HOUSE', swatch: 'linear-gradient(#2a1440,#5b21b6 60%,#160a24 60%)',
+    sky: 'linear-gradient(#120720 0%,#2a1440 52%,#5b21b6 100%)',
+    panel: '#1c0f2e', panel2: '#2f1a4a', muted: '#d0b6f5', text: '#f3e9ff',
+    accent: '#C084FC', accentInk: '#1c0f2e', titleShadow: '#6D28D9', subInk: '#e6d4ff',
+    ground: '#160a24', ground2: '#0b0412', groundEdge: '#000000',
+    good: '#34D399', bad: '#FB7185', alt: '#3d2260', hi: '#3a1f5c',
+    card: '#fbf6ff', cardInk: '#1c0f2e', taskBg: '#F3E6FF', taskInk: '#6D28D9', defBg: '#EFE7FF', defInk: '#3b1d63',
+    deco: [
+      { top: 120, h: 300, size: '900px 300px', op: 0.5, anim: 'cloudA 40s linear infinite', img: 'radial-gradient(circle at 150px 150px,#e9d5ff 0 54px,transparent 55px),radial-gradient(circle at 150px 205px,#e9d5ff 0 34px,transparent 35px),radial-gradient(circle at 560px 130px,#e9d5ff 0 40px,transparent 41px)' },
+      { top: 380, h: 300, size: '1250px 300px', op: 0.3, anim: 'cloudB 70s linear infinite', img: 'radial-gradient(circle at 340px 150px,#ddd6fe 0 44px,transparent 45px),radial-gradient(circle at 340px 195px,#ddd6fe 0 28px,transparent 29px),radial-gradient(circle at 980px 120px,#ddd6fe 0 36px,transparent 37px)' },
+      { top: 0, h: 1080, size: '480px 400px', op: 0.55, anim: 'emberRise 20s linear infinite', img: 'radial-gradient(circle at 80px 300px,#C084FC 0 4px,transparent 5px),radial-gradient(circle at 300px 140px,#A78BFA 0 3px,transparent 4px),radial-gradient(circle at 420px 330px,#E9D5FF 0 5px,transparent 6px)' }
+    ]
+  }
+,
+  castle: {
+    label: 'LAVA CASTLE', swatch: 'linear-gradient(#5b0f0f,#c2410c 60%,#3f0f0f 60%)',
+    sky: 'linear-gradient(#1b0505 0%,#5b0f0f 52%,#c2410c 100%)',
+    panel: '#2a0f12', panel2: '#45161b', muted: '#f3b9a0', text: '#ffe9df',
+    accent: '#FFB020', accentInk: '#2a0f12', titleShadow: '#7c2d12', subInk: '#ffe0cc',
+    ground: '#3f0f0f', ground2: '#170303', groundEdge: '#000000',
+    good: '#22C55E', bad: '#EF4444', alt: '#5a2020', hi: '#5c1c22',
+    card: '#fff6ef', cardInk: '#2a0f12', taskBg: '#FFE9C7', taskInk: '#9a3412', defBg: '#FFF1E6', defInk: '#5b2210',
+    deco: [
+      { top: 0, h: 1080, size: '320px 400px', op: 0.85, anim: 'emberRise 11s linear infinite', img: 'radial-gradient(circle at 50px 300px,#FFB020 0 5px,transparent 6px),radial-gradient(circle at 180px 120px,#FF6B00 0 4px,transparent 5px),radial-gradient(circle at 270px 340px,#FFD166 0 6px,transparent 7px)' },
+      { top: 0, h: 1080, size: '460px 400px', op: 0.55, anim: 'emberRise 18s linear infinite', img: 'radial-gradient(circle at 90px 200px,#FF8A3D 0 7px,transparent 8px),radial-gradient(circle at 340px 60px,#FFB020 0 5px,transparent 6px),radial-gradient(circle at 420px 300px,#FF5722 0 6px,transparent 7px)' },
+      { top: 0, h: 1080, size: '620px 400px', op: 0.35, anim: 'emberRise 30s linear infinite', img: 'radial-gradient(circle at 260px 240px,#FFD166 0 9px,transparent 10px),radial-gradient(circle at 540px 100px,#FF7043 0 8px,transparent 9px)' }
+    ]
+  },
+  ocean: {"label":"UNDERWATER","swatch":"linear-gradient(#0ea5e9,#0369a1 60%,#F2D59B 60%)","sky":"linear-gradient(#38bdf8 0%,#0284c7 50%,#075985 100%)","panel":"#06283d","panel2":"#0b3b5a","muted":"#9fd8f5","text":"#e6f7ff","accent":"#FFD23F","accentInk":"#06283d","titleShadow":"#075985","subInk":"#e0f4ff","ground":"#F2D59B","ground2":"#D9B46A","groundEdge":"#7a5a1c","good":"#14B8A6","bad":"#F43F5E","alt":"#12507a","hi":"#0e4466","card":"#f5fcff","cardInk":"#06283d","taskBg":"#FFF6D6","taskInk":"#0b5a86","defBg":"#E6F6FF","defInk":"#063a5a","deco":[{"top":0,"h":1080,"size":"340px 400px","op":0.7,"anim":"emberRise 12s linear infinite","img":"radial-gradient(circle at 60px 300px,rgba(255,255,255,.55) 0 8px,transparent 9px),radial-gradient(circle at 210px 120px,rgba(255,255,255,.45) 0 5px,transparent 6px),radial-gradient(circle at 300px 360px,rgba(255,255,255,.6) 0 11px,transparent 12px)"},{"top":0,"h":1080,"size":"520px 400px","op":0.45,"anim":"emberRise 20s linear infinite","img":"radial-gradient(circle at 120px 200px,rgba(255,255,255,.5) 0 14px,transparent 15px),radial-gradient(circle at 420px 60px,rgba(255,255,255,.45) 0 7px,transparent 8px)"},{"top":120,"h":260,"size":"1300px 260px","op":0.18,"anim":"cloudB 90s linear infinite","img":"radial-gradient(ellipse 260px 40px at 300px 130px,#fff 0 99%,transparent 100%),radial-gradient(ellipse 200px 30px at 950px 90px,#fff 0 99%,transparent 100%)"}]},
+  jungle: {"label":"JUNGLE","swatch":"linear-gradient(#86efac,#15803d 60%,#5b3a1a 60%)","sky":"linear-gradient(#bbf7d0 0%,#4ade80 45%,#166534 100%)","panel":"#0f2a14","panel2":"#1a4221","muted":"#b5e8b0","text":"#eefbe9","accent":"#FACC15","accentInk":"#0f2a14","titleShadow":"#14532d","subInk":"#0b3014","ground":"#6b4423","ground2":"#4a2e15","groundEdge":"#1f1206","good":"#22C55E","bad":"#EF4444","alt":"#2b5a31","hi":"#1f4d26","card":"#fbfff6","cardInk":"#0f2a14","taskBg":"#FEF9C3","taskInk":"#166534","defBg":"#ECFCE5","defInk":"#14361a","deco":[{"top":0,"h":1080,"size":"360px 400px","op":0.85,"anim":"fallDown 13s linear infinite","img":"radial-gradient(ellipse 14px 7px at 60px 80px,#15803d 0 99%,transparent 100%),radial-gradient(ellipse 12px 6px at 250px 240px,#65a30d 0 99%,transparent 100%),radial-gradient(ellipse 10px 5px at 160px 350px,#166534 0 99%,transparent 100%)"},{"top":0,"h":1080,"size":"520px 400px","op":0.5,"anim":"fallDown 21s linear infinite","img":"radial-gradient(ellipse 18px 9px at 100px 160px,#4d7c0f 0 99%,transparent 100%),radial-gradient(ellipse 16px 8px at 420px 40px,#15803d 0 99%,transparent 100%)"},{"top":0,"h":1080,"size":"640px 400px","op":0.55,"anim":"cloudC 60s linear infinite","img":"radial-gradient(circle at 200px 220px,#fef08a 0 4px,transparent 5px),radial-gradient(circle at 520px 90px,#fde047 0 3px,transparent 4px)"}]},
+  space: {"label":"SPACE","swatch":"linear-gradient(#0b0620,#1e1b4b 60%,#6b7280 60%)","sky":"radial-gradient(ellipse at 70% 30%,#312e81 0%,#1e1b4b 35%,#05030f 100%)","panel":"#0d0a24","panel2":"#1c1740","muted":"#b4b0ec","text":"#eeeaff","accent":"#F472B6","accentInk":"#1a0718","titleShadow":"#4338ca","subInk":"#e0dcff","ground":"#6b7280","ground2":"#4b5563","groundEdge":"#1f2937","good":"#34D399","bad":"#FB7185","alt":"#2e2766","hi":"#29225a","card":"#f8f7ff","cardInk":"#0d0a24","taskBg":"#FCE7F3","taskInk":"#9d174d","defBg":"#EEF0FF","defInk":"#1e1b4b","deco":[{"top":0,"h":1080,"size":"300px 300px","op":0.95,"anim":"cloudA 120s linear infinite","img":"radial-gradient(circle at 30px 40px,#fff 0 2px,transparent 3px),radial-gradient(circle at 140px 190px,#fff 0 1px,transparent 2px),radial-gradient(circle at 250px 90px,#c7d2fe 0 2px,transparent 3px),radial-gradient(circle at 90px 270px,#fff 0 1px,transparent 2px)"},{"top":0,"h":1080,"size":"470px 420px","op":0.7,"anim":"cloudB 200s linear infinite","img":"radial-gradient(circle at 80px 120px,#fbcfe8 0 3px,transparent 4px),radial-gradient(circle at 360px 310px,#fff 0 2px,transparent 3px),radial-gradient(circle at 240px 40px,#a5b4fc 0 2px,transparent 3px)"},{"top":90,"h":300,"size":"1900px 300px","op":0.9,"anim":"cloudC 160s linear infinite","img":"radial-gradient(circle at 1500px 150px,#f59e0b 0 70px,#b45309 70px 76px,transparent 77px),radial-gradient(ellipse 130px 16px at 1500px 150px,transparent 0 60%,#fcd34d 61% 70%,transparent 71%)"}]},
+  candy: {"label":"CANDY LAND","swatch":"linear-gradient(#fbcfe8,#f9a8d4 60%,#a78bfa 60%)","sky":"linear-gradient(#fdf2f8 0%,#fbcfe8 50%,#f9a8d4 100%)","panel":"#4a1340","panel2":"#6b1f5c","muted":"#fbd0ec","text":"#fff0fa","accent":"#7DD3FC","accentInk":"#3b0a33","titleShadow":"#BE185D","subInk":"#6b1147","ground":"#a78bfa","ground2":"#8b5cf6","groundEdge":"#4c1d95","good":"#10B981","bad":"#E11D48","alt":"#7c2d6c","hi":"#6a1f5b","card":"#ffffff","cardInk":"#4a1340","taskBg":"#E0F2FE","taskInk":"#9d174d","defBg":"#FDF2F8","defInk":"#5b1348","deco":[{"top":0,"h":1080,"size":"280px 360px","op":0.9,"anim":"fallDown 10s linear infinite","img":"radial-gradient(ellipse 4px 11px at 40px 60px,#f43f5e 0 99%,transparent 100%),radial-gradient(ellipse 11px 4px at 170px 200px,#38bdf8 0 99%,transparent 100%),radial-gradient(ellipse 4px 11px at 240px 320px,#facc15 0 99%,transparent 100%),radial-gradient(ellipse 11px 4px at 90px 300px,#34d399 0 99%,transparent 100%)"},{"top":60,"h":220,"size":"1100px 220px","op":0.85,"anim":"cloudA 58s linear infinite","img":"radial-gradient(circle at 120px 120px,#fff 0 46px,transparent 47px),radial-gradient(circle at 180px 96px,#fff 0 58px,transparent 59px),radial-gradient(circle at 246px 122px,#fff 0 42px,transparent 43px),radial-gradient(circle at 700px 110px,#fde2f3 0 44px,transparent 45px),radial-gradient(circle at 760px 92px,#fde2f3 0 54px,transparent 55px)"},{"top":0,"h":1080,"size":"460px 400px","op":0.6,"anim":"emberRise 24s linear infinite","img":"radial-gradient(circle at 120px 300px,#fff 0 6px,transparent 7px),radial-gradient(circle at 380px 120px,#fef9c3 0 5px,transparent 6px)"}]},
+  neon: {"label":"NEON ARCADE","swatch":"linear-gradient(#0f0524,#7e22ce 60%,#06b6d4 60%)","sky":"linear-gradient(#07010f 0%,#1e0638 55%,#4c1d95 100%)","panel":"#10041f","panel2":"#220a3d","muted":"#e0b3ff","text":"#fbeaff","accent":"#22F5C8","accentInk":"#04241d","titleShadow":"#db2777","subInk":"#f5d0fe","ground":"#0b0217","ground2":"#22d3ee","groundEdge":"#f0abfc","good":"#22C55E","bad":"#F43F5E","alt":"#3b1466","hi":"#2d0f52","card":"#fdf8ff","cardInk":"#10041f","taskBg":"#DCFCF3","taskInk":"#86198f","defBg":"#F5EDFF","defInk":"#2e0b52","deco":[{"top":620,"h":380,"size":"120px 60px","op":0.45,"anim":"cloudA 30s linear infinite","img":"linear-gradient(90deg,#f0abfc 0 2px,transparent 2px),linear-gradient(0deg,#22d3ee 0 2px,transparent 2px)"},{"top":0,"h":600,"size":"360px 320px","op":0.9,"anim":"cloudB 140s linear infinite","img":"radial-gradient(circle at 40px 50px,#fff 0 2px,transparent 3px),radial-gradient(circle at 200px 180px,#f0abfc 0 2px,transparent 3px),radial-gradient(circle at 300px 90px,#67e8f9 0 2px,transparent 3px),radial-gradient(circle at 120px 260px,#fff 0 1px,transparent 2px)"},{"top":70,"h":340,"size":"1900px 340px","op":0.85,"anim":"cloudC 200s linear infinite","img":"radial-gradient(circle at 1450px 190px,transparent 0 118px,#f472b6 118px 124px,transparent 125px),linear-gradient(transparent 0 0)"}]},
+  autumn: {"label":"AUTUMN WOODS","swatch":"linear-gradient(#fed7aa,#ea580c 60%,#78350f 60%)","sky":"linear-gradient(#fff1dc 0%,#fdba74 55%,#f97316 100%)","panel":"#3a1c0a","panel2":"#5a2c10","muted":"#fcd3a8","text":"#fff3e6","accent":"#FDE047","accentInk":"#3a1c0a","titleShadow":"#9a3412","subInk":"#4a1e06","ground":"#78350f","ground2":"#5a270a","groundEdge":"#2a1003","good":"#16A34A","bad":"#DC2626","alt":"#6d3413","hi":"#6a3010","card":"#fffaf2","cardInk":"#3a1c0a","taskBg":"#FEF3C7","taskInk":"#9a3412","defBg":"#FFF4E6","defInk":"#4a1e06","deco":[{"top":0,"h":1080,"size":"340px 400px","op":0.9,"anim":"fallDown 12s linear infinite","img":"radial-gradient(ellipse 13px 8px at 50px 70px,#dc2626 0 99%,transparent 100%),radial-gradient(ellipse 12px 7px at 230px 220px,#f59e0b 0 99%,transparent 100%),radial-gradient(ellipse 10px 6px at 150px 340px,#b45309 0 99%,transparent 100%)"},{"top":0,"h":1080,"size":"500px 400px","op":0.6,"anim":"fallDown 19s linear infinite","img":"radial-gradient(ellipse 17px 10px at 120px 150px,#ea580c 0 99%,transparent 100%),radial-gradient(ellipse 15px 9px at 400px 50px,#facc15 0 99%,transparent 100%)"},{"top":80,"h":220,"size":"1200px 220px","op":0.45,"anim":"cloudB 80s linear infinite","img":"radial-gradient(circle at 200px 120px,#fff7ed 0 44px,transparent 45px),radial-gradient(circle at 262px 98px,#fff7ed 0 56px,transparent 57px),radial-gradient(circle at 900px 110px,#fff7ed 0 40px,transparent 41px)"}]}
+};
+
+const TEAM_COLORS = ['#E52521', '#049CD8', '#43B047', '#FBD000'];
+const SUBJECTS = ['I', 'You', 'He', 'She', 'It', 'We', 'They', 'My brother', 'My best friend', 'The teacher', 'Nobody', 'Everyone', 'My parents', 'Somebody', 'This class', 'Our neighbour'];
+const CONTEXTS = [
+  'At the airport', 'In a job interview', 'At the doctor\u2019s', 'In a supermarket', 'During a football match',
+  'At a birthday party', 'In class, talking to your teacher', 'At a restaurant', 'On the phone with a friend',
+  'At the train station', 'In a hotel reception', 'At the gym', 'On holiday abroad', 'Talking to your boss',
+  'At home with your family', 'In a bank', 'Shopping for clothes', 'At the cinema', 'Planning a weekend trip',
+  'Moving into a new flat', 'In a museum', 'At a music festival', 'Waiting at the bus stop', 'In a driving lesson',
+  'At a friend’s sleepover', 'On a school trip', 'During a thunderstorm', 'At a job fair', 'In a hospital waiting room',
+  'At a wedding', 'On a camping trip', 'During a power cut', 'At a video game tournament', 'Volunteering at an animal shelter',
+  'At the hairdresser’s', 'In a lift that gets stuck', 'On a first date', 'At the beach', 'During a school play'
+];
+
+class Component extends DCLogic {
+  state = {
+    screen: 'menu', pool: [], nameInput: '', students: [],
+    levels: ['A1', 'A2'], rounds: 10, sound: true, randomOrder: false,
+    sfxVol: 80, audioOpen: false,
+    theme: 'overworld', wagerOn: true, multOn: true, aidsPer: 3, penalty: 5,
+    teamsOn: false, teamCount: 2, subjOn: true, ctxOn: true, subject: null, context: null,
+    round: 1, order: [], turn: 0, currentIdx: null, passedTo: null,
+    segments: [], picks: [], rot: 0, spinning: false, card: null, tense: null,
+    prizeInput: '',
+    mult: 1, wager: 0, defShown: false, esShown: false, exShown: false, startShown: false,
+    conjShown: false, teacherHelp: false, aidGain: false, bonusSeg: -1, endPhase: 'board',
+    time: 30, running: false, bump: null, pop: null, scale: 1, joinInput: ''
+  };
+
+  _fit = () => {
+    const w = document.documentElement.clientWidth || window.innerWidth;
+    const h = document.documentElement.clientHeight || window.innerHeight;
+    if (!w || !h) return false;
+    const scale = Math.min(w / 1920, h / 1080);
+    if (scale > 0 && Math.abs(scale - this.state.scale) > 0.0005) this.setState({ scale });
+    return true;
+  };
+
+  componentDidMount() {
+    try {
+      const a = JSON.parse(localStorage.getItem('pvr-audio') || 'null');
+      if (a) this.setState({ sfxVol: a.sfxVol != null ? a.sfxVol : 80, sound: a.sound !== false });
+    } catch (e) {}
+    import('./phrasal-data.js').then(m => {
+      this._ctxGroups = m.CONTEXT_GROUPS || {}; this._ctxGeneral = m.GENERAL_CONTEXTS || [];
+      this.setState({ pool: m.VERBS }, () => this.buildSegments());
+    });
+    this._fit();
+    window.addEventListener('resize', this._fit);
+    if (window.ResizeObserver) {
+      this._ro = new ResizeObserver(this._fit);
+      this._ro.observe(document.documentElement);
+      this._ro.observe(document.body);
+    }
+    const t0 = Date.now();
+    this._fitPoll = setInterval(() => {
+      if (this._fit() || Date.now() - t0 > 2500) clearInterval(this._fitPoll);
+    }, 50);
+  }
+  saveAudio() {
+    const s = this.state;
+    try { localStorage.setItem('pvr-audio', JSON.stringify({ sfxVol: s.sfxVol, sound: s.sound })); } catch (e) {}
+    this.applyVolumes();
+  }
+  toggleSfx = () => this.setState(s => ({ sound: !s.sound }), () => { this.saveAudio(); this.sfx('click'); });
+  componentWillUnmount() {
+    if (this._ac) this._ac.close();
+    clearInterval(this._t); clearTimeout(this._sp); clearTimeout(this._pop); clearInterval(this._fitPoll); clearTimeout(this._end1); clearTimeout(this._end2);
+    window.removeEventListener('resize', this._fit);
+    if (this._ro) this._ro.disconnect();
+  }
+
+  // ---------- sound ----------
+  ctx() {
+    if (!this._ac) {
+      const C = window.AudioContext || window.webkitAudioContext; if (!C) return null;
+      this._ac = new C();
+      this._sfxBus = this._ac.createGain(); this._sfxBus.connect(this._ac.destination);
+            this.applyVolumes();
+    }
+    if (this._ac.state === 'suspended') this._ac.resume();
+    return this._ac;
+  }
+  ac() { return this.state.sound ? this.ctx() : null; }
+  applyVolumes() {
+    if (!this._ac) return;
+    const s = this.state, now = this._ac.currentTime;
+    this._sfxBus.gain.setTargetAtTime(Math.pow(s.sfxVol / 100, 1.6) * 1.4, now, 0.03);
+  }
+  beep(freq, dur, type, vol, delay) {
+    const ac = this.ac(); if (!ac) return;
+    const t = ac.currentTime + (delay || 0);
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type || 'square'; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(vol == null ? 0.16 : vol, t);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(this._sfxBus); o.start(t); o.stop(t + dur + 0.02);
+  }
+  sfx(kind) {
+    if (kind === 'coin') { this.beep(988, 0.08, 'square', 0.18, 0); this.beep(1319, 0.42, 'square', 0.18, 0.08); }
+    else if (kind === 'wrong') { this.beep(196, 0.18, 'sawtooth', 0.16, 0); this.beep(147, 0.34, 'sawtooth', 0.16, 0.16); }
+    else if (kind === 'pass') { [523, 659, 784].forEach((f, i) => this.beep(f, 0.1, 'triangle', 0.14, i * 0.07)); }
+    else if (kind === 'click') { this.beep(660, 0.06, 'square', 0.1, 0); }
+    else if (kind === 'aid') { [784, 988, 1175].forEach((f, i) => this.beep(f, 0.09, 'triangle', 0.13, i * 0.06)); }
+    else if (kind === 'time') { [660, 880].forEach((f, i) => this.beep(f, 0.12, 'sine', 0.16, i * 0.1)); }
+    else if (kind === 'jackpot') { [1047, 1319, 1568, 2093].forEach((f, i) => this.beep(f, 0.13, 'square', 0.15, i * 0.09)); }
+    else if (kind === 'stop') { this.beep(880, 0.09, 'square', 0.18, 0); this.beep(1175, 0.09, 'square', 0.18, 0.1); this.beep(1568, 0.3, 'square', 0.18, 0.2); }
+    else if (kind === 'over') { [659, 587, 523, 392].forEach((f, i) => this.beep(f, 0.3, 'triangle', 0.18, i * 0.22)); }
+    else if (kind === 'spin') { for (let i = 0; i < 34; i++) this.beep(520 + (i % 3) * 90, 0.04, 'square', 0.07, Math.pow(i / 34, 2.1) * 4.4); }
+  }
+
+  // ---------- tenses ----------
+  tensePool(level) {
+    const A2 = [
+      { n: 'PRESENT SIMPLE', h: 'I / she usually …' },
+      { n: 'PRESENT CONTINUOUS', h: 'I am / she is … -ing' },
+      { n: 'PAST SIMPLE', h: 'Yesterday I …' },
+      { n: 'FUTURE: GOING TO', h: 'I am going to …' },
+      { n: 'CAN / CAN\u2019T', h: 'I can … / I can\u2019t …' }
+    ];
+    const B1 = A2.concat([
+      { n: 'PRESENT PERFECT', h: 'I have already …' },
+      { n: 'FUTURE: WILL', h: 'I think I will …' },
+      { n: 'PAST CONTINUOUS', h: 'I was … -ing when …' },
+      { n: 'SHOULD / MUST', h: 'You should … / You must …' },
+      { n: 'NEGATIVE FORM', h: 'I don\u2019t / didn\u2019t …' }
+    ]);
+    const B2 = B1.concat([
+      { n: 'PRESENT PERFECT CONT.', h: 'I have been … -ing' },
+      { n: 'PAST PERFECT', h: 'I had … before …' },
+      { n: 'FIRST CONDITIONAL', h: 'If I …, I will …' },
+      { n: 'SECOND CONDITIONAL', h: 'If I …, I would …' },
+      { n: 'PASSIVE VOICE', h: 'It was … by …' },
+      { n: 'QUESTION FORM', h: 'Do you …? / Did you …?' }
+    ]);
+    const C1 = B2.concat([
+      { n: 'THIRD CONDITIONAL', h: 'If I had …, I would have …' },
+      { n: 'FUTURE PERFECT', h: 'By 2030 I will have …' },
+      { n: 'PAST PERFECT CONT.', h: 'I had been … -ing' },
+      { n: 'REPORTED SPEECH', h: 'She said that she …' },
+      { n: 'MIXED CONDITIONAL', h: 'If I had …, I would be …' }
+    ]);
+    return level === 'A2' ? A2 : level === 'B1' ? B1 : level === 'B2' ? B2 : C1;
+  }
+  pickSubject() { return this.state.subjOn ? SUBJECTS[Math.floor(Math.random() * SUBJECTS.length)] : null; }
+  pickContext(card) {
+    if (!this.state.ctxOn) return null;
+    const G = this._ctxGroups || {};
+    let list = [];
+    (card && card.ctx || []).forEach(k => { list = list.concat(G[k] || []); });
+    if (!list.length) list = CONTEXTS.concat(this._ctxGeneral || []);
+    const cur = this.state.context;
+    const opts = list.length > 1 ? list.filter(c => c !== cur) : list;
+    return opts[Math.floor(Math.random() * opts.length)];
+  }
+  teamOf(p) { return Math.min(p.team || 0, this.state.teamCount - 1); }
+  pickTense(level) {
+    if (level === 'A1') return null;
+    const p = this.tensePool(level);
+    return p[Math.floor(Math.random() * p.length)];
+  }
+  baseTime(level) { return level === 'A1' ? 60 : level === 'A2' ? 40 : 30; }
+  // catch-up balance: gap > 75% of the leader's score → leader capped, trailers boosted
+  standing(i) {
+    const s = this.state; if (i == null || !s.students[i]) return 'normal';
+    const val = j => s.teamsOn ? s.students.filter(p => p.team === s.students[j].team).reduce((a, p) => a + p.score, 0) : s.students[j].score;
+    const vals = s.students.map((p, j) => val(j));
+    const top = Math.max.apply(null, vals), low = Math.min.apply(null, vals);
+    if (top <= 0) return 'normal';
+    const far = v => top - v > top * 0.75;
+    if (vals[i] === top && far(low)) return 'leader';
+    if (far(vals[i])) return 'trailing';
+    return 'normal';
+  }
+  rollMult(i) {
+    if (!this.state.multOn) return 1;
+    const st = this.standing(i), r = Math.random();
+    if (st === 'leader') return 1;
+    if (st === 'trailing') return r < 0.35 ? 1 : r < 0.55 ? 2 : r < 0.7 ? 3 : r < 0.87 ? 4 : 5;
+    return r < 0.6 ? 1 : r < 0.85 ? 2 : 3;
+  }
+
+  // ---------- data ----------
+  filtered() { const L = this.state.levels; return this.state.pool.filter(v => L.indexOf(v.level) >= 0); }
+  buildSegments() {
+    const pool = this.filtered(); if (!pool.length) return;
+    const n = 12, picks = [], used = {};
+    const seen = this._seen || (this._seen = {});
+    const fresh = pool.filter(v => !seen[v.pv]);
+    const src = fresh.length >= n ? fresh : (this._seen = {}, pool);
+    while (picks.length < Math.min(n, src.length)) {
+      const v = src[Math.floor(Math.random() * src.length)];
+      if (!used[v.pv]) { used[v.pv] = 1; picks.push(v); }
+    }
+    const bonusSeg = Math.floor(Math.random() * picks.length);
+    this.setState({ segments: this.geom(picks, bonusSeg), picks, bonusSeg });
+  }
+  geom(picks, bonusSeg) {
+    const cx = 310, cy = 310, r = 300, n = picks.length, step = 360 / n;
+    return picks.map((v, i) => {
+      const a0 = (i * step - 90) * Math.PI / 180, a1 = ((i + 1) * step - 90) * Math.PI / 180;
+      const x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
+      const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+      const mid = i * step + step / 2 - 90, mr = mid * Math.PI / 180;
+      const tx = cx + r * 0.66 * Math.cos(mr), ty = cy + r * 0.66 * Math.sin(mr);
+      const flip = mid > 90 || mid < -90;
+      const label = v.pv.length > 15 ? v.pv.slice(0, 14) + '…' : v.pv;
+      return {
+        d: 'M' + cx + ' ' + cy + ' L' + x0.toFixed(1) + ' ' + y0.toFixed(1) + ' A' + r + ' ' + r + ' 0 0 1 ' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' Z',
+        fill: v.color, label: label,
+        lx: (tx / 620 * 100).toFixed(2), ly: (ty / 620 * 100).toFixed(2),
+        lrot: (flip ? mid + 180 : mid).toFixed(1),
+        bonus: i === bonusSeg,
+        bx: ((cx + r * 0.33 * Math.cos(mr)) / 620 * 100).toFixed(2),
+        by: ((cy + r * 0.33 * Math.sin(mr)) / 620 * 100).toFixed(2)
+      };
+    });
+  }
+
+  // ---------- menu ----------
+  smallestTeam(list) {
+    const counts = Array.from({ length: this.state.teamCount }, () => 0);
+    list.forEach(p => { counts[Math.min(p.team || 0, counts.length - 1)]++; });
+    let best = 0;
+    for (let i = 1; i < counts.length; i++) if (counts[i] < counts[best]) best = i;
+    return best;
+  }
+  addStudent = () => {
+    const n = this.state.nameInput.trim();
+    if (!n || this.state.students.length >= 24) return;
+    this.sfx('click');
+    this.setState(s => ({ students: s.students.concat([{ name: n, score: 0, aids: s.aidsPer, team: this.smallestTeam(s.students) }]), nameInput: '' }));
+  };
+  joinStudent = () => {
+    const n = this.state.joinInput.trim();
+    if (!n || this.state.students.length >= 24) return;
+    this.sfx('coin');
+    this.setState(s => {
+      const i = s.students.length;
+      const order = s.order.slice();
+      order.splice(s.turn + 1, 0, i);
+      return {
+        students: s.students.concat([{ name: n, score: 0, aids: s.aidsPer, team: this.smallestTeam(s.students) }]),
+        order, joinInput: ''
+      };
+    });
+  };
+  toggleLevel(id) {
+    this.sfx('click');
+    this.setState(s => ({ levels: s.levels.indexOf(id) >= 0 ? s.levels.filter(x => x !== id) : s.levels.concat([id]) }), () => this.buildSegments());
+  }
+  roundsFrom(e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    const p = (e.clientX - r.left) / r.width;
+    const v = Math.max(1, Math.min(100, Math.ceil(p * 100)));
+    if (v !== this.state.rounds) { this.sfx('click'); this.setState({ rounds: v }); }
+  }
+  startGame = () => {
+    const s = this.state;
+    if (s.students.length < 2 || !s.levels.length) return;
+    let order = s.students.map((_, i) => i);
+    if (s.randomOrder) for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = order[i]; order[i] = order[j]; order[j] = t; }
+    if (s.teamsOn) {
+      const buckets = Array.from({ length: s.teamCount }, () => []);
+      order.forEach(i => buckets[Math.min(s.students[i].team || 0, s.teamCount - 1)].push(i));
+      const woven = [];
+      for (let k = 0; buckets.some(b => b.length > k); k++) buckets.forEach(b => { if (b[k] != null) woven.push(b[k]); });
+      order = woven;
+    }
+    this._seen = {};
+    this.sfx('stop');
+    this.setState({
+      screen: 'game', order, turn: 0, round: 1, currentIdx: order[0], card: null, tense: null, subject: null, context: null,
+      passedTo: null, wager: 0, mult: 1, pop: null, bump: null,
+      students: s.students.map(p => ({ name: p.name, score: 0, aids: s.aidsPer, team: Math.min(p.team || 0, s.teamCount - 1) }))
+    }, () => this.buildSegments());
+  };
+
+  // ---------- game ----------
+  activeIdx() { const s = this.state; return s.passedTo != null ? s.passedTo : s.currentIdx; }
+
+  spin = () => {
+    if (this.state.spinning || this.state.card || !this.state.segments.length) return;
+    this.sfx('spin');
+    const n = this.state.segments.length, k = Math.floor(Math.random() * n), step = 360 / n;
+    const target = -(k * step) - step / 2;
+    const cur = this.state.rot;
+    const delta = ((target - cur) % 360 + 360) % 360;
+    this.setState({ spinning: true, rot: cur + 360 * 6 + delta });
+    clearTimeout(this._sp);
+    this._sp = setTimeout(() => {
+      const card = this.state.picks[k];
+      if (this._seen) this._seen[card.pv] = 1;
+      const mult = this.rollMult(this.activeIdx());
+      this.sfx('stop');
+      if (mult > 1) setTimeout(() => this.sfx('jackpot'), 420);
+      const idx = this.activeIdx();
+      const lucky = k === this.state.bonusSeg && this.state.aidsPer > 0;
+      this.setState(st => ({
+        students: lucky ? st.students.map((p, i) => i === idx ? { name: p.name, score: p.score, aids: p.aids + 1, team: p.team } : p) : st.students,
+        aidGain: lucky,
+        spinning: false, card, tense: this.pickTense(card.level), subject: this.pickSubject(), context: this.pickContext(card), mult, wager: 0,
+        defShown: false, esShown: false, exShown: false, startShown: false, conjShown: false, teacherHelp: false, time: this.baseTime(card.level), running: false
+      }), () => { if (lucky) setTimeout(() => this.sfx('aid'), 220); });
+    }, 4700);
+  };
+  startTimer() {
+    clearInterval(this._t);
+    this._t = setInterval(() => {
+      this.setState(s => {
+        if (!s.running) return null;
+        const t = s.time - 1;
+        if (t <= 0) { clearInterval(this._t); this.sfx('wrong'); return { time: 0, running: false }; }
+        if (t <= 5) this.beep(440, 0.07, 'square', 0.12, 0);
+        return { time: t };
+      });
+    }, 1000);
+  }
+  addTime = () => {
+    if (!this.state.card) return;
+    this.sfx('time');
+    this.setState(s => ({ time: Math.min(s.time + this.baseTime(s.card.level) / 2, 300) }), () => { if (this.state.running) this.startTimer(); });
+  };
+  toggleTimer = () => {
+    const s = this.state;
+    if (!s.card) return;
+    if (s.running) { clearInterval(this._t); this.sfx('click'); this.setState({ running: false }); return; }
+    if (s.time <= 0) return;
+    this.sfx('click');
+    this.setState({ running: true }, () => this.startTimer());
+  };
+  showPop(text, color) {
+    clearTimeout(this._pop);
+    this.setState({ pop: { text, color } });
+    this._pop = setTimeout(() => this.setState({ pop: null }), 1150);
+  }
+  award(correct) {
+    const s = this.state, idx = this.activeIdx();
+    const base = (this.props.pointsPerCorrect != null ? this.props.pointsPerCorrect : 10) * s.mult;
+    const penalty = s.penalty * s.mult;
+    const delta = correct ? base + s.wager : -(penalty + s.wager);
+    // shared penalty: if the turn was passed, a wrong answer also costs the skipper
+    const skipper = (s.passedTo != null && s.currentIdx !== idx) ? s.currentIdx : null;
+    // passed turn: correct → receiver 75%, skipper 25%; wrong → both take the full penalty
+    let recvDelta = delta, skipperDelta = 0;
+    if (skipper != null) {
+      if (correct) { recvDelta = Math.round(delta * 0.75); skipperDelta = delta - recvDelta; }
+      else skipperDelta = delta;
+    }
+    clearInterval(this._t);
+    this.sfx(correct ? 'coin' : 'wrong');
+    this.showPop((delta > 0 ? '+' : '') + delta, delta > 0 ? '#FBD000' : (delta < 0 ? '#E52521' : '#ffffff'));
+    this.setState(st => ({
+      students: st.students.map((p, i) => {
+        const d = i === idx ? recvDelta : (i === skipper ? skipperDelta : 0);
+        return d ? { name: p.name, score: p.score + d, aids: p.aids, team: p.team } : p;
+      }),
+      running: false, bump: delta > 0 ? idx : null
+    }), () => setTimeout(() => this.nextRound(), 1000));
+  }
+  markCorrect = () => this.award(true);
+  markWrong = () => this.award(false);
+  passTurn = () => {
+    if (this.state.passedTo != null) return;
+    const pool = this.state.students.map((_, i) => i).filter(i => i !== this.state.currentIdx);
+    if (!pool.length) return;
+    const to = pool[Math.floor(Math.random() * pool.length)];
+    this.sfx('pass');
+    this.setState(st => ({ passedTo: to, wager: 0, mult: this.standing(to) === 'leader' ? 1 : st.mult, time: this.baseTime(st.card && st.card.level), running: false }));
+  };
+  conjugate(pv) {
+    if (!pv) return [];
+    const IRREG = {
+      bear: ['bore', 'borne'], break: ['broke', 'broken'], bring: ['brought', 'brought'],
+      cast: ['cast', 'cast'], catch: ['caught', 'caught'], come: ['came', 'come'], cut: ['cut', 'cut'],
+      deal: ['dealt', 'dealt'], do: ['did', 'done'], drink: ['drank', 'drunk'], dwell: ['dwelt', 'dwelt'],
+      eat: ['ate', 'eaten'], fall: ['fell', 'fallen'], find: ['found', 'found'], get: ['got', 'got / gotten'],
+      give: ['gave', 'given'], go: ['went', 'gone'], grow: ['grew', 'grown'], hang: ['hung', 'hung'],
+      hold: ['held', 'held'], keep: ['kept', 'kept'], lay: ['laid', 'laid'], let: ['let', 'let'],
+      lie: ['lay', 'lain'], make: ['made', 'made'], pay: ['paid', 'paid'], put: ['put', 'put'],
+      run: ['ran', 'run'], see: ['saw', 'seen'], send: ['sent', 'sent'], set: ['set', 'set'],
+      show: ['showed', 'shown'], shut: ['shut', 'shut'], sit: ['sat', 'sat'], sleep: ['slept', 'slept'],
+      speak: ['spoke', 'spoken'], speed: ['sped', 'sped'], stand: ['stood', 'stood'], stick: ['stuck', 'stuck'],
+      take: ['took', 'taken'], tear: ['tore', 'torn'], throw: ['threw', 'thrown'], wake: ['woke', 'woken'],
+      wear: ['wore', 'worn'], wind: ['wound', 'wound'], write: ['wrote', 'written']
+    };
+    const DOUBLE = ['chip', 'drop', 'drum', 'fob', 'log', 'plug', 'shrug', 'stem', 'whip', 'wrap', 'slow'];
+    const clean = pv.replace(/\s*\([^)]*\)\s*/g, ' ').trim();
+    const parts = clean.split(' ');
+    const v = parts[0].toLowerCase(), rest = parts.slice(1).join(' ');
+    const tail = rest ? ' ' + rest : '';
+    let third;
+    if (v === 'do') third = 'does';
+    else if (v === 'go') third = 'goes';
+    else if (/(s|x|z|ch|sh)$/.test(v)) third = v + 'es';
+    else if (/[^aeiou]y$/.test(v)) third = v.slice(0, -1) + 'ies';
+    else third = v + 's';
+    let past, pp;
+    if (IRREG[v]) { past = IRREG[v][0]; pp = IRREG[v][1]; }
+    else {
+      let base;
+      if (/e$/.test(v)) base = v + 'd';
+      else if (/[^aeiou]y$/.test(v)) base = v.slice(0, -1) + 'ied';
+      else if (DOUBLE.indexOf(v) >= 0) base = v + v.slice(-1) + 'ed';
+      else base = v + 'ed';
+      past = base; pp = base;
+    }
+    return [
+      { label: 'PRESENT', form: v + tail + ' / ' + third + tail },
+      { label: 'PAST', form: past + tail },
+      { label: 'PAST PARTICIPLE', form: pp + tail }
+    ];
+  }
+  useAid(kind) {
+    const s = this.state, idx = this.activeIdx();
+    if (idx == null || !s.students[idx] || s.students[idx].aids <= 0) return;
+    this.sfx('aid');
+    const spend = st => ({ students: st.students.map((p, i) => i === idx ? { name: p.name, score: p.score, aids: p.aids - 1, team: p.team } : p) });
+    if (kind === 'time') this.setState(st => Object.assign(spend(st), { time: Math.min(st.time + this.baseTime(st.card.level) / 2, 300) }), () => { if (this.state.running) this.startTimer(); });
+    else if (kind === 'tense') this.setState(st => Object.assign(spend(st), { tense: this.pickTense(st.card.level), subject: this.pickSubject(), context: this.pickContext(st.card) }));
+    else if (kind === 'conj') this.setState(st => Object.assign(spend(st), { conjShown: true }));
+    else if (kind === 'teacher') { clearInterval(this._t); this.setState(st => Object.assign(spend(st), { teacherHelp: true, running: false })); }
+    else if (kind === 'swap') {
+      clearInterval(this._t);
+      this.setState(st => Object.assign(spend(st), { card: null, tense: null, subject: null, context: null, wager: 0, running: false, startShown: false, conjShown: false, teacherHelp: false }), () => { this.buildSegments(); this.spin(); });
+    }
+  }
+  nextRound() {
+    const s = this.state;
+    if (s.round >= s.rounds) { this.goPodium(); return; }
+    const turn = (s.turn + 1) % s.order.length;
+    this.setState({ round: s.round + 1, turn, currentIdx: s.order[turn], card: null, tense: null, subject: null, context: null, passedTo: null, wager: 0, mult: 1, bump: null, time: 30, running: false }, () => this.buildSegments());
+  }
+  stepRounds = (d) => {
+    const s = this.state;
+    const next = Math.max(Math.max(s.round, 1), Math.min(100, s.rounds + d));
+    if (next === s.rounds) return;
+    this.sfx('click');
+    this.showPop(next + ' ROUNDS', THEMES[s.theme].accent);
+    this.setState({ rounds: next });
+  };
+  goPodium() {
+    clearInterval(this._t); clearTimeout(this._end1); clearTimeout(this._end2);
+    this.sfx('over');
+    this.setState({ screen: 'podium', endPhase: 'board', card: null, running: false, bump: null, pop: null });
+    this._end1 = setTimeout(() => this.revealPrize(), 7000);
+  }
+  revealPrize = () => {
+    if (this.state.screen !== 'podium' || this.state.endPhase !== 'board') return;
+    clearTimeout(this._end1);
+    this.setState({ endPhase: 'fade' });
+    this._end2 = setTimeout(() => { this.setState({ endPhase: 'prize' }); this.sfx('coin'); }, 1600);
+  };
+  endMatch = () => this.goPodium();
+  quitGame = () => { clearInterval(this._t); clearTimeout(this._end1); clearTimeout(this._end2); this.setState({ screen: 'menu', endPhase: 'board', card: null, running: false, pop: null }); };
+  playAgain = () => { clearTimeout(this._end1); clearTimeout(this._end2); this._seen = {}; this.setState({ endPhase: 'board' }); this.startGame(); };
+
+  // ---------- view ----------
+  renderVals() {
+    const s = this.state, t = THEMES[s.theme] || THEMES.overworld;
+    const pts = this.props.pointsPerCorrect != null ? this.props.pointsPerCorrect : 10;
+    const counts = {}; s.pool.forEach(v => counts[v.level] = (counts[v.level] || 0) + 1);
+    const active = this.activeIdx();
+    const me = active != null ? s.students[active] : null;
+    const ranked = s.students.map((p, i) => ({ p, i })).sort((a, b) => b.p.score - a.p.score || a.i - b.i);
+    const medals = ['🥇', '🥈', '🥉'];
+    const teams = [];
+    if (s.teamsOn) {
+      for (let ti = 0; ti < s.teamCount; ti++) {
+        const mem = s.students.filter(p => Math.min(p.team || 0, s.teamCount - 1) === ti);
+        teams.push({
+          ti, name: 'TEAM ' + (ti + 1), color: TEAM_COLORS[ti],
+          score: mem.reduce((a, p) => a + p.score, 0),
+          members: mem.length ? mem.map(p => p.name).join(', ') : 'no players yet'
+        });
+      }
+      teams.sort((a, b) => b.score - a.score || a.ti - b.ti);
+    }
+    const podColors = [t.accent, '#C9D3DE', '#C87F3C'], podH = [180, 134, 102];
+    const aidsLeft = me ? me.aids : 0;
+    const wagerBase = pts * s.mult;
+
+    const isLeader = this.standing(active) === 'leader';
+    const wagerVals = [0, 5, 10, 20];
+    const wagerOpts = wagerVals.map(v => ({
+      label: v === 0 ? 'NO BET' : '+' + v, off: me ? (v > me.score || (isLeader && v > 10)) : true,
+      bg: s.wager === v ? t.accent : t.panel2, fg: s.wager === v ? t.accentInk : t.muted,
+      onClick: () => { this.sfx('click'); this.setState({ wager: v }); }
+    })).concat([{
+      label: 'ALL IN', off: !me || me.score <= 0 || (isLeader && me.score > 10),
+      bg: me && s.wager === me.score && me.score > 0 ? t.bad : t.panel2,
+      fg: me && s.wager === me.score && me.score > 0 ? '#fff' : t.muted,
+      onClick: () => { if (me && me.score > 0) { this.sfx('click'); this.setState({ wager: me.score }); } }
+    }]);
+
+    const aidDefs = [
+      { kind: 'time', icon: '⏱', short: '+' + (s.card ? this.baseTime(s.card.level) / 2 : 15) + ' SEC' },
+      { kind: 'tense', icon: '🎲', short: 'REROLL RULES' },
+      { kind: 'conj', icon: '📐', short: 'CONJUGATION' },
+      { kind: 'teacher', icon: '🙋', short: 'TEACHER HELP' },
+      { kind: 'swap', icon: '🔀', short: 'SWAP VERB' }
+    ];
+
+    return {
+      scale: s.scale, t: t, deco: t.deco,
+      isMenu: s.screen === 'menu', isGame: s.screen === 'game', isPodium: s.screen === 'podium',
+      popShown: !!s.pop, popText: s.pop ? s.pop.text : '', popColor: s.pop ? s.pop.color : '#fff',
+
+      levelChips: ['A1', 'A2', 'B1', 'B2', 'C1'].map(id => {
+        const on = s.levels.indexOf(id) >= 0;
+        return { id, count: counts[id] || 0, bg: on ? t.accent : t.panel2, fg: on ? t.accentInk : t.muted, onClick: () => this.toggleLevel(id) };
+      }),
+      selectAllLevels: () => { this.sfx('click'); this.setState({ levels: ['A1', 'A2', 'B1', 'B2', 'C1'] }, () => this.buildSegments()); },
+      clearLevels: () => { this.sfx('click'); this.setState({ levels: [] }); },
+
+      themeChips: Object.keys(THEMES).map(k => ({
+        label: THEMES[k].label, swatch: THEMES[k].swatch,
+        bg: s.theme === k ? t.accent : t.panel2, fg: s.theme === k ? t.accentInk : t.muted,
+        onClick: () => { this.sfx('click'); this.setState({ theme: k }); }
+      })),
+
+      rounds: s.rounds,
+      roundBlocks: Array.from({ length: 50 }, (_, i) => ({ bg: i < Math.ceil(s.rounds / 2) ? t.accent : 'rgba(255,255,255,.14)' })),
+      onRoundsDown: e => { this._drag = true; this.roundsFrom(e); },
+      onRoundsMove: e => { if (this._drag) this.roundsFrom(e); },
+      onRoundsUp: () => { this._drag = false; },
+
+      penaltyChips: [0, 5, 10, 15].map(n => ({
+        label: n === 0 ? 'NONE' : '-' + n, bg: s.penalty === n ? t.bad : t.panel2, fg: s.penalty === n ? '#fff' : t.muted,
+        onClick: () => { this.sfx('click'); this.setState({ penalty: n }); }
+      })),
+
+      teamChips: [0, 2, 3, 4].map(n => ({
+        label: n === 0 ? 'NO TEAMS' : n + ' TEAMS',
+        bg: (n === 0 ? !s.teamsOn : (s.teamsOn && s.teamCount === n)) ? TEAM_COLORS[1] : t.panel2,
+        fg: (n === 0 ? !s.teamsOn : (s.teamsOn && s.teamCount === n)) ? '#fff' : t.muted,
+        onClick: () => {
+          this.sfx('click');
+          if (n === 0) { this.setState({ teamsOn: false }); return; }
+          this.setState(st => ({
+            teamsOn: true, teamCount: n,
+            students: st.students.map((p, i) => ({ name: p.name, score: p.score, aids: p.aids, team: i % n }))
+          }));
+        }
+      })),
+
+      aidChips: [0, 2, 3, 5].map(n => ({
+        label: n === 0 ? 'NONE' : String(n), bg: s.aidsPer === n ? t.good : t.panel2, fg: s.aidsPer === n ? '#fff' : t.muted,
+        onClick: () => { this.sfx('click'); this.setState({ aidsPer: n }); }
+      })),
+      toggles: [
+        { icon: '🎯', label: 'WAGER COINS', state: s.wagerOn ? 'ON' : 'OFF', stateColor: s.wagerOn ? t.accent : t.muted, bg: s.wagerOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ wagerOn: !s.wagerOn }); } },
+        { icon: '✨', label: 'RANDOM MULTIPLIERS', state: s.multOn ? 'ON' : 'OFF', stateColor: s.multOn ? t.accent : t.muted, bg: s.multOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ multOn: !s.multOn }); } },
+        { icon: '🔊', label: 'SOUND EFFECTS', state: s.sound ? 'ON' : 'OFF', stateColor: s.sound ? t.accent : t.muted, bg: s.sound ? t.hi : t.panel2, onClick: () => this.setState({ sound: !s.sound }, () => this.saveAudio()) },
+        { icon: '👤', label: 'RANDOM SUBJECT', state: s.subjOn ? 'ON' : 'OFF', stateColor: s.subjOn ? t.accent : t.muted, bg: s.subjOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ subjOn: !s.subjOn }); } },
+        { icon: '🌍', label: 'RANDOM SITUATION', state: s.ctxOn ? 'ON' : 'OFF', stateColor: s.ctxOn ? t.accent : t.muted, bg: s.ctxOn ? t.hi : t.panel2, onClick: () => { this.sfx('click'); this.setState({ ctxOn: !s.ctxOn }); } },
+        { icon: '🎲', label: 'TURN ORDER', state: s.randomOrder ? 'RANDOM' : 'LIST', stateColor: t.accent, bg: t.panel2, onClick: () => { this.sfx('click'); this.setState({ randomOrder: !s.randomOrder }); } }
+      ],
+
+      prizeInput: s.prizeInput,
+      onPrizeChange: e => this.setState({ prizeInput: e.target.value }),
+      nameInput: s.nameInput,
+      onNameChange: e => this.setState({ nameInput: e.target.value }),
+      onNameKey: e => { if (e.key === 'Enter') this.addStudent(); },
+      addStudent: this.addStudent,
+      students: s.students.map((p, i) => ({
+        name: p.name, num: String(i + 1).padStart(2, '0'),
+        teamDisplay: s.teamsOn ? 'inline-block' : 'none',
+        teamLabel: 'T' + (Math.min(p.team || 0, s.teamCount - 1) + 1),
+        teamColor: TEAM_COLORS[Math.min(p.team || 0, s.teamCount - 1)],
+        cycleTeam: () => {
+          this.sfx('click');
+          this.setState(st => ({ students: st.students.map((q, j) => j === i ? { name: q.name, score: q.score, aids: q.aids, team: (Math.min(q.team || 0, st.teamCount - 1) + 1) % st.teamCount } : q) }));
+        },
+        remove: () => this.setState({ students: s.students.filter((_, j) => j !== i) })
+      })),
+      startGame: this.startGame,
+      cantStart: s.students.length < 2 || !s.levels.length,
+      startBg: (s.students.length < 2 || !s.levels.length) ? '#6b6b6b' : t.accent,
+      startHint: s.students.length < 2 ? 'Add at least 2 players to begin'
+        : (!s.levels.length ? 'Select at least one CEFR level'
+        : s.students.length + ' players · ' + (s.teamsOn ? s.teamCount + ' teams · ' : '') + s.rounds + ' rounds · ' + this.filtered().length + ' verbs in play'),
+
+      roundLabel: s.round + ' / ' + s.rounds,
+      incRound: () => this.stepRounds(1),
+      decRound: () => this.stepRounds(-1),
+      incRoundOff: s.rounds >= 100,
+      decRoundOff: s.rounds <= Math.max(s.round, 1),
+      incRoundBg: s.rounds >= 100 ? '#6b6b6b' : t.titleShadow,
+      decRoundBg: s.rounds <= Math.max(s.round, 1) ? '#6b6b6b' : t.titleShadow,
+      endMatch: this.endMatch,
+      levelsLabel: s.levels.join(' '),
+      timeLabel: s.card ? String(s.time).padStart(2, '0') + 's' : '--',
+      timePct: s.card ? Math.min(100, (s.time / this.baseTime(s.card.level)) * 100) : 0,
+      timerColor: !s.card ? t.muted : (s.time <= 5 ? t.bad : s.time <= 12 ? t.accent : t.good),
+      addTime: this.addTime, addTimeBg: s.card ? t.alt : '#555',
+      toggleTimer: this.toggleTimer,
+      toggleTimerLabel: s.running ? 'PAUSE' : (s.time > 0 ? 'START TIMER' : 'TIME UP'),
+      toggleTimerBg: !s.card ? '#555' : (s.running ? t.alt : t.good),
+      quitGame: this.quitGame,
+
+      segments: s.segments, rot: s.rot,
+      wheelAnim: s.spinning ? 'glowPulse 1.1s ease-in-out infinite' : 'none',
+      hubAnim: s.spinning ? 'spinSlow 1.4s linear infinite' : 'none',
+      spin: this.spin, spinDisabled: s.spinning || !!s.card,
+      spinLabel: s.spinning ? 'SPINNING…' : (s.card ? 'ANSWER!' : 'SPIN!'),
+      spinBg: (s.spinning || s.card) ? '#6b6b6b' : t.accent,
+
+      turnCaption: s.passedTo != null ? '🔀 PASSED! NOW ANSWERING' : (s.card ? 'NOW ANSWERING' : 'READY TO SPIN'),
+      currentName: me ? me.name : '—',
+      wasPassed: s.passedTo != null,
+      passNote: (() => {
+        if (s.passedTo == null) return '';
+        const from = s.students[s.currentIdx], to = s.students[s.passedTo];
+        const loss = s.penalty * s.mult + s.wager;
+        const win = (this.props.pointsPerCorrect != null ? this.props.pointsPerCorrect : 10) * s.mult + s.wager;
+        const rw = Math.round(win * 0.75);
+        if (!from || !to) return '';
+        return '🔀 ' + from.name.toUpperCase() + ' PASSED TO ' + to.name.toUpperCase() +
+          ' — CORRECT: ' + to.name.toUpperCase() + ' +' + rw + ', ' + from.name.toUpperCase() + ' +' + (win - rw) + '.' +
+          (loss > 0 ? '  WRONG: BOTH LOSE ' + loss + ' COINS.' : '  WRONG: NO PENALTY.');
+      })(),
+
+      hasCard: !!s.card, noCard: !s.card,
+      idleMessage: s.spinning ? 'THE WHEEL IS SPINNING…' : 'PRESS SPIN TO GET\nYOUR PHRASAL VERB',
+      cardPv: s.card ? s.card.pv : '', cardDef: s.card ? s.card.def : '', cardEx: s.card ? s.card.ex : '',
+      cardEmoji: s.card ? s.card.emoji : '', cardFamily: s.card ? s.card.family : '',
+      cardLevel: s.card ? s.card.level : '', cardColor: s.card ? s.card.color : '#000',
+      cardEs: s.card && s.card.es ? s.card.es : '',
+      cardStart: s.card ? s.card.ex.split(' ').slice(0, 3).join(' ') : '',
+      hasEs: !!(s.card && s.card.es), esShown: s.esShown,
+      esLabel: s.esShown ? 'HIDE SPANISH HINT' : '🇪🇸 SPANISH HINT',
+      toggleEs: () => this.setState({ esShown: !s.esShown }),
+      defHidden: !s.defShown, defShown: s.defShown,
+      revealDef: () => { this.sfx('click'); this.setState({ defShown: true }); },
+      exShown: s.exShown, showModel: () => this.setState({ exShown: !s.exShown }),
+      startShown: s.startShown,
+      conjShown: s.conjShown, conjForms: s.card ? this.conjugate(s.card.pv) : [],
+      teacherHelp: s.teacherHelp,
+      hasPrize: !!s.prizeInput.trim(), prizeText: s.prizeInput.trim(),
+
+      audioOpen: s.audioOpen,
+      toggleAudioPanel: () => { this.sfx('click'); this.setState(st => ({ audioOpen: !st.audioOpen })); },
+      audioIcon: s.sound ? '🔊' : '🔇', audioBtnLabel: s.audioOpen ? 'CLOSE' : 'SOUND',
+      toggleSfx: this.toggleSfx,
+      sfxBtnLabel: s.sound ? 'SFX ON' : 'SFX OFF', sfxBtnBg: s.sound ? t.accent : '#555', sfxBtnInk: s.sound ? t.accentInk : '#fff',
+      sfxVol: s.sfxVol,
+      onSfxVol: e => this.setState({ sfxVol: +e.target.value }, () => this.saveAudio()),
+
+      hasTense: !!s.tense, tenseName: s.tense ? s.tense.n : '', tenseHint: s.tense ? s.tense.h : '',
+      hasExtra: !!(s.card && (s.subject || s.context)),
+      hasSubject: !!(s.card && s.subject), subjectLabel: s.subject || '',
+      hasContext: !!(s.card && s.context), contextLabel: s.context || '',
+      hasMult: s.mult > 1, multLabel: 'x' + s.mult, multBg: s.mult >= 3 ? '#FF3B3B' : t.accent,
+      addTimeLabel: '+' + (s.card ? this.baseTime(s.card.level) / 2 : 15) + ' SEC',
+
+      wagerOn: s.wagerOn && !!s.card, wagerOpts,
+      wagerNote: '+' + (wagerBase + s.wager) + '/-' + (s.penalty * s.mult + s.wager) + (isLeader ? ' · LEADER CAP' : ''),
+
+      aidsOn: s.aidsPer > 0 && !!s.card,
+      aidsLeft: aidsLeft + ' / ' + s.aidsPer,
+      aidGain: s.aidGain,
+      aids: aidDefs.map(a => {
+        const used = (a.kind === 'conj' && s.conjShown) || (a.kind === 'teacher' && s.teacherHelp);
+        const dead = aidsLeft <= 0 || used || (a.kind === 'tense' && !s.tense && !s.subject && !s.context);
+        return {
+        icon: a.icon, short: a.short,
+        off: dead,
+        bg: dead ? '#555' : t.alt,
+        onClick: () => this.useAid(a.kind)
+        };
+      }),
+
+      markCorrect: this.markCorrect, markWrong: this.markWrong,
+      pointsLabel: '+' + (wagerBase + s.wager),
+      wrongLabel: (s.penalty * s.mult + s.wager) > 0 ? '-' + (s.penalty * s.mult + s.wager) + ' COINS' : 'NO POINTS',
+      passTurn: this.passTurn, passDisabled: s.passedTo != null,
+      passBg: s.passedTo != null ? '#6b6b6b' : t.titleShadow,
+
+      joinInput: s.joinInput,
+      onJoinChange: e => this.setState({ joinInput: e.target.value }),
+      onJoinKey: e => { if (e.key === 'Enter') this.joinStudent(); },
+      joinStudent: this.joinStudent,
+      joinDisabled: !s.joinInput.trim() || s.students.length >= 24,
+
+      boardNote: '+' + pts + ' correct' + (s.penalty > 0 ? ' \u00b7 -' + s.penalty + ' wrong' : '') + (s.multOn ? ' \u00b7 multipliers on' : ''),
+      board: ranked.map((r, k) => ({
+        rank: k < 3 ? medals[k] : String(k + 1),
+        rankColor: k < 3 ? '#fff' : t.muted,
+        name: r.p.name, score: r.p.score,
+        aidDots: (s.teamsOn ? 'TEAM ' + (Math.min(r.p.team || 0, s.teamCount - 1) + 1) + (s.aidsPer > 0 ? ' · ' : '') : '') + (s.aidsPer > 0 ? '🧰'.repeat(r.p.aids) || '—' : ''),
+        aidColor: t.muted,
+        bg: r.i === active && s.screen === 'game' ? t.good : (k === 0 && r.p.score > 0 ? t.hi : t.panel2),
+        nameColor: r.i === active && s.screen === 'game' ? '#fff' : t.text,
+        scale: s.bump === r.i ? 1.06 : 1
+      })),
+
+      teamBoard: teams.map(tm => ({
+        name: tm.name, members: tm.members, score: tm.score, color: tm.color,
+        bg: teams[0] && tm.ti === teams[0].ti && tm.score > 0 ? t.hi : t.panel2
+      })),
+
+      podium: s.teamsOn
+        ? teams.slice(0, 3).map((tm, k) => ({ medal: medals[k], name: tm.name, score: tm.score, color: podColors[k], h: podH[k] }))
+        : ranked.slice(0, 3).map((r, k) => ({ medal: medals[k], name: r.p.name, score: r.p.score, color: podColors[k], h: podH[k] })),
+      endOpacity: s.endPhase === 'board' ? 0 : 1, endPointer: s.endPhase === 'board' ? 'none' : 'auto',
+      endShowPrize: s.endPhase === 'prize',
+      revealPrize: this.revealPrize,
+      winnerName: (s.teamsOn ? (teams[0] ? teams[0].name : '') : (ranked[0] ? ranked[0].p.name : '')).toUpperCase(),
+      finalPrize: s.prizeInput.trim() || 'Eternal glory and bragging rights',
+      winnerLine: s.teamsOn
+        ? (teams.length ? teams[0].name + ' wins with ' + teams[0].score + ' coins!' : '')
+        : (ranked.length ? ranked[0].p.name + ' wins with ' + ranked[0].p.score + ' coins!' : ''),
+      playAgain: this.playAgain
+    };
+  }
+}
+</script>
+</body>
+</html>

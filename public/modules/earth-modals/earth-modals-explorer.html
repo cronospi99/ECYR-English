@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./countries.js"></script>
+<script src="/vendor/three.min.js"></script>
+<script src="/vendor/d3.min.js"></script>
+<script src="/vendor/topojson-client.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#04060d;overflow:hidden}
+  *{box-sizing:border-box}
+  a{color:#ffd27a;text-decoration:none}
+  a:hover{color:#ffe3ab}
+  ::selection{background:rgba(255,210,122,.3)}
+  .em-scroll::-webkit-scrollbar{width:8px}
+  .em-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:8px}
+  .em-scroll::-webkit-scrollbar-track{background:transparent}
+</style>
+</helmet>
+<div style="position:fixed;inset:0;font-family:'Space Grotesk',system-ui,sans-serif;color:#eef1f7;background:radial-gradient(130% 130% at 72% 12%,#0b1020 0%,#05070f 52%,#02030a 100%)">
+
+  <div id="em-globe" style="position:absolute;inset:0;z-index:1;cursor:grab;touch-action:none"></div>
+
+  <!-- Header -->
+  <div style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:flex-start;justify-content:space-between;padding:26px 30px;pointer-events:none">
+    <div>
+      <div style="font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#ffd27a;font-weight:600">{{ t.eyebrow }}</div>
+      <div style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-top:5px">{{ t.title }}</div>
+      <div style="font-size:13px;color:rgba(238,241,247,.55);margin-top:4px;max-width:460px;line-height:1.5">{{ t.subtitle }}</div>
+    </div>
+    <div style="display:flex;gap:3px;padding:4px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);pointer-events:auto">
+      <button onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
+      <button onClick="{{ setEs }}" style="{{ esBtnStyle }}">ES</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="em-scroll" style="position:absolute;top:128px;left:24px;bottom:24px;width:242px;z-index:5;overflow-y:auto;padding:6px 8px 6px 2px">
+    <div style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(238,241,247,.4);font-weight:600;padding:0 6px 10px">{{ t.mostVisited }}</div>
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ countries }}" as="c" hint-placeholder-count="12">
+        <button onClick="{{ c.onClick }}" style="{{ c.rowStyle }}" style-hover="background:rgba(255,255,255,.09);border-color:rgba(255,210,122,.35)">
+          <span style="font-size:11px;font-weight:700;color:rgba(255,210,122,.85);width:15px;flex:none">{{ c.rank }}</span>
+          <img src="{{ c.flag }}" alt="" style="width:27px;height:18px;border-radius:3px;object-fit:cover;flex:none;box-shadow:0 1px 4px rgba(0,0,0,.5)">
+          <span style="display:flex;flex-direction:column;min-width:0">
+            <span style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.name }}</span>
+            <span style="font-size:10.5px;color:rgba(238,241,247,.45)">{{ c.visitors }}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- Slide-in panel -->
+  <div style="position:absolute;top:0;right:0;bottom:0;z-index:20;width:min(440px,92vw);transition:transform .5s cubic-bezier(.22,.61,.36,1);transform:{{ panelTransform }}">
+    <div class="em-scroll" style="height:100%;overflow-y:auto;background:linear-gradient(160deg,rgba(13,18,34,.95),rgba(7,10,20,.98));backdrop-filter:blur(18px);border-left:1px solid rgba(255,255,255,.1);box-shadow:-30px 0 80px rgba(0,0,0,.55)">
+      <sc-if value="{{ sel }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative">
+          <div style="position:relative;height:172px;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ sel.photoId }}" shape="rect" placeholder="{{ sel.photoLabel }}" hint-size="100%,100%"></x-import>
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,10,20,.75),rgba(7,10,20,0) 55%);pointer-events:none"></div>
+            <button onClick="{{ onClose }}" style-hover="background:rgba(0,0,0,.6)" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;z-index:2">✕</button>
+          </div>
+          <div style="padding:20px 26px 40px">
+            <div style="display:flex;align-items:center;gap:14px">
+              <img src="{{ sel.flagLg }}" alt="" style="width:56px;height:37px;border-radius:5px;object-fit:cover;box-shadow:0 3px 12px rgba(0,0,0,.5);flex:none">
+              <div>
+                <div style="font-size:25px;font-weight:700;letter-spacing:-.01em">{{ sel.name }}</div>
+                <div style="font-size:12.5px;color:rgba(238,241,247,.55);margin-top:2px">{{ sel.capitalLine }}</div>
+              </div>
+            </div>
+
+            <div style="margin-top:24px">
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
+                <span style="width:9px;height:9px;border-radius:50%;background:oklch(.74 .14 155);box-shadow:0 0 10px oklch(.74 .14 155)"></span>
+                <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:oklch(.8 .1 155)">{{ t.can }}</span>
+                <span style="font-size:11px;color:rgba(238,241,247,.4)">{{ t.canSub }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <sc-for list="{{ sel.cans }}" as="tip" hint-placeholder-count="5">
+                  <div style="font-size:13.5px;line-height:1.5;padding:10px 13px;border-radius:10px;background:oklch(.74 .14 155 / .1);border:1px solid oklch(.74 .14 155 / .22)">{{ tip }}</div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="margin-top:22px">
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
+                <span style="width:9px;height:9px;border-radius:50%;background:oklch(.78 .14 75);box-shadow:0 0 10px oklch(.78 .14 75)"></span>
+                <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:oklch(.83 .1 75)">{{ t.should }}</span>
+                <span style="font-size:11px;color:rgba(238,241,247,.4)">{{ t.shouldSub }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <sc-for list="{{ sel.shoulds }}" as="tip" hint-placeholder-count="5">
+                  <div style="font-size:13.5px;line-height:1.5;padding:10px 13px;border-radius:10px;background:oklch(.78 .14 75 / .1);border:1px solid oklch(.78 .14 75 / .22)">{{ tip }}</div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="margin-top:22px">
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
+                <span style="width:9px;height:9px;border-radius:50%;background:oklch(.7 .16 25);box-shadow:0 0 10px oklch(.7 .16 25)"></span>
+                <span style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:oklch(.76 .13 25)">{{ t.must }}</span>
+                <span style="font-size:11px;color:rgba(238,241,247,.4)">{{ t.mustSub }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <sc-for list="{{ sel.musts }}" as="tip" hint-placeholder-count="5">
+                  <div style="font-size:13.5px;line-height:1.5;padding:10px 13px;border-radius:10px;background:oklch(.7 .16 25 / .1);border:1px solid oklch(.7 .16 25 / .24)">{{ tip }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { selectedIndex: null, open: false, lang: "en" };
+
+  get DATA() { return window.EM_COUNTRIES || []; }
+
+  UI = {
+    en:{ eyebrow:"Modal Verbs · Field Guide", title:"Around the World in 15 Countries",
+      subtitle:"Spin the globe and tap a glowing pin. Learn what you can, should & must do in the world's most-visited places.",
+      mostVisited:"Most visited", can:"Can", should:"Should", must:"Must",
+      canSub:"— you're allowed to", shouldSub:"— it's wise to", mustSub:"— you're obliged to", perYear:"/ yr", capital:"Capital", photo:"photo" },
+    es:{ eyebrow:"Verbos Modales · Guía de Viaje", title:"La Vuelta al Mundo en 15 Países",
+      subtitle:"Gira el globo y toca un punto brillante. Descubre lo que puedes, deberías y debes hacer en los lugares más visitados del mundo.",
+      mostVisited:"Más visitados", can:"Puede", should:"Debería", must:"Debe",
+      canSub:"— se te permite", shouldSub:"— es aconsejable", mustSub:"— estás obligado a", perYear:"/ año", capital:"Capital", photo:"foto" }
+  };
+
+  flag(iso, w) { return "https://flagcdn.com/w" + w + "/" + iso + ".png"; }
+
+  latLng(lat, lng, r) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (lng + 180) * Math.PI / 180;
+    return new THREE.Vector3(
+      -(r * Math.sin(phi) * Math.cos(theta)),
+      r * Math.cos(phi),
+      r * Math.sin(phi) * Math.sin(theta)
+    );
+  }
+
+  select(i) {
+    this.setState({ selectedIndex: i, open: true });
+    this._interacted = true;
+    if (this.pins && this.pins[i]) {
+      const v = this.pins[i].userData.local.clone().normalize();
+      this.focusTarget = new THREE.Quaternion().setFromUnitVectors(v, new THREE.Vector3(0, 0, 1));
+    }
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.UI[lang];
+    const i0 = this.state.selectedIndex;
+    let sel = null;
+    if (i0 != null) {
+      const c = this.DATA[i0];
+      sel = {
+        name: lang === "es" ? c.nameEs : c.name,
+        flagLg: this.flag(c.iso, 160),
+        capitalLine: t.capital + ": " + (lang === "es" ? c.capitalEs : c.capital) + " · " + c.visitors + " " + t.perYear,
+        cans: c[lang].cans, shoulds: c[lang].shoulds, musts: c[lang].musts,
+        photoId: "photo_" + c.iso,
+        photoLabel: t.photo + " · " + (lang === "es" ? c.photoEs : c.photo)
+      };
+    }
+    const seg = (active) => "font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;padding:6px 13px;border-radius:9px;border:none;cursor:pointer;transition:all .16s ease;" +
+      (active ? "background:#ffd27a;color:#0a0d16" : "background:transparent;color:rgba(238,241,247,.6)");
+    return {
+      t,
+      countries: this.DATA.map((c, i) => ({
+        rank: i + 1, name: lang === "es" ? c.nameEs : c.name, flag: this.flag(c.iso, 40), visitors: c.visitors,
+        onClick: () => this.select(i),
+        rowStyle: "display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 11px;border-radius:11px;font-family:inherit;color:#eef1f7;cursor:pointer;transition:all .16s ease;border:1px solid " +
+          ((this.state.open && this.state.selectedIndex === i)
+            ? "rgba(255,210,122,.5);background:rgba(255,210,122,.14)"
+            : "rgba(255,255,255,.06);background:rgba(255,255,255,.03)")
+      })),
+      sel,
+      panelTransform: this.state.open ? "translateX(0)" : "translateX(102%)",
+      onClose: () => this.setState({ open: false }),
+      setEn: () => this.setState({ lang: "en" }),
+      setEs: () => this.setState({ lang: "es" }),
+      enBtnStyle: seg(lang === "en"),
+      esBtnStyle: seg(lang === "es")
+    };
+  }
+
+  // ---- Globe texture (dark, accurate country shapes from vector world data) ----
+  paintOcean(ctx, W, H) {
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, "#070c17"); g.addColorStop(0.5, "#0a1324"); g.addColorStop(1, "#070c17");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  }
+  buildAccurateCanvas(topo) {
+    const W = 2048, H = 1024;
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+    const ctx = cv.getContext("2d");
+    this.paintOcean(ctx, W, H);
+    const geo = window.topojson.feature(topo, topo.objects.countries);
+    const proj = window.d3.geoEquirectangular().fitSize([W, H], { type: "Sphere" });
+    const path = window.d3.geoPath(proj, ctx);
+    ctx.beginPath(); path(window.d3.geoGraticule10());
+    ctx.strokeStyle = "rgba(90,125,185,0.08)"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.beginPath(); path(geo);
+    const lg = ctx.createLinearGradient(0, 0, 0, H);
+    lg.addColorStop(0, "#1c2b48"); lg.addColorStop(0.5, "#182339"); lg.addColorStop(1, "#1c2b48");
+    ctx.fillStyle = lg; ctx.fill();
+    ctx.strokeStyle = "rgba(130,175,255,0.45)"; ctx.lineWidth = 0.9; ctx.stroke();
+    ctx.shadowColor = "rgba(90,140,230,0.5)"; ctx.shadowBlur = 6;
+    ctx.stroke(); ctx.shadowBlur = 0;
+    return cv;
+  }
+  buildFallbackCanvas() {
+    const W = 2048, H = 1024;
+    const cv = document.createElement("canvas"); cv.width = W; cv.height = H;
+    const ctx = cv.getContext("2d");
+    this.paintOcean(ctx, W, H);
+    return cv;
+  }
+
+  componentDidMount() { this._boot(); }
+
+  _boot() {
+    const ready = window.THREE && window.EM_COUNTRIES && window.EM_COUNTRIES.length && document.getElementById("em-globe");
+    if (!ready) {
+      if ((this._tries = (this._tries || 0) + 1) < 120) this._bootTimer = setTimeout(() => this._boot(), 100);
+      return;
+    }
+    this.forceUpdate();
+    this._initGlobe();
+  }
+
+  _initGlobe() {
+    const el = document.getElementById("em-globe");
+    if (!el || !window.THREE) return;
+    const THREE = window.THREE;
+    let W = el.clientWidth, H = el.clientHeight;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setSize(W, H);
+    el.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, W / H, 0.1, 100);
+    camera.position.set(0, 0, 3.05);
+
+    scene.add(new THREE.AmbientLight(0x9fb4d8, 0.85));
+    const key = new THREE.DirectionalLight(0xffffff, 1.15);
+    key.position.set(-2.6, 1.2, 3.2); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x4f7bd0, 0.5);
+    rim.position.set(3, -1, -2); scene.add(rim);
+
+    const R = 1;
+    const earthGroup = new THREE.Group();
+    scene.add(earthGroup);
+    const earthTex = new THREE.CanvasTexture(this.buildFallbackCanvas());
+    earthTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const mat = new THREE.MeshStandardMaterial({
+      map: earthTex, roughness: 0.92, metalness: 0.0,
+      emissive: new THREE.Color(0x0a1730), emissiveIntensity: 0.4
+    });
+    const earth = new THREE.Mesh(new THREE.SphereGeometry(R, 128, 128), mat);
+    earthGroup.add(earth);
+
+    // Upgrade to accurate vector map once libs + data load
+    const waitLibs = () => new Promise(res => {
+      let n = 0;
+      const ready = () => window.d3 && window.d3.geoEquirectangular && window.topojson;
+      const iv = setInterval(() => {
+        if (ready() || ++n > 80) { clearInterval(iv); res(!!ready()); }
+      }, 100);
+    });
+    waitLibs().then(ok => {
+      if (!ok) return;
+      fetch("/vendor/countries-110m.json")
+        .then(r => r.json())
+        .then(topo => { mat.map = new THREE.CanvasTexture(this.buildAccurateCanvas(topo)); mat.map.anisotropy = earthTex.anisotropy; mat.needsUpdate = true; })
+        .catch(() => {});
+    });
+
+    // Atmosphere
+    const atmoMat = new THREE.ShaderMaterial({
+      vertexShader: "varying vec3 vN; void main(){ vN = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);}",
+      fragmentShader: "varying vec3 vN; void main(){ float i = pow(0.68 - dot(vN, vec3(0.,0.,1.)), 3.0); gl_FragColor = vec4(0.30,0.55,1.0,1.0) * i; }",
+      blending: THREE.AdditiveBlending, side: THREE.BackSide, transparent: true
+    });
+    scene.add(new THREE.Mesh(new THREE.SphereGeometry(R * 1.18, 64, 64), atmoMat));
+
+    // Stars
+    const starGeo = new THREE.BufferGeometry();
+    const sp = [];
+    for (let i = 0; i < 2400; i++) {
+      const r = 22 + Math.random() * 45;
+      const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      sp.push(r * Math.sin(ph) * Math.cos(th), r * Math.sin(ph) * Math.sin(th), r * Math.cos(ph));
+    }
+    starGeo.setAttribute("position", new THREE.Float32BufferAttribute(sp, 3));
+    scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.11, sizeAttenuation: true, transparent: true, opacity: 0.8 })));
+
+    // Pin glow
+    const gc = document.createElement("canvas"); gc.width = gc.height = 128;
+    const gx = gc.getContext("2d");
+    const grd = gx.createRadialGradient(64, 64, 0, 64, 64, 64);
+    grd.addColorStop(0, "rgba(255,238,200,1)");
+    grd.addColorStop(0.25, "rgba(255,205,120,0.92)");
+    grd.addColorStop(0.55, "rgba(255,180,70,0.35)");
+    grd.addColorStop(1, "rgba(255,180,70,0)");
+    gx.fillStyle = grd; gx.fillRect(0, 0, 128, 128);
+    const glowTex = new THREE.CanvasTexture(gc);
+
+    this.pins = [];
+    this.DATA.forEach((c, i) => {
+      const local = this.latLng(c.lat, c.lng, R * 1.012);
+      const g = new THREE.Group();
+      g.position.copy(local);
+      const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+      spr.scale.set(0.12, 0.12, 0.12);
+      g.add(spr);
+      g.add(new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 12), new THREE.MeshBasicMaterial({ color: 0xfff2d6 })));
+      g.userData = { index: i, local: local.clone(), glow: spr };
+      earthGroup.add(g);
+      this.pins.push(g);
+    });
+
+    // ---- Interaction with momentum ----
+    const ray = new THREE.Raycaster();
+    let down = false, moved = 0, px = 0, py = 0, lt = 0;
+    let vx = 0, vy = 0;
+    const rotate = (ry, rx) => {
+      const qy = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), ry);
+      const qx = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), rx);
+      earthGroup.quaternion.premultiply(qx).premultiply(qy);
+    };
+    const dom = renderer.domElement;
+    dom.addEventListener("pointerdown", e => {
+      down = true; moved = 0; px = e.clientX; py = e.clientY; lt = performance.now();
+      vx = vy = 0; this.focusTarget = null; this._interacted = true; el.style.cursor = "grabbing";
+    });
+    window.addEventListener("pointermove", this._pm = e => {
+      if (!down) return;
+      const dx = e.clientX - px, dy = e.clientY - py;
+      moved += Math.abs(dx) + Math.abs(dy);
+      const ry = dx * 0.005, rx = dy * 0.005;
+      rotate(ry, rx);
+      const now = performance.now(), dt = Math.max(16, now - lt);
+      vx = ry * (16 / dt); vy = rx * (16 / dt);
+      px = e.clientX; py = e.clientY; lt = now;
+    });
+    window.addEventListener("pointerup", this._pu = e => {
+      if (down && moved < 6) {
+        const r = dom.getBoundingClientRect();
+        const m = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+        ray.setFromCamera(m, camera);
+        const hits = ray.intersectObjects(this.pins, true);
+        for (const h of hits) {
+          let o = h.object; while (o && o.userData.index === undefined) o = o.parent;
+          if (!o) continue;
+          const wp = o.getWorldPosition(new THREE.Vector3());
+          const toCam = camera.position.clone().sub(wp).normalize();
+          if (wp.clone().normalize().dot(toCam) > 0.02) { this.select(o.userData.index); break; }
+        }
+        vx = vy = 0;
+      }
+      down = false; el.style.cursor = "grab";
+    });
+    dom.addEventListener("wheel", e => {
+      e.preventDefault();
+      camera.position.z = Math.max(1.55, Math.min(4.6, camera.position.z + e.deltaY * 0.0015));
+    }, { passive: false });
+
+    window.addEventListener("resize", this._onResize = () => {
+      W = el.clientWidth; H = el.clientHeight;
+      camera.aspect = W / H; camera.updateProjectionMatrix(); renderer.setSize(W, H);
+    });
+
+    earthGroup.quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -0.55);
+    const clock = new THREE.Clock();
+    const animate = () => {
+      this._raf = requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      if (this.focusTarget) {
+        earthGroup.quaternion.slerp(this.focusTarget, 0.09);
+        if (earthGroup.quaternion.angleTo(this.focusTarget) < 0.01) this.focusTarget = null;
+      } else if (down) {
+        // live drag handled in pointermove
+      } else if (Math.abs(vx) > 0.00015 || Math.abs(vy) > 0.00015) {
+        rotate(vx, vy); vx *= 0.94; vy *= 0.94;
+      } else if (!this._interacted) {
+        rotate(0.0012, 0);
+      }
+      this.pins.forEach((p, i) => {
+        const s = 0.10 + Math.sin(t * 2 + i) * 0.02;
+        p.userData.glow.scale.set(s, s, s);
+        const wp = p.getWorldPosition(new THREE.Vector3());
+        const face = wp.clone().normalize().dot(camera.position.clone().sub(wp).normalize());
+        p.visible = face > -0.12;
+      });
+      renderer.render(scene, camera);
+    };
+    animate();
+    this._renderer = renderer;
+  }
+
+  componentWillUnmount() {
+    if (this._bootTimer) clearTimeout(this._bootTimer);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._onResize) window.removeEventListener("resize", this._onResize);
+    if (this._pm) window.removeEventListener("pointermove", this._pm);
+    if (this._pu) window.removeEventListener("pointerup", this._pu);
+    if (this._renderer) this._renderer.dispose();
+  }
+}
+</script>
+</body>
+</html>

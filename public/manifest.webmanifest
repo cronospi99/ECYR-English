@@ -1,0 +1,10 @@
+{
+  "name": "ECYR English",
+  "short_name": "ECYR",
+  "description": "Learn English from A1 to C1: lessons, readings, listening, games, IELTS simulator and an AI coach.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F2F2F7",
+  "theme_color": "#2F6BFF",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
