@@ -11,6 +11,15 @@
 --                   project's Gemini quota cannot be drained by one account.
 -- =============================================================================
 
+-- Fails early with a clear message when 01–04 have not been run yet.
+do $$
+begin
+  if to_regclass('public.profiles') is null or to_regprocedure('public.is_my_student(uuid)') is null then
+    raise exception 'Run 01_schema.sql … 04_audio_library.sql first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
 -- ------------------------------------------------------------ learner_state --
 create table if not exists public.learner_state (
   user_id     uuid primary key references public.profiles(id) on delete cascade,
