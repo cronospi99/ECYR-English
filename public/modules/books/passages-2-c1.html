@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=Nunito+Sans:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#170d06;font-family:'Nunito Sans',system-ui,sans-serif}
+a{color:#c0392b;text-decoration:none}a:hover{color:#e0533c}
+button{font-family:inherit}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes steam{0%{opacity:0;transform:translateY(4px) scaleY(.6)}45%{opacity:.75}100%{opacity:0;transform:translateY(-16px) scaleY(1.25)}}
+@keyframes sunspin{to{transform:rotate(360deg)}}
+@keyframes panelIn{0%{opacity:0;transform:scale(.92) translateY(14px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes cloud{0%,100%{transform:translateX(0)}50%{transform:translateX(24px)}}
+</style>
+<script src="./passages2-units.js"></script>
+<script src="./p2-enrich.js"></script>
+<script src="./mixer.js"></script>
+</helmet>
+<div style="position:relative;width:100vw;height:100vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 25%,#4a2f18,#1a0f07 75%)">
+<div style="width:1600px;height:900px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale({{ scale }});transform-origin:center">
+<div style="position:absolute;inset:0;border:14px solid #23160b;border-radius:28px;overflow:hidden;filter:{{ stageFilter }};background:radial-gradient(circle at 22% 18%,rgba(60,35,10,.10) 0 2px,transparent 2.5px) 0 0/28px 28px,radial-gradient(ellipse at 50% 42%,#f5e6bf 0%,#ecd6a4 62%,#dcc088 100%);box-shadow:inset 0 0 130px rgba(90,50,10,.4)">
+
+<div style="position:absolute;top:-160px;left:50%;width:640px;height:640px;transform:translateX(-50%);z-index:0;opacity:.16;border-radius:50%;background:conic-gradient(from 0deg,#c0392b 0 12deg,transparent 12deg 30deg,#c0392b 30deg 42deg,transparent 42deg 60deg,#c0392b 60deg 72deg,transparent 72deg 90deg,#c0392b 90deg 102deg,transparent 102deg 120deg,#c0392b 120deg 132deg,transparent 132deg 150deg,#c0392b 150deg 162deg,transparent 162deg 180deg,#c0392b 180deg 192deg,transparent 192deg 210deg,#c0392b 210deg 222deg,transparent 222deg 240deg,#c0392b 240deg 252deg,transparent 252deg 270deg,#c0392b 270deg 282deg,transparent 282deg 300deg,#c0392b 300deg 312deg,transparent 312deg 330deg,#c0392b 330deg 342deg,transparent 342deg 360deg);animation:sunspin 60s linear infinite"></div>
+
+<div style="position:absolute;left:-90px;bottom:-120px;width:560px;height:420px;border-radius:50%;background:#2f7d5b;border:6px solid #23160b;z-index:1;box-shadow:inset 0 28px 0 rgba(255,255,255,.12)"></div>
+<div style="position:absolute;right:-120px;bottom:-150px;width:620px;height:440px;border-radius:50%;background:#1f8a7a;border:6px solid #23160b;z-index:1;box-shadow:inset 0 28px 0 rgba(255,255,255,.12)"></div>
+<div style="position:absolute;left:38%;bottom:-230px;width:520px;height:400px;border-radius:50%;background:#d99413;border:6px solid #23160b;z-index:1;box-shadow:inset 0 28px 0 rgba(255,255,255,.15)"></div>
+
+<div style="position:absolute;top:150px;left:120px;z-index:1;animation:cloud 9s ease-in-out infinite">
+<div style="width:150px;height:56px;border-radius:40px;background:#fff8ec;border:5px solid #23160b;box-shadow:inset 0 6px 0 rgba(0,0,0,.06)"></div>
+<div style="position:absolute;top:-30px;left:34px;width:70px;height:70px;border-radius:50%;background:#fff8ec;border:5px solid #23160b"></div>
+</div>
+<div style="position:absolute;top:120px;right:180px;z-index:1;animation:cloud 11s ease-in-out infinite">
+<div style="width:180px;height:60px;border-radius:44px;background:#fff8ec;border:5px solid #23160b;box-shadow:inset 0 6px 0 rgba(0,0,0,.06)"></div>
+<div style="position:absolute;top:-34px;left:46px;width:80px;height:80px;border-radius:50%;background:#fff8ec;border:5px solid #23160b"></div>
+</div>
+
+<svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%;z-index:2">
+<path d="M 150 742 C 330 700 470 690 620 716 C 770 742 858 796 1010 776 C 1182 754 1322 664 1330 520 C 1338 398 1210 354 1040 380 C 872 406 730 470 560 448 C 380 424 286 350 322 250 C 352 166 502 150 692 172 C 902 194 1132 150 1362 186" fill="none" stroke="#23160b" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 150 742 C 330 700 470 690 620 716 C 770 742 858 796 1010 776 C 1182 754 1322 664 1330 520 C 1338 398 1210 354 1040 380 C 872 406 730 470 560 448 C 380 424 286 350 322 250 C 352 166 502 150 692 172 C 902 194 1132 150 1362 186" fill="none" stroke="#dcbc7c" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 150 742 C 330 700 470 690 620 716 C 770 742 858 796 1010 776 C 1182 754 1322 664 1330 520 C 1338 398 1210 354 1040 380 C 872 406 730 470 560 448 C 380 424 286 350 322 250 C 352 166 502 150 692 172 C 902 194 1132 150 1362 186" fill="none" stroke="#8a6a34" stroke-width="4" stroke-dasharray="2 26" stroke-linecap="round"/>
+</svg>
+
+<sc-for list="{{ checkpoints }}" as="cp" hint-placeholder-count="12">
+<button onClick="{{ cp.onClick }}" style="position:absolute;left:{{ cp.x }}px;top:{{ cp.y }}px;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;z-index:5;transition:transform .12s ease" style-hover="transform:translate(-50%,-58%) scale(1.07)">
+<div style="width:70px;height:70px;border-radius:50%;background:{{ cp.color }};border:6px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:28px;color:#fff8e7;text-shadow:2px 2px 0 rgba(0,0,0,.3);box-shadow:{{ cp.shadow }}">{{ cp.num }}</div>
+<div style="display:{{ cp.labelDisplay }};margin-top:7px;transform:translateX(-50%);position:absolute;left:50%;white-space:nowrap;background:#fff8ec;border:3px solid #23160b;border-radius:8px;padding:3px 9px;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.5px;color:#3a2c1a;box-shadow:0 3px 0 rgba(0,0,0,.18)">{{ cp.name }}</div>
+</button>
+</sc-for>
+
+<div style="position:absolute;left:0;top:0;width:72px;height:80px;z-index:8;pointer-events:none;offset-path:{{ mugPathCss }};offset-rotate:0deg;offset-distance:{{ mugPct }};transition:offset-distance .95s cubic-bezier(.5,.02,.25,1)">
+<div style="position:relative;width:100%;height:100%;animation:{{ mugBob }}">
+<div style="display:{{ steamDisplay }};position:absolute;left:24px;top:-16px;width:6px;height:15px;border-radius:3px;background:rgba(255,255,255,.7);animation:steam 1.9s ease-in-out infinite"></div>
+<div style="display:{{ steamDisplay }};position:absolute;left:36px;top:-18px;width:6px;height:15px;border-radius:3px;background:rgba(255,255,255,.6);animation:steam 1.9s ease-in-out .7s infinite"></div>
+<div style="position:absolute;right:2px;top:30px;width:24px;height:30px;border:7px solid #23160b;border-left:none;border-radius:0 34px 34px 0;background:transparent"></div>
+<div style="position:absolute;left:8px;top:14px;width:52px;height:60px;border:5px solid #23160b;border-radius:13px 13px 17px 17px;overflow:hidden;background:linear-gradient(#ffcd00 0 50%,#003893 50% 75%,#ce1126 75% 100%);box-shadow:inset 0 5px 0 rgba(255,255,255,.35)">
+<div style="position:absolute;top:-1px;left:0;right:0;height:9px;background:#4a2f14"></div>
+<div style="position:absolute;top:11px;left:8px;width:14px;height:14px;border-radius:50%;background:#fff;border:2.5px solid #23160b;display:grid;place-items:center"><div style="width:5px;height:5px;border-radius:50%;background:#23160b"></div></div>
+<div style="position:absolute;top:11px;left:24px;width:14px;height:14px;border-radius:50%;background:#fff;border:2.5px solid #23160b;display:grid;place-items:center"><div style="width:5px;height:5px;border-radius:50%;background:#23160b"></div></div>
+<div style="position:absolute;top:24px;left:15px;width:16px;height:9px;border:0 solid #23160b;border-bottom-width:3px;border-radius:0 0 16px 16px"></div>
+</div>
+</div>
+</div>
+
+<div style="position:absolute;top:24px;left:50%;transform:translateX(-50%);z-index:10;text-align:center">
+<div style="display:inline-block;background:#c0392b;color:#fff8e7;border:6px solid #23160b;border-radius:16px;padding:11px 34px;box-shadow:0 8px 0 rgba(0,0,0,.3);font-family:'Alfa Slab One',serif;font-size:38px;letter-spacing:1px;text-shadow:3px 3px 0 rgba(0,0,0,.3)">PASSAGES&nbsp;2 &middot; C1</div>
+<div style="margin-top:8px;font-family:'Special Elite',monospace;font-size:15px;letter-spacing:5px;color:#3a2c1a;text-transform:uppercase">The Grammar &amp; Vocabulary Adventure</div>
+</div>
+
+<div style="position:absolute;top:26px;left:28px;z-index:10;display:flex;align-items:center;gap:11px;background:#fff8ec;border:4px solid #23160b;border-radius:14px;padding:8px 14px;box-shadow:0 4px 0 rgba(0,0,0,.2)">
+<div style="width:28px;height:22px;border:3px solid #23160b;border-radius:3px;overflow:hidden;background:linear-gradient(#ffcd00 0 50%,#003893 50% 75%,#ce1126 75% 100%)"></div>
+<div style="font-family:'Special Elite',monospace;font-size:11px;line-height:1.25;color:#3a2c1a">Colombian &amp;<br>International English</div>
+</div>
+
+<div style="position:absolute;top:26px;right:28px;z-index:10;background:#23160b;color:#f5e6bf;border-radius:14px;padding:9px 16px;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;box-shadow:0 4px 0 rgba(0,0,0,.25)">12 LEVELS &middot; C1 ADVANCED</div>
+
+<div style="position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:10;background:#fff8ec;border:4px solid #23160b;border-radius:30px;padding:9px 24px;font-family:'Special Elite',monospace;font-size:14px;color:#3a2c1a;box-shadow:0 4px 0 rgba(0,0,0,.2)">Tap a signpost to send your mug there &middot; use the &#9664;&#9654; buttons inside a level to move on</div>
+
+</div>
+</div>
+</div>
+
+
+<sc-if value="{{ mixMini }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ mixShow }}" style="position:fixed;left:16px;bottom:14px;z-index:40;cursor:pointer;padding:9px 14px;border:3px solid #23160b;border-radius:999px;background:#23160b;color:#f5e6bf;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:1.6px;box-shadow:0 6px 0 rgba(0,0,0,.28);">&#9679; MIXER</button>
+</sc-if>
+
+<sc-if value="{{ mixPanel }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:16px;bottom:14px;z-index:41;width:322px;display:flex;flex-direction:column;gap:10px;padding:15px 17px;background:#fff8ec;border:3px solid #23160b;border-radius:14px;box-shadow:0 6px 0 rgba(0,0,0,.28);">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase">Page / unit mixer</div>
+<button onClick="{{ mixHide }}" style="cursor:pointer;padding:4px 9px;border:3px solid #23160b;border-radius:8px;background:#f3e7c8;color:#8a6a34;font-family:'Alfa Slab One',serif;font-size:11px">X</button>
+</div>
+<div style="display:flex;gap:8px;align-items:stretch">
+<input value="{{ mixInput }}" onChange="{{ mixOnChange }}" onKeyDown="{{ mixOnKey }}" placeholder="e.g. page 15 or unit 3" style="flex:1;min-width:0;font-family:'Nunito Sans',sans-serif;font-size:17px;padding:9px 11px;border:3px solid #23160b;border-radius:8px;background:#f3e7c8;color:#2f2314;outline:none" />
+<button onClick="{{ mixGo }}" style="cursor:pointer;flex:none;font-family:'Alfa Slab One',serif;font-size:13px;letter-spacing:1.2px;padding:0 16px;border:3px solid #23160b;border-radius:8px;background:#c0392b;color:#fff8e7;box-shadow:0 3px 0 rgba(0,0,0,.3)">MIX</button>
+</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:14px;line-height:1.35;color:#8a6a34;text-wrap:pretty">{{ mixMsg }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ mixOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:60;background:rgba(20,12,6,.66);display:grid;place-items:center;padding:20px;">
+<div style="width:1020px;max-width:96vw;height:720px;max-height:94vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#f5e6bf;border:3px solid #23160b;border-radius:14px;box-shadow:0 10px 0 rgba(0,0,0,.25)">
+
+<button onClick="{{ mixClose }}" style="position:absolute;top:15px;right:17px;z-index:3;width:38px;height:38px;cursor:pointer;border:3px solid #23160b;border-radius:8px;background:#fff8ec;color:#23160b;font-family:'Alfa Slab One',serif;font-size:13px">X</button>
+
+<div style="flex:none;padding:20px 68px 16px 24px;background:#c0392b;color:#fff8e7;border-bottom:3px solid #23160b">
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;opacity:.85">ACTIVITY SET &middot; {{ mix.classesLabel }}</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:22px;line-height:1.3;margin-top:9px">{{ mix.title }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.4;opacity:.9;margin-top:6px;text-wrap:pretty">{{ mix.subtitle }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;opacity:.95;margin-top:7px">{{ mix.unitTitles }}</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+<span style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.45);border-radius:8px;background:rgba(255,255,255,.2);color:#fff8e7">{{ mix.minutes }}</span>
+<span style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.45);border-radius:8px;background:rgba(255,255,255,.2);color:#fff8e7">{{ mix.topicCount }} structures</span>
+<span style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.45);border-radius:8px;background:rgba(255,255,255,.2);color:#fff8e7">{{ mix.questionCount }} follow-ups</span>
+</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;margin-top:9px;opacity:.72;line-height:1.35;text-wrap:pretty">{{ mix.timeNote }}</div>
+</div>
+
+<div style="flex:1;overflow:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;box-shadow:0 4px 0 rgba(0,0,0,.15);padding:16px 18px">
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin-bottom:10px">THE INPUT &mdash; SAME FOR EVERYONE</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ mix.core.situation }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#8a6a34;margin-top:8px">TOPICS IN PLAY &middot; {{ mix.core.themeLine }}</div>
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px;margin-top:11px">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#8a6a34">THE QUESTION EVERYBODY ANSWERS</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:20px;line-height:1.4;color:#2f2314;text-wrap:pretty;margin-top:6px">{{ mix.core.question }}</div>
+</div>
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">WRITE THIS ON THE BOARD</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ mixBoard }}" as="bq" hint-placeholder-count="3">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">&mdash;&nbsp; {{ bq }}</div>
+</sc-for>
+</div>
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">PRESENT &middot; PRACTICE &middot; PRODUCE</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ mixPPP }}" as="ph" hint-placeholder-count="3">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#8a6a34">{{ ph.phase }} &middot; {{ ph.minutes }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:5px">{{ ph.text }}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">YOU CHOOSE THE OUTPUT</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ mixMenu }}" as="mo" hint-placeholder-count="5">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">&#9633;&nbsp; {{ mo }}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;box-shadow:0 4px 0 rgba(0,0,0,.15);padding:16px 18px">
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; STRUCTURES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixTopics }}" as="tp" hint-placeholder-count="4">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px">
+<div style="font-family:'Alfa Slab One',serif;font-size:18px;line-height:1.4;color:#2f2314">{{ tp.name }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#8a6a34;margin-top:5px">UNIT {{ tp.unit }} &middot; CL. {{ tp.cls }} &middot; {{ tp.unitTitle }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:6px">&ldquo;{{ tp.cue }}&rdquo;</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;box-shadow:0 4px 0 rgba(0,0,0,.15);padding:16px 18px">
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; WORDS</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixLex }}" as="lx" hint-placeholder-count="1">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;letter-spacing:1px;color:#8a6a34">UNIT {{ lx.unit }} &middot; {{ lx.unitTitle }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:19px;line-height:1.4;color:#2f2314;margin-top:6px">{{ lx.terms }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-for list="{{ mixActs }}" as="ac" hint-placeholder-count="2">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;box-shadow:0 4px 0 rgba(0,0,0,.15);padding:16px 18px">
+
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<span style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;padding:6px 11px;border-radius:8px;background:#c0392b;color:#fff8e7">{{ ac.tag }}</span>
+<span style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34">{{ ac.minutes }} &middot; {{ ac.mode }}</span>
+</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:22px;line-height:1.3;color:#2f2314;margin-top:11px">{{ ac.name }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:9px">{{ ac.scenario }}</div>
+
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">WHAT THEY PRODUCE</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.45;color:#2f2314;text-wrap:pretty">{{ ac.product }}</div>
+
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">STAGES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ ac.stages }}" as="st" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;width:25px;height:25px;border-radius:8px;background:#c0392b;color:#fff8e7;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:13px">{{ st.n }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ st.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">{{ ac.itemsLabel }}</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ ac.items }}" as="it" hint-placeholder-count="4">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px">
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34">{{ it.label }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:5px">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">DONE WELL WHEN</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ ac.criteria }}" as="cr" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<span style="color:#c0392b;font-family:'Nunito Sans',sans-serif;font-size:19px;line-height:1.3">&#10003;</span>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ cr }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Special Elite',monospace;font-weight:400;font-size:11px;letter-spacing:2px;color:#8a6a34;text-transform:uppercase;margin:16px 0 8px">IF THEY FINISH EARLY</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ ac.extension }}</div>
+
+</div>
+</sc-for>
+
+<div style="display:flex;gap:10px;padding-bottom:6px">
+<button onClick="{{ mixGo }}" style="cursor:pointer;font-family:'Alfa Slab One',serif;font-size:13px;letter-spacing:1.2px;padding:12px 18px;border:3px solid #23160b;border-radius:8px;background:#c0392b;color:#fff8e7">RE-MIX</button>
+<button onClick="{{ mixClose }}" style="cursor:pointer;font-family:'Alfa Slab One',serif;font-size:13px;letter-spacing:1.2px;padding:12px 18px;border:3px solid #23160b;border-radius:8px;background:#fff8ec;color:#23160b">CLOSE</button>
+</div>
+
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:50;background:rgba(20,12,6,.62);display:grid;place-items:center;padding:20px">
+<div style="width:1120px;max-width:96vw;height:720px;max-height:94vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#f5e6bf;border:12px solid #23160b;border-radius:22px;box-shadow:0 22px 0 rgba(0,0,0,.35),0 0 0 5px rgba(255,255,255,.15) inset;animation:panelIn .3s cubic-bezier(.2,.8,.3,1)">
+
+<button onClick="{{ close }}" style="position:absolute;top:14px;right:16px;z-index:3;width:40px;height:40px;border-radius:50%;background:#fff8ec;border:4px solid #23160b;color:#23160b;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.25)">&times;</button>
+
+<div style="display:flex;align-items:center;gap:20px;padding:22px 70px 22px 26px;background:{{ accent }};border-bottom:6px solid #23160b;color:#fff8e7">
+<div style="width:72px;height:72px;flex:none;border-radius:50%;background:#fff8ec;color:#23160b;border:5px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:32px;box-shadow:inset 0 -5px 0 rgba(0,0,0,.12)">{{ unit.n }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:3px;opacity:.9">UNIT {{ unit.n }} &middot; PAGES {{ unit.pages }}</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:29px;line-height:1.05;text-shadow:2px 2px 0 rgba(0,0,0,.22)">{{ unit.title }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;opacity:.95;margin-top:2px">{{ unit.theme }}</div>
+</div>
+<div style="flex:none;text-align:right;max-width:250px">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;opacity:.8">LEVEL</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:19px;line-height:1.1">{{ unit.level }}</div>
+</div>
+</div>
+
+<div style="display:flex;padding:14px 26px 0;background:#ecdcb2;flex:none;flex-wrap:wrap;row-gap:6px">
+<sc-for list="{{ tabsView }}" as="tab" hint-placeholder-count="5">
+<button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+</sc-for>
+</div>
+
+<div style="flex:1;overflow:auto;padding:26px 30px;background:radial-gradient(circle at 20% 12%,rgba(60,35,10,.06) 0 2px,transparent 2.5px) 0 0/26px 26px,#f3e3bd">
+
+<sc-if value="{{ isGuide }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+<span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;background:{{ accent }};color:#fff8e7;padding:5px 12px;border-radius:20px;border:3px solid #23160b">UNIT GUIDE</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#5a4630">What this unit is really about, and what you should be able to do by the end.</span>
+</div>
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:18px 20px;box-shadow:0 4px 0 rgba(0,0,0,.15);font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.65;color:#3a2c1a;text-wrap:pretty">{{ overview.intro }}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#5a4630;margin-bottom:12px">LEARNING GOALS</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ goals }}" as="goal" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:{{ accent }};color:#fff8e7;border:3px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:12px">{{ goal.num }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;line-height:1.45;color:#2f2314">{{ goal.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#5a4630;margin-bottom:12px">GRAMMAR TOPICS IN THIS UNIT</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ unit.grammar }}" as="g" hint-placeholder-count="2">
+<div style="border-left:5px solid {{ accent }};padding:2px 0 2px 12px">
+<div style="font-family:'Alfa Slab One',serif;font-size:16px;color:#2f2314;line-height:1.2">{{ g.name }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:14.5px;color:#5a4630;line-height:1.4;margin-top:3px">{{ g.short }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="margin-top:16px;background:{{ accent }};color:#fff8e7;border:4px solid #23160b;border-radius:14px;padding:15px 18px;box-shadow:0 4px 0 rgba(0,0,0,.2)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;opacity:.85;margin-bottom:5px">CHECKPOINT GOAL</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16px;line-height:1.5">{{ overview.outcome }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isVocab }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+<span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;background:{{ accent }};color:#fff8e7;padding:5px 12px;border-radius:20px;border:3px solid #23160b">VOCABULARY</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#5a4630">Pick a word from the list to see how it really works.</span>
+</div>
+<div style="display:grid;grid-template-columns:238px minmax(0,1fr);gap:18px;align-items:start">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#5a4630;margin-bottom:9px">WORD LIST &middot; {{ vocabCount }}</div>
+<sc-for list="{{ vocabMenu }}" as="v" hint-placeholder-count="10">
+<button onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.term }}<div style="{{ v.posStyle }}">{{ v.pos }}</div></button>
+</sc-for>
+</div>
+<div style="min-width:0;background:#fff8ec;border:3px solid #23160b;border-radius:14px;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="background:{{ accent }};color:#fff8e7;padding:14px 18px">
+<div style="font-family:'Alfa Slab One',serif;font-size:25px;line-height:1.1;text-shadow:2px 2px 0 rgba(0,0,0,.2)">{{ vocabItem.term }}</div>
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;opacity:.9;margin-top:4px;text-transform:uppercase">{{ vocabItem.pos }}</div>
+</div>
+<div style="padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:4px">MEANING</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.5;color:#2f2314;text-wrap:pretty">{{ vocabItem.def }}</div>
+</div>
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:4px">HOW TO USE IT</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;line-height:1.55;color:#3a2c1a;text-wrap:pretty">{{ vocabItem.use }}</div>
+</div>
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:7px">IN CONTEXT</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ vocabItem.examples }}" as="ex" hint-placeholder-count="2">
+<div style="display:flex;gap:10px;align-items:flex-start;background:#f3e7c8;border-left:5px solid {{ accent }};padding:10px 13px;border-radius:7px">
+<span style="color:{{ accent }};font-weight:900;line-height:1.4">&#9656;</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;color:#2f2314;line-height:1.45">{{ ex }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="border-top:3px dashed #d8c393;padding-top:12px">
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:4px">GOES WITH</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#5a4630">{{ vocabItem.colloc }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGrammar }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+<span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;background:{{ accent }};color:#fff8e7;padding:5px 12px;border-radius:20px;border:3px solid #23160b">GRAMMAR</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#5a4630">Choose a topic on the left for the full explanation.</span>
+</div>
+<div style="display:grid;grid-template-columns:238px minmax(0,1fr);gap:18px;align-items:start">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#5a4630;margin-bottom:9px">TOPICS</div>
+<sc-for list="{{ gramMenu }}" as="g" hint-placeholder-count="2">
+<button onClick="{{ g.onClick }}" style="{{ g.style }}">{{ g.name }}<div style="{{ g.posStyle }}">{{ g.short }}</div></button>
+</sc-for>
+</div>
+<div style="min-width:0;background:#fff8ec;border:3px solid #23160b;border-radius:14px;overflow:hidden;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="background:{{ accent }};color:#fff8e7;padding:13px 18px;font-family:'Alfa Slab One',serif;font-size:20px;line-height:1.15">{{ gramItem.name }}</div>
+<div style="padding:16px 18px;display:flex;flex-direction:column;gap:15px">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:4px">THE RULE</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#2f2314;text-wrap:pretty">{{ gramItem.rule }}</div>
+</div>
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:7px">FORM &amp; PATTERNS</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ gramItem.form }}" as="fm" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start;background:#efe0b8;border:2px solid #d8c393;padding:9px 12px;border-radius:8px">
+<span style="font-family:'Special Elite',monospace;font-size:12px;color:{{ accent }};line-height:1.5">&#9633;</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;color:#2f2314;line-height:1.45">{{ fm }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:7px">HOW IT WORKS IN DETAIL</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ gramItem.notes }}" as="nt" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:9px;height:9px;margin-top:7px;background:{{ accent }};border:2px solid #23160b"></div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;line-height:1.55;color:#3a2c1a;text-wrap:pretty">{{ nt }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:7px">EXAMPLES</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gramItem.examples }}" as="ex" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start;background:#f3e7c8;border-left:5px solid {{ accent }};padding:10px 13px;border-radius:7px">
+<span style="color:{{ accent }};font-weight:900;line-height:1.4">&#9656;</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;color:#2f2314;line-height:1.45">{{ ex }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">More examples</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gMore }}" as="ex" hint-placeholder-count="6">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px"><div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ ex }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasFix }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Wrong &rarr; right</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ gFix }}" as="fx" hint-placeholder-count="3">
+<div style="background:#f3e7c8;border-left:5px solid #c0392b;border-radius:7px;padding:11px 14px">
+<div style="display:flex;gap:9px;align-items:flex-start"><span style="color:#c0392b;font-family:'Nunito Sans',sans-serif;font-size:18px;line-height:1.3">&#10007;</span><div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ fx.wrong }}</div></div>
+<div style="display:flex;gap:9px;align-items:flex-start;margin-top:5px"><span style="color:#2f7f4f;font-family:'Nunito Sans',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:16.5px;line-height:1.5;color:#2f2314">{{ fx.right }}</div></div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#8a6a34;margin-top:7px">{{ fx.why }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasContrast }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Easy to confuse &mdash; {{ contrastTitle }}</div>
+<div style="border:3px solid #23160b;border-radius:14px;overflow:hidden">
+<div style="{{ contrastHeadStyle }}">
+<sc-for list="{{ contrastCols }}" as="col" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'Alfa Slab One',serif;font-size:12px;letter-spacing:1.2px;color:#fff8e7">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ contrastRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasSound }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Say it right</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ gSound }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDrill }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Drill &middot; {{ gDrillName }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:16.5px;line-height:1.5;color:#2f2314">{{ gDrillPrompt }}</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-top:11px">
+<sc-for list="{{ gDrillItems }}" as="it" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c0392b;color:#fff8e7;border:3px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:13px">{{ it.n }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDialogue }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Hear it in a conversation</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ gDialogue }}" as="ln" hint-placeholder-count="4">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 11px;border-radius:999px;background:#f3e7c8;border:2px solid #23160b;color:#3a2c1a;flex:none;min-width:46px;text-align:center">{{ ln.sp }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ ln.line }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDeep }}" hint-placeholder-val="{{ false }}">
+<div style="background:#efe0b8;border:2px solid #d8c393;border-radius:10px;padding:14px 16px">
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:6px">DEEP DIVE &mdash; WHY IT WORKS LIKE THIS</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;line-height:1.65;color:#2f2314;text-wrap:pretty">{{ gramItem.deep }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;color:#8a6a34;margin-bottom:7px">REFERENCE CHART &mdash; {{ chartTitle }}</div>
+<div style="border:2px solid #d8c393;border-radius:10px;overflow:hidden">
+<div style="{{ chartHeadStyle }}">
+<sc-for list="{{ chartCols }}" as="col" hint-placeholder-count="3">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1px;color:#fff8e7;padding:10px 12px">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ chartRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="font-family:'Nunito Sans',sans-serif;font-size:14.5px;line-height:1.45;color:#2f2314;padding:10px 12px">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div style="background:#23160b;color:#f5e6bf;border-radius:12px;padding:13px 16px">
+<div style="font-family:'Special Elite',monospace;font-size:10px;letter-spacing:2px;opacity:.75;margin-bottom:4px">WATCH OUT</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15.5px;line-height:1.5">{{ gramItem.watch }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSpeaking }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+<span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;background:{{ accent }};color:#fff8e7;padding:5px 12px;border-radius:20px;border:3px solid #23160b">SPEAKING</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#5a4630">Get talking &mdash; try each in pairs or small groups.</span>
+</div>
+<sc-for list="{{ unit.speaking }}" as="s" hint-placeholder-count="3">
+<div style="margin-bottom:14px;background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 3px 0 rgba(0,0,0,.15);display:flex;gap:14px;align-items:flex-start">
+<div style="flex:none;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1px;background:{{ accent }};color:#fff8e7;padding:7px 13px;border-radius:20px;border:3px solid #23160b;white-space:nowrap">{{ s.kind }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16px;color:#2f2314;line-height:1.5">{{ s.text }}</div>
+</div>
+</sc-for>
+</sc-if>
+
+<sc-if value="{{ isTips }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+<span style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;background:{{ accent }};color:#fff8e7;padding:5px 12px;border-radius:20px;border:3px solid #23160b">TIPS &amp; TRAPS</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;color:#5a4630">Pro tips and the mistakes to dodge.</span>
+</div>
+<sc-for list="{{ unit.tips }}" as="tip" hint-placeholder-count="3">
+<div style="display:flex;gap:13px;align-items:flex-start;margin-bottom:12px;background:#fff8ec;border:3px solid #23160b;border-radius:12px;padding:14px 16px;box-shadow:0 3px 0 rgba(0,0,0,.15)">
+<div style="flex:none;width:32px;height:32px;border-radius:50%;background:{{ accent }};color:#fff8e7;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:16px;border:3px solid #23160b">&#9733;</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16px;color:#2f2314;line-height:1.5">{{ tip }}</div>
+</div>
+</sc-for>
+</sc-if>
+
+
+<sc-if value="{{ isDynamics }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'Alfa Slab One',serif;font-size:18px;color:{{ accent }}">Dynamics</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#8a6a34">Four activities you can run in class, plus writing, homework and a board sequence.</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<sc-for list="{{ dynamics }}" as="d" hint-placeholder-count="4">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:11px">
+<div style="font-family:'Alfa Slab One',serif;font-size:18px;color:{{ accent }}">{{ d.name }}</div>
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c0392b;color:#fff8e7;border:3px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:13px">{{ d.num }}</div>
+</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px">
+<span style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 11px;border-radius:999px;background:#f3e7c8;border:2px solid #23160b;color:#3a2c1a">{{ d.mode }}</span>
+<span style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 11px;border-radius:999px;background:#f3e7c8;border:2px solid #23160b;color:#3a2c1a">{{ d.minutes }}</span>
+</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ d.how }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#8a6a34;margin-top:9px">Payoff &mdash; {{ d.payoff }}</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasWriting }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Writing task</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:18px;color:{{ accent }}">{{ writing.title }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:9px">{{ writing.brief }}</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:11px"><span style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:1.6px;padding:5px 11px;border-radius:999px;background:#f3e7c8;border:2px solid #23160b;color:#3a2c1a">{{ writing.length }}</span></div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:11px">
+<sc-for list="{{ writingCriteria }}" as="c" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="color:#2f7f4f;font-family:'Nunito Sans',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ c }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasHomework }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">Homework</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:16.5px;line-height:1.5;color:#2f2314">{{ homework.title }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty;margin-top:8px">{{ homework.task }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasBoard }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="font-family:'Special Elite',monospace;font-size:11px;letter-spacing:2px;color:#8a6a34;margin-bottom:9px;text-transform:uppercase">On the board, in this order</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ board }}" as="b" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c0392b;color:#fff8e7;border:3px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:13px">{{ b.n }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.6;color:#3a2c1a;text-wrap:pretty">{{ b.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTest }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'Alfa Slab One',serif;font-size:18px;color:{{ accent }}">Review test</span>
+<span style="font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#8a6a34">{{ testScore }}</span>
+</div>
+<sc-for list="{{ testView }}" as="q" hint-placeholder-count="5">
+<div style="background:#fff8ec;border:3px solid #23160b;border-radius:14px;padding:16px 18px;box-shadow:0 4px 0 rgba(0,0,0,.15)">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c0392b;color:#fff8e7;border:3px solid #23160b;display:grid;place-items:center;font-family:'Alfa Slab One',serif;font-size:13px">{{ q.n }}</div>
+<div style="font-family:'Nunito Sans',sans-serif;font-weight:700;font-size:16.5px;line-height:1.5;color:#2f2314">{{ q.q }}</div>
+</div>
+<div style="margin-top:12px">
+<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.text }}</button>
+</sc-for>
+</div>
+<div style="{{ q.explainStyle }}">{{ q.explain }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'Special Elite',monospace;font-size:12px;letter-spacing:2px;color:{{ accent }};margin-bottom:10px">QUICK CHECK</div>
+<div style="font-family:'Alfa Slab One',serif;font-size:23px;color:#2f2314;line-height:1.25;margin-bottom:20px;max-width:760px">{{ unit.quiz.q }}</div>
+<div style="display:flex;flex-direction:column;gap:12px;max-width:660px">
+<sc-for list="{{ optionsView }}" as="opt" hint-placeholder-count="3">
+<button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.text }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ quizCorrect }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:660px;background:#1f8a7a;color:#fff8e7;border:4px solid #23160b;border-radius:14px;padding:15px 18px;font-family:'Nunito Sans',sans-serif;font-size:16px;line-height:1.45;box-shadow:0 4px 0 rgba(0,0,0,.2)"><b>Nailed it!</b> {{ quizExplain }}</div>
+</sc-if>
+<sc-if value="{{ quizWrong }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:660px;background:#c0392b;color:#fff8e7;border:4px solid #23160b;border-radius:14px;padding:15px 18px;font-family:'Nunito Sans',sans-serif;font-size:16px;line-height:1.45;box-shadow:0 4px 0 rgba(0,0,0,.2)"><b>Not quite.</b> {{ quizExplain }}</div>
+</sc-if>
+</sc-if>
+
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:15px 26px;background:#ecdcb2;border-top:6px solid #23160b;flex:none">
+<button onClick="{{ prev }}" style="{{ prevStyle }}">&#9664; Prev</button>
+<div style="font-family:'Special Elite',monospace;font-size:14px;letter-spacing:1px;color:#4a3620">CHECKPOINT {{ unitNum }} / 12</div>
+<div style="display:flex;gap:10px">
+<button onClick="{{ close }}" style="font-family:'Special Elite',monospace;font-size:14px;cursor:pointer;padding:10px 18px;border:4px solid #23160b;border-radius:12px;background:#fff8ec;color:#3a2c1a;box-shadow:0 4px 0 rgba(0,0,0,.2)">World map</button>
+<button onClick="{{ next }}" style="{{ nextStyle }}">Next &#9654;</button>
+</div>
+</div>
+
+</div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Bold color&quot;,&quot;Vintage sepia&quot;],&quot;default&quot;:&quot;Bold color&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;showUnitLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;animateCharacter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  path = "M 150 742 C 330 700 470 690 620 716 C 770 742 858 796 1010 776 C 1182 754 1322 664 1330 520 C 1338 398 1210 354 1040 380 C 872 406 730 470 560 448 C 380 424 286 350 322 250 C 352 166 502 150 692 172 C 902 194 1132 150 1362 186";
+
+  units = [];
+
+  state = { scale: this.calcScale(), checkpoints: [], current: null, open: false, activeTab: "guide", mugPct: "3.5%", quizChoice: null, vocabIdx: 0, gramIdx: 0, mixInput: "", mixOut: null, mixMsg: "", mixSeed: 0, mixPanel: false, testPick: {} };
+
+  calcScale(){
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+    var v = Math.min(w / 1600, h / 900);
+    if (isFinite(v) && v > 0.02){ this._lastScale = v; return v; }
+    return this._lastScale || 1;
+  }
+
+  componentDidMount(){ this._boot(); }
+  _boot(){
+    if (!window.P2_UNITS || !window.P2_UNITS.length || !window.P2_UNITS[window.P2_UNITS.length - 1]._enriched){ this._bt = setTimeout(() => this._boot(), 60); return; }
+    this.units = window.P2_UNITS;
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("style", "position:absolute;width:0;height:0;overflow:hidden;left:-9999px");
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", this.path);
+    svg.appendChild(p);
+    document.body.appendChild(svg);
+    const total = p.getTotalLength();
+    const n = this.units.length;
+    const cps = this.units.map((u, i) => {
+      const f = 0.035 + i * (0.955 - 0.035) / (n - 1);
+      const pt = p.getPointAtLength(f * total);
+      return { x: Math.round(pt.x), y: Math.round(pt.y), pct: (f * 100).toFixed(2) + "%", num: u.n, name: u.title, color: u.color };
+    });
+    document.body.removeChild(svg);
+    this.pcts = cps.map(c => c.pct);
+    this.setState({ checkpoints: cps, mugPct: cps[0].pct, scale: this.calcScale() });
+    this._onResize = () => this.setState({ scale: this.calcScale() });
+    window.addEventListener("resize", this._onResize);
+    this._fitTimer = setInterval(() => {
+      var v = this.calcScale();
+      if (Math.abs(v - this.state.scale) > 0.0005) this.setState({ scale: v });
+    }, 250);
+  }
+  componentWillUnmount(){ if (this._bt) clearTimeout(this._bt); if (this._onResize) window.removeEventListener("resize", this._onResize); if (this._t) clearTimeout(this._t); }
+
+  travel(i){ this.setState({ current: i, mugPct: this.pcts[i], activeTab: "guide", quizChoice: null, vocabIdx: 0, gramIdx: 0, testPick: {} }); }
+  setVocab(i){ this.setState({ vocabIdx: i }); }
+  setGram(i){ this.setState({ gramIdx: i }); }
+  clickCheckpoint(i){
+    const wasOpen = this.state.open;
+    this.travel(i);
+    if (!wasOpen){ if (this._t) clearTimeout(this._t); this._t = setTimeout(() => this.setState({ open: true }), 980); }
+  }
+  next(){ if (this.state.current < this.units.length - 1) this.travel(this.state.current + 1); }
+  prev(){ if (this.state.current > 0) this.travel(this.state.current - 1); }
+  close(){ this.setState({ open: false }); }
+  setTab(t){ this.setState({ activeTab: t }); }
+  answerQuiz(i){ if (this.state.quizChoice != null) return; this.setState({ quizChoice: i }); }
+
+
+  mixGo(){
+    if (!window.MIXER || !this.units.length) return;
+    const r = window.MIXER.parse(this.state.mixInput, this.units);
+    if (!r.units.length){
+      this.setState({ mixOut: null, mixMsg: String(this.state.mixInput).trim()
+        ? "Nothing matches that. Try a single class number, a range like 5-14, or \u201cunit 3\u201d."
+        : "Type a class number first \u2014 for example 5, 12-20, or \u201cunit 3\u201d." });
+      return;
+    }
+    const seed = this.state.mixSeed + 1;
+    this.setState({ mixSeed: seed, mixMsg: r.unknown.length ? "Ignored: " + r.unknown.join(", ") : "", mixOut: window.MIXER.build(r.units, { code: "C1", seed: seed }) });
+  }
+  mixVals(){
+    const s = this.state, m = s.mixOut;
+    return {
+      mixInput: s.mixInput,
+      mixMini: !s.mixPanel, mixPanel: s.mixPanel,
+      mixShow: () => this.setState({ mixPanel: true }),
+      mixHide: () => this.setState({ mixPanel: false, mixMsg: "" }),
+      mixMsg: s.mixMsg || "Type class numbers \u2014 get one question that covers them all, and you pick the output.",
+      mixOpen: !!m, mix: m,
+      mixActs: m ? m.acts : [], mixTopics: m ? m.topics : [], mixLex: m ? m.lex : [],
+      mixPPP: m ? m.ppp : [], mixMenu: m ? m.outputMenu : [], mixBoard: m ? m.core.board : [],
+      mixOnChange: e => this.setState({ mixInput: e.target.value }),
+      mixOnKey: e => { if (e.key === "Enter") this.mixGo(); },
+      mixGo: () => this.mixGo(),
+      mixClose: () => this.setState({ mixOut: null })
+    };
+  }
+
+
+  answerTest(qi, oi){
+    const picks = Object.assign({}, this.state.testPick || {});
+    if (picks[qi] != null) return;
+    picks[qi] = oi;
+    this.setState({ testPick: picks });
+  }
+  plusVals(){
+    const s = this.state;
+    const u = (s.current != null && this.units[s.current]) ? this.units[s.current] : null;
+    const g = (u && u.grammar && u.grammar.length) ? u.grammar[Math.min(s.gramIdx, u.grammar.length - 1)] : null;
+    const con = g && g.contrast ? g.contrast : null;
+    const cc = con ? con.cols.length : 0;
+    const cgrid = con ? "display:grid;grid-template-columns:" + (cc === 3 ? "1.1fr 1.2fr 1.6fr" : "repeat(" + cc + ",1fr)") + ";" : "";
+    const test = (u && u.test) ? u.test : [];
+    const picks = s.testPick || {};
+    let score = 0, done = 0;
+    test.forEach((q, i) => { if (picks[i] != null){ done++; if (picks[i] === q.answer) score++; } });
+    const optStyle = (pick, oi, ans) => {
+      let bg = "#fff8ec", col = "#2f2314";
+      if (pick != null){
+        if (oi === ans){ bg = "#2f7f4f"; col = "#fff8e7"; }
+        else if (oi === pick){ bg = "#c0392b"; col = "#fff8e7"; }
+        else { bg = "#e8dcc0"; col = "#8a7550"; }
+      }
+      return "display:block;text-align:left;width:100%;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:16.5px;line-height:1.35;padding:12px 15px;border:3px solid #23160b;border-radius:10px;margin-bottom:9px;background:" + bg + ";color:" + col;
+    };
+    return {
+      hasMore: !!(g && g.more && g.more.length), gMore: (g && g.more) || [],
+      hasFix: !!(g && g.fix && g.fix.length), gFix: (g && g.fix) || [],
+      hasSound: !!(g && g.sound), gSound: (g && g.sound) || "",
+      hasDrill: !!(g && g.drill), gDrillName: (g && g.drill) ? g.drill.name : "", gDrillPrompt: (g && g.drill) ? g.drill.prompt : "",
+      gDrillItems: (g && g.drill && g.drill.items) ? g.drill.items.map((x, i) => ({ n: i + 1, text: x })) : [],
+      hasDialogue: !!(g && g.dialogue && g.dialogue.length), gDialogue: (g && g.dialogue) || [],
+      hasContrast: !!con, contrastTitle: con ? con.title : "", contrastCols: con ? con.cols : [],
+      contrastHeadStyle: cgrid + "background:#c0392b",
+      contrastRows: con ? con.rows.map((r, i) => ({ cells: r, style: cgrid + "background:" + (i % 2 ? "#f3e7c8" : "#fff8ec") + ";border-top:2px solid #d8c393" })) : [],
+      isDynamics: s.activeTab === "dynamics",
+      isTest: s.activeTab === "test",
+      dynamics: (u && u.dynamics) ? u.dynamics.map((d, i) => Object.assign({}, d, { num: i + 1 })) : [],
+      hasWriting: !!(u && u.writing), writing: (u && u.writing) || null,
+      writingCriteria: (u && u.writing && u.writing.criteria) ? u.writing.criteria : [],
+      hasHomework: !!(u && u.homework), homework: (u && u.homework) || null,
+      hasBoard: !!(u && u.board && u.board.length), board: (u && u.board) ? u.board.map((x, i) => ({ n: i + 1, text: x })) : [],
+      testView: test.map((q, i) => ({
+        n: i + 1, q: q.q, explain: q.explain,
+        explainStyle: picks[i] != null ? "margin-top:11px;padding-top:10px;border-top:2px solid #d8c393;font-family:'Nunito Sans',sans-serif;font-size:15px;line-height:1.5;color:#8a6a34" : "display:none",
+        options: q.options.map((text, oi) => ({ text, onClick: () => this.answerTest(i, oi), style: optStyle(picks[i], oi, q.answer) }))
+      })),
+      testScore: done ? score + " / " + test.length + " correct so far" : "Tap one answer per question."
+    };
+  }
+
+  renderVals(){
+    const s = this.state, P = this.props || {};
+    const sepia = (P.theme || "Bold color") === "Vintage sepia";
+    const showLabels = P.showUnitLabels !== false;
+    const animate = P.animateCharacter !== false;
+    const cur = s.current;
+    const unit = cur != null ? this.units[cur] : null;
+    const accent = unit ? unit.color : "#c0392b";
+
+    const checkpoints = s.checkpoints.map((c, i) => ({
+      x: c.x, y: c.y, num: c.num, name: c.name, color: c.color,
+      current: i === cur,
+      labelDisplay: showLabels ? "block" : "none",
+      shadow: i === cur
+        ? "0 0 0 7px rgba(255,236,150,.65),0 7px 0 rgba(0,0,0,.35),inset 0 4px 0 rgba(255,255,255,.3)"
+        : "0 7px 0 rgba(0,0,0,.35),inset 0 4px 0 rgba(255,255,255,.3)",
+      onClick: () => this.clickCheckpoint(i)
+    }));
+
+    const _pu = (this.state.current != null && this.units[this.state.current]) ? this.units[this.state.current] : null;
+    const tabsDef = [["guide","Unit guide"],["vocab","Vocabulary"],["grammar","Grammar"],["speaking","Speaking"],["tips","Tips"],["quiz","Quick Check"]];
+    if (_pu && _pu.dynamics && _pu.dynamics.length) tabsDef.push(["dynamics","DYNAMICS"]);
+    if (_pu && _pu.test && _pu.test.length) tabsDef.push(["test","TEST"]);
+    const tabsView = tabsDef.map(([k, label]) => {
+      const active = s.activeTab === k;
+      return { label, onClick: () => this.setTab(k),
+        style: "font-family:'Special Elite',monospace;font-size:14px;letter-spacing:.5px;cursor:pointer;padding:10px 15px;border:4px solid #23160b;border-bottom:none;border-radius:12px 12px 0 0;margin-right:6px;white-space:nowrap;background:" + (active ? accent : "#e3cf9f") + ";color:" + (active ? "#fff8e7" : "#5a4630") + ";transform:translateY(" + (active ? "0" : "4px") + ")" };
+    });
+
+    let optionsView = [];
+    const answered = s.quizChoice != null;
+    if (unit){
+      optionsView = unit.quiz.options.map((text, idx) => {
+        let bg = "#fff8ec", col = "#2a1c0e";
+        if (answered){
+          if (idx === unit.quiz.answer){ bg = "#1f8a7a"; col = "#fff"; }
+          else if (idx === s.quizChoice){ bg = "#c0392b"; col = "#fff"; }
+          else { bg = "#ece0c2"; col = "#6a5a40"; }
+        }
+        return { text, onClick: () => this.answerQuiz(idx),
+          style: "display:block;text-align:left;width:100%;cursor:" + (answered ? "default" : "pointer") + ";font-family:'Nunito Sans',sans-serif;font-size:18px;font-weight:700;padding:15px 18px;border:4px solid #23160b;border-radius:14px;background:" + bg + ";color:" + col + ";box-shadow:0 4px 0 rgba(0,0,0,.2)" };
+      });
+    }
+
+    const subBtn = (active) => "display:block;width:100%;text-align:left;cursor:pointer;font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.25;padding:11px 13px;border:3px solid #23160b;border-radius:11px;margin-bottom:8px;background:" + (active ? accent : "#fff8ec") + ";color:" + (active ? "#fff8e7" : "#3a2c1a") + ";box-shadow:0 3px 0 rgba(0,0,0," + (active ? ".25" : ".13") + ")";
+    const vIdx = unit ? Math.min(s.vocabIdx, unit.vocab.length - 1) : 0;
+    const gIdx = unit ? Math.min(s.gramIdx, unit.grammar.length - 1) : 0;
+    const vocabMenu = unit ? unit.vocab.map((v, i) => ({ term: v.term, pos: v.pos, onClick: () => this.setVocab(i), style: subBtn(i === vIdx), posStyle: "font-family:'Special Elite',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-top:3px;opacity:" + (i === vIdx ? ".85" : ".6") })) : [];
+    const gramMenu = unit ? unit.grammar.map((g, i) => ({ name: g.name, short: g.short, onClick: () => this.setGram(i), style: subBtn(i === gIdx), posStyle: "font-family:'Nunito Sans',sans-serif;font-size:12.5px;font-weight:400;line-height:1.3;margin-top:4px;opacity:" + (i === gIdx ? ".9" : ".7") })) : [];
+    const vocabItem = unit ? unit.vocab[vIdx] : null;
+    const gramItem = unit ? unit.grammar[gIdx] : null;
+    const chart = gramItem && gramItem.chart ? gramItem.chart : null;
+    const ccols = chart ? chart.cols.length : 0;
+    const cgrid = chart ? "display:grid;grid-template-columns:" + (ccols === 3 ? "1.1fr 1.2fr 1.6fr" : ccols === 4 ? "1fr 1fr 1fr 1.4fr" : "repeat(" + ccols + ",1fr)") + ";" : "";
+    const chartRows = chart ? chart.rows.map((r, i) => ({ cells: r, style: cgrid + "background:" + (i % 2 ? "#f3e7c8" : "#fff8ec") + ";border-top:2px solid #d8c393" })) : [];
+
+    const navBtn = "font-family:'Special Elite',monospace;font-size:14px;cursor:pointer;padding:10px 20px;border:4px solid #23160b;border-radius:12px;background:" + accent + ";color:#fff8e7;box-shadow:0 4px 0 rgba(0,0,0,.25)";
+    const navBtnOff = "font-family:'Special Elite',monospace;font-size:14px;cursor:default;padding:10px 20px;border:4px solid #23160b;border-radius:12px;background:#cdbb90;color:#8a7a58;box-shadow:0 4px 0 rgba(0,0,0,.12)";
+
+    return {
+      scale: s.scale,
+      stageFilter: sepia ? "sepia(.42) saturate(.82) contrast(1.03)" : "none",
+      checkpoints,
+      mugPct: s.mugPct,
+      mugPathCss: "path(\"" + this.path + "\")",
+      mugBob: animate ? "bob 1.5s ease-in-out infinite" : "none",
+      steamDisplay: animate ? "block" : "none",
+      open: s.open,
+      unit,
+      accent,
+      unitNum: cur != null ? cur + 1 : "",
+      activeTab: s.activeTab,
+      overview: unit ? unit.overview : null,
+      goals: unit ? unit.overview.goals.map((t, i) => ({ num: i + 1, text: t })) : [],
+      vocabMenu, vocabItem, gramMenu, gramItem,
+      vocabCount: unit ? unit.vocab.length : 10,
+      hasDeep: !!(gramItem && gramItem.deep),
+      hasChart: !!chart,
+      chartTitle: chart ? chart.title : "",
+      chartCols: chart ? chart.cols : [],
+      chartRows,
+      chartHeadStyle: cgrid + "background:" + accent,
+      isGuide: s.activeTab === "guide",
+      isVocab: s.activeTab === "vocab",
+      isGrammar: s.activeTab === "grammar",
+      isSpeaking: s.activeTab === "speaking",
+      isTips: s.activeTab === "tips",
+      isQuiz: s.activeTab === "quiz",
+      tabsView, optionsView,
+      quizCorrect: answered && unit && s.quizChoice === unit.quiz.answer,
+      quizWrong: answered && unit && s.quizChoice !== unit.quiz.answer,
+      quizExplain: unit ? unit.quiz.explain : "",
+      prevStyle: cur > 0 ? navBtn : navBtnOff,
+      nextStyle: (cur != null && cur < this.units.length - 1) ? navBtn : navBtnOff,
+      next: () => this.next(), prev: () => this.prev(), close: () => this.close(),
+      ...this.mixVals(),
+      ...this.plusVals()
+    };
+  }
+}
+</script>
+</body>
+</html>

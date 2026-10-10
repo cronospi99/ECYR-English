@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Barlow:ital,wght@0,400;0,600;0,700;1,500&family=Press+Start+2P&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#061436; }
+  a { color:#ffcf1b; text-decoration:none; }
+  a:hover { color:#fff; }
+  ::-webkit-scrollbar { width:12px; }
+  ::-webkit-scrollbar-track { background:#0b1740; }
+  ::-webkit-scrollbar-thumb { background:#ffcf1b; border:3px solid #0b1740; border-radius:8px; }
+  @keyframes groundScroll { from { background-position:0 0; } to { background-position:-128px 0; } }
+  @keyframes dirtScroll { from { background-position:0 0; } to { background-position:-96px 0; } }
+  @keyframes cloudDrift { from { transform:translateX(110vw); } to { transform:translateX(-40vw); } }
+  @keyframes ringSpin { 0%,100% { transform:scaleX(1); } 25% { transform:scaleX(.12); } 50% { transform:scaleX(1); } 75% { transform:scaleX(.12); } }
+  @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
+  @keyframes loopSpin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+  @keyframes panelIn { 0% { opacity:0; transform:translateX(90px) skewX(-9deg); } 60% { transform:translateX(-10px) skewX(2deg); } 100% { opacity:1; transform:translateX(0) skewX(0); } }
+  @keyframes chipIn { 0% { opacity:0; transform:translateY(14px) scale(.85); } 100% { opacity:1; transform:translateY(0) scale(1); } }
+  @keyframes rowIn { 0% { opacity:0; transform:translateX(-26px); } 100% { opacity:1; transform:translateX(0); } }
+  @keyframes dash { 0% { opacity:0; transform:translateX(60vw) scaleX(.4); } 30% { opacity:1; } 100% { opacity:0; transform:translateX(-80vw) scaleX(2.4); } }
+  @keyframes flicker { 0%,100% { opacity:.9; } 50% { opacity:.35; } }
+  @keyframes sunPulse { 0%,100% { box-shadow:0 0 60px 18px rgba(255,222,120,.45); } 50% { box-shadow:0 0 90px 30px rgba(255,222,120,.7); } }
+  @keyframes popIn { 0% { transform:scale(.6); opacity:0; } 70% { transform:scale(1.08); } 100% { transform:scale(1); opacity:1; } }
+  @keyframes shake { 0%,100% { transform:translateX(0); } 20% { transform:translateX(-8px); } 40% { transform:translateX(8px); } 60% { transform:translateX(-5px); } 80% { transform:translateX(5px); } }
+  @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;background:linear-gradient(180deg,#07235f 0%,#124fbe 34%,#2f8ef0 62%,#8fd8ff 100%);font-family:Barlow,system-ui,sans-serif;color:#0b1740">
+
+  <div style="position:absolute;top:5%;right:7%;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff6c8,#ffd451 60%,#ffab21);animation:sunPulse 4s ease-in-out infinite"></div>
+
+  <div style="position:absolute;top:16%;left:8%;width:340px;height:340px;border-radius:50%;border:26px solid rgba(255,255,255,.10);animation:loopSpin 26s linear infinite"></div>
+  <div style="position:absolute;top:44%;right:14%;width:190px;height:190px;border-radius:50%;border:16px solid rgba(255,255,255,.09);animation:loopSpin 18s linear infinite reverse"></div>
+
+  <div style="position:absolute;top:36%;left:0;animation:cloudDrift 44s linear infinite">
+    <div style="width:220px;height:56px;background:rgba(255,255,255,.92);border-radius:60px;box-shadow:60px -26px 0 -6px rgba(255,255,255,.92),140px -8px 0 -14px rgba(255,255,255,.92)"></div>
+  </div>
+  <div style="position:absolute;top:50%;left:0;animation:cloudDrift 62s linear infinite;animation-delay:-20s">
+    <div style="width:160px;height:42px;background:rgba(255,255,255,.72);border-radius:60px;box-shadow:48px -20px 0 -6px rgba(255,255,255,.72)"></div>
+  </div>
+  <div style="position:absolute;top:60%;left:0;animation:cloudDrift 80s linear infinite;animation-delay:-45s">
+    <div style="width:300px;height:64px;background:rgba(255,255,255,.55);border-radius:80px;box-shadow:90px -30px 0 -8px rgba(255,255,255,.55)"></div>
+  </div>
+
+  <div style="position:absolute;bottom:96px;left:-6%;width:46%;height:280px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#1e7a3c,#14562a)"></div>
+  <div style="position:absolute;bottom:96px;right:-8%;width:52%;height:220px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#1a6d36,#114b25)"></div>
+
+  <div style="position:absolute;left:0;right:0;bottom:56px;height:40px;background-image:repeating-conic-gradient(#43c94a 0% 25%,#2f9c37 0% 50%);background-size:128px 128px;animation:groundScroll 1.1s linear infinite;border-top:5px solid #0b1740"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:56px;background-image:repeating-conic-gradient(#c48a3f 0% 25%,#a06a2a 0% 50%);background-size:96px 96px;animation:dirtScroll 1.6s linear infinite"></div>
+
+  <sc-if value="{{ dashing }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;z-index:20;pointer-events:none">
+      <div style="position:absolute;top:22%;left:0;width:60vw;height:10px;background:linear-gradient(90deg,transparent,#fff);animation:dash .45s ease-out"></div>
+      <div style="position:absolute;top:38%;left:0;width:80vw;height:6px;background:linear-gradient(90deg,transparent,#ffcf1b);animation:dash .5s ease-out .04s"></div>
+      <div style="position:absolute;top:56%;left:0;width:70vw;height:12px;background:linear-gradient(90deg,transparent,#fff);animation:dash .42s ease-out .02s"></div>
+      <div style="position:absolute;top:71%;left:0;width:50vw;height:5px;background:linear-gradient(90deg,transparent,#7fd0ff);animation:dash .5s ease-out .06s"></div>
+    </div>
+  </sc-if>
+
+  <div style="position:relative;z-index:6;display:flex;flex-direction:column;height:100%;box-sizing:border-box;padding:18px 30px 26px;gap:12px">
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div style="display:flex;align-items:flex-end;gap:16px">
+        <div style="animation:bob 2.2s ease-in-out infinite">
+          <div style="font-family:Bungee,sans-serif;font-size:46px;line-height:.94;color:#ffcf1b;-webkit-text-stroke:5px #0b1740;paint-order:stroke fill;text-shadow:0 7px 0 #0b1740,0 9px 0 rgba(0,0,0,.35);letter-spacing:.02em">MODAL VERBS</div>
+          <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:#fff;-webkit-text-stroke:4px #0b1740;paint-order:stroke fill;text-shadow:0 2px 0 #0b1740;margin-top:8px;letter-spacing:.02em">EVERY MODAL &#183; EVERY USE &#183; EVERY EXCEPTION</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="display:flex;align-items:center;gap:9px;background:#0b1740;border:4px solid #fff;border-radius:12px;padding:8px 14px;box-shadow:0 5px 0 #06102e">
+          <div style="width:22px;height:26px;border:5px solid #ffcf1b;border-radius:50%;animation:ringSpin 1.4s linear infinite"></div>
+          <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:#ffcf1b">{{ ringText }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;background:#0b1740;border:4px solid #fff;border-radius:12px;padding:8px 14px;box-shadow:0 5px 0 #06102e">
+          <div style="font-family:'Press Start 2P',monospace;font-size:9px;color:#7fd0ff">SCORE</div>
+          <div style="font-family:'Press Start 2P',monospace;font-size:13px;color:#fff">{{ scoreText }}</div>
+        </div>
+        <button onClick="{{ toggleSound }}" style="font-family:'Press Start 2P',monospace;font-size:10px;cursor:pointer;background:{{ soundBg }};color:{{ soundFg }};border:4px solid #0b1740;border-radius:12px;padding:11px 12px;box-shadow:0 5px 0 #06102e" style-hover="filter:brightness(1.15)">{{ soundLabel }}</button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ zones }}" as="z" hint-placeholder-count="6">
+        <button onClick="{{ z.go }}" style="font-family:Bungee,sans-serif;font-size:15px;letter-spacing:.05em;padding:11px 17px;border-radius:13px;border:4px solid #0b1740;cursor:pointer;color:{{ z.fg }};background:{{ z.bg }};box-shadow:0 6px 0 {{ z.sh }};transform:translateY({{ z.ty }});transition:filter .12s" style-hover="filter:brightness(1.14)">{{ z.label }}</button>
+      </sc-for>
+    </div>
+
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:rgba(7,17,48,.94);border:5px solid #fff;border-radius:20px;box-shadow:0 10px 0 #06102e,0 0 0 5px #0b1740;overflow:hidden">
+
+      <sc-if value="{{ hasChips }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;padding:14px 20px;border-bottom:4px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04)">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="9">
+            <button onClick="{{ c.go }}" style="font-family:Bungee,sans-serif;font-size:13px;letter-spacing:.04em;padding:8px 14px;border-radius:999px;border:3px solid {{ c.bd }};cursor:pointer;color:{{ c.fg }};background:{{ c.bg }};animation:chipIn .3s ease-out backwards;animation-delay:{{ c.delay }}" style-hover="filter:brightness(1.2)">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ panelVisible }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 30px 30px;animation:panelIn .34s cubic-bezier(.2,.9,.3,1.3)">
+
+          <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start">
+              <div>
+                <div style="font-family:Bungee,sans-serif;font-size:32px;color:#ffcf1b;line-height:1.05;text-shadow:0 4px 0 #06102e">WHAT IS A MODAL VERB?</div>
+                <p style="font-size:21px;line-height:1.5;color:#eaf2ff;text-wrap:pretty;margin:14px 0 18px">A modal is a helping verb that does not describe an action. It describes the <em style="color:#7fd0ff;font-style:normal;font-weight:700">speaker's attitude</em> towards the action: how possible it is, how necessary it is, how polite you are being about it.</p>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;gap:14px;align-items:baseline;background:rgba(255,255,255,.06);border-left:6px solid #ffcf1b;border-radius:0 12px 12px 0;padding:12px 16px">
+                    <span style="font-family:'Press Start 2P',monospace;font-size:10px;color:#ffcf1b;white-space:nowrap">FACT</span>
+                    <span style="font-size:20px;color:#fff">She <strong style="color:#ffcf1b">works</strong> on Sundays.</span>
+                  </div>
+                  <div style="display:flex;gap:14px;align-items:baseline;background:rgba(255,255,255,.06);border-left:6px solid #7fd0ff;border-radius:0 12px 12px 0;padding:12px 16px">
+                    <span style="font-family:'Press Start 2P',monospace;font-size:10px;color:#7fd0ff;white-space:nowrap">ATTITUDE</span>
+                    <span style="font-size:20px;color:#fff">She <strong style="color:#7fd0ff">might work</strong> / <strong style="color:#7fd0ff">must work</strong> / <strong style="color:#7fd0ff">should work</strong> on Sundays.</span>
+                  </div>
+                </div>
+                <p style="font-size:19px;line-height:1.5;color:#c9d8f5;margin:18px 0 0">Same action. Four different worlds. That is the whole job of a modal.</p>
+              </div>
+              <div style="background:rgba(255,207,27,.1);border:4px solid #ffcf1b;border-radius:16px;padding:18px 20px">
+                <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#ffcf1b;margin-bottom:14px">STAGE SELECT</div>
+                <div style="display:flex;flex-direction:column;gap:11px">
+                  <div style="font-size:18px;color:#eaf2ff"><strong style="color:#fff;font-family:Bungee,sans-serif;font-size:15px">THE 9 CORE</strong><br />can, could, may, might, must, shall, should, will, would</div>
+                  <div style="font-size:18px;color:#eaf2ff"><strong style="color:#fff;font-family:Bungee,sans-serif;font-size:15px">MARGINAL</strong><br />ought to, need, dare, used to</div>
+                  <div style="font-size:18px;color:#eaf2ff"><strong style="color:#fff;font-family:Bungee,sans-serif;font-size:15px">SEMI-MODALS</strong><br />have to, had better, be able to and friends</div>
+                  <div style="font-size:18px;color:#eaf2ff"><strong style="color:#fff;font-family:Bungee,sans-serif;font-size:15px">RULES &amp; TRAPS</strong><br />the ten laws and the exceptions</div>
+                  <div style="font-size:18px;color:#eaf2ff"><strong style="color:#fff;font-family:Bungee,sans-serif;font-size:15px">BONUS STAGE</strong><br />14 questions, one ring each</div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isModal }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:6px">
+                <div style="font-family:Bungee,sans-serif;font-size:52px;line-height:1;color:#ffcf1b;-webkit-text-stroke:4px #06102e;paint-order:stroke fill;text-shadow:0 6px 0 #06102e">{{ m.w }}</div>
+                <div style="font-family:'Press Start 2P',monospace;font-size:10px;color:#7fd0ff;background:rgba(127,208,255,.12);border:2px solid rgba(127,208,255,.5);border-radius:8px;padding:7px 10px">{{ m.tag }}</div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px">
+                <div style="font-size:17px;color:#c9d8f5;background:rgba(255,255,255,.06);border-radius:10px;padding:8px 14px"><strong style="color:#fff">Negative:</strong> {{ m.neg }}</div>
+                <div style="font-size:17px;color:#c9d8f5;background:rgba(255,255,255,.06);border-radius:10px;padding:8px 14px"><strong style="color:#fff">Past:</strong> {{ m.past }}</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px">
+                <sc-for list="{{ uses }}" as="u" hint-placeholder-count="6">
+                  <div style="background:rgba(255,255,255,.06);border-radius:14px;border:3px solid rgba(255,255,255,.14);padding:14px 16px;animation:rowIn .3s ease-out backwards;animation-delay:{{ u.delay }}">
+                    <div style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+                      <div style="width:14px;height:17px;border:4px solid #ffcf1b;border-radius:50%;flex:none;animation:ringSpin 1.5s linear infinite"></div>
+                      <div style="font-family:Bungee,sans-serif;font-size:14px;color:#fff;letter-spacing:.03em">{{ u.u }}</div>
+                    </div>
+                    <div style="font-size:20px;color:#ffe89a;font-style:italic;line-height:1.35">{{ u.e }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="margin-top:18px;background:rgba(232,53,42,.14);border:4px solid #e8352a;border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start">
+                <div style="font-family:'Press Start 2P',monospace;font-size:11px;color:#ff8b82;white-space:nowrap;padding-top:3px;animation:flicker 1.6s ease-in-out infinite">DANGER</div>
+                <div style="font-size:19px;line-height:1.45;color:#ffe3e0;text-wrap:pretty">{{ m.warn }}</div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isSemi }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-family:Bungee,sans-serif;font-size:30px;color:#ffcf1b;text-shadow:0 4px 0 #06102e">SEMI-MODALS &amp; MODAL PHRASES</div>
+              <p style="font-size:19px;color:#c9d8f5;margin:8px 0 18px;max-width:78ch;text-wrap:pretty">These are not true modals, but they do the same work and they supply the forms the real modals cannot make. Most of them take <strong style="color:#fff">to</strong>, and most of them conjugate.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px">
+                <sc-for list="{{ semis }}" as="s" hint-placeholder-count="10">
+                  <div style="background:rgba(255,255,255,.06);border:3px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;animation:rowIn .3s ease-out backwards;animation-delay:{{ s.delay }}">
+                    <div style="font-family:Bungee,sans-serif;font-size:16px;color:#7fd0ff;letter-spacing:.03em">{{ s.n }}</div>
+                    <div style="font-size:18px;color:#eaf2ff;margin:6px 0 8px;line-height:1.35">{{ s.u }}</div>
+                    <div style="font-size:19px;color:#ffe89a;font-style:italic;line-height:1.35">{{ s.e }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isRules }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div style="font-family:Bungee,sans-serif;font-size:30px;color:#ffcf1b;text-shadow:0 4px 0 #06102e">THE TEN LAWS &amp; THEIR EXCEPTIONS</div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+                <sc-for list="{{ rules }}" as="r" hint-placeholder-count="10">
+                  <div style="display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.06);border:3px solid rgba(255,255,255,.13);border-radius:14px;padding:13px 16px;animation:rowIn .28s ease-out backwards;animation-delay:{{ r.delay }}">
+                    <div style="font-family:'Press Start 2P',monospace;font-size:14px;color:#0b1740;background:#ffcf1b;border-radius:8px;padding:9px 8px;min-width:34px;text-align:center;flex:none">{{ r.n }}</div>
+                    <div style="flex:1">
+                      <div style="font-size:20px;color:#fff;font-weight:600;line-height:1.3">{{ r.t }}</div>
+                      <div style="display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:7px">
+                        <div style="font-size:19px;color:#8ff2a4"><span style="font-family:'Press Start 2P',monospace;font-size:10px">OK</span> &nbsp;{{ r.ok }}</div>
+                        <div style="font-size:19px;color:#ff9d95"><span style="font-family:'Press Start 2P',monospace;font-size:10px">NO</span> &nbsp;{{ r.no }}</div>
+                      </div>
+                      <sc-if value="{{ r.hasNote }}" hint-placeholder-val="{{ false }}">
+                        <div style="font-size:17px;color:#c9d8f5;margin-top:6px">{{ r.note }}</div>
+                      </sc-if>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+            <div style="max-width:1000px;margin:0 auto">
+              <sc-if value="{{ quizRunning }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+                    <div style="font-family:Bungee,sans-serif;font-size:26px;color:#ffcf1b;text-shadow:0 4px 0 #06102e">BONUS STAGE</div>
+                    <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:#7fd0ff">{{ progressText }}</div>
+                  </div>
+                  <div style="height:14px;background:#06102e;border:3px solid rgba(255,255,255,.25);border-radius:999px;overflow:hidden;margin:12px 0 22px">
+                    <div style="height:100%;background:linear-gradient(90deg,#ffcf1b,#ff8b21);width:{{ progressPct }};transition:width .3s ease"></div>
+                  </div>
+                  <div style="font-size:16px;color:#7fd0ff;font-family:'Press Start 2P',monospace;margin-bottom:12px">{{ q.hint }}</div>
+                  <div style="font-size:30px;line-height:1.4;color:#fff;text-wrap:pretty;margin-bottom:22px">{{ q.text }}</div>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+                    <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+                      <button onClick="{{ o.go }}" style="font-family:Bungee,sans-serif;font-size:19px;letter-spacing:.02em;padding:18px 14px;border-radius:14px;cursor:{{ o.cursor }};color:{{ o.fg }};background:{{ o.bg }};border:4px solid {{ o.bd }};box-shadow:0 6px 0 {{ o.sh }};transition:filter .12s" style-hover="filter:brightness(1.14)">{{ o.label }}</button>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:20px;display:flex;gap:16px;align-items:flex-start;background:{{ fbBg }};border:4px solid {{ fbBd }};border-radius:16px;padding:16px 18px;animation:popIn .28s ease-out">
+                      <div style="font-family:'Press Start 2P',monospace;font-size:12px;color:{{ fbBd }};white-space:nowrap;padding-top:3px">{{ fbTag }}</div>
+                      <div style="flex:1;font-size:20px;line-height:1.45;color:#eaf2ff;text-wrap:pretty">{{ q.why }}</div>
+                      <button onClick="{{ next }}" style="font-family:Bungee,sans-serif;font-size:16px;padding:12px 20px;border-radius:12px;border:4px solid #06102e;background:#ffcf1b;color:#0b1740;cursor:pointer;box-shadow:0 5px 0 #06102e;white-space:nowrap" style-hover="filter:brightness(1.12)">{{ nextLabel }}</button>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ false }}">
+                <div style="text-align:center;padding:20px 0;animation:popIn .4s ease-out">
+                  <div style="font-family:Bungee,sans-serif;font-size:44px;color:#ffcf1b;-webkit-text-stroke:4px #06102e;paint-order:stroke fill;text-shadow:0 6px 0 #06102e">STAGE CLEAR</div>
+                  <div style="display:flex;justify-content:center;gap:14px;margin:26px 0">
+                    <div style="width:34px;height:42px;border:9px solid #ffcf1b;border-radius:50%;animation:ringSpin 1.2s linear infinite"></div>
+                    <div style="width:34px;height:42px;border:9px solid #ffcf1b;border-radius:50%;animation:ringSpin 1.2s linear infinite;animation-delay:-.3s"></div>
+                    <div style="width:34px;height:42px;border:9px solid #ffcf1b;border-radius:50%;animation:ringSpin 1.2s linear infinite;animation-delay:-.6s"></div>
+                  </div>
+                  <div style="font-family:'Press Start 2P',monospace;font-size:22px;color:#fff">{{ finalText }}</div>
+                  <div style="font-size:21px;color:#c9d8f5;margin-top:16px">{{ finalNote }}</div>
+                  <button onClick="{{ restart }}" style="margin-top:26px;font-family:Bungee,sans-serif;font-size:19px;padding:15px 28px;border-radius:14px;border:4px solid #06102e;background:#ffcf1b;color:#0b1740;cursor:pointer;box-shadow:0 6px 0 #06102e" style-hover="filter:brightness(1.12)">RUN IT AGAIN</button>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+        </div>
+      </sc-if>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;soundEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Experience&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;calm&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Experience&quot;}}">
+class Component extends DCLogic {
+  state = { zone: 'intro', modalId: null, panelVisible: true, dashing: false, qi: 0, picked: null, score: 0, visited: { intro: 1 }, muted: false };
+
+  core = [
+    { id:'can', w:'CAN', tag:'CORE MODAL', neg:"can't / cannot", past:'could \u2192 was/were able to',
+      uses:[
+        { u:'Ability', e:'She can speak three languages.' },
+        { u:'Informal permission', e:'Can I borrow your pen?' },
+        { u:'Request', e:'Can you help me with this box?' },
+        { u:'Offer', e:'Can I get you a drink?' },
+        { u:'General possibility', e:'Smoking can cause cancer.' },
+        { u:'Impossibility / disbelief (negative)', e:"That can't be Tom \u2014 he's in Peru." }
+      ],
+      warn:'CAN has no infinitive, no -ing form and no participle. Borrow them from BE ABLE TO: "I want to be able to drive." \u2717 "I want to can drive."' },
+    { id:'could', w:'COULD', tag:'CORE MODAL', neg:"couldn't / could not", past:'could have + past participle',
+      uses:[
+        { u:'Past general ability', e:'I could swim when I was four.' },
+        { u:'Polite request', e:'Could you open the window, please?' },
+        { u:'Present or future possibility', e:'It could rain later.' },
+        { u:'Suggestion', e:'We could take the night train.' },
+        { u:'Past permission', e:'We could stay up late at weekends.' },
+        { u:'Reproach (could have + pp)', e:'You could have told me!' }
+      ],
+      warn:'For ONE successful action in the past, COULD is wrong. Use WAS/WERE ABLE TO or MANAGED TO: "The door was stuck, but he was able to open it." \u2717 "he could open it." COULD is fine in the negative: "he couldn\u2019t open it."' },
+    { id:'may', w:'MAY', tag:'CORE MODAL', neg:'may not (no contraction)', past:'may have + past participle',
+      uses:[
+        { u:'Formal permission', e:'You may leave when you have finished.' },
+        { u:'Asking permission formally', e:'May I come in?' },
+        { u:'Possibility (about 50%)', e:'It may snow tonight.' },
+        { u:'Concession', e:'He may be rich, but he is not happy.' },
+        { u:'Formal wishes', e:'May you both be very happy.' }
+      ],
+      warn:'There is no "mayn\u2019t" in modern English. Watch the ambiguity of MAY NOT: "You may not enter" (prohibition) vs "She may not come" (possibility). Only context tells them apart.' },
+    { id:'might', w:'MIGHT', tag:'CORE MODAL', neg:"might not / mightn't", past:'might have + past participle',
+      uses:[
+        { u:'Weak, remote possibility', e:"I might go \u2014 I'm really not sure." },
+        { u:'Past of MAY in reported speech', e:'He said he might be late.' },
+        { u:'Very tentative suggestion', e:'You might want to check the date.' },
+        { u:'Reproach (might have + pp)', e:'You might have warned me!' },
+        { u:'MIGHT AS WELL \u2014 no better option', e:"There's no bus. We might as well walk." }
+      ],
+      warn:'MIGHT HAVE + pp carries two meanings: past possibility ("She might have missed the train") and criticism ("You might have helped!"). Intonation, not grammar, separates them.' },
+    { id:'must', w:'MUST', tag:'CORE MODAL', neg:"mustn't / must not", past:'had to (obligation) \u00b7 must have + pp (deduction)',
+      uses:[
+        { u:'Strong obligation from the speaker', e:'I must finish this tonight.' },
+        { u:'Logical deduction, near certainty', e:"You've been travelling all day \u2014 you must be exhausted." },
+        { u:'Strong recommendation', e:'You must see that film.' },
+        { u:'Prohibition (mustn\u2019t)', e:'You mustn\u2019t touch those wires.' },
+        { u:'Written rules and notices', e:'Passengers must not lean out of the window.' }
+      ],
+      warn:'Two traps. MUST has no past tense for obligation \u2014 use HAD TO. And MUSTN\u2019T is not DON\u2019T HAVE TO: "You mustn\u2019t tell her" = it is forbidden; "You don\u2019t have to tell her" = it is not necessary. Negative deduction is CAN\u2019T HAVE, never MUSTN\u2019T HAVE.' },
+    { id:'shall', w:'SHALL', tag:'CORE MODAL \u00b7 ENDANGERED', neg:"shan't / shall not", past:'should (in reported speech)',
+      uses:[
+        { u:'Offers and suggestions with I / we', e:'Shall I carry that for you?' },
+        { u:'Proposals with we', e:'Shall we dance?' },
+        { u:'Formal future with I / we (British, dated)', e:'I shall return.' },
+        { u:'Legal and contractual obligation', e:'The tenant shall pay the rent on the first of each month.' },
+        { u:'Emphatic promise or threat', e:'You shall have your money on Friday.' }
+      ],
+      warn:'Outside questions with I and WE, SHALL has almost disappeared from speech and is very rare in American English \u2014 WILL or SHOULD replaces it. It survives mainly in legal drafting, where it means a binding duty.' },
+    { id:'should', w:'SHOULD', tag:'CORE MODAL', neg:"shouldn't / should not", past:'should have + past participle',
+      uses:[
+        { u:'Advice and recommendation', e:'You should see a doctor.' },
+        { u:'Weak obligation \u2014 the right thing to do', e:'You should wear a seatbelt.' },
+        { u:'Expectation', e:'They left at six, so they should be here by now.' },
+        { u:'Criticism of the past (should have + pp)', e:'You should have called.' },
+        { u:'Formal conditional with inversion', e:'Should you need help, dial 100.' },
+        { u:'Putative SHOULD after emotion (British)', e:'It is odd that he should say that.' },
+        { u:'In that-clauses after suggest / insist / demand', e:'They insisted that he should apologise.' }
+      ],
+      warn:'SHOULD HAVE + pp always means it did not happen: "You should have called" tells the listener that they did not call. Do not use it for things that did happen.' },
+    { id:'will', w:'WILL', tag:'CORE MODAL', neg:"won't / will not", past:'would',
+      uses:[
+        { u:'Prediction', e:'It will rain tomorrow.' },
+        { u:'Instant decision, made now', e:"I'll get it!" },
+        { u:'Promise or offer', e:"I'll help you move." },
+        { u:'Willingness \u2014 and refusal in the negative', e:"The car won't start." },
+        { u:'Characteristic or annoying habit', e:"He'll sit there for hours saying nothing." },
+        { u:'Request', e:'Will you close the door, please?' },
+        { u:'Deduction about the present', e:"That'll be the postman." }
+      ],
+      warn:'Never put WILL after a time conjunction. \u2713 "When he arrives, we\u2019ll eat." \u2717 "When he will arrive." The same rule applies to as soon as, before, after, until and while.' },
+    { id:'would', w:'WOULD', tag:'CORE MODAL', neg:"wouldn't / would not", past:'would have + past participle',
+      uses:[
+        { u:'Polite offer or request', e:'Would you like some tea?' },
+        { u:'Hypothetical result', e:'I would travel more if I had the money.' },
+        { u:'Repeated past habit', e:'Every summer we would drive to the coast.' },
+        { u:'Future in the past (reported speech)', e:'She said she would call.' },
+        { u:'Preference (would rather / would prefer)', e:"I'd rather stay in tonight." },
+        { u:'Refusal in the past (wouldn\u2019t)', e:"He wouldn't listen to anyone." },
+        { u:'Softening an opinion', e:'I would say it is too expensive.' }
+      ],
+      warn:'WOULD for past habits only works with actions, not states. \u2717 "We would have a dog." \u2713 "We used to have a dog." USED TO covers both; WOULD does not.' }
+  ];
+
+  marginal = [
+    { id:'ought', w:'OUGHT TO', tag:'MARGINAL MODAL', neg:"ought not to / oughtn't to (rare)", past:'ought to have + past participle',
+      uses:[
+        { u:'Advice and moral duty', e:'You ought to apologise to her.' },
+        { u:'Expectation', e:'That ought to be enough for six people.' },
+        { u:'Regret about the past', e:'You ought to have known better.' }
+      ],
+      warn:'OUGHT TO is the only modal that keeps TO in front of the main verb. Its questions and negatives feel stiff, so most speakers switch to SHOULD: "Should I apologise?" rather than "Ought I to apologise?"' },
+    { id:'need', w:'NEED', tag:'HYBRID: MODAL + FULL VERB', neg:"needn't (modal) / don't need to (verb)", past:"needn't have + pp \u00b7 didn't need to",
+      uses:[
+        { u:'Modal NEED \u2014 negatives and questions only, bare infinitive, no -s', e:"You needn't worry. \u00b7 Need I say more?" },
+        { u:'Full verb NEED \u2014 do-support and TO', e:"You don't need to worry. \u00b7 Does she need to sign?" },
+        { u:'NEEDN\u2019T HAVE + pp \u2014 you did it, but it was unnecessary', e:"You needn't have cooked \u2014 we've already eaten." },
+        { u:"DIDN'T NEED TO \u2014 it was unnecessary, so usually you didn't do it", e:"I didn't need to buy milk, so I walked straight home." }
+      ],
+      warn:'The two past forms are not interchangeable. "She needn\u2019t have paid" = she paid, pointlessly. "She didn\u2019t need to pay" = it was free, so she probably did not pay.' },
+    { id:'dare', w:'DARE', tag:'HYBRID: MODAL + FULL VERB', neg:"daren't (modal) / doesn't dare to (verb)", past:'dared (verb) \u00b7 dared not (modal)',
+      uses:[
+        { u:'Modal DARE \u2014 negatives and questions, bare infinitive', e:"He daren't tell her the truth. \u00b7 Dare I ask?" },
+        { u:'Full verb DARE \u2014 do-support and TO', e:"He doesn't dare to tell her." },
+        { u:'Fixed expressions', e:'How dare you! \u00b7 I daresay you are right.' }
+      ],
+      warn:'Modal DARE is now almost frozen into set phrases. In ordinary sentences the full verb is normal, and after DARE the TO is often dropped anyway: "He didn\u2019t dare (to) look."' },
+    { id:'usedto', w:'USED TO', tag:'MARGINAL MODAL \u00b7 PAST ONLY', neg:"didn't use to / used not to", past:'\u2014 it is already past',
+      uses:[
+        { u:'Past habit that has stopped', e:'I used to smoke twenty a day.' },
+        { u:'Past state that is no longer true', e:'There used to be a cinema on this corner.' },
+        { u:'Negative and question', e:"I didn't use to like olives. \u00b7 Did you use to live abroad?" }
+      ],
+      warn:'Do not confuse USED TO + infinitive (a finished past habit) with BE USED TO + -ing (= accustomed): "I\u2019m used to getting up early." GET USED TO describes the process of becoming accustomed. USED TO has no present form at all.' }
+  ];
+
+  semis = [
+    { n:'HAVE TO / HAVE GOT TO', u:'Obligation coming from outside the speaker, and the missing forms of MUST.', e:"I have to wear a uniform. \u00b7 I'll have to leave early." },
+    { n:"HAD BETTER ('D BETTER)", u:'Urgent advice with an implied consequence. Bare infinitive; negative is \u2019d better not.', e:"You'd better take an umbrella. \u00b7 You'd better not be late." },
+    { n:'BE ABLE TO', u:'Supplies the infinitive, participle and perfect forms that CAN cannot make.', e:"I'd like to be able to ski. \u00b7 She has been able to drive since May." },
+    { n:'BE GOING TO', u:'A plan already made, or a prediction based on present evidence.', e:"Look at those clouds \u2014 it's going to pour." },
+    { n:'WOULD RATHER / WOULD SOONER', u:'Preference. Bare infinitive for yourself; past tense for someone else.', e:"I'd rather walk. \u00b7 I'd rather you didn't smoke in here." },
+    { n:'BE SUPPOSED TO', u:'An expected duty, very often one that was not carried out.', e:'You were supposed to be here at six.' },
+    { n:'BE TO', u:'Formal arrangements, official orders and news reports.', e:'The President is to visit Rome. \u00b7 You are to report at nine sharp.' },
+    { n:'BE ALLOWED TO / BE PERMITTED TO', u:'Permission in the tenses CAN and MAY cannot form.', e:"We weren't allowed to leave the building." },
+    { n:'MAY / MIGHT AS WELL', u:'There is no better alternative, so we may as well do this.', e:'Nobody else is coming. We might as well start.' },
+    { n:'MODAL + HAVE + PAST PARTICIPLE', u:'The universal past for every modal \u2014 speculation and regret about what is finished.', e:'He must have left. \u00b7 She can\u2019t have known. \u00b7 I should have asked.' }
+  ];
+
+  rules = [
+    { t:'No -s in the third person singular.', ok:'She can drive.', no:'She cans drive.' },
+    { t:'A bare infinitive follows the modal.', ok:'He must go now.', no:'He must to go now.', note:'Exceptions that keep TO: ought to, used to, have to, be able to, be going to, be supposed to, be to, be allowed to.' },
+    { t:'Modals have no infinitive, no -ing form and no participle.', ok:'I hope to be able to come.', no:'I hope to can come.' },
+    { t:'Questions by inversion, negatives with NOT \u2014 no do-support.', ok:'Can you swim?', no:'Do you can swim?', note:'Exception: NEED and DARE used as ordinary verbs do take DO \u2014 "Do I need to sign?"' },
+    { t:'Only one modal per verb phrase.', ok:'She will be able to drive.', no:'She will can drive.', note:'Double modals such as "might could" and "used to could" survive in Southern US and Scots dialects, but not in Standard English.' },
+    { t:'The past is modal + HAVE + past participle.', ok:'He must have left.', no:'He musted leave.' },
+    { t:'MUSTN\u2019T is prohibition; DON\u2019T HAVE TO is the absence of obligation.', ok:"You mustn't park here. / You don't have to pay.", no:"You mustn't pay, meaning it is optional." },
+    { t:'Negative deduction is CAN\u2019T HAVE, not MUSTN\u2019T HAVE.', ok:"She can't have seen us.", no:"She mustn't have seen us." },
+    { t:'One past action that succeeded takes WAS ABLE TO, not COULD.', ok:'He was able to escape through the window.', no:'He could escape through the window.', note:'With verbs of perception and thinking, COULD is fine: "I could see the smoke from here."' },
+    { t:'Modals never conjugate \u2014 one form serves every subject.', ok:'I / you / he / we / they should go.', no:'He shoulds go.' }
+  ];
+
+  quiz = [
+    { hint:'DEDUCTION', text:"She has been running for an hour. She ___ be exhausted.", o:['must','can','need'], a:0, why:'MUST expresses a near-certain deduction from evidence. CAN is never used for deduction in the positive.' },
+    { hint:'OFFERS', text:"___ I carry that bag for you?", o:['Will','Shall','Would'], a:1, why:'SHALL + I / we is the standard way to make an offer or a suggestion.' },
+    { hint:'PAST ABILITY', text:"When I was a child I ___ climb any tree in the village.", o:['can','could','was able'], a:1, why:'COULD covers general ability over a stretch of past time.' },
+    { hint:'THE COULD TRAP', text:"The fire spread fast, but everyone ___ get out in time.", o:['could','was able to','might'], a:1, why:'One specific successful action in the past takes WAS/WERE ABLE TO or MANAGED TO, never COULD.' },
+    { hint:'NO OBLIGATION', text:"You ___ pay today \u2014 the bill is due at the end of the month.", o:["mustn't","don't have to","can't"], a:1, why:"DON'T HAVE TO means it is not necessary. MUSTN'T would mean paying is forbidden." },
+    { hint:'REPROACH', text:"You ___ told me you were coming! I would have cooked.", o:['could have','must have','can have'], a:0, why:'COULD HAVE + past participle criticises something the listener failed to do.' },
+    { hint:'MORAL DUTY', text:"He broke the vase, so he ___ apologise.", o:['ought to','ought','must to'], a:0, why:'OUGHT keeps its TO. It is the only modal that does.' },
+    { hint:'MODAL NEED', text:"You ___ worry about the tickets \u2014 I booked them yesterday.", o:["needn't","don't need","needn't to"], a:0, why:'Modal NEED takes a bare infinitive and appears in negatives: needn\u2019t worry. The full verb would be "don\u2019t need to worry".' },
+    { hint:'PAST HABIT', text:"Every Sunday my grandfather ___ take us down to the beach.", o:['would','used','will'], a:0, why:'WOULD describes repeated past actions. USED TO would also work here, but "used" alone does not.' },
+    { hint:'FINISHED STATE', text:"I ___ smoke, but I gave up ten years ago.", o:['would','used to','was used to'], a:1, why:'USED TO covers a finished habit or state. BE USED TO + -ing means accustomed, which is a different idea.' },
+    { hint:'FORMAL CONDITIONAL', text:"___ you need any assistance, please call this number.", o:['Should','Would','Might'], a:0, why:'Inverted SHOULD replaces "if you need" in formal writing.' },
+    { hint:'ONE MODAL ONLY', text:"By 2030, machines ___ do most of this work.", o:['will can','will be able to','can will'], a:1, why:'Standard English allows only one modal per verb phrase, so CAN borrows BE ABLE TO for the future.' },
+    { hint:'PROHIBITION', text:"You ___ touch that cable \u2014 it is live.", o:["don't have to","mustn't","needn't"], a:1, why:"MUSTN'T forbids. The other two only remove necessity." },
+    { hint:'FIXED EXPRESSION', text:"How ___ you speak to your mother like that!", o:['dare','do dare','daring'], a:0, why:'"How dare you" is a frozen modal use of DARE \u2014 no do-support, no -s, no TO.' }
+  ];
+
+  ac() {
+    if (!this._ac) { const C = window.AudioContext || window.webkitAudioContext; if (C) this._ac = new C(); }
+    if (this._ac && this._ac.state === 'suspended') this._ac.resume();
+    return this._ac;
+  }
+  play(notes, type, vol) {
+    if (this.state.muted || this.props.soundEnabled === false) return;
+    const ac = this.ac(); if (!ac) return;
+    const t0 = ac.currentTime;
+    notes.forEach(function (n) {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = type || 'square';
+      o.frequency.setValueAtTime(n[0], t0 + n[1]);
+      if (n[3]) o.frequency.exponentialRampToValueAtTime(n[3], t0 + n[1] + n[2]);
+      g.gain.setValueAtTime(0.0001, t0 + n[1]);
+      g.gain.exponentialRampToValueAtTime(vol || 0.06, t0 + n[1] + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + n[1] + n[2]);
+      o.connect(g); g.connect(ac.destination);
+      o.start(t0 + n[1]); o.stop(t0 + n[1] + n[2] + 0.03);
+    });
+  }
+  sRing() { this.play([[988, 0, 0.08], [1319, 0.07, 0.26]], 'sine', 0.11); }
+  sSelect() { this.play([[620, 0, 0.05], [880, 0.045, 0.09]], 'square', 0.05); }
+  sDash() { this.play([[260, 0, 0.16, 1400]], 'sawtooth', 0.045); }
+  sRight() { this.play([[784, 0, 0.09], [988, 0.09, 0.09], [1319, 0.18, 0.3]], 'square', 0.06); }
+  sWrong() { this.play([[233, 0, 0.14], [165, 0.14, 0.3]], 'sawtooth', 0.06); }
+
+  all() { return this.core.concat(this.marginal); }
+  find(id) { return this.all().filter(function (m) { return m.id === id; })[0]; }
+
+  go(zone, modalId) {
+    const self = this;
+    this.sDash();
+    if (modalId) this.sRing(); else this.sSelect();
+    const key = modalId || zone;
+    this.setState(function (s) {
+      const v = Object.assign({}, s.visited); const isNew = !v[key]; v[key] = 1;
+      if (isNew) setTimeout(function () { self.sRing(); }, 220);
+      return { panelVisible: false, dashing: true, visited: v };
+    });
+    clearTimeout(this._t1); clearTimeout(this._t2);
+    this._t1 = setTimeout(function () { self.setState({ zone: zone, modalId: modalId || null, panelVisible: true }); }, 130);
+    this._t2 = setTimeout(function () { self.setState({ dashing: false }); }, 560);
+  }
+
+  pick(i) {
+    if (this.state.picked !== null) return;
+    const ok = i === this.quiz[this.state.qi].a;
+    if (ok) this.sRight(); else this.sWrong();
+    this.setState(function (s) { return { picked: i, score: ok ? s.score + 1 : s.score }; });
+  }
+
+  renderVals() {
+    const self = this;
+    const st = this.state;
+    const calm = (this.props.motion || 'full') === 'calm';
+    const zoneDefs = [
+      { id: 'intro', label: 'START', c: '#ffcf1b' },
+      { id: 'core', label: 'THE 9 CORE', c: '#43c94a' },
+      { id: 'marginal', label: 'MARGINAL', c: '#7fd0ff' },
+      { id: 'semi', label: 'SEMI-MODALS', c: '#c58cff' },
+      { id: 'rules', label: 'RULES & TRAPS', c: '#ff8b21' },
+      { id: 'quiz', label: 'BONUS STAGE', c: '#e8352a' }
+    ];
+    const zones = zoneDefs.map(function (z) {
+      const on = st.zone === z.id;
+      return {
+        label: z.label, fg: on ? '#0b1740' : '#eaf2ff', bg: on ? z.c : 'rgba(11,23,64,.82)',
+        sh: on ? '#06102e' : '#04091f', ty: on ? '3px' : '0px',
+        go: function () { self.go(z.id, z.id === 'core' ? 'can' : z.id === 'marginal' ? 'ought' : null); }
+      };
+    });
+
+    const isModalZone = st.zone === 'core' || st.zone === 'marginal';
+    const list = st.zone === 'core' ? this.core : this.marginal;
+    const chips = isModalZone ? list.map(function (m, i) {
+      const on = st.modalId === m.id;
+      return {
+        label: m.w, fg: on ? '#0b1740' : '#eaf2ff', bg: on ? '#ffcf1b' : 'rgba(255,255,255,.08)',
+        bd: on ? '#fff' : 'rgba(255,255,255,.25)', delay: (i * 0.035) + 's',
+        go: function () { self.go(st.zone, m.id); }
+      };
+    }) : [];
+
+    const m = isModalZone ? (this.find(st.modalId) || list[0]) : null;
+    const uses = m ? m.uses.map(function (u, i) { return { u: u.u, e: u.e, delay: (i * 0.05) + 's' }; }) : [];
+
+    const totalRings = 1 + this.core.length + this.marginal.length + 3;
+    const got = Object.keys(st.visited).length;
+
+    const q = this.quiz[st.qi] || this.quiz[0];
+    const answered = st.picked !== null;
+    const correct = answered && st.picked === q.a;
+    const options = q.o.map(function (label, i) {
+      let bg = 'rgba(255,255,255,.09)', fg = '#eaf2ff', bd = 'rgba(255,255,255,.3)', sh = '#04091f';
+      if (answered) {
+        if (i === q.a) { bg = '#2fb84a'; fg = '#04210b'; bd = '#8ff2a4'; sh = '#14601f'; }
+        else if (i === st.picked) { bg = '#e8352a'; fg = '#fff'; bd = '#ff9d95'; sh = '#7d1a13'; }
+        else { bg = 'rgba(255,255,255,.05)'; fg = 'rgba(234,242,255,.45)'; bd = 'rgba(255,255,255,.15)'; }
+      }
+      return { label: label, bg: bg, fg: fg, bd: bd, sh: sh, cursor: answered ? 'default' : 'pointer', go: function () { self.pick(i); } };
+    });
+
+    const finished = st.qi >= this.quiz.length;
+    const pct = Math.round((st.score / this.quiz.length) * 100);
+
+    return {
+      dashing: st.dashing && !calm,
+      panelVisible: st.panelVisible,
+      motionState: calm ? 'paused' : 'running',
+      zones: zones,
+      hasChips: isModalZone,
+      chips: chips,
+      isIntro: st.zone === 'intro',
+      isModal: isModalZone,
+      isSemi: st.zone === 'semi',
+      isRules: st.zone === 'rules',
+      isQuiz: st.zone === 'quiz',
+      m: m || {},
+      uses: uses,
+      semis: this.semis.map(function (s, i) { return { n: s.n, u: s.u, e: s.e, delay: (i * 0.04) + 's' }; }),
+      rules: this.rules.map(function (r, i) { return { n: String(i + 1).padStart(2, '0'), t: r.t, ok: r.ok, no: r.no, note: r.note || '', hasNote: !!r.note, delay: (i * 0.04) + 's' }; }),
+      ringText: got + '/' + totalRings,
+      scoreText: st.score + '/' + this.quiz.length,
+      soundLabel: st.muted ? 'SFX OFF' : 'SFX ON',
+      soundBg: st.muted ? '#5a6480' : '#43c94a',
+      soundFg: st.muted ? '#0b1740' : '#04210b',
+      toggleSound: function () { self.setState(function (s) { return { muted: !s.muted }; }, function () { self.sSelect(); }); },
+      quizRunning: !finished,
+      quizDone: finished,
+      q: q,
+      options: options,
+      answered: answered,
+      fbBg: correct ? 'rgba(47,184,74,.16)' : 'rgba(232,53,42,.16)',
+      fbBd: correct ? '#8ff2a4' : '#ff9d95',
+      fbTag: correct ? 'RING GET' : 'TRY AGAIN',
+      progressText: 'Q ' + (st.qi + 1) + ' / ' + this.quiz.length,
+      progressPct: Math.round(((st.qi + (answered ? 1 : 0)) / this.quiz.length) * 100) + '%',
+      nextLabel: st.qi === this.quiz.length - 1 ? 'FINISH' : 'NEXT',
+      next: function () { self.sSelect(); self.setState(function (s) { return { qi: s.qi + 1, picked: null }; }); },
+      finalText: st.score + ' / ' + this.quiz.length + '  \u00b7  ' + pct + '%',
+      finalNote: pct === 100 ? 'Perfect run. Nothing left to teach you about modals.' : pct >= 70 ? 'Solid. Revisit the DANGER boxes on the modals you missed.' : 'Head back to RULES & TRAPS, then run the stage again.',
+      restart: function () { self.sRing(); self.setState({ qi: 0, picked: null, score: 0 }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

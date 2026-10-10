@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#efe2c8;font-family:'Nunito',system-ui,sans-serif}
+a{color:#c96a2f;text-decoration:none}a:hover{color:#e8763a}
+button{font-family:inherit}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
+@keyframes cardIn{0%{opacity:0;transform:translateY(18px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
+</style>
+<script src="./a1-units.js"></script>
+<script src="./a1-enrich-a.js"></script>
+<script src="./a1-enrich-b.js"></script>
+<script src="./plus-a1.js"></script>
+<script src="./mixer.js"></script>
+</helmet>
+<div style="position:relative;width:100vw;height:100vh;display:grid;place-items:center;overflow:hidden;background:#e6d7ba">
+<div style="width:1600px;height:900px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale({{ scale }});transform-origin:center">
+<div style="position:absolute;inset:0;overflow:hidden;border-radius:28px;background:{{ skyBg }};box-shadow:0 26px 60px rgba(60,40,20,.28)">
+
+<div style="position:absolute;left:60px;top:70px;width:120px;height:120px;border-radius:50%;background:{{ sunColor }};opacity:.85;box-shadow:0 0 0 26px rgba(255,255,255,.22)"></div>
+
+<div style="position:absolute;top:112px;left:330px;animation:float 15s ease-in-out infinite">
+<div style="width:190px;height:52px;border-radius:40px;background:rgba(255,255,255,.86)"></div>
+<div style="position:absolute;top:-26px;left:48px;width:96px;height:60px;border-radius:50%;background:rgba(255,255,255,.86)"></div>
+</div>
+<div style="position:absolute;top:76px;right:250px;animation:float 21s ease-in-out infinite">
+<div style="width:150px;height:44px;border-radius:36px;background:rgba(255,255,255,.72)"></div>
+<div style="position:absolute;top:-22px;left:38px;width:78px;height:52px;border-radius:50%;background:rgba(255,255,255,.72)"></div>
+</div>
+
+<div style="position:absolute;left:-140px;bottom:-120px;width:760px;height:420px;border-radius:50%;background:{{ hillA }}"></div>
+<div style="position:absolute;right:-180px;bottom:-160px;width:860px;height:460px;border-radius:50%;background:{{ hillB }}"></div>
+<div style="position:absolute;left:520px;bottom:-260px;width:720px;height:480px;border-radius:50%;background:{{ hillC }}"></div>
+
+<svg viewBox="0 0 1600 900" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="{{ path }}" fill="none" stroke="rgba(120,88,48,.16)" stroke-width="42" stroke-linecap="round"></path>
+<path d="{{ path }}" fill="none" stroke="#efe0c0" stroke-width="30" stroke-linecap="round"></path>
+<path d="{{ path }}" fill="none" stroke="#cdb384" stroke-width="4" stroke-dasharray="2 18" stroke-linecap="round"></path>
+</svg>
+
+<sc-for list="{{ checkpoints }}" as="cp" hint-placeholder-count="16">
+<button onClick="{{ cp.onClick }}" style="position:absolute;left:{{ cp.x }}px;top:{{ cp.y }}px;transform:translate(-50%,-50%);background:none;border:none;padding:0;cursor:pointer;z-index:8;transition:transform .16s ease" style-hover="transform:translate(-50%,-58%) scale(1.08)">
+<div style="width:62px;height:62px;border-radius:50%;background:{{ cp.color }};border:5px solid #fffaf0;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:800;font-size:24px;color:#fffaf0;box-shadow:{{ cp.shadow }}">{{ cp.num }}</div>
+<div style="display:{{ cp.labelDisplay }};position:absolute;left:50%;transform:translateX(-50%);margin-top:9px;white-space:nowrap;background:#fffaf0;border-radius:999px;padding:5px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:.4px;color:#6b4a24;box-shadow:0 4px 10px rgba(80,55,25,.2)">{{ cp.name }}</div>
+</button>
+</sc-for>
+
+<div style="position:absolute;left:0;top:0;width:74px;height:96px;z-index:9;pointer-events:none;offset-path:{{ pathCss }};offset-rotate:0deg;offset-distance:{{ pct }};transition:offset-distance 1s cubic-bezier(.5,.02,.25,1)">
+<div style="position:relative;width:100%;height:100%;animation:{{ bobAnim }}">
+<div style="position:absolute;top:0;left:7px;width:60px;height:66px;border-radius:50% 50% 45% 45%;background:linear-gradient(90deg,#e8763a 0 33%,#f0c04a 33% 66%,#d9536b 66% 100%);box-shadow:inset -8px -6px 14px rgba(0,0,0,.14)"></div>
+<div style="position:absolute;top:62px;left:26px;width:22px;height:8px;background:#8a5a2b;border-radius:3px"></div>
+<div style="position:absolute;top:70px;left:24px;width:26px;height:20px;border-radius:5px;background:#a9713d;box-shadow:inset 0 -5px 0 rgba(0,0,0,.14)"></div>
+</div>
+</div>
+
+<div style="position:absolute;top:34px;left:50%;transform:translateX(-50%);text-align:center;z-index:10">
+<div style="display:inline-block;background:#fffaf0;border-radius:999px;padding:12px 34px;font-family:'Baloo 2',cursive;font-weight:800;font-size:30px;letter-spacing:.5px;color:#8a4a1c;box-shadow:0 8px 22px rgba(90,60,25,.22)">PASSAGES &middot; A1</div>
+<div style="margin-top:10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;letter-spacing:3.4px;color:#7a5a30">GRAMMAR ISLANDS &middot; 16 STOPS</div>
+</div>
+
+<div style="position:absolute;top:36px;left:34px;z-index:10;display:flex;align-items:center;gap:11px;background:#fffaf0;border-radius:18px;padding:11px 15px;box-shadow:0 6px 16px rgba(90,60,25,.18)">
+<div style="width:30px;height:22px;border-radius:4px;background:linear-gradient(#ffcd00 0 50%,#003893 50% 75%,#ce1126 75% 100%)"></div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;line-height:1.5;color:#6b4a24">COLOMBIAN &amp;<br>INTERNATIONAL ENGLISH</div>
+</div>
+
+<div style="position:absolute;top:36px;right:34px;z-index:10;background:#8a4a1c;color:#fff6e4;border-radius:18px;padding:12px 17px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;line-height:1.6;letter-spacing:.8px;box-shadow:0 6px 16px rgba(90,60,25,.22)">BEGINNER<br>A1 &middot; STARTER</div>
+
+<div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10;background:rgba(255,250,240,.92);border-radius:999px;padding:11px 26px;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px;color:#6b4a24;box-shadow:0 6px 16px rgba(90,60,25,.16)">Tap a stop to fly there &middot; use &#9664; &#9654; inside a unit</div>
+
+</div>
+</div>
+</div>
+
+
+<sc-if value="{{ mixMini }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ mixShow }}" style="position:fixed;left:16px;bottom:14px;z-index:40;cursor:pointer;padding:9px 14px;border:2px solid #f0e2c8;border-radius:999px;background:#8a4a1c;color:#fff6e4;font-family:'Baloo 2',cursive;font-size:12px;letter-spacing:1.6px;box-shadow:0 12px 30px rgba(90,60,25,.22);">&#9679; MIXER</button>
+</sc-if>
+
+<sc-if value="{{ mixPanel }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;left:16px;bottom:14px;z-index:41;width:322px;display:flex;flex-direction:column;gap:10px;padding:16px 18px;background:#fffaf0;border:2px solid #f0e2c8;border-radius:20px;box-shadow:0 12px 30px rgba(90,60,25,.22);">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase">Class mixer</div>
+<button onClick="{{ mixHide }}" style="cursor:pointer;padding:4px 9px;border:2px solid #f0e2c8;border-radius:12px;background:#f9f0dd;color:#9a7f52;font-family:'Baloo 2',cursive;font-size:12px">X</button>
+</div>
+<div style="display:flex;gap:8px;align-items:stretch">
+<input value="{{ mixInput }}" onChange="{{ mixOnChange }}" onKeyDown="{{ mixOnKey }}" placeholder="e.g. 5 or 23-29" style="flex:1;min-width:0;font-family:'Nunito',sans-serif;font-size:17px;padding:9px 11px;border:2px solid #f0e2c8;border-radius:12px;background:#f9f0dd;color:#3f3120;outline:none" />
+<button onClick="{{ mixGo }}" style="cursor:pointer;flex:none;font-family:'Baloo 2',cursive;font-size:14px;letter-spacing:1.2px;padding:0 16px;border:2px solid #f0e2c8;border-radius:12px;background:#8a4a1c;color:#fff6e4;box-shadow:none">MIX</button>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-size:14px;line-height:1.35;color:#9a7f52;text-wrap:pretty">{{ mixMsg }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ mixOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:60;background:rgba(50,34,16,.5);display:grid;place-items:center;padding:20px;">
+<div style="width:1020px;max-width:96vw;height:720px;max-height:94vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fffaf0;border:2px solid #f0e2c8;border-radius:20px;box-shadow:0 12px 30px rgba(90,60,25,.22)">
+
+<button onClick="{{ mixClose }}" style="position:absolute;top:15px;right:17px;z-index:3;width:38px;height:38px;cursor:pointer;border:2px solid #f0e2c8;border-radius:12px;background:#f9f0dd;color:#8a4a1c;font-family:'Baloo 2',cursive;font-size:14px">X</button>
+
+<div style="flex:none;padding:20px 68px 16px 24px;background:#8a4a1c;color:#fff6e4;border-bottom:2px solid #f0e2c8">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;opacity:.85">ACTIVITY SET &middot; {{ mix.classesLabel }}</div>
+<div style="font-family:'Baloo 2',cursive;font-size:26px;line-height:1.3;margin-top:9px">{{ mix.title }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.4;opacity:.9;margin-top:6px;text-wrap:pretty">{{ mix.subtitle }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;opacity:.95;margin-top:7px">{{ mix.unitTitles }}</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.5);border-radius:12px;background:rgba(255,255,255,.22);color:#fff6e4">{{ mix.minutes }}</span>
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.5);border-radius:12px;background:rgba(255,255,255,.22);color:#fff6e4">{{ mix.topicCount }} structures</span>
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;display:inline-block;white-space:nowrap;letter-spacing:1.4px;padding:6px 11px;border:1px solid rgba(255,255,255,.5);border-radius:12px;background:rgba(255,255,255,.22);color:#fff6e4">{{ mix.questionCount }} follow-ups</span>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;margin-top:9px;opacity:.72;line-height:1.35;text-wrap:pretty">{{ mix.timeNote }}</div>
+</div>
+
+<div style="flex:1;overflow:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin-bottom:10px">THE INPUT &mdash; SAME FOR EVERYONE</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ mix.core.situation }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:15px;letter-spacing:1px;color:#9a7f52;margin-top:8px">TOPICS IN PLAY &middot; {{ mix.core.themeLine }}</div>
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px;margin-top:11px">
+<div style="font-family:'Nunito',sans-serif;font-size:15px;letter-spacing:1px;color:#9a7f52">THE QUESTION EVERYBODY ANSWERS</div>
+<div style="font-family:'Baloo 2',cursive;font-size:24px;line-height:1.35;color:#3f3120;text-wrap:pretty;margin-top:6px">{{ mix.core.question }}</div>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">WRITE THIS ON THE BOARD</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ mixBoard }}" as="bq" hint-placeholder-count="3">
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">&mdash;&nbsp; {{ bq }}</div>
+</sc-for>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">PRESENT &middot; PRACTICE &middot; PRODUCE</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ mixPPP }}" as="ph" hint-placeholder-count="3">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px">
+<div style="font-family:'Nunito',sans-serif;font-size:15px;letter-spacing:1px;color:#9a7f52">{{ ph.phase }} &middot; {{ ph.minutes }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:5px">{{ ph.text }}</div>
+</div>
+</sc-for>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">YOU CHOOSE THE OUTPUT</div>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ mixMenu }}" as="mo" hint-placeholder-count="5">
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">&#9633;&nbsp; {{ mo }}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; STRUCTURES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixTopics }}" as="tp" hint-placeholder-count="4">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px">
+<div style="font-family:'Baloo 2',cursive;font-size:21px;line-height:1.4;color:#3f3120">{{ tp.name }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:15px;letter-spacing:1px;color:#9a7f52;margin-top:5px">UNIT {{ tp.unit }} &middot; CL. {{ tp.cls }} &middot; {{ tp.unitTitle }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:6px">&ldquo;{{ tp.cue }}&rdquo;</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;box-shadow:none;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin-bottom:10px">MUST USE &mdash; WORDS</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ mixLex }}" as="lx" hint-placeholder-count="1">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px">
+<div style="font-family:'Nunito',sans-serif;font-size:15px;letter-spacing:1px;color:#9a7f52">UNIT {{ lx.unit }} &middot; {{ lx.unitTitle }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:19px;line-height:1.4;color:#3f3120;margin-top:6px">{{ lx.terms }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-for list="{{ mixActs }}" as="ac" hint-placeholder-count="2">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;box-shadow:none;padding:16px 18px">
+
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;padding:6px 11px;border-radius:12px;background:#c96a2f;color:#fff8ec">{{ ac.tag }}</span>
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52">{{ ac.minutes }} &middot; {{ ac.mode }}</span>
+</div>
+<div style="font-family:'Baloo 2',cursive;font-size:26px;line-height:1.3;color:#3f3120;margin-top:11px">{{ ac.name }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:9px">{{ ac.scenario }}</div>
+
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">WHAT THEY PRODUCE</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:600;font-size:19px;line-height:1.45;color:#3f3120;text-wrap:pretty">{{ ac.product }}</div>
+
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">STAGES</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ ac.stages }}" as="st" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;width:25px;height:25px;border-radius:12px;background:#c96a2f;color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-size:14px">{{ st.n }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ st.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">{{ ac.itemsLabel }}</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ ac.items }}" as="it" hint-placeholder-count="4">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52">{{ it.label }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:5px">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">DONE WELL WHEN</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ ac.criteria }}" as="cr" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<span style="color:#c96a2f;font-family:'Nunito',sans-serif;font-size:19px;line-height:1.3">&#10003;</span>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ cr }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;text-transform:uppercase;margin:16px 0 8px">IF THEY FINISH EARLY</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ ac.extension }}</div>
+
+</div>
+</sc-for>
+
+<div style="display:flex;gap:10px;padding-bottom:6px">
+<button onClick="{{ mixGo }}" style="cursor:pointer;font-family:'Baloo 2',cursive;font-size:14px;letter-spacing:1.2px;padding:12px 18px;border:2px solid #f0e2c8;border-radius:12px;background:#8a4a1c;color:#fff6e4">RE-MIX</button>
+<button onClick="{{ mixClose }}" style="cursor:pointer;font-family:'Baloo 2',cursive;font-size:14px;letter-spacing:1.2px;padding:12px 18px;border:2px solid #f0e2c8;border-radius:12px;background:#f9f0dd;color:#8a4a1c">CLOSE</button>
+</div>
+
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:50;background:rgba(50,34,16,.5);display:grid;place-items:center;padding:22px">
+<div style="width:1120px;max-width:96vw;height:730px;max-height:94vh;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fffaf0;border-radius:24px;box-shadow:0 30px 70px rgba(40,26,10,.45);animation:cardIn .3s cubic-bezier(.2,.8,.3,1)">
+
+<button onClick="{{ close }}" style="position:absolute;top:18px;right:20px;z-index:3;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.28);border:2px solid rgba(255,255,255,.6);color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:15px;cursor:pointer">&#10005;</button>
+
+<div style="display:flex;align-items:center;gap:20px;padding:24px 74px 24px 26px;background:{{ accent }};color:#fff8ec;flex:none">
+<div style="width:66px;height:66px;flex:none;border-radius:50%;background:rgba(255,255,255,.22);border:4px solid rgba(255,255,255,.55);display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:800;font-size:28px">{{ unit.n }}</div>
+<div style="flex:1;min-width:0">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:2.4px;opacity:.92">UNIT {{ unit.n }} &middot; CLASSES {{ unit.classes }}</div>
+<div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:31px;line-height:1.18;margin-top:4px">{{ unit.title }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:16px;opacity:.94;margin-top:4px">{{ unit.theme }}</div>
+</div>
+<div style="flex:none;text-align:right;max-width:210px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.6px;opacity:.82">STOP</div>
+<div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:19px;line-height:1.3;margin-top:3px">{{ unit.level }}</div>
+</div>
+</div>
+
+<div style="flex-wrap:wrap;row-gap:6px;display:flex;gap:8px;padding:16px 26px;background:#f6ead4;flex:none">
+<sc-for list="{{ tabsView }}" as="tab" hint-placeholder-count="6">
+<button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+</sc-for>
+</div>
+
+<div style="flex:1;overflow:auto;padding:24px 28px 30px;background:#fffaf0">
+
+<sc-if value="{{ isGuide }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Unit guide</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244">What this stop is about, and what you can do at the end.</span>
+</div>
+<div style="background:#f6ead4;border-radius:18px;padding:20px 22px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ overview.intro }}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:18px 20px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:14px">LEARNING GOALS</div>
+<div style="display:flex;flex-direction:column;gap:13px">
+<sc-for list="{{ goals }}" as="goal" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:{{ accent }};color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px">{{ goal.num }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.4;color:#4a3a24">{{ goal.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:18px 20px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:14px">GRAMMAR AT THIS STOP</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<sc-for list="{{ unit.grammar }}" as="g" hint-placeholder-count="2">
+<div style="border-left:4px solid {{ accent }};border-radius:2px;padding:2px 0 2px 13px">
+<div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:19px;line-height:1.25;color:#3f3120">{{ g.name }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244;line-height:1.35;margin-top:3px">{{ g.short }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="margin-top:16px;background:{{ accent }};color:#fff8ec;border-radius:18px;padding:18px 22px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;opacity:.88;margin-bottom:6px">WHAT YOU CAN DO AT THE END</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45">{{ overview.outcome }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isVocab }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Vocabulary</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244">Pick a word to see what it means and how to use it.</span>
+</div>
+<div style="display:grid;grid-template-columns:238px minmax(0,1fr);gap:18px;align-items:start">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:10px">WORD LIST &middot; {{ vocabCount }}</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ vocabMenu }}" as="v" hint-placeholder-count="10">
+<button onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.term }}<div style="{{ v.posStyle }}">{{ v.pos }}</div></button>
+</sc-for>
+</div>
+</div>
+<div style="min-width:0;background:#fff;border:2px solid #f0e2c8;border-radius:20px;overflow:hidden">
+<div style="background:{{ accent }};color:#fff8ec;padding:18px 22px">
+<div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:27px;line-height:1.2">{{ vocabItem.term }}</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.8px;opacity:.9;margin-top:4px;text-transform:uppercase">{{ vocabItem.pos }}</div>
+</div>
+<div style="padding:20px 22px;display:flex;flex-direction:column;gap:18px">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:5px">MEANING</div>
+<div style="font-family:'Nunito',sans-serif;font-size:19px;line-height:1.45;color:#3f3120;text-wrap:pretty">{{ vocabItem.def }}</div>
+</div>
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:5px">HOW TO USE IT</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45;color:#4a3a24;text-wrap:pretty">{{ vocabItem.use }}</div>
+</div>
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:8px">EXAMPLES</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ vocabItem.examples }}" as="ex" hint-placeholder-count="2">
+<div style="background:#f9f0dd;border-left:4px solid {{ accent }};border-radius:0 12px 12px 0;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.4;color:#3f3120">{{ ex }}</div>
+</sc-for>
+</div>
+</div>
+<div style="border-top:2px dashed #f0e2c8;padding-top:14px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:5px">GOES WITH</div>
+<div style="font-family:'Nunito',sans-serif;font-size:17px;line-height:1.4;color:#7a6244">{{ vocabItem.colloc }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isGrammar }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Grammar</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244">Choose a topic on the left for the full explanation.</span>
+</div>
+<div style="display:grid;grid-template-columns:238px minmax(0,1fr);gap:18px;align-items:start">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:10px">TOPICS</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gramMenu }}" as="g" hint-placeholder-count="2">
+<button onClick="{{ g.onClick }}" style="{{ g.style }}">{{ g.name }}<div style="{{ g.posStyle }}">{{ g.short }}</div></button>
+</sc-for>
+</div>
+</div>
+<div style="min-width:0;background:#fff;border:2px solid #f0e2c8;border-radius:20px;overflow:hidden">
+<div style="background:{{ accent }};color:#fff8ec;padding:18px 22px;font-family:'Baloo 2',cursive;font-weight:800;font-size:25px;line-height:1.22">{{ gramItem.name }}</div>
+<div style="padding:20px 22px;display:flex;flex-direction:column;gap:18px">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:5px">THE RULE</div>
+<div style="font-family:'Nunito',sans-serif;font-size:19px;line-height:1.45;color:#3f3120;text-wrap:pretty">{{ gramItem.rule }}</div>
+</div>
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:8px">FORM &amp; PATTERNS</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gramItem.form }}" as="fm" hint-placeholder-count="3">
+<div style="background:#f6ead4;border-radius:12px;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.4;color:#3f3120">{{ fm }}</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:8px">HOW IT WORKS IN DETAIL</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<sc-for list="{{ gramItem.notes }}" as="nt" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:flex-start">
+<div style="flex:none;width:9px;height:9px;margin-top:9px;border-radius:50%;background:{{ accent }}"></div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45;color:#4a3a24;text-wrap:pretty">{{ nt }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:8px">EXAMPLES</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gramItem.examples }}" as="ex" hint-placeholder-count="3">
+<div style="background:#f9f0dd;border-left:4px solid {{ accent }};border-radius:0 12px 12px 0;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.4;color:#3f3120">{{ ex }}</div>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">More examples</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ gMore }}" as="ex" hint-placeholder-count="6">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px"><div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ ex }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasFix }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Wrong &rarr; right</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ gFix }}" as="fx" hint-placeholder-count="3">
+<div style="background:#f9f0dd;border-left:4px solid #c96a2f;border-radius:0 12px 12px 0;padding:11px 14px">
+<div style="display:flex;gap:9px;align-items:flex-start"><span style="color:#c0392b;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.3">&#10007;</span><div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ fx.wrong }}</div></div>
+<div style="display:flex;gap:9px;align-items:flex-start;margin-top:5px"><span style="color:#2f8f5a;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;line-height:1.45;color:#3f3120">{{ fx.right }}</div></div>
+<div style="font-family:'Nunito',sans-serif;font-size:16px;line-height:1.45;color:#7a6244;margin-top:7px">{{ fx.why }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasContrast }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Easy to confuse &mdash; {{ contrastTitle }}</div>
+<div style="border:2px solid #f0e2c8;border-radius:18px;overflow:hidden">
+<div style="{{ contrastHeadStyle }}">
+<sc-for list="{{ contrastCols }}" as="col" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'Baloo 2',cursive;font-size:12px;letter-spacing:1.2px;color:#fff8ec">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ contrastRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="padding:10px 13px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasSound }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Say it right</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ gSound }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDrill }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Drill &middot; {{ gDrillName }}</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;line-height:1.45;color:#3f3120">{{ gDrillPrompt }}</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-top:11px">
+<sc-for list="{{ gDrillItems }}" as="it" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c96a2f;color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px">{{ it.n }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ it.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDialogue }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Hear it in a conversation</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ gDialogue }}" as="ln" hint-placeholder-count="4">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;padding:5px 11px;border-radius:999px;background:#f6ead4;color:#8a6a34;flex:none;min-width:46px;text-align:center">{{ ln.sp }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ ln.line }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDeep }}" hint-placeholder-val="{{ false }}">
+<div style="background:#f6ead4;border-radius:18px;padding:18px 20px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:6px">DEEP DIVE &mdash; WHY IT WORKS LIKE THIS</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.62;color:#4a3a24;text-wrap:pretty">{{ gramItem.deep }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:8px">REFERENCE CHART &mdash; {{ chartTitle }}</div>
+<div style="border:2px solid #f0e2c8;border-radius:14px;overflow:hidden">
+<div style="{{ chartHeadStyle }}">
+<sc-for list="{{ chartCols }}" as="col" hint-placeholder-count="3">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;color:#fff8ec;padding:11px 13px">{{ col }}</div>
+</sc-for>
+</div>
+<sc-for list="{{ chartRows }}" as="row" hint-placeholder-count="4">
+<div style="{{ row.style }}">
+<sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="3">
+<div style="font-family:'Nunito',sans-serif;font-size:16px;line-height:1.4;color:#4a3a24;padding:11px 13px">{{ cell }}</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div style="background:#3f3120;color:#f6ead4;border-radius:16px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;opacity:.7;margin-bottom:5px">WATCH OUT</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45">{{ gramItem.watch }}</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSpeaking }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Speaking</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244">Try each one in pairs or small groups.</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ unit.speaking }}" as="s" hint-placeholder-count="3">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start">
+<div style="flex:none;background:{{ accent }};color:#fff8ec;border-radius:999px;padding:7px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap">{{ s.kind }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45;color:#3f3120">{{ s.text }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTips }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Tips &amp; traps</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;color:#7a6244">Small habits that keep your English correct.</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ unit.tips }}" as="tip" hint-placeholder-count="3">
+<div style="background:#f6ead4;border-radius:18px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start">
+<div style="flex:none;width:28px;height:28px;border-radius:50%;background:{{ accent }};color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:800;font-size:16px">!</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45;color:#3f3120">{{ tip }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+
+<sc-if value="{{ isDynamics }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Dynamics</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;line-height:1.45;color:#7a6244">Four activities you can run in class, plus writing, homework and a board sequence.</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<sc-for list="{{ dynamics }}" as="d" hint-placeholder-count="4">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:11px">
+<div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">{{ d.name }}</div>
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c96a2f;color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px">{{ d.num }}</div>
+</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 11px">
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;padding:5px 11px;border-radius:999px;background:#f6ead4;color:#8a6a34">{{ d.mode }}</span>
+<span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;padding:5px 11px;border-radius:999px;background:#f6ead4;color:#8a6a34">{{ d.minutes }}</span>
+</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ d.how }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:16px;line-height:1.45;color:#7a6244;margin-top:9px">Payoff &mdash; {{ d.payoff }}</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ hasWriting }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Writing task</div>
+<div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">{{ writing.title }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:9px">{{ writing.brief }}</div>
+<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:11px"><span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;padding:5px 11px;border-radius:999px;background:#f6ead4;color:#8a6a34">{{ writing.length }}</span></div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:11px">
+<sc-for list="{{ writingCriteria }}" as="c" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="color:#2f8f5a;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.3">&#10003;</span><div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ c }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasHomework }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">Homework</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;line-height:1.45;color:#3f3120">{{ homework.title }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty;margin-top:8px">{{ homework.task }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ hasBoard }}" hint-placeholder-val="{{ false }}">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.8px;color:#9a7f52;margin-bottom:9px;text-transform:uppercase">On the board, in this order</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ board }}" as="b" hint-placeholder-count="5">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c96a2f;color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px">{{ b.n }}</div>
+<div style="font-family:'Nunito',sans-serif;font-size:18px;line-height:1.5;color:#4a3a24;text-wrap:pretty">{{ b.text }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTest }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:baseline;gap:13px;flex-wrap:wrap">
+<span style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }}">Review test</span>
+<span style="font-family:'Nunito',sans-serif;font-size:16px;line-height:1.45;color:#7a6244">{{ testScore }}</span>
+</div>
+<sc-for list="{{ testView }}" as="q" hint-placeholder-count="5">
+<div style="background:#fff;border:2px solid #f0e2c8;border-radius:18px;padding:16px 18px">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<div style="flex:none;width:26px;height:26px;border-radius:50%;background:#c96a2f;color:#fff8ec;display:grid;place-items:center;font-family:'Baloo 2',cursive;font-weight:700;font-size:14px">{{ q.n }}</div>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:18px;line-height:1.45;color:#3f3120">{{ q.q }}</div>
+</div>
+<div style="margin-top:12px">
+<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.text }}</button>
+</sc-for>
+</div>
+<div style="{{ q.explainStyle }}">{{ q.explain }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+<div style="font-family:'Baloo 2',cursive;font-weight:800;font-size:22px;color:{{ accent }};margin-bottom:12px">Quick check</div>
+<div style="font-family:'Baloo 2',cursive;font-weight:700;font-size:27px;line-height:1.4;color:#3f3120;margin-bottom:22px;max-width:820px">{{ unit.quiz.q }}</div>
+<div style="display:flex;flex-direction:column;gap:11px;max-width:640px">
+<sc-for list="{{ optionsView }}" as="opt" hint-placeholder-count="3">
+<button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.text }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ quizCorrect }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:640px;background:#2f8f6a;color:#fff8ec;border-radius:16px;padding:16px 18px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45"><b>Nice one!</b> {{ quizExplain }}</div>
+</sc-if>
+<sc-if value="{{ quizWrong }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:20px;max-width:640px;background:#c0392b;color:#fff8ec;border-radius:16px;padding:16px 18px;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.45"><b>Not quite.</b> {{ quizExplain }}</div>
+</sc-if>
+</sc-if>
+
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 26px;background:#f6ead4;flex:none">
+<button onClick="{{ prev }}" style="{{ prevStyle }}">&#9664; PREV</button>
+<div style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.6px;color:#7a6244">UNIT {{ unitNum }} / 16</div>
+<div style="display:flex;gap:10px">
+<button onClick="{{ close }}" style="border:none;border-radius:999px;padding:12px 20px;background:#e6d7ba;color:#6b4a24;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.2px;cursor:pointer">ISLAND MAP</button>
+<button onClick="{{ next }}" style="{{ nextStyle }}">NEXT &#9654;</button>
+</div>
+</div>
+
+</div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Day&quot;,&quot;Sunset&quot;],&quot;default&quot;:&quot;Day&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;showUnitLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;animateCharacter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behavior&quot;}}">
+class Component extends DCLogic {
+  path = "M 120 258 C 500 258 900 258 1310 258 C 1470 258 1470 500 1310 500 C 900 500 520 500 290 500 C 130 500 130 742 290 742 C 700 742 1120 742 1480 742";
+
+  units = [];
+  state = { scale: this.calcScale(), checkpoints: [], current: null, open: false, activeTab: "guide", pct: "1%", quizChoice: null, vocabIdx: 0, gramIdx: 0, mixInput: "", mixOut: null, mixMsg: "", mixSeed: 0, mixPanel: false, testPick: {} };
+
+  calcScale(){
+    var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+    var v = Math.min(w / 1600, h / 900);
+    if (isFinite(v) && v > 0.02){ this._lastScale = v; return v; }
+    return this._lastScale || 1;
+  }
+
+  componentDidMount(){ this._boot(); }
+  _boot(){
+    const U = window.A1_UNITS;
+    if (!U || U.length < 16 || !U[15]._enrichedB){ this._bt = setTimeout(() => this._boot(), 60); return; }
+    this.units = window.A1_UNITS;
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("style", "position:absolute;width:0;height:0;overflow:hidden;left:-9999px");
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", this.path);
+    svg.appendChild(p);
+    document.body.appendChild(svg);
+    const total = p.getTotalLength();
+    const n = this.units.length;
+    const cps = this.units.map((u, i) => {
+      const f = 0.02 + i * (0.975 - 0.02) / (n - 1);
+      const pt = p.getPointAtLength(f * total);
+      return { x: Math.round(pt.x), y: Math.round(pt.y), pct: (f * 100).toFixed(2) + "%", num: u.n, name: u.level, color: u.color };
+    });
+    document.body.removeChild(svg);
+    this.pcts = cps.map(c => c.pct);
+    this.setState({ checkpoints: cps, pct: cps[0].pct, scale: this.calcScale() });
+    this._onResize = () => this.setState({ scale: this.calcScale() });
+    window.addEventListener("resize", this._onResize);
+    this._fitTimer = setInterval(() => {
+      var v = this.calcScale();
+      if (Math.abs(v - this.state.scale) > 0.0005) this.setState({ scale: v });
+    }, 250);
+  }
+  componentWillUnmount(){ if (this._fitTimer) clearInterval(this._fitTimer); if (this._onResize) window.removeEventListener("resize", this._onResize); if (this._t) clearTimeout(this._t); if (this._bt) clearTimeout(this._bt); }
+
+  travel(i){ this.setState({ current: i, pct: this.pcts[i], activeTab: "guide", quizChoice: null, vocabIdx: 0, gramIdx: 0, testPick: {} }); }
+  clickCheckpoint(i){
+    const wasOpen = this.state.open;
+    this.travel(i);
+    if (!wasOpen){ if (this._t) clearTimeout(this._t); this._t = setTimeout(() => this.setState({ open: true }), 1000); }
+  }
+  next(){ if (this.state.current < this.units.length - 1) this.travel(this.state.current + 1); }
+  prev(){ if (this.state.current > 0) this.travel(this.state.current - 1); }
+  close(){ this.setState({ open: false }); }
+
+
+  mixGo(){
+    if (!window.MIXER || !this.units.length) return;
+    const r = window.MIXER.parse(this.state.mixInput, this.units);
+    if (!r.units.length){
+      this.setState({ mixOut: null, mixMsg: String(this.state.mixInput).trim()
+        ? "Nothing matches that. Try a single class number, a range like 5-14, or \u201cunit 3\u201d."
+        : "Type a class number first \u2014 for example 5, 12-20, or \u201cunit 3\u201d." });
+      return;
+    }
+    const seed = this.state.mixSeed + 1;
+    this.setState({ mixSeed: seed, mixMsg: r.unknown.length ? "Ignored: " + r.unknown.join(", ") : "", mixOut: window.MIXER.build(r.units, { code: "A1", seed: seed }) });
+  }
+  mixVals(){
+    const s = this.state, m = s.mixOut;
+    return {
+      mixInput: s.mixInput,
+      mixMini: !s.mixPanel, mixPanel: s.mixPanel,
+      mixShow: () => this.setState({ mixPanel: true }),
+      mixHide: () => this.setState({ mixPanel: false, mixMsg: "" }),
+      mixMsg: s.mixMsg || "Type class numbers \u2014 get one question that covers them all, and you pick the output.",
+      mixOpen: !!m, mix: m,
+      mixActs: m ? m.acts : [], mixTopics: m ? m.topics : [], mixLex: m ? m.lex : [],
+      mixPPP: m ? m.ppp : [], mixMenu: m ? m.outputMenu : [], mixBoard: m ? m.core.board : [],
+      mixOnChange: e => this.setState({ mixInput: e.target.value }),
+      mixOnKey: e => { if (e.key === "Enter") this.mixGo(); },
+      mixGo: () => this.mixGo(),
+      mixClose: () => this.setState({ mixOut: null })
+    };
+  }
+
+
+  answerTest(qi, oi){
+    const picks = Object.assign({}, this.state.testPick || {});
+    if (picks[qi] != null) return;
+    picks[qi] = oi;
+    this.setState({ testPick: picks });
+  }
+  plusVals(){
+    const s = this.state;
+    const u = (s.current != null && this.units[s.current]) ? this.units[s.current] : null;
+    const g = (u && u.grammar && u.grammar.length) ? u.grammar[Math.min(s.gramIdx, u.grammar.length - 1)] : null;
+    const con = g && g.contrast ? g.contrast : null;
+    const cc = con ? con.cols.length : 0;
+    const cgrid = con ? "display:grid;grid-template-columns:" + (cc === 3 ? "1.1fr 1.2fr 1.6fr" : "repeat(" + cc + ",1fr)") + ";" : "";
+    const test = (u && u.test) ? u.test : [];
+    const picks = s.testPick || {};
+    let score = 0, done = 0;
+    test.forEach((q, i) => { if (picks[i] != null){ done++; if (picks[i] === q.answer) score++; } });
+    const optStyle = (pick, oi, ans) => {
+      let bg = "#fffaf0", col = "#3f3120";
+      if (pick != null){
+        if (oi === ans){ bg = "#2f8f5a"; col = "#fff"; }
+        else if (oi === pick){ bg = "#c0392b"; col = "#fff"; }
+        else { bg = "#f2ead9"; col = "#9a8a6a"; }
+      }
+      return "display:block;text-align:left;width:100%;cursor:pointer;font-family:'Nunito',sans-serif;font-size:18px;line-height:1.35;padding:12px 15px;border:2px solid #f0e2c8;border-radius:14px;margin-bottom:9px;background:" + bg + ";color:" + col;
+    };
+    return {
+      hasMore: !!(g && g.more && g.more.length), gMore: (g && g.more) || [],
+      hasFix: !!(g && g.fix && g.fix.length), gFix: (g && g.fix) || [],
+      hasSound: !!(g && g.sound), gSound: (g && g.sound) || "",
+      hasDrill: !!(g && g.drill), gDrillName: (g && g.drill) ? g.drill.name : "", gDrillPrompt: (g && g.drill) ? g.drill.prompt : "",
+      gDrillItems: (g && g.drill && g.drill.items) ? g.drill.items.map((x, i) => ({ n: i + 1, text: x })) : [],
+      hasDialogue: !!(g && g.dialogue && g.dialogue.length), gDialogue: (g && g.dialogue) || [],
+      hasContrast: !!con, contrastTitle: con ? con.title : "", contrastCols: con ? con.cols : [],
+      contrastHeadStyle: cgrid + "background:#c96a2f",
+      contrastRows: con ? con.rows.map((r, i) => ({ cells: r, style: cgrid + "background:" + (i % 2 ? "#f9f0dd" : "#fffaf0") + ";border-top:2px solid #f0e2c8" })) : [],
+      isDynamics: s.activeTab === "dynamics",
+      isTest: s.activeTab === "test",
+      dynamics: (u && u.dynamics) ? u.dynamics.map((d, i) => Object.assign({}, d, { num: i + 1 })) : [],
+      hasWriting: !!(u && u.writing), writing: (u && u.writing) || null,
+      writingCriteria: (u && u.writing && u.writing.criteria) ? u.writing.criteria : [],
+      hasHomework: !!(u && u.homework), homework: (u && u.homework) || null,
+      hasBoard: !!(u && u.board && u.board.length), board: (u && u.board) ? u.board.map((x, i) => ({ n: i + 1, text: x })) : [],
+      testView: test.map((q, i) => ({
+        n: i + 1, q: q.q, explain: q.explain,
+        explainStyle: picks[i] != null ? "margin-top:11px;padding-top:10px;border-top:2px solid #f0e2c8;font-family:'Nunito',sans-serif;font-size:16px;line-height:1.45;color:#7a6244" : "display:none",
+        options: q.options.map((text, oi) => ({ text, onClick: () => this.answerTest(i, oi), style: optStyle(picks[i], oi, q.answer) }))
+      })),
+      testScore: done ? score + " / " + test.length + " correct so far" : "Tap one answer per question."
+    };
+  }
+
+  renderVals(){
+    const s = this.state, P = this.props || {};
+    const sunset = (P.theme || "Day") === "Sunset";
+    const showLabels = P.showUnitLabels !== false;
+    const animate = P.animateCharacter !== false;
+    const cur = s.current;
+    const unit = cur != null ? this.units[cur] : null;
+    const accent = unit ? unit.color : "#e8763a";
+
+    const checkpoints = s.checkpoints.map((c, i) => ({
+      x: c.x, y: c.y, num: c.num, name: c.name, color: c.color,
+      labelDisplay: showLabels ? "block" : "none",
+      shadow: i === cur ? "0 0 0 9px rgba(255,255,255,.55),0 10px 20px rgba(70,45,20,.3)" : "0 8px 16px rgba(70,45,20,.26)",
+      onClick: () => this.clickCheckpoint(i)
+    }));
+
+    const _pu = (this.state.current != null && this.units[this.state.current]) ? this.units[this.state.current] : null;
+    const tabsDef = [["guide","UNIT GUIDE"],["vocab","VOCABULARY"],["grammar","GRAMMAR"],["speaking","SPEAKING"],["tips","TIPS"],["quiz","QUICK CHECK"]];
+    if (_pu && _pu.dynamics && _pu.dynamics.length) tabsDef.push(["dynamics","DYNAMICS"]);
+    if (_pu && _pu.test && _pu.test.length) tabsDef.push(["test","TEST"]);
+    const tabsView = tabsDef.map(([k, label]) => {
+      const active = s.activeTab === k;
+      return { label, onClick: () => this.setState({ activeTab: k }),
+        style: "font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.2px;cursor:pointer;padding:11px 16px;border:none;border-radius:999px;white-space:nowrap;background:" + (active ? accent : "#fffaf0") + ";color:" + (active ? "#fff8ec" : "#7a6244") + ";box-shadow:" + (active ? "0 5px 12px rgba(70,45,20,.22)" : "none") };
+    });
+
+    let optionsView = [];
+    const answered = s.quizChoice != null;
+    if (unit){
+      optionsView = unit.quiz.options.map((text, idx) => {
+        let bg = "#f6ead4", col = "#3f3120";
+        if (answered){
+          if (idx === unit.quiz.answer){ bg = "#2f8f6a"; col = "#fff8ec"; }
+          else if (idx === s.quizChoice){ bg = "#c0392b"; col = "#fff8ec"; }
+          else { bg = "#efe7d6"; col = "#a79273"; }
+        }
+        return { text, onClick: () => { if (s.quizChoice == null) this.setState({ quizChoice: idx }); },
+          style: "display:block;text-align:left;width:100%;cursor:" + (answered ? "default" : "pointer") + ";font-family:'Nunito',sans-serif;font-weight:600;font-size:19px;line-height:1.3;padding:15px 18px;border:none;border-radius:14px;background:" + bg + ";color:" + col };
+      });
+    }
+
+    const subBtn = (active) => "display:block;width:100%;text-align:left;cursor:pointer;border:2px solid " + (active ? "transparent" : "#f0e2c8") + ";border-radius:14px;padding:12px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:17px;line-height:1.25;background:" + (active ? accent : "#fffaf0") + ";color:" + (active ? "#fff8ec" : "#3f3120");
+    const vIdx = unit ? Math.min(s.vocabIdx, unit.vocab.length - 1) : 0;
+    const gIdx = unit ? Math.min(s.gramIdx, unit.grammar.length - 1) : 0;
+    const vocabMenu = unit ? unit.vocab.map((v, i) => ({ term: v.term, pos: v.pos, onClick: () => this.setState({ vocabIdx: i }), style: subBtn(i === vIdx), posStyle: "font-family:'Nunito',sans-serif;font-weight:600;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;margin-top:5px;opacity:" + (i === vIdx ? ".9" : ".6") })) : [];
+    const gramMenu = unit ? unit.grammar.map((g, i) => ({ name: g.name, short: g.short, onClick: () => this.setState({ gramIdx: i }), style: subBtn(i === gIdx), posStyle: "font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;line-height:1.3;margin-top:5px;opacity:" + (i === gIdx ? ".95" : ".7") })) : [];
+
+    const navBtn = "border:none;border-radius:999px;padding:12px 22px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.2px;cursor:pointer;background:" + accent + ";color:#fff8ec";
+    const navOff = "border:none;border-radius:999px;padding:12px 22px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.2px;cursor:default;background:#e6d7ba;color:#b3a288";
+
+    const gi = unit ? unit.grammar[gIdx] : null;
+    const chart = gi && gi.chart ? gi.chart : null;
+    const ccols = chart ? chart.cols.length : 0;
+    const cgrid = chart ? "display:grid;grid-template-columns:" + (ccols === 3 ? "1.1fr 1.2fr 1.6fr" : ccols === 4 ? "1fr 1fr 1fr 1.4fr" : "repeat(" + ccols + ",1fr)") + ";" : "";
+    const chartRows = chart ? chart.rows.map((r, i) => ({ cells: r, style: cgrid + "background:" + (i % 2 ? "#f9f0dd" : "#fffaf0") + ";border-top:2px solid #f0e2c8" })) : [];
+
+    return {
+      vocabCount: unit ? unit.vocab.length : 10,
+      hasDeep: !!(gi && gi.deep),
+      hasChart: !!chart,
+      chartTitle: chart ? chart.title : "",
+      chartCols: chart ? chart.cols : [],
+      chartRows,
+      chartHeadStyle: cgrid + "background:" + accent,
+      scale: s.scale,
+      path: this.path,
+      pathCss: "path(\"" + this.path + "\")",
+      skyBg: sunset ? "linear-gradient(#f7c98b 0%,#f2a97e 46%,#efc79c 100%)" : "linear-gradient(#bfe4f2 0%,#dff0f2 52%,#f4ead3 100%)",
+      sunColor: sunset ? "#f2743f" : "#ffd977",
+      hillA: sunset ? "#b0663f" : "#8fc47a",
+      hillB: sunset ? "#8a5140" : "#6fae74",
+      hillC: sunset ? "#c9855a" : "#a8d18a",
+      checkpoints,
+      pct: s.pct,
+      bobAnim: animate ? "bob 3s ease-in-out infinite" : "none",
+      open: s.open,
+      unit,
+      accent,
+      unitNum: cur != null ? cur + 1 : "",
+      overview: unit ? unit.overview : null,
+      goals: unit ? unit.overview.goals.map((t, i) => ({ num: i + 1, text: t })) : [],
+      vocabMenu, gramMenu,
+      vocabItem: unit ? unit.vocab[vIdx] : null,
+      gramItem: unit ? unit.grammar[gIdx] : null,
+      isGuide: s.activeTab === "guide",
+      isVocab: s.activeTab === "vocab",
+      isGrammar: s.activeTab === "grammar",
+      isSpeaking: s.activeTab === "speaking",
+      isTips: s.activeTab === "tips",
+      isQuiz: s.activeTab === "quiz",
+      tabsView, optionsView,
+      quizCorrect: answered && unit && s.quizChoice === unit.quiz.answer,
+      quizWrong: answered && unit && s.quizChoice !== unit.quiz.answer,
+      quizExplain: unit ? unit.quiz.explain : "",
+      prevStyle: cur > 0 ? navBtn : navOff,
+      nextStyle: (cur != null && cur < this.units.length - 1) ? navBtn : navOff,
+      next: () => this.next(), prev: () => this.prev(), close: () => this.close(),
+      ...this.mixVals(),
+      ...this.plusVals()
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { background: #f4f1e8; -webkit-font-smoothing: antialiased; }
+  a { color: oklch(0.55 0.14 250); text-decoration: underline; }
+  a:hover { color: oklch(0.45 0.16 250); }
+  * { box-sizing: border-box; }
+  input, button { font-family: inherit; }
+  @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-10px) rotate(1.5deg); } }
+  @keyframes pop { 0% { transform: scale(0.8); opacity: 0; } 60% { transform: scale(1.04); } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes wob { 0%,100% { transform: rotate(-0.6deg); } 50% { transform: rotate(0.6deg); } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; font-family: Quicksand, system-ui, sans-serif; color: #2c2a26; padding: 22px 22px 60px; background-color: #f4f1e8; background-image: radial-gradient(circle at 12% 8%, oklch(0.86 0.09 200 / 0.55), transparent 42%), radial-gradient(circle at 88% 14%, oklch(0.88 0.09 60 / 0.6), transparent 40%), radial-gradient(circle at 70% 92%, oklch(0.86 0.09 310 / 0.45), transparent 45%), linear-gradient(#e6e1d3 1px, transparent 1px), linear-gradient(90deg, #e6e1d3 1px, transparent 1px); background-size: auto, auto, auto, 28px 28px, 28px 28px;">
+
+  <div style="max-width: 1560px; margin: 0 auto;">
+
+    <div style="display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; padding: 16px 22px; border: 2.5px solid #2c2a26; border-radius: 240px 18px 220px 18px / 18px 220px 18px 240px; background: rgba(255,255,255,0.5); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); box-shadow: 5px 6px 0 rgba(44,42,38,0.16), inset 0 1px 0 rgba(255,255,255,0.85);">
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <div style="font-family: 'Caveat Brush', cursive; font-size: 44px; line-height: 1; letter-spacing: 0.5px;">Time &amp; Family Playbook</div>
+        <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #5d574c;">Telling the time &amp; family words<span style="display: {{ esInline }};"> &middot; La hora y la familia</span></div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; min-width: 104px; padding: 8px 16px; border: 2.5px solid #2c2a26; border-radius: 16px 200px 16px 200px / 200px 16px 200px 16px; background: oklch(0.9 0.09 60 / 0.75); box-shadow: 3px 4px 0 rgba(44,42,38,0.18);">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px; line-height: 1;">{{ score }}</div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 15px; color: #5d574c;">points<span style="display: {{ esInline }};"> / puntos</span></div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; min-width: 104px; padding: 8px 16px; border: 2.5px solid #2c2a26; border-radius: 200px 16px 200px 16px / 16px 200px 16px 200px; background: oklch(0.9 0.09 200 / 0.75); box-shadow: 3px 4px 0 rgba(44,42,38,0.18);">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px; line-height: 1;">{{ streakLabel }}</div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 15px; color: #5d574c;">streak<span style="display: {{ esInline }};"> / racha</span></div>
+        </div>
+        <button onClick="{{ toggleBi }}" style="min-height: 54px; padding: 10px 20px; font-size: 17px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;" style-hover="background: #fff;">{{ biLabel }}</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 24px;">
+      <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="7">
+        <button onClick="{{ tab.onClick }}" style="min-height: 62px; padding: 10px 22px; cursor: pointer; text-align: left; border: 2.5px solid #2c2a26; border-radius: 18px; box-shadow: 3px 4px 0 rgba(44,42,38,0.2); background: {{ tab.bg }}; transform: {{ tab.tf }}; display: flex; flex-direction: column; gap: 1px;">
+          <span style="font-family: 'Caveat Brush', cursive; font-size: 24px; line-height: 1.05; color: #2c2a26;">{{ tab.label }}</span>
+          <span style="font-family: 'Patrick Hand', cursive; font-size: 15px; color: #5d574c; display: {{ esDisplay }};">{{ tab.es }}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ isSaying }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="padding: 26px 30px; border: 2.5px solid #2c2a26; border-radius: 220px 20px 210px 20px / 20px 210px 20px 220px; background: rgba(255,255,255,0.82); box-shadow: 6px 7px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #5d574c; margin-bottom: 6px;">Saying of the class<span style="display: {{ esInline }};"> &middot; El dicho de la clase</span></div>
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 46px; line-height: 1.15;">“Hoy por ti, mañana por mi”</div>
+          <sc-if value="{{ sayingOpen }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: 16px; padding: 18px 22px; border: 2.5px dashed #2c2a26; border-radius: 18px; background: oklch(0.92 0.07 200 / 0.6); animation: pop 0.35s ease-out;">
+              <div style="font-family: 'Caveat Brush', cursive; font-size: 36px; line-height: 1.2;">“You scratch my back, I`ll scratch yours.”</div>
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 21px; color: #4a453c; margin-top: 8px;">You help me, I help you. Favours come back around.</div>
+            </div>
+          </sc-if>
+          <button onClick="{{ toggleSaying }}" style="margin-top: 18px; min-height: 58px; padding: 12px 26px; font-size: 19px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;" style-hover="transform: translate(-1px,-1px);">{{ sayingBtn }}</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+          <sc-for list="{{ agenda }}" as="a" hint-placeholder-count="4">
+            <div style="padding: 22px 24px; border: 2.5px solid #2c2a26; border-radius: 20px; background: rgba(255,255,255,0.78); backdrop-filter: blur(8px); box-shadow: 4px 5px 0 rgba(44,42,38,0.16); display: flex; flex-direction: column; gap: 8px;">
+              <div style="width: 52px; height: 52px; display: grid; place-items: center; border: 2.5px solid #2c2a26; border-radius: 50%; font-family: 'Caveat Brush', cursive; font-size: 26px; background: {{ a.bg }};">{{ a.n }}</div>
+              <div style="font-family: 'Caveat Brush', cursive; font-size: 30px; line-height: 1.1;">{{ a.title }}</div>
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #4a453c; line-height: 1.35;">{{ a.body }}</div>
+              <button onClick="{{ a.onClick }}" style="margin-top: 6px; align-self: flex-start; min-height: 50px; padding: 8px 20px; font-size: 17px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: rgba(255,255,255,0.9); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;" style-hover="background: oklch(0.9 0.09 200);">Start<span style="display: {{ esInline }};"> / Empezar</span></button>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isClock }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; align-items: start;">
+
+        <div style="padding: 24px; border: 2.5px solid #2c2a26; border-radius: 24px; background: rgba(255,255,255,0.72); backdrop-filter: blur(14px) saturate(1.3); box-shadow: 6px 7px 0 rgba(44,42,38,0.14), inset 0 1px 0 rgba(255,255,255,0.9); display: flex; flex-direction: column; align-items: center; gap: 18px;">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px;">Spin the clock<span style="display: {{ esInline }};"> &middot; Gira el reloj</span></div>
+
+          <div ref="{{ faceRef }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerLeave="{{ onUp }}" onPointerDown="{{ onFaceDown }}" style="position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; border: 4px solid #2c2a26; border-radius: 50%; background: radial-gradient(circle at 32% 26%, #ffffff, #f6f3ea 70%, #ece7da); box-shadow: 7px 9px 0 rgba(44,42,38,0.18), inset 0 0 0 10px rgba(255,255,255,0.55); touch-action: none; cursor: grab;">
+            <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="60">
+              <div style="position: absolute; left: 50%; top: 50%; width: {{ t.w }}px; height: {{ t.h }}px; margin-left: {{ t.ml }}px; background: #2c2a26; border-radius: 2px; transform-origin: 50% 0; transform: rotate({{ t.rot }}deg) translateY({{ t.push }}px); opacity: {{ t.op }};"></div>
+            </sc-for>
+            <sc-for list="{{ nums }}" as="n" hint-placeholder-count="12">
+              <div style="position: absolute; left: {{ n.x }}%; top: {{ n.y }}%; transform: translate(-50%,-50%); font-family: 'Caveat Brush', cursive; font-size: 32px; color: #2c2a26;">{{ n.label }}</div>
+            </sc-for>
+            <div onPointerDown="{{ grabHour }}" style="position: absolute; left: 50%; top: 50%; width: 15px; height: 27%; margin-left: -7.5px; background: #2c2a26; border: 2px solid #2c2a26; border-radius: 8px; transform-origin: 50% 100%; transform: translateY(-100%) rotate({{ hourAngle }}deg); transition: {{ handTrans }}; cursor: grab; touch-action: none;"></div>
+            <div onPointerDown="{{ grabMin }}" style="position: absolute; left: 50%; top: 50%; width: 11px; height: 39%; margin-left: -5.5px; background: oklch(0.62 0.19 25); border: 2px solid #2c2a26; border-radius: 8px; transform-origin: 50% 100%; transform: translateY(-100%) rotate({{ minAngle }}deg); transition: {{ handTrans }}; cursor: grab; touch-action: none;"></div>
+            <div style="position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border: 3px solid #2c2a26; border-radius: 50%; background: #fff;"></div>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <button onClick="{{ spin }}" style="min-height: 62px; padding: 12px 28px; font-size: 21px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;" style-hover="transform: translate(-1px,-1px);">Spin!<span style="display: {{ esInline }};"> / ¡Gira!</span></button>
+            <button onClick="{{ nudgeHour }}" style="min-height: 62px; padding: 12px 22px; font-size: 18px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: rgba(255,255,255,0.85); box-shadow: 4px 5px 0 rgba(44,42,38,0.2); color: #2c2a26;">+1 hour</button>
+            <button onClick="{{ nudgeMin }}" style="min-height: 62px; padding: 12px 22px; font-size: 18px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: rgba(255,255,255,0.85); box-shadow: 4px 5px 0 rgba(44,42,38,0.2); color: #2c2a26;">+5 min</button>
+          </div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 18px; color: #5d574c; text-align: center;">Drag a hand to move it.<span style="display: {{ esInline }};"> Arrastra las manecillas.</span></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 18px;">
+          <div style="position: relative; display: flex; align-items: flex-end; gap: 8px;">
+            <img src="assets/penguin.png" alt="Penguin teacher" style="width: 190px; max-width: 38%; height: auto; animation: floaty 4.5s ease-in-out infinite; filter: drop-shadow(4px 6px 0 rgba(44,42,38,0.12));" />
+            <div style="flex: 1; min-width: 0; padding: 22px 24px; border: 3px solid #2c2a26; border-radius: 24px 24px 24px 6px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); box-shadow: 5px 6px 0 rgba(44,42,38,0.16), inset 0 1px 0 rgba(255,255,255,0.9);">
+              <div style="font-family: 'Caveat Brush', cursive; font-size: 40px; line-height: 1.15;">{{ enPhrase }}</div>
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 26px; color: #4a453c; margin-top: 4px; display: {{ esDisplay }};">{{ esPhrase }}</div>
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 22px; color: #7a7365; margin-top: 8px;">{{ digital }}</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+                <button onClick="{{ sayEn }}" style="min-height: 54px; padding: 10px 22px; font-size: 17px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: oklch(0.86 0.11 300); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;">Listen (EN)</button>
+                <button onClick="{{ sayEs }}" style="min-height: 54px; padding: 10px 22px; font-size: 17px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: oklch(0.88 0.1 140); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;">Escuchar (ES)</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 22px 24px; border: 2.5px solid #2c2a26; border-radius: 22px; background: rgba(255,255,255,0.78); box-shadow: 5px 6px 0 rgba(44,42,38,0.14);">
+            <div style="font-family: 'Caveat Brush', cursive; font-size: 28px; margin-bottom: 10px;">Other ways to say it<span style="display: {{ esInline }};"> &middot; Otras formas</span></div>
+            <sc-for list="{{ altPhrases }}" as="p" hint-placeholder-count="3">
+              <div style="display: flex; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 2px dashed #ddd7c6;">
+                <span style="font-family: 'Patrick Hand', cursive; font-size: 17px; color: #7a7365; min-width: 168px;">{{ p.kind }}</span>
+                <span style="font-family: Quicksand, sans-serif; font-size: 21px; font-weight: 600;">{{ p.text }}</span>
+              </div>
+            </sc-for>
+            <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #4a453c; margin-top: 12px; line-height: 1.4;">Ask informally: <b>What time is it?</b> &middot; Formally: <b>Could you please tell me the time?</b></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isTimeQuiz }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 22px; align-items: start;">
+        <div style="padding: 24px; border: 2.5px solid #2c2a26; border-radius: 24px; background: rgba(255,255,255,0.72); backdrop-filter: blur(14px); box-shadow: 6px 7px 0 rgba(44,42,38,0.14); display: flex; flex-direction: column; align-items: center; gap: 14px;">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px;">What time is it?</div>
+          <div style="position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; border: 4px solid #2c2a26; border-radius: 50%; background: radial-gradient(circle at 32% 26%, #fff, #f6f3ea 72%, #ece7da); box-shadow: 6px 8px 0 rgba(44,42,38,0.18), inset 0 0 0 9px rgba(255,255,255,0.55);">
+            <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="60">
+              <div style="position: absolute; left: 50%; top: 50%; width: {{ t.w }}px; height: {{ t.h }}px; margin-left: {{ t.ml }}px; background: #2c2a26; border-radius: 2px; transform-origin: 50% 0; transform: rotate({{ t.rot }}deg) translateY({{ t.push }}px); opacity: {{ t.op }};"></div>
+            </sc-for>
+            <sc-for list="{{ nums }}" as="n" hint-placeholder-count="12">
+              <div style="position: absolute; left: {{ n.x }}%; top: {{ n.y }}%; transform: translate(-50%,-50%); font-family: 'Caveat Brush', cursive; font-size: 26px;">{{ n.label }}</div>
+            </sc-for>
+            <div style="position: absolute; left: 50%; top: 50%; width: 13px; height: 27%; margin-left: -6.5px; background: #2c2a26; border: 2px solid #2c2a26; border-radius: 8px; transform-origin: 50% 100%; transform: translateY(-100%) rotate({{ tqHourAngle }}deg);"></div>
+            <div style="position: absolute; left: 50%; top: 50%; width: 10px; height: 39%; margin-left: -5px; background: oklch(0.62 0.19 25); border: 2px solid #2c2a26; border-radius: 8px; transform-origin: 50% 100%; transform: translateY(-100%) rotate({{ tqMinAngle }}deg);"></div>
+            <div style="position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border: 3px solid #2c2a26; border-radius: 50%; background: #fff;"></div>
+          </div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #5d574c;">{{ tqCounter }}</div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ tqOptions }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.onClick }}" style="min-height: 76px; padding: 14px 22px; text-align: left; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; box-shadow: 4px 5px 0 rgba(44,42,38,0.18); background: {{ o.bg }}; color: #2c2a26; font-family: Quicksand, sans-serif; font-size: 24px; font-weight: 600;" style-hover="transform: translate(-1px,-1px);">{{ o.label }}</button>
+          </sc-for>
+          <div style="min-height: 92px; padding: 16px 20px; border: 2.5px dashed #2c2a26; border-radius: 18px; background: rgba(255,255,255,0.7);">
+            <div style="font-family: 'Caveat Brush', cursive; font-size: 30px;">{{ tqFb }}</div>
+            <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #4a453c; display: {{ esDisplay }};">{{ tqFbEs }}</div>
+          </div>
+          <button onClick="{{ tqNext }}" style="min-height: 62px; padding: 12px 26px; font-size: 20px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Next clock<span style="display: {{ esInline }};"> / Siguiente</span></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isVocab }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <sc-for list="{{ vocabGroups }}" as="g" hint-placeholder-count="6">
+            <button onClick="{{ g.onClick }}" style="min-height: 56px; padding: 10px 20px; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; box-shadow: 3px 4px 0 rgba(44,42,38,0.18); background: {{ g.bg }}; font-family: 'Patrick Hand', cursive; font-size: 21px; color: #2c2a26;">{{ g.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 16px;">
+          <sc-for list="{{ vocabList }}" as="v" hint-placeholder-count="9">
+            <div style="padding: 18px 20px; border: 2.5px solid #2c2a26; border-radius: 20px; background: rgba(255,255,255,0.8); backdrop-filter: blur(8px); box-shadow: 4px 5px 0 rgba(44,42,38,0.15); display: flex; flex-direction: column; gap: 4px;">
+              <div style="font-family: 'Caveat Brush', cursive; font-size: 30px; line-height: 1.1;">{{ v.en }}</div>
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 21px; color: #4a453c; display: {{ esDisplay }};">{{ v.es }}</div>
+              <div style="font-family: ui-monospace, monospace; font-size: 14px; color: #7a7365; letter-spacing: 0.3px;">{{ v.say }}</div>
+              <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <button onClick="{{ v.onSayEn }}" style="flex: 1; min-height: 50px; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 14px; background: oklch(0.86 0.11 300); box-shadow: 2px 3px 0 rgba(44,42,38,0.2); font-size: 16px; font-weight: 700; color: #2c2a26;">EN</button>
+                <button onClick="{{ v.onSayEs }}" style="flex: 1; min-height: 50px; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 14px; background: oklch(0.88 0.1 140); box-shadow: 2px 3px 0 rgba(44,42,38,0.2); font-size: 16px; font-weight: 700; color: #2c2a26;">ES</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isFamilyQuiz }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; align-items: start;">
+        <div style="padding: 26px 28px; border: 2.5px solid #2c2a26; border-radius: 220px 20px 210px 20px / 20px 210px 20px 220px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); box-shadow: 6px 7px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #5d574c;">Guessing game<span style="display: {{ esInline }};"> &middot; Adivina el parentesco</span></div>
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 42px; line-height: 1.2; margin-top: 8px;">{{ fqQ }}</div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 24px; color: #4a453c; margin-top: 6px; display: {{ esDisplay }};">{{ fqQEs }}</div>
+          <div style="margin-top: 18px; min-height: 70px; padding: 14px 18px; border: 2.5px dashed #2c2a26; border-radius: 18px; background: oklch(0.93 0.05 200 / 0.5);">
+            <div style="font-family: 'Caveat Brush', cursive; font-size: 28px;">{{ fqFb }}</div>
+            <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #4a453c; display: {{ esDisplay }};">{{ fqFbEs }}</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ fqOptions }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.onClick }}" style="min-height: 74px; padding: 12px 22px; text-align: left; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; box-shadow: 4px 5px 0 rgba(44,42,38,0.18); background: {{ o.bg }}; color: #2c2a26; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: Quicksand, sans-serif; font-size: 23px; font-weight: 700;">{{ o.en }}</span>
+              <span style="font-family: 'Patrick Hand', cursive; font-size: 18px; color: #5d574c; display: {{ esDisplay }};">{{ o.es }}</span>
+            </button>
+          </sc-for>
+          <button onClick="{{ fqNext }}" style="min-height: 62px; padding: 12px 26px; font-size: 20px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Next riddle<span style="display: {{ esInline }};"> / Siguiente</span></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isTree }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div style="padding: 20px 24px; border: 2.5px solid #2c2a26; border-radius: 22px; background: rgba(255,255,255,0.7); backdrop-filter: blur(14px); box-shadow: 5px 6px 0 rgba(44,42,38,0.14); display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px;">Family tree generator<span style="display: {{ esInline }};"> &middot; Generador de árbol familiar</span></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ relChips }}" as="r" hint-placeholder-count="24">
+              <button onClick="{{ r.onClick }}" style="min-height: 48px; padding: 8px 16px; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 14px; box-shadow: 2px 3px 0 rgba(44,42,38,0.18); background: {{ r.bg }}; font-family: 'Patrick Hand', cursive; font-size: 18px; color: #2c2a26;">{{ r.label }}</button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+            <input ref="{{ nameRef }}" onKeyDown="{{ onNameKey }}" placeholder="{{ namePh }}" style="flex: 1; min-width: 220px; min-height: 62px; padding: 12px 18px; font-size: 22px; border: 2.5px solid #2c2a26; border-radius: 16px; background: #fff; box-shadow: inset 2px 3px 0 rgba(44,42,38,0.08); color: #2c2a26;" />
+            <button onClick="{{ addMember }}" style="min-height: 62px; padding: 12px 28px; font-size: 20px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Add {{ relSel }}</button>
+            <button onClick="{{ loadSample }}" style="min-height: 62px; padding: 12px 22px; font-size: 18px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: rgba(255,255,255,0.85); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;">Example tree</button>
+            <button onClick="{{ clearTree }}" style="min-height: 62px; padding: 12px 22px; font-size: 18px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: rgba(255,255,255,0.85); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;">Clear</button>
+          </div>
+        </div>
+
+        <div style="padding: 24px 20px; border: 2.5px solid #2c2a26; border-radius: 24px; background: rgba(255,255,255,0.66); backdrop-filter: blur(10px); box-shadow: 6px 7px 0 rgba(44,42,38,0.14); overflow-x: auto;">
+          <sc-for list="{{ genRows }}" as="row" hint-placeholder-count="4">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; padding-bottom: 18px;">
+              <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #7a7365; letter-spacing: 0.5px;">{{ row.title }}</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+                <sc-for list="{{ row.cards }}" as="c" hint-placeholder-count="3">
+                  <div style="position: relative; min-width: 178px; padding: 14px 16px 12px; border: 2.5px solid #2c2a26; border-radius: 18px; background: {{ c.bg }}; box-shadow: 4px 5px 0 rgba(44,42,38,0.18); animation: pop 0.3s ease-out; transform: {{ c.tf }};">
+                    <div style="font-family: 'Caveat Brush', cursive; font-size: 28px; line-height: 1.1;">{{ c.name }}</div>
+                    <div style="font-family: Quicksand, sans-serif; font-size: 16px; font-weight: 700; color: #2c2a26;">{{ c.rel }}</div>
+                    <div style="font-family: 'Patrick Hand', cursive; font-size: 16px; color: #5d574c; display: {{ esDisplay }};">{{ c.relEs }}</div>
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                      <button onClick="{{ c.onSay }}" style="min-height: 44px; padding: 6px 14px; cursor: pointer; border: 2px solid #2c2a26; border-radius: 12px; background: rgba(255,255,255,0.85); font-size: 15px; font-weight: 700; color: #2c2a26;">Say</button>
+                      <button onClick="{{ c.onRemove }}" style="min-height: 44px; padding: 6px 14px; cursor: pointer; border: 2px solid #2c2a26; border-radius: 12px; background: rgba(255,255,255,0.85); font-size: 15px; font-weight: 700; color: #2c2a26;">Remove</button>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="width: 3px; height: 22px; background: repeating-linear-gradient(#2c2a26 0 7px, transparent 7px 13px); display: {{ row.linkDisplay }};"></div>
+            </div>
+          </sc-for>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 21px; color: #7a7365; text-align: center; padding: 18px 0; display: {{ emptyDisplay }};">Pick a relation above, type a name, and your tree grows here.</div>
+        </div>
+
+        <div style="padding: 22px 26px; border: 2.5px solid #2c2a26; border-radius: 22px; background: rgba(255,255,255,0.8); box-shadow: 5px 6px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px;">Quiz me on my tree<span style="display: {{ esInline }};"> &middot; Pregúntame</span></div>
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 36px; margin-top: 10px; line-height: 1.2;">{{ trQ }}</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px;">
+            <sc-for list="{{ trOptions }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.onClick }}" style="min-height: 64px; padding: 12px 24px; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; box-shadow: 3px 4px 0 rgba(44,42,38,0.2); background: {{ o.bg }}; font-family: Quicksand, sans-serif; font-size: 22px; font-weight: 700; color: #2c2a26;">{{ o.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 22px; color: #4a453c; margin-top: 14px; min-height: 30px;">{{ trFb }}</div>
+          <button onClick="{{ trNext }}" style="margin-top: 8px; min-height: 58px; padding: 12px 24px; font-size: 19px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Ask me another</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isGenitive }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; align-items: start;">
+        <div style="padding: 26px 28px; border: 2.5px solid #2c2a26; border-radius: 22px; background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); box-shadow: 6px 7px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #5d574c;">Saxon genitive<span style="display: {{ esInline }};"> &middot; El genitivo sajón</span></div>
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 40px; line-height: 1.2; margin-top: 10px;">{{ gqQ }}</div>
+          <div style="margin-top: 18px; padding: 16px 20px; border: 2.5px dashed #2c2a26; border-radius: 18px; background: oklch(0.93 0.05 310 / 0.45);">
+            <div style="font-family: Quicksand, sans-serif; font-size: 19px; font-weight: 600; line-height: 1.5;">Singular owner: add <b>&rsquo;s</b> &mdash; Laura&rsquo;s mother is Clara.</div>
+            <div style="font-family: Quicksand, sans-serif; font-size: 19px; font-weight: 600; line-height: 1.5;">Plural ending in -s: add <b>&rsquo;</b> only &mdash; my parents&rsquo; house.</div>
+            <div style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #4a453c; margin-top: 6px; display: {{ esDisplay }};">El poseedor va primero, después el apóstrofo.</div>
+          </div>
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 28px; margin-top: 16px; min-height: 40px;">{{ gqFb }}</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ gqOptions }}" as="o" hint-placeholder-count="3">
+            <button onClick="{{ o.onClick }}" style="min-height: 76px; padding: 14px 22px; text-align: left; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; box-shadow: 4px 5px 0 rgba(44,42,38,0.18); background: {{ o.bg }}; font-family: Quicksand, sans-serif; font-size: 23px; font-weight: 600; color: #2c2a26;">{{ o.label }}</button>
+          </sc-for>
+          <button onClick="{{ gqNext }}" style="min-height: 62px; padding: 12px 26px; font-size: 20px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 18px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Next<span style="display: {{ esInline }};"> / Siguiente</span></button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isHomework }}" hint-placeholder-val="{{ true }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; align-items: start;">
+        <div style="padding: 28px 30px; border: 2.5px solid #2c2a26; border-radius: 220px 20px 210px 20px / 20px 210px 20px 220px; background: rgba(255,255,255,0.82); box-shadow: 6px 7px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 44px; line-height: 1.05;">HOMEWORK</div>
+          <div style="font-family: Quicksand, sans-serif; font-size: 22px; font-weight: 600; line-height: 1.5; margin-top: 10px;">Create a family tree where you name at least 9 members of your family and the titles they have.</div>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 21px; color: #4a453c; margin-top: 8px;">Don&rsquo;t forget to practice for the test after class 9.</div>
+          <div style="margin-top: 20px; padding: 18px 22px; border: 2.5px dashed #2c2a26; border-radius: 18px; background: {{ hwBg }};">
+            <div style="font-family: 'Caveat Brush', cursive; font-size: 34px;">{{ hwCount }}</div>
+            <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #4a453c;">{{ hwHint }}</div>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px;">
+            <button onClick="{{ printTree }}" style="min-height: 62px; padding: 12px 26px; font-size: 19px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: oklch(0.82 0.14 60); box-shadow: 4px 5px 0 rgba(44,42,38,0.22); color: #2c2a26;">Print<span style="display: {{ esInline }};"> / Imprimir</span></button>
+            <button onClick="{{ copyTree }}" style="min-height: 62px; padding: 12px 26px; font-size: 19px; font-weight: 700; cursor: pointer; border: 2.5px solid #2c2a26; border-radius: 16px; background: rgba(255,255,255,0.9); box-shadow: 3px 4px 0 rgba(44,42,38,0.2); color: #2c2a26;">{{ copyLabel }}</button>
+          </div>
+        </div>
+        <div style="padding: 24px 26px; border: 2.5px solid #2c2a26; border-radius: 22px; background: rgba(255,255,255,0.78); box-shadow: 5px 6px 0 rgba(44,42,38,0.14);">
+          <div style="font-family: 'Caveat Brush', cursive; font-size: 30px; margin-bottom: 12px;">My tree so far</div>
+          <sc-for list="{{ hwLines }}" as="l" hint-placeholder-count="9">
+            <div style="display: flex; gap: 14px; align-items: baseline; padding: 10px 0; border-bottom: 2px dashed #ddd7c6;">
+              <span style="font-family: 'Caveat Brush', cursive; font-size: 26px; min-width: 150px;">{{ l.name }}</span>
+              <span style="font-family: Quicksand, sans-serif; font-size: 19px; font-weight: 600;">{{ l.rel }}</span>
+              <span style="font-family: 'Patrick Hand', cursive; font-size: 18px; color: #7a7365; display: {{ esDisplay }};">{{ l.relEs }}</span>
+            </div>
+          </sc-for>
+          <div style="font-family: 'Patrick Hand', cursive; font-size: 20px; color: #7a7365; display: {{ emptyDisplay }};">Nothing yet &mdash; build your tree in the Family Tree tab.</div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;minuteStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;5&quot;,&quot;1&quot;],&quot;default&quot;:&quot;5&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Difficulty&quot;},&quot;bilingual&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Difficulty&quot;},&quot;treeMinMembers&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:9,&quot;min&quot;:4,&quot;max&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Homework&quot;}}">
+const EN_ONES = ['twelve','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve'];
+const EN_NUM = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty','twenty-one','twenty-two','twenty-three','twenty-four','twenty-five','twenty-six','twenty-seven','twenty-eight','twenty-nine','thirty'];
+const ES_NUM = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte','veintiuno','veintidós','veintitrés','veinticuatro','veinticinco','veintiséis','veintisiete','veintiocho','veintinueve','treinta'];
+const ES_HOUR = ['doce','una','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce'];
+
+const VOCAB = [
+  { g: 'Immediate', en: 'Father', es: 'Padre / Papá', say: 'FAH-ther' },
+  { g: 'Immediate', en: 'Mother', es: 'Madre / Mamá', say: 'MUH-ther' },
+  { g: 'Immediate', en: 'Parents', es: 'Padres', say: 'PAIR-ents' },
+  { g: 'Immediate', en: 'Brother', es: 'Hermano', say: 'BRUH-ther' },
+  { g: 'Immediate', en: 'Sister', es: 'Hermana', say: 'SIS-ter' },
+  { g: 'Immediate', en: 'Siblings', es: 'Hermanos', say: 'SIB-lings' },
+  { g: 'Immediate', en: 'Son', es: 'Hijo', say: 'SUN' },
+  { g: 'Immediate', en: 'Daughter', es: 'Hija', say: 'DAW-ter' },
+  { g: 'Immediate', en: 'Husband', es: 'Esposo / Marido', say: 'HUZ-band' },
+  { g: 'Immediate', en: 'Wife', es: 'Esposa', say: 'WYFE' },
+  { g: 'Grandparents', en: 'Grandfather', es: 'Abuelo', say: 'GRAND-fah-ther' },
+  { g: 'Grandparents', en: 'Grandmother', es: 'Abuela', say: 'GRAND-muh-ther' },
+  { g: 'Grandparents', en: 'Grandparents', es: 'Abuelos', say: 'GRAND-pair-ents' },
+  { g: 'Grandparents', en: 'Great-grandfather', es: 'Bisabuelo', say: 'grayt-GRAND-fah-ther' },
+  { g: 'Grandparents', en: 'Great-grandmother', es: 'Bisabuela', say: 'grayt-GRAND-muh-ther' },
+  { g: 'Grandparents', en: 'Grandson', es: 'Nieto', say: 'GRAND-sun' },
+  { g: 'Grandparents', en: 'Granddaughter', es: 'Nieta', say: 'GRAND-daw-ter' },
+  { g: 'Extended', en: 'Uncle', es: 'Tío', say: 'UNG-kul' },
+  { g: 'Extended', en: 'Aunt', es: 'Tía', say: 'AHNT' },
+  { g: 'Extended', en: 'Cousin', es: 'Primo / Prima', say: 'KUH-zin' },
+  { g: 'Extended', en: 'Nephew', es: 'Sobrino', say: 'NEF-yoo' },
+  { g: 'Extended', en: 'Niece', es: 'Sobrina', say: 'NEESS' },
+  { g: 'Extended', en: 'Great-uncle', es: 'Tío abuelo', say: 'grayt-UNG-kul' },
+  { g: 'Extended', en: 'Great-aunt', es: 'Tía abuela', say: 'grayt-AHNT' },
+  { g: 'Extended', en: 'Second cousin', es: 'Primo segundo', say: 'SEK-und KUH-zin' },
+  { g: 'Extended', en: 'Godfather', es: 'Padrino', say: 'GOD-fah-ther' },
+  { g: 'Extended', en: 'Godmother', es: 'Madrina', say: 'GOD-muh-ther' },
+  { g: 'Extended', en: 'Twin', es: 'Gemelo / Gemela', say: 'TWIN' },
+  { g: 'In-laws', en: 'Father-in-law', es: 'Suegro', say: 'FAH-ther-in-law' },
+  { g: 'In-laws', en: 'Mother-in-law', es: 'Suegra', say: 'MUH-ther-in-law' },
+  { g: 'In-laws', en: 'Brother-in-law', es: 'Cuñado', say: 'BRUH-ther-in-law' },
+  { g: 'In-laws', en: 'Sister-in-law', es: 'Cuñada', say: 'SIS-ter-in-law' },
+  { g: 'In-laws', en: 'Son-in-law', es: 'Yerno', say: 'SUN-in-law' },
+  { g: 'In-laws', en: 'Daughter-in-law', es: 'Nuera', say: 'DAW-ter-in-law' },
+  { g: 'Step & half', en: 'Stepfather', es: 'Padrastro', say: 'STEP-fah-ther' },
+  { g: 'Step & half', en: 'Stepmother', es: 'Madrastra', say: 'STEP-muh-ther' },
+  { g: 'Step & half', en: 'Stepbrother', es: 'Hermanastro', say: 'STEP-bruh-ther' },
+  { g: 'Step & half', en: 'Stepsister', es: 'Hermanastra', say: 'STEP-sis-ter' },
+  { g: 'Step & half', en: 'Stepson', es: 'Hijastro', say: 'STEP-sun' },
+  { g: 'Step & half', en: 'Stepdaughter', es: 'Hijastra', say: 'STEP-daw-ter' },
+  { g: 'Step & half', en: 'Half-brother', es: 'Medio hermano', say: 'HAF-bruh-ther' },
+  { g: 'Step & half', en: 'Half-sister', es: 'Media hermana', say: 'HAF-sis-ter' },
+  { g: 'Only / none', en: 'Only child', es: 'Hijo único', say: 'OHN-lee CHILDE' },
+  { g: 'Only / none', en: 'Relatives', es: 'Parientes', say: 'REL-uh-tivs' },
+  { g: 'Only / none', en: 'Ancestors', es: 'Antepasados', say: 'AN-ses-tors' },
+  { g: 'Only / none', en: 'Guardian', es: 'Tutor legal', say: 'GAR-dee-un' }
+];
+
+const RIDDLES = [
+  { q: "Your mother's brother is your…", qEs: 'El hermano de tu madre es tu…', a: 'Uncle' },
+  { q: "Your father's sister is your…", qEs: 'La hermana de tu padre es tu…', a: 'Aunt' },
+  { q: "Your uncle's daughter is your…", qEs: 'La hija de tu tío es tu…', a: 'Cousin' },
+  { q: "Your sister's son is your…", qEs: 'El hijo de tu hermana es tu…', a: 'Nephew' },
+  { q: "Your brother's daughter is your…", qEs: 'La hija de tu hermano es tu…', a: 'Niece' },
+  { q: "Your mother's mother is your…", qEs: 'La madre de tu madre es tu…', a: 'Grandmother' },
+  { q: "Your grandfather's father is your…", qEs: 'El padre de tu abuelo es tu…', a: 'Great-grandfather' },
+  { q: "Your grandmother's sister is your…", qEs: 'La hermana de tu abuela es tu…', a: 'Great-aunt' },
+  { q: "Your wife's mother is your…", qEs: 'La madre de tu esposa es tu…', a: 'Mother-in-law' },
+  { q: "Your sister's husband is your…", qEs: 'El esposo de tu hermana es tu…', a: 'Brother-in-law' },
+  { q: "Your brother's wife is your…", qEs: 'La esposa de tu hermano es tu…', a: 'Sister-in-law' },
+  { q: "Your son's wife is your…", qEs: 'La esposa de tu hijo es tu…', a: 'Daughter-in-law' },
+  { q: "Your daughter's husband is your…", qEs: 'El esposo de tu hija es tu…', a: 'Son-in-law' },
+  { q: "Your daughter's son is your…", qEs: 'El hijo de tu hija es tu…', a: 'Grandson' },
+  { q: "Your son's daughter is your…", qEs: 'La hija de tu hijo es tu…', a: 'Granddaughter' },
+  { q: "Your father's new wife is your…", qEs: 'La nueva esposa de tu padre es tu…', a: 'Stepmother' },
+  { q: "Your stepmother's son is your…", qEs: 'El hijo de tu madrastra es tu…', a: 'Stepbrother' },
+  { q: "Your father's brother's son is your…", qEs: 'El hijo del hermano de tu padre es tu…', a: 'Cousin' },
+  { q: 'A child with no brothers or sisters is an…', qEs: 'Un niño sin hermanos es un…', a: 'Only child' },
+  { q: "Your cousin's daughter's grandmother (your aunt) is your father's…", qEs: 'La abuela de la hija de tu primo (tu tía) es la… de tu padre', a: 'Sister' }
+];
+
+const GENITIVE = [
+  { q: 'The mother of Laura is Clara.', a: "Laura's mother is Clara.", w: ["Laura mother's is Clara.", "The Laura's mother is Clara."] },
+  { q: 'The son of Laura is Samuel.', a: "Laura's son is Samuel.", w: ["Laura son's is Samuel.", "Lauras son is Samuel."] },
+  { q: 'The car of my brother is new.', a: "My brother's car is new.", w: ["My brothers car is new.", "My brother car's is new."] },
+  { q: 'The dog of the children is small.', a: "The children's dog is small.", w: ["The childrens' dog is small.", "The children dog's is small."] },
+  { q: 'The house of my parents is big.', a: "My parents' house is big.", w: ["My parent's house is big.", "My parents house' is big."] },
+  { q: 'The bike of James is red.', a: "James's bike is red.", w: ["James bike's is red.", "The James' bike is red."] },
+  { q: 'The toys of the boys are old.', a: "The boys' toys are old.", w: ["The boy's toys are old.", "The boys toys' are old."] },
+  { q: 'The office of my father is quiet.', a: "My father's office is quiet.", w: ["My fathers office is quiet.", "My father office's is quiet."] },
+  { q: 'The names of my cousins are long.', a: "My cousins' names are long.", w: ["My cousin's names are long.", "My cousins names' are long."] },
+  { q: 'The birthday of my sister is today.', a: "My sister's birthday is today.", w: ["My sisters birthday is today.", "My sister birthday's is today."] }
+];
+
+const REL_ES = {
+  'Great-grandfather': 'Bisabuelo', 'Great-grandmother': 'Bisabuela',
+  'Grandfather': 'Abuelo', 'Grandmother': 'Abuela', 'Great-uncle': 'Tío abuelo', 'Great-aunt': 'Tía abuela',
+  'Father': 'Padre', 'Mother': 'Madre', 'Stepfather': 'Padrastro', 'Stepmother': 'Madrastra',
+  'Uncle': 'Tío', 'Aunt': 'Tía', 'Father-in-law': 'Suegro', 'Mother-in-law': 'Suegra',
+  'Godfather': 'Padrino', 'Godmother': 'Madrina',
+  'Me': 'Yo', 'Brother': 'Hermano', 'Sister': 'Hermana', 'Half-brother': 'Medio hermano', 'Half-sister': 'Media hermana',
+  'Stepbrother': 'Hermanastro', 'Stepsister': 'Hermanastra', 'Cousin': 'Primo / Prima',
+  'Husband': 'Esposo', 'Wife': 'Esposa', 'Brother-in-law': 'Cuñado', 'Sister-in-law': 'Cuñada',
+  'Son': 'Hijo', 'Daughter': 'Hija', 'Nephew': 'Sobrino', 'Niece': 'Sobrina',
+  'Son-in-law': 'Yerno', 'Daughter-in-law': 'Nuera', 'Stepson': 'Hijastro', 'Stepdaughter': 'Hijastra',
+  'Grandson': 'Nieto', 'Granddaughter': 'Nieta'
+};
+
+const GENS = [
+  { key: 'g0', title: 'GREAT-GRANDPARENTS · BISABUELOS', rels: ['Great-grandfather', 'Great-grandmother'] },
+  { key: 'g1', title: 'GRANDPARENTS · ABUELOS', rels: ['Grandfather', 'Grandmother', 'Great-uncle', 'Great-aunt'] },
+  { key: 'g2', title: 'PARENTS · AUNTS · UNCLES', rels: ['Father', 'Mother', 'Stepfather', 'Stepmother', 'Uncle', 'Aunt', 'Father-in-law', 'Mother-in-law', 'Godfather', 'Godmother'] },
+  { key: 'g3', title: 'MY GENERATION · MI GENERACIÓN', rels: ['Me', 'Brother', 'Sister', 'Half-brother', 'Half-sister', 'Stepbrother', 'Stepsister', 'Cousin', 'Husband', 'Wife', 'Brother-in-law', 'Sister-in-law'] },
+  { key: 'g4', title: 'CHILDREN · NEPHEWS · NIECES', rels: ['Son', 'Daughter', 'Stepson', 'Stepdaughter', 'Nephew', 'Niece', 'Son-in-law', 'Daughter-in-law'] },
+  { key: 'g5', title: 'GRANDCHILDREN · NIETOS', rels: ['Grandson', 'Granddaughter'] }
+];
+
+const TINTS = ['oklch(0.92 0.07 60 / 0.85)', 'oklch(0.92 0.07 200 / 0.85)', 'oklch(0.92 0.07 310 / 0.85)', 'oklch(0.93 0.07 140 / 0.85)', 'oklch(0.93 0.06 25 / 0.85)'];
+const SAMPLE = [
+  ['Great-grandfather', 'Ernesto'], ['Grandfather', 'Luis'], ['Grandmother', 'Rosa'],
+  ['Father', 'Andrés'], ['Mother', 'Clara'], ['Aunt', 'Marta'], ['Uncle', 'Diego'],
+  ['Me', 'Laura'], ['Brother', 'Samuel'], ['Sister', 'Ana'], ['Cousin', 'Pablo'],
+  ['Son', 'Mateo'], ['Niece', 'Sofía']
+];
+
+const KEY = 'twa-time-family-v1';
+
+class Component extends DCLogic {
+  state = {
+    tab: 'saying', bi: true, sayingOpen: false,
+    hour: 3, min: 0, spinning: false,
+    tq: null, tqPick: null, tqDone: 0,
+    fq: 0, fqPick: null, fqPool: [],
+    gq: 0, gqPick: null, gqPool: [],
+    vocabGroup: 'Immediate',
+    members: [], relSel: 'Me', copied: false,
+    trQ: null, trPick: null,
+    score: 0, streak: 0
+  };
+
+  componentDidMount() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const d = JSON.parse(raw);
+        this.setState({ members: d.members || [], score: d.score || 0, streak: d.streak || 0 });
+      }
+    } catch (e) {}
+    this.setState({ tq: this.makeTimeQ(), fqPool: this.shuffle(RIDDLES.map((_, i) => i)), gqPool: this.shuffle(GENITIVE.map((_, i) => i)) });
+  }
+
+  save(extra) {
+    const s = Object.assign({ members: this.state.members, score: this.state.score, streak: this.state.streak }, extra || {});
+    try { localStorage.setItem(KEY, JSON.stringify({ members: s.members, score: s.score, streak: s.streak })); } catch (e) {}
+  }
+
+  shuffle(a) { const x = a.slice(); for (let i = x.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = x[i]; x[i] = x[j]; x[j] = t; } return x; }
+
+  award(correct) {
+    this.setState(s => {
+      const streak = correct ? s.streak + 1 : 0;
+      const score = correct ? s.score + 10 + Math.min(streak - 1, 5) * 5 : s.score;
+      setTimeout(() => this.save({ score, streak }), 0);
+      return { score, streak };
+    });
+  }
+
+  speak(text, lang) {
+    try {
+      const synth = window.speechSynthesis;
+      if (!synth) return;
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = lang;
+      u.rate = 0.85;
+      u.pitch = lang.startsWith('en') ? 1.25 : 1.05;
+      const v = (synth.getVoices() || []).find(x => x.lang && x.lang.toLowerCase().startsWith(lang.slice(0, 2)));
+      if (v) u.voice = v;
+      synth.speak(u);
+    } catch (e) {}
+  }
+
+  enTime(h, m) {
+    const H = ((h + 11) % 12) + 1;
+    const next = (H % 12) + 1;
+    if (m === 0) return "It's " + EN_ONES[H] + " o'clock.";
+    if (m === 15) return "It's quarter past " + EN_ONES[H] + '.';
+    if (m === 30) return "It's half past " + EN_ONES[H] + '.';
+    if (m === 45) return "It's quarter to " + EN_ONES[next] + '.';
+    if (m < 30) return "It's " + EN_NUM[m] + ' past ' + EN_ONES[H] + '.';
+    return "It's " + EN_NUM[60 - m] + ' to ' + EN_ONES[next] + '.';
+  }
+
+  esTime(h, m) {
+    const H = ((h + 11) % 12) + 1;
+    const next = (H % 12) + 1;
+    const be = n => (n === 1 ? 'Es la ' : 'Son las ');
+    if (m === 0) return be(H) + ES_HOUR[H] + ' en punto.';
+    if (m === 15) return be(H) + ES_HOUR[H] + ' y cuarto.';
+    if (m === 30) return be(H) + ES_HOUR[H] + ' y media.';
+    if (m === 45) return be(next) + ES_HOUR[next] + ' menos cuarto.';
+    if (m < 30) return be(H) + ES_HOUR[H] + ' y ' + ES_NUM[m] + '.';
+    return be(next) + ES_HOUR[next] + ' menos ' + ES_NUM[60 - m] + '.';
+  }
+
+  digitalOf(h, m) {
+    const H = ((h + 11) % 12) + 1;
+    return H + ':' + String(m).padStart(2, '0');
+  }
+
+  altsOf(h, m) {
+    const H = ((h + 11) % 12) + 1;
+    const out = [{ kind: 'Read the numbers', text: "It's " + EN_ONES[H] + ' ' + (m === 0 ? "o'clock" : EN_NUM[Math.min(m, 30)] === undefined ? m : this.plainMin(m)) + '.' }];
+    if (m !== 0) {
+      out.push({ kind: 'Read the past time', text: "It's " + this.plainMin(m) + ' past ' + EN_ONES[H] + '.' });
+      out.push({ kind: 'Read the remaining time', text: "It's " + this.plainMin(60 - m) + ' to ' + EN_ONES[(H % 12) + 1] + '.' });
+    } else {
+      out.push({ kind: 'Read the past time', text: "It's " + EN_ONES[H] + " o'clock sharp." });
+    }
+    return out;
+  }
+
+  plainMin(m) {
+    if (m <= 30) return EN_NUM[m];
+    const tens = Math.floor(m / 10) * 10;
+    const ones = m % 10;
+    const tenW = { 30: 'thirty', 40: 'forty', 50: 'fifty' }[tens] || EN_NUM[tens];
+    return ones ? tenW + '-' + EN_NUM[ones] : tenW;
+  }
+
+  makeTimeQ() {
+    const step = Number(this.props.minuteStep || 5);
+    const h = 1 + Math.floor(Math.random() * 12);
+    const slots = Math.floor(60 / step);
+    const m = Math.floor(Math.random() * slots) * step;
+    const correct = this.enTime(h, m);
+    const cand = [this.enTime(h, (m + 15) % 60), this.enTime((h % 12) + 1, m), this.enTime(h, (60 - m) % 60), this.enTime(h, (m + 30) % 60)];
+    const wrong = [];
+    for (const c of cand) if (c !== correct && wrong.indexOf(c) < 0 && wrong.length < 3) wrong.push(c);
+    const options = this.shuffle([correct].concat(wrong));
+    return { h, m, correct, options };
+  }
+
+  optBg(picked, isCorrect, isThis, base) {
+    if (picked == null) return base;
+    if (isThis && isCorrect) return 'oklch(0.86 0.14 145)';
+    if (isThis && !isCorrect) return 'oklch(0.84 0.13 25)';
+    if (isCorrect) return 'oklch(0.9 0.09 145)';
+    return 'rgba(255,255,255,0.55)';
+  }
+
+  setTime(h, m, spinning) {
+    this.setState({ hour: ((h + 11) % 12) + 1, min: ((m % 60) + 60) % 60, spinning: !!spinning });
+  }
+
+  angleFrom(e) {
+    const el = this.faceRef && this.faceRef.current;
+    if (!el) return 0;
+    const r = el.getBoundingClientRect();
+    const dx = e.clientX - (r.left + r.width / 2);
+    const dy = e.clientY - (r.top + r.height / 2);
+    let a = Math.atan2(dx, -dy) * 180 / Math.PI;
+    if (a < 0) a += 360;
+    return a;
+  }
+
+  applyDrag(e) {
+    if (!this.drag) return;
+    const a = this.angleFrom(e);
+    if (this.drag === 'min') {
+      const step = Number(this.props.minuteStep || 5);
+      const m = (Math.round(a / (6 * step)) * step) % 60;
+      this.setState({ min: m, spinning: false });
+    } else {
+      let h = Math.round(a / 30) % 12;
+      if (h === 0) h = 12;
+      this.setState({ hour: h, spinning: false });
+    }
+  }
+
+  memberLines() {
+    return this.state.members.map(m => ({ name: m.name, rel: m.rel, relEs: REL_ES[m.rel] || '' }));
+  }
+
+  makeTreeQ() {
+    const ms = this.state.members.filter(m => m.rel !== 'Me');
+    if (ms.length < 3) return null;
+    const pick = ms[Math.floor(Math.random() * ms.length)];
+    const askName = Math.random() < 0.5;
+    const pool = this.shuffle(ms.filter(m => m !== pick)).slice(0, 3);
+    if (askName) {
+      const opts = this.shuffle([pick.name].concat(pool.map(m => m.name)));
+      return { mode: 'name', qEn: 'Who is your ' + pick.rel.toLowerCase() + '?', qEs: '¿Quién es tu ' + (REL_ES[pick.rel] || pick.rel).toLowerCase() + '?', correct: pick.name, options: opts };
+    }
+    const opts = this.shuffle([pick.rel].concat(pool.map(m => m.rel)));
+    return { mode: 'rel', qEn: 'What is ' + pick.name + ' to you?', qEs: '¿Qué es ' + pick.name + ' para ti?', correct: pick.rel, options: opts };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const bi = s.bi && (this.props.bilingual !== false);
+    const esDisplay = bi ? 'block' : 'none';
+    const esInline = bi ? 'inline' : 'none';
+    const es2 = (en, esx) => (bi ? en + ' / ' + esx : en);
+    const go = t => () => this.setState({ tab: t });
+
+    const tabDefs = [
+      ['saying', 'Saying', 'El dicho', 'oklch(0.9 0.09 60 / 0.8)'],
+      ['clock', 'Spin Clock', 'Gira el reloj', 'oklch(0.9 0.09 200 / 0.8)'],
+      ['timequiz', 'Time Quiz', '¿Qué hora es?', 'oklch(0.9 0.09 310 / 0.8)'],
+      ['vocab', 'Family Words', 'La familia', 'oklch(0.91 0.09 140 / 0.8)'],
+      ['famquiz', 'Guess Who', 'Adivina', 'oklch(0.91 0.08 25 / 0.8)'],
+      ['tree', 'Family Tree', 'Árbol familiar', 'oklch(0.9 0.09 250 / 0.8)'],
+      ['genitive', "Saxon 's", 'Genitivo sajón', 'oklch(0.91 0.08 90 / 0.8)'],
+      ['homework', 'Homework', 'Tarea', 'oklch(0.92 0.06 0 / 0.8)']
+    ];
+    const tabs = tabDefs.map((t, i) => ({
+      key: t[0], label: t[1], es: t[2], onClick: go(t[0]),
+      bg: s.tab === t[0] ? t[3] : 'rgba(255,255,255,0.55)',
+      tf: s.tab === t[0] ? 'translate(-2px,-2px) rotate(-0.8deg)' : 'rotate(' + (i % 2 ? 0.5 : -0.5) + 'deg)'
+    }));
+
+    const ticks = [];
+    for (let i = 0; i < 60; i++) {
+      const major = i % 5 === 0;
+      ticks.push({ rot: i * 6, w: major ? 5 : 2.5, h: major ? 20 : 11, ml: major ? -2.5 : -1.25, push: major ? 10 : 12, op: major ? 1 : 0.4 });
+    }
+    const nums = [];
+    for (let i = 1; i <= 12; i++) {
+      const a = (i * 30 - 90) * Math.PI / 180;
+      nums.push({ label: String(i), x: (50 + Math.cos(a) * 37).toFixed(2), y: (50 + Math.sin(a) * 37).toFixed(2) });
+    }
+
+    const tq = s.tq;
+    const tqOptions = (tq ? tq.options : []).map(o => ({
+      label: o,
+      bg: this.optBg(s.tqPick, o === tq.correct, o === s.tqPick, 'rgba(255,255,255,0.82)'),
+      onClick: () => { if (s.tqPick) return; this.setState({ tqPick: o }); this.award(o === tq.correct); if (o === tq.correct) this.speak(o, 'en-US'); }
+    }));
+
+    const groups = ['Immediate', 'Grandparents', 'Extended', 'In-laws', 'Step & half', 'Only / none'];
+    const vocabGroups = groups.map(g => ({
+      label: g, bg: s.vocabGroup === g ? 'oklch(0.88 0.11 200)' : 'rgba(255,255,255,0.6)',
+      onClick: () => this.setState({ vocabGroup: g })
+    }));
+    const vocabList = VOCAB.filter(v => v.g === s.vocabGroup).map(v => ({
+      en: v.en, es: v.es, say: '/ ' + v.say + ' /',
+      onSayEn: () => this.speak(v.en, 'en-US'),
+      onSayEs: () => this.speak(v.es.split(' / ')[0], 'es-ES')
+    }));
+
+    const rIdx = s.fqPool.length ? s.fqPool[s.fq % s.fqPool.length] : 0;
+    const riddle = RIDDLES[rIdx];
+    const answerPool = ['Uncle', 'Aunt', 'Cousin', 'Nephew', 'Niece', 'Grandmother', 'Grandfather', 'Great-grandfather', 'Great-aunt', 'Mother-in-law', 'Brother-in-law', 'Sister-in-law', 'Daughter-in-law', 'Son-in-law', 'Grandson', 'Granddaughter', 'Stepmother', 'Stepbrother', 'Only child', 'Sister'];
+    if (!this._fqOptsFor || this._fqOptsFor !== rIdx) {
+      const wrong = this.shuffle(answerPool.filter(a => a !== riddle.a)).slice(0, 3);
+      this._fqOpts = this.shuffle([riddle.a].concat(wrong));
+      this._fqOptsFor = rIdx;
+    }
+    const esOf = en => { const v = VOCAB.find(x => x.en === en); return v ? v.es : (REL_ES[en] || ''); };
+    const fqOptions = this._fqOpts.map(o => ({
+      en: o, es: esOf(o),
+      bg: this.optBg(s.fqPick, o === riddle.a, o === s.fqPick, 'rgba(255,255,255,0.82)'),
+      onClick: () => { if (s.fqPick) return; this.setState({ fqPick: o }); this.award(o === riddle.a); this.speak(riddle.a, 'en-US'); }
+    }));
+
+    const gIdx = s.gqPool.length ? s.gqPool[s.gq % s.gqPool.length] : 0;
+    const gItem = GENITIVE[gIdx];
+    if (!this._gqOptsFor || this._gqOptsFor !== gIdx) {
+      this._gqOpts = this.shuffle([gItem.a].concat(gItem.w));
+      this._gqOptsFor = gIdx;
+    }
+    const gqOptions = this._gqOpts.map(o => ({
+      label: o,
+      bg: this.optBg(s.gqPick, o === gItem.a, o === s.gqPick, 'rgba(255,255,255,0.82)'),
+      onClick: () => { if (s.gqPick) return; this.setState({ gqPick: o }); this.award(o === gItem.a); if (o === gItem.a) this.speak(gItem.a, 'en-US'); }
+    }));
+
+    const relChips = GENS.reduce((acc, g) => acc.concat(g.rels), []).map(r => ({
+      label: r, bg: s.relSel === r ? 'oklch(0.86 0.13 60)' : 'rgba(255,255,255,0.62)',
+      onClick: () => this.setState({ relSel: r })
+    }));
+
+    const genRows = GENS.map((g, gi) => {
+      const cards = s.members.filter(m => g.rels.indexOf(m.rel) >= 0).map((m, i) => ({
+        name: m.name, rel: m.rel, relEs: REL_ES[m.rel] || '',
+        bg: m.rel === 'Me' ? 'oklch(0.88 0.13 60)' : TINTS[(gi + i) % TINTS.length],
+        tf: 'rotate(' + ((i % 3) - 1) * 0.7 + 'deg)',
+        onSay: () => this.speak(m.name + ' is my ' + m.rel.toLowerCase(), 'en-US'),
+        onRemove: () => this.setState(st => { const members = st.members.filter(x => x !== m); setTimeout(() => this.save({ members }), 0); return { members, trQ: null, trPick: null }; })
+      }));
+      return { title: bi ? g.title : g.title.split(' · ')[0], cards, linkDisplay: cards.length && gi < GENS.length - 1 ? 'block' : 'none', _n: cards.length };
+    }).filter(r => r._n > 0);
+
+    const trQ = s.trQ;
+    const trOptions = (trQ ? trQ.options : []).map(o => ({
+      label: o,
+      bg: this.optBg(s.trPick, o === trQ.correct, o === s.trPick, 'rgba(255,255,255,0.82)'),
+      onClick: () => { if (s.trPick) return; this.setState({ trPick: o }); this.award(o === trQ.correct); }
+    }));
+
+    const named = s.members.filter(m => m.name && m.rel !== 'Me').length;
+    const need = Number(this.props.treeMinMembers || 9);
+
+    return {
+      score: s.score, streakLabel: s.streak > 0 ? '×' + s.streak : '—',
+      biLabel: bi ? 'Bilingual: ON' : 'English only',
+      toggleBi: () => this.setState({ bi: !s.bi }),
+      esDisplay, esInline, tabs,
+      isSaying: s.tab === 'saying', isClock: s.tab === 'clock', isTimeQuiz: s.tab === 'timequiz',
+      isVocab: s.tab === 'vocab', isFamilyQuiz: s.tab === 'famquiz', isTree: s.tab === 'tree',
+      isGenitive: s.tab === 'genitive', isHomework: s.tab === 'homework',
+
+      sayingOpen: s.sayingOpen,
+      sayingBtn: s.sayingOpen ? es2('Hide the English', 'Ocultar') : 'What does it mean in English?',
+      toggleSaying: () => this.setState({ sayingOpen: !s.sayingOpen }),
+      agenda: [
+        { n: '01', title: 'Daily Time', body: 'Spin the clock and let the penguin read the hour out loud.', bg: 'oklch(0.9 0.09 200)', onClick: go('clock') },
+        { n: '02', title: 'Family', body: 'Learn immediate and extended family words, with pronunciation.', bg: 'oklch(0.91 0.09 140)', onClick: go('vocab') },
+        { n: '03', title: "Saxon genitive", body: "Turn 'the mother of Laura' into \u2018Laura\u2019s mother\u2019.", bg: 'oklch(0.9 0.09 310)', onClick: go('genitive') },
+        { n: '04', title: 'Homework', body: 'Build your own family tree with at least 9 members and print it.', bg: 'oklch(0.91 0.08 25)', onClick: go('homework') }
+      ],
+
+      ticks, nums,
+      hourAngle: ((s.hour % 12) * 30 + s.min * 0.5).toFixed(2),
+      minAngle: (s.min * 6).toFixed(2),
+      handTrans: s.spinning ? 'transform 1s cubic-bezier(.16,.84,.24,1)' : 'none',
+      faceRef: (this.faceRef = this.faceRef || React.createRef()),
+      onFaceDown: e => { this.drag = 'min'; this.applyDrag(e); },
+      grabMin: e => { e.stopPropagation(); this.drag = 'min'; },
+      grabHour: e => { e.stopPropagation(); this.drag = 'hour'; },
+      onMove: e => this.applyDrag(e),
+      onUp: () => { this.drag = null; },
+      spin: () => {
+        const step = Number(this.props.minuteStep || 5);
+        const h = 1 + Math.floor(Math.random() * 12);
+        const m = Math.floor(Math.random() * (60 / step)) * step;
+        this.setTime(h, m, true);
+        setTimeout(() => this.speak(this.enTime(h, m), 'en-US'), 1050);
+      },
+      nudgeHour: () => this.setTime(s.hour + 1, s.min, true),
+      nudgeMin: () => this.setTime(s.hour + (s.min + 5 >= 60 ? 1 : 0), s.min + 5, true),
+      enPhrase: this.enTime(s.hour, s.min),
+      esPhrase: this.esTime(s.hour, s.min),
+      digital: 'Digital: ' + this.digitalOf(s.hour, s.min),
+      altPhrases: this.altsOf(s.hour, s.min),
+      sayEn: () => this.speak(this.enTime(s.hour, s.min), 'en-US'),
+      sayEs: () => this.speak(this.esTime(s.hour, s.min), 'es-ES'),
+
+      tqHourAngle: tq ? ((tq.h % 12) * 30 + tq.m * 0.5).toFixed(2) : 0,
+      tqMinAngle: tq ? (tq.m * 6).toFixed(2) : 0,
+      tqOptions,
+      tqCounter: bi ? 'Question ' + (s.tqDone + 1) + ' · Pregunta ' + (s.tqDone + 1) : 'Question ' + (s.tqDone + 1),
+      tqFb: s.tqPick == null ? 'Pick the right sentence.' : (s.tqPick === tq.correct ? 'Correct!' : 'Not quite — ' + tq.correct),
+      tqFbEs: s.tqPick == null ? 'Elige la frase correcta.' : (s.tqPick === tq.correct ? '¡Correcto! ' + this.esTime(tq.h, tq.m) : 'Casi — ' + this.esTime(tq.h, tq.m)),
+      tqNext: () => this.setState({ tq: this.makeTimeQ(), tqPick: null, tqDone: s.tqDone + 1 }),
+
+      vocabGroups, vocabList,
+
+      fqQ: riddle.q, fqQEs: riddle.qEs, fqOptions,
+      fqFb: s.fqPick == null ? 'Choose one.' : (s.fqPick === riddle.a ? 'Yes! ' + riddle.a : 'No — it is your ' + riddle.a.toLowerCase() + '.'),
+      fqFbEs: s.fqPick == null ? 'Elige una opción.' : (esOf(riddle.a) || ''),
+      fqNext: () => { this._fqOptsFor = null; this.setState({ fq: s.fq + 1, fqPick: null }); },
+
+      gqQ: gItem.q, gqOptions,
+      gqFb: s.gqPick == null ? 'Rewrite it with the Saxon genitive.' : (s.gqPick === gItem.a ? es2('Correct!', '¡Correcto!') : 'The right one is: ' + gItem.a),
+      gqNext: () => { this._gqOptsFor = null; this.setState({ gq: s.gq + 1, gqPick: null }); },
+
+      relSel: s.relSel, relChips, genRows,
+      namePh: es2('Name', 'Nombre'),
+      emptyDisplay: s.members.length ? 'none' : 'block',
+      nameRef: (this.nameRef = this.nameRef || React.createRef()),
+      addMember: () => {
+        const el = this.nameRef.current;
+        const name = el && el.value.trim();
+        if (!name) { if (el) el.focus(); return; }
+        this.setState(st => {
+          const members = st.members.concat([{ name, rel: st.relSel }]);
+          setTimeout(() => this.save({ members }), 0);
+          return { members };
+        });
+        el.value = '';
+        el.focus();
+      },
+      onNameKey: e => { if (e.key === 'Enter') { e.preventDefault(); const el = this.nameRef.current; const name = el.value.trim(); if (!name) return; this.setState(st => { const members = st.members.concat([{ name, rel: st.relSel }]); setTimeout(() => this.save({ members }), 0); return { members }; }); el.value = ''; } },
+      loadSample: () => this.setState(() => { const members = SAMPLE.map(p => ({ rel: p[0], name: p[1] })); setTimeout(() => this.save({ members }), 0); return { members, trQ: null, trPick: null }; }),
+      clearTree: () => this.setState(() => { setTimeout(() => this.save({ members: [] }), 0); return { members: [], trQ: null, trPick: null }; }),
+
+      trQ: trQ ? (bi ? trQ.qEn + ' / ' + trQ.qEs : trQ.qEn) : 'Add at least 3 people, then press “Ask me another”.',
+      trOptions,
+      trFb: s.trPick == null ? '' : (s.trPick === trQ.correct ? es2('Correct!', '¡Correcto!') + ' ' + trQ.correct : 'The answer was ' + trQ.correct + '.'),
+      trNext: () => { const q = this.makeTreeQ(); this.setState({ trQ: q, trPick: null }); },
+
+      hwCount: named + ' / ' + need + (bi ? ' members named · miembros' : ' members named'),
+      hwHint: named >= need ? es2('Homework complete — print it or copy it.', '¡Tarea completa!') : 'Add ' + (need - named) + ' more in the Family Tree tab.',
+      hwBg: named >= need ? 'oklch(0.9 0.1 145 / 0.6)' : 'oklch(0.93 0.06 60 / 0.6)',
+      hwLines: this.memberLines(),
+      printTree: () => window.print(),
+      copyLabel: s.copied ? 'Copied!' : 'Copy as text',
+      copyTree: () => {
+        const txt = 'My family tree\n' + this.state.members.map(m => m.name + ' — ' + m.rel + ' (' + (REL_ES[m.rel] || '') + ')').join('\n');
+        try { navigator.clipboard.writeText(txt); } catch (e) {}
+        this.setState({ copied: true });
+        setTimeout(() => this.setState({ copied: false }), 1600);
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

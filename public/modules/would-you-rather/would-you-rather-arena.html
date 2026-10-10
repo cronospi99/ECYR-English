@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@600;800&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0b0d; overflow: hidden; }
+  a { color: #f5b301; }
+  a:hover { color: #fff; }
+  @keyframes numPop { 0% { transform: scale(2.1) rotate(-8deg); opacity: 0; } 35% { transform: scale(.86) rotate(2deg); opacity: 1; } 60% { transform: scale(1.08) rotate(-1deg); } 100% { transform: scale(1) rotate(0deg); } }
+  @keyframes freezeIn { 0% { transform: scale(.3) rotate(-14deg); opacity: 0; } 55% { transform: scale(1.14) rotate(3deg); opacity: 1; } 100% { transform: scale(1) rotate(-2deg); opacity: 1; } }
+  @keyframes slideL { 0% { transform: translateX(-14%) rotate(-4deg); opacity: 0; } 100% { transform: translateX(0) rotate(-2deg); opacity: 1; } }
+  @keyframes slideR { 0% { transform: translateX(14%) rotate(4deg); opacity: 0; } 100% { transform: translateX(0) rotate(2deg); opacity: 1; } }
+  @keyframes pulseHint { 0%,100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.05) rotate(-2deg); } }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+  @keyframes bubbleIn { 0% { transform: scale(.72) rotate(-3deg); opacity: 0; } 60% { transform: scale(1.04) rotate(1deg); opacity: 1; } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
+</style>
+</helmet>
+<div style="position: fixed; inset: 0; background: #0b0b0d; font-family: Archivo, Helvetica, sans-serif; user-select: none; -webkit-tap-highlight-color: transparent; display: flex; flex-direction: column;">
+
+  <div style="position: absolute; inset: 0; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: {{ colorA }}; transition: background 420ms ease;"></div>
+    <div style="position: absolute; inset: 0; background: {{ colorB }}; clip-path: {{ splitClip }}; transition: background 420ms ease;"></div>
+    <div style="position: absolute; inset: 0; opacity: .22; background-image: radial-gradient(#000 34%, transparent 36%); background-size: 22px 22px;"></div>
+    <div style="position: absolute; inset: 0; background: radial-gradient(60% 80% at 18% 10%, rgba(255,255,255,.26), transparent 62%), radial-gradient(60% 80% at 82% 10%, rgba(255,255,255,.22), transparent 62%);"></div>
+  </div>
+
+  <div style="position: relative; flex: none; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: min(2.4vh, 20px) 28px min(1.2vh, 10px); pointer-events: none;">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; min-width: 0;">
+      <div style="flex: 0 1 auto; min-width: 0; white-space: nowrap; font-family: Bangers, cursive; font-size: min(2.6vw, 4.6vh, 40px); color: #f5b301; background: #111; border: 4px solid #fff; padding: 3px min(1.6vw, 20px) 0; transform: rotate(-2deg); letter-spacing: 3px; box-shadow: 6px 6px 0 rgba(0,0,0,.45);">WOULD YOU RATHER?</div>
+      <div style="flex: none; white-space: nowrap; font-family: Bangers, cursive; font-size: min(2.1vw, 3.8vh, 32px); letter-spacing: 3px; color: #fff; background: #111; border: 4px solid #f5b301; padding: 3px 13px 0; transform: rotate(2deg);">{{ levelBadge }}</div>
+      <sc-if value="{{ showCategory }}" hint-placeholder-val="{{ true }}">
+        <div style="flex: none; white-space: nowrap; font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.4vw, 2.5vh, 20px); letter-spacing: 3px; color: #111; background: #fff; border: 3px solid #111; padding: 6px 13px; transform: rotate(-1deg);">{{ category }}</div>
+      </sc-if>
+    </div>
+    <div style="flex: none; white-space: nowrap; font-family: Bangers, cursive; font-size: min(2.6vw, 4.6vh, 40px); color: #111; background: #fff; border: 4px solid #111; padding: 3px min(1.6vw, 20px) 0; transform: rotate(2deg); letter-spacing: 3px; box-shadow: 6px 6px 0 rgba(0,0,0,.45);">{{ progress }}</div>
+  </div>
+
+  <div ref="{{ arenaRef }}" style="position: relative; flex: 1 1 auto; min-height: 0; z-index: 2; container-type: size; overflow: hidden;">
+  <div style="position: absolute; inset: 0; display: grid; grid-template-columns: 1fr clamp(150px, 15vw, 260px) 1fr; align-items: center; padding: min(5cqh, 34px) min(2vw, 30px);">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: min(3cqh, 20px); min-height: 0; animation: slideL 480ms cubic-bezier(.2,.9,.2,1) both;">
+      <div style="flex: none; font-family: Bangers, cursive; font-size: min(4.5cqh, 34px); letter-spacing: 4px; color: #111; background: #fff; border: 4px solid #111; padding: 2px 18px 0; transform: rotate(-3deg); box-shadow: 5px 5px 0 rgba(0,0,0,.55);">THIS SIDE</div>
+      <div style="font-family: Bangers, cursive; font-size: min(5.2cqw, 22cqh, 100px); line-height: .96; color: #fff; text-align: center; text-transform: uppercase; text-wrap: balance; paint-order: stroke fill; -webkit-text-stroke: min(1.6cqh, 12px) #111; letter-spacing: 1px; filter: drop-shadow(8px 10px 0 rgba(0,0,0,.5));">{{ optA }}</div>
+      <sc-if value="{{ showSideBtns }}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{ onAskA }}" style="flex: none; font-family: Bangers, cursive; font-size: min(2vw, 4.4cqh, 34px); letter-spacing: 3px; color: #111; background: #fff; border: 5px solid #111; border-radius: 999px; padding: min(1.6cqh, 12px) min(2.4vw, 34px) min(0.8cqh, 6px); min-height: min(9cqh, 62px); cursor: pointer; box-shadow: 6px 6px 0 rgba(0,0,0,.55); transform: rotate(-2deg);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px) rotate(-2deg); box-shadow: 3px 3px 0 rgba(0,0,0,.55);">ASK THIS SIDE</button>
+      </sc-if>
+    </div>
+    <div></div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: min(3cqh, 20px); min-height: 0; animation: slideR 480ms cubic-bezier(.2,.9,.2,1) both;">
+      <div style="flex: none; font-family: Bangers, cursive; font-size: min(4.5cqh, 34px); letter-spacing: 4px; color: #111; background: #fff; border: 4px solid #111; padding: 2px 18px 0; transform: rotate(3deg); box-shadow: 5px 5px 0 rgba(0,0,0,.55);">THAT SIDE</div>
+      <div style="font-family: Bangers, cursive; font-size: min(5.2cqw, 22cqh, 100px); line-height: .96; color: #fff; text-align: center; text-transform: uppercase; text-wrap: balance; paint-order: stroke fill; -webkit-text-stroke: min(1.6cqh, 12px) #111; letter-spacing: 1px; filter: drop-shadow(8px 10px 0 rgba(0,0,0,.5));">{{ optB }}</div>
+      <sc-if value="{{ showSideBtns }}" hint-placeholder-val="{{ true }}">
+        <button type="button" onClick="{{ onAskB }}" style="flex: none; font-family: Bangers, cursive; font-size: min(2vw, 4.4cqh, 34px); letter-spacing: 3px; color: #111; background: #fff; border: 5px solid #111; border-radius: 999px; padding: min(1.6cqh, 12px) min(2.4vw, 34px) min(0.8cqh, 6px); min-height: min(9cqh, 62px); cursor: pointer; box-shadow: 6px 6px 0 rgba(0,0,0,.55); transform: rotate(2deg);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px) rotate(2deg); box-shadow: 3px 3px 0 rgba(0,0,0,.55);">ASK THAT SIDE</button>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: min(1.4cqh, 12px);">
+    <div onClick="{{ onSpin }}" style="width: min(150px, 26cqh); height: min(150px, 26cqh); border-radius: 50%; background: #f5b301; border: min(9px, 1.6cqh) solid #111; display: flex; align-items: center; justify-content: center; box-shadow: 8px 8px 0 rgba(0,0,0,.5); transform: rotate(-6deg); cursor: pointer; overflow: hidden;" style-hover="background: #ffc927;" style-active="transform: translate(3px,3px) rotate(-6deg); box-shadow: 4px 4px 0 rgba(0,0,0,.5);">
+      <sc-if value="{{ showSpinName }}" hint-placeholder-val="{{ false }}">
+        <span style="font-family: Bangers, cursive; font-size: min(30px, 5.6cqh); line-height: 1.05; letter-spacing: 1px; color: #111; text-align: center; padding: 4px 8px; overflow-wrap: anywhere;">{{ spinName }}</span>
+      </sc-if>
+      <sc-if value="{{ showOr }}" hint-placeholder-val="{{ true }}">
+        <span style="font-family: Bangers, cursive; font-size: min(62px, 11cqh); color: #111; padding-top: 5px;">OR</span>
+      </sc-if>
+    </div>
+    <sc-if value="{{ hasRoster }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ onSpin }}" style="font-family: Bangers, cursive; font-size: min(2.6cqh, 20px); letter-spacing: 3px; color: #111; background: #fff; border: 4px solid #111; border-radius: 999px; padding: 5px 16px 1px; cursor: pointer; box-shadow: 4px 4px 0 rgba(0,0,0,.5); white-space: nowrap;" style-hover="background: #f5b301;">{{ spinLabel }}</div>
+    </sc-if>
+  </div>
+
+  <sc-for list="{{ tokens }}" as="t" hint-placeholder-count="0">
+    <div onPointerDown="{{ t.grab }}" style="position: absolute; left: {{ t.left }}; top: {{ t.top }}; z-index: 5; transform: translate(-50%, -50%) rotate({{ t.rot }}); font-family: Archivo, sans-serif; font-weight: 800; font-size: min(2.4cqh, 17px); letter-spacing: 1px; color: #111; background: {{ t.bg }}; border: 4px solid #111; border-radius: 999px; padding: 9px 16px; box-shadow: {{ t.shadow }}; cursor: grab; touch-action: none; white-space: nowrap; max-width: 24cqw; overflow: hidden; text-overflow: ellipsis;">{{ t.name }}</div>
+  </sc-for>
+  </div>
+
+
+  <sc-if value="{{ showCount }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; pointer-events: none; background: rgba(0,0,0,.34);">
+      <div style="position: absolute; width: 120vmax; height: 120vmax; opacity: .5; background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.16) 0deg 5deg, transparent 5deg 12deg); animation: spinSlow 24s linear infinite;"></div>
+      {{ countEl }}
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showFreeze }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+      <div style="font-family: Bangers, cursive; font-size: clamp(90px, 16vw, 260px); color: #f5b301; letter-spacing: 6px; paint-order: stroke fill; -webkit-text-stroke: 20px #111; filter: drop-shadow(16px 18px 0 rgba(0,0,0,.55)); animation: freezeIn 520ms cubic-bezier(.2,.9,.2,1) both;">FREEZE!</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showFollow }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onCloseFollow }}" style="position: absolute; inset: 0; z-index: 8; display: flex; align-items: center; justify-content: center; padding: 60px; background: rgba(8,8,10,.72); cursor: pointer;">
+      <div style="max-width: 1300px; width: 100%; background: #fff; border: 12px solid #111; border-radius: 34px; padding: 40px 54px 46px; box-shadow: 18px 18px 0 rgba(0,0,0,.6); animation: bubbleIn 380ms cubic-bezier(.2,.9,.2,1) both; display: flex; flex-direction: column; gap: 22px; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;">
+          <div style="font-family: Bangers, cursive; font-size: clamp(26px, 2.4vw, 40px); letter-spacing: 3px; color: #fff; background: {{ followColor }}; border: 5px solid #111; padding: 6px 24px 1px; transform: rotate(-2deg);">{{ followTitle }}</div>
+          <div style="font-family: Bangers, cursive; font-size: clamp(22px, 1.9vw, 32px); letter-spacing: 3px; color: #f5b301; background: #111; padding: 6px 20px 1px; transform: rotate(2deg);">{{ levelBadge }}</div>
+        </div>
+        <div style="font-family: Bangers, cursive; font-size: clamp(38px, 4.2vw, 82px); line-height: 1.04; letter-spacing: 1px; color: #111; text-align: center; text-wrap: balance;">{{ followText }}</div>
+        <div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: clamp(18px, 1.5vw, 26px); letter-spacing: 3px; color: #666;">TAP ANYWHERE TO CLOSE</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showLevelPicker }}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; inset: 0; z-index: 9; background: #0d0d10; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(14px, 3.4vh, 42px); padding: clamp(16px, 4vh, 50px) clamp(16px, 3vw, 50px); overflow: auto;">
+      <div style="position: absolute; inset: 0; opacity: .16; background-image: radial-gradient(#fff 32%, transparent 34%); background-size: 26px 26px;"></div>
+      <div style="position: absolute; inset: 0; opacity: .5; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(245,179,1,.14) 0deg 5deg, transparent 5deg 13deg);"></div>
+      <div style="position: relative; margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.4vh, 14px);">
+        <div style="font-family: Bangers, cursive; font-size: min(6.4vw, 10vh, 120px); line-height: 1.05; text-align: center; letter-spacing: 4px; color: #f5b301; paint-order: stroke fill; -webkit-text-stroke: min(1.2vh, 14px) #111; filter: drop-shadow(10px 12px 0 rgba(0,0,0,.6));">WOULD YOU RATHER?</div>
+        <div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.8vw, 2.6vh, 30px); letter-spacing: 6px; color: #fff; background: #d81f30; border: 4px solid #fff; padding: min(1.1vh, 9px) 24px; transform: rotate(-1deg);">PICK ONE LEVEL OR MIX SEVERAL</div>
+      </div>
+      <div style="position: relative; display: flex; flex-wrap: nowrap; align-items: stretch; justify-content: center; gap: min(1.6vw, 20px); width: 100%;">
+        <sc-for list="{{ levelCards }}" as="lv" hint-placeholder-count="5">
+          <button type="button" onClick="{{ lv.pick }}" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: min(1.2vh, 10px); flex: 1 1 0; min-width: 0; max-width: 250px; background: {{ lv.color }}; border: min(1vh, 8px) solid {{ lv.border }}; border-radius: 22px; padding: min(3vh, 26px) min(1.4vw, 20px) min(2.8vh, 24px); cursor: pointer; box-shadow: 10px 10px 0 rgba(0,0,0,.6); text-align: center;" style-hover="transform: translate(-2px,-4px); box-shadow: 13px 15px 0 rgba(0,0,0,.6);" style-active="transform: translate(4px,4px); box-shadow: 3px 3px 0 rgba(0,0,0,.6);">
+            <span style="position: absolute; top: 10px; right: 12px; font-family: Archivo, sans-serif; font-weight: 800; font-size: min(.95vw, 1.5vh, 13px); letter-spacing: 2px; color: {{ lv.checkInk }}; background: {{ lv.checkBg }}; border-radius: 999px; padding: 3px 9px;">{{ lv.check }}</span>
+            <span style="font-family: Bangers, cursive; font-size: min(5vw, 9vh, 82px); line-height: 1; color: #fff; paint-order: stroke fill; -webkit-text-stroke: min(1vh, 9px) #111;">{{ lv.id }}</span>
+            <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.3vw, 2vh, 17px); letter-spacing: 2px; color: {{ lv.nameInk }}; background: {{ lv.nameBg }}; padding: 5px 10px; border-radius: 6px;">{{ lv.name }}</span>
+            <span style="font-family: Archivo, sans-serif; font-weight: 600; font-size: min(1.15vw, 1.8vh, 15px); line-height: 1.35; color: {{ lv.ink }};">{{ lv.blurb }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="position: relative; margin-bottom: auto; display: flex; flex-direction: column; align-items: center; gap: min(1.4vh, 14px);">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: min(1.2vw, 16px);">
+          <button type="button" onClick="{{ onAllLevels }}" style="font-family: Bangers, cursive; font-size: min(1.7vw, 28px); letter-spacing: 2px; color: #111; background: #fff; border: 5px solid #111; border-radius: 14px; padding: 11px 24px 6px; min-height: 54px; cursor: pointer; box-shadow: 6px 6px 0 rgba(0,0,0,.6);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">MIX ALL</button>
+          <button type="button" onClick="{{ onNoLevels }}" style="font-family: Bangers, cursive; font-size: min(1.7vw, 28px); letter-spacing: 2px; color: #fff; background: #222; border: 5px solid #fff; border-radius: 14px; padding: 11px 24px 6px; min-height: 54px; cursor: pointer; box-shadow: 6px 6px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">NONE</button>
+          <button type="button" onClick="{{ onConfirmLevels }}" style="font-family: Bangers, cursive; font-size: min(2.4vw, 40px); letter-spacing: 4px; color: #111; background: #f5b301; border: 6px solid #111; border-radius: 18px; padding: 12px 40px 7px; min-height: 64px; cursor: pointer; box-shadow: 9px 9px 0 rgba(0,0,0,.6);" style-hover="background: #ffc927;" style-active="transform: translate(4px,4px); box-shadow: 3px 3px 0 rgba(0,0,0,.6);">{{ levelGoLabel }}</button>
+        </div>
+        <div style="text-align: center; font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.2vw, 1.9vh, 20px); letter-spacing: 3px; color: #8b8b93;">{{ levelCountLine }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showCatPicker }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; z-index: 9; background: #0d0d10; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(12px, 2.6vh, 30px); padding: clamp(16px, 3.4vh, 44px) clamp(16px, 3vw, 50px); overflow: auto;">
+      <div style="position: absolute; inset: 0; opacity: .16; background-image: radial-gradient(#fff 32%, transparent 34%); background-size: 26px 26px;"></div>
+      <div style="position: relative; margin-top: auto; display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.2vh, 12px);">
+        <div style="font-family: Bangers, cursive; font-size: min(5.4vw, 8vh, 96px); line-height: 1.05; text-align: center; letter-spacing: 4px; color: #f5b301; paint-order: stroke fill; -webkit-text-stroke: min(1vh, 12px) #111; filter: drop-shadow(9px 10px 0 rgba(0,0,0,.6));">CHOOSE TOPICS</div>
+        <div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.6vw, 2.4vh, 26px); letter-spacing: 5px; color: #fff; background: #1b4bd8; border: 4px solid #fff; padding: min(1vh, 8px) 22px; transform: rotate(-1deg);">{{ catLevelLine }}</div>
+      </div>
+      <div style="position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: min(1.4vw, 18px); width: 100%; max-width: 1400px;">
+        <sc-for list="{{ catCards }}" as="c" hint-placeholder-count="7">
+          <button type="button" onClick="{{ c.toggle }}" style="display: flex; flex-direction: column; align-items: center; gap: min(.9vh, 8px); background: {{ c.bg }}; border: min(.9vh, 7px) solid {{ c.border }}; border-radius: 18px; padding: min(2.4vh, 22px) min(1vw, 14px) min(2vh, 18px); cursor: pointer; box-shadow: 8px 8px 0 rgba(0,0,0,.55); text-align: center;" style-hover="transform: translate(-2px,-3px); box-shadow: 11px 12px 0 rgba(0,0,0,.55);" style-active="transform: translate(3px,3px); box-shadow: 3px 3px 0 rgba(0,0,0,.55);">
+            <span style="font-family: Bangers, cursive; font-size: min(2.4vw, 4.4vh, 44px); line-height: 1.05; letter-spacing: 2px; color: {{ c.textColor }};">{{ c.id }}</span>
+            <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1vw, 1.6vh, 14px); letter-spacing: 2px; color: {{ c.textColor }};">{{ c.count }}</span>
+            <span style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1vw, 1.6vh, 14px); letter-spacing: 2px; color: {{ c.markColor }}; background: {{ c.markBg }}; border-radius: 999px; padding: 4px 14px;">{{ c.mark }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="position: relative; width: 100%; max-width: 1400px; box-sizing: border-box; display: flex; flex-direction: column; gap: min(1.2vh, 12px); background: #14141a; border: 5px solid #2f2f38; border-radius: 18px; padding: min(2vh, 18px) min(1.6vw, 22px);">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: min(1vw, 12px);">
+          <div style="font-family: Bangers, cursive; font-size: min(1.9vw, 30px); letter-spacing: 3px; color: #111; background: #f5b301; border: 4px solid #111; padding: 5px 16px 1px; transform: rotate(-1deg);">CLASS LIST</div>
+          <input type="text" value="{{ nameInput }}" onChange="{{ onNameInput }}" onKeyDown="{{ onNameKey }}" placeholder="Type a name, press Enter" style="flex: 1 1 260px; min-width: 200px; max-width: 420px; font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.2vw, 18px); letter-spacing: 1px; color: #111; background: #fff; border: 4px solid #111; border-radius: 12px; padding: 10px 14px; min-height: 50px; outline: none;" />
+          <button type="button" onClick="{{ onAddName }}" style="font-family: Bangers, cursive; font-size: min(1.6vw, 26px); letter-spacing: 2px; color: #111; background: #fff; border: 4px solid #111; border-radius: 12px; padding: 11px 22px 6px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">ADD</button>
+          <button type="button" onClick="{{ onClearNames }}" style="font-family: Bangers, cursive; font-size: min(1.6vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 11px 22px 6px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">CLEAR</button>
+          <div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.1vw, 1.8vh, 18px); letter-spacing: 3px; color: #8b8b93;">{{ rosterLine }}</div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: min(.7vw, 9px);">
+          <sc-for list="{{ rosterChips }}" as="n" hint-placeholder-count="0">
+            <button type="button" onClick="{{ n.remove }}" style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.05vw, 1.7vh, 16px); letter-spacing: 1px; color: #111; background: #fff; border: 4px solid #111; border-radius: 999px; padding: 7px 15px; min-height: 42px; cursor: pointer;" style-hover="background: #d81f30; color: #fff; border-color: #fff;">{{ n.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="position: relative; margin-bottom: auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: min(1.2vw, 16px);">
+        <button type="button" onClick="{{ onAllCats }}" style="font-family: Bangers, cursive; font-size: min(1.6vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 11px 22px 6px; min-height: 54px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">ALL</button>
+        <button type="button" onClick="{{ onNoCats }}" style="font-family: Bangers, cursive; font-size: min(1.6vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 11px 22px 6px; min-height: 54px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">NONE</button>
+        <button type="button" onClick="{{ onStartCats }}" style="font-family: Bangers, cursive; font-size: min(2.6vw, 42px); letter-spacing: 4px; color: #111; background: #f5b301; border: 6px solid #111; border-radius: 16px; padding: 12px min(2.6vw, 42px) 5px; min-height: 68px; cursor: pointer; box-shadow: 9px 9px 0 rgba(0,0,0,.65); transform: rotate(-1deg);" style-hover="background: #ffc927;" style-active="transform: translate(4px,4px) rotate(-1deg); box-shadow: 3px 3px 0 rgba(0,0,0,.65);">{{ playLabel }}</button>
+        <button type="button" onClick="{{ onChangeLevel }}" style="font-family: Bangers, cursive; font-size: min(1.6vw, 26px); letter-spacing: 2px; color: #111; background: #fff; border: 4px solid #111; border-radius: 12px; padding: 11px 22px 6px; min-height: 54px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">LEVEL</button>
+        <div style="font-family: Archivo, sans-serif; font-weight: 800; font-size: min(1.2vw, 1.9vh, 20px); letter-spacing: 3px; color: #8b8b93;">{{ catCountLine }}</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position: relative; flex: none; z-index: 7; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px 14px; background: #0b0b0d; border-top: 5px solid #f5b301; box-shadow: 0 -14px 30px rgba(0,0,0,.55);">
+  <sc-if value="{{ showHint }}" hint-placeholder-val="{{ true }}">
+    <div style="pointer-events: none; font-family: Bangers, cursive; font-size: min(1.9vw, 30px); letter-spacing: 3px; color: #111; background: #fff; border: 4px solid #111; padding: 6px 20px 1px; box-shadow: 5px 5px 0 rgba(0,0,0,.5); animation: pulseHint 1.6s ease-in-out infinite;">{{ hintText }}</div>
+  </sc-if>
+  <div style="display: contents;">
+    <button type="button" onClick="{{ onBack }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 74px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">BACK</button>
+    <button type="button" onClick="{{ onRepeat }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 100px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">{{ repeatLabel }}</button>
+    <button type="button" onClick="{{ onMain }}" style="font-family: Bangers, cursive; font-size: min(2.9vw, 46px); letter-spacing: 4px; color: #111; background: #f5b301; border: 6px solid #111; border-radius: 16px; padding: 12px min(3vw, 46px) 5px; min-height: 68px; cursor: pointer; box-shadow: 9px 9px 0 rgba(0,0,0,.65); transform: rotate(-1deg);" style-hover="background: #ffc927;" style-active="transform: translate(4px,4px) rotate(-1deg); box-shadow: 3px 3px 0 rgba(0,0,0,.65);">{{ mainLabel }}</button>
+    <button type="button" onClick="{{ onShuffle }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">SHUFFLE</button>
+    <button type="button" onClick="{{ onChangeLevel }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #111; background: #f5b301; border: 4px solid #111; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 100px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #ffc927;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">{{ levelBtnLabel }}</button>
+    <button type="button" onClick="{{ onOpenCats }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #111; background: #fff; border: 4px solid #111; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 100px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #f5b301;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">TOPICS</button>
+    <button type="button" onClick="{{ onToggleTimer }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 114px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">{{ timerLabel }}</button>
+    <button type="button" onClick="{{ onToggleSound }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-width: 96px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">{{ soundLabel }}</button>
+    <button type="button" onClick="{{ onFullscreen }}" style="font-family: Bangers, cursive; font-size: min(1.55vw, 26px); letter-spacing: 2px; color: #fff; background: #222; border: 4px solid #fff; border-radius: 12px; padding: 10px min(1.3vw, 18px) 5px; min-height: 52px; cursor: pointer; box-shadow: 5px 5px 0 rgba(0,0,0,.6);" style-hover="background: #3a3a3a;" style-active="transform: translate(3px,3px); box-shadow: 2px 2px 0 rgba(0,0,0,.6);">FULL</button>
+  </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;countdownSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:3,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;defaultLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ask&quot;,&quot;A1&quot;,&quot;A2&quot;,&quot;B1&quot;,&quot;B2&quot;,&quot;C1&quot;],&quot;default&quot;:&quot;ask&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;showSideQuestions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Game&quot;},&quot;splitStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;diagonal&quot;,&quot;straight&quot;],&quot;default&quot;:&quot;diagonal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;showCategory&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;palette&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:[&quot;#d81f30&quot;,&quot;#1b4bd8&quot;],&quot;options&quot;:[[&quot;#d81f30&quot;,&quot;#1b4bd8&quot;],[&quot;#f5b301&quot;,&quot;#5c1fa8&quot;],[&quot;#0f9d58&quot;,&quot;#e0218a&quot;],[&quot;#00a8e8&quot;,&quot;#c1002a&quot;]],&quot;tsType&quot;:&quot;string[]&quot;,&quot;section&quot;:&quot;Look&quot;}}">
+const LEVELS = [
+  { id: "A1", name: "BEGINNER", blurb: "Single words. I like / I don't like.", color: "#0f9d58" },
+  { id: "A2", name: "ELEMENTARY", blurb: "Short sentences with because.", color: "#00a8e8" },
+  { id: "B1", name: "INTERMEDIATE", blurb: "I would rather + reasons.", color: "#f5b301" },
+  { id: "B2", name: "UPPER INTERMEDIATE", blurb: "Hypotheticals and comparisons.", color: "#f4631e" },
+  { id: "C1", name: "ADVANCED", blurb: "Abstract debate and nuance.", color: "#d81f30" }
+];
+
+// [level, side A, side B, category, follow-up for A, follow-up for B]
+const QUESTIONS = [
+  ["A1", "Pizza", "Tacos", "FOOD", "Say: I like pizza. It is ____.", "Say: I like tacos. They are ____."],
+  ["A1", "Cats", "Dogs", "SILLY", "Say: I like cats. My cat is ____.", "Say: I like dogs. My dog is ____."],
+  ["A1", "Fly", "Run fast", "HEROES", "Say: I can fly! I fly to ____.", "Say: I can run! I run to ____."],
+  ["A1", "Ice cream", "Cake", "FOOD", "What colour is your ice cream?", "Who makes your favourite cake?"],
+  ["A1", "Summer", "Winter", "SILLY", "Is it hot or cold? What do you wear?", "Is it hot or cold? What do you wear?"],
+  ["A1", "Football", "Basketball", "SCHOOL", "Say: I play football with ____.", "Say: I play basketball with ____."],
+  ["A1", "Big house", "Small house", "SILLY", "How many rooms? Count them.", "How many rooms? Count them."],
+  ["A1", "Red", "Blue", "SILLY", "Point to something red in this room.", "Point to something blue in this room."],
+  ["A1", "Beach", "Mountains", "SILLY", "Say: At the beach I swim.", "Say: In the mountains I walk."],
+  ["A1", "Music", "Movies", "POP CULTURE", "Say one singer you like.", "Say one movie you like."],
+  ["A1", "Morning", "Night", "SCHOOL", "What time do you get up?", "What time do you go to bed?"],
+  ["A1", "Be strong", "Be fast", "HEROES", "Say: I am strong. I lift a ____.", "Say: I am fast. I run like a ____."],
+
+  ["A2", "Have a pet tiger", "Have a pet eagle", "SILLY", "Where does your tiger sleep? Why?", "Where does your eagle sleep? Why?"],
+  ["A2", "Talk to animals", "Speak ten languages", "HEROES", "Which animal do you talk to first, and why?", "Which language do you choose first, and why?"],
+  ["A2", "Only sweet food", "Only salty food", "FOOD", "Name two sweet things you eat every week.", "Name two salty things you eat every week."],
+  ["A2", "No homework", "A longer break", "SCHOOL", "What do you do with the free time?", "What do you do in the long break?"],
+  ["A2", "Be invisible", "Be very strong", "HEROES", "Finish it: I choose invisible because ____.", "Finish it: I choose strong because ____."],
+  ["A2", "Live in a treehouse", "Live in a boat", "SILLY", "Describe your treehouse in three words.", "Describe your boat in three words."],
+  ["A2", "Watch cartoons", "Play video games", "POP CULTURE", "How often do you watch them?", "How often do you play?"],
+  ["A2", "Have a tail", "Have wings", "SILLY", "What can you do with a tail?", "Where do you fly on Saturday?"],
+  ["A2", "Cook the food", "Wash the dishes", "FOOD", "What can you cook? Tell your group.", "Do you help at home? How?"],
+  ["A2", "Sit near the window", "Sit near the door", "SCHOOL", "Why is the window better? Use because.", "Why is the door better? Use because."],
+  ["A2", "Be famous", "Be rich", "THINK HARD", "Famous for what? Say one thing.", "What do you buy first? Say one thing."],
+  ["A2", "Travel by plane", "Travel by train", "SILLY", "Where do you want to fly?", "Where does your train go?"],
+
+  ["B1", "Swing between buildings", "Run at super speed", "HEROES", "I'd rather swing because... give two reasons.", "I'd rather run because... give two reasons."],
+  ["B1", "Present alone", "Present with a group", "SCHOOL", "What is the hardest part of presenting alone?", "What is the hardest part of group work?"],
+  ["B1", "Never get tired", "Never get hurt", "HEROES", "How would your week change?", "How would your week change?"],
+  ["B1", "One giant burger", "Endless fries", "FOOD", "Would you share it? Who with?", "When would you stop eating?"],
+  ["B1", "Live inside a video game", "Live inside a cartoon", "POP CULTURE", "Which game, and what is your first move?", "Which cartoon, and who is your friend there?"],
+  ["B1", "Always tell the truth", "Always keep a secret", "THINK HARD", "Describe a time the truth was difficult.", "Is keeping a secret ever wrong? Explain."],
+  ["B1", "Give up your phone for a year", "Give up dessert for a year", "THINK HARD", "What would you miss most about your phone?", "What would you replace dessert with?"],
+  ["B1", "Teach the lesson", "Take the lesson twice", "SCHOOL", "What would you teach first, and how?", "What do you understand better the second time?"],
+  ["B1", "Be a hero everyone knows", "Be a hero nobody knows", "HEROES", "What is the worst part of being famous?", "Why is a secret identity useful?"],
+  ["B1", "Field trip to a museum", "Field trip to a farm", "SCHOOL", "What would you learn there?", "What would you learn there?"],
+  ["B1", "Star in a movie", "Direct a movie", "POP CULTURE", "What kind of role would you play?", "What story would you tell?"],
+  ["B1", "Sneeze glitter", "Burp bubbles", "SILLY", "How would people react at school?", "How would people react at school?"],
+
+  ["B2", "Know the future", "Change the past", "THINK HARD", "If you knew, would you still be free to choose?", "What might go wrong if you changed one thing?"],
+  ["B2", "Win by luck", "Lose after trying hard", "THINK HARD", "Does a lucky win still count? Defend it.", "What is the value of losing well?"],
+  ["B2", "Stop time for ten seconds", "Rewind ten seconds", "HEROES", "Give a situation where stopping time is unfair.", "Would rewinding stop you learning? Discuss."],
+  ["B2", "Be feared", "Be forgotten", "THINK HARD", "Which is more damaging in a team, and why?", "Which is more damaging in a team, and why?"],
+  ["B2", "Report a friend who cheated", "Stay quiet about it", "THINK HARD", "What do you owe the rest of the class?", "What do you owe your friend?"],
+  ["B2", "Exams with notes allowed", "No exams but weekly projects", "SCHOOL", "Does open-book testing measure real learning?", "Would weekly projects be more or less stressful?"],
+  ["B2", "Be the villain everyone loves", "Be the hero everyone doubts", "POP CULTURE", "Why are audiences drawn to villains?", "How would you handle constant doubt?"],
+  ["B2", "Be famous online", "Be respected in your city", "POP CULTURE", "Which lasts longer, and what is the cost?", "Which lasts longer, and what is the cost?"],
+  ["B2", "Sense danger before it happens", "See through walls", "HEROES", "Could you ever relax with that sense on?", "Where is the line between seeing and spying?"],
+  ["B2", "Chocolate-flavoured water", "Water-flavoured chocolate", "FOOD", "Sell it to us in one sentence.", "Sell it to us in one sentence."],
+  ["B2", "Learn to code", "Learn to draw", "SCHOOL", "Which skill will matter more in ten years?", "Which skill will matter more in ten years?"],
+  ["B2", "A written exam", "An oral interview", "SCHOOL", "Which shows your ability more honestly?", "Which shows your ability more honestly?"],
+
+  ["C1", "Save one person you love", "Save five strangers", "THINK HARD", "Is loyalty a virtue or a bias here? Justify it.", "Can numbers alone settle a moral question?"],
+  ["C1", "Absolute freedom, no safety", "Total safety, no freedom", "THINK HARD", "What would you sacrifice first, and why?", "At what point does protection become control?"],
+  ["C1", "Power without recognition", "Recognition without power", "THINK HARD", "Which corrupts a person faster? Argue it.", "Which corrupts a person faster? Argue it."],
+  ["C1", "A world with no secrets", "A world with no trust", "THINK HARD", "Can intimacy survive total transparency?", "Could any institution function without trust?"],
+  ["C1", "Erase one memory", "Relive one day forever", "THINK HARD", "Are we the sum of what we remember?", "Would repetition make the day meaningless?"],
+  ["C1", "Heroes who break the law for good", "Heroes who obey it and fail", "HEROES", "Who decides when the law should be broken?", "Is failing lawfully still a form of integrity?"],
+  ["C1", "Be misunderstood as a genius", "Be admired as a fraud", "POP CULTURE", "How much does recognition matter to worth?", "How long could you live with the pretence?"],
+  ["C1", "Automate every job", "Keep work nobody enjoys", "THINK HARD", "What gives work its meaning beyond pay?", "Is unpleasant work ever socially necessary?"],
+  ["C1", "Judge people by intention", "Judge people by outcome", "THINK HARD", "Give a case where good intentions cause harm.", "Give a case where a good outcome was undeserved."],
+  ["C1", "Anonymous influence", "Public accountability", "THINK HARD", "Can influence be ethical without a name on it?", "Does accountability limit honest risk-taking?"],
+  ["C1", "Preserve a dying language", "Fund a new technology", "THINK HARD", "What is lost when a language disappears?", "Who decides which future is worth funding?"],
+  ["C1", "Art that provokes", "Art that comforts", "POP CULTURE", "Should art ever make an audience uneasy?", "Is comfort a lesser artistic ambition?"]
+];
+
+const MORE = [
+  ["A1", "Apples", "Bananas", "FOOD", "Say: I eat apples. They are ____.", "Say: I eat bananas. They are ____."],
+  ["A1", "Milk", "Juice", "FOOD", "Say: I drink milk in the ____.", "Say: I drink juice in the ____."],
+  ["A1", "Bread", "Rice", "FOOD", "Do you eat bread every day?", "Do you eat rice every day?"],
+  ["A1", "Be a fish", "Be a bird", "SILLY", "Say: I swim in the ____.", "Say: I fly over the ____."],
+  ["A1", "Very tall", "Very small", "SILLY", "What can you touch? Show us.", "Where can you hide? Show us."],
+  ["A1", "Have a cape", "Have a mask", "HEROES", "What colour is your cape?", "What colour is your mask?"],
+  ["A1", "Save a cat", "Save a bus", "HEROES", "Say: I save the cat. It is ____.", "Say: I save the bus. It is ____."],
+  ["A1", "Read a book", "Draw a picture", "SCHOOL", "Say: I read about ____.", "Say: I draw a ____."],
+  ["A1", "Maths", "Art", "SCHOOL", "Is maths easy or hard for you?", "What do you draw in art?"],
+  ["A1", "Dance", "Sing", "POP CULTURE", "Show us one dance move.", "Say one song you know."],
+  ["A1", "Cartoons", "Comics", "POP CULTURE", "Say the name of one cartoon.", "Who is your favourite hero?"],
+  ["A1", "One best friend", "Many friends", "FRIENDS", "Say: My friend is ____.", "How many friends? Count them."],
+  ["A1", "Say hello first", "Wait and smile", "FRIENDS", "Say hello to a person near you.", "Smile at a person near you."],
+  ["A1", "Go to the moon", "Go under the sea", "ADVENTURE", "What do you see on the moon?", "What do you see in the sea?"],
+  ["A1", "Ride a horse", "Ride a bike", "ADVENTURE", "Is the horse fast or slow?", "Where do you go on your bike?"],
+  ["A1", "Sleep in a tent", "Sleep in a hotel", "ADVENTURE", "Is the tent big or small?", "What is in your hotel room?"],
+  ["A1", "Help at home", "Help at school", "THINK HARD", "Say: At home I help my ____.", "Say: At school I help my ____."],
+  ["A1", "A new toy", "A new friend", "THINK HARD", "What toy do you want?", "Why are friends good? Say one word."],
+
+  ["A2", "Breakfast for dinner", "Dinner for breakfast", "FOOD", "What do you eat at eight in the evening?", "Can you eat soup at seven in the morning?"],
+  ["A2", "Pizza every day", "Never eat pizza again", "FOOD", "Do you get bored? Why or why not?", "What do you eat instead?"],
+  ["A2", "Cook for ten people", "Eat alone", "FOOD", "What do you cook for everybody?", "Is eating alone quiet or boring?"],
+  ["A2", "Hair that changes colour", "Skin that changes colour", "SILLY", "What colour is your hair when you are happy?", "When do you want to be green?"],
+  ["A2", "Speak like a robot", "Sing every sentence", "SILLY", "Say your name like a robot.", "Sing: My name is ____."],
+  ["A2", "Wear your costume every day", "Keep it secret", "HEROES", "Describe your costume.", "Who knows your secret?"],
+  ["A2", "Have a robot helper", "Have a flying pet", "HEROES", "What does your robot do for you?", "What is your pet's name?"],
+  ["A2", "School starts late", "School finishes early", "SCHOOL", "What do you do in the morning?", "What do you do after school?"],
+  ["A2", "Test on Monday", "Test on Friday", "SCHOOL", "When do you study? Use because.", "When do you study? Use because."],
+  ["A2", "Meet a singer", "Meet a footballer", "POP CULTURE", "What do you say to them?", "What do you ask them?"],
+  ["A2", "A photo with a star", "A message from a star", "POP CULTURE", "Where do you put the photo?", "What does the message say?"],
+  ["A2", "A funny friend", "A kind friend", "FRIENDS", "Tell your group about a funny person.", "How can a friend be kind? Give one example."],
+  ["A2", "Share your lunch", "Share your seat", "FRIENDS", "What food do you share?", "Who sits next to you?"],
+  ["A2", "Explore a jungle", "Explore a cave", "ADVENTURE", "What do you take with you?", "Are you afraid of the dark?"],
+  ["A2", "Ride a camel", "Ride a boat", "ADVENTURE", "Is the camel comfortable? Why?", "Is the water calm or rough?"],
+  ["A2", "Get lost in a city", "Get lost in a forest", "ADVENTURE", "Who do you ask for help?", "How do you find the way home?"],
+  ["A2", "Win the game", "Play with friends", "THINK HARD", "Is winning important for you? Why?", "What is better than winning?"],
+  ["A2", "Say sorry first", "Wait for them", "THINK HARD", "Is it difficult to say sorry?", "What happens if nobody says sorry?"],
+
+  ["B1", "Only eat food you cook", "Only eat food from a shop", "FOOD", "What is the first meal you'd learn to make?", "What would you miss about home cooking?"],
+  ["B1", "Try strange food everywhere", "Eat food you know", "FOOD", "What's the strangest thing you'd try?", "Is that boring or comfortable? Explain."],
+  ["B1", "Free coffee forever", "Free snacks forever", "FOOD", "Who would you share it with?", "Which snack, and how often?"],
+  ["B1", "Sound effects follow you", "A soundtrack plays for you", "SILLY", "What sound plays when you enter class?", "What music plays when you're nervous?"],
+  ["B1", "Always speak in rhyme", "Always speak very slowly", "SILLY", "Try it: say one rhyming sentence.", "How would people react in a shop?"],
+  ["B1", "A strong power you can't control", "A weak power that always works", "HEROES", "Give one situation where it goes wrong.", "How would you use it cleverly?"],
+  ["B1", "Fight one huge villain", "Fix a hundred small problems", "HEROES", "Which takes more courage? Explain.", "Which helps more people? Explain."],
+  ["B1", "Choose your subjects", "Choose your teachers", "SCHOOL", "Which three subjects would you keep?", "What makes a teacher good?"],
+  ["B1", "Study in the morning", "Study at night", "SCHOOL", "When does your brain work best?", "When does your brain work best?"],
+  ["B1", "Go to live concerts", "Stream music at home", "POP CULTURE", "What's the last concert you'd choose?", "What do you lose without the crowd?"],
+  ["B1", "A sad ending you remember", "A happy ending you forget", "POP CULTURE", "Why do sad stories stay with us?", "Is comfort enough from a film?"],
+  ["B1", "A friend who tells the truth", "A friend who always agrees", "FRIENDS", "Describe a time honesty helped you.", "What's the danger of agreement?"],
+  ["B1", "Message all day", "One hour face to face", "FRIENDS", "What can't you say in a message?", "What would you do with that hour?"],
+  ["B1", "A year travelling alone", "A month with friends", "ADVENTURE", "What would you learn about yourself?", "Who would you take, and why?"],
+  ["B1", "Climb a mountain", "Cross a desert", "ADVENTURE", "What would be the hardest part?", "What would be the hardest part?"],
+  ["B1", "Sleep under the stars", "Stay in a city hotel", "ADVENTURE", "What do you hear at night?", "What do you like about cities?"],
+  ["B1", "Be trusted", "Be liked", "THINK HARD", "How do people earn trust?", "Can you be liked and dishonest?"],
+  ["B1", "More free time", "More money", "THINK HARD", "How would you spend the extra hours?", "How much is enough? Explain."],
+
+  ["B2", "Ban fast food in your city", "Let people choose freely", "FOOD", "Should governments decide what we eat?", "Does free choice work if food is cheap?"],
+  ["B2", "Grow your own food", "Buy it cheaply", "FOOD", "What would you sacrifice for that?", "Who pays the real cost of cheap food?"],
+  ["B2", "A world without sugar", "A world without coffee", "FOOD", "Would people be healthier or just sadder?", "What would replace the morning routine?"],
+  ["B2", "Everyone hears your thoughts for a minute a day", "You hear everyone else's", "SILLY", "What would you learn to think about?", "Would you want to know? Be honest."],
+  ["B2", "One day as an animal", "One day as a stranger", "SILLY", "Which animal, and what would you notice?", "Whose life would teach you the most?"],
+  ["B2", "Powers given to everyone", "Powers given to nobody", "HEROES", "Would society survive that week?", "Is a fair world a boring one?"],
+  ["B2", "A hero who lies to protect", "A hero who tells a harmful truth", "HEROES", "When is a lie defensible?", "Who has the right to that truth?"],
+  ["B2", "Feedback instead of grades", "Keep the grades", "SCHOOL", "Would students work as hard? Explain.", "What do grades actually measure?"],
+  ["B2", "Phones banned at school", "Phones trusted to students", "SCHOOL", "What is gained and what is lost?", "Does trust have to be earned first?"],
+  ["B2", "Social media disappears", "It stays but with no likes", "POP CULTURE", "What would teenagers do instead?", "Is the like button the real problem?"],
+  ["B2", "Remakes of stories we love", "Only brand-new stories", "POP CULTURE", "Why do studios keep remaking things?", "What's the risk of the unfamiliar?"],
+  ["B2", "Forgive quickly", "Talk it through slowly", "FRIENDS", "Is fast forgiveness always honest?", "When does talking become arguing?"],
+  ["B2", "A friend who challenges you", "A friend who supports you", "FRIENDS", "When is a challenge unwelcome?", "Can support become dishonest?"],
+  ["B2", "One year in space", "Ten years exploring the ocean", "ADVENTURE", "What would you miss most up there?", "Why do we know so little down there?"],
+  ["B2", "A journey with no plan", "A perfectly planned trip", "ADVENTURE", "What goes right when you improvise?", "What do plans protect you from?"],
+  ["B2", "Live abroad alone", "Stay home with everyone", "ADVENTURE", "What would change in you after a year?", "Is staying a choice or a habit?"],
+  ["B2", "Freedom to fail", "A guarantee of success", "THINK HARD", "What has failure taught you?", "Would success mean anything then?"],
+  ["B2", "Know how people see you", "Never find out", "THINK HARD", "Could you handle it? Be specific.", "Is some ignorance protective?"],
+
+  ["C1", "Engineered nutrition for all", "Traditional farming preserved", "FOOD", "Is efficiency a good enough argument?", "What cultural value sits in a harvest?"],
+  ["C1", "Lab-grown meat everywhere", "Eat far less of it", "FOOD", "Does technology let us avoid hard choices?", "Can restraint ever scale globally?"],
+  ["C1", "A day when lying is impossible", "A day nobody remembers", "SILLY", "Which relationships would not survive it?", "Would consequences still exist?"],
+  ["C1", "Speak only in questions", "Speak only in statements", "SILLY", "Who holds power in a conversation of questions?", "What does certainty cost a speaker?"],
+  ["C1", "Vigilantes tolerated", "Institutions that fail slowly", "HEROES", "Who authorises action outside the law?", "Is slow reform still reform?"],
+  ["C1", "Anonymity for those with power", "Mandatory public identity", "HEROES", "Can anonymous power be accountable?", "What does exposure cost the honest?"],
+  ["C1", "Universal free education", "Funded specialised excellence", "SCHOOL", "Does equality lower the ceiling?", "Who is left behind by excellence?"],
+  ["C1", "Teach ethics", "Teach entrepreneurship", "SCHOOL", "Can ethics be taught, or only modelled?", "Is ambition a skill or a value?"],
+  ["C1", "AI-made art clearly labelled", "Judged with no label", "POP CULTURE", "Does knowing the author change the work?", "Is the audience's ignorance a kind of fairness?"],
+  ["C1", "Preserve every recording forever", "Let culture forget", "POP CULTURE", "What is the burden of total memory?", "Is forgetting a form of mercy?"],
+  ["C1", "Loyalty to a friend", "Loyalty to a principle", "FRIENDS", "When does loyalty become complicity?", "Are principles ever an excuse?"],
+  ["C1", "Radical honesty", "Kind discretion", "FRIENDS", "Is honesty a gift or an imposition?", "When does discretion become deceit?"],
+  ["C1", "Colonise another planet", "Repair this one", "ADVENTURE", "Is expansion an escape or a duty?", "Can repair inspire the same ambition?"],
+  ["C1", "Map the ocean floor", "Map the human brain", "ADVENTURE", "Which knowledge changes daily life more?", "Which knowledge is more dangerous?"],
+  ["C1", "A solitary expedition", "Lead a team", "ADVENTURE", "What does solitude reveal or distort?", "What does responsibility take from you?"],
+  ["C1", "Optimise society with data", "Accept inefficiency for autonomy", "THINK HARD", "Who writes the objective function?", "How much waste is freedom worth?"],
+  ["C1", "Extend life by fifty years", "End suffering now", "THINK HARD", "Longer for whom, and at what cost?", "Is relief more urgent than duration?"],
+  ["C1", "Be right and alone", "Be wrong with everyone", "THINK HARD", "What use is a truth nobody accepts?", "Is belonging worth an error?"]
+];
+for (let n = 0; n < MORE.length; n++) QUESTIONS.push(MORE[n]);
+
+const MORE2 = [
+  ["A1", "Cake", "Ice cream", "FOOD", "Say: I like cake with ____.", "What flavour? Say one."],
+  ["A1", "Soup", "Salad", "FOOD", "Is your soup hot or cold?", "What is in your salad?"],
+  ["A1", "Water", "Lemonade", "FOOD", "How many glasses a day?", "Is it sweet or sour?"],
+  ["A1", "Be green", "Be purple", "SILLY", "Say: I am green like a ____.", "Say: I am purple like a ____."],
+  ["A1", "Have big ears", "Have a long nose", "SILLY", "What can you hear now?", "What can you smell now?"],
+  ["A1", "Be super fast", "Be super strong", "HEROES", "Where do you run? Say one place.", "What do you lift? Say one thing."],
+  ["A1", "Fight a robot", "Fight a monster", "HEROES", "Is the robot big or small?", "What colour is the monster?"],
+  ["A1", "Write on the board", "Read to the class", "SCHOOL", "Write your name in the air.", "Say one sentence loudly."],
+  ["A1", "Play outside", "Play inside", "SCHOOL", "What game do you play?", "Who plays with you?"],
+  ["A1", "Watch a film", "Play a game", "POP CULTURE", "Say the name of one film.", "Say the name of one game."],
+  ["A1", "Be on TV", "Be in a comic", "POP CULTURE", "What do you say on TV?", "What is your hero name?"],
+  ["A1", "Play with one friend", "Play in a big group", "FRIENDS", "Who is your friend? Say a name.", "How many people? Count."],
+  ["A1", "Give a present", "Get a present", "FRIENDS", "What present do you give?", "Say: Thank you for the ____."],
+  ["A1", "Go to the mountains", "Go to the beach", "ADVENTURE", "Is it hot or cold there?", "What do you do in the sea?"],
+  ["A1", "Fly in a plane", "Go in a train", "ADVENTURE", "Do you look out of the window?", "Where does the train go?"],
+  ["A1", "See a lion", "See a whale", "ADVENTURE", "Is the lion loud? Show us.", "Is the whale big? Show us."],
+  ["A1", "Be first", "Be with friends", "THINK HARD", "Is first always good?", "Say: My friends are ____."],
+  ["A1", "Tidy your room", "Wash the dishes", "THINK HARD", "Say: I put my toys in the ____.", "How many plates? Count."],
+  ["A1", "A dog", "A cat", "THINK HARD", "What is your dog's name?", "What is your cat's name?"],
+  ["A1", "Summer", "Winter", "THINK HARD", "Say: In summer I ____.", "Say: In winter I ____."],
+
+  ["A2", "Eat the same lunch every day", "A surprise lunch every day", "FOOD", "Which lunch would you choose?", "Do you like surprises? Why?"],
+  ["A2", "Sweet food", "Salty food", "FOOD", "Give two examples of sweet food.", "Give two examples of salty food."],
+  ["A2", "Cook with your family", "Eat in a restaurant", "FOOD", "Who cooks best in your family?", "Which restaurant, and why?"],
+  ["A2", "Be invisible for a day", "Be very loud for a day", "SILLY", "Where would you go first?", "What would you shout?"],
+  ["A2", "Wear pyjamas everywhere", "Wear a suit everywhere", "SILLY", "Is that comfortable or strange?", "Where would you look good?"],
+  ["A2", "Talk to animals", "Talk to machines", "SILLY", "Which animal, and what do you ask?", "What do you ask your phone?"],
+  ["A2", "Save one big city", "Save your street", "HEROES", "Why the big city? Use because.", "Who lives on your street?"],
+  ["A2", "Train every day", "Get powers by accident", "HEROES", "Is hard work worth it? Why?", "Is luck fair? Why or why not?"],
+  ["A2", "Homework every day", "One big project", "SCHOOL", "How long do you study each day?", "What project would you choose?"],
+  ["A2", "Sit near the window", "Sit near the door", "SCHOOL", "What do you see outside?", "Why do you like the door?"],
+  ["A2", "Be famous for singing", "Be famous for sport", "POP CULTURE", "What song do you sing first?", "Which sport, and which team?"],
+  ["A2", "Watch a series", "Watch one long film", "POP CULTURE", "How many episodes in one day?", "Which film, and with who?"],
+  ["A2", "A friend who listens", "A friend who makes plans", "FRIENDS", "When do you need to talk?", "What plan do you want next week?"],
+  ["A2", "Work in a team", "Work alone", "FRIENDS", "What is good about teams?", "When is alone better?"],
+  ["A2", "Travel to a hot country", "Travel to a cold country", "ADVENTURE", "What clothes do you pack?", "What clothes do you pack?"],
+  ["A2", "Camp in the mountains", "Sail on a lake", "ADVENTURE", "What do you cook on the fire?", "Can you swim? Tell us."],
+  ["A2", "A day in the past", "A day in the future", "ADVENTURE", "Which year, and why?", "What do you want to see?"],
+  ["A2", "Keep a secret", "Tell the truth", "THINK HARD", "Is it hard to keep secrets?", "When is the truth difficult?"],
+  ["A2", "Try and fail", "Never try", "THINK HARD", "Tell us about a time you failed.", "What stops you from trying?"],
+  ["A2", "Money for you", "Money for your school", "THINK HARD", "What would you buy?", "What does your school need?"],
+
+  ["B1", "A kitchen that cooks for you", "Learn to cook well", "FOOD", "What would you lose by not cooking?", "Which dish would you master?"],
+  ["B1", "Eat at the same time every day", "Eat whenever you're hungry", "FOOD", "Does routine help you? Explain.", "Does that work at school? Explain."],
+  ["B1", "Share every meal", "Eat in peace", "FOOD", "What happens at a shared table?", "When do you need quiet?"],
+  ["B1", "Everyone knows your nickname", "Nobody knows your real name", "SILLY", "What nickname would you accept?", "Would that feel free or lonely?"],
+  ["B1", "Live one day twice", "Skip a boring week", "SILLY", "Which day, and what would you change?", "What would you miss in that week?"],
+  ["B1", "Be lucky", "Be prepared", "SILLY", "Can you rely on luck? Explain.", "How do you prepare for something hard?"],
+  ["B1", "Work with a team of heroes", "Work alone in secret", "HEROES", "What makes a team work?", "What's the cost of secrecy?"],
+  ["B1", "Be famous for saving people", "Save people anonymously", "HEROES", "Does fame change the motive?", "Why would you stay hidden?"],
+  ["B1", "Learn from mistakes", "Learn from instructions", "SCHOOL", "Describe a mistake that taught you something.", "When do you need clear rules?"],
+  ["B1", "Exams", "Presentations", "SCHOOL", "Which one shows what you really know?", "What makes you nervous, and why?"],
+  ["B1", "One school subject in English", "All subjects in your language", "SCHOOL", "Which subject, and why that one?", "What would you lose?"],
+  ["B1", "Films that make you think", "Films that make you laugh", "POP CULTURE", "Name one that stayed with you.", "Is laughing enough after a hard day?"],
+  ["B1", "Follow the trend", "Ignore the trend", "POP CULTURE", "Why do trends spread so fast?", "Is it hard to be different? Explain."],
+  ["B1", "Say what you think", "Keep the peace", "FRIENDS", "When has speaking up helped?", "When is silence the kinder option?"],
+  ["B1", "Old friends", "New friends", "FRIENDS", "What do old friends understand?", "What does a new friend give you?"],
+  ["B1", "Travel slowly through one country", "See ten countries quickly", "ADVENTURE", "What do you notice when you slow down?", "What do you actually remember?"],
+  ["B1", "An adventure that scares you", "A holiday that relaxes you", "ADVENTURE", "Why would you choose fear?", "What does rest give you?"],
+  ["B1", "Learn a survival skill", "Learn a language", "ADVENTURE", "Which skill, and where would you use it?", "Which language, and who would you talk to?"],
+  ["B1", "Be busy", "Be bored", "THINK HARD", "What do you gain from a full day?", "Can boredom be useful? Explain."],
+  ["B1", "Ask for help", "Solve it yourself", "THINK HARD", "Why is asking difficult sometimes?", "When does independence become stubborn?"],
+
+  ["B2", "Food labels show the true climate cost", "Keep prices simple", "FOOD", "Would that change what you buy?", "Who benefits from less information?"],
+  ["B2", "School meals free for everyone", "Cheaper meals for those in need", "FOOD", "Is universal always fairer?", "What does targeting risk?"],
+  ["B2", "Eat what your culture eats", "Eat what science recommends", "FOOD", "What is lost when tradition goes?", "Should evidence beat habit?"],
+  ["B2", "Relive your best memory", "Erase your worst one", "SILLY", "Would repetition spoil it?", "Would you still be yourself?"],
+  ["B2", "Perfect memory", "Perfect forgetting", "SILLY", "What would you rather not remember?", "Is forgetting a skill?"],
+  ["B2", "Heroes answer to a government", "Heroes answer to nobody", "HEROES", "Who controls the controllers?", "Is unchecked power ever safe?"],
+  ["B2", "Prevent a disaster in secret", "Warn people and cause panic", "HEROES", "Do people have a right to know?", "Is panic worse than ignorance?"],
+  ["B2", "Learn only what interests you", "Follow a fixed curriculum", "SCHOOL", "What would you never study again?", "What does a shared curriculum protect?"],
+  ["B2", "Mixed-ability classes", "Classes grouped by level", "SCHOOL", "Who gains from mixing?", "Who is labelled by grouping?"],
+  ["B2", "Fame at eighteen", "Recognition at fifty", "POP CULTURE", "What does early fame cost?", "Is patience a strategy or a comfort?"],
+  ["B2", "Algorithms choose your music", "You search for it yourself", "POP CULTURE", "What do you stop discovering?", "Is effort part of taste?"],
+  ["B2", "News from one trusted source", "News from many sources", "POP CULTURE", "What's the risk of one voice?", "Can too many voices confuse?"],
+  ["B2", "Tell a friend a hard truth", "Let them find out", "FRIENDS", "Whose comfort are you protecting?", "Is silence a decision?"],
+  ["B2", "Loyal to the group", "Loyal to yourself", "FRIENDS", "When does the group ask too much?", "Is that selfish or honest?"],
+  ["B2", "Explore with no way back", "Stay and never know", "ADVENTURE", "What justifies that risk?", "Can curiosity be a duty?"],
+  ["B2", "Tourism that funds a region", "Protect the place from crowds", "ADVENTURE", "Who profits from the visitors?", "Who decides who may enter?"],
+  ["B2", "Work you love for less money", "Work you tolerate for more", "THINK HARD", "How much less would you accept?", "What does the money buy you?"],
+  ["B2", "Be judged by your intentions", "Be judged by your results", "THINK HARD", "Do good intentions excuse harm?", "Is luck part of your result?"],
+  ["B2", "A short remarkable life", "A long ordinary one", "THINK HARD", "What makes a life remarkable?", "Is ordinary a failure?"],
+  ["B2", "Change one law", "Change one habit in everyone", "THINK HARD", "Which law, and who resists it?", "Which habit, and why that one?"],
+
+  ["C1", "Global food distribution by need", "National food sovereignty", "FOOD", "Who enforces such a system?", "Does sovereignty protect or isolate?"],
+  ["C1", "Tax unhealthy food heavily", "Subsidise healthy food instead", "FOOD", "Is punishment an acceptable instrument?", "Who pays for the subsidy?"],
+  ["C1", "A world with total transparency", "A world with guaranteed privacy", "SILLY", "What would transparency do to dissent?", "What does privacy conceal?"],
+  ["C1", "Know the day you die", "Know nothing at all", "SILLY", "Would certainty focus or paralyse you?", "Is uncertainty what makes choice real?"],
+  ["C1", "Justice done quickly", "Justice done properly", "HEROES", "What does delay cost the victim?", "What does haste cost the innocent?"],
+  ["C1", "One person with the power to stop wars", "No such person exists", "HEROES", "Would you trust anyone with it?", "Is diffuse responsibility just cowardice?"],
+  ["C1", "Education for citizenship", "Education for employment", "SCHOOL", "What does a citizen need to know?", "Should schools serve the economy?"],
+  ["C1", "Standardised global qualifications", "Local systems with local meaning", "SCHOOL", "What is flattened by a standard?", "What does local knowledge preserve?"],
+  ["C1", "Art that provokes", "Art that consoles", "POP CULTURE", "Is discomfort part of the value?", "Is consolation an evasion?"],
+  ["C1", "Artists paid by the state", "Artists paid by the market", "POP CULTURE", "What does state funding quietly shape?", "What does the market refuse to fund?"],
+  ["C1", "Judge historical figures by today's values", "Judge them by their own era", "POP CULTURE", "Is moral progress a valid standard?", "Does context become an excuse?"],
+  ["C1", "Say the unpopular thing", "Preserve the relationship", "FRIENDS", "What is the duty of a real friend?", "Is harmony worth a compromise?"],
+  ["C1", "Forgive without an apology", "Wait for accountability", "FRIENDS", "Is forgiveness for them or for you?", "Can waiting become punishment?"],
+  ["C1", "Exploration funded publicly", "Exploration funded privately", "ADVENTURE", "Who owns what is found?", "Does private ambition move faster?"],
+  ["C1", "Preserve wilderness untouched", "Open it to research", "ADVENTURE", "What is the value of the untouched?", "Can knowledge justify intrusion?"],
+  ["C1", "Act on uncertain evidence", "Wait for certainty", "THINK HARD", "What is the cost of acting too early?", "What is the cost of waiting?"],
+  ["C1", "Equality of opportunity", "Equality of outcome", "THINK HARD", "Is opportunity ever really equal?", "What must be taken to equalise outcomes?"],
+  ["C1", "Duty to future generations", "Duty to people alive now", "THINK HARD", "Can we owe anything to the unborn?", "Is the present always more urgent?"],
+  ["C1", "A society that values truth", "A society that values kindness", "THINK HARD", "Can truth exist without cruelty?", "Where does kindness distort the record?"],
+  ["C1", "Be understood", "Be free", "THINK HARD", "What do you give up to be understood?", "Is freedom worth being misread?"]
+];
+for (let n = 0; n < MORE2.length; n++) QUESTIONS.push(MORE2[n]);
+
+const MORE3 = [
+  ["A1", "Be brave", "Be kind", "THINK HARD", "Say: I am brave when I ____.", "Say: I am kind to ____."],
+  ["A1", "Share your snack", "Eat it all", "THINK HARD", "Who do you share with?", "Is that fair? Say yes or no."],
+  ["A1", "Say sorry", "Give a hug", "THINK HARD", "Say: I am sorry for ____.", "Show us a friendly hug."],
+  ["A1", "Tell the truth", "Say nothing", "THINK HARD", "Is the truth easy or hard?", "Why do you say nothing?"],
+  ["A1", "One big present", "Many small presents", "THINK HARD", "What is the big present?", "How many presents? Count."],
+  ["A1", "Play now", "Sleep more", "THINK HARD", "What game do you play?", "What time do you sleep?"],
+  ["A1", "Help your friend", "Help your family", "THINK HARD", "How do you help your friend?", "Who do you help at home?"],
+  ["A1", "A quiet day", "A busy day", "THINK HARD", "What do you do on a quiet day?", "What do you do on a busy day?"],
+  ["A1", "Chocolate", "Strawberries", "FOOD", "Is it sweet? Say yes or no.", "How many can you eat?"],
+  ["A1", "Be a giant", "Be tiny", "SILLY", "What can you see? Show us.", "Where can you sit? Show us."],
+  ["A1", "Super jump", "Super hearing", "HEROES", "How high do you jump? Show us.", "What can you hear now?"],
+  ["A1", "A boat trip", "A bus trip", "ADVENTURE", "Where does the boat go?", "Who is on the bus with you?"],
+
+  ["A2", "Be brave once", "Be kind every day", "THINK HARD", "When were you brave? Tell us.", "How are you kind at home?"],
+  ["A2", "Choose for the group", "Let the group choose", "THINK HARD", "Is it easy to decide? Why?", "Do you agree with your group?"],
+  ["A2", "A small gift you keep", "A big day you remember", "THINK HARD", "What gift do you still have?", "Which day, and why?"],
+  ["A2", "Say what you feel", "Keep it quiet", "THINK HARD", "Who do you talk to?", "Why is it hard to speak?"],
+  ["A2", "Help without asking", "Wait until they ask", "THINK HARD", "Give one example.", "Is waiting polite? Why?"],
+  ["A2", "Time with family", "Time with friends", "THINK HARD", "What do you do together?", "What do you do together?"],
+  ["A2", "Fix your mistake", "Start again", "THINK HARD", "Tell us about a mistake.", "Is starting again easier? Why?"],
+  ["A2", "One long holiday", "Many short holidays", "THINK HARD", "Where do you go for a month?", "Where do you go for a weekend?"],
+  ["A2", "Hair that changes colour", "A voice like a robot", "SILLY", "What colour today, and why?", "Say one sentence like a robot."],
+  ["A2", "A pet that talks", "A bike that flies", "SILLY", "What does your pet say first?", "Where do you fly after school?"],
+  ["A2", "Hot food", "Cold food", "FOOD", "Give two hot dishes you like.", "Give two cold dishes you like."],
+  ["A2", "Camp near a river", "Camp in a forest", "ADVENTURE", "Do you swim there? Why?", "What do you hear at night?"],
+
+  ["B1", "Be respected", "Be popular", "THINK HARD", "How do people earn respect?", "What does popularity give you?"],
+  ["B1", "Admit you were wrong", "Prove you were right", "THINK HARD", "When did admitting it help you?", "What does winning cost you?"],
+  ["B1", "Make the decision", "Follow the plan", "THINK HARD", "What makes a decision hard?", "When is following better?"],
+  ["B1", "Change your mind", "Stay consistent", "THINK HARD", "What changed your mind once?", "Is consistency always good?"],
+  ["B1", "Help one person a lot", "Help many people a little", "THINK HARD", "Which feels more useful? Explain.", "Which reaches further? Explain."],
+  ["B1", "Keep a promise you regret", "Break it honestly", "THINK HARD", "What does a promise mean to you?", "How would you explain it?"],
+  ["B1", "Spend on experiences", "Save for later", "THINK HARD", "Which experience is worth it?", "What are you saving for?"],
+  ["B1", "A quiet life", "A busy life", "THINK HARD", "What would you do with the calm?", "What keeps you going?"],
+  ["B1", "A soundtrack for your day", "A narrator for your day", "SILLY", "What plays when you wake up?", "What would the narrator say now?"],
+  ["B1", "A skill you show off", "A skill only you know", "SILLY", "Which skill, and to whom?", "Why keep it private?"],
+  ["B1", "Cook for people you love", "Be cooked for", "FOOD", "What would you make?", "Who cooks best for you?"],
+  ["B1", "Travel with one bag", "Travel with everything", "ADVENTURE", "What three things go in it?", "What can't you leave behind?"],
+
+  ["B2", "Be respected but disliked", "Be liked but doubted", "THINK HARD", "Which would you survive better?", "What does doubt cost you?"],
+  ["B2", "Freedom with risk", "Safety with limits", "THINK HARD", "How much risk is acceptable?", "Who sets the limits?"],
+  ["B2", "Own your mistake publicly", "Fix it quietly", "THINK HARD", "What does the public gain?", "Is quiet repair enough?"],
+  ["B2", "Speak for a group", "Speak only for yourself", "THINK HARD", "Who gave you that right?", "Is that a retreat or honesty?"],
+  ["B2", "Reward effort", "Reward results", "THINK HARD", "How would you measure effort?", "Is that fair to the unlucky?"],
+  ["B2", "Second chances for everyone", "Consequences that stick", "THINK HARD", "When is a second chance wrong?", "What does forgiveness change?"],
+  ["B2", "A useful lie", "An unhelpful truth", "THINK HARD", "Who benefits from the lie?", "What is the truth worth here?"],
+  ["B2", "Decide fast", "Decide well", "THINK HARD", "What does hesitation cost?", "How long is too long?"],
+  ["B2", "Hear every thought for one minute", "Say every thought for one minute", "SILLY", "What would you learn?", "What would you regret?"],
+  ["B2", "A month with no phone", "A month with no music", "SILLY", "What would you notice first?", "What would the silence do to you?"],
+  ["B2", "Meals shared with strangers", "Meals alone in peace", "FOOD", "What do strangers teach you?", "What does solitude give you?"],
+  ["B2", "Cross a country on foot", "Sail across an ocean", "ADVENTURE", "What breaks first, body or will?", "What would the silence do?"],
+
+  ["C1", "Justice with mercy", "Justice without exception", "THINK HARD", "Who decides who deserves mercy?", "Does consistency create cruelty?"],
+  ["C1", "A society that rewards merit", "A society that guarantees dignity", "THINK HARD", "Can merit be measured fairly?", "What does dignity cost the successful?"],
+  ["C1", "Freedom to be wrong", "Protection from harm", "THINK HARD", "Where does error become danger?", "Who defines harm?"],
+  ["C1", "Accountability for the powerful", "Second chances for everyone", "THINK HARD", "Does power forfeit forgiveness?", "Can a system forgive and still deter?"],
+  ["C1", "Truth that divides", "Silence that holds", "THINK HARD", "Is unity worth an omission?", "When does silence become a lie?"],
+  ["C1", "Loyalty to your country", "Loyalty to your conscience", "THINK HARD", "What does citizenship demand?", "Is conscience a private luxury?"],
+  ["C1", "Act now imperfectly", "Wait for consensus", "THINK HARD", "What does delay make impossible?", "What does consensus protect?"],
+  ["C1", "Judge the act", "Judge the pattern", "THINK HARD", "Can one act define a person?", "Is a pattern ever escapable?"],
+  ["C1", "Anonymous power", "Named responsibility", "HEROES", "Can anonymous power be checked?", "What does exposure cost the honest?"],
+  ["C1", "One life saved certainly", "Many lives saved probably", "HEROES", "Is certainty a moral advantage?", "Can you gamble with other people's lives?"],
+  ["C1", "Reveal an unwelcome truth", "Protect a fragile peace", "FRIENDS", "Whose peace are you protecting?", "Is a peace built on omission real?"],
+  ["C1", "A world without borders", "Communities that choose who enters", "ADVENTURE", "What would open borders undo?", "Who is excluded, and by what right?"]
+];
+for (let n = 0; n < MORE3.length; n++) QUESTIONS.push(MORE3[n]);
+
+const MORE4 = [
+  ["A1", "Bananas", "Grapes", "FOOD", "Say: I like bananas. They are ____.", "Say: I like grapes. They are ____."],
+  ["A1", "Water", "Milk", "FOOD", "Say: I drink water every ____.", "Say: I drink milk with ____."],
+  ["A1", "A big hat", "Big shoes", "SILLY", "Say: My hat is ____.", "Say: My shoes are ____."],
+  ["A1", "Jump", "Run", "SILLY", "Say: I can jump ____ times.", "Say: I run in the ____."],
+  ["A1", "Be strong", "Be fast", "HEROES", "Say: I am strong. I can lift a ____.", "Say: I am fast. I run to the ____."],
+  ["A1", "A red cape", "A gold mask", "HEROES", "Say: My cape is ____.", "Say: My mask is ____."],
+  ["A1", "Cartoons", "Songs", "POP CULTURE", "Say: I watch ____.", "Say: I sing ____."],
+  ["A1", "Draw", "Dance", "POP CULTURE", "Say: I draw a ____.", "Say: I dance with ____."],
+  ["A1", "Play with one friend", "Play with many friends", "FRIENDS", "Say: My friend is ____.", "Say: We play ____."],
+  ["A1", "Share my toy", "Share my snack", "FRIENDS", "Say: I share my ____.", "Say: My snack is ____."],
+  ["A1", "The beach", "The park", "ADVENTURE", "Say: At the beach I ____.", "Say: In the park I ____."],
+  ["A1", "A boat", "A bike", "ADVENTURE", "Say: The boat is ____.", "Say: My bike is ____."],
+  ["A1", "Big", "Small", "THINK HARD", "Say: Big is good because ____.", "Say: Small is good because ____."],
+  ["A1", "Day", "Night", "THINK HARD", "Say: In the day I ____.", "Say: At night I ____."],
+  ["A1", "Hot food", "Cold food", "THINK HARD", "Say: Hot food is ____.", "Say: Cold food is ____."],
+
+  ["A2", "Pancakes for dinner", "Soup for breakfast", "FOOD", "Why do you like it? Because...", "When would you eat it?"],
+  ["A2", "Cook with a friend", "Cook alone", "FOOD", "What would you make together?", "What is easy to cook alone?"],
+  ["A2", "Laugh very loudly", "Smile all day", "SILLY", "What makes you laugh?", "Who makes you smile?"],
+  ["A2", "Wear socks on your hands", "Wear gloves on your feet", "SILLY", "What would be difficult?", "What would be funny?"],
+  ["A2", "Save one person", "Warn a whole town", "HEROES", "Why that person?", "How would you warn them?"],
+  ["A2", "Fly slowly", "Run very fast", "HEROES", "Where would you fly?", "Where would you run?"],
+  ["A2", "Be in a film", "Write a song", "POP CULTURE", "What kind of film?", "What is your song about?"],
+  ["A2", "Play a video game", "Watch a match", "POP CULTURE", "Which game, and why?", "Which team do you like?"],
+  ["A2", "A friend who listens", "A friend who makes jokes", "FRIENDS", "When do you need to talk?", "When do you need to laugh?"],
+  ["A2", "Sit with new people", "Sit with your best friend", "FRIENDS", "How do you start talking?", "What do you talk about?"],
+  ["A2", "Climb a mountain", "Swim in a lake", "ADVENTURE", "What do you take with you?", "Is the water cold or warm?"],
+  ["A2", "Camp in a forest", "Sleep in a treehouse", "ADVENTURE", "What do you hear at night?", "What can you see from there?"],
+  ["A2", "More free time", "More money", "THINK HARD", "What would you do with the time?", "What would you buy first?"],
+  ["A2", "Win alone", "Lose with your team", "THINK HARD", "How does winning alone feel?", "Why can losing together be good?"],
+  ["A2", "Know the answer", "Ask a good question", "THINK HARD", "Why are answers useful?", "Why are questions useful?"],
+
+  ["B1", "A kitchen that never runs out of food", "A cook who knows every recipe", "FOOD", "Would unlimited food change how you value it?", "What would you learn from them?"],
+  ["B1", "Only eat food you grew", "Only eat food someone gave you", "FOOD", "What would that teach you?", "What would you owe them?"],
+  ["B1", "Always be in on the joke", "Always be the joke", "SILLY", "Who gets left out of jokes?", "When does a joke go too far?"],
+  ["B1", "Be famous for something silly", "Be unknown for something good", "SILLY", "What would you dislike about it?", "Does recognition matter?"],
+  ["B1", "Powers nobody knows about", "A reputation with no powers", "HEROES", "Why keep it secret?", "What can a reputation do?"],
+  ["B1", "Stop one disaster", "Prevent ten small problems", "HEROES", "Which is more heroic?", "Why do small things add up?"],
+  ["B1", "Choose the soundtrack of your life", "Choose the ending of your favourite show", "POP CULTURE", "What song plays at your best moment?", "How would you end it?"],
+  ["B1", "Meet your favourite character", "Live one day in their world", "POP CULTURE", "What would you ask them?", "What would surprise you?"],
+  ["B1", "A friend who challenges you", "A friend who agrees with you", "FRIENDS", "When is disagreement useful?", "When is support enough?"],
+  ["B1", "Forgive quickly", "Take time to forgive", "FRIENDS", "What does fast forgiveness risk?", "What does waiting protect?"],
+  ["B1", "Travel with a plan", "Travel with no plan", "ADVENTURE", "What does a plan give you?", "What do you find without one?"],
+  ["B1", "Cross a desert", "Cross an ocean", "ADVENTURE", "What is the hardest part?", "What would you fear most?"],
+  ["B1", "Be trusted", "Be admired", "THINK HARD", "How do you earn trust?", "Can admiration be lost quickly?"],
+  ["B1", "Know how people see you", "Never think about it again", "THINK HARD", "Would that change your behaviour?", "What would you gain?"],
+  ["B1", "Make a hard choice now", "Delay and keep your options", "THINK HARD", "What does deciding early cost?", "What does waiting cost?"],
+
+  ["B2", "Food that is perfect but identical every day", "Food that varies and sometimes fails", "FOOD", "Is reliability worth boredom?", "What is worth the risk of failure?"],
+  ["B2", "A meal that ends an argument", "A meal that starts a friendship", "FOOD", "Why does eating together help?", "What makes a first meal work?"],
+  ["B2", "Never be embarrassed again", "Never be bored again", "SILLY", "What does embarrassment teach us?", "Is boredom useful?"],
+  ["B2", "A world where everyone jokes", "A world where nobody does", "SILLY", "What would stop being serious?", "What would humour protect us from?"],
+  ["B2", "Be the hero who is blamed", "Be the bystander who is praised", "HEROES", "Can doing right be unpopular?", "Why does the crowd reward silence?"],
+  ["B2", "Powers with a strict limit", "Powers with no rules", "HEROES", "Do limits make you careful?", "What would you do first, and why?"],
+  ["B2", "Control what is popular", "Control what is remembered", "POP CULTURE", "Why is popularity temporary?", "Who decides what lasts?"],
+  ["B2", "A story that entertains millions", "A story that changes ten lives", "POP CULTURE", "Is reach the same as value?", "What makes a story change someone?"],
+  ["B2", "A friend who tells you an awkward truth", "A friend who keeps the peace", "FRIENDS", "How should hard truths be said?", "When does peace become avoidance?"],
+  ["B2", "Keep a friend's secret", "Warn someone it affects", "FRIENDS", "What does loyalty require?", "Where does loyalty end?"],
+  ["B2", "An expedition nobody hears about", "A short trip everyone follows", "ADVENTURE", "Does an audience change the experience?", "What do followers expect from you?"],
+  ["B2", "Explore somewhere untouched", "Restore somewhere ruined", "ADVENTURE", "What do explorers risk destroying?", "Why is repair less celebrated?"],
+  ["B2", "Always know the consequences", "Always act on instinct", "THINK HARD", "Would certainty make you passive?", "When is instinct better than analysis?"],
+  ["B2", "Fair rules applied strictly", "Flexible rules applied kindly", "THINK HARD", "Who does strictness protect?", "Who does flexibility favour?"],
+  ["B2", "Be replaceable and free", "Be essential and needed", "THINK HARD", "What does freedom cost you?", "What does being needed demand?"],
+
+  ["C1", "Scarcity that makes food meaningful", "Abundance that makes it ordinary", "FOOD", "Does value depend on limits?", "What is lost when nothing is rare?"],
+  ["C1", "Feed a region for a decade", "Teach it to feed itself slowly", "FOOD", "What dependency does aid create?", "Who pays for the slow path?"],
+  ["C1", "A society that mocks power", "A society that reveres it", "SILLY", "What does satire actually change?", "When does respect become deference?"],
+  ["C1", "Absurdity acknowledged", "Order maintained by pretence", "SILLY", "Can honesty be destabilising?", "What does the pretence protect?"],
+  ["C1", "Heroes chosen by the public", "Heroes appointed by experts", "HEROES", "What does popularity select for?", "Who holds experts accountable?"],
+  ["C1", "Act now on partial evidence", "Wait for certainty that may not come", "HEROES", "What is the cost of acting too early?", "What is the cost of never acting?"],
+  ["C1", "Culture that is endlessly remixed", "Culture that is carefully preserved", "POP CULTURE", "Does remixing dilute meaning?", "Who decides what is worth preserving?"],
+  ["C1", "Attention distributed evenly", "Attention earned by a few", "POP CULTURE", "Would equal attention flatten quality?", "What does concentrated fame distort?"],
+  ["C1", "Friendships built on agreement", "Friendships that survive disagreement", "FRIENDS", "Is comfort a weak foundation?", "What makes conflict survivable?"],
+  ["C1", "Total honesty between friends", "Discretion that protects them", "FRIENDS", "Can honesty be a form of harm?", "When does discretion become deceit?"],
+  ["C1", "Frontiers left unexplored", "Every place mapped and known", "ADVENTURE", "What is the value of the unknown?", "What does complete knowledge remove?"],
+  ["C1", "Risk borne by volunteers", "Risk shared by everyone", "ADVENTURE", "Is consent enough to justify danger?", "Why would anyone accept shared risk?"],
+  ["C1", "A just outcome by unjust means", "An unjust outcome by fair process", "THINK HARD", "Do results legitimise methods?", "Is process worth a bad result?"],
+  ["C1", "Preserve a comforting belief", "Replace it with a harder truth", "THINK HARD", "What does the belief hold together?", "Who carries the cost of the truth?"],
+  ["C1", "Freedom with unequal outcomes", "Equality with fewer choices", "THINK HARD", "What inequality is tolerable?", "What would you give up for it?"]
+];
+for (let n = 0; n < MORE4.length; n++) QUESTIONS.push(MORE4[n]);
+
+// Retire the SCHOOL topic, drop confusing or near-duplicate pairs, then de-duplicate.
+const DROP_SIDE_A = [
+  "Be first", "Hair that changes colour", "Sweet food", "Sound effects follow you",
+  "Everyone knows your nickname", "Live one day twice",
+  "Everyone hears your thoughts for a minute a day", "Food labels show the true climate cost",
+  "A day when lying is impossible", "Vigilantes tolerated",
+  "One person with the power to stop wars", "Anonymity for those with power"
+];
+(function prune() {
+  const kept = [], seen = {};
+  for (let n = 0; n < QUESTIONS.length; n++) {
+    const q = QUESTIONS[n];
+    if (q[3] === "SCHOOL") continue;
+    if (DROP_SIDE_A.indexOf(q[1]) !== -1) continue;
+    const sides = [q[1].toLowerCase(), q[2].toLowerCase()].sort();
+    const key = q[0] + "|" + sides[0] + "|" + sides[1];
+    if (seen[key]) continue;
+    seen[key] = 1;
+    kept.push(q);
+  }
+  QUESTIONS.length = 0;
+  for (let n = 0; n < kept.length; n++) QUESTIONS.push(kept[n]);
+})();
+
+const CATEGORIES = [
+  { id: "FOOD", color: "#f4631e" },
+  { id: "SILLY", color: "#e0218a" },
+  { id: "HEROES", color: "#1b4bd8" },
+  { id: "POP CULTURE", color: "#5c1fa8" },
+  { id: "FRIENDS", color: "#00a8e8" },
+  { id: "ADVENTURE", color: "#f5b301" },
+  { id: "THINK HARD", color: "#d81f30" }
+];
+
+const PAIRS = [
+  ["#d81f30", "#1b4bd8"], ["#f5b301", "#5c1fa8"], ["#0f9d58", "#e0218a"],
+  ["#f4631e", "#0d8f9e"], ["#00a8e8", "#c1002a"], ["#7ac70c", "#3b1f8f"],
+  ["#ff2d95", "#141414"], ["#141414", "#d81f30"], ["#e8ded0", "#b3122b"],
+  ["#ffd400", "#0b6bcb"]
+];
+
+function idsFor(level, cats) {
+  const levels = Array.isArray(level) ? level : (level ? [level] : []);
+  const out = [];
+  for (let n = 0; n < QUESTIONS.length; n++) {
+    if (levels.indexOf(QUESTIONS[n][0]) === -1) continue;
+    if (cats && cats.length && cats.indexOf(QUESTIONS[n][3]) === -1) continue;
+    out.push(n);
+  }
+  return out;
+}
+function shuffled(arr, avoidFirst) {
+  const a = arr.slice();
+  for (let n = a.length - 1; n > 0; n--) { const m = Math.floor(Math.random() * (n + 1)); const t = a[n]; a[n] = a[m]; a[m] = t; }
+  if (avoidFirst != null && a.length > 1 && a[0] === avoidFirst) { const t = a[0]; a[0] = a[a.length - 1]; a[a.length - 1] = t; }
+  return a;
+}
+
+class Component extends DCLogic {
+  state = { level: null, levels: [], cats: CATEGORIES.map((c) => c.id), pickingCats: false, order: [], i: 0, pairAt: 0, phase: "idle", count: 5, paused: false, timerOff: false, muted: false, started: false, follow: null, roster: [], pos: {}, nameInput: "", spinning: false, spinName: "", chosen: null };
+
+  arenaRef = React.createRef();
+
+  loadRoster() {
+    try {
+      const raw = localStorage.getItem("wyr.roster");
+      if (!raw) return;
+      const d = JSON.parse(raw);
+      if (d && Array.isArray(d.roster)) this.setState({ roster: d.roster.slice(0, 60), pos: d.pos && typeof d.pos === "object" ? d.pos : {} });
+    } catch (e) {}
+  }
+  saveRoster(roster, pos) {
+    try { localStorage.setItem("wyr.roster", JSON.stringify({ roster: roster, pos: pos })); } catch (e) {}
+  }
+
+  addName() {
+    const raw = (this.state.nameInput || "").trim();
+    if (!raw) return;
+    const parts = raw.split(/[,\n;]+/).map((p) => p.trim()).filter(Boolean);
+    this.setState((s) => {
+      const roster = s.roster.slice();
+      parts.forEach((p) => {
+        const name = p.slice(0, 22);
+        if (roster.length < 60 && !roster.some((r) => r.toLowerCase() === name.toLowerCase())) roster.push(name);
+      });
+      this.saveRoster(roster, s.pos);
+      return { roster: roster, nameInput: "" };
+    });
+    this.sPop();
+  }
+  removeName(name) {
+    this.setState((s) => {
+      const roster = s.roster.filter((r) => r !== name);
+      const pos = Object.assign({}, s.pos); delete pos[name];
+      this.saveRoster(roster, pos);
+      return { roster: roster, pos: pos, chosen: s.chosen === name ? null : s.chosen };
+    });
+    this.sThwip();
+  }
+  clearNames() {
+    this.saveRoster([], {});
+    this.setState({ roster: [], pos: {}, chosen: null, spinName: "", nameInput: "" });
+    this.sThwip();
+  }
+
+  grab(name, e) {
+    const el = e.currentTarget;
+    const box = this.arenaRef.current || (el && (el.offsetParent || el.parentElement));
+    if (!box) return;
+    e.preventDefault();
+    const move = (ev) => {
+      const r = box.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      const x = Math.max(3, Math.min(97, ((ev.clientX - r.left) / r.width) * 100));
+      const y = Math.max(5, Math.min(95, ((ev.clientY - r.top) / r.height) * 100));
+      this.setState((s) => ({ pos: Object.assign({}, s.pos, { [name]: { x: x, y: y } }) }));
+    };
+    const up = () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
+      this.saveRoster(this.state.roster, this.state.pos);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", up);
+    move(e);
+  }
+
+  spin() {
+    const r = this.state.roster;
+    if (!r.length || this._spinT) return;
+    if (r.length === 1) { this.setState({ chosen: r[0], spinName: r[0], spinning: false }); this.sPop(); return; }
+    const prev = this.state.chosen;
+    this.setState({ spinning: true, chosen: null });
+    this._spinT = 1;
+    this._spinTick = setInterval(() => {
+      const pick = r[Math.floor(Math.random() * r.length)];
+      this.setState({ spinName: pick });
+      this.sTick(4);
+    }, 110);
+    this._spinEnd = setTimeout(() => {
+      clearInterval(this._spinTick);
+      this._spinT = null;
+      const pool = r.filter((n) => n !== prev);
+      const list = pool.length ? pool : r;
+      const final = list[Math.floor(Math.random() * list.length)];
+      this.setState({ spinning: false, chosen: final, spinName: final });
+      this.sBuzz();
+    }, 1700);
+  }
+
+  componentDidMount() {
+    this.onKey = (e) => {
+      if (e.repeat) return;
+      if (!this.state.level || this.state.pickingCats) return;
+      if (this.state.follow && (e.code === "Escape" || e.code === "Space")) { e.preventDefault(); this.closeFollow(); return; }
+      if (e.code === "Space" || e.code === "Enter") { e.preventDefault(); this.main(); }
+      else if (e.code === "ArrowLeft") this.back();
+      else if (e.code === "ArrowRight") this.main();
+      else if (e.code === "KeyR") this.repeat();
+      else if (e.code === "KeyQ") this.ask("A");
+      else if (e.code === "KeyW") this.ask("B");
+      else if (e.code === "KeyS") this.spin();
+    };
+    this.loadRoster();
+    if (window.__wyrKeyHandler) window.removeEventListener("keydown", window.__wyrKeyHandler);
+    window.__wyrKeyHandler = this.onKey;
+    window.addEventListener("keydown", this.onKey);
+    const saved = this.props.defaultLevel;
+    if (saved && saved !== "ask" && idsFor(saved).length) { this.setState({ levels: [saved] }); setTimeout(() => this.confirmLevels(), 0); }
+  }
+  componentWillUnmount() { window.removeEventListener("keydown", this.onKey); clearInterval(this.timer); clearTimeout(this._freezeT); clearInterval(this._spinTick); clearTimeout(this._spinEnd); }
+
+  ac() {
+    if (this.state.muted) return null;
+    if (!this._ac) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; this._ac = new C(); }
+    if (this._ac.state === "suspended") this._ac.resume();
+    return this._ac;
+  }
+  tone(freq, dur, type, gain, slideTo) {
+    const ac = this.ac(); if (!ac) return;
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type || "square"; o.frequency.setValueAtTime(freq, ac.currentTime);
+    if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, ac.currentTime + dur);
+    g.gain.setValueAtTime(0.0001, ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(gain || 0.18, ac.currentTime + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + dur);
+    o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + dur + 0.02);
+  }
+  noise(dur, from, to, gain) {
+    const ac = this.ac(); if (!ac) return;
+    const len = Math.floor(ac.sampleRate * dur), buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+    for (let n = 0; n < len; n++) d[n] = (Math.random() * 2 - 1) * (1 - n / len);
+    const src = ac.createBufferSource(); src.buffer = buf;
+    const f = ac.createBiquadFilter(); f.type = "bandpass"; f.Q.value = 1.1;
+    f.frequency.setValueAtTime(from, ac.currentTime);
+    f.frequency.exponentialRampToValueAtTime(to, ac.currentTime + dur);
+    const g = ac.createGain(); g.gain.value = gain || 0.22;
+    g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + dur);
+    src.connect(f); f.connect(g); g.connect(ac.destination); src.start();
+  }
+  sTick(n) { this.tone(560 + (5 - Math.min(n, 5)) * 70, 0.09, "square", 0.14); }
+  sBuzz() { this.tone(190, 0.55, "sawtooth", 0.2, 70); this.noise(0.4, 1400, 200, 0.18); }
+  sWhoosh() { this.noise(0.34, 380, 2600, 0.2); this.tone(880, 0.1, "triangle", 0.1, 1600); }
+  sThwip() { this.noise(0.16, 2600, 700, 0.24); }
+  sPop() { this.tone(520, 0.12, "triangle", 0.16, 1040); this.noise(0.12, 1800, 900, 0.12); }
+
+  secs() { const v = parseInt(this.props.countdownSeconds, 10); return Number.isFinite(v) && v > 0 ? v : 5; }
+  q() { const id = this.state.order[this.state.i]; return QUESTIONS[id] || QUESTIONS[0]; }
+
+  toggleLevel(id) {
+    this.setState((s) => {
+      const has = s.levels.indexOf(id) !== -1;
+      const levels = has ? s.levels.filter((l) => l !== id) : LEVELS.map((l) => l.id).filter((l) => l === id || s.levels.indexOf(l) !== -1);
+      return { levels: levels };
+    });
+    this.sPop();
+  }
+  setAllLevels(on) { this.setState({ levels: on ? LEVELS.map((l) => l.id) : [] }); this.sThwip(); }
+  confirmLevels() {
+    const levels = this.state.levels;
+    if (!levels.length) return;
+    clearInterval(this.timer); clearTimeout(this._freezeT);
+    this.setState({ level: levels.join("+"), pickingCats: true, order: [], i: 0, phase: "idle", started: false, follow: null, pairAt: Math.floor(Math.random() * PAIRS.length) });
+    this.sWhoosh();
+  }
+  changeLevel() {
+    clearInterval(this.timer); clearTimeout(this._freezeT);
+    this.setState({ level: null, pickingCats: false, phase: "idle", started: false, follow: null });
+    this.sThwip();
+  }
+  openCats() {
+    clearInterval(this.timer); clearTimeout(this._freezeT);
+    this.setState({ pickingCats: true, phase: "idle", follow: null });
+    this.sThwip();
+  }
+  toggleCat(id) {
+    this.setState((s) => {
+      const has = s.cats.indexOf(id) !== -1;
+      return { cats: has ? s.cats.filter((c) => c !== id) : s.cats.concat([id]) };
+    });
+    this.sPop();
+  }
+  setAllCats(on) { this.setState({ cats: on ? CATEGORIES.map((c) => c.id) : [] }); this.sThwip(); }
+  startWithCats() {
+    let cats = this.state.cats;
+    if (!cats.length) { cats = CATEGORIES.map((c) => c.id); }
+    const order = shuffled(idsFor(this.state.levels, cats));
+    if (!order.length) return;
+    clearInterval(this.timer); clearTimeout(this._freezeT);
+    this.setState({ cats: cats, pickingCats: false, order: order, i: 0, phase: "idle", started: false, follow: null, pairAt: Math.floor(Math.random() * PAIRS.length) });
+    this.sWhoosh();
+  }
+
+  ask(side) {
+    this.setState((s) => ({ follow: side, paused: s.phase === "counting" ? true : s.paused }));
+    this.sPop();
+  }
+  closeFollow() {
+    this._lastMain = Date.now();
+    this.setState((s) => ({ follow: null, paused: s.phase === "counting" ? false : s.paused }));
+    this.sThwip();
+  }
+
+  runCount() {
+    clearInterval(this.timer);
+    const n = this.secs();
+    this.setState({ phase: "counting", count: n, paused: false, follow: null });
+    this.sTick(n);
+    this.timer = setInterval(() => {
+      if (this.state.paused) return;
+      const next = this.state.count - 1;
+      if (next > 0) { this.setState({ count: next }); this.sTick(next); }
+      else {
+        clearInterval(this.timer);
+        this.setState({ count: 0, phase: "freeze" });
+        this.sBuzz();
+        clearTimeout(this._freezeT);
+        this._freezeT = setTimeout(() => { if (this.state.phase === "freeze") this.setState({ phase: "frozen" }); }, 1400);
+      }
+    }, 1000);
+  }
+
+  main() {
+    if (!this.state.level || this.state.pickingCats) return;
+    const now = Date.now();
+    if (now - (this._lastMain || 0) < 400) return;
+    this._lastMain = now;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    if (this.state.follow) { this.closeFollow(); return; }
+    if (!this.state.started) {
+      this.setState({ started: true });
+      this.sWhoosh();
+      if (this.state.timerOff) this.setState({ phase: "idle" }); else this.runCount();
+      return;
+    }
+    this.setState((s) => {
+      const total = s.order.length || 1;
+      const next = s.i + 1;
+      if (next >= total) {
+        const reshuffled = shuffled(s.order, s.order[s.i]);
+        return { order: reshuffled, i: 0, pairAt: (s.pairAt + 1) % PAIRS.length, phase: "idle", follow: null };
+      }
+      return { i: next, pairAt: (s.pairAt + 1) % PAIRS.length, phase: "idle", follow: null };
+    });
+    this.sWhoosh();
+    if (!this.state.timerOff) setTimeout(() => this.runCount(), 120);
+  }
+  back() {
+    if (!this.state.level || this.state.pickingCats) return;
+    const now = Date.now();
+    if (now - (this._lastMain || 0) < 400) return;
+    this._lastMain = now;
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    clearInterval(this.timer);
+    const total = this.state.order.length || 1;
+    this.setState((s) => ({ i: (s.i - 1 + total) % total, pairAt: (s.pairAt + PAIRS.length - 1) % PAIRS.length, phase: "idle", started: true, follow: null }));
+    this.sThwip();
+  }
+  repeat() {
+    if (!this.state.level) return;
+    if (this.state.phase === "counting") { this.setState((s) => ({ paused: !s.paused })); this.sThwip(); return; }
+    this.setState({ started: true }); this.runCount();
+  }
+  shuffle() {
+    if (!this.state.level) return;
+    const order = shuffled(this.state.order, this.state.order[this.state.i]);
+    clearInterval(this.timer);
+    this.setState({ order: order, i: 0, phase: "idle", started: false, follow: null, pairAt: Math.floor(Math.random() * PAIRS.length) });
+    this.sWhoosh();
+  }
+  toggleTimer() { clearInterval(this.timer); this.setState((s) => ({ timerOff: !s.timerOff, phase: "idle" })); this.sThwip(); }
+  toggleSound() { this.setState((s) => ({ muted: !s.muted })); }
+  fullscreen() {
+    const el = document.documentElement;
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (el.requestFullscreen) el.requestFullscreen();
+  }
+
+  renderVals() {
+    const s = this.state;
+    const q = this.q();
+    const pal = this.props.palette;
+    const pairs = Array.isArray(pal) && pal.length >= 2 ? [[pal[0], pal[1]]].concat(PAIRS.slice(1)) : PAIRS;
+    const pair = pairs[s.pairAt % pairs.length];
+    const straight = this.props.splitStyle === "straight";
+    const counting = s.phase === "counting";
+    const hintText = !s.started ? "PRESS START" : (s.timerOff ? "DISCUSS AND MOVE" : (s.paused ? "PAUSED" : ""));
+    const onA = s.follow === "A";
+
+    return {
+      optA: q[1], optB: q[2], category: q[3],
+      colorA: pair[0], colorB: pair[1],
+      splitClip: straight
+        ? "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
+        : "polygon(calc(50% + 45px) 0, 100% 0, 100% 100%, calc(50% - 45px) 100%)",
+      showCategory: this.props.showCategory !== false,
+      levelBadge: "LEVEL " + (q[0] || "—"),
+      levelBtnLabel: s.levels.length > 1 ? "LEVELS" : "LEVEL " + (s.levels[0] || "?"),
+      progress: (s.i + 1) + " OF " + (s.order.length || 50),
+      showCount: counting,
+      showFreeze: s.phase === "freeze",
+      showHint: !!hintText && !counting && s.phase !== "freeze" && s.phase !== "frozen",
+      hintText: hintText,
+      showSideBtns: this.props.showSideQuestions !== false && !counting,
+      showFollow: !!s.follow,
+      followTitle: onA ? "THIS SIDE: " + q[1].toUpperCase() : "THAT SIDE: " + q[2].toUpperCase(),
+      followText: onA ? q[4] : q[5],
+      followColor: onA ? pair[0] : pair[1],
+      showLevelPicker: !s.level,
+      levelCards: LEVELS.map((lv) => {
+        const on = s.levels.indexOf(lv.id) !== -1;
+        return { id: lv.id, name: lv.name, blurb: lv.blurb,
+          color: on ? lv.color : "#17171b",
+          border: on ? "#111" : "#3a3a42",
+          ink: on ? "#111" : "#6f6f78",
+          nameBg: on ? "#fff" : "#25252c",
+          nameInk: on ? "#111" : "#9a9aa3",
+          check: on ? "ON" : "OFF",
+          checkBg: on ? "#111" : "#25252c",
+          checkInk: on ? "#f5b301" : "#6f6f78",
+          pick: () => this.toggleLevel(lv.id) };
+      }),
+      levelCountLine: s.levels.length ? idsFor(s.levels, CATEGORIES.map((c) => c.id)).length + " QUESTIONS ACROSS " + s.levels.length + (s.levels.length > 1 ? " LEVELS" : " LEVEL") : "MIX ANY LEVELS YOU LIKE",
+      levelGoLabel: s.levels.length ? "NEXT: TOPICS" : "PICK A LEVEL",
+      onAllLevels: () => this.setAllLevels(true),
+      onNoLevels: () => this.setAllLevels(false),
+      onConfirmLevels: () => this.confirmLevels(),
+      showCatPicker: !!s.level && s.pickingCats,
+      catLevelLine: (s.levels.length > 1 ? "LEVELS " + s.levels.join(" + ") : "LEVEL " + (s.levels[0] || "")) + " — PICK YOUR TOPICS",
+      catCards: CATEGORIES.map((c) => {
+        const on = s.cats.indexOf(c.id) !== -1;
+        const n = idsFor(s.levels, [c.id]).length;
+        return {
+          id: c.id, count: n + " QUESTIONS", on: on,
+          bg: on ? c.color : "#17171b",
+          border: on ? "#111" : "#3a3a42",
+          textColor: on ? "#fff" : "#83838d",
+          mark: on ? "ON" : "OFF",
+          markBg: on ? "#fff" : "#2a2a31",
+          markColor: on ? "#111" : "#83838d",
+          toggle: () => this.toggleCat(c.id)
+        };
+      }),
+      catCountLine: idsFor(s.levels, s.cats).length + " QUESTIONS READY",
+      playLabel: s.cats.length ? "PLAY" : "PICK A TOPIC",
+      onAllCats: () => this.setAllCats(true),
+      onNoCats: () => this.setAllCats(false),
+      onStartCats: () => this.startWithCats(),
+      onOpenCats: () => this.openCats(),
+      mainLabel: s.started ? "NEXT" : "START",
+      repeatLabel: counting ? (s.paused ? "RESUME" : "PAUSE") : "REPEAT",
+      timerLabel: s.timerOff ? "TIMER: OFF" : "TIMER: ON",
+      soundLabel: s.muted ? "SOUND OFF" : "SOUND ON",
+      countEl: React.createElement("div", {
+        key: s.count,
+        style: {
+          fontFamily: "Bangers, cursive", fontSize: "44vh", lineHeight: 1, color: "#fff",
+          WebkitTextStroke: "18px #111", paintOrder: "stroke fill",
+          filter: "drop-shadow(18px 20px 0 rgba(0,0,0,.55))",
+          animation: "numPop 620ms cubic-bezier(.2,.9,.2,1) both", position: "relative"
+        }
+      }, String(s.count)),
+      onMain: () => this.main(), onBack: () => this.back(), onRepeat: () => this.repeat(),
+      onShuffle: () => this.shuffle(), onToggleTimer: () => this.toggleTimer(),
+      onToggleSound: () => this.toggleSound(), onFullscreen: () => this.fullscreen(),
+      onChangeLevel: () => this.changeLevel(), onCloseFollow: () => this.closeFollow(),
+      onAskA: () => this.ask("A"), onAskB: () => this.ask("B"),
+      arenaRef: this.arenaRef,
+      hasRoster: s.roster.length > 0,
+      showSpinName: s.roster.length > 0 && !!s.spinName,
+      showOr: !(s.roster.length > 0 && !!s.spinName),
+      spinName: s.spinName,
+      spinLabel: s.spinning ? "SPINNING..." : (s.chosen ? "SPIN AGAIN" : "SPIN A NAME"),
+      onSpin: () => this.spin(),
+      nameInput: s.nameInput,
+      rosterLine: s.roster.length ? s.roster.length + " STUDENTS · TAP A NAME TO REMOVE" : "NO NAMES YET · OPTIONAL",
+      rosterChips: s.roster.map((n) => ({ label: n + "  ✕", remove: () => this.removeName(n) })),
+      onNameInput: (e) => this.setState({ nameInput: e.target.value }),
+      onNameKey: (e) => { if (e.key === "Enter") { e.preventDefault(); this.addName(); } e.stopPropagation(); },
+      onAddName: () => this.addName(),
+      onClearNames: () => this.clearNames(),
+      tokens: s.roster.map((n, idx) => {
+        const p = s.pos[n] || { x: 50 + ((idx % 7) - 3) * 8, y: 90 - Math.floor(idx / 7) * 9 };
+        const hot = s.chosen === n;
+        return {
+          name: n,
+          left: p.x.toFixed(2) + "%",
+          top: p.y.toFixed(2) + "%",
+          rot: (((idx * 37) % 7) - 3) + "deg",
+          bg: hot ? "#f5b301" : "#fff",
+          shadow: hot ? "0 0 0 5px #f5b301, 6px 6px 0 rgba(0,0,0,.55)" : "4px 4px 0 rgba(0,0,0,.5)",
+          grab: (e) => this.grab(n, e)
+        };
+      })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
