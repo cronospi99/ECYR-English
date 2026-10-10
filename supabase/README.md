@@ -1,41 +1,76 @@
 # Backend (Supabase)
 
 Un solo proyecto de Supabase para toda la plataforma: **ECYR English** y el
-**IELTS Simulator** (en `public/apps/ielts`) comparten usuarios, perfiles y clase.
+**IELTS Simulator** embebido (`public/apps/ielts`) comparten usuarios, perfiles,
+clases y sesión.
 
-## Migraciones — SQL Editor, en orden
+## Puesta en marcha en un proyecto nuevo
 
-| Archivo | Qué hace |
+### 1. Base de datos — una sola pegada
+
+Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
+
+Incluye las seis migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `06` **en orden**:
+`05` depende de la tabla `profiles` que crea `01`.)
+
+| Migración | Qué hace |
 |---|---|
-| `migrations/01_schema.sql` | Perfiles, progreso IELTS, entregas, feedback y tareas, con RLS y trigger de alta. *(del IELTS Simulator)* |
-| `migrations/02_roles_and_tasks.sql` | Límites de escritura entre estudiante y docente; `join_class`, `leave_class`, etc. *(IELTS)* |
-| `migrations/03_history_visibility.sql` | Quién puede leer su propio historial. *(IELTS)* |
-| `migrations/04_audio_library.sql` | Bucket privado de audios de Listening por clase. *(IELTS)* |
-| `migrations/05_ecyr_platform.sql` | **Nuevo:** `learner_state` (progreso de la plataforma, sincronizado) y `ai_usage` + `bump_ai_usage()` (límite diario del AI Coach). |
+| `01_schema.sql` | Perfiles, progreso IELTS, entregas, feedback, tareas, RLS y trigger de alta. *(IELTS)* |
+| `02_roles_and_tasks.sql` | Límites de escritura estudiante/docente; `join_class`, `leave_class`, etc. *(IELTS)* |
+| `03_history_visibility.sql` | Quién puede leer su propio historial. *(IELTS)* |
+| `04_audio_library.sql` | Bucket privado de audios de Listening por clase. *(IELTS)* |
+| `05_ecyr_platform.sql` | `learner_state` (progreso sincronizado) y `ai_usage` + `bump_ai_usage()` (límite diario del AI Coach). |
+| `06_api_grants.sql` | Permisos explícitos de la Data API (proyectos nuevos no los dan por defecto). |
 
-Todos son re-ejecutables (create-if-not-exists / drop-then-create).
+`setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 
-## Edge Functions
+### 2. Autenticación
 
-| Función | Qué hace |
-|---|---|
-| `functions/gemini` | Proxy de Gemini del IELTS Simulator (corrección, generación de exámenes, voces TTS). |
-| `functions/coach` | **Nuevo:** AI Coach de la plataforma: conversación, corrección, explicaciones y feedback de writing por nivel CEFR. |
+**Authentication → Sign In / Providers → Email** → desactiva **Confirm email**
+(el remitente por defecto solo entrega a correos del equipo y está limitado a
+2 correos/hora). Con SMTP propio puedes reactivarlo.
+
+**Authentication → URL Configuration** → *Site URL*: tu dominio de Vercel
+(p. ej. `https://ecyr-english.vercel.app`) y añádelo también en *Redirect URLs*.
+
+### 3. Conectar la app
+
+**Project Settings → API**: copia *Project URL* y la clave *publishable/anon*.
+En **Vercel → Settings → Environment Variables** (y en `.env` local):
+
+```
+VITE_SUPABASE_URL=https://<tu-ref>.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_...
+```
+
+El build escribe esos mismos valores en `apps/ielts/supabase-config.js`, así
+el simulador IELTS usa tu proyecto y comparte la sesión. Redeploy tras cambiarlas.
+Nunca uses la clave `service_role`/secret en el frontend.
+
+### 4. IA — Edge Functions
 
 ```bash
-supabase link --project-ref eecqfbxisquimaowhbmg
-supabase functions deploy gemini --no-verify-jwt
-supabase functions deploy coach  --no-verify-jwt
-supabase secrets set GEMINI_API_KEY=AIza...        # compartida por ambas
+supabase link --project-ref <tu-ref>
+supabase functions deploy gemini --no-verify-jwt   # IELTS Simulator
+supabase functions deploy coach  --no-verify-jwt   # AI Coach
+supabase secrets set GEMINI_API_KEY=AIza...         # compartida por ambas
 # opcionales
 supabase secrets set COACH_DAILY_LIMIT=40 COACH_REQUIRE_CLASS=off GEMINI_MODEL=gemini-3.5-flash-lite
 ```
 
-La clave de Gemini **nunca** llega al navegador: el frontend (estático en
-Vercel) envía la sesión del usuario y la función añade la clave del lado servidor.
+Sin CLI: **Edge Functions → Deploy a new function → Via editor**, nombre exacto
+`gemini` / `coach`, pega `functions/<nombre>/index.ts`, y desactiva **Verify JWT**
+(las funciones validan la sesión ellas mismas). Luego **Edge Functions → Secrets**
+→ `GEMINI_API_KEY`.
 
-## Recomendado para clases
+La clave de Gemini nunca llega al navegador.
 
-Authentication → Providers → Email → desactivar **Confirm email** (el remitente
-por defecto de Supabase solo entrega a correos del propio equipo). Ver el README
-del IELTS Simulator para más detalle.
+## Errores frecuentes
+
+| Error | Causa / solución |
+|---|---|
+| `relation "public.profiles" does not exist` | Se ejecutó `05` antes que `01`–`04`. Ejecuta `setup.sql` completo. |
+| `permission denied for table …` | Faltan permisos de la Data API → ejecuta `06_api_grants.sql` (incluido en `setup.sql`). |
+| El correo de confirmación no llega | Desactiva *Confirm email* (paso 2). |
+| `Invalid JWT` al usar el Coach | Desactiva *Verify JWT* en la función. |

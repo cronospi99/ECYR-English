@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "ECYR English — CEFR A1–C1 learning platform with lessons, games, IELTS simulator and AI coach.",
+  "description": "ECYR English \u2014 CEFR A1\u2013C1 learning platform with lessons, games, IELTS simulator and AI coach.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
-    "content:extract": "node scripts/extract-content.mjs"
+    "content:extract": "node scripts/extract-content.mjs",
+    "db:bundle": "node scripts/bundle-sql.mjs"
   },
   "engines": {
     "node": ">=20"

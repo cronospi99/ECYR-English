@@ -61,7 +61,7 @@ public/
   vendor/          React, Babel, three, d3, Chart.js… alojados localmente (sin CDNs)
   covers/          portadas de los juegos
 scripts/extract-content.mjs   extrae el contenido de los módulos a JSON tipado
-supabase/          migrations/ (01–05) y functions/ (gemini, coach)
+supabase/          setup.sql, migrations/ (01–06) y functions/ (gemini, coach)
 ```
 
 El contenido de los libros vive dentro de los módulos originales (`public/modules`).
@@ -88,7 +88,7 @@ npm run build        # dist/
 
 ## Backend (Supabase)
 
-Ver [`supabase/README.md`](supabase/README.md): ejecutar las migraciones `01`–`05`,
+Ver [`supabase/README.md`](supabase/README.md): pegar `supabase/setup.sql` en el SQL Editor (migraciones `01`–`06`), configurar las variables `VITE_SUPABASE_*`,
 desplegar las funciones `gemini` y `coach`, y guardar `GEMINI_API_KEY` como secreto.
 
 ## Diseño
