@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
@@ -86,6 +87,8 @@ export default function ModalsPage() {
           <BonusStage />
         </div>
       )}
+
+      <VisualsFor title="Modales en imágenes" where={(p) => 'module' in p && p.module === 'modals'} />
 
       {next && (
         <div className="mt-8 flex justify-end">

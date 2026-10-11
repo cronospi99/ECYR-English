@@ -12,6 +12,7 @@ import {
   FolderOpen,
   Gamepad2,
   GraduationCap,
+  ImageIcon,
   Headphones,
   Mic,
   PenLine,
@@ -294,6 +295,7 @@ function MaterialTab() {
         { to: '/learn/grammar/time-family', title: 'Time & Family', sub: 'La hora y el genitivo', icon: Sigma, color: 'var(--mint)' },
         { to: '/learn/grammar/modals', title: 'Modal Verbs', sub: 'Modales y semi-modales', icon: Sigma, color: 'var(--yellow)' },
         { to: '/practice/verbs', title: 'Verb Lab', sub: '750 verbos, -ed, patrones', icon: Wrench, color: 'var(--orange)' },
+        { to: '/learn/visuals', title: 'Biblioteca visual', sub: 'Infografías para proyectar', icon: ImageIcon, color: 'var(--pink)' },
       ],
     },
     {

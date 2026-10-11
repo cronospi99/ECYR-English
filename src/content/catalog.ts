@@ -160,11 +160,11 @@ export const MODULES: ModuleEntry[] = [
   },
   ...(
     [
-      ['interchange-a1', 'Grammar Islands', 'Interchange Intro · A1', 'A1', 'var(--green)', '🏝️'],
-      ['interchange-a2', 'Grammar Network', 'Interchange 1 · A2', 'A2', 'var(--teal)', '🛰️'],
-      ['interchange-b1', 'Grammar Starmap', 'Interchange 2 · B1', 'B1', 'var(--blue)', '🌌'],
-      ['passages-1-b2', 'Grammar Craft', 'Passages 1 · B2', 'B2', 'var(--indigo)', '🛠️'],
-      ['passages-2-c1', 'Grammar Adventure', 'Passages 2 · C1', 'C1', 'var(--purple)', '🧭'],
+      ['interchange-a1', 'Grammar Islands', 'Libro interactivo · A1', 'A1', 'var(--green)', '🏝️'],
+      ['interchange-a2', 'Grammar Network', 'Libro interactivo · A2', 'A2', 'var(--teal)', '🛰️'],
+      ['interchange-b1', 'Grammar Starmap', 'Libro interactivo · B1', 'B1', 'var(--blue)', '🌌'],
+      ['passages-1-b2', 'Grammar Craft', 'Libro interactivo · B2', 'B2', 'var(--indigo)', '🛠️'],
+      ['passages-2-c1', 'Grammar Adventure', 'Libro interactivo · C1', 'C1', 'var(--purple)', '🧭'],
     ] as const
   ).map(
     ([slug, title, subtitle, level, accent, emoji]): ModuleEntry => ({

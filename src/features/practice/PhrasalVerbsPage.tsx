@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Chip, PageLoader, LevelChip } from '@/components/ui/Misc';
@@ -117,6 +118,7 @@ export default function PhrasalVerbsPage() {
           )}
         </>
       )}
+      <VisualsFor where={(p) => 'practice' in p && p.practice === 'phrasal-verbs'} />
     </Page>
   );
 }

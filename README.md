@@ -29,8 +29,8 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   speaking, writing, Verb Lab, IELTS, juegos), las marca solas a partir del registro de actividad
   (cada `award()` lleva un `ref`), mide avance por día y destreza, calcula tu perfil de fortalezas
   (acierto + práctica de 30 días), da recomendaciones y adapta la semana siguiente a tus resultados.
-- **Aprender** — 5 niveles (A1 Interchange Intro · A2 Interchange 1 · B1 Interchange 2 ·
-  B2 Passages 1 · C1 Passages 2) con **72 unidades nativas**: resumen y objetivos,
+- **Aprender** — 5 niveles (A1 Grammar Islands · A2 Grammar Network · B1 Grammar Starmap ·
+  B2 Grammar Craft · C1 Grammar Adventure) con **72 unidades nativas**: resumen y objetivos,
   vocabulario (lista y flashcards con audio), gramática (tablas, errores comunes, diálogos
   narrados, pronunciación, explicación profunda), práctica con corrección inmediata y
   producción (speaking, writing con feedback de IA, dinámicas de clase y tarea).
@@ -45,6 +45,10 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   pasado simple), Time & Family (la hora con reloj interactivo, familia y genitivo ’s) y Modal Verbs
   (modales core, marginales y semi-modales, reglas, trampas y fase bonus), reconstruidos en React
   a partir de los módulos originales con sus mecánicas y con los errores corregidos, más Verb Lab.
+- **Biblioteca visual** (`/learn/visuals`) — infografías de tiempos verbales, condicionales, modales,
+  *get* y vocabulario (apariencia física, la casa). Cada una aparece además donde se enseña su tema:
+  en la pestaña de gramática o vocabulario de la unidad, en los módulos de gramática, en Verb Lab,
+  Phrasal Verbs y en las guías de viaje de Reading. Visor a pantalla completa con zoom para proyectar.
 - **Juegos** — **English Defenders** (tower defense 3D con 149 temas y +1.850 preguntas A1–C1,
   importado de [su repositorio](https://github.com/cronospi99/EnglishDefenders)), Star Medic Jeopardy,
   Phrasal Verb Roulette, Two Truths & a Lie (Colombia), Too Good To Be True, Would You Rather Arena y
@@ -120,6 +124,14 @@ está en `styles/ielts-skin.css`. Para traer mejoras del original:
 git clone https://github.com/cronospi99/IELTS-Simulator-app /tmp/ielts
 node scripts/import-ielts.mjs /tmp/ielts/index.html
 ```
+
+## Infografías: cómo agregar más
+
+1. `node scripts/add-visual.mjs ruta/a/imagen.png id-en-kebab` → crea `public/visuals/<id>.webp` y su miniatura.
+2. Pega la entrada que imprime en `src/content/visuals.ts` y declara sus `places`: unidades y pestaña
+   (`{ unit: 'A2-15', section: 'grammar', focus: 'second conditional' }`), módulos de gramática
+   (`{ module: 'modals' }`), guías de viaje (`{ guide: 'Japan' }`) o páginas de práctica.
+3. Listo: aparece en esos lugares y en la Biblioteca visual.
 
 ## English Defenders: cómo se integra
 

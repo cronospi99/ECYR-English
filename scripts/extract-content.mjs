@@ -44,11 +44,11 @@ const write = (name, data) => {
 // ---------------------------------------------------------------- books ----
 const books = path.join(modules, 'books');
 const LEVELS = [
-  { id: 'a1', key: 'A1_UNITS', book: 'Interchange Intro', module: 'interchange-a1', files: ['a1-units.js', 'a1-enrich-a.js', 'a1-enrich-b.js', 'plus-a1.js'] },
-  { id: 'a2', key: 'A2_UNITS', book: 'Interchange 1', module: 'interchange-a2', files: ['a2-units.js', 'a2-units-b.js', 'plus-a2.js'] },
-  { id: 'b1', key: 'B1_UNITS', book: 'Interchange 2', module: 'interchange-b1', files: ['b1-units.js', 'b1-units-b.js', 'plus-b1.js'] },
-  { id: 'b2', key: 'P1_UNITS', book: 'Passages 1', module: 'passages-1-b2', files: ['passages1-units.js', 'p1-enrich.js', 'plus-b2.js', 'plus-b2-b.js', 'plus-b2-c.js'] },
-  { id: 'c1', key: 'P2_UNITS', book: 'Passages 2', module: 'passages-2-c1', files: ['passages2-units.js', 'p2-enrich.js'] },
+  { id: 'a1', key: 'A1_UNITS', book: 'Grammar Islands', module: 'interchange-a1', files: ['a1-units.js', 'a1-enrich-a.js', 'a1-enrich-b.js', 'plus-a1.js'] },
+  { id: 'a2', key: 'A2_UNITS', book: 'Grammar Network', module: 'interchange-a2', files: ['a2-units.js', 'a2-units-b.js', 'plus-a2.js'] },
+  { id: 'b1', key: 'B1_UNITS', book: 'Grammar Starmap', module: 'interchange-b1', files: ['b1-units.js', 'b1-units-b.js', 'plus-b1.js'] },
+  { id: 'b2', key: 'P1_UNITS', book: 'Grammar Craft', module: 'passages-1-b2', files: ['passages1-units.js', 'p1-enrich.js', 'plus-b2.js', 'plus-b2-b.js', 'plus-b2-c.js'] },
+  { id: 'c1', key: 'P2_UNITS', book: 'Grammar Adventure', module: 'passages-2-c1', files: ['passages2-units.js', 'p2-enrich.js'] },
 ];
 
 const stripPrivate = (o) =>

@@ -63,6 +63,25 @@ export default function LearnPage() {
         </Card>
       </Link>
 
+      {/* Visual library */}
+      <Link to="/learn/visuals" className="mb-6 block">
+        <Card className="flex items-center gap-4 p-5 transition-transform active:scale-[0.99]">
+          <div className="grid h-20 w-28 shrink-0 grid-cols-2 gap-1 overflow-hidden rounded-[14px]" aria-hidden>
+            {['english-tenses', 'all-conditionals', 'physical-appearance', 'modals-kyoto'].map((id) => (
+              <div key={id} className="bg-cover bg-top" style={{ backgroundImage: `url(/visuals/${id}-thumb.webp)` }} />
+            ))}
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="text-ios-pink text-[12px] font-bold tracking-wide uppercase">Infografías</div>
+            <div className="text-title-3">Biblioteca visual</div>
+            <p className="text-label-2 text-subhead line-clamp-2">
+              Tiempos verbales, condicionales, modales y vocabulario en imágenes, listos para proyectar en clase.
+            </p>
+          </div>
+          <ChevronRight className="text-label-3 shrink-0" />
+        </Card>
+      </Link>
+
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {LEVELS.map((l) => {
           const c = levelCompletion(units, l.id);

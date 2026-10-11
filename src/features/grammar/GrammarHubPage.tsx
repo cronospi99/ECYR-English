@@ -100,6 +100,9 @@ export default function GrammarHubPage() {
           );
         })}
       </div>
+      <Link to="/learn/visuals" className="text-ios-blue mt-6 inline-flex items-center gap-1 px-1 text-[15px] font-semibold">
+        Ver la biblioteca visual de infografías <ChevronRight size={16} />
+      </Link>
     </Page>
   );
 }
