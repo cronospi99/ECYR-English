@@ -41,14 +41,15 @@ import { relativeTime } from '@/lib/date';
 import type { StudentData } from '@/lib/teacher';
 import { cn } from '@/lib/cn';
 import { useClass } from './useClass';
+import { AssignmentsManager } from '@/features/tasks/teacher';
 
-type Tab = 'class' | 'material' | 'practice';
+type Tab = 'class' | 'tasks' | 'material' | 'practice';
 type Sort = 'name' | 'recent' | 'xp' | 'level';
 
 export default function TeacherPage() {
   const { isTeacher, classCode, students, error, loading, reload } = useClass();
   const [params, setParams] = useSearchParams();
-  const tab: Tab = (['material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
+  const tab: Tab = (['tasks', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
 
   if (!isTeacher)
     return (
@@ -83,12 +84,14 @@ export default function TeacherPage() {
           onChange={(t) => setParams(t === 'class' ? {} : { tab: t })}
           options={[
             { value: 'class', label: 'Mi clase' },
+            { value: 'tasks', label: 'Tareas' },
             { value: 'material', label: 'Material' },
             { value: 'practice', label: 'Práctica libre' },
           ]}
         />
       </div>
       {tab === 'class' && <ClassTab classCode={classCode} students={students} error={error} loading={loading} reload={reload} />}
+      {tab === 'tasks' && <AssignmentsManager />}
       {tab === 'material' && <MaterialTab />}
       {tab === 'practice' && <PracticeTab />}
     </Page>

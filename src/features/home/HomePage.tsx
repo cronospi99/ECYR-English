@@ -16,6 +16,7 @@ import { CEFR_LEVELS } from '@/content/types';
 import { dayKey, greeting } from '@/lib/date';
 import { readIelts } from '@/lib/ielts';
 import { WeekPlanCard } from '@/features/plan/WeekPlanCard';
+import { TasksWidget } from '@/features/tasks/TasksWidget';
 
 export default function HomePage() {
   const p = useProgress();
@@ -97,6 +98,8 @@ export default function HomePage() {
             <Stat icon={Check} color="var(--green)" label="Unidades" value={`${Object.keys(p.units).length}`} sub="completadas" />
           </dl>
         </Card>
+
+        <TasksWidget />
 
         <div className="grid gap-5 lg:grid-cols-2">
           <WeekPlanCard />

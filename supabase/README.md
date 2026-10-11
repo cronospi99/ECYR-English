@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las ocho migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `08` **en orden**:
-`05`, `07` y `08` dependen de la tabla `profiles` que crea `01`.)
+Incluye las nueve migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `09` **en orden**:
+`05`, `07`, `08` y `09` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Basta con ejecutar `07_portfolio.sql` y `08_migrations_log.sql`
+> **¿Ya tenías la base creada?** Basta con ejecutar `07_portfolio.sql`, `08_migrations_log.sql` y `09_assignments.sql`
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -26,6 +26,7 @@ Incluye las ocho migraciones en orden y se puede re-ejecutar sin perder datos.
 | `05_ecyr_platform.sql` | `learner_state` (progreso sincronizado) y `ai_usage` + `bump_ai_usage()` (límite diario del AI Coach). |
 | `06_api_grants.sql` | Permisos explícitos de la Data API (proyectos nuevos no los dan por defecto). |
 | `07_portfolio.sql` | **Mis trabajos**: tabla `portfolio_items`, bucket privado `portfolio` (20 MB/archivo) y `review_portfolio_item()` para que el docente comente y califique. |
+| `09_assignments.sql` | **Tareas**: `assignments`, destinatarios y estado por estudiante (entregas con archivo, detección automática, retroalimentación con `review_assignment()`). |
 | `08_migrations_log.sql` | Registro de importaciones y migraciones (desde el IELTS Simulator original o archivos), visible para el docente. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.

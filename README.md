@@ -76,6 +76,10 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   partidas y alertas de resultados no válidos; ficha de cada estudiante (progreso, plan, juegos,
   IELTS con writings/speakings, trabajos subidos con revisión y nota, migraciones); todo el material
   sin restricciones y **modo práctica libre** (prueba cualquier cosa sin que se registre nada).
+- **Tareas** (`/tasks`) — el docente asigna tareas a la clase o a estudiantes concretos (una unidad,
+  un módulo de gramática, una práctica, un juego, un módulo IELTS o un enlace), con fecha límite y
+  entrega opcional de archivo o texto. Se marcan solas cuando el estudiante hace la actividad; el
+  docente ve el estado de cada uno y da retroalimentación y nota.
 - **Mis trabajos** (`/portfolio`) — sube escritos, tareas, exámenes, proyectos, certificados, audios
   o fotos ya realizados (Supabase Storage privado); el docente los ve, comenta y califica.
 - **Importar y migrar** (`/import`) — migración completa desde una cuenta del IELTS Simulator
