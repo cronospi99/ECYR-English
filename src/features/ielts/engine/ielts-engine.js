@@ -14524,6 +14524,7 @@ window.__ielts = {
   openSessionPanel: () => openSessionPanel(),
   toggleNotifications: () => toggleNotifications(),
   notificationCount: () => (typeof notificationCount === "function" ? notificationCount() : 0),
-  refreshGreeting: () => refreshGreeting()
+  refreshGreeting: () => refreshGreeting(),
+  importSession: (data) => applySessionData(data)
 };
 //# sourceURL=ielts-engine.js

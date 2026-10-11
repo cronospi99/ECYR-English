@@ -21,6 +21,8 @@ import { Spinner } from '@/components/ui/Misc';
 import { Button } from '@/components/ui/Button';
 import { mountIelts, parkIelts, ieltsApi, type IeltsModule } from './engine/host';
 import { readIelts } from '@/lib/ielts';
+import { applyPendingIeltsSession } from '@/lib/migrate';
+import { historyKey } from '@/features/migrate/core';
 import { useProgress } from '@/store/progress';
 import { useAuth } from '@/store/auth';
 import { cn } from '@/lib/cn';
@@ -44,16 +46,39 @@ const SECTIONS: { mod: IeltsModule; label: string; icon: LucideIcon; color: stri
 const VALID = new Set(SECTIONS.map((s) => s.mod));
 const SKILL_OF: Record<string, Skill> = { listening: 'listening', reading: 'reading', writing: 'writing', speaking: 'speaking' };
 
-/** Turns new simulator attempts into platform XP, once each. */
+/**
+ * Turns new simulator attempts into platform XP, once each. Attempts are keyed
+ * by date|module (the same key the migration uses), so a history capped at 30
+ * keeps paying for new attempts and migrated ones are never paid twice.
+ */
+const PAID_KEY = 'ecyr:ielts-paid';
+const readSet = (k: string): Set<string> => {
+  try {
+    const v = JSON.parse(localStorage.getItem(k) ?? '[]') as unknown;
+    return new Set(Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : []);
+  } catch {
+    return new Set();
+  }
+};
 function syncIeltsXp(award: ReturnType<typeof useProgress.getState>['award']) {
   const { history } = readIelts();
-  let seen = 0;
+  let firstRun = false;
   try {
-    seen = Number(localStorage.getItem('ecyr:ielts-seen') ?? '0');
+    firstRun = localStorage.getItem(PAID_KEY) === null;
   } catch {
-    /* storage unavailable */
+    return;
   }
-  history.slice(0, Math.max(0, history.length - seen)).forEach((h) =>
+  const paid = readSet(PAID_KEY);
+  for (const k of readSet('ecyr:ielts-migrated-xp')) paid.add(k);
+  if (firstRun) {
+    // Older versions counted attempts: the oldest `seen` entries were already paid.
+    const seen = Number(localStorage.getItem('ecyr:ielts-seen') ?? '0') || 0;
+    history.slice(Math.max(0, history.length - seen)).forEach((h) => paid.add(historyKey(h)));
+  }
+  for (const h of [...history].reverse()) {
+    const key = historyKey(h);
+    if (paid.has(key)) continue;
+    paid.add(key);
     award({
       kind: 'ielts',
       title: `IELTS ${h.module} · banda ${h.band}`,
@@ -61,9 +86,11 @@ function syncIeltsXp(award: ReturnType<typeof useProgress.getState>['award']) {
       xp: 30,
       score: Math.round((Number(h.band) / 9) * 100),
       ref: `ielts:${h.module}`,
-    }),
-  );
+    });
+  }
   try {
+    localStorage.setItem(PAID_KEY, JSON.stringify([...paid].slice(-600)));
+    // Kept for the migration code, which reads the old counter.
     localStorage.setItem('ecyr:ielts-seen', String(history.length));
   } catch {
     /* storage unavailable */
@@ -91,6 +118,8 @@ export default function IeltsPage() {
       .then((api) => {
         if (!alive) return;
         setReady(true);
+        // A session file imported from /import while the simulator wasn't running.
+        applyPendingIeltsSession(api);
         if (api.state.mod !== mod) api.setModule(mod);
       })
       .catch((e: Error) => alive && setError(e.message));

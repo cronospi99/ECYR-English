@@ -260,6 +260,9 @@ patch('chart point borders', 'BorderColor:"#131b2e"', 'BorderColor:__ixVar("--la
 patch('chart point fill', 'pointBackgroundColor:"#fff"', 'pointBackgroundColor:__ixVar("--ix-surface")');
 patch('chart grid', 'grid:{ color:"rgba(19,27,46,.08)" }', 'grid:{ color:__ixVar("--separator") }');
 patch('svg tick text', ' fill="#98a0b0"', ' style="fill:var(--label-2)"', { all: true });
+// 4b. The platform's migration center hands imported session files to the engine
+//    (window.__ielts.importSession below → applySessionData; see src/lib/migrate.ts).
+patch('session import hook', 'function applySessionData(data){', 'function applySessionData(data){');
 // 5. Inline style attributes in templates follow the theme.
 js = mapStyleAttrs(js);
 console.log('  ✓ inline styles re-themed');
@@ -285,7 +288,8 @@ window.__ielts = {
   openSessionPanel: () => openSessionPanel(),
   toggleNotifications: () => toggleNotifications(),
   notificationCount: () => (typeof notificationCount === "function" ? notificationCount() : 0),
-  refreshGreeting: () => refreshGreeting()
+  refreshGreeting: () => refreshGreeting(),
+  importSession: (data) => applySessionData(data)
 };
 //# sourceURL=ielts-engine.js
 `;
