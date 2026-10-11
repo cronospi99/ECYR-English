@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Cloud, CloudOff, Download, GraduationCap, LogOut, Moon, School, Upload, Volume2, Languages, RotateCcw, Pencil } from 'lucide-react';
+import { Cloud, CloudOff, Download, GraduationCap, LogOut, Moon, School, Upload, Volume2, Languages, RotateCcw, Pencil, FileUp, FolderOpen } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ListGroup, ListRow } from '@/components/ui/List';
@@ -324,6 +324,8 @@ function DataSection() {
     <ListGroup header="Datos" footer="Exporta tu progreso como copia de seguridad o para llevarlo a otro dispositivo sin cuenta.">
       <ListRow leading={<IconTile icon={Download} color="var(--blue)" />} title="Exportar progreso" onClick={exportData} />
       <ListRow leading={<IconTile icon={Upload} color="var(--green)" />} title="Importar progreso" onClick={() => file.current?.click()} />
+      <ListRow leading={<IconTile icon={FileUp} color="var(--indigo)" />} title="Importar y migrar" subtitle="Desde el IELTS Simulator original o un archivo" to="/import" chevron />
+      <ListRow leading={<IconTile icon={FolderOpen} color="var(--teal)" />} title="Mis trabajos" subtitle="Sube escritos y trabajos ya realizados" to="/portfolio" chevron />
       <ListRow
         leading={<IconTile icon={RotateCcw} color="var(--red)" />}
         title={<span className="text-ios-red">Reiniciar progreso</span>}

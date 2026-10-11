@@ -24,6 +24,23 @@ export interface ModuleEntry {
 export const MODULES: ModuleEntry[] = [
   // ------------------------------------------------------------ games ----
   {
+    slug: 'english-defenders',
+    title: 'English Defenders',
+    subtitle: 'Tower defense 3D · Learn, Defend, Win',
+    description:
+      'Defiende tu jardín de los zombies respondiendo preguntas de gramática y vocabulario de tu unidad (A1–C1). 149 temas, +1.850 preguntas con explicación en español, minijuegos, dificultades y Class Mode multijugador.',
+    kind: 'game',
+    src: '/modules/english-defenders/index.html',
+    cover: '/covers/english-defenders.webp',
+    levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
+    skills: ['grammar', 'vocabulary'],
+    topics: ['Gramática por unidad', 'Vocabulario', 'Repaso'],
+    mode: 'both',
+    minutes: 20,
+    accent: 'var(--green)',
+    emoji: '🌻',
+  },
+  {
     slug: 'jeopardy',
     title: 'Star Medic Jeopardy',
     subtitle: 'Concurso por equipos · 12 temas',

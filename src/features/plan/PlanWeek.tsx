@@ -13,7 +13,7 @@ const dateOf = (k: string) => new Date(k + 'T00:00:00');
 const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** The 7-day strip and the selected day's tasks. Read-only without `ev`. */
-export function PlanWeek({ plan, ev }: { plan: WeekPlan; ev?: PlanEvaluation }) {
+export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: PlanEvaluation; readOnly?: boolean }) {
   const today = dayKey();
   const days = Array.from({ length: 7 }, (_, i) => {
     const d = dateOf(plan.start);
@@ -74,7 +74,7 @@ export function PlanWeek({ plan, ev }: { plan: WeekPlan; ev?: PlanEvaluation }) 
           <ul className="pb-2">
             <AnimatePresence initial={false}>
               {tasks.map((t) => (
-                <TaskRow key={t.id} t={t} ev={ev} />
+                <TaskRow key={t.id} t={t} ev={ev} readOnly={readOnly} />
               ))}
             </AnimatePresence>
           </ul>
@@ -86,7 +86,7 @@ export function PlanWeek({ plan, ev }: { plan: WeekPlan; ev?: PlanEvaluation }) 
             <div className="text-ios-orange px-5 pb-1 text-[13px] font-semibold">Pendientes de días anteriores</div>
             <ul>
               {overdue.map((t) => (
-                <TaskRow key={t.id} t={t} ev={ev} showDay />
+                <TaskRow key={t.id} t={t} ev={ev} showDay readOnly={readOnly} />
               ))}
             </ul>
           </div>
@@ -96,7 +96,7 @@ export function PlanWeek({ plan, ev }: { plan: WeekPlan; ev?: PlanEvaluation }) 
   );
 }
 
-function TaskRow({ t, ev, showDay }: { t: PlanTask; ev?: PlanEvaluation; showDay?: boolean }) {
+function TaskRow({ t, ev, showDay, readOnly }: { t: PlanTask; ev?: PlanEvaluation; showDay?: boolean; readOnly?: boolean }) {
   const toggle = usePlan((s) => s.toggle);
   const remove = usePlan((s) => s.removeTask);
   const st = ev?.states[t.id];
@@ -108,7 +108,8 @@ function TaskRow({ t, ev, showDay }: { t: PlanTask; ev?: PlanEvaluation; showDay
       {ev ? (
         <button
           type="button"
-          onClick={() => !auto && toggle(t.id)}
+          onClick={() => !auto && !readOnly && toggle(t.id)}
+          disabled={readOnly}
           aria-pressed={done}
           aria-label={done ? (auto ? 'Completada automáticamente' : 'Marcar como pendiente') : 'Marcar como hecha'}
           title={auto ? 'Detectada automáticamente' : undefined}
@@ -138,7 +139,7 @@ function TaskRow({ t, ev, showDay }: { t: PlanTask; ev?: PlanEvaluation; showDay
           {t.detail && !done && <span className="hidden truncate sm:inline">{t.detail}</span>}
         </span>
       </Link>
-      {ev && !done && (
+      {ev && !done && !readOnly && (
         <button
           type="button"
           onClick={() => remove(t.id)}

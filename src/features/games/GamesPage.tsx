@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Clock, Play, Users, User } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -7,11 +7,20 @@ import { Chip, LevelChip } from '@/components/ui/Misc';
 import { GAMES, MODULES, type ModuleEntry } from '@/content/catalog';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
+import { Segmented } from '@/components/ui/Segmented';
+import { useGames, TRACKED_GAMES } from '@/store/games';
+import { GameProgressView } from './GameProgress';
 
 export default function GamesPage() {
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
   const [mode, setMode] = useState<'all' | 'solo' | 'class'>('all');
   const games = useProgress((s) => s.games);
+  const sessions = useGames((s) => s.sessions);
+  const defenders = useGames((s) => s.defenders);
+  const [params, setParams] = useSearchParams();
+  const tab = params.get('tab') === 'progress' ? 'progress' : 'games';
+  const playsOf = (slug: string) =>
+    TRACKED_GAMES[slug] ? sessions.filter((x) => x.slug === slug && x.status !== 'invalid').length : (games[slug]?.plays ?? 0);
   const list = useMemo(
     () =>
       GAMES.filter(
@@ -23,6 +32,19 @@ export default function GamesPage() {
 
   return (
     <Page title="Juegos" subtitle="Aprende jugando: concursos, ruletas, dilemas y misiones para practicar solo o en clase." wide>
+      <Segmented
+        className="mb-5"
+        value={tab}
+        onChange={(t) => setParams(t === 'games' ? {} : { tab: t })}
+        options={[
+          { value: 'games', label: 'Juegos' },
+          { value: 'progress', label: 'Mi progreso' },
+        ]}
+      />
+      {tab === 'progress' ? (
+        <GameProgressView sessions={sessions} defenders={defenders} />
+      ) : (
+      <>
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
           <Chip active={level === 'all'} onClick={() => setLevel('all')}>
@@ -50,16 +72,18 @@ export default function GamesPage() {
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {list.map((g) => (
-          <GameCard key={g.slug} g={g} plays={games[g.slug]?.plays ?? 0} />
+          <GameCard key={g.slug} g={g} plays={playsOf(g.slug)} />
         ))}
       </div>
 
       <h2 className="text-title-2 mt-10 mb-3 px-1">Libros y cursos interactivos</h2>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {books.map((g) => (
-          <GameCard key={g.slug} g={g} plays={games[g.slug]?.plays ?? 0} />
+          <GameCard key={g.slug} g={g} plays={playsOf(g.slug)} />
         ))}
       </div>
+      </>
+      )}
     </Page>
   );
 }
