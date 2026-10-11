@@ -1,4 +1,5 @@
-import { Flame, Mountain, Target, Trophy, Zap } from 'lucide-react';
+import { ArrowRight, FileUp, Flame, FolderOpen, Mountain, Target, Trophy, Zap } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Page } from '@/components/ui/Page';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { ProgressBar } from '@/components/ui/Progress';
@@ -8,21 +9,82 @@ import { LevelChip, EmptyState } from '@/components/ui/Misc';
 import { MountainClimb } from '@/components/mountain/MountainClimb';
 import { ActivityChart } from '@/components/charts/ActivityChart';
 import { SkillRings } from '@/components/charts/SkillRings';
-import { useProgress, climbProgress, levelCompletion, xpLevel, currentLevel } from '@/store/progress';
+import { useProgress, climbProgress, levelCompletion, xpLevel, currentLevel, type ProgressData } from '@/store/progress';
+import { useGames } from '@/store/games';
+import { readIelts } from '@/lib/ielts';
+import { GameProgressView } from '@/features/games/GameProgress';
+import { IeltsSummary } from './IeltsSummary';
 import { LEVELS } from '@/content/levels';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { relativeTime } from '@/lib/date';
 
+type Tab = 'general' | 'games' | 'ielts';
+
 export default function ProgressPage() {
   const p = useProgress();
-  const climb = climbProgress(p.units);
-  const rank = xpLevel(p.xp);
-  const level = currentLevel(p.units);
+  const sessions = useGames((s) => s.sessions);
+  const defenders = useGames((s) => s.defenders);
+  const [params, setParams] = useSearchParams();
+  const tab: Tab = (['games', 'ielts'] as const).find((t) => t === params.get('tab')) ?? 'general';
 
   return (
     <Page title="Progreso" subtitle="Cada unidad completada es un paso más hacia la cima." wide>
+      <div className="no-scrollbar mb-5 overflow-x-auto">
+        <Segmented<Tab>
+          value={tab}
+          onChange={(t) => setParams(t === 'general' ? {} : { tab: t })}
+          options={[
+            { value: 'general', label: 'General' },
+            { value: 'games', label: 'Juegos' },
+            { value: 'ielts', label: 'IELTS' },
+          ]}
+        />
+      </div>
+      {tab === 'general' && (
+        <>
+          <ProgressOverview p={p} editable />
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <LinkCard to="/portfolio" icon={FolderOpen} color="var(--teal)" title="Mis trabajos" text="Escritos, tareas y trabajos que ya hiciste, con la revisión de tu docente." />
+            <LinkCard to="/import" icon={FileUp} color="var(--indigo)" title="Importar y migrar" text="Trae tu progreso del IELTS Simulator original o de otro dispositivo." />
+          </div>
+        </>
+      )}
+      {tab === 'games' && <GameProgressView sessions={sessions} defenders={defenders} />}
+      {tab === 'ielts' && <IeltsSummary data={readIelts()} own />}
+    </Page>
+  );
+}
+
+function LinkCard({ to, icon, color, title, text }: { to: string; icon: typeof Zap; color: string; title: string; text: string }) {
+  return (
+    <Link to={to} className="block">
+      <Card className="flex items-center gap-4 p-4 transition-transform active:scale-[0.99]">
+        <IconTile icon={icon} color={color} size={40} />
+        <div className="min-w-0 flex-1">
+          <div className="text-[16px] font-semibold">{title}</div>
+          <p className="text-label-2 text-[13px]">{text}</p>
+        </div>
+        <ArrowRight size={18} className="text-label-3 shrink-0" />
+      </Card>
+    </Link>
+  );
+}
+
+/**
+ * The learner's overall progress. `editable` (own page) shows the goal settings;
+ * a teacher passes a student's synced record read-only.
+ */
+export function ProgressOverview({ p, editable = false }: { p: ProgressData; editable?: boolean }) {
+  const climb = climbProgress(p.units);
+  const rank = xpLevel(p.xp);
+  const level = currentLevel(p.units);
+  const setTargetLevel = useProgress((s) => s.setTargetLevel);
+  const setDailyGoal = useProgress((s) => s.setDailyGoal);
+
+  return (
+    <>
       <Card className="relative mb-5 overflow-hidden">
-        <MountainClimb progress={climb} />
+        <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 flex items-center gap-3 rounded-[16px] px-4 py-3">
           <Mountain className="text-ios-indigo" />
           <div>
@@ -88,6 +150,7 @@ export default function ProgressPage() {
           </div>
         </Card>
 
+        {editable && (
         <Card className="p-5">
           <h3 className="text-title-3 mb-1 flex items-center gap-2">
             <Target size={20} className="text-ios-blue" /> Metas
@@ -97,19 +160,20 @@ export default function ProgressPage() {
           <Segmented<CefrLevel>
             className="mt-2 w-full"
             value={p.targetLevel}
-            onChange={p.setTargetLevel}
+            onChange={setTargetLevel}
             options={CEFR_LEVELS.map((l) => ({ value: l, label: l }))}
           />
           <div className="mt-5 text-[13px] font-semibold">Meta diaria</div>
           <Segmented<string>
             className="mt-2 w-full"
             value={String(p.dailyGoal)}
-            onChange={(v) => p.setDailyGoal(Number(v))}
+            onChange={(v) => setDailyGoal(Number(v))}
             options={[20, 50, 100, 150].map((n) => ({ value: String(n), label: `${n} XP` }))}
           />
         </Card>
+        )}
 
-        <Card className="pb-2">
+        <Card className={editable ? 'pb-2' : 'pb-2 lg:col-span-2'}>
           <CardHeader title="Historial" subtitle={`${p.activity.length} actividades`} />
           {p.activity.length === 0 ? (
             <EmptyState icon={<Mountain size={44} />} title="Aún no hay actividad" body="Completa tu primera unidad para empezar a escalar." />
@@ -127,7 +191,7 @@ export default function ProgressPage() {
           )}
         </Card>
       </div>
-    </Page>
+    </>
   );
 }
 

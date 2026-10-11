@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../_bridge/ecyr-bridge.js" data-slug="too-good-to-be-true"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -199,6 +200,10 @@ const BANK = [
   { l:"C1", c:"Review", h:"\"This changed my life\" — real customer", b:"The customer exists. She was paid, and given the adjectives to use.", m:"#ad hidden in 14th hashtag", k:"Find the meaning", p:"Which verb means \"to add false details to make a story better\"?", o:[["embellish","C1"],["embezzle","C1"],["embody","C1"]], a:0, d:"To add details to a story, especially untrue ones, to make it more interesting.", e:"She did not invent the review; she was paid to embellish it." }
 ];
 
+// Platform reporting (ECYR bridge). Projector/team play is reported as a
+// class activity; ?mode=solo (one learner, no teams) is reported as solo.
+const SOLO = (function () { try { return new URLSearchParams(location.search).get("mode") === "solo"; } catch (e) { return false; } })();
+
 function shuffle(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -226,6 +231,9 @@ class Component extends DCLogic {
     const picked = {};
     LEVELS.forEach(function (l) { picked[l] = true; });
     this.setState({ picked: picked });
+    if (window.__tgPagehide) window.removeEventListener("pagehide", window.__tgPagehide);
+    window.__tgPagehide = () => { if (this.state.phase === "play") this.reportEnd(true); };
+    window.addEventListener("pagehide", window.__tgPagehide);
     this.timer = setInterval(() => {
       const s = this.state;
       const secs = this.seconds();
@@ -235,13 +243,57 @@ class Component extends DCLogic {
     }, 1000);
   }
 
-  componentWillUnmount() { clearInterval(this.timer); }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    if (window.__tgPagehide) window.removeEventListener("pagehide", window.__tgPagehide);
+    window.__tgPagehide = null;
+  }
+
+  // ---- ECYR bridge ----
+  reportStart(deck) {
+    const levels = LEVELS.filter((l) => deck.some((r) => r.l === l));
+    this._rep = { on: true, t0: Date.now(), levels: levels };
+    window.ECYRBridge && window.ECYRBridge.start({
+      level: levels[levels.length - 1], mode: this.teamMode() ? "class" : "solo",
+      meta: { levels: levels, rounds: deck.length, teamMode: this.teamMode(), timerSeconds: this.seconds() }
+    });
+  }
+  reportEnd(abandoned) {
+    const rep = this._rep;
+    if (!rep || !rep.on) return;
+    rep.on = false;
+    const s = this.state, team = this.teamMode();
+    const asked = s.met.length;
+    if (abandoned && !asked) return;
+    const correct = s.met.filter(function (m) { return m.ok; }).length;
+    const perLevel = {};
+    s.deck.slice(0, asked).forEach(function (r, k) {
+      const p = perLevel[r.l] || (perLevel[r.l] = { asked: 0, correct: 0 });
+      p.asked++; if (s.met[k] && s.met[k].ok) p.correct++;
+    });
+    const meta = {
+      points: s.scores[0] + (team ? s.scores[1] : 0),
+      rounds: s.deck.length, levels: rep.levels, perLevel: perLevel,
+      timeouts: this._timeouts || 0, timerSeconds: this.seconds(),
+      durationSec: Math.round((Date.now() - rep.t0) / 1000)
+    };
+    if (team) {
+      meta.teamScores = { A: s.scores[0], B: s.scores[1] };
+      meta.winner = s.scores[0] > s.scores[1] ? "A" : s.scores[1] > s.scores[0] ? "B" : "draw";
+    }
+    if (abandoned) meta.abandoned = true;
+    window.ECYRBridge && window.ECYRBridge.end({
+      won: !abandoned, asked: asked, correct: correct,
+      score: asked ? Math.round((correct / asked) * 100) : 0,
+      level: rep.levels[rep.levels.length - 1], mode: team ? "class" : "solo", meta: meta
+    });
+  }
 
   seconds() {
     const n = this.props.timerSeconds;
     return typeof n === "number" ? n : 25;
   }
-  teamMode() { return this.props.teamMode !== false; }
+  teamMode() { return !SOLO && this.props.teamMode !== false; }
   wanted() {
     const n = this.props.roundCount;
     return typeof n === "number" && n > 0 ? n : 15;
@@ -273,10 +325,13 @@ class Component extends DCLogic {
   }
 
   start = () => {
+    const deck = this.buildDeck();
+    this._timeouts = 0;
     this.setState({
-      phase: "play", deck: this.buildDeck(), i: 0, answered: false,
+      phase: "play", deck: deck, i: 0, answered: false,
       choice: -1, scores: [0, 0], turn: 0, timeLeft: this.seconds(), met: []
     });
+    this.reportStart(deck);
   };
 
   reveal(idx) {
@@ -291,11 +346,13 @@ class Component extends DCLogic {
       answered: true, choice: idx, scores: scores,
       met: s.met.concat([{ word: r.o[r.a][0], tag: r.o[r.a][1], ok: ok }])
     });
+    if (idx === -1) this._timeouts = (this._timeouts || 0) + 1;
+    window.ECYRBridge && window.ECYRBridge.answer(ok, { topic: r.l + " · " + r.o[r.a][0] });
   }
 
   next = () => {
     const s = this.state;
-    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); return; }
+    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); this.reportEnd(false); return; }
     this.setState({
       i: s.i + 1, answered: false, choice: -1,
       turn: s.turn === 0 ? 1 : 0, timeLeft: this.seconds()

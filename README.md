@@ -45,9 +45,16 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   pasado simple), Time & Family (la hora con reloj interactivo, familia y genitivo ’s) y Modal Verbs
   (modales core, marginales y semi-modales, reglas, trampas y fase bonus), reconstruidos en React
   a partir de los módulos originales con sus mecánicas y con los errores corregidos, más Verb Lab.
-- **Juegos** — Star Medic Jeopardy, Phrasal Verb Roulette, Two Truths & a Lie
-  (Colombia), Too Good To Be True, Would You Rather Arena y Earth Modals Explorer, más los 5 libros
-  interactivos y el curso de cómic.
+- **Juegos** — **English Defenders** (tower defense 3D con 149 temas y +1.850 preguntas A1–C1,
+  importado de [su repositorio](https://github.com/cronospi99/EnglishDefenders)), Star Medic Jeopardy,
+  Phrasal Verb Roulette, Two Truths & a Lie (Colombia), Too Good To Be True, Would You Rather Arena y
+  Earth Modals Explorer, más los 5 libros interactivos y el curso de cómic.
+  - **Progreso por juego** (Juegos → Mi progreso y Progreso → Juegos): partidas válidas, mejor
+    puntaje, media, precisión, tendencia, temas a reforzar y, en English Defenders, estrellas por
+    unidad. Los juegos informan cada partida con `public/modules/_bridge/ecyr-bridge.js`
+    (inicio → respuestas → resultado) y `src/lib/gameBridge.ts` **valida** cada resultado: debe
+    coincidir con las respuestas vistas en vivo, tener números posibles y un ritmo realista. Las
+    partidas en clase se guardan sin nota; Jeopardy y la Ruleta son grupales y no se registran.
 - **IELTS** — el [IELTS Simulator](https://github.com/cronospi99/IELTS-Simulator-app) absorbido
   dentro de la app (sin iframe): mock tests, práctica libre, modo docente, Language desk, gráficos
   3D, corrección con IA… con rutas propias (`/ielts/writing`, `/ielts/reading`…), el diseño iOS de la
@@ -61,6 +68,15 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   logotipo ECYR English y el lema “Go For It!”.
 - **AI Coach** — conversación, corrección y explicaciones adaptadas al nivel CEFR.
 - **Progreso** — montaña, XP y rangos, racha, niveles, destrezas, metas e historial.
+- **Sala del docente** (`/teacher`, solo docentes) — su clase con nivel, XP, racha, plan, IELTS,
+  partidas y alertas de resultados no válidos; ficha de cada estudiante (progreso, plan, juegos,
+  IELTS con writings/speakings, trabajos subidos con revisión y nota, migraciones); todo el material
+  sin restricciones y **modo práctica libre** (prueba cualquier cosa sin que se registre nada).
+- **Mis trabajos** (`/portfolio`) — sube escritos, tareas, exámenes, proyectos, certificados, audios
+  o fotos ya realizados (Supabase Storage privado); el docente los ve, comenta y califica.
+- **Importar y migrar** (`/import`) — migración completa desde una cuenta del IELTS Simulator
+  original (bandas, historial, writings y speakings, comentarios y tareas), archivo de sesión del
+  simulador o archivo de progreso de ECYR.
 - **Avatar** — foto de perfil con retratos ilustrados o un avatar vectorial personalizable (piel,
   peinado, color de pelo, gafas, ropa, fondo, marco…), visible en la barra lateral y el perfil.
 - **Perfil** — cuenta (estudiante/docente, código de clase), tema, pistas en español,
@@ -84,6 +100,7 @@ src/features/verblab/ Verb Lab (componentes reutilizables + mapeo a unidades)
 content-src/       fuentes que no se publican (Verb Quest original)
 scripts/extract-content.mjs   extrae el contenido de los módulos a JSON tipado
 scripts/import-ielts.mjs      importa/actualiza el simulador desde su repositorio original
+scripts/import-defenders.mjs  importa/actualiza English Defenders (puente de progreso + sprites WebP)
 supabase/          setup.sql, migrations/ (01–06) y functions/ (gemini, coach)
 ```
 
@@ -102,6 +119,17 @@ está en `styles/ielts-skin.css`. Para traer mejoras del original:
 ```bash
 git clone https://github.com/cronospi99/IELTS-Simulator-app /tmp/ielts
 node scripts/import-ielts.mjs /tmp/ielts/index.html
+```
+
+## English Defenders: cómo se integra
+
+`scripts/import-defenders.mjs` copia el juego a `public/modules/english-defenders`, le añade el puente
+de progreso con parches verificados (si el código original cambia, el script falla en vez de integrar a
+medias) y convierte los sprites a WebP (≈22 MB → ≈5 MB). El repositorio original sigue independiente:
+
+```bash
+git clone --depth 1 https://github.com/cronospi99/EnglishDefenders /tmp/ed
+node scripts/import-defenders.mjs /tmp/ed
 ```
 
 ## Desarrollo

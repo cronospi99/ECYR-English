@@ -10,6 +10,22 @@ export interface IeltsSnapshot {
   overall: number | null;
 }
 
+/** Builds a snapshot from raw scores/history (the browser copy or a synced `progress` row). */
+export function ieltsFrom(rawScores: unknown, rawHistory: unknown): IeltsSnapshot {
+  const scores: IeltsSnapshot['scores'] = { listening: null, reading: null, writing: null, speaking: null };
+  if (rawScores && typeof rawScores === 'object')
+    for (const k of Object.keys(scores) as IeltsModule[]) {
+      const v = (rawScores as Record<string, unknown>)[k];
+      scores[k] = typeof v === 'number' && v >= 0 && v <= 9 ? v : null;
+    }
+  const history = Array.isArray(rawHistory)
+    ? (rawHistory as IeltsSnapshot['history']).filter((h) => h && typeof h.date === 'string' && typeof h.module === 'string' && typeof h.band === 'number')
+    : [];
+  const vals = Object.values(scores).filter((v): v is number => typeof v === 'number');
+  const overall = vals.length ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 2) / 2 : null;
+  return { scores, history, overall };
+}
+
 export function readIelts(): IeltsSnapshot {
   const empty: IeltsSnapshot = {
     scores: { listening: null, reading: null, writing: null, speaking: null },

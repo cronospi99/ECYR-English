@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../_bridge/ecyr-bridge.js" data-slug="two-truths-colombia"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -501,6 +502,10 @@ function shuffle(arr) {
 }
 function catById(id) { return CATS.find(function (c) { return c.id === id; }); }
 
+// Platform reporting (ECYR bridge). Team / whole-class projector play is
+// reported as a class activity; ?mode=solo (one learner, no teams) as solo.
+const SOLO = (function () { try { return new URLSearchParams(location.search).get("mode") === "solo"; } catch (e) { return false; } })();
+
 const SPHERE_COLS = ["#E9A21B", null, "#C23B22", "#B42A63", null, "#137C76", "#2F7A2E", null, "#2451A6", "#6E3AA8", null];
 
 class Component extends DCLogic {
@@ -515,7 +520,56 @@ class Component extends DCLogic {
       const r = JSON.parse(localStorage.getItem(ROSTER_KEY) || "null");
       if (r && r.names) this.setState({ roster: Object.assign({}, this.state.roster, r) });
     } catch (e) {}
+    if (window.__ttlPagehide) window.removeEventListener("pagehide", window.__ttlPagehide);
+    window.__ttlPagehide = () => { if (this.state.phase === "play") this.reportEnd(true); };
+    window.addEventListener("pagehide", window.__ttlPagehide);
     this.ensureLoop();
+  }
+
+  // ---- ECYR bridge ----
+  bridgeMode() { return SOLO ? "solo" : "class"; }
+  reportStart(deck) {
+    const levels = LEVELS.filter(function (l) { return deck.some(function (r) { return r.l === l; }); });
+    this._rep = { on: true, t0: Date.now(), levels: levels, cat: this.state.cat, asked: 0, timeouts: 0, perLevel: {} };
+    window.ECYRBridge && window.ECYRBridge.start({
+      level: levels[levels.length - 1], mode: this.bridgeMode(),
+      meta: { category: this.state.cat, levels: levels, rounds: deck.length, teamMode: this.teamMode(), timerSeconds: this.seconds() }
+    });
+  }
+  reportAnswer(r, ok, timedOut) {
+    const rep = this._rep;
+    if (!rep || !rep.on) return;
+    rep.asked++;
+    if (timedOut) rep.timeouts++;
+    const p = rep.perLevel[r.l] || (rep.perLevel[r.l] = { asked: 0, correct: 0 });
+    p.asked++; if (ok) p.correct++;
+    window.ECYRBridge && window.ECYRBridge.answer(ok, { topic: r.cat });
+  }
+  reportEnd(abandoned) {
+    const rep = this._rep;
+    if (!rep || !rep.on) return;
+    rep.on = false;
+    if (abandoned && !rep.asked) return;
+    const s = this.state, team = this.teamMode();
+    const asked = rep.asked, correct = s.caught;
+    const meta = {
+      points: s.scores[0] + (team ? s.scores[1] : 0),
+      category: rep.cat, levels: rep.levels, perLevel: rep.perLevel,
+      rounds: s.deck.length, timeouts: rep.timeouts, timerSeconds: this.seconds(),
+      durationSec: Math.round((Date.now() - rep.t0) / 1000)
+    };
+    if (team) {
+      meta.teamScores = { A: s.scores[0], B: s.scores[1] };
+      meta.winner = s.scores[0] > s.scores[1] ? "A" : s.scores[1] > s.scores[0] ? "B" : "draw";
+    }
+    const rosterSize = this.players().reduce(function (n, l) { return n + l.length; }, 0);
+    if (rosterSize) meta.students = rosterSize;
+    if (abandoned) meta.abandoned = true;
+    window.ECYRBridge && window.ECYRBridge.end({
+      won: !abandoned, asked: asked, correct: correct,
+      score: asked ? Math.round((correct / asked) * 100) : 0,
+      level: rep.levels[rep.levels.length - 1], mode: this.bridgeMode(), meta: meta
+    });
   }
 
   setRoster(patch) {
@@ -576,6 +630,8 @@ class Component extends DCLogic {
     clearInterval(this.frameT);
     clearInterval(this.timer);
     clearTimeout(this.spinT);
+    if (window.__ttlPagehide) window.removeEventListener("pagehide", window.__ttlPagehide);
+    window.__ttlPagehide = null;
   }
 
   buildPoints() {
@@ -661,7 +717,7 @@ class Component extends DCLogic {
   }
 
   seconds() { const n = this.props.timerSeconds; return typeof n === "number" ? n : 45; }
-  teamMode() { return this.props.teamMode !== false; }
+  teamMode() { return !SOLO && this.props.teamMode !== false; }
   mixedCount() { const n = this.props.roundCount; return typeof n === "number" && n > 0 ? n : 20; }
   selLevels() { const p = this.state.picked; return LEVELS.filter(function (l) { return p[l]; }); }
 
@@ -705,7 +761,9 @@ class Component extends DCLogic {
   }
 
   start = () => {
-    this.setState({ phase: "play", deck: this.buildDeck(), i: 0, stage: "ready", choice: -1, scores: [0, 0], turn: 0, caught: 0, timeLeft: this.seconds(), pIdx: [0, 0], pPts: {}, showRoster: false });
+    const deck = this.buildDeck();
+    this.setState({ phase: "play", deck: deck, i: 0, stage: "ready", choice: -1, scores: [0, 0], turn: 0, caught: 0, timeLeft: this.seconds(), pIdx: [0, 0], pPts: {}, showRoster: false });
+    this.reportStart(deck);
   };
 
   spin = () => {
@@ -726,11 +784,12 @@ class Component extends DCLogic {
     if (ok) scores[g] += PTS[r.l];
     if (ok && who) { const k = g + "|" + who; pPts[k] = (pPts[k] || 0) + PTS[r.l]; }
     this.setState({ stage: "answered", choice: idx, scores: scores, pPts: pPts, caught: s.caught + (ok ? 1 : 0) });
+    this.reportAnswer(r, ok, idx < 0);
   }
 
   next = () => {
     const s = this.state;
-    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); return; }
+    if (s.i + 1 >= s.deck.length) { this.setState({ phase: "end" }); this.reportEnd(false); return; }
     const pIdx = s.pIdx.slice(); pIdx[this.teamMode() ? s.turn : 0]++;
     this.setState({ i: s.i + 1, stage: "ready", choice: -1, pIdx: pIdx, turn: s.turn === 0 ? 1 : 0 });
   };

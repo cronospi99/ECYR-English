@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom';
-import { Crown, Flame, Sparkles } from 'lucide-react';
+import { Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
 import { NAV, isActive } from './nav';
 import { Logo } from '@/components/brand/Logo';
 import { IconTile } from '@/components/ui/IconTile';
@@ -29,7 +29,7 @@ function Sidebar() {
         </Link>
       </div>
       <nav className="flex-1 space-y-0.5 overflow-y-auto px-3" aria-label="Principal">
-        {NAV.map((item) => {
+        {NAV.filter((n) => !n.teacherOnly || profile?.role === 'teacher').map((item) => {
           const active = isActive(pathname, item.to);
           return (
             <NavLink
@@ -71,6 +71,7 @@ function Sidebar() {
 
 function MobileTopBar() {
   const name = useDisplayName();
+  const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
   return (
     <div className="material pt-safe hairline-b sticky top-0 z-30 lg:hidden">
       <div className="flex h-12 items-center justify-between px-4">
@@ -78,6 +79,15 @@ function MobileTopBar() {
           <Logo compact />
         </Link>
         <div className="flex items-center gap-2">
+          {isTeacher && (
+            <Link
+              to="/teacher"
+              aria-label="Sala del docente"
+              className="text-ios-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
+            >
+              <School size={16} />
+            </Link>
+          )}
           <Link
             to="/coach"
             className="text-ios-purple bg-[color-mix(in_srgb,var(--purple)_14%,transparent)] inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold"
@@ -123,6 +133,22 @@ function TabBar() {
   );
 }
 
+/** Teacher free-practice mode: a constant reminder that nothing is being saved. */
+function SandboxBanner() {
+  const on = useSettings((s) => s.practiceSandbox);
+  const set = useSettings((s) => s.set);
+  if (!on) return null;
+  return (
+    <div role="status" className="sticky top-12 z-20 flex items-center justify-center gap-2 bg-[color-mix(in_srgb,var(--orange)_16%,var(--bg))] px-4 py-2 text-[13px] font-medium lg:top-0">
+      <FlaskConical size={15} className="text-ios-orange shrink-0" />
+      <span>Modo práctica libre: no se guarda tu progreso.</span>
+      <button type="button" className="text-ios-blue font-semibold" onClick={() => set({ practiceSandbox: false })}>
+        Desactivar
+      </button>
+    </div>
+  );
+}
+
 export function AppShell() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -137,6 +163,7 @@ export function AppShell() {
       <Sidebar />
       <div className="lg:pl-[264px]">
         <MobileTopBar />
+        <SandboxBanner />
         <Outlet />
       </div>
       <TabBar />

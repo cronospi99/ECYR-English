@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../_bridge/ecyr-bridge.js" data-slug="earth-modals"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -130,11 +131,11 @@ class Component extends DCLogic {
   get DATA() { return window.EM_COUNTRIES || []; }
 
   UI = {
-    en:{ eyebrow:"Modal Verbs · Field Guide", title:"Around the World in 15 Countries",
+    en:{ eyebrow:"Modal Verbs · Field Guide", title:"Around the World in {n} Countries",
       subtitle:"Spin the globe and tap a glowing pin. Learn what you can, should & must do in the world's most-visited places.",
       mostVisited:"Most visited", can:"Can", should:"Should", must:"Must",
       canSub:"— you're allowed to", shouldSub:"— it's wise to", mustSub:"— you're obliged to", perYear:"/ yr", capital:"Capital", photo:"photo" },
-    es:{ eyebrow:"Verbos Modales · Guía de Viaje", title:"La Vuelta al Mundo en 15 Países",
+    es:{ eyebrow:"Verbos Modales · Guía de Viaje", title:"La Vuelta al Mundo en {n} Países",
       subtitle:"Gira el globo y toca un punto brillante. Descubre lo que puedes, deberías y debes hacer en los lugares más visitados del mundo.",
       mostVisited:"Más visitados", can:"Puede", should:"Debería", must:"Debe",
       canSub:"— se te permite", shouldSub:"— es aconsejable", mustSub:"— estás obligado a", perYear:"/ año", capital:"Capital", photo:"foto" }
@@ -152,7 +153,36 @@ class Component extends DCLogic {
     );
   }
 
+  // ---- ECYR bridge ----
+  // A free exploration (no right/wrong answers): reported as a participation
+  // result, asked = correct = countries opened. The session starts with the
+  // first country opened and ends when every country has been visited, or
+  // when the page is left part-way (abandoned).
+  reportVisit(i) {
+    if (this._repDone) return;
+    if (!this._rep) {
+      this._rep = { t0: Date.now(), seen: {}, n: 0 };
+      window.ECYRBridge && window.ECYRBridge.start({ mode: "solo", meta: { kind: "participation", totalCountries: this.DATA.length } });
+    }
+    const c = this.DATA[i];
+    if (!c || this._rep.seen[c.iso]) return;
+    this._rep.seen[c.iso] = 1; this._rep.n++;
+    if (this._rep.n >= this.DATA.length) this.reportEnd(false);
+  }
+  reportEnd(abandoned) {
+    const rep = this._rep;
+    if (!rep || this._repDone) return;
+    this._repDone = true;
+    const meta = {
+      kind: "participation", countriesVisited: rep.n, totalCountries: this.DATA.length,
+      lang: this.state.lang, durationSec: Math.round((Date.now() - rep.t0) / 1000)
+    };
+    if (abandoned) meta.abandoned = true;
+    window.ECYRBridge && window.ECYRBridge.end({ won: !abandoned, asked: rep.n, correct: rep.n, mode: "solo", meta: meta });
+  }
+
   select(i) {
+    this.reportVisit(i);
     this.setState({ selectedIndex: i, open: true });
     this._interacted = true;
     if (this.pins && this.pins[i]) {
@@ -163,7 +193,8 @@ class Component extends DCLogic {
 
   renderVals() {
     const lang = this.state.lang;
-    const t = this.UI[lang];
+    const t = Object.assign({}, this.UI[lang]);
+    t.title = t.title.replace("{n}", this.DATA.length || 30);
     const i0 = this.state.selectedIndex;
     let sel = null;
     if (i0 != null) {
@@ -232,7 +263,12 @@ class Component extends DCLogic {
     return cv;
   }
 
-  componentDidMount() { this._boot(); }
+  componentDidMount() {
+    if (window.__emPagehide) window.removeEventListener("pagehide", window.__emPagehide);
+    window.__emPagehide = () => this.reportEnd(true);
+    window.addEventListener("pagehide", window.__emPagehide);
+    this._boot();
+  }
 
   _boot() {
     const ready = window.THREE && window.EM_COUNTRIES && window.EM_COUNTRIES.length && document.getElementById("em-globe");
@@ -417,6 +453,8 @@ class Component extends DCLogic {
   }
 
   componentWillUnmount() {
+    if (window.__emPagehide) window.removeEventListener("pagehide", window.__emPagehide);
+    window.__emPagehide = null;
     if (this._bootTimer) clearTimeout(this._bootTimer);
     if (this._raf) cancelAnimationFrame(this._raf);
     if (this._onResize) window.removeEventListener("resize", this._onResize);

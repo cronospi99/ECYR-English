@@ -9,6 +9,8 @@ interface SettingsState {
   accent: 'en-US' | 'en-GB';
   speechRate: number;
   name: string;
+  /** Teacher free-practice mode: nothing is recorded (XP, activity, games). */
+  practiceSandbox: boolean;
   setTheme: (t: ThemePref) => void;
   set: (p: Partial<Omit<SettingsState, 'set' | 'setTheme'>>) => void;
 }
@@ -31,6 +33,7 @@ export const useSettings = create<SettingsState>()(
       accent: 'en-US',
       speechRate: 0.95,
       name: '',
+      practiceSandbox: false,
       setTheme: (theme) => {
         applyTheme(theme);
         set({ theme });

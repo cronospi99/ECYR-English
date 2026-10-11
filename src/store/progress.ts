@@ -4,6 +4,7 @@ import type { CefrLevel, Skill } from '@/content/types';
 import { CEFR_LEVELS } from '@/content/types';
 import { LEVELS, TOTAL_UNITS } from '@/content/levels';
 import { dayKey, daysBetween } from '@/lib/date';
+import { useSettings } from '@/store/settings';
 
 export type ActivityKind = 'unit' | 'topic' | 'game' | 'reading' | 'listening' | 'speaking' | 'writing' | 'flashcards' | 'ielts' | 'coach';
 
@@ -92,6 +93,8 @@ export const useProgress = create<ProgressData & ProgressActions>()(
 
       award: (a) =>
         set((s) => {
+          // Teacher free practice: nothing is recorded.
+          if (useSettings.getState().practiceSandbox) return {};
           const today = dayKey();
           const entry: Activity = { ...a, id: uid(), at: new Date().toISOString() };
           return {
@@ -105,6 +108,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
         }),
 
       completeUnit: (level, n, score, title) => {
+        if (useSettings.getState().practiceSandbox) return;
         const key = `${level}-${n}`;
         const prev = useProgress.getState().units[key];
         // Full XP the first time, a smaller review bonus afterwards.
@@ -116,6 +120,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
       },
 
       completeTopic: (id, score, title) => {
+        if (useSettings.getState().practiceSandbox) return;
         const prev = useProgress.getState().topics[id];
         const xp = prev ? Math.round(score / 10) : 20 + Math.round(score / 5);
         set((s) => ({
@@ -125,6 +130,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
       },
 
       completeReading: (id, score, title, level) => {
+        if (useSettings.getState().practiceSandbox) return;
         const prev = useProgress.getState().readings[id];
         const xp = prev ? 5 : 15 + Math.round(score / 10);
         set((s) => ({
@@ -134,6 +140,7 @@ export const useProgress = create<ProgressData & ProgressActions>()(
       },
 
       playGame: (slug, title) => {
+        if (useSettings.getState().practiceSandbox) return;
         set((s) => ({
           games: { ...s.games, [slug]: { plays: (s.games[slug]?.plays ?? 0) + 1, lastAt: new Date().toISOString() } },
         }));

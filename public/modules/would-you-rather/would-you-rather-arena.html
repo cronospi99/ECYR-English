@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../_bridge/ecyr-bridge.js" data-slug="would-you-rather"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -800,10 +801,52 @@ class Component extends DCLogic {
     if (window.__wyrKeyHandler) window.removeEventListener("keydown", window.__wyrKeyHandler);
     window.__wyrKeyHandler = this.onKey;
     window.addEventListener("keydown", this.onKey);
+    if (window.__wyrPagehide) window.removeEventListener("pagehide", window.__wyrPagehide);
+    window.__wyrPagehide = () => this.reportEnd(true);
+    window.addEventListener("pagehide", window.__wyrPagehide);
     const saved = this.props.defaultLevel;
     if (saved && saved !== "ask" && idsFor(saved).length) { this.setState({ levels: [saved] }); setTimeout(() => this.confirmLevels(), 0); }
   }
-  componentWillUnmount() { window.removeEventListener("keydown", this.onKey); clearInterval(this.timer); clearTimeout(this._freezeT); clearInterval(this._spinTick); clearTimeout(this._spinEnd); }
+  componentWillUnmount() {
+    if (window.__wyrPagehide) window.removeEventListener("pagehide", window.__wyrPagehide);
+    window.__wyrPagehide = null;
+    window.removeEventListener("keydown", this.onKey); clearInterval(this.timer); clearTimeout(this._freezeT); clearInterval(this._spinTick); clearTimeout(this._spinEnd); }
+
+  // ---- ECYR bridge ----
+  // A speaking debate with no right answers, run by the teacher on a projector:
+  // reported as a class activity with a participation result (dilemmas discussed).
+  reportStart() {
+    const s = this.state;
+    this._rep = { on: true, t0: Date.now(), done: {}, n: 0, follow: 0, deck: s.order.length };
+    window.ECYRBridge && window.ECYRBridge.start({
+      level: s.levels[s.levels.length - 1], mode: "class",
+      meta: { kind: "participation", levels: s.levels.slice(), categories: s.cats.slice(), deckSize: s.order.length }
+    });
+  }
+  markDone() {
+    const rep = this._rep, s = this.state;
+    if (!rep || !rep.on) return;
+    const id = s.order[s.i];
+    if (id == null || rep.done[id]) return;
+    rep.done[id] = 1; rep.n++;
+  }
+  reportEnd(abandoned) {
+    const rep = this._rep, s = this.state;
+    if (!rep || !rep.on) return;
+    rep.on = false;
+    if (!rep.n) return;
+    const meta = {
+      kind: "participation", levels: s.levels.slice(), categories: s.cats.slice(),
+      deckSize: rep.deck, followUps: rep.follow, timer: s.timerOff ? 0 : this.secs(),
+      durationSec: Math.round((Date.now() - rep.t0) / 1000)
+    };
+    if (s.roster.length) meta.students = s.roster.length;
+    if (abandoned) meta.abandoned = true; else meta.deckComplete = true;
+    window.ECYRBridge && window.ECYRBridge.end({
+      won: !abandoned, asked: rep.n, correct: rep.n,
+      level: s.levels[s.levels.length - 1], mode: "class", meta: meta
+    });
+  }
 
   ac() {
     if (this.state.muted) return null;
@@ -859,11 +902,13 @@ class Component extends DCLogic {
     this.sWhoosh();
   }
   changeLevel() {
+    this.reportEnd(true);
     clearInterval(this.timer); clearTimeout(this._freezeT);
     this.setState({ level: null, pickingCats: false, phase: "idle", started: false, follow: null });
     this.sThwip();
   }
   openCats() {
+    this.reportEnd(true);
     clearInterval(this.timer); clearTimeout(this._freezeT);
     this.setState({ pickingCats: true, phase: "idle", follow: null });
     this.sThwip();
@@ -887,6 +932,7 @@ class Component extends DCLogic {
   }
 
   ask(side) {
+    if (this._rep && this._rep.on) this._rep.follow++;
     this.setState((s) => ({ follow: side, paused: s.phase === "counting" ? true : s.paused }));
     this.sPop();
   }
@@ -922,12 +968,15 @@ class Component extends DCLogic {
     this._lastMain = now;
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
     if (this.state.follow) { this.closeFollow(); return; }
+    if (!this._rep || !this._rep.on) this.reportStart();
     if (!this.state.started) {
       this.setState({ started: true });
       this.sWhoosh();
       if (this.state.timerOff) this.setState({ phase: "idle" }); else this.runCount();
       return;
     }
+    this.markDone();
+    if (this._rep && this._rep.on && this._rep.n >= this._rep.deck) { this.reportEnd(false); this.reportStart(); }
     this.setState((s) => {
       const total = s.order.length || 1;
       const next = s.i + 1;
@@ -938,7 +987,7 @@ class Component extends DCLogic {
       return { i: next, pairAt: (s.pairAt + 1) % PAIRS.length, phase: "idle", follow: null };
     });
     this.sWhoosh();
-    if (!this.state.timerOff) setTimeout(() => this.runCount(), 120);
+    if (!this.state.timerOff) setTimeout(() => { if (this.state.level && !this.state.pickingCats && !this.state.timerOff) this.runCount(); }, 120);
   }
   back() {
     if (!this.state.level || this.state.pickingCats) return;
