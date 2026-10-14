@@ -50,7 +50,9 @@ modo claro/oscuro) y una montaña con un escalador que sube según tu progreso.
   en la pestaña de gramática o vocabulario de la unidad, en los módulos de gramática, en Verb Lab,
   Phrasal Verbs y en las guías de viaje de Reading. Visor a pantalla completa con zoom para proyectar.
 - **Juegos** — **English Defenders** (tower defense 3D con 149 temas y +1.850 preguntas A1–C1,
-  importado de [su repositorio](https://github.com/cronospi99/EnglishDefenders)), Star Medic Jeopardy,
+  importado de [su repositorio](https://github.com/cronospi99/EnglishDefenders)), **Da World** (ciudad 3D:
+  eliges un modo —vocabulario y lugares, indicaciones o detective de la familia— y la ciudad solo trae
+  esas misiones; modo Clase por QR; importado con `scripts/import-da-world.mjs`), Star Medic Jeopardy,
   Phrasal Verb Roulette, Two Truths & a Lie (Colombia), Too Good To Be True, Would You Rather Arena y
   Earth Modals Explorer, más los 5 libros interactivos y el curso de cómic.
   - **Progreso por juego** (Juegos → Mi progreso y Progreso → Juegos): partidas válidas, mejor

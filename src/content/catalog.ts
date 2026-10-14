@@ -24,6 +24,23 @@ export interface ModuleEntry {
 export const MODULES: ModuleEntry[] = [
   // ------------------------------------------------------------ games ----
   {
+    slug: 'da-world',
+    title: 'Da World',
+    subtitle: 'Ciudad 3D · Explora, ayuda, aprende',
+    description:
+      'Recorre a pie una ciudad 3D y ayuda a sus 32 ciudadanos respondiendo en inglés. Eliges un modo y la ciudad solo te pide ese tipo de misión: vocabulario de la ciudad y preposiciones de lugar, indicaciones (go straight on, turn left…) o el detective de la familia con adverbios de frecuencia. Incluye modo Clase multijugador por código QR.',
+    kind: 'game',
+    src: '/modules/da-world/index.html',
+    cover: '/covers/da-world.webp',
+    levels: ['A1', 'A2'],
+    skills: ['vocabulary', 'grammar'],
+    topics: ['Lugares de la ciudad', 'Preposiciones de lugar', 'Indicaciones', 'Adverbios de frecuencia', 'La familia'],
+    mode: 'both',
+    minutes: 25,
+    accent: 'var(--teal)',
+    emoji: '🏙️',
+  },
+  {
     slug: 'english-defenders',
     title: 'English Defenders',
     subtitle: 'Tower defense 3D · Learn, Defend, Win',
