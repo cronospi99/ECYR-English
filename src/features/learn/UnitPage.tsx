@@ -2,41 +2,39 @@ import { useMemo, useState } from 'react';
 import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
-  AlertTriangle,
   BookOpen,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Lightbulb,
+  ClipboardList,
   Mic,
   PenLine,
   Repeat,
-  Sparkles,
-  Target,
+  Trophy,
   Users,
-  Volume2,
-  Wand2,
 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
+import { IconTile } from '@/components/ui/IconTile';
 import { Button, ButtonLink } from '@/components/ui/Button';
 import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
-import { Callout, DataTable } from '@/components/learning/Callout';
 import { WritingPad } from '@/components/learning/WritingPad';
+import { UnitVisuals } from '@/components/visuals/UnitVisuals';
 import { useAsync } from '@/hooks/useAsync';
 import { loadLevel, levelMeta } from '@/content/levels';
-import type { GrammarPoint, Unit, VocabItem } from '@/content/types';
+import type { Unit, VocabItem } from '@/content/types';
 import { useProgress } from '@/store/progress';
-import { speak } from '@/lib/speech';
-import { useSettings } from '@/store/settings';
-import { cn } from '@/lib/cn';
 import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
 import { UnitVerbTools } from '../verblab/unitTools';
 import { UnitGrammarTools } from '../grammar/unitTools';
+import { UnitOverview } from './unit/UnitOverview';
+import { VocabGrid } from './unit/VocabGrid';
+import { GrammarLessons } from './unit/GrammarLesson';
+import { tint, ink } from './unit/ui';
 
 type Tab = 'overview' | 'vocab' | 'grammar' | 'practice' | 'produce';
 const TAB_IDS: Tab[] = ['overview', 'vocab', 'grammar', 'practice', 'produce'];
@@ -70,7 +68,7 @@ export default function UnitPage() {
         </span>
       }
       title={unitTitle(u.title)}
-      subtitle={u.theme}
+      subtitle={tab === 'overview' ? undefined : u.theme}
       actions={
         done && (
           <span className="text-ios-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
@@ -97,13 +95,24 @@ export default function UnitPage() {
       </div>
 
       <motion.div key={tab} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
-        {tab === 'overview' && <Overview u={u} onStart={() => setTab('vocab')} />}
-        {tab === 'vocab' && <Vocabulary items={u.vocab} />}
+        {tab === 'overview' && (
+          <UnitOverview
+            u={u}
+            practiceCount={practiceItems(u).length + vocabItems(u).length}
+            onGo={setTab}
+            extra={<UnitVisuals unit={u} level={meta.id} section="overview" />}
+          />
+        )}
+        {tab === 'vocab' && (
+          <div className="space-y-6">
+            <Vocabulary items={u.vocab} />
+            <UnitVisuals unit={u} level={meta.id} section="vocab" />
+          </div>
+        )}
         {tab === 'grammar' && (
           <div className="space-y-5">
-            {u.grammar.map((g) => (
-              <GrammarCard key={g.name} g={g} />
-            ))}
+            <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} />
+            <UnitVisuals unit={u} level={meta.id} section="grammar" />
             <UnitVerbTools unit={u} />
             <UnitGrammarTools unit={u} level={meta.id} />
           </div>
@@ -139,119 +148,27 @@ export default function UnitPage() {
   );
 }
 
-// ------------------------------------------------------------------ overview --
-
-function Overview({ u, onStart }: { u: Unit; onStart: () => void }) {
-  return (
-    <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
-      <div className="space-y-5">
-        <Card className="p-6">
-          <p className="text-body text-pretty">{u.overview.intro}</p>
-          <h3 className="text-headline mt-6 mb-3 flex items-center gap-2">
-            <Target size={18} className="text-ios-blue" /> Objetivos
-          </h3>
-          <ul className="space-y-2.5">
-            {u.overview.goals.map((g) => (
-              <li key={g} className="flex gap-3 text-[16px]">
-                <CheckCircle2 size={20} className="text-ios-green mt-0.5 shrink-0" />
-                {g}
-              </li>
-            ))}
-          </ul>
-          <Callout tone="purple" icon={<Sparkles size={16} />} title="Al terminar" className="mt-6">
-            {u.overview.outcome}
-          </Callout>
-          <Button variant="brand" size="lg" className="mt-6 w-full sm:w-auto" onClick={onStart}>
-            Empezar la lección <ChevronRight size={18} />
-          </Button>
-        </Card>
-      </div>
-      <div className="space-y-5">
-        <Card className="p-5">
-          <h3 className="text-headline mb-3">En esta unidad</h3>
-          <ul className="text-[15px]">
-            <SummaryRow icon={BookOpen} color="var(--blue)" label="Palabras y expresiones" value={u.vocab.length} />
-            <SummaryRow icon={Wand2} color="var(--purple)" label="Puntos de gramática" value={u.grammar.length} />
-            <SummaryRow icon={Repeat} color="var(--green)" label="Preguntas de práctica" value={practiceItems(u).length} />
-            <SummaryRow icon={Mic} color="var(--orange)" label="Tareas de speaking" value={u.speaking?.length ?? 0} />
-          </ul>
-        </Card>
-        {u.tips && u.tips.length > 0 && (
-          <Card className="p-5">
-            <h3 className="text-headline mb-3 flex items-center gap-2">
-              <Lightbulb size={18} className="text-ios-yellow" /> Tips
-            </h3>
-            <ul className="space-y-3 text-[15px]">
-              {u.tips.map((t) => (
-                <li key={t} className="text-label-2 text-pretty">
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </Card>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function SummaryRow({ icon: Icon, color, label, value }: { icon: typeof BookOpen; color: string; label: string; value: number }) {
-  return (
-    <li className="flex items-center gap-3 py-2 [&:not(:last-child)]:shadow-[inset_0_-0.5px_0_var(--separator)]">
-      <Icon size={18} style={{ color }} />
-      <span className="flex-1">{label}</span>
-      <span className="font-semibold tabular-nums">{value}</span>
-    </li>
-  );
-}
-
 // ---------------------------------------------------------------- vocabulary --
 
 function Vocabulary({ items }: { items: VocabItem[] }) {
   const [mode, setMode] = useState<'list' | 'cards'>('list');
   return (
     <div>
-      <div className="mb-4 flex justify-end">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-title-3 flex items-center gap-2">
+          <IconTile icon={BookOpen} color="var(--blue)" size={28} /> {items.length} palabras y expresiones
+        </h2>
         <Segmented
           size="sm"
           value={mode}
           onChange={setMode}
           options={[
-            { value: 'list', label: 'Lista' },
+            { value: 'list', label: 'Tarjetas' },
             { value: 'cards', label: 'Flashcards' },
           ]}
         />
       </div>
-      {mode === 'list' ? (
-        <div className="grid gap-4 md:grid-cols-2">
-          {items.map((v) => (
-            <Card key={v.term} className="p-5">
-              <div className="flex items-start justify-between gap-2">
-                <div>
-                  <div className="text-title-3">{v.term}</div>
-                  {v.pos && <div className="text-ios-blue text-[13px] font-medium italic">{v.pos}</div>}
-                </div>
-                <SpeakButton text={v.term} />
-              </div>
-              <p className="mt-2 text-[15px]">{v.def}</p>
-              {v.use && <p className="text-label-2 mt-2 text-[14px] text-pretty">{v.use}</p>}
-              {v.examples && (
-                <ul className="mt-3 space-y-1.5">
-                  {v.examples.map((e) => (
-                    <li key={e} className="bg-fill-2 flex items-center gap-2 rounded-[10px] py-1.5 pr-1 pl-3 text-[14px]">
-                      <span className="flex-1 italic">{e}</span>
-                      <SpeakButton text={e} size={16} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {v.colloc && <p className="text-label-2 mt-3 text-[13px]">🔗 {v.colloc}</p>}
-            </Card>
-          ))}
-        </div>
-      ) : (
-        <Flashcards items={items} />
-      )}
+      {mode === 'list' ? <VocabGrid items={items} /> : <Flashcards items={items} />}
     </div>
   );
 }
@@ -311,151 +228,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
 
 // ------------------------------------------------------------------- grammar --
 
-function GrammarCard({ g }: { g: GrammarPoint }) {
-  const [deep, setDeep] = useState(false);
-  return (
-    <Card className="p-6">
-      <h3 className="text-title-2">{g.name}</h3>
-      {g.short && <p className="text-ios-blue mt-1 text-[16px] font-medium">{g.short}</p>}
-      {g.rule && <p className="text-body mt-4 text-pretty">{g.rule}</p>}
-
-      {g.form && (
-        <div className="bg-fill-2 mt-5 rounded-[14px] p-4">
-          <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">Forma</div>
-          <ul className="space-y-1.5 font-mono text-[14px]">
-            {g.form.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {g.chart && (
-        <div className="mt-5">
-          <DataTable title={g.chart.title} cols={g.chart.cols} rows={g.chart.rows} />
-        </div>
-      )}
-
-      {g.examples && (
-        <div className="mt-5">
-          <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">Ejemplos</div>
-          <ul className="space-y-2">
-            {[...new Set([...g.examples, ...(g.more ?? [])])].map((e) => (
-              <li key={e} className="flex items-center gap-2 text-[16px]">
-                <SpeakButton text={e} size={16} />
-                <span className="italic">{e}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {g.notes && (
-        <ul className="mt-5 space-y-2">
-          {g.notes.map((n) => (
-            <li key={n} className="flex gap-2.5 text-[15px]">
-              <span className="bg-ios-blue mt-2 h-1.5 w-1.5 shrink-0 rounded-full" />
-              <span className="text-pretty">{n}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {g.watch && (
-        <Callout tone="orange" icon={<AlertTriangle size={16} />} title="Cuidado" className="mt-5">
-          {g.watch}
-        </Callout>
-      )}
-
-      {g.fix && g.fix.length > 0 && (
-        <div className="mt-5 space-y-2.5">
-          <div className="text-label-2 text-[12px] font-semibold tracking-wide uppercase">Errores comunes</div>
-          {g.fix.map((f) => (
-            <div key={f.wrong} className="bg-fill-2 rounded-[14px] p-4 text-[15px]">
-              <div className="text-ios-red line-through decoration-2">{f.wrong}</div>
-              <div className="text-ios-green mt-1 font-semibold">{f.right}</div>
-              <div className="text-label-2 mt-1 text-[14px]">{f.why}</div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {g.contrast && (
-        <div className="mt-5">
-          <DataTable title={g.contrast.title} cols={g.contrast.cols} rows={g.contrast.rows} />
-        </div>
-      )}
-
-      {g.dialogue && g.dialogue.length > 0 && <Dialogue lines={g.dialogue} />}
-
-      {g.sound && (
-        <Callout tone="purple" icon={<Volume2 size={16} />} title="Pronunciación" className="mt-5">
-          {g.sound}
-        </Callout>
-      )}
-
-      {g.drill?.items && (
-        <div className="mt-5">
-          <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">
-            Drill{g.drill.name ? ` · ${g.drill.name}` : ''}
-          </div>
-          {g.drill.prompt && <p className="mb-2 text-[15px]">{g.drill.prompt}</p>}
-          <ol className="list-decimal space-y-1 pl-5 text-[15px]">
-            {g.drill.items.map((d) => (
-              <li key={d}>{d}</li>
-            ))}
-          </ol>
-        </div>
-      )}
-
-      {g.deep && (
-        <div className="mt-5">
-          <button type="button" onClick={() => setDeep((d) => !d)} className="text-ios-blue text-[15px] font-semibold">
-            {deep ? 'Ocultar explicación profunda' : 'Profundizar ›'}
-          </button>
-          {deep && <p className="text-label-2 mt-3 text-[15px] leading-relaxed text-pretty">{g.deep}</p>}
-        </div>
-      )}
-    </Card>
-  );
-}
-
-export function Dialogue({ lines }: { lines: { sp: string; line: string }[] }) {
-  const { speechRate } = useSettings();
-  const [playing, setPlaying] = useState<number | null>(null);
-  const playAll = (k = 0) => {
-    if (k >= lines.length) return setPlaying(null);
-    setPlaying(k);
-    // alternate accents so the two speakers sound different
-    speak(lines[k]!.line, { accent: k % 2 ? 'en-GB' : 'en-US', rate: speechRate, onEnd: () => playAll(k + 1) });
-  };
-  return (
-    <div className="mt-5">
-      <div className="mb-2 flex items-center justify-between">
-        <div className="text-label-2 text-[12px] font-semibold tracking-wide uppercase">Diálogo</div>
-        <Button size="sm" variant="tinted" onClick={() => playAll()}>
-          <Volume2 size={14} /> Escuchar
-        </Button>
-      </div>
-      <div className="space-y-2">
-        {lines.map((l, k) => (
-          <div key={k} className={cn('flex', k % 2 ? 'justify-end' : 'justify-start')}>
-            <div
-              className={cn(
-                'max-w-[80%] rounded-[18px] px-4 py-2.5 text-[15px] transition-shadow',
-                k % 2 ? 'bg-ios-blue rounded-br-[6px] text-white' : 'bg-fill rounded-bl-[6px]',
-                playing === k && 'ring-ios-orange ring-2',
-              )}
-            >
-              <div className={cn('mb-0.5 text-[11px] font-semibold', k % 2 ? 'text-white/70' : 'text-label-2')}>{l.sp}</div>
-              {l.line}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+export { Dialogue } from './unit/Dialogue';
 
 // ------------------------------------------------------------------ practice --
 
@@ -491,44 +264,80 @@ function vocabItems(u: Unit): QuizItem[] {
 
 function Practice({ u, onFinish }: { u: Unit; onFinish: (score: number) => void }) {
   const items = useMemo(() => [...practiceItems(u), ...vocabItems(u)], [u]);
+  const grammarN = practiceItems(u).length;
   return (
-    <Card className="mx-auto max-w-2xl p-6">
-      <Quiz key={u.n} items={items} onFinish={onFinish} title="Práctica de la unidad" />
-    </Card>
+    <div className="mx-auto max-w-2xl space-y-4">
+      <div className="flex flex-wrap items-center gap-3 px-1">
+        <IconTile icon={Repeat} color="var(--green)" size={36} />
+        <div className="min-w-0 flex-1">
+          <h2 className="text-title-3">Práctica de la unidad</h2>
+          <p className="text-label-2 text-[14px]">
+            {items.length} preguntas · {grammarN} de gramática y {items.length - grammarN} de vocabulario
+          </p>
+        </div>
+        <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-semibold" style={{ background: tint('var(--yellow)', 22), color: ink('var(--orange)') }}>
+          <Trophy size={14} aria-hidden /> 70% para completar
+        </span>
+      </div>
+      <Card className="p-6">
+        <Quiz key={u.n} items={items} onFinish={onFinish} title="Práctica de la unidad" />
+      </Card>
+    </div>
   );
 }
 
 // ------------------------------------------------------------------- produce --
+
+function SectionHead({ icon, color, title, meta }: { icon: typeof Mic; color: string; title: React.ReactNode; meta?: React.ReactNode }) {
+  return (
+    <div className="mb-4 flex items-center gap-3">
+      <IconTile icon={icon} color={color} size={34} />
+      <div className="min-w-0">
+        <h3 className="text-title-3 leading-tight">{title}</h3>
+        {meta && <p className="text-label-2 text-[13px]">{meta}</p>}
+      </div>
+    </div>
+  );
+}
+
+const KIND_COLORS = ['var(--orange)', 'var(--pink)', 'var(--indigo)', 'var(--teal)'];
 
 function Produce({ u, levelId }: { u: Unit; levelId: string }) {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       {u.speaking && u.speaking.length > 0 && (
         <Card className="p-6">
-          <h3 className="text-title-3 mb-4 flex items-center gap-2">
-            <Mic size={20} className="text-ios-orange" /> Speaking
-          </h3>
-          <ul className="space-y-3">
-            {u.speaking.map((s) => (
-              <li key={s.text} className="bg-fill-2 rounded-[14px] p-4">
-                {s.kind && <div className="text-ios-orange text-[12px] font-bold tracking-wide uppercase">{s.kind}</div>}
-                <p className="mt-1 text-[15px] text-pretty">{s.text}</p>
-              </li>
-            ))}
-          </ul>
+          <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />
+          <ol className="space-y-2.5">
+            {u.speaking.map((s, k) => {
+              const c = KIND_COLORS[k % KIND_COLORS.length]!;
+              return (
+                <li key={s.text} className="bg-fill-2 flex gap-3 rounded-[14px] p-3.5">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: c }}>
+                    {k + 1}
+                  </span>
+                  <div className="min-w-0">
+                    {s.kind && (
+                      <span className="rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase" style={{ background: tint(c, 14), color: ink(c) }}>
+                        {s.kind}
+                      </span>
+                    )}
+                    <p className="mt-1 text-[15px] leading-snug text-pretty">{s.text}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
           <ButtonLink to="/practice/speaking" variant="tinted" className="mt-4">
-            Practicar speaking con micrófono
+            <Mic size={17} /> Practicar speaking con micrófono
           </ButtonLink>
         </Card>
       )}
 
       {u.writing && (
         <Card className="p-6">
-          <h3 className="text-title-3 mb-1 flex items-center gap-2">
-            <PenLine size={20} className="text-ios-purple" /> Writing · {u.writing.title}
-          </h3>
+          <SectionHead icon={PenLine} color="var(--purple)" title={`Writing · ${u.writing.title}`} meta={u.writing.length} />
           <p className="text-[15px] text-pretty">{u.writing.brief}</p>
-          {u.writing.length && <p className="text-label-2 mt-1 text-[13px]">{u.writing.length}</p>}
           <WritingPad
             storageKey={`ecyr:writing:${levelId}-${u.n}`}
             criteria={u.writing.criteria}
@@ -541,15 +350,13 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
 
       {u.dynamics && u.dynamics.length > 0 && (
         <Card className="p-6 lg:col-span-2">
-          <h3 className="text-title-3 mb-4 flex items-center gap-2">
-            <Users size={20} className="text-ios-teal" /> Dinámicas para clase
-          </h3>
+          <SectionHead icon={Users} color="var(--teal)" title="Dinámicas para clase" meta={`${u.dynamics.length} actividades`} />
           <div className="grid gap-3 md:grid-cols-2">
             {u.dynamics.map((d) => (
-              <div key={d.name} className="bg-fill-2 rounded-[14px] p-4">
-                <div className="flex items-center justify-between gap-2">
+              <div key={d.name} className="bg-fill-2 rounded-[14px] p-4" style={{ boxShadow: 'inset 3px 0 0 var(--teal)' }}>
+                <div className="flex items-start justify-between gap-2">
                   <div className="text-headline">{d.name}</div>
-                  {d.minutes && <span className="text-label-2 text-[12px]">{d.minutes}</span>}
+                  {d.minutes && <span className="bg-card text-label-2 shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold">⏱ {d.minutes}</span>}
                 </div>
                 {d.mode && <div className="text-ios-teal text-[12px] font-semibold">{d.mode}</div>}
                 {d.how && <p className="mt-2 text-[14px] text-pretty">{d.how}</p>}
@@ -561,9 +368,12 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
       )}
 
       {u.homework && (
-        <Card className="p-6 lg:col-span-2">
-          <h3 className="text-headline">📝 Tarea · {u.homework.title}</h3>
-          <p className="text-label-2 mt-1 text-[15px] text-pretty">{u.homework.task}</p>
+        <Card className="flex items-start gap-3 p-6 lg:col-span-2">
+          <IconTile icon={ClipboardList} color="var(--blue)" size={34} />
+          <div className="min-w-0">
+            <h3 className="text-headline">Tarea · {u.homework.title}</h3>
+            <p className="text-label-2 mt-1 text-[15px] text-pretty">{u.homework.task}</p>
+          </div>
         </Card>
       )}
     </div>

@@ -68,11 +68,11 @@ const AUX = new Set(
 );
 const SUBJ_RE = /^(subject|subj|s|pronoun|subject pronoun|i|you|he|she|it|we|they|there|the one|the ones|someone|person subject|positive statement)$/;
 const NEG_RE = /(^|\s|\/)(not|never|no one|nobody|neither)(\s|\/|$)|n['’]t\b/i;
-const CLAUSE_RE = /\b(clause|sentence|idea|statement order|full sentence|result|action|reason)\b/;
+const CLAUSE_RE = /\b(clause|introducer|sentence|idea|statement order|full sentence|result|action|reason)\b/;
 const TIME_RE = /\b(time|clock|day|date|month|year|period|starting point|end point|duration|part of day|finished time|now)\b/;
 const VERB_RE =
-  /(\bverb\b|\bv\d?\b|v-ing|participle|p\.p\.|-ing|\bing\b|gerund|infinitive|past form|\bbase\b|past simple|present simple|simple past|simple present|past perfect|present perfect|continuous|-ed\b|\bv2\b|\bv3\b)/;
-const OBJ_RE = /\b(object|noun|adjective|adverb|person|something|someone|complement|place|thing|number|phrase|pronoun|amount|quantity|agent|wh-word|question word)\b/;
+  /(\bverb\b|\bv\d?\b|v-ing|participle|p\.p\.?|-ing|\bing\b|gerund|infinitive|past form|\bbase\b|past simple|present simple|simple past|simple present|past perfect|present perfect|continuous|-ed\b|\bv2\b|\bv3\b)/;
+const OBJ_RE = /\b(object|noun|adjective|adverb|person|something|someone|complement|place|thing|number|phrase|pronoun|amount|quantity|agent|comparative|superlative|determiner|preposition|direct|indirect|singular|plural|comment|conjunction)\b/;
 const CONN = new Set(
   'if when than as because whether that who which whose where why what how by for to so unless since despite although though however while after before until once and but or the a an how many how much wh-word with of in on at from about like'.split(
     ' ',
@@ -80,14 +80,23 @@ const CONN = new Set(
 );
 
 function classify(text: string): Omit<Chip, 'text' | 'optional'> {
-  const t = norm(text).replace(/[….?!]+$/, '').trim();
+  const t = norm(text).replace(/\([^)]*\)/g, '').replace(/[….?!]+$/, '').trim() || norm(text);
   if (NEG_RE.test(t)) return { role: 'neg' };
+  const slotWord = VERB_RE.test(t) || OBJ_RE.test(t) || TIME_RE.test(t) || /\bsubject\b/.test(t);
+  if (/^wh-?word|question word/.test(t)) return { role: 'conn', slot: true };
+  if (/\bmodal\b/.test(t) && t.split(' ').length <= 2) return { role: 'aux', slot: true };
+  if (t.includes('/') && !slotWord) {
+    // "must / have to / need to" → role of the first alternative
+    const first = classify(t.split('/')[0]!.trim());
+    if (first.role !== 'subj') return first;
+  }
+  if (t.split(/[\s/]+/).filter(Boolean).length >= 5 && !slotWord) return { role: 'key' };
   if (SUBJ_RE.test(t) || /\bsubject\b/.test(t)) return { role: 'subj', slot: /subject|pronoun/.test(t) };
   if (/^(it|there|i|you|he|she|we|they)(\s|$)/.test(t) && t.split(' ').length <= 2 && !AUX.has(t.split(' ')[1] ?? ''))
     return { role: 'subj' };
   const words = t.split(/[\s/]+/).filter(Boolean);
   if (VERB_RE.test(t) && !words.some((w) => AUX.has(w) && w !== 'base')) return { role: 'verb', slot: true };
-  if (CLAUSE_RE.test(t)) return { role: 'clause', slot: true };
+  if (CLAUSE_RE.test(t) && words.length <= 3) return { role: 'clause', slot: true };
   if (words.some((w) => AUX.has(w))) {
     // "have/has + past participle" → aux; "be expected to" → aux
     return { role: 'aux' };
@@ -145,7 +154,7 @@ function tokenizeFormula(f: string, optional = false): Token[] {
 }
 
 function pushPiece(out: Token[], piece: string, optional: boolean) {
-  const bits = piece.split(/,\s+/);
+  const bits = splitTop(piece, ', ');
   bits.forEach((b, i) => {
     if (i > 0) out.push({ t: 'comma' });
     let text = b.replace(/^[,\s]+|[,\s]+$/g, '').replace(/\.$/, '');
@@ -168,7 +177,7 @@ function polarityOf(label: string | undefined): Polarity {
   if (neg && q) return '-?';
   if (neg) return '-';
   if (q && !/reported|indirect|tag|short answer/.test(l)) return '?';
-  if (/^(positive|affirmative|statement|afirmativa)\b/.test(l)) return '+';
+  if (/^(statement|afirmativa)\b|\b(positive|affirmative)\b/.test(l)) return '+';
   return null;
 }
 
@@ -184,7 +193,7 @@ export function parseFormLine(rawIn: string): FormLine {
 
   // 1. "Label: …" or "formula: example"
   const lm = /^([^:]{1,60}?):\s+(.+)$/.exec(rest);
-  if (lm && !/[“‘"]/.test(lm[1]!)) {
+  if (lm && !/^[“‘"]/.test(lm[1]!)) {
     if (isFormulaish(lm[1]!) && !/^(positive|negative|question|affirmative)/i.test(lm[1]!)) {
       // "If + past simple, would + base verb: If I had…"
       const f = lm[1]!;
@@ -243,6 +252,18 @@ export function parseFormLine(rawIn: string): FormLine {
     return { raw, kind: 'list', label, polarity: polarityOf(label), items: dot, note };
   }
 
+  const sl = rest.split(/\s+\/\s+/).map((x) => stripEndPunct(x));
+  if (sl.length >= 3 && sl.every((x) => x.length > 0 && x.length <= 44) && !/\s\+\s/.test(rest)) {
+    return { raw, kind: 'list', label, polarity: polarityOf(label), items: sl, note };
+  }
+
+  if (left !== rest && sep === ' → ') {
+    const li = left.split(/,\s+/).map((x) => stripEndPunct(x));
+    if (li.length >= 3 && li.every((x) => x.length > 0 && x.length <= 30)) {
+      return { raw, kind: 'list', label, polarity: polarityOf(label), items: li, example: right, note };
+    }
+  }
+
   if (label) return { raw, kind: 'labelled', label, polarity: polarityOf(label), text: rest, note };
   return { raw, kind: 'plain', polarity: null, text: raw };
 }
@@ -263,7 +284,11 @@ function finishFormula(raw: string, label: string | undefined, f: string, exampl
   return { raw, kind: 'formula', label, polarity: pol, tokens, example: example?.trim(), note };
 }
 
-export const parseForm = (lines: string[] | undefined) => (lines ?? []).map(parseFormLine);
+/** "Negative: X. Question: Y?" → two lines; "A. · b + c: B" → two lines. */
+const SPLIT_RE = /(?<=[.?!])\s+(?:·\s+)?(?=(?:[A-Z][A-Za-z’' /-]{2,40}|[a-z][a-z /’'-]* \+ [^:.]{2,40}):\s)/;
+
+export const parseForm = (lines: string[] | undefined) =>
+  (lines ?? []).flatMap((l) => (l.includes('→') && !/^[^:]{1,40}:[^:]*$/.test(l) ? [l] : l.split(SPLIT_RE))).map(parseFormLine);
 
 // ------------------------------------------------------------ highlights ----
 
@@ -395,7 +420,8 @@ function specRegex(spec: KeySpec): RegExp {
     .map((w) => escape(w).replace(/'/g, "['’]").replace(/ /g, '\\s+'));
   const contr = [...spec.words.keys()].filter((w) => w.startsWith("'")).map((w) => escape(w.slice(1)));
   const alts: string[] = [];
-  if (spec.compare) alts.push("[A-Za-z]+(?:er)(?=\\s+than\\b)", "(?<=\\bthe\\s)[A-Za-z]+est\\b");
+  if (spec.compare)
+    alts.push("[A-Za-z]+(?:er)(?=\\s+than\\b)", "(?<=\\bthe\\s)[A-Za-z]{2,}(?:est|er)\\b", '\\b(?:better|worse|best|worst)\\b');
   if (spec.neg) alts.push("[A-Za-z]+n['’]t\\b", '\\bnot\\b', '\\bnever\\b');
   if (words.length) alts.push(`(?<![A-Za-z'’])(?:${words.join('|')})(?![A-Za-z])`);
   if (contr.length) alts.push(`(?<=[A-Za-z])['’](?:${contr.join('|')})\\b`);
@@ -412,7 +438,7 @@ function roleFor(match: string, spec: KeySpec): Role | undefined {
   if (spec.words.has(m)) return spec.words.get(m);
   if (m.startsWith("'") && spec.words.has(m)) return 'aux';
   if (m.startsWith("'")) return 'aux';
-  if (spec.compare && /(er|est)$/.test(m)) return 'key';
+  if (spec.compare && /(er|est)$|^(better|worse|best|worst)$/.test(m)) return 'key';
   if (/ing$/.test(m)) return spec.ing && !ING_STOP.has(m) ? 'verb' : undefined;
   if (/ed$/.test(m)) return spec.ed && !ED_STOP.has(m) ? 'verb' : undefined;
   return undefined;
@@ -452,13 +478,15 @@ const QUOTE_RE = /“([^”]{1,90})”|‘([^‘]{1,90}?)’(?![a-z])|"([^"]{1,9
 export function parsePair(text: string): Pair | null {
   const qs = [...text.matchAll(QUOTE_RE)].map((m) => ({ q: (m[1] ?? m[2] ?? m[3] ?? '').trim(), start: m.index!, end: m.index! + m[0].length }));
   if (!qs.length) return null;
-  for (let i = 0; i < qs.length - 1; i++) {
-    const a = qs[i]!;
-    const b = qs[i + 1]!;
-    const between = text.slice(a.end, b.start).toLowerCase();
-    if (between.length > 60) continue;
-    if (/^[\s,;:.]*(—\s*)?(never|not|instead of|rather than|and never|but not|never say|not say)\b/.test(between)) return { right: a.q, wrong: b.q };
-    if (/(is wrong|is incorrect|must be|should be|→|is not english|sounds wrong|—\s*say|, say|use|you need|is better)/.test(between)) return { wrong: a.q, right: b.q };
+  const pairs = qs.slice(1).map((b, i) => ({ a: qs[i]!, b, between: text.slice(qs[i]!.end, b.start).toLowerCase() }));
+  for (const { a, b, between } of pairs) {
+    if (/\b(never|not)[\s(]*$/i.test(text.slice(Math.max(0, a.start - 14), a.start))) continue;
+    if (/^[\s,;:.)]*(—\s*)?(never|not|instead of|rather than|and never|but not|never say|not say|and not)[\s:]*$/.test(between)) return { right: a.q, wrong: b.q };
+  }
+  for (const { a, b, between } of pairs) {
+    if (between.length > 40) continue;
+    if (/(is wrong|is incorrect|must be|should be|is not english|sounds wrong|sounds rude)?[\s—–:,;.]*(say|just|use|write|it is|it['’]s|must be|should be)?[\s:]*$/.test(between) && /(wrong|incorrect|must be|should be|not english|say|just|write)/.test(between))
+      return { wrong: a.q, right: b.q };
   }
   // single wrong: “X” is wrong / never write ‘X’
   for (const a of qs) {
