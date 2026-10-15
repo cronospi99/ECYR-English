@@ -25,7 +25,7 @@
   @keyframes word-in { from { transform: scale(.7) translateY(10px); opacity: 0; } }
   .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .opt {
-    min-height: 104px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow);
+    min-height: clamp(104px, 17vh, 170px); border-radius: 22px; background: var(--card); box-shadow: var(--shadow);
     display: grid; place-items: center; padding: 10px; position: relative;
     font-size: 21px; font-weight: 800; line-height: 1.15; text-align: center;
     border: 3px solid transparent; transition: transform .12s, background .2s, border-color .2s;

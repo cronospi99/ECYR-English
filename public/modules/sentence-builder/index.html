@@ -35,7 +35,7 @@
     animation: pop .28s cubic-bezier(.2,1.6,.4,1);
   }
   .tile:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--sep); }
-  .tile.used { visibility: hidden; }
+  .tile.used { color: transparent; background: var(--fill); border-color: transparent; box-shadow: none; pointer-events: none; }
   .answer .tile { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border-color: transparent; box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent); }
   .answer .tile.ok { background: var(--green); }
   .answer .tile.ko { background: var(--red); }
