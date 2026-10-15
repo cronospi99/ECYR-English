@@ -1,4 +1,4 @@
-import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide, VerbLabData } from './types';
+import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide, VerbLabData, AcademicVerb } from './types';
 
 export interface LevelMeta {
   id: CefrLevel;
@@ -106,6 +106,9 @@ export const loadJeopardy = () =>
 export const loadTravelGuides = () =>
   memo<TravelGuide[]>('travel', () => import('./generated/travel-guides.json'));
 export const loadVerbLab = () => memo<VerbLabData>('verblab', () => import('./generated/verb-lab.json'));
+/** The C1 academic verb bank (also flagged `c1` in the Verb Lab list). */
+export const loadAcademicVerbs = () =>
+  memo<AcademicVerb[]>('academic-verbs', () => import('./generated/academic-verbs.json') as Promise<{ default: AcademicVerb[] }>);
 /** Extra examples: phrasal verbs keyed by `${pv}|${def}`, verbs keyed by base form. */
 export const loadPhrasalExamples = () =>
   memo<Record<string, string[]>>('pv-examples', () => import('./generated/phrasal-examples.json') as Promise<{ default: Record<string, string[]> }>);

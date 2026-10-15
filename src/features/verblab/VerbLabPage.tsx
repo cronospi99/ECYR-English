@@ -2,11 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Segmented } from '@/components/ui/Segmented';
+import { AcademicVerbs } from './academic';
 import { EdSoundDrill, EdSoundRules, PhrasalFamilies, VerbExplorer, VerbFormsQuiz, VerbPatterns, WithVerbLab } from './components';
 
-type Tab = 'verbs' | 'ed' | 'quiz' | 'phrasal' | 'patterns';
+type Tab = 'verbs' | 'academic' | 'ed' | 'quiz' | 'phrasal' | 'patterns';
 const TABS: { value: Tab; label: string }[] = [
   { value: 'verbs', label: 'Verbos' },
+  { value: 'academic', label: '🎓 C1 académicos' },
   { value: 'ed', label: 'Pronunciación -ed' },
   { value: 'quiz', label: 'Quiz de formas' },
   { value: 'phrasal', label: 'Phrasal verbs' },
@@ -21,7 +23,7 @@ export default function VerbLabPage() {
       back={{ to: '/practice', label: 'Práctica' }}
       eyebrow="Herramientas para enseñar y aprender verbos"
       title="Verb Lab"
-      subtitle="750 verbos con sus tres formas, los sonidos de -ed, 32 familias de phrasal verbs y los 10 patrones verbales del inglés."
+      subtitle="Más de 1.000 verbos con sus tres formas, una sección de verbos académicos C1, los sonidos de -ed, familias de phrasal verbs y los 10 patrones verbales del inglés."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
@@ -31,6 +33,7 @@ export default function VerbLabPage() {
         {(data) => (
           <>
             {tab === 'verbs' && <VerbExplorer data={data} />}
+            {tab === 'academic' && <AcademicVerbs />}
             {tab === 'ed' && (
               <div className="space-y-5">
                 <EdSoundRules data={data} />

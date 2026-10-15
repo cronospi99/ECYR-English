@@ -12,7 +12,7 @@ import { Chip, PageLoader } from '@/components/ui/Misc';
 import { ProgressBar } from '@/components/ui/Progress';
 import { RichText, stripTags } from '@/components/learning/RichText';
 import { useAsync } from '@/hooks/useAsync';
-import { loadPhrasalVerbs, loadVerbLab } from '@/content/levels';
+import { loadAcademicVerbs, loadPhrasalVerbs, loadVerbLab } from '@/content/levels';
 import { PhrasalExplorer, type MindFamily } from './mindmap';
 import { VerbBubble } from './VerbBubble';
 import type { EdSound, LabVerb, VerbLabData, VerbPattern } from '@/content/types';
@@ -72,7 +72,7 @@ function shuffle<T>(a: T[]) {
 
 // --------------------------------------------------------------- explorer --
 
-type Filter = 'all' | 'irregular' | 'regular' | 't' | 'd' | 'id' | 'saved';
+type Filter = 'all' | 'c1' | 'irregular' | 'regular' | 't' | 'd' | 'id' | 'saved';
 
 export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabData; initialFilter?: Filter }) {
   const [q, setQ] = useState('');
@@ -83,10 +83,13 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
   const [limit, setLimit] = useState(60);
   const showEs = useSettings((s) => s.spanishHints);
   const openVerb = open ? (data.verbs.find((v) => v.en === open) ?? null) : null;
+  const { data: academic } = useAsync(loadAcademicVerbs, []);
+  const openAcademic = openVerb?.c1 ? academic?.find((a) => a.en === openVerb.en || a.us === openVerb.en) : null;
 
   const list = useMemo(() => {
     const n = q.trim().toLowerCase();
     return data.verbs.filter((v) => {
+      if (filter === 'c1' && !v.c1) return false;
       if (filter === 'irregular' && v.type !== 'irregular') return false;
       if (filter === 'regular' && v.type !== 'regular') return false;
       if ((filter === 't' || filter === 'd' || filter === 'id') && v.sound !== filter) return false;
@@ -99,6 +102,7 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
   const toggleSaved = (en: string) => setSaved((s) => (s.includes(en) ? s.filter((x) => x !== en) : [...s, en]));
   const FILTERS: [Filter, string][] = [
     ['all', `Todos · ${data.verbs.length}`],
+    ['c1', `🎓 C1 académicos · ${data.verbs.filter((v) => v.c1).length}`],
     ['irregular', 'Irregulares'],
     ['regular', 'Regulares'],
     ['t', '-ed /t/'],
@@ -156,6 +160,11 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
               <span className="absolute top-2 left-2 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase" style={{ color: tint, background: `color-mix(in srgb, ${tint} 14%, transparent)` }}>
                 {v.type === 'irregular' ? 'Irr' : 'Reg'}
               </span>
+              {v.c1 && (
+                <span className="absolute bottom-2 left-2 text-[11px]" title="C1 académico" aria-label="C1 académico">
+                  🎓
+                </span>
+              )}
               {saved.includes(v.en) && <Star size={13} fill="currentColor" className="text-ios-yellow absolute top-2 right-2" aria-label="En mi lista" />}
               <span className="text-[40px] leading-none drop-shadow-[0_2px_3px_rgb(0_0_0/0.12)]">{v.emoji}</span>
               <span className="mt-1.5 max-w-full truncate text-[17px] font-bold">{v.en}</span>
@@ -174,6 +183,7 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
           saved={saved.includes(openVerb.en)}
           onToggleSaved={() => toggleSaved(openVerb.en)}
           onClose={() => setOpen(null)}
+          academic={openAcademic}
         />
       )}
       {list.length > limit && (

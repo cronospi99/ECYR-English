@@ -3748,5 +3748,1350 @@
     "base": "Please relay the message to your team.",
     "past": "She relayed the good news to everyone yesterday.",
     "part": "The match was relayed live on the radio."
+  },
+  "accentuate": {
+    "base": "The final chapter accentuates the role of education in reducing poverty.",
+    "past": "The crisis accentuated the differences between rich and poor regions.",
+    "part": "These contrasts have been accentuated by recent policy changes."
+  },
+  "access": {
+    "base": "Researchers access anonymised patient records through a secure national database.",
+    "past": "Participants accessed the online questionnaire using a personal code.",
+    "part": "The original survey data have not been accessed since 2015."
+  },
+  "accord": {
+    "base": "These results accord with previous research on bilingual children.",
+    "past": "The final figures accorded closely with the initial estimates.",
+    "part": "The observed results have accorded well with theoretical predictions."
+  },
+  "address": {
+    "base": "This essay addresses the question of whether university should be free.",
+    "past": "The second section addressed the limitations of the study.",
+    "part": "The issue of rural poverty has not been adequately addressed."
+  },
+  "admit": {
+    "base": "The researchers admit that further testing is required.",
+    "past": "The company admitted that its emissions data were inaccurate.",
+    "part": "It has been admitted that the original estimates were too optimistic."
+  },
+  "affirm": {
+    "base": "The declaration affirms the right of every child to education.",
+    "past": "The court affirmed that the law was constitutional.",
+    "part": "This principle has been affirmed in several international treaties."
+  },
+  "aggregate": {
+    "base": "Economists aggregate regional figures to estimate national output.",
+    "past": "The analysts aggregated the results from all participating schools.",
+    "part": "Individual responses were aggregated by region to protect participants' anonymity."
+  },
+  "align": {
+    "base": "The national curriculum aligns closely with international standards.",
+    "past": "The findings aligned with the predictions of the model.",
+    "part": "National policy has been aligned with European regulations."
+  },
+  "allege": {
+    "base": "Critics allege that the survey data were deliberately manipulated.",
+    "past": "Several reports alleged that the factory had polluted the river.",
+    "part": "The company has been alleged to have avoided paying taxes."
+  },
+  "allude": {
+    "base": "The author alludes to the problem but does not discuss it in detail.",
+    "past": "The report briefly alluded to concerns about privacy.",
+    "part": "As alluded to earlier, funding remains the main obstacle."
+  },
+  "alter": {
+    "base": "Small changes in diet can alter the risk of heart disease.",
+    "past": "The invention of the internet fundamentally altered the way people communicate.",
+    "part": "The composition of the workforce has altered significantly since 1990."
+  },
+  "amount": {
+    "base": "Household debt amounts to nearly ninety per cent of national income.",
+    "past": "Spending on research amounted to two per cent of GDP in 2020.",
+    "part": "Total losses have amounted to several billion euros."
+  },
+  "appraise": {
+    "base": "Students must critically appraise the sources they cite.",
+    "past": "The review appraised the quality of over fifty clinical trials.",
+    "part": "Each proposal was appraised by an independent panel."
+  },
+  "argue": {
+    "base": "Some scholars argue that globalisation increases inequality within countries.",
+    "past": "The author argued against further cuts to public services.",
+    "part": "It has been argued that standardised tests reduce creativity."
+  },
+  "ascribe": {
+    "base": "Many economists ascribe the slowdown to weak consumer demand.",
+    "past": "Early researchers ascribed the disease to bad air.",
+    "part": "The improvement can be ascribed to smaller class sizes."
+  },
+  "associate": {
+    "base": "Many people associate higher education with better job prospects.",
+    "past": "The study associated long working hours with poorer health.",
+    "part": "Obesity is strongly associated with an increased risk of diabetes."
+  },
+  "assume": {
+    "base": "Many economic models assume that consumers always behave rationally.",
+    "past": "Early studies assumed a direct link between income and happiness.",
+    "part": "It is often assumed that technology always improves learning."
+  },
+  "attest": {
+    "base": "Numerous studies attest to the benefits of bilingual education.",
+    "past": "Historical records attested to the severity of the famine.",
+    "part": "The effect of music on mood is well attested."
+  },
+  "average": {
+    "base": "Annual rainfall in the region averages 600 millimetres.",
+    "past": "Economic growth averaged three per cent between 2010 and 2019.",
+    "part": "Class sizes have averaged thirty students for the past decade."
+  },
+  "balance": {
+    "base": "Governments must balance economic growth against environmental protection.",
+    "past": "The judge balanced the rights of the individual against public safety.",
+    "part": "The benefits of the policy have been balanced against its costs."
+  },
+  "benefit": {
+    "base": "Regular exercise benefits both physical and mental health.",
+    "past": "Rural areas benefited most from the new broadband network.",
+    "part": "Millions of people have benefited from the vaccination programme."
+  },
+  "bolster": {
+    "base": "Lower interest rates bolster consumer spending in the short term.",
+    "past": "The new findings bolstered the case for stricter regulation.",
+    "part": "The economy has been bolstered by strong exports."
+  },
+  "boost": {
+    "base": "Tax incentives boost private investment in renewable energy projects.",
+    "past": "The tourism campaign boosted visitor numbers by thirty per cent.",
+    "part": "Productivity has been boosted by new digital technologies."
+  },
+  "calculate": {
+    "base": "Economists calculate inflation using a basket of common goods.",
+    "past": "The authors calculated the average cost of a university degree.",
+    "part": "Life expectancy was calculated on the basis of census data."
+  },
+  "catalyse": {
+    "base": "Enzymes catalyse thousands of chemical reactions inside living cells.",
+    "past": "The crisis catalysed major reforms in banking regulation.",
+    "part": "Social change has often been catalysed by technological innovation."
+  },
+  "cause": {
+    "base": "Excessive screen time can cause sleep problems in adolescents.",
+    "past": "The new policy caused widespread concern among small-scale farmers.",
+    "part": "Most of the damage was caused by rising sea levels."
+  },
+  "caution": {
+    "base": "The authors caution against generalising from such a small sample.",
+    "past": "Economists cautioned that the recovery would be slow.",
+    "part": "Readers have been cautioned against overinterpreting these results."
+  },
+  "challenge": {
+    "base": "Recent findings challenge the view that intelligence is fixed.",
+    "past": "Feminist scholars challenged traditional accounts of European history.",
+    "part": "This interpretation has been challenged by several historians."
+  },
+  "characterise": {
+    "base": "High unemployment and low wages characterise the region's economy.",
+    "past": "Critics characterised the reform as a threat to public healthcare.",
+    "part": "The period was characterised by rapid industrial growth."
+  },
+  "cite": {
+    "base": "Many respondents cite cost as the main barrier to healthy eating.",
+    "past": "The author cited several studies in support of the claim.",
+    "part": "This paper has been cited over two thousand times."
+  },
+  "claim": {
+    "base": "Some advertisers claim that their products improve memory.",
+    "past": "The minister claimed that crime had fallen by ten per cent.",
+    "part": "It has been claimed that the treatment reduces stress."
+  },
+  "clarify": {
+    "base": "This section clarifies the key terms used throughout the essay.",
+    "past": "The authors clarified the distinction between weather and climate.",
+    "part": "The role of genetics has been further clarified by recent studies."
+  },
+  "coexist": {
+    "base": "Traditional and modern farming methods coexist in many rural areas.",
+    "past": "Several languages coexisted in the region for centuries.",
+    "part": "Humans and wildlife have coexisted in the national park for generations."
+  },
+  "coincide": {
+    "base": "Peaks in air pollution often coincide with periods of heavy traffic.",
+    "past": "The rise in crime coincided with a sharp increase in unemployment.",
+    "part": "The reforms have coincided with improvements in exam results."
+  },
+  "collapse": {
+    "base": "Fish stocks collapse when catches exceed natural reproduction rates.",
+    "past": "Oil prices collapsed in the spring of 2020.",
+    "part": "Tourism revenue had collapsed by the end of the year."
+  },
+  "collate": {
+    "base": "The agency collates statistics from hospitals across the country.",
+    "past": "The researchers collated responses from twelve separate surveys.",
+    "part": "The figures were collated from official government reports."
+  },
+  "compare": {
+    "base": "This study compares urban and rural attitudes towards recycling.",
+    "past": "The researchers compared the performance of two teaching methods.",
+    "part": "Life expectancy has risen by six years when compared with 1990."
+  },
+  "compile": {
+    "base": "The ministry compiles annual statistics on school attendance.",
+    "past": "The researchers compiled a database of every recorded earthquake.",
+    "part": "The report was compiled using data from forty countries."
+  },
+  "complement": {
+    "base": "Qualitative interviews complement the statistical data in this study.",
+    "past": "Online resources complemented traditional classroom teaching during the pilot year.",
+    "part": "The survey data have been complemented by detailed case studies."
+  },
+  "compound": {
+    "base": "High rents compound the financial pressure on young workers.",
+    "past": "Poor planning compounded the effects of the flood.",
+    "part": "The crisis has been compounded by a shortage of skilled staff."
+  },
+  "comprise": {
+    "base": "Women comprise just over half of all university graduates.",
+    "past": "The sample comprised 300 adults aged between 18 and 65.",
+    "part": "Two thirds of the workforce is comprised of service sector employees."
+  },
+  "compromise": {
+    "base": "Chronic underfunding compromises the quality of public education in many regions.",
+    "past": "The data breach compromised the personal details of millions of users.",
+    "part": "Patient safety may have been compromised by staff shortages."
+  },
+  "compute": {
+    "base": "The software computes the correlation between each pair of variables.",
+    "past": "The researchers computed a wellbeing score for every participant.",
+    "part": "Mean values were computed for each region separately."
+  },
+  "concede": {
+    "base": "Even critics concede that the policy has reduced unemployment.",
+    "past": "The minister conceded that mistakes had been made.",
+    "part": "It must be conceded that the sample size was small."
+  },
+  "conceptualise": {
+    "base": "Many scholars conceptualise poverty as a lack of opportunity.",
+    "past": "Early theorists conceptualised intelligence as a single fixed trait.",
+    "part": "Wellbeing has been conceptualised in many different ways."
+  },
+  "concur": {
+    "base": "Most experts concur that urgent action on climate change is needed.",
+    "past": "The second study concurred with the earlier findings.",
+    "part": "Several independent reviews have concurred on this point."
+  },
+  "conduct": {
+    "base": "Universities conduct thousands of clinical trials every year.",
+    "past": "The team conducted a survey of 1,200 young adults.",
+    "part": "Extensive research has been conducted on the effects of sugar."
+  },
+  "conflict": {
+    "base": "Economic interests often conflict with long-term environmental goals.",
+    "past": "The witness accounts conflicted with the official version of events.",
+    "part": "The new findings have conflicted with earlier assumptions."
+  },
+  "conform": {
+    "base": "All products must conform to European safety standards.",
+    "past": "The results conformed to the pattern predicted by the theory.",
+    "part": "Not all buildings have conformed with the new energy regulations."
+  },
+  "consist": {
+    "base": "The questionnaire consists of twenty multiple-choice questions on diet.",
+    "past": "The sample consisted mainly of first-year undergraduates from two universities.",
+    "part": "The diet of the population has consisted largely of rice and fish."
+  },
+  "constitute": {
+    "base": "Older people constitute a growing proportion of the population.",
+    "past": "In 1990, agriculture constituted forty per cent of total employment.",
+    "part": "Such actions have constituted a serious breach of international law."
+  },
+  "constrain": {
+    "base": "High energy costs constrain economic growth in many countries.",
+    "past": "A lack of funding constrained the scope of the project.",
+    "part": "Research has been constrained by limited access to data."
+  },
+  "construe": {
+    "base": "Some readers construe the policy as an attack on free speech.",
+    "past": "Investors construed the announcement as a sign of recovery.",
+    "part": "Silence in the meeting should not be construed as agreement."
+  },
+  "consult": {
+    "base": "Policymakers rarely consult teachers when designing educational reforms.",
+    "past": "The authors consulted a panel of experts on climate modelling.",
+    "part": "Local communities were not consulted before the dam was built."
+  },
+  "contend": {
+    "base": "Critics contend that the reforms will harm small businesses.",
+    "past": "The authors contended that poverty was the main cause of crime.",
+    "part": "It has been contended that the theory lacks empirical support."
+  },
+  "contest": {
+    "base": "Several scientists contest the accuracy of these estimates.",
+    "past": "The company contested the findings of the government inquiry.",
+    "part": "The meaning of the term remains hotly contested."
+  },
+  "contract": {
+    "base": "Economies typically contract during periods of high inflation.",
+    "past": "The manufacturing sector contracted by six per cent in 2009.",
+    "part": "The labour market has contracted for three consecutive quarters."
+  },
+  "contradict": {
+    "base": "These data contradict the widely held belief that teenagers read less.",
+    "past": "The second report contradicted the conclusions of the first.",
+    "part": "The theory has been contradicted by recent archaeological evidence."
+  },
+  "contrast": {
+    "base": "Rising wages in the capital contrast sharply with stagnation elsewhere.",
+    "past": "The author contrasted public and private healthcare systems.",
+    "part": "Urban growth is often contrasted with rural decline."
+  },
+  "contribute": {
+    "base": "Deforestation contributes to rising levels of carbon dioxide.",
+    "past": "Poor diet contributed to the rise in childhood obesity.",
+    "part": "Several factors have contributed to the decline in reading."
+  },
+  "control": {
+    "base": "The model controls for income, age and level of education.",
+    "past": "The researchers controlled for prior academic achievement and family income.",
+    "part": "Several confounding variables were controlled for in the analysis."
+  },
+  "converge": {
+    "base": "Over time, the economies of member states tend to converge.",
+    "past": "Male and female wages converged slightly during the 1990s.",
+    "part": "Opinions on the issue have converged in recent years."
+  },
+  "convey": {
+    "base": "Infographics convey complex data in a simple visual form.",
+    "past": "The report conveyed a sense of urgency about the crisis.",
+    "part": "The key findings were clearly conveyed to policymakers."
+  },
+  "correlate": {
+    "base": "Household income correlates strongly with life expectancy in most countries.",
+    "past": "In the study, screen time correlated negatively with sleep quality.",
+    "part": "Exam scores have been positively correlated with attendance."
+  },
+  "corroborate": {
+    "base": "Satellite data corroborate the reports of widespread deforestation.",
+    "past": "Interviews with local residents corroborated the official statistics.",
+    "part": "These results have been corroborated by several independent studies."
+  },
+  "counter": {
+    "base": "Supporters counter that the scheme creates thousands of jobs.",
+    "past": "The author countered this criticism with new evidence.",
+    "part": "These objections have been effectively countered in recent research."
+  },
+  "criticise": {
+    "base": "Many educators criticise the emphasis on standardised testing.",
+    "past": "The report criticised the government for its slow response.",
+    "part": "The study has been widely criticised for its small sample."
+  },
+  "critique": {
+    "base": "The article critiques the assumptions behind neoliberal economics.",
+    "past": "Scholars critiqued the methodology used in the original study.",
+    "part": "This framework has been critiqued for ignoring cultural factors."
+  },
+  "culminate": {
+    "base": "Years of rising tension often culminate in open conflict.",
+    "past": "The protests culminated in the resignation of the prime minister.",
+    "part": "Decades of research have culminated in a reliable vaccine."
+  },
+  "curb": {
+    "base": "Higher taxes on tobacco curb smoking among young people.",
+    "past": "The government curbed spending in response to rising debt.",
+    "part": "Inflation has been curbed by higher interest rates."
+  },
+  "curtail": {
+    "base": "Strict lockdowns curtail economic activity in the short term.",
+    "past": "The war curtailed international trade in the region.",
+    "part": "Academic freedom has been curtailed in several countries."
+  },
+  "debate": {
+    "base": "Economists still debate whether minimum wages reduce employment.",
+    "past": "Parliament debated the proposal for several weeks before voting.",
+    "part": "The ethics of genetic engineering have been widely debated."
+  },
+  "decipher": {
+    "base": "Linguists decipher ancient texts by comparing them with known languages.",
+    "past": "Scientists deciphered the genetic code in the 1960s.",
+    "part": "The meaning of the inscriptions has never been fully deciphered."
+  },
+  "decline": {
+    "base": "Birth rates decline as access to education improves.",
+    "past": "The number of smokers declined sharply between 2000 and 2020.",
+    "part": "Public trust in the media has declined in most Western countries."
+  },
+  "deconstruct": {
+    "base": "Critical theorists deconstruct the hidden assumptions in media texts.",
+    "past": "The author deconstructed the myth of the self-made entrepreneur.",
+    "part": "These stereotypes have been deconstructed by feminist scholars."
+  },
+  "decrease": {
+    "base": "Crime rates decrease when communities have access to good jobs.",
+    "past": "Car ownership decreased slightly in the capital last year.",
+    "part": "The cost of solar panels has decreased dramatically since 2010."
+  },
+  "deduce": {
+    "base": "From these figures, we can deduce that demand will continue to rise.",
+    "past": "Astronomers deduced the planet's mass from its orbit.",
+    "part": "It can be deduced that the policy had little effect."
+  },
+  "deem": {
+    "base": "Regulators deem the drug safe for use in adults.",
+    "past": "The committee deemed the evidence insufficient to justify a ban.",
+    "part": "Several buildings have been deemed unsafe after the earthquake."
+  },
+  "defend": {
+    "base": "The author defends the use of animals in medical research.",
+    "past": "The minister defended the decision to raise tuition fees.",
+    "part": "The policy has been vigorously defended by its supporters."
+  },
+  "delineate": {
+    "base": "The introduction delineates the scope and aims of the research.",
+    "past": "The authors delineated the main stages of the process.",
+    "part": "The responsibilities of each agency have been clearly delineated."
+  },
+  "denote": {
+    "base": "In the table, an asterisk denotes a statistically significant result.",
+    "past": "The term originally denoted a form of manual labour.",
+    "part": "Missing values have been denoted by a dash."
+  },
+  "deny": {
+    "base": "Few scientists deny that the climate is changing.",
+    "past": "The company denied any responsibility for the pollution.",
+    "part": "It cannot be denied that technology has transformed education."
+  },
+  "depict": {
+    "base": "The graph depicts changes in global temperature since 1900.",
+    "past": "Early films depicted scientists as eccentric and isolated.",
+    "part": "Migrants are often depicted negatively in the media."
+  },
+  "deplete": {
+    "base": "Intensive farming depletes the soil of essential nutrients.",
+    "past": "Overfishing depleted cod stocks in the North Atlantic.",
+    "part": "Groundwater reserves have been severely depleted in many regions."
+  },
+  "depreciate": {
+    "base": "New cars depreciate quickly in their first three years.",
+    "past": "The peso depreciated sharply against the dollar in 2018.",
+    "part": "The currency has depreciated by almost twenty per cent."
+  },
+  "derive": {
+    "base": "Many modern medicines derive from plants found in rainforests.",
+    "past": "The authors derived their sample from national tax records.",
+    "part": "Most of the data were derived from satellite images."
+  },
+  "design": {
+    "base": "Psychologists design experiments that isolate a single variable.",
+    "past": "The team designed a questionnaire to measure student wellbeing.",
+    "part": "The study was designed to test the effects of sleep on memory."
+  },
+  "detail": {
+    "base": "The appendix details the questions used in each interview.",
+    "past": "The report detailed the main causes of the accident.",
+    "part": "The methodology is detailed in the following section."
+  },
+  "deter": {
+    "base": "High tuition fees deter many students from applying to university.",
+    "past": "The new penalties deterred drivers from using their phones.",
+    "part": "Foreign investors have been deterred by ongoing political instability."
+  },
+  "determine": {
+    "base": "Blood tests determine whether a patient has been exposed to the virus.",
+    "past": "The study determined the optimal dose for elderly patients.",
+    "part": "The precise cause of the decline has not been determined."
+  },
+  "deviate": {
+    "base": "Actual costs often deviate significantly from initial estimates.",
+    "past": "Several participants deviated from the standard testing instructions.",
+    "part": "The results have deviated only slightly from the predicted values."
+  },
+  "devise": {
+    "base": "Engineers devise new methods to store renewable energy efficiently.",
+    "past": "The researchers devised a scale to measure online anxiety.",
+    "part": "A new strategy has been devised to reduce food waste."
+  },
+  "devote": {
+    "base": "The government devotes a large share of its budget to education.",
+    "past": "The author devoted an entire chapter to climate policy.",
+    "part": "Little attention has been devoted to the experiences of rural women."
+  },
+  "dip": {
+    "base": "Sales usually dip during the summer before recovering in autumn.",
+    "past": "Unemployment dipped below five per cent in 2019.",
+    "part": "Consumer confidence has dipped for the second month in a row."
+  },
+  "discern": {
+    "base": "Few analysts discern any clear pattern in recent market behaviour.",
+    "past": "The researchers discerned a gradual shift in public attitudes.",
+    "part": "No consistent trend could be discerned in the data."
+  },
+  "disclose": {
+    "base": "Researchers must disclose any potential conflicts of interest to journals.",
+    "past": "The company disclosed record profits for the second quarter.",
+    "part": "Details of the agreement have not been disclosed."
+  },
+  "discount": {
+    "base": "Researchers do not discount the role of genetic factors.",
+    "past": "The panel discounted the theory due to lack of evidence.",
+    "part": "The possibility of measurement error cannot be entirely discounted."
+  },
+  "discredit": {
+    "base": "New evidence discredits the claim that vaccines cause autism.",
+    "past": "The scandal discredited the institution in the eyes of the public.",
+    "part": "This theory has been largely discredited by modern genetics."
+  },
+  "dismiss": {
+    "base": "Some politicians dismiss climate research as alarmist and exaggerated.",
+    "past": "The court dismissed the claims as unfounded and politically motivated.",
+    "part": "Such concerns should not be dismissed too quickly."
+  },
+  "disprove": {
+    "base": "A single counterexample can disprove a general rule.",
+    "past": "Later experiments disproved the original hypothesis about memory loss.",
+    "part": "The theory has never been conclusively disproved by empirical research."
+  },
+  "dispute": {
+    "base": "Few scientists dispute that human activity is warming the planet.",
+    "past": "The authors disputed the accuracy of the official figures.",
+    "part": "The exact cause of the decline remains hotly disputed."
+  },
+  "disrupt": {
+    "base": "Extreme weather events frequently disrupt agricultural production and food supply.",
+    "past": "The pandemic disrupted the education of millions of children.",
+    "part": "Global supply chains have been severely disrupted by the conflict."
+  },
+  "dissect": {
+    "base": "The report dissects the causes of the 2008 financial crisis.",
+    "past": "The commentators dissected every detail of the new budget.",
+    "part": "The decision has been dissected by legal experts."
+  },
+  "distil": {
+    "base": "Good summaries distil complex research into a few clear points.",
+    "past": "The authors distilled forty interviews into five key themes.",
+    "part": "These guidelines have been distilled from years of clinical experience."
+  },
+  "distinguish": {
+    "base": "It is important to distinguish between correlation and causation.",
+    "past": "The author distinguished three main types of motivation.",
+    "part": "This species can be distinguished from others by its colour."
+  },
+  "diverge": {
+    "base": "Views on immigration diverge sharply between age groups.",
+    "past": "The two economies diverged rapidly after the 1980s.",
+    "part": "Opinions have diverged on the best way to reduce emissions."
+  },
+  "document": {
+    "base": "Ethnographers document daily life in remote communities over many months.",
+    "past": "The study documented a sharp rise in childhood obesity.",
+    "part": "The health effects of smoking are well documented in the literature."
+  },
+  "double": {
+    "base": "In fast-growing cities, demand for housing can double within a decade.",
+    "past": "The number of international students doubled between 2005 and 2015.",
+    "part": "Energy prices have nearly doubled since the start of the crisis."
+  },
+  "doubt": {
+    "base": "Many experts doubt whether the targets can be met by 2030.",
+    "past": "Early critics doubted the commercial value of the internet.",
+    "part": "The reliability of the method has been doubted by several researchers."
+  },
+  "drop": {
+    "base": "Attendance figures drop sharply during the examination period.",
+    "past": "The literacy gap dropped to its lowest level in 2012.",
+    "part": "Crime has dropped significantly in the city centre."
+  },
+  "dwindle": {
+    "base": "Rural populations dwindle as young people move to the cities.",
+    "past": "Membership of trade unions dwindled throughout the 1990s.",
+    "part": "Supplies of fresh water have dwindled in the region."
+  },
+  "ease": {
+    "base": "Pressure on hospitals usually eases after the winter months.",
+    "past": "Inflation eased slightly in the final quarter of the year.",
+    "part": "Restrictions on travel have eased in most countries."
+  },
+  "echo": {
+    "base": "These results echo the findings of earlier research in Asia.",
+    "past": "Teachers echoed concerns about the growing workload and low pay.",
+    "part": "This view has been echoed by many leading economists."
+  },
+  "effect": {
+    "base": "Grassroots movements can effect real and lasting social change.",
+    "past": "The new leadership effected a major restructuring of the company.",
+    "part": "Lasting reforms have been effected through public pressure."
+  },
+  "elaborate": {
+    "base": "The next section elaborates on the methods used in the survey.",
+    "past": "The speaker elaborated on the risks of artificial intelligence.",
+    "part": "This argument is elaborated in the second half of the paper."
+  },
+  "elicit": {
+    "base": "Open questions elicit more detailed answers than closed ones.",
+    "past": "The interviews elicited a wide range of opinions on immigration.",
+    "part": "Feedback was elicited from both students and teachers."
+  },
+  "elucidate": {
+    "base": "This paper elucidates the role of bacteria in digestion.",
+    "past": "The experiment elucidated the mechanism behind the reaction.",
+    "part": "The causes of the disease have not yet been fully elucidated."
+  },
+  "emerge": {
+    "base": "Clear patterns emerge when the data are analysed by region.",
+    "past": "Three main themes emerged from the interviews with nursing staff.",
+    "part": "China has emerged as a leading producer of renewable energy."
+  },
+  "employ": {
+    "base": "Many studies employ a mixed-methods approach to data collection.",
+    "past": "The authors employed statistical modelling to predict future demand.",
+    "part": "Qualitative methods were employed to explore participants' experiences."
+  },
+  "enable": {
+    "base": "Online platforms enable students to learn at their own pace.",
+    "past": "The grant enabled researchers to extend the study.",
+    "part": "Remote work has been enabled by fast internet connections."
+  },
+  "encapsulate": {
+    "base": "This quotation encapsulates the central argument of the book.",
+    "past": "The slogan encapsulated the public mood of the time.",
+    "part": "The main findings are encapsulated in the following diagram."
+  },
+  "encompass": {
+    "base": "The term wellbeing encompasses both physical and mental health.",
+    "past": "The study encompassed schools in both urban and rural areas.",
+    "part": "A wide range of topics has been encompassed in this review."
+  },
+  "endorse": {
+    "base": "Most medical associations endorse regular screening for cancer.",
+    "past": "The committee endorsed the plan to expand public transport.",
+    "part": "The guidelines have been endorsed by the World Health Organization."
+  },
+  "engender": {
+    "base": "Transparent leadership engenders trust and loyalty among employees.",
+    "past": "The proposal engendered heated debate in parliament for several months.",
+    "part": "A culture of fear has been engendered by constant surveillance."
+  },
+  "entail": {
+    "base": "Rapid economic growth often entails significant environmental costs.",
+    "past": "The project entailed relocating over two thousand families.",
+    "part": "Few people understood the risks that had been entailed."
+  },
+  "envisage": {
+    "base": "The plan envisages a fully carbon-neutral transport system by 2050.",
+    "past": "Few experts envisaged such a rapid growth in online learning.",
+    "part": "The reforms were not as successful as originally envisaged."
+  },
+  "epitomise": {
+    "base": "Silicon Valley epitomises the culture of technological innovation.",
+    "past": "The project epitomised the optimism of the post-war period.",
+    "part": "This approach is epitomised by the Finnish education system."
+  },
+  "equate": {
+    "base": "Many people equate success with financial wealth and social status.",
+    "past": "Early studies equated intelligence with performance in school examinations.",
+    "part": "Happiness should not be equated with material comfort."
+  },
+  "erode": {
+    "base": "Repeated scandals erode public trust in political institutions.",
+    "past": "High inflation eroded the purchasing power of wages.",
+    "part": "Many coastlines have been eroded by increasingly frequent storms."
+  },
+  "espouse": {
+    "base": "Several political parties now espouse strong environmental and social values.",
+    "past": "The philosopher espoused a radical form of utilitarianism.",
+    "part": "These ideas have been espoused by many modern economists."
+  },
+  "estimate": {
+    "base": "Experts estimate that sea levels will rise by one metre this century.",
+    "past": "The authors estimated the economic cost of the floods.",
+    "part": "The global market is estimated at 400 billion dollars."
+  },
+  "evolve": {
+    "base": "Languages evolve constantly in response to social change.",
+    "past": "The company evolved from a small start-up into a global brand.",
+    "part": "Teaching methods have evolved considerably over the last century."
+  },
+  "exceed": {
+    "base": "Demand for housing far exceeds supply in most major cities.",
+    "past": "Applications exceeded the number of available places by a wide margin.",
+    "part": "Pollution levels have exceeded safe limits on several occasions."
+  },
+  "exemplify": {
+    "base": "Rising rents exemplify the pressures facing young urban workers.",
+    "past": "The case study exemplified the challenges of rural healthcare.",
+    "part": "This trend is exemplified by the growth of online retail."
+  },
+  "exert": {
+    "base": "Peer groups exert a strong influence on teenage behaviour.",
+    "past": "Lobbyists exerted considerable pressure on lawmakers before the vote.",
+    "part": "Considerable pressure has been exerted on public health systems."
+  },
+  "expand": {
+    "base": "Online retail expands every year as more consumers shop digitally.",
+    "past": "Higher education expanded rapidly across Europe in the 1960s.",
+    "part": "Access to clean water has expanded in rural areas."
+  },
+  "explain": {
+    "base": "Differences in income partly explain the gap in exam results.",
+    "past": "The author explained why the original model had failed.",
+    "part": "The causes of the decline have not been fully explained."
+  },
+  "extract": {
+    "base": "The algorithm extracts key information from thousands of documents.",
+    "past": "The researchers extracted relevant data from 60 published studies.",
+    "part": "The compounds were extracted from the leaves of the plant."
+  },
+  "favour": {
+    "base": "Most economists favour a gradual increase in interest rates.",
+    "past": "The majority of respondents favoured stricter gun laws.",
+    "part": "This approach has been favoured by many recent researchers."
+  },
+  "focus": {
+    "base": "This essay focuses on the economic effects of migration.",
+    "past": "The study focused primarily on children under the age of five.",
+    "part": "Most research has focused on urban rather than rural areas."
+  },
+  "foster": {
+    "base": "Group projects foster cooperation and communication skills among students.",
+    "past": "The reforms fostered a culture of innovation in the sector.",
+    "part": "A sense of community has been fostered through local initiatives."
+  },
+  "frame": {
+    "base": "Politicians often frame immigration as a purely economic issue.",
+    "past": "The researchers framed their questions in neutral language.",
+    "part": "The debate has been framed in terms of individual freedom."
+  },
+  "fuel": {
+    "base": "Low interest rates fuel demand for housing in large cities.",
+    "past": "Cheap credit fuelled a boom in consumer spending.",
+    "part": "Public anxiety has been fuelled by alarming media reports."
+  },
+  "gather": {
+    "base": "Scientists gather data from weather stations across the whole region.",
+    "past": "The researchers gathered evidence from over two hundred primary schools.",
+    "part": "Sufficient information has been gathered to draw firm conclusions."
+  },
+  "gauge": {
+    "base": "Opinion polls gauge public attitudes towards government policy.",
+    "past": "The survey gauged consumer confidence during the recession.",
+    "part": "The impact of the reform has not yet been accurately gauged."
+  },
+  "generalise": {
+    "base": "Researchers should not generalise from such a small sample.",
+    "past": "The authors generalised their results to all secondary schools.",
+    "part": "These findings cannot be generalised to other cultures."
+  },
+  "halve": {
+    "base": "The new policy aims to halve child poverty by 2030.",
+    "past": "The number of smokers halved over the twenty-year period.",
+    "part": "Infant mortality has been halved in many developing countries."
+  },
+  "hamper": {
+    "base": "Poor infrastructure hampers economic development in remote regions.",
+    "past": "Heavy rain hampered the rescue operation for several days.",
+    "part": "Research has been hampered by a lack of funding."
+  },
+  "highlight": {
+    "base": "The report highlights the need for greater investment in mental health.",
+    "past": "The pandemic highlighted deep inequalities in access to healthcare.",
+    "part": "The risks of social media have been highlighted in several studies."
+  },
+  "hinder": {
+    "base": "Language barriers hinder the integration of migrants into society.",
+    "past": "A shortage of skilled workers hindered economic growth.",
+    "part": "Progress towards the targets has been hindered by political instability."
+  },
+  "identify": {
+    "base": "The report identifies three key barriers to higher education.",
+    "past": "Researchers identified a strong link between poverty and obesity.",
+    "part": "Several risk factors have been identified in the literature."
+  },
+  "impede": {
+    "base": "Excessive regulation can impede innovation in small businesses.",
+    "past": "Bureaucratic delays impeded the delivery of humanitarian aid.",
+    "part": "Access to education is impeded by high tuition fees."
+  },
+  "imply": {
+    "base": "These figures imply that the policy has had little real effect.",
+    "past": "The results implied a need for further investment in teacher training.",
+    "part": "A causal link is implied by the data but not proven."
+  },
+  "increase": {
+    "base": "Average temperatures increase as carbon emissions continue to rise.",
+    "past": "The proportion of women in parliament increased to 35 per cent.",
+    "part": "University fees have increased sharply over the last decade."
+  },
+  "induce": {
+    "base": "Bright screens at night induce changes in natural sleep patterns.",
+    "past": "The drug induced serious side effects in some patients.",
+    "part": "Higher wages have induced many workers to return to the sector."
+  },
+  "infer": {
+    "base": "We can infer from the data that demand will continue to grow.",
+    "past": "The authors inferred that the decline was linked to climate change.",
+    "part": "It can be inferred that older users prefer printed materials."
+  },
+  "inhibit": {
+    "base": "High levels of anxiety inhibit learning in the classroom.",
+    "past": "The chemical inhibited the growth of harmful bacteria.",
+    "part": "Economic recovery has been inhibited by rising public debt."
+  },
+  "insist": {
+    "base": "Critics insist that the policy discriminates against low-income families.",
+    "past": "The minister insisted that the reforms were absolutely necessary.",
+    "part": "Campaigners have long insisted on stricter pollution controls."
+  },
+  "intensify": {
+    "base": "Droughts intensify in many regions as global temperatures rise.",
+    "past": "Competition between the major supermarkets intensified during the recession.",
+    "part": "Efforts to reduce plastic waste have intensified in recent years."
+  },
+  "juxtapose": {
+    "base": "The documentary juxtaposes images of wealth with scenes of poverty.",
+    "past": "The author juxtaposed rural traditions with modern city life.",
+    "part": "Historical and modern buildings are juxtaposed throughout the old town."
+  },
+  "lag": {
+    "base": "Rural schools often lag behind urban schools in digital resources.",
+    "past": "Wages lagged behind inflation for most of the decade.",
+    "part": "Investment in infrastructure has lagged behind population growth."
+  },
+  "level off": {
+    "base": "Most experts expect that house prices will level off next year.",
+    "past": "Car sales levelled off at around two million a year.",
+    "part": "Population growth has levelled off in most European countries."
+  },
+  "liken": {
+    "base": "Some economists liken the current housing market to a bubble.",
+    "past": "The author likened the human brain to a computer.",
+    "part": "The internet has been likened to a modern printing press."
+  },
+  "link": {
+    "base": "Many studies link poor sleep to lower academic performance.",
+    "past": "Researchers linked the outbreak to contaminated food from a single supplier.",
+    "part": "Obesity has been linked to a range of serious diseases."
+  },
+  "list": {
+    "base": "Table 1 lists the main causes of road accidents in the region.",
+    "past": "Respondents listed cost as the main barrier to studying abroad.",
+    "part": "The key findings are listed below in order of importance."
+  },
+  "maintain": {
+    "base": "Some researchers maintain that homework has little educational value.",
+    "past": "The company maintained that its products were completely safe.",
+    "part": "It has long been maintained that bilingualism benefits cognitive development."
+  },
+  "measure": {
+    "base": "The survey measures levels of job satisfaction among public sector workers.",
+    "past": "Researchers measured air pollution at fifty sites across the city.",
+    "part": "Student progress is measured through a series of standardised tests."
+  },
+  "minimise": {
+    "base": "Careful planning minimises the environmental impact of new buildings.",
+    "past": "The company minimised waste by recycling all its packaging.",
+    "part": "The risk of infection has been minimised through strict hygiene rules."
+  },
+  "mirror": {
+    "base": "Trends in Canada closely mirror those in the United States.",
+    "past": "The fall in sales mirrored the wider economic slowdown.",
+    "part": "This pattern is mirrored in most developed economies."
+  },
+  "model": {
+    "base": "Economists model how interest rates affect household spending.",
+    "past": "The team modelled the spread of the virus across Europe.",
+    "part": "Future sea levels have been modelled under different emission scenarios."
+  },
+  "monitor": {
+    "base": "Satellites monitor changes in Arctic sea ice throughout the year.",
+    "past": "Doctors monitored the patients for six months after the treatment.",
+    "part": "Water quality in the river is monitored on a weekly basis."
+  },
+  "multiply": {
+    "base": "Bacteria multiply rapidly in warm and humid conditions.",
+    "past": "The number of mobile phone users multiplied in the early 2000s.",
+    "part": "The risks of flooding have multiplied as cities have expanded."
+  },
+  "narrow": {
+    "base": "The gender pay gap narrows as women reach senior positions.",
+    "past": "The gap between urban and rural incomes narrowed after 2005.",
+    "part": "The achievement gap has narrowed but has not disappeared."
+  },
+  "necessitate": {
+    "base": "An ageing population necessitates greater investment in healthcare.",
+    "past": "The rise in student numbers necessitated the construction of new campuses.",
+    "part": "Major reforms have been necessitated by the economic crisis."
+  },
+  "note": {
+    "base": "The author notes that urban gardens improve community wellbeing.",
+    "past": "Smith (2019) noted a sharp rise in youth unemployment.",
+    "part": "It should be noted that the data were self-reported."
+  },
+  "object": {
+    "base": "Many residents object to the construction of new wind farms.",
+    "past": "Local farmers objected to the proposed motorway through their land.",
+    "part": "Environmental groups have objected to the expansion of the airport."
+  },
+  "observe": {
+    "base": "Teachers observe that students concentrate better after physical activity.",
+    "past": "The researchers observed a significant increase in bird populations.",
+    "part": "Similar patterns have been observed in other European cities."
+  },
+  "oppose": {
+    "base": "Many teachers oppose the use of standardised tests in primary schools.",
+    "past": "Several developing countries opposed the new trade agreement at the summit.",
+    "part": "The plan has been opposed by environmental campaigners."
+  },
+  "organise": {
+    "base": "Good writers organise their ideas into clear, focused paragraphs.",
+    "past": "The author organised the chapters in chronological order.",
+    "part": "The report is organised into four main sections."
+  },
+  "outline": {
+    "base": "This section outlines the methods used to collect the data.",
+    "past": "The minister outlined plans to reform the tax system.",
+    "part": "The main arguments are outlined in the introduction."
+  },
+  "outnumber": {
+    "base": "Female students now outnumber male students at most universities.",
+    "past": "Imports outnumbered exports for the first time in 1985.",
+    "part": "Urban residents have outnumbered rural ones since 2007."
+  },
+  "outperform": {
+    "base": "Girls consistently outperform boys in national reading tests.",
+    "past": "Private schools outperformed state schools in the 2019 exams.",
+    "part": "Solar energy has outperformed expectations in recent years."
+  },
+  "outstrip": {
+    "base": "Demand for housing far outstrips supply in many large cities.",
+    "past": "Population growth outstripped food production in the 1960s.",
+    "part": "Wage growth has been outstripped by rising living costs."
+  },
+  "outweigh": {
+    "base": "In my view, the benefits of tourism outweigh its drawbacks.",
+    "past": "The advantages of the scheme outweighed its initial costs.",
+    "part": "Any risks are outweighed by the potential health benefits."
+  },
+  "overlap": {
+    "base": "The two academic disciplines overlap in several important areas.",
+    "past": "The research interests of the two teams overlapped considerably.",
+    "part": "Their responsibilities have overlapped since the two departments merged."
+  },
+  "pair": {
+    "base": "The study pairs each participant with a partner of similar age.",
+    "past": "Researchers paired each new student with an experienced mentor.",
+    "part": "Each treatment group was paired with a matching control group."
+  },
+  "parallel": {
+    "base": "The rise in obesity closely parallels the growth of fast food.",
+    "past": "In the twentieth century, economic growth paralleled improvements in public health.",
+    "part": "The increase in car ownership was paralleled by a decline in cycling."
+  },
+  "paraphrase": {
+    "base": "Good students paraphrase sources rather than copying them word for word.",
+    "past": "The writer paraphrased the original text without changing its meaning.",
+    "part": "All borrowed ideas have been paraphrased and properly referenced."
+  },
+  "peak": {
+    "base": "Electricity demand typically peaks in the early evening on weekdays.",
+    "past": "Oil production peaked at 10 million barrels a day in 2018.",
+    "part": "Global emissions have not yet peaked, according to the report."
+  },
+  "perceive": {
+    "base": "Many students perceive online learning as less engaging than lectures.",
+    "past": "Most respondents perceived the new tax as unfair to poorer families.",
+    "part": "Nuclear power is often perceived as dangerous by the public."
+  },
+  "persuade": {
+    "base": "Effective essays persuade the reader through clear and relevant evidence.",
+    "past": "The campaign persuaded thousands of people to stop smoking.",
+    "part": "Few voters have been persuaded by the government's arguments."
+  },
+  "pilot": {
+    "base": "Many universities pilot new teaching methods before introducing them more widely.",
+    "past": "The government piloted the programme in three northern cities.",
+    "part": "The questionnaire was piloted with a small group of volunteers."
+  },
+  "pinpoint": {
+    "base": "Genetic testing can pinpoint the source of the infection very quickly.",
+    "past": "The analysis pinpointed three regions with severe water shortages.",
+    "part": "The exact cause of the decline has not yet been pinpointed."
+  },
+  "plateau": {
+    "base": "Learning progress often plateaus after the first year of study.",
+    "past": "Life expectancy plateaued at around 81 years after 2015.",
+    "part": "Smartphone sales have plateaued in most developed markets."
+  },
+  "plot": {
+    "base": "The graph plots average income against years of education.",
+    "past": "The researchers plotted temperature changes over a fifty-year period.",
+    "part": "The results are plotted on the vertical axis of the graph."
+  },
+  "plummet": {
+    "base": "Share prices often plummet when a company issues a profit warning.",
+    "past": "Fish stocks plummeted after decades of overfishing in the North Sea.",
+    "part": "Public trust in politicians has plummeted in recent years."
+  },
+  "plunge": {
+    "base": "Temperatures plunge well below zero during the polar winter.",
+    "past": "Exports plunged by 30 per cent during the financial crisis.",
+    "part": "Profits have plunged since the start of the trade dispute."
+  },
+  "posit": {
+    "base": "The theory posits that humans are naturally cooperative.",
+    "past": "Freud posited the existence of the unconscious mind.",
+    "part": "A link between stress and illness has been posited by many scholars."
+  },
+  "postulate": {
+    "base": "Some scientists postulate that life may exist on other planets.",
+    "past": "Einstein postulated that the speed of light is constant.",
+    "part": "It has been postulated that diet influences brain development."
+  },
+  "precede": {
+    "base": "A brief introduction precedes each chapter of the report.",
+    "past": "A long period of drought preceded the famine.",
+    "part": "The financial crisis was preceded by a housing boom."
+  },
+  "preface": {
+    "base": "Writers often preface controversial claims with a note of caution.",
+    "past": "The author prefaced the study with a short historical overview.",
+    "part": "Each chapter is prefaced by a summary of its main points."
+  },
+  "presume": {
+    "base": "The model presumes that consumers always act rationally.",
+    "past": "Early researchers presumed that the disease was hereditary.",
+    "part": "It is often presumed that technology improves productivity."
+  },
+  "probe": {
+    "base": "The interviews probe participants' attitudes towards renewable energy and recycling.",
+    "past": "The study probed the reasons behind falling birth rates in Europe.",
+    "part": "These questions have been probed in several recent studies."
+  },
+  "project": {
+    "base": "Analysts project steady growth in renewable energy over the next decade.",
+    "past": "The report projected a sharp rise in housing costs.",
+    "part": "Car ownership is projected to double by 2040 in developing countries."
+  },
+  "prompt": {
+    "base": "Rising obesity rates prompt calls for a tax on sugary drinks.",
+    "past": "The findings prompted the government to review its policy.",
+    "part": "The study was prompted by concerns about teenage mental health."
+  },
+  "propose": {
+    "base": "This essay proposes a new approach to reducing traffic congestion.",
+    "past": "The committee proposed raising the minimum wage by five per cent.",
+    "part": "Several explanations have been proposed for the decline in bee populations."
+  },
+  "provoke": {
+    "base": "Proposals to raise fuel taxes often provoke strong public opposition.",
+    "past": "The decision provoked widespread protests across the country.",
+    "part": "Considerable controversy has been provoked by the new law."
+  },
+  "quantify": {
+    "base": "This study quantifies the economic cost of traffic congestion.",
+    "past": "The researchers quantified the health benefits of cycling to work.",
+    "part": "The environmental damage has never been fully quantified."
+  },
+  "question": {
+    "base": "Some experts question the reliability of online surveys.",
+    "past": "Critics questioned whether the policy would actually reduce crime.",
+    "part": "The accuracy of these figures has been questioned by economists."
+  },
+  "quote": {
+    "base": "Students should quote sources accurately and include page numbers.",
+    "past": "The article quoted several leading climate scientists from different countries.",
+    "part": "The minister was quoted as saying that taxes would rise."
+  },
+  "rank": {
+    "base": "The index ranks countries according to their quality of life.",
+    "past": "Respondents ranked job security as their top priority.",
+    "part": "Finland has been ranked first for education several times."
+  },
+  "rebound": {
+    "base": "Tourist numbers usually rebound quickly after a natural disaster.",
+    "past": "The economy rebounded strongly in the second half of the year.",
+    "part": "Consumer spending has rebounded to pre-pandemic levels in most regions."
+  },
+  "rebut": {
+    "base": "In the second section, the author rebuts each objection in turn.",
+    "past": "The minister rebutted claims that the hospital would close.",
+    "part": "These criticisms have been rebutted in several recent publications."
+  },
+  "recap": {
+    "base": "The final paragraph recaps the main points of the argument.",
+    "past": "The speaker recapped the key findings before taking questions.",
+    "part": "The main themes are recapped at the end of each chapter."
+  },
+  "recommend": {
+    "base": "The report recommends that schools reduce class sizes in the early years.",
+    "past": "Doctors recommended limiting screen time for young children.",
+    "part": "It is recommended that adults exercise for 150 minutes per week."
+  },
+  "recover": {
+    "base": "Markets recover slowly after a major financial shock.",
+    "past": "House prices recovered gradually after the 2008 crash.",
+    "part": "The tourism industry has not fully recovered from the crisis."
+  },
+  "recruit": {
+    "base": "Clinical trials often struggle to recruit enough elderly participants.",
+    "past": "The researchers recruited 300 volunteers from local universities.",
+    "part": "Participants were recruited through online advertisements and social media."
+  },
+  "reduce": {
+    "base": "Regular exercise significantly reduces the risk of heart disease.",
+    "past": "The city reduced traffic congestion by introducing a daily charge.",
+    "part": "Plastic bag use has been reduced by almost 90 per cent."
+  },
+  "refute": {
+    "base": "New evidence refutes the claim that vaccines cause autism.",
+    "past": "The scientist refuted the theory with detailed experimental data.",
+    "part": "This assumption has been refuted by numerous studies."
+  },
+  "reject": {
+    "base": "Most scientists reject the idea that intelligence is fixed at birth.",
+    "past": "Voters rejected the proposal in a national referendum.",
+    "part": "The null hypothesis was rejected at the five per cent level."
+  },
+  "remark": {
+    "base": "Several reviewers remark on the originality of the study.",
+    "past": "One participant remarked that the course was too theoretical.",
+    "part": "It has frequently been remarked that wealth does not guarantee happiness."
+  },
+  "render": {
+    "base": "Rapid technological change renders many traditional skills obsolete.",
+    "past": "The drought rendered large areas of farmland unusable.",
+    "part": "Many antibiotics have been rendered ineffective by overuse."
+  },
+  "rephrase": {
+    "base": "Strong candidates rephrase the question in their introduction.",
+    "past": "The researcher rephrased the question to avoid confusion.",
+    "part": "Several survey items were rephrased after the pilot study."
+  },
+  "report": {
+    "base": "Most respondents report higher stress levels at work than at home.",
+    "past": "The authors reported a 15 per cent improvement in test scores.",
+    "part": "Similar effects have been reported in older adults."
+  },
+  "resemble": {
+    "base": "The symptoms of the disease resemble those of the common cold.",
+    "past": "Early computers resembled large industrial machines rather than modern laptops.",
+    "part": "Political debate has increasingly resembled entertainment in recent years."
+  },
+  "restate": {
+    "base": "A strong conclusion restates the thesis in different words.",
+    "past": "The author restated her position in the final chapter.",
+    "part": "The main argument is restated briefly in the conclusion."
+  },
+  "result": {
+    "base": "Deforestation results in the loss of countless animal habitats.",
+    "past": "The new regulations resulted in a sharp drop in road accidents.",
+    "part": "Overfishing has resulted in the collapse of several fish stocks."
+  },
+  "retrieve": {
+    "base": "The software can retrieve patient records in a matter of seconds.",
+    "past": "Researchers retrieved archival documents from the national library.",
+    "part": "All relevant studies were retrieved from three online databases."
+  },
+  "reveal": {
+    "base": "The figures reveal a widening gap between rich and poor households.",
+    "past": "The survey revealed that most teenagers sleep less than eight hours.",
+    "part": "Brain scans have revealed clear changes in memory function."
+  },
+  "rival": {
+    "base": "Few cities rival London as a centre for international finance.",
+    "past": "In the 1980s, Japan's economy rivalled that of the United States.",
+    "part": "Its influence has rarely been rivalled by other universities."
+  },
+  "rocket": {
+    "base": "Energy prices rocket whenever supplies are seriously disrupted.",
+    "past": "Demand for face masks rocketed in early 2020.",
+    "part": "Rents have rocketed in major cities over the past decade."
+  },
+  "sample": {
+    "base": "Researchers usually sample a small proportion of the wider population.",
+    "past": "The study sampled 1,200 households across five different regions.",
+    "part": "Water was sampled from twenty sites along the river."
+  },
+  "segment": {
+    "base": "Marketers segment consumers by age, income and lifestyle.",
+    "past": "The analysts segmented the data by region and gender.",
+    "part": "The population was segmented into five income groups."
+  },
+  "signify": {
+    "base": "Rising house prices often signify a strengthening economy.",
+    "past": "The election result signified a major shift in public opinion.",
+    "part": "Such changes have long signified the start of an economic downturn."
+  },
+  "signpost": {
+    "base": "Effective writers signpost each new stage of their argument.",
+    "past": "The author signposted the main sections with clear headings.",
+    "part": "The structure of the essay is clearly signposted in the introduction."
+  },
+  "slump": {
+    "base": "Car sales slump whenever fuel prices rise significantly.",
+    "past": "Investment slumped to its lowest level in twenty years.",
+    "part": "Demand for coal has slumped across Western Europe."
+  },
+  "soar": {
+    "base": "Food prices soar when harvests fail across several major producers.",
+    "past": "Enrolment in online courses soared during the pandemic.",
+    "part": "Global temperatures have soared to record highs this decade."
+  },
+  "specify": {
+    "base": "The guidelines specify the minimum number of words required.",
+    "past": "The contract specified a completion date of March 2024.",
+    "part": "The criteria were clearly specified before the study began."
+  },
+  "spur": {
+    "base": "Government grants spur innovation in the clean energy sector.",
+    "past": "The oil crisis spurred research into alternative fuels.",
+    "part": "Economic growth has been spurred by foreign investment."
+  },
+  "stabilise": {
+    "base": "Inflation usually stabilises once interest rates are raised.",
+    "past": "The exchange rate stabilised after the central bank intervened.",
+    "part": "Unemployment has stabilised at around six per cent."
+  },
+  "stagnate": {
+    "base": "Economies often stagnate when investment in education declines.",
+    "past": "Real wages stagnated for most of the decade.",
+    "part": "Labour productivity has stagnated in many economies since the financial crisis."
+  },
+  "stem": {
+    "base": "Many health problems stem from poor living conditions.",
+    "past": "The conflict stemmed from a long-standing dispute over water.",
+    "part": "Much of the recent unrest has stemmed from rising food prices."
+  },
+  "strengthen": {
+    "base": "Reliable statistics strengthen any argument in an academic essay.",
+    "past": "The new data strengthened the case for a sugar tax.",
+    "part": "The theory has been strengthened by recent archaeological discoveries."
+  },
+  "stress": {
+    "base": "The authors stress the importance of early diagnosis and treatment.",
+    "past": "The minister stressed that the cuts were only temporary.",
+    "part": "The need for international cooperation has been repeatedly stressed."
+  },
+  "structure": {
+    "base": "Most students structure their essays around three main arguments.",
+    "past": "The author structured the report around four key themes.",
+    "part": "The interview was structured to encourage open responses."
+  },
+  "summarise": {
+    "base": "The final section summarises the key findings of the research.",
+    "past": "The author summarised the main arguments in the conclusion.",
+    "part": "The results of the survey are summarised in Table 1."
+  },
+  "supersede": {
+    "base": "New technologies supersede older ones at an ever faster rate.",
+    "past": "In the early 2000s, digital cameras quickly superseded traditional film cameras.",
+    "part": "This theory has since been superseded by more accurate models."
+  },
+  "surge": {
+    "base": "Electricity use surges during summer heatwaves in southern Europe.",
+    "past": "Applications to nursing courses surged by 30 per cent.",
+    "part": "Interest in electric cars has surged over the past two years."
+  },
+  "surpass": {
+    "base": "Global energy demand may soon surpass current production capacity.",
+    "past": "Sales surpassed expectations in the final quarter of the year.",
+    "part": "The previous temperature record has been surpassed three times this decade."
+  },
+  "survey": {
+    "base": "The national census surveys every household in the country once a decade.",
+    "past": "The researchers surveyed 2,000 adults about their reading habits.",
+    "part": "Over half of the students surveyed reported high levels of stress."
+  },
+  "sustain": {
+    "base": "Healthy ecosystems sustain a wide variety of plant and animal life.",
+    "past": "Strong exports sustained the national economy during the recession.",
+    "part": "Growth cannot be sustained without investment in skills."
+  },
+  "tabulate": {
+    "base": "Researchers tabulate the responses before carrying out statistical tests.",
+    "past": "The team tabulated the results by age group and gender.",
+    "part": "The main findings are tabulated below for easy comparison."
+  },
+  "term": {
+    "base": "Economists term this situation a 'liquidity trap' in their analyses.",
+    "past": "Early researchers termed the condition 'shell shock' during the First World War.",
+    "part": "This phenomenon has been termed 'digital addiction' by some psychologists."
+  },
+  "test": {
+    "base": "This experiment tests whether caffeine improves short-term memory in adults.",
+    "past": "The team tested the vaccine on more than 30,000 volunteers.",
+    "part": "The new drug has been tested extensively in clinical trials."
+  },
+  "theorise": {
+    "base": "Some psychologists theorise that personality is largely inherited.",
+    "past": "Early economists theorised about the causes of inflation.",
+    "part": "It has been theorised that the universe will continue expanding forever."
+  },
+  "total": {
+    "base": "The country's annual imports total around 400 billion dollars.",
+    "past": "Government spending on health totalled 150 billion pounds in 2020.",
+    "part": "By 2015, losses had totalled more than five million euros."
+  },
+  "trace": {
+    "base": "Historians trace the roots of the welfare state to the 1940s.",
+    "past": "Scientists traced the outbreak to a contaminated water supply.",
+    "part": "The decline has been traced to changes in farming practices."
+  },
+  "track": {
+    "base": "Longitudinal studies track the same individuals over many years.",
+    "past": "The study tracked graduates' earnings for a decade after university.",
+    "part": "Household spending has been tracked since the early 1990s."
+  },
+  "trigger": {
+    "base": "Stressful events can trigger anxiety in young people.",
+    "past": "The report triggered a national debate on education funding.",
+    "part": "The crisis was triggered by a collapse in housing prices."
+  },
+  "triple": {
+    "base": "Sales of solar panels triple roughly every five years.",
+    "past": "The number of international students tripled between 2000 and 2020.",
+    "part": "Average energy bills have almost tripled since 2021."
+  },
+  "underestimate": {
+    "base": "Many governments underestimate the long-term costs of an ageing population.",
+    "past": "Planners underestimated the number of commuters using the new line.",
+    "part": "The risks of climate change have been seriously underestimated."
+  },
+  "underline": {
+    "base": "These findings underline the need for better public transport.",
+    "past": "The crisis underlined the importance of food security.",
+    "part": "The value of early education has been underlined by recent research."
+  },
+  "verify": {
+    "base": "Journalists should verify information carefully before publishing it online.",
+    "past": "A second laboratory later verified the original measurements and calculations.",
+    "part": "These claims have not been independently verified by other researchers."
+  },
+  "warn": {
+    "base": "Scientists warn that coral reefs could disappear by 2050.",
+    "past": "Economists warned of a recession if interest rates rose further.",
+    "part": "Governments have been warned about the risks of rising sea levels."
+  },
+  "warrant": {
+    "base": "These unexpected results warrant further investigation by independent teams.",
+    "past": "The scale of the problem warranted urgent government action.",
+    "part": "Such a drastic response is not warranted by the evidence."
+  },
+  "weaken": {
+    "base": "The small sample size weakens the study's conclusions.",
+    "past": "Inconsistent data weakened the case for the new policy.",
+    "part": "The argument is weakened by a lack of reliable evidence."
+  },
+  "widen": {
+    "base": "The gap between rich and poor widens during economic downturns.",
+    "past": "The trade deficit widened to eight per cent of GDP.",
+    "part": "Income inequality has widened in most developed countries."
+  },
+  "worsen": {
+    "base": "Air quality worsens in winter when people burn more fuel.",
+    "past": "Living conditions worsened after the main factory closed.",
+    "part": "The shortage of teachers has worsened in rural areas."
+  },
+  "yield": {
+    "base": "The new method yields more accurate results than previous approaches.",
+    "past": "The experiment yielded unexpected results that challenged existing theory.",
+    "part": "The survey has yielded valuable insights into consumer behaviour."
   }
 }

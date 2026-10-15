@@ -189,6 +189,24 @@ export interface LabVerb {
   emoji: string;
   type: 'irregular' | 'regular';
   sound?: EdSound;
+  /** Also in the C1 academic verb bank (academic-verbs.json). */
+  c1?: boolean;
+}
+
+/** What an academic verb does in a text — the sections of the C1 bank. */
+export type AcademicGroup = 'research' | 'analysis' | 'trends' | 'cause' | 'argument' | 'reporting' | 'comparison' | 'structure';
+
+export interface AcademicVerb extends LabVerb {
+  group: AcademicGroup;
+  def: string;
+  /** Key grammar pattern, e.g. "attribute sth to sth". */
+  pattern: string;
+  collocations: string[];
+  /** The plainer word a learner would otherwise use ("" when none fits). */
+  informal: string;
+  /** US spelling when it differs (analyse → analyze). */
+  us?: string;
+  ex: { base: string; past: string; part: string };
 }
 
 export interface PhrasalFamily {
