@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Sentence Builder · ECYR English</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+<link rel="stylesheet" href="../_arcade/arcade.css" />
+<style>
+  body { --accent: #5856d6; --accent-2: #af52de; }
+  .q-card { display: grid; gap: 14px; }
+  .q-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .hint-btn { font-size: 14px; }
+  .hint { margin: 0; padding: 10px 14px; border-radius: 14px; background: var(--card-2); color: var(--label-2); font-size: 16px; }
+  .hint b { color: var(--label); }
+  .answer {
+    min-height: 120px; padding: 12px; border-radius: 18px;
+    border: 2px dashed var(--sep); background: var(--card-2);
+    display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px; align-items: center;
+    transition: border-color .2s, background .2s;
+  }
+  .answer.empty::before { content: 'Toca las palabras en orden…'; color: var(--label-3); font-size: 16px; padding: 8px 4px; }
+  .answer.right { border-color: var(--green); border-style: solid; background: color-mix(in srgb, var(--green) 10%, var(--card)); }
+  .answer.wrong { border-color: var(--red); border-style: solid; background: color-mix(in srgb, var(--red) 8%, var(--card)); }
+  .punct { font-size: 26px; font-weight: 800; color: var(--label-2); margin-left: -4px; }
+  .bank { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; min-height: 56px; }
+  .tile {
+    min-height: 48px; padding: 0 16px; border-radius: 14px;
+    font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+    background: var(--card); color: var(--label);
+    box-shadow: 0 1px 0 var(--sep), 0 4px 0 color-mix(in srgb, var(--accent) 30%, var(--sep)), var(--shadow);
+    border: 1.5px solid color-mix(in srgb, var(--accent) 22%, var(--sep));
+    transition: transform .12s, opacity .2s;
+    animation: pop .28s cubic-bezier(.2,1.6,.4,1);
+  }
+  .tile:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--sep); }
+  .tile.used { visibility: hidden; }
+  .answer .tile { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border-color: transparent; box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .answer .tile.ok { background: var(--green); }
+  .answer .tile.ko { background: var(--red); }
+  .feedback { display: grid; gap: 8px; padding: 14px 16px; border-radius: 18px; animation: pop .3s cubic-bezier(.2,1.4,.4,1); }
+  .feedback.ok { background: color-mix(in srgb, var(--green) 14%, var(--card)); }
+  .feedback.ko { background: color-mix(in srgb, var(--red) 11%, var(--card)); }
+  .feedback strong { font-size: 20px; }
+  .feedback .sol { font-size: 19px; font-weight: 700; }
+  .feedback .es { color: var(--label-2); font-size: 15px; }
+  .hud-row { display: flex; align-items: center; gap: 10px; }
+  .hud-row .progress { flex: 1; }
+  @media (max-width: 380px) { .tile { font-size: 18px; padding: 0 12px; min-height: 44px; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">🧩</span><span>Sentence Builder</span></div>
+    <button class="icon-btn" id="menuBtn" aria-label="Menú" title="Menú" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <button class="icon-btn" id="muteBtn"></button>
+  </header>
+
+  <!-- start -->
+  <section class="screen" id="start">
+    <div class="hero">
+      <div class="hero-icon">🧩</div>
+      <h1>Sentence Builder</h1>
+      <p>Ordena las palabras y construye frases correctas en inglés.</p>
+    </div>
+    <div class="card">
+      <h2>Cómo se juega</h2>
+      <ol class="howto">
+        <li><span class="n">1</span><span>Verás una frase <b>desordenada</b> en fichas.</span></li>
+        <li><span class="n">2</span><span><b>Toca las fichas en orden</b> para armarla. Toca una ficha colocada para quitarla.</span></li>
+        <li><span class="n">3</span><span>Pulsa <b>Comprobar</b>. ¿Atascado? Usa la pista 🇪🇸 con la traducción (vale menos puntos).</span></li>
+        <li><span class="n">4</span><span>10 frases por ronda. ¡Consigue las 3 estrellas!</span></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>Elige tu nivel</h2>
+      <div class="seg" id="levelSeg"></div>
+      <div class="seg-note" id="levelNote"></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="startBtn">Empezar ▶</button>
+  </section>
+
+  <!-- play -->
+  <section class="screen" id="play" hidden>
+    <div class="hud-row">
+      <span class="pill" id="hudCount">1/10</span>
+      <div class="progress"><i id="bar"></i></div>
+      <span class="pill">⭐ <span id="hudScore">0</span></span>
+    </div>
+    <div class="card q-card" id="qCard">
+      <div class="q-head">
+        <span class="tag" id="topic">topic</span>
+        <button class="btn btn-tinted btn-sm hint-btn" id="hintBtn">🇪🇸 Pista</button>
+      </div>
+      <p class="hint" id="hint" hidden></p>
+      <div class="answer empty" id="answer" aria-live="polite"></div>
+      <div class="bank" id="bank"></div>
+    </div>
+    <div id="feedback" hidden></div>
+    <div class="btn-row" id="actions">
+      <button class="btn btn-secondary" id="clearBtn">Borrar</button>
+      <button class="btn btn-primary" id="checkBtn" disabled>Comprobar</button>
+    </div>
+    <button class="btn btn-primary btn-block" id="nextBtn" hidden>Siguiente →</button>
+  </section>
+
+  <!-- end -->
+  <section class="screen" id="end" hidden>
+    <div id="endBody" style="display:grid;gap:16px"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="menuEndBtn">Cambiar nivel</button>
+      <button class="btn btn-primary" id="againBtn">Jugar otra vez</button>
+    </div>
+  </section>
+</div>
+
+<script src="../_bridge/ecyr-bridge.js" data-slug="sentence-builder"></script>
+<script src="../_arcade/arcade.js"></script>
+<script src="data.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
