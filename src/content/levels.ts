@@ -1,4 +1,4 @@
-import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide, VerbLabData, AcademicVerb } from './types';
+import type { CefrLevel, LevelBook, CourseUnit, PhrasalVerb, JeopardyTopic, TravelGuide, VerbLabData, AcademicVerb, WritingTask } from './types';
 
 export interface LevelMeta {
   id: CefrLevel;
@@ -87,7 +87,13 @@ const loaders: Record<CefrLevel, () => Promise<{ default: unknown }>> = {
   A2: () => import('./generated/level-a2.json'),
   B1: () => import('./generated/level-b1.json'),
   B2: () => import('./generated/level-b2.json'),
-  C1: () => import('./generated/level-c1.json'),
+  // The C1 book has no writing tasks; ours (c1-writing.json) are added to its units.
+  C1: () =>
+    Promise.all([import('./generated/level-c1.json'), import('./c1-writing.json')]).then(([book, extra]) => {
+      const tasks = extra.default as Record<string, WritingTask>;
+      const b = book.default as unknown as LevelBook;
+      return { default: { ...b, units: b.units.map((u) => (u.writing ? u : { ...u, writing: tasks[String(u.n)] })) } };
+    }),
 };
 
 const cache = new Map<string, Promise<unknown>>();

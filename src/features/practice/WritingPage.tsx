@@ -10,8 +10,8 @@ import type { CefrLevel } from '@/content/types';
 import { cn } from '@/lib/cn';
 import { unitTitle } from '../learn/LevelPage';
 
-// C1 has no writing tasks in the source books yet.
-const WRITING_LEVELS: CefrLevel[] = ['A1', 'A2', 'B1', 'B2'];
+// C1's tasks are ECYR's own (src/content/c1-writing.json); the rest come from the books.
+const WRITING_LEVELS: CefrLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
 export default function WritingPage() {
   const [level, setLevel] = useState<CefrLevel>('A1');
