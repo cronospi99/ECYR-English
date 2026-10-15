@@ -1,1 +1,3752 @@
-{}
+{
+  "arise": {
+    "base": "Problems often arise when people don't communicate.",
+    "past": "A new problem arose at work yesterday.",
+    "part": "Several questions have arisen since the meeting."
+  },
+  "awake": {
+    "base": "I usually awake before my alarm goes off.",
+    "past": "She awoke early yesterday and watched the sunrise.",
+    "part": "The baby has awoken from her nap."
+  },
+  "be": {
+    "base": "Please be quiet in the library.",
+    "past": "I was very tired last night.",
+    "part": "We have been friends for ten years."
+  },
+  "bear": {
+    "base": "I can't bear this noise any longer.",
+    "past": "She bore the pain bravely last year.",
+    "part": "The costs will be borne by the company."
+  },
+  "beat": {
+    "base": "We always beat them at football.",
+    "past": "Our team beat the champions last Sunday.",
+    "part": "They have never been beaten at home."
+  },
+  "become": {
+    "base": "I want to become a doctor one day.",
+    "past": "He became a teacher in 2019.",
+    "part": "She has become very popular at school."
+  },
+  "begin": {
+    "base": "Classes begin at nine every morning.",
+    "past": "The movie began ten minutes ago.",
+    "part": "Have you begun your homework yet?"
+  },
+  "bend": {
+    "base": "Bend your knees when you lift heavy boxes.",
+    "past": "He bent down to tie his shoes yesterday.",
+    "part": "The metal bar has bent under the weight."
+  },
+  "bet": {
+    "base": "I bet you can't finish that pizza.",
+    "past": "I bet ten dollars on the game last night.",
+    "part": "He has bet on the same team for years."
+  },
+  "bind": {
+    "base": "We bind the old magazines with string.",
+    "past": "They bound the books in leather last month.",
+    "part": "The pages have been bound into a single volume."
+  },
+  "bid": {
+    "base": "I want to bid on that old guitar.",
+    "past": "She bid fifty euros at the auction yesterday.",
+    "part": "Three people have bid on the painting so far."
+  },
+  "bite": {
+    "base": "Some dogs bite when they are scared.",
+    "past": "A mosquito bit me last night.",
+    "part": "Have you ever been bitten by a snake?"
+  },
+  "bleed": {
+    "base": "Small cuts can bleed a lot.",
+    "past": "My nose bled during the flight yesterday.",
+    "part": "His knee has bled through the bandage."
+  },
+  "blow": {
+    "base": "Blow out the candles and make a wish!",
+    "past": "The wind blew all night long.",
+    "part": "The storm has blown the fence down."
+  },
+  "break": {
+    "base": "Be careful not to break the glasses.",
+    "past": "I broke my phone screen last week.",
+    "part": "Someone has broken the classroom window."
+  },
+  "breed": {
+    "base": "My uncle and aunt breed horses on their farm.",
+    "past": "They bred rabbits when I was a child.",
+    "part": "These dogs have been bred for hunting."
+  },
+  "bring": {
+    "base": "Please bring your notebook to class.",
+    "past": "She brought a cake to the party yesterday.",
+    "part": "Have you brought your passport?"
+  },
+  "broadcast": {
+    "base": "They broadcast the news every hour.",
+    "past": "The station broadcast the final match last night.",
+    "part": "The concert has been broadcast around the world."
+  },
+  "build": {
+    "base": "Birds build nests in the spring.",
+    "past": "My grandfather built this house in 1965.",
+    "part": "A new bridge has been built over the river."
+  },
+  "burn": {
+    "base": "Don't burn the toast again!",
+    "past": "I burnt my finger on the stove yesterday.",
+    "part": "The old letters have all been burnt."
+  },
+  "burst": {
+    "base": "Balloons burst if you blow them too much.",
+    "past": "The pipe burst during the cold night.",
+    "part": "The river has burst its banks again."
+  },
+  "buy": {
+    "base": "I need to buy some bread.",
+    "past": "We bought a new car last month.",
+    "part": "Have you bought the tickets yet?"
+  },
+  "cast": {
+    "base": "Fishermen cast their nets early in the morning.",
+    "past": "The tree cast a long shadow yesterday evening.",
+    "part": "Everyone has cast a vote in the election."
+  },
+  "catch": {
+    "base": "Try to catch the ball with both hands.",
+    "past": "I caught the last bus last night.",
+    "part": "The police have caught the thief."
+  },
+  "come": {
+    "base": "Come to my house after school.",
+    "past": "My cousins came to visit last weekend.",
+    "part": "Summer has finally come to our town!"
+  },
+  "cost": {
+    "base": "How much do these shoes cost?",
+    "past": "The repairs cost a lot last year.",
+    "part": "The delay has cost us a lot of time."
+  },
+  "cut": {
+    "base": "Cut the paper into four pieces.",
+    "past": "I cut my hair short last week.",
+    "part": "Has anyone cut the grass this week?"
+  },
+  "choose": {
+    "base": "You can choose any color you like.",
+    "past": "We chose the blue sofa yesterday.",
+    "part": "Have you chosen a name for the puppy?"
+  },
+  "cling": {
+    "base": "Little kids often cling to their parents.",
+    "past": "The cat clung to the tree branch yesterday.",
+    "part": "The wet shirt had clung to his back."
+  },
+  "creep": {
+    "base": "We creep downstairs quietly on Christmas morning.",
+    "past": "The cat crept up on the bird yesterday.",
+    "part": "Doubt has crept into her mind."
+  },
+  "deal": {
+    "base": "I deal with customers every day.",
+    "past": "She dealt with the problem quickly yesterday.",
+    "part": "Has the manager dealt with your complaint?"
+  },
+  "dig": {
+    "base": "Dogs love to dig holes in the garden.",
+    "past": "We dug a big hole for the tree yesterday.",
+    "part": "The workers have dug a tunnel under the road."
+  },
+  "do": {
+    "base": "I do my homework after dinner.",
+    "past": "We did a lot of shopping last weekend.",
+    "part": "Have you done the dishes yet?"
+  },
+  "draw": {
+    "base": "Can you draw a cat for me?",
+    "past": "She drew a map for us yesterday.",
+    "part": "The children have drawn pictures of their families."
+  },
+  "dream": {
+    "base": "I often dream about flying.",
+    "past": "I dreamt about the ocean last night.",
+    "part": "She has always dreamt of visiting Japan."
+  },
+  "drink": {
+    "base": "You should drink more water.",
+    "past": "We drank hot chocolate after skiing yesterday.",
+    "part": "Have you drunk all the milk?"
+  },
+  "drive": {
+    "base": "I drive to work every day.",
+    "past": "We drove to the beach last Saturday.",
+    "part": "She has driven that car for ten years."
+  },
+  "eat": {
+    "base": "We eat lunch at one o'clock.",
+    "past": "I ate too much cake yesterday.",
+    "part": "Have you ever eaten sushi?"
+  },
+  "fall": {
+    "base": "Leaves fall from the trees in autumn.",
+    "past": "He fell off his bike last week.",
+    "part": "Prices have fallen since January."
+  },
+  "feed": {
+    "base": "Don't forget to feed the cat.",
+    "past": "We fed the ducks at the park yesterday.",
+    "part": "Has anyone fed the dog this morning?"
+  },
+  "feel": {
+    "base": "I feel much better today.",
+    "past": "She felt nervous before the exam yesterday.",
+    "part": "I have never felt so happy."
+  },
+  "fight": {
+    "base": "My brothers fight over the remote control.",
+    "past": "The two cats fought in the garden last night.",
+    "part": "She has fought hard for this promotion."
+  },
+  "find": {
+    "base": "I can't find my keys anywhere.",
+    "past": "We found a wallet on the street yesterday.",
+    "part": "Have you found a new apartment yet?"
+  },
+  "flee": {
+    "base": "Animals flee when they sense danger.",
+    "past": "The thief fled before the police arrived.",
+    "part": "Many families have fled the floods."
+  },
+  "fly": {
+    "base": "I want to fly to Paris next summer.",
+    "past": "We flew to Mexico last year.",
+    "part": "Have you ever flown in a helicopter?"
+  },
+  "forbid": {
+    "base": "My parents forbid phones at the dinner table.",
+    "past": "The teacher forbade talking during the test yesterday.",
+    "part": "Smoking is forbidden inside the building."
+  },
+  "forget": {
+    "base": "Don't forget to call your grandmother.",
+    "past": "I forgot my umbrella this morning.",
+    "part": "Have you forgotten my birthday again?"
+  },
+  "forgive": {
+    "base": "Please forgive me for being late.",
+    "past": "She forgave her brother after their argument yesterday.",
+    "part": "He has never forgiven himself for that mistake."
+  },
+  "freeze": {
+    "base": "Water and juice freeze at low temperatures.",
+    "past": "The lake froze completely last winter.",
+    "part": "The pipes have frozen again."
+  },
+  "get": {
+    "base": "I get up at seven every morning.",
+    "past": "I got a nice present last week.",
+    "part": "She has got a new job in the city."
+  },
+  "give": {
+    "base": "Give me a call when you arrive.",
+    "past": "My aunt gave me a book yesterday.",
+    "part": "They have given us a lot of help."
+  },
+  "go": {
+    "base": "We go to the gym on Mondays.",
+    "past": "We went to the cinema last night.",
+    "part": "She has gone to the supermarket."
+  },
+  "grow": {
+    "base": "Tomatoes grow well in sunny places.",
+    "past": "My little brother grew a lot last year.",
+    "part": "The city has grown very quickly."
+  },
+  "grind": {
+    "base": "I grind fresh coffee beans every morning.",
+    "past": "She ground some pepper over the pasta yesterday.",
+    "part": "The wheat has been ground into flour."
+  },
+  "hang": {
+    "base": "Hang your coat on the hook, please.",
+    "past": "We hung the picture above the sofa last week.",
+    "part": "The paintings have been hung in the hall."
+  },
+  "have": {
+    "base": "I have two sisters and a brother.",
+    "past": "We had a great time at the party yesterday.",
+    "part": "I have had this bike since I was ten."
+  },
+  "hear": {
+    "base": "Can you hear that strange noise?",
+    "past": "I heard a funny story yesterday.",
+    "part": "Have you heard the news?"
+  },
+  "hide": {
+    "base": "Kids love to hide under the bed.",
+    "past": "She hid the presents in the closet last night.",
+    "part": "The treasure has been hidden for centuries."
+  },
+  "hit": {
+    "base": "Try to hit the ball harder.",
+    "past": "He hit his head on the door yesterday.",
+    "part": "The town has been hit by a big storm."
+  },
+  "hold": {
+    "base": "Hold my hand when we cross the street.",
+    "past": "They held a meeting last Friday.",
+    "part": "The festival has been held here since 1990."
+  },
+  "hurt": {
+    "base": "My feet hurt after the long walk.",
+    "past": "I hurt my back last week.",
+    "part": "Nobody has been hurt in the accident."
+  },
+  "keep": {
+    "base": "Please keep the door closed.",
+    "past": "She kept all his letters for years.",
+    "part": "Have you kept the receipt?"
+  },
+  "know": {
+    "base": "I know the answer to that question.",
+    "past": "I knew her when we were children.",
+    "part": "We have known each other since school."
+  },
+  "kneel": {
+    "base": "Kneel down so you can see under the table.",
+    "past": "He knelt beside the bed last night.",
+    "part": "She had knelt on the floor to clean it."
+  },
+  "knit": {
+    "base": "My grandmother likes to knit scarves.",
+    "past": "She knit me a warm sweater last winter.",
+    "part": "This blanket was knit by hand."
+  },
+  "lay": {
+    "base": "Lay the baby gently on the bed.",
+    "past": "She laid the plates on the table last night.",
+    "part": "The hens have laid six eggs today."
+  },
+  "lead": {
+    "base": "Good teachers lead by example.",
+    "past": "She led the team to victory last season.",
+    "part": "The guide has led tours here for years."
+  },
+  "lean": {
+    "base": "Don't lean on the wet wall.",
+    "past": "He leant against the car yesterday.",
+    "part": "She had leant her bike against the tree."
+  },
+  "leap": {
+    "base": "Watch the frogs leap into the pond.",
+    "past": "The cat leapt onto the table last night.",
+    "part": "The dog has leapt over the fence again."
+  },
+  "learn": {
+    "base": "I want to learn how to swim.",
+    "past": "I learnt a new word yesterday.",
+    "part": "She has learnt a lot this year."
+  },
+  "leave": {
+    "base": "We leave for school at eight.",
+    "past": "He left the party early last night.",
+    "part": "The train has already left."
+  },
+  "lend": {
+    "base": "Can you lend me your pen?",
+    "past": "She lent me her bike last weekend.",
+    "part": "I have lent my car to my brother."
+  },
+  "let": {
+    "base": "Let me help you with those bags.",
+    "past": "My mom let us stay up late last night.",
+    "part": "We have let the kids stay up late tonight."
+  },
+  "lie": {
+    "base": "I like to lie on the grass and relax.",
+    "past": "She lay on the beach all afternoon yesterday.",
+    "part": "He has lain in bed all morning."
+  },
+  "light": {
+    "base": "Let's light the candles for dinner.",
+    "past": "We lit a fire on the beach last night.",
+    "part": "The streets are lit by colorful lamps."
+  },
+  "lose": {
+    "base": "I always lose my sunglasses.",
+    "past": "We lost the game last Saturday.",
+    "part": "Have you lost your keys again?"
+  },
+  "make": {
+    "base": "Let's make pancakes for breakfast.",
+    "past": "She made a beautiful cake yesterday.",
+    "part": "I have made a lot of new friends."
+  },
+  "mean": {
+    "base": "What does this word mean?",
+    "past": "I meant to call you yesterday.",
+    "part": "I have always meant to learn the guitar."
+  },
+  "meet": {
+    "base": "Let's meet at the café at five.",
+    "past": "I met my best friend in 2015.",
+    "part": "Have you met my parents?"
+  },
+  "mistake": {
+    "base": "People often mistake me for my sister.",
+    "past": "I mistook him for a teacher yesterday.",
+    "part": "Sorry, I have mistaken you for someone else."
+  },
+  "overcome": {
+    "base": "We can overcome any problem together.",
+    "past": "She overcame her fear of flying last year.",
+    "part": "He has overcome many difficulties in life."
+  },
+  "pay": {
+    "base": "Can I pay by card?",
+    "past": "We paid the bill last night.",
+    "part": "Have you paid the rent this month?"
+  },
+  "put": {
+    "base": "Put your shoes by the door, please.",
+    "past": "I put the milk in the fridge an hour ago.",
+    "part": "Who has put my book on the floor?"
+  },
+  "read": {
+    "base": "I read before I go to sleep.",
+    "past": "I read a great novel last summer.",
+    "part": "Have you read the instructions?"
+  },
+  "ride": {
+    "base": "I ride my bike to school.",
+    "past": "We rode horses on the beach last summer.",
+    "part": "Have you ever ridden a camel?"
+  },
+  "ring": {
+    "base": "Ring the bell when you arrive.",
+    "past": "My phone rang during the movie yesterday.",
+    "part": "The school bell has already rung."
+  },
+  "rise": {
+    "base": "Prices rise a little every year.",
+    "past": "The sun rose at six this morning.",
+    "part": "The river has risen after the heavy rain."
+  },
+  "run": {
+    "base": "I run in the park every morning.",
+    "past": "She ran five kilometers yesterday.",
+    "part": "He has run three marathons."
+  },
+  "say": {
+    "base": "What did you say? I couldn't hear you.",
+    "past": "She said hello to everyone yesterday.",
+    "part": "Have you said thank you to your aunt?"
+  },
+  "see": {
+    "base": "I can see the mountains from my window.",
+    "past": "We saw a great film last night.",
+    "part": "Have you seen my glasses?"
+  },
+  "seek": {
+    "base": "Many young people seek jobs abroad.",
+    "past": "They sought help from a doctor last week.",
+    "part": "She has sought advice from her teacher."
+  },
+  "sell": {
+    "base": "They sell fresh fruit at the market.",
+    "past": "We sold our old car last month.",
+    "part": "All the tickets have been sold."
+  },
+  "send": {
+    "base": "Send me a message when you arrive.",
+    "past": "I sent her a postcard last week.",
+    "part": "Have you sent the email yet?"
+  },
+  "set": {
+    "base": "Please set the table for dinner.",
+    "past": "The sun set at eight yesterday.",
+    "part": "I have set my alarm for six."
+  },
+  "sew": {
+    "base": "My dad likes to sew his own buttons.",
+    "past": "She sewed a dress for her daughter last month.",
+    "part": "The patch has been sewed onto the jacket."
+  },
+  "shake": {
+    "base": "Shake the bottle before you open it.",
+    "past": "We shook hands after the game yesterday.",
+    "part": "She was shaken by the bad news."
+  },
+  "shear": {
+    "base": "Farmers shear their sheep in spring.",
+    "past": "The farmer shore the sheep last spring.",
+    "part": "The sheep have been shorn for the summer."
+  },
+  "shine": {
+    "base": "The stars shine brightly in the desert.",
+    "past": "The sun shone all day yesterday.",
+    "part": "The sun has shone every day this week."
+  },
+  "shoot": {
+    "base": "Try to shoot the ball into the net.",
+    "past": "He shot a great goal last night.",
+    "part": "The film was shot in New Zealand."
+  },
+  "show": {
+    "base": "Show me your new phone!",
+    "past": "She showed us her photos yesterday.",
+    "part": "The results have been shown to the class."
+  },
+  "shrink": {
+    "base": "Wool sweaters shrink in hot water.",
+    "past": "My T-shirt shrank in the wash last week.",
+    "part": "The company has shrunk in recent years."
+  },
+  "shut": {
+    "base": "Please shut the window; it's cold.",
+    "past": "The shop shut early yesterday.",
+    "part": "The museum has been shut for repairs."
+  },
+  "sing": {
+    "base": "We sing together in the car.",
+    "past": "She sang a beautiful song last night.",
+    "part": "Have you ever sung in a choir?"
+  },
+  "sink": {
+    "base": "Heavy stones sink in water.",
+    "past": "The old boat sank in the storm last year.",
+    "part": "The ship has sunk to the bottom of the sea."
+  },
+  "sit": {
+    "base": "Sit down and make yourself comfortable.",
+    "past": "We sat by the fire last night.",
+    "part": "She has sat in that chair all afternoon."
+  },
+  "sleep": {
+    "base": "I sleep eight hours every night.",
+    "past": "I slept very badly last night.",
+    "part": "Have you slept well in the new bed?"
+  },
+  "slide": {
+    "base": "Kids love to slide down the hill in winter.",
+    "past": "The car slid on the ice yesterday.",
+    "part": "The book had slid under the sofa."
+  },
+  "smell": {
+    "base": "I love to smell fresh bread.",
+    "past": "The kitchen smelt of coffee this morning.",
+    "part": "I have never smelt anything so delicious."
+  },
+  "sow": {
+    "base": "We sow the seeds in early spring.",
+    "past": "My grandfather sowed wheat last autumn.",
+    "part": "The field has been sowed with corn."
+  },
+  "speak": {
+    "base": "I speak English and Spanish.",
+    "past": "She spoke to the manager yesterday.",
+    "part": "Have you spoken to your teacher?"
+  },
+  "speed": {
+    "base": "Don't speed on wet roads.",
+    "past": "The car sped past us a minute ago.",
+    "part": "The new software has sped up our work."
+  },
+  "spell": {
+    "base": "How do you spell your last name?",
+    "past": "I spelt his name wrong yesterday.",
+    "part": "Your name has been spelt correctly."
+  },
+  "spend": {
+    "base": "I spend a lot of time reading.",
+    "past": "We spent the weekend at the beach.",
+    "part": "She has spent all her money."
+  },
+  "spill": {
+    "base": "Be careful not to spill your juice.",
+    "past": "I spilt coffee on my shirt this morning.",
+    "part": "Someone has spilt water on the floor."
+  },
+  "spin": {
+    "base": "Watch the wheel spin around and around.",
+    "past": "She spun the wool into thread yesterday.",
+    "part": "The spider has spun a huge web."
+  },
+  "spit": {
+    "base": "Please don't spit on the sidewalk.",
+    "past": "The baby spat out her food at lunch.",
+    "part": "The child had spat out the medicine."
+  },
+  "split": {
+    "base": "Let's split the bill between us.",
+    "past": "We split the pizza into eight slices last night.",
+    "part": "The class has been split into two groups."
+  },
+  "spoil": {
+    "base": "Don't spoil the ending of the movie!",
+    "past": "The rain spoilt our picnic last Sunday.",
+    "part": "My grandparents have spoilt the kids all weekend."
+  },
+  "spread": {
+    "base": "Spread some butter on your toast.",
+    "past": "The news spread quickly last week.",
+    "part": "The fire has spread to the next building."
+  },
+  "spring": {
+    "base": "Cats can spring very high.",
+    "past": "The dog sprang out of the bushes yesterday.",
+    "part": "New cafés have sprung up all over town."
+  },
+  "stand": {
+    "base": "Please stand in line and wait your turn.",
+    "past": "We stood in the rain for an hour yesterday.",
+    "part": "This old tree has stood here for centuries."
+  },
+  "steal": {
+    "base": "It's wrong to steal from others.",
+    "past": "Someone stole my bike last night.",
+    "part": "My wallet has been stolen!"
+  },
+  "stick": {
+    "base": "Stick the stamp on the envelope.",
+    "past": "I stuck a note on the fridge this morning.",
+    "part": "I have stuck all the photos in my album."
+  },
+  "sting": {
+    "base": "Bees only sting when they feel threatened.",
+    "past": "A wasp stung me at the picnic yesterday.",
+    "part": "Have you ever been stung by a jellyfish?"
+  },
+  "stink": {
+    "base": "These old shoes really stink.",
+    "past": "The fish market stank in the heat yesterday.",
+    "part": "The fridge has stunk since the power cut."
+  },
+  "stride": {
+    "base": "I like to stride quickly along the beach.",
+    "past": "She strode into the room a minute ago.",
+    "part": "He had stridden across the field in seconds."
+  },
+  "strike": {
+    "base": "Lightning can strike the same place twice.",
+    "past": "The clock struck midnight as we left.",
+    "part": "The village was struck by a storm."
+  },
+  "swear": {
+    "base": "I swear I didn't take your cookies.",
+    "past": "He swore to tell the truth yesterday.",
+    "part": "She has sworn to keep the secret."
+  },
+  "sweat": {
+    "base": "I sweat a lot when I run.",
+    "past": "We sweat all day in the heat last summer.",
+    "part": "He had sweat through his shirt by noon."
+  },
+  "sweep": {
+    "base": "Please sweep the kitchen floor.",
+    "past": "I swept the leaves from the yard yesterday.",
+    "part": "The streets have been swept this morning."
+  },
+  "swell": {
+    "base": "Feet can swell on long flights.",
+    "past": "My ankle swelled after I fell yesterday.",
+    "part": "Her eyes have swollen from crying."
+  },
+  "swim": {
+    "base": "I swim in the sea every summer.",
+    "past": "We swam in the lake last weekend.",
+    "part": "Have you ever swum with dolphins?"
+  },
+  "swing": {
+    "base": "The children swing in the park after school.",
+    "past": "The door swung open a moment ago.",
+    "part": "The mood has swung from sad to happy."
+  },
+  "take": {
+    "base": "Take an umbrella; it might rain.",
+    "past": "I took the bus to work yesterday.",
+    "part": "Have you taken your medicine today?"
+  },
+  "teach": {
+    "base": "I teach math at a primary school.",
+    "past": "My mother taught me to cook last year.",
+    "part": "She has taught here for twenty years."
+  },
+  "tear": {
+    "base": "Be careful not to tear the paper.",
+    "past": "I tore my jeans on a nail yesterday.",
+    "part": "The poster has been torn in half."
+  },
+  "tell": {
+    "base": "Tell me a story, please.",
+    "past": "She told me a secret yesterday.",
+    "part": "Have you told your parents the news?"
+  },
+  "think": {
+    "base": "I think it's going to rain.",
+    "past": "I thought about you yesterday.",
+    "part": "Have you thought about your future?"
+  },
+  "throw": {
+    "base": "Throw the ball to me!",
+    "past": "He threw the old magazines away last week.",
+    "part": "The rubbish has been thrown in the bin."
+  },
+  "thrust": {
+    "base": "Don't thrust your hand into the hot water.",
+    "past": "He thrust the letter into my hand yesterday.",
+    "part": "She had thrust the keys into her pocket."
+  },
+  "tread": {
+    "base": "Please don't tread on the flowers.",
+    "past": "I trod on a piece of glass yesterday.",
+    "part": "The carpet has been trodden by many feet."
+  },
+  "understand": {
+    "base": "I don't understand this question.",
+    "past": "She understood the lesson quickly yesterday.",
+    "part": "Have you understood the instructions?"
+  },
+  "undergo": {
+    "base": "All new cars undergo safety tests.",
+    "past": "My uncle underwent surgery last month.",
+    "part": "The city has undergone many changes."
+  },
+  "undertake": {
+    "base": "We undertake new projects every year.",
+    "past": "They undertook a long journey in 2018.",
+    "part": "She has undertaken a difficult task."
+  },
+  "wake": {
+    "base": "I wake up at six every morning.",
+    "past": "The noise woke me up last night.",
+    "part": "The baby has just woken up."
+  },
+  "wear": {
+    "base": "I wear a uniform at work.",
+    "past": "She wore a red dress to the party last night.",
+    "part": "These shoes have been worn only once."
+  },
+  "weave": {
+    "base": "Spiders weave webs to catch insects.",
+    "past": "She wove a basket from grass last summer.",
+    "part": "This rug was woven by hand."
+  },
+  "weep": {
+    "base": "Some people weep at sad movies.",
+    "past": "She wept with joy at the wedding yesterday.",
+    "part": "He had wept for hours after the news."
+  },
+  "wet": {
+    "base": "Wet the cloth before you clean the table.",
+    "past": "I wet my hair before I combed it this morning.",
+    "part": "The baby has wet his diaper again."
+  },
+  "win": {
+    "base": "I hope we win the match today.",
+    "past": "Our team won the cup last year.",
+    "part": "She has won three medals."
+  },
+  "wind": {
+    "base": "Wind the cable around your hand.",
+    "past": "She wound the old clock last night.",
+    "part": "The thread has been wound onto a spool."
+  },
+  "withdraw": {
+    "base": "I need to withdraw some cash.",
+    "past": "He withdrew from the race last week.",
+    "part": "The product has been withdrawn from shops."
+  },
+  "wring": {
+    "base": "Wring out the wet towel before you hang it.",
+    "past": "She wrung out her swimsuit after the swim.",
+    "part": "The cloth had been wrung dry."
+  },
+  "write": {
+    "base": "I write in my diary every night.",
+    "past": "She wrote a letter to her grandma yesterday.",
+    "part": "Have you written your essay yet?"
+  },
+  "accept": {
+    "base": "We accept credit cards and cash.",
+    "past": "She accepted the job offer last week.",
+    "part": "Your application has been accepted."
+  },
+  "count": {
+    "base": "Count to ten before you get angry.",
+    "past": "We counted the money after the sale yesterday.",
+    "part": "All the votes have been counted."
+  },
+  "date": {
+    "base": "I don't want to date anyone right now.",
+    "past": "They dated for two years before they married.",
+    "part": "She has dated the same guy since high school."
+  },
+  "end": {
+    "base": "The holidays end next week.",
+    "past": "The concert ended at midnight last night.",
+    "part": "The meeting has already ended."
+  },
+  "expect": {
+    "base": "We expect good weather tomorrow.",
+    "past": "I expected more people at the party last night.",
+    "part": "The results are expected next week."
+  },
+  "intend": {
+    "base": "I intend to finish this book tonight.",
+    "past": "We intended to leave early yesterday.",
+    "part": "The gift was intended as a surprise."
+  },
+  "need": {
+    "base": "I need a new pair of shoes.",
+    "past": "We needed help with the move last month.",
+    "part": "Volunteers are needed for the festival."
+  },
+  "plant": {
+    "base": "Let's plant some flowers in the garden.",
+    "past": "We planted an apple tree last spring.",
+    "part": "Hundreds of trees have been planted in the park."
+  },
+  "point": {
+    "base": "Don't point at people; it's rude.",
+    "past": "She pointed at the map a minute ago.",
+    "part": "The arrow has pointed us in the wrong direction."
+  },
+  "rent": {
+    "base": "We rent a small apartment downtown.",
+    "past": "We rented a car for the trip last summer.",
+    "part": "The house has been rented to a young family."
+  },
+  "repeat": {
+    "base": "Could you repeat the question, please?",
+    "past": "The teacher repeated the word three times yesterday.",
+    "part": "This mistake has been repeated many times."
+  },
+  "resist": {
+    "base": "I can't resist chocolate cake.",
+    "past": "She resisted the urge to laugh yesterday.",
+    "part": "He has resisted all changes at work."
+  },
+  "start": {
+    "base": "Let's start the lesson now.",
+    "past": "It started raining an hour ago.",
+    "part": "Have you started your new job?"
+  },
+  "visit": {
+    "base": "We visit our grandparents every Sunday.",
+    "past": "I visited London in 2019.",
+    "part": "Have you ever visited a castle?"
+  },
+  "wait": {
+    "base": "Please wait here for a moment.",
+    "past": "We waited for the bus for twenty minutes yesterday.",
+    "part": "I have waited all day for your call."
+  },
+  "want": {
+    "base": "I want a glass of water.",
+    "past": "She wanted a puppy for her birthday last year.",
+    "part": "I have always wanted to visit Peru."
+  },
+  "ask": {
+    "base": "Can I ask you a question?",
+    "past": "He asked me for directions yesterday.",
+    "part": "Have you asked your parents for permission?"
+  },
+  "cook": {
+    "base": "I cook dinner for my family every night.",
+    "past": "We cooked pasta last night.",
+    "part": "The rice hasn't cooked properly."
+  },
+  "dance": {
+    "base": "Let's dance to this song!",
+    "past": "We danced all night at the wedding last Saturday.",
+    "part": "Have you ever danced the tango?"
+  },
+  "dress": {
+    "base": "Dress warmly; it's cold outside.",
+    "past": "She dressed quickly this morning.",
+    "part": "The kids have dressed up as pirates."
+  },
+  "erase": {
+    "base": "Please erase the board after class.",
+    "past": "I accidentally erased all my photos last week.",
+    "part": "The file has been erased."
+  },
+  "finish": {
+    "base": "I want to finish this book today.",
+    "past": "We finished the project last Friday.",
+    "part": "Have you finished your dinner?"
+  },
+  "help": {
+    "base": "Can you help me carry this box?",
+    "past": "My neighbor helped me with my car yesterday.",
+    "part": "You have helped me a lot."
+  },
+  "jump": {
+    "base": "Kids love to jump on the bed.",
+    "past": "The cat jumped onto the roof yesterday.",
+    "part": "Prices have jumped since last year."
+  },
+  "like": {
+    "base": "I like pizza and ice cream.",
+    "past": "We liked the movie last night.",
+    "part": "She has always liked animals."
+  },
+  "look": {
+    "base": "Look at that beautiful rainbow!",
+    "past": "I looked everywhere for my keys yesterday.",
+    "part": "Have you looked in the kitchen?"
+  },
+  "miss": {
+    "base": "I miss my friends from school.",
+    "past": "We missed the train this morning.",
+    "part": "She has missed three classes this month."
+  },
+  "practice": {
+    "base": "I practice the piano every day.",
+    "past": "We practiced our speech last night.",
+    "part": "Have you practiced your lines?"
+  },
+  "push": {
+    "base": "Push the door to open it.",
+    "past": "He pushed the car up the hill yesterday.",
+    "part": "The meeting has been pushed to Friday."
+  },
+  "shop": {
+    "base": "We shop for groceries on Saturdays.",
+    "past": "We shopped all afternoon last Saturday.",
+    "part": "Have you ever shopped at that market?"
+  },
+  "smoke": {
+    "base": "Please don't smoke inside the house.",
+    "past": "My grandfather smoked a pipe years ago.",
+    "part": "The fish has been smoked over oak wood."
+  },
+  "stop": {
+    "base": "Stop the car here, please.",
+    "past": "It stopped raining an hour ago.",
+    "part": "The rain has finally stopped."
+  },
+  "talk": {
+    "base": "We talk on the phone every evening.",
+    "past": "We talked for hours last night.",
+    "part": "Have you talked to your teacher?"
+  },
+  "use": {
+    "base": "Can I use your computer?",
+    "past": "I used the dictionary in class yesterday.",
+    "part": "This room is used for meetings."
+  },
+  "walk": {
+    "base": "I walk my dog every morning.",
+    "past": "We walked along the beach yesterday.",
+    "part": "She has walked ten kilometers today."
+  },
+  "wash": {
+    "base": "Wash your hands before dinner.",
+    "past": "I washed the car last weekend.",
+    "part": "Have you washed the dishes?"
+  },
+  "wish": {
+    "base": "I wish you a happy birthday!",
+    "past": "She wished us good luck before the exam.",
+    "part": "I have always wished for a little sister."
+  },
+  "work": {
+    "base": "I work in a hospital.",
+    "past": "He worked late last night.",
+    "part": "She has worked here since 2018."
+  },
+  "answer": {
+    "base": "Please answer all the questions.",
+    "past": "She answered the phone a minute ago.",
+    "part": "Have you answered his email yet?"
+  },
+  "arrive": {
+    "base": "Trains usually arrive on time here.",
+    "past": "We arrived at the hotel late last night.",
+    "part": "The package has finally arrived."
+  },
+  "belong": {
+    "base": "These books belong to the library.",
+    "past": "This ring belonged to my grandmother.",
+    "part": "The house has belonged to our family for decades."
+  },
+  "change": {
+    "base": "I want to change my hairstyle.",
+    "past": "She changed her phone number last month.",
+    "part": "The town has changed a lot."
+  },
+  "clean": {
+    "base": "Please clean your room today.",
+    "past": "We cleaned the whole house last weekend.",
+    "part": "Have you cleaned the bathroom?"
+  },
+  "climb": {
+    "base": "Let's climb to the top of the hill.",
+    "past": "We climbed a mountain last summer.",
+    "part": "She has climbed Mount Kilimanjaro twice."
+  },
+  "close": {
+    "base": "Close the door, please; it's cold.",
+    "past": "The store closed early yesterday.",
+    "part": "The road has been closed because of snow."
+  },
+  "consider": {
+    "base": "Please consider my offer carefully.",
+    "past": "We considered moving abroad last year.",
+    "part": "Have you considered other options?"
+  },
+  "dare": {
+    "base": "I dare you to jump into the cold pool.",
+    "past": "My friends dared me to sing yesterday.",
+    "part": "He has never dared to speak to her."
+  },
+  "deliver": {
+    "base": "They deliver pizza until midnight.",
+    "past": "The mail carrier delivered a package this morning.",
+    "part": "Your order has been delivered."
+  },
+  "enjoy": {
+    "base": "I really enjoy reading in the park.",
+    "past": "We enjoyed the concert last night.",
+    "part": "Have you enjoyed your stay?"
+  },
+  "fill": {
+    "base": "Fill the bottle with water.",
+    "past": "She filled the tank with gas yesterday.",
+    "part": "The room was filled with balloons."
+  },
+  "follow": {
+    "base": "Follow me; I know the way.",
+    "past": "We followed the river for hours yesterday.",
+    "part": "Have you followed the instructions?"
+  },
+  "hurry": {
+    "base": "Hurry up or we'll be late!",
+    "past": "We hurried to catch the train this morning.",
+    "part": "She had hurried home before the storm."
+  },
+  "listen": {
+    "base": "Listen carefully to the instructions.",
+    "past": "We listened to music all evening yesterday.",
+    "part": "Have you listened to their new album?"
+  },
+  "live": {
+    "base": "I live in a small town.",
+    "past": "We lived in Madrid in 2010.",
+    "part": "She has lived here all her life."
+  },
+  "love": {
+    "base": "I love spending time with my family.",
+    "past": "We loved the food in Italy last summer.",
+    "part": "She has always loved music."
+  },
+  "name": {
+    "base": "Can you name three European capitals?",
+    "past": "They named their baby Lucy last month.",
+    "part": "The street was named after a famous poet."
+  },
+  "open": {
+    "base": "Open your books to page ten.",
+    "past": "She opened the window a minute ago.",
+    "part": "A new café has opened downtown."
+  },
+  "order": {
+    "base": "Let's order pizza for dinner tonight.",
+    "past": "I ordered a new phone online last week.",
+    "part": "Have you ordered your food yet?"
+  },
+  "plan": {
+    "base": "Let's plan our summer vacation.",
+    "past": "We planned the whole trip last month.",
+    "part": "Everything has been planned carefully."
+  },
+  "play": {
+    "base": "The kids play soccer after school.",
+    "past": "We played cards last night.",
+    "part": "Have you ever played chess?"
+  },
+  "rain": {
+    "base": "It might rain later, so take a coat.",
+    "past": "It rained all day yesterday.",
+    "part": "It has rained every day this week."
+  },
+  "remember": {
+    "base": "I remember my first day at school.",
+    "past": "She remembered my birthday last week.",
+    "part": "Have you remembered to buy milk?"
+  },
+  "stay": {
+    "base": "Let's stay home and watch a movie tonight.",
+    "past": "We stayed at a nice hotel last summer.",
+    "part": "She has stayed with us for a week."
+  },
+  "study": {
+    "base": "I study English every evening.",
+    "past": "We studied for the exam last night.",
+    "part": "She has studied French for three years."
+  },
+  "travel": {
+    "base": "I love to travel by train.",
+    "past": "We traveled around Europe last summer.",
+    "part": "Have you ever traveled alone?"
+  },
+  "try": {
+    "base": "Try this soup; it's delicious.",
+    "past": "I tried sushi for the first time yesterday.",
+    "part": "Have you tried the new café?"
+  },
+  "turn": {
+    "base": "Turn left at the next corner.",
+    "past": "She turned around when I called her name.",
+    "part": "The leaves have turned yellow."
+  },
+  "abide": {
+    "base": "All players must abide by the rules.",
+    "past": "Everyone abided by the new rules last season.",
+    "part": "The company has always abided by the law."
+  },
+  "alight": {
+    "base": "Please alight from the bus at the next stop.",
+    "past": "A small bird alit on the windowsill this morning.",
+    "part": "The butterfly had alit on her finger."
+  },
+  "beget": {
+    "base": "Violence can beget more violence.",
+    "past": "One small lie begot another last week.",
+    "part": "Success has begotten even more success."
+  },
+  "behold": {
+    "base": "Come and behold the beautiful view!",
+    "past": "We beheld the sunset from the hilltop yesterday.",
+    "part": "I had never beheld such a sight."
+  },
+  "bereave": {
+    "base": "Losing a pet can bereave a child deeply.",
+    "past": "The family was bereaved when their old dog died last year.",
+    "part": "Families who have been bereaved need kindness and support."
+  },
+  "beseech": {
+    "base": "I beseech you to listen to me.",
+    "past": "He besought his parents to let him go last night.",
+    "part": "She had besought the judge for mercy."
+  },
+  "bespeak": {
+    "base": "His good manners bespeak a careful upbringing.",
+    "past": "Her calm voice bespoke years of experience.",
+    "part": "The suit was bespoken from a local tailor."
+  },
+  "chide": {
+    "base": "Parents often chide kids for leaving toys around.",
+    "past": "The coach chided us for arriving late yesterday.",
+    "part": "She was chided for forgetting her homework."
+  },
+  "cleave": {
+    "base": "Use the big knife to cleave the meat.",
+    "past": "He cleft the log in two with an axe yesterday.",
+    "part": "The rock had been cleft in two by lightning."
+  },
+  "dwell": {
+    "base": "Try not to dwell on your mistakes.",
+    "past": "Ancient people dwelt in these caves thousands of years ago.",
+    "part": "Families have dwelt in this valley for centuries."
+  },
+  "forsake": {
+    "base": "Never forsake your true friends.",
+    "past": "He forsook city life and moved to the country in 2015.",
+    "part": "The old village has been forsaken by its residents."
+  },
+  "forgo": {
+    "base": "I'll forgo dessert tonight because I'm full.",
+    "past": "She forwent her vacation to finish the project last summer.",
+    "part": "He has forgone his bonus to help the team."
+  },
+  "forswear": {
+    "base": "I forswear sweets until my birthday.",
+    "past": "He forswore junk food last January.",
+    "part": "She has forsworn coffee for the whole month."
+  },
+  "gird": {
+    "base": "We gird ourselves for a busy week ahead.",
+    "past": "The knight girded his sword before the battle.",
+    "part": "The team has girded itself for a tough season."
+  },
+  "heave": {
+    "base": "Help me heave this box onto the truck.",
+    "past": "We heaved the sofa up the stairs yesterday.",
+    "part": "They had heaved the boat onto the beach."
+  },
+  "hew": {
+    "base": "Workers hew stones for the new wall.",
+    "past": "They hewed the logs into beams last summer.",
+    "part": "The steps were hewn out of solid rock."
+  },
+  "inlay": {
+    "base": "Craftsmen inlay gold into the wooden boxes.",
+    "past": "He inlaid the table with pieces of shell last year.",
+    "part": "The floor has been inlaid with colorful tiles."
+  },
+  "lade": {
+    "base": "The workers lade the ship with grain.",
+    "past": "They laded the cargo onto the ship yesterday.",
+    "part": "The trees were laden with ripe apples."
+  },
+  "plead": {
+    "base": "I plead with you to be careful.",
+    "past": "The man pled not guilty in court yesterday.",
+    "part": "She has pled with her boss for a raise."
+  },
+  "quit": {
+    "base": "I want to quit my job and travel.",
+    "past": "He quit smoking two years ago.",
+    "part": "She has quit sugar for good."
+  },
+  "rid": {
+    "base": "We need to rid the house of ants.",
+    "past": "They rid the garden of weeds last weekend.",
+    "part": "I'm glad we've finally got rid of that old sofa."
+  },
+  "saw": {
+    "base": "Saw the board into three equal pieces.",
+    "past": "Dad sawed the branches off the tree yesterday.",
+    "part": "The logs have been sawn into planks."
+  },
+  "shed": {
+    "base": "Snakes shed their skin several times a year.",
+    "past": "She shed a few tears at the wedding yesterday.",
+    "part": "The trees have shed all their leaves."
+  },
+  "slay": {
+    "base": "In the story, the hero must slay the dragon.",
+    "past": "The knight slew the dragon in the old legend.",
+    "part": "The dragon was slain by a young prince."
+  },
+  "slit": {
+    "base": "Slit the envelope open with a knife.",
+    "past": "She slit the bag open carefully a minute ago.",
+    "part": "The tires had been slit during the night."
+  },
+  "smite": {
+    "base": "In the legend, the gods smite their enemies.",
+    "past": "The hero smote the giant with his hammer.",
+    "part": "He was smitten with her from the first day."
+  },
+  "sneak": {
+    "base": "Let's sneak into the kitchen for a snack.",
+    "past": "We snuck out of the boring party last night.",
+    "part": "The cat has snuck into my bedroom again."
+  },
+  "strew": {
+    "base": "Kids always strew their toys across the floor.",
+    "past": "The wind strewed leaves all over the yard yesterday.",
+    "part": "The floor was strewn with paper."
+  },
+  "string": {
+    "base": "Let's string the lights across the porch.",
+    "past": "She strung beads into a necklace last night.",
+    "part": "The guitar has been strung with new strings."
+  },
+  "strive": {
+    "base": "We always strive to do our best.",
+    "past": "She strove to finish first in last year's race.",
+    "part": "The team has striven for excellence."
+  },
+  "thrive": {
+    "base": "These plants thrive in warm weather.",
+    "past": "The small business throve during the summer months.",
+    "part": "The children have thriven at their new school."
+  },
+  "unbend": {
+    "base": "Unbend the wire carefully with pliers.",
+    "past": "He finally unbent and laughed at the joke yesterday.",
+    "part": "The paper clip had been unbent."
+  },
+  "wed": {
+    "base": "They plan to wed next spring.",
+    "past": "My cousins wed in a small church last June.",
+    "part": "They have been wed for fifty years."
+  },
+  "rend": {
+    "base": "Strong winds can rend the sails apart.",
+    "past": "Her cry rent the silence of the night.",
+    "part": "The flag had been rent by the storm."
+  },
+  "stave": {
+    "base": "Eat a snack to stave off hunger.",
+    "past": "We staved off the cold with hot soup last night.",
+    "part": "The crisis has been staved off for now."
+  },
+  "overdo": {
+    "base": "Don't overdo it at the gym.",
+    "past": "I overdid the salt in the soup yesterday.",
+    "part": "The steak is overdone and very dry."
+  },
+  "overdraw": {
+    "base": "Be careful not to overdraw your account.",
+    "past": "I overdrew my bank account last month.",
+    "part": "Your account has been overdrawn by twenty euros."
+  },
+  "overeat": {
+    "base": "I always overeat at family dinners.",
+    "past": "We overate at the buffet last night.",
+    "part": "I think I've overeaten again."
+  },
+  "overhang": {
+    "base": "The branches overhang our neighbor's fence.",
+    "past": "Dark clouds overhung the valley yesterday.",
+    "part": "The roof has overhung the path for years."
+  },
+  "overhear": {
+    "base": "I sometimes overhear my neighbors talking.",
+    "past": "I overheard an interesting conversation on the bus yesterday.",
+    "part": "Have you overheard anything about the party?"
+  },
+  "overlay": {
+    "base": "You can overlay the photo with text.",
+    "past": "She overlaid the map with a clear sheet last week.",
+    "part": "The cake has been overlaid with chocolate."
+  },
+  "overpay": {
+    "base": "Don't overpay for a used car.",
+    "past": "I overpaid for these shoes last week.",
+    "part": "We have overpaid our phone bill."
+  },
+  "override": {
+    "base": "Managers can override the system's decision.",
+    "past": "The coach overrode the referee's call last night.",
+    "part": "My settings have been overridden by the update."
+  },
+  "oversee": {
+    "base": "I oversee a team of five people.",
+    "past": "She oversaw the whole project last year.",
+    "part": "The work has been overseen by an expert."
+  },
+  "oversleep": {
+    "base": "I always oversleep on Mondays.",
+    "past": "I overslept and missed the bus this morning.",
+    "part": "He has overslept again and missed breakfast!"
+  },
+  "overtake": {
+    "base": "Never overtake on a sharp bend.",
+    "past": "A red car overtook us on the highway a minute ago.",
+    "part": "Online shopping has overtaken traditional stores."
+  },
+  "overthrow": {
+    "base": "In the film, the rebels try to overthrow the king.",
+    "past": "The people overthrew the cruel king in the story.",
+    "part": "The old government was overthrown in 1910."
+  },
+  "overwrite": {
+    "base": "Don't overwrite the original file.",
+    "past": "I overwrote my essay by mistake yesterday.",
+    "part": "The old data has been overwritten."
+  },
+  "underbid": {
+    "base": "Small companies often underbid big ones.",
+    "past": "A local firm underbid us for the contract last month.",
+    "part": "We have been underbid on every project this year."
+  },
+  "undercut": {
+    "base": "Online stores undercut local shops on price.",
+    "past": "The new café undercut its rivals last year.",
+    "part": "Our prices have been undercut by a competitor."
+  },
+  "underfeed": {
+    "base": "Don't underfeed your fish while you travel.",
+    "past": "We underfed the plants last summer by mistake.",
+    "part": "The rescued puppy had been underfed for months."
+  },
+  "underlie": {
+    "base": "Several causes underlie the problem.",
+    "past": "Poor planning underlay the failure of the project.",
+    "part": "Many hidden reasons had underlain their decision."
+  },
+  "underpay": {
+    "base": "Some companies underpay their young workers.",
+    "past": "The restaurant underpaid its waiters last year.",
+    "part": "Teachers have been underpaid for too long."
+  },
+  "undersell": {
+    "base": "Don't undersell yourself in the interview.",
+    "past": "The big store undersold every shop in town last year.",
+    "part": "Our products have been undersold by online sellers."
+  },
+  "underwrite": {
+    "base": "Insurance companies underwrite risks for a fee.",
+    "past": "The bank underwrote the new project in 2020.",
+    "part": "The loan has been underwritten by a large bank."
+  },
+  "outbid": {
+    "base": "I hope nobody will outbid me.",
+    "past": "A collector outbid us at the auction yesterday.",
+    "part": "We have been outbid again!"
+  },
+  "outdo": {
+    "base": "My brothers always try to outdo each other.",
+    "past": "She outdid herself with the dinner last night.",
+    "part": "You have outdone yourself this time!"
+  },
+  "outgrow": {
+    "base": "Kids outgrow their shoes so quickly.",
+    "past": "My son outgrew his jacket last winter.",
+    "part": "She has outgrown her old bike."
+  },
+  "outrun": {
+    "base": "You can't outrun a cheetah.",
+    "past": "The rabbit outran the fox yesterday.",
+    "part": "He has outrun all his classmates this year."
+  },
+  "outshine": {
+    "base": "She always tries to outshine her sister.",
+    "past": "The young actor outshone the stars last night.",
+    "part": "The new phone has outshone all its rivals."
+  },
+  "outsell": {
+    "base": "E-books may soon outsell paper books.",
+    "past": "Their new album outsold all others last year.",
+    "part": "This model has outsold every other car."
+  },
+  "outspend": {
+    "base": "Big companies often outspend small ones.",
+    "past": "Our rivals outspent us on advertising last year.",
+    "part": "We have been outspent, but we still won."
+  },
+  "redo": {
+    "base": "Please redo this exercise at home.",
+    "past": "I redid my homework last night.",
+    "part": "The kitchen has been redone in white."
+  },
+  "repay": {
+    "base": "I'll repay you next week, I promise.",
+    "past": "She repaid the loan last month.",
+    "part": "Have you repaid the money yet?"
+  },
+  "rerun": {
+    "base": "They rerun old comedies every summer.",
+    "past": "The channel reran the final last night.",
+    "part": "The race will be rerun tomorrow."
+  },
+  "resell": {
+    "base": "Some people resell concert tickets online.",
+    "past": "He resold his old phone last week.",
+    "part": "These clothes have been resold several times."
+  },
+  "resit": {
+    "base": "I have to resit my math exam.",
+    "past": "She resat the test last month and passed.",
+    "part": "He has resat the driving test twice."
+  },
+  "retell": {
+    "base": "Can you retell the story in your own words?",
+    "past": "Grandpa retold his favorite story last night.",
+    "part": "This fairy tale has been retold many times."
+  },
+  "rewind": {
+    "base": "Rewind the video to the beginning.",
+    "past": "I rewound the song three times yesterday.",
+    "part": "The tape has been rewound."
+  },
+  "rewrite": {
+    "base": "Please rewrite this paragraph more clearly.",
+    "past": "I rewrote my essay last night.",
+    "part": "The story has been rewritten for children."
+  },
+  "reread": {
+    "base": "I like to reread my favorite books.",
+    "past": "I reread the letter twice this morning.",
+    "part": "She has reread that novel five times."
+  },
+  "undo": {
+    "base": "Can you undo this knot?",
+    "past": "I undid my last change a minute ago.",
+    "part": "The damage cannot be undone."
+  },
+  "unfreeze": {
+    "base": "Unfreeze the chicken before you cook it.",
+    "past": "The bank unfroze my account last week.",
+    "part": "The pipes have finally unfrozen."
+  },
+  "unwind": {
+    "base": "I like to unwind with a good book.",
+    "past": "We unwound at the beach last weekend.",
+    "part": "The rope had unwound in the wind."
+  },
+  "foretell": {
+    "base": "Nobody can foretell the future.",
+    "past": "The old woman foretold a long winter last year.",
+    "part": "The storm had been foretold by sailors."
+  },
+  "foresee": {
+    "base": "I don't foresee any problems.",
+    "past": "Nobody foresaw the traffic jam this morning.",
+    "part": "The delay could not have been foreseen."
+  },
+  "misunderstand": {
+    "base": "Please don't misunderstand me; I like your idea.",
+    "past": "I misunderstood the question yesterday.",
+    "part": "I think you have misunderstood my message."
+  },
+  "mislead": {
+    "base": "Some ads mislead customers about prices.",
+    "past": "The sign misled us last weekend.",
+    "part": "We have been misled by the map."
+  },
+  "misspell": {
+    "base": "I often misspell long words.",
+    "past": "I misspelled my own name on the form yesterday.",
+    "part": "Your name has been misspelled on the ticket."
+  },
+  "mishear": {
+    "base": "I sometimes mishear song lyrics.",
+    "past": "I misheard the address yesterday.",
+    "part": "You must have misheard me."
+  },
+  "misread": {
+    "base": "Don't misread the instructions on the exam.",
+    "past": "I misread the timetable last week.",
+    "part": "He has misread the situation completely."
+  },
+  "partake": {
+    "base": "Everyone is welcome to partake in the celebration.",
+    "past": "We partook in the village festival last summer.",
+    "part": "She has partaken in every school play."
+  },
+  "upset": {
+    "base": "Don't upset your little sister.",
+    "past": "The sad news upset everyone yesterday.",
+    "part": "He has been upset since the game."
+  },
+  "uphold": {
+    "base": "Judges must uphold the law.",
+    "past": "The court upheld the decision last week.",
+    "part": "The school has always upheld high standards."
+  },
+  "input": {
+    "base": "Please input your password to continue.",
+    "past": "I input all the data into the system yesterday.",
+    "part": "The numbers have been input incorrectly."
+  },
+  "interweave": {
+    "base": "Good stories interweave many characters' lives.",
+    "past": "She interwove red and gold threads last night.",
+    "part": "Their lives have been interwoven for years."
+  },
+  "withhold": {
+    "base": "Please don't withhold any information from us.",
+    "past": "He withheld the truth from his parents last week.",
+    "part": "Her salary has been withheld this month."
+  },
+  "withstand": {
+    "base": "These windows can withstand strong winds.",
+    "past": "The old bridge withstood the flood last spring.",
+    "part": "The house has withstood many storms."
+  },
+  "unbind": {
+    "base": "Unbind the old books carefully.",
+    "past": "She unbound her hair before bed last night.",
+    "part": "The prisoner's hands had been unbound."
+  },
+  "unmake": {
+    "base": "You can't unmake a decision once it's announced.",
+    "past": "The kids unmade their beds this morning.",
+    "part": "The bed has been unmade all week."
+  },
+  "unsay": {
+    "base": "I wish I could unsay those harsh words.",
+    "past": "She unsaid her angry words the next morning.",
+    "part": "Some things are better left unsaid."
+  },
+  "unstick": {
+    "base": "Use warm water to unstick the label.",
+    "past": "I unstuck the stamp from the envelope yesterday.",
+    "part": "The label has been unstuck without tearing."
+  },
+  "dive": {
+    "base": "I love to dive into the cool pool.",
+    "past": "She dove into the lake last summer.",
+    "part": "Have you ever dived with sharks?"
+  },
+  "prove": {
+    "base": "Can you prove that it's true?",
+    "past": "He proved his point at the meeting yesterday.",
+    "part": "The new medicine has proven very effective."
+  },
+  "offset": {
+    "base": "Plant trees to offset your carbon footprint.",
+    "past": "Strong sales offset the higher costs last year.",
+    "part": "The losses have been offset by new profits."
+  },
+  "proofread": {
+    "base": "Always proofread your essays before you submit them.",
+    "past": "I proofread my report twice yesterday.",
+    "part": "Has the article been proofread yet?"
+  },
+  "recast": {
+    "base": "The director wants to recast the main role.",
+    "past": "They recast the lead actor last month.",
+    "part": "The play has been recast with younger actors."
+  },
+  "redraw": {
+    "base": "Let's redraw the map with clearer lines.",
+    "past": "She redrew the picture three times yesterday.",
+    "part": "The plans have been redrawn."
+  },
+  "refit": {
+    "base": "We plan to refit the kitchen next year.",
+    "past": "They refitted the old ship last summer.",
+    "part": "The shop has been refitted with new shelves."
+  },
+  "rehear": {
+    "base": "The court will rehear the case next month.",
+    "past": "The judge reheard the case last week.",
+    "part": "The appeal has been reheard."
+  },
+  "relearn": {
+    "base": "After the injury, I had to relearn how to walk.",
+    "past": "I relearnt my old French last year.",
+    "part": "She has relearnt how to play the piano."
+  },
+  "remake": {
+    "base": "They want to remake that classic movie.",
+    "past": "The studio remade the old film in 2019.",
+    "part": "The song has been remade many times."
+  },
+  "resend": {
+    "base": "Could you resend the email, please?",
+    "past": "I resent the invitation this morning.",
+    "part": "The package has been resent to the right address."
+  },
+  "reset": {
+    "base": "Reset your password if you forget it.",
+    "past": "I reset the router an hour ago.",
+    "part": "The clock has been reset."
+  },
+  "rethink": {
+    "base": "We need to rethink our plan.",
+    "past": "She rethought her decision last night.",
+    "part": "The company has rethought its strategy."
+  },
+  "retake": {
+    "base": "I have to retake my driving test.",
+    "past": "He retook the exam last month.",
+    "part": "The castle was retaken by the soldiers."
+  },
+  "retread": {
+    "base": "I don't want to retread the same old path.",
+    "past": "We retrod the same mountain path last summer.",
+    "part": "This old trail has been retrodden by many hikers."
+  },
+  "rebuild": {
+    "base": "They plan to rebuild the old bridge.",
+    "past": "We rebuilt the shed after the storm last year.",
+    "part": "The church has been rebuilt after the fire."
+  },
+  "sublet": {
+    "base": "Can I sublet my room for the summer?",
+    "past": "We sublet our flat last summer.",
+    "part": "The apartment has been sublet to a student."
+  },
+  "spellbind": {
+    "base": "Great storytellers spellbind their audiences.",
+    "past": "The magician spellbound the kids last night.",
+    "part": "We were spellbound by the music."
+  },
+  "spoon-feed": {
+    "base": "Teachers shouldn't spoon-feed students all the answers.",
+    "past": "She spoon-fed the baby this morning.",
+    "part": "These students have been spoon-fed for too long."
+  },
+  "sightsee": {
+    "base": "We want to sightsee in Rome next summer.",
+    "past": "We sightsaw all over the old town yesterday.",
+    "part": "We have sightseen enough for one day."
+  },
+  "sunburn": {
+    "base": "I sunburn easily, so I wear sunscreen.",
+    "past": "I sunburnt my nose at the beach yesterday.",
+    "part": "My shoulders have been sunburnt by the strong sun."
+  },
+  "misspend": {
+    "base": "Try not to misspend your pocket money.",
+    "past": "He misspent his savings on video games last year.",
+    "part": "Public money has been misspent."
+  },
+  "overfeed": {
+    "base": "Don't overfeed the goldfish while I'm away.",
+    "past": "We overfed the dog during the holidays.",
+    "part": "The cat has been overfed and is now lazy."
+  },
+  "overfly": {
+    "base": "Planes overfly our town every day.",
+    "past": "A helicopter overflew the stadium yesterday.",
+    "part": "The area has been overflown by drones."
+  },
+  "overshoot": {
+    "base": "Don't overshoot the turn to our street.",
+    "past": "We overshot the exit on the highway yesterday.",
+    "part": "The project has overshot its budget."
+  },
+  "overspend": {
+    "base": "I always overspend during the holidays.",
+    "past": "We overspent on our vacation last summer.",
+    "part": "The team has overspent this month."
+  },
+  "overrun": {
+    "base": "Meetings often overrun by ten minutes.",
+    "past": "The concert overran by an hour last night.",
+    "part": "The garden has been overrun by weeds."
+  },
+  "overbid": {
+    "base": "Don't overbid on that old lamp.",
+    "past": "I overbid at the auction last week.",
+    "part": "He has overbid on houses before."
+  },
+  "crossbreed": {
+    "base": "Farmers crossbreed animals to make them stronger.",
+    "past": "They crossbred two types of apple in 2015.",
+    "part": "These dogs have been crossbred."
+  },
+  "interbreed": {
+    "base": "Some animal species can interbreed.",
+    "past": "The two groups of birds interbred many years ago.",
+    "part": "These plants have interbred over time."
+  },
+  "telecast": {
+    "base": "They telecast the parade every New Year's Day.",
+    "past": "The channel telecast the match live last night.",
+    "part": "The ceremony has been telecast worldwide."
+  },
+  "forecast": {
+    "base": "Experts forecast rain for the weekend.",
+    "past": "They forecast snow last week, but it never came.",
+    "part": "Sunny weather has been forecast for tomorrow."
+  },
+  "miscast": {
+    "base": "Directors sometimes miscast famous actors.",
+    "past": "They miscast the hero in the new film last year.",
+    "part": "I think the lead actor was miscast."
+  },
+  "typecast": {
+    "base": "Studios often typecast actors as villains.",
+    "past": "The studio typecast her as the funny friend in 2012.",
+    "part": "He has been typecast as a hero for years."
+  },
+  "gainsay": {
+    "base": "Nobody can gainsay her talent.",
+    "past": "No one gainsaid the teacher's decision yesterday.",
+    "part": "His success cannot be gainsaid."
+  },
+  "hamstring": {
+    "base": "Lack of money can hamstring a small business.",
+    "past": "The bad weather hamstrung our plans last weekend.",
+    "part": "The team has been hamstrung by injuries."
+  },
+  "backslide": {
+    "base": "It's easy to backslide on a diet.",
+    "past": "He backslid into old habits last month.",
+    "part": "She has backslidden after a good start."
+  },
+  "floodlight": {
+    "base": "They floodlight the castle at night.",
+    "past": "They floodlit the stadium for the night game.",
+    "part": "The old church is floodlit every evening."
+  },
+  "browbeat": {
+    "base": "Don't let anyone browbeat you into saying yes.",
+    "past": "The salesman browbeat us into buying the car last week.",
+    "part": "She has been browbeaten into agreeing."
+  },
+  "forbear": {
+    "base": "I couldn't forbear smiling at the joke.",
+    "past": "She forbore to complain at dinner last night.",
+    "part": "He had forborne from saying anything rude."
+  },
+  "prepay": {
+    "base": "You can prepay your parking online.",
+    "past": "We prepaid for the hotel last month.",
+    "part": "The tickets have been prepaid."
+  },
+  "outfight": {
+    "base": "The young boxer can outfight anyone in the gym.",
+    "past": "Our team outfought the champions last night.",
+    "part": "They have outfought every rival this season."
+  },
+  "undergird": {
+    "base": "Strong values undergird our school community.",
+    "past": "Hard work undergirded her success last year.",
+    "part": "The plan has been undergirded by careful research."
+  },
+  "unclothe": {
+    "base": "Unclothe the doll before you wash it.",
+    "past": "The nurse unclothed the baby for the checkup yesterday.",
+    "part": "The mannequins have been unclothed for the new display."
+  },
+  "overlie": {
+    "base": "Layers of sand overlie the old rocks.",
+    "past": "A thick fog overlay the town this morning.",
+    "part": "The ruins had been overlain by soil for centuries."
+  },
+  "outswim": {
+    "base": "I can outswim my older brother.",
+    "past": "She outswam everyone in the race last week.",
+    "part": "He has outswum all his teammates this year."
+  },
+  "outdrink": {
+    "base": "Can you outdrink me at the milkshake contest?",
+    "past": "My little brother outdrank us all at the lemonade stand.",
+    "part": "He has outdrunk everyone at the coffee challenge."
+  },
+  "outthink": {
+    "base": "Good chess players outthink their opponents.",
+    "past": "She outthought her rival in the final round yesterday.",
+    "part": "The detective has outthought the thief again."
+  },
+  "underspend": {
+    "base": "We hope to underspend our budget this year.",
+    "past": "The school underspent its budget last year.",
+    "part": "The department has underspent by ten percent."
+  },
+  "bestride": {
+    "base": "Kids love to bestride the old wooden horse.",
+    "past": "He bestrode his motorbike and rode away.",
+    "part": "She had bestridden the horse like a pro."
+  },
+  "outshoot": {
+    "base": "Our team can outshoot any team in the league.",
+    "past": "We outshot our rivals in last night's game.",
+    "part": "They have outshot every opponent this season."
+  },
+  "miswrite": {
+    "base": "I often miswrite the date in January.",
+    "past": "I miswrote the phone number yesterday.",
+    "part": "The address had been miswritten on the label."
+  },
+  "outbuild": {
+    "base": "Our town wants to outbuild its neighbors.",
+    "past": "The new company outbuilt its rivals last year.",
+    "part": "They have outbuilt every other builder in the city."
+  },
+  "abandon": {
+    "base": "Never abandon a pet on the street.",
+    "past": "We abandoned the game because of the rain yesterday.",
+    "part": "The old factory has been abandoned for years."
+  },
+  "accelerate": {
+    "base": "Don't accelerate near the school.",
+    "past": "The car accelerated quickly onto the highway.",
+    "part": "Climate change has accelerated in recent years."
+  },
+  "adapt": {
+    "base": "Animals adapt to their environment.",
+    "past": "She adapted quickly to her new school last year.",
+    "part": "The book has been adapted into a film."
+  },
+  "adjust": {
+    "base": "Adjust your seat before you drive.",
+    "past": "I adjusted the volume a minute ago.",
+    "part": "The prices have been adjusted for inflation."
+  },
+  "adopt": {
+    "base": "We want to adopt a dog from the shelter.",
+    "past": "They adopted a little girl in 2020.",
+    "part": "The new rules have been adopted."
+  },
+  "advertise": {
+    "base": "Many companies advertise on social media.",
+    "past": "We advertised our old bike online last week.",
+    "part": "The job has been advertised in the newspaper."
+  },
+  "affect": {
+    "base": "Bad weather can affect your mood.",
+    "past": "The strike affected thousands of travelers last week.",
+    "part": "Many homes have been affected by the flood."
+  },
+  "aim": {
+    "base": "Aim for the center of the target.",
+    "past": "She aimed carefully and hit the target yesterday.",
+    "part": "The program is aimed at young people."
+  },
+  "allow": {
+    "base": "My parents allow me to stay out until ten.",
+    "past": "The teacher allowed us to leave early yesterday.",
+    "part": "Dogs are not allowed in the shop."
+  },
+  "amaze": {
+    "base": "Magic tricks always amaze my kids.",
+    "past": "Her singing amazed everyone at the party last night.",
+    "part": "I have always been amazed by the ocean."
+  },
+  "analyze": {
+    "base": "Scientists analyze the water samples every month.",
+    "past": "We analyzed the survey results last week.",
+    "part": "The data has been analyzed carefully."
+  },
+  "apologize": {
+    "base": "I apologize for the delay.",
+    "past": "He apologized for being late yesterday.",
+    "part": "She has already apologized to her friend."
+  },
+  "apply": {
+    "base": "I want to apply for that job.",
+    "past": "She applied to three universities last year.",
+    "part": "Have you applied for a passport yet?"
+  },
+  "approve": {
+    "base": "My parents don't approve of my new haircut.",
+    "past": "The boss approved my vacation request yesterday.",
+    "part": "The new park has been approved by the city."
+  },
+  "arrest": {
+    "base": "The police arrest thieves in this area every week.",
+    "past": "Officers arrested the shoplifter yesterday afternoon.",
+    "part": "Two men have been arrested after the robbery."
+  },
+  "assess": {
+    "base": "Teachers assess students at the end of each term.",
+    "past": "The expert assessed the damage last week.",
+    "part": "Your work will be assessed by two teachers."
+  },
+  "assist": {
+    "base": "Can I assist you with your bags?",
+    "past": "She assisted the doctor during the operation yesterday.",
+    "part": "Our staff have assisted hundreds of customers today."
+  },
+  "assure": {
+    "base": "I assure you everything will be fine.",
+    "past": "The pilot assured us the flight was safe last night.",
+    "part": "We have been assured that the train will arrive soon."
+  },
+  "attempt": {
+    "base": "Don't attempt to fix the TV yourself.",
+    "past": "He attempted to climb the wall yesterday.",
+    "part": "Nobody has attempted this trick before."
+  },
+  "attract": {
+    "base": "Bright flowers attract bees and butterflies.",
+    "past": "The festival attracted thousands of visitors last year.",
+    "part": "She has always been attracted to art."
+  },
+  "bake": {
+    "base": "Let's bake cookies this afternoon.",
+    "past": "My grandma baked an apple pie yesterday.",
+    "part": "The bread has just been baked."
+  },
+  "bargain": {
+    "base": "I always bargain at the street market.",
+    "past": "We bargained for the rug in Morocco last summer.",
+    "part": "We had bargained for an hour before we agreed."
+  },
+  "behave": {
+    "base": "Please behave yourself at the restaurant.",
+    "past": "The children behaved very well yesterday.",
+    "part": "You have behaved really well today."
+  },
+  "blame": {
+    "base": "Don't blame me for your mistakes.",
+    "past": "She blamed the weather for the delay last week.",
+    "part": "He has been blamed for the broken window."
+  },
+  "bless": {
+    "base": "Bless you! Do you have a cold?",
+    "past": "The priest blessed the couple at their wedding last June.",
+    "part": "We have been blessed with great neighbors."
+  },
+  "blush": {
+    "base": "I blush when people compliment me.",
+    "past": "She blushed when he smiled at her yesterday.",
+    "part": "He has blushed every time she speaks to him."
+  },
+  "book": {
+    "base": "Let's book a table for dinner.",
+    "past": "We booked our flights last month.",
+    "part": "The hotel is fully booked this weekend."
+  },
+  "bother": {
+    "base": "Please don't bother your father while he works.",
+    "past": "The loud music bothered me last night.",
+    "part": "Has the noise bothered you?"
+  },
+  "breathe": {
+    "base": "Breathe in slowly through your nose.",
+    "past": "We breathed the fresh mountain air last weekend.",
+    "part": "I have never breathed such clean air."
+  },
+  "bury": {
+    "base": "Dogs like to bury their bones in the garden.",
+    "past": "We buried a time capsule in 2015.",
+    "part": "The treasure was buried under a tree."
+  },
+  "cancel": {
+    "base": "I need to cancel my appointment.",
+    "past": "They canceled the concert last night.",
+    "part": "The flight has been canceled because of fog."
+  },
+  "carve": {
+    "base": "Let's carve a pumpkin for Halloween.",
+    "past": "Dad carved the turkey last Thanksgiving.",
+    "part": "The statue was carved from a single stone."
+  },
+  "charge": {
+    "base": "Don't forget to charge your phone.",
+    "past": "The hotel charged us for breakfast last night.",
+    "part": "Your card has been charged twice."
+  },
+  "chat": {
+    "base": "We chat online every evening.",
+    "past": "We chatted for hours at the café yesterday.",
+    "part": "Have you chatted with the new student?"
+  },
+  "check": {
+    "base": "Please check your answers before you finish.",
+    "past": "I checked my email an hour ago.",
+    "part": "Have you checked the weather forecast?"
+  },
+  "chop": {
+    "base": "Chop the onions into small pieces.",
+    "past": "He chopped wood for the fire last weekend.",
+    "part": "The vegetables have been chopped and are ready."
+  },
+  "clap": {
+    "base": "Clap your hands to the music!",
+    "past": "Everyone clapped at the end of the show last night.",
+    "part": "The audience had clapped for ten minutes."
+  },
+  "classify": {
+    "base": "Scientists classify animals into groups.",
+    "past": "We classified the rocks by color in class yesterday.",
+    "part": "The documents have been classified as secret."
+  },
+  "collect": {
+    "base": "I collect stamps from different countries.",
+    "past": "We collected shells on the beach last summer.",
+    "part": "The rubbish is collected every Monday."
+  },
+  "comment": {
+    "base": "Feel free to comment on my post.",
+    "past": "She commented on my new haircut yesterday.",
+    "part": "Hundreds of people have commented on the video."
+  },
+  "communicate": {
+    "base": "Good teams communicate clearly and often.",
+    "past": "We communicated by email last week.",
+    "part": "The changes have been communicated to all staff."
+  },
+  "compete": {
+    "base": "I compete in swimming races every summer.",
+    "past": "She competed in the national finals last year.",
+    "part": "He has competed in three Olympic Games."
+  },
+  "compose": {
+    "base": "I like to compose short songs on the piano.",
+    "past": "He composed a song for his wife last year.",
+    "part": "This symphony was composed in 1820."
+  },
+  "conclude": {
+    "base": "Let's conclude the meeting here.",
+    "past": "The festival concluded with fireworks last night.",
+    "part": "The investigation has concluded after six months."
+  },
+  "confirm": {
+    "base": "Please confirm your booking by email.",
+    "past": "The hotel confirmed our reservation yesterday.",
+    "part": "The date has been confirmed."
+  },
+  "connect": {
+    "base": "Connect the printer to your laptop.",
+    "past": "I connected to the Wi-Fi a minute ago.",
+    "part": "Our village has been connected to the internet."
+  },
+  "construct": {
+    "base": "They plan to construct a new hospital here.",
+    "past": "The Romans constructed this road two thousand years ago.",
+    "part": "The bridge was constructed in 1932."
+  },
+  "consume": {
+    "base": "Big cars consume a lot of fuel.",
+    "past": "We consumed all the snacks during the trip last week.",
+    "part": "The building was consumed by fire."
+  },
+  "continue": {
+    "base": "Please continue reading from page five.",
+    "past": "We continued walking after lunch yesterday.",
+    "part": "Prices have continued to rise."
+  },
+  "convert": {
+    "base": "Can you convert dollars into euros?",
+    "past": "They converted the garage into an office last year.",
+    "part": "The old church has been converted into a library."
+  },
+  "copy": {
+    "base": "Don't copy your friend's homework.",
+    "past": "I copied the notes from the board yesterday.",
+    "part": "The file has been copied to the USB drive."
+  },
+  "cough": {
+    "base": "Cover your mouth when you cough.",
+    "past": "He coughed all night last night.",
+    "part": "She has coughed for a week now."
+  },
+  "crawl": {
+    "base": "Babies crawl before they walk.",
+    "past": "The baby crawled across the room this morning.",
+    "part": "A spider has crawled into my shoe."
+  },
+  "crush": {
+    "base": "Crush the garlic before you add it.",
+    "past": "He crushed the can with his foot yesterday.",
+    "part": "The flowers were crushed by the rain."
+  },
+  "cure": {
+    "base": "Doctors hope to cure this disease soon.",
+    "past": "The medicine cured my cough last week.",
+    "part": "She has been completely cured."
+  },
+  "decay": {
+    "base": "Sugar can make your teeth decay.",
+    "past": "The old wooden boat decayed slowly over the years.",
+    "part": "The leaves have decayed into rich soil."
+  },
+  "declare": {
+    "base": "Do you have anything to declare at customs?",
+    "past": "The town declared a holiday last Friday.",
+    "part": "The winner has been declared."
+  },
+  "decorate": {
+    "base": "Let's decorate the tree together.",
+    "past": "We decorated the classroom for the party yesterday.",
+    "part": "The cake has been decorated with flowers."
+  },
+  "defeat": {
+    "base": "We can defeat them if we work together.",
+    "past": "Our team defeated the champions last night.",
+    "part": "They have never been defeated at home."
+  },
+  "define": {
+    "base": "Can you define this word for me?",
+    "past": "The teacher defined the new terms yesterday.",
+    "part": "The rules have been clearly defined."
+  },
+  "demand": {
+    "base": "Customers demand better service these days.",
+    "past": "The workers demanded higher wages last month.",
+    "part": "A full refund has been demanded."
+  },
+  "depart": {
+    "base": "Trains to the city depart every hour.",
+    "past": "Our flight departed on time this morning.",
+    "part": "The last bus has already departed."
+  },
+  "describe": {
+    "base": "Can you describe the man you saw?",
+    "past": "She described her trip in detail yesterday.",
+    "part": "The house was described as cozy and bright."
+  },
+  "desire": {
+    "base": "We all desire a peaceful life.",
+    "past": "She desired a quiet place to study last year.",
+    "part": "A quieter office has long been desired by the staff."
+  },
+  "detect": {
+    "base": "Dogs can detect smells we can't.",
+    "past": "The alarm detected smoke in the kitchen last night.",
+    "part": "No problems have been detected."
+  },
+  "develop": {
+    "base": "Children develop quickly in their first years.",
+    "past": "They developed a new app last year.",
+    "part": "The town has developed a lot recently."
+  },
+  "differ": {
+    "base": "Our opinions differ on this topic.",
+    "past": "Their answers differed in many ways yesterday.",
+    "part": "Prices have always differed from shop to shop."
+  },
+  "disagree": {
+    "base": "I disagree with you about that movie.",
+    "past": "We disagreed about the plan last night.",
+    "part": "They have disagreed on this for years."
+  },
+  "disappoint": {
+    "base": "I don't want to disappoint my parents.",
+    "past": "The film disappointed us last weekend.",
+    "part": "The fans have been disappointed by the result."
+  },
+  "discuss": {
+    "base": "Let's discuss this after lunch.",
+    "past": "We discussed the project at the meeting yesterday.",
+    "part": "The topic has been discussed many times."
+  },
+  "disturb": {
+    "base": "Please do not disturb me while I study.",
+    "past": "A loud noise disturbed my sleep last night.",
+    "part": "The birds have been disturbed by the workers."
+  },
+  "donate": {
+    "base": "We donate old clothes to charity.",
+    "past": "She donated blood last month.",
+    "part": "Thousands of books have been donated to the library."
+  },
+  "download": {
+    "base": "You can download the app for free.",
+    "past": "I downloaded a new game last night.",
+    "part": "The file has been downloaded."
+  },
+  "earn": {
+    "base": "I earn extra money by babysitting.",
+    "past": "She earned a lot of money last summer.",
+    "part": "You have earned a break!"
+  },
+  "elect": {
+    "base": "Students elect a class president every year.",
+    "past": "The town elected a new mayor last month.",
+    "part": "She has been elected team captain."
+  },
+  "embrace": {
+    "base": "We should embrace new ideas.",
+    "past": "They embraced each other at the airport yesterday.",
+    "part": "The new technology has been embraced by schools."
+  },
+  "empty": {
+    "base": "Please empty the dishwasher after breakfast.",
+    "past": "I emptied the trash this morning.",
+    "part": "The room has been emptied for painting."
+  },
+  "enhance": {
+    "base": "Good lighting can enhance your photos.",
+    "past": "The new music enhanced the film last year.",
+    "part": "The flavor has been enhanced with herbs."
+  },
+  "enter": {
+    "base": "Please knock before you enter.",
+    "past": "We entered the museum at ten yesterday.",
+    "part": "Has anyone entered the competition?"
+  },
+  "envy": {
+    "base": "I envy people who can sing well.",
+    "past": "She envied her sister's long hair as a child.",
+    "part": "He has always envied his brother's success."
+  },
+  "excite": {
+    "base": "Long trips always excite my children.",
+    "past": "The news excited everyone at school yesterday.",
+    "part": "The fans have been excited all week."
+  },
+  "exercise": {
+    "base": "I exercise three times a week.",
+    "past": "We exercised in the park yesterday morning.",
+    "part": "Have you exercised at all this week?"
+  },
+  "exist": {
+    "base": "Do you think aliens exist?",
+    "past": "Dinosaurs existed millions of years ago.",
+    "part": "This tradition has existed for centuries."
+  },
+  "experience": {
+    "base": "Many travelers experience jet lag.",
+    "past": "We experienced heavy rain on our trip last week.",
+    "part": "I have never experienced such kindness."
+  },
+  "explore": {
+    "base": "Let's explore the old castle.",
+    "past": "We explored the caves last summer.",
+    "part": "Have you explored the city yet?"
+  },
+  "express": {
+    "base": "It's important to express your feelings.",
+    "past": "She expressed her thanks at the dinner last night.",
+    "part": "Many concerns have been expressed about the plan."
+  },
+  "fade": {
+    "base": "Bright colors fade in the sun.",
+    "past": "The music faded slowly at the end of the film.",
+    "part": "My jeans have faded after many washes."
+  },
+  "fear": {
+    "base": "Many people fear spiders and snakes.",
+    "past": "As a child, I feared the dark.",
+    "part": "The storm was feared by everyone on the island."
+  },
+  "fix": {
+    "base": "Can you fix my bike?",
+    "past": "Dad fixed the leaking tap yesterday.",
+    "part": "The computer has been fixed."
+  },
+  "fold": {
+    "base": "Fold your clothes and put them away.",
+    "past": "She folded the letter and put it in an envelope.",
+    "part": "The towels have been folded neatly."
+  },
+  "forward": {
+    "base": "Please forward this email to your team.",
+    "past": "I forwarded the message to my boss this morning.",
+    "part": "Your mail has been forwarded to your new address."
+  },
+  "glance": {
+    "base": "I always glance at my phone in the morning.",
+    "past": "She glanced at the clock a minute ago.",
+    "part": "He had glanced at the menu before ordering."
+  },
+  "grab": {
+    "base": "Grab your coat; we're leaving.",
+    "past": "I grabbed a sandwich before the meeting yesterday.",
+    "part": "Someone has grabbed my seat!"
+  },
+  "guess": {
+    "base": "Guess what happened at school today!",
+    "past": "I guessed the answer correctly yesterday.",
+    "part": "Have you guessed who sent the card?"
+  },
+  "happen": {
+    "base": "Accidents happen when people aren't careful.",
+    "past": "Something funny happened at work yesterday.",
+    "part": "What has happened to your car?"
+  },
+  "hate": {
+    "base": "I hate waiting in long lines.",
+    "past": "I hated vegetables when I was little.",
+    "part": "She has always hated cold weather."
+  },
+  "hesitate": {
+    "base": "Don't hesitate to ask for help.",
+    "past": "He hesitated before he answered the question.",
+    "part": "She has never hesitated to speak her mind."
+  },
+  "hug": {
+    "base": "I hug my kids every morning.",
+    "past": "She hugged her grandmother at the airport yesterday.",
+    "part": "They have hugged and made up."
+  },
+  "imagine": {
+    "base": "Imagine a world without music.",
+    "past": "I imagined a different ending to the story last night.",
+    "part": "I had never imagined such a beautiful place."
+  },
+  "import": {
+    "base": "Many countries import coffee from Colombia.",
+    "past": "The shop imported cheese from France last year.",
+    "part": "These bananas have been imported from Ecuador."
+  },
+  "improve": {
+    "base": "I want to improve my English.",
+    "past": "Her grades improved a lot last year.",
+    "part": "The weather has improved since this morning."
+  },
+  "influence": {
+    "base": "Friends can influence your choices.",
+    "past": "My teacher influenced my career choice years ago.",
+    "part": "Her style has been influenced by her travels."
+  },
+  "injure": {
+    "base": "Wear a helmet so you don't injure your head.",
+    "past": "He injured his knee playing soccer last week.",
+    "part": "Nobody was injured in the accident."
+  },
+  "inspect": {
+    "base": "Officers inspect the trucks at the border.",
+    "past": "The mechanic inspected my car yesterday.",
+    "part": "The restaurant has been inspected twice this year."
+  },
+  "install": {
+    "base": "I need to install the new update.",
+    "past": "We installed solar panels last summer.",
+    "part": "The new software has been installed."
+  },
+  "interrupt": {
+    "base": "Please don't interrupt me while I'm talking.",
+    "past": "The phone interrupted our dinner last night.",
+    "part": "The show was interrupted by the news."
+  },
+  "introduce": {
+    "base": "Let me introduce my friend Ana.",
+    "past": "She introduced me to her parents last weekend.",
+    "part": "Have you been introduced to the new teacher?"
+  },
+  "invite": {
+    "base": "I want to invite you to my party.",
+    "past": "We invited our neighbors to dinner last Friday.",
+    "part": "Have you been invited to the wedding?"
+  },
+  "join": {
+    "base": "Why don't you join us for lunch?",
+    "past": "She joined the drama club last year.",
+    "part": "Three new students have joined our class."
+  },
+  "judge": {
+    "base": "Don't judge a book by its cover.",
+    "past": "She judged the cooking contest last weekend.",
+    "part": "The paintings will be judged by experts."
+  },
+  "kill": {
+    "base": "This spray will kill the weeds in the garden.",
+    "past": "The frost killed our tomato plants last week.",
+    "part": "The plants have been killed by the cold."
+  },
+  "knock": {
+    "base": "Please knock before you come in.",
+    "past": "Someone knocked on the door a minute ago.",
+    "part": "The vase has been knocked off the table."
+  },
+  "last": {
+    "base": "Good shoes last for years.",
+    "past": "The movie lasted three hours last night.",
+    "part": "Their friendship has lasted since childhood."
+  },
+  "launch": {
+    "base": "They plan to launch a new phone next month.",
+    "past": "The company launched its website last week.",
+    "part": "A new satellite has been launched into space."
+  },
+  "manage": {
+    "base": "I manage a small team at work.",
+    "past": "We managed to finish on time yesterday.",
+    "part": "The hotel is managed by a local family."
+  },
+  "match": {
+    "base": "Your shoes match your bag perfectly.",
+    "past": "We matched all the socks after doing the laundry yesterday.",
+    "part": "Each student has been matched with a partner."
+  },
+  "mention": {
+    "base": "Don't mention the party to her.",
+    "past": "He mentioned your name at dinner last night.",
+    "part": "Has anyone mentioned the meeting to you?"
+  },
+  "move": {
+    "base": "Let's move the sofa near the window.",
+    "past": "We moved to a new city in 2018.",
+    "part": "The meeting has been moved to Monday."
+  },
+  "murmur": {
+    "base": "Students murmur quietly before the exam.",
+    "past": "She murmured a thank-you as she left.",
+    "part": "The crowd had murmured during the long speech."
+  },
+  "obtain": {
+    "base": "You need to obtain a visa first.",
+    "past": "She obtained her driver's license last month.",
+    "part": "The information was obtained from the library."
+  },
+  "offend": {
+    "base": "I didn't mean to offend you.",
+    "past": "His joke offended some people last night.",
+    "part": "She has been offended by his comments."
+  },
+  "operate": {
+    "base": "Can you operate this machine?",
+    "past": "The surgeon operated on my knee last year.",
+    "part": "The ferry has operated here since 1950."
+  },
+  "own": {
+    "base": "We own a small house by the sea.",
+    "past": "My grandparents owned a bakery years ago.",
+    "part": "This shop has been owned by my family for decades."
+  },
+  "paint": {
+    "base": "Let's paint the kitchen yellow.",
+    "past": "We painted the fence last weekend.",
+    "part": "The house has just been painted."
+  },
+  "pass": {
+    "base": "Can you pass me the salt, please?",
+    "past": "She passed her driving test last week.",
+    "part": "Have you passed all your exams?"
+  },
+  "perform": {
+    "base": "The band will perform in the park tonight.",
+    "past": "The students performed a play yesterday.",
+    "part": "The operation was performed by a top surgeon."
+  },
+  "phone": {
+    "base": "Phone me when you get home.",
+    "past": "My mother phoned me last night.",
+    "part": "Have you phoned the dentist yet?"
+  },
+  "pinch": {
+    "base": "Don't pinch your little brother!",
+    "past": "She pinched herself to check she wasn't dreaming.",
+    "part": "My finger has been pinched in the door."
+  },
+  "possess": {
+    "base": "Few people possess such great talent.",
+    "past": "The old man possessed a rare book collection.",
+    "part": "He has possessed this painting since 1990."
+  },
+  "predict": {
+    "base": "Nobody can predict the future.",
+    "past": "The weather app predicted rain yesterday.",
+    "part": "The result had been predicted by experts."
+  },
+  "prepare": {
+    "base": "Let's prepare dinner together tonight.",
+    "past": "I prepared for the exam all last week.",
+    "part": "Everything has been prepared for the party."
+  },
+  "preserve": {
+    "base": "We must preserve our forests.",
+    "past": "My grandmother preserved peaches every summer.",
+    "part": "The old town has been beautifully preserved."
+  },
+  "prevent": {
+    "base": "Wash your hands to prevent illness.",
+    "past": "The rain prevented us from playing yesterday.",
+    "part": "The accident could have been prevented."
+  },
+  "produce": {
+    "base": "These farms produce delicious cheese.",
+    "past": "The factory produced ten thousand cars last year.",
+    "part": "This wine is produced in Spain."
+  },
+  "promote": {
+    "base": "We promote healthy eating at our school.",
+    "past": "The company promoted her to manager last month.",
+    "part": "He has been promoted twice this year."
+  },
+  "protect": {
+    "base": "Sunscreen will protect your skin.",
+    "past": "The dog protected the children from danger last night.",
+    "part": "These animals are protected by law."
+  },
+  "pull": {
+    "base": "Pull the door to open it.",
+    "past": "He pulled the rope as hard as he could yesterday.",
+    "part": "The tooth has been pulled out."
+  },
+  "qualify": {
+    "base": "You must be eighteen to qualify for this job.",
+    "past": "Our team qualified for the finals last week.",
+    "part": "She has qualified as a nurse."
+  },
+  "queue": {
+    "base": "We always queue for the bus here.",
+    "past": "We queued for an hour to see the show yesterday.",
+    "part": "People have queued all night for tickets."
+  },
+  "raise": {
+    "base": "Raise your hand if you know the answer.",
+    "past": "They raised money for charity last month.",
+    "part": "She was raised by her grandparents."
+  },
+  "realize": {
+    "base": "Do you realize what time it is?",
+    "past": "I realized I had lost my keys this morning.",
+    "part": "Have you realized your mistake?"
+  },
+  "recognize": {
+    "base": "I didn't recognize you with short hair!",
+    "past": "She recognized her old teacher at the mall yesterday.",
+    "part": "His work has been recognized with an award."
+  },
+  "record": {
+    "base": "Let's record a video for Grandma.",
+    "past": "The band recorded a new album last year.",
+    "part": "The show was recorded in front of an audience."
+  },
+  "refer": {
+    "base": "Please refer to page ten for more details.",
+    "past": "The doctor referred me to a specialist last week.",
+    "part": "I have been referred to a new doctor."
+  },
+  "refuse": {
+    "base": "I refuse to give up.",
+    "past": "He refused to eat his vegetables last night.",
+    "part": "Her request has been refused."
+  },
+  "regret": {
+    "base": "I regret not studying harder.",
+    "past": "She regretted her words immediately yesterday.",
+    "part": "I have never regretted moving here."
+  },
+  "release": {
+    "base": "They release new movies every Friday.",
+    "past": "They released the birds back into the wild yesterday.",
+    "part": "The new album has been released."
+  },
+  "remain": {
+    "base": "Please remain seated until the plane stops.",
+    "past": "We remained at the party until midnight.",
+    "part": "The castle has remained the same for centuries."
+  },
+  "remove": {
+    "base": "Please remove your shoes at the door.",
+    "past": "She removed the stain from her shirt yesterday.",
+    "part": "The old posters have been removed."
+  },
+  "replace": {
+    "base": "I need to replace my phone battery.",
+    "past": "We replaced the old windows last year.",
+    "part": "The broken lamp has been replaced."
+  },
+  "represent": {
+    "base": "These colors represent the four seasons.",
+    "past": "She represented our school at the contest last year.",
+    "part": "Our country has been represented by young athletes."
+  },
+  "require": {
+    "base": "These plants require a lot of sunlight.",
+    "past": "The job required long hours last year.",
+    "part": "A passport is required for this trip."
+  },
+  "research": {
+    "base": "I research my family history in my free time.",
+    "past": "We researched hotels online last week.",
+    "part": "This topic has been researched for years."
+  },
+  "respond": {
+    "base": "Please respond to my email as soon as possible.",
+    "past": "She responded quickly to my message yesterday.",
+    "part": "Hundreds of people have responded to the survey."
+  },
+  "return": {
+    "base": "Please return the books by Friday.",
+    "past": "We returned from our trip last Sunday.",
+    "part": "Has she returned your umbrella?"
+  },
+  "review": {
+    "base": "Let's review the lesson before the test.",
+    "past": "We reviewed the notes together last night.",
+    "part": "Your essay has been reviewed by two teachers."
+  },
+  "rob": {
+    "base": "In the movie, two men rob a bank.",
+    "past": "Someone robbed the corner shop last night.",
+    "part": "Our neighbors have been robbed twice."
+  },
+  "rush": {
+    "base": "Don't rush; we have plenty of time.",
+    "past": "We rushed to the station this morning.",
+    "part": "She was rushed to the hospital last night."
+  },
+  "satisfy": {
+    "base": "It's hard to satisfy every customer.",
+    "past": "The meal satisfied everyone at the table last night.",
+    "part": "Are you satisfied with the results?"
+  },
+  "scare": {
+    "base": "Loud noises scare my dog.",
+    "past": "The movie scared me last night.",
+    "part": "The kids have been scared by the storm."
+  },
+  "search": {
+    "base": "Search the internet for cheap flights.",
+    "past": "We searched everywhere for the cat yesterday.",
+    "part": "The police have searched the whole building."
+  },
+  "serve": {
+    "base": "They serve breakfast until eleven.",
+    "past": "The waiter served our food an hour ago.",
+    "part": "Dinner has been served in the dining room."
+  },
+  "shape": {
+    "base": "Our experiences shape who we are.",
+    "past": "She shaped the clay into a bowl yesterday.",
+    "part": "His life has been shaped by his travels."
+  },
+  "shave": {
+    "base": "I shave every morning before work.",
+    "past": "He shaved his beard off last week.",
+    "part": "He has shaved his head for the summer."
+  },
+  "skip": {
+    "base": "Don't skip breakfast; it's important.",
+    "past": "I skipped the gym yesterday.",
+    "part": "She has never skipped a class."
+  },
+  "smash": {
+    "base": "Be careful not to smash the plates.",
+    "past": "The ball smashed the window yesterday.",
+    "part": "The old record has been smashed."
+  },
+  "solve": {
+    "base": "Can you solve this puzzle?",
+    "past": "We solved the problem together last night.",
+    "part": "The mystery has finally been solved."
+  },
+  "squeeze": {
+    "base": "Squeeze some lemon juice on the fish.",
+    "past": "She squeezed my hand before the exam.",
+    "part": "Fresh oranges have been squeezed for breakfast."
+  },
+  "state": {
+    "base": "Please state your name and address.",
+    "past": "The report stated the facts clearly last week.",
+    "part": "The rules have been clearly stated."
+  },
+  "stir": {
+    "base": "Stir the soup every few minutes.",
+    "past": "I stirred sugar into my coffee this morning.",
+    "part": "The sauce has been stirred well."
+  },
+  "struggle": {
+    "base": "Many students struggle with math.",
+    "past": "I struggled to open the jar yesterday.",
+    "part": "She has struggled with her health this year."
+  },
+  "suggest": {
+    "base": "I suggest we leave early.",
+    "past": "My friend suggested a great restaurant last week.",
+    "part": "A new plan has been suggested."
+  },
+  "support": {
+    "base": "I always support my local team.",
+    "past": "My parents supported my decision last year.",
+    "part": "The project has been supported by the city."
+  },
+  "surprise": {
+    "base": "Let's surprise Mom with breakfast in bed.",
+    "past": "The result surprised everyone last night.",
+    "part": "I was surprised by the big party."
+  },
+  "suspect": {
+    "base": "I suspect he knows the truth.",
+    "past": "She suspected her brother of eating her cake.",
+    "part": "He has long been suspected of cheating at cards."
+  },
+  "switch": {
+    "base": "Switch off the lights when you leave.",
+    "past": "I switched to a new phone company last month.",
+    "part": "The TV has been switched off."
+  },
+  "taste": {
+    "base": "Taste the sauce and add salt if needed.",
+    "past": "The soup tasted delicious last night.",
+    "part": "Have you ever tasted mango ice cream?"
+  },
+  "thank": {
+    "base": "I want to thank you for your help.",
+    "past": "She thanked us for the flowers yesterday.",
+    "part": "Have you thanked your aunt for the gift?"
+  },
+  "tie": {
+    "base": "Can you tie your shoelaces?",
+    "past": "He tied the boat to the dock last night.",
+    "part": "The dog has been tied to a tree."
+  },
+  "train": {
+    "base": "I train at the gym three times a week.",
+    "past": "She trained hard for the marathon last year.",
+    "part": "These dogs have been trained to find people."
+  },
+  "treat": {
+    "base": "Treat others the way you want to be treated.",
+    "past": "The nurse treated my cut yesterday.",
+    "part": "She has always treated me like family."
+  },
+  "unite": {
+    "base": "Sports can unite people from different backgrounds.",
+    "past": "The disaster united the whole town last year.",
+    "part": "The two teams have united for the event."
+  },
+  "upload": {
+    "base": "Upload your photos to the shared folder.",
+    "past": "I uploaded the video last night.",
+    "part": "The file has been uploaded."
+  },
+  "vary": {
+    "base": "Prices vary from shop to shop.",
+    "past": "The temperature varied a lot last week.",
+    "part": "The menu has varied very little over the years."
+  },
+  "visualize": {
+    "base": "Try to visualize your goal.",
+    "past": "She visualized the race before it started yesterday.",
+    "part": "The data has been visualized in a chart."
+  },
+  "waste": {
+    "base": "Don't waste food; others need it.",
+    "past": "I wasted the whole afternoon yesterday.",
+    "part": "A lot of water has been wasted."
+  },
+  "water": {
+    "base": "Please water the plants while I'm away.",
+    "past": "I watered the garden this morning.",
+    "part": "Have the flowers been watered today?"
+  },
+  "weigh": {
+    "base": "How much do you weigh?",
+    "past": "The nurse weighed the baby yesterday.",
+    "part": "The bags have been weighed at the airport."
+  },
+  "wipe": {
+    "base": "Wipe the table after you eat.",
+    "past": "She wiped her tears away a minute ago.",
+    "part": "The board has been wiped clean."
+  },
+  "worry": {
+    "base": "Don't worry; everything will be fine.",
+    "past": "We worried about you last night.",
+    "part": "She has worried about the exam all week."
+  },
+  "yawn": {
+    "base": "I always yawn when I'm tired.",
+    "past": "He yawned during the long meeting yesterday.",
+    "part": "She has yawned all morning."
+  },
+  "accomplish": {
+    "base": "You can accomplish anything with hard work.",
+    "past": "We accomplished a lot last week.",
+    "part": "She has accomplished all her goals this year."
+  },
+  "acknowledge": {
+    "base": "Please acknowledge my email when you get it.",
+    "past": "He acknowledged his mistake yesterday.",
+    "part": "Her hard work has been acknowledged by everyone."
+  },
+  "administer": {
+    "base": "Nurses administer medicine to patients.",
+    "past": "The nurse administered the vaccine this morning.",
+    "part": "The test was administered by a teacher."
+  },
+  "advocate": {
+    "base": "Many doctors advocate regular exercise.",
+    "past": "She advocated for better school lunches last year.",
+    "part": "He has advocated for animal rights for years."
+  },
+  "aggravate": {
+    "base": "Running may aggravate your knee injury.",
+    "past": "The cold weather aggravated my cough last week.",
+    "part": "The problem has been aggravated by the rain."
+  },
+  "alleviate": {
+    "base": "This cream will alleviate the itching.",
+    "past": "The medicine alleviated my headache yesterday.",
+    "part": "Traffic has been alleviated by the new road."
+  },
+  "allocate": {
+    "base": "We allocate tasks every Monday morning.",
+    "past": "The school allocated more money to sports last year.",
+    "part": "Each student has been allocated a locker."
+  },
+  "amplify": {
+    "base": "Speakers amplify the sound in the hall.",
+    "past": "The microphone amplified her voice last night.",
+    "part": "The sound has been amplified."
+  },
+  "anticipate": {
+    "base": "We anticipate a busy weekend at the shop.",
+    "past": "Nobody anticipated the heavy snow last week.",
+    "part": "The new film is highly anticipated."
+  },
+  "appoint": {
+    "base": "They plan to appoint a new principal soon.",
+    "past": "The company appointed a new manager last month.",
+    "part": "She has been appointed head of the team."
+  },
+  "appreciate": {
+    "base": "I really appreciate your help.",
+    "past": "We appreciated their kindness last weekend.",
+    "part": "Your hard work has been appreciated."
+  },
+  "approximate": {
+    "base": "Can you approximate the cost of the trip?",
+    "past": "We approximated the distance on the map yesterday.",
+    "part": "The numbers have been approximated."
+  },
+  "arbitrate": {
+    "base": "A neutral person will arbitrate the dispute.",
+    "past": "A judge arbitrated the disagreement last month.",
+    "part": "The case has been arbitrated fairly."
+  },
+  "articulate": {
+    "base": "Try to articulate your ideas clearly.",
+    "past": "She articulated her concerns at the meeting yesterday.",
+    "part": "His goals have been clearly articulated."
+  },
+  "ascertain": {
+    "base": "We need to ascertain the facts first.",
+    "past": "The doctor ascertained the cause of the pain yesterday.",
+    "part": "The truth has finally been ascertained."
+  },
+  "assassinate": {
+    "base": "In the novel, spies plan to assassinate the king.",
+    "past": "In the story, a traitor assassinated the emperor.",
+    "part": "The king in the film was assassinated by a spy."
+  },
+  "assimilate": {
+    "base": "It takes time to assimilate new information.",
+    "past": "She assimilated into the new culture quickly last year.",
+    "part": "The new students have assimilated well."
+  },
+  "attribute": {
+    "base": "I attribute my success to hard work.",
+    "past": "She attributed her good grades to her teacher.",
+    "part": "This painting has been attributed to an unknown artist."
+  },
+  "augment": {
+    "base": "I augment my income by teaching online.",
+    "past": "They augmented the team with two new players last year.",
+    "part": "The budget has been augmented this year."
+  },
+  "calibrate": {
+    "base": "Calibrate the scale before you weigh anything.",
+    "past": "The technician calibrated the machine yesterday.",
+    "part": "The instruments have been calibrated."
+  },
+  "captivate": {
+    "base": "Good stories captivate young readers.",
+    "past": "The singer captivated the audience last night.",
+    "part": "We were captivated by the view."
+  },
+  "categorize": {
+    "base": "Please categorize these books by subject.",
+    "past": "We categorized the photos by year last weekend.",
+    "part": "The files have been categorized."
+  },
+  "circulate": {
+    "base": "Open the windows to let the air circulate.",
+    "past": "Rumors circulated around the school last week.",
+    "part": "The memo has been circulated to all staff."
+  },
+  "collaborate": {
+    "base": "Our teams collaborate on many projects.",
+    "past": "The two artists collaborated on a song last year.",
+    "part": "We have collaborated with local schools."
+  },
+  "commence": {
+    "base": "The ceremony will commence at noon.",
+    "past": "The concert commenced at eight last night.",
+    "part": "Work has commenced on the new bridge."
+  },
+  "compensate": {
+    "base": "The company will compensate you for the delay.",
+    "past": "The airline compensated us for the lost bags last month.",
+    "part": "The workers have been compensated for their extra hours."
+  },
+  "complicate": {
+    "base": "Please don't complicate things more than necessary.",
+    "past": "The rain complicated our plans yesterday.",
+    "part": "The situation has been complicated by the strike."
+  },
+  "confiscate": {
+    "base": "Teachers confiscate phones during exams.",
+    "past": "The teacher confiscated my phone yesterday.",
+    "part": "Their passports have been confiscated."
+  },
+  "congratulate": {
+    "base": "I want to congratulate you on your new job.",
+    "past": "Everyone congratulated her after the race yesterday.",
+    "part": "He has been congratulated by his whole family."
+  },
+  "consolidate": {
+    "base": "Let's consolidate our notes into one file.",
+    "past": "The company consolidated its offices last year.",
+    "part": "The two schools have been consolidated."
+  },
+  "contaminate": {
+    "base": "Plastic can contaminate the ocean.",
+    "past": "The chemicals contaminated the river last year.",
+    "part": "The water has been contaminated."
+  },
+  "contemplate": {
+    "base": "I sometimes contemplate moving to the countryside.",
+    "past": "She contemplated the view for a long time yesterday.",
+    "part": "He has contemplated changing careers."
+  },
+  "cooperate": {
+    "base": "We need to cooperate to finish on time.",
+    "past": "Everyone cooperated during the fire drill yesterday.",
+    "part": "The witnesses have cooperated with the police."
+  },
+  "coordinate": {
+    "base": "I coordinate the school's sports events.",
+    "past": "She coordinated the wedding last summer.",
+    "part": "The project has been coordinated very well."
+  },
+  "correspond": {
+    "base": "Your answers should correspond to the questions.",
+    "past": "We corresponded by letter for years as teenagers.",
+    "part": "They have corresponded since they met in 2010."
+  },
+  "deteriorate": {
+    "base": "Old buildings deteriorate without care.",
+    "past": "The weather deteriorated quickly yesterday afternoon.",
+    "part": "His health has deteriorated recently."
+  },
+  "differentiate": {
+    "base": "Can you differentiate between these two colors?",
+    "past": "The teacher differentiated the tasks for each group yesterday.",
+    "part": "The twins can't be differentiated easily."
+  },
+  "diminish": {
+    "base": "Pain medicine can diminish the discomfort.",
+    "past": "The noise diminished as we walked away.",
+    "part": "Her interest has diminished over time."
+  },
+  "discard": {
+    "base": "Discard any food that smells bad.",
+    "past": "I discarded my old notes last week.",
+    "part": "The broken toys have been discarded."
+  },
+  "disregard": {
+    "base": "Please disregard my last message.",
+    "past": "He disregarded the warning signs yesterday.",
+    "part": "Our advice has been completely disregarded."
+  },
+  "distribute": {
+    "base": "Volunteers distribute food to the families.",
+    "past": "The teacher distributed the tests a minute ago.",
+    "part": "The flyers have been distributed around town."
+  },
+  "dominate": {
+    "base": "Tall buildings dominate the city skyline.",
+    "past": "Our team dominated the game last night.",
+    "part": "The market has been dominated by one company."
+  },
+  "eliminate": {
+    "base": "We want to eliminate plastic waste.",
+    "past": "They eliminated sugar from their diet last year.",
+    "part": "Our team has been eliminated from the cup."
+  },
+  "emancipate": {
+    "base": "Education can emancipate people from poverty.",
+    "past": "The new law emancipated thousands of enslaved people in 1888.",
+    "part": "Women have been emancipated in many ways."
+  },
+  "emphasize": {
+    "base": "I want to emphasize the importance of sleep.",
+    "past": "The teacher emphasized the key points yesterday.",
+    "part": "Safety has been emphasized at every meeting."
+  },
+  "enumerate": {
+    "base": "Can you enumerate the main causes?",
+    "past": "She enumerated all the reasons for her decision.",
+    "part": "The rules have been enumerated in the handbook."
+  },
+  "evaluate": {
+    "base": "We evaluate our progress every month.",
+    "past": "The judges evaluated each dish carefully yesterday.",
+    "part": "All the projects have been evaluated."
+  },
+  "exaggerate": {
+    "base": "Don't exaggerate; it wasn't that bad!",
+    "past": "He exaggerated the size of the fish he caught.",
+    "part": "The danger has been greatly exaggerated."
+  },
+  "examine": {
+    "base": "The doctor will examine your eyes.",
+    "past": "The vet examined our cat yesterday.",
+    "part": "The evidence has been examined carefully."
+  },
+  "exasperate": {
+    "base": "Long delays always exasperate travelers.",
+    "past": "His constant jokes exasperated the teacher yesterday.",
+    "part": "She was exasperated by the slow service."
+  },
+  "exhilarate": {
+    "base": "Roller coasters exhilarate my kids.",
+    "past": "The fast ride exhilarated everyone last weekend.",
+    "part": "We were exhilarated by the view from the top."
+  },
+  "extrapolate": {
+    "base": "We can extrapolate future trends from this data.",
+    "past": "The scientist extrapolated the results last year.",
+    "part": "These figures have been extrapolated from a small sample."
+  },
+  "fabricate": {
+    "base": "Don't fabricate excuses for being late.",
+    "past": "He fabricated a story about his dog eating his homework.",
+    "part": "The parts are fabricated in our factory."
+  },
+  "facilitate": {
+    "base": "Good tools facilitate learning in the classroom.",
+    "past": "The new app facilitated communication last year.",
+    "part": "The meeting was facilitated by a coach."
+  },
+  "fluctuate": {
+    "base": "Prices fluctuate during the year.",
+    "past": "The temperature fluctuated a lot last week.",
+    "part": "Her weight has fluctuated over the years."
+  },
+  "formulate": {
+    "base": "We need to formulate a clear plan.",
+    "past": "She formulated a new theory in 2018.",
+    "part": "The question has been formulated carefully."
+  },
+  "fortify": {
+    "base": "Some companies fortify milk with vitamin D.",
+    "past": "They fortified the castle walls centuries ago.",
+    "part": "The cereal has been fortified with iron."
+  },
+  "generate": {
+    "base": "Solar panels generate clean electricity.",
+    "past": "The event generated a lot of interest last year.",
+    "part": "A lot of waste has been generated."
+  },
+  "hypothesize": {
+    "base": "Scientists hypothesize that life exists elsewhere.",
+    "past": "The students hypothesized about the results last week.",
+    "part": "It has been hypothesized that water once flowed on Mars."
+  },
+  "illuminate": {
+    "base": "Candles illuminate the room at dinner.",
+    "past": "Fireworks illuminated the sky last night.",
+    "part": "The bridge is illuminated every evening."
+  },
+  "illustrate": {
+    "base": "Let me illustrate my point with an example.",
+    "past": "She illustrated a children's book last year.",
+    "part": "The book has been beautifully illustrated."
+  },
+  "implement": {
+    "base": "We will implement the new system next month.",
+    "past": "The school implemented a new dress code last year.",
+    "part": "The changes have been implemented."
+  },
+  "incorporate": {
+    "base": "Try to incorporate more vegetables into your diet.",
+    "past": "She incorporated our ideas into the plan yesterday.",
+    "part": "Your suggestions have been incorporated."
+  },
+  "indicate": {
+    "base": "Dark clouds usually indicate rain.",
+    "past": "The sign indicated a sharp turn ahead.",
+    "part": "The exits are indicated by green signs."
+  },
+  "infiltrate": {
+    "base": "Water can infiltrate cracks in the wall.",
+    "past": "The detective infiltrated the gang last year.",
+    "part": "The network has been infiltrated by hackers."
+  },
+  "initiate": {
+    "base": "Who will initiate the conversation?",
+    "past": "She initiated a recycling program last year.",
+    "part": "The project was initiated by students."
+  },
+  "innovate": {
+    "base": "Companies must innovate to survive.",
+    "past": "The team innovated in many ways last year.",
+    "part": "They have innovated constantly since 2010."
+  },
+  "integrate": {
+    "base": "We integrate technology into every lesson.",
+    "past": "She integrated well into the new team last year.",
+    "part": "The new students have been integrated into the class."
+  },
+  "interpret": {
+    "base": "Can you interpret this graph for me?",
+    "past": "She interpreted for the visitors yesterday.",
+    "part": "His words were interpreted as a joke."
+  },
+  "intimidate": {
+    "base": "Don't let the big players intimidate you.",
+    "past": "The tall goalkeeper intimidated the young players yesterday.",
+    "part": "She wasn't intimidated by the difficult test."
+  },
+  "investigate": {
+    "base": "The police will investigate the robbery.",
+    "past": "Scientists investigated the strange noise last week.",
+    "part": "The case has been investigated thoroughly."
+  },
+  "isolate": {
+    "base": "Try not to isolate yourself from your friends.",
+    "past": "The snow isolated the village last winter.",
+    "part": "The sick cat has been isolated from the others."
+  },
+  "jeopardize": {
+    "base": "Don't jeopardize your future by cheating.",
+    "past": "His injury jeopardized the team's chances last season.",
+    "part": "Our plans have been jeopardized by the storm."
+  },
+  "justify": {
+    "base": "How can you justify such a high price?",
+    "past": "She justified her decision at the meeting yesterday.",
+    "part": "His fears have been justified."
+  },
+  "legislate": {
+    "base": "Governments legislate to protect consumers.",
+    "past": "The government legislated against plastic bags in 2019.",
+    "part": "New rules have been legislated this year."
+  },
+  "liquidate": {
+    "base": "The owners plan to liquidate the company.",
+    "past": "The store liquidated all its stock last month.",
+    "part": "The business has been liquidated."
+  },
+  "manipulate": {
+    "base": "Some ads try to manipulate our feelings.",
+    "past": "He manipulated the photo with an app yesterday.",
+    "part": "The results have been manipulated."
+  },
+  "manufacture": {
+    "base": "They manufacture bicycles in this factory.",
+    "past": "The company manufactured toys in the 1980s.",
+    "part": "These cars are manufactured in Germany."
+  },
+  "mediate": {
+    "base": "A teacher will mediate between the two students.",
+    "past": "She mediated the argument between her brothers yesterday.",
+    "part": "The dispute has been mediated successfully."
+  },
+  "memorize": {
+    "base": "I need to memorize these new words.",
+    "past": "She memorized the whole poem last night.",
+    "part": "Have you memorized your lines?"
+  },
+  "migrate": {
+    "base": "Many birds migrate south in winter.",
+    "past": "My grandparents migrated to Argentina in 1950.",
+    "part": "Thousands of people have migrated to the city."
+  },
+  "mitigate": {
+    "base": "Trees help mitigate the effects of heat.",
+    "past": "The new wall mitigated the flood damage last spring.",
+    "part": "The risks have been mitigated."
+  },
+  "modify": {
+    "base": "You can modify the recipe if you like.",
+    "past": "We modified our plans because of the rain.",
+    "part": "The car has been modified for racing."
+  },
+  "negotiate": {
+    "base": "I always negotiate the price at markets.",
+    "past": "They negotiated a better salary last month.",
+    "part": "A new deal has been negotiated."
+  },
+  "neutralize": {
+    "base": "Baking soda can neutralize bad smells.",
+    "past": "The goalkeeper neutralized every attack last night.",
+    "part": "The acid has been neutralized."
+  },
+  "nominate": {
+    "base": "I want to nominate my teacher for the award.",
+    "past": "They nominated her for class president last week.",
+    "part": "The film has been nominated for three awards."
+  },
+  "notify": {
+    "base": "Please notify us if you change your address.",
+    "past": "The school notified parents about the closure yesterday.",
+    "part": "All the winners have been notified."
+  },
+  "obliterate": {
+    "base": "Heavy snow can obliterate the hiking trails.",
+    "past": "The storm obliterated the sandcastles last night.",
+    "part": "The old path has been obliterated by the flood."
+  },
+  "obscure": {
+    "base": "Tall trees obscure the view of the lake.",
+    "past": "Clouds obscured the moon last night.",
+    "part": "The sign was obscured by branches."
+  },
+  "orchestrate": {
+    "base": "She loves to orchestrate surprise parties.",
+    "past": "He orchestrated the whole event last year.",
+    "part": "The plan had been orchestrated perfectly."
+  },
+  "originate": {
+    "base": "Many words in English originate from Latin.",
+    "past": "This dish originated in southern Italy.",
+    "part": "The idea had originated with a student."
+  },
+  "overestimate": {
+    "base": "People often overestimate how much they can do.",
+    "past": "I overestimated my running speed last week.",
+    "part": "The costs have been overestimated."
+  },
+  "participate": {
+    "base": "I want to participate in the school play.",
+    "past": "We participated in a charity run last month.",
+    "part": "Fifty students have participated in the contest."
+  },
+  "perpetuate": {
+    "base": "Jokes like that perpetuate silly stereotypes.",
+    "past": "The old film perpetuated many myths.",
+    "part": "This tradition has been perpetuated for centuries."
+  },
+  "perplex": {
+    "base": "These instructions perplex me every time.",
+    "past": "The strange question perplexed the students yesterday.",
+    "part": "I was perplexed by his reaction."
+  },
+  "persecute": {
+    "base": "No one should persecute others for their beliefs.",
+    "past": "The cruel king persecuted his own people in the story.",
+    "part": "These animals have been persecuted by hunters."
+  },
+  "perpetrate": {
+    "base": "Few people would perpetrate such a silly prank.",
+    "past": "The students perpetrated a harmless prank last April.",
+    "part": "The fraud was perpetrated by a former employee."
+  },
+  "postpone": {
+    "base": "Let's postpone the meeting until Friday.",
+    "past": "They postponed the game because of rain yesterday.",
+    "part": "The concert has been postponed."
+  },
+  "precipitate": {
+    "base": "Rising prices could precipitate a crisis.",
+    "past": "His comment precipitated a big argument last night.",
+    "part": "The decision was precipitated by the storm."
+  },
+  "prioritize": {
+    "base": "Learn to prioritize your tasks.",
+    "past": "We prioritized safety during the trip last summer.",
+    "part": "Health has been prioritized this year."
+  },
+  "procrastinate": {
+    "base": "I always procrastinate when I have homework.",
+    "past": "I procrastinated all weekend and didn't study.",
+    "part": "She has procrastinated for weeks."
+  },
+  "proliferate": {
+    "base": "Weeds proliferate in warm, wet weather.",
+    "past": "Coffee shops proliferated in the city last year.",
+    "part": "Fake news has proliferated online."
+  },
+  "prosecute": {
+    "base": "The police prosecute drivers who use their phones.",
+    "past": "The state prosecuted the company for fraud last year.",
+    "part": "He has been prosecuted for dangerous driving."
+  },
+  "rationalize": {
+    "base": "We often rationalize our bad habits.",
+    "past": "She rationalized buying the expensive shoes last week.",
+    "part": "The process has been rationalized to save time."
+  },
+  "reciprocate": {
+    "base": "If someone is kind, try to reciprocate.",
+    "past": "She reciprocated his smile yesterday.",
+    "part": "Their kindness has been reciprocated."
+  },
+  "reconcile": {
+    "base": "It's never too late to reconcile with a friend.",
+    "past": "The two brothers reconciled last Christmas.",
+    "part": "They have finally reconciled after years apart."
+  },
+  "rectify": {
+    "base": "We will rectify the mistake right away.",
+    "past": "The bank rectified the error last week.",
+    "part": "The problem has been rectified."
+  },
+  "rehabilitate": {
+    "base": "The center helps rehabilitate injured animals.",
+    "past": "They rehabilitated the old theater last year.",
+    "part": "The injured eagle has been rehabilitated and released."
+  },
+  "reinforce": {
+    "base": "Practice will reinforce what you learn.",
+    "past": "They reinforced the bridge last summer.",
+    "part": "The walls have been reinforced with steel."
+  },
+  "reiterate": {
+    "base": "Let me reiterate the main points.",
+    "past": "The coach reiterated the rules before the game.",
+    "part": "The message has been reiterated many times."
+  },
+  "relinquish": {
+    "base": "He doesn't want to relinquish control.",
+    "past": "She relinquished her seat to an old man yesterday.",
+    "part": "The title has been relinquished."
+  },
+  "remunerate": {
+    "base": "Companies should remunerate staff fairly.",
+    "past": "They remunerated the volunteers with gift cards last year.",
+    "part": "All workers will be remunerated for overtime."
+  },
+  "replicate": {
+    "base": "Scientists try to replicate the experiment.",
+    "past": "They replicated the study last year.",
+    "part": "The results have been replicated many times."
+  },
+  "repudiate": {
+    "base": "I repudiate those false claims.",
+    "past": "The company repudiated the rumors last week.",
+    "part": "The old agreement has been repudiated."
+  },
+  "resuscitate": {
+    "base": "Lifeguards learn how to resuscitate swimmers.",
+    "past": "The lifeguard resuscitated the swimmer yesterday.",
+    "part": "The patient has been resuscitated."
+  },
+  "retaliate": {
+    "base": "Don't retaliate when someone insults you.",
+    "past": "The other team retaliated with two quick goals last night.",
+    "part": "They have retaliated with higher prices."
+  },
+  "ridicule": {
+    "base": "Never ridicule someone for their accent.",
+    "past": "The other kids ridiculed his new haircut last year.",
+    "part": "Her idea was ridiculed at first."
+  },
+  "sabotage": {
+    "base": "Don't sabotage your own success.",
+    "past": "Someone sabotaged our science project last week.",
+    "part": "The machine has been sabotaged."
+  },
+  "scrutinize": {
+    "base": "Always scrutinize a contract before you sign it.",
+    "past": "The teacher scrutinized my essay yesterday.",
+    "part": "Every detail has been scrutinized."
+  },
+  "segregate": {
+    "base": "Please segregate your recycling into paper and plastic.",
+    "past": "The farmer segregated the sick sheep last week.",
+    "part": "The waste has been segregated for recycling."
+  },
+  "simulate": {
+    "base": "Pilots use computers to simulate real flights.",
+    "past": "We simulated an earthquake in class yesterday.",
+    "part": "The storm was simulated on a computer."
+  },
+  "speculate": {
+    "base": "I don't want to speculate about the result.",
+    "past": "Fans speculated about the new album last month.",
+    "part": "It has been speculated that the shop will close."
+  },
+  "stigmatize": {
+    "base": "We shouldn't stigmatize people who ask for help.",
+    "past": "Old movies often stigmatized people with mental illness.",
+    "part": "Mental illness has been stigmatized for too long."
+  },
+  "subjugate": {
+    "base": "In the story, the dark lord tries to subjugate the land.",
+    "past": "The empire subjugated many nations centuries ago.",
+    "part": "The villagers had been subjugated for years."
+  },
+  "substantiate": {
+    "base": "Can you substantiate your claim with evidence?",
+    "past": "She substantiated her story with photos last week.",
+    "part": "The rumors have not been substantiated."
+  },
+  "supplement": {
+    "base": "Many people supplement their diet with vitamins.",
+    "past": "He supplemented his income by tutoring last year.",
+    "part": "The course has been supplemented with online videos."
+  },
+  "synthesize": {
+    "base": "Plants synthesize sugar from sunlight.",
+    "past": "She synthesized all the research into one report.",
+    "part": "The drug was synthesized in a lab."
+  },
+  "terminate": {
+    "base": "You can terminate the contract at any time.",
+    "past": "The company terminated his contract last month.",
+    "part": "The service has been terminated."
+  },
+  "tolerate": {
+    "base": "I can't tolerate loud music at night.",
+    "past": "She tolerated the noise for hours yesterday.",
+    "part": "Bad behavior will not be tolerated."
+  },
+  "transcend": {
+    "base": "Great music can transcend language barriers.",
+    "past": "Her talent transcended all expectations last season.",
+    "part": "Their friendship has transcended distance and time."
+  },
+  "transform": {
+    "base": "A little paint can transform a room.",
+    "past": "The new park transformed the neighborhood last year.",
+    "part": "The old factory has been transformed into apartments."
+  },
+  "undermine": {
+    "base": "Don't undermine your teammates' confidence.",
+    "past": "The rumors undermined her reputation last year.",
+    "part": "His authority has been undermined."
+  },
+  "underscore": {
+    "base": "These results underscore the need for change.",
+    "past": "The coach underscored the importance of teamwork yesterday.",
+    "part": "The point has been underscored many times."
+  },
+  "validate": {
+    "base": "Please validate your ticket before boarding.",
+    "past": "The study validated our theory last year.",
+    "part": "Your parking ticket has been validated."
+  },
+  "vandalize": {
+    "base": "People who vandalize parks must clean them up.",
+    "past": "Someone vandalized the bus stop last night.",
+    "part": "The statue has been vandalized again."
+  },
+  "vindicate": {
+    "base": "The new evidence may vindicate him.",
+    "past": "The test results vindicated her decision last week.",
+    "part": "He has been completely vindicated."
+  },
+  "ponder": {
+    "base": "I like to ponder big questions at night.",
+    "past": "She pondered the problem all evening.",
+    "part": "I have pondered this question for years."
+  },
+  "linger": {
+    "base": "We like to linger over coffee on Sundays.",
+    "past": "The smell of cake lingered in the kitchen all day.",
+    "part": "The guests had lingered long after dinner."
+  },
+  "wander": {
+    "base": "I love to wander through old towns.",
+    "past": "We wandered around the market yesterday.",
+    "part": "The dog has wandered off again."
+  },
+  "wither": {
+    "base": "Flowers wither quickly without water.",
+    "past": "The roses withered in the heat last week.",
+    "part": "The plants have withered in the sun."
+  },
+  "flourish": {
+    "base": "Plants flourish in this warm climate.",
+    "past": "Her business flourished last year.",
+    "part": "The garden has flourished this spring."
+  },
+  "cherish": {
+    "base": "I cherish every moment with my family.",
+    "past": "She cherished her grandmother's ring all her life.",
+    "part": "These memories will be cherished forever."
+  },
+  "banish": {
+    "base": "Try to banish negative thoughts.",
+    "past": "The king banished the wizard from the land.",
+    "part": "Phones have been banished from the dinner table."
+  },
+  "abolish": {
+    "base": "Many people want to abolish school uniforms.",
+    "past": "The country abolished slavery in 1888.",
+    "part": "The old tax has been abolished."
+  },
+  "demolish": {
+    "base": "They plan to demolish the old factory.",
+    "past": "Workers demolished the old stadium last year.",
+    "part": "The building has been demolished."
+  },
+  "extinguish": {
+    "base": "Please extinguish all candles before bed.",
+    "past": "Firefighters extinguished the fire an hour ago.",
+    "part": "The fire has been extinguished."
+  },
+  "astonish": {
+    "base": "Her talent will astonish you.",
+    "past": "The magician astonished the audience last night.",
+    "part": "We were astonished by the price."
+  },
+  "perish": {
+    "base": "Many plants perish in the frost.",
+    "past": "Thousands of trees perished in the drought last year.",
+    "part": "All the flowers had perished by morning."
+  },
+  "nourish": {
+    "base": "Good food will nourish your body.",
+    "past": "The rain nourished the dry fields last spring.",
+    "part": "The soil has been nourished with compost."
+  },
+  "publish": {
+    "base": "We publish a newsletter every month.",
+    "past": "She published her first book in 2020.",
+    "part": "The results have been published online."
+  },
+  "punish": {
+    "base": "Don't punish the dog; it's still a puppy.",
+    "past": "The teacher punished the whole class yesterday.",
+    "part": "He has been punished for lying."
+  },
+  "vanish": {
+    "base": "I watched the magician make the coin vanish.",
+    "past": "The sun vanished behind the clouds an hour ago.",
+    "part": "My keys have vanished again!"
+  },
+  "tarnish": {
+    "base": "Silver can tarnish if you don't clean it.",
+    "past": "The scandal tarnished the club's image last year.",
+    "part": "The old spoons have tarnished over time."
+  },
+  "furnish": {
+    "base": "We need to furnish our new apartment.",
+    "past": "They furnished the room with antiques last year.",
+    "part": "The flat has been furnished with modern furniture."
+  },
+  "polish": {
+    "base": "Polish your shoes before the interview.",
+    "past": "I polished the silver this morning.",
+    "part": "The floors have been polished."
+  },
+  "establish": {
+    "base": "We want to establish a reading club.",
+    "past": "My grandfather established the company in 1960.",
+    "part": "The school was established in 1885."
+  },
+  "embellish": {
+    "base": "Don't embellish the story; just tell the truth.",
+    "past": "She embellished the dress with beads last week.",
+    "part": "The cake has been embellished with flowers."
+  },
+  "accumulate": {
+    "base": "Dust and dirt accumulate quickly under the bed.",
+    "past": "Snow accumulated on the roads last night.",
+    "part": "She has accumulated a lot of books."
+  },
+  "annihilate": {
+    "base": "Our team will annihilate them at chess!",
+    "past": "We annihilated our rivals in last week's quiz.",
+    "part": "The weeds have been annihilated by the frost."
+  },
+  "capitulate": {
+    "base": "Never capitulate without a fight.",
+    "past": "After hours of begging, Mom capitulated and bought ice cream.",
+    "part": "The other side has finally capitulated."
+  },
+  "decimate": {
+    "base": "Pests can decimate a crop in days.",
+    "past": "The disease decimated the bee population last year.",
+    "part": "The forest has been decimated by fires."
+  },
+  "demonstrate": {
+    "base": "Let me demonstrate how this machine works.",
+    "past": "The chef demonstrated a new recipe yesterday.",
+    "part": "The benefits of exercise have been demonstrated."
+  },
+  "devastate": {
+    "base": "Hurricanes can devastate entire towns.",
+    "past": "The floods devastated the region last year.",
+    "part": "She was devastated by the news."
+  },
+  "dictate": {
+    "base": "I'll dictate the letter, and you type it.",
+    "past": "The teacher dictated a short text yesterday.",
+    "part": "Our schedule is dictated by the weather."
+  },
+  "domesticate": {
+    "base": "Humans domesticate animals for food and work.",
+    "past": "People domesticated dogs thousands of years ago.",
+    "part": "Cats have been domesticated for centuries."
+  },
+  "elevate": {
+    "base": "Elevate your leg to reduce the swelling.",
+    "past": "The new chef elevated the menu last year.",
+    "part": "The house has been elevated to avoid floods."
+  },
+  "eradicate": {
+    "base": "We must work together to eradicate poverty.",
+    "past": "Vaccines eradicated smallpox decades ago.",
+    "part": "The disease has been eradicated."
+  },
+  "escalate": {
+    "base": "Don't let small arguments escalate.",
+    "past": "The argument escalated quickly last night.",
+    "part": "The conflict has escalated in recent weeks."
+  },
+  "exacerbate": {
+    "base": "Stress can exacerbate health problems.",
+    "past": "The heat exacerbated his headache yesterday.",
+    "part": "The problem has been exacerbated by the rain."
+  },
+  "excavate": {
+    "base": "Archaeologists excavate ancient cities to learn about the past.",
+    "past": "They excavated a Roman villa last summer.",
+    "part": "The site has been excavated carefully."
+  },
+  "fascinate": {
+    "base": "Dinosaurs fascinate most young children.",
+    "past": "The museum fascinated us yesterday.",
+    "part": "I have always been fascinated by space."
+  },
+  "infuriate": {
+    "base": "Rude drivers really infuriate me.",
+    "past": "The long delay infuriated the passengers yesterday.",
+    "part": "She was infuriated by his comments."
+  },
+  "instigate": {
+    "base": "Don't instigate fights at school.",
+    "past": "He instigated a pillow fight last night.",
+    "part": "The changes were instigated by the new manager."
+  },
+  "delegate": {
+    "base": "Good managers delegate tasks to their team.",
+    "past": "She delegated the report to her assistant yesterday.",
+    "part": "The work has been delegated to a junior colleague."
+  },
+  "irritate": {
+    "base": "Wool can irritate sensitive skin.",
+    "past": "The noise irritated me all night.",
+    "part": "My eyes have been irritated by the smoke."
+  },
+  "levitate": {
+    "base": "In the show, magicians seem to levitate.",
+    "past": "The magician levitated above the stage last night.",
+    "part": "The ball appeared to have levitated."
+  },
+  "liberate": {
+    "base": "Reading can liberate the mind.",
+    "past": "Soldiers liberated the city in 1944.",
+    "part": "The animals have been liberated from their cages."
+  },
+  "motivate": {
+    "base": "Good teachers motivate their students.",
+    "past": "Her success motivated me to work harder last year.",
+    "part": "The team has been motivated by the new coach."
+  },
+  "mutilate": {
+    "base": "Please don't mutilate the library books.",
+    "past": "Someone mutilated the poster in the hallway yesterday.",
+    "part": "The old map had been mutilated by mice."
+  },
+  "narrate": {
+    "base": "Grandpa loves to narrate stories by the fire.",
+    "past": "She narrated the documentary last year.",
+    "part": "The audiobook is narrated by a famous actor."
+  },
+  "permeate": {
+    "base": "The smell of coffee can permeate the house.",
+    "past": "The smell of bread permeated the kitchen this morning.",
+    "part": "Music has permeated every part of her life."
+  },
+  "radiate": {
+    "base": "Happy people radiate positive energy.",
+    "past": "The fire radiated warmth all night.",
+    "part": "Heat has radiated from the walls all day."
+  },
+  "regulate": {
+    "base": "Laws regulate how fast we can drive.",
+    "past": "The thermostat regulated the temperature last winter.",
+    "part": "Prices are regulated by the government."
+  },
+  "relate": {
+    "base": "I can relate to your story.",
+    "past": "She related her adventures to us yesterday.",
+    "part": "The two problems are closely related."
+  },
+  "saturate": {
+    "base": "Don't saturate the salad with dressing.",
+    "past": "The rain saturated the soil last night.",
+    "part": "The market has been saturated with cheap phones."
+  },
+  "separate": {
+    "base": "Separate the egg whites from the yolks.",
+    "past": "The teacher separated the two noisy boys yesterday.",
+    "part": "The twins were separated at the airport."
+  },
+  "stimulate": {
+    "base": "Puzzles and games stimulate the brain.",
+    "past": "The trip stimulated her interest in history last year.",
+    "part": "The economy has been stimulated by tourism."
+  },
+  "suffocate": {
+    "base": "Plastic bags can suffocate sea animals.",
+    "past": "The thick smoke nearly suffocated us yesterday.",
+    "part": "The plants were suffocated by weeds."
+  },
+  "translate": {
+    "base": "Can you translate this sentence into Spanish?",
+    "past": "She translated the letter for me yesterday.",
+    "part": "The book has been translated into thirty languages."
+  },
+  "update": {
+    "base": "Please update your phone's software.",
+    "past": "I updated my profile picture last night.",
+    "part": "The website has been updated."
+  },
+  "violate": {
+    "base": "Please don't violate the school rules.",
+    "past": "He violated the parking rules last week.",
+    "part": "The rules have been violated again."
+  },
+  "outwit": {
+    "base": "Can you outwit the computer at chess?",
+    "past": "The fox outwitted the farmer last night.",
+    "part": "He has outwitted all his opponents."
+  },
+  "relay": {
+    "base": "Please relay the message to your team.",
+    "past": "She relayed the good news to everyone yesterday.",
+    "part": "The match was relayed live on the radio."
+  }
+}
