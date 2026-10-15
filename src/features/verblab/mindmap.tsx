@@ -91,10 +91,20 @@ interface Pt {
   y: number;
 }
 
+/** Whether `n` bubbles fit on the two rings without overlapping (points are spaced by angle). */
+function ringsFit(n: number, w: number, h: number, node: { w: number; h: number }) {
+  const rx = w / 2 - node.w / 2 - 20;
+  const ry = h / 2 - node.h / 2 - 18;
+  const max = (sx: number, sy: number) => Math.floor((Math.PI * 2) / Math.max((node.w + 10) / sx, (node.h + 8) / sy));
+  const inner = n > 9 ? Math.floor(n * 0.4) : 0;
+  return n - inner <= max(rx, ry) && inner <= max(rx * 0.52, ry * 0.55);
+}
+
 function layout(n: number, w: number, h: number, wide: boolean, node: { w: number; h: number }) {
   if (!wide) {
-    // Phones: the verb on top, bubbles in rows below, branches curving down to each.
-    const cols = w >= 460 ? 3 : 2;
+    // Phones, and families too big for the rings: the verb on top, bubbles in
+    // rows below, branches curving down to each.
+    const cols = Math.max(2, Math.min(6, Math.floor((w - 24) / (node.w + 16))));
     const gapX = (w - 24) / cols;
     const top = 150;
     const rowH = node.h + 34;
@@ -158,8 +168,9 @@ function MindMap({ family, onClose }: { family: MindFamily; onClose: () => void 
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, sel]);
 
-  const wide = size.w >= 720 && size.h >= 460;
-  const node = wide ? { w: 132, h: 70 } : { w: Math.min(170, (size.w - 48) / (size.w >= 460 ? 3 : 2)), h: 66 };
+  const ring = { w: 132, h: 70 };
+  const wide = size.w >= 720 && size.h >= 460 && ringsFit(family.items.length, size.w, size.h, ring);
+  const node = wide ? ring : { w: Math.min(170, (size.w - 48) / (size.w >= 460 ? 3 : 2)), h: 66 };
   const { center, pts, height } = useMemo(() => layout(family.items.length, size.w, size.h, wide, node), [family.items.length, size.w, size.h, wide, node.w, node.h]);
 
   return createPortal(

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Search } from 'lucide-react';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -17,6 +18,7 @@ export default function PhrasalVerbsPage() {
   const [level, setLevel] = useState<CefrLevel | 'all'>('A1');
   const [family, setFamily] = useState<string>('all');
   const [mode, setMode] = useState<'browse' | 'quiz'>('browse');
+  const [q, setQ] = useState('');
   const [round, setRound] = useState(0);
   const award = useProgress((s) => s.award);
 
@@ -25,13 +27,17 @@ export default function PhrasalVerbsPage() {
     () => (data ?? []).filter((v) => (level === 'all' || v.level === level) && (family === 'all' || v.family === family)),
     [data, level, family],
   );
+  const shown = useMemo(() => {
+    const n = q.trim().toLowerCase();
+    return n ? list.filter((v) => [v.pv, v.def, v.es].some((x) => x.toLowerCase().includes(n))) : list;
+  }, [list, q]);
   const quiz = useMemo(() => buildQuiz(list, data ?? [], round), [list, data, round]);
 
   return (
     <Page
       back={{ to: '/practice', label: 'Práctica' }}
       title="Phrasal Verbs"
-      subtitle={`${data?.length ?? 487} phrasal verbs organizados por nivel y familia.`}
+      subtitle={`${data?.length ?? 1143} phrasal verbs organizados por nivel y familia.`}
       actions={
         <ButtonLink to="/play/phrasal-roulette" variant="tinted">
           🎡 Jugar la ruleta
@@ -79,9 +85,21 @@ export default function PhrasalVerbsPage() {
           </div>
           )}
 
+          {mode === 'browse' && (
+            <label className="bg-card mb-4 flex h-11 items-center gap-2 rounded-[12px] px-3 shadow-card">
+              <Search size={18} className="text-label-3" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Busca un phrasal verb, su significado o su traducción…"
+                className="placeholder:text-label-3 h-full flex-1 bg-transparent text-[16px] outline-none"
+              />
+            </label>
+          )}
+
           {mode === 'browse' ? (
-            list.length ? (
-              <PhrasalExplorer families={familiesFromList(list)} />
+            shown.length ? (
+              <PhrasalExplorer families={familiesFromList(shown)} />
             ) : (
               <p className="text-label-2">No hay phrasal verbs con ese filtro.</p>
             )

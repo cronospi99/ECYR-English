@@ -43,7 +43,7 @@ const AREAS = [
     icon: Wrench,
     color: 'var(--indigo)',
     title: 'Verb Lab',
-    body: '750 verbos con sus 3 formas, pronunciación de -ed, quiz cronometrado, 32 familias de phrasal verbs y los 10 patrones verbales.',
+    body: 'Más de 1.000 verbos con sus 3 formas, 384 verbos académicos C1, pronunciación de -ed, quiz cronometrado, phrasal verbs por familias y los 10 patrones verbales.',
     skill: 'grammar' as const,
   },
   {
@@ -51,7 +51,7 @@ const AREAS = [
     icon: Shuffle,
     color: 'var(--orange)',
     title: 'Phrasal Verbs',
-    body: '487 phrasal verbs de A1 a C1 con traducción, ejemplo y modo quiz.',
+    body: 'Más de 1.100 phrasal verbs de A1 a C1 en mapas mentales, con traducción, 4 ejemplos cada uno y modo quiz.',
     skill: 'vocabulary' as const,
   },
 ];

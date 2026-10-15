@@ -1,10 +1,10 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'motion/react';
-import { ArrowRight, Play, Star, Volume2, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Play, Star, Volume2, X } from 'lucide-react';
 import { useAsync } from '@/hooks/useAsync';
 import { loadVerbExamples } from '@/content/levels';
-import type { EdSound, LabVerb } from '@/content/types';
+import type { AcademicVerb, EdSound, LabVerb } from '@/content/types';
 import { speak } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
@@ -36,8 +36,11 @@ export function VerbBubble({
   saved,
   onToggleSaved,
   onClose,
+  academic,
 }: {
   verb: LabVerb;
+  /** C1 bank entry: adds meaning, pattern, collocations and academic examples. */
+  academic?: AcademicVerb | null;
   anchor: HTMLElement | null;
   saved: boolean;
   onToggleSaved: () => void;
@@ -48,7 +51,7 @@ export function VerbBubble({
   const box = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ left: number; top: number; arrow: number; above: boolean } | null>(null);
   const [mobile, setMobile] = useState(() => window.innerWidth < 640);
-  const ex = examples?.[verb.en];
+  const ex = academic?.ex ?? examples?.[verb.en];
 
   useLayoutEffect(() => {
     const place = () => {
@@ -123,6 +126,11 @@ export function VerbBubble({
             >
               {verb.type === 'irregular' ? 'Irregular' : 'Regular'}
             </span>
+            {(academic || verb.c1) && (
+              <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: 'var(--indigo)', background: 'color-mix(in srgb, var(--indigo) 14%, transparent)' }}>
+                C1 · Academic
+              </span>
+            )}
             {verb.sound && (
               <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: SOUND[verb.sound].color, background: `color-mix(in srgb, ${SOUND[verb.sound].color} 14%, transparent)` }}>
                 {SOUND[verb.sound].label}
@@ -130,6 +138,7 @@ export function VerbBubble({
             )}
           </div>
           {showEs && <div className="text-label-2 text-[14px]">{verb.es}</div>}
+          {academic?.us && <div className="text-label-3 text-[12px]">US: {academic.us}</div>}
         </div>
         <button type="button" onClick={onClose} className="bg-fill-2 hover:bg-fill flex h-9 w-9 shrink-0 items-center justify-center rounded-full" aria-label="Cerrar">
           <X size={17} />
@@ -142,6 +151,8 @@ export function VerbBubble({
           <StageCell key={s.key} i={i} label={s.label} sub={s.sub} color={s.color} word={forms[s.key]} />
         )).flatMap((el, i) => (i < 2 ? [el, <ArrowRight key={`a${i}`} size={16} className="text-label-3 self-center" aria-hidden />] : [el]))}
       </div>
+
+      {academic && <AcademicPanel a={academic} />}
 
       {/* one example per form */}
       <div className="mt-4 space-y-2">
@@ -217,5 +228,32 @@ function StageCell({ i, label, sub, color, word }: { i: number; label: string; s
         <Volume2 size={10} /> {sub}
       </span>
     </motion.button>
+  );
+}
+
+/** Meaning, grammar pattern, collocations and the register upgrade of a C1 verb. */
+function AcademicPanel({ a }: { a: AcademicVerb }) {
+  return (
+    <div className="mt-4 space-y-2.5">
+      <p className="text-[15px] leading-snug">{a.def}</p>
+      <div className="flex flex-wrap items-center gap-1.5">
+        <span className="rounded-[8px] px-2 py-1 font-mono text-[12.5px] font-semibold" style={{ color: 'var(--indigo)', background: 'color-mix(in srgb, var(--indigo) 12%, transparent)' }}>
+          {a.pattern}
+        </span>
+        {a.collocations.map((c) => (
+          <button key={c} type="button" onClick={() => speak(c, { rate: 0.9 })} className="bg-fill-2 hover:bg-fill rounded-full px-2.5 py-1 text-[12.5px] font-medium" aria-label={`Escuchar: ${c}`}>
+            {c}
+          </button>
+        ))}
+      </div>
+      {a.informal && (
+        <div className="flex items-center gap-2 rounded-[12px] px-3 py-2 text-[13.5px]" style={{ background: 'color-mix(in srgb, var(--green) 10%, transparent)' }}>
+          <ArrowUpRight size={16} className="text-ios-green shrink-0" />
+          <span>
+            Sube de registro: <span className="text-label-2 line-through decoration-1">{a.informal}</span> → <b className="text-ios-green">{a.en}</b>
+          </span>
+        </div>
+      )}
+    </div>
   );
 }
