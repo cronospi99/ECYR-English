@@ -106,3 +106,11 @@ export const loadJeopardy = () =>
 export const loadTravelGuides = () =>
   memo<TravelGuide[]>('travel', () => import('./generated/travel-guides.json'));
 export const loadVerbLab = () => memo<VerbLabData>('verblab', () => import('./generated/verb-lab.json'));
+/** Extra examples: phrasal verbs keyed by `${pv}|${def}`, verbs keyed by base form. */
+export const loadPhrasalExamples = () =>
+  memo<Record<string, string[]>>('pv-examples', () => import('./generated/phrasal-examples.json') as Promise<{ default: Record<string, string[]> }>);
+export const loadVerbExamples = () =>
+  memo<Record<string, { base?: string; past?: string; part?: string }>>(
+    'verb-examples',
+    () => import('./generated/verb-examples.json') as Promise<{ default: Record<string, { base?: string; past?: string; part?: string }> }>,
+  );

@@ -2,16 +2,15 @@ import { useMemo, useState } from 'react';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
-import { Chip, PageLoader, LevelChip } from '@/components/ui/Misc';
+import { Chip, PageLoader } from '@/components/ui/Misc';
 import { Segmented } from '@/components/ui/Segmented';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
-import { SpeakButton } from '@/components/learning/SpeakButton';
 import { ButtonLink } from '@/components/ui/Button';
 import { useAsync } from '@/hooks/useAsync';
 import { loadPhrasalVerbs } from '@/content/levels';
 import { CEFR_LEVELS, type CefrLevel, type PhrasalVerb } from '@/content/types';
 import { useProgress } from '@/store/progress';
-import { useSettings } from '@/store/settings';
+import { PhrasalExplorer, familiesFromList } from '@/features/verblab/mindmap';
 
 export default function PhrasalVerbsPage() {
   const { data, loading } = useAsync(loadPhrasalVerbs, []);
@@ -20,7 +19,6 @@ export default function PhrasalVerbsPage() {
   const [mode, setMode] = useState<'browse' | 'quiz'>('browse');
   const [round, setRound] = useState(0);
   const award = useProgress((s) => s.award);
-  const showEs = useSettings((s) => s.spanishHints);
 
   const families = useMemo(() => [...new Set((data ?? []).map((v) => v.family))].sort(), [data]);
   const list = useMemo(
@@ -68,6 +66,7 @@ export default function PhrasalVerbsPage() {
               ]}
             />
           </div>
+          {mode === 'quiz' && (
           <div className="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto px-1 py-1">
             <Chip active={family === 'all'} onClick={() => setFamily('all')}>
               Todas las familias
@@ -78,28 +77,14 @@ export default function PhrasalVerbsPage() {
               </Chip>
             ))}
           </div>
+          )}
 
           {mode === 'browse' ? (
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {list.map((v) => (
-                <Card key={v.pv + v.def} className="p-4">
-                  <div className="flex items-start gap-3">
-                    <span className="text-[28px] leading-none">{v.emoji}</span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-headline">{v.pv}</span>
-                        <LevelChip level={v.level} className="h-5 px-2 text-[10px]" />
-                      </div>
-                      <div className="text-[14px]">{v.def}</div>
-                      {showEs && <div className="text-label-2 text-[13px]">{v.es}</div>}
-                    </div>
-                    <SpeakButton text={`${v.pv}. ${v.ex}`} />
-                  </div>
-                  <div className="bg-fill-2 mt-3 rounded-[10px] px-3 py-2 text-[14px] italic">{v.ex}</div>
-                </Card>
-              ))}
-              {!list.length && <p className="text-label-2">No hay phrasal verbs con ese filtro.</p>}
-            </div>
+            list.length ? (
+              <PhrasalExplorer families={familiesFromList(list)} />
+            ) : (
+              <p className="text-label-2">No hay phrasal verbs con ese filtro.</p>
+            )
           ) : (
             <Card className="mx-auto max-w-2xl p-6">
               {quiz.length >= 3 ? (
