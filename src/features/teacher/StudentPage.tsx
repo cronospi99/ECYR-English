@@ -19,14 +19,15 @@ import { PlanWeek } from '@/features/plan/PlanWeek';
 import { ProgressBar } from '@/components/ui/Progress';
 import NotFound from '../NotFound';
 import { useClass } from './useClass';
+import { StudentAssignments } from '@/features/tasks/teacher';
 
-type Tab = 'overview' | 'plan' | 'games' | 'ielts' | 'work';
+type Tab = 'overview' | 'tasks' | 'plan' | 'games' | 'ielts' | 'work';
 
 export default function StudentPage() {
   const { id = '' } = useParams();
   const { isTeacher, students, loading } = useClass();
   const [params, setParams] = useSearchParams();
-  const tab: Tab = (['plan', 'games', 'ielts', 'work'] as const).find((t) => t === params.get('tab')) ?? 'overview';
+  const tab: Tab = (['tasks', 'plan', 'games', 'ielts', 'work'] as const).find((t) => t === params.get('tab')) ?? 'overview';
 
   if (!isTeacher) return <NotFound />;
   if (!students)
@@ -63,6 +64,7 @@ export default function StudentPage() {
           onChange={(t) => setParams(t === 'overview' ? {} : { tab: t })}
           options={[
             { value: 'overview', label: 'Progreso' },
+            { value: 'tasks', label: 'Tareas' },
             { value: 'plan', label: 'Plan' },
             { value: 'games', label: 'Juegos' },
             { value: 'ielts', label: 'IELTS' },
@@ -76,6 +78,7 @@ export default function StudentPage() {
           <Migrations userId={s.profile.id} />
         </>
       )}
+      {tab === 'tasks' && <StudentAssignments studentId={s.profile.id} />}
       {tab === 'plan' && <PlanTab s={s} />}
       {tab === 'games' && <GameProgressView sessions={s.games} defenders={s.defenders} />}
       {tab === 'ielts' && (

@@ -1,4 +1,4 @@
-import { Home, CalendarRange, School, FolderOpen, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, type LucideIcon } from 'lucide-react';
+import { Home, CalendarRange, School, FolderOpen, ClipboardCheck, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, type LucideIcon } from 'lucide-react';
 
 export interface NavItem {
   to: string;
@@ -8,11 +8,14 @@ export interface NavItem {
   tab?: boolean;
   /** Only shown to teachers. */
   teacherOnly?: boolean;
+  /** Hidden for teachers (they manage it from the teacher hub). */
+  studentOnly?: boolean;
 }
 
 export const NAV: NavItem[] = [
   { to: '/', label: 'Inicio', icon: Home, color: 'var(--blue)', tab: true },
   { to: '/teacher', label: 'Sala del docente', icon: School, color: 'var(--orange)', teacherOnly: true },
+  { to: '/tasks', label: 'Tareas', icon: ClipboardCheck, color: 'var(--red)', studentOnly: true },
   { to: '/plan', label: 'Mi plan', icon: CalendarRange, color: 'var(--indigo)' },
   { to: '/learn', label: 'Aprender', icon: GraduationCap, color: 'var(--green)', tab: true },
   { to: '/practice', label: 'Práctica', icon: Dumbbell, color: 'var(--orange)', tab: true },

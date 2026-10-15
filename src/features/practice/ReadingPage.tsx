@@ -10,6 +10,7 @@ import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { useAsync } from '@/hooks/useAsync';
 import { loadFoundations, loadTravelGuides } from '@/content/levels';
+import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import type { CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
@@ -17,6 +18,8 @@ import { speak, stopSpeaking } from '@/lib/speech';
 
 interface Reading {
   id: string;
+  /** Travel guides: the country name (matches visual placements). */
+  guide?: string;
   title: string;
   level: CefrLevel;
   kind: 'story' | 'travel';
@@ -82,6 +85,7 @@ async function loadReadings(): Promise<Reading[]> {
     );
     return {
       id: `travel-${g.iso}`,
+      guide: g.name,
       title: `Travelling in ${g.name}`,
       level: 'A2',
       kind: 'travel',
@@ -177,6 +181,11 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
         </>
       }
     >
+      {r.guide && (
+        <div className="-mt-6 mb-5">
+          <VisualsFor title="Esta guía en una infografía" where={(p) => 'guide' in p && p.guide === r.guide} />
+        </div>
+      )}
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_400px]">
         <Card className="p-6">
           {r.kind === 'travel' && showEs && (

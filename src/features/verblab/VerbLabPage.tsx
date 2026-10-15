@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Segmented } from '@/components/ui/Segmented';
 import { EdSoundDrill, EdSoundRules, PhrasalFamilies, VerbExplorer, VerbFormsQuiz, VerbPatterns, WithVerbLab } from './components';
@@ -48,6 +49,7 @@ export default function VerbLabPage() {
           </>
         )}
       </WithVerbLab>
+      <VisualsFor where={(p) => 'module' in p && p.module === 'verbs'} />
     </Page>
   );
 }

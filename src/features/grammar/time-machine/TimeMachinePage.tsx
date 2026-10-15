@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { useSearchParams } from 'react-router-dom';
 import { Page } from '@/components/ui/Page';
 import { Segmented } from '@/components/ui/Segmented';
@@ -83,7 +84,10 @@ export default function TimeMachinePage() {
         <Segmented<Tab> value={tab} onChange={(t) => go(t)} options={TABS} />
       </div>
       {tab === 'home' ? (
-        <TimeMachineHub onOpen={(id) => go(id)} />
+        <>
+          <TimeMachineHub onOpen={(id) => go(id)} />
+          <VisualsFor title="Los pasados en una imagen" where={(p) => 'module' in p && p.module === 'time-machine'} />
+        </>
       ) : (
         <StagePanel key={tab} id={tab} mode={mode} onMode={(m) => go(tab, m)} onNext={(next) => go(next ?? 'home')} />
       )}

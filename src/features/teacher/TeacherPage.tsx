@@ -12,6 +12,7 @@ import {
   FolderOpen,
   Gamepad2,
   GraduationCap,
+  ImageIcon,
   Headphones,
   Mic,
   PenLine,
@@ -40,14 +41,15 @@ import { relativeTime } from '@/lib/date';
 import type { StudentData } from '@/lib/teacher';
 import { cn } from '@/lib/cn';
 import { useClass } from './useClass';
+import { AssignmentsManager } from '@/features/tasks/teacher';
 
-type Tab = 'class' | 'material' | 'practice';
+type Tab = 'class' | 'tasks' | 'material' | 'practice';
 type Sort = 'name' | 'recent' | 'xp' | 'level';
 
 export default function TeacherPage() {
   const { isTeacher, classCode, students, error, loading, reload } = useClass();
   const [params, setParams] = useSearchParams();
-  const tab: Tab = (['material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
+  const tab: Tab = (['tasks', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
 
   if (!isTeacher)
     return (
@@ -82,12 +84,14 @@ export default function TeacherPage() {
           onChange={(t) => setParams(t === 'class' ? {} : { tab: t })}
           options={[
             { value: 'class', label: 'Mi clase' },
+            { value: 'tasks', label: 'Tareas' },
             { value: 'material', label: 'Material' },
             { value: 'practice', label: 'Práctica libre' },
           ]}
         />
       </div>
       {tab === 'class' && <ClassTab classCode={classCode} students={students} error={error} loading={loading} reload={reload} />}
+      {tab === 'tasks' && <AssignmentsManager />}
       {tab === 'material' && <MaterialTab />}
       {tab === 'practice' && <PracticeTab />}
     </Page>
@@ -294,6 +298,7 @@ function MaterialTab() {
         { to: '/learn/grammar/time-family', title: 'Time & Family', sub: 'La hora y el genitivo', icon: Sigma, color: 'var(--mint)' },
         { to: '/learn/grammar/modals', title: 'Modal Verbs', sub: 'Modales y semi-modales', icon: Sigma, color: 'var(--yellow)' },
         { to: '/practice/verbs', title: 'Verb Lab', sub: '750 verbos, -ed, patrones', icon: Wrench, color: 'var(--orange)' },
+        { to: '/learn/visuals', title: 'Biblioteca visual', sub: 'Infografías para proyectar', icon: ImageIcon, color: 'var(--pink)' },
       ],
     },
     {
