@@ -1,0 +1,3974 @@
+[
+  {
+    "id": "l-b2-leisure-centre",
+    "title": "Joining a Leisure Centre",
+    "level": "B2",
+    "kind": "phone-call",
+    "topic": "Sport",
+    "emoji": "🏊",
+    "speakers": [
+      {
+        "name": "Fiona",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Marcus",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, Riverside Leisure Centre, Fiona speaking. How can I help?"
+      },
+      {
+        "s": 1,
+        "text": "Hi, I'm thinking of joining, and I wanted to ask a few questions about membership first, if that's okay."
+      },
+      {
+        "s": 0,
+        "text": "Of course. Would you like me to take some details as we go? Then I can set up a free trial pass for you."
+      },
+      {
+        "s": 1,
+        "text": "That would be great."
+      },
+      {
+        "s": 0,
+        "text": "Lovely. Could I have your full name?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, it's Marcus Eldridge. That's E-L-D-R-I-D-G-E."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. And what's the best number to contact you on?"
+      },
+      {
+        "s": 1,
+        "text": "My mobile, which is oh seven nine six two, four one eight, five five three."
+      },
+      {
+        "s": 0,
+        "text": "Great. Now, we have three types of membership. There's the Standard, which covers the gym and the pool; the Off-Peak, which is the same facilities but only before four in the afternoon on weekdays; and the Premium, which adds all the fitness classes and the sauna."
+      },
+      {
+        "s": 1,
+        "text": "I see. I work shifts, so I was going to say Off-Peak, but actually some weeks I'm only free in the evenings. How much is the Standard?"
+      },
+      {
+        "s": 0,
+        "text": "The Standard is thirty-four pounds a month. Off-Peak is twenty-two, and Premium is forty-nine."
+      },
+      {
+        "s": 1,
+        "text": "Hmm. I do like the idea of the classes, but realistically I'd mainly use the pool. I'll go with the Standard."
+      },
+      {
+        "s": 0,
+        "text": "Sensible. There's normally a joining fee of twenty pounds, but this month we're waiving it for anyone who signs up for twelve months."
+      },
+      {
+        "s": 1,
+        "text": "Oh, that's handy. Is there a minimum contract otherwise?"
+      },
+      {
+        "s": 0,
+        "text": "If you don't take the twelve-month option, it's a rolling monthly contract, but you need to give us one month's notice to cancel."
+      },
+      {
+        "s": 1,
+        "text": "Okay, I'll think about the twelve months. What about parking? I've heard it can be a nightmare."
+      },
+      {
+        "s": 0,
+        "text": "It used to be, but we've opened a new car park behind the tennis courts, so that's eased things a lot. Members get two hours free; you just enter your registration at the desk."
+      },
+      {
+        "s": 1,
+        "text": "Brilliant. And one more thing. Do I need to book an induction before I can use the gym?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, everyone has a short induction with one of our instructors. It takes about forty minutes. The next available slots are Tuesday at six or Thursday at half past seven."
+      },
+      {
+        "s": 1,
+        "text": "Tuesday's no good, I'm working late. Thursday, please."
+      },
+      {
+        "s": 0,
+        "text": "Thursday at seven thirty, then. Please bring a towel and a water bottle, and wear trainers. No outdoor shoes on the gym floor."
+      },
+      {
+        "s": 1,
+        "text": "Got it. Should I bring any identification?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, some photo ID. And if you've got any medical conditions we should know about, there's a short health questionnaire, which you can fill in online beforehand to save time."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Thanks so much for your help."
+      },
+      {
+        "s": 0,
+        "text": "You're welcome, Marcus. See you on Thursday."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Caller's surname: ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Eldridge",
+        "accept": [],
+        "explain_es": "Marcus deletrea su apellido: \"Marcus Eldridge. That's E-L-D-R-I-D-G-E\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Marcus decide not to choose the Off-Peak membership?",
+        "options": [
+          "He is sometimes only available in the evenings.",
+          "It is only slightly cheaper than the Standard.",
+          "It does not include the pool.",
+          "It requires a twelve-month contract."
+        ],
+        "answer": 0,
+        "explain_es": "Iba a elegir Off-Peak, pero cambia de idea: \"some weeks I'm only free in the evenings\"."
+      },
+      {
+        "type": "gap",
+        "q": "Membership chosen: ____ — cost per month: thirty-four pounds (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Standard",
+        "accept": [
+          "the Standard"
+        ],
+        "explain_es": "Duda por las clases del Premium, pero decide: \"I'll go with the Standard\"."
+      },
+      {
+        "type": "mc",
+        "q": "Under what condition is the joining fee not charged this month?",
+        "options": [
+          "If the member pays by bank transfer.",
+          "If the member commits to a full year.",
+          "If the member brings a friend.",
+          "If the member joins before Thursday."
+        ],
+        "answer": 1,
+        "explain_es": "Fiona dice: \"we're waiving it for anyone who signs up for twelve months\" (un año)."
+      },
+      {
+        "type": "tf",
+        "q": "Parking at the centre is still a serious problem.",
+        "answer": "F",
+        "explain_es": "\"It used to be, but we've opened a new car park... so that's eased things a lot\"."
+      },
+      {
+        "type": "tf",
+        "q": "Members can leave their car in the car park without paying for up to two hours.",
+        "answer": "T",
+        "explain_es": "\"Members get two hours free\"."
+      },
+      {
+        "type": "gap",
+        "q": "Induction day: ____ at 7.30 pm (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Thursday",
+        "accept": [],
+        "explain_es": "El martes no le va bien: \"Tuesday's no good... Thursday, please\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is NOT permitted in the gym?",
+        "options": [
+          "Bringing a water bottle.",
+          "Using a towel on the machines.",
+          "Wearing shoes from outside.",
+          "Wearing trainers."
+        ],
+        "answer": 2,
+        "explain_es": "\"No outdoor shoes on the gym floor\"."
+      },
+      {
+        "type": "gap",
+        "q": "The health questionnaire can be completed ____ before the visit (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "online",
+        "accept": [],
+        "explain_es": "\"which you can fill in online beforehand to save time\"."
+      }
+    ],
+    "dictation": [
+      "Tuesday's no good, I'm working late.",
+      "Members get two hours free; you just enter your registration at the desk."
+    ]
+  },
+  {
+    "id": "l-b2-mill-museum",
+    "title": "A Tour of Harwood Mill",
+    "level": "B2",
+    "kind": "tour",
+    "topic": "History",
+    "emoji": "🏭",
+    "speakers": [
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Grace",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, good morning everyone, and welcome to Harwood Mill. My name's Tom and I'll be your guide for the next hour or so. Before we start, just a few practical things. The toilets are straight ahead, past the ticket desk, and the café is on your left as you came in, opposite the gift shop."
+      },
+      {
+        "s": 0,
+        "text": "Now, the mill was built in eighteen twenty-four to spin cotton, and at its peak it employed around six hundred people, many of them children, which is something we'll come back to later. It closed in nineteen sixty-eight, and for nearly thirty years the building was more or less abandoned."
+      },
+      {
+        "s": 0,
+        "text": "We'll begin here on the ground floor, in the engine house. This enormous steam engine is the original one, and it still works. We fire it up on the first Sunday of every month, so if you're interested, it's well worth coming back for that."
+      },
+      {
+        "s": 0,
+        "text": "From here, we'll take the stairs up to the weaving hall on the first floor. There's a lift as well, by the way, at the far end of the corridor, if anyone would prefer that. In the weaving hall you'll see the looms, and one of our volunteers will show you how they work. Fair warning: they're incredibly loud, so we provide ear defenders."
+      },
+      {
+        "s": 0,
+        "text": "I should mention that the dye house, which is normally in the basement, is closed this month while the floor is being repaired. Instead, we've put a small display about dyeing in the corridor next to the lift, so you won't miss out entirely."
+      },
+      {
+        "s": 1,
+        "text": "Sorry, can I ask, is there anything for younger children? My two are six and eight."
+      },
+      {
+        "s": 0,
+        "text": "Absolutely. The family activity room used to be in the courtyard, but it's moved into the old manager's office, which is the small brick building beside the car park. There are costumes, puzzles and a mini loom they can actually use."
+      },
+      {
+        "s": 1,
+        "text": "Oh, they'll love that. Thanks."
+      },
+      {
+        "s": 0,
+        "text": "No problem. Then, after the weaving hall, we'll go up to the top floor, where there's an exhibition called Small Hands, about the lives of child workers. It's quite moving, I think, and it's based on letters and diaries we found when the building was restored."
+      },
+      {
+        "s": 0,
+        "text": "And we'll finish on the riverside terrace, where you can see the water wheel that powered the mill before the steam engine was installed. On a clear day you get a lovely view of the valley from there. Any questions so far? No? Right, follow me."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is the café?",
+        "options": [
+          "Straight ahead, past the ticket desk.",
+          "On the riverside terrace.",
+          "Next to the lift.",
+          "Across from the gift shop."
+        ],
+        "answer": 3,
+        "explain_es": "\"the café is on your left as you came in, opposite the gift shop\" (opposite = across from)."
+      },
+      {
+        "type": "gap",
+        "q": "The mill was built in ____ to spin cotton. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "eighteen twenty-four",
+        "accept": [
+          "1824"
+        ],
+        "explain_es": "\"the mill was built in eighteen twenty-four to spin cotton\" (1824). 1968 es el año en que cerró."
+      },
+      {
+        "type": "gap",
+        "q": "At its busiest, the mill had approximately ____ workers. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "six hundred",
+        "accept": [
+          "600"
+        ],
+        "explain_es": "\"at its peak it employed around six hundred people\" (600)."
+      },
+      {
+        "type": "tf",
+        "q": "The steam engine on display is a copy of the original.",
+        "answer": "F",
+        "explain_es": "\"This enormous steam engine is the original one, and it still works\"."
+      },
+      {
+        "type": "mc",
+        "q": "How often is the steam engine operated?",
+        "options": [
+          "Once a month.",
+          "Every Sunday.",
+          "Only on special occasions.",
+          "Twice a year."
+        ],
+        "answer": 0,
+        "explain_es": "\"We fire it up on the first Sunday of every month\"."
+      },
+      {
+        "type": "gap",
+        "q": "Because the looms are noisy, visitors are given ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "ear defenders",
+        "accept": [],
+        "explain_es": "\"they're incredibly loud, so we provide ear defenders\"."
+      },
+      {
+        "type": "tf",
+        "q": "Visitors can see the dye house in the basement this month.",
+        "answer": "F",
+        "explain_es": "\"the dye house... is closed this month while the floor is being repaired\"."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the family activity room now?",
+        "options": [
+          "In the courtyard.",
+          "In a small building next to the car park.",
+          "In the corridor next to the lift.",
+          "On the top floor."
+        ],
+        "answer": 1,
+        "explain_es": "Antes estaba en el patio: \"it's moved into the old manager's office... beside the car park\"."
+      },
+      {
+        "type": "gap",
+        "q": "The Small Hands exhibition is based on letters and ____ found during restoration. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "diaries",
+        "accept": [],
+        "explain_es": "\"it's based on letters and diaries we found when the building was restored\"."
+      },
+      {
+        "type": "mc",
+        "q": "What can visitors see from the riverside terrace?",
+        "options": [
+          "The children's loom.",
+          "The steam engine.",
+          "The original water wheel.",
+          "The old ticket office."
+        ],
+        "answer": 2,
+        "explain_es": "\"you can see the water wheel that powered the mill before the steam engine\"."
+      }
+    ],
+    "dictation": [
+      "There are costumes, puzzles and a mini loom they can actually use.",
+      "On a clear day you get a lovely view of the valley from there."
+    ]
+  },
+  {
+    "id": "l-b2-garden-project-tutorial",
+    "title": "Tutorial: A Group Project",
+    "level": "B2",
+    "kind": "conversation",
+    "topic": "Education",
+    "emoji": "🎓",
+    "speakers": [
+      {
+        "name": "Dr Okafor",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Liam",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Come in, Liam. So, you wanted to talk about the group project on community gardens?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, thanks for seeing me. We've made a start, but we're a bit stuck on the methodology."
+      },
+      {
+        "s": 0,
+        "text": "Okay. Remind me what your research question is."
+      },
+      {
+        "s": 1,
+        "text": "Basically, whether people who take part in community gardens feel more connected to their neighbourhood than people who don't."
+      },
+      {
+        "s": 0,
+        "text": "Good, that's nicely focused. And how were you planning to collect data?"
+      },
+      {
+        "s": 1,
+        "text": "Originally we wanted to do face-to-face interviews with about fifty gardeners, but when we worked it out, that would take far too long. So now we're thinking of an online questionnaire instead."
+      },
+      {
+        "s": 0,
+        "text": "That's reasonable, although I'd keep a few interviews too. Questionnaires give you numbers, but interviews tell you why people feel the way they do. Even five or six would add a lot of depth."
+      },
+      {
+        "s": 1,
+        "text": "That makes sense. Maybe Hannah could do those. She's the most confident at that sort of thing."
+      },
+      {
+        "s": 0,
+        "text": "And who are you comparing the gardeners with?"
+      },
+      {
+        "s": 1,
+        "text": "People living in the same streets who don't garden. We were going to knock on doors, but..."
+      },
+      {
+        "s": 0,
+        "text": "I'd be careful there. You'll need ethics approval for door-to-door contact, and that can take weeks. It might be easier to recruit through the local library or a community noticeboard."
+      },
+      {
+        "s": 1,
+        "text": "Oh, I hadn't thought about ethics. Is the form complicated?"
+      },
+      {
+        "s": 0,
+        "text": "Not really, it's about four pages. Submit it by the end of next week, though, because the committee only meets once a month."
+      },
+      {
+        "s": 1,
+        "text": "Right. The other problem is that one of our group members, Sam, hasn't really been contributing."
+      },
+      {
+        "s": 0,
+        "text": "That happens more than you'd think. My advice is to give everyone a clear role and write it down. If there's still no change, come and see me, and we'll look at the peer assessment, which is worth twenty per cent of the mark."
+      },
+      {
+        "s": 1,
+        "text": "Okay. And for the final report, is the word limit strict?"
+      },
+      {
+        "s": 0,
+        "text": "It's three thousand words, and we allow ten per cent either way. The reference list doesn't count, but the tables do, so keep them simple."
+      },
+      {
+        "s": 1,
+        "text": "Got it. Oh, and should we include photos of the gardens?"
+      },
+      {
+        "s": 0,
+        "text": "You can, but put them in an appendix rather than the main text. And remember to get permission if there are people in them."
+      },
+      {
+        "s": 1,
+        "text": "Brilliant. That's really helpful. I think we know what to do now."
+      },
+      {
+        "s": 0,
+        "text": "Good. Send me a draft of the questionnaire before you put it online, and I'll have a quick look."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did the group change their original plan for collecting data?",
+        "options": [
+          "They could not find enough gardeners.",
+          "Hannah refused to do the interviews.",
+          "The tutor had rejected the interviews.",
+          "Interviews would be too time-consuming."
+        ],
+        "answer": 3,
+        "explain_es": "\"that would take far too long. So now we're thinking of an online questionnaire instead\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the tutor recommend about the questionnaire?",
+        "options": [
+          "Combining it with a small number of interviews.",
+          "Making it much shorter.",
+          "Replacing it with door-to-door visits.",
+          "Sending it only to library users."
+        ],
+        "answer": 0,
+        "explain_es": "\"I'd keep a few interviews too... Even five or six would add a lot of depth\"."
+      },
+      {
+        "type": "gap",
+        "q": "Non-gardeners could be recruited through the local library or a community ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "noticeboard",
+        "accept": [
+          "notice board"
+        ],
+        "explain_es": "\"recruit through the local library or a community noticeboard\"."
+      },
+      {
+        "type": "tf",
+        "q": "The ethics form is long and difficult to complete.",
+        "answer": "F",
+        "explain_es": "\"Is the form complicated?\" — \"Not really, it's about four pages\"."
+      },
+      {
+        "type": "gap",
+        "q": "The ethics committee meets only once a ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "month",
+        "accept": [],
+        "explain_es": "\"the committee only meets once a month\"."
+      },
+      {
+        "type": "gap",
+        "q": "Peer assessment: ____ per cent of the final mark (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "\"the peer assessment, which is worth twenty per cent of the mark\"."
+      },
+      {
+        "type": "gap",
+        "q": "Report length: ____ words, plus or minus ten per cent (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "three thousand",
+        "accept": [
+          "3000",
+          "3,000"
+        ],
+        "explain_es": "\"It's three thousand words, and we allow ten per cent either way\"."
+      },
+      {
+        "type": "tf",
+        "q": "Tables are included in the word count.",
+        "answer": "T",
+        "explain_es": "\"The reference list doesn't count, but the tables do\"."
+      },
+      {
+        "type": "mc",
+        "q": "Where should any photographs of the gardens go?",
+        "options": [
+          "In the introduction.",
+          "In an appendix.",
+          "In a separate online file.",
+          "Nowhere; they are not allowed."
+        ],
+        "answer": 1,
+        "explain_es": "\"put them in an appendix rather than the main text\"."
+      }
+    ],
+    "dictation": [
+      "Questionnaires give you numbers, but interviews tell you why people feel the way they do.",
+      "The reference list doesn't count, but the tables do, so keep them simple."
+    ]
+  },
+  {
+    "id": "l-b2-flat-choice",
+    "title": "Two Flats, One Decision",
+    "level": "B2",
+    "kind": "conversation",
+    "topic": "Housing",
+    "emoji": "🏠",
+    "speakers": [
+      {
+        "name": "Jess",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Omar",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, so we've seen both flats now. Which one are you leaning towards?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly? I walked out of the Marlow Road one thinking it was perfect, but the more I think about it, the less sure I am."
+      },
+      {
+        "s": 0,
+        "text": "Really? I thought you loved it. The living room was huge."
+      },
+      {
+        "s": 1,
+        "text": "It was. And the rent is lower, thirteen hundred and fifty a month compared to fifteen hundred for the one near the station. But it's a forty-minute bus ride to my office, and the buses only run every twenty minutes."
+      },
+      {
+        "s": 0,
+        "text": "Hmm, true. For me it doesn't make much difference, because I work from home three days a week."
+      },
+      {
+        "s": 1,
+        "text": "Exactly, so it's me who'd be stuck on the bus. Whereas from the station flat I could walk to work in fifteen minutes."
+      },
+      {
+        "s": 0,
+        "text": "But the second bedroom there is tiny. Whoever gets it would barely fit a bed and a desk."
+      },
+      {
+        "s": 1,
+        "text": "I'd take the small room if we went for that one. I don't need much space."
+      },
+      {
+        "s": 0,
+        "text": "That's generous of you. Though if we're splitting the rent equally, that's not really fair on you."
+      },
+      {
+        "s": 1,
+        "text": "Well, we could split it differently. Maybe I pay a bit less?"
+      },
+      {
+        "s": 0,
+        "text": "Yeah, that seems reasonable. What about the washing machine? Marlow Road didn't have one."
+      },
+      {
+        "s": 1,
+        "text": "The agent said the landlord might put one in, but might isn't very reassuring. And the station flat has one, plus a dishwasher."
+      },
+      {
+        "s": 0,
+        "text": "And a balcony. I keep thinking about having breakfast out there in summer."
+      },
+      {
+        "s": 1,
+        "text": "You'd be having breakfast next to a railway line, mind you."
+      },
+      {
+        "s": 0,
+        "text": "Ha, fair point. Did you notice the noise, though? I didn't hear much with the windows closed."
+      },
+      {
+        "s": 1,
+        "text": "Me neither. They said the windows were replaced last year, so that helps."
+      },
+      {
+        "s": 0,
+        "text": "Okay, so let's think about bills. The Marlow Road one has gas heating, which the agent said is cheaper to run."
+      },
+      {
+        "s": 1,
+        "text": "Supposedly. But the station flat is in a newer building, so it's probably better insulated. I'd guess the bills come out about the same."
+      },
+      {
+        "s": 0,
+        "text": "Right. So, if we're honest, the only real advantages of Marlow Road are the bigger living room and the lower rent."
+      },
+      {
+        "s": 1,
+        "text": "And the garden, to be fair. But neither of us has time to look after a garden."
+      },
+      {
+        "s": 0,
+        "text": "True. Okay, shall we go for the station flat, then?"
+      },
+      {
+        "s": 1,
+        "text": "Let's do it. I'll ring the agent first thing tomorrow before somebody else snaps it up. They said there were three other couples viewing it this week."
+      },
+      {
+        "s": 0,
+        "text": "Couples! We should probably tell them we're just friends."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How did Omar feel immediately after seeing the Marlow Road flat?",
+        "options": [
+          "He disliked the living room.",
+          "He thought it was too expensive.",
+          "He thought it was ideal.",
+          "He was worried about the noise."
+        ],
+        "answer": 2,
+        "explain_es": "\"I walked out of the Marlow Road one thinking it was perfect\", aunque luego cambia de opinión."
+      },
+      {
+        "type": "gap",
+        "q": "Rent of the flat near the station: ____ per month (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "fifteen hundred",
+        "accept": [
+          "1,500",
+          "1500"
+        ],
+        "explain_es": "\"thirteen hundred and fifty a month compared to fifteen hundred for the one near the station\" (1.500). 1.350 es Marlow Road."
+      },
+      {
+        "type": "mc",
+        "q": "Why is the journey to work more of an issue for Omar than for Jess?",
+        "options": [
+          "Jess has a car.",
+          "Omar starts work very early.",
+          "Omar's office is moving.",
+          "Jess works at home for part of the week."
+        ],
+        "answer": 3,
+        "explain_es": "Jess dice: \"I work from home three days a week\"."
+      },
+      {
+        "type": "tf",
+        "q": "Jess offers to have the smaller bedroom.",
+        "answer": "F",
+        "explain_es": "Es Omar quien lo ofrece: \"I'd take the small room if we went for that one\"."
+      },
+      {
+        "type": "mc",
+        "q": "What do they agree about the rent?",
+        "options": [
+          "Omar might pay a smaller share.",
+          "Jess will pay all of it at first.",
+          "They will split it equally.",
+          "They will ask the landlord to reduce it."
+        ],
+        "answer": 0,
+        "explain_es": "\"Maybe I pay a bit less?\" — \"Yeah, that seems reasonable\"."
+      },
+      {
+        "type": "tf",
+        "q": "The landlord has promised to install a washing machine at Marlow Road.",
+        "answer": "F",
+        "explain_es": "Solo \"might put one in, but might isn't very reassuring\": no es una promesa."
+      },
+      {
+        "type": "gap",
+        "q": "The windows in the station flat were replaced ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "last year",
+        "accept": [],
+        "explain_es": "\"They said the windows were replaced last year\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Omar think about the energy bills?",
+        "options": [
+          "Marlow Road will be much cheaper.",
+          "They will probably be similar.",
+          "The station flat will be much cheaper.",
+          "He has no idea."
+        ],
+        "answer": 1,
+        "explain_es": "\"I'd guess the bills come out about the same\"."
+      },
+      {
+        "type": "gap",
+        "q": "Marlow Road advantages: bigger living room, lower rent and a ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "garden",
+        "accept": [],
+        "explain_es": "\"And the garden, to be fair. But neither of us has time to look after a garden\"."
+      }
+    ],
+    "dictation": [
+      "Whoever gets it would barely fit a bed and a desk.",
+      "I'll ring the agent first thing tomorrow before somebody else snaps it up."
+    ]
+  },
+  {
+    "id": "l-b2-sleep-podcast",
+    "title": "What Keeps Us Awake?",
+    "level": "B2",
+    "kind": "podcast",
+    "topic": "Health",
+    "emoji": "😴",
+    "speakers": [
+      {
+        "name": "Nadia",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome back to Everyday Science, the podcast where we take the things you do every day and ask what's actually going on. I'm Nadia, and today we're talking about sleep with Dr Ben Carter, who runs a sleep lab at a university hospital. Ben, thanks for coming in."
+      },
+      {
+        "s": 1,
+        "text": "Thanks for having me. It's a topic people always have strong opinions about."
+      },
+      {
+        "s": 0,
+        "text": "They really do. Let's start with the big one: screens. Everyone says the blue light from our phones keeps us awake. Is that true?"
+      },
+      {
+        "s": 1,
+        "text": "Partly. Blue light does affect the hormone that makes us sleepy, but the effect from a phone is actually fairly small. What matters more, in our research, is what you're doing on the screen. If you're answering work emails or arguing with someone online, your brain stays alert. Reading a calm article is much less of a problem."
+      },
+      {
+        "s": 0,
+        "text": "So it's the content, not the light."
+      },
+      {
+        "s": 1,
+        "text": "Mostly, yes. Although I'd still say put the phone down half an hour before bed if you can."
+      },
+      {
+        "s": 0,
+        "text": "What about naps? I love a nap, but I've heard they can ruin your night."
+      },
+      {
+        "s": 1,
+        "text": "They can, if you get them wrong. A short nap, around twenty minutes, can really boost concentration. The problems start when people sleep for an hour or more, or nap late in the afternoon. As a rule of thumb, I'd say finish any nap before three o'clock."
+      },
+      {
+        "s": 0,
+        "text": "Good to know. Now, a lot of our listeners are students, and they often say they simply can't fall asleep before midnight."
+      },
+      {
+        "s": 1,
+        "text": "And they're not being lazy! During adolescence the body clock genuinely shifts later, by up to two hours. That's why some researchers argue that schools should start later in the morning."
+      },
+      {
+        "s": 0,
+        "text": "Interesting. And what about catching up at the weekend? I sleep until eleven on Saturdays."
+      },
+      {
+        "s": 1,
+        "text": "That's very common, but it creates what we call social jet lag. Your body thinks it's travelled to a different time zone, and then on Monday morning you have to fly back, so to speak. Keeping your wake-up time within about an hour of your weekday time is much better."
+      },
+      {
+        "s": 0,
+        "text": "Ouch. Okay, last question: coffee. I usually have one at about four o'clock."
+      },
+      {
+        "s": 1,
+        "text": "Caffeine stays in your system longer than people realise. Roughly half of it is still there five or six hours later. So that four o'clock coffee is still partly active at ten at night."
+      },
+      {
+        "s": 0,
+        "text": "I think I need to rethink my afternoons. Ben, thank you so much."
+      },
+      {
+        "s": 1,
+        "text": "My pleasure. Sleep well, everyone."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Ben, what matters most about using a screen before bed?",
+        "options": [
+          "The brightness of the screen.",
+          "The size of the device.",
+          "What the person is doing on it.",
+          "How close it is to the bed."
+        ],
+        "answer": 2,
+        "explain_es": "\"What matters more... is what you're doing on the screen\"."
+      },
+      {
+        "type": "tf",
+        "q": "Ben says the light from a phone has a powerful effect on sleep.",
+        "answer": "F",
+        "explain_es": "\"the effect from a phone is actually fairly small\"."
+      },
+      {
+        "type": "gap",
+        "q": "Recommended nap length: about ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty minutes",
+        "accept": [
+          "20 minutes"
+        ],
+        "explain_es": "\"A short nap, around twenty minutes, can really boost concentration\"."
+      },
+      {
+        "type": "gap",
+        "q": "Any nap should end before ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "three o'clock",
+        "accept": [
+          "3 o'clock",
+          "3 pm",
+          "three"
+        ],
+        "explain_es": "\"finish any nap before three o'clock\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do many teenagers find it hard to sleep early?",
+        "options": [
+          "They use their phones too much.",
+          "They are lazy.",
+          "They drink too much coffee.",
+          "Their internal clock moves later."
+        ],
+        "answer": 3,
+        "explain_es": "\"they're not being lazy! During adolescence the body clock genuinely shifts later\"."
+      },
+      {
+        "type": "gap",
+        "q": "Sleeping much later at weekends can cause social ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "jet lag",
+        "accept": [
+          "jetlag"
+        ],
+        "explain_es": "\"it creates what we call social jet lag\"."
+      },
+      {
+        "type": "tf",
+        "q": "Ben advises waking up no more than about an hour later than usual at weekends.",
+        "answer": "T",
+        "explain_es": "\"Keeping your wake-up time within about an hour of your weekday time is much better\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Ben say about caffeine?",
+        "options": [
+          "About half of it remains five or six hours later.",
+          "Its effects disappear after two hours.",
+          "It only affects people who drink it at night.",
+          "It improves the quality of sleep."
+        ],
+        "answer": 0,
+        "explain_es": "\"Roughly half of it is still there five or six hours later\"."
+      }
+    ],
+    "dictation": [
+      "If you're answering work emails or arguing with someone online, your brain stays alert.",
+      "Caffeine stays in your system longer than people realise."
+    ]
+  },
+  {
+    "id": "l-b2-bike-scheme-report",
+    "title": "E-Bikes: Six Months On",
+    "level": "B2",
+    "kind": "radio-report",
+    "topic": "Transport",
+    "emoji": "🚲",
+    "speakers": [
+      {
+        "name": "Claire",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "James",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ruth",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Now, it's been six months since the city launched its electric bike-sharing scheme, and opinions are still divided. Our transport correspondent, James Whitby, has been finding out how it's going."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Claire. I'm standing at one of the busiest docking stations, outside the central library, and in the ten minutes I've been here, at least a dozen bikes have been taken out. According to the council, there have been around a hundred and eighty thousand journeys since the launch in April, well above the original target of a hundred and twenty thousand."
+      },
+      {
+        "s": 1,
+        "text": "The bikes cost a pound to unlock, plus fifteen pence per minute, although there's a monthly pass for twelve pounds, which gives you unlimited rides of up to forty-five minutes. Ruth Adeyemi, a nurse, uses the scheme every day."
+      },
+      {
+        "s": 2,
+        "text": "I used to drive to the hospital, but parking was costing me a fortune, and honestly I was always stressed. Now I cycle, and it takes about the same time. The electric motor makes the hill on Station Road manageable, which it never was on my old bike."
+      },
+      {
+        "s": 1,
+        "text": "Not everyone is so enthusiastic, though. Some residents have complained that bikes are being left on pavements, blocking the way for wheelchair users and people with pushchairs. Ruth admits she's seen it too."
+      },
+      {
+        "s": 2,
+        "text": "Yes, it's a real problem in some areas. I think people should be fined if they don't return the bike to a proper station. At the moment, I don't think there's any penalty at all."
+      },
+      {
+        "s": 1,
+        "text": "In fact, the council says that from next month, users who leave bikes outside the official parking zones will be charged an extra five pounds. They're also planning to add thirty new docking stations, mainly in the suburbs, which at the moment are poorly served."
+      },
+      {
+        "s": 1,
+        "text": "There have also been concerns about safety. Two of the city's main roads still don't have separate cycle lanes, and a local campaign group says that's putting people off. The council has promised to build them, but hasn't yet said when."
+      },
+      {
+        "s": 2,
+        "text": "That's the main thing that would get more people cycling, in my view. I'm fairly confident on the roads, but my sister won't even try it."
+      },
+      {
+        "s": 1,
+        "text": "So, a promising start, but clearly some problems to fix. Back to you, Claire."
+      },
+      {
+        "s": 0,
+        "text": "Thanks, James."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Journeys since the launch: around ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "a hundred and eighty thousand",
+        "accept": [
+          "180,000",
+          "180000",
+          "one hundred and eighty thousand"
+        ],
+        "explain_es": "\"around a hundred and eighty thousand journeys since the launch\" (180.000). 120.000 era el objetivo."
+      },
+      {
+        "type": "mc",
+        "q": "How does the number of journeys compare with what was expected?",
+        "options": [
+          "It is slightly below the target.",
+          "It has easily exceeded the target.",
+          "It is exactly on target.",
+          "No target was set."
+        ],
+        "answer": 1,
+        "explain_es": "\"well above the original target of a hundred and twenty thousand\"."
+      },
+      {
+        "type": "gap",
+        "q": "Monthly pass: ____ pounds for unlimited rides of up to 45 minutes (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twelve",
+        "accept": [
+          "12"
+        ],
+        "explain_es": "\"there's a monthly pass for twelve pounds\" (12)."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Ruth give up driving to work?",
+        "options": [
+          "Her car broke down.",
+          "The hospital banned staff parking.",
+          "It was costly and stressful.",
+          "Cycling was much faster."
+        ],
+        "answer": 2,
+        "explain_es": "\"parking was costing me a fortune, and honestly I was always stressed\"."
+      },
+      {
+        "type": "tf",
+        "q": "Ruth's journey to work is now much quicker.",
+        "answer": "F",
+        "explain_es": "\"Now I cycle, and it takes about the same time\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Ruth's opinion about bikes left on pavements?",
+        "options": [
+          "It is not really a problem.",
+          "Only tourists do it.",
+          "The council should remove the bikes.",
+          "Users who do it should be penalised."
+        ],
+        "answer": 3,
+        "explain_es": "\"I think people should be fined if they don't return the bike to a proper station\"."
+      },
+      {
+        "type": "tf",
+        "q": "Users are already charged extra for leaving bikes outside official zones.",
+        "answer": "F",
+        "explain_es": "La multa empieza \"from next month\"; Ruth dice que ahora no hay ninguna."
+      },
+      {
+        "type": "gap",
+        "q": "Most of the thirty new docking stations will be in the ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "suburbs",
+        "accept": [],
+        "explain_es": "\"thirty new docking stations, mainly in the suburbs\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to the campaign group, what is discouraging people from cycling?",
+        "options": [
+          "The lack of separate cycle lanes on some main roads.",
+          "The price of the bikes.",
+          "The hill on Station Road.",
+          "The small number of docking stations."
+        ],
+        "answer": 0,
+        "explain_es": "\"Two of the city's main roads still don't have separate cycle lanes... that's putting people off\"."
+      }
+    ],
+    "dictation": [
+      "Not everyone is so enthusiastic, though.",
+      "I'm fairly confident on the roads, but my sister won't even try it."
+    ]
+  },
+  {
+    "id": "l-b2-festival-volunteers",
+    "title": "Festival Volunteer Briefing",
+    "level": "B2",
+    "kind": "monologue",
+    "topic": "Community",
+    "emoji": "🎪",
+    "speakers": [
+      {
+        "name": "Sophie",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi everyone, and thanks so much for volunteering at this year's Greenfield Folk Festival. I know some of you have done this before and some of you are completely new, so I'll go through the essentials, and then you'll meet your team leaders."
+      },
+      {
+        "s": 0,
+        "text": "First, shifts. Each of you will do three shifts of six hours over the weekend, and in return you get a free weekend ticket and meals on the days you're working. Your rota should be in your welcome pack, but if it's missing, go to the volunteer tent, which is the green one next to the main car park, not the white one by the stage. That's first aid."
+      },
+      {
+        "s": 0,
+        "text": "Please arrive at least fifteen minutes before your shift starts so you can sign in. We used to ask for half an hour, but people told us it was too much, so we've cut it down. If you're going to be late, or you're ill, text your team leader rather than calling, because it's often too noisy to hear the phone."
+      },
+      {
+        "s": 0,
+        "text": "Now, roles. Most of you will be in one of three areas: the entrance gates, checking tickets and wristbands; the recycling team, which is honestly the hardest work, but people say it's the most fun; or the information point, answering questions from the public. If you've got a preference, tell your team leader today and we'll try to accommodate it, but I can't promise anything."
+      },
+      {
+        "s": 0,
+        "text": "A few rules. You must wear your volunteer T-shirt during every shift, so people can find you. Alcohol is obviously not allowed while you're working, and that includes breaks. And please don't post photos of the backstage area on social media. The artists really value their privacy."
+      },
+      {
+        "s": 0,
+        "text": "Safety is the big one. If you see someone who looks unwell, don't try to deal with it yourself; radio the control room, or send someone to the first aid tent. And if there's ever an announcement asking people to leave a particular area, your job is to stay calm and point people towards the nearest exit, which will be marked with yellow flags."
+      },
+      {
+        "s": 0,
+        "text": "Last thing: the weather forecast for Saturday isn't great, so bring waterproofs and sensible boots. Trust me, the fields turn into mud very quickly."
+      },
+      {
+        "s": 0,
+        "text": "Right, any questions before we split into teams? No? Okay, team leaders, they're all yours."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Each volunteer works three shifts of ____ hours. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "\"three shifts of six hours over the weekend\"."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the volunteer tent?",
+        "options": [
+          "Next to the stage.",
+          "Beside the main car park.",
+          "At the entrance gates.",
+          "Next to the information point."
+        ],
+        "answer": 1,
+        "explain_es": "\"the green one next to the main car park, not the white one by the stage\"."
+      },
+      {
+        "type": "gap",
+        "q": "Volunteers should arrive at least ____ minutes early to sign in. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "fifteen",
+        "accept": [
+          "15"
+        ],
+        "explain_es": "\"arrive at least fifteen minutes before your shift starts\"."
+      },
+      {
+        "type": "tf",
+        "q": "This year volunteers must arrive half an hour before their shift.",
+        "answer": "F",
+        "explain_es": "\"We used to ask for half an hour... so we've cut it down\"."
+      },
+      {
+        "type": "mc",
+        "q": "What should volunteers do if they are going to be late?",
+        "options": [
+          "Phone the control room.",
+          "Go to the volunteer tent.",
+          "Send a text message to their team leader.",
+          "Ask another volunteer to cover."
+        ],
+        "answer": 2,
+        "explain_es": "\"text your team leader rather than calling, because it's often too noisy\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which role is described as the most demanding but also the most enjoyable?",
+        "options": [
+          "First aid.",
+          "Checking tickets.",
+          "Giving information.",
+          "Recycling."
+        ],
+        "answer": 3,
+        "explain_es": "\"the recycling team, which is honestly the hardest work, but people say it's the most fun\"."
+      },
+      {
+        "type": "tf",
+        "q": "Volunteers are allowed to drink alcohol during their breaks.",
+        "answer": "F",
+        "explain_es": "\"Alcohol is obviously not allowed while you're working, and that includes breaks\"."
+      },
+      {
+        "type": "gap",
+        "q": "Exits will be marked with yellow ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "flags",
+        "accept": [],
+        "explain_es": "\"the nearest exit, which will be marked with yellow flags\"."
+      },
+      {
+        "type": "gap",
+        "q": "Because of the forecast, bring waterproofs and sensible ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "boots",
+        "accept": [],
+        "explain_es": "\"bring waterproofs and sensible boots\"."
+      }
+    ],
+    "dictation": [
+      "Trust me, the fields turn into mud very quickly.",
+      "You must wear your volunteer T-shirt during every shift, so people can find you."
+    ]
+  },
+  {
+    "id": "l-b2-events-job-interview",
+    "title": "Interview: Events Coordinator",
+    "level": "B2",
+    "kind": "interview",
+    "topic": "Work",
+    "emoji": "💼",
+    "speakers": [
+      {
+        "name": "Laura",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Diego",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Diego, thanks for coming in. Please, have a seat."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. It's nice to meet you."
+      },
+      {
+        "s": 0,
+        "text": "So, as you know, this is for the events coordinator role. Could you start by telling me a bit about your current job?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. I've been working at a conference centre for about three years, mainly in customer service, but for the last eighteen months I've been helping to organise smaller events: company training days, a couple of weddings, that kind of thing."
+      },
+      {
+        "s": 0,
+        "text": "And what made you apply for this position?"
+      },
+      {
+        "s": 1,
+        "text": "Well, I really enjoy the planning side, and at the moment it's only part of my job. Here it would be the main focus. Also, to be honest, the hotel's reputation for weddings was a big attraction. I'd like to specialise in that area eventually."
+      },
+      {
+        "s": 0,
+        "text": "Good. Can you tell me about a time when something went wrong at an event, and how you dealt with it?"
+      },
+      {
+        "s": 1,
+        "text": "Yes. Last spring we had a training day for about eighty people, and that morning the caterers phoned to say their van had broken down. Lunch was going to be at least two hours late. At first I panicked a little, I'll admit, but then I called a local bakery we'd worked with before, and they delivered sandwiches within forty minutes. I also moved the afternoon coffee break earlier so nobody went hungry."
+      },
+      {
+        "s": 0,
+        "text": "That's resourceful. How did the client react?"
+      },
+      {
+        "s": 1,
+        "text": "They were actually very happy. They booked with us again in the autumn."
+      },
+      {
+        "s": 0,
+        "text": "Excellent. Now, this role involves a lot of weekend work, especially from May to September. Would that be a problem?"
+      },
+      {
+        "s": 1,
+        "text": "Not at all. I'm used to it. The only thing is that I have a course on Monday evenings. I'm doing a diploma in event management, but that finishes in December."
+      },
+      {
+        "s": 0,
+        "text": "That's fine; we rarely have events on Monday nights. What would you say is your main weakness?"
+      },
+      {
+        "s": 1,
+        "text": "I think I sometimes find it hard to delegate. I like to check everything myself. But I've been working on it, because I realise it's not sustainable with bigger events. Now I make detailed checklists and trust the team to follow them."
+      },
+      {
+        "s": 0,
+        "text": "That's a very honest answer. Do you have any questions for me?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I was wondering how big the events team is."
+      },
+      {
+        "s": 0,
+        "text": "There are five of us at the moment, plus seasonal staff in the summer. You'd be working closely with our wedding planner, Martina."
+      },
+      {
+        "s": 1,
+        "text": "That sounds great. And when do you expect to make a decision?"
+      },
+      {
+        "s": 0,
+        "text": "We're seeing two more candidates this week, so you should hear from us by Friday."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Diego has worked at the conference centre for about ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "three years",
+        "accept": [
+          "3 years"
+        ],
+        "explain_es": "\"I've been working at a conference centre for about three years\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Diego's main reason for applying?",
+        "options": [
+          "He would like planning to be the core of his job.",
+          "He wants a higher salary.",
+          "He wants to stop working weekends.",
+          "He has finished his diploma."
+        ],
+        "answer": 0,
+        "explain_es": "\"at the moment it's only part of my job. Here it would be the main focus\"."
+      },
+      {
+        "type": "mc",
+        "q": "How did Diego solve the catering problem?",
+        "options": [
+          "He cancelled lunch.",
+          "He ordered food from a bakery he knew.",
+          "He drove to collect the food himself.",
+          "He asked the client to bring sandwiches."
+        ],
+        "answer": 1,
+        "explain_es": "\"I called a local bakery we'd worked with before, and they delivered sandwiches\"."
+      },
+      {
+        "type": "gap",
+        "q": "The bakery delivered sandwiches within ____ minutes. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "forty",
+        "accept": [
+          "40"
+        ],
+        "explain_es": "\"they delivered sandwiches within forty minutes\". Dos horas era el retraso del catering."
+      },
+      {
+        "type": "tf",
+        "q": "The client never used the conference centre again.",
+        "answer": "F",
+        "explain_es": "\"They booked with us again in the autumn\"."
+      },
+      {
+        "type": "tf",
+        "q": "Diego says weekend work would be difficult for him.",
+        "answer": "F",
+        "explain_es": "\"Not at all. I'm used to it\". Solo tiene clase los lunes por la noche."
+      },
+      {
+        "type": "gap",
+        "q": "Diego's diploma course ends in ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "December",
+        "accept": [],
+        "explain_es": "\"I'm doing a diploma in event management, but that finishes in December\"."
+      },
+      {
+        "type": "mc",
+        "q": "What weakness does Diego mention?",
+        "options": [
+          "He gets nervous speaking to clients.",
+          "He is often late.",
+          "He finds it difficult to give tasks to others.",
+          "He is not good with numbers."
+        ],
+        "answer": 2,
+        "explain_es": "\"I sometimes find it hard to delegate. I like to check everything myself\"."
+      },
+      {
+        "type": "mc",
+        "q": "When will Diego find out the result?",
+        "options": [
+          "Next Monday.",
+          "Later today.",
+          "In December.",
+          "By the end of the week."
+        ],
+        "answer": 3,
+        "explain_es": "\"you should hear from us by Friday\"."
+      }
+    ],
+    "dictation": [
+      "They booked with us again in the autumn.",
+      "Now I make detailed checklists and trust the team to follow them."
+    ]
+  },
+  {
+    "id": "l-b2-photo-course-enquiry",
+    "title": "Enrolling on a Photography Course",
+    "level": "B2",
+    "kind": "phone-call",
+    "topic": "Hobbies",
+    "emoji": "📷",
+    "speakers": [
+      {
+        "name": "Gary",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Aisha",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, Westbrook Adult Education, Gary speaking."
+      },
+      {
+        "s": 1,
+        "text": "Hi, I'm calling about the evening photography courses. I saw a leaflet in the library."
+      },
+      {
+        "s": 0,
+        "text": "Ah yes, we have a couple running this term. Is it the beginners' course you're interested in?"
+      },
+      {
+        "s": 1,
+        "text": "I think so. I've got a decent camera, but I've only ever used it on automatic."
+      },
+      {
+        "s": 0,
+        "text": "Then the beginners' course is ideal. It's called Getting Off Auto, funnily enough. It runs on Wednesday evenings from seven to nine, for ten weeks, starting on the fourteenth of January."
+      },
+      {
+        "s": 1,
+        "text": "Wednesday... hmm, I've got choir on Wednesdays. Is there another option?"
+      },
+      {
+        "s": 0,
+        "text": "There's a Saturday morning version, but that one's full, I'm afraid. I can put you on the waiting list, though."
+      },
+      {
+        "s": 1,
+        "text": "Actually, choir is only every other week, so I suppose I could miss it sometimes. Let's go with Wednesday."
+      },
+      {
+        "s": 0,
+        "text": "Okay. Can I take your name?"
+      },
+      {
+        "s": 1,
+        "text": "Aisha Brennan. B-R-E-N-N-A-N."
+      },
+      {
+        "s": 0,
+        "text": "And your postcode?"
+      },
+      {
+        "s": 1,
+        "text": "It's B L four, seven Q T."
+      },
+      {
+        "s": 0,
+        "text": "Thanks. The fee is a hundred and eighty-five pounds, but if you're over sixty or receiving certain benefits, there's a reduced rate of a hundred and twenty."
+      },
+      {
+        "s": 1,
+        "text": "No, I'm not eligible for that. Is there anything else I'd need to pay for?"
+      },
+      {
+        "s": 0,
+        "text": "The course itself includes everything except printing. If you want to print your photos for the end-of-course exhibition, that's about ten pounds extra, but it's optional."
+      },
+      {
+        "s": 1,
+        "text": "An exhibition? That sounds a bit scary."
+      },
+      {
+        "s": 0,
+        "text": "Most people say that at first, but it's a really friendly event. Families come along, and there's a little prize for the most popular picture."
+      },
+      {
+        "s": 1,
+        "text": "Okay. And do I need any special equipment?"
+      },
+      {
+        "s": 0,
+        "text": "Just your camera, its charger, and a memory card. The tutor recommends bringing a notebook too, because there's quite a lot of technical vocabulary. Oh, and a tripod would be useful for week six, which is night photography, but we can lend you one if you don't have one."
+      },
+      {
+        "s": 1,
+        "text": "Great. Where exactly is the class?"
+      },
+      {
+        "s": 0,
+        "text": "Room twelve, which is on the second floor of the main building. The lift is out of order at the moment, unfortunately, so you'd need to use the stairs."
+      },
+      {
+        "s": 1,
+        "text": "That's fine. How do I pay?"
+      },
+      {
+        "s": 0,
+        "text": "You can pay online with the reference number I'll email you, or in person at reception. We need payment at least a week before the course starts to guarantee your place."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Thank you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Course title: Getting Off ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Auto",
+        "accept": [],
+        "explain_es": "\"It's called Getting Off Auto, funnily enough\"."
+      },
+      {
+        "type": "gap",
+        "q": "First class: the ____ of January (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "fourteenth",
+        "accept": [
+          "14th",
+          "14"
+        ],
+        "explain_es": "\"starting on the fourteenth of January\" (14)."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Aisha hesitate when she hears the course is on Wednesdays?",
+        "options": [
+          "She has another activity that evening.",
+          "She works late on Wednesdays.",
+          "She prefers mornings.",
+          "The Wednesday course is full."
+        ],
+        "answer": 0,
+        "explain_es": "\"I've got choir on Wednesdays\". Luego decide que puede faltar algunas veces."
+      },
+      {
+        "type": "tf",
+        "q": "Aisha asks to be put on the waiting list for the Saturday course.",
+        "answer": "F",
+        "explain_es": "Gary lo ofrece, pero ella dice: \"Let's go with Wednesday\"."
+      },
+      {
+        "type": "gap",
+        "q": "Surname: ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Brennan",
+        "accept": [],
+        "explain_es": "\"Aisha Brennan. B-R-E-N-N-A-N\"."
+      },
+      {
+        "type": "gap",
+        "q": "Fee to pay: ____ pounds (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "a hundred and eighty-five",
+        "accept": [
+          "185",
+          "one hundred and eighty-five"
+        ],
+        "explain_es": "\"The fee is a hundred and eighty-five pounds\" (185); 120 es la tarifa reducida y ella no tiene derecho a ella."
+      },
+      {
+        "type": "mc",
+        "q": "What is NOT included in the course price?",
+        "options": [
+          "The use of a tripod.",
+          "Printing photos for the exhibition.",
+          "Entry to the exhibition for families.",
+          "The course materials."
+        ],
+        "answer": 1,
+        "explain_es": "\"The course itself includes everything except printing\"."
+      },
+      {
+        "type": "mc",
+        "q": "What can the college provide if a student needs one?",
+        "options": [
+          "A camera.",
+          "A memory card.",
+          "A tripod.",
+          "A notebook."
+        ],
+        "answer": 2,
+        "explain_es": "\"a tripod would be useful for week six... we can lend you one\"."
+      },
+      {
+        "type": "tf",
+        "q": "Students can currently reach Room 12 by lift.",
+        "answer": "F",
+        "explain_es": "\"The lift is out of order at the moment... you'd need to use the stairs\"."
+      }
+    ],
+    "dictation": [
+      "I've got a decent camera, but I've only ever used it on automatic.",
+      "Most people say that at first, but it's a really friendly event."
+    ]
+  },
+  {
+    "id": "l-b2-homework-debate",
+    "title": "Should Homework Go?",
+    "level": "B2",
+    "kind": "debate",
+    "topic": "Education",
+    "emoji": "📚",
+    "speakers": [
+      {
+        "name": "Kate",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Paul",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Rosa",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening and welcome to Open Question. Tonight's motion is: homework should be abolished in primary schools. Speaking for the motion is Paul Hughes, a head teacher, and against it is Rosa Mendez, an education researcher. Paul, you first."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. I've been teaching for over twenty years, and I used to set homework every night without thinking about it. But when we looked at the research properly, we found very little evidence that homework improves results for children under eleven. What it does do is create stress and arguments at home, and it disadvantages children whose parents work long hours or don't speak English. So three years ago, my school stopped setting it, apart from reading."
+      },
+      {
+        "s": 0,
+        "text": "And what happened?"
+      },
+      {
+        "s": 1,
+        "text": "Our test results stayed exactly the same, but parents reported far fewer arguments, and children had more time for sport, music and simply playing outside, which matters enormously at that age."
+      },
+      {
+        "s": 0,
+        "text": "Rosa, how do you respond?"
+      },
+      {
+        "s": 2,
+        "text": "Well, first, I agree with Paul that a lot of homework is poorly designed. Worksheets that just keep children busy are pointless. But I don't accept that the answer is to get rid of it altogether. Short, well-planned tasks help children develop independence and the habit of studying, which they'll badly need at secondary school."
+      },
+      {
+        "s": 1,
+        "text": "But they can develop those habits at school, during the day."
+      },
+      {
+        "s": 2,
+        "text": "To some extent. But there's another benefit: homework is often the only window parents have into what their child is learning. If you remove it, many families lose that connection."
+      },
+      {
+        "s": 0,
+        "text": "Paul, that's a fair point, isn't it?"
+      },
+      {
+        "s": 1,
+        "text": "It is, and we did worry about that. So now we send home a weekly newsletter explaining what each class is studying, with suggestions for things families can do together, like cooking or visiting a museum, if they want to. The key word is if."
+      },
+      {
+        "s": 2,
+        "text": "That sounds lovely, but I'd argue it actually increases inequality rather than reducing it. The families with time and money will do those activities; others won't."
+      },
+      {
+        "s": 1,
+        "text": "Whereas with compulsory homework, the children without support at home simply fail to do it and get into trouble. I'd say that's worse."
+      },
+      {
+        "s": 0,
+        "text": "So, is there any common ground?"
+      },
+      {
+        "s": 2,
+        "text": "I think we both agree that reading at home is valuable, and that quantity isn't the point. Ten minutes of meaningful practice beats an hour of busywork."
+      },
+      {
+        "s": 1,
+        "text": "Yes, I'd go along with that."
+      },
+      {
+        "s": 0,
+        "text": "Let's take some questions from the audience."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Paul's school stop setting homework?",
+        "options": [
+          "Parents asked them to.",
+          "Children's results had fallen.",
+          "Teachers did not have time to mark it.",
+          "Research showed little benefit for young children."
+        ],
+        "answer": 3,
+        "explain_es": "\"we found very little evidence that homework improves results for children under eleven\"."
+      },
+      {
+        "type": "gap",
+        "q": "Paul's school stopped homework (except reading) ____ years ago. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "three",
+        "accept": [
+          "3"
+        ],
+        "explain_es": "\"So three years ago, my school stopped setting it\"."
+      },
+      {
+        "type": "tf",
+        "q": "Test results at Paul's school improved after homework was stopped.",
+        "answer": "F",
+        "explain_es": "\"Our test results stayed exactly the same\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Rosa's basic position?",
+        "options": [
+          "Homework should be improved, not abolished.",
+          "Homework should be optional.",
+          "Homework should be longer.",
+          "Homework is only useful for reading."
+        ],
+        "answer": 0,
+        "explain_es": "Acepta que mucha está mal diseñada, pero \"I don't accept that the answer is to get rid of it altogether\"."
+      },
+      {
+        "type": "mc",
+        "q": "What additional benefit of homework does Rosa mention?",
+        "options": [
+          "It reduces arguments at home.",
+          "It shows parents what their children are studying.",
+          "It helps teachers plan lessons.",
+          "It improves children's sports performance."
+        ],
+        "answer": 1,
+        "explain_es": "\"homework is often the only window parents have into what their child is learning\"."
+      },
+      {
+        "type": "gap",
+        "q": "Paul's school now sends families a weekly ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "newsletter",
+        "accept": [],
+        "explain_es": "\"now we send home a weekly newsletter\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rosa thinks the optional family activities will reduce inequality.",
+        "answer": "F",
+        "explain_es": "\"I'd argue it actually increases inequality rather than reducing it\"."
+      },
+      {
+        "type": "mc",
+        "q": "On what do the two speakers finally agree?",
+        "options": [
+          "Homework should be abolished.",
+          "Worksheets are useful.",
+          "Reading at home is worthwhile.",
+          "Newsletters are unnecessary."
+        ],
+        "answer": 2,
+        "explain_es": "\"we both agree that reading at home is valuable\" — \"Yes, I'd go along with that\"."
+      },
+      {
+        "type": "gap",
+        "q": "Rosa: ten minutes of meaningful practice is better than an hour of ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "busywork",
+        "accept": [
+          "busy work"
+        ],
+        "explain_es": "\"Ten minutes of meaningful practice beats an hour of busywork\"."
+      }
+    ],
+    "dictation": [
+      "Worksheets that just keep children busy are pointless.",
+      "But they can develop those habits at school, during the day."
+    ]
+  },
+  {
+    "id": "l-b2-food-waste-lecture",
+    "title": "Why We Waste Food at Home",
+    "level": "B2",
+    "kind": "lecture",
+    "topic": "Environment",
+    "emoji": "🥕",
+    "speakers": [
+      {
+        "name": "Dr Fischer",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon. Today I want to look at household food waste, which is something most of us contribute to without really noticing. When people think about food waste, they tend to imagine supermarkets or restaurants throwing away huge quantities of food. And those are certainly part of the picture. But in many wealthy countries, the largest share of waste, often more than half, actually comes from households."
+      },
+      {
+        "s": 0,
+        "text": "So why do we waste so much at home? Researchers usually point to three main causes. The first is over-buying. Special offers, like buy one, get one free, encourage us to purchase more than we can realistically eat. The second is poor storage. A surprising number of people keep fruit and vegetables in the wrong place, so they go off much faster than they should. And the third, which is the one I find most interesting, is confusion about date labels."
+      },
+      {
+        "s": 0,
+        "text": "Let me explain. In many countries, food packaging has two different kinds of date. A use by date is about safety: after that date, the food might make you ill, so you shouldn't eat it. A best before date, on the other hand, is only about quality. After that date, the food might be a little less fresh or crunchy, but it's perfectly safe. Surveys suggest that around a third of consumers don't understand the difference, and they throw away food that is completely fine."
+      },
+      {
+        "s": 0,
+        "text": "Now, some countries have started to tackle this. A few supermarkets have removed best before dates from fresh fruit and vegetables entirely, encouraging customers to use their own judgement, to look at the food and smell it. Early results seem positive, although it's too soon to say whether the effect will last."
+      },
+      {
+        "s": 0,
+        "text": "Another approach is technology. There are apps that let neighbours share surplus food, and some fridges now have cameras inside, so you can check what you've got while you're at the shop. Personally, I'm a bit sceptical about the fridges. They're expensive, and I suspect most people won't use the feature after the first few weeks. The sharing apps seem more promising, particularly in cities."
+      },
+      {
+        "s": 0,
+        "text": "Finally, it's worth remembering why this matters. When food is wasted, so is all the water, energy and land used to produce it. And when it ends up in landfill, it produces methane, a powerful greenhouse gas."
+      },
+      {
+        "s": 0,
+        "text": "For next week, I'd like you to keep a simple food diary, recording everything you throw away for seven days, and why. We'll compare results in the seminar."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "In many wealthy countries, where does most food waste come from?",
+        "options": [
+          "Supermarkets.",
+          "Restaurants.",
+          "Farms.",
+          "Private homes."
+        ],
+        "answer": 3,
+        "explain_es": "\"the largest share of waste, often more than half, actually comes from households\"."
+      },
+      {
+        "type": "gap",
+        "q": "Main causes: over-buying, poor ____ and confusion about date labels. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "storage",
+        "accept": [],
+        "explain_es": "\"The second is poor storage\"."
+      },
+      {
+        "type": "tf",
+        "q": "Food is unsafe to eat after its best before date.",
+        "answer": "F",
+        "explain_es": "\"A best before date... is only about quality... it's perfectly safe\"."
+      },
+      {
+        "type": "gap",
+        "q": "Roughly a ____ of consumers do not understand the two kinds of date. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "third",
+        "accept": [
+          "1/3"
+        ],
+        "explain_es": "\"around a third of consumers don't understand the difference\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why have some supermarkets removed best before dates from fresh produce?",
+        "options": [
+          "To encourage shoppers to decide for themselves.",
+          "To reduce packaging costs.",
+          "Because the law changed.",
+          "To sell more fruit and vegetables."
+        ],
+        "answer": 0,
+        "explain_es": "\"encouraging customers to use their own judgement, to look at the food and smell it\"."
+      },
+      {
+        "type": "tf",
+        "q": "The lecturer is sure that removing date labels will have a long-term effect.",
+        "answer": "F",
+        "explain_es": "\"it's too soon to say whether the effect will last\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the lecturer's opinion of fridges with cameras?",
+        "options": [
+          "She thinks they are the best solution.",
+          "She doubts people will keep using the feature.",
+          "She believes they will soon be cheaper.",
+          "She has not formed an opinion."
+        ],
+        "answer": 1,
+        "explain_es": "\"I'm a bit sceptical... I suspect most people won't use the feature after the first few weeks\"."
+      },
+      {
+        "type": "gap",
+        "q": "Food in landfill produces ____, a greenhouse gas. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "methane",
+        "accept": [],
+        "explain_es": "\"it produces methane, a powerful greenhouse gas\"."
+      },
+      {
+        "type": "gap",
+        "q": "Homework: keep a food diary for ____ days. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "seven",
+        "accept": [
+          "7"
+        ],
+        "explain_es": "\"recording everything you throw away for seven days, and why\"."
+      }
+    ],
+    "dictation": [
+      "A use by date is about safety: after that date, the food might make you ill, so you shouldn't eat it.",
+      "The sharing apps seem more promising, particularly in cities."
+    ]
+  },
+  {
+    "id": "l-c1-urban-heat-lecture",
+    "title": "Cities That Trap Heat",
+    "level": "C1",
+    "kind": "lecture",
+    "topic": "Environment",
+    "emoji": "🌡️",
+    "speakers": [
+      {
+        "name": "Professor Hale",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, everyone. Today's lecture is on what's known as the urban heat island effect: the phenomenon whereby cities are noticeably warmer than the countryside around them. On a still summer night, the difference can be as much as seven or eight degrees, which, as you can imagine, has serious implications for health, for energy use and, increasingly, for how we design cities."
+      },
+      {
+        "s": 0,
+        "text": "So what causes it? There isn't a single explanation; rather, several factors reinforce one another. The most obvious is the materials we build with. Asphalt, concrete and brick absorb solar radiation during the day and then release it slowly at night, which is why the effect tends to be strongest after dark, not, as people often assume, at midday."
+      },
+      {
+        "s": 0,
+        "text": "Second, cities have far less vegetation. Trees and plants cool their surroundings through a process called evapotranspiration. Essentially, they release water vapour, and that uses up heat energy. Remove them, and you lose a natural air-conditioning system. Third, there's the geometry of the city itself. Tall buildings on narrow streets create what are sometimes called urban canyons, which trap heat and reduce wind. And finally there's waste heat from human activity: vehicles, industry and, ironically, air conditioners, which pump hot air outside in order to cool the inside."
+      },
+      {
+        "s": 0,
+        "text": "Now, why should we care? The most pressing issue is health. During heatwaves, mortality rates in cities rise sharply, and the people most at risk are the elderly, those with existing heart or lung conditions, and people living alone. It's worth stressing that the danger isn't only daytime temperatures; it's the lack of relief at night. If the body can't cool down while you sleep, the strain accumulates over several days."
+      },
+      {
+        "s": 0,
+        "text": "So what can be done? Broadly speaking, the solutions fall into three groups. The first is greening: planting street trees, creating parks and installing green roofs. Trees are probably the single most cost-effective measure, though they take years to mature, so it's a long-term investment."
+      },
+      {
+        "s": 0,
+        "text": "The second is what we might call cool materials. Painting roofs white or using reflective paving can lower surface temperatures considerably. Some cities have trialled this with encouraging results, although I should add a note of caution: reflective surfaces at street level can increase glare and actually make pedestrians feel hotter, because the sunlight bounces back up at them. So it's not a straightforward win."
+      },
+      {
+        "s": 0,
+        "text": "The third group concerns design and planning: orienting streets to channel breezes, for instance, or restoring rivers that were buried under roads in the last century. That's far more expensive and disruptive, of course, but the cities that have done it, often for other reasons such as flood management, have seen measurable cooling benefits."
+      },
+      {
+        "s": 0,
+        "text": "To my mind, the key point is that none of these measures is sufficient on its own. The cities making real progress are those combining approaches and, crucially, targeting the neighbourhoods that need them most, which are very often the poorer ones with the fewest trees."
+      },
+      {
+        "s": 0,
+        "text": "In the seminar on Thursday we'll look at a case study from a southern European city that mapped surface temperatures street by street, so please read the article on the reading list beforehand."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "The heat island effect is usually most intense after ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "dark",
+        "accept": [],
+        "explain_es": "\"the effect tends to be strongest after dark, not, as people often assume, at midday\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why is the effect strongest at that time?",
+        "options": [
+          "Traffic is heaviest then.",
+          "There is less wind in cities at night.",
+          "Building materials gradually give off the heat they absorbed.",
+          "Air conditioners are switched on."
+        ],
+        "answer": 2,
+        "explain_es": "Los materiales \"absorb solar radiation during the day and then release it slowly at night\"."
+      },
+      {
+        "type": "gap",
+        "q": "Plants lower temperatures through a process called ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "evapotranspiration",
+        "accept": [],
+        "explain_es": "\"Trees and plants cool their surroundings through a process called evapotranspiration\"."
+      },
+      {
+        "type": "gap",
+        "q": "Tall buildings along narrow streets form urban ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "canyons",
+        "accept": [],
+        "explain_es": "\"what are sometimes called urban canyons, which trap heat and reduce wind\"."
+      },
+      {
+        "type": "tf",
+        "q": "The lecturer suggests that air conditioners help to reduce the heat island effect.",
+        "answer": "F",
+        "explain_es": "Dice \"ironically, air conditioners\" contribuyen al calor: \"pump hot air outside\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which health risk does the lecturer particularly emphasise?",
+        "options": [
+          "Very high temperatures at midday.",
+          "Poor air quality in parks.",
+          "Dehydration among young people.",
+          "The body being unable to recover at night."
+        ],
+        "answer": 3,
+        "explain_es": "\"the danger isn't only daytime temperatures; it's the lack of relief at night\"."
+      },
+      {
+        "type": "mc",
+        "q": "What drawback of planting trees does he mention?",
+        "options": [
+          "Their benefits take a long time to appear.",
+          "They are very expensive.",
+          "They increase glare.",
+          "They need a lot of water."
+        ],
+        "answer": 0,
+        "explain_es": "\"they take years to mature, so it's a long-term investment\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the lecturer's attitude to reflective paving?",
+        "options": [
+          "Enthusiastic, as it is cheap.",
+          "Cautious, as it may make people on foot feel hotter.",
+          "Dismissive, as it has never worked.",
+          "Neutral, as there is no evidence yet."
+        ],
+        "answer": 1,
+        "explain_es": "\"I should add a note of caution... can... make pedestrians feel hotter\"."
+      },
+      {
+        "type": "tf",
+        "q": "Cities that uncovered buried rivers mainly did so in order to reduce temperatures.",
+        "answer": "F",
+        "explain_es": "Lo hicieron \"often for other reasons such as flood management\"; el enfriamiento fue un beneficio adicional."
+      },
+      {
+        "type": "mc",
+        "q": "What is the lecturer's main conclusion?",
+        "options": [
+          "Greening is the only effective solution.",
+          "Wealthy districts should be prioritised.",
+          "Measures should be combined and aimed at the areas most in need.",
+          "Planning changes are too disruptive to be worthwhile."
+        ],
+        "answer": 2,
+        "explain_es": "\"none of these measures is sufficient on its own... targeting the neighbourhoods that need them most\"."
+      }
+    ],
+    "dictation": [
+      "Remove them, and you lose a natural air-conditioning system.",
+      "So it's not a straightforward win."
+    ]
+  },
+  {
+    "id": "l-c1-dissertation-tutorial",
+    "title": "Dissertation Tutorial: Code-Switching",
+    "level": "C1",
+    "kind": "seminar",
+    "topic": "Language",
+    "emoji": "🗣️",
+    "speakers": [
+      {
+        "name": "Dr Wells",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Lucía",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Come in, Lucía. Have a seat. So, I've read through your proposal. Shall we start with your overall impressions of how it's going, and then I'll give you my thoughts?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. Honestly, I feel quite positive about the topic, but I'm less confident about the methodology. I keep changing my mind."
+      },
+      {
+        "s": 0,
+        "text": "That's perfectly normal at this stage. Remind me of the core question."
+      },
+      {
+        "s": 1,
+        "text": "I'm looking at code-switching among bilingual teenagers, so when and why they move between Spanish and English in the same conversation. Specifically, whether it's mostly about filling gaps in vocabulary, or whether it's doing something social, like signalling identity."
+      },
+      {
+        "s": 0,
+        "text": "Right. It's a genuinely interesting question, because the older literature tended to treat code-switching as a sign of deficiency, whereas more recent work sees it as a skill. So you're entering a live debate, which is good."
+      },
+      {
+        "s": 1,
+        "text": "That's what drew me to it. My plan was to use a questionnaire asking students when they switch languages and why."
+      },
+      {
+        "s": 0,
+        "text": "Mm. I'd question that a little. The difficulty with self-report is that people are often unaware of when they code-switch. They may tell you they only do it when they forget a word, but recordings frequently show otherwise. So there's a risk your data would reflect people's beliefs about their behaviour rather than the behaviour itself."
+      },
+      {
+        "s": 1,
+        "text": "So I should record conversations instead?"
+      },
+      {
+        "s": 0,
+        "text": "Not necessarily instead. I think the strongest design would combine the two: record some natural conversations, then compare what you observe with what the same speakers say they do. The gap between the two could actually become one of your findings."
+      },
+      {
+        "s": 1,
+        "text": "Oh, I like that. Although recording is going to be much harder to organise, and I'd need consent from parents, since they're under eighteen."
+      },
+      {
+        "s": 0,
+        "text": "You would, and that's not trivial. How many participants were you thinking of?"
+      },
+      {
+        "s": 1,
+        "text": "For the questionnaire, I was hoping for around a hundred, but for recordings that seems unrealistic."
+      },
+      {
+        "s": 0,
+        "text": "It is. Transcribing just one hour of conversation can take six or seven hours. I'd suggest something like eight to ten pairs of friends, recorded for about twenty minutes each. That's manageable, and it's a qualitative study, so depth matters more than numbers."
+      },
+      {
+        "s": 1,
+        "text": "Okay. And what did you think of the literature review?"
+      },
+      {
+        "s": 0,
+        "text": "It's thorough, but at the moment it reads rather like a list: this author said this, that author said that. What I'd like to see is more synthesis: grouping the studies by theme, showing where they disagree, and then positioning your own study in that gap."
+      },
+      {
+        "s": 1,
+        "text": "That's fair. I did feel it was a bit descriptive."
+      },
+      {
+        "s": 0,
+        "text": "One more thing: be careful about the term Spanglish. Some speakers use it proudly; others find it dismissive. If you use it, define it and acknowledge that it's contested."
+      },
+      {
+        "s": 1,
+        "text": "Good point. I hadn't thought about that."
+      },
+      {
+        "s": 0,
+        "text": "And in terms of timing, I'd aim to submit your ethics application within the next fortnight, because the recordings can't start without approval, and schools tend to be less flexible in the summer term."
+      },
+      {
+        "s": 1,
+        "text": "Right. So, ethics first, then contact schools, then rework the literature review while I'm waiting."
+      },
+      {
+        "s": 0,
+        "text": "Exactly. You've got a solid project here, Lucía. It just needs a bit of tightening."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How does Lucía feel about her project at the start of the tutorial?",
+        "options": [
+          "Confident about every aspect of it.",
+          "Ready to change her topic.",
+          "Worried that the topic is not original.",
+          "Enthusiastic about the subject but unsure about her methods."
+        ],
+        "answer": 3,
+        "explain_es": "\"I feel quite positive about the topic, but I'm less confident about the methodology\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to the tutor, how did earlier research tend to view code-switching?",
+        "options": [
+          "As evidence of a weakness.",
+          "As a sign of high intelligence.",
+          "As a purely social phenomenon.",
+          "As something that disappears with age."
+        ],
+        "answer": 0,
+        "explain_es": "\"the older literature tended to treat code-switching as a sign of deficiency\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tutor's main reservation about using a questionnaire alone?",
+        "options": [
+          "It would take too long to analyse.",
+          "Participants may not be aware of how they really speak.",
+          "Teenagers rarely complete questionnaires.",
+          "It would need ethical approval."
+        ],
+        "answer": 1,
+        "explain_es": "\"people are often unaware of when they code-switch\": los datos reflejarían creencias, no conducta."
+      },
+      {
+        "type": "gap",
+        "q": "The mismatch between observed and reported behaviour could become one of her ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "findings",
+        "accept": [],
+        "explain_es": "\"The gap between the two could actually become one of your findings\"."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía will need parents to agree to their children being recorded.",
+        "answer": "T",
+        "explain_es": "\"I'd need consent from parents, since they're under eighteen\" — \"You would\"."
+      },
+      {
+        "type": "gap",
+        "q": "Suggested sample: eight to ten ____ of friends. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "pairs",
+        "accept": [],
+        "explain_es": "\"something like eight to ten pairs of friends\". Cien era la cifra del cuestionario."
+      },
+      {
+        "type": "gap",
+        "q": "Each recording should last about ____ minutes. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "\"recorded for about twenty minutes each\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tutor's criticism of the literature review?",
+        "options": [
+          "It is too short.",
+          "It lacks recent sources.",
+          "It summarises studies without connecting them.",
+          "It is biased towards one theory."
+        ],
+        "answer": 2,
+        "explain_es": "\"it reads rather like a list... What I'd like to see is more synthesis\"."
+      },
+      {
+        "type": "tf",
+        "q": "The tutor tells Lucía not to use the word Spanglish under any circumstances.",
+        "answer": "F",
+        "explain_es": "\"If you use it, define it and acknowledge that it's contested\": no lo prohíbe."
+      },
+      {
+        "type": "gap",
+        "q": "Ethics application: submit within the next ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "fortnight",
+        "accept": [
+          "two weeks",
+          "2 weeks"
+        ],
+        "explain_es": "\"submit your ethics application within the next fortnight\" (dos semanas)."
+      }
+    ],
+    "dictation": [
+      "That's perfectly normal at this stage.",
+      "You've got a solid project here, Lucía."
+    ]
+  },
+  {
+    "id": "l-c1-false-memories-podcast",
+    "title": "Remembering What Never Happened",
+    "level": "C1",
+    "kind": "podcast",
+    "topic": "Psychology",
+    "emoji": "🧠",
+    "speakers": [
+      {
+        "name": "Joel",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Imogen",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello and welcome to Mind Matters. I'm Joel Barker, and today we're talking about memory, and specifically why our memories are far less reliable than we'd like to believe. My guest is cognitive psychologist Dr Imogen Clarke. Imogen, welcome."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Joel. Lovely to be here."
+      },
+      {
+        "s": 0,
+        "text": "So, let's start with the basic idea. I think most people imagine memory as a kind of video recording. Is that wrong?"
+      },
+      {
+        "s": 1,
+        "text": "It's an understandable assumption, but yes, it's pretty much wrong. Memory is reconstructive. Every time you recall an event, you're essentially rebuilding it from fragments, and in the process you can fill in gaps with things you expect, or things you've heard since. So the act of remembering can itself change the memory."
+      },
+      {
+        "s": 0,
+        "text": "That's slightly unsettling."
+      },
+      {
+        "s": 1,
+        "text": "It is, a bit. But it's also quite efficient. Storing every detail would be enormously costly for the brain. It makes sense to keep the gist and reconstruct the rest."
+      },
+      {
+        "s": 0,
+        "text": "Now, you've done research on what are called false memories. Can you explain what that means?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. A false memory isn't simply getting a detail wrong, like the colour of someone's coat. It's remembering, often vividly, something that never happened at all. In some well-known experiments, researchers showed participants doctored photographs, say, of themselves as a child in a hot-air balloon, and after a few interviews, a substantial minority started recalling the balloon ride, sometimes with sensory details."
+      },
+      {
+        "s": 0,
+        "text": "Wow. And these are ordinary, healthy people?"
+      },
+      {
+        "s": 1,
+        "text": "Completely. And I think that's the crucial point. People tend to assume false memories are a sign of something being wrong, but they're a by-product of a system that's working normally."
+      },
+      {
+        "s": 0,
+        "text": "Does confidence tell us anything? If I'm absolutely certain I remember something..."
+      },
+      {
+        "s": 1,
+        "text": "Less than you'd hope. Confidence and accuracy are only loosely related, particularly for memories that have been retold many times. The more often you tell a story, the more fluent and confident it becomes, but not necessarily more accurate. In some cases, it drifts further from what actually happened."
+      },
+      {
+        "s": 0,
+        "text": "Which has huge implications for, say, eyewitness testimony in court."
+      },
+      {
+        "s": 1,
+        "text": "Enormous. Historically, juries have found confident eyewitnesses extremely persuasive, and there have been cases of people being wrongly convicted largely on that basis. Things have improved. Police in many places now record an eyewitness's confidence at the very first identification, before it can be inflated by feedback. That initial confidence turns out to be a much better guide."
+      },
+      {
+        "s": 0,
+        "text": "Interesting. So it's not that confidence is useless; it's about when you measure it."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. That's a nice way of putting it."
+      },
+      {
+        "s": 0,
+        "text": "Before we finish, is there anything listeners can do to protect their memories?"
+      },
+      {
+        "s": 1,
+        "text": "Well, I'd be wary of anyone promising a technique to make memory perfectly accurate. That's not how it works. But if something important happens, writing it down soon afterwards, before you've discussed it with others, helps a lot. And maybe a little humility. When you disagree with a friend about what happened at a party five years ago, it's quite possible you're both wrong."
+      },
+      {
+        "s": 0,
+        "text": "I'll remember that. Or at least, I'll think I do. Imogen Clarke, thank you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Imogen say about comparing memory to a video recording?",
+        "options": [
+          "It is broadly accurate.",
+          "It is true for visual memories only.",
+          "It applies only to recent events.",
+          "It is misleading because memories are rebuilt each time."
+        ],
+        "answer": 3,
+        "explain_es": "\"it's pretty much wrong. Memory is reconstructive... you're essentially rebuilding it from fragments\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does she describe this way of remembering as efficient?",
+        "options": [
+          "Keeping every detail would demand too much from the brain.",
+          "It makes memories more vivid.",
+          "It allows people to forget unpleasant events.",
+          "It helps people learn languages."
+        ],
+        "answer": 0,
+        "explain_es": "\"Storing every detail would be enormously costly for the brain\"."
+      },
+      {
+        "type": "gap",
+        "q": "In the balloon experiments, participants were shown altered ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "photographs",
+        "accept": [
+          "photos"
+        ],
+        "explain_es": "\"researchers showed participants doctored photographs\" (doctored = manipuladas)."
+      },
+      {
+        "type": "tf",
+        "q": "According to Imogen, false memories usually indicate a psychological problem.",
+        "answer": "F",
+        "explain_es": "\"they're a by-product of a system that's working normally\"."
+      },
+      {
+        "type": "mc",
+        "q": "What happens when a story is retold many times?",
+        "options": [
+          "It becomes more accurate.",
+          "It is told more confidently, but not necessarily more accurately.",
+          "The teller becomes less sure of it.",
+          "It is gradually forgotten."
+        ],
+        "answer": 1,
+        "explain_es": "\"the more fluent and confident it becomes, but not necessarily more accurate\"."
+      },
+      {
+        "type": "gap",
+        "q": "Police now note a witness's confidence at the first ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "identification",
+        "accept": [],
+        "explain_es": "\"record an eyewitness's confidence at the very first identification\"."
+      },
+      {
+        "type": "tf",
+        "q": "Imogen agrees that the timing of measuring confidence is what matters.",
+        "answer": "T",
+        "explain_es": "Joel: \"it's about when you measure it\" — Imogen: \"Exactly\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Imogen's attitude towards techniques that promise perfect memory?",
+        "options": [
+          "Curious but undecided.",
+          "Enthusiastic.",
+          "Sceptical.",
+          "Indifferent."
+        ],
+        "answer": 2,
+        "explain_es": "\"I'd be wary of anyone promising a technique to make memory perfectly accurate\"."
+      },
+      {
+        "type": "gap",
+        "q": "Advice: write events down before you have ____ them with other people. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "discussed",
+        "accept": [],
+        "explain_es": "\"writing it down soon afterwards, before you've discussed it with others\"."
+      }
+    ],
+    "dictation": [
+      "So the act of remembering can itself change the memory.",
+      "That initial confidence turns out to be a much better guide."
+    ]
+  },
+  {
+    "id": "l-c1-rewilding-debate",
+    "title": "Rewilding: Who Decides?",
+    "level": "C1",
+    "kind": "debate",
+    "topic": "Environment",
+    "emoji": "🦫",
+    "speakers": [
+      {
+        "name": "Elena",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Mia",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Gareth",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome to The Debate Room. Tonight we're discussing rewilding: the idea of allowing large areas of land to return to a more natural state, sometimes including the reintroduction of species like beavers or even lynx. With me are ecologist Dr Mia Torres and sheep farmer Gareth Lloyd. Mia, let's start with you. What's the case for rewilding?"
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Elena. The case, quite simply, is that we're losing biodiversity at an alarming rate, and conventional conservation, protecting small, isolated reserves, hasn't been enough to reverse that. Rewilding takes a different approach. Rather than managing every detail, we restore natural processes and let them do the work. Beavers are a good example: their dams slow rivers down, create wetlands, and in several trial areas they've reduced flooding downstream."
+      },
+      {
+        "s": 0,
+        "text": "Gareth, you're sceptical."
+      },
+      {
+        "s": 2,
+        "text": "I am, though perhaps not for the reasons people expect. I'm not against nature. I wouldn't be farming if I were. My concern is that rewilding is often driven by people who don't live in the places affected. Land gets bought up by wealthy investors, sometimes to offset their carbon emissions, and the farms that kept rural communities alive disappear. The school closes, the shop closes. That's a real cost, and it's rarely discussed."
+      },
+      {
+        "s": 1,
+        "text": "I think that's a completely legitimate concern, and I'd agree that some projects have handled it badly. But rewilding doesn't have to mean removing people. Some of the most successful schemes involve farmers directly. They're paid to manage land for wildlife alongside producing food."
+      },
+      {
+        "s": 2,
+        "text": "In theory. In practice, the payments are often short-term, and you can't plan a farm business around a scheme that might be cancelled in three years."
+      },
+      {
+        "s": 0,
+        "text": "What about predators? The reintroduction of lynx has been very controversial."
+      },
+      {
+        "s": 2,
+        "text": "That's where I'd draw the line, frankly. My neighbours and I have enough trouble with foxes and stray dogs. Supporters say lynx rarely take sheep, and maybe that's true elsewhere, but our sheep graze on open hillsides, not in fields, so I'm not convinced the evidence transfers."
+      },
+      {
+        "s": 1,
+        "text": "That's fair, and I'd actually say lynx are the wrong place to start in most areas. Public trust matters. If you begin with something divisive, you can set the whole movement back. Starting with beavers or restoring wetlands builds confidence. Then, if communities want to, you can look at bigger steps, with proper compensation for any losses."
+      },
+      {
+        "s": 0,
+        "text": "Gareth, is there any form of rewilding you could support?"
+      },
+      {
+        "s": 2,
+        "text": "Yes, actually. Planting hedgerows, leaving field margins wild, letting some wetter ground go back to bog. A lot of farmers are doing that already, without calling it rewilding. What I object to is the idea that farming and nature are opposites. On our farm, we've seen more birds in the last five years, not fewer."
+      },
+      {
+        "s": 1,
+        "text": "And I think that's where the conversation should go. The label rewilding has become a bit of a battleground, which is unhelpful. If we talked more about outcomes, like cleaner rivers, more insects and fewer floods, I suspect we'd find we agree on more than we disagree on."
+      },
+      {
+        "s": 2,
+        "text": "I'd go along with that. As long as the people who live on the land have a genuine say."
+      },
+      {
+        "s": 0,
+        "text": "On that note of cautious agreement, let's take some questions from our audience."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Mia, why is rewilding necessary?",
+        "options": [
+          "Beavers are in danger of extinction.",
+          "Farming is no longer profitable.",
+          "Reserves are too expensive to run.",
+          "Traditional conservation has not halted the loss of species."
+        ],
+        "answer": 3,
+        "explain_es": "\"conventional conservation... hasn't been enough to reverse that\"."
+      },
+      {
+        "type": "gap",
+        "q": "In some trial areas, beaver dams have reduced ____ downstream. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "flooding",
+        "accept": [],
+        "explain_es": "\"in several trial areas they've reduced flooding downstream\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Gareth's main objection to rewilding?",
+        "options": [
+          "It can damage rural communities when outsiders buy the land.",
+          "It harms wildlife.",
+          "It produces too much carbon.",
+          "It is scientifically unproven."
+        ],
+        "answer": 0,
+        "explain_es": "\"driven by people who don't live in the places affected... the farms that kept rural communities alive disappear\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mia dismisses Gareth's concern about rural communities.",
+        "answer": "F",
+        "explain_es": "\"I think that's a completely legitimate concern\"."
+      },
+      {
+        "type": "mc",
+        "q": "What problem does Gareth see with payments to farmers?",
+        "options": [
+          "They are too small.",
+          "They are too uncertain to plan a business around.",
+          "They go only to large farms.",
+          "They require too much paperwork."
+        ],
+        "answer": 1,
+        "explain_es": "\"the payments are often short-term... might be cancelled in three years\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does Gareth feel about the claim that lynx rarely attack sheep?",
+        "options": [
+          "He accepts it completely.",
+          "He thinks it is a deliberate lie.",
+          "He doubts it applies to farms like his.",
+          "He has never heard it before."
+        ],
+        "answer": 2,
+        "explain_es": "\"maybe that's true elsewhere, but our sheep graze on open hillsides... I'm not convinced the evidence transfers\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mia believes reintroducing lynx should be the first step in most places.",
+        "answer": "F",
+        "explain_es": "\"I'd actually say lynx are the wrong place to start in most areas\"."
+      },
+      {
+        "type": "gap",
+        "q": "Gareth would support planting ____ and leaving field margins wild. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "hedgerows",
+        "accept": [],
+        "explain_es": "\"Planting hedgerows, leaving field margins wild\"."
+      },
+      {
+        "type": "gap",
+        "q": "On Gareth's farm there have been more ____ over the last five years. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "birds",
+        "accept": [],
+        "explain_es": "\"we've seen more birds in the last five years, not fewer\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Mia suggest would make the debate more productive?",
+        "options": [
+          "Banning the word rewilding by law.",
+          "Letting scientists make all the decisions.",
+          "Paying farmers more.",
+          "Focusing on practical results rather than the label."
+        ],
+        "answer": 3,
+        "explain_es": "\"If we talked more about outcomes... we'd find we agree on more than we disagree on\"."
+      }
+    ],
+    "dictation": [
+      "That's a real cost, and it's rarely discussed.",
+      "Public trust matters."
+    ]
+  },
+  {
+    "id": "l-c1-delivery-riders-report",
+    "title": "Riders, Rights and the Apps",
+    "level": "C1",
+    "kind": "radio-report",
+    "topic": "Work",
+    "emoji": "🛵",
+    "speakers": [
+      {
+        "name": "Hugh",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ayesha",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Marek",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "The number of people working for app-based delivery platforms has more than doubled in the past five years, and a court ruling this week could change the way they're employed. Ayesha Khan has been looking into it."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Hugh. It's just after seven on a Friday evening, and outside this row of restaurants there must be fifteen or twenty couriers waiting for orders, most of them on electric bikes or mopeds. One of them, Marek, has been doing this for nearly four years."
+      },
+      {
+        "s": 2,
+        "text": "When I started, it was good money, honestly. You could earn more than in a warehouse, and you choose your hours. That freedom is still the best part. But the pay per delivery has gone down, maybe by a quarter, and there are many more riders now, so you wait longer between jobs. Some evenings I earn less than the minimum wage, once you take away fuel and insurance."
+      },
+      {
+        "s": 1,
+        "text": "At the heart of the issue is employment status. Couriers like Marek are classified as self-employed contractors, which means they aren't entitled to holiday pay, sick pay or a pension. The platforms argue that this is what gives workers flexibility. In a statement, one of the largest companies told us that the overwhelming majority of its riders value being able to log on and off whenever they choose, and that guaranteed hours would inevitably mean less choice."
+      },
+      {
+        "s": 2,
+        "text": "Flexibility, yes, I want this. But flexibility and some protection are not opposites. If I'm injured on the road, and I've had two accidents, I earn nothing while I recover. That's not freedom, that's risk."
+      },
+      {
+        "s": 1,
+        "text": "This week's ruling concerned a group of couriers who argued that, because the app controls which orders they receive and can deactivate their accounts without explanation, they are in practice workers rather than independent contractors. The court agreed, at least partially. It didn't go as far as declaring them employees, but it said they should be entitled to holiday pay and a minimum hourly rate for the time they're logged in and available."
+      },
+      {
+        "s": 1,
+        "text": "Employment lawyers I've spoken to are cautious about how far-reaching this will be. The ruling applies directly to only one company, and that company has already said it intends to appeal. One lawyer told me the platforms are likely to respond by changing their contracts, for instance by allowing riders to send a substitute to do a delivery, which could weaken the argument that riders are personally controlled by the app."
+      },
+      {
+        "s": 0,
+        "text": "And what about customers? Could this push up prices?"
+      },
+      {
+        "s": 1,
+        "text": "Almost certainly a little, though economists disagree on how much. Some argue that higher costs will reduce demand and therefore the number of jobs. Others point out that similar rules elsewhere haven't caused the collapse that was predicted. Marek, for his part, is unconvinced by the warnings."
+      },
+      {
+        "s": 2,
+        "text": "They always say if we get rights, the business will die. They said the same about the minimum wage. I don't think people will stop ordering pizza because it costs fifty pence more."
+      },
+      {
+        "s": 1,
+        "text": "The appeal is expected to be heard early next year. Until then, for Marek and thousands like him, very little will change. Hugh."
+      },
+      {
+        "s": 0,
+        "text": "Ayesha Khan, thank you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Marek still value most about the job?",
+        "options": [
+          "Being able to decide when he works.",
+          "The pay.",
+          "The insurance it provides.",
+          "Working with other riders."
+        ],
+        "answer": 0,
+        "explain_es": "\"you choose your hours. That freedom is still the best part\"."
+      },
+      {
+        "type": "gap",
+        "q": "Pay per delivery has fallen by roughly a ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "quarter",
+        "accept": [
+          "25%",
+          "25 per cent"
+        ],
+        "explain_es": "\"the pay per delivery has gone down, maybe by a quarter\"."
+      },
+      {
+        "type": "tf",
+        "q": "Marek always earns more than the minimum wage.",
+        "answer": "F",
+        "explain_es": "\"Some evenings I earn less than the minimum wage\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the platforms' main argument?",
+        "options": [
+          "Riders earn more than warehouse workers.",
+          "Guaranteed hours would reduce riders' freedom.",
+          "Most riders want to become employees.",
+          "Courts have no authority over them."
+        ],
+        "answer": 1,
+        "explain_es": "\"guaranteed hours would inevitably mean less choice\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which statement best reflects Marek's view?",
+        "options": [
+          "Flexibility matters more than anything else.",
+          "Riders should be full-time employees.",
+          "It should be possible to have both flexibility and protection.",
+          "The apps treat riders fairly."
+        ],
+        "answer": 2,
+        "explain_es": "\"flexibility and some protection are not opposites\"."
+      },
+      {
+        "type": "gap",
+        "q": "The court said couriers should receive holiday pay and a minimum ____ rate. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "hourly",
+        "accept": [],
+        "explain_es": "\"holiday pay and a minimum hourly rate for the time they're logged in\"."
+      },
+      {
+        "type": "tf",
+        "q": "The court declared the couriers to be full employees.",
+        "answer": "F",
+        "explain_es": "\"It didn't go as far as declaring them employees\"."
+      },
+      {
+        "type": "mc",
+        "q": "How do lawyers expect the platforms to react?",
+        "options": [
+          "By leaving the country.",
+          "By raising riders' pay immediately.",
+          "By accepting the ruling without appeal.",
+          "By rewriting contracts, for example to allow substitutes."
+        ],
+        "answer": 3,
+        "explain_es": "\"likely to respond by changing their contracts, for instance by allowing riders to send a substitute\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Marek's attitude towards warnings that the business will suffer?",
+        "options": [
+          "He is dismissive of them.",
+          "He shares the concern.",
+          "He thinks they are partly justified.",
+          "He has no opinion."
+        ],
+        "answer": 0,
+        "explain_es": "\"unconvinced by the warnings\": \"They always say if we get rights, the business will die\"."
+      },
+      {
+        "type": "gap",
+        "q": "The appeal will probably be heard early ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "next year",
+        "accept": [],
+        "explain_es": "\"The appeal is expected to be heard early next year\"."
+      }
+    ],
+    "dictation": [
+      "That's not freedom, that's risk.",
+      "Until then, for Marek and thousands like him, very little will change."
+    ]
+  },
+  {
+    "id": "l-c1-conference-venue-booking",
+    "title": "Booking a Conference Venue",
+    "level": "C1",
+    "kind": "phone-call",
+    "topic": "Business",
+    "emoji": "📋",
+    "speakers": [
+      {
+        "name": "Callum",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Rebecca",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon, Ashworth Manor Conference Centre, Callum speaking."
+      },
+      {
+        "s": 1,
+        "text": "Hi, Callum. My name's Rebecca Lindqvist. I emailed last week about a two-day event for the Northern Marine Biology Society, and I said I'd call to go over the details."
+      },
+      {
+        "s": 0,
+        "text": "Ah yes, Ms Lindqvist, I've got your email here. Let me just open a booking form. Could you spell your surname for me?"
+      },
+      {
+        "s": 1,
+        "text": "Sure, it's L-I-N-D-Q-V-I-S-T."
+      },
+      {
+        "s": 0,
+        "text": "Lovely. Now, you mentioned the third and fourth of June. Is that still the plan?"
+      },
+      {
+        "s": 1,
+        "text": "Well, that's the thing. Our keynote speaker can't make the third now, so we were hoping to push it back a week, to the tenth and eleventh. Is that possible?"
+      },
+      {
+        "s": 0,
+        "text": "Let me check. The tenth and eleventh, yes, the main hall is free. In your email you estimated a hundred and twenty delegates."
+      },
+      {
+        "s": 1,
+        "text": "That was the original figure, but registrations have been stronger than we expected. We're now looking at closer to a hundred and fifty, and I'd rather plan for a hundred and sixty to be safe."
+      },
+      {
+        "s": 0,
+        "text": "That's fine; the Lakeview Hall seats up to two hundred theatre-style. Will you need breakout rooms?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, three on the first day for the workshops, but only one on the second."
+      },
+      {
+        "s": 0,
+        "text": "Noted. And for catering, our standard package includes morning and afternoon refreshments plus a buffet lunch. There's also an upgraded option with a hot lunch, which a lot of academic groups prefer."
+      },
+      {
+        "s": 1,
+        "text": "What's the difference in price?"
+      },
+      {
+        "s": 0,
+        "text": "The standard is forty-two pounds per person per day, and the hot lunch option is fifty-five."
+      },
+      {
+        "s": 1,
+        "text": "Hmm. Our budget's pretty tight, as you can imagine. I think we'll stick with the buffet, but can you make sure there are vegan and gluten-free options, clearly labelled? We had complaints about that last year at another venue."
+      },
+      {
+        "s": 0,
+        "text": "Absolutely, that's standard practice here. If you send us numbers for dietary requirements about ten days in advance, the kitchen will plan for them."
+      },
+      {
+        "s": 1,
+        "text": "Great. We'd also like to have a conference dinner on the first evening. Is that something you do?"
+      },
+      {
+        "s": 0,
+        "text": "We do. The Orangery can take up to a hundred for a sit-down dinner."
+      },
+      {
+        "s": 1,
+        "text": "Ah. Well, not everyone will attend the dinner, so that should actually work. Let's say provisionally eighty-five, and I'll confirm."
+      },
+      {
+        "s": 0,
+        "text": "Perfect. In terms of equipment, every room has a projector and microphones. Will any of your sessions be streamed online?"
+      },
+      {
+        "s": 1,
+        "text": "Possibly the keynote. We haven't decided yet."
+      },
+      {
+        "s": 0,
+        "text": "If you do, our technician needs at least forty-eight hours' notice, and there's a charge for that."
+      },
+      {
+        "s": 1,
+        "text": "Understood. What about accommodation? Some delegates are travelling quite a distance."
+      },
+      {
+        "s": 0,
+        "text": "We have forty bedrooms on site, and I can hold a block at a discounted rate until the end of April. After that, any rooms that haven't been booked are released to the public."
+      },
+      {
+        "s": 1,
+        "text": "That's very helpful. And the deposit?"
+      },
+      {
+        "s": 0,
+        "text": "Twenty-five per cent to confirm the booking, with the balance due thirty days before the event. I'll email the contract this afternoon."
+      },
+      {
+        "s": 1,
+        "text": "Wonderful. Thanks, Callum."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Organisation: Northern Marine ____ Society (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "Biology",
+        "accept": [],
+        "explain_es": "\"the Northern Marine Biology Society\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Rebecca want to change the dates?",
+        "options": [
+          "The venue is fully booked.",
+          "The main speaker is no longer available on the original date.",
+          "Registrations have been lower than expected.",
+          "The society's budget has been cut."
+        ],
+        "answer": 1,
+        "explain_es": "\"Our keynote speaker can't make the third now\"."
+      },
+      {
+        "type": "gap",
+        "q": "New dates: the tenth and ____ of June (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "eleventh",
+        "accept": [
+          "11th",
+          "11"
+        ],
+        "explain_es": "\"push it back a week, to the tenth and eleventh\"."
+      },
+      {
+        "type": "gap",
+        "q": "Number of delegates to plan for: ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "a hundred and sixty",
+        "accept": [
+          "160",
+          "one hundred and sixty"
+        ],
+        "explain_es": "Primero 120, luego unos 150, pero \"I'd rather plan for a hundred and sixty to be safe\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which catering option does Rebecca choose?",
+        "options": [
+          "The hot lunch, because academics prefer it.",
+          "No catering at all.",
+          "The standard buffet, for financial reasons.",
+          "The hot lunch on day one only."
+        ],
+        "answer": 2,
+        "explain_es": "\"Our budget's pretty tight... I think we'll stick with the buffet\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rebecca has previously had problems with how special diets were labelled.",
+        "answer": "T",
+        "explain_es": "\"We had complaints about that last year at another venue\"."
+      },
+      {
+        "type": "gap",
+        "q": "Conference dinner: provisional number ____ (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "eighty-five",
+        "accept": [
+          "85",
+          "eighty five"
+        ],
+        "explain_es": "La sala admite 100, pero \"Let's say provisionally eighty-five\"."
+      },
+      {
+        "type": "tf",
+        "q": "It has been confirmed that the keynote talk will be streamed online.",
+        "answer": "F",
+        "explain_es": "\"Possibly the keynote. We haven't decided yet\"."
+      },
+      {
+        "type": "mc",
+        "q": "What happens to reserved bedrooms that are not booked by the end of April?",
+        "options": [
+          "They are charged to the society.",
+          "The discount is increased.",
+          "They are moved to another hotel.",
+          "They become available to anyone."
+        ],
+        "answer": 3,
+        "explain_es": "\"any rooms that haven't been booked are released to the public\"."
+      },
+      {
+        "type": "gap",
+        "q": "Deposit required: ____ per cent (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty-five",
+        "accept": [
+          "25",
+          "twenty five"
+        ],
+        "explain_es": "\"Twenty-five per cent to confirm the booking\"."
+      }
+    ],
+    "dictation": [
+      "That was the original figure, but registrations have been stronger than we expected.",
+      "Our budget's pretty tight, as you can imagine."
+    ]
+  },
+  {
+    "id": "l-c1-botanic-garden-tour",
+    "title": "Inside the Botanic Garden",
+    "level": "C1",
+    "kind": "tour",
+    "topic": "Science",
+    "emoji": "🌿",
+    "speakers": [
+      {
+        "name": "Kirra",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Ethan",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, if everyone could gather round. That's it, come a bit closer so you can hear me over the fountain. Welcome to the Halden Botanic Garden. I'm Kirra, and I'll be taking you round for about an hour and a quarter. We'll finish at the seed vault, which, for many people, is the highlight, although I'll admit I'm slightly biased, because I used to work there."
+      },
+      {
+        "s": 0,
+        "text": "We're standing on what we call the Compass Lawn, and if you look at the map in your leaflet, you'll see the garden is laid out roughly by continent. To the north, beyond the glasshouses, is the Asian collection; the Americas are to the east, over the bridge; and directly behind me, to the south, is the Australasian section, which, as an Australian, I'm obliged to tell you is the best one."
+      },
+      {
+        "s": 0,
+        "text": "We'll start with the Palm House, the large Victorian glasshouse on your left. It was completed in eighteen fifty-nine, and at the time it was one of the most ambitious iron-and-glass structures in the world. It's kept at around twenty-seven degrees and it's very humid, so you might want to take off a layer before we go in. Glasses tend to steam up, too. Sorry in advance."
+      },
+      {
+        "s": 0,
+        "text": "Inside, keep an eye out for the giant water lily in the central pond. Its leaves can grow to over two metres across, and the underside has a network of ribs that's so strong, it reportedly inspired the design of the building itself. Whether that story's entirely true is debatable, to be honest, but it's a good one."
+      },
+      {
+        "s": 0,
+        "text": "After the Palm House, we'll walk along the Long Border. In spring it's spectacular, but at this time of year it's mostly being cut back, so we won't linger. Then we'll cross the bridge to the Americas section. Please stay on the paths there. We're re-establishing a meadow, and it's more delicate than it looks."
+      },
+      {
+        "s": 1,
+        "text": "Sorry, is the treetop walkway open? I read that it was closed."
+      },
+      {
+        "s": 0,
+        "text": "Good question. It was closed for most of the summer for repairs, but it reopened last week. It's not on the main tour because of time, but it's just beside the Americas section, and you're very welcome to go up afterwards. Last entry is half an hour before closing."
+      },
+      {
+        "s": 1,
+        "text": "Great, thanks."
+      },
+      {
+        "s": 0,
+        "text": "Then finally, we'll come to the seed vault. Now, this is where the garden's work goes far beyond being a pretty place to walk. The vault holds seeds from around forty thousand plant species, many of them endangered in the wild. The seeds are dried and stored at minus twenty degrees, and in those conditions many can survive for centuries. The idea is essentially an insurance policy: if a species disappears in the wild, we have the material to reintroduce it."
+      },
+      {
+        "s": 0,
+        "text": "That said, I don't want to give the impression it's a perfect solution. Some seeds, including those of many tropical trees, oddly enough, can't survive being dried, so they can't be banked in this way. For those, we rely on living collections, or on newer techniques like freezing tiny pieces of plant tissue, which is still quite experimental."
+      },
+      {
+        "s": 0,
+        "text": "You can't go inside the vault itself, I'm afraid, but there's a viewing window, and one of the scientists usually gives a short talk at three o'clock. Right, the Palm House. Follow me, and mind the step."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Kirra say she may be biased about the seed vault?",
+        "options": [
+          "She was previously employed there.",
+          "She designed it.",
+          "It contains Australian plants.",
+          "Her family donated money to it."
+        ],
+        "answer": 0,
+        "explain_es": "\"I'm slightly biased, because I used to work there\"."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the Americas section?",
+        "options": [
+          "To the north, beyond the glasshouses.",
+          "To the east, across the bridge.",
+          "Directly behind the guide.",
+          "Next to the Palm House."
+        ],
+        "answer": 1,
+        "explain_es": "\"the Americas are to the east, over the bridge\"."
+      },
+      {
+        "type": "gap",
+        "q": "The Palm House was completed in ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "eighteen fifty-nine",
+        "accept": [
+          "1859"
+        ],
+        "explain_es": "\"It was completed in eighteen fifty-nine\" (1859)."
+      },
+      {
+        "type": "tf",
+        "q": "Kirra is certain that the water lily inspired the design of the Palm House.",
+        "answer": "F",
+        "explain_es": "\"Whether that story's entirely true is debatable, to be honest\"."
+      },
+      {
+        "type": "gap",
+        "q": "The water lily's leaves can be more than ____ across. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "two metres",
+        "accept": [
+          "2 metres",
+          "2 m",
+          "2m"
+        ],
+        "explain_es": "\"Its leaves can grow to over two metres across\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why will the group not spend long at the Long Border?",
+        "options": [
+          "It is closed for repairs.",
+          "The meadow is too delicate.",
+          "The plants are currently being cut back.",
+          "It is too crowded."
+        ],
+        "answer": 2,
+        "explain_es": "\"at this time of year it's mostly being cut back, so we won't linger\"."
+      },
+      {
+        "type": "tf",
+        "q": "The treetop walkway is still closed for repairs.",
+        "answer": "F",
+        "explain_es": "\"It was closed for most of the summer for repairs, but it reopened last week\"."
+      },
+      {
+        "type": "gap",
+        "q": "Seeds are stored at minus ____ degrees. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "\"stored at minus twenty degrees\". Veintisiete grados es la temperatura del Palm House."
+      },
+      {
+        "type": "mc",
+        "q": "Which best describes Kirra's view of seed banking?",
+        "options": [
+          "It is a complete answer to extinction.",
+          "It is mainly a tourist attraction.",
+          "It is too experimental to rely on.",
+          "It is useful but has clear limitations."
+        ],
+        "answer": 3,
+        "explain_es": "La llama \"an insurance policy\", pero añade \"I don't want to give the impression it's a perfect solution\"."
+      },
+      {
+        "type": "gap",
+        "q": "Seeds that cannot be dried are preserved in living ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "collections",
+        "accept": [],
+        "explain_es": "\"For those, we rely on living collections\"."
+      }
+    ],
+    "dictation": [
+      "Whether that story's entirely true is debatable, to be honest, but it's a good one.",
+      "We're re-establishing a meadow, and it's more delicate than it looks."
+    ]
+  },
+  {
+    "id": "l-c1-architect-interview",
+    "title": "Building on What's There",
+    "level": "C1",
+    "kind": "interview",
+    "topic": "Architecture",
+    "emoji": "🏗️",
+    "speakers": [
+      {
+        "name": "Rachel",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Kwame",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "My guest today is the architect Kwame Asante, whose practice has become known for converting old industrial buildings rather than demolishing them. Kwame, thanks for joining me."
+      },
+      {
+        "s": 1,
+        "text": "It's a pleasure."
+      },
+      {
+        "s": 0,
+        "text": "Let's start with the obvious question. Why reuse? Surely it's often simpler to knock a building down and start again."
+      },
+      {
+        "s": 1,
+        "text": "Simpler, perhaps, in the short term. But there's a growing recognition that the greenest building is usually the one that already exists. When you demolish, you throw away all the energy and carbon that went into making the steel, the concrete and the bricks, what we call embodied carbon. A new building, however efficient it is to run, can take decades to make up for that."
+      },
+      {
+        "s": 0,
+        "text": "Is that always the case, though? Some old buildings are terribly inefficient."
+      },
+      {
+        "s": 1,
+        "text": "That's true, and I'd never claim reuse is always right. If a structure is genuinely unsafe, or so poorly insulated that it can't be improved, then replacement might be justified. But in my experience, that's the exception. What's more common is that a developer simply hasn't investigated the options, because demolition is the default."
+      },
+      {
+        "s": 0,
+        "text": "Your best-known project is the old tram depot that's now a library and housing. What were the main challenges there?"
+      },
+      {
+        "s": 1,
+        "text": "Oh, where to begin. The building had been empty for fifteen years, and the roof was leaking badly. But the biggest challenge was light. Tram depots are deep buildings with very few windows, which is fine for trams but not for people. We ended up cutting a long courtyard through the middle, which meant losing some floor space. The client was nervous about that at first, understandably, because floor space is money."
+      },
+      {
+        "s": 0,
+        "text": "How did you persuade them?"
+      },
+      {
+        "s": 1,
+        "text": "Partly with numbers. We showed that brighter flats would rent for more. But honestly, what convinced them was a visit to a similar project in Rotterdam. Once they stood in the space, they understood."
+      },
+      {
+        "s": 0,
+        "text": "Did local residents have any say?"
+      },
+      {
+        "s": 1,
+        "text": "Quite a lot, actually. We held workshops with people living nearby, and one thing that came out very strongly was that they wanted to keep the old tram tracks visible. Initially we'd planned to cover them, purely for practical reasons. But people had an emotional attachment; their grandparents had worked there. So we set them into the floor of the library under glass. It's become the thing everyone photographs."
+      },
+      {
+        "s": 0,
+        "text": "That's lovely. Do you think the planning system makes this kind of work harder than it should be?"
+      },
+      {
+        "s": 1,
+        "text": "In some respects, yes. Building regulations are largely written with new buildings in mind, so you spend a lot of time proving that an old structure meets standards it was never designed for. I'm not arguing for lower safety standards, absolutely not, but there needs to be more flexibility in how you demonstrate them. And there's a tax issue: in many places, renovation is taxed more heavily than new construction, which is frankly absurd if we're serious about climate targets."
+      },
+      {
+        "s": 0,
+        "text": "Finally, what advice would you give to young architects?"
+      },
+      {
+        "s": 1,
+        "text": "Learn to love constraints. Designing on an empty site is a fantasy most of us will rarely get. Working with what's there forces you to be more inventive, and I think the results are often richer for it."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Kwame, why is reusing buildings usually better for the environment?",
+        "options": [
+          "Demolition wastes the carbon already invested in the materials.",
+          "Old buildings use less energy to run.",
+          "New buildings are poorly designed.",
+          "Reuse is cheaper in the short term."
+        ],
+        "answer": 0,
+        "explain_es": "\"you throw away all the energy and carbon that went into making the steel... what we call embodied carbon\"."
+      },
+      {
+        "type": "tf",
+        "q": "Kwame believes old buildings should never be demolished.",
+        "answer": "F",
+        "explain_es": "\"I'd never claim reuse is always right... replacement might be justified\"."
+      },
+      {
+        "type": "mc",
+        "q": "In Kwame's experience, why are buildings most often demolished?",
+        "options": [
+          "They are unsafe.",
+          "Developers do not consider alternatives.",
+          "They cannot be insulated.",
+          "Residents request it."
+        ],
+        "answer": 1,
+        "explain_es": "\"a developer simply hasn't investigated the options, because demolition is the default\"."
+      },
+      {
+        "type": "gap",
+        "q": "Before conversion, the tram depot had stood empty for ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "fifteen years",
+        "accept": [
+          "15 years"
+        ],
+        "explain_es": "\"The building had been empty for fifteen years\"."
+      },
+      {
+        "type": "mc",
+        "q": "What was the main design problem with the depot?",
+        "options": [
+          "A leaking roof.",
+          "Its location.",
+          "A lack of natural light.",
+          "The cost of the steel."
+        ],
+        "answer": 2,
+        "explain_es": "El techo tenía goteras, pero \"the biggest challenge was light\"."
+      },
+      {
+        "type": "mc",
+        "q": "What finally persuaded the client to accept the courtyard?",
+        "options": [
+          "Financial projections.",
+          "Pressure from residents.",
+          "A change in regulations.",
+          "Seeing a comparable building in person."
+        ],
+        "answer": 3,
+        "explain_es": "\"Partly with numbers... But honestly, what convinced them was a visit to a similar project in Rotterdam\"."
+      },
+      {
+        "type": "gap",
+        "q": "Residents asked for the old tram ____ to remain visible. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "tracks",
+        "accept": [],
+        "explain_es": "\"they wanted to keep the old tram tracks visible\"."
+      },
+      {
+        "type": "tf",
+        "q": "The architects had always intended to leave the tracks on display.",
+        "answer": "F",
+        "explain_es": "\"Initially we'd planned to cover them, purely for practical reasons\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does Kwame feel about the way renovation is taxed?",
+        "options": [
+          "He considers it ridiculous.",
+          "He thinks it is reasonable.",
+          "He has mixed feelings.",
+          "He thinks it should be higher."
+        ],
+        "answer": 0,
+        "explain_es": "\"which is frankly absurd if we're serious about climate targets\"."
+      },
+      {
+        "type": "gap",
+        "q": "Kwame's advice to young architects: learn to love ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "constraints",
+        "accept": [],
+        "explain_es": "\"Learn to love constraints\"."
+      }
+    ],
+    "dictation": [
+      "Once they stood in the space, they understood.",
+      "Designing on an empty site is a fantasy most of us will rarely get."
+    ]
+  },
+  {
+    "id": "l-c1-placebo-seminar",
+    "title": "Seminar: Honest Placebos",
+    "level": "C1",
+    "kind": "seminar",
+    "topic": "Health",
+    "emoji": "💊",
+    "speakers": [
+      {
+        "name": "Dr Rao",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Ollie",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Jade",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, let's get started. This week's reading was the paper on open-label placebos. Ollie, could you summarise it briefly for us?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. So, normally, a placebo works because the patient thinks they're getting real medicine. This study tested what happens if you give people a placebo and tell them openly that it's a placebo, just a sugar pill with no active ingredient. The participants all had chronic back pain, and after three weeks, the group taking the open placebo reported significantly less pain than the group who just continued their usual treatment."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. Jade, what was your reaction?"
+      },
+      {
+        "s": 2,
+        "text": "Honestly, my first reaction was disbelief. It seems almost paradoxical: how can something work if you know it's fake? But having read it a couple of times, I'm more persuaded than I was. The researchers didn't just hand out pills; they explained to participants that placebos can trigger the body's own pain-relief mechanisms, and I think that explanation might be doing a lot of the work."
+      },
+      {
+        "s": 1,
+        "text": "That's the bit I'm not sure about, though. If the explanation's the active ingredient, is it really a placebo effect, or is it more like a form of education or reassurance?"
+      },
+      {
+        "s": 0,
+        "text": "That's a sharp distinction. Does it matter, from a practical point of view?"
+      },
+      {
+        "s": 1,
+        "text": "Maybe not for the patient. But it matters scientifically, because it changes what we think is going on."
+      },
+      {
+        "s": 2,
+        "text": "I'd also question the outcome measure. Everything was self-reported. Patients rated their own pain on a scale. Pain is subjective, so that's partly unavoidable, but there was no objective measure, like how far people could walk."
+      },
+      {
+        "s": 0,
+        "text": "Good. So what would you want to see in a follow-up study?"
+      },
+      {
+        "s": 2,
+        "text": "Ideally, a comparison group who get the same friendly, detailed conversation but no pill. That would tell us whether the pill itself adds anything."
+      },
+      {
+        "s": 1,
+        "text": "And a longer timescale. Three weeks is quite short. Chronic pain fluctuates naturally, so some improvement might have happened anyway. Although, to be fair, the control group would have experienced the same fluctuations, so that doesn't completely undermine the results."
+      },
+      {
+        "s": 0,
+        "text": "Right, that's what the control group is for. What about the ethical side? Traditionally, the problem with placebos in clinical practice is that they involve deceiving patients."
+      },
+      {
+        "s": 2,
+        "text": "Which is exactly why this is exciting, I think. If you can get a benefit without deception, then a lot of the ethical objections fall away. Doctors could potentially offer it honestly."
+      },
+      {
+        "s": 1,
+        "text": "I'm a bit more cautious. I can imagine it being misused, for example by health systems offering placebos instead of properly investigating someone's pain, because it's cheap. Chronic pain patients already often feel they're not taken seriously."
+      },
+      {
+        "s": 0,
+        "text": "That's an important point, and it's one the authors don't really address. Overall, then, where do you both stand?"
+      },
+      {
+        "s": 2,
+        "text": "Cautiously optimistic. It's a small study, just under a hundred participants, but the effect was large enough to be worth replicating properly."
+      },
+      {
+        "s": 1,
+        "text": "I'd say intrigued but unconvinced. I'd want to see it replicated with objective measures before I took it too seriously."
+      },
+      {
+        "s": 0,
+        "text": "That's a very healthy range of views. For next week, I'd like each of you to design, in outline, the follow-up study you've described today, and we'll compare them."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What were participants in the study told about the pills?",
+        "options": [
+          "That they were a new painkiller.",
+          "That they contained no active ingredient.",
+          "Nothing at all.",
+          "That they might or might not be real."
+        ],
+        "answer": 1,
+        "explain_es": "\"tell them openly that it's a placebo, just a sugar pill with no active ingredient\"."
+      },
+      {
+        "type": "gap",
+        "q": "All the participants suffered from chronic ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "back pain",
+        "accept": [],
+        "explain_es": "\"The participants all had chronic back pain\"."
+      },
+      {
+        "type": "mc",
+        "q": "How has Jade's view of the study changed?",
+        "options": [
+          "She has always found it convincing.",
+          "She now rejects it completely.",
+          "She has become more convinced by it.",
+          "She has not yet read it carefully."
+        ],
+        "answer": 2,
+        "explain_es": "Primero \"disbelief\", pero \"having read it a couple of times, I'm more persuaded than I was\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Ollie's main doubt about the findings?",
+        "options": [
+          "The sample was too large.",
+          "Patients were deceived.",
+          "The pills were not really sugar.",
+          "The improvement may come from the explanation rather than the pill."
+        ],
+        "answer": 3,
+        "explain_es": "\"If the explanation's the active ingredient, is it really a placebo effect...?\""
+      },
+      {
+        "type": "tf",
+        "q": "Jade criticises the study for relying entirely on patients' own ratings.",
+        "answer": "T",
+        "explain_es": "\"Everything was self-reported... there was no objective measure\"."
+      },
+      {
+        "type": "gap",
+        "q": "Jade proposes a group that gets the same conversation but no ____. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "pill",
+        "accept": [],
+        "explain_es": "\"a comparison group who get the same friendly, detailed conversation but no pill\"."
+      },
+      {
+        "type": "tf",
+        "q": "Ollie believes natural changes in pain make the results meaningless.",
+        "answer": "F",
+        "explain_es": "Se corrige: \"the control group would have experienced the same fluctuations, so that doesn't completely undermine the results\"."
+      },
+      {
+        "type": "mc",
+        "q": "What concerns Ollie about using open-label placebos in practice?",
+        "options": [
+          "They might be used as a cheap substitute for proper investigation.",
+          "Doctors would refuse to prescribe them.",
+          "They are too expensive.",
+          "Patients would feel deceived."
+        ],
+        "answer": 0,
+        "explain_es": "\"offering placebos instead of properly investigating someone's pain, because it's cheap\"."
+      },
+      {
+        "type": "gap",
+        "q": "The study involved just under a ____ participants. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "hundred",
+        "accept": [
+          "100"
+        ],
+        "explain_es": "\"just under a hundred participants\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which phrase best sums up Ollie's overall position?",
+        "options": [
+          "Enthusiastic supporter.",
+          "Interested but not yet persuaded.",
+          "Completely opposed.",
+          "Undecided because he has not read the paper."
+        ],
+        "answer": 1,
+        "explain_es": "\"I'd say intrigued but unconvinced\"."
+      }
+    ],
+    "dictation": [
+      "Honestly, my first reaction was disbelief.",
+      "Three weeks is quite short."
+    ]
+  },
+  {
+    "id": "l-c1-translator-talk",
+    "title": "A Translator's Confession",
+    "level": "C1",
+    "kind": "monologue",
+    "topic": "Language",
+    "emoji": "📖",
+    "speakers": [
+      {
+        "name": "Marisol",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Thank you all for coming. When I was asked to talk about my work as a literary translator, my first instinct was to say no, because translators are supposed to be invisible. The highest compliment you can pay a translation, people often say, is that it doesn't read like one. I used to believe that completely. I'm less sure now, and that's partly what I want to talk about."
+      },
+      {
+        "s": 0,
+        "text": "I started translating almost by accident. I was working in publishing, reading Spanish novels and writing reports on whether they might sell in English. One day an editor asked me to try a sample chapter, and that was it. That was twenty-two years ago now."
+      },
+      {
+        "s": 0,
+        "text": "People tend to imagine translation as a matter of finding equivalent words. In fact, individual words are rarely the hard part. The difficulty lies in everything around them: rhythm, humour, the social weight of a particular expression. Take the difference between the formal and informal you in Spanish. English simply doesn't have it, so a moment where two characters shift from usted to tú, which in the original might be quietly romantic, or a sign of disrespect, can disappear entirely unless I find another way to signal it. Sometimes that means changing the way they address each other, or adding a small gesture. Every solution is a compromise."
+      },
+      {
+        "s": 0,
+        "text": "Humour is even worse. A pun almost never survives. I once spent three days on a single joke in a children's book, and in the end I replaced it with a completely different joke that worked in English. Some readers would call that a betrayal. I'd call it faithfulness to the effect rather than the words: the original made children laugh, so the translation should too."
+      },
+      {
+        "s": 0,
+        "text": "Now, about invisibility. For a long time, translators' names didn't appear on book covers at all, and in many cases they still don't. There's been a campaign recently to change that, and I support it, though not, I hope, out of vanity. It's more that hiding the translator encourages readers to believe they're reading the author's exact words, and that's never quite true. Every translation is an interpretation. I'd rather readers knew that."
+      },
+      {
+        "s": 0,
+        "text": "Then, of course, there's the question everyone asks me these days: will machines replace us? I'd be lying if I said I wasn't worried at all. Machine translation has improved remarkably, and for instruction manuals or business emails it's often perfectly adequate. But literature is a different matter. A machine can produce a sentence that's grammatically flawless and still completely wrong in tone. What concerns me more, honestly, is economic pressure: publishers asking translators to just correct machine output for a fraction of the fee. That's not translation, and I don't think readers would get the same book."
+      },
+      {
+        "s": 0,
+        "text": "Let me end with something hopeful. The number of translated novels published in English has risen steadily over the last decade, and they sell better than many people predicted. Readers, it seems, are curious about the world. And as long as they are, there'll be a need for people who care deeply about carrying a book across from one language to another."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. I think we've got time for a few questions."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why was Marisol initially reluctant to give the talk?",
+        "options": [
+          "She dislikes public speaking.",
+          "She had too little time to prepare.",
+          "Translators are traditionally expected to stay in the background.",
+          "She is no longer working as a translator."
+        ],
+        "answer": 2,
+        "explain_es": "\"my first instinct was to say no, because translators are supposed to be invisible\"."
+      },
+      {
+        "type": "gap",
+        "q": "Marisol began translating ____ years ago. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "twenty-two",
+        "accept": [
+          "22",
+          "twenty two"
+        ],
+        "explain_es": "\"That was twenty-two years ago now\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to Marisol, what is the most difficult aspect of translation?",
+        "options": [
+          "Finding equivalent words.",
+          "Meeting deadlines.",
+          "Working with editors.",
+          "Everything that surrounds the words, such as rhythm and tone."
+        ],
+        "answer": 3,
+        "explain_es": "\"individual words are rarely the hard part. The difficulty lies in everything around them\"."
+      },
+      {
+        "type": "gap",
+        "q": "Without care, a change from usted to tú can ____ completely in English. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "disappear",
+        "accept": [],
+        "explain_es": "\"can disappear entirely unless I find another way to signal it\"."
+      },
+      {
+        "type": "mc",
+        "q": "How did she deal with the joke in the children's book?",
+        "options": [
+          "She wrote a different joke that worked in English.",
+          "She added a footnote.",
+          "She removed it.",
+          "She translated it word for word."
+        ],
+        "answer": 0,
+        "explain_es": "\"I replaced it with a completely different joke that worked in English\"."
+      },
+      {
+        "type": "tf",
+        "q": "Marisol regards replacing the joke as a betrayal of the original.",
+        "answer": "F",
+        "explain_es": "\"Some readers would call that a betrayal. I'd call it faithfulness to the effect\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does she support putting translators' names on covers?",
+        "options": [
+          "Translators deserve more fame.",
+          "Readers should know that a translation is an interpretation.",
+          "It increases sales.",
+          "Publishers are legally required to."
+        ],
+        "answer": 1,
+        "explain_es": "\"not... out of vanity... Every translation is an interpretation. I'd rather readers knew that\"."
+      },
+      {
+        "type": "tf",
+        "q": "Marisol is not at all worried about machine translation.",
+        "answer": "F",
+        "explain_es": "\"I'd be lying if I said I wasn't worried at all\"."
+      },
+      {
+        "type": "gap",
+        "q": "Her greatest concern is economic ____ from publishers. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "pressure",
+        "accept": [],
+        "explain_es": "\"What concerns me more, honestly, is economic pressure\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of her final remarks?",
+        "options": [
+          "Resigned.",
+          "Bitter.",
+          "Optimistic.",
+          "Uncertain."
+        ],
+        "answer": 2,
+        "explain_es": "\"Let me end with something hopeful\": las novelas traducidas venden más de lo previsto."
+      }
+    ],
+    "dictation": [
+      "Every translation is an interpretation.",
+      "Readers, it seems, are curious about the world."
+    ]
+  },
+  {
+    "id": "l-c1-overtourism-plan",
+    "title": "Too Many Visitors?",
+    "level": "C1",
+    "kind": "conversation",
+    "topic": "Travel",
+    "emoji": "🧳",
+    "speakers": [
+      {
+        "name": "Margot",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Leo",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, Leo, we need to get these recommendations to the council by Friday, and I don't think we've agreed on a single thing yet."
+      },
+      {
+        "s": 1,
+        "text": "That's slightly unfair. We agreed the coffee in this building is terrible."
+      },
+      {
+        "s": 0,
+        "text": "True. Okay, let's go through the options. The tourist tax first. I'm inclined to support it: a small nightly charge, say two or three euros, ring-fenced for cleaning and maintaining the old town."
+      },
+      {
+        "s": 1,
+        "text": "I was in favour too, initially. But I've been looking at the figures, and the problem is that a large proportion of our visitors don't stay overnight. Day-trippers, coach tours, cruise passengers: they make up roughly sixty per cent of visitors, and a hotel tax wouldn't touch them."
+      },
+      {
+        "s": 0,
+        "text": "Hmm, that's a fair point. So it would penalise the very people who actually spend money here."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. Overnight guests eat in restaurants and visit museums. Day-trippers tend to walk round the cathedral, buy an ice cream and leave."
+      },
+      {
+        "s": 0,
+        "text": "What about an entry fee for the old town, then, like some places have tried?"
+      },
+      {
+        "s": 1,
+        "text": "I'm not opposed in principle, but I'd want to see evidence that it actually reduces numbers rather than just raising money. From what I've read, the results elsewhere are mixed at best. And there's something uncomfortable about charging people to walk into what is, after all, a place where people live."
+      },
+      {
+        "s": 0,
+        "text": "I'm less bothered by that than you are, I think. Residents would be exempt, obviously. But I take the point about evidence. Maybe we recommend a pilot, summer weekends only, and measure the effect properly."
+      },
+      {
+        "s": 1,
+        "text": "I could live with a pilot. Now, cruise ships. That's where I feel more strongly."
+      },
+      {
+        "s": 0,
+        "text": "Go on."
+      },
+      {
+        "s": 1,
+        "text": "On days when two or three ships arrive, you get several thousand people arriving in the old town within the same hour. The streets simply can't cope. I'd cap it at one large ship per day."
+      },
+      {
+        "s": 0,
+        "text": "I agree with the principle, but the port authority will fight that very hard, and they're not under the council's control. We might get further by negotiating staggered arrival times."
+      },
+      {
+        "s": 1,
+        "text": "Which would help with the crowding, though not with the overall numbers. Still, it's realistic. Okay, staggered arrivals, with a cap as a longer-term goal."
+      },
+      {
+        "s": 0,
+        "text": "Good. And then there's housing. Honestly, for residents, I think this is the real issue. The number of flats in the old town rented out to tourists has nearly tripled in eight years, and young families can't afford to live there anymore."
+      },
+      {
+        "s": 1,
+        "text": "I completely agree, and it's the one I'd put first. A town where nobody actually lives becomes a kind of theme park. I'd suggest a freeze on new licences for holiday rentals in the historic centre."
+      },
+      {
+        "s": 0,
+        "text": "A freeze rather than a ban?"
+      },
+      {
+        "s": 1,
+        "text": "Banning them outright would end up in court for years. A freeze is legally much safer, and it stops the problem growing while we work out a longer-term plan."
+      },
+      {
+        "s": 0,
+        "text": "Agreed. So, in order of priority: housing first, then cruise arrivals, then the entry-fee pilot. And we drop the hotel tax?"
+      },
+      {
+        "s": 1,
+        "text": "Not drop it. Park it. It might make sense as part of a broader package later."
+      },
+      {
+        "s": 0,
+        "text": "Fine, we'll park it. I'll draft the summary tonight and send it over."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why has Leo changed his mind about the tourist tax?",
+        "options": [
+          "Hotels oppose it.",
+          "It would raise too little money for cleaning.",
+          "It is illegal.",
+          "Most visitors would not have to pay it."
+        ],
+        "answer": 3,
+        "explain_es": "\"I was in favour too, initially. But... a large proportion of our visitors don't stay overnight\"."
+      },
+      {
+        "type": "gap",
+        "q": "Visitors who do not stay overnight: about ____ per cent (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "sixty",
+        "accept": [
+          "60"
+        ],
+        "explain_es": "\"they make up roughly sixty per cent of visitors\"."
+      },
+      {
+        "type": "tf",
+        "q": "Margot shares Leo's discomfort about charging people to enter a place where people live.",
+        "answer": "F",
+        "explain_es": "\"I'm less bothered by that than you are, I think\"."
+      },
+      {
+        "type": "mc",
+        "q": "What do they decide about an entry fee?",
+        "options": [
+          "To test it on a limited basis first.",
+          "To reject it completely.",
+          "To introduce it all year.",
+          "To charge residents as well."
+        ],
+        "answer": 0,
+        "explain_es": "\"Maybe we recommend a pilot, summer weekends only\" — \"I could live with a pilot\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Margot doubt that a cap on cruise ships is achievable?",
+        "options": [
+          "Cruise passengers spend a lot of money.",
+          "The council has no authority over the port.",
+          "There are too few ships to matter.",
+          "Leo does not really support it."
+        ],
+        "answer": 1,
+        "explain_es": "\"the port authority will fight that very hard, and they're not under the council's control\"."
+      },
+      {
+        "type": "gap",
+        "q": "Tourist rental flats in the old town have nearly ____ in eight years. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "tripled",
+        "accept": [],
+        "explain_es": "\"has nearly tripled in eight years\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does Leo regard the housing issue?",
+        "options": [
+          "As less urgent than cruise ships.",
+          "As a problem for the national government.",
+          "As the most important priority.",
+          "As something to deal with later."
+        ],
+        "answer": 2,
+        "explain_es": "\"I completely agree, and it's the one I'd put first\"."
+      },
+      {
+        "type": "gap",
+        "q": "Leo recommends a ____ on new holiday-rental licences. (NO MORE THAN TWO WORDS AND/OR A NUMBER)",
+        "answer": "freeze",
+        "accept": [],
+        "explain_es": "\"I'd suggest a freeze on new licences\"; prohibirlas acabaría en los tribunales."
+      },
+      {
+        "type": "tf",
+        "q": "They decide to abandon the idea of a hotel tax permanently.",
+        "answer": "F",
+        "explain_es": "\"Not drop it. Park it. It might make sense... later\" (aplazarla, no abandonarla)."
+      }
+    ],
+    "dictation": [
+      "A town where nobody actually lives becomes a kind of theme park.",
+      "I'll draft the summary tonight and send it over."
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight, Wrench } from 'lucide-react';
+import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight, Wrench, Languages, ClipboardList } from 'lucide-react';
+import { ExternalResources } from '@/features/library/ExternalResources';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { IconTile } from '@/components/ui/IconTile';
@@ -11,7 +12,7 @@ const AREAS = [
     icon: BookOpen,
     color: 'var(--skill-reading)',
     title: 'Reading',
-    body: 'Lecturas A1 con glosario y 32 guías de viaje por países para practicar can, should y must.',
+    body: 'Biblioteca de lecturas originales A1–C1 (noticias, entrevistas, ciencia, opinión…) con glosario y preguntas, más 32 guías de viaje.',
     skill: 'reading' as const,
   },
   {
@@ -19,7 +20,7 @@ const AREAS = [
     icon: Headphones,
     color: 'var(--skill-listening)',
     title: 'Listening',
-    body: '123 diálogos de las unidades A1–C1 en voz alta, dictados y audios reales de los meses del año.',
+    body: 'Biblioteca de audios A1–C1 con varias voces y acentos (diálogos, podcasts, clases, anuncios), preguntas tipo IELTS y dictados.',
     skill: 'listening' as const,
   },
   {
@@ -37,6 +38,22 @@ const AREAS = [
     title: 'Writing',
     body: 'Tareas de escritura de cada unidad con criterios de evaluación y feedback del AI Coach.',
     skill: 'writing' as const,
+  },
+  {
+    to: '/practice/vocabulary',
+    icon: Languages,
+    color: 'var(--pink)',
+    title: 'Vocabulario',
+    body: 'Linking words por función, cientos de adjetivos por categoría y adverbios por tipo, con ejemplos, audio, quiz y tarea en PDF.',
+    skill: 'vocabulary' as const,
+  },
+  {
+    to: '/practice/workshops',
+    icon: ClipboardList,
+    color: 'var(--teal)',
+    title: 'Talleres de gramática',
+    body: 'Un taller por tema de A1 a C1: la regla, errores típicos, cuatro tipos de ejercicio y la tarea lista en PDF.',
+    skill: 'grammar' as const,
   },
   {
     to: '/practice/verbs',
@@ -77,6 +94,7 @@ export default function PracticePage() {
           </Link>
         ))}
       </div>
+      <ExternalResources className="mt-8" />
     </Page>
   );
 }

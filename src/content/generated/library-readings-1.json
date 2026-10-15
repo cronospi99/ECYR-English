@@ -1,0 +1,4018 @@
+[
+  {
+    "id": "r-a1-market-day",
+    "title": "Market Day in Villa de Leyva",
+    "level": "A1",
+    "genre": "story",
+    "topic": "Food & shopping",
+    "emoji": "🧺",
+    "words": 149,
+    "paragraphs": [
+      "Ana lives in Villa de Leyva, a small town in Boyacá, Colombia. Every Saturday, she goes to the market with her grandfather, Don Luis. The market is in a big square near the church. It opens at seven o'clock in the morning.",
+      "The market is very busy. There are many stalls with fruit, vegetables, cheese and bread. Ana loves the colors. There are red tomatoes, yellow bananas and green avocados. People talk and laugh, and a man plays the guitar.",
+      "Don Luis buys potatoes, onions and a big piece of white cheese. Ana buys six oranges and a bag of strawberries. She pays with a ten thousand peso note. The woman at the stall gives her the change and a free mango!",
+      "At ten o'clock, Ana and her grandfather sit on a bench and eat arepas with cheese. Ana is happy. Saturday is her favorite day of the week."
+    ],
+    "glossary": [
+      [
+        "stall",
+        "puesto (de mercado)"
+      ],
+      [
+        "square",
+        "plaza"
+      ],
+      [
+        "busy",
+        "lleno de gente, concurrido"
+      ],
+      [
+        "onion",
+        "cebolla"
+      ],
+      [
+        "piece",
+        "pedazo"
+      ],
+      [
+        "note",
+        "billete"
+      ],
+      [
+        "change",
+        "cambio, vueltas"
+      ],
+      [
+        "bench",
+        "banca"
+      ],
+      [
+        "free",
+        "gratis"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who does Ana go to the market with?",
+        "options": [
+          "Her mother",
+          "Her grandfather",
+          "Her friend",
+          "Her teacher"
+        ],
+        "answer": 1,
+        "explain_es": "El texto dice: 'she goes to the market with her grandfather, Don Luis'."
+      },
+      {
+        "type": "tf",
+        "q": "The market is near the church.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice que el mercado está 'in a big square near the church'."
+      },
+      {
+        "type": "gap",
+        "q": "The market opens at ____ o'clock.",
+        "answer": "seven",
+        "accept": [
+          "7"
+        ],
+        "explain_es": "El párrafo 1 dice: 'It opens at seven o'clock in the morning'."
+      },
+      {
+        "type": "tf",
+        "q": "Ana buys fish.",
+        "answer": "F",
+        "explain_es": "Ana compra naranjas y fresas, no pescado."
+      },
+      {
+        "type": "mc",
+        "q": "What does Ana get for free?",
+        "options": [
+          "An orange",
+          "A strawberry",
+          "A mango",
+          "An arepa"
+        ],
+        "answer": 2,
+        "explain_es": "La señora del puesto le da 'a free mango'."
+      },
+      {
+        "type": "gap",
+        "q": "Don Luis buys a big piece of white ____.",
+        "answer": "cheese",
+        "explain_es": "El párrafo 3 dice: 'a big piece of white cheese'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'change' means…",
+        "options": [
+          "a new idea",
+          "money you get back when you pay",
+          "a type of fruit"
+        ],
+        "answer": 1,
+        "explain_es": "'Change' aquí es el dinero que te devuelven cuando pagas (las vueltas)."
+      },
+      {
+        "type": "tf",
+        "q": "A man plays the guitar at the market.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'a man plays the guitar'."
+      },
+      {
+        "type": "mc",
+        "q": "When do Ana and her grandfather eat arepas?",
+        "options": [
+          "At seven o'clock",
+          "At eight o'clock",
+          "At nine o'clock",
+          "At ten o'clock"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'At ten o'clock, Ana and her grandfather sit on a bench and eat arepas'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-hello-from-medellin",
+    "title": "Hello from Medellín",
+    "level": "A1",
+    "genre": "email",
+    "topic": "Family",
+    "emoji": "📧",
+    "words": 146,
+    "paragraphs": [
+      "Hi Emma, My name is Camilo and I am your new pen pal. I am twelve years old and I live in Medellín, Colombia. Medellín is a big city with many mountains around it. The weather is nice all year.",
+      "There are five people in my family. My mother is a nurse and my father is a taxi driver. I have one sister and one brother. My sister, Valentina, is fifteen. She likes music and she can play the piano. My brother, Tomás, is only four. He is very funny, but he is noisy too!",
+      "We also have a dog. His name is Coco and he is brown and white. On Sundays, we visit my grandmother. She cooks rice, beans and chicken for everyone.",
+      "What about you? How many people are there in your family? Do you have a pet? Please write soon! Best wishes, Camilo"
+    ],
+    "glossary": [
+      [
+        "pen pal",
+        "amigo por correspondencia"
+      ],
+      [
+        "weather",
+        "clima"
+      ],
+      [
+        "nurse",
+        "enfermero/a"
+      ],
+      [
+        "noisy",
+        "ruidoso"
+      ],
+      [
+        "beans",
+        "frijoles"
+      ],
+      [
+        "pet",
+        "mascota"
+      ],
+      [
+        "soon",
+        "pronto"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How old is Camilo?",
+        "options": [
+          "Four",
+          "Twelve",
+          "Fifteen",
+          "Five"
+        ],
+        "answer": 1,
+        "explain_es": "Camilo dice: 'I am twelve years old'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Camilo's father's job?",
+        "options": [
+          "He is a nurse",
+          "He is a teacher",
+          "He is a taxi driver",
+          "He is a cook"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'my father is a taxi driver'."
+      },
+      {
+        "type": "tf",
+        "q": "Camilo has two sisters.",
+        "answer": "F",
+        "explain_es": "Camilo tiene una hermana y un hermano: 'I have one sister and one brother'."
+      },
+      {
+        "type": "tf",
+        "q": "Valentina can play the piano.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'she can play the piano'."
+      },
+      {
+        "type": "gap",
+        "q": "Coco is brown and ____.",
+        "answer": "white",
+        "explain_es": "El párrafo 3 dice: 'he is brown and white'."
+      },
+      {
+        "type": "gap",
+        "q": "On Sundays, they visit Camilo's ____.",
+        "answer": "grandmother",
+        "explain_es": "El párrafo 3 dice: 'On Sundays, we visit my grandmother'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'noisy' means…",
+        "options": [
+          "very quiet",
+          "very small",
+          "making a lot of sound"
+        ],
+        "answer": 2,
+        "explain_es": "'Noisy' significa ruidoso, que hace mucho ruido."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Camilo write to Emma?",
+        "options": [
+          "She is his new pen pal",
+          "She is his cousin",
+          "She is his teacher",
+          "She lives in Medellín"
+        ],
+        "answer": 0,
+        "explain_es": "Camilo escribe: 'I am your new pen pal'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-school-library",
+    "title": "Welcome to the School Library",
+    "level": "A1",
+    "genre": "notice",
+    "topic": "School life",
+    "emoji": "📚",
+    "words": 135,
+    "paragraphs": [
+      "WELCOME TO THE SCHOOL LIBRARY! The library is on the second floor, next to the computer room. It is open from Monday to Friday, from 7:30 in the morning to 4:00 in the afternoon. On Saturday and Sunday, it is closed.",
+      "In the library, you can read books, magazines and comics. You can also use the six computers for your homework. Do you need help? Please ask the librarian, Mrs. Rojas. She is here every day.",
+      "You can take three books home for two weeks. Please bring them back on time. Is your book late? Then you cannot take a new book for one week.",
+      "Library rules: Please be quiet. Do not eat or drink near the books. Turn off your phone. Put the books back on the shelves. Thank you, and enjoy your reading!"
+    ],
+    "glossary": [
+      [
+        "floor",
+        "piso"
+      ],
+      [
+        "closed",
+        "cerrado"
+      ],
+      [
+        "librarian",
+        "bibliotecario/a"
+      ],
+      [
+        "bring back",
+        "devolver"
+      ],
+      [
+        "late",
+        "con retraso, tarde"
+      ],
+      [
+        "quiet",
+        "en silencio"
+      ],
+      [
+        "turn off",
+        "apagar"
+      ],
+      [
+        "shelves",
+        "estantes"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is the library?",
+        "options": [
+          "On the first floor, next to the gym",
+          "On the second floor, next to the computer room",
+          "On the second floor, next to the gym",
+          "On the third floor, next to the computer room"
+        ],
+        "answer": 1,
+        "explain_es": "El aviso dice: 'on the second floor, next to the computer room'."
+      },
+      {
+        "type": "tf",
+        "q": "The library is open on Saturday.",
+        "answer": "F",
+        "explain_es": "El aviso dice: 'On Saturday and Sunday, it is closed'."
+      },
+      {
+        "type": "mc",
+        "q": "How many books can you take home?",
+        "options": [
+          "One",
+          "Two",
+          "Three",
+          "Six"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'You can take three books home'."
+      },
+      {
+        "type": "tf",
+        "q": "You can use the computers for homework.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'You can also use the six computers for your homework'."
+      },
+      {
+        "type": "gap",
+        "q": "The librarian's name is Mrs. ____.",
+        "answer": "Rojas",
+        "explain_es": "El párrafo 2 dice: 'ask the librarian, Mrs. Rojas'."
+      },
+      {
+        "type": "gap",
+        "q": "You can take books home for two ____.",
+        "answer": "weeks",
+        "explain_es": "El párrafo 3 dice: 'for two weeks'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'shelves' are…",
+        "options": [
+          "places where you put books",
+          "people who read books",
+          "rooms with computers"
+        ],
+        "answer": 0,
+        "explain_es": "'Shelves' son estantes, donde se ponen los libros."
+      },
+      {
+        "type": "mc",
+        "q": "What can't you do near the books?",
+        "options": [
+          "Read comics",
+          "Ask for help",
+          "Use a computer",
+          "Eat or drink"
+        ],
+        "answer": 3,
+        "explain_es": "Una regla dice: 'Do not eat or drink near the books'."
+      },
+      {
+        "type": "tf",
+        "q": "The library has ten computers.",
+        "answer": "F",
+        "explain_es": "La biblioteca tiene seis computadores: 'the six computers'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-capybara",
+    "title": "The Capybara: A Big, Friendly Rodent",
+    "level": "A1",
+    "genre": "science",
+    "topic": "Animals",
+    "emoji": "🐾",
+    "words": 140,
+    "paragraphs": [
+      "The capybara is the biggest rodent in the world. A rodent is an animal like a mouse or a rat. But a capybara is not small! It can weigh 50 kilos, about the same as a person. In Colombia, people call it 'chigüiro'.",
+      "Capybaras live in South America, in hot places near rivers and lakes. You can see many capybaras in the Llanos, the big flat plains of Colombia and Venezuela.",
+      "Capybaras love water. They are very good swimmers. Their eyes, ears and nose are on the top of their head, so they can see and breathe in the water. They can stay under the water for about five minutes.",
+      "Capybaras eat grass and water plants. They live in groups of ten or twenty animals. They are calm and quiet, and other animals, like birds, often sit on their backs!"
+    ],
+    "glossary": [
+      [
+        "rodent",
+        "roedor"
+      ],
+      [
+        "weigh",
+        "pesar"
+      ],
+      [
+        "plains",
+        "llanuras"
+      ],
+      [
+        "swimmer",
+        "nadador"
+      ],
+      [
+        "breathe",
+        "respirar"
+      ],
+      [
+        "grass",
+        "pasto, hierba"
+      ],
+      [
+        "calm",
+        "tranquilo"
+      ],
+      [
+        "back",
+        "lomo, espalda"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is a rodent?",
+        "options": [
+          "A type of bird",
+          "An animal like a mouse or a rat",
+          "A big fish",
+          "A water plant"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'A rodent is an animal like a mouse or a rat'."
+      },
+      {
+        "type": "tf",
+        "q": "A capybara can weigh about 50 kilos.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'It can weigh 50 kilos, about the same as a person'."
+      },
+      {
+        "type": "gap",
+        "q": "In Colombia, people call the capybara '____'.",
+        "answer": "chigüiro",
+        "accept": [
+          "chiguiro"
+        ],
+        "explain_es": "El párrafo 1 dice: 'In Colombia, people call it chigüiro'."
+      },
+      {
+        "type": "mc",
+        "q": "Where can you see many capybaras?",
+        "options": [
+          "In the Llanos",
+          "In the mountains",
+          "In big cities",
+          "In the desert"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice que hay muchos 'in the Llanos'."
+      },
+      {
+        "type": "tf",
+        "q": "Capybaras are bad swimmers.",
+        "answer": "F",
+        "explain_es": "El texto dice: 'They are very good swimmers'."
+      },
+      {
+        "type": "gap",
+        "q": "Capybaras can stay under the water for about five ____.",
+        "answer": "minutes",
+        "explain_es": "El párrafo 3 dice: 'for about five minutes'."
+      },
+      {
+        "type": "mc",
+        "q": "What do capybaras eat?",
+        "options": [
+          "Fish and insects",
+          "Small birds",
+          "Grass and water plants",
+          "Fruit and bread"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'Capybaras eat grass and water plants'."
+      },
+      {
+        "type": "tf",
+        "q": "Capybaras live in groups.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'They live in groups of ten or twenty animals'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'calm' means…",
+        "options": [
+          "angry",
+          "relaxed and quiet",
+          "very fast"
+        ],
+        "answer": 1,
+        "explain_es": "'Calm' significa tranquilo; el texto dice 'calm and quiet'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-bus-driver",
+    "title": "A Day with a Bus Driver",
+    "level": "A1",
+    "genre": "interview",
+    "topic": "Jobs",
+    "emoji": "🚌",
+    "words": 147,
+    "paragraphs": [
+      "Rosa Mosquera is a bus driver in Cali. She is 38 years old. We ask her about her job.",
+      "What time do you start work? I start very early. I get up at four o'clock, and my first bus leaves at five thirty.",
+      "Do you like your job? Yes, I love it! I drive the same route every day, and I know many passengers. Some children say 'Good morning, Rosa!' every day. That makes me happy.",
+      "Is your job difficult? Sometimes. The traffic in the afternoon is terrible, and I sit for many hours. But I have a break at eleven, and I eat lunch with the other drivers.",
+      "What do you do after work? I finish at two o'clock. Then I go home and help my son with his homework. In the evening, I go dancing salsa with my husband. Cali is the city of salsa!"
+    ],
+    "glossary": [
+      [
+        "get up",
+        "levantarse"
+      ],
+      [
+        "leave",
+        "salir"
+      ],
+      [
+        "route",
+        "ruta, recorrido"
+      ],
+      [
+        "passenger",
+        "pasajero"
+      ],
+      [
+        "traffic",
+        "tráfico"
+      ],
+      [
+        "break",
+        "descanso"
+      ],
+      [
+        "finish",
+        "terminar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What time does Rosa get up?",
+        "options": [
+          "At four o'clock",
+          "At five o'clock",
+          "At five thirty",
+          "At eleven"
+        ],
+        "answer": 0,
+        "explain_es": "Rosa dice: 'I get up at four o'clock'."
+      },
+      {
+        "type": "tf",
+        "q": "Rosa drives a different route every day.",
+        "answer": "F",
+        "explain_es": "Rosa dice: 'I drive the same route every day'."
+      },
+      {
+        "type": "gap",
+        "q": "Rosa has a break at ____.",
+        "answer": "eleven",
+        "accept": [
+          "11",
+          "eleven o'clock"
+        ],
+        "explain_es": "El párrafo 4 dice: 'I have a break at eleven'."
+      },
+      {
+        "type": "mc",
+        "q": "How does Rosa feel when children say good morning?",
+        "options": [
+          "Tired",
+          "Angry",
+          "Happy",
+          "Bored"
+        ],
+        "answer": 2,
+        "explain_es": "Rosa dice: 'That makes me happy'."
+      },
+      {
+        "type": "gap",
+        "q": "The ____ in the afternoon is terrible.",
+        "answer": "traffic",
+        "explain_es": "El párrafo 4 dice: 'The traffic in the afternoon is terrible'."
+      },
+      {
+        "type": "tf",
+        "q": "Rosa has a son.",
+        "answer": "T",
+        "explain_es": "Rosa dice: 'I go home and help my son with his homework'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'passengers' are…",
+        "options": [
+          "people who drive buses",
+          "people who travel on a bus",
+          "people who sell tickets"
+        ],
+        "answer": 1,
+        "explain_es": "'Passengers' son las personas que viajan en el bus."
+      },
+      {
+        "type": "mc",
+        "q": "What does Rosa do in the evening?",
+        "options": [
+          "She drives the bus",
+          "She helps her son",
+          "She goes dancing salsa",
+          "She cooks lunch"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'In the evening, I go dancing salsa with my husband'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-sundays-in-bogota",
+    "title": "Sundays in Bogotá",
+    "level": "A1",
+    "genre": "blog",
+    "topic": "Cities",
+    "emoji": "🚲",
+    "words": 145,
+    "paragraphs": [
+      "Hi everyone! My name is Sofía and this is my blog about Bogotá. Today I want to tell you about Sundays in my city.",
+      "On Sunday mornings, many big streets in Bogotá close to cars. They are only for bikes, skates and people on foot. This is the Ciclovía. It starts at seven in the morning and finishes at two in the afternoon.",
+      "I ride my bike with my dad. We start near our house and go to a big park. There are thousands of people: children, grandparents, dogs and even cats in baskets! Some people do exercise classes in the street.",
+      "We stop for a fresh orange juice and a snack. My favorite snack is a mango with salt and lemon. Then we ride home. I am tired but happy. Do you have something like the Ciclovía in your city? Write in the comments!"
+    ],
+    "glossary": [
+      [
+        "skates",
+        "patines"
+      ],
+      [
+        "on foot",
+        "a pie"
+      ],
+      [
+        "ride",
+        "montar (en bici)"
+      ],
+      [
+        "basket",
+        "canasta"
+      ],
+      [
+        "fresh",
+        "fresco, natural"
+      ],
+      [
+        "snack",
+        "algo de comer, refrigerio"
+      ],
+      [
+        "tired",
+        "cansado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who does Sofía ride with?",
+        "options": [
+          "Her mom",
+          "Her dad",
+          "Her friend",
+          "Her dog"
+        ],
+        "answer": 1,
+        "explain_es": "Sofía dice: 'I ride my bike with my dad'."
+      },
+      {
+        "type": "tf",
+        "q": "Cars can use the big streets on Sunday mornings.",
+        "answer": "F",
+        "explain_es": "Las calles se cierran a los carros: 'many big streets in Bogotá close to cars'."
+      },
+      {
+        "type": "gap",
+        "q": "The Ciclovía starts at ____ in the morning.",
+        "answer": "seven",
+        "accept": [
+          "7"
+        ],
+        "explain_es": "El párrafo 2 dice: 'It starts at seven in the morning'."
+      },
+      {
+        "type": "tf",
+        "q": "The Ciclovía finishes at two in the afternoon.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'finishes at two in the afternoon'."
+      },
+      {
+        "type": "gap",
+        "q": "Some people do exercise ____ in the street.",
+        "answer": "classes",
+        "explain_es": "El párrafo 3 dice: 'Some people do exercise classes in the street'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Sofía's favorite snack?",
+        "options": [
+          "Orange juice",
+          "An arepa",
+          "A mango with salt and lemon",
+          "A sandwich"
+        ],
+        "answer": 2,
+        "explain_es": "Sofía dice: 'My favorite snack is a mango with salt and lemon'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'on foot' means…",
+        "options": [
+          "walking",
+          "by car",
+          "on a bike"
+        ],
+        "answer": 0,
+        "explain_es": "'On foot' significa a pie, caminando."
+      },
+      {
+        "type": "mc",
+        "q": "How does Sofía feel at the end?",
+        "options": [
+          "Sad and bored",
+          "Angry",
+          "Hungry and cold",
+          "Tired but happy"
+        ],
+        "answer": 3,
+        "explain_es": "Sofía dice: 'I am tired but happy'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-new-friend",
+    "title": "A New Friend from Japan",
+    "level": "A1",
+    "genre": "story",
+    "topic": "Friendship",
+    "emoji": "🤝",
+    "words": 134,
+    "paragraphs": [
+      "There is a new student in Daniela's class. His name is Haruto and he is from Osaka, Japan. His family lives in Barranquilla now because his mother works at the port. Haruto speaks Japanese and English, but he can only speak a little Spanish.",
+      "On the first day, Haruto sits alone at lunch. He looks sad. Daniela takes her lunch and sits next to him. 'Hello! I'm Daniela,' she says in English. Haruto smiles. 'Hi! Nice to meet you.'",
+      "Every day, they eat lunch together. Daniela teaches Haruto Spanish words, like 'amigo' and 'playa'. Haruto teaches Daniela Japanese words. 'Tomodachi' means 'friend'. He also shows her how to write her name in Japanese.",
+      "Now Haruto has many friends. He plays football with the class on Fridays. But Daniela is his best friend, his tomodachi."
+    ],
+    "glossary": [
+      [
+        "port",
+        "puerto"
+      ],
+      [
+        "a little",
+        "un poco"
+      ],
+      [
+        "alone",
+        "solo"
+      ],
+      [
+        "next to",
+        "al lado de"
+      ],
+      [
+        "smile",
+        "sonreír"
+      ],
+      [
+        "teach",
+        "enseñar"
+      ],
+      [
+        "best friend",
+        "mejor amigo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Haruto's family live in Barranquilla?",
+        "options": [
+          "His father is a teacher there",
+          "His mother works at the port",
+          "They like the beach",
+          "His grandparents live there"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'because his mother works at the port'."
+      },
+      {
+        "type": "tf",
+        "q": "Haruto speaks a lot of Spanish on the first day.",
+        "answer": "F",
+        "explain_es": "El texto dice que 'he can only speak a little Spanish'."
+      },
+      {
+        "type": "gap",
+        "q": "On the first day, Haruto sits ____ at lunch.",
+        "answer": "alone",
+        "explain_es": "El párrafo 2 dice: 'Haruto sits alone at lunch'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela speaks to Haruto in English.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'she says in English'."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'tomodachi' mean?",
+        "options": [
+          "Beach",
+          "Hello",
+          "Friend",
+          "Lunch"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'Tomodachi means friend'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'smiles' means…",
+        "options": [
+          "makes a happy face",
+          "cries",
+          "runs away"
+        ],
+        "answer": 0,
+        "explain_es": "'Smile' es sonreír, hacer una cara feliz."
+      },
+      {
+        "type": "gap",
+        "q": "Haruto plays football with the class on ____.",
+        "answer": "Fridays",
+        "explain_es": "El párrafo 4 dice: 'He plays football with the class on Fridays'."
+      },
+      {
+        "type": "tf",
+        "q": "Haruto shows Daniela how to write her name in Japanese.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'He also shows her how to write her name in Japanese'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-easy-breakfasts",
+    "title": "Five Easy Breakfasts",
+    "level": "A1",
+    "genre": "guide",
+    "topic": "Health",
+    "emoji": "🍳",
+    "words": 153,
+    "paragraphs": [
+      "Breakfast is an important meal. It gives you energy for school or work. But many people say, 'I don't have time!' Here are five easy breakfasts. You can make each one in ten minutes or less.",
+      "1. Arepa with egg. Cook an egg in a pan and put it on a warm arepa. It is simple and delicious. 2. Fruit and yogurt. Cut a banana and some papaya. Put the fruit in a bowl with yogurt.",
+      "3. Oatmeal. Cook oats with milk for five minutes. Add cinnamon and a little honey. 4. Toast with avocado. Put avocado on brown bread with salt and lemon.",
+      "5. A smoothie. Put milk, a banana and some strawberries in a blender. Drink it in a glass or take it to school in a bottle.",
+      "Tip: Drink a glass of water in the morning too. And remember: sweet cakes and soda are not a good breakfast every day!"
+    ],
+    "glossary": [
+      [
+        "meal",
+        "comida"
+      ],
+      [
+        "pan",
+        "sartén"
+      ],
+      [
+        "bowl",
+        "tazón"
+      ],
+      [
+        "oats",
+        "avena"
+      ],
+      [
+        "cinnamon",
+        "canela"
+      ],
+      [
+        "honey",
+        "miel"
+      ],
+      [
+        "toast",
+        "tostada"
+      ],
+      [
+        "blender",
+        "licuadora"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long do these breakfasts take to make?",
+        "options": [
+          "One hour",
+          "Thirty minutes",
+          "Ten minutes or less",
+          "Two hours"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'You can make each one in ten minutes or less'."
+      },
+      {
+        "type": "mc",
+        "q": "Why is breakfast important?",
+        "options": [
+          "It is always sweet",
+          "It gives you energy for school or work",
+          "It is cheap",
+          "You can eat it at night"
+        ],
+        "answer": 1,
+        "explain_es": "El texto dice: 'It gives you energy for school or work'."
+      },
+      {
+        "type": "tf",
+        "q": "You cook the oats with water.",
+        "answer": "F",
+        "explain_es": "La avena se cocina con leche: 'Cook oats with milk'."
+      },
+      {
+        "type": "gap",
+        "q": "Put avocado on brown bread with salt and ____.",
+        "answer": "lemon",
+        "explain_es": "El párrafo 3 dice: 'with salt and lemon'."
+      },
+      {
+        "type": "mc",
+        "q": "What do you put in the smoothie?",
+        "options": [
+          "Eggs, salt and lemon",
+          "Oats, milk and honey",
+          "Avocado and bread",
+          "Milk, a banana and strawberries"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'Put milk, a banana and some strawberries in a blender'."
+      },
+      {
+        "type": "gap",
+        "q": "Cook the oats with milk for five ____.",
+        "answer": "minutes",
+        "explain_es": "El párrafo 3 dice: 'for five minutes'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, a 'blender' is…",
+        "options": [
+          "a type of fruit",
+          "a machine that mixes food and drinks",
+          "a big plate"
+        ],
+        "answer": 1,
+        "explain_es": "'Blender' es una licuadora, una máquina para mezclar."
+      },
+      {
+        "type": "tf",
+        "q": "The guide says soda is not a good breakfast every day.",
+        "answer": "T",
+        "explain_es": "El consejo final dice: 'sweet cakes and soda are not a good breakfast every day'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-hostel-salento",
+    "title": "The Blue Door Hostel, Salento",
+    "level": "A1",
+    "genre": "review",
+    "topic": "Travel",
+    "emoji": "🏡",
+    "words": 148,
+    "paragraphs": [
+      "Review by Marco, from Italy. My score: four stars out of five.",
+      "I stayed at the Blue Door Hostel for three nights in March. Salento is a small, colorful town in the coffee region of Colombia. The hostel is on a quiet street, five minutes from the main square.",
+      "My room was small but very clean. There was a big window with a view of the green mountains. The bed was comfortable. The bathroom was shared, but it was always clean too.",
+      "The best thing is the breakfast. Every morning there is fresh fruit, eggs, bread and, of course, local coffee. The owner, Doña Marta, is very friendly. She can help you book a tour to the Cocora Valley to see the tall wax palms.",
+      "One problem: the wifi is slow. But maybe that is good on holiday! The price is 60,000 pesos a night. I recommend it."
+    ],
+    "glossary": [
+      [
+        "hostel",
+        "hostal"
+      ],
+      [
+        "clean",
+        "limpio"
+      ],
+      [
+        "view",
+        "vista"
+      ],
+      [
+        "shared",
+        "compartido"
+      ],
+      [
+        "owner",
+        "dueño/a"
+      ],
+      [
+        "book",
+        "reservar"
+      ],
+      [
+        "wax palm",
+        "palma de cera"
+      ],
+      [
+        "slow",
+        "lento"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many nights did Marco stay?",
+        "options": [
+          "One",
+          "Two",
+          "Three",
+          "Five"
+        ],
+        "answer": 2,
+        "explain_es": "Marco dice: 'I stayed at the Blue Door Hostel for three nights'."
+      },
+      {
+        "type": "tf",
+        "q": "The hostel is on a noisy street.",
+        "answer": "F",
+        "explain_es": "El texto dice: 'The hostel is on a quiet street'."
+      },
+      {
+        "type": "gap",
+        "q": "The hostel is five minutes from the main ____.",
+        "answer": "square",
+        "explain_es": "El párrafo 2 dice: 'five minutes from the main square'."
+      },
+      {
+        "type": "mc",
+        "q": "What can Marco see from the window?",
+        "options": [
+          "The sea",
+          "The main square",
+          "Green mountains",
+          "A coffee farm"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'a view of the green mountains'."
+      },
+      {
+        "type": "tf",
+        "q": "The bathroom was shared.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'The bathroom was shared'."
+      },
+      {
+        "type": "mc",
+        "q": "What is the problem with the hostel?",
+        "options": [
+          "The room is dirty",
+          "The wifi is slow",
+          "The owner is not friendly",
+          "It is far from the square"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'One problem: the wifi is slow'."
+      },
+      {
+        "type": "gap",
+        "q": "The price is ____ pesos a night.",
+        "answer": "60,000",
+        "accept": [
+          "60000",
+          "60.000",
+          "sixty thousand"
+        ],
+        "explain_es": "El párrafo 5 dice: 'The price is 60,000 pesos a night'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'book a tour' means…",
+        "options": [
+          "reserve a tour",
+          "read a book about a tour",
+          "cancel a tour"
+        ],
+        "answer": 0,
+        "explain_es": "'Book' como verbo significa reservar."
+      },
+      {
+        "type": "tf",
+        "q": "Marco gives the hostel five stars.",
+        "answer": "F",
+        "explain_es": "Marco le da cuatro estrellas: 'four stars out of five'."
+      }
+    ]
+  },
+  {
+    "id": "r-a1-heavy-rain",
+    "title": "Heavy Rain in Las Palmas",
+    "level": "A1",
+    "genre": "news",
+    "topic": "Weather",
+    "emoji": "🌧️",
+    "words": 123,
+    "paragraphs": [
+      "Last night, there was very heavy rain in the small town of Las Palmas. It rained for ten hours, from six in the evening to four in the morning.",
+      "The river near the town is very high now. There is water in some streets and in twelve houses near the river. The families from these houses are at the school now. They are safe.",
+      "Today, the schools in Las Palmas are closed. Many people are helping. Firefighters are cleaning the streets, and neighbors are giving food, water and blankets to the families.",
+      "The mayor, Carmen Díaz, says: 'Thank you to everyone. We are a strong town.' The weather report says there is more rain tomorrow, so please stay at home and be careful."
+    ],
+    "glossary": [
+      [
+        "heavy",
+        "fuerte, intenso"
+      ],
+      [
+        "safe",
+        "a salvo, seguro"
+      ],
+      [
+        "firefighter",
+        "bombero/a"
+      ],
+      [
+        "neighbor",
+        "vecino/a"
+      ],
+      [
+        "blanket",
+        "cobija"
+      ],
+      [
+        "mayor",
+        "alcalde/alcaldesa"
+      ],
+      [
+        "weather report",
+        "pronóstico del tiempo"
+      ],
+      [
+        "careful",
+        "cuidadoso"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long did it rain?",
+        "options": [
+          "Four hours",
+          "Six hours",
+          "Ten hours",
+          "Twelve hours"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'It rained for ten hours'."
+      },
+      {
+        "type": "gap",
+        "q": "There is water in ____ houses near the river.",
+        "answer": "twelve",
+        "accept": [
+          "12"
+        ],
+        "explain_es": "El párrafo 2 dice: 'in twelve houses near the river'."
+      },
+      {
+        "type": "mc",
+        "q": "Where are the families from these houses now?",
+        "options": [
+          "At the hospital",
+          "At the school",
+          "At the mayor's house",
+          "In another town"
+        ],
+        "answer": 1,
+        "explain_es": "El texto dice: 'The families from these houses are at the school now'."
+      },
+      {
+        "type": "tf",
+        "q": "The schools are open today.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'the schools in Las Palmas are closed'."
+      },
+      {
+        "type": "tf",
+        "q": "Neighbors are giving food and blankets.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'neighbors are giving food, water and blankets'."
+      },
+      {
+        "type": "gap",
+        "q": "The mayor's name is Carmen ____.",
+        "answer": "Díaz",
+        "accept": [
+          "Diaz"
+        ],
+        "explain_es": "El párrafo 4 dice: 'The mayor, Carmen Díaz'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'safe' means…",
+        "options": [
+          "not in danger",
+          "in danger",
+          "very wet"
+        ],
+        "answer": 0,
+        "explain_es": "'Safe' significa a salvo, sin peligro."
+      },
+      {
+        "type": "mc",
+        "q": "What does the weather report say?",
+        "options": [
+          "The river is low now",
+          "It is sunny tomorrow",
+          "There is more rain tomorrow",
+          "There is snow tomorrow"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'there is more rain tomorrow'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-mariana-pajon",
+    "title": "Mariana Pajón: Queen of BMX",
+    "level": "A2",
+    "genre": "biography",
+    "topic": "Sport",
+    "emoji": "🏅",
+    "words": 186,
+    "paragraphs": [
+      "Mariana Pajón was born in Medellín, Colombia, in 1991. When she was a little girl, she watched her father and her older brother at BMX races, and she wanted to race too. She started riding a BMX bike when she was only four years old, and she was often the only girl in the race.",
+      "BMX is a fast and dangerous sport. Riders race on a short track with jumps and tight turns. Mariana fell many times and broke some bones, but she never stopped. She trained harder than the other riders, and she won many races in Colombia and in other countries.",
+      "In 2012, she went to the Olympic Games in London and won the gold medal in women's BMX. Many people in Colombia watched the race on TV and celebrated in the streets. Four years later, in Rio de Janeiro, she won gold again. Then, at the Olympic Games in Tokyo, she won a silver medal.",
+      "Today, people call her 'the Queen of BMX'. Many young Colombians, especially girls, started riding BMX because of her. Her story shows that falling is part of learning."
+    ],
+    "glossary": [
+      [
+        "race",
+        "carrera; competir"
+      ],
+      [
+        "rider",
+        "corredor/a, piloto"
+      ],
+      [
+        "track",
+        "pista"
+      ],
+      [
+        "jump",
+        "salto"
+      ],
+      [
+        "tight turn",
+        "curva cerrada"
+      ],
+      [
+        "fall (fell)",
+        "caerse"
+      ],
+      [
+        "bone",
+        "hueso"
+      ],
+      [
+        "train",
+        "entrenar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Mariana want to race?",
+        "options": [
+          "Her teacher told her to",
+          "She watched her father and brother race",
+          "She saw BMX on TV",
+          "Her mother was a champion"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice que veía a su papá y a su hermano en carreras de BMX y quería competir también."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana started riding BMX when she was four.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'when she was only four years old'."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana never fell off her bike.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'Mariana fell many times and broke some bones'."
+      },
+      {
+        "type": "gap",
+        "q": "Riders race on a short track with jumps and tight ____.",
+        "answer": "turns",
+        "explain_es": "El párrafo 2 dice: 'with jumps and tight turns'."
+      },
+      {
+        "type": "mc",
+        "q": "Where did she win her second Olympic gold medal?",
+        "options": [
+          "London",
+          "Tokyo",
+          "Rio de Janeiro",
+          "Medellín"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'Four years later, in Rio de Janeiro, she won gold again'."
+      },
+      {
+        "type": "gap",
+        "q": "In Tokyo, she won a ____ medal.",
+        "answer": "silver",
+        "explain_es": "El párrafo 3 dice: 'she won a silver medal'."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana's mother also rode BMX.",
+        "answer": "NG",
+        "explain_es": "El texto habla de su padre y su hermano, pero no dice nada sobre su madre."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'trained' means…",
+        "options": [
+          "stopped doing a sport",
+          "practised to get better",
+          "travelled by train"
+        ],
+        "answer": 1,
+        "explain_es": "'Train' aquí es entrenar, practicar para mejorar."
+      },
+      {
+        "type": "mc",
+        "q": "According to the text, what does her story show?",
+        "options": [
+          "BMX is an easy sport",
+          "Only boys can race",
+          "Football is more popular",
+          "Falling is part of learning"
+        ],
+        "answer": 3,
+        "explain_es": "La última frase dice: 'Her story shows that falling is part of learning'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-phone-on-the-bus",
+    "title": "The Phone on the Bus",
+    "level": "A2",
+    "genre": "story",
+    "topic": "Values & honesty",
+    "emoji": "📱",
+    "words": 210,
+    "paragraphs": [
+      "Last Tuesday, Julián was going home from school on the bus. It was raining and the bus was full. He was listening to music and looking out of the window. When the bus stopped near the university, a young woman got off quickly. Julián looked down and saw a phone on the seat next to him.",
+      "He picked it up. It was an expensive phone, much newer than his old one. For a moment, he thought, 'Nobody saw it. I can keep it.' But then he remembered last year, when he lost his own wallet. He felt terrible for days.",
+      "Suddenly the phone started ringing. On the screen it said 'Mom'. Julián answered. 'Hello? Sorry, I found this phone on the bus.' The woman was very relieved. She explained that her daughter, Laura, was a student at the university. They decided to meet the next day at a café near Julián's school.",
+      "The next afternoon, Laura arrived at the café with her mother. She was so happy to see her phone. 'All my photos are on it,' she said. She wanted to give Julián some money, but he said no. Instead, Laura bought him a hot chocolate and a big piece of cake. 'This is better than money,' Julián laughed."
+    ],
+    "glossary": [
+      [
+        "full",
+        "lleno"
+      ],
+      [
+        "get off (got off)",
+        "bajarse"
+      ],
+      [
+        "seat",
+        "asiento"
+      ],
+      [
+        "pick up",
+        "recoger"
+      ],
+      [
+        "keep",
+        "quedarse con"
+      ],
+      [
+        "wallet",
+        "billetera"
+      ],
+      [
+        "ring",
+        "sonar"
+      ],
+      [
+        "relieved",
+        "aliviado"
+      ],
+      [
+        "instead",
+        "en cambio, en vez de eso"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the weather like?",
+        "options": [
+          "Sunny",
+          "Raining",
+          "Windy",
+          "Snowing"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'It was raining and the bus was full'."
+      },
+      {
+        "type": "tf",
+        "q": "The phone was newer than Julián's phone.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'much newer than his old one'."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Julián decide not to keep the phone?",
+        "options": [
+          "His mother told him to return it",
+          "The phone was old",
+          "He remembered how he felt when he lost his wallet",
+          "The bus driver saw him"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice que recordó cuando perdió su billetera y se sintió terrible."
+      },
+      {
+        "type": "tf",
+        "q": "Laura called her own phone.",
+        "answer": "F",
+        "explain_es": "Quien llamó fue la mamá de Laura: en la pantalla decía 'Mom'."
+      },
+      {
+        "type": "gap",
+        "q": "They decided to meet at a ____ near Julián's school.",
+        "answer": "café",
+        "accept": [
+          "cafe"
+        ],
+        "explain_es": "El párrafo 3 dice: 'at a café near Julián's school'."
+      },
+      {
+        "type": "tf",
+        "q": "Laura studies medicine.",
+        "answer": "NG",
+        "explain_es": "El texto dice que Laura estudia en la universidad, pero no dice qué carrera."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'relieved' means…",
+        "options": [
+          "angry and upset",
+          "confused",
+          "happy because a problem is finished"
+        ],
+        "answer": 2,
+        "explain_es": "'Relieved' es aliviado: contento porque una preocupación terminó."
+      },
+      {
+        "type": "mc",
+        "q": "What did Julián do when Laura offered him money?",
+        "options": [
+          "He took it",
+          "He said no",
+          "He asked for more",
+          "He gave it to her mother"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 dice: 'She wanted to give Julián some money, but he said no'."
+      },
+      {
+        "type": "gap",
+        "q": "Laura bought him a hot chocolate and a big piece of ____.",
+        "answer": "cake",
+        "explain_es": "El párrafo 4 dice: 'a hot chocolate and a big piece of cake'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-flower-festival",
+    "title": "The Flower Festival of Medellín",
+    "level": "A2",
+    "genre": "article",
+    "topic": "Festivals",
+    "emoji": "🌸",
+    "words": 194,
+    "paragraphs": [
+      "Every August, the city of Medellín becomes a garden. For about ten days, there are concerts, dances, food stalls and parades all over the city. This is the Feria de las Flores, or Flower Festival, and it started in 1957.",
+      "The most famous part of the festival is the Silleteros Parade. Silleteros are farmers from Santa Elena, a rural area in the mountains near the city. They make huge flower designs on wooden frames called silletas, and they carry them on their backs. Some silletas are very heavy. They can weigh as much as an adult person!",
+      "Long ago, before there were good roads, people in Santa Elena used silletas to carry things down the mountain. Later, farmers used them to bring flowers to sell in the city. Today, silleteros spend weeks preparing their designs. Some show birds, national symbols or messages of peace. Grandparents teach the work to their children and grandchildren.",
+      "There are other events too, like a parade of old and classic cars. Thousands of tourists visit the city during the festival, so hotels are often full. If you are going to visit, it is a good idea to book early!"
+    ],
+    "glossary": [
+      [
+        "parade",
+        "desfile"
+      ],
+      [
+        "huge",
+        "enorme"
+      ],
+      [
+        "design",
+        "diseño"
+      ],
+      [
+        "wooden frame",
+        "estructura de madera"
+      ],
+      [
+        "carry",
+        "cargar"
+      ],
+      [
+        "heavy",
+        "pesado"
+      ],
+      [
+        "weigh",
+        "pesar"
+      ],
+      [
+        "book",
+        "reservar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When is the Flower Festival?",
+        "options": [
+          "In December",
+          "In August",
+          "In March",
+          "In June"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'Every August, the city of Medellín becomes a garden'."
+      },
+      {
+        "type": "tf",
+        "q": "The festival started in 1957.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'it started in 1957'."
+      },
+      {
+        "type": "mc",
+        "q": "Who are the silleteros?",
+        "options": [
+          "Tourists from other countries",
+          "Musicians from the city centre",
+          "Hotel workers",
+          "Farmers from Santa Elena"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'Silleteros are farmers from Santa Elena'."
+      },
+      {
+        "type": "tf",
+        "q": "Silletas are made of metal.",
+        "answer": "F",
+        "explain_es": "Las silletas son estructuras de madera: 'wooden frames called silletas'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'huge' means…",
+        "options": [
+          "very big",
+          "very small",
+          "very old"
+        ],
+        "answer": 0,
+        "explain_es": "'Huge' significa enorme."
+      },
+      {
+        "type": "gap",
+        "q": "In the past, farmers used silletas to bring ____ to sell in the city.",
+        "answer": "flowers",
+        "explain_es": "El párrafo 3 dice: 'to bring flowers to sell in the city'."
+      },
+      {
+        "type": "tf",
+        "q": "The Flower Festival is the biggest festival in South America.",
+        "answer": "NG",
+        "explain_es": "El texto no compara el festival con otros de Suramérica."
+      },
+      {
+        "type": "gap",
+        "q": "There is also a parade of old and classic ____.",
+        "answer": "cars",
+        "explain_es": "El párrafo 4 dice: 'a parade of old and classic cars'."
+      },
+      {
+        "type": "mc",
+        "q": "Why is it a good idea to book early?",
+        "options": [
+          "Tickets are free",
+          "It rains a lot",
+          "Hotels are often full",
+          "The festival is short"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'so hotels are often full'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-first-month-dublin",
+    "title": "My First Month in Dublin",
+    "level": "A2",
+    "genre": "blog",
+    "topic": "Studying abroad",
+    "emoji": "✈️",
+    "words": 212,
+    "paragraphs": [
+      "Hi! It's Lucía again. I arrived in Dublin, Ireland, exactly one month ago. I'm studying English at a language school here for six months. My friends in Arequipa keep asking me, 'How is it?' So here is my answer!",
+      "The first week was hard. When I arrived, it was raining and very cold, colder than any winter in Arequipa! I didn't understand the bus drivers because they speak very fast, and I got lost twice. I was also a bit lonely at first.",
+      "But things are better now. I live with a host family, the Byrnes. They have two kids and a very lazy cat. Mrs Byrne makes a big dinner every evening, and we talk about our day. My English is improving fast because I have to speak it all the time.",
+      "My classmates come from Brazil, Japan, Turkey and Spain. Last weekend we went to the coast together. We walked on the cliffs, and the sea was beautiful but very windy. Then we ate fish and chips on the beach.",
+      "Next month, I'm going to look for a part-time job in a café. I'm a bit nervous, but I'm going to try! I miss my mum's cooking, though. Irish potatoes are good, but nothing is better than her rocoto relleno."
+    ],
+    "glossary": [
+      [
+        "get lost (got lost)",
+        "perderse"
+      ],
+      [
+        "lonely",
+        "solo/a, con sentimiento de soledad"
+      ],
+      [
+        "host family",
+        "familia anfitriona"
+      ],
+      [
+        "lazy",
+        "perezoso"
+      ],
+      [
+        "improve",
+        "mejorar"
+      ],
+      [
+        "coast",
+        "costa"
+      ],
+      [
+        "cliff",
+        "acantilado"
+      ],
+      [
+        "part-time",
+        "de medio tiempo"
+      ],
+      [
+        "miss",
+        "extrañar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long is Lucía going to study in Dublin?",
+        "options": [
+          "One month",
+          "Two weeks",
+          "One year",
+          "Six months"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 1 dice: 'I'm studying English at a language school here for six months'."
+      },
+      {
+        "type": "mc",
+        "q": "Why was the first week hard?",
+        "options": [
+          "She lost her passport",
+          "It was cold and she got lost",
+          "Her host family was unfriendly",
+          "She had no classes"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 menciona el frío, que se perdió dos veces y que se sentía sola."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía lives in a student flat.",
+        "answer": "F",
+        "explain_es": "Lucía vive con una familia anfitriona: 'I live with a host family, the Byrnes'."
+      },
+      {
+        "type": "gap",
+        "q": "The Byrnes have two kids and a very lazy ____.",
+        "answer": "cat",
+        "explain_es": "El párrafo 3 dice: 'two kids and a very lazy cat'."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía's classmates come from different countries.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice que vienen de Brasil, Japón, Turquía y España."
+      },
+      {
+        "type": "tf",
+        "q": "Mr Byrne works at a bank.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada sobre el trabajo del señor Byrne."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'lonely' means…",
+        "options": [
+          "very tired",
+          "sad because you are alone",
+          "very hungry"
+        ],
+        "answer": 1,
+        "explain_es": "'Lonely' significa sentirse solo, triste por estar sin compañía."
+      },
+      {
+        "type": "gap",
+        "q": "Next month, Lucía is going to look for a part-time job in a ____.",
+        "answer": "café",
+        "accept": [
+          "cafe"
+        ],
+        "explain_es": "El párrafo 5 dice: 'a part-time job in a café'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Lucía miss?",
+        "options": [
+          "The rain",
+          "Irish potatoes",
+          "Her mum's cooking",
+          "The bus drivers"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'I miss my mum's cooking'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-library-summer-courses",
+    "title": "Free Summer Courses at the Library",
+    "level": "A2",
+    "genre": "notice",
+    "topic": "Free time",
+    "emoji": "📢",
+    "words": 202,
+    "paragraphs": [
+      "LOS ANDES COMMUNITY LIBRARY: FREE SUMMER COURSES. Are you bored during the holidays? Do you want to learn something new? This year, our library is going to offer four free courses from 8 July to 16 August. All courses are for young people aged 12 to 17.",
+      "Photography (Mondays and Wednesdays, 3 to 5 p.m.). Learn how to take better photos with your phone. You don't need an expensive camera! At the end of the course, there is going to be an exhibition of your best pictures in the library.",
+      "Creative Writing (Tuesdays, 4 to 6 p.m.). Write short stories and poems, and share them with the group. Our teacher, Pilar Gómez, is a writer of children's books.",
+      "Basic Coding (Thursdays, 2 to 4 p.m.). Make your first simple game on the computer. There are only 15 places because the library has only 15 computers.",
+      "Chess Club (Saturdays, 10 a.m. to 12 p.m.). For beginners and for more experienced players.",
+      "How to register: Come to the information desk with a parent or guardian before 30 June. Bring a copy of your ID card. The courses are free, but please register early. Last year, the coding course was full in only two days!"
+    ],
+    "glossary": [
+      [
+        "bored",
+        "aburrido"
+      ],
+      [
+        "exhibition",
+        "exposición"
+      ],
+      [
+        "share",
+        "compartir"
+      ],
+      [
+        "places",
+        "cupos"
+      ],
+      [
+        "beginner",
+        "principiante"
+      ],
+      [
+        "experienced",
+        "con experiencia"
+      ],
+      [
+        "register",
+        "inscribirse"
+      ],
+      [
+        "guardian",
+        "acudiente, tutor legal"
+      ],
+      [
+        "ID card",
+        "documento de identidad"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who can take the courses?",
+        "options": [
+          "Adults only",
+          "Young people aged 12 to 17",
+          "Children under 10",
+          "Teachers"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'All courses are for young people aged 12 to 17'."
+      },
+      {
+        "type": "tf",
+        "q": "You need an expensive camera for the photography course.",
+        "answer": "F",
+        "explain_es": "El aviso dice: 'You don't need an expensive camera!'."
+      },
+      {
+        "type": "tf",
+        "q": "The courses are free.",
+        "answer": "T",
+        "explain_es": "El aviso dice varias veces que los cursos son gratis: 'four free courses'."
+      },
+      {
+        "type": "gap",
+        "q": "The creative writing teacher is Pilar ____.",
+        "answer": "Gómez",
+        "accept": [
+          "Gomez"
+        ],
+        "explain_es": "El párrafo 3 dice: 'Our teacher, Pilar Gómez'."
+      },
+      {
+        "type": "mc",
+        "q": "Why are there only 15 places in Basic Coding?",
+        "options": [
+          "It is expensive",
+          "The teacher is busy",
+          "It is on Saturdays",
+          "The library has only 15 computers"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'because the library has only 15 computers'."
+      },
+      {
+        "type": "tf",
+        "q": "The chess club has a famous teacher.",
+        "answer": "NG",
+        "explain_es": "El aviso no dice nada sobre el profesor del club de ajedrez."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, 'beginners' are…",
+        "options": [
+          "people who win games",
+          "people who are starting to learn something",
+          "people who work at the library"
+        ],
+        "answer": 1,
+        "explain_es": "'Beginners' son principiantes, personas que empiezan a aprender."
+      },
+      {
+        "type": "gap",
+        "q": "You must register before 30 ____.",
+        "answer": "June",
+        "explain_es": "El párrafo 6 dice: 'before 30 June'."
+      },
+      {
+        "type": "mc",
+        "q": "What happened last year?",
+        "options": [
+          "The library closed",
+          "Nobody came to the courses",
+          "The coding course was full in two days",
+          "The chess club won a prize"
+        ],
+        "answer": 2,
+        "explain_es": "El aviso dice: 'Last year, the coding course was full in only two days!'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-pocket-money",
+    "title": "Should Teenagers Get Pocket Money?",
+    "level": "A2",
+    "genre": "opinion",
+    "topic": "Money",
+    "emoji": "💰",
+    "words": 224,
+    "paragraphs": [
+      "Many parents give their children a small amount of money every week or month. In English, this is called 'pocket money'. Some people think it is a great idea, but others don't agree. I'm Andrés, I'm sixteen, and this is my opinion.",
+      "I think pocket money is important because it teaches you how to manage money. When I was thirteen, my parents started giving me 20,000 pesos a week. At first, I spent everything on snacks and video games in two days. Then I had nothing for the rest of the week! It was a hard lesson, but a useful one.",
+      "Now I'm more careful. I write down what I spend in a notebook, and I save a little every week. Last year, I saved enough money to buy a second-hand guitar. That felt much better than asking my parents for it.",
+      "Of course, not all families can give pocket money, and that's OK. Some teenagers earn money by helping neighbors, for example by walking dogs or washing cars. Other people say that children should help at home for free, not for money. I agree with that. I don't get paid for washing the dishes!",
+      "In my opinion, a small amount of pocket money is a good way to learn. Mistakes with small amounts are cheaper than mistakes with big amounts later in life."
+    ],
+    "glossary": [
+      [
+        "amount",
+        "cantidad"
+      ],
+      [
+        "manage",
+        "administrar"
+      ],
+      [
+        "spend (spent)",
+        "gastar"
+      ],
+      [
+        "useful",
+        "útil"
+      ],
+      [
+        "save",
+        "ahorrar"
+      ],
+      [
+        "second-hand",
+        "de segunda mano"
+      ],
+      [
+        "earn",
+        "ganar (dinero)"
+      ],
+      [
+        "get paid",
+        "recibir pago"
+      ],
+      [
+        "mistake",
+        "error"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How old was Andrés when he started getting pocket money?",
+        "options": [
+          "Ten",
+          "Sixteen",
+          "Thirteen",
+          "Twelve"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'When I was thirteen, my parents started giving me 20,000 pesos a week'."
+      },
+      {
+        "type": "tf",
+        "q": "At first, Andrés spent all his money in two days.",
+        "answer": "T",
+        "explain_es": "El texto dice: 'I spent everything on snacks and video games in two days'."
+      },
+      {
+        "type": "gap",
+        "q": "Andrés writes down what he spends in a ____.",
+        "answer": "notebook",
+        "explain_es": "El párrafo 3 dice: 'I write down what I spend in a notebook'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Andrés buy with his savings?",
+        "options": [
+          "Video games",
+          "A second-hand guitar",
+          "A new phone",
+          "Snacks"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'I saved enough money to buy a second-hand guitar'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'second-hand' means…",
+        "options": [
+          "used before by someone else",
+          "new and expensive",
+          "made by hand"
+        ],
+        "answer": 0,
+        "explain_es": "'Second-hand' significa de segunda mano, usado antes por otra persona."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés gets money for washing the dishes.",
+        "answer": "F",
+        "explain_es": "Andrés dice: 'I don't get paid for washing the dishes!'."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés's sister also gets pocket money.",
+        "answer": "NG",
+        "explain_es": "El texto no menciona ninguna hermana de Andrés."
+      },
+      {
+        "type": "gap",
+        "q": "Some teenagers earn money by walking dogs or washing ____.",
+        "answer": "cars",
+        "explain_es": "El párrafo 4 dice: 'by walking dogs or washing cars'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Andrés's main opinion?",
+        "options": [
+          "Pocket money is a bad idea",
+          "Children need a lot of money",
+          "Parents should pay for housework",
+          "A small amount of pocket money helps you learn"
+        ],
+        "answer": 3,
+        "explain_es": "La conclusión dice: 'a small amount of pocket money is a good way to learn'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-baby-turtles",
+    "title": "Volunteers Help Baby Turtles Reach the Sea",
+    "level": "A2",
+    "genre": "news",
+    "topic": "Animals & environment",
+    "emoji": "🐢",
+    "words": 197,
+    "paragraphs": [
+      "Last weekend, more than 300 baby sea turtles walked across the sand and into the Caribbean Sea at Playa Escondida. It was a happy moment for a group of volunteers who protected the turtle eggs for almost two months.",
+      "Earlier this year, several female turtles came to the beach at night and laid their eggs in the sand. Local fishermen saw them and called a small environmental group. The volunteers, most of them students from the town's high school, put a fence around the nests. They also took turns watching the beach every night.",
+      "Sea turtles have many problems. Plastic is very dangerous for them, because they think plastic bags are jellyfish and eat them. Lights are another problem. Baby turtles move toward the brightest light. Usually this is the moon over the sea, but sometimes it is a street lamp, so they walk the wrong way.",
+      "'We were very tired after many nights on the beach, but it was worth it,' said Mateo Ruiz, 17, one of the volunteers. The group is now going to visit schools to teach children about turtles. They also want restaurants near the beach to turn off their lights at night."
+    ],
+    "glossary": [
+      [
+        "sand",
+        "arena"
+      ],
+      [
+        "volunteer",
+        "voluntario/a"
+      ],
+      [
+        "lay eggs (laid)",
+        "poner huevos"
+      ],
+      [
+        "fence",
+        "cerca"
+      ],
+      [
+        "nest",
+        "nido"
+      ],
+      [
+        "take turns",
+        "turnarse"
+      ],
+      [
+        "jellyfish",
+        "medusa"
+      ],
+      [
+        "bright",
+        "brillante"
+      ],
+      [
+        "worth it",
+        "que vale la pena"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "More than 300 baby turtles went into the sea.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'more than 300 baby sea turtles walked across the sand and into the Caribbean Sea'."
+      },
+      {
+        "type": "mc",
+        "q": "Who protected the turtle eggs?",
+        "options": [
+          "Hotel workers",
+          "A group of volunteers",
+          "The police",
+          "Tourists"
+        ],
+        "answer": 1,
+        "explain_es": "El texto habla de 'a group of volunteers who protected the turtle eggs'."
+      },
+      {
+        "type": "tf",
+        "q": "The volunteers were mostly university students.",
+        "answer": "F",
+        "explain_es": "Eran estudiantes del colegio: 'students from the town's high school'."
+      },
+      {
+        "type": "gap",
+        "q": "The volunteers put a ____ around the nests.",
+        "answer": "fence",
+        "explain_es": "El párrafo 2 dice: 'put a fence around the nests'."
+      },
+      {
+        "type": "mc",
+        "q": "Why do turtles eat plastic bags?",
+        "options": [
+          "They think the bags are jellyfish",
+          "They like the colour",
+          "People give the bags to them",
+          "They are very hungry"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'they think plastic bags are jellyfish'."
+      },
+      {
+        "type": "gap",
+        "q": "Baby turtles move toward the brightest ____.",
+        "answer": "light",
+        "explain_es": "El párrafo 3 dice: 'Baby turtles move toward the brightest light'."
+      },
+      {
+        "type": "tf",
+        "q": "The group got money from the government.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada sobre dinero del gobierno."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'it was worth it' means…",
+        "options": [
+          "it was a waste of time",
+          "it was good, even if it was difficult",
+          "it was very expensive"
+        ],
+        "answer": 1,
+        "explain_es": "'Worth it' significa que valió la pena, aunque fue difícil."
+      },
+      {
+        "type": "mc",
+        "q": "What is the group going to do now?",
+        "options": [
+          "Build a new hotel",
+          "Sell photos of turtles",
+          "Visit schools to teach children about turtles",
+          "Close the beach"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'The group is now going to visit schools to teach children about turtles'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-garage-band",
+    "title": "Making Music in the Garage",
+    "level": "A2",
+    "genre": "interview",
+    "topic": "Music",
+    "emoji": "🎸",
+    "words": 201,
+    "paragraphs": [
+      "Las Nubes Rojas is a rock band from Guadalajara, Mexico. The four members started playing together in a garage three years ago. Last month, their first song online got 100,000 plays. We talked to the drummer, Ximena Torres, 19.",
+      "How did the band start? We were classmates at school. One day, my friend Rubén brought his guitar to a party, and we started playing together. My parents had an old garage, so we practised there every Friday and Saturday. Our neighbors weren't very happy about the noise!",
+      "What kind of music do you play? It's rock, but we mix it with mariachi trumpets and some cumbia rhythms. We sing in Spanish and in English. Our music is louder than traditional Mexican music, but people of all ages like it.",
+      "What was your best moment? Last December, we played at a small festival. We were very nervous before the concert. But when we started the first song, the people were singing our words! I was so surprised that I almost dropped my drumsticks.",
+      "What are your plans? We're going to record our first album next year. We don't have much money, so we're going to record it in the garage, of course!"
+    ],
+    "glossary": [
+      [
+        "drummer",
+        "baterista"
+      ],
+      [
+        "practise",
+        "ensayar"
+      ],
+      [
+        "noise",
+        "ruido"
+      ],
+      [
+        "rhythm",
+        "ritmo"
+      ],
+      [
+        "louder",
+        "más fuerte, más ruidoso"
+      ],
+      [
+        "nervous",
+        "nervioso"
+      ],
+      [
+        "drop",
+        "dejar caer"
+      ],
+      [
+        "drumsticks",
+        "baquetas"
+      ],
+      [
+        "record",
+        "grabar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What instrument does Ximena play?",
+        "options": [
+          "The drums",
+          "The guitar",
+          "The trumpet",
+          "The piano"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 1 dice: 'We talked to the drummer, Ximena Torres'."
+      },
+      {
+        "type": "gap",
+        "q": "Their first song online got ____ plays.",
+        "answer": "100,000",
+        "accept": [
+          "100000",
+          "100.000",
+          "one hundred thousand"
+        ],
+        "explain_es": "El párrafo 1 dice: 'their first song online got 100,000 plays'."
+      },
+      {
+        "type": "tf",
+        "q": "The band members were classmates.",
+        "answer": "T",
+        "explain_es": "Ximena dice: 'We were classmates at school'."
+      },
+      {
+        "type": "mc",
+        "q": "Where did the band practise?",
+        "options": [
+          "At school",
+          "In a music studio",
+          "In a garage",
+          "In a park"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'My parents had an old garage, so we practised there'."
+      },
+      {
+        "type": "mc",
+        "q": "Why were the neighbors not happy?",
+        "options": [
+          "The band played at night",
+          "The garage was dirty",
+          "Because of the noise",
+          "They wanted to join the band"
+        ],
+        "answer": 2,
+        "explain_es": "El texto dice: 'Our neighbors weren't very happy about the noise!'."
+      },
+      {
+        "type": "tf",
+        "q": "The band only sings in Spanish.",
+        "answer": "F",
+        "explain_es": "Ximena dice: 'We sing in Spanish and in English'."
+      },
+      {
+        "type": "gap",
+        "q": "They mix rock with mariachi trumpets and some cumbia ____.",
+        "answer": "rhythms",
+        "explain_es": "El párrafo 3 dice: 'some cumbia rhythms'."
+      },
+      {
+        "type": "tf",
+        "q": "Rubén is the singer of the band.",
+        "answer": "NG",
+        "explain_es": "El texto dice que Rubén llevó su guitarra, pero no dice quién canta."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, 'record' means…",
+        "options": [
+          "break a world record",
+          "make a copy of music to listen to later",
+          "write a list"
+        ],
+        "answer": 1,
+        "explain_es": "'Record' como verbo aquí es grabar música."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-cooking-class-lima",
+    "title": "A Cooking Class in Lima",
+    "level": "A2",
+    "genre": "review",
+    "topic": "Food",
+    "emoji": "🍲",
+    "words": 213,
+    "paragraphs": [
+      "Cooking class review by Hannah, from Canada. My score: five stars out of five.",
+      "I was in Lima for a week with my sister, and we wanted to do something different. Our hotel recommended a cooking class in the Barranco neighbourhood, so we booked it for our last day. It was the best decision of the whole trip!",
+      "The class started at a local market. Our teacher, Chef Rosa, showed us fruits that I didn't know, like lúcuma and cherimoya. She explained that Peru has thousands of kinds of potatoes. We tried a lot of things, and I bought a bag of purple corn to take home.",
+      "Then we went back to the kitchen and cooked three dishes: ceviche, lomo saltado and a dessert with purple corn. Making ceviche was easier than I expected. You only need very fresh fish, lime juice, onion, chili and salt. Chef Rosa was patient and funny, and she gave us lots of useful tips.",
+      "The class was four hours long and cost 90 dollars per person. It was more expensive than other activities, but the food was delicious. The group was small, only six people. My only complaint is that the kitchen was very hot. I'm going to cook ceviche for my friends in Toronto next month!"
+    ],
+    "glossary": [
+      [
+        "neighbourhood",
+        "barrio"
+      ],
+      [
+        "book (booked)",
+        "reservar"
+      ],
+      [
+        "purple corn",
+        "maíz morado"
+      ],
+      [
+        "dish",
+        "plato"
+      ],
+      [
+        "lime",
+        "limón"
+      ],
+      [
+        "chili",
+        "ají"
+      ],
+      [
+        "patient",
+        "paciente"
+      ],
+      [
+        "tip",
+        "consejo"
+      ],
+      [
+        "complaint",
+        "queja"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "Hannah travelled with her sister.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'I was in Lima for a week with my sister'."
+      },
+      {
+        "type": "mc",
+        "q": "Where did the class start?",
+        "options": [
+          "In the hotel",
+          "At a local market",
+          "In a restaurant",
+          "At the beach"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'The class started at a local market'."
+      },
+      {
+        "type": "gap",
+        "q": "Hannah bought a bag of purple ____ to take home.",
+        "answer": "corn",
+        "explain_es": "El párrafo 3 dice: 'I bought a bag of purple corn'."
+      },
+      {
+        "type": "tf",
+        "q": "Making ceviche was more difficult than Hannah expected.",
+        "answer": "F",
+        "explain_es": "Hannah dice: 'Making ceviche was easier than I expected'."
+      },
+      {
+        "type": "tf",
+        "q": "Chef Rosa has her own restaurant.",
+        "answer": "NG",
+        "explain_es": "El texto no dice si Chef Rosa tiene un restaurante."
+      },
+      {
+        "type": "mc",
+        "q": "How much did the class cost?",
+        "options": [
+          "Nothing, it was free",
+          "60 dollars per person",
+          "90 dollars for two people",
+          "90 dollars per person"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'cost 90 dollars per person'."
+      },
+      {
+        "type": "gap",
+        "q": "The group was small, only ____ people.",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "El párrafo 5 dice: 'The group was small, only six people'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, a 'complaint' is…",
+        "options": [
+          "a thank-you message",
+          "something you are not happy about",
+          "a recipe"
+        ],
+        "answer": 1,
+        "explain_es": "'Complaint' es una queja, algo que no te gustó."
+      },
+      {
+        "type": "mc",
+        "q": "What is Hannah going to do next month?",
+        "options": [
+          "Go back to Lima",
+          "Open a restaurant",
+          "Take another class in Toronto",
+          "Cook ceviche for her friends"
+        ],
+        "answer": 3,
+        "explain_es": "La última frase dice: 'I'm going to cook ceviche for my friends in Toronto next month!'."
+      }
+    ]
+  },
+  {
+    "id": "r-a2-holiday-plans",
+    "title": "Plans for the December Holidays",
+    "level": "A2",
+    "genre": "email",
+    "topic": "Family & travel",
+    "emoji": "🏖️",
+    "words": 221,
+    "paragraphs": [
+      "Hi Sebas, How are you? I'm so happy that you and Aunt Clara are going to visit us in December! The last time I saw you was five years ago, when you were only eight. Mum asked me to write and tell you our plans.",
+      "You're going to arrive in Bogotá on the 18th, right? Dad is going to pick you up at the airport. Bogotá isn't as cold as Madrid, where you live, but it can be cold at night, so bring a warm jacket!",
+      "On the 20th, we're going to drive to Grandma's farm near Villeta. It's lower than Bogotá, so it's much hotter. There's a swimming pool, mango trees and lots of chickens. All the family is going to be there for Christmas: about thirty people! On the 24th, we're going to have a big dinner and open presents at midnight. That's our tradition.",
+      "After Christmas, we're going to spend four days on the coast, in Santa Marta. I want to take you to Tayrona Park. You have to walk for about two hours through the forest to get to the best beach, but it's worth it.",
+      "Do you still like football? My friends and I play every Saturday, so you can join us. Write back soon and tell me what you want to do here! Hugs, Natalia"
+    ],
+    "glossary": [
+      [
+        "aunt",
+        "tía"
+      ],
+      [
+        "pick up",
+        "recoger"
+      ],
+      [
+        "warm",
+        "abrigado"
+      ],
+      [
+        "farm",
+        "finca"
+      ],
+      [
+        "lower",
+        "más bajo"
+      ],
+      [
+        "midnight",
+        "medianoche"
+      ],
+      [
+        "coast",
+        "costa"
+      ],
+      [
+        "forest",
+        "bosque"
+      ],
+      [
+        "hugs",
+        "abrazos"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "Natalia last saw Sebas five years ago.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'The last time I saw you was five years ago'."
+      },
+      {
+        "type": "mc",
+        "q": "Who is going to pick Sebas up at the airport?",
+        "options": [
+          "Natalia",
+          "Aunt Clara",
+          "Natalia's dad",
+          "Grandma"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Dad is going to pick you up at the airport'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does Sebas live?",
+        "options": [
+          "Bogotá",
+          "Santa Marta",
+          "Madrid",
+          "Villeta"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Madrid, where you live'."
+      },
+      {
+        "type": "mc",
+        "q": "Why is Villeta hotter than Bogotá?",
+        "options": [
+          "It is near the sea",
+          "It is lower than Bogotá",
+          "It has a swimming pool",
+          "It is in the desert"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'It's lower than Bogotá, so it's much hotter'."
+      },
+      {
+        "type": "gap",
+        "q": "About ____ people are going to be at Grandma's farm for Christmas.",
+        "answer": "thirty",
+        "accept": [
+          "30"
+        ],
+        "explain_es": "El párrafo 3 dice: 'about thirty people!'."
+      },
+      {
+        "type": "tf",
+        "q": "The family is going to open presents on the morning of the 25th.",
+        "answer": "F",
+        "explain_es": "Van a abrir los regalos 'at midnight' el 24."
+      },
+      {
+        "type": "gap",
+        "q": "To get to the best beach, you have to walk through the ____.",
+        "answer": "forest",
+        "explain_es": "El párrafo 4 dice: 'walk for about two hours through the forest'."
+      },
+      {
+        "type": "tf",
+        "q": "Aunt Clara is a doctor.",
+        "answer": "NG",
+        "explain_es": "El correo no dice cuál es el trabajo de la tía Clara."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, 'join us' means…",
+        "options": [
+          "play with us",
+          "watch us",
+          "call us"
+        ],
+        "answer": 0,
+        "explain_es": "'Join us' significa unirse a nosotros, jugar con nosotros."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-why-we-dream",
+    "title": "Why Do We Dream?",
+    "level": "B1",
+    "genre": "science",
+    "topic": "Science & health",
+    "emoji": "🌙",
+    "words": 322,
+    "paragraphs": [
+      "Every night, most of us spend about two hours dreaming, even if we don't remember it in the morning. Over a lifetime, that adds up to around six years. For thousands of years, people have tried to explain dreams. Some ancient cultures believed they were messages from the gods, while others thought they could predict the future. Today, scientists have better tools to study them, but they still haven't found a complete answer.",
+      "What we do know is that most vivid dreams happen during a stage of sleep called REM, which stands for 'rapid eye movement'. During REM sleep, our eyes move quickly under the eyelids, and our brain is almost as active as when we are awake. At the same time, most of the muscles in our body are temporarily switched off. Researchers believe this stops us from acting out our dreams, for example running or kicking while we are still in bed.",
+      "There are several theories about why we dream. One popular idea is that dreams help the brain to organise memories. During the day, we receive huge amounts of information, and sleep may be the time when the brain decides what to keep and what to forget. Another theory suggests that dreams allow us to practise dealing with threats in a safe environment, which could explain why so many dreams involve being chased or falling.",
+      "Dreams may also be connected to our emotions. Studies have shown that people who are going through a stressful period often have more negative dreams. If you have ever dreamt about an exam you hadn't studied for, you are certainly not alone.",
+      "So, should you pay attention to your dreams? Scientists say they are not secret codes, but they can tell us something about what is on our mind. If you want to remember them better, try keeping a notebook next to your bed and writing them down as soon as you wake up."
+    ],
+    "glossary": [
+      [
+        "lifetime",
+        "toda la vida"
+      ],
+      [
+        "predict",
+        "predecir"
+      ],
+      [
+        "vivid",
+        "vívido, intenso"
+      ],
+      [
+        "eyelid",
+        "párpado"
+      ],
+      [
+        "awake",
+        "despierto"
+      ],
+      [
+        "act out",
+        "representar con el cuerpo"
+      ],
+      [
+        "threat",
+        "amenaza"
+      ],
+      [
+        "chase (chased)",
+        "perseguir"
+      ],
+      [
+        "stressful",
+        "estresante"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How much time do most people spend dreaming each night?",
+        "options": [
+          "About thirty minutes",
+          "About six hours",
+          "About two hours",
+          "It depends on the dream"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'most of us spend about two hours dreaming'."
+      },
+      {
+        "type": "tf",
+        "q": "Scientists have found a complete explanation for dreams.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'they still haven't found a complete answer'."
+      },
+      {
+        "type": "gap",
+        "q": "REM stands for 'rapid eye ____'.",
+        "answer": "movement",
+        "explain_es": "El párrafo 2 dice: 'REM, which stands for rapid eye movement'."
+      },
+      {
+        "type": "tf",
+        "q": "During REM sleep, the brain is almost as active as when we are awake.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 lo dice exactamente: 'our brain is almost as active as when we are awake'."
+      },
+      {
+        "type": "mc",
+        "q": "What happens to most of our muscles during REM sleep?",
+        "options": [
+          "They move quickly",
+          "They are temporarily switched off",
+          "They grow stronger",
+          "They become hot"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'most of the muscles in our body are temporarily switched off'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'vivid' means…",
+        "options": [
+          "clear and strong",
+          "short and boring",
+          "dark and frightening"
+        ],
+        "answer": 0,
+        "explain_es": "'Vivid' describe algo muy claro e intenso."
+      },
+      {
+        "type": "mc",
+        "q": "According to one theory, why do we often dream about being chased?",
+        "options": [
+          "Because we watch too many action films",
+          "Because our muscles are tired",
+          "Because we eat late at night",
+          "Because dreams let us practise dealing with danger safely"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 dice que los sueños nos permiten 'practise dealing with threats in a safe environment'."
+      },
+      {
+        "type": "gap",
+        "q": "People going through a stressful period often have more ____ dreams.",
+        "answer": "negative",
+        "explain_es": "El párrafo 4 dice: 'often have more negative dreams'."
+      },
+      {
+        "type": "tf",
+        "q": "Children dream more than adults.",
+        "answer": "NG",
+        "explain_es": "El texto no compara los sueños de niños y adultos."
+      },
+      {
+        "type": "gap",
+        "q": "To remember your dreams, keep a ____ next to your bed.",
+        "answer": "notebook",
+        "explain_es": "El párrafo 5 dice: 'try keeping a notebook next to your bed'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-katherine-johnson",
+    "title": "Katherine Johnson: Counting to the Moon",
+    "level": "B1",
+    "genre": "biography",
+    "topic": "History & science",
+    "emoji": "🚀",
+    "words": 307,
+    "paragraphs": [
+      "Long before computers were small enough to fit in our pockets, the word 'computer' described a job, not a machine. In the 1950s, 'computers' were people, very often women, who did complex mathematical calculations by hand. One of the most brilliant of them was Katherine Johnson, whose work helped send the first Americans into space.",
+      "Johnson was born in 1918 in West Virginia, in the United States. From an early age, she was fascinated by numbers and counted everything around her. She was so talented that she finished high school at 14 and graduated from university at 18. However, opportunities for a Black woman in science were extremely limited at that time, so she worked as a teacher for several years.",
+      "In 1953, she was hired by the organisation that later became NASA. At first, Black women mathematicians were made to work in a separate office, because the laws of the time kept Black and white people apart. Johnson refused to let this stop her. She asked questions, went to meetings where women were not usually invited, and soon earned the respect of the engineers.",
+      "Her calculations were essential for the flight of Alan Shepard, the first American in space, in 1961. A year later, before John Glenn became the first American to orbit the Earth, the astronaut insisted that she personally check the numbers produced by the new electronic computers. She also worked on calculations for the Apollo 11 mission, which took humans to the Moon in 1969.",
+      "For many years, her contribution was almost unknown to the public. That changed in 2015, when she was awarded the Presidential Medal of Freedom, and in 2016, when the film Hidden Figures told her story. Johnson died in 2020 at the age of 101, but she remains an inspiration for young people who dream of careers in science."
+    ],
+    "glossary": [
+      [
+        "calculation",
+        "cálculo"
+      ],
+      [
+        "by hand",
+        "a mano"
+      ],
+      [
+        "talented",
+        "talentoso"
+      ],
+      [
+        "hire (hired)",
+        "contratar"
+      ],
+      [
+        "refuse",
+        "negarse"
+      ],
+      [
+        "earn respect",
+        "ganarse el respeto"
+      ],
+      [
+        "essential",
+        "fundamental"
+      ],
+      [
+        "orbit",
+        "orbitar, dar la vuelta a"
+      ],
+      [
+        "award (awarded)",
+        "otorgar un premio"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "In the 1950s, what did the word 'computer' describe?",
+        "options": [
+          "A large machine",
+          "A person who did calculations",
+          "A type of rocket",
+          "A university course"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'computers were people... who did complex mathematical calculations by hand'."
+      },
+      {
+        "type": "tf",
+        "q": "Johnson finished high school at 14.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'she finished high school at 14'."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Johnson work as a teacher for several years?",
+        "options": [
+          "She preferred teaching to science",
+          "She failed her university exams",
+          "Opportunities for Black women in science were very limited",
+          "She wanted to live near her family"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice que las oportunidades para una mujer negra en la ciencia eran muy limitadas."
+      },
+      {
+        "type": "gap",
+        "q": "In 1953, she was hired by the organisation that later became ____.",
+        "answer": "NASA",
+        "explain_es": "El párrafo 3 dice: 'the organisation that later became NASA'."
+      },
+      {
+        "type": "tf",
+        "q": "At first, Black women mathematicians worked in the same office as everyone else.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice que trabajaban 'in a separate office'."
+      },
+      {
+        "type": "mc",
+        "q": "What did John Glenn ask for before his flight?",
+        "options": [
+          "That the flight be delayed",
+          "A new electronic computer",
+          "More training",
+          "That Johnson personally check the numbers"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice que Glenn insistió en que ella revisara personalmente los números."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'essential' means…",
+        "options": [
+          "extremely important",
+          "completely wrong",
+          "very easy"
+        ],
+        "answer": 0,
+        "explain_es": "'Essential' significa fundamental, muy importante."
+      },
+      {
+        "type": "tf",
+        "q": "Johnson met Alan Shepard in person.",
+        "answer": "NG",
+        "explain_es": "El texto dice que sus cálculos fueron clave para su vuelo, pero no dice si lo conoció."
+      },
+      {
+        "type": "gap",
+        "q": "In 2016, the film ____ told her story.",
+        "answer": "Hidden Figures",
+        "explain_es": "El párrafo 5 dice: 'the film Hidden Figures told her story'."
+      },
+      {
+        "type": "gap",
+        "q": "Johnson died in 2020 at the age of ____.",
+        "answer": "101",
+        "accept": [
+          "one hundred and one",
+          "one hundred one"
+        ],
+        "explain_es": "El párrafo 5 dice: 'at the age of 101'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-homework-debate",
+    "title": "Homework: Help or Headache?",
+    "level": "B1",
+    "genre": "opinion",
+    "topic": "School life",
+    "emoji": "📝",
+    "words": 265,
+    "paragraphs": [
+      "Few topics cause as many arguments in schools as homework. Students complain that they spend their evenings doing worksheets instead of resting, while many parents and teachers insist that homework is essential for success. I have been a secondary school teacher in Cali for eight years, and I have changed my mind about this question more than once.",
+      "There are good arguments in favour of homework. Practising at home helps students remember what they have learned in class, especially in subjects like maths and languages, where repetition really matters. Homework can also teach young people to organise their time and work independently, skills they will need at university and at work.",
+      "However, I have seen the other side too. Many of my students take long bus journeys, help their families after school or have part-time jobs. When they are given two or three hours of homework every night, they arrive at class exhausted. Some simply copy answers from a classmate or an app, which means the homework teaches them nothing.",
+      "So what is the answer? I don't think homework should be banned, but I believe it should be shorter and more meaningful. If a task takes twenty minutes and makes students think, for example reading a short article, interviewing a grandparent or solving one interesting problem, it is far more valuable than fifty repetitive exercises. Since I started giving less homework, my students have actually completed more of it, and the quality has improved.",
+      "Rest, family time and sport are also part of a good education. Homework should support learning, not replace a healthy life."
+    ],
+    "glossary": [
+      [
+        "argument",
+        "discusión; argumento"
+      ],
+      [
+        "worksheet",
+        "hoja de ejercicios"
+      ],
+      [
+        "insist",
+        "insistir"
+      ],
+      [
+        "independently",
+        "de forma independiente"
+      ],
+      [
+        "journey",
+        "trayecto, viaje"
+      ],
+      [
+        "exhausted",
+        "agotado"
+      ],
+      [
+        "ban (banned)",
+        "prohibir"
+      ],
+      [
+        "meaningful",
+        "significativo, con sentido"
+      ],
+      [
+        "valuable",
+        "valioso"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who is the writer?",
+        "options": [
+          "A student in Cali",
+          "A parent",
+          "A secondary school teacher",
+          "A university researcher"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'I have been a secondary school teacher in Cali for eight years'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer has always had the same opinion about homework.",
+        "answer": "F",
+        "explain_es": "El autor dice: 'I have changed my mind about this question more than once'."
+      },
+      {
+        "type": "mc",
+        "q": "In which subjects is repetition especially important, according to the writer?",
+        "options": [
+          "Art and music",
+          "Maths and languages",
+          "History and science",
+          "Sport"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'especially in subjects like maths and languages'."
+      },
+      {
+        "type": "tf",
+        "q": "Some of the writer's students have part-time jobs.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 menciona estudiantes que 'have part-time jobs'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'exhausted' means…",
+        "options": [
+          "very excited",
+          "extremely tired",
+          "a little late"
+        ],
+        "answer": 1,
+        "explain_es": "'Exhausted' significa agotado, muy cansado."
+      },
+      {
+        "type": "gap",
+        "q": "Some students copy answers from a classmate or an ____.",
+        "answer": "app",
+        "explain_es": "El párrafo 3 dice: 'copy answers from a classmate or an app'."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's main opinion?",
+        "options": [
+          "Homework should be shorter and more meaningful",
+          "Homework should be completely banned",
+          "Students should get more homework every night",
+          "Only university students should get homework"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'it should be shorter and more meaningful'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer thinks fifty repetitive exercises are more valuable than one interesting task.",
+        "answer": "F",
+        "explain_es": "El autor dice que una tarea corta e interesante 'is far more valuable than fifty repetitive exercises'."
+      },
+      {
+        "type": "gap",
+        "q": "Since giving less homework, the writer says the ____ has improved.",
+        "answer": "quality",
+        "explain_es": "El párrafo 4 dice: 'and the quality has improved'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's school is a private school.",
+        "answer": "NG",
+        "explain_es": "El texto no dice si el colegio es público o privado."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-water-filter",
+    "title": "Students Turn Plastic Bottles into Water Filters",
+    "level": "B1",
+    "genre": "news",
+    "topic": "Technology & environment",
+    "emoji": "💧",
+    "words": 294,
+    "paragraphs": [
+      "A group of teenagers from La Esperanza, a small rural town in northern Colombia, have won a national science prize for a low-cost water filter that is made almost entirely from recycled materials. The filter, which was designed by five students aged 15 to 17, could help families who do not have regular access to clean drinking water.",
+      "The project began last year, after heavy rains damaged the town's water system. 'For weeks, people had to boil every drop of water they drank, and gas is expensive,' explained Valeria Mena, 16, one of the team members. 'Some families couldn't afford it, and some children got sick. We wanted to find a solution that anyone could build at home.'",
+      "The filter is built from a large plastic bottle that has been cut in half. Inside, the water passes through several layers: small stones, sand, charcoal and a piece of clean cotton cloth. Each layer removes a different kind of dirt. In the final step, the filtered water is left in a clear bottle in direct sunlight for at least six hours, a method that is known to kill many harmful bacteria.",
+      "With help from their chemistry teacher, the students tested water samples at a university laboratory in the nearest city. The results showed that the system removed most of the dirt and a large percentage of the bacteria. However, the team is careful to point out that their filter is not perfect. 'If the water has chemicals in it, our filter won't remove them,' Valeria said.",
+      "The prize includes 20 million pesos, which the students plan to use to build 200 filters for local families. They have also recorded a short video with step-by-step instructions so that people in other communities can make their own."
+    ],
+    "glossary": [
+      [
+        "low-cost",
+        "de bajo costo"
+      ],
+      [
+        "access",
+        "acceso"
+      ],
+      [
+        "boil",
+        "hervir"
+      ],
+      [
+        "afford",
+        "poder pagar, costear"
+      ],
+      [
+        "layer",
+        "capa"
+      ],
+      [
+        "charcoal",
+        "carbón vegetal"
+      ],
+      [
+        "harmful",
+        "dañino"
+      ],
+      [
+        "sample",
+        "muestra"
+      ],
+      [
+        "point out",
+        "señalar, aclarar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "The filter was designed by five students.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'designed by five students aged 15 to 17'."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the students start the project?",
+        "options": [
+          "Their teacher gave them homework",
+          "Heavy rains damaged the town's water system",
+          "They wanted to win money",
+          "A university asked them to"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'after heavy rains damaged the town's water system'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'afford' means…",
+        "options": [
+          "have enough money to pay for",
+          "want to buy",
+          "refuse to use"
+        ],
+        "answer": 0,
+        "explain_es": "'Afford' significa tener dinero suficiente para pagar algo."
+      },
+      {
+        "type": "gap",
+        "q": "The filter is built from a large plastic ____ that has been cut in half.",
+        "answer": "bottle",
+        "explain_es": "El párrafo 3 dice: 'built from a large plastic bottle'."
+      },
+      {
+        "type": "mc",
+        "q": "What is the final step of the filtering process?",
+        "options": [
+          "Passing the water through cotton",
+          "Boiling the water",
+          "Leaving the water in sunlight for at least six hours",
+          "Adding chemicals"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice que al final el agua se deja al sol al menos seis horas."
+      },
+      {
+        "type": "gap",
+        "q": "The students tested water samples at a university ____.",
+        "answer": "laboratory",
+        "explain_es": "El párrafo 4 dice: 'at a university laboratory'."
+      },
+      {
+        "type": "tf",
+        "q": "The filter removes chemicals from water.",
+        "answer": "F",
+        "explain_es": "Valeria dice: 'If the water has chemicals in it, our filter won't remove them'."
+      },
+      {
+        "type": "tf",
+        "q": "Valeria Mena is 17 years old.",
+        "answer": "F",
+        "explain_es": "El texto dice 'Valeria Mena, 16'."
+      },
+      {
+        "type": "tf",
+        "q": "The students' school is the only school in La Esperanza.",
+        "answer": "NG",
+        "explain_es": "El texto no dice cuántos colegios hay en el pueblo."
+      },
+      {
+        "type": "mc",
+        "q": "How do the students plan to use the prize money?",
+        "options": [
+          "To travel to another country",
+          "To buy equipment for the school",
+          "To pay for university",
+          "To build 200 filters for local families"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'to build 200 filters for local families'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-game-designer",
+    "title": "Inside the Job of a Game Designer",
+    "level": "B1",
+    "genre": "interview",
+    "topic": "Jobs & technology",
+    "emoji": "🎮",
+    "words": 303,
+    "paragraphs": [
+      "Camila Fuentes, 29, grew up in Santiago, Chile, and now works as a game designer for an independent studio in Montreal, Canada. Her latest game, a puzzle adventure set in the Andes, has been downloaded more than half a million times. We asked her what the job is really like.",
+      "Many teenagers dream of making video games. How did you get started? Honestly, by accident. I studied graphic design at university because I loved drawing. In my third year, a friend who was studying computer science asked me to help with the art for a small game. We worked on it every weekend for six months. It was never sold, but I discovered that I loved creating worlds that people could walk through.",
+      "What does a game designer actually do? People think we play games all day, which isn't true! A designer decides how the game works: the rules, the levels, what the player can do and why it's fun. I write a lot of documents, I draw maps on paper and I spend hours in meetings with programmers and artists. Then we test everything again and again. If players get bored or confused, we have to change it.",
+      "What is the hardest part of the job? Deadlines. Before a game is released, the team often works very long hours. I've also learned that most of your ideas won't work. You have to be ready to throw away something you've spent weeks on.",
+      "What advice would you give to young people who want to do this job? Don't wait for permission. There are free tools online, so start making small games now, even if they are simple. Finish them and show them to people. And study things outside games too, like history, music or psychology. The best ideas often come from somewhere unexpected."
+    ],
+    "glossary": [
+      [
+        "independent studio",
+        "estudio independiente"
+      ],
+      [
+        "download (downloaded)",
+        "descargar"
+      ],
+      [
+        "by accident",
+        "por casualidad"
+      ],
+      [
+        "level",
+        "nivel"
+      ],
+      [
+        "deadline",
+        "fecha límite"
+      ],
+      [
+        "release (released)",
+        "lanzar, publicar"
+      ],
+      [
+        "throw away",
+        "desechar, botar"
+      ],
+      [
+        "permission",
+        "permiso"
+      ],
+      [
+        "unexpected",
+        "inesperado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Her latest game is a puzzle adventure set in the ____.",
+        "answer": "Andes",
+        "explain_es": "El párrafo 1 dice: 'a puzzle adventure set in the Andes'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Camila study at university?",
+        "options": [
+          "Computer science",
+          "Graphic design",
+          "Music",
+          "Psychology"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'I studied graphic design at university'."
+      },
+      {
+        "type": "mc",
+        "q": "How did she start making games?",
+        "options": [
+          "She won a national competition",
+          "Her university offered a course",
+          "A friend asked her to help with the art for a small game",
+          "She started working in Montreal"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice que un amigo le pidió ayuda con el arte de un juego pequeño."
+      },
+      {
+        "type": "tf",
+        "q": "Camila's first game with her friend was sold online.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'It was never sold'."
+      },
+      {
+        "type": "tf",
+        "q": "Game designers spend a lot of time in meetings.",
+        "answer": "T",
+        "explain_es": "Camila dice: 'I spend hours in meetings with programmers and artists'."
+      },
+      {
+        "type": "gap",
+        "q": "If players get bored or ____, the team has to change the game.",
+        "answer": "confused",
+        "explain_es": "El párrafo 3 dice: 'If players get bored or confused, we have to change it'."
+      },
+      {
+        "type": "mc",
+        "q": "According to Camila, what is the hardest part of the job?",
+        "options": [
+          "Playing games all day",
+          "Drawing maps",
+          "Working with artists",
+          "Deadlines"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 responde: 'Deadlines'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'released' means…",
+        "options": [
+          "made available to the public",
+          "cancelled",
+          "repaired"
+        ],
+        "answer": 0,
+        "explain_es": "'Released' significa lanzado o publicado para el público."
+      },
+      {
+        "type": "tf",
+        "q": "Camila plans to return to Chile.",
+        "answer": "NG",
+        "explain_es": "La entrevista no habla de sus planes de volver a Chile."
+      },
+      {
+        "type": "mc",
+        "q": "What does Camila advise young people to do?",
+        "options": [
+          "Wait until they finish university",
+          "Start making small games now",
+          "Only study video games",
+          "Buy expensive software"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'start making small games now, even if they are simple'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-job-interview-guide",
+    "title": "How to Prepare for Your First Job Interview",
+    "level": "B1",
+    "genre": "guide",
+    "topic": "Work",
+    "emoji": "💼",
+    "words": 307,
+    "paragraphs": [
+      "Your first job interview can feel frightening, whether it is for a weekend job in a shop or an internship at a big company. The good news is that interviews are a skill, and like any skill, they can be learned. If you follow these steps, you will feel much more confident when the day arrives.",
+      "1. Research the company. Find out what the company does, who its customers are and what it believes in. Interviewers are often impressed when candidates can explain why they want to work for that particular company, not just any company.",
+      "2. Prepare your stories. Most interviewers will ask questions like 'Tell me about a time you solved a problem.' Even if you have never had a job, you can use examples from school projects, sports teams or volunteering. Describe the situation, what you did and what the result was.",
+      "3. Practise out loud. Ask a friend or family member to play the role of the interviewer. It may feel strange, but saying your answers out loud is very different from thinking them. You could also record yourself on your phone to check whether you speak too fast.",
+      "4. Plan the practical details. Check the address and how long it takes to get there, and aim to arrive ten minutes early. Choose clean, appropriate clothes the night before. If the interview is online, test your camera, microphone and internet connection in advance.",
+      "5. Ask your own questions. At the end, you will probably be asked if you have any questions. Always have one or two ready, such as 'What does a typical day look like in this job?' This shows that you are genuinely interested.",
+      "Finally, remember that an interview is a conversation, not an exam. Even if you don't get the job, every interview is good practice for the next one."
+    ],
+    "glossary": [
+      [
+        "frightening",
+        "aterrador"
+      ],
+      [
+        "internship",
+        "pasantía, práctica"
+      ],
+      [
+        "confident",
+        "seguro de sí mismo"
+      ],
+      [
+        "impressed",
+        "impresionado"
+      ],
+      [
+        "candidate",
+        "candidato/a"
+      ],
+      [
+        "out loud",
+        "en voz alta"
+      ],
+      [
+        "appropriate",
+        "apropiado"
+      ],
+      [
+        "in advance",
+        "con anticipación"
+      ],
+      [
+        "genuinely",
+        "de verdad, sinceramente"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to the guide, what often impresses interviewers?",
+        "options": [
+          "Expensive clothes",
+          "Candidates who can explain why they want that company",
+          "Very long answers",
+          "Arriving an hour early"
+        ],
+        "answer": 1,
+        "explain_es": "El paso 1 dice que los entrevistadores se impresionan cuando el candidato explica por qué quiere esa empresa en particular."
+      },
+      {
+        "type": "mc",
+        "q": "If you have never had a job, what examples can you use?",
+        "options": [
+          "Stories about your parents' jobs",
+          "Examples from films you have seen",
+          "Examples from school projects, sports teams or volunteering",
+          "It is better not to answer"
+        ],
+        "answer": 2,
+        "explain_es": "El paso 2 dice: 'you can use examples from school projects, sports teams or volunteering'."
+      },
+      {
+        "type": "mc",
+        "q": "Why should you practise out loud?",
+        "options": [
+          "Saying answers is very different from thinking them",
+          "The company asks you to",
+          "To memorise every word",
+          "To learn to speak faster"
+        ],
+        "answer": 0,
+        "explain_es": "El paso 3 dice: 'saying your answers out loud is very different from thinking them'."
+      },
+      {
+        "type": "tf",
+        "q": "The guide recommends recording yourself on your phone.",
+        "answer": "T",
+        "explain_es": "El paso 3 dice: 'You could also record yourself on your phone'."
+      },
+      {
+        "type": "tf",
+        "q": "The guide says you should arrive at least thirty minutes early.",
+        "answer": "F",
+        "explain_es": "El paso 4 dice: 'aim to arrive ten minutes early'."
+      },
+      {
+        "type": "gap",
+        "q": "Aim to arrive ____ minutes early.",
+        "answer": "ten",
+        "accept": [
+          "10"
+        ],
+        "explain_es": "El paso 4 dice: 'aim to arrive ten minutes early'."
+      },
+      {
+        "type": "gap",
+        "q": "For an online interview, test your camera, microphone and internet connection in ____.",
+        "answer": "advance",
+        "explain_es": "El paso 4 dice: 'test your camera, microphone and internet connection in advance'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 6, 'genuinely' means…",
+        "options": [
+          "falsely",
+          "quickly",
+          "really or truly"
+        ],
+        "answer": 2,
+        "explain_es": "'Genuinely' significa de verdad, sinceramente."
+      },
+      {
+        "type": "tf",
+        "q": "Most companies prefer candidates with university degrees.",
+        "answer": "NG",
+        "explain_es": "La guía no habla de títulos universitarios."
+      },
+      {
+        "type": "gap",
+        "q": "An interview is a conversation, not an ____.",
+        "answer": "exam",
+        "explain_es": "El último párrafo dice: 'an interview is a conversation, not an exam'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-fast-fashion",
+    "title": "The Real Cost of Fast Fashion",
+    "level": "B1",
+    "genre": "article",
+    "topic": "Environment & money",
+    "emoji": "👕",
+    "words": 299,
+    "paragraphs": [
+      "A T-shirt for the price of a sandwich, a new pair of jeans every month: for many shoppers, fashion has never been cheaper or easier to buy. This is the world of 'fast fashion', in which big brands copy catwalk styles and produce them quickly and cheaply, sometimes releasing new collections every week. But while the prices on the labels are low, the real cost is often paid by someone else.",
+      "First, there is the environment. Clothing production uses huge amounts of water and energy. It has been estimated that making a single cotton T-shirt can require around 2,700 litres of water. Many cheap clothes are made from polyester, a type of plastic, which releases tiny fibres into rivers and oceans every time it is washed.",
+      "Then there is the problem of waste. Because clothes are so cheap, people tend to wear them only a few times before throwing them away. Enormous piles of unwanted clothing have been dumped in places such as the Atacama Desert in northern Chile.",
+      "Finally, there are the workers. A lot of fast fashion is made in factories in countries such as Bangladesh, where wages are low and conditions can be dangerous. In 2013, more than 1,100 people died when the Rana Plaza building, which contained several clothing factories, collapsed near the capital, Dhaka.",
+      "So what can ordinary shoppers do? Some experts suggest asking a simple question before buying anything: 'Will I wear this at least thirty times?' Buying second-hand clothes, swapping with friends and learning to repair small holes are other options. In many Latin American cities, second-hand markets and online groups have become popular among young people, who see them as both cheaper and cooler. If we all bought fewer, better clothes and kept them for longer, the difference could be enormous."
+    ],
+    "glossary": [
+      [
+        "catwalk",
+        "pasarela"
+      ],
+      [
+        "label",
+        "etiqueta"
+      ],
+      [
+        "estimate (estimated)",
+        "calcular, estimar"
+      ],
+      [
+        "fibre",
+        "fibra"
+      ],
+      [
+        "waste",
+        "residuos, desperdicio"
+      ],
+      [
+        "dump (dumped)",
+        "botar, arrojar"
+      ],
+      [
+        "wage",
+        "salario"
+      ],
+      [
+        "collapse",
+        "derrumbarse"
+      ],
+      [
+        "swap",
+        "intercambiar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is 'fast fashion'?",
+        "options": [
+          "Clothes made to last for many years",
+          "Cheap clothes produced quickly that copy catwalk styles",
+          "Sports clothes for running",
+          "Handmade traditional clothes"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 explica que las marcas copian estilos de pasarela y los producen rápido y barato."
+      },
+      {
+        "type": "tf",
+        "q": "Some fast fashion brands release new collections every week.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'sometimes releasing new collections every week'."
+      },
+      {
+        "type": "gap",
+        "q": "Making one cotton T-shirt can require around ____ litres of water.",
+        "answer": "2,700",
+        "accept": [
+          "2700",
+          "2.700"
+        ],
+        "explain_es": "El párrafo 2 dice: 'around 2,700 litres of water'."
+      },
+      {
+        "type": "gap",
+        "q": "Many cheap clothes are made from ____, a type of plastic.",
+        "answer": "polyester",
+        "explain_es": "El párrafo 2 dice: 'made from polyester, a type of plastic'."
+      },
+      {
+        "type": "mc",
+        "q": "Why is polyester a problem?",
+        "options": [
+          "It is very expensive to produce",
+          "It is too hot to wear in summer",
+          "It releases tiny fibres into water when it is washed",
+          "It can only be made in Chile"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice que suelta pequeñas fibras en ríos y océanos cada vez que se lava."
+      },
+      {
+        "type": "tf",
+        "q": "The Rana Plaza building was in Chile.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice que estaba cerca de Dhaka, la capital de Bangladesh."
+      },
+      {
+        "type": "tf",
+        "q": "Most of the clothes in the Atacama Desert come from the United States.",
+        "answer": "NG",
+        "explain_es": "El texto no dice de dónde vienen esas prendas."
+      },
+      {
+        "type": "mc",
+        "q": "What question do some experts suggest asking before buying clothes?",
+        "options": [
+          "Is it the cheapest option?",
+          "Is it in fashion this season?",
+          "Do my friends have one?",
+          "Will I wear this at least thirty times?"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'Will I wear this at least thirty times?'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, 'swapping' means…",
+        "options": [
+          "exchanging",
+          "selling",
+          "destroying"
+        ],
+        "answer": 0,
+        "explain_es": "'Swap' significa intercambiar."
+      },
+      {
+        "type": "tf",
+        "q": "According to the writer, second-hand markets are popular only with older people.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice que son populares 'among young people'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-film-last-garden",
+    "title": "Film Review: The Last Garden",
+    "level": "B1",
+    "genre": "review",
+    "topic": "Film",
+    "emoji": "🎬",
+    "words": 280,
+    "paragraphs": [
+      "The Last Garden, directed by Inés Arango. My rating: four stars out of five.",
+      "It is the year 2090, and most of the planet has turned into desert. In a small research station in the Colombian Andes, a scientist called Elena guards the last seed bank on Earth: thousands of seeds that could, in theory, bring back the world's lost forests. When a group of strangers arrives asking for shelter, Elena has to decide who she can trust.",
+      "This is the second feature film by Arango, whose first film, a quiet documentary about coffee farmers, was praised at several international festivals. The Last Garden is far more ambitious, but she hasn't lost her eye for small human details. Some of the most powerful scenes have no action at all: Elena talking to her plants, or teaching a frightened child how to plant a bean.",
+      "The film was shot almost entirely in the páramo near Bogotá, and the photography is stunning. The strange, silvery frailejón plants, which only grow in a few places in the world, make the landscape look like another planet. The soundtrack, which mixes electronic music with traditional Andean flutes, is equally memorable.",
+      "However, the film isn't perfect. The second half moves too slowly, and some of the strangers are not developed enough, so it's hard to care about what happens to them. The ending, which I won't spoil here, may also divide audiences: some will find it hopeful, while others will find it too sudden.",
+      "Overall, The Last Garden is a beautiful and thoughtful film. If you prefer fast action, you might be disappointed, but if you enjoy films that make you think, it's definitely worth watching."
+    ],
+    "glossary": [
+      [
+        "seed bank",
+        "banco de semillas"
+      ],
+      [
+        "shelter",
+        "refugio"
+      ],
+      [
+        "trust",
+        "confiar en"
+      ],
+      [
+        "praised",
+        "elogiado"
+      ],
+      [
+        "ambitious",
+        "ambicioso"
+      ],
+      [
+        "shot (a film)",
+        "filmado, rodado"
+      ],
+      [
+        "stunning",
+        "impresionante, bellísimo"
+      ],
+      [
+        "soundtrack",
+        "banda sonora"
+      ],
+      [
+        "spoil",
+        "arruinar (contar el final)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where does the story take place?",
+        "options": [
+          "In a big city in 2090",
+          "In a research station in the Colombian Andes",
+          "On another planet",
+          "On a coffee farm"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'In a small research station in the Colombian Andes'."
+      },
+      {
+        "type": "gap",
+        "q": "Elena guards the last ____ on Earth.",
+        "answer": "seed bank",
+        "explain_es": "El párrafo 2 dice: 'guards the last seed bank on Earth'."
+      },
+      {
+        "type": "mc",
+        "q": "What was Arango's first film about?",
+        "options": [
+          "The future of the planet",
+          "Electronic music",
+          "Coffee farmers",
+          "A family of scientists"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'a quiet documentary about coffee farmers'."
+      },
+      {
+        "type": "tf",
+        "q": "The Last Garden won a prize at an international festival.",
+        "answer": "NG",
+        "explain_es": "El texto dice que la primera película fue elogiada en festivales, pero no dice nada de premios para esta."
+      },
+      {
+        "type": "tf",
+        "q": "The film was shot mostly in the páramo near Bogotá.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'shot almost entirely in the páramo near Bogotá'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'stunning' means…",
+        "options": [
+          "extremely beautiful",
+          "very boring",
+          "slightly strange"
+        ],
+        "answer": 0,
+        "explain_es": "'Stunning' significa impresionante, bellísimo."
+      },
+      {
+        "type": "gap",
+        "q": "The soundtrack mixes electronic music with traditional Andean ____.",
+        "answer": "flutes",
+        "explain_es": "El párrafo 4 dice: 'traditional Andean flutes'."
+      },
+      {
+        "type": "mc",
+        "q": "What does the reviewer criticise?",
+        "options": [
+          "The soundtrack",
+          "The photography",
+          "The scenes with plants",
+          "The slow second half"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'The second half moves too slowly'."
+      },
+      {
+        "type": "tf",
+        "q": "The reviewer explains the ending in detail.",
+        "answer": "F",
+        "explain_es": "El crítico dice: 'The ending, which I won't spoil here'."
+      },
+      {
+        "type": "mc",
+        "q": "Who would probably NOT enjoy the film, according to the reviewer?",
+        "options": [
+          "People who like films that make them think",
+          "People who prefer fast action",
+          "People interested in nature",
+          "People who like music"
+        ],
+        "answer": 1,
+        "explain_es": "El último párrafo dice: 'If you prefer fast action, you might be disappointed'."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-night-lights-went-out",
+    "title": "The Night the Lights Went Out",
+    "level": "B1",
+    "genre": "story",
+    "topic": "Community",
+    "emoji": "🕯️",
+    "words": 306,
+    "paragraphs": [
+      "Tomás had lived in his apartment building in Buenos Aires for three years, but he could only name two of his neighbours. Like most people in the building, he left early for work, came back late and spent his evenings looking at a screen. The neighbours nodded at each other in the lift, and that was all.",
+      "Then, one hot evening in January, the power went out across the whole neighbourhood. At first, Tomás waited for the lights to come back on. After an hour, his phone battery was almost dead, the apartment was unbearably hot, and he was beginning to feel anxious. Through the open window, he could hear voices in the courtyard below.",
+      "He went downstairs with a candle. To his surprise, about twenty people were already there. Mrs Ferreyra from the fourth floor, who he had always thought was rather unfriendly, had brought out a camping stove and was making mate for everyone. A teenager he had never noticed was playing the guitar, and two small children were running around with torches, delighted by the adventure.",
+      "Someone suggested that everyone should bring the food from their fridges before it went bad. Soon there was a long table covered with cheese, empanadas, fruit and half-melted ice cream. People who had lived next to each other for years introduced themselves for the first time. Tomás discovered that the quiet man from the sixth floor was a retired history teacher, and that Mrs Ferreyra laughed louder than anyone he knew.",
+      "The electricity came back just after midnight. Everyone cheered, but nobody went upstairs immediately. Before they said goodnight, someone created a group chat for the building. Since then, the neighbours have organised a dinner in the courtyard every month. Tomás sometimes jokes that the blackout was the best thing that has ever happened to the building."
+    ],
+    "glossary": [
+      [
+        "nod (nodded)",
+        "saludar con la cabeza"
+      ],
+      [
+        "lift",
+        "ascensor"
+      ],
+      [
+        "power",
+        "electricidad, luz"
+      ],
+      [
+        "unbearably",
+        "insoportablemente"
+      ],
+      [
+        "anxious",
+        "ansioso, nervioso"
+      ],
+      [
+        "courtyard",
+        "patio interior"
+      ],
+      [
+        "torch",
+        "linterna"
+      ],
+      [
+        "retired",
+        "jubilado, pensionado"
+      ],
+      [
+        "blackout",
+        "apagón"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Before the blackout, how well did Tomás know his neighbours?",
+        "options": [
+          "Very well",
+          "He could only name two of them",
+          "He didn't know anyone at all",
+          "He knew everyone on his floor"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'he could only name two of his neighbours'."
+      },
+      {
+        "type": "tf",
+        "q": "The blackout happened on a cold winter night.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'one hot evening in January'."
+      },
+      {
+        "type": "mc",
+        "q": "What was Mrs Ferreyra doing in the courtyard?",
+        "options": [
+          "Playing the guitar",
+          "Selling empanadas",
+          "Making mate on a camping stove",
+          "Organising a group chat"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice que había sacado una estufa de camping y preparaba mate para todos."
+      },
+      {
+        "type": "tf",
+        "q": "Tomás had always thought Mrs Ferreyra was unfriendly.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'who he had always thought was rather unfriendly'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'delighted' means…",
+        "options": [
+          "very scared",
+          "very pleased",
+          "very tired"
+        ],
+        "answer": 1,
+        "explain_es": "'Delighted' significa encantado, muy contento."
+      },
+      {
+        "type": "mc",
+        "q": "Why did people bring food from their fridges?",
+        "options": [
+          "It was someone's birthday",
+          "Mrs Ferreyra asked them to",
+          "They wanted to have a competition",
+          "So that the food wouldn't go bad"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'before it went bad'."
+      },
+      {
+        "type": "gap",
+        "q": "The quiet man from the sixth floor was a retired ____ teacher.",
+        "answer": "history",
+        "explain_es": "El párrafo 4 dice: 'a retired history teacher'."
+      },
+      {
+        "type": "tf",
+        "q": "The teenager with the guitar lived on the fourth floor.",
+        "answer": "NG",
+        "explain_es": "El texto no dice en qué piso vive el adolescente."
+      },
+      {
+        "type": "gap",
+        "q": "The electricity came back just after ____.",
+        "answer": "midnight",
+        "explain_es": "El párrafo 5 dice: 'just after midnight'."
+      },
+      {
+        "type": "mc",
+        "q": "What has happened since the blackout?",
+        "options": [
+          "The building has been sold",
+          "The neighbours have organised a monthly dinner",
+          "Tomás has moved to another city",
+          "There have been more blackouts"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice que desde entonces organizan una cena cada mes en el patio."
+      }
+    ]
+  },
+  {
+    "id": "r-b1-complaint-email",
+    "title": "A Complaint About an Online Order",
+    "level": "B1",
+    "genre": "email",
+    "topic": "Shopping & consumer rights",
+    "emoji": "📦",
+    "words": 280,
+    "paragraphs": [
+      "Subject: Order 48213, damaged item and request for a refund. Dear Customer Service Team,",
+      "I am writing to complain about a laptop that I ordered from your website on 2 September. I was promised delivery within five working days, but the package did not arrive until 19 September, almost two weeks later than expected. During that time, I contacted your customer service line three times, and on each occasion I was told that the order had been sent, but nobody could tell me where it was.",
+      "When the package was finally delivered, the box had clearly been damaged. I opened it immediately and found that the laptop screen was cracked in the top corner. I have attached photographs of both the box and the screen, as well as a copy of my receipt.",
+      "I need this laptop for my university course, which started on 15 September, so the delay has caused me serious problems. I have had to borrow a computer from a friend in order to complete my first assignments.",
+      "According to the returns policy on your website, customers who receive damaged products are entitled to a full refund or a replacement. I would therefore like to request a full refund of 2,150,000 pesos, paid to the credit card that I used for the purchase. I would also be grateful if you could arrange for the damaged laptop to be collected from my address, as I do not have a car.",
+      "If I have not received a reply within ten working days, I will contact the consumer protection authority. I hope this will not be necessary, and I look forward to hearing from you soon.",
+      "Yours faithfully, Daniela Ospina"
+    ],
+    "glossary": [
+      [
+        "refund",
+        "reembolso"
+      ],
+      [
+        "delivery",
+        "entrega"
+      ],
+      [
+        "working days",
+        "días hábiles"
+      ],
+      [
+        "cracked",
+        "rajado, agrietado"
+      ],
+      [
+        "receipt",
+        "recibo, factura"
+      ],
+      [
+        "borrow",
+        "pedir prestado"
+      ],
+      [
+        "assignment",
+        "trabajo, tarea"
+      ],
+      [
+        "entitled to",
+        "con derecho a"
+      ],
+      [
+        "replacement",
+        "reemplazo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why is Daniela writing?",
+        "options": [
+          "To order a new laptop",
+          "To complain about a late and damaged laptop",
+          "To apply for a job",
+          "To thank the company"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'I am writing to complain about a laptop'."
+      },
+      {
+        "type": "tf",
+        "q": "The laptop arrived on time.",
+        "answer": "F",
+        "explain_es": "Llegó el 19 de septiembre, 'almost two weeks later than expected'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela called customer service three times.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'I contacted your customer service line three times'."
+      },
+      {
+        "type": "gap",
+        "q": "The laptop screen was cracked in the top ____.",
+        "answer": "corner",
+        "explain_es": "El párrafo 3 dice: 'cracked in the top corner'."
+      },
+      {
+        "type": "gap",
+        "q": "Daniela's university course started on 15 ____.",
+        "answer": "September",
+        "explain_es": "El párrafo 4 dice: 'which started on 15 September'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, 'entitled to' means…",
+        "options": [
+          "have the right to receive",
+          "be forced to pay",
+          "be unable to get"
+        ],
+        "answer": 0,
+        "explain_es": "'Entitled to' significa tener derecho a algo."
+      },
+      {
+        "type": "mc",
+        "q": "What does Daniela want?",
+        "options": [
+          "A discount on her next order",
+          "A replacement laptop",
+          "A free repair",
+          "A full refund"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'I would therefore like to request a full refund'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela has a car, so she can return the laptop herself.",
+        "answer": "F",
+        "explain_es": "Daniela pide que recojan el portátil porque 'I do not have a car'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela bought the laptop with money from her parents.",
+        "answer": "NG",
+        "explain_es": "El texto dice que pagó con tarjeta de crédito, pero no de dónde salió el dinero."
+      },
+      {
+        "type": "mc",
+        "q": "What will Daniela do if she doesn't get a reply within ten working days?",
+        "options": [
+          "Write a review online",
+          "Go to the company's shop",
+          "Contact the consumer protection authority",
+          "Ask her friend for help"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 6 dice: 'I will contact the consumer protection authority'."
+      }
+    ]
+  }
+]

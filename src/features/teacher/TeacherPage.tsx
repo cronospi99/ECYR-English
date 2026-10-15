@@ -297,6 +297,7 @@ function MaterialTab() {
         { to: '/learn/grammar/time-machine', title: 'Time Machine', sub: 'Fechas, años y pasado', icon: Sigma, color: 'var(--teal)' },
         { to: '/learn/grammar/time-family', title: 'Time & Family', sub: 'La hora y el genitivo', icon: Sigma, color: 'var(--mint)' },
         { to: '/learn/grammar/modals', title: 'Modal Verbs', sub: 'Modales y semi-modales', icon: Sigma, color: 'var(--yellow)' },
+        { to: '/practice/workshops', title: 'Talleres + tareas PDF', sub: '52 talleres A1–C1 imprimibles', icon: Sigma, color: 'var(--indigo)' },
         { to: '/practice/verbs', title: 'Verb Lab', sub: '1.000+ verbos, C1 académicos, -ed', icon: Wrench, color: 'var(--orange)' },
         { to: '/learn/visuals', title: 'Biblioteca visual', sub: 'Infografías para proyectar', icon: ImageIcon, color: 'var(--pink)' },
       ],
@@ -304,11 +305,12 @@ function MaterialTab() {
     {
       title: 'Práctica por destreza',
       items: [
-        { to: '/practice/reading', title: 'Reading', sub: 'Historias y guías de viaje', icon: BookOpen, color: 'var(--skill-reading)' },
-        { to: '/practice/listening', title: 'Listening', sub: 'Diálogos A1–C1 y dictado', icon: Headphones, color: 'var(--skill-listening)' },
+        { to: '/practice/reading', title: 'Reading', sub: '56 lecturas A1–C1 + guías', icon: BookOpen, color: 'var(--skill-reading)' },
+        { to: '/practice/listening', title: 'Listening', sub: '49 audios A1–C1 + diálogos', icon: Headphones, color: 'var(--skill-listening)' },
         { to: '/practice/speaking', title: 'Speaking', sub: '3.600+ preguntas', icon: Mic, color: 'var(--skill-speaking)' },
         { to: '/practice/writing', title: 'Writing', sub: 'Tareas con feedback', icon: PenLine, color: 'var(--skill-writing)' },
         { to: '/practice/phrasal-verbs', title: 'Phrasal Verbs', sub: '1.100+ con ejemplos y quiz', icon: Dumbbell, color: 'var(--pink)' },
+        { to: '/practice/vocabulary', title: 'Vocabulario', sub: 'Conectores, adjetivos, adverbios', icon: BookOpen, color: 'var(--purple)' },
       ],
     },
     {

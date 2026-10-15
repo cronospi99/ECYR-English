@@ -11,6 +11,8 @@ import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { useAsync } from '@/hooks/useAsync';
 import { loadFoundations, loadTravelGuides } from '@/content/levels';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
+import { ReadingLibrary } from '@/features/library/ReadingLibrary';
+import { ExternalResources } from '@/features/library/ExternalResources';
 import type { CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
@@ -100,30 +102,42 @@ async function loadReadings(): Promise<Reading[]> {
 export default function ReadingPage() {
   const { data, loading } = useAsync(loadReadings, []);
   const [params, setParams] = useSearchParams();
-  const [tab, setTab] = useState<'story' | 'travel'>('story');
+  type Tab = 'library' | 'story' | 'travel';
+  const tab = (['library', 'story', 'travel'].includes(params.get('tab') ?? '') ? params.get('tab') : 'library') as Tab;
+  const setTab = (t: Tab) => setParams({ tab: t });
   const readings = useProgress((s) => s.readings);
   const selected = useMemo(() => data?.find((r) => r.id === params.get('r')) ?? null, [data, params]);
 
   if (loading || !data) return <PageLoader />;
-  if (selected) return <ReadingView r={selected} onBack={() => setParams({})} />;
+  if (selected) return <ReadingView r={selected} onBack={() => setParams({ tab: selected.kind })} />;
 
   const list = data.filter((r) => r.kind === tab);
   return (
-    <Page back={{ to: '/practice', label: 'Práctica' }} title="Reading" subtitle="Lee, escucha y comprueba lo que entendiste.">
-      <Segmented
-        value={tab}
-        onChange={setTab}
-        className="mb-5"
-        options={[
-          { value: 'story', label: 'Historias A1' },
-          { value: 'travel', label: 'Guías de viaje' },
-        ]}
-      />
+    <Page back={{ to: '/practice', label: 'Práctica' }} title="Reading" subtitle="Lee, escucha y comprueba lo que entendiste." wide={tab === 'library'}>
+      {!params.get('lib') && (
+        <div className="no-scrollbar mb-5 overflow-x-auto">
+          <Segmented
+            value={tab}
+            onChange={setTab}
+            options={[
+              { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'story', label: 'Historias A1' },
+              { value: 'travel', label: 'Guías de viaje' },
+            ]}
+          />
+        </div>
+      )}
+      {tab === 'library' ? (
+        <>
+          <ReadingLibrary />
+          {!params.get('lib') && <ExternalResources className="mt-8" />}
+        </>
+      ) : (
       <ListGroup header={`${list.length} lecturas`}>
         {list.map((r) => (
           <ListRow
             key={r.id}
-            onClick={() => setParams({ r: r.id })}
+            onClick={() => setParams({ tab, r: r.id })}
             chevron
             leading={
               r.kind === 'travel' ? (
@@ -150,6 +164,7 @@ export default function ReadingPage() {
           />
         ))}
       </ListGroup>
+      )}
     </Page>
   );
 }

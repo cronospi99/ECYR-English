@@ -1,0 +1,3835 @@
+[
+  {
+    "id": "l-a1-cafe-order",
+    "title": "Ordering at a Café",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Food & drink",
+    "emoji": "☕",
+    "speakers": [
+      {
+        "name": "Waiter",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Laura",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning! What can I get you?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. Can I have a coffee, please?"
+      },
+      {
+        "s": 0,
+        "text": "Sure. Small, medium or large?"
+      },
+      {
+        "s": 1,
+        "text": "Medium, please. With milk, no sugar."
+      },
+      {
+        "s": 0,
+        "text": "Anything to eat? The chocolate cake is very good today."
+      },
+      {
+        "s": 1,
+        "text": "Hmm, no, thank you. I'd like a cheese sandwich."
+      },
+      {
+        "s": 0,
+        "text": "OK. Is that to eat here or to take away?"
+      },
+      {
+        "s": 1,
+        "text": "To eat here. I'm at the table by the window."
+      },
+      {
+        "s": 0,
+        "text": "Great. So, one medium coffee with milk and one cheese sandwich. That's seven dollars and fifty cents."
+      },
+      {
+        "s": 1,
+        "text": "Here you are. Can I pay with a card?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, of course. I'll bring your food in five minutes."
+      },
+      {
+        "s": 1,
+        "text": "Thanks very much!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Laura eat?",
+        "options": [
+          "Chocolate cake",
+          "A cheese sandwich",
+          "A chicken salad"
+        ],
+        "answer": 1,
+        "explain_es": "Laura dice: 'I'd like a cheese sandwich.' El pastel de chocolate lo ofrece el mesero, pero ella dice que no."
+      },
+      {
+        "type": "mc",
+        "q": "What size is Laura's coffee?",
+        "options": [
+          "Large",
+          "Small",
+          "Medium"
+        ],
+        "answer": 2,
+        "explain_es": "El mesero pregunta 'Small, medium or large?' y Laura responde 'Medium, please.'"
+      },
+      {
+        "type": "mc",
+        "q": "How much does Laura pay?",
+        "options": [
+          "$7.15",
+          "$7.50",
+          "$17.50"
+        ],
+        "answer": 1,
+        "explain_es": "El mesero dice: 'That's seven dollars and fifty cents.'"
+      },
+      {
+        "type": "tf",
+        "q": "Laura wants sugar in her coffee.",
+        "answer": "F",
+        "explain_es": "Laura dice: 'With milk, no sugar.' Quiere leche, pero no azúcar."
+      },
+      {
+        "type": "tf",
+        "q": "Laura can pay with a card.",
+        "answer": "T",
+        "explain_es": "Laura pregunta 'Can I pay with a card?' y el mesero responde 'Yes, of course.'"
+      },
+      {
+        "type": "gap",
+        "q": "Laura's table is by the ____.",
+        "answer": "window",
+        "accept": [],
+        "explain_es": "Laura dice: 'I'm at the table by the window.'"
+      },
+      {
+        "type": "gap",
+        "q": "The food arrives in ____ minutes.",
+        "answer": "five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "El mesero dice: 'I'll bring your food in five minutes.'"
+      }
+    ],
+    "dictation": [
+      "Can I have a coffee, please?",
+      "I'm at the table by the window."
+    ]
+  },
+  {
+    "id": "l-a1-new-classmate",
+    "title": "A New Classmate",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "People & introductions",
+    "emoji": "👋",
+    "speakers": [
+      {
+        "name": "Emma",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Carlos",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi! Are you new in this class?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I am. My name's Carlos."
+      },
+      {
+        "s": 0,
+        "text": "Nice to meet you, Carlos. I'm Emma. Where are you from?"
+      },
+      {
+        "s": 1,
+        "text": "I'm from Colombia, from Medellín."
+      },
+      {
+        "s": 0,
+        "text": "Oh, cool! How old are you?"
+      },
+      {
+        "s": 1,
+        "text": "I'm twenty-two. And you?"
+      },
+      {
+        "s": 0,
+        "text": "I'm twenty. I'm from London. What's your last name? I need it for the class list."
+      },
+      {
+        "s": 1,
+        "text": "It's Restrepo. R-E-S-T-R-E-P-O."
+      },
+      {
+        "s": 0,
+        "text": "Thanks. Our class is in room fourteen, every Monday and Wednesday."
+      },
+      {
+        "s": 1,
+        "text": "What time does it start?"
+      },
+      {
+        "s": 0,
+        "text": "At nine o'clock. Don't be late. The teacher is very strict!"
+      },
+      {
+        "s": 1,
+        "text": "OK, thanks, Emma! See you on Monday."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Carlos from?",
+        "options": [
+          "London",
+          "Cali",
+          "Medellín"
+        ],
+        "answer": 2,
+        "explain_es": "Carlos dice: 'I'm from Colombia, from Medellín.' Londres es la ciudad de Emma."
+      },
+      {
+        "type": "mc",
+        "q": "When is the class?",
+        "options": [
+          "Monday and Wednesday",
+          "Tuesday and Thursday",
+          "Monday and Friday"
+        ],
+        "answer": 0,
+        "explain_es": "Emma dice: 'every Monday and Wednesday.'"
+      },
+      {
+        "type": "tf",
+        "q": "Emma is from London.",
+        "answer": "T",
+        "explain_es": "Emma dice: 'I'm from London.'"
+      },
+      {
+        "type": "tf",
+        "q": "The class starts at ten o'clock.",
+        "answer": "F",
+        "explain_es": "Emma dice que empieza 'At nine o'clock', a las nueve."
+      },
+      {
+        "type": "gap",
+        "q": "Carlos is ____ years old.",
+        "answer": "twenty-two",
+        "accept": [
+          "22",
+          "twenty two"
+        ],
+        "explain_es": "Carlos dice: 'I'm twenty-two.' Emma tiene veinte."
+      },
+      {
+        "type": "gap",
+        "q": "Last name: ____",
+        "answer": "Restrepo",
+        "accept": [],
+        "explain_es": "Carlos deletrea su apellido: 'R-E-S-T-R-E-P-O.'"
+      },
+      {
+        "type": "gap",
+        "q": "The class is in room ____.",
+        "answer": "fourteen",
+        "accept": [
+          "14"
+        ],
+        "explain_es": "Emma dice: 'Our class is in room fourteen.'"
+      }
+    ],
+    "dictation": [
+      "Nice to meet you, Carlos.",
+      "What time does it start?"
+    ]
+  },
+  {
+    "id": "l-a1-dentist-voicemail",
+    "title": "A Message from the Dentist",
+    "level": "A1",
+    "kind": "voicemail",
+    "topic": "Health",
+    "emoji": "🦷",
+    "speakers": [
+      {
+        "name": "Sophie",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, this is a message for Mr. David Brown."
+      },
+      {
+        "s": 0,
+        "text": "This is Sophie from Smile Dental Clinic."
+      },
+      {
+        "s": 0,
+        "text": "I'm calling about your appointment with Doctor Lee."
+      },
+      {
+        "s": 0,
+        "text": "Your appointment is on Thursday, the twelfth of May, at half past three."
+      },
+      {
+        "s": 0,
+        "text": "Please come ten minutes early."
+      },
+      {
+        "s": 0,
+        "text": "The clinic is on Park Street, number forty-five."
+      },
+      {
+        "s": 0,
+        "text": "Please remember to bring your ID card."
+      },
+      {
+        "s": 0,
+        "text": "If you can't come, please call us on oh-two, nine eight seven, six five four."
+      },
+      {
+        "s": 0,
+        "text": "That's oh-two, nine eight seven, six five four."
+      },
+      {
+        "s": 0,
+        "text": "Thank you, and have a nice day!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who is the appointment with?",
+        "options": [
+          "Doctor Lee",
+          "Doctor Brown",
+          "Sophie"
+        ],
+        "answer": 0,
+        "explain_es": "Sophie dice: 'your appointment with Doctor Lee.' David Brown es el paciente."
+      },
+      {
+        "type": "mc",
+        "q": "What day is the appointment?",
+        "options": [
+          "Tuesday",
+          "Thursday",
+          "Saturday"
+        ],
+        "answer": 1,
+        "explain_es": "Sophie dice: 'Your appointment is on Thursday, the twelfth of May.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mr. Brown should arrive ten minutes early.",
+        "answer": "T",
+        "explain_es": "Sophie dice: 'Please come ten minutes early.'"
+      },
+      {
+        "type": "tf",
+        "q": "The clinic is on Park Road.",
+        "answer": "F",
+        "explain_es": "La clínica está en 'Park Street', no en Park Road."
+      },
+      {
+        "type": "gap",
+        "q": "Time: half past ____",
+        "answer": "three",
+        "accept": [
+          "3"
+        ],
+        "explain_es": "Sophie dice: 'at half past three' (3:30)."
+      },
+      {
+        "type": "gap",
+        "q": "Address: number ____, Park Street",
+        "answer": "forty-five",
+        "accept": [
+          "45",
+          "forty five"
+        ],
+        "explain_es": "Sophie dice: 'The clinic is on Park Street, number forty-five.'"
+      },
+      {
+        "type": "gap",
+        "q": "Bring your ____ card.",
+        "answer": "ID",
+        "accept": [
+          "identity"
+        ],
+        "explain_es": "Sophie dice: 'Please remember to bring your ID card.'"
+      }
+    ],
+    "dictation": [
+      "Please come ten minutes early.",
+      "Please remember to bring your ID card."
+    ]
+  },
+  {
+    "id": "l-a1-supermarket-offers",
+    "title": "Supermarket Offers",
+    "level": "A1",
+    "kind": "announcement",
+    "topic": "Shopping",
+    "emoji": "🛒",
+    "speakers": [
+      {
+        "name": "Announcer",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon, shoppers, and welcome to FreshMart."
+      },
+      {
+        "s": 0,
+        "text": "Today we have some great offers for you."
+      },
+      {
+        "s": 0,
+        "text": "Bananas are only one pound a kilo. That's one pound a kilo!"
+      },
+      {
+        "s": 0,
+        "text": "Fresh bread is two for three pounds."
+      },
+      {
+        "s": 0,
+        "text": "You can find it at the back of the store, next to the milk."
+      },
+      {
+        "s": 0,
+        "text": "Orange juice is half price this week."
+      },
+      {
+        "s": 0,
+        "text": "And don't forget, our café on the first floor is open until eight o'clock tonight."
+      },
+      {
+        "s": 0,
+        "text": "The store closes at nine."
+      },
+      {
+        "s": 0,
+        "text": "Thank you for shopping at FreshMart!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How much are the bananas?",
+        "options": [
+          "Two pounds a kilo",
+          "One pound a kilo",
+          "Three pounds a kilo"
+        ],
+        "answer": 1,
+        "explain_es": "El anuncio dice: 'Bananas are only one pound a kilo.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where is the bread?",
+        "options": [
+          "Next to the milk",
+          "Next to the café",
+          "Near the door"
+        ],
+        "answer": 0,
+        "explain_es": "El anuncio dice: 'at the back of the store, next to the milk.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is half price this week?",
+        "options": [
+          "Bread",
+          "Bananas",
+          "Orange juice"
+        ],
+        "answer": 2,
+        "explain_es": "El anuncio dice: 'Orange juice is half price this week.'"
+      },
+      {
+        "type": "tf",
+        "q": "The café is on the second floor.",
+        "answer": "F",
+        "explain_es": "El anuncio dice: 'our café on the first floor', en el primer piso."
+      },
+      {
+        "type": "gap",
+        "q": "The café is open until ____ o'clock tonight.",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "El anuncio dice: 'open until eight o'clock tonight.'"
+      },
+      {
+        "type": "gap",
+        "q": "The store closes at ____.",
+        "answer": "nine",
+        "accept": [
+          "9"
+        ],
+        "explain_es": "El anuncio dice: 'The store closes at nine.'"
+      }
+    ],
+    "dictation": [
+      "Orange juice is half price this week.",
+      "The store closes at nine."
+    ]
+  },
+  {
+    "id": "l-a1-my-family",
+    "title": "Andrés and His Family",
+    "level": "A1",
+    "kind": "monologue",
+    "topic": "Family",
+    "emoji": "👨‍👩‍👧‍👦",
+    "speakers": [
+      {
+        "name": "Andrés",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, I'm Andrés. I live in Bogotá with my family."
+      },
+      {
+        "s": 0,
+        "text": "There are five people in my family."
+      },
+      {
+        "s": 0,
+        "text": "My dad's name is Jorge. He's a taxi driver."
+      },
+      {
+        "s": 0,
+        "text": "My mom is Patricia. She's a nurse at a big hospital."
+      },
+      {
+        "s": 0,
+        "text": "I have one brother and one sister."
+      },
+      {
+        "s": 0,
+        "text": "My brother, Felipe, is seventeen. He loves football."
+      },
+      {
+        "s": 0,
+        "text": "My little sister is Valentina. She's eight, and she's very funny."
+      },
+      {
+        "s": 0,
+        "text": "We have a dog, too. His name is Max. He's black and white."
+      },
+      {
+        "s": 0,
+        "text": "On Sundays, we eat lunch at my grandmother's house."
+      },
+      {
+        "s": 0,
+        "text": "She makes the best soup in the world!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is Andrés's father's job?",
+        "options": [
+          "He's a nurse.",
+          "He's a taxi driver.",
+          "He's a teacher."
+        ],
+        "answer": 1,
+        "explain_es": "Andrés dice: 'My dad's name is Jorge. He's a taxi driver.' La enfermera es su mamá."
+      },
+      {
+        "type": "mc",
+        "q": "What does the family do on Sundays?",
+        "options": [
+          "They play football.",
+          "They go to the park.",
+          "They eat lunch at his grandmother's house."
+        ],
+        "answer": 2,
+        "explain_es": "Andrés dice: 'On Sundays, we eat lunch at my grandmother's house.'"
+      },
+      {
+        "type": "tf",
+        "q": "Andrés has two sisters.",
+        "answer": "F",
+        "explain_es": "Andrés dice: 'I have one brother and one sister.'"
+      },
+      {
+        "type": "tf",
+        "q": "The dog is black and white.",
+        "answer": "T",
+        "explain_es": "Andrés dice sobre Max: 'He's black and white.'"
+      },
+      {
+        "type": "gap",
+        "q": "Felipe is ____ years old.",
+        "answer": "seventeen",
+        "accept": [
+          "17"
+        ],
+        "explain_es": "Andrés dice: 'My brother, Felipe, is seventeen.'"
+      },
+      {
+        "type": "gap",
+        "q": "Andrés's mother is a ____.",
+        "answer": "nurse",
+        "accept": [],
+        "explain_es": "Andrés dice: 'She's a nurse at a big hospital.'"
+      },
+      {
+        "type": "gap",
+        "q": "There are ____ people in the family.",
+        "answer": "five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "Andrés dice: 'There are five people in my family.'"
+      }
+    ],
+    "dictation": [
+      "My brother, Felipe, is seventeen.",
+      "We have a dog, too."
+    ]
+  },
+  {
+    "id": "l-a1-hotel-checkin",
+    "title": "Checking In at a Hotel",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Travel",
+    "emoji": "🏨",
+    "speakers": [
+      {
+        "name": "Receptionist",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Mark",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening. Welcome to the Royal Hotel."
+      },
+      {
+        "s": 1,
+        "text": "Hi. I have a reservation. My name's Mark Wilson."
+      },
+      {
+        "s": 0,
+        "text": "Can you spell your last name, please?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. W-I-L-S-O-N."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. Yes, here it is. A single room for three nights."
+      },
+      {
+        "s": 1,
+        "text": "That's right."
+      },
+      {
+        "s": 0,
+        "text": "Your room is two-oh-six, on the second floor. Here's your key card."
+      },
+      {
+        "s": 1,
+        "text": "Thanks. What time is breakfast?"
+      },
+      {
+        "s": 0,
+        "text": "Breakfast is from seven to ten in the restaurant."
+      },
+      {
+        "s": 1,
+        "text": "Great. And is there Wi-Fi?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, it's free. The password is on your key card."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Oh, where's the lift?"
+      },
+      {
+        "s": 0,
+        "text": "It's on your left, next to the stairs."
+      },
+      {
+        "s": 1,
+        "text": "Thank you very much."
+      },
+      {
+        "s": 0,
+        "text": "You're welcome. Enjoy your stay!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many nights is Mark staying?",
+        "options": [
+          "Three",
+          "Two",
+          "Five"
+        ],
+        "answer": 0,
+        "explain_es": "La recepcionista dice: 'A single room for three nights.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where is the lift?",
+        "options": [
+          "On the right",
+          "Next to the restaurant",
+          "On the left, next to the stairs"
+        ],
+        "answer": 2,
+        "explain_es": "La recepcionista dice: 'It's on your left, next to the stairs.'"
+      },
+      {
+        "type": "tf",
+        "q": "The Wi-Fi is free.",
+        "answer": "T",
+        "explain_es": "La recepcionista dice: 'Yes, it's free.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mark has a double room.",
+        "answer": "F",
+        "explain_es": "Es 'a single room', una habitación sencilla."
+      },
+      {
+        "type": "gap",
+        "q": "Room number: ____",
+        "answer": "two-oh-six",
+        "accept": [
+          "206",
+          "two oh six"
+        ],
+        "explain_es": "La recepcionista dice: 'Your room is two-oh-six, on the second floor.'"
+      },
+      {
+        "type": "gap",
+        "q": "Breakfast: from seven to ____",
+        "answer": "ten",
+        "accept": [
+          "10"
+        ],
+        "explain_es": "La recepcionista dice: 'Breakfast is from seven to ten.'"
+      },
+      {
+        "type": "gap",
+        "q": "Guest's last name: ____",
+        "answer": "Wilson",
+        "accept": [],
+        "explain_es": "Mark deletrea: 'W-I-L-S-O-N.'"
+      }
+    ],
+    "dictation": [
+      "Can you spell your last name, please?",
+      "Breakfast is from seven to ten in the restaurant."
+    ]
+  },
+  {
+    "id": "l-a1-pizza-phone",
+    "title": "Ordering Pizza by Phone",
+    "level": "A1",
+    "kind": "phone-call",
+    "topic": "Food & drink",
+    "emoji": "🍕",
+    "speakers": [
+      {
+        "name": "Pizza Shop",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Sofia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, Tony's Pizza. How can I help you?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. I'd like to order a pizza for delivery, please."
+      },
+      {
+        "s": 0,
+        "text": "Sure. What would you like?"
+      },
+      {
+        "s": 1,
+        "text": "A large pizza with ham and mushrooms, please."
+      },
+      {
+        "s": 0,
+        "text": "OK. Anything to drink?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, two bottles of lemonade."
+      },
+      {
+        "s": 0,
+        "text": "Great. What's your address?"
+      },
+      {
+        "s": 1,
+        "text": "It's eighty-four Green Street, apartment three."
+      },
+      {
+        "s": 0,
+        "text": "Eighty-four Green Street, apartment three. And your name?"
+      },
+      {
+        "s": 1,
+        "text": "Sofia."
+      },
+      {
+        "s": 0,
+        "text": "OK, Sofia. That's eighteen dollars in total."
+      },
+      {
+        "s": 1,
+        "text": "How long does it take?"
+      },
+      {
+        "s": 0,
+        "text": "About thirty minutes."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Thank you!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is on Sofia's pizza?",
+        "options": [
+          "Ham and mushrooms",
+          "Ham and pineapple",
+          "Cheese and tomato"
+        ],
+        "answer": 0,
+        "explain_es": "Sofia pide: 'A large pizza with ham and mushrooms.'"
+      },
+      {
+        "type": "mc",
+        "q": "What does Sofia order to drink?",
+        "options": [
+          "Two bottles of water",
+          "Two bottles of lemonade",
+          "One cola"
+        ],
+        "answer": 1,
+        "explain_es": "Sofia dice: 'Yes, two bottles of lemonade.'"
+      },
+      {
+        "type": "tf",
+        "q": "Sofia orders a small pizza.",
+        "answer": "F",
+        "explain_es": "Sofia pide 'A large pizza', una pizza grande."
+      },
+      {
+        "type": "tf",
+        "q": "Sofia lives in an apartment.",
+        "answer": "T",
+        "explain_es": "Su dirección es 'eighty-four Green Street, apartment three.'"
+      },
+      {
+        "type": "gap",
+        "q": "Address: ____ Green Street",
+        "answer": "eighty-four",
+        "accept": [
+          "84",
+          "eighty four"
+        ],
+        "explain_es": "Sofia dice: 'It's eighty-four Green Street.'"
+      },
+      {
+        "type": "gap",
+        "q": "Total: ____ dollars",
+        "answer": "eighteen",
+        "accept": [
+          "18"
+        ],
+        "explain_es": "El empleado dice: 'That's eighteen dollars in total.'"
+      },
+      {
+        "type": "gap",
+        "q": "Delivery time: about ____ minutes",
+        "answer": "thirty",
+        "accept": [
+          "30"
+        ],
+        "explain_es": "El empleado dice: 'About thirty minutes.'"
+      }
+    ],
+    "dictation": [
+      "What's your address?",
+      "How long does it take?"
+    ]
+  },
+  {
+    "id": "l-a1-weather-today",
+    "title": "Today's Weather",
+    "level": "A1",
+    "kind": "news",
+    "topic": "Weather",
+    "emoji": "🌦️",
+    "speakers": [
+      {
+        "name": "Presenter",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, and here is the weather for today."
+      },
+      {
+        "s": 0,
+        "text": "In the north, it's cold and cloudy, with a high of eight degrees."
+      },
+      {
+        "s": 0,
+        "text": "Take your umbrella, because it's going to rain this afternoon."
+      },
+      {
+        "s": 0,
+        "text": "In the south, it's sunny and warm, with a high of nineteen degrees."
+      },
+      {
+        "s": 0,
+        "text": "It's a great day for the beach!"
+      },
+      {
+        "s": 0,
+        "text": "In the east, it's very windy this morning, but the afternoon is nice and dry."
+      },
+      {
+        "s": 0,
+        "text": "Tomorrow is Saturday, and it's sunny everywhere."
+      },
+      {
+        "s": 0,
+        "text": "That's the weather. Have a good day!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the weather like in the south?",
+        "options": [
+          "Windy and dry",
+          "Cold and rainy",
+          "Sunny and warm"
+        ],
+        "answer": 2,
+        "explain_es": "La presentadora dice: 'In the south, it's sunny and warm.'"
+      },
+      {
+        "type": "mc",
+        "q": "When does it rain in the north?",
+        "options": [
+          "This morning",
+          "This afternoon",
+          "Tomorrow"
+        ],
+        "answer": 1,
+        "explain_es": "La presentadora dice: 'it's going to rain this afternoon.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where is it a good day for the beach?",
+        "options": [
+          "The south",
+          "The east",
+          "The north"
+        ],
+        "answer": 0,
+        "explain_es": "Después de hablar del sur dice: 'It's a great day for the beach!'"
+      },
+      {
+        "type": "tf",
+        "q": "In the east, it's windy in the morning.",
+        "answer": "T",
+        "explain_es": "La presentadora dice: 'In the east, it's very windy this morning.'"
+      },
+      {
+        "type": "tf",
+        "q": "Tomorrow is Sunday.",
+        "answer": "F",
+        "explain_es": "La presentadora dice: 'Tomorrow is Saturday.'"
+      },
+      {
+        "type": "gap",
+        "q": "North: a high of ____ degrees",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "La presentadora dice: 'with a high of eight degrees.'"
+      },
+      {
+        "type": "gap",
+        "q": "South: a high of ____ degrees",
+        "answer": "nineteen",
+        "accept": [
+          "19"
+        ],
+        "explain_es": "La presentadora dice: 'with a high of nineteen degrees.'"
+      }
+    ],
+    "dictation": [
+      "Take your umbrella, because it's going to rain this afternoon.",
+      "Tomorrow is Saturday, and it's sunny everywhere."
+    ]
+  },
+  {
+    "id": "l-a1-yoga-class",
+    "title": "Your First Yoga Class",
+    "level": "A1",
+    "kind": "instructions",
+    "topic": "Sport & health",
+    "emoji": "🧘",
+    "speakers": [
+      {
+        "name": "Kelly",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, everyone, and welcome to your first yoga class."
+      },
+      {
+        "s": 0,
+        "text": "My name is Kelly."
+      },
+      {
+        "s": 0,
+        "text": "First, please take off your shoes and put them by the door."
+      },
+      {
+        "s": 0,
+        "text": "Then, take a mat from the box. The mats are blue and green."
+      },
+      {
+        "s": 0,
+        "text": "Sit on your mat and close your eyes."
+      },
+      {
+        "s": 0,
+        "text": "Now breathe in slowly. One, two, three, four."
+      },
+      {
+        "s": 0,
+        "text": "And breathe out. Good!"
+      },
+      {
+        "s": 0,
+        "text": "Please turn off your phones."
+      },
+      {
+        "s": 0,
+        "text": "The class is one hour long."
+      },
+      {
+        "s": 0,
+        "text": "After the class, there is free water at the front desk."
+      },
+      {
+        "s": 0,
+        "text": "Are you ready? Let's start!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where do students put their shoes?",
+        "options": [
+          "In the box",
+          "By the door",
+          "At the front desk"
+        ],
+        "answer": 1,
+        "explain_es": "Kelly dice: 'take off your shoes and put them by the door.'"
+      },
+      {
+        "type": "mc",
+        "q": "What colour are the mats?",
+        "options": [
+          "Blue and green",
+          "Red and yellow",
+          "Black and white"
+        ],
+        "answer": 0,
+        "explain_es": "Kelly dice: 'The mats are blue and green.'"
+      },
+      {
+        "type": "tf",
+        "q": "The class is two hours long.",
+        "answer": "F",
+        "explain_es": "Kelly dice: 'The class is one hour long.'"
+      },
+      {
+        "type": "tf",
+        "q": "There is free water after the class.",
+        "answer": "T",
+        "explain_es": "Kelly dice: 'After the class, there is free water at the front desk.'"
+      },
+      {
+        "type": "gap",
+        "q": "Teacher's name: ____",
+        "answer": "Kelly",
+        "accept": [],
+        "explain_es": "Ella dice: 'My name is Kelly.'"
+      },
+      {
+        "type": "gap",
+        "q": "The class is one ____ long.",
+        "answer": "hour",
+        "accept": [],
+        "explain_es": "Kelly dice: 'The class is one hour long.'"
+      }
+    ],
+    "dictation": [
+      "Please turn off your phones.",
+      "Sit on your mat and close your eyes."
+    ]
+  },
+  {
+    "id": "l-a2-train-announcements",
+    "title": "Train Station Announcements",
+    "level": "A2",
+    "kind": "announcement",
+    "topic": "Travel",
+    "emoji": "🚆",
+    "speakers": [
+      {
+        "name": "Announcer",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning. This is an announcement for passengers travelling to Manchester."
+      },
+      {
+        "s": 0,
+        "text": "The nine fifteen train to Manchester is delayed by twenty minutes. It will now leave at nine thirty-five from platform four."
+      },
+      {
+        "s": 0,
+        "text": "We're sorry for the delay. This is because of a problem with the signals near Birmingham."
+      },
+      {
+        "s": 0,
+        "text": "Passengers for Liverpool, please note: the ten o'clock train to Liverpool will leave from platform seven, not platform six."
+      },
+      {
+        "s": 0,
+        "text": "Please remember that the first three carriages are for passengers with reserved seats only."
+      },
+      {
+        "s": 0,
+        "text": "The café on platform two is open. Today, if you show your train ticket, you can get a free cup of tea with any sandwich."
+      },
+      {
+        "s": 0,
+        "text": "Please keep your bags with you at all times. If you see a bag on its own, tell a member of staff."
+      },
+      {
+        "s": 0,
+        "text": "Thank you for travelling with Greenway Rail."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why is the Manchester train late?",
+        "options": [
+          "Bad weather",
+          "A problem with the train doors",
+          "A problem with the signals"
+        ],
+        "answer": 2,
+        "explain_es": "El anuncio dice: 'This is because of a problem with the signals near Birmingham.'"
+      },
+      {
+        "type": "mc",
+        "q": "Which platform does the Liverpool train leave from?",
+        "options": [
+          "Seven",
+          "Four",
+          "Six"
+        ],
+        "answer": 0,
+        "explain_es": "El anuncio dice: 'platform seven, not platform six.' La plataforma cuatro es para Manchester."
+      },
+      {
+        "type": "mc",
+        "q": "Who can sit in the first three carriages?",
+        "options": [
+          "People with bicycles",
+          "Passengers with reserved seats",
+          "Nobody, they are closed"
+        ],
+        "answer": 1,
+        "explain_es": "El anuncio dice: 'the first three carriages are for passengers with reserved seats only.'"
+      },
+      {
+        "type": "tf",
+        "q": "The Manchester train will leave at nine fifteen.",
+        "answer": "F",
+        "explain_es": "Salía a las 9:15, pero ahora 'It will now leave at nine thirty-five.'"
+      },
+      {
+        "type": "tf",
+        "q": "You can get a free tea if you buy a sandwich and show your ticket.",
+        "answer": "T",
+        "explain_es": "El anuncio dice: 'if you show your train ticket, you can get a free cup of tea with any sandwich.'"
+      },
+      {
+        "type": "gap",
+        "q": "New departure time to Manchester: ____",
+        "answer": "nine thirty-five",
+        "accept": [
+          "9:35",
+          "nine thirty five",
+          "935"
+        ],
+        "explain_es": "El anuncio dice: 'It will now leave at nine thirty-five.'"
+      },
+      {
+        "type": "gap",
+        "q": "Manchester train: platform ____",
+        "answer": "four",
+        "accept": [
+          "4"
+        ],
+        "explain_es": "El anuncio dice: 'from platform four.'"
+      },
+      {
+        "type": "gap",
+        "q": "The delay is ____ minutes.",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "El anuncio dice: 'delayed by twenty minutes.'"
+      }
+    ],
+    "dictation": [
+      "We're sorry for the delay.",
+      "Please keep your bags with you at all times."
+    ]
+  },
+  {
+    "id": "l-a2-weekend-plans",
+    "title": "Plans for the Weekend",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Free time",
+    "emoji": "🎶",
+    "speakers": [
+      {
+        "name": "Jake",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Mia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hey Mia, are you doing anything this weekend?"
+      },
+      {
+        "s": 1,
+        "text": "Not much. Why?"
+      },
+      {
+        "s": 0,
+        "text": "Well, there's a music festival in the park on Saturday. Do you want to come?"
+      },
+      {
+        "s": 1,
+        "text": "Oh, that sounds fun! How much are the tickets?"
+      },
+      {
+        "s": 0,
+        "text": "They're twenty-five dollars, but students pay fifteen."
+      },
+      {
+        "s": 1,
+        "text": "Great, I've still got my student card. What time does it start?"
+      },
+      {
+        "s": 0,
+        "text": "The gates open at two, but the best band plays at six."
+      },
+      {
+        "s": 1,
+        "text": "Hmm, I work on Saturday mornings until one. Is that OK?"
+      },
+      {
+        "s": 0,
+        "text": "No problem. Let's meet at three at the main entrance."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Should I bring food?"
+      },
+      {
+        "s": 0,
+        "text": "No, there are lots of food trucks. But bring a jacket. It gets cold in the evening."
+      },
+      {
+        "s": 1,
+        "text": "Good idea. Can my cousin Rosa come too? She's visiting from Cartagena."
+      },
+      {
+        "s": 0,
+        "text": "Of course! The more, the merrier."
+      },
+      {
+        "s": 1,
+        "text": "Cool. I'll buy the tickets online tonight."
+      },
+      {
+        "s": 0,
+        "text": "Great. See you on Saturday!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How much is a student ticket?",
+        "options": [
+          "Twenty-five dollars",
+          "Six dollars",
+          "Fifteen dollars"
+        ],
+        "answer": 2,
+        "explain_es": "Jake dice: 'They're twenty-five dollars, but students pay fifteen.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where will they meet?",
+        "options": [
+          "At the main entrance",
+          "At the food trucks",
+          "At Mia's house"
+        ],
+        "answer": 0,
+        "explain_es": "Jake dice: 'Let's meet at three at the main entrance.'"
+      },
+      {
+        "type": "mc",
+        "q": "What does Jake tell Mia to bring?",
+        "options": [
+          "Food",
+          "A jacket",
+          "A chair"
+        ],
+        "answer": 1,
+        "explain_es": "Jake dice: 'bring a jacket. It gets cold in the evening.' No hace falta comida por los 'food trucks'."
+      },
+      {
+        "type": "tf",
+        "q": "Mia works on Saturday mornings.",
+        "answer": "T",
+        "explain_es": "Mia dice: 'I work on Saturday mornings until one.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mia will buy the tickets at the festival.",
+        "answer": "F",
+        "explain_es": "Mia dice: 'I'll buy the tickets online tonight.'"
+      },
+      {
+        "type": "gap",
+        "q": "Meeting time: ____ o'clock",
+        "answer": "three",
+        "accept": [
+          "3"
+        ],
+        "explain_es": "Jake dice: 'Let's meet at three.'"
+      },
+      {
+        "type": "gap",
+        "q": "Rosa is visiting from ____.",
+        "answer": "Cartagena",
+        "accept": [],
+        "explain_es": "Mia dice: 'She's visiting from Cartagena.'"
+      },
+      {
+        "type": "gap",
+        "q": "The best band plays at ____.",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "Jake dice: 'the best band plays at six.'"
+      }
+    ],
+    "dictation": [
+      "How much are the tickets?",
+      "It gets cold in the evening."
+    ]
+  },
+  {
+    "id": "l-a2-bookshop-interview",
+    "title": "A Job Interview at a Bookshop",
+    "level": "A2",
+    "kind": "interview",
+    "topic": "Work",
+    "emoji": "📚",
+    "speakers": [
+      {
+        "name": "Mrs. Clarke",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Daniel",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, Daniel. Thanks for coming. Please, sit down."
+      },
+      {
+        "s": 1,
+        "text": "Thank you."
+      },
+      {
+        "s": 0,
+        "text": "So, tell me a little about yourself."
+      },
+      {
+        "s": 1,
+        "text": "Well, I'm nineteen, and I'm studying history at the university. I'm in my second year."
+      },
+      {
+        "s": 0,
+        "text": "And why do you want to work in a bookshop?"
+      },
+      {
+        "s": 1,
+        "text": "I love reading, especially novels. And I enjoy helping people find things."
+      },
+      {
+        "s": 0,
+        "text": "Have you got any experience?"
+      },
+      {
+        "s": 1,
+        "text": "Yes. Last summer, I worked in a clothes shop for three months. I used the cash register and helped customers."
+      },
+      {
+        "s": 0,
+        "text": "Good. This job is on Fridays and Saturdays. Is that OK with your classes?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I don't have classes on Fridays."
+      },
+      {
+        "s": 0,
+        "text": "Excellent. The hours are from ten to four, and the pay is eleven pounds an hour."
+      },
+      {
+        "s": 1,
+        "text": "That sounds great. When does the job start?"
+      },
+      {
+        "s": 0,
+        "text": "On the first of June. Do you have any questions?"
+      },
+      {
+        "s": 1,
+        "text": "Yes. Do I need to wear a uniform?"
+      },
+      {
+        "s": 0,
+        "text": "No, just a green T-shirt with our logo. We'll give you two."
+      },
+      {
+        "s": 1,
+        "text": "Perfect."
+      },
+      {
+        "s": 0,
+        "text": "OK, Daniel. I'll call you on Monday with our decision."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Daniel study?",
+        "options": [
+          "Business",
+          "Literature",
+          "History"
+        ],
+        "answer": 2,
+        "explain_es": "Daniel dice: 'I'm studying history at the university.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where did Daniel work last summer?",
+        "options": [
+          "In a café",
+          "In a clothes shop",
+          "In a library"
+        ],
+        "answer": 1,
+        "explain_es": "Daniel dice: 'Last summer, I worked in a clothes shop for three months.'"
+      },
+      {
+        "type": "mc",
+        "q": "When will Mrs. Clarke call Daniel?",
+        "options": [
+          "On Monday",
+          "On Friday",
+          "On the first of June"
+        ],
+        "answer": 0,
+        "explain_es": "Ella dice: 'I'll call you on Monday with our decision.' El 1 de junio es cuando empieza el trabajo."
+      },
+      {
+        "type": "tf",
+        "q": "The job is on Fridays and Saturdays.",
+        "answer": "T",
+        "explain_es": "Mrs. Clarke dice: 'This job is on Fridays and Saturdays.'"
+      },
+      {
+        "type": "tf",
+        "q": "Daniel has to wear a black uniform.",
+        "answer": "F",
+        "explain_es": "Ella dice: 'No, just a green T-shirt with our logo.'"
+      },
+      {
+        "type": "gap",
+        "q": "Pay: ____ pounds an hour",
+        "answer": "eleven",
+        "accept": [
+          "11"
+        ],
+        "explain_es": "Ella dice: 'the pay is eleven pounds an hour.'"
+      },
+      {
+        "type": "gap",
+        "q": "Start date: the first of ____",
+        "answer": "June",
+        "accept": [],
+        "explain_es": "Ella dice: 'On the first of June.'"
+      },
+      {
+        "type": "gap",
+        "q": "Hours: from ten to ____",
+        "answer": "four",
+        "accept": [
+          "4"
+        ],
+        "explain_es": "Ella dice: 'The hours are from ten to four.'"
+      }
+    ],
+    "dictation": [
+      "Have you got any experience?",
+      "Do I need to wear a uniform?"
+    ]
+  },
+  {
+    "id": "l-a2-party-voicemail",
+    "title": "Change of Plans for the Party",
+    "level": "A2",
+    "kind": "voicemail",
+    "topic": "Social life",
+    "emoji": "🎂",
+    "speakers": [
+      {
+        "name": "Valeria",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Nick, it's Valeria. Listen, I'm calling about Sam's birthday party on Friday. There's a small change."
+      },
+      {
+        "s": 0,
+        "text": "It's not at Sam's house anymore, because his parents are painting the living room."
+      },
+      {
+        "s": 0,
+        "text": "So now the party is at Luigi's, the Italian restaurant on Bridge Road. It's opposite the cinema."
+      },
+      {
+        "s": 0,
+        "text": "And it starts a bit later, at eight instead of seven thirty."
+      },
+      {
+        "s": 0,
+        "text": "Oh, and we're all paying for Sam's dinner, so bring about twenty dollars."
+      },
+      {
+        "s": 0,
+        "text": "I'm getting the cake from the bakery, so you don't need to bring anything else."
+      },
+      {
+        "s": 0,
+        "text": "The cake is a surprise, so please don't tell Sam!"
+      },
+      {
+        "s": 0,
+        "text": "Actually, could you buy a card? Something funny! Everyone can sign it at the restaurant."
+      },
+      {
+        "s": 0,
+        "text": "If you have any questions, text me. My new number is five five five, three two one, eight nine zero."
+      },
+      {
+        "s": 0,
+        "text": "OK, see you on Friday. Bye!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why isn't the party at Sam's house?",
+        "options": [
+          "Sam's parents are painting the living room.",
+          "The house is too small.",
+          "Sam is ill."
+        ],
+        "answer": 0,
+        "explain_es": "Valeria dice: 'because his parents are painting the living room.'"
+      },
+      {
+        "type": "mc",
+        "q": "What does Valeria ask Nick to buy?",
+        "options": [
+          "A cake",
+          "A present",
+          "A funny card"
+        ],
+        "answer": 2,
+        "explain_es": "Valeria dice: 'could you buy a card? Something funny!' Ella compra el pastel."
+      },
+      {
+        "type": "tf",
+        "q": "The restaurant is opposite the cinema.",
+        "answer": "T",
+        "explain_es": "Valeria dice: 'It's opposite the cinema.'"
+      },
+      {
+        "type": "tf",
+        "q": "The party starts at seven thirty.",
+        "answer": "F",
+        "explain_es": "Valeria dice: 'at eight instead of seven thirty.'"
+      },
+      {
+        "type": "gap",
+        "q": "Place: Luigi's, on ____ Road",
+        "answer": "Bridge",
+        "accept": [],
+        "explain_es": "Valeria dice: 'the Italian restaurant on Bridge Road.'"
+      },
+      {
+        "type": "gap",
+        "q": "Start time: ____ o'clock",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "Valeria dice: 'at eight instead of seven thirty.'"
+      },
+      {
+        "type": "gap",
+        "q": "Money to bring: about ____ dollars",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "Valeria dice: 'so bring about twenty dollars.'"
+      }
+    ],
+    "dictation": [
+      "It's opposite the cinema.",
+      "If you have any questions, text me."
+    ]
+  },
+  {
+    "id": "l-a2-doctor-visit",
+    "title": "At the Doctor's",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Health",
+    "emoji": "🩺",
+    "speakers": [
+      {
+        "name": "Doctor",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ana",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning. Please take a seat. What's the problem?"
+      },
+      {
+        "s": 1,
+        "text": "Hi, Doctor. I've had a bad headache for three days, and I feel really tired."
+      },
+      {
+        "s": 0,
+        "text": "I see. Do you have a temperature?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, a little. Last night it was thirty-eight degrees."
+      },
+      {
+        "s": 0,
+        "text": "Are you sleeping well?"
+      },
+      {
+        "s": 1,
+        "text": "Not really. I've got exams next week, so I'm studying until two in the morning."
+      },
+      {
+        "s": 0,
+        "text": "And how much water do you drink?"
+      },
+      {
+        "s": 1,
+        "text": "Hmm, not much. I usually drink coffee. Maybe four cups a day."
+      },
+      {
+        "s": 0,
+        "text": "That's probably part of the problem. I think it's stress and a small virus. It's nothing serious."
+      },
+      {
+        "s": 1,
+        "text": "Do I need any medicine?"
+      },
+      {
+        "s": 0,
+        "text": "You can take these tablets for the headache. Take one every eight hours, after food. But no more than three a day."
+      },
+      {
+        "s": 1,
+        "text": "OK."
+      },
+      {
+        "s": 0,
+        "text": "And please drink at least two litres of water a day, and less coffee. Try to go to bed before eleven."
+      },
+      {
+        "s": 1,
+        "text": "That's going to be hard, but I'll try."
+      },
+      {
+        "s": 0,
+        "text": "If you don't feel better in five days, come back and see me."
+      },
+      {
+        "s": 1,
+        "text": "Thank you, Doctor."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long has Ana had a headache?",
+        "options": [
+          "Three days",
+          "Two days",
+          "A week"
+        ],
+        "answer": 0,
+        "explain_es": "Ana dice: 'I've had a bad headache for three days.'"
+      },
+      {
+        "type": "mc",
+        "q": "What does the doctor think the problem is?",
+        "options": [
+          "Bad food",
+          "Too much sport",
+          "Stress and a small virus"
+        ],
+        "answer": 2,
+        "explain_es": "El médico dice: 'I think it's stress and a small virus.'"
+      },
+      {
+        "type": "mc",
+        "q": "When should Ana come back?",
+        "options": [
+          "After her exams",
+          "If she doesn't feel better in five days",
+          "In two weeks"
+        ],
+        "answer": 1,
+        "explain_es": "El médico dice: 'If you don't feel better in five days, come back and see me.'"
+      },
+      {
+        "type": "tf",
+        "q": "Ana drinks a lot of water.",
+        "answer": "F",
+        "explain_es": "Ana dice: 'not much. I usually drink coffee.'"
+      },
+      {
+        "type": "tf",
+        "q": "Ana should take the tablets after food.",
+        "answer": "T",
+        "explain_es": "El médico dice: 'Take one every eight hours, after food.'"
+      },
+      {
+        "type": "gap",
+        "q": "Take one tablet every ____ hours.",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "El médico dice: 'Take one every eight hours.'"
+      },
+      {
+        "type": "gap",
+        "q": "Drink at least ____ litres of water a day.",
+        "answer": "two",
+        "accept": [
+          "2"
+        ],
+        "explain_es": "El médico dice: 'drink at least two litres of water a day.'"
+      },
+      {
+        "type": "gap",
+        "q": "Temperature last night: ____ degrees",
+        "answer": "thirty-eight",
+        "accept": [
+          "38",
+          "thirty eight"
+        ],
+        "explain_es": "Ana dice: 'Last night it was thirty-eight degrees.'"
+      }
+    ],
+    "dictation": [
+      "Do I need any medicine?",
+      "Try to go to bed before eleven."
+    ]
+  },
+  {
+    "id": "l-a2-budget-travel-podcast",
+    "title": "Travelling on a Budget",
+    "level": "A2",
+    "kind": "podcast",
+    "topic": "Travel",
+    "emoji": "🎒",
+    "speakers": [
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Lucy",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello and welcome to Cheap Trips, the podcast about travelling on a small budget. I'm Ben."
+      },
+      {
+        "s": 1,
+        "text": "And I'm Lucy. Today we're giving you our top tips for saving money on holiday."
+      },
+      {
+        "s": 0,
+        "text": "OK, tip number one: book your flights on a Tuesday or Wednesday. They're often cheaper than at the weekend."
+      },
+      {
+        "s": 1,
+        "text": "That's true. And tip two: don't eat in restaurants near famous places. Walk two or three streets away, and the prices are much lower."
+      },
+      {
+        "s": 0,
+        "text": "Good one. My favourite tip is to stay in hostels. A bed costs about twenty dollars a night, and you meet people from all over the world."
+      },
+      {
+        "s": 1,
+        "text": "Some hostels have private rooms, too, if you don't like sharing."
+      },
+      {
+        "s": 0,
+        "text": "Exactly. Tip four: use public transport. Buses and trains are cheaper than taxis, and you see more of the city."
+      },
+      {
+        "s": 1,
+        "text": "And my last tip: download maps before you go. Then you don't need the internet when you're lost!"
+      },
+      {
+        "s": 0,
+        "text": "Great. Next week, we're talking about travelling with pets."
+      },
+      {
+        "s": 1,
+        "text": "See you then!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When are flights often cheaper?",
+        "options": [
+          "At the weekend",
+          "On a Monday or Friday",
+          "On a Tuesday or Wednesday"
+        ],
+        "answer": 2,
+        "explain_es": "Ben dice: 'book your flights on a Tuesday or Wednesday. They're often cheaper than at the weekend.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is tip number four?",
+        "options": [
+          "Rent a car",
+          "Use public transport",
+          "Walk everywhere"
+        ],
+        "answer": 1,
+        "explain_es": "Ben dice: 'Tip four: use public transport.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is next week's topic?",
+        "options": [
+          "Travelling with pets",
+          "Travelling by train",
+          "Travelling with children"
+        ],
+        "answer": 0,
+        "explain_es": "Ben dice: 'Next week, we're talking about travelling with pets.'"
+      },
+      {
+        "type": "tf",
+        "q": "Restaurants near famous places are cheaper.",
+        "answer": "F",
+        "explain_es": "Lucy dice que no comas cerca de lugares famosos: 'Walk two or three streets away, and the prices are much lower.'"
+      },
+      {
+        "type": "tf",
+        "q": "Some hostels have private rooms.",
+        "answer": "T",
+        "explain_es": "Lucy dice: 'Some hostels have private rooms, too.'"
+      },
+      {
+        "type": "gap",
+        "q": "A hostel bed costs about ____ dollars a night.",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "Ben dice: 'A bed costs about twenty dollars a night.'"
+      },
+      {
+        "type": "gap",
+        "q": "The podcast is called ____ Trips.",
+        "answer": "Cheap",
+        "accept": [],
+        "explain_es": "Ben dice: 'welcome to Cheap Trips.'"
+      }
+    ],
+    "dictation": [
+      "Some hostels have private rooms, too, if you don't like sharing.",
+      "Today we're giving you our top tips for saving money on holiday."
+    ]
+  },
+  {
+    "id": "l-a2-making-arepas",
+    "title": "How to Make Arepas",
+    "level": "A2",
+    "kind": "instructions",
+    "topic": "Food & drink",
+    "emoji": "🫓",
+    "speakers": [
+      {
+        "name": "Marta",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, everyone! Today I'm showing you how to make arepas, a typical food from Colombia and Venezuela."
+      },
+      {
+        "s": 0,
+        "text": "It's really easy. You only need four things."
+      },
+      {
+        "s": 0,
+        "text": "Two cups of pre-cooked corn flour, two and a half cups of warm water, a teaspoon of salt, and a little butter."
+      },
+      {
+        "s": 0,
+        "text": "First, put the flour and the salt in a big bowl."
+      },
+      {
+        "s": 0,
+        "text": "Then add the warm water slowly and mix it with your hands."
+      },
+      {
+        "s": 0,
+        "text": "After about two minutes, you have a soft dough. Now, leave it for five minutes."
+      },
+      {
+        "s": 0,
+        "text": "Next, take a small ball of dough and make it flat, like a thick pancake."
+      },
+      {
+        "s": 0,
+        "text": "Heat a pan with a little butter."
+      },
+      {
+        "s": 0,
+        "text": "Cook each arepa for about six minutes on each side, until it's golden."
+      },
+      {
+        "s": 0,
+        "text": "You can eat them with cheese, eggs, or avocado. My favourite is with white cheese. Enjoy!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many ingredients do you need?",
+        "options": [
+          "Four",
+          "Three",
+          "Six"
+        ],
+        "answer": 0,
+        "explain_es": "Marta dice: 'You only need four things.'"
+      },
+      {
+        "type": "mc",
+        "q": "What kind of water do you use?",
+        "options": [
+          "Cold water",
+          "Hot water",
+          "Warm water"
+        ],
+        "answer": 2,
+        "explain_es": "Marta dice: 'two and a half cups of warm water.'"
+      },
+      {
+        "type": "mc",
+        "q": "What do you put in the pan?",
+        "options": [
+          "A little oil",
+          "A little butter",
+          "A little water"
+        ],
+        "answer": 1,
+        "explain_es": "Marta dice: 'Heat a pan with a little butter.'"
+      },
+      {
+        "type": "tf",
+        "q": "You mix the dough with a spoon.",
+        "answer": "F",
+        "explain_es": "Marta dice: 'mix it with your hands.'"
+      },
+      {
+        "type": "tf",
+        "q": "Marta's favourite is arepas with white cheese.",
+        "answer": "T",
+        "explain_es": "Marta dice: 'My favourite is with white cheese.'"
+      },
+      {
+        "type": "gap",
+        "q": "Leave the dough for ____ minutes.",
+        "answer": "five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "Marta dice: 'Now, leave it for five minutes.'"
+      },
+      {
+        "type": "gap",
+        "q": "Cook each side for about ____ minutes.",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "Marta dice: 'Cook each arepa for about six minutes on each side.'"
+      }
+    ],
+    "dictation": [
+      "It's really easy.",
+      "Heat a pan with a little butter."
+    ]
+  },
+  {
+    "id": "l-a2-lost-luggage",
+    "title": "Lost Luggage",
+    "level": "A2",
+    "kind": "phone-call",
+    "topic": "Travel",
+    "emoji": "🧳",
+    "speakers": [
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Camila",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon, SkyWay Airlines baggage service. My name's Tom. How can I help?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. I just arrived on the flight from Bogotá, and my suitcase isn't here."
+      },
+      {
+        "s": 0,
+        "text": "I'm sorry to hear that. Can I have your name, please?"
+      },
+      {
+        "s": 1,
+        "text": "Camila Ortiz. That's O-R-T-I-Z."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. Can you describe the suitcase?"
+      },
+      {
+        "s": 1,
+        "text": "It's a large red suitcase, with a yellow ribbon on the handle."
+      },
+      {
+        "s": 0,
+        "text": "OK. And what's inside?"
+      },
+      {
+        "s": 1,
+        "text": "Mostly clothes, and some presents for my aunt. Oh, and my laptop charger."
+      },
+      {
+        "s": 0,
+        "text": "Right. I've found it on the system. Your suitcase is still in Miami. It missed the connection."
+      },
+      {
+        "s": 1,
+        "text": "Oh no. When will it get here?"
+      },
+      {
+        "s": 0,
+        "text": "It's arriving on the next flight, tonight at eleven. We can deliver it to your hotel tomorrow morning."
+      },
+      {
+        "s": 1,
+        "text": "Great. I'm staying at the Plaza Hotel, room three-one-two."
+      },
+      {
+        "s": 0,
+        "text": "Perfect. Your reference number is R-T-five-eight-one. Please keep it."
+      },
+      {
+        "s": 1,
+        "text": "R-T-five-eight-one. Got it. Thank you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Camila's suitcase now?",
+        "options": [
+          "In Miami",
+          "In Bogotá",
+          "At the Plaza Hotel"
+        ],
+        "answer": 0,
+        "explain_es": "Tom dice: 'Your suitcase is still in Miami. It missed the connection.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who are the presents for?",
+        "options": [
+          "Her cousin",
+          "Her mother",
+          "Her aunt"
+        ],
+        "answer": 2,
+        "explain_es": "Camila dice: 'some presents for my aunt.'"
+      },
+      {
+        "type": "tf",
+        "q": "The airline will deliver the suitcase tonight.",
+        "answer": "F",
+        "explain_es": "La maleta llega esta noche, pero 'We can deliver it to your hotel tomorrow morning.'"
+      },
+      {
+        "type": "tf",
+        "q": "The suitcase has a yellow ribbon.",
+        "answer": "T",
+        "explain_es": "Camila dice: 'with a yellow ribbon on the handle.'"
+      },
+      {
+        "type": "gap",
+        "q": "Surname: ____",
+        "answer": "Ortiz",
+        "accept": [],
+        "explain_es": "Camila deletrea: 'O-R-T-I-Z.'"
+      },
+      {
+        "type": "gap",
+        "q": "Suitcase colour: ____",
+        "answer": "red",
+        "accept": [],
+        "explain_es": "Camila dice: 'It's a large red suitcase.'"
+      },
+      {
+        "type": "gap",
+        "q": "Hotel room: ____",
+        "answer": "three-one-two",
+        "accept": [
+          "312",
+          "three one two"
+        ],
+        "explain_es": "Camila dice: 'the Plaza Hotel, room three-one-two.'"
+      }
+    ],
+    "dictation": [
+      "Can you describe the suitcase?",
+      "Your suitcase is still in Miami."
+    ]
+  },
+  {
+    "id": "l-a2-bike-lanes-news",
+    "title": "New Bike Lanes in the City",
+    "level": "A2",
+    "kind": "news",
+    "topic": "City life",
+    "emoji": "🚲",
+    "speakers": [
+      {
+        "name": "Peter",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Grace",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening. Here's the local news."
+      },
+      {
+        "s": 0,
+        "text": "The city council says there will be forty kilometres of new bike lanes in the city by next year."
+      },
+      {
+        "s": 0,
+        "text": "The first new lane opens on Monday on Avenue Five, between the central library and the football stadium."
+      },
+      {
+        "s": 0,
+        "text": "Our reporter, Grace Kim, has more."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Peter. Many people here are happy about the news. Cycling to work is popular, and the number of cyclists in the city has doubled in five years."
+      },
+      {
+        "s": 1,
+        "text": "But some shop owners on Avenue Five aren't so happy. They say there will be fewer parking spaces for their customers."
+      },
+      {
+        "s": 1,
+        "text": "The council says it will open a new car park behind the library in March, with space for two hundred cars."
+      },
+      {
+        "s": 1,
+        "text": "The council also wants more people to try cycling, so on Sundays, the city's rental bikes will be free for the first hour."
+      },
+      {
+        "s": 1,
+        "text": "Back to you, Peter."
+      },
+      {
+        "s": 0,
+        "text": "Thanks, Grace. And now, the weather."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many kilometres of new bike lanes will there be?",
+        "options": [
+          "Four",
+          "Fourteen",
+          "Forty"
+        ],
+        "answer": 2,
+        "explain_es": "Peter dice: 'forty kilometres of new bike lanes.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who is not happy about the bike lanes?",
+        "options": [
+          "Some shop owners",
+          "Bus drivers",
+          "Cyclists"
+        ],
+        "answer": 0,
+        "explain_es": "Grace dice: 'some shop owners on Avenue Five aren't so happy.'"
+      },
+      {
+        "type": "mc",
+        "q": "What has happened to the number of cyclists?",
+        "options": [
+          "It has gone down.",
+          "It has doubled in five years.",
+          "It is the same."
+        ],
+        "answer": 1,
+        "explain_es": "Grace dice: 'the number of cyclists in the city has doubled in five years.'"
+      },
+      {
+        "type": "tf",
+        "q": "The first new lane opens on Monday.",
+        "answer": "T",
+        "explain_es": "Peter dice: 'The first new lane opens on Monday.'"
+      },
+      {
+        "type": "tf",
+        "q": "The rental bikes are free all day on Sundays.",
+        "answer": "F",
+        "explain_es": "Son gratis solo 'for the first hour'."
+      },
+      {
+        "type": "gap",
+        "q": "The first lane is on Avenue ____.",
+        "answer": "Five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "Peter dice: 'on Avenue Five.'"
+      },
+      {
+        "type": "gap",
+        "q": "The new car park opens in ____.",
+        "answer": "March",
+        "accept": [],
+        "explain_es": "Grace dice: 'a new car park behind the library in March.'"
+      },
+      {
+        "type": "gap",
+        "q": "The car park has space for ____ cars.",
+        "answer": "two hundred",
+        "accept": [
+          "200"
+        ],
+        "explain_es": "Grace dice: 'with space for two hundred cars.'"
+      }
+    ],
+    "dictation": [
+      "Many people here are happy about the news.",
+      "Back to you, Peter."
+    ]
+  },
+  {
+    "id": "l-b1-evening-news",
+    "title": "The Six O'Clock News",
+    "level": "B1",
+    "kind": "news",
+    "topic": "Current affairs",
+    "emoji": "📰",
+    "speakers": [
+      {
+        "name": "Helen",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Liam",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening. This is the six o'clock news, and here are tonight's main stories."
+      },
+      {
+        "s": 0,
+        "text": "The national airline has announced that it will cancel around one hundred and fifty flights over the next two days because of a strike by baggage handlers."
+      },
+      {
+        "s": 0,
+        "text": "The workers are asking for a seven percent pay rise, but the company says it can only offer four. Passengers are advised to check the airline's website before travelling to the airport."
+      },
+      {
+        "s": 0,
+        "text": "In science news, researchers at the University of Edinburgh say they have developed a new type of battery made partly from seaweed."
+      },
+      {
+        "s": 0,
+        "text": "They claim it could be cheaper and safer than the batteries in today's mobile phones, although it won't be in shops for at least five years."
+      },
+      {
+        "s": 0,
+        "text": "Now, sport. Our sports correspondent, Liam Walsh, is at the stadium."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Helen. Well, it's been an amazing night here. The women's national team won three-one against Brazil, and that means they're through to the final for the first time in their history."
+      },
+      {
+        "s": 1,
+        "text": "Over forty thousand fans were here to watch, and the atmosphere has been incredible. The final will be played next Sunday in Madrid."
+      },
+      {
+        "s": 0,
+        "text": "Thanks, Liam. And finally, the weather. After a very dry month, heavy rain is expected tomorrow across the north of the country, so drivers should take extra care on the roads."
+      },
+      {
+        "s": 0,
+        "text": "That's all from us. Goodnight."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why are flights being cancelled?",
+        "options": [
+          "Bad weather",
+          "A strike by pilots",
+          "A strike by baggage handlers"
+        ],
+        "answer": 2,
+        "explain_es": "Helen dice: 'because of a strike by baggage handlers.'"
+      },
+      {
+        "type": "mc",
+        "q": "What pay rise do the workers want?",
+        "options": [
+          "Seven percent",
+          "Four percent",
+          "Eleven percent"
+        ],
+        "answer": 0,
+        "explain_es": "Helen dice: 'The workers are asking for a seven percent pay rise, but the company says it can only offer four.'"
+      },
+      {
+        "type": "mc",
+        "q": "What weather is expected tomorrow in the north?",
+        "options": [
+          "Dry and sunny weather",
+          "Heavy rain",
+          "Strong winds"
+        ],
+        "answer": 1,
+        "explain_es": "Helen dice: 'heavy rain is expected tomorrow across the north of the country.'"
+      },
+      {
+        "type": "tf",
+        "q": "The seaweed battery will be in shops next year.",
+        "answer": "F",
+        "explain_es": "Helen dice: 'it won't be in shops for at least five years.'"
+      },
+      {
+        "type": "tf",
+        "q": "The women's team has never been in the final before.",
+        "answer": "T",
+        "explain_es": "Liam dice: 'they're through to the final for the first time in their history.'"
+      },
+      {
+        "type": "gap",
+        "q": "Flights cancelled: around ____",
+        "answer": "one hundred and fifty",
+        "accept": [
+          "150",
+          "a hundred and fifty",
+          "one hundred fifty"
+        ],
+        "explain_es": "Helen dice: 'cancel around one hundred and fifty flights.'"
+      },
+      {
+        "type": "gap",
+        "q": "Final score: ____ against Brazil",
+        "answer": "three-one",
+        "accept": [
+          "3-1",
+          "three one",
+          "3 1"
+        ],
+        "explain_es": "Liam dice: 'The women's national team won three-one against Brazil.'"
+      },
+      {
+        "type": "gap",
+        "q": "The final will be played in ____.",
+        "answer": "Madrid",
+        "accept": [],
+        "explain_es": "Liam dice: 'The final will be played next Sunday in Madrid.'"
+      }
+    ],
+    "dictation": [
+      "Passengers are advised to check the airline's website before travelling to the airport.",
+      "The final will be played next Sunday in Madrid."
+    ]
+  },
+  {
+    "id": "l-b1-sleep-podcast",
+    "title": "Why Sleep Matters",
+    "level": "B1",
+    "kind": "podcast",
+    "topic": "Health",
+    "emoji": "😴",
+    "speakers": [
+      {
+        "name": "Rachel",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Omar",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, everyone, and welcome back to Healthy Habits. I'm Rachel."
+      },
+      {
+        "s": 1,
+        "text": "And I'm Omar. Today, we're talking about something we all need but rarely get enough of: sleep."
+      },
+      {
+        "s": 0,
+        "text": "Right. So Omar, how many hours do you usually sleep?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly? About six. I know, I know, it's not enough."
+      },
+      {
+        "s": 0,
+        "text": "Experts say adults need between seven and nine hours a night. Teenagers need even more, around nine or ten."
+      },
+      {
+        "s": 1,
+        "text": "Wow. So what happens if we don't get enough?"
+      },
+      {
+        "s": 0,
+        "text": "Well, in the short term, you find it harder to concentrate and remember things. And you're more likely to feel stressed or irritable. Over time, poor sleep is linked to health problems like heart disease."
+      },
+      {
+        "s": 1,
+        "text": "OK, that's a bit scary. So, what can we do?"
+      },
+      {
+        "s": 0,
+        "text": "The most important tip is to go to bed and get up at the same time every day, even at weekends."
+      },
+      {
+        "s": 1,
+        "text": "Even on Saturdays? That's tough."
+      },
+      {
+        "s": 0,
+        "text": "I know! Another tip is to avoid screens for at least an hour before bed. The light from phones tells your brain it's still daytime."
+      },
+      {
+        "s": 1,
+        "text": "Guilty. I usually check my phone in bed."
+      },
+      {
+        "s": 0,
+        "text": "And watch your coffee. Caffeine can stay in your body for up to six hours, so try not to drink it after about two in the afternoon."
+      },
+      {
+        "s": 1,
+        "text": "What about naps? I love a nap."
+      },
+      {
+        "s": 0,
+        "text": "Short naps are fine, about twenty minutes. Longer than that and you might wake up feeling worse."
+      },
+      {
+        "s": 1,
+        "text": "Great advice. I'm going to try going phone-free tonight."
+      },
+      {
+        "s": 0,
+        "text": "Let us know how it goes! Next week, we're talking about healthy snacks."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many hours does Omar usually sleep?",
+        "options": [
+          "Seven",
+          "Six",
+          "Five"
+        ],
+        "answer": 1,
+        "explain_es": "Omar dice: 'Honestly? About six.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is Rachel's most important tip?",
+        "options": [
+          "Exercise every evening",
+          "Never take naps",
+          "Go to bed and get up at the same time every day"
+        ],
+        "answer": 2,
+        "explain_es": "Rachel dice: 'The most important tip is to go to bed and get up at the same time every day.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is next week's topic?",
+        "options": [
+          "Healthy snacks",
+          "Stress at work",
+          "Exercise"
+        ],
+        "answer": 0,
+        "explain_es": "Rachel dice: 'Next week, we're talking about healthy snacks.'"
+      },
+      {
+        "type": "tf",
+        "q": "Teenagers need less sleep than adults.",
+        "answer": "F",
+        "explain_es": "Rachel dice: 'Teenagers need even more, around nine or ten.'"
+      },
+      {
+        "type": "tf",
+        "q": "Omar usually checks his phone in bed.",
+        "answer": "T",
+        "explain_es": "Omar dice: 'Guilty. I usually check my phone in bed.'"
+      },
+      {
+        "type": "gap",
+        "q": "Adults need between seven and ____ hours of sleep.",
+        "answer": "nine",
+        "accept": [
+          "9"
+        ],
+        "explain_es": "Rachel dice: 'adults need between seven and nine hours a night.'"
+      },
+      {
+        "type": "gap",
+        "q": "A good nap is about ____ minutes.",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "Rachel dice: 'Short naps are fine, about twenty minutes.'"
+      },
+      {
+        "type": "gap",
+        "q": "Caffeine can stay in your body for up to ____ hours.",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "Rachel dice: 'Caffeine can stay in your body for up to six hours.'"
+      }
+    ],
+    "dictation": [
+      "Experts say adults need between seven and nine hours a night.",
+      "The light from phones tells your brain it's still daytime."
+    ]
+  },
+  {
+    "id": "l-b1-coffee-farmer",
+    "title": "A Coffee Farmer from Huila",
+    "level": "B1",
+    "kind": "interview",
+    "topic": "Work & culture",
+    "emoji": "🌱",
+    "speakers": [
+      {
+        "name": "Interviewer",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Luz Marina",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Today on Global Kitchen, I'm talking to Luz Marina Cárdenas, a coffee farmer from Huila, in the south of Colombia. Welcome."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. It's a pleasure to be here."
+      },
+      {
+        "s": 0,
+        "text": "Tell us a bit about your farm."
+      },
+      {
+        "s": 1,
+        "text": "Well, it's a small family farm. My grandfather bought the land in nineteen sixty-five, and now my brother and I run it together. We have about eight hectares, at around seventeen hundred metres."
+      },
+      {
+        "s": 0,
+        "text": "Why is altitude important for coffee?"
+      },
+      {
+        "s": 1,
+        "text": "At higher altitudes, the coffee cherries grow more slowly, and that gives them more flavour. Our coffee has notes of chocolate and orange."
+      },
+      {
+        "s": 0,
+        "text": "Sounds delicious. What's a typical day like during the harvest?"
+      },
+      {
+        "s": 1,
+        "text": "We start very early, at about five in the morning. All the cherries are picked by hand, because they don't all ripen at the same time. During the harvest, we employ around twelve extra workers."
+      },
+      {
+        "s": 0,
+        "text": "What are the biggest challenges for you?"
+      },
+      {
+        "s": 1,
+        "text": "Definitely the climate. The rain has become very unpredictable. Some years it rains too much, and the cherries fall before they're ready. Also, the price of coffee changes a lot, so it's hard to plan."
+      },
+      {
+        "s": 0,
+        "text": "How are you dealing with that?"
+      },
+      {
+        "s": 1,
+        "text": "A few years ago, we started selling directly to small roasters in Canada and Japan. We get a fairer price, and they know exactly where the coffee comes from."
+      },
+      {
+        "s": 0,
+        "text": "And what's your dream for the future?"
+      },
+      {
+        "s": 1,
+        "text": "I'd like to open a small café on the farm, so tourists can see the whole process, from the plant to the cup."
+      },
+      {
+        "s": 0,
+        "text": "Luz Marina, thank you so much."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who runs the farm now?",
+        "options": [
+          "Her parents",
+          "Luz Marina and her brother",
+          "Her grandfather"
+        ],
+        "answer": 1,
+        "explain_es": "Luz Marina dice: 'now my brother and I run it together.' Su abuelo compró la tierra."
+      },
+      {
+        "type": "mc",
+        "q": "Why is high altitude good for coffee?",
+        "options": [
+          "The cherries grow more slowly and have more flavour.",
+          "The plants need less water.",
+          "It's easier to pick the cherries."
+        ],
+        "answer": 0,
+        "explain_es": "Ella dice: 'the coffee cherries grow more slowly, and that gives them more flavour.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where does she sell her coffee now?",
+        "options": [
+          "The US and Japan",
+          "Canada and Korea",
+          "Canada and Japan"
+        ],
+        "answer": 2,
+        "explain_es": "Ella dice: 'selling directly to small roasters in Canada and Japan.'"
+      },
+      {
+        "type": "tf",
+        "q": "The cherries are picked by machine.",
+        "answer": "F",
+        "explain_es": "Ella dice: 'All the cherries are picked by hand.'"
+      },
+      {
+        "type": "tf",
+        "q": "She would like to open a café on the farm.",
+        "answer": "T",
+        "explain_es": "Ella dice: 'I'd like to open a small café on the farm.'"
+      },
+      {
+        "type": "gap",
+        "q": "Her grandfather bought the land in ____.",
+        "answer": "nineteen sixty-five",
+        "accept": [
+          "1965",
+          "nineteen sixty five"
+        ],
+        "explain_es": "Ella dice: 'My grandfather bought the land in nineteen sixty-five.'"
+      },
+      {
+        "type": "gap",
+        "q": "Size of the farm: about ____ hectares",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "Ella dice: 'We have about eight hectares.'"
+      },
+      {
+        "type": "gap",
+        "q": "Extra workers during the harvest: around ____",
+        "answer": "twelve",
+        "accept": [
+          "12"
+        ],
+        "explain_es": "Ella dice: 'we employ around twelve extra workers.'"
+      }
+    ],
+    "dictation": [
+      "It's a pleasure to be here.",
+      "The rain has become very unpredictable."
+    ]
+  },
+  {
+    "id": "l-b1-apartment-viewing",
+    "title": "Viewing an Apartment",
+    "level": "B1",
+    "kind": "dialogue",
+    "topic": "Housing",
+    "emoji": "🏠",
+    "speakers": [
+      {
+        "name": "Agent",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Paula",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Diego",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "So, this is the living room. As you can see, it gets a lot of natural light."
+      },
+      {
+        "s": 1,
+        "text": "Oh, it's bigger than in the photos. What do you think, Diego?"
+      },
+      {
+        "s": 2,
+        "text": "Yeah, I like it. But the street looks pretty busy. Is it noisy at night?"
+      },
+      {
+        "s": 0,
+        "text": "Not really. The windows are double-glazed, so you don't hear much traffic. And the bus stop is just two minutes away."
+      },
+      {
+        "s": 1,
+        "text": "That's useful. I work in the city centre. How long does the bus take?"
+      },
+      {
+        "s": 0,
+        "text": "About fifteen minutes, or twenty-five in the rush hour."
+      },
+      {
+        "s": 2,
+        "text": "OK. Can we see the kitchen?"
+      },
+      {
+        "s": 0,
+        "text": "Of course. It's through here. The fridge and the washing machine are included, but there's no dishwasher, I'm afraid."
+      },
+      {
+        "s": 1,
+        "text": "That's fine. And how many bedrooms did you say?"
+      },
+      {
+        "s": 0,
+        "text": "Two. The main one has a small balcony, and the second one is perfect as a study or a guest room."
+      },
+      {
+        "s": 2,
+        "text": "What about the rent? The website said nine hundred a month."
+      },
+      {
+        "s": 0,
+        "text": "That's right, nine hundred pounds, plus bills. And we ask for a deposit of one month's rent."
+      },
+      {
+        "s": 1,
+        "text": "Are pets allowed? We have a cat."
+      },
+      {
+        "s": 0,
+        "text": "The owner is happy with cats, but not dogs."
+      },
+      {
+        "s": 2,
+        "text": "Great. When is it available?"
+      },
+      {
+        "s": 0,
+        "text": "From the first of next month. The minimum contract is twelve months."
+      },
+      {
+        "s": 1,
+        "text": "Can we think about it and call you tomorrow?"
+      },
+      {
+        "s": 0,
+        "text": "Of course, but I should tell you, two other couples are viewing it this afternoon."
+      },
+      {
+        "s": 2,
+        "text": "Right. We won't take too long, then."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why isn't the apartment noisy?",
+        "options": [
+          "It's on the top floor.",
+          "The windows are double-glazed.",
+          "The street is quiet at night."
+        ],
+        "answer": 1,
+        "explain_es": "La agente dice: 'The windows are double-glazed, so you don't hear much traffic.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is NOT included in the kitchen?",
+        "options": [
+          "A dishwasher",
+          "A fridge",
+          "A washing machine"
+        ],
+        "answer": 0,
+        "explain_es": "La agente dice: 'there's no dishwasher, I'm afraid.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why should Paula and Diego decide quickly?",
+        "options": [
+          "The rent will go up tomorrow.",
+          "The owner is leaving the country.",
+          "Two other couples are viewing it this afternoon."
+        ],
+        "answer": 2,
+        "explain_es": "La agente dice: 'two other couples are viewing it this afternoon.'"
+      },
+      {
+        "type": "tf",
+        "q": "Dogs are allowed in the apartment.",
+        "answer": "F",
+        "explain_es": "La agente dice: 'The owner is happy with cats, but not dogs.'"
+      },
+      {
+        "type": "tf",
+        "q": "The bus takes twenty-five minutes in the rush hour.",
+        "answer": "T",
+        "explain_es": "La agente dice: 'About fifteen minutes, or twenty-five in the rush hour.'"
+      },
+      {
+        "type": "gap",
+        "q": "Rent: ____ pounds a month, plus bills",
+        "answer": "nine hundred",
+        "accept": [
+          "900"
+        ],
+        "explain_es": "La agente dice: 'nine hundred pounds, plus bills.'"
+      },
+      {
+        "type": "gap",
+        "q": "Minimum contract: ____ months",
+        "answer": "twelve",
+        "accept": [
+          "12"
+        ],
+        "explain_es": "La agente dice: 'The minimum contract is twelve months.'"
+      },
+      {
+        "type": "gap",
+        "q": "The main bedroom has a small ____.",
+        "answer": "balcony",
+        "accept": [],
+        "explain_es": "La agente dice: 'The main one has a small balcony.'"
+      }
+    ],
+    "dictation": [
+      "Is it noisy at night?",
+      "Can we see the kitchen?"
+    ]
+  },
+  {
+    "id": "l-b1-manager-voicemail",
+    "title": "A Message from the Office",
+    "level": "B1",
+    "kind": "voicemail",
+    "topic": "Work",
+    "emoji": "📞",
+    "speakers": [
+      {
+        "name": "Greg",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Natalia, it's Greg from the office. Sorry to call so late."
+      },
+      {
+        "s": 0,
+        "text": "I know you're on holiday until Wednesday, but there have been a couple of changes to next week's plans, and I wanted you to hear about them before you get back."
+      },
+      {
+        "s": 0,
+        "text": "First, the sales conference in Chicago has been moved. It was going to be on the twentieth, but now it's on the twenty-second, which is a Thursday."
+      },
+      {
+        "s": 0,
+        "text": "The good news is that it's only one day now, not two, so you won't need a hotel."
+      },
+      {
+        "s": 0,
+        "text": "I've booked your flight. It leaves at six forty-five in the morning, so it's an early start, I'm afraid. You'll get the details by email."
+      },
+      {
+        "s": 0,
+        "text": "Second, about your presentation on the new mobile app. Could you make it a bit shorter? You'll have twenty minutes instead of thirty, including questions."
+      },
+      {
+        "s": 0,
+        "text": "And please bring some printed copies of the main slides, maybe fifteen. Not everyone likes reading on screens."
+      },
+      {
+        "s": 0,
+        "text": "Oh, and one more thing. Kevin is leaving the company at the end of the month, so we're having a small lunch for him on Friday."
+      },
+      {
+        "s": 0,
+        "text": "If you want to contribute to his gift, just give some money to Priya in accounts."
+      },
+      {
+        "s": 0,
+        "text": "Anyway, enjoy the rest of your holiday, and call me back if anything's unclear. My mobile is the best number. Talk soon. Bye."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the new date of the conference?",
+        "options": [
+          "The twentieth",
+          "The twenty-second",
+          "The twenty-fifth"
+        ],
+        "answer": 1,
+        "explain_es": "Greg dice: 'It was going to be on the twentieth, but now it's on the twenty-second.'"
+      },
+      {
+        "type": "mc",
+        "q": "What should Natalia bring to the conference?",
+        "options": [
+          "About fifteen printed copies of her main slides",
+          "Her laptop and a charger",
+          "A gift for Kevin"
+        ],
+        "answer": 0,
+        "explain_es": "Greg dice: 'please bring some printed copies of the main slides, maybe fifteen.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why is there a lunch on Friday?",
+        "options": [
+          "It's Kevin's birthday.",
+          "Priya has a new job.",
+          "Kevin is leaving the company."
+        ],
+        "answer": 2,
+        "explain_es": "Greg dice: 'Kevin is leaving the company at the end of the month, so we're having a small lunch for him on Friday.'"
+      },
+      {
+        "type": "tf",
+        "q": "The conference now lasts two days.",
+        "answer": "F",
+        "explain_es": "Greg dice: 'it's only one day now, not two.'"
+      },
+      {
+        "type": "tf",
+        "q": "Natalia is on holiday at the moment.",
+        "answer": "T",
+        "explain_es": "Greg dice: 'I know you're on holiday until Wednesday.'"
+      },
+      {
+        "type": "gap",
+        "q": "Flight time: ____ in the morning",
+        "answer": "six forty-five",
+        "accept": [
+          "6:45",
+          "six forty five",
+          "645"
+        ],
+        "explain_es": "Greg dice: 'It leaves at six forty-five in the morning.'"
+      },
+      {
+        "type": "gap",
+        "q": "Presentation length: ____ minutes",
+        "answer": "twenty",
+        "accept": [
+          "20"
+        ],
+        "explain_es": "Greg dice: 'You'll have twenty minutes instead of thirty.'"
+      },
+      {
+        "type": "gap",
+        "q": "Give money for the gift to ____ in accounts.",
+        "answer": "Priya",
+        "accept": [],
+        "explain_es": "Greg dice: 'just give some money to Priya in accounts.'"
+      }
+    ],
+    "dictation": [
+      "I've booked your flight.",
+      "Not everyone likes reading on screens."
+    ]
+  },
+  {
+    "id": "l-b1-museum-tour",
+    "title": "A Tour of the City Museum",
+    "level": "B1",
+    "kind": "monologue",
+    "topic": "Culture & history",
+    "emoji": "🏛️",
+    "speakers": [
+      {
+        "name": "Oliver",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, everyone, and welcome to the City History Museum. My name's Oliver, and I'll be your guide for the next hour and a half."
+      },
+      {
+        "s": 0,
+        "text": "Before we start, a few practical things. Photos are allowed in most rooms, but please don't use flash, as it can damage the older paintings."
+      },
+      {
+        "s": 0,
+        "text": "The toilets are on the ground floor, next to the gift shop, and there's a café on the top floor with a great view of the river."
+      },
+      {
+        "s": 0,
+        "text": "Our tour has three parts. We'll begin here on the ground floor with the city's early history."
+      },
+      {
+        "s": 0,
+        "text": "This building itself is actually over two hundred years old. It was originally a bank, which is why the walls are so thick."
+      },
+      {
+        "s": 0,
+        "text": "Then we'll go up to the first floor to see our most famous object: a gold necklace found by a farmer in eighteen ninety-two."
+      },
+      {
+        "s": 0,
+        "text": "It's about two thousand years old, and nobody knows exactly who made it."
+      },
+      {
+        "s": 0,
+        "text": "Finally, we'll finish on the second floor with an exhibition about how people lived here a hundred years ago."
+      },
+      {
+        "s": 0,
+        "text": "There's a full-size kitchen from that time, and children love it, so watch out for school groups!"
+      },
+      {
+        "s": 0,
+        "text": "If you get lost, just look for someone in a blue jacket. All our staff wear them."
+      },
+      {
+        "s": 0,
+        "text": "And please stay with the group when we're moving between floors, because the stairs can get crowded."
+      },
+      {
+        "s": 0,
+        "text": "Right, if everyone's ready, let's begin. Follow me, please."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long is the tour?",
+        "options": [
+          "An hour",
+          "Two hours",
+          "An hour and a half"
+        ],
+        "answer": 2,
+        "explain_es": "Oliver dice: 'I'll be your guide for the next hour and a half.'"
+      },
+      {
+        "type": "mc",
+        "q": "What was the building originally?",
+        "options": [
+          "A school",
+          "A bank",
+          "A farmhouse"
+        ],
+        "answer": 1,
+        "explain_es": "Oliver dice: 'It was originally a bank, which is why the walls are so thick.'"
+      },
+      {
+        "type": "mc",
+        "q": "What can visitors see on the second floor?",
+        "options": [
+          "A full-size kitchen from a hundred years ago",
+          "The gold necklace",
+          "Objects from the city's early history"
+        ],
+        "answer": 0,
+        "explain_es": "Oliver dice que en el segundo piso hay una exposición sobre la vida hace cien años: 'There's a full-size kitchen from that time.'"
+      },
+      {
+        "type": "tf",
+        "q": "Visitors can use flash when they take photos.",
+        "answer": "F",
+        "explain_es": "Oliver dice: 'please don't use flash, as it can damage the older paintings.'"
+      },
+      {
+        "type": "tf",
+        "q": "The café is on the top floor.",
+        "answer": "T",
+        "explain_es": "Oliver dice: 'there's a café on the top floor with a great view of the river.'"
+      },
+      {
+        "type": "gap",
+        "q": "The necklace was found in ____.",
+        "answer": "eighteen ninety-two",
+        "accept": [
+          "1892",
+          "eighteen ninety two"
+        ],
+        "explain_es": "Oliver dice: 'a gold necklace found by a farmer in eighteen ninety-two.'"
+      },
+      {
+        "type": "gap",
+        "q": "Museum staff wear ____ jackets.",
+        "answer": "blue",
+        "accept": [],
+        "explain_es": "Oliver dice: 'look for someone in a blue jacket. All our staff wear them.'"
+      },
+      {
+        "type": "gap",
+        "q": "The toilets are next to the ____.",
+        "answer": "gift shop",
+        "accept": [],
+        "explain_es": "Oliver dice: 'The toilets are on the ground floor, next to the gift shop.'"
+      }
+    ],
+    "dictation": [
+      "Follow me, please.",
+      "All our staff wear them."
+    ]
+  },
+  {
+    "id": "l-b1-language-school-welcome",
+    "title": "Welcome to Language School",
+    "level": "B1",
+    "kind": "instructions",
+    "topic": "Education",
+    "emoji": "🎓",
+    "speakers": [
+      {
+        "name": "Sarah",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, everyone, and welcome to Bridgeview Language School. I'm Sarah, the student coordinator, and I'm going to explain a few things you need to do this week."
+      },
+      {
+        "s": 0,
+        "text": "First, you need to collect your student card. Go to the reception desk on the ground floor with your passport and one passport-size photo."
+      },
+      {
+        "s": 0,
+        "text": "If you don't have a photo, there's a machine next to the library, and it costs five dollars."
+      },
+      {
+        "s": 0,
+        "text": "Your student card is very important. You need it to borrow books, to use the computers, and to get a ten percent discount in the cafeteria."
+      },
+      {
+        "s": 0,
+        "text": "Second, everyone has to take a placement test on Tuesday morning at nine. It takes about two hours. There's a written part and a short speaking test."
+      },
+      {
+        "s": 0,
+        "text": "Don't worry, you can't fail it! It just helps us put you in the right class."
+      },
+      {
+        "s": 0,
+        "text": "You'll get your class and timetable by email on Wednesday afternoon, and lessons begin on Thursday."
+      },
+      {
+        "s": 0,
+        "text": "Third, please download the school app. You can see your timetable there, and we send messages if a class is cancelled or moved to a different room."
+      },
+      {
+        "s": 0,
+        "text": "Finally, on Friday evening, there's a welcome party on the roof terrace. It's free, there's food and music, and it's a great way to meet people."
+      },
+      {
+        "s": 0,
+        "text": "Last term, students from twenty-three different countries came."
+      },
+      {
+        "s": 0,
+        "text": "If you have any problems, my office is room one-oh-four, and I'm there every day from eight thirty until four. OK, any questions?"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What do students need to take to reception?",
+        "options": [
+          "Their passport and one photo",
+          "Their passport and five dollars",
+          "A photo and their email address"
+        ],
+        "answer": 0,
+        "explain_es": "Sarah dice: 'Go to the reception desk on the ground floor with your passport and one passport-size photo.'"
+      },
+      {
+        "type": "mc",
+        "q": "When do lessons begin?",
+        "options": [
+          "On Wednesday",
+          "On Thursday",
+          "On Tuesday"
+        ],
+        "answer": 1,
+        "explain_es": "Sarah dice: 'lessons begin on Thursday.' El martes es el examen y el miércoles llega el horario."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the photo machine?",
+        "options": [
+          "At the reception desk",
+          "On the roof terrace",
+          "Next to the library"
+        ],
+        "answer": 2,
+        "explain_es": "Sarah dice: 'there's a machine next to the library, and it costs five dollars.'"
+      },
+      {
+        "type": "tf",
+        "q": "Students can fail the placement test.",
+        "answer": "F",
+        "explain_es": "Sarah dice: 'Don't worry, you can't fail it!'"
+      },
+      {
+        "type": "tf",
+        "q": "The welcome party is free.",
+        "answer": "T",
+        "explain_es": "Sarah dice sobre la fiesta: 'It's free, there's food and music.'"
+      },
+      {
+        "type": "gap",
+        "q": "Placement test: Tuesday at ____",
+        "answer": "nine",
+        "accept": [
+          "9"
+        ],
+        "explain_es": "Sarah dice: 'a placement test on Tuesday morning at nine.'"
+      },
+      {
+        "type": "gap",
+        "q": "Cafeteria discount: ____ percent",
+        "answer": "ten",
+        "accept": [
+          "10"
+        ],
+        "explain_es": "Sarah dice: 'a ten percent discount in the cafeteria.'"
+      },
+      {
+        "type": "gap",
+        "q": "Sarah's office: room ____",
+        "answer": "one-oh-four",
+        "accept": [
+          "104",
+          "one oh four"
+        ],
+        "explain_es": "Sarah dice: 'my office is room one-oh-four.'"
+      }
+    ],
+    "dictation": [
+      "Your student card is very important.",
+      "It just helps us put you in the right class."
+    ]
+  },
+  {
+    "id": "l-b1-internet-bill-complaint",
+    "title": "A Problem with the Bill",
+    "level": "B1",
+    "kind": "phone-call",
+    "topic": "Services & money",
+    "emoji": "💻",
+    "speakers": [
+      {
+        "name": "Josh",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Rosa",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Thank you for calling Linkwave Internet. My name is Josh. How can I help you today?"
+      },
+      {
+        "s": 1,
+        "text": "Hi, Josh. I'm calling because there's a problem with my bill this month."
+      },
+      {
+        "s": 0,
+        "text": "I'm sorry to hear that. Can you confirm your full name, please?"
+      },
+      {
+        "s": 1,
+        "text": "Rosa Delgado. D-E-L-G-A-D-O."
+      },
+      {
+        "s": 0,
+        "text": "Thanks, Ms. Delgado. So, what seems to be the problem?"
+      },
+      {
+        "s": 1,
+        "text": "Well, my plan is supposed to cost forty-five dollars a month. But this month, I was charged seventy-nine."
+      },
+      {
+        "s": 0,
+        "text": "Let me have a look. Ah, I see. There's a charge here for a technician visit. Thirty-four dollars."
+      },
+      {
+        "s": 1,
+        "text": "But that's the thing. The technician came because your service wasn't working. My internet was down for three days. I don't think I should pay for that."
+      },
+      {
+        "s": 0,
+        "text": "You're absolutely right. I can see the problem was on our side, not in your home. I'm really sorry about that."
+      },
+      {
+        "s": 1,
+        "text": "Thanks. So what happens now?"
+      },
+      {
+        "s": 0,
+        "text": "I'll remove the technician charge right away. And because you were without internet for three days, I can also give you a credit of ten dollars on your next bill."
+      },
+      {
+        "s": 1,
+        "text": "OK, that's fair. When will I see the change?"
+      },
+      {
+        "s": 0,
+        "text": "The corrected bill will be emailed to you within forty-eight hours. Your reference number for this call is C-A-two-two-eight."
+      },
+      {
+        "s": 1,
+        "text": "C-A-two-two-eight. Great. Thank you for your help, Josh."
+      },
+      {
+        "s": 0,
+        "text": "My pleasure. Is there anything else I can help you with?"
+      },
+      {
+        "s": 1,
+        "text": "No, that's everything. Have a good day."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How much does Rosa's plan normally cost?",
+        "options": [
+          "Seventy-nine dollars",
+          "Forty-five dollars",
+          "Thirty-four dollars"
+        ],
+        "answer": 1,
+        "explain_es": "Rosa dice: 'my plan is supposed to cost forty-five dollars a month.' Setenta y nueve es lo que le cobraron."
+      },
+      {
+        "type": "mc",
+        "q": "What was the extra charge for?",
+        "options": [
+          "A new router",
+          "A late payment",
+          "A technician visit"
+        ],
+        "answer": 2,
+        "explain_es": "Josh dice: 'There's a charge here for a technician visit.'"
+      },
+      {
+        "type": "tf",
+        "q": "The problem was inside Rosa's home.",
+        "answer": "F",
+        "explain_es": "Josh dice: 'the problem was on our side, not in your home.'"
+      },
+      {
+        "type": "tf",
+        "q": "Rosa will get a credit on her next bill.",
+        "answer": "T",
+        "explain_es": "Josh dice: 'I can also give you a credit of ten dollars on your next bill.'"
+      },
+      {
+        "type": "gap",
+        "q": "Days without internet: ____",
+        "answer": "three",
+        "accept": [
+          "3"
+        ],
+        "explain_es": "Rosa dice: 'My internet was down for three days.'"
+      },
+      {
+        "type": "gap",
+        "q": "Credit on next bill: ____ dollars",
+        "answer": "ten",
+        "accept": [
+          "10"
+        ],
+        "explain_es": "Josh dice: 'a credit of ten dollars on your next bill.'"
+      },
+      {
+        "type": "gap",
+        "q": "The corrected bill arrives within ____ hours.",
+        "answer": "forty-eight",
+        "accept": [
+          "48",
+          "forty eight"
+        ],
+        "explain_es": "Josh dice: 'within forty-eight hours.'"
+      },
+      {
+        "type": "gap",
+        "q": "Customer's surname: ____",
+        "answer": "Delgado",
+        "accept": [],
+        "explain_es": "Rosa deletrea: 'D-E-L-G-A-D-O.'"
+      }
+    ],
+    "dictation": [
+      "I'm calling because there's a problem with my bill this month.",
+      "When will I see the change?"
+    ]
+  },
+  {
+    "id": "l-b1-beach-cleanup-meeting",
+    "title": "Planning a Beach Clean-Up",
+    "level": "B1",
+    "kind": "dialogue",
+    "topic": "Environment",
+    "emoji": "🏖️",
+    "speakers": [
+      {
+        "name": "Hannah",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Sebastián",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Chloe",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "OK, so let's finalise the plans for the beach clean-up. We've got about forty volunteers signed up so far."
+      },
+      {
+        "s": 1,
+        "text": "That's more than last year. We only had twenty-five."
+      },
+      {
+        "s": 2,
+        "text": "Brilliant. So, are we still meeting on Saturday the ninth?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, at the north end of the beach, by the lifeguard tower. We'll start at eight, before it gets too hot."
+      },
+      {
+        "s": 1,
+        "text": "Eight's a bit early for some people, isn't it? Especially students."
+      },
+      {
+        "s": 0,
+        "text": "I know, but by eleven the sand is really hot. We'll finish at twelve, and then there's a picnic."
+      },
+      {
+        "s": 2,
+        "text": "Who's bringing the equipment? We need gloves and bags."
+      },
+      {
+        "s": 1,
+        "text": "I've already spoken to the council. They're lending us a hundred pairs of gloves and two hundred recycling bags. I'll pick them up on Friday afternoon."
+      },
+      {
+        "s": 2,
+        "text": "Great. What about water? People will need lots of it."
+      },
+      {
+        "s": 0,
+        "text": "A local supermarket has offered to donate drinks. Chloe, could you contact them to confirm? The manager's name is Mr. Patel."
+      },
+      {
+        "s": 2,
+        "text": "Sure, I'll call him tomorrow."
+      },
+      {
+        "s": 1,
+        "text": "Should we separate the rubbish? Last year, we put everything together, and it was hard to recycle."
+      },
+      {
+        "s": 0,
+        "text": "Good point. Let's use three colours of bags: blue for plastic, green for glass, and black for everything else."
+      },
+      {
+        "s": 2,
+        "text": "I'll make some signs so everyone knows. And maybe we should post photos online afterwards, to encourage more people next time."
+      },
+      {
+        "s": 1,
+        "text": "I can do that. I've got a decent camera."
+      },
+      {
+        "s": 0,
+        "text": "Perfect. So, Sebastián does equipment and photos, Chloe does drinks and signs, and I'll send a final email to all the volunteers on Thursday."
+      },
+      {
+        "s": 2,
+        "text": "Sounds like a plan!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many volunteers were there last year?",
+        "options": [
+          "Forty",
+          "Twenty-five",
+          "A hundred"
+        ],
+        "answer": 1,
+        "explain_es": "Sebastián dice: 'We only had twenty-five.' Cuarenta es el número de este año."
+      },
+      {
+        "type": "mc",
+        "q": "What are the green bags for?",
+        "options": [
+          "Glass",
+          "Plastic",
+          "Paper"
+        ],
+        "answer": 0,
+        "explain_es": "Hannah dice: 'blue for plastic, green for glass, and black for everything else.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who will contact the supermarket?",
+        "options": [
+          "Hannah",
+          "Sebastián",
+          "Chloe"
+        ],
+        "answer": 2,
+        "explain_es": "Hannah le pide a Chloe y ella responde: 'Sure, I'll call him tomorrow.'"
+      },
+      {
+        "type": "tf",
+        "q": "The clean-up finishes at eleven.",
+        "answer": "F",
+        "explain_es": "Hannah dice: 'We'll finish at twelve, and then there's a picnic.'"
+      },
+      {
+        "type": "tf",
+        "q": "The council is lending them gloves and bags.",
+        "answer": "T",
+        "explain_es": "Sebastián dice: 'They're lending us a hundred pairs of gloves and two hundred recycling bags.'"
+      },
+      {
+        "type": "gap",
+        "q": "Meeting point: by the lifeguard ____",
+        "answer": "tower",
+        "accept": [],
+        "explain_es": "Hannah dice: 'at the north end of the beach, by the lifeguard tower.'"
+      },
+      {
+        "type": "gap",
+        "q": "Supermarket manager: Mr. ____",
+        "answer": "Patel",
+        "accept": [],
+        "explain_es": "Hannah dice: 'The manager's name is Mr. Patel.'"
+      },
+      {
+        "type": "gap",
+        "q": "Start time: ____ o'clock",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "Hannah dice: 'We'll start at eight, before it gets too hot.'"
+      }
+    ],
+    "dictation": [
+      "Who's bringing the equipment?",
+      "I'll call him tomorrow."
+    ]
+  }
+]

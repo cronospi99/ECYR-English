@@ -82,13 +82,14 @@ export function UnitVerbTools({ unit }: { unit: Unit }) {
         </Link>
       </div>
       {groups.length > 1 && (
-        <Segmented
-          className="mb-4"
-          size="sm"
-          value={String(active)}
-          onChange={(v) => setActive(Number(v))}
-          options={groups.map((x, i) => ({ value: String(i), label: x.label }))}
-        />
+        <div className="no-scrollbar mb-4 overflow-x-auto">
+          <Segmented
+            size="sm"
+            value={String(active)}
+            onChange={(v) => setActive(Number(v))}
+            options={groups.map((x, i) => ({ value: String(i), label: x.label }))}
+          />
+        </div>
       )}
       {!data ? (
         <Card className="text-label-2 p-6 text-center">Cargando herramientas…</Card>

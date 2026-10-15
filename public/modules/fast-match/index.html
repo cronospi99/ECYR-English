@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Fast Match · ECYR English</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+<link rel="stylesheet" href="../_arcade/arcade.css" />
+<style>
+  body { --accent: #ff2d55; --accent-2: #ff9500; }
+  .hud { justify-content: space-between; }
+  .timer { position: relative; }
+  .timer.low { color: var(--red); animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { transform: scale(1.08); } }
+  .mult { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; transition: transform .2s; }
+  .mult.x1 { background: var(--glass); color: var(--label); }
+  .timebar { height: 10px; }
+  .timebar > i { transition: width .1s linear; }
+  .timebar.low > i { background: var(--red); }
+  .word-card { position: relative; text-align: center; padding: 26px 16px; overflow: visible; }
+  .word-card .lbl { font-size: 13px; font-weight: 700; color: var(--label-2); text-transform: uppercase; letter-spacing: .06em; }
+  .word { font-size: clamp(36px, 11vw, 56px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-top: 6px; word-break: break-word; }
+  .word.in { animation: word-in .3s cubic-bezier(.2,1.5,.4,1); }
+  @keyframes word-in { from { transform: scale(.7) translateY(10px); opacity: 0; } }
+  .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opt {
+    min-height: clamp(104px, 17vh, 170px); border-radius: 22px; background: var(--card); box-shadow: var(--shadow);
+    display: grid; place-items: center; padding: 10px; position: relative;
+    font-size: 21px; font-weight: 800; line-height: 1.15; text-align: center;
+    border: 3px solid transparent; transition: transform .12s, background .2s, border-color .2s;
+  }
+  .opt.emoji { font-size: 58px; }
+  .opt:active { transform: scale(.95); }
+  .opt .k { position: absolute; top: 8px; left: 10px; font-size: 12px; font-weight: 800; color: var(--label-3); }
+  .opt.right { background: color-mix(in srgb, var(--green) 22%, var(--card)); border-color: var(--green); }
+  .opt.wrong { background: color-mix(in srgb, var(--red) 18%, var(--card)); border-color: var(--red); }
+  .opt:disabled { cursor: default; }
+  .float-pts { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); font-size: 28px; font-weight: 900; color: var(--green); pointer-events: none; animation: rise .9s ease-out forwards; }
+  @keyframes rise { to { transform: translate(-50%, -60px); opacity: 0; } }
+  .combo {
+    position: fixed; left: 50%; top: 42%; z-index: 40; pointer-events: none;
+    font-size: clamp(40px, 13vw, 72px); font-weight: 900; letter-spacing: -0.03em; white-space: nowrap;
+    background: linear-gradient(135deg, #ff2d55, #ff9500, #ffcc00); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 6px 16px rgba(255, 45, 85, .4));
+    animation: combo 1.1s cubic-bezier(.2,1.4,.4,1) forwards;
+  }
+  @keyframes combo { 0% { transform: translate(-50%, -50%) scale(.3) rotate(-12deg); opacity: 0; } 30% { transform: translate(-50%, -50%) scale(1.15) rotate(3deg); opacity: 1; } 70% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 100% { transform: translate(-50%, -80%) scale(.9); opacity: 0; } }
+  .countdown { position: fixed; inset: 0; z-index: 45; display: grid; place-items: center; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .countdown span { font-size: 120px; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; animation: pop .5s cubic-bezier(.2,1.6,.4,1); }
+  .best { font-size: 14px; color: var(--label-2); text-align: center; }
+  .flash-ok { animation: flashok .35s; }
+  @keyframes flashok { 50% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--green) 50%, transparent), var(--shadow); } }
+  @media (max-width: 380px) { .opt { min-height: 92px; font-size: 18px; } .opt.emoji { font-size: 50px; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">⚡</span><span>Fast Match</span></div>
+    <button class="icon-btn" id="pauseBtn" aria-label="Pausa" title="Pausa" hidden>
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+    </button>
+    <button class="icon-btn" id="muteBtn"></button>
+  </header>
+
+  <section class="screen" id="start">
+    <div class="hero">
+      <div class="hero-icon">⚡</div>
+      <h1>Fast Match</h1>
+      <p>60 segundos. Une cada palabra en inglés con su imagen o su traducción.</p>
+    </div>
+    <div class="card">
+      <h2>Cómo se juega</h2>
+      <ol class="howto">
+        <li><span class="n">1</span><span>Aparece una <b>palabra en inglés</b>.</span></li>
+        <li><span class="n">2</span><span>Toca la opción correcta entre 4: <b>imagen</b> o <b>español</b>.</span></li>
+        <li><span class="n">3</span><span>Aciertos seguidos suben el <b>multiplicador</b> hasta ×4 🔥. Un error lo reinicia.</span></li>
+        <li><span class="n">4</span><span>¡Haz todos los puntos que puedas antes de que acabe el tiempo!</span></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>Elige un tema</h2>
+      <div class="chips" id="packs"></div>
+    </div>
+    <div class="card">
+      <h2>Opciones</h2>
+      <div class="seg" id="modeSeg"></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="startBtn">¡A jugar! ⚡</button>
+    <div class="best" id="bestNote"></div>
+  </section>
+
+  <section class="screen" id="play" hidden>
+    <div class="hud">
+      <span class="pill timer" id="timer">⏱ 60</span>
+      <span class="pill mult x1" id="mult">×1</span>
+      <span class="pill">⭐ <span id="score">0</span></span>
+    </div>
+    <div class="progress timebar" id="timebar"><i id="timefill" style="width:100%"></i></div>
+    <div class="card word-card" id="wordCard">
+      <div class="lbl" id="ask">¿Qué es…?</div>
+      <div class="word" id="word">—</div>
+    </div>
+    <div class="opts" id="opts"></div>
+    <div class="best" id="streakNote">&nbsp;</div>
+  </section>
+
+  <section class="screen" id="end" hidden>
+    <div id="endBody" style="display:grid;gap:16px"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="menuEndBtn">Cambiar tema</button>
+      <button class="btn btn-primary" id="againBtn">Jugar otra vez</button>
+    </div>
+  </section>
+</div>
+
+<script src="../_bridge/ecyr-bridge.js" data-slug="fast-match"></script>
+<script src="../_arcade/arcade.js"></script>
+<script src="data.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

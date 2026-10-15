@@ -62,3 +62,36 @@ export function getRecognition(): RecognitionCtor | null {
   };
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
+
+// ----------------------------------------------------- cast of speakers ----
+
+const FEMALE = /samantha|ava|allison|susan|victoria|karen|moira|tessa|fiona|serena|kate|female|zira|hazel|catherine|libby|sonia|natasha|aria|jenny|emma|olivia|google uk english female|google us english/i;
+const MALE = /daniel|alex|fred|tom|oliver|arthur|gordon|lee|male|david|mark|george|ryan|guy|christopher|eric|william|james|google uk english male/i;
+const LANG = { us: 'en-US', uk: 'en-GB', au: 'en-AU' } as const;
+
+/** A voice for one character: their accent first, then their gender; pitch tells them apart when the device has a single voice. */
+export function speakAs(
+  text: string,
+  who: { voice: 'male' | 'female'; accent: 'us' | 'uk' | 'au' },
+  opts: { rate?: number; onEnd?: () => void } = {},
+) {
+  if (!canSpeak()) return;
+  const synth = window.speechSynthesis;
+  synth.cancel();
+  const all = voices().filter((v) => v.lang.replace('_', '-').startsWith('en'));
+  const lang = LANG[who.accent];
+  const sameLang = all.filter((v) => v.lang.replace('_', '-') === lang);
+  const pool = sameLang.length ? sameLang : all;
+  const gender = who.voice === 'female' ? FEMALE : MALE;
+  const other = who.voice === 'female' ? MALE : FEMALE;
+  const v = pool.find((x) => gender.test(x.name) && !other.test(x.name.replace(gender, ''))) ?? pool.find((x) => !other.test(x.name)) ?? pool[0];
+  const u = new SpeechSynthesisUtterance(text);
+  if (v) u.voice = v;
+  u.lang = v?.lang ?? lang;
+  u.rate = opts.rate ?? 0.95;
+  // Without a matching voice, nudge the pitch so two speakers still sound different.
+  const matched = v ? gender.test(v.name) : false;
+  u.pitch = matched ? 1 : who.voice === 'female' ? 1.15 : 0.8;
+  if (opts.onEnd) u.onend = opts.onEnd;
+  synth.speak(u);
+}

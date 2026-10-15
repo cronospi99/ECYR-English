@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
+import { GrammarCuts } from '@/components/visuals/GrammarCuts';
+import { cutsWhere } from '@/content/visuals';
 import { useSearchParams } from 'react-router-dom';
 import { Page } from '@/components/ui/Page';
 import { Segmented } from '@/components/ui/Segmented';
@@ -86,6 +88,7 @@ export default function TimeMachinePage() {
       {tab === 'home' ? (
         <>
           <TimeMachineHub onOpen={(id) => go(id)} />
+          <GrammarCuts bleed={false} title="Cada pasado, paso a paso" cuts={cutsWhere((c) => c.of === 'past-tenses')} />
           <VisualsFor title="Los pasados en una imagen" where={(p) => 'module' in p && p.module === 'time-machine'} />
         </>
       ) : (

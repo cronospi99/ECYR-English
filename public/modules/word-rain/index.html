@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+<meta name="color-scheme" content="light dark" />
+<title>Word Rain · ECYR English</title>
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+<link rel="stylesheet" href="../_arcade/arcade.css" />
+<style>
+  body { --accent: #007aff; --accent-2: #5ac8fa; --sky-1: #bfe3ff; --sky-2: #eef8ff; --ground-1: #6fd36f; --ground-2: #34a853; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme='light']) body { --sky-1: #08142b; --sky-2: #19305a; --ground-1: #2e7d4f; --ground-2: #1b5135; } }
+  :root[data-theme='dark'] body { --sky-1: #08142b; --sky-2: #19305a; --ground-1: #2e7d4f; --ground-2: #1b5135; }
+  body.playing { overflow: hidden; }
+  body.playing .app { height: var(--app-h, 100dvh); min-height: 0; padding-bottom: calc(10px + env(safe-area-inset-bottom)); }
+  #play { gap: 10px; min-height: 0; }
+  .hud { justify-content: space-between; flex-wrap: nowrap; }
+  .hud .pill { font-size: 15px; padding: 6px 10px; }
+  .lives .lost { filter: grayscale(1) opacity(.3); }
+  .sky {
+    position: relative; flex: 1; min-height: 180px; border-radius: 24px; overflow: hidden;
+    background: linear-gradient(180deg, var(--sky-1), var(--sky-2));
+    box-shadow: var(--shadow), inset 0 0 0 1px var(--sep);
+    touch-action: none; user-select: none;
+  }
+  .sky.paused .drop { filter: blur(9px); }
+  .cloud { position: absolute; top: -18px; font-size: 64px; opacity: .85; pointer-events: none; animation: drift 18s ease-in-out infinite alternate; }
+  .cloud.c2 { left: 55%; top: -26px; font-size: 80px; animation-duration: 24s; opacity: .7; }
+  .cloud.c3 { left: 22%; top: -10px; font-size: 48px; animation-duration: 15s; opacity: .6; }
+  @keyframes drift { to { transform: translateX(40px); } }
+  .ground { position: absolute; left: 0; right: 0; bottom: 0; height: 30px; background: linear-gradient(180deg, var(--ground-1), var(--ground-2)); border-radius: 50% 50% 0 0 / 14px 14px 0 0; }
+  .ground::before { content: '🌱 🌷 🌱 🌼 🌱 🌷 🌱 🌼 🌱 🌷 🌱 🌼 🌱 🌷 🌱 🌼 🌱 🌷 🌱 🌼 🌱 🌷 🌱 🌼'; position: absolute; left: 6px; right: 6px; top: -14px; font-size: 16px; letter-spacing: 6px; white-space: nowrap; overflow: hidden; opacity: .9; }
+  .drop {
+    position: absolute; left: 0; top: 0; will-change: transform;
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    padding: 7px 14px 7px 10px; border-radius: 999px;
+    background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 2px solid color-mix(in srgb, var(--accent) 50%, transparent);
+    box-shadow: 0 6px 16px rgba(0, 40, 90, .18);
+    font-size: 19px; font-weight: 800; color: var(--label);
+    transition: border-color .3s, filter .3s;
+  }
+  .drop::before { content: '💧'; font-size: 16px; }
+  .drop.near { border-color: var(--orange); }
+  .drop.danger { border-color: var(--red); }
+  .drop.target { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent), 0 6px 16px rgba(0, 40, 90, .18); }
+  .drop.gone { animation: burst .45s ease-out forwards; }
+  @keyframes burst { to { opacity: 0; filter: blur(2px); scale: 1.5; } }
+  .drop.splash { animation: splat .5s ease-in forwards; border-color: var(--red); }
+  @keyframes splat { to { opacity: 0; scale: 1.4 .4; } }
+  .pts { position: absolute; font-weight: 900; font-size: 22px; color: var(--green); pointer-events: none; animation: rise .8s ease-out forwards; text-shadow: 0 2px 6px rgba(0,0,0,.15); }
+  @keyframes rise { to { transform: translateY(-46px); opacity: 0; } }
+  .type-bar { display: flex; gap: 8px; }
+  .type-bar input {
+    flex: 1; min-width: 0; height: 56px; border-radius: 16px; border: 2px solid var(--sep);
+    background: var(--card); padding: 0 16px; font-size: 22px; font-weight: 800; outline: none;
+  }
+  .type-bar input:focus { border-color: var(--accent); }
+  .type-bar .btn { min-height: 56px; min-width: 60px; padding: 0 12px; }
+  .paused-msg { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; font-weight: 800; color: var(--label-2); pointer-events: none; }
+  .wave { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); font-size: 30px; font-weight: 900; white-space: nowrap; pointer-events: none; animation: wave 1.6s ease-out forwards; color: var(--accent); text-shadow: 0 2px 12px rgba(0,0,0,.12); }
+  @keyframes wave { 0% { opacity: 0; transform: translate(-50%, -30%) scale(.7); } 25% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); } 80% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -70%); } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">🌧️</span><span>Word Rain</span></div>
+    <button class="icon-btn" id="pauseBtn" aria-label="Pausa" title="Pausa" hidden>
+      <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+    </button>
+    <button class="icon-btn" id="muteBtn"></button>
+  </header>
+
+  <section class="screen" id="start">
+    <div class="hero">
+      <div class="hero-icon">🌧️</div>
+      <h1>Word Rain</h1>
+      <p>Llueven palabras en español. ¡Tradúcelas al inglés antes de que toquen el suelo!</p>
+    </div>
+    <div class="card">
+      <h2>Cómo se juega</h2>
+      <ol class="howto">
+        <li><span class="n">1</span><span>Caen gotas con <b>palabras en español</b>.</span></li>
+        <li><span class="n">2</span><span><b>Escribe la traducción en inglés</b>: la gota explota sola al acertar (o pulsa ↵).</span></li>
+        <li><span class="n">3</span><span>Si una gota toca el suelo pierdes una vida ❤️. Tienes 5.</span></li>
+        <li><span class="n">4</span><span>Cada vez llueve <b>más rápido</b>. Sobrevive a las 30 gotas. Se aceptan sinónimos (movie / film).</span></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>Elige tu nivel</h2>
+      <div class="seg" id="levelSeg"></div>
+      <div class="seg-note" id="levelNote"></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="startBtn">Empezar ▶</button>
+  </section>
+
+  <section class="screen" id="play" hidden>
+    <div class="hud">
+      <span class="pill lives" id="lives">❤️❤️❤️❤️❤️</span>
+      <span class="pill">💧 <span id="left">30</span></span>
+      <span class="pill">⭐ <span id="score">0</span></span>
+    </div>
+    <div class="sky" id="sky">
+      <span class="cloud">☁️</span><span class="cloud c2">☁️</span><span class="cloud c3">☁️</span>
+      <div class="ground"></div>
+    </div>
+    <form class="type-bar" id="form" autocomplete="off">
+      <input id="input" type="text" inputmode="text" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-label="Escribe la traducción en inglés" placeholder="Escribe en inglés…" />
+      <button class="btn btn-primary" type="submit" aria-label="Enviar">↵</button>
+    </form>
+  </section>
+
+  <section class="screen" id="end" hidden>
+    <div id="endBody" style="display:grid;gap:16px"></div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" id="menuEndBtn">Cambiar nivel</button>
+      <button class="btn btn-primary" id="againBtn">Jugar otra vez</button>
+    </div>
+  </section>
+</div>
+
+<script src="../_bridge/ecyr-bridge.js" data-slug="word-rain"></script>
+<script src="../_arcade/arcade.js"></script>
+<script src="data.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

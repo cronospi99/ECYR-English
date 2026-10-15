@@ -65,6 +65,13 @@ export const TRACKED_GAMES: Record<
   'would-you-rather': { skill: 'speaking', graded: false, minAnswers: 2, minSeconds: 60, maxPerMinute: 10 },
   'da-world': { skill: 'vocabulary', graded: true, minAnswers: 3, minSeconds: 60, maxPerMinute: 20, leftCounts: true },
   'earth-modals': { skill: 'reading', graded: false, minAnswers: 2, minSeconds: 30, maxPerMinute: 15 },
+  // Arcade word games (public/modules/<slug>/). maxPerMinute is the fastest real pace:
+  // a 10-sentence round needs a few seconds per sentence; Fast Match locks ~0.4 s
+  // after each tap in a 60 s rush; Word Rain spawns a word every 1.15 s at most.
+  'sentence-builder': { skill: 'grammar', graded: true, minAnswers: 5, minSeconds: 30, maxPerMinute: 20 },
+  'spelling-bee': { skill: 'writing', graded: true, minAnswers: 3, minSeconds: 20, maxPerMinute: 20 },
+  'fast-match': { skill: 'vocabulary', graded: true, minAnswers: 5, minSeconds: 45, maxPerMinute: 80 },
+  'word-rain': { skill: 'vocabulary', graded: true, minAnswers: 5, minSeconds: 20, maxPerMinute: 60 },
 };
 
 const MAX_SESSIONS = 300;
