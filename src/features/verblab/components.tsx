@@ -12,7 +12,9 @@ import { Chip, PageLoader } from '@/components/ui/Misc';
 import { ProgressBar } from '@/components/ui/Progress';
 import { RichText, stripTags } from '@/components/learning/RichText';
 import { useAsync } from '@/hooks/useAsync';
-import { loadVerbLab } from '@/content/levels';
+import { loadPhrasalVerbs, loadVerbLab } from '@/content/levels';
+import { PhrasalExplorer, type MindFamily } from './mindmap';
+import { VerbBubble } from './VerbBubble';
 import type { EdSound, LabVerb, VerbLabData, VerbPattern } from '@/content/types';
 import { speak } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
@@ -77,9 +79,10 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
   const [filter, setFilter] = useState<Filter>(initialFilter);
   const [saved, setSaved] = useStored<string[]>('ecyr:verblab:saved', []);
   const [open, setOpen] = useState<string | null>(null);
+  const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const [limit, setLimit] = useState(60);
-  const say = useSpeak();
   const showEs = useSettings((s) => s.spanishHints);
+  const openVerb = open ? (data.verbs.find((v) => v.en === open) ?? null) : null;
 
   const list = useMemo(() => {
     const n = q.trim().toLowerCase();
@@ -125,59 +128,54 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
           </Chip>
         ))}
       </div>
-      <div className="grid items-start gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-        {list.slice(0, limit).map((v) => {
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        {list.slice(0, limit).map((v, i) => {
           const isOpen = open === v.en;
+          const tint = v.type === 'irregular' ? 'var(--purple)' : 'var(--teal)';
           return (
-            <Card key={v.en} className={cn('overflow-hidden transition-shadow', isOpen && 'ring-ios-blue ring-2')}>
-              <button type="button" onClick={() => setOpen(isOpen ? null : v.en)} className="flex w-full items-center gap-3 p-3.5 text-left">
-                <span className="text-[26px] leading-none">{v.emoji}</span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[16px] font-semibold">{v.en}</span>
-                  <span className="text-label-2 block truncate text-[13px]">
-                    {v.past} · {v.part}
-                  </span>
-                </span>
-                {v.sound && (
-                  <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: SOUND_COLOR[v.sound], background: `color-mix(in srgb, ${SOUND_COLOR[v.sound]} 14%, transparent)` }}>
-                    {SOUND_LABEL[v.sound]}
-                  </span>
-                )}
-                {v.type === 'irregular' && <span className="text-ios-purple text-[11px] font-bold">IRR</span>}
-                <ChevronDown size={16} className={cn('text-label-3 transition-transform', isOpen && 'rotate-180')} />
-              </button>
-              {isOpen && (
-                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="px-3.5 pb-3.5">
-                  <div className="grid grid-cols-3 gap-1.5 text-center">
-                    {(
-                      [
-                        ['Presente', v.en],
-                        ['Pasado', v.past],
-                        ['Participio', v.part],
-                      ] as const
-                    ).map(([label, form]) => (
-                      <button key={label} type="button" onClick={() => say(form.replace(/\s*\/\s*/g, ', '))} className="bg-fill-2 hover:bg-fill rounded-[12px] px-2 py-2.5">
-                        <span className="text-label-2 block text-[11px] font-medium">{label}</span>
-                        <span className="block text-[15px] font-semibold">{form}</span>
-                      </button>
-                    ))}
-                  </div>
-                  {showEs && <p className="text-label-2 mt-2 text-[14px]">🇪🇸 {v.es}</p>}
-                  <div className="mt-2 flex gap-2">
-                    <Button size="sm" variant="tinted" onClick={() => say(`${v.en}. ${v.past}. ${v.part}.`)}>
-                      <Volume2 size={14} /> Las 3 formas
-                    </Button>
-                    <Button size="sm" variant="gray" onClick={() => toggleSaved(v.en)}>
-                      <Star size={14} fill={saved.includes(v.en) ? 'currentColor' : 'none'} className={saved.includes(v.en) ? 'text-ios-yellow' : ''} />
-                      {saved.includes(v.en) ? 'En mi lista' : 'Guardar'}
-                    </Button>
-                  </div>
-                </motion.div>
+            <motion.button
+              key={v.en}
+              type="button"
+              onClick={(e) => {
+                setAnchor(e.currentTarget);
+                setOpen(isOpen ? null : v.en);
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: Math.min((i % 60) * 0.012, 0.5) }}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.96 }}
+              className={cn(
+                'bg-card shadow-card relative flex flex-col items-center rounded-[20px] px-2 pt-4 pb-3 text-center transition-shadow',
+                isOpen && 'shadow-[0_0_0_2.5px_var(--blue)]',
               )}
-            </Card>
+              style={{ background: `linear-gradient(180deg, color-mix(in srgb, ${tint} 10%, var(--card)), var(--card) 70%)` }}
+              aria-expanded={isOpen}
+              aria-label={`${v.en}: ${v.past}, ${v.part}`}
+            >
+              <span className="absolute top-2 left-2 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase" style={{ color: tint, background: `color-mix(in srgb, ${tint} 14%, transparent)` }}>
+                {v.type === 'irregular' ? 'Irr' : 'Reg'}
+              </span>
+              {saved.includes(v.en) && <Star size={13} fill="currentColor" className="text-ios-yellow absolute top-2 right-2" aria-label="En mi lista" />}
+              <span className="text-[40px] leading-none drop-shadow-[0_2px_3px_rgb(0_0_0/0.12)]">{v.emoji}</span>
+              <span className="mt-1.5 max-w-full truncate text-[17px] font-bold">{v.en}</span>
+              <span className="text-label-2 max-w-full truncate text-[12px]">
+                {v.past} · {v.part}
+              </span>
+              {showEs && <span className="text-label-3 mt-0.5 max-w-full truncate text-[11px]">{v.es}</span>}
+            </motion.button>
           );
         })}
       </div>
+      {openVerb && (
+        <VerbBubble
+          verb={openVerb}
+          anchor={anchor}
+          saved={saved.includes(openVerb.en)}
+          onToggleSaved={() => toggleSaved(openVerb.en)}
+          onClose={() => setOpen(null)}
+        />
+      )}
       {list.length > limit && (
         <div className="mt-4 text-center">
           <Button variant="gray" onClick={() => setLimit((l) => l + 90)}>
@@ -473,53 +471,24 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
 // ------------------------------------------------------ phrasal families --
 
 export function PhrasalFamilies({ data, family }: { data: VerbLabData; family?: string }) {
-  const [sel, setSel] = useState<string>(family ?? data.phrasalFamilies[0]!.verb);
-  const say = useSpeak();
-  const f = data.phrasalFamilies.find((x) => x.verb === sel) ?? data.phrasalFamilies[0]!;
-  return (
-    <div>
-      {!family && (
-        <div className="mb-4 grid grid-cols-4 gap-2 sm:grid-cols-8">
-          {data.phrasalFamilies.map((x) => (
-            <button
-              key={x.verb}
-              type="button"
-              onClick={() => setSel(x.verb)}
-              className={cn('flex flex-col items-center gap-0.5 rounded-[14px] py-2.5 text-[12px] font-bold text-white transition-transform active:scale-95', sel === x.verb ? 'ring-label ring-2 ring-offset-2 ring-offset-[var(--bg)]' : 'opacity-90')}
-              style={{ background: x.grad }}
-            >
-              <span className="text-[20px]">{x.emoji}</span>
-              {x.verb}
-            </button>
-          ))}
-        </div>
-      )}
-      <Card className="overflow-hidden">
-        <div className="flex items-center gap-3 p-5 text-white" style={{ background: f.grad }}>
-          <span className="text-[34px]">{f.emoji}</span>
-          <div>
-            <div className="text-[26px] leading-none font-extrabold">{f.verb}</div>
-            <div className="text-[13px] opacity-90">{f.items.length} phrasal verbs</div>
-          </div>
-        </div>
-        <ul>
-          {f.items.map((it) => (
-            <li key={it.pv} className="flex items-start gap-3 px-5 py-3 [&:not(:last-child)]:shadow-[inset_0_-0.5px_0_var(--separator)]">
-              <span className="text-[22px] leading-none">{it.emoji}</span>
-              <div className="min-w-0 flex-1">
-                <div className="text-[16px] font-semibold">{it.pv}</div>
-                <div className="text-label-2 text-[14px]">{it.def}</div>
-                <div className="mt-0.5 text-[14px] italic">“{it.ex}”</div>
-              </div>
-              <button type="button" onClick={() => say(`${it.pv}. ${it.ex}`)} className="text-ios-blue rounded-full p-1.5 hover:bg-fill-2" aria-label={`Escuchar ${it.pv}`}>
-                <Volume2 size={17} />
-              </button>
-            </li>
-          ))}
-        </ul>
-      </Card>
-    </div>
-  );
+  // Spanish gloss, level and contexts come from the full phrasal-verb list when it has the same verb.
+  const { data: all } = useAsync(loadPhrasalVerbs, []);
+  const families: MindFamily[] = useMemo(() => {
+    const extra = new Map((all ?? []).map((v) => [`${v.pv}|${v.def}`, v]));
+    return data.phrasalFamilies
+      .filter((f) => !family || f.verb === family)
+      .map((f) => ({
+        verb: f.verb,
+        emoji: f.emoji,
+        grad: f.grad,
+        color: f.color,
+        items: f.items.map((it) => {
+          const x = extra.get(`${it.pv}|${it.def}`);
+          return { ...it, es: x?.es, level: x?.level, ctx: x?.ctx };
+        }),
+      }));
+  }, [data, family, all]);
+  return <PhrasalExplorer families={families} intro={family ? undefined : 'Toca un verbo para abrir su mapa: cada burbuja es un phrasal verb con su significado y ejemplos.'} />;
 }
 
 // ---------------------------------------------------------- verb patterns --
