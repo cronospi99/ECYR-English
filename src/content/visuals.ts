@@ -1,4 +1,5 @@
 import type { CefrLevel } from './types';
+import cutSpec from './visual-cuts.json';
 
 /**
  * Infographics and visual aids, and where each one belongs pedagogically.
@@ -254,3 +255,47 @@ export function visualsForUnit(unitKey: string, section: UnitSection): (Visual &
 }
 
 export const visualsWhere = (pred: (p: VisualPlace) => boolean) => VISUALS.filter((v) => v.places.some(pred));
+
+// ------------------------------------------------------------------- cuts --
+
+
+/** One panel of an infographic (scripts/cut-visuals.mjs), shown inside the lesson it explains. */
+export interface VisualCut {
+  id: string;
+  /** The infographic it was cut from. */
+  of: string;
+  rects: number[][];
+  title: string;
+  titleEs: string;
+  /** Regex tested against grammar point / workshop names. */
+  match: string;
+  /** Lower comes first when several cuts match. */
+  prio: number;
+  w: number;
+  h: number;
+  /** Unit vocabulary tabs it also illustrates. */
+  vocab?: string[];
+  /** Adjective category in Práctica → Vocabulario. */
+  adjectives?: string;
+}
+
+export const VISUAL_CUTS = cutSpec as VisualCut[];
+const PARENT = new Map(VISUALS.map((v) => [v.id, v]));
+const RE = new Map(VISUAL_CUTS.map((c) => [c.id, new RegExp(c.match, 'i')]));
+
+/** A cut as a Visual, so cards and the lightbox treat it like any infographic. */
+export function cutVisual(c: VisualCut): Visual & { parent: Visual } {
+  const parent = PARENT.get(c.of)!;
+  return { ...parent, id: `cuts/${c.id}`, title: c.title, titleEs: c.titleEs, w: c.w, h: c.h, places: [], parent };
+}
+
+/** Cuts whose `match` fits any of the given names (a grammar point, a workshop…), best first. */
+export function cutsFor(...names: (string | undefined)[]): (Visual & { parent: Visual })[] {
+  const text = names.filter(Boolean).join(' · ');
+  if (!text) return [];
+  return VISUAL_CUTS.filter((c) => RE.get(c.id)!.test(text))
+    .sort((a, b) => a.prio - b.prio)
+    .map(cutVisual);
+}
+
+export const cutsWhere = (pred: (c: VisualCut) => boolean) => VISUAL_CUTS.filter(pred).sort((a, b) => a.prio - b.prio).map(cutVisual);

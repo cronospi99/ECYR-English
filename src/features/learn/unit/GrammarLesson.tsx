@@ -25,6 +25,8 @@ import { Card } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import type { GrammarPoint } from '@/content/types';
+import { cutsFor } from '@/content/visuals';
+import { GrammarCuts } from '@/components/visuals/GrammarCuts';
 import { cn } from '@/lib/cn';
 import { firstSentence, highlight, keySpec, noteParts, parsePair, type KeySpec } from './formula';
 import { FormulaBlock } from './FormulaBlock';
@@ -115,6 +117,7 @@ export function GrammarLesson({
   onNext?: () => void;
 }) {
   const spec = useMemo(() => keySpec(g), [g]);
+  const cuts = useMemo(() => cutsFor(g.name), [g.name]);
   const summary = g.short || (g.rule ? firstSentence(g.rule, 110) : '');
 
   return (
@@ -150,6 +153,7 @@ export function GrammarLesson({
       <div className="space-y-7 px-5 pt-3 pb-6 sm:px-6">
         {g.form && g.form.length > 0 && <FormulaBlock form={g.form} spec={spec} color={color} />}
         <Examples g={g} spec={spec} color={color} />
+        <GrammarCuts cuts={cuts} color={color} />
         {g.chart && (
           <section>
             <Kicker icon={Table2} color={color}>

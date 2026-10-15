@@ -1,5 +1,5 @@
 import type { CefrLevel, Unit } from '@/content/types';
-import { visualsForUnit, visualsWhere, type UnitSection, type VisualPlace } from '@/content/visuals';
+import { cutsWhere, visualsForUnit, visualsWhere, type UnitSection, type VisualPlace } from '@/content/visuals';
 import { VisualSet } from './Visuals';
 
 const TITLES: Record<UnitSection, string> = {
@@ -10,7 +10,9 @@ const TITLES: Record<UnitSection, string> = {
 
 /** Infographics declared for this unit's tab in src/content/visuals.ts. */
 export function UnitVisuals({ unit, level, section }: { unit: Unit; level: CefrLevel; section: UnitSection }) {
-  const items = visualsForUnit(`${level}-${unit.n}`, section);
+  const key = `${level}-${unit.n}`;
+  // Vocabulary tabs also get the panels cut for them (e.g. one part of a big chart).
+  const items = [...visualsForUnit(key, section), ...(section === 'vocab' ? cutsWhere((c) => !!c.vocab?.includes(key)) : [])];
   return <VisualSet title={TITLES[section]} items={items} featured={section !== 'overview'} subtitle={items.length > 1 ? `${items.length} infografías` : undefined} />;
 }
 

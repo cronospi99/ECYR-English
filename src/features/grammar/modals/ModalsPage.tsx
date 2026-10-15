@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
+import { GrammarCuts } from '@/components/visuals/GrammarCuts';
+import { cutsWhere } from '@/content/visuals';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
@@ -88,6 +90,7 @@ export default function ModalsPage() {
         </div>
       )}
 
+      <GrammarCuts bleed={false} title="Can, could, should y must por partes" cuts={cutsWhere((c) => c.of === 'could' || c.of.startsWith('modals-'))} />
       <VisualsFor title="Modales en imágenes" where={(p) => 'module' in p && p.module === 'modals'} />
 
       {next && (
