@@ -263,6 +263,68 @@ patch('svg tick text', ' fill="#98a0b0"', ' style="fill:var(--label-2)"', { all:
 // 4b. The platform's migration center hands imported session files to the engine
 //    (window.__ielts.importSession below → applySessionData; see src/lib/migrate.ts).
 patch('session import hook', 'function applySessionData(data){', 'function applySessionData(data){');
+// 4c. Uploaded speaking answers. Upstream's bare <input type=file> stored the
+//    audio but nothing else: no transcript (so metrics, the language tools and
+//    transcript-based marking saw an empty answer) and the player vanished on
+//    the next re-render. The drop zone below sends an upload down the same
+//    path as a live take, in the exam and in free practice alike.
+patch('upload helpers', 'function blobToBase64(blob){', `${fs.readFileSync(path.join(root, 'scripts/ielts-audio-upload.js'), 'utf8').trim()}\n\nfunction blobToBase64(blob){`);
+patch(
+  'practice upload zone',
+  `    <div class="upload-row">
+      <span style="font-size:12px;color:var(--slate);">Or upload audio for question \${qi+1}:</span>
+      <input type="file" id="audioUpload" accept="audio/*" style="font-size:12px;color:var(--slate);">
+    </div>
+    <div id="audioPlayback"></div>`,
+  '    ${ixAudioDropHtml(slot, `Upload your recorded answer to question ${qi+1}`)}',
+);
+patch(
+  'practice upload handler',
+  `  document.getElementById("audioUpload").addEventListener("change", async e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    document.getElementById("audioPlayback").innerHTML =
+      \`<audio controls src="\${URL.createObjectURL(file)}" style="width:100%;margin-bottom:10px;"></audio>\`;
+    try{
+      S.audioB64[slot] = await blobToBase64(file);
+      S.audioMime[slot] = file.type || "audio/mpeg";
+      renderPractice();
+    }catch(err){ console.error(err); }
+  });`,
+  `  ixWireAudioDrop(slot, set.questions[qi], ()=>{ if(state.mod === "practice") renderPractice(); });`,
+);
+patch(
+  'exam upload zone',
+  `    <div class="upload-row">
+      <span style="font-size:12px;color:var(--slate);">Or upload pre-recorded audio \${perQ ? \`for question \${qi+1}\` : "file"}:</span>
+      <input type="file" id="audioUpload" accept="audio/*" style="font-size:12px;color:var(--slate);">
+    </div>
+
+    <div id="audioPlayback"></div>`,
+  '    ${ixAudioDropHtml(slot, perQ ? `Upload your recorded answer to question ${qi+1}` : "Upload your recorded long turn")}',
+);
+patch(
+  'exam upload handler',
+  `  const fileInp = document.getElementById("audioUpload");
+  fileInp.addEventListener("change", async (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const url = URL.createObjectURL(file);
+    document.getElementById("audioPlayback").innerHTML = \`<audio controls src="\${url}" style="width:100%;margin-bottom:10px;"></audio>\`;
+    try{
+      const b64 = await blobToBase64(file);
+      S.audioB64[slot] = b64;
+      S.audioMime[slot] = file.type || "audio/mpeg";
+      refreshQuestionStrip(part);
+    }catch(err){
+      console.error(err);
+    }
+  });`,
+  `  ixWireAudioDrop(slot, speakingSlotPrompt(slot), ()=>{
+    if(speakingIsPerQuestion(part)) finishSpeakingPart(part);
+    if(state.mod === "speaking" && state.speaking.part === part) renderSpeakingPart(part);
+  });`,
+);
 // 5. Inline style attributes in templates follow the theme.
 js = mapStyleAttrs(js);
 console.log('  ✓ inline styles re-themed');
