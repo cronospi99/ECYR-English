@@ -1,0 +1,1904 @@
+{
+  "categories": [
+    {
+      "id": "addition",
+      "en": "Addition",
+      "es": "Añadir información",
+      "emoji": "➕",
+      "color": "#22C55E",
+      "use_es": "Sirven para sumar una idea nueva que apoya o amplía lo que ya dijiste.",
+      "tip_es": "Al inicio de oración llevan coma: 'Furthermore, ...'. 'As well as' y 'along with' van seguidos de sustantivo o -ing, no de una oración completa.",
+      "items": [
+        {
+          "w": "In addition",
+          "es": "Además",
+          "ex": "The hotel was cheap. In addition, it was very close to the beach.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "Con coma después. 'In addition to' + sustantivo/-ing: 'In addition to studying, she works.'"
+        },
+        {
+          "w": "Further",
+          "es": "Además / asimismo",
+          "ex": "The project was late. Further, the final cost was much higher than planned.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Como conector es formal y poco común; 'Furthermore' es más natural."
+        },
+        {
+          "w": "And then",
+          "es": "Y además / y encima",
+          "ex": "The car broke down on the highway, and then my phone battery died too.",
+          "pos": "mid",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Normalmente indica secuencia (y luego); como 'añadir' es informal y oral."
+        },
+        {
+          "w": "Another",
+          "es": "Otro / otra",
+          "ex": "One reason to learn English is travel. Another is getting a better job.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "'Another' + sustantivo singular (another reason); en plural usa 'other' (other reasons)."
+        },
+        {
+          "w": "Also",
+          "es": "También / además",
+          "ex": "Bogotá has great museums. It also has many parks and bike paths.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "Va antes del verbo principal y después de 'be': 'She is also...'. 'Also,' al inicio es informal."
+        },
+        {
+          "w": "As well as",
+          "es": "Además de / así como",
+          "ex": "She plays the guitar as well as the piano and the drums.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivo o -ing: 'as well as studying'."
+        },
+        {
+          "w": "Besides",
+          "es": "Además / aparte de",
+          "ex": "I don't want to go out tonight. Besides, it's already too late.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "'Besides' (además) no es 'beside' (al lado de)."
+        },
+        {
+          "w": "Furthermore",
+          "es": "Además / es más",
+          "ex": "The plan is too expensive. Furthermore, it would take years to complete.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Muy común en ensayos; siempre con coma después."
+        },
+        {
+          "w": "Moreover",
+          "es": "Además / por otra parte",
+          "ex": "The new phone is lighter. Moreover, its battery lasts twice as long.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Formal; añade un argumento más fuerte que el anterior."
+        },
+        {
+          "w": "What's more",
+          "es": "Lo que es más / encima",
+          "ex": "The restaurant was cheap. What's more, the food was absolutely delicious.",
+          "pos": "start",
+          "register": "informal",
+          "level": "B1",
+          "note_es": "Típico de conversación y textos informales."
+        },
+        {
+          "w": "Too",
+          "es": "También",
+          "ex": "I love salsa music, and my brother loves it too.",
+          "pos": "mid",
+          "register": "informal",
+          "level": "A1",
+          "note_es": "Va al final de la oración, no al inicio."
+        },
+        {
+          "w": "Not only… but also…",
+          "es": "No solo… sino también…",
+          "ex": "She is not only a great teacher but also a talented writer.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Si 'Not only' abre la oración hay inversión: 'Not only did she win, but she also...'"
+        },
+        {
+          "w": "Additionally",
+          "es": "Adicionalmente",
+          "ex": "The course is free. Additionally, students receive a certificate at the end.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Along with",
+          "es": "Junto con",
+          "ex": "Along with her degree, she has three years of work experience.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivo, no oración completa."
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "en": "Comparison",
+      "es": "Comparar",
+      "emoji": "⚖️",
+      "color": "#3B82F6",
+      "use_es": "Muestran que dos ideas, personas o cosas se parecen o se diferencian.",
+      "tip_es": "'Similarly,' y 'Likewise,' unen oraciones (con coma). 'Unlike', 'compared to' e 'instead of' van seguidos de sustantivo o -ing, no de sujeto + verbo.",
+      "items": [
+        {
+          "w": "In comparison",
+          "es": "En comparación",
+          "ex": "Bogotá is cool all year. In comparison, Cartagena is hot and humid.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "'In comparison with/to' + sustantivo: 'In comparison with Cali, ...'"
+        },
+        {
+          "w": "Just as",
+          "es": "Así como / igual que",
+          "ex": "Just as plants need water, children need attention and love.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "+ cláusula (sujeto + verbo)."
+        },
+        {
+          "w": "Similarly",
+          "es": "De manera similar / igualmente",
+          "ex": "Coffee is important to Colombia's economy. Similarly, cocoa is vital for Ghana.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Likewise",
+          "es": "Asimismo / del mismo modo",
+          "ex": "Teachers must arrive on time. Likewise, students should not be late to class.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "On the contrary",
+          "es": "Al contrario",
+          "ex": "The exam wasn't difficult. On the contrary, it was surprisingly easy.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "Sirve para negar lo anterior, no para comparar dos cosas distintas (para eso usa 'on the other hand')."
+        },
+        {
+          "w": "Instead of",
+          "es": "En lugar de",
+          "ex": "Instead of taking the bus, we walked to the university.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "+ sustantivo o -ing: 'instead of going'."
+        },
+        {
+          "w": "Unlike",
+          "es": "A diferencia de",
+          "ex": "Unlike her sister, Laura loves spicy food and hot sauce.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivo o pronombre, no cláusula."
+        },
+        {
+          "w": "On the other hand",
+          "es": "Por otro lado",
+          "ex": "City life is exciting. On the other hand, it can be very stressful.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Presenta el otro lado de un tema; no significa 'además'."
+        },
+        {
+          "w": "In the same way",
+          "es": "De la misma manera",
+          "ex": "Muscles grow with exercise. In the same way, the brain improves with practice.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Compared to",
+          "es": "Comparado con",
+          "ex": "Compared to last year, our sales have increased by twenty percent.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "'Compared with' también es correcto; + sustantivo."
+        },
+        {
+          "w": "Equally",
+          "es": "Igualmente / de igual forma",
+          "ex": "Grammar is important. Equally, you need to practice speaking every day.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Como conector va al inicio con coma; también es adverbio: 'equally important'."
+        },
+        {
+          "w": "Similar to",
+          "es": "Similar a / parecido a",
+          "ex": "Similar to Spanish, Italian has thousands of words that come from Latin.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivo."
+        },
+        {
+          "w": "Both… and…",
+          "es": "Tanto… como…",
+          "ex": "Both Medellín and Cali are famous for their warm weather and friendly people.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "El verbo va en plural: 'Both Ana and Luis are...'"
+        },
+        {
+          "w": "The same as",
+          "es": "Igual que / lo mismo que",
+          "ex": "My new phone is the same as yours, but it's a different color.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "Siempre 'the same as', nunca 'the same than'."
+        }
+      ]
+    },
+    {
+      "id": "emphasis",
+      "en": "Emphasis",
+      "es": "Enfatizar",
+      "emoji": "❗",
+      "color": "#EF4444",
+      "use_es": "Destacan una idea porque es más importante, más sorprendente o más cierta que las demás.",
+      "tip_es": "Al inicio de oración llevan coma ('In fact, ...'). 'Especially' y 'even' van justo antes de la palabra que destacan, no al inicio con coma.",
+      "items": [
+        {
+          "w": "In particular",
+          "es": "En particular",
+          "ex": "I love Latin music, in particular salsa and cumbia from the Caribbean coast.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Importantly",
+          "es": "Lo importante es que / de forma importante",
+          "ex": "The medicine is cheap. Importantly, it has very few side effects.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Muy común como 'More importantly,' o 'Most importantly,'."
+        },
+        {
+          "w": "In fact",
+          "es": "De hecho",
+          "ex": "I don't mind the rain at all. In fact, I really enjoy it.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Especially",
+          "es": "Especialmente",
+          "ex": "I love tropical fruit, especially mangoes and passion fruit.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "No se usa al inicio de la oración con coma; va antes de lo que resalta."
+        },
+        {
+          "w": "Above all",
+          "es": "Sobre todo / ante todo",
+          "ex": "A good leader must be honest and, above all, a good listener.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Significantly",
+          "es": "De manera significativa",
+          "ex": "Prices went up last year. Significantly, food became thirty percent more expensive.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Como conector es formal; es más común como adverbio: 'significantly higher'."
+        },
+        {
+          "w": "Even",
+          "es": "Incluso / hasta",
+          "ex": "Everyone danced at the wedding. Even my grandmother got up and danced.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "Va antes de la palabra que enfatiza."
+        },
+        {
+          "w": "Without a doubt",
+          "es": "Sin duda",
+          "ex": "Without a doubt, this is the best arepa I have ever eaten.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Indeed",
+          "es": "En efecto / de hecho",
+          "ex": "The test was very hard. Indeed, only five students passed it.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Confirma y refuerza lo anterior."
+        },
+        {
+          "w": "Clearly",
+          "es": "Claramente / evidentemente",
+          "ex": "Clearly, the team needs a new coach after so many losses.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Notably",
+          "es": "Notablemente / en especial",
+          "ex": "Several countries, notably Colombia and Peru, have increased their coffee exports.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": ""
+        },
+        {
+          "w": "Undoubtedly",
+          "es": "Indudablemente",
+          "ex": "Undoubtedly, technology has changed the way we learn languages.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Certainly",
+          "es": "Ciertamente / sin duda",
+          "ex": "Learning English certainly takes time, but it is worth the effort.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Most of all",
+          "es": "Más que nada / sobre todo",
+          "ex": "I miss my family, but most of all I miss my mother's cooking.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "contrast",
+      "en": "Contrast",
+      "es": "Contrastar",
+      "emoji": "↔️",
+      "color": "#F97316",
+      "use_es": "Presentan una idea opuesta o inesperada en relación con lo anterior.",
+      "tip_es": "'Despite / in spite of' + sustantivo o -ing; 'although / even though' + sujeto y verbo. 'However,' va al inicio con coma; para unir dos oraciones con 'however' usa punto y coma: '...; however, ...'.",
+      "items": [
+        {
+          "w": "In contrast to",
+          "es": "En contraste con / a diferencia de",
+          "ex": "In contrast to the city, the countryside is quiet and peaceful.",
+          "pos": "both",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "+ sustantivo; 'In contrast,' solo (con coma) une dos oraciones."
+        },
+        {
+          "w": "In spite of",
+          "es": "A pesar de",
+          "ex": "In spite of the heavy rain, we went to the football match.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivo o -ing, nunca + sujeto y verbo (no: 'in spite of it was raining')."
+        },
+        {
+          "w": "Alternatively",
+          "es": "Alternativamente / o bien",
+          "ex": "You can take a taxi to the airport. Alternatively, there is a cheap shuttle bus.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Presenta otra opción más que un contraste fuerte."
+        },
+        {
+          "w": "Despite",
+          "es": "A pesar de",
+          "ex": "Despite feeling tired, she finished her homework before dinner.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Despite + sustantivo/-ing, nunca + sujeto y verbo. Nunca 'despite of'."
+        },
+        {
+          "w": "Whereas",
+          "es": "Mientras que",
+          "ex": "My brother loves football, whereas I prefer basketball.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Une dos cláusulas que contrastan; normalmente con coma antes."
+        },
+        {
+          "w": "Although",
+          "es": "Aunque",
+          "ex": "Although it was late, we decided to watch another episode.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sujeto y verbo. No uses 'but' en la misma oración (no: 'Although..., but...')."
+        },
+        {
+          "w": "But",
+          "es": "Pero",
+          "ex": "I wanted to go to the concert, but the tickets were sold out.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "En escritura formal evita empezar la oración con 'But'."
+        },
+        {
+          "w": "However",
+          "es": "Sin embargo",
+          "ex": "The course was expensive. However, it was worth every peso.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "No une dos oraciones solo con coma: usa punto o punto y coma antes."
+        },
+        {
+          "w": "Even though",
+          "es": "Aunque / a pesar de que",
+          "ex": "Even though he studied a lot, he failed the driving test.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Más enfático que 'although'; + sujeto y verbo."
+        },
+        {
+          "w": "Nevertheless",
+          "es": "Sin embargo / no obstante",
+          "ex": "The road was dangerous. Nevertheless, the bus driver continued the journey.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "While",
+          "es": "Mientras que",
+          "ex": "While some people love winter, others can't stand the cold.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "También significa 'mientras' (tiempo); aquí expresa contraste."
+        },
+        {
+          "w": "Yet",
+          "es": "Sin embargo / pero aun así",
+          "ex": "The village is very small, yet it has three excellent restaurants.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "Como conector va entre cláusulas, parecido a 'but' pero más enfático."
+        },
+        {
+          "w": "Nonetheless",
+          "es": "No obstante",
+          "ex": "The weather was terrible. Nonetheless, thousands of fans attended the concert.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": ""
+        },
+        {
+          "w": "On the other hand",
+          "es": "Por otro lado",
+          "ex": "Renting is flexible. On the other hand, buying a house is a long-term investment.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Mejor si antes usaste 'On the one hand'."
+        }
+      ]
+    },
+    {
+      "id": "conclusion",
+      "en": "Conclusion",
+      "es": "Concluir",
+      "emoji": "🏁",
+      "color": "#8B5CF6",
+      "use_es": "Cierran un texto o una idea resumiendo lo más importante.",
+      "tip_es": "Van al inicio del último párrafo o de la última oración, seguidos de coma: 'In conclusion, ...'. Usa solo uno por texto.",
+      "items": [
+        {
+          "w": "To conclude",
+          "es": "Para concluir",
+          "ex": "To conclude, regular exercise improves both physical and mental health.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "In brief",
+          "es": "En resumen / en pocas palabras",
+          "ex": "In brief, the project was a success despite a few small problems.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "As shown above",
+          "es": "Como se muestra arriba",
+          "ex": "As shown above, most students prefer online classes in the evening.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Solo en textos escritos que ya presentaron tablas o datos."
+        },
+        {
+          "w": "So",
+          "es": "Así que / entonces",
+          "ex": "So, after everything we discussed today, I think we should accept the offer.",
+          "pos": "start",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Para cerrar es informal; en ensayos usa 'therefore' o 'in conclusion'."
+        },
+        {
+          "w": "Therefore",
+          "es": "Por lo tanto",
+          "ex": "The evidence is clear; therefore, the city must invest in public transport.",
+          "pos": "both",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "Después de punto o punto y coma, y con coma después."
+        },
+        {
+          "w": "On the whole",
+          "es": "En general / en conjunto",
+          "ex": "On the whole, the trip was great, although the hotel was noisy.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "To sum up",
+          "es": "En resumen",
+          "ex": "To sum up, social media has both clear advantages and serious risks.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Overall",
+          "es": "En general / en definitiva",
+          "ex": "Overall, I would recommend this course to any beginner.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "In conclusion",
+          "es": "En conclusión",
+          "ex": "In conclusion, learning English opens many doors for young Colombians.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "Úsalo una sola vez, en el último párrafo."
+        },
+        {
+          "w": "All in all",
+          "es": "En definitiva / en general",
+          "ex": "All in all, it was a fantastic weekend with my friends.",
+          "pos": "start",
+          "register": "informal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "To summarise",
+          "es": "Para resumir",
+          "ex": "To summarise, the three main problems are cost, time and lack of training.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "'To summarize' es la ortografía americana; ambas son correctas."
+        },
+        {
+          "w": "Ultimately",
+          "es": "En última instancia / al final",
+          "ex": "Ultimately, the decision to study abroad depends on your goals and budget.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "In summary",
+          "es": "En resumen",
+          "ex": "In summary, the results show a clear improvement in reading skills.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "example",
+      "en": "Examples",
+      "es": "Dar ejemplos",
+      "emoji": "💡",
+      "color": "#EAB308",
+      "use_es": "Introducen ejemplos concretos que aclaran o demuestran una idea general.",
+      "tip_es": "'For example,' y 'For instance,' pueden abrir una oración (con coma). 'Such as', 'like' e 'including' van en medio, seguidos directamente de los ejemplos (sustantivos), sin coma después.",
+      "items": [
+        {
+          "w": "For example",
+          "es": "Por ejemplo",
+          "ex": "Some English words are hard to pronounce. For example, 'thought' has a difficult sound.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": ""
+        },
+        {
+          "w": "For instance",
+          "es": "Por ejemplo",
+          "ex": "Some jobs require excellent English. For instance, pilots must talk to control towers.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Such as",
+          "es": "Como / tales como",
+          "ex": "Colombia exports products such as coffee, flowers and bananas.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "+ sustantivos; no abre una oración independiente."
+        },
+        {
+          "w": "To illustrate",
+          "es": "Para ilustrar",
+          "ex": "To illustrate, a single plastic bottle can take hundreds of years to decompose.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Común en ensayos y presentaciones."
+        },
+        {
+          "w": "Like",
+          "es": "Como",
+          "ex": "I enjoy outdoor activities like hiking, cycling and camping.",
+          "pos": "mid",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Más informal que 'such as'; en ensayos formales prefiere 'such as'."
+        },
+        {
+          "w": "As a sample",
+          "es": "Como muestra",
+          "ex": "As a sample of her work, she sent the editor three short stories.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Poco natural como conector de ejemplo: los nativos dicen 'for example' o 'as an example'. 'Sample' es 'muestra' (de un producto o de un trabajo)."
+        },
+        {
+          "w": "As revealed by",
+          "es": "Como lo revela / según revela",
+          "ex": "Many teenagers sleep too little, as revealed by a recent national survey.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Introduce la fuente o la evidencia, no exactamente un ejemplo. Formal y escrito."
+        },
+        {
+          "w": "To exemplify",
+          "es": "Para ejemplificar",
+          "ex": "To exemplify this point, consider how mobile phones changed family communication.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Muy formal y poco frecuente; 'for example' es más natural."
+        },
+        {
+          "w": "Namely",
+          "es": "A saber / es decir",
+          "ex": "Two students got perfect scores, namely Sofía and Andrés.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Nombra exactamente quiénes o qué son; no da ejemplos sueltos."
+        },
+        {
+          "w": "Including",
+          "es": "Incluyendo / entre ellos",
+          "ex": "We visited several cities on the coast, including Cartagena and Santa Marta.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "e.g.",
+          "es": "p. ej.",
+          "ex": "Bring something easy to eat on the bus, e.g. sandwiches, fruit or cookies.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "Abreviatura escrita; en voz alta di 'for example'. No la confundas con 'i.e.' (es decir)."
+        },
+        {
+          "w": "As an example",
+          "es": "Como ejemplo",
+          "ex": "As an example, consider how many people now work from home.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Take… for example",
+          "es": "Tomemos… por ejemplo",
+          "ex": "Take Medellín, for example: its cable cars changed life in many neighborhoods.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Estructura: Take + sustantivo + , for example."
+        },
+        {
+          "w": "A case in point",
+          "es": "Un claro ejemplo",
+          "ex": "Some cities are very bike-friendly; Amsterdam is a case in point.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Va después de la idea general: '... X is a case in point.'"
+        }
+      ]
+    },
+    {
+      "id": "condition",
+      "en": "Condition",
+      "es": "Condición",
+      "emoji": "🔀",
+      "color": "#06B6D4",
+      "use_es": "Expresan que algo pasa solo si se cumple otra cosa (condiciones, requisitos o precauciones).",
+      "tip_es": "Si la condición va primero, usa coma: 'If it rains, ...'. Después de 'if', 'unless', 'as long as' y 'in case' no uses 'will' para hablar del futuro: 'if it rains', no 'if it will rain'.",
+      "items": [
+        {
+          "w": "If",
+          "es": "Si",
+          "ex": "If it rains tomorrow, we will cancel the picnic at the park.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "No uses 'will' después de 'if' para el futuro: 'If it rains' (no 'If it will rain')."
+        },
+        {
+          "w": "Unless",
+          "es": "A menos que",
+          "ex": "You won't pass the exam unless you study a little every day.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "= 'if not'; no lleva otra negación: 'unless you study' (no 'unless you don't study')."
+        },
+        {
+          "w": "Even if",
+          "es": "Incluso si / aunque",
+          "ex": "Even if it rains, the concert will continue as planned.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Only if",
+          "es": "Solo si",
+          "ex": "You can borrow my car only if you promise to drive carefully.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Al inicio hay inversión: 'Only if you promise will I lend it.'"
+        },
+        {
+          "w": "Because of",
+          "es": "Debido a / por",
+          "ex": "The flight was delayed for three hours because of the storm.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "Ojo: expresa causa, no condición. + sustantivo (because of the rain); con sujeto y verbo usa 'because'."
+        },
+        {
+          "w": "While",
+          "es": "Mientras / siempre que",
+          "ex": "While you live in my house, you will follow my rules.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Como condición es poco común (= 'as long as'); normalmente 'while' es tiempo (mientras) o contraste (mientras que)."
+        },
+        {
+          "w": "Except if",
+          "es": "Excepto si",
+          "ex": "We will meet in the park on Sunday, except if it is raining.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Poco común; 'unless' es más natural."
+        },
+        {
+          "w": "In that case",
+          "es": "En ese caso",
+          "ex": "The bakery is closed today? In that case, we'll buy bread tomorrow.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Responde a una situación que acaba de mencionarse."
+        },
+        {
+          "w": "Provided that",
+          "es": "Siempre y cuando / con tal de que",
+          "ex": "You can join the school trip provided that your parents sign the form.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "As long as",
+          "es": "Siempre que / mientras",
+          "ex": "You can use my laptop as long as you are careful with it.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Otherwise",
+          "es": "De lo contrario / si no",
+          "ex": "Hurry up and finish your breakfast. Otherwise, we will miss the bus.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "In case",
+          "es": "Por si acaso / en caso de que",
+          "ex": "Take an umbrella in case it rains this afternoon.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Es precaución, no condición: 'in case it rains' = por si llueve (no 'si llueve')."
+        },
+        {
+          "w": "Suppose",
+          "es": "Supongamos que",
+          "ex": "Suppose you won the lottery tomorrow, what would you buy first?",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "También 'Supposing...'; suele ir con condicional hipotético."
+        },
+        {
+          "w": "On condition that",
+          "es": "Con la condición de que",
+          "ex": "The bank gave him the loan on condition that he paid it back within a year.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "sequence",
+      "en": "Sequence",
+      "es": "Secuencia / orden",
+      "emoji": "🔢",
+      "color": "#14B8A6",
+      "use_es": "Ordenan pasos, instrucciones o argumentos uno tras otro.",
+      "tip_es": "Al inicio de oración llevan coma: 'First, ... Next, ... Finally, ...'. No mezcles estilos: 'First, Second, Finally' o 'Firstly, Secondly, Lastly'.",
+      "items": [
+        {
+          "w": "First/firstly",
+          "es": "Primero / en primer lugar",
+          "ex": "First, wash the rice well. Then cook it with water, oil and salt.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "'First' es más común; 'Firstly' en listas formales. No confundir con 'At first' (al principio, antes de un cambio)."
+        },
+        {
+          "w": "Second",
+          "es": "Segundo / en segundo lugar",
+          "ex": "Second, make sure you have all your documents before the interview.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "En textos formales también 'Secondly'."
+        },
+        {
+          "w": "Afterward",
+          "es": "Después / luego",
+          "ex": "We went to the cinema. Afterward, we had pizza near the mall.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "'Afterward' es más americano; 'afterwards' más británico."
+        },
+        {
+          "w": "Initially",
+          "es": "Inicialmente / al principio",
+          "ex": "Initially, the app was free, but now you have to pay for it.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Before",
+          "es": "Antes (de)",
+          "ex": "Before you start the exam, write your name on every page.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "+ sujeto y verbo o -ing: 'before starting'."
+        },
+        {
+          "w": "Previously",
+          "es": "Previamente / anteriormente",
+          "ex": "Previously, she worked as a nurse in a hospital in Cali.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Finally",
+          "es": "Finalmente / por último",
+          "ex": "Finally, add the cheese and serve the arepas while they are hot.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": ""
+        },
+        {
+          "w": "Subsequently",
+          "es": "Posteriormente",
+          "ex": "The company lost money in 2020 and subsequently closed two of its stores.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": ""
+        },
+        {
+          "w": "Next",
+          "es": "Luego / a continuación",
+          "ex": "Next, open the app and create a new account with your email.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Then",
+          "es": "Luego / después",
+          "ex": "Mix the flour and the eggs, then add the milk slowly.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Lastly",
+          "es": "Por último",
+          "ex": "Lastly, I would like to thank my family for all their support.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "To begin with",
+          "es": "Para empezar",
+          "ex": "To begin with, let's review the vocabulary from our last class.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "After that",
+          "es": "Después de eso",
+          "ex": "We hiked for three hours. After that, we rested next to the river.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": ""
+        },
+        {
+          "w": "Following this",
+          "es": "Después de esto / a continuación",
+          "ex": "The teacher explained the rules. Following this, the students presented their projects.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "reason",
+      "en": "Reason & purpose",
+      "es": "Razón y propósito",
+      "emoji": "🎯",
+      "color": "#EC4899",
+      "use_es": "Explican por qué pasa algo (causa) o para qué se hace (propósito).",
+      "tip_es": "'Because / since / as' + sujeto y verbo; 'because of / due to / owing to' + sustantivo. Para propósito: 'in order to / so as to' + verbo base; 'so that' + sujeto y verbo.",
+      "items": [
+        {
+          "w": "For",
+          "es": "Pues / ya que",
+          "ex": "She decided to stay at home, for she was feeling very tired.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Como conector de causa es literario y anticuado; en la vida diaria usa 'because'. Nunca abre la oración con este sentido."
+        },
+        {
+          "w": "Due to",
+          "es": "Debido a",
+          "ex": "The match was cancelled due to heavy rain in the afternoon.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B1",
+          "note_es": "+ sustantivo; con sujeto y verbo usa 'due to the fact that'."
+        },
+        {
+          "w": "In order to",
+          "es": "Para / con el fin de",
+          "ex": "She saves money every month in order to travel to Europe.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Propósito + verbo base. Negativo: 'in order not to'."
+        },
+        {
+          "w": "So that",
+          "es": "Para que",
+          "ex": "I wrote down the address so that I wouldn't forget it.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Propósito + sujeto y verbo, a menudo con can/could/would."
+        },
+        {
+          "w": "With the aim of",
+          "es": "Con el objetivo de",
+          "ex": "The city built new bike lanes with the aim of reducing traffic.",
+          "pos": "both",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "+ -ing."
+        },
+        {
+          "w": "For this reason",
+          "es": "Por esta razón",
+          "ex": "Bogotá gets cold at night. For this reason, always bring a jacket.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Introduce la consecuencia de la razón que acabas de dar."
+        },
+        {
+          "w": "Owing to",
+          "es": "Debido a",
+          "ex": "Owing to a technical problem, the flight was delayed for two hours.",
+          "pos": "both",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "+ sustantivo; más formal que 'due to'."
+        },
+        {
+          "w": "Because",
+          "es": "Porque",
+          "ex": "I'm learning English because I want to work for an international company.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "+ sujeto y verbo. En escritura no dejes una oración sola que empiece con 'Because...'."
+        },
+        {
+          "w": "Since",
+          "es": "Ya que / puesto que",
+          "ex": "Since it's a public holiday, the banks are closed today.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "También significa 'desde' (tiempo)."
+        },
+        {
+          "w": "As",
+          "es": "Como / ya que",
+          "ex": "As we had no money left, we walked back to the hostel.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Para una causa que el oyente ya conoce; también puede significar 'como' o 'mientras'."
+        },
+        {
+          "w": "Because of",
+          "es": "Debido a / por",
+          "ex": "We stayed inside all afternoon because of the storm.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "+ sustantivo; con sujeto y verbo usa 'because'."
+        },
+        {
+          "w": "So as to",
+          "es": "Para / con el fin de",
+          "ex": "He left the office early so as to avoid the traffic.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Negativo: 'so as not to'."
+        },
+        {
+          "w": "Thanks to",
+          "es": "Gracias a",
+          "ex": "Thanks to her help, I finally passed the English exam.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "Para causas positivas; + sustantivo."
+        }
+      ]
+    },
+    {
+      "id": "clarification",
+      "en": "Clarification",
+      "es": "Aclarar",
+      "emoji": "🔍",
+      "color": "#0EA5E9",
+      "use_es": "Explican mejor, precisan o corrigen lo que acabas de decir.",
+      "tip_es": "Suelen ir al inicio con coma ('In other words, ...') o en medio entre comas (', that is, '). 'I mean' y 'Let me explain' son orales; en ensayos usa 'in other words' o 'that is'.",
+      "items": [
+        {
+          "w": "I mean",
+          "es": "Quiero decir / o sea",
+          "ex": "He's not a bad player. I mean, he just needs more practice.",
+          "pos": "start",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Muy común en conversación; evítalo en ensayos."
+        },
+        {
+          "w": "To simplify",
+          "es": "Para simplificar",
+          "ex": "To simplify, inflation means that your money buys less than before.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "To be clear",
+          "es": "Para que quede claro",
+          "ex": "To be clear, the deadline is Friday at noon, not Friday night.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Let me explain",
+          "es": "Déjame explicar",
+          "ex": "The process seems complicated, but let me explain it step by step.",
+          "pos": "start",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Frase de conversación o presentación, no conector de ensayo."
+        },
+        {
+          "w": "More precisely",
+          "es": "Más precisamente / para ser exactos",
+          "ex": "The meeting is in the morning, more precisely at eight thirty.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "In other words",
+          "es": "En otras palabras / es decir",
+          "ex": "The tickets are sold out. In other words, we can't go to the concert.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "In explanation",
+          "es": "A modo de explicación",
+          "ex": "In explanation, the manager said the delay was caused by a staff shortage.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Raro y poco natural; prefiere 'By way of explanation' o 'To explain'."
+        },
+        {
+          "w": "To clearly define",
+          "es": "Para definir claramente",
+          "ex": "To clearly define the problem, we first need to collect more data.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "No es un conector fijo, es un infinitivo de propósito. Para aclarar usa 'that is' o 'in other words'."
+        },
+        {
+          "w": "That is",
+          "es": "Es decir",
+          "ex": "Bring an official ID, that is, your cédula or your passport.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "En textos escritos se abrevia 'i.e.'."
+        },
+        {
+          "w": "Namely",
+          "es": "A saber / concretamente",
+          "ex": "Only one problem remains, namely the lack of money for the project.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "To put it another way",
+          "es": "Dicho de otra manera",
+          "ex": "The company is losing money. To put it another way, it needs a new strategy.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "What I mean is",
+          "es": "Lo que quiero decir es",
+          "ex": "What I mean is that we need more time to finish the project.",
+          "pos": "start",
+          "register": "informal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "i.e.",
+          "es": "es decir",
+          "ex": "The course is for real beginners, i.e. people with no previous English.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Abreviatura escrita; no la confundas con 'e.g.' (por ejemplo)."
+        },
+        {
+          "w": "To clarify",
+          "es": "Para aclarar",
+          "ex": "To clarify, the price includes breakfast but not dinner.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "result",
+      "en": "Result",
+      "es": "Resultado / consecuencia",
+      "emoji": "📈",
+      "color": "#10B981",
+      "use_es": "Presentan la consecuencia o el efecto de lo que se dijo antes.",
+      "tip_es": "'So' va en medio con coma antes: '..., so ...'. 'Therefore, consequently, as a result' suelen abrir una nueva oración con coma, o ir después de punto y coma: '...; therefore, ...'.",
+      "items": [
+        {
+          "w": "As a result",
+          "es": "Como resultado",
+          "ex": "He didn't study at all for the exam. As a result, he failed it.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Thus",
+          "es": "Así / por lo tanto",
+          "ex": "The main bridge was closed; thus, drivers had to take a longer route.",
+          "pos": "both",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Hence",
+          "es": "Por ende / de ahí",
+          "ex": "The roads were completely flooded this morning, hence the long delay.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Puede ir seguido solo de un sustantivo: 'hence the delay'."
+        },
+        {
+          "w": "Eventually",
+          "es": "Al final / con el tiempo",
+          "ex": "We got lost several times, but eventually we found the hotel.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Falso amigo: no significa 'eventualmente' (quizás); significa 'al final, después de un tiempo'."
+        },
+        {
+          "w": "Accordingly",
+          "es": "En consecuencia / por consiguiente",
+          "ex": "The rules have changed. Accordingly, all students must now register online.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": ""
+        },
+        {
+          "w": "Consequently",
+          "es": "Por consiguiente / en consecuencia",
+          "ex": "The company lost its biggest client. Consequently, fifty employees lost their jobs.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Such that",
+          "es": "De tal manera que",
+          "ex": "The noise from the party was such that nobody in the building could sleep.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Poco común; más natural: 'so loud that nobody could sleep'."
+        },
+        {
+          "w": "Therefore",
+          "es": "Por lo tanto",
+          "ex": "Prices increased again; therefore, many families are buying less meat.",
+          "pos": "both",
+          "register": "formal",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "So",
+          "es": "Así que / por eso",
+          "ex": "It was raining, so we stayed at home and watched a movie.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": "Coma antes de 'so' cuando une dos oraciones."
+        },
+        {
+          "w": "As a consequence",
+          "es": "Como consecuencia",
+          "ex": "As a consequence of the strike, schools were closed for a week.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "'As a consequence of' + sustantivo."
+        },
+        {
+          "w": "For this reason",
+          "es": "Por esta razón",
+          "ex": "The road is dangerous at night. For this reason, buses don't travel after nine.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Which means that",
+          "es": "Lo que significa que",
+          "ex": "The store opens at ten, which means that we have time for breakfast.",
+          "pos": "mid",
+          "register": "informal",
+          "level": "B1",
+          "note_es": "Va después de coma y se refiere a toda la oración anterior."
+        },
+        {
+          "w": "That's why",
+          "es": "Por eso",
+          "ex": "I missed the early bus. That's why I was late for class.",
+          "pos": "start",
+          "register": "informal",
+          "level": "A2",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "en": "Time",
+      "es": "Tiempo",
+      "emoji": "⏰",
+      "color": "#F59E0B",
+      "use_es": "Ubican las acciones en el tiempo: antes, después, al mismo tiempo o hasta un momento.",
+      "tip_es": "'During' + sustantivo; 'while' + sujeto y verbo. Después de 'when, as soon as, until, before, after' no uses 'will' para el futuro: 'when I arrive', no 'when I will arrive'.",
+      "items": [
+        {
+          "w": "In the beginning",
+          "es": "Al principio",
+          "ex": "In the beginning, living alone was difficult, but now I love it.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "'At the beginning of' + sustantivo: 'at the beginning of the year'."
+        },
+        {
+          "w": "Then",
+          "es": "Luego / entonces",
+          "ex": "We had dinner at a small restaurant, and then we went for a walk.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Later",
+          "es": "Más tarde / después",
+          "ex": "I'm busy right now, but I'll call you later this evening.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Meanwhile",
+          "es": "Mientras tanto",
+          "ex": "Mom was cooking dinner. Meanwhile, Dad was setting the table.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "At the same time",
+          "es": "Al mismo tiempo",
+          "ex": "She works full-time and, at the same time, studies at night.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "También puede expresar contraste: 'Sin embargo, a la vez...'."
+        },
+        {
+          "w": "During",
+          "es": "Durante",
+          "ex": "Please turn off your phone during the movie.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "+ sustantivo (during the class); con sujeto y verbo usa 'while'."
+        },
+        {
+          "w": "Before",
+          "es": "Antes (de)",
+          "ex": "Brush your teeth before you go to bed every night.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "After",
+          "es": "Después (de)",
+          "ex": "After the class, we went to a café near the university.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "As soon as",
+          "es": "Tan pronto como",
+          "ex": "Call me as soon as you arrive at the airport, please.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "No uses 'will' después: 'as soon as you arrive'."
+        },
+        {
+          "w": "Until",
+          "es": "Hasta (que)",
+          "ex": "Please wait here until the doctor calls your name.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": ""
+        },
+        {
+          "w": "While",
+          "es": "Mientras",
+          "ex": "I usually listen to podcasts while I'm cooking dinner.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "+ sujeto y verbo, normalmente en progresivo."
+        },
+        {
+          "w": "By the time",
+          "es": "Para cuando",
+          "ex": "By the time we arrived, the movie had already started.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "Suele usarse con past perfect o future perfect."
+        },
+        {
+          "w": "Afterwards",
+          "es": "Después / luego",
+          "ex": "We played football in the park, and afterwards we had ice cream.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "When",
+          "es": "Cuando",
+          "ex": "When I was a child, I lived with my grandparents in Barranquilla.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Once",
+          "es": "Una vez que",
+          "ex": "Once you finish your homework, you can play video games.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "restatement",
+      "en": "Restatement",
+      "es": "Reformular",
+      "emoji": "🔁",
+      "color": "#A855F7",
+      "use_es": "Repiten una idea con otras palabras, normalmente más simples o más cortas.",
+      "tip_es": "Van al inicio de la oración con coma ('In short, ...') o entre comas en medio (', that is to say, '). Informales: 'in a nutshell', 'I mean'.",
+      "items": [
+        {
+          "w": "In short",
+          "es": "En resumen / en pocas palabras",
+          "ex": "The hotel was dirty, noisy and expensive. In short, it was a terrible choice.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "To rephrase",
+          "es": "Para reformular / dicho de otra forma",
+          "ex": "To rephrase my question, what exactly do you need from us?",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": "Poco frecuente; más común 'Let me rephrase that' o 'To put it another way'."
+        },
+        {
+          "w": "In a nutshell",
+          "es": "En pocas palabras",
+          "ex": "In a nutshell, the plan is to save money and travel next year.",
+          "pos": "start",
+          "register": "informal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "In simple terms",
+          "es": "En términos sencillos",
+          "ex": "In simple terms, a vaccine teaches your body how to fight a virus.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "I mean",
+          "es": "O sea / quiero decir",
+          "ex": "She's very talented. I mean, she can play five different instruments!",
+          "pos": "start",
+          "register": "informal",
+          "level": "A2",
+          "note_es": "Oral; evítalo en textos formales."
+        },
+        {
+          "w": "Expressed simply",
+          "es": "Expresado de forma sencilla",
+          "ex": "Expressed simply, the more you practice, the better you get.",
+          "pos": "start",
+          "register": "formal",
+          "level": "C1",
+          "note_es": "Poco común; los nativos prefieren 'Put simply' o 'Simply put'."
+        },
+        {
+          "w": "That is to say",
+          "es": "Es decir",
+          "ex": "The course lasts one semester, that is to say, about four months.",
+          "pos": "mid",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Otherwise",
+          "es": "De lo contrario / si no",
+          "ex": "Wear sunscreen at the beach. Otherwise, you will get a bad sunburn.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Ojo: 'otherwise' NO reformula; significa 'de lo contrario / si no' (condición). Para reformular usa 'in other words'."
+        },
+        {
+          "w": "In other words",
+          "es": "En otras palabras",
+          "ex": "He never answers my messages. In other words, he isn't interested.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        },
+        {
+          "w": "Put simply",
+          "es": "Dicho de forma sencilla",
+          "ex": "Put simply, we don't have enough money to finish the project.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "To put it differently",
+          "es": "Dicho de otro modo",
+          "ex": "The first plan failed. To put it differently, we need to start again.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Simply put",
+          "es": "En pocas palabras",
+          "ex": "Simply put, a good night's sleep is essential for learning.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Or rather",
+          "es": "O mejor dicho",
+          "ex": "I'll see you on Monday, or rather, early on Tuesday morning.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "Sirve para corregirte a ti mismo."
+        },
+        {
+          "w": "In plain English",
+          "es": "En palabras sencillas",
+          "ex": "In plain English, the contract says you can't cancel for a year.",
+          "pos": "start",
+          "register": "informal",
+          "level": "B2",
+          "note_es": ""
+        }
+      ]
+    },
+    {
+      "id": "choice",
+      "en": "Choice & alternatives",
+      "es": "Elección y alternativas",
+      "emoji": "🔄",
+      "color": "#64748B",
+      "use_es": "Presentan opciones o alternativas entre dos o más cosas.",
+      "tip_es": "En 'either… or' y 'neither… nor' cada parte va justo antes de la opción: 'either tea or coffee'. 'Alternatively,' e 'In either case,' abren la oración con coma.",
+      "items": [
+        {
+          "w": "Either…or",
+          "es": "O… o",
+          "ex": "You can either pay in cash or use a credit card at the counter.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "Con dos sujetos, el verbo concuerda con el más cercano: 'Either Ana or her brothers are coming.'"
+        },
+        {
+          "w": "Whether…or",
+          "es": "Si… o / ya sea… o",
+          "ex": "I still don't know whether to study medicine or engineering.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "También 'whether... or not': 'whether you like it or not'."
+        },
+        {
+          "w": "Alternatively",
+          "es": "Como alternativa",
+          "ex": "We could eat at home tonight. Alternatively, we could try the new Peruvian restaurant.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Or",
+          "es": "O",
+          "ex": "Do you want to watch a movie or go for a walk in the park?",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "A1",
+          "note_es": ""
+        },
+        {
+          "w": "Rather",
+          "es": "Más bien / preferiblemente",
+          "ex": "I'd rather stay at home tonight than go to a noisy party.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "'Would rather' + verbo base + 'than': 'I'd rather stay than go'."
+        },
+        {
+          "w": "Choose either",
+          "es": "Elegir entre (uno u otro)",
+          "ex": "For the final project, you can choose either a poster or a short video.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "No es un conector fijo: es el verbo 'choose' + 'either… or'."
+        },
+        {
+          "w": "Preferably…or",
+          "es": "Preferiblemente… o",
+          "ex": "Bring a dessert to the party, preferably fruit or something homemade.",
+          "pos": "mid",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": "No es una pareja fija: 'preferably' marca la opción preferida y 'or' añade otra."
+        },
+        {
+          "w": "In either case",
+          "es": "En cualquiera de los dos casos",
+          "ex": "You may win or lose the match. In either case, you will learn something useful.",
+          "pos": "start",
+          "register": "formal",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Neither…nor",
+          "es": "Ni… ni",
+          "ex": "Neither my sister nor I can swim very well.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "No se usa 'not' con 'neither… nor' (no hay doble negación en inglés)."
+        },
+        {
+          "w": "Instead",
+          "es": "En cambio / en su lugar",
+          "ex": "There was no coffee left, so I had a cup of tea instead.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "A2",
+          "note_es": "'Instead' va al final o al inicio con coma; 'instead of' + sustantivo/-ing."
+        },
+        {
+          "w": "Otherwise",
+          "es": "Si no / de lo contrario",
+          "ex": "We should book the tickets today. Otherwise, there won't be any good seats left.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": "Presenta lo que pasará si no se elige la primera opción."
+        },
+        {
+          "w": "Whether or not",
+          "es": "Ya sea que… o no",
+          "ex": "Whether or not you agree, the meeting will take place tomorrow.",
+          "pos": "start",
+          "register": "neutral",
+          "level": "B2",
+          "note_es": ""
+        },
+        {
+          "w": "Or else",
+          "es": "O si no",
+          "ex": "Hurry up, or else we'll miss the beginning of the film.",
+          "pos": "mid",
+          "register": "informal",
+          "level": "B1",
+          "note_es": "Puede sonar a advertencia o amenaza."
+        },
+        {
+          "w": "Either way",
+          "es": "De cualquier forma",
+          "ex": "We can take the bus or a taxi; either way, we'll arrive by seven.",
+          "pos": "both",
+          "register": "neutral",
+          "level": "B1",
+          "note_es": ""
+        }
+      ]
+    }
+  ]
+}

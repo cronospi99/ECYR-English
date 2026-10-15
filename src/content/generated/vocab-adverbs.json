@@ -1,0 +1,2249 @@
+{
+  "types": [
+    {
+      "id": "manner",
+      "en": "Adverbs of manner",
+      "es": "Adverbios de modo",
+      "emoji": "🏃",
+      "color": "#3B82F6",
+      "q": "How?",
+      "q_es": "¿Cómo?",
+      "rule_es": "Describen cómo se hace una acción. Normalmente van después del verbo o después del objeto: 'She speaks English fluently'. Nunca entre el verbo y su objeto (no: 'She speaks fluently English').",
+      "formation_es": "Adjetivo + -ly (slow → slowly). Cambios: -y → -ily (easy → easily), -le → -ly (gentle → gently), -ic → -ically (automatic → automatically; excepción: public → publicly), -ue → -uly (true → truly). Irregulares: good → well; fast, hard, high, straight y early no cambian. Adjetivos en -ly (friendly, lovely, silly) no tienen adverbio: se dice 'in a friendly way'.",
+      "items": [
+        {
+          "w": "quickly",
+          "es": "rápidamente",
+          "ex": "She finished the reading test quickly and left early.",
+          "level": "A1",
+          "from": "quick",
+          "expr": false
+        },
+        {
+          "w": "slowly",
+          "es": "lentamente / despacio",
+          "ex": "Please speak slowly; I'm still learning English.",
+          "level": "A1",
+          "from": "slow",
+          "expr": false
+        },
+        {
+          "w": "carefully",
+          "es": "con cuidado",
+          "ex": "Read the instructions carefully before you start the exam.",
+          "level": "A2",
+          "from": "careful",
+          "expr": false
+        },
+        {
+          "w": "carelessly",
+          "es": "descuidadamente",
+          "ex": "He drove carelessly and hit the car in front of him.",
+          "level": "B1",
+          "from": "careless",
+          "expr": false
+        },
+        {
+          "w": "easily",
+          "es": "fácilmente",
+          "ex": "You can easily get to the old town by bus.",
+          "level": "A2",
+          "from": "easy",
+          "expr": false
+        },
+        {
+          "w": "happily",
+          "es": "felizmente / con alegría",
+          "ex": "The children played happily in the park all afternoon.",
+          "level": "A2",
+          "from": "happy",
+          "expr": false
+        },
+        {
+          "w": "quietly",
+          "es": "en silencio / en voz baja",
+          "ex": "The students worked quietly during the exam.",
+          "level": "A2",
+          "from": "quiet",
+          "expr": false
+        },
+        {
+          "w": "loudly",
+          "es": "en voz alta / ruidosamente",
+          "ex": "My neighbor plays music loudly every Saturday night.",
+          "level": "A2",
+          "from": "loud",
+          "expr": false
+        },
+        {
+          "w": "well",
+          "es": "bien (adverbio de 'good')",
+          "ex": "She sings really well; she should join a band.",
+          "level": "A1",
+          "from": "good",
+          "expr": false
+        },
+        {
+          "w": "badly",
+          "es": "mal",
+          "ex": "Our team played badly and lost three to zero.",
+          "level": "A2",
+          "from": "bad",
+          "expr": false
+        },
+        {
+          "w": "hard",
+          "es": "duro / con mucho esfuerzo (no 'difícilmente')",
+          "ex": "My mother works hard to support our family.",
+          "level": "A2",
+          "from": "hard",
+          "expr": false
+        },
+        {
+          "w": "fast",
+          "es": "rápido (no existe 'fastly')",
+          "ex": "He drives too fast on the highway.",
+          "level": "A1",
+          "from": "fast",
+          "expr": false
+        },
+        {
+          "w": "beautifully",
+          "es": "hermosamente / de forma preciosa",
+          "ex": "The bride's dress was beautifully made by hand.",
+          "level": "B1",
+          "from": "beautiful",
+          "expr": false
+        },
+        {
+          "w": "angrily",
+          "es": "con enojo / furiosamente",
+          "ex": "The customer shouted angrily at the waiter.",
+          "level": "B1",
+          "from": "angry",
+          "expr": false
+        },
+        {
+          "w": "politely",
+          "es": "amablemente / con cortesía",
+          "ex": "She politely asked the man to turn down his music.",
+          "level": "B1",
+          "from": "polite",
+          "expr": false
+        },
+        {
+          "w": "patiently",
+          "es": "con paciencia",
+          "ex": "We waited patiently for the doctor for two hours.",
+          "level": "B1",
+          "from": "patient",
+          "expr": false
+        },
+        {
+          "w": "gently",
+          "es": "suavemente / con delicadeza",
+          "ex": "Hold the baby gently and support her head.",
+          "level": "B1",
+          "from": "gentle",
+          "expr": false
+        },
+        {
+          "w": "fluently",
+          "es": "con fluidez",
+          "ex": "After two years in Canada, Juan speaks English fluently.",
+          "level": "B1",
+          "from": "fluent",
+          "expr": false
+        },
+        {
+          "w": "correctly",
+          "es": "correctamente",
+          "ex": "Did I pronounce your name correctly?",
+          "level": "A2",
+          "from": "correct",
+          "expr": false
+        },
+        {
+          "w": "seriously",
+          "es": "en serio / seriamente",
+          "ex": "You need to take your studies more seriously.",
+          "level": "B1",
+          "from": "serious",
+          "expr": false
+        },
+        {
+          "w": "suddenly",
+          "es": "de repente",
+          "ex": "We were watching TV when the lights suddenly went out.",
+          "level": "B1",
+          "from": "sudden",
+          "expr": false
+        },
+        {
+          "w": "safely",
+          "es": "sin peligro / de forma segura",
+          "ex": "The plane landed safely in spite of the storm.",
+          "level": "B1",
+          "from": "safe",
+          "expr": false
+        },
+        {
+          "w": "nervously",
+          "es": "nerviosamente",
+          "ex": "He laughed nervously before his job interview.",
+          "level": "B1",
+          "from": "nervous",
+          "expr": false
+        },
+        {
+          "w": "secretly",
+          "es": "en secreto",
+          "ex": "They secretly planned a surprise party for their teacher.",
+          "level": "B1",
+          "from": "secret",
+          "expr": false
+        },
+        {
+          "w": "warmly",
+          "es": "calurosamente / con cariño",
+          "ex": "Our hosts welcomed us warmly when we arrived.",
+          "level": "B1",
+          "from": "warm",
+          "expr": false
+        },
+        {
+          "w": "straight",
+          "es": "derecho / recto",
+          "ex": "Sit up straight and look at the camera, please.",
+          "level": "A2",
+          "from": "straight",
+          "expr": false
+        },
+        {
+          "w": "automatically",
+          "es": "automáticamente",
+          "ex": "The doors open automatically when you get close.",
+          "level": "B1",
+          "from": "automatic",
+          "expr": false
+        },
+        {
+          "w": "publicly",
+          "es": "públicamente",
+          "ex": "The mayor publicly apologized for the delays.",
+          "level": "B2",
+          "from": "public",
+          "expr": false
+        },
+        {
+          "w": "truly",
+          "es": "verdaderamente / sinceramente",
+          "ex": "I am truly grateful for your help this year.",
+          "level": "B2",
+          "from": "true",
+          "expr": false
+        },
+        {
+          "w": "dramatically",
+          "es": "drásticamente / de forma dramática",
+          "ex": "The price of avocados rose dramatically last month.",
+          "level": "B2",
+          "from": "dramatic",
+          "expr": false
+        },
+        {
+          "w": "cheerfully",
+          "es": "alegremente",
+          "ex": "The waiter cheerfully brought us more coffee.",
+          "level": "B1",
+          "from": "cheerful",
+          "expr": false
+        },
+        {
+          "w": "wisely",
+          "es": "sabiamente / con prudencia",
+          "ex": "Spend your money wisely when you travel.",
+          "level": "B2",
+          "from": "wise",
+          "expr": false
+        },
+        {
+          "w": "accidentally",
+          "es": "sin querer / por accidente",
+          "ex": "I accidentally deleted all the photos from my phone.",
+          "level": "B1",
+          "from": "accidental",
+          "expr": false
+        },
+        {
+          "w": "kindly",
+          "es": "amablemente",
+          "ex": "The old man kindly showed us the way to the station.",
+          "level": "B1",
+          "from": "kind",
+          "expr": false
+        },
+        {
+          "w": "high",
+          "es": "alto (≠ highly: muy, altamente)",
+          "ex": "The eagle flew high above the mountains.",
+          "level": "A2",
+          "from": "high",
+          "expr": false
+        },
+        {
+          "w": "early",
+          "es": "temprano (igual que el adjetivo)",
+          "ex": "We left early to avoid the traffic on the highway.",
+          "level": "A1",
+          "from": "early",
+          "expr": false
+        },
+        {
+          "w": "deliberately",
+          "es": "a propósito / deliberadamente",
+          "ex": "I think he deliberately ignored my message.",
+          "level": "B2",
+          "from": "deliberate",
+          "expr": false
+        },
+        {
+          "w": "late",
+          "es": "tarde (≠ lately: últimamente)",
+          "ex": "The bus arrived late, so I missed my first class.",
+          "level": "A2",
+          "from": "late",
+          "expr": false
+        }
+      ]
+    },
+    {
+      "id": "frequency",
+      "en": "Adverbs of frequency",
+      "es": "Adverbios de frecuencia",
+      "emoji": "🔁",
+      "color": "#22C55E",
+      "q": "How often?",
+      "q_es": "¿Con qué frecuencia?",
+      "rule_es": "Dicen con qué frecuencia pasa algo. Las palabras sueltas (always, usually, never...) van antes del verbo principal pero después de 'be': 'I always walk' / 'She is always late'. Las expresiones (once a week, every day...) van al final o al inicio de la oración.",
+      "formation_es": "La mayoría son palabras fijas (always, often, never). Algunas vienen de adjetivos + -ly (usual → usually, frequent → frequently, rare → rarely). daily, weekly, monthly y yearly tienen la misma forma como adjetivo y adverbio. Las expresiones se forman con número + times + a + periodo (twice a month) o every + periodo (every day). Las marcadas como expresión llevan expr: true.",
+      "items": [
+        {
+          "w": "always",
+          "es": "siempre",
+          "ex": "I always drink a cup of coffee before work.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "usually",
+          "es": "normalmente / por lo general",
+          "ex": "We usually have lunch at one o'clock.",
+          "level": "A1",
+          "from": "usual",
+          "expr": false
+        },
+        {
+          "w": "normally",
+          "es": "normalmente",
+          "ex": "I normally walk to the office, but today I took a taxi.",
+          "level": "A2",
+          "from": "normal",
+          "expr": false
+        },
+        {
+          "w": "generally",
+          "es": "generalmente",
+          "ex": "Students generally prefer classes in the morning.",
+          "level": "B1",
+          "from": "general",
+          "expr": false
+        },
+        {
+          "w": "often",
+          "es": "a menudo / seguido",
+          "ex": "Do you often go to the cinema on weekends?",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "frequently",
+          "es": "frecuentemente",
+          "ex": "This bus is frequently late during the rainy season.",
+          "level": "B1",
+          "from": "frequent",
+          "expr": false
+        },
+        {
+          "w": "sometimes",
+          "es": "a veces",
+          "ex": "Sometimes I cook dinner for the whole family.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "occasionally",
+          "es": "de vez en cuando / ocasionalmente",
+          "ex": "We occasionally eat out on Saturday nights.",
+          "level": "B1",
+          "from": "occasional",
+          "expr": false
+        },
+        {
+          "w": "rarely",
+          "es": "rara vez",
+          "ex": "My grandfather rarely watches television these days.",
+          "level": "B1",
+          "from": "rare",
+          "expr": false
+        },
+        {
+          "w": "seldom",
+          "es": "rara vez (más formal)",
+          "ex": "She seldom complains about her difficult job.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "hardly ever",
+          "es": "casi nunca",
+          "ex": "I hardly ever drink soda anymore.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "never",
+          "es": "nunca",
+          "ex": "I have never been to Europe, but I want to go.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "ever",
+          "es": "alguna vez (en preguntas)",
+          "ex": "Have you ever tried ajiaco from Bogotá?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "constantly",
+          "es": "constantemente",
+          "ex": "My phone is constantly ringing during meetings.",
+          "level": "B2",
+          "from": "constant",
+          "expr": false
+        },
+        {
+          "w": "regularly",
+          "es": "con regularidad / regularmente",
+          "ex": "You should check your email regularly at work.",
+          "level": "B1",
+          "from": "regular",
+          "expr": false
+        },
+        {
+          "w": "daily",
+          "es": "diariamente / a diario",
+          "ex": "The newspaper is published daily, even on holidays.",
+          "level": "B1",
+          "from": "daily",
+          "expr": false
+        },
+        {
+          "w": "weekly",
+          "es": "semanalmente",
+          "ex": "Our team meets weekly to review the project.",
+          "level": "B1",
+          "from": "weekly",
+          "expr": false
+        },
+        {
+          "w": "monthly",
+          "es": "mensualmente",
+          "ex": "I pay my phone bill monthly by bank transfer.",
+          "level": "B1",
+          "from": "monthly",
+          "expr": false
+        },
+        {
+          "w": "annually",
+          "es": "anualmente",
+          "ex": "The flower festival takes place annually in Medellín.",
+          "level": "B2",
+          "from": "annual",
+          "expr": false
+        },
+        {
+          "w": "once a week",
+          "es": "una vez a la semana",
+          "ex": "I go to the gym once a week, on Mondays.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "twice a month",
+          "es": "dos veces al mes",
+          "ex": "We visit our grandparents twice a month.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "every day",
+          "es": "todos los días",
+          "ex": "I study English for twenty minutes every day.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "three times a year",
+          "es": "tres veces al año",
+          "ex": "My cousins come to visit us three times a year.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "from time to time",
+          "es": "de vez en cuando",
+          "ex": "From time to time, I call my old school friends.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "now and then",
+          "es": "de vez en cuando",
+          "ex": "We still go dancing now and then.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "all the time",
+          "es": "todo el tiempo",
+          "ex": "My little brother asks questions all the time.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "every other day",
+          "es": "día de por medio / cada dos días",
+          "ex": "She waters the plants every other day.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "once in a while",
+          "es": "de vez en cuando",
+          "ex": "Once in a while, we order pizza on a Friday night.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "on weekends",
+          "es": "los fines de semana",
+          "ex": "I usually sleep late on weekends.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "en": "Adverbs of time",
+      "es": "Adverbios de tiempo",
+      "emoji": "🕒",
+      "color": "#F59E0B",
+      "q": "When?",
+      "q_es": "¿Cuándo?",
+      "rule_es": "Dicen cuándo pasa algo. Casi siempre van al final de la oración ('I'll call you tomorrow') o al inicio para dar énfasis. Excepciones: 'already', 'just' y 'still' van antes del verbo principal; 'yet' va al final en preguntas y negativas.",
+      "formation_es": "La mayoría son palabras fijas (now, soon, yet). Algunas vienen de adjetivos + -ly (recent → recently, immediate → immediately). ¡Cuidado! 'late' (tarde) y 'lately' (últimamente) son palabras distintas. Expresiones con last/next/this + periodo no llevan preposición: 'next week', no 'in next week'.",
+      "items": [
+        {
+          "w": "now",
+          "es": "ahora",
+          "ex": "I'm busy now; can I call you back in an hour?",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "today",
+          "es": "hoy",
+          "ex": "I have three classes today and an exam tomorrow.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "tomorrow",
+          "es": "mañana",
+          "ex": "We are flying to San Andrés tomorrow morning.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "yesterday",
+          "es": "ayer",
+          "ex": "I saw your brother at the supermarket yesterday.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "tonight",
+          "es": "esta noche",
+          "ex": "Are you coming to the party tonight?",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "soon",
+          "es": "pronto",
+          "ex": "Don't worry, the bus will arrive soon.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "recently",
+          "es": "recientemente",
+          "ex": "I have recently started a new job in Bogotá.",
+          "level": "B1",
+          "from": "recent",
+          "expr": false
+        },
+        {
+          "w": "lately",
+          "es": "últimamente (≠ late: tarde)",
+          "ex": "I haven't been sleeping well lately.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "already",
+          "es": "ya",
+          "ex": "I have already finished my homework, Mom.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "yet",
+          "es": "ya (preguntas) / todavía (negativas)",
+          "ex": "Has the package from Amazon arrived yet?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "still",
+          "es": "todavía / aún",
+          "ex": "Are you still working at the bank downtown?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "just",
+          "es": "acabar de (hace muy poco)",
+          "ex": "I have just eaten, so I'm not hungry.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "eventually",
+          "es": "al final / con el tiempo (no 'eventualmente')",
+          "ex": "After many tries, they eventually found a solution.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "finally",
+          "es": "por fin / finalmente",
+          "ex": "We finally got our visas after three months.",
+          "level": "A2",
+          "from": "final",
+          "expr": false
+        },
+        {
+          "w": "later",
+          "es": "más tarde / después",
+          "ex": "See you later at the party.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "then",
+          "es": "entonces / en ese momento",
+          "ex": "I was living in Cali then, so I didn't see the show.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "before",
+          "es": "antes",
+          "ex": "Have you been to this restaurant before?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "afterwards",
+          "es": "después / luego",
+          "ex": "We had dinner and went dancing afterwards.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "immediately",
+          "es": "inmediatamente / enseguida",
+          "ex": "Please call me immediately if anything changes.",
+          "level": "B1",
+          "from": "immediate",
+          "expr": false
+        },
+        {
+          "w": "nowadays",
+          "es": "hoy en día / actualmente",
+          "ex": "Nowadays, most people pay with their phones.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "currently",
+          "es": "actualmente (en este momento)",
+          "ex": "She is currently living and working in Canada.",
+          "level": "B1",
+          "from": "current",
+          "expr": false
+        },
+        {
+          "w": "ago",
+          "es": "hace (+ tiempo)",
+          "ex": "I moved to Bogotá three years ago.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "since",
+          "es": "desde entonces",
+          "ex": "I met him in 2019 and haven't seen him since.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "once",
+          "es": "una vez / en cierta ocasión",
+          "ex": "I once met a famous footballer at the airport.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "formerly",
+          "es": "antiguamente / anteriormente",
+          "ex": "The building was formerly a hospital for children.",
+          "level": "C1",
+          "from": "former",
+          "expr": false
+        },
+        {
+          "w": "previously",
+          "es": "previamente / antes",
+          "ex": "I previously worked as a waiter in Medellín.",
+          "level": "B1",
+          "from": "previous",
+          "expr": false
+        },
+        {
+          "w": "anymore",
+          "es": "ya no (en negativas)",
+          "ex": "She doesn't live in this neighborhood anymore.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "right now",
+          "es": "ahora mismo",
+          "ex": "I can't talk right now; I'm driving.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "next week",
+          "es": "la próxima semana",
+          "ex": "We're going on vacation to the coast next week.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "last night",
+          "es": "anoche",
+          "ex": "I watched a great series on TV last night.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "the day after tomorrow",
+          "es": "pasado mañana",
+          "ex": "The results will be ready the day after tomorrow.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "early",
+          "es": "temprano",
+          "ex": "We got up early to catch the six o'clock flight.",
+          "level": "A1",
+          "from": "early",
+          "expr": false
+        },
+        {
+          "w": "late",
+          "es": "tarde (≠ lately: últimamente)",
+          "ex": "The train arrived late again this morning.",
+          "level": "A2",
+          "from": "late",
+          "expr": false
+        }
+      ]
+    },
+    {
+      "id": "place",
+      "en": "Adverbs of place",
+      "es": "Adverbios de lugar",
+      "emoji": "📍",
+      "color": "#EF4444",
+      "q": "Where?",
+      "q_es": "¿Dónde?",
+      "rule_es": "Dicen dónde pasa algo o hacia dónde va. Normalmente van después del verbo o del objeto, al final de la oración: 'The kids are playing outside'. Con verbos de movimiento no llevan 'to': 'go home', 'go abroad', 'go upstairs' (no 'go to home').",
+      "formation_es": "Casi todos son palabras fijas (here, there, abroad) o compuestos (up + stairs, every + where, near + by). No se forman con -ly. ¡Cuidado! 'near' (cerca) no es 'nearly' (casi).",
+      "items": [
+        {
+          "w": "here",
+          "es": "aquí / acá",
+          "ex": "Come here and look at this old photo.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "there",
+          "es": "allí / allá",
+          "ex": "I left my keys over there on the kitchen table.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "everywhere",
+          "es": "por todas partes",
+          "ex": "I looked everywhere for my glasses.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "nowhere",
+          "es": "en ninguna parte",
+          "ex": "There was nowhere to park near the stadium.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "somewhere",
+          "es": "en algún lugar",
+          "ex": "Let's go somewhere quiet to talk.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "anywhere",
+          "es": "en ningún lugar (negativas) / en cualquier lugar",
+          "ex": "I can't find my wallet anywhere.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "elsewhere",
+          "es": "en otro lugar / en otra parte",
+          "ex": "If this shop is too expensive, we can look elsewhere.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "abroad",
+          "es": "en el extranjero / al exterior",
+          "ex": "She wants to study abroad next year.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "overseas",
+          "es": "en el extranjero / al otro lado del mar",
+          "ex": "Many Colombians work overseas and send money home.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "upstairs",
+          "es": "arriba (en el piso de arriba)",
+          "ex": "The bathroom is upstairs, on the left.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "downstairs",
+          "es": "abajo (en el piso de abajo)",
+          "ex": "Breakfast is served downstairs from seven to ten.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "nearby",
+          "es": "cerca / por aquí cerca",
+          "ex": "Is there a good bakery nearby?",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "near",
+          "es": "cerca (≠ nearly: casi)",
+          "ex": "Do you live near here, or do you take the bus?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "far",
+          "es": "lejos",
+          "ex": "My office isn't far, so I usually walk.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "outside",
+          "es": "afuera",
+          "ex": "The children are playing outside in the garden.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "inside",
+          "es": "adentro",
+          "ex": "It's raining, so let's stay inside today.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "indoors",
+          "es": "bajo techo / dentro de casa",
+          "ex": "We had the party indoors because of the rain.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "outdoors",
+          "es": "al aire libre",
+          "ex": "In the dry season we often eat outdoors.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "away",
+          "es": "lejos / de distancia",
+          "ex": "The nearest beach is only twenty minutes away.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "back",
+          "es": "de vuelta / de regreso",
+          "ex": "I'll be back in five minutes, don't leave.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "home",
+          "es": "a casa / en casa (sin 'to')",
+          "ex": "I usually walk home after work.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "ahead",
+          "es": "adelante / al frente",
+          "ex": "Go straight ahead and turn right at the bank.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "behind",
+          "es": "atrás",
+          "ex": "I left my umbrella behind at the restaurant.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "above",
+          "es": "arriba / encima",
+          "ex": "The people in the apartment above make a lot of noise.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "below",
+          "es": "abajo / debajo",
+          "ex": "Write your answer in the space below.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "around",
+          "es": "alrededor / por ahí",
+          "ex": "We walked around for hours in the old city.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "underground",
+          "es": "bajo tierra",
+          "ex": "In London, you can travel underground on the Tube.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "downtown",
+          "es": "al centro / en el centro",
+          "ex": "Let's take a taxi downtown tonight.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "forward",
+          "es": "hacia adelante",
+          "ex": "Please step forward when I call your name.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "in",
+          "es": "adentro / (entrar)",
+          "ex": "Come in and sit down, please; dinner is ready.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        }
+      ]
+    },
+    {
+      "id": "degree",
+      "en": "Adverbs of degree",
+      "es": "Adverbios de grado / intensidad",
+      "emoji": "📶",
+      "color": "#8B5CF6",
+      "q": "How much? To what extent?",
+      "q_es": "¿Cuánto? ¿Qué tan?",
+      "rule_es": "Dicen la intensidad de un adjetivo, otro adverbio o un verbo. Van justo antes de la palabra que modifican: 'very cold', 'almost finished'. Excepción: 'enough' va después del adjetivo o adverbio: 'old enough', 'fast enough'.",
+      "formation_es": "Muchos son palabras fijas (very, quite, too, so, enough). Otros vienen de adjetivo + -ly (extreme → extremely, complete → completely, full → fully). ¡Cuidado con los pares! hard (duro) ≠ hardly (apenas); high (alto) ≠ highly (muy, altamente); near (cerca) ≠ nearly (casi).",
+      "items": [
+        {
+          "w": "very",
+          "es": "muy",
+          "ex": "The soup is very hot, so be careful.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "extremely",
+          "es": "extremadamente",
+          "ex": "The final exam was extremely difficult.",
+          "level": "B1",
+          "from": "extreme",
+          "expr": false
+        },
+        {
+          "w": "quite",
+          "es": "bastante",
+          "ex": "The movie was quite good, but a bit long.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "fairly",
+          "es": "bastante / razonablemente",
+          "ex": "Her English is fairly good for a beginner.",
+          "level": "B1",
+          "from": "fair",
+          "expr": false
+        },
+        {
+          "w": "rather",
+          "es": "algo / bastante (a menudo negativo)",
+          "ex": "It's rather cold today, isn't it?",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "pretty",
+          "es": "bastante (informal)",
+          "ex": "The test was pretty easy, so I finished early.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "too",
+          "es": "demasiado",
+          "ex": "This coffee is too sweet for me.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "enough",
+          "es": "suficientemente (va después del adjetivo)",
+          "ex": "Are you old enough to drive a car?",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "so",
+          "es": "tan",
+          "ex": "I'm so happy to see you again!",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "really",
+          "es": "realmente / muy",
+          "ex": "This song is really popular in Colombia right now.",
+          "level": "A1",
+          "from": "real",
+          "expr": false
+        },
+        {
+          "w": "almost",
+          "es": "casi",
+          "ex": "I almost missed the bus this morning.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "nearly",
+          "es": "casi (≠ near: cerca)",
+          "ex": "Dinner is nearly ready, so wash your hands.",
+          "level": "B1",
+          "from": "near",
+          "expr": false
+        },
+        {
+          "w": "completely",
+          "es": "completamente",
+          "ex": "I'm sorry, I completely forgot about your birthday.",
+          "level": "B1",
+          "from": "complete",
+          "expr": false
+        },
+        {
+          "w": "totally",
+          "es": "totalmente",
+          "ex": "I totally agree with you about the new rules.",
+          "level": "B1",
+          "from": "total",
+          "expr": false
+        },
+        {
+          "w": "absolutely",
+          "es": "absolutamente / totalmente",
+          "ex": "The view from the mountain is absolutely amazing.",
+          "level": "B1",
+          "from": "absolute",
+          "expr": false
+        },
+        {
+          "w": "entirely",
+          "es": "enteramente / por completo",
+          "ex": "Whether you stay or go, the decision is entirely yours.",
+          "level": "B2",
+          "from": "entire",
+          "expr": false
+        },
+        {
+          "w": "fully",
+          "es": "completamente",
+          "ex": "The hotel is fully booked this weekend.",
+          "level": "B2",
+          "from": "full",
+          "expr": false
+        },
+        {
+          "w": "barely",
+          "es": "apenas",
+          "ex": "I could barely hear the teacher from the back.",
+          "level": "B2",
+          "from": "bare",
+          "expr": false
+        },
+        {
+          "w": "hardly",
+          "es": "apenas / casi no (≠ hard: duro)",
+          "ex": "I could hardly believe my eyes.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "scarcely",
+          "es": "apenas / escasamente",
+          "ex": "There was scarcely any food left after the party.",
+          "level": "C1",
+          "from": "scarce",
+          "expr": false
+        },
+        {
+          "w": "slightly",
+          "es": "ligeramente / un poco",
+          "ex": "The price is slightly higher than last year.",
+          "level": "B1",
+          "from": "slight",
+          "expr": false
+        },
+        {
+          "w": "a bit",
+          "es": "un poco",
+          "ex": "I'm a bit tired after the long trip.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "a little",
+          "es": "un poco",
+          "ex": "Can you speak a little slower, please?",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "highly",
+          "es": "muy / altamente (≠ high: alto)",
+          "ex": "This restaurant is highly recommended by tourists.",
+          "level": "B2",
+          "from": "high",
+          "expr": false
+        },
+        {
+          "w": "incredibly",
+          "es": "increíblemente",
+          "ex": "The concert last night was incredibly loud.",
+          "level": "B1",
+          "from": "incredible",
+          "expr": false
+        },
+        {
+          "w": "terribly",
+          "es": "terriblemente / muy",
+          "ex": "I'm terribly sorry for the delay.",
+          "level": "B2",
+          "from": "terrible",
+          "expr": false
+        },
+        {
+          "w": "deeply",
+          "es": "profundamente",
+          "ex": "We were deeply moved by her speech.",
+          "level": "B2",
+          "from": "deep",
+          "expr": false
+        },
+        {
+          "w": "partly",
+          "es": "en parte / parcialmente",
+          "ex": "The accident was partly my fault.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "somewhat",
+          "es": "algo / un tanto",
+          "ex": "The results were somewhat disappointing this year.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "utterly",
+          "es": "totalmente / completamente",
+          "ex": "The players were utterly exhausted after the match.",
+          "level": "C1",
+          "from": "utter",
+          "expr": false
+        },
+        {
+          "w": "much",
+          "es": "mucho (con comparativos)",
+          "ex": "This phone is much cheaper than mine.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "a lot",
+          "es": "mucho",
+          "ex": "I like this city a lot; the people are friendly.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "remarkably",
+          "es": "notablemente / sorprendentemente",
+          "ex": "She speaks remarkably good English for her age.",
+          "level": "C1",
+          "from": "remarkable",
+          "expr": false
+        }
+      ]
+    },
+    {
+      "id": "certainty",
+      "en": "Adverbs of certainty",
+      "es": "Adverbios de certeza / probabilidad",
+      "emoji": "🎲",
+      "color": "#06B6D4",
+      "q": "How sure?",
+      "q_es": "¿Qué tan seguro?",
+      "rule_es": "Muestran qué tan seguros estamos de algo. Normalmente van antes del verbo principal y después de 'be' o del primer auxiliar: 'It will probably rain', 'She is definitely coming'. 'Maybe' y 'perhaps' suelen ir al inicio de la oración. En negativas van antes de 'won't/don't': 'He probably won't come'.",
+      "formation_es": "La mayoría son adjetivo + -ly (certain → certainly, probable → probably, possible → possibly; -le → -ly). 'Maybe' (may + be) y 'perhaps' son palabras fijas. 'Of course', 'for sure' y 'no doubt' son expresiones.",
+      "items": [
+        {
+          "w": "definitely",
+          "es": "definitivamente / seguro que sí",
+          "ex": "I'll definitely call you tomorrow after work.",
+          "level": "B1",
+          "from": "definite",
+          "expr": false
+        },
+        {
+          "w": "probably",
+          "es": "probablemente",
+          "ex": "It will probably rain this afternoon.",
+          "level": "A2",
+          "from": "probable",
+          "expr": false
+        },
+        {
+          "w": "possibly",
+          "es": "posiblemente",
+          "ex": "This is possibly the best pizza in town.",
+          "level": "B1",
+          "from": "possible",
+          "expr": false
+        },
+        {
+          "w": "certainly",
+          "es": "ciertamente / sin duda",
+          "ex": "She certainly knows how to cook a good sancocho.",
+          "level": "B1",
+          "from": "certain",
+          "expr": false
+        },
+        {
+          "w": "perhaps",
+          "es": "quizás / tal vez",
+          "ex": "Perhaps we should leave earlier tomorrow.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "maybe",
+          "es": "quizás / tal vez (informal)",
+          "ex": "Maybe I'll visit you in Cartagena next month.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "clearly",
+          "es": "claramente / evidentemente",
+          "ex": "He was clearly nervous before the interview.",
+          "level": "B1",
+          "from": "clear",
+          "expr": false
+        },
+        {
+          "w": "surely",
+          "es": "seguramente / sin duda (expresa sorpresa)",
+          "ex": "Surely you don't believe that crazy story!",
+          "level": "B2",
+          "from": "sure",
+          "expr": false
+        },
+        {
+          "w": "undoubtedly",
+          "es": "indudablemente",
+          "ex": "She is undoubtedly the best player on the team.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "obviously",
+          "es": "obviamente",
+          "ex": "He obviously didn't read the instructions.",
+          "level": "B1",
+          "from": "obvious",
+          "expr": false
+        },
+        {
+          "w": "likely",
+          "es": "probablemente (sobre todo con 'most/very')",
+          "ex": "Prices will very likely rise again next year.",
+          "level": "B2",
+          "from": "likely",
+          "expr": false
+        },
+        {
+          "w": "presumably",
+          "es": "presumiblemente / supongo que",
+          "ex": "The train is late, presumably because of the weather.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "evidently",
+          "es": "evidentemente",
+          "ex": "She was evidently upset about the results.",
+          "level": "C1",
+          "from": "evident",
+          "expr": false
+        },
+        {
+          "w": "of course",
+          "es": "por supuesto / claro",
+          "ex": "Of course I'll help you with your homework.",
+          "level": "A1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "no doubt",
+          "es": "sin duda",
+          "ex": "No doubt you've already heard the news.",
+          "level": "B2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "for sure",
+          "es": "seguro / con certeza",
+          "ex": "I'll be at your party on Saturday for sure.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "doubtless",
+          "es": "sin duda",
+          "ex": "He will doubtless become a great doctor one day.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "supposedly",
+          "es": "supuestamente",
+          "ex": "The new phone is supposedly waterproof.",
+          "level": "B2",
+          "from": "supposed",
+          "expr": false
+        },
+        {
+          "w": "conceivably",
+          "es": "posiblemente / es concebible que",
+          "ex": "The project could conceivably be finished by June.",
+          "level": "C1",
+          "from": "conceivable",
+          "expr": false
+        },
+        {
+          "w": "most likely",
+          "es": "lo más probable",
+          "ex": "We will most likely move to Cali next year.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "without doubt",
+          "es": "sin lugar a dudas",
+          "ex": "This is without doubt the hottest day of the year.",
+          "level": "B2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "undeniably",
+          "es": "innegablemente",
+          "ex": "The film is undeniably beautiful, but very slow.",
+          "level": "C1",
+          "from": "undeniable",
+          "expr": false
+        },
+        {
+          "w": "inevitably",
+          "es": "inevitablemente",
+          "ex": "Inevitably, the traffic got worse after the holiday.",
+          "level": "C1",
+          "from": "inevitable",
+          "expr": false
+        },
+        {
+          "w": "seemingly",
+          "es": "aparentemente",
+          "ex": "The seemingly simple task took us three hours.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "unquestionably",
+          "es": "incuestionablemente",
+          "ex": "Shakira is unquestionably one of Colombia's most famous singers.",
+          "level": "C1",
+          "from": "unquestionable",
+          "expr": false
+        }
+      ]
+    },
+    {
+      "id": "comment",
+      "en": "Comment adverbs",
+      "es": "Adverbios de opinión / comentario",
+      "emoji": "💬",
+      "color": "#EC4899",
+      "q": "What do you think about it?",
+      "q_es": "¿Qué opinas de eso?",
+      "rule_es": "Expresan la opinión o actitud del hablante sobre toda la oración. Normalmente van al inicio, seguidos de coma: 'Unfortunately, the museum is closed'. También pueden ir antes del verbo principal.",
+      "formation_es": "Casi todos son adjetivo + -ly (lucky → luckily, honest → honestly, surprising → surprisingly; -ic → -ically: ironic → ironically). ¡Falsos amigos! 'actually' = en realidad (no 'actualmente'); 'eventually' = al final (no 'eventualmente').",
+      "items": [
+        {
+          "w": "unfortunately",
+          "es": "desafortunadamente / lamentablemente",
+          "ex": "Unfortunately, the museum is closed on Mondays.",
+          "level": "A2",
+          "from": "unfortunate",
+          "expr": false
+        },
+        {
+          "w": "fortunately",
+          "es": "afortunadamente",
+          "ex": "Fortunately, nobody was hurt in the accident.",
+          "level": "A2",
+          "from": "fortunate",
+          "expr": false
+        },
+        {
+          "w": "luckily",
+          "es": "por suerte",
+          "ex": "Luckily, I found my passport just before the flight.",
+          "level": "A2",
+          "from": "lucky",
+          "expr": false
+        },
+        {
+          "w": "frankly",
+          "es": "francamente",
+          "ex": "Frankly, I don't think this plan will work.",
+          "level": "B2",
+          "from": "frank",
+          "expr": false
+        },
+        {
+          "w": "honestly",
+          "es": "honestamente / la verdad",
+          "ex": "Honestly, I didn't like the movie very much.",
+          "level": "B1",
+          "from": "honest",
+          "expr": false
+        },
+        {
+          "w": "surprisingly",
+          "es": "sorprendentemente",
+          "ex": "Surprisingly, the cheap hotel was the best one.",
+          "level": "B1",
+          "from": "surprising",
+          "expr": false
+        },
+        {
+          "w": "hopefully",
+          "es": "ojalá / con suerte",
+          "ex": "Hopefully, the weather will be better tomorrow.",
+          "level": "B1",
+          "from": "hopeful",
+          "expr": false
+        },
+        {
+          "w": "apparently",
+          "es": "al parecer / según parece",
+          "ex": "Apparently, the concert has been postponed until May.",
+          "level": "B1",
+          "from": "apparent",
+          "expr": false
+        },
+        {
+          "w": "interestingly",
+          "es": "curiosamente / lo interesante es que",
+          "ex": "Interestingly, most of the students preferred paper books.",
+          "level": "B2",
+          "from": "interesting",
+          "expr": false
+        },
+        {
+          "w": "obviously",
+          "es": "obviamente",
+          "ex": "Obviously, you need a passport to travel abroad.",
+          "level": "B1",
+          "from": "obvious",
+          "expr": false
+        },
+        {
+          "w": "sadly",
+          "es": "tristemente / lamentablemente",
+          "ex": "Sadly, the old theater closed last year.",
+          "level": "B1",
+          "from": "sad",
+          "expr": false
+        },
+        {
+          "w": "naturally",
+          "es": "naturalmente / como es lógico",
+          "ex": "Naturally, the children were excited about the trip.",
+          "level": "B1",
+          "from": "natural",
+          "expr": false
+        },
+        {
+          "w": "personally",
+          "es": "personalmente",
+          "ex": "Personally, I prefer the beach to the mountains.",
+          "level": "B1",
+          "from": "personal",
+          "expr": false
+        },
+        {
+          "w": "strangely",
+          "es": "extrañamente",
+          "ex": "Strangely, nobody answered the phone at the office.",
+          "level": "B2",
+          "from": "strange",
+          "expr": false
+        },
+        {
+          "w": "amazingly",
+          "es": "increíblemente / asombrosamente",
+          "ex": "Amazingly, my grandfather's old car still works perfectly.",
+          "level": "B2",
+          "from": "amazing",
+          "expr": false
+        },
+        {
+          "w": "ideally",
+          "es": "idealmente / lo ideal sería",
+          "ex": "Ideally, you should sleep eight hours a night.",
+          "level": "B2",
+          "from": "ideal",
+          "expr": false
+        },
+        {
+          "w": "admittedly",
+          "es": "hay que admitir que",
+          "ex": "Admittedly, the hotel was expensive, but the service was excellent.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "thankfully",
+          "es": "afortunadamente / gracias a Dios",
+          "ex": "Thankfully, the rain stopped before the wedding.",
+          "level": "B2",
+          "from": "thankful",
+          "expr": false
+        },
+        {
+          "w": "seriously",
+          "es": "en serio",
+          "ex": "Seriously, you need to see a doctor about that cough.",
+          "level": "B1",
+          "from": "serious",
+          "expr": false
+        },
+        {
+          "w": "basically",
+          "es": "básicamente",
+          "ex": "Basically, the job involves answering customer emails.",
+          "level": "B1",
+          "from": "basic",
+          "expr": false
+        },
+        {
+          "w": "actually",
+          "es": "en realidad (no 'actualmente')",
+          "ex": "Actually, I'm from Pereira, not Manizales.",
+          "level": "A2",
+          "from": "actual",
+          "expr": false
+        },
+        {
+          "w": "ironically",
+          "es": "irónicamente",
+          "ex": "Ironically, the fire station burned down last night.",
+          "level": "C1",
+          "from": "ironic",
+          "expr": false
+        },
+        {
+          "w": "understandably",
+          "es": "comprensiblemente / con razón",
+          "ex": "Understandably, the passengers were angry about the delay.",
+          "level": "C1",
+          "from": "understandable",
+          "expr": false
+        },
+        {
+          "w": "oddly",
+          "es": "curiosamente / extrañamente",
+          "ex": "Oddly, the shop was empty on a Saturday afternoon.",
+          "level": "B2",
+          "from": "odd",
+          "expr": false
+        },
+        {
+          "w": "technically",
+          "es": "técnicamente",
+          "ex": "Technically, tomatoes are a fruit, not a vegetable.",
+          "level": "B2",
+          "from": "technical",
+          "expr": false
+        },
+        {
+          "w": "allegedly",
+          "es": "presuntamente",
+          "ex": "The politician allegedly accepted money from a construction company.",
+          "level": "C1",
+          "from": "alleged",
+          "expr": false
+        },
+        {
+          "w": "curiously",
+          "es": "curiosamente",
+          "ex": "Curiously, the dog didn't bark at the stranger.",
+          "level": "C1",
+          "from": "curious",
+          "expr": false
+        },
+        {
+          "w": "to be honest",
+          "es": "para ser honesto / la verdad",
+          "ex": "To be honest, I forgot to do the homework.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        }
+      ]
+    },
+    {
+      "id": "focusing",
+      "en": "Focusing adverbs",
+      "es": "Adverbios de enfoque",
+      "emoji": "🔦",
+      "color": "#F97316",
+      "q": "Which part? Exactly what?",
+      "q_es": "¿Qué parte en concreto?",
+      "rule_es": "Señalan o limitan la parte de la oración que es importante. Normalmente van antes del verbo principal o justo antes de la palabra que enfocan: 'Only students can enter', 'I eat mainly vegetables'. 'Too', 'as well' y 'either' van al final.",
+      "formation_es": "Algunos son palabras fijas (only, just, even, also). Otros son adjetivo + -ly (main → mainly, simple → simply, particular → particularly). 'Either' (tampoco) se usa solo en oraciones negativas; en afirmativas usa 'too' o 'as well'.",
+      "items": [
+        {
+          "w": "only",
+          "es": "solo / solamente",
+          "ex": "Only students can use the library on Sundays.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "just",
+          "es": "solo / simplemente",
+          "ex": "I just want a glass of water, thanks.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "even",
+          "es": "incluso / hasta",
+          "ex": "Even my grandmother uses WhatsApp now.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "also",
+          "es": "también",
+          "ex": "She speaks English, and she also speaks Portuguese.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "too",
+          "es": "también (al final de la oración)",
+          "ex": "I like salsa, and my friends like it too.",
+          "level": "A1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "as well",
+          "es": "también (al final de la oración)",
+          "ex": "Can I come to the party as well?",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "either",
+          "es": "tampoco (en negativas)",
+          "ex": "I don't like horror movies either.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "especially",
+          "es": "especialmente",
+          "ex": "I love fruit, especially mango with salt and lime.",
+          "level": "A2",
+          "from": "special",
+          "expr": false
+        },
+        {
+          "w": "particularly",
+          "es": "particularmente / en especial",
+          "ex": "The museum is particularly busy on Sundays.",
+          "level": "B1",
+          "from": "particular",
+          "expr": false
+        },
+        {
+          "w": "mainly",
+          "es": "principalmente",
+          "ex": "The students in this class are mainly from Bogotá.",
+          "level": "B1",
+          "from": "main",
+          "expr": false
+        },
+        {
+          "w": "mostly",
+          "es": "en su mayoría / mayormente",
+          "ex": "The audience was mostly teenagers and their parents.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "simply",
+          "es": "simplemente",
+          "ex": "I simply don't have time to go to the gym.",
+          "level": "B1",
+          "from": "simple",
+          "expr": false
+        },
+        {
+          "w": "merely",
+          "es": "meramente / solo",
+          "ex": "It was merely a suggestion, not an order.",
+          "level": "C1",
+          "from": "mere",
+          "expr": false
+        },
+        {
+          "w": "solely",
+          "es": "únicamente / exclusivamente",
+          "ex": "The decision was based solely on cost.",
+          "level": "C1",
+          "from": "sole",
+          "expr": false
+        },
+        {
+          "w": "purely",
+          "es": "puramente / pura y simplemente",
+          "ex": "We met purely by chance at the airport.",
+          "level": "B2",
+          "from": "pure",
+          "expr": false
+        },
+        {
+          "w": "primarily",
+          "es": "principalmente / ante todo",
+          "ex": "The course is primarily for adults who work.",
+          "level": "B2",
+          "from": "primary",
+          "expr": false
+        },
+        {
+          "w": "largely",
+          "es": "en gran parte (no 'largamente')",
+          "ex": "Despite a few problems, the project was largely successful.",
+          "level": "B2",
+          "from": "large",
+          "expr": false
+        },
+        {
+          "w": "exactly",
+          "es": "exactamente",
+          "ex": "That's exactly what I wanted to say.",
+          "level": "A2",
+          "from": "exact",
+          "expr": false
+        },
+        {
+          "w": "specifically",
+          "es": "específicamente",
+          "ex": "I specifically asked for a table near the window.",
+          "level": "B2",
+          "from": "specific",
+          "expr": false
+        },
+        {
+          "w": "chiefly",
+          "es": "principalmente",
+          "ex": "The town is known chiefly for its excellent coffee.",
+          "level": "C1",
+          "from": "chief",
+          "expr": false
+        },
+        {
+          "w": "alone",
+          "es": "solo / por sí solo",
+          "ex": "Tourism alone brings millions of dollars to the region.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "at least",
+          "es": "por lo menos / al menos",
+          "ex": "At least we didn't miss the flight.",
+          "level": "A2",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "exclusively",
+          "es": "exclusivamente",
+          "ex": "This offer is available exclusively to members.",
+          "level": "C1",
+          "from": "exclusive",
+          "expr": false
+        },
+        {
+          "w": "notably",
+          "es": "en particular / notablemente",
+          "ex": "Several cities, notably Bogotá, have built new bike lanes.",
+          "level": "C1",
+          "from": "notable",
+          "expr": false
+        },
+        {
+          "w": "in particular",
+          "es": "en particular",
+          "ex": "I enjoyed the concert, in particular the drums.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        }
+      ]
+    },
+    {
+      "id": "conjunctive",
+      "en": "Conjunctive adverbs",
+      "es": "Adverbios conjuntivos (conectores)",
+      "emoji": "🔗",
+      "color": "#14B8A6",
+      "q": "How does it connect?",
+      "q_es": "¿Cómo se conecta con lo anterior?",
+      "rule_es": "Conectan dos oraciones independientes mostrando su relación (contraste, resultado, adición...). Van al inicio de la segunda oración con coma, o después de punto y coma: '...; however, ...'. No pueden unir dos oraciones solo con una coma.",
+      "formation_es": "Muchos son palabras compuestas (how + ever, there + fore, never + the + less). Otros vienen de adjetivo + -ly (consequent → consequently, similar → similarly). Algunas son expresiones de varias palabras (in addition, as a result).",
+      "items": [
+        {
+          "w": "however",
+          "es": "sin embargo",
+          "ex": "The flight was cheap. However, it had two long stops.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "therefore",
+          "es": "por lo tanto",
+          "ex": "He was sick; therefore, he stayed at home.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "moreover",
+          "es": "además / es más",
+          "ex": "The apartment is spacious. Moreover, it has a great view.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "consequently",
+          "es": "por consiguiente / en consecuencia",
+          "ex": "It rained all night; consequently, the roads were flooded.",
+          "level": "B2",
+          "from": "consequent",
+          "expr": false
+        },
+        {
+          "w": "nevertheless",
+          "es": "sin embargo / no obstante",
+          "ex": "The task was difficult. Nevertheless, we finished on time.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "meanwhile",
+          "es": "mientras tanto",
+          "ex": "I'll cook dinner. Meanwhile, you can set the table.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "otherwise",
+          "es": "de lo contrario / si no",
+          "ex": "Wear a jacket; otherwise, you'll be cold tonight.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "furthermore",
+          "es": "además",
+          "ex": "The job pays well. Furthermore, it offers flexible hours.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "instead",
+          "es": "en cambio / en su lugar",
+          "ex": "We didn't go to the beach. Instead, we visited a museum.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "thus",
+          "es": "así / por lo tanto",
+          "ex": "The company cut costs and thus avoided bankruptcy.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "hence",
+          "es": "de ahí / por ende",
+          "ex": "He grew up in London, hence his British accent.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "besides",
+          "es": "además / aparte",
+          "ex": "I'm too tired to go out. Besides, it's raining.",
+          "level": "B1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "still",
+          "es": "aun así / sin embargo",
+          "ex": "The hotel was old. Still, it was clean and comfortable.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "likewise",
+          "es": "del mismo modo / lo mismo",
+          "ex": "My father became a doctor, and I plan to do likewise.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "similarly",
+          "es": "de manera similar / igualmente",
+          "ex": "Spanish comes from Latin. Similarly, Italian has Latin roots.",
+          "level": "B1",
+          "from": "similar",
+          "expr": false
+        },
+        {
+          "w": "accordingly",
+          "es": "en consecuencia / de acuerdo con eso",
+          "ex": "Prices went up, so we changed our budget accordingly.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "nonetheless",
+          "es": "no obstante",
+          "ex": "The exam was hard; nonetheless, she passed with a high score.",
+          "level": "C1",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "then",
+          "es": "entonces / en ese caso",
+          "ex": "If you're tired, then you should go to bed.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "indeed",
+          "es": "en efecto / de hecho",
+          "ex": "The plan was risky. Indeed, many experts were against it.",
+          "level": "B2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "subsequently",
+          "es": "posteriormente / después",
+          "ex": "He was arrested and subsequently released without charges.",
+          "level": "C1",
+          "from": "subsequent",
+          "expr": false
+        },
+        {
+          "w": "conversely",
+          "es": "a la inversa / por el contrario",
+          "ex": "Some people love the heat; conversely, others prefer the cold.",
+          "level": "C1",
+          "from": "converse",
+          "expr": false
+        },
+        {
+          "w": "incidentally",
+          "es": "por cierto / a propósito",
+          "ex": "Incidentally, have you seen my blue jacket anywhere?",
+          "level": "C1",
+          "from": "incidental",
+          "expr": false
+        },
+        {
+          "w": "anyway",
+          "es": "de todas formas / igual",
+          "ex": "It was expensive, but I bought it anyway.",
+          "level": "A2",
+          "from": "",
+          "expr": false
+        },
+        {
+          "w": "in addition",
+          "es": "además",
+          "ex": "The course is free. In addition, you get a certificate.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        },
+        {
+          "w": "as a result",
+          "es": "como resultado",
+          "ex": "He trained every day. As a result, he won the race.",
+          "level": "B1",
+          "from": "",
+          "expr": true
+        }
+      ]
+    }
+  ]
+}

@@ -14,21 +14,39 @@ import { useSettings } from '@/store/settings';
 import { speak, stopSpeaking } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { unitTitle } from '../learn/LevelPage';
+import { ListeningLibrary } from '@/features/library/ListeningLibrary';
+import { ExternalResources } from '@/features/library/ExternalResources';
+import { useSearchParams } from 'react-router-dom';
 
 export default function ListeningPage() {
-  const [tab, setTab] = useState<'dialogues' | 'months'>('dialogues');
+  const [tab, setTab] = useState<'library' | 'dialogues' | 'months'>('library');
+  const [params] = useSearchParams();
+  const inTrack = tab === 'library' && !!params.get('track');
   return (
-    <Page back={{ to: '/practice', label: 'Práctica' }} title="Listening" subtitle="Entrena el oído con diálogos, dictados y audios reales.">
-      <Segmented
-        value={tab}
-        onChange={setTab}
-        className="mb-5"
-        options={[
-          { value: 'dialogues', label: 'Diálogos y dictado' },
-          { value: 'months', label: 'Audio real · Meses' },
-        ]}
-      />
-      {tab === 'dialogues' ? <Dialogues /> : <Months />}
+    <Page back={{ to: '/practice', label: 'Práctica' }} title="Listening" subtitle="Entrena el oído con diálogos, entrevistas, podcasts y dictados." wide={tab === 'library'}>
+      {!inTrack && (
+        <div className="no-scrollbar mb-5 overflow-x-auto">
+          <Segmented
+            value={tab}
+            onChange={setTab}
+            options={[
+              { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'dialogues', label: 'Diálogos y dictado' },
+              { value: 'months', label: 'Audio real · Meses' },
+            ]}
+          />
+        </div>
+      )}
+      {tab === 'library' ? (
+        <>
+          <ListeningLibrary />
+          {!inTrack && <ExternalResources className="mt-8" />}
+        </>
+      ) : tab === 'dialogues' ? (
+        <Dialogues />
+      ) : (
+        <Months />
+      )}
     </Page>
   );
 }
