@@ -195,6 +195,21 @@ export const VISUALS: Visual[] = [
     ],
   },
   {
+    id: 'describing-problems',
+    title: 'Describing Problems',
+    titleEs: 'Daños y averías: participios como adjetivos, sustantivos, need + -ing / to be done y keep + -ing',
+    w: 1536,
+    h: 1024,
+    levels: ['B1'],
+    kind: 'grammar',
+    tags: ['describing problems', 'past participles as adjectives', 'need + gerund', 'need + passive infinitive', 'keep + gerund', 'broken', 'repairs'],
+    places: [
+      { unit: 'B1-6', section: 'grammar', focus: 'Describing problems with past participles as adjectives and with nouns' },
+      { unit: 'B1-6', section: 'overview' },
+      { module: 'verbs' },
+    ],
+  },
+  {
     id: 'physical-appearance',
     title: 'Physical Appearance Adjectives',
     titleEs: '42 formas de describir a una persona, con dibujos',
