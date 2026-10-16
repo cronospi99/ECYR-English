@@ -24,7 +24,10 @@ import {
 import { Card } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
 import { SpeakButton } from '@/components/learning/SpeakButton';
-import type { GrammarPoint } from '@/content/types';
+import type { CefrLevel, GrammarPoint } from '@/content/types';
+import { useAsync } from '@/hooks/useAsync';
+import { loadExplainers } from '@/content/explainers';
+import { ExplainerCard, type Explainer } from './Explainer';
 import { cutsFor } from '@/content/visuals';
 import { GrammarCuts } from '@/components/visuals/GrammarCuts';
 import { cn } from '@/lib/cn';
@@ -37,8 +40,9 @@ import { Clamp, Disclosure, Hl, Kicker, QuoteText, ink, tint } from './ui';
 // ------------------------------------------------------------------ tab ----
 
 /** Grammar tab body: a topic chooser (like the books' side menu) + one lesson at a time. */
-export function GrammarLessons({ points, color }: { points: GrammarPoint[]; color: string }) {
+export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoint[]; color: string; /** "A1-2": finds the visual explainers. */ unitKey?: string }) {
   const [active, setActive] = useState(0);
+  const { data: explainers } = useAsync(() => (unitKey ? loadExplainers(unitKey.split('-')[0] as CefrLevel) : Promise.resolve({} as Record<string, Explainer>)), [unitKey]);
   const base = useId();
   const i = Math.min(active, points.length - 1);
   const g = points[i];
@@ -83,6 +87,7 @@ export function GrammarLessons({ points, color }: { points: GrammarPoint[]; colo
           <motion.div key={g.name} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.2 }}>
             <GrammarLesson
               g={g}
+              explainer={explainers?.[`${unitKey}-${i}`]}
               index={i}
               total={points.length}
               color={color}
@@ -103,6 +108,7 @@ export function GrammarLessons({ points, color }: { points: GrammarPoint[]; colo
 
 export function GrammarLesson({
   g,
+  explainer,
   index,
   total,
   color,
@@ -110,6 +116,8 @@ export function GrammarLesson({
   onNext,
 }: {
   g: GrammarPoint;
+  /** Visual summary in Spanish; when present the lesson opens with it. */
+  explainer?: Explainer;
   index: number;
   total: number;
   color: string;
@@ -118,6 +126,8 @@ export function GrammarLesson({
 }) {
   const spec = useMemo(() => keySpec(g), [g]);
   const cuts = useMemo(() => cutsFor(g.name), [g.name]);
+  const [mode, setMode] = useLessonMode();
+  const visual = !!explainer && mode === 'visual';
   const summary = g.short || (g.rule ? firstSentence(g.rule, 110) : '');
 
   return (
@@ -140,7 +150,7 @@ export function GrammarLesson({
             <SpeakButton text={summary} size={16} />
           </div>
         )}
-        {g.rule && (
+        {g.rule && !visual && (
           <Clamp
             text={g.rule}
             lines={2}
@@ -150,6 +160,29 @@ export function GrammarLesson({
         )}
       </header>
 
+      {explainer && (
+        <div className="px-5 pt-1 sm:px-6">
+          <Segmented
+            size="sm"
+            value={mode}
+            onChange={setMode}
+            options={[
+              { value: 'visual', label: '🖼️ En imágenes' },
+              { value: 'full', label: '📖 Lección completa' },
+            ]}
+          />
+        </div>
+      )}
+      {visual ? (
+        <div className="space-y-6 px-5 pt-4 pb-6 sm:px-6">
+          <ExplainerCard e={explainer} color={color} />
+          <GrammarCuts cuts={cuts} color={color} />
+          <button type="button" onClick={() => setMode('full')} className="text-[14px] font-semibold" style={{ color: ink(color) }}>
+            ¿Quieres más detalle? Ver la lección completa →
+          </button>
+          {next && onNext && <NextPoint next={next} onNext={onNext} color={color} />}
+        </div>
+      ) : (
       <div className="space-y-7 px-5 pt-3 pb-6 sm:px-6">
         {g.form && g.form.length > 0 && <FormulaBlock form={g.form} spec={spec} color={color} />}
         <Examples g={g} spec={spec} color={color} />
@@ -177,23 +210,48 @@ export function GrammarLesson({
             </p>
           </Disclosure>
         )}
-        {next && onNext && (
-          <button
-            type="button"
-            onClick={onNext}
-            className="flex w-full items-center gap-3 rounded-[16px] p-4 text-left transition-opacity hover:opacity-90"
-            style={{ background: tint(color, 12) }}
-          >
-            <span className="min-w-0 flex-1">
-              <span className="text-label-2 block text-[12px] font-bold tracking-wide uppercase">Siguiente punto</span>
-              <span className="block truncate text-[16px] font-semibold">{next.name}</span>
-            </span>
-            <ChevronRight size={20} style={{ color }} aria-hidden />
-          </button>
-        )}
+        {next && onNext && <NextPoint next={next} onNext={onNext} color={color} />}
       </div>
+      )}
     </Card>
   );
+}
+
+function NextPoint({ next, onNext, color }: { next: GrammarPoint; onNext: () => void; color: string }) {
+  return (
+    <button
+      type="button"
+      onClick={onNext}
+      className="flex w-full items-center gap-3 rounded-[16px] p-4 text-left transition-opacity hover:opacity-90"
+      style={{ background: tint(color, 12) }}
+    >
+      <span className="min-w-0 flex-1">
+        <span className="text-label-2 block text-[12px] font-bold tracking-wide uppercase">Siguiente punto</span>
+        <span className="block truncate text-[16px] font-semibold">{next.name}</span>
+      </span>
+      <ChevronRight size={20} style={{ color }} aria-hidden />
+    </button>
+  );
+}
+
+/** Visual or full lesson, remembered across lessons (per device). */
+function useLessonMode() {
+  const [mode, setMode] = useState<'visual' | 'full'>(() => {
+    try {
+      return localStorage.getItem('ecyr:lesson-mode') === 'full' ? 'full' : 'visual';
+    } catch {
+      return 'visual';
+    }
+  });
+  const set = (m: 'visual' | 'full') => {
+    setMode(m);
+    try {
+      localStorage.setItem('ecyr:lesson-mode', m);
+    } catch {
+      /* storage unavailable */
+    }
+  };
+  return [mode, set] as const;
 }
 
 // ------------------------------------------------------------- examples ----
