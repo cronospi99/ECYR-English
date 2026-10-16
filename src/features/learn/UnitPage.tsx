@@ -111,7 +111,7 @@ export default function UnitPage() {
         )}
         {tab === 'grammar' && (
           <div className="space-y-5">
-            <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} />
+            <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} unitKey={`${meta.id}-${u.n}`} />
             <UnitVisuals unit={u} level={meta.id} section="grammar" />
             <UnitVerbTools unit={u} />
             <UnitGrammarTools unit={u} level={meta.id} />

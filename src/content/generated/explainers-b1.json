@@ -1,0 +1,2967 @@
+{
+ "B1-1-0": {
+  "icon": "🔗",
+  "purpose_es": "Para decir de qué persona o cosa hablas, sin repetir.",
+  "idea_es": "Une dos ideas con who (personas), which (cosas) o that (ambos). Si el pronombre es objeto de su cláusula, puedes quitarlo.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sustantivo",
+    "en": "The app"
+   },
+   {
+    "role": "connector",
+    "label_es": "pronombre relativo",
+    "en": "that"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "downloaded"
+   },
+   {
+    "role": "time",
+    "label_es": "tiempo",
+    "en": "yesterday"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo principal",
+    "en": "keeps crashing"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The app that I downloaded yesterday keeps crashing.",
+   "es": "La app que descargué ayer se cierra a cada rato."
+  },
+  "formula2": {
+   "title_es": "Sin pronombre (objeto)",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "loved"
+    },
+    {
+     "role": "object",
+     "label_es": "sustantivo",
+     "en": "the film"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "we"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "saw"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I loved the film we saw.",
+    "es": "Me encantó la película que vimos."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Identifica a la persona o cosa"
+  },
+  "compare": {
+   "es": "La canción que me gusta.",
+   "en": "The song that I like.",
+   "note_es": "En español 'que' sirve para todo; en inglés eliges who, which o that, y puedes omitirlo si es objeto."
+  },
+  "mistake": {
+   "wrong": "The song that I like it is great.",
+   "right": "The song that I like is great.",
+   "why_es": "El pronombre ya reemplaza al objeto: no repitas 'it'."
+  },
+  "tip_es": "Personas = who, cosas = which, todo = that. Si después viene otro sujeto (I, we, she...), puedes borrarlo."
+ },
+ "B1-1-1": {
+  "icon": "😤",
+  "purpose_es": "Para decir cómo te hace sentir una situación.",
+  "idea_es": "Empieza con tu reacción (It bothers me / It's frustrating) y después explica la situación con when + presente simple.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto vacío",
+    "en": "It"
+   },
+   {
+    "role": "verb",
+    "label_es": "reacción",
+    "en": "really bothers"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "me"
+   },
+   {
+    "role": "connector",
+    "label_es": "cuando",
+    "en": "when"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "people"
+   },
+   {
+    "role": "verb",
+    "label_es": "situación",
+    "en": "talk during films"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "It really bothers me when people talk during films.",
+   "es": "Me molesta mucho cuando la gente habla durante las películas."
+  },
+  "formula2": {
+   "title_es": "Con adjetivo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "it + be",
+     "en": "It's"
+    },
+    {
+     "role": "adjective",
+     "label_es": "adjetivo",
+     "en": "frustrating"
+    },
+    {
+     "role": "connector",
+     "label_es": "cuando",
+     "en": "when"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "nobody"
+    },
+    {
+     "role": "verb",
+     "label_es": "presente simple",
+     "en": "replies"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "It's frustrating when nobody replies.",
+    "es": "Es frustrante cuando nadie responde."
+   }
+  },
+  "timeline": {
+   "type": "habit",
+   "label_es": "Cada vez que pasa, me molesta"
+  },
+  "compare": {
+   "es": "Me molesta cuando llegan tarde.",
+   "en": "It bothers me when people arrive late.",
+   "note_es": "En español no hace falta sujeto; en inglés necesitas 'It' al inicio como sujeto vacío."
+  },
+  "mistake": {
+   "wrong": "Bothers me when people are late.",
+   "right": "It bothers me when people are late.",
+   "why_es": "El inglés siempre necesita sujeto: empieza con 'It'."
+  },
+  "tip_es": "Primero la emoción, después el 'when'. Y el 'It' nunca se queda por fuera."
+ },
+ "B1-2-0": {
+  "icon": "🏃",
+  "purpose_es": "Para usar una acción como si fuera un sustantivo.",
+  "idea_es": "El verbo con -ing funciona como un nombre: puede ser sujeto, objeto o ir después de una preposición. Como sujeto, lleva verbo en singular.",
+  "formula": [
+   {
+    "role": "noun",
+    "label_es": "gerundio (-ing)",
+    "en": "Learning"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "a language"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo singular",
+    "en": "takes"
+   },
+   {
+    "role": "complement",
+    "label_es": "complemento",
+    "en": "patience"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "Learning a language takes patience.",
+   "es": "Aprender un idioma requiere paciencia."
+  },
+  "formula2": {
+   "title_es": "Después de preposición",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "She"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "succeeded"
+    },
+    {
+     "role": "particle",
+     "label_es": "preposición",
+     "en": "in"
+    },
+    {
+     "role": "verb",
+     "label_es": "gerundio (-ing)",
+     "en": "persuading"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the whole team"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "She succeeded in persuading the whole team.",
+    "es": "Ella logró convencer a todo el equipo."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "La acción funciona como sustantivo"
+  },
+  "compare": {
+   "es": "Aprender inglés es divertido.",
+   "en": "Learning English is fun.",
+   "note_es": "En español el sujeto es un infinitivo (aprender); en inglés, lo natural es la forma -ing."
+  },
+  "mistake": {
+   "wrong": "Learn English is fun.",
+   "right": "Learning English is fun.",
+   "why_es": "Como sujeto, la acción va en -ing, no en forma base."
+  },
+  "tip_es": "Si en español el infinitivo es sujeto o va tras preposición (de, en, sin), en inglés casi siempre es -ing."
+ },
+ "B1-2-1": {
+  "icon": "⚖️",
+  "purpose_es": "Para comparar cosas, cantidades y acciones.",
+  "idea_es": "Adjetivos: -er o more. Sustantivos: more, fewer (contables) o less (incontables). Verbos: more / less o -er después del verbo.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "This engine"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "uses"
+   },
+   {
+    "role": "noun",
+    "label_es": "less + incontable",
+    "en": "less fuel"
+   },
+   {
+    "role": "connector",
+    "label_es": "que",
+    "en": "than"
+   },
+   {
+    "role": "object",
+    "label_es": "lo comparado",
+    "en": "the old one"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "This engine uses less fuel than the old one.",
+   "es": "Este motor usa menos combustible que el viejo."
+  },
+  "formula2": {
+   "title_es": "Con un verbo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "She"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "works"
+    },
+    {
+     "role": "complement",
+     "label_es": "comparativo",
+     "en": "harder"
+    },
+    {
+     "role": "connector",
+     "label_es": "que",
+     "en": "than"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto + aux",
+     "en": "I do"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "She works harder than I do.",
+    "es": "Ella trabaja más duro que yo."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Comparar dos cosas"
+  },
+  "compare": {
+   "es": "Hay menos personas y menos ruido.",
+   "en": "There are fewer people and less noise.",
+   "note_es": "En español 'menos' sirve para todo; en inglés: fewer con contables y less con incontables."
+  },
+  "mistake": {
+   "wrong": "This model is more cheap than that one.",
+   "right": "This model is cheaper than that one.",
+   "why_es": "Los adjetivos cortos llevan -er, no more."
+  },
+  "tip_es": "Si lo puedes contar, fewer; si no, less. Adjetivo corto: -er. Participio: more relaxed, nunca relaxeder."
+ },
+ "B1-3-0": {
+  "icon": "🙏",
+  "purpose_es": "Para pedir favores o permiso con cortesía.",
+  "idea_es": "Can es directo; could y would son más amables. Would you mind + -ing es lo más indirecto y educado.",
+  "formula": [
+   {
+    "role": "modal",
+    "label_es": "would",
+    "en": "Would"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "you"
+   },
+   {
+    "role": "verb",
+    "label_es": "mind",
+    "en": "mind"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "giving"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "me a hand"
+   },
+   {
+    "role": "end",
+    "label_es": "interrogación",
+    "en": "?"
+   }
+  ],
+  "example": {
+   "en": "Would you mind giving me a hand?",
+   "es": "¿Te importaría echarme una mano?"
+  },
+  "formula2": {
+   "title_es": "Pedir permiso",
+   "parts": [
+    {
+     "role": "question",
+     "label_es": "¿te importa?",
+     "en": "Do you mind"
+    },
+    {
+     "role": "connector",
+     "label_es": "si",
+     "en": "if"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "join"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "you"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "Do you mind if I join you?",
+    "es": "¿Te importa si te acompaño?"
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Más indirecto = más amable"
+  },
+  "compare": {
+   "es": "¿Te importaría esperar?",
+   "en": "Would you mind waiting?",
+   "note_es": "Funciona como 'te importaría', pero en inglés el verbo va en -ing: mind waiting."
+  },
+  "mistake": {
+   "wrong": "Would you mind to wait a moment?",
+   "right": "Would you mind waiting a moment?",
+   "why_es": "Después de mind, el verbo siempre va en -ing."
+  },
+  "tip_es": "Si te responden 'Not at all' a 'Would you mind...?', ¡te dijeron que sí! Significa 'para nada me molesta'."
+ },
+ "B1-3-1": {
+  "icon": "🎁",
+  "purpose_es": "Para hacer preguntas de forma más amable.",
+  "idea_es": "Envuelve la pregunta con Could you tell me / Do you know... Adentro va orden de afirmación: sujeto + verbo, sin do, does ni did.",
+  "formula": [
+   {
+    "role": "question",
+    "label_es": "introducción",
+    "en": "Could you tell me"
+   },
+   {
+    "role": "question",
+    "label_es": "palabra wh-",
+    "en": "where"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "the meeting room"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "is"
+   },
+   {
+    "role": "end",
+    "label_es": "interrogación",
+    "en": "?"
+   }
+  ],
+  "example": {
+   "en": "Could you tell me where the meeting room is?",
+   "es": "¿Podrías decirme dónde está la sala de reuniones?"
+  },
+  "formula2": {
+   "title_es": "Pregunta de sí o no",
+   "parts": [
+    {
+     "role": "question",
+     "label_es": "introducción",
+     "en": "Do you know"
+    },
+    {
+     "role": "connector",
+     "label_es": "si",
+     "en": "if"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "the shop"
+    },
+    {
+     "role": "be",
+     "label_es": "be",
+     "en": "is"
+    },
+    {
+     "role": "adjective",
+     "label_es": "adjetivo",
+     "en": "open"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "Do you know if the shop is open?",
+    "es": "¿Sabes si la tienda está abierta?"
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Una pregunta dentro de otra"
+  },
+  "compare": {
+   "es": "¿Sabes a qué hora sale el último bus?",
+   "en": "Do you know what time the last bus leaves?",
+   "note_es": "En la pregunta indirecta desaparece does: 'what time the last bus leaves', no 'what time does the last bus leave'."
+  },
+  "mistake": {
+   "wrong": "Could you tell me where is the station?",
+   "right": "Could you tell me where the station is?",
+   "why_es": "Después de la introducción va orden de afirmación: sujeto + verbo."
+  },
+  "tip_es": "La pregunta ya está en 'Could you tell me...?', así que lo que sigue se escribe como una frase normal."
+ },
+ "B1-4-0": {
+  "icon": "🎬",
+  "purpose_es": "Para contar una acción en progreso que fue interrumpida.",
+  "idea_es": "Was / were + -ing es el fondo: algo que estaba pasando. El pasado simple es el evento corto que lo interrumpe.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "aux",
+    "label_es": "was / were",
+    "en": "was"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "cooking"
+   },
+   {
+    "role": "connector",
+    "label_es": "cuando",
+    "en": "when"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "the alarm"
+   },
+   {
+    "role": "verb",
+    "label_es": "pasado simple",
+    "en": "went off"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I was cooking when the alarm went off.",
+   "es": "Estaba cocinando cuando sonó la alarma."
+  },
+  "formula2": {
+   "title_es": "Pregunta",
+   "parts": [
+    {
+     "role": "question",
+     "label_es": "pregunta",
+     "en": "What"
+    },
+    {
+     "role": "aux",
+     "label_es": "was / were",
+     "en": "were"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "you"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo -ing",
+     "en": "doing"
+    },
+    {
+     "role": "time",
+     "label_es": "momento",
+     "en": "when the power went out"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "What were you doing when the power went out?",
+    "es": "¿Qué estabas haciendo cuando se fue la luz?"
+   }
+  },
+  "timeline": {
+   "type": "past-span",
+   "label_es": "Acción en progreso + algo que la interrumpe"
+  },
+  "compare": {
+   "es": "Estaba cocinando cuando sonó el teléfono.",
+   "en": "I was cooking when the phone rang.",
+   "note_es": "Igual que en español: 'estaba + -ando' = was / were + -ing, y el pretérito interrumpe."
+  },
+  "mistake": {
+   "wrong": "I cooked when the phone rang.",
+   "right": "I was cooking when the phone rang.",
+   "why_es": "'Cocinaba' (en progreso) es was cooking; 'I cooked' significa que cocinaste después."
+  },
+  "tip_es": "Piensa en una película: was / were + -ing es el escenario; el pasado simple es la escena que lo interrumpe."
+ },
+ "B1-4-1": {
+  "icon": "⏮️",
+  "purpose_es": "Para contar qué pasó antes de otra acción en el pasado.",
+  "idea_es": "Cuando cuentas una historia en pasado y quieres ir más atrás, usas had + participio para la acción que pasó primero.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The ship"
+   },
+   {
+    "role": "verb",
+    "label_es": "had + participio",
+    "en": "had already left"
+   },
+   {
+    "role": "connector",
+    "label_es": "cuando",
+    "en": "when"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "we"
+   },
+   {
+    "role": "verb",
+    "label_es": "pasado simple",
+    "en": "arrived"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The ship had already left when we arrived.",
+   "es": "El barco ya había salido cuando llegamos."
+  },
+  "formula2": {
+   "title_es": "Negativa",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "They"
+    },
+    {
+     "role": "neg",
+     "label_es": "had + not",
+     "en": "hadn't"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "told"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "anyone"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "They hadn't told anyone.",
+    "es": "No le habían dicho a nadie."
+   }
+  },
+  "timeline": {
+   "type": "past-before-past",
+   "label_es": "Primero salió el barco, después llegamos"
+  },
+  "compare": {
+   "es": "Ya había comido.",
+   "en": "I had already eaten.",
+   "note_es": "Funciona como el pluscuamperfecto: había + participio = had + participio."
+  },
+  "mistake": {
+   "wrong": "When we arrived, the ship already left.",
+   "right": "When we arrived, the ship had already left.",
+   "why_es": "Lo que pasó primero va en past perfect: had + participio."
+  },
+  "tip_es": "Piensa en 'había': si en español dices 'había...', en inglés casi siempre es had + participio."
+ },
+ "B1-5-0": {
+  "icon": "🧩",
+  "purpose_es": "Para nombrar algo complejo en un solo bloque.",
+  "idea_es": "Sustantivo + who / that + cláusula forma un solo bloque que funciona como sujeto u objeto. El verbo concuerda con el sustantivo principal.",
+  "formula": [
+   {
+    "role": "noun",
+    "label_es": "sustantivo principal",
+    "en": "The people"
+   },
+   {
+    "role": "connector",
+    "label_es": "pronombre",
+    "en": "who"
+   },
+   {
+    "role": "verb",
+    "label_es": "cláusula",
+    "en": "arrive first"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo principal",
+    "en": "usually get"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "the best seats"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The people who arrive first usually get the best seats.",
+   "es": "Las personas que llegan primero normalmente consiguen los mejores puestos."
+  },
+  "formula2": {
+   "title_es": "Como objeto",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "avoid"
+    },
+    {
+     "role": "noun",
+     "label_es": "sustantivo principal",
+     "en": "the kind of restaurant"
+    },
+    {
+     "role": "connector",
+     "label_es": "pronombre",
+     "en": "that"
+    },
+    {
+     "role": "complement",
+     "label_es": "cláusula",
+     "en": "has photos on the menu"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I avoid the kind of restaurant that has photos on the menu.",
+    "es": "Evito el tipo de restaurante que tiene fotos en el menú."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Un bloque grande = un sustantivo"
+  },
+  "compare": {
+   "es": "La lista de reglas que llegó es larga.",
+   "en": "The list of rules that arrived is long.",
+   "note_es": "Como en español, el verbo concuerda con 'la lista' (singular), no con 'reglas'."
+  },
+  "mistake": {
+   "wrong": "The list of rules that arrived are long.",
+   "right": "The list of rules that arrived is long.",
+   "why_es": "El verbo concuerda con el sustantivo principal: the list = is."
+  },
+  "tip_es": "Pon el bloque entre corchetes: [the kind of behaviour that annoys people] is... El verbo principal va después."
+ },
+ "B1-5-1": {
+  "icon": "👞",
+  "purpose_es": "Para hablar de lo que se espera según las costumbres.",
+  "idea_es": "It's the custom to = tradición. Be supposed to / be expected to = lo que se espera de alguien. It's (not) acceptable to = si está bien visto.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto + be",
+    "en": "You're"
+   },
+   {
+    "role": "modal",
+    "label_es": "se supone",
+    "en": "supposed to"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo base",
+    "en": "take off"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "your shoes"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "You're supposed to take off your shoes.",
+   "es": "Se supone que debes quitarte los zapatos."
+  },
+  "formula2": {
+   "title_es": "Costumbre",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "it + be",
+     "en": "It's"
+    },
+    {
+     "role": "noun",
+     "label_es": "costumbre",
+     "en": "the custom"
+    },
+    {
+     "role": "particle",
+     "label_es": "to",
+     "en": "to"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo base",
+     "en": "take"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "a small gift"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "It's the custom to take a small gift.",
+    "es": "Es costumbre llevar un pequeño regalo."
+   }
+  },
+  "timeline": {
+   "type": "habit",
+   "label_es": "Lo que normalmente se espera"
+  },
+  "compare": {
+   "es": "Se supone que llegamos a las ocho.",
+   "en": "We're supposed to arrive at eight.",
+   "note_es": "'Se supone que' = be supposed to. Ojo: 'I was supposed to' suele significar que no lo hiciste."
+  },
+  "mistake": {
+   "wrong": "You are suppose to arrive early.",
+   "right": "You're supposed to arrive early.",
+   "why_es": "Siempre es supposed, con -d, aunque casi no se escuche."
+  },
+  "tip_es": "Piensa en 'se supone que' = supposed to. Si sí lo hiciste por obligación, usa 'had to'."
+ },
+ "B1-6-0": {
+  "icon": "🛠️",
+  "purpose_es": "Para describir daños y fallas en objetos.",
+  "idea_es": "Hay dos caminos: participio como adjetivo (The screen is cracked) o un sustantivo que nombra el problema (There's a crack in the screen).",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The screen"
+   },
+   {
+    "role": "be",
+    "label_es": "be",
+    "en": "is"
+   },
+   {
+    "role": "adjective",
+    "label_es": "participio",
+    "en": "cracked"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The screen is cracked.",
+   "es": "La pantalla está agrietada."
+  },
+  "formula2": {
+   "title_es": "Con sustantivo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "hay",
+     "en": "There's"
+    },
+    {
+     "role": "noun",
+     "label_es": "problema",
+     "en": "a crack"
+    },
+    {
+     "role": "place",
+     "label_es": "lugar",
+     "en": "in the screen"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "There's a crack in the screen.",
+    "es": "Hay una grieta en la pantalla."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "El estado del objeto"
+  },
+  "compare": {
+   "es": "La silla está rota.",
+   "en": "The chair is broken.",
+   "note_es": "Como en español: estar + participio = be + participio. Ojo con los irregulares: broken, torn, bent, worn."
+  },
+  "mistake": {
+   "wrong": "The screen is breaked.",
+   "right": "The screen is broken.",
+   "why_es": "Usa el participio irregular correcto: broken, torn, worn, bent."
+  },
+  "tip_es": "Si en español dices 'está + -ado / -ido', en inglés es is + participio. Aprende los irregulares en grupo."
+ },
+ "B1-6-1": {
+  "icon": "🔧",
+  "purpose_es": "Para decir que algo necesita arreglo o falla una y otra vez.",
+  "idea_es": "Needs fixing = needs to be fixed: la cosa es el sujeto. Keeps + -ing describe un problema que se repite.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The filter"
+   },
+   {
+    "role": "verb",
+    "label_es": "need(s)",
+    "en": "needs"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "replacing"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The filter needs replacing.",
+   "es": "Hay que cambiar el filtro."
+  },
+  "formula2": {
+   "title_es": "Problema repetido",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "The display"
+    },
+    {
+     "role": "verb",
+     "label_es": "keep(s)",
+     "en": "keeps"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo -ing",
+     "en": "freezing"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "The display keeps freezing.",
+    "es": "La pantalla se congela a cada rato."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Lo que la cosa necesita"
+  },
+  "compare": {
+   "es": "Hay que cambiar el filtro.",
+   "en": "The filter needs to be replaced.",
+   "note_es": "En español dices 'hay que...'; en inglés la cosa es el sujeto: needs replacing o needs to be replaced."
+  },
+  "mistake": {
+   "wrong": "The filter needs to replace.",
+   "right": "The filter needs replacing.",
+   "why_es": "El filtro no cambia nada: usa needs replacing o needs to be replaced."
+  },
+  "tip_es": "Keep + -ing = 'a cada rato': It keeps crashing = se cae a cada rato."
+ },
+ "B1-7-0": {
+  "icon": "🏗️",
+  "purpose_es": "Para decir qué se está haciendo o qué ya se hizo.",
+  "idea_es": "Is / are being + participio = trabajo en progreso. Has / have been + participio = ya terminado. Because of / due to + sustantivo da la causa.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The navigation module"
+   },
+   {
+    "role": "be",
+    "label_es": "is / are",
+    "en": "is"
+   },
+   {
+    "role": "aux",
+    "label_es": "being",
+    "en": "being"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "replaced"
+   },
+   {
+    "role": "connector",
+    "label_es": "por",
+    "en": "because of"
+   },
+   {
+    "role": "noun",
+    "label_es": "causa",
+    "en": "a fault"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The navigation module is being replaced because of a fault.",
+   "es": "Están cambiando el módulo de navegación por una falla."
+  },
+  "formula2": {
+   "title_es": "Ya terminado",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "Three panels"
+    },
+    {
+     "role": "aux",
+     "label_es": "has / have",
+     "en": "have"
+    },
+    {
+     "role": "be",
+     "label_es": "been",
+     "en": "been"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "replaced"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "Three panels have been replaced.",
+    "es": "Ya se cambiaron tres paneles."
+   }
+  },
+  "timeline": {
+   "type": "now",
+   "label_es": "Ahora mismo lo están cambiando"
+  },
+  "compare": {
+   "es": "Están reparando el casco.",
+   "en": "The hull is being repaired.",
+   "note_es": "En español dices 'están reparando'; en inglés la cosa pasa a ser el sujeto: is being repaired."
+  },
+  "mistake": {
+   "wrong": "The report has being signed.",
+   "right": "The report has been signed.",
+   "why_es": "Después de has / have va been, no being."
+  },
+  "tip_es": "El tiempo vive en 'be': is being = ahora, has been = ya. El participio nunca cambia."
+ },
+ "B1-7-1": {
+  "icon": "🎯",
+  "purpose_es": "Para decir para qué haces algo.",
+  "idea_es": "To + verbo responde '¿para qué?'. In order to / so as to son más formales. También va después de adjetivos y sustantivos: the first to arrive.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "We"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "closed"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "the bay"
+   },
+   {
+    "role": "particle",
+    "label_es": "para",
+    "en": "to"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo base",
+    "en": "carry out"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "repairs"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "We closed the bay to carry out repairs.",
+   "es": "Cerramos la bahía para hacer reparaciones."
+  },
+  "formula2": {
+   "title_es": "Después de adjetivo o sustantivo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "She"
+    },
+    {
+     "role": "be",
+     "label_es": "be",
+     "en": "was"
+    },
+    {
+     "role": "noun",
+     "label_es": "sustantivo",
+     "en": "the first"
+    },
+    {
+     "role": "particle",
+     "label_es": "to",
+     "en": "to"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo base",
+     "en": "notice"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "She was the first to notice.",
+    "es": "Ella fue la primera en darse cuenta."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "La razón de la acción"
+  },
+  "compare": {
+   "es": "Llamé para confirmar.",
+   "en": "I called to confirm.",
+   "note_es": "Tu 'para + infinitivo' es solo to + verbo. No uses 'for' para propósito."
+  },
+  "mistake": {
+   "wrong": "I called for confirm the time.",
+   "right": "I called to confirm the time.",
+   "why_es": "Para un propósito con verbo usa to, no for."
+  },
+  "tip_es": "¿Para qué? = to. Negativo formal: in order not to / so as not to, nunca 'to not'."
+ },
+ "B1-8-0": {
+  "icon": "🔀",
+  "purpose_es": "Para decir qué prefieres hacer.",
+  "idea_es": "I'd rather + verbo base (+ than). I'd prefer + to + verbo. Para lo que haga otra persona: I'd rather you + pasado.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "yo + would",
+    "en": "I'd"
+   },
+   {
+    "role": "modal",
+    "label_es": "preferiría",
+    "en": "rather"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo base",
+    "en": "walk"
+   },
+   {
+    "role": "connector",
+    "label_es": "que",
+    "en": "than"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo base",
+    "en": "drive"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I'd rather walk than drive.",
+   "es": "Prefiero caminar que manejar."
+  },
+  "formula2": {
+   "title_es": "Con prefer",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "yo + would",
+     "en": "I'd"
+    },
+    {
+     "role": "verb",
+     "label_es": "preferiría",
+     "en": "prefer"
+    },
+    {
+     "role": "particle",
+     "label_es": "to",
+     "en": "to"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo base",
+     "en": "stay"
+    },
+    {
+     "role": "place",
+     "label_es": "lugar",
+     "en": "here"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I'd prefer to stay here.",
+    "es": "Preferiría quedarme aquí."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Elegir entre dos opciones"
+  },
+  "compare": {
+   "es": "Prefiero el té al café.",
+   "en": "I'd prefer tea to coffee.",
+   "note_es": "Con prefer la comparación usa 'to', parecido a tu 'al'. Con rather, usa 'than'."
+  },
+  "mistake": {
+   "wrong": "I prefer stay here than go out.",
+   "right": "I'd rather stay here than go out.",
+   "why_es": "Rather + verbo base + than; prefer + to + verbo. Nunca 'prefer than'."
+  },
+  "tip_es": "Rather va con than (las dos tienen 'th'); prefer va con to."
+ },
+ "B1-8-1": {
+  "icon": "🔑",
+  "purpose_es": "Para explicar cómo logras un resultado.",
+  "idea_es": "By + -ing responde '¿cómo?': nombra la acción que produce el resultado. With + sustantivo nombra la herramienta.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "You"
+   },
+   {
+    "role": "verb",
+    "label_es": "resultado",
+    "en": "can save"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "fuel"
+   },
+   {
+    "role": "connector",
+    "label_es": "by (método)",
+    "en": "by"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "flying"
+   },
+   {
+    "role": "complement",
+    "label_es": "complemento",
+    "en": "lower"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "You can save fuel by flying lower.",
+   "es": "Puedes ahorrar combustible volando más bajo."
+  },
+  "formula2": {
+   "title_es": "By al inicio",
+   "parts": [
+    {
+     "role": "connector",
+     "label_es": "by (método)",
+     "en": "By"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo -ing",
+     "en": "checking"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the log"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "you"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "avoid"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "repeating the test"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "By checking the log, you avoid repeating the test.",
+    "es": "Revisando el registro, evitas repetir la prueba."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "El método para lograrlo"
+  },
+  "compare": {
+   "es": "Aprendí inglés viendo series.",
+   "en": "I learned English by watching TV shows.",
+   "note_es": "Tu gerundio de método (viendo, haciendo) se dice by + -ing."
+  },
+  "mistake": {
+   "wrong": "You can improve by speak every day.",
+   "right": "You can improve by speaking every day.",
+   "why_es": "Después de by, siempre -ing."
+  },
+  "tip_es": "Si en español dices 'haciendo X logré Y', en inglés es 'by doing X'."
+ },
+ "B1-9-0": {
+  "icon": "💇",
+  "purpose_es": "Para decir que otra persona hizo un trabajo por ti.",
+  "idea_es": "Have / get + objeto + participio: tú lo pides y otro lo hace. Normalmente no se dice quién lo hizo.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "verb",
+    "label_es": "have / get",
+    "en": "had"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "my car"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "repaired"
+   },
+   {
+    "role": "time",
+    "label_es": "tiempo",
+    "en": "last week"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I had my car repaired last week.",
+   "es": "Mandé a arreglar mi carro la semana pasada."
+  },
+  "formula2": {
+   "title_es": "Pregunta",
+   "parts": [
+    {
+     "role": "aux",
+     "label_es": "have",
+     "en": "Have"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "you"
+    },
+    {
+     "role": "verb",
+     "label_es": "have / get",
+     "en": "had"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the brakes"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "checked"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "Have you had the brakes checked?",
+    "es": "¿Ya mandaste a revisar los frenos?"
+   }
+  },
+  "timeline": {
+   "type": "past-point",
+   "label_es": "Tú lo pediste, otra persona lo hizo"
+  },
+  "compare": {
+   "es": "Me corté el pelo.",
+   "en": "I had my hair cut.",
+   "note_es": "En español dices 'me corté el pelo' aunque lo hizo otro; en inglés eso es have / get + objeto + participio."
+  },
+  "mistake": {
+   "wrong": "I cut my hair yesterday.",
+   "right": "I had my hair cut yesterday.",
+   "why_es": "'I cut my hair' significa que tú mismo te lo cortaste."
+  },
+  "tip_es": "¿Pagaste a alguien para hacerlo? Usa had / got + cosa + participio. Piensa en 'mandé a arreglar'."
+ },
+ "B1-9-1": {
+  "icon": "💡",
+  "purpose_es": "Para proponer ideas de forma natural.",
+  "idea_es": "We could + verbo propone. How about + -ing propone una actividad. Why don't we + verbo base invita a aceptar. It might be better to suena impersonal.",
+  "formula": [
+   {
+    "role": "question",
+    "label_es": "¿qué tal...?",
+    "en": "How about"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "getting"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "a second quote"
+   },
+   {
+    "role": "end",
+    "label_es": "interrogación",
+    "en": "?"
+   }
+  ],
+  "example": {
+   "en": "How about getting a second quote?",
+   "es": "¿Qué tal si pedimos otra cotización?"
+  },
+  "formula2": {
+   "title_es": "Pregunta negativa",
+   "parts": [
+    {
+     "role": "question",
+     "label_es": "¿por qué no...?",
+     "en": "Why don't we"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo base",
+     "en": "ask"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "them"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "Why don't we ask them?",
+    "es": "¿Por qué no les preguntamos?"
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Proponer algo para hacer"
+  },
+  "compare": {
+   "es": "¿Por qué no lo mandamos a revisar?",
+   "en": "Why don't we have it checked?",
+   "note_es": "'¿Por qué no...?' funciona igual en inglés, con verbo base y sin to."
+  },
+  "mistake": {
+   "wrong": "I suggest us to ask them.",
+   "right": "I suggest asking them.",
+   "why_es": "Suggest nunca va con 'us to': usa suggest + -ing o suggest (that) we ask."
+  },
+  "tip_es": "How about + -ing; Why don't we + verbo base. ¡No los mezcles!"
+ },
+ "B1-10-0": {
+  "icon": "🔮",
+  "purpose_es": "Para predecir el futuro y hablar de metas con fecha.",
+  "idea_es": "Will = predicción. Will be + -ing = algo en progreso en un momento futuro. Will have + participio = terminado antes de una fecha.",
+  "formula": [
+   {
+    "role": "time",
+    "label_es": "momento futuro",
+    "en": "This time tomorrow"
+   },
+   {
+    "role": "subject",
+    "label_es": "yo + will",
+    "en": "I'll"
+   },
+   {
+    "role": "be",
+    "label_es": "be",
+    "en": "be"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo -ing",
+    "en": "flying"
+   },
+   {
+    "role": "place",
+    "label_es": "lugar",
+    "en": "to Bogotá"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "This time tomorrow I'll be flying to Bogotá.",
+   "es": "Mañana a esta hora estaré volando a Bogotá."
+  },
+  "formula2": {
+   "title_es": "Terminado antes de una fecha",
+   "parts": [
+    {
+     "role": "time",
+     "label_es": "fecha límite",
+     "en": "By December"
+    },
+    {
+     "role": "subject",
+     "label_es": "yo + will",
+     "en": "I'll"
+    },
+    {
+     "role": "aux",
+     "label_es": "have",
+     "en": "have"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "finished"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the course"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "By December I'll have finished the course.",
+    "es": "Para diciembre ya habré terminado el curso."
+   }
+  },
+  "timeline": {
+   "type": "future-point",
+   "label_es": "Mañana a esta hora: en pleno vuelo"
+  },
+  "compare": {
+   "es": "Para junio ya habré terminado.",
+   "en": "By June I'll have finished.",
+   "note_es": "Igual que 'habré + participio': will have + participio. 'Para' + fecha = by."
+  },
+  "mistake": {
+   "wrong": "By the time you will arrive, we'll have started.",
+   "right": "By the time you arrive, we'll have started.",
+   "why_es": "Después de by the time o when va presente, no will."
+  },
+  "tip_es": "By + fecha casi siempre pide will have + participio: 'para entonces ya habré...'."
+ },
+ "B1-10-1": {
+  "icon": "📅",
+  "purpose_es": "Para ubicar en el tiempo eventos del pasado.",
+  "idea_es": "In + año / mes, on + día, during + período, ago va al final. For = duración. Since = punto de inicio, con present perfect.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "verb",
+    "label_es": "pasado simple",
+    "en": "left"
+   },
+   {
+    "role": "time",
+    "label_es": "duración",
+    "en": "two years"
+   },
+   {
+    "role": "time",
+    "label_es": "hace",
+    "en": "ago"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I left two years ago.",
+   "es": "Me fui hace dos años."
+  },
+  "formula2": {
+   "title_es": "Desde (since)",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "yo + have",
+     "en": "I've"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "worked"
+    },
+    {
+     "role": "place",
+     "label_es": "lugar",
+     "en": "here"
+    },
+    {
+     "role": "connector",
+     "label_es": "desde",
+     "en": "since"
+    },
+    {
+     "role": "time",
+     "label_es": "punto de inicio",
+     "en": "March"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I've worked here since March.",
+    "es": "Trabajo aquí desde marzo."
+   }
+  },
+  "timeline": {
+   "type": "past-point",
+   "label_es": "Hace dos años: un punto en el pasado"
+  },
+  "compare": {
+   "es": "Vivo aquí desde hace seis años.",
+   "en": "I've lived here for six years.",
+   "note_es": "'Desde hace' + duración es for + present perfect. En inglés no se dice 'I live here since...'."
+  },
+  "mistake": {
+   "wrong": "I live here since two years ago.",
+   "right": "I've lived here for two years.",
+   "why_es": "For + duración, since + punto de inicio, y con present perfect."
+  },
+  "tip_es": "Ago va al final, como 'atrás': two years ago = dos años atrás."
+ },
+ "B1-11-0": {
+  "icon": "⏱️",
+  "purpose_es": "Para decir cuándo pasa la acción principal.",
+  "idea_es": "Before, after, once, as soon as, until... Dentro de la cláusula de tiempo nunca va will: el futuro solo va en la parte principal.",
+  "formula": [
+   {
+    "role": "connector",
+    "label_es": "en cuanto",
+    "en": "As soon as"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "verb",
+    "label_es": "presente",
+    "en": "finish"
+   },
+   {
+    "role": "subject",
+    "label_es": "yo + will",
+    "en": "I'll"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "call"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "you"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "As soon as I finish, I'll call you.",
+   "es": "En cuanto termine, te llamo."
+  },
+  "formula2": {
+   "title_es": "En pasado",
+   "parts": [
+    {
+     "role": "connector",
+     "label_es": "para cuando",
+     "en": "By the time"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "the engineers"
+    },
+    {
+     "role": "verb",
+     "label_es": "pasado simple",
+     "en": "got there"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "the leak"
+    },
+    {
+     "role": "verb",
+     "label_es": "past perfect",
+     "en": "had stopped"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "By the time the engineers got there, the leak had stopped.",
+    "es": "Cuando llegaron los ingenieros, la fuga ya se había detenido."
+   }
+  },
+  "timeline": {
+   "type": "future-point",
+   "label_es": "Primero termino, después te llamo"
+  },
+  "compare": {
+   "es": "Cuando llegue, te aviso.",
+   "en": "When I arrive, I'll let you know.",
+   "note_es": "Donde el español usa subjuntivo (llegue, termine), el inglés usa presente simple: when I arrive."
+  },
+  "mistake": {
+   "wrong": "I'll call you when I will arrive.",
+   "right": "I'll call you when I arrive.",
+   "why_es": "En la cláusula de tiempo va presente, nunca will."
+  },
+  "tip_es": "Si en español usas subjuntivo después de 'cuando' o 'en cuanto', en inglés pon presente simple."
+ },
+ "B1-11-1": {
+  "icon": "😔",
+  "purpose_es": "Para lamentar algo del pasado o imaginar otro resultado.",
+  "idea_es": "Should have + participio = lo que debiste hacer y no hiciste. If + had + participio, would have + participio = un pasado imaginario.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "I"
+   },
+   {
+    "role": "modal",
+    "label_es": "should",
+    "en": "should"
+   },
+   {
+    "role": "aux",
+    "label_es": "have",
+    "en": "have"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "booked"
+   },
+   {
+    "role": "time",
+    "label_es": "tiempo",
+    "en": "earlier"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I should have booked earlier.",
+   "es": "Debí haber reservado antes."
+  },
+  "formula2": {
+   "title_es": "Tercer condicional",
+   "parts": [
+    {
+     "role": "connector",
+     "label_es": "si",
+     "en": "If"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "had + participio",
+     "en": "had checked"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "condicional pasado",
+     "en": "would have seen"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the error"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "If I had checked, I would have seen the error.",
+    "es": "Si hubiera revisado, habría visto el error."
+   }
+  },
+  "timeline": {
+   "type": "unreal-past",
+   "label_es": "Un pasado que no pasó"
+  },
+  "compare": {
+   "es": "Si hubiera llegado temprano, lo habría visto.",
+   "en": "If I had arrived early, I would have seen it.",
+   "note_es": "Hubiera + participio = had + participio; habría + participio = would have + participio."
+  },
+  "mistake": {
+   "wrong": "If I would have known, I would have come.",
+   "right": "If I had known, I would have come.",
+   "why_es": "Nada de would en la parte del if: usa had + participio."
+  },
+  "tip_es": "'Should've' suena como 'should of', pero siempre se escribe should have."
+ },
+ "B1-12-0": {
+  "icon": "📦",
+  "purpose_es": "Para explicar el propósito de una acción o de un objeto.",
+  "idea_es": "To + verbo para tu propósito. Si el propósito es de otra persona: for + persona + to + verbo, o so that. For + sustantivo dice para qué sirve algo.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "We"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "stopped"
+   },
+   {
+    "role": "connector",
+    "label_es": "para",
+    "en": "for"
+   },
+   {
+    "role": "object",
+    "label_es": "otra persona",
+    "en": "the crew"
+   },
+   {
+    "role": "particle",
+    "label_es": "to",
+    "en": "to"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo base",
+    "en": "rest"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "We stopped for the crew to rest.",
+   "es": "Paramos para que la tripulación descansara."
+  },
+  "formula2": {
+   "title_es": "Con so that",
+   "parts": [
+    {
+     "role": "verb",
+     "label_es": "orden",
+     "en": "Label"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "every container"
+    },
+    {
+     "role": "connector",
+     "label_es": "para que",
+     "en": "so that"
+    },
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "nobody"
+    },
+    {
+     "role": "verb",
+     "label_es": "can + verbo",
+     "en": "can confuse"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "them"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "Label every container so that nobody can confuse them.",
+    "es": "Etiqueta cada contenedor para que nadie los confunda."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Para qué se hace algo"
+  },
+  "compare": {
+   "es": "Hablé despacio para que todos entendieran.",
+   "en": "I spoke slowly so that everyone could understand.",
+   "note_es": "'Para que' + otra persona = so that + frase, o for + persona + to + verbo."
+  },
+  "mistake": {
+   "wrong": "I came here for learn English.",
+   "right": "I came here to learn English.",
+   "why_es": "Propósito con verbo: to + verbo. 'For' va con un sustantivo o con otra persona."
+  },
+  "tip_es": "Para + verbo = to. Para + cosa = for. Para que + persona = for + persona + to, o so that."
+ },
+ "B1-12-1": {
+  "icon": "🌧️",
+  "purpose_es": "Para dar razones y causas.",
+  "idea_es": "Because / since / as + frase con sujeto y verbo. Because of / due to / owing to + sustantivo. The reason is that + frase.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "We"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "stopped"
+   },
+   {
+    "role": "connector",
+    "label_es": "porque",
+    "en": "because"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "the pump"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo",
+    "en": "failed"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "We stopped because the pump failed.",
+   "es": "Paramos porque la bomba falló."
+  },
+  "formula2": {
+   "title_es": "Con sustantivo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "We"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo",
+     "en": "stopped"
+    },
+    {
+     "role": "connector",
+     "label_es": "debido a",
+     "en": "due to"
+    },
+    {
+     "role": "noun",
+     "label_es": "sustantivo",
+     "en": "a pump failure"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "We stopped due to a pump failure.",
+    "es": "Paramos debido a una falla de la bomba."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "La causa de algo"
+  },
+  "compare": {
+   "es": "Se canceló por la lluvia.",
+   "en": "It was cancelled because of the rain.",
+   "note_es": "Tu 'por' + sustantivo es because of, no because. Because necesita sujeto y verbo."
+  },
+  "mistake": {
+   "wrong": "The reason is because the pump failed.",
+   "right": "The reason is that the pump failed.",
+   "why_es": "Después de 'the reason is' va that, no because."
+  },
+  "tip_es": "¿Viene sujeto + verbo? because. ¿Solo un sustantivo? because of / due to."
+ },
+ "B1-13-0": {
+  "icon": "🔎",
+  "purpose_es": "Para deducir qué pasó, según la evidencia.",
+  "idea_es": "Must have + participio = estoy casi seguro. May / might / could have = tal vez. Can't have = es imposible.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "A seal"
+   },
+   {
+    "role": "modal",
+    "label_es": "seguro que",
+    "en": "must"
+   },
+   {
+    "role": "aux",
+    "label_es": "have",
+    "en": "have"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "failed"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "A seal must have failed.",
+   "es": "Seguro que falló un sello."
+  },
+  "formula2": {
+   "title_es": "Imposible",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "She"
+    },
+    {
+     "role": "neg",
+     "label_es": "imposible",
+     "en": "can't"
+    },
+    {
+     "role": "aux",
+     "label_es": "have",
+     "en": "have"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "received"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the alert"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "She can't have received the alert.",
+    "es": "Ella no pudo haber recibido la alerta."
+   }
+  },
+  "timeline": {
+   "type": "past-point",
+   "label_es": "Algo pasó; lo deduces ahora"
+  },
+  "compare": {
+   "es": "Debió de quedarse dormido.",
+   "en": "He must have overslept.",
+   "note_es": "'Debió (de) haber' para suponer = must have + participio."
+  },
+  "mistake": {
+   "wrong": "He mustn't have known.",
+   "right": "He can't have known.",
+   "why_es": "Para decir 'es imposible que', usa can't have, no mustn't have."
+  },
+  "tip_es": "Escala de certeza: must have (90 %), might have (50 %), can't have (0 %)."
+ },
+ "B1-13-1": {
+  "icon": "🤦",
+  "purpose_es": "Para juzgar decisiones pasadas y decir qué habrías hecho.",
+  "idea_es": "Should have = crítica o lamento. Could have = había otra opción mejor. Would have = lo que tú habrías hecho.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "They"
+   },
+   {
+    "role": "modal",
+    "label_es": "should",
+    "en": "should"
+   },
+   {
+    "role": "aux",
+    "label_es": "have",
+    "en": "have"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "run"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "a second test"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "They should have run a second test.",
+   "es": "Debieron haber hecho una segunda prueba."
+  },
+  "formula2": {
+   "title_es": "Lo que yo habría hecho",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "modal",
+     "label_es": "would",
+     "en": "would"
+    },
+    {
+     "role": "aux",
+     "label_es": "have",
+     "en": "have"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "waited"
+    },
+    {
+     "role": "time",
+     "label_es": "tiempo",
+     "en": "another day"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I would have waited another day.",
+    "es": "Yo habría esperado otro día."
+   }
+  },
+  "timeline": {
+   "type": "unreal-past",
+   "label_es": "Lo que pudo pasar y no pasó"
+  },
+  "compare": {
+   "es": "Podríamos haberlo evitado.",
+   "en": "We could have avoided it.",
+   "note_es": "'Podríamos haber' = could have; 'deberían haber' = should have. Siempre con participio."
+  },
+  "mistake": {
+   "wrong": "You should had called me.",
+   "right": "You should have called me.",
+   "why_es": "Después de should va have + participio, nunca had."
+  },
+  "tip_es": "Should have critica; could have muestra otra opción y suena más suave."
+ },
+ "B1-14-0": {
+  "icon": "🏭",
+  "purpose_es": "Para explicar los pasos de un proceso.",
+  "idea_es": "En un proceso importa la acción, no quién la hace: usa is / are + participio. Para requisitos: must be / should be + participio.",
+  "formula": [
+   {
+    "role": "time",
+    "label_es": "primero",
+    "en": "First"
+   },
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "the parts"
+   },
+   {
+    "role": "be",
+    "label_es": "is / are",
+    "en": "are"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "cleaned"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "First, the parts are cleaned.",
+   "es": "Primero, se limpian las piezas."
+  },
+  "formula2": {
+   "title_es": "Con modal",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "Every unit"
+    },
+    {
+     "role": "modal",
+     "label_es": "modal",
+     "en": "must"
+    },
+    {
+     "role": "be",
+     "label_es": "be",
+     "en": "be"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "tested"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "Every unit must be tested.",
+    "es": "Hay que probar cada unidad."
+   }
+  },
+  "timeline": {
+   "type": "habit",
+   "label_es": "Siempre se hace así, paso a paso"
+  },
+  "compare": {
+   "es": "Las piezas se limpian y se revisan.",
+   "en": "The parts are cleaned and inspected.",
+   "note_es": "Tu 'se + verbo' (se limpian) suele ser la pasiva en inglés: are + participio."
+  },
+  "mistake": {
+   "wrong": "First the parts clean, then they inspect.",
+   "right": "First the parts are cleaned, then they are inspected.",
+   "why_es": "Las piezas no limpian nada: usa are + participio."
+  },
+  "tip_es": "Si en español dices 'se limpia / se prueba', piensa en is cleaned / is tested."
+ },
+ "B1-14-1": {
+  "icon": "🏷️",
+  "purpose_es": "Para identificar algo o agregar información extra.",
+  "idea_es": "Sin comas, la cláusula dice cuál (who / that / which). Entre comas, solo agrega información y no acepta that.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The technician"
+   },
+   {
+    "role": "connector",
+    "label_es": "pronombre",
+    "en": "who"
+   },
+   {
+    "role": "verb",
+    "label_es": "identifica cuál",
+    "en": "ran the test"
+   },
+   {
+    "role": "verb",
+    "label_es": "verbo principal",
+    "en": "found"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "the fault"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The technician who ran the test found the fault.",
+   "es": "El técnico que hizo la prueba encontró la falla."
+  },
+  "formula2": {
+   "title_es": "Información extra (con comas)",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "Ana"
+    },
+    {
+     "role": "connector",
+     "label_es": "who (con comas)",
+     "en": "who"
+    },
+    {
+     "role": "verb",
+     "label_es": "info extra",
+     "en": "signed the report"
+    },
+    {
+     "role": "verb",
+     "label_es": "verbo principal",
+     "en": "has left"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "Ana, who signed the report, has left.",
+    "es": "Ana, que firmó el informe, ya se fue."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Decir cuál o agregar un dato"
+  },
+  "compare": {
+   "es": "Mi hermano, que vive en Cali, es médico.",
+   "en": "My brother, who lives in Cali, is a doctor.",
+   "note_es": "Igual que en español, las comas marcan información extra. Pero en inglés, con comas no se usa that."
+  },
+  "mistake": {
+   "wrong": "My brother, that lives in Cali, is a doctor.",
+   "right": "My brother, who lives in Cali, is a doctor.",
+   "why_es": "Con comas usa who o which, nunca that."
+  },
+  "tip_es": "Prueba: si quitas la cláusula y aún sabes de quién hablas, va entre comas."
+ },
+ "B1-15-0": {
+  "icon": "📋",
+  "purpose_es": "Para recomendar lo que hay que hacer sin decir quién.",
+  "idea_es": "Modal + be + participio. Should be = recomendación; must be / has to be = obligación; could be = idea suave.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto",
+    "en": "The checklist"
+   },
+   {
+    "role": "modal",
+    "label_es": "modal",
+    "en": "should"
+   },
+   {
+    "role": "be",
+    "label_es": "be",
+    "en": "be"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "revised"
+   },
+   {
+    "role": "time",
+    "label_es": "tiempo",
+    "en": "before the next inspection"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "The checklist should be revised before the next inspection.",
+   "es": "La lista de chequeo debería revisarse antes de la próxima inspección."
+  },
+  "formula2": {
+   "title_es": "Prohibición",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "Passwords"
+    },
+    {
+     "role": "neg",
+     "label_es": "prohibido",
+     "en": "mustn't"
+    },
+    {
+     "role": "be",
+     "label_es": "be",
+     "en": "be"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "shared"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "Passwords mustn't be shared.",
+    "es": "Las contraseñas no se deben compartir."
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Lo que hay que hacer"
+  },
+  "compare": {
+   "es": "Esto se debe arreglar hoy.",
+   "en": "This has to be fixed today.",
+   "note_es": "Tu 'se debe + infinitivo' es modal + be + participio en inglés."
+  },
+  "mistake": {
+   "wrong": "The manual should updated.",
+   "right": "The manual should be updated.",
+   "why_es": "No olvides be: modal + be + participio."
+  },
+  "tip_es": "Recuerda la cadena de tres: modal + be + participio. Si falta una pieza, no funciona."
+ },
+ "B1-15-1": {
+  "icon": "❓",
+  "purpose_es": "Para confirmar una opinión o pedir que estén de acuerdo.",
+  "idea_es": "Repite el auxiliar y cambia la polaridad: frase positiva, tag negativo; frase negativa, tag positivo. Termina con un pronombre.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "sujeto + be",
+    "en": "That's"
+   },
+   {
+    "role": "complement",
+    "label_es": "complemento",
+    "en": "the real problem"
+   },
+   {
+    "role": "neg",
+    "label_es": "tag negativo",
+    "en": "isn't"
+   },
+   {
+    "role": "subject",
+    "label_es": "pronombre",
+    "en": "it"
+   },
+   {
+    "role": "end",
+    "label_es": "interrogación",
+    "en": "?"
+   }
+  ],
+  "example": {
+   "en": "That's the real problem, isn't it?",
+   "es": "Ese es el verdadero problema, ¿no?"
+  },
+  "formula2": {
+   "title_es": "Negativa + tag positivo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "You"
+    },
+    {
+     "role": "verb",
+     "label_es": "frase negativa",
+     "en": "haven't signed"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the log"
+    },
+    {
+     "role": "aux",
+     "label_es": "tag positivo",
+     "en": "have"
+    },
+    {
+     "role": "subject",
+     "label_es": "pronombre",
+     "en": "you"
+    },
+    {
+     "role": "end",
+     "label_es": "interrogación",
+     "en": "?"
+    }
+   ],
+   "example": {
+    "en": "You haven't signed the log, have you?",
+    "es": "No has firmado el registro, ¿cierto?"
+   }
+  },
+  "timeline": {
+   "type": "none",
+   "label_es": "Confirmar lo que piensas"
+  },
+  "compare": {
+   "es": "Trabajas arriba, ¿verdad?",
+   "en": "You work upstairs, don't you?",
+   "note_es": "En español basta '¿verdad?' o '¿no?'; en inglés el tag usa el auxiliar de la frase (aquí do)."
+  },
+  "mistake": {
+   "wrong": "You're coming, no?",
+   "right": "You're coming, aren't you?",
+   "why_es": "En inglés no se usa ', no?': repite el auxiliar con la polaridad contraria."
+  },
+  "tip_es": "Piensa en un espejo: lo positivo se vuelve negativo y lo negativo, positivo. Y ojo: I'm..., aren't I?"
+ },
+ "B1-16-0": {
+  "icon": "🏆",
+  "purpose_es": "Para hablar de tus logros y tu experiencia.",
+  "idea_es": "Pasado simple con tiempo terminado (in 2021, last month). Present perfect con un período abierto (this year, so far) o sin tiempo.",
+  "formula": [
+   {
+    "role": "subject",
+    "label_es": "yo + have",
+    "en": "I've"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "led"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "three projects"
+   },
+   {
+    "role": "time",
+    "label_es": "período abierto",
+    "en": "so far this year"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "I've led three projects so far this year.",
+   "es": "Este año he dirigido tres proyectos hasta ahora."
+  },
+  "formula2": {
+   "title_es": "Tiempo terminado",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "sujeto",
+     "en": "I"
+    },
+    {
+     "role": "verb",
+     "label_es": "pasado simple",
+     "en": "finished"
+    },
+    {
+     "role": "object",
+     "label_es": "objeto",
+     "en": "the course"
+    },
+    {
+     "role": "time",
+     "label_es": "tiempo terminado",
+     "en": "in May"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I finished the course in May.",
+    "es": "Terminé el curso en mayo."
+   }
+  },
+  "timeline": {
+   "type": "past-to-now",
+   "label_es": "De enero hasta hoy: tres proyectos"
+  },
+  "compare": {
+   "es": "Terminé el curso el mes pasado.",
+   "en": "I finished the course last month.",
+   "note_es": "Con tiempo terminado (last month, in 2021) va pasado simple, aunque en español a veces digas 'he terminado'."
+  },
+  "mistake": {
+   "wrong": "I have finished the course last month.",
+   "right": "I finished the course last month.",
+   "why_es": "Tiempo terminado (last month, in 2021) = pasado simple."
+  },
+  "tip_es": "¿Hay una fecha del pasado? Pasado simple. ¿This year, so far, ever? Present perfect."
+ },
+ "B1-16-1": {
+  "icon": "🏁",
+  "purpose_es": "Para hablar de metas que quieres lograr antes de una fecha.",
+  "idea_es": "Will have + participio = estará hecho antes de la fecha. I'd like to have + participio = lo que te gustaría haber logrado (un deseo).",
+  "formula": [
+   {
+    "role": "time",
+    "label_es": "fecha límite",
+    "en": "By the end of next year"
+   },
+   {
+    "role": "subject",
+    "label_es": "yo + will",
+    "en": "I'll"
+   },
+   {
+    "role": "aux",
+    "label_es": "have",
+    "en": "have"
+   },
+   {
+    "role": "verb",
+    "label_es": "participio",
+    "en": "completed"
+   },
+   {
+    "role": "object",
+    "label_es": "objeto",
+    "en": "both certifications"
+   },
+   {
+    "role": "end",
+    "label_es": "punto",
+    "en": "."
+   }
+  ],
+  "example": {
+   "en": "By the end of next year I'll have completed both certifications.",
+   "es": "Para finales del próximo año habré completado ambas certificaciones."
+  },
+  "formula2": {
+   "title_es": "Un deseo",
+   "parts": [
+    {
+     "role": "subject",
+     "label_es": "yo + would",
+     "en": "I'd"
+    },
+    {
+     "role": "verb",
+     "label_es": "like",
+     "en": "like"
+    },
+    {
+     "role": "aux",
+     "label_es": "to have",
+     "en": "to have"
+    },
+    {
+     "role": "verb",
+     "label_es": "participio",
+     "en": "moved"
+    },
+    {
+     "role": "complement",
+     "label_es": "complemento",
+     "en": "into management"
+    },
+    {
+     "role": "time",
+     "label_es": "fecha límite",
+     "en": "by the time I'm thirty"
+    },
+    {
+     "role": "end",
+     "label_es": "punto",
+     "en": "."
+    }
+   ],
+   "example": {
+    "en": "I'd like to have moved into management by the time I'm thirty.",
+    "es": "Me gustaría haber pasado a gerencia antes de los treinta."
+   }
+  },
+  "timeline": {
+   "type": "future-before",
+   "label_es": "Antes de esa fecha ya estará hecho"
+  },
+  "compare": {
+   "es": "Me gustaría haber visitado más países para entonces.",
+   "en": "I'd like to have visited more countries by then.",
+   "note_es": "'Me gustaría haber + participio' = would like to have + participio."
+  },
+  "mistake": {
+   "wrong": "By the time I will finish, I'll have saved enough.",
+   "right": "By the time I finish, I'll have saved enough.",
+   "why_es": "Después de by the time, el verbo va en presente."
+  },
+  "tip_es": "By + fecha = 'para + fecha'. Para diciembre habré... = By December I'll have..."
+ }
+}
