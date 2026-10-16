@@ -1,0 +1,925 @@
+{
+  "A1-1-0": {
+    "icon": "👋",
+    "purpose_es": "Para presentarte y decir de quién es algo.",
+    "idea_es": "To be tiene tres formas: am (I), is (he, she, it) y are (you, we, they). Los posesivos (my, your, his, her...) van antes del sustantivo.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "She"},
+      {"role": "be", "label_es": "am / is / are", "en": "is"},
+      {"role": "adjective", "label_es": "posesivo", "en": "our"},
+      {"role": "noun", "label_es": "sustantivo", "en": "English teacher"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "She is our English teacher.", "es": "Ella es nuestra profesora de inglés."},
+    "formula2": {
+      "title_es": "Con I va am",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "I"},
+        {"role": "be", "label_es": "am", "en": "am"},
+        {"role": "complement", "label_es": "nombre", "en": "Ana"},
+        {"role": "connector", "label_es": "conector", "en": "and"},
+        {"role": "subject", "label_es": "sujeto", "en": "this"},
+        {"role": "be", "label_es": "is", "en": "is"},
+        {"role": "complement", "label_es": "posesivo + nombre", "en": "my brother"}
+      ],
+      "example": {"en": "I am Ana and this is my brother.", "es": "Yo soy Ana y este es mi hermano."}
+    },
+    "timeline": {"type": "none", "label_es": "No depende del tiempo: es quién eres"},
+    "compare": {"es": "Es mi profesora.", "en": "She is my teacher.", "note_es": "En español puedes omitir el sujeto; en inglés siempre va: she is, he is, it is."},
+    "mistake": {"wrong": "Mario and her mother", "right": "Mario and his mother", "why_es": "His es de él y her es de ella. Se mira al dueño, no a la cosa."},
+    "tip_es": "Su = his (de él), her (de ella), their (de ellos). Pregúntate: ¿quién es el dueño?"
+  },
+  "A1-1-1": {
+    "icon": "❓",
+    "purpose_es": "Para hacer preguntas con am, is o are.",
+    "idea_es": "Para preguntar, am/is/are pasa delante del sujeto. Si la pregunta es abierta, empieza con una palabra Wh: who, what, where, how old.",
+    "formula": [
+      {"role": "question", "label_es": "palabra Wh", "en": "Where"},
+      {"role": "be", "label_es": "am / is / are", "en": "are"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "particle", "label_es": "preposición", "en": "from"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Where are you from?", "es": "¿De dónde eres?"},
+    "formula2": {
+      "title_es": "Pregunta de sí / no",
+      "parts": [
+        {"role": "be", "label_es": "am / is / are", "en": "Is"},
+        {"role": "subject", "label_es": "sujeto", "en": "he"},
+        {"role": "complement", "label_es": "complemento", "en": "your friend"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Is he your friend?", "es": "¿Él es tu amigo?"}
+    },
+    "timeline": {"type": "none", "label_es": "No depende del tiempo: es el orden de la pregunta"},
+    "compare": {"es": "¿Eres colombiano?", "en": "Are you Colombian?", "note_es": "En español basta con la entonación; en inglés el verbo be pasa delante del sujeto."},
+    "mistake": {"wrong": "You are from Cali?", "right": "Are you from Cali?", "why_es": "En la pregunta, am/is/are va antes del sujeto."},
+    "tip_es": "Pregunta = voltea: you are → are you? Respuesta corta: Yes, I am. / No, I'm not."
+  },
+  "A1-2-0": {
+    "icon": "🔁",
+    "purpose_es": "Para preguntar por rutinas y hábitos.",
+    "idea_es": "En inglés las preguntas en presente necesitan un ayudante: do o does. El verbo principal se queda sin -s.",
+    "formula": [
+      {"role": "question", "label_es": "palabra Wh", "en": "Where"},
+      {"role": "aux", "label_es": "do / does", "en": "does"},
+      {"role": "subject", "label_es": "sujeto", "en": "your brother"},
+      {"role": "verb", "label_es": "verbo base", "en": "study"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Where does your brother study?", "es": "¿Dónde estudia tu hermano?"},
+    "formula2": {
+      "title_es": "Afirmativa",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "He"},
+        {"role": "verb", "label_es": "verbo + -s", "en": "goes"},
+        {"role": "place", "label_es": "dónde", "en": "to the gym"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "He goes to the gym.", "es": "Él va al gimnasio."}
+    },
+    "timeline": {"type": "habit", "label_es": "Se repite: antes, ahora y después"},
+    "compare": {"es": "¿Dónde estudia tu hermano?", "en": "Where does your brother study?", "note_es": "En español no hay ayudante; en inglés la pregunta lleva does y el verbo vuelve a su forma base."},
+    "mistake": {"wrong": "Where does your brother studies?", "right": "Where does your brother study?", "why_es": "La -s ya está en does."},
+    "tip_es": "La -s va en un solo lugar: en el verbo (he studies) o en does (does he study?), nunca en los dos."
+  },
+  "A1-2-1": {
+    "icon": "⏰",
+    "purpose_es": "Para decir a qué hora, qué día o hasta cuándo haces algo.",
+    "idea_es": "Cada palabrita tiene su trabajo fijo: at con la hora, on con el día, in con el mes o la parte del día, until para el final.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "verb", "label_es": "acción", "en": "start work"},
+      {"role": "time", "label_es": "at + hora", "en": "at eight"},
+      {"role": "connector", "label_es": "conector", "en": "and"},
+      {"role": "verb", "label_es": "acción", "en": "stay"},
+      {"role": "time", "label_es": "until + final", "en": "until five"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I start work at eight and stay until five.", "es": "Empiezo a trabajar a las ocho y me quedo hasta las cinco."},
+    "formula2": {
+      "title_es": "Parte del día y antes / después",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "She"},
+        {"role": "verb", "label_es": "verbo + -s", "en": "studies"},
+        {"role": "time", "label_es": "in + momento", "en": "in the evening"},
+        {"role": "time", "label_es": "after + momento", "en": "after dinner"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "She studies in the evening, after dinner.", "es": "Ella estudia por la noche, después de cenar."}
+    },
+    "timeline": {"type": "habit", "label_es": "Rutina con hora y día fijos"},
+    "compare": {"es": "Llego a las tres el lunes.", "en": "I arrive at three on Monday.", "note_es": "En español decimos a las tres y el lunes; en inglés at three y on Monday, sin artículo."},
+    "mistake": {"wrong": "in three o'clock", "right": "at three o'clock", "why_es": "Para la hora del reloj siempre se usa at."},
+    "tip_es": "De pequeño a grande: at (hora), on (día o fecha), in (mes, año, parte del día)."
+  },
+  "A1-3-0": {
+    "icon": "👉",
+    "purpose_es": "Para señalar cosas cerca o lejos de ti.",
+    "idea_es": "This y these: cerca. That y those: lejos. This y that son para una cosa; these y those, para varias.",
+    "formula": [
+      {"role": "adjective", "label_es": "este (cerca)", "en": "This"},
+      {"role": "noun", "label_es": "sustantivo", "en": "jacket"},
+      {"role": "be", "label_es": "is", "en": "is"},
+      {"role": "adjective", "label_es": "adjetivo", "en": "nice"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "This jacket is nice.", "es": "Esta chaqueta es bonita."},
+    "formula2": {
+      "title_es": "Plural: cerca y lejos",
+      "parts": [
+        {"role": "subject", "label_es": "estos (cerca)", "en": "These"},
+        {"role": "be", "label_es": "are", "en": "are"},
+        {"role": "complement", "label_es": "complemento", "en": "my books"},
+        {"role": "subject", "label_es": "esos (lejos)", "en": "those"},
+        {"role": "be", "label_es": "are", "en": "are"},
+        {"role": "complement", "label_es": "complemento", "en": "yours"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "These are my books; those are yours.", "es": "Estos son mis libros; esos son tuyos."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es distancia y cantidad"},
+    "compare": {"es": "Esta camisa y estos zapatos", "en": "this shirt and these shoes", "note_es": "En inglés no hay género: this = este o esta. Pero sí cambia en plural: these, those."},
+    "mistake": {"wrong": "This shoes are cheap.", "right": "These shoes are cheap.", "why_es": "Shoes es plural, así que va these (cerca) o those (lejos)."},
+    "tip_es": "Cerca: this / these. Lejos: that / those. Si el sustantivo termina en -s, usa these o those."
+  },
+  "A1-3-1": {
+    "icon": "⚖️",
+    "purpose_es": "Para comparar dos cosas.",
+    "idea_es": "Adjetivo corto: + -er (bigger). Adjetivo largo: more + adjetivo (more expensive). Después va than, que significa que.",
+    "formula": [
+      {"role": "subject", "label_es": "primera cosa", "en": "Bogotá"},
+      {"role": "be", "label_es": "is", "en": "is"},
+      {"role": "adjective", "label_es": "adjetivo + -er", "en": "bigger"},
+      {"role": "connector", "label_es": "than", "en": "than"},
+      {"role": "complement", "label_es": "segunda cosa", "en": "Cartagena"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "Bogotá is bigger than Cartagena.", "es": "Bogotá es más grande que Cartagena."},
+    "formula2": {
+      "title_es": "Adjetivo largo",
+      "parts": [
+        {"role": "subject", "label_es": "primera cosa", "en": "This phone"},
+        {"role": "be", "label_es": "is", "en": "is"},
+        {"role": "adjective", "label_es": "more + adjetivo", "en": "more expensive"},
+        {"role": "connector", "label_es": "than", "en": "than"},
+        {"role": "complement", "label_es": "segunda cosa", "en": "mine"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "This phone is more expensive than mine.", "es": "Este celular es más caro que el mío."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: compara dos cosas"},
+    "compare": {"es": "Bogotá es más grande que Cartagena.", "en": "Bogotá is bigger than Cartagena.", "note_es": "Más grande no es more big: el adjetivo corto toma -er. Y que se dice than."},
+    "mistake": {"wrong": "Bogotá is more big than Cartagena.", "right": "Bogotá is bigger than Cartagena.", "why_es": "Adjetivo corto: solo -er, sin more."},
+    "tip_es": "Corto: -er + than. Largo: more + adjetivo + than. Que = than, nunca that."
+  },
+  "A1-4-0": {
+    "icon": "🎯",
+    "purpose_es": "Para decir a quién llamas, ves o invitas.",
+    "idea_es": "I, he, she, we, they hacen la acción. Me, him, her, us, them la reciben y van después del verbo o de una preposición.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "My parents"},
+      {"role": "verb", "label_es": "verbo", "en": "call"},
+      {"role": "object", "label_es": "pronombre objeto", "en": "us"},
+      {"role": "time", "label_es": "cuándo", "en": "every Sunday"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "My parents call us every Sunday.", "es": "Mis papás nos llaman todos los domingos."},
+    "formula2": {
+      "title_es": "Pregunta",
+      "parts": [
+        {"role": "aux", "label_es": "do / does", "en": "Do"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "verbo base", "en": "know"},
+        {"role": "object", "label_es": "pronombre objeto", "en": "her"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Do you know her?", "es": "¿La conoces?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es quién recibe la acción"},
+    "compare": {"es": "La conozco.", "en": "I know her.", "note_es": "En español el pronombre va antes del verbo (la conozco); en inglés va después (know her)."},
+    "mistake": {"wrong": "Do you know she?", "right": "Do you know her?", "why_es": "Después del verbo va la forma objeto: me, him, her, us, them."},
+    "tip_es": "Sujeto antes del verbo (she), objeto después (her). Después de with, for, to: siempre objeto."
+  },
+  "A1-4-1": {
+    "icon": "☕",
+    "purpose_es": "Para ofrecer algo o invitar con amabilidad.",
+    "idea_es": "Would you like...? es la forma educada de ofrecer. Would no cambia nunca. Después va un sustantivo o to + verbo.",
+    "formula": [
+      {"role": "modal", "label_es": "would", "en": "Would"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "verb", "label_es": "like", "en": "like"},
+      {"role": "object", "label_es": "lo que ofreces", "en": "something to drink"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Would you like something to drink?", "es": "¿Quieres algo de tomar?"},
+    "formula2": {
+      "title_es": "Invitar a hacer algo",
+      "parts": [
+        {"role": "modal", "label_es": "would", "en": "Would"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "like", "en": "like"},
+        {"role": "verb", "label_es": "to + verbo", "en": "to come"},
+        {"role": "complement", "label_es": "complemento", "en": "with us"},
+        {"role": "time", "label_es": "cuándo", "en": "on Saturday"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Would you like to come with us on Saturday?", "es": "¿Te gustaría venir con nosotros el sábado?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es una oferta amable"},
+    "compare": {"es": "¿Quieres un café?", "en": "Would you like a coffee?", "note_es": "En español quieres suena normal; en inglés Do you want? es brusco. Would you like? es lo amable."},
+    "mistake": {"wrong": "Yes, I want.", "right": "Yes, please.", "why_es": "Para aceptar una oferta se dice Yes, please. I want suena grosero."},
+    "tip_es": "Ofrecer: Would you like...? Aceptar: Yes, please. Rechazar: No, thank you."
+  },
+  "A1-5-0": {
+    "icon": "🍳",
+    "purpose_es": "Para hablar de lo que pasa en este momento.",
+    "idea_es": "Ahora mismo = am/is/are + verbo con -ing. En la pregunta, am/is/are pasa delante del sujeto.",
+    "formula": [
+      {"role": "question", "label_es": "palabra Wh", "en": "What"},
+      {"role": "be", "label_es": "am / is / are", "en": "are"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "verb", "label_es": "verbo + -ing", "en": "doing"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "What are you doing?", "es": "¿Qué estás haciendo?"},
+    "formula2": {
+      "title_es": "Afirmativa",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "I"},
+        {"role": "be", "label_es": "am / is / are", "en": "am"},
+        {"role": "verb", "label_es": "verbo + -ing", "en": "cooking"},
+        {"role": "object", "label_es": "complemento", "en": "dinner"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "I am cooking dinner.", "es": "Estoy cocinando la cena."}
+    },
+    "timeline": {"type": "now", "label_es": "Está pasando en este momento"},
+    "compare": {"es": "¿Qué estás haciendo?", "en": "What are you doing?", "note_es": "Estás = are. En inglés el be va antes del sujeto y nunca desaparece."},
+    "mistake": {"wrong": "I studying.", "right": "I am studying.", "why_es": "Sin am/is/are no hay presente continuo."},
+    "tip_es": "Ahora mismo = am/is/are + verbo-ing. Para preguntar, pasa am/is/are adelante."
+  },
+  "A1-5-1": {
+    "icon": "👥",
+    "purpose_es": "Para decir cuántas personas o cosas, sin usar números.",
+    "idea_es": "La escala va de todos a nadie: all → nearly all → a lot of / many → some → not many / few → no one.",
+    "formula": [
+      {"role": "adjective", "label_es": "cuantificador", "en": "Nearly all"},
+      {"role": "noun", "label_es": "sustantivo plural", "en": "my cousins"},
+      {"role": "be", "label_es": "are", "en": "are"},
+      {"role": "complement", "label_es": "complemento", "en": "older than me"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "Nearly all my cousins are older than me.", "es": "Casi todos mis primos son mayores que yo."},
+    "formula2": {
+      "title_es": "Nadie: verbo en singular",
+      "parts": [
+        {"role": "subject", "label_es": "nadie", "en": "No one"},
+        {"role": "be", "label_es": "is (singular)", "en": "is"},
+        {"role": "verb", "label_es": "verbo + -ing", "en": "cooking"},
+        {"role": "time", "label_es": "cuándo", "en": "tonight"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "No one is cooking tonight.", "es": "Esta noche nadie va a cocinar."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es cantidad"},
+    "compare": {"es": "Todos mis amigos viven aquí.", "en": "All my friends live here.", "note_es": "Todos mis = all my. Fíjate: all va primero y no lleva the delante."},
+    "mistake": {"wrong": "The all my friends live here.", "right": "All my friends live here.", "why_es": "All va antes de my o the, y nunca lleva the delante."},
+    "tip_es": "De más a menos: all, nearly all, a lot of, some, not many, few, no one."
+  },
+  "A1-6-0": {
+    "icon": "📆",
+    "purpose_es": "Para decir con qué frecuencia haces algo.",
+    "idea_es": "Always, usually, sometimes, never... van antes del verbo principal, pero después de am/is/are.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "time", "label_es": "frecuencia", "en": "usually"},
+      {"role": "verb", "label_es": "verbo", "en": "get up"},
+      {"role": "time", "label_es": "hora", "en": "at six"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I usually get up at six.", "es": "Normalmente me levanto a las seis."},
+    "formula2": {
+      "title_es": "Con to be",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "My brother"},
+        {"role": "be", "label_es": "am / is / are", "en": "is"},
+        {"role": "time", "label_es": "frecuencia", "en": "always"},
+        {"role": "adjective", "label_es": "adjetivo", "en": "hungry"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "My brother is always hungry.", "es": "Mi hermano siempre tiene hambre."}
+    },
+    "timeline": {"type": "habit", "label_es": "Se repite: siempre, a veces, nunca"},
+    "compare": {"es": "Siempre estoy cansado.", "en": "I am always tired.", "note_es": "En español siempre puede ir al inicio; en inglés va después de am/is/are y antes de los otros verbos."},
+    "mistake": {"wrong": "I always am tired.", "right": "I am always tired.", "why_es": "Con to be, el adverbio va después: am always."},
+    "tip_es": "Verbo normal: always + verbo (I always study). Con be: be + always (I'm always late)."
+  },
+  "A1-6-1": {
+    "icon": "📊",
+    "purpose_es": "Para preguntar cada cuánto, cuánto tiempo o qué tan bien.",
+    "idea_es": "How + otra palabra hace una pregunta precisa: how often (frecuencia), how long (duración), how well (calidad).",
+    "formula": [
+      {"role": "question", "label_es": "how + palabra", "en": "How often"},
+      {"role": "aux", "label_es": "do / does", "en": "do"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "verb", "label_es": "verbo base", "en": "play"},
+      {"role": "object", "label_es": "complemento", "en": "football"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "How often do you play football?", "es": "¿Cada cuánto juegas fútbol?"},
+    "formula2": {
+      "title_es": "Duración",
+      "parts": [
+        {"role": "question", "label_es": "how + palabra", "en": "How long"},
+        {"role": "aux", "label_es": "do / does", "en": "do"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "verbo base", "en": "practise"},
+        {"role": "time", "label_es": "cuándo", "en": "every day"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "How long do you practise every day?", "es": "¿Cuánto tiempo practicas cada día?"}
+    },
+    "timeline": {"type": "habit", "label_es": "Preguntas sobre rutinas y costumbres"},
+    "compare": {"es": "¿Cada cuánto juegas fútbol?", "en": "How often do you play football?", "note_es": "Cada cuánto = how often. Como en todo presente, la pregunta necesita do o does."},
+    "mistake": {"wrong": "How much times do you play?", "right": "How often do you play?", "why_es": "Times se cuenta, así que sería many. Mejor aún: How often."},
+    "tip_es": "How often = cada cuánto. How long = cuánto tiempo. How well = qué tan bien. Responde corto: Twice a week."
+  },
+  "A1-7-0": {
+    "icon": "📅",
+    "purpose_es": "Para contar acciones terminadas en el pasado.",
+    "idea_es": "Verbos regulares + -ed; muchos son irregulares (went, had). En preguntas y negativas va did y el verbo vuelve a la base.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "verb", "label_es": "verbo + -ed", "en": "studied"},
+      {"role": "object", "label_es": "complemento", "en": "English"},
+      {"role": "time", "label_es": "cuánto tiempo", "en": "for two hours"},
+      {"role": "time", "label_es": "cuándo", "en": "yesterday"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I studied English for two hours yesterday.", "es": "Ayer estudié inglés dos horas."},
+    "formula2": {
+      "title_es": "Pregunta",
+      "parts": [
+        {"role": "aux", "label_es": "did", "en": "Did"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "verbo base", "en": "see"},
+        {"role": "object", "label_es": "complemento", "en": "the film"},
+        {"role": "time", "label_es": "cuándo", "en": "last night"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Did you see the film last night?", "es": "¿Viste la película anoche?"}
+    },
+    "timeline": {"type": "past-point", "label_es": "Empezó y terminó en el pasado"},
+    "compare": {"es": "¿Viste la película?", "en": "Did you see the film?", "note_es": "En español el verbo cambia (viste); en inglés did lleva el pasado y see queda en su forma base."},
+    "mistake": {"wrong": "Did you saw the film?", "right": "Did you see the film?", "why_es": "El pasado ya está en did; el verbo vuelve a la base."},
+    "tip_es": "Una sola marca de pasado: I worked o did I work?, nunca did I worked."
+  },
+  "A1-7-1": {
+    "icon": "🕰️",
+    "purpose_es": "Para decir dónde o cómo estabas en el pasado.",
+    "idea_es": "To be no usa did. Tiene dos pasados: was (I, he, she, it) y were (you, we, they). Para preguntar, se invierte.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "The film"},
+      {"role": "be", "label_es": "was / were", "en": "was"},
+      {"role": "complement", "label_es": "complemento", "en": "really good"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "The film was really good.", "es": "La película estuvo muy buena."},
+    "formula2": {
+      "title_es": "Pregunta",
+      "parts": [
+        {"role": "question", "label_es": "palabra Wh", "en": "Where"},
+        {"role": "be", "label_es": "was / were", "en": "were"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "time", "label_es": "cuándo", "en": "yesterday"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Where were you yesterday?", "es": "¿Dónde estabas ayer?"}
+    },
+    "timeline": {"type": "past-point", "label_es": "Un estado en un momento del pasado"},
+    "compare": {"es": "¿Estabas en casa?", "en": "Were you at home?", "note_es": "Sin did: were pasa delante del sujeto, igual que am/is/are en presente."},
+    "mistake": {"wrong": "Did you were there?", "right": "Were you there?", "why_es": "To be no usa did: solo se invierte was / were."},
+    "tip_es": "I, he, she, it → was. You, we, they → were. Pregunta: Were you...? sin did."
+  },
+  "A1-8-0": {
+    "icon": "🏘️",
+    "purpose_es": "Para decir qué hay en un lugar y dónde está.",
+    "idea_es": "There is (una cosa) y there are (varias) dicen que algo existe. Las preposiciones dicen dónde: next to, behind, near...",
+    "formula": [
+      {"role": "be", "label_es": "there is / are", "en": "There is"},
+      {"role": "noun", "label_es": "una cosa", "en": "a supermarket"},
+      {"role": "place", "label_es": "preposición", "en": "next to"},
+      {"role": "place", "label_es": "lugar", "en": "my building"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "There is a supermarket next to my building.", "es": "Hay un supermercado al lado de mi edificio."},
+    "formula2": {
+      "title_es": "Plural",
+      "parts": [
+        {"role": "be", "label_es": "there is / are", "en": "There are"},
+        {"role": "noun", "label_es": "varias cosas", "en": "three cafés"},
+        {"role": "place", "label_es": "preposición", "en": "across from"},
+        {"role": "place", "label_es": "lugar", "en": "the park"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "There are three cafés across from the park.", "es": "Hay tres cafés frente al parque."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es lo que existe y dónde"},
+    "compare": {"es": "Hay un parque al lado de mi casa.", "en": "There is a park next to my house.", "note_es": "Hay sirve para uno o varios; en inglés cambia: there is (uno), there are (varios)."},
+    "mistake": {"wrong": "In my town have a park.", "right": "In my town there is a park.", "why_es": "Hay no se traduce con have: se dice there is / there are."},
+    "tip_es": "Uno: there is. Varios: there are. Pregunta: Is there...? / Are there...?"
+  },
+  "A1-8-1": {
+    "icon": "🔢",
+    "purpose_es": "Para preguntar cuánto o cuántos hay.",
+    "idea_es": "How many con lo que se cuenta uno por uno (people, shops). How much con lo que no se cuenta (time, money, traffic).",
+    "formula": [
+      {"role": "question", "label_es": "how many", "en": "How many"},
+      {"role": "noun", "label_es": "plural contable", "en": "people"},
+      {"role": "verb", "label_es": "verbo", "en": "live"},
+      {"role": "place", "label_es": "dónde", "en": "in your building"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "How many people live in your building?", "es": "¿Cuántas personas viven en tu edificio?"},
+    "formula2": {
+      "title_es": "Incontable",
+      "parts": [
+        {"role": "question", "label_es": "how much", "en": "How much"},
+        {"role": "noun", "label_es": "incontable", "en": "time"},
+        {"role": "aux", "label_es": "do / does", "en": "do"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "verbo base", "en": "need"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "How much time do you need?", "es": "¿Cuánto tiempo necesitas?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es cantidad"},
+    "compare": {"es": "¿Cuánto dinero tienes?", "en": "How much money do you have?", "note_es": "En español cambia cuánto/cuántos; en inglés: much con lo incontable, many con lo que se cuenta."},
+    "mistake": {"wrong": "How many money do you have?", "right": "How much money do you have?", "why_es": "Money es incontable en inglés, así que va much."},
+    "tip_es": "¿Lo cuentas uno por uno? many. ¿No? much (money, time, water, traffic)."
+  },
+  "A1-9-0": {
+    "icon": "🧑",
+    "purpose_es": "Para preguntar cómo es alguien por fuera y por dentro.",
+    "idea_es": "Apariencia física: What does she look like? Personalidad: What is she like? Las dos usan like al final.",
+    "formula": [
+      {"role": "question", "label_es": "palabra Wh", "en": "What"},
+      {"role": "aux", "label_es": "do / does", "en": "does"},
+      {"role": "subject", "label_es": "sujeto", "en": "your sister"},
+      {"role": "verb", "label_es": "look like", "en": "look like"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "What does your sister look like?", "es": "¿Cómo es tu hermana físicamente?"},
+    "formula2": {
+      "title_es": "Personalidad",
+      "parts": [
+        {"role": "question", "label_es": "palabra Wh", "en": "What"},
+        {"role": "be", "label_es": "am / is / are", "en": "is"},
+        {"role": "subject", "label_es": "sujeto", "en": "your new teacher"},
+        {"role": "particle", "label_es": "like", "en": "like"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "What is your new teacher like?", "es": "¿Cómo es tu nuevo profesor?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: describe a una persona"},
+    "compare": {"es": "¿Cómo es tu hermana?", "en": "What is your sister like?", "note_es": "Cómo es se dice What... like?, no How. En inglés se separa: look like (físico) y be like (forma de ser)."},
+    "mistake": {"wrong": "How is your sister?", "right": "What is your sister like?", "why_es": "How is she? pregunta cómo está (salud, ánimo), no cómo es."},
+    "tip_es": "Físico: What does she look like? Forma de ser: What is she like? Hoy: How is she?"
+  },
+  "A1-9-1": {
+    "icon": "🔍",
+    "purpose_es": "Para señalar a una persona dentro de un grupo.",
+    "idea_es": "Después del sustantivo o de the one, pon un verbo con -ing: the woman talking to the teacher. Funciona como que + verbo.",
+    "formula": [
+      {"role": "subject", "label_es": "persona", "en": "The woman"},
+      {"role": "verb", "label_es": "verbo + -ing", "en": "talking"},
+      {"role": "complement", "label_es": "complemento", "en": "to the teacher"},
+      {"role": "be", "label_es": "is", "en": "is"},
+      {"role": "complement", "label_es": "quién es", "en": "my mother"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "The woman talking to the teacher is my mother.", "es": "La mujer que habla con el profesor es mi mamá."},
+    "formula2": {
+      "title_es": "Con the one",
+      "parts": [
+        {"role": "subject", "label_es": "the one", "en": "The one"},
+        {"role": "verb", "label_es": "verbo + -ing", "en": "wearing"},
+        {"role": "object", "label_es": "complemento", "en": "the black cap"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "The one wearing the black cap.", "es": "El que tiene la gorra negra."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: identifica a alguien"},
+    "compare": {"es": "El chico que lleva gorra es mi hermano.", "en": "The boy wearing a cap is my brother.", "note_es": "En español decimos que + verbo; en inglés basta el verbo + -ing, sin who ni is."},
+    "mistake": {"wrong": "The woman is talking to the teacher is my mother.", "right": "The woman talking to the teacher is my mother.", "why_es": "La parte con -ing solo describe: no lleva is."},
+    "tip_es": "Para señalar: the one + verbo-ing. The one wearing red = la que está de rojo."
+  },
+  "A1-10-0": {
+    "icon": "✅",
+    "purpose_es": "Para decir lo que ya hiciste y lo que todavía no.",
+    "idea_es": "Have/has + participio une el pasado con ahora. Already = ya (está hecho). Yet = todavía no / ya? (falta), al final.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "aux", "label_es": "have / has", "en": "have"},
+      {"role": "time", "label_es": "already (ya)", "en": "already"},
+      {"role": "verb", "label_es": "participio", "en": "booked"},
+      {"role": "object", "label_es": "complemento", "en": "the hotel"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I have already booked the hotel.", "es": "Ya reservé el hotel."},
+    "formula2": {
+      "title_es": "Negativa con yet",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "We"},
+        {"role": "neg", "label_es": "have + not", "en": "haven't"},
+        {"role": "verb", "label_es": "participio", "en": "packed"},
+        {"role": "object", "label_es": "complemento", "en": "our bags"},
+        {"role": "time", "label_es": "yet (todavía)", "en": "yet"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "We haven't packed our bags yet.", "es": "Todavía no hemos empacado las maletas."}
+    },
+    "timeline": {"type": "past-to-now", "label_es": "Del pasado hasta ahora: importa el resultado"},
+    "compare": {"es": "Ya comí.", "en": "I have already eaten.", "note_es": "En Colombia decimos ya comí, en pasado; en inglés, con already, se usa have + participio."},
+    "mistake": {"wrong": "I have finished yet.", "right": "I have already finished.", "why_es": "Yet es para negativas y preguntas; en afirmativa va already."},
+    "tip_es": "Already: afirmativa, antes del participio. Yet: negativa o pregunta, al final de la frase."
+  },
+  "A1-10-1": {
+    "icon": "🔀",
+    "purpose_es": "Para elegir entre I have done y I did.",
+    "idea_es": "Si no dices cuándo (experiencia, resultado), usa have + participio. Si dices cuándo pasó, usa el pasado simple.",
+    "formula": [
+      {"role": "aux", "label_es": "have / has", "en": "Have"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "time", "label_es": "alguna vez", "en": "ever"},
+      {"role": "verb", "label_es": "participio", "en": "visited"},
+      {"role": "object", "label_es": "complemento", "en": "Peru"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Have you ever visited Peru?", "es": "¿Alguna vez has ido a Perú?"},
+    "formula2": {
+      "title_es": "Con cuándo: pasado simple",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "I"},
+        {"role": "verb", "label_es": "verbo pasado", "en": "went"},
+        {"role": "place", "label_es": "dónde", "en": "there"},
+        {"role": "time", "label_es": "cuándo", "en": "two years ago"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "I went there two years ago.", "es": "Fui hace dos años."}
+    },
+    "timeline": {"type": "past-to-now", "label_es": "Sin fecha: experiencia hasta hoy"},
+    "compare": {"es": "Fui a Cartagena en 2019.", "en": "I went to Cartagena in 2019.", "note_es": "Con fecha exacta (in 2019, ago, yesterday) va pasado simple. Sin fecha: I have been to Cartagena."},
+    "mistake": {"wrong": "I have visited Peru two years ago.", "right": "I visited Peru two years ago.", "why_es": "Ago marca un momento terminado: va pasado simple."},
+    "tip_es": "¿Dices cuándo? Pasado simple. ¿No importa cuándo? Have / has + participio."
+  },
+  "A1-11-0": {
+    "icon": "🔗",
+    "purpose_es": "Para dar más fuerza a un adjetivo y unir dos ideas.",
+    "idea_es": "Really, very, quite, a bit van justo antes del adjetivo. And, but, so y because unen dos ideas en una frase.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "The restaurant"},
+      {"role": "be", "label_es": "is", "en": "is"},
+      {"role": "adjective", "label_es": "grado + adjetivo", "en": "quite small"},
+      {"role": "connector", "label_es": "but (contraste)", "en": "but"},
+      {"role": "adjective", "label_es": "grado + adjetivo", "en": "really nice"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "The restaurant is quite small but really nice.", "es": "El restaurante es bastante pequeño pero muy bonito."},
+    "formula2": {
+      "title_es": "Resultado con so",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "It"},
+        {"role": "be", "label_es": "was", "en": "was"},
+        {"role": "adjective", "label_es": "adjetivo", "en": "cheap"},
+        {"role": "connector", "label_es": "so (resultado)", "en": "so"},
+        {"role": "complement", "label_es": "resultado", "en": "we bought two"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "It was cheap, so we bought two.", "es": "Estaba barato, así que compramos dos."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: describe y conecta ideas"},
+    "compare": {"es": "Es muy bonito, pero un poco caro.", "en": "It's very nice, but a bit expensive.", "note_es": "Como en español, el adverbio va antes del adjetivo. Ojo: un poco = a bit, y en inglés siempre va it's."},
+    "mistake": {"wrong": "The food is very excellent.", "right": "The food is excellent.", "why_es": "Excellent ya es fuerte: no lleva very."},
+    "tip_es": "and = y, but = pero, so = así que, because = porque. El adverbio siempre va antes del adjetivo."
+  },
+  "A1-11-1": {
+    "icon": "💡",
+    "purpose_es": "Para dar opciones y consejos.",
+    "idea_es": "Can = una opción posible. Should = un consejo, lo que tú crees que es buena idea. Los dos van con verbo base, sin to y sin -s.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "You"},
+      {"role": "modal", "label_es": "should", "en": "should"},
+      {"role": "verb", "label_es": "verbo base", "en": "try"},
+      {"role": "object", "label_es": "complemento", "en": "the arepas"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "You should try the arepas.", "es": "Deberías probar las arepas."},
+    "formula2": {
+      "title_es": "Opción con can",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "You"},
+        {"role": "modal", "label_es": "can", "en": "can"},
+        {"role": "verb", "label_es": "verbo base", "en": "pay"},
+        {"role": "complement", "label_es": "cómo", "en": "by card"},
+        {"role": "place", "label_es": "dónde", "en": "in most shops"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "You can pay by card in most shops.", "es": "Puedes pagar con tarjeta en la mayoría de tiendas."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es un consejo"},
+    "compare": {"es": "Deberías visitar el museo.", "en": "You should visit the museum.", "note_es": "Deberías = should. Después va el verbo base directo: should visit, no should to visit."},
+    "mistake": {"wrong": "You should to visit the museum.", "right": "You should visit the museum.", "why_es": "Después de can y should no va to."},
+    "tip_es": "Can = puedes (opción). Should = deberías (consejo). Los dos + verbo base, sin to y sin -s."
+  },
+  "A1-12-0": {
+    "icon": "🗺️",
+    "purpose_es": "Para recomendar de forma general y amable.",
+    "idea_es": "Muchas recomendaciones usan to + verbo después de una frase fija (It's a good idea to...) o de verbos como need, try, want.",
+    "formula": [
+      {"role": "be", "label_es": "it is", "en": "It's"},
+      {"role": "complement", "label_es": "frase fija", "en": "a good idea"},
+      {"role": "verb", "label_es": "to + verbo", "en": "to arrive"},
+      {"role": "time", "label_es": "cuándo", "en": "twenty minutes early"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "It's a good idea to arrive twenty minutes early.", "es": "Es buena idea llegar veinte minutos antes."},
+    "formula2": {
+      "title_es": "Verbo + to",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "You"},
+        {"role": "verb", "label_es": "need / try / want", "en": "need"},
+        {"role": "verb", "label_es": "to + verbo", "en": "to bring"},
+        {"role": "object", "label_es": "complemento", "en": "your ID"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "You need to bring your ID.", "es": "Necesitas traer tu documento."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es una recomendación"},
+    "compare": {"es": "Es buena idea reservar.", "en": "It's a good idea to book.", "note_es": "En español no hay sujeto ni to; en inglés empieza con it's y el verbo lleva to delante."},
+    "mistake": {"wrong": "I recommend to visit the museum.", "right": "I recommend visiting the museum.", "why_es": "Recommend no va con to + verbo: usa -ing."},
+    "tip_es": "Frases clave: It's a good idea to..., You need to..., The best way is to... + verbo."
+  },
+  "A1-12-1": {
+    "icon": "🙏",
+    "purpose_es": "Para pedir favores y hacer sugerencias.",
+    "idea_es": "Can es directo y amigable, could es más educado, should we...? propone o pide consejo. Siempre van con verbo base.",
+    "formula": [
+      {"role": "modal", "label_es": "could", "en": "Could"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "verb", "label_es": "verbo base", "en": "open"},
+      {"role": "object", "label_es": "complemento", "en": "the window"},
+      {"role": "complement", "label_es": "cortesía", "en": "please"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Could you open the window, please?", "es": "¿Podrías abrir la ventana, por favor?"},
+    "formula2": {
+      "title_es": "Sugerencia",
+      "parts": [
+        {"role": "modal", "label_es": "should", "en": "Should"},
+        {"role": "subject", "label_es": "sujeto", "en": "we"},
+        {"role": "verb", "label_es": "verbo base", "en": "invite"},
+        {"role": "object", "label_es": "complemento", "en": "Ana"},
+        {"role": "complement", "label_es": "también", "en": "too"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Should we invite Ana too?", "es": "¿Invitamos a Ana también?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es un pedido amable"},
+    "compare": {"es": "¿Me pasas la sal?", "en": "Can you pass me the salt, please?", "note_es": "En español basta el presente; en inglés el pedido necesita can o could, y suena mejor con please."},
+    "mistake": {"wrong": "You pass me the salt?", "right": "Can you pass me the salt, please?", "why_es": "Para pedir algo, empieza con Can o Could, no con you."},
+    "tip_es": "Can = directo, could = más educado, Should we...? = ¿qué tal si...? Todos + verbo base."
+  },
+  "A1-13-0": {
+    "icon": "🤝",
+    "purpose_es": "Para decir yo también o yo tampoco.",
+    "idea_es": "A una frase positiva: So + ayudante + sujeto (So do I). A una negativa: Neither + ayudante + sujeto (Neither do I).",
+    "formula": [
+      {"role": "connector", "label_es": "so (también)", "en": "So"},
+      {"role": "be", "label_es": "mismo ayudante", "en": "am"},
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "So am I.", "es": "Yo también."},
+    "formula2": {
+      "title_es": "Para frases negativas",
+      "parts": [
+        {"role": "connector", "label_es": "neither (tampoco)", "en": "Neither"},
+        {"role": "aux", "label_es": "mismo ayudante", "en": "do"},
+        {"role": "subject", "label_es": "sujeto", "en": "I"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "Neither do I.", "es": "Yo tampoco."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es estar de acuerdo"},
+    "compare": {"es": "Soy de Bogotá. —Yo también.", "en": "I'm from Bogotá. — So am I.", "note_es": "Yo también no se traduce palabra por palabra: so + el mismo ayudante de la primera frase + sujeto."},
+    "mistake": {"wrong": "I don't like fish. — Me too.", "right": "I don't like fish. — Me neither.", "why_es": "A una frase negativa se responde con neither, no con too."},
+    "tip_es": "Copia el ayudante: I'm → So am I. I can → So can I. I don't → Neither do I."
+  },
+  "A1-13-1": {
+    "icon": "🛎️",
+    "purpose_es": "Para pedir y ofrecer cosas con cortesía.",
+    "idea_es": "Would hace que el pedido suene educado e indirecto. Nunca cambia de forma. I would casi siempre se acorta: I'd.",
+    "formula": [
+      {"role": "modal", "label_es": "would", "en": "Would"},
+      {"role": "subject", "label_es": "sujeto", "en": "you"},
+      {"role": "verb", "label_es": "mind", "en": "mind"},
+      {"role": "verb", "label_es": "verbo + -ing", "en": "helping"},
+      {"role": "object", "label_es": "pronombre objeto", "en": "me"},
+      {"role": "complement", "label_es": "complemento", "en": "with this bag"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "Would you mind helping me with this bag?", "es": "¿Te molestaría ayudarme con esta maleta?"},
+    "formula2": {
+      "title_es": "Pedir algo",
+      "parts": [
+        {"role": "subject", "label_es": "I would", "en": "I'd"},
+        {"role": "verb", "label_es": "like", "en": "like"},
+        {"role": "object", "label_es": "lo que pides", "en": "two tickets"},
+        {"role": "complement", "label_es": "cortesía", "en": "please"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "I'd like two tickets, please.", "es": "Quisiera dos boletas, por favor."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es un pedido educado"},
+    "compare": {"es": "Quiero dos boletas.", "en": "I'd like two tickets, please.", "note_es": "Quiero suena normal en español; en inglés I want es brusco al pedir. Usa I'd like."},
+    "mistake": {"wrong": "I'd like going to the cinema.", "right": "I'd like to go to the cinema.", "why_es": "Después de would like va to + verbo, no -ing."},
+    "tip_es": "Would you mind + -ing? Si aceptas, responde Not at all (no me molesta)."
+  },
+  "A1-14-0": {
+    "icon": "🏆",
+    "purpose_es": "Para comparar dos cosas o elegir la número uno.",
+    "idea_es": "Comparativo (dos cosas): -er / more + than. Superlativo (el número uno de un grupo): the -est / the most + in.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "Bogotá"},
+      {"role": "be", "label_es": "is", "en": "is"},
+      {"role": "adjective", "label_es": "the + -est", "en": "the largest"},
+      {"role": "noun", "label_es": "sustantivo", "en": "city"},
+      {"role": "place", "label_es": "in + grupo", "en": "in Colombia"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "Bogotá is the largest city in Colombia.", "es": "Bogotá es la ciudad más grande de Colombia."},
+    "formula2": {
+      "title_es": "Comparativo",
+      "parts": [
+        {"role": "subject", "label_es": "primera cosa", "en": "The Amazon"},
+        {"role": "be", "label_es": "is", "en": "is"},
+        {"role": "adjective", "label_es": "adjetivo + -er", "en": "longer"},
+        {"role": "connector", "label_es": "than", "en": "than"},
+        {"role": "complement", "label_es": "segunda cosa", "en": "the Magdalena"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "The Amazon is longer than the Magdalena.", "es": "El Amazonas es más largo que el Magdalena."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: compara y ordena"},
+    "compare": {"es": "la ciudad más grande de Colombia", "en": "the largest city in Colombia", "note_es": "Más grande de = the largest in. El adjetivo corto toma -est y el lugar va con in, no con of."},
+    "mistake": {"wrong": "Bogotá is the most large city in Colombia.", "right": "Bogotá is the largest city in Colombia.", "why_es": "Adjetivo corto: the + -est, sin most."},
+    "tip_es": "Dos cosas: -er / more + than. El número uno: the -est / the most + in."
+  },
+  "A1-14-1": {
+    "icon": "📐",
+    "purpose_es": "Para preguntar medidas: altura, largo, distancia.",
+    "idea_es": "En inglés se pregunta con how + adjetivo: how tall, how long, how high. La respuesta da número + unidad.",
+    "formula": [
+      {"role": "question", "label_es": "how + adjetivo", "en": "How high"},
+      {"role": "be", "label_es": "am / is / are", "en": "is"},
+      {"role": "subject", "label_es": "sujeto", "en": "Monserrate"},
+      {"role": "end", "label_es": "signo", "en": "?"}
+    ],
+    "example": {"en": "How high is Monserrate?", "es": "¿Qué altura tiene Monserrate?"},
+    "formula2": {
+      "title_es": "Respuesta",
+      "parts": [
+        {"role": "be", "label_es": "it is", "en": "It's"},
+        {"role": "complement", "label_es": "número + unidad", "en": "about 200 kilometres"},
+        {"role": "adjective", "label_es": "adjetivo", "en": "long"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "It's about 200 kilometres long.", "es": "Mide unos 200 kilómetros de largo."}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: son medidas"},
+    "compare": {"es": "¿Cuánto mide él?", "en": "How tall is he?", "note_es": "Cuánto mide no se dice con how much: en inglés va how + adjetivo (tall, long, high)."},
+    "mistake": {"wrong": "How much tall is he?", "right": "How tall is he?", "why_es": "Para medidas: how + adjetivo directo, sin much."},
+    "tip_es": "How tall (personas), how high (montañas), how long (ríos), how deep, how far, how hot."
+  },
+  "A1-15-0": {
+    "icon": "🗓️",
+    "purpose_es": "Para hablar de planes y citas futuras.",
+    "idea_es": "Be going to + verbo = intención. Am/is/are + -ing = cita ya acordada, casi siempre con hora y lugar.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto + am", "en": "I'm"},
+      {"role": "aux", "label_es": "going to", "en": "going to"},
+      {"role": "verb", "label_es": "verbo base", "en": "study"},
+      {"role": "object", "label_es": "complemento", "en": "medicine"},
+      {"role": "time", "label_es": "cuándo", "en": "next year"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I'm going to study medicine next year.", "es": "Voy a estudiar medicina el próximo año."},
+    "formula2": {
+      "title_es": "Cita acordada",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto + are", "en": "We're"},
+        {"role": "verb", "label_es": "verbo + -ing", "en": "meeting"},
+        {"role": "object", "label_es": "con quién", "en": "the teacher"},
+        {"role": "time", "label_es": "cuándo", "en": "at four on Friday"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "We're meeting the teacher at four on Friday.", "es": "Nos vemos con la profesora el viernes a las cuatro."}
+    },
+    "timeline": {"type": "future-plan", "label_es": "Plan o cita ya decidida"},
+    "compare": {"es": "Voy a estudiar esta noche.", "en": "I'm going to study tonight.", "note_es": "Voy a = I'm going to. El am/is/are es obligatorio: I going to está mal."},
+    "mistake": {"wrong": "I going to study tonight.", "right": "I'm going to study tonight.", "why_es": "Going to necesita am, is o are antes."},
+    "tip_es": "Intención: be going to + verbo. Cita con hora y lugar: am/is/are + -ing (I'm meeting Ana at six)."
+  },
+  "A1-15-1": {
+    "icon": "📩",
+    "purpose_es": "Para dejar y pasar mensajes.",
+    "idea_es": "Tell lleva una persona justo después (tell him). Say no: va directo a las palabras (say that again).",
+    "formula": [
+      {"role": "verb", "label_es": "tell", "en": "Tell"},
+      {"role": "object", "label_es": "persona", "en": "him"},
+      {"role": "verb", "label_es": "to + verbo", "en": "to call"},
+      {"role": "object", "label_es": "pronombre objeto", "en": "me"},
+      {"role": "particle", "label_es": "partícula", "en": "back"},
+      {"role": "time", "label_es": "cuándo", "en": "after six"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "Tell him to call me back after six.", "es": "Dile que me devuelva la llamada después de las seis."},
+    "formula2": {
+      "title_es": "Con say",
+      "parts": [
+        {"role": "modal", "label_es": "can", "en": "Can"},
+        {"role": "subject", "label_es": "sujeto", "en": "you"},
+        {"role": "verb", "label_es": "say", "en": "say"},
+        {"role": "object", "label_es": "las palabras", "en": "that"},
+        {"role": "complement", "label_es": "otra vez", "en": "again"},
+        {"role": "complement", "label_es": "cortesía", "en": "please"},
+        {"role": "end", "label_es": "signo", "en": "?"}
+      ],
+      "example": {"en": "Can you say that again, please?", "es": "¿Puedes repetir eso, por favor?"}
+    },
+    "timeline": {"type": "none", "label_es": "No es de tiempo: es pasar un mensaje"},
+    "compare": {"es": "Dile que llego tarde.", "en": "Tell him that I'm late.", "note_es": "Decir puede ser tell o say. Con persona (dile, dime) va tell: tell him, tell me."},
+    "mistake": {"wrong": "She said me that she was late.", "right": "She told me that she was late.", "why_es": "Say no lleva persona después; con persona se usa tell."},
+    "tip_es": "Tell + persona (tell me, tell Ana). Say + palabras (say hello, say that again)."
+  },
+  "A1-16-0": {
+    "icon": "🌱",
+    "purpose_es": "Para contar cómo ha cambiado tu vida.",
+    "idea_es": "Pasado simple: etapa terminada (I lived). Presente: cómo es hoy (I live). Have + participio: cambio del pasado a hoy.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "My city"},
+      {"role": "aux", "label_es": "have / has", "en": "has"},
+      {"role": "verb", "label_es": "participio", "en": "changed"},
+      {"role": "complement", "label_es": "cuánto", "en": "a lot"},
+      {"role": "time", "label_es": "periodo", "en": "in ten years"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "My city has changed a lot in ten years.", "es": "Mi ciudad ha cambiado mucho en diez años."},
+    "formula2": {
+      "title_es": "Etapa terminada",
+      "parts": [
+        {"role": "subject", "label_es": "sujeto", "en": "I"},
+        {"role": "verb", "label_es": "verbo pasado", "en": "lived"},
+        {"role": "place", "label_es": "dónde", "en": "in Cali"},
+        {"role": "time", "label_es": "hasta cuándo", "en": "until 2018"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "I lived in Cali until 2018.", "es": "Viví en Cali hasta 2018."}
+    },
+    "timeline": {"type": "past-to-now", "label_es": "Un cambio que va del pasado hasta hoy"},
+    "compare": {"es": "Vivo aquí desde 2015.", "en": "I have lived here since 2015.", "note_es": "Para algo que empezó antes y sigue hoy, el español usa presente; el inglés usa have + participio."},
+    "mistake": {"wrong": "I have lived here in 2015.", "right": "I lived here in 2015.", "why_es": "Con una fecha terminada se usa el pasado simple."},
+    "tip_es": "Antes (terminado): I lived. Hoy: I live. Del pasado hasta hoy: I have lived."
+  },
+  "A1-16-1": {
+    "icon": "🚀",
+    "purpose_es": "Para hablar de planes, metas y deseos.",
+    "idea_es": "Going to, plan to, want to, hope to, would like to + verbo base. Cada uno es más o menos seguro.",
+    "formula": [
+      {"role": "subject", "label_es": "sujeto", "en": "I"},
+      {"role": "verb", "label_es": "verbo de plan", "en": "hope"},
+      {"role": "verb", "label_es": "to + verbo", "en": "to work"},
+      {"role": "place", "label_es": "dónde", "en": "abroad"},
+      {"role": "time", "label_es": "cuándo", "en": "one day"},
+      {"role": "end", "label_es": "punto", "en": "."}
+    ],
+    "example": {"en": "I hope to work abroad one day.", "es": "Espero trabajar en el exterior algún día."},
+    "formula2": {
+      "title_es": "Deseo amable",
+      "parts": [
+        {"role": "subject", "label_es": "I would", "en": "I'd"},
+        {"role": "verb", "label_es": "like", "en": "like"},
+        {"role": "verb", "label_es": "to + verbo", "en": "to learn"},
+        {"role": "object", "label_es": "complemento", "en": "another language"},
+        {"role": "end", "label_es": "punto", "en": "."}
+      ],
+      "example": {"en": "I'd like to learn another language.", "es": "Me gustaría aprender otro idioma."}
+    },
+    "timeline": {"type": "future-plan", "label_es": "Planes y deseos para el futuro"},
+    "compare": {"es": "Quiero viajar.", "en": "I want to travel.", "note_es": "En español el segundo verbo va solo; en inglés lleva to delante: want to travel."},
+    "mistake": {"wrong": "I hope travelling abroad.", "right": "I hope to travel abroad.", "why_es": "Hope, want, plan y would like van con to + verbo, no con -ing."},
+    "tip_es": "Del más seguro al menos: going to, plan to, want to, hope to, would like to."
+  }
+}

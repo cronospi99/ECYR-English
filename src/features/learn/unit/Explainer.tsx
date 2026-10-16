@@ -5,7 +5,7 @@
  * and one trick. Shown before the full lesson so the class is not a wall of text.
  * Content: src/content/generated/explainers-<level>.json, keyed "A1-2-0".
  */
-import { Fragment, useId } from 'react';
+import { useId } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowRight, Check, Lightbulb, X } from 'lucide-react';
 import { SpeakButton } from '@/components/learning/SpeakButton';
@@ -158,14 +158,21 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
       <div className="flex flex-wrap items-center gap-y-2">
         {chips.map((c, i) => {
           const col = ROLE[c.role] ?? 'var(--blue)';
+          // The arrow travels with the block after it, so a line never ends on an arrow.
           return (
-            <Fragment key={i}>
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 6, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: i * 0.08, type: 'spring', stiffness: 380, damping: 26 }}
-                className="flex flex-col items-center"
-              >
+            <motion.div
+              key={i}
+              initial={reduce ? false : { opacity: 0, y: 6, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: i * 0.08, type: 'spring', stiffness: 380, damping: 26 }}
+              className="flex items-end"
+            >
+              {i > 0 && (
+                <span className="text-label-3 px-1 pb-2" aria-hidden>
+                  <ArrowRight size={16} />
+                </span>
+              )}
+              <span className="flex flex-col items-center">
                 <span
                   className="rounded-t-[10px] px-2.5 pt-1 pb-0.5 text-[10.5px] font-bold tracking-wide whitespace-nowrap text-white uppercase"
                   style={{ background: col }}
@@ -178,13 +185,8 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
                 >
                   {c.en}
                 </span>
-              </motion.div>
-              {i < chips.length - 1 && (
-                <motion.span initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.08 + 0.05 }} className="text-label-3 px-1" aria-hidden>
-                  <ArrowRight size={16} />
-                </motion.span>
-              )}
-            </Fragment>
+              </span>
+            </motion.div>
           );
         })}
       </div>
