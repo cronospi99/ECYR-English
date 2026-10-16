@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { ink } from '@/lib/color';
 
 /** Irregular past / participle forms used to find inflected verbs in examples. */
 const IRREGULAR: Record<string, string[]> = {
@@ -79,7 +80,7 @@ export function Highlight({ text, terms, color = 'var(--blue)' }: { text: string
           <mark
             key={i}
             className="rounded-[5px] px-0.5 font-semibold"
-            style={{ color, background: `color-mix(in srgb, ${color} 16%, transparent)` }}
+            style={{ color: ink(color), background: `color-mix(in srgb, ${color} 16%, transparent)` }}
           >
             {p}
           </mark>

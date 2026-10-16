@@ -34,7 +34,7 @@ export function Page({
       {back && (
         <Link
           to={back.to}
-          className="text-ios-blue -ml-1.5 mb-2 inline-flex items-center gap-0.5 text-[17px] hover:opacity-70"
+          className="text-ink-blue -ml-1.5 mb-2 inline-flex items-center gap-0.5 text-[17px] hover:opacity-70"
         >
           <ChevronLeft size={26} strokeWidth={2.4} className="-my-1" />
           {back.label}

@@ -5,6 +5,7 @@ import { EmptyState } from '@/components/ui/Misc';
 import { bandToCefr, type IeltsSnapshot } from '@/lib/ielts';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 const MODS = ['listening', 'reading', 'writing', 'speaking'] as const;
 const COLOR: Record<string, string> = {
@@ -20,7 +21,7 @@ export function IeltsSummary({ data, own = false }: { data: IeltsSnapshot; own?:
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
       <Card className="p-5">
         <div className="flex items-center gap-2">
-          <Award size={20} className="text-ios-indigo" />
+          <Award size={20} className="text-ink-indigo" />
           <h3 className="text-title-3">Bandas IELTS</h3>
         </div>
         <div className="mt-3 flex items-end gap-3">
@@ -34,7 +35,7 @@ export function IeltsSummary({ data, own = false }: { data: IeltsSnapshot; own?:
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {MODS.map((m) => (
             <div key={m} className="bg-fill-2 rounded-[14px] p-3 text-center">
-              <div className={cn('text-[20px] font-bold tabular-nums', data.scores[m] == null && 'text-label-3')} style={{ color: data.scores[m] != null ? COLOR[m] : undefined }}>
+              <div className={cn('text-[20px] font-bold tabular-nums', data.scores[m] == null && 'text-label-3')} style={{ color: data.scores[m] != null ? ink(COLOR[m]) : undefined }}>
                 {data.scores[m]?.toFixed(1) ?? '–'}
               </div>
               <div className="text-label-2 text-[11px] capitalize">{m}</div>
@@ -42,7 +43,7 @@ export function IeltsSummary({ data, own = false }: { data: IeltsSnapshot; own?:
           ))}
         </div>
         {own && (
-          <Link to="/ielts/progress" className="text-ios-indigo mt-4 inline-block text-[14px] font-semibold">
+          <Link to="/ielts/progress" className="text-ink-indigo mt-4 inline-block text-[14px] font-semibold">
             Ver progreso en el simulador
           </Link>
         )}

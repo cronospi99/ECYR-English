@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 export function Callout({
   tone = 'blue',
@@ -21,7 +22,7 @@ export function Callout({
       style={{ background: `color-mix(in srgb, ${color} 10%, transparent)` }}
     >
       {(title || icon) && (
-        <div className="mb-1 flex items-center gap-2 font-semibold" style={{ color }}>
+        <div className="mb-1 flex items-center gap-2 font-semibold" style={{ color: ink(color) }}>
           {icon}
           {title}
         </div>

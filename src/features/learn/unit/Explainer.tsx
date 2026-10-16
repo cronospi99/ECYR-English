@@ -10,6 +10,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowRight, Check, Lightbulb, X } from 'lucide-react';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { cn } from '@/lib/cn';
+import { deep, ink } from '@/lib/color';
 
 export type Role =
   | 'subject'
@@ -120,14 +121,14 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
         )}
         {e.mistake && (
           <div className="rounded-[16px] p-3.5" style={{ background: 'color-mix(in srgb, var(--orange) 9%, transparent)' }}>
-            <div className="text-ios-orange mb-2 text-[11px] font-bold tracking-wide uppercase">Error típico</div>
+            <div className="text-ink-orange mb-2 text-[11px] font-bold tracking-wide uppercase">Error típico</div>
             <div className="flex items-start gap-2 text-[15px]">
-              <X size={17} className="text-ios-red mt-0.5 shrink-0" />
+              <X size={17} className="text-ink-red mt-0.5 shrink-0" />
               <span className="text-label-2 line-through decoration-1">{e.mistake.wrong}</span>
             </div>
             <ArrowDown size={16} className="text-label-3 my-1 ml-0.5" aria-hidden />
             <div className="flex items-start gap-2 text-[15px] font-semibold">
-              <Check size={17} className="text-ios-green mt-0.5 shrink-0" />
+              <Check size={17} className="text-ink-green mt-0.5 shrink-0" />
               <span>{e.mistake.right}</span>
             </div>
             <p className="text-label-2 mt-2 text-[13px] leading-snug">{e.mistake.why_es}</p>
@@ -175,13 +176,13 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
               <span className="flex flex-col items-center">
                 <span
                   className="rounded-t-[10px] px-2.5 pt-1 pb-0.5 text-[10.5px] font-bold tracking-wide whitespace-nowrap text-white uppercase"
-                  style={{ background: col }}
+                  style={{ background: deep(col, 58) }}
                 >
                   {c.label_es}
                 </span>
                 <span
                   className="rounded-b-[10px] px-2.5 py-1 text-[15.5px] font-semibold whitespace-nowrap"
-                  style={{ color: `color-mix(in srgb, ${col} 72%, var(--label))`, background: `color-mix(in srgb, ${col} 14%, transparent)`, boxShadow: `inset 0 0 0 1.5px color-mix(in srgb, ${col} 40%, transparent)` }}
+                  style={{ color: ink(col), background: `color-mix(in srgb, ${col} 14%, transparent)`, boxShadow: `inset 0 0 0 1.5px color-mix(in srgb, ${col} 40%, transparent)` }}
                 >
                   {c.en}
                 </span>

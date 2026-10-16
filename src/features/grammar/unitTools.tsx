@@ -84,9 +84,9 @@ export function UnitGrammarTools({ unit, level }: { unit: Unit; level: CefrLevel
     <section className="mt-8">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
         <h3 className="text-title-2 flex items-center gap-2">
-          <Sigma size={22} className="text-ios-teal" /> Gramática interactiva
+          <Sigma size={22} className="text-ink-teal" /> Gramática interactiva
         </h3>
-        <Link to={info.to} className="text-ios-blue inline-flex items-center text-[15px] font-medium">
+        <Link to={info.to} className="text-ink-blue inline-flex items-center text-[15px] font-medium">
           Abrir {info.title} <ChevronRight size={16} />
         </Link>
       </div>

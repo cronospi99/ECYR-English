@@ -69,7 +69,7 @@ export function ReadingLibrary() {
         ))}
       </div>
       {!data.length && <p className="text-label-2">Las lecturas se están preparando.</p>}
-      <p className="text-label-3 mb-3 text-[12.5px]">
+      <p className="text-label-2 mb-3 text-[12.5px]">
         Textos originales de ECYR English. Las personas, empresas, estudios y cifras de las noticias, informes e historias son ficticios, salvo en las
         biografías y temas históricos.
       </p>
@@ -89,7 +89,7 @@ export function ReadingLibrary() {
               <span className="flex flex-wrap items-center gap-1.5">
                 <LevelChip level={r.level} />
                 <span className="text-label-2 text-[12px] font-semibold">{GENRE_ES[r.genre] ?? r.genre}</span>
-                {done[`lib-${r.id}`] && <span className="text-ios-green text-[12px] font-semibold">✓ {done[`lib-${r.id}`]!.score}%</span>}
+                {done[`lib-${r.id}`] && <span className="text-ink-green text-[12px] font-semibold">✓ {done[`lib-${r.id}`]!.score}%</span>}
               </span>
               <span className="mt-1 block text-[16px] leading-snug font-bold">{r.title}</span>
               <span className="text-label-2 mt-0.5 flex items-center gap-1 text-[12.5px]">
@@ -159,7 +159,7 @@ function Reader({ r, onBack }: { r: LibReading; onBack: () => void }) {
               <p className="flex-1 text-[17px] leading-[1.7]">
                 <Glossed text={p} terms={terms} onTap={setGloss} />
               </p>
-              <button type="button" onClick={() => read(i)} className="text-ios-blue mt-1 h-8 w-8 shrink-0 rounded-full hover:bg-fill-2" aria-label={reading === i ? 'Detener' : 'Escuchar párrafo'}>
+              <button type="button" onClick={() => read(i)} className="text-ink-blue mt-1 h-8 w-8 shrink-0 rounded-full hover:bg-fill-2" aria-label={reading === i ? 'Detener' : 'Escuchar párrafo'}>
                 {reading === i ? <Square size={15} className="mx-auto" /> : <Volume2 size={16} className="mx-auto" />}
               </button>
             </div>
@@ -169,7 +169,7 @@ function Reader({ r, onBack }: { r: LibReading; onBack: () => void }) {
               <span>
                 <b>{gloss}</b> — {glossary.get(gloss.toLowerCase())}
               </span>
-              <button type="button" className="text-ios-blue text-[14px] font-semibold" onClick={() => setGloss(null)}>
+              <button type="button" className="text-ink-blue text-[14px] font-semibold" onClick={() => setGloss(null)}>
                 OK
               </button>
             </div>

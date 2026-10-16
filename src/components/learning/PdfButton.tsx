@@ -93,7 +93,7 @@ export function PdfButton({ build, label = 'Tarea en PDF', size = 'sm' }: { buil
                   />
                 </label>
               </div>
-              {error && <p className="text-ios-red mt-3 text-[13px]">{error}</p>}
+              {error && <p className="text-ink-red mt-3 text-[13px]">{error}</p>}
               <Button className="mt-5 w-full" onClick={make} disabled={busy}>
                 {busy ? <Loader2 size={16} className="animate-spin" /> : <FileDown size={16} />} Descargar PDF
               </Button>

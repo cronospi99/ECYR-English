@@ -75,9 +75,9 @@ export function UnitVerbTools({ unit }: { unit: Unit }) {
     <section className="mt-8">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 px-1">
         <h3 className="text-title-2 flex items-center gap-2">
-          <Wrench size={22} className="text-ios-orange" /> Verb Lab
+          <Wrench size={22} className="text-ink-orange" /> Verb Lab
         </h3>
-        <Link to="/practice/verbs" className="text-ios-blue inline-flex items-center text-[15px] font-medium">
+        <Link to="/practice/verbs" className="text-ink-blue inline-flex items-center text-[15px] font-medium">
           Abrir el laboratorio completo <ChevronRight size={16} />
         </Link>
       </div>

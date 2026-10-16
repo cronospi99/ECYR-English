@@ -11,12 +11,13 @@ import type { PortfolioItem } from '@/lib/portfolio';
 import { KIND_META } from './meta';
 import { TaskCard } from './TaskCard';
 import { useMyTasks, type TaskView } from './useMyTasks';
+import { ink } from '@/lib/color';
 
 export { TasksWidget } from './TasksWidget';
 
 const eyebrow = (
   <span className="inline-flex items-center gap-1.5">
-    <ClipboardList size={15} className="text-ios-blue" aria-hidden /> Tareas
+    <ClipboardList size={15} className="text-ink-blue" aria-hidden /> Tareas
   </span>
 );
 
@@ -59,7 +60,7 @@ export default function TasksPage() {
         <PageLoader />
       ) : t.error ? (
         <Card className="mx-auto max-w-xl p-6 text-center">
-          <p className="text-ios-red text-body" role="alert">
+          <p className="text-ink-red text-body" role="alert">
             {t.error}
           </p>
           <Button className="mt-4" variant="tinted" onClick={() => void t.reload()}>
@@ -75,7 +76,7 @@ export default function TasksPage() {
           </div>
 
           {submitErr && (
-            <p role="alert" className="text-ios-red text-subhead">
+            <p role="alert" className="text-ink-red text-subhead">
               {submitErr}
             </p>
           )}
@@ -136,7 +137,7 @@ export default function TasksPage() {
 function Stat({ value, label, color }: { value: number; label: string; color: string }) {
   return (
     <Card className="px-4 py-3">
-      <div className="text-[28px] leading-none font-bold tabular-nums" style={{ color }}>
+      <div className="text-[28px] leading-none font-bold tabular-nums" style={{ color: ink(color) }}>
         {value}
       </div>
       <div className="text-footnote text-label-2 mt-1">{label}</div>

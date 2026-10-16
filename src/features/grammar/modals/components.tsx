@@ -72,6 +72,7 @@ import {
   type SectionId,
 } from './data';
 import { awardModals, shuffle, useCollect, useModalsArcade, useSfx } from './arcade';
+import { ink } from '@/lib/color';
 
 // ------------------------------------------------------------------ shared --
 
@@ -180,7 +181,7 @@ export function ArcadeHud({ className }: { className?: string }) {
         {rings}/{RING_KEYS.length}
       </span>
       <span className="bg-card shadow-card inline-flex h-9 items-center gap-1.5 rounded-full px-3.5 text-[14px] font-semibold tabular-nums">
-        <Trophy size={15} className="text-ios-orange" />
+        <Trophy size={15} className="text-ink-orange" />
         <span className="text-label-2 text-[12px] font-medium">Récord</span> {best}/14
       </span>
       <button
@@ -216,7 +217,7 @@ export function ModalIntro({ onNavigate }: { onNavigate?: (s: SectionId) => void
   return (
     <div className="grid items-start gap-4 lg:grid-cols-[1.15fr_0.85fr]">
       <Card className="p-5 sm:p-6">
-        <div className="text-ios-blue text-[13px] font-semibold tracking-wide uppercase">Empieza aquí</div>
+        <div className="text-ink-blue text-[13px] font-semibold tracking-wide uppercase">Empieza aquí</div>
         <h2 className="text-title-1 mt-1">¿Qué es un verbo modal?</h2>
         <p className="text-body text-label-2 mt-2 text-pretty">
           Un modal es un verbo auxiliar que no describe una acción: describe la <b className="text-label">actitud del hablante</b> ante esa acción. Lo posible
@@ -224,12 +225,12 @@ export function ModalIntro({ onNavigate }: { onNavigate?: (s: SectionId) => void
         </p>
         <div className="mt-5 space-y-2.5">
           <div className="bg-fill-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-[14px] border-l-4 border-[var(--orange)] px-4 py-3">
-            <span className="text-ios-orange text-[12px] font-bold tracking-wide uppercase">Hecho</span>
+            <span className="text-ink-orange text-[12px] font-bold tracking-wide uppercase">Hecho</span>
             <Example big e="She works on Sundays." className="min-w-0 flex-1" />
           </div>
           <div className="bg-fill-2 rounded-[14px] border-l-4 border-[var(--blue)] px-4 py-3">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="text-ios-blue text-[12px] font-bold tracking-wide uppercase">Actitud</span>
+              <span className="text-ink-blue text-[12px] font-bold tracking-wide uppercase">Actitud</span>
               <AnimatePresence mode="wait">
                 <motion.span key={att.m} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="min-w-0 flex-1">
                   <Example big e={`She ${att.m} on Sundays.`} />
@@ -261,7 +262,7 @@ export function ModalIntro({ onNavigate }: { onNavigate?: (s: SectionId) => void
       <Card className="p-5">
         <div className="mb-3 flex items-center justify-between gap-2">
           <h3 className="text-headline flex items-center gap-2">
-            <Gamepad2 size={20} className="text-ios-orange" /> Selecciona un nivel
+            <Gamepad2 size={20} className="text-ink-orange" /> Selecciona un nivel
           </h3>
           <span className="text-label-2 text-[13px]">Cada visita = 1 anillo</span>
         </div>
@@ -323,7 +324,7 @@ function Highlighted({ text, id }: { text: string; id: string }) {
     <>
       {parts.map((p, i) =>
         i % 2 === 1 ? (
-          <b key={i} className="text-ios-blue font-semibold not-italic">
+          <b key={i} className="text-ink-blue font-semibold not-italic">
             {p}
           </b>
         ) : (
@@ -507,7 +508,7 @@ export function SemiModals({ ids }: { ids?: string[] }) {
           <motion.div key={s.id} initial={reduce ? false : { opacity: 0, x: -18 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
             <Card className="h-full p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="text-ios-purple text-[17px] font-bold">{s.n}</h3>
+                <h3 className="text-ink-purple text-[17px] font-bold">{s.n}</h3>
                 {s.fn && <FnTag fn={s.fn} />}
               </div>
               <p className="text-label-2 mt-1.5 text-[14px] leading-snug">{s.u}</p>
@@ -588,7 +589,7 @@ export function FunctionMap({ only }: { only?: FunctionId[] }) {
                     return (
                       <th key={f.id} scope="col" className="px-1.5 py-2 text-center align-bottom font-semibold">
                         <span className="flex flex-col items-center gap-1">
-                          <Icon size={16} style={{ color: f.color }} aria-hidden />
+                          <Icon size={16} style={{ color: ink(f.color) }} aria-hidden />
                           <span className="text-[11px] leading-tight">{f.es}</span>
                         </span>
                       </th>
@@ -664,7 +665,7 @@ export function FunctionCard({ fn, highlight }: { fn: FunctionId; highlight?: st
       </ul>
       {f.tip && (
         <p className="text-label-2 mt-2.5 flex gap-1.5 text-[13px]">
-          <Lightbulb size={14} className="text-ios-orange mt-0.5 shrink-0" /> {f.tip}
+          <Lightbulb size={14} className="text-ink-orange mt-0.5 shrink-0" /> {f.tip}
         </p>
       )}
     </Card>
@@ -702,7 +703,7 @@ export function CertaintyScale({ withCheck = true }: { withCheck?: boolean }) {
             {CERTAINTY.map((c) => (
               <li key={c.id} className="bg-fill-2 rounded-[12px] px-3.5 py-2.5">
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <span className="text-[12px] font-bold tabular-nums" style={{ color: c.color }}>
+                  <span className="text-[12px] font-bold tabular-nums" style={{ color: ink(c.color) }}>
                     {c.pct}
                   </span>
                   <span className="text-label-2 text-[13px]">{c.es}</span>
@@ -779,7 +780,7 @@ function DeductionCheck({ tense }: { tense: 'present' | 'past' }) {
         {item.s.split('___').map((part, k) => (
           <span key={k}>
             {k > 0 && (
-              <span className={cn('mx-1 inline-block min-w-16 border-b-2 px-1 text-center', picked ? 'text-ios-blue border-[var(--blue)]' : 'border-[var(--label-3)]')}>
+              <span className={cn('mx-1 inline-block min-w-16 border-b-2 px-1 text-center', picked ? 'text-ink-blue border-[var(--blue)]' : 'border-[var(--label-3)]')}>
                 {picked ? (tense === 'past' ? `${word} have` : word) : ' '}
               </span>
             )}
@@ -841,7 +842,7 @@ export function ObligationScale({ withCheck = true }: { withCheck?: boolean }) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {OBLIGATION_LEVELS.map((l) => (
           <Card key={l.id} className="p-4" style={{ boxShadow: `inset 0 3px 0 ${l.color}, var(--shadow-card)` }}>
-            <div className="text-[13px] font-bold tracking-wide uppercase" style={{ color: l.color }}>
+            <div className="text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(l.color) }}>
               {l.es}
             </div>
             <div className="mt-1 text-[16px] font-semibold">{l.modals}</div>
@@ -1069,7 +1070,7 @@ export function FormBuilder({ modals = BUILDER_MODALS as readonly BuilderModal[]
         <div className="flex flex-wrap items-end gap-1.5" aria-hidden>
           {out.tokens.map((t, i) => (
             <span key={i} className="flex flex-col items-center gap-1">
-              <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: ROLE[t.r].color }}>
+              <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: ink(ROLE[t.r].color) }}>
                 {ROLE[t.r].es}
               </span>
               <span className="rounded-[10px] px-2.5 py-1 text-[15px] font-semibold" style={{ background: tint(ROLE[t.r].color, 16) }}>

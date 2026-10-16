@@ -92,7 +92,7 @@ export default function GrammarHubPage() {
                   <div className="text-title-3 mt-1">{m.title}</div>
                   <div className="text-label-2 text-[13px] font-medium">{m.subtitle}</div>
                   <p className="text-label-2 mt-1 line-clamp-2 text-[13px]">{m.description}</p>
-                  {sessions > 0 && <div className="text-ios-green mt-1 text-[12px] font-semibold">{sessions} prácticas completadas</div>}
+                  {sessions > 0 && <div className="text-ink-green mt-1 text-[12px] font-semibold">{sessions} prácticas completadas</div>}
                 </div>
                 <ChevronRight className="text-label-3 shrink-0 self-center" />
               </Card>
@@ -100,7 +100,7 @@ export default function GrammarHubPage() {
           );
         })}
       </div>
-      <Link to="/learn/visuals" className="text-ios-blue mt-6 inline-flex items-center gap-1 px-1 text-[15px] font-semibold">
+      <Link to="/learn/visuals" className="text-ink-blue mt-6 inline-flex items-center gap-1 px-1 text-[15px] font-semibold">
         Ver la biblioteca visual de infografías <ChevronRight size={16} />
       </Link>
     </Page>

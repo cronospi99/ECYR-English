@@ -206,7 +206,7 @@ export function PlanWizard({
                     </span>
                     <span className="truncate">{titleCase(u.title)}</span>
                     {u.score != null && (
-                      <span className={cn('text-[12px] font-semibold tabular-nums', !on && (u.score < 70 ? 'text-ios-orange' : 'text-ios-green'))}>
+                      <span className={cn('text-[12px] font-semibold tabular-nums', !on && (u.score < 70 ? 'text-ink-orange' : 'text-ink-green'))}>
                         {u.score}%
                       </span>
                     )}
@@ -240,7 +240,7 @@ export function PlanWizard({
               >
                 <span className="h-2 w-2 rounded-full" style={{ background: on ? '#fff' : SKILL_INFO[s].color }} />
                 {SKILL_INFO[s].label}
-                {suggested.includes(s) && !on && <Sparkles size={13} className="text-ios-purple" aria-label="recomendado" />}
+                {suggested.includes(s) && !on && <Sparkles size={13} className="text-ink-purple" aria-label="recomendado" />}
               </button>
             );
           })}
@@ -333,7 +333,7 @@ function Section({ n, title, hint, children }: { n: number; title: string; hint?
     <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
       <Card className="p-5">
         <div className="mb-3 flex items-baseline gap-2.5">
-          <span className="text-ios-blue text-[13px] font-bold tabular-nums">{n}</span>
+          <span className="text-ink-blue text-[13px] font-bold tabular-nums">{n}</span>
           <h3 className="text-headline">{title}</h3>
         </div>
         {children}

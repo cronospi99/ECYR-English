@@ -18,6 +18,7 @@ import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 type Tab = 'linking' | 'adjectives' | 'adverbs';
 const TABS: { value: Tab; label: string }[] = [
@@ -128,12 +129,12 @@ function WordGrid({ words, color }: { words: Word[]; color: string }) {
                   <div className="text-[16.5px] leading-tight font-bold">{x.w}</div>
                   {(showEs || on) && <div className="text-label-2 text-[12.5px] leading-snug">{x.es}</div>}
                 </div>
-                <span className="text-label-3 text-[10.5px] font-bold">{x.level}</span>
+                <span className="text-label-2 text-[10.5px] font-bold">{x.level}</span>
               </div>
               {x.badges && x.badges.length > 0 && (
                 <div className="mt-1.5 flex flex-wrap gap-1">
                   {x.badges.map((b) => (
-                    <span key={b} className="rounded-full px-1.5 py-0.5 text-[10px] font-semibold" style={{ color, background: `color-mix(in srgb, ${color} 13%, transparent)` }}>
+                    <span key={b} className="rounded-full px-1.5 py-0.5 text-[10px] font-semibold" style={{ color: ink(color), background: `color-mix(in srgb, ${color} 13%, transparent)` }}>
                       {b}
                     </span>
                   ))}
@@ -151,7 +152,7 @@ function WordGrid({ words, color }: { words: Word[]; color: string }) {
                       </span>
                     </div>
                     {x.extra && <div className="text-label-2 mt-1.5 text-[12.5px]">{x.extra}</div>}
-                    {x.note && <div className="text-ios-orange mt-1.5 text-[12.5px]">⚠️ {x.note}</div>}
+                    {x.note && <div className="text-ink-orange mt-1.5 text-[12.5px]">⚠️ {x.note}</div>}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -220,7 +221,7 @@ function Quiz({ title, make, color, refId, pdf }: { title: string; make: () => L
     <Card className="mt-6 p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-[18px] font-bold">
-          <Sparkles size={18} style={{ color }} /> {title}
+          <Sparkles size={18} style={{ color: ink(color) }} /> {title}
         </div>
         <div className="flex gap-2">
           <button type="button" className="bg-fill-2 rounded-full px-3 py-1.5 text-[13px] font-semibold" onClick={() => setRound((r) => r + 1)}>
@@ -271,7 +272,7 @@ function Linking() {
           <Card className="mb-4 flex flex-wrap items-start gap-4 p-5" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${g.color} 14%, var(--card)), var(--card) 70%)` }}>
             <span className="text-[44px] leading-none">{g.emoji}</span>
             <div className="min-w-[220px] flex-1">
-              <div className="text-[22px] font-extrabold" style={{ color: g.color }}>
+              <div className="text-[22px] font-extrabold" style={{ color: ink(g.color) }}>
                 {g.en} <span className="text-label-2 text-[15px] font-semibold">· {g.es}</span>
               </div>
               <p className="mt-1 text-[15px]">{g.use_es}</p>
@@ -426,10 +427,10 @@ function Adverbs() {
           <Card className="mb-4 flex flex-wrap items-start gap-4 p-5" style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${t.color} 14%, var(--card)), var(--card) 70%)` }}>
             <span className="text-[44px] leading-none">{t.emoji}</span>
             <div className="min-w-[220px] flex-1">
-              <div className="text-[22px] font-extrabold" style={{ color: t.color }}>
+              <div className="text-[22px] font-extrabold" style={{ color: ink(t.color) }}>
                 {t.en} <span className="text-label-2 text-[15px] font-semibold">· {t.es}</span>
               </div>
-              <div className="mt-1 inline-flex rounded-full px-2.5 py-0.5 text-[13px] font-bold" style={{ color: t.color, background: `color-mix(in srgb, ${t.color} 14%, transparent)` }}>
+              <div className="mt-1 inline-flex rounded-full px-2.5 py-0.5 text-[13px] font-bold" style={{ color: ink(t.color), background: `color-mix(in srgb, ${t.color} 14%, transparent)` }}>
                 {t.q} · {t.q_es}
               </div>
               <p className="mt-2 text-[15px]">{t.rule_es}</p>

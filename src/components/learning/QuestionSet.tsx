@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { checkTyped, type LibQuestion } from '@/content/library';
 import type { WsSection } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 type Answer = number | string | string[] | undefined;
 type Verdict = 'right' | 'almost' | 'wrong';
@@ -86,7 +87,7 @@ export function QuestionSet({
               <div className="flex gap-2.5">
                 <span
                   className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
-                  style={{ background: `color-mix(in srgb, ${color} 15%, transparent)`, color }}
+                  style={{ background: `color-mix(in srgb, ${color} 15%, transparent)`, color: ink(color) }}
                 >
                   {i + numberFrom}
                 </span>
@@ -94,7 +95,7 @@ export function QuestionSet({
                   <Body q={q} a={answers[i]} set={(a) => set(i, a)} checked={checked} ng={ng} color={color} />
                   {checked && (
                     <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="mt-2.5 text-[13.5px] leading-snug">
-                      <span className={cn('inline-flex items-center gap-1 font-semibold', v === 'wrong' ? 'text-ios-red' : 'text-ios-green')}>
+                      <span className={cn('inline-flex items-center gap-1 font-semibold', v === 'wrong' ? 'text-ink-red' : 'text-ink-green')}>
                         {v === 'wrong' ? <X size={15} /> : <Check size={15} />}
                         {v === 'right' ? 'Correcto' : v === 'almost' ? 'Casi: revisa la ortografía' : 'Respuesta:'}
                       </span>{' '}
@@ -206,7 +207,7 @@ function Body({ q, a, set, checked, ng, color }: { q: LibQuestion; a: Answer; se
               autoCorrect="off"
               spellCheck={false}
               className="bg-fill-2 mx-1 inline-block w-[150px] rounded-[8px] px-2 py-0.5 text-[15px] font-semibold outline-none focus:ring-2"
-              style={{ color }}
+              style={{ color: ink(color) }}
             />
             {parts[1]}
           </p>

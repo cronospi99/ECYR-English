@@ -78,7 +78,7 @@ export default function CoachPage() {
     <Page
       title={
         <span className="inline-flex items-center gap-2">
-          <Sparkles className="text-ios-purple" /> AI Coach
+          <Sparkles className="text-ink-purple" /> AI Coach
         </span>
       }
       subtitle="Tu tutor personal: conversa en inglés, corrige tus frases y entiende la gramática a tu nivel."
@@ -182,7 +182,7 @@ export default function CoachPage() {
               </div>
             </div>
           )}
-          {error && <p className="text-ios-red text-center text-[14px]">{error}</p>}
+          {error && <p className="text-ink-red text-center text-[14px]">{error}</p>}
           <div ref={end} />
         </div>
         <form

@@ -72,7 +72,7 @@ export function VisualSet({
     <section className="mt-6" aria-label={title}>
       <div className="mb-3 flex items-baseline justify-between gap-3 px-1">
         <h3 className="text-title-3 flex items-center gap-2">
-          <ImageIcon size={20} className="text-ios-pink" /> {title}
+          <ImageIcon size={20} className="text-ink-pink" /> {title}
         </h3>
         {subtitle && <span className="text-label-2 text-[13px]">{subtitle}</span>}
       </div>

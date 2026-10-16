@@ -25,6 +25,7 @@ import {
   type ScoreScale,
 } from '@/lib/portfolio';
 import { Sheet, SheetAction } from './Sheet';
+import { deep } from '@/lib/color';
 
 type Mode = 'file' | 'text';
 
@@ -269,7 +270,7 @@ function SheetShell({
               <div className="bg-card dark:bg-elevated flex items-center gap-3 rounded-[14px] p-3 shadow-card">
                 <span
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[11px] text-[11px] font-bold tracking-wide text-white uppercase"
-                  style={{ background: KIND_INFO[f.kind].color }}
+                  style={{ background: deep(KIND_INFO[f.kind].color) }}
                   aria-hidden
                 >
                   {extOf(f.file.name).slice(0, 4) || 'file'}
@@ -303,20 +304,20 @@ function SheetShell({
                   dragging ? 'border-ios-blue bg-[color-mix(in_srgb,var(--blue)_8%,transparent)]' : 'border-separator bg-card dark:bg-elevated hover:bg-fill-2',
                 )}
               >
-                <span className="bg-[color-mix(in_srgb,var(--blue)_14%,transparent)] text-ios-blue flex h-12 w-12 items-center justify-center rounded-full">
+                <span className="bg-[color-mix(in_srgb,var(--blue)_14%,transparent)] text-ink-blue flex h-12 w-12 items-center justify-center rounded-full">
                   <CloudUpload size={24} aria-hidden />
                 </span>
                 <span className="text-headline">
-                  <span className="text-ios-blue sm:hidden">Elige un archivo</span>
+                  <span className="text-ink-blue sm:hidden">Elige un archivo</span>
                   <span className="hidden sm:inline">
-                    Arrastra un archivo o <span className="text-ios-blue">elige uno</span>
+                    Arrastra un archivo o <span className="text-ink-blue">elige uno</span>
                   </span>
                 </span>
                 <span className="text-footnote text-label-2 max-w-[360px] text-pretty">{ACCEPT_HUMAN}. Máximo 20 MB.</span>
               </button>
             )}
             {fileError && (
-              <p className="text-footnote text-ios-red mt-2 px-1" role="alert">
+              <p className="text-footnote text-ink-red mt-2 px-1" role="alert">
                 {fileError}
               </p>
             )}
@@ -446,7 +447,7 @@ function SheetShell({
         </Field>
 
         {error && (
-          <p className="text-subhead text-ios-red rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] px-3.5 py-2.5" role="alert">
+          <p className="text-subhead text-ink-red rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] px-3.5 py-2.5" role="alert">
             {error}
           </p>
         )}
@@ -484,7 +485,7 @@ function Field({
           {label}
           {required && <span aria-hidden> *</span>}
         </label>
-        {hint && <span className={cn('text-caption mb-1.5 px-1 tabular-nums', hintBad ? 'text-ios-red' : 'text-label-2')}>{hint}</span>}
+        {hint && <span className={cn('text-caption mb-1.5 px-1 tabular-nums', hintBad ? 'text-ink-red' : 'text-label-2')}>{hint}</span>}
       </div>
       {children}
     </div>

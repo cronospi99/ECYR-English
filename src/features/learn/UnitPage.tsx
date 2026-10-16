@@ -35,6 +35,7 @@ import { UnitOverview } from './unit/UnitOverview';
 import { VocabGrid } from './unit/VocabGrid';
 import { GrammarLessons } from './unit/GrammarLesson';
 import { tint, ink } from './unit/ui';
+import { deep } from '@/lib/color';
 
 type Tab = 'overview' | 'vocab' | 'grammar' | 'practice' | 'produce';
 const TAB_IDS: Tab[] = ['overview', 'vocab', 'grammar', 'practice', 'produce'];
@@ -71,7 +72,7 @@ export default function UnitPage() {
       subtitle={tab === 'overview' ? undefined : u.theme}
       actions={
         done && (
-          <span className="text-ios-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
+          <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
             <CheckCircle2 size={20} /> Completada · {done.score}%
           </span>
         )
@@ -132,14 +133,14 @@ export default function UnitPage() {
 
       <div className="mt-10 flex items-center justify-between gap-3">
         {prev ? (
-          <Link to={`/learn/${level}/${prev.n}`} onClick={() => setTab('overview')} className="text-ios-blue inline-flex items-center gap-1 text-[15px] font-medium">
+          <Link to={`/learn/${level}/${prev.n}`} onClick={() => setTab('overview')} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-medium">
             <ChevronLeft size={18} /> Unidad {prev.n}
           </Link>
         ) : (
           <span />
         )}
         {next && (
-          <Link to={`/learn/${level}/${next.n}`} onClick={() => setTab('overview')} className="text-ios-blue inline-flex items-center gap-1 text-[15px] font-medium">
+          <Link to={`/learn/${level}/${next.n}`} onClick={() => setTab('overview')} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-medium">
             Unidad {next.n} <ChevronRight size={18} />
           </Link>
         )}
@@ -313,7 +314,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
               const c = KIND_COLORS[k % KIND_COLORS.length]!;
               return (
                 <li key={s.text} className="bg-fill-2 flex gap-3 rounded-[14px] p-3.5">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: c }}>
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: deep(c) }}>
                     {k + 1}
                   </span>
                   <div className="min-w-0">
@@ -358,7 +359,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
                   <div className="text-headline">{d.name}</div>
                   {d.minutes && <span className="bg-card text-label-2 shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold">⏱ {d.minutes}</span>}
                 </div>
-                {d.mode && <div className="text-ios-teal text-[12px] font-semibold">{d.mode}</div>}
+                {d.mode && <div className="text-ink-teal text-[12px] font-semibold">{d.mode}</div>}
                 {d.how && <p className="mt-2 text-[14px] text-pretty">{d.how}</p>}
                 {d.payoff && <p className="text-label-2 mt-2 text-[13px] italic">{d.payoff}</p>}
               </div>

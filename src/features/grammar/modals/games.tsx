@@ -41,8 +41,8 @@ function Blanked({ text, word, state }: { text: string; word: string | null; sta
               className={cn(
                 'mx-1 inline-block min-w-20 rounded-[8px] border-b-[3px] px-2 text-center',
                 state === 'idle' && 'border-[var(--label-3)]',
-                state === 'ok' && 'text-ios-green border-[var(--green)]',
-                state === 'bad' && 'text-ios-blue border-[var(--blue)]',
+                state === 'ok' && 'text-ink-green border-[var(--green)]',
+                state === 'bad' && 'text-ink-blue border-[var(--blue)]',
               )}
             >
               {word ?? ' '}
@@ -201,11 +201,11 @@ export function BonusStage({
     <Card className="p-5 sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-title-3 flex items-center gap-2">
-          <Target size={20} className="text-ios-red" /> {title}
+          <Target size={20} className="text-ink-red" /> {title}
         </h3>
         <div className="flex items-center gap-3 text-[14px] font-semibold tabular-nums">
           {streak >= 2 && (
-            <span className="text-ios-orange inline-flex items-center gap-1">
+            <span className="text-ink-orange inline-flex items-center gap-1">
               <Flame size={16} /> ×{streak}
             </span>
           )}
@@ -226,7 +226,7 @@ export function BonusStage({
           exit={reduce ? { opacity: 0 } : { opacity: 0, x: -30 }}
           transition={{ duration: 0.25, ease: [0.32, 0.72, 0, 1] }}
         >
-          <div className="text-ios-blue text-[13px] font-bold tracking-wide uppercase">{q.hint}</div>
+          <div className="text-ink-blue text-[13px] font-bold tracking-wide uppercase">{q.hint}</div>
           <p className="mt-2 text-[22px] leading-snug font-semibold text-pretty sm:text-[26px]">
             <Blanked text={q.text} word={answered ? q.options[q.answer]! : null} state={!answered ? 'idle' : correct ? 'ok' : 'bad'} />
           </p>
@@ -275,7 +275,7 @@ export function BonusStage({
               className="mt-5 rounded-[16px] p-4"
               style={{ background: `color-mix(in srgb, ${correct ? 'var(--green)' : 'var(--orange)'} 12%, transparent)` }}
             >
-              <div className="mb-1 flex items-center gap-2 text-[14px] font-bold tracking-wide uppercase" style={{ color: correct ? 'var(--green)' : 'var(--orange)' }}>
+              <div className="mb-1 flex items-center gap-2 text-[14px] font-bold tracking-wide uppercase" style={{ color: correct ? 'var(--green-ink)' : 'var(--orange-ink)' }}>
                 {correct ? (
                   <>
                     <Ring size={14} /> ¡Anillo conseguido!
@@ -380,7 +380,7 @@ export function TrapSpotter({ rounds = 12, lives: maxLives = 3 }: { rounds?: num
   const hearts = (
     <span className="inline-flex items-center gap-0.5" aria-label={`${lives} vidas`}>
       {Array.from({ length: maxLives }).map((_, k) =>
-        k < lives ? <Heart key={k} size={18} className="text-ios-red" fill="currentColor" /> : <HeartCrack key={k} size={18} className="text-label-3" />,
+        k < lives ? <Heart key={k} size={18} className="text-ink-red" fill="currentColor" /> : <HeartCrack key={k} size={18} className="text-label-3" />,
       )}
     </span>
   );
@@ -409,7 +409,7 @@ export function TrapSpotter({ rounds = 12, lives: maxLives = 3 }: { rounds?: num
         <div className="flex items-center gap-3 text-[14px] font-semibold tabular-nums">
           {hearts}
           {combo > 1 && (
-            <span className="text-ios-orange inline-flex items-center gap-1">
+            <span className="text-ink-orange inline-flex items-center gap-1">
               <Flame size={16} /> ×{combo}
             </span>
           )}
@@ -443,7 +443,7 @@ export function TrapSpotter({ rounds = 12, lives: maxLives = 3 }: { rounds?: num
               onClick={() => answer(v)}
               className={cn(
                 'flex min-h-[52px] items-center justify-center gap-2 rounded-[14px] text-[16px] font-semibold transition-colors',
-                picked === null && (v ? 'bg-[color-mix(in_srgb,var(--green)_14%,transparent)] text-ios-green hover:bg-[color-mix(in_srgb,var(--green)_22%,transparent)]' : 'bg-[color-mix(in_srgb,var(--red)_12%,transparent)] text-ios-red hover:bg-[color-mix(in_srgb,var(--red)_20%,transparent)]'),
+                picked === null && (v ? 'bg-[color-mix(in_srgb,var(--green)_14%,transparent)] text-ink-green hover:bg-[color-mix(in_srgb,var(--green)_22%,transparent)]' : 'bg-[color-mix(in_srgb,var(--red)_12%,transparent)] text-ink-red hover:bg-[color-mix(in_srgb,var(--red)_20%,transparent)]'),
                 picked !== null && isTruth && 'bg-ios-green text-white',
                 picked !== null && isPick && !isTruth && 'bg-ios-red text-white',
                 picked !== null && !isPick && !isTruth && 'bg-fill-2 opacity-50',
@@ -463,7 +463,7 @@ export function TrapSpotter({ rounds = 12, lives: maxLives = 3 }: { rounds?: num
             {item.why}
             {item.fix && (
               <span className="mt-2 flex items-center gap-1 font-semibold">
-                <Check size={15} className="text-ios-green shrink-0" /> {item.fix}
+                <Check size={15} className="text-ink-green shrink-0" /> {item.fix}
                 <SpeakButton text={item.fix} size={16} />
               </span>
             )}
@@ -497,7 +497,7 @@ export function FunctionQuiz() {
   return (
     <Card className="p-5 sm:p-6">
       <h3 className="text-title-3 mb-4 flex items-center gap-2">
-        <Trophy size={20} className="text-ios-orange" /> ¿Qué expresa?
+        <Trophy size={20} className="text-ink-orange" /> ¿Qué expresa?
       </h3>
       <Quiz
         items={items}

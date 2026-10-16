@@ -17,6 +17,7 @@ import type { CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
 import { speak, stopSpeaking } from '@/lib/speech';
+import { ink } from '@/lib/color';
 
 interface Reading {
   id: string;
@@ -145,7 +146,7 @@ export default function ReadingPage() {
                   {flag(r.id.slice(7))}
                 </span>
               ) : (
-                <span className="flex h-10 w-10 items-center justify-center rounded-[11px] bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ios-green">
+                <span className="flex h-10 w-10 items-center justify-center rounded-[11px] bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ink-green">
                   <BookOpen size={20} />
                 </span>
               )
@@ -154,7 +155,7 @@ export default function ReadingPage() {
             subtitle={r.subtitle}
             trailing={
               readings[r.id] ? (
-                <span className="text-ios-green inline-flex items-center gap-1 text-[14px] font-semibold">
+                <span className="text-ink-green inline-flex items-center gap-1 text-[14px] font-semibold">
                   <CheckCircle2 size={18} /> {readings[r.id]!.score}%
                 </span>
               ) : (
@@ -179,7 +180,7 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
   return (
     <Page
       eyebrow={
-        <button type="button" onClick={onBack} className="text-ios-blue">
+        <button type="button" onClick={onBack} className="text-ink-blue">
           ‹ Lecturas
         </button>
       }
@@ -212,7 +213,7 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
             {r.paras.map((p, i) => (
               <div key={i}>
                 {p.tag && (i === 0 || r.paras[i - 1]!.tag !== p.tag) && (
-                  <h3 className="text-headline mt-4 mb-2 flex items-center gap-2" style={{ color: tagColor[p.tag] }}>
+                  <h3 className="text-headline mt-4 mb-2 flex items-center gap-2" style={{ color: ink(tagColor[p.tag]) }}>
                     <Globe2 size={18} /> {headings[p.tag]}
                   </h3>
                 )}

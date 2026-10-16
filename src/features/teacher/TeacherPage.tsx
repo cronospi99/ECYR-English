@@ -55,7 +55,7 @@ export default function TeacherPage() {
     return (
       <Page title="Sala del docente">
         <Card className="mx-auto max-w-xl p-6 text-center">
-          <School size={40} className="text-ios-orange mx-auto" />
+          <School size={40} className="text-ink-orange mx-auto" />
           <h2 className="text-title-3 mt-3">Solo para docentes</h2>
           <p className="text-label-2 mt-1">
             Entra con una cuenta de docente para ver el progreso de tu clase, el material completo y tu espacio de práctica libre.
@@ -71,7 +71,7 @@ export default function TeacherPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <School size={15} className="text-ios-orange" /> Docente
+          <School size={15} className="text-ink-orange" /> Docente
         </span>
       }
       title="Sala del docente"
@@ -165,7 +165,7 @@ function ClassTab({
             {classCode && (
               <button
                 type="button"
-                className="text-ios-blue rounded-full p-1.5 hover:bg-fill-2"
+                className="text-ink-blue rounded-full p-1.5 hover:bg-fill-2"
                 aria-label="Copiar código"
                 onClick={() => {
                   void navigator.clipboard?.writeText(classCode);
@@ -211,7 +211,7 @@ function ClassTab({
             {loading ? <Spinner className="h-4 w-4" /> : <RefreshCw size={15} />}
           </Button>
         </div>
-        {error && <p className="text-ios-red px-4 pb-3 text-[13px]">{error}</p>}
+        {error && <p className="text-ink-red px-4 pb-3 text-[13px]">{error}</p>}
         {students === null ? (
           <div className="text-label-2 flex items-center justify-center gap-2 py-12">
             <Spinner className="h-5 w-5" /> Cargando tu clase…
@@ -233,7 +233,7 @@ function ClassTab({
                       <span className="truncate text-[16px] font-semibold">{s.profile.full_name || s.profile.email}</span>
                       <LevelChip level={st.level} />
                       {st.flagged > 0 && (
-                        <span className="text-ios-orange inline-flex items-center gap-0.5 text-[12px] font-semibold" title="Resultados no válidos">
+                        <span className="text-ink-orange inline-flex items-center gap-0.5 text-[12px] font-semibold" title="Resultados no válidos">
                           <AlertTriangle size={13} /> {st.flagged}
                         </span>
                       )}
@@ -374,7 +374,7 @@ function PracticeTab() {
           </div>
           <Toggle checked={sandbox} onChange={(v) => set({ practiceSandbox: v })} label="Modo práctica libre" />
         </div>
-        <p className={cn('mt-3 text-[13px] font-semibold', sandbox ? 'text-ios-orange' : 'text-label-2')}>
+        <p className={cn('mt-3 text-[13px] font-semibold', sandbox ? 'text-ink-orange' : 'text-label-2')}>
           {sandbox ? 'Activo: verás un aviso arriba mientras practicas.' : 'Desactivado: tu actividad se registra normalmente.'}
         </p>
       </Card>

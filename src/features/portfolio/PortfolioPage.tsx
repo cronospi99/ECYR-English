@@ -34,7 +34,7 @@ function Portfolio({ uid, hasTeacher, isTeacher }: { uid: string; hasTeacher: bo
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <Briefcase size={15} className="text-ios-blue" aria-hidden /> Portafolio
+          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portafolio
         </span>
       }
       title="Mis trabajos"
@@ -68,7 +68,7 @@ function NeedsAccount({ offline }: { offline: boolean }) {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <Briefcase size={15} className="text-ios-blue" aria-hidden /> Portafolio
+          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portafolio
         </span>
       }
       title="Mis trabajos"

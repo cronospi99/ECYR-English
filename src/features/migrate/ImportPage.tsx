@@ -59,6 +59,7 @@ import {
   type SessionImportResult,
   type StepStatus,
 } from '@/lib/migrate';
+import { ink } from '@/lib/color';
 
 const field =
   'bg-fill-2 placeholder:text-label-3 h-12 w-full rounded-[12px] px-4 text-[16px] outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]';
@@ -75,7 +76,7 @@ export default function ImportPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <ArrowRightLeft size={15} className="text-ios-indigo" /> Tu historial, en un solo sitio
+          <ArrowRightLeft size={15} className="text-ink-indigo" /> Tu historial, en un solo sitio
         </span>
       }
       title="Importar y migrar"
@@ -119,7 +120,7 @@ function Notice({ tone = 'info', children }: { tone?: 'info' | 'warn' | 'error' 
       style={{ background: `color-mix(in srgb, ${color} 11%, transparent)` }}
       role={tone === 'error' ? 'alert' : undefined}
     >
-      <Icon size={18} className="mt-px shrink-0" style={{ color }} />
+      <Icon size={18} className="mt-px shrink-0" style={{ color: ink(color) }} />
       <div className="min-w-0 text-pretty">{children}</div>
     </div>
   );
@@ -186,7 +187,7 @@ function DropZone({ label, hint, onFile, busy }: { label: string; hint: string; 
         over ? 'border-ios-blue bg-[color-mix(in_srgb,var(--blue)_8%,transparent)]' : 'border-separator hover:bg-fill-2/60',
       )}
     >
-      {busy ? <Spinner className="text-label-2 h-6 w-6" /> : <FileUp size={26} className="text-ios-blue" />}
+      {busy ? <Spinner className="text-label-2 h-6 w-6" /> : <FileUp size={26} className="text-ink-blue" />}
       <span className="text-callout font-semibold">{label}</span>
       <span className="text-footnote text-label-2">{hint}</span>
       <input
@@ -227,9 +228,9 @@ const STEPS: { id: MigrateStepId; label: string }[] = [
 ];
 
 function StepIcon({ s }: { s?: StepStatus }) {
-  if (s === 'running') return <Spinner className="text-ios-blue h-5 w-5" />;
-  if (s === 'done') return <CircleCheck size={20} className="text-ios-green" />;
-  if (s === 'error') return <CircleX size={20} className="text-ios-red" />;
+  if (s === 'running') return <Spinner className="text-ink-blue h-5 w-5" />;
+  if (s === 'done') return <CircleCheck size={20} className="text-ink-green" />;
+  if (s === 'error') return <CircleX size={20} className="text-ink-red" />;
   if (s === 'skipped') return <CircleDashed size={20} className="text-label-3" />;
   return <CircleDashed size={20} className="text-label-3 opacity-50" />;
 }
@@ -307,7 +308,7 @@ function AccountCard({ onDone }: { onDone: () => void }) {
               const I = Icon as LucideIcon;
               return (
                 <li key={t as string} className="flex items-center gap-2">
-                  <I size={16} className="text-ios-indigo shrink-0" /> {t as string}
+                  <I size={16} className="text-ink-indigo shrink-0" /> {t as string}
                 </li>
               );
             })}
@@ -356,7 +357,7 @@ function AccountCard({ onDone }: { onDone: () => void }) {
                 {phase === 'connecting' ? 'Conectando…' : 'Conectar y ver qué hay'}
               </Button>
               <p className="text-footnote text-label-2 flex gap-1.5 px-1">
-                <ShieldCheck size={15} className="text-ios-green mt-px shrink-0" />
+                <ShieldCheck size={15} className="text-ink-green mt-px shrink-0" />
                 Sólo leemos tus propios datos y cerramos esa sesión al terminar. Tu contraseña no se guarda y tu sesión de ECYR no cambia.
               </p>
               <p className="text-footnote text-label-2 px-1">

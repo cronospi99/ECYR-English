@@ -33,7 +33,7 @@ export default function LearnPage() {
             aria-hidden
           />
           <div className="min-w-0 flex-1">
-            <div className="text-ios-red text-[12px] font-bold tracking-wide uppercase">Empieza aquí · A1</div>
+            <div className="text-ink-red text-[12px] font-bold tracking-wide uppercase">Empieza aquí · A1</div>
             <div className="text-title-3">English Foundations</div>
             <p className="text-label-2 text-subhead line-clamp-2">
               Curso de cómic: alfabeto, números, saludos, to be, presente simple… con lecturas y ejercicios en español.
@@ -53,7 +53,7 @@ export default function LearnPage() {
             ))}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-ios-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C1</div>
+            <div className="text-ink-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C1</div>
             <div className="text-title-3">Gramática interactiva</div>
             <p className="text-label-2 text-subhead line-clamp-2">
               Time Machine, Time &amp; Family, Modal Verbs y Verb Lab: explicaciones con práctica y corrección al instante.
@@ -72,7 +72,7 @@ export default function LearnPage() {
             ))}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-ios-pink text-[12px] font-bold tracking-wide uppercase">Infografías</div>
+            <div className="text-ink-pink text-[12px] font-bold tracking-wide uppercase">Infografías</div>
             <div className="text-title-3">Biblioteca visual</div>
             <p className="text-label-2 text-subhead line-clamp-2">
               Tiempos verbales, condicionales, modales y vocabulario en imágenes, listos para proyectar en clase.

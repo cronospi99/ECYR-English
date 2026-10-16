@@ -68,6 +68,7 @@ import {
   type Variety,
 } from './engine';
 import { useTimeMachine } from './useTimeMachine';
+import { ink, deep } from '@/lib/color';
 
 // ------------------------------------------------------------------ shared --
 
@@ -106,7 +107,7 @@ function Es({ children, className }: { children: React.ReactNode; className?: st
   if (!on) return null;
   return (
     <p lang="es" className={cn('text-label-2 text-[13px] leading-snug', className)}>
-      <span className="text-ios-teal mr-1 text-[11px] font-bold">ES</span>
+      <span className="text-ink-teal mr-1 text-[11px] font-bold">ES</span>
       {children}
     </p>
   );
@@ -196,7 +197,7 @@ export function StepsCard({ stage }: { stage: Stage }) {
       <ol className={cn('grid gap-3 sm:grid-cols-2', stage.steps.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3')}>
         {stage.steps.map((s) => (
           <li key={s.n} className="bg-fill-2 flex flex-col gap-1 rounded-[14px] p-4">
-            <span className="text-ios-blue text-[12px] font-bold tracking-wide">PASO {s.n}</span>
+            <span className="text-ink-blue text-[12px] font-bold tracking-wide">PASO {s.n}</span>
             <span className="text-headline">{s.h}</span>
             <span className="text-[14px] leading-snug">{s.body}</span>
             <Es>{s.es}</Es>
@@ -249,11 +250,11 @@ export function MistakesCard({ stage }: { stage: Stage }) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {stage.mistakes.map((m, i) => (
           <div key={i} className="bg-card rounded-[14px] p-4 shadow-[inset_0_0_0_0.5px_var(--separator)]">
-            <p className="text-ios-red flex items-start gap-1.5 text-[15px]">
+            <p className="text-ink-red flex items-start gap-1.5 text-[15px]">
               <X size={16} strokeWidth={3} className="mt-0.5 shrink-0" />
               <s className="decoration-[1.5px]">{m.wrong}</s>
             </p>
-            <p className="text-ios-green mt-1 flex items-start gap-1.5 text-[15px] font-semibold">
+            <p className="text-ink-green mt-1 flex items-start gap-1.5 text-[15px] font-semibold">
               <Check size={16} strokeWidth={3} className="mt-0.5 shrink-0" />
               {m.right}
             </p>
@@ -397,11 +398,11 @@ export function MonthsGallery() {
                 </button>
               </div>
               <div className="flex flex-wrap items-baseline gap-x-2 text-[13px]">
-                <span className="text-ios-orange font-semibold">{m.say}</span>
+                <span className="text-ink-orange font-semibold">{m.say}</span>
                 <span className="text-label-2 font-mono text-[12px]">{m.ipa}</span>
               </div>
               <p className="text-[14px] leading-snug">{m.fest}</p>
-              <p className="text-ios-indigo text-[13px] font-medium">{m.date}</p>
+              <p className="text-ink-indigo text-[13px] font-medium">{m.date}</p>
               <Es className="mt-auto pt-1">{m.es}</Es>
             </div>
           </div>
@@ -448,7 +449,7 @@ export function OrdinalsTool() {
           />
           <div className="mt-4 text-[48px] leading-none font-extrabold tracking-tight tabular-nums">
             {safe}
-            <sup className="ml-0.5 text-[24px]" style={{ color: SUFFIX_COLOR[suffix] }}>
+            <sup className="ml-0.5 text-[24px]" style={{ color: ink(SUFFIX_COLOR[suffix]) }}>
               {suffix}
             </sup>
           </div>
@@ -478,7 +479,7 @@ export function OrdinalsTool() {
                   className={cn('bg-fill-2 hover:bg-fill rounded-[10px] py-2 text-center text-[13px] font-semibold tabular-nums transition-colors', d === safe && 'ring-ios-blue ring-2')}
                 >
                   {d}
-                  <sup style={{ color: SUFFIX_COLOR[s] }}>{s}</sup>
+                  <sup style={{ color: ink(SUFFIX_COLOR[s]) }}>{s}</sup>
                 </button>
               );
             })}
@@ -516,10 +517,10 @@ export function YearReader() {
           <>
             <ArrowRight className="text-label-3" />
             <div className="flex gap-2">
-              <span className="rounded-[14px] px-4 py-2 text-[32px] leading-none font-extrabold text-white tabular-nums" style={{ background: 'var(--orange)' }}>
+              <span className="rounded-[14px] px-4 py-2 text-[32px] leading-none font-extrabold text-white tabular-nums" style={{ background: deep('var(--orange)') }}>
                 {r.split[0]}
               </span>
-              <span className="rounded-[14px] px-4 py-2 text-[32px] leading-none font-extrabold text-white tabular-nums" style={{ background: 'var(--teal)' }}>
+              <span className="rounded-[14px] px-4 py-2 text-[32px] leading-none font-extrabold text-white tabular-nums" style={{ background: deep('var(--teal)') }}>
                 {r.split[1]}
               </span>
             </div>
@@ -536,7 +537,7 @@ export function YearReader() {
       <p className="text-label-2 mt-3 text-center text-[14px]">{r.rule}</p>
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <div className="rounded-[16px] p-4" style={{ background: mix('var(--orange)', 10) }}>
-          <div className="text-ios-orange text-[12px] font-bold tracking-wide">ROAD 1 · SPLIT THE YEAR (natural)</div>
+          <div className="text-ink-orange text-[12px] font-bold tracking-wide">ROAD 1 · SPLIT THE YEAR (natural)</div>
           <p className="mt-1 text-[14px]">You separate the year in two parts and read each pair as one number.</p>
           {es && <p className="text-label-2 mt-0.5 text-[13px]">Divides el año en dos partes. Es la forma natural.</p>}
           <ul className="mt-2 space-y-1">
@@ -548,7 +549,7 @@ export function YearReader() {
           </ul>
         </div>
         <div className="rounded-[16px] p-4" style={{ background: mix('var(--teal)', 10) }}>
-          <div className="text-ios-teal text-[12px] font-bold tracking-wide">ROAD 2 · WHOLE NUMBER (formal)</div>
+          <div className="text-ink-teal text-[12px] font-bold tracking-wide">ROAD 2 · WHOLE NUMBER (formal)</div>
           <p className="mt-1 text-[14px]">You read the whole number, without splitting it. More formal, and longer.</p>
           {es && <p className="text-label-2 mt-0.5 text-[13px]">Lees el número completo, sin dividirlo. Más formal.</p>}
           <p className="mt-2 flex items-center gap-1 text-[17px] font-bold">
@@ -812,12 +813,12 @@ export function DateBuilderGame({ rounds = 5 }: { rounds?: number }) {
           </Button>
         )}
         {result === true && (
-          <span className="text-ios-green inline-flex items-center gap-1 text-[14px] font-semibold">
+          <span className="text-ink-green inline-flex items-center gap-1 text-[14px] font-semibold">
             <Check size={16} /> {target.join(' ')} — correct order.
             <SpeakButton text={formatDate(round.y, round.m, round.d).usSpoken} size={15} />
           </span>
         )}
-        {result === false && <span className="text-ios-red text-[14px]">Not yet: day of the week, month, ordinal day, year — and check the ordinal ending.</span>}
+        {result === false && <span className="text-ink-red text-[14px]">Not yet: day of the week, month, ordinal day, year — and check the ordinal ending.</span>}
       </div>
     </Card>
   );
@@ -844,7 +845,7 @@ export function DaysOfWeek() {
           >
             <span className="text-headline">{WEEKDAYS[i]}</span>
             {es && <span className="text-label-2 text-[13px]">{WEEKDAYS_ES[i]}</span>}
-            <span className="text-ios-blue mt-1 text-[12px] font-medium">on {WEEKDAYS[i]} · on {WEEKDAYS[i]}s</span>
+            <span className="text-ink-blue mt-1 text-[12px] font-medium">on {WEEKDAYS[i]} · on {WEEKDAYS[i]}s</span>
           </button>
         ))}
       </div>
@@ -903,11 +904,11 @@ function SpellingLab({ mode }: { mode: 'ed' | 'ing' }) {
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-[22px] font-semibold">{info.base}</span>
             <ArrowRight size={18} className="text-label-3" />
-            <span className="text-[28px] font-extrabold tracking-tight" style={{ color: mode === 'ed' ? 'var(--orange)' : 'var(--teal)' }}>
+            <span className="text-[28px] font-extrabold tracking-tight" style={{ color: mode === 'ed' ? 'var(--orange-ink)' : 'var(--teal-ink)' }}>
               {info.form}
             </span>
             <SpeakButton text={`${info.base}, ${info.form.replace(' / ', ', ')}`} />
-            {isIrr && <span className="text-ios-purple rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: mix('var(--purple)', 14) }}>IRREGULAR</span>}
+            {isIrr && <span className="text-ink-purple rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ background: mix('var(--purple)', 14) }}>IRREGULAR</span>}
           </div>
           <p className="mt-1 text-[14px]">{info.why}</p>
           {info.other && (
@@ -1168,22 +1169,22 @@ export function WasWereTool() {
         ))}
       </div>
       <div className="mt-3 grid gap-3 md:grid-cols-[auto_minmax(0,1fr)]">
-        <div className="flex flex-col items-center justify-center rounded-[16px] px-8 py-4 text-white" style={{ background: info.form === 'was' ? 'var(--indigo)' : 'var(--pink)' }}>
+        <div className="flex flex-col items-center justify-center rounded-[16px] px-8 py-4 text-white" style={{ background: deep(info.form === 'was' ? 'var(--indigo)' : 'var(--pink)') }}>
           <span className="text-[40px] leading-none font-extrabold">{info.form}</span>
         </div>
         <div className="bg-fill-2 rounded-[16px] p-4">
           <p className="text-[14px]">{info.why}</p>
           <ul className="mt-2 space-y-1 text-[15px]">
             <li>
-              <span className="text-ios-green mr-1 font-bold">+</span>
+              <span className="text-ink-green mr-1 font-bold">+</span>
               {S} {info.form} at home last night.
             </li>
             <li>
-              <span className="text-ios-red mr-1 font-bold">−</span>
+              <span className="text-ink-red mr-1 font-bold">−</span>
               {S} {info.form} not ({neg}) at home last night.
             </li>
             <li>
-              <span className="text-ios-blue mr-1 font-bold">?</span>
+              <span className="text-ink-blue mr-1 font-bold">?</span>
               {Q} {s} at home last night? — Yes, {shortAnswer(s, info.form)}.
             </li>
           </ul>
@@ -1224,12 +1225,11 @@ export function TenseTimelineChart() {
                   background:
                     r.k === 'continuous'
                       ? `repeating-linear-gradient(115deg, ${mix(TENSE_COLOR[r.k], 75)} 0 8px, ${mix(TENSE_COLOR[r.k], 35)} 8px 16px)`
-                      : TENSE_COLOR[r.k],
-                }}
+                      : TENSE_COLOR[r.k]}}
               />
             </div>
             <p className="mt-1.5 text-[14px]">
-              <span className="mr-1.5 text-[11px] font-bold tracking-wide" style={{ color: TENSE_COLOR[r.k] }}>
+              <span className="mr-1.5 text-[11px] font-bold tracking-wide" style={{ color: ink(TENSE_COLOR[r.k]) }}>
                 {r.label}
               </span>
               {r.text}
@@ -1308,7 +1308,7 @@ export function SentenceTimeline() {
             <span className="absolute top-3 -left-7 h-5 w-5 rounded-full border-[3px] border-[var(--card)]" style={{ background: TENSE_COLOR[n.tense] }} />
             <div className="bg-fill-2 rounded-[14px] p-3">
               <div className="flex flex-wrap items-baseline gap-x-2">
-                <span className="text-[11px] font-bold tracking-wide uppercase" style={{ color: TENSE_COLOR[n.tense] }}>
+                <span className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(TENSE_COLOR[n.tense]) }}>
                   {n.name}
                 </span>
                 <span className="text-headline">{n.label}</span>
@@ -1333,10 +1333,10 @@ export function SentenceTimeline() {
           Borrar
         </Button>
       </div>
-      {empty && <p className="text-ios-red mt-3 text-[14px]">Escribe al menos una acción.</p>}
+      {empty && <p className="text-ink-red mt-3 text-[14px]">Escribe al menos una acción.</p>}
       {out && (
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-4 rounded-[16px] p-4" style={{ background: mix('var(--teal)', 10) }}>
-          <div className="text-ios-teal text-[12px] font-bold tracking-wide uppercase">Your full sentence</div>
+          <div className="text-ink-teal text-[12px] font-bold tracking-wide uppercase">Your full sentence</div>
           <p className="mt-1 flex items-start gap-1 text-[20px] leading-snug font-semibold">
             <span className="min-w-0">{out.main}</span>
             <SpeakButton text={out.main} />
@@ -1349,7 +1349,7 @@ export function SentenceTimeline() {
           <div className="mt-3 grid gap-2 sm:grid-cols-3">
             {out.parts.map((p) => (
               <div key={p.tense} className="bg-card rounded-[12px] p-3">
-                <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: TENSE_COLOR[p.tense] }}>
+                <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(TENSE_COLOR[p.tense]) }}>
                   {NODES.find((n) => n.tense === p.tense)!.name}
                 </div>
                 <div className="text-[15px]">{p.text}</div>
@@ -1409,7 +1409,7 @@ function VideoCard({ v }: { v: VideoItem }) {
             </div>
           )}
           <div className="mt-3 flex flex-wrap gap-2">
-            <a href={v.link} target="_blank" rel="noopener noreferrer" className="text-ios-blue inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold" style={{ background: mix('var(--blue)', 14) }}>
+            <a href={v.link} target="_blank" rel="noopener noreferrer" className="text-ink-blue inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold" style={{ background: mix('var(--blue)', 14) }}>
               <ExternalLink size={14} /> {v.linkLabel}
             </a>
             <Button size="sm" variant="gray" onClick={() => setOpen((o) => !o)}>
@@ -1421,12 +1421,12 @@ function VideoCard({ v }: { v: VideoItem }) {
           {v.questions.map((q) => (
             <li key={q.n} className="bg-fill-2 rounded-[12px] p-3">
               <div className="flex gap-2">
-                <span className="text-ios-indigo text-[13px] font-bold tabular-nums">{q.n}</span>
+                <span className="text-ink-indigo text-[13px] font-bold tabular-nums">{q.n}</span>
                 <span className="text-[15px] font-medium">{q.q}</span>
               </div>
               {open && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-1.5 flex items-start gap-1 pl-6 text-[14px]">
-                  <span className="text-ios-green min-w-0">{q.a}</span>
+                  <span className="text-ink-green min-w-0">{q.a}</span>
                   <SpeakButton text={q.a} size={14} className="-mt-1" />
                 </motion.div>
               )}
@@ -1492,7 +1492,7 @@ export function TimeMachineHub({ onOpen }: { onOpen: (id: StageId) => void }) {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
         <Card className="overflow-hidden">
           <div className="p-5 sm:p-7" style={{ background: `linear-gradient(135deg, ${mix('var(--indigo)', 16)}, ${mix('var(--teal)', 8)} 60%, transparent)` }}>
-            <div className="text-ios-indigo text-[12px] font-bold tracking-wide uppercase">Learning quest · 10 stages</div>
+            <div className="text-ink-indigo text-[12px] font-bold tracking-wide uppercase">Learning quest · 10 stages</div>
             <h2 className="text-title-1 mt-1 text-balance">Travel through time in English</h2>
             <p className="text-callout text-label-2 mt-2 max-w-xl text-pretty">
               Months, dates, years, days of the week, and the four ways English talks about the past. Every stage explains the rule step by step, shows it in a table, warns you about the common mistakes, and then challenges you.
@@ -1524,7 +1524,7 @@ export function TimeMachineHub({ onOpen }: { onOpen: (id: StageId) => void }) {
           <p className="text-[20px] leading-snug font-semibold text-pretty">“{SAYING.en}”</p>
           <SpeakButton text={SAYING.en} className="-ml-1.5 self-start" />
           <div className="mt-auto rounded-[14px] p-3" style={{ background: mix('var(--teal)', 10) }}>
-            <div className="text-ios-teal text-[11px] font-bold tracking-wide uppercase">En español</div>
+            <div className="text-ink-teal text-[11px] font-bold tracking-wide uppercase">En español</div>
             <p className="text-[15px]">“{SAYING.es}”</p>
           </div>
         </Card>
@@ -1546,16 +1546,16 @@ export function TimeMachineHub({ onOpen }: { onOpen: (id: StageId) => void }) {
                 className="bg-card shadow-card flex flex-col gap-2 rounded-[18px] p-4 text-left transition-transform motion-safe:hover:-translate-y-0.5"
               >
                 <div className="flex items-center gap-2">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[13px] font-bold text-white tabular-nums" style={{ background: STAGE_COLORS[i] }}>
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full text-[13px] font-bold text-white tabular-nums" style={{ background: deep(STAGE_COLORS[i]) }}>
                     {s.num}
                   </span>
-                  <span className={cn('ml-auto text-[11px] font-bold tracking-wide uppercase', c ? 'text-ios-green' : 'text-label-3')}>
+                  <span className={cn('ml-auto text-[11px] font-bold tracking-wide uppercase', c ? 'text-ink-green' : 'text-label-3')}>
                     {c ? (c.total > 1 ? `✓ ${c.correct}/${c.total}` : '✓ Hecho') : s.quiz.length ? `${s.quiz.length} preguntas` : s.tool === 'timeline' ? 'Constructor' : 'Cuaderno'}
                   </span>
                 </div>
                 <span className="text-headline">{s.title}</span>
                 <span className="text-label-2 text-[13px] leading-snug">{s.blurb}</span>
-                {es && <span className="text-ios-teal text-[12px] font-medium">{s.es}</span>}
+                {es && <span className="text-ink-teal text-[12px] font-medium">{s.es}</span>}
               </motion.button>
             );
           })}

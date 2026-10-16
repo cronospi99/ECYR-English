@@ -118,7 +118,7 @@ function SheetBody({ onClose, title, leading, trailing, banner, dismissible = tr
                   type="button"
                   onClick={close}
                   disabled={!dismissible}
-                  className="text-ios-blue h-9 rounded-[10px] px-2 text-[17px] hover:opacity-70 disabled:opacity-40"
+                  className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] hover:opacity-70 disabled:opacity-40"
                 >
                   {closeLabel}
                 </button>
@@ -160,7 +160,7 @@ export function SheetAction({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'text-ios-blue h-9 rounded-[10px] px-2 text-[17px] whitespace-nowrap hover:opacity-70 disabled:opacity-35',
+        'text-ink-blue h-9 rounded-[10px] px-2 text-[17px] whitespace-nowrap hover:opacity-70 disabled:opacity-35',
         bold && 'font-semibold',
       )}
     >

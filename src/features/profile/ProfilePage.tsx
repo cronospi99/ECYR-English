@@ -89,7 +89,7 @@ function Account() {
     <>
       <AvatarHero name={name}>
         <div className="text-label-2 truncate text-[14px]">{session?.user.email}</div>
-        <div className="text-ios-green mt-1 inline-flex items-center gap-1 text-[13px] font-medium">
+        <div className="text-ink-green mt-1 inline-flex items-center gap-1 text-[13px] font-medium">
           <Cloud size={14} /> Progreso sincronizado
         </div>
       </AvatarHero>
@@ -229,7 +229,7 @@ function AuthCard() {
         <Button type="submit" size="lg" className="w-full" disabled={busy}>
           {busy ? <Spinner className="h-5 w-5" /> : mode === 'in' ? 'Entrar' : 'Crear cuenta'}
         </Button>
-        {msg && <p className={msg.ok ? 'text-ios-green text-center text-[14px]' : 'text-ios-red text-center text-[14px]'}>{msg.text}</p>}
+        {msg && <p className={msg.ok ? 'text-ink-green text-center text-[14px]' : 'text-ink-red text-center text-[14px]'}>{msg.text}</p>}
       </form>
     </Card>
   );
@@ -328,7 +328,7 @@ function DataSection() {
       <ListRow leading={<IconTile icon={FolderOpen} color="var(--teal)" />} title="Mis trabajos" subtitle="Sube escritos y trabajos ya realizados" to="/portfolio" chevron />
       <ListRow
         leading={<IconTile icon={RotateCcw} color="var(--red)" />}
-        title={<span className="text-ios-red">Reiniciar progreso</span>}
+        title={<span className="text-ink-red">Reiniciar progreso</span>}
         onClick={() => {
           if (confirm('¿Seguro? Se borrará todo tu progreso en este dispositivo.')) reset();
         }}

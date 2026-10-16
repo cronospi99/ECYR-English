@@ -7,8 +7,8 @@ import { ROLE_INFO, highlight, type KeySpec, type Role } from './formula';
 /** Text colour for a role that stays readable on light and dark cards. */
 export const roleText = (role: Role) => `color-mix(in srgb, ${ROLE_INFO[role].color} 72%, var(--label))`;
 export const roleBg = (role: Role, pct = 14) => `color-mix(in srgb, ${ROLE_INFO[role].color} ${pct}%, transparent)`;
-export const tint = (color: string, pct = 12) => `color-mix(in srgb, ${color} ${pct}%, transparent)`;
-export const ink = (color: string) => `color-mix(in srgb, ${color} 70%, var(--label))`;
+export { ink, tint } from '@/lib/color';
+import { ink, tint } from '@/lib/color';
 
 /** Sentence with the target grammar highlighted (plain text in, React out — no HTML). */
 export function Hl({ text, spec, className }: { text: string; spec?: KeySpec; className?: string }) {
@@ -20,7 +20,7 @@ export function Hl({ text, spec, className }: { text: string; spec?: KeySpec; cl
           <mark
             key={i}
             className="rounded-[5px] px-[2px] py-px font-semibold [box-decoration-break:clone]"
-            style={{ background: roleBg(s.role, 16), color: roleText(s.role) }}
+            style={{ background: roleBg(s.role, 16), color: ink(roleText(s.role)) }}
           >
             {s.text}
           </mark>
@@ -67,7 +67,7 @@ export function Kicker({ icon: Icon, color, children, action, id }: { icon: Luci
     <div className="mb-3 flex items-center justify-between gap-3">
       <h4 id={id} className="flex items-center gap-2 text-[13px] font-bold tracking-[0.06em] uppercase" style={{ color: ink(color) }}>
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-[7px]" style={{ background: tint(color, 16) }}>
-          <Icon size={14} strokeWidth={2.4} style={{ color }} aria-hidden />
+          <Icon size={14} strokeWidth={2.4} style={{ color: ink(color) }} aria-hidden />
         </span>
         {children}
       </h4>
@@ -106,7 +106,7 @@ export function Disclosure({
         className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
       >
         {Icon && (
-          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px]" style={{ background: tint(color, 16), color }}>
+          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px]" style={{ background: tint(color, 16), color: ink(color) }}>
             <Icon size={17} aria-hidden />
           </span>
         )}
@@ -154,7 +154,7 @@ export function Clamp({ text, lines = 2, className, render }: { text: string; li
         {render ? render(text) : text}
       </p>
       {(overflows || open) && (
-        <button type="button" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="text-ios-blue mt-1 text-[14px] font-semibold">
+        <button type="button" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="text-ink-blue mt-1 text-[14px] font-semibold">
           {open ? 'Leer menos' : 'Leer más'}
         </button>
       )}

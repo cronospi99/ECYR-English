@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/Card';
 import { useAsync } from '@/hooks/useAsync';
 import { loadFoundations } from '@/content/levels';
 import { useProgress } from '@/store/progress';
+import { deep } from '@/lib/color';
 
 export default function FoundationsPage() {
   const { data, loading } = useAsync(loadFoundations, []);
@@ -50,14 +51,14 @@ export default function FoundationsPage() {
                     leading={
                       <span
                         className="flex h-9 w-9 items-center justify-center rounded-[10px] text-[13px] font-extrabold text-white"
-                        style={{ background: u.color }}
+                        style={{ background: deep(u.color) }}
                       >
                         {t.icon}
                       </span>
                     }
                     title={t.title}
                     subtitle={t.kicker}
-                    trailing={topics[t.id] ? <CheckCircle2 size={20} className="text-ios-green" /> : undefined}
+                    trailing={topics[t.id] ? <CheckCircle2 size={20} className="text-ink-green" /> : undefined}
                   />
                 ))}
               </ListGroup>

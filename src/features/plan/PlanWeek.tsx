@@ -8,6 +8,7 @@ import { usePlan } from '@/store/plan';
 import { dayKey } from '@/lib/date';
 import { SKILL_INFO, WEEKDAYS, type PlanEvaluation, type PlanTask, type WeekPlan } from '@/lib/planner';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 const dateOf = (k: string) => new Date(k + 'T00:00:00');
 const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -46,7 +47,7 @@ export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: 
                 !list.length && !active && 'opacity-45',
               )}
             >
-              <span className={cn('text-[11px] font-semibold uppercase', !active && (d === today ? 'text-ios-red' : 'text-label-2'))}>
+              <span className={cn('text-[11px] font-semibold uppercase', !active && (d === today ? 'text-ink-red' : 'text-label-2'))}>
                 {WEEKDAYS[dt.getDay()]}
               </span>
               <span className="text-[19px] leading-none font-bold tabular-nums">{dt.getDate()}</span>
@@ -83,7 +84,7 @@ export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: 
         )}
         {overdue.length > 0 && (
           <div className="border-separator border-t pt-3 pb-2">
-            <div className="text-ios-orange px-5 pb-1 text-[13px] font-semibold">Pendientes de días anteriores</div>
+            <div className="text-ink-orange px-5 pb-1 text-[13px] font-semibold">Pendientes de días anteriores</div>
             <ul>
               {overdue.map((t) => (
                 <TaskRow key={t.id} t={t} ev={ev} showDay readOnly={readOnly} />
@@ -128,14 +129,14 @@ function TaskRow({ t, ev, showDay, readOnly }: { t: PlanTask; ev?: PlanEvaluatio
       <Link to={t.to} className="min-w-0 flex-1">
         <span className={cn('block text-[15px] leading-snug font-medium', done && 'text-label-2 line-through decoration-1')}>{t.title}</span>
         <span className="text-label-2 mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[12px]">
-          <span className="font-semibold" style={{ color: info.color }}>
+          <span className="font-semibold" style={{ color: ink(info.color) }}>
             {info.label}
           </span>
           <span className="inline-flex items-center gap-0.5">
             <Clock size={11} /> {t.minutes} min
           </span>
           {showDay && <span>{dateOf(t.day).toLocaleDateString('es', { weekday: 'short', day: 'numeric' })}</span>}
-          {auto && <span className="text-ios-green font-medium">Detectada{typeof st?.score === 'number' ? ` · ${st.score}%` : ''}</span>}
+          {auto && <span className="text-ink-green font-medium">Detectada{typeof st?.score === 'number' ? ` · ${st.score}%` : ''}</span>}
           {t.detail && !done && <span className="hidden truncate sm:inline">{t.detail}</span>}
         </span>
       </Link>

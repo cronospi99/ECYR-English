@@ -9,6 +9,7 @@ import { cn } from '@/lib/cn';
 import { dueInfo, isAutoDetectable, isFinished, validateTo } from '@/lib/assignments';
 import { DUE_COLOR, KIND_META, STATUS_META, VIA_LABEL, formatDate } from './meta';
 import type { TaskView } from './useMyTasks';
+import { ink } from '@/lib/color';
 
 /** One task in the student's list. */
 export function TaskCard({
@@ -58,13 +59,13 @@ export function TaskCard({
         <IconTile icon={kind.icon} color={kind.color} size={40} soft />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-footnote font-semibold" style={{ color: kind.color }}>
+            <span className="text-footnote font-semibold" style={{ color: ink(kind.color) }}>
               {kind.label}
             </span>
             {a.level && <LevelChip level={a.level} className="h-5 px-2 text-[11px]" />}
             <span
               className="text-footnote ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-semibold"
-              style={{ color: st.color, background: `color-mix(in srgb, ${st.color} 13%, transparent)` }}
+              style={{ color: ink(st.color), background: `color-mix(in srgb, ${st.color} 13%, transparent)` }}
             >
               <st.icon size={13} strokeWidth={2.5} aria-hidden /> {st.label}
             </span>
@@ -82,7 +83,7 @@ export function TaskCard({
           {long && (
             <button
               type="button"
-              className="text-ios-blue text-footnote mt-1 font-semibold hover:opacity-70"
+              className="text-ink-blue text-footnote mt-1 font-semibold hover:opacity-70"
               aria-expanded={open}
               aria-controls={textId}
               onClick={() => setOpen((v) => !v)}
@@ -95,7 +96,7 @@ export function TaskCard({
 
       <div className="text-footnote mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
         {!finished && (
-          <span className="inline-flex items-center gap-1 font-medium" style={{ color: DUE_COLOR[due.tone] }} title={due.exact || undefined}>
+          <span className="inline-flex items-center gap-1 font-medium" style={{ color: ink(DUE_COLOR[due.tone]) }} title={due.exact || undefined}>
             <CalendarClock size={14} aria-hidden /> {due.label}
             {due.exact && <span className="sr-only"> ({due.exact})</span>}
           </span>
@@ -108,7 +109,7 @@ export function TaskCard({
         )}
         {!finished && auto && (
           <span className="text-label-2 inline-flex items-center gap-1">
-            <Sparkles size={14} className="text-ios-purple" aria-hidden /> Se marca sola al completarla
+            <Sparkles size={14} className="text-ink-purple" aria-hidden /> Se marca sola al completarla
           </span>
         )}
         {a.requires_submission && !finished && (
@@ -119,7 +120,7 @@ export function TaskCard({
       </div>
 
       {s?.portfolio_item_id && (
-        <Link to="/portfolio" className="text-ios-blue text-footnote mt-2 inline-flex items-center gap-1 font-semibold hover:opacity-70">
+        <Link to="/portfolio" className="text-ink-blue text-footnote mt-2 inline-flex items-center gap-1 font-semibold hover:opacity-70">
           <FileCheck2 size={14} aria-hidden /> Ver el trabajo entregado
         </Link>
       )}
@@ -139,7 +140,7 @@ export function TaskCard({
       )}
 
       {err && (
-        <p role="alert" className="text-ios-red text-footnote mt-2">
+        <p role="alert" className="text-ink-red text-footnote mt-2">
           {err}
         </p>
       )}

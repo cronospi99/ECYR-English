@@ -20,6 +20,7 @@ import { speak } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import { useProgress } from '@/store/progress';
 import { cn } from '@/lib/cn';
+import { ink, deep } from '@/lib/color';
 
 // ------------------------------------------------------------------ shared --
 
@@ -157,7 +158,7 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
               aria-expanded={isOpen}
               aria-label={`${v.en}: ${v.past}, ${v.part}`}
             >
-              <span className="absolute top-2 left-2 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase" style={{ color: tint, background: `color-mix(in srgb, ${tint} 14%, transparent)` }}>
+              <span className="absolute top-2 left-2 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase" style={{ color: ink(tint), background: `color-mix(in srgb, ${tint} 14%, transparent)` }}>
                 {v.type === 'irregular' ? 'Irr' : 'Reg'}
               </span>
               {v.c1 && (
@@ -171,7 +172,7 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
               <span className="text-label-2 max-w-full truncate text-[12px]">
                 {v.past} · {v.part}
               </span>
-              {showEs && <span className="text-label-3 mt-0.5 max-w-full truncate text-[11px]">{v.es}</span>}
+              {showEs && <span className="text-label-2 mt-0.5 max-w-full truncate text-[11px]">{v.es}</span>}
             </motion.button>
           );
         })}
@@ -234,7 +235,7 @@ export function EdSoundRules({ data }: { data: VerbLabData }) {
         <Card key={r.sound} className="p-5">
           <div className="flex items-center justify-between">
             <h4 className="text-headline">{r.title}</h4>
-            <span className="rounded-full px-2.5 py-0.5 text-[13px] font-bold text-white" style={{ background: SOUND_COLOR[r.sound] }}>
+            <span className="rounded-full px-2.5 py-0.5 text-[13px] font-bold text-white" style={{ background: deep(SOUND_COLOR[r.sound]) }}>
               {SOUND_LABEL[r.sound]}
             </span>
           </div>
@@ -243,7 +244,7 @@ export function EdSoundRules({ data }: { data: VerbLabData }) {
           <div className="mt-3 flex flex-wrap gap-1.5">
             {samples[r.sound].map((v) => (
               <button key={v.en} type="button" onClick={() => say(v.past)} className="bg-fill-2 hover:bg-fill inline-flex items-center gap-1 rounded-full px-3 py-1 text-[14px]">
-                {v.past} <Volume2 size={12} className="text-ios-blue" />
+                {v.past} <Volume2 size={12} className="text-ink-blue" />
               </button>
             ))}
           </div>
@@ -307,7 +308,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
       <div className="flex items-center justify-center gap-3 py-2">
         <span className="text-[30px]">{v.emoji}</span>
         <span className="text-[30px] font-bold tracking-tight">{v.past}</span>
-        <button type="button" onClick={() => say(v.past)} className="text-ios-blue rounded-full p-2 hover:bg-fill-2" aria-label="Escuchar">
+        <button type="button" onClick={() => say(v.past)} className="text-ink-blue rounded-full p-2 hover:bg-fill-2" aria-label="Escuchar">
           <Volume2 size={22} />
         </button>
       </div>
@@ -420,7 +421,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
       </div>
       {!q ? (
         <div className="flex flex-col items-center px-6 py-10 text-center">
-          <Timer size={40} className="text-ios-blue" />
+          <Timer size={40} className="text-ink-blue" />
           <h4 className="text-title-3 mt-3">Viaje en el tiempo</h4>
           <p className="text-label-2 mt-1 max-w-sm text-[15px]">
             Aparece un verbo: elige su {fixedField === 'part' ? 'participio' : fixedField === 'past' ? 'pasado' : 'pasado o participio'} antes de 12 segundos. Responder rápido suma más puntos.
@@ -438,7 +439,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
             <div className="text-[40px] leading-none">{q.v.emoji}</div>
             <div className="mt-2 text-[30px] font-bold tracking-tight">{q.v.en}</div>
             <div className="text-label-2 text-[14px]">{q.v.es}</div>
-            <div className="text-ios-blue mt-2 text-[15px] font-semibold">¿{q.field === 'past' ? 'Pasado simple' : 'Participio pasado'}?</div>
+            <div className="text-ink-blue mt-2 text-[15px] font-semibold">¿{q.field === 'past' ? 'Pasado simple' : 'Participio pasado'}?</div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2">
             {q.options.map((o) => {
@@ -464,7 +465,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
           {picked && (
             <div className="mt-4 flex items-center justify-between gap-3">
               <p className="text-[14px]">
-                {picked === '__timeout__' ? <X size={15} className="text-ios-red mr-1 inline" /> : picked === q.v[q.field] ? <Check size={15} className="text-ios-green mr-1 inline" /> : <X size={15} className="text-ios-red mr-1 inline" />}
+                {picked === '__timeout__' ? <X size={15} className="text-ink-red mr-1 inline" /> : picked === q.v[q.field] ? <Check size={15} className="text-ink-green mr-1 inline" /> : <X size={15} className="text-ink-red mr-1 inline" />}
                 {q.v.en} → <b>{q.v.past}</b> → <b>{q.v.part}</b>
               </p>
               <Button size="sm" onClick={newQuestion}>
@@ -543,9 +544,8 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
                 className="rounded-[8px] px-2.5 py-1 text-[13px] font-semibold"
                 style={{
                   opacity: kind.startsWith('opt') ? 0.75 : 1,
-                  color: FORMULA_COLOR[kind.split(' ').pop()!] ?? 'var(--label)',
-                  background: `color-mix(in srgb, ${FORMULA_COLOR[kind.split(' ').pop()!] ?? 'var(--label)'} 14%, transparent)`,
-                }}
+                  color: ink(FORMULA_COLOR[kind.split(' ').pop()!] ?? 'var(--label)'),
+                  background: `color-mix(in srgb, ${FORMULA_COLOR[kind.split(' ').pop()!] ?? 'var(--label)'} 14%, transparent)`}}
               >
                 <RichText html={text} />
               </span>
@@ -561,7 +561,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
         <ul className="space-y-2">
           {p.examples.map(([ex, why], i) => (
             <li key={i} className="bg-fill-2 flex items-start gap-2 rounded-[12px] p-3">
-              <button type="button" onClick={() => say(stripTags(ex))} className="text-ios-blue mt-0.5" aria-label="Escuchar ejemplo">
+              <button type="button" onClick={() => say(stripTags(ex))} className="text-ink-blue mt-0.5" aria-label="Escuchar ejemplo">
                 <Volume2 size={15} />
               </button>
               <div>
@@ -578,7 +578,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
 
         {!compact && p.groups.length > 0 && (
           <div>
-            <button type="button" onClick={() => setListOpen((o) => !o)} className="text-ios-blue inline-flex items-center gap-1 text-[15px] font-semibold">
+            <button type="button" onClick={() => setListOpen((o) => !o)} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-semibold">
               {p.listTitle?.replace(/^\S+\s/, '') ?? 'Lista completa'} {p.count && <span className="text-label-2 font-normal">· {p.count}</span>}
               <ChevronDown size={16} className={cn('transition-transform', listOpen && 'rotate-180')} />
             </button>
@@ -667,10 +667,10 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
             <div className="text-label-2 text-[12px] font-semibold uppercase">Errores comunes</div>
             {(compact ? p.exceptions.slice(0, 3) : p.exceptions).map(([wrong, right, why], i) => (
               <div key={i} className="bg-fill-2 rounded-[12px] p-3 text-[14px]">
-                <div className="text-ios-red">
+                <div className="text-ink-red">
                   <RichText html={wrong} />
                 </div>
-                <div className="text-ios-green font-semibold">
+                <div className="text-ink-green font-semibold">
                   <RichText html={right} />
                 </div>
                 <div className="text-label-2 mt-0.5 text-[13px]">
