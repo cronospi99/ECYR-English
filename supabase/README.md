@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `12` **en orden**:
+Incluye las once migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `12` **en orden** (no hay `10`):
 `05` y de `07` a `12` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `12_notes.sql` (las nuevas: `10_voice_cache.sql`, `11_podcasts.sql`, `12_notes.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `12_notes.sql` (las nuevas: `11_podcasts.sql` y `12_notes.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -28,7 +28,6 @@ Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
 | `07_portfolio.sql` | **Mis trabajos**: tabla `portfolio_items`, bucket privado `portfolio` (20 MB/archivo) y `review_portfolio_item()` para que el docente comente y califique. |
 | `08_migrations_log.sql` | Registro de importaciones y migraciones (desde el IELTS Simulator original o archivos), visible para el docente. |
 | `09_assignments.sql` | **Tareas**: `assignments`, destinatarios y estado por estudiante (entregas con archivo, detección automática, retroalimentación con `review_assignment()`). Sin ella, el botón "Asignar tarea" avisa que falta. |
-| `10_voice_cache.sql` | **Voces naturales**: bucket público `voice-cache` (audios ya generados, compartidos por todos) y `voice_usage` + `bump_voice_usage()` (límite diario de audios nuevos por usuario). |
 | `11_podcasts.sql` | **Podcasts**: `podcast_quizzes` (preguntas generadas por IA, una vez por episodio y nivel, compartidas) y `podcast_usage`. |
 | `12_notes.sql` | **Mis notas**: `student_notes`, privadas (cada cuenta solo ve las suyas; el docente no las ve). |
 
@@ -62,12 +61,12 @@ Nunca uses la clave `service_role`/secret en el frontend.
 ```bash
 supabase link --project-ref btfncmarxdlortmlfdko
 supabase functions deploy gemini --no-verify-jwt   # IELTS Simulator
-supabase functions deploy coach  --no-verify-jwt   # AI Coach (texto y voz)
+supabase functions deploy coach  --no-verify-jwt   # AI Coach (texto; la voz la hace /api/tts)
 supabase functions deploy podcast --no-verify-jwt  # preguntas de podcasts
 supabase secrets set GEMINI_API_KEY=AIza...         # compartida por ambas
 # opcionales
 supabase secrets set COACH_DAILY_LIMIT=40 COACH_REQUIRE_CLASS=off GEMINI_MODEL=gemini-3.5-flash-lite
-supabase secrets set VOICE_DAILY_LIMIT=150 PODCAST_DAILY_LIMIT=10
+supabase secrets set PODCAST_DAILY_LIMIT=10
 ```
 
 Sin CLI: **Edge Functions → Deploy a new function → Via editor**, nombre exacto
@@ -75,9 +74,31 @@ Sin CLI: **Edge Functions → Deploy a new function → Via editor**, nombre exa
 (las funciones validan la sesión ellas mismas). Luego **Edge Functions → Secrets**
 → `GEMINI_API_KEY`.
 
-La clave de Gemini nunca llega al navegador. `gemini` (voces) y `podcast` usan además
-`SUPABASE_SERVICE_ROLE_KEY`, que Supabase inyecta solo dentro de las funciones:
-no hay que configurarla ni ponerla nunca en Vercel.
+La clave de Gemini nunca llega al navegador, y Gemini solo genera **texto**: no
+produce audio. `podcast` usa además `SUPABASE_SERVICE_ROLE_KEY`, que Supabase
+inyecta solo dentro de las funciones: no hay que configurarla ni ponerla nunca en Vercel.
+
+### 5. Voces naturales — `/api/tts` (Vercel, no Supabase)
+
+Las voces las genera la función de Vercel [`api/tts.ts`](../api/tts.ts) con las
+voces neuronales de Microsoft Edge (gratis, sin clave). Cada frase se genera una
+vez y luego la sirve el CDN de Vercel a todos. Solo los usuarios con sesión
+iniciada pueden generar audios nuevos.
+
+En **Vercel → Settings → Environment Variables** agrega:
+
+```
+TTS_SIGNING_SECRET=<cadena larga al azar, p. ej. `openssl rand -hex 32`>
+```
+
+No es una clave de Supabase (nunca uses la `service_role` aquí) y no lleva el
+prefijo `VITE_`, así que no llega al navegador. La función usa además
+`VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` (ya configuradas) para comprobar la
+sesión. Opcionales: `EDGE_TTS_VERSION` (si Microsoft cambia la versión que exige)
+y `EDGE_TTS_FORMAT`. Sin `TTS_SIGNING_SECRET`, la app usa la voz del dispositivo.
+
+Si ya ejecutaste la antigua `10_voice_cache.sql` (voces de Gemini), lo que creó
+(el bucket `voice-cache` y `voice_usage`) ya no se usa; puedes dejarlo o borrarlo.
 
 ## Errores frecuentes
 

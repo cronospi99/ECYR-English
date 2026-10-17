@@ -1,0 +1,275 @@
+ECYR ENGLISH — CAMBIOS Y ACTUALIZACIONES
+Rama: claude/trusting-hawking-w76maz
+======================================================================
+
+Este archivo resume todo lo que se agregó y cambió en la plataforma en esta
+etapa. Al final están los pasos que hay que hacer en Supabase para que todo
+funcione en producción y algunos puntos para revisar.
+
+
+----------------------------------------------------------------------
+1. LECCIONES DE GRAMÁTICA: UNA SOLA LECCIÓN, MÁS VISUAL
+----------------------------------------------------------------------
+
+- Se eliminó el selector "En imágenes" / "Lección completa". Ahora hay una
+  sola lección, organizada en 4 pasos para que no abrume:
+    Paso 1 · Entiende   → la idea, la fórmula en bloques de colores unidos
+                          con flechas, la línea de tiempo, español → inglés,
+                          el error típico y un truco.
+    Paso 2 · Míralo     → ejemplos con audio, la infografía que explica ese
+                          punto y los nuevos esquemas visuales.
+    Paso 3 · Recuerda   → tabla, claves y "Cuidado".
+    Paso 4 · Practica   → "Ponte a prueba" y la sección "Úsalo".
+  Al final: práctica interactiva extra, explicación a fondo (plegada) y el
+  botón al siguiente punto.
+
+- Infografías dentro de las lecciones: ya no aparecen como galería al final
+  de cada pestaña. Cada infografía se muestra grande, con su explicación en
+  español, justo dentro de la lección o del vocabulario que explica (se toca
+  para ampliar). La Biblioteca visual sigue igual.
+
+- Se corrigieron paneles que salían en lecciones que no les correspondían
+  (por ejemplo, "Past continuous vs simple past" ya no muestra paneles del
+  presente perfecto).
+
+- Esquemas visuales nuevos (2 o 3 por punto de gramática, 438 en total):
+    · Transformación paso a paso (afirmativa → negativa → pregunta, activa →
+      pasiva, estilo directo → indirecto…) con los cambios resaltados.
+    · Escalas (frecuencia en %, certeza, formalidad, intensidad).
+    · "¿Cuál uso?": una pregunta en español que lleva a la forma correcta.
+    · Tarjetas con imágenes (emoji + inglés + español + audio).
+    · Pares de frases parecidas y en qué cambia el significado.
+
+- Sección "Úsalo" mejorada:
+    · Diálogos: burbujas con avatar y nombre de cada personaje, una voz
+      distinta por personaje, botón para repetir cada línea, "Escuchar todo"
+      resaltando la línea que suena, y "Ver traducción".
+      Se agregaron 2 diálogos nuevos por cada punto de gramática (294
+      diálogos, más de 2.200 líneas, con traducción al español colombiano).
+      C1 no tenía diálogos y ahora sí.
+    · Drill interactivo: una tarjeta por frase, "Dilo en voz alta o
+      escríbelo", "Ver respuesta" con el cambio resaltado, autoevaluación
+      ✓/✗ y puntaje final. Todos los drills tienen respuesta modelo; C1 no
+      tenía drills y ahora tiene uno por punto.
+    · Contraste: tarjetas lado a lado con "vs" y ejemplos con audio (con
+      opción "Ver tabla").
+    · Sonido: botones para escuchar y sílabas tónicas resaltadas.
+
+
+----------------------------------------------------------------------
+2. NUEVO NIVEL PRE-A1 · FOUNDATIONS
+----------------------------------------------------------------------
+
+- Reemplaza al antiguo "English Foundations · Curso de cómic". Es el primer
+  nivel en Aprender (tarjeta igual a las de A1–C1, con anillo de progreso).
+  Tiene exactamente estos 10 temas:
+    1. Alphabet (con la tabla interactiva de letras).
+    2. Greetings & farewells: 102 expresiones en 9 categorías, filtrables por
+       registro (formal / neutro / informal), con audio, tablas, diálogos
+       colombianos y ejercicios.
+    3. Verb to be: afirmativa, negativa, contracciones, preguntas y respuestas
+       cortas.
+    4. Possessive adjectives (+ mine, yours…).
+    5. Numbers: tabla interactiva de números (como la del alfabeto) con
+       cardinales y ordinales, 0–20, decenas, 1–100, números grandes,
+       contraste -teen / -ty, constructor de números, precios, teléfonos,
+       años y fechas, y un juego de escucha.
+    6. Punctuation & spelling: 24 símbolos con nombre en EE. UU. y Reino
+       Unido, mayúsculas, apóstrofos, deletrear, correos y páginas web,
+       reglas de plural y -ing.
+    7. Demonstratives (this / that / these / those) con escena interactiva
+       cerca / lejos.
+    8. Wh- questions: 16 palabras interrogativas con fórmula de colores.
+    9. Clothing vocabulary: diccionario visual con 124 prendas recortadas de
+       las 5 infografías (invierno, otoño, primavera, verano y trajes típicos
+       de Colombia), nombres en inglés americano y británico, 3 juegos y
+       "What is she wearing?". Las 5 infografías completas también están en
+       la Biblioteca visual.
+   10. Possessive 's / s' (genitivo sajón) + whose.
+
+- Los otros 30 temas del curso anterior (do/does, presente simple,
+  preposiciones, artículos, comparativos, pasado simple, going to, etc.) no
+  se perdieron: ahora aparecen como "Práctica interactiva" dentro de la
+  lección de A1 o A2 a la que pertenecen.
+
+
+----------------------------------------------------------------------
+3. MÁS PRÁCTICA DE ESCRITURA Y LECTURA
+----------------------------------------------------------------------
+
+- Writing: cada unidad de todos los niveles tiene ahora 4 tareas (la del
+  libro + 3 nuevas = 216 tareas nuevas), con género (correo, historia,
+  ensayo, reseña, propuesta…), explicación en español, criterios y texto
+  modelo ("Ver modelo" invita primero a escribir). Están en Práctica →
+  Writing y en la pestaña Producción de cada unidad.
+
+- Reading: 2 lecturas nuevas por unidad en todos los niveles (144 lecturas,
+  de 140 palabras en A1 a 600 en C1), con glosario y 8 preguntas. Están en
+  Práctica → Reading → "Por unidad" y en la pestaña Producción de cada
+  unidad.
+
+
+----------------------------------------------------------------------
+4. VOCES NATURALES
+----------------------------------------------------------------------
+
+- Gemini ya no genera audio: solo texto (respuestas, explicaciones, feedback,
+  guiones del IELTS). Sigue escuchando el audio del estudiante para
+  transcribirlo (Speaking, Coach en Firefox, podcasts).
+- Dos niveles de voz:
+    · Ligero (voz del dispositivo): palabras sueltas y frases muy cortas, al
+      instante.
+    · Natural (voces neuronales de Microsoft Edge, gratis y sin cuota de
+      Gemini): frases, diálogos, feedback, lecturas guiadas, audios de
+      Listening y el simulador IELTS, de cualquier largo (también 7 minutos o
+      más). El texto se parte en trozos y empieza a sonar en ~1 segundo
+      mientras se cargan los siguientes.
+- 18 voces en inglés (EE. UU., Reino Unido, Australia, Irlanda) + 2 voces
+  colombianas para los tips en español. En Perfil → Voz eliges la tuya y si
+  quieres voces naturales (recomendado), naturales para todo, o solo la del
+  dispositivo.
+- En diálogos y audios cada personaje tiene su propia voz (estable por nombre),
+  para que no suene repetitivo.
+- Lectura guiada: "Escuchar toda la lectura" lee el texto completo y resalta el
+  párrafo que va sonando.
+- Cada frase se genera una sola vez y luego la sirve el CDN de Vercel a todos;
+  además queda guardada en el navegador (funciona sin conexión).
+- Solo usuarios con sesión iniciada generan audios nuevos (la función no queda
+  como API pública). Si el servicio de voces falla, la app sigue con la voz del
+  dispositivo sin mostrar errores.
+- IELTS: las secciones de Listening generadas por IA se graban con voces
+  naturales (una por hablante, con el acento del test) en un MP3 que el docente
+  puede guardar en la biblioteca de la clase.
+
+
+----------------------------------------------------------------------
+5. AI COACH: CONVERSACIÓN POR VOZ
+----------------------------------------------------------------------
+
+- Nueva pestaña "Voz": el estudiante habla, el coach responde en voz alta y
+  vuelve a escuchar, como una conversación real (manos libres). Se puede
+  interrumpir tocando el botón.
+- Indicador animado: Escuchando / Pensando / Hablando.
+- Si el estudiante habla en español (o activa "Hablo en español"), el coach
+  le dice cómo decirlo en inglés, le da un tip en español y lo invita a
+  repetirlo; luego sigue la conversación en inglés.
+- Funciona también en Firefox (graba y transcribe con IA).
+- Al terminar, la transcripción se guarda para que el docente la vea.
+
+
+----------------------------------------------------------------------
+6. PARA EL DOCENTE
+----------------------------------------------------------------------
+
+- Ver el trabajo de los estudiantes:
+    · Escritura: se guarda cuando el estudiante pide feedback de IA o pulsa
+      "Enviar a mi docente".
+    · Speaking: las transcripciones (y el feedback) se guardan solas, también
+      las del AI Coach por voz.
+    · Se ven en la nueva pestaña "Trabajos" de la Sala del docente (toda la
+      clase) y en la ficha de cada estudiante, con texto completo y feedback
+      de la IA, filtrando por Writing / Speaking.
+
+- Asignar tareas: el botón "Asignar tarea" ahora está en el encabezado de la
+  Sala del docente, en el Inicio del docente, en la ficha de cada estudiante
+  (con el estudiante ya elegido), en Speaking y en cada página de unidad
+  (con la unidad ya elegida). Si falta la migración 09_assignments.sql, la
+  app lo dice claramente en vez de mostrar un error.
+
+- En Material, "English Foundations" ahora se llama "Pre-A1 · Foundations".
+
+
+----------------------------------------------------------------------
+7. PARA LOS ESTUDIANTES
+----------------------------------------------------------------------
+
+- Bloque de notas (solo texto): botón flotante abajo a la derecha (atajo
+  Alt+N) y página "Mis notas". Cada nota recuerda en qué página se escribió.
+  Se guardan en la nube y son privadas: el docente no las ve.
+
+- Traductor en todas las tareas de escritura y speaking (y en el botón
+  flotante): inglés ↔ español, con audio, copiar y "A mis notas".
+
+
+----------------------------------------------------------------------
+8. PODCASTS EN LISTENING
+----------------------------------------------------------------------
+
+Evaluación: sí es una buena idea. El catálogo de Apple Podcasts es gratis,
+no necesita clave y da el enlace al audio de cada episodio. El audio se
+reproduce desde su fuente oficial (no se copia), siempre con créditos.
+
+- Nueva pestaña Podcasts en Práctica → Listening, con programas para
+  aprender inglés por nivel (A1–C1), buscador, reproductor (±10 s,
+  velocidad 0,75–1,5×, recuerda dónde ibas).
+- Guía de escucha (antes / durante / después) que funciona sin IA, también
+  en PDF.
+- Preguntas generadas por IA para cada episodio: se generan una sola vez por
+  episodio y nivel y quedan para toda la clase.
+- Limitaciones: en episodios largos la IA solo escucha los primeros 12–25
+  minutos; si un programa ya no existe en Apple aparece "No disponible".
+
+
+----------------------------------------------------------------------
+9. PASOS EN SUPABASE (NECESARIOS PARA PRODUCCIÓN)
+----------------------------------------------------------------------
+
+1. Base de datos: Supabase → SQL Editor → pegar todo supabase/setup.sql →
+   Run (se puede repetir sin perder datos). O ejecutar solo las que falten:
+     09_assignments.sql  → Tareas
+     11_podcasts.sql     → Podcasts
+     12_notes.sql        → Mis notas
+
+2. Funciones (con "Verify JWT" apagado):
+     supabase functions deploy gemini  --no-verify-jwt
+     supabase functions deploy coach   --no-verify-jwt
+     supabase functions deploy podcast --no-verify-jwt
+   No se necesitan claves nuevas en Supabase: usan GEMINI_API_KEY.
+
+   Voces naturales (Vercel → Settings → Environment Variables):
+     TTS_SIGNING_SECRET = una cadena larga al azar (p. ej. openssl rand -hex 32).
+   No es una clave de Supabase. Sin ella la app usa la voz del dispositivo.
+
+3. Opcional (límites diarios por usuario):
+     PODCAST_DAILY_LIMIT (preguntas de podcast, por defecto 10)
+     COACH_DAILY_LIMIT   (mensajes del coach, por defecto 40; cada turno de
+                          voz cuenta como un mensaje)
+
+4. Para que todo salga en Vercel hay que unir esta rama a main.
+
+
+----------------------------------------------------------------------
+10. PARA REVISAR
+----------------------------------------------------------------------
+
+- Las voces naturales usan un servicio no oficial de Microsoft (el de "Leer en
+  voz alta" de Edge): no tiene garantía y Microsoft podría cambiarlo o
+  limitarlo. Si pasa, la app usa la voz del dispositivo sola; el arreglo está
+  en un solo archivo (api/tts.ts).
+- Las voces, el coach por voz, los podcasts y los trabajos para el docente
+  se probaron con datos simulados; conviene probarlos una vez hechos los
+  pasos de Supabase.
+- Datos reales a verificar en las lecturas:
+    · B2: perfil de María Isabel Urrutia (congresista y ministra del Deporte
+      en 2022).
+    · B2: lectura u-b2-10-1 (normas colombianas del consumidor).
+    · B1-7: la limpieza del río Bogotá "empezó en 2016" (una pregunta
+      depende de esa fecha).
+- En los drills abiertos del libro, la respuesta mostrada es un ejemplo, no
+  la única correcta.
+- Las tareas originales del libro (A1–B2) aún no tienen texto modelo; solo
+  las nuevas.
+- El plan semanal todavía sugiere temas del curso antiguo, no los de Pre-A1.
+
+
+----------------------------------------------------------------------
+ANTES, EN ESTA MISMA RAMA
+----------------------------------------------------------------------
+
+- Contraste de colores corregido en toda la app (modo claro y oscuro).
+- Explicaciones visuales en español para los 147 puntos de gramática.
+- Tareas de escritura para C1 (12 unidades).
+- Sección Vocabulario (conectores, adjetivos, adverbios), talleres A1–C1
+  con tareas en PDF, biblioteca de lecturas y audios con créditos, juegos
+  nuevos, Verb Lab ampliado con 250+ verbos académicos C1, más phrasal verbs
+  con ejemplos, y subida de audios en Speaking y en el simulador IELTS.

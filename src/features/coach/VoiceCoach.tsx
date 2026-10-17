@@ -6,8 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Toggle } from '@/components/ui/Misc';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { askVoiceCoach, CoachError, type ChatMessage } from '@/lib/ai';
-import { getRecognition, getSpeechState, speak, stopSpeaking, subscribeSpeech } from '@/lib/speech';
-import { prefetchVoice, defaultPersona } from '@/lib/voice';
+import { defaultPersona, getRecognition, getSpeechState, prefetchTts, rateFor, speak, speakSpanish, stopSpeaking, subscribeSpeech } from '@/lib/speech';
 import { saveWork } from '@/lib/work';
 import { useSettings } from '@/store/settings';
 import { useProgress } from '@/store/progress';
@@ -97,13 +96,19 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
 
   // ------------------------------------------------------------ speaking --
 
-  const say = (text: string) => {
+  /** The coach's reply in the learner's natural voice, then the Spanish tip (if any) in a Colombian voice, then listen again. */
+  const say = (text: string, tipEs?: string) => {
     setPhase('speaking');
+    const again = () => {
+      if (active.current && phaseRef.current === 'speaking') listen();
+    };
     speakId.current = speak(text, {
       persona: defaultPersona().id,
       rate: speechRate,
+      tier: 'premium',
       onEnd: () => {
-        if (active.current && phaseRef.current === 'speaking') listen();
+        if (!tipEs || !active.current || phaseRef.current !== 'speaking') return again();
+        speakId.current = speakSpanish(tipEs, { tier: 'premium', onEnd: again });
       },
     });
   };
@@ -292,7 +297,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
       const r = await askVoiceCoach({ messages: history, level: levelRef.current, spanish: isEs });
       if (!active.current) return;
       pushTurn({ role: 'model', text: r.reply, english_version: r.english_version, tip_es: r.tip_es, spanish: r.student_spanish || isEs });
-      if (r.english_version) prefetchVoice(r.english_version, defaultPersona().id);
+      if (r.english_version) prefetchTts(r.english_version, defaultPersona().edge, rateFor(speechRate));
       const userTurns = turnsRef.current.filter((t) => t.role === 'user').length;
       if (userTurns % 3 === 1) {
         award({ kind: 'coach', title: 'Conversación por voz con el AI Coach', skill: 'speaking', xp: 5, level: levelRef.current, ref: 'coach:voice' });
@@ -303,7 +308,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
         spanishRef.current = false;
         setNotice('Ahora repítelo en inglés: te escucho en inglés.');
       }
-      say(r.reply);
+      say(r.reply, r.tip_es || undefined);
     } catch (e) {
       if (!active.current) return;
       setError(e instanceof CoachError ? e.message : 'No se pudo contactar al coach.');

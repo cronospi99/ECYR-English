@@ -11,7 +11,7 @@ import { useAsync } from '@/hooks/useAsync';
 import { loadLibReadings, type LibReading } from '@/content/library';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
-import { speak, stopSpeaking } from '@/lib/speech';
+import { speak, speakSequence, stopSpeaking } from '@/lib/speech';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 
@@ -138,14 +138,31 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
   const terms = useMemo(() => [...glossary.keys()].sort((a, b) => b.length - a.length), [glossary]);
   useEffect(() => () => void stopSpeaking(), [r.id]);
 
+  const [all, setAll] = useState(false);
   const read = (i: number) => {
+    setAll(false);
     if (reading === i) {
       stopSpeaking();
       setReading(null);
       return;
     }
     setReading(i);
-    speak(r.paragraphs[i]!, { rate: 0.92, onEnd: () => setReading((x) => (x === i ? null : x)) });
+    speak(r.paragraphs[i]!, { rate: 0.92, tier: 'premium', onEnd: () => setReading((x) => (x === i ? null : x)) });
+  };
+  /** Guided reading: the whole text in a natural voice, highlighting the paragraph being read. */
+  const readAll = () => {
+    if (all) {
+      stopSpeaking();
+      setAll(false);
+      setReading(null);
+      return;
+    }
+    setAll(true);
+    setReading(0);
+    speakSequence(
+      r.paragraphs.map((text) => ({ text })),
+      { rate: 0.92, gapMs: 450, onLine: setReading, onEnd: () => (setAll(false), setReading(null)) },
+    );
   };
 
   return (
@@ -165,6 +182,13 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
             {r.emoji} {r.title}
           </h2>
           <p className="mt-1 text-[13px] opacity-85">Toca las palabras subrayadas para ver su traducción.</p>
+          <button
+            type="button"
+            onClick={readAll}
+            className="mt-3 inline-flex h-9 items-center gap-1.5 rounded-full bg-white/20 px-3.5 text-[14px] font-semibold backdrop-blur-sm transition-colors hover:bg-white/30"
+          >
+            {all ? <Square size={14} fill="currentColor" /> : <Volume2 size={16} />} {all ? 'Detener' : 'Escuchar toda la lectura'}
+          </button>
         </div>
         <div className="space-y-4 p-5 sm:p-6">
           {r.paragraphs.map((p, i) => (

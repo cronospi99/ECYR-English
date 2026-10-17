@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Languages, Play, Square, Volume2 } from 'lucide-react';
-import { canSpeak, speakAs, stopSpeaking } from '@/lib/speech';
+import { canSpeak, castVoices, speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import type { CastMember } from '@/content/dialogues';
 import { cn } from '@/lib/cn';
@@ -61,6 +61,12 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
       }),
     );
   }, [lines, cast]);
+  // A distinct natural voice per character, the same one for "Escuchar todo" and single lines.
+  const voices = useMemo(() => castVoices([...people.values()].map((p) => p.who)), [people]);
+  const speakerOf = (sp: string) => {
+    const who = people.get(sp)!.who;
+    return { ...who, persona: voices.get(who.name)?.id };
+  };
   const hasEs = lines.some((l) => l.es);
   const speech = canSpeak();
 
@@ -73,17 +79,22 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
   const play = (k: number, chain: boolean) => {
     const id = ++run.current;
     if (k >= lines.length) return stop();
-    const l = lines[k]!;
     setPlaying(k);
     setAll(chain);
-    speakAs(l.line, people.get(l.sp)!.who, {
-      rate: speechRate,
-      onEnd: () => {
-        if (id !== run.current) return;
-        if (chain) play(k + 1, true);
-        else setPlaying(null);
-      },
-    });
+    const done = () => {
+      if (id !== run.current) return;
+      setPlaying(null);
+      setAll(false);
+    };
+    if (chain) {
+      // The whole conversation: the next line loads while the current one plays.
+      speakSequence(
+        lines.slice(k).map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })),
+        { rate: speechRate, onLine: (i) => id === run.current && setPlaying(k + i), onEnd: done },
+      );
+    } else {
+      speakAs(lines[k]!.line, speakerOf(lines[k]!.sp), { rate: speechRate, tier: 'premium', onEnd: done });
+    }
   };
 
   return (

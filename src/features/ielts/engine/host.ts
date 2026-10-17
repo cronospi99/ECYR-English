@@ -10,6 +10,7 @@
  */
 import overlaysHtml from './overlays.html?raw';
 import { supabase, supabaseConfig } from '@/lib/supabase';
+import { ieltsTts } from './tts';
 
 export type IeltsModule =
   | 'dashboard'
@@ -42,6 +43,8 @@ declare global {
     __ielts?: IeltsApi;
     __ieltsBoot?: () => Promise<void>;
     SUPABASE_CONFIG?: { url: string; anonKey: string };
+    /** Natural voices for AI-voiced Listening sections (see ./tts.ts). */
+    __ecyrTts?: typeof ieltsTts;
     supabase?: { createClient: (...args: unknown[]) => unknown };
   }
 }
@@ -127,6 +130,7 @@ export async function mountIelts(container: HTMLElement): Promise<IeltsApi> {
         window.SUPABASE_CONFIG = supabaseConfig;
         window.supabase = { createClient: () => supabase };
       }
+      window.__ecyrTts = ieltsTts;
       const { default: code } = await import('./ielts-engine.js?raw');
       const s = document.createElement('script');
       s.textContent = code;

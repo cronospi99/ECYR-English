@@ -2985,6 +2985,7 @@ function trSpeak(){
   const T = state.translator;
   if(!T.result || !window.speechSynthesis) return;
   try{
+    if(window.__ecyrTts){ window.__ecyrTts.say(T.result.text, T.to); return; }
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(T.result.text);
     u.lang = T.to;
@@ -6478,7 +6479,7 @@ function renderListening(){
     const custom = L.customAudio && L.customAudio[part.id];
     const voice = listeningPartVoice(part);
     const playable = voice !== "none";
-    const trackNote = voice === "gemini" ? ["AI voices (Gemini)", `Recorded with ${escapeHtml((part.voices || []).join(" & ") || "Gemini voices")}${part.accent ? " · " + escapeHtml(part.accent) : ""}`]
+    const trackNote = voice === "gemini" ? ["Natural AI voices", `Recorded with ${escapeHtml((part.voices || []).join(" & ") || "natural voices")}${part.accent ? " · " + escapeHtml(part.accent) : ""}`]
       : voice === "browser" ? ["Your device's voice", "Read aloud by this device's speech engine — less natural than a recording"]
       : custom ? ["Official recording attached", "Playing your attached audio file"]
       : ["No audio attached", "Attach the official recording below to enable playback"];
@@ -7049,11 +7050,7 @@ async function generateNewListeningWithAI(){
      key), the section is read by the device's own speech engine instead —
      less natural, never broken.
    ========================================================================= */
-const TTS_VOICES = {
-  female: ["Kore","Aoede","Leda","Callirrhoe","Despina","Erinome","Autonoe","Laomedeia"],
-  male:   ["Charon","Puck","Orus","Iapetus","Algenib","Schedar","Enceladus","Alnilam"]
-};
-const TTS_OWN_MODELS = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts"];
+// Voices: natural neural voices from the platform (naturalVoicesFor / callNaturalTTS below).
 const LISTENING_AI_ACCENTS = { british:"British English", australian:"Australian English", american:"North American English", mixed:null };
 const LISTENING_AI_MIXED = ["British English","Australian English","British English","North American English"];
 
@@ -7146,96 +7143,24 @@ async function writeListeningSection(plan, accent, topic, onRetry){
   throw new Error(`Section ${plan.n}: ${lastProblem}`);
 }
 
-// Gemini's voices, one per speaker, never the same voice twice in a section.
-function pickTTSVoices(speakers){
-  const used = new Set();
-  return speakers.map(s=>{
-    const pool = TTS_VOICES[s.gender === "female" ? "female" : "male"].filter(v=>!used.has(v));
-    const v = pool[Math.floor(Math.random()*pool.length)];
-    used.add(v);
-    return { speaker:s.name, voice:v };
-  });
-}
-
-function ttsTextFor(part, accent){
-  if(part.speakers.length === 2){
-    const [a, b] = part.speakers.map(s=>s.name);
-    return `Read this recorded IELTS Listening conversation between ${a} and ${b}. Both speak naturally with ${accent} accents, at the steady, clear pace of an exam recording, with short natural pauses between turns:\n\n${part.script}`;
-  }
-  return `Read this recorded IELTS Listening ${part.id === 4 ? "lecture" : "talk"} aloud with a natural ${accent} accent, at the steady, clear pace of an exam recording, pausing briefly between paragraphs:\n\n${part.script}`;
-}
-
-// Gemini returns raw 16-bit PCM; a WAV header makes it playable and storable.
-function pcmToWavB64(pcmB64, rate){
-  const pcm = Uint8Array.from(atob(pcmB64), c=>c.charCodeAt(0));
-  const buf = new ArrayBuffer(44 + pcm.length), v = new DataView(buf);
-  const str = (o, s)=>{ for(let i=0;i<s.length;i++) v.setUint8(o+i, s.charCodeAt(i)); };
-  str(0, "RIFF"); v.setUint32(4, 36 + pcm.length, true); str(8, "WAVE");
-  str(12, "fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
-  v.setUint32(24, rate, true); v.setUint32(28, rate*2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
-  str(36, "data"); v.setUint32(40, pcm.length, true);
-  new Uint8Array(buf, 44).set(pcm);
-  let bin = "";
-  const bytes = new Uint8Array(buf);
-  for(let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i+0x8000));
-  return btoa(bin);
-}
-
+// Natural neural voices from the ECYR platform (window.__ecyrTts, served by
+// /api/tts). Gemini only writes the scripts and questions; it never generates audio.
 function ttsError(message, code, wait){ const e = new Error(message); e.code = code; e.wait = wait || 0; return e; }
 
-// One voiced section. Throws with .code "teacher_only" | "quota" | "wait"
-// (with .wait seconds) | "failed", so the caller knows whether to wait,
-// fall back to the device's voice, or stop.
-async function callGeminiTTS(text, speakers){
-  const route = geminiRoute();
-  if(route === "none") throw ttsError(geminiMissingMessage(), "failed");
-  let res, bodyText = "";
-  if(route === "shared"){
-    res = await sharedAIFetch({ op:"speak", text, speakers });
-    if(!res.ok){
-      bodyText = await res.text().catch(()=> "");
-      let j = null; try{ j = JSON.parse(bodyText); }catch(e){}
-      const code = j && j.error && j.error.code;
-      if(code === "tts_teacher_only") throw ttsError(j.error.message, "teacher_only");
-      if(res.status === 400 && /unknown request/i.test(bodyText)) throw ttsError("The class's AI service is an older version without voices — your teacher redeploys supabase/functions/gemini (see the README).", "quota");
-    }
-  }else{
-    const key = (state.settings.geminiKey || "").trim();
-    const speechConfig = speakers.length === 2
-      ? { multiSpeakerVoiceConfig:{ speakerVoiceConfigs: speakers.map(s=>({ speaker:s.speaker, voiceConfig:{ prebuiltVoiceConfig:{ voiceName:s.voice } } })) } }
-      : { voiceConfig:{ prebuiltVoiceConfig:{ voiceName:speakers[0].voice } } };
-    for(const model of TTS_OWN_MODELS){
-      try{
-        res = await fetch(`${GEMINI_BASE}/models/${model}:generateContent`, {
-          method:"POST",
-          headers:{ "Content-Type":"application/json", "x-goog-api-key": key },
-          body: JSON.stringify({ contents:[{ parts:[{ text }] }], generationConfig:{ responseModalities:["AUDIO"], speechConfig } })
-        });
-      }catch(netErr){ throw ttsError("Network error reaching Gemini.", "failed"); }
-      if(res.ok) break;
-      bodyText = await res.text().catch(()=> "");
-      if(res.status !== 404 && res.status !== 429 && res.status !== 400) break;
-    }
-  }
-  if(!res.ok){
-    if(!bodyText) bodyText = await res.text().catch(()=> "");
-    if(res.status === 429){
-      const m = /"retryDelay"\s*:\s*"(\d+(?:\.\d+)?)s"/.exec(bodyText) || /retry in (\d+(?:\.\d+)?)s/i.exec(bodyText);
-      const wait = m ? Math.ceil(Number(m[1])) : 0;
-      if(/PerDay/i.test(bodyText) || !wait || wait > 90) throw ttsError("Today's free quota for AI voices is used up.", "quota");
-      throw ttsError(`The voice model asks to wait ${wait}s.`, "wait", wait);
-    }
-    if(res.status === 404 || res.status === 400) throw ttsError("This key cannot use Gemini's voice models. " + friendlyGeminiError(res.status, bodyText), "quota");
-    throw ttsError(friendlyGeminiError(res.status, bodyText), "failed");
-  }
-  const data = await res.json();
-  const parts = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || [];
-  const inl = parts.map(p=>p.inlineData || p.inline_data).find(Boolean);
-  if(!inl || !inl.data) throw ttsError("The voice model returned no audio.", "failed");
-  const mime = String(inl.mimeType || inl.mime_type || "");
-  if(/wav/i.test(mime)) return { b64: inl.data, mime:"audio/wav" };
-  const rate = Number((/rate=(\d+)/.exec(mime) || [])[1]) || 24000;
-  return { b64: pcmToWavB64(inl.data, rate), mime:"audio/wav" };
+// One voice per speaker, never the same voice twice in a section (names for the progress and the track note).
+function naturalVoicesFor(part){
+  const tts = window.__ecyrTts;
+  return (tts ? tts.voicesFor(part) : []).map(v=>({ speaker:v.speaker, voice:v.voice }));
+}
+
+// One recorded section as MP3 ({ b64, mime }). Throws .code "quota" when the
+// natural voices are unavailable (signed out, service down), so the caller
+// falls back to the device's voice for the rest.
+async function callNaturalTTS(part){
+  const tts = window.__ecyrTts;
+  if(!tts) throw ttsError("Natural voices are not available in this version.", "quota");
+  try{ return await tts.recordSection(part); }
+  catch(e){ throw ttsError((e && e.message) || "Natural voices are not available right now.", "quota"); }
 }
 
 /* ---- the device's own voice ----
@@ -7261,6 +7186,7 @@ function browserVoicesFor(part){
 }
 
 function speakPartInBrowser(part, rate, onend){
+  if(window.__ecyrTts) return window.__ecyrTts.playPart(part, rate, onend);
   const synth = window.speechSynthesis;
   const shim = { stopped:false, playbackRate:rate, pause(){ this.stopped = true; try{ synth.cancel(); }catch(e){} } };
   const voices = browserVoicesFor(part);
@@ -7331,12 +7257,12 @@ async function generateAIVoicedListening(){
     let fallback = "", voiced = 0;
     for(const part of parts){
       if(fallback) break;
-      const voices = pickTTSVoices(part.speakers);
+      const voices = naturalVoicesFor(part);
       part.voices = voices.map(v=>v.voice);
       for(let attempt=1; attempt<=4; attempt++){
         genProgressSet("aiVoiceGen", 40 + (part.id-1)*15, `Recording Section ${part.id} of 4 with AI voices (${voices.map(v=>v.voice).join(" & ")})…${attempt > 1 ? ` try ${attempt}` : ""}`);
         try{
-          audio[part.id] = Object.assign(await callGeminiTTS(ttsTextFor(part, part.accent), voices), { ai:true, name:`${part.title}.wav` });
+          audio[part.id] = Object.assign(await callNaturalTTS(part), { ai:true, name:`${part.title}.mp3` });
           voiced++;
           break;
         }catch(e){
@@ -7395,9 +7321,9 @@ async function saveAIListeningToLibrary(){
       setStatus(`Saving Section ${i} to the class library…`);
       const bytes = Uint8Array.from(atob(custom[i].b64), c=>c.charCodeAt(0));
       if(bytes.length > DRIVE_MAX_BYTES) throw new Error(`Section ${i} is ${(bytes.length/1048576).toFixed(1)} MB — over the library's limit.`);
-      const name = audioSafeName(`AI ${stamp} ${String(part.title || "").replace(/^Section \d+\s*[—-]\s*/, "")}`).slice(0, 80) + ".wav";
+      const name = audioSafeName(`AI ${stamp} ${String(part.title || "").replace(/^Section \d+\s*[—-]\s*/, "")}`).slice(0, 80) + (custom[i].mime === "audio/mpeg" ? ".mp3" : ".wav");
       const { error } = await AUTH.client.storage.from(AUDIO_BUCKET)
-        .upload(`${owner}/section-${i}/${name}`, new Blob([bytes], { type:"audio/wav" }), { contentType:"audio/wav", upsert:true });
+        .upload(`${owner}/section-${i}/${name}`, new Blob([bytes], { type:custom[i].mime || "audio/wav" }), { contentType:custom[i].mime || "audio/wav", upsert:true });
       if(error) throw new Error(error.message || "upload failed");
       custom[i].saved = true;
       saved++;
@@ -7422,8 +7348,8 @@ function aiVoiceCardHTML(geminiOn){
   const studentOnShared = geminiRoute() === "shared" && !isTeacher();
   const intro = !geminiOn ? escapeHtml(geminiMissingMessage())
     : studentOnShared
-      ? "The AI writes four new sections and 40 questions; your device's voice reads them aloud. (Your teacher makes the natural AI-voiced tests and adds them to the class library — Option 1.)"
-      : `The AI writes four new sections — a conversation, a talk, an academic discussion and a lecture — with 40 questions, then Gemini reads them aloud with natural voices, two in the conversations. Free: the voice quota allows a few tests a day; if it runs out, your device's voice reads the rest.${isTeacher() ? " Save the recordings to your class library and your students can use them without spending any quota." : ""}`;
+      ? "The AI writes four new sections and 40 questions; natural neural voices read them aloud, a different voice for each speaker (your device's voice if they are unavailable)."
+      : `The AI writes four new sections — a conversation, a talk, an academic discussion and a lecture — with 40 questions, then natural neural voices read them aloud, a different voice for each speaker. If the voices are unavailable, your device's voice reads the rest.${isTeacher() ? " Save the recordings to your class library and your students can use them without spending any quota." : ""}`;
   return `
     <div class="gen-card aivoice-card" style="margin-bottom:20px;">
       <span style="font-family:var(--ix-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);">New · no audio files needed</span><br>

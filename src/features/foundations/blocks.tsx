@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Callout, DataTable } from '@/components/learning/Callout';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { Quiz } from '@/components/learning/Quiz';
-import { speak } from '@/lib/speech';
+import { speak, speakSequence } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { arr, str, Es, Section, Done, Miss, norm, shuffle, type OnResult } from './kit';
 import { FormulaBlock, PhrasebookBlock, SceneBlock, SpellerBlock } from './extras';
@@ -253,10 +253,16 @@ function DialogueBlock({ b }: { b: CourseBlock }) {
   const lines = arr<{ who: string; text: string; es?: string }>(b.lines);
   const [playing, setPlaying] = useState<number | null>(null);
   const speakers = [...new Set(lines.map((l) => l.who))];
-  const play = (k = 0) => {
-    if (k >= lines.length) return setPlaying(null);
-    setPlaying(k);
-    speak(lines[k]!.text, { accent: speakers.indexOf(lines[k]!.who) % 2 ? 'en-GB' : 'en-US', onEnd: () => play(k + 1) });
+  // A distinct voice per character (alternating female / male), each line loading while the previous one plays.
+  const play = () => {
+    setPlaying(0);
+    speakSequence(
+      lines.map((l) => {
+        const i = speakers.indexOf(l.who);
+        return { text: l.text, speaker: { name: l.who, voice: i % 2 ? ('male' as const) : ('female' as const), accent: i % 2 ? ('uk' as const) : ('us' as const) } };
+      }),
+      { onLine: setPlaying, onEnd: () => setPlaying(null) },
+    );
   };
   return (
     <Section b={b}>
