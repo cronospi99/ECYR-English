@@ -304,7 +304,7 @@ function TranslatorPanel() {
       }}
       className={cn(
         'bg-card text-label shadow-float border-separator fixed z-[90] flex max-h-[min(calc(100dvh-190px),620px)] flex-col overflow-hidden rounded-[20px] border',
-        'inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+116px)] lg:inset-x-auto lg:right-[72px] lg:bottom-6 lg:w-[380px]',
+        'inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+116px)] lg:inset-x-auto lg:right-14 lg:bottom-6 lg:w-[380px]',
       )}
     >
       <div className="hairline-b flex items-center gap-2 px-4 py-2.5">

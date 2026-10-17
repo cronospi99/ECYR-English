@@ -187,7 +187,13 @@ async function request(text: string, p: Persona, hash: string | null): Promise<B
     block(code, PAUSE[code] ?? (code === 'too_long' ? 0 : 60_000));
     throw new VoiceUnavailable(code);
   }
-  const res = data as { url?: string | null; key?: string; audio?: string; mimeType?: string } | null;
+  const res = data as { url?: string | null; key?: string; audio?: string; mimeType?: string; error?: { code?: string } } | null;
+  if (res?.error) {
+    // Routine refusals (daily cap, quota, too long) come back as 200 + error.
+    const code = res.error.code || 'refused';
+    block(code, PAUSE[code] ?? (code === 'too_long' || code === 'empty' ? 0 : 60_000));
+    throw new VoiceUnavailable(code);
+  }
   let blob: Blob | null = null;
   if (res?.audio) {
     blob = base64ToBlob(res.audio, res.mimeType || 'audio/wav');

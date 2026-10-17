@@ -42,7 +42,7 @@ export default function ProfilePage() {
   const session = useAuth((s) => s.session);
   return (
     <Page title="Perfil" subtitle="Tu cuenta, tu clase y tus preferencias.">
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="space-y-6">
           {session ? (
             <Account />
@@ -372,7 +372,7 @@ function VoiceSettings() {
         />
       ))}
       {natural && (
-        <div className="grid grid-cols-2 gap-2 p-3 shadow-[inset_0_0.5px_0_var(--separator)] sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 p-3 shadow-[inset_0_0.5px_0_var(--separator)]">
           {PERSONAS.map((p) => (
             <PersonaCard
               key={p.id}

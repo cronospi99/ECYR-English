@@ -46,14 +46,14 @@ export function NotesDock() {
 
   const onNotesPage = pathname === '/notes';
   const btn =
-    'inline-flex h-10 w-10 items-center justify-center rounded-full transition-[transform,background-color] active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--blue)]';
+    'inline-flex h-10 w-10 lg:h-9 lg:w-9 items-center justify-center rounded-full transition-[transform,background-color] active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--blue)]';
 
   return (
     <>
       <div
         className={cn(
           'material shadow-float border-separator fixed right-3 z-40 flex gap-0.5 rounded-full border p-1',
-          'bottom-[calc(env(safe-area-inset-bottom)+60px)] lg:right-4 lg:bottom-5 lg:flex-col',
+          'bottom-[calc(env(safe-area-inset-bottom)+60px)] lg:right-1 lg:bottom-5 lg:flex-col lg:p-0.5',
         )}
         role="toolbar"
         aria-label="Herramientas"

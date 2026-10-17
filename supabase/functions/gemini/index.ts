@@ -188,11 +188,16 @@ async function voiceCounter(userId: string, delta: 1 | -1): Promise<"ok" | "limi
   return "ok";
 }
 
+// Expected refusals of the voice (daily cap, quota, too long) answer 200 with
+// {url:null, error}: the app quietly switches to the device voice, and the
+// browser console stays free of red network errors for something routine.
+const refuse = (message: string, code: string) => reply(200, { url: null, error: { message, code } });
+
 async function naturalVoice(who: { id: string }, body: any, key: string): Promise<Response> {
   const url = Deno.env.get("SUPABASE_URL")!;
   const text = (typeof body.text === "string" ? body.text : "").replace(/\s+/g, " ").trim();
-  if (!text) return fail(400, "Nothing to read aloud.");
-  if (text.length > VOICE_MAX_CHARS) return fail(400, `The natural voice reads up to ${VOICE_MAX_CHARS} characters at a time.`, "too_long");
+  if (!text) return refuse("Nothing to read aloud.", "empty");
+  if (text.length > VOICE_MAX_CHARS) return refuse(`The natural voice reads up to ${VOICE_MAX_CHARS} characters at a time.`, "too_long");
   const id = typeof body.persona === "string" && PERSONAS[body.persona] ? body.persona : "emma";
   const persona = PERSONAS[id];
   const hash = await sha256Hex(`${VOICE_VERSION}|${id}|${persona.accent}|${text}`);
@@ -206,10 +211,10 @@ async function naturalVoice(who: { id: string }, body: any, key: string): Promis
 
   // 2. Record it: counted against the user's day, refunded if Google fails.
   if (!key) {
-    return fail(503, "The class's Gemini key has not been set yet.", "no_key");
+    return refuse("The class's Gemini key has not been set yet.", "no_key");
   }
   if ((await voiceCounter(who.id, 1)) === "limit") {
-    return fail(429, "You've used today's natural-voice clips. The device voice takes over until tomorrow.", "voice_limit");
+    return refuse("You've used today's natural-voice clips. The device voice takes over until tomorrow.", "voice_limit");
   }
   const payload = JSON.stringify({
     contents: [{ parts: [{ text: `Say clearly, at a relaxed pace, in a natural, warm ${persona.accent} English accent: ${text}` }] }],
@@ -237,8 +242,8 @@ async function naturalVoice(who: { id: string }, body: any, key: string): Promis
   if (!audio || !audio.data) {
     await voiceCounter(who.id, -1);
     return lastStatus === 429
-      ? fail(429, "The class's voice quota is used up for now.", "tts_quota")
-      : fail(502, lastMessage || "The voice could not be generated.", "tts_failed");
+      ? refuse("The class's voice quota is used up for now.", "tts_quota")
+      : refuse(lastMessage || "The voice could not be generated.", "tts_failed");
   }
 
   const raw = fromBase64(audio.data);

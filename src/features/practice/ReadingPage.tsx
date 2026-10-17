@@ -214,7 +214,7 @@ function UnitBrowser() {
           </p>
           <div className="grid gap-x-5 gap-y-6 lg:grid-cols-2">
             {units.map((u) => (
-              <section key={u.n} id={`unit-${u.n}`} className="min-w-0 scroll-mt-4">
+              <section key={u.n} id={`unit-${u.n}`} className="min-w-0 scroll-mt-20 lg:scroll-mt-4">
                 <div className="mb-2.5 flex items-center gap-3">
                   <span
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] text-[15px] font-bold"

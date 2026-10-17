@@ -22,7 +22,7 @@ export function UnitReadings({ level, unit }: { level: CefrLevel; unit: number }
   const read = data.filter((r) => done[`lib-${r.id}`]).length;
 
   return (
-    <section ref={top} className="scroll-mt-4">
+    <section ref={top} className="scroll-mt-20 lg:scroll-mt-4">
       {open ? (
         <Reader key={open.id} r={open} onBack={() => go(null)} backLabel="Lecturas de la unidad" />
       ) : (

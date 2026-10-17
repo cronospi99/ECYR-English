@@ -21,6 +21,7 @@ import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
+import { UnitReadings } from '@/features/practice/UnitReadings';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { unitVisualPlan, type Visual } from '@/content/visuals';
 import { useAsync } from '@/hooks/useAsync';
@@ -337,6 +338,10 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
       )}
 
       <UnitWritingTasks level={levelId as CefrLevel} unit={u.n} />
+
+      <div className="lg:col-span-2">
+        <UnitReadings level={levelId as CefrLevel} unit={u.n} />
+      </div>
 
       {u.dynamics && u.dynamics.length > 0 && (
         <Card className="p-6 lg:col-span-2">

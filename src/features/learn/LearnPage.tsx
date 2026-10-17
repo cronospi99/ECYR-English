@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpenText, ChevronRight, Sparkles } from 'lucide-react';
+import { BookOpenText, ChevronRight, MonitorPlay, Sparkles } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ProgressBar, ProgressRing } from '@/components/ui/Progress';
@@ -7,15 +7,17 @@ import { MountainClimb } from '@/components/mountain/MountainClimb';
 import { LEVELS } from '@/content/levels';
 import { useProgress, levelCompletion, climbProgress, currentLevel } from '@/store/progress';
 import { cn } from '@/lib/cn';
+import { PREA1, PREA1_TOPICS } from '@/features/foundations/meta';
 
 export default function LearnPage() {
   const units = useProgress((s) => s.units);
   const topics = useProgress((s) => s.topics);
   const climb = climbProgress(units);
   const current = currentLevel(units);
+  const preDone = PREA1_TOPICS.filter((id) => topics[id]).length;
 
   return (
-    <Page title="Aprender" subtitle="Tu ruta de A1 a C1. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
+    <Page title="Aprender" subtitle="Tu ruta de Pre-A1 a C1. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
       <Card className="relative mb-6 overflow-hidden">
         <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 rounded-[16px] px-4 py-3">
@@ -23,26 +25,6 @@ export default function LearnPage() {
           <div className="text-[28px] leading-tight font-extrabold tabular-nums">{Math.round(climb * 100)}%</div>
         </div>
       </Card>
-
-      {/* A1 Foundations */}
-      <Link to="/learn/foundations" className="mb-6 block">
-        <Card className="flex items-center gap-4 p-5 transition-transform active:scale-[0.99]">
-          <div
-            className="h-20 w-28 shrink-0 rounded-[14px] bg-cover bg-center"
-            style={{ backgroundImage: 'url(/covers/a1-foundations.webp)' }}
-            aria-hidden
-          />
-          <div className="min-w-0 flex-1">
-            <div className="text-ink-red text-[12px] font-bold tracking-wide uppercase">Empieza aquí · A1</div>
-            <div className="text-title-3">English Foundations</div>
-            <p className="text-label-2 text-subhead line-clamp-2">
-              Curso de cómic: alfabeto, números, saludos, to be, presente simple… con lecturas y ejercicios en español.
-            </p>
-            <div className="text-label-2 mt-1 text-[12px]">{Object.keys(topics).length} temas completados</div>
-          </div>
-          <ChevronRight className="text-label-3 shrink-0" />
-        </Card>
-      </Link>
 
       {/* Interactive grammar modules */}
       <Link to="/learn/grammar" className="mb-6 block">
@@ -83,6 +65,47 @@ export default function LearnPage() {
       </Link>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {/* Pre-A1 · Foundations: first step, styled like a level */}
+        <Link to="/learn/foundations" className="group block">
+          <Card className="h-full overflow-hidden transition-transform active:scale-[0.99]">
+            <div className={cn('relative bg-gradient-to-br p-5 text-white', PREA1.tint)}>
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-[44px] leading-none font-extrabold tracking-tight">Pre-A1</div>
+                  <div className="mt-1 text-[15px] font-semibold">
+                    {PREA1.nameEs} · {PREA1.title}
+                  </div>
+                </div>
+                <ProgressRing value={preDone / PREA1_TOPICS.length} size={58} stroke={6} color="#fff" className="[&_circle:first-child]:stroke-white/25">
+                  <span className="text-[13px] font-bold">{Math.round((preDone / PREA1_TOPICS.length) * 100)}%</span>
+                </ProgressRing>
+              </div>
+              <span className="absolute right-5 bottom-3 inline-flex items-center gap-1 rounded-full bg-white/25 px-2.5 py-0.5 text-[11px] font-semibold">
+                Empieza aquí
+              </span>
+            </div>
+            <div className="p-5">
+              <p className="text-subhead text-label-2">{PREA1.description}</p>
+              <ul className="mt-3 space-y-1.5">
+                {PREA1.canDo.map((x) => (
+                  <li key={x} className="flex items-center gap-2 text-[14px]">
+                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: PREA1.color }} />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-4 flex items-center justify-between text-[13px]">
+                <span className="text-label-2 inline-flex items-center gap-1.5">
+                  <MonitorPlay size={14} /> También en versión cómic
+                </span>
+                <span className="font-semibold tabular-nums">
+                  {preDone}/{PREA1_TOPICS.length} temas
+                </span>
+              </div>
+              <ProgressBar value={preDone / PREA1_TOPICS.length} color={PREA1.color} className="mt-2" />
+            </div>
+          </Card>
+        </Link>
         {LEVELS.map((l) => {
           const c = levelCompletion(units, l.id);
           const isCurrent = l.id === current;
