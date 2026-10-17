@@ -7,7 +7,7 @@ import { Spinner } from '@/components/ui/Misc';
 import { useAsync } from '@/hooks/useAsync';
 import { loadClothing } from '@/content/levels';
 import { speak } from '@/lib/speech';
-import { ink, tint } from '@/lib/color';
+import { tint } from '@/lib/color';
 import { cn } from '@/lib/cn';
 import { Section, Done, pick, randomOrder, type OnResult } from './kit';
 
@@ -224,7 +224,7 @@ function ListenGame({ b, pool, rounds, onResult }: { b: CourseBlock; pool: Cloth
       randomOrder(pool)
         .slice(0, rounds)
         .map((target) => {
-          const others = randomOrder(pool.filter((x) => x.cat !== target.cat || x.id !== target.id).filter((x) => x.us !== target.us)).slice(0, 3);
+          const others = randomOrder(pool.filter((x) => x.us !== target.us)).slice(0, 3);
           const uk = !!target.uk && Math.random() < 0.5;
           return { target, uk, options: randomOrder([target, ...others]) };
         }),
@@ -420,13 +420,13 @@ function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: Cl
         const outfit = dress ? [pick(by(['dress'])), pick(by(['shoes']))] : [pick(by(['top', 'outer'])), pick(by(['bottom'])), pick(by(['shoes']))];
         const swapOne = () => {
           const i = Math.floor(Math.random() * outfit.length);
-          const alt = pick(by([outfit[i]!.cat]).filter((x) => !outfit.some((o) => o.us === x.us)));
-          return outfit.map((o, k) => (k === i ? alt : o));
+          const alts = by([outfit[i]!.cat]).filter((x) => !outfit.some((o) => o.us === x.us));
+          return alts.length ? outfit.map((o, k) => (k === i ? pick(alts) : o)) : outfit;
         };
         const sentence = (o: ClothingItem[]) => `${cap(p.pro)}'s wearing ${list(o.map((x) => phrase(x)))}.`;
         const right = sentence(outfit);
         const wrongs = new Set<string>();
-        while (wrongs.size < 2) {
+        for (let guard = 0; wrongs.size < 2 && guard < 40; guard++) {
           const s = sentence(swapOne());
           if (s !== right) wrongs.add(s);
         }
@@ -520,7 +520,6 @@ function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: Cl
           </Button>
         </div>
       )}
-      <span className="sr-only" style={{ color: ink('var(--purple)') }} />
     </Section>
   );
 }

@@ -430,5 +430,149 @@
    "I’ve had my phone for two years. / I’ve had it since 2024.",
    "I’ve known my best friend for fifteen years. / I’ve known her since primary school."
   ]
+ },
+ "A2-13-0": {
+  "name": "Cause or experiencer",
+  "prompt": "Di cada oración dos veces: una sobre la cosa y otra sobre la persona. Cambia solo el participio.",
+  "items": [
+   "the news / me",
+   "the trip / the children",
+   "the results / the team",
+   "the wait / the passengers",
+   "the lecture / the students"
+  ],
+  "answers": [
+   "The news was surprising. / I was surprised by the news.",
+   "The trip was exciting. / The children were excited about the trip.",
+   "The results were disappointing. / The team was disappointed with the results.",
+   "The wait was annoying. / The passengers were annoyed by the wait.",
+   "The lecture was boring. / The students were bored."
+  ]
+ },
+ "A2-13-1": {
+  "name": "Two into one",
+  "prompt": "Une cada par en una sola oración con una cláusula de relativo; luego repítela sin el pronombre si es posible.",
+  "items": [
+   "I met a woman. She works for the ministry.",
+   "This is the report. I mentioned it yesterday.",
+   "We hired an engineer. His last project failed.",
+   "That’s the café. We met there in 2019.",
+   "Here’s the key. It opens the back door."
+  ],
+  "answers": [
+   "I met a woman who works for the ministry.",
+   "This is the report that I mentioned yesterday. → This is the report I mentioned yesterday.",
+   "We hired an engineer whose last project failed.",
+   "That’s the café where we met in 2019.",
+   "Here’s the key that opens the back door."
+  ]
+ },
+ "A2-14-0": {
+  "name": "Read the evidence",
+  "prompt": "Da dos deducciones para cada situación: una segura con must o can’t, y otra tentativa con might o could.",
+  "items": [
+   "the office lights are still on at ten",
+   "your friend isn’t answering",
+   "the file won’t open",
+   "the shop is closed on a Tuesday",
+   "he’s carrying two suitcases"
+  ],
+  "answers": [
+   "Someone must be working late. / The cleaners might be there.",
+   "She must be busy. / Her phone might be off.",
+   "The file must be damaged. / It could be the wrong format.",
+   "It can’t be a holiday. / The owner might be sick.",
+   "He must be going on a trip. / He could be moving house."
+  ]
+ },
+ "A2-14-1": {
+  "name": "Rules of the place",
+  "prompt": "Para cada lugar, da un permiso, una obligación y una prohibición, con una estructura distinta cada vez.",
+  "items": [
+   "a library",
+   "a swimming pool",
+   "an airport",
+   "this classroom",
+   "a hospital ward"
+  ],
+  "answers": [
+   "You can borrow up to five books. / You have to show your library card. / You mustn’t eat inside.",
+   "You’re allowed to use the sauna. / You need to wear a swimming cap. / You can’t run near the pool.",
+   "You can shop in the duty-free area. / You have to show your passport. / You’re not allowed to carry liquids over 100 ml.",
+   "You can ask questions at any time. / You need to do your homework. / You mustn’t use your phone during tests.",
+   "Visitors may come in the afternoon. / You have to wash your hands. / You’re not allowed to bring flowers."
+  ]
+ },
+ "A2-15-0": {
+  "name": "Unreal chain",
+  "prompt": "Responde cada pregunta con un segundo condicional completo y luego convierte tu respuesta en la siguiente pregunta para tu compañero.",
+  "items": [
+   "if you could work anywhere",
+   "if you had a free year",
+   "if you spoke six languages",
+   "if you had to move tomorrow",
+   "if money were not a factor"
+  ],
+  "answers": [
+   "If I could work anywhere, I would work from a beach in San Andrés.",
+   "If I had a free year, I would travel around South America.",
+   "If I spoke six languages, I would work as an interpreter.",
+   "If I had to move tomorrow, I would pack only my clothes and my laptop.",
+   "If money were not a factor, I would study music."
+  ]
+ },
+ "A2-15-1": {
+  "name": "Second thoughts",
+  "prompt": "Para cada situación, da una crítica con «should have» y una alternativa con «would have».",
+  "items": [
+   "you missed a deadline",
+   "a friend forgot a birthday",
+   "the team sent the wrong file",
+   "you overslept",
+   "the shop lost your order"
+  ],
+  "answers": [
+   "I should have started earlier. / I would have finished on time if I had planned better.",
+   "She should have put it in her calendar. / I would have reminded her if I had known.",
+   "They should have checked the file before sending it. / I would have sent the correct version.",
+   "I should have set two alarms. / I would have arrived on time if I had gone to bed earlier.",
+   "They should have called me. / I would have chosen another shop if I had known."
+  ]
+ },
+ "A2-16-0": {
+  "name": "One step back",
+  "prompt": "Reporta cada cita con «said» o «told me», cambiando el tiempo verbal, los pronombres y la palabra de tiempo.",
+  "items": [
+   "“I’m leaving now.”",
+   "“We finished it last night.”",
+   "“I’ll send it tomorrow.”",
+   "“I can’t find the file.”",
+   "“I’ve been waiting here for an hour.”"
+  ],
+  "answers": [
+   "She said (that) she was leaving then.",
+   "They told me (that) they had finished it the night before.",
+   "She said (that) she would send it the next day.",
+   "He told me (that) he couldn’t find the file.",
+   "She said (that) she had been waiting there for an hour."
+  ]
+ },
+ "A2-16-1": {
+  "name": "Instruction relay",
+  "prompt": "Reporta cada instrucción con el verbo que corresponde a su fuerza: asked, told, advised, reminded o warned.",
+  "items": [
+   "“Please sign at the bottom.”",
+   "“Don’t use that password again.”",
+   "“You really should back it up.”",
+   "“Remember the meeting at four.”",
+   "“Stay away from the wet floor.”"
+  ],
+  "answers": [
+   "She asked me to sign at the bottom.",
+   "He warned me not to use that password again.",
+   "She advised me to back it up.",
+   "He reminded me to go to the meeting at four.",
+   "She warned us to stay away from the wet floor."
+  ]
  }
 }

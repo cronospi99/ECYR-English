@@ -2818,5 +2818,945 @@
     }
    ]
   }
+ ],
+ "A2-13-0": [
+  {
+   "title": "After the film",
+   "titleEs": "Después de la película",
+   "scene": "🎬 Saliendo de cine en Bogotá: Tatiana y Esteban no están de acuerdo.",
+   "cast": [
+    {
+     "name": "Tatiana",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Esteban",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tatiana",
+     "line": "What did you think of the film?",
+     "es": "¿Qué te pareció la película?"
+    },
+    {
+     "sp": "Esteban",
+     "line": "Honestly, I was bored. It was really slow.",
+     "es": "La verdad, me aburrí. Era muy lenta."
+    },
+    {
+     "sp": "Tatiana",
+     "line": "Really? I thought it was fascinating.",
+     "es": "¿En serio? A mí me pareció fascinante."
+    },
+    {
+     "sp": "Esteban",
+     "line": "The ending was confusing. I was totally confused.",
+     "es": "El final era confuso. Quedé completamente confundido."
+    },
+    {
+     "sp": "Tatiana",
+     "line": "I was surprised by the ending too, but I loved it.",
+     "es": "A mí también me sorprendió el final, pero me encantó."
+    },
+    {
+     "sp": "Esteban",
+     "line": "Well, the music was amazing. I’m interested in the soundtrack.",
+     "es": "Bueno, la música estuvo increíble. Me interesa la banda sonora."
+    },
+    {
+     "sp": "Tatiana",
+     "line": "See? It wasn’t a boring film after all!",
+     "es": "¿Ves? ¡Al final no era una película aburrida!"
+    }
+   ]
+  },
+  {
+   "title": "Back from La Guajira",
+   "titleEs": "De vuelta de La Guajira",
+   "scene": "🏜️ Sergio vuelve de un viaje largo y le cuenta a Lina lo que encontró en casa.",
+   "cast": [
+    {
+     "name": "Lina",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Sergio",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lina",
+     "line": "How was the trip to La Guajira?",
+     "es": "¿Qué tal el viaje a La Guajira?"
+    },
+    {
+     "sp": "Sergio",
+     "line": "Amazing, but the journey was exhausting. Twelve hours by bus!",
+     "es": "Increíble, pero el viaje fue agotador. ¡Doce horas en bus!"
+    },
+    {
+     "sp": "Lina",
+     "line": "You look tired.",
+     "es": "Te ves cansado."
+    },
+    {
+     "sp": "Sergio",
+     "line": "I am! And when I got home, I found a broken window.",
+     "es": "¡Lo estoy! Y cuando llegué a la casa, encontré una ventana rota."
+    },
+    {
+     "sp": "Lina",
+     "line": "That’s worrying! Was anything stolen?",
+     "es": "¡Qué preocupante! ¿Se robaron algo?"
+    },
+    {
+     "sp": "Sergio",
+     "line": "No, luckily. The locked drawers were still closed. I was so relieved.",
+     "es": "No, por suerte. Los cajones con llave seguían cerrados. Quedé muy aliviado."
+    },
+    {
+     "sp": "Lina",
+     "line": "And the desert? Was it interesting?",
+     "es": "¿Y el desierto? ¿Era interesante?"
+    },
+    {
+     "sp": "Sergio",
+     "line": "Fascinating. The sunsets at Cabo de la Vela are the most amazing thing I’ve ever seen.",
+     "es": "Fascinante. Los atardeceres en el Cabo de la Vela son lo más impresionante que he visto."
+    }
+   ]
+  }
+ ],
+ "A2-13-1": [
+  {
+   "title": "Who’s who at the office",
+   "titleEs": "Quién es quién en la oficina",
+   "scene": "🏢 En una empresa de Medellín: Paola le explica a Ricardo quién es cada persona.",
+   "cast": [
+    {
+     "name": "Ricardo",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Paola",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ricardo",
+     "line": "Who’s the woman who’s talking to the boss?",
+     "es": "¿Quién es la señora que está hablando con el jefe?"
+    },
+    {
+     "sp": "Paola",
+     "line": "She’s the consultant that the company hired last month.",
+     "es": "Es la consultora que contrató la empresa el mes pasado."
+    },
+    {
+     "sp": "Ricardo",
+     "line": "Is she the one whose report everyone is talking about?",
+     "es": "¿Es la del informe del que todo el mundo habla?"
+    },
+    {
+     "sp": "Paola",
+     "line": "Yes. The report she wrote changed the whole budget.",
+     "es": "Sí. El informe que escribió cambió todo el presupuesto."
+    },
+    {
+     "sp": "Ricardo",
+     "line": "And the man who’s sitting next to her?",
+     "es": "¿Y el señor que está sentado al lado de ella?"
+    },
+    {
+     "sp": "Paola",
+     "line": "That’s the engineer who designed our new app.",
+     "es": "Ese es el ingeniero que diseñó nuestra aplicación nueva."
+    },
+    {
+     "sp": "Ricardo",
+     "line": "The app that crashed last week?",
+     "es": "¿La aplicación que se cayó la semana pasada?"
+    },
+    {
+     "sp": "Paola",
+     "line": "Shh! Yes, that one.",
+     "es": "¡Shh! Sí, esa."
+    }
+   ]
+  },
+  {
+   "title": "A good mechanic",
+   "titleEs": "Un buen mecánico",
+   "scene": "🔧 Por WhatsApp: Camila busca un mecánico y Andrés le recomienda el suyo.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Camila",
+     "line": "Do you know a mechanic who can fix my car this week?",
+     "es": "¿Conoces un mecánico que me pueda arreglar el carro esta semana?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Yes, the guy I always go to. His workshop is near the stadium.",
+     "es": "Sí, el señor al que siempre voy. Su taller queda cerca del estadio."
+    },
+    {
+     "sp": "Camila",
+     "line": "Is that the workshop where you took your motorbike?",
+     "es": "¿Es el taller donde llevaste la moto?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Exactly. He’s the only mechanic who never charges too much.",
+     "es": "Exacto. Es el único mecánico que nunca cobra de más."
+    },
+    {
+     "sp": "Camila",
+     "line": "Great. What was the problem that he fixed on your bike?",
+     "es": "Súper. ¿Cuál fue el problema que le arregló a tu moto?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "It was the brakes, which were making a terrible noise.",
+     "es": "Eran los frenos, que estaban haciendo un ruido horrible."
+    },
+    {
+     "sp": "Camila",
+     "line": "Perfect. Can you send me the number you have?",
+     "es": "Perfecto. ¿Me mandas el número que tienes?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Sure. His name is Don Fabio, and he’s a man who loves to talk!",
+     "es": "Claro. Se llama don Fabio, ¡y es un señor al que le encanta hablar!"
+    }
+   ]
+  }
+ ],
+ "A2-14-0": [
+  {
+   "title": "Where’s Valentina?",
+   "titleEs": "¿Dónde estará Valentina?",
+   "scene": "⏰ En un centro comercial de Bogotá: Daniela y Simón esperan a una amiga que no llega.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Simón",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Daniela",
+     "line": "Valentina is twenty minutes late. Where is she?",
+     "es": "Valentina lleva veinte minutos de retraso. ¿Dónde estará?"
+    },
+    {
+     "sp": "Simón",
+     "line": "She must be stuck in traffic. It’s Friday.",
+     "es": "Debe estar atascada en el trancón. Es viernes."
+    },
+    {
+     "sp": "Daniela",
+     "line": "She isn’t answering her phone.",
+     "es": "No contesta el celular."
+    },
+    {
+     "sp": "Simón",
+     "line": "Her battery might be dead, or she could be driving.",
+     "es": "Tal vez tiene la batería descargada, o puede que esté manejando."
+    },
+    {
+     "sp": "Daniela",
+     "line": "She can’t be driving. She sold her car last month.",
+     "es": "No puede estar manejando. Vendió el carro el mes pasado."
+    },
+    {
+     "sp": "Simón",
+     "line": "Then she’s probably on the TransMilenio.",
+     "es": "Entonces seguramente viene en TransMilenio."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Look! That must be her, running across the street!",
+     "es": "¡Mira! ¡Esa debe ser ella, cruzando la calle corriendo!"
+    },
+    {
+     "sp": "Simón",
+     "line": "It definitely is. Nobody else wears a yellow raincoat!",
+     "es": "Definitivamente es ella. ¡Nadie más usa un impermeable amarillo!"
+    }
+   ]
+  },
+  {
+   "title": "The computer won’t start",
+   "titleEs": "El computador no prende",
+   "scene": "🖥️ En un taller de computadores: Ben revisa el equipo de Mónica.",
+   "cast": [
+    {
+     "name": "Mónica",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mónica",
+     "line": "My computer won’t start. What’s wrong with it?",
+     "es": "Mi computador no prende. ¿Qué tiene?"
+    },
+    {
+     "sp": "Ben",
+     "line": "Let’s see. The light is on, so it can’t be the power.",
+     "es": "A ver. La luz está prendida, entonces no puede ser la corriente."
+    },
+    {
+     "sp": "Mónica",
+     "line": "Could it be a virus?",
+     "es": "¿Será un virus?"
+    },
+    {
+     "sp": "Ben",
+     "line": "It might be, but it’s probably the hard drive. It’s very old.",
+     "es": "Puede ser, pero seguramente es el disco duro. Está muy viejo."
+    },
+    {
+     "sp": "Mónica",
+     "line": "Oh no. All my files must be on that drive!",
+     "es": "¡Ay, no! ¡Todos mis archivos deben estar en ese disco!"
+    },
+    {
+     "sp": "Ben",
+     "line": "Don’t worry. They may not be lost. I can possibly recover them.",
+     "es": "Tranquila. Puede que no se hayan perdido. Es posible que los pueda recuperar."
+    },
+    {
+     "sp": "Mónica",
+     "line": "That must be expensive.",
+     "es": "Eso debe ser caro."
+    },
+    {
+     "sp": "Ben",
+     "line": "It definitely isn’t cheap, but it’s cheaper than losing everything!",
+     "es": "Definitivamente no es barato, ¡pero sale más barato que perderlo todo!"
+    }
+   ]
+  }
+ ],
+ "A2-14-1": [
+  {
+   "title": "First day at work",
+   "titleEs": "Primer día de trabajo",
+   "scene": "💼 En una empresa de Bogotá: Alejandro pregunta por las reglas en su primer día.",
+   "cast": [
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Lorena",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Alejandro",
+     "line": "Am I allowed to work from home on Fridays?",
+     "es": "¿Me dejan trabajar desde la casa los viernes?"
+    },
+    {
+     "sp": "Lorena",
+     "line": "Yes, you can, but you have to tell me the day before.",
+     "es": "Sí, puedes, pero me tienes que avisar el día anterior."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Do I have to wear a suit?",
+     "es": "¿Tengo que venir de traje?"
+    },
+    {
+     "sp": "Lorena",
+     "line": "No, you don’t have to. Jeans are fine.",
+     "es": "No, no hace falta. Los jeans están bien."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Can I eat at my desk?",
+     "es": "¿Puedo comer en el escritorio?"
+    },
+    {
+     "sp": "Lorena",
+     "line": "You can, but you’re supposed to keep it clean. And you mustn’t take food into the server room.",
+     "es": "Puedes, pero se supone que lo mantengas limpio. Y no puedes entrar comida al cuarto de servidores."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Understood. May I use the car park?",
+     "es": "Entendido. ¿Puedo usar el parqueadero?"
+    },
+    {
+     "sp": "Lorena",
+     "line": "Sorry, only managers are allowed to park there.",
+     "es": "Lo siento, solo los gerentes pueden parquear ahí."
+    }
+   ]
+  },
+  {
+   "title": "The party rules",
+   "titleEs": "Las reglas para la fiesta",
+   "scene": "🎉 En la casa: Nicolás le pide permiso a su mamá para ir a una fiesta.",
+   "cast": [
+    {
+     "name": "Nicolás",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Patricia",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Nicolás",
+     "line": "Mom, can I go to Juan’s party on Saturday?",
+     "es": "Mamá, ¿puedo ir a la fiesta de Juan el sábado?"
+    },
+    {
+     "sp": "Patricia",
+     "line": "You can go, but you have to be home by midnight.",
+     "es": "Puedes ir, pero tienes que estar en la casa a las doce."
+    },
+    {
+     "sp": "Nicolás",
+     "line": "Midnight? Everyone else is allowed to stay until two!",
+     "es": "¿A las doce? ¡A todos los demás los dejan quedarse hasta las dos!"
+    },
+    {
+     "sp": "Patricia",
+     "line": "You’re not everyone else. And you mustn’t take a taxi from the street.",
+     "es": "Tú no eres todos los demás. Y no puedes coger taxi en la calle."
+    },
+    {
+     "sp": "Nicolás",
+     "line": "OK. Do I have to call you when I arrive?",
+     "es": "Bueno. ¿Te tengo que llamar cuando llegue?"
+    },
+    {
+     "sp": "Patricia",
+     "line": "You don’t have to call. A message is fine.",
+     "es": "No tienes que llamar. Con un mensaje basta."
+    },
+    {
+     "sp": "Nicolás",
+     "line": "Last time I was supposed to send one, but my phone died.",
+     "es": "La vez pasada se suponía que te iba a mandar uno, pero se me descargó el celular."
+    },
+    {
+     "sp": "Patricia",
+     "line": "Then you’ll have to charge it before you go!",
+     "es": "¡Entonces vas a tener que cargarlo antes de salir!"
+    }
+   ]
+  }
+ ],
+ "A2-15-0": [
+  {
+   "title": "If I won the lottery",
+   "titleEs": "Si me ganara la lotería",
+   "scene": "🎟️ En la tienda de la esquina: Gloria y Hernán sueñan con ganarse la lotería.",
+   "cast": [
+    {
+     "name": "Gloria",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Hernán",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Gloria",
+     "line": "What would you do if you won the lottery?",
+     "es": "¿Qué harías si te ganaras la lotería?"
+    },
+    {
+     "sp": "Hernán",
+     "line": "If I won, I would buy a farm in the Coffee Region.",
+     "es": "Si me la ganara, compraría una finca en el Eje Cafetero."
+    },
+    {
+     "sp": "Gloria",
+     "line": "Would you stop working?",
+     "es": "¿Dejarías de trabajar?"
+    },
+    {
+     "sp": "Hernán",
+     "line": "Of course! If I didn’t have to work, I’d grow coffee and relax.",
+     "es": "¡Claro! Si no tuviera que trabajar, cultivaría café y descansaría."
+    },
+    {
+     "sp": "Gloria",
+     "line": "I wouldn’t stop. If I had a lot of money, I’d open a school.",
+     "es": "Yo no dejaría de trabajar. Si tuviera mucha plata, abriría un colegio."
+    },
+    {
+     "sp": "Hernán",
+     "line": "That’s nice. If I were you, I’d buy a lottery ticket first!",
+     "es": "Qué bonito. ¡Si yo fuera tú, primero compraría un billete de lotería!"
+    },
+    {
+     "sp": "Gloria",
+     "line": "Ha! If I bought one, I’d probably lose.",
+     "es": "¡Ja! Si comprara uno, seguro perdería."
+    }
+   ]
+  },
+  {
+   "title": "A job in Canada",
+   "titleEs": "Un trabajo en Canadá",
+   "scene": "🍁 Valeria recibió una oferta de trabajo en el exterior y le pide consejo a Jorge.",
+   "cast": [
+    {
+     "name": "Valeria",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jorge",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Valeria",
+     "line": "I got a job offer in Canada, but I’m not sure.",
+     "es": "Me salió una oferta de trabajo en Canadá, pero no estoy segura."
+    },
+    {
+     "sp": "Jorge",
+     "line": "If I were you, I’d accept it. It’s a great opportunity.",
+     "es": "Si yo fuera tú, la aceptaría. Es una gran oportunidad."
+    },
+    {
+     "sp": "Valeria",
+     "line": "But if I moved, I wouldn’t see my family very often.",
+     "es": "Pero si me fuera, no vería mucho a mi familia."
+    },
+    {
+     "sp": "Jorge",
+     "line": "You could visit them every December.",
+     "es": "Podrías visitarlos cada diciembre."
+    },
+    {
+     "sp": "Valeria",
+     "line": "True. And if my English were better, I’d feel more confident.",
+     "es": "Es cierto. Y si mi inglés fuera mejor, me sentiría más segura."
+    },
+    {
+     "sp": "Jorge",
+     "line": "Your English is great! If you lived there, it would improve even faster.",
+     "es": "¡Tu inglés es buenísimo! Si vivieras allá, mejoraría todavía más rápido."
+    },
+    {
+     "sp": "Valeria",
+     "line": "You’re right. If they offered me more money, I’d say yes today.",
+     "es": "Tienes razón. Si me ofrecieran más plata, diría que sí hoy mismo."
+    }
+   ]
+  }
+ ],
+ "A2-15-1": [
+  {
+   "title": "We missed the flight",
+   "titleEs": "Perdimos el vuelo",
+   "scene": "🧳 En el aeropuerto El Dorado: Sofía y Mateo acaban de perder su vuelo.",
+   "cast": [
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sofía",
+     "line": "We missed the flight to San Andrés!",
+     "es": "¡Perdimos el vuelo a San Andrés!"
+    },
+    {
+     "sp": "Mateo",
+     "line": "I know. We should have left the house earlier.",
+     "es": "Ya sé. Deberíamos haber salido más temprano de la casa."
+    },
+    {
+     "sp": "Sofía",
+     "line": "And you shouldn’t have stopped for coffee!",
+     "es": "¡Y no deberías haber parado por café!"
+    },
+    {
+     "sp": "Mateo",
+     "line": "You’re right. But if the traffic had been normal, we would have arrived on time.",
+     "es": "Tienes razón. Pero si el tráfico hubiera estado normal, habríamos llegado a tiempo."
+    },
+    {
+     "sp": "Sofía",
+     "line": "We could have taken the TransMilenio.",
+     "es": "Podríamos haber cogido el TransMilenio."
+    },
+    {
+     "sp": "Mateo",
+     "line": "With four suitcases? That would have been impossible.",
+     "es": "¿Con cuatro maletas? Habría sido imposible."
+    },
+    {
+     "sp": "Sofía",
+     "line": "Well, I should have checked in online. We would have saved twenty minutes.",
+     "es": "Bueno, yo debí hacer el check-in en línea. Nos habríamos ahorrado veinte minutos."
+    },
+    {
+     "sp": "Mateo",
+     "line": "Next time, we’re leaving three hours early!",
+     "es": "¡La próxima vez salimos tres horas antes!"
+    }
+   ]
+  },
+  {
+   "title": "The missed birthday",
+   "titleEs": "El cumpleaños perdido",
+   "scene": "🎂 Karen le reclama a Andrés porque no fue a su cumpleaños.",
+   "cast": [
+    {
+     "name": "Karen",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Karen",
+     "line": "Why didn’t you come to my birthday?",
+     "es": "¿Por qué no fuiste a mi cumpleaños?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "I’m so sorry. I would have come, but I had a fever.",
+     "es": "Qué pena. Habría ido, pero tenía fiebre."
+    },
+    {
+     "sp": "Karen",
+     "line": "You should have told me! I was worried.",
+     "es": "¡Me hubieras avisado! Estaba preocupada."
+    },
+    {
+     "sp": "Andrés",
+     "line": "You’re right. I should have sent you a message.",
+     "es": "Tienes razón. Debí mandarte un mensaje."
+    },
+    {
+     "sp": "Karen",
+     "line": "We could have saved you some cake.",
+     "es": "Te habríamos podido guardar torta."
+    },
+    {
+     "sp": "Andrés",
+     "line": "You shouldn’t have worried about me. How was it?",
+     "es": "No tenías que preocuparte por mí. ¿Qué tal estuvo?"
+    },
+    {
+     "sp": "Karen",
+     "line": "Great. You would have loved the band.",
+     "es": "Buenísimo. Te habría encantado la banda."
+    }
+   ]
+  }
+ ],
+ "A2-16-0": [
+  {
+   "title": "What did the boss say?",
+   "titleEs": "¿Qué dijo el jefe?",
+   "scene": "🗣️ Felipe se perdió la reunión y Natalia le cuenta lo que se dijo.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Felipe",
+     "line": "What did the boss say in the meeting?",
+     "es": "¿Qué dijo el jefe en la reunión?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "He said the company was opening a new office in Cali.",
+     "es": "Dijo que la empresa iba a abrir una oficina nueva en Cali."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Really? Did he say who was going?",
+     "es": "¿En serio? ¿Dijo quién iba a ir?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "He told us he would choose two people the following week.",
+     "es": "Nos dijo que escogería a dos personas la semana siguiente."
+    },
+    {
+     "sp": "Felipe",
+     "line": "And what about the salaries?",
+     "es": "¿Y los salarios?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "He said he couldn’t talk about money yet.",
+     "es": "Dijo que todavía no podía hablar de plata."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Did Laura say anything?",
+     "es": "¿Laura dijo algo?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "She told me she had already applied!",
+     "es": "¡Me dijo que ya se había postulado!"
+    }
+   ]
+  },
+  {
+   "title": "Mom called",
+   "titleEs": "Llamó mi mamá",
+   "scene": "📞 En la casa: Iván le cuenta a su abuela lo que dijo su mamá por teléfono.",
+   "cast": [
+    {
+     "name": "Beatriz",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Iván",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Beatriz",
+     "line": "Iván, did your mother call?",
+     "es": "Iván, ¿llamó tu mamá?"
+    },
+    {
+     "sp": "Iván",
+     "line": "Yes. She said she was at the doctor’s.",
+     "es": "Sí. Dijo que estaba donde el médico."
+    },
+    {
+     "sp": "Beatriz",
+     "line": "Is she OK?",
+     "es": "¿Está bien?"
+    },
+    {
+     "sp": "Iván",
+     "line": "Yes. She told me it was just a check-up.",
+     "es": "Sí. Me dijo que era solo un control."
+    },
+    {
+     "sp": "Beatriz",
+     "line": "What time is she coming back?",
+     "es": "¿A qué hora vuelve?"
+    },
+    {
+     "sp": "Iván",
+     "line": "She said she would be home at six and that she had bought bread.",
+     "es": "Dijo que estaría en la casa a las seis y que ya había comprado el pan."
+    },
+    {
+     "sp": "Beatriz",
+     "line": "Did she say anything about tomorrow?",
+     "es": "¿Dijo algo de mañana?"
+    },
+    {
+     "sp": "Iván",
+     "line": "She said Aunt Rosa couldn’t come the next day.",
+     "es": "Dijo que la tía Rosa no podía venir al día siguiente."
+    }
+   ]
+  }
+ ],
+ "A2-16-1": [
+  {
+   "title": "Doctor’s orders",
+   "titleEs": "Órdenes del médico",
+   "scene": "🩺 Alberto vuelve del médico y le cuenta a Paula qué le dijeron.",
+   "cast": [
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Alberto",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Paula",
+     "line": "What did the doctor say?",
+     "es": "¿Qué dijo la médica?"
+    },
+    {
+     "sp": "Alberto",
+     "line": "She told me to rest for three days.",
+     "es": "Me dijo que descansara tres días."
+    },
+    {
+     "sp": "Paula",
+     "line": "Did she give you any medicine?",
+     "es": "¿Te dio alguna medicina?"
+    },
+    {
+     "sp": "Alberto",
+     "line": "Yes. She advised me to take these pills after meals.",
+     "es": "Sí. Me aconsejó tomar estas pastillas después de las comidas."
+    },
+    {
+     "sp": "Paula",
+     "line": "And what about work?",
+     "es": "¿Y el trabajo?"
+    },
+    {
+     "sp": "Alberto",
+     "line": "She asked me not to go to the office until Monday.",
+     "es": "Me pidió que no fuera a la oficina hasta el lunes."
+    },
+    {
+     "sp": "Paula",
+     "line": "Did she say anything about coffee?",
+     "es": "¿Dijo algo del café?"
+    },
+    {
+     "sp": "Alberto",
+     "line": "She warned me not to drink coffee, and she reminded me to drink lots of water.",
+     "es": "Me advirtió que no tomara café y me recordó tomar mucha agua."
+    }
+   ]
+  },
+  {
+   "title": "The homework",
+   "titleEs": "La tarea",
+   "scene": "📚 Por WhatsApp: Santiago faltó a clase y Manuela le cuenta lo que dijo la profesora.",
+   "cast": [
+    {
+     "name": "Santiago",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Manuela",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Santiago",
+     "line": "I missed class. What did the teacher ask us to do?",
+     "es": "Falté a clase. ¿Qué nos pidió hacer la profe?"
+    },
+    {
+     "sp": "Manuela",
+     "line": "She asked us to write an essay about our neighbourhood.",
+     "es": "Nos pidió escribir un ensayo sobre nuestro barrio."
+    },
+    {
+     "sp": "Santiago",
+     "line": "When is it due?",
+     "es": "¿Para cuándo es?"
+    },
+    {
+     "sp": "Manuela",
+     "line": "She told us to send it by Thursday.",
+     "es": "Nos dijo que lo mandáramos a más tardar el jueves."
+    },
+    {
+     "sp": "Santiago",
+     "line": "Anything else?",
+     "es": "¿Algo más?"
+    },
+    {
+     "sp": "Manuela",
+     "line": "She reminded us to bring our books on Monday. And she asked if you were sick.",
+     "es": "Nos recordó traer los libros el lunes. Y preguntó si estabas enfermo."
+    },
+    {
+     "sp": "Santiago",
+     "line": "What did you tell her?",
+     "es": "¿Y qué le dijiste?"
+    },
+    {
+     "sp": "Manuela",
+     "line": "I told her you had a dentist appointment. She asked me to tell you not to worry.",
+     "es": "Le dije que tenías cita con el odontólogo. Me pidió que te dijera que no te preocuparas."
+    }
+   ]
+  }
  ]
 }

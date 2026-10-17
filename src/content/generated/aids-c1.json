@@ -1442,5 +1442,502 @@
     }
    ]
   }
+ ],
+ "C1-10-0": [
+  {
+   "kind": "transform",
+   "title": "La pasiva en todos los tiempos",
+   "steps": [
+    {
+     "label": "Presente",
+     "sentence": "English **is spoken** here.",
+     "change": "is / are + participio."
+    },
+    {
+     "label": "Pasado",
+     "sentence": "The report **was written** last week.",
+     "change": "was / were + participio."
+    },
+    {
+     "label": "Present perfect",
+     "sentence": "The results **have been published**.",
+     "change": "has / have been + participio."
+    },
+    {
+     "label": "Futuro y modal",
+     "sentence": "It **will be translated** soon. / It **must be signed**.",
+     "change": "will / must + be + participio."
+    },
+    {
+     "label": "Causativa",
+     "sentence": "I **had** my essay **checked**.",
+     "change": "have + objeto + participio."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Activa o pasiva?",
+   "question": "¿Qué es lo importante en tu frase?",
+   "branches": [
+    {
+     "if": "Quién hizo la acción",
+     "use": "voz activa",
+     "example": "García Márquez wrote the novel in 1967."
+    },
+    {
+     "if": "La acción o el resultado; el agente no importa",
+     "use": "pasiva sin agente",
+     "example": "The novel was translated into 46 languages."
+    },
+    {
+     "if": "El agente es información nueva",
+     "use": "pasiva + by + agente",
+     "example": "The bridge was designed by a Colombian engineer."
+    },
+    {
+     "if": "Pediste a alguien que lo hiciera",
+     "use": "have / get + objeto + participio",
+     "example": "We had the house painted."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "The accident happened at night.",
+     "b": "The accident was happened at night.",
+     "note": "“Happen” es intransitivo: no tiene pasiva."
+    },
+    {
+     "a": "It has been published.",
+     "b": "It has published.",
+     "note": "Sin “been”, la frase es activa y cambia de sentido."
+    },
+    {
+     "a": "I had my hair cut.",
+     "b": "I cut my hair.",
+     "note": "La primera: fui a la peluquería. La segunda: me lo corté yo."
+    }
+   ]
+  }
+ ],
+ "C1-10-1": [
+  {
+   "kind": "choose",
+   "title": "¿Singular o plural?",
+   "question": "¿Qué cuantificador usas?",
+   "branches": [
+    {
+     "if": "some / most / all / half / a lot of + sustantivo",
+     "use": "concuerda con el sustantivo después de of",
+     "example": "Most of the money is gone. / Most of the students are here."
+    },
+    {
+     "if": "each / every one / neither / either of + plural",
+     "use": "verbo en singular",
+     "example": "Each of the answers is correct."
+    },
+    {
+     "if": "a number of + plural",
+     "use": "verbo en plural",
+     "example": "A number of students were absent."
+    },
+    {
+     "if": "the number of + plural",
+     "use": "verbo en singular",
+     "example": "The number of students is rising."
+    },
+    {
+     "if": "none of + plural",
+     "use": "singular o plural (ambos aceptados)",
+     "example": "None of them is / are ready."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿A number o the number?",
+   "items": [
+    {
+     "a": "A number of students were late.",
+     "b": "The number of students was small.",
+     "note": "“A number of” = varios (plural); “the number of” = la cifra (singular)."
+    },
+    {
+     "a": "Each of the rooms has a view.",
+     "b": "Each of the rooms have a view.",
+     "note": "“Each of” siempre va con verbo singular."
+    },
+    {
+     "a": "The list of names is long.",
+     "b": "The list of names are long.",
+     "note": "El sujeto es “the list”, no “names”."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El verbo sigue al sustantivo",
+   "steps": [
+    {
+     "label": "Incontable",
+     "sentence": "Some of **the homework was** easy.",
+     "change": "“Homework” es incontable: singular."
+    },
+    {
+     "label": "Plural",
+     "sentence": "Some of **the exercises were** easy.",
+     "change": "“Exercises” es plural."
+    },
+    {
+     "label": "There is / are",
+     "sentence": "**There is** a table and two chairs. / **There are** two chairs and a table.",
+     "change": "Concuerda con el primer sustantivo."
+    }
+   ]
+  }
+ ],
+ "C1-11-0": [
+  {
+   "kind": "transform",
+   "title": "De frase larga a adjetivo compuesto",
+   "steps": [
+    {
+     "label": "Frase larga",
+     "sentence": "a contract **that lasts three years**"
+    },
+    {
+     "label": "Compuesto (número + sustantivo)",
+     "sentence": "a **three-year** contract",
+     "change": "Con guion y en singular: year."
+    },
+    {
+     "label": "Frase larga",
+     "sentence": "a scientist **who is known well**"
+    },
+    {
+     "label": "Compuesto (adverbio + participio)",
+     "sentence": "a **well-known** scientist",
+     "change": "Con guion antes del sustantivo."
+    },
+    {
+     "label": "Después del verbo",
+     "sentence": "The scientist is **well known**.",
+     "change": "Normalmente sin guion."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Adjetivos compuestos frecuentes",
+   "items": [
+    {
+     "emoji": "🧠",
+     "en": "quick-thinking",
+     "es": "ágil para pensar"
+    },
+    {
+     "emoji": "💪",
+     "en": "hard-working",
+     "es": "trabajador"
+    },
+    {
+     "emoji": "🌍",
+     "en": "world-famous",
+     "es": "mundialmente famoso"
+    },
+    {
+     "emoji": "🍬",
+     "en": "sugar-free",
+     "es": "sin azúcar"
+    },
+    {
+     "emoji": "😌",
+     "en": "easy-going",
+     "es": "tranquilo, relajado"
+    },
+    {
+     "emoji": "🔓",
+     "en": "open-minded",
+     "es": "de mente abierta"
+    },
+    {
+     "emoji": "📅",
+     "en": "three-year",
+     "es": "de tres años"
+    },
+    {
+     "emoji": "🌱",
+     "en": "locally grown",
+     "es": "cultivado localmente"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "a five-year plan",
+     "b": "a five-years plan",
+     "note": "El número va con el sustantivo en singular."
+    },
+    {
+     "a": "a highly respected expert",
+     "b": "a highly-respected expert",
+     "note": "Los adverbios en -ly no llevan guion."
+    },
+    {
+     "a": "a well-known singer",
+     "b": "The singer is well-known.",
+     "note": "Después del verbo, normalmente sin guion: “is well known”."
+    }
+   ]
+  }
+ ],
+ "C1-11-1": [
+  {
+   "kind": "transform",
+   "title": "Del compuesto al superlativo",
+   "steps": [
+    {
+     "label": "Compuesto",
+     "sentence": "a **well-known** writer"
+    },
+    {
+     "label": "Comparativo",
+     "sentence": "a **better-known** writer",
+     "change": "La primera parte cambia: well → better."
+    },
+    {
+     "label": "Superlativo",
+     "sentence": "the **best-known** writer of her generation",
+     "change": "well → best, con guion."
+    },
+    {
+     "label": "Con -ly",
+     "sentence": "the **most highly** regarded expert",
+     "change": "Si la primera parte no admite -est, usa “most”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Cómo hago el superlativo?",
+   "question": "¿Qué palabra va primero en el compuesto?",
+   "branches": [
+    {
+     "if": "Un adjetivo corto (hard, long, fast)",
+     "use": "-est en la primera parte",
+     "example": "the hardest-working student"
+    },
+    {
+     "if": "well / badly",
+     "use": "best / worst en la primera parte",
+     "example": "the best-known artist / the worst-paid job"
+    },
+    {
+     "if": "Un adverbio en -ly (highly, widely)",
+     "use": "most + adverbio + participio",
+     "example": "the most widely respected award"
+    },
+    {
+     "if": "Quieres limitar la comparación",
+     "use": "superlativo + in / of",
+     "example": "the hardest-working person on the team"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Formas correctas",
+   "items": [
+    {
+     "a": "the best-known artist",
+     "b": "the most well-known artist",
+     "note": "En inglés cuidado, se prefiere “best-known”."
+    },
+    {
+     "a": "the hardest-working student",
+     "b": "the most hard-working student",
+     "note": "El superlativo va en la primera parte."
+    },
+    {
+     "a": "the most widely read book",
+     "b": "the widest-read book",
+     "note": "Con adverbios en -ly se usa “most”."
+    }
+   ]
+  }
+ ],
+ "C1-12-0": [
+  {
+   "kind": "transform",
+   "title": "Quita el if e invierte",
+   "steps": [
+    {
+     "label": "Con if (were)",
+     "sentence": "**If I were** in charge, I would raise salaries."
+    },
+    {
+     "label": "Invertida",
+     "sentence": "**Were I** in charge, I would raise salaries.",
+     "change": "“Were” va antes del sujeto."
+    },
+    {
+     "label": "Con if (had)",
+     "sentence": "**If we had** invested earlier, we would have profited."
+    },
+    {
+     "label": "Invertida",
+     "sentence": "**Had we** invested earlier, we would have profited.",
+     "change": "“Had” va antes del sujeto."
+    },
+    {
+     "label": "Con if (should)",
+     "sentence": "**If you need** help, please email us. → **Should you need** help, please email us.",
+     "change": "Muy común en correos formales."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué inversión uso?",
+   "question": "¿Qué tipo de condición es?",
+   "branches": [
+    {
+     "if": "Presente o futuro imaginario",
+     "use": "Were + sujeto (+ to + verbo)",
+     "example": "Were I you, I would accept. / Were they to call, I’d answer."
+    },
+    {
+     "if": "Pasado imaginario",
+     "use": "Had + sujeto + participio",
+     "example": "Had I known, I would have come."
+    },
+    {
+     "if": "Posibilidad futura, oferta cortés",
+     "use": "Should + sujeto + verbo",
+     "example": "Should you have any questions, call us."
+    },
+    {
+     "if": "Negativa",
+     "use": "Had / Were / Should + sujeto + not",
+     "example": "Had we not acted, it would have failed."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "Had we not invested, we’d have lost.",
+     "b": "Hadn’t we invested, we’d have lost.",
+     "note": "En la inversión no se contrae el negativo."
+    },
+    {
+     "a": "If I wanted a raise, I’d ask.",
+     "b": "Wanted I a raise, I’d ask.",
+     "note": "Solo were, had y should se invierten."
+    },
+    {
+     "a": "Should you need help, call us.",
+     "b": "Should you will need help, call us.",
+     "note": "Después de “should” va el verbo base."
+    }
+   ]
+  }
+ ],
+ "C1-12-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué conector de condición?",
+   "question": "¿Qué tipo de condición expresas?",
+   "branches": [
+    {
+     "if": "Solo si se cumple esto (condición firme)",
+     "use": "provided (that) / as long as / on condition that",
+     "example": "You can go as long as you finish first."
+    },
+    {
+     "if": "Si esto NO pasa",
+     "use": "unless",
+     "example": "Unless sales improve, we’ll cut costs."
+    },
+    {
+     "if": "Una precaución (por si acaso)",
+     "use": "in case",
+     "example": "Take a card in case you need to pay."
+    },
+    {
+     "if": "La condición no cambia el resultado",
+     "use": "even if",
+     "example": "Even if it rains, we’ll go."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "In case no es if",
+   "items": [
+    {
+     "a": "Take an umbrella in case it rains.",
+     "b": "Take an umbrella if it rains.",
+     "note": "La primera: llévalo ya, por precaución. La segunda: llévalo solo si llueve."
+    },
+    {
+     "a": "As long as you hit the target, you’ll get it.",
+     "b": "As long as you will hit the target, you’ll get it.",
+     "note": "En la cláusula de condición no va futuro."
+    },
+    {
+     "a": "Unless you hurry, you’ll miss it.",
+     "b": "Unless you don’t hurry, you’ll miss it.",
+     "note": "“Unless” ya es negativo: no lleva otro “not”."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Fuerza de la condición",
+   "from": "Precaución",
+   "to": "Condición estricta",
+   "items": [
+    {
+     "word": "in case",
+     "value": 15,
+     "example": "Bring a jacket in case it gets cold.",
+     "es": "por si acaso"
+    },
+    {
+     "word": "if",
+     "value": 45,
+     "example": "If you need help, call me.",
+     "es": "si"
+    },
+    {
+     "word": "as long as",
+     "value": 65,
+     "example": "You can stay as long as you’re quiet.",
+     "es": "siempre y cuando"
+    },
+    {
+     "word": "provided (that)",
+     "value": 75,
+     "example": "You can leave early provided the work is done.",
+     "es": "siempre que"
+    },
+    {
+     "word": "on condition that",
+     "value": 90,
+     "example": "He was released on condition that he report weekly.",
+     "es": "con la condición de que"
+    }
+   ]
+  }
  ]
 }

@@ -2046,5 +2046,670 @@
     }
    ]
   }
+ ],
+ "A2-13-0": [
+  {
+   "kind": "choose",
+   "title": "¿-ing o -ed?",
+   "question": "¿De quién o de qué hablas?",
+   "branches": [
+    {
+     "if": "De lo que causa el sentimiento (la película, la noticia)",
+     "use": "adjetivo con -ing",
+     "example": "The film was boring."
+    },
+    {
+     "if": "De quien siente la emoción (una persona)",
+     "use": "adjetivo con -ed",
+     "example": "I was bored."
+    },
+    {
+     "if": "Del estado que dejó una acción",
+     "use": "participio pasado",
+     "example": "a broken window, a locked door"
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Parejas de sentimientos",
+   "items": [
+    {
+     "emoji": "😴",
+     "en": "bored / boring",
+     "es": "aburrido (yo) / aburridor (algo)"
+    },
+    {
+     "emoji": "😮",
+     "en": "surprised / surprising",
+     "es": "sorprendido / sorprendente"
+    },
+    {
+     "emoji": "😟",
+     "en": "worried / worrying",
+     "es": "preocupado / preocupante"
+    },
+    {
+     "emoji": "😵‍💫",
+     "en": "confused / confusing",
+     "es": "confundido / confuso"
+    },
+    {
+     "emoji": "🥱",
+     "en": "tired / tiring",
+     "es": "cansado / cansón"
+    },
+    {
+     "emoji": "🤩",
+     "en": "excited / exciting",
+     "es": "emocionado / emocionante"
+    },
+    {
+     "emoji": "😞",
+     "en": "disappointed / disappointing",
+     "es": "decepcionado / decepcionante"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cambia una letra, cambia todo",
+   "items": [
+    {
+     "a": "I’m bored.",
+     "b": "I’m boring.",
+     "note": "bored = me aburro; boring = soy aburrido para los demás."
+    },
+    {
+     "a": "The news was surprising.",
+     "b": "I was surprised by the news.",
+     "note": "La cosa causa (-ing); la persona siente (-ed)."
+    },
+    {
+     "a": "an interesting book",
+     "b": "interested in books",
+     "note": "Los adjetivos con -ed llevan preposición fija: interested in."
+    },
+    {
+     "a": "the man standing at the door",
+     "b": "the documents signed yesterday",
+     "note": "-ing = hace la acción; participio = recibe la acción."
+    }
+   ]
+  }
+ ],
+ "A2-13-1": [
+  {
+   "kind": "choose",
+   "title": "¿Who, which, that, whose o where?",
+   "question": "¿A qué se refiere el pronombre?",
+   "branches": [
+    {
+     "if": "Una persona",
+     "use": "who / that",
+     "example": "the technician who came yesterday"
+    },
+    {
+     "if": "Una cosa",
+     "use": "that / which",
+     "example": "the app that crashed"
+    },
+    {
+     "if": "Algo que le pertenece a alguien",
+     "use": "whose",
+     "example": "the colleague whose laptop was stolen"
+    },
+    {
+     "if": "Un lugar",
+     "use": "where",
+     "example": "the office where I work"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Dos oraciones en una",
+   "steps": [
+    {
+     "label": "Dos oraciones (sujeto)",
+     "sentence": "I met a woman. **She** works for the ministry."
+    },
+    {
+     "label": "Una oración",
+     "sentence": "I met a woman **who** works for the ministry.",
+     "change": "who reemplaza a she. Es sujeto: no se puede quitar."
+    },
+    {
+     "label": "Dos oraciones (objeto)",
+     "sentence": "This is the report. I mentioned **it** yesterday."
+    },
+    {
+     "label": "Una oración",
+     "sentence": "This is the report **(that)** I mentioned yesterday.",
+     "change": "Es objeto: that se puede quitar. No repitas it."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Se puede quitar? ¿Lleva comas?",
+   "items": [
+    {
+     "a": "the man who called me",
+     "b": "the man I called",
+     "note": "Como sujeto, who no se quita; como objeto, sí."
+    },
+    {
+     "a": "My boss, who lives nearby, cycles to work.",
+     "b": "The boss who lives nearby cycles to work.",
+     "note": "Con comas = información extra, nunca con that. Sin comas = identifica cuál."
+    },
+    {
+     "a": "the person I spoke to",
+     "b": "the person to whom I spoke",
+     "note": "La preposición al final es lo normal al hablar; la otra es formal."
+    }
+   ]
+  }
+ ],
+ "A2-14-0": [
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro estás?",
+   "from": "seguro que no",
+   "to": "seguro que sí",
+   "items": [
+    {
+     "word": "must",
+     "value": 95,
+     "example": "She must be at lunch.",
+     "es": "debe de (casi seguro)"
+    },
+    {
+     "word": "probably",
+     "value": 75,
+     "example": "It’s probably the cable.",
+     "es": "seguramente"
+    },
+    {
+     "word": "may",
+     "value": 50,
+     "example": "It may be a network problem.",
+     "es": "puede que"
+    },
+    {
+     "word": "might",
+     "value": 40,
+     "example": "He might be in a meeting.",
+     "es": "tal vez"
+    },
+    {
+     "word": "could",
+     "value": 40,
+     "example": "It could be the cache.",
+     "es": "podría ser"
+    },
+    {
+     "word": "might not",
+     "value": 30,
+     "example": "She might not know yet.",
+     "es": "tal vez no"
+    },
+    {
+     "word": "can’t",
+     "value": 5,
+     "example": "That can’t be right.",
+     "es": "no puede ser"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Must, might o can’t?",
+   "question": "¿Qué tan seguro estás según la evidencia?",
+   "branches": [
+    {
+     "if": "Casi seguro que sí",
+     "use": "must + verbo",
+     "example": "The lights are on. Someone must be there."
+    },
+    {
+     "if": "Es posible, no estás seguro",
+     "use": "may / might / could + verbo",
+     "example": "It might be a network problem."
+    },
+    {
+     "if": "Casi seguro que no",
+     "use": "can’t + verbo",
+     "example": "He can’t be at home. His car isn’t there."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Deducción o algo más",
+   "items": [
+    {
+     "a": "He can’t be at home.",
+     "b": "He mustn’t be at home.",
+     "note": "can’t = deducción (no es posible); mustn’t = prohibición."
+    },
+    {
+     "a": "It could be the cable.",
+     "b": "It’s definitely the cable.",
+     "note": "could = posibilidad; definitely = seguridad. Para especular no se usa can."
+    },
+    {
+     "a": "They must be waiting outside.",
+     "b": "They must wait outside.",
+     "note": "must be + -ing = deducción; must + verbo = obligación."
+    },
+    {
+     "a": "He definitely isn’t coming.",
+     "b": "He probably won’t come.",
+     "note": "El adverbio va antes del auxiliar negativo."
+    }
+   ]
+  }
+ ],
+ "A2-14-1": [
+  {
+   "kind": "choose",
+   "title": "¿Permiso, obligación o prohibición?",
+   "question": "¿Qué quieres decir?",
+   "branches": [
+    {
+     "if": "Está permitido",
+     "use": "can / may / be allowed to",
+     "example": "You can park after six."
+    },
+    {
+     "if": "Es necesario",
+     "use": "must / have to / need to",
+     "example": "You have to sign in."
+    },
+    {
+     "if": "No es necesario",
+     "use": "don’t have to / needn’t",
+     "example": "You don’t have to pay today."
+    },
+    {
+     "if": "Está prohibido",
+     "use": "mustn’t / can’t / not allowed to",
+     "example": "You mustn’t park here."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Letreros y reglas",
+   "items": [
+    {
+     "emoji": "🚭",
+     "en": "You mustn’t smoke.",
+     "es": "Prohibido fumar."
+    },
+    {
+     "emoji": "📵",
+     "en": "You can’t use your phone.",
+     "es": "No se permite el celular."
+    },
+    {
+     "emoji": "🅿️",
+     "en": "You can park here.",
+     "es": "Puedes parquear aquí."
+    },
+    {
+     "emoji": "🪪",
+     "en": "You have to show your ID.",
+     "es": "Tienes que mostrar tu documento."
+    },
+    {
+     "emoji": "⛑️",
+     "en": "Helmets must be worn.",
+     "es": "El casco es obligatorio."
+    },
+    {
+     "emoji": "📷",
+     "en": "Photos are not allowed.",
+     "es": "No se permiten fotos."
+    },
+    {
+     "emoji": "🐕",
+     "en": "Dogs are allowed.",
+     "es": "Se permiten perros."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Negativas que no son iguales",
+   "items": [
+    {
+     "a": "You don’t have to stay.",
+     "b": "You mustn’t stay.",
+     "note": "don’t have to = es opcional; mustn’t = está prohibido."
+    },
+    {
+     "a": "You can bring a guest.",
+     "b": "You may bring a guest.",
+     "note": "may es más formal, típico de avisos."
+    },
+    {
+     "a": "We had to wait.",
+     "b": "We weren’t allowed to enter.",
+     "note": "have to y be allowed to sí cambian de tiempo."
+    },
+    {
+     "a": "You’re supposed to wear a badge.",
+     "b": "You have to wear a badge.",
+     "note": "supposed to = se espera; have to = regla obligatoria."
+    }
+   ]
+  }
+ ],
+ "A2-15-0": [
+  {
+   "kind": "transform",
+   "title": "De la realidad a lo imaginario",
+   "steps": [
+    {
+     "label": "Realidad",
+     "sentence": "I **don’t have** a car."
+    },
+    {
+     "label": "Imaginario",
+     "sentence": "**If I had** a car, I **would drive** to work.",
+     "change": "if + pasado simple, would + verbo base. Habla de hoy, no del pasado."
+    },
+    {
+     "label": "Orden invertido",
+     "sentence": "I**’d drive** to work **if I had** a car.",
+     "change": "Si if va en el medio, no hay coma."
+    },
+    {
+     "label": "Consejo",
+     "sentence": "**If I were you**, I**’d buy** a car.",
+     "change": "If I were you, I’d… es la forma típica de aconsejar."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Primer o segundo condicional?",
+   "question": "¿Qué tan real es la situación?",
+   "branches": [
+    {
+     "if": "Es posible y real",
+     "use": "If + presente, will + verbo",
+     "example": "If it rains, we’ll stay in."
+    },
+    {
+     "if": "Es imaginaria o poco probable",
+     "use": "If + pasado, would + verbo",
+     "example": "If it snowed in Cali, everyone would be surprised."
+    },
+    {
+     "if": "Quieres dar un consejo fuerte",
+     "use": "If I were you, I’d + verbo",
+     "example": "If I were you, I’d talk to her."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Real o imaginario",
+   "items": [
+    {
+     "a": "If I have time, I’ll help you.",
+     "b": "If I had time, I’d help you.",
+     "note": "Primero: puede que tenga tiempo. Segundo: no tengo tiempo."
+    },
+    {
+     "a": "If we left now, we could catch it.",
+     "b": "If we left now, we might catch it.",
+     "note": "could = sería posible; might = el resultado no es seguro."
+    },
+    {
+     "a": "If I were rich…",
+     "b": "If I was rich…",
+     "note": "were es lo cuidadoso para todas las personas; was es informal."
+    }
+   ]
+  }
+ ],
+ "A2-15-1": [
+  {
+   "kind": "choose",
+   "title": "¿Should have, would have, could have o must have?",
+   "question": "¿Qué quieres decir del pasado?",
+   "branches": [
+    {
+     "if": "Lamentas o criticas algo",
+     "use": "should / shouldn’t have + participio",
+     "example": "I should have called."
+    },
+    {
+     "if": "Algo que habría pasado, pero no pasó",
+     "use": "would have + participio",
+     "example": "I would have helped."
+    },
+    {
+     "if": "Una oportunidad perdida",
+     "use": "could have + participio",
+     "example": "We could have taken the train."
+    },
+    {
+     "if": "Una deducción sobre el pasado",
+     "use": "must have + participio",
+     "example": "She must have forgotten."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del consejo al lamento",
+   "steps": [
+    {
+     "label": "Consejo de hoy",
+     "sentence": "You **should call** her.",
+     "change": "should + verbo base."
+    },
+    {
+     "label": "Crítica del pasado",
+     "sentence": "You **should have called** her yesterday.",
+     "change": "should + have + participio: ya es tarde."
+    },
+    {
+     "label": "Pasado imaginario",
+     "sentence": "If you **had called**, she **would have come**.",
+     "change": "would have + participio = lo que habría pasado."
+    },
+    {
+     "label": "Deducción",
+     "sentence": "She **must have been** angry.",
+     "change": "must have + participio = seguro que pasó."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Hablar de lo que ya no se puede cambiar",
+   "items": [
+    {
+     "a": "You should call her.",
+     "b": "You should have called her.",
+     "note": "should + verbo = consejo para hoy; should have = ya es tarde."
+    },
+    {
+     "a": "I should have gone.",
+     "b": "I shouldn’t have gone.",
+     "note": "Primero: no fui y lo lamento. Segundo: fui y lo lamento."
+    },
+    {
+     "a": "I would have helped.",
+     "b": "I could have helped.",
+     "note": "would have = lo habría hecho; could have = habría sido posible."
+    },
+    {
+     "a": "should’ve",
+     "b": "should have",
+     "note": "Al hablar suena should’ve; nunca escribas should of."
+    }
+   ]
+  }
+ ],
+ "A2-16-0": [
+  {
+   "kind": "transform",
+   "title": "Un paso atrás al reportar",
+   "steps": [
+    {
+     "label": "Directo",
+     "sentence": "“I **am** tired.”"
+    },
+    {
+     "label": "Reportado",
+     "sentence": "She said she **was** tired.",
+     "change": "am → was; I → she."
+    },
+    {
+     "label": "Directo",
+     "sentence": "“I**’ll call** you **tomorrow**.”"
+    },
+    {
+     "label": "Reportado",
+     "sentence": "He told me he **would call** me **the next day**.",
+     "change": "will → would; tomorrow → the next day."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Say o tell?",
+   "question": "¿Mencionas a quién se lo dijo?",
+   "branches": [
+    {
+     "if": "No",
+     "use": "said (that) + oración",
+     "example": "She said that she was tired."
+    },
+    {
+     "if": "Sí, justo después del verbo",
+     "use": "told + persona + (that) + oración",
+     "example": "She told me that she was tired."
+    },
+    {
+     "if": "Sí, con preposición",
+     "use": "said to + persona",
+     "example": "He said to me that he was late."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Detalles del estilo indirecto",
+   "items": [
+    {
+     "a": "She said she was busy.",
+     "b": "She told me she was busy.",
+     "note": "say va sin persona; tell necesita persona."
+    },
+    {
+     "a": "He said he had seen it.",
+     "b": "He said he saw it.",
+     "note": "Las dos se oyen; con had seen es la forma cuidadosa."
+    },
+    {
+     "a": "She says she’s on her way.",
+     "b": "She said she was on her way.",
+     "note": "Si es inmediato o sigue siendo verdad, no hace falta retroceder."
+    },
+    {
+     "a": "today → that day",
+     "b": "tomorrow → the next day",
+     "note": "Las palabras de tiempo también cambian."
+    }
+   ]
+  }
+ ],
+ "A2-16-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué verbo uso para reportar?",
+   "question": "¿Qué tipo de frase era la original?",
+   "branches": [
+    {
+     "if": "Un pedido (Please…, Could you…?)",
+     "use": "asked + persona + to + verbo",
+     "example": "She asked me to wait."
+    },
+    {
+     "if": "Una orden (Be quiet!)",
+     "use": "told + persona + to + verbo",
+     "example": "He told us to be quiet."
+    },
+    {
+     "if": "Un consejo o una advertencia (You should…, Careful!)",
+     "use": "advised / warned + persona + (not) to + verbo",
+     "example": "She warned me not to touch it."
+    },
+    {
+     "if": "Una pregunta (Are you…?, Where…?)",
+     "use": "asked + if / wh + orden de afirmación",
+     "example": "He asked if I was coming."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Reportar un pedido",
+   "steps": [
+    {
+     "label": "Pedido directo",
+     "sentence": "“**Please wait** outside.”"
+    },
+    {
+     "label": "Reportado",
+     "sentence": "She **asked me to wait** outside.",
+     "change": "asked + persona + to + verbo."
+    },
+    {
+     "label": "Pedido negativo",
+     "sentence": "“**Don’t call** after nine.”"
+    },
+    {
+     "label": "Reportado",
+     "sentence": "She **asked me not to call** after nine.",
+     "change": "not va antes de to."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cuidado con la estructura",
+   "items": [
+    {
+     "a": "She asked me to wait.",
+     "b": "She asked to wait.",
+     "note": "Con persona: quería que yo esperara. Sin persona: ella quería esperar."
+    },
+    {
+     "a": "He told me to wait.",
+     "b": "He told me that he was waiting.",
+     "note": "told + to = orden; told + that = información."
+    },
+    {
+     "a": "He reminded me not to be late.",
+     "b": "He reminded me to be on time.",
+     "note": "La negativa pone not antes de to."
+    },
+    {
+     "a": "“Where do you work?”",
+     "b": "She asked where I worked.",
+     "note": "La pregunta reportada pierde do y la inversión."
+    }
+   ]
+  }
  ]
 }

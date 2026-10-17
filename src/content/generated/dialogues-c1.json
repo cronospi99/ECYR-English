@@ -2043,5 +2043,700 @@
     }
    ]
   }
+ ],
+ "C1-10-0": [
+  {
+   "title": "Colombia's languages",
+   "titleEs": "Las lenguas de Colombia",
+   "scene": "🗣️ En un pódcast cultural grabado en Bogotá: una lingüista habla de las lenguas indígenas.",
+   "cast": [
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "James",
+     "line": "How many languages are spoken in Colombia?",
+     "es": "¿Cuántas lenguas se hablan en Colombia?"
+    },
+    {
+     "sp": "Paula",
+     "line": "Over sixty indigenous languages are still spoken, plus two creoles.",
+     "es": "Todavía se hablan más de sesenta lenguas indígenas, además de dos criollas."
+    },
+    {
+     "sp": "James",
+     "line": "Are they protected by law?",
+     "es": "¿Están protegidas por la ley?"
+    },
+    {
+     "sp": "Paula",
+     "line": "Yes. They were recognised as official in their territories in 1991, and a language law was passed in 2010.",
+     "es": "Sí. Fueron reconocidas como oficiales en sus territorios en 1991, y en 2010 se aprobó una ley de lenguas."
+    },
+    {
+     "sp": "James",
+     "line": "Has much been done since then?",
+     "es": "¿Se ha hecho mucho desde entonces?"
+    },
+    {
+     "sp": "Paula",
+     "line": "Several dictionaries have been published, and more teachers are being trained.",
+     "es": "Se han publicado varios diccionarios y se están formando más profesores."
+    },
+    {
+     "sp": "James",
+     "line": "And the future?",
+     "es": "¿Y el futuro?"
+    },
+    {
+     "sp": "Paula",
+     "line": "Unless more is invested, some languages will have been lost within a generation.",
+     "es": "A menos que se invierta más, algunas lenguas se habrán perdido en una generación."
+    }
+   ]
+  },
+  {
+   "title": "Getting a thesis ready",
+   "titleEs": "Alistando una tesis",
+   "scene": "📑 En la Universidad de los Andes: una doctoranda habla con su director sobre la entrega.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "Has the final chapter been finished?",
+     "es": "¿Ya está terminado el capítulo final?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Almost. It's being proofread this week. I'm having it checked by a professional editor.",
+     "es": "Casi. Lo están revisando esta semana. Lo estoy haciendo corregir con un editor profesional."
+    },
+    {
+     "sp": "Ben",
+     "line": "Good. The forms must be signed by the committee before Friday.",
+     "es": "Bien. El comité tiene que firmar los formularios antes del viernes."
+    },
+    {
+     "sp": "Natalia",
+     "line": "They were sent to them yesterday.",
+     "es": "Se los mandaron ayer."
+    },
+    {
+     "sp": "Ben",
+     "line": "And the abstract? It needs to be translated into Spanish.",
+     "es": "¿Y el resumen? Hay que traducirlo al español."
+    },
+    {
+     "sp": "Natalia",
+     "line": "It's already been done. It was translated by a colleague.",
+     "es": "Ya está hecho. Lo tradujo una colega."
+    },
+    {
+     "sp": "Ben",
+     "line": "Excellent. Your defence will be scheduled as soon as everything has been approved.",
+     "es": "Excelente. Programarán tu sustentación apenas se haya aprobado todo."
+    }
+   ]
+  }
+ ],
+ "C1-10-1": [
+  {
+   "title": "Exam results",
+   "titleEs": "Resultados de los exámenes",
+   "scene": "📊 En un colegio de Medellín: dos profesores revisan los resultados de un examen.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "How did the class do?",
+     "es": "¿Cómo le fue al curso?"
+    },
+    {
+     "sp": "Camila",
+     "line": "Most of the students were fine, but a number of them have failed the writing section.",
+     "es": "A la mayoría de los estudiantes les fue bien, pero varios perdieron la sección de escritura."
+    },
+    {
+     "sp": "Oliver",
+     "line": "The number of failures is higher than last year, isn't it?",
+     "es": "El número de reprobados es más alto que el año pasado, ¿no?"
+    },
+    {
+     "sp": "Camila",
+     "line": "It is. Each of the essays was marked twice, so the grades are reliable.",
+     "es": "Sí. Cada uno de los ensayos se calificó dos veces, así que las notas son confiables."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Was any of the reading difficult?",
+     "es": "¿Algo de la lectura fue difícil?"
+    },
+    {
+     "sp": "Camila",
+     "line": "None of the reading was hard. Half of the problem is time management.",
+     "es": "Nada de la lectura fue difícil. La mitad del problema es el manejo del tiempo."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Neither of the two groups finished on time, then?",
+     "es": "¿Entonces ninguno de los dos grupos terminó a tiempo?"
+    },
+    {
+     "sp": "Camila",
+     "line": "Exactly. All of the evidence points to the same thing: more practice.",
+     "es": "Exacto. Toda la evidencia apunta a lo mismo: más práctica."
+    }
+   ]
+  },
+  {
+   "title": "A survey on remote work",
+   "titleEs": "Una encuesta sobre trabajo remoto",
+   "scene": "📋 En una consultora de Bogotá: dos analistas comentan los resultados de una encuesta.",
+   "cast": [
+    {
+     "name": "Juan Pablo",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zoe",
+     "line": "So what does the survey say?",
+     "es": "¿Y qué dice la encuesta?"
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Most of the employees prefer working from home at least twice a week.",
+     "es": "La mayoría de los empleados prefiere trabajar desde casa al menos dos veces por semana."
+    },
+    {
+     "sp": "Zoe",
+     "line": "And the managers?",
+     "es": "¿Y los jefes?"
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Half of them are worried about productivity, but none of the data supports that.",
+     "es": "La mitad está preocupada por la productividad, pero ninguno de los datos lo respalda."
+    },
+    {
+     "sp": "Zoe",
+     "line": "Interesting. Every one of the departments answered?",
+     "es": "Interesante. ¿Respondió cada uno de los departamentos?"
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Yes, each of them was surveyed. The list of comments is very long, though.",
+     "es": "Sí, se encuestó a cada uno. Aunque la lista de comentarios es muy larga."
+    },
+    {
+     "sp": "Zoe",
+     "line": "There's a lot of work ahead, then.",
+     "es": "Entonces hay mucho trabajo por delante."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "There are two reports to write and a lot of data to clean.",
+     "es": "Hay dos informes por escribir y muchos datos por depurar."
+    }
+   ]
+  }
+ ],
+ "C1-11-0": [
+  {
+   "title": "Recruiting a team leader",
+   "titleEs": "Reclutando un líder de equipo",
+   "scene": "🧑‍💼 En una startup de Medellín: dos fundadores comparan candidatos.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mark",
+     "line": "What did you think of the first candidate?",
+     "es": "¿Qué te pareció el primer candidato?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "She's a quick-thinking, well-organised professional with a ten-year track record.",
+     "es": "Es una profesional ágil para pensar, muy organizada y con diez años de trayectoria."
+    },
+    {
+     "sp": "Mark",
+     "line": "And she's worked for a world-famous tech company, hasn't she?",
+     "es": "Y ha trabajado para una empresa de tecnología mundialmente famosa, ¿no?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "Yes. But she wants a three-year contract and a four-day week.",
+     "es": "Sí. Pero quiere un contrato a tres años y una semana de cuatro días."
+    },
+    {
+     "sp": "Mark",
+     "line": "That's a deal-breaker for some investors.",
+     "es": "Eso es un factor decisivo para algunos inversionistas."
+    },
+    {
+     "sp": "Valentina",
+     "line": "The second candidate was easy-going, but not very detail-oriented.",
+     "es": "El segundo candidato era tranquilo, pero no muy detallista."
+    },
+    {
+     "sp": "Mark",
+     "line": "We need someone hard-working and open-minded.",
+     "es": "Necesitamos a alguien trabajador y de mente abierta."
+    },
+    {
+     "sp": "Valentina",
+     "line": "Then let's offer her the job. A highly respected leader is worth a short working week.",
+     "es": "Entonces ofrezcámosle el puesto a ella. Una líder muy respetada vale una semana laboral corta."
+    }
+   ]
+  },
+  {
+   "title": "A healthy menu",
+   "titleEs": "Un menú saludable",
+   "scene": "🥗 En un restaurante nuevo en Bogotá: la chef explica el menú a un crítico gastronómico.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ryan",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ryan",
+     "line": "What's the concept behind the menu?",
+     "es": "¿Cuál es el concepto detrás del menú?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Locally grown, seasonal food. Everything is gluten-free and most dishes are sugar-free.",
+     "es": "Comida de temporada y cultivada localmente. Todo es sin gluten y la mayoría de los platos son sin azúcar."
+    },
+    {
+     "sp": "Ryan",
+     "line": "Tell me about this slow-cooked pork.",
+     "es": "Cuénteme de este cerdo cocinado a fuego lento."
+    },
+    {
+     "sp": "Daniela",
+     "line": "It's a six-hour recipe from my grandmother. She was a self-taught cook from Cauca.",
+     "es": "Es una receta de seis horas de mi abuela. Era una cocinera autodidacta del Cauca."
+    },
+    {
+     "sp": "Ryan",
+     "line": "And the desserts?",
+     "es": "¿Y los postres?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "We have a mouth-watering, low-fat version of natilla.",
+     "es": "Tenemos una versión de natilla baja en grasa que hace agua la boca."
+    },
+    {
+     "sp": "Ryan",
+     "line": "It sounds like a well-thought-out menu.",
+     "es": "Suena como un menú muy bien pensado."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Thank you. It took a two-year search for the right suppliers.",
+     "es": "Gracias. Nos tomó dos años de búsqueda encontrar los proveedores adecuados."
+    }
+   ]
+  }
+ ],
+ "C1-11-1": [
+  {
+   "title": "An awards ceremony",
+   "titleEs": "Una ceremonia de premios",
+   "scene": "🏆 En los premios de periodismo en Bogotá: dos presentadores anuncian a los ganadores.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tom",
+     "line": "Our next award goes to the hardest-working reporter of the year.",
+     "es": "Nuestro siguiente premio es para el periodista más trabajador del año."
+    },
+    {
+     "sp": "Isabela",
+     "line": "She's also one of the best-known faces on Colombian television.",
+     "es": "También es una de las caras más conocidas de la televisión colombiana."
+    },
+    {
+     "sp": "Tom",
+     "line": "Her investigation was the most widely read story of the decade.",
+     "es": "Su investigación fue la historia más leída de la década."
+    },
+    {
+     "sp": "Isabela",
+     "line": "And she's arguably the most highly respected journalist in the region.",
+     "es": "Y es posiblemente la periodista más respetada de la región."
+    },
+    {
+     "sp": "Tom",
+     "line": "Before we hand it over, let's remember last year's winner, a far less well-known reporter from Chocó.",
+     "es": "Antes de entregarlo, recordemos al ganador del año pasado, un periodista mucho menos conocido del Chocó."
+    },
+    {
+     "sp": "Isabela",
+     "line": "He went on to become one of the best-paid columnists in the country!",
+     "es": "¡Luego se convirtió en uno de los columnistas mejor pagados del país!"
+    },
+    {
+     "sp": "Tom",
+     "line": "Proof that this is the most sought-after prize in Colombian journalism.",
+     "es": "Prueba de que este es el premio más codiciado del periodismo colombiano."
+    }
+   ]
+  },
+  {
+   "title": "Choosing a university",
+   "titleEs": "Escogiendo una universidad",
+   "scene": "🎓 En una feria universitaria en Cali: una asesora orienta a un estudiante.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sebastián",
+     "line": "Which is the best-known engineering school in the country?",
+     "es": "¿Cuál es la escuela de ingeniería más conocida del país?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Probably this one. It has the best-equipped labs in Latin America.",
+     "es": "Probablemente esta. Tiene los laboratorios mejor equipados de América Latina."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Are its professors well paid?",
+     "es": "¿Sus profesores están bien pagados?"
+    },
+    {
+     "sp": "Laura",
+     "line": "They're among the best-paid in the sector, which attracts the most highly qualified staff.",
+     "es": "Están entre los mejor pagados del sector, lo que atrae al personal más calificado."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "What about the other university?",
+     "es": "¿Y la otra universidad?"
+    },
+    {
+     "sp": "Laura",
+     "line": "It's less well-known, but its graduates are the most sought-after by employers.",
+     "es": "Es menos conocida, pero sus egresados son los más solicitados por los empleadores."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "So it might be a better-kept secret?",
+     "es": "¿Entonces podría ser un secreto mejor guardado?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Exactly. It's the longest-established program in the region.",
+     "es": "Exacto. Es el programa con más trayectoria de la región."
+    }
+   ]
+  }
+ ],
+ "C1-12-0": [
+  {
+   "title": "A board meeting",
+   "titleEs": "Una junta directiva",
+   "scene": "💼 En una junta directiva en Bogotá: la presidenta y un asesor financiero discuten una inversión fallida.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Catalina",
+     "line": "Had we invested in solar energy five years ago, we would be leading the market now.",
+     "es": "De haber invertido en energía solar hace cinco años, ahora estaríamos liderando el mercado."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "With respect, had we done so, we might not have survived the crisis.",
+     "es": "Con todo respeto, de haberlo hecho, quizá no habríamos sobrevivido a la crisis."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Fair point. Were I in your position, though, I'd propose a new plan today.",
+     "es": "Es justo. Aunque, si yo estuviera en su lugar, propondría un nuevo plan hoy."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Should the board approve it, we could start in March.",
+     "es": "Si la junta lo aprobara, podríamos empezar en marzo."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Were the government to offer tax incentives, would the numbers change?",
+     "es": "Si el gobierno ofreciera incentivos tributarios, ¿cambiarían las cifras?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Considerably. Had they announced them earlier, we wouldn't be having this discussion.",
+     "es": "Considerablemente. Si los hubieran anunciado antes, no estaríamos teniendo esta discusión."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Very well. Should you need more data, my office is at your disposal.",
+     "es": "Muy bien. Si necesita más datos, mi oficina está a su disposición."
+    }
+   ]
+  },
+  {
+   "title": "A formal email",
+   "titleEs": "Un correo formal",
+   "scene": "📧 En una agencia de viajes de Cartagena: dos empleados redactan un correo a un cliente corporativo.",
+   "cast": [
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mateo",
+     "line": "How should we start the email? It needs to sound professional.",
+     "es": "¿Cómo empezamos el correo? Tiene que sonar profesional."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Thank them first. Then write: “Should you wish to change your dates, please let us know.”",
+     "es": "Primero agradéceles. Luego escribe: “Si desea cambiar sus fechas, por favor háganoslo saber.”"
+    },
+    {
+     "sp": "Mateo",
+     "line": "And about the cancelled hotel?",
+     "es": "¿Y lo del hotel cancelado?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "“Had we been informed earlier, we would have found an alternative.”",
+     "es": "“De haber sido informados antes, habríamos encontrado una alternativa.”"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Isn't that a bit defensive?",
+     "es": "¿No suena un poco a la defensiva?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "Maybe. Add: “Were you to experience any further issues, our team would be happy to help.”",
+     "es": "Tal vez. Agrega: “Si llegara a tener algún otro inconveniente, nuestro equipo con gusto le ayudará.”"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Perfect. Should they not reply by Friday, I'll call them.",
+     "es": "Perfecto. Si no responden para el viernes, los llamo."
+    }
+   ]
+  }
+ ],
+ "C1-12-1": [
+  {
+   "title": "Negotiating a bonus",
+   "titleEs": "Negociando una bonificación",
+   "scene": "💰 En una empresa de Barranquilla: una vendedora negocia las condiciones de su bonificación.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Jack",
+     "line": "You'll get the full bonus as long as you hit the quarterly target.",
+     "es": "Vas a recibir la bonificación completa siempre y cuando cumplas la meta trimestral."
+    },
+    {
+     "sp": "Mariana",
+     "line": "And if I exceed it? Provided that I sell twenty percent more, could it be doubled?",
+     "es": "¿Y si la supero? Siempre que venda un veinte por ciento más, ¿se podría duplicar?"
+    },
+    {
+     "sp": "Jack",
+     "line": "Possibly, on condition that the new clients sign one-year contracts.",
+     "es": "Posiblemente, con la condición de que los clientes nuevos firmen contratos a un año."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Fair. Unless the market collapses, that shouldn't be a problem.",
+     "es": "Me parece justo. A menos que el mercado colapse, eso no debería ser un problema."
+    },
+    {
+     "sp": "Jack",
+     "line": "I'll put it in writing in case there's any confusion later.",
+     "es": "Lo voy a poner por escrito por si hay alguna confusión más adelante."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Thanks. Even if I don't reach it, I'd like a review in June.",
+     "es": "Gracias. Aunque no la alcance, quisiera una revisión en junio."
+    },
+    {
+     "sp": "Jack",
+     "line": "Agreed, as long as you send me monthly reports.",
+     "es": "De acuerdo, siempre y cuando me mandes informes mensuales."
+    }
+   ]
+  },
+  {
+   "title": "Hiking to Ciudad Perdida",
+   "titleEs": "Caminata a Ciudad Perdida",
+   "scene": "🥾 En Santa Marta: un guía da instrucciones a una excursionista antes de salir.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Felipe",
+     "line": "You can join the group provided that you've had your yellow fever vaccine.",
+     "es": "Te puedes unir al grupo siempre que tengas la vacuna de la fiebre amarilla."
+    },
+    {
+     "sp": "Chloe",
+     "line": "I have. Should I bring anything special?",
+     "es": "Sí la tengo. ¿Debo llevar algo especial?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Bring extra socks in case your boots get wet. They usually do.",
+     "es": "Lleva medias extra por si se te mojan las botas. Normalmente pasa."
+    },
+    {
+     "sp": "Chloe",
+     "line": "And if it rains heavily?",
+     "es": "¿Y si llueve muy fuerte?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "We'll keep walking unless the river is too high to cross.",
+     "es": "Seguiremos caminando a menos que el río esté demasiado crecido para cruzarlo."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Is it safe to swim?",
+     "es": "¿Es seguro nadar?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "As long as you stay where the guides can see you, it's fine.",
+     "es": "Mientras te quedes donde los guías te puedan ver, no hay problema."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Great. I'll take some cash in case I want to buy anything in the villages.",
+     "es": "Genial. Voy a llevar algo de efectivo por si quiero comprar algo en los pueblos."
+    }
+   ]
+  }
  ]
 }

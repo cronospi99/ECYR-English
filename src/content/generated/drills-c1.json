@@ -358,5 +358,125 @@
    "Whatever happens, don’t lose hope.",
    "We’ll support whoever protects the reserve."
   ]
+ },
+ "C1-10-0": {
+  "name": "Make it passive",
+  "prompt": "Reescribe cada frase en pasiva (o en causativa), empezando con las palabras dadas.",
+  "items": [
+   "They speak over 60 languages in Colombia. → Over 60 languages ______",
+   "Someone stole my bike last night. → My bike ______",
+   "They have published the results. → The results ______",
+   "They will translate the book into French. → The book ______",
+   "Someone must sign the form. → The form ______",
+   "A tutor checked my essay. (causative) → I had ______"
+  ],
+  "answers": [
+   "Over 60 languages are spoken in Colombia.",
+   "My bike was stolen last night.",
+   "The results have been published.",
+   "The book will be translated into French.",
+   "The form must be signed.",
+   "I had my essay checked by a tutor."
+  ]
+ },
+ "C1-10-1": {
+  "name": "Singular or plural?",
+  "prompt": "Completa cada frase con la forma correcta del verbo entre paréntesis.",
+  "items": [
+   "Most of the students ___ (be) late yesterday.",
+   "Each of the answers ___ (be) correct.",
+   "A number of problems ___ (have) been reported.",
+   "The number of tourists ___ (grow) every year.",
+   "None of the information ___ (be) useful.",
+   "Half of the cake ___ (be) eaten before the party started."
+  ],
+  "answers": [
+   "Most of the students were late yesterday.",
+   "Each of the answers is correct.",
+   "A number of problems have been reported.",
+   "The number of tourists grows every year.",
+   "None of the information was useful.",
+   "Half of the cake was eaten before the party started."
+  ]
+ },
+ "C1-11-0": {
+  "name": "Compress the description",
+  "prompt": "Convierte cada descripción en un adjetivo compuesto delante del sustantivo.",
+  "items": [
+   "a plan that lasts five years → a ______ plan",
+   "a report with ten pages → a ______ report",
+   "a student who works hard → a ______ student",
+   "an athlete who is famous all over the world → a ______ athlete",
+   "a drink that contains no sugar → a ______ drink",
+   "an expert who is highly respected → a ______ expert"
+  ],
+  "answers": [
+   "a five-year plan",
+   "a ten-page report",
+   "a hard-working student",
+   "a world-famous athlete",
+   "a sugar-free drink",
+   "a highly respected expert (no hyphen after an -ly adverb)"
+  ]
+ },
+ "C1-11-1": {
+  "name": "Make it superlative",
+  "prompt": "Reescribe cada frase con un adjetivo compuesto en comparativo o superlativo.",
+  "items": [
+   "She is a well-known writer. (superlative, of her generation) → She is ______",
+   "He works harder than anyone else on the team. → He is ______",
+   "This award is respected more widely than any other. → This is ______",
+   "This lab has better equipment than any other in the country. → This is ______",
+   "Nobody is paid worse than cleaners in this company. → Cleaners are ______",
+   "This writer is known better than that one. (comparative) → This writer is ______"
+  ],
+  "answers": [
+   "She is the best-known writer of her generation.",
+   "He is the hardest-working person on the team.",
+   "This is the most widely respected award.",
+   "This is the best-equipped lab in the country.",
+   "Cleaners are the worst-paid workers in this company.",
+   "This writer is better-known than that one."
+  ]
+ },
+ "C1-12-0": {
+  "name": "Drop the if",
+  "prompt": "Reescribe cada condicional con inversión (were, had o should) y sin if.",
+  "items": [
+   "If I were in charge, I would cut costs. → Were ______",
+   "If we had known about the strike, we would have changed the date. → Had ______",
+   "If you need any further information, please contact us. → Should ______",
+   "If they hadn’t signed the contract, we would have lost the client. → Had ______",
+   "If the company were to close, hundreds would lose their jobs. → Were ______",
+   "If the parcel doesn’t arrive by Monday, please call us. → Should ______"
+  ],
+  "answers": [
+   "Were I in charge, I would cut costs.",
+   "Had we known about the strike, we would have changed the date.",
+   "Should you need any further information, please contact us.",
+   "Had they not signed the contract, we would have lost the client.",
+   "Were the company to close, hundreds would lose their jobs.",
+   "Should the parcel not arrive by Monday, please call us."
+  ]
+ },
+ "C1-12-1": {
+  "name": "Set the condition",
+  "prompt": "Reescribe cada frase con el conector de condición indicado.",
+  "items": [
+   "You can borrow my car, but only if you return it by six. (as long as) → ______",
+   "We’ll cancel the trip if the weather doesn’t improve. (unless) → ______",
+   "Take some cash. You might need to pay for parking. (in case) → ______",
+   "The bonus is yours, but only if you reach the target. (provided that) → ______",
+   "If you don’t book now, there won’t be any seats. (unless) → ______",
+   "Write down my number. You might get lost. (in case) → ______"
+  ],
+  "answers": [
+   "You can borrow my car as long as you return it by six.",
+   "We’ll cancel the trip unless the weather improves.",
+   "Take some cash in case you need to pay for parking.",
+   "The bonus is yours provided that you reach the target.",
+   "Unless you book now, there won’t be any seats.",
+   "Write down my number in case you get lost."
+  ]
  }
 }
