@@ -163,7 +163,7 @@ npm run build        # dist/
 
 1. **Add New → Project** e importa este repositorio. Vercel detecta Vite
    (`vercel.json` ya define build, salida, reescrituras SPA y cabeceras).
-2. *(Opcional)* Variables de entorno `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`.
+2. *(Opcional)* Variables de entorno `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`, y `TTS_SIGNING_SECRET` para las voces naturales de `/api/tts` (ver [`supabase/README.md`](supabase/README.md) §5).
    Sin ellas se usa el proyecto público compartido con el IELTS Simulator; con `off`
    la app funciona sin conexión (progreso solo en el navegador).
 3. Deploy. Cada push a `main` despliega producción y cada PR una preview.

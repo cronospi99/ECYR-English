@@ -113,14 +113,33 @@ funcione en producción y algunos puntos para revisar.
 4. VOCES NATURALES
 ----------------------------------------------------------------------
 
-- 6 voces que suenan como personas reales: Emma y Liam (EE. UU.), Olivia y
-  Harry (Reino Unido), Ruby y Jack (Australia). Se eligen en Perfil → Voz,
-  con botón para escuchar cada una.
-- Se usan en toda la app (lecciones, diálogos, vocabulario, lecturas…).
-- Los audios se guardan y se comparten: lo que ya se generó una vez suena al
-  instante para todos y no gasta cuota.
-- Si no hay conexión, no hay sesión o se acaba la cuota, se usa
-  automáticamente la mejor voz del dispositivo.
+- Gemini ya no genera audio: solo texto (respuestas, explicaciones, feedback,
+  guiones del IELTS). Sigue escuchando el audio del estudiante para
+  transcribirlo (Speaking, Coach en Firefox, podcasts).
+- Dos niveles de voz:
+    · Ligero (voz del dispositivo): palabras sueltas y frases muy cortas, al
+      instante.
+    · Natural (voces neuronales de Microsoft Edge, gratis y sin cuota de
+      Gemini): frases, diálogos, feedback, lecturas guiadas, audios de
+      Listening y el simulador IELTS, de cualquier largo (también 7 minutos o
+      más). El texto se parte en trozos y empieza a sonar en ~1 segundo
+      mientras se cargan los siguientes.
+- 18 voces en inglés (EE. UU., Reino Unido, Australia, Irlanda) + 2 voces
+  colombianas para los tips en español. En Perfil → Voz eliges la tuya y si
+  quieres voces naturales (recomendado), naturales para todo, o solo la del
+  dispositivo.
+- En diálogos y audios cada personaje tiene su propia voz (estable por nombre),
+  para que no suene repetitivo.
+- Lectura guiada: "Escuchar toda la lectura" lee el texto completo y resalta el
+  párrafo que va sonando.
+- Cada frase se genera una sola vez y luego la sirve el CDN de Vercel a todos;
+  además queda guardada en el navegador (funciona sin conexión).
+- Solo usuarios con sesión iniciada generan audios nuevos (la función no queda
+  como API pública). Si el servicio de voces falla, la app sigue con la voz del
+  dispositivo sin mostrar errores.
+- IELTS: las secciones de Listening generadas por IA se graban con voces
+  naturales (una por hablante, con el acento del test) en un MP3 que el docente
+  puede guardar en la biblioteca de la clase.
 
 
 ----------------------------------------------------------------------
@@ -198,7 +217,6 @@ reproduce desde su fuente oficial (no se copia), siempre con créditos.
 1. Base de datos: Supabase → SQL Editor → pegar todo supabase/setup.sql →
    Run (se puede repetir sin perder datos). O ejecutar solo las que falten:
      09_assignments.sql  → Tareas
-     10_voice_cache.sql  → Voces naturales
      11_podcasts.sql     → Podcasts
      12_notes.sql        → Mis notas
 
@@ -206,10 +224,13 @@ reproduce desde su fuente oficial (no se copia), siempre con créditos.
      supabase functions deploy gemini  --no-verify-jwt
      supabase functions deploy coach   --no-verify-jwt
      supabase functions deploy podcast --no-verify-jwt
-   No se necesitan claves nuevas: usan GEMINI_API_KEY, que ya existe.
+   No se necesitan claves nuevas en Supabase: usan GEMINI_API_KEY.
+
+   Voces naturales (Vercel → Settings → Environment Variables):
+     TTS_SIGNING_SECRET = una cadena larga al azar (p. ej. openssl rand -hex 32).
+   No es una clave de Supabase. Sin ella la app usa la voz del dispositivo.
 
 3. Opcional (límites diarios por usuario):
-     VOICE_DAILY_LIMIT   (audios nuevos, por defecto 150)
      PODCAST_DAILY_LIMIT (preguntas de podcast, por defecto 10)
      COACH_DAILY_LIMIT   (mensajes del coach, por defecto 40; cada turno de
                           voz cuenta como un mensaje)
@@ -221,9 +242,10 @@ reproduce desde su fuente oficial (no se copia), siempre con créditos.
 10. PARA REVISAR
 ----------------------------------------------------------------------
 
-- Con una clave gratuita de Gemini la cuota de voz es pequeña: al principio
-  sonará seguido la voz del dispositivo, hasta que los audios queden
-  guardados.
+- Las voces naturales usan un servicio no oficial de Microsoft (el de "Leer en
+  voz alta" de Edge): no tiene garantía y Microsoft podría cambiarlo o
+  limitarlo. Si pasa, la app usa la voz del dispositivo sola; el arreglo está
+  en un solo archivo (api/tts.ts).
 - Las voces, el coach por voz, los podcasts y los trabajos para el docente
   se probaron con datos simulados; conviene probarlos una vez hechos los
   pasos de Supabase.
