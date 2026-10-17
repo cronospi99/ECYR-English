@@ -15,7 +15,9 @@ const cache = new Map<CefrLevel, Promise<UnitReadingMap>>();
 export function loadUnitReadings(level: CefrLevel): Promise<UnitReadingMap> {
   if (!cache.has(level)) {
     const load = files[`./generated/unit-readings-${level.toLowerCase()}.json`];
-    cache.set(level, load ? load().then((m) => m.default).catch(() => ({})) : Promise.resolve({}));
+    const empty: UnitReadingMap = {};
+    // A failed chunk load (e.g. offline) is not cached, so the next visit retries.
+    cache.set(level, load ? load().then((m) => m.default, () => (cache.delete(level), empty)) : Promise.resolve(empty));
   }
   return cache.get(level)!;
 }
