@@ -141,24 +141,33 @@ function RuleBlock({ b }: { b: CourseBlock }) {
 function CardsBlock({ b }: { b: CourseBlock }) {
   const items = arr<{ k: string; w: string; s?: string; es?: string; v?: number }>(b.items);
   const [open, setOpen] = useState<Set<number>>(new Set());
+  const toggle = (i: number) =>
+    setOpen((s) => {
+      const n = new Set(s);
+      if (n.has(i)) n.delete(i);
+      else n.add(i);
+      return n;
+    });
   return (
     <Section b={b}>
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
         {items.map((it, i) => {
           const flipped = open.has(i);
           return (
-            <button
+            <div
               key={i}
-              type="button"
-              onClick={() =>
-                setOpen((s) => {
-                  const n = new Set(s);
-                  if (n.has(i)) n.delete(i);
-                  else n.add(i);
-                  return n;
-                })
-              }
+              role="button"
+              tabIndex={0}
+              aria-pressed={flipped}
+              onClick={() => toggle(i)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggle(i);
+                }
+              }}
               className={cn(
+                'cursor-pointer select-none',
                 'relative flex aspect-square flex-col items-center justify-center rounded-[16px] p-2 text-center transition-all active:scale-95',
                 flipped ? 'bg-ios-blue text-white' : it.v ? 'bg-[color-mix(in_srgb,var(--red)_12%,transparent)]' : 'bg-fill-2',
               )}
@@ -177,7 +186,7 @@ function CardsBlock({ b }: { b: CourseBlock }) {
                   <SpeakButton text={it.w} size={14} className="text-white hover:bg-white/20" />
                 </span>
               )}
-            </button>
+            </div>
           );
         })}
       </div>
