@@ -1386,5 +1386,665 @@
     }
    ]
   }
+ ],
+ "A2-9-0": [
+  {
+   "kind": "transform",
+   "title": "Antes, ahora y después",
+   "steps": [
+    {
+     "label": "Antes",
+     "sentence": "I **used to commute** two hours a day.",
+     "change": "Lo que ya no es verdad: used to."
+    },
+    {
+     "label": "Ahora",
+     "sentence": "**Now** I **work** from home.",
+     "change": "La situación de hoy: presente simple."
+    },
+    {
+     "label": "El puente",
+     "sentence": "Things **have changed** a lot since then.",
+     "change": "El presente perfecto une el pasado con hoy."
+    },
+    {
+     "label": "Después",
+     "sentence": "**Next year** I**’m going to move** closer to the office.",
+     "change": "Lo que viene: going to."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué tiempo pide el marcador?",
+   "question": "¿Qué palabra de tiempo tienes?",
+   "branches": [
+    {
+     "if": "used to, back then, in those days",
+     "use": "pasado (used to / pasado simple)",
+     "example": "Back then we used to meet here."
+    },
+    {
+     "if": "now, nowadays, these days",
+     "use": "presente",
+     "example": "Nowadays we meet online."
+    },
+    {
+     "if": "so far, since then",
+     "use": "presente perfecto",
+     "example": "Since then, things have changed a lot."
+    },
+    {
+     "if": "next year, soon, from now on",
+     "use": "going to / will",
+     "example": "Next year we’re going to move."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Mismo tema, otro tiempo",
+   "items": [
+    {
+     "a": "I used to read a lot.",
+     "b": "These days I read a lot.",
+     "note": "El marcador decide el verbo: used to → antes; these days → hoy."
+    },
+    {
+     "a": "Back then nobody had a phone.",
+     "b": "Nowadays everybody has a phone.",
+     "note": "back then → pasado; nowadays → presente."
+    },
+    {
+     "a": "At the moment we’re testing it.",
+     "b": "Next month we’re going to launch it.",
+     "note": "at the moment → presente continuo; next month → going to."
+    }
+   ]
+  }
+ ],
+ "A2-9-1": [
+  {
+   "kind": "transform",
+   "title": "Armar un condicional real",
+   "steps": [
+    {
+     "label": "Posibilidad",
+     "sentence": "Maybe I’ll have time tomorrow."
+    },
+    {
+     "label": "Condicional",
+     "sentence": "**If I have** time, **I’ll help** you.",
+     "change": "Condición en presente; resultado con will. Lleva coma."
+    },
+    {
+     "label": "Orden invertido",
+     "sentence": "**I’ll help** you **if I have** time.",
+     "change": "Si if va en el medio, no hay coma."
+    },
+    {
+     "label": "Con unless",
+     "sentence": "**Unless I’m** busy, **I’ll help** you.",
+     "change": "unless = if not; el verbo va en positivo."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué conjunción uso?",
+   "question": "¿Cómo es la condición?",
+   "branches": [
+    {
+     "if": "Puede pasar o no",
+     "use": "if",
+     "example": "If it rains, we’ll stay in."
+    },
+    {
+     "if": "Es lo contrario: si no…",
+     "use": "unless",
+     "example": "We’ll go unless it rains."
+    },
+    {
+     "if": "Es la única condición",
+     "use": "as long as / provided that",
+     "example": "You can borrow it as long as you return it."
+    },
+    {
+     "if": "Es seguro que va a pasar",
+     "use": "when",
+     "example": "When I see her, I’ll tell her."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Condiciones parecidas",
+   "items": [
+    {
+     "a": "If I see her, I’ll tell her.",
+     "b": "When I see her, I’ll tell her.",
+     "note": "if = tal vez la vea; when = seguro la veré."
+    },
+    {
+     "a": "unless you tell me",
+     "b": "if you don’t tell me",
+     "note": "Mismo significado; con unless el verbo va en positivo."
+    },
+    {
+     "a": "Take an umbrella in case it rains.",
+     "b": "Take an umbrella if it rains.",
+     "note": "in case = por si acaso, desde antes; if = solo si llueve."
+    },
+    {
+     "a": "If you heat water to 100°, it boils.",
+     "b": "If you call me, I’ll answer.",
+     "note": "Condicional cero = verdad general; primer condicional = situación concreta."
+    }
+   ]
+  }
+ ],
+ "A2-10-0": [
+  {
+   "kind": "scale",
+   "title": "Del amor al odio",
+   "from": "no lo soporto",
+   "to": "me encanta",
+   "items": [
+    {
+     "word": "love",
+     "value": 100,
+     "example": "I love dancing salsa.",
+     "es": "me encanta"
+    },
+    {
+     "word": "enjoy",
+     "value": 85,
+     "example": "I enjoy reading on the bus.",
+     "es": "disfruto"
+    },
+    {
+     "word": "like",
+     "value": 70,
+     "example": "I like cooking for my friends.",
+     "es": "me gusta"
+    },
+    {
+     "word": "don’t mind",
+     "value": 45,
+     "example": "I don’t mind driving at night.",
+     "es": "no me molesta"
+    },
+    {
+     "word": "don’t like",
+     "value": 25,
+     "example": "I don’t like waiting in lines.",
+     "es": "no me gusta"
+    },
+    {
+     "word": "hate",
+     "value": 10,
+     "example": "I hate getting up early.",
+     "es": "odio"
+    },
+    {
+     "word": "can’t stand",
+     "value": 0,
+     "example": "I can’t stand horror films.",
+     "es": "no soporto"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué respuesta corta uso?",
+   "question": "¿La frase es positiva o negativa, y estás de acuerdo?",
+   "branches": [
+    {
+     "if": "Positiva y estás de acuerdo",
+     "use": "So + auxiliar + sujeto / Me too",
+     "example": "I love cooking. — So do I."
+    },
+    {
+     "if": "Negativa y estás de acuerdo",
+     "use": "Neither + auxiliar + sujeto / Me neither",
+     "example": "I can’t swim. — Neither can I."
+    },
+    {
+     "if": "Positiva y no estás de acuerdo",
+     "use": "sujeto + auxiliar negativo",
+     "example": "I love cooking. — Oh, I don’t."
+    },
+    {
+     "if": "Negativa y no estás de acuerdo",
+     "use": "sujeto + auxiliar positivo",
+     "example": "I don’t like it. — I do."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Gerundio y auxiliar",
+   "items": [
+    {
+     "a": "I like getting up early.",
+     "b": "I like to get up early.",
+     "note": "-ing = lo disfruto; to = es mi costumbre o decisión."
+    },
+    {
+     "a": "I like cooking.",
+     "b": "I’d like to cook tonight.",
+     "note": "like + -ing = gusto general; would like + to = quiero ahora."
+    },
+    {
+     "a": "I’m tired. — So am I.",
+     "b": "I went. — So did I.",
+     "note": "El auxiliar copia el de la frase: am → am; went → did."
+    },
+    {
+     "a": "I’ve never tried it. — Neither have I.",
+     "b": "I’ve never tried it. — I have.",
+     "note": "Neither have I = yo tampoco; I have = yo sí."
+    }
+   ]
+  }
+ ],
+ "A2-10-1": [
+  {
+   "kind": "choose",
+   "title": "¿Because, because of, since o so?",
+   "question": "¿Qué viene después?",
+   "branches": [
+    {
+     "if": "Sujeto + verbo (la causa)",
+     "use": "because",
+     "example": "I left because I was tired."
+    },
+    {
+     "if": "Un sustantivo o un verbo con -ing",
+     "use": "because of",
+     "example": "I left because of the noise."
+    },
+    {
+     "if": "Una causa ya conocida, al inicio",
+     "use": "since / as",
+     "example": "Since it’s late, let’s stop."
+    },
+    {
+     "if": "El resultado",
+     "use": "so",
+     "example": "It was late, so we stopped."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Una causa, tres formas",
+   "steps": [
+    {
+     "label": "Dos ideas",
+     "sentence": "The train was late. I missed the meeting."
+    },
+    {
+     "label": "Con because",
+     "sentence": "I missed the meeting **because the train was late**.",
+     "change": "because + sujeto + verbo."
+    },
+    {
+     "label": "Con because of",
+     "sentence": "I missed the meeting **because of the late train**.",
+     "change": "because of + sustantivo."
+    },
+    {
+     "label": "Con so",
+     "sentence": "The train was late, **so I missed** the meeting.",
+     "change": "so presenta el resultado."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Causa y resultado",
+   "items": [
+    {
+     "a": "because of the rain",
+     "b": "because it was raining",
+     "note": "because of + sustantivo; because + oración completa."
+    },
+    {
+     "a": "I was tired, so I left.",
+     "b": "I left because I was tired.",
+     "note": "so → resultado; because → causa. Son espejos."
+    },
+    {
+     "a": "Since nobody replied, I decided.",
+     "b": "I decided because nobody replied.",
+     "note": "since presenta una razón conocida, al inicio; because trae la información nueva."
+    }
+   ]
+  }
+ ],
+ "A2-11-0": [
+  {
+   "kind": "transform",
+   "title": "De activa a pasiva",
+   "steps": [
+    {
+     "label": "Activa",
+     "sentence": "An intern **wrote** the report.",
+     "change": "Importa quién lo hizo."
+    },
+    {
+     "label": "Pasiva con by",
+     "sentence": "The report **was written by** an intern.",
+     "change": "El objeto pasa al inicio; was + participio; el agente va con by."
+    },
+    {
+     "label": "Pasiva sin by",
+     "sentence": "The report **was written** yesterday.",
+     "change": "Sin agente, si no importa quién."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Was** the report **written** yesterday?",
+     "change": "Was pasa delante del sujeto."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Pongo by + agente?",
+   "question": "¿Quién hizo la acción y qué tan importante es?",
+   "branches": [
+    {
+     "if": "No se sabe quién fue",
+     "use": "pasiva sin by",
+     "example": "My bike was stolen last night."
+    },
+    {
+     "if": "Es obvio quién fue",
+     "use": "pasiva sin by",
+     "example": "He was arrested at the airport."
+    },
+    {
+     "if": "Es importante o sorprendente",
+     "use": "pasiva + by",
+     "example": "The mural was painted by a local artist."
+    },
+    {
+     "if": "La persona es la noticia principal",
+     "use": "voz activa",
+     "example": "A local artist painted the mural."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Lo que cambia en la pasiva",
+   "items": [
+    {
+     "a": "They built the bridge in 1990.",
+     "b": "The bridge was built in 1990.",
+     "note": "Activa: importa quién; pasiva: importa el puente."
+    },
+    {
+     "a": "Someone stole my phone.",
+     "b": "My phone was stolen.",
+     "note": "Las dos dicen lo mismo; la pasiva evita un agente desconocido."
+    },
+    {
+     "a": "take → was taken",
+     "b": "write → was written",
+     "note": "La pasiva necesita el participio, no el pasado: never was took."
+    },
+    {
+     "a": "The letter was sent.",
+     "b": "The letters were sent.",
+     "note": "Singular → was; plural → were."
+    }
+   ]
+  }
+ ],
+ "A2-11-1": [
+  {
+   "kind": "transform",
+   "title": "Describir un proceso",
+   "steps": [
+    {
+     "label": "Activa",
+     "sentence": "Workers **pick** the beans by hand.",
+     "change": "Importan los trabajadores."
+    },
+    {
+     "label": "Pasiva",
+     "sentence": "The beans **are picked** by hand.",
+     "change": "Presente pasivo: are + participio. Importa el proceso."
+    },
+    {
+     "label": "Con adverbio",
+     "sentence": "The beans **are usually picked** in October.",
+     "change": "El adverbio va entre be y el participio."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Are** the beans **picked** by hand?",
+     "change": "Are pasa delante del sujeto."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Del cafetal a la taza",
+   "items": [
+    {
+     "emoji": "🌱",
+     "en": "The plants are grown in the shade.",
+     "es": "Las matas se cultivan a la sombra."
+    },
+    {
+     "emoji": "🍒",
+     "en": "The cherries are picked by hand.",
+     "es": "Las cerezas se recogen a mano."
+    },
+    {
+     "emoji": "💧",
+     "en": "The beans are washed.",
+     "es": "Los granos se lavan."
+    },
+    {
+     "emoji": "☀️",
+     "en": "They are dried in the sun.",
+     "es": "Se secan al sol."
+    },
+    {
+     "emoji": "🔥",
+     "en": "They are roasted.",
+     "es": "Se tuestan."
+    },
+    {
+     "emoji": "☕",
+     "en": "The coffee is served.",
+     "es": "El café se sirve."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Is, are o modal + be?",
+   "question": "¿Cómo es el sujeto?",
+   "branches": [
+    {
+     "if": "Singular o no contable (the ticket, coffee)",
+     "use": "is + participio",
+     "example": "Coffee is grown here."
+    },
+    {
+     "if": "Plural (tickets, dogs)",
+     "use": "are + participio",
+     "example": "Dogs aren’t allowed inside."
+    },
+    {
+     "if": "Con un modal (must, can, should)",
+     "use": "modal + be + participio",
+     "example": "Helmets must be worn."
+    }
+   ]
+  }
+ ],
+ "A2-12-0": [
+  {
+   "kind": "transform",
+   "title": "Fondo e interrupción",
+   "steps": [
+    {
+     "label": "Fondo",
+     "sentence": "I **was cooking**.",
+     "change": "Acción en progreso: was / were + -ing."
+    },
+    {
+     "label": "Interrupción",
+     "sentence": "I **was cooking when** the phone **rang**.",
+     "change": "El evento corto va en pasado simple."
+    },
+    {
+     "label": "Orden invertido",
+     "sentence": "**When** the phone **rang**, I **was cooking**.",
+     "change": "Si when va al inicio, lleva coma."
+    },
+    {
+     "label": "Acciones paralelas",
+     "sentence": "**While** I **was cooking**, she **was studying**.",
+     "change": "Dos acciones largas al mismo tiempo."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Pasado continuo o pasado simple?",
+   "question": "¿Qué papel tiene la acción en la historia?",
+   "branches": [
+    {
+     "if": "Es el fondo, la acción en progreso",
+     "use": "was / were + -ing",
+     "example": "It was raining and nobody was talking."
+    },
+    {
+     "if": "Es el evento corto que pasa",
+     "use": "pasado simple",
+     "example": "Then the lights went out."
+    },
+    {
+     "if": "Dos acciones al mismo tiempo",
+     "use": "while + pasado continuo",
+     "example": "While I was cooking, she was working."
+    },
+    {
+     "if": "Es un estado (know, want, own)",
+     "use": "pasado simple",
+     "example": "I knew him well."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Ya estaba pasando o pasó después?",
+   "items": [
+    {
+     "a": "I was reading when the light went out.",
+     "b": "While I was reading, the light went out.",
+     "note": "when va con la acción corta; while con la larga."
+    },
+    {
+     "a": "When she arrived, we were having dinner.",
+     "b": "When she arrived, we had dinner.",
+     "note": "were having = ya estábamos comiendo; had = comimos después de que llegó."
+    },
+    {
+     "a": "I was going to call you, but I fell asleep.",
+     "b": "I called you, but you didn’t answer.",
+     "note": "was going to = plan interrumpido; called = sí pasó."
+    }
+   ]
+  }
+ ],
+ "A2-12-1": [
+  {
+   "kind": "transform",
+   "title": "¿Cuánto llevas?",
+   "steps": [
+    {
+     "label": "Inicio",
+     "sentence": "I **started** waiting at nine.",
+     "change": "Pasado simple: el punto de inicio."
+    },
+    {
+     "label": "Duración",
+     "sentence": "It’s eleven now. I**’ve been waiting for** two hours.",
+     "change": "have been + -ing + for + duración."
+    },
+    {
+     "label": "Punto de inicio",
+     "sentence": "I**’ve been waiting since** nine.",
+     "change": "since + el momento en que empezó."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "How long **have** you **been waiting**?",
+     "change": "How long + have + sujeto + been + -ing."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Perfecto simple o continuo?",
+   "question": "¿En qué te enfocas?",
+   "branches": [
+    {
+     "if": "En cuánto tiempo lleva (y sigue)",
+     "use": "have / has been + -ing",
+     "example": "I’ve been working here for two years."
+    },
+    {
+     "if": "En cuántos o en el resultado terminado",
+     "use": "have / has + participio",
+     "example": "I’ve painted three rooms."
+    },
+    {
+     "if": "En los efectos de una actividad reciente",
+     "use": "have / has been + -ing",
+     "example": "You’re dirty. Have you been painting?"
+    },
+    {
+     "if": "Es un verbo de estado (know, have, believe)",
+     "use": "have / has + participio",
+     "example": "We’ve known each other for years."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Actividad o resultado",
+   "items": [
+    {
+     "a": "I’ve been writing emails all morning.",
+     "b": "I’ve written six emails.",
+     "note": "Continuo = la actividad; simple = la cantidad o el resultado."
+    },
+    {
+     "a": "I’ve been waiting for an hour.",
+     "b": "I’ve been waiting since nine.",
+     "note": "for + duración; since + punto de inicio."
+    },
+    {
+     "a": "I’ve lived here for six years.",
+     "b": "I’ve been living here for six years.",
+     "note": "Con live, work y study, las dos significan casi lo mismo."
+    },
+    {
+     "a": "I’ve known her for years.",
+     "b": "I’ve been seeing her a lot lately.",
+     "note": "know es de estado: no va en continuo."
+    }
+   ]
+  }
  ]
 }

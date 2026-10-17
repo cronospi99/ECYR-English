@@ -286,5 +286,149 @@
    "When you get home, send me a message.",
    "We’ll leave when the rain stops."
   ]
+ },
+ "A2-9-0": {
+  "name": "Three frames, one topic",
+  "prompt": "Toma cada tema y di tres oraciones en orden: used to, now, going to. Mantén el mismo sujeto en las tres.",
+  "items": [
+   "transport",
+   "free time",
+   "the city you live in",
+   "technology at work",
+   "food"
+  ],
+  "answers": [
+   "I used to take the bus. Now I ride a bike. Next year I’m going to buy an electric scooter.",
+   "I used to watch TV every night. Now I play tennis. Next year I’m going to learn to dance salsa.",
+   "My city used to be small and quiet. Now it’s very busy. Next year it’s going to have a new metro line.",
+   "We used to print everything at work. Now we use apps for everything. Next year we’re going to work fully online.",
+   "I used to eat a lot of meat. Now I eat more vegetables. Next year I’m going to try a vegetarian diet."
+  ]
+ },
+ "A2-9-1": {
+  "name": "Consequence chain",
+  "prompt": "Un estudiante da una condición y el siguiente convierte la consecuencia en la nueva condición. Sigan la cadena seis veces sin usar «will» después de «if».",
+  "items": [
+   "If I miss the bus…",
+   "If it rains on Saturday…",
+   "If the client says no…",
+   "If you don’t back up the file…",
+   "If we finish early…"
+  ],
+  "answers": [
+   "If I miss the bus, I’ll be late for work.",
+   "If it rains on Saturday, we’ll stay at home and watch a film.",
+   "If the client says no, we’ll change the offer.",
+   "If you don’t back up the file, you’ll lose all your work.",
+   "If we finish early, we’ll go for a coffee."
+  ]
+ },
+ "A2-10-0": {
+  "name": "Match the auxiliary",
+  "prompt": "Responde a cada afirmación con la respuesta corta correcta y luego agrega una razón con «because».",
+  "items": [
+   "I love travelling alone.",
+   "I’ve never eaten sushi.",
+   "I didn’t sleep well.",
+   "I’m learning to drive.",
+   "I can’t stand horror films."
+  ],
+  "answers": [
+   "So do I, because you can do whatever you want.",
+   "Neither have I, because I don’t like raw fish.",
+   "Neither did I, because my neighbours were very noisy.",
+   "So am I, because I want to drive to work.",
+   "Neither can I, because they give me nightmares."
+  ]
+ },
+ "A2-10-1": {
+  "name": "Three ways to say why",
+  "prompt": "Toma cada par de causa y resultado y exprésalo tres veces: con because, con because of y con so.",
+  "items": [
+   "heavy rain / match cancelled",
+   "no signal / call dropped",
+   "cheap tickets / we booked",
+   "late train / missed meeting",
+   "bad reviews / restaurant closed"
+  ],
+  "answers": [
+   "The match was cancelled because it rained heavily. / The match was cancelled because of the heavy rain. / It rained heavily, so the match was cancelled.",
+   "The call dropped because there was no signal. / The call dropped because of the bad signal. / There was no signal, so the call dropped.",
+   "We booked because the tickets were cheap. / We booked because of the cheap tickets. / The tickets were cheap, so we booked.",
+   "I missed the meeting because the train was late. / I missed the meeting because of the late train. / The train was late, so I missed the meeting.",
+   "The restaurant closed because it had bad reviews. / The restaurant closed because of the bad reviews. / It had bad reviews, so the restaurant closed."
+  ]
+ },
+ "A2-11-0": {
+  "name": "Flip the sentence",
+  "prompt": "Pasa cada oración activa a pasiva con «by» + agente. Luego dila sin el agente y decide cuál versión es mejor.",
+  "items": [
+   "A local artist painted the mural.",
+   "Someone stole my bike last night.",
+   "The team finished the prototype in March.",
+   "My uncle repaired the roof.",
+   "They cancelled all the flights."
+  ],
+  "answers": [
+   "The mural was painted by a local artist.",
+   "My bike was stolen last night.",
+   "The prototype was finished in March.",
+   "The roof was repaired by my uncle.",
+   "All the flights were cancelled."
+  ]
+ },
+ "A2-11-1": {
+  "name": "How it’s done",
+  "prompt": "Describe cada proceso en tres oraciones en presente pasivo, en orden y sin decir quién lo hace.",
+  "items": [
+   "how coffee reaches a cup",
+   "how a package is delivered",
+   "how a passport is issued",
+   "how bread is made",
+   "how a film is subtitled"
+  ],
+  "answers": [
+   "The coffee cherries are picked. Then the beans are dried and roasted. Finally, the coffee is brewed and served.",
+   "The package is collected. Then it is taken to a warehouse. Finally, it is delivered to your door.",
+   "The application form is filled in. Then the documents are checked. Finally, the passport is printed and sent to you.",
+   "The ingredients are mixed. Then the dough is left to rise. Finally, the bread is baked in the oven.",
+   "The dialogue is transcribed. Then it is translated. Finally, the subtitles are added to the film."
+  ]
+ },
+ "A2-12-0": {
+  "name": "Interrupted",
+  "prompt": "Completa cada fondo con una interrupción en pasado simple; luego cambia el orden y agrega la coma.",
+  "items": [
+   "I was walking home when…",
+   "She was writing the report when…",
+   "We were having dinner when…",
+   "They were boarding the plane when…",
+   "I was about to leave when…"
+  ],
+  "answers": [
+   "I was walking home when it started to rain. → When it started to rain, I was walking home.",
+   "She was writing the report when the computer crashed. → When the computer crashed, she was writing the report.",
+   "We were having dinner when the lights went out. → When the lights went out, we were having dinner.",
+   "They were boarding the plane when the fire alarm rang. → When the fire alarm rang, they were boarding the plane.",
+   "I was about to leave when my boss called. → When my boss called, I was about to leave."
+  ]
+ },
+ "A2-12-1": {
+  "name": "How long?",
+  "prompt": "Responde cada pregunta dos veces: una con «for» y otra con «since», usando el presente perfecto continuo cuando el verbo lo permita.",
+  "items": [
+   "your current job",
+   "your city",
+   "your English course",
+   "your phone",
+   "your closest friendship"
+  ],
+  "answers": [
+   "I’ve been working here for three years. / I’ve been working here since 2023.",
+   "I’ve been living in Bogotá for ten years. / I’ve been living in Bogotá since 2016.",
+   "I’ve been studying English for six months. / I’ve been studying English since April.",
+   "I’ve had my phone for two years. / I’ve had it since 2024.",
+   "I’ve known my best friend for fifteen years. / I’ve known her since primary school."
+  ]
  }
 }

@@ -1368,5 +1368,680 @@
     }
    ]
   }
+ ],
+ "C1-7-0": [
+  {
+   "title": "Selling the family home",
+   "titleEs": "Vendiendo la casa familiar",
+   "scene": "🏡 En Popayán: dos hermanos recorren la casa donde crecieron antes de venderla.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Julián",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Julián",
+     "line": "I can't believe this is the house we grew up in.",
+     "es": "No puedo creer que esta sea la casa en la que crecimos."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Look, the tree we used to climb is still there.",
+     "es": "Mira, el árbol al que nos subíamos todavía está ahí."
+    },
+    {
+     "sp": "Julián",
+     "line": "And the neighbour who taught us to ride bikes still lives next door.",
+     "es": "Y el vecino que nos enseñó a montar en bicicleta todavía vive al lado."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Everything Mum said about this place was true. It's full of memories.",
+     "es": "Todo lo que mamá decía de este lugar era cierto. Está lleno de recuerdos."
+    },
+    {
+     "sp": "Julián",
+     "line": "Are you sure about the couple who made the offer?",
+     "es": "¿Estás segura de la pareja que hizo la oferta?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "Yes. The family whose house they're leaving is our cousins' friends, actually.",
+     "es": "Sí. De hecho, la familia de la que vienen es amiga de nuestros primos."
+    },
+    {
+     "sp": "Julián",
+     "line": "Then it's going to people we can trust. That's all I wanted.",
+     "es": "Entonces queda en manos de gente en la que podemos confiar. Es lo único que quería."
+    }
+   ]
+  },
+  {
+   "title": "Reviewing a manuscript",
+   "titleEs": "Revisando un manuscrito",
+   "scene": "📖 En una editorial en Bogotá: una editora y un autor revisan el borrador de una novela.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Natalia",
+     "line": "The chapter you sent me last week is the strongest so far.",
+     "es": "El capítulo que me mandaste la semana pasada es el mejor hasta ahora."
+    },
+    {
+     "sp": "Diego",
+     "line": "Thanks. The character who narrates it is based on my grandfather.",
+     "es": "Gracias. El personaje que lo narra está basado en mi abuelo."
+    },
+    {
+     "sp": "Natalia",
+     "line": "I could tell. But the village in which the story is set needs more description.",
+     "es": "Se nota. Pero el pueblo en el que transcurre la historia necesita más descripción."
+    },
+    {
+     "sp": "Diego",
+     "line": "You mean the one I describe in chapter two?",
+     "es": "¿Te refieres al que describo en el capítulo dos?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Exactly. And the woman whose letters he finds should appear earlier.",
+     "es": "Exacto. Y la mujer cuyas cartas él encuentra debería aparecer antes."
+    },
+    {
+     "sp": "Diego",
+     "line": "That's something my agent mentioned too.",
+     "es": "Eso es algo que también mencionó mi agente."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Then it's a change everyone who reads it will appreciate.",
+     "es": "Entonces es un cambio que todos los que lo lean van a agradecer."
+    }
+   ]
+  }
+ ],
+ "C1-7-1": [
+  {
+   "title": "The new manager",
+   "titleEs": "El nuevo gerente",
+   "scene": "🏢 En una empresa de Cali: dos colegas comentan la llegada de un nuevo gerente.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "Have you met the new manager? He acts as if he owned the place.",
+     "es": "¿Ya conociste al nuevo gerente? Actúa como si fuera el dueño."
+    },
+    {
+     "sp": "Mariana",
+     "line": "I know. He talks to us as though we were interns.",
+     "es": "Lo sé. Nos habla como si fuéramos practicantes."
+    },
+    {
+     "sp": "Ben",
+     "line": "And he wants everything done the way he did it at his last company.",
+     "es": "Y quiere que todo se haga como lo hacía en su empresa anterior."
+    },
+    {
+     "sp": "Mariana",
+     "line": "It looks as if the whole department is going to be reorganised.",
+     "es": "Parece que van a reorganizar todo el departamento."
+    },
+    {
+     "sp": "Ben",
+     "line": "He looked at my report as though it were written in Chinese.",
+     "es": "Miró mi informe como si estuviera escrito en chino."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Don't take it personally. As I said yesterday, he's just nervous.",
+     "es": "No te lo tomes personal. Como dije ayer, está nervioso."
+    },
+    {
+     "sp": "Ben",
+     "line": "Maybe. He behaves like someone with something to prove.",
+     "es": "Puede ser. Se comporta como alguien que tiene algo que demostrar."
+    }
+   ]
+  },
+  {
+   "title": "A disappointing trip",
+   "titleEs": "Un viaje decepcionante",
+   "scene": "🌧️ En un hostal en Salento: dos viajeros comentan un día de lluvia.",
+   "cast": [
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Ryan",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ryan",
+     "line": "It looks as though the rain isn't going to stop today.",
+     "es": "Parece que la lluvia no va a parar hoy."
+    },
+    {
+     "sp": "Sofía",
+     "line": "I feel as if I've been stuck in this hostel for a week.",
+     "es": "Siento como si llevara una semana encerrada en este hostal."
+    },
+    {
+     "sp": "Ryan",
+     "line": "The owner talks about the Cocora Valley as if it were paradise.",
+     "es": "El dueño habla del Valle de Cocora como si fuera el paraíso."
+    },
+    {
+     "sp": "Sofía",
+     "line": "It is, apparently, when the sun's out. Do it the way the guide said: start early.",
+     "es": "Lo es, al parecer, cuando hace sol. Hazlo como dijo el guía: sal temprano."
+    },
+    {
+     "sp": "Ryan",
+     "line": "You sound like my mother!",
+     "es": "¡Hablas como mi mamá!"
+    },
+    {
+     "sp": "Sofía",
+     "line": "Well, you're complaining as though it were my fault.",
+     "es": "Bueno, te quejas como si fuera culpa mía."
+    },
+    {
+     "sp": "Ryan",
+     "line": "Sorry. It just feels as if the whole trip is going wrong.",
+     "es": "Perdón. Es que siento como si todo el viaje estuviera saliendo mal."
+    }
+   ]
+  }
+ ],
+ "C1-8-0": [
+  {
+   "title": "A refund at the shop",
+   "titleEs": "Una devolución en la tienda",
+   "scene": "🧾 En un centro comercial de Bogotá: una clienta pide un reembolso.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Daniela",
+     "line": "Good afternoon. I bought this jacket last week, but the zip is broken.",
+     "es": "Buenas tardes. Compré esta chaqueta la semana pasada, pero la cremallera está dañada."
+    },
+    {
+     "sp": "Oliver",
+     "line": "I'm sorry. Could you show me the receipt?",
+     "es": "Lo siento. ¿Me puede mostrar la factura?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Here it is. Your colleague sold it to me on Saturday.",
+     "es": "Aquí está. Su compañero me la vendió el sábado."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Thank you. I can give you a refund or offer you another jacket.",
+     "es": "Gracias. Le puedo dar un reembolso u ofrecerle otra chaqueta."
+    },
+    {
+     "sp": "Daniela",
+     "line": "A refund, please. Could you explain the process to me?",
+     "es": "Un reembolso, por favor. ¿Me podría explicar el proceso?"
+    },
+    {
+     "sp": "Oliver",
+     "line": "Of course. We'll send the money to your card within five days.",
+     "es": "Claro. Le enviaremos el dinero a su tarjeta en cinco días."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Perfect. And could you give me a copy of this form?",
+     "es": "Perfecto. ¿Y me podría dar una copia de este formulario?"
+    },
+    {
+     "sp": "Oliver",
+     "line": "Certainly. I'll print it for you right now.",
+     "es": "Claro. Se la imprimo ya mismo."
+    }
+   ]
+  },
+  {
+   "title": "Preparing a presentation",
+   "titleEs": "Preparando una presentación",
+   "scene": "📊 En una consultora en Medellín: una jefa da instrucciones a un analista.",
+   "cast": [
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Santiago",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "Did you send the client the new figures?",
+     "es": "¿Le mandaste al cliente las cifras nuevas?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "I sent them to their finance director this morning.",
+     "es": "Se las mandé a su director financiero esta mañana."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Good. Could you describe the main trends to me before the meeting?",
+     "es": "Bien. ¿Me podrías describir las tendencias principales antes de la reunión?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "Sure. I'll also show you the charts I made.",
+     "es": "Claro. También te muestro las gráficas que hice."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Great. And can you find a projector for us? The one in room three is broken.",
+     "es": "Genial. ¿Y nos puedes conseguir un proyector? El de la sala tres está dañado."
+    },
+    {
+     "sp": "Santiago",
+     "line": "I'll ask IT to lend us one. Should I bring the client some coffee?",
+     "es": "Le pido a sistemas que nos preste uno. ¿Le llevo café al cliente?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "Yes, and offer them the agenda as soon as they arrive.",
+     "es": "Sí, y ofréceles la agenda apenas lleguen."
+    },
+    {
+     "sp": "Santiago",
+     "line": "Will do. I'll suggest a short break to them halfway through, too.",
+     "es": "Listo. También les voy a sugerir una pausa corta a mitad de la reunión."
+    }
+   ]
+  }
+ ],
+ "C1-8-1": [
+  {
+   "title": "A formal complaint",
+   "titleEs": "Una queja formal",
+   "scene": "✉️ En un hotel de Cartagena: el gerente responde a la queja de un huésped importante.",
+   "cast": [
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Emma",
+     "line": "The guest in suite 12 insists that the bill be corrected immediately.",
+     "es": "El huésped de la suite 12 insiste en que se corrija la factura de inmediato."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Fine. I suggest that we remove the minibar charges and apologise.",
+     "es": "Bien. Sugiero que quitemos los cargos del minibar y pidamos disculpas."
+    },
+    {
+     "sp": "Emma",
+     "line": "He also demanded that the manager call him personally.",
+     "es": "También exigió que el gerente lo llame personalmente."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Then it's essential that I speak to him before he checks out.",
+     "es": "Entonces es fundamental que yo hable con él antes de que haga el check-out."
+    },
+    {
+     "sp": "Emma",
+     "line": "Legal recommends that he not be offered a full refund in writing.",
+     "es": "El área legal recomienda que no se le ofrezca un reembolso total por escrito."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Understood. And I'd ask that the night staff be reminded of the procedure.",
+     "es": "Entendido. Y pediría que se le recuerde el procedimiento al personal de la noche."
+    },
+    {
+     "sp": "Emma",
+     "line": "I'll propose that every receipt be checked twice from now on.",
+     "es": "Voy a proponer que de ahora en adelante cada factura se revise dos veces."
+    }
+   ]
+  },
+  {
+   "title": "Doctor's orders",
+   "titleEs": "Órdenes médicas",
+   "scene": "🩺 En una clínica de Medellín: una médica habla con el hijo de un paciente.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Catalina",
+     "line": "Your father's recovering well, but I recommend that he stay another night.",
+     "es": "Su papá se está recuperando bien, pero recomiendo que se quede otra noche."
+    },
+    {
+     "sp": "Liam",
+     "line": "He'll hate that. He insisted that he be discharged today.",
+     "es": "Lo va a odiar. Insistió en que le dieran de alta hoy."
+    },
+    {
+     "sp": "Catalina",
+     "line": "I understand, but it's vital that his blood pressure be monitored.",
+     "es": "Lo entiendo, pero es vital que le monitoreen la presión."
+    },
+    {
+     "sp": "Liam",
+     "line": "What about when he goes home?",
+     "es": "¿Y cuando vuelva a la casa?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "It's important that he take the medication every morning and avoid salt.",
+     "es": "Es importante que tome el medicamento todas las mañanas y evite la sal."
+    },
+    {
+     "sp": "Liam",
+     "line": "Should he go back to work next week?",
+     "es": "¿Debería volver al trabajo la próxima semana?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "I'd suggest that he not return for at least a fortnight.",
+     "es": "Le sugeriría que no volviera por lo menos en dos semanas."
+    }
+   ]
+  }
+ ],
+ "C1-9-0": [
+  {
+   "title": "Turtle watching in La Guajira",
+   "titleEs": "Avistamiento de tortugas en La Guajira",
+   "scene": "🐢 En una playa de La Guajira: una bióloga explica el comportamiento de las tortugas a un voluntario.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Nick",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Nick",
+     "line": "Do the turtles always come back to the same beach?",
+     "es": "¿Las tortugas siempre vuelven a la misma playa?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Most return to the beach where they were born, even after thirty years.",
+     "es": "La mayoría vuelve a la playa donde nació, incluso después de treinta años."
+    },
+    {
+     "sp": "Nick",
+     "line": "And when do they lay their eggs?",
+     "es": "¿Y cuándo ponen los huevos?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Usually when the tide is high, at night. But they'll nest wherever the sand is warm enough.",
+     "es": "Normalmente cuando la marea está alta, de noche. Pero anidan donde sea que la arena esté lo suficientemente caliente."
+    },
+    {
+     "sp": "Nick",
+     "line": "What should I do if I see one?",
+     "es": "¿Qué hago si veo una?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Call me whenever you spot tracks on the sand, day or night.",
+     "es": "Llámame cada vez que veas huellas en la arena, de día o de noche."
+    },
+    {
+     "sp": "Nick",
+     "line": "And the plastic? Wherever I look, there's rubbish.",
+     "es": "¿Y el plástico? Mire donde mire, hay basura."
+    },
+    {
+     "sp": "Laura",
+     "line": "I know. Whenever we organise a clean-up, it comes back within a week.",
+     "es": "Lo sé. Cada vez que organizamos una limpieza, vuelve en una semana."
+    }
+   ]
+  },
+  {
+   "title": "A flexible job",
+   "titleEs": "Un trabajo flexible",
+   "scene": "💻 En una videollamada: un trabajador remoto colombiano habla con su nueva jefa en Londres.",
+   "cast": [
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "You can work wherever you like, as long as the internet is reliable.",
+     "es": "Puedes trabajar desde donde quieras, siempre y cuando el internet sea confiable."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Great. I'm in Bogotá now, but I visit my parents in Villa de Leyva whenever I can.",
+     "es": "Genial. Ahora estoy en Bogotá, pero visito a mis papás en Villa de Leyva siempre que puedo."
+    },
+    {
+     "sp": "Grace",
+     "line": "No problem. When we have the monthly meeting, though, you need to be online.",
+     "es": "No hay problema. Pero cuando tengamos la reunión mensual, tienes que estar conectado."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Of course. Where should I send the reports?",
+     "es": "Claro. ¿A dónde mando los informes?"
+    },
+    {
+     "sp": "Grace",
+     "line": "To the shared folder. Upload them whenever they're ready.",
+     "es": "A la carpeta compartida. Súbelos cuando estén listos."
+    },
+    {
+     "sp": "Felipe",
+     "line": "And when the client calls, do I answer?",
+     "es": "¿Y cuando llame el cliente, contesto yo?"
+    },
+    {
+     "sp": "Grace",
+     "line": "Yes. Wherever you are, try to pick up within an hour.",
+     "es": "Sí. Estés donde estés, intenta contestar en menos de una hora."
+    }
+   ]
+  }
+ ],
+ "C1-9-1": [
+  {
+   "title": "Running a rescue centre",
+   "titleEs": "Dirigiendo un centro de rescate",
+   "scene": "🦜 En un centro de rescate de fauna en el Valle del Cauca: la directora orienta a una voluntaria.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Megan",
+     "line": "What kind of animals do you take in?",
+     "es": "¿Qué tipo de animales reciben?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "Whatever animal arrives. Last week it was a sloth; yesterday, an owl.",
+     "es": "El animal que llegue. La semana pasada fue un perezoso; ayer, un búho."
+    },
+    {
+     "sp": "Megan",
+     "line": "And who decides what happens to them?",
+     "es": "¿Y quién decide qué pasa con ellos?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "Whoever is on duty makes the first assessment. Then the vet decides.",
+     "es": "Quien esté de turno hace la primera evaluación. Luego decide la veterinaria."
+    },
+    {
+     "sp": "Megan",
+     "line": "Do you need anything for the enclosures?",
+     "es": "¿Necesitan algo para los recintos?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "Take whatever you need from the store room. Just write it down.",
+     "es": "Toma lo que necesites del depósito. Solo anótalo."
+    },
+    {
+     "sp": "Megan",
+     "line": "Which cage should I clean first?",
+     "es": "¿Qué jaula limpio primero?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "Whichever is empty. And whoever finds an injured bird must call me immediately.",
+     "es": "La que esté vacía. Y quien encuentre un pájaro herido debe llamarme de inmediato."
+    }
+   ]
+  },
+  {
+   "title": "Election debate",
+   "titleEs": "Debate electoral",
+   "scene": "🗳️ En un programa de radio en Bogotá: dos analistas hablan de las elecciones locales.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lucy",
+     "line": "Whoever wins the election will inherit a huge deficit.",
+     "es": "Quien gane las elecciones va a heredar un déficit enorme."
+    },
+    {
+     "sp": "Andrés",
+     "line": "And whatever they promise now, the budget won't allow it.",
+     "es": "Y prometan lo que prometan ahora, el presupuesto no lo va a permitir."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Voters will support whoever offers a credible transport plan.",
+     "es": "Los votantes van a apoyar a quien ofrezca un plan de transporte creíble."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Whichever candidate speaks clearly about the metro has an advantage.",
+     "es": "El candidato que hable con claridad sobre el metro, sea cual sea, tiene ventaja."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Whatever happens, turnout needs to improve.",
+     "es": "Pase lo que pase, la participación tiene que mejorar."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Agreed. Whoever designed the new voting system deserves credit, though.",
+     "es": "De acuerdo. Aunque quien diseñó el nuevo sistema de votación merece reconocimiento."
+    }
+   ]
+  }
  ]
 }

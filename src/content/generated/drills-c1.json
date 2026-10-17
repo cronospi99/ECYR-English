@@ -238,5 +238,125 @@
    "As a child, I would hum along to every song.",
    "Babies will sleep for most of the day."
   ]
+ },
+ "C1-7-0": {
+  "name": "Keep it or drop it",
+  "prompt": "Decide si puedes omitir el pronombre relativo y reescribe la frase; en las dos últimas, une las ideas como se indica.",
+  "items": [
+   "The film that we watched last night was awful. (Can you omit the pronoun?)",
+   "The woman who lives upstairs is a doctor. (Can you omit the pronoun?)",
+   "Everything that he told me was a lie. (Can you omit the pronoun?)",
+   "The family whose car was stolen called the police. (Can you omit the pronoun?)",
+   "This is the café. We met in it. (Join informally, without a pronoun.)",
+   "This is the café. We met in it. (Join formally.)"
+  ],
+  "answers": [
+   "The film we watched last night was awful. (Yes: “that” is the object.)",
+   "The woman who lives upstairs is a doctor. (No: “who” is the subject.)",
+   "Everything he told me was a lie. (Yes: “that” is the object.)",
+   "The family whose car was stolen called the police. (No: “whose” is never omitted.)",
+   "This is the café we met in.",
+   "This is the café in which we met."
+  ]
+ },
+ "C1-7-1": {
+  "name": "As if or the way?",
+  "prompt": "Completa cada frase con as if / as though, the way, like o as, cuidando el tiempo verbal.",
+  "items": [
+   "He isn’t the boss, but he gives orders. → He gives orders as if ______",
+   "It seems that the meeting has been cancelled. → It looks as though ______",
+   "Cook the rice exactly as your grandmother did. → Cook the rice the way ______",
+   "She isn’t my mother, but she talks to me like that. → She talks to me as though ______",
+   "He sings beautifully, like a professional. (like + noun) → He sings ______",
+   "We discussed this earlier: the price has gone up. (formal as) → As ______"
+  ],
+  "answers": [
+   "He gives orders as if he were the boss.",
+   "It looks as though the meeting has been cancelled.",
+   "Cook the rice the way your grandmother did.",
+   "She talks to me as though she were my mother.",
+   "He sings like a professional.",
+   "As we discussed earlier, the price has gone up."
+  ]
+ },
+ "C1-8-0": {
+  "name": "Who gets what?",
+  "prompt": "Reordena los objetos o corrige el error según la instrucción de cada frase.",
+  "items": [
+   "The clerk gave a refund to me. (Put the person first.)",
+   "She showed her colleagues the report. (Put the thing first.)",
+   "Explain me the problem. (Correct the error.)",
+   "I bought my mother flowers. (Use a preposition.)",
+   "Send her it. (Make it more natural.)",
+   "Could you describe me the house? (Correct the error.)"
+  ],
+  "answers": [
+   "The clerk gave me a refund.",
+   "She showed the report to her colleagues.",
+   "Explain the problem to me.",
+   "I bought flowers for my mother.",
+   "Send it to her.",
+   "Could you describe the house to me?"
+  ]
+ },
+ "C1-8-1": {
+  "name": "Base form after that",
+  "prompt": "Reescribe cada frase con el subjuntivo (verbo base) después de that, o con -ing donde se indica.",
+  "items": [
+   "“You must refund the customer,” the manager said. → The manager insisted that ______",
+   "Every receipt must be kept. → It is essential that ______",
+   "“Try a smaller size,” we told her. → We recommended that ______",
+   "He mustn’t be charged. → We insist that ______",
+   "“Arrive early,” the guide advised us. → The guide suggested that ______",
+   "She should apply before May. (use -ing) → We recommend ______"
+  ],
+  "answers": [
+   "The manager insisted that the customer be refunded.",
+   "It is essential that every receipt be kept.",
+   "We recommended that she try a smaller size.",
+   "We insist that he not be charged.",
+   "The guide suggested that we arrive early.",
+   "We recommend applying before May."
+  ]
+ },
+ "C1-9-0": {
+  "name": "Specific or any?",
+  "prompt": "Reescribe cada frase con when, where, whenever o wherever según el significado.",
+  "items": [
+   "No matter where you go in this city, you’ll find street art. → ______",
+   "Every time it rains, the road floods. → ______",
+   "This is the village. My grandmother was born there. (where / wherever?) → ______",
+   "Sit in any seat you like. → ______",
+   "Call me at any time you need help. → ______",
+   "I’ll phone you at the moment I land. (when / whenever?) → ______"
+  ],
+  "answers": [
+   "Wherever you go in this city, you’ll find street art.",
+   "Whenever it rains, the road floods.",
+   "This is the village where my grandmother was born.",
+   "Sit wherever you like.",
+   "Call me whenever you need help.",
+   "I’ll phone you when I land."
+  ]
+ },
+ "C1-9-1": {
+  "name": "Whoever, whatever, whichever",
+  "prompt": "Reescribe cada frase con whoever, whatever o whichever.",
+  "items": [
+   "Any person who breaks the rules will be fined. → ______",
+   "You can eat anything that you want. → ______",
+   "The person who took my umbrella should return it. → ______",
+   "Choose the option that suits you best: A or B. → ______",
+   "It doesn’t matter what happens; don’t lose hope. → ______",
+   "We’ll support any candidate who protects the reserve. → ______"
+  ],
+  "answers": [
+   "Whoever breaks the rules will be fined.",
+   "You can eat whatever you want.",
+   "Whoever took my umbrella should return it.",
+   "Choose whichever option suits you best.",
+   "Whatever happens, don’t lose hope.",
+   "We’ll support whoever protects the reserve."
+  ]
  }
 }

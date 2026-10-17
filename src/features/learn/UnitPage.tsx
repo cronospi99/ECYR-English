@@ -8,7 +8,6 @@ import {
   ChevronRight,
   ClipboardList,
   Mic,
-  PenLine,
   Repeat,
   Trophy,
   Users,
@@ -21,12 +20,12 @@ import { Button, ButtonLink } from '@/components/ui/Button';
 import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
-import { WritingPad } from '@/components/learning/WritingPad';
+import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { unitVisualPlan, type Visual } from '@/content/visuals';
 import { useAsync } from '@/hooks/useAsync';
 import { loadLevel, levelMeta } from '@/content/levels';
-import type { Unit, VocabItem } from '@/content/types';
+import type { CefrLevel, Unit, VocabItem } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
@@ -337,19 +336,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
         </Card>
       )}
 
-      {u.writing && (
-        <Card className="p-6">
-          <SectionHead icon={PenLine} color="var(--purple)" title={`Writing · ${u.writing.title}`} meta={u.writing.length} />
-          <p className="text-[15px] text-pretty">{u.writing.brief}</p>
-          <WritingPad
-            storageKey={`ecyr:writing:${levelId}-${u.n}`}
-            criteria={u.writing.criteria}
-            prompt={`${u.writing.title}: ${u.writing.brief}`}
-            level={levelId}
-            title={`Writing ${levelId} · U${u.n}`}
-          />
-        </Card>
-      )}
+      <UnitWritingTasks level={levelId as CefrLevel} unit={u.n} />
 
       {u.dynamics && u.dynamics.length > 0 && (
         <Card className="p-6 lg:col-span-2">

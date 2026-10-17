@@ -1001,5 +1001,446 @@
     }
    ]
   }
+ ],
+ "C1-7-0": [
+  {
+   "kind": "choose",
+   "title": "¿Puedo omitir el pronombre?",
+   "question": "¿Qué función cumple el pronombre en su cláusula?",
+   "branches": [
+    {
+     "if": "Es el objeto (después viene otro sujeto)",
+     "use": "opcional: puedes omitirlo",
+     "example": "The book (that) I read was brilliant."
+    },
+    {
+     "if": "Es el sujeto (después viene el verbo)",
+     "use": "obligatorio",
+     "example": "The man who called left a message."
+    },
+    {
+     "if": "Indica posesión",
+     "use": "whose: nunca se omite",
+     "example": "The family whose house we bought moved away."
+    },
+    {
+     "if": "La cláusula va entre comas",
+     "use": "obligatorio, y nunca that",
+     "example": "My aunt, who lives in Cali, called."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "La prueba de la omisión",
+   "steps": [
+    {
+     "label": "Con pronombre objeto",
+     "sentence": "the house **that** we grew up in",
+     "change": "“we” es el sujeto de la cláusula."
+    },
+    {
+     "label": "Omitido",
+     "sentence": "the house **we** grew up in",
+     "change": "Funciona: “that” era objeto."
+    },
+    {
+     "label": "Con pronombre sujeto",
+     "sentence": "the neighbour **who** moved in",
+     "change": "“who” es el sujeto de “moved”."
+    },
+    {
+     "label": "Omitido (incorrecto)",
+     "sentence": "the neighbour **moved in**",
+     "change": "✗ Queda una frase distinta: el pronombre era obligatorio."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Formal vs. informal",
+   "items": [
+    {
+     "a": "the house we grew up in",
+     "b": "the house in which we grew up",
+     "note": "La primera es natural al hablar; la segunda, en escritura cuidada."
+    },
+    {
+     "a": "the person I spoke to",
+     "b": "the person to whom I spoke",
+     "note": "“To whom” es muy formal; en conversación suena rígido."
+    },
+    {
+     "a": "the house in which we grew up",
+     "b": "the house in that we grew up",
+     "note": "Después de preposición nunca va “that”: usa “which” o “whom”."
+    }
+   ]
+  }
+ ],
+ "C1-7-1": [
+  {
+   "kind": "choose",
+   "title": "¿As if, the way o like?",
+   "question": "¿Qué estás comparando?",
+   "branches": [
+    {
+     "if": "Una apariencia que puede ser real",
+     "use": "as if / as though + presente",
+     "example": "It looks as though the plan has changed."
+    },
+    {
+     "if": "Una situación imaginaria o falsa",
+     "use": "as if / as though + pasado (were)",
+     "example": "He spends money as if he were a millionaire."
+    },
+    {
+     "if": "Cómo se hace algo en realidad",
+     "use": "the way / as + cláusula",
+     "example": "Do it the way your teacher explained."
+    },
+    {
+     "if": "Una comparación con un sustantivo",
+     "use": "like + sustantivo",
+     "example": "She sings like an angel."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Real o imaginario",
+   "items": [
+    {
+     "a": "He looks as if he’s tired.",
+     "b": "He looks as if he were a ghost.",
+     "note": "La primera puede ser verdad; la segunda es claramente imaginaria."
+    },
+    {
+     "a": "She acts like a boss.",
+     "b": "She acts as if she were the boss.",
+     "note": "“Like” + sustantivo; “as if” + cláusula."
+    },
+    {
+     "a": "Do it as I told you.",
+     "b": "Do it like I told you.",
+     "note": "Las dos se entienden; “like” + cláusula es informal."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del hecho a la comparación imaginaria",
+   "steps": [
+    {
+     "label": "Realidad",
+     "sentence": "He isn’t a millionaire."
+    },
+    {
+     "label": "Comparación irreal",
+     "sentence": "He spends money **as if he were** a millionaire.",
+     "change": "Pasado para marcar que no es real."
+    },
+    {
+     "label": "Apariencia posible",
+     "sentence": "It **looks as though** it’s going to rain.",
+     "change": "Presente: puede pasar."
+    }
+   ]
+  }
+ ],
+ "C1-8-0": [
+  {
+   "kind": "transform",
+   "title": "Dos órdenes posibles",
+   "steps": [
+    {
+     "label": "Persona + cosa",
+     "sentence": "The clerk gave **me a refund**.",
+     "change": "Sin preposición; la cosa es la información nueva."
+    },
+    {
+     "label": "Cosa + to + persona",
+     "sentence": "The clerk gave **a refund to me**.",
+     "change": "La persona queda al final y gana énfasis."
+    },
+    {
+     "label": "Con pronombres",
+     "sentence": "Send **it to her**.",
+     "change": "Con dos pronombres, mejor la forma con “to”."
+    },
+    {
+     "label": "Con for",
+     "sentence": "I bought **a gift for her**.",
+     "change": "buy, make, find, get usan “for”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Puedo poner la persona primero?",
+   "question": "¿Qué verbo usas?",
+   "branches": [
+    {
+     "if": "give, send, show, offer, lend, tell",
+     "use": "sí: verbo + persona + cosa, o cosa + to + persona",
+     "example": "She showed me the photos. / She showed the photos to me."
+    },
+    {
+     "if": "buy, make, find, get, cook",
+     "use": "sí: verbo + persona + cosa, o cosa + for + persona",
+     "example": "He made me a cake. / He made a cake for me."
+    },
+    {
+     "if": "explain, describe, suggest, say, report",
+     "use": "no: siempre cosa + to + persona",
+     "example": "Explain the problem to me."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores típicos",
+   "items": [
+    {
+     "a": "Explain the rule to me.",
+     "b": "Explain me the rule.",
+     "note": "Con “explain” la persona nunca va directamente después del verbo."
+    },
+    {
+     "a": "I bought a gift for her.",
+     "b": "I bought a gift to her.",
+     "note": "“Buy” usa “for”, no “to”."
+    },
+    {
+     "a": "Give it to me.",
+     "b": "Give me it.",
+     "note": "Con dos pronombres, la forma natural es “give it to me”."
+    }
+   ]
+  }
+ ],
+ "C1-8-1": [
+  {
+   "kind": "transform",
+   "title": "Del indicativo al subjuntivo",
+   "steps": [
+    {
+     "label": "Indicativo (hecho)",
+     "sentence": "She **tries** a smaller size every time.",
+     "change": "Con -s para she."
+    },
+    {
+     "label": "Subjuntivo",
+     "sentence": "We recommend that she **try** a smaller size.",
+     "change": "Verbo base para todos los sujetos."
+    },
+    {
+     "label": "Con be",
+     "sentence": "It is essential that he **be** refunded.",
+     "change": "“Be”, no “is”."
+    },
+    {
+     "label": "Negativo",
+     "sentence": "We insist that he **not be** charged.",
+     "change": "“Not” + verbo base, sin “doesn’t”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Cómo expreso la recomendación?",
+   "question": "¿Qué registro necesitas?",
+   "branches": [
+    {
+     "if": "Formal, escrito o estadounidense",
+     "use": "that + sujeto + verbo base",
+     "example": "We recommend that she apply early."
+    },
+    {
+     "if": "Británico, algo menos formal",
+     "use": "that + sujeto + should + verbo",
+     "example": "We recommend that she should apply early."
+    },
+    {
+     "if": "Sin cláusula, más ligero",
+     "use": "recommend / suggest + -ing",
+     "example": "We recommend applying early."
+    },
+    {
+     "if": "Con una expresión de importancia",
+     "use": "It is essential / vital that + verbo base",
+     "example": "It is vital that every form be signed."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores comunes",
+   "items": [
+    {
+     "a": "I suggest that he call her.",
+     "b": "I suggest that he calls her.",
+     "note": "En el subjuntivo, sin -s."
+    },
+    {
+     "a": "I suggest that she take a break.",
+     "b": "I suggest her to take a break.",
+     "note": "“Suggest” no lleva objeto + infinitivo."
+    },
+    {
+     "a": "It’s vital that he be informed.",
+     "b": "It’s vital that he is informed.",
+     "note": "La segunda se oye en el habla británica, pero el subjuntivo formal usa “be”."
+    }
+   ]
+  }
+ ],
+ "C1-9-0": [
+  {
+   "kind": "choose",
+   "title": "¿When/where o whenever/wherever?",
+   "question": "¿Hablas de un momento o lugar concreto?",
+   "branches": [
+    {
+     "if": "Sí, uno en particular",
+     "use": "when / where",
+     "example": "They return to the beach where they were born."
+    },
+    {
+     "if": "No, cualquiera / todos",
+     "use": "whenever / wherever",
+     "example": "They nest wherever the sand is warm."
+    },
+    {
+     "if": "Significa “cada vez que”",
+     "use": "whenever",
+     "example": "Whenever it rains, the river rises."
+    },
+    {
+     "if": "Significa “no importa dónde / cuándo”",
+     "use": "wherever / whenever (= no matter where / when)",
+     "example": "Wherever you go, you’ll find plastic."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Concreto vs. cualquiera",
+   "items": [
+    {
+     "a": "Call me when you arrive.",
+     "b": "Call me whenever you want.",
+     "note": "La primera: en el momento de llegar. La segunda: a cualquier hora."
+    },
+    {
+     "a": "Sit where I can see you.",
+     "b": "Sit wherever you like.",
+     "note": "La primera: en un sitio concreto. La segunda: donde quieras."
+    },
+    {
+     "a": "Call me whenever you spot them.",
+     "b": "Call me whenever you will spot them.",
+     "note": "Después de -ever (y de when) no se usa “will”."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Reformula con -ever",
+   "steps": [
+    {
+     "label": "Con no matter",
+     "sentence": "**No matter where** you look, there is plastic."
+    },
+    {
+     "label": "Con wherever",
+     "sentence": "**Wherever** you look, there is plastic.",
+     "change": "Mismo significado, más conciso."
+    },
+    {
+     "label": "Con every time",
+     "sentence": "**Every time** it rains, the river rises."
+    },
+    {
+     "label": "Con whenever",
+     "sentence": "**Whenever** it rains, the river rises.",
+     "change": "= cada vez que."
+    }
+   ]
+  }
+ ],
+ "C1-9-1": [
+  {
+   "kind": "choose",
+   "title": "¿Whoever, whatever o whichever?",
+   "question": "¿A qué se refiere la cláusula?",
+   "branches": [
+    {
+     "if": "A cualquier persona",
+     "use": "whoever",
+     "example": "Whoever litters here will be fined."
+    },
+    {
+     "if": "A cualquier cosa (opciones abiertas)",
+     "use": "whatever",
+     "example": "Take whatever you need."
+    },
+    {
+     "if": "A una opción dentro de un grupo limitado",
+     "use": "whichever",
+     "example": "Choose whichever seat is free."
+    },
+    {
+     "if": "Significa “no importa qué”",
+     "use": "whatever + cláusula, oración principal",
+     "example": "Whatever happens, stay calm."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "De “the person who” a whoever",
+   "steps": [
+    {
+     "label": "Frase larga",
+     "sentence": "**Any person who** litters here will be fined."
+    },
+    {
+     "label": "Con whoever",
+     "sentence": "**Whoever** litters here **will** be fined.",
+     "change": "La cláusula entera es el sujeto (singular)."
+    },
+    {
+     "label": "Frase larga",
+     "sentence": "You can take **anything that** you need."
+    },
+    {
+     "label": "Con whatever",
+     "sentence": "You can take **whatever** you need.",
+     "change": "La cláusula entera es el objeto."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "Whoever wants to help is welcome.",
+     "b": "Whoever wants to help, he is welcome.",
+     "note": "No repitas el sujeto con un pronombre."
+    },
+    {
+     "a": "Whoever wants to help is welcome.",
+     "b": "Whoever want to help are welcome.",
+     "note": "Con “whoever” como sujeto, el verbo va en singular."
+    },
+    {
+     "a": "Choose whichever you prefer: red or blue.",
+     "b": "Choose whatever you prefer: red or blue.",
+     "note": "Con pocas opciones concretas, “whichever” es más preciso."
+    }
+   ]
+  }
  ]
 }

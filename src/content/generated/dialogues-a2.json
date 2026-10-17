@@ -1888,5 +1888,935 @@
     }
    ]
   }
+ ],
+ "A2-9-0": [
+  {
+   "title": "A neighbourhood that changed",
+   "titleEs": "Un barrio que cambió",
+   "scene": "🏘️ En la Comuna 13 de Medellín: una periodista entrevista a don Arturo.",
+   "cast": [
+    {
+     "name": "Julieta",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Arturo",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Julieta",
+     "line": "How has the neighbourhood changed?",
+     "es": "¿Cómo ha cambiado el barrio?"
+    },
+    {
+     "sp": "Arturo",
+     "line": "A lot. Back then, we used to climb hundreds of steps every day.",
+     "es": "Muchísimo. En esa época subíamos cientos de escalones todos los días."
+    },
+    {
+     "sp": "Julieta",
+     "line": "And now?",
+     "es": "¿Y ahora?"
+    },
+    {
+     "sp": "Arturo",
+     "line": "Now there are outdoor escalators, and tourists visit every day.",
+     "es": "Ahora hay escaleras eléctricas y vienen turistas todos los días."
+    },
+    {
+     "sp": "Julieta",
+     "line": "Did you use to have many visitors?",
+     "es": "¿Antes venían muchos visitantes?"
+    },
+    {
+     "sp": "Arturo",
+     "line": "No, nobody used to come here. These days I sell coffee to people from all over the world.",
+     "es": "No, aquí no venía nadie. Hoy en día le vendo café a gente de todo el mundo."
+    },
+    {
+     "sp": "Julieta",
+     "line": "What about the future?",
+     "es": "¿Y el futuro?"
+    },
+    {
+     "sp": "Arturo",
+     "line": "Next year my grandson is going to open a little hostel. Things have changed so much!",
+     "es": "El próximo año mi nieto va a abrir un hostalito. ¡Las cosas han cambiado tanto!"
+    }
+   ]
+  },
+  {
+   "title": "The new runner",
+   "titleEs": "La nueva corredora",
+   "scene": "🏃 Felipe se encuentra con Laura, una amiga de la universidad, y no puede creer cuánto ha cambiado.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Felipe",
+     "line": "You used to hate running!",
+     "es": "¡Tú odiabas correr!"
+    },
+    {
+     "sp": "Laura",
+     "line": "I know. But these days I run five kilometres every morning.",
+     "es": "Ya sé. Pero hoy en día corro cinco kilómetros todas las mañanas."
+    },
+    {
+     "sp": "Felipe",
+     "line": "What happened?",
+     "es": "¿Qué pasó?"
+    },
+    {
+     "sp": "Laura",
+     "line": "I used to feel tired all the time. Now I have much more energy.",
+     "es": "Antes me sentía cansada todo el tiempo. Ahora tengo mucha más energía."
+    },
+    {
+     "sp": "Felipe",
+     "line": "That’s amazing. Are you training for something?",
+     "es": "Increíble. ¿Estás entrenando para algo?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Yes! Next month I’m going to run the Bogotá half marathon.",
+     "es": "¡Sí! El próximo mes voy a correr la media maratón de Bogotá."
+    },
+    {
+     "sp": "Felipe",
+     "line": "I didn’t use to exercise either, and I still don’t!",
+     "es": "Yo tampoco hacía ejercicio, ¡y sigo sin hacerlo!"
+    },
+    {
+     "sp": "Laura",
+     "line": "From now on, you’re coming with me on Saturdays!",
+     "es": "¡De ahora en adelante, te vienes conmigo los sábados!"
+    }
+   ]
+  }
+ ],
+ "A2-9-1": [
+  {
+   "title": "A trip to Guatapé",
+   "titleEs": "Paseo a Guatapé",
+   "scene": "🌤️ En Medellín: Andrea y Mauricio planean un paseo según el clima.",
+   "cast": [
+    {
+     "name": "Andrea",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Mauricio",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Andrea",
+     "line": "If it’s sunny on Saturday, let’s go to Guatapé.",
+     "es": "Si hace sol el sábado, vamos a Guatapé."
+    },
+    {
+     "sp": "Mauricio",
+     "line": "Good idea. If we leave at six, we’ll avoid the traffic.",
+     "es": "Buena idea. Si salimos a las seis, nos evitamos el trancón."
+    },
+    {
+     "sp": "Andrea",
+     "line": "Six? If I get up that early, I’ll be grumpy all day!",
+     "es": "¿A las seis? ¡Si me levanto tan temprano, voy a estar de mal genio todo el día!"
+    },
+    {
+     "sp": "Mauricio",
+     "line": "You can sleep in the car, as long as you don’t snore.",
+     "es": "Puedes dormir en el carro, siempre y cuando no ronques."
+    },
+    {
+     "sp": "Andrea",
+     "line": "Ha! And what if it rains?",
+     "es": "¡Ja! ¿Y si llueve?"
+    },
+    {
+     "sp": "Mauricio",
+     "line": "If it rains, we’ll go to a museum in Medellín instead.",
+     "es": "Si llueve, mejor vamos a un museo en Medellín."
+    },
+    {
+     "sp": "Andrea",
+     "line": "Deal. But unless you buy breakfast, I’m not coming!",
+     "es": "Trato hecho. ¡Pero si no compras el desayuno, no voy!"
+    }
+   ]
+  },
+  {
+   "title": "A lost card",
+   "titleEs": "Una tarjeta perdida",
+   "scene": "💳 Hernando llama al banco porque no encuentra su tarjeta de crédito.",
+   "cast": [
+    {
+     "name": "Hernando",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Sophie",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hernando",
+     "line": "I think I’ve lost my credit card. What should I do?",
+     "es": "Creo que perdí la tarjeta de crédito. ¿Qué hago?"
+    },
+    {
+     "sp": "Sophie",
+     "line": "If you can’t find it, we’ll block it right now.",
+     "es": "Si no la encuentras, la bloqueamos ya mismo."
+    },
+    {
+     "sp": "Hernando",
+     "line": "And if somebody uses it before that?",
+     "es": "¿Y si alguien la usa antes?"
+    },
+    {
+     "sp": "Sophie",
+     "line": "If there are any strange payments, you won’t have to pay for them.",
+     "es": "Si hay pagos raros, no los tendrás que pagar."
+    },
+    {
+     "sp": "Hernando",
+     "line": "That’s a relief. When will I get a new card?",
+     "es": "Qué alivio. ¿Cuándo me llega la tarjeta nueva?"
+    },
+    {
+     "sp": "Sophie",
+     "line": "If we send it today, you’ll get it on Friday.",
+     "es": "Si la mandamos hoy, te llega el viernes."
+    },
+    {
+     "sp": "Hernando",
+     "line": "And unless I tell you, you’ll send it to my home address?",
+     "es": "¿Y si no les digo nada, la mandan a la dirección de mi casa?"
+    },
+    {
+     "sp": "Sophie",
+     "line": "Exactly. If you need anything else, call us again.",
+     "es": "Exacto. Si necesitas algo más, vuelve a llamarnos."
+    }
+   ]
+  }
+ ],
+ "A2-10-0": [
+  {
+   "title": "The perfect roommate",
+   "titleEs": "El compañero perfecto",
+   "scene": "🚲 En Bogotá: Isabella entrevista a Daniel, un posible compañero de apartamento.",
+   "cast": [
+    {
+     "name": "Isabella",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Daniel",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Isabella",
+     "line": "So, what do you like doing at the weekend?",
+     "es": "Bueno, ¿qué te gusta hacer los fines de semana?"
+    },
+    {
+     "sp": "Daniel",
+     "line": "I love cycling. Every Sunday I ride on the Ciclovía.",
+     "es": "Me encanta montar en bici. Todos los domingos voy a la Ciclovía."
+    },
+    {
+     "sp": "Isabella",
+     "line": "So do I! It’s the best.",
+     "es": "¡A mí también! Es lo mejor."
+    },
+    {
+     "sp": "Daniel",
+     "line": "But I can’t stand getting up early.",
+     "es": "Pero no soporto madrugar."
+    },
+    {
+     "sp": "Isabella",
+     "line": "Neither can I. I usually go around ten.",
+     "es": "Yo tampoco. Normalmente voy como a las diez."
+    },
+    {
+     "sp": "Daniel",
+     "line": "I don’t mind cooking. Do you?",
+     "es": "A mí no me molesta cocinar. ¿Y a ti?"
+    },
+    {
+     "sp": "Isabella",
+     "line": "Oh, I do! I hate cooking. But I enjoy washing the dishes.",
+     "es": "¡Ay, a mí sí! Odio cocinar. Pero disfruto lavando la loza."
+    },
+    {
+     "sp": "Daniel",
+     "line": "Perfect. I think we’re going to be great roommates!",
+     "es": "Perfecto. ¡Creo que vamos a ser excelentes compañeros de apartamento!"
+    }
+   ]
+  },
+  {
+   "title": "Travelling alone",
+   "titleEs": "Viajar solo",
+   "scene": "🦙 En la oficina: Juliana y Martín hablan de cómo les gusta viajar.",
+   "cast": [
+    {
+     "name": "Juliana",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Martín",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Juliana",
+     "line": "I’ve never travelled alone.",
+     "es": "Yo nunca he viajado sola."
+    },
+    {
+     "sp": "Martín",
+     "line": "Neither have I. I prefer travelling with friends.",
+     "es": "Yo tampoco. Prefiero viajar con amigos."
+    },
+    {
+     "sp": "Juliana",
+     "line": "So do I. But I’m planning a trip to Peru by myself.",
+     "es": "Yo también. Pero estoy planeando un viaje a Perú sola."
+    },
+    {
+     "sp": "Martín",
+     "line": "Really? I was in Cusco last year.",
+     "es": "¿En serio? Yo estuve en Cusco el año pasado."
+    },
+    {
+     "sp": "Juliana",
+     "line": "So was my sister! Did you like the food?",
+     "es": "¡Mi hermana también! ¿Te gustó la comida?"
+    },
+    {
+     "sp": "Martín",
+     "line": "I loved it. But I didn’t enjoy walking at that altitude.",
+     "es": "Me encantó. Pero no disfruté caminar a esa altura."
+    },
+    {
+     "sp": "Juliana",
+     "line": "I don’t mind walking uphill. I’m used to the hills in Bogotá.",
+     "es": "A mí no me molesta caminar en subida. Estoy acostumbrada a los cerros de Bogotá."
+    }
+   ]
+  }
+ ],
+ "A2-10-1": [
+  {
+   "title": "Absent and late",
+   "titleEs": "Ausente y tarde",
+   "scene": "🏫 En un colegio de Bogotá: la profesora le pregunta a Juan Camilo por qué faltó.",
+   "cast": [
+    {
+     "name": "Ms. Murphy",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Juan Camilo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ms. Murphy",
+     "line": "Why were you absent yesterday, Juan Camilo?",
+     "es": "¿Por qué faltaste ayer, Juan Camilo?"
+    },
+    {
+     "sp": "Juan Camilo",
+     "line": "Because I had a fever. I stayed in bed all day.",
+     "es": "Porque tenía fiebre. Me quedé en la cama todo el día."
+    },
+    {
+     "sp": "Ms. Murphy",
+     "line": "I’m sorry. Are you better now?",
+     "es": "Lo siento. ¿Ya estás mejor?"
+    },
+    {
+     "sp": "Juan Camilo",
+     "line": "Yes, thanks. And I’m late today because of the traffic on Avenida Boyacá.",
+     "es": "Sí, gracias. Y hoy llegué tarde por el trancón de la Avenida Boyacá."
+    },
+    {
+     "sp": "Ms. Murphy",
+     "line": "Since you missed the test, you can take it on Friday.",
+     "es": "Como te perdiste el examen, lo puedes presentar el viernes."
+    },
+    {
+     "sp": "Juan Camilo",
+     "line": "Thank you. The reason why I’m worried is that I didn’t study much.",
+     "es": "Gracias. La razón por la que estoy preocupado es que no estudié mucho."
+    },
+    {
+     "sp": "Ms. Murphy",
+     "line": "Then study this week, so you’ll be ready.",
+     "es": "Entonces estudia esta semana, así estarás listo."
+    }
+   ]
+  },
+  {
+   "title": "The pizza place closed",
+   "titleEs": "Cerraron la pizzería",
+   "scene": "🍕 Ximena y Nicolás descubren que su pizzería favorita cerró.",
+   "cast": [
+    {
+     "name": "Ximena",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Nicolás",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ximena",
+     "line": "Why did they close the pizza place on the corner?",
+     "es": "¿Por qué cerraron la pizzería de la esquina?"
+    },
+    {
+     "sp": "Nicolás",
+     "line": "Because of the bad reviews, I think.",
+     "es": "Por las malas reseñas, creo."
+    },
+    {
+     "sp": "Ximena",
+     "line": "Really? I liked it because the pizzas were cheap.",
+     "es": "¿En serio? A mí me gustaba porque las pizzas eran baratas."
+    },
+    {
+     "sp": "Nicolás",
+     "line": "Yes, but people complained because the service was slow.",
+     "es": "Sí, pero la gente se quejaba porque el servicio era lento."
+    },
+    {
+     "sp": "Ximena",
+     "line": "Since it’s closed, where should we eat tonight?",
+     "es": "Como está cerrada, ¿dónde comemos esta noche?"
+    },
+    {
+     "sp": "Nicolás",
+     "line": "There’s a new Peruvian place. It’s always full, so we should book.",
+     "es": "Hay un sitio peruano nuevo. Siempre está lleno, así que deberíamos reservar."
+    },
+    {
+     "sp": "Ximena",
+     "line": "Perfect. That’s why I love you: you always have a plan!",
+     "es": "Perfecto. ¡Por eso te quiero: siempre tienes un plan!"
+    }
+   ]
+  }
+ ],
+ "A2-11-0": [
+  {
+   "title": "At the Gold Museum",
+   "titleEs": "En el Museo del Oro",
+   "scene": "🏛️ En el Museo del Oro de Bogotá: la guía le explica a Oliver la historia de una pieza.",
+   "cast": [
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "This gold raft is amazing. When was it made?",
+     "es": "Esta balsa de oro es increíble. ¿Cuándo fue hecha?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "It was made more than five hundred years ago.",
+     "es": "Fue hecha hace más de quinientos años."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Who was it made by?",
+     "es": "¿Quién la hizo?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "It was made by the Muisca people. It was used in ceremonies.",
+     "es": "La hicieron los muiscas. Se usaba en ceremonias."
+    },
+    {
+     "sp": "Oliver",
+     "line": "And how was it found?",
+     "es": "¿Y cómo la encontraron?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "It was discovered by three farmers in 1969, in a cave near Pasca.",
+     "es": "La descubrieron tres campesinos en 1969, en una cueva cerca de Pasca."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Was the museum built for this collection?",
+     "es": "¿El museo se construyó para esta colección?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "The museum was founded by the Bank of the Republic in 1939.",
+     "es": "El museo lo fundó el Banco de la República en 1939."
+    }
+   ]
+  },
+  {
+   "title": "The new office",
+   "titleEs": "La oficina nueva",
+   "scene": "🛠️ Lunes en la oficina: Pilar no reconoce el lugar y Andrés le cuenta qué pasó.",
+   "cast": [
+    {
+     "name": "Pilar",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Pilar",
+     "line": "What happened to the office? Everything is different!",
+     "es": "¿Qué le pasó a la oficina? ¡Todo está distinto!"
+    },
+    {
+     "sp": "Andrés",
+     "line": "It was redecorated over the weekend.",
+     "es": "La redecoraron el fin de semana."
+    },
+    {
+     "sp": "Pilar",
+     "line": "Who was it designed by?",
+     "es": "¿Quién la diseñó?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "It was designed by a young architect from Cali.",
+     "es": "La diseñó una arquitecta joven de Cali."
+    },
+    {
+     "sp": "Pilar",
+     "line": "And were the old desks thrown away?",
+     "es": "¿Y botaron los escritorios viejos?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "No, they weren’t. They were given to a school.",
+     "es": "No. Se los regalaron a un colegio."
+    },
+    {
+     "sp": "Pilar",
+     "line": "That’s nice. Was anything else changed?",
+     "es": "Qué bien. ¿Cambiaron algo más?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Yes. The coffee machine was replaced. Finally!",
+     "es": "Sí. Cambiaron la máquina de café. ¡Por fin!"
+    }
+   ]
+  }
+ ],
+ "A2-11-1": [
+  {
+   "title": "On a coffee farm",
+   "titleEs": "En una finca cafetera",
+   "scene": "☕ En una finca del Quindío: don Jairo le explica a Grace cómo se produce el café.",
+   "cast": [
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Jairo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "How is the coffee grown here?",
+     "es": "¿Cómo se cultiva el café aquí?"
+    },
+    {
+     "sp": "Jairo",
+     "line": "The plants are grown in the shade, on the hills.",
+     "es": "Las matas se cultivan a la sombra, en las lomas."
+    },
+    {
+     "sp": "Grace",
+     "line": "And are the beans picked by machines?",
+     "es": "¿Y los granos los recogen con máquinas?"
+    },
+    {
+     "sp": "Jairo",
+     "line": "No, they’re picked by hand. Only the red ones are chosen.",
+     "es": "No, se recogen a mano. Solo se escogen los rojos."
+    },
+    {
+     "sp": "Grace",
+     "line": "What happens next?",
+     "es": "¿Y después qué pasa?"
+    },
+    {
+     "sp": "Jairo",
+     "line": "They’re washed, and then they’re dried in the sun for about a week.",
+     "es": "Se lavan y después se secan al sol durante más o menos una semana."
+    },
+    {
+     "sp": "Grace",
+     "line": "Is the coffee roasted here too?",
+     "es": "¿El café también se tuesta aquí?"
+    },
+    {
+     "sp": "Jairo",
+     "line": "A small part is roasted here and sold to visitors. The rest is exported.",
+     "es": "Una parte pequeña se tuesta aquí y se les vende a los visitantes. El resto se exporta."
+    }
+   ]
+  },
+  {
+   "title": "Hotel rules",
+   "titleEs": "Las reglas del hotel",
+   "scene": "🏨 En un hotel de Cartagena: Mike pregunta qué está incluido y qué está permitido.",
+   "cast": [
+    {
+     "name": "Mike",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mike",
+     "line": "Is breakfast included in the price?",
+     "es": "¿El desayuno está incluido en el precio?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Yes, it is. Breakfast is served from six to ten.",
+     "es": "Sí. El desayuno se sirve de seis a diez."
+    },
+    {
+     "sp": "Mike",
+     "line": "Great. Are pets allowed?",
+     "es": "Súper. ¿Se permiten mascotas?"
+    },
+    {
+     "sp": "Laura",
+     "line": "I’m afraid pets aren’t allowed. And smoking isn’t permitted in the rooms.",
+     "es": "Me temo que no se permiten mascotas. Y no se permite fumar en las habitaciones."
+    },
+    {
+     "sp": "Mike",
+     "line": "No problem. Are the rooms cleaned every day?",
+     "es": "No hay problema. ¿Las habitaciones se limpian todos los días?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Yes, they’re usually cleaned in the morning. Towels are changed every two days.",
+     "es": "Sí, normalmente se limpian por la mañana. Las toallas se cambian cada dos días."
+    },
+    {
+     "sp": "Mike",
+     "line": "And is the wifi password given at reception?",
+     "es": "¿Y la clave del wifi la dan en recepción?"
+    },
+    {
+     "sp": "Laura",
+     "line": "It’s written on your key card.",
+     "es": "Está escrita en tu tarjeta llave."
+    }
+   ]
+  }
+ ],
+ "A2-12-0": [
+  {
+   "title": "The earthquake",
+   "titleEs": "El temblor",
+   "scene": "🌃 En Bogotá: Diana y Ricardo cuentan qué estaban haciendo durante el temblor.",
+   "cast": [
+    {
+     "name": "Diana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ricardo",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Diana",
+     "line": "Did you feel the earthquake last night?",
+     "es": "¿Sentiste el temblor anoche?"
+    },
+    {
+     "sp": "Ricardo",
+     "line": "Yes! I was watching TV when the sofa started to move.",
+     "es": "¡Sí! Estaba viendo televisión cuando el sofá empezó a moverse."
+    },
+    {
+     "sp": "Diana",
+     "line": "I was sleeping, so I didn’t feel anything at first.",
+     "es": "Yo estaba dormida, así que al principio no sentí nada."
+    },
+    {
+     "sp": "Ricardo",
+     "line": "What woke you up?",
+     "es": "¿Qué te despertó?"
+    },
+    {
+     "sp": "Diana",
+     "line": "When I opened my eyes, my dog was barking like crazy.",
+     "es": "Cuando abrí los ojos, mi perro estaba ladrando como loco."
+    },
+    {
+     "sp": "Ricardo",
+     "line": "While I was running to the door, the neighbours were shouting in the corridor.",
+     "es": "Mientras yo corría a la puerta, los vecinos estaban gritando en el pasillo."
+    },
+    {
+     "sp": "Diana",
+     "line": "Was anyone hurt?",
+     "es": "¿Alguien salió herido?"
+    },
+    {
+     "sp": "Ricardo",
+     "line": "No, luckily. It only lasted a few seconds.",
+     "es": "No, por suerte. Solo duró unos segundos."
+    }
+   ]
+  },
+  {
+   "title": "At the police station",
+   "titleEs": "En la estación de policía",
+   "scene": "🚇 En Medellín: Jimena denuncia que le robaron el celular en el metro.",
+   "cast": [
+    {
+     "name": "Ramírez",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Jimena",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ramírez",
+     "line": "What were you doing when the man took your phone?",
+     "es": "¿Qué estabas haciendo cuando el hombre te quitó el celular?"
+    },
+    {
+     "sp": "Jimena",
+     "line": "I was waiting for the metro at San Antonio station.",
+     "es": "Estaba esperando el metro en la estación San Antonio."
+    },
+    {
+     "sp": "Ramírez",
+     "line": "Were you using the phone?",
+     "es": "¿Estabas usando el celular?"
+    },
+    {
+     "sp": "Jimena",
+     "line": "Yes, I was texting my sister when he grabbed it.",
+     "es": "Sí, le estaba escribiendo a mi hermana cuando me lo arrebató."
+    },
+    {
+     "sp": "Ramírez",
+     "line": "What was he wearing?",
+     "es": "¿Qué tenía puesto?"
+    },
+    {
+     "sp": "Jimena",
+     "line": "He was wearing a black cap and a red jacket.",
+     "es": "Tenía una gorra negra y una chaqueta roja."
+    },
+    {
+     "sp": "Ramírez",
+     "line": "Where did he go?",
+     "es": "¿Para dónde se fue?"
+    },
+    {
+     "sp": "Jimena",
+     "line": "While I was shouting, he ran up the stairs.",
+     "es": "Mientras yo gritaba, él subió corriendo por las escaleras."
+    }
+   ]
+  }
+ ],
+ "A2-12-1": [
+  {
+   "title": "Still waiting",
+   "titleEs": "Todavía esperando",
+   "scene": "📞 Tatiana llama a su compañía de internet porque el técnico no llega.",
+   "cast": [
+    {
+     "name": "Tatiana",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Brian",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tatiana",
+     "line": "I’ve been waiting for the technician since nine o’clock!",
+     "es": "¡Llevo esperando al técnico desde las nueve!"
+    },
+    {
+     "sp": "Brian",
+     "line": "I’m very sorry. How long have you been having problems with the internet?",
+     "es": "Lo siento mucho. ¿Hace cuánto estás teniendo problemas con el internet?"
+    },
+    {
+     "sp": "Tatiana",
+     "line": "It’s been failing for three days. I’ve been working from a café.",
+     "es": "Lleva tres días fallando. He estado trabajando desde un café."
+    },
+    {
+     "sp": "Brian",
+     "line": "I understand. The technician has been working in your area all morning.",
+     "es": "Entiendo. El técnico ha estado trabajando en tu zona toda la mañana."
+    },
+    {
+     "sp": "Tatiana",
+     "line": "I’ve called you four times today.",
+     "es": "Hoy los he llamado cuatro veces."
+    },
+    {
+     "sp": "Brian",
+     "line": "I know. He’s just finished another job, so he’ll arrive in twenty minutes.",
+     "es": "Lo sé. Acaba de terminar otro trabajo, así que llega en veinte minutos."
+    },
+    {
+     "sp": "Tatiana",
+     "line": "Thank you. I’ve been drinking coffee all day, so I’m very nervous!",
+     "es": "Gracias. ¡Llevo todo el día tomando café, así que estoy muy nerviosa!"
+    }
+   ]
+  },
+  {
+   "title": "Training for the marathon",
+   "titleEs": "Entrenando para la maratón",
+   "scene": "🏅 En un parque de Medellín: Sara ve a Mateo todo sudado.",
+   "cast": [
+    {
+     "name": "Sara",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sara",
+     "line": "You’re all red! Have you been running?",
+     "es": "¡Estás todo rojo! ¿Estabas corriendo?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Yes, I’ve been training for the Medellín marathon.",
+     "es": "Sí, he estado entrenando para la maratón de Medellín."
+    },
+    {
+     "sp": "Sara",
+     "line": "How long have you been training?",
+     "es": "¿Hace cuánto estás entrenando?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Since January. I’ve run four half marathons so far.",
+     "es": "Desde enero. Ya he corrido cuatro medias maratones."
+    },
+    {
+     "sp": "Sara",
+     "line": "Wow. I’ve been thinking about running too.",
+     "es": "¡Uy! Yo he estado pensando en correr también."
+    },
+    {
+     "sp": "Mateo",
+     "line": "You should! There’s a running club in the park. It’s been meeting every Saturday for years.",
+     "es": "¡Deberías! Hay un club de corredores en el parque. Se reúne todos los sábados desde hace años."
+    },
+    {
+     "sp": "Sara",
+     "line": "Great. I haven’t been sleeping well lately, so exercise might help.",
+     "es": "Súper. Últimamente no he estado durmiendo bien, así que el ejercicio me puede ayudar."
+    }
+   ]
+  }
  ]
 }
