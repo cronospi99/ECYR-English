@@ -1,10 +1,14 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { PersonaId } from '@/lib/voice';
+import type { PersonaId } from '@/lib/tts/voices';
 
 export type ThemePref = 'system' | 'light' | 'dark';
-/** "natural": Gemini voices through the class's AI (falls back to the device voice by itself). */
-export type VoiceEngine = 'natural' | 'device';
+/**
+ * "auto": natural neural voices for sentences, the device's voice for single words;
+ * "natural": natural voices for everything; "device": the device's voices only.
+ * Natural voices fall back to the device by themselves.
+ */
+export type VoiceEngine = 'auto' | 'natural' | 'device';
 
 interface SettingsState {
   theme: ThemePref;
@@ -12,7 +16,7 @@ interface SettingsState {
   accent: 'en-US' | 'en-GB';
   speechRate: number;
   voiceEngine: VoiceEngine;
-  /** The learner's natural voice; null = the one matching `accent` (Emma / Olivia). */
+  /** The learner's natural voice; null = the default for `accent` (Ava / Sonia). */
   voicePersona: PersonaId | null;
   name: string;
   /** Teacher free-practice mode: nothing is recorded (XP, activity, games). */
@@ -38,7 +42,7 @@ export const useSettings = create<SettingsState>()(
       spanishHints: true,
       accent: 'en-US',
       speechRate: 0.95,
-      voiceEngine: 'natural',
+      voiceEngine: 'auto',
       voicePersona: null,
       name: '',
       practiceSandbox: false,
@@ -48,6 +52,15 @@ export const useSettings = create<SettingsState>()(
       },
       set: (p) => set(p),
     }),
-    { name: 'ecyr:settings' },
+    {
+      name: 'ecyr:settings',
+      version: 1,
+      // v0 "natural" meant the old Gemini voices; the new default is "auto".
+      migrate: (old, version) => {
+        const s = (old ?? {}) as Partial<SettingsState>;
+        if (version < 1 && (s.voiceEngine as string) === 'natural') s.voiceEngine = 'auto';
+        return s as SettingsState;
+      },
+    },
   ),
 );

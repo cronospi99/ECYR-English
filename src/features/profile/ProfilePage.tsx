@@ -33,7 +33,7 @@ import { useAuth } from '@/store/auth';
 import { useSettings, type ThemePref } from '@/store/settings';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
 import { isSupabaseConfigured } from '@/lib/supabase';
-import { PERSONAS, defaultPersona, naturalVoiceIssue, personaFor, type Persona } from '@/lib/voice';
+import { PERSONAS, defaultPersona, edgeIssue, personaFor, type Persona, type VoiceAccent } from '@/lib/tts';
 import { getSpeechState, speakAs, stopSpeaking, subscribeSpeech } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { ink, tint } from '@/lib/color';
@@ -306,7 +306,7 @@ function Preferences() {
             size="sm"
             value={s.accent}
             onChange={(accent) => {
-              // Keep the natural voice on the same accent (Emma ↔ Olivia, Liam ↔ Harry).
+              // Keep the natural voice on the same accent (Ava ↔ Sonia, Andrew ↔ Ryan).
               const p = s.voicePersona ? defaultPersona() : null;
               const want = accent === 'en-GB' ? 'uk' : 'us';
               s.set(p && p.accent !== want ? { accent, voicePersona: personaFor(p.gender, want).id } : { accent });
@@ -338,17 +338,19 @@ function Preferences() {
 
 // ------------------------------------------------------------------- voice --
 
+const ACCENT_TITLE: Record<VoiceAccent, string> = { us: '🇺🇸 Estados Unidos', uk: '🇬🇧 Reino Unido', au: '🇦🇺 Australia', ie: '🇮🇪 Irlanda' };
+
 function VoiceSettings() {
   const s = useSettings();
-  // Re-render when the session or class changes: they decide whether the natural voice is available.
+  // Re-render when the session changes: it decides whether natural voices are available.
   useAuth((st) => st.session);
-  useAuth((st) => st.profile);
-  const issue = naturalVoiceIssue();
+  const issue = edgeIssue();
   const current = defaultPersona();
-  const natural = s.voiceEngine === 'natural';
+  const natural = s.voiceEngine !== 'device';
 
   const engines = [
-    { value: 'natural' as const, icon: Sparkles, color: 'var(--purple)', title: 'Voz natural (IA)', subtitle: 'Voces realistas, guardadas para escucharlas al instante' },
+    { value: 'auto' as const, icon: Sparkles, color: 'var(--purple)', title: 'Voces naturales (recomendado)', subtitle: 'Frases, diálogos y lecturas con voces neuronales; palabras sueltas al instante' },
+    { value: 'natural' as const, icon: Sparkles, color: 'var(--indigo)', title: 'Voces naturales para todo', subtitle: 'También las palabras sueltas (tardan un poco la primera vez)' },
     { value: 'device' as const, icon: Smartphone, color: '#8e8e93', title: 'Voz del dispositivo', subtitle: 'Sin conexión, la del navegador' },
   ];
 
@@ -358,7 +360,7 @@ function VoiceSettings() {
       footer={
         natural && issue
           ? `${issue} Mientras tanto se usa la voz del dispositivo.`
-          : 'Si la voz natural no está disponible (sin conexión o límite diario), se usa la del dispositivo automáticamente.'
+          : 'Si la voz natural no está disponible (sin conexión o servicio caído), se usa la del dispositivo automáticamente. En diálogos y audios cada personaje tiene su propia voz.'
       }
     >
       {engines.map((e) => (
@@ -372,14 +374,22 @@ function VoiceSettings() {
         />
       ))}
       {natural && (
-        <div className="grid grid-cols-2 gap-2 p-3 shadow-[inset_0_0.5px_0_var(--separator)]">
-          {PERSONAS.map((p) => (
-            <PersonaCard
-              key={p.id}
-              p={p}
-              selected={p.id === current.id}
-              onSelect={() => s.set(p.accent === 'au' ? { voicePersona: p.id } : { voicePersona: p.id, accent: p.accent === 'uk' ? 'en-GB' : 'en-US' })}
-            />
+        <div className="space-y-3 p-3 shadow-[inset_0_0.5px_0_var(--separator)]">
+          <p className="text-label-2 px-1 text-[13px]">Tu voz para leer en voz alta:</p>
+          {(['us', 'uk', 'au', 'ie'] as const).map((a) => (
+            <div key={a}>
+              <div className="text-label-2 mb-1.5 px-1 text-[12px] font-semibold">{ACCENT_TITLE[a]}</div>
+              <div className="grid grid-cols-1 gap-2 min-[420px]:grid-cols-2">
+                {PERSONAS.filter((p) => p.accent === a).map((p) => (
+                  <PersonaCard
+                    key={p.id}
+                    p={p}
+                    selected={p.id === current.id}
+                    onSelect={() => s.set(p.accent === 'us' || p.accent === 'uk' ? { voicePersona: p.id, accent: p.accent === 'uk' ? 'en-GB' : 'en-US' } : { voicePersona: p.id })}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}
@@ -394,7 +404,7 @@ function PersonaCard({ p, selected, onSelect }: { p: Persona; selected: boolean;
   const phase = now.id === mine.current ? now.phase : 'idle';
   const preview = () => {
     if (phase !== 'idle') return stopSpeaking();
-    mine.current = speakAs(`Hi, I'm ${p.name}. Let's practise English together!`, { voice: p.gender, accent: p.accent }, { rate });
+    mine.current = speakAs(`Hi, I'm ${p.name}. Let's practise English together!`, { voice: p.gender, accent: p.accent, persona: p.id }, { rate, tier: 'premium' });
   };
   return (
     <div
