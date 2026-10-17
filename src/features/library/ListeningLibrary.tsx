@@ -12,7 +12,7 @@ import { useAsync } from '@/hooks/useAsync';
 import { checkTyped, loadLibTracks, type LibTrack } from '@/content/library';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
-import { speakAs, stopSpeaking } from '@/lib/speech';
+import { speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
@@ -135,15 +135,20 @@ function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
       return;
     }
     setLine(k);
-    const l = t.lines[k]!;
-    speakAs(l.text, t.speakers[l.s] ?? t.speakers[0]!, {
-      rate: Number(rate),
-      onEnd: () => {
-        if (stop.current) return;
-        // A short breath between turns, like a real recording.
-        setTimeout(() => !stop.current && playFrom(k + 1), 280);
+    // The whole track in one go: each speaker keeps a distinct voice, the next line loads while one plays.
+    speakSequence(
+      t.lines.slice(k).map((l) => ({ text: l.text, speaker: t.speakers[l.s] ?? t.speakers[0]! })),
+      {
+        rate: Number(rate),
+        gapMs: 280,
+        onLine: (i) => !stop.current && setLine(k + i),
+        onEnd: () => {
+          if (stop.current) return;
+          setPlaying(false);
+          setLine(-1);
+        },
       },
-    });
+    );
   };
   const toggle = () => {
     if (playing) {

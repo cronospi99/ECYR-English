@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Misc';
 import { Segmented } from '@/components/ui/Segmented';
 import { SpeakButton } from '@/components/learning/SpeakButton';
-import { speak, stopSpeaking } from '@/lib/speech';
+import { speak, speakSequence, stopSpeaking } from '@/lib/speech';
 import { ink, tint } from '@/lib/color';
 import { cn } from '@/lib/cn';
 import { arr, str, Es, Section } from './kit';
@@ -39,10 +39,12 @@ export function PhrasebookBlock({ b }: { b: CourseBlock }) {
   const shown = items.filter((it) => (cat === 'all' || it.cat === cat) && (reg === 'all' || it.reg === reg));
   const groups = cats.map((c) => ({ ...c, items: shown.filter((it) => it.cat === c.id) })).filter((g) => g.items.length);
 
-  const playAll = (k = 0) => {
-    if (k >= shown.length) return setPlaying(null);
-    setPlaying(k);
-    speak(shown[k]!.en.replace(/\s*\/\s*/g, '. '), { rate: 0.9, onEnd: () => setTimeout(() => playAll(k + 1), 350) });
+  const playAll = () => {
+    setPlaying(0);
+    speakSequence(
+      shown.map((it) => ({ text: it.en.replace(/\s*\/\s*/g, '. ') })),
+      { rate: 0.9, gapMs: 350, onLine: setPlaying, onEnd: () => setPlaying(null) },
+    );
   };
   const stop = () => {
     stopSpeaking();

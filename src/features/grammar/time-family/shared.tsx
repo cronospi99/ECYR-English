@@ -5,7 +5,7 @@ import { Check, Flame, RotateCcw, Star, Trophy, Volume2, X } from 'lucide-react'
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { ProgressRing } from '@/components/ui/Progress';
-import { canSpeak, speak } from '@/lib/speech';
+import { canSpeak, speak, speakSpanish } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import { useProgress } from '@/store/progress';
 import type { Skill } from '@/content/types';
@@ -32,17 +32,9 @@ export function useSay() {
   return (text: string) => speak(text, { accent, rate: speechRate });
 }
 
-/** Spanish TTS (lib/speech only picks English voices). */
+/** Spanish TTS in a Colombian voice (natural when available, else the device's). */
 export function speakEs(text: string, rate = 0.95) {
-  if (!canSpeak()) return;
-  const synth = window.speechSynthesis;
-  synth.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  const v = synth.getVoices().find((x) => x.lang.replace('_', '-').toLowerCase().startsWith('es'));
-  if (v) u.voice = v;
-  u.lang = v?.lang ?? 'es-ES';
-  u.rate = rate;
-  synth.speak(u);
+  speakSpanish(text, { rate });
 }
 
 export function useShowEs() {

@@ -11,7 +11,7 @@ import { loadLevel } from '@/content/levels';
 import { CEFR_LEVELS, type CefrLevel, type DialogueLine } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
-import { speak, stopSpeaking } from '@/lib/speech';
+import { speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { unitTitle } from '../learn/LevelPage';
 import { ListeningLibrary } from '@/features/library/ListeningLibrary';
@@ -150,14 +150,22 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
   const speakers = [...new Set(clip.lines.map((l) => l.sp))];
   const gaps = clip.lines.map((l) => keyWord(l.line));
 
+  // A distinct voice per speaker (alternating female / male), the same one for single lines and "play all".
+  const speakerOf = (sp: string) => {
+    const i = speakers.indexOf(sp);
+    return { name: sp, voice: i % 2 ? ('male' as const) : ('female' as const), accent: i % 2 ? ('uk' as const) : ('us' as const) };
+  };
   const play = (k = 0, single = false) => {
     if (k >= clip.lines.length) return setPlaying(null);
     setPlaying(k);
-    speak(clip.lines[k]!.line, {
-      accent: speakers.indexOf(clip.lines[k]!.sp) % 2 ? 'en-GB' : 'en-US',
-      rate: speechRate * 0.95,
-      onEnd: () => (single ? setPlaying(null) : play(k + 1)),
-    });
+    if (single) {
+      speakAs(clip.lines[k]!.line, speakerOf(clip.lines[k]!.sp), { rate: speechRate * 0.95, tier: 'premium', onEnd: () => setPlaying(null) });
+      return;
+    }
+    speakSequence(
+      clip.lines.slice(k).map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })),
+      { rate: speechRate * 0.95, onLine: (i) => setPlaying(k + i), onEnd: () => setPlaying(null) },
+    );
   };
 
   const check = () => {
