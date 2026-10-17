@@ -52,7 +52,7 @@ export default function TopicPage() {
       subtitle={topic.kicker}
       actions={
         done && (
-          <span className="text-ios-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
+          <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
             <CheckCircle2 size={20} /> {done.score}%
           </span>
         )

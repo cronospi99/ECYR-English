@@ -36,6 +36,7 @@ import { FormulaBlock } from './FormulaBlock';
 import { ColorTable } from './ColorTable';
 import { Dialogue } from './Dialogue';
 import { Clamp, Disclosure, Hl, Kicker, QuoteText, ink, tint } from './ui';
+import { deep } from '@/lib/color';
 
 // ------------------------------------------------------------------ tab ----
 
@@ -140,7 +141,7 @@ export function GrammarLesson({
         <h3 className="text-title-2 mt-1 text-balance">{g.name}</h3>
         {summary && (
           <div className="bg-card/80 mt-3 flex items-start gap-2 rounded-[14px] py-2 pr-1.5 pl-3 shadow-[0_1px_2px_rgb(0_0_0/0.05)]">
-            <Sparkles size={16} className="mt-[3px] shrink-0" style={{ color }} aria-hidden />
+            <Sparkles size={16} className="mt-[3px] shrink-0" style={{ color: ink(color) }} aria-hidden />
             <div className="min-w-0 flex-1">
               <span className="text-label-2 block text-[11px] font-bold tracking-[0.06em] uppercase">En una frase</span>
               <span className="text-[16px] font-medium text-pretty">
@@ -229,7 +230,7 @@ function NextPoint({ next, onNext, color }: { next: GrammarPoint; onNext: () => 
         <span className="text-label-2 block text-[12px] font-bold tracking-wide uppercase">Siguiente punto</span>
         <span className="block truncate text-[16px] font-semibold">{next.name}</span>
       </span>
-      <ChevronRight size={20} style={{ color }} aria-hidden />
+      <ChevronRight size={20} style={{ color: ink(color) }} aria-hidden />
     </button>
   );
 }
@@ -283,7 +284,7 @@ function Examples({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: s
         ))}
       </ul>
       {all.length > n && (
-        <button type="button" onClick={() => setN(all.length)} className="text-ios-blue mt-2.5 inline-flex items-center gap-1 text-[15px] font-semibold">
+        <button type="button" onClick={() => setN(all.length)} className="text-ink-blue mt-2.5 inline-flex items-center gap-1 text-[15px] font-semibold">
           <Plus size={16} aria-hidden /> Ver {all.length - n} más
         </button>
       )}
@@ -331,7 +332,7 @@ function Note({ note }: { note: string }) {
         <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} className="flex w-full items-start gap-3 px-3.5 py-3 text-left">
           <NoteIcon icon={Icon} color={color} />
           <span className="min-w-0 flex-1 text-[15px] leading-snug font-medium text-pretty">{head2}</span>
-          <span className="text-ios-blue mt-0.5 shrink-0 text-[13px] font-semibold">{open ? 'Menos' : 'Detalles'}</span>
+          <span className="text-ink-blue mt-0.5 shrink-0 text-[13px] font-semibold">{open ? 'Menos' : 'Detalles'}</span>
         </button>
       ) : (
         <div className="flex items-start gap-3 px-3.5 py-3">
@@ -357,7 +358,7 @@ function Note({ note }: { note: string }) {
 }
 
 const NoteIcon = ({ icon: Icon, color }: { icon: LucideIcon; color: string }) => (
-  <span className="mt-px inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: tint(color, 16), color }} aria-hidden>
+  <span className="mt-px inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full" style={{ background: tint(color, 16), color: ink(color) }} aria-hidden>
     <Icon size={14} strokeWidth={2.4} />
   </span>
 );
@@ -395,7 +396,7 @@ function Mistakes({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
           </div>
         ) : (
           <div className="flex gap-3 rounded-[16px] p-4 text-[15px] leading-relaxed" style={{ background: tint(orange, 10) }}>
-            <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: orange }} aria-hidden />
+            <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: ink(orange) }} aria-hidden />
             <p className="text-pretty">
               <QuoteText text={g.watch} color={orange} />
             </p>
@@ -410,7 +411,7 @@ function WrongRight({ text, wrong = false }: { text: string; wrong?: boolean }) 
   const c = wrong ? 'var(--red)' : 'var(--green)';
   return (
     <div className="flex items-start gap-2.5 px-4 py-3" style={{ background: tint(c, 9) }}>
-      <span className="mt-px inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white" style={{ background: c }}>
+      <span className="mt-px inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white" style={{ background: deep(c) }}>
         {wrong ? <X size={14} strokeWidth={3} aria-label="Incorrecto" /> : <Check size={14} strokeWidth={3} aria-label="Correcto" />}
       </span>
       <span className={cn('text-[16px] font-semibold text-pretty', wrong && 'line-through decoration-2')} style={{ color: ink(c), textDecorationColor: tint(c, 60) }}>
@@ -428,7 +429,7 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
     <div className="mt-4">
       <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-[15px] font-semibold">
-          <Eye size={16} className="text-ios-purple" aria-hidden /> Ponte a prueba: ¿qué está mal?
+          <Eye size={16} className="text-ink-purple" aria-hidden /> Ponte a prueba: ¿qué está mal?
         </div>
         <span className="text-label-2 text-[13px] tabular-nums">
           {open.size}/{fixes.length}
@@ -447,7 +448,7 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
                 style={on ? { background: tint('var(--green)', 9) } : undefined}
               >
                 <span className={cn('flex items-start gap-2 text-[15px]', on && 'text-label-2 line-through decoration-[var(--red)]')}>
-                  <X size={16} className="text-ios-red mt-0.5 shrink-0" aria-label="Incorrecto" />
+                  <X size={16} className="text-ink-red mt-0.5 shrink-0" aria-label="Incorrecto" />
                   {f.wrong}
                 </span>
                 {on ? (
@@ -459,7 +460,7 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
                     <span className="text-label-2 mt-1 block pl-6 text-[13px] leading-snug">{f.why}</span>
                   </motion.span>
                 ) : (
-                  <span className="text-ios-blue mt-2 pl-6 text-[13px] font-semibold">Toca para corregir</span>
+                  <span className="text-ink-blue mt-2 pl-6 text-[13px] font-semibold">Toca para corregir</span>
                 )}
               </button>
             </li>
@@ -484,7 +485,7 @@ function BlankCheck({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
   return (
     <div className="mt-4">
       <div className="mb-2 flex items-center gap-1.5 text-[15px] font-semibold">
-        <Eye size={16} className="text-ios-purple" aria-hidden /> Ponte a prueba: ¿qué palabra falta?
+        <Eye size={16} className="text-ink-purple" aria-hidden /> Ponte a prueba: ¿qué palabra falta?
       </div>
       <ul className="space-y-2">
         {items.map((segs, k) => {
@@ -504,7 +505,7 @@ function BlankCheck({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
                   hidden++;
                   if (hidden > 2) return <span key={j}>{s.text}</span>;
                   return on ? (
-                    <motion.span key={j} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-ios-green rounded-[5px] bg-[color-mix(in_srgb,var(--green)_14%,transparent)] px-1 font-semibold">
+                    <motion.span key={j} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-ink-green rounded-[5px] bg-[color-mix(in_srgb,var(--green)_14%,transparent)] px-1 font-semibold">
                       {s.text}
                     </motion.span>
                   ) : (
@@ -551,7 +552,7 @@ function UseIt({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: stri
         <div>
           {(g.drill.name || g.drill.prompt) && (
             <p className="mb-2.5 flex items-start gap-2 text-[15px] text-pretty">
-              <ListOrdered size={17} className="mt-0.5 shrink-0" style={{ color }} aria-hidden />
+              <ListOrdered size={17} className="mt-0.5 shrink-0" style={{ color: ink(color) }} aria-hidden />
               <span>
                 {g.drill.name && <strong className="font-semibold">{g.drill.name}. </strong>}
                 {g.drill.prompt}
@@ -561,7 +562,7 @@ function UseIt({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: stri
           <ol className="space-y-1.5">
             {g.drill.items.map((d, k) => (
               <li key={d} className="bg-fill-2 flex items-start gap-2.5 rounded-[12px] py-2 pr-1.5 pl-2.5 text-[15px]">
-                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: color }}>
+                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: deep(color) }}>
                   {k + 1}
                 </span>
                 <span className="min-w-0 flex-1 pt-0.5 text-pretty">
@@ -576,7 +577,7 @@ function UseIt({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: stri
       {cur === 'contrast' && g.contrast && <ColorTable chart={g.contrast} color="var(--teal)" spec={spec} />}
       {cur === 'sound' && g.sound && (
         <div className="flex items-start gap-3 rounded-[16px] p-4 text-[15px] leading-relaxed" style={{ background: tint('var(--purple)', 10) }}>
-          <Volume2 size={18} className="text-ios-purple mt-0.5 shrink-0" aria-hidden />
+          <Volume2 size={18} className="text-ink-purple mt-0.5 shrink-0" aria-hidden />
           <p className="text-pretty">
             <QuoteText text={g.sound} color="var(--purple)" />
           </p>

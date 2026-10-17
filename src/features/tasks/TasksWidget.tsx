@@ -5,6 +5,7 @@ import { IconTile } from '@/components/ui/IconTile';
 import { dueInfo } from '@/lib/assignments';
 import { DUE_COLOR, KIND_META } from './meta';
 import { useMyTasks } from './useMyTasks';
+import { ink } from '@/lib/color';
 
 /**
  * Home widget: the next 3 pending tasks. Renders nothing for visitors,
@@ -42,7 +43,7 @@ export function TasksWidget({ className }: { className?: string }) {
                   <IconTile icon={k.icon} color={k.color} size={28} soft />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-[15px] font-semibold">{a.title}</span>
-                    <span className="block text-[13px] font-medium" style={{ color: DUE_COLOR[due.tone] }}>
+                    <span className="block text-[13px] font-medium" style={{ color: ink(DUE_COLOR[due.tone]) }}>
                       {due.label}
                     </span>
                   </span>
@@ -53,7 +54,7 @@ export function TasksWidget({ className }: { className?: string }) {
         </ul>
       ) : (
         <p className="text-subhead text-label-2 flex items-center gap-2 px-5 py-3">
-          <CheckCheck size={18} className="text-ios-green" aria-hidden /> No tienes tareas pendientes.
+          <CheckCheck size={18} className="text-ink-green" aria-hidden /> No tienes tareas pendientes.
         </p>
       )}
     </Card>

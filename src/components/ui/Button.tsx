@@ -11,11 +11,11 @@ const base =
 const variants: Record<Variant, string> = {
   filled: 'bg-ios-blue text-white',
   brand: 'brand-gradient text-white shadow-[0_8px_24px_-8px_rgb(47_107_255/0.6)]',
-  tinted: 'bg-[color-mix(in_srgb,var(--blue)_15%,transparent)] text-ios-blue',
+  tinted: 'bg-[color-mix(in_srgb,var(--blue)_15%,transparent)] text-ink-blue',
   gray: 'bg-fill text-label',
-  plain: 'text-ios-blue hover:opacity-70',
+  plain: 'text-ink-blue hover:opacity-70',
   glass: 'material text-label shadow-[inset_0_0_0_0.5px_var(--separator)]',
-  destructive: 'bg-[color-mix(in_srgb,var(--red)_14%,transparent)] text-ios-red',
+  destructive: 'bg-[color-mix(in_srgb,var(--red)_14%,transparent)] text-ink-red',
 };
 
 const sizes: Record<Size, string> = {

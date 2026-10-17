@@ -15,6 +15,7 @@ import { useProgress } from '@/store/progress';
 import { speakAs, stopSpeaking } from '@/lib/speech';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 const KIND_ES: Record<string, string> = {
   dialogue: 'Diálogo',
@@ -74,14 +75,14 @@ export function ListeningLibrary() {
             <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]" style={{ background: 'color-mix(in srgb, var(--skill-listening) 16%, transparent)' }}>
               {t.emoji}
               <span className="bg-card absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center rounded-full shadow">
-                <Play size={10} fill="currentColor" className="text-ios-blue" />
+                <Play size={10} fill="currentColor" className="text-ink-blue" />
               </span>
             </span>
             <span className="min-w-0 flex-1">
               <span className="flex flex-wrap items-center gap-1.5">
                 <LevelChip level={t.level} />
                 <span className="text-label-2 text-[12px] font-semibold">{KIND_ES[t.kind] ?? t.kind}</span>
-                {doneIds.has(t.id) && <span className="text-ios-green text-[12px] font-semibold">✓</span>}
+                {doneIds.has(t.id) && <span className="text-ink-green text-[12px] font-semibold">✓</span>}
               </span>
               <span className="mt-1 block text-[16px] leading-snug font-bold">{t.title}</span>
               <span className="text-label-2 mt-0.5 block text-[12.5px]">
@@ -218,7 +219,7 @@ function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
                 const color = SPEAKER_COLORS[l.s % SPEAKER_COLORS.length]!;
                 return (
                   <div key={i} className={cn('flex gap-2 rounded-[12px] px-3 py-2 transition-colors', line === i ? 'bg-fill-2' : '')}>
-                    <span className="w-20 shrink-0 truncate text-[13px] font-bold" style={{ color }}>
+                    <span className="w-20 shrink-0 truncate text-[13px] font-bold" style={{ color: ink(color) }}>
                       {t.speakers[l.s]?.name}
                     </span>
                     <span className="flex-1 text-[15px] leading-snug">{l.text}</span>
@@ -274,7 +275,7 @@ function Dictation({ t }: { t: LibTrack }) {
               <Button size="sm" variant="tinted" onClick={() => speakAs(d, speakerOf(d), { rate: 0.85 })}>
                 <Volume2 size={15} /> Frase {i + 1}
               </Button>
-              {checked && (v === 'wrong' ? <X className="text-ios-red" size={18} /> : <Check className="text-ios-green" size={18} />)}
+              {checked && (v === 'wrong' ? <X className="text-ink-red" size={18} /> : <Check className="text-ink-green" size={18} />)}
             </div>
             <textarea
               value={vals[i]}

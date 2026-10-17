@@ -10,6 +10,7 @@ import { ClockTool, TimeQuiz, TimeRules } from './clock';
 import { FamilyHomework, FamilyRiddles, FamilyTree, FamilyVocabQuiz, FamilyWords } from './family';
 import { GenitiveBuilder, GenitiveQuiz, GenitiveRules } from './genitiveTools';
 import { SayingCard, ScorePills } from './shared';
+import { deep } from '@/lib/color';
 
 export { ClockFace, ClockTool, TimeQuiz, TimeRules } from './clock';
 export { FamilyHomework, FamilyRiddles, FamilyTree, FamilyVocabQuiz, FamilyWords, TreeQuiz } from './family';
@@ -73,12 +74,12 @@ export default function TimeFamilyPage() {
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {AGENDA.map((a) => (
               <Card key={a.n} className="flex flex-col p-5">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full text-[17px] font-bold text-white" style={{ background: AGENDA_COLOR[a.tab] }}>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full text-[17px] font-bold text-white" style={{ background: deep(AGENDA_COLOR[a.tab]) }}>
                   {a.n}
                 </span>
                 <h3 className="text-title-3 mt-3">{a.title}</h3>
                 <p className="text-label-2 mt-1 flex-1 text-[15px]">{a.body}</p>
-                <button type="button" onClick={() => go(a.tab)} className="text-ios-blue mt-3 inline-flex items-center gap-0.5 self-start text-[15px] font-semibold">
+                <button type="button" onClick={() => go(a.tab)} className="text-ink-blue mt-3 inline-flex items-center gap-0.5 self-start text-[15px] font-semibold">
                   Start · Empezar <ChevronRight size={16} />
                 </button>
               </Card>

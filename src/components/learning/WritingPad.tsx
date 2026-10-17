@@ -118,7 +118,7 @@ export function WritingPad({
           Autoevaluar
         </Button>
       </div>
-      {error && <p className="text-ios-red mt-3 text-[14px]">{error}</p>}
+      {error && <p className="text-ink-red mt-3 text-[14px]">{error}</p>}
       {feedback && (
         <div className="bg-fill-2 mt-4 rounded-[14px] p-4 text-[15px]">
           <Markdown text={feedback} />

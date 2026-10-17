@@ -3,6 +3,7 @@ import { ArrowRight, Sigma } from 'lucide-react';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { parseForm, type Chip, type FormLine, type KeySpec, type Polarity, type Role } from './formula';
 import { Hl, Kicker, RoleLegend, ink, roleBg, roleText, tint } from './ui';
+import { deep } from '@/lib/color';
 
 const POL: Record<Exclude<Polarity, null>, { sym: string; color: string; label: string }> = {
   '+': { sym: '+', color: 'var(--green)', label: 'Afirmativa' },
@@ -17,7 +18,7 @@ function PolBadge({ p }: { p: Polarity }) {
   return (
     <span
       className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-1 text-[15px] font-bold text-white"
-      style={{ background: d.color }}
+      style={{ background: deep(d.color) }}
       title={d.label}
     >
       <span aria-hidden>{d.sym}</span>
@@ -32,11 +33,10 @@ export function FormulaChip({ chip }: { chip: Chip }) {
       className="inline-flex min-h-8 items-center rounded-[9px] px-2.5 py-1 text-[15px] leading-tight font-semibold"
       style={{
         background: roleBg(chip.role, chip.slot ? 12 : 18),
-        color: roleText(chip.role),
+        color: ink(roleText(chip.role)),
         boxShadow: chip.optional ? `inset 0 0 0 1.5px ${roleBg(chip.role, 45)}` : undefined,
         borderStyle: chip.optional ? 'dashed' : undefined,
-        fontStyle: chip.slot ? 'italic' : undefined,
-      }}
+        fontStyle: chip.slot ? 'italic' : undefined}}
     >
       {chip.text}
       {chip.optional && <span className="sr-only"> (opcional)</span>}
@@ -87,7 +87,7 @@ function Row({ line, spec, color }: { line: FormLine; spec?: KeySpec; color: str
                   );
                 if (t.t === 'q')
                   return (
-                    <span key={i} className="text-ios-blue text-[18px] font-bold" aria-label="signo de pregunta">
+                    <span key={i} className="text-ink-blue text-[18px] font-bold" aria-label="signo de pregunta">
                       ?
                     </span>
                   );

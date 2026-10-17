@@ -17,6 +17,7 @@ import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import type { Worksheet } from '@/lib/worksheet';
 import { ExternalResources } from '@/features/library/ExternalResources';
+import { ink } from '@/lib/color';
 
 /** Workshop items take their type from their set. */
 const setQuestions = (s: Workshop['sets'][number]) => s.items.map((it) => ({ ...it, type: s.type }) as LibQuestion);
@@ -68,7 +69,7 @@ function WorkshopList({ all }: { all: Workshop[] }) {
                   <span className="min-w-0 flex-1">
                     <span className="flex items-center gap-2">
                       <LevelChip level={w.level} />
-                      {doneIds.has(w.id) && <span className="text-ios-green text-[12px] font-semibold">✓ Hecho</span>}
+                      {doneIds.has(w.id) && <span className="text-ink-green text-[12px] font-semibold">✓ Hecho</span>}
                     </span>
                     <span className="mt-1 block truncate text-[16px] font-bold">{w.title}</span>
                     <span className="text-label-2 block truncate text-[13px]">{w.titleEs}</span>
@@ -121,7 +122,7 @@ function WorkshopView({ w }: { w: Workshop }) {
         </Card>
 
         <section className="space-y-3">
-          <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color }}>
+          <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
             <BookOpen size={16} /> La regla
           </h2>
           {w.rules.map((r, i) => (
@@ -135,7 +136,7 @@ function WorkshopView({ w }: { w: Workshop }) {
                       {r.table.map((row, ri) => (
                         <tr key={ri} className="border-separator border-b last:border-0">
                           {row.map((c, ci) => (
-                            <td key={ci} className={ci === 0 ? 'py-1.5 pr-3 font-semibold' : 'py-1.5 pr-3'} style={ci === row.length - 1 ? { color } : undefined}>
+                            <td key={ci} className={ci === 0 ? 'py-1.5 pr-3 font-semibold' : 'py-1.5 pr-3'} style={ci === row.length - 1 ? { color: ink(color) } : undefined}>
                               {c}
                             </td>
                           ))}
@@ -167,14 +168,14 @@ function WorkshopView({ w }: { w: Workshop }) {
 
         {w.mistakes.length > 0 && (
           <section className="space-y-2">
-            <h2 className="text-ios-orange flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase">
+            <h2 className="text-ink-orange flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase">
               <AlertTriangle size={16} /> Errores típicos
             </h2>
             <div className="grid gap-2 sm:grid-cols-2">
               {w.mistakes.map((m, i) => (
                 <Card key={i} className="p-3.5 text-[14.5px]">
                   <div className="text-label-2 line-through">{m.wrong}</div>
-                  <div className="text-ios-green font-semibold">{m.right}</div>
+                  <div className="text-ink-green font-semibold">{m.right}</div>
                   <div className="text-label-2 mt-1 text-[13px]">{m.why_es}</div>
                 </Card>
               ))}
@@ -184,7 +185,7 @@ function WorkshopView({ w }: { w: Workshop }) {
 
         <section>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-            <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color }}>
+            <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
               <Dumbbell size={16} /> Practica
             </h2>
             {cur && <PdfButton label="Solo este ejercicio" build={() => workshopSheet(w, [cur])} />}

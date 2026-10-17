@@ -36,7 +36,7 @@ function toReact(node: Node, key: number): ReactNode {
       return el.classList.contains('highlight') ? (
         <mark key={key} className="rounded bg-[color-mix(in_srgb,var(--yellow)_35%,transparent)] px-0.5 text-inherit">{children}</mark>
       ) : (
-        <span key={key} className="text-ios-blue font-semibold">{children}</span>
+        <span key={key} className="text-ink-blue font-semibold">{children}</span>
       );
   }
 }

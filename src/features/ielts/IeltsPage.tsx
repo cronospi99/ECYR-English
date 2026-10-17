@@ -29,6 +29,7 @@ import { cn } from '@/lib/cn';
 import type { Skill } from '@/content/types';
 import './styles/ielts-base.css';
 import './styles/ielts-skin.css';
+import { ink } from '@/lib/color';
 
 const SECTIONS: { mod: IeltsModule; label: string; icon: LucideIcon; color: string; only?: 'teacher' | 'student' }[] = [
   { mod: 'dashboard', label: 'Inicio', icon: Home, color: 'var(--indigo)' },
@@ -184,7 +185,7 @@ export default function IeltsPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <Award size={15} className="text-ios-indigo" /> IELTS Academic
+          <Award size={15} className="text-ink-indigo" /> IELTS Academic
         </span>
       }
       title="IELTS Simulator"
@@ -206,7 +207,7 @@ export default function IeltsPage() {
                 active ? 'bg-label text-bg' : 'text-label hover:bg-fill-2',
               )}
             >
-              <Icon size={16} style={{ color: active ? undefined : s.color }} />
+              <Icon size={16} style={{ color: active ? undefined : ink(s.color) }} />
               {s.label}
             </NavLink>
           );
@@ -215,7 +216,7 @@ export default function IeltsPage() {
 
       {error ? (
         <div className="flex flex-col items-center gap-3 py-20 text-center">
-          <TriangleAlert size={40} className="text-ios-orange" />
+          <TriangleAlert size={40} className="text-ink-orange" />
           <p className="text-label-2 max-w-md">{error}</p>
           <Button onClick={() => window.location.reload()}>Reintentar</Button>
         </div>

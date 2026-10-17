@@ -193,7 +193,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
             <li key={i} className={cn('rounded-[14px] p-3 transition-colors', playing === i ? 'bg-[color-mix(in_srgb,var(--blue)_10%,transparent)]' : 'bg-fill-2')}>
               <div className="mb-1 flex items-center gap-2">
                 <span className="text-label-2 text-[12px] font-semibold">{l.sp}</span>
-                <button type="button" onClick={() => play(i, true)} className="text-ios-blue" aria-label="Repetir línea">
+                <button type="button" onClick={() => play(i, true)} className="text-ink-blue" aria-label="Repetir línea">
                   <Volume2 size={15} />
                 </button>
               </div>
@@ -212,7 +212,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
                   spellCheck={false}
                   className={cn(
                     'bg-card mx-1 h-8 w-32 rounded-[8px] px-2 text-center font-semibold outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]',
-                    checked && (ok ? 'ring-ios-green text-ios-green ring-2' : 'ring-ios-red ring-2'),
+                    checked && (ok ? 'ring-ios-green text-ink-green ring-2' : 'ring-ios-red ring-2'),
                   )}
                 />
                 {show || checked ? after : after.replace(/[^\s]/g, '·')}

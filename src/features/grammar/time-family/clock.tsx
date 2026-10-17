@@ -362,7 +362,7 @@ export function ClockTool({ initial = 15 * 60, compact = false }: { initial?: nu
           />
           <Card className="min-w-0 flex-1 rounded-bl-[6px] p-5" aria-live="polite">
             <div className="text-[26px] leading-tight font-bold tracking-tight sm:text-[30px]">{enTime(h, m)}</div>
-            <div className="text-ios-blue mt-1 text-[18px] font-semibold">{enDigital(h, m)}</div>
+            <div className="text-ink-blue mt-1 text-[18px] font-semibold">{enDigital(h, m)}</div>
             {showEs && <div className="text-label-2 mt-1 text-[17px]">{esTime(h, m)}</div>}
             <div className="mt-3 flex flex-wrap gap-1.5 text-[13px] font-semibold tabular-nums">
               <span className="bg-fill-2 rounded-full px-2.5 py-1">{digitalAmPm(h, m)}</span>
@@ -604,7 +604,7 @@ export function TimeRules() {
       <Card className="p-5">
         <h3 className="text-headline">Past or to? · ¿past o to?</h3>
         <p className="text-label-2 mt-1 text-[15px]">
-          Del minuto 1 al 30 se dice <b className="text-ios-blue">past</b> + la hora actual. Del 31 al 59 se dice <b className="text-ios-orange">to</b> + la hora siguiente.
+          Del minuto 1 al 30 se dice <b className="text-ink-blue">past</b> + la hora actual. Del 31 al 59 se dice <b className="text-ink-orange">to</b> + la hora siguiente.
         </p>
         <div className="mx-auto mt-4 w-full max-w-[260px]">
           <ClockFace abs={demo} onChange={setDemo} halves label="Reloj de ejemplo" />

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 import type { CefrLevel } from '@/content/types';
 import { levelMeta } from '@/content/levels';
+import { ink } from '@/lib/color';
 
 export function Toggle({
   checked,
@@ -40,7 +41,7 @@ export function LevelChip({ level, className }: { level: CefrLevel | string; cla
   return (
     <span
       className={cn('inline-flex h-6 items-center rounded-full px-2.5 text-[12px] font-bold tracking-wide', className)}
-      style={{ background: `color-mix(in srgb, ${color} 16%, transparent)`, color }}
+      style={{ background: `color-mix(in srgb, ${color} 16%, transparent)`, color: ink(color) }}
     >
       {level}
     </span>

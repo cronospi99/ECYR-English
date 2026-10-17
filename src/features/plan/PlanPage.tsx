@@ -25,6 +25,7 @@ import { cn } from '@/lib/cn';
 import { PlanWizard } from './PlanWizard';
 import { PlanWeek } from './PlanWeek';
 import { usePlanState } from './usePlanState';
+import { ink } from '@/lib/color';
 
 const STATUS: Record<PlanEvaluation['status'], { label: string; color: string }> = {
   upcoming: { label: 'Por empezar', color: 'var(--label-2)' },
@@ -53,7 +54,7 @@ export default function PlanPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <CalendarRange size={15} className="text-ios-blue" /> Plan de estudio semanal
+          <CalendarRange size={15} className="text-ink-blue" /> Plan de estudio semanal
         </span>
       }
       title={showWizard ? (plan ? 'Nuevo plan' : 'Crea tu plan') : 'Tu semana'}
@@ -124,7 +125,7 @@ function Overview({ plan, ev, onNext, onClose }: { plan: WeekPlan; ev: PlanEvalu
           <div className="flex flex-wrap items-center gap-2">
             <span
               className="inline-flex h-6 items-center rounded-full px-2.5 text-[12px] font-bold"
-              style={{ color: st.color, background: `color-mix(in srgb, ${st.color} 14%, transparent)` }}
+              style={{ color: ink(st.color), background: `color-mix(in srgb, ${st.color} 14%, transparent)` }}
             >
               {st.label}
             </span>
@@ -222,7 +223,7 @@ function Recommendations({ recs }: { recs: Recommendation[] }) {
               <li key={r.title} className="flex gap-3 px-5 py-3">
                 <span
                   className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-                  style={{ color: t.color, background: `color-mix(in srgb, ${t.color} 15%, transparent)` }}
+                  style={{ color: ink(t.color), background: `color-mix(in srgb, ${t.color} 15%, transparent)` }}
                   aria-label={t.label}
                 >
                   <Icon size={16} />
@@ -231,7 +232,7 @@ function Recommendations({ recs }: { recs: Recommendation[] }) {
                   <div className="text-[15px] font-semibold">{r.title}</div>
                   <p className="text-label-2 text-[13px] leading-snug">{r.text}</p>
                   {r.to && (
-                    <Link to={r.to} className="text-ios-blue mt-1 inline-flex items-center gap-1 text-[13px] font-semibold">
+                    <Link to={r.to} className="text-ink-blue mt-1 inline-flex items-center gap-1 text-[13px] font-semibold">
                       {r.cta ?? 'Ir'} <ArrowRight size={13} />
                     </Link>
                   )}

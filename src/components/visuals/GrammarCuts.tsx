@@ -3,6 +3,7 @@ import { Images, Maximize2 } from 'lucide-react';
 import { visualUrl, type Visual } from '@/content/visuals';
 import { cn } from '@/lib/cn';
 import { Lightbox } from './Visuals';
+import { ink } from '@/lib/color';
 
 /**
  * "La gramática en imágenes": the panels of our infographics that explain this
@@ -31,10 +32,10 @@ export function GrammarCuts({
   return (
     <section>
       <div className="mb-2.5 flex items-center gap-2">
-        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full" style={{ background: `color-mix(in srgb, ${color} 16%, transparent)`, color }}>
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full" style={{ background: `color-mix(in srgb, ${color} 16%, transparent)`, color: ink(color) }}>
           <Images size={15} />
         </span>
-        <span className="text-[13px] font-bold tracking-[0.06em] uppercase" style={{ color }}>
+        <span className="text-[13px] font-bold tracking-[0.06em] uppercase" style={{ color: ink(color) }}>
           {title}
         </span>
         {cuts.length > 1 && <span className="text-label-3 text-[12px]">· {cuts.length}</span>}

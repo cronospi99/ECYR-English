@@ -8,6 +8,7 @@ import { dayKey } from '@/lib/date';
 import { SKILL_INFO } from '@/lib/planner';
 import { cn } from '@/lib/cn';
 import { usePlanState } from './usePlanState';
+import { ink } from '@/lib/color';
 
 /** Home widget: today's tasks from the weekly plan, or an invitation to create one. */
 export function WeekPlanCard() {
@@ -19,7 +20,7 @@ export function WeekPlanCard() {
     return (
       <Card className="relative overflow-hidden p-5">
         <div className="flex items-center gap-2">
-          <CalendarRange size={20} className="text-ios-blue" />
+          <CalendarRange size={20} className="text-ink-blue" />
           <h3 className="text-title-3">Tu plan semanal</h3>
         </div>
         <p className="text-label-2 text-subhead mt-1 max-w-[34ch]">
@@ -32,7 +33,7 @@ export function WeekPlanCard() {
             ['Estudia y mide', 'Las tareas se marcan solas y recibes recomendaciones'],
           ].map(([t, d], i) => (
             <li key={t} className="flex items-start gap-3">
-              <span className="bg-fill-2 text-ios-blue flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold">{i + 1}</span>
+              <span className="bg-fill-2 text-ink-blue flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold">{i + 1}</span>
               <span className="min-w-0">
                 <span className="block text-[15px] font-semibold">{t}</span>
                 <span className="text-label-2 block text-[13px]">{d}</span>
@@ -92,7 +93,7 @@ export function WeekPlanCard() {
                 </button>
                 <Link to={t.to} className="min-w-0 flex-1">
                   <span className={cn('block truncate text-[15px]', done && 'text-label-2 line-through')}>{t.title}</span>
-                  <span className="text-[12px] font-medium" style={{ color: SKILL_INFO[t.skill].color }}>
+                  <span className="text-[12px] font-medium" style={{ color: ink(SKILL_INFO[t.skill].color) }}>
                     {SKILL_INFO[t.skill].label} · {t.minutes} min{t.day < today ? ' · pendiente' : ''}
                   </span>
                 </Link>

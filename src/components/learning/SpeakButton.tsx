@@ -19,7 +19,7 @@ export function SpeakButton({ text, className, size = 18 }: { text: string; clas
         setTimeout(() => setOn(false), Math.max(1500, text.length * 90));
       }}
       className={cn(
-        'text-ios-blue inline-flex shrink-0 items-center justify-center rounded-full p-1.5 transition-colors hover:bg-[color-mix(in_srgb,var(--blue)_12%,transparent)]',
+        'text-ink-blue inline-flex shrink-0 items-center justify-center rounded-full p-1.5 transition-colors hover:bg-[color-mix(in_srgb,var(--blue)_12%,transparent)]',
         on && 'bg-[color-mix(in_srgb,var(--blue)_15%,transparent)]',
         className,
       )}

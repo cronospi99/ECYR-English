@@ -101,7 +101,7 @@ function WordCard({ v }: { v: VocabItem }) {
           aria-expanded={open}
           aria-controls={id}
           onClick={() => setOpen((o) => !o)}
-          className="text-ios-blue mt-auto flex items-center gap-1 px-5 pt-2.5 pb-3.5 text-[13px] font-semibold"
+          className="text-ink-blue mt-auto flex items-center gap-1 px-5 pt-2.5 pb-3.5 text-[13px] font-semibold"
         >
           {open ? 'Menos' : 'Uso y ejemplos'}
           <ChevronDown size={15} className={cn('transition-transform', open && 'rotate-180')} aria-hidden />

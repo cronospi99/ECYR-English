@@ -56,7 +56,7 @@ export function ExternalResources({ className, compact = false }: { className?: 
                   <span className="truncate">{r.name}</span> <ExternalLink size={13} className="text-label-3 shrink-0" />
                 </span>
                 <span className="text-label-2 mt-0.5 block text-[12.5px] leading-snug">{r.what}</span>
-                <span className="text-label-3 mt-1 block text-[11px]">{r.owner}</span>
+                <span className="text-label-2 mt-1 block text-[11px]">{r.owner}</span>
               </span>
             </Card>
           </a>

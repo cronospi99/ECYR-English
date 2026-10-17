@@ -86,7 +86,7 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
       <Card className="relative mb-5 overflow-hidden">
         <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 flex items-center gap-3 rounded-[16px] px-4 py-3">
-          <Mountain className="text-ios-indigo" />
+          <Mountain className="text-ink-indigo" />
           <div>
             <div className="text-label-2 text-[12px]">Altura alcanzada</div>
             <div className="text-[24px] leading-tight font-extrabold tabular-nums">{Math.round(climb * 100)}%</div>
@@ -153,7 +153,7 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
         {editable && (
         <Card className="p-5">
           <h3 className="text-title-3 mb-1 flex items-center gap-2">
-            <Target size={20} className="text-ios-blue" /> Metas
+            <Target size={20} className="text-ink-blue" /> Metas
           </h3>
           <p className="text-label-2 mb-4 text-[14px]">Ajusta tu nivel objetivo y tu meta diaria de XP.</p>
           <div className="text-[13px] font-semibold">Nivel objetivo</div>
@@ -184,7 +184,7 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
                   <span className="text-label-2 w-20 shrink-0 text-[12px]">{relativeTime(a.at)}</span>
                   <span className="min-w-0 flex-1 truncate text-[15px]">{a.title}</span>
                   {a.score !== undefined && <span className="text-label-2 text-[13px] tabular-nums">{a.score}%</span>}
-                  <span className="text-ios-green w-12 text-right text-[13px] font-semibold tabular-nums">+{a.xp}</span>
+                  <span className="text-ink-green w-12 text-right text-[13px] font-semibold tabular-nums">+{a.xp}</span>
                 </li>
               ))}
             </ul>

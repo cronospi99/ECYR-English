@@ -10,6 +10,7 @@ import { speak } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
 import { Highlight, phrasalTerms } from './highlight';
+import { ink } from '@/lib/color';
 
 /**
  * Phrasal-verb mind maps, as in the original Verb Quest: a grid of base verbs;
@@ -309,7 +310,7 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
             <button
               type="button"
               onClick={() => sayAll([it.pv, ...examples])}
-              className="text-ios-blue mt-1 inline-flex items-center gap-1.5 text-[14px] font-semibold"
+              className="text-ink-blue mt-1 inline-flex items-center gap-1.5 text-[14px] font-semibold"
             >
               <Volume2 size={15} /> Escuchar todo
             </button>
@@ -320,7 +321,7 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
         </div>
 
         <div className="mt-4 rounded-[16px] p-4" style={{ background: `color-mix(in srgb, ${family.color} 12%, var(--card))` }}>
-          <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: family.color }}>
+          <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(family.color) }}>
             Significado
           </div>
           <p className="mt-0.5 text-[17px] font-semibold">{it.def}</p>
@@ -341,7 +342,7 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
               <span className="flex-1 text-[16px] leading-snug">
                 <Highlight text={e} terms={terms} color={family.color} />
               </span>
-              <button type="button" onClick={() => speak(e, { rate: 0.92 })} className="text-ios-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${e}`}>
+              <button type="button" onClick={() => speak(e, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${e}`}>
                 <Volume2 size={16} />
               </button>
             </motion.li>

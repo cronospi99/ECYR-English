@@ -61,7 +61,7 @@ export default function WritingPage() {
           </Card>
           <Card className="p-6">
             <h3 className="text-title-3 flex items-center gap-2">
-              <PenLine size={20} className="text-ios-purple" /> {u.writing.title}
+              <PenLine size={20} className="text-ink-purple" /> {u.writing.title}
             </h3>
             <p className="mt-2 text-[16px] text-pretty">{u.writing.brief}</p>
             {u.writing.length && <p className="text-label-2 mt-1 text-[13px]">{u.writing.length}</p>}

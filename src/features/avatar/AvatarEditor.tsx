@@ -388,7 +388,7 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
         <div className="material hairline-b sticky top-0 z-10">
           <div className="bg-label-3 mx-auto mt-2 h-[5px] w-9 rounded-full sm:hidden" aria-hidden />
           <div className="flex h-12 items-center justify-between px-3">
-            <button type="button" onClick={onClose} className="text-ios-blue h-9 rounded-[10px] px-2 text-[17px] hover:opacity-70">
+            <button type="button" onClick={onClose} className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] hover:opacity-70">
               Cancelar
             </button>
             <h2 id={titleId} className="text-headline">
@@ -400,7 +400,7 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
                 save(config);
                 onClose();
               }}
-              className="text-ios-blue h-9 rounded-[10px] px-2 text-[17px] font-semibold hover:opacity-70"
+              className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] font-semibold hover:opacity-70"
             >
               Guardar
             </button>

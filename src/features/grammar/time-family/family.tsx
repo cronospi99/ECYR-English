@@ -51,7 +51,7 @@ export function FamilyWords({ group: fixed }: { group?: VocabGroup }) {
             <div className="text-[18px] leading-tight font-bold tracking-tight [overflow-wrap:anywhere] sm:text-[21px]">{v.en}</div>
             {showEs && <div className="text-label-2 text-[14px] sm:text-[15px]">{v.es}</div>}
             <div className="text-label-2 mt-1 font-mono text-[12.5px] tracking-wide">/ {v.say} /</div>
-            {v.note && <div className="text-ios-indigo mt-1 text-[13px]">{v.note}</div>}
+            {v.note && <div className="text-ink-indigo mt-1 text-[13px]">{v.note}</div>}
             <div className="mt-auto flex gap-2 pt-3">
               <Button size="sm" variant="tinted" className="flex-1" onClick={() => say(v.en)} aria-label={`Escuchar ${v.en}`}>
                 <Volume2 size={14} /> EN
@@ -220,7 +220,7 @@ function TreeView({ members, onRemove }: { members: Member[]; onRemove?: (id: st
                       {m.rel}
                     </div>
                     {showEs && <div className="text-label-2 truncate text-[12.5px]">{REL_ES[m.rel]}</div>}
-                    <button type="button" onClick={() => say(sentenceFor(m))} className="text-ios-blue mt-1.5 inline-flex items-center gap-1 text-[13px] font-semibold" aria-label={`Decir: ${sentenceFor(m)}`}>
+                    <button type="button" onClick={() => say(sentenceFor(m))} className="text-ink-blue mt-1.5 inline-flex items-center gap-1 text-[13px] font-semibold" aria-label={`Decir: ${sentenceFor(m)}`}>
                       <Volume2 size={13} /> Say
                     </button>
                     {onRemove && (

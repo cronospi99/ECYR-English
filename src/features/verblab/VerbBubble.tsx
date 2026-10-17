@@ -9,6 +9,7 @@ import { speak } from '@/lib/speech';
 import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
 import { Highlight } from './highlight';
+import { ink } from '@/lib/color';
 
 const SOUND: Record<EdSound, { label: string; color: string; tip: string }> = {
   t: { label: '-ed /t/', color: 'var(--blue)', tip: 'Termina en sonido sordo (p, k, s, ch, sh, f, x): la -ed suena /t/.' },
@@ -120,19 +121,18 @@ export function VerbBubble({
             <span
               className="rounded-full px-2 py-0.5 text-[11px] font-bold"
               style={{
-                color: verb.type === 'irregular' ? 'var(--purple)' : 'var(--teal)',
-                background: `color-mix(in srgb, ${verb.type === 'irregular' ? 'var(--purple)' : 'var(--teal)'} 14%, transparent)`,
-              }}
+                color: verb.type === 'irregular' ? 'var(--purple-ink)' : 'var(--teal-ink)',
+                background: `color-mix(in srgb, ${verb.type === 'irregular' ? 'var(--purple)' : 'var(--teal)'} 14%, transparent)`}}
             >
               {verb.type === 'irregular' ? 'Irregular' : 'Regular'}
             </span>
             {(academic || verb.c1) && (
-              <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: 'var(--indigo)', background: 'color-mix(in srgb, var(--indigo) 14%, transparent)' }}>
+              <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: 'var(--indigo-ink)', background: 'color-mix(in srgb, var(--indigo) 14%, transparent)' }}>
                 C1 · Academic
               </span>
             )}
             {verb.sound && (
-              <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: SOUND[verb.sound].color, background: `color-mix(in srgb, ${SOUND[verb.sound].color} 14%, transparent)` }}>
+              <span className="rounded-full px-2 py-0.5 text-[11px] font-bold" style={{ color: ink(SOUND[verb.sound].color), background: `color-mix(in srgb, ${SOUND[verb.sound].color} 14%, transparent)` }}>
                 {SOUND[verb.sound].label}
               </span>
             )}
@@ -168,13 +168,13 @@ export function VerbBubble({
               className="bg-fill-2 flex items-start gap-2.5 rounded-[14px] py-2 pr-2 pl-3"
               style={{ borderLeft: `4px solid ${s.color}` }}
             >
-              <span className="w-[74px] shrink-0 pt-0.5 text-[11px] font-bold uppercase" style={{ color: s.color }}>
+              <span className="w-[74px] shrink-0 pt-0.5 text-[11px] font-bold uppercase" style={{ color: ink(s.color) }}>
                 {s.label}
               </span>
               <span className="flex-1 text-[15px] leading-snug">
                 <Highlight text={sentence} terms={forms[s.key].split(/\s*\/\s*/)} color={s.color} />
               </span>
-              <button type="button" onClick={() => speak(sentence, { rate: 0.92 })} className="text-ios-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${sentence}`}>
+              <button type="button" onClick={() => speak(sentence, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${sentence}`}>
                 <Volume2 size={15} />
               </button>
             </motion.div>
@@ -220,7 +220,7 @@ function StageCell({ i, label, sub, color, word }: { i: number; label: string; s
       style={{ background: `color-mix(in srgb, ${color} 13%, var(--card))`, boxShadow: `inset 0 0 0 1.5px color-mix(in srgb, ${color} 35%, transparent)` }}
       aria-label={`${label}: ${word}. Escuchar`}
     >
-      <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color }}>
+      <span className="text-[10px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
         {label}
       </span>
       <span className="mt-0.5 max-w-full text-[17px] leading-tight font-extrabold break-words">{word}</span>
@@ -237,7 +237,7 @@ function AcademicPanel({ a }: { a: AcademicVerb }) {
     <div className="mt-4 space-y-2.5">
       <p className="text-[15px] leading-snug">{a.def}</p>
       <div className="flex flex-wrap items-center gap-1.5">
-        <span className="rounded-[8px] px-2 py-1 font-mono text-[12.5px] font-semibold" style={{ color: 'var(--indigo)', background: 'color-mix(in srgb, var(--indigo) 12%, transparent)' }}>
+        <span className="rounded-[8px] px-2 py-1 font-mono text-[12.5px] font-semibold" style={{ color: 'var(--indigo-ink)', background: 'color-mix(in srgb, var(--indigo) 12%, transparent)' }}>
           {a.pattern}
         </span>
         {a.collocations.map((c) => (
@@ -248,9 +248,9 @@ function AcademicPanel({ a }: { a: AcademicVerb }) {
       </div>
       {a.informal && (
         <div className="flex items-center gap-2 rounded-[12px] px-3 py-2 text-[13.5px]" style={{ background: 'color-mix(in srgb, var(--green) 10%, transparent)' }}>
-          <ArrowUpRight size={16} className="text-ios-green shrink-0" />
+          <ArrowUpRight size={16} className="text-ink-green shrink-0" />
           <span>
-            Sube de registro: <span className="text-label-2 line-through decoration-1">{a.informal}</span> → <b className="text-ios-green">{a.en}</b>
+            Sube de registro: <span className="text-label-2 line-through decoration-1">{a.informal}</span> → <b className="text-ink-green">{a.en}</b>
           </span>
         </div>
       )}

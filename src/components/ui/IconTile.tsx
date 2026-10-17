@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 /** The coloured rounded square used by iOS Settings rows. */
 export function IconTile({
@@ -23,7 +24,7 @@ export function IconTile({
         height: size,
         borderRadius: size * 0.27,
         background: soft ? `color-mix(in srgb, ${color} 16%, transparent)` : color,
-        color: soft ? color : '#fff',
+        color: soft ? ink(color) : '#fff',
       }}
     >
       <Icon size={size * 0.58} strokeWidth={2.2} />

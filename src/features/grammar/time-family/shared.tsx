@@ -187,7 +187,7 @@ export function ScorePills({ className }: { className?: string }) {
         <span className="text-label-2 font-normal">pts</span>
       </span>
       <span className="bg-card shadow-card inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold tabular-nums" title={`Racha · mejor ${bestStreak}`}>
-        <Flame size={15} className="text-ios-orange" /> {streak > 0 ? `×${streak}` : '—'}
+        <Flame size={15} className="text-ink-orange" /> {streak > 0 ? `×${streak}` : '—'}
       </span>
     </div>
   );
@@ -215,7 +215,7 @@ export function SayingCard() {
         <div className="text-label-2 text-[13px] font-semibold tracking-wide uppercase">Saying of the class · El dicho de la clase</div>
         <p className="mt-1 text-[26px] leading-tight font-bold tracking-tight sm:text-[30px]">“{SAYING.es}”</p>
         <details className="group mt-4">
-          <summary className="text-ios-blue inline-flex cursor-pointer list-none items-center gap-1 text-[16px] font-semibold [&::-webkit-details-marker]:hidden">
+          <summary className="text-ink-blue inline-flex cursor-pointer list-none items-center gap-1 text-[16px] font-semibold [&::-webkit-details-marker]:hidden">
             <span className="group-open:hidden">What does it mean in English?</span>
             <span className="hidden group-open:inline">Hide the English · Ocultar</span>
           </summary>

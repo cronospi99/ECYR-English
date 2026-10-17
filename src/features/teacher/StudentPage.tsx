@@ -50,7 +50,7 @@ export default function StudentPage() {
           <div className="text-label-2 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px]">
             <LevelChip level={level} />
             {s.profile.email && (
-              <a href={`mailto:${s.profile.email}`} className="text-ios-blue inline-flex items-center gap-1">
+              <a href={`mailto:${s.profile.email}`} className="text-ink-blue inline-flex items-center gap-1">
                 <Mail size={14} /> {s.profile.email}
               </a>
             )}

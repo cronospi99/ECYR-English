@@ -37,6 +37,7 @@ import {
 import { Sheet, SheetAction } from './Sheet';
 import { inputCls } from './UploadSheet';
 import { usePortfolio, type PortfolioState } from './usePortfolio';
+import { ink } from '@/lib/color';
 
 // ===================================================================== API ==
 
@@ -194,7 +195,7 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
       </div>
 
       {error && (
-        <p className="text-footnote text-ios-red mb-3 px-1" role="alert">
+        <p className="text-footnote text-ink-red mb-3 px-1" role="alert">
           {error}
         </p>
       )}
@@ -318,8 +319,7 @@ function Select({
         className={cn(inputCls, 'h-10 appearance-none truncate bg-[length:16px] bg-[right_10px_center] bg-no-repeat pr-8 text-[15px]')}
         style={{
           backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e8e93' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
-        }}
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e8e93' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")"}}
       >
         {children}
       </select>
@@ -435,7 +435,7 @@ function ItemCard({
           {score && (
             <span
               className="text-footnote shrink-0 rounded-full px-2 py-0.5 font-semibold tabular-nums"
-              style={{ background: `color-mix(in srgb, ${info.color} 14%, transparent)`, color: info.color }}
+              style={{ background: `color-mix(in srgb, ${info.color} 14%, transparent)`, color: ink(info.color) }}
               title="Nota que obtuviste"
             >
               {score}
@@ -444,7 +444,7 @@ function ItemCard({
         </div>
 
         <div className="text-footnote text-label-2 mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-          <span style={{ color: info.color }} className="font-semibold">
+          <span style={{ color: ink(info.color) }} className="font-semibold">
             {info.label}
           </span>
           {item.level && <LevelChip level={item.level} className="h-5 px-2 text-[11px]" />}
@@ -453,11 +453,11 @@ function ItemCard({
           {item.file_size ? <span>{formatBytes(item.file_size)}</span> : null}
           {item.source !== 'upload' && <span className="text-label-3">importado</span>}
           {item.reviewed_at ? (
-            <span className="text-ios-green inline-flex items-center gap-0.5 font-semibold">
+            <span className="text-ink-green inline-flex items-center gap-0.5 font-semibold">
               <CheckCircle2 size={13} aria-hidden /> Revisado
             </span>
           ) : canReview ? (
-            <span className="text-ios-orange font-semibold">Sin revisar</span>
+            <span className="text-ink-orange font-semibold">Sin revisar</span>
           ) : null}
         </div>
 
@@ -467,7 +467,7 @@ function ItemCard({
         {item.reviewed_at && (item.teacher_note || item.teacher_score != null) && !reviewing && (
           <div className="mt-2.5 rounded-[12px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] px-3 py-2.5">
             <div className="text-footnote flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5">
-              <span className="text-ios-green inline-flex items-center gap-1 font-semibold">
+              <span className="text-ink-green inline-flex items-center gap-1 font-semibold">
                 <GraduationCap size={14} aria-hidden /> {canReview ? 'Tu revisión' : 'Revisión del profesor'}
               </span>
               <span className="text-label-2">
@@ -560,7 +560,7 @@ function ItemCard({
         )}
 
         {err && (
-          <p className="text-footnote text-ios-red mt-2" role="alert">
+          <p className="text-footnote text-ink-red mt-2" role="alert">
             {err}
           </p>
         )}
@@ -596,9 +596,9 @@ function Act({
       className={cn(
         'inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold transition-[opacity,transform] active:scale-95 disabled:opacity-50',
         tone === 'red'
-          ? 'text-ios-red bg-[color-mix(in_srgb,var(--red)_12%,transparent)]'
+          ? 'text-ink-red bg-[color-mix(in_srgb,var(--red)_12%,transparent)]'
           : tone === 'blue'
-            ? 'text-ios-blue bg-[color-mix(in_srgb,var(--blue)_14%,transparent)]'
+            ? 'text-ink-blue bg-[color-mix(in_srgb,var(--blue)_14%,transparent)]'
             : 'bg-fill text-label',
       )}
     >
@@ -671,7 +671,7 @@ function ReviewForm({ item, onCancel, onSaved }: { item: PortfolioItem; onCancel
         </div>
         <div className="ml-auto flex flex-wrap gap-2">
           {item.reviewed_at && (
-            <Button type="button" size="sm" variant="plain" className="text-ios-red" onClick={() => void save(true)} disabled={busy}>
+            <Button type="button" size="sm" variant="plain" className="text-ink-red" onClick={() => void save(true)} disabled={busy}>
               Quitar
             </Button>
           )}
@@ -684,7 +684,7 @@ function ReviewForm({ item, onCancel, onSaved }: { item: PortfolioItem; onCancel
         </div>
       </div>
       {err && (
-        <p className="text-footnote text-ios-red" role="alert">
+        <p className="text-footnote text-ink-red" role="alert">
           {err}
         </p>
       )}
@@ -729,7 +729,7 @@ export function ReaderSheet({ item, onClose }: { item: PortfolioItem | null; onC
       {shown && (
         <div className="px-5 pt-4 sm:px-7">
           <div className="text-footnote text-label-2 mb-4 flex flex-wrap items-center gap-x-2 gap-y-1">
-            <span className="font-semibold" style={{ color: KIND_INFO[shown.kind].color }}>
+            <span className="font-semibold" style={{ color: ink(KIND_INFO[shown.kind].color) }}>
               {KIND_INFO[shown.kind].label}
             </span>
             {shown.level && <LevelChip level={shown.level} className="h-5 px-2 text-[11px]" />}
@@ -743,7 +743,7 @@ export function ReaderSheet({ item, onClose }: { item: PortfolioItem | null; onC
           </article>
           {shown.teacher_note && (
             <div className="mt-6 rounded-[14px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-3.5">
-              <div className="text-footnote text-ios-green mb-1 inline-flex items-center gap-1 font-semibold">
+              <div className="text-footnote text-ink-green mb-1 inline-flex items-center gap-1 font-semibold">
                 <GraduationCap size={14} aria-hidden /> Revisión del profesor
                 {shown.teacher_score != null && (
                   <span className="text-label ml-1">{formatScore(shown.teacher_score, shown.score_scale === 'band' ? 'band' : 'percent')}</span>

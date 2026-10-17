@@ -186,7 +186,7 @@ export function AssignmentSheet({
     >
       <form id={formId} onSubmit={submit} className="space-y-6 px-4 pt-4 sm:px-5" noValidate>
         {error && (
-          <p role="alert" className="text-ios-red text-subhead rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] px-3 py-2">
+          <p role="alert" className="text-ink-red text-subhead rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] px-3 py-2">
             {error}
           </p>
         )}
@@ -355,7 +355,7 @@ export function AssignmentSheet({
           )}
 
           <div className="bg-fill-2 text-footnote text-label-2 flex items-start gap-2 rounded-[12px] p-3">
-            {auto ? <Sparkles size={16} className="text-ios-purple mt-px shrink-0" aria-hidden /> : <Link2 size={16} className="mt-px shrink-0" aria-hidden />}
+            {auto ? <Sparkles size={16} className="text-ink-purple mt-px shrink-0" aria-hidden /> : <Link2 size={16} className="mt-px shrink-0" aria-hidden />}
             <span>
               {built.target.label && <strong className="text-label block font-semibold">{built.target.label}</strong>}
               {auto
@@ -421,12 +421,12 @@ export function AssignmentSheet({
               {students.length ? (
                 <>
                   <div className="mb-1.5 flex items-center justify-between px-1">
-                    <span className={cn('text-footnote', show('students') ? 'text-ios-red' : 'text-label-2')}>
+                    <span className={cn('text-footnote', show('students') ? 'text-ink-red' : 'text-label-2')}>
                       {show('students') ?? `${f.students.length} de ${students.length} elegidos`}
                     </span>
                     <button
                       type="button"
-                      className="text-ios-blue text-footnote font-semibold hover:opacity-70"
+                      className="text-ink-blue text-footnote font-semibold hover:opacity-70"
                       onClick={() => set('students', f.students.length === students.length ? [] : students.map((s) => s.id))}
                     >
                       {f.students.length === students.length ? 'Quitar todos' : 'Elegir todos'}
@@ -494,7 +494,7 @@ function Field({
       </div>
       {children}
       {error && (
-        <p className="text-ios-red text-footnote mt-1 px-1" role="alert">
+        <p className="text-ink-red text-footnote mt-1 px-1" role="alert">
           {error}
         </p>
       )}

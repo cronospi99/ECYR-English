@@ -6,6 +6,7 @@ import { moduleBySlug } from '@/content/catalog';
 import { TRACKED_GAMES, statsFor, type GameSession, type SessionStatus } from '@/store/games';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
+import { ink } from '@/lib/color';
 
 const STATUS: Record<SessionStatus, { label: string; color: string; icon: typeof CheckCircle2 }> = {
   valid: { label: 'Válida', color: 'var(--green)', icon: CheckCircle2 },
@@ -44,7 +45,7 @@ export function GameProgressView({ sessions, defenders, compact = false }: { ses
         ))}
       </div>
       <p className="text-label-2 flex items-start gap-2 px-1 text-[13px]">
-        <ShieldCheck size={16} className="text-ios-green mt-0.5 shrink-0" />
+        <ShieldCheck size={16} className="text-ink-green mt-0.5 shrink-0" />
         Cada resultado se valida: debe coincidir con las respuestas registradas en vivo, con números posibles y un ritmo realista. Las
         partidas en clase se guardan sin nota. Star Medic Jeopardy y Phrasal Verb Roulette son dinámicas grupales y no se registran
         por alumno.
@@ -81,7 +82,7 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
             {rules.graded ? 'Con puntuación' : 'Participación'} · {g.lastAt ? `última ${relativeTime(g.lastAt)}` : 'sin partidas'}
           </div>
         </div>
-        <Link to={`/play/${g.slug}`} className="text-ios-blue shrink-0 text-[14px] font-semibold">
+        <Link to={`/play/${g.slug}`} className="text-ink-blue shrink-0 text-[14px] font-semibold">
           Jugar
         </Link>
       </div>
@@ -122,7 +123,7 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
             {weak.map((t) => (
               <li key={t.topic} className="flex items-center justify-between gap-3 text-[13px]">
                 <span className="truncate">{t.topic}</span>
-                <span className="text-ios-orange shrink-0 font-semibold tabular-nums">
+                <span className="text-ink-orange shrink-0 font-semibold tabular-nums">
                   {t.pct}% · {t.a}
                 </span>
               </li>
@@ -138,7 +139,7 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
             const Icon = st.icon;
             return (
               <li key={s.id} className="flex items-center gap-2.5 px-4 py-2 text-[13px]" title={s.reasons?.join(' · ')}>
-                <Icon size={15} style={{ color: st.color }} className="shrink-0" aria-label={st.label} />
+                <Icon size={15} style={{ color: ink(st.color) }} className="shrink-0" aria-label={st.label} />
                 <span className="text-label-2 w-20 shrink-0">{relativeTime(s.endedAt)}</span>
                 {s.level && <LevelChip level={s.level} className="h-5 px-2 text-[10px]" />}
                 <span className="min-w-0 flex-1 truncate">
@@ -147,10 +148,10 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
                   {s.stars != null && ` · ${'★'.repeat(s.stars)}`}
                   {s.reasons?.length ? ` · ${s.reasons[0]}` : ''}
                 </span>
-                <span className="shrink-0 font-semibold tabular-nums" style={{ color: st.color }}>
+                <span className="shrink-0 font-semibold tabular-nums" style={{ color: ink(st.color) }}>
                   {s.score != null ? `${s.score}%` : st.label}
                 </span>
-                {s.xp > 0 && <span className="text-ios-green shrink-0 text-[12px] font-semibold">+{s.xp}</span>}
+                {s.xp > 0 && <span className="text-ink-green shrink-0 text-[12px] font-semibold">+{s.xp}</span>}
               </li>
             );
           })}

@@ -429,7 +429,7 @@ function MatchBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
               onClick={() => setSel(i)}
               className={cn(
                 'w-full rounded-[12px] px-3 py-3 text-[16px] font-semibold transition-all',
-                matched.has(i) ? 'bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ios-green' : sel === i ? 'bg-ios-blue text-white' : 'bg-fill-2 hover:bg-fill',
+                matched.has(i) ? 'bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ink-green' : sel === i ? 'bg-ios-blue text-white' : 'bg-fill-2 hover:bg-fill',
               )}
             >
               {l}
@@ -449,7 +449,7 @@ function MatchBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
                 transition={{ duration: 0.4 }}
                 className={cn(
                   'w-full rounded-[12px] px-3 py-3 text-[15px] transition-colors',
-                  done ? 'bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ios-green' : wrong === r ? 'bg-[color-mix(in_srgb,var(--red)_14%,transparent)]' : 'bg-fill-2 hover:bg-fill',
+                  done ? 'bg-[color-mix(in_srgb,var(--green)_15%,transparent)] text-ink-green' : wrong === r ? 'bg-[color-mix(in_srgb,var(--red)_14%,transparent)]' : 'bg-fill-2 hover:bg-fill',
                 )}
               >
                 {r}
@@ -562,7 +562,7 @@ function BlankBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
                 spellCheck={false}
                 className={cn(
                   'bg-fill-2 h-9 w-28 rounded-[10px] px-3 text-center font-semibold outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]',
-                  checked && (ok(i) ? 'ring-ios-green text-ios-green ring-2' : 'ring-ios-red ring-2'),
+                  checked && (ok(i) ? 'ring-ios-green text-ink-green ring-2' : 'ring-ios-red ring-2'),
                 )}
               />
               {it.post && <span>{it.post}</span>}
@@ -637,7 +637,7 @@ function McBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
 
 function Done({ text }: { text: string }) {
   return (
-    <div className="text-ios-green mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-3 text-[14px] font-medium">
+    <div className="text-ink-green mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-3 text-[14px] font-medium">
       <Check size={18} className="mt-0.5 shrink-0" /> {text}
     </div>
   );
@@ -645,7 +645,7 @@ function Done({ text }: { text: string }) {
 
 function Miss({ text }: { text: string }) {
   return (
-    <div className="text-ios-red mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] p-3 text-[14px] font-medium">
+    <div className="text-ink-red mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] p-3 text-[14px] font-medium">
       <X size={18} className="mt-0.5 shrink-0" /> {text}
     </div>
   );

@@ -18,6 +18,7 @@ import { useProgress } from '@/store/progress';
 import { speak } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { VerbBubble } from './VerbBubble';
+import { ink } from '@/lib/color';
 
 export const ACADEMIC_GROUPS: {
   id: AcademicGroup;
@@ -161,8 +162,7 @@ export function AcademicVerbs() {
               <span
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] text-[24px]"
                 style={{
-                  background: on ? 'rgb(255 255 255 / 0.2)' : `color-mix(in srgb, ${g.color} 14%, transparent)`,
-                }}
+                  background: on ? 'rgb(255 255 255 / 0.2)' : `color-mix(in srgb, ${g.color} 14%, transparent)`}}
               >
                 {g.emoji}
               </span>
@@ -209,8 +209,7 @@ export function AcademicVerbs() {
                 isOpen && 'shadow-[0_0_0_2.5px_var(--blue)]',
               )}
               style={{
-                background: `linear-gradient(180deg, color-mix(in srgb, ${g.color} 12%, var(--card)), var(--card) 72%)`,
-              }}
+                background: `linear-gradient(180deg, color-mix(in srgb, ${g.color} 12%, var(--card)), var(--card) 72%)`}}
               aria-expanded={isOpen}
               aria-label={`${v.en}: ${v.def}`}
             >
@@ -221,8 +220,8 @@ export function AcademicVerbs() {
               <span className="mt-1.5 max-w-full truncate text-[17px] font-bold">{v.en}</span>
               {showEs && <span className="text-label-2 max-w-full truncate text-[12px]">{v.es}</span>}
               {v.informal && (
-                <span className="text-label-3 mt-1 inline-flex max-w-full items-center gap-0.5 truncate text-[11px]">
-                  <ArrowUpRight size={11} className="shrink-0" style={{ color: g.color }} /> <span className="truncate">{v.informal}</span>
+                <span className="text-label-2 mt-1 inline-flex max-w-full items-center gap-0.5 truncate text-[11px]">
+                  <ArrowUpRight size={11} className="shrink-0" style={{ color: ink(g.color) }} /> <span className="truncate">{v.informal}</span>
                 </span>
               )}
             </motion.button>
@@ -337,8 +336,7 @@ function RegisterQuiz({ verbs, group }: { verbs: AcademicVerb[]; group: Academic
           className="rounded-[8px] px-1.5 py-0.5 font-semibold"
           style={{
             background: 'color-mix(in srgb, var(--orange) 16%, transparent)',
-            color: 'var(--orange)',
-          }}
+            color: 'var(--orange-ink)'}}
         >
           {picked ? (picked === v.en ? v.en : v.informal) : v.informal}
         </span>

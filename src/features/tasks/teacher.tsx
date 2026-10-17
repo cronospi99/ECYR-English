@@ -37,6 +37,7 @@ import {
 } from '@/lib/assignments';
 import { AssignmentSheet } from './AssignmentSheet';
 import { DUE_COLOR, KIND_META, STATUS_META, VIA_LABEL, formatDate } from './meta';
+import { ink } from '@/lib/color';
 
 const key = (a: string, s: string) => `${a}:${s}`;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
@@ -140,7 +141,7 @@ export function AssignmentsManager({ className }: { className?: string }) {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <h2 id="assignments-title" className="text-title-2 flex items-center gap-2">
-            <ClipboardList size={22} className="text-ios-blue" aria-hidden /> Tareas
+            <ClipboardList size={22} className="text-ink-blue" aria-hidden /> Tareas
           </h2>
           <p className="text-subhead text-label-2">Asigna trabajo a tu clase y mira quién lo completó.</p>
         </div>
@@ -167,7 +168,7 @@ export function AssignmentsManager({ className }: { className?: string }) {
 
       {error ? (
         <Card className="p-5 text-center">
-          <p className="text-ios-red text-subhead" role="alert">
+          <p className="text-ink-red text-subhead" role="alert">
             {error}
           </p>
           <Button className="mt-3" size="sm" variant="tinted" onClick={() => void reload()}>
@@ -284,7 +285,7 @@ function AssignmentRow({
             <span className="inline-flex items-center gap-1">
               <Users size={13} aria-hidden /> {a.audience === 'class' ? 'Toda la clase' : `${a.targets?.length ?? 0} estudiante${a.targets?.length === 1 ? '' : 's'}`}
             </span>
-            <span className="inline-flex items-center gap-1 font-medium" style={{ color: DUE_COLOR[due.tone] }} title={due.exact || undefined}>
+            <span className="inline-flex items-center gap-1 font-medium" style={{ color: ink(DUE_COLOR[due.tone]) }} title={due.exact || undefined}>
               <CalendarClock size={13} aria-hidden /> {due.label}
             </span>
             {a.requires_submission && (
@@ -320,7 +321,7 @@ function AssignmentRow({
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={detailId}
-        className="text-ios-blue hairline-t hover:bg-fill-2/60 flex h-11 w-full items-center justify-center gap-1 text-[15px] font-semibold"
+        className="text-ink-blue hairline-t hover:bg-fill-2/60 flex h-11 w-full items-center justify-center gap-1 text-[15px] font-semibold"
       >
         {open ? 'Ocultar estudiantes' : 'Ver estudiantes'}
         <ChevronDown size={17} className={cn('transition-transform', open && 'rotate-180')} aria-hidden />
@@ -341,7 +342,7 @@ function IconButton({ label, onClick, danger, children }: { label: string; onCli
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={cn('hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full transition-colors', danger ? 'text-ios-red' : 'text-label-2')}
+      className={cn('hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full transition-colors', danger ? 'text-ink-red' : 'text-label-2')}
     >
       {children}
     </button>
@@ -367,7 +368,7 @@ function ConfirmDelete({ a, onClose, onDeleted }: { a: Assignment | null; onClos
   return (
     <Sheet open={Boolean(a)} onClose={onClose} dismissible={!busy} title="Eliminar tarea" closeLabel="Cancelar" className="sm:max-w-[440px]">
       <div className="space-y-4 p-5 text-center">
-        <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_14%,transparent)] text-ios-red">
+        <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_14%,transparent)] text-ink-red">
           <Trash2 size={22} aria-hidden />
         </span>
         <p className="text-body">
@@ -375,7 +376,7 @@ function ConfirmDelete({ a, onClose, onDeleted }: { a: Assignment | null; onClos
         </p>
         <p className="text-subhead text-label-2">Desaparece para tus estudiantes junto con su estado y tus comentarios. Los trabajos que subieron siguen en su portafolio.</p>
         {err && (
-          <p className="text-ios-red text-footnote" role="alert">
+          <p className="text-ink-red text-footnote" role="alert">
             {err}
           </p>
         )}
@@ -451,7 +452,7 @@ export function AssignmentDetail({
 
   if (error)
     return (
-      <p className="text-ios-red text-subhead p-4" role="alert">
+      <p className="text-ink-red text-subhead p-4" role="alert">
         {error}
       </p>
     );
@@ -572,7 +573,7 @@ function StatusRow({
             <span className="text-body min-w-0 truncate font-medium">{title}</span>
             <span
               className="text-caption inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-semibold"
-              style={{ color: meta.color, background: `color-mix(in srgb, ${meta.color} 13%, transparent)` }}
+              style={{ color: ink(meta.color), background: `color-mix(in srgb, ${meta.color} 13%, transparent)` }}
             >
               <meta.icon size={12} strokeWidth={2.5} aria-hidden /> {meta.label}
             </span>
@@ -588,7 +589,7 @@ function StatusRow({
           {item && (
             <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
               {item.file_path && (
-                <button type="button" onClick={() => void openFile()} className="text-ios-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70">
+                <button type="button" onClick={() => void openFile()} className="text-ink-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70">
                   <ExternalLink size={13} aria-hidden /> {item.file_name || 'Abrir archivo'}
                 </button>
               )}
@@ -597,7 +598,7 @@ function StatusRow({
                   type="button"
                   onClick={() => setShowText((v) => !v)}
                   aria-expanded={showText}
-                  className="text-ios-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70"
+                  className="text-ink-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70"
                 >
                   <FileText size={13} aria-hidden /> {showText ? 'Ocultar texto' : `Leer “${item.title}”`}
                 </button>
@@ -606,7 +607,7 @@ function StatusRow({
           )}
           {s?.portfolio_item_id && !item && <p className="text-footnote text-label-3 mt-1">Entregó un trabajo (no disponible).</p>}
           {fileErr && (
-            <p className="text-ios-red text-footnote mt-1" role="alert">
+            <p className="text-ink-red text-footnote mt-1" role="alert">
               {fileErr}
             </p>
           )}
@@ -678,7 +679,7 @@ function ReviewForm({ a, studentId, s, onSaved }: { a: Assignment; studentId: st
           <label htmlFor={ids.fb} className={labelCls}>
             Comentario
           </label>
-          <span className={cn('text-caption mb-1.5 px-1 tabular-nums', feedback.length > MAX_FEEDBACK ? 'text-ios-red' : 'text-label-2')}>
+          <span className={cn('text-caption mb-1.5 px-1 tabular-nums', feedback.length > MAX_FEEDBACK ? 'text-ink-red' : 'text-label-2')}>
             {feedback.length}/{MAX_FEEDBACK}
           </span>
         </div>
@@ -718,7 +719,7 @@ function ReviewForm({ a, studentId, s, onSaved }: { a: Assignment; studentId: st
         </Button>
       </div>
       {err && (
-        <p className="text-ios-red text-footnote" role="alert">
+        <p className="text-ink-red text-footnote" role="alert">
           {err}
         </p>
       )}
@@ -754,7 +755,7 @@ export function StudentAssignments({ studentId, className }: { studentId: string
   if (error)
     return (
       <Card className={cn('p-5', className)}>
-        <p className="text-ios-red text-subhead" role="alert">
+        <p className="text-ink-red text-subhead" role="alert">
           {error}
         </p>
       </Card>

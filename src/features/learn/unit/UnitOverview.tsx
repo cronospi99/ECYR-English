@@ -46,6 +46,7 @@ import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import type { Unit } from '@/content/types';
 import { Clamp, QuoteText, ink, tint } from './ui';
+import { deep } from '@/lib/color';
 
 export type StepTab = 'vocab' | 'grammar' | 'practice' | 'produce';
 
@@ -151,7 +152,7 @@ export function UnitOverview({
           <Clamp text={u.overview.intro} lines={2} className="text-[16px] leading-relaxed" render={(t) => <QuoteText text={t} color={color} />} />
           {/* outcome */}
           <div className="mt-4 flex items-start gap-3 rounded-[16px] p-3.5" style={{ background: tint(color, 12), boxShadow: `inset 0 0 0 1px ${tint(color, 25)}` }}>
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white" style={{ background: color }}>
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white" style={{ background: deep(color) }}>
               <Flag size={16} aria-hidden />
             </span>
             <div className="min-w-0">
@@ -167,14 +168,14 @@ export function UnitOverview({
       {/* goals */}
       <section aria-labelledby="ov-goals">
         <h3 id="ov-goals" className="text-headline mb-3 flex items-center gap-2 px-1">
-          <Target size={18} className="text-ios-blue" aria-hidden /> Objetivos
+          <Target size={18} className="text-ink-blue" aria-hidden /> Objetivos
         </h3>
         <ul className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {u.overview.goals.map((g) => {
             const { icon: GIcon, color: gc } = goalIcon(g);
             return (
               <li key={g} className="bg-card shadow-card flex items-start gap-3 rounded-[18px] p-4">
-                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[11px]" style={{ background: tint(gc, 15), color: gc }}>
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[11px]" style={{ background: tint(gc, 15), color: ink(gc) }}>
                   <GIcon size={19} aria-hidden />
                 </span>
                 <span className="text-[15px] leading-snug text-pretty">{g}</span>
@@ -187,7 +188,7 @@ export function UnitOverview({
       {/* roadmap */}
       <section aria-labelledby="ov-road">
         <h3 id="ov-road" className="text-headline mb-3 flex items-center gap-2 px-1">
-          <Compass size={18} className="text-ios-green" aria-hidden /> Tu ruta
+          <Compass size={18} className="text-ink-green" aria-hidden /> Tu ruta
         </h3>
         <ol className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
           {steps.map((s, k) => (
@@ -198,14 +199,14 @@ export function UnitOverview({
                 className="bg-card shadow-card group flex h-full w-full flex-col items-start gap-2 rounded-[18px] p-4 text-left transition-transform duration-200 active:scale-[0.98] motion-safe:hover:-translate-y-0.5"
               >
                 <span className="flex w-full items-center justify-between">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-[12px] text-white" style={{ background: s.color }}>
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-[12px] text-white" style={{ background: deep(s.color) }}>
                     <s.icon size={20} aria-hidden />
                   </span>
-                  <span className="text-label-3 text-[22px] font-bold tabular-nums">{k + 1}</span>
+                  <span className="text-label-2 text-[22px] font-bold tabular-nums">{k + 1}</span>
                 </span>
                 <span className="text-[16px] font-semibold">{s.label}</span>
                 <span className="text-label-2 -mt-1.5 text-[13px]">{s.value}</span>
-                <span className="mt-auto inline-flex items-center text-[13px] font-semibold" style={{ color: s.color }}>
+                <span className="mt-auto inline-flex items-center text-[13px] font-semibold" style={{ color: ink(s.color) }}>
                   Ir <ChevronRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </button>

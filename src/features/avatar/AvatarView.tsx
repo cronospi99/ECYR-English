@@ -86,6 +86,7 @@ export function AvatarView({
         style={{
           fontSize: (size - 2 * (ringW + gapW)) * 0.4,
           color: DARK_BGS.includes(bg) ? '#fff' : 'rgb(0 0 0 / 0.72)',
+          textShadow: DARK_BGS.includes(bg) ? '0 1px 2px rgb(0 0 0 / 0.25)' : undefined,
           letterSpacing: '-0.02em',
         }}
       >

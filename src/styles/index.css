@@ -10,8 +10,9 @@
   --card: #ffffff; /* secondarySystemGroupedBackground */
   --elevated: #ffffff;
   --label: #000000;
-  --label-2: rgb(60 60 67 / 0.6);
-  --label-3: rgb(60 60 67 / 0.3);
+  /* Secondary text a little stronger than stock iOS so it stays readable on tinted cards (≥ 4.5:1). */
+  --label-2: rgb(60 60 67 / 0.78);
+  --label-3: rgb(60 60 67 / 0.5);
   --separator: rgb(60 60 67 / 0.18);
   --fill: rgb(120 120 128 / 0.16);
   --fill-2: rgb(118 118 128 / 0.08);
@@ -36,9 +37,24 @@
   --skill-writing: #af52de;
   --skill-speaking: #ff9500;
 
-  --brand-from: #2f6bff;
+  --brand-from: #2563eb; /* white text on it ≥ 5:1 */
   --brand-to: #7b5cff;
   color-scheme: light;
+
+  /* Text versions of the accents: the vivid colours are for fills; as text they
+     are pulled toward the label colour (darker in light mode, lighter in dark
+     mode) so words in colour stay readable on white and on tinted cards. */
+  --blue-ink: color-mix(in srgb, var(--blue) 62%, var(--label));
+  --green-ink: color-mix(in srgb, var(--green) 58%, var(--label));
+  --indigo-ink: color-mix(in srgb, var(--indigo) 68%, var(--label));
+  --orange-ink: color-mix(in srgb, var(--orange) 58%, var(--label));
+  --pink-ink: color-mix(in srgb, var(--pink) 70%, var(--label));
+  --purple-ink: color-mix(in srgb, var(--purple) 70%, var(--label));
+  --red-ink: color-mix(in srgb, var(--red) 72%, var(--label));
+  --teal-ink: color-mix(in srgb, var(--teal) 56%, var(--label));
+  --yellow-ink: color-mix(in srgb, var(--yellow) 50%, var(--label));
+  --mint-ink: color-mix(in srgb, var(--mint) 56%, var(--label));
+  --cyan-ink: color-mix(in srgb, var(--cyan) 58%, var(--label));
 }
 
 .dark {
@@ -46,8 +62,8 @@
   --card: #1c1c1e;
   --elevated: #2c2c2e;
   --label: #ffffff;
-  --label-2: rgb(235 235 245 / 0.6);
-  --label-3: rgb(235 235 245 / 0.3);
+  --label-2: rgb(235 235 245 / 0.72);
+  --label-3: rgb(235 235 245 / 0.46);
   --separator: rgb(84 84 88 / 0.55);
   --fill: rgb(120 120 128 / 0.36);
   --fill-2: rgb(118 118 128 / 0.18);
@@ -101,6 +117,18 @@
   --color-ios-mint: var(--mint);
   --color-ios-cyan: var(--cyan);
 
+  --color-ink-blue: var(--blue-ink);
+  --color-ink-green: var(--green-ink);
+  --color-ink-indigo: var(--indigo-ink);
+  --color-ink-orange: var(--orange-ink);
+  --color-ink-pink: var(--pink-ink);
+  --color-ink-purple: var(--purple-ink);
+  --color-ink-red: var(--red-ink);
+  --color-ink-teal: var(--teal-ink);
+  --color-ink-yellow: var(--yellow-ink);
+  --color-ink-mint: var(--mint-ink);
+  --color-ink-cyan: var(--cyan-ink);
+
   --color-brand: var(--brand-from);
   --color-brand-2: var(--brand-to);
 
@@ -113,6 +141,20 @@
 
   --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
 }
+
+/* White text on a vivid fill: deepen the fill so the text stays readable (≥ 4.5:1)
+   while the hue stays recognisable. */
+.bg-ios-blue.text-white { background-color: color-mix(in srgb, var(--blue) 80%, #000); }
+.bg-ios-green.text-white { background-color: color-mix(in srgb, var(--green) 66%, #000); }
+.bg-ios-orange.text-white { background-color: color-mix(in srgb, var(--orange) 66%, #000); }
+.bg-ios-teal.text-white { background-color: color-mix(in srgb, var(--teal) 64%, #000); }
+.bg-ios-purple.text-white { background-color: color-mix(in srgb, var(--purple) 78%, #000); }
+.bg-ios-pink.text-white { background-color: color-mix(in srgb, var(--pink) 80%, #000); }
+.bg-ios-red.text-white { background-color: color-mix(in srgb, var(--red) 82%, #000); }
+.bg-ios-indigo.text-white { background-color: color-mix(in srgb, var(--indigo) 90%, #000); }
+.bg-ios-mint.text-white { background-color: color-mix(in srgb, var(--mint) 60%, #000); }
+.bg-ios-cyan.text-white { background-color: color-mix(in srgb, var(--cyan) 62%, #000); }
+.bg-ios-yellow.text-white { background-color: color-mix(in srgb, var(--yellow) 55%, #000); }
 
 @layer base {
   html {

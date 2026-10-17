@@ -11,6 +11,7 @@ import { loadLevel, levelMeta } from '@/content/levels';
 import { useProgress, levelCompletion } from '@/store/progress';
 import NotFound from '../NotFound';
 import { cn } from '@/lib/cn';
+import { deep } from '@/lib/color';
 
 export const unitTitle = (t: string) => t.charAt(0) + t.slice(1).toLowerCase();
 
@@ -57,7 +58,7 @@ export default function LevelPage() {
                 leading={
                   <span
                     className="flex h-10 w-10 items-center justify-center rounded-[11px] text-[15px] font-bold text-white"
-                    style={{ background: u.color }}
+                    style={{ background: deep(u.color) }}
                   >
                     {u.n}
                   </span>
@@ -66,7 +67,7 @@ export default function LevelPage() {
                 subtitle={u.theme}
                 trailing={
                   done ? (
-                    <span className="text-ios-green inline-flex items-center gap-1 text-[14px] font-semibold">
+                    <span className="text-ink-green inline-flex items-center gap-1 text-[14px] font-semibold">
                       <CheckCircle2 size={18} /> {done.score}%
                     </span>
                   ) : (

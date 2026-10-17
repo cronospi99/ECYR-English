@@ -54,11 +54,11 @@ function Sidebar() {
             <div className="text-label-2 flex items-center gap-1 text-[12px]">
               {profile?.role === 'teacher' ? (
                 <>
-                  <Crown size={12} className="text-ios-orange" /> Docente
+                  <Crown size={12} className="text-ink-orange" /> Docente
                 </>
               ) : (
                 <>
-                  <Flame size={12} className="text-ios-orange" /> Racha de {streak} {streak === 1 ? 'día' : 'días'}
+                  <Flame size={12} className="text-ink-orange" /> Racha de {streak} {streak === 1 ? 'día' : 'días'}
                 </>
               )}
             </div>
@@ -83,14 +83,14 @@ function MobileTopBar() {
             <Link
               to="/teacher"
               aria-label="Sala del docente"
-              className="text-ios-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
+              className="text-ink-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
             >
               <School size={16} />
             </Link>
           )}
           <Link
             to="/coach"
-            className="text-ios-purple bg-[color-mix(in_srgb,var(--purple)_14%,transparent)] inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold"
+            className="text-ink-purple bg-[color-mix(in_srgb,var(--purple)_14%,transparent)] inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[14px] font-semibold"
           >
             <Sparkles size={15} /> Coach
           </Link>
@@ -120,7 +120,7 @@ function TabBar() {
               to={item.to}
               className={cn(
                 'flex flex-1 flex-col items-center justify-center gap-0.5 text-[10px] font-medium transition-colors',
-                active ? 'text-ios-blue' : 'text-label-2',
+                active ? 'text-ink-blue' : 'text-label-2',
               )}
             >
               <Icon size={23} strokeWidth={active ? 2.4 : 1.9} />
@@ -140,9 +140,9 @@ function SandboxBanner() {
   if (!on) return null;
   return (
     <div role="status" className="sticky top-12 z-20 flex items-center justify-center gap-2 bg-[color-mix(in_srgb,var(--orange)_16%,var(--bg))] px-4 py-2 text-[13px] font-medium lg:top-0">
-      <FlaskConical size={15} className="text-ios-orange shrink-0" />
+      <FlaskConical size={15} className="text-ink-orange shrink-0" />
       <span>Modo práctica libre: no se guarda tu progreso.</span>
-      <button type="button" className="text-ios-blue font-semibold" onClick={() => set({ practiceSandbox: false })}>
+      <button type="button" className="text-ink-blue font-semibold" onClick={() => set({ practiceSandbox: false })}>
         Desactivar
       </button>
     </div>
