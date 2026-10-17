@@ -1,0 +1,457 @@
+{
+ "B1-1-0": [
+  {
+   "title": "The colleague who knows everything",
+   "titleEs": "La colega que lo sabe todo",
+   "scene": "🏢 En una oficina de Medellín: Camila le explica a un nuevo compañero a quién acudir.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "Is there anyone who can help me with the expense reports?",
+     "es": "¿Hay alguien que me pueda ayudar con los informes de gastos?"
+    },
+    {
+     "sp": "Camila",
+     "line": "Sure. Talk to Paula, the woman who sits by the window.",
+     "es": "Claro. Habla con Paula, la mujer que se sienta junto a la ventana."
+    },
+    {
+     "sp": "Oliver",
+     "line": "The one I met at the coffee machine this morning?",
+     "es": "¿La que conocí en la máquina de café esta mañana?"
+    },
+    {
+     "sp": "Camila",
+     "line": "That's her. She's the person who designed the whole system.",
+     "es": "Esa es. Ella es la persona que diseñó todo el sistema."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Great. And the template you mentioned yesterday, where is it?",
+     "es": "Genial. ¿Y la plantilla que mencionaste ayer, dónde está?"
+    },
+    {
+     "sp": "Camila",
+     "line": "It's in the folder that I shared with you on Monday.",
+     "es": "Está en la carpeta que te compartí el lunes."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Thanks. You're the only person here who explains things clearly.",
+     "es": "Gracias. Eres la única persona aquí que explica las cosas con claridad."
+    }
+   ]
+  },
+  {
+   "title": "A place I never forgot",
+   "titleEs": "Un lugar que nunca olvidé",
+   "scene": "☕ En una cafetería de Bogotá: dos amigos recuerdan un viaje.",
+   "cast": [
+    {
+     "name": "Santiago",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "What's the best trip you've ever taken?",
+     "es": "¿Cuál es el mejor viaje que has hecho?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "Probably the one we took to Salento. Do you remember the guide who showed us the coffee farm?",
+     "es": "Probablemente el que hicimos a Salento. ¿Te acuerdas del guía que nos mostró la finca cafetera?"
+    },
+    {
+     "sp": "Grace",
+     "line": "The man who told jokes all the time? Of course!",
+     "es": "¿El señor que contaba chistes todo el tiempo? ¡Claro!"
+    },
+    {
+     "sp": "Santiago",
+     "line": "And the coffee we tasted there was the best I've ever had.",
+     "es": "Y el café que probamos allá fue el mejor que he tomado."
+    },
+    {
+     "sp": "Grace",
+     "line": "I still have the bag of beans you bought me.",
+     "es": "Todavía tengo la bolsa de café en grano que me compraste."
+    },
+    {
+     "sp": "Santiago",
+     "line": "Really? The one that had the little map on it?",
+     "es": "¿En serio? ¿La que tenía el mapita?"
+    },
+    {
+     "sp": "Grace",
+     "line": "Yes. It's something I'll never throw away.",
+     "es": "Sí. Es algo que nunca voy a botar."
+    }
+   ]
+  }
+ ],
+ "B1-1-1": [
+  {
+   "title": "Pet peeves at the office",
+   "titleEs": "Lo que nos saca de quicio en la oficina",
+   "scene": "💼 En la hora del almuerzo en una empresa de Bogotá: dos colegas se desahogan.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "James",
+     "line": "Can I be honest? It really bothers me when people reply-all to every email.",
+     "es": "¿Puedo ser sincero? Me molesta mucho cuando la gente responde a todos en cada correo."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Oh, same. And it's so annoying when the meeting starts twenty minutes late.",
+     "es": "Uy, igual. Y es muy fastidioso cuando la reunión empieza veinte minutos tarde."
+    },
+    {
+     "sp": "James",
+     "line": "It drives me crazy when nobody brings an agenda.",
+     "es": "Me enloquece cuando nadie trae una agenda."
+    },
+    {
+     "sp": "Daniela",
+     "line": "But it's nice when someone brings coffee for everyone.",
+     "es": "Pero es bonito cuando alguien trae café para todos."
+    },
+    {
+     "sp": "James",
+     "line": "True. It surprises me when the boss actually says thank you.",
+     "es": "Es cierto. Me sorprende cuando el jefe de verdad da las gracias."
+    },
+    {
+     "sp": "Daniela",
+     "line": "When that happens, it makes my whole week.",
+     "es": "Cuando eso pasa, me alegra toda la semana."
+    }
+   ]
+  },
+  {
+   "title": "Life in the city",
+   "titleEs": "La vida en la ciudad",
+   "scene": "🚌 En un bus de Medellín: dos amigos hablan de lo bueno y lo malo de la ciudad.",
+   "cast": [
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lucy",
+     "line": "What do you love about living here?",
+     "es": "¿Qué es lo que más te gusta de vivir aquí?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "It makes me happy when I see the mountains from my window.",
+     "es": "Me hace feliz cuando veo las montañas desde mi ventana."
+    },
+    {
+     "sp": "Lucy",
+     "line": "And what do you hate?",
+     "es": "¿Y qué odias?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "It's frustrating when the traffic doesn't move for an hour.",
+     "es": "Es frustrante cuando el tráfico no se mueve durante una hora."
+    },
+    {
+     "sp": "Lucy",
+     "line": "It's a real problem when it rains, too.",
+     "es": "También es un problema serio cuando llueve."
+    },
+    {
+     "sp": "Mateo",
+     "line": "Yes, but it's amazing when the sun comes out afterwards.",
+     "es": "Sí, pero es increíble cuando sale el sol después."
+    },
+    {
+     "sp": "Lucy",
+     "line": "It always surprises me when strangers say good morning on the metro.",
+     "es": "Siempre me sorprende cuando desconocidos dicen buenos días en el metro."
+    },
+    {
+     "sp": "Mateo",
+     "line": "That's paisa culture. It's normal when you live here.",
+     "es": "Esa es la cultura paisa. Es normal cuando vives aquí."
+    }
+   ]
+  }
+ ],
+ "B1-2-0": [
+  {
+   "title": "Is remote work worth it?",
+   "titleEs": "¿Vale la pena el trabajo remoto?",
+   "scene": "💻 En un coworking de Medellín: dos freelancers comparan rutinas.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Ryan",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ryan",
+     "line": "Working from home sounds perfect, but is it?",
+     "es": "Trabajar desde casa suena perfecto, pero ¿sí lo es?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Honestly, not commuting is the best part. I save two hours a day.",
+     "es": "La verdad, no tener que desplazarme es lo mejor. Me ahorro dos horas al día."
+    },
+    {
+     "sp": "Ryan",
+     "line": "I don't mind working alone, but I miss chatting with colleagues.",
+     "es": "No me molesta trabajar solo, pero extraño charlar con los colegas."
+    },
+    {
+     "sp": "Laura",
+     "line": "That's why coming here twice a week helps me.",
+     "es": "Por eso venir aquí dos veces a la semana me ayuda."
+    },
+    {
+     "sp": "Ryan",
+     "line": "Does setting a strict schedule make a difference?",
+     "es": "¿Tener un horario estricto hace la diferencia?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Completely. Starting at the same time every day keeps me focused.",
+     "es": "Totalmente. Empezar a la misma hora todos los días me mantiene concentrada."
+    },
+    {
+     "sp": "Ryan",
+     "line": "I should try it. I keep checking my phone instead of working.",
+     "es": "Debería intentarlo. Me la paso revisando el celular en vez de trabajar."
+    }
+   ]
+  },
+  {
+   "title": "Learning a language",
+   "titleEs": "Aprender un idioma",
+   "scene": "🎧 En un pódcast universitario en Bogotá: una profesora da consejos.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Andrés",
+     "line": "So, what's the secret to learning English?",
+     "es": "Entonces, ¿cuál es el secreto para aprender inglés?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "Practising a little every day is better than studying for hours once a week.",
+     "es": "Practicar un poco todos los días es mejor que estudiar horas una vez a la semana."
+    },
+    {
+     "sp": "Andrés",
+     "line": "What about watching series in English?",
+     "es": "¿Y ver series en inglés?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "Watching with English subtitles is great. Repeating the lines out loud is even better.",
+     "es": "Verlas con subtítulos en inglés es genial. Repetir las frases en voz alta es aún mejor."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Many students are afraid of making mistakes.",
+     "es": "Muchos estudiantes tienen miedo de equivocarse."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Making mistakes is part of the process. Not speaking is the real problem.",
+     "es": "Equivocarse es parte del proceso. No hablar es el verdadero problema."
+    },
+    {
+     "sp": "Andrés",
+     "line": "So you recommend talking to anyone who'll listen?",
+     "es": "¿Entonces recomiendas hablar con cualquiera que te escuche?"
+    },
+    {
+     "sp": "Hannah",
+     "line": "Exactly. And never give up trying.",
+     "es": "Exacto. Y nunca dejes de intentarlo."
+    }
+   ]
+  }
+ ],
+ "B1-2-1": [
+  {
+   "title": "Choosing a phone",
+   "titleEs": "Escogiendo un celular",
+   "scene": "📱 En un centro comercial de Bogotá: Felipe compara dos celulares con un vendedor.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Felipe",
+     "line": "What's the difference between these two models?",
+     "es": "¿Cuál es la diferencia entre estos dos modelos?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "This one is cheaper, but it has less storage than the other.",
+     "es": "Este es más barato, pero tiene menos almacenamiento que el otro."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Does the expensive one have a better camera?",
+     "es": "¿El caro tiene mejor cámara?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "Yes, and it has more features and fewer problems with the battery.",
+     "es": "Sí, y tiene más funciones y menos problemas con la batería."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Which one sells better?",
+     "es": "¿Cuál se vende más?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "The cheaper one sells more, but customers complain about it more often.",
+     "es": "El más barato se vende más, pero los clientes se quejan de él más a menudo."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Is the expensive one as fast as the new models?",
+     "es": "¿El caro es tan rápido como los modelos nuevos?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "Almost. And it's much better designed than this one.",
+     "es": "Casi. Y está mucho mejor diseñado que este."
+    }
+   ]
+  },
+  {
+   "title": "Bogotá or Medellín?",
+   "titleEs": "¿Bogotá o Medellín?",
+   "scene": "🏙️ En una videollamada: una amiga australiana pregunta dónde vivir en Colombia.",
+   "cast": [
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zoe",
+     "line": "I'm moving to Colombia. Is Medellín better than Bogotá?",
+     "es": "Me voy a vivir a Colombia. ¿Medellín es mejor que Bogotá?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Medellín is warmer and less rainy, but Bogotá has more cultural events.",
+     "es": "Medellín es más cálida y menos lluviosa, pero Bogotá tiene más eventos culturales."
+    },
+    {
+     "sp": "Zoe",
+     "line": "Which one has less traffic?",
+     "es": "¿Cuál tiene menos tráfico?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Neither! But Medellín's metro is better organised than Bogotá's buses.",
+     "es": "¡Ninguna! Pero el metro de Medellín está mejor organizado que los buses de Bogotá."
+    },
+    {
+     "sp": "Zoe",
+     "line": "Is Bogotá as expensive as Medellín?",
+     "es": "¿Bogotá es tan cara como Medellín?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Rent is a bit higher in Bogotá, and people work longer hours there.",
+     "es": "El arriendo es un poco más alto en Bogotá, y la gente trabaja más horas allá."
+    },
+    {
+     "sp": "Zoe",
+     "line": "So Medellín is more relaxed?",
+     "es": "¿Entonces Medellín es más relajada?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Slightly. People there talk more and rush less.",
+     "es": "Un poco. La gente allá conversa más y corre menos."
+    }
+   ]
+  }
+ ]
+}

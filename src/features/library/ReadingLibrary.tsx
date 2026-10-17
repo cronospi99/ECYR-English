@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, BookOpen, Clock, Square, Volume2 } from 'lucide-react';
@@ -15,7 +15,7 @@ import { speak, stopSpeaking } from '@/lib/speech';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 
-const GENRE_ES: Record<string, string> = {
+export const GENRE_ES: Record<string, string> = {
   story: 'Historia',
   email: 'Correo',
   article: 'Artículo',
@@ -30,15 +30,19 @@ const GENRE_ES: Record<string, string> = {
   science: 'Ciencia',
   report: 'Informe',
   essay: 'Ensayo',
+  ad: 'Anuncio',
+  profile: 'Perfil',
+  message: 'Mensaje',
+  diary: 'Diario',
+  letter: 'Carta',
 };
-const minutes = (words: number) => Math.max(1, Math.round(words / 130));
+export const minutes = (words: number) => Math.max(1, Math.round(words / 130));
 
 export function ReadingLibrary() {
   const { data, loading } = useAsync(loadLibReadings, []);
   const [params, setParams] = useSearchParams();
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
   const [genre, setGenre] = useState('all');
-  const done = useProgress((s) => s.readings);
   if (loading || !data) return <PageLoader />;
 
   const open = data.find((r) => r.id === params.get('lib'));
@@ -75,31 +79,38 @@ export function ReadingLibrary() {
       </p>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((r, i) => (
-          <motion.button
-            key={r.id}
-            type="button"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: Math.min(i * 0.015, 0.4) }}
-            onClick={() => setParams({ tab: 'library', lib: r.id })}
-            className="bg-card shadow-card flex items-start gap-3 rounded-[18px] p-4 text-left transition-transform active:scale-[0.99]"
-          >
-            <span className="bg-fill-2 flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]">{r.emoji}</span>
-            <span className="min-w-0 flex-1">
-              <span className="flex flex-wrap items-center gap-1.5">
-                <LevelChip level={r.level} />
-                <span className="text-label-2 text-[12px] font-semibold">{GENRE_ES[r.genre] ?? r.genre}</span>
-                {done[`lib-${r.id}`] && <span className="text-ink-green text-[12px] font-semibold">✓ {done[`lib-${r.id}`]!.score}%</span>}
-              </span>
-              <span className="mt-1 block text-[16px] leading-snug font-bold">{r.title}</span>
-              <span className="text-label-2 mt-0.5 flex items-center gap-1 text-[12.5px]">
-                {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} preguntas
-              </span>
-            </span>
-          </motion.button>
+          <ReadingCard key={r.id} r={r} i={i} onOpen={() => setParams({ tab: 'library', lib: r.id })} />
         ))}
       </div>
     </div>
+  );
+}
+
+/** A library card: emoji, level, genre, title, topic and reading time. */
+export function ReadingCard({ r, i = 0, onOpen }: { r: LibReading; i?: number; onOpen: () => void }) {
+  const done = useProgress((s) => s.readings[`lib-${r.id}`]);
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: Math.min(i * 0.015, 0.4) }}
+      onClick={onOpen}
+      className="bg-card shadow-card flex items-start gap-3 rounded-[18px] p-4 text-left transition-transform active:scale-[0.99]"
+    >
+      <span className="bg-fill-2 flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]">{r.emoji}</span>
+      <span className="min-w-0 flex-1">
+        <span className="flex flex-wrap items-center gap-1.5">
+          <LevelChip level={r.level} />
+          <span className="text-label-2 text-[12px] font-semibold">{GENRE_ES[r.genre] ?? r.genre}</span>
+          {done && <span className="text-ink-green text-[12px] font-semibold">✓ {done.score}%</span>}
+        </span>
+        <span className="mt-1 block text-[16px] leading-snug font-bold">{r.title}</span>
+        <span className="text-label-2 mt-0.5 flex items-center gap-1 text-[12.5px]">
+          {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} preguntas
+        </span>
+      </span>
+    </motion.button>
   );
 }
 
@@ -118,12 +129,14 @@ export function readingSheet(r: LibReading): Worksheet {
   };
 }
 
-function Reader({ r, onBack }: { r: LibReading; onBack: () => void }) {
+/** The full reader: glossed text with read-aloud, glossary, questions and the PDF worksheet. */
+export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading; onBack: () => void; backLabel?: string }) {
   const [reading, setReading] = useState<number | null>(null);
   const [gloss, setGloss] = useState<string | null>(null);
   const completeReading = useProgress((s) => s.completeReading);
   const glossary = useMemo(() => new Map(r.glossary.map(([en, es]) => [en.toLowerCase(), es])), [r]);
   const terms = useMemo(() => [...glossary.keys()].sort((a, b) => b.length - a.length), [glossary]);
+  useEffect(() => () => void stopSpeaking(), [r.id]);
 
   const read = (i: number) => {
     if (reading === i) {
@@ -139,7 +152,7 @@ function Reader({ r, onBack }: { r: LibReading; onBack: () => void }) {
     <div className="mx-auto max-w-3xl">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <Button variant="plain" onClick={onBack}>
-          <ArrowLeft size={16} /> Biblioteca
+          <ArrowLeft size={16} /> {backLabel}
         </Button>
         <PdfButton build={() => readingSheet(r)} />
       </div>

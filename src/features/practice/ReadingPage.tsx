@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BookOpen, CheckCircle2, Globe2, Volume2 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
@@ -6,18 +6,20 @@ import { Card } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
 import { ListGroup, ListRow } from '@/components/ui/List';
 import { Button } from '@/components/ui/Button';
-import { LevelChip, PageLoader } from '@/components/ui/Misc';
+import { Chip, LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { useAsync } from '@/hooks/useAsync';
-import { loadFoundations, loadTravelGuides } from '@/content/levels';
+import { LEVELS, levelMeta, loadFoundations, loadLevel, loadTravelGuides } from '@/content/levels';
+import { loadUnitReadings } from '@/content/unitReadings';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
-import { ReadingLibrary } from '@/features/library/ReadingLibrary';
+import { Reader, ReadingCard, ReadingLibrary } from '@/features/library/ReadingLibrary';
+import { unitTitle } from '../learn/LevelPage';
 import { ExternalResources } from '@/features/library/ExternalResources';
 import type { CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
 import { speak, stopSpeaking } from '@/lib/speech';
-import { ink } from '@/lib/color';
+import { ink, tint } from '@/lib/color';
 
 interface Reading {
   id: string;
@@ -103,8 +105,8 @@ async function loadReadings(): Promise<Reading[]> {
 export default function ReadingPage() {
   const { data, loading } = useAsync(loadReadings, []);
   const [params, setParams] = useSearchParams();
-  type Tab = 'library' | 'story' | 'travel';
-  const tab = (['library', 'story', 'travel'].includes(params.get('tab') ?? '') ? params.get('tab') : 'library') as Tab;
+  type Tab = 'library' | 'unit' | 'story' | 'travel';
+  const tab = (['library', 'unit', 'story', 'travel'].includes(params.get('tab') ?? '') ? params.get('tab') : 'library') as Tab;
   const setTab = (t: Tab) => setParams({ tab: t });
   const readings = useProgress((s) => s.readings);
   const selected = useMemo(() => data?.find((r) => r.id === params.get('r')) ?? null, [data, params]);
@@ -114,14 +116,15 @@ export default function ReadingPage() {
 
   const list = data.filter((r) => r.kind === tab);
   return (
-    <Page back={{ to: '/practice', label: 'Práctica' }} title="Reading" subtitle="Lee, escucha y comprueba lo que entendiste." wide={tab === 'library'}>
-      {!params.get('lib') && (
+    <Page back={{ to: '/practice', label: 'Práctica' }} title="Reading" subtitle="Lee, escucha y comprueba lo que entendiste." wide={tab === 'library' || tab === 'unit'}>
+      {!params.get('lib') && !params.get('ur') && (
         <div className="no-scrollbar mb-5 overflow-x-auto">
           <Segmented
             value={tab}
             onChange={setTab}
             options={[
               { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'unit', label: 'Por unidad' },
               { value: 'story', label: 'Historias A1' },
               { value: 'travel', label: 'Guías de viaje' },
             ]}
@@ -133,6 +136,8 @@ export default function ReadingPage() {
           <ReadingLibrary />
           {!params.get('lib') && <ExternalResources className="mt-8" />}
         </>
+      ) : tab === 'unit' ? (
+        <UnitBrowser />
       ) : (
       <ListGroup header={`${list.length} lecturas`}>
         {list.map((r) => (
@@ -167,6 +172,72 @@ export default function ReadingPage() {
       </ListGroup>
       )}
     </Page>
+  );
+}
+
+/** "Por unidad": every unit of a level book with the readings written for it. */
+function UnitBrowser() {
+  const [params, setParams] = useSearchParams();
+  const lvl = levelMeta(params.get('lvl') ?? '')?.id ?? 'A1';
+  const { data, loading } = useAsync(() => Promise.all([loadLevel(lvl), loadUnitReadings(lvl)]), [lvl]);
+  const focus = params.get('u');
+  useEffect(() => {
+    if (focus && data && !params.get('ur')) document.getElementById(`unit-${focus}`)?.scrollIntoView({ block: 'start' });
+  }, [focus, data, params]);
+
+  const all = data ? Object.values(data[1]).flat() : [];
+  const open = all.find((r) => r.id === params.get('ur'));
+  if (open) {
+    const n = Object.entries(data![1]).find(([, rs]) => rs.includes(open))?.[0];
+    return <Reader key={open.id} r={open} backLabel="Por unidad" onBack={() => setParams({ tab: 'unit', lvl, ...(n ? { u: n } : {}) })} />;
+  }
+  const color = levelMeta(lvl)!.color;
+  const units = data?.[0].units.filter((u) => data[1][String(u.n)]?.length) ?? [];
+
+  return (
+    <div>
+      <div className="no-scrollbar -mx-1 mb-4 flex gap-2 overflow-x-auto px-1 py-1">
+        {LEVELS.map((l) => (
+          <Chip key={l.id} active={lvl === l.id} onClick={() => setParams({ tab: 'unit', lvl: l.id })}>
+            {l.id} · {l.book}
+          </Chip>
+        ))}
+      </div>
+      {loading || !data ? (
+        <PageLoader />
+      ) : !units.length ? (
+        <p className="text-label-2">Las lecturas por unidad de este nivel se están preparando.</p>
+      ) : (
+        <>
+          <p className="text-label-2 mb-4 text-[13px]">
+            {all.length} lecturas originales escritas con el tema, el vocabulario y la gramática de cada unidad de {data[0].book}.
+          </p>
+          <div className="space-y-6">
+            {units.map((u) => (
+              <section key={u.n} id={`unit-${u.n}`} className="scroll-mt-4">
+                <div className="mb-2.5 flex items-center gap-3">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] text-[15px] font-bold"
+                    style={{ background: tint(color), color: ink(color) }}
+                  >
+                    {u.n}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="truncate text-[17px] leading-tight font-bold">{unitTitle(u.title)}</h3>
+                    <p className="text-label-2 truncate text-[13px]">{u.theme}</p>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {data[1][String(u.n)]!.map((r, i) => (
+                    <ReadingCard key={r.id} r={r} i={i} onOpen={() => setParams({ tab: 'unit', lvl, ur: r.id })} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 

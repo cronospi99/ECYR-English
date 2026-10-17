@@ -1,0 +1,331 @@
+{
+ "B1-1-0": [
+  {
+   "kind": "transform",
+   "title": "Dos frases → una sola",
+   "steps": [
+    {
+     "label": "Dos frases",
+     "sentence": "I have a colleague. She speaks four languages."
+    },
+    {
+     "label": "Pronombre sujeto",
+     "sentence": "I have a colleague **who** speaks four languages.",
+     "change": "“She” se reemplaza por “who”; no se puede quitar porque es el sujeto."
+    },
+    {
+     "label": "Dos frases",
+     "sentence": "This is the film. We saw it last night."
+    },
+    {
+     "label": "Pronombre objeto",
+     "sentence": "This is the film **(that)** we saw last night.",
+     "change": "“it” desaparece; “that” es objeto, así que puedes omitirlo."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Who, which, that… o nada?",
+   "question": "¿A qué se refiere el pronombre y qué función cumple en su cláusula?",
+   "branches": [
+    {
+     "if": "Es una persona y es el sujeto",
+     "use": "who / that",
+     "example": "The woman who called left a message."
+    },
+    {
+     "if": "Es una cosa y es el sujeto",
+     "use": "which / that",
+     "example": "It’s an app that works offline."
+    },
+    {
+     "if": "Es objeto (persona o cosa): después viene otro sujeto",
+     "use": "puedes omitirlo",
+     "example": "The book (that) I lent you is mine."
+    },
+    {
+     "if": "Indica posesión",
+     "use": "whose",
+     "example": "That’s the colleague whose laptop was stolen."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Ojo con estos errores",
+   "items": [
+    {
+     "a": "The song that I like.",
+     "b": "The song that I like it.",
+     "note": "La segunda está mal: “that” ya es el objeto, no repitas “it”."
+    },
+    {
+     "a": "The people who work here are kind.",
+     "b": "The people work here are kind.",
+     "note": "Sin “who” la frase no tiene sentido: el pronombre sujeto no se puede omitir."
+    },
+    {
+     "a": "The man who called me.",
+     "b": "The man which called me.",
+     "note": "“Which” nunca se usa para personas."
+    }
+   ]
+  }
+ ],
+ "B1-1-1": [
+  {
+   "kind": "transform",
+   "title": "De la situación a la reacción",
+   "steps": [
+    {
+     "label": "Situación",
+     "sentence": "People cancel at the last minute."
+    },
+    {
+     "label": "It + verbo + objeto",
+     "sentence": "**It annoys me when** people cancel at the last minute.",
+     "change": "“It” es un sujeto vacío; la reacción va primero."
+    },
+    {
+     "label": "It + be + adjetivo",
+     "sentence": "**It’s frustrating when** people cancel at the last minute.",
+     "change": "Con adjetivo no necesitas objeto (“me”)."
+    },
+    {
+     "label": "Invertida",
+     "sentence": "**When** people cancel at the last minute, **it** really annoys me.",
+     "change": "Si empiezas con “when”, pon coma."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Intensidad de la reacción",
+   "from": "Me molesta un poco",
+   "to": "Me saca de quicio",
+   "items": [
+    {
+     "word": "It bothers me",
+     "value": 35,
+     "example": "It bothers me when people are late.",
+     "es": "Me molesta"
+    },
+    {
+     "word": "It annoys me",
+     "value": 55,
+     "example": "It annoys me when the wifi drops.",
+     "es": "Me fastidia"
+    },
+    {
+     "word": "It’s frustrating",
+     "value": 70,
+     "example": "It’s frustrating when nobody answers.",
+     "es": "Es frustrante"
+    },
+    {
+     "word": "It upsets me",
+     "value": 80,
+     "example": "It upsets me when people lie.",
+     "es": "Me afecta / me molesta mucho"
+    },
+    {
+     "word": "It drives me crazy",
+     "value": 95,
+     "example": "It drives me crazy when he chews loudly.",
+     "es": "Me enloquece"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿When o will?",
+   "items": [
+    {
+     "a": "It bothers me when he arrives late.",
+     "b": "It bothers me when he will arrive late.",
+     "note": "La segunda está mal: después de “when” va presente simple, no “will”."
+    },
+    {
+     "a": "It’s annoying when the bus is late.",
+     "b": "It’s annoying me when the bus is late.",
+     "note": "“It’s annoying” es general; “it’s annoying me” solo describe algo que pasa ahora mismo."
+    },
+    {
+     "a": "It’s strange when nobody replies.",
+     "b": "It’s strange that nobody replied.",
+     "note": "Con “when” hablas de algo que se repite; con “that” comentas un hecho concreto."
+    }
+   ]
+  }
+ ],
+ "B1-2-0": [
+  {
+   "kind": "transform",
+   "title": "Del verbo al sujeto",
+   "steps": [
+    {
+     "label": "Verbo",
+     "sentence": "I learn English."
+    },
+    {
+     "label": "Gerundio como sujeto",
+     "sentence": "**Learning** English **is** fun.",
+     "change": "El verbo en -ing funciona como sustantivo y lleva verbo en singular."
+    },
+    {
+     "label": "Gerundio negativo",
+     "sentence": "**Not learning** English **is** a disadvantage.",
+     "change": "“Not” va antes del gerundio."
+    },
+    {
+     "label": "Tras preposición",
+     "sentence": "I’m interested **in learning** English.",
+     "change": "Después de una preposición siempre va -ing."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿-ing o to + verbo?",
+   "question": "¿Dónde aparece el verbo en la frase?",
+   "branches": [
+    {
+     "if": "Es el sujeto de la frase",
+     "use": "gerundio (-ing)",
+     "example": "Cooking for ten people is exhausting."
+    },
+    {
+     "if": "Va después de una preposición (in, at, of, before…)",
+     "use": "gerundio (-ing)",
+     "example": "She’s good at solving problems."
+    },
+    {
+     "if": "Va después de enjoy, avoid, mind, finish, suggest…",
+     "use": "gerundio (-ing)",
+     "example": "I avoid driving at night."
+    },
+    {
+     "if": "Va después de want, hope, plan, decide…",
+     "use": "to + verbo",
+     "example": "I decided to change jobs."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores típicos",
+   "items": [
+    {
+     "a": "Reading reports is tiring.",
+     "b": "Reading reports are tiring.",
+     "note": "El sujeto con gerundio siempre es singular: “is”, aunque diga “reports”."
+    },
+    {
+     "a": "I’m interested in learning.",
+     "b": "I’m interested in learn.",
+     "note": "Después de preposición va -ing, nunca la forma base."
+    },
+    {
+     "a": "Not knowing the answer was hard.",
+     "b": "Knowing not the answer was hard.",
+     "note": "La negación va antes del gerundio."
+    }
+   ]
+  }
+ ],
+ "B1-2-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué estás comparando?",
+   "question": "¿Qué tipo de palabra comparas?",
+   "branches": [
+    {
+     "if": "Un adjetivo",
+     "use": "-er / more + adjetivo + than",
+     "example": "This route is shorter and more scenic than that one."
+    },
+    {
+     "if": "Un sustantivo contable",
+     "use": "more / fewer + sustantivo",
+     "example": "This city has fewer parks than mine."
+    },
+    {
+     "if": "Un sustantivo incontable",
+     "use": "more / less + sustantivo",
+     "example": "There’s less traffic on Sundays."
+    },
+    {
+     "if": "Un verbo",
+     "use": "verbo + more / less / harder…",
+     "example": "She works harder than I do."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Qué tan grande es la diferencia",
+   "from": "Diferencia mínima",
+   "to": "Diferencia enorme",
+   "items": [
+    {
+     "word": "slightly",
+     "value": 20,
+     "example": "It’s slightly cheaper than the other one.",
+     "es": "un poquito"
+    },
+    {
+     "word": "a bit",
+     "value": 30,
+     "example": "This flat is a bit bigger.",
+     "es": "un poco"
+    },
+    {
+     "word": "much",
+     "value": 70,
+     "example": "The new model is much faster.",
+     "es": "mucho"
+    },
+    {
+     "word": "a lot",
+     "value": 75,
+     "example": "Bogotá is a lot colder than Cartagena.",
+     "es": "muchísimo"
+    },
+    {
+     "word": "far",
+     "value": 90,
+     "example": "This hotel is far more expensive.",
+     "es": "muchísimo más"
+    },
+    {
+     "word": "nowhere near as … as",
+     "value": 95,
+     "example": "My car is nowhere near as fast as yours.",
+     "es": "ni de cerca tan…"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Fewer, less y el orden",
+   "items": [
+    {
+     "a": "There are fewer people today.",
+     "b": "There is less noise today.",
+     "note": "“Fewer” con contables (people); “less” con incontables (noise)."
+    },
+    {
+     "a": "He complains more than anyone.",
+     "b": "He more complains than anyone.",
+     "note": "Con verbos, “more” va después del verbo."
+    },
+    {
+     "a": "The office is better organised now.",
+     "b": "The office is more organiseder now.",
+     "note": "Con participios usa more / better / worse delante, sin -er."
+    }
+   ]
+  }
+ ]
+}

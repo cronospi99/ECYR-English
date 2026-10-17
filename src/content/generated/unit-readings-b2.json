@@ -1,0 +1,288 @@
+{
+ "1": [
+  {
+   "id": "u-b2-1-1",
+   "title": "Sunday Lunch at the Ospinas'",
+   "level": "B2",
+   "genre": "feature article",
+   "topic": "Family",
+   "emoji": "🍲",
+   "words": 445,
+   "paragraphs": [
+    "Every Sunday at about one o'clock, the narrow street outside the Ospina family's house in Envigado fills up with cars. Aunts arrive carrying pots of beans, cousins bring bags of arepas, and somebody always forgets the ice. By two o'clock there are usually more than twenty people sitting at three tables pushed together in the garden. \"Nobody sends an invitation,\" says Gloria Ospina, who is seventy-four and has hosted the lunch for almost four decades. \"The rule is that if you are family, you come.\"",
+    "Sociologists often describe Colombian families as close-knit, and the Ospinas seem to prove the point. Three generations live within ten minutes of one another, and most important decisions, from buying a car to choosing a university, are discussed around Gloria's table. Her grandson Mateo, who is nineteen, admits that this can be exhausting. \"Being part of a big family means never being able to keep a secret,\" he says. \"If I tell my mum something on Friday, my great-aunt knows about it by Sunday.\"",
+    "Even so, Mateo says he enjoys spending time with his relatives, and he can't imagine skipping the lunch. He gets along especially well with his uncle Hernán, the family's self-declared black sheep, who left a stable job in a bank to open a surf school on the Pacific coast. \"Everyone criticised him at first,\" Mateo recalls. \"Now they all ask him for holiday discounts.\" Several people say that Mateo takes after Hernán: both are easygoing, both hate wearing ties, and both keep making jokes during the speeches.",
+    "Of course, not every Sunday is peaceful. Two of Gloria's daughters stopped speaking to each other for nearly a year after a disagreement about an inheritance. \"What upset me most was that they argued in front of the children,\" Gloria says. In the end, it was the lunch itself that helped them patch things up. \"They couldn't avoid seeing each other, so eventually they had to start talking again.\"",
+    "Researchers who study family life point out that regular rituals like this one give people a sense of belonging, especially in times of change. Young adults who grow up with these traditions often report feeling more secure, even when they move away. The challenge, however, is that modern life makes the habit harder to keep. Jobs, traffic and long distances mean that many families now meet only at Christmas.",
+    "Gloria is aware that the tradition may not survive her. \"My only worry is that nobody will want to cook for twenty people,\" she says with a smile. Mateo, listening nearby, has a different idea. \"The solution is that we all cook a little,\" he says. \"And Hernán buys the ice.\""
+   ],
+   "glossary": [
+    [
+     "close-knit",
+     "muy unido"
+    ],
+    [
+     "to get along with",
+     "llevarse bien con"
+    ],
+    [
+     "black sheep",
+     "oveja negra"
+    ],
+    [
+     "to take after",
+     "parecerse a (un familiar)"
+    ],
+    [
+     "easygoing",
+     "relajado, tranquilo"
+    ],
+    [
+     "to patch things up",
+     "hacer las paces, arreglar las cosas"
+    ],
+    [
+     "inheritance",
+     "herencia"
+    ],
+    [
+     "sense of belonging",
+     "sentido de pertenencia"
+    ],
+    [
+     "to skip",
+     "saltarse, faltar a"
+    ],
+    [
+     "self-declared",
+     "autoproclamado"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How do relatives find out about the Sunday lunch?",
+     "options": [
+      "Gloria phones everyone on Saturday",
+      "They receive a written invitation",
+      "No invitation is needed; family members simply come",
+      "Mateo sends a message to a family group"
+     ],
+     "answer": 2,
+     "explain_es": "Gloria dice: \"Nobody sends an invitation... if you are family, you come\"."
+    },
+    {
+     "type": "tf",
+     "q": "Mateo finds some aspects of being in a big family tiring.",
+     "answer": "T",
+     "explain_es": "Mateo admite que \"this can be exhausting\" porque no se pueden guardar secretos."
+    },
+    {
+     "type": "tf",
+     "q": "Hernán's surf school is the most successful business on the Pacific coast.",
+     "answer": "NG",
+     "explain_es": "El texto dice que abrió una escuela de surf, pero no dice nada sobre su éxito comparado con otros negocios."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'Mateo takes after Hernán' means that Mateo…",
+     "options": [
+      "looks after Hernán",
+      "is similar to Hernán in character",
+      "follows Hernán everywhere",
+      "works for Hernán"
+     ],
+     "answer": 1,
+     "explain_es": "'Take after' significa parecerse a un familiar mayor en carácter o apariencia."
+    },
+    {
+     "type": "gap",
+     "q": "Gloria's daughters stopped speaking for nearly a year after a disagreement about an ____.",
+     "answer": "inheritance",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"a disagreement about an inheritance\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Gloria, why did her daughters eventually start talking again?",
+     "options": [
+      "A psychologist helped them",
+      "They had to see each other at the lunch every week",
+      "The children asked them to",
+      "They solved the inheritance problem"
+     ],
+     "answer": 1,
+     "explain_es": "Gloria explica: \"They couldn't avoid seeing each other, so eventually they had to start talking again\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Why families argue about money",
+      "What research says about family rituals",
+      "The best day for a family lunch",
+      "How to cook for a large group"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo resume lo que dicen los investigadores sobre los rituales familiares y sus dificultades actuales."
+    },
+    {
+     "type": "gap",
+     "q": "Mateo's solution is that everybody ____ a little.",
+     "answer": "cooks",
+     "accept": [
+      "cook"
+     ],
+     "explain_es": "Mateo dice: \"The solution is that we all cook a little\" (una cláusula nominal después de 'be')."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-1-2",
+   "title": "Can Siblings Really Be Friends?",
+   "level": "B2",
+   "genre": "interview",
+   "topic": "Relationships",
+   "emoji": "👫",
+   "words": 431,
+   "paragraphs": [
+    "Dr Paula Ríos is a family therapist in Bogotá and the author of a popular book about brothers and sisters. We asked her why sibling relationships can be so complicated, and what adults can do when they have drifted apart.",
+    "Q: Why do brothers and sisters fight so much when they are young? A: The simple answer is that they are competing for the same limited resources: their parents' attention, approval and time. Sibling rivalry is completely normal. What worries me is not arguing itself, but parents comparing their children all the time. Phrases like 'Why can't you be more like your sister?' can stay with a person for decades.",
+    "Q: Is it true that birth order shapes our personality? A: There's some evidence, but I'd take most popular theories with caution. Older children are often described as responsible and younger ones as rebellious, but family size, gender and economic situation matter just as much. The important thing is that every child feels seen for who they are.",
+    "Q: Many adults say they love their siblings but don't really like them. Is that common? A: Very. You don't choose your siblings, so it's natural that some of them rub you up the wrong way. You might share childhood memories but disagree about politics, religion or money. Lots of my clients say they simply don't see eye to eye with a brother or sister on anything important. That doesn't mean the relationship has failed.",
+    "Q: How do siblings drift apart? A: Usually it happens slowly. People move to different cities, have children, get busy. Then something happens, often when parents become ill or die, and old resentments come back. The danger is that nobody wants to be the first to apologise, so years go by without anyone picking up the phone.",
+    "Q: So what would you advise someone who wants to reconnect? A: Start small. Instead of planning a big conversation about the past, try suggesting a coffee or a short walk. Avoid bringing up old arguments in the first meeting. Focus on listening rather than proving you were right. Many people are surprised to discover that their sibling has also been missing them.",
+    "Q: And what can parents do to help their children bond? A: Give them shared projects rather than competitions: cooking a meal together, building something, looking after a pet. Children who learn to cooperate early are much more likely to keep in touch later. My own view is that a nurturing home isn't one without conflict. It's one where people learn how to repair things after a fight."
+   ],
+   "glossary": [
+    [
+     "sibling",
+     "hermano o hermana"
+    ],
+    [
+     "sibling rivalry",
+     "rivalidad entre hermanos"
+    ],
+    [
+     "to drift apart",
+     "distanciarse poco a poco"
+    ],
+    [
+     "approval",
+     "aprobación"
+    ],
+    [
+     "birth order",
+     "orden de nacimiento"
+    ],
+    [
+     "to rub someone up the wrong way",
+     "caerle mal a alguien, irritar"
+    ],
+    [
+     "to see eye to eye",
+     "estar de acuerdo"
+    ],
+    [
+     "resentment",
+     "resentimiento, rencor"
+    ],
+    [
+     "to bond",
+     "crear lazos, unirse"
+    ],
+    [
+     "nurturing",
+     "afectuoso, que cuida y apoya"
+    ],
+    [
+     "to keep in touch",
+     "mantener el contacto"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to Dr Ríos, what is the main cause of fights between young siblings?",
+     "options": [
+      "Different personalities",
+      "Competition for their parents' attention and time",
+      "Lack of space at home",
+      "Watching too much television"
+     ],
+     "answer": 1,
+     "explain_es": "Ella dice que compiten por \"the same limited resources: their parents' attention, approval and time\"."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Ríos thinks sibling rivalry is a sign of a serious problem.",
+     "answer": "F",
+     "explain_es": "Ella afirma: \"Sibling rivalry is completely normal\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Dr Ríos's opinion about birth-order theories?",
+     "options": [
+      "They are completely accurate",
+      "They explain everything about personality",
+      "They should be treated with caution",
+      "They only apply to large families"
+     ],
+     "answer": 2,
+     "explain_es": "Dice: \"I'd take most popular theories with caution\"."
+    },
+    {
+     "type": "vocab",
+     "q": "If someone 'rubs you up the wrong way', they…",
+     "options": [
+      "irritate you",
+      "help you relax",
+      "give you a massage",
+      "agree with you"
+     ],
+     "answer": 0,
+     "explain_es": "Es una expresión idiomática: alguien te molesta o te irrita con su forma de ser."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Ríos has a difficult relationship with her own brother.",
+     "answer": "NG",
+     "explain_es": "La entrevista no menciona a los hermanos de la doctora."
+    },
+    {
+     "type": "gap",
+     "q": "According to Dr Ríos, old resentments often return when parents become ____ or die.",
+     "answer": "ill",
+     "accept": [
+      "sick"
+     ],
+     "explain_es": "Párrafo 5: \"often when parents become ill or die\"."
+    },
+    {
+     "type": "heading",
+     "q": "Which heading best summarises the advice in paragraph 6?",
+     "options": [
+      "Talk about the past immediately",
+      "Take small, simple steps to reconnect",
+      "Wait for your sibling to call",
+      "Ask your parents to help"
+     ],
+     "answer": 1,
+     "explain_es": "Ella recomienda empezar con algo pequeño, como un café o un paseo corto."
+    },
+    {
+     "type": "mc",
+     "q": "How does Dr Ríos define a nurturing home?",
+     "options": [
+      "A home where nobody ever argues",
+      "A home with many children",
+      "A home where people know how to repair relationships after conflict",
+      "A home where parents make all the decisions"
+     ],
+     "answer": 2,
+     "explain_es": "Dice: \"a nurturing home isn't one without conflict. It's one where people learn how to repair things after a fight\"."
+    }
+   ]
+  }
+ ]
+}

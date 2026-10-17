@@ -1,0 +1,74 @@
+{
+ "B1-1-0": {
+  "name": "Keep it or drop it",
+  "prompt": "Une cada par de frases con una cláusula relativa y di si el pronombre se puede omitir y por qué.",
+  "items": [
+   "I know an engineer. She fixes anything.",
+   "This is the file. You asked for it.",
+   "That’s the café. It closed last month.",
+   "Those are the students. I taught them last year.",
+   "Here’s the tool. It solved the problem."
+  ],
+  "answers": [
+   "I know an engineer who fixes anything. (Subject pronoun: it can’t be dropped.)",
+   "This is the file (that) you asked for. (Object pronoun: it can be dropped.)",
+   "That’s the café that closed last month. (Subject pronoun: it can’t be dropped.)",
+   "Those are the students (who) I taught last year. (Object pronoun: it can be dropped.)",
+   "Here’s the tool that solved the problem. (Subject pronoun: it can’t be dropped.)"
+  ]
+ },
+ "B1-1-1": {
+  "name": "Reaction first",
+  "prompt": "Convierte cada situación en una frase con “It … when…” y luego repítela con otro verbo o adjetivo de reacción.",
+  "items": [
+   "people cancel at the last minute",
+   "a stranger holds the door",
+   "the wifi drops mid-call",
+   "somebody remembers your name",
+   "a queue moves quickly"
+  ],
+  "answers": [
+   "It annoys me when people cancel at the last minute. / It’s frustrating when people cancel at the last minute.",
+   "It’s nice when a stranger holds the door. / It surprises me when a stranger holds the door.",
+   "It drives me crazy when the wifi drops mid-call. / It’s embarrassing when the wifi drops mid-call.",
+   "It pleases me when somebody remembers your name. / It’s lovely when somebody remembers your name.",
+   "It’s a relief when a queue moves quickly. / It surprises me when a queue moves quickly."
+  ]
+ },
+ "B1-2-0": {
+  "name": "Turn it into a subject",
+  "prompt": "Convierte cada actividad en una frase con gerundio y úsala como sujeto con un verbo en singular.",
+  "items": [
+   "work from home",
+   "study late at night",
+   "cook for a large group",
+   "travel without a plan",
+   "learn from mistakes"
+  ],
+  "answers": [
+   "Working from home is great for concentrating.",
+   "Studying late at night makes me tired the next day.",
+   "Cooking for a large group takes a lot of planning.",
+   "Travelling without a plan is exciting but risky.",
+   "Learning from mistakes helps you improve."
+  ]
+ },
+ "B1-2-1": {
+  "name": "Four ways to compare",
+  "prompt": "Compara las dos cosas cuatro veces: con un adjetivo, un sustantivo contable, un sustantivo incontable y un verbo.",
+  "items": [
+   "two phones",
+   "two cities",
+   "two jobs",
+   "two routes home",
+   "two supermarkets"
+  ],
+  "answers": [
+   "My phone is lighter than yours. Mine has more apps than yours. Yours has less storage than mine. Mine charges faster than yours.",
+   "Medellín is warmer than Bogotá. Bogotá has more museums than Medellín. Medellín has less traffic than Bogotá. It rains more in Bogotá than in Medellín.",
+   "My new job is more interesting than my old one. It has fewer meetings than my old one. I have less stress now. I travel less than I used to.",
+   "The motorway is faster than the old road. The old road has more traffic lights. The motorway has less traffic at night. The bus goes more slowly on the old road.",
+   "The local supermarket is cheaper than the big one. The big one has more brands. The local one has less parking space. The big one stays open later than the local one."
+  ]
+ }
+}
