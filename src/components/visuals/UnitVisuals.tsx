@@ -1,19 +1,22 @@
 import type { CefrLevel, Unit } from '@/content/types';
-import { cutsWhere, visualsForUnit, visualsWhere, type UnitSection, type VisualPlace } from '@/content/visuals';
-import { VisualSet } from './Visuals';
+import { unitVisualPlan, visualsWhere, type UnitSection, type VisualPlace } from '@/content/visuals';
+import { VisualFigure, VisualSet } from './Visuals';
 
 const TITLES: Record<UnitSection, string> = {
   overview: 'Para empezar',
-  vocab: 'Vocabulario en imágenes',
+  vocab: 'Mira y aprende',
   grammar: 'La gramática en una imagen',
 };
 
-/** Infographics declared for this unit's tab in src/content/visuals.ts. */
-export function UnitVisuals({ unit, level, section }: { unit: Unit; level: CefrLevel; section: UnitSection }) {
-  const key = `${level}-${unit.n}`;
-  // Vocabulary tabs also get the panels cut for them (e.g. one part of a big chart).
-  const items = [...visualsForUnit(key, section), ...(section === 'vocab' ? cutsWhere((c) => !!c.vocab?.includes(key)) : [])];
-  return <VisualSet title={TITLES[section]} items={items} featured={section !== 'overview'} subtitle={items.length > 1 ? `${items.length} infografías` : undefined} />;
+/**
+ * The infographics of one unit tab as a single inline figure (src/content/visuals.ts).
+ * Grammar ones normally live inside their lessons (see `unitVisualPlan`); this shows
+ * them all at once for the tab.
+ */
+export function UnitVisuals({ unit, level, section, color }: { unit: Unit; level: CefrLevel; section: UnitSection; color?: string }) {
+  const plan = unitVisualPlan(`${level}-${unit.n}`, unit.grammar.map((g) => g.name));
+  const items = section === 'grammar' ? plan.points.flat() : plan[section];
+  return <VisualFigure items={items} title={TITLES[section]} color={color} />;
 }
 
 /** Infographics for a grammar module, a reading guide or a practice page. */

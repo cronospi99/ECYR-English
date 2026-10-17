@@ -1,0 +1,128 @@
+{
+ "B2-1-0": {
+  "name": "Feed the verb",
+  "prompt": "Completa cada verbo con un gerundio sobre tu propia familia y luego di la misma idea después de una preposición.",
+  "items": [
+   "I can’t stand …",
+   "My brother keeps …",
+   "We’ve given up …",
+   "I’m good at …",
+   "Nobody here objects to …"
+  ],
+  "answers": [
+   "I can’t stand being interrupted at dinner. / I’m tired of being interrupted at dinner.",
+   "My brother keeps borrowing my clothes. / He never apologises for borrowing my clothes.",
+   "We’ve given up arguing about politics. / We’re tired of arguing about politics.",
+   "I’m good at calming everyone down. / My family relies on me for calming everyone down.",
+   "Nobody here objects to sharing the cooking. / Everybody is happy about sharing the cooking."
+  ]
+ },
+ "B2-1-1": {
+  "name": "Frame it first",
+  "prompt": "Di cada idea dos veces: primero como una frase simple y luego reformulada con una cláusula nominal después de “be”.",
+  "items": [
+   "nobody apologised",
+   "my sister moved abroad",
+   "we only meet at weddings",
+   "he forgot my birthday",
+   "they still argue about the house"
+  ],
+  "answers": [
+   "Nobody apologised. / The problem is that nobody apologised.",
+   "My sister moved abroad. / The truth is that my sister moved abroad.",
+   "We only meet at weddings. / The sad thing is that we only meet at weddings.",
+   "He forgot my birthday. / What hurt me was that he forgot my birthday.",
+   "They still argue about the house. / The issue is that they still argue about the house."
+  ]
+ },
+ "B2-2-0": {
+  "name": "Did it happen?",
+  "prompt": "Para cada indicación, di la frase y luego explica si la acción se realizó o no.",
+  "items": [
+   "hand in the form / obligatory, done",
+   "pay the deposit / not required",
+   "bring a gift / brought one unnecessarily",
+   "tell the manager / not done, regretted",
+   "lock the door / expected, forgotten"
+  ],
+  "answers": [
+   "We had to hand in the form. (It was obligatory, and we did.)",
+   "We didn’t have to pay the deposit. (It wasn’t required, so we didn’t pay it.)",
+   "I needn’t have brought a gift. (I brought one, but it wasn’t necessary.)",
+   "I should have told the manager. (I didn’t, and I regret it.)",
+   "She was supposed to lock the door. (She was expected to, but she forgot.)"
+  ]
+ },
+ "B2-2-1": {
+  "name": "Three levels of certainty",
+  "prompt": "Para cada pista, da tres explicaciones: una casi segura, una posible y una que puedes descartar.",
+  "items": [
+   "his coat is still on the chair",
+   "the cake is half-eaten",
+   "all the lights are on at midnight",
+   "her phone goes straight to voicemail",
+   "the window is open from the inside"
+  ],
+  "answers": [
+   "He must have left in a hurry. / He might have gone to a meeting. / He can’t have gone home without his coat.",
+   "Someone must have been hungry. / The kids might have eaten it. / It can’t have been the dog — it can’t reach the table.",
+   "Someone must have forgotten to turn them off. / They might have had a party. / They can’t have been asleep.",
+   "Her battery must have died. / She might have switched it off. / She can’t have blocked me — we spoke an hour ago.",
+   "Someone inside must have opened it. / It might have been the cleaner. / It can’t have been a burglar from outside."
+  ]
+ },
+ "B2-3-0": {
+  "name": "Commas or no commas",
+  "prompt": "Une cada par en una sola frase y di si la cláusula necesita comas y por qué.",
+  "items": [
+   "I visited Porto. It sits on a river.",
+   "The street was too steep. We stayed on it.",
+   "My cousin lives in Cali. He never leaves.",
+   "That’s the museum. It opened last year.",
+   "This is the year. Everything changed then."
+  ],
+  "answers": [
+   "I visited Porto, which sits on a river. (Commas: Porto is already identified; this is extra information.)",
+   "The street (that) we stayed on was too steep. (No commas: the clause tells us which street.)",
+   "My cousin, who lives in Cali, never leaves. (Commas if I have one cousin; the clause is extra information.)",
+   "That’s the museum that opened last year. (No commas: the clause identifies which museum.)",
+   "This is the year when everything changed. (No commas: the clause identifies which year.)"
+  ]
+ },
+ "B2-3-1": {
+  "name": "Stack three, stack four",
+  "prompt": "Describe cada cosa con tres adjetivos en el orden correcto y luego agrega un cuarto sin romper el orden.",
+  "items": [
+   "a building on your street",
+   "the room you are in",
+   "a market stall",
+   "a bridge you know",
+   "your favourite café"
+  ],
+  "answers": [
+   "a tall old brick building → a tall old red brick building",
+   "a small bright square room → a small bright square white room",
+   "a colourful little wooden stall → a colourful little old wooden stall",
+   "a beautiful long stone bridge → a beautiful long old stone bridge",
+   "a cosy small traditional café → a cosy small old traditional Colombian café"
+  ]
+ },
+ "B2-3-2": {
+  "name": "Same contrast, three ways",
+  "prompt": "Expresa cada contraste tres veces: con despite, con although y con however.",
+  "items": [
+   "expensive / worth it",
+   "noisy / lively",
+   "far from the centre / well connected",
+   "small / never boring",
+   "rainy / beautiful"
+  ],
+  "answers": [
+   "Despite the price, it’s worth it. / Although it’s expensive, it’s worth it. / It’s expensive. However, it’s worth it.",
+   "Despite the noise, it’s lively. / Although it’s noisy, it’s lively. / It’s noisy. However, it’s lively.",
+   "Despite being far from the centre, it’s well connected. / Although it’s far from the centre, it’s well connected. / It’s far from the centre. However, it’s well connected.",
+   "Despite its size, it’s never boring. / Although it’s small, it’s never boring. / It’s small. However, it’s never boring.",
+   "Despite the rain, it’s beautiful. / Although it’s rainy, it’s beautiful. / It’s rainy. However, it’s beautiful."
+  ]
+ }
+}

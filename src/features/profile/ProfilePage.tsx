@@ -1,5 +1,25 @@
-import { useRef, useState } from 'react';
-import { Cloud, CloudOff, Download, GraduationCap, LogOut, Moon, School, Upload, Volume2, Languages, RotateCcw, Pencil, FileUp, FolderOpen } from 'lucide-react';
+import { useRef, useState, useSyncExternalStore } from 'react';
+import {
+  Cloud,
+  CloudOff,
+  Download,
+  GraduationCap,
+  LogOut,
+  Moon,
+  School,
+  Upload,
+  Volume2,
+  Languages,
+  RotateCcw,
+  Pencil,
+  FileUp,
+  FolderOpen,
+  Sparkles,
+  Smartphone,
+  Check,
+  Play,
+  Square,
+} from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ListGroup, ListRow } from '@/components/ui/List';
@@ -13,6 +33,10 @@ import { useAuth } from '@/store/auth';
 import { useSettings, type ThemePref } from '@/store/settings';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
 import { isSupabaseConfigured } from '@/lib/supabase';
+import { PERSONAS, defaultPersona, naturalVoiceIssue, personaFor, type Persona } from '@/lib/voice';
+import { getSpeechState, speakAs, stopSpeaking, subscribeSpeech } from '@/lib/speech';
+import { cn } from '@/lib/cn';
+import { ink, tint } from '@/lib/color';
 
 export default function ProfilePage() {
   const session = useAuth((s) => s.session);
@@ -31,6 +55,7 @@ export default function ProfilePage() {
         </div>
         <div className="space-y-6">
           <Preferences />
+          <VoiceSettings />
           <DataSection />
         </div>
       </div>
@@ -280,7 +305,12 @@ function Preferences() {
           <Segmented
             size="sm"
             value={s.accent}
-            onChange={(accent) => s.set({ accent })}
+            onChange={(accent) => {
+              // Keep the natural voice on the same accent (Emma ↔ Olivia, Liam ↔ Harry).
+              const p = s.voicePersona ? defaultPersona() : null;
+              const want = accent === 'en-GB' ? 'uk' : 'us';
+              s.set(p && p.accent !== want ? { accent, voicePersona: personaFor(p.gender, want).id } : { accent });
+            }}
             options={[
               { value: 'en-US', label: '🇺🇸 US' },
               { value: 'en-GB', label: '🇬🇧 UK' },
@@ -303,6 +333,94 @@ function Preferences() {
         </div>
       </ListGroup>
     </>
+  );
+}
+
+// ------------------------------------------------------------------- voice --
+
+function VoiceSettings() {
+  const s = useSettings();
+  // Re-render when the session or class changes: they decide whether the natural voice is available.
+  useAuth((st) => st.session);
+  useAuth((st) => st.profile);
+  const issue = naturalVoiceIssue();
+  const current = defaultPersona();
+  const natural = s.voiceEngine === 'natural';
+
+  const engines = [
+    { value: 'natural' as const, icon: Sparkles, color: 'var(--purple)', title: 'Voz natural (IA)', subtitle: 'Voces realistas, guardadas para escucharlas al instante' },
+    { value: 'device' as const, icon: Smartphone, color: '#8e8e93', title: 'Voz del dispositivo', subtitle: 'Sin conexión, la del navegador' },
+  ];
+
+  return (
+    <ListGroup
+      header="Voz"
+      footer={
+        natural && issue
+          ? `${issue} Mientras tanto se usa la voz del dispositivo.`
+          : 'Si la voz natural no está disponible (sin conexión o límite diario), se usa la del dispositivo automáticamente.'
+      }
+    >
+      {engines.map((e) => (
+        <ListRow
+          key={e.value}
+          leading={<IconTile icon={e.icon} color={e.color} />}
+          title={e.title}
+          subtitle={e.subtitle}
+          onClick={() => s.set({ voiceEngine: e.value })}
+          trailing={s.voiceEngine === e.value ? <Check size={20} strokeWidth={2.6} className="text-ink-blue" aria-label="Seleccionada" /> : undefined}
+        />
+      ))}
+      {natural && (
+        <div className="grid grid-cols-2 gap-2 p-3 shadow-[inset_0_0.5px_0_var(--separator)] sm:grid-cols-3">
+          {PERSONAS.map((p) => (
+            <PersonaCard
+              key={p.id}
+              p={p}
+              selected={p.id === current.id}
+              onSelect={() => s.set(p.accent === 'au' ? { voicePersona: p.id } : { voicePersona: p.id, accent: p.accent === 'uk' ? 'en-GB' : 'en-US' })}
+            />
+          ))}
+        </div>
+      )}
+    </ListGroup>
+  );
+}
+
+function PersonaCard({ p, selected, onSelect }: { p: Persona; selected: boolean; onSelect: () => void }) {
+  const rate = useSettings((st) => st.speechRate);
+  const mine = useRef(-1);
+  const now = useSyncExternalStore(subscribeSpeech, getSpeechState);
+  const phase = now.id === mine.current ? now.phase : 'idle';
+  const preview = () => {
+    if (phase !== 'idle') return stopSpeaking();
+    mine.current = speakAs(`Hi, I'm ${p.name}. Let's practise English together!`, { voice: p.gender, accent: p.accent }, { rate });
+  };
+  return (
+    <div
+      className={cn('relative flex items-center gap-2 rounded-[12px] p-2.5 transition-colors', !selected && 'bg-fill-2')}
+      style={selected ? { background: tint('var(--blue)', 14), boxShadow: 'inset 0 0 0 2px var(--blue)' } : undefined}
+    >
+      <button type="button" onClick={onSelect} aria-pressed={selected} className="flex min-w-0 flex-1 items-center gap-2 text-left">
+        <span className="text-[22px] leading-none" aria-hidden>
+          {p.flag}
+        </span>
+        <span className="min-w-0">
+          <span className="block truncate text-[15px] font-semibold" style={selected ? { color: ink('var(--blue)') } : undefined}>
+            {p.name}
+          </span>
+          <span className="text-label-2 block truncate text-[12px]">{p.blurb}</span>
+        </span>
+      </button>
+      <button
+        type="button"
+        onClick={preview}
+        aria-label={phase === 'idle' ? `Escuchar a ${p.name}` : 'Detener'}
+        className="bg-card text-ink-blue shadow-card flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+      >
+        {phase === 'loading' ? <Spinner className="h-4 w-4" /> : phase === 'playing' ? <Square size={12} fill="currentColor" /> : <Play size={14} fill="currentColor" className="ml-0.5" />}
+      </button>
+    </div>
   );
 }
 

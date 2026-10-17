@@ -212,9 +212,9 @@ function UnitBrowser() {
           <p className="text-label-2 mb-4 text-[13px]">
             {all.length} lecturas originales escritas con el tema, el vocabulario y la gramática de cada unidad de {data[0].book}.
           </p>
-          <div className="space-y-6">
+          <div className="grid gap-x-5 gap-y-6 lg:grid-cols-2">
             {units.map((u) => (
-              <section key={u.n} id={`unit-${u.n}`} className="scroll-mt-4">
+              <section key={u.n} id={`unit-${u.n}`} className="min-w-0 scroll-mt-4">
                 <div className="mb-2.5 flex items-center gap-3">
                   <span
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] text-[15px] font-bold"
@@ -227,7 +227,7 @@ function UnitBrowser() {
                     <p className="text-label-2 truncate text-[13px]">{u.theme}</p>
                   </div>
                 </div>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
                   {data[1][String(u.n)]!.map((r, i) => (
                     <ReadingCard key={r.id} r={r} i={i} onOpen={() => setParams({ tab: 'unit', lvl, ur: r.id })} />
                   ))}

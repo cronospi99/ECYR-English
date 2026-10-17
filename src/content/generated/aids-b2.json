@@ -1,0 +1,638 @@
+{
+ "B2-1-0": [
+  {
+   "kind": "choose",
+   "title": "¿-ing o to + verbo?",
+   "question": "¿Qué palabra va antes del segundo verbo?",
+   "branches": [
+    {
+     "if": "enjoy, avoid, mind, keep, finish, can’t stand, feel like, consider",
+     "use": "verbo + -ing",
+     "example": "I feel like going out tonight."
+    },
+    {
+     "if": "Una preposición (on, at, of, for, to en look forward to)",
+     "use": "preposición + -ing",
+     "example": "I’m looking forward to seeing you."
+    },
+    {
+     "if": "decide, hope, offer, refuse, want, plan",
+     "use": "verbo + to + infinitivo",
+     "example": "She refused to apologise."
+    },
+    {
+     "if": "stop, remember (cambian de significado)",
+     "use": "-ing = acción anterior · to = propósito o deber",
+     "example": "I stopped to call him. / I stopped calling him."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Verbos que piden -ing",
+   "items": [
+    {
+     "emoji": "😄",
+     "en": "enjoy cooking",
+     "es": "disfrutar cocinar"
+    },
+    {
+     "emoji": "🙅",
+     "en": "avoid arguing",
+     "es": "evitar discutir"
+    },
+    {
+     "emoji": "🤷",
+     "en": "not mind waiting",
+     "es": "no importar esperar"
+    },
+    {
+     "emoji": "🔁",
+     "en": "keep interrupting",
+     "es": "seguir interrumpiendo"
+    },
+    {
+     "emoji": "😤",
+     "en": "can’t stand queuing",
+     "es": "no soportar hacer fila"
+    },
+    {
+     "emoji": "🍕",
+     "en": "feel like eating out",
+     "es": "tener ganas de comer afuera"
+    },
+    {
+     "emoji": "🚭",
+     "en": "give up smoking",
+     "es": "dejar de fumar"
+    },
+    {
+     "emoji": "🤗",
+     "en": "look forward to seeing",
+     "es": "tener ganas de ver"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cambia el significado",
+   "items": [
+    {
+     "a": "I stopped calling him.",
+     "b": "I stopped to call him.",
+     "note": "La primera: dejé de llamarlo. La segunda: me detuve para llamarlo."
+    },
+    {
+     "a": "I remember locking the door.",
+     "b": "Remember to lock the door.",
+     "note": "La primera es un recuerdo; la segunda, algo que no debes olvidar hacer."
+    },
+    {
+     "a": "I’m looking forward to meeting you.",
+     "b": "I’m looking forward to meet you.",
+     "note": "“To” aquí es preposición: lleva -ing."
+    }
+   ]
+  }
+ ],
+ "B2-1-1": [
+  {
+   "kind": "transform",
+   "title": "De frase simple a cláusula nominal",
+   "steps": [
+    {
+     "label": "Frase simple",
+     "sentence": "Nobody apologised."
+    },
+    {
+     "label": "The problem is that…",
+     "sentence": "**The problem is that** nobody apologised.",
+     "change": "La cláusula con “that” explica el sujeto."
+    },
+    {
+     "label": "What + be",
+     "sentence": "**What hurt me was that** nobody apologised.",
+     "change": "Con “what” al inicio el verbo es singular."
+    },
+    {
+     "label": "The reason… is that…",
+     "sentence": "**The reason** I’m upset **is that** nobody apologised.",
+     "change": "No digas “the reason is because”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué introducción uso?",
+   "question": "¿Qué quieres expresar?",
+   "branches": [
+    {
+     "if": "Un hecho o problema concreto",
+     "use": "The problem / truth / fact is that…",
+     "example": "The truth is that I miss them."
+    },
+    {
+     "if": "Algo que no se sabe aún",
+     "use": "The question is what / how / where…",
+     "example": "The question is where he went."
+    },
+    {
+     "if": "Dos alternativas",
+     "use": "The question is whether…",
+     "example": "The question is whether to call her."
+    },
+    {
+     "if": "Énfasis en lo importante",
+     "use": "What … is…",
+     "example": "What matters is that we stay close."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores comunes",
+   "items": [
+    {
+     "a": "The question is where he went.",
+     "b": "The question is where did he go.",
+     "note": "Dentro de la cláusula, orden de afirmación: sin inversión."
+    },
+    {
+     "a": "What worries me is the silence.",
+     "b": "What worries me are the silence.",
+     "note": "Con una cláusula con “what” como sujeto, el verbo va en singular."
+    },
+    {
+     "a": "The reason is that I was tired.",
+     "b": "The reason is because I was tired.",
+     "note": "Se prefiere “the reason is that”; “because” resulta redundante."
+    }
+   ]
+  }
+ ],
+ "B2-2-0": [
+  {
+   "kind": "scale",
+   "title": "¿La acción ocurrió?",
+   "from": "No ocurrió",
+   "to": "Sí ocurrió",
+   "items": [
+    {
+     "word": "should have + participio",
+     "value": 10,
+     "example": "You should have told me. (You didn’t.)",
+     "es": "debiste"
+    },
+    {
+     "word": "was supposed to",
+     "value": 20,
+     "example": "She was supposed to lock it. (She didn’t.)",
+     "es": "se suponía que"
+    },
+    {
+     "word": "didn’t have to",
+     "value": 30,
+     "example": "We didn’t have to pay. (Probably we didn’t.)",
+     "es": "no tuvimos que"
+    },
+    {
+     "word": "needn’t have + participio",
+     "value": 85,
+     "example": "I needn’t have cooked. (I did, but it wasn’t necessary.)",
+     "es": "no hacía falta que"
+    },
+    {
+     "word": "shouldn’t have + participio",
+     "value": 90,
+     "example": "You shouldn’t have shouted. (You did.)",
+     "es": "no debiste"
+    },
+    {
+     "word": "had to",
+     "value": 95,
+     "example": "We had to leave early. (We did.)",
+     "es": "tuvimos que"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué estructura de obligación pasada?",
+   "question": "¿Qué pasó con esa obligación?",
+   "branches": [
+    {
+     "if": "Era obligatorio y se cumplió",
+     "use": "had to + verbo",
+     "example": "We had to show our passports."
+    },
+    {
+     "if": "No era obligatorio",
+     "use": "didn’t have to + verbo",
+     "example": "We didn’t have to wear a suit."
+    },
+    {
+     "if": "Lo hiciste, pero no era necesario",
+     "use": "needn’t have + participio",
+     "example": "I needn’t have brought a gift."
+    },
+    {
+     "if": "No se hizo y lo lamentas o lo criticas",
+     "use": "should have + participio",
+     "example": "I should have told the manager."
+    },
+    {
+     "if": "Se esperaba, pero no pasó",
+     "use": "was / were supposed to",
+     "example": "He was supposed to lock the door."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Diferencias clave",
+   "items": [
+    {
+     "a": "You didn’t have to pay.",
+     "b": "You shouldn’t have paid.",
+     "note": "La primera: no era necesario. La segunda: fue un error pagar."
+    },
+    {
+     "a": "I didn’t have to bring food.",
+     "b": "I needn’t have brought food.",
+     "note": "La primera sugiere que no llevaste; la segunda dice que llevaste sin necesidad."
+    },
+    {
+     "a": "We had to leave.",
+     "b": "We must leave.",
+     "note": "“Must” no tiene pasado: para obligación pasada usa “had to”."
+    }
+   ]
+  }
+ ],
+ "B2-2-1": [
+  {
+   "kind": "scale",
+   "title": "Certeza sobre el pasado",
+   "from": "Lo descartas",
+   "to": "Casi seguro",
+   "items": [
+    {
+     "word": "can’t have",
+     "value": 5,
+     "example": "It can’t have been the cat.",
+     "es": "no pudo haber"
+    },
+    {
+     "word": "couldn’t have",
+     "value": 10,
+     "example": "He couldn’t have known.",
+     "es": "no podía haber"
+    },
+    {
+     "word": "might not have",
+     "value": 35,
+     "example": "She might not have seen it.",
+     "es": "puede que no haya"
+    },
+    {
+     "word": "could have",
+     "value": 45,
+     "example": "They could have missed the bus.",
+     "es": "pudieron haber"
+    },
+    {
+     "word": "might / may have",
+     "value": 50,
+     "example": "They might have taken the wrong turn.",
+     "es": "tal vez"
+    },
+    {
+     "word": "will have / should have",
+     "value": 75,
+     "example": "They’ll have landed by now.",
+     "es": "ya deben haber"
+    },
+    {
+     "word": "must have",
+     "value": 90,
+     "example": "He must have forgotten his keys.",
+     "es": "debió de"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Una pista, tres explicaciones",
+   "steps": [
+    {
+     "label": "Pista",
+     "sentence": "His coat is still on the chair."
+    },
+    {
+     "label": "Casi seguro",
+     "sentence": "He **must have left** in a hurry.",
+     "change": "must have + participio."
+    },
+    {
+     "label": "Posible",
+     "sentence": "He **might have gone** out for lunch.",
+     "change": "might have + participio."
+    },
+    {
+     "label": "Descartado",
+     "sentence": "He **can’t have gone** home — it’s raining.",
+     "change": "can’t have + participio."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Dos significados de could have",
+   "items": [
+    {
+     "a": "He could have missed the bus.",
+     "b": "I could have helped, but nobody asked.",
+     "note": "La primera es una posibilidad sobre el pasado; la segunda, una capacidad que no se usó."
+    },
+    {
+     "a": "She can’t have known.",
+     "b": "She mustn’t have known.",
+     "note": "El negativo de “must have” (deducción) es “can’t have”."
+    },
+    {
+     "a": "He must have forgotten.",
+     "b": "He must of forgotten.",
+     "note": "“Must of” es un error de escritura: se pronuncia /əv/ pero se escribe “have”."
+    }
+   ]
+  }
+ ],
+ "B2-3-0": [
+  {
+   "kind": "pairs",
+   "title": "Con comas o sin comas",
+   "items": [
+    {
+     "a": "The guide who showed us around was brilliant.",
+     "b": "Carlos, who showed us around, was brilliant.",
+     "note": "Sin comas identifica cuál guía; con comas, solo agrega información sobre alguien ya identificado."
+    },
+    {
+     "a": "My sister who lives in Lima is a nurse.",
+     "b": "My sister, who lives in Lima, is a nurse.",
+     "note": "Sin comas: tengo varias hermanas. Con comas: tengo una sola."
+    },
+    {
+     "a": "The city (that) we visited was cold.",
+     "b": "Bogotá, which we visited, was cold.",
+     "note": "Solo en la definitoria puedes omitir el pronombre o usar “that”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué pronombre relativo?",
+   "question": "¿A qué se refiere la cláusula?",
+   "branches": [
+    {
+     "if": "A una persona",
+     "use": "who (that solo sin comas)",
+     "example": "The woman who called is my aunt."
+    },
+    {
+     "if": "A una cosa",
+     "use": "which (that solo sin comas)",
+     "example": "Bogotá, which is in the Andes, is cold."
+    },
+    {
+     "if": "A un lugar",
+     "use": "where",
+     "example": "The street where I grew up has changed."
+    },
+    {
+     "if": "A un momento",
+     "use": "when",
+     "example": "That was the year when everything changed."
+    },
+    {
+     "if": "A una posesión",
+     "use": "whose",
+     "example": "The man whose car was stolen called the police."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Formal e informal con preposición",
+   "steps": [
+    {
+     "label": "Dos frases",
+     "sentence": "The district was lovely. We stayed in it."
+    },
+    {
+     "label": "Informal",
+     "sentence": "The district **(that) we stayed in** was lovely.",
+     "change": "La preposición va al final."
+    },
+    {
+     "label": "Formal",
+     "sentence": "The district **in which we stayed** was lovely.",
+     "change": "Preposición + which, sin omitir."
+    },
+    {
+     "label": "Con where",
+     "sentence": "The district **where we stayed** was lovely.",
+     "change": "“Where” reemplaza “in which”."
+    }
+   ]
+  }
+ ],
+ "B2-3-1": [
+  {
+   "kind": "pictures",
+   "title": "El orden de los adjetivos",
+   "items": [
+    {
+     "emoji": "💖",
+     "en": "1. opinion: lovely",
+     "es": "opinión: precioso"
+    },
+    {
+     "emoji": "📏",
+     "en": "2. size: little",
+     "es": "tamaño: pequeño"
+    },
+    {
+     "emoji": "⏳",
+     "en": "3. age: old",
+     "es": "edad: viejo"
+    },
+    {
+     "emoji": "⚪",
+     "en": "4. shape: round",
+     "es": "forma: redondo"
+    },
+    {
+     "emoji": "🎨",
+     "en": "5. colour: red",
+     "es": "color: rojo"
+    },
+    {
+     "emoji": "🌎",
+     "en": "6. origin: Colombian",
+     "es": "origen: colombiano"
+    },
+    {
+     "emoji": "🪵",
+     "en": "7. material: wooden",
+     "es": "material: de madera"
+    },
+    {
+     "emoji": "🌉",
+     "en": "→ noun: bridge",
+     "es": "→ sustantivo: puente"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Construye la descripción",
+   "steps": [
+    {
+     "label": "Sustantivo",
+     "sentence": "a **bridge**"
+    },
+    {
+     "label": "+ material",
+     "sentence": "a **stone** bridge",
+     "change": "El material va justo antes del sustantivo."
+    },
+    {
+     "label": "+ edad",
+     "sentence": "an **old** stone bridge",
+     "change": "La edad va antes del material."
+    },
+    {
+     "label": "+ opinión y tamaño",
+     "sentence": "a **lovely little** old stone bridge",
+     "change": "La opinión siempre va primero."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Suena natural?",
+   "items": [
+    {
+     "a": "a big old house",
+     "b": "an old big house",
+     "note": "El tamaño va antes de la edad."
+    },
+    {
+     "a": "a beautiful red Colombian bag",
+     "b": "a red beautiful Colombian bag",
+     "note": "La opinión va antes del color."
+    },
+    {
+     "a": "a red and white facade",
+     "b": "a red white facade",
+     "note": "Dos adjetivos del mismo tipo (colores) se unen con “and”."
+    }
+   ]
+  }
+ ],
+ "B2-3-2": [
+  {
+   "kind": "choose",
+   "title": "¿Qué conector de contraste?",
+   "question": "¿Qué viene después del conector?",
+   "branches": [
+    {
+     "if": "Un sustantivo o -ing",
+     "use": "despite / in spite of",
+     "example": "Despite the traffic, we loved it."
+    },
+    {
+     "if": "Una cláusula (sujeto + verbo) con despite",
+     "use": "despite the fact that + cláusula",
+     "example": "Despite the fact that it rained, we went out."
+    },
+    {
+     "if": "Una cláusula (sujeto + verbo)",
+     "use": "although / even though / though",
+     "example": "Although it rained, we explored."
+    },
+    {
+     "if": "Una oración nueva, después de punto o punto y coma",
+     "use": "however / nevertheless / on the other hand",
+     "example": "It’s expensive; however, it’s worth it."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El mismo contraste, tres formas",
+   "steps": [
+    {
+     "label": "Despite",
+     "sentence": "**Despite the noise**, the neighbourhood is lively.",
+     "change": "despite + sustantivo."
+    },
+    {
+     "label": "Although",
+     "sentence": "**Although it’s noisy**, the neighbourhood is lively.",
+     "change": "although + sujeto + verbo."
+    },
+    {
+     "label": "However",
+     "sentence": "The neighbourhood is noisy. **However**, it’s lively.",
+     "change": "however abre una oración nueva."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Fuerza del contraste",
+   "from": "Suave",
+   "to": "Fuerte",
+   "items": [
+    {
+     "word": "though (al final)",
+     "value": 25,
+     "example": "It was expensive, though.",
+     "es": "aunque"
+    },
+    {
+     "word": "however",
+     "value": 45,
+     "example": "It’s small. However, it’s cosy.",
+     "es": "sin embargo"
+    },
+    {
+     "word": "although",
+     "value": 50,
+     "example": "Although it’s small, it’s cosy.",
+     "es": "aunque"
+    },
+    {
+     "word": "despite / in spite of",
+     "value": 60,
+     "example": "Despite its size, it’s cosy.",
+     "es": "a pesar de"
+    },
+    {
+     "word": "even though",
+     "value": 75,
+     "example": "Even though it’s tiny, we love it.",
+     "es": "aunque (enfático)"
+    },
+    {
+     "word": "nevertheless",
+     "value": 85,
+     "example": "It was risky. Nevertheless, we did it.",
+     "es": "no obstante"
+    }
+   ]
+  }
+ ]
+}

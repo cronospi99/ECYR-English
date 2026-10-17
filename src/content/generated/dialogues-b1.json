@@ -453,5 +453,3225 @@
     }
    ]
   }
+ ],
+ "B1-3-0": [
+  {
+   "title": "A favour at the office",
+   "titleEs": "Un favor en la oficina",
+   "scene": "🗂️ En una oficina de Cali: Natalia necesita ayuda antes de una presentación.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Natalia",
+     "line": "Tom, could you do me a favour?",
+     "es": "Tom, ¿me podrías hacer un favor?"
+    },
+    {
+     "sp": "Tom",
+     "line": "Sure. What do you need?",
+     "es": "Claro. ¿Qué necesitas?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Would you mind printing these slides for me? My printer isn't working.",
+     "es": "¿Te importaría imprimirme estas diapositivas? Mi impresora no funciona."
+    },
+    {
+     "sp": "Tom",
+     "line": "Not at all. Do you mind if I print them in black and white?",
+     "es": "Para nada. ¿Te molesta si las imprimo en blanco y negro?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "That's fine. And could you possibly bring them to room three?",
+     "es": "Está bien. ¿Y será que me las podrías llevar a la sala tres?"
+    },
+    {
+     "sp": "Tom",
+     "line": "Of course. Would you mind waiting five minutes? The printer is slow.",
+     "es": "Por supuesto. ¿Te importaría esperar cinco minutos? La impresora es lenta."
+    },
+    {
+     "sp": "Natalia",
+     "line": "No problem. I'd really appreciate it if you could hurry, though.",
+     "es": "No hay problema. Aunque te agradecería mucho si te pudieras apurar."
+    }
+   ]
+  },
+  {
+   "title": "On the plane to Cartagena",
+   "titleEs": "En el avión a Cartagena",
+   "scene": "✈️ En un vuelo Bogotá–Cartagena: un pasajero pide ayuda a otra pasajera.",
+   "cast": [
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Diego",
+     "line": "Excuse me, would you mind if I swapped seats with you?",
+     "es": "Disculpa, ¿te importaría si cambiamos de puesto?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Why? Is something wrong?",
+     "es": "¿Por qué? ¿Pasa algo?"
+    },
+    {
+     "sp": "Diego",
+     "line": "My wife is sitting next to you. Could we sit together?",
+     "es": "Mi esposa está sentada a tu lado. ¿Podríamos sentarnos juntos?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Oh, of course. Can you help me with my bag, though?",
+     "es": "Ah, claro. ¿Pero me ayudas con mi maleta?"
+    },
+    {
+     "sp": "Diego",
+     "line": "Sure. Do you mind if I put it next to mine?",
+     "es": "Claro. ¿Te molesta si la pongo al lado de la mía?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Go ahead. Would you mind passing me my jacket first?",
+     "es": "Adelante. ¿Te importaría pasarme primero mi chaqueta?"
+    },
+    {
+     "sp": "Diego",
+     "line": "Here you are. Thanks so much, that's really kind of you.",
+     "es": "Aquí tienes. Muchas gracias, eres muy amable."
+    }
+   ]
+  }
+ ],
+ "B1-3-1": [
+  {
+   "title": "At the hotel reception",
+   "titleEs": "En la recepción del hotel",
+   "scene": "🏨 En un hotel de Cartagena: una turista británica pide información.",
+   "cast": [
+    {
+     "name": "Sarah",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Julián",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sarah",
+     "line": "Good morning. Could you tell me what time breakfast finishes?",
+     "es": "Buenos días. ¿Me podría decir a qué hora termina el desayuno?"
+    },
+    {
+     "sp": "Julián",
+     "line": "Of course. It finishes at ten thirty.",
+     "es": "Claro. Termina a las diez y media."
+    },
+    {
+     "sp": "Sarah",
+     "line": "And do you know if the old town is within walking distance?",
+     "es": "¿Y sabe si el centro histórico queda cerca para ir caminando?"
+    },
+    {
+     "sp": "Julián",
+     "line": "Yes, it's about fifteen minutes on foot.",
+     "es": "Sí, queda como a quince minutos a pie."
+    },
+    {
+     "sp": "Sarah",
+     "line": "I'd like to know how much a taxi to the airport costs.",
+     "es": "Quisiera saber cuánto cuesta un taxi al aeropuerto."
+    },
+    {
+     "sp": "Julián",
+     "line": "Around thirty thousand pesos. Do you want me to book one?",
+     "es": "Unos treinta mil pesos. ¿Quiere que le reserve uno?"
+    },
+    {
+     "sp": "Sarah",
+     "line": "Maybe later. Do you have any idea whether it will rain today?",
+     "es": "Tal vez más tarde. ¿Tiene idea de si va a llover hoy?"
+    },
+    {
+     "sp": "Julián",
+     "line": "I'm not sure, but I can check the forecast for you.",
+     "es": "No estoy seguro, pero puedo revisarle el pronóstico."
+    }
+   ]
+  },
+  {
+   "title": "The missing order",
+   "titleEs": "El pedido perdido",
+   "scene": "📞 En una llamada a servicio al cliente: Carlos pregunta por un pedido.",
+   "cast": [
+    {
+     "name": "Carlos",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Carlos",
+     "line": "Hello, I'd like to know where my order is.",
+     "es": "Hola, quisiera saber dónde está mi pedido."
+    },
+    {
+     "sp": "Emma",
+     "line": "Certainly. Could you tell me what your order number is?",
+     "es": "Claro. ¿Me podría decir cuál es su número de pedido?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "It's 4-5-8-2. Can you tell me why it hasn't arrived?",
+     "es": "Es el 4-5-8-2. ¿Me puede decir por qué no ha llegado?"
+    },
+    {
+     "sp": "Emma",
+     "line": "Let me check. Do you know if anyone was at home yesterday?",
+     "es": "Déjeme revisar. ¿Sabe si había alguien en casa ayer?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "I'm not sure. I wonder whether the driver rang the bell.",
+     "es": "No estoy seguro. Me pregunto si el conductor tocó el timbre."
+    },
+    {
+     "sp": "Emma",
+     "line": "He did. Could you tell me when you'll be at home this week?",
+     "es": "Sí lo tocó. ¿Me podría decir cuándo va a estar en casa esta semana?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "Thursday morning. Do you know what time he usually comes?",
+     "es": "El jueves por la mañana. ¿Sabe a qué hora suele venir?"
+    }
+   ]
+  }
+ ],
+ "B1-4-0": [
+  {
+   "title": "The blackout",
+   "titleEs": "El apagón",
+   "scene": "💡 En una oficina de Bogotá: dos colegas recuerdan el apagón de ayer.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "What were you doing when the power went out yesterday?",
+     "es": "¿Qué estabas haciendo cuando se fue la luz ayer?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "I was presenting to the clients! My laptop died while I was showing the budget.",
+     "es": "¡Estaba presentando ante los clientes! Mi portátil se apagó mientras mostraba el presupuesto."
+    },
+    {
+     "sp": "Ben",
+     "line": "No way. Were they waiting in the dark?",
+     "es": "¡No puede ser! ¿Estaban esperando a oscuras?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "Yes. Someone was laughing and the manager was looking for a torch.",
+     "es": "Sí. Alguien se estaba riendo y el gerente estaba buscando una linterna."
+    },
+    {
+     "sp": "Ben",
+     "line": "I was making coffee when it happened, so I didn't notice at first.",
+     "es": "Yo estaba haciendo café cuando pasó, así que al principio no me di cuenta."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Lucky you. While I was apologising, the lights came back on.",
+     "es": "Qué suerte. Mientras yo pedía disculpas, volvió la luz."
+    }
+   ]
+  },
+  {
+   "title": "How we met",
+   "titleEs": "Cómo nos conocimos",
+   "scene": "💑 En una cena en Medellín: una pareja cuenta cómo se conocieron.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Liam",
+     "line": "We met on the metro, actually. I was going to work and she was reading a book.",
+     "es": "De hecho, nos conocimos en el metro. Yo iba al trabajo y ella estaba leyendo un libro."
+    },
+    {
+     "sp": "Isabela",
+     "line": "And he was standing right next to me, trying to read it too!",
+     "es": "¡Y él estaba parado justo a mi lado, tratando de leerlo también!"
+    },
+    {
+     "sp": "Liam",
+     "line": "Then the train stopped suddenly and I dropped my coffee on her book.",
+     "es": "Entonces el tren frenó de golpe y le eché el café encima del libro."
+    },
+    {
+     "sp": "Isabela",
+     "line": "I was so angry. I was looking for a tissue when he offered to buy me a new one.",
+     "es": "Me puse furiosa. Estaba buscando un pañuelo cuando él se ofreció a comprarme uno nuevo."
+    },
+    {
+     "sp": "Liam",
+     "line": "We were walking to the bookshop when it started to rain.",
+     "es": "Íbamos caminando a la librería cuando empezó a llover."
+    },
+    {
+     "sp": "Isabela",
+     "line": "So we waited in a café, and while we were waiting, we talked for hours.",
+     "es": "Así que esperamos en un café, y mientras esperábamos, hablamos durante horas."
+    }
+   ]
+  }
+ ],
+ "B1-4-1": [
+  {
+   "title": "A terrible start to the trip",
+   "titleEs": "Un pésimo comienzo de viaje",
+   "scene": "🧳 En el aeropuerto El Dorado: Paula le cuenta a un amigo su mala experiencia.",
+   "cast": [
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Jack",
+     "line": "So why did you miss your flight?",
+     "es": "Entonces, ¿por qué perdiste el vuelo?"
+    },
+    {
+     "sp": "Paula",
+     "line": "By the time I got to the airport, they had already closed the gate.",
+     "es": "Para cuando llegué al aeropuerto, ya habían cerrado la puerta de embarque."
+    },
+    {
+     "sp": "Jack",
+     "line": "Hadn't you checked in online?",
+     "es": "¿No habías hecho el check-in en línea?"
+    },
+    {
+     "sp": "Paula",
+     "line": "I had, but I'd left my passport at home, so I had to go back.",
+     "es": "Sí lo había hecho, pero había dejado el pasaporte en la casa, así que tuve que devolverme."
+    },
+    {
+     "sp": "Jack",
+     "line": "Oh no. Had you ever done that before?",
+     "es": "Ay, no. ¿Te había pasado antes?"
+    },
+    {
+     "sp": "Paula",
+     "line": "Never. I'd travelled ten times that year without a problem.",
+     "es": "Nunca. Había viajado diez veces ese año sin ningún problema."
+    },
+    {
+     "sp": "Jack",
+     "line": "At least the airline had a seat on the next flight.",
+     "es": "Al menos la aerolínea tenía un puesto en el siguiente vuelo."
+    },
+    {
+     "sp": "Paula",
+     "line": "Yes, but by then I'd missed my sister's wedding dinner!",
+     "es": "¡Sí, pero para entonces ya me había perdido la cena de la boda de mi hermana!"
+    }
+   ]
+  },
+  {
+   "title": "The surprise party",
+   "titleEs": "La fiesta sorpresa",
+   "scene": "🎉 En la casa de una amiga en Bogotá: dos amigos comentan una fiesta que salió mal.",
+   "cast": [
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Olivia",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Olivia",
+     "line": "Was Juliana surprised at the party?",
+     "es": "¿Juliana se sorprendió en la fiesta?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Not really. Somebody had already told her about it.",
+     "es": "No mucho. Alguien ya le había contado."
+    },
+    {
+     "sp": "Olivia",
+     "line": "Who? We had promised to keep it a secret!",
+     "es": "¿Quién? ¡Habíamos prometido guardar el secreto!"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Her brother. He'd posted a photo of the cake online.",
+     "es": "Su hermano. Había publicado una foto de la torta en internet."
+    },
+    {
+     "sp": "Olivia",
+     "line": "Oh, no. Had she seen it before she arrived?",
+     "es": "Ay, no. ¿La había visto antes de llegar?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Yes. By the time she walked in, she'd already chosen what to wear for the photos!",
+     "es": "Sí. Para cuando entró, ya había escogido qué ponerse para las fotos."
+    },
+    {
+     "sp": "Olivia",
+     "line": "Well, at least she'd made an effort.",
+     "es": "Bueno, al menos se había arreglado."
+    }
+   ]
+  }
+ ],
+ "B1-5-0": [
+  {
+   "title": "Advice for a new exchange student",
+   "titleEs": "Consejos para un estudiante de intercambio",
+   "scene": "🎓 En la Universidad de los Andes: una estudiante colombiana orienta a un recién llegado.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Nick",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Nick",
+     "line": "What's the one thing that surprises foreigners most here?",
+     "es": "¿Qué es lo que más sorprende a los extranjeros aquí?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "The kind of food that people eat for breakfast. Most visitors who try ajiaco love it.",
+     "es": "El tipo de comida que la gente come al desayuno. A la mayoría de los visitantes que prueban el ajiaco les encanta."
+    },
+    {
+     "sp": "Nick",
+     "line": "Is there anything that I should avoid doing?",
+     "es": "¿Hay algo que deba evitar hacer?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "The sort of question that people don't like is “How much do you earn?”",
+     "es": "El tipo de pregunta que no le gusta a la gente es “¿Cuánto ganas?”"
+    },
+    {
+     "sp": "Nick",
+     "line": "Got it. And the professors?",
+     "es": "Entendido. ¿Y los profesores?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "The ones who teach first-year courses are very friendly.",
+     "es": "Los que dan cursos de primer semestre son muy amables."
+    },
+    {
+     "sp": "Nick",
+     "line": "Good. Students who ask questions in class are welcome, then?",
+     "es": "Bien. Entonces, ¿los estudiantes que hacen preguntas en clase son bienvenidos?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "Absolutely. Anyone who participates gets better grades.",
+     "es": "Totalmente. Cualquiera que participe saca mejores notas."
+    }
+   ]
+  },
+  {
+   "title": "The perfect hotel",
+   "titleEs": "El hotel perfecto",
+   "scene": "🏖️ En una agencia de viajes en Cartagena: una clienta describe lo que busca.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Ryan",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ryan",
+     "line": "What kind of hotel are you looking for?",
+     "es": "¿Qué tipo de hotel está buscando?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "The kind of place that has a quiet pool and no loud music.",
+     "es": "El tipo de lugar que tenga una piscina tranquila y sin música a todo volumen."
+    },
+    {
+     "sp": "Ryan",
+     "line": "Most guests who stay in the old town say the same.",
+     "es": "La mayoría de los huéspedes que se quedan en el centro histórico dicen lo mismo."
+    },
+    {
+     "sp": "Catalina",
+     "line": "And something that's close to the beach, please.",
+     "es": "Y algo que quede cerca de la playa, por favor."
+    },
+    {
+     "sp": "Ryan",
+     "line": "This is the one that most families choose.",
+     "es": "Este es el que escogen la mayoría de las familias."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Is it the sort of hotel that charges extra for breakfast?",
+     "es": "¿Es el tipo de hotel que cobra aparte el desayuno?"
+    },
+    {
+     "sp": "Ryan",
+     "line": "No. Everything that you eat at the hotel is included.",
+     "es": "No. Todo lo que coma en el hotel está incluido."
+    }
+   ]
+  }
+ ],
+ "B1-5-1": [
+  {
+   "title": "Dinner with the family",
+   "titleEs": "Cena con la familia",
+   "scene": "🍽️ En Bogotá: un novio australiano pregunta cómo comportarse en su primera cena familiar.",
+   "cast": [
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Liam",
+     "line": "Am I supposed to bring anything to your parents' house?",
+     "es": "¿Se supone que debo llevar algo a la casa de tus papás?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "It's the custom to bring something small, like flowers or dessert.",
+     "es": "Es costumbre llevar algo pequeño, como flores o un postre."
+    },
+    {
+     "sp": "Liam",
+     "line": "Are guests expected to arrive on time?",
+     "es": "¿Se espera que los invitados lleguen puntuales?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Not really. You're supposed to arrive a little late, but not more than half an hour.",
+     "es": "No mucho. Se supone que llegas un poquito tarde, pero no más de media hora."
+    },
+    {
+     "sp": "Liam",
+     "line": "Is it acceptable to say no if I don't like the food?",
+     "es": "¿Está bien visto decir que no si no me gusta la comida?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "It isn't really acceptable to refuse. Just eat a little.",
+     "es": "No está muy bien visto rechazar. Solo come un poquito."
+    },
+    {
+     "sp": "Liam",
+     "line": "And after dinner?",
+     "es": "¿Y después de la cena?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Guests are expected to stay and chat. Leaving right away isn't the custom.",
+     "es": "Se espera que los invitados se queden a conversar. Irse de una vez no es la costumbre."
+    }
+   ]
+  },
+  {
+   "title": "First day at the London office",
+   "titleEs": "Primer día en la oficina de Londres",
+   "scene": "🇬🇧 En Londres: un colombiano recién trasladado le pregunta a una colega sobre las normas.",
+   "cast": [
+    {
+     "name": "Juan Pablo",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Juan Pablo",
+     "line": "Am I expected to wear a suit every day?",
+     "es": "¿Se espera que use traje todos los días?"
+    },
+    {
+     "sp": "Lucy",
+     "line": "Not really. You're supposed to dress smartly, but ties aren't necessary.",
+     "es": "No exactamente. Se supone que vistas formal, pero la corbata no es necesaria."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Is it acceptable to eat lunch at my desk?",
+     "es": "¿Está bien visto almorzar en mi escritorio?"
+    },
+    {
+     "sp": "Lucy",
+     "line": "Yes, it's perfectly acceptable here. Lots of people do it.",
+     "es": "Sí, aquí es totalmente aceptable. Mucha gente lo hace."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Back home it's the custom to greet everyone with a kiss on the cheek.",
+     "es": "En mi país es costumbre saludar a todos con un beso en la mejilla."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Here you're not supposed to do that. A smile and “morning” is enough.",
+     "es": "Aquí no se supone que hagas eso. Basta con una sonrisa y un “buenos días”."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "And are we expected to go to the pub on Fridays?",
+     "es": "¿Y se espera que vayamos al pub los viernes?"
+    },
+    {
+     "sp": "Lucy",
+     "line": "It isn't compulsory, but it's the custom to join at least once!",
+     "es": "No es obligatorio, pero es costumbre ir al menos una vez."
+    }
+   ]
+  }
+ ],
+ "B1-6-0": [
+  {
+   "title": "Returning a rental car",
+   "titleEs": "Devolviendo un carro alquilado",
+   "scene": "🚗 En una agencia de alquiler en Medellín: un empleado revisa el carro con el cliente.",
+   "cast": [
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sebastián",
+     "line": "Before you sign, let's check the car together.",
+     "es": "Antes de que firme, revisemos el carro juntos."
+    },
+    {
+     "sp": "Emma",
+     "line": "I didn't notice anything. Is there a problem?",
+     "es": "No noté nada. ¿Hay algún problema?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Well, there's a dent in the back door, and the bumper is scratched.",
+     "es": "Bueno, hay una abolladura en la puerta de atrás y el bómper está rayado."
+    },
+    {
+     "sp": "Emma",
+     "line": "That dent was already there when I picked it up!",
+     "es": "¡Esa abolladura ya estaba cuando lo recogí!"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Let me see the photos. Oh, you're right. But this seat is stained.",
+     "es": "Déjeme ver las fotos. Ah, tiene razón. Pero esta silla está manchada."
+    },
+    {
+     "sp": "Emma",
+     "line": "Sorry, that's a coffee stain. I spilled it this morning.",
+     "es": "Perdón, es una mancha de café. Lo regué esta mañana."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "It's fine. The mirror is a bit loose, too, but that isn't your fault.",
+     "es": "No hay problema. El espejo también está un poco suelto, pero eso no es culpa suya."
+    }
+   ]
+  },
+  {
+   "title": "A damaged delivery",
+   "titleEs": "Un envío dañado",
+   "scene": "📦 En una llamada a una tienda en línea: Mariana reporta un pedido en mal estado.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mariana",
+     "line": "Hi, I've just received my order and the box is completely crushed.",
+     "es": "Hola, acabo de recibir mi pedido y la caja está completamente aplastada."
+    },
+    {
+     "sp": "Oliver",
+     "line": "I'm sorry to hear that. Is the product damaged?",
+     "es": "Lamento oírlo. ¿El producto está dañado?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "Yes. The lamp is broken and there's a crack in the glass.",
+     "es": "Sí. La lámpara está rota y hay una grieta en el vidrio."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Is the cable damaged too?",
+     "es": "¿El cable también está dañado?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "The cable is fine, but the plug is bent.",
+     "es": "El cable está bien, pero el enchufe está doblado."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Could you send us a photo of the cracked glass?",
+     "es": "¿Nos podría enviar una foto del vidrio agrietado?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "Sure. There are also two scratches on the base.",
+     "es": "Claro. También hay dos rayones en la base."
+    }
+   ]
+  }
+ ],
+ "B1-6-1": [
+  {
+   "title": "Moving into a new apartment",
+   "titleEs": "Mudándose a un apartamento nuevo",
+   "scene": "🏠 En un apartamento en Bogotá: la dueña y el nuevo inquilino revisan qué hay que arreglar.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mark",
+     "line": "The apartment is lovely, but the walls need painting.",
+     "es": "El apartamento es precioso, pero hay que pintar las paredes."
+    },
+    {
+     "sp": "Camila",
+     "line": "I know. And the bathroom tap needs to be replaced.",
+     "es": "Lo sé. Y hay que cambiar la llave del baño."
+    },
+    {
+     "sp": "Mark",
+     "line": "Yes, it keeps dripping all night.",
+     "es": "Sí, gotea toda la noche."
+    },
+    {
+     "sp": "Camila",
+     "line": "What about the kitchen window?",
+     "es": "¿Y la ventana de la cocina?"
+    },
+    {
+     "sp": "Mark",
+     "line": "It needs fixing. It keeps opening when the wind blows.",
+     "es": "Hay que arreglarla. Se abre a cada rato cuando sopla el viento."
+    },
+    {
+     "sp": "Camila",
+     "line": "I'll call a technician. The fridge needs to be checked too.",
+     "es": "Voy a llamar a un técnico. La nevera también hay que revisarla."
+    },
+    {
+     "sp": "Mark",
+     "line": "Thanks. I also need to buy curtains. The sun keeps waking me up!",
+     "es": "Gracias. También necesito comprar cortinas. ¡El sol me despierta a cada rato!"
+    }
+   ]
+  },
+  {
+   "title": "IT support",
+   "titleEs": "Soporte técnico",
+   "scene": "🖥️ En una empresa de Medellín: una empleada le pide ayuda al técnico de sistemas.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Laura",
+     "line": "My laptop keeps freezing every time I open the spreadsheet.",
+     "es": "Mi portátil se congela cada vez que abro la hoja de cálculo."
+    },
+    {
+     "sp": "Andrés",
+     "line": "It probably needs updating. When did you last restart it?",
+     "es": "Probablemente hay que actualizarlo. ¿Cuándo lo reiniciaste por última vez?"
+    },
+    {
+     "sp": "Laura",
+     "line": "I don't know. And the battery keeps dying after an hour.",
+     "es": "No sé. Y la batería se descarga a cada rato después de una hora."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Then the battery needs to be replaced. It's very old.",
+     "es": "Entonces hay que cambiar la batería. Está muy vieja."
+    },
+    {
+     "sp": "Laura",
+     "line": "The keyboard needs cleaning too, to be honest.",
+     "es": "La verdad, el teclado también necesita una limpieza."
+    },
+    {
+     "sp": "Andrés",
+     "line": "I can see that! I need to take it to the lab for a day.",
+     "es": "¡Ya veo! Necesito llevarlo al laboratorio por un día."
+    },
+    {
+     "sp": "Laura",
+     "line": "Fine, but the files on it need to be saved first.",
+     "es": "Bueno, pero primero hay que guardar los archivos que tiene."
+    }
+   ]
+  }
+ ],
+ "B1-7-0": [
+  {
+   "title": "Renovating the office",
+   "titleEs": "Remodelando la oficina",
+   "scene": "🏗️ En una empresa de Bogotá: la gerente pide un informe de avance de la remodelación.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Natalia",
+     "line": "How's the renovation going? Is the new kitchen being built yet?",
+     "es": "¿Cómo va la remodelación? ¿Ya están construyendo la cocina nueva?"
+    },
+    {
+     "sp": "James",
+     "line": "Yes, it's being built right now. The old cabinets have already been removed.",
+     "es": "Sí, la están construyendo en este momento. Ya quitaron los gabinetes viejos."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Great. Have the new desks been delivered?",
+     "es": "Genial. ¿Ya entregaron los escritorios nuevos?"
+    },
+    {
+     "sp": "James",
+     "line": "Not yet. They've been delayed because of the transport strike.",
+     "es": "Todavía no. Los retrasaron por el paro de transportadores."
+    },
+    {
+     "sp": "Natalia",
+     "line": "And the meeting rooms?",
+     "es": "¿Y las salas de reuniones?"
+    },
+    {
+     "sp": "James",
+     "line": "They're being painted this week. The carpets have been ordered too.",
+     "es": "Las están pintando esta semana. También se pidieron las alfombras."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Thanks to your team, we're almost on schedule.",
+     "es": "Gracias a tu equipo, vamos casi a tiempo."
+    }
+   ]
+  },
+  {
+   "title": "A software update",
+   "titleEs": "Una actualización de software",
+   "scene": "💻 En una startup de Medellín: dos desarrolladores revisan el avance de un lanzamiento.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "Has the new version been tested?",
+     "es": "¿Ya probaron la nueva versión?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Most of it has been tested. The payment module is being checked now.",
+     "es": "La mayor parte ya está probada. El módulo de pagos lo están revisando ahora."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Why is it taking so long?",
+     "es": "¿Por qué se está demorando tanto?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Due to a bug in the login screen, the launch has been postponed.",
+     "es": "Por un error en la pantalla de inicio de sesión, el lanzamiento se aplazó."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Have the clients been informed?",
+     "es": "¿Ya les informaron a los clientes?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Yes, an email has been sent to all of them.",
+     "es": "Sí, ya se les envió un correo a todos."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Good. Is the bug being fixed by the external team?",
+     "es": "Bien. ¿El equipo externo está arreglando el error?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "No, it's being fixed by Laura. She's the only one who knows that code.",
+     "es": "No, lo está arreglando Laura. Es la única que conoce ese código."
+    }
+   ]
+  }
+ ],
+ "B1-7-1": [
+  {
+   "title": "Preparing for a job interview",
+   "titleEs": "Preparándose para una entrevista",
+   "scene": "👔 En un café de Bogotá: Isabela se prepara con un amigo para una entrevista.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tom",
+     "line": "Why are you here so early?",
+     "es": "¿Por qué llegaste tan temprano?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "To review my notes. The interview is at ten.",
+     "es": "Para repasar mis apuntes. La entrevista es a las diez."
+    },
+    {
+     "sp": "Tom",
+     "line": "Did you research the company?",
+     "es": "¿Investigaste sobre la empresa?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "Yes. I read their reports in order to understand their projects.",
+     "es": "Sí. Leí sus informes para entender sus proyectos."
+    },
+    {
+     "sp": "Tom",
+     "line": "Smart. Leave early so as not to get stuck in traffic.",
+     "es": "Inteligente. Sal temprano para no quedarte atascada en el tráfico."
+    },
+    {
+     "sp": "Isabela",
+     "line": "I will. I want to be the first to arrive.",
+     "es": "Lo haré. Quiero ser la primera en llegar."
+    },
+    {
+     "sp": "Tom",
+     "line": "Remember, it's important to ask questions at the end.",
+     "es": "Recuerda que es importante hacer preguntas al final."
+    },
+    {
+     "sp": "Isabela",
+     "line": "I've prepared three, so as not to look unprepared.",
+     "es": "Preparé tres, para no parecer desprevenida."
+    }
+   ]
+  },
+  {
+   "title": "Planning a trip to the coffee region",
+   "titleEs": "Planeando un viaje al Eje Cafetero",
+   "scene": "☕ En una oficina de Pereira: dos colegas organizan una visita para clientes extranjeros.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Megan",
+     "line": "Why did you book the farm tour so early?",
+     "es": "¿Por qué reservaste el tour de la finca tan temprano?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "To get the best guide. He's the only one who speaks English.",
+     "es": "Para conseguir el mejor guía. Es el único que habla inglés."
+    },
+    {
+     "sp": "Megan",
+     "line": "Good idea. Should we rent a van?",
+     "es": "Buena idea. ¿Alquilamos una camioneta?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Yes, in order to travel together. It's easier for the clients to relax that way.",
+     "es": "Sí, para viajar juntos. Así es más fácil que los clientes se relajen."
+    },
+    {
+     "sp": "Megan",
+     "line": "Is there enough time for them to visit Salento too?",
+     "es": "¿Hay suficiente tiempo para que también visiten Salento?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Only if we leave at seven, so as not to waste the morning.",
+     "es": "Solo si salimos a las siete, para no perder la mañana."
+    },
+    {
+     "sp": "Megan",
+     "line": "Then I'll send them an email to explain the schedule.",
+     "es": "Entonces les mando un correo para explicarles el horario."
+    }
+   ]
+  }
+ ],
+ "B1-8-0": [
+  {
+   "title": "Weekend plans",
+   "titleEs": "Planes para el fin de semana",
+   "scene": "🌄 En Medellín: una pareja decide qué hacer el sábado.",
+   "cast": [
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Jack",
+     "line": "Would you rather go to Guatapé or stay in the city this weekend?",
+     "es": "¿Prefieres ir a Guatapé o quedarnos en la ciudad este fin de semana?"
+    },
+    {
+     "sp": "Sofía",
+     "line": "I'd rather go to Guatapé than spend another weekend in traffic.",
+     "es": "Prefiero ir a Guatapé que pasar otro fin de semana en el tráfico."
+    },
+    {
+     "sp": "Jack",
+     "line": "OK. Would you prefer to drive or take the bus?",
+     "es": "Bueno. ¿Prefieres manejar o ir en bus?"
+    },
+    {
+     "sp": "Sofía",
+     "line": "I'd prefer to take the bus. I'd rather not drive on those curves.",
+     "es": "Prefiero ir en bus. Prefiero no manejar en esas curvas."
+    },
+    {
+     "sp": "Jack",
+     "line": "Fine. And I'd rather you didn't invite your cousin this time.",
+     "es": "Listo. Y preferiría que no invitaras a tu primo esta vez."
+    },
+    {
+     "sp": "Sofía",
+     "line": "Ha! Fair enough. Would you prefer a hotel or a cabin?",
+     "es": "¡Ja! Me parece justo. ¿Prefieres un hotel o una cabaña?"
+    },
+    {
+     "sp": "Jack",
+     "line": "I'd prefer a cabin to a hotel. It's more peaceful.",
+     "es": "Prefiero una cabaña a un hotel. Es más tranquilo."
+    }
+   ]
+  },
+  {
+   "title": "The meeting format",
+   "titleEs": "El formato de la reunión",
+   "scene": "📅 En una empresa de Bogotá: dos gerentes organizan una reunión con un cliente.",
+   "cast": [
+    {
+     "name": "Carlos",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Chloe",
+     "line": "Would you rather meet the client in person or online?",
+     "es": "¿Prefieres reunirte con el cliente en persona o en línea?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "I'd rather meet in person. Video calls are too impersonal.",
+     "es": "Prefiero en persona. Las videollamadas son muy impersonales."
+    },
+    {
+     "sp": "Chloe",
+     "line": "I'd prefer to do it online, to be honest. It saves time.",
+     "es": "La verdad, yo preferiría hacerlo en línea. Ahorra tiempo."
+    },
+    {
+     "sp": "Carlos",
+     "line": "Then would you prefer a short call on Monday?",
+     "es": "¿Entonces preferirías una llamada corta el lunes?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "I'd prefer Tuesday to Monday. Mondays are crazy.",
+     "es": "Prefiero el martes al lunes. Los lunes son una locura."
+    },
+    {
+     "sp": "Carlos",
+     "line": "Tuesday it is. But I'd rather you sent the agenda first.",
+     "es": "Martes, entonces. Pero preferiría que enviaras la agenda primero."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Of course. I'd rather not improvise with this client.",
+     "es": "Claro. Prefiero no improvisar con este cliente."
+    }
+   ]
+  }
+ ],
+ "B1-8-1": [
+  {
+   "title": "Saving money",
+   "titleEs": "Ahorrando plata",
+   "scene": "💰 En una cafetería de Bogotá: dos amigos comparten trucos para ahorrar.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "How did you save enough for the trip to Europe?",
+     "es": "¿Cómo ahorraste suficiente para el viaje a Europa?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "By cooking at home every day and not eating out.",
+     "es": "Cocinando en casa todos los días y no comiendo afuera."
+    },
+    {
+     "sp": "Ben",
+     "line": "That's all?",
+     "es": "¿Solo eso?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "No. I also saved a lot by using the bike instead of taxis.",
+     "es": "No. También ahorré mucho usando la bici en vez de taxis."
+    },
+    {
+     "sp": "Ben",
+     "line": "I spend too much on coffee. How can I change that?",
+     "es": "Gasto demasiado en café. ¿Cómo puedo cambiar eso?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "By making it at home and taking it to work in a flask.",
+     "es": "Preparándolo en casa y llevándolo al trabajo en un termo."
+    },
+    {
+     "sp": "Ben",
+     "line": "And the flights? They're so expensive.",
+     "es": "¿Y los vuelos? Son carísimos."
+    },
+    {
+     "sp": "Daniela",
+     "line": "You can get cheap tickets by booking months in advance.",
+     "es": "Puedes conseguir tiquetes baratos reservando con meses de anticipación."
+    }
+   ]
+  },
+  {
+   "title": "Improving your English",
+   "titleEs": "Mejorando tu inglés",
+   "scene": "📚 En una clase en la Universidad Nacional: un estudiante pide consejos a su profesora.",
+   "cast": [
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mateo",
+     "line": "How can I improve my listening?",
+     "es": "¿Cómo puedo mejorar mi comprensión auditiva?"
+    },
+    {
+     "sp": "Grace",
+     "line": "By listening to podcasts every day, even for ten minutes.",
+     "es": "Escuchando pódcasts todos los días, aunque sea diez minutos."
+    },
+    {
+     "sp": "Mateo",
+     "line": "And my vocabulary?",
+     "es": "¿Y mi vocabulario?"
+    },
+    {
+     "sp": "Grace",
+     "line": "You'll learn more words by reading things you enjoy.",
+     "es": "Vas a aprender más palabras leyendo cosas que te gusten."
+    },
+    {
+     "sp": "Mateo",
+     "line": "I get nervous when I speak.",
+     "es": "Me pongo nervioso cuando hablo."
+    },
+    {
+     "sp": "Grace",
+     "line": "By practising with a friend first, you'll feel more confident.",
+     "es": "Practicando primero con un amigo, te vas a sentir más seguro."
+    },
+    {
+     "sp": "Mateo",
+     "line": "What about grammar?",
+     "es": "¿Y la gramática?"
+    },
+    {
+     "sp": "Grace",
+     "line": "By not worrying too much about mistakes. You'll improve by using it.",
+     "es": "No preocupándote demasiado por los errores. Vas a mejorar usándola."
+    }
+   ]
+  }
+ ],
+ "B1-9-0": [
+  {
+   "title": "Getting ready for the wedding",
+   "titleEs": "Preparándose para el matrimonio",
+   "scene": "💒 En Cartagena: dos hermanas organizan los últimos detalles de una boda.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Paula",
+     "line": "Have you had your dress altered yet?",
+     "es": "¿Ya mandaste a arreglar el vestido?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "Yes, I had it shortened last week. It fits perfectly now.",
+     "es": "Sí, lo mandé a recoger la semana pasada. Ahora me queda perfecto."
+    },
+    {
+     "sp": "Paula",
+     "line": "And your hair? Are you doing it yourself?",
+     "es": "¿Y el pelo? ¿Te lo vas a hacer tú?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "No way. I'm getting it done at the salon on Saturday morning.",
+     "es": "Ni loca. Me lo van a hacer en la peluquería el sábado por la mañana."
+    },
+    {
+     "sp": "Paula",
+     "line": "Did you get the invitations printed?",
+     "es": "¿Mandaste a imprimir las invitaciones?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "We had them printed in Bogotá and delivered here.",
+     "es": "Las mandamos a imprimir en Bogotá y nos las trajeron aquí."
+    },
+    {
+     "sp": "Paula",
+     "line": "What about the photos?",
+     "es": "¿Y las fotos?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "We're having them taken by a friend of Andrés. He's a professional.",
+     "es": "Nos las va a tomar un amigo de Andrés. Es profesional."
+    }
+   ]
+  },
+  {
+   "title": "Car trouble",
+   "titleEs": "Problemas con el carro",
+   "scene": "🔧 En un taller de Medellín: un cliente habla con la mecánica.",
+   "cast": [
+    {
+     "name": "Ryan",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Natalia",
+     "line": "When did you last have the car serviced?",
+     "es": "¿Cuándo le hicieron el último mantenimiento al carro?"
+    },
+    {
+     "sp": "Ryan",
+     "line": "About a year ago. I got the oil changed in Bogotá.",
+     "es": "Hace como un año. Me cambiaron el aceite en Bogotá."
+    },
+    {
+     "sp": "Natalia",
+     "line": "You should have the brakes checked too. They sound bad.",
+     "es": "También debería mandar a revisar los frenos. Suenan mal."
+    },
+    {
+     "sp": "Ryan",
+     "line": "OK. Can I have the tyres rotated at the same time?",
+     "es": "Bueno. ¿Me pueden rotar las llantas al mismo tiempo?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Sure. Do you want to have the car washed as well?",
+     "es": "Claro. ¿También quiere que se lo laven?"
+    },
+    {
+     "sp": "Ryan",
+     "line": "Why not? And I need to get this dent repaired before I sell it.",
+     "es": "¿Por qué no? Y necesito que me arreglen esta abolladura antes de venderlo."
+    },
+    {
+     "sp": "Natalia",
+     "line": "No problem. You'll have it all done by Friday.",
+     "es": "No hay problema. Se lo tenemos todo listo para el viernes."
+    }
+   ]
+  }
+ ],
+ "B1-9-1": [
+  {
+   "title": "The team is exhausted",
+   "titleEs": "El equipo está agotado",
+   "scene": "😩 En una oficina de Bogotá: dos líderes buscan cómo motivar al equipo.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Felipe",
+     "line": "The team looks exhausted. What should we do?",
+     "es": "El equipo se ve agotado. ¿Qué deberíamos hacer?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "How about giving them Friday afternoon off?",
+     "es": "¿Qué tal si les damos el viernes por la tarde libre?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "We could, but the project is behind schedule.",
+     "es": "Podríamos, pero el proyecto está atrasado."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Why don't we move the deadline by one week?",
+     "es": "¿Por qué no corremos la fecha de entrega una semana?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "It might be better to ask the client first.",
+     "es": "Podría ser mejor preguntarle primero al cliente."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Fair. Shall we call them this afternoon?",
+     "es": "Tienes razón. ¿Los llamamos esta tarde?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Yes, let's do that. And what about ordering lunch for everyone?",
+     "es": "Sí, hagamos eso. ¿Y qué tal si pedimos almuerzo para todos?"
+    },
+    {
+     "sp": "Chloe",
+     "line": "Great idea. It might be worth getting arepas from that place downstairs.",
+     "es": "Muy buena idea. Valdría la pena pedir arepas en ese sitio de abajo."
+    }
+   ]
+  },
+  {
+   "title": "What to do in Bogotá",
+   "titleEs": "Qué hacer en Bogotá",
+   "scene": "🗺️ En un hostal de La Candelaria: un viajero pide ideas a una recepcionista.",
+   "cast": [
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tom",
+     "line": "I've only got one day in Bogotá. Any ideas?",
+     "es": "Solo tengo un día en Bogotá. ¿Alguna idea?"
+    },
+    {
+     "sp": "Laura",
+     "line": "You should go up Monserrate early in the morning.",
+     "es": "Deberías subir a Monserrate temprano en la mañana."
+    },
+    {
+     "sp": "Tom",
+     "line": "How about visiting the Gold Museum after that?",
+     "es": "¿Y si visito el Museo del Oro después?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Perfect. Why don't you have lunch at the market too?",
+     "es": "Perfecto. ¿Por qué no almuerzas también en la plaza de mercado?"
+    },
+    {
+     "sp": "Tom",
+     "line": "Good idea. What about the graffiti tour?",
+     "es": "Buena idea. ¿Y el tour de grafitis?"
+    },
+    {
+     "sp": "Laura",
+     "line": "It's definitely worth doing. Shall I book you a place?",
+     "es": "Definitivamente vale la pena. ¿Te reservo un cupo?"
+    },
+    {
+     "sp": "Tom",
+     "line": "Yes, please. Couldn't I do it in the afternoon?",
+     "es": "Sí, por favor. ¿No podría hacerlo en la tarde?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Sure. The best thing to do is to take the two o'clock tour.",
+     "es": "Claro. Lo mejor es tomar el tour de las dos."
+    }
+   ]
+  }
+ ],
+ "B1-10-0": [
+  {
+   "title": "Planning the future",
+   "titleEs": "Planeando el futuro",
+   "scene": "🔮 En una universidad de Medellín: dos estudiantes de último semestre hablan del futuro.",
+   "cast": [
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "Where do you think you'll be in five years?",
+     "es": "¿Dónde crees que vas a estar en cinco años?"
+    },
+    {
+     "sp": "Sofía",
+     "line": "I'll be working for a tech company, maybe in Canada.",
+     "es": "Voy a estar trabajando para una empresa de tecnología, tal vez en Canadá."
+    },
+    {
+     "sp": "Oliver",
+     "line": "By then you'll have finished your master's, right?",
+     "es": "Para entonces ya habrás terminado tu maestría, ¿no?"
+    },
+    {
+     "sp": "Sofía",
+     "line": "Hopefully! I'll have graduated by 2028.",
+     "es": "¡Ojalá! Me habré graduado para 2028."
+    },
+    {
+     "sp": "Oliver",
+     "line": "I think you'll do really well.",
+     "es": "Creo que te va a ir muy bien."
+    },
+    {
+     "sp": "Sofía",
+     "line": "Thanks. What about you? Will you still be living in Medellín?",
+     "es": "Gracias. ¿Y tú? ¿Todavía vas a estar viviendo en Medellín?"
+    },
+    {
+     "sp": "Oliver",
+     "line": "Probably. By then I'll have opened my own café, I hope.",
+     "es": "Probablemente. Para entonces habré abierto mi propio café, espero."
+    },
+    {
+     "sp": "Sofía",
+     "line": "Then I'll be drinking coffee there every time I visit!",
+     "es": "¡Entonces voy a estar tomando café ahí cada vez que venga!"
+    }
+   ]
+  },
+  {
+   "title": "The big project",
+   "titleEs": "El gran proyecto",
+   "scene": "🏗️ En una constructora de Bogotá: la jefa revisa el cronograma con un ingeniero.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Catalina",
+     "line": "Will the building be ready by December?",
+     "es": "¿El edificio va a estar listo para diciembre?"
+    },
+    {
+     "sp": "Liam",
+     "line": "I think so. By November we'll have finished the structure.",
+     "es": "Creo que sí. Para noviembre habremos terminado la estructura."
+    },
+    {
+     "sp": "Catalina",
+     "line": "And what will the team be doing next month?",
+     "es": "¿Y qué va a estar haciendo el equipo el próximo mes?"
+    },
+    {
+     "sp": "Liam",
+     "line": "They'll be installing the windows and the electrical system.",
+     "es": "Van a estar instalando las ventanas y el sistema eléctrico."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Will the inspectors have visited by then?",
+     "es": "¿Los inspectores ya habrán venido para entonces?"
+    },
+    {
+     "sp": "Liam",
+     "line": "Yes, they'll have checked the first five floors.",
+     "es": "Sí, ya habrán revisado los primeros cinco pisos."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Good. Will you be working on the weekend?",
+     "es": "Bien. ¿Vas a estar trabajando el fin de semana?"
+    },
+    {
+     "sp": "Liam",
+     "line": "Only on Saturday. Prices will probably go up, so we need to move fast.",
+     "es": "Solo el sábado. Los precios probablemente van a subir, así que hay que moverse rápido."
+    }
+   ]
+  }
+ ],
+ "B1-10-1": [
+  {
+   "title": "A job interview",
+   "titleEs": "Una entrevista de trabajo",
+   "scene": "💼 En una entrevista en Bogotá: la reclutadora pregunta por la experiencia del candidato.",
+   "cast": [
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Santiago",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Emma",
+     "line": "How long have you worked at your current company?",
+     "es": "¿Cuánto tiempo llevas trabajando en tu empresa actual?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "I've worked there since 2021, so for about five years.",
+     "es": "Trabajo ahí desde 2021, o sea, hace unos cinco años."
+    },
+    {
+     "sp": "Emma",
+     "line": "And before that?",
+     "es": "¿Y antes?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "From 2018 to 2021 I worked at a bank in Medellín.",
+     "es": "De 2018 a 2021 trabajé en un banco en Medellín."
+    },
+    {
+     "sp": "Emma",
+     "line": "Did you study abroad at any point?",
+     "es": "¿Estudiaste en el exterior en algún momento?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "Yes, I spent six months in Toronto in 2017, during my last year at university.",
+     "es": "Sí, pasé seis meses en Toronto en 2017, durante mi último año de universidad."
+    },
+    {
+     "sp": "Emma",
+     "line": "When did you start learning English?",
+     "es": "¿Cuándo empezaste a aprender inglés?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "About fifteen years ago. I've been practising every day since then.",
+     "es": "Hace como quince años. He practicado todos los días desde entonces."
+    }
+   ]
+  },
+  {
+   "title": "Old friends",
+   "titleEs": "Viejos amigos",
+   "scene": "🤝 En un reencuentro en Cali: dos amigos del colegio se ponen al día.",
+   "cast": [
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "I can't believe it! When did we last see each other?",
+     "es": "¡No lo puedo creer! ¿Cuándo nos vimos por última vez?"
+    },
+    {
+     "sp": "Diego",
+     "line": "At Camila's wedding, about eight years ago.",
+     "es": "En el matrimonio de Camila, hace como ocho años."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Right! You were living in Spain then.",
+     "es": "¡Claro! Tú vivías en España en ese entonces."
+    },
+    {
+     "sp": "Diego",
+     "line": "Yes, I lived in Madrid from 2015 to 2019.",
+     "es": "Sí, viví en Madrid de 2015 a 2019."
+    },
+    {
+     "sp": "Hannah",
+     "line": "And you've been back in Cali since 2019?",
+     "es": "¿Y has estado de vuelta en Cali desde 2019?"
+    },
+    {
+     "sp": "Diego",
+     "line": "Exactly. I moved back during the pandemic, in the summer of that year.",
+     "es": "Exacto. Me devolví en la pandemia, en el verano de ese año."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Wow. I've had the same job for ten years!",
+     "es": "¡Uy! Yo llevo diez años en el mismo trabajo."
+    },
+    {
+     "sp": "Diego",
+     "line": "Since we left school? That's amazing.",
+     "es": "¿Desde que salimos del colegio? Eso es increíble."
+    }
+   ]
+  }
+ ],
+ "B1-11-0": [
+  {
+   "title": "Moving to a new office",
+   "titleEs": "Mudanza a una nueva oficina",
+   "scene": "📦 En una empresa de Medellín: la coordinadora explica el plan de la mudanza.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "James",
+     "line": "When are we moving to the new office?",
+     "es": "¿Cuándo nos vamos a pasar a la nueva oficina?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "As soon as the electricians finish, we'll start moving the furniture.",
+     "es": "Apenas terminen los electricistas, empezamos a mover los muebles."
+    },
+    {
+     "sp": "James",
+     "line": "Can I pack my desk before Friday?",
+     "es": "¿Puedo empacar mi escritorio antes del viernes?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "Yes, but don't pack your laptop until IT gives you a box.",
+     "es": "Sí, pero no empaques tu portátil hasta que los de sistemas te den una caja."
+    },
+    {
+     "sp": "James",
+     "line": "And once we've moved, will we have parking?",
+     "es": "¿Y una vez nos hayamos mudado, vamos a tener parqueadero?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "The moment the building manager confirms it, I'll tell you.",
+     "es": "En el momento en que el administrador lo confirme, te aviso."
+    },
+    {
+     "sp": "James",
+     "line": "By the time we move in, will the kitchen be ready?",
+     "es": "Para cuando lleguemos, ¿la cocina va a estar lista?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "It should be. Before you leave on Friday, label all your boxes.",
+     "es": "Debería. Antes de irte el viernes, marca todas tus cajas."
+    }
+   ]
+  },
+  {
+   "title": "A missed connection",
+   "titleEs": "Una conexión perdida",
+   "scene": "✈️ En el aeropuerto de Bogotá: una viajera cuenta lo que pasó con su vuelo.",
+   "cast": [
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Julián",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Julián",
+     "line": "What happened with your flight to Lima?",
+     "es": "¿Qué pasó con tu vuelo a Lima?"
+    },
+    {
+     "sp": "Megan",
+     "line": "By the time we landed in Bogotá, my connection had already left.",
+     "es": "Para cuando aterrizamos en Bogotá, mi conexión ya había salido."
+    },
+    {
+     "sp": "Julián",
+     "line": "Oh no. What did you do?",
+     "es": "Ay, no. ¿Qué hiciste?"
+    },
+    {
+     "sp": "Megan",
+     "line": "As soon as I got off the plane, I ran to the airline desk.",
+     "es": "Apenas me bajé del avión, corrí al mostrador de la aerolínea."
+    },
+    {
+     "sp": "Julián",
+     "line": "Did they help you?",
+     "es": "¿Te ayudaron?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Eventually. I waited until they found me a seat on the next flight.",
+     "es": "Al final sí. Esperé hasta que me encontraron puesto en el siguiente vuelo."
+    },
+    {
+     "sp": "Julián",
+     "line": "Will you call me once you arrive?",
+     "es": "¿Me llamas una vez llegues?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Of course. I'll message you the moment I land.",
+     "es": "Claro. Te escribo en el momento en que aterrice."
+    }
+   ]
+  }
+ ],
+ "B1-11-1": [
+  {
+   "title": "The failed exam",
+   "titleEs": "El examen perdido",
+   "scene": "📝 En la cafetería de la universidad en Bogotá: un estudiante se lamenta por un examen.",
+   "cast": [
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lucy",
+     "line": "How did the statistics exam go?",
+     "es": "¿Cómo te fue en el examen de estadística?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Terribly. I should have studied more last week.",
+     "es": "Fatal. Debí haber estudiado más la semana pasada."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Did you go to the review session?",
+     "es": "¿Fuiste a la sesión de repaso?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "No, and I shouldn't have skipped it. If I'd gone, I would have understood the last topic.",
+     "es": "No, y no debí habérmela saltado. Si hubiera ido, habría entendido el último tema."
+    },
+    {
+     "sp": "Lucy",
+     "line": "You could have asked me for help.",
+     "es": "Me hubieras podido pedir ayuda."
+    },
+    {
+     "sp": "Mateo",
+     "line": "I know. If I had asked you, I might have passed.",
+     "es": "Lo sé. Si te hubiera preguntado, tal vez habría pasado."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Well, you shouldn't have stayed up all night watching series either!",
+     "es": "¡Bueno, tampoco debiste haberte trasnochado viendo series!"
+    }
+   ]
+  },
+  {
+   "title": "The lost client",
+   "titleEs": "El cliente perdido",
+   "scene": "📉 En una agencia de publicidad de Medellín: dos socios analizan por qué perdieron un cliente.",
+   "cast": [
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zoe",
+     "line": "Why did we lose the account?",
+     "es": "¿Por qué perdimos la cuenta?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "We should have sent the proposal on time.",
+     "es": "Debimos haber mandado la propuesta a tiempo."
+    },
+    {
+     "sp": "Zoe",
+     "line": "If we had sent it on Monday, they would have chosen us.",
+     "es": "Si la hubiéramos mandado el lunes, nos habrían escogido."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "And we shouldn't have changed the budget at the last minute.",
+     "es": "Y no debimos haber cambiado el presupuesto a última hora."
+    },
+    {
+     "sp": "Zoe",
+     "line": "True. They could have trusted us more if we'd been clearer.",
+     "es": "Es cierto. Nos habrían podido tener más confianza si hubiéramos sido más claros."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "If I'd known they were talking to other agencies, I would have called them.",
+     "es": "Si hubiera sabido que estaban hablando con otras agencias, los habría llamado."
+    },
+    {
+     "sp": "Zoe",
+     "line": "Lesson learned. Next time we won't make the same mistake.",
+     "es": "Lección aprendida. La próxima vez no vamos a cometer el mismo error."
+    }
+   ]
+  }
+ ],
+ "B1-12-0": [
+  {
+   "title": "Organising a conference",
+   "titleEs": "Organizando un congreso",
+   "scene": "🎤 En una universidad de Barranquilla: dos organizadores preparan un congreso.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mark",
+     "line": "Why did you book the big auditorium?",
+     "es": "¿Por qué reservaste el auditorio grande?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "To fit everyone in. We're expecting three hundred people.",
+     "es": "Para que quepan todos. Esperamos trescientas personas."
+    },
+    {
+     "sp": "Mark",
+     "line": "And the extra screens?",
+     "es": "¿Y las pantallas extra?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Those are for the people at the back to see the slides.",
+     "es": "Esas son para que la gente de atrás vea las diapositivas."
+    },
+    {
+     "sp": "Mark",
+     "line": "Should we print the programme?",
+     "es": "¿Imprimimos el programa?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "Yes, so that the older professors can read it easily.",
+     "es": "Sí, para que los profesores mayores lo puedan leer fácilmente."
+    },
+    {
+     "sp": "Mark",
+     "line": "I'll send a reminder in order to reduce no-shows.",
+     "es": "Voy a enviar un recordatorio para reducir las inasistencias."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Good. And let's start at nine so as not to finish too late.",
+     "es": "Bien. Y empecemos a las nueve para no terminar muy tarde."
+    }
+   ]
+  },
+  {
+   "title": "Packing for the Amazon",
+   "titleEs": "Empacando para el Amazonas",
+   "scene": "🎒 En un apartamento en Bogotá: dos amigos alistan las maletas para Leticia.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Olivia",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Olivia",
+     "line": "Why are you taking two pairs of boots?",
+     "es": "¿Por qué vas a llevar dos pares de botas?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "So that I always have a dry pair.",
+     "es": "Para tener siempre un par seco."
+    },
+    {
+     "sp": "Olivia",
+     "line": "What's this spray for?",
+     "es": "¿Para qué es este spray?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "It's for keeping the mosquitoes away.",
+     "es": "Es para alejar a los mosquitos."
+    },
+    {
+     "sp": "Olivia",
+     "line": "And the waterproof bag?",
+     "es": "¿Y la bolsa impermeable?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "To protect my camera when we go on the boat.",
+     "es": "Para proteger la cámara cuando vayamos en lancha."
+    },
+    {
+     "sp": "Olivia",
+     "line": "I've packed extra snacks for the kids in the village to share.",
+     "es": "Empaqué mecato extra para que los niños de la comunidad compartan."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Nice. Let's go to bed early in order to be ready at five.",
+     "es": "Qué bien. Acostémonos temprano para estar listos a las cinco."
+    }
+   ]
+  }
+ ],
+ "B1-12-1": [
+  {
+   "title": "The cancelled concert",
+   "titleEs": "El concierto cancelado",
+   "scene": "🎸 En Bogotá: dos amigos comentan por qué se canceló un concierto en el parque Simón Bolívar.",
+   "cast": [
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "Why was the concert cancelled?",
+     "es": "¿Por qué cancelaron el concierto?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Because of the storm. It rained for six hours.",
+     "es": "Por la tormenta. Llovió seis horas."
+    },
+    {
+     "sp": "Grace",
+     "line": "I heard it was due to a problem with the stage.",
+     "es": "Yo oí que fue por un problema con la tarima."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "That too. The reason why they stopped is that the roof started leaking.",
+     "es": "Eso también. La razón por la que pararon es que el techo empezó a gotear."
+    },
+    {
+     "sp": "Grace",
+     "line": "Since the band can't come back this year, will they refund the tickets?",
+     "es": "Como la banda no puede volver este año, ¿van a devolver la plata de las boletas?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Yes. As it was the organisers' fault, everyone gets their money back.",
+     "es": "Sí. Como fue culpa de los organizadores, a todos les devuelven la plata."
+    },
+    {
+     "sp": "Grace",
+     "line": "Good. I was angry because I'd waited months for it.",
+     "es": "Bien. Estaba bravo porque había esperado meses."
+    }
+   ]
+  },
+  {
+   "title": "Explaining a delay",
+   "titleEs": "Explicando un retraso",
+   "scene": "📧 En una videollamada: un proveedor colombiano explica a una clienta por qué se retrasó un pedido.",
+   "cast": [
+    {
+     "name": "Carlos",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Sarah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sarah",
+     "line": "Carlos, why hasn't the shipment arrived?",
+     "es": "Carlos, ¿por qué no ha llegado el envío?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "I'm sorry. It was held at the port due to a missing document.",
+     "es": "Lo siento. Lo retuvieron en el puerto por un documento faltante."
+    },
+    {
+     "sp": "Sarah",
+     "line": "Why was a document missing?",
+     "es": "¿Y por qué faltaba un documento?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "The reason is that our customs agent was on holiday.",
+     "es": "La razón es que nuestro agente de aduanas estaba de vacaciones."
+    },
+    {
+     "sp": "Sarah",
+     "line": "Since this is the second delay, I need a guarantee.",
+     "es": "Como este es el segundo retraso, necesito una garantía."
+    },
+    {
+     "sp": "Carlos",
+     "line": "Of course. Owing to the delay, we'll cover the shipping costs.",
+     "es": "Por supuesto. Debido al retraso, vamos a cubrir los costos de envío."
+    },
+    {
+     "sp": "Sarah",
+     "line": "Thank you. I'm only asking because our clients are waiting.",
+     "es": "Gracias. Solo pregunto porque nuestros clientes están esperando."
+    }
+   ]
+  }
+ ],
+ "B1-13-0": [
+  {
+   "title": "The mystery of the empty fridge",
+   "titleEs": "El misterio de la nevera vacía",
+   "scene": "🧀 En un apartamento compartido en Bogotá: dos compañeros de piso buscan al culpable.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Nick",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Camila",
+     "line": "Someone ate my cheese! It must have been Felipe.",
+     "es": "¡Alguien se comió mi queso! Tuvo que ser Felipe."
+    },
+    {
+     "sp": "Nick",
+     "line": "It can't have been Felipe. He's been in Cali all week.",
+     "es": "No pudo haber sido Felipe. Ha estado en Cali toda la semana."
+    },
+    {
+     "sp": "Camila",
+     "line": "Then it might have been his girlfriend. She has a key.",
+     "es": "Entonces tal vez fue su novia. Ella tiene llave."
+    },
+    {
+     "sp": "Nick",
+     "line": "She may have come to water the plants, I suppose.",
+     "es": "Puede que haya venido a regar las matas, supongo."
+    },
+    {
+     "sp": "Camila",
+     "line": "Wait, there are crumbs on your desk. You must have eaten it!",
+     "es": "Espera, hay migajas en tu escritorio. ¡Tú te lo debiste comer!"
+    },
+    {
+     "sp": "Nick",
+     "line": "Oh no. I must have been half asleep last night.",
+     "es": "Uy, no. Debí estar medio dormido anoche."
+    },
+    {
+     "sp": "Camila",
+     "line": "You couldn't have forgotten that, Nick!",
+     "es": "¡No puede ser que se te haya olvidado, Nick!"
+    }
+   ]
+  },
+  {
+   "title": "The server crash",
+   "titleEs": "La caída del servidor",
+   "scene": "🖥️ En una empresa de software en Medellín: dos ingenieros investigan una falla.",
+   "cast": [
+    {
+     "name": "Julián",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Chloe",
+     "line": "The server went down at three in the morning. What do you think happened?",
+     "es": "El servidor se cayó a las tres de la mañana. ¿Qué crees que pasó?"
+    },
+    {
+     "sp": "Julián",
+     "line": "The update must have caused it. It was installed at two fifty.",
+     "es": "La actualización tuvo que haberlo causado. La instalaron a las dos y cincuenta."
+    },
+    {
+     "sp": "Chloe",
+     "line": "It could have been the power supply, though.",
+     "es": "Aunque pudo haber sido la fuente de poder."
+    },
+    {
+     "sp": "Julián",
+     "line": "It can't have been the power. The other servers were fine.",
+     "es": "No pudo haber sido la energía. Los otros servidores estaban bien."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Maybe someone was running a big report. That might have overloaded it.",
+     "es": "Tal vez alguien estaba corriendo un informe grande. Eso pudo haberlo sobrecargado."
+    },
+    {
+     "sp": "Julián",
+     "line": "Nobody could have been working at that hour.",
+     "es": "No pudo haber nadie trabajando a esa hora."
+    },
+    {
+     "sp": "Chloe",
+     "line": "The night team may not have logged off properly.",
+     "es": "Puede que el equipo de la noche no haya cerrado sesión bien."
+    },
+    {
+     "sp": "Julián",
+     "line": "True. They must have been testing the new version.",
+     "es": "Es cierto. Debían estar probando la nueva versión."
+    }
+   ]
+  }
+ ],
+ "B1-13-1": [
+  {
+   "title": "A bad decision at work",
+   "titleEs": "Una mala decisión en el trabajo",
+   "scene": "📊 En una empresa de Bogotá: dos colegas comentan una decisión del gerente.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "Did you hear that the manager sent the report without checking it?",
+     "es": "¿Supiste que el gerente mandó el informe sin revisarlo?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Yes. He should have asked the finance team first.",
+     "es": "Sí. Debió haberle preguntado primero al equipo de finanzas."
+    },
+    {
+     "sp": "Ben",
+     "line": "Would you have sent it?",
+     "es": "¿Tú lo habrías mandado?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "No, I would have waited until Monday.",
+     "es": "No, yo habría esperado hasta el lunes."
+    },
+    {
+     "sp": "Ben",
+     "line": "He could have asked for an extension.",
+     "es": "Habría podido pedir una prórroga."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Exactly. And he shouldn't have promised the client a date.",
+     "es": "Exacto. Y no debió haberle prometido una fecha al cliente."
+    },
+    {
+     "sp": "Ben",
+     "line": "To be fair, he couldn't have known about the error.",
+     "es": "Para ser justos, no podía haber sabido del error."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Maybe not, but someone ought to have checked the numbers.",
+     "es": "Tal vez no, pero alguien debió haber revisado las cifras."
+    }
+   ]
+  },
+  {
+   "title": "Football analysis",
+   "titleEs": "Análisis de fútbol",
+   "scene": "⚽ En un programa radial en Barranquilla: dos comentaristas analizan un partido de la Selección.",
+   "cast": [
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Olivia",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Olivia",
+     "line": "Colombia lost one-nil. What went wrong?",
+     "es": "Colombia perdió uno a cero. ¿Qué salió mal?"
+    },
+    {
+     "sp": "Diego",
+     "line": "The coach should have started with two strikers.",
+     "es": "El técnico debió haber arrancado con dos delanteros."
+    },
+    {
+     "sp": "Olivia",
+     "line": "I agree. They could have scored in the first ten minutes.",
+     "es": "De acuerdo. Pudieron haber marcado en los primeros diez minutos."
+    },
+    {
+     "sp": "Diego",
+     "line": "And the goalkeeper shouldn't have left his area.",
+     "es": "Y el arquero no debió haber salido del área."
+    },
+    {
+     "sp": "Olivia",
+     "line": "What would you have done at half-time?",
+     "es": "¿Qué habrías hecho tú en el entretiempo?"
+    },
+    {
+     "sp": "Diego",
+     "line": "I would have brought on a fresh midfielder.",
+     "es": "Habría metido un volante fresco."
+    },
+    {
+     "sp": "Olivia",
+     "line": "To be fair, the defence couldn't have done much more.",
+     "es": "Para ser justos, la defensa no podía haber hecho mucho más."
+    }
+   ]
+  }
+ ],
+ "B1-14-0": [
+  {
+   "title": "How coffee is made",
+   "titleEs": "Cómo se hace el café",
+   "scene": "☕ En una finca cafetera del Quindío: un guía explica el proceso a una turista.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "So what happens after the coffee is picked?",
+     "es": "Entonces, ¿qué pasa después de recoger el café?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "First, the cherries are sorted by hand. The bad ones are removed.",
+     "es": "Primero, las cerezas se seleccionan a mano. Las malas se retiran."
+    },
+    {
+     "sp": "Hannah",
+     "line": "And then?",
+     "es": "¿Y luego?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Then the beans are washed and left to ferment for a day.",
+     "es": "Luego los granos se lavan y se dejan fermentar un día."
+    },
+    {
+     "sp": "Hannah",
+     "line": "How are they dried?",
+     "es": "¿Cómo se secan?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "They're spread out in the sun. They must be turned every few hours.",
+     "es": "Se extienden al sol. Hay que voltearlos cada pocas horas."
+    },
+    {
+     "sp": "Hannah",
+     "line": "When are they roasted?",
+     "es": "¿Cuándo se tuestan?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Once they've been dried, they're sent to the roaster. Finally, they're packed and exported.",
+     "es": "Una vez secos, se mandan a la tostadora. Finalmente, se empacan y se exportan."
+    }
+   ]
+  },
+  {
+   "title": "Hiring at the company",
+   "titleEs": "Contratación en la empresa",
+   "scene": "📄 En una empresa de Medellín: la jefa de recursos humanos explica el proceso de selección.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Jack",
+     "line": "How are new employees selected here?",
+     "es": "¿Cómo se seleccionan los nuevos empleados aquí?"
+    },
+    {
+     "sp": "Laura",
+     "line": "First, the job is advertised online for two weeks.",
+     "es": "Primero, la vacante se publica en internet durante dos semanas."
+    },
+    {
+     "sp": "Jack",
+     "line": "And the CVs?",
+     "es": "¿Y las hojas de vida?"
+    },
+    {
+     "sp": "Laura",
+     "line": "They're reviewed by the HR team, and the best candidates are called.",
+     "es": "Las revisa el equipo de recursos humanos, y se llama a los mejores candidatos."
+    },
+    {
+     "sp": "Jack",
+     "line": "Is there a test?",
+     "es": "¿Hay alguna prueba?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Yes. An English test must be taken by every candidate.",
+     "es": "Sí. Todos los candidatos deben presentar una prueba de inglés."
+    },
+    {
+     "sp": "Jack",
+     "line": "What happens after the interview?",
+     "es": "¿Qué pasa después de la entrevista?"
+    },
+    {
+     "sp": "Laura",
+     "line": "References are checked, and then the offer is sent by email.",
+     "es": "Se verifican las referencias y luego se envía la oferta por correo."
+    }
+   ]
+  }
+ ],
+ "B1-14-1": [
+  {
+   "title": "Meet the team",
+   "titleEs": "Conoce al equipo",
+   "scene": "👥 En una agencia de Bogotá: una líder presenta el equipo a un nuevo empleado.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Isabela",
+     "line": "This is Daniel, who manages our social media.",
+     "es": "Este es Daniel, que maneja nuestras redes sociales."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Nice to meet you. Is he the person who designed the new logo?",
+     "es": "Mucho gusto. ¿Él es la persona que diseñó el nuevo logo?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "No, the person who designed it is Valeria, who's on holiday this week.",
+     "es": "No, la persona que lo diseñó es Valeria, que está de vacaciones esta semana."
+    },
+    {
+     "sp": "Oliver",
+     "line": "And the client that complained last month?",
+     "es": "¿Y el cliente que se quejó el mes pasado?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "That's Andina Foods, which is our biggest client.",
+     "es": "Es Andina Foods, que es nuestro cliente más grande."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Who's the colleague whose desk is next to mine?",
+     "es": "¿Quién es el colega cuyo escritorio está al lado del mío?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "That's Sergio. He's the one who knows everything about the printer.",
+     "es": "Ese es Sergio. Es el que sabe todo sobre la impresora."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Great. We had a long meeting yesterday, which was really useful.",
+     "es": "Genial. Ayer tuvimos una reunión larga, lo cual fue muy útil."
+    }
+   ]
+  },
+  {
+   "title": "A trip to Cartagena",
+   "titleEs": "Un viaje a Cartagena",
+   "scene": "🏰 En Cartagena: una guía muestra la ciudad amurallada a un turista.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Valentina",
+     "line": "This is the Clock Tower, which was built in the seventeenth century.",
+     "es": "Esta es la Torre del Reloj, que fue construida en el siglo XVII."
+    },
+    {
+     "sp": "Liam",
+     "line": "Is this the gate that leads into the old city?",
+     "es": "¿Esta es la puerta que lleva a la ciudad antigua?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "Exactly. The walls, which are eleven kilometres long, protected the city from pirates.",
+     "es": "Exacto. Las murallas, que tienen once kilómetros, protegían la ciudad de los piratas."
+    },
+    {
+     "sp": "Liam",
+     "line": "Who's the writer whose statue we saw?",
+     "es": "¿Quién es el escritor cuya estatua vimos?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "García Márquez, who lived here for years.",
+     "es": "García Márquez, que vivió aquí durante años."
+    },
+    {
+     "sp": "Liam",
+     "line": "The restaurant that you recommended was amazing.",
+     "es": "El restaurante que me recomendaste estaba increíble."
+    },
+    {
+     "sp": "Valentina",
+     "line": "I'm glad! The owner, who is a friend of mine, will be happy to hear it.",
+     "es": "¡Qué bien! El dueño, que es amigo mío, se va a alegrar de oírlo."
+    }
+   ]
+  }
+ ],
+ "B1-15-0": [
+  {
+   "title": "Improving the neighbourhood",
+   "titleEs": "Mejorando el barrio",
+   "scene": "🏘️ En una junta de acción comunal en Bogotá: dos vecinos discuten propuestas.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Catalina",
+     "line": "The park really needs attention. More lights should be installed.",
+     "es": "El parque necesita atención de verdad. Se deberían instalar más luces."
+    },
+    {
+     "sp": "Mark",
+     "line": "I agree. And the broken benches have to be repaired before December.",
+     "es": "De acuerdo. Y las bancas rotas hay que arreglarlas antes de diciembre."
+    },
+    {
+     "sp": "Catalina",
+     "line": "What about the rubbish? It's terrible on weekends.",
+     "es": "¿Y la basura? Los fines de semana es terrible."
+    },
+    {
+     "sp": "Mark",
+     "line": "More bins could be placed near the football pitch.",
+     "es": "Se podrían poner más canecas cerca de la cancha."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Dogs mustn't be allowed on the children's playground.",
+     "es": "No se debe permitir perros en el parque infantil."
+    },
+    {
+     "sp": "Mark",
+     "line": "That has to be discussed with the whole community.",
+     "es": "Eso hay que discutirlo con toda la comunidad."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Fine. A letter ought to be sent to the mayor's office this week.",
+     "es": "Bueno. Habría que mandar una carta a la alcaldía esta semana."
+    },
+    {
+     "sp": "Mark",
+     "line": "Agreed. This has got to be done before the next meeting.",
+     "es": "De acuerdo. Esto tiene que quedar hecho antes de la próxima reunión."
+    }
+   ]
+  },
+  {
+   "title": "Feedback on the website",
+   "titleEs": "Comentarios sobre la página web",
+   "scene": "🌐 En una startup de Medellín: dos diseñadores revisan la nueva página.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zoe",
+     "line": "What do you think of the homepage?",
+     "es": "¿Qué opinas de la página de inicio?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "It's good, but the menu could be simplified.",
+     "es": "Está bien, pero el menú se podría simplificar."
+    },
+    {
+     "sp": "Zoe",
+     "line": "And the photos?",
+     "es": "¿Y las fotos?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "They should be replaced. They look like stock images.",
+     "es": "Habría que cambiarlas. Parecen fotos de banco de imágenes."
+    },
+    {
+     "sp": "Zoe",
+     "line": "The contact form has to be fixed too. It doesn't send anything.",
+     "es": "El formulario de contacto también hay que arreglarlo. No envía nada."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Really? That must be fixed today. We're losing clients.",
+     "es": "¿En serio? Eso hay que arreglarlo hoy. Estamos perdiendo clientes."
+    },
+    {
+     "sp": "Zoe",
+     "line": "The texts ought to be translated into English as well.",
+     "es": "También habría que traducir los textos al inglés."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Good idea. And passwords mustn't be stored in that file!",
+     "es": "Buena idea. ¡Y las contraseñas no deben guardarse en ese archivo!"
+    }
+   ]
+  }
+ ],
+ "B1-15-1": [
+  {
+   "title": "After the presentation",
+   "titleEs": "Después de la presentación",
+   "scene": "🎤 En una empresa de Cali: dos colegas comentan la presentación de un proveedor.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "James",
+     "line": "That was a long presentation, wasn't it?",
+     "es": "Esa presentación estuvo larga, ¿no?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "It was. The prices were too high, weren't they?",
+     "es": "Sí. Los precios estaban muy altos, ¿verdad?"
+    },
+    {
+     "sp": "James",
+     "line": "Definitely. But the product looks reliable, doesn't it?",
+     "es": "Sin duda. Pero el producto se ve confiable, ¿no crees?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "I suppose so. You didn't like the salesman, did you?",
+     "es": "Supongo que sí. No te cayó bien el vendedor, ¿cierto?"
+    },
+    {
+     "sp": "James",
+     "line": "Not really. He didn't answer any of our questions, did he?",
+     "es": "No mucho. No contestó ninguna de nuestras preguntas, ¿o sí?"
+    },
+    {
+     "sp": "Daniela",
+     "line": "No. We should ask for a second quote, shouldn't we?",
+     "es": "No. Deberíamos pedir una segunda cotización, ¿no?"
+    },
+    {
+     "sp": "James",
+     "line": "Yes. Let's call the other company tomorrow, shall we?",
+     "es": "Sí. Llamemos mañana a la otra empresa, ¿te parece?"
+    }
+   ]
+  },
+  {
+   "title": "A day at the beach",
+   "titleEs": "Un día en la playa",
+   "scene": "🏝️ En Santa Marta: dos amigos disfrutan de la playa.",
+   "cast": [
+    {
+     "name": "Santiago",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Megan",
+     "line": "The water is beautiful here, isn't it?",
+     "es": "El agua es preciosa aquí, ¿no?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "It is. You've been to Tayrona before, haven't you?",
+     "es": "Sí. Ya habías venido al Tayrona, ¿cierto?"
+    },
+    {
+     "sp": "Megan",
+     "line": "Once, years ago. It wasn't so crowded then, was it?",
+     "es": "Una vez, hace años. No había tanta gente en ese entonces, ¿verdad?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "No. Nobody knew about it, did they?",
+     "es": "No. Nadie lo conocía, ¿cierto?"
+    },
+    {
+     "sp": "Megan",
+     "line": "I'm getting sunburnt, aren't I?",
+     "es": "Me estoy quemando, ¿cierto?"
+    },
+    {
+     "sp": "Santiago",
+     "line": "A little. You didn't bring sunscreen, did you?",
+     "es": "Un poco. No trajiste bloqueador, ¿o sí?"
+    },
+    {
+     "sp": "Megan",
+     "line": "I forgot it. Pass me yours, will you?",
+     "es": "Se me olvidó. Pásame el tuyo, ¿sí?"
+    }
+   ]
+  }
+ ],
+ "B1-16-0": [
+  {
+   "title": "The job interview",
+   "titleEs": "La entrevista de trabajo",
+   "scene": "💼 En una entrevista en Bogotá: una candidata habla de sus logros.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tom",
+     "line": "What have you achieved in your current role?",
+     "es": "¿Qué has logrado en tu cargo actual?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "I've led five projects, and I've trained twelve new employees.",
+     "es": "He liderado cinco proyectos y he capacitado a doce empleados nuevos."
+    },
+    {
+     "sp": "Tom",
+     "line": "Impressive. When did you start there?",
+     "es": "Impresionante. ¿Cuándo empezaste ahí?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "I joined in 2020, and I was promoted to team leader a year later.",
+     "es": "Entré en 2020 y me ascendieron a líder de equipo un año después."
+    },
+    {
+     "sp": "Tom",
+     "line": "Have you ever managed a budget?",
+     "es": "¿Alguna vez has manejado un presupuesto?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "Yes. Last year I managed a budget of two hundred million pesos.",
+     "es": "Sí. El año pasado manejé un presupuesto de doscientos millones de pesos."
+    },
+    {
+     "sp": "Tom",
+     "line": "And this year?",
+     "es": "¿Y este año?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "This year we've already reduced costs by fifteen percent.",
+     "es": "Este año ya hemos reducido los costos un quince por ciento."
+    }
+   ]
+  },
+  {
+   "title": "A runner's progress",
+   "titleEs": "El progreso de una corredora",
+   "scene": "🏃 En el Parque Simón Bolívar: dos amigos hablan de su entrenamiento.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Juan Pablo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Juan Pablo",
+     "line": "How's the training going?",
+     "es": "¿Cómo va el entrenamiento?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Great. I've run four half marathons this year.",
+     "es": "Muy bien. He corrido cuatro medias maratones este año."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Wow! When did you run your first one?",
+     "es": "¡Uy! ¿Cuándo corriste la primera?"
+    },
+    {
+     "sp": "Laura",
+     "line": "In Medellín, in 2023. I finished in two hours and ten minutes.",
+     "es": "En Medellín, en 2023. Terminé en dos horas y diez minutos."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Have you improved your time since then?",
+     "es": "¿Has mejorado tu tiempo desde entonces?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Yes, I've cut almost fifteen minutes so far.",
+     "es": "Sí, ya le he bajado casi quince minutos."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "I've never run more than ten kilometres.",
+     "es": "Yo nunca he corrido más de diez kilómetros."
+    },
+    {
+     "sp": "Laura",
+     "line": "Last month I ran with a beginner group. You should join!",
+     "es": "El mes pasado corrí con un grupo de principiantes. ¡Deberías unirte!"
+    }
+   ]
+  }
+ ],
+ "B1-16-1": [
+  {
+   "title": "Five-year plan",
+   "titleEs": "Plan a cinco años",
+   "scene": "🎯 En una sesión de mentoría en Medellín: una mentora pregunta por las metas de un joven profesional.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Catalina",
+     "line": "Where do you see yourself in five years?",
+     "es": "¿Dónde te ves en cinco años?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "By then I'll have finished my master's in data science.",
+     "es": "Para entonces ya habré terminado mi maestría en ciencia de datos."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Good. And professionally?",
+     "es": "Bien. ¿Y a nivel profesional?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "I'd like to have led at least one international project.",
+     "es": "Me gustaría haber liderado al menos un proyecto internacional."
+    },
+    {
+     "sp": "Catalina",
+     "line": "How long will you have been working at the company by then?",
+     "es": "¿Cuánto tiempo llevarás trabajando en la empresa para entonces?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "I'll have been working there for seven years.",
+     "es": "Llevaré siete años trabajando ahí."
+    },
+    {
+     "sp": "Catalina",
+     "line": "And your English?",
+     "es": "¿Y tu inglés?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "I hope to have reached C1. I'd also like to have lived abroad for a while.",
+     "es": "Espero haber llegado a C1. También me gustaría haber vivido un tiempo en el exterior."
+    }
+   ]
+  },
+  {
+   "title": "New Year's resolutions",
+   "titleEs": "Propósitos de Año Nuevo",
+   "scene": "🎆 En una cena de fin de año en Bogotá: dos amigos comparten sus metas.",
+   "cast": [
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sofía",
+     "line": "What do you want to achieve next year?",
+     "es": "¿Qué quieres lograr el próximo año?"
+    },
+    {
+     "sp": "Ben",
+     "line": "By December I'll have saved enough for a trip to Japan.",
+     "es": "Para diciembre ya habré ahorrado suficiente para un viaje a Japón."
+    },
+    {
+     "sp": "Sofía",
+     "line": "That's exciting. I'd like to have run a marathon by then.",
+     "es": "¡Qué emoción! A mí me gustaría haber corrido una maratón para entonces."
+    },
+    {
+     "sp": "Ben",
+     "line": "Will you have finished your book by the end of the year?",
+     "es": "¿Habrás terminado tu libro para final de año?"
+    },
+    {
+     "sp": "Sofía",
+     "line": "I hope so. By June I'll have written half of it.",
+     "es": "Eso espero. Para junio habré escrito la mitad."
+    },
+    {
+     "sp": "Ben",
+     "line": "I'd like to have learned some Japanese before the trip.",
+     "es": "Me gustaría haber aprendido algo de japonés antes del viaje."
+    },
+    {
+     "sp": "Sofía",
+     "line": "By the time you leave, you'll have learned enough to order sushi!",
+     "es": "¡Para cuando te vayas, habrás aprendido lo suficiente para pedir sushi!"
+    }
+   ]
+  }
  ]
 }

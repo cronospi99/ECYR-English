@@ -1,0 +1,586 @@
+{
+ "1": [
+  {
+   "id": "u-c1-1-1",
+   "title": "How Many Friends Can One Person Really Have?",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Friendship",
+   "emoji": "🤝",
+   "words": 545,
+   "paragraphs": [
+    "In the early 1990s, the British anthropologist Robin Dunbar put forward a deceptively simple idea. Having noticed a correlation between the size of primates' brains and the size of their social groups, he calculated that humans should be able to maintain stable relationships with around 150 people. Beyond that point, he argued, our brains simply cannot keep track of who is who and how everyone relates to everyone else.",
+    "The figure, which came to be known as Dunbar's number, has since been applied to everything from army units to office design. Some companies have even made a point of splitting departments once they grow beyond 150 employees. Yet what is often overlooked is that Dunbar never claimed we have 150 friends in any meaningful sense. His model describes a series of layers, each roughly three times larger than the one inside it: around five intimate companions, fifteen good friends, fifty people we might invite to a large party, and 150 meaningful contacts. Beyond lie hundreds of acquaintances whose faces we recognise but whose lives we know little about.",
+    "Critics beg to differ on the precise numbers. A study published in 2021 reanalysed the primate data using more modern statistical methods and concluded that the margin of error was so large that the 'true' figure could be anything from a handful to several hundred. Others point out that cultural factors play a significant role: someone who grew up in a close-knit village in Boyacá may operate very differently from a freelance designer who moved to Bogotá alone at twenty.",
+    "Where researchers do tend to see eye to eye is on the importance of time. The American communication scholar Jeffrey Hall has estimated that it takes around fifty hours of shared time to turn an acquaintance into a casual friend, roughly ninety hours to become a 'real' friend, and more than two hundred hours to reach the inner circle of close friendship. People who hit it off immediately may accelerate the process, but there are few shortcuts. Friendship, in other words, is built less on grand gestures than on repeated, ordinary contact: sharing lunch, walking home together, sending a message after a difficult day.",
+    "This helps explain why friendships so often fade after major life changes. Moving city, changing jobs or having children reduces the number of hours we spend with particular people, and unless someone makes a deliberate effort to keep in touch, the relationship slips quietly into an outer layer. Nobody has necessarily fallen out; the bond has simply been starved of time.",
+    "Social media complicates the picture. It allows us to remain in contact with far more people than our ancestors could, but there is little evidence that it expands our inner circle. Scrolling past an old classmate's holiday photos may keep their name in our memory, but it is hardly the same as striking up a conversation over coffee.",
+    "Perhaps the most practical lesson is this: if you want to deepen a friendship, stop waiting for the perfect occasion and start investing hours. The colleague who irritated you at first may, given enough shared lunches, grow on you. And the friend you have been meaning to call for months is unlikely to remain close unless you actually remember to pick up the phone."
+   ],
+   "glossary": [
+    [
+     "deceptively simple",
+     "aparentemente sencillo"
+    ],
+    [
+     "to keep track of",
+     "llevar la cuenta de, seguirle la pista a"
+    ],
+    [
+     "acquaintance",
+     "conocido"
+    ],
+    [
+     "to beg to differ",
+     "discrepar (con cortesía)"
+    ],
+    [
+     "margin of error",
+     "margen de error"
+    ],
+    [
+     "to see eye to eye",
+     "coincidir, estar de acuerdo"
+    ],
+    [
+     "to hit it off",
+     "congeniar, caerse bien de inmediato"
+    ],
+    [
+     "to fall out",
+     "pelearse, enemistarse"
+    ],
+    [
+     "to be starved of",
+     "estar privado de"
+    ],
+    [
+     "to strike up",
+     "entablar, iniciar"
+    ],
+    [
+     "to grow on someone",
+     "empezar a gustarle a alguien con el tiempo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What first led Dunbar to his famous figure?",
+     "options": [
+      "Surveys of people's friendships online",
+      "A link between primate brain size and social group size",
+      "Studies of army units",
+      "Observations of office workers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: notó \"a correlation between the size of primates' brains and the size of their social groups\"."
+    },
+    {
+     "type": "tf",
+     "q": "Dunbar claimed that people typically have 150 close friends.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"Dunbar never claimed we have 150 friends in any meaningful sense\"; habla de capas."
+    },
+    {
+     "type": "mc",
+     "q": "According to Dunbar's model, how many intimate companions does a person typically have?",
+     "options": [
+      "About five",
+      "About fifteen",
+      "About fifty",
+      "About 150"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"around five intimate companions\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'Critics beg to differ' means critics…",
+     "options": [
+      "completely agree",
+      "politely disagree",
+      "ask for more data",
+      "refuse to comment"
+     ],
+     "answer": 1,
+     "explain_es": "'Beg to differ' es una forma cortés y algo formal de expresar desacuerdo."
+    },
+    {
+     "type": "gap",
+     "q": "According to Jeffrey Hall, it takes more than two ____ hours to reach close friendship.",
+     "answer": "hundred",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"more than two hundred hours to reach the inner circle\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Why we argue with friends",
+      "Time, not conflict, ends many friendships",
+      "The benefits of moving city",
+      "How to make new friends at work"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo explica que muchas amistades se apagan por falta de tiempo, no por peleas."
+    },
+    {
+     "type": "tf",
+     "q": "There is strong evidence that social media enlarges our circle of close friends.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"there is little evidence that it expands our inner circle\"."
+    },
+    {
+     "type": "mc",
+     "q": "In the final sentence, 'remember to pick up the phone' refers to…",
+     "options": [
+      "a memory of a past call",
+      "an action you need to do in the future",
+      "a phone you forgot",
+      "a habit you have stopped"
+     ],
+     "answer": 1,
+     "explain_es": "'Remember + to-infinitivo' se refiere a acordarse de hacer algo pendiente; 'remember + -ing' sería recordar algo ya hecho."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-1-2",
+   "title": "In Defence of Arguing With Your Friends",
+   "level": "C1",
+   "genre": "opinion column",
+   "topic": "Relationships",
+   "emoji": "🗯️",
+   "words": 490,
+   "paragraphs": [
+    "Last December, at a friend's birthday dinner in Chapinero, the conversation drifted, as it so often does in Colombia, towards politics. Within ten minutes, two people who had been close since university were no longer speaking to each other. One left before the cake. The rest of us stared at our plates and wondered, not for the first time, whether certain topics should simply be banned from the table.",
+    "It is a tempting conclusion. Polarisation has made disagreement feel dangerous, and many of us have quietly adopted a policy of avoidance. We mute relatives on WhatsApp, we change the subject when someone mentions the elections, and we gravitate towards people who are on the same wavelength. Surveys in several countries suggest that a significant proportion of adults have stopped talking to at least one friend or family member because of politics.",
+    "I want to argue for the opposite approach. Avoiding disagreement does not make it disappear; it merely drives it underground, where it hardens into resentment. Worse, a circle of friends who agree on everything becomes an echo chamber in which nobody's ideas are tested. If the only people we talk to see eye to eye with us on every issue, we lose the opportunity to discover where we might be wrong.",
+    "The problem, I suspect, is not disagreement but the way we go about it. Most arguments between friends fail for predictable reasons. We confuse a person's opinion with their character, so that someone who votes differently comes across as stupid or immoral rather than simply mistaken. We argue to win rather than to understand. And we forget that the relationship existed long before the debate and, ideally, should outlive it.",
+    "There are better ways. One is to begin by asking questions rather than making statements: 'What makes you think that?' invites reflection in a way that 'That's ridiculous' never will. Another is to acknowledge the parts of the other person's view that you find reasonable before explaining where you beg to differ. A third, perhaps the most difficult, is to know when to stop. Agreeing to disagree is not a defeat; it is an acknowledgement that the friendship matters more than the point.",
+    "None of this is easy, and I don't pretend to have mastered it. I have fallen out with people over far less than a presidential election. But I have also discovered that some of my closest friendships are with people whose views I find exasperating. Their company has grown on me precisely because they refuse to let me get away with lazy thinking.",
+    "As for the two friends at the birthday dinner, they did eventually bury the hatchet. It took three months, a long walk and, I am told, a surprising amount of aguardiente. Neither has changed their mind about politics. But both now admit that they regret walking away that night, and that they would rather argue with each other than lose each other."
+   ],
+   "glossary": [
+    [
+     "to drift towards",
+     "derivar hacia"
+    ],
+    [
+     "polarisation",
+     "polarización"
+    ],
+    [
+     "to gravitate towards",
+     "sentirse atraído hacia"
+    ],
+    [
+     "on the same wavelength",
+     "en la misma onda"
+    ],
+    [
+     "resentment",
+     "resentimiento"
+    ],
+    [
+     "echo chamber",
+     "cámara de eco"
+    ],
+    [
+     "to go about something",
+     "abordar algo"
+    ],
+    [
+     "to outlive",
+     "sobrevivir a, durar más que"
+    ],
+    [
+     "exasperating",
+     "exasperante"
+    ],
+    [
+     "to get away with",
+     "salirse con la suya"
+    ],
+    [
+     "to bury the hatchet",
+     "hacer las paces, enterrar el hacha de guerra"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What happened at the birthday dinner?",
+     "options": [
+      "The guests agreed to ban politics",
+      "Two old friends stopped speaking after a political discussion",
+      "The writer left before the cake",
+      "Someone proposed a toast"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: dos amigos de la universidad dejaron de hablarse por una discusión política."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes certain topics should be banned from social gatherings.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"I want to argue for the opposite approach\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to the writer, what happens when we avoid disagreement?",
+     "options": [
+      "It disappears naturally",
+      "It turns into hidden resentment",
+      "It improves our friendships",
+      "It makes us more tolerant"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"it merely drives it underground, where it hardens into resentment\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Why friends' arguments go wrong",
+      "The history of political debate",
+      "How to win any argument",
+      "When to end a friendship"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo explica las razones predecibles por las que fallan las discusiones."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, someone who 'comes across as stupid' is someone who…",
+     "options": [
+      "is actually stupid",
+      "gives the impression of being stupid",
+      "accidentally meets a stupid person",
+      "becomes stupid over time"
+     ],
+     "answer": 1,
+     "explain_es": "'Come across as' = dar la impresión de ser."
+    },
+    {
+     "type": "gap",
+     "q": "The writer suggests asking questions such as 'What makes you ____ that?'",
+     "answer": "think",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"'What makes you think that?' invites reflection\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has never fallen out with a friend.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"I have fallen out with people over far less than a presidential election\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'they regret walking away that night' mean?",
+     "options": [
+      "They are sorry that they left that night",
+      "They are sorry to announce they will leave",
+      "They plan to leave next time",
+      "They don't remember leaving"
+     ],
+     "answer": 0,
+     "explain_es": "'Regret + -ing' expresa arrepentimiento por algo que ya se hizo; 'regret to + infinitivo' se usa para anunciar algo negativo."
+    }
+   ]
+  }
+ ],
+ "2": [
+  {
+   "id": "u-c1-2-1",
+   "title": "Second-Hand, First Choice: Bogotá's Thrift Revolution",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Fashion",
+   "emoji": "🧥",
+   "words": 516,
+   "paragraphs": [
+    "On a Saturday morning in a converted garage in Teusaquillo, a queue has formed long before the doors open. Inside, rails of denim jackets, silk blouses and vintage football shirts are arranged by colour rather than size. The customers are mostly in their twenties, and many of them have travelled across the city for this monthly sale. \"Ten years ago, my friends would have been embarrassed to admit they bought used clothes,\" says Juliana Castro, who runs the shop with her sister. \"Now it's a badge of honour.\"",
+    "What has changed is not so much the clothes as the story attached to them. For previous generations, second-hand clothing was associated with necessity. Many Colombians grew up wearing hand-me-downs from older siblings or cousins, and the bundles of imported used clothing known as pacas, sold in markets across the country, were seen as the last resort of families who couldn't afford anything else. Today, the same garments are marketed as sustainable, unique and, crucially, stylish.",
+    "Part of the shift is environmental. The fashion industry is widely regarded as one of the most polluting on the planet, responsible for a substantial share of global carbon emissions and vast quantities of wasted water. Fast-fashion brands release new collections every few weeks, encouraging consumers to buy cheaply and discard quickly. Against that background, choosing a jacket that has already had one or two owners can feel like a small act of resistance.",
+    "But it would be naïve to attribute the trend entirely to ethics. What many young buyers are really looking for is individuality. In a world where the same high-street styles appear in every shopping centre from Bogotá to Berlin, a 1990s windbreaker or a hand-embroidered blouse allows its wearer to stand out. Social media has accelerated the process: a single post by a local trendsetter wearing a vintage find can send dozens of followers hunting for something similar.",
+    "Not everyone is convinced. Some long-established paca sellers in the San Victorino district complain that boutique thrift shops buy their best items in bulk and resell them at five times the price, effectively pricing out the low-income customers who once depended on them. \"It's the same shirt,\" one vendor points out. \"The only difference is the lighting and the hashtag.\" Others question whether second-hand shopping truly reduces consumption, or whether it simply provides a guilt-free excuse to buy even more.",
+    "Juliana acknowledges the criticism. Her shop now runs repair workshops and swap days, and it refuses to stock anything that was produced by fast-fashion chains. \"What we're trying to encourage is a different relationship with clothes,\" she says. \"Buying less, choosing well, keeping things for years.\"",
+    "Whether the movement can change the habits of a whole generation remains to be seen. Yet the scene in Teusaquillo suggests something has shifted. A young man tries on a tailored grey coat that once belonged to someone's grandfather; it fits as if it had been made for him. He hesitates, checks the price, and smiles. What he has found, he says, is not just a coat but a story he can pull off."
+   ],
+   "glossary": [
+    [
+     "rail",
+     "perchero, riel de ropa"
+    ],
+    [
+     "badge of honour",
+     "motivo de orgullo"
+    ],
+    [
+     "hand-me-downs",
+     "ropa heredada"
+    ],
+    [
+     "last resort",
+     "último recurso"
+    ],
+    [
+     "garment",
+     "prenda"
+    ],
+    [
+     "to discard",
+     "desechar"
+    ],
+    [
+     "to attribute to",
+     "atribuir a"
+    ],
+    [
+     "trendsetter",
+     "persona que marca tendencia"
+    ],
+    [
+     "in bulk",
+     "al por mayor"
+    ],
+    [
+     "to price out",
+     "dejar fuera por precio"
+    ],
+    [
+     "to pull off",
+     "lucir con éxito, salir airoso"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How are the clothes organised in Juliana Castro's shop?",
+     "options": [
+      "By size",
+      "By colour",
+      "By price",
+      "By decade"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"arranged by colour rather than size\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence from the text is a cleft sentence with 'what'?",
+     "options": [
+      "\"Now it's a badge of honour.\"",
+      "\"What has changed is not so much the clothes as the story attached to them.\"",
+      "\"Not everyone is convinced.\"",
+      "\"He hesitates, checks the price, and smiles.\""
+     ],
+     "answer": 1,
+     "explain_es": "La estructura 'What + cláusula + be...' enfatiza la información: es una cleft sentence."
+    },
+    {
+     "type": "tf",
+     "q": "In the past, pacas were associated with families who had little money.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: se veían como \"the last resort of families who couldn't afford anything else\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Ethics is the only motive",
+      "Standing out in a world of identical clothes",
+      "The decline of social media",
+      "Why vintage clothes are expensive"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo dice que lo que buscan muchos jóvenes es individualidad."
+    },
+    {
+     "type": "mc",
+     "q": "What is the paca sellers' main complaint?",
+     "options": [
+      "Thrift shops sell stolen goods",
+      "Boutique shops buy their best items and resell them much more expensively",
+      "Customers no longer visit San Victorino",
+      "Imported clothes are of poor quality"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: compran al por mayor y revenden \"at five times the price\"."
+    },
+    {
+     "type": "gap",
+     "q": "One vendor says the only difference is 'the lighting and the ____'.",
+     "answer": "hashtag",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"The only difference is the lighting and the hashtag\"."
+    },
+    {
+     "type": "tf",
+     "q": "Juliana's shop sells items from fast-fashion chains if they are in good condition.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"it refuses to stock anything that was produced by fast-fashion chains\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In the final sentence, a story he can 'pull off' means one he can…",
+     "options": [
+      "remove quickly",
+      "wear successfully and convincingly",
+      "sell for profit",
+      "repair himself"
+     ],
+     "answer": 1,
+     "explain_es": "'Pull off a look' = lograr que un estilo le quede bien a uno."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-2-2",
+   "title": "Do Clothes Make the Professional?",
+   "level": "C1",
+   "genre": "essay",
+   "topic": "First impressions",
+   "emoji": "👔",
+   "words": 547,
+   "paragraphs": [
+    "We are told from childhood not to judge a book by its cover, and most of us would claim to follow that advice. Yet research on first impressions suggests that we form judgements about a stranger's competence, trustworthiness and status within a fraction of a second, and that clothing plays a considerable part in those judgements. The question is not whether appearance influences how we are perceived, but how far it should, and whether it also influences how we behave.",
+    "Consider the job interview. Career advisers have long recommended that candidates dress slightly more formally than the people who already work in the organisation. The logic is straightforward: interviewers have limited information and a short time in which to evaluate it, so visual signals of seriousness and effort carry weight. A candidate who turns up dressed to the nines for a position at a relaxed tech start-up, however, may come across as out of touch. What matters, then, is less the formality of the outfit than its appropriateness. The goal is to look the part.",
+    "More intriguing is the possibility that clothes affect the wearer as well as the observer. In a widely cited 2012 study, researchers at Northwestern University asked participants to wear a white coat while completing tests of attention. Those who were told it was a doctor's coat made fewer errors than those who were told it was a painter's coat, even though the garment was identical. The researchers coined the term 'enclothed cognition' to describe the effect: the symbolic meaning of clothing, they argued, can alter the way we think.",
+    "The finding captured the public imagination, and it is easy to see why. It seemed to confirm what many people already sensed: that putting on a suit can make you feel more decisive, and that working in pyjamas may make you feel less so. However, later attempts to replicate the study have produced mixed results, and some psychologists now caution against overstating the effect. It may be that clothing changes how we feel about ourselves without necessarily improving our performance.",
+    "There is also a less comfortable side to this debate. Expectations about 'professional' appearance have historically reflected the norms of particular groups. Workers have been criticised for natural hairstyles, indigenous dress or regional styles that do not fit a narrow corporate ideal. In Colombia, as elsewhere, people from rural or working-class backgrounds may be judged by standards that have little to do with their ability. If we insist that competence must look a certain way, we risk overlooking talent that arrives in unfamiliar packaging.",
+    "The rise of remote work and casual offices has, to some extent, weakened traditional dress codes. Many companies now encourage employees to dress down, and the understated hoodie has become, in some circles, a status symbol in its own right. Yet this does not mean that appearance no longer matters; it simply means that the rules are less explicit, and therefore harder for outsiders to learn.",
+    "Perhaps the most sensible position is a balanced one. Clothes do send messages, and it would be naïve to ignore them. But what ultimately determines whether someone is a good professional is their work, and it is our responsibility as observers to look beyond the cover long enough to read a few pages."
+   ],
+   "glossary": [
+    [
+     "to judge a book by its cover",
+     "juzgar por las apariencias"
+    ],
+    [
+     "trustworthiness",
+     "confiabilidad"
+    ],
+    [
+     "to carry weight",
+     "tener peso, importar"
+    ],
+    [
+     "dressed to the nines",
+     "vestido de punta en blanco"
+    ],
+    [
+     "out of touch",
+     "desconectado de la realidad"
+    ],
+    [
+     "to look the part",
+     "dar la imagen adecuada"
+    ],
+    [
+     "to coin a term",
+     "acuñar un término"
+    ],
+    [
+     "to replicate",
+     "replicar, reproducir"
+    ],
+    [
+     "to overstate",
+     "exagerar"
+    ],
+    [
+     "to dress down",
+     "vestir de manera informal"
+    ],
+    [
+     "understated",
+     "discreto, sobrio"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to research mentioned in paragraph 1, how quickly do we form first impressions?",
+     "options": [
+      "Within a few minutes",
+      "Within a fraction of a second",
+      "After a full conversation",
+      "After several meetings"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"within a fraction of a second\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do career advisers usually recommend for job interviews?",
+     "options": [
+      "Dressing as casually as possible",
+      "Dressing slightly more formally than current employees",
+      "Always wearing a suit",
+      "Wearing the company's colours"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"dress slightly more formally than the people who already work in the organisation\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, someone who is 'dressed to the nines' is…",
+     "options": [
+      "dressed very elegantly",
+      "dressed in nine layers",
+      "wearing old clothes",
+      "wearing a uniform"
+     ],
+     "answer": 0,
+     "explain_es": "'Dressed to the nines' = vestido de manera muy elegante."
+    },
+    {
+     "type": "gap",
+     "q": "The researchers coined the term 'enclothed ____' to describe the effect.",
+     "answer": "cognition",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"coined the term 'enclothed cognition'\"."
+    },
+    {
+     "type": "tf",
+     "q": "Later studies have fully confirmed the results of the 2012 study.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"later attempts to replicate the study have produced mixed results\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Dress codes and discrimination",
+      "The best clothes for interviews",
+      "Fashion in rural Colombia",
+      "Why hairstyles change"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo critica que los estándares 'profesionales' reflejan normas de ciertos grupos y pueden discriminar."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer say about the hoodie in paragraph 6?",
+     "options": [
+      "It is banned in most offices",
+      "It has become a status symbol in some circles",
+      "It improves concentration",
+      "It is only worn by students"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"has become, in some circles, a status symbol in its own right\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has worked as a career adviser.",
+     "answer": "NG",
+     "explain_es": "El ensayo no dice nada sobre la profesión del autor."
+    }
+   ]
+  }
+ ]
+}

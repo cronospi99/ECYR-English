@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion } from 'motion/react';
-import { ChevronLeft, ChevronRight, Download, ImageIcon, Maximize2, Minus, Plus, X } from 'lucide-react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { ChevronLeft, ChevronRight, Download, ImageIcon, Images, Maximize2, Minus, Plus, X } from 'lucide-react';
 import { LevelChip } from '@/components/ui/Misc';
 import { visualUrl, type Visual } from '@/content/visuals';
 import { cn } from '@/lib/cn';
+import { ink, tint } from '@/lib/color';
 
 const KIND_LABEL: Record<Visual['kind'], string> = { grammar: 'Gramática', vocabulary: 'Vocabulario', functions: 'Funciones' };
 
@@ -91,6 +92,142 @@ export function VisualSet({
       )}
       <Lightbox items={items} index={open} onClose={() => setOpen(null)} onIndex={setOpen} />
     </section>
+  );
+}
+
+/** Thumbs are 560 px on their longest side; offer them to small screens. */
+function srcSet(v: Visual) {
+  const tw = v.w >= v.h ? 560 : Math.round((560 * v.w) / v.h);
+  return v.w > tw + 40 ? `${visualUrl(v, true)} ${tw}w, ${visualUrl(v)} ${v.w}w` : undefined;
+}
+
+/**
+ * An infographic shown large inside a lesson, with its caption in Spanish.
+ * Several items page one at a time (arrows, dots or swipe); tapping opens the
+ * zoomable viewer, which also offers the whole infographics that cut panels come from.
+ */
+export function VisualFigure({
+  items,
+  title = 'En imágenes',
+  color = 'var(--pink)',
+  className,
+}: {
+  items: (Visual & { parent?: Visual })[];
+  title?: string;
+  color?: string;
+  className?: string;
+}) {
+  const [i, setI] = useState(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const swipe = useRef<{ x: number; moved: boolean } | null>(null);
+  const reduce = useReducedMotion();
+  const viewer = useMemo(() => {
+    const out: Visual[] = [...items];
+    for (const v of items) if (v.parent && !out.some((x) => x.id === v.parent!.id)) out.push(v.parent);
+    return out;
+  }, [items]);
+  if (!items.length) return null;
+  const k = Math.min(i, items.length - 1);
+  const v = items[k]!;
+  const n = items.length;
+  const go = (d: number) => setI((k + d + n) % n);
+
+  return (
+    <figure className={cn('bg-card overflow-hidden rounded-[20px] shadow-[inset_0_0_0_1px_var(--separator)]', className)} aria-roledescription={n > 1 ? 'carrusel' : undefined}>
+      <div className="flex items-center gap-2 px-3.5 pt-3 pb-2.5">
+        <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full" style={{ background: tint(color, 16), color: ink(color) }} aria-hidden>
+          <Images size={15} />
+        </span>
+        <span className="min-w-0 flex-1 truncate text-[13px] font-bold tracking-[0.06em] uppercase" style={{ color: ink(color) }}>
+          {title}
+        </span>
+        {n > 1 && (
+          <span className="flex shrink-0 items-center gap-1">
+            <span className="text-label-2 mr-1 text-[13px] tabular-nums">
+              {k + 1} / {n}
+            </span>
+            <FigBtn label="Imagen anterior" onClick={() => go(-1)}>
+              <ChevronLeft size={17} />
+            </FigBtn>
+            <FigBtn label="Imagen siguiente" onClick={() => go(1)}>
+              <ChevronRight size={17} />
+            </FigBtn>
+          </span>
+        )}
+      </div>
+      <button
+        type="button"
+        onClick={() => {
+          if (swipe.current?.moved) return;
+          setOpen(viewer.findIndex((x) => x.id === v.id));
+        }}
+        onPointerDown={(e) => (swipe.current = { x: e.clientX, moved: false })}
+        onPointerUp={(e) => {
+          const s = swipe.current;
+          if (s && n > 1 && Math.abs(e.clientX - s.x) > 40) {
+            s.moved = true;
+            go(e.clientX < s.x ? 1 : -1);
+          }
+        }}
+        className="group bg-fill-2 relative block w-full touch-pan-y overflow-hidden"
+        style={{ aspectRatio: `${v.w} / ${v.h}`, maxHeight: 'min(68vh, 520px)', minHeight: 180 }}
+        aria-label={`Ampliar imagen: ${v.title}`}
+      >
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.img
+            key={v.id}
+            src={visualUrl(v)}
+            srcSet={srcSet(v)}
+            sizes="(max-width: 640px) 92vw, 720px"
+            alt={`${v.title}. ${v.titleEs}`}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 h-full w-full object-contain p-1.5 transition-transform duration-500 group-hover:scale-[1.015]"
+          />
+        </AnimatePresence>
+        <span className="material absolute right-2.5 bottom-2.5 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-semibold">
+          <Maximize2 size={13} aria-hidden /> Toca para ampliar
+        </span>
+      </button>
+      <figcaption className="flex items-start gap-3 px-3.5 pt-2.5 pb-3">
+        <span className="min-w-0 flex-1">
+          <span className="block text-[15px] leading-snug font-semibold">{v.titleEs}</span>
+          <span className="text-label-2 block text-[13px] leading-snug">
+            {v.title}
+            {v.parent && v.parent.title !== v.title && ` · de “${v.parent.title}”`}
+          </span>
+        </span>
+        {n > 1 && (
+          <span className="mt-1.5 flex shrink-0 gap-1.5" role="group" aria-label="Elegir imagen">
+            {items.map((x, j) => (
+              <button
+                key={x.id}
+                type="button"
+                onClick={() => setI(j)}
+                aria-label={`Imagen ${j + 1}: ${x.title}`}
+                aria-current={j === k}
+                className="h-2 rounded-full transition-[width,background-color] duration-200"
+                style={{ width: j === k ? 18 : 8, background: j === k ? color : 'var(--fill)' }}
+              />
+            ))}
+          </span>
+        )}
+      </figcaption>
+      <Lightbox items={viewer} index={open} onClose={() => setOpen(null)} onIndex={setOpen} />
+    </figure>
+  );
+}
+
+function FigBtn({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button type="button" onClick={onClick} aria-label={label} className="bg-fill-2 hover:bg-fill inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors">
+      {children}
+    </button>
   );
 }
 

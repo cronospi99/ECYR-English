@@ -1,0 +1,2711 @@
+{
+ "A1-1-0": [
+  {
+   "kind": "pictures",
+   "title": "Pronombre y su posesivo",
+   "items": [
+    {
+     "emoji": "🙋",
+     "en": "I → my",
+     "es": "yo → mi"
+    },
+    {
+     "emoji": "👉",
+     "en": "you → your",
+     "es": "tú → tu"
+    },
+    {
+     "emoji": "👨",
+     "en": "he → his",
+     "es": "él → su (de él)"
+    },
+    {
+     "emoji": "👩",
+     "en": "she → her",
+     "es": "ella → su (de ella)"
+    },
+    {
+     "emoji": "🐶",
+     "en": "it → its",
+     "es": "animal o cosa → su"
+    },
+    {
+     "emoji": "👨‍👩‍👧",
+     "en": "we → our",
+     "es": "nosotros → nuestro"
+    },
+    {
+     "emoji": "👥",
+     "en": "they → their",
+     "es": "ellos → su (de ellos)"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿His, her, its o their?",
+   "question": "¿Quién es el dueño de la cosa?",
+   "branches": [
+    {
+     "if": "Un hombre",
+     "use": "his",
+     "example": "Mario and his mother."
+    },
+    {
+     "if": "Una mujer",
+     "use": "her",
+     "example": "Ana and her brother."
+    },
+    {
+     "if": "Un animal o una cosa",
+     "use": "its",
+     "example": "The dog and its bed."
+    },
+    {
+     "if": "Varias personas",
+     "use": "their",
+     "example": "Luis and Sara and their house."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "No los confundas",
+   "items": [
+    {
+     "a": "His name is Luis.",
+     "b": "Her name is Luisa.",
+     "note": "his = de él; her = de ella. Mira al dueño, no a la cosa."
+    },
+    {
+     "a": "They are my friends.",
+     "b": "Their friends are here.",
+     "note": "they are = ellos son; their = de ellos."
+    },
+    {
+     "a": "It’s a big dog.",
+     "b": "Its name is Max.",
+     "note": "it’s = it is; its = de eso (sin apóstrofo)."
+    },
+    {
+     "a": "You’re my teacher.",
+     "b": "Your teacher is here.",
+     "note": "you’re = you are; your = tu."
+    }
+   ]
+  }
+ ],
+ "A1-1-1": [
+  {
+   "kind": "transform",
+   "title": "De afirmación a pregunta",
+   "steps": [
+    {
+     "label": "Afirmación",
+     "sentence": "You are from Cali."
+    },
+    {
+     "label": "Pregunta sí/no",
+     "sentence": "**Are you** from Cali?",
+     "change": "Are pasa delante de you. No usamos do."
+    },
+    {
+     "label": "Pregunta Wh",
+     "sentence": "**Where are** you from?",
+     "change": "La palabra Wh va al principio y luego are + sujeto."
+    },
+    {
+     "label": "Respuesta corta",
+     "sentence": "Yes, **I am**.",
+     "change": "Con yes no se contrae: no se dice Yes, I’m."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué tipo de pregunta hago?",
+   "question": "¿Qué respuesta esperas?",
+   "branches": [
+    {
+     "if": "Solo un sí o un no",
+     "use": "Am / Is / Are + sujeto…?",
+     "example": "Are you tired? — Yes, I am."
+    },
+    {
+     "if": "Información: lugar, persona, edad, hora",
+     "use": "Wh + am / is / are + sujeto…?",
+     "example": "Where is your school? — It’s in Suba."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Palabras para preguntar",
+   "items": [
+    {
+     "emoji": "👤",
+     "en": "Who…?",
+     "es": "¿Quién…?"
+    },
+    {
+     "emoji": "❓",
+     "en": "What…?",
+     "es": "¿Qué… / Cuál…?"
+    },
+    {
+     "emoji": "📍",
+     "en": "Where…?",
+     "es": "¿Dónde…?"
+    },
+    {
+     "emoji": "🎂",
+     "en": "How old…?",
+     "es": "¿Cuántos años…?"
+    },
+    {
+     "emoji": "🕒",
+     "en": "What time…?",
+     "es": "¿A qué hora…?"
+    },
+    {
+     "emoji": "😊",
+     "en": "How…?",
+     "es": "¿Cómo…?"
+    }
+   ]
+  }
+ ],
+ "A1-2-0": [
+  {
+   "kind": "transform",
+   "title": "De afirmación a pregunta con does",
+   "steps": [
+    {
+     "label": "Afirmación",
+     "sentence": "She **works** in Bogotá.",
+     "change": "Con she, el verbo lleva -s."
+    },
+    {
+     "label": "Pregunta sí/no",
+     "sentence": "**Does** she **work** in Bogotá?",
+     "change": "Aparece does y el verbo pierde la -s."
+    },
+    {
+     "label": "Pregunta Wh",
+     "sentence": "**Where does** she work?",
+     "change": "La palabra Wh va primero."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "She **doesn’t work** in Bogotá.",
+     "change": "doesn’t + verbo base, sin -s."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Do o does?",
+   "question": "¿Cuál es el sujeto de la pregunta?",
+   "branches": [
+    {
+     "if": "I, you, we, they (o varias personas)",
+     "use": "do",
+     "example": "Where do your parents live?"
+    },
+    {
+     "if": "He, she, it (o un nombre: Ana, my brother)",
+     "use": "does",
+     "example": "Where does Ana live?"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Una sola -s",
+   "items": [
+    {
+     "a": "Where do you work?",
+     "b": "Where does he work?",
+     "note": "do con you; does con he. El verbo work no cambia."
+    },
+    {
+     "a": "He works at home.",
+     "b": "Does he work at home?",
+     "note": "La -s pasa del verbo a does."
+    },
+    {
+     "a": "She watches TV.",
+     "b": "She doesn’t watch TV.",
+     "note": "watches lleva -es; con doesn’t vuelve a watch."
+    },
+    {
+     "a": "I have two brothers.",
+     "b": "She has two brothers.",
+     "note": "have cambia a has con he, she, it."
+    }
+   ]
+  }
+ ],
+ "A1-2-1": [
+  {
+   "kind": "pictures",
+   "title": "Tiempo en el reloj y el calendario",
+   "items": [
+    {
+     "emoji": "⏰",
+     "en": "at seven",
+     "es": "a las siete"
+    },
+    {
+     "emoji": "🌙",
+     "en": "at night",
+     "es": "por la noche"
+    },
+    {
+     "emoji": "📅",
+     "en": "on Monday",
+     "es": "el lunes"
+    },
+    {
+     "emoji": "🎂",
+     "en": "on my birthday",
+     "es": "el día de mi cumpleaños"
+    },
+    {
+     "emoji": "🌅",
+     "en": "in the morning",
+     "es": "por la mañana"
+    },
+    {
+     "emoji": "🗓️",
+     "en": "in July",
+     "es": "en julio"
+    },
+    {
+     "emoji": "🍽️",
+     "en": "after lunch",
+     "es": "después del almuerzo"
+    },
+    {
+     "emoji": "🏁",
+     "en": "until six",
+     "es": "hasta las seis"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿At, on o in?",
+   "question": "¿Qué tipo de tiempo es?",
+   "branches": [
+    {
+     "if": "Una hora del reloj (y night)",
+     "use": "at",
+     "example": "I start at 6:30. I sleep at night."
+    },
+    {
+     "if": "Un día o una fecha",
+     "use": "on",
+     "example": "The meeting is on Friday, on 3 May."
+    },
+    {
+     "if": "Un mes, un año o una parte del día",
+     "use": "in",
+     "example": "I travel in April. I study in the evening."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Palabras parecidas, tiempo distinto",
+   "items": [
+    {
+     "a": "I arrive at eight.",
+     "b": "I arrive around eight.",
+     "note": "at = exacto; around = más o menos."
+    },
+    {
+     "a": "I work until six.",
+     "b": "I work after six.",
+     "note": "until = hasta (ahí termino); after = después de (empiezo luego)."
+    },
+    {
+     "a": "I eat before class.",
+     "b": "I eat after class.",
+     "note": "before = antes; after = después."
+    },
+    {
+     "a": "in the afternoon",
+     "b": "at night",
+     "note": "Ojo: in the morning / in the afternoon, pero at night."
+    }
+   ]
+  }
+ ],
+ "A1-3-0": [
+  {
+   "kind": "choose",
+   "title": "¿This, that, these o those?",
+   "question": "¿Está cerca o lejos? ¿Es una o son varias?",
+   "branches": [
+    {
+     "if": "Una cosa cerca",
+     "use": "this",
+     "example": "This pen is mine."
+    },
+    {
+     "if": "Una cosa lejos",
+     "use": "that",
+     "example": "That house is big."
+    },
+    {
+     "if": "Varias cosas cerca",
+     "use": "these",
+     "example": "These shoes are new."
+    },
+    {
+     "if": "Varias cosas lejos",
+     "use": "those",
+     "example": "Those mountains are beautiful."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Señalar cosas",
+   "items": [
+    {
+     "emoji": "👕",
+     "en": "this shirt",
+     "es": "esta camisa (aquí)"
+    },
+    {
+     "emoji": "👟",
+     "en": "these shoes",
+     "es": "estos zapatos (aquí)"
+    },
+    {
+     "emoji": "🏠",
+     "en": "that house",
+     "es": "esa casa (allá)"
+    },
+    {
+     "emoji": "⛰️",
+     "en": "those mountains",
+     "es": "esas montañas (allá)"
+    },
+    {
+     "emoji": "📱",
+     "en": "I like this one.",
+     "es": "Me gusta este."
+    },
+    {
+     "emoji": "📞",
+     "en": "Hello, this is Ana.",
+     "es": "Hola, habla Ana."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cerca, lejos, uno, varios",
+   "items": [
+    {
+     "a": "This is my bag.",
+     "b": "That is my bag.",
+     "note": "this = cerca de mí; that = lejos de mí."
+    },
+    {
+     "a": "This shoe is nice.",
+     "b": "These shoes are nice.",
+     "note": "En plural: these + are."
+    },
+    {
+     "a": "That car is old.",
+     "b": "Those cars are old.",
+     "note": "Plural y lejos: those + are."
+    },
+    {
+     "a": "I like this one.",
+     "b": "I like those ones.",
+     "note": "one / ones evita repetir el sustantivo."
+    }
+   ]
+  }
+ ],
+ "A1-3-1": [
+  {
+   "kind": "choose",
+   "title": "¿-er o more?",
+   "question": "¿Cómo es el adjetivo?",
+   "branches": [
+    {
+     "if": "Corto, de una sílaba",
+     "use": "adjetivo + -er + than",
+     "example": "A bus is cheaper than a taxi."
+    },
+    {
+     "if": "Termina en -y",
+     "use": "-y → -ier + than",
+     "example": "English is easier than Chinese."
+    },
+    {
+     "if": "Largo, de dos sílabas o más",
+     "use": "more + adjetivo + than",
+     "example": "A taxi is more expensive than a bus."
+    },
+    {
+     "if": "Irregular",
+     "use": "good → better, bad → worse",
+     "example": "Today is better than yesterday."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Del adjetivo al comparativo",
+   "items": [
+    {
+     "a": "Medellín is hot.",
+     "b": "Medellín is hotter than Bogotá.",
+     "note": "hot duplica la t: hotter."
+    },
+    {
+     "a": "This bag is cheap.",
+     "b": "This bag is cheaper than that one.",
+     "note": "Corto: + -er + than."
+    },
+    {
+     "a": "The hotel is comfortable.",
+     "b": "The hotel is more comfortable than the hostel.",
+     "note": "Largo: more + adjetivo."
+    },
+    {
+     "a": "My English is good.",
+     "b": "My English is better than my brother’s.",
+     "note": "good → better. Nunca more good ni more better."
+    }
+   ]
+  }
+ ],
+ "A1-4-0": [
+  {
+   "kind": "transform",
+   "title": "Del nombre al pronombre",
+   "steps": [
+    {
+     "label": "Con nombres",
+     "sentence": "**Ana** helps **Luis**."
+    },
+    {
+     "label": "Con pronombres",
+     "sentence": "**She** helps **him**.",
+     "change": "Ana hace la acción → she. Luis la recibe → him."
+    },
+    {
+     "label": "Al revés",
+     "sentence": "**He** helps **her**.",
+     "change": "Ahora Ana recibe la acción: she → her."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "Who does **she** help? — **Him**.",
+     "change": "Después del verbo va el pronombre objeto."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿I o me? ¿he o him?",
+   "question": "¿Dónde está el pronombre en la oración?",
+   "branches": [
+    {
+     "if": "Antes del verbo: hace la acción",
+     "use": "I, you, he, she, it, we, they",
+     "example": "He calls me every day."
+    },
+    {
+     "if": "Después del verbo: recibe la acción",
+     "use": "me, you, him, her, it, us, them",
+     "example": "I call him every day."
+    },
+    {
+     "if": "Después de una preposición (with, to, for)",
+     "use": "me, you, him, her, it, us, them",
+     "example": "Come with us!"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Quién hace y quién recibe?",
+   "items": [
+    {
+     "a": "She calls him.",
+     "b": "He calls her.",
+     "note": "Cambia quién llama y quién recibe la llamada."
+    },
+    {
+     "a": "We know them.",
+     "b": "They know us.",
+     "note": "we / they hacen la acción; us / them la reciben."
+    },
+    {
+     "a": "I’m talking to her.",
+     "b": "She’s talking to me.",
+     "note": "Después de to va el pronombre objeto: to me, to her."
+    },
+    {
+     "a": "Give me the book.",
+     "b": "Give him the book.",
+     "note": "La persona va primero y después la cosa."
+    }
+   ]
+  }
+ ],
+ "A1-4-1": [
+  {
+   "kind": "transform",
+   "title": "De pedir a ofrecer con amabilidad",
+   "steps": [
+    {
+     "label": "Directo",
+     "sentence": "I **want** a coffee.",
+     "change": "Suena brusco para pedir."
+    },
+    {
+     "label": "Educado",
+     "sentence": "**I’d like** a coffee, please.",
+     "change": "I’d like (= I would like) es más amable."
+    },
+    {
+     "label": "Ofrecer",
+     "sentence": "**Would you like** a coffee?",
+     "change": "Would pasa delante de you para preguntar."
+    },
+    {
+     "label": "Responder",
+     "sentence": "Yes, **please**. / No, **thank you**.",
+     "change": "Las dos respuestas educadas."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Cómo ofrezco?",
+   "question": "¿Qué le quieres ofrecer o preguntar?",
+   "branches": [
+    {
+     "if": "Una cosa (comida, bebida, ayuda)",
+     "use": "Would you like + sustantivo?",
+     "example": "Would you like some water?"
+    },
+    {
+     "if": "Una acción o una invitación",
+     "use": "Would you like + to + verbo?",
+     "example": "Would you like to come with us?"
+    },
+    {
+     "if": "Su gusto en general, no una oferta",
+     "use": "Do you like…?",
+     "example": "Do you like coffee? — Yes, I love it."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Ofrecer o preguntar por gustos",
+   "items": [
+    {
+     "a": "Would you like a coffee?",
+     "b": "Do you like coffee?",
+     "note": "Would you like = te ofrezco ahora; Do you like = ¿te gusta en general?"
+    },
+    {
+     "a": "I’d like a tea, please.",
+     "b": "I like tea.",
+     "note": "I’d like = quisiera (ahora); I like = me gusta (siempre)."
+    },
+    {
+     "a": "Would you like to sit here?",
+     "b": "Would you like some water?",
+     "note": "Con acción: to + verbo. Con cosa: el sustantivo directo."
+    },
+    {
+     "a": "I’d like to go.",
+     "b": "I’d love to go.",
+     "note": "I’d love to es más entusiasta: me encantaría."
+    }
+   ]
+  }
+ ],
+ "A1-5-0": [
+  {
+   "kind": "transform",
+   "title": "Del presente continuo a la pregunta",
+   "steps": [
+    {
+     "label": "Afirmación",
+     "sentence": "She **is studying**.",
+     "change": "be + verbo con -ing."
+    },
+    {
+     "label": "Pregunta sí/no",
+     "sentence": "**Is** she **studying**?",
+     "change": "is pasa delante de she."
+    },
+    {
+     "label": "Pregunta Wh",
+     "sentence": "**What is** she studying?",
+     "change": "La palabra Wh va primero."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "She **isn’t studying**. She**’s sleeping**.",
+     "change": "isn’t + verbo con -ing."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "¿Qué está pasando ahora?",
+   "items": [
+    {
+     "emoji": "🍳",
+     "en": "cooking",
+     "es": "cocinando"
+    },
+    {
+     "emoji": "😴",
+     "en": "sleeping",
+     "es": "durmiendo"
+    },
+    {
+     "emoji": "📺",
+     "en": "watching TV",
+     "es": "viendo televisión"
+    },
+    {
+     "emoji": "🏃",
+     "en": "running",
+     "es": "corriendo"
+    },
+    {
+     "emoji": "📚",
+     "en": "studying",
+     "es": "estudiando"
+    },
+    {
+     "emoji": "🚏",
+     "en": "waiting for the bus",
+     "es": "esperando el bus"
+    },
+    {
+     "emoji": "🌧️",
+     "en": "It’s raining.",
+     "es": "Está lloviendo."
+    },
+    {
+     "emoji": "📞",
+     "en": "talking on the phone",
+     "es": "hablando por teléfono"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Rutina o ahora mismo?",
+   "items": [
+    {
+     "a": "I work at a bank.",
+     "b": "I’m working at home today.",
+     "note": "Presente simple = rutina; presente continuo = ahora / hoy."
+    },
+    {
+     "a": "What do you do?",
+     "b": "What are you doing?",
+     "note": "What do you do? = ¿a qué te dedicas?; What are you doing? = ¿qué estás haciendo?"
+    },
+    {
+     "a": "She cooks every day.",
+     "b": "She’s cooking right now.",
+     "note": "every day = hábito; right now = en este momento."
+    },
+    {
+     "a": "make → making",
+     "b": "sit → sitting",
+     "note": "Se quita la -e final; se duplica la consonante después de una vocal corta."
+    }
+   ]
+  }
+ ],
+ "A1-5-1": [
+  {
+   "kind": "scale",
+   "title": "De todos a nadie",
+   "from": "nadie",
+   "to": "todos",
+   "items": [
+    {
+     "word": "all",
+     "value": 100,
+     "example": "All my friends have a phone.",
+     "es": "todos"
+    },
+    {
+     "word": "nearly all",
+     "value": 90,
+     "example": "Nearly all my cousins are older than me.",
+     "es": "casi todos"
+    },
+    {
+     "word": "a lot of",
+     "value": 70,
+     "example": "A lot of people work at home.",
+     "es": "muchos"
+    },
+    {
+     "word": "many",
+     "value": 65,
+     "example": "Do many students walk to school?",
+     "es": "muchos (en preguntas y negativas)"
+    },
+    {
+     "word": "some",
+     "value": 45,
+     "example": "Some students are late.",
+     "es": "algunos"
+    },
+    {
+     "word": "not many",
+     "value": 25,
+     "example": "Not many people speak French here.",
+     "es": "no muchos"
+    },
+    {
+     "word": "few",
+     "value": 15,
+     "example": "Few students arrive late.",
+     "es": "pocos"
+    },
+    {
+     "word": "no one",
+     "value": 0,
+     "example": "No one is at home.",
+     "es": "nadie"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿A lot of, many o no one?",
+   "question": "¿Qué tipo de oración es?",
+   "branches": [
+    {
+     "if": "Afirmativa",
+     "use": "a lot of + plural",
+     "example": "A lot of people use the metro."
+    },
+    {
+     "if": "Pregunta o negativa",
+     "use": "many + plural",
+     "example": "Do many people use the metro? — Not many."
+    },
+    {
+     "if": "No hay ninguna persona",
+     "use": "no one + verbo en singular",
+     "example": "No one knows the answer."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Pequeñas diferencias",
+   "items": [
+    {
+     "a": "many students",
+     "b": "many of my students",
+     "note": "Usa of solo si sigue my, the, these…"
+    },
+    {
+     "a": "All my friends live here.",
+     "b": "Nearly all my friends live here.",
+     "note": "nearly all = casi todos, no el 100 %."
+    },
+    {
+     "a": "Not many people came.",
+     "b": "No one came.",
+     "note": "not many = pocos; no one = nadie."
+    },
+    {
+     "a": "No one is at home.",
+     "b": "Everyone is at home.",
+     "note": "no one y everyone van con verbo en singular: is."
+    }
+   ]
+  }
+ ],
+ "A1-6-0": [
+  {
+   "kind": "scale",
+   "title": "¿Qué tan a menudo?",
+   "from": "nunca",
+   "to": "siempre",
+   "items": [
+    {
+     "word": "always",
+     "value": 100,
+     "example": "I always have breakfast.",
+     "es": "siempre"
+    },
+    {
+     "word": "almost always",
+     "value": 90,
+     "example": "I almost always walk to work.",
+     "es": "casi siempre"
+    },
+    {
+     "word": "usually",
+     "value": 80,
+     "example": "I usually get up at six.",
+     "es": "normalmente"
+    },
+    {
+     "word": "often",
+     "value": 65,
+     "example": "We often eat out on Fridays.",
+     "es": "a menudo"
+    },
+    {
+     "word": "sometimes",
+     "value": 45,
+     "example": "Sometimes I take a taxi.",
+     "es": "a veces"
+    },
+    {
+     "word": "hardly ever",
+     "value": 10,
+     "example": "She hardly ever answers her phone.",
+     "es": "casi nunca"
+    },
+    {
+     "word": "never",
+     "value": 0,
+     "example": "He never eats fish.",
+     "es": "nunca"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Dónde pongo el adverbio?",
+   "question": "¿Qué verbo tiene la oración?",
+   "branches": [
+    {
+     "if": "Un verbo normal (study, eat, go)",
+     "use": "antes del verbo",
+     "example": "I always study at night."
+    },
+    {
+     "if": "El verbo to be (am, is, are)",
+     "use": "después de be",
+     "example": "He is usually late."
+    },
+    {
+     "if": "Un auxiliar + verbo (don’t, have, can)",
+     "use": "entre los dos",
+     "example": "I don’t usually work on Sundays."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El adverbio cambia de lugar",
+   "steps": [
+    {
+     "label": "Sin adverbio",
+     "sentence": "I study at night."
+    },
+    {
+     "label": "Con verbo normal",
+     "sentence": "I **usually** study at night.",
+     "change": "El adverbio va antes del verbo principal."
+    },
+    {
+     "label": "Con to be",
+     "sentence": "I **am usually** tired at night.",
+     "change": "Con to be, el adverbio va después."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "I **don’t usually** study at night.",
+     "change": "En la negativa va después de don’t."
+    }
+   ]
+  }
+ ],
+ "A1-6-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué pregunta con how uso?",
+   "question": "¿Qué quieres saber?",
+   "branches": [
+    {
+     "if": "Con qué frecuencia",
+     "use": "How often…?",
+     "example": "How often do you swim? — Twice a week."
+    },
+    {
+     "if": "Cuánto tiempo dura",
+     "use": "How long…?",
+     "example": "How long is the class? — About an hour."
+    },
+    {
+     "if": "Qué tan bien hace algo (con un verbo)",
+     "use": "How well…?",
+     "example": "How well does she sing? — Very well."
+    },
+    {
+     "if": "Qué tan bueno es en algo (con un sustantivo)",
+     "use": "How good… at…?",
+     "example": "How good is he at maths? — Not very good."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Qué tan bien",
+   "from": "mal",
+   "to": "muy bien",
+   "items": [
+    {
+     "word": "really well",
+     "value": 95,
+     "example": "She speaks English really well.",
+     "es": "súper bien"
+    },
+    {
+     "word": "very well",
+     "value": 85,
+     "example": "He cooks very well.",
+     "es": "muy bien"
+    },
+    {
+     "word": "quite well",
+     "value": 65,
+     "example": "I play the guitar quite well.",
+     "es": "bastante bien"
+    },
+    {
+     "word": "not very well",
+     "value": 30,
+     "example": "I dance, but not very well.",
+     "es": "no muy bien"
+    },
+    {
+     "word": "badly",
+     "value": 10,
+     "example": "I sing badly!",
+     "es": "mal"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Preguntas parecidas, respuestas distintas",
+   "items": [
+    {
+     "a": "How often do you run?",
+     "b": "How long do you run?",
+     "note": "often = cada cuánto (Twice a week); long = cuánto tiempo (For an hour)."
+    },
+    {
+     "a": "She is good at singing.",
+     "b": "She sings well.",
+     "note": "good va con be; well va con otros verbos."
+    },
+    {
+     "a": "How well do you cook?",
+     "b": "How good are you at cooking?",
+     "note": "Las dos preguntan por habilidad: well + verbo; good at + -ing."
+    }
+   ]
+  }
+ ],
+ "A1-7-0": [
+  {
+   "kind": "transform",
+   "title": "Del presente al pasado",
+   "steps": [
+    {
+     "label": "Presente",
+     "sentence": "I **work** on Saturdays."
+    },
+    {
+     "label": "Pasado afirmativo",
+     "sentence": "I **worked** last Saturday.",
+     "change": "Verbo regular: + -ed."
+    },
+    {
+     "label": "Pasado negativo",
+     "sentence": "I **didn’t work** last Saturday.",
+     "change": "didn’t + verbo base."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Did** you **work** last Saturday?",
+     "change": "Did va primero; work vuelve a la base."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Verbos irregulares para empezar",
+   "items": [
+    {
+     "emoji": "🚶",
+     "en": "go → went",
+     "es": "ir"
+    },
+    {
+     "emoji": "🍽️",
+     "en": "eat → ate",
+     "es": "comer"
+    },
+    {
+     "emoji": "👀",
+     "en": "see → saw",
+     "es": "ver"
+    },
+    {
+     "emoji": "💬",
+     "en": "say → said",
+     "es": "decir"
+    },
+    {
+     "emoji": "🛠️",
+     "en": "make → made",
+     "es": "hacer, fabricar"
+    },
+    {
+     "emoji": "📝",
+     "en": "do → did",
+     "es": "hacer (una tarea)"
+    },
+    {
+     "emoji": "🎁",
+     "en": "get → got",
+     "es": "recibir, conseguir"
+    },
+    {
+     "emoji": "🏠",
+     "en": "have → had",
+     "es": "tener"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Presente y pasado",
+   "items": [
+    {
+     "a": "I go to school.",
+     "b": "I went to school.",
+     "note": "go → went: es irregular."
+    },
+    {
+     "a": "She studies a lot.",
+     "b": "She studied a lot.",
+     "note": "Consonante + y → -ied."
+    },
+    {
+     "a": "We stop here.",
+     "b": "We stopped here.",
+     "note": "Se duplica la consonante: stopped."
+    },
+    {
+     "a": "Did you see it?",
+     "b": "You saw it.",
+     "note": "Con did, el verbo va en base (see); sin did, en pasado (saw)."
+    }
+   ]
+  }
+ ],
+ "A1-7-1": [
+  {
+   "kind": "choose",
+   "title": "¿Was o were?",
+   "question": "¿Cuál es el sujeto?",
+   "branches": [
+    {
+     "if": "I, he, she, it",
+     "use": "was",
+     "example": "It was cold last night."
+    },
+    {
+     "if": "you, we, they",
+     "use": "were",
+     "example": "We were at home all day."
+    },
+    {
+     "if": "Hay una cosa / hay varias (en pasado)",
+     "use": "there was / there were",
+     "example": "There was a party. There were many people."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del presente al pasado con to be",
+   "steps": [
+    {
+     "label": "Presente",
+     "sentence": "She **is** at home."
+    },
+    {
+     "label": "Pasado",
+     "sentence": "She **was** at home yesterday.",
+     "change": "is → was."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "She **wasn’t** at home yesterday.",
+     "change": "was + not = wasn’t. Sin did."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Was** she at home yesterday? — Yes, she **was**.",
+     "change": "was pasa delante de she."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Did o was/were?",
+   "items": [
+    {
+     "a": "Did you go to the party?",
+     "b": "Were you at the party?",
+     "note": "Acción (go) → did; estado o lugar (be) → were, sin did."
+    },
+    {
+     "a": "I didn’t sleep.",
+     "b": "I wasn’t tired.",
+     "note": "Con otro verbo: didn’t + base; con be: wasn’t."
+    },
+    {
+     "a": "There was a problem.",
+     "b": "There were two problems.",
+     "note": "Una cosa → was; varias → were."
+    },
+    {
+     "a": "He was late.",
+     "b": "They were late.",
+     "note": "he → was; they → were."
+    }
+   ]
+  }
+ ],
+ "A1-8-0": [
+  {
+   "kind": "pictures",
+   "title": "Preposiciones de lugar",
+   "items": [
+    {
+     "emoji": "📦",
+     "en": "in the box",
+     "es": "dentro de la caja"
+    },
+    {
+     "emoji": "🔝",
+     "en": "on the table",
+     "es": "encima de la mesa"
+    },
+    {
+     "emoji": "👫",
+     "en": "next to",
+     "es": "al lado de"
+    },
+    {
+     "emoji": "🧍",
+     "en": "in front of",
+     "es": "delante de"
+    },
+    {
+     "emoji": "🫣",
+     "en": "behind",
+     "es": "detrás de"
+    },
+    {
+     "emoji": "🥪",
+     "en": "between",
+     "es": "entre"
+    },
+    {
+     "emoji": "🛣️",
+     "en": "across from",
+     "es": "al frente de (al otro lado)"
+    },
+    {
+     "emoji": "📍",
+     "en": "near",
+     "es": "cerca de"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿There is o there are?",
+   "question": "¿Qué viene después?",
+   "branches": [
+    {
+     "if": "Una sola cosa",
+     "use": "there is",
+     "example": "There is a bank on my street."
+    },
+    {
+     "if": "Algo que no se cuenta (noise, water)",
+     "use": "there is",
+     "example": "There is a lot of traffic."
+    },
+    {
+     "if": "Varias cosas",
+     "use": "there are",
+     "example": "There are two parks near here."
+    },
+    {
+     "if": "Pregunta o negativa en plural",
+     "use": "Are there any…? / There aren’t any…",
+     "example": "Are there any shops? — No, there aren’t any."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Un parque en cuatro formas",
+   "steps": [
+    {
+     "label": "Afirmativa",
+     "sentence": "There **is** a park near here."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "There **isn’t** a park near here.",
+     "change": "is + not = isn’t."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Is there** a park near here?",
+     "change": "is pasa delante de there."
+    },
+    {
+     "label": "Plural",
+     "sentence": "There **are** two parks near here.",
+     "change": "Con varias cosas: are."
+    }
+   ]
+  }
+ ],
+ "A1-8-1": [
+  {
+   "kind": "choose",
+   "title": "¿How much o how many?",
+   "question": "¿Lo puedes contar uno por uno?",
+   "branches": [
+    {
+     "if": "Sí: people, shops, rooms",
+     "use": "How many + plural",
+     "example": "How many rooms are there?"
+    },
+    {
+     "if": "No: water, money, time, traffic",
+     "use": "How much + incontable",
+     "example": "How much time do you need?"
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "¿Se cuenta o no se cuenta?",
+   "items": [
+    {
+     "emoji": "👥",
+     "en": "people → how many",
+     "es": "personas"
+    },
+    {
+     "emoji": "🏪",
+     "en": "shops → how many",
+     "es": "tiendas"
+    },
+    {
+     "emoji": "🌳",
+     "en": "parks → how many",
+     "es": "parques"
+    },
+    {
+     "emoji": "💧",
+     "en": "water → how much",
+     "es": "agua"
+    },
+    {
+     "emoji": "💵",
+     "en": "money → how much",
+     "es": "plata, dinero"
+    },
+    {
+     "emoji": "⏳",
+     "en": "time → how much",
+     "es": "tiempo"
+    },
+    {
+     "emoji": "🚗",
+     "en": "traffic → how much",
+     "es": "tráfico"
+    },
+    {
+     "emoji": "🔊",
+     "en": "noise → how much",
+     "es": "ruido"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "A few, few, a little, little",
+   "items": [
+    {
+     "a": "I have a few friends here.",
+     "b": "I have few friends here.",
+     "note": "a few = algunos (positivo); few = casi ninguno (negativo)."
+    },
+    {
+     "a": "There’s a little time.",
+     "b": "There’s little time.",
+     "note": "a little = un poco; little = casi nada."
+    },
+    {
+     "a": "There aren’t many cafés.",
+     "b": "There isn’t much space.",
+     "note": "many con plural; much con incontable."
+    },
+    {
+     "a": "How many shops are there?",
+     "b": "How much traffic is there?",
+     "note": "shops se cuentan; traffic no."
+    }
+   ]
+  }
+ ],
+ "A1-9-0": [
+  {
+   "kind": "choose",
+   "title": "¿Look like, be like o look?",
+   "question": "¿Qué quieres saber de la persona?",
+   "branches": [
+    {
+     "if": "Cómo es físicamente",
+     "use": "What does… look like?",
+     "example": "What does he look like? — He’s tall with short hair."
+    },
+    {
+     "if": "Cómo es su personalidad",
+     "use": "What is… like?",
+     "example": "What is he like? — He’s very friendly."
+    },
+    {
+     "if": "A quién se parece",
+     "use": "Who does… look like?",
+     "example": "Who does she look like? — Her mother."
+    },
+    {
+     "if": "Cómo se ve hoy",
+     "use": "How does… look?",
+     "example": "How does she look? — She looks tired."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Para describir personas",
+   "items": [
+    {
+     "emoji": "📏",
+     "en": "tall",
+     "es": "alto, alta"
+    },
+    {
+     "emoji": "🧒",
+     "en": "short",
+     "es": "bajito, bajita"
+    },
+    {
+     "emoji": "👩‍🦱",
+     "en": "curly hair",
+     "es": "pelo crespo"
+    },
+    {
+     "emoji": "👱‍♀️",
+     "en": "blond hair",
+     "es": "pelo mono"
+    },
+    {
+     "emoji": "👓",
+     "en": "glasses",
+     "es": "gafas"
+    },
+    {
+     "emoji": "🧔",
+     "en": "a beard",
+     "es": "barba"
+    },
+    {
+     "emoji": "😄",
+     "en": "funny",
+     "es": "chistoso, chistosa"
+    },
+    {
+     "emoji": "🤫",
+     "en": "quiet",
+     "es": "callado, callada"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Físico o personalidad",
+   "items": [
+    {
+     "a": "What is she like?",
+     "b": "What does she look like?",
+     "note": "be like = personalidad; look like = físico."
+    },
+    {
+     "a": "He is tall.",
+     "b": "He looks like his father.",
+     "note": "La respuesta a look like no lleva like: He is tall."
+    },
+    {
+     "a": "She has long hair.",
+     "b": "She is tall.",
+     "note": "Rasgos (eyes, hair) → has; descripción general → is."
+    },
+    {
+     "a": "How does she look?",
+     "b": "What does she look like?",
+     "note": "How does she look? = cómo se ve hoy; look like = cómo es siempre."
+    }
+   ]
+  }
+ ],
+ "A1-9-1": [
+  {
+   "kind": "transform",
+   "title": "De dos oraciones a una",
+   "steps": [
+    {
+     "label": "Dos oraciones",
+     "sentence": "The woman **is standing** near the door. She’s my aunt."
+    },
+    {
+     "label": "Una oración",
+     "sentence": "The woman **standing** near the door is my aunt.",
+     "change": "Quitamos is y el verbo con -ing va justo después del sustantivo."
+    },
+    {
+     "label": "Con the one",
+     "sentence": "**The one standing** near the door is my aunt.",
+     "change": "the one reemplaza a the woman."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Cómo señalo a alguien sin el dedo?",
+   "question": "¿Qué está haciendo o qué tiene la persona?",
+   "branches": [
+    {
+     "if": "Está haciendo algo ahora",
+     "use": "the one + verbo -ing",
+     "example": "the one reading a book"
+    },
+    {
+     "if": "Lleva una prenda o tiene un objeto",
+     "use": "the one in… / the one with…",
+     "example": "the one in the black coat, the one with glasses"
+    },
+    {
+     "if": "Son varias personas",
+     "use": "the ones + verbo -ing",
+     "example": "the ones waiting outside"
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "¿Cuál es?",
+   "items": [
+    {
+     "emoji": "👓",
+     "en": "the one with glasses",
+     "es": "el/la de gafas"
+    },
+    {
+     "emoji": "🧢",
+     "en": "the one wearing a cap",
+     "es": "el de la gorra"
+    },
+    {
+     "emoji": "📖",
+     "en": "the one reading a book",
+     "es": "el que está leyendo"
+    },
+    {
+     "emoji": "💃",
+     "en": "the one dancing",
+     "es": "la que está bailando"
+    },
+    {
+     "emoji": "☕",
+     "en": "the one drinking coffee",
+     "es": "el que está tomando café"
+    },
+    {
+     "emoji": "🪑",
+     "en": "the one sitting at the back",
+     "es": "el que está sentado atrás"
+    },
+    {
+     "emoji": "👋",
+     "en": "the one waving",
+     "es": "el que está saludando"
+    }
+   ]
+  }
+ ],
+ "A1-10-0": [
+  {
+   "kind": "transform",
+   "title": "Already y yet en su lugar",
+   "steps": [
+    {
+     "label": "Presente perfecto",
+     "sentence": "I **have finished** my homework.",
+     "change": "have + participio."
+    },
+    {
+     "label": "Con already",
+     "sentence": "I have **already** finished my homework.",
+     "change": "already va entre have y el participio."
+    },
+    {
+     "label": "Negativa con yet",
+     "sentence": "I **haven’t** finished my homework **yet**.",
+     "change": "yet va al final."
+    },
+    {
+     "label": "Pregunta con yet",
+     "sentence": "**Have** you finished your homework **yet**?",
+     "change": "have pasa delante de you; yet al final."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Already o yet?",
+   "question": "¿Qué tipo de oración es?",
+   "branches": [
+    {
+     "if": "Afirmativa: ya está hecho",
+     "use": "already (entre have y el participio)",
+     "example": "She has already left."
+    },
+    {
+     "if": "Negativa: todavía no",
+     "use": "yet (al final)",
+     "example": "She hasn’t left yet."
+    },
+    {
+     "if": "Pregunta: ¿ya…?",
+     "use": "yet (al final)",
+     "example": "Has she left yet?"
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Participios que más usas",
+   "items": [
+    {
+     "emoji": "🍽️",
+     "en": "eat → eaten",
+     "es": "comer"
+    },
+    {
+     "emoji": "🚶",
+     "en": "go → gone",
+     "es": "ir"
+    },
+    {
+     "emoji": "👀",
+     "en": "see → seen",
+     "es": "ver"
+    },
+    {
+     "emoji": "📝",
+     "en": "do → done",
+     "es": "hacer"
+    },
+    {
+     "emoji": "✉️",
+     "en": "send → sent",
+     "es": "enviar"
+    },
+    {
+     "emoji": "🎫",
+     "en": "buy → bought",
+     "es": "comprar"
+    },
+    {
+     "emoji": "📞",
+     "en": "call → called",
+     "es": "llamar"
+    },
+    {
+     "emoji": "🧳",
+     "en": "pack → packed",
+     "es": "empacar"
+    }
+   ]
+  }
+ ],
+ "A1-10-1": [
+  {
+   "kind": "choose",
+   "title": "¿Presente perfecto o pasado simple?",
+   "question": "¿Dices cuándo pasó?",
+   "branches": [
+    {
+     "if": "No: solo importa la experiencia o el resultado",
+     "use": "have / has + participio",
+     "example": "I have been to Cartagena."
+    },
+    {
+     "if": "Sí: yesterday, last week, in 2019, ago",
+     "use": "pasado simple",
+     "example": "I went to Cartagena in 2019."
+    },
+    {
+     "if": "Preguntas por el momento",
+     "use": "When did…?",
+     "example": "When did you go?"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Una conversación típica",
+   "steps": [
+    {
+     "label": "Pregunta de experiencia",
+     "sentence": "**Have** you ever **been** to Cali?",
+     "change": "Sin fecha: presente perfecto."
+    },
+    {
+     "label": "Respuesta corta",
+     "sentence": "Yes, I **have**."
+    },
+    {
+     "label": "Detalle con fecha",
+     "sentence": "I **went** there **last year**.",
+     "change": "Al decir cuándo, pasamos al pasado simple."
+    },
+    {
+     "label": "Seguimos en pasado",
+     "sentence": "**Did** you **like** it? — Yes, I **loved** it.",
+     "change": "La historia sigue en pasado simple."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Con fecha o sin fecha?",
+   "items": [
+    {
+     "a": "I have lost my phone.",
+     "b": "I lost my phone yesterday.",
+     "note": "Sin fecha → presente perfecto; con fecha → pasado simple."
+    },
+    {
+     "a": "She has been to Cali.",
+     "b": "She has gone to Cali.",
+     "note": "been = fue y volvió; gone = todavía está allá."
+    },
+    {
+     "a": "Have you seen the film?",
+     "b": "Did you see the film last night?",
+     "note": "last night pide pasado simple."
+    },
+    {
+     "a": "I’ve never tried sushi.",
+     "b": "I tried sushi in 2020.",
+     "note": "never = en toda mi vida; in 2020 = un momento terminado."
+    }
+   ]
+  }
+ ],
+ "A1-11-0": [
+  {
+   "kind": "scale",
+   "title": "Qué tan fuerte",
+   "from": "un poco",
+   "to": "muchísimo",
+   "items": [
+    {
+     "word": "a bit",
+     "value": 20,
+     "example": "The hotel is a bit expensive.",
+     "es": "un poco (con cosas negativas)"
+    },
+    {
+     "word": "quite",
+     "value": 50,
+     "example": "The park is quite far.",
+     "es": "bastante"
+    },
+    {
+     "word": "very",
+     "value": 75,
+     "example": "The food is very good.",
+     "es": "muy"
+    },
+    {
+     "word": "really",
+     "value": 80,
+     "example": "The room is really clean.",
+     "es": "muy, súper"
+    },
+    {
+     "word": "extremely",
+     "value": 100,
+     "example": "This bird is extremely rare.",
+     "es": "extremadamente"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿And, but, so o because?",
+   "question": "¿Qué relación hay entre las dos ideas?",
+   "branches": [
+    {
+     "if": "Sumas otra idea",
+     "use": "and",
+     "example": "It’s cheap and very clean."
+    },
+    {
+     "if": "Hay un contraste",
+     "use": "but",
+     "example": "It’s small but really comfortable."
+    },
+    {
+     "if": "La segunda idea es el resultado",
+     "use": "so",
+     "example": "It was cheap, so we bought two."
+    },
+    {
+     "if": "La segunda idea es la razón",
+     "use": "because",
+     "example": "I love this park because it’s quiet."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Mismo hecho, otra dirección",
+   "items": [
+    {
+     "a": "It was late, so we left.",
+     "b": "We left because it was late.",
+     "note": "so → resultado; because → razón."
+    },
+    {
+     "a": "It’s a bit expensive.",
+     "b": "It’s very beautiful.",
+     "note": "a bit solo va con adjetivos negativos: no se dice a bit beautiful."
+    },
+    {
+     "a": "The film was quite good.",
+     "b": "The film was really good.",
+     "note": "quite = bastante; really = muy."
+    }
+   ]
+  }
+ ],
+ "A1-11-1": [
+  {
+   "kind": "choose",
+   "title": "¿Can o should?",
+   "question": "¿Qué quieres decir?",
+   "branches": [
+    {
+     "if": "Es una opción posible",
+     "use": "can + verbo",
+     "example": "You can take the bus from here."
+    },
+    {
+     "if": "Es un consejo, una buena idea",
+     "use": "should + verbo",
+     "example": "You should visit the museum."
+    },
+    {
+     "if": "Es una advertencia",
+     "use": "shouldn’t + verbo",
+     "example": "You shouldn’t go there at night."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del hecho al consejo",
+   "steps": [
+    {
+     "label": "Hecho",
+     "sentence": "You **visit** the museum."
+    },
+    {
+     "label": "Consejo",
+     "sentence": "You **should visit** the museum.",
+     "change": "should + verbo base, sin to."
+    },
+    {
+     "label": "Advertencia",
+     "sentence": "You **shouldn’t visit** it on Mondays.",
+     "change": "should + not = shouldn’t."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Should I visit** the museum?",
+     "change": "should pasa delante de I."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Posibilidad o consejo",
+   "items": [
+    {
+     "a": "You can walk there.",
+     "b": "You should walk there.",
+     "note": "can = es posible; should = te lo recomiendo."
+    },
+    {
+     "a": "You can’t park here.",
+     "b": "You shouldn’t park here.",
+     "note": "can’t = no está permitido; shouldn’t = no es buena idea."
+    },
+    {
+     "a": "You can try the market.",
+     "b": "You could try the market.",
+     "note": "could suena más suave que can."
+    },
+    {
+     "a": "He should rest.",
+     "b": "He can rest.",
+     "note": "Ninguno lleva -s: he should, he can."
+    }
+   ]
+  }
+ ],
+ "A1-12-0": [
+  {
+   "kind": "choose",
+   "title": "¿To + verbo o -ing?",
+   "question": "¿Qué palabra va antes?",
+   "branches": [
+    {
+     "if": "It’s a good idea / It’s better / The best way is",
+     "use": "to + verbo",
+     "example": "It’s a good idea to book early."
+    },
+    {
+     "if": "need, want, try, plan, hope, decide",
+     "use": "to + verbo",
+     "example": "You need to bring your ID."
+    },
+    {
+     "if": "recommend, suggest",
+     "use": "verbo + -ing",
+     "example": "I recommend visiting the museum."
+    },
+    {
+     "if": "should, can, could",
+     "use": "verbo base, sin to",
+     "example": "You should book early."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El mismo consejo, varias formas",
+   "steps": [
+    {
+     "label": "Orden directa",
+     "sentence": "**Book** in advance."
+    },
+    {
+     "label": "Frase fija",
+     "sentence": "**It’s a good idea to book** in advance.",
+     "change": "It’s a good idea + to + verbo."
+    },
+    {
+     "label": "La mejor manera",
+     "sentence": "**The best way is to book** in advance.",
+     "change": "The best way is + to + verbo."
+    },
+    {
+     "label": "Necesidad",
+     "sentence": "**You need to book** in advance.",
+     "change": "need + to + verbo."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Lleva to o no?",
+   "items": [
+    {
+     "a": "I recommend visiting the museum.",
+     "b": "It’s a good idea to visit the museum.",
+     "note": "recommend + -ing; It’s a good idea + to."
+    },
+    {
+     "a": "You should book.",
+     "b": "You need to book.",
+     "note": "should sin to; need con to."
+    },
+    {
+     "a": "I decided to call.",
+     "b": "I decided not to call.",
+     "note": "En la negativa, not va antes de to."
+    }
+   ]
+  }
+ ],
+ "A1-12-1": [
+  {
+   "kind": "scale",
+   "title": "De directo a muy educado",
+   "from": "directo",
+   "to": "muy educado",
+   "items": [
+    {
+     "word": "Open…",
+     "value": 10,
+     "example": "Open the window.",
+     "es": "orden directa"
+    },
+    {
+     "word": "Can you…?",
+     "value": 40,
+     "example": "Can you open the window?",
+     "es": "directo y amigable"
+    },
+    {
+     "word": "Could you…, please?",
+     "value": 70,
+     "example": "Could you open the window, please?",
+     "es": "más educado"
+    },
+    {
+     "word": "Would you mind + -ing?",
+     "value": 90,
+     "example": "Would you mind opening the window?",
+     "es": "muy educado"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué digo?",
+   "question": "¿Qué necesitas?",
+   "branches": [
+    {
+     "if": "Pedirle un favor a un amigo",
+     "use": "Can you…?",
+     "example": "Can you pass me the salt?"
+    },
+    {
+     "if": "Pedirle un favor a un desconocido o al jefe",
+     "use": "Could you…, please?",
+     "example": "Could you help me, please?"
+    },
+    {
+     "if": "Pedir permiso",
+     "use": "Can I…? / Could I…?",
+     "example": "Could I use your phone?"
+    },
+    {
+     "if": "Proponer un plan",
+     "use": "Should we…? / We could… / Let’s…",
+     "example": "Should we take a taxi?"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Pedir, permitir, proponer",
+   "items": [
+    {
+     "a": "Can you help me?",
+     "b": "Could you help me, please?",
+     "note": "Aquí could no es pasado: es más cortés."
+    },
+    {
+     "a": "Can I sit here?",
+     "b": "Can you sit here?",
+     "note": "Can I = pido permiso; Can you = pido un favor."
+    },
+    {
+     "a": "Should we walk?",
+     "b": "Let’s walk.",
+     "note": "Should we…? pregunta; Let’s propone directamente."
+    }
+   ]
+  }
+ ],
+ "A1-13-0": [
+  {
+   "kind": "choose",
+   "title": "¿So o neither?",
+   "question": "¿La frase de la otra persona es positiva o negativa?",
+   "branches": [
+    {
+     "if": "Positiva y estás de acuerdo",
+     "use": "So + ayudante + sujeto / Me too",
+     "example": "I love pizza. — So do I."
+    },
+    {
+     "if": "Negativa y estás de acuerdo",
+     "use": "Neither + ayudante + sujeto / Me neither",
+     "example": "I don’t like fish. — Neither do I."
+    },
+    {
+     "if": "No estás de acuerdo",
+     "use": "la respuesta contraria",
+     "example": "I love fish. — Oh, I don’t."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué ayudante uso?",
+   "question": "¿Qué verbo tiene la primera frase?",
+   "branches": [
+    {
+     "if": "am / is / are",
+     "use": "am",
+     "example": "I’m hungry. — So am I."
+    },
+    {
+     "if": "Un verbo en presente (like, live)",
+     "use": "do",
+     "example": "I live here. — So do I."
+    },
+    {
+     "if": "Un verbo en pasado (went, saw)",
+     "use": "did",
+     "example": "I saw it. — So did I."
+    },
+    {
+     "if": "can / have",
+     "use": "can / have",
+     "example": "I can swim. — So can I."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Copia el ayudante",
+   "items": [
+    {
+     "a": "I’m tired. — So am I.",
+     "b": "I like it. — So do I.",
+     "note": "El ayudante copia el verbo: am → am; like → do."
+    },
+    {
+     "a": "I went. — So did I.",
+     "b": "I’ve finished. — So have I.",
+     "note": "Pasado → did; presente perfecto → have."
+    },
+    {
+     "a": "I can’t drive. — Neither can I.",
+     "b": "I can’t drive. — I can’t either.",
+     "note": "neither va con verbo afirmativo; either va con verbo negativo."
+    },
+    {
+     "a": "I don’t eat meat. — Me neither.",
+     "b": "I don’t eat meat. — Oh, I do.",
+     "note": "Me neither = estoy de acuerdo; Oh, I do = no estoy de acuerdo."
+    }
+   ]
+  }
+ ],
+ "A1-13-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué forma con would?",
+   "question": "¿Qué quieres hacer?",
+   "branches": [
+    {
+     "if": "Ofrecer algo",
+     "use": "Would you like…?",
+     "example": "Would you like something to eat?"
+    },
+    {
+     "if": "Pedir algo para ti",
+     "use": "I’d like…",
+     "example": "I’d like two tickets, please."
+    },
+    {
+     "if": "Pedir un favor con mucha cortesía",
+     "use": "Would you mind + -ing?",
+     "example": "Would you mind closing the window?"
+    },
+    {
+     "if": "Decir qué prefieres",
+     "use": "I’d rather + verbo",
+     "example": "I’d rather stay at home."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Cada vez más educado",
+   "steps": [
+    {
+     "label": "Orden",
+     "sentence": "**Close** the window.",
+     "change": "Suena brusco."
+    },
+    {
+     "label": "Petición",
+     "sentence": "**Could you close** the window, please?",
+     "change": "could + verbo base."
+    },
+    {
+     "label": "Muy educado",
+     "sentence": "**Would you mind closing** the window?",
+     "change": "mind + verbo con -ing."
+    },
+    {
+     "label": "Respuesta",
+     "sentence": "**No, not at all.**",
+     "change": "Significa: no me molesta, con gusto lo hago."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cuidado con mind",
+   "items": [
+    {
+     "a": "Would you mind waiting?",
+     "b": "Would you like to wait?",
+     "note": "mind + -ing = ¿te molesta…?; like + to = ¿te gustaría…?"
+    },
+    {
+     "a": "Would you mind…? — Not at all.",
+     "b": "Would you like…? — Yes, please.",
+     "note": "A Would you mind…? se responde Not at all para decir que sí lo haces."
+    },
+    {
+     "a": "I want the menu.",
+     "b": "I’d like the menu, please.",
+     "note": "I’d like es la forma educada de I want."
+    }
+   ]
+  }
+ ],
+ "A1-14-0": [
+  {
+   "kind": "transform",
+   "title": "Del adjetivo al superlativo",
+   "steps": [
+    {
+     "label": "Adjetivo",
+     "sentence": "Cali is **hot**."
+    },
+    {
+     "label": "Comparativo",
+     "sentence": "Cartagena is **hotter than** Cali.",
+     "change": "Dos cosas: se duplica la t, + -er + than."
+    },
+    {
+     "label": "Superlativo",
+     "sentence": "Barranquilla is **the hottest of** the three.",
+     "change": "El número uno del grupo: the + -est + of."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Comparativo o superlativo?",
+   "question": "¿Cuántas cosas comparas?",
+   "branches": [
+    {
+     "if": "Dos cosas",
+     "use": "-er / more + than",
+     "example": "The metro is faster than the bus."
+    },
+    {
+     "if": "Tres o más: el número uno",
+     "use": "the -est / the most + in / of",
+     "example": "Bogotá is the largest city in Colombia."
+    },
+    {
+     "if": "Un adjetivo irregular",
+     "use": "better / the best, worse / the worst",
+     "example": "This is the best arepa in town."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Detalles que importan",
+   "items": [
+    {
+     "a": "the biggest city in Colombia",
+     "b": "the tallest of the three",
+     "note": "in para lugares; of para grupos."
+    },
+    {
+     "a": "bigger than",
+     "b": "the biggest",
+     "note": "Comparativo: dos cosas; superlativo: el número uno, siempre con the."
+    },
+    {
+     "a": "more expensive",
+     "b": "the most expensive",
+     "note": "Adjetivo largo: more → the most."
+    },
+    {
+     "a": "better than",
+     "b": "the best",
+     "note": "good → better → the best. Nunca the most best."
+    }
+   ]
+  }
+ ],
+ "A1-14-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué how uso para medir?",
+   "question": "¿Qué quieres medir?",
+   "branches": [
+    {
+     "if": "El largo o la duración",
+     "use": "How long?",
+     "example": "How long is the river? — It’s 1,500 km long."
+    },
+    {
+     "if": "La altura de personas o edificios",
+     "use": "How tall?",
+     "example": "How tall is he? — He’s 1.80 m tall."
+    },
+    {
+     "if": "La altura de montañas",
+     "use": "How high?",
+     "example": "How high is Monserrate? — It’s 3,150 m high."
+    },
+    {
+     "if": "La distancia",
+     "use": "How far?",
+     "example": "How far is the coast? — About 1,000 km."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "How + adjetivo",
+   "items": [
+    {
+     "emoji": "📏",
+     "en": "How long?",
+     "es": "¿Qué tan largo? / ¿Cuánto dura?"
+    },
+    {
+     "emoji": "🧍",
+     "en": "How tall?",
+     "es": "¿Cuánto mide? (personas, edificios)"
+    },
+    {
+     "emoji": "🏔️",
+     "en": "How high?",
+     "es": "¿Qué tan alto? (montañas)"
+    },
+    {
+     "emoji": "🌊",
+     "en": "How deep?",
+     "es": "¿Qué tan profundo?"
+    },
+    {
+     "emoji": "🗺️",
+     "en": "How far?",
+     "es": "¿Qué tan lejos?"
+    },
+    {
+     "emoji": "🌡️",
+     "en": "How hot?",
+     "es": "¿Cuánto calor hace?"
+    },
+    {
+     "emoji": "⚖️",
+     "en": "How heavy?",
+     "es": "¿Cuánto pesa?"
+    },
+    {
+     "emoji": "↔️",
+     "en": "How wide?",
+     "es": "¿Qué tan ancho?"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Medidas parecidas",
+   "items": [
+    {
+     "a": "He’s 1.80 metres tall.",
+     "b": "The mountain is 5,000 metres high.",
+     "note": "tall para personas y edificios; high para montañas."
+    },
+    {
+     "a": "How long is the bridge?",
+     "b": "How far is the bridge?",
+     "note": "long = el largo del puente; far = la distancia hasta el puente."
+    },
+    {
+     "a": "It’s two hours long.",
+     "b": "It’s two hours away.",
+     "note": "long = dura dos horas; away = queda a dos horas."
+    }
+   ]
+  }
+ ],
+ "A1-15-0": [
+  {
+   "kind": "choose",
+   "title": "¿Going to o presente continuo?",
+   "question": "¿Qué tan decidido está el plan?",
+   "branches": [
+    {
+     "if": "Es una intención, sin detalles",
+     "use": "be going to + verbo",
+     "example": "I’m going to look for a new job."
+    },
+    {
+     "if": "Ya está acordado, con hora y lugar",
+     "use": "am / is / are + -ing",
+     "example": "We’re flying on Sunday at nine."
+    },
+    {
+     "if": "Es una predicción por lo que ves",
+     "use": "be going to + verbo",
+     "example": "Look at those clouds. It’s going to rain."
+    },
+    {
+     "if": "Es un horario fijo (bus, película)",
+     "use": "presente simple",
+     "example": "The bus leaves at six."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del deseo a la cita",
+   "steps": [
+    {
+     "label": "Deseo",
+     "sentence": "I **want to see** the doctor."
+    },
+    {
+     "label": "Intención",
+     "sentence": "I**’m going to see** the doctor.",
+     "change": "Ya es una intención clara: be going to."
+    },
+    {
+     "label": "Cita acordada",
+     "sentence": "I**’m seeing** the doctor **on Monday at nine**.",
+     "change": "Con día y hora: presente continuo."
+    },
+    {
+     "label": "Pregunta",
+     "sentence": "**Are** you **seeing** the doctor on Monday?",
+     "change": "are pasa delante de you."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Futuros parecidos",
+   "items": [
+    {
+     "a": "I’m going to visit my aunt.",
+     "b": "I’m visiting my aunt on Sunday at noon.",
+     "note": "going to = intención; continuo = ya está acordado."
+    },
+    {
+     "a": "It’s going to rain.",
+     "b": "It’s raining.",
+     "note": "going to = va a llover (predicción); It’s raining = está lloviendo ahora."
+    },
+    {
+     "a": "Are you going to study tonight?",
+     "b": "Are you studying tonight?",
+     "note": "Las dos preguntan por planes; la segunda suena a algo ya organizado."
+    }
+   ]
+  }
+ ],
+ "A1-15-1": [
+  {
+   "kind": "choose",
+   "title": "¿Tell o say?",
+   "question": "¿Qué viene justo después del verbo?",
+   "branches": [
+    {
+     "if": "Una persona (me, him, Ana)",
+     "use": "tell + persona",
+     "example": "Tell Ana that I’m late."
+    },
+    {
+     "if": "Las palabras o la idea (that…, hello, sorry)",
+     "use": "say",
+     "example": "Say that you’re sorry."
+    },
+    {
+     "if": "Una orden para pasarle a otro",
+     "use": "tell + persona + to + verbo",
+     "example": "Tell him to wait."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Pasar un mensaje",
+   "steps": [
+    {
+     "label": "Mensaje",
+     "sentence": "I’m late."
+    },
+    {
+     "label": "Pasarlo",
+     "sentence": "**Tell her that** I’m late.",
+     "change": "tell + persona + that."
+    },
+    {
+     "label": "Pedirlo con cortesía",
+     "sentence": "**Could you tell her that** I’m late?",
+     "change": "could hace la petición más educada."
+    },
+    {
+     "label": "Contarlo después",
+     "sentence": "He **said that** he was late.",
+     "change": "say no lleva persona; el verbo pasa al pasado."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Con persona o sin persona",
+   "items": [
+    {
+     "a": "Tell me the answer.",
+     "b": "Say the answer.",
+     "note": "tell + persona; say va sin persona."
+    },
+    {
+     "a": "Tell her to wait.",
+     "b": "Tell her that I’m waiting.",
+     "note": "to + verbo = orden; that = información."
+    },
+    {
+     "a": "Can you say that again?",
+     "b": "Can you tell me again?",
+     "note": "Las dos piden repetir: say + lo dicho; tell + persona."
+    }
+   ]
+  }
+ ],
+ "A1-16-0": [
+  {
+   "kind": "choose",
+   "title": "¿Qué tiempo verbal uso?",
+   "question": "¿De qué momento hablas?",
+   "branches": [
+    {
+     "if": "Una etapa terminada, con fecha",
+     "use": "pasado simple",
+     "example": "I lived in Cali until 2018."
+    },
+    {
+     "if": "Un hábito viejo que ya no existe",
+     "use": "used to + verbo",
+     "example": "I used to take the bus."
+    },
+    {
+     "if": "Cómo es la situación hoy",
+     "use": "presente simple",
+     "example": "I live in Bogotá now."
+    },
+    {
+     "if": "Un cambio o resultado que llega hasta hoy",
+     "use": "presente perfecto",
+     "example": "The city has grown a lot."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Antes, ahora y desde entonces",
+   "steps": [
+    {
+     "label": "Antes",
+     "sentence": "I **lived** in Cali until 2018.",
+     "change": "Etapa terminada: pasado simple."
+    },
+    {
+     "label": "Ahora",
+     "sentence": "I **live** in Bogotá now.",
+     "change": "Situación de hoy: presente simple."
+    },
+    {
+     "label": "Desde entonces",
+     "sentence": "I **have lived** in Bogotá **since** 2018.",
+     "change": "Empezó antes y sigue hoy: presente perfecto."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Terminado o todavía verdad?",
+   "items": [
+    {
+     "a": "I lived here for five years.",
+     "b": "I have lived here for five years.",
+     "note": "lived = ya no vivo aquí; have lived = sigo viviendo aquí."
+    },
+    {
+     "a": "I used to cycle.",
+     "b": "I cycle.",
+     "note": "used to = antes sí, ahora no; presente = ahora sí."
+    },
+    {
+     "a": "The city changed in 2010.",
+     "b": "The city has changed a lot.",
+     "note": "Con fecha → pasado simple; sin fecha y con resultado hoy → presente perfecto."
+    }
+   ]
+  }
+ ],
+ "A1-16-1": [
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro es el plan?",
+   "from": "un sueño lejano",
+   "to": "decidido",
+   "items": [
+    {
+     "word": "I’m going to…",
+     "value": 95,
+     "example": "I’m going to start in March.",
+     "es": "voy a"
+    },
+    {
+     "word": "I plan to…",
+     "value": 75,
+     "example": "I plan to move next year.",
+     "es": "pienso"
+    },
+    {
+     "word": "I need to…",
+     "value": 70,
+     "example": "I need to find a job.",
+     "es": "necesito"
+    },
+    {
+     "word": "I want to…",
+     "value": 55,
+     "example": "I want to learn French.",
+     "es": "quiero"
+    },
+    {
+     "word": "I’d like to…",
+     "value": 40,
+     "example": "I’d like to study design.",
+     "es": "me gustaría"
+    },
+    {
+     "word": "I hope to…",
+     "value": 30,
+     "example": "I hope to travel abroad one day.",
+     "es": "espero"
+    },
+    {
+     "word": "I decided not to…",
+     "value": 0,
+     "example": "I decided not to change jobs.",
+     "es": "decidí no"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del sueño al plan",
+   "steps": [
+    {
+     "label": "Deseo",
+     "sentence": "I **hope to** travel abroad.",
+     "change": "Algo lejano, sin fecha."
+    },
+    {
+     "label": "Probable",
+     "sentence": "I **plan to** travel abroad next year.",
+     "change": "Ya lo estás pensando en serio."
+    },
+    {
+     "label": "Decidido",
+     "sentence": "I**’m going to** travel abroad in July.",
+     "change": "La decisión está tomada."
+    },
+    {
+     "label": "Acordado",
+     "sentence": "I**’m flying** to Madrid on 3 July.",
+     "change": "Con fecha y tiquete: presente continuo."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Matices del plan",
+   "items": [
+    {
+     "a": "I want to travel.",
+     "b": "I’d like to travel.",
+     "note": "would like to es más educado y menos seguro que want to."
+    },
+    {
+     "a": "I decided to change jobs.",
+     "b": "I decided not to change jobs.",
+     "note": "En la negativa, not va antes de to."
+    },
+    {
+     "a": "I’m going to start in March.",
+     "b": "I hope to start one day.",
+     "note": "going to = decidido; hope to = deseo lejano."
+    }
+   ]
+  }
+ ]
+}

@@ -38,6 +38,7 @@ export const router = createBrowserRouter([
       { path: 'practice/vocabulary', element: page(() => import('./features/vocabulary/VocabularyPage')) },
       { path: 'practice/workshops', element: page(() => import('./features/workshops/WorkshopsPage')) },
       { path: 'practice/workshops/:id', element: page(() => import('./features/workshops/WorkshopsPage')) },
+      { path: 'notes', element: page(() => import('./features/notes/NotesPage')) },
       { path: 'portfolio', element: page(() => import('./features/portfolio/PortfolioPage')) },
       { path: 'import', element: page(() => import('./features/migrate/ImportPage')) },
       { path: 'teacher', element: page(() => import('./features/teacher/TeacherPage')) },

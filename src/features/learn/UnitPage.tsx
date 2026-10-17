@@ -22,7 +22,8 @@ import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { WritingPad } from '@/components/learning/WritingPad';
-import { UnitVisuals } from '@/components/visuals/UnitVisuals';
+import { VisualFigure } from '@/components/visuals/Visuals';
+import { unitVisualPlan, type Visual } from '@/content/visuals';
 import { useAsync } from '@/hooks/useAsync';
 import { loadLevel, levelMeta } from '@/content/levels';
 import type { Unit, VocabItem } from '@/content/types';
@@ -48,6 +49,8 @@ export default function UnitPage() {
   const tab: Tab = TAB_IDS.find((t) => t === params.get('tab')) ?? 'overview';
   const setTab = (t: Tab) => setParams(t === 'overview' ? {} : { tab: t }, { replace: true });
   const done = useProgress((s) => (meta ? s.units[`${meta.id}-${unit}`] : undefined));
+  const u0 = data?.units.find((x) => String(x.n) === unit);
+  const plan = useMemo(() => (meta && u0 ? unitVisualPlan(`${meta.id}-${u0.n}`, u0.grammar.map((g) => g.name)) : null), [meta, u0]);
   const completeUnit = useProgress((s) => s.completeUnit);
   const award = useProgress((s) => s.award);
 
@@ -101,19 +104,17 @@ export default function UnitPage() {
             u={u}
             practiceCount={practiceItems(u).length + vocabItems(u).length}
             onGo={setTab}
-            extra={<UnitVisuals unit={u} level={meta.id} section="overview" />}
+            extra={plan && plan.overview.length > 0 && <VisualFigure items={plan.overview} title="Para empezar" color={u.color} className="max-w-3xl" />}
           />
         )}
         {tab === 'vocab' && (
           <div className="space-y-6">
-            <Vocabulary items={u.vocab} />
-            <UnitVisuals unit={u} level={meta.id} section="vocab" />
+            <Vocabulary items={u.vocab} visuals={plan?.vocab} color={u.color} />
           </div>
         )}
         {tab === 'grammar' && (
           <div className="space-y-5">
             <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} unitKey={`${meta.id}-${u.n}`} />
-            <UnitVisuals unit={u} level={meta.id} section="grammar" />
             <UnitVerbTools unit={u} />
             <UnitGrammarTools unit={u} level={meta.id} />
           </div>
@@ -151,7 +152,7 @@ export default function UnitPage() {
 
 // ---------------------------------------------------------------- vocabulary --
 
-function Vocabulary({ items }: { items: VocabItem[] }) {
+function Vocabulary({ items, visuals, color }: { items: VocabItem[]; visuals?: Visual[]; color?: string }) {
   const [mode, setMode] = useState<'list' | 'cards'>('list');
   return (
     <div>
@@ -169,6 +170,7 @@ function Vocabulary({ items }: { items: VocabItem[] }) {
           ]}
         />
       </div>
+      {visuals && visuals.length > 0 && <VisualFigure items={visuals} title="Mira y aprende" color={color} className="mb-5 max-w-3xl" />}
       {mode === 'list' ? <VocabGrid items={items} /> : <Flashcards items={items} />}
     </div>
   );

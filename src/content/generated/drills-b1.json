@@ -70,5 +70,509 @@
    "The motorway is faster than the old road. The old road has more traffic lights. The motorway has less traffic at night. The bus goes more slowly on the old road.",
    "The local supermarket is cheaper than the big one. The big one has more brands. The local one has less parking space. The big one stays open later than the local one."
   ]
+ },
+ "B1-3-0": {
+  "name": "Raise the register",
+  "prompt": "Haz cada petición tres veces: directa, cortés y muy cortés. Cambia la estructura, no solo el tono.",
+  "items": [
+   "open the window",
+   "send the file again",
+   "swap shifts with you",
+   "explain that once more",
+   "use your phone"
+  ],
+  "answers": [
+   "Open the window, please. / Could you open the window? / Would you mind opening the window?",
+   "Can you send the file again? / Could you possibly send the file again? / I’d appreciate it if you could send the file again.",
+   "Can you swap shifts with me? / Would you swap shifts with me? / Would you mind swapping shifts with me?",
+   "Can you explain that again? / Could you explain that once more? / Would you mind explaining that once more?",
+   "Can I use your phone? / Could I use your phone? / Would you mind if I used your phone?"
+  ]
+ },
+ "B1-3-1": {
+  "name": "Wrap the question",
+  "prompt": "Convierte cada pregunta directa en una indirecta, usando una introducción diferente cada vez.",
+  "items": [
+   "Where is the meeting?",
+   "What time does the shop close?",
+   "Did she call back?",
+   "How much does it cost?",
+   "Why was the order cancelled?"
+  ],
+  "answers": [
+   "Could you tell me where the meeting is?",
+   "Do you know what time the shop closes?",
+   "I wonder whether she called back.",
+   "Do you have any idea how much it costs?",
+   "I’d like to know why the order was cancelled."
+  ]
+ },
+ "B1-4-0": {
+  "name": "Background and event",
+  "prompt": "Para cada situación crea un fondo en pasado continuo y una interrupción en pasado simple; luego invierte el orden de las cláusulas y agrega la coma.",
+  "items": [
+   "at the airport",
+   "during a presentation",
+   "in the kitchen",
+   "on a night shift",
+   "at a wedding"
+  ],
+  "answers": [
+   "I was waiting at the gate when they announced the delay. / When they announced the delay, I was waiting at the gate.",
+   "I was giving my presentation when the projector stopped working. / When the projector stopped working, I was giving my presentation.",
+   "I was making dinner when the lights went out. / When the lights went out, I was making dinner.",
+   "We were checking the machines when the alarm went off. / When the alarm went off, we were checking the machines.",
+   "The couple were dancing when the music suddenly stopped. / When the music suddenly stopped, the couple were dancing."
+  ]
+ },
+ "B1-4-1": {
+  "name": "Which came first",
+  "prompt": "Une cada par de eventos en una sola frase: empieza con el más reciente y pon el anterior en pasado perfecto.",
+  "items": [
+   "she left / I arrived",
+   "the meeting ended / we got there",
+   "he sent the file / I checked my inbox",
+   "the shop closed / we ran for it",
+   "they fixed it / the inspector came"
+  ],
+  "answers": [
+   "When I arrived, she had already left.",
+   "When we got there, the meeting had ended.",
+   "When I checked my inbox, he had sent the file.",
+   "When we ran for it, the shop had closed.",
+   "When the inspector came, they had fixed it."
+  ]
+ },
+ "B1-5-0": {
+  "name": "Build the phrase",
+  "prompt": "Convierte cada idea en una frase nominal larga con una cláusula relativa y úsala como sujeto de una oración completa.",
+  "items": [
+   "a rule nobody explains",
+   "a habit that irritates visitors",
+   "a question people avoid",
+   "a mistake beginners make",
+   "a custom that surprises foreigners"
+  ],
+  "answers": [
+   "The rule that nobody explains is usually the most important one.",
+   "A habit that irritates visitors is talking loudly on the phone in restaurants.",
+   "The question that people avoid most is how much they earn.",
+   "The mistake that most beginners make is translating word for word.",
+   "A custom that surprises foreigners is greeting everyone individually."
+  ]
+ },
+ "B1-5-1": {
+  "name": "Rules nobody wrote",
+  "prompt": "Describe cada situación con tres estructuras de expectativa diferentes; una de ellas debe ser negativa.",
+  "items": [
+   "a dinner invitation",
+   "a first day at work",
+   "public transport",
+   "a wedding",
+   "visiting someone in hospital"
+  ],
+  "answers": [
+   "It’s the custom to bring a small gift. Guests are expected to arrive a little late. It isn’t acceptable to leave right after eating.",
+   "You’re supposed to arrive early. New staff are expected to introduce themselves. It’s not acceptable to leave before your manager on the first day.",
+   "You’re supposed to give your seat to older people. It’s the custom to let people get off first. It isn’t acceptable to eat smelly food on the bus.",
+   "It’s the custom to give the couple money or a gift. Guests are expected to dance. You’re not supposed to wear white.",
+   "It’s the custom to bring fruit or flowers. Visitors are expected to keep their voices down. It isn’t acceptable to stay for hours."
+  ]
+ },
+ "B1-6-0": {
+  "name": "Two ways to report it",
+  "prompt": "Describe cada daño dos veces: una con un participio como adjetivo y otra con un sustantivo que nombre el problema.",
+  "items": [
+   "a screen with a crack",
+   "a jacket with a stain",
+   "a panel with a dent",
+   "a wire with a break",
+   "a shoe with a hole"
+  ],
+  "answers": [
+   "The screen is cracked. / There’s a crack in the screen.",
+   "The jacket is stained. / There’s a stain on the jacket.",
+   "The panel is dented. / There’s a dent in the panel.",
+   "The wire is broken. / There’s a break in the wire.",
+   "The shoe is worn through. / There’s a hole in the shoe."
+  ]
+ },
+ "B1-6-1": {
+  "name": "Needs doing",
+  "prompt": "Di qué necesita cada objeto dos veces, con gerundio y con infinitivo pasivo, y luego agrega una queja con “keeps + -ing”.",
+  "items": [
+   "a printer",
+   "a bicycle",
+   "an old laptop",
+   "a kitchen tap",
+   "a pair of headphones"
+  ],
+  "answers": [
+   "The printer needs cleaning. / The printer needs to be cleaned. It keeps jamming.",
+   "The bicycle needs fixing. / The bicycle needs to be fixed. The chain keeps coming off.",
+   "The old laptop needs updating. / The old laptop needs to be updated. It keeps crashing.",
+   "The kitchen tap needs replacing. / The kitchen tap needs to be replaced. It keeps dripping.",
+   "The headphones need repairing. / The headphones need to be repaired. They keep cutting out."
+  ]
+ },
+ "B1-7-0": {
+  "name": "Progress report",
+  "prompt": "Informa el estado de cada trabajo dos veces: qué se está haciendo ahora y qué ya se ha hecho.",
+  "items": [
+   "the office move",
+   "a software rollout",
+   "a building repair",
+   "an event setup",
+   "a vehicle service"
+  ],
+  "answers": [
+   "The furniture is being packed now. / The computers have already been moved.",
+   "The new system is being installed now. / All the staff have already been trained.",
+   "The walls are being painted now. / The roof has already been repaired.",
+   "The stage is being built now. / The chairs have already been set up.",
+   "The brakes are being checked now. / The oil has already been changed."
+  ]
+ },
+ "B1-7-1": {
+  "name": "Why did you do it",
+  "prompt": "Responde cada pregunta de tres formas: con “to”, con “in order to” y con un propósito negativo.",
+  "items": [
+   "why did you arrive early",
+   "why did you save two copies",
+   "why did you call the supplier",
+   "why did you take the earlier train",
+   "why did you check it twice"
+  ],
+  "answers": [
+   "I arrived early to get a good seat. / I arrived early in order to get a good seat. / I arrived early so as not to miss the start.",
+   "I saved two copies to have a backup. / I saved two copies in order to have a backup. / I saved two copies so as not to lose the data.",
+   "I called the supplier to check the delivery date. / I called the supplier in order to check the delivery date. / I called so as not to be surprised by a delay.",
+   "I took the earlier train to arrive on time. / I took the earlier train in order to arrive on time. / I took the earlier train so as not to be late.",
+   "I checked it twice to be sure. / I checked it twice in order to avoid mistakes. / I checked it twice so as not to send any errors."
+  ]
+ },
+ "B1-8-0": {
+  "name": "Two options, one preference",
+  "prompt": "Expresa una preferencia entre cada par dos veces: una con “would rather … than” y otra con “would prefer … to”.",
+  "items": [
+   "train or plane",
+   "morning or evening shift",
+   "message or phone call",
+   "cook or eat out",
+   "read or listen"
+  ],
+  "answers": [
+   "I’d rather take the train than fly. / I’d prefer the train to the plane.",
+   "I’d rather work the morning shift than the evening shift. / I’d prefer the morning shift to the evening shift.",
+   "I’d rather send a message than make a phone call. / I’d prefer a message to a phone call.",
+   "I’d rather cook at home than eat out. / I’d prefer cooking at home to eating out.",
+   "I’d rather read than listen. / I’d prefer reading to listening."
+  ]
+ },
+ "B1-8-1": {
+  "name": "How, exactly",
+  "prompt": "Explica cómo lograr cada resultado con una cláusula “by + -ing” y luego repítela con la cláusula al principio.",
+  "items": [
+   "save money on food",
+   "learn vocabulary faster",
+   "reduce meetings",
+   "avoid errors in a report",
+   "sleep better"
+  ],
+  "answers": [
+   "You can save money on food by cooking at home. / By cooking at home, you can save money on food.",
+   "You can learn vocabulary faster by using flashcards every day. / By using flashcards every day, you can learn vocabulary faster.",
+   "You can reduce meetings by sending short updates by email. / By sending short updates by email, you can reduce meetings.",
+   "You can avoid errors in a report by checking it twice. / By checking it twice, you can avoid errors in a report.",
+   "You can sleep better by not using your phone before bed. / By not using your phone before bed, you can sleep better."
+  ]
+ },
+ "B1-9-0": {
+  "name": "Did you do it yourself?",
+  "prompt": "Di cada frase dos veces: una como algo que hiciste tú y otra como algo que mandaste a hacer. Mantén el mismo tiempo verbal.",
+  "items": [
+   "cut my hair",
+   "service the car",
+   "translate the contract",
+   "clean the windows",
+   "fix the laptop"
+  ],
+  "answers": [
+   "I cut my hair. / I had my hair cut.",
+   "I serviced the car. / I had the car serviced.",
+   "I translated the contract. / I had the contract translated.",
+   "I cleaned the windows. / I had the windows cleaned.",
+   "I fixed the laptop. / I had the laptop fixed."
+  ]
+ },
+ "B1-9-1": {
+  "name": "Five ways to suggest",
+  "prompt": "Propón una solución a cada problema cinco veces: con un modal, con how about / what about, con una pregunta negativa, con un marco de infinitivo y con “let’s”.",
+  "items": [
+   "the meeting always overruns",
+   "nobody reads the report",
+   "the printer keeps jamming",
+   "the team never meets in person",
+   "the form is too long"
+  ],
+  "answers": [
+   "We could set a time limit. / How about using a timer? / Why don’t we stick to the agenda? / It might be better to keep it to thirty minutes. / Let’s end on time.",
+   "We could make it shorter. / How about adding a one-page summary? / Why don’t we present it in the meeting? / It might be worth sending the key points by email. / Let’s ask people what they need.",
+   "We could call the technician. / How about buying a new one? / Why don’t we check the paper tray? / It might be better to replace it. / Let’s use the other printer for now.",
+   "We could organise a monthly lunch. / How about meeting in the office on Fridays? / Why don’t we plan a team trip? / It might be worth booking a room once a month. / Let’s set a date.",
+   "We could remove some questions. / How about splitting it into two parts? / Why don’t we make it online? / It might be better to ask only the essential questions. / Let’s test a shorter version."
+  ]
+ },
+ "B1-10-0": {
+  "name": "Three futures",
+  "prompt": "Para cada momento, haz una predicción con will, una acción en progreso con el futuro continuo y un resultado terminado con el futuro perfecto.",
+  "items": [
+   "this time tomorrow",
+   "by the end of the month",
+   "in five years",
+   "by the time you get back",
+   "at midnight tonight"
+  ],
+  "answers": [
+   "This time tomorrow it will be sunny. / This time tomorrow I’ll be flying to Cartagena. / By this time tomorrow I’ll have arrived.",
+   "By the end of the month prices will go up. / At the end of the month I’ll be moving house. / By the end of the month I’ll have finished the report.",
+   "In five years I think I’ll live abroad. / In five years I’ll be working in Canada. / In five years I’ll have bought a house.",
+   "By the time you get back, it will be dark. / When you get back, I’ll be cooking dinner. / By the time you get back, I’ll have cleaned the flat.",
+   "At midnight tonight it will be very cold. / At midnight tonight I’ll be sleeping. / By midnight tonight I’ll have finished the book."
+  ]
+ },
+ "B1-10-1": {
+  "name": "Place it in time",
+  "prompt": "Describe cada evento tres veces usando una expresión de tiempo diferente cada vez y ajusta el tiempo verbal.",
+  "items": [
+   "the last time you moved house",
+   "a course you finished",
+   "a job you started",
+   "a trip you took",
+   "a friendship that began"
+  ],
+  "answers": [
+   "I moved house two years ago. / I moved house in 2024. / I’ve lived in my new house since 2024.",
+   "I finished an English course last year. / I did the course from January to June. / I studied for six months.",
+   "I started my job in March. / I started it seven months ago. / I’ve worked there since March.",
+   "I went to Cartagena in December. / I travelled there during the holidays. / I stayed for a week.",
+   "We met ten years ago. / We met in 2016, during a summer course. / We’ve been friends since then."
+  ]
+ },
+ "B1-11-0": {
+  "name": "Order the sequence",
+  "prompt": "Une cada par de eventos con una conjunción de tiempo diferente, con los tiempos verbales correctos, y luego invierte el orden de las cláusulas.",
+  "items": [
+   "the permit arrives / we start",
+   "she signs / I send the copy",
+   "we check the figures / we publish",
+   "the shift ends / the report is filed",
+   "the parts land / the line restarts"
+  ],
+  "answers": [
+   "As soon as the permit arrives, we’ll start. / We’ll start as soon as the permit arrives.",
+   "Once she signs, I’ll send the copy. / I’ll send the copy once she signs.",
+   "Before we publish, we’ll check the figures. / We’ll check the figures before we publish.",
+   "When the shift ends, the report is filed. / The report is filed when the shift ends.",
+   "The moment the parts land, the line will restart. / The line will restart the moment the parts land."
+  ]
+ },
+ "B1-11-1": {
+  "name": "Rewind the decision",
+  "prompt": "Para cada situación, expresa el arrepentimiento con “should have” y luego el resultado irreal con un tercer condicional completo.",
+  "items": [
+   "you missed the deadline",
+   "the file wasn’t backed up",
+   "nobody checked the booking",
+   "the alarm was ignored",
+   "the contract went unread"
+  ],
+  "answers": [
+   "I should have started earlier. / If I had started earlier, I wouldn’t have missed the deadline.",
+   "We should have backed up the file. / If we had backed up the file, we wouldn’t have lost it.",
+   "Somebody should have checked the booking. / If somebody had checked the booking, we would have had a room.",
+   "We shouldn’t have ignored the alarm. / If we hadn’t ignored the alarm, we would have stopped the fire.",
+   "I should have read the contract. / If I had read the contract, I wouldn’t have signed it."
+  ]
+ },
+ "B1-12-0": {
+  "name": "State the purpose",
+  "prompt": "Da el propósito de cada acción de tres formas: con “to”, con “in order to” y con “so that + cláusula”.",
+  "items": [
+   "labelling every box",
+   "backing up the file twice",
+   "arriving an hour early",
+   "sending a printed copy",
+   "keeping the packaging"
+  ],
+  "answers": [
+   "We label every box to find things quickly. / We label every box in order to find things quickly. / We label every box so that nobody confuses them.",
+   "I back up the file twice to be safe. / I back up the file twice in order to avoid losing data. / I back up the file twice so that I always have a copy.",
+   "I arrived an hour early to get a good seat. / I arrived an hour early in order to prepare the room. / I arrived an hour early so that I could meet the speaker.",
+   "We sent a printed copy to make it official. / We sent a printed copy in order to have a signed record. / We sent a printed copy so that the director could sign it.",
+   "We kept the packaging to return the product. / We kept the packaging in order to protect the equipment. / We kept the packaging so that the inspector could check the serial numbers."
+  ]
+ },
+ "B1-12-1": {
+  "name": "Same reason, three forms",
+  "prompt": "Expresa cada causa de tres formas: con una conjunción, con una preposición y con el marco “the reason … is that”.",
+  "items": [
+   "a power cut stopped the shift",
+   "bad weather delayed the flight",
+   "a missing signature blocked the order",
+   "staff shortages closed the desk",
+   "a software bug lost the data"
+  ],
+  "answers": [
+   "The shift stopped because there was a power cut. / The shift stopped because of a power cut. / The reason why the shift stopped is that there was a power cut.",
+   "The flight was delayed because the weather was bad. / The flight was delayed due to bad weather. / The reason why the flight was delayed is that the weather was bad.",
+   "The order was blocked because a signature was missing. / The order was blocked owing to a missing signature. / The reason why the order was blocked is that a signature was missing.",
+   "The desk closed because there weren’t enough staff. / The desk closed due to staff shortages. / The reason why the desk closed is that there weren’t enough staff.",
+   "We lost the data because there was a software bug. / We lost the data because of a software bug. / The reason why we lost the data is that there was a software bug."
+  ]
+ },
+ "B1-13-0": {
+  "name": "Read the evidence",
+  "prompt": "Haz tres deducciones sobre cada situación, con tres niveles de certeza, y di qué evidencia las respalda.",
+  "items": [
+   "the door was unlocked at seven",
+   "the file is dated Sunday",
+   "two mugs on an empty desk",
+   "the log has a two-hour gap",
+   "the alarm never sounded"
+  ],
+  "answers": [
+   "Someone must have opened it early. (The cleaner has a key.) / The guard might have forgotten to lock it. (He was in a hurry.) / It can’t have been forced. (The lock isn’t damaged.)",
+   "Someone must have worked on it at the weekend. (The date proves it.) / It might have been saved automatically. (The system does backups.) / It can’t have been me. (I was away.)",
+   "Two people must have had a meeting. (There are two mugs.) / They might have left in a hurry. (The mugs are still full.) / It can’t have been the cleaner. (She doesn’t drink coffee.)",
+   "The system must have crashed. (There are no entries.) / Someone might have switched it off. (The switch is by the door.) / It can’t have been a planned stop. (Nobody announced one.)",
+   "The battery must have died. (The light is off.) / Someone might have disconnected it. (The cable is loose.) / It can’t have detected the smoke. (It wasn’t working.)"
+  ]
+ },
+ "B1-13-1": {
+  "name": "Judge the decision",
+  "prompt": "Comenta cada decisión dos veces: una con una crítica y otra con la alternativa que tú habrías elegido.",
+  "items": [
+   "the alarm was overridden",
+   "the report went out unchecked",
+   "the supplier was changed mid-project",
+   "the meeting was cancelled",
+   "the backup was skipped"
+  ],
+  "answers": [
+   "They shouldn’t have overridden the alarm. / I would have evacuated the building.",
+   "Someone should have checked the report. / I would have asked a colleague to review it.",
+   "They shouldn’t have changed suppliers mid-project. / I would have waited until the project ended.",
+   "They shouldn’t have cancelled the meeting. / I would have moved it to another day.",
+   "They shouldn’t have skipped the backup. / I would have run it before the update."
+  ]
+ },
+ "B1-14-0": {
+  "name": "Six steps",
+  "prompt": "Describe cada proceso en seis pasos en voz pasiva, sin nombrar quién lo hace, y usa al menos una pasiva con modal.",
+  "items": [
+   "how an order is packed",
+   "how a room is prepared for an exam",
+   "how a document is approved",
+   "how a vehicle is serviced",
+   "how a sample is tested"
+  ],
+  "answers": [
+   "First, the order is received. Then the items are collected from the shelves. Next, they are checked. After that, they are wrapped. The box must be sealed and labelled. Finally, it is sent to the courier.",
+   "First, the desks are separated. Then the walls are checked for posters. Next, the exam papers are placed face down. Phones must be collected. The clock is put where everyone can see it. Finally, the doors are closed.",
+   "First, the document is written. Then it is reviewed by a colleague. Next, the changes are made. After that, it is sent to the manager. It must be signed by the director. Finally, it is filed.",
+   "First, the vehicle is booked in. Then the oil is changed. Next, the brakes are checked. After that, the tyres are inspected. Any faults must be reported. Finally, the car is washed and returned.",
+   "First, the sample is labelled. Then it is stored at a low temperature. Next, it is sent to the lab. After that, it is analysed. The results must be checked twice. Finally, they are sent to the client."
+  ]
+ },
+ "B1-14-1": {
+  "name": "Commas or not",
+  "prompt": "Di cada frase dos veces, una como definitoria y otra como no definitoria, y explica cómo cambia el significado.",
+  "items": [
+   "my brother who lives in Cali",
+   "the report which arrived late",
+   "the technicians who were on shift",
+   "the office where we met",
+   "the client whose order was lost"
+  ],
+  "answers": [
+   "Defining: My brother who lives in Cali is an engineer. (I have more than one brother.) / Non-defining: My brother, who lives in Cali, is an engineer. (I have only one brother.)",
+   "Defining: The report which arrived late was rejected. (Only that report.) / Non-defining: The report, which arrived late, was rejected. (There was one report; the lateness is extra information.)",
+   "Defining: The technicians who were on shift were interviewed. (Only those on shift.) / Non-defining: The technicians, who were on shift, were interviewed. (All of them were on shift.)",
+   "Defining: The office where we met has closed. (One of several offices.) / Non-defining: The office, where we met, has closed. (Already identified; the meeting is extra information.)",
+   "Defining: The client whose order was lost has complained. (One client among many.) / Non-defining: The client, whose order was lost, has complained. (We already know which client.)"
+  ]
+ },
+ "B1-15-0": {
+  "name": "Depersonalise it",
+  "prompt": "Convierte cada instrucción personal en una recomendación impersonal con una pasiva con modal y luego súbele o bájale la fuerza.",
+  "items": [
+   "you must sign every entry",
+   "you should back up the file",
+   "we have to review the checklist",
+   "you can send it by email",
+   "somebody ought to update the manual"
+  ],
+  "answers": [
+   "Every entry must be signed. / Every entry should be signed. (weaker)",
+   "The file should be backed up. / The file must be backed up. (stronger)",
+   "The checklist has to be reviewed. / The checklist could be reviewed. (weaker)",
+   "It can be sent by email. / It should be sent by email. (stronger)",
+   "The manual ought to be updated. / The manual has to be updated. (stronger)"
+  ]
+ },
+ "B1-15-1": {
+  "name": "Add the tag",
+  "prompt": "Agrega el tag correcto a cada frase y dila dos veces: con entonación que baja (para confirmar) y con entonación que sube (como pregunta real).",
+  "items": [
+   "you’ve read it",
+   "she isn’t coming",
+   "they signed it last week",
+   "there’s another copy",
+   "we can start now"
+  ],
+  "answers": [
+   "You’ve read it, haven’t you?",
+   "She isn’t coming, is she?",
+   "They signed it last week, didn’t they?",
+   "There’s another copy, isn’t there?",
+   "We can start now, can’t we?"
+  ]
+ },
+ "B1-16-0": {
+  "name": "Open or closed",
+  "prompt": "Describe cada logro dos veces: una dentro de un período terminado y otra dentro de un período que sigue abierto.",
+  "items": [
+   "a qualification",
+   "a project",
+   "a place you lived",
+   "a skill you learned",
+   "a target you hit"
+  ],
+  "answers": [
+   "I got my degree in 2022. / I’ve completed two online certificates this year.",
+   "I finished a big project last month. / I’ve led three projects so far this year.",
+   "I lived in Cali for five years. / I’ve lived in Bogotá since 2021.",
+   "I learned to drive when I was eighteen. / I’ve learned to cook a lot of new dishes this year.",
+   "We hit our sales target last quarter. / We’ve already hit our target this month."
+  ]
+ },
+ "B1-16-1": {
+  "name": "By then",
+  "prompt": "Ponle una fecha límite a cada meta y exprésala dos veces: con el futuro perfecto y con “I’d like to have + participio”.",
+  "items": [
+   "a qualification",
+   "a language level",
+   "a saving target",
+   "a piece of writing",
+   "a change of role"
+  ],
+  "answers": [
+   "By December I’ll have completed my certification. / I’d like to have completed my certification by December.",
+   "By the end of next year I’ll have reached B2. / I’d like to have reached B2 by the end of next year.",
+   "By June I’ll have saved five million pesos. / I’d like to have saved five million pesos by June.",
+   "By the summer I’ll have finished my first short story. / I’d like to have published a short story by the summer.",
+   "By the time I’m thirty, I’ll have moved into management. / I’d like to have moved into management by the time I’m thirty."
+  ]
  }
 }

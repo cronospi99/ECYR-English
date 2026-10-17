@@ -9,6 +9,7 @@ import { useAuth } from '@/store/auth';
 import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
 import { useEffect } from 'react';
+import { NotesDock } from '@/features/notes/NotesDock';
 
 function useDisplayName() {
   const profile = useAuth((s) => s.profile);
@@ -167,6 +168,7 @@ export function AppShell() {
         <Outlet />
       </div>
       <TabBar />
+      <NotesDock />
     </div>
   );
 }

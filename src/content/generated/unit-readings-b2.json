@@ -284,5 +284,3146 @@
     }
    ]
   }
+ ],
+ "2": [
+  {
+   "id": "u-b2-2-1",
+   "title": "The Empty Lighthouse",
+   "level": "B2",
+   "genre": "feature article",
+   "topic": "Mysteries",
+   "emoji": "🌊",
+   "words": 429,
+   "paragraphs": [
+    "On 26 December 1900, a supply ship called the Hesperus approached Eilean Mòr, a small rocky island in the Flannan Isles, off the north-west coast of Scotland. Its crew expected to see the three lighthouse keepers waiting at the landing, as they always did. Instead, there was nobody. No flag was flying, and the boxes that should have been ready for collection were missing. The silence was eerie.",
+    "A relief keeper named Joseph Moore climbed the steep path to the lighthouse. The gate and the door were closed, the beds were unmade and the kitchen clock had stopped. Two of the men's heavy waterproof coats were gone, but the third was still hanging on its hook. The keepers, James Ducat, Thomas Marshall and Donald MacArthur, were never seen again.",
+    "For more than a century, people have tried to figure out what happened. The investigators who arrived a few days later found important clues at the west landing, where a storm had clearly caused serious damage. Heavy equipment had been moved, and part of a railing had been torn away. Their conclusion was that the men must have gone down to secure their equipment during bad weather and been swept away by an unusually large wave.",
+    "That explanation sounds reasonable, but it doesn't explain everything. Why was one coat left behind? The rules were strict: one keeper had to stay inside the lighthouse at all times. If all three men went out, one of them must have broken the rules, perhaps because he saw his colleagues in danger and ran out to help them. Of course, he might simply have forgotten his coat in the panic.",
+    "Over the years, the story has attracted more imaginative theories. Some writers have suggested that the men might have been kidnapped by foreign spies, or that one keeper could have attacked the others and then thrown himself into the sea. Others have blamed ghosts or giant sea birds. Most historians say these ideas can't have much basis in fact, since there is no evidence to support them, only circumstantial details that have been exaggerated with each retelling.",
+    "In hindsight, it is easy to say that the keepers should have been more careful, or that the authorities should have built a safer landing. But the people who worked on these remote islands lived with danger every day. Perhaps the most sensible view is that the sea, which surrounded them constantly, finally took them. With so little evidence, however, we will probably never know for certain, and that is exactly why the mystery continues to fascinate."
+   ],
+   "glossary": [
+    [
+     "eerie",
+     "inquietante, escalofriante"
+    ],
+    [
+     "relief keeper",
+     "farero de relevo"
+    ],
+    [
+     "to figure out",
+     "descubrir, entender"
+    ],
+    [
+     "clue",
+     "pista"
+    ],
+    [
+     "to be swept away",
+     "ser arrastrado"
+    ],
+    [
+     "railing",
+     "barandilla, baranda"
+    ],
+    [
+     "circumstantial",
+     "circunstancial, indirecto"
+    ],
+    [
+     "in hindsight",
+     "en retrospectiva"
+    ],
+    [
+     "remote",
+     "remoto, apartado"
+    ],
+    [
+     "retelling",
+     "nueva versión de un relato"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the crew of the Hesperus expect to find when they arrived?",
+     "options": [
+      "An empty island",
+      "The keepers waiting at the landing",
+      "A damaged lighthouse",
+      "A message from the keepers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: esperaban ver a los fareros \"waiting at the landing, as they always did\"."
+    },
+    {
+     "type": "tf",
+     "q": "When Joseph Moore entered the lighthouse, the kitchen clock was still working.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"the kitchen clock had stopped\"."
+    },
+    {
+     "type": "gap",
+     "q": "One of the three waterproof coats was still hanging on its ____.",
+     "answer": "hook",
+     "accept": [],
+     "explain_es": "Párrafo 2: \"the third was still hanging on its hook\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the official investigators conclude?",
+     "options": [
+      "The men were kidnapped",
+      "One keeper attacked the others",
+      "The men were probably swept away by a wave",
+      "The men left the island by boat"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 3: \"must have gone down... and been swept away by an unusually large wave\" (certeza sobre el pasado)."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'one of them must have broken the rules' expresses…",
+     "options": [
+      "a strong logical conclusion about the past",
+      "an obligation in the past",
+      "a possibility the writer rejects",
+      "advice about the past"
+     ],
+     "answer": 0,
+     "explain_es": "'Must have + participio' expresa una deducción casi segura sobre el pasado."
+    },
+    {
+     "type": "tf",
+     "q": "Joseph Moore later wrote a book about the mystery.",
+     "answer": "NG",
+     "explain_es": "El texto no dice nada sobre un libro de Joseph Moore."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Official findings",
+      "Unlikely explanations",
+      "Life on a remote island",
+      "A new investigation"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo presenta teorías imaginativas (espías, fantasmas) que los historiadores consideran sin base."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's final view?",
+     "options": [
+      "The authorities were completely to blame",
+      "The ghost theory is the most likely",
+      "The sea probably took the men, but certainty is impossible",
+      "The keepers deliberately abandoned the lighthouse"
+     ],
+     "answer": 2,
+     "explain_es": "Último párrafo: \"the sea... finally took them\", pero \"we will probably never know for certain\"."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-2-2",
+   "title": "The Day I Accused My Neighbour",
+   "level": "B2",
+   "genre": "opinion column",
+   "topic": "Mistakes",
+   "emoji": "🚲",
+   "words": 434,
+   "paragraphs": [
+    "I would like to say that I am a calm, reasonable person who never jumps to conclusions. Unfortunately, last March proved otherwise. This is the story of how I accused an innocent man of stealing my bicycle, in front of eighty people, and what I learned from it.",
+    "I live in a twelve-storey building in Laureles, Medellín, where I keep my bike in a small storage area next to the car park. One Monday morning I went down to get it and found only the lock, lying open on the floor. I was furious. That bike had cost me three months' savings, and I needed it to get to work.",
+    "My suspicions fell immediately on the new tenant in 7B, a quiet man in his forties who had moved in two weeks earlier. I had seen him in the car park late on Sunday night, carrying a large bag, and he hadn't said hello. In my head, the case was closed. He must have taken it, I thought. Who else could it have been?",
+    "So I did what many of us do now: I wrote a long message to the building's WhatsApp group. I didn't name him directly, but I mentioned \"a new resident\" and \"suspicious behaviour on Sunday night\". Within an hour, my neighbours had worked out who I meant. Some sent angry emojis; others suggested calling the police.",
+    "The real explanation arrived that afternoon, from Don Álvaro, the building's porter. Because of a water leak, the maintenance team had needed to empty the storage area over the weekend, so he had moved all the bikes to the basement. He had cut my lock because I hadn't left a key. The man in 7B, it turned out, had simply been taking his rubbish out.",
+    "With the benefit of hindsight, I can see all the things I should have done. I should have asked the porter first. I shouldn't have treated circumstantial details as proof. I needn't have written that message at all; a simple question would have solved the mystery in minutes. And I definitely should have apologised in person, rather than in the group, where my original message was still there for everyone to read.",
+    "In the end I knocked on his door with a box of buñuelos. His name is Ricardo, he works night shifts at a hospital, and he was much kinder about the whole thing than I deserved. Now, whenever I feel the urge to blame someone, I remember his face when he opened the door, and I ask one more question before I decide who the culprit is."
+   ],
+   "glossary": [
+    [
+     "to jump to conclusions",
+     "sacar conclusiones precipitadas"
+    ],
+    [
+     "storage area",
+     "bodega, depósito"
+    ],
+    [
+     "tenant",
+     "inquilino, arrendatario"
+    ],
+    [
+     "to work out",
+     "deducir, descifrar"
+    ],
+    [
+     "porter",
+     "portero, conserje"
+    ],
+    [
+     "water leak",
+     "fuga de agua"
+    ],
+    [
+     "with the benefit of hindsight",
+     "viéndolo en retrospectiva"
+    ],
+    [
+     "proof",
+     "prueba"
+    ],
+    [
+     "culprit",
+     "culpable"
+    ],
+    [
+     "the urge",
+     "el impulso, las ganas"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the writer find in the storage area on Monday morning?",
+     "options": [
+      "Her bike with a flat tyre",
+      "Only the open lock",
+      "A note from the porter",
+      "Somebody else's bike"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"found only the lock, lying open on the floor\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer suspected the new tenant partly because he hadn't greeted her.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: lo vio de noche con una bolsa \"and he hadn't said hello\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer named the tenant directly in her message.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"I didn't name him directly\"."
+    },
+    {
+     "type": "gap",
+     "q": "The bikes were moved to the ____ because of a water leak.",
+     "answer": "basement",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"he had moved all the bikes to the basement\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why had the porter cut the writer's lock?",
+     "options": [
+      "He thought the bike was abandoned",
+      "She hadn't left a key",
+      "The police asked him to",
+      "The lock was broken"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"He had cut my lock because I hadn't left a key\"."
+    },
+    {
+     "type": "vocab",
+     "q": "'I needn't have written that message' means the message…",
+     "options": [
+      "was necessary, but she didn't write it",
+      "was unnecessary, but she wrote it anyway",
+      "was written by someone else",
+      "was not finished"
+     ],
+     "answer": 1,
+     "explain_es": "'Needn't have + participio' indica que algo se hizo pero no era necesario."
+    },
+    {
+     "type": "tf",
+     "q": "Ricardo decided to move to another building after the incident.",
+     "answer": "NG",
+     "explain_es": "El texto no menciona que Ricardo se haya mudado."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A list of regrets",
+      "The police investigation",
+      "A new lock",
+      "How to use WhatsApp groups"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo enumera todo lo que debería o no debería haber hecho (should/shouldn't have)."
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "id": "u-b2-3-1",
+   "title": "Barichara: Slow Travel in Stone",
+   "level": "B2",
+   "genre": "travel feature",
+   "topic": "Travel",
+   "emoji": "🏘️",
+   "words": 413,
+   "paragraphs": [
+    "Arriving in Barichara after six hours on a bus from Bogotá feels a little like stepping into an old photograph. The streets, which are paved with large, uneven blocks of local sandstone, climb gently towards a cathedral of the same warm, golden colour. White houses with green doors and red-tiled roofs line every corner, and the only sound in the early afternoon is the occasional motorbike.",
+    "Barichara, which sits on a plateau in the department of Santander, is often described as the most beautiful small town in Colombia. It is certainly one of the best preserved. Founded in the eighteenth century, it is steeped in colonial history, and strict rules mean that new buildings must follow traditional styles. While larger towns nearby have filled with shopping centres and concrete apartment blocks, Barichara has kept its quaint, almost theatrical charm.",
+    "The town is only a stone's throw from San Gil, Colombia's adventure-sports capital, yet the atmosphere could hardly be more different. Whereas visitors to San Gil come for rafting, paragliding and caving, people who come to Barichara mostly want to slow down. The best way to soak up the atmosphere is simply to walk without a plan, stopping for a cold drink in one of the small squares or a coffee in a courtyard full of bougainvillea.",
+    "For something more active, the Camino Real is well worth a detour. This old stone path, which was used for centuries by indigenous Guane people and later by Spanish traders, winds for about nine kilometres down the canyon to the tiny village of Guane. The walk takes around two and a half hours. Although it is mostly downhill, the sun can be fierce, so it is a good idea to start early and carry plenty of water. Buses run back to Barichara a few times a day.",
+    "Barichara's popularity does have a downside. In recent years, boutique hotels and expensive restaurants have sprung up along the main streets, and some residents complain that property prices have risen beyond the reach of local families. On holiday weekends, the town can feel crowded. Despite this, it remains far quieter than most destinations on the tourist trail, and on a weekday evening you may have the viewpoint above the canyon almost to yourself.",
+    "If you only have time for one place in Santander, choose Barichara. Bring comfortable shoes, leave your schedule at home and give yourself at least two nights. The town rewards people who are not in a hurry."
+   ],
+   "glossary": [
+    [
+     "sandstone",
+     "arenisca"
+    ],
+    [
+     "plateau",
+     "meseta"
+    ],
+    [
+     "steeped in",
+     "impregnado de, lleno de"
+    ],
+    [
+     "quaint",
+     "pintoresco, con encanto antiguo"
+    ],
+    [
+     "a stone's throw from",
+     "a un paso de, muy cerca de"
+    ],
+    [
+     "to soak up the atmosphere",
+     "empaparse del ambiente"
+    ],
+    [
+     "courtyard",
+     "patio interior"
+    ],
+    [
+     "to be worth a detour",
+     "valer la pena desviarse"
+    ],
+    [
+     "fierce",
+     "intenso, fuerte"
+    ],
+    [
+     "to spring up",
+     "surgir, aparecer de repente"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What are Barichara's streets made of?",
+     "options": [
+      "Red bricks",
+      "Local sandstone",
+      "Concrete",
+      "Wooden boards"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"paved with large, uneven blocks of local sandstone\"."
+    },
+    {
+     "type": "tf",
+     "q": "New buildings in Barichara can be built in any style.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"strict rules mean that new buildings must follow traditional styles\"."
+    },
+    {
+     "type": "mc",
+     "q": "How is the atmosphere of Barichara different from that of San Gil?",
+     "options": [
+      "Barichara is more relaxing and slow",
+      "Barichara offers more adventure sports",
+      "San Gil is quieter",
+      "They are exactly the same"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3 contrasta (whereas): San Gil es para aventura, Barichara para \"slow down\"."
+    },
+    {
+     "type": "gap",
+     "q": "The Camino Real goes down the canyon to the village of ____.",
+     "answer": "Guane",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"down the canyon to the tiny village of Guane\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 5, 'have sprung up' is closest in meaning to…",
+     "options": [
+      "have closed down",
+      "have appeared quickly",
+      "have become cheaper",
+      "have moved away"
+     ],
+     "answer": 1,
+     "explain_es": "'Spring up' significa aparecer o surgir rápidamente."
+    },
+    {
+     "type": "tf",
+     "q": "The writer stayed in a boutique hotel during the visit.",
+     "answer": "NG",
+     "explain_es": "El texto menciona hoteles boutique, pero no dice dónde se alojó el autor."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "A perfect, problem-free town",
+      "Growing popularity and its costs",
+      "How to get to Guane",
+      "The history of the cathedral"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo trata de la desventaja de la popularidad: precios, hoteles y multitudes."
+    },
+    {
+     "type": "mc",
+     "q": "Which word in paragraph 4 introduces a contrast?",
+     "options": [
+      "which",
+      "Although",
+      "so",
+      "later"
+     ],
+     "answer": 1,
+     "explain_es": "'Although' conecta ideas opuestas: es mayormente de bajada, pero el sol es fuerte."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-3-2",
+   "title": "Why I Swapped the Big City for a Small Town (and Why I Went Back)",
+   "level": "B2",
+   "genre": "opinion column",
+   "topic": "City life",
+   "emoji": "🌆",
+   "words": 423,
+   "paragraphs": [
+    "Three years ago, I did something many of my friends in Bogotá talk about but never actually do. I gave up my apartment in Chapinero, packed my life into a small van and moved to a town of twelve thousand people in the coffee region. Last month, I moved back. People keep asking me which life is better. The honest answer is that both have disappointed me and both have surprised me.",
+    "Let me start with what I loved about the small town. The first thing I noticed was the time I suddenly had. In Bogotá, a sprawling city of nearly eight million people, I used to spend almost three hours a day in traffic. In the town, everything I needed was a ten-minute walk away. I could buy fresh fruit from a woman whose family had grown it for generations, and the man who repaired my shoes knew my name after a single visit.",
+    "There was also the silence, or rather the right kind of noise: birds at dawn, rain on a tin roof, church bells on Sunday. My blood pressure went down. I slept better than I had in a decade.",
+    "However, small-town life has its own pressures. Everybody knew everybody, which was lovely when I needed help and less lovely when I wanted privacy. Opportunities were limited, too. Although I could work online, the internet connection failed whenever it rained, which in the coffee region is often. And while I made some warm, kind friends, I missed the variety of people I used to meet in the capital: artists, scientists, people from every corner of the country.",
+    "The city, for all its problems, is vibrant in a way a small town can never be. On a single street in Bogotá you can find a tiny Peruvian restaurant, an independent bookshop and a jazz bar that only opens on Thursdays. New cafés and galleries spring up every month. Even the chaos has a kind of energy that I eventually realised I needed.",
+    "So I came back. This time, though, I chose an apartment within walking distance of my office, and I spend most weekends somewhere green. Whereas before I lived as if the city were the whole world, now I treat it as one option among many.",
+    "My advice to anyone dreaming of escape? Do it, but don't expect a perfect life. A small town won't solve every problem, and a big city won't destroy you. What matters is knowing what you need, and being honest enough to change your mind."
+   ],
+   "glossary": [
+    [
+     "to give up",
+     "renunciar a, dejar"
+    ],
+    [
+     "van",
+     "furgoneta, camioneta"
+    ],
+    [
+     "sprawling",
+     "extenso, que se extiende sin orden"
+    ],
+    [
+     "dawn",
+     "amanecer"
+    ],
+    [
+     "tin roof",
+     "techo de lata o zinc"
+    ],
+    [
+     "privacy",
+     "privacidad"
+    ],
+    [
+     "vibrant",
+     "lleno de vida, vibrante"
+    ],
+    [
+     "to spring up",
+     "surgir, aparecer"
+    ],
+    [
+     "within walking distance",
+     "a poca distancia a pie"
+    ],
+    [
+     "escape",
+     "escape, huida"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Where did the writer live before moving to the small town?",
+     "options": [
+      "In the coffee region",
+      "In Chapinero, Bogotá",
+      "In a van",
+      "In Medellín"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"I gave up my apartment in Chapinero\"."
+    },
+    {
+     "type": "tf",
+     "q": "In Bogotá the writer spent around three hours a day in traffic.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"I used to spend almost three hours a day in traffic\"."
+    },
+    {
+     "type": "gap",
+     "q": "In the town, the writer's blood pressure went ____.",
+     "answer": "down",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"My blood pressure went down\"."
+    },
+    {
+     "type": "mc",
+     "q": "What problem with work did the writer have in the town?",
+     "options": [
+      "There were no offices",
+      "The internet failed when it rained",
+      "Her boss refused to let her work online",
+      "She had to travel to Bogotá every week"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"the internet connection failed whenever it rained\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'which was lovely when I needed help' — what does 'which' refer to?",
+     "options": [
+      "The internet connection",
+      "The fact that everybody knew everybody",
+      "The coffee region",
+      "The writer's friends"
+     ],
+     "answer": 1,
+     "explain_es": "'Which' de comentario se refiere a toda la idea anterior: que todos se conocían."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has started a jazz bar in Bogotá.",
+     "answer": "NG",
+     "explain_es": "Menciona un bar de jazz como ejemplo, pero no dice que ella lo haya abierto."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A different way of living in the city",
+      "Leaving Bogotá forever",
+      "Buying a house in the country",
+      "Problems with the new apartment"
+     ],
+     "answer": 0,
+     "explain_es": "Volvió a la ciudad, pero con otra forma de vivir: cerca del trabajo y con fines de semana en la naturaleza."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's main conclusion?",
+     "options": [
+      "Small towns are always better",
+      "Big cities are always better",
+      "Knowing what you need matters more than the place itself",
+      "Nobody should ever move"
+     ],
+     "answer": 2,
+     "explain_es": "Último párrafo: \"What matters is knowing what you need\"."
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "u-b2-4-1",
+   "title": "Larks, Owls and the Tyranny of the 7 a.m. Class",
+   "level": "B2",
+   "genre": "science report",
+   "topic": "Sleep",
+   "emoji": "🦉",
+   "words": 446,
+   "paragraphs": [
+    "If you have ever sat in an early-morning class feeling groggy while the person next to you seems wide awake, biology may be partly to blame. Scientists have known for decades that people differ in their natural sleep timing, or chronotype. Some of us are larks, who wake up easily and feel most alert before lunch. Others are owls, who struggle in the morning but come alive in the evening. Most people fall somewhere in between.",
+    "Our chronotype is controlled by an internal clock in the brain that runs on a cycle of roughly twenty-four hours. Light is its most important signal. After seeing bright light in the morning, the body reduces its production of melatonin, the hormone that makes us sleepy. When evening comes, melatonin rises again, preparing us to wind down and hit the sack. In owls, this whole process simply happens later.",
+    "Genes play a significant role, but age matters too. Young children tend to be early risers, which many tired parents will confirm. During adolescence, however, the internal clock shifts later by as much as two hours. This means that a teenager who can't fall asleep before midnight is not necessarily being lazy or rebellious. Having been forced out of bed at six, many teenagers are effectively trying to learn while their brains still think it is the middle of the night.",
+    "This has important consequences for schools. In Colombia, as in much of Latin America, many public secondary schools start classes at around six thirty in the morning, partly because buildings are shared between a morning and an afternoon shift. Studies in several countries have found that when schools start later, students tend to sleep longer, arrive more punctually and feel less sluggish during lessons. Some studies have also linked later start times to better grades, although the results vary.",
+    "Adults are affected as well. Many offices still assume that the most productive workers are those who arrive first. Yet an owl who is forced to power through an eight o'clock meeting may perform worse than a lark, not because they are less capable but because they are working against their own biology. Since remote and flexible work became more common, some companies have started to let employees choose their hours, provided that they complete their tasks and attend key meetings.",
+    "Can an owl become a lark? Only to a limited extent. Experts suggest getting morning light, avoiding screens before bed and keeping a regular schedule, even at weekends. These habits can move the internal clock earlier by an hour or so. But unless society becomes more flexible, the owls of the world will probably keep feeling shattered every Monday morning."
+   ],
+   "glossary": [
+    [
+     "groggy",
+     "atontado, medio dormido"
+    ],
+    [
+     "chronotype",
+     "cronotipo"
+    ],
+    [
+     "lark",
+     "alondra (persona madrugadora)"
+    ],
+    [
+     "to wind down",
+     "relajarse, desconectarse"
+    ],
+    [
+     "to hit the sack",
+     "irse a dormir"
+    ],
+    [
+     "adolescence",
+     "adolescencia"
+    ],
+    [
+     "shift",
+     "jornada, turno; desplazamiento"
+    ],
+    [
+     "sluggish",
+     "lento, sin energía"
+    ],
+    [
+     "to power through",
+     "seguir adelante con esfuerzo"
+    ],
+    [
+     "shattered",
+     "agotado, rendido"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is a 'chronotype'?",
+     "options": [
+      "A type of sleeping pill",
+      "A person's natural sleep timing",
+      "A kind of alarm clock",
+      "A sleep disorder"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"their natural sleep timing, or chronotype\"."
+    },
+    {
+     "type": "tf",
+     "q": "Morning light reduces the body's production of melatonin.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"After seeing bright light in the morning, the body reduces its production of melatonin\"."
+    },
+    {
+     "type": "gap",
+     "q": "During adolescence, the internal clock can shift later by as much as two ____.",
+     "answer": "hours",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"shifts later by as much as two hours\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'Having been forced out of bed at six' is a reduced clause meaning…",
+     "options": [
+      "Because they will get up at six",
+      "After they have been forced to get up at six",
+      "Unless they get up at six",
+      "Although they want to get up at six"
+     ],
+     "answer": 1,
+     "explain_es": "Es una cláusula reducida de tiempo/causa: 'después de haber sido obligados a levantarse a las seis'."
+    },
+    {
+     "type": "mc",
+     "q": "Why do many public schools in Colombia start very early, according to the text?",
+     "options": [
+      "Teachers prefer it",
+      "Buildings are shared between two shifts",
+      "Students asked for it",
+      "It is cheaper to use electricity in the morning"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"partly because buildings are shared between a morning and an afternoon shift\"."
+    },
+    {
+     "type": "tf",
+     "q": "All studies agree that later school start times improve grades.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"although the results vary\"; no todos los estudios coinciden."
+    },
+    {
+     "type": "mc",
+     "q": "Under what condition do some companies let employees choose their hours?",
+     "options": [
+      "Provided that they finish their tasks and attend key meetings",
+      "Only if they are larks",
+      "As long as they work at weekends",
+      "Unless they work remotely"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"provided that they complete their tasks and attend key meetings\" (cláusula de condición)."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the last paragraph.",
+     "options": [
+      "Owls should change jobs",
+      "Small changes, limited results",
+      "Why larks are healthier",
+      "The end of early meetings"
+     ],
+     "answer": 1,
+     "explain_es": "Los hábitos pueden adelantar el reloj interno solo \"by an hour or so\"."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-4-2",
+   "title": "The 3 a.m. Club",
+   "level": "B2",
+   "genre": "podcast transcript excerpt",
+   "topic": "Daily routines",
+   "emoji": "🥖",
+   "words": 444,
+   "paragraphs": [
+    "[This is an excerpt from Ritmo, a podcast about how people live and work. Hosts Camila and Julián are talking to Wilson Mena, who runs a bakery in Cali.]",
+    "CAMILA: Wilson, thanks for joining us. I understand you went to bed at what, seven last night?",
+    "WILSON: Seven thirty. I'm a creature of habit. I've hit the sack at the same time every night for fifteen years, unless there's a family party, and even then I leave early. My wife says I'm the most boring guest in Colombia.",
+    "JULIÁN: And you get up at…?",
+    "WILSON: Two forty-five. The alarm goes off, and I'm usually awake before it does. After washing my face and drinking a small coffee, I walk to the bakery. By three fifteen the ovens are on. We have to have pandebono and bread ready by six, because that's when the construction workers and the nurses from the night shift start coming in.",
+    "CAMILA: Honestly, I'd be shattered. Were you always a morning person?",
+    "WILSON: Not at all! As a teenager, I was a real night owl. I used to burn the midnight oil playing football in the street or listening to salsa on the radio, then I'd sleep in until noon on Saturdays. My mother despaired. When my uncle offered me a job in his bakery, I was nineteen, and the first month was terrible. I felt sluggish all day and fell asleep on the bus twice.",
+    "JULIÁN: So what changed?",
+    "WILSON: Mostly discipline. Since I couldn't change the bakery's hours, I had to change mine. I stopped drinking coffee after midday, and I made my bedroom completely dark. I also learned to take a short nap after lunch, but never more than twenty minutes, otherwise I wake up groggy.",
+    "CAMILA: What about your social life? Doesn't it suffer?",
+    "WILSON: Of course. I've missed concerts, weddings, football matches. That's the price. But I see my children every afternoon when they come home from school, which many parents who work office hours can't do. And there's something special about the city at four in the morning. While walking to work, I see the street sweepers, the taxi drivers finishing their shift, the first buses. We're a kind of secret club.",
+    "JULIÁN: Last question. Any advice for listeners who struggle to get up early?",
+    "WILSON: Be patient. Your body needs weeks, not days, to adjust. Go to bed at the same time every night, even on weekends, as long as you can. And find a reason to get up that matters to you. For me, it's the smell of bread coming out of the oven. Nothing in the world wakes you up faster."
+   ],
+   "glossary": [
+    [
+     "creature of habit",
+     "persona de costumbres fijas"
+    ],
+    [
+     "to hit the sack",
+     "irse a dormir"
+    ],
+    [
+     "shattered",
+     "agotado, rendido"
+    ],
+    [
+     "morning person",
+     "persona madrugadora"
+    ],
+    [
+     "to burn the midnight oil",
+     "trasnochar (trabajando o estudiando)"
+    ],
+    [
+     "to sleep in",
+     "quedarse dormido hasta tarde (a propósito)"
+    ],
+    [
+     "to despair",
+     "desesperarse"
+    ],
+    [
+     "sluggish",
+     "lento, sin energía"
+    ],
+    [
+     "nap",
+     "siesta"
+    ],
+    [
+     "street sweeper",
+     "barrendero"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What time does Wilson usually go to bed?",
+     "options": [
+      "At seven",
+      "At seven thirty",
+      "At two forty-five",
+      "At midnight"
+     ],
+     "answer": 1,
+     "explain_es": "Wilson corrige a Camila: \"Seven thirty\"."
+    },
+    {
+     "type": "tf",
+     "q": "Wilson often wakes up before his alarm goes off.",
+     "answer": "T",
+     "explain_es": "Dice: \"I'm usually awake before it does\"."
+    },
+    {
+     "type": "gap",
+     "q": "The bread and pandebono must be ready by ____ o'clock.",
+     "answer": "six",
+     "accept": [
+      "6"
+     ],
+     "explain_es": "Wilson: \"We have to have pandebono and bread ready by six\"."
+    },
+    {
+     "type": "mc",
+     "q": "What was Wilson like as a teenager?",
+     "options": [
+      "A morning person",
+      "A night owl",
+      "A professional football player",
+      "A baker"
+     ],
+     "answer": 1,
+     "explain_es": "\"As a teenager, I was a real night owl\"."
+    },
+    {
+     "type": "vocab",
+     "q": "'I used to burn the midnight oil' means he…",
+     "options": [
+      "stayed up very late",
+      "worked in a petrol station",
+      "cooked at night",
+      "woke up very early"
+     ],
+     "answer": 0,
+     "explain_es": "'Burn the midnight oil' significa quedarse despierto hasta muy tarde."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Wilson never nap for more than twenty minutes?",
+     "options": [
+      "His boss doesn't allow it",
+      "He feels groggy if he sleeps longer",
+      "His children come home",
+      "He has to open the bakery"
+     ],
+     "answer": 1,
+     "explain_es": "\"never more than twenty minutes, otherwise I wake up groggy\"."
+    },
+    {
+     "type": "tf",
+     "q": "Wilson's children also work in the bakery.",
+     "answer": "NG",
+     "explain_es": "Dice que ve a sus hijos por la tarde, pero no dice que trabajen en la panadería."
+    },
+    {
+     "type": "heading",
+     "q": "Which title best describes Wilson's final advice?",
+     "options": [
+      "Drink more coffee",
+      "Give your body time and find a meaningful reason",
+      "Never go out at weekends",
+      "Change jobs if you are tired"
+     ],
+     "answer": 1,
+     "explain_es": "Recomienda paciencia, horarios regulares y \"find a reason to get up that matters to you\"."
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "u-b2-5-1",
+   "title": "Lost in (Polite) Translation",
+   "level": "B2",
+   "genre": "feature article",
+   "topic": "Communication",
+   "emoji": "🗣️",
+   "words": 421,
+   "paragraphs": [
+    "When Natalia Herrera moved from Bucaramanga to Hamburg to work as a civil engineer, she expected the language to be her biggest challenge. It wasn't. \"My German was fine,\" she says. \"What I wasn't ready for was how people talked to each other. In my first meeting, a colleague looked at my design and said, 'This won't work.' No introduction, no smile. I went to the bathroom and nearly cried.\"",
+    "Natalia's experience is extremely common among Latin Americans who work in northern Europe. Researchers who study workplace communication often describe cultures as falling somewhere on a scale between direct and indirect. In more direct cultures, it is considered efficient to get straight to the point, and people rarely mince their words, even with their bosses. In more indirect cultures, including much of Colombia, it is more important to protect the relationship, so criticism is softened, suggested or delivered through a third person.",
+    "Neither style is better, but problems arise when the two meet. To a German colleague, a Colombian who says \"Maybe we could look at this again later\" may seem vague or even dishonest. To a Colombian, a German who says \"That's wrong\" may come across as rude or arrogant. Both are simply following the rules they grew up with. The result is that people often talk at cross purposes, each convinced that the other is being difficult.",
+    "\"Learning to read between the lines works in both directions,\" explains Marta Velasco, a Spanish-born consultant who trains international teams. \"Northern Europeans need to understand that a Latin American 'yes, of course' may actually mean 'I have doubts'. And Latin Americans need to understand that a blunt comment usually isn't personal. It's about the work, not about you.\"",
+    "Velasco recommends that teams discuss these differences openly. Agreeing on some basic rules, for example that feedback will always be given in private, or that silence in a meeting does not mean agreement, can prevent many misunderstandings. Being aware of your own style, she adds, is the first step towards adapting it.",
+    "Three years later, Natalia says she has learned to enjoy the directness. \"It's actually relaxing not to have to guess what people think,\" she says. \"Nobody sugar-coats anything, so when my boss says my work is good, I know he means it.\" But on her visits home, she has noticed a new problem. \"Last Christmas I told my aunt her tamal was a bit dry,\" she laughs. \"It's not wise to be that candid with a Santandereana. She still hasn't forgiven me.\""
+   ],
+   "glossary": [
+    [
+     "to get straight to the point",
+     "ir al grano"
+    ],
+    [
+     "to mince your words",
+     "tener pelos en la lengua (en negativo: no tenerlos)"
+    ],
+    [
+     "to soften",
+     "suavizar"
+    ],
+    [
+     "vague",
+     "vago, impreciso"
+    ],
+    [
+     "to come across as",
+     "dar la impresión de ser"
+    ],
+    [
+     "to talk at cross purposes",
+     "hablar sin entenderse, malinterpretarse"
+    ],
+    [
+     "to read between the lines",
+     "leer entre líneas"
+    ],
+    [
+     "blunt",
+     "directo, brusco"
+    ],
+    [
+     "to sugar-coat",
+     "endulzar, maquillar (una verdad)"
+    ],
+    [
+     "candid",
+     "franco, sincero"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What surprised Natalia most when she started working in Hamburg?",
+     "options": [
+      "The difficulty of the German language",
+      "The direct way people communicated",
+      "The long working hours",
+      "The cold weather"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: su alemán estaba bien; lo que no esperaba era \"how people talked to each other\"."
+    },
+    {
+     "type": "tf",
+     "q": "In indirect cultures, criticism is sometimes delivered through another person.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"delivered through a third person\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'come across as rude' means…",
+     "options": [
+      "accidentally meet a rude person",
+      "give the impression of being rude",
+      "become rude over time",
+      "complain about rudeness"
+     ],
+     "answer": 1,
+     "explain_es": "'Come across as' significa dar cierta impresión a los demás."
+    },
+    {
+     "type": "mc",
+     "q": "According to Marta Velasco, a Latin American 'yes, of course' may sometimes mean…",
+     "options": [
+      "'I completely agree'",
+      "'I have doubts'",
+      "'I didn't hear you'",
+      "'Let's finish the meeting'"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"may actually mean 'I have doubts'\"."
+    },
+    {
+     "type": "gap",
+     "q": "Velasco suggests agreeing that feedback will always be given in ____.",
+     "answer": "private",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"feedback will always be given in private\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence from the text uses a gerund as the subject?",
+     "options": [
+      "\"It's actually relaxing not to have to guess\"",
+      "\"Being aware of your own style is the first step\"",
+      "\"Nobody sugar-coats anything\"",
+      "\"She still hasn't forgiven me\""
+     ],
+     "answer": 1,
+     "explain_es": "'Being aware...' funciona como sujeto de la oración (gerundio como sujeto)."
+    },
+    {
+     "type": "tf",
+     "q": "Natalia's boss in Hamburg is also from Colombia.",
+     "answer": "NG",
+     "explain_es": "El texto no menciona la nacionalidad de su jefe."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the last paragraph.",
+     "options": [
+      "Natalia leaves Germany",
+      "A new style, with unexpected results at home",
+      "Why German food is better",
+      "Natalia's aunt visits Hamburg"
+     ],
+     "answer": 1,
+     "explain_es": "Natalia ahora disfruta la franqueza, pero eso le causa problemas en Colombia con su tía."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-5-2",
+   "title": "Dear Lucía: \"My Colleague Keeps Talking Over Me\"",
+   "level": "B2",
+   "genre": "advice column",
+   "topic": "Work communication",
+   "emoji": "💬",
+   "words": 436,
+   "paragraphs": [
+    "Dear Lucía, I'm a 28-year-old marketing assistant at a medium-sized company in Barranquilla. I'm quite reserved by nature, and I've always preferred listening to talking. My problem is a colleague, Andrés, who is extremely outspoken. Every time I start to share an idea in a meeting, he talks over me. Sometimes he even repeats my idea five minutes later as if it were his own, and everyone congratulates him. I don't want to cause a scene, but I'm starting to feel invisible. My friends tell me to stop beating around the bush and confront him, but it's hard for me to be confrontational. What should I do? Silenced in Barranquilla",
+    "Dear Silenced, First of all, I want you to know that what you're describing is extremely common, and it isn't your fault. Being quiet is not a weakness. Many of the best ideas in any organisation come from people who think before they speak. The problem is not your personality but a meeting culture that rewards whoever talks loudest.",
+    "That said, it's important to protect your contributions, and there are ways to do it without turning into someone you're not. Here are a few strategies.",
+    "Prepare in advance. If you know the topic of a meeting, write down one or two points you want to make. It's much easier to speak up when you have a clear sentence ready. Sending a short email with your ideas before the meeting also creates a written record that they came from you.",
+    "Use a calm, polite phrase when you are interrupted. Something like \"Sorry, Andrés, I'd just like to finish my point\" is tactful but firm. You don't need to raise your voice. Saying it once, clearly, is usually enough.",
+    "Give credit to yourself, gently. If he repeats your idea, try: \"Thanks, Andrés, that's exactly what I was suggesting earlier. Shall I explain how we could do it?\" This isn't aggressive; it simply reminds everyone where the idea started.",
+    "Talk to him privately. It's possible that Andrés doesn't realise what he's doing. Some outspoken people genuinely don't read between the lines and need things explained directly. Choose a quiet moment and be candid: tell him how it makes you feel, focusing on specific situations rather than on his character.",
+    "Finally, if nothing changes, it's perfectly reasonable to mention the situation to your manager. Good managers want to hear from everyone, and they can make sure meetings are fair, for example by asking each person to speak in turn.",
+    "You don't need to become loud to be heard. You just need to be a little more strategic. Good luck! Lucía"
+   ],
+   "glossary": [
+    [
+     "reserved",
+     "reservado"
+    ],
+    [
+     "outspoken",
+     "que habla sin rodeos, franco"
+    ],
+    [
+     "to talk over someone",
+     "interrumpir a alguien hablando encima"
+    ],
+    [
+     "to cause a scene",
+     "armar un escándalo"
+    ],
+    [
+     "to beat around the bush",
+     "andarse por las ramas"
+    ],
+    [
+     "confrontational",
+     "conflictivo, que busca la confrontación"
+    ],
+    [
+     "to speak up",
+     "hablar, expresar la opinión"
+    ],
+    [
+     "tactful",
+     "diplomático, con tacto"
+    ],
+    [
+     "firm",
+     "firme"
+    ],
+    [
+     "to give credit",
+     "reconocer el mérito"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the writer's main problem?",
+     "options": [
+      "Her boss ignores her emails",
+      "A colleague interrupts her and takes credit for her ideas",
+      "She can't find a job in marketing",
+      "Her friends criticise her personality"
+     ],
+     "answer": 1,
+     "explain_es": "La carta explica que Andrés \"talks over me\" y repite sus ideas \"as if it were his own\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer describes herself as a quiet person.",
+     "answer": "T",
+     "explain_es": "Dice: \"I'm quite reserved by nature\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Lucía, what is the real problem?",
+     "options": [
+      "The writer's personality",
+      "A meeting culture that rewards the loudest people",
+      "The company's marketing strategy",
+      "Andrés's lack of experience"
+     ],
+     "answer": 1,
+     "explain_es": "\"The problem is not your personality but a meeting culture that rewards whoever talks loudest\"."
+    },
+    {
+     "type": "gap",
+     "q": "Sending an email before the meeting creates a written ____ of your ideas.",
+     "answer": "record",
+     "accept": [],
+     "explain_es": "\"creates a written record that they came from you\"."
+    },
+    {
+     "type": "vocab",
+     "q": "A phrase that is 'tactful but firm' is…",
+     "options": [
+      "rude and loud",
+      "polite but clear and decided",
+      "funny and informal",
+      "uncertain and quiet"
+     ],
+     "answer": 1,
+     "explain_es": "'Tactful' = con tacto; 'firm' = firme. Educado pero decidido."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence from the reply follows the pattern 'It's + adjective + infinitive'?",
+     "options": [
+      "\"Being quiet is not a weakness.\"",
+      "\"It's much easier to speak up when you have a clear sentence ready.\"",
+      "\"You don't need to raise your voice.\"",
+      "\"Good luck!\""
+     ],
+     "answer": 1,
+     "explain_es": "'It's much easier to speak up' = It's + adjetivo + infinitivo."
+    },
+    {
+     "type": "tf",
+     "q": "Lucía suggests that Andrés may not be aware of his behaviour.",
+     "answer": "T",
+     "explain_es": "\"It's possible that Andrés doesn't realise what he's doing\"."
+    },
+    {
+     "type": "tf",
+     "q": "Lucía worked in marketing before becoming an advice columnist.",
+     "answer": "NG",
+     "explain_es": "La columna no dice nada sobre el pasado profesional de Lucía."
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "u-b2-6-1",
+   "title": "The Hippo in the River: Anatomy of a Rumour",
+   "level": "B2",
+   "genre": "report",
+   "topic": "Media",
+   "emoji": "🦛",
+   "words": 420,
+   "paragraphs": [
+    "By nine o'clock on a Tuesday morning last August, almost everyone in the small riverside town of San Isidro had seen the video. It was only eleven seconds long and badly out of focus, but it appeared to show a large grey animal moving through the water near the bridge where children often swim. The message that came with it was alarming: \"Hippo spotted in the river. Keep your kids at home!\"",
+    "Colombia has a real hippo problem, of course. The animals that were brought illegally to the Magdalena Medio region in the 1980s have since multiplied into a population of well over a hundred, and they have occasionally been seen far from where they were first released. So the rumour didn't sound impossible. Within two hours, the local school had cancelled its swimming lessons, and two radio stations had broken the story without checking it.",
+    "Laura Pineda, a reporter for a regional news website, was more cautious. \"I had been covering the hippo issue for three years, so I knew what they look like in the water,\" she says. \"Something about the video seemed wrong. I decided to take it with a pinch of salt until I could get to the bottom of it.\"",
+    "Her first step was to find the original source. The video had been forwarded so many times that nobody knew who had filmed it. After several phone calls, she traced it to a fisherman who had recorded it on his phone the evening before. When she showed him the clip, he laughed. \"That's my neighbour's cow,\" he told her. \"She had escaped and was swimming across to the other side. I sent it to my cousin as a joke.\"",
+    "Pineda then tried to corroborate his account. She found two other eyewitnesses who had seen the cow in the river, and the neighbour confirmed that the animal had come home, wet and tired, later that night. A biologist who studied the video agreed that the shape of the head was clearly that of a cow.",
+    "By the time her article was published that afternoon, the story had been shared thousands of times. Some people were relieved; others refused to believe the explanation. One of the radio stations backtracked and apologised. The other has never corrected its report.",
+    "\"What worries me is how quickly an unsubstantiated claim becomes 'news',\" says Pineda. \"The hippo issue is serious, and when stories like this are blown out of proportion, people stop trusting the real warnings. That's the most dangerous part.\""
+   ],
+   "glossary": [
+    [
+     "rumour",
+     "rumor"
+    ],
+    [
+     "out of focus",
+     "desenfocado"
+    ],
+    [
+     "to break a story",
+     "dar a conocer una noticia"
+    ],
+    [
+     "to take with a pinch of salt",
+     "tomar con pinzas, con cautela"
+    ],
+    [
+     "to get to the bottom of",
+     "llegar al fondo de"
+    ],
+    [
+     "to trace",
+     "rastrear"
+    ],
+    [
+     "to corroborate",
+     "corroborar"
+    ],
+    [
+     "eyewitness",
+     "testigo presencial"
+    ],
+    [
+     "to backtrack",
+     "retractarse, echarse atrás"
+    ],
+    [
+     "unsubstantiated",
+     "sin fundamento, no comprobado"
+    ],
+    [
+     "to blow out of proportion",
+     "exagerar, sacar de proporción"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the message that came with the video advise people to do?",
+     "options": [
+      "Call the police",
+      "Keep their children at home",
+      "Go to the bridge to see the animal",
+      "Stop fishing"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"Keep your kids at home!\""
+    },
+    {
+     "type": "tf",
+     "q": "The rumour seemed believable partly because hippos really live in Colombia.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: Colombia tiene un problema real con hipopótamos, \"So the rumour didn't sound impossible\"."
+    },
+    {
+     "type": "gap",
+     "q": "Laura Pineda had been ____ the hippo issue for three years.",
+     "answer": "covering",
+     "accept": [
+      "reporting on"
+     ],
+     "explain_es": "Párrafo 3: \"I had been covering the hippo issue for three years\" (past perfect continuous)."
+    },
+    {
+     "type": "mc",
+     "q": "Who had filmed the video?",
+     "options": [
+      "A schoolteacher",
+      "A radio journalist",
+      "A fisherman",
+      "A biologist"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 4: \"she traced it to a fisherman who had recorded it\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 5, 'to corroborate his account' means to…",
+     "options": [
+      "publish his story",
+      "find evidence that his story was true",
+      "criticise his story",
+      "translate his story"
+     ],
+     "answer": 1,
+     "explain_es": "'Corroborate' es confirmar con otras pruebas o testimonios."
+    },
+    {
+     "type": "mc",
+     "q": "How did the two radio stations react after the truth came out?",
+     "options": [
+      "Both apologised",
+      "Neither changed its report",
+      "One apologised and the other never corrected its report",
+      "Both interviewed Laura Pineda"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 6: una se retractó (\"backtracked\"); la otra \"has never corrected its report\"."
+    },
+    {
+     "type": "tf",
+     "q": "The cow's owner was fined for letting the animal escape.",
+     "answer": "NG",
+     "explain_es": "El texto no menciona ninguna multa."
+    },
+    {
+     "type": "heading",
+     "q": "Which heading best summarises Pineda's final point?",
+     "options": [
+      "Hippos are not dangerous",
+      "False alarms weaken trust in real warnings",
+      "Radio is better than social media",
+      "Fishermen should not use phones"
+     ],
+     "answer": 1,
+     "explain_es": "Ella dice que cuando se exageran estas historias, \"people stop trusting the real warnings\"."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-6-2",
+   "title": "Inside a Fact-Checking Newsroom",
+   "level": "B2",
+   "genre": "interview",
+   "topic": "Journalism",
+   "emoji": "🔎",
+   "words": 417,
+   "paragraphs": [
+    "Andrea Molina has worked as a fact-checker in Bogotá for six years. Her small team checks claims made by politicians, viral posts and, increasingly, videos created with artificial intelligence. We spoke to her about how the job has changed.",
+    "Q: What does a typical day look like for you? A: There isn't really a typical day, which is part of the fun. This morning, for example, I've been checking a statistic that a senator used in a speech yesterday. I've already spoken to two economists and I've downloaded the official data, but I haven't reached a conclusion yet. Meanwhile, my colleagues have been tracking a rumour about a new tax that has been circulating on social media since the weekend.",
+    "Q: How has the job changed since you started? A: Enormously. When I started in 2020, most of the false content we saw was text: invented quotes, fake headlines. Over the last two years, we've seen a huge increase in manipulated images and audio. Last month we received a voice message that seemed to be from a famous footballer. It sounded completely real, but it had been created with an app.",
+    "Q: How do you decide what to check? A: We look at two things: how widely something has spread and how much harm it could cause. A silly story about a celebrity probably isn't worth our time. But a claim that a vaccine is dangerous, or that an election has been cancelled, can affect people's lives, so we prioritise those.",
+    "Q: What's the hardest part of your work? A: Honestly, it's the reaction. People often accuse us of being biased, whichever side the false claim came from. We've been insulted by supporters of every party. Our answer is to be transparent: we always publish our sources and explain exactly how we reached our verdict, so readers can check our work themselves.",
+    "Q: Have you ever got something wrong? A: Yes, twice. In both cases we published a correction at the top of the article and explained what had happened. Admitting a mistake quickly is essential if you want people to trust you.",
+    "Q: What advice would you give our readers? A: Before you share something, stop for ten seconds. Ask yourself who created it and why. If a story makes you very angry or very excited, that's exactly when you should be most careful. And if you can't find the same information on at least two reliable sites, it's better not to share it at all."
+   ],
+   "glossary": [
+    [
+     "fact-checker",
+     "verificador de datos"
+    ],
+    [
+     "claim",
+     "afirmación"
+    ],
+    [
+     "viral post",
+     "publicación viral"
+    ],
+    [
+     "to track",
+     "seguir, rastrear"
+    ],
+    [
+     "to circulate",
+     "circular"
+    ],
+    [
+     "manipulated",
+     "manipulado"
+    ],
+    [
+     "harm",
+     "daño"
+    ],
+    [
+     "biased",
+     "parcializado, sesgado"
+    ],
+    [
+     "verdict",
+     "veredicto, conclusión"
+    ],
+    [
+     "correction",
+     "corrección, fe de erratas"
+    ],
+    [
+     "reliable",
+     "confiable"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What has Andrea been doing this morning?",
+     "options": [
+      "Writing a speech for a senator",
+      "Checking a statistic from a senator's speech",
+      "Interviewing a footballer",
+      "Designing an app"
+     ],
+     "answer": 1,
+     "explain_es": "\"This morning, for example, I've been checking a statistic that a senator used\"."
+    },
+    {
+     "type": "tf",
+     "q": "Andrea has already reached a conclusion about the senator's statistic.",
+     "answer": "F",
+     "explain_es": "\"I haven't reached a conclusion yet\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the text use 'have been tracking' to describe her colleagues' work?",
+     "options": [
+      "The action is finished and in the past",
+      "The action started earlier and is still in progress",
+      "The action will happen in the future",
+      "The action happened only once"
+     ],
+     "answer": 1,
+     "explain_es": "El present perfect continuous expresa una actividad que empezó en el pasado y continúa."
+    },
+    {
+     "type": "gap",
+     "q": "The voice message from the 'footballer' had been created with an ____.",
+     "answer": "app",
+     "accept": [],
+     "explain_es": "\"it had been created with an app\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which two factors help the team decide what to check?",
+     "options": [
+      "Cost and length",
+      "How widely it has spread and how much harm it could cause",
+      "Who sent it and when",
+      "The topic and the language"
+     ],
+     "answer": 1,
+     "explain_es": "\"how widely something has spread and how much harm it could cause\"."
+    },
+    {
+     "type": "vocab",
+     "q": "When people accuse the team of being 'biased', they mean the team is…",
+     "options": [
+      "unfair and favours one side",
+      "too slow",
+      "very well informed",
+      "too expensive"
+     ],
+     "answer": 0,
+     "explain_es": "'Biased' significa parcializado, que favorece a un lado."
+    },
+    {
+     "type": "tf",
+     "q": "Andrea's team has never made a mistake.",
+     "answer": "F",
+     "explain_es": "Ella admite: \"Yes, twice\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the final answer.",
+     "options": [
+      "Pause and check before sharing",
+      "Never use social media",
+      "Become a fact-checker",
+      "Trust your emotions"
+     ],
+     "answer": 0,
+     "explain_es": "Aconseja detenerse diez segundos, preguntarse quién lo creó y verificar en dos sitios confiables."
+    }
+   ]
+  }
+ ],
+ "7": [
+  {
+   "id": "u-b2-7-1",
+   "title": "Isn't It Time We Read the Small Print?",
+   "level": "B2",
+   "genre": "opinion column",
+   "topic": "Technology",
+   "emoji": "🔐",
+   "words": 435,
+   "paragraphs": [
+    "We all click \"I agree\", don't we? A new app asks for permission to see our contacts, our location and our photos, and we accept without a second thought because we want to order lunch or edit a selfie. Studies suggest that almost nobody reads the terms and conditions. Honestly, who has the time? Some of these documents are longer than a short novel.",
+    "But isn't it strange that we accept rules we have never read, written by companies we have never met, about information that is deeply personal? Every time we search, like, buy or scroll, we add to our digital footprint. That data is being collected, analysed and sold right now, often to advertisers we have never heard of. It has been used to predict what we will buy, who we will vote for and even whether we are likely to become ill.",
+    "Defenders of the tech industry usually make two arguments. The first is that the services are free, so data is a fair price. The second is that users can always opt out. Neither argument convinces me. The services aren't really free if we are paying with our private lives. And opting out is often deliberately difficult: the button is hidden three menus deep, or refusing means the app simply stops working.",
+    "Some progress has been made. Colombia has had a data protection law since 2012, and the European Union's rules have forced companies around the world to ask for clearer consent. New regulations on artificial intelligence are being discussed in several countries, and stricter rules will probably be rolled out over the next few years. But laws only work if they are enforced, and if citizens know their rights.",
+    "Wouldn't it be better if privacy were the default setting rather than something we have to fight for? Imagine apps that collected only the information they actually needed, explained in two clear paragraphs what they would do with it, and deleted it after a reasonable time. That isn't a fantasy. Some companies already work this way, and they haven't gone out of business.",
+    "Until that becomes normal, we can take small steps. Check which apps can see your location. Delete the ones you no longer use. Read at least the summary of the privacy policy before you accept. None of this will make you invisible, but it will remind companies that we are paying attention.",
+    "Data privacy isn't only a technical issue, is it? It's about power: who has it, and who doesn't. The first step to getting some of it back is simply refusing to click \"I agree\" without thinking."
+   ],
+   "glossary": [
+    [
+     "terms and conditions",
+     "términos y condiciones"
+    ],
+    [
+     "digital footprint",
+     "huella digital"
+    ],
+    [
+     "to opt out",
+     "darse de baja, optar por no participar"
+    ],
+    [
+     "deliberately",
+     "deliberadamente, a propósito"
+    ],
+    [
+     "consent",
+     "consentimiento"
+    ],
+    [
+     "to be rolled out",
+     "implementarse, lanzarse"
+    ],
+    [
+     "to enforce",
+     "hacer cumplir"
+    ],
+    [
+     "default setting",
+     "configuración predeterminada"
+    ],
+    [
+     "privacy policy",
+     "política de privacidad"
+    ],
+    [
+     "small print",
+     "letra pequeña"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the writer's main argument?",
+     "options": [
+      "Apps should be banned",
+      "We should pay more attention to how our data is used",
+      "Terms and conditions should be longer",
+      "Technology companies are always honest"
+     ],
+     "answer": 1,
+     "explain_es": "Todo el artículo defiende que debemos prestar atención a la privacidad de nuestros datos."
+    },
+    {
+     "type": "tf",
+     "q": "According to studies, most people read terms and conditions carefully.",
+     "answer": "F",
+     "explain_es": "Párrafo 1: \"almost nobody reads the terms and conditions\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence contains the passive of the present continuous?",
+     "options": [
+      "\"That data is being collected, analysed and sold right now\"",
+      "\"It has been used to predict what we will buy\"",
+      "\"Some progress has been made\"",
+      "\"stricter rules will probably be rolled out\""
+     ],
+     "answer": 0,
+     "explain_es": "'is being collected' = presente continuo pasivo (am/is/are + being + participio)."
+    },
+    {
+     "type": "mc",
+     "q": "Why doesn't the writer accept the argument that users can always opt out?",
+     "options": [
+      "Because opting out is often made difficult on purpose",
+      "Because opting out costs money",
+      "Because the law doesn't allow it",
+      "Because most apps have no settings"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"opting out is often deliberately difficult\"."
+    },
+    {
+     "type": "gap",
+     "q": "Colombia has had a data protection law since ____.",
+     "answer": "2012",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"Colombia has had a data protection law since 2012\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'laws only work if they are enforced' means laws work only if…",
+     "options": [
+      "they are written in simple language",
+      "authorities make sure people follow them",
+      "companies agree with them",
+      "they are very strict"
+     ],
+     "answer": 1,
+     "explain_es": "'Enforce' es hacer cumplir una ley."
+    },
+    {
+     "type": "tf",
+     "q": "The writer works for a technology company.",
+     "answer": "NG",
+     "explain_es": "El texto no dice dónde trabaja el autor."
+    },
+    {
+     "type": "mc",
+     "q": "What is the function of the negative question in paragraph 5 ('Wouldn't it be better if…')?",
+     "options": [
+      "To ask for information",
+      "To express the writer's opinion persuasively",
+      "To show the writer is unsure",
+      "To report what someone else said"
+     ],
+     "answer": 1,
+     "explain_es": "Las preguntas negativas se usan para expresar una opinión esperando que el lector esté de acuerdo."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-7-2",
+   "title": "Seven Days Offline: A Classroom Experiment",
+   "level": "B2",
+   "genre": "report",
+   "topic": "Digital wellbeing",
+   "emoji": "📵",
+   "words": 435,
+   "paragraphs": [
+    "When Mónica Arango, a social studies teacher at a public secondary school in Pereira, proposed that her tenth-grade students spend a week without social media, the reaction was immediate. \"They looked at me as if I had asked them to stop breathing,\" she remembers. Eventually, twenty-six of her thirty-two students agreed to try. The rules were simple: phones could be used for calls, messages to family and schoolwork, but no social networks, no video platforms and no online games.",
+    "Before the experiment began, the students were asked to check their screen-time data. The results shocked many of them. The class average was just over six hours a day, and one student had spent more than eleven hours on his phone the previous Saturday. \"I knew I was glued to my screen, but I didn't realise how much,\" said Sara, sixteen. \"It was overwhelming to see the number.\"",
+    "The first two days were the hardest. Several students reported feeling anxious and bored, and many said they kept reaching for their phones without thinking. \"It's addictive, isn't it? Your hand just goes to your pocket,\" explained Juan Diego. Three students gave up before Wednesday.",
+    "By the middle of the week, however, something had changed. Students said they were sleeping better and finding it easier to concentrate in class. Some rediscovered old hobbies: one girl finished a novel for the first time in two years, and a group of boys started playing football after school instead of watching videos of other people playing it. Several also noticed that they were less worried about keeping up with what their friends were posting.",
+    "Not everything was positive. Some students felt left out because their friends in other classes were organising plans on social networks. Others complained that they missed important news and that school announcements were sometimes posted only on Instagram. \"We can't just log off from the world,\" one student wrote in his reflection. \"The world is online.\"",
+    "At the end of the week, the students discussed what they had learned. Most said they would not delete their accounts, but twenty of them decided to set daily limits. Several also said they had become more aware of misinformation and echo chambers, having noticed how different the news felt when it wasn't filtered through their feeds.",
+    "Since the experiment, the idea has been copied by two other teachers at the school, and a version for parents is being planned for next term. \"I didn't want to tell them technology is bad,\" says Arango. \"I wanted them to decide for themselves how much of their attention they're willing to give away.\""
+   ],
+   "glossary": [
+    [
+     "to be glued to a screen",
+     "estar pegado a la pantalla"
+    ],
+    [
+     "screen time",
+     "tiempo de pantalla"
+    ],
+    [
+     "overwhelming",
+     "abrumador"
+    ],
+    [
+     "addictive",
+     "adictivo"
+    ],
+    [
+     "to give up",
+     "rendirse, abandonar"
+    ],
+    [
+     "to keep up with",
+     "estar al día con"
+    ],
+    [
+     "to feel left out",
+     "sentirse excluido"
+    ],
+    [
+     "to log off",
+     "desconectarse, cerrar sesión"
+    ],
+    [
+     "echo chamber",
+     "cámara de eco"
+    ],
+    [
+     "misinformation",
+     "desinformación"
+    ],
+    [
+     "feed",
+     "muro, fuente de noticias (redes)"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How many students agreed to take part in the experiment?",
+     "options": [
+      "Thirty-two",
+      "Twenty-six",
+      "Twenty",
+      "Three"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"twenty-six of her thirty-two students agreed to try\"."
+    },
+    {
+     "type": "tf",
+     "q": "During the week, students were allowed to use their phones for schoolwork.",
+     "answer": "T",
+     "explain_es": "Párrafo 1: \"phones could be used for calls, messages to family and schoolwork\"."
+    },
+    {
+     "type": "gap",
+     "q": "The class average screen time was just over ____ hours a day.",
+     "answer": "six",
+     "accept": [
+      "6"
+     ],
+     "explain_es": "Párrafo 2: \"The class average was just over six hours a day\"."
+    },
+    {
+     "type": "vocab",
+     "q": "Juan Diego says \"It's addictive, isn't it?\". The tag question 'isn't it?' is used to…",
+     "options": [
+      "ask for completely new information",
+      "invite agreement",
+      "show anger",
+      "change the topic"
+     ],
+     "answer": 1,
+     "explain_es": "Las tag questions con entonación descendente buscan que el otro esté de acuerdo."
+    },
+    {
+     "type": "mc",
+     "q": "Which of these was a positive effect reported by students?",
+     "options": [
+      "They earned more money",
+      "They slept better",
+      "They got higher marks in every subject",
+      "They made new friends online"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"they were sleeping better and finding it easier to concentrate\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did some students feel left out?",
+     "options": [
+      "Their teacher punished them",
+      "Friends in other classes made plans on social networks",
+      "Their parents took their phones",
+      "They couldn't play football"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"their friends in other classes were organising plans on social networks\"."
+    },
+    {
+     "type": "tf",
+     "q": "Most students decided to delete their social media accounts.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"Most said they would not delete their accounts\"."
+    },
+    {
+     "type": "tf",
+     "q": "The parents' version of the experiment has already finished.",
+     "answer": "F",
+     "explain_es": "Último párrafo: \"a version for parents is being planned for next term\": todavía no ha ocurrido."
+    }
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "u-b2-8-1",
+   "title": "It's on the Tip of My Tongue!",
+   "level": "B2",
+   "genre": "science feature",
+   "topic": "Memory",
+   "emoji": "🧠",
+   "words": 406,
+   "paragraphs": [
+    "You meet an old classmate in the supermarket. You remember where she sat, the colour of her school bag and the name of her dog, but her name? Nothing. You rack your brains, it begins with an M, maybe, and you feel it is right there, on the tip of your tongue. Then, two hours later, while you are washing the dishes, it suddenly appears: Marcela. Of course.",
+    "Psychologists call this a tip-of-the-tongue state, and it is one of the most common memory experiences in the world. Studies suggest that most adults have them about once a week, and that they become more frequent with age, which helps explain why grandparents so often call their grandchildren by the wrong name. Interestingly, people experiencing these moments can usually recall information related to the word, such as its first letter or number of syllables, even when the word itself refuses to come.",
+    "Why are names so difficult? One explanation is that names are arbitrary. The word 'baker' tells you something about the person; the name 'Marcela' tells you nothing. Researchers believe that information connected to many other ideas is easier to retrieve, because there are more paths leading to it. A name, linked only to a face, has very few paths. If one of them is blocked, you draw a blank.",
+    "Stress makes the problem worse, which is why students sometimes forget answers they knew perfectly well the night before. Under pressure, the brain releases hormones that interfere with the process of retrieval. That is also why trying harder rarely works. The more you concentrate on the missing word, the more you may activate a wrong one, which then gets in the way.",
+    "So what can you do? Experts suggest relaxing and thinking about something else. Going through the alphabet slowly can also jog your memory. And when you learn a new name, you can make it easier to remember later by connecting it to something vivid: imagine Marcela holding a giant mango, for example, or repeat the name aloud in conversation.",
+    "There is some good news, too. Most researchers agree that tip-of-the-tongue moments are not a sign of serious memory loss. In fact, they show that the memory is still there, stored safely in your brain. The connection has simply become a little slow. Being absent-minded now and then is completely normal. So next time a name slips your mind, don't panic. Go and wash the dishes."
+   ],
+   "glossary": [
+    [
+     "to rack your brains",
+     "devanarse los sesos, pensar mucho"
+    ],
+    [
+     "on the tip of my tongue",
+     "en la punta de la lengua"
+    ],
+    [
+     "to recall",
+     "recordar"
+    ],
+    [
+     "arbitrary",
+     "arbitrario"
+    ],
+    [
+     "to retrieve",
+     "recuperar (información)"
+    ],
+    [
+     "to draw a blank",
+     "quedarse en blanco"
+    ],
+    [
+     "to jog your memory",
+     "refrescar la memoria"
+    ],
+    [
+     "vivid",
+     "vívido, intenso"
+    ],
+    [
+     "absent-minded",
+     "despistado, distraído"
+    ],
+    [
+     "to slip your mind",
+     "olvidársele a uno"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What usually happens to the missing name in the example?",
+     "options": [
+      "It never comes back",
+      "It comes back later when the person is doing something else",
+      "The classmate tells the writer",
+      "The writer finds it on social media"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: dos horas después, lavando los platos, \"it suddenly appears\"."
+    },
+    {
+     "type": "tf",
+     "q": "Tip-of-the-tongue states become less frequent as people get older.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"they become more frequent with age\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In 'people experiencing these moments', the reduced relative clause means…",
+     "options": [
+      "people who experience these moments",
+      "people who experienced these moments yesterday",
+      "people who will experience these moments",
+      "people whose moments are experienced"
+     ],
+     "answer": 0,
+     "explain_es": "'experiencing' reemplaza a 'who experience' (cláusula relativa reducida)."
+    },
+    {
+     "type": "mc",
+     "q": "Why are names harder to remember than ordinary words, according to the text?",
+     "options": [
+      "They are longer",
+      "They are connected to very few other ideas",
+      "They are in a foreign language",
+      "People don't use them often"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: un nombre, ligado solo a una cara, \"has very few paths\"."
+    },
+    {
+     "type": "gap",
+     "q": "Under pressure, the brain releases ____ that interfere with retrieval.",
+     "answer": "hormones",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"the brain releases hormones that interfere with the process of retrieval\"."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 4, what does 'which' refer to in '...a wrong one, which then gets in the way'?",
+     "options": [
+      "The brain",
+      "The wrong word that was activated",
+      "The missing word",
+      "The student"
+     ],
+     "answer": 1,
+     "explain_es": "'Which' se refiere a 'a wrong one', la palabra equivocada que estorba."
+    },
+    {
+     "type": "tf",
+     "q": "The writer recommends taking vitamins to improve memory.",
+     "answer": "NG",
+     "explain_es": "El texto no menciona vitaminas."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the last paragraph.",
+     "options": [
+      "A warning sign of illness",
+      "Reassurance: the memory is still there",
+      "How to learn new names",
+      "Why stress is dangerous"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo tranquiliza: estos momentos muestran que el recuerdo sigue almacenado."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-8-2",
+   "title": "The Woman Who Remembers Everything (Almost)",
+   "level": "B2",
+   "genre": "profile",
+   "topic": "Psychology",
+   "emoji": "🏛️",
+   "words": 410,
+   "paragraphs": [
+    "Valentina Gómez can memorise the order of a shuffled deck of 52 cards in under two minutes. She can recite a list of a hundred random words she heard only once, and she once memorised the phone numbers of every member of her extended family, all forty-three of them, as a birthday present for her grandmother. Yet she insists that she was born with a perfectly ordinary memory.",
+    "\"At school I was the absent-minded one,\" says the 27-year-old psychology graduate from Manizales. \"I'd forget my homework, my keys, my friends' birthdays. Things my teachers explained in class just didn't sink in.\" Everything changed at university, when a lecturer mentioned a technique used by ancient Greek speakers to remember long speeches. Intrigued, Valentina went home and started practising that same night.",
+    "The technique is known as the memory palace. You imagine a building you know well, such as your childhood home, and you 'place' each item you want to remember in a different location along a familiar route. To recall the information, you simply walk through the building in your mind. \"The trick is to make each image as strange and vivid as possible,\" she explains. \"If I need to remember 'bananas', I don't just imagine bananas on the table. I imagine a banana singing vallenato in my grandmother's kitchen. The brain loves absurd things.\"",
+    "After two years of training, Valentina entered her first national memory competition and came fourth. Since then she has competed in Mexico and Spain, and she now holds several Colombian records, which she admits is less impressive than it sounds. \"There aren't many of us,\" she laughs. \"But the community is growing.\"",
+    "What interests her most, however, is not competition but education. She now runs workshops for secondary school students who struggle with exams. \"Many young people think they're bad at studying when really nobody has taught them how memory works,\" she says. \"Once they grasp a few basic principles, their retention improves enormously.\" Her advice includes testing yourself instead of just rereading notes, and spacing out study sessions over several days.",
+    "Does she ever forget things now? \"All the time,\" she says, smiling. \"The techniques only work when I decide to use them. Last week I left my phone in a taxi. I can remember a thousand digits of pi, but I still have to mull over where I put my glasses every morning.\" Having a knack for memory, it seems, doesn't make anyone perfect."
+   ],
+   "glossary": [
+    [
+     "to memorise",
+     "memorizar"
+    ],
+    [
+     "shuffled",
+     "barajado"
+    ],
+    [
+     "to recite",
+     "recitar"
+    ],
+    [
+     "absent-minded",
+     "despistado"
+    ],
+    [
+     "to sink in",
+     "calar, entender del todo"
+    ],
+    [
+     "intrigued",
+     "intrigado"
+    ],
+    [
+     "vivid",
+     "vívido"
+    ],
+    [
+     "to grasp",
+     "captar, comprender"
+    ],
+    [
+     "retention",
+     "retención"
+    ],
+    [
+     "to mull over",
+     "darle vueltas a algo, pensar"
+    ],
+    [
+     "to have a knack for",
+     "tener facilidad para"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did Valentina memorise as a present for her grandmother?",
+     "options": [
+      "A deck of cards",
+      "A long speech",
+      "Her relatives' phone numbers",
+      "A list of a hundred words"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: memorizó los teléfonos de \"every member of her extended family\"."
+    },
+    {
+     "type": "tf",
+     "q": "Valentina believes she was born with an exceptional memory.",
+     "answer": "F",
+     "explain_es": "Párrafo 1: \"she insists that she was born with a perfectly ordinary memory\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'a technique used by ancient Greek speakers' means a technique…",
+     "options": [
+      "that ancient Greek speakers used",
+      "that ancient Greek speakers invented yesterday",
+      "that uses Greek speakers",
+      "that Greek speakers are using now"
+     ],
+     "answer": 0,
+     "explain_es": "'used by' es una cláusula relativa reducida en pasiva: 'which was used by'."
+    },
+    {
+     "type": "gap",
+     "q": "In a memory palace, you place each item in a different location along a familiar ____.",
+     "answer": "route",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"in a different location along a familiar route\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Valentina imagine a banana singing vallenato?",
+     "options": [
+      "Because she loves music",
+      "Because strange, vivid images are easier to remember",
+      "Because her grandmother is a singer",
+      "Because bananas are Colombian"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"The trick is to make each image as strange and vivid as possible\"."
+    },
+    {
+     "type": "tf",
+     "q": "Valentina won her first national memory competition.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"came fourth\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which study tip does Valentina give?",
+     "options": [
+      "Reread your notes many times",
+      "Study everything the night before",
+      "Test yourself and space out your study sessions",
+      "Listen to music while studying"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 5: \"testing yourself instead of just rereading notes, and spacing out study sessions\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the last paragraph.",
+     "options": [
+      "Even a memory champion forgets",
+      "A new world record",
+      "Lost in a taxi",
+      "Why pi is important"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo muestra que Valentina todavía olvida cosas cotidianas."
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "u-b2-9-1",
+   "title": "Are Stereotypes Ever Useful?",
+   "level": "B2",
+   "genre": "essay",
+   "topic": "Culture",
+   "emoji": "🌎",
+   "words": 404,
+   "paragraphs": [
+    "Colombians are always late. The British are reserved. Argentinians talk about themselves. Most of us have heard statements like these, and many of us have repeated them, often as a joke. But are generalisations about national character ever useful, or do they always do more harm than good?",
+    "Supporters of generalisations argue that they are a natural part of how the human brain works. We cannot treat every situation as completely new, so we create categories to help us predict what will happen. In this sense, some cultural generalisations can be helpful. A Colombian businesswoman preparing for her first meeting in Tokyo would be wise to learn that, by and large, Japanese business culture values punctuality, formal greetings and indirect criticism. Knowing these norms may help her avoid embarrassing mistakes and fit in more quickly.",
+    "However, there is an important difference between a generalisation and a stereotype. A generalisation describes a tendency and accepts exceptions: 'Many people in this country prefer to eat dinner late.' A stereotype, on the other hand, paints an entire group with a broad brush and assumes that every individual is the same: 'They are all lazy.' Generalisations can be tested and changed when new information appears. Stereotypes, unlike generalisations, tend to resist evidence, especially when they are deep-rooted.",
+    "The danger of stereotypes is not only that they are inaccurate. They can also have real consequences. Colombians who travel abroad know this well. Despite the country's enormous cultural diversity, many of them have experienced jokes, suspicion or extra searches at airports because of images created by films and television series. Research also suggests that people who are constantly exposed to negative stereotypes about their group may perform worse in tests, a phenomenon psychologists call 'stereotype threat'.",
+    "Furthermore, generalisations about a nation hide the variety within it. Apart from a shared language and some customs, a fisherman from the Pacific coast, a student in Bogotá and a cattle farmer from the Llanos may have little in common. Their upbringing, music, food and even ways of speaking can be very different. Treating them as one 'typical Colombian' tells us almost nothing.",
+    "In conclusion, cultural generalisations can be useful starting points, provided we remember that they describe tendencies, not people. The problem begins when we stop observing and start assuming. Rather than asking people to conform to our expectations, we should let them surprise us, which, in my experience, they almost always do."
+   ],
+   "glossary": [
+    [
+     "generalisation",
+     "generalización"
+    ],
+    [
+     "by and large",
+     "en general, por lo general"
+    ],
+    [
+     "norm",
+     "norma (social)"
+    ],
+    [
+     "to fit in",
+     "encajar, adaptarse"
+    ],
+    [
+     "stereotype",
+     "estereotipo"
+    ],
+    [
+     "to paint with a broad brush",
+     "generalizar demasiado, meter a todos en el mismo saco"
+    ],
+    [
+     "deep-rooted",
+     "arraigado"
+    ],
+    [
+     "suspicion",
+     "sospecha"
+    ],
+    [
+     "upbringing",
+     "crianza, educación"
+    ],
+    [
+     "to conform",
+     "ajustarse, amoldarse"
+    ],
+    [
+     "customs",
+     "costumbres"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to supporters of generalisations, why do people create categories?",
+     "options": [
+      "To feel superior",
+      "To help predict what will happen",
+      "To make jokes",
+      "To avoid travelling"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"we create categories to help us predict what will happen\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes that some cultural generalisations can be helpful.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"some cultural generalisations can be helpful\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the main difference between a generalisation and a stereotype, according to the essay?",
+     "options": [
+      "A generalisation is always negative",
+      "A stereotype accepts exceptions",
+      "A generalisation describes a tendency and accepts exceptions",
+      "There is no difference"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 3: la generalización \"describes a tendency and accepts exceptions\"; el estereotipo asume que todos son iguales."
+    },
+    {
+     "type": "vocab",
+     "q": "'Paints an entire group with a broad brush' means…",
+     "options": [
+      "describes a group in great detail",
+      "treats everyone in a group as if they were the same",
+      "creates art about a group",
+      "criticises a group's taste"
+     ],
+     "answer": 1,
+     "explain_es": "Es una expresión que significa generalizar sin matices."
+    },
+    {
+     "type": "gap",
+     "q": "Psychologists call the effect of negative stereotypes on test performance 'stereotype ____'.",
+     "answer": "threat",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"a phenomenon psychologists call 'stereotype threat'\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which expression in paragraph 5 introduces an exception?",
+     "options": [
+      "Furthermore",
+      "Apart from",
+      "may have",
+      "even"
+     ],
+     "answer": 1,
+     "explain_es": "'Apart from' = aparte de / excepto; introduce una excepción."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has lived in Japan.",
+     "answer": "NG",
+     "explain_es": "El ensayo menciona Tokio como ejemplo, pero no dice que el autor haya vivido allí."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "One country, many realities",
+      "The history of the Llanos",
+      "Why Colombians travel",
+      "How stereotypes start"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo muestra la diversidad dentro de un mismo país."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-9-2",
+   "title": "Summers in Two Languages",
+   "level": "B2",
+   "genre": "memoir",
+   "topic": "Childhood",
+   "emoji": "🧳",
+   "words": 414,
+   "paragraphs": [
+    "When I was a child, I used to live two lives. From September to June, I was Daniela, a quiet girl in a public school in New Jersey who ate peanut butter sandwiches and said \"excuse me\" every time she walked past someone. Every July, my parents would put my brother and me on a plane to Cali, and I would turn into \"la gringuita\", the cousin who spoke Spanish with a funny accent and didn't know how to dance salsa.",
+    "My grandmother's house in the neighbourhood of San Antonio was always full of people. Aunts and uncles would drop by without calling, neighbours would sit on plastic chairs outside the door until late, and nobody ever seemed to be alone. At first, it overwhelmed me. In New Jersey, you didn't visit someone without an invitation, and the street outside our house was silent after eight o'clock. In Cali, silence was considered almost rude.",
+    "I remember my first summer clearly. I was seven, and I didn't fit in at all. My cousins would laugh when I said \"permiso\" too formally, or when I refused to eat the chontaduro my uncle bought from a street seller. I used to cry at night because I wanted to go home. But by the end of August, I didn't want to leave. I had learned to dance, more or less, and my grandmother had taught me to make aborrajados, which I still cook for my own children today.",
+    "Back in the US, I would try to explain my other life to my friends, but it was hard. They imagined something from the news, not a grandmother who prayed the rosary every evening and kept a parrot that insulted the neighbours. I started to realise how little most people understood about where my family came from, and how easily they generalised.",
+    "Growing up between two cultures has shaped my whole life. I used to think I had to choose: was I American or Colombian? Now I know that this was the wrong question. I have the punctuality of New Jersey, except when I'm in Colombia, and the warmth of Cali, except, perhaps, in December, when I miss the cold.",
+    "My grandmother died three years ago. The house in San Antonio has been sold, and my cousins are scattered around the world. But every time I hear a salsa song from the seventies, I'm seven years old again, standing in her kitchen, learning to belong in two places at once."
+   ],
+   "glossary": [
+    [
+     "to drop by",
+     "pasar de visita"
+    ],
+    [
+     "to overwhelm",
+     "abrumar"
+    ],
+    [
+     "to fit in",
+     "encajar"
+    ],
+    [
+     "street seller",
+     "vendedor ambulante"
+    ],
+    [
+     "rosary",
+     "rosario"
+    ],
+    [
+     "parrot",
+     "loro"
+    ],
+    [
+     "to generalise",
+     "generalizar"
+    ],
+    [
+     "to shape",
+     "moldear, formar"
+    ],
+    [
+     "warmth",
+     "calidez"
+    ],
+    [
+     "scattered",
+     "dispersos, repartidos"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the writer's family do every July?",
+     "options": [
+      "They moved to New Jersey",
+      "The children flew to Cali",
+      "They visited friends in Bogotá",
+      "They went to a summer school"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"Every July, my parents would put my brother and me on a plane to Cali\"."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 1, 'my parents would put my brother and me on a plane' describes…",
+     "options": [
+      "a single event in the past",
+      "a repeated action in the past",
+      "a future plan",
+      "a hypothetical situation"
+     ],
+     "answer": 1,
+     "explain_es": "'Would' + infinitivo describe hábitos repetidos en el pasado."
+    },
+    {
+     "type": "tf",
+     "q": "In New Jersey, it was normal to visit people without an invitation.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"In New Jersey, you didn't visit someone without an invitation\"."
+    },
+    {
+     "type": "gap",
+     "q": "At first, the writer refused to eat the ____ her uncle bought.",
+     "answer": "chontaduro",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"refused to eat the chontaduro my uncle bought\"."
+    },
+    {
+     "type": "tf",
+     "q": "By the end of her first summer, the writer wanted to stay in Cali.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"by the end of August, I didn't want to leave\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'Aunts and uncles would drop by' means they would…",
+     "options": [
+      "fall down",
+      "visit briefly without planning",
+      "call on the phone",
+      "leave quickly"
+     ],
+     "answer": 1,
+     "explain_es": "'Drop by' = pasar de visita de manera informal."
+    },
+    {
+     "type": "tf",
+     "q": "The writer's brother now lives in Colombia.",
+     "answer": "NG",
+     "explain_es": "El texto dice que los primos están dispersos, pero no dice dónde vive el hermano."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Choosing one identity",
+      "Belonging to both cultures",
+      "Moving back to Cali",
+      "Learning to be punctual"
+     ],
+     "answer": 1,
+     "explain_es": "La autora concluye que no tiene que elegir: tiene rasgos de ambas culturas."
+    }
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "u-b2-10-1",
+   "title": "How to Complain (and Actually Get Results)",
+   "level": "B2",
+   "genre": "consumer guide",
+   "topic": "Consumer rights",
+   "emoji": "📣",
+   "words": 443,
+   "paragraphs": [
+    "Most of us put up with far more than we should. The internet company that charges us for a service we cancelled, the shoes that fall apart after a month, the restaurant that brings the wrong dish for the second time. We grumble to our friends, but we rarely complain to the people who could actually fix the problem. Often we don't want to make a fuss, or we simply don't know how. Here is a step-by-step guide.",
+    "1. Know your rights. In Colombia, the Consumer Protection Statute gives buyers the right to a legal guarantee, which means that a faulty product must be repaired, replaced or, in some cases, refunded. Shops are not allowed to tell you that it is \"not their problem\" and send you directly to the manufacturer.",
+    "2. Keep evidence. Save receipts, take photos of the damage and write down the dates and names of the people you speak to. If you complain by phone, ask for a reference number. What usually wins a dispute is not who shouts loudest but who has the best records.",
+    "3. Be clear about what you want. Before you contact the company, decide exactly what would solve the problem: a refund, a replacement, a discount or simply an apology. Companies find it much easier to respond when the request is specific.",
+    "4. Stay polite but firm. It is completely natural to feel angry, but aggression rarely helps. Indirect questions are your best friend here. Instead of \"Why haven't you fixed this?\", try \"Could you tell me why the repair is taking so long?\" or \"I was wondering whether you could offer a replacement.\" These sound reasonable, but they still make it clear that you expect an answer.",
+    "5. Escalate if necessary. If the person you are talking to can't help, ask to take the matter up with a supervisor. If that fails, put your complaint in writing. Many companies are required to respond to formal complaints within fifteen working days. And if you still receive no answer, you can file a complaint with the Superintendence of Industry and Commerce, the government body that protects consumers.",
+    "6. Know when to accept an offer. Sometimes a company will offer a goodwill gesture, such as a voucher or a free month of service, even if it doesn't admit any fault. If this solves your problem, it may be worth accepting. If it doesn't, stand your ground and explain politely why it isn't enough.",
+    "Complaining well is a skill that improves with practice. The next time something goes wrong, don't wait until you're at the end of your tether. Act early, calmly and with your evidence ready."
+   ],
+   "glossary": [
+    [
+     "to put up with",
+     "aguantar, soportar"
+    ],
+    [
+     "to grumble",
+     "refunfuñar, quejarse"
+    ],
+    [
+     "to make a fuss",
+     "armar un lío, hacer un escándalo"
+    ],
+    [
+     "faulty",
+     "defectuoso"
+    ],
+    [
+     "refund",
+     "reembolso"
+    ],
+    [
+     "receipt",
+     "recibo, factura"
+    ],
+    [
+     "dispute",
+     "disputa, reclamo"
+    ],
+    [
+     "to escalate",
+     "escalar, llevar a una instancia superior"
+    ],
+    [
+     "goodwill gesture",
+     "gesto de buena voluntad"
+    ],
+    [
+     "to stand your ground",
+     "mantenerse firme"
+    ],
+    [
+     "at the end of your tether",
+     "al límite de la paciencia"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to the introduction, why do people often avoid complaining?",
+     "options": [
+      "Complaining is illegal",
+      "They don't want to make a fuss or don't know how",
+      "Companies never answer",
+      "It is too expensive"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"we don't want to make a fuss, or we simply don't know how\"."
+    },
+    {
+     "type": "tf",
+     "q": "In Colombia, a shop can always send you directly to the manufacturer.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"Shops are not allowed to tell you that it is 'not their problem' and send you directly to the manufacturer\"."
+    },
+    {
+     "type": "gap",
+     "q": "If you complain by phone, you should ask for a reference ____.",
+     "answer": "number",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"ask for a reference number\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which of these is an indirect question?",
+     "options": [
+      "\"Why haven't you fixed this?\"",
+      "\"Could you tell me why the repair is taking so long?\"",
+      "\"Fix it now!\"",
+      "\"Is this your problem?\""
+     ],
+     "answer": 1,
+     "explain_es": "La pregunta indirecta empieza con 'Could you tell me...' y mantiene el orden sujeto + verbo."
+    },
+    {
+     "type": "vocab",
+     "q": "In section 5, 'escalate' means…",
+     "options": [
+      "climb stairs",
+      "take the complaint to a higher level",
+      "forget the problem",
+      "pay more money"
+     ],
+     "answer": 1,
+     "explain_es": "'Escalate' es llevar el reclamo a una instancia superior."
+    },
+    {
+     "type": "mc",
+     "q": "How long do many companies have to respond to a formal complaint?",
+     "options": [
+      "Five days",
+      "Fifteen working days",
+      "A month",
+      "There is no limit"
+     ],
+     "answer": 1,
+     "explain_es": "Sección 5: \"within fifteen working days\"."
+    },
+    {
+     "type": "tf",
+     "q": "A goodwill gesture always means the company admits it made a mistake.",
+     "answer": "F",
+     "explain_es": "Sección 6: se puede ofrecer \"even if it doesn't admit any fault\"."
+    },
+    {
+     "type": "heading",
+     "q": "Which heading best summarises section 3?",
+     "options": [
+      "Shout louder",
+      "Decide exactly what solution you want",
+      "Write a letter to the newspaper",
+      "Ask your friends for advice"
+     ],
+     "answer": 1,
+     "explain_es": "Sección 3: decidir exactamente qué resolvería el problema."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-10-2",
+   "title": "The Fridge That Wouldn't Stay Cold",
+   "level": "B2",
+   "genre": "short story",
+   "topic": "Complaints",
+   "emoji": "🧊",
+   "words": 422,
+   "paragraphs": [
+    "The fridge was the last straw. Before that, Hernando Peña had put up with a great deal: a delivery that arrived four days late, two technicians who never turned up, and a customer service line that played the same song for forty minutes. But when his brand-new fridge stopped working for the third time in two months, and he lost a whole week's shopping, including the fish his sister had brought him from Tumaco, he decided enough was enough.",
+    "\"I have a bone to pick with you,\" he told the young woman who finally answered the phone. Then he stopped. He had been a schoolteacher for thirty years, and he knew that shouting rarely worked. He took a deep breath. \"I'm sorry. It isn't your fault. Could you tell me who is responsible for warranty repairs in Bucaramanga?\"",
+    "The woman, whose name was Yesenia, seemed surprised by his politeness. She explained that the repairs were handled by an external company, which was why the technicians kept missing appointments. \"I was wondering whether it would be possible to replace the fridge instead,\" Hernando said. \"This is the third time it has failed, and I have the receipts for every visit.\"",
+    "Yesenia said she didn't know whether that was allowed, but she promised to take it up with her supervisor. Hernando asked for a reference number and wrote it in the small notebook where he had recorded every date, every name and every broken promise.",
+    "Two days passed without an answer. Hernando wrote a formal email. He described the problem clearly, attached photos of the warm milk and the receipts, and explained exactly what he wanted: a new fridge, delivered and installed, plus compensation for the spoiled food. He ended with a sentence his daughter, a lawyer, had suggested: \"If I do not receive a satisfactory response within fifteen working days, I will present my case to the relevant authority.\"",
+    "The reply arrived the next morning. The company apologised for \"the inconvenience\", offered a new fridge from a higher range, and, as a goodwill gesture, a gift voucher for a local supermarket. It wasn't exactly the redress he had asked for, since nothing could replace his sister's fish, but it was more than fair.",
+    "When the new fridge arrived, the delivery man asked him how he had managed it. \"Everybody shouts at them,\" he said. \"Nobody gets anything.\" Hernando smiled. \"What I've learned,\" he said, \"is that patience and paperwork are more powerful than anger.\" Then he went to the market to buy fish."
+   ],
+   "glossary": [
+    [
+     "the last straw",
+     "la gota que colmó el vaso"
+    ],
+    [
+     "to put up with",
+     "aguantar, soportar"
+    ],
+    [
+     "to turn up",
+     "aparecer, llegar"
+    ],
+    [
+     "to have a bone to pick with someone",
+     "tener una queja pendiente con alguien"
+    ],
+    [
+     "warranty",
+     "garantía"
+    ],
+    [
+     "to take something up with someone",
+     "tratar algo con alguien (de mayor rango)"
+    ],
+    [
+     "spoiled",
+     "dañado, descompuesto"
+    ],
+    [
+     "goodwill gesture",
+     "gesto de buena voluntad"
+    ],
+    [
+     "voucher",
+     "bono, vale"
+    ],
+    [
+     "redress",
+     "reparación, compensación"
+    ],
+    [
+     "paperwork",
+     "papeleo, documentos"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What finally made Hernando decide to complain?",
+     "options": [
+      "The late delivery",
+      "The fridge stopping for the third time and the lost food",
+      "A rude technician",
+      "His sister's advice"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: el refrigerador falló por tercera vez y perdió la compra de una semana."
+    },
+    {
+     "type": "tf",
+     "q": "Hernando continued shouting at Yesenia throughout the call.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: se detuvo, respiró y se disculpó, porque \"shouting rarely worked\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did the technicians keep missing appointments?",
+     "options": [
+      "They were on strike",
+      "Repairs were handled by an external company",
+      "Hernando gave the wrong address",
+      "The fridge was not under warranty"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"the repairs were handled by an external company, which was why...\"."
+    },
+    {
+     "type": "vocab",
+     "q": "\"I was wondering whether it would be possible…\" is an example of…",
+     "options": [
+      "an indirect, polite request",
+      "a direct order",
+      "a threat",
+      "a past habit"
+     ],
+     "answer": 0,
+     "explain_es": "'I was wondering whether...' es una pregunta indirecta usada para pedir algo con cortesía."
+    },
+    {
+     "type": "gap",
+     "q": "Hernando recorded every date and name in a small ____.",
+     "answer": "notebook",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"the small notebook where he had recorded every date\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the company offer in the end?",
+     "options": [
+      "A full refund only",
+      "A new, better fridge and a supermarket voucher",
+      "A free repair",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"a new fridge from a higher range\" y \"a gift voucher\"."
+    },
+    {
+     "type": "tf",
+     "q": "Hernando's daughter works for the fridge company.",
+     "answer": "F",
+     "explain_es": "Párrafo 5: su hija es abogada (\"a lawyer\") y solo le sugirió una frase."
+    },
+    {
+     "type": "heading",
+     "q": "Which sentence best expresses the story's message?",
+     "options": [
+      "Anger gets the best results",
+      "Patience and good records are more effective than anger",
+      "Never buy a fridge online",
+      "Always accept the first offer"
+     ],
+     "answer": 1,
+     "explain_es": "Hernando: \"patience and paperwork are more powerful than anger\"."
+    }
+   ]
+  }
+ ],
+ "11": [
+  {
+   "id": "u-b2-11-1",
+   "title": "What Would You Do With a Lost Wallet?",
+   "level": "B2",
+   "genre": "feature article",
+   "topic": "Ethics",
+   "emoji": "👛",
+   "words": 439,
+   "paragraphs": [
+    "Imagine you are working at the reception desk of a hotel when a stranger hands you a wallet. \"I found this on the street,\" he says. \"I'm in a hurry. Could you deal with it?\" Then he leaves. Inside there is a key, a shopping list, a business card with an email address and some cash. What would you do? Would you contact the owner? And would it make a difference if there were more money inside?",
+    "A few years ago, a team of economists decided to find out. Over two years, research assistants 'lost' more than 17,000 wallets in hundreds of cities in forty countries, handing them in at banks, hotels, post offices and police stations. Some wallets contained no money; others contained the equivalent of about thirteen US dollars. In a smaller follow-up, some contained much more. The researchers then simply waited to see how many people would email the owner.",
+    "Most people, including the experts the team consulted beforehand, expected that more money would mean fewer returns. If you found a wallet full of cash, surely the temptation would be greater? The results suggested the opposite. In almost every country, wallets with money were returned more often than empty ones, and wallets with large amounts were returned most often of all.",
+    "Why? The researchers concluded that most people have a strong moral compass and a powerful wish to see themselves as honest. Keeping a wallet with no money feels like a minor mistake. Keeping one full of cash feels like theft, and most people draw the line there. Interestingly, wallets that contained a key were returned more often too, which suggests people were thinking about the owner's problem, not just their own reputation.",
+    "Return rates did vary a lot between countries, and the researchers warned against using the results to paint whole nations as honest or dishonest. Factors such as trust in institutions and the quality of the postal system probably played a role. The experiment also measured only one situation; honesty at a hotel desk may not predict honesty in politics or business.",
+    "Still, the study offers a hopeful message. We often assume that other people would behave badly if they had the chance. In reality, many people have qualms about taking what isn't theirs, even when nobody is watching. If we trusted each other a little more, perhaps we would design better systems, with fewer rules based on the idea that everyone is a potential thief.",
+    "So, back to the hotel desk. If that wallet were handed to you tomorrow, what would you do? Most people, it seems, would do the right thing."
+   ],
+   "glossary": [
+    [
+     "reception desk",
+     "recepción"
+    ],
+    [
+     "to hand in",
+     "entregar"
+    ],
+    [
+     "follow-up",
+     "estudio de seguimiento"
+    ],
+    [
+     "temptation",
+     "tentación"
+    ],
+    [
+     "moral compass",
+     "brújula moral"
+    ],
+    [
+     "theft",
+     "robo"
+    ],
+    [
+     "to draw the line",
+     "poner el límite"
+    ],
+    [
+     "reputation",
+     "reputación"
+    ],
+    [
+     "to have qualms about",
+     "tener reparos o escrúpulos sobre"
+    ],
+    [
+     "potential",
+     "potencial, posible"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Where did the research assistants hand in the wallets?",
+     "options": [
+      "Only at police stations",
+      "At places like banks, hotels and post offices",
+      "At universities",
+      "In supermarkets"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"handing them in at banks, hotels, post offices and police stations\"."
+    },
+    {
+     "type": "tf",
+     "q": "Before the study, most experts expected that wallets with more money would be returned less often.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"expected that more money would mean fewer returns\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the study actually find?",
+     "options": [
+      "Empty wallets were returned most often",
+      "Wallets with money were returned more often",
+      "Nobody returned any wallets",
+      "Results were the same in every country"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"wallets with money were returned more often than empty ones\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'most people draw the line there' means most people…",
+     "options": [
+      "draw a picture of the wallet",
+      "decide that this is the limit they won't cross",
+      "make a list of rules",
+      "change their minds"
+     ],
+     "answer": 1,
+     "explain_es": "'Draw the line' = poner un límite a lo que uno está dispuesto a hacer."
+    },
+    {
+     "type": "gap",
+     "q": "Wallets that contained a ____ were also returned more often.",
+     "answer": "key",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"wallets that contained a key were returned more often too\"."
+    },
+    {
+     "type": "tf",
+     "q": "The researchers said the results prove which nations are the most honest.",
+     "answer": "F",
+     "explain_es": "Párrafo 5: \"warned against using the results to paint whole nations as honest or dishonest\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"If we trusted each other a little more, perhaps we would design better systems.\" This sentence is an example of…",
+     "options": [
+      "the first conditional",
+      "the second (present unreal) conditional",
+      "the third conditional",
+      "a wish about the past"
+     ],
+     "answer": 1,
+     "explain_es": "If + pasado simple, would + infinitivo: condicional irreal de presente."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Limits of the experiment",
+      "A perfect method",
+      "The most honest country",
+      "How to return a wallet"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo explica las limitaciones del estudio y por qué no hay que generalizar."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-11-2",
+   "title": "The Spreadsheet",
+   "level": "B2",
+   "genre": "short story",
+   "topic": "Integrity",
+   "emoji": "📊",
+   "words": 419,
+   "paragraphs": [
+    "It was almost seven on a Friday evening when Camilo's manager called him into her office. Most of the accounting team had already left, and the only sound on the fourteenth floor was the cleaner's vacuum. Doña Patricia closed the door behind him and smiled in a way that made him nervous.",
+    "\"I need a small favour,\" she said. \"The quarterly report goes to the investors on Monday. The numbers are a bit disappointing, so I'd like you to move some of next quarter's sales into this one. It's just a question of timing. Everybody does it.\"",
+    "Camilo had been working at the firm for only eight months. It was his first real job after university, and he was proud of it. His mother told everyone in their neighbourhood in Soacha that her son worked in an office with a view of the mountains. He knew exactly what Patricia was asking for, and he knew it wasn't legal.",
+    "\"Can I think about it over the weekend?\" he asked.",
+    "\"Of course,\" she said. \"But I'll need it by Sunday night.\"",
+    "He didn't sleep much that weekend. On Saturday, he tried to persuade himself that it wasn't so serious. If he refused, she would probably ask someone else, and he would lose his job for nothing. If he agreed, nobody would ever find out. But every time he opened the spreadsheet, he had second thoughts. He kept thinking about his father, a bus driver who had once spent an entire afternoon looking for a passenger to return a forgotten phone. \"Integrity is what you do when nobody is watching,\" his father used to say.",
+    "On Sunday evening, Camilo sent Patricia a short, polite email. He said he wasn't comfortable changing the figures and suggested they present the real numbers with a clear explanation. He attached a draft of that explanation. Then he turned off his phone.",
+    "On Monday, Patricia didn't mention the email. The report went out with the original figures. Two months later, an internal audit discovered that another department had manipulated its accounts, and three managers were dismissed. Patricia was not one of them, but she was moved to a different office soon afterwards.",
+    "Camilo still works at the firm. Sometimes he wishes he had refused immediately, on that Friday evening, instead of asking for time. \"If only I had been braver,\" he says. \"But I'm glad I stood up for what I believed in. I wouldn't want to have a career that I couldn't explain to my father.\""
+   ],
+   "glossary": [
+    [
+     "quarterly report",
+     "informe trimestral"
+    ],
+    [
+     "investor",
+     "inversionista"
+    ],
+    [
+     "to persuade",
+     "convencer, persuadir"
+    ],
+    [
+     "to have second thoughts",
+     "tener dudas, reconsiderar"
+    ],
+    [
+     "integrity",
+     "integridad"
+    ],
+    [
+     "figures",
+     "cifras"
+    ],
+    [
+     "draft",
+     "borrador"
+    ],
+    [
+     "audit",
+     "auditoría"
+    ],
+    [
+     "to be dismissed",
+     "ser despedido"
+    ],
+    [
+     "to stand up for",
+     "defender"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did Patricia ask Camilo to do?",
+     "options": [
+      "Work at the weekend on a new project",
+      "Move some future sales into the current quarter's report",
+      "Present the report to the investors",
+      "Find a new job"
+     ],
+     "answer": 1,
+     "explain_es": "Patricia le pide \"move some of next quarter's sales into this one\"."
+    },
+    {
+     "type": "tf",
+     "q": "Camilo had worked at the firm for several years.",
+     "answer": "F",
+     "explain_es": "\"Camilo had been working at the firm for only eight months\"."
+    },
+    {
+     "type": "gap",
+     "q": "Patricia needed the changes by ____ night.",
+     "answer": "Sunday",
+     "accept": [],
+     "explain_es": "\"I'll need it by Sunday night\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"If he refused, she would probably ask someone else.\" This sentence describes…",
+     "options": [
+      "a real past event",
+      "an imagined situation and its likely result",
+      "a regret about the past",
+      "a fixed rule"
+     ],
+     "answer": 1,
+     "explain_es": "Es un condicional irreal (second conditional): Camilo imagina las consecuencias."
+    },
+    {
+     "type": "mc",
+     "q": "Why did Camilo think about his father?",
+     "options": [
+      "His father was an accountant",
+      "His father had once returned a forgotten phone",
+      "His father worked in the same firm",
+      "His father wanted him to change jobs"
+     ],
+     "answer": 1,
+     "explain_es": "Su padre, conductor de bus, pasó una tarde buscando a un pasajero para devolverle un teléfono."
+    },
+    {
+     "type": "vocab",
+     "q": "'He had second thoughts' means he…",
+     "options": [
+      "thought about it twice as fast",
+      "started to doubt his decision",
+      "forgot what he had decided",
+      "made a second spreadsheet"
+     ],
+     "answer": 1,
+     "explain_es": "'Have second thoughts' = empezar a dudar de una decisión."
+    },
+    {
+     "type": "tf",
+     "q": "Patricia was dismissed after the internal audit.",
+     "answer": "F",
+     "explain_es": "\"Patricia was not one of them, but she was moved to a different office\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Camilo regret?",
+     "options": [
+      "Refusing Patricia's request",
+      "Not refusing immediately on Friday",
+      "Staying at the firm",
+      "Telling his father"
+     ],
+     "answer": 1,
+     "explain_es": "\"he wishes he had refused immediately... instead of asking for time\" (wish + past perfect)."
+    }
+   ]
+  }
+ ],
+ "12": [
+  {
+   "id": "u-b2-12-1",
+   "title": "Six Months in Montreal: What Nobody Told Me",
+   "level": "B2",
+   "genre": "blog post",
+   "topic": "Living abroad",
+   "emoji": "🍁",
+   "words": 421,
+   "paragraphs": [
+    "When I landed in Montreal last January, it was minus twenty-four degrees outside. I was wearing the warmest jacket I could find in Bogotá, which turned out to be completely useless. As I waited for a taxi, my eyelashes started to freeze. I remember thinking: what have I done?",
+    "Six months later, I'm still here, and I've learned a lot. So for anyone thinking about a fresh start abroad, here are the things nobody told me before I left.",
+    "Culture shock comes in waves. The first few weeks were exciting. Everything was new: the snow, the bagels, the way people say \"bonjour-hi\" in shops. Then, around the second month, the excitement disappeared, and I was suddenly, painfully homesick. I missed my mother's ajiaco, the noise of my neighbourhood, even the traffic on the Séptima. I cried in a supermarket because I couldn't find arepas that tasted right. Experts say this is completely normal, and that it passes. For me, it did, but slowly.",
+    "Red tape is real, everywhere. I had imagined that bureaucracy was a Colombian speciality. It isn't. Getting my health card, opening a bank account and finding an apartment without a local credit history took weeks of forms, waiting rooms and confused phone calls in my imperfect French.",
+    "Language is about more than grammar. I had studied French for two years, and I could pass exams. But on my first day at work, I felt like a fish out of water. Quebec French has its own vocabulary and rhythm, and my colleagues switched between French and English in the same sentence. If I hadn't joined a conversation group at the local library, I would still be nodding and smiling without understanding anything.",
+    "Small routines help you settle in. Learning to get around on the metro, finding a café where the waiter knows my order, joining a Sunday football team with other Latin Americans: these small things made the city feel like home. Nobody tells you how important they are.",
+    "Would I do it again? Absolutely. Living here has broadened my horizons in ways I couldn't have imagined. If I had stayed in my comfortable job in Bogotá, I wouldn't be the independent person I am now.",
+    "I don't know yet whether I'll put down roots here. But I have a plan. By this time next year, I will have finished my master's degree, and I will have been working at the engineering firm for eighteen months. And by then, I hope, I will have bought a proper winter coat."
+   ],
+   "glossary": [
+    [
+     "eyelashes",
+     "pestañas"
+    ],
+    [
+     "a fresh start",
+     "un nuevo comienzo"
+    ],
+    [
+     "culture shock",
+     "choque cultural"
+    ],
+    [
+     "homesick",
+     "nostálgico, con añoranza de casa"
+    ],
+    [
+     "red tape",
+     "trámites burocráticos, papeleo"
+    ],
+    [
+     "credit history",
+     "historial crediticio"
+    ],
+    [
+     "a fish out of water",
+     "como pez fuera del agua"
+    ],
+    [
+     "to settle in",
+     "adaptarse, instalarse"
+    ],
+    [
+     "to get around",
+     "desplazarse, moverse"
+    ],
+    [
+     "to broaden your horizons",
+     "ampliar tus horizontes"
+    ],
+    [
+     "to put down roots",
+     "echar raíces"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What was wrong with the writer's jacket when she arrived?",
+     "options": [
+      "It was too big",
+      "It wasn't warm enough for Montreal",
+      "It was lost at the airport",
+      "It was too expensive"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: la chaqueta \"turned out to be completely useless\" a menos 24 grados."
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, culture shock starts immediately on the first day.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: las primeras semanas fueron emocionantes; la nostalgia llegó \"around the second month\"."
+    },
+    {
+     "type": "gap",
+     "q": "The writer cried in a supermarket because she couldn't find good ____.",
+     "answer": "arepas",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"I couldn't find arepas that tasted right\"."
+    },
+    {
+     "type": "vocab",
+     "q": "'Red tape' in paragraph 4 refers to…",
+     "options": [
+      "traffic problems",
+      "official rules and paperwork",
+      "a type of Canadian food",
+      "a medical problem"
+     ],
+     "answer": 1,
+     "explain_es": "'Red tape' = trámites burocráticos."
+    },
+    {
+     "type": "mc",
+     "q": "\"If I hadn't joined a conversation group, I would still be nodding and smiling\" is a mixed conditional. What does it mean?",
+     "options": [
+      "She didn't join a group and still doesn't understand",
+      "She joined a group, and that's why she understands now",
+      "She will join a group next month",
+      "She never studied French"
+     ],
+     "answer": 1,
+     "explain_es": "Condicional mixto: pasado irreal (no unirse) con resultado presente (seguir sin entender). En realidad se unió y ahora entiende."
+    },
+    {
+     "type": "tf",
+     "q": "The writer plays football with other Latin Americans on Sundays.",
+     "answer": "T",
+     "explain_es": "Párrafo 6: \"joining a Sunday football team with other Latin Americans\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer's mother plans to visit Montreal next winter.",
+     "answer": "NG",
+     "explain_es": "El texto menciona el ajiaco de su madre, pero no ninguna visita."
+    },
+    {
+     "type": "mc",
+     "q": "By this time next year, the writer will have been working at the engineering firm for…",
+     "options": [
+      "six months",
+      "a year",
+      "eighteen months",
+      "two years"
+     ],
+     "answer": 2,
+     "explain_es": "Último párrafo: \"I will have been working at the engineering firm for eighteen months\" (future perfect continuous)."
+    }
+   ]
+  },
+  {
+   "id": "u-b2-12-2",
+   "title": "Why Foreigners Are Putting Down Roots in Colombia",
+   "level": "B2",
+   "genre": "feature article",
+   "topic": "Migration",
+   "emoji": "🧭",
+   "words": 431,
+   "paragraphs": [
+    "Not so long ago, Colombia was a country that people left. During the difficult decades of the late twentieth century, millions of Colombians moved to Venezuela, the United States and Spain in search of safety and work. Today the picture is more complicated. While many Colombians still emigrate, the country has also become a destination for people arriving from abroad.",
+    "The largest group by far comes from Venezuela. Since the economic crisis there deepened in the mid-2010s, close to three million Venezuelans have settled in Colombia, making it the main host country in the region. For many of them, the move was not a choice but a necessity. \"When we crossed the border at Cúcuta, we had two suitcases and a baby,\" says Yolimar, a nurse who now lives in Barranquilla. \"The hardest part was the red tape. Without papers, you can't work legally, you can't rent an apartment, you can't even open a bank account.\" Colombia's temporary protection status, introduced in 2021, has allowed well over a million people to regularise their situation.",
+    "A very different group has also grown quickly: remote workers and retirees from North America and Europe. Attracted by the climate, the relatively low cost of living and the warmth of the people, many have chosen cities like Medellín, Santa Marta and Bogotá. Klaus, a retired engineer from Hamburg, moved to Santa Marta four years ago. \"In Germany, I'd be sitting at home watching the rain,\" he says. \"Here I swim in the sea every morning.\"",
+    "Adapting is not always easy. Many newcomers report feeling like a fish out of water at first, particularly if they speak little Spanish. Klaus admits that it took him a year to acclimatise to the heat and to the idea that a meeting at three o'clock might begin at half past. \"If I had been more patient at the beginning, I would have enjoyed that first year much more,\" he says.",
+    "The arrival of wealthier foreigners has also caused tension. In some neighbourhoods of Medellín, residents complain that short-term rentals have pushed up prices, forcing local families to move. City authorities are now discussing new regulations, which are expected to be introduced over the next few years.",
+    "Experts predict that migration will continue to shape the country. By 2035, some estimate, Colombia will have become one of the most diverse societies in South America. For Yolimar, the future is simple. \"By next year, my daughter will have been living here longer than she lived in Venezuela,\" she says. \"This is her home now. And, in a way, it's becoming mine too.\""
+   ],
+   "glossary": [
+    [
+     "to emigrate",
+     "emigrar"
+    ],
+    [
+     "host country",
+     "país de acogida"
+    ],
+    [
+     "to settle",
+     "establecerse"
+    ],
+    [
+     "red tape",
+     "trámites, papeleo"
+    ],
+    [
+     "to regularise",
+     "regularizar"
+    ],
+    [
+     "remote worker",
+     "trabajador remoto"
+    ],
+    [
+     "retiree",
+     "jubilado, pensionado"
+    ],
+    [
+     "newcomer",
+     "recién llegado"
+    ],
+    [
+     "a fish out of water",
+     "como pez fuera del agua"
+    ],
+    [
+     "to acclimatise",
+     "aclimatarse"
+    ],
+    [
+     "short-term rental",
+     "alquiler de corta estancia"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main idea of paragraph 1?",
+     "options": [
+      "Colombians no longer emigrate",
+      "Colombia is now both a country of emigration and a destination",
+      "Most Colombians live in Spain",
+      "Colombia has closed its borders"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: aunque muchos colombianos emigran, el país \"has also become a destination\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to the article, Colombia is the main host country for Venezuelans in the region.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"making it the main host country in the region\"."
+    },
+    {
+     "type": "gap",
+     "q": "Yolimar and her family crossed the border at ____.",
+     "answer": "Cúcuta",
+     "accept": [
+      "Cucuta"
+     ],
+     "explain_es": "Párrafo 2: \"When we crossed the border at Cúcuta\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did Klaus choose Santa Marta?",
+     "options": [
+      "For work in a German company",
+      "To swim in the sea and enjoy the climate",
+      "Because his children live there",
+      "Because it was cheaper than Medellín"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"Here I swim in the sea every morning\" y el clima atrae a los jubilados."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'acclimatise' means…",
+     "options": [
+      "to complain about something",
+      "to get used to a new climate or situation",
+      "to travel to a hot place",
+      "to learn a language"
+     ],
+     "answer": 1,
+     "explain_es": "'Acclimatise' = aclimatarse, acostumbrarse."
+    },
+    {
+     "type": "tf",
+     "q": "Klaus speaks fluent Spanish.",
+     "answer": "NG",
+     "explain_es": "El texto dice que muchos recién llegados hablan poco español, pero no dice nada concreto sobre el nivel de Klaus."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Prices fall in Medellín",
+      "Tension over housing",
+      "A new airport",
+      "Retirees leave the city"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo describe las quejas por el aumento de precios por alquileres cortos."
+    },
+    {
+     "type": "mc",
+     "q": "\"By next year, my daughter will have been living here longer…\" Which tense is this?",
+     "options": [
+      "Future simple",
+      "Future perfect continuous",
+      "Present perfect",
+      "Past perfect"
+     ],
+     "answer": 1,
+     "explain_es": "'will have been living' = future perfect continuous: duración hasta un punto del futuro."
+    }
+   ]
+  }
  ]
 }

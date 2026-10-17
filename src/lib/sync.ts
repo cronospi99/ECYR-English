@@ -5,6 +5,7 @@ import { usePlan, planSnapshot, sanitizePlan } from '@/store/plan';
 import { useAvatar } from '@/store/avatar';
 import { useGames, mergeSessions, sanitizeSessions, sanitizeDefenders } from '@/store/games';
 import { writeDefendersStore } from '@/lib/gameBridge';
+import { startNotesSync } from '@/features/notes/sync';
 
 /**
  * Keeps the learner's progress in `public.learner_state` (see
@@ -54,6 +55,8 @@ async function push(userId: string) {
 
 export function startSync() {
   if (!supabase) return;
+  // "Mis notas" keep their own table and rules (private, per note).
+  startNotesSync();
   useAuth.subscribe((s, prev) => {
     const id = s.session?.user.id ?? null;
     if (id && id !== (prev.session?.user.id ?? null)) void pull(id);

@@ -1,8 +1,8 @@
 // =============================================================================
 // ECYR English — AI Coach
 // -----------------------------------------------------------------------------
-// Conversation partner, sentence corrector, grammar explainer and writing
-// examiner for the platform. Uses the same Gemini key as the IELTS Simulator's
+// Conversation partner, sentence corrector, grammar explainer, writing
+// examiner and live voice-conversation partner (mode "voice") for the platform. Uses the same Gemini key as the IELTS Simulator's
 // `gemini` function (secret GEMINI_API_KEY); the browser never sees it.
 //
 // DEPLOY
@@ -16,6 +16,12 @@
 //   GEMINI_MODEL          model to use (default gemini-3.5-flash-lite)
 //   COACH_DAILY_LIMIT     calls per user per day (default 40, max 500)
 //   COACH_REQUIRE_CLASS   "on" → only teachers and students who joined a class
+//
+// MODE "voice" (AI Coach → Conversación por voz): the learner's turn is a
+// speech-recognition transcript; the answer is JSON
+//   { text, reply, english_version, tip_es, student_spanish }
+// where `reply` is plain spoken English for the natural voice. Each turn
+// counts as one coach message toward COACH_DAILY_LIMIT.
 //
 // Requires supabase/migrations/05_ecyr_platform.sql (bump_ai_usage).
 // =============================================================================
@@ -36,10 +42,11 @@ function reply(status: number, body: unknown): Response {
 }
 const fail = (status: number, message: string, code = "server") => reply(status, { error: { message, code } });
 
-type Mode = "chat" | "correct" | "explain" | "writing-feedback";
+type Mode = "chat" | "correct" | "explain" | "writing-feedback" | "voice";
+const MODES: Mode[] = ["chat", "correct", "explain", "writing-feedback", "voice"];
 type Msg = { role: "user" | "model"; text: string };
 
-function systemPrompt(mode: Mode, level: string): string {
+function systemPrompt(mode: Mode, level: string, spanish = false): string {
   const base =
     `You are ECYR Coach, the AI tutor of ECYR English, a platform for Spanish-speaking learners (mostly from Colombia). ` +
     `The learner's CEFR level is ${level}. Adapt vocabulary, sentence length and grammar to ${level}. ` +
@@ -66,6 +73,22 @@ function systemPrompt(mode: Mode, level: string): string {
         `"**Criterios:**" each criterion marked ✅ or ⚠️ with a short comment; ` +
         `"**Errores:**" bullets "frase original → corrección — por qué"; ` +
         `and "**Versión mejorada:**" a corrected, slightly improved version of the text that stays at ${level}.`;
+    case "voice":
+      return `You are ECYR Coach, a friendly English conversation partner on a live voice call with a Spanish-speaking learner from Colombia. ` +
+        `Their CEFR level is ${level}: adapt vocabulary, speed of ideas and grammar to ${level}. Never invent facts about the learner. ` +
+        `Each learner turn is a speech-recognition transcript: it may lack punctuation or contain recognition errors, so interpret it charitably ` +
+        `and never comment on spelling, punctuation or capital letters. ` +
+        `Your "reply" is read aloud by a voice: plain spoken English only — no Markdown, no emojis, no lists, no stage directions — ` +
+        `1 to 3 short sentences (at most 45 words) that react to what they said, and it ALWAYS ends with ONE natural question that keeps the conversation going. ` +
+        `WHEN THE LEARNER SPEAKS SPANISH (all or part of the turn${spanish ? "; they have said they are answering in Spanish now" : ""}): ` +
+        `set "student_spanish" to true; set "english_version" to a natural way to say what they meant in English at ${level} (one sentence); ` +
+        `set "tip_es" to ONE short sentence in Spanish explaining the key word or structure; and make "reply" say ` +
+        `"You can say: <english_version>", invite them to repeat it in English (e.g. "Try saying it!"), then continue in English with your question. ` +
+        `WHEN THE LEARNER SPEAKS ENGLISH with one clear mistake that matters for meaning or is typical of Spanish speakers: ` +
+        `set "english_version" to their sentence corrected and "tip_es" to the reason in Spanish (max 15 words), and in "reply" just recast it naturally ` +
+        `(e.g. "Oh, you went to the beach!") without lecturing. Otherwise leave "english_version" and "tip_es" empty. ` +
+        `If the turn is empty or unintelligible, kindly ask them to say it again. ` +
+        `Answer ONLY with JSON: {"reply":"","english_version":"","tip_es":"","student_spanish":false}.`;
   }
 }
 
@@ -110,6 +133,32 @@ async function countCall(c: Caller): Promise<Response | null> {
   return null;
 }
 
+// The model is asked for JSON; this still copes with a fenced or chatty answer,
+// and strips anything a voice should not read aloud.
+function voiceTurn(raw: string) {
+  let out: Record<string, unknown> = {};
+  try {
+    out = JSON.parse(raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1));
+  } catch {
+    out = { reply: raw };
+  }
+  const clean = (v: unknown, max: number) =>
+    (typeof v === "string" ? v : "")
+      .replace(/[*_#`>~\u200d\ufe0f]|\p{Extended_Pictographic}/gu, "")
+      .replace(/\s+/g, " ")
+      .replace(/\s+([.,!?;:])/g, "$1")
+      .trim()
+      .slice(0, max);
+  const said = clean(out.reply, 600) || "Sorry, I didn't catch that. Could you say it again?";
+  return {
+    text: said,
+    reply: said,
+    english_version: clean(out.english_version, 300),
+    tip_es: clean(out.tip_es, 300),
+    student_spanish: out.student_spanish === true,
+  };
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: CORS });
   if (req.method !== "POST") return fail(405, "POST only.");
@@ -126,14 +175,14 @@ Deno.serve(async (req: Request) => {
   const key = (Deno.env.get("GEMINI_API_KEY") || "").trim();
   if (!key) return fail(503, "Falta configurar la clave GEMINI_API_KEY en Supabase → Edge Functions → Secrets.", "no_key");
 
-  let body: { messages?: Msg[]; mode?: Mode; level?: string };
+  let body: { messages?: Msg[]; mode?: Mode; level?: string; spanish?: boolean };
   try {
     body = await req.json();
   } catch {
     return fail(400, "La solicitud no es JSON válido.");
   }
 
-  const mode: Mode = ["chat", "correct", "explain", "writing-feedback"].includes(body.mode as string) ? (body.mode as Mode) : "chat";
+  const mode: Mode = MODES.includes(body.mode as Mode) ? (body.mode as Mode) : "chat";
   const level = LEVELS.has(String(body.level)) ? String(body.level) : "B1";
   const messages = (Array.isArray(body.messages) ? body.messages : [])
     .filter((m) => m && (m.role === "user" || m.role === "model") && typeof m.text === "string" && m.text.trim())
@@ -149,9 +198,25 @@ Deno.serve(async (req: Request) => {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": key },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: systemPrompt(mode, level) }] },
+      systemInstruction: { parts: [{ text: systemPrompt(mode, level, body.spanish === true) }] },
       contents: messages,
-      generationConfig: { temperature: mode === "chat" ? 0.8 : 0.4, maxOutputTokens: 1200 },
+      generationConfig: mode === "voice"
+        ? {
+          temperature: 0.7,
+          maxOutputTokens: 800,
+          responseMimeType: "application/json",
+          responseSchema: {
+            type: "OBJECT",
+            properties: {
+              reply: { type: "STRING" },
+              english_version: { type: "STRING" },
+              tip_es: { type: "STRING" },
+              student_spanish: { type: "BOOLEAN" },
+            },
+            required: ["reply"],
+          },
+        }
+        : { temperature: mode === "chat" ? 0.8 : 0.4, maxOutputTokens: 1200 },
     }),
   });
   const data = await r.json().catch(() => null);
@@ -163,5 +228,6 @@ Deno.serve(async (req: Request) => {
     .map((p: { text?: string }) => p.text || "")
     .join("")
     .trim();
+  if (mode === "voice") return reply(200, voiceTurn(text));
   return reply(200, { text: text || "Lo siento, no pude generar una respuesta. ¿Puedes reformular?" });
 });

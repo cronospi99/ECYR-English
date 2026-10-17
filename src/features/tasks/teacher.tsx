@@ -24,6 +24,7 @@ import {
   dueInfo,
   effectiveStatus,
   isAutoDetectable,
+  isTasksMissing,
   listMyAssignments,
   listMyStudents,
   review,
@@ -36,6 +37,7 @@ import {
   type SubmissionItem,
 } from '@/lib/assignments';
 import { AssignmentSheet } from './AssignmentSheet';
+import { MissingTasksCard } from './MissingTasks';
 import { DUE_COLOR, KIND_META, STATUS_META, VIA_LABEL, formatDate } from './meta';
 import { ink } from '@/lib/color';
 
@@ -149,9 +151,11 @@ export function AssignmentsManager({ className }: { className?: string }) {
           <Button variant="gray" size="sm" onClick={() => void reload()} disabled={loading} aria-label="Actualizar">
             <RefreshCw size={15} className={loading ? 'animate-spin' : undefined} aria-hidden />
           </Button>
-          <Button variant="brand" size="sm" onClick={() => setSheet({ open: true, a: null })} disabled={!data}>
-            <Plus size={16} strokeWidth={2.6} aria-hidden /> Nueva tarea
-          </Button>
+          {!(error && isTasksMissing(error)) && (
+            <Button variant="brand" size="sm" onClick={() => setSheet({ open: true, a: null })} disabled={!data}>
+              <Plus size={16} strokeWidth={2.6} aria-hidden /> Nueva tarea
+            </Button>
+          )}
         </div>
       </div>
 
@@ -166,7 +170,9 @@ export function AssignmentsManager({ className }: { className?: string }) {
         ]}
       />
 
-      {error ? (
+      {error && isTasksMissing(error) ? (
+        <MissingTasksCard onRetry={() => void reload()} />
+      ) : error ? (
         <Card className="p-5 text-center">
           <p className="text-ink-red text-subhead" role="alert">
             {error}
@@ -451,7 +457,9 @@ export function AssignmentDetail({
   };
 
   if (error)
-    return (
+    return isTasksMissing(error) ? (
+      <MissingTasksCard bare className="p-4" />
+    ) : (
       <p className="text-ink-red text-subhead p-4" role="alert">
         {error}
       </p>
@@ -752,6 +760,7 @@ export function StudentAssignments({ studentId, className }: { studentId: string
     };
   }, [studentId]);
 
+  if (error && isTasksMissing(error)) return <MissingTasksCard className={className} />;
   if (error)
     return (
       <Card className={cn('p-5', className)}>
