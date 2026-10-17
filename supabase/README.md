@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las nueve migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `09` **en orden**:
-`05`, `07`, `08` y `09` dependen de la tabla `profiles` que crea `01`.)
+Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `12` **en orden**:
+`05` y de `07` a `12` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Basta con ejecutar `07_portfolio.sql`, `08_migrations_log.sql` y `09_assignments.sql`
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `12_notes.sql` (las nuevas: `10_voice_cache.sql`, `11_podcasts.sql`, `12_notes.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -26,8 +26,11 @@ Incluye las nueve migraciones en orden y se puede re-ejecutar sin perder datos.
 | `05_ecyr_platform.sql` | `learner_state` (progreso sincronizado) y `ai_usage` + `bump_ai_usage()` (límite diario del AI Coach). |
 | `06_api_grants.sql` | Permisos explícitos de la Data API (proyectos nuevos no los dan por defecto). |
 | `07_portfolio.sql` | **Mis trabajos**: tabla `portfolio_items`, bucket privado `portfolio` (20 MB/archivo) y `review_portfolio_item()` para que el docente comente y califique. |
-| `09_assignments.sql` | **Tareas**: `assignments`, destinatarios y estado por estudiante (entregas con archivo, detección automática, retroalimentación con `review_assignment()`). |
 | `08_migrations_log.sql` | Registro de importaciones y migraciones (desde el IELTS Simulator original o archivos), visible para el docente. |
+| `09_assignments.sql` | **Tareas**: `assignments`, destinatarios y estado por estudiante (entregas con archivo, detección automática, retroalimentación con `review_assignment()`). Sin ella, el botón "Asignar tarea" avisa que falta. |
+| `10_voice_cache.sql` | **Voces naturales**: bucket público `voice-cache` (audios ya generados, compartidos por todos) y `voice_usage` + `bump_voice_usage()` (límite diario de audios nuevos por usuario). |
+| `11_podcasts.sql` | **Podcasts**: `podcast_quizzes` (preguntas generadas por IA, una vez por episodio y nivel, compartidas) y `podcast_usage`. |
+| `12_notes.sql` | **Mis notas**: `student_notes`, privadas (cada cuenta solo ve las suyas; el docente no las ve). |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 
@@ -59,18 +62,22 @@ Nunca uses la clave `service_role`/secret en el frontend.
 ```bash
 supabase link --project-ref btfncmarxdlortmlfdko
 supabase functions deploy gemini --no-verify-jwt   # IELTS Simulator
-supabase functions deploy coach  --no-verify-jwt   # AI Coach
+supabase functions deploy coach  --no-verify-jwt   # AI Coach (texto y voz)
+supabase functions deploy podcast --no-verify-jwt  # preguntas de podcasts
 supabase secrets set GEMINI_API_KEY=AIza...         # compartida por ambas
 # opcionales
 supabase secrets set COACH_DAILY_LIMIT=40 COACH_REQUIRE_CLASS=off GEMINI_MODEL=gemini-3.5-flash-lite
+supabase secrets set VOICE_DAILY_LIMIT=150 PODCAST_DAILY_LIMIT=10
 ```
 
 Sin CLI: **Edge Functions → Deploy a new function → Via editor**, nombre exacto
-`gemini` / `coach`, pega `functions/<nombre>/index.ts`, y desactiva **Verify JWT**
+`gemini` / `coach` / `podcast`, pega `functions/<nombre>/index.ts`, y desactiva **Verify JWT**
 (las funciones validan la sesión ellas mismas). Luego **Edge Functions → Secrets**
 → `GEMINI_API_KEY`.
 
-La clave de Gemini nunca llega al navegador.
+La clave de Gemini nunca llega al navegador. `gemini` (voces) y `podcast` usan además
+`SUPABASE_SERVICE_ROLE_KEY`, que Supabase inyecta solo dentro de las funciones:
+no hay que configurarla ni ponerla nunca en Vercel.
 
 ## Errores frecuentes
 

@@ -1,4 +1,4 @@
-import { Home, CalendarRange, School, FolderOpen, ClipboardCheck, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, type LucideIcon } from 'lucide-react';
+import { Home, CalendarRange, School, FolderOpen, ClipboardCheck, GraduationCap, Dumbbell, Gamepad2, Award, Sparkles, TrendingUp, UserRound, NotebookPen, type LucideIcon } from 'lucide-react';
 
 export interface NavItem {
   to: string;
@@ -24,6 +24,7 @@ export const NAV: NavItem[] = [
   { to: '/coach', label: 'AI Coach', icon: Sparkles, color: 'var(--purple)' },
   { to: '/progress', label: 'Progreso', icon: TrendingUp, color: 'var(--teal)' },
   { to: '/portfolio', label: 'Mis trabajos', icon: FolderOpen, color: 'var(--mint)' },
+  { to: '/notes', label: 'Mis notas', icon: NotebookPen, color: 'var(--yellow)' },
   { to: '/profile', label: 'Perfil', icon: UserRound, color: 'var(--label-2)' },
 ];
 

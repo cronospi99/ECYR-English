@@ -1,0 +1,578 @@
+{
+ "A1-1-0": {
+  "name": "Chain of three",
+  "prompt": "Di tres oraciones sobre una persona: nombre, relación y un detalle. Cambia de persona y repite.",
+  "items": [
+   "This is Sofía. She is my sister. Her hair is very long.",
+   "That is Camilo. He is my classmate. His English is good.",
+   "Now use: my mother — her job.",
+   "Now use: my friends — their city.",
+   "Now use: my dog — its name."
+  ],
+  "answers": [
+   "This is Sofía. She is my sister. Her hair is very long.",
+   "That is Camilo. He is my classmate. His English is good.",
+   "This is my mother. She is a nurse. Her job is very interesting.",
+   "These are my friends. They are from Cali. Their city is very hot.",
+   "This is my dog. It is very small. Its name is Toby."
+  ]
+ },
+ "A1-1-1": {
+  "name": "Three questions, three answers",
+  "prompt": "Pregúntale a tu compañero y escribe solo la respuesta corta.",
+  "items": [
+   "Are you from Bogotá?",
+   "Is your family big?",
+   "Where is your school?",
+   "How old are your brothers?",
+   "Who is your favourite teacher?"
+  ],
+  "answers": [
+   "Yes, I am. / No, I’m not.",
+   "Yes, it is. / No, it isn’t.",
+   "It’s near my house.",
+   "They are ten and fifteen.",
+   "It’s Ms. Gómez."
+  ]
+ },
+ "A1-2-0": {
+  "name": "Add the -s",
+  "prompt": "Cambia la oración de «I» a «my brother» y dila en voz alta.",
+  "items": [
+   "I work at home. →",
+   "I watch TV after dinner. →",
+   "I go to the gym on Tuesdays. →",
+   "I study English twice a week. →",
+   "I finish at six. →"
+  ],
+  "answers": [
+   "My brother works at home.",
+   "My brother watches TV after dinner.",
+   "My brother goes to the gym on Tuesdays.",
+   "My brother studies English twice a week.",
+   "My brother finishes at six."
+  ]
+ },
+ "A1-2-1": {
+  "name": "at, on or in?",
+  "prompt": "Di la expresión con la preposición correcta: at, on o in.",
+  "items": [
+   "___ seven o’clock",
+   "___ Saturday",
+   "___ July",
+   "___ the afternoon",
+   "___ night"
+  ],
+  "answers": [
+   "at seven o’clock",
+   "on Saturday",
+   "in July",
+   "in the afternoon",
+   "at night"
+  ]
+ },
+ "A1-3-0": {
+  "name": "Near or far, one or many",
+  "prompt": "Señala y di la oración completa con la palabra correcta.",
+  "items": [
+   "___ pen (in your hand)",
+   "___ pens (on the far table)",
+   "___ book (across the room)",
+   "___ books (in front of you)",
+   "___ is my chair (the one you touch)"
+  ],
+  "answers": [
+   "This pen is mine.",
+   "Those pens are blue.",
+   "That book is new.",
+   "These books are heavy.",
+   "This is my chair."
+  ]
+ },
+ "A1-3-1": {
+  "name": "Make it comparative",
+  "prompt": "Compara las dos cosas en voz alta en una sola oración.",
+  "items": [
+   "a taxi / a bus (expensive)",
+   "Medellín / Bogotá (warm)",
+   "this phone / my old phone (good)",
+   "the market / the mall (cheap)",
+   "today / yesterday (bad)"
+  ],
+  "answers": [
+   "A taxi is more expensive than a bus.",
+   "Medellín is warmer than Bogotá.",
+   "This phone is better than my old phone.",
+   "The market is cheaper than the mall.",
+   "Today is worse than yesterday."
+  ]
+ },
+ "A1-4-0": {
+  "name": "Replace the name",
+  "prompt": "Repite la oración con un pronombre en lugar de las palabras subrayadas.",
+  "items": [
+   "I see Ana every day. →",
+   "She helps my brother. →",
+   "We invite Ana and Luis. →",
+   "He works with you and me. →",
+   "They call my sister and me. →"
+  ],
+  "answers": [
+   "I see her every day.",
+   "She helps him.",
+   "We invite them.",
+   "He works with us.",
+   "They call us."
+  ]
+ },
+ "A1-4-1": {
+  "name": "Offer and answer",
+  "prompt": "Haz la oferta y luego da una respuesta educada.",
+  "items": [
+   "a glass of water",
+   "sit down",
+   "some help",
+   "to see the menu",
+   "anything else"
+  ],
+  "answers": [
+   "Would you like a glass of water? — Yes, please.",
+   "Would you like to sit down? — No, thank you. I’m fine.",
+   "Would you like some help? — Yes, please. That’s very kind.",
+   "Would you like to see the menu? — Yes, please.",
+   "Would you like anything else? — No, thank you."
+  ]
+ },
+ "A1-5-0": {
+  "name": "Now or every day?",
+  "prompt": "Di cada oración dos veces: una como rutina y otra como «ahora mismo».",
+  "items": [
+   "I work at home. → I’m working at home right now.",
+   "She studies English. →",
+   "They watch films. →",
+   "He cooks dinner. →",
+   "We look after my cousin. →"
+  ],
+  "answers": [
+   "I’m working at home right now.",
+   "She’s studying English right now.",
+   "They’re watching a film right now.",
+   "He’s cooking dinner right now.",
+   "We’re looking after my cousin right now."
+  ]
+ },
+ "A1-5-1": {
+  "name": "Up and down the scale",
+  "prompt": "Responde «¿Cuántas personas de tu familia hacen esto?» usando un cuantificador distinto cada vez.",
+  "items": [
+   "speak English",
+   "live in this city",
+   "work at night",
+   "use TikTok",
+   "play a sport"
+  ],
+  "answers": [
+   "Not many people in my family speak English.",
+   "Nearly all my relatives live in this city.",
+   "No one in my family works at night.",
+   "A lot of my cousins use TikTok.",
+   "Few people in my family play a sport."
+  ]
+ },
+ "A1-6-0": {
+  "name": "Slide the adverb",
+  "prompt": "Pon el adverbio en el lugar correcto y di la oración.",
+  "items": [
+   "I / study at night (usually)",
+   "She / is late (always)",
+   "They / go to the cinema (hardly ever)",
+   "He / eats meat (never)",
+   "We / are at home on Sundays (usually)"
+  ],
+  "answers": [
+   "I usually study at night.",
+   "She is always late.",
+   "They hardly ever go to the cinema.",
+   "He never eats meat.",
+   "We are usually at home on Sundays."
+  ]
+ },
+ "A1-6-1": {
+  "name": "Ask with how",
+  "prompt": "Haz la pregunta con how y da una respuesta corta.",
+  "items": [
+   "frequency: gym",
+   "duration: English classes",
+   "ability: cooking",
+   "frequency: your family calls",
+   "duration: your journey to school"
+  ],
+  "answers": [
+   "How often do you go to the gym? — Three times a week.",
+   "How long are your English classes? — About two hours.",
+   "How well do you cook? — Not very well.",
+   "How often does your family call you? — Every Sunday.",
+   "How long is your journey to school? — About twenty minutes."
+  ]
+ },
+ "A1-7-0": {
+  "name": "Three ways",
+  "prompt": "Di cada oración en afirmativo, negativo y como pregunta.",
+  "items": [
+   "I / go to the gym yesterday",
+   "she / call me last night",
+   "they / finish the project",
+   "we / see your message",
+   "he / eat at home"
+  ],
+  "answers": [
+   "I went to the gym yesterday. / I didn’t go to the gym yesterday. / Did I go to the gym yesterday?",
+   "She called me last night. / She didn’t call me last night. / Did she call me last night?",
+   "They finished the project. / They didn’t finish the project. / Did they finish the project?",
+   "We saw your message. / We didn’t see your message. / Did we see your message?",
+   "He ate at home. / He didn’t eat at home. / Did he eat at home?"
+  ]
+ },
+ "A1-7-1": {
+  "name": "was or were",
+  "prompt": "Completa en voz alta y luego conviértela en pregunta.",
+  "items": [
+   "I ___ at work.",
+   "They ___ very friendly.",
+   "It ___ cold last night.",
+   "You ___ right.",
+   "We ___ in the same class."
+  ],
+  "answers": [
+   "I was at work. → Was I at work?",
+   "They were very friendly. → Were they very friendly?",
+   "It was cold last night. → Was it cold last night?",
+   "You were right. → Were you right?",
+   "We were in the same class. → Were we in the same class?"
+  ]
+ },
+ "A1-8-0": {
+  "name": "Map it",
+  "prompt": "Mira el salón (o un mapa) y di una oración con cada preposición.",
+  "items": [
+   "next to",
+   "in front of",
+   "behind",
+   "across from",
+   "between"
+  ],
+  "answers": [
+   "There is a lamp next to the sofa.",
+   "There is a car in front of my house.",
+   "There are some trees behind the building.",
+   "There is a bank across from the park.",
+   "There is a pharmacy between the bakery and the bank."
+  ]
+ },
+ "A1-8-1": {
+  "name": "Countable or not?",
+  "prompt": "Haz la pregunta con how much o how many.",
+  "items": [
+   "___ people live here?",
+   "___ traffic is there?",
+   "___ restaurants are there?",
+   "___ noise is there at night?",
+   "___ parks are there near you?"
+  ],
+  "answers": [
+   "How many people live here?",
+   "How much traffic is there?",
+   "How many restaurants are there?",
+   "How much noise is there at night?",
+   "How many parks are there near you?"
+  ]
+ },
+ "A1-9-0": {
+  "name": "Two questions, one person",
+  "prompt": "Para cada persona, haz las dos preguntas y da una respuesta en dos partes: primero el físico, luego la personalidad.",
+  "items": [
+   "your English teacher",
+   "your best friend",
+   "your favourite actor",
+   "the person on your left",
+   "someone in your family"
+  ],
+  "answers": [
+   "What does your English teacher look like? — She is tall with short brown hair. What is she like? — She is patient and funny.",
+   "What does your best friend look like? — He is short with curly black hair. What is he like? — He is friendly and very talkative.",
+   "What does your favourite actor look like? — He is tall with dark eyes. What is he like? — He is funny and kind.",
+   "What does the person on your left look like? — She has long straight hair and glasses. What is she like? — She is quiet and very smart.",
+   "What does your mother look like? — She is short with long black hair. What is she like? — She is calm and very generous."
+  ]
+ },
+ "A1-9-1": {
+  "name": "Point without pointing",
+  "prompt": "Identifica a un compañero usando solo «the one…». El grupo adivina. Sin nombres y sin señalar.",
+  "items": [
+   "the one wearing…",
+   "the one sitting…",
+   "the one talking to…",
+   "the one with…",
+   "the ones standing…"
+  ],
+  "answers": [
+   "The one wearing the red jacket.",
+   "The one sitting next to the window.",
+   "The one talking to the teacher.",
+   "The one with long curly hair.",
+   "The ones standing near the door."
+  ]
+ },
+ "A1-10-0": {
+  "name": "The checklist",
+  "prompt": "Mira la lista de tareas (cinco cosas, tres con chulo). Di cada una con «already» o «yet».",
+  "items": [
+   "buy the tickets ✓",
+   "pack the bags ✓",
+   "call the hotel ✗",
+   "print the map ✓",
+   "change money ✗"
+  ],
+  "answers": [
+   "I’ve already bought the tickets.",
+   "I’ve already packed the bags.",
+   "I haven’t called the hotel yet.",
+   "I’ve already printed the map.",
+   "I haven’t changed money yet."
+  ]
+ },
+ "A1-10-1": {
+  "name": "Perfect then past",
+  "prompt": "Pregunta con el presente perfecto; responde con el pasado simple y un detalle.",
+  "items": [
+   "visit / Medellín",
+   "try / sushi",
+   "lose / your phone",
+   "meet / someone famous",
+   "travel / by plane at night"
+  ],
+  "answers": [
+   "Have you ever visited Medellín? — Yes, I visited it last year. I loved the metro.",
+   "Have you ever tried sushi? — Yes, I tried it in Bogotá two years ago.",
+   "Have you ever lost your phone? — Yes, I lost it on a bus last month.",
+   "Have you ever met someone famous? — Yes, I met a famous singer at the airport in 2022.",
+   "Have you ever travelled by plane at night? — Yes, I travelled to Madrid at night last December."
+  ]
+ },
+ "A1-11-0": {
+  "name": "Turn up the dial",
+  "prompt": "Di la misma oración cinco veces cambiando solo el adverbio: a bit → quite → very → really → extremely.",
+  "items": [
+   "The exam was ___ difficult.",
+   "The bus is ___ slow.",
+   "This coffee is ___ strong.",
+   "My flat is ___ small.",
+   "The film was ___ long."
+  ],
+  "answers": [
+   "The exam was a bit / quite / very / really / extremely difficult.",
+   "The bus is a bit / quite / very / really / extremely slow.",
+   "This coffee is a bit / quite / very / really / extremely strong.",
+   "My flat is a bit / quite / very / really / extremely small.",
+   "The film was a bit / quite / very / really / extremely long."
+  ]
+ },
+ "A1-11-1": {
+  "name": "Option then advice",
+  "prompt": "Para cada situación, da una opción con «can» y una recomendación con «should».",
+  "items": [
+   "a visitor has one free day in your city",
+   "a friend has a headache",
+   "a classmate wants to improve listening",
+   "a tourist has lost their phone",
+   "someone wants cheap lunch near school"
+  ],
+  "answers": [
+   "You can take the cable car. You should visit the botanical garden.",
+   "You can take a pill. You should drink some water and rest.",
+   "You can watch series in English. You should listen to podcasts every day.",
+   "You can use my phone to call it. You should go to the police station.",
+   "You can buy an empanada at the tienda. You should try the restaurant next to the school."
+  ]
+ },
+ "A1-12-0": {
+  "name": "Same advice, three frames",
+  "prompt": "Da la misma recomendación de tres formas: «It’s a good idea to…», «The best way is to…», «You need to…».",
+  "items": [
+   "book in advance",
+   "arrive twenty minutes early",
+   "bring cash",
+   "speak to the teacher first",
+   "take the earlier train"
+  ],
+  "answers": [
+   "It’s a good idea to book in advance. / The best way is to book in advance. / You need to book in advance.",
+   "It’s a good idea to arrive twenty minutes early. / The best way is to arrive twenty minutes early. / You need to arrive twenty minutes early.",
+   "It’s a good idea to bring cash. / The best way is to bring cash. / You need to bring cash.",
+   "It’s a good idea to speak to the teacher first. / The best way is to speak to the teacher first. / You need to speak to the teacher first.",
+   "It’s a good idea to take the earlier train. / The best way is to take the earlier train. / You need to take the earlier train."
+  ]
+ },
+ "A1-12-1": {
+  "name": "Politeness ladder",
+  "prompt": "Haz la misma petición tres veces, de directa a muy educada: Can you… → Could you… → Would you mind…",
+  "items": [
+   "open the window",
+   "repeat the question",
+   "lend me a pen",
+   "wait five minutes",
+   "send me the file"
+  ],
+  "answers": [
+   "Can you open the window? / Could you open the window, please? / Would you mind opening the window?",
+   "Can you repeat the question? / Could you repeat the question, please? / Would you mind repeating the question?",
+   "Can you lend me a pen? / Could you lend me a pen, please? / Would you mind lending me a pen?",
+   "Can you wait five minutes? / Could you wait five minutes, please? / Would you mind waiting five minutes?",
+   "Can you send me the file? / Could you send me the file, please? / Would you mind sending me the file?"
+  ]
+ },
+ "A1-13-0": {
+  "name": "Match the helper",
+  "prompt": "Muestra que estás de acuerdo dos veces: una con so / neither y otra con «Me too / Me neither».",
+  "items": [
+   "I’m from a small town.",
+   "I don’t drink coffee.",
+   "I’ve seen that film.",
+   "I can’t drive.",
+   "I went to bed late."
+  ],
+  "answers": [
+   "So am I. / Me too.",
+   "Neither do I. / Me neither.",
+   "So have I. / Me too.",
+   "Neither can I. / Me neither.",
+   "So did I. / Me too."
+  ]
+ },
+ "A1-13-1": {
+  "name": "Order and ask",
+  "prompt": "En un café: pide con «I’d like», luego haz una petición con «Would you mind…?» y otra con «Could you…?».",
+  "items": [
+   "a table by the window",
+   "the menu in English",
+   "the bill",
+   "a glass of water",
+   "the wifi password"
+  ],
+  "answers": [
+   "I’d like a table by the window, please.",
+   "Would you mind bringing the menu in English?",
+   "Could you bring the bill, please?",
+   "I’d like a glass of water, please.",
+   "Could you tell me the wifi password, please?"
+  ]
+ },
+ "A1-14-0": {
+  "name": "Two then one",
+  "prompt": "Compara las dos primeras cosas y luego di cuál es la número uno de las tres.",
+  "items": [
+   "Bogotá / Medellín / Cartagena — cold",
+   "the bus / the metro / a taxi — fast",
+   "coffee / tea / juice — expensive",
+   "Monday / Friday / Sunday — busy",
+   "your town / this city / the capital — noisy"
+  ],
+  "answers": [
+   "Bogotá is colder than Medellín, and it’s the coldest of the three.",
+   "The metro is faster than the bus, and it’s the fastest of the three.",
+   "Coffee is more expensive than tea, but juice is the most expensive of the three.",
+   "Monday is busier than Friday, and it’s the busiest of the three.",
+   "This city is noisier than my town, but the capital is the noisiest of the three."
+  ]
+ },
+ "A1-14-1": {
+  "name": "Ask the measurement",
+  "prompt": "Pregunta por cada cosa con el «how» correcto y responde con un número y el adjetivo repetido.",
+  "items": [
+   "the Magdalena river",
+   "the tallest building in your city",
+   "your classroom",
+   "the distance to the coast",
+   "the temperature today"
+  ],
+  "answers": [
+   "How long is the Magdalena river? — It’s about 1,500 kilometres long.",
+   "How tall is the tallest building in your city? — It’s about 200 metres tall.",
+   "How long is your classroom? — It’s about ten metres long.",
+   "How far is the coast? — It’s about 1,000 kilometres away.",
+   "How hot is it today? — It’s about 25 degrees."
+  ]
+ },
+ "A1-15-0": {
+  "name": "Intention or arrangement",
+  "prompt": "Di cada plan dos veces: como intención con «going to» y como cita acordada con el presente continuo.",
+  "items": [
+   "see the doctor",
+   "travel to the coast",
+   "start a course",
+   "meet a friend",
+   "move house"
+  ],
+  "answers": [
+   "I’m going to see the doctor. / I’m seeing the doctor on Monday at nine.",
+   "I’m going to travel to the coast. / I’m travelling to the coast on Friday.",
+   "I’m going to start a course. / I’m starting a course next Monday.",
+   "I’m going to meet a friend. / I’m meeting a friend at the mall at six.",
+   "I’m going to move house. / I’m moving house on Saturday."
+  ]
+ },
+ "A1-15-1": {
+  "name": "Pass it on",
+  "prompt": "Escucha un mensaje y pásalo con «tell» y otra vez con «say».",
+  "items": [
+   "The class starts at eight.",
+   "Bring your ID.",
+   "I can’t come today.",
+   "The meeting has moved to Friday.",
+   "Call me after six."
+  ],
+  "answers": [
+   "He told me that the class starts at eight. / He said that the class starts at eight.",
+   "She told us to bring our ID. / She said that we need to bring our ID.",
+   "He told me that he can’t come today. / He said that he can’t come today.",
+   "She told me that the meeting has moved to Friday. / She said that the meeting has moved to Friday.",
+   "He told me to call him after six. / He said that I should call him after six."
+  ]
+ },
+ "A1-16-0": {
+  "name": "Then, now, since",
+  "prompt": "Di tres oraciones sobre un tema: cómo era (pasado simple o used to), cómo es (presente simple) y qué ha cambiado (presente perfecto).",
+  "items": [
+   "your neighbourhood",
+   "your free time",
+   "your English",
+   "transport in your city",
+   "your job or studies"
+  ],
+  "answers": [
+   "My neighbourhood used to be very quiet. Now it is very busy. They have built a new shopping centre.",
+   "I used to play football every day. Now I watch series in my free time. I have started going to the gym.",
+   "I didn’t speak English at school. Now I understand a lot. My English has improved this year.",
+   "There was no metro in my city in 1990. Now I take the metro every day. Transport has become faster.",
+   "I studied at a public school. Now I work at a bank. I have worked there for three years."
+  ]
+ },
+ "A1-16-1": {
+  "name": "Certainty ladder",
+  "prompt": "Di la misma idea de futuro en tres niveles: firme («I’m going to…»), probable («I plan to…») y lejano («I hope to…»).",
+  "items": [
+   "change jobs",
+   "travel abroad",
+   "learn another language",
+   "move house",
+   "finish this course"
+  ],
+  "answers": [
+   "I’m going to change jobs. / I plan to change jobs. / I hope to change jobs.",
+   "I’m going to travel abroad. / I plan to travel abroad. / I hope to travel abroad.",
+   "I’m going to learn another language. / I plan to learn another language. / I hope to learn another language.",
+   "I’m going to move house. / I plan to move house. / I hope to move house.",
+   "I’m going to finish this course. / I plan to finish this course. / I hope to finish this course."
+  ]
+ }
+}

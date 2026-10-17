@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { ChevronDown, FileUp, Mail } from 'lucide-react';
+import { FileUp, Mail } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
@@ -8,7 +8,6 @@ import { LevelChip, Spinner, EmptyState } from '@/components/ui/Misc';
 import { Avatar } from '@/components/layout/Avatar';
 import { currentLevel } from '@/store/progress';
 import { evaluatePlan, GOAL_INFO, SKILL_INFO, ALL_SKILLS } from '@/lib/planner';
-import { loadSubmissions, type Submission } from '@/lib/teacher';
 import { supabase } from '@/lib/supabase';
 import { relativeTime } from '@/lib/date';
 import { ProgressOverview } from '@/features/progress/ProgressPage';
@@ -20,6 +19,8 @@ import { ProgressBar } from '@/components/ui/Progress';
 import NotFound from '../NotFound';
 import { useClass } from './useClass';
 import { StudentAssignments } from '@/features/tasks/teacher';
+import { AssignButton } from '@/features/tasks/AssignButton';
+import { StudentWork } from './WorkList';
 
 type Tab = 'overview' | 'tasks' | 'plan' | 'games' | 'ielts' | 'work';
 
@@ -57,6 +58,13 @@ export default function StudentPage() {
             <span>{s.syncedAt ? `Sincronizado ${relativeTime(s.syncedAt)}` : 'Aún no ha sincronizado progreso'}</span>
           </div>
         </div>
+        <AssignButton
+          variant="brand"
+          size="md"
+          label={`Asignar tarea a ${name.split(/[\s@]/)[0] || 'este estudiante'}`}
+          preset={{ students: [s.profile.id] }}
+          onSaved={() => tab === 'tasks' && setParams({ tab: 'tasks', r: String(Date.now()) })}
+        />
       </div>
       <div className="no-scrollbar mb-5 overflow-x-auto">
         <Segmented<Tab>
@@ -78,16 +86,24 @@ export default function StudentPage() {
           <Migrations userId={s.profile.id} />
         </>
       )}
-      {tab === 'tasks' && <StudentAssignments studentId={s.profile.id} />}
+      {tab === 'tasks' && <StudentAssignments key={params.get('r') ?? ''} studentId={s.profile.id} />}
       {tab === 'plan' && <PlanTab s={s} />}
       {tab === 'games' && <GameProgressView sessions={s.games} defenders={s.defenders} />}
       {tab === 'ielts' && (
         <div className="space-y-5">
           <IeltsSummary data={s.ielts} />
-          <Submissions studentId={s.profile.id} />
+          <StudentWork studentId={s.profile.id} source="ielts" />
         </div>
       )}
-      {tab === 'work' && <PortfolioList userId={s.profile.id} canReview />}
+      {tab === 'work' && (
+        <div className="space-y-6">
+          <StudentWork studentId={s.profile.id} />
+          <section>
+            <h2 className="text-title-3 mb-3 px-1">Archivos y entregas (Mis trabajos)</h2>
+            <PortfolioList userId={s.profile.id} canReview />
+          </section>
+        </div>
+      )}
     </Page>
   );
 }
@@ -145,52 +161,6 @@ function PlanTab({ s }: { s: NonNullable<ReturnType<typeof useClass>['students']
         )}
       </Card>
     </div>
-  );
-}
-
-function Submissions({ studentId }: { studentId: string }) {
-  const [list, setList] = useState<Submission[] | null>(null);
-  const [open, setOpen] = useState<string | null>(null);
-  useEffect(() => {
-    let alive = true;
-    void loadSubmissions(studentId).then((r) => alive && setList(r));
-    return () => {
-      alive = false;
-    };
-  }, [studentId]);
-  return (
-    <Card className="pb-2">
-      <CardHeader title="Writings y speakings corregidos" subtitle="Incluye los migrados del IELTS Simulator original" />
-      {list === null ? (
-        <div className="py-8 text-center">
-          <Spinner className="mx-auto h-5 w-5" />
-        </div>
-      ) : list.length === 0 ? (
-        <p className="text-label-2 px-5 py-4 text-[14px]">Sin entregas registradas.</p>
-      ) : (
-        <ul className="mt-2">
-          {list.map((x) => (
-            <li key={x.id} className="border-separator border-t first:border-t-0">
-              <button
-                type="button"
-                className="hover:bg-fill-2 flex w-full items-center gap-3 px-5 py-2.5 text-left"
-                aria-expanded={open === x.id}
-                onClick={() => setOpen(open === x.id ? null : x.id)}
-              >
-                <span className="w-20 shrink-0 text-[14px] font-semibold capitalize">{x.module}</span>
-                <span className="text-label-2 min-w-0 flex-1 truncate text-[13px]">{x.task ? `${x.task} · ` : ''}{x.prompt}</span>
-                <span className="text-label-2 shrink-0 text-[12px]">{relativeTime(x.created_at)}</span>
-                <span className="w-9 shrink-0 text-right font-bold tabular-nums">{x.band != null ? Number(x.band).toFixed(1) : '–'}</span>
-                <ChevronDown size={16} className={open === x.id ? 'rotate-180 transition-transform' : 'transition-transform'} />
-              </button>
-              {open === x.id && x.content && (
-                <p className="bg-fill-2 mx-5 mb-3 max-h-80 overflow-y-auto rounded-[12px] p-3 text-[14px] whitespace-pre-wrap">{x.content}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </Card>
   );
 }
 

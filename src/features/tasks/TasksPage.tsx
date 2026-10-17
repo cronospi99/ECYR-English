@@ -12,6 +12,7 @@ import { KIND_META } from './meta';
 import { TaskCard } from './TaskCard';
 import { useMyTasks, type TaskView } from './useMyTasks';
 import { ink } from '@/lib/color';
+import { isTasksMissing } from '@/lib/assignments';
 
 export { TasksWidget } from './TasksWidget';
 
@@ -61,7 +62,7 @@ export default function TasksPage() {
       ) : t.error ? (
         <Card className="mx-auto max-w-xl p-6 text-center">
           <p className="text-ink-red text-body" role="alert">
-            {t.error}
+            {isTasksMissing(t.error) ? 'Tu docente aún no ha activado Tareas en la plataforma. Avísale: falta un paso de configuración (09_assignments.sql).' : t.error}
           </p>
           <Button className="mt-4" variant="tinted" onClick={() => void t.reload()}>
             Reintentar

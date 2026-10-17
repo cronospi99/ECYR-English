@@ -1,0 +1,658 @@
+{
+ "1": [
+  {
+   "title": "Hello from a new student",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "You are new in an English class. Write a short message to the class group chat. Say hello, give your name and nickname, say where you are from and what your job is.",
+   "briefEs": "Escribe un mensaje al chat del curso para presentarte: nombre, apodo, país y trabajo.",
+   "criteria": [
+    "Use “I am / I’m” at least four times.",
+    "Include “my name is” and “my nickname is”.",
+    "Use “to be from” for your city or country."
+   ],
+   "model": "Hi everyone! My name is Daniela and my nickname is Dani. I'm from Medellín, Colombia. I'm 24 years old and I'm a student. I'm also a nurse at a small hospital. I'm single and I live with my parents. Nice to meet you all! See you on Monday."
+  },
+  {
+   "title": "My best friend's profile",
+   "genre": "Perfil",
+   "length": "50–70 words",
+   "brief": "Write a short profile of your best friend for a class poster. Say his or her name, age, country or city, job and if he or she is married or single.",
+   "briefEs": "Escribe el perfil de tu mejor amigo o amiga para un cartel: nombre, edad, ciudad, trabajo y estado civil.",
+   "criteria": [
+    "Use “he is / she is” correctly in every sentence about your friend.",
+    "Use at least three possessive adjectives (my, his, her, their).",
+    "Include two words from the unit: friend, neighbour, married / single, job."
+   ],
+   "model": "This is my best friend. Her name is Laura and she is 26 years old. She is from Cali, but now she is my neighbour in Bogotá. Her job is interesting: she is a pilot! She is married. Her husband's name is Andrés and he is a teacher. Their dog is Toby. Laura is very nice and funny."
+  },
+  {
+   "title": "Questions for a pen pal",
+   "genre": "Correo sencillo",
+   "length": "50–70 words",
+   "brief": "Write a short email to a new pen pal from another country. Introduce yourself in two sentences, then ask four questions with “to be” (name, country, age, job).",
+   "briefEs": "Escribe un correo a un nuevo amigo por correspondencia: preséntate y hazle cuatro preguntas con “to be”.",
+   "criteria": [
+    "Four questions with the verb first or a Wh-word: Are you…? What is…? Where are…?",
+    "Use a correct greeting and closing (Hi…, Best wishes…).",
+    "Use “your” in at least two questions."
+   ],
+   "model": "Hi Emma,\n\nMy name is Camilo and I'm from Bucaramanga, Colombia. I'm 19 and I'm a student. What is your full name? Where are you from? How old are you? Are you a student too, or what is your job? Is your family big?\n\nWrite soon!\nCamilo"
+  }
+ ],
+ "2": [
+  {
+   "title": "My Monday in a message",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "A friend wants to call you on Monday. Write a message describing your Monday routine with times so your friend knows when you are free.",
+   "briefEs": "Escribe un mensaje a un amigo con tu rutina del lunes y las horas, para que sepa cuándo llamarte.",
+   "criteria": [
+    "Use at least four times with “at” (at 6:00, at noon…).",
+    "Use three routine verbs: wake up, get up, have breakfast, finish, take a bus.",
+    "Use one frequency word: always, usually."
+   ],
+   "model": "Hi Pablo! On Mondays I always wake up at 5:30 and I get up at 5:45. I have breakfast at 6:00 and I take a bus at 6:30. I start work at 7:30. I have lunch at 12:30. I usually finish at 5:00, so call me after 6:00. Bye!"
+  },
+  {
+   "title": "A routine of someone in my family",
+   "genre": "Descripción",
+   "length": "50–70 words",
+   "brief": "Describe the daily routine of a family member. Use the third person (he/she) and say what he or she does in the morning, afternoon and evening.",
+   "briefEs": "Describe la rutina diaria de un familiar usando la tercera persona (he/she).",
+   "criteria": [
+    "Every he/she verb has -s or -es (wakes, goes, watches).",
+    "Use “in the morning / in the afternoon / in the evening”.",
+    "Use two words from the unit: early, late, lunch, dinner, weekday."
+   ],
+   "model": "My father is a taxi driver. He gets up very early, at 4:30. He has coffee and he leaves home at 5:00. In the morning, he drives around the city. He has lunch at home at 1:00. In the afternoon, he works again. He finishes late, at 8:00. In the evening, he has dinner and watches the news."
+  },
+  {
+   "title": "Interview questions about routines",
+   "genre": "Preguntas de entrevista",
+   "length": "50–70 words",
+   "brief": "Write six questions for a classmate about his or her weekday and weekend routine. Then write your own short answers to two of them.",
+   "briefEs": "Escribe seis preguntas sobre la rutina de un compañero y responde dos de ellas tú mismo.",
+   "criteria": [
+    "Use “do” with I/you/they and “does” with he/she.",
+    "Use at least four different Wh-words: what time, when, where, how.",
+    "Include “weekday” or “weekend” in two questions."
+   ],
+   "model": "1. What time do you wake up on weekdays?\n2. How do you go to work or school?\n3. Where do you have lunch?\n4. When do you finish your classes?\n5. What do you usually do on the weekend?\n6. Does your brother get up late on Sundays?\n\nMy answers: 1. I wake up at 6:00. 5. I usually visit my grandmother on the weekend."
+  }
+ ],
+ "3": [
+  {
+   "title": "At the shopping centre",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "You are shopping and your friend is at home. Write a message comparing two things you see (two jackets, two phones…). Ask your friend which one is better.",
+   "briefEs": "Escribe un mensaje a un amigo comparando dos cosas que ves en una tienda y pregúntale cuál es mejor.",
+   "criteria": [
+    "Use “this one” and “that one”.",
+    "Use two comparatives with “than” (cheaper than, more comfortable than).",
+    "End with a question: Which one is better?"
+   ],
+   "model": "Hi Sara! I'm at the mall. I want a new jacket. This one is black and it's cheaper than that one. That one is blue and it's more comfortable, but it's expensive: it costs 200,000 pesos! The blue one is also lighter. Which one is better? Help me!"
+  },
+  {
+   "title": "Two places to eat",
+   "genre": "Comparación",
+   "length": "50–70 words",
+   "brief": "Compare two restaurants or cafés in your neighbourhood. Talk about price, size, food and how crowded they are. Say which one you prefer.",
+   "briefEs": "Compara dos restaurantes o cafés de tu barrio (precio, tamaño, comida) y di cuál prefieres.",
+   "criteria": [
+    "At least four comparatives (cheaper, bigger, more crowded, better).",
+    "Use “than” correctly in every comparison.",
+    "Use one demonstrative: this, that, these or those."
+   ],
+   "model": "There are two cafés near my house: Café Luna and El Rincón. Café Luna is bigger than El Rincón, but it is more crowded. El Rincón is cheaper and quieter. The coffee at Café Luna is better, but the cakes at El Rincón are more delicious. I prefer El Rincón because it is more comfortable."
+  },
+  {
+   "title": "A product review: my shoes",
+   "genre": "Reseña corta",
+   "length": "50–70 words",
+   "brief": "Write a short review of something you bought (shoes, a backpack, a phone). Compare it with your old one. Say if it was a bargain.",
+   "briefEs": "Escribe una reseña corta de algo que compraste y compáralo con el que tenías antes.",
+   "criteria": [
+    "Three comparatives: better / worse, lighter / heavier, cheaper / more expensive.",
+    "Use “this / these” for the new thing and “that / those” for the old thing.",
+    "Use “to cost” and “a bargain”."
+   ],
+   "model": "These are my new running shoes. They cost only 120,000 pesos. They were a bargain! These shoes are lighter than my old shoes and they are more comfortable. Those old shoes were heavier and worse for running. The only problem: the colour is uglier. But I'm happy with them. Five stars!"
+  }
+ ],
+ "4": [
+  {
+   "title": "An invitation to lunch",
+   "genre": "Invitación",
+   "length": "40–60 words",
+   "brief": "Write a short message to invite a friend to lunch on Saturday. Say where and when, and ask if he or she would like to come.",
+   "briefEs": "Escribe un mensaje para invitar a un amigo a almorzar el sábado: dónde, cuándo y si quiere ir.",
+   "criteria": [
+    "Use “Would you like to…?” at least once.",
+    "Use two object pronouns (me, you, him, her, us, them).",
+    "Include “free”, “together” or “to meet”."
+   ],
+   "model": "Hi Juan! Are you free on Saturday? Would you like to have lunch with me? My sister is in town and I want you to meet her. We can go to the Italian restaurant near the park. We can meet there at 1:00 and eat together. Call me or send me a message. See you!"
+  },
+  {
+   "title": "Ordering for the group",
+   "genre": "Diálogo escrito",
+   "length": "50–70 words",
+   "brief": "Write a short dialogue in a café between a waiter and two friends. The waiter offers things and the friends order politely.",
+   "briefEs": "Escribe un diálogo corto en un café entre un mesero y dos amigos que piden con cortesía.",
+   "criteria": [
+    "The waiter uses “Would you like…?” twice.",
+    "The friends use “I’d like…, please” and “thank you”.",
+    "Use at least two object pronouns (it, them, us)."
+   ],
+   "model": "Waiter: Good afternoon. Would you like a table for two?\nAna: Yes, please.\nWaiter: Would you like something to drink?\nAna: I'd like a lemonade, please.\nTomás: Can I have a coffee? Can you bring it with milk, please?\nWaiter: Of course. Would you like the cakes? I can show you them.\nTomás: Yes, please. Thank you!"
+  },
+  {
+   "title": "Can you give me a hand?",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "You are moving to a new flat. Write a message to a neighbour asking for help. Offer something in return.",
+   "briefEs": "Escribe un mensaje a tu vecino pidiéndole ayuda con tu trasteo y ofrécele algo a cambio.",
+   "criteria": [
+    "Ask a yes/no question with “Can you…?” or “Would you…?”.",
+    "Use the expression “give me a hand”.",
+    "Offer something with “Would you like…?”."
+   ],
+   "model": "Hello Mrs. Rojas! I'm moving to apartment 302 on Sunday. Can you give me a hand with the big boxes? Maybe your son can help us too. It takes one hour. Would you like to have dinner with me after that? I can make arepas for you. Thank you!"
+  }
+ ],
+ "5": [
+  {
+   "title": "What's happening at home?",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "It is Sunday afternoon. Write a message to a friend describing what everybody in your house is doing right now.",
+   "briefEs": "Describe en un mensaje lo que está haciendo cada persona en tu casa en este momento.",
+   "criteria": [
+    "Five verbs in the present continuous (is cooking, are watching…).",
+    "Use “at the moment” or “right now”.",
+    "Name three family members (parents, cousin, aunt…)."
+   ],
+   "model": "Hi Caro! It's crazy here at the moment. My mother is cooking sancocho and my father is helping her. My grandparents are watching a football match. My little cousin is playing with the dog and my aunt is talking on the phone. And me? I'm writing to you! What are you doing right now?"
+  },
+  {
+   "title": "My family in numbers",
+   "genre": "Descripción",
+   "length": "50–70 words",
+   "brief": "Describe your big family using quantifiers. Say how many people there are and what nearly all, many, not many or no one does.",
+   "briefEs": "Describe a tu familia usando cuantificadores como all, nearly all, many, few, no one.",
+   "criteria": [
+    "Use four different quantifiers (all, nearly all, many, not many, few, no one).",
+    "Use “no one” with a singular verb (no one lives…).",
+    "Include words like cousins, aunts, uncles, only child."
+   ],
+   "model": "My family is very big. I have twelve cousins, six aunts and five uncles. Nearly all my cousins live in Barranquilla. Many of them are students. Not many of my aunts work outside the house. All my uncles love football. Few people in my family speak English. No one is an only child — except me!"
+  },
+  {
+   "title": "Questions to an old friend",
+   "genre": "Correo informal",
+   "length": "50–70 words",
+   "brief": "Write a short email to a friend you have not seen for a long time. Tell him or her one thing you are doing these days and ask four questions in the present continuous.",
+   "briefEs": "Escribe un correo a un viejo amigo: cuéntale qué estás haciendo y hazle cuatro preguntas en presente continuo.",
+   "criteria": [
+    "Four present continuous questions (Are you working…? What are you doing…?).",
+    "One sentence about yourself with “at the moment”.",
+    "Correct use of am / is / are in every question."
+   ],
+   "model": "Hi Felipe,\n\nHow are you? At the moment I'm living in Pereira and I'm studying English. What are you doing these days? Are you still working at the bank? Is your sister living with you? Are your parents looking after your little brother?\n\nWrite back soon,\nMariana"
+  }
+ ],
+ "6": [
+  {
+   "title": "My free time",
+   "genre": "Párrafo personal",
+   "length": "50–70 words",
+   "brief": "Write a short paragraph about your hobbies. Say how often you do each activity using different adverbs of frequency.",
+   "briefEs": "Escribe un párrafo sobre tus pasatiempos y di con qué frecuencia los practicas.",
+   "criteria": [
+    "Five different frequency words (always, usually, sometimes, hardly ever, never).",
+    "Put the adverb before the main verb and after “be”.",
+    "Use “once / twice a week” at least once."
+   ],
+   "model": "In my free time I'm really into music. I usually play the guitar in the evening and I practise twice a week with a band. I sometimes go swimming on Saturdays. I hardly ever watch TV because it's boring for me. I'm never at home on Sunday afternoons: I always visit my friends."
+  },
+  {
+   "title": "A club profile",
+   "genre": "Perfil",
+   "length": "40–60 words",
+   "brief": "You want to join a sports or hobby club. Write a short profile for the club website: your hobby, how often you practise and how good you are.",
+   "briefEs": "Escribe un perfil corto para unirte a un club: tu pasatiempo, con qué frecuencia lo practicas y qué tan bueno eres.",
+   "criteria": [
+    "Use “good at” or “not very good at”.",
+    "Use “how often” information with an adverb or “once a week”.",
+    "Use “to spend time + -ing” once."
+   ],
+   "model": "Name: Julián Pérez\nHobby: chess\nI'm into chess and I'm quite good at it. I play online almost always after dinner and I practise with my uncle once a week. I spend a lot of time reading about famous games. I'm not very good at fast games, so I want to learn!"
+  },
+  {
+   "title": "A survey about free time",
+   "genre": "Encuesta",
+   "length": "50–70 words",
+   "brief": "Write a survey of six questions with “how” (how often, how much, how good, how long…) about free time. Then answer two questions with short answers.",
+   "briefEs": "Escribe una encuesta de seis preguntas con “how” sobre el tiempo libre y responde dos de ellas.",
+   "criteria": [
+    "Six questions with “how” + another word.",
+    "Use two different short answers (Yes, I do. / Not very well.).",
+    "Include “free time” and “hobby”."
+   ],
+   "model": "Free time survey\n1. How often do you do exercise?\n2. How long do you spend on your phone every day?\n3. How good are you at cooking?\n4. How many hobbies do you have?\n5. How well do you dance?\n6. How much free time do you have on weekdays?\nMy answers: 1. Twice a week. 5. Not very well!"
+  }
+ ],
+ "7": [
+  {
+   "title": "Yesterday in five lines",
+   "genre": "Diario",
+   "length": "50–70 words",
+   "brief": "Write a short diary entry about what you did yesterday, from the morning to the night.",
+   "briefEs": "Escribe una entrada de diario sobre lo que hiciste ayer, de la mañana a la noche.",
+   "criteria": [
+    "Six verbs in the past simple, at least two irregular (went, had, bought).",
+    "Use sequence words: then, after that.",
+    "Use one sentence with “was” or “were”."
+   ],
+   "model": "Yesterday was a busy day. I got up at 6:00 and I went to work by bus. At noon I had lunch with my friend Paula. Then I bought a present for my mother. After that, I arrived home at 7:00. I cooked pasta and I watched a film. It was interesting. I was very tired at night."
+  },
+  {
+   "title": "A postcard from my trip",
+   "genre": "Postal",
+   "length": "50–70 words",
+   "brief": "Write a postcard to a friend about a short trip you took last weekend. Say where you went, where you stayed, what you did and how it was.",
+   "briefEs": "Escribe una postal a un amigo sobre un viaje corto del fin de semana pasado.",
+   "criteria": [
+    "Use “last weekend” or “two days ago”.",
+    "Use “was / were” to describe the place and people.",
+    "Include “to stay”, “to travel” and “to have a great time”."
+   ],
+   "model": "Dear Lucía,\n\nLast weekend I travelled to Villa de Leyva with my cousins. We stayed in a small hotel near the main square. The town was beautiful and the people were very friendly. On Saturday we visited a museum and on Sunday we rode bikes. We had a great time!\n\nLove,\nValeria"
+  },
+  {
+   "title": "Did you have a good weekend?",
+   "genre": "Mensaje con preguntas",
+   "length": "40–60 words",
+   "brief": "Write a message to a friend asking about his or her weekend. Use five past simple questions with “did” and one with “was”.",
+   "briefEs": "Escribe un mensaje a un amigo preguntando por su fin de semana con preguntas en pasado.",
+   "criteria": [
+    "Five questions with “did” + base verb (Did you go…? Where did you stay?).",
+    "One question with “was” or “were”.",
+    "No “did” with the verb in past (not “Did you went…”)."
+   ],
+   "model": "Hi Nico! How was your weekend? Did you go to the concert on Saturday? Who did you go with? Was it crowded? What time did you get home? Did you see Mateo there? And what did you do on Sunday? Tell me everything!"
+  }
+ ],
+ "8": [
+  {
+   "title": "My neighbourhood",
+   "genre": "Descripción",
+   "length": "50–70 words",
+   "brief": "Describe your neighbourhood for a new classmate. Say what there is and where things are.",
+   "briefEs": "Describe tu barrio para un compañero nuevo: qué hay y dónde están las cosas.",
+   "criteria": [
+    "Use “there is” with singular and “there are” with plural nouns.",
+    "Use three prepositions of place: next to, between, across from, on the corner.",
+    "Describe the place as quiet / noisy or crowded."
+   ],
+   "model": "I live in Chapinero, in Bogotá. It's a crowded but nice neighbourhood. There is a big park across from my building. There are three cafés on my block and there is a bakery on the corner. The supermarket is between the bank and the pharmacy. There aren't many trees, but there are a lot of restaurants."
+  },
+  {
+   "title": "A room for rent",
+   "genre": "Anuncio",
+   "length": "40–60 words",
+   "brief": "Write an advertisement for a room in your flat. Describe the room, the furniture and what is within walking distance.",
+   "briefEs": "Escribe un anuncio para arrendar una habitación: describe la habitación, los muebles y lo que hay cerca.",
+   "criteria": [
+    "Use “there is / there are” three times.",
+    "Use “a few” with countable and “a little” with uncountable nouns.",
+    "Include “furniture” and “within walking distance”."
+   ],
+   "model": "ROOM FOR RENT in Laureles, Medellín. It's a quiet, sunny room with new furniture: there is a bed, a desk and a big wardrobe. There are a few shelves for books. There is a little space for a bike. The metro station and two supermarkets are within walking distance. Call Marta: 300 123 4567."
+  },
+  {
+   "title": "Questions about a new city",
+   "genre": "Correo sencillo",
+   "length": "50–70 words",
+   "brief": "You are moving to a new city. Write an email to a friend who lives there. Ask about the neighbourhood using “how much”, “how many” and “is there / are there”.",
+   "briefEs": "Escribe un correo a un amigo que vive en otra ciudad preguntando por su barrio con how much / how many / is there.",
+   "criteria": [
+    "Two questions with “How many…?” + plural noun.",
+    "One question with “How much…?” + uncountable noun.",
+    "Two questions with “Is there…?” or “Are there…?”."
+   ],
+   "model": "Hi Tatiana,\n\nI'm moving to Cartagena next month! I have some questions about your neighbourhood. Is there a gym near your house? Are there any good schools for my son? How many buses go to the centre? How much traffic is there in the morning? How much is the rent for a small flat?\n\nThanks a lot!\nDiego"
+  }
+ ],
+ "9": [
+  {
+   "title": "Find me at the airport",
+   "genre": "Mensaje corto",
+   "length": "40–60 words",
+   "brief": "Someone you don't know is picking you up at the airport. Write a message describing what you look like and what you are wearing.",
+   "briefEs": "Describe en un mensaje cómo eres físicamente y qué ropa llevas para que te reconozcan en el aeropuerto.",
+   "criteria": [
+    "Describe hair and eyes (straight / curly, brown, long).",
+    "Use “I’m wearing…” with two clothes items.",
+    "Use a modifier with a present participle (the woman carrying a red bag)."
+   ],
+   "model": "Hi Mr. Clark, this is Natalia. I'm quite tall and slim. I have long, curly black hair and brown eyes. Today I'm wearing jeans, a white T-shirt and a yellow jacket. I'm the woman carrying a big green suitcase and standing next to the café. See you soon!"
+  },
+  {
+   "title": "Who's who in the photo?",
+   "genre": "Descripción",
+   "length": "50–70 words",
+   "brief": "Describe a family or group photo. Identify four people using phrases like “the man wearing…”, “the girl sitting…”.",
+   "briefEs": "Describe una foto de grupo e identifica a cuatro personas con frases como “the man wearing…”.",
+   "criteria": [
+    "Four modifiers with -ing participles (wearing, sitting, holding, standing).",
+    "Two appearance words: beard, moustache, middle-aged, good-looking.",
+    "Use “looks like” once to compare two people."
+   ],
+   "model": "This is a photo of my family at Christmas. The middle-aged man wearing glasses is my uncle Hernán. The woman sitting next to him is my aunt. The boy holding the dog is my cousin Sebastián. He looks like his father: they both have a beard! The girl standing at the back with curly hair is me."
+  },
+  {
+   "title": "Me and my parents",
+   "genre": "Párrafo personal",
+   "length": "50–70 words",
+   "brief": "Write about who you take after in your family. Compare your appearance and personality with your mother or father.",
+   "briefEs": "Escribe a quién te pareces en tu familia, en físico y en personalidad.",
+   "criteria": [
+    "Use “take after” and “look like” correctly.",
+    "Use “be like” for personality (What is she like?).",
+    "Three appearance adjectives (tall, short, slim, well-built, curly…)."
+   ],
+   "model": "People say I take after my mother. I look like her: we are both short and slim, and we have straight dark hair. But my eyes are green like my father's. In personality, I'm like my dad. He is calm and funny, and I am too. My brother looks like my dad: he is tall and well-built."
+  }
+ ],
+ "10": [
+  {
+   "title": "Ready for the trip?",
+   "genre": "Lista y mensaje",
+   "length": "40–60 words",
+   "brief": "You are travelling tomorrow. Write a message to your travel partner saying what you have already done and what you haven't done yet.",
+   "briefEs": "Escribe un mensaje diciendo qué has hecho ya y qué no has hecho todavía antes de un viaje.",
+   "criteria": [
+    "Three sentences with “already” before the past participle.",
+    "Two negative sentences with “yet” at the end.",
+    "Use “to book” and “to pack”."
+   ],
+   "model": "Hi Andrea! Good news: I've already booked the hotel and I've already printed the tickets. I've just bought sunscreen too. But I haven't packed my suitcase yet and I haven't changed money yet. Have you finished your packing? Have you called the taxi yet? See you at 5 a.m.!"
+  },
+  {
+   "title": "Things I have never done",
+   "genre": "Párrafo personal",
+   "length": "50–70 words",
+   "brief": "Write about your experiences: things you have done and things you have never done. Give one detail in the past simple for one experience.",
+   "briefEs": "Escribe sobre experiencias que has tenido y que nunca has tenido, con un detalle en pasado simple.",
+   "criteria": [
+    "Use “have ever / have never” + past participle three times.",
+    "One sentence in the past simple with a specific time (in 2022, last year).",
+    "Correct participles: been, seen, eaten, flown."
+   ],
+   "model": "I have travelled a lot in Colombia, but I have never been outside the country. I have never flown in a small plane. Have I ever eaten something strange? Yes! I have eaten hormigas culonas. I ate them in Santander in 2022 and they were delicious. I have never seen snow, but I hope to see it one day."
+  },
+  {
+   "title": "A progress email to my boss",
+   "genre": "Correo sencillo",
+   "length": "50–70 words",
+   "brief": "Write a short email to your boss about a project. Say what you have finished so far and what you have not completed yet.",
+   "briefEs": "Escribe un correo a tu jefe diciendo qué has terminado y qué no has completado aún en un proyecto.",
+   "criteria": [
+    "Use “so far” and “just” once each.",
+    "Two sentences with “already” and two with “yet”.",
+    "A correct email greeting and closing."
+   ],
+   "model": "Dear Mrs. Gómez,\n\nSo far, I have finished the sales report and I have already sent it to the team. I have just called the new clients. I haven't completed the presentation yet, and I haven't booked the meeting room yet. I can finish them tomorrow.\n\nBest regards,\nCarlos"
+  }
+ ],
+ "11": [
+  {
+   "title": "Recommend a place in my city",
+   "genre": "Recomendación",
+   "length": "50–70 words",
+   "brief": "A tourist asks you for a recommendation in your city. Write a short message recommending a place to visit and a place to eat.",
+   "briefEs": "Recomienda a un turista un lugar para visitar y uno para comer en tu ciudad.",
+   "criteria": [
+    "Use “You should…” and “You can…” at least once each.",
+    "Use two adverbs before adjectives (really, quite, extremely).",
+    "Connect ideas with “because” and “so”."
+   ],
+   "model": "You should visit Monserrate because the view is really amazing. You can take the cable car, so it's quite easy. Go early, because it's extremely crowded on Sundays. After that, you can eat at La Puerta Falsa. The tamales are really good and it's pretty cheap. It's worth it!"
+  },
+  {
+   "title": "A short hotel review",
+   "genre": "Reseña corta",
+   "length": "50–70 words",
+   "brief": "Write a review of a hotel or hostel you stayed in. Say what was good and what was bad, and recommend it or not.",
+   "briefEs": "Escribe una reseña corta de un hotel donde te quedaste: lo bueno, lo malo y si lo recomiendas.",
+   "criteria": [
+    "Use “however” or “though” to contrast.",
+    "Three adverb + adjective pairs (a bit noisy, really clean…).",
+    "Finish with a recommendation using “should” or “recommend”."
+   ],
+   "model": "Hotel Mar Azul, Santa Marta ★★★★\nThe rooms were really clean and the staff were extremely friendly. The breakfast was quite good. However, the street was a bit noisy at night. The pool was small, though it was nice. I recommend this hotel because the price is pretty low. You should ask for a room at the back."
+  },
+  {
+   "title": "Advice for a new student",
+   "genre": "Mensaje corto",
+   "length": "50–70 words",
+   "brief": "A new student is joining your English class. Write a message with three pieces of advice.",
+   "briefEs": "Escribe un mensaje con tres consejos para un estudiante nuevo de tu clase de inglés.",
+   "criteria": [
+    "Three sentences with “should” or “shouldn’t”.",
+    "One sentence with “can” for possibility.",
+    "Use “because” to explain one piece of advice."
+   ],
+   "model": "Welcome to the class, Simón! Here is some advice. You should arrive early because the teacher starts on time. You shouldn't use your phone in class. You should do the homework: it's really useful. If you have questions, you can write in our group chat. Everyone is quite friendly here!"
+  }
+ ],
+ "12": [
+  {
+   "title": "Plans for Saturday",
+   "genre": "Mensaje de grupo",
+   "length": "40–60 words",
+   "brief": "Write a message to your group of friends suggesting different plans for Saturday. Give two options and ask what they prefer.",
+   "briefEs": "Escribe un mensaje al grupo de amigos proponiendo dos planes para el sábado y pregunta cuál prefieren.",
+   "criteria": [
+    "Use “Let’s…” and “Why don’t we…?”.",
+    "Use “How about + -ing?” once.",
+    "Ask a question with “prefer”."
+   ],
+   "model": "Hi guys! What should we do on Saturday? Let's go to the new pizza place. Or why don't we go to the cinema instead? How about meeting at the park first and having a picnic? Who's up for it? Which plan do you prefer? Maybe we can vote!"
+  },
+  {
+   "title": "Can I borrow it?",
+   "genre": "Correo informal",
+   "length": "50–70 words",
+   "brief": "Write an email to a friend asking for a favour: you want to borrow something. Explain why, and say when you can give it back.",
+   "briefEs": "Escribe un correo a un amigo pidiéndole prestado algo; explica por qué y cuándo lo devuelves.",
+   "criteria": [
+    "Use “Could you lend me…?” or “Can I borrow…?”.",
+    "Use the word “favour”.",
+    "Use the difference borrow / lend correctly."
+   ],
+   "model": "Hi Martín,\n\nCan I ask you a favour? My computer is broken and I have an exam on Friday. Could you lend me your laptop for two days? I can borrow my sister's, but she needs it for work. I can give it back on Saturday morning. Thank you so much!\n\nLaura"
+  },
+  {
+   "title": "Ideas for a class party",
+   "genre": "Propuesta corta",
+   "length": "50–70 words",
+   "brief": "Your class is planning an end-of-course party. Write suggestions about the place, food and music.",
+   "briefEs": "Escribe sugerencias para la fiesta de fin de curso: lugar, comida y música.",
+   "criteria": [
+    "Three suggestions with “could” or “should”.",
+    "One recommendation with an infinitive (It's a good idea to…).",
+    "Use “instead” or “maybe” once."
+   ],
+   "model": "Here are my ideas for our party. We could have it in the school garden instead of the classroom. It's a good idea to bring food from different regions: I can bring empanadas. We should ask Diana to choose the music because she is a DJ. Maybe we could also play karaoke in English!"
+  }
+ ],
+ "13": [
+  {
+   "title": "Me too! A reply to a profile",
+   "genre": "Comentario",
+   "length": "40–60 words",
+   "brief": "Read this profile: “I love rock music. I don't like cold weather. I can cook well.” Write a reply saying if you agree or not with each sentence.",
+   "briefEs": "Responde a un perfil diciendo si coincides o no con cada frase usando so, too, neither, either.",
+   "criteria": [
+    "Use “So do I / Me too” once.",
+    "Use “Neither do I / Me neither” for a negative sentence.",
+    "Use one disagreement (I don’t. / I do!)."
+   ],
+   "model": "Hi! I read your profile. You love rock music? So do I! My favourite band is Aterciopelados. You don't like cold weather? Neither do I. I prefer the beach. You can cook well? Well, I can't! I usually burn the rice. Maybe you can teach me!"
+  },
+  {
+   "title": "A polite request to a neighbour",
+   "genre": "Nota",
+   "length": "40–60 words",
+   "brief": "Write a polite note to your neighbour. Ask him or her to do two things (turn down the music, move the car…).",
+   "briefEs": "Escribe una nota amable a un vecino pidiéndole dos cosas con “would”.",
+   "criteria": [
+    "Use “Would you…, please?” and “Would you mind + -ing?”.",
+    "Use “Thank you” and a friendly closing.",
+    "Explain the reason with “because”."
+   ],
+   "model": "Dear neighbour,\n\nWould you turn down the music after 10 p.m., please? I start work very early, so I need to sleep. Also, would you mind moving your car a little? It's in front of my garage door. Thank you very much, and no problem if you need anything from me!\n\nTeresa, apartment 4B"
+  },
+  {
+   "title": "My opinion about school uniforms",
+   "genre": "Opinión corta",
+   "length": "50–70 words",
+   "brief": "Write a short opinion about school uniforms. Say what you think and if you agree or disagree with other people.",
+   "briefEs": "Escribe una opinión corta sobre los uniformes escolares y di si estás de acuerdo con otras personas.",
+   "criteria": [
+    "Use “I think” and “I don’t think”.",
+    "Use “agree / disagree” once each.",
+    "Use “actually” to add a surprising idea."
+   ],
+   "model": "I think school uniforms are a good idea. Many parents say they are expensive, but I don't agree. Actually, uniforms are cheaper than new clothes every week. My friend thinks uniforms are boring. I agree with her a little, but I don't think clothes are important at school. In my opinion, students should study, not show fashion."
+  }
+ ],
+ "14": [
+  {
+   "title": "The highest and the biggest",
+   "genre": "Datos curiosos",
+   "length": "50–70 words",
+   "brief": "Write five fun facts about the geography of Colombia or another country. Use superlatives and measurements.",
+   "briefEs": "Escribe cinco datos curiosos sobre la geografía de Colombia u otro país con superlativos y medidas.",
+   "criteria": [
+    "Four superlatives with “the” (the highest, the longest, the most beautiful).",
+    "Two measurements with metres or kilometres.",
+    "Use one of: by far, roughly, twice as… as."
+   ],
+   "model": "Colombia is an amazing country. The highest mountain is Pico Cristóbal Colón: it's roughly 5,700 metres high. The longest river is the Magdalena, about 1,500 kilometres long. Caño Cristales is by far the most colourful river in the world. La Guajira has the driest desert in the country. The Amazon is the biggest rainforest on Earth."
+  },
+  {
+   "title": "Two cities compared",
+   "genre": "Comparación",
+   "length": "50–70 words",
+   "brief": "Compare two cities you know (e.g. Bogotá and Cartagena): weather, size, population, coast. Say which is the best for a holiday.",
+   "briefEs": "Compara dos ciudades (clima, tamaño, población, costa) y di cuál es la mejor para vacaciones.",
+   "criteria": [
+    "Three comparatives and two superlatives.",
+    "Include the words dry / humid, coast, population.",
+    "Use “twice as… as” or “much” before a comparative."
+   ],
+   "model": "Bogotá is much bigger than Cartagena. Its population is about eight million: that's eight times as big. Bogotá is colder and drier, and Cartagena is hotter and more humid. Cartagena is on the coast, so its beaches are the best part. For a holiday, I think Cartagena is the most fun city in Colombia."
+  },
+  {
+   "title": "Questions for a travel quiz",
+   "genre": "Cuestionario",
+   "length": "50–70 words",
+   "brief": "Write a travel quiz with six questions about measurements and records. Give the answers at the end.",
+   "briefEs": "Escribe un concurso de seis preguntas sobre medidas y récords geográficos con sus respuestas.",
+   "criteria": [
+    "Use “How high / How long / How deep / How big…?”.",
+    "Two questions with a superlative (What is the longest…?).",
+    "Answers with numbers and units."
+   ],
+   "model": "Travel Quiz!\n1. How high is Mount Everest?\n2. How long is the Amazon River?\n3. What is the largest desert in the world?\n4. How deep is Lake Titicaca?\n5. Which is the biggest ocean?\n6. How far is Bogotá from Medellín?\nAnswers: 1. 8,849 metres. 2. About 6,400 km. 3. Antarctica. 4. 281 metres. 5. The Pacific. 6. Roughly 415 km."
+  }
+ ],
+ "15": [
+  {
+   "title": "Next week's plans",
+   "genre": "Mensaje corto",
+   "length": "50–70 words",
+   "brief": "Write a message to a friend who wants to meet. Explain your arrangements for next week and say when you are free.",
+   "briefEs": "Escribe a un amigo tus planes de la próxima semana y dile cuándo estás libre.",
+   "criteria": [
+    "Two arrangements with the present continuous (I’m meeting…).",
+    "Two plans with “be going to”.",
+    "Use “busy”, “available” or “appointment”."
+   ],
+   "model": "Hi Pilar! Next week is very busy. On Monday I'm meeting my boss at 9:00. On Tuesday I have a dentist appointment. On Wednesday I'm going to visit my grandmother. On Thursday I'm flying to Cali. But I'm available on Friday! Are you going to be free? We're going to have fun!"
+  },
+  {
+   "title": "Taking a phone message",
+   "genre": "Mensaje recibido",
+   "length": "40–60 words",
+   "brief": "You answered the phone for your roommate. Write a note with the message from the caller. Use “said” and “told”.",
+   "briefEs": "Escribe una nota para tu compañero de apartamento con el mensaje de alguien que llamó.",
+   "criteria": [
+    "Use “said (that)” and “told me / asked me”.",
+    "Include a request: “asked you to call back”.",
+    "Include a time and a phone number."
+   ],
+   "model": "Kevin, Mr. Torres from the bank called at 3:00. He said that your new card is ready. He told me the office closes at 5:00 today. He asked you to call him back before 4:30. His number is 601 555 2233. He also said you need to bring your ID. – Sofi"
+  },
+  {
+   "title": "Sorry, I'm running late",
+   "genre": "Correo sencillo",
+   "length": "50–70 words",
+   "brief": "Write an email to your teacher. You are going to be late for class. Explain why, and ask him or her to remind you about the homework.",
+   "briefEs": "Escribe un correo a tu profesor: vas a llegar tarde; explica por qué y pide que te recuerde la tarea.",
+   "criteria": [
+    "Use “be running late” or “be about to”.",
+    "One sentence with “be going to”.",
+    "A polite request with “Could you…?”."
+   ],
+   "model": "Dear Professor Ruiz,\n\nI'm sorry, but I'm running late. My bus broke down and I'm about to take a taxi. I'm going to arrive at 8:30. Could you remind me about the homework at the end of the class? Could you also tell my partner to start without me?\n\nThank you,\nEsteban"
+  }
+ ],
+ "16": [
+  {
+   "title": "Then and now",
+   "genre": "Comparación",
+   "length": "50–70 words",
+   "brief": "Compare your life ten years ago with your life now. Write about your home, your hobbies and your friends.",
+   "briefEs": "Compara tu vida de hace diez años con tu vida actual: casa, pasatiempos y amigos.",
+   "criteria": [
+    "Past simple for ten years ago (I lived, I had).",
+    "Present simple with “nowadays” or “these days”.",
+    "One sentence in the present perfect (I have changed…)."
+   ],
+   "model": "Ten years ago, I lived in a small town with my parents. I played football every day and I had two best friends. Back then, I didn't have a phone. Nowadays, I live in Bogotá with my wife. These days, I go to the gym and I read a lot. I have changed a lot, but I still love football."
+  },
+  {
+   "title": "My goals for next year",
+   "genre": "Párrafo personal",
+   "length": "50–70 words",
+   "brief": "Write about three goals you have for next year. Use verbs followed by infinitives.",
+   "briefEs": "Escribe tres metas para el próximo año usando verbos seguidos de infinitivo.",
+   "criteria": [
+    "Use four verb + infinitive patterns (hope to, want to, decide to, plan to).",
+    "Use “goal” and “to improve”.",
+    "Use “I’m looking forward to + -ing” once."
+   ],
+   "model": "I have three goals for next year. First, I want to improve my English because I hope to get a better job. Second, I plan to save money for a trip to Mexico. Third, I've decided to learn to swim. I'm looking forward to travelling and meeting new people. I hope to finish all my goals!"
+  },
+  {
+   "title": "A letter to my future self",
+   "genre": "Carta",
+   "length": "50–70 words",
+   "brief": "Write a short letter to yourself in five years. Describe your life now and say what you hope or plan to do.",
+   "briefEs": "Escribe una carta corta a tu yo del futuro: describe tu vida ahora y lo que esperas hacer.",
+   "criteria": [
+    "Present simple for your life now.",
+    "Two verb + infinitive patterns for plans (hope to, would like to).",
+    "One question to your future self in the present perfect (Have you…?)."
+   ],
+   "model": "Dear future me,\n\nNow I am 22 and I work in a shoe shop. I study English at night and I live with my parents. I hope to finish university soon and I would like to live in my own apartment. Have you visited London? Have you learned to drive? I hope you are happy!\n\nLove,\nMe"
+  }
+ ]
+}

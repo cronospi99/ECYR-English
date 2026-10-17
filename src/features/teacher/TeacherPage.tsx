@@ -42,14 +42,18 @@ import type { StudentData } from '@/lib/teacher';
 import { cn } from '@/lib/cn';
 import { useClass } from './useClass';
 import { AssignmentsManager } from '@/features/tasks/teacher';
+import { AssignButton } from '@/features/tasks/AssignButton';
+import { ClassWork } from './WorkList';
 
-type Tab = 'class' | 'tasks' | 'material' | 'practice';
+type Tab = 'class' | 'tasks' | 'work' | 'material' | 'practice';
 type Sort = 'name' | 'recent' | 'xp' | 'level';
 
 export default function TeacherPage() {
   const { isTeacher, classCode, students, error, loading, reload } = useClass();
   const [params, setParams] = useSearchParams();
-  const tab: Tab = (['tasks', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
+  const tab: Tab = (['tasks', 'work', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
+  // Remounts the task list after "Asignar tarea" in the header created one.
+  const [tasksKey, setTasksKey] = useState(0);
 
   if (!isTeacher)
     return (
@@ -76,6 +80,16 @@ export default function TeacherPage() {
       }
       title="Sala del docente"
       subtitle="El progreso de tu clase, todo el material sin restricciones y tu propio espacio para practicar."
+      actions={
+        <AssignButton
+          variant="brand"
+          size="md"
+          onSaved={() => {
+            setTasksKey((k) => k + 1);
+            setParams({ tab: 'tasks' });
+          }}
+        />
+      }
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
@@ -85,13 +99,15 @@ export default function TeacherPage() {
           options={[
             { value: 'class', label: 'Mi clase' },
             { value: 'tasks', label: 'Tareas' },
+            { value: 'work', label: 'Trabajos' },
             { value: 'material', label: 'Material' },
             { value: 'practice', label: 'Práctica libre' },
           ]}
         />
       </div>
       {tab === 'class' && <ClassTab classCode={classCode} students={students} error={error} loading={loading} reload={reload} />}
-      {tab === 'tasks' && <AssignmentsManager />}
+      {tab === 'tasks' && <AssignmentsManager key={tasksKey} />}
+      {tab === 'work' && <ClassWork students={students} limit={150} />}
       {tab === 'material' && <MaterialTab />}
       {tab === 'practice' && <PracticeTab />}
     </Page>
@@ -255,6 +271,8 @@ function ClassTab({
           </ul>
         )}
       </Card>
+
+      {students && students.length > 0 && <ClassWork students={students} limit={20} compact />}
     </div>
   );
 }
@@ -287,7 +305,7 @@ function MaterialTab() {
     {
       title: 'Cursos por nivel',
       items: [
-        { to: '/learn/foundations', title: 'English Foundations', sub: 'A1 · curso de cómic', icon: BookOpen, color: 'var(--red)' },
+        { to: '/learn/foundations', title: 'Pre-A1 · Foundations', sub: 'Alfabeto, saludos, números, to be…', icon: BookOpen, color: 'var(--red)' },
         ...LEVELS.map((l) => ({ to: `/learn/${l.id.toLowerCase()}`, title: `${l.id} · ${l.book}`, sub: `${l.units} unidades · ${l.nameEs}`, icon: GraduationCap, color: l.color })),
       ],
     },

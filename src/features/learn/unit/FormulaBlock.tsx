@@ -153,7 +153,7 @@ function Row({ line, spec, color }: { line: FormLine; spec?: KeySpec; color: str
 }
 
 /** The `form[]` lines as colour-coded formula rows with +/−/? badges. */
-export function FormulaBlock({ form, spec, color }: { form: string[]; spec?: KeySpec; color: string }) {
+export function FormulaBlock({ form, spec, color, bare = false }: { form: string[]; spec?: KeySpec; color: string; /** No "Fórmula" heading (inside a disclosure). */ bare?: boolean }) {
   const lines = useMemo(() => parseForm(form), [form]);
   const roles = useMemo(() => {
     const s = new Set<Role>();
@@ -163,9 +163,11 @@ export function FormulaBlock({ form, spec, color }: { form: string[]; spec?: Key
   if (!lines.length) return null;
   return (
     <section aria-label="Fórmula">
-      <Kicker icon={Sigma} color={color}>
-        Fórmula
-      </Kicker>
+      {!bare && (
+        <Kicker icon={Sigma} color={color}>
+          Fórmula
+        </Kicker>
+      )}
       <div className="rounded-[18px] p-3 sm:p-4" style={{ background: tint(color, 6), boxShadow: `inset 0 0 0 1px ${tint(color, 18)}` }}>
         <ul>
           {lines.map((l, i) => (

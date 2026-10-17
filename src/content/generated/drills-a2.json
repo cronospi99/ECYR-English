@@ -1,0 +1,578 @@
+{
+ "A2-1-0": {
+  "name": "Three-part statement",
+  "prompt": "Para cada pista, di una afirmación, una negación y una pregunta en pasado simple.",
+  "items": [
+   "send / the report",
+   "see / the message",
+   "be / at the office",
+   "have / time to check it",
+   "go / to the second session"
+  ],
+  "answers": [
+   "I sent the report. / I didn’t send the report. / Did you send the report?",
+   "I saw the message. / I didn’t see the message. / Did you see the message?",
+   "I was at the office. / I wasn’t at the office. / Were you at the office?",
+   "I had time to check it. / I didn’t have time to check it. / Did you have time to check it?",
+   "I went to the second session. / I didn’t go to the second session. / Did you go to the second session?"
+  ]
+ },
+ "A2-1-1": {
+  "name": "Then and not now",
+  "prompt": "Di una oración con «used to» y enseguida di cómo es la realidad hoy.",
+  "items": [
+   "transport",
+   "food",
+   "free time",
+   "technology",
+   "where you lived"
+  ],
+  "answers": [
+   "I used to take the bus to work. Now I ride my bike.",
+   "I used to eat a lot of fast food. Now I cook at home.",
+   "I used to play video games every night. Now I go running.",
+   "I used to have an old phone with no internet. Now I have a smartphone.",
+   "I used to live in Pereira. Now I live in Bogotá."
+  ]
+ },
+ "A2-2-0": {
+  "name": "Sort and ask",
+  "prompt": "Para cada sustantivo, di si es contable o no contable, y luego haz la pregunta con «how much / how many».",
+  "items": [
+   "information",
+   "chairs",
+   "furniture",
+   "emails",
+   "homework"
+  ],
+  "answers": [
+   "Noncount. — How much information do you need?",
+   "Count. — How many chairs are there in the room?",
+   "Noncount. — How much furniture is there in the flat?",
+   "Count. — How many emails did you get today?",
+   "Noncount. — How much homework do you have tonight?"
+  ]
+ },
+ "A2-2-1": {
+  "name": "Wrap the question",
+  "prompt": "Convierte cada pregunta directa en indirecta usando una introducción distinta cada vez.",
+  "items": [
+   "Where is platform 4?",
+   "What time does it close?",
+   "How much is a single ticket?",
+   "Can I pay by card?",
+   "Is the wifi free?"
+  ],
+  "answers": [
+   "Could you tell me where platform 4 is?",
+   "Do you know what time it closes?",
+   "I’d like to know how much a single ticket is.",
+   "I was wondering if I can pay by card.",
+   "Do you have any idea if the wifi is free?"
+  ]
+ },
+ "A2-3-0": {
+  "name": "Three verdicts",
+  "prompt": "Evalúa cada cosa de tres formas: con «too», con «not … enough» y con «as … as».",
+  "items": [
+   "a flat you saw",
+   "your current phone",
+   "the school timetable",
+   "public transport in your city",
+   "your English right now"
+  ],
+  "answers": [
+   "The flat was too small. / It wasn’t bright enough. / It wasn’t as nice as my old flat.",
+   "My phone is too slow. / The battery isn’t good enough. / It isn’t as fast as my brother’s phone.",
+   "The timetable is too long. / The breaks aren’t long enough. / It isn’t as flexible as last year’s timetable.",
+   "The buses are too crowded. / There aren’t enough metro lines. / It isn’t as efficient as I would like.",
+   "My speaking is too slow. / My vocabulary isn’t big enough. / My writing isn’t as good as my reading."
+  ]
+ },
+ "A2-3-1": {
+  "name": "One step back",
+  "prompt": "Convierte cada afirmación verdadera en un deseo moviendo el verbo un paso atrás en el tiempo.",
+  "items": [
+   "I don’t have a car.",
+   "I can’t play the piano.",
+   "I live far from work.",
+   "I said something stupid.",
+   "It is raining."
+  ],
+  "answers": [
+   "I wish I had a car.",
+   "I wish I could play the piano.",
+   "I wish I lived closer to work.",
+   "I wish I hadn’t said something stupid.",
+   "I wish it weren’t raining."
+  ]
+ },
+ "A2-4-0": {
+  "name": "Open then close",
+  "prompt": "Pregunta con el presente perfecto y responde con el pasado simple y un tiempo terminado.",
+  "items": [
+   "change jobs",
+   "travel abroad",
+   "lose a document",
+   "meet the new manager",
+   "move house"
+  ],
+  "answers": [
+   "Have you ever changed jobs? — Yes, I changed jobs in 2021.",
+   "Have you ever travelled abroad? — Yes, I went to Peru two years ago.",
+   "Have you ever lost a document? — Yes, I lost my passport last summer.",
+   "Have you met the new manager? — Yes, I met her on Monday.",
+   "Have you ever moved house? — Yes, I moved to Envigado last year."
+  ]
+ },
+ "A2-4-1": {
+  "name": "Five-step process",
+  "prompt": "Describe cada proceso en exactamente cinco pasos, con un adverbio de secuencia distinto en cada paso.",
+  "items": [
+   "making coffee",
+   "sending a large file",
+   "getting to your school",
+   "preparing for an exam",
+   "opening a bank account"
+  ],
+  "answers": [
+   "First, boil the water. Then put the coffee in the filter. Next, pour the water slowly. After that, wait two minutes. Finally, serve the coffee.",
+   "First, compress the file. Then open a cloud service. Next, upload the file. After that, copy the link. Finally, send the link by email.",
+   "First, I leave home at six. Then I walk to the station. Next, I take the metro. After that, I change to a bus. Finally, I walk to school.",
+   "First, I make a study plan. Then I review my notes. Next, I do practice exercises. After that, I check my answers. Finally, I sleep well the night before.",
+   "First, choose a bank. Then make an appointment. Next, take your ID. After that, fill in the forms. Finally, sign the contract."
+  ]
+ },
+ "A2-5-0": {
+  "name": "Plan or offer",
+  "prompt": "Para cada situación, di una oración con «going to» (plan o evidencia) y otra con «will» (decisión del momento).",
+  "items": [
+   "a heavy bag on the floor",
+   "your holidays next year",
+   "a ringing phone nobody answers",
+   "the weather this afternoon",
+   "a colleague who looks lost"
+  ],
+  "answers": [
+   "That bag is going to fall. / I’ll carry it for you.",
+   "I’m going to visit my cousins in Spain. / I think I’ll go to the beach too.",
+   "Nobody is going to answer it. / I’ll get it.",
+   "Look at those clouds. It’s going to rain this afternoon. / I’ll take an umbrella.",
+   "She’s going to get lost. / I’ll show her the way."
+  ]
+ },
+ "A2-5-1": {
+  "name": "Grade the pressure",
+  "prompt": "Di la misma idea de tres formas: como obligación, como consejo y como algo que no es obligatorio.",
+  "items": [
+   "arrive on time",
+   "bring your own laptop",
+   "register in advance",
+   "wear formal clothes",
+   "pay a deposit"
+  ],
+  "answers": [
+   "You have to arrive on time. / You should arrive on time. / You don’t have to arrive on time.",
+   "You have to bring your own laptop. / You should bring your own laptop. / You don’t have to bring your own laptop.",
+   "You have to register in advance. / You should register in advance. / You don’t have to register in advance.",
+   "You have to wear formal clothes. / You should wear formal clothes. / You don’t have to wear formal clothes.",
+   "You have to pay a deposit. / You should pay a deposit. / You don’t have to pay a deposit."
+  ]
+ },
+ "A2-6-0": {
+  "name": "Swap in the pronoun",
+  "prompt": "Di cada oración con el sustantivo completo y repítela cambiando el objeto por un pronombre.",
+  "items": [
+   "turn off the lights",
+   "hand in the report",
+   "look after the children",
+   "pick up the parcel",
+   "put away the chairs"
+  ],
+  "answers": [
+   "Turn off the lights. → Turn them off.",
+   "Hand in the report. → Hand it in.",
+   "Look after the children. → Look after them.",
+   "Pick up the parcel. → Pick it up.",
+   "Put away the chairs. → Put them away."
+  ]
+ },
+ "A2-6-1": {
+  "name": "Three levels of ask",
+  "prompt": "Haz cada petición tres veces: Can you… / Could you… / Would you mind…",
+  "items": [
+   "repeat the last point",
+   "send the figures again",
+   "move the meeting to four",
+   "check my email",
+   "cover for me on Friday"
+  ],
+  "answers": [
+   "Can you repeat the last point? / Could you repeat the last point? / Would you mind repeating the last point?",
+   "Can you send the figures again? / Could you send the figures again? / Would you mind sending the figures again?",
+   "Can you move the meeting to four? / Could you move the meeting to four? / Would you mind moving the meeting to four?",
+   "Can you check my email? / Could you check my email? / Would you mind checking my email?",
+   "Can you cover for me on Friday? / Could you cover for me on Friday? / Would you mind covering for me on Friday?"
+  ]
+ },
+ "A2-7-0": {
+  "name": "Two ways to say why",
+  "prompt": "Explica el propósito de cada cosa dos veces: una con «to + verbo» y otra con «for + -ing».",
+  "items": [
+   "a password manager",
+   "a shared calendar",
+   "a group chat",
+   "a checklist",
+   "a backup drive"
+  ],
+  "answers": [
+   "A password manager is used to store passwords. / It’s for storing passwords.",
+   "A shared calendar is used to organise meetings. / It’s for organising meetings.",
+   "A group chat is used to share news quickly. / It’s for sharing news quickly.",
+   "A checklist is used to remember every task. / It’s for remembering every task.",
+   "A backup drive is used to keep copies of files. / It’s for keeping copies of files."
+  ]
+ },
+ "A2-7-1": {
+  "name": "Instruction, then suggestion",
+  "prompt": "Da cada paso dos veces: como imperativo directo y suavizado como sugerencia.",
+  "items": [
+   "restart the router",
+   "check the cable",
+   "update the app",
+   "change the password",
+   "contact support"
+  ],
+  "answers": [
+   "Restart the router. / Try restarting the router.",
+   "Check the cable. / It’s a good idea to check the cable.",
+   "Update the app. / Make sure you update the app.",
+   "Change the password. / I’d recommend changing the password.",
+   "Contact support. / The best thing to do is to contact support."
+  ]
+ },
+ "A2-8-0": {
+  "name": "Name the moment",
+  "prompt": "Completa cada frase con una cláusula de tiempo y luego dila otra vez sin «when».",
+  "items": [
+   "the day…",
+   "the year…",
+   "the moment…",
+   "the summer…",
+   "the week…"
+  ],
+  "answers": [
+   "the day when I got my first job → the day I got my first job",
+   "the year when I finished school → the year I finished school",
+   "the moment when I saw the sea for the first time → the moment I saw the sea for the first time",
+   "the summer when we travelled to Cartagena → the summer we travelled to Cartagena",
+   "the week when everything went wrong → the week everything went wrong"
+  ]
+ },
+ "A2-8-1": {
+  "name": "Future in two clauses",
+  "prompt": "Une cada par en una sola oración con una conjunción de tiempo, sin poner «will» en la cláusula de tiempo.",
+  "items": [
+   "I finish work / I call you",
+   "she arrives / we start",
+   "the file uploads / you can close the tab",
+   "you get home / send me a message",
+   "the rain stops / we leave"
+  ],
+  "answers": [
+   "When I finish work, I’ll call you.",
+   "We’ll start as soon as she arrives.",
+   "After the file uploads, you can close the tab.",
+   "When you get home, send me a message.",
+   "We’ll leave when the rain stops."
+  ]
+ },
+ "A2-9-0": {
+  "name": "Three frames, one topic",
+  "prompt": "Toma cada tema y di tres oraciones en orden: used to, now, going to. Mantén el mismo sujeto en las tres.",
+  "items": [
+   "transport",
+   "free time",
+   "the city you live in",
+   "technology at work",
+   "food"
+  ],
+  "answers": [
+   "I used to take the bus. Now I ride a bike. Next year I’m going to buy an electric scooter.",
+   "I used to watch TV every night. Now I play tennis. Next year I’m going to learn to dance salsa.",
+   "My city used to be small and quiet. Now it’s very busy. Next year it’s going to have a new metro line.",
+   "We used to print everything at work. Now we use apps for everything. Next year we’re going to work fully online.",
+   "I used to eat a lot of meat. Now I eat more vegetables. Next year I’m going to try a vegetarian diet."
+  ]
+ },
+ "A2-9-1": {
+  "name": "Consequence chain",
+  "prompt": "Un estudiante da una condición y el siguiente convierte la consecuencia en la nueva condición. Sigan la cadena seis veces sin usar «will» después de «if».",
+  "items": [
+   "If I miss the bus…",
+   "If it rains on Saturday…",
+   "If the client says no…",
+   "If you don’t back up the file…",
+   "If we finish early…"
+  ],
+  "answers": [
+   "If I miss the bus, I’ll be late for work.",
+   "If it rains on Saturday, we’ll stay at home and watch a film.",
+   "If the client says no, we’ll change the offer.",
+   "If you don’t back up the file, you’ll lose all your work.",
+   "If we finish early, we’ll go for a coffee."
+  ]
+ },
+ "A2-10-0": {
+  "name": "Match the auxiliary",
+  "prompt": "Responde a cada afirmación con la respuesta corta correcta y luego agrega una razón con «because».",
+  "items": [
+   "I love travelling alone.",
+   "I’ve never eaten sushi.",
+   "I didn’t sleep well.",
+   "I’m learning to drive.",
+   "I can’t stand horror films."
+  ],
+  "answers": [
+   "So do I, because you can do whatever you want.",
+   "Neither have I, because I don’t like raw fish.",
+   "Neither did I, because my neighbours were very noisy.",
+   "So am I, because I want to drive to work.",
+   "Neither can I, because they give me nightmares."
+  ]
+ },
+ "A2-10-1": {
+  "name": "Three ways to say why",
+  "prompt": "Toma cada par de causa y resultado y exprésalo tres veces: con because, con because of y con so.",
+  "items": [
+   "heavy rain / match cancelled",
+   "no signal / call dropped",
+   "cheap tickets / we booked",
+   "late train / missed meeting",
+   "bad reviews / restaurant closed"
+  ],
+  "answers": [
+   "The match was cancelled because it rained heavily. / The match was cancelled because of the heavy rain. / It rained heavily, so the match was cancelled.",
+   "The call dropped because there was no signal. / The call dropped because of the bad signal. / There was no signal, so the call dropped.",
+   "We booked because the tickets were cheap. / We booked because of the cheap tickets. / The tickets were cheap, so we booked.",
+   "I missed the meeting because the train was late. / I missed the meeting because of the late train. / The train was late, so I missed the meeting.",
+   "The restaurant closed because it had bad reviews. / The restaurant closed because of the bad reviews. / It had bad reviews, so the restaurant closed."
+  ]
+ },
+ "A2-11-0": {
+  "name": "Flip the sentence",
+  "prompt": "Pasa cada oración activa a pasiva con «by» + agente. Luego dila sin el agente y decide cuál versión es mejor.",
+  "items": [
+   "A local artist painted the mural.",
+   "Someone stole my bike last night.",
+   "The team finished the prototype in March.",
+   "My uncle repaired the roof.",
+   "They cancelled all the flights."
+  ],
+  "answers": [
+   "The mural was painted by a local artist.",
+   "My bike was stolen last night.",
+   "The prototype was finished in March.",
+   "The roof was repaired by my uncle.",
+   "All the flights were cancelled."
+  ]
+ },
+ "A2-11-1": {
+  "name": "How it’s done",
+  "prompt": "Describe cada proceso en tres oraciones en presente pasivo, en orden y sin decir quién lo hace.",
+  "items": [
+   "how coffee reaches a cup",
+   "how a package is delivered",
+   "how a passport is issued",
+   "how bread is made",
+   "how a film is subtitled"
+  ],
+  "answers": [
+   "The coffee cherries are picked. Then the beans are dried and roasted. Finally, the coffee is brewed and served.",
+   "The package is collected. Then it is taken to a warehouse. Finally, it is delivered to your door.",
+   "The application form is filled in. Then the documents are checked. Finally, the passport is printed and sent to you.",
+   "The ingredients are mixed. Then the dough is left to rise. Finally, the bread is baked in the oven.",
+   "The dialogue is transcribed. Then it is translated. Finally, the subtitles are added to the film."
+  ]
+ },
+ "A2-12-0": {
+  "name": "Interrupted",
+  "prompt": "Completa cada fondo con una interrupción en pasado simple; luego cambia el orden y agrega la coma.",
+  "items": [
+   "I was walking home when…",
+   "She was writing the report when…",
+   "We were having dinner when…",
+   "They were boarding the plane when…",
+   "I was about to leave when…"
+  ],
+  "answers": [
+   "I was walking home when it started to rain. → When it started to rain, I was walking home.",
+   "She was writing the report when the computer crashed. → When the computer crashed, she was writing the report.",
+   "We were having dinner when the lights went out. → When the lights went out, we were having dinner.",
+   "They were boarding the plane when the fire alarm rang. → When the fire alarm rang, they were boarding the plane.",
+   "I was about to leave when my boss called. → When my boss called, I was about to leave."
+  ]
+ },
+ "A2-12-1": {
+  "name": "How long?",
+  "prompt": "Responde cada pregunta dos veces: una con «for» y otra con «since», usando el presente perfecto continuo cuando el verbo lo permita.",
+  "items": [
+   "your current job",
+   "your city",
+   "your English course",
+   "your phone",
+   "your closest friendship"
+  ],
+  "answers": [
+   "I’ve been working here for three years. / I’ve been working here since 2023.",
+   "I’ve been living in Bogotá for ten years. / I’ve been living in Bogotá since 2016.",
+   "I’ve been studying English for six months. / I’ve been studying English since April.",
+   "I’ve had my phone for two years. / I’ve had it since 2024.",
+   "I’ve known my best friend for fifteen years. / I’ve known her since primary school."
+  ]
+ },
+ "A2-13-0": {
+  "name": "Cause or experiencer",
+  "prompt": "Di cada oración dos veces: una sobre la cosa y otra sobre la persona. Cambia solo el participio.",
+  "items": [
+   "the news / me",
+   "the trip / the children",
+   "the results / the team",
+   "the wait / the passengers",
+   "the lecture / the students"
+  ],
+  "answers": [
+   "The news was surprising. / I was surprised by the news.",
+   "The trip was exciting. / The children were excited about the trip.",
+   "The results were disappointing. / The team was disappointed with the results.",
+   "The wait was annoying. / The passengers were annoyed by the wait.",
+   "The lecture was boring. / The students were bored."
+  ]
+ },
+ "A2-13-1": {
+  "name": "Two into one",
+  "prompt": "Une cada par en una sola oración con una cláusula de relativo; luego repítela sin el pronombre si es posible.",
+  "items": [
+   "I met a woman. She works for the ministry.",
+   "This is the report. I mentioned it yesterday.",
+   "We hired an engineer. His last project failed.",
+   "That’s the café. We met there in 2019.",
+   "Here’s the key. It opens the back door."
+  ],
+  "answers": [
+   "I met a woman who works for the ministry.",
+   "This is the report that I mentioned yesterday. → This is the report I mentioned yesterday.",
+   "We hired an engineer whose last project failed.",
+   "That’s the café where we met in 2019.",
+   "Here’s the key that opens the back door."
+  ]
+ },
+ "A2-14-0": {
+  "name": "Read the evidence",
+  "prompt": "Da dos deducciones para cada situación: una segura con must o can’t, y otra tentativa con might o could.",
+  "items": [
+   "the office lights are still on at ten",
+   "your friend isn’t answering",
+   "the file won’t open",
+   "the shop is closed on a Tuesday",
+   "he’s carrying two suitcases"
+  ],
+  "answers": [
+   "Someone must be working late. / The cleaners might be there.",
+   "She must be busy. / Her phone might be off.",
+   "The file must be damaged. / It could be the wrong format.",
+   "It can’t be a holiday. / The owner might be sick.",
+   "He must be going on a trip. / He could be moving house."
+  ]
+ },
+ "A2-14-1": {
+  "name": "Rules of the place",
+  "prompt": "Para cada lugar, da un permiso, una obligación y una prohibición, con una estructura distinta cada vez.",
+  "items": [
+   "a library",
+   "a swimming pool",
+   "an airport",
+   "this classroom",
+   "a hospital ward"
+  ],
+  "answers": [
+   "You can borrow up to five books. / You have to show your library card. / You mustn’t eat inside.",
+   "You’re allowed to use the sauna. / You need to wear a swimming cap. / You can’t run near the pool.",
+   "You can shop in the duty-free area. / You have to show your passport. / You’re not allowed to carry liquids over 100 ml.",
+   "You can ask questions at any time. / You need to do your homework. / You mustn’t use your phone during tests.",
+   "Visitors may come in the afternoon. / You have to wash your hands. / You’re not allowed to bring flowers."
+  ]
+ },
+ "A2-15-0": {
+  "name": "Unreal chain",
+  "prompt": "Responde cada pregunta con un segundo condicional completo y luego convierte tu respuesta en la siguiente pregunta para tu compañero.",
+  "items": [
+   "if you could work anywhere",
+   "if you had a free year",
+   "if you spoke six languages",
+   "if you had to move tomorrow",
+   "if money were not a factor"
+  ],
+  "answers": [
+   "If I could work anywhere, I would work from a beach in San Andrés.",
+   "If I had a free year, I would travel around South America.",
+   "If I spoke six languages, I would work as an interpreter.",
+   "If I had to move tomorrow, I would pack only my clothes and my laptop.",
+   "If money were not a factor, I would study music."
+  ]
+ },
+ "A2-15-1": {
+  "name": "Second thoughts",
+  "prompt": "Para cada situación, da una crítica con «should have» y una alternativa con «would have».",
+  "items": [
+   "you missed a deadline",
+   "a friend forgot a birthday",
+   "the team sent the wrong file",
+   "you overslept",
+   "the shop lost your order"
+  ],
+  "answers": [
+   "I should have started earlier. / I would have finished on time if I had planned better.",
+   "She should have put it in her calendar. / I would have reminded her if I had known.",
+   "They should have checked the file before sending it. / I would have sent the correct version.",
+   "I should have set two alarms. / I would have arrived on time if I had gone to bed earlier.",
+   "They should have called me. / I would have chosen another shop if I had known."
+  ]
+ },
+ "A2-16-0": {
+  "name": "One step back",
+  "prompt": "Reporta cada cita con «said» o «told me», cambiando el tiempo verbal, los pronombres y la palabra de tiempo.",
+  "items": [
+   "“I’m leaving now.”",
+   "“We finished it last night.”",
+   "“I’ll send it tomorrow.”",
+   "“I can’t find the file.”",
+   "“I’ve been waiting here for an hour.”"
+  ],
+  "answers": [
+   "She said (that) she was leaving then.",
+   "They told me (that) they had finished it the night before.",
+   "She said (that) she would send it the next day.",
+   "He told me (that) he couldn’t find the file.",
+   "She said (that) she had been waiting there for an hour."
+  ]
+ },
+ "A2-16-1": {
+  "name": "Instruction relay",
+  "prompt": "Reporta cada instrucción con el verbo que corresponde a su fuerza: asked, told, advised, reminded o warned.",
+  "items": [
+   "“Please sign at the bottom.”",
+   "“Don’t use that password again.”",
+   "“You really should back it up.”",
+   "“Remember the meeting at four.”",
+   "“Stay away from the wet floor.”"
+  ],
+  "answers": [
+   "She asked me to sign at the bottom.",
+   "He warned me not to use that password again.",
+   "She advised me to back it up.",
+   "He reminded me to go to the meeting at four.",
+   "She warned us to stay away from the wet floor."
+  ]
+ }
+}

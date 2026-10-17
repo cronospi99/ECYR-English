@@ -1,0 +1,482 @@
+{
+ "C1-1-0": {
+  "name": "Say it with a phrasal verb",
+  "prompt": "Reescribe cada frase con el phrasal verb adecuado, cuidando la posición de la partícula.",
+  "items": [
+   "I can’t stand his attitude any more. (tolerate) → I can’t ______ his attitude any more.",
+   "We argued about money and stopped speaking. (quarrel) → We ______ over money.",
+   "The meeting has been postponed until Friday. → They’ve ______ the meeting until Friday.",
+   "She raised the issue of salaries at the meeting. → She ______ the issue of salaries.",
+   "Turn off the lights. (use a pronoun) → Turn ______.",
+   "I’ve always admired my grandmother. → I’ve always ______ my grandmother."
+  ],
+  "answers": [
+   "I can’t put up with his attitude any more.",
+   "We fell out over money.",
+   "They’ve put off the meeting until Friday.",
+   "She brought up the issue of salaries.",
+   "Turn them off.",
+   "I’ve always looked up to my grandmother."
+  ]
+ },
+ "C1-1-1": {
+  "name": "Gerund or infinitive?",
+  "prompt": "Completa cada frase con la forma correcta (-ing o to + verbo) según el significado.",
+  "items": [
+   "She didn’t lock the door. She forgot. → She forgot ______ (lock) the door.",
+   "I have a clear memory of meeting him in 2019. → I remember ______ (meet) him in 2019.",
+   "He paused on the way to buy coffee. → He stopped ______ (buy) coffee.",
+   "If the app freezes, restart your phone as an experiment. → Try ______ (restart) your phone.",
+   "We said no to the offer. → We refused ______ (accept) the offer.",
+   "I’m sorry I said that. → I regret ______ (say) that."
+  ],
+  "answers": [
+   "She forgot to lock the door.",
+   "I remember meeting him in 2019.",
+   "He stopped to buy coffee.",
+   "Try restarting your phone.",
+   "We refused to accept the offer.",
+   "I regret saying that."
+  ]
+ },
+ "C1-2-0": {
+  "name": "Object + which verb form?",
+  "prompt": "Reescribe cada frase con el verbo indicado y el patrón correcto: objeto + to, verbo base o -ing.",
+  "items": [
+   "My boss said I had to stay late. (make) → My boss ______ late.",
+   "They allowed us to use the terrace. (let) → They ______ the terrace.",
+   "I’d like you to read the contract first. (want) → I ______ the contract first.",
+   "I noticed her. She was crossing the street. (see) → I ______ the street.",
+   "They forced him to sign. (passive) → He ______ sign.",
+   "We weren’t permitted to take photos. (allowed) → We ______ photos."
+  ],
+  "answers": [
+   "My boss made me stay late.",
+   "They let us use the terrace.",
+   "I want you to read the contract first.",
+   "I saw her crossing the street.",
+   "He was made to sign.",
+   "We weren’t allowed to take photos."
+  ]
+ },
+ "C1-2-1": {
+  "name": "Spotlight it",
+  "prompt": "Reescribe cada frase como una frase hendida con what (o all) para destacar la idea clave.",
+  "items": [
+   "The colour caught my eye. → What ______",
+   "We need more time. → What ______",
+   "She rewrote the entire report. (focus on the action) → What she ______",
+   "I only want an apology. (all) → All ______",
+   "Her honesty surprised me. → What ______",
+   "They cancelled the event. (focus on the action) → What they ______"
+  ],
+  "answers": [
+   "What caught my eye was the colour.",
+   "What we need is more time.",
+   "What she did was rewrite the entire report.",
+   "All I want is an apology.",
+   "What surprised me was her honesty.",
+   "What they did was cancel the event."
+  ]
+ },
+ "C1-3-0": {
+  "name": "Article or no article?",
+  "prompt": "Completa cada espacio con a, an, the o ningún artículo (—).",
+  "items": [
+   "___ internet has changed ___ way we work.",
+   "She’s studying at ___ university in Manizales. ___ university is famous for engineering.",
+   "___ robots are becoming cheaper every year.",
+   "It was ___ first time I had seen ___ MRI scan.",
+   "He’s ___ only person who understands ___ problem.",
+   "___ education is ___ key to reducing inequality."
+  ],
+  "answers": [
+   "The internet has changed the way we work.",
+   "She’s studying at a university in Manizales. The university is famous for engineering.",
+   "Robots are becoming cheaper every year. (no article)",
+   "It was the first time I had seen an MRI scan.",
+   "He’s the only person who understands the problem.",
+   "Education is the key to reducing inequality. (no article before “Education”)"
+  ]
+ },
+ "C1-3-1": {
+  "name": "Compress it",
+  "prompt": "Reescribe cada frase con una cláusula -ing (o having + participio), manteniendo el mismo sujeto.",
+  "items": [
+   "Because she didn’t know the way, she asked a police officer.",
+   "When he opened the envelope, he found a cheque.",
+   "After they had finished the survey, they analysed the data.",
+   "The report, which shows a clear trend, surprised everyone.",
+   "As I was feeling ill, I stayed at home.",
+   "She smiled and waved goodbye. (one sentence with an -ing clause)"
+  ],
+  "answers": [
+   "Not knowing the way, she asked a police officer.",
+   "Opening the envelope, he found a cheque.",
+   "Having finished the survey, they analysed the data.",
+   "The report, showing a clear trend, surprised everyone.",
+   "Feeling ill, I stayed at home.",
+   "Smiling, she waved goodbye."
+  ]
+ },
+ "C1-4-0": {
+  "name": "Report it",
+  "prompt": "Pasa cada frase a estilo indirecto con el verbo indicado, cambiando tiempos, pronombres y expresiones de tiempo.",
+  "items": [
+   "“I will call you tomorrow,” she said. → She said ______",
+   "“I broke the vase,” he admitted. → He admitted ______",
+   "“I can’t come to the party,” Ana told me. → Ana told me ______",
+   "“We’re moving to Cali next month,” they said. → They said ______",
+   "“I didn’t take the money,” he said. (deny) → He denied ______",
+   "“Don’t walk under that ladder,” my grandmother said. (warn) → My grandmother warned me ______"
+  ],
+  "answers": [
+   "She said (that) she would call me the next day.",
+   "He admitted (that) he had broken the vase.",
+   "Ana told me (that) she couldn’t come to the party.",
+   "They said (that) they were moving to Cali the following month.",
+   "He denied taking the money. / He denied that he had taken the money.",
+   "My grandmother warned me not to walk under that ladder."
+  ]
+ },
+ "C1-4-1": {
+  "name": "Remove the source",
+  "prompt": "Reescribe cada frase con una pasiva impersonal, empezando con las palabras dadas.",
+  "items": [
+   "People say that the castle is haunted. → The castle ______",
+   "People believe that he lives in Panama. → It ______",
+   "Experts think that the painting was stolen in 1990. → The painting ______",
+   "Reports say that the minister has resigned. → The minister ______",
+   "People claim that the ritual protects the house. → It ______",
+   "Everyone knows that the company is losing money. → The company ______"
+  ],
+  "answers": [
+   "The castle is said to be haunted.",
+   "It is believed that he lives in Panama.",
+   "The painting is thought to have been stolen in 1990.",
+   "The minister is reported to have resigned.",
+   "It is claimed that the ritual protects the house.",
+   "The company is known to be losing money."
+  ]
+ },
+ "C1-5-0": {
+  "name": "Comment on it",
+  "prompt": "Reescribe cada frase con un adverbio de oración que exprese la misma actitud.",
+  "items": [
+   "It was a surprise that the low-budget film won. → ______, the low-budget film won.",
+   "I’m being honest: the ending disappointed me. → ______, the ending disappointed me.",
+   "People say they are filming a sequel. → ______, they are filming a sequel.",
+   "It’s a pity the concert was cancelled. → ______, the concert was cancelled.",
+   "I assume the director wanted a darker tone. → ______, the director wanted a darker tone.",
+   "It was lucky that nobody was injured. → ______, nobody was injured."
+  ],
+  "answers": [
+   "Surprisingly, the low-budget film won.",
+   "Frankly, the ending disappointed me.",
+   "Apparently, they are filming a sequel.",
+   "Unfortunately, the concert was cancelled.",
+   "Presumably, the director wanted a darker tone.",
+   "Luckily, nobody was injured."
+  ]
+ },
+ "C1-5-1": {
+  "name": "Degree and result",
+  "prompt": "Une las dos ideas con so…that o such…that, usando la palabra indicada.",
+  "items": [
+   "The film was long. I fell asleep. (such) → It was ______",
+   "The plot was confusing. Nobody understood it. (so) → The plot was ______",
+   "There were a lot of twists. I lost track. (so many) → There were ______",
+   "She acted convincingly. She won an award. (so) → She acted ______",
+   "They were good actors. Everyone cried. (such) → They were ______",
+   "The ending was shocking. The audience gasped. (formal inversion) → So ______"
+  ],
+  "answers": [
+   "It was such a long film that I fell asleep.",
+   "The plot was so confusing that nobody understood it.",
+   "There were so many twists that I lost track.",
+   "She acted so convincingly that she won an award.",
+   "They were such good actors that everyone cried.",
+   "So shocking was the ending that the audience gasped."
+  ]
+ },
+ "C1-6-0": {
+  "name": "The more…, the more…",
+  "prompt": "Reescribe cada frase con un doble comparativo (o con “more and more”).",
+  "items": [
+   "If you practise more, you play better. → The more ______",
+   "As the crowd gets louder, the band gets happier. → The louder ______",
+   "When the song is harder, it’s more rewarding. → The harder ______",
+   "As I get older, I worry less. → The older ______",
+   "If we leave early, it will be better. (short form) → The ______",
+   "Tickets keep getting more expensive. (more and more) → Tickets are getting ______"
+  ],
+  "answers": [
+   "The more you practise, the better you play.",
+   "The louder the crowd, the happier the band.",
+   "The harder the song, the more rewarding it is.",
+   "The older I get, the less I worry.",
+   "The sooner, the better.",
+   "Tickets are getting more and more expensive."
+  ]
+ },
+ "C1-6-1": {
+  "name": "Habits with will and would",
+  "prompt": "Reescribe cada frase con will, would o used to según el tipo de hábito indicado.",
+  "items": [
+   "My brother always leaves his shoes in the hall. (typical present habit) → My brother ______",
+   "Every summer we went to my grandparents’ farm. (past habit) → Every summer we ______",
+   "I loved that band when I was a teenager. (past state) → I ______",
+   "She keeps interrupting me, and it annoys me! (irritation) → She ______!",
+   "As a child, I hummed along to every song. (past habit) → As a child, I ______",
+   "Babies usually sleep for most of the day. (general truth) → Babies ______"
+  ],
+  "answers": [
+   "My brother will leave his shoes in the hall.",
+   "Every summer we would go to my grandparents’ farm.",
+   "I used to love that band when I was a teenager.",
+   "She WILL keep interrupting me!",
+   "As a child, I would hum along to every song.",
+   "Babies will sleep for most of the day."
+  ]
+ },
+ "C1-7-0": {
+  "name": "Keep it or drop it",
+  "prompt": "Decide si puedes omitir el pronombre relativo y reescribe la frase; en las dos últimas, une las ideas como se indica.",
+  "items": [
+   "The film that we watched last night was awful. (Can you omit the pronoun?)",
+   "The woman who lives upstairs is a doctor. (Can you omit the pronoun?)",
+   "Everything that he told me was a lie. (Can you omit the pronoun?)",
+   "The family whose car was stolen called the police. (Can you omit the pronoun?)",
+   "This is the café. We met in it. (Join informally, without a pronoun.)",
+   "This is the café. We met in it. (Join formally.)"
+  ],
+  "answers": [
+   "The film we watched last night was awful. (Yes: “that” is the object.)",
+   "The woman who lives upstairs is a doctor. (No: “who” is the subject.)",
+   "Everything he told me was a lie. (Yes: “that” is the object.)",
+   "The family whose car was stolen called the police. (No: “whose” is never omitted.)",
+   "This is the café we met in.",
+   "This is the café in which we met."
+  ]
+ },
+ "C1-7-1": {
+  "name": "As if or the way?",
+  "prompt": "Completa cada frase con as if / as though, the way, like o as, cuidando el tiempo verbal.",
+  "items": [
+   "He isn’t the boss, but he gives orders. → He gives orders as if ______",
+   "It seems that the meeting has been cancelled. → It looks as though ______",
+   "Cook the rice exactly as your grandmother did. → Cook the rice the way ______",
+   "She isn’t my mother, but she talks to me like that. → She talks to me as though ______",
+   "He sings beautifully, like a professional. (like + noun) → He sings ______",
+   "We discussed this earlier: the price has gone up. (formal as) → As ______"
+  ],
+  "answers": [
+   "He gives orders as if he were the boss.",
+   "It looks as though the meeting has been cancelled.",
+   "Cook the rice the way your grandmother did.",
+   "She talks to me as though she were my mother.",
+   "He sings like a professional.",
+   "As we discussed earlier, the price has gone up."
+  ]
+ },
+ "C1-8-0": {
+  "name": "Who gets what?",
+  "prompt": "Reordena los objetos o corrige el error según la instrucción de cada frase.",
+  "items": [
+   "The clerk gave a refund to me. (Put the person first.)",
+   "She showed her colleagues the report. (Put the thing first.)",
+   "Explain me the problem. (Correct the error.)",
+   "I bought my mother flowers. (Use a preposition.)",
+   "Send her it. (Make it more natural.)",
+   "Could you describe me the house? (Correct the error.)"
+  ],
+  "answers": [
+   "The clerk gave me a refund.",
+   "She showed the report to her colleagues.",
+   "Explain the problem to me.",
+   "I bought flowers for my mother.",
+   "Send it to her.",
+   "Could you describe the house to me?"
+  ]
+ },
+ "C1-8-1": {
+  "name": "Base form after that",
+  "prompt": "Reescribe cada frase con el subjuntivo (verbo base) después de that, o con -ing donde se indica.",
+  "items": [
+   "“You must refund the customer,” the manager said. → The manager insisted that ______",
+   "Every receipt must be kept. → It is essential that ______",
+   "“Try a smaller size,” we told her. → We recommended that ______",
+   "He mustn’t be charged. → We insist that ______",
+   "“Arrive early,” the guide advised us. → The guide suggested that ______",
+   "She should apply before May. (use -ing) → We recommend ______"
+  ],
+  "answers": [
+   "The manager insisted that the customer be refunded.",
+   "It is essential that every receipt be kept.",
+   "We recommended that she try a smaller size.",
+   "We insist that he not be charged.",
+   "The guide suggested that we arrive early.",
+   "We recommend applying before May."
+  ]
+ },
+ "C1-9-0": {
+  "name": "Specific or any?",
+  "prompt": "Reescribe cada frase con when, where, whenever o wherever según el significado.",
+  "items": [
+   "No matter where you go in this city, you’ll find street art. → ______",
+   "Every time it rains, the road floods. → ______",
+   "This is the village. My grandmother was born there. (where / wherever?) → ______",
+   "Sit in any seat you like. → ______",
+   "Call me at any time you need help. → ______",
+   "I’ll phone you at the moment I land. (when / whenever?) → ______"
+  ],
+  "answers": [
+   "Wherever you go in this city, you’ll find street art.",
+   "Whenever it rains, the road floods.",
+   "This is the village where my grandmother was born.",
+   "Sit wherever you like.",
+   "Call me whenever you need help.",
+   "I’ll phone you when I land."
+  ]
+ },
+ "C1-9-1": {
+  "name": "Whoever, whatever, whichever",
+  "prompt": "Reescribe cada frase con whoever, whatever o whichever.",
+  "items": [
+   "Any person who breaks the rules will be fined. → ______",
+   "You can eat anything that you want. → ______",
+   "The person who took my umbrella should return it. → ______",
+   "Choose the option that suits you best: A or B. → ______",
+   "It doesn’t matter what happens; don’t lose hope. → ______",
+   "We’ll support any candidate who protects the reserve. → ______"
+  ],
+  "answers": [
+   "Whoever breaks the rules will be fined.",
+   "You can eat whatever you want.",
+   "Whoever took my umbrella should return it.",
+   "Choose whichever option suits you best.",
+   "Whatever happens, don’t lose hope.",
+   "We’ll support whoever protects the reserve."
+  ]
+ },
+ "C1-10-0": {
+  "name": "Make it passive",
+  "prompt": "Reescribe cada frase en pasiva (o en causativa), empezando con las palabras dadas.",
+  "items": [
+   "They speak over 60 languages in Colombia. → Over 60 languages ______",
+   "Someone stole my bike last night. → My bike ______",
+   "They have published the results. → The results ______",
+   "They will translate the book into French. → The book ______",
+   "Someone must sign the form. → The form ______",
+   "A tutor checked my essay. (causative) → I had ______"
+  ],
+  "answers": [
+   "Over 60 languages are spoken in Colombia.",
+   "My bike was stolen last night.",
+   "The results have been published.",
+   "The book will be translated into French.",
+   "The form must be signed.",
+   "I had my essay checked by a tutor."
+  ]
+ },
+ "C1-10-1": {
+  "name": "Singular or plural?",
+  "prompt": "Completa cada frase con la forma correcta del verbo entre paréntesis.",
+  "items": [
+   "Most of the students ___ (be) late yesterday.",
+   "Each of the answers ___ (be) correct.",
+   "A number of problems ___ (have) been reported.",
+   "The number of tourists ___ (grow) every year.",
+   "None of the information ___ (be) useful.",
+   "Half of the cake ___ (be) eaten before the party started."
+  ],
+  "answers": [
+   "Most of the students were late yesterday.",
+   "Each of the answers is correct.",
+   "A number of problems have been reported.",
+   "The number of tourists grows every year.",
+   "None of the information was useful.",
+   "Half of the cake was eaten before the party started."
+  ]
+ },
+ "C1-11-0": {
+  "name": "Compress the description",
+  "prompt": "Convierte cada descripción en un adjetivo compuesto delante del sustantivo.",
+  "items": [
+   "a plan that lasts five years → a ______ plan",
+   "a report with ten pages → a ______ report",
+   "a student who works hard → a ______ student",
+   "an athlete who is famous all over the world → a ______ athlete",
+   "a drink that contains no sugar → a ______ drink",
+   "an expert who is highly respected → a ______ expert"
+  ],
+  "answers": [
+   "a five-year plan",
+   "a ten-page report",
+   "a hard-working student",
+   "a world-famous athlete",
+   "a sugar-free drink",
+   "a highly respected expert (no hyphen after an -ly adverb)"
+  ]
+ },
+ "C1-11-1": {
+  "name": "Make it superlative",
+  "prompt": "Reescribe cada frase con un adjetivo compuesto en comparativo o superlativo.",
+  "items": [
+   "She is a well-known writer. (superlative, of her generation) → She is ______",
+   "He works harder than anyone else on the team. → He is ______",
+   "This award is respected more widely than any other. → This is ______",
+   "This lab has better equipment than any other in the country. → This is ______",
+   "Nobody is paid worse than cleaners in this company. → Cleaners are ______",
+   "This writer is known better than that one. (comparative) → This writer is ______"
+  ],
+  "answers": [
+   "She is the best-known writer of her generation.",
+   "He is the hardest-working person on the team.",
+   "This is the most widely respected award.",
+   "This is the best-equipped lab in the country.",
+   "Cleaners are the worst-paid workers in this company.",
+   "This writer is better known than that one."
+  ]
+ },
+ "C1-12-0": {
+  "name": "Drop the if",
+  "prompt": "Reescribe cada condicional con inversión (were, had o should) y sin if.",
+  "items": [
+   "If I were in charge, I would cut costs. → Were ______",
+   "If we had known about the strike, we would have changed the date. → Had ______",
+   "If you need any further information, please contact us. → Should ______",
+   "If they hadn’t signed the contract, we would have lost the client. → Had ______",
+   "If the company were to close, hundreds would lose their jobs. → Were ______",
+   "If the parcel doesn’t arrive by Monday, please call us. → Should ______"
+  ],
+  "answers": [
+   "Were I in charge, I would cut costs.",
+   "Had we known about the strike, we would have changed the date.",
+   "Should you need any further information, please contact us.",
+   "Had they not signed the contract, we would have lost the client.",
+   "Were the company to close, hundreds would lose their jobs.",
+   "Should the parcel not arrive by Monday, please call us."
+  ]
+ },
+ "C1-12-1": {
+  "name": "Set the condition",
+  "prompt": "Reescribe cada frase con el conector de condición indicado.",
+  "items": [
+   "You can borrow my car, but only if you return it by six. (as long as) → ______",
+   "We’ll cancel the trip if the weather doesn’t improve. (unless) → ______",
+   "Take some cash. You might need to pay for parking. (in case) → ______",
+   "The bonus is yours, but only if you reach the target. (provided that) → ______",
+   "If you don’t book now, there won’t be any seats. (unless) → ______",
+   "Write down my number. You might get lost. (in case) → ______"
+  ],
+  "answers": [
+   "You can borrow my car as long as you return it by six.",
+   "We’ll cancel the trip unless the weather improves.",
+   "Take some cash in case you need to pay for parking.",
+   "The bonus is yours provided that you reach the target.",
+   "Unless you book now, there won’t be any seats.",
+   "Write down my number in case you get lost."
+  ]
+ }
+}

@@ -154,8 +154,8 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
   const reduce = useReducedMotion();
   const chips = parts.filter((p) => p.role !== 'end');
   return (
-    <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)]">
-      {title && <div className="text-label-2 mb-2 text-[11px] font-bold tracking-wide uppercase">{title}</div>}
+    <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)] sm:p-4">
+      <div className="text-label-2 mb-2.5 text-[11px] font-bold tracking-wide uppercase">{title ?? 'Fórmula'}</div>
       <div className="flex flex-wrap items-center gap-y-2">
         {chips.map((c, i) => {
           const col = ROLE[c.role] ?? 'var(--blue)';
@@ -169,19 +169,25 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
               className="flex items-end"
             >
               {i > 0 && (
-                <span className="text-label-3 px-1 pb-2" aria-hidden>
-                  <ArrowRight size={16} />
-                </span>
+                <motion.span
+                  className="text-label-2 px-1 pb-2.5"
+                  aria-hidden
+                  initial={reduce ? false : { opacity: 0, x: -6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 + 0.05, duration: 0.3 }}
+                >
+                  <ArrowRight size={18} strokeWidth={2.5} />
+                </motion.span>
               )}
               <span className="flex flex-col items-center">
                 <span
-                  className="rounded-t-[10px] px-2.5 pt-1 pb-0.5 text-[10.5px] font-bold tracking-wide whitespace-nowrap text-white uppercase"
+                  className="w-full rounded-t-[11px] px-2.5 pt-1 pb-0.5 text-center text-[11px] font-bold tracking-wide whitespace-nowrap text-white uppercase"
                   style={{ background: deep(col, 58) }}
                 >
                   {c.label_es}
                 </span>
                 <span
-                  className="rounded-b-[10px] px-2.5 py-1 text-[15.5px] font-semibold whitespace-nowrap"
+                  className="w-full rounded-b-[11px] px-3 py-1.5 text-center text-[17px] leading-tight font-bold whitespace-nowrap"
                   style={{ color: ink(col), background: `color-mix(in srgb, ${col} 14%, transparent)`, boxShadow: `inset 0 0 0 1.5px color-mix(in srgb, ${col} 40%, transparent)` }}
                 >
                   {c.en}
@@ -191,9 +197,9 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
           );
         })}
       </div>
-      <div className="mt-3 flex items-start gap-2 border-t border-[var(--separator)] pt-2.5">
+      <div className="mt-3.5 flex items-start gap-2 border-t border-[var(--separator)] pt-3">
         <span className="flex-1">
-          <span className="block text-[15.5px] font-semibold">{example.en}</span>
+          <span className="block text-[16.5px] font-semibold">{example.en}</span>
           <span className="text-label-2 block text-[13.5px]">{example.es}</span>
         </span>
         <SpeakButton text={example.en} size={16} />
@@ -226,7 +232,18 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
   const Y = 44;
   const NOW = 190;
   const c = color;
-  const dot = (x: number, k: string, fill = c) => <circle key={k} cx={x} cy={Y} r={6.5} fill={fill} />;
+  const dot = (x: number, k: string, fill = c) => (
+    <motion.circle
+      key={k}
+      cx={x}
+      cy={Y}
+      r={7}
+      style={{ fill }}
+      initial={reduce ? false : { scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ type: 'spring', stiffness: 420, damping: 20, delay: 0.15 + (x / W) * 0.4 }}
+    />
+  );
   const bar = (x1: number, x2: number, k: string, dashed = false) => (
     <motion.line
       key={k}
@@ -257,7 +274,7 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
     />
   );
   const tag = (x: number, text: string, k: string) => (
-    <text key={k} x={x} y={Y + 26} textAnchor="middle" fontSize="11" fontWeight={700} style={{ fill: c }}>
+    <text key={k} x={x} y={Y + 27} textAnchor="middle" fontSize="12.5" fontWeight={800} style={{ fill: `color-mix(in srgb, ${c} 70%, var(--label))` }}>
       {text}
     </text>
   );
@@ -302,7 +319,7 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
   return (
     <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)]">
       <div className="text-label-2 text-[11px] font-bold tracking-wide uppercase">Línea de tiempo</div>
-      <svg viewBox={`0 0 ${W} 86`} className="mt-1 h-auto w-full max-w-[460px]" role="img" aria-label={label || TL_TEXT[type]}>
+      <svg viewBox={`0 0 ${W} 92`} className="mt-1 h-auto w-full max-w-[440px]" role="img" aria-label={label || TL_TEXT[type]}>
         <defs>
           <marker id={`${uid}a`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0 0 L10 5 L0 10 z" style={{ fill: c }} />
@@ -312,19 +329,20 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
           </marker>
         </defs>
         <line x1={12} y1={Y} x2={W - 8} y2={Y} strokeWidth={2} markerEnd={`url(#${uid}x)`} style={{ stroke: 'var(--label-3)' }} />
-        <line x1={NOW} y1={Y - 14} x2={NOW} y2={Y + 14} strokeWidth={2.5} style={{ stroke: 'var(--label)' }} />
-        <text x={NOW} y={Y + 40} textAnchor="middle" fontSize="11" fontWeight={800} style={{ fill: 'var(--label)' }}>
+        <line x1={NOW} y1={Y - 16} x2={NOW} y2={Y + 14} strokeWidth={2.5} strokeDasharray="3 3" style={{ stroke: 'var(--label)' }} />
+        <rect x={NOW - 26} y={Y + 31} width={52} height={17} rx={8.5} style={{ fill: 'var(--label)' }} />
+        <text x={NOW} y={Y + 43.5} textAnchor="middle" fontSize="11" fontWeight={800} style={{ fill: 'var(--card)' }}>
           AHORA
         </text>
-        <text x={14} y={Y + 40} fontSize="10.5" fontWeight={600} style={{ fill: 'var(--label-3)' }}>
-          PASADO
+        <text x={14} y={Y + 43.5} fontSize="11.5" fontWeight={700} style={{ fill: 'var(--label-2)' }}>
+          ← PASADO
         </text>
-        <text x={W - 10} y={Y + 40} textAnchor="end" fontSize="10.5" fontWeight={600} style={{ fill: 'var(--label-3)' }}>
-          FUTURO
+        <text x={W - 10} y={Y + 43.5} textAnchor="end" fontSize="11.5" fontWeight={700} style={{ fill: 'var(--label-2)' }}>
+          FUTURO →
         </text>
         {marks}
       </svg>
-      <div className={cn('text-[14px] font-medium')} style={{ color: `color-mix(in srgb, ${color} 70%, var(--label))` }}>
+      <div className={cn('text-[15px] font-semibold')} style={{ color: `color-mix(in srgb, ${color} 70%, var(--label))` }}>
         {label || TL_TEXT[type]}
       </div>
     </div>

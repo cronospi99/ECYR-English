@@ -8,7 +8,6 @@ import {
   ChevronRight,
   ClipboardList,
   Mic,
-  PenLine,
   Repeat,
   Trophy,
   Users,
@@ -21,11 +20,14 @@ import { Button, ButtonLink } from '@/components/ui/Button';
 import { LevelChip, PageLoader } from '@/components/ui/Misc';
 import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
-import { WritingPad } from '@/components/learning/WritingPad';
-import { UnitVisuals } from '@/components/visuals/UnitVisuals';
+import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
+import { UnitReadings } from '@/features/practice/UnitReadings';
+import { AssignButton } from '@/features/tasks/AssignButton';
+import { VisualFigure } from '@/components/visuals/Visuals';
+import { unitVisualPlan, type Visual } from '@/content/visuals';
 import { useAsync } from '@/hooks/useAsync';
 import { loadLevel, levelMeta } from '@/content/levels';
-import type { Unit, VocabItem } from '@/content/types';
+import type { CefrLevel, Unit, VocabItem } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
@@ -48,6 +50,8 @@ export default function UnitPage() {
   const tab: Tab = TAB_IDS.find((t) => t === params.get('tab')) ?? 'overview';
   const setTab = (t: Tab) => setParams(t === 'overview' ? {} : { tab: t }, { replace: true });
   const done = useProgress((s) => (meta ? s.units[`${meta.id}-${unit}`] : undefined));
+  const u0 = data?.units.find((x) => String(x.n) === unit);
+  const plan = useMemo(() => (meta && u0 ? unitVisualPlan(`${meta.id}-${u0.n}`, u0.grammar.map((g) => g.name)) : null), [meta, u0]);
   const completeUnit = useProgress((s) => s.completeUnit);
   const award = useProgress((s) => s.award);
 
@@ -71,11 +75,14 @@ export default function UnitPage() {
       title={unitTitle(u.title)}
       subtitle={tab === 'overview' ? undefined : u.theme}
       actions={
-        done && (
-          <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
-            <CheckCircle2 size={20} /> Completada · {done.score}%
-          </span>
-        )
+        <span className="inline-flex flex-wrap items-center gap-3">
+          {done && (
+            <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
+              <CheckCircle2 size={20} /> Completada · {done.score}%
+            </span>
+          )}
+          <AssignButton preset={{ source: 'unit', level: meta.id, unit: u.n, tab: tab === 'produce' ? 'practice' : tab }} />
+        </span>
       }
     >
       <div className="material sticky top-12 z-20 -mx-4 mb-5 px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[14px] lg:px-2">
@@ -101,19 +108,17 @@ export default function UnitPage() {
             u={u}
             practiceCount={practiceItems(u).length + vocabItems(u).length}
             onGo={setTab}
-            extra={<UnitVisuals unit={u} level={meta.id} section="overview" />}
+            extra={plan && plan.overview.length > 0 && <VisualFigure items={plan.overview} title="Para empezar" color={u.color} className="max-w-3xl" />}
           />
         )}
         {tab === 'vocab' && (
           <div className="space-y-6">
-            <Vocabulary items={u.vocab} />
-            <UnitVisuals unit={u} level={meta.id} section="vocab" />
+            <Vocabulary items={u.vocab} visuals={plan?.vocab} color={u.color} />
           </div>
         )}
         {tab === 'grammar' && (
           <div className="space-y-5">
             <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} unitKey={`${meta.id}-${u.n}`} />
-            <UnitVisuals unit={u} level={meta.id} section="grammar" />
             <UnitVerbTools unit={u} />
             <UnitGrammarTools unit={u} level={meta.id} />
           </div>
@@ -151,7 +156,7 @@ export default function UnitPage() {
 
 // ---------------------------------------------------------------- vocabulary --
 
-function Vocabulary({ items }: { items: VocabItem[] }) {
+function Vocabulary({ items, visuals, color }: { items: VocabItem[]; visuals?: Visual[]; color?: string }) {
   const [mode, setMode] = useState<'list' | 'cards'>('list');
   return (
     <div>
@@ -169,6 +174,7 @@ function Vocabulary({ items }: { items: VocabItem[] }) {
           ]}
         />
       </div>
+      {visuals && visuals.length > 0 && <VisualFigure items={visuals} title="Mira y aprende" color={color} className="mb-5 max-w-3xl" />}
       {mode === 'list' ? <VocabGrid items={items} /> : <Flashcards items={items} />}
     </div>
   );
@@ -305,7 +311,7 @@ const KIND_COLORS = ['var(--orange)', 'var(--pink)', 'var(--indigo)', 'var(--tea
 
 function Produce({ u, levelId }: { u: Unit; levelId: string }) {
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
       {u.speaking && u.speaking.length > 0 && (
         <Card className="p-6">
           <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />
@@ -335,19 +341,11 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
         </Card>
       )}
 
-      {u.writing && (
-        <Card className="p-6">
-          <SectionHead icon={PenLine} color="var(--purple)" title={`Writing · ${u.writing.title}`} meta={u.writing.length} />
-          <p className="text-[15px] text-pretty">{u.writing.brief}</p>
-          <WritingPad
-            storageKey={`ecyr:writing:${levelId}-${u.n}`}
-            criteria={u.writing.criteria}
-            prompt={`${u.writing.title}: ${u.writing.brief}`}
-            level={levelId}
-            title={`Writing ${levelId} · U${u.n}`}
-          />
-        </Card>
-      )}
+      <UnitWritingTasks level={levelId as CefrLevel} unit={u.n} />
+
+      <div className="lg:col-span-2">
+        <UnitReadings level={levelId as CefrLevel} unit={u.n} />
+      </div>
 
       {u.dynamics && u.dynamics.length > 0 && (
         <Card className="p-6 lg:col-span-2">

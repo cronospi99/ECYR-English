@@ -239,12 +239,35 @@ async function myId(): Promise<string> {
   return uid;
 }
 
+/** Shown when 09_assignments.sql has not been run on the project. */
+export const TASKS_MISSING_MSG = 'Falta activar Tareas: ejecuta supabase/migrations/09_assignments.sql en Supabase → SQL Editor.';
+
+/** The assignments tables (or review_assignment()) do not exist on the server yet. */
+export class TasksMissingError extends Error {
+  readonly code = 'tasks_missing';
+  constructor() {
+    super(TASKS_MISSING_MSG);
+  }
+}
+
+/** Is this error (or message) "Tareas is not set up on the server"? */
+export function isTasksMissing(e: unknown): boolean {
+  if (e instanceof TasksMissingError) return true;
+  const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: unknown }).message) : String(e ?? '');
+  const code = e && typeof e === 'object' && 'code' in e ? String((e as { code: unknown }).code) : '';
+  return (
+    code === 'PGRST205' ||
+    code === '42P01' ||
+    code === 'PGRST202' ||
+    msg === TASKS_MISSING_MSG ||
+    (/assignment/i.test(msg) && /could not find|not found|does not exist|schema cache/i.test(msg))
+  );
+}
+
 /** Turns PostgREST errors into something actionable, in Spanish. */
 function friendly(e: unknown, fallback: string): Error {
   const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: unknown }).message) : String(e ?? '');
-  const code = e && typeof e === 'object' && 'code' in e ? String((e as { code: unknown }).code) : '';
-  if (code === 'PGRST205' || code === '42P01' || code === 'PGRST202' || (/assignment/i.test(msg) && /not find|not found|does not exist/i.test(msg)))
-    return new Error('El servidor aún no tiene "Tareas". Pide al administrador ejecutar supabase/migrations/09_assignments.sql.');
+  if (isTasksMissing(e)) return new TasksMissingError();
   if (/must be handed in/i.test(msg)) return new Error('Esta tarea se entrega con un trabajo de tu portafolio.');
   if (/one of your own items/i.test(msg)) return new Error('Solo puedes entregar trabajos de tu propio portafolio.');
   if (/excused this task/i.test(msg)) return new Error('Tu profesor te eximió de esta tarea.');
@@ -300,6 +323,13 @@ function cleanDraft(d: Partial<AssignmentDraft>): Record<string, unknown> {
 }
 
 // ---- teacher ----
+
+/** Cheap check that the Tareas tables exist (true) — throws TasksMissingError / a friendly error otherwise. */
+export async function tasksReady(): Promise<true> {
+  const { error } = await client().from(A).select('id').limit(1);
+  if (error) throw friendly(error, 'No se pudo comprobar Tareas.');
+  return true;
+}
 
 /** The signed-in teacher's assignments, newest first, with their targets. */
 export async function listMyAssignments(): Promise<Assignment[]> {

@@ -102,3 +102,16 @@ export async function assessSpokenAnswer(audio: Blob, question: string, level: s
     throw new Error('La IA respondió en un formato inesperado. Inténtalo de nuevo.');
   }
 }
+
+/** The feedback as Markdown (what the teacher reads with the transcript). */
+export function speakingFeedbackMarkdown(fb: SpeakingFeedback): string {
+  const out: string[] = [];
+  if (fb.level) out.push(`**Nivel estimado:** ${fb.level}`);
+  if (fb.summary) out.push(fb.summary);
+  if (fb.corrections.length) {
+    out.push('### Correcciones');
+    for (const c of fb.corrections) out.push(`- ~${c.original}~ → **${c.correction}**${c.why ? ` — ${c.why}` : ''}`.replace(/~([^~]+)~/, '*$1*'));
+  }
+  if (fb.better) out.push('### Así sonaría más natural', fb.better);
+  return out.join('\n');
+}

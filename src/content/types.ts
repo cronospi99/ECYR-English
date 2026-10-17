@@ -73,6 +73,10 @@ export interface Dynamic {
 export interface WritingTask {
   title: string;
   brief: string;
+  /** Spanish label for the text type, e.g. "Correo informal". */
+  genre?: string;
+  /** One-line Spanish explanation of what to do. */
+  briefEs?: string;
   length?: string;
   criteria?: string[];
   model?: string;

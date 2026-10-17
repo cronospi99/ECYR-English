@@ -17,13 +17,27 @@ import { unitTitle } from '../learn/LevelPage';
 import { ListeningLibrary } from '@/features/library/ListeningLibrary';
 import { ExternalResources } from '@/features/library/ExternalResources';
 import { useSearchParams } from 'react-router-dom';
+import { PodcastsTab } from '@/features/podcasts/PodcastsTab';
+
+type Tab = 'library' | 'podcasts' | 'dialogues' | 'months';
 
 export default function ListeningPage() {
-  const [tab, setTab] = useState<'library' | 'dialogues' | 'months'>('library');
-  const [params] = useSearchParams();
-  const inTrack = tab === 'library' && !!params.get('track');
+  const [params, setParams] = useSearchParams();
+  const [picked, setPicked] = useState<Tab>('library');
+  // The podcasts tab keeps its place in the URL (?tab=podcasts&pod=…&ep=…), so back/links land on it.
+  const tab: Tab = params.get('tab') === 'podcasts' || params.get('pod') ? 'podcasts' : picked;
+  const inTrack = (tab === 'library' && !!params.get('track')) || (tab === 'podcasts' && !!params.get('ep'));
+  const setTab = (t: Tab) => {
+    setPicked(t);
+    if ([...params.keys()].length) setParams({}, { replace: true });
+  };
   return (
-    <Page back={{ to: '/practice', label: 'Práctica' }} title="Listening" subtitle="Entrena el oído con diálogos, entrevistas, podcasts y dictados." wide={tab === 'library'}>
+    <Page
+      back={{ to: '/practice', label: 'Práctica' }}
+      title="Listening"
+      subtitle="Entrena el oído con diálogos, entrevistas, podcasts y dictados."
+      wide={tab === 'library' || tab === 'podcasts'}
+    >
       {!inTrack && (
         <div className="no-scrollbar mb-5 overflow-x-auto">
           <Segmented
@@ -31,6 +45,7 @@ export default function ListeningPage() {
             onChange={setTab}
             options={[
               { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'podcasts', label: 'Podcasts' },
               { value: 'dialogues', label: 'Diálogos y dictado' },
               { value: 'months', label: 'Audio real · Meses' },
             ]}
@@ -42,6 +57,8 @@ export default function ListeningPage() {
           <ListeningLibrary />
           {!inTrack && <ExternalResources className="mt-8" />}
         </>
+      ) : tab === 'podcasts' ? (
+        <PodcastsTab />
       ) : tab === 'dialogues' ? (
         <Dialogues />
       ) : (

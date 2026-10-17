@@ -52,7 +52,43 @@ interface Form {
   students: string[];
 }
 
-function initial(a?: Assignment | null): Form {
+/**
+ * Prefill for a new assignment (ignored when editing), e.g. from a unit page:
+ *   { source: 'unit', level: 'A1', unit: 3, tab: 'practice' }
+ *   { source: 'practice', practice: 'speaking' }  · { source: 'grammar', grammar: 'modals' }
+ *   { source: 'game', game: '<slug>' }  · { source: 'ielts', ielts: 'writing' }  · { source: 'custom', to: '/…' }
+ * `students` preselects those students (audience = "Elegir estudiantes").
+ */
+export interface AssignPreset {
+  source?: PickerSource;
+  level?: CefrLevel;
+  unit?: number | null;
+  tab?: UnitTab;
+  grammar?: string;
+  practice?: string;
+  game?: string;
+  ielts?: string;
+  to?: string;
+  title?: string;
+  instructions?: string;
+  students?: string[];
+}
+
+function fromPreset(p: AssignPreset): Partial<PickerState> {
+  const out: Partial<PickerState> = {};
+  if (p.source) out.source = p.source;
+  if (p.level) out.level = p.level;
+  if (p.unit != null) out.unit = p.unit;
+  if (p.tab) out.unitTab = p.tab;
+  if (p.grammar && GRAMMAR_OPTIONS.some((g) => g.id === p.grammar)) out.grammar = p.grammar;
+  if (p.practice && PRACTICE_OPTIONS.some((o) => o.id === p.practice)) out.practice = p.practice;
+  if (p.game && GAME_OPTIONS.some((o) => o.id === p.game)) out.game = p.game;
+  if (p.ielts && IELTS_OPTIONS.some((o) => o.id === p.ielts)) out.ielts = p.ielts;
+  if (p.to) out.customTo = p.to;
+  return out;
+}
+
+function initial(a?: Assignment | null, preset?: AssignPreset | null): Form {
   const nextWeek = new Date(Date.now() + 7 * 86_400_000);
   const due = a?.due_at ? new Date(a.due_at) : null;
   const base: PickerState = {
@@ -67,17 +103,18 @@ function initial(a?: Assignment | null): Form {
     customTo: '',
     minScore: '',
   };
+  const pre = !a && preset ? preset : null;
   return {
-    title: a?.title ?? '',
-    instructions: a?.instructions ?? '',
-    picker: a ? { ...base, ...pickerFromTarget(a.target, a.level) } : base,
+    title: a?.title ?? pre?.title?.slice(0, MAX_TITLE) ?? '',
+    instructions: a?.instructions ?? pre?.instructions ?? '',
+    picker: a ? { ...base, ...pickerFromTarget(a.target, a.level) } : pre ? { ...base, ...fromPreset(pre) } : base,
     levelOverride: a ? (a.level ?? 'none') : 'auto',
     hasDue: a ? Boolean(a.due_at) : true,
     dueDate: localDate(due ?? nextWeek),
     dueTime: due ? localTime(due) : '23:59',
     requiresSubmission: a?.requires_submission ?? false,
-    audience: a?.audience ?? 'class',
-    students: a?.targets ?? [],
+    audience: a?.audience ?? (pre?.students?.length ? 'students' : 'class'),
+    students: a?.targets ?? pre?.students ?? [],
   };
 }
 
@@ -88,14 +125,17 @@ export function AssignmentSheet({
   onSaved,
   assignment,
   students,
+  preset,
 }: {
   open: boolean;
   onClose: () => void;
   onSaved: (a: Assignment) => void;
   assignment?: Assignment | null;
   students: StudentLite[];
+  /** Prefill for a new assignment (see AssignPreset). */
+  preset?: AssignPreset | null;
 }) {
-  const [f, setF] = useState<Form>(() => initial(assignment));
+  const [f, setF] = useState<Form>(() => initial(assignment, preset));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [tried, setTried] = useState(false);
@@ -104,10 +144,11 @@ export function AssignmentSheet({
 
   useEffect(() => {
     if (open) {
-      setF(initial(assignment));
+      setF(initial(assignment, preset));
       setError(null);
       setTried(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, assignment]);
 
   const p = f.picker;

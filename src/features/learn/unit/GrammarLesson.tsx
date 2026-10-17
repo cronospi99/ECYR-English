@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from 'react';
+import { useId, useMemo, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   AlertTriangle,
@@ -9,45 +9,67 @@ import {
   CircleQuestionMark,
   Eye,
   Lightbulb,
-  ListOrdered,
-  MessagesSquare,
   Plus,
   Quote,
   Scale,
-  Sparkles,
+  Sigma,
   Table2,
   Target,
   Volume2,
+  Wand2,
   X,
   type LucideIcon,
 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
-import { Segmented } from '@/components/ui/Segmented';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import type { CefrLevel, GrammarPoint } from '@/content/types';
 import { useAsync } from '@/hooks/useAsync';
 import { loadExplainers } from '@/content/explainers';
-import { ExplainerCard, type Explainer } from './Explainer';
-import { cutsFor } from '@/content/visuals';
-import { GrammarCuts } from '@/components/visuals/GrammarCuts';
+import { loadAids, loadDrills, type Aid, type DrillExtra } from '@/content/aids';
+import { loadDialogues, type ExtraDialogue } from '@/content/dialogues';
+import { cutsFor, unitVisualPlan, type Visual } from '@/content/visuals';
+import { VisualFigure } from '@/components/visuals/Visuals';
+import { FoundationExtras } from '@/features/foundations/inline';
 import { cn } from '@/lib/cn';
-import { firstSentence, highlight, keySpec, noteParts, parsePair, type KeySpec } from './formula';
+import { ExplainerCard, type Explainer } from './Explainer';
+import { firstSentence, highlight, keySpec, noteParts, parsePair, type KeySpec, type Seg } from './formula';
 import { FormulaBlock } from './FormulaBlock';
 import { ColorTable } from './ColorTable';
-import { Dialogue } from './Dialogue';
-import { Clamp, Disclosure, Hl, Kicker, QuoteText, ink, tint } from './ui';
+import { Aids } from './Aids';
+import { UseIt } from './UseIt';
+import { Disclosure, Hl, Kicker, QuoteText, ink, tint } from './ui';
 import { deep } from '@/lib/color';
 
 // ------------------------------------------------------------------ tab ----
 
+interface LessonData {
+  explainers: Record<string, Explainer>;
+  aids: Record<string, Aid[]>;
+  drills: Record<string, DrillExtra>;
+  dialogues: Record<string, ExtraDialogue[]>;
+}
+
+const EMPTY: LessonData = { explainers: {}, aids: {}, drills: {}, dialogues: {} };
+
+function loadLessonData(level?: CefrLevel): Promise<LessonData> {
+  if (!level) return Promise.resolve(EMPTY);
+  const safe = <T,>(p: Promise<Record<string, T>>) => p.catch(() => ({}) as Record<string, T>);
+  return Promise.all([safe(loadExplainers(level)), safe(loadAids(level)), safe(loadDrills(level)), safe(loadDialogues(level))]).then(
+    ([explainers, aids, drills, dialogues]) => ({ explainers, aids, drills, dialogues }),
+  );
+}
+
 /** Grammar tab body: a topic chooser (like the books' side menu) + one lesson at a time. */
-export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoint[]; color: string; /** "A1-2": finds the visual explainers. */ unitKey?: string }) {
+export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoint[]; color: string; /** "A1-2": finds explainers, aids, drills, dialogues and infographics. */ unitKey?: string }) {
   const [active, setActive] = useState(0);
-  const { data: explainers } = useAsync(() => (unitKey ? loadExplainers(unitKey.split('-')[0] as CefrLevel) : Promise.resolve({} as Record<string, Explainer>)), [unitKey]);
+  const level = unitKey?.split('-')[0] as CefrLevel | undefined;
+  const { data } = useAsync(() => loadLessonData(level), [level]);
+  const plan = useMemo(() => (unitKey ? unitVisualPlan(unitKey, points.map((p) => p.name)) : null), [unitKey, points]);
   const base = useId();
   const i = Math.min(active, points.length - 1);
   const g = points[i];
   if (!g) return null;
+  const key = `${unitKey}-${i}`;
   return (
     <div>
       {points.length > 1 && (
@@ -70,7 +92,7 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
               >
                 <span
                   className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[15px] font-bold"
-                  style={on ? { background: color, color: '#fff' } : { background: tint(color, 16), color: ink(color) }}
+                  style={on ? { background: deep(color), color: '#fff' } : { background: tint(color, 16), color: ink(color) }}
                 >
                   {k + 1}
                 </span>
@@ -88,7 +110,12 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
           <motion.div key={g.name} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.2 }}>
             <GrammarLesson
               g={g}
-              explainer={explainers?.[`${unitKey}-${i}`]}
+              unitKey={unitKey}
+              explainer={data?.explainers[key]}
+              aids={data?.aids[key]}
+              drill={data?.drills[key]}
+              dialogues={data?.dialogues[key]}
+              visuals={plan?.points[i]}
               index={i}
               total={points.length}
               color={color}
@@ -107,9 +134,28 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
 
 // --------------------------------------------------------------- lesson ----
 
+interface StepDef {
+  key: string;
+  title: string;
+  sub: string;
+  icon: LucideIcon;
+  body: ReactNode;
+}
+
+/**
+ * One grammar point as a single flow in four steps: Entiende (the idea and the
+ * formula, visually) → Míralo (examples, infographics, graphic aids) → Recuerda
+ * (table, key notes, the classic mistake) → Practica (self-check, dialogues,
+ * drill, contrast, sound). The long explanation waits at the end, collapsed.
+ */
 export function GrammarLesson({
   g,
+  unitKey,
   explainer,
+  aids,
+  drill,
+  dialogues,
+  visuals,
   index,
   total,
   color,
@@ -117,8 +163,14 @@ export function GrammarLesson({
   onNext,
 }: {
   g: GrammarPoint;
-  /** Visual summary in Spanish; when present the lesson opens with it. */
+  unitKey?: string;
+  /** Visual summary in Spanish; when present it carries step 1. */
   explainer?: Explainer;
+  aids?: Aid[];
+  drill?: DrillExtra;
+  dialogues?: ExtraDialogue[];
+  /** Infographics declared for this point (src/content/visuals.ts). */
+  visuals?: Visual[];
   index: number;
   total: number;
   color: string;
@@ -126,95 +178,208 @@ export function GrammarLesson({
   onNext?: () => void;
 }) {
   const spec = useMemo(() => keySpec(g), [g]);
-  const cuts = useMemo(() => cutsFor(g.name), [g.name]);
-  const [mode, setMode] = useLessonMode();
-  const visual = !!explainer && mode === 'visual';
+  const figures = useMemo(() => {
+    const out: Visual[] = [...cutsFor(g.name)];
+    for (const v of visuals ?? []) if (!out.some((x) => x.id === v.id)) out.push(v);
+    return out;
+  }, [g.name, visuals]);
+  const blanks = useMemo(() => (g.fix?.length ? [] : blankItems(g, spec)), [g, spec]);
+  const base = useId();
   const summary = g.short || (g.rule ? firstSentence(g.rule, 110) : '');
+  const formN = g.form?.length ?? 0;
+  const hasUse = !!(g.dialogue?.length || dialogues?.length || g.drill?.items?.length || drill?.items.length || g.contrast || g.sound);
+  const hasCheck = !!g.fix?.length || blanks.length > 0;
 
+  const steps: StepDef[] = [];
+  if (explainer || g.rule || formN)
+    steps.push({
+      key: 'understand',
+      title: 'Entiende',
+      sub: explainer ? 'La idea, la fórmula y cuándo se usa' : 'La regla y la fórmula',
+      icon: Lightbulb,
+      body: explainer ? (
+        <>
+          <ExplainerCard e={explainer} color={color} />
+          {formN > 0 && (
+            <Disclosure summary="Todas las estructuras" icon={Sigma} color={color} meta={`${formN} ${formN === 1 ? 'fórmula' : 'fórmulas'} del libro, con colores`}>
+              <FormulaBlock form={g.form!} spec={spec} color={color} bare />
+            </Disclosure>
+          )}
+        </>
+      ) : (
+        <>
+          {g.rule && (
+            <p className="text-[16px] leading-relaxed text-pretty">
+              <QuoteText text={g.rule} color={color} />
+            </p>
+          )}
+          {formN > 0 && <FormulaBlock form={g.form!} spec={spec} color={color} />}
+        </>
+      ),
+    });
+  if (g.examples?.length || g.more?.length || figures.length || aids?.length)
+    steps.push({
+      key: 'see',
+      title: 'Míralo',
+      sub: 'Ejemplos, imágenes y esquemas',
+      icon: Eye,
+      body: (
+        <>
+          <Examples g={g} spec={spec} color={color} />
+          <VisualFigure items={figures} title="La gramática en imágenes" color={color} />
+          {aids && aids.length > 0 && (
+            <section>
+              <Kicker icon={Wand2} color={color}>
+                En esquemas
+              </Kicker>
+              <Aids aids={aids} color={color} />
+            </section>
+          )}
+        </>
+      ),
+    });
+  if (g.chart || g.notes?.length || g.watch)
+    steps.push({
+      key: 'remember',
+      title: 'Recuerda',
+      sub: 'Tabla, claves y el error típico',
+      icon: Table2,
+      body: (
+        <>
+          {g.chart && (
+            <section>
+              <Kicker icon={Table2} color={color}>
+                Tabla
+              </Kicker>
+              <ColorTable chart={g.chart} color={color} spec={spec} />
+            </section>
+          )}
+          {g.notes && g.notes.length > 0 && <Notes notes={g.notes} color={color} />}
+          {g.watch && <Watch text={g.watch} compact={!!explainer?.mistake} />}
+        </>
+      ),
+    });
+  if (hasCheck || hasUse)
+    steps.push({
+      key: 'practice',
+      title: 'Practica',
+      sub: 'Ponte a prueba y úsalo en contexto',
+      icon: Target,
+      body: (
+        <>
+          {g.fix && g.fix.length > 0 ? <FixCheck fixes={g.fix} /> : <BlankCheck items={blanks} />}
+          <UseIt key={g.name} g={g} spec={spec} color={color} drill={drill} dialogues={dialogues} />
+        </>
+      ),
+    });
+
+  const deepRule = explainer && g.rule;
   return (
     <Card className="overflow-hidden">
       {/* hero */}
-      <header className="relative px-5 pt-5 pb-4 sm:px-6" style={{ background: `linear-gradient(160deg, ${tint(color, 18)}, transparent 75%)` }}>
+      <header className="relative px-5 pt-5 pb-4 sm:px-6" style={{ background: `linear-gradient(160deg, ${tint(color, 18)}, transparent 80%)` }}>
         <div className="text-[12px] font-bold tracking-[0.08em] uppercase" style={{ color: ink(color) }}>
           Gramática · {index + 1} de {total}
         </div>
         <h3 className="text-title-2 mt-1 text-balance">{g.name}</h3>
         {summary && (
           <div className="bg-card/80 mt-3 flex items-start gap-2 rounded-[14px] py-2 pr-1.5 pl-3 shadow-[0_1px_2px_rgb(0_0_0/0.05)]">
-            <Sparkles size={16} className="mt-[3px] shrink-0" style={{ color: ink(color) }} aria-hidden />
-            <div className="min-w-0 flex-1">
+            <span className="min-w-0 flex-1">
               <span className="text-label-2 block text-[11px] font-bold tracking-[0.06em] uppercase">En una frase</span>
               <span className="text-[16px] font-medium text-pretty">
                 <Hl text={summary} spec={spec} />
               </span>
-            </div>
+            </span>
             <SpeakButton text={summary} size={16} />
           </div>
         )}
-        {g.rule && !visual && (
-          <Clamp
-            text={g.rule}
-            lines={2}
-            className="text-label-2 mt-3 text-[15px] leading-relaxed"
-            render={(t) => <QuoteText text={t} color={color} />}
-          />
-        )}
+        {steps.length > 1 && <StepNav steps={steps} base={base} color={color} />}
       </header>
 
-      {explainer && (
-        <div className="px-5 pt-1 sm:px-6">
-          <Segmented
-            size="sm"
-            value={mode}
-            onChange={setMode}
-            options={[
-              { value: 'visual', label: '🖼️ En imágenes' },
-              { value: 'full', label: '📖 Lección completa' },
-            ]}
-          />
-        </div>
-      )}
-      {visual ? (
-        <div className="space-y-6 px-5 pt-4 pb-6 sm:px-6">
-          <ExplainerCard e={explainer} color={color} />
-          <GrammarCuts cuts={cuts} color={color} />
-          <button type="button" onClick={() => setMode('full')} className="text-[14px] font-semibold" style={{ color: ink(color) }}>
-            ¿Quieres más detalle? Ver la lección completa →
-          </button>
+      <div className="px-5 pt-5 pb-6 sm:px-6">
+        {steps.map((st, k) => (
+          <Step key={st.key} id={`${base}-${st.key}`} n={k + 1} step={st} color={color} last={k === steps.length - 1} />
+        ))}
+        <div className={cn('space-y-5', steps.length > 0 && 'mt-9')}>
+          {unitKey && <FoundationExtras unitKey={unitKey} pointIndex={index} pointName={g.name} color={color} />}
+          {(g.deep || deepRule) && (
+            <Disclosure
+              summary="Explicación a fondo"
+              icon={BookOpen}
+              color={color}
+              meta={`Para profundizar · ${Math.max(1, Math.round(`${deepRule ? g.rule : ''} ${g.deep ?? ''}`.split(/\s+/).length / 200))} min de lectura`}
+            >
+              <div className="space-y-3 text-[15px] leading-relaxed">
+                {deepRule && (
+                  <p className="text-pretty">
+                    <QuoteText text={g.rule!} color={color} />
+                  </p>
+                )}
+                {g.deep && (
+                  <p className="text-label text-pretty">
+                    <QuoteText text={g.deep} color={color} subtle />
+                  </p>
+                )}
+              </div>
+            </Disclosure>
+          )}
           {next && onNext && <NextPoint next={next} onNext={onNext} color={color} />}
         </div>
-      ) : (
-      <div className="space-y-7 px-5 pt-3 pb-6 sm:px-6">
-        {g.form && g.form.length > 0 && <FormulaBlock form={g.form} spec={spec} color={color} />}
-        <Examples g={g} spec={spec} color={color} />
-        <GrammarCuts cuts={cuts} color={color} />
-        {g.chart && (
-          <section>
-            <Kicker icon={Table2} color={color}>
-              Tabla
-            </Kicker>
-            <ColorTable chart={g.chart} color={color} spec={spec} />
-          </section>
-        )}
-        {g.notes && g.notes.length > 0 && <Notes notes={g.notes} color={color} />}
-        {(g.watch || (g.fix && g.fix.length > 0)) && <Mistakes g={g} spec={spec} />}
-        <UseIt g={g} spec={spec} color={color} />
-        {g.deep && (
-          <Disclosure
-            summary="Explicación a fondo"
-            icon={BookOpen}
-            color={color}
-            meta={`Para profundizar · ${Math.max(1, Math.round(g.deep.split(/\s+/).length / 200))} min de lectura`}
-          >
-            <p className="text-label text-[15px] leading-relaxed text-pretty">
-              <QuoteText text={g.deep} color={color} subtle />
-            </p>
-          </Disclosure>
-        )}
-        {next && onNext && <NextPoint next={next} onNext={onNext} color={color} />}
       </div>
-      )}
     </Card>
+  );
+}
+
+/** "1 Entiende → 2 Míralo → …": jumps to each step of the lesson. */
+function StepNav({ steps, base, color }: { steps: StepDef[]; base: string; color: string }) {
+  return (
+    <nav aria-label="Pasos de la lección" className="mt-4">
+      <ol className="grid gap-1.5" style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
+        {steps.map((st, k) => (
+          <li key={st.key} className="relative">
+            <button
+              type="button"
+              onClick={() => document.getElementById(`${base}-${st.key}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="bg-card/70 hover:bg-card flex w-full flex-col items-center gap-1 rounded-[12px] px-1 py-2 text-center transition-colors sm:flex-row sm:gap-2 sm:px-2.5 sm:text-left"
+            >
+              <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: deep(color) }}>
+                {k + 1}
+              </span>
+              <span className="min-w-0">
+                <span className="block truncate text-[13px] leading-tight font-semibold sm:text-[14px]">{st.title}</span>
+                <span className="text-label-2 hidden truncate text-[12px] leading-tight lg:block">{st.sub.split(',')[0]}</span>
+              </span>
+            </button>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+function Step({ id, n, step, color, last }: { id: string; n: number; step: StepDef; color: string; last: boolean }) {
+  return (
+    <section id={id} aria-labelledby={`${id}-h`} className={cn('relative scroll-mt-32', !last && 'mb-8 border-b border-[var(--separator)] pb-8 sm:border-0 sm:pb-2')}>
+      {!last && <span aria-hidden className="absolute top-[42px] bottom-0 left-[17px] hidden w-[2px] rounded-full sm:block" style={{ background: tint(color, 24) }} />}
+      <header className="mb-4 flex items-center gap-3">
+        <span
+          className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[16px] font-bold text-white shadow-[0_0_0_4px_var(--card)]"
+          style={{ background: deep(color) }}
+        >
+          {n}
+        </span>
+        <div className="min-w-0">
+          <h4 id={`${id}-h`} className="text-[19px] leading-tight font-bold">
+            <span className="mr-1.5 text-[12px] font-bold tracking-[0.08em] uppercase" style={{ color: ink(color) }}>
+              Paso {n} ·
+            </span>
+            {step.title}
+          </h4>
+          <p className="text-label-2 text-[13px] leading-snug">{step.sub}</p>
+        </div>
+      </header>
+      <div className="space-y-7 sm:pl-[48px]">{step.body}</div>
+    </section>
   );
 }
 
@@ -233,26 +398,6 @@ function NextPoint({ next, onNext, color }: { next: GrammarPoint; onNext: () => 
       <ChevronRight size={20} style={{ color: ink(color) }} aria-hidden />
     </button>
   );
-}
-
-/** Visual or full lesson, remembered across lessons (per device). */
-function useLessonMode() {
-  const [mode, setMode] = useState<'visual' | 'full'>(() => {
-    try {
-      return localStorage.getItem('ecyr:lesson-mode') === 'full' ? 'full' : 'visual';
-    } catch {
-      return 'visual';
-    }
-  });
-  const set = (m: 'visual' | 'full') => {
-    setMode(m);
-    try {
-      localStorage.setItem('ecyr:lesson-mode', m);
-    } catch {
-      /* storage unavailable */
-    }
-  };
-  return [mode, set] as const;
 }
 
 // ------------------------------------------------------------- examples ----
@@ -375,34 +520,33 @@ function PairChip({ text, ok = false }: { text: string; ok?: boolean }) {
 
 // ------------------------------------------------------------- mistakes ----
 
-function Mistakes({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
-  const pair = g.watch ? parsePair(g.watch) : null;
+/** The book's watch-out. Compact when the explainer above already showed the wrong → right pair. */
+function Watch({ text, compact = false }: { text: string; compact?: boolean }) {
+  const pair = compact ? null : parsePair(text);
   const orange = 'var(--orange)';
   return (
     <section>
       <Kicker icon={AlertTriangle} color={orange}>
         Cuidado
       </Kicker>
-      {g.watch &&
-        (pair && pair.wrong ? (
-          <div className="overflow-hidden rounded-[16px]" style={{ boxShadow: `inset 0 0 0 1px ${tint(orange, 30)}` }}>
-            <div className={cn('grid', pair.right && 'sm:grid-cols-2')}>
-              <WrongRight wrong text={pair.wrong} />
-              {pair.right && <WrongRight text={pair.right} />}
-            </div>
-            <p className="text-label-2 px-4 py-3 text-[14px] leading-relaxed text-pretty" style={{ background: tint(orange, 6) }}>
-              <QuoteText text={g.watch} color={orange} />
-            </p>
+      {pair && pair.wrong ? (
+        <div className="overflow-hidden rounded-[16px]" style={{ boxShadow: `inset 0 0 0 1px ${tint(orange, 30)}` }}>
+          <div className={cn('grid', pair.right && 'sm:grid-cols-2')}>
+            <WrongRight wrong text={pair.wrong} />
+            {pair.right && <WrongRight text={pair.right} />}
           </div>
-        ) : (
-          <div className="flex gap-3 rounded-[16px] p-4 text-[15px] leading-relaxed" style={{ background: tint(orange, 10) }}>
-            <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: ink(orange) }} aria-hidden />
-            <p className="text-pretty">
-              <QuoteText text={g.watch} color={orange} />
-            </p>
-          </div>
-        ))}
-      {g.fix && g.fix.length > 0 ? <FixCheck fixes={g.fix} /> : <BlankCheck g={g} spec={spec} />}
+          <p className="text-label-2 px-4 py-3 text-[14px] leading-relaxed text-pretty" style={{ background: tint(orange, 6) }}>
+            <QuoteText text={text} color={orange} />
+          </p>
+        </div>
+      ) : (
+        <div className="flex gap-3 rounded-[16px] p-4 text-[15px] leading-relaxed" style={{ background: tint(orange, 10) }}>
+          <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: ink(orange) }} aria-hidden />
+          <p className="text-pretty">
+            <QuoteText text={text} color={orange} />
+          </p>
+        </div>
+      )}
     </section>
   );
 }
@@ -426,15 +570,10 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
   const [open, setOpen] = useState<Set<number>>(new Set());
   const toggle = (k: number) => setOpen((s) => new Set(s.has(k) ? [...s].filter((x) => x !== k) : [...s, k]));
   return (
-    <div className="mt-4">
-      <div className="mb-2 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 text-[15px] font-semibold">
-          <Eye size={16} className="text-ink-purple" aria-hidden /> Ponte a prueba: ¿qué está mal?
-        </div>
-        <span className="text-label-2 text-[13px] tabular-nums">
-          {open.size}/{fixes.length}
-        </span>
-      </div>
+    <section>
+      <Kicker icon={Eye} color="var(--purple)" action={<span className="text-label-2 text-[13px] tabular-nums">{open.size}/{fixes.length}</span>}>
+        Ponte a prueba: ¿qué está mal?
+      </Kicker>
       <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {fixes.map((f, k) => {
           const on = open.has(k);
@@ -467,26 +606,28 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }
 
+/** Sentences whose highlighted grammar can be hidden for the fallback self-check. */
+function blankItems(g: GrammarPoint, spec: KeySpec): Seg[][] {
+  const pool = [...new Set([...(g.more ?? []), ...(g.examples ?? [])])];
+  return pool
+    .map((s) => highlight(s, spec))
+    .filter((segs) => segs.some((x) => x.role))
+    .slice(0, 3);
+}
+
 /** Fallback self-check: hide the highlighted grammar in a few examples; tap to reveal. */
-function BlankCheck({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
-  const items = useMemo(() => {
-    const pool = [...new Set([...(g.more ?? []), ...(g.examples ?? [])])];
-    return pool
-      .map((s) => highlight(s, spec))
-      .filter((segs) => segs.some((x) => x.role))
-      .slice(0, 3);
-  }, [g, spec]);
+function BlankCheck({ items }: { items: Seg[][] }) {
   const [open, setOpen] = useState<Set<number>>(new Set());
   if (!items.length) return null;
   return (
-    <div className="mt-4">
-      <div className="mb-2 flex items-center gap-1.5 text-[15px] font-semibold">
-        <Eye size={16} className="text-ink-purple" aria-hidden /> Ponte a prueba: ¿qué palabra falta?
-      </div>
+    <section>
+      <Kicker icon={Eye} color="var(--purple)" action={<span className="text-label-2 text-[13px] tabular-nums">{open.size}/{items.length}</span>}>
+        Ponte a prueba: ¿qué palabra falta?
+      </Kicker>
       <ul className="space-y-2">
         {items.map((segs, k) => {
           const on = open.has(k);
@@ -519,70 +660,6 @@ function BlankCheck({ g, spec }: { g: GrammarPoint; spec: KeySpec }) {
           );
         })}
       </ul>
-    </div>
-  );
-}
-
-// --------------------------------------------------------------- use it ----
-
-type UseTab = 'dialogue' | 'drill' | 'contrast' | 'sound';
-
-function UseIt({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: string }) {
-  const opts = [
-    g.dialogue && g.dialogue.length > 0 && { value: 'dialogue' as const, label: 'Diálogo' },
-    g.drill?.items && g.drill.items.length > 0 && { value: 'drill' as const, label: 'Drill' },
-    g.contrast && { value: 'contrast' as const, label: 'Contraste' },
-    g.sound && { value: 'sound' as const, label: 'Sonido' },
-  ].filter(Boolean) as { value: UseTab; label: string }[];
-  const [tab, setTab] = useState<UseTab | null>(null);
-  if (!opts.length) return null;
-  const cur = opts.find((o) => o.value === tab)?.value ?? opts[0]!.value;
-  return (
-    <section>
-      <Kicker icon={MessagesSquare} color={color}>
-        Úsalo
-      </Kicker>
-      {opts.length > 1 && (
-        <div className="no-scrollbar mb-3 overflow-x-auto">
-          <Segmented size="sm" value={cur} onChange={setTab} options={opts} />
-        </div>
-      )}
-      {cur === 'dialogue' && g.dialogue && <Dialogue lines={g.dialogue} spec={spec} bare />}
-      {cur === 'drill' && g.drill?.items && (
-        <div>
-          {(g.drill.name || g.drill.prompt) && (
-            <p className="mb-2.5 flex items-start gap-2 text-[15px] text-pretty">
-              <ListOrdered size={17} className="mt-0.5 shrink-0" style={{ color: ink(color) }} aria-hidden />
-              <span>
-                {g.drill.name && <strong className="font-semibold">{g.drill.name}. </strong>}
-                {g.drill.prompt}
-              </span>
-            </p>
-          )}
-          <ol className="space-y-1.5">
-            {g.drill.items.map((d, k) => (
-              <li key={d} className="bg-fill-2 flex items-start gap-2.5 rounded-[12px] py-2 pr-1.5 pl-2.5 text-[15px]">
-                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: deep(color) }}>
-                  {k + 1}
-                </span>
-                <span className="min-w-0 flex-1 pt-0.5 text-pretty">
-                  <Hl text={d} spec={spec} />
-                </span>
-                <SpeakButton text={d} size={15} />
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
-      {cur === 'contrast' && g.contrast && <ColorTable chart={g.contrast} color="var(--teal)" spec={spec} />}
-      {cur === 'sound' && g.sound && (
-        <div className="flex items-start gap-3 rounded-[16px] p-4 text-[15px] leading-relaxed" style={{ background: tint('var(--purple)', 10) }}>
-          <Volume2 size={18} className="text-ink-purple mt-0.5 shrink-0" aria-hidden />
-          <p className="text-pretty">
-            <QuoteText text={g.sound} color="var(--purple)" />
-          </p>
-        </div>
-      )}
     </section>
   );
 }

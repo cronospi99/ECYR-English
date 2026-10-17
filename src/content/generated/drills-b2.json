@@ -1,0 +1,488 @@
+{
+ "B2-1-0": {
+  "name": "Feed the verb",
+  "prompt": "Completa cada verbo con un gerundio sobre tu propia familia y luego di la misma idea después de una preposición.",
+  "items": [
+   "I can’t stand …",
+   "My brother keeps …",
+   "We’ve given up …",
+   "I’m good at …",
+   "Nobody here objects to …"
+  ],
+  "answers": [
+   "I can’t stand being interrupted at dinner. / I’m tired of being interrupted at dinner.",
+   "My brother keeps borrowing my clothes. / He never apologises for borrowing my clothes.",
+   "We’ve given up arguing about politics. / We’re tired of arguing about politics.",
+   "I’m good at calming everyone down. / My family relies on me for calming everyone down.",
+   "Nobody here objects to sharing the cooking. / Everybody is happy about sharing the cooking."
+  ]
+ },
+ "B2-1-1": {
+  "name": "Frame it first",
+  "prompt": "Di cada idea dos veces: primero como una frase simple y luego reformulada con una cláusula nominal después de “be”.",
+  "items": [
+   "nobody apologised",
+   "my sister moved abroad",
+   "we only meet at weddings",
+   "he forgot my birthday",
+   "they still argue about the house"
+  ],
+  "answers": [
+   "Nobody apologised. / The problem is that nobody apologised.",
+   "My sister moved abroad. / The truth is that my sister moved abroad.",
+   "We only meet at weddings. / The sad thing is that we only meet at weddings.",
+   "He forgot my birthday. / What hurt me was that he forgot my birthday.",
+   "They still argue about the house. / The issue is that they still argue about the house."
+  ]
+ },
+ "B2-2-0": {
+  "name": "Did it happen?",
+  "prompt": "Para cada indicación, di la frase y luego explica si la acción se realizó o no.",
+  "items": [
+   "hand in the form / obligatory, done",
+   "pay the deposit / not required",
+   "bring a gift / brought one unnecessarily",
+   "tell the manager / not done, regretted",
+   "lock the door / expected, forgotten"
+  ],
+  "answers": [
+   "We had to hand in the form. (It was obligatory, and we did.)",
+   "We didn’t have to pay the deposit. (It wasn’t required, so we didn’t pay it.)",
+   "I needn’t have brought a gift. (I brought one, but it wasn’t necessary.)",
+   "I should have told the manager. (I didn’t, and I regret it.)",
+   "She was supposed to lock the door. (She was expected to, but she forgot.)"
+  ]
+ },
+ "B2-2-1": {
+  "name": "Three levels of certainty",
+  "prompt": "Para cada pista, da tres explicaciones: una casi segura, una posible y una que puedes descartar.",
+  "items": [
+   "his coat is still on the chair",
+   "the cake is half-eaten",
+   "all the lights are on at midnight",
+   "her phone goes straight to voicemail",
+   "the window is open from the inside"
+  ],
+  "answers": [
+   "He must have left in a hurry. / He might have gone to a meeting. / He can’t have gone home without his coat.",
+   "Someone must have been hungry. / The kids might have eaten it. / It can’t have been the dog — it can’t reach the table.",
+   "Someone must have forgotten to turn them off. / They might have had a party. / They can’t have been asleep.",
+   "Her battery must have died. / She might have switched it off. / She can’t have blocked me — we spoke an hour ago.",
+   "Someone inside must have opened it. / It might have been the cleaner. / It can’t have been a burglar from outside."
+  ]
+ },
+ "B2-3-0": {
+  "name": "Commas or no commas",
+  "prompt": "Une cada par en una sola frase y di si la cláusula necesita comas y por qué.",
+  "items": [
+   "I visited Porto. It sits on a river.",
+   "The street was too steep. We stayed on it.",
+   "My cousin lives in Cali. He never leaves.",
+   "That’s the museum. It opened last year.",
+   "This is the year. Everything changed then."
+  ],
+  "answers": [
+   "I visited Porto, which sits on a river. (Commas: Porto is already identified; this is extra information.)",
+   "The street (that) we stayed on was too steep. (No commas: the clause tells us which street.)",
+   "My cousin, who lives in Cali, never leaves. (Commas if I have one cousin; the clause is extra information.)",
+   "That’s the museum that opened last year. (No commas: the clause identifies which museum.)",
+   "This is the year when everything changed. (No commas: the clause identifies which year.)"
+  ]
+ },
+ "B2-3-1": {
+  "name": "Stack three, stack four",
+  "prompt": "Describe cada cosa con tres adjetivos en el orden correcto y luego agrega un cuarto sin romper el orden.",
+  "items": [
+   "a building on your street",
+   "the room you are in",
+   "a market stall",
+   "a bridge you know",
+   "your favourite café"
+  ],
+  "answers": [
+   "a tall old brick building → a tall old red brick building",
+   "a small bright square room → a small bright square white room",
+   "a colourful little wooden stall → a colourful little old wooden stall",
+   "a beautiful long stone bridge → a beautiful long old stone bridge",
+   "a cosy small traditional café → a cosy small old traditional Colombian café"
+  ]
+ },
+ "B2-3-2": {
+  "name": "Same contrast, three ways",
+  "prompt": "Expresa cada contraste tres veces: con despite, con although y con however.",
+  "items": [
+   "expensive / worth it",
+   "noisy / lively",
+   "far from the centre / well connected",
+   "small / never boring",
+   "rainy / beautiful"
+  ],
+  "answers": [
+   "Despite the price, it’s worth it. / Although it’s expensive, it’s worth it. / It’s expensive. However, it’s worth it.",
+   "Despite the noise, it’s lively. / Although it’s noisy, it’s lively. / It’s noisy. However, it’s lively.",
+   "Despite being far from the centre, it’s well connected. / Although it’s far from the centre, it’s well connected. / It’s far from the centre. However, it’s well connected.",
+   "Despite its size, it’s never boring. / Although it’s small, it’s never boring. / It’s small. However, it’s never boring.",
+   "Despite the rain, it’s beautiful. / Although it’s rainy, it’s beautiful. / It’s rainy. However, it’s beautiful."
+  ]
+ },
+ "B2-4-0": {
+  "name": "Cut the subject",
+  "prompt": "Reduce cada cláusula si los sujetos coinciden; si no coinciden, escribe “can’t reduce” y explica por qué.",
+  "items": [
+   "While I was waiting, I answered emails.",
+   "After she left, the meeting improved.",
+   "Before I go to bed, I read.",
+   "When the alarm went off, I ignored it.",
+   "Since I moved here, I sleep better."
+  ],
+  "answers": [
+   "While waiting, I answered emails.",
+   "Can’t reduce: the subjects are different (she / the meeting).",
+   "Before going to bed, I read.",
+   "Can’t reduce: the subjects are different (the alarm / I).",
+   "Since moving here, I sleep better."
+  ]
+ },
+ "B2-4-1": {
+  "name": "Reason, then condition",
+  "prompt": "Dale a cada hecho una cláusula de razón y luego reformúlalo como una condición.",
+  "items": [
+   "I go to bed at ten",
+   "I skip breakfast",
+   "I never nap",
+   "I work best at night",
+   "I hate Monday mornings"
+  ],
+  "answers": [
+   "Since I get up at six, I go to bed at ten. / If I want to feel rested, I go to bed at ten.",
+   "I skip breakfast because I’m never hungry in the morning. / Unless I’m really hungry, I skip breakfast.",
+   "As I sleep well at night, I never nap. / As long as I sleep seven hours, I never nap.",
+   "Because it’s quiet, I work best at night. / Provided that nobody calls, I work best at night.",
+   "I hate Monday mornings because I have three meetings. / If I have meetings early, I hate Monday mornings."
+  ]
+ },
+ "B2-5-0": {
+  "name": "Judge the behaviour",
+  "prompt": "Comenta cada comportamiento dos veces: una de forma general y otra nombrando a la persona con of o for.",
+  "items": [
+   "interrupting a colleague",
+   "admitting a mistake",
+   "giving unwanted advice",
+   "saying nothing in a meeting",
+   "asking a direct question"
+  ],
+  "answers": [
+   "It’s rude to interrupt a colleague. / It was rude of him to interrupt his colleague.",
+   "It’s brave to admit a mistake. / It was brave of her to admit her mistake.",
+   "It’s annoying to receive unwanted advice. / It was unkind of him to give her unwanted advice.",
+   "It’s a mistake to say nothing in a meeting. / It’s hard for new staff to say anything in a meeting.",
+   "It’s useful to ask a direct question. / It’s difficult for me to ask a direct question."
+  ]
+ },
+ "B2-5-1": {
+  "name": "Activity as subject",
+  "prompt": "Convierte cada comportamiento en un sujeto con gerundio y termina la frase con un juicio.",
+  "items": [
+   "interrupt in meetings",
+   "reply within a minute",
+   "ask personal questions",
+   "say nothing when annoyed",
+   "apologise twice"
+  ],
+  "answers": [
+   "Interrupting in meetings is disrespectful.",
+   "Replying within a minute makes you look always available.",
+   "Asking personal questions can make people uncomfortable.",
+   "Saying nothing when you’re annoyed only makes things worse.",
+   "Apologising twice sounds insincere."
+  ]
+ },
+ "B2-6-0": {
+  "name": "Dated or not",
+  "prompt": "Di cada hecho dos veces: una con un momento pasado definido y otra dentro de un tiempo no terminado, cambiando el tiempo verbal.",
+  "items": [
+   "publish a correction",
+   "interview the witness",
+   "lose a source",
+   "win an award",
+   "print a retraction"
+  ],
+  "answers": [
+   "The newspaper published a correction yesterday. / The newspaper has published two corrections this week.",
+   "We interviewed the witness last Monday. / We’ve interviewed three witnesses so far.",
+   "The reporter lost a key source in 2023. / The reporter has lost two sources this year.",
+   "She won an award last year. / She has won three awards in her career.",
+   "The paper printed a retraction this morning at eight. / The paper has printed a retraction today."
+  ]
+ },
+ "B2-6-1": {
+  "name": "How many or how long",
+  "prompt": "Para cada elemento, haz una frase con un número y otra con una duración, eligiendo la forma correcta en cada caso.",
+  "items": [
+   "write articles",
+   "interview witnesses",
+   "read documents",
+   "cover the trial",
+   "wait for a reply"
+  ],
+  "answers": [
+   "She has written four articles this month. / She has been writing articles since January.",
+   "We have interviewed six witnesses. / We have been interviewing witnesses for two weeks.",
+   "I have read about fifty documents. / I have been reading documents all morning.",
+   "He has covered three days of the trial. / He has been covering the trial since Monday.",
+   "We have sent two emails to the ministry. / We have been waiting for a reply for ten days."
+  ]
+ },
+ "B2-6-2": {
+  "name": "Which came first",
+  "prompt": "Une cada par de eventos pasados en una sola frase y marca el más antiguo con el pasado perfecto.",
+  "items": [
+   "the source called / we published",
+   "she resigned / the story appeared",
+   "the lawyers wrote / the editor apologised",
+   "we found the file / they denied it existed",
+   "he deleted the account / the reporters noticed"
+  ],
+  "answers": [
+   "When we published, the source had already called.",
+   "When the story appeared, she had already resigned.",
+   "The editor apologised after the lawyers had written to him.",
+   "They denied the file existed, but we had already found it.",
+   "When the reporters noticed, he had already deleted the account."
+  ]
+ },
+ "B2-7-0": {
+  "name": "Tag it",
+  "prompt": "Agrega la coletilla correcta a cada frase y dila dos veces: una para confirmar información y otra para invitar a estar de acuerdo.",
+  "items": [
+   "Everyone has a smartphone",
+   "You didn’t accept the cookies",
+   "There aren’t any settings for that",
+   "She’s been offline all week",
+   "Let’s check the permissions"
+  ],
+  "answers": [
+   "Everyone has a smartphone, don’t they?",
+   "You didn’t accept the cookies, did you?",
+   "There aren’t any settings for that, are there?",
+   "She’s been offline all week, hasn’t she?",
+   "Let’s check the permissions, shall we?"
+  ]
+ },
+ "B2-7-1": {
+  "name": "Soften the opinion",
+  "prompt": "Convierte cada opinión directa en una pregunta negativa y luego di si estás invitando a estar de acuerdo o expresando sorpresa.",
+  "items": [
+   "children get phones too early",
+   "nobody reads privacy policies",
+   "the regulation is useless",
+   "we are all addicted",
+   "the companies know too much"
+  ],
+  "answers": [
+   "Don’t you think children get phones too early? (inviting agreement)",
+   "Isn’t it amazing that nobody reads privacy policies? (expressing surprise)",
+   "Don’t you think the regulation is useless? (inviting agreement)",
+   "Aren’t we all addicted, really? (inviting agreement)",
+   "Isn’t it scary how much the companies know? (expressing surprise)"
+  ]
+ },
+ "B2-7-2": {
+  "name": "Hide the agent, then bring it back",
+  "prompt": "Di cada hecho dos veces: una en pasiva sin agente y otra con el agente de vuelta para darle énfasis.",
+  "items": [
+   "collect the data",
+   "close the accounts",
+   "test the software",
+   "publish the report",
+   "change the policy"
+  ],
+  "answers": [
+   "The data is being collected. / The app is collecting the data, not the government.",
+   "The accounts have been closed. / The bank has closed the accounts, not the users.",
+   "The software is being tested. / Independent engineers are testing the software.",
+   "The report will be published next month. / The minister herself will publish the report.",
+   "The policy has been changed. / The new CEO has changed the policy."
+  ]
+ },
+ "B2-8-0": {
+  "name": "Cut it down",
+  "prompt": "Reduce cada cláusula relativa o explica por qué no se puede reducir.",
+  "items": [
+   "the participants who were waiting in the corridor",
+   "the method that was used in the study",
+   "the professor who I interviewed",
+   "the theory which explains the effect",
+   "anyone who wants to take part"
+  ],
+  "answers": [
+   "the participants waiting in the corridor",
+   "the method used in the study",
+   "Can’t reduce to -ing: “who” is the object. You can only drop the pronoun: the professor I interviewed.",
+   "the theory explaining the effect",
+   "anyone wanting to take part"
+  ]
+ },
+ "B2-8-1": {
+  "name": "Add the comment",
+  "prompt": "Termina cada frase con “, which…” comentando toda la idea, no solo el último sustantivo.",
+  "items": [
+   "The experiment was repeated three times",
+   "She remembered every name in the room",
+   "The data was lost in a software update",
+   "Nobody asked the obvious question",
+   "The results were published without review"
+  ],
+  "answers": [
+   "The experiment was repeated three times, which made the results more reliable.",
+   "She remembered every name in the room, which impressed everyone.",
+   "The data was lost in a software update, which meant starting from scratch.",
+   "Nobody asked the obvious question, which was surprising.",
+   "The results were published without review, which worried many scientists."
+  ]
+ },
+ "B2-9-0": {
+  "name": "Two cultures, one sentence",
+  "prompt": "Contrasta los dos hábitos en una sola frase, usando un conector diferente cada vez.",
+  "items": [
+   "lunch at one / lunch at three",
+   "phone calls / voice notes",
+   "formal at work / informal after",
+   "dinner guests arrive early / arrive late",
+   "tipping expected / tipping unusual"
+  ],
+  "answers": [
+   "Here people have lunch at one, whereas in Spain they have it at three.",
+   "Unlike my parents, who prefer phone calls, I send voice notes.",
+   "While people are formal at work, they’re very informal afterwards.",
+   "In some countries dinner guests arrive early, whereas here they always arrive late.",
+   "Tipping is expected in the US. Here it’s unusual, except in restaurants."
+  ]
+ },
+ "B2-9-1": {
+  "name": "State or action",
+  "prompt": "Para cada elemento, di si es un estado o una acción repetida y usa la forma correcta, o las dos si ambas son posibles.",
+  "items": [
+   "live in a smaller town",
+   "walk to school",
+   "be afraid of the dark",
+   "spend every August at the coast",
+   "have a landline"
+  ],
+  "answers": [
+   "State: We used to live in a smaller town. (would is not possible)",
+   "Repeated action: I used to walk to school. / I would walk to school.",
+   "State: I used to be afraid of the dark. (would is not possible)",
+   "Repeated action: We used to spend every August at the coast. / We would spend every August at the coast.",
+   "State: We used to have a landline. (would is not possible)"
+  ]
+ },
+ "B2-10-0": {
+  "name": "Front the complaint",
+  "prompt": "Convierte cada queja en una cláusula con what y luego otra vez con “the thing that…”.",
+  "items": [
+   "the delivery never arrived",
+   "nobody answers emails",
+   "the price changed at checkout",
+   "the repair took three weeks",
+   "the apology was automated"
+  ],
+  "answers": [
+   "What annoys me is that the delivery never arrived. / The thing that annoys me is that the delivery never arrived.",
+   "What bothers me is that nobody answers emails. / The thing that bothers me is that nobody answers emails.",
+   "What made me angry was that the price changed at checkout. / The thing that made me angry was that the price changed at checkout.",
+   "What frustrated me was that the repair took three weeks. / The thing that frustrated me was that the repair took three weeks.",
+   "What upset me was that the apology was automated. / The thing that upset me was that the apology was automated."
+  ]
+ },
+ "B2-10-1": {
+  "name": "Make it indirect",
+  "prompt": "Convierte cada pregunta directa en una indirecta, usando una introducción diferente cada vez.",
+  "items": [
+   "Where is the manager?",
+   "Why was I charged twice?",
+   "When will it arrive?",
+   "Who signed this off?",
+   "Is there a refund policy?"
+  ],
+  "answers": [
+   "Could you tell me where the manager is?",
+   "I’d like to know why I was charged twice.",
+   "Do you know when it will arrive?",
+   "Would you mind telling me who signed this off?",
+   "I was wondering whether there is a refund policy."
+  ]
+ },
+ "B2-11-0": {
+  "name": "Would you, though",
+  "prompt": "Responde cada dilema con un condicional completo y luego agrega una condición que cambiaría tu respuesta.",
+  "items": [
+   "you find a wallet in the street",
+   "a friend asks you to lie for them",
+   "you see a colleague stealing",
+   "you’re offered a job you’re unqualified for",
+   "you’re given money by mistake"
+  ],
+  "answers": [
+   "If I found a wallet in the street, I’d take it to the police. / But if there were no ID inside, I might keep it.",
+   "If a friend asked me to lie for them, I wouldn’t do it. / I’d only do it if they were in real danger.",
+   "If I saw a colleague stealing, I’d talk to them first. / If it happened again, I’d tell the manager.",
+   "If I were offered a job I wasn’t qualified for, I’d be honest about it. / But if they offered training, I’d accept.",
+   "If I were given money by mistake, I’d return it. / Even if it were a small amount, I’d give it back."
+  ]
+ },
+ "B2-11-1": {
+  "name": "Present or past regret",
+  "prompt": "Para cada elemento, haz un deseo sobre el presente y otro sobre el pasado.",
+  "items": [
+   "your language skills",
+   "a conversation you avoided",
+   "where you live",
+   "a job you turned down",
+   "something you said in anger"
+  ],
+  "answers": [
+   "I wish I spoke better English. / I wish I had studied English at school.",
+   "I wish I could talk to my brother about it. / I wish I hadn’t avoided that conversation.",
+   "I wish I lived closer to the sea. / I wish I had moved to Santa Marta years ago.",
+   "I wish I had a more interesting job. / I wish I hadn’t turned down that job in Bogotá.",
+   "I wish my sister would forgive me. / I wish I hadn’t said those things in anger."
+  ]
+ },
+ "B2-12-0": {
+  "name": "By then",
+  "prompt": "Haz una frase en futuro perfecto con una fecha límite para cada elemento y luego otra en futuro perfecto continuo con una duración.",
+  "items": [
+   "finish this course",
+   "live in this city",
+   "learn to drive",
+   "pay off something",
+   "work in the same job"
+  ],
+  "answers": [
+   "By June I’ll have finished this course. / By June I’ll have been studying English for two years.",
+   "By next year I’ll have lived in this city for a decade. / By next year I’ll have been living here for ten years.",
+   "By the end of the year I’ll have learned to drive. / By then I’ll have been taking lessons for six months.",
+   "By 2028 I’ll have paid off my student loan. / By then I’ll have been paying it for five years.",
+   "By next April I’ll have worked here for eight years. / By next April I’ll have been working in the same job for eight years."
+  ]
+ },
+ "B2-12-1": {
+  "name": "Two time frames",
+  "prompt": "Construye una frase para cada elemento con una condición pasada y un resultado presente, y luego invierte los tiempos.",
+  "items": [
+   "a course you didn’t take",
+   "a city you didn’t move to",
+   "a language you stopped studying",
+   "an offer you refused",
+   "a person you lost touch with"
+  ],
+  "answers": [
+   "If I had taken the photography course, I’d be working as a photographer now. / If I were more creative, I would have taken the course.",
+   "If I had moved to Medellín, I’d have a better job now. / If I weren’t so attached to Bogotá, I would have moved.",
+   "If I hadn’t stopped studying French, I’d be fluent now. / If I were more disciplined, I wouldn’t have stopped.",
+   "If I had accepted the offer, I’d be living in Canada now. / If I didn’t love my family so much, I would have accepted it.",
+   "If I hadn’t lost touch with Camila, she’d still be my best friend. / If I were better at keeping in touch, I wouldn’t have lost her."
+  ]
+ }
+}

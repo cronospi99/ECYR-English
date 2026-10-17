@@ -103,8 +103,14 @@ function memo<T>(key: string, fn: () => Promise<{ default: unknown }>): Promise<
 }
 
 export const loadLevel = (id: CefrLevel) => memo<LevelBook>(`level-${id}`, loaders[id]);
+/** The full bank of former English Foundations topics (A1): Reading stories, the planner and the A1/A2 grammar lessons draw on it. */
 export const loadFoundations = () =>
   memo<CourseUnit[]>('foundations', () => import('./generated/a1-foundations.json'));
+/** The Pre-A1 · Foundations course (/learn/foundations): 10 topics in 5 units. */
+export const loadPreA1 = () =>
+  memo<CourseUnit[]>('prea1', () => import('./generated/foundations-prea1.json') as Promise<{ default: CourseUnit[] }>);
+/** Picture dictionary of clothes (typed by its user, src/features/foundations/clothing.ts); tiles in public/visuals/clothing/<id>.webp. */
+export const loadClothing = <T,>() => memo<T>('clothing', () => import('./generated/foundations-clothing.json'));
 export const loadPhrasalVerbs = () =>
   memo<PhrasalVerb[]>('phrasal', () => import('./generated/phrasal-verbs.json'));
 export const loadJeopardy = () =>

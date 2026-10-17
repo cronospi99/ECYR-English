@@ -9,12 +9,25 @@ import { ink } from '@/lib/color';
 
 /**
  * Home widget: the next 3 pending tasks. Renders nothing for visitors,
- * teachers, students without a class, or when no task was ever assigned.
+ * teachers or students without a class; a slim "nothing yet" row when the
+ * teacher has not assigned anything, so students know where tasks appear.
  */
 export function TasksWidget({ className }: { className?: string }) {
   const t = useMyTasks();
   if (!t.enabled || t.error || (t.loading && !t.pending.length)) return null;
-  if (!t.pending.length && !t.finished.length) return null;
+  if (!t.pending.length && !t.finished.length)
+    return (
+      <Card className={className}>
+        <Link to="/tasks" className="flex items-center gap-3 px-5 py-4">
+          <IconTile icon={ClipboardList} color="var(--blue)" size={36} />
+          <div className="min-w-0 flex-1">
+            <h3 className="text-headline">Tareas</h3>
+            <p className="text-subhead text-label-2">Tu docente aún no te ha asignado tareas. Aparecerán aquí.</p>
+          </div>
+          <ChevronRight size={20} className="text-label-3" aria-hidden />
+        </Link>
+      </Card>
+    );
   const top = t.pending.slice(0, 3);
   const overdue = t.pending.filter((v) => v.eff === 'overdue').length;
 

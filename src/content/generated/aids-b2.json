@@ -1,0 +1,2153 @@
+{
+ "B2-1-0": [
+  {
+   "kind": "choose",
+   "title": "¿-ing o to + verbo?",
+   "question": "¿Qué palabra va antes del segundo verbo?",
+   "branches": [
+    {
+     "if": "enjoy, avoid, mind, keep, finish, can’t stand, feel like, consider",
+     "use": "verbo + -ing",
+     "example": "I feel like going out tonight."
+    },
+    {
+     "if": "Una preposición (on, at, of, for, to en look forward to)",
+     "use": "preposición + -ing",
+     "example": "I’m looking forward to seeing you."
+    },
+    {
+     "if": "decide, hope, offer, refuse, want, plan",
+     "use": "verbo + to + infinitivo",
+     "example": "She refused to apologise."
+    },
+    {
+     "if": "stop, remember (cambian de significado)",
+     "use": "-ing = acción anterior · to = propósito o deber",
+     "example": "I stopped to call him. / I stopped calling him."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Verbos que piden -ing",
+   "items": [
+    {
+     "emoji": "😄",
+     "en": "enjoy cooking",
+     "es": "disfrutar cocinar"
+    },
+    {
+     "emoji": "🙅",
+     "en": "avoid arguing",
+     "es": "evitar discutir"
+    },
+    {
+     "emoji": "🤷",
+     "en": "not mind waiting",
+     "es": "no importar esperar"
+    },
+    {
+     "emoji": "🔁",
+     "en": "keep interrupting",
+     "es": "seguir interrumpiendo"
+    },
+    {
+     "emoji": "😤",
+     "en": "can’t stand queuing",
+     "es": "no soportar hacer fila"
+    },
+    {
+     "emoji": "🍕",
+     "en": "feel like eating out",
+     "es": "tener ganas de comer afuera"
+    },
+    {
+     "emoji": "🚭",
+     "en": "give up smoking",
+     "es": "dejar de fumar"
+    },
+    {
+     "emoji": "🤗",
+     "en": "look forward to seeing",
+     "es": "tener ganas de ver"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cambia el significado",
+   "items": [
+    {
+     "a": "I stopped calling him.",
+     "b": "I stopped to call him.",
+     "note": "La primera: dejé de llamarlo. La segunda: me detuve para llamarlo."
+    },
+    {
+     "a": "I remember locking the door.",
+     "b": "Remember to lock the door.",
+     "note": "La primera es un recuerdo; la segunda, algo que no debes olvidar hacer."
+    },
+    {
+     "a": "I’m looking forward to meeting you.",
+     "b": "I’m looking forward to meet you.",
+     "note": "“To” aquí es preposición: lleva -ing."
+    }
+   ]
+  }
+ ],
+ "B2-1-1": [
+  {
+   "kind": "transform",
+   "title": "De frase simple a cláusula nominal",
+   "steps": [
+    {
+     "label": "Frase simple",
+     "sentence": "Nobody apologised."
+    },
+    {
+     "label": "The problem is that…",
+     "sentence": "**The problem is that** nobody apologised.",
+     "change": "La cláusula con “that” explica el sujeto."
+    },
+    {
+     "label": "What + be",
+     "sentence": "**What hurt me was that** nobody apologised.",
+     "change": "Con “what” al inicio el verbo es singular."
+    },
+    {
+     "label": "The reason… is that…",
+     "sentence": "**The reason** I’m upset **is that** nobody apologised.",
+     "change": "No digas “the reason is because”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué introducción uso?",
+   "question": "¿Qué quieres expresar?",
+   "branches": [
+    {
+     "if": "Un hecho o problema concreto",
+     "use": "The problem / truth / fact is that…",
+     "example": "The truth is that I miss them."
+    },
+    {
+     "if": "Algo que no se sabe aún",
+     "use": "The question is what / how / where…",
+     "example": "The question is where he went."
+    },
+    {
+     "if": "Dos alternativas",
+     "use": "The question is whether…",
+     "example": "The question is whether to call her."
+    },
+    {
+     "if": "Énfasis en lo importante",
+     "use": "What … is…",
+     "example": "What matters is that we stay close."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores comunes",
+   "items": [
+    {
+     "a": "The question is where he went.",
+     "b": "The question is where did he go.",
+     "note": "Dentro de la cláusula, orden de afirmación: sin inversión."
+    },
+    {
+     "a": "What worries me is the silence.",
+     "b": "What worries me are the silence.",
+     "note": "Con una cláusula con “what” como sujeto, el verbo va en singular."
+    },
+    {
+     "a": "The reason is that I was tired.",
+     "b": "The reason is because I was tired.",
+     "note": "Se prefiere “the reason is that”; “because” resulta redundante."
+    }
+   ]
+  }
+ ],
+ "B2-2-0": [
+  {
+   "kind": "scale",
+   "title": "¿La acción ocurrió?",
+   "from": "No ocurrió",
+   "to": "Sí ocurrió",
+   "items": [
+    {
+     "word": "should have + participio",
+     "value": 10,
+     "example": "You should have told me. (You didn’t.)",
+     "es": "debiste"
+    },
+    {
+     "word": "was supposed to",
+     "value": 20,
+     "example": "She was supposed to lock it. (She didn’t.)",
+     "es": "se suponía que"
+    },
+    {
+     "word": "didn’t have to",
+     "value": 30,
+     "example": "We didn’t have to pay. (Probably we didn’t.)",
+     "es": "no tuvimos que"
+    },
+    {
+     "word": "needn’t have + participio",
+     "value": 85,
+     "example": "I needn’t have cooked. (I did, but it wasn’t necessary.)",
+     "es": "no hacía falta que"
+    },
+    {
+     "word": "shouldn’t have + participio",
+     "value": 90,
+     "example": "You shouldn’t have shouted. (You did.)",
+     "es": "no debiste"
+    },
+    {
+     "word": "had to",
+     "value": 95,
+     "example": "We had to leave early. (We did.)",
+     "es": "tuvimos que"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué estructura de obligación pasada?",
+   "question": "¿Qué pasó con esa obligación?",
+   "branches": [
+    {
+     "if": "Era obligatorio y se cumplió",
+     "use": "had to + verbo",
+     "example": "We had to show our passports."
+    },
+    {
+     "if": "No era obligatorio",
+     "use": "didn’t have to + verbo",
+     "example": "We didn’t have to wear a suit."
+    },
+    {
+     "if": "Lo hiciste, pero no era necesario",
+     "use": "needn’t have + participio",
+     "example": "I needn’t have brought a gift."
+    },
+    {
+     "if": "No se hizo y lo lamentas o lo criticas",
+     "use": "should have + participio",
+     "example": "I should have told the manager."
+    },
+    {
+     "if": "Se esperaba, pero no pasó",
+     "use": "was / were supposed to",
+     "example": "He was supposed to lock the door."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Diferencias clave",
+   "items": [
+    {
+     "a": "You didn’t have to pay.",
+     "b": "You shouldn’t have paid.",
+     "note": "La primera: no era necesario. La segunda: fue un error pagar."
+    },
+    {
+     "a": "I didn’t have to bring food.",
+     "b": "I needn’t have brought food.",
+     "note": "La primera sugiere que no llevaste; la segunda dice que llevaste sin necesidad."
+    },
+    {
+     "a": "We had to leave.",
+     "b": "We must leave.",
+     "note": "“Must” no tiene pasado: para obligación pasada usa “had to”."
+    }
+   ]
+  }
+ ],
+ "B2-2-1": [
+  {
+   "kind": "scale",
+   "title": "Certeza sobre el pasado",
+   "from": "Lo descartas",
+   "to": "Casi seguro",
+   "items": [
+    {
+     "word": "can’t have",
+     "value": 5,
+     "example": "It can’t have been the cat.",
+     "es": "no pudo haber"
+    },
+    {
+     "word": "couldn’t have",
+     "value": 10,
+     "example": "He couldn’t have known.",
+     "es": "no podía haber"
+    },
+    {
+     "word": "might not have",
+     "value": 35,
+     "example": "She might not have seen it.",
+     "es": "puede que no haya"
+    },
+    {
+     "word": "could have",
+     "value": 45,
+     "example": "They could have missed the bus.",
+     "es": "pudieron haber"
+    },
+    {
+     "word": "might / may have",
+     "value": 50,
+     "example": "They might have taken the wrong turn.",
+     "es": "tal vez"
+    },
+    {
+     "word": "will have / should have",
+     "value": 75,
+     "example": "They’ll have landed by now.",
+     "es": "ya deben haber"
+    },
+    {
+     "word": "must have",
+     "value": 90,
+     "example": "He must have forgotten his keys.",
+     "es": "debió de"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Una pista, tres explicaciones",
+   "steps": [
+    {
+     "label": "Pista",
+     "sentence": "His coat is still on the chair."
+    },
+    {
+     "label": "Casi seguro",
+     "sentence": "He **must have left** in a hurry.",
+     "change": "must have + participio."
+    },
+    {
+     "label": "Posible",
+     "sentence": "He **might have gone** out for lunch.",
+     "change": "might have + participio."
+    },
+    {
+     "label": "Descartado",
+     "sentence": "He **can’t have gone** home — it’s raining.",
+     "change": "can’t have + participio."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Dos significados de could have",
+   "items": [
+    {
+     "a": "He could have missed the bus.",
+     "b": "I could have helped, but nobody asked.",
+     "note": "La primera es una posibilidad sobre el pasado; la segunda, una capacidad que no se usó."
+    },
+    {
+     "a": "She can’t have known.",
+     "b": "She mustn’t have known.",
+     "note": "El negativo de “must have” (deducción) es “can’t have”."
+    },
+    {
+     "a": "He must have forgotten.",
+     "b": "He must of forgotten.",
+     "note": "“Must of” es un error de escritura: se pronuncia /əv/ pero se escribe “have”."
+    }
+   ]
+  }
+ ],
+ "B2-3-0": [
+  {
+   "kind": "pairs",
+   "title": "Con comas o sin comas",
+   "items": [
+    {
+     "a": "The guide who showed us around was brilliant.",
+     "b": "Carlos, who showed us around, was brilliant.",
+     "note": "Sin comas identifica cuál guía; con comas, solo agrega información sobre alguien ya identificado."
+    },
+    {
+     "a": "My sister who lives in Lima is a nurse.",
+     "b": "My sister, who lives in Lima, is a nurse.",
+     "note": "Sin comas: tengo varias hermanas. Con comas: tengo una sola."
+    },
+    {
+     "a": "The city (that) we visited was cold.",
+     "b": "Bogotá, which we visited, was cold.",
+     "note": "Solo en la definitoria puedes omitir el pronombre o usar “that”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué pronombre relativo?",
+   "question": "¿A qué se refiere la cláusula?",
+   "branches": [
+    {
+     "if": "A una persona",
+     "use": "who (that solo sin comas)",
+     "example": "The woman who called is my aunt."
+    },
+    {
+     "if": "A una cosa",
+     "use": "which (that solo sin comas)",
+     "example": "Bogotá, which is in the Andes, is cold."
+    },
+    {
+     "if": "A un lugar",
+     "use": "where",
+     "example": "The street where I grew up has changed."
+    },
+    {
+     "if": "A un momento",
+     "use": "when",
+     "example": "That was the year when everything changed."
+    },
+    {
+     "if": "A una posesión",
+     "use": "whose",
+     "example": "The man whose car was stolen called the police."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Formal e informal con preposición",
+   "steps": [
+    {
+     "label": "Dos frases",
+     "sentence": "The district was lovely. We stayed in it."
+    },
+    {
+     "label": "Informal",
+     "sentence": "The district **(that) we stayed in** was lovely.",
+     "change": "La preposición va al final."
+    },
+    {
+     "label": "Formal",
+     "sentence": "The district **in which we stayed** was lovely.",
+     "change": "Preposición + which, sin omitir."
+    },
+    {
+     "label": "Con where",
+     "sentence": "The district **where we stayed** was lovely.",
+     "change": "“Where” reemplaza “in which”."
+    }
+   ]
+  }
+ ],
+ "B2-3-1": [
+  {
+   "kind": "pictures",
+   "title": "El orden de los adjetivos",
+   "items": [
+    {
+     "emoji": "💖",
+     "en": "1. opinion: lovely",
+     "es": "opinión: precioso"
+    },
+    {
+     "emoji": "📏",
+     "en": "2. size: little",
+     "es": "tamaño: pequeño"
+    },
+    {
+     "emoji": "⏳",
+     "en": "3. age: old",
+     "es": "edad: viejo"
+    },
+    {
+     "emoji": "⚪",
+     "en": "4. shape: round",
+     "es": "forma: redondo"
+    },
+    {
+     "emoji": "🎨",
+     "en": "5. colour: red",
+     "es": "color: rojo"
+    },
+    {
+     "emoji": "🌎",
+     "en": "6. origin: Colombian",
+     "es": "origen: colombiano"
+    },
+    {
+     "emoji": "🪵",
+     "en": "7. material: wooden",
+     "es": "material: de madera"
+    },
+    {
+     "emoji": "🌉",
+     "en": "→ noun: bridge",
+     "es": "→ sustantivo: puente"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Construye la descripción",
+   "steps": [
+    {
+     "label": "Sustantivo",
+     "sentence": "a **bridge**"
+    },
+    {
+     "label": "+ material",
+     "sentence": "a **stone** bridge",
+     "change": "El material va justo antes del sustantivo."
+    },
+    {
+     "label": "+ edad",
+     "sentence": "an **old** stone bridge",
+     "change": "La edad va antes del material."
+    },
+    {
+     "label": "+ opinión y tamaño",
+     "sentence": "a **lovely little** old stone bridge",
+     "change": "La opinión siempre va primero."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Suena natural?",
+   "items": [
+    {
+     "a": "a big old house",
+     "b": "an old big house",
+     "note": "El tamaño va antes de la edad."
+    },
+    {
+     "a": "a beautiful red Colombian bag",
+     "b": "a red beautiful Colombian bag",
+     "note": "La opinión va antes del color."
+    },
+    {
+     "a": "a red and white facade",
+     "b": "a red white facade",
+     "note": "Dos adjetivos del mismo tipo (colores) se unen con “and”."
+    }
+   ]
+  }
+ ],
+ "B2-3-2": [
+  {
+   "kind": "choose",
+   "title": "¿Qué conector de contraste?",
+   "question": "¿Qué viene después del conector?",
+   "branches": [
+    {
+     "if": "Un sustantivo o -ing",
+     "use": "despite / in spite of",
+     "example": "Despite the traffic, we loved it."
+    },
+    {
+     "if": "Una cláusula (sujeto + verbo) con despite",
+     "use": "despite the fact that + cláusula",
+     "example": "Despite the fact that it rained, we went out."
+    },
+    {
+     "if": "Una cláusula (sujeto + verbo)",
+     "use": "although / even though / though",
+     "example": "Although it rained, we explored."
+    },
+    {
+     "if": "Una oración nueva, después de punto o punto y coma",
+     "use": "however / nevertheless / on the other hand",
+     "example": "It’s expensive; however, it’s worth it."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El mismo contraste, tres formas",
+   "steps": [
+    {
+     "label": "Despite",
+     "sentence": "**Despite the noise**, the neighbourhood is lively.",
+     "change": "despite + sustantivo."
+    },
+    {
+     "label": "Although",
+     "sentence": "**Although it’s noisy**, the neighbourhood is lively.",
+     "change": "although + sujeto + verbo."
+    },
+    {
+     "label": "However",
+     "sentence": "The neighbourhood is noisy. **However**, it’s lively.",
+     "change": "however abre una oración nueva."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Fuerza del contraste",
+   "from": "Suave",
+   "to": "Fuerte",
+   "items": [
+    {
+     "word": "though (al final)",
+     "value": 25,
+     "example": "It was expensive, though.",
+     "es": "aunque"
+    },
+    {
+     "word": "however",
+     "value": 45,
+     "example": "It’s small. However, it’s cosy.",
+     "es": "sin embargo"
+    },
+    {
+     "word": "although",
+     "value": 50,
+     "example": "Although it’s small, it’s cosy.",
+     "es": "aunque"
+    },
+    {
+     "word": "despite / in spite of",
+     "value": 60,
+     "example": "Despite its size, it’s cosy.",
+     "es": "a pesar de"
+    },
+    {
+     "word": "even though",
+     "value": 75,
+     "example": "Even though it’s tiny, we love it.",
+     "es": "aunque (enfático)"
+    },
+    {
+     "word": "nevertheless",
+     "value": 85,
+     "example": "It was risky. Nevertheless, we did it.",
+     "es": "no obstante"
+    }
+   ]
+  }
+ ],
+ "B2-4-0": [
+  {
+   "kind": "transform",
+   "title": "Reduce la cláusula",
+   "steps": [
+    {
+     "label": "Cláusula completa",
+     "sentence": "**While I was waiting** for the bus, I answered my emails.",
+     "change": "Mismo sujeto en las dos partes: I."
+    },
+    {
+     "label": "Reducida",
+     "sentence": "**While waiting** for the bus, I answered my emails.",
+     "change": "Quita el sujeto y el auxiliar; usa -ing."
+    },
+    {
+     "label": "Con before",
+     "sentence": "**Before I go** to bed, I read. → **Before going** to bed, I read.",
+     "change": "La preposición pide -ing."
+    },
+    {
+     "label": "Pasiva",
+     "sentence": "**When he was asked**, he agreed. → **When asked**, he agreed.",
+     "change": "Con pasiva queda solo el participio."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Puedo reducir la cláusula?",
+   "question": "¿Las dos partes tienen el mismo sujeto?",
+   "branches": [
+    {
+     "if": "Sí, el mismo sujeto",
+     "use": "reduce: conjunción + -ing",
+     "example": "After finishing work, she goes to the gym."
+    },
+    {
+     "if": "Sí, y el verbo está en pasiva",
+     "use": "reduce: conjunción + participio",
+     "example": "When asked, she said no."
+    },
+    {
+     "if": "No, los sujetos son distintos",
+     "use": "mantén sujeto + verbo",
+     "example": "While I was cooking, the phone rang."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Quién hace la acción?",
+   "items": [
+    {
+     "a": "While cooking, I burnt my hand.",
+     "b": "While cooking, the phone rang.",
+     "note": "La segunda está mal: dice que el teléfono estaba cocinando."
+    },
+    {
+     "a": "Before going to bed, I read.",
+     "b": "Before to go to bed, I read.",
+     "note": "Después de before / after va -ing, nunca to + verbo."
+    },
+    {
+     "a": "After finishing, she left.",
+     "b": "After having finished, she left.",
+     "note": "Las dos son correctas; la forma perfecta remarca la secuencia."
+    }
+   ]
+  }
+ ],
+ "B2-4-1": [
+  {
+   "kind": "choose",
+   "title": "¿Razón o condición?",
+   "question": "¿Qué quieres expresar?",
+   "branches": [
+    {
+     "if": "Una razón nueva e importante",
+     "use": "because + cláusula",
+     "example": "I left early because I felt sick."
+    },
+    {
+     "if": "Una razón que el otro ya conoce",
+     "use": "since / as + cláusula (al inicio)",
+     "example": "Since you’re here, let’s start."
+    },
+    {
+     "if": "Una condición",
+     "use": "if / as long as / provided that",
+     "example": "As long as it’s quiet, I can focus."
+    },
+    {
+     "if": "Una condición negativa",
+     "use": "unless (= if … not)",
+     "example": "Unless I sleep well, I’m tired all day."
+    },
+    {
+     "if": "Una precaución",
+     "use": "in case + cláusula",
+     "example": "Take an umbrella in case it rains."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "If not → unless",
+   "steps": [
+    {
+     "label": "Con if",
+     "sentence": "**If I don’t sleep** eight hours, I’m groggy."
+    },
+    {
+     "label": "Con unless",
+     "sentence": "**Unless I sleep** eight hours, I’m groggy.",
+     "change": "“Unless” ya es negativo: no agregues otro “not”."
+    },
+    {
+     "label": "Condición firme",
+     "sentence": "**As long as I sleep** eight hours, I’m fine.",
+     "change": "“As long as” = siempre y cuando."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Matices",
+   "items": [
+    {
+     "a": "Unless it rains, we’ll go.",
+     "b": "Unless it doesn’t rain, we’ll go.",
+     "note": "La segunda tiene doble negación: está mal."
+    },
+    {
+     "a": "As long as it stays quiet, I’ll finish.",
+     "b": "As long as it will stay quiet, I’ll finish.",
+     "note": "En la condición sobre el futuro, usa presente."
+    },
+    {
+     "a": "I’ll take a jacket if it’s cold.",
+     "b": "I’ll take a jacket in case it’s cold.",
+     "note": "La primera: solo si hace frío. La segunda: la llevo por si acaso."
+    }
+   ]
+  }
+ ],
+ "B2-5-0": [
+  {
+   "kind": "choose",
+   "title": "¿Of o for?",
+   "question": "¿Qué juzga el adjetivo?",
+   "branches": [
+    {
+     "if": "El carácter de la persona (kind, rude, generous, brave)",
+     "use": "It’s + adjetivo + of + persona + to",
+     "example": "It was kind of you to call."
+    },
+    {
+     "if": "La dificultad o importancia (hard, easy, important)",
+     "use": "It’s + adjetivo + for + persona + to",
+     "example": "It’s hard for him to say sorry."
+    },
+    {
+     "if": "Una acción en general, sin persona",
+     "use": "It’s + adjetivo + to",
+     "example": "It’s rude to interrupt."
+    },
+    {
+     "if": "Una etiqueta para la acción",
+     "use": "It’s + a / an + sustantivo + to",
+     "example": "It’s a mistake to assume."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del juicio general al personal",
+   "steps": [
+    {
+     "label": "General",
+     "sentence": "**It’s rude to** interrupt.",
+     "change": "It + adjetivo + to: juzga la acción."
+    },
+    {
+     "label": "Con of",
+     "sentence": "**It was rude of him to** interrupt.",
+     "change": "“Of” juzga a la persona."
+    },
+    {
+     "label": "Con for",
+     "sentence": "**It’s hard for him to** stop interrupting.",
+     "change": "“For” habla de la dificultad para esa persona."
+    },
+    {
+     "label": "Con gerundio",
+     "sentence": "**Interrupting** is rude.",
+     "change": "Misma idea, más general y escrita."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Of y for no son iguales",
+   "items": [
+    {
+     "a": "It was nice of you to help.",
+     "b": "It was nice for you to help.",
+     "note": "Con “nice” que juzga a la persona, se usa “of”."
+    },
+    {
+     "a": "It’s difficult for me to say no.",
+     "b": "It’s difficult of me to say no.",
+     "note": "La dificultad se expresa con “for”."
+    },
+    {
+     "a": "It’s important to listen.",
+     "b": "Is important to listen.",
+     "note": "En inglés el sujeto “It” es obligatorio."
+    }
+   ]
+  }
+ ],
+ "B2-5-1": [
+  {
+   "kind": "transform",
+   "title": "Del infinitivo español al gerundio inglés",
+   "steps": [
+    {
+     "label": "Español",
+     "sentence": "**Interrumpir** a la gente es de mala educación."
+    },
+    {
+     "label": "Inglés natural",
+     "sentence": "**Interrupting** people **is** rude.",
+     "change": "El sujeto va en -ing y el verbo en singular."
+    },
+    {
+     "label": "Negativo",
+     "sentence": "**Not answering** messages **is** rude.",
+     "change": "“Not” va antes del gerundio."
+    },
+    {
+     "label": "Alternativa con it",
+     "sentence": "**It’s** rude **to interrupt** people.",
+     "change": "Otra forma muy común en el habla."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Gerundio como sujeto o It + infinitivo?",
+   "question": "¿Qué quieres resaltar?",
+   "branches": [
+    {
+     "if": "La actividad en general (más escrito)",
+     "use": "gerundio + verbo singular",
+     "example": "Listening saves time."
+    },
+    {
+     "if": "Un comentario sobre la acción (más hablado)",
+     "use": "It’s + adjetivo + to + verbo",
+     "example": "It’s useful to listen."
+    },
+    {
+     "if": "Dos actividades juntas",
+     "use": "gerundio and gerundio + verbo plural",
+     "example": "Listening and asking questions help."
+    },
+    {
+     "if": "Énfasis especial",
+     "use": "What … is + gerundio",
+     "example": "What helps is listening."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Concordancia y forma",
+   "items": [
+    {
+     "a": "Reading the reports takes time.",
+     "b": "Reading the reports take time.",
+     "note": "El sujeto es “reading” (singular), no “reports”."
+    },
+    {
+     "a": "Listening and asking help.",
+     "b": "Listening and asking helps.",
+     "note": "Dos gerundios unidos con “and” llevan verbo en plural."
+    },
+    {
+     "a": "Listening is a skill.",
+     "b": "To listen is a skill.",
+     "note": "El infinitivo como sujeto suena literario o anticuado."
+    }
+   ]
+  }
+ ],
+ "B2-6-0": [
+  {
+   "kind": "choose",
+   "title": "¿Present perfect o pasado simple?",
+   "question": "¿Cómo es el tiempo de la acción?",
+   "branches": [
+    {
+     "if": "Un momento terminado y conocido (yesterday, last night, in 2019, ago)",
+     "use": "pasado simple",
+     "example": "The story broke last night."
+    },
+    {
+     "if": "Tiempo no terminado (today, this week, so far)",
+     "use": "present perfect",
+     "example": "We’ve had three calls today."
+    },
+    {
+     "if": "Experiencia, sin fecha (ever, never)",
+     "use": "present perfect",
+     "example": "Have you ever met a minister?"
+    },
+    {
+     "if": "Un resultado que se ve ahora",
+     "use": "present perfect",
+     "example": "She’s lost her notes, so she can’t check."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "De la noticia al detalle",
+   "steps": [
+    {
+     "label": "Noticia (resultado actual)",
+     "sentence": "Reporters **have uncovered** new evidence.",
+     "change": "Present perfect: la noticia importa ahora."
+    },
+    {
+     "label": "Detalle con fecha",
+     "sentence": "They **found** the documents **on Tuesday**.",
+     "change": "Con fecha: pasado simple."
+    },
+    {
+     "label": "Desde entonces",
+     "sentence": "**Since then**, nobody **has commented**.",
+     "change": "“Since then” pide present perfect."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Diferencias de significado",
+   "items": [
+    {
+     "a": "Have you ever been to Cartagena?",
+     "b": "Did you go to Cartagena?",
+     "note": "La primera pregunta por experiencia; la segunda, por una ocasión concreta."
+    },
+    {
+     "a": "I saw him yesterday.",
+     "b": "I’ve seen him yesterday.",
+     "note": "Con “yesterday” solo se usa el pasado simple."
+    },
+    {
+     "a": "She’s lost her keys.",
+     "b": "She lost her keys.",
+     "note": "La primera: todavía no las tiene. La segunda: solo cuenta lo que pasó."
+    }
+   ]
+  }
+ ],
+ "B2-6-1": [
+  {
+   "kind": "choose",
+   "title": "¿Simple o continuo?",
+   "question": "¿En qué te enfocas?",
+   "branches": [
+    {
+     "if": "En el resultado o la cantidad (how many)",
+     "use": "have + participio",
+     "example": "I’ve read three reports."
+    },
+    {
+     "if": "En la actividad y su duración (how long)",
+     "use": "have been + -ing",
+     "example": "I’ve been reading all day."
+    },
+    {
+     "if": "En una evidencia visible ahora",
+     "use": "have been + -ing",
+     "example": "You’re red. Have you been running?"
+    },
+    {
+     "if": "Es un verbo de estado (know, own, believe)",
+     "use": "have + participio",
+     "example": "I’ve known her for years."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "¿Cuántos o cuánto tiempo?",
+   "steps": [
+    {
+     "label": "Cantidad",
+     "sentence": "She **has written** three articles.",
+     "change": "Simple: el resultado se puede contar."
+    },
+    {
+     "label": "Duración",
+     "sentence": "She **has been writing** since dawn.",
+     "change": "Continuo: la actividad y su duración."
+    },
+    {
+     "label": "Juntos",
+     "sentence": "She**’s been writing** all day and **has finished** three articles.",
+     "change": "Actividad + resultado en una frase."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Matices de significado",
+   "items": [
+    {
+     "a": "I’ve painted the kitchen.",
+     "b": "I’ve been painting the kitchen.",
+     "note": "La primera: está terminado. La segunda: tal vez no he terminado y hay pintura por todos lados."
+    },
+    {
+     "a": "I’ve known him for years.",
+     "b": "I’ve been knowing him for years.",
+     "note": "“Know” es verbo de estado: no se usa en continuo."
+    },
+    {
+     "a": "I’ve lived here for six years.",
+     "b": "I’ve been living here for six years.",
+     "note": "Con live, work o study las dos son casi iguales."
+    }
+   ]
+  }
+ ],
+ "B2-6-2": [
+  {
+   "kind": "transform",
+   "title": "¿Dónde va el adverbio?",
+   "steps": [
+    {
+     "label": "Already",
+     "sentence": "The crowd **had already left**.",
+     "change": "Entre “had” y el participio."
+    },
+    {
+     "label": "Just",
+     "sentence": "The editor **had just finished** when the news broke.",
+     "change": "Entre “had” y el participio."
+    },
+    {
+     "label": "Never",
+     "sentence": "He **had never spoken** to the press before.",
+     "change": "Entre “had” y el participio."
+    },
+    {
+     "label": "Yet",
+     "sentence": "The results **hadn’t arrived yet**.",
+     "change": "Al final, en negativas y preguntas."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Necesito el pasado perfecto?",
+   "items": [
+    {
+     "a": "When we arrived, they left.",
+     "b": "When we arrived, they had left.",
+     "note": "La primera: se fueron cuando llegamos. La segunda: ya se habían ido."
+    },
+    {
+     "a": "After she called, we published.",
+     "b": "After she had called, we published.",
+     "note": "Con “after” el orden es claro: el pasado perfecto es opcional."
+    },
+    {
+     "a": "He said, “I saw it.”",
+     "b": "He said he had seen it.",
+     "note": "En estilo indirecto, el pasado simple suele pasar a pasado perfecto."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué marcador de tiempo?",
+   "question": "¿Qué relación hay entre los eventos?",
+   "branches": [
+    {
+     "if": "Algo terminó antes de otro momento del pasado",
+     "use": "by the time + pasado simple, had + participio",
+     "example": "By the time we arrived, the crowd had left."
+    },
+    {
+     "if": "Algo pasó muy poco antes",
+     "use": "had just + participio",
+     "example": "I had just sat down when the phone rang."
+    },
+    {
+     "if": "Algo nunca había pasado antes de ese momento",
+     "use": "had never + participio",
+     "example": "She had never seen the sea before."
+    },
+    {
+     "if": "Algo todavía no había pasado",
+     "use": "hadn’t + participio + yet",
+     "example": "The results hadn’t come in yet."
+    }
+   ]
+  }
+ ],
+ "B2-7-0": [
+  {
+   "kind": "transform",
+   "title": "Elige la coletilla",
+   "steps": [
+    {
+     "label": "Con auxiliar",
+     "sentence": "You**’ve** seen the update, **haven’t you**?",
+     "change": "Repite el auxiliar en negativo."
+    },
+    {
+     "label": "Sin auxiliar",
+     "sentence": "Technology **moves** fast, **doesn’t it**?",
+     "change": "Presente simple → do / does."
+    },
+    {
+     "label": "Sujeto negativo",
+     "sentence": "**Nobody** reads the terms, **do they**?",
+     "change": "“Nobody” es negativo: coletilla positiva con “they”."
+    },
+    {
+     "label": "Con there",
+     "sentence": "**There aren’t** any settings, **are there**?",
+     "change": "“There” se repite en la coletilla."
+    }
+   ]
+  },
+  {
+   "kind": "pictures",
+   "title": "Coletillas especiales",
+   "items": [
+    {
+     "emoji": "🙋",
+     "en": "I’m right, aren’t I?",
+     "es": "Tengo razón, ¿no?"
+    },
+    {
+     "emoji": "🤝",
+     "en": "Let’s go, shall we?",
+     "es": "Vámonos, ¿te parece?"
+    },
+    {
+     "emoji": "🪟",
+     "en": "Open the window, will you?",
+     "es": "Abre la ventana, ¿sí?"
+    },
+    {
+     "emoji": "🚫",
+     "en": "Don’t tell him, will you?",
+     "es": "No le digas, ¿listo?"
+    },
+    {
+     "emoji": "👥",
+     "en": "Everyone agreed, didn’t they?",
+     "es": "Todos estuvieron de acuerdo, ¿no?"
+    },
+    {
+     "emoji": "📍",
+     "en": "There’s a problem, isn’t there?",
+     "es": "Hay un problema, ¿cierto?"
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Entonación que baja o sube?",
+   "question": "¿Qué buscas con la coletilla?",
+   "branches": [
+    {
+     "if": "Esperas que el otro esté de acuerdo",
+     "use": "coletilla con entonación que baja ↘",
+     "example": "It’s cold today, isn’t it? ↘"
+    },
+    {
+     "if": "No estás seguro y quieres confirmar",
+     "use": "coletilla con entonación que sube ↗",
+     "example": "You’ve paid the bill, haven’t you? ↗"
+    }
+   ]
+  }
+ ],
+ "B2-7-1": [
+  {
+   "kind": "transform",
+   "title": "De opinión directa a pregunta negativa",
+   "steps": [
+    {
+     "label": "Opinión directa",
+     "sentence": "Children get phones too early."
+    },
+    {
+     "label": "Invitar a estar de acuerdo",
+     "sentence": "**Don’t you think** children get phones too early?",
+     "change": "Suaviza la opinión."
+    },
+    {
+     "label": "Sorpresa",
+     "sentence": "**Isn’t it** strange **how** early children get phones?",
+     "change": "Dentro de la cláusula, orden de afirmación."
+    },
+    {
+     "label": "Propuesta suave",
+     "sentence": "**Wouldn’t it be** better to wait?",
+     "change": "Sugiere sin imponer."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué función tiene la pregunta negativa?",
+   "question": "¿Qué quieres lograr?",
+   "branches": [
+    {
+     "if": "Expresar sorpresa",
+     "use": "Isn’t it + adjetivo + cláusula",
+     "example": "Isn’t it amazing how fast it changed?"
+    },
+    {
+     "if": "Invitar a estar de acuerdo",
+     "use": "Don’t you think + cláusula",
+     "example": "Don’t you think it’s too much?"
+    },
+    {
+     "if": "Hablar de una experiencia común",
+     "use": "Haven’t we all + participio",
+     "example": "Haven’t we all done that?"
+    },
+    {
+     "if": "Proponer con suavidad",
+     "use": "Wouldn’t it be + adjetivo",
+     "example": "Wouldn’t it be simpler to ask?"
+    },
+    {
+     "if": "Reprochar",
+     "use": "Didn’t you / they + verbo",
+     "example": "Didn’t you check it?"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cuidado con las respuestas y el tono",
+   "items": [
+    {
+     "a": "— Don’t you agree? — Yes.",
+     "b": "— Don’t you agree? — No.",
+     "note": "“Yes” significa que sí estás de acuerdo; “No”, que no lo estás."
+    },
+    {
+     "a": "Don’t you think so?",
+     "b": "Do you not think so?",
+     "note": "La forma sin contracción suena formal o molesta."
+    },
+    {
+     "a": "Isn’t it worrying how much they collect?",
+     "b": "Isn’t it worrying how much do they collect?",
+     "note": "Dentro de la cláusula no hay inversión."
+    }
+   ]
+  }
+ ],
+ "B2-7-2": [
+  {
+   "kind": "transform",
+   "title": "De activa a pasiva en tres tiempos",
+   "steps": [
+    {
+     "label": "Presente continuo",
+     "sentence": "They **are testing** the software. → The software **is being tested**.",
+     "change": "is / are being + participio."
+    },
+    {
+     "label": "Present perfect",
+     "sentence": "They **have closed** the accounts. → The accounts **have been closed**.",
+     "change": "has / have been + participio."
+    },
+    {
+     "label": "Futuro",
+     "sentence": "They **will publish** the report. → The report **will be published**.",
+     "change": "will be + participio."
+    },
+    {
+     "label": "Agente con énfasis",
+     "sentence": "**A criminal group** has created the virus, not an amateur.",
+     "change": "Si el agente es la noticia, usa la activa."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Activa o pasiva?",
+   "question": "¿Qué importancia tiene quién hace la acción?",
+   "branches": [
+    {
+     "if": "No se sabe quién lo hizo",
+     "use": "pasiva sin agente",
+     "example": "My account has been hacked."
+    },
+    {
+     "if": "Es obvio por el contexto",
+     "use": "pasiva sin agente",
+     "example": "The suspect is being questioned."
+    },
+    {
+     "if": "Es información nueva o sorprendente",
+     "use": "pasiva + by + agente",
+     "example": "The report was leaked by the CEO himself."
+    },
+    {
+     "if": "El agente es lo más importante",
+     "use": "voz activa",
+     "example": "A teenager created the virus."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Formas correctas",
+   "items": [
+    {
+     "a": "More videos have been posted this year.",
+     "b": "More videos have been being posted this year.",
+     "note": "La pasiva del present perfect continuo casi no se usa: usa has / have been + participio."
+    },
+    {
+     "a": "The data is being collected.",
+     "b": "The data is collecting.",
+     "note": "Sin “being” + participio, parece que los datos recolectan algo."
+    },
+    {
+     "a": "It will be collected.",
+     "b": "It will being collected.",
+     "note": "En el futuro pasivo solo cambia “be”: will be + participio."
+    }
+   ]
+  }
+ ],
+ "B2-8-0": [
+  {
+   "kind": "transform",
+   "title": "Reduce la cláusula relativa",
+   "steps": [
+    {
+     "label": "Activa completa",
+     "sentence": "The people **who were waiting** outside were volunteers."
+    },
+    {
+     "label": "Reducida con -ing",
+     "sentence": "The people **waiting** outside were volunteers.",
+     "change": "Quita el pronombre y “be”."
+    },
+    {
+     "label": "Pasiva completa",
+     "sentence": "The technique **that was used** by the team is simple."
+    },
+    {
+     "label": "Reducida con participio",
+     "sentence": "The technique **used** by the team is simple.",
+     "change": "Queda solo el participio."
+    },
+    {
+     "label": "Verbo activo",
+     "sentence": "Anyone **who wants** to join → anyone **wanting** to join",
+     "change": "El verbo activo pasa a -ing."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Se puede reducir?",
+   "question": "¿Qué función tiene el pronombre en la cláusula?",
+   "branches": [
+    {
+     "if": "Es sujeto y va con be + -ing",
+     "use": "quita pronombre + be",
+     "example": "the woman (who is) standing there"
+    },
+    {
+     "if": "Es sujeto y va con be + participio",
+     "use": "quita pronombre + be",
+     "example": "the study (that was) published in March"
+    },
+    {
+     "if": "Es sujeto con un verbo activo de estado o deseo",
+     "use": "cámbialo a -ing",
+     "example": "anyone wanting to join"
+    },
+    {
+     "if": "Es objeto (después viene otro sujeto)",
+     "use": "no se reduce a -ing; solo puedes omitir el pronombre",
+     "example": "the professor (who) I interviewed"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "the book that I read",
+     "b": "the book reading",
+     "note": "Si el pronombre es objeto, no se puede reducir a -ing."
+    },
+    {
+     "a": "the study published in March",
+     "b": "the study publishing in March",
+     "note": "Sentido pasivo: participio, no -ing."
+    },
+    {
+     "a": "The man who broke the window ran away.",
+     "b": "The man breaking the window ran away.",
+     "note": "Con una acción puntual en pasado, la reducción a -ing suena rara."
+    }
+   ]
+  }
+ ],
+ "B2-8-1": [
+  {
+   "kind": "transform",
+   "title": "Comenta toda la idea",
+   "steps": [
+    {
+     "label": "Dos frases",
+     "sentence": "He forgot my name. That was embarrassing."
+    },
+    {
+     "label": "Con which",
+     "sentence": "He forgot my name, **which was embarrassing**.",
+     "change": "“Which” se refiere a toda la idea anterior."
+    },
+    {
+     "label": "Consecuencia",
+     "sentence": "The bus was late, **which is why** I missed the meeting.",
+     "change": "“which is why” = razón por la cual."
+    },
+    {
+     "label": "Resultado",
+     "sentence": "The data was lost, **which meant** starting again.",
+     "change": "“which meant” = lo que significó."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Which, that o what?",
+   "items": [
+    {
+     "a": "She left early, which surprised us.",
+     "b": "She left early, what surprised us.",
+     "note": "“Lo cual / lo que” para comentar una frase es “which”, nunca “what”."
+    },
+    {
+     "a": "She left early, which surprised us.",
+     "b": "She left early which surprised us.",
+     "note": "Sin coma, “which” parece referirse solo a la última palabra."
+    },
+    {
+     "a": "What surprised us was the delay.",
+     "b": "Which surprised us was the delay.",
+     "note": "Al inicio, como cláusula nominal, se usa “what”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué expresión con which?",
+   "question": "¿Qué agregas sobre la idea anterior?",
+   "branches": [
+    {
+     "if": "Una reacción u opinión",
+     "use": "…, which was / is + adjetivo",
+     "example": "He apologised, which was kind."
+    },
+    {
+     "if": "Una consecuencia o razón",
+     "use": "…, which is why…",
+     "example": "It rained, which is why we stayed in."
+    },
+    {
+     "if": "Un resultado práctico",
+     "use": "…, which meant + -ing / cláusula",
+     "example": "The flight was cancelled, which meant waiting a day."
+    }
+   ]
+  }
+ ],
+ "B2-9-0": [
+  {
+   "kind": "choose",
+   "title": "¿Qué conector de contraste?",
+   "question": "¿Qué estás comparando?",
+   "branches": [
+    {
+     "if": "Dos personas o cosas (sustantivos)",
+     "use": "unlike + sustantivo",
+     "example": "Unlike my brother, I love mornings."
+    },
+    {
+     "if": "Dos oraciones completas",
+     "use": "while / whereas + cláusula",
+     "example": "While some cultures value punctuality, others are relaxed."
+    },
+    {
+     "if": "Una sola excepción (sustantivo)",
+     "use": "except for / apart from + sustantivo",
+     "example": "The trip was perfect, except for the flight."
+    },
+    {
+     "if": "Una excepción que es una oración",
+     "use": "except that + cláusula",
+     "example": "It’s a great city, except that it rains a lot."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "El mismo contraste, tres formas",
+   "steps": [
+    {
+     "label": "Unlike",
+     "sentence": "**Unlike my parents**, I eat late.",
+     "change": "unlike + sustantivo."
+    },
+    {
+     "label": "While",
+     "sentence": "**While my parents eat at six**, I eat at nine.",
+     "change": "while + oración completa."
+    },
+    {
+     "label": "Whereas (formal)",
+     "sentence": "My parents eat at six, **whereas I eat at nine**.",
+     "change": "Solo significa contraste."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "Unlike my brother, I get up early.",
+     "b": "Unlike my brother gets up late, I get up early.",
+     "note": "“Unlike” va con sustantivo, nunca con una oración."
+    },
+    {
+     "a": "While I was cooking, he called.",
+     "b": "While I cook, he orders in.",
+     "note": "“While” puede significar “mientras (al mismo tiempo)” o contraste; “whereas” solo contraste."
+    },
+    {
+     "a": "Everyone came except Marta.",
+     "b": "Everyone came except that Marta.",
+     "note": "“Except” + sustantivo; “except that” + oración."
+    }
+   ]
+  }
+ ],
+ "B2-9-1": [
+  {
+   "kind": "choose",
+   "title": "¿Used to o would?",
+   "question": "¿Qué tipo de verbo es?",
+   "branches": [
+    {
+     "if": "Un estado (be, have, live, like, know)",
+     "use": "solo used to",
+     "example": "I used to be shy."
+    },
+    {
+     "if": "Una acción repetida en el pasado",
+     "use": "used to o would",
+     "example": "Every summer we used to / would go to the coast."
+    },
+    {
+     "if": "Una sola acción en el pasado",
+     "use": "ninguno: pasado simple",
+     "example": "I went to Cartagena in 2010."
+    },
+    {
+     "if": "Algo a lo que estás acostumbrado ahora",
+     "use": "be used to + -ing",
+     "example": "I’m used to getting up early."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del imperfecto al inglés",
+   "steps": [
+    {
+     "label": "Español",
+     "sentence": "Antes **vivíamos** junto al mar."
+    },
+    {
+     "label": "Estado",
+     "sentence": "We **used to live** by the sea.",
+     "change": "“Live” es estado: solo used to."
+    },
+    {
+     "label": "Español",
+     "sentence": "Todos los veranos mi abuela nos **contaba** historias."
+    },
+    {
+     "label": "Acción repetida",
+     "sentence": "Every summer my grandmother **would tell** us stories.",
+     "change": "Con acción repetida y marco de tiempo, “would” suena nostálgico."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Formas parecidas, significados distintos",
+   "items": [
+    {
+     "a": "I used to get up early.",
+     "b": "I’m used to getting up early.",
+     "note": "La primera: antes madrugaba. La segunda: estoy acostumbrado a madrugar."
+    },
+    {
+     "a": "I used to have a dog.",
+     "b": "I would have a dog.",
+     "note": "“Have” (posesión) es estado: solo “used to”."
+    },
+    {
+     "a": "Did you use to play?",
+     "b": "Did you used to play?",
+     "note": "En preguntas y negativas se escribe “use to”, sin -d."
+    }
+   ]
+  }
+ ],
+ "B2-10-0": [
+  {
+   "kind": "pairs",
+   "title": "¿Cláusula nominal o relativa?",
+   "items": [
+    {
+     "a": "What annoys me is the noise.",
+     "b": "The noise that annoys me is next door.",
+     "note": "La primera es una cláusula nominal (sujeto); la segunda describe “the noise”."
+    },
+    {
+     "a": "I know what you bought.",
+     "b": "I know the shop that you bought it in.",
+     "note": "“What” = lo que; “that” describe un sustantivo que ya aparece."
+    },
+    {
+     "a": "What I need is a refund.",
+     "b": "That what I need is a refund.",
+     "note": "“What” ya significa “lo que”: no agregues “that”."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Pon la queja al frente",
+   "steps": [
+    {
+     "label": "Queja simple",
+     "sentence": "The delivery never arrived."
+    },
+    {
+     "label": "Con what",
+     "sentence": "**What annoys me is that** the delivery never arrived.",
+     "change": "La cláusula con “what” es el sujeto."
+    },
+    {
+     "label": "Con the thing that",
+     "sentence": "**The thing that bothers me is that** the delivery never arrived.",
+     "change": "Más coloquial."
+    },
+    {
+     "label": "Con petición",
+     "sentence": "**What I’d like is** a full refund.",
+     "change": "Sirve para pedir algo con firmeza."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué estructura uso?",
+   "question": "¿Qué función tiene la cláusula?",
+   "branches": [
+    {
+     "if": "Funciona como sujeto u objeto (= lo que)",
+     "use": "cláusula nominal con what",
+     "example": "What surprised me was the price."
+    },
+    {
+     "if": "Funciona como objeto con una pregunta indirecta",
+     "use": "cláusula nominal con why / how / where",
+     "example": "I don’t understand why they charged me twice."
+    },
+    {
+     "if": "Describe un sustantivo que ya está en la frase",
+     "use": "cláusula relativa con that / which / who",
+     "example": "The product that I bought is faulty."
+    }
+   ]
+  }
+ ],
+ "B2-10-1": [
+  {
+   "kind": "transform",
+   "title": "De pregunta directa a indirecta",
+   "steps": [
+    {
+     "label": "Directa",
+     "sentence": "Where **is** the manager?"
+    },
+    {
+     "label": "Indirecta",
+     "sentence": "Could you tell me where **the manager is**?",
+     "change": "Sujeto + verbo, sin inversión."
+    },
+    {
+     "label": "Directa con did",
+     "sentence": "Why **did** they charge me twice?"
+    },
+    {
+     "label": "Indirecta",
+     "sentence": "I’d like to know why **they charged** me twice.",
+     "change": "Desaparece “did” y el verbo va en pasado."
+    },
+    {
+     "label": "Sí / no",
+     "sentence": "**Is** there a refund policy? → Do you know **if there is** a refund policy?",
+     "change": "Usa if / whether."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Cortesía de las introducciones",
+   "from": "Neutral",
+   "to": "Muy cortés",
+   "items": [
+    {
+     "word": "Do you know…?",
+     "value": 35,
+     "example": "Do you know when it opens?",
+     "es": "¿Sabe…?"
+    },
+    {
+     "word": "Could you tell me…?",
+     "value": 55,
+     "example": "Could you tell me where it is?",
+     "es": "¿Me podría decir…?"
+    },
+    {
+     "word": "Do you happen to know…?",
+     "value": 65,
+     "example": "Do you happen to know if it’s open?",
+     "es": "¿Por casualidad sabe…?"
+    },
+    {
+     "word": "Would you mind telling me…?",
+     "value": 80,
+     "example": "Would you mind telling me why?",
+     "es": "¿Le importaría decirme…?"
+    },
+    {
+     "word": "I was wondering whether…",
+     "value": 90,
+     "example": "I was wondering whether you could help.",
+     "es": "Me preguntaba si…"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Puntuación y orden",
+   "items": [
+    {
+     "a": "Could you tell me where it is?",
+     "b": "I was wondering where it is.",
+     "note": "Si empieza con “Could you…”, lleva signo de pregunta; con “I was wondering…”, punto."
+    },
+    {
+     "a": "Do you know what it costs?",
+     "b": "Do you know what does it cost?",
+     "note": "Elimina do / does / did en la pregunta indirecta."
+    },
+    {
+     "a": "I don’t know whether or not it’s free.",
+     "b": "I don’t know if or not it’s free.",
+     "note": "Antes de “or not” solo se usa “whether”."
+    }
+   ]
+  }
+ ],
+ "B2-11-0": [
+  {
+   "kind": "choose",
+   "title": "¿If, unless, only if o even if?",
+   "question": "¿Qué relación tiene la condición con el resultado?",
+   "branches": [
+    {
+     "if": "Es una condición imaginaria normal",
+     "use": "if + pasado, would + verbo",
+     "example": "If I had more time, I’d volunteer."
+    },
+    {
+     "if": "El resultado ocurre si la condición NO se cumple",
+     "use": "unless + pasado",
+     "example": "I wouldn’t lie unless I had to."
+    },
+    {
+     "if": "Es la única condición posible",
+     "use": "only if + pasado",
+     "example": "I’d agree only if it were public."
+    },
+    {
+     "if": "La condición no cambia nada",
+     "use": "even if + pasado",
+     "example": "Even if they paid me, I’d refuse."
+    },
+    {
+     "if": "Para dar un consejo",
+     "use": "If I were you, I’d…",
+     "example": "If I were you, I’d tell the truth."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Probabilidad del resultado",
+   "from": "Posible",
+   "to": "Seguro",
+   "items": [
+    {
+     "word": "might + verbo",
+     "value": 35,
+     "example": "If I asked, she might agree.",
+     "es": "tal vez"
+    },
+    {
+     "word": "could + verbo",
+     "value": 55,
+     "example": "If I had a car, I could drive you.",
+     "es": "podría"
+    },
+    {
+     "word": "would + verbo",
+     "value": 90,
+     "example": "If I had time, I’d help.",
+     "es": "haría, ayudaría"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Pasado que no es pasado",
+   "items": [
+    {
+     "a": "If I have time, I’ll help.",
+     "b": "If I had time, I’d help.",
+     "note": "La primera es una posibilidad real; la segunda, una situación imaginaria."
+    },
+    {
+     "a": "If I were you, I’d apologise.",
+     "b": "If I would be you, I’d apologise.",
+     "note": "En la cláusula con “if” no se usa “would”."
+    },
+    {
+     "a": "Unless you ask, nobody will help.",
+     "b": "Unless you don’t ask, nobody will help.",
+     "note": "“Unless” ya es negativo: no agregues “don’t”."
+    }
+   ]
+  }
+ ],
+ "B2-11-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué tiempo va después de wish?",
+   "question": "¿Sobre qué es tu deseo?",
+   "branches": [
+    {
+     "if": "Sobre el presente (algo que no es así ahora)",
+     "use": "wish + pasado simple",
+     "example": "I wish I had more free time."
+    },
+    {
+     "if": "Sobre un estado o tu identidad",
+     "use": "wish + were",
+     "example": "I wish I were braver."
+    },
+    {
+     "if": "Sobre el pasado (arrepentimiento)",
+     "use": "wish + past perfect",
+     "example": "I wish I had said sorry."
+    },
+    {
+     "if": "Sobre lo que otra persona hace y te molesta",
+     "use": "wish + would",
+     "example": "I wish people wouldn’t drop litter."
+    },
+    {
+     "if": "Sobre una capacidad",
+     "use": "wish + could",
+     "example": "I wish I could drive."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Un tiempo hacia atrás",
+   "steps": [
+    {
+     "label": "Realidad presente",
+     "sentence": "I **don’t have** a car."
+    },
+    {
+     "label": "Deseo presente",
+     "sentence": "I wish I **had** a car.",
+     "change": "Presente → pasado."
+    },
+    {
+     "label": "Realidad pasada",
+     "sentence": "I **didn’t say** sorry."
+    },
+    {
+     "label": "Arrepentimiento",
+     "sentence": "If only I **had said** sorry.",
+     "change": "Pasado → past perfect."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores y matices",
+   "items": [
+    {
+     "a": "I wish I could stop smoking.",
+     "b": "I wish I would stop smoking.",
+     "note": "Sobre ti mismo no se usa “would”; usa “could”."
+    },
+    {
+     "a": "I wish I had more time.",
+     "b": "I wish I have more time.",
+     "note": "Después de “wish” para el presente, usa pasado."
+    },
+    {
+     "a": "I wish you would call more.",
+     "b": "I hope you call more.",
+     "note": "“Wish + would” es una queja; “hope” es una esperanza real."
+    }
+   ]
+  }
+ ],
+ "B2-12-0": [
+  {
+   "kind": "choose",
+   "title": "¿Futuro perfecto simple o continuo?",
+   "question": "¿Qué quieres resaltar en ese punto del futuro?",
+   "branches": [
+    {
+     "if": "Que la acción ya estará terminada",
+     "use": "will have + participio",
+     "example": "By six I’ll have finished."
+    },
+    {
+     "if": "Cuántas cosas se habrán hecho",
+     "use": "will have + participio",
+     "example": "By then I’ll have visited five countries."
+    },
+    {
+     "if": "Cuánto tiempo llevará la actividad",
+     "use": "will have been + -ing + for",
+     "example": "By June I’ll have been travelling for six months."
+    },
+    {
+     "if": "Un verbo de estado (know, be, have)",
+     "use": "will have + participio",
+     "example": "By May I’ll have known her for ten years."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Mira hacia atrás desde el futuro",
+   "steps": [
+    {
+     "label": "Plan",
+     "sentence": "I’m going to finish the course."
+    },
+    {
+     "label": "Terminado para una fecha",
+     "sentence": "**By December I’ll have finished** the course.",
+     "change": "will have + participio."
+    },
+    {
+     "label": "Duración hasta esa fecha",
+     "sentence": "By December **I’ll have been studying** for two years.",
+     "change": "will have been + -ing."
+    },
+    {
+     "label": "Con by the time",
+     "sentence": "**By the time you arrive**, we’ll have eaten.",
+     "change": "Después de “by the time”, presente."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "By the time you arrive, we’ll have left.",
+     "b": "By the time you will arrive, we’ll have left.",
+     "note": "Después de “by the time” va presente."
+    },
+    {
+     "a": "I’ll have known her for ten years.",
+     "b": "I’ll have been knowing her for ten years.",
+     "note": "“Know” no se usa en continuo."
+    },
+    {
+     "a": "By 2030 I’ll have retired.",
+     "b": "In 2030 I’ll have retired.",
+     "note": "“By” marca la fecha límite; con el futuro perfecto es lo más natural."
+    }
+   ]
+  }
+ ],
+ "B2-12-1": [
+  {
+   "kind": "choose",
+   "title": "¿Qué tipo de condicional mixto?",
+   "question": "¿De qué tiempo es la causa y de qué tiempo es el resultado?",
+   "branches": [
+    {
+     "if": "Causa en el pasado → resultado en el presente",
+     "use": "If + past perfect, would + verbo",
+     "example": "If I had saved more, I’d be travelling now."
+    },
+    {
+     "if": "Causa permanente en el presente → resultado en el pasado",
+     "use": "If + pasado simple, would have + participio",
+     "example": "If I weren’t so shy, I would have spoken up."
+    },
+    {
+     "if": "Las dos en el pasado (tercer condicional)",
+     "use": "If + past perfect, would have + participio",
+     "example": "If I’d known, I’d have called."
+    },
+    {
+     "if": "Las dos en el presente (segundo condicional)",
+     "use": "If + pasado simple, would + verbo",
+     "example": "If I had time, I’d go."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Mezcla los tiempos",
+   "steps": [
+    {
+     "label": "Hecho pasado",
+     "sentence": "I **didn’t take** the job in Bogotá."
+    },
+    {
+     "label": "Consecuencia presente",
+     "sentence": "If I **had taken** the job, I **would be living** in Bogotá **now**.",
+     "change": "Pasado → presente."
+    },
+    {
+     "label": "Rasgo permanente",
+     "sentence": "I**’m** not very organised."
+    },
+    {
+     "label": "Consecuencia pasada",
+     "sentence": "If I **were** more organised, I **wouldn’t have missed** the flight.",
+     "change": "Presente → pasado."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Tercer condicional vs. mixto",
+   "items": [
+    {
+     "a": "If I’d studied, I’d have passed.",
+     "b": "If I’d studied, I’d be a doctor now.",
+     "note": "La primera tiene resultado en el pasado; la segunda, en el presente."
+    },
+    {
+     "a": "If she were braver, she’d have asked.",
+     "b": "If she had been braver, she’d have asked.",
+     "note": "La primera habla de su carácter permanente; la segunda, de ese momento."
+    },
+    {
+     "a": "If we’d left earlier, we’d be there by now.",
+     "b": "If we’d left earlier, we’ll be there by now.",
+     "note": "En el resultado hipotético va “would”, no “will”."
+    }
+   ]
+  }
+ ]
+}
