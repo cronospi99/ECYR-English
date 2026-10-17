@@ -8,7 +8,7 @@ import { loadWritingTasks } from '@/content/writing';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { cn } from '@/lib/cn';
 import { unitTitle } from '../learn/LevelPage';
-import { WritingTasksPanel, UnitWritingTasks } from './UnitWritingTasks'; // HARNESS
+import { WritingTasksPanel } from './UnitWritingTasks';
 
 const hasDraft = (key: string) => {
   try {
@@ -63,7 +63,6 @@ export default function WritingPage() {
         ))}
         {!loading && total > 0 && <span className="text-label-2 ml-auto shrink-0 pl-2 text-[13px]">{total} tareas</span>}
       </div>
-      {params.has('harness') && u && <div className="mb-5"><UnitWritingTasks level={level} unit={u.n} /></div> /* HARNESS */}
       {loading || !u ? (
         <PageLoader />
       ) : (

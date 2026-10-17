@@ -507,5 +507,499 @@
     }
    ]
   }
+ ],
+ "C1-4-0": [
+  {
+   "kind": "transform",
+   "title": "De estilo directo a indirecto",
+   "steps": [
+    {
+     "label": "Directo",
+     "sentence": "“I **will** come **tomorrow**,” he said."
+    },
+    {
+     "label": "Indirecto",
+     "sentence": "He said (that) he **would** come **the next day**.",
+     "change": "will → would; tomorrow → the next day."
+    },
+    {
+     "label": "Directo",
+     "sentence": "“I **broke** the mirror **here**,” she admitted."
+    },
+    {
+     "label": "Indirecto",
+     "sentence": "She admitted (that) she **had broken** the mirror **there**.",
+     "change": "pasado → past perfect; here → there."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Qué tan fiable suena la afirmación",
+   "from": "La pones en duda",
+   "to": "La das por cierta",
+   "items": [
+    {
+     "word": "claim",
+     "value": 25,
+     "example": "He claimed the house was haunted.",
+     "es": "afirmar (sin pruebas)"
+    },
+    {
+     "word": "insist",
+     "value": 45,
+     "example": "She insisted she was right.",
+     "es": "insistir"
+    },
+    {
+     "word": "say",
+     "value": 55,
+     "example": "He said he was tired.",
+     "es": "decir"
+    },
+    {
+     "word": "admit",
+     "value": 75,
+     "example": "He admitted he had lied.",
+     "es": "admitir"
+    },
+    {
+     "word": "confirm",
+     "value": 90,
+     "example": "The doctor confirmed it was broken.",
+     "es": "confirmar"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Say, tell y el cambio de tiempo",
+   "items": [
+    {
+     "a": "He said that he was tired.",
+     "b": "He told me that he was tired.",
+     "note": "“Say” no lleva objeto personal; “tell” sí lo necesita."
+    },
+    {
+     "a": "He said me that he was tired.",
+     "b": "He told me that he was tired.",
+     "note": "La primera está mal: “said me” no existe."
+    },
+    {
+     "a": "She said the Earth is round.",
+     "b": "She said the Earth was round.",
+     "note": "Si algo sigue siendo cierto, no es obligatorio retroceder el tiempo."
+    }
+   ]
+  }
+ ],
+ "C1-4-1": [
+  {
+   "kind": "transform",
+   "title": "Del rumor a la pasiva impersonal",
+   "steps": [
+    {
+     "label": "Activa",
+     "sentence": "People **say** that the house is haunted."
+    },
+    {
+     "label": "It + pasiva + that",
+     "sentence": "**It is said that** the house is haunted.",
+     "change": "Sin fuente: suena neutral."
+    },
+    {
+     "label": "Sujeto + pasiva + to",
+     "sentence": "The house **is said to be** haunted.",
+     "change": "El sujeto pasa al inicio."
+    },
+    {
+     "label": "Acción anterior",
+     "sentence": "He **is thought to have faked** the whole thing.",
+     "change": "to have + participio para algo anterior."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué infinitivo después de “is said / believed”?",
+   "question": "¿Cuándo ocurre la acción comparada con el momento del reporte?",
+   "branches": [
+    {
+     "if": "Al mismo tiempo (un estado actual)",
+     "use": "to + verbo",
+     "example": "He is believed to be innocent."
+    },
+    {
+     "if": "En progreso ahora",
+     "use": "to be + -ing",
+     "example": "She is thought to be hiding abroad."
+    },
+    {
+     "if": "Antes del reporte",
+     "use": "to have + participio",
+     "example": "He is said to have left the country."
+    },
+    {
+     "if": "Quieres empezar con “it”",
+     "use": "It is + participio + that + cláusula",
+     "example": "It is believed that he left the country."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Qué tan segura es la información",
+   "from": "Rumor",
+   "to": "Hecho confirmado",
+   "items": [
+    {
+     "word": "allegedly / is alleged to",
+     "value": 20,
+     "example": "He is alleged to have taken bribes.",
+     "es": "presuntamente"
+    },
+    {
+     "word": "is said to",
+     "value": 35,
+     "example": "The house is said to be haunted.",
+     "es": "se dice que"
+    },
+    {
+     "word": "is thought / believed to",
+     "value": 55,
+     "example": "He is believed to be in Panama.",
+     "es": "se cree que"
+    },
+    {
+     "word": "is reported to",
+     "value": 65,
+     "example": "Ten people are reported to have been injured.",
+     "es": "se informa que"
+    },
+    {
+     "word": "is known to",
+     "value": 90,
+     "example": "Smoking is known to cause cancer.",
+     "es": "se sabe que"
+    }
+   ]
+  }
+ ],
+ "C1-5-0": [
+  {
+   "kind": "pictures",
+   "title": "Adverbios de oración",
+   "items": [
+    {
+     "emoji": "🗣️",
+     "en": "Frankly,",
+     "es": "Francamente,"
+    },
+    {
+     "emoji": "🤞",
+     "en": "Hopefully,",
+     "es": "Ojalá,"
+    },
+    {
+     "emoji": "👂",
+     "en": "Apparently,",
+     "es": "Al parecer,"
+    },
+    {
+     "emoji": "😮",
+     "en": "Surprisingly,",
+     "es": "Sorprendentemente,"
+    },
+    {
+     "emoji": "😞",
+     "en": "Unfortunately,",
+     "es": "Desafortunadamente,"
+    },
+    {
+     "emoji": "🍀",
+     "en": "Luckily,",
+     "es": "Por suerte,"
+    },
+    {
+     "emoji": "🤔",
+     "en": "Presumably,",
+     "es": "Supongo que…,"
+    },
+    {
+     "emoji": "✅",
+     "en": "Undoubtedly,",
+     "es": "Sin duda,"
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "¿Comenta la frase o el verbo?",
+   "items": [
+    {
+     "a": "Frankly, she spoke to him.",
+     "b": "She spoke to him frankly.",
+     "note": "La primera: mi opinión sincera sobre el hecho. La segunda: ella habló con franqueza."
+    },
+    {
+     "a": "Honestly, I don’t know.",
+     "b": "I answered honestly.",
+     "note": "“Honestly,” al inicio comenta la frase; al final describe cómo respondí."
+    },
+    {
+     "a": "Clearly, he was tired.",
+     "b": "He explained it clearly.",
+     "note": "“Clearly,” = es evidente que; “clearly” al final = con claridad."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué adverbio de oración?",
+   "question": "¿Qué actitud tienes ante lo que dices?",
+   "branches": [
+    {
+     "if": "Quieres ser sincero",
+     "use": "frankly / honestly / to be fair",
+     "example": "Frankly, the ending was weak."
+    },
+    {
+     "if": "Lo sabes por otros, no lo has comprobado",
+     "use": "apparently / reportedly",
+     "example": "Apparently, they’re filming a sequel."
+    },
+    {
+     "if": "Es tu deducción",
+     "use": "presumably / evidently",
+     "example": "Presumably, the budget was cut."
+    },
+    {
+     "if": "Reaccionas ante el hecho",
+     "use": "surprisingly / unfortunately / luckily",
+     "example": "Luckily, nobody was hurt."
+    }
+   ]
+  }
+ ],
+ "C1-5-1": [
+  {
+   "kind": "choose",
+   "title": "¿So o such?",
+   "question": "¿Qué viene después?",
+   "branches": [
+    {
+     "if": "Un adjetivo o adverbio solo",
+     "use": "so + adjetivo / adverbio + that",
+     "example": "The plot was so confusing that nobody understood."
+    },
+    {
+     "if": "Un sustantivo (con o sin adjetivo), singular contable",
+     "use": "such a / an + (adjetivo) + sustantivo + that",
+     "example": "It was such a long film that I fell asleep."
+    },
+    {
+     "if": "Un sustantivo plural o incontable",
+     "use": "such + (adjetivo) + sustantivo + that",
+     "example": "They were such good actors that we cried."
+    },
+    {
+     "if": "Una cantidad",
+     "use": "so much (incontable) / so many (contable) + sustantivo",
+     "example": "There were so many twists that I got lost."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del grado al resultado",
+   "steps": [
+    {
+     "label": "Dos ideas",
+     "sentence": "The film was boring. I left."
+    },
+    {
+     "label": "Con so",
+     "sentence": "The film was **so boring that** I left.",
+     "change": "so + adjetivo."
+    },
+    {
+     "label": "Con such",
+     "sentence": "It was **such a boring film that** I left.",
+     "change": "such a + adjetivo + sustantivo."
+    },
+    {
+     "label": "Inversión formal",
+     "sentence": "**So boring was the film that** I left.",
+     "change": "Registro literario o muy formal."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "It was such a long film.",
+     "b": "It was so long film.",
+     "note": "Con sustantivo usa “such a”, no “so”."
+    },
+    {
+     "a": "There was so much noise.",
+     "b": "There was so many noise.",
+     "note": "“Noise” es incontable: “so much”."
+    },
+    {
+     "a": "It was so long that I fell asleep.",
+     "b": "It was so long I fell asleep.",
+     "note": "Las dos son correctas: en el habla se puede omitir “that”."
+    }
+   ]
+  }
+ ],
+ "C1-6-0": [
+  {
+   "kind": "transform",
+   "title": "Construye el doble comparativo",
+   "steps": [
+    {
+     "label": "Dos ideas",
+     "sentence": "You practise more. You get better."
+    },
+    {
+     "label": "Doble comparativo",
+     "sentence": "**The more** you practise, **the better** you get.",
+     "change": "“The” en las dos mitades."
+    },
+    {
+     "label": "Forma corta",
+     "sentence": "**The louder** the crowd, **the happier** the band.",
+     "change": "Se omite “be”."
+    },
+    {
+     "label": "Expresión fija",
+     "sentence": "**The sooner, the better.**",
+     "change": "Sin verbos."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores frecuentes",
+   "items": [
+    {
+     "a": "The more you read, the more you learn.",
+     "b": "More you read, more you learn.",
+     "note": "“The” es obligatorio en las dos mitades."
+    },
+    {
+     "a": "The more you practise, the better you get.",
+     "b": "How much you practise, better you get.",
+     "note": "“Cuanto más” no se traduce con “how much”."
+    },
+    {
+     "a": "Concerts are getting more and more expensive.",
+     "b": "Concerts are getting the more expensive.",
+     "note": "Para un solo cambio continuo, usa “more and more”."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué estructura de cambio?",
+   "question": "¿Cuántas cosas cambian?",
+   "branches": [
+    {
+     "if": "Dos cosas cambian a la vez, una depende de la otra",
+     "use": "The + comparativo …, the + comparativo …",
+     "example": "The older I get, the less I sleep."
+    },
+    {
+     "if": "Una sola cosa cambia de forma continua",
+     "use": "comparativo + and + comparativo",
+     "example": "It’s getting colder and colder."
+    },
+    {
+     "if": "Una expresión corta de acuerdo",
+     "use": "The + comparativo, the + comparativo",
+     "example": "The more, the merrier."
+    }
+   ]
+  }
+ ],
+ "C1-6-1": [
+  {
+   "kind": "choose",
+   "title": "¿Will, would o used to?",
+   "question": "¿Qué tipo de hábito describes?",
+   "branches": [
+    {
+     "if": "Un hábito típico de ahora",
+     "use": "will + verbo",
+     "example": "He’ll listen to the same album for weeks."
+    },
+    {
+     "if": "Un hábito actual que te irrita",
+     "use": "WILL (con énfasis) + verbo",
+     "example": "She WILL leave the lights on!"
+    },
+    {
+     "if": "Una acción repetida en el pasado",
+     "use": "would + verbo",
+     "example": "We would walk to the beach every morning."
+    },
+    {
+     "if": "Un estado pasado (be, love, have, know)",
+     "use": "used to + verbo",
+     "example": "I used to love that band."
+    },
+    {
+     "if": "Una verdad general",
+     "use": "will + verbo",
+     "example": "Water will boil at 100°C."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del presente al pasado nostálgico",
+   "steps": [
+    {
+     "label": "Hábito presente",
+     "sentence": "My grandfather **will** sit on the porch for hours.",
+     "change": "will = comportamiento típico."
+    },
+    {
+     "label": "Hábito pasado",
+     "sentence": "My grandfather **would** sit on the porch for hours.",
+     "change": "would = recuerdo de una acción repetida."
+    },
+    {
+     "label": "Estado pasado",
+     "sentence": "My grandfather **used to** be a fisherman.",
+     "change": "“Be” es estado: solo used to."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Matices",
+   "items": [
+    {
+     "a": "He’ll play music late.",
+     "b": "He WILL play music late!",
+     "note": "Sin énfasis, describe un hábito; con énfasis, muestra irritación."
+    },
+    {
+     "a": "I used to love that band.",
+     "b": "I would love that band.",
+     "note": "Con estados, “would” no expresa hábito pasado."
+    },
+    {
+     "a": "We would go to the river every Sunday.",
+     "b": "We would go to the river once in 2005.",
+     "note": "“Would” no sirve para una sola acción pasada."
+    }
+   ]
+  }
  ]
 }

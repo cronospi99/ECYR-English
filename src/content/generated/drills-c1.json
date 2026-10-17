@@ -118,5 +118,125 @@
    "Feeling ill, I stayed at home.",
    "Smiling, she waved goodbye."
   ]
+ },
+ "C1-4-0": {
+  "name": "Report it",
+  "prompt": "Pasa cada frase a estilo indirecto con el verbo indicado, cambiando tiempos, pronombres y expresiones de tiempo.",
+  "items": [
+   "“I will call you tomorrow,” she said. → She said ______",
+   "“I broke the vase,” he admitted. → He admitted ______",
+   "“I can’t come to the party,” Ana told me. → Ana told me ______",
+   "“We’re moving to Cali next month,” they said. → They said ______",
+   "“I didn’t take the money,” he said. (deny) → He denied ______",
+   "“Don’t walk under that ladder,” my grandmother said. (warn) → My grandmother warned me ______"
+  ],
+  "answers": [
+   "She said (that) she would call me the next day.",
+   "He admitted (that) he had broken the vase.",
+   "Ana told me (that) she couldn’t come to the party.",
+   "They said (that) they were moving to Cali the following month.",
+   "He denied taking the money. / He denied that he had taken the money.",
+   "My grandmother warned me not to walk under that ladder."
+  ]
+ },
+ "C1-4-1": {
+  "name": "Remove the source",
+  "prompt": "Reescribe cada frase con una pasiva impersonal, empezando con las palabras dadas.",
+  "items": [
+   "People say that the castle is haunted. → The castle ______",
+   "People believe that he lives in Panama. → It ______",
+   "Experts think that the painting was stolen in 1990. → The painting ______",
+   "Reports say that the minister has resigned. → The minister ______",
+   "People claim that the ritual protects the house. → It ______",
+   "Everyone knows that the company is losing money. → The company ______"
+  ],
+  "answers": [
+   "The castle is said to be haunted.",
+   "It is believed that he lives in Panama.",
+   "The painting is thought to have been stolen in 1990.",
+   "The minister is reported to have resigned.",
+   "It is claimed that the ritual protects the house.",
+   "The company is known to be losing money."
+  ]
+ },
+ "C1-5-0": {
+  "name": "Comment on it",
+  "prompt": "Reescribe cada frase con un adverbio de oración que exprese la misma actitud.",
+  "items": [
+   "It was a surprise that the low-budget film won. → ______, the low-budget film won.",
+   "I’m being honest: the ending disappointed me. → ______, the ending disappointed me.",
+   "People say they are filming a sequel. → ______, they are filming a sequel.",
+   "It’s a pity the concert was cancelled. → ______, the concert was cancelled.",
+   "I assume the director wanted a darker tone. → ______, the director wanted a darker tone.",
+   "It was lucky that nobody was injured. → ______, nobody was injured."
+  ],
+  "answers": [
+   "Surprisingly, the low-budget film won.",
+   "Frankly, the ending disappointed me.",
+   "Apparently, they are filming a sequel.",
+   "Unfortunately, the concert was cancelled.",
+   "Presumably, the director wanted a darker tone.",
+   "Luckily, nobody was injured."
+  ]
+ },
+ "C1-5-1": {
+  "name": "Degree and result",
+  "prompt": "Une las dos ideas con so…that o such…that, usando la palabra indicada.",
+  "items": [
+   "The film was long. I fell asleep. (such) → It was ______",
+   "The plot was confusing. Nobody understood it. (so) → The plot was ______",
+   "There were a lot of twists. I lost track. (so many) → There were ______",
+   "She acted convincingly. She won an award. (so) → She acted ______",
+   "They were good actors. Everyone cried. (such) → They were ______",
+   "The ending was shocking. The audience gasped. (formal inversion) → So ______"
+  ],
+  "answers": [
+   "It was such a long film that I fell asleep.",
+   "The plot was so confusing that nobody understood it.",
+   "There were so many twists that I lost track.",
+   "She acted so convincingly that she won an award.",
+   "They were such good actors that everyone cried.",
+   "So shocking was the ending that the audience gasped."
+  ]
+ },
+ "C1-6-0": {
+  "name": "The more…, the more…",
+  "prompt": "Reescribe cada frase con un doble comparativo (o con “more and more”).",
+  "items": [
+   "If you practise more, you play better. → The more ______",
+   "As the crowd gets louder, the band gets happier. → The louder ______",
+   "When the song is harder, it’s more rewarding. → The harder ______",
+   "As I get older, I worry less. → The older ______",
+   "If we leave early, it will be better. (short form) → The ______",
+   "Tickets keep getting more expensive. (more and more) → Tickets are getting ______"
+  ],
+  "answers": [
+   "The more you practise, the better you play.",
+   "The louder the crowd, the happier the band.",
+   "The harder the song, the more rewarding it is.",
+   "The older I get, the less I worry.",
+   "The sooner, the better.",
+   "Tickets are getting more and more expensive."
+  ]
+ },
+ "C1-6-1": {
+  "name": "Habits with will and would",
+  "prompt": "Reescribe cada frase con will, would o used to según el tipo de hábito indicado.",
+  "items": [
+   "My brother always leaves his shoes in the hall. (typical present habit) → My brother ______",
+   "Every summer we went to my grandparents’ farm. (past habit) → Every summer we ______",
+   "I loved that band when I was a teenager. (past state) → I ______",
+   "She keeps interrupting me, and it annoys me! (irritation) → She ______!",
+   "As a child, I hummed along to every song. (past habit) → As a child, I ______",
+   "Babies usually sleep for most of the day. (general truth) → Babies ______"
+  ],
+  "answers": [
+   "My brother will leave his shoes in the hall.",
+   "Every summer we would go to my grandparents’ farm.",
+   "I used to love that band when I was a teenager.",
+   "She WILL keep interrupting me!",
+   "As a child, I would hum along to every song.",
+   "Babies will sleep for most of the day."
+  ]
  }
 }

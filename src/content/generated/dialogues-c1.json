@@ -678,5 +678,695 @@
     }
    ]
   }
+ ],
+ "C1-4-0": [
+  {
+   "title": "Superstitions at the office",
+   "titleEs": "Supersticiones en la oficina",
+   "scene": "🪞 En una oficina de Medellín: dos colegas comentan lo que dijo un compañero supersticioso.",
+   "cast": [
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tom",
+     "line": "Did you hear what Julián said this morning?",
+     "es": "¿Oíste lo que dijo Julián esta mañana?"
+    },
+    {
+     "sp": "Camila",
+     "line": "He told me he wouldn't sign the contract because it was Tuesday the thirteenth.",
+     "es": "Me dijo que no iba a firmar el contrato porque era martes trece."
+    },
+    {
+     "sp": "Tom",
+     "line": "Seriously? He insisted that it had brought him bad luck before.",
+     "es": "¿En serio? Insistió en que eso ya le había traído mala suerte antes."
+    },
+    {
+     "sp": "Camila",
+     "line": "He even admitted he had cancelled a flight for the same reason.",
+     "es": "Hasta admitió que había cancelado un vuelo por la misma razón."
+    },
+    {
+     "sp": "Tom",
+     "line": "The boss said she would sign it herself the next day.",
+     "es": "La jefa dijo que ella misma lo firmaría al día siguiente."
+    },
+    {
+     "sp": "Camila",
+     "line": "And Julián warned her that the deal might fall through!",
+     "es": "¡Y Julián le advirtió que el negocio podría venirse abajo!"
+    },
+    {
+     "sp": "Tom",
+     "line": "She told him she didn't believe in that kind of thing.",
+     "es": "Ella le dijo que no creía en ese tipo de cosas."
+    }
+   ]
+  },
+  {
+   "title": "A witness statement",
+   "titleEs": "La declaración de un testigo",
+   "scene": "🚔 En una estación de policía en Bogotá: dos detectives comparan versiones de un testigo.",
+   "cast": [
+    {
+     "name": "Alejandro",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Megan",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Megan",
+     "line": "What did the neighbour tell you?",
+     "es": "¿Qué te dijo la vecina?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "She claimed she had seen a man leaving the building at midnight.",
+     "es": "Afirmó que había visto a un hombre saliendo del edificio a medianoche."
+    },
+    {
+     "sp": "Megan",
+     "line": "But yesterday she said she had been asleep by ten.",
+     "es": "Pero ayer dijo que a las diez ya estaba dormida."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Exactly. When I pointed that out, she insisted she had woken up because of the noise.",
+     "es": "Exacto. Cuando se lo hice notar, insistió en que se había despertado por el ruido."
+    },
+    {
+     "sp": "Megan",
+     "line": "Did she say whether she could identify him?",
+     "es": "¿Dijo si lo podría identificar?"
+    },
+    {
+     "sp": "Alejandro",
+     "line": "She told me she would recognise him anywhere, but then she admitted it had been very dark.",
+     "es": "Me dijo que lo reconocería en cualquier parte, pero luego admitió que estaba muy oscuro."
+    },
+    {
+     "sp": "Megan",
+     "line": "The caretaker denied that anyone had entered after eleven.",
+     "es": "El portero negó que alguien hubiera entrado después de las once."
+    },
+    {
+     "sp": "Alejandro",
+     "line": "Then one of them isn't telling the truth.",
+     "es": "Entonces uno de los dos no está diciendo la verdad."
+    }
+   ]
+  }
+ ],
+ "C1-4-1": [
+  {
+   "title": "Legends of the Andes",
+   "titleEs": "Leyendas de los Andes",
+   "scene": "🏔️ En un tour por la laguna de Guatavita: una guía cuenta leyendas a un grupo de turistas.",
+   "cast": [
+    {
+     "name": "Laura",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Laura",
+     "line": "This lake is said to be the origin of the El Dorado legend.",
+     "es": "Se dice que esta laguna es el origen de la leyenda de El Dorado."
+    },
+    {
+     "sp": "Ben",
+     "line": "Is it true that gold was thrown into the water?",
+     "es": "¿Es cierto que se arrojaba oro al agua?"
+    },
+    {
+     "sp": "Laura",
+     "line": "It is believed that the Muisca chief covered himself in gold dust and dived in.",
+     "es": "Se cree que el cacique muisca se cubría de polvo de oro y se sumergía."
+    },
+    {
+     "sp": "Ben",
+     "line": "Has anyone found the treasure?",
+     "es": "¿Alguien ha encontrado el tesoro?"
+    },
+    {
+     "sp": "Laura",
+     "line": "Several expeditions are known to have tried. One is thought to have drained part of the lake in the sixteenth century.",
+     "es": "Se sabe que varias expediciones lo intentaron. Se piensa que una drenó parte de la laguna en el siglo XVI."
+    },
+    {
+     "sp": "Ben",
+     "line": "And did they find anything?",
+     "es": "¿Y encontraron algo?"
+    },
+    {
+     "sp": "Laura",
+     "line": "A few pieces are reported to have been recovered, but most of the gold is still thought to be at the bottom.",
+     "es": "Se informa que recuperaron algunas piezas, pero se cree que la mayor parte del oro sigue en el fondo."
+    },
+    {
+     "sp": "Ben",
+     "line": "It's widely assumed that's why swimming is forbidden!",
+     "es": "¡Se supone que por eso está prohibido nadar!"
+    }
+   ]
+  },
+  {
+   "title": "Reporting on a scandal",
+   "titleEs": "Informando sobre un escándalo",
+   "scene": "📺 En una sala de redacción en Bogotá: una editora corrige el texto de un periodista.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Juan Pablo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Natalia",
+     "line": "You can't write that the mayor took the money. We can't prove it.",
+     "es": "No puedes escribir que el alcalde se robó la plata. No lo podemos probar."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "So how should I phrase it?",
+     "es": "¿Entonces cómo lo redacto?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Try: “The mayor is alleged to have accepted payments from the contractor.”",
+     "es": "Prueba con: “Se alega que el alcalde aceptó pagos del contratista.”"
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "And the meetings?",
+     "es": "¿Y las reuniones?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "“It is reported that several meetings took place in Cartagena.”",
+     "es": "“Se informa que hubo varias reuniones en Cartagena.”"
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "What about his assistant? She's believed to have destroyed the documents.",
+     "es": "¿Y su asistente? Se cree que ella destruyó los documentos."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Good. And add that the investigation is expected to last several months.",
+     "es": "Bien. Y agrega que se espera que la investigación dure varios meses."
+    },
+    {
+     "sp": "Juan Pablo",
+     "line": "Got it. It's understood that the prosecutor will comment tomorrow.",
+     "es": "Entendido. Se entiende que el fiscal hará declaraciones mañana."
+    }
+   ]
+  }
+ ],
+ "C1-5-0": [
+  {
+   "title": "After the premiere",
+   "titleEs": "Después del estreno",
+   "scene": "🎬 En el Festival de Cine de Cartagena: dos críticos salen de una función.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "Well? Frankly, I thought the second half dragged.",
+     "es": "¿Y? Francamente, me pareció que la segunda mitad se hizo eterna."
+    },
+    {
+     "sp": "Isabela",
+     "line": "Surprisingly, I didn't mind it. The cinematography was stunning.",
+     "es": "Sorprendentemente, no me molestó. La fotografía era impresionante."
+    },
+    {
+     "sp": "Oliver",
+     "line": "To be fair, the lead actress was outstanding.",
+     "es": "Para ser justos, la actriz principal estuvo sobresaliente."
+    },
+    {
+     "sp": "Isabela",
+     "line": "Apparently, it's her first feature film. She was discovered in a theatre group in Cali.",
+     "es": "Al parecer, es su primer largometraje. La descubrieron en un grupo de teatro en Cali."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Unfortunately, the script didn't do her justice.",
+     "es": "Desafortunadamente, el guion no le hizo justicia."
+    },
+    {
+     "sp": "Isabela",
+     "line": "Presumably, it was rewritten several times. You could tell.",
+     "es": "Supongo que lo reescribieron varias veces. Se notaba."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Hopefully, the director will get a bigger budget next time.",
+     "es": "Ojalá el director consiga un presupuesto más grande la próxima vez."
+    }
+   ]
+  },
+  {
+   "title": "Quarterly results",
+   "titleEs": "Resultados trimestrales",
+   "scene": "📈 En una junta directiva en Bogotá: el director financiero presenta resultados.",
+   "cast": [
+    {
+     "name": "Carlos",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "So, how did we do this quarter?",
+     "es": "Entonces, ¿cómo nos fue este trimestre?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "Remarkably, sales went up by twelve percent despite the strike.",
+     "es": "Notablemente, las ventas subieron un doce por ciento a pesar del paro."
+    },
+    {
+     "sp": "Hannah",
+     "line": "That's great news. And costs?",
+     "es": "Excelente noticia. ¿Y los costos?"
+    },
+    {
+     "sp": "Carlos",
+     "line": "Unfortunately, transport costs rose sharply. Clearly, we need a new supplier.",
+     "es": "Lamentablemente, los costos de transporte subieron bastante. Es evidente que necesitamos un nuevo proveedor."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Admittedly, we should have renegotiated earlier.",
+     "es": "Hay que reconocer que debimos haber renegociado antes."
+    },
+    {
+     "sp": "Carlos",
+     "line": "Ideally, we'd sign a new contract before December.",
+     "es": "Lo ideal sería firmar un nuevo contrato antes de diciembre."
+    },
+    {
+     "sp": "Hannah",
+     "line": "Realistically, that won't happen until January.",
+     "es": "Siendo realistas, eso no va a pasar antes de enero."
+    },
+    {
+     "sp": "Carlos",
+     "line": "Fortunately, our cash reserves can cover the gap.",
+     "es": "Por suerte, nuestras reservas de efectivo pueden cubrir la diferencia."
+    }
+   ]
+  }
+ ],
+ "C1-5-1": [
+  {
+   "title": "A terrible film",
+   "titleEs": "Una película pésima",
+   "scene": "🍿 En un centro comercial de Bogotá: dos amigos salen del cine.",
+   "cast": [
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zoe",
+     "line": "That was such a long film that my leg went to sleep.",
+     "es": "Esa película fue tan larga que se me durmió la pierna."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "And the plot was so confusing that I gave up after an hour.",
+     "es": "Y la trama era tan confusa que me rendí después de una hora."
+    },
+    {
+     "sp": "Zoe",
+     "line": "There were so many characters that I couldn't remember their names.",
+     "es": "Había tantos personajes que no me acordaba de sus nombres."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "The music was so loud I could hardly hear the dialogue.",
+     "es": "La música estaba tan fuerte que casi no se oían los diálogos."
+    },
+    {
+     "sp": "Zoe",
+     "line": "It had such terrible reviews that I don't know why we went.",
+     "es": "Tenía unas críticas tan malas que no sé por qué fuimos."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Because the trailer was so good that we fell for it!",
+     "es": "¡Porque el tráiler era tan bueno que caímos!"
+    },
+    {
+     "sp": "Zoe",
+     "line": "Next time, I'll choose. I've wasted so much money on bad films this year.",
+     "es": "La próxima vez escojo yo. He gastado tanta plata en películas malas este año."
+    }
+   ]
+  },
+  {
+   "title": "Carnival in Barranquilla",
+   "titleEs": "Carnaval en Barranquilla",
+   "scene": "🎭 En Barranquilla: un visitante británico cuenta su experiencia en el Carnaval a una amiga local.",
+   "cast": [
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Daniela",
+     "line": "So, how was your first Carnival?",
+     "es": "¿Y qué tal tu primer Carnaval?"
+    },
+    {
+     "sp": "James",
+     "line": "Incredible. There were so many people that we could barely move.",
+     "es": "Increíble. Había tanta gente que casi no nos podíamos mover."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Did you see the Batalla de Flores?",
+     "es": "¿Viste la Batalla de Flores?"
+    },
+    {
+     "sp": "James",
+     "line": "Yes! The costumes were so colourful that I took three hundred photos.",
+     "es": "¡Sí! Los disfraces eran tan coloridos que tomé trescientas fotos."
+    },
+    {
+     "sp": "Daniela",
+     "line": "And the heat?",
+     "es": "¿Y el calor?"
+    },
+    {
+     "sp": "James",
+     "line": "It was such a hot day that I drank about five litres of water.",
+     "es": "Fue un día tan caliente que me tomé como cinco litros de agua."
+    },
+    {
+     "sp": "Daniela",
+     "line": "Did you dance?",
+     "es": "¿Bailaste?"
+    },
+    {
+     "sp": "James",
+     "line": "I danced so badly that a little girl offered to teach me!",
+     "es": "¡Bailé tan mal que una niña se ofreció a enseñarme!"
+    }
+   ]
+  }
+ ],
+ "C1-6-0": [
+  {
+   "title": "Learning the guitar",
+   "titleEs": "Aprendiendo a tocar guitarra",
+   "scene": "🎸 En una escuela de música en Medellín: un estudiante habla con su profesora.",
+   "cast": [
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mateo",
+     "line": "My fingers hurt so much. Does it get easier?",
+     "es": "Me duelen mucho los dedos. ¿Se vuelve más fácil?"
+    },
+    {
+     "sp": "Lucy",
+     "line": "Absolutely. The more you practise, the tougher your fingertips get.",
+     "es": "Claro que sí. Cuanto más practiques, más duras se te ponen las yemas."
+    },
+    {
+     "sp": "Mateo",
+     "line": "And the chords? I'm so slow at changing them.",
+     "es": "¿Y los acordes? Soy muy lento para cambiarlos."
+    },
+    {
+     "sp": "Lucy",
+     "line": "The slower you start, the faster you'll eventually play.",
+     "es": "Cuanto más despacio empieces, más rápido vas a tocar al final."
+    },
+    {
+     "sp": "Mateo",
+     "line": "Should I learn harder songs?",
+     "es": "¿Debería aprender canciones más difíciles?"
+    },
+    {
+     "sp": "Lucy",
+     "line": "Not yet. The simpler the song, the more you can focus on rhythm.",
+     "es": "Todavía no. Cuanto más sencilla la canción, más te puedes concentrar en el ritmo."
+    },
+    {
+     "sp": "Mateo",
+     "line": "I'm getting more and more impatient, though.",
+     "es": "Aunque me estoy impacientando cada vez más."
+    },
+    {
+     "sp": "Lucy",
+     "line": "The more relaxed you are, the better you'll sound. Trust me.",
+     "es": "Cuanto más relajado estés, mejor vas a sonar. Créeme."
+    }
+   ]
+  },
+  {
+   "title": "Planning a festival",
+   "titleEs": "Planeando un festival",
+   "scene": "🎶 En una productora de eventos en Bogotá: dos socios planean un festival de música.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Nick",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Nick",
+     "line": "The more bands we book, the more tickets we'll sell.",
+     "es": "Cuantas más bandas contratemos, más boletas vamos a vender."
+    },
+    {
+     "sp": "Valentina",
+     "line": "True, but the bigger the line-up, the higher the costs.",
+     "es": "Cierto, pero cuanto más grande el cartel, más altos los costos."
+    },
+    {
+     "sp": "Nick",
+     "line": "And the earlier we announce it, the cheaper the advertising.",
+     "es": "Y cuanto antes lo anunciemos, más barata la publicidad."
+    },
+    {
+     "sp": "Valentina",
+     "line": "Tickets are getting more and more expensive, though. People complain.",
+     "es": "Aunque las boletas están cada vez más caras. La gente se queja."
+    },
+    {
+     "sp": "Nick",
+     "line": "The cheaper the early tickets, the faster they'll sell out.",
+     "es": "Cuanto más baratas las primeras boletas, más rápido se van a agotar."
+    },
+    {
+     "sp": "Valentina",
+     "line": "The more I think about it, the more I like the idea of a smaller festival.",
+     "es": "Cuanto más lo pienso, más me gusta la idea de un festival más pequeño."
+    },
+    {
+     "sp": "Nick",
+     "line": "The smaller, the better? Maybe you're right.",
+     "es": "¿Entre más pequeño, mejor? Tal vez tengas razón."
+    }
+   ]
+  }
+ ],
+ "C1-6-1": [
+  {
+   "title": "Annoying habits",
+   "titleEs": "Hábitos irritantes",
+   "scene": "🎧 En un apartamento compartido en Bogotá: una inquilina se queja de su compañero de piso.",
+   "cast": [
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mark",
+     "line": "How's it going with your new flatmate?",
+     "es": "¿Cómo te va con tu nuevo compañero de apartamento?"
+    },
+    {
+     "sp": "Paula",
+     "line": "He's nice, but he'll play the same song on repeat for hours.",
+     "es": "Es buena gente, pero pone la misma canción una y otra vez durante horas."
+    },
+    {
+     "sp": "Mark",
+     "line": "Oh no. Does he at least use headphones?",
+     "es": "Ay, no. ¿Al menos usa audífonos?"
+    },
+    {
+     "sp": "Paula",
+     "line": "No! He will insist on using the speaker, even at midnight.",
+     "es": "¡No! Se empeña en usar el parlante, incluso a medianoche."
+    },
+    {
+     "sp": "Mark",
+     "line": "My old flatmate would leave dirty dishes everywhere.",
+     "es": "Mi antigua compañera dejaba platos sucios por todas partes."
+    },
+    {
+     "sp": "Paula",
+     "line": "Mine will clean, to be fair. He'll spend Sunday mornings scrubbing the kitchen.",
+     "es": "El mío sí limpia, para ser justos. Se pasa los domingos por la mañana fregando la cocina."
+    },
+    {
+     "sp": "Mark",
+     "line": "Then you've got a good deal. Mine would never wash a single cup.",
+     "es": "Entonces te fue bien. La mía nunca lavaba ni una taza."
+    }
+   ]
+  },
+  {
+   "title": "Childhood summers",
+   "titleEs": "Veranos de la infancia",
+   "scene": "🌅 En una reunión familiar en Santa Marta: dos primos recuerdan sus vacaciones de niños.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "Do you remember those holidays at Grandpa's house?",
+     "es": "¿Te acuerdas de esas vacaciones en la casa del abuelo?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Of course. We would wake up at dawn and run straight to the beach.",
+     "es": "Claro. Nos levantábamos al amanecer y corríamos directo a la playa."
+    },
+    {
+     "sp": "Grace",
+     "line": "And Grandma would make us eat breakfast first.",
+     "es": "Y la abuela nos obligaba a desayunar primero."
+    },
+    {
+     "sp": "Andrés",
+     "line": "She would always say, “Nobody swims on an empty stomach!”",
+     "es": "Siempre decía: “¡Nadie se mete al mar con el estómago vacío!”"
+    },
+    {
+     "sp": "Grace",
+     "line": "In the afternoons Grandpa would tell us stories about pirates.",
+     "es": "En las tardes el abuelo nos contaba historias de piratas."
+    },
+    {
+     "sp": "Andrés",
+     "line": "I used to believe every word. I used to be so innocent.",
+     "es": "Yo me creía cada palabra. Era tan inocente."
+    },
+    {
+     "sp": "Grace",
+     "line": "Kids will believe anything if you tell it well enough.",
+     "es": "Los niños se creen cualquier cosa si se la cuentas bien."
+    }
+   ]
+  }
  ]
 }
