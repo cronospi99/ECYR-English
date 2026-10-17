@@ -6,7 +6,7 @@
   "cleanUrls": false,
   "rewrites": [
     {
-      "source": "/((?!modules/|vendor/|covers/|grammar/|avatars/|assets/|icon-|apple-touch-icon|favicon\\.svg|logo\\.svg|manifest\\.webmanifest|robots\\.txt).*)",
+      "source": "/((?!api/|modules/|vendor/|covers/|grammar/|avatars/|assets/|icon-|apple-touch-icon|favicon\\.svg|logo\\.svg|manifest\\.webmanifest|robots\\.txt).*)",
       "destination": "/index.html"
     }
   ],
@@ -59,5 +59,11 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/tts.ts": {
+      "maxDuration": 60,
+      "memory": 512
+    }
+  }
 }
