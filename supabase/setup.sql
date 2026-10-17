@@ -3,7 +3,7 @@
 -- -----------------------------------------------------------------------------
 -- Paste this whole file into Supabase → SQL Editor → New query → Run.
 -- Safe to re-run: every statement is create-if-not-exists or drop-then-create.
--- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql
+-- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql, 10_voice_cache.sql, 11_podcasts.sql, 12_notes.sql
 -- Do not edit by hand: change supabase/migrations/* and re-run the script.
 -- =============================================================================
 
@@ -2008,4 +2008,405 @@ grant execute on function public.review_assignment(uuid, uuid, text, numeric, bo
 --             to them (plus their own target rows); inserts / updates their
 --             own status row (pending | done | late, done_at, via, score,
 --             portfolio_item_id of their own work, student_note).
+-- -----------------------------------------------------------------------------
+
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 10_voice_cache.sql
+
+-- =============================================================================
+-- ECYR English platform — natural voice cache ("Voz natural (IA)")
+-- -----------------------------------------------------------------------------
+-- Runs after 01–06. Safe to re-run: create-if-not-exists / drop-then-create /
+-- on-conflict-update throughout.
+--
+-- WHY THIS FILE EXISTS
+-- The `gemini` Edge Function (op "voice") reads short texts — a word, a
+-- sentence, an AI Coach reply — with one of a small cast of Gemini voices
+-- (Emma, Liam, Olivia, Harry, Ruby, Jack). Each clip is recorded ONCE and
+-- shared by the whole platform:
+--
+--   voice-cache/      public Storage bucket, one WAV per clip:
+--                       voice-cache/<sha256 of version|persona|accent|text>.wav
+--                     The name reveals nothing but a hash of a public text,
+--                     so anyone may play a clip; only the function writes.
+--   voice_usage       how many NEW clips each user generated per day. Clips
+--                     already in the cache are free and are not counted.
+--   bump_voice_usage  the only way the counter moves; callable by the
+--                     service role (the Edge Function) and nobody else, so a
+--                     learner can neither reset nor inflate their own count.
+--
+-- Why not reuse ai_usage / bump_ai_usage? That counter is the AI Coach's
+-- daily message quota (COACH_DAILY_LIMIT). Hearing a few dozen sentences would
+-- use it up, so the voice gets its own column and its own limit
+-- (secret VOICE_DAILY_LIMIT on the `gemini` function, default 150).
+--
+-- WHO CAN DO WHAT
+--   anyone        plays a clip by its public URL (no listing of the bucket)
+--   the owner     reads their own voice_usage rows
+--   service role  writes clips and moves the counter (from the Edge Function)
+-- =============================================================================
+
+-- Fails early with a clear message when 01–06 have not been run yet.
+do $$
+begin
+  if to_regclass('public.profiles') is null then
+    raise exception 'Run 01_schema.sql … 06_api_grants.sql first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
+
+-- ============================================================ 1. COUNTER ====
+create table if not exists public.voice_usage (
+  user_id    uuid not null references public.profiles(id) on delete cascade,
+  day        date not null default current_date,
+  generated  integer not null default 0,
+  primary key (user_id, day)
+);
+
+alter table public.voice_usage enable row level security;
+
+drop policy if exists voice_usage_select_own on public.voice_usage;
+create policy voice_usage_select_own on public.voice_usage
+  for select using (user_id = auth.uid());
+-- No insert/update policy: the counter only moves through bump_voice_usage().
+
+grant select on public.voice_usage to authenticated;
+
+-- Counts one generated clip for p_user (p_delta = 1) and refuses past the
+-- daily limit, or gives one back when Google failed to record it
+-- (p_delta = -1). Raising rolls the increment back, so a refused call does
+-- not count.
+create or replace function public.bump_voice_usage(p_user uuid, p_limit integer default 150, p_delta integer default 1)
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_generated integer;
+begin
+  if p_user is null then
+    raise exception 'no user' using errcode = '22004';
+  end if;
+
+  if p_delta < 0 then
+    update public.voice_usage
+       set generated = greatest(0, generated - 1)
+     where user_id = p_user and day = current_date
+    returning generated into v_generated;
+    return coalesce(v_generated, 0);
+  end if;
+
+  insert into public.voice_usage (user_id, day, generated)
+  values (p_user, current_date, 1)
+  on conflict (user_id, day) do update set generated = public.voice_usage.generated + 1
+  returning generated into v_generated;
+
+  if v_generated > greatest(1, least(p_limit, 5000)) then
+    raise exception 'daily voice limit reached' using errcode = 'P0001';
+  end if;
+  return v_generated;
+end;
+$$;
+
+-- Supabase grants new functions to anon and authenticated by default; this
+-- one takes any user id, so it must stay with the service role.
+revoke all on function public.bump_voice_usage(uuid, integer, integer) from public;
+revoke all on function public.bump_voice_usage(uuid, integer, integer) from anon;
+revoke all on function public.bump_voice_usage(uuid, integer, integer) from authenticated;
+grant execute on function public.bump_voice_usage(uuid, integer, integer) to service_role;
+
+
+-- ============================================================ 2. STORAGE ====
+-- Public: clips are played straight from the CDN by URL, cached by browsers.
+-- 5 MB per file: 600 characters of speech is ~45 s, about 2 MB of WAV.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('voice-cache', 'voice-cache', true, 5242880, array['audio/wav', 'audio/x-wav', 'audio/wave'])
+on conflict (id) do update
+   set public             = true,
+       file_size_limit    = excluded.file_size_limit,
+       allowed_mime_types = excluded.allowed_mime_types;
+
+-- Deliberately NO policies on storage.objects for this bucket: public reads go
+-- through /object/public/… (no RLS involved), nobody can list the bucket, and
+-- only the service role — which bypasses RLS — can upload, replace or delete.
+drop policy if exists voice_cache_insert on storage.objects;
+drop policy if exists voice_cache_update on storage.objects;
+drop policy if exists voice_cache_delete on storage.objects;
+
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 11_podcasts.sql
+
+-- =============================================================================
+-- ECYR English platform — AI quizzes for real podcast episodes
+-- -----------------------------------------------------------------------------
+-- Runs after 01–05. Safe to re-run: create-if-not-exists / drop-then-create /
+-- create-or-replace throughout.
+--
+-- WHY THIS FILE EXISTS
+-- Práctica → Listening → Podcasts plays episodes of real shows straight from
+-- their publishers (found through Apple's public catalog). The `podcast` Edge
+-- Function listens to an episode with Gemini and writes a quiz for one CEFR
+-- level. A quiz is made ONCE per (episode, level) and then shared with every
+-- user, so a quiz a teacher generated is ready for the whole class and the
+-- Gemini quota is not spent twice on the same audio.
+--
+--   podcast_quizzes   one row per (episode_key, level). episode_key is
+--                     'itunes:<collectionId>:<trackId>'. quiz is
+--                     {summary_es, vocab:[[en,es]], questions:[LibQuestion],
+--                      covered_minutes, partial}.
+--   podcast_usage     per-user, per-day count of quiz generations, so one
+--                     account cannot drain the project's Gemini quota
+--                     (secret PODCAST_DAILY_LIMIT, default 10).
+--
+-- WHO CAN DO WHAT
+--   any signed-in user   reads every quiz; reads their own usage rows
+--   service role         (the Edge Function only) inserts quizzes and counts
+--                        usage through bump_podcast_usage()
+--   anyone else          nothing — no anon access at all
+-- =============================================================================
+
+-- Fails early with a clear message when the earlier files have not been run yet.
+do $$
+begin
+  if to_regclass('public.profiles') is null then
+    raise exception 'Run 01_schema.sql … 05_ecyr_platform.sql first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
+
+-- ============================================================= 1. TABLES ====
+create table if not exists public.podcast_quizzes (
+  id             uuid primary key default gen_random_uuid(),
+  episode_key    text not null,
+  level          text not null,
+  show_name      text not null default '',
+  episode_title  text not null default '',
+  episode_url    text not null default '',
+  quiz           jsonb not null,
+  created_by     uuid references public.profiles(id) on delete set null,
+  created_at     timestamptz not null default now()
+);
+
+-- Constraints drop-then-add, so a re-run picks up any change.
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_episode_level;
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_key_format;
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_level;
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_text_len;
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_shape;
+alter table public.podcast_quizzes drop constraint if exists podcast_quizzes_size;
+
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_episode_level unique (episode_key, level);
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_key_format check (episode_key ~ '^itunes:[0-9]{1,15}:[0-9]{1,20}$');
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_level check (level in ('A1','A2','B1','B2','C1'));
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_text_len check (
+    char_length(show_name) <= 300 and char_length(episode_title) <= 500 and char_length(episode_url) <= 2000);
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_shape check (
+    jsonb_typeof(quiz) = 'object' and jsonb_typeof(quiz -> 'questions') = 'array');
+alter table public.podcast_quizzes
+  add constraint podcast_quizzes_size check (pg_column_size(quiz) < 64 * 1024);
+
+create index if not exists podcast_quizzes_created_by on public.podcast_quizzes (created_by, created_at desc);
+
+create table if not exists public.podcast_usage (
+  user_id  uuid not null references public.profiles(id) on delete cascade,
+  day      date not null default current_date,
+  calls    integer not null default 0,
+  primary key (user_id, day)
+);
+
+
+-- ================================================================ 2. RLS ====
+alter table public.podcast_quizzes enable row level security;
+alter table public.podcast_usage   enable row level security;
+
+drop policy if exists podcast_quizzes_select_all on public.podcast_quizzes;
+drop policy if exists podcast_usage_select_own   on public.podcast_usage;
+
+-- Quizzes are shared learning material: every signed-in user may read them.
+create policy podcast_quizzes_select_all on public.podcast_quizzes
+  for select to authenticated using (true);
+-- No insert/update/delete policy: only the service role (which bypasses RLS)
+-- writes, from the `podcast` Edge Function after validating Gemini's JSON.
+
+create policy podcast_usage_select_own on public.podcast_usage
+  for select to authenticated using (user_id = auth.uid());
+
+
+-- ============================================================= 3. GRANTS ====
+-- Revoke the blanket grant Supabase hands out on new tables, then grant back
+-- exactly what is needed.
+revoke all on public.podcast_quizzes from anon, authenticated;
+revoke all on public.podcast_usage   from anon, authenticated;
+
+grant usage on schema public to authenticated, service_role;
+grant select on public.podcast_quizzes to authenticated;
+grant select on public.podcast_usage   to authenticated;
+grant select, insert, update, delete on public.podcast_quizzes to service_role;
+grant select, insert, update, delete on public.podcast_usage   to service_role;
+
+
+-- ========================================================== 4. USAGE CAP ====
+-- Counts one quiz generation for p_user and refuses past the daily limit.
+-- Called by the Edge Function with the service role (it knows who the caller
+-- is from their session); not callable by users directly.
+create or replace function public.bump_podcast_usage(p_user uuid, p_limit integer default 10)
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_calls integer;
+begin
+  if p_user is null then
+    raise exception 'no user' using errcode = '22004';
+  end if;
+
+  insert into public.podcast_usage (user_id, day, calls)
+  values (p_user, current_date, 1)
+  on conflict (user_id, day) do update set calls = public.podcast_usage.calls + 1
+  returning calls into v_calls;
+
+  if v_calls > greatest(1, least(p_limit, 100)) then
+    raise exception 'daily podcast limit reached' using errcode = 'P0001';
+  end if;
+  return v_calls;
+end;
+$$;
+
+revoke all on function public.bump_podcast_usage(uuid, integer) from public;
+revoke all on function public.bump_podcast_usage(uuid, integer) from anon, authenticated;
+grant execute on function public.bump_podcast_usage(uuid, integer) to service_role;
+
+-- -----------------------------------------------------------------------------
+-- WHAT EACH ROLE CAN NOW DO
+--   authenticated   select podcast_quizzes (all rows); select own podcast_usage
+--   service_role    everything on both tables; bump_podcast_usage(user, limit)
+-- -----------------------------------------------------------------------------
+
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 12_notes.sql
+
+-- =============================================================================
+-- ECYR English platform — "Mis notas" (private notes)
+-- -----------------------------------------------------------------------------
+-- Runs after 01–09. Safe to re-run: create-if-not-exists / drop-then-create /
+-- create-or-replace throughout.
+--
+-- WHY THIS FILE EXISTS
+-- Learners (and teachers) jot things down while they study: a word, a rule,
+-- a question for class. The app keeps every note in the browser first and
+-- copies it here so it follows the account to another device.
+--
+--   student_notes   one row per note: the text (≤ 20 000 characters), the page
+--                   it was written on (title + in-app path), timestamps and a
+--                   tombstone (deleted_at) so a deletion reaches other devices.
+--
+-- Sync is last-writer-wins per note: the app sends its own updated_at, and the
+-- trigger below ignores an update that is older than what is stored.
+--
+-- WHO CAN DO WHAT
+--   the owner     reads, adds, edits and deletes their own notes
+--   their teacher NOTHING — notes are private (no is_my_student() policy)
+--   anyone else   nothing — no anon access at all
+-- =============================================================================
+
+-- Fails early with a clear message when the earlier files have not been run yet.
+do $$
+begin
+  if to_regclass('public.profiles') is null then
+    raise exception 'Run 01_schema.sql … 09_assignments.sql first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
+
+-- ============================================================== 1. TABLE ====
+create table if not exists public.student_notes (
+  id          uuid primary key default gen_random_uuid(),
+  user_id     uuid not null default auth.uid() references public.profiles(id) on delete cascade,
+  body        text not null default ''
+              constraint student_notes_body_len check (char_length(body) <= 20000),
+  page_title  text
+              constraint student_notes_title_len check (char_length(page_title) <= 200),
+  page_path   text
+              constraint student_notes_path_len check (char_length(page_path) <= 400),
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now(),
+  deleted_at  timestamptz
+);
+
+-- Columns added after the first version (no-ops on a fresh table).
+alter table public.student_notes add column if not exists deleted_at timestamptz;
+
+create index if not exists student_notes_user_idx on public.student_notes(user_id, updated_at desc);
+
+
+-- ===================================================== 2. LAST WRITER WINS ==
+-- The client's clock decides the order of edits from one person's devices.
+-- An update older than the stored row is skipped (returning NULL keeps the
+-- row as it is); a clock far in the future is pulled back to now(), so one
+-- bad device cannot freeze a note forever. The owner never changes.
+create or replace function public.student_notes_guard()
+returns trigger
+language plpgsql
+set search_path = public
+as $$
+begin
+  if new.updated_at is null or new.updated_at > now() + interval '5 minutes' then
+    new.updated_at := now();
+  end if;
+  if tg_op = 'UPDATE' then
+    if new.updated_at <= old.updated_at then
+      return null;
+    end if;
+    new.user_id    := old.user_id;
+    new.created_at := old.created_at;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists student_notes_guard_trg on public.student_notes;
+create trigger student_notes_guard_trg
+  before insert or update on public.student_notes
+  for each row execute function public.student_notes_guard();
+
+
+-- ===================================================== 3. ROW SECURITY ====
+alter table public.student_notes enable row level security;
+
+drop policy if exists student_notes_select_own on public.student_notes;
+drop policy if exists student_notes_insert_own on public.student_notes;
+drop policy if exists student_notes_update_own on public.student_notes;
+drop policy if exists student_notes_delete_own on public.student_notes;
+
+create policy student_notes_select_own on public.student_notes
+  for select to authenticated using (user_id = auth.uid());
+create policy student_notes_insert_own on public.student_notes
+  for insert to authenticated with check (user_id = auth.uid());
+create policy student_notes_update_own on public.student_notes
+  for update to authenticated using (user_id = auth.uid()) with check (user_id = auth.uid());
+create policy student_notes_delete_own on public.student_notes
+  for delete to authenticated using (user_id = auth.uid());
+-- Deliberately no "select_class" policy: a teacher cannot read their students' notes.
+
+-- Explicit grants (Supabase's default privileges would otherwise grant ALL).
+revoke all on public.student_notes from anon;
+revoke all on public.student_notes from authenticated;
+grant select, insert, update, delete on public.student_notes to authenticated;
+
+
+-- -----------------------------------------------------------------------------
+-- WHAT CHANGED FOR EACH ROLE
+--   student / teacher   a private notebook that syncs between their devices
+--   teacher (as such)   nothing: no access to anybody else's notes
 -- -----------------------------------------------------------------------------
