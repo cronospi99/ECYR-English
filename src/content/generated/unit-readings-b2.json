@@ -63,12 +63,12 @@
      "type": "mc",
      "q": "How do relatives find out about the Sunday lunch?",
      "options": [
-      "Gloria phones everyone on Saturday",
       "They receive a written invitation",
       "No invitation is needed; family members simply come",
+      "Gloria phones everyone on Saturday",
       "Mateo sends a message to a family group"
      ],
-     "answer": 2,
+     "answer": 1,
      "explain_es": "Gloria dice: \"Nobody sends an invitation... if you are family, you come\"."
     },
     {
@@ -87,10 +87,10 @@
      "type": "vocab",
      "q": "In paragraph 3, 'Mateo takes after Hernán' means that Mateo…",
      "options": [
-      "looks after Hernán",
-      "is similar to Hernán in character",
       "follows Hernán everywhere",
-      "works for Hernán"
+      "is similar to Hernán in character",
+      "works for Hernán",
+      "looks after Hernán"
      ],
      "answer": 1,
      "explain_es": "'Take after' significa parecerse a un familiar mayor en carácter o apariencia."
@@ -106,24 +106,24 @@
      "type": "mc",
      "q": "According to Gloria, why did her daughters eventually start talking again?",
      "options": [
-      "A psychologist helped them",
       "They had to see each other at the lunch every week",
-      "The children asked them to",
-      "They solved the inheritance problem"
+      "A psychologist helped them",
+      "They solved the inheritance problem",
+      "The children asked them to"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Gloria explica: \"They couldn't avoid seeing each other, so eventually they had to start talking again\"."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "Why families argue about money",
       "What research says about family rituals",
+      "Why families argue about money",
       "The best day for a family lunch",
       "How to cook for a large group"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "El párrafo resume lo que dicen los investigadores sobre los rituales familiares y sus dificultades actuales."
     },
     {
@@ -205,12 +205,12 @@
      "type": "mc",
      "q": "According to Dr Ríos, what is the main cause of fights between young siblings?",
      "options": [
-      "Different personalities",
       "Competition for their parents' attention and time",
-      "Lack of space at home",
-      "Watching too much television"
+      "Watching too much television",
+      "Different personalities",
+      "Lack of space at home"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Ella dice que compiten por \"the same limited resources: their parents' attention, approval and time\"."
     },
     {
@@ -224,23 +224,23 @@
      "q": "What is Dr Ríos's opinion about birth-order theories?",
      "options": [
       "They are completely accurate",
+      "They only apply to large families",
       "They explain everything about personality",
-      "They should be treated with caution",
-      "They only apply to large families"
+      "They should be treated with caution"
      ],
-     "answer": 2,
+     "answer": 3,
      "explain_es": "Dice: \"I'd take most popular theories with caution\"."
     },
     {
      "type": "vocab",
      "q": "If someone 'rubs you up the wrong way', they…",
      "options": [
+      "agree with you",
       "irritate you",
-      "help you relax",
       "give you a massage",
-      "agree with you"
+      "help you relax"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "Es una expresión idiomática: alguien te molesta o te irrita con su forma de ser."
     },
     {
@@ -262,24 +262,24 @@
      "type": "heading",
      "q": "Which heading best summarises the advice in paragraph 6?",
      "options": [
-      "Talk about the past immediately",
-      "Take small, simple steps to reconnect",
       "Wait for your sibling to call",
-      "Ask your parents to help"
+      "Talk about the past immediately",
+      "Ask your parents to help",
+      "Take small, simple steps to reconnect"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Ella recomienda empezar con algo pequeño, como un café o un paseo corto."
     },
     {
      "type": "mc",
      "q": "How does Dr Ríos define a nurturing home?",
      "options": [
-      "A home where nobody ever argues",
       "A home with many children",
-      "A home where people know how to repair relationships after conflict",
-      "A home where parents make all the decisions"
+      "A home where parents make all the decisions",
+      "A home where nobody ever argues",
+      "A home where people know how to repair relationships after conflict"
      ],
-     "answer": 2,
+     "answer": 3,
      "explain_es": "Dice: \"a nurturing home isn't one without conflict. It's one where people learn how to repair things after a fight\"."
     }
    ]
@@ -349,12 +349,12 @@
      "type": "mc",
      "q": "What did the crew of the Hesperus expect to find when they arrived?",
      "options": [
-      "An empty island",
       "The keepers waiting at the landing",
       "A damaged lighthouse",
+      "An empty island",
       "A message from the keepers"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: esperaban ver a los fareros \"waiting at the landing, as they always did\"."
     },
     {
@@ -374,8 +374,8 @@
      "type": "mc",
      "q": "What did the official investigators conclude?",
      "options": [
-      "The men were kidnapped",
       "One keeper attacked the others",
+      "The men were kidnapped",
       "The men were probably swept away by a wave",
       "The men left the island by boat"
      ],
@@ -386,12 +386,12 @@
      "type": "vocab",
      "q": "In paragraph 4, 'one of them must have broken the rules' expresses…",
      "options": [
-      "a strong logical conclusion about the past",
       "an obligation in the past",
-      "a possibility the writer rejects",
-      "advice about the past"
+      "advice about the past",
+      "a strong logical conclusion about the past",
+      "a possibility the writer rejects"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "'Must have + participio' expresa una deducción casi segura sobre el pasado."
     },
     {
@@ -405,11 +405,11 @@
      "q": "Choose the best heading for paragraph 5.",
      "options": [
       "Official findings",
+      "A new investigation",
       "Unlikely explanations",
-      "Life on a remote island",
-      "A new investigation"
+      "Life on a remote island"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "El párrafo presenta teorías imaginativas (espías, fantasmas) que los historiadores consideran sin base."
     },
     {
@@ -417,11 +417,11 @@
      "q": "What is the writer's final view?",
      "options": [
       "The authorities were completely to blame",
-      "The ghost theory is the most likely",
       "The sea probably took the men, but certainty is impossible",
-      "The keepers deliberately abandoned the lighthouse"
+      "The keepers deliberately abandoned the lighthouse",
+      "The ghost theory is the most likely"
      ],
-     "answer": 2,
+     "answer": 1,
      "explain_es": "Último párrafo: \"the sea... finally took them\", pero \"we will probably never know for certain\"."
     }
    ]
@@ -490,12 +490,12 @@
      "type": "mc",
      "q": "What did the writer find in the storage area on Monday morning?",
      "options": [
-      "Her bike with a flat tyre",
       "Only the open lock",
       "A note from the porter",
+      "Her bike with a flat tyre",
       "Somebody else's bike"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 2: \"found only the lock, lying open on the floor\"."
     },
     {
@@ -521,24 +521,24 @@
      "type": "mc",
      "q": "Why had the porter cut the writer's lock?",
      "options": [
+      "The lock was broken",
       "He thought the bike was abandoned",
-      "She hadn't left a key",
       "The police asked him to",
-      "The lock was broken"
+      "She hadn't left a key"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 5: \"He had cut my lock because I hadn't left a key\"."
     },
     {
      "type": "vocab",
      "q": "'I needn't have written that message' means the message…",
      "options": [
-      "was necessary, but she didn't write it",
-      "was unnecessary, but she wrote it anyway",
       "was written by someone else",
-      "was not finished"
+      "was not finished",
+      "was unnecessary, but she wrote it anyway",
+      "was necessary, but she didn't write it"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Needn't have + participio' indica que algo se hizo pero no era necesario."
     },
     {
@@ -551,12 +551,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
+      "A new lock",
       "A list of regrets",
       "The police investigation",
-      "A new lock",
       "How to use WhatsApp groups"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "El párrafo enumera todo lo que debería o no debería haber hecho (should/shouldn't have)."
     }
    ]
@@ -626,10 +626,10 @@
      "type": "mc",
      "q": "What are Barichara's streets made of?",
      "options": [
-      "Red bricks",
+      "Wooden boards",
       "Local sandstone",
-      "Concrete",
-      "Wooden boards"
+      "Red bricks",
+      "Concrete"
      ],
      "answer": 1,
      "explain_es": "Párrafo 1: \"paved with large, uneven blocks of local sandstone\"."
@@ -645,9 +645,9 @@
      "q": "How is the atmosphere of Barichara different from that of San Gil?",
      "options": [
       "Barichara is more relaxing and slow",
-      "Barichara offers more adventure sports",
+      "They are exactly the same",
       "San Gil is quieter",
-      "They are exactly the same"
+      "Barichara offers more adventure sports"
      ],
      "answer": 0,
      "explain_es": "Párrafo 3 contrasta (whereas): San Gil es para aventura, Barichara para \"slow down\"."
@@ -663,10 +663,10 @@
      "type": "vocab",
      "q": "In paragraph 5, 'have sprung up' is closest in meaning to…",
      "options": [
-      "have closed down",
-      "have appeared quickly",
       "have become cheaper",
-      "have moved away"
+      "have appeared quickly",
+      "have moved away",
+      "have closed down"
      ],
      "answer": 1,
      "explain_es": "'Spring up' significa aparecer o surgir rápidamente."
@@ -681,9 +681,9 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "A perfect, problem-free town",
-      "Growing popularity and its costs",
       "How to get to Guane",
+      "Growing popularity and its costs",
+      "A perfect, problem-free town",
       "The history of the cathedral"
      ],
      "answer": 1,
@@ -694,11 +694,11 @@
      "q": "Which word in paragraph 4 introduces a contrast?",
      "options": [
       "which",
-      "Although",
       "so",
-      "later"
+      "later",
+      "Although"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'Although' conecta ideas opuestas: es mayormente de bajada, pero el sol es fuerte."
     }
    ]
@@ -767,12 +767,12 @@
      "type": "mc",
      "q": "Where did the writer live before moving to the small town?",
      "options": [
-      "In the coffee region",
-      "In Chapinero, Bogotá",
       "In a van",
-      "In Medellín"
+      "In Medellín",
+      "In Chapinero, Bogotá",
+      "In the coffee region"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 1: \"I gave up my apartment in Chapinero\"."
     },
     {
@@ -793,23 +793,23 @@
      "q": "What problem with work did the writer have in the town?",
      "options": [
       "There were no offices",
-      "The internet failed when it rained",
       "Her boss refused to let her work online",
+      "The internet failed when it rained",
       "She had to travel to Bogotá every week"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 4: \"the internet connection failed whenever it rained\"."
     },
     {
      "type": "vocab",
      "q": "In paragraph 4, 'which was lovely when I needed help' — what does 'which' refer to?",
      "options": [
+      "The coffee region",
       "The internet connection",
       "The fact that everybody knew everybody",
-      "The coffee region",
       "The writer's friends"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Which' de comentario se refiere a toda la idea anterior: que todos se conocían."
     },
     {
@@ -822,22 +822,22 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
-      "A different way of living in the city",
-      "Leaving Bogotá forever",
+      "Problems with the new apartment",
       "Buying a house in the country",
-      "Problems with the new apartment"
+      "Leaving Bogotá forever",
+      "A different way of living in the city"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "Volvió a la ciudad, pero con otra forma de vivir: cerca del trabajo y con fines de semana en la naturaleza."
     },
     {
      "type": "mc",
      "q": "What is the writer's main conclusion?",
      "options": [
+      "Nobody should ever move",
       "Small towns are always better",
-      "Big cities are always better",
       "Knowing what you need matters more than the place itself",
-      "Nobody should ever move"
+      "Big cities are always better"
      ],
      "answer": 2,
      "explain_es": "Último párrafo: \"What matters is knowing what you need\"."
@@ -910,11 +910,11 @@
      "q": "What is a 'chronotype'?",
      "options": [
       "A type of sleeping pill",
-      "A person's natural sleep timing",
       "A kind of alarm clock",
-      "A sleep disorder"
+      "A sleep disorder",
+      "A person's natural sleep timing"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: \"their natural sleep timing, or chronotype\"."
     },
     {
@@ -934,22 +934,22 @@
      "type": "vocab",
      "q": "In paragraph 3, 'Having been forced out of bed at six' is a reduced clause meaning…",
      "options": [
-      "Because they will get up at six",
       "After they have been forced to get up at six",
+      "Because they will get up at six",
       "Unless they get up at six",
       "Although they want to get up at six"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Es una cláusula reducida de tiempo/causa: 'después de haber sido obligados a levantarse a las seis'."
     },
     {
      "type": "mc",
      "q": "Why do many public schools in Colombia start very early, according to the text?",
      "options": [
-      "Teachers prefer it",
+      "It is cheaper to use electricity in the morning",
       "Buildings are shared between two shifts",
       "Students asked for it",
-      "It is cheaper to use electricity in the morning"
+      "Teachers prefer it"
      ],
      "answer": 1,
      "explain_es": "Párrafo 4: \"partly because buildings are shared between a morning and an afternoon shift\"."
@@ -966,8 +966,8 @@
      "options": [
       "Provided that they finish their tasks and attend key meetings",
       "Only if they are larks",
-      "As long as they work at weekends",
-      "Unless they work remotely"
+      "Unless they work remotely",
+      "As long as they work at weekends"
      ],
      "answer": 0,
      "explain_es": "Párrafo 5: \"provided that they complete their tasks and attend key meetings\" (cláusula de condición)."
@@ -976,12 +976,12 @@
      "type": "heading",
      "q": "Choose the best heading for the last paragraph.",
      "options": [
+      "The end of early meetings",
       "Owls should change jobs",
-      "Small changes, limited results",
       "Why larks are healthier",
-      "The end of early meetings"
+      "Small changes, limited results"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Los hábitos pueden adelantar el reloj interno solo \"by an hour or so\"."
     }
    ]
@@ -1056,12 +1056,12 @@
      "type": "mc",
      "q": "What time does Wilson usually go to bed?",
      "options": [
-      "At seven",
-      "At seven thirty",
       "At two forty-five",
-      "At midnight"
+      "At midnight",
+      "At seven",
+      "At seven thirty"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Wilson corrige a Camila: \"Seven thirty\"."
     },
     {
@@ -1083,36 +1083,36 @@
      "type": "mc",
      "q": "What was Wilson like as a teenager?",
      "options": [
+      "A professional football player",
       "A morning person",
       "A night owl",
-      "A professional football player",
       "A baker"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"As a teenager, I was a real night owl\"."
     },
     {
      "type": "vocab",
      "q": "'I used to burn the midnight oil' means he…",
      "options": [
-      "stayed up very late",
       "worked in a petrol station",
       "cooked at night",
-      "woke up very early"
+      "woke up very early",
+      "stayed up very late"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "'Burn the midnight oil' significa quedarse despierto hasta muy tarde."
     },
     {
      "type": "mc",
      "q": "Why does Wilson never nap for more than twenty minutes?",
      "options": [
-      "His boss doesn't allow it",
       "He feels groggy if he sleeps longer",
       "His children come home",
+      "His boss doesn't allow it",
       "He has to open the bakery"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"never more than twenty minutes, otherwise I wake up groggy\"."
     },
     {
@@ -1126,11 +1126,11 @@
      "q": "Which title best describes Wilson's final advice?",
      "options": [
       "Drink more coffee",
-      "Give your body time and find a meaningful reason",
       "Never go out at weekends",
+      "Give your body time and find a meaningful reason",
       "Change jobs if you are tired"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Recomienda paciencia, horarios regulares y \"find a reason to get up that matters to you\"."
     }
    ]
@@ -1200,12 +1200,12 @@
      "type": "mc",
      "q": "What surprised Natalia most when she started working in Hamburg?",
      "options": [
-      "The difficulty of the German language",
-      "The direct way people communicated",
       "The long working hours",
-      "The cold weather"
+      "The cold weather",
+      "The direct way people communicated",
+      "The difficulty of the German language"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 1: su alemán estaba bien; lo que no esperaba era \"how people talked to each other\"."
     },
     {
@@ -1218,24 +1218,24 @@
      "type": "vocab",
      "q": "In paragraph 3, 'come across as rude' means…",
      "options": [
-      "accidentally meet a rude person",
-      "give the impression of being rude",
       "become rude over time",
-      "complain about rudeness"
+      "complain about rudeness",
+      "accidentally meet a rude person",
+      "give the impression of being rude"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'Come across as' significa dar cierta impresión a los demás."
     },
     {
      "type": "mc",
      "q": "According to Marta Velasco, a Latin American 'yes, of course' may sometimes mean…",
      "options": [
-      "'I completely agree'",
-      "'I have doubts'",
+      "'Let's finish the meeting'",
       "'I didn't hear you'",
-      "'Let's finish the meeting'"
+      "'I have doubts'",
+      "'I completely agree'"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 4: \"may actually mean 'I have doubts'\"."
     },
     {
@@ -1249,12 +1249,12 @@
      "type": "mc",
      "q": "Which sentence from the text uses a gerund as the subject?",
      "options": [
-      "\"It's actually relaxing not to have to guess\"",
-      "\"Being aware of your own style is the first step\"",
       "\"Nobody sugar-coats anything\"",
-      "\"She still hasn't forgiven me\""
+      "\"It's actually relaxing not to have to guess\"",
+      "\"She still hasn't forgiven me\"",
+      "\"Being aware of your own style is the first step\""
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'Being aware...' funciona como sujeto de la oración (gerundio como sujeto)."
     },
     {
@@ -1344,11 +1344,11 @@
      "q": "What is the writer's main problem?",
      "options": [
       "Her boss ignores her emails",
-      "A colleague interrupts her and takes credit for her ideas",
+      "Her friends criticise her personality",
       "She can't find a job in marketing",
-      "Her friends criticise her personality"
+      "A colleague interrupts her and takes credit for her ideas"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "La carta explica que Andrés \"talks over me\" y repite sus ideas \"as if it were his own\"."
     },
     {
@@ -1361,12 +1361,12 @@
      "type": "mc",
      "q": "According to Lucía, what is the real problem?",
      "options": [
-      "The writer's personality",
       "A meeting culture that rewards the loudest people",
       "The company's marketing strategy",
-      "Andrés's lack of experience"
+      "Andrés's lack of experience",
+      "The writer's personality"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"The problem is not your personality but a meeting culture that rewards whoever talks loudest\"."
     },
     {
@@ -1380,10 +1380,10 @@
      "type": "vocab",
      "q": "A phrase that is 'tactful but firm' is…",
      "options": [
-      "rude and loud",
+      "uncertain and quiet",
       "polite but clear and decided",
       "funny and informal",
-      "uncertain and quiet"
+      "rude and loud"
      ],
      "answer": 1,
      "explain_es": "'Tactful' = con tacto; 'firm' = firme. Educado pero decidido."
@@ -1392,12 +1392,12 @@
      "type": "mc",
      "q": "Which sentence from the reply follows the pattern 'It's + adjective + infinitive'?",
      "options": [
-      "\"Being quiet is not a weakness.\"",
-      "\"It's much easier to speak up when you have a clear sentence ready.\"",
+      "\"Good luck!\"",
       "\"You don't need to raise your voice.\"",
-      "\"Good luck!\""
+      "\"Being quiet is not a weakness.\"",
+      "\"It's much easier to speak up when you have a clear sentence ready.\""
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'It's much easier to speak up' = It's + adjetivo + infinitivo."
     },
     {
@@ -1484,12 +1484,12 @@
      "type": "mc",
      "q": "What did the message that came with the video advise people to do?",
      "options": [
-      "Call the police",
       "Keep their children at home",
       "Go to the bridge to see the animal",
+      "Call the police",
       "Stop fishing"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: \"Keep your kids at home!\""
     },
     {
@@ -1513,20 +1513,20 @@
      "options": [
       "A schoolteacher",
       "A radio journalist",
-      "A fisherman",
-      "A biologist"
+      "A biologist",
+      "A fisherman"
      ],
-     "answer": 2,
+     "answer": 3,
      "explain_es": "Párrafo 4: \"she traced it to a fisherman who had recorded it\"."
     },
     {
      "type": "vocab",
      "q": "In paragraph 5, 'to corroborate his account' means to…",
      "options": [
-      "publish his story",
+      "translate his story",
       "find evidence that his story was true",
-      "criticise his story",
-      "translate his story"
+      "publish his story",
+      "criticise his story"
      ],
      "answer": 1,
      "explain_es": "'Corroborate' es confirmar con otras pruebas o testimonios."
@@ -1536,9 +1536,9 @@
      "q": "How did the two radio stations react after the truth came out?",
      "options": [
       "Both apologised",
-      "Neither changed its report",
+      "Both interviewed Laura Pineda",
       "One apologised and the other never corrected its report",
-      "Both interviewed Laura Pineda"
+      "Neither changed its report"
      ],
      "answer": 2,
      "explain_es": "Párrafo 6: una se retractó (\"backtracked\"); la otra \"has never corrected its report\"."
@@ -1553,12 +1553,12 @@
      "type": "heading",
      "q": "Which heading best summarises Pineda's final point?",
      "options": [
-      "Hippos are not dangerous",
       "False alarms weaken trust in real warnings",
-      "Radio is better than social media",
-      "Fishermen should not use phones"
+      "Fishermen should not use phones",
+      "Hippos are not dangerous",
+      "Radio is better than social media"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Ella dice que cuando se exageran estas historias, \"people stop trusting the real warnings\"."
     }
    ]
@@ -1631,10 +1631,10 @@
      "type": "mc",
      "q": "What has Andrea been doing this morning?",
      "options": [
-      "Writing a speech for a senator",
+      "Designing an app",
       "Checking a statistic from a senator's speech",
-      "Interviewing a footballer",
-      "Designing an app"
+      "Writing a speech for a senator",
+      "Interviewing a footballer"
      ],
      "answer": 1,
      "explain_es": "\"This morning, for example, I've been checking a statistic that a senator used\"."
@@ -1649,12 +1649,12 @@
      "type": "mc",
      "q": "Why does the text use 'have been tracking' to describe her colleagues' work?",
      "options": [
-      "The action is finished and in the past",
-      "The action started earlier and is still in progress",
       "The action will happen in the future",
-      "The action happened only once"
+      "The action happened only once",
+      "The action started earlier and is still in progress",
+      "The action is finished and in the past"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "El present perfect continuous expresa una actividad que empezó en el pasado y continúa."
     },
     {
@@ -1680,12 +1680,12 @@
      "type": "vocab",
      "q": "When people accuse the team of being 'biased', they mean the team is…",
      "options": [
-      "unfair and favours one side",
+      "too expensive",
       "too slow",
       "very well informed",
-      "too expensive"
+      "unfair and favours one side"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "'Biased' significa parcializado, que favorece a un lado."
     },
     {
@@ -1698,12 +1698,12 @@
      "type": "heading",
      "q": "Choose the best heading for the final answer.",
      "options": [
-      "Pause and check before sharing",
-      "Never use social media",
       "Become a fact-checker",
+      "Never use social media",
+      "Pause and check before sharing",
       "Trust your emotions"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Aconseja detenerse diez segundos, preguntarse quién lo creó y verificar en dos sitios confiables."
     }
    ]
@@ -1775,11 +1775,11 @@
      "q": "What is the writer's main argument?",
      "options": [
       "Apps should be banned",
-      "We should pay more attention to how our data is used",
       "Terms and conditions should be longer",
+      "We should pay more attention to how our data is used",
       "Technology companies are always honest"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Todo el artículo defiende que debemos prestar atención a la privacidad de nuestros datos."
     },
     {
@@ -1794,8 +1794,8 @@
      "options": [
       "\"That data is being collected, analysed and sold right now\"",
       "\"It has been used to predict what we will buy\"",
-      "\"Some progress has been made\"",
-      "\"stricter rules will probably be rolled out\""
+      "\"stricter rules will probably be rolled out\"",
+      "\"Some progress has been made\""
      ],
      "answer": 0,
      "explain_es": "'is being collected' = presente continuo pasivo (am/is/are + being + participio)."
@@ -1804,12 +1804,12 @@
      "type": "mc",
      "q": "Why doesn't the writer accept the argument that users can always opt out?",
      "options": [
-      "Because opting out is often made difficult on purpose",
+      "Because most apps have no settings",
       "Because opting out costs money",
-      "Because the law doesn't allow it",
-      "Because most apps have no settings"
+      "Because opting out is often made difficult on purpose",
+      "Because the law doesn't allow it"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Párrafo 3: \"opting out is often deliberately difficult\"."
     },
     {
@@ -1823,10 +1823,10 @@
      "type": "vocab",
      "q": "In paragraph 4, 'laws only work if they are enforced' means laws work only if…",
      "options": [
-      "they are written in simple language",
+      "they are very strict",
       "authorities make sure people follow them",
       "companies agree with them",
-      "they are very strict"
+      "they are written in simple language"
      ],
      "answer": 1,
      "explain_es": "'Enforce' es hacer cumplir una ley."
@@ -1841,12 +1841,12 @@
      "type": "mc",
      "q": "What is the function of the negative question in paragraph 5 ('Wouldn't it be better if…')?",
      "options": [
-      "To ask for information",
-      "To express the writer's opinion persuasively",
       "To show the writer is unsure",
-      "To report what someone else said"
+      "To report what someone else said",
+      "To express the writer's opinion persuasively",
+      "To ask for information"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Las preguntas negativas se usan para expresar una opinión esperando que el lector esté de acuerdo."
     }
    ]
@@ -1919,12 +1919,12 @@
      "type": "mc",
      "q": "How many students agreed to take part in the experiment?",
      "options": [
+      "Three",
       "Thirty-two",
-      "Twenty-six",
       "Twenty",
-      "Three"
+      "Twenty-six"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: \"twenty-six of her thirty-two students agreed to try\"."
     },
     {
@@ -1946,24 +1946,24 @@
      "type": "vocab",
      "q": "Juan Diego says \"It's addictive, isn't it?\". The tag question 'isn't it?' is used to…",
      "options": [
-      "ask for completely new information",
-      "invite agreement",
       "show anger",
-      "change the topic"
+      "change the topic",
+      "ask for completely new information",
+      "invite agreement"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Las tag questions con entonación descendente buscan que el otro esté de acuerdo."
     },
     {
      "type": "mc",
      "q": "Which of these was a positive effect reported by students?",
      "options": [
+      "They made new friends online",
       "They earned more money",
       "They slept better",
-      "They got higher marks in every subject",
-      "They made new friends online"
+      "They got higher marks in every subject"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 4: \"they were sleeping better and finding it easier to concentrate\"."
     },
     {
@@ -1971,11 +1971,11 @@
      "q": "Why did some students feel left out?",
      "options": [
       "Their teacher punished them",
-      "Friends in other classes made plans on social networks",
       "Their parents took their phones",
-      "They couldn't play football"
+      "They couldn't play football",
+      "Friends in other classes made plans on social networks"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 5: \"their friends in other classes were organising plans on social networks\"."
     },
     {
@@ -2057,12 +2057,12 @@
      "type": "mc",
      "q": "What usually happens to the missing name in the example?",
      "options": [
-      "It never comes back",
       "It comes back later when the person is doing something else",
+      "The writer finds it on social media",
       "The classmate tells the writer",
-      "The writer finds it on social media"
+      "It never comes back"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: dos horas después, lavando los platos, \"it suddenly appears\"."
     },
     {
@@ -2077,8 +2077,8 @@
      "options": [
       "people who experience these moments",
       "people who experienced these moments yesterday",
-      "people who will experience these moments",
-      "people whose moments are experienced"
+      "people whose moments are experienced",
+      "people who will experience these moments"
      ],
      "answer": 0,
      "explain_es": "'experiencing' reemplaza a 'who experience' (cláusula relativa reducida)."
@@ -2087,12 +2087,12 @@
      "type": "mc",
      "q": "Why are names harder to remember than ordinary words, according to the text?",
      "options": [
-      "They are longer",
       "They are connected to very few other ideas",
       "They are in a foreign language",
-      "People don't use them often"
+      "People don't use them often",
+      "They are longer"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 3: un nombre, ligado solo a una cara, \"has very few paths\"."
     },
     {
@@ -2106,12 +2106,12 @@
      "type": "mc",
      "q": "In paragraph 4, what does 'which' refer to in '...a wrong one, which then gets in the way'?",
      "options": [
+      "The student",
       "The brain",
       "The wrong word that was activated",
-      "The missing word",
-      "The student"
+      "The missing word"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Which' se refiere a 'a wrong one', la palabra equivocada que estorba."
     },
     {
@@ -2124,12 +2124,12 @@
      "type": "heading",
      "q": "Choose the best heading for the last paragraph.",
      "options": [
-      "A warning sign of illness",
-      "Reassurance: the memory is still there",
+      "Why stress is dangerous",
       "How to learn new names",
-      "Why stress is dangerous"
+      "Reassurance: the memory is still there",
+      "A warning sign of illness"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "El párrafo tranquiliza: estos momentos muestran que el recuerdo sigue almacenado."
     }
    ]
@@ -2201,12 +2201,12 @@
      "type": "mc",
      "q": "What did Valentina memorise as a present for her grandmother?",
      "options": [
-      "A deck of cards",
-      "A long speech",
+      "A list of a hundred words",
       "Her relatives' phone numbers",
-      "A list of a hundred words"
+      "A long speech",
+      "A deck of cards"
      ],
-     "answer": 2,
+     "answer": 1,
      "explain_es": "Párrafo 1: memorizó los teléfonos de \"every member of her extended family\"."
     },
     {
@@ -2219,12 +2219,12 @@
      "type": "vocab",
      "q": "In paragraph 2, 'a technique used by ancient Greek speakers' means a technique…",
      "options": [
+      "that uses Greek speakers",
       "that ancient Greek speakers used",
       "that ancient Greek speakers invented yesterday",
-      "that uses Greek speakers",
       "that Greek speakers are using now"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "'used by' es una cláusula relativa reducida en pasiva: 'which was used by'."
     },
     {
@@ -2238,12 +2238,12 @@
      "type": "mc",
      "q": "Why does Valentina imagine a banana singing vallenato?",
      "options": [
-      "Because she loves music",
-      "Because strange, vivid images are easier to remember",
       "Because her grandmother is a singer",
-      "Because bananas are Colombian"
+      "Because bananas are Colombian",
+      "Because strange, vivid images are easier to remember",
+      "Because she loves music"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 3: \"The trick is to make each image as strange and vivid as possible\"."
     },
     {
@@ -2256,12 +2256,12 @@
      "type": "mc",
      "q": "Which study tip does Valentina give?",
      "options": [
-      "Reread your notes many times",
-      "Study everything the night before",
       "Test yourself and space out your study sessions",
-      "Listen to music while studying"
+      "Listen to music while studying",
+      "Reread your notes many times",
+      "Study everything the night before"
      ],
-     "answer": 2,
+     "answer": 0,
      "explain_es": "Párrafo 5: \"testing yourself instead of just rereading notes, and spacing out study sessions\"."
     },
     {
@@ -2269,9 +2269,9 @@
      "q": "Choose the best heading for the last paragraph.",
      "options": [
       "Even a memory champion forgets",
-      "A new world record",
       "Lost in a taxi",
-      "Why pi is important"
+      "Why pi is important",
+      "A new world record"
      ],
      "answer": 0,
      "explain_es": "El párrafo muestra que Valentina todavía olvida cosas cotidianas."
@@ -2348,11 +2348,11 @@
      "q": "According to supporters of generalisations, why do people create categories?",
      "options": [
       "To feel superior",
-      "To help predict what will happen",
       "To make jokes",
+      "To help predict what will happen",
       "To avoid travelling"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 2: \"we create categories to help us predict what will happen\"."
     },
     {
@@ -2365,12 +2365,12 @@
      "type": "mc",
      "q": "What is the main difference between a generalisation and a stereotype, according to the essay?",
      "options": [
-      "A generalisation is always negative",
-      "A stereotype accepts exceptions",
       "A generalisation describes a tendency and accepts exceptions",
-      "There is no difference"
+      "A stereotype accepts exceptions",
+      "There is no difference",
+      "A generalisation is always negative"
      ],
-     "answer": 2,
+     "answer": 0,
      "explain_es": "Párrafo 3: la generalización \"describes a tendency and accepts exceptions\"; el estereotipo asume que todos son iguales."
     },
     {
@@ -2379,8 +2379,8 @@
      "options": [
       "describes a group in great detail",
       "treats everyone in a group as if they were the same",
-      "creates art about a group",
-      "criticises a group's taste"
+      "criticises a group's taste",
+      "creates art about a group"
      ],
      "answer": 1,
      "explain_es": "Es una expresión que significa generalizar sin matices."
@@ -2397,11 +2397,11 @@
      "q": "Which expression in paragraph 5 introduces an exception?",
      "options": [
       "Furthermore",
+      "even",
       "Apart from",
-      "may have",
-      "even"
+      "may have"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Apart from' = aparte de / excepto; introduce una excepción."
     },
     {
@@ -2414,12 +2414,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
+      "How stereotypes start",
       "One country, many realities",
-      "The history of the Llanos",
       "Why Colombians travel",
-      "How stereotypes start"
+      "The history of the Llanos"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "El párrafo muestra la diversidad dentro de un mismo país."
     }
    ]
@@ -2487,24 +2487,24 @@
      "type": "mc",
      "q": "What did the writer's family do every July?",
      "options": [
-      "They moved to New Jersey",
       "The children flew to Cali",
       "They visited friends in Bogotá",
+      "They moved to New Jersey",
       "They went to a summer school"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: \"Every July, my parents would put my brother and me on a plane to Cali\"."
     },
     {
      "type": "mc",
      "q": "In paragraph 1, 'my parents would put my brother and me on a plane' describes…",
      "options": [
-      "a single event in the past",
       "a repeated action in the past",
+      "a hypothetical situation",
       "a future plan",
-      "a hypothetical situation"
+      "a single event in the past"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Would' + infinitivo describe hábitos repetidos en el pasado."
     },
     {
@@ -2530,10 +2530,10 @@
      "type": "vocab",
      "q": "In paragraph 2, 'Aunts and uncles would drop by' means they would…",
      "options": [
-      "fall down",
-      "visit briefly without planning",
       "call on the phone",
-      "leave quickly"
+      "visit briefly without planning",
+      "leave quickly",
+      "fall down"
      ],
      "answer": 1,
      "explain_es": "'Drop by' = pasar de visita de manera informal."
@@ -2548,12 +2548,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "Choosing one identity",
       "Belonging to both cultures",
       "Moving back to Cali",
+      "Choosing one identity",
       "Learning to be punctual"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "La autora concluye que no tiene que elegir: tiene rasgos de ambas culturas."
     }
    ]
@@ -2630,11 +2630,11 @@
      "q": "According to the introduction, why do people often avoid complaining?",
      "options": [
       "Complaining is illegal",
-      "They don't want to make a fuss or don't know how",
+      "It is too expensive",
       "Companies never answer",
-      "It is too expensive"
+      "They don't want to make a fuss or don't know how"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: \"we don't want to make a fuss, or we simply don't know how\"."
     },
     {
@@ -2667,23 +2667,23 @@
      "q": "In section 5, 'escalate' means…",
      "options": [
       "climb stairs",
-      "take the complaint to a higher level",
       "forget the problem",
+      "take the complaint to a higher level",
       "pay more money"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Escalate' es llevar el reclamo a una instancia superior."
     },
     {
      "type": "mc",
      "q": "How long do many companies have to respond to a formal complaint?",
      "options": [
-      "Five days",
-      "Fifteen working days",
       "A month",
-      "There is no limit"
+      "There is no limit",
+      "Fifteen working days",
+      "Five days"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Sección 5: \"within fifteen working days\"."
     },
     {
@@ -2696,12 +2696,12 @@
      "type": "heading",
      "q": "Which heading best summarises section 3?",
      "options": [
-      "Shout louder",
       "Decide exactly what solution you want",
-      "Write a letter to the newspaper",
-      "Ask your friends for advice"
+      "Ask your friends for advice",
+      "Shout louder",
+      "Write a letter to the newspaper"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Sección 3: decidir exactamente qué resolvería el problema."
     }
    ]
@@ -2775,11 +2775,11 @@
      "q": "What finally made Hernando decide to complain?",
      "options": [
       "The late delivery",
-      "The fridge stopping for the third time and the lost food",
       "A rude technician",
-      "His sister's advice"
+      "His sister's advice",
+      "The fridge stopping for the third time and the lost food"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: el refrigerador falló por tercera vez y perdió la compra de una semana."
     },
     {
@@ -2793,23 +2793,23 @@
      "q": "Why did the technicians keep missing appointments?",
      "options": [
       "They were on strike",
-      "Repairs were handled by an external company",
+      "The fridge was not under warranty",
       "Hernando gave the wrong address",
-      "The fridge was not under warranty"
+      "Repairs were handled by an external company"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 3: \"the repairs were handled by an external company, which was why...\"."
     },
     {
      "type": "vocab",
      "q": "\"I was wondering whether it would be possible…\" is an example of…",
      "options": [
-      "an indirect, polite request",
       "a direct order",
-      "a threat",
-      "a past habit"
+      "an indirect, polite request",
+      "a past habit",
+      "a threat"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "'I was wondering whether...' es una pregunta indirecta usada para pedir algo con cortesía."
     },
     {
@@ -2823,12 +2823,12 @@
      "type": "mc",
      "q": "What did the company offer in the end?",
      "options": [
+      "Nothing",
       "A full refund only",
       "A new, better fridge and a supermarket voucher",
-      "A free repair",
-      "Nothing"
+      "A free repair"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 6: \"a new fridge from a higher range\" y \"a gift voucher\"."
     },
     {
@@ -2841,12 +2841,12 @@
      "type": "heading",
      "q": "Which sentence best expresses the story's message?",
      "options": [
+      "Always accept the first offer",
       "Anger gets the best results",
-      "Patience and good records are more effective than anger",
       "Never buy a fridge online",
-      "Always accept the first offer"
+      "Patience and good records are more effective than anger"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Hernando: \"patience and paperwork are more powerful than anger\"."
     }
    ]
@@ -2917,10 +2917,10 @@
      "type": "mc",
      "q": "Where did the research assistants hand in the wallets?",
      "options": [
-      "Only at police stations",
+      "In supermarkets",
       "At places like banks, hotels and post offices",
-      "At universities",
-      "In supermarkets"
+      "Only at police stations",
+      "At universities"
      ],
      "answer": 1,
      "explain_es": "Párrafo 2: \"handing them in at banks, hotels, post offices and police stations\"."
@@ -2935,10 +2935,10 @@
      "type": "mc",
      "q": "What did the study actually find?",
      "options": [
-      "Empty wallets were returned most often",
+      "Results were the same in every country",
       "Wallets with money were returned more often",
       "Nobody returned any wallets",
-      "Results were the same in every country"
+      "Empty wallets were returned most often"
      ],
      "answer": 1,
      "explain_es": "Párrafo 3: \"wallets with money were returned more often than empty ones\"."
@@ -2947,12 +2947,12 @@
      "type": "vocab",
      "q": "In paragraph 4, 'most people draw the line there' means most people…",
      "options": [
-      "draw a picture of the wallet",
-      "decide that this is the limit they won't cross",
       "make a list of rules",
-      "change their minds"
+      "change their minds",
+      "decide that this is the limit they won't cross",
+      "draw a picture of the wallet"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Draw the line' = poner un límite a lo que uno está dispuesto a hacer."
     },
     {
@@ -2972,24 +2972,24 @@
      "type": "mc",
      "q": "\"If we trusted each other a little more, perhaps we would design better systems.\" This sentence is an example of…",
      "options": [
-      "the first conditional",
-      "the second (present unreal) conditional",
       "the third conditional",
-      "a wish about the past"
+      "a wish about the past",
+      "the second (present unreal) conditional",
+      "the first conditional"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "If + pasado simple, would + infinitivo: condicional irreal de presente."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "Limits of the experiment",
       "A perfect method",
       "The most honest country",
+      "Limits of the experiment",
       "How to return a wallet"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "El párrafo explica las limitaciones del estudio y por qué no hay que generalizar."
     }
    ]
@@ -3061,11 +3061,11 @@
      "q": "What did Patricia ask Camilo to do?",
      "options": [
       "Work at the weekend on a new project",
-      "Move some future sales into the current quarter's report",
+      "Find a new job",
       "Present the report to the investors",
-      "Find a new job"
+      "Move some future sales into the current quarter's report"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Patricia le pide \"move some of next quarter's sales into this one\"."
     },
     {
@@ -3086,35 +3086,35 @@
      "q": "\"If he refused, she would probably ask someone else.\" This sentence describes…",
      "options": [
       "a real past event",
-      "an imagined situation and its likely result",
       "a regret about the past",
+      "an imagined situation and its likely result",
       "a fixed rule"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Es un condicional irreal (second conditional): Camilo imagina las consecuencias."
     },
     {
      "type": "mc",
      "q": "Why did Camilo think about his father?",
      "options": [
+      "His father worked in the same firm",
       "His father was an accountant",
       "His father had once returned a forgotten phone",
-      "His father worked in the same firm",
       "His father wanted him to change jobs"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Su padre, conductor de bus, pasó una tarde buscando a un pasajero para devolverle un teléfono."
     },
     {
      "type": "vocab",
      "q": "'He had second thoughts' means he…",
      "options": [
-      "thought about it twice as fast",
       "started to doubt his decision",
+      "thought about it twice as fast",
       "forgot what he had decided",
       "made a second spreadsheet"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Have second thoughts' = empezar a dudar de una decisión."
     },
     {
@@ -3127,10 +3127,10 @@
      "type": "mc",
      "q": "What does Camilo regret?",
      "options": [
-      "Refusing Patricia's request",
+      "Telling his father",
       "Not refusing immediately on Friday",
-      "Staying at the firm",
-      "Telling his father"
+      "Refusing Patricia's request",
+      "Staying at the firm"
      ],
      "answer": 1,
      "explain_es": "\"he wishes he had refused immediately... instead of asking for time\" (wish + past perfect)."
@@ -3209,11 +3209,11 @@
      "q": "What was wrong with the writer's jacket when she arrived?",
      "options": [
       "It was too big",
-      "It wasn't warm enough for Montreal",
       "It was lost at the airport",
-      "It was too expensive"
+      "It was too expensive",
+      "It wasn't warm enough for Montreal"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: la chaqueta \"turned out to be completely useless\" a menos 24 grados."
     },
     {
@@ -3233,9 +3233,9 @@
      "type": "vocab",
      "q": "'Red tape' in paragraph 4 refers to…",
      "options": [
-      "traffic problems",
-      "official rules and paperwork",
       "a type of Canadian food",
+      "official rules and paperwork",
+      "traffic problems",
       "a medical problem"
      ],
      "answer": 1,
@@ -3245,12 +3245,12 @@
      "type": "mc",
      "q": "\"If I hadn't joined a conversation group, I would still be nodding and smiling\" is a mixed conditional. What does it mean?",
      "options": [
-      "She didn't join a group and still doesn't understand",
       "She joined a group, and that's why she understands now",
-      "She will join a group next month",
-      "She never studied French"
+      "She never studied French",
+      "She didn't join a group and still doesn't understand",
+      "She will join a group next month"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Condicional mixto: pasado irreal (no unirse) con resultado presente (seguir sin entender). En realidad se unió y ahora entiende."
     },
     {
@@ -3269,12 +3269,12 @@
      "type": "mc",
      "q": "By this time next year, the writer will have been working at the engineering firm for…",
      "options": [
-      "six months",
-      "a year",
       "eighteen months",
-      "two years"
+      "six months",
+      "two years",
+      "a year"
      ],
-     "answer": 2,
+     "answer": 0,
      "explain_es": "Último párrafo: \"I will have been working at the engineering firm for eighteen months\" (future perfect continuous)."
     }
    ]
@@ -3347,11 +3347,11 @@
      "q": "What is the main idea of paragraph 1?",
      "options": [
       "Colombians no longer emigrate",
-      "Colombia is now both a country of emigration and a destination",
       "Most Colombians live in Spain",
+      "Colombia is now both a country of emigration and a destination",
       "Colombia has closed its borders"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 1: aunque muchos colombianos emigran, el país \"has also become a destination\"."
     },
     {
@@ -3373,10 +3373,10 @@
      "type": "mc",
      "q": "Why did Klaus choose Santa Marta?",
      "options": [
-      "For work in a German company",
+      "Because it was cheaper than Medellín",
       "To swim in the sea and enjoy the climate",
       "Because his children live there",
-      "Because it was cheaper than Medellín"
+      "For work in a German company"
      ],
      "answer": 1,
      "explain_es": "Párrafo 3: \"Here I swim in the sea every morning\" y el clima atrae a los jubilados."
@@ -3385,12 +3385,12 @@
      "type": "vocab",
      "q": "In paragraph 4, 'acclimatise' means…",
      "options": [
+      "to travel to a hot place",
       "to complain about something",
       "to get used to a new climate or situation",
-      "to travel to a hot place",
       "to learn a language"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Acclimatise' = aclimatarse, acostumbrarse."
     },
     {
@@ -3405,8 +3405,8 @@
      "options": [
       "Prices fall in Medellín",
       "Tension over housing",
-      "A new airport",
-      "Retirees leave the city"
+      "Retirees leave the city",
+      "A new airport"
      ],
      "answer": 1,
      "explain_es": "El párrafo describe las quejas por el aumento de precios por alquileres cortos."
@@ -3415,12 +3415,12 @@
      "type": "mc",
      "q": "\"By next year, my daughter will have been living here longer…\" Which tense is this?",
      "options": [
-      "Future simple",
-      "Future perfect continuous",
       "Present perfect",
-      "Past perfect"
+      "Past perfect",
+      "Future perfect continuous",
+      "Future simple"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'will have been living' = future perfect continuous: duración hasta un punto del futuro."
     }
    ]

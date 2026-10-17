@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Eye, FileAudio, Mic, MicOff, Shuffle, Sparkles, Upload, Volume2 } from 'lucide-react';
+import { Check, Eye, FileAudio, Mic, MicOff, Shuffle, Sparkles, Upload, Volume2 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -10,7 +10,12 @@ import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { getRecognition, speak } from '@/lib/speech';
 import { cn } from '@/lib/cn';
-import { MAX_ANSWER_AUDIO, assessSpokenAnswer, isAudioFile, type SpeakingFeedback } from '@/lib/speakingAi';
+import { MAX_ANSWER_AUDIO, assessSpokenAnswer, isAudioFile, speakingFeedbackMarkdown, type SpeakingFeedback } from '@/lib/speakingAi';
+import { saveWork } from '@/lib/work';
+import { useAuth } from '@/store/auth';
+import { useSettings } from '@/store/settings';
+import { TranslatorButton } from '@/components/learning/Translator';
+import { AssignButton } from '@/features/tasks/AssignButton';
 
 interface Prompt {
   topic: string;
@@ -55,6 +60,12 @@ export default function SpeakingPage() {
       back={{ to: '/practice', label: 'Práctica' }}
       title="Speaking"
       subtitle="Responde en voz alta o sube un audio grabado. La IA puede transcribirlo y corregirte."
+      actions={
+        <>
+          <TranslatorButton />
+          <AssignButton preset={{ source: 'practice', practice: 'speaking', title: 'Speaking: responde preguntas en voz alta' }} />
+        </>
+      }
     >
       {loading || !data ? (
         <PageLoader />
@@ -136,6 +147,12 @@ function PromptCard({
   const media = useRef<MediaRecorder | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const award = useProgress((s) => s.award);
+  /** Transcripts already kept for the teacher (one per take). */
+  const savedRef = useRef(new Set<string>());
+  const [savedForTeacher, setSavedForTeacher] = useState(false);
+  const inClass = useAuth((s) => s.profile?.role === 'student' && Boolean(s.profile.teacher_id));
+  const sandbox = useSettings((s) => s.practiceSandbox);
+  const hasTeacher = inClass && !sandbox;
   const Recognition = getRecognition();
   const canRecord = typeof window !== 'undefined' && !!navigator.mediaDevices?.getUserMedia && typeof MediaRecorder !== 'undefined';
 
@@ -218,12 +235,28 @@ function PromptCard({
     keep(f, f.name);
   };
 
+  /** Keeps this answer's transcript (+ AI feedback) for the teacher. Silent, never throws. */
+  const keepForTeacher = (content: string, report: Record<string, unknown>) => {
+    const text = content.trim();
+    if (!text || savedRef.current.has(text)) return;
+    savedRef.current.add(text);
+    void saveWork({
+      module: 'speaking',
+      task: `practice:speaking:${level}`,
+      prompt: `${p.q} (${p.topic}${p.cat ? ` · ${p.cat}` : ''})`,
+      content: text,
+      report: { level, topic: p.topic, category: p.cat, ...report },
+    }).then((r) => r.ok && (r.saved || r.skipped === 'duplicate') && setSavedForTeacher(true));
+  };
+
   const assess = async () => {
     if (!audio) return;
     setAiBusy(true);
     setAiError(null);
     try {
-      setFb(await assessSpokenAnswer(audio.blob, p.q, level));
+      const result = await assessSpokenAnswer(audio.blob, p.q, level);
+      setFb(result);
+      if (result.transcript.trim()) keepForTeacher(result.transcript, { feedback: speakingFeedbackMarkdown(result), ai: result, source: 'ai' });
     } catch (e) {
       setAiError(e instanceof Error ? e.message : String(e));
     } finally {
@@ -232,6 +265,8 @@ function PromptCard({
   };
 
   const next = () => {
+    // A live transcript the AI did not assess is still the student's answer.
+    if (transcript.trim() && !fb) keepForTeacher(transcript, { source: 'browser-speech' });
     award({
       kind: 'speaking',
       title: `Speaking: ${p.topic}`,
@@ -338,6 +373,11 @@ function PromptCard({
             </div>
           )}
           {fb && <FeedbackView fb={fb} />}
+          {savedForTeacher && hasTeacher && (
+            <p role="status" className="text-ink-green mt-3 flex items-center justify-center gap-1.5 text-[13px] font-semibold">
+              <Check size={15} aria-hidden /> Transcripción enviada · tu docente puede verla
+            </p>
+          )}
           {error && <p className="text-ink-red mt-3 text-center text-[14px]">{error}</p>}
           {reveal && (
             <div className="mt-4 rounded-[14px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-4">

@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom';
-import { Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
+import { ClipboardCheck, Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
 import { NAV, isActive } from './nav';
 import { Logo } from '@/components/brand/Logo';
 import { IconTile } from '@/components/ui/IconTile';
@@ -73,6 +73,7 @@ function Sidebar() {
 function MobileTopBar() {
   const name = useDisplayName();
   const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
+  const inClass = useAuth((s) => s.profile?.role === 'student' && !!s.profile.teacher_id);
   return (
     <div className="material pt-safe hairline-b sticky top-0 z-30 lg:hidden">
       <div className="flex h-12 items-center justify-between px-4">
@@ -87,6 +88,15 @@ function MobileTopBar() {
               className="text-ink-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
             >
               <School size={16} />
+            </Link>
+          )}
+          {inClass && (
+            <Link
+              to="/tasks"
+              aria-label="Mis tareas"
+              className="text-ink-red inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_13%,transparent)]"
+            >
+              <ClipboardCheck size={16} />
             </Link>
           )}
           <Link

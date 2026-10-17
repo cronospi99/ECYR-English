@@ -300,7 +300,7 @@ export function GrammarLesson({
         {steps.map((st, k) => (
           <Step key={st.key} id={`${base}-${st.key}`} n={k + 1} step={st} color={color} last={k === steps.length - 1} />
         ))}
-        <div className="space-y-5">
+        <div className={cn('space-y-5', steps.length > 0 && 'mt-9')}>
           {unitKey && <FoundationExtras unitKey={unitKey} pointIndex={index} pointName={g.name} color={color} />}
           {(g.deep || deepRule) && (
             <Disclosure

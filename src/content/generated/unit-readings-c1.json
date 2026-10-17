@@ -68,10 +68,10 @@
      "type": "mc",
      "q": "What first led Dunbar to his famous figure?",
      "options": [
-      "Surveys of people's friendships online",
+      "Observations of office workers",
       "A link between primate brain size and social group size",
       "Studies of army units",
-      "Observations of office workers"
+      "Surveys of people's friendships online"
      ],
      "answer": 1,
      "explain_es": "Párrafo 1: notó \"a correlation between the size of primates' brains and the size of their social groups\"."
@@ -86,12 +86,12 @@
      "type": "mc",
      "q": "According to Dunbar's model, how many intimate companions does a person typically have?",
      "options": [
-      "About five",
+      "About 150",
       "About fifteen",
-      "About fifty",
-      "About 150"
+      "About five",
+      "About fifty"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Párrafo 2: \"around five intimate companions\"."
     },
     {
@@ -100,8 +100,8 @@
      "options": [
       "completely agree",
       "politely disagree",
-      "ask for more data",
-      "refuse to comment"
+      "refuse to comment",
+      "ask for more data"
      ],
      "answer": 1,
      "explain_es": "'Beg to differ' es una forma cortés y algo formal de expresar desacuerdo."
@@ -117,12 +117,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "Why we argue with friends",
       "Time, not conflict, ends many friendships",
       "The benefits of moving city",
-      "How to make new friends at work"
+      "How to make new friends at work",
+      "Why we argue with friends"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "El párrafo explica que muchas amistades se apagan por falta de tiempo, no por peleas."
     },
     {
@@ -135,9 +135,9 @@
      "type": "mc",
      "q": "In the final sentence, 'remember to pick up the phone' refers to…",
      "options": [
-      "a memory of a past call",
-      "an action you need to do in the future",
       "a phone you forgot",
+      "an action you need to do in the future",
+      "a memory of a past call",
       "a habit you have stopped"
      ],
      "answer": 1,
@@ -213,10 +213,10 @@
      "type": "mc",
      "q": "What happened at the birthday dinner?",
      "options": [
-      "The guests agreed to ban politics",
+      "Someone proposed a toast",
       "Two old friends stopped speaking after a political discussion",
       "The writer left before the cake",
-      "Someone proposed a toast"
+      "The guests agreed to ban politics"
      ],
      "answer": 1,
      "explain_es": "Párrafo 1: dos amigos de la universidad dejaron de hablarse por una discusión política."
@@ -231,34 +231,34 @@
      "type": "mc",
      "q": "According to the writer, what happens when we avoid disagreement?",
      "options": [
+      "It makes us more tolerant",
       "It disappears naturally",
       "It turns into hidden resentment",
-      "It improves our friendships",
-      "It makes us more tolerant"
+      "It improves our friendships"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Párrafo 3: \"it merely drives it underground, where it hardens into resentment\"."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 4.",
      "options": [
-      "Why friends' arguments go wrong",
       "The history of political debate",
+      "When to end a friendship",
       "How to win any argument",
-      "When to end a friendship"
+      "Why friends' arguments go wrong"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "El párrafo explica las razones predecibles por las que fallan las discusiones."
     },
     {
      "type": "vocab",
      "q": "In paragraph 4, someone who 'comes across as stupid' is someone who…",
      "options": [
-      "is actually stupid",
+      "becomes stupid over time",
       "gives the impression of being stupid",
-      "accidentally meets a stupid person",
-      "becomes stupid over time"
+      "is actually stupid",
+      "accidentally meets a stupid person"
      ],
      "answer": 1,
      "explain_es": "'Come across as' = dar la impresión de ser."
@@ -280,12 +280,12 @@
      "type": "mc",
      "q": "What does 'they regret walking away that night' mean?",
      "options": [
-      "They are sorry that they left that night",
-      "They are sorry to announce they will leave",
+      "They don't remember leaving",
       "They plan to leave next time",
-      "They don't remember leaving"
+      "They are sorry to announce they will leave",
+      "They are sorry that they left that night"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "'Regret + -ing' expresa arrepentimiento por algo que ya se hizo; 'regret to + infinitivo' se usa para anunciar algo negativo."
     }
    ]
@@ -360,21 +360,21 @@
      "type": "mc",
      "q": "How are the clothes organised in Juliana Castro's shop?",
      "options": [
-      "By size",
-      "By colour",
+      "By decade",
       "By price",
-      "By decade"
+      "By size",
+      "By colour"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 1: \"arranged by colour rather than size\"."
     },
     {
      "type": "mc",
      "q": "Which sentence from the text is a cleft sentence with 'what'?",
      "options": [
-      "\"Now it's a badge of honour.\"",
-      "\"What has changed is not so much the clothes as the story attached to them.\"",
       "\"Not everyone is convinced.\"",
+      "\"What has changed is not so much the clothes as the story attached to them.\"",
+      "\"Now it's a badge of honour.\"",
       "\"He hesitates, checks the price, and smiles.\""
      ],
      "answer": 1,
@@ -390,24 +390,24 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 4.",
      "options": [
-      "Ethics is the only motive",
       "Standing out in a world of identical clothes",
-      "The decline of social media",
-      "Why vintage clothes are expensive"
+      "Why vintage clothes are expensive",
+      "Ethics is the only motive",
+      "The decline of social media"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "El párrafo dice que lo que buscan muchos jóvenes es individualidad."
     },
     {
      "type": "mc",
      "q": "What is the paca sellers' main complaint?",
      "options": [
-      "Thrift shops sell stolen goods",
       "Boutique shops buy their best items and resell them much more expensively",
+      "Thrift shops sell stolen goods",
       "Customers no longer visit San Victorino",
       "Imported clothes are of poor quality"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 5: compran al por mayor y revenden \"at five times the price\"."
     },
     {
@@ -427,9 +427,9 @@
      "type": "vocab",
      "q": "In the final sentence, a story he can 'pull off' means one he can…",
      "options": [
-      "remove quickly",
-      "wear successfully and convincingly",
       "sell for profit",
+      "wear successfully and convincingly",
+      "remove quickly",
       "repair himself"
      ],
      "answer": 1,
@@ -505,24 +505,24 @@
      "type": "mc",
      "q": "According to research mentioned in paragraph 1, how quickly do we form first impressions?",
      "options": [
-      "Within a few minutes",
       "Within a fraction of a second",
       "After a full conversation",
+      "Within a few minutes",
       "After several meetings"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: \"within a fraction of a second\"."
     },
     {
      "type": "mc",
      "q": "What do career advisers usually recommend for job interviews?",
      "options": [
-      "Dressing as casually as possible",
       "Dressing slightly more formally than current employees",
+      "Wearing the company's colours",
       "Always wearing a suit",
-      "Wearing the company's colours"
+      "Dressing as casually as possible"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 2: \"dress slightly more formally than the people who already work in the organisation\"."
     },
     {
@@ -530,9 +530,9 @@
      "q": "In paragraph 2, someone who is 'dressed to the nines' is…",
      "options": [
       "dressed very elegantly",
-      "dressed in nine layers",
+      "wearing a uniform",
       "wearing old clothes",
-      "wearing a uniform"
+      "dressed in nine layers"
      ],
      "answer": 0,
      "explain_es": "'Dressed to the nines' = vestido de manera muy elegante."
@@ -554,24 +554,24 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 5.",
      "options": [
-      "Dress codes and discrimination",
-      "The best clothes for interviews",
+      "Why hairstyles change",
       "Fashion in rural Colombia",
-      "Why hairstyles change"
+      "Dress codes and discrimination",
+      "The best clothes for interviews"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "El párrafo critica que los estándares 'profesionales' reflejan normas de ciertos grupos y pueden discriminar."
     },
     {
      "type": "mc",
      "q": "What does the writer say about the hoodie in paragraph 6?",
      "options": [
-      "It is banned in most offices",
-      "It has become a status symbol in some circles",
+      "It is only worn by students",
       "It improves concentration",
-      "It is only worn by students"
+      "It is banned in most offices",
+      "It has become a status symbol in some circles"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Párrafo 6: \"has become, in some circles, a status symbol in its own right\"."
     },
     {
@@ -579,6 +579,3029 @@
      "q": "The writer has worked as a career adviser.",
      "answer": "NG",
      "explain_es": "El ensayo no dice nada sobre la profesión del autor."
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "id": "u-c1-3-1",
+   "title": "Fighting Mosquitoes With Mosquitoes",
+   "level": "C1",
+   "genre": "science report",
+   "topic": "Public health",
+   "emoji": "🦟",
+   "words": 540,
+   "paragraphs": [
+    "For decades, the fight against dengue in the Aburrá Valley followed a familiar script. When cases rose, trucks would drive through the neighbourhoods of Medellín, Bello and Itagüí spraying insecticide, health workers would go door to door looking for standing water, and residents would be urged to empty their flowerpots and cover their water tanks. The measures helped, but never for long. The mosquito responsible, Aedes aegypti, is remarkably adaptable, and populations quickly bounced back.",
+    "In 2015, a very different approach arrived in Bello. Rather than trying to eliminate the mosquitoes, scientists working with the World Mosquito Program began releasing more of them, but with a crucial difference. The insects had been infected with Wolbachia, a bacterium found naturally in around half of all insect species but not usually in Aedes aegypti. Having been infected, the mosquitoes become far less capable of transmitting the viruses that cause dengue, Zika and chikungunya.",
+    "The method relies on an elegant piece of biology. When a male carrying Wolbachia mates with a female that does not have the bacterium, her eggs fail to hatch. When an infected female mates, by contrast, she passes Wolbachia on to all her offspring. Over several generations, the bacterium therefore spreads through the local population until the great majority of mosquitoes carry it. Once established, it tends to sustain itself without further releases, which makes the technique comparatively cheap to maintain.",
+    "The programme was gradually scaled up across the valley, eventually covering an area with more than three million inhabitants, making it one of the largest deployments of its kind in the world. Volunteers were recruited to keep small containers of mosquito eggs in their homes, and local radio stations explained the project in an effort to reassure a public that was understandably sceptical about the idea of deliberately releasing insects.",
+    "Studies published in the years that followed reported substantial falls in dengue cases in the treated areas compared with what would have been expected. Researchers have been careful, however, not to overstate the results. Dengue naturally fluctuates from year to year, influenced by rainfall, temperature and population immunity, which makes it difficult to attribute every change to a single intervention. Nevertheless, similar findings from Indonesia, Brazil and Australia, including a randomised trial in the city of Yogyakarta, have strengthened the case that the method is a genuine breakthrough.",
+    "It is not without drawbacks. Releasing mosquitoes requires the cooperation of entire communities, and in some cities rumours have circulated that the insects were genetically modified or designed to harm people. Scientists stress that Wolbachia does not involve altering the mosquito's genes, but trust, once lost, is hard to rebuild. There are also questions about how the method will perform as climate change pushes Aedes aegypti into higher, cooler areas that were previously free of dengue.",
+    "Even so, public health experts see the experiment in the Aburrá Valley as a model for other tropical cities. The technique will not render insecticides and clean-up campaigns obsolete; rather, it adds a powerful new tool to the existing ones. Perhaps the most striking lesson is a philosophical one. Instead of waging an endless war against nature, the scientists found a way of working with it, turning the mosquito itself into an unlikely ally."
+   ],
+   "glossary": [
+    [
+     "to spray",
+     "fumigar, rociar"
+    ],
+    [
+     "standing water",
+     "agua estancada"
+    ],
+    [
+     "to bounce back",
+     "recuperarse"
+    ],
+    [
+     "bacterium",
+     "bacteria"
+    ],
+    [
+     "to hatch",
+     "eclosionar, salir del huevo"
+    ],
+    [
+     "offspring",
+     "descendencia, crías"
+    ],
+    [
+     "to scale up",
+     "ampliar, escalar"
+    ],
+    [
+     "to attribute to",
+     "atribuir a"
+    ],
+    [
+     "breakthrough",
+     "avance decisivo"
+    ],
+    [
+     "drawback",
+     "desventaja, inconveniente"
+    ],
+    [
+     "to render obsolete",
+     "volver obsoleto"
+    ],
+    [
+     "ally",
+     "aliado"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why were the traditional anti-dengue measures only partly successful?",
+     "options": [
+      "Mosquito populations quickly recovered",
+      "Insecticide was banned",
+      "Residents refused to cooperate",
+      "They were too expensive"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"populations quickly bounced back\"."
+    },
+    {
+     "type": "tf",
+     "q": "Wolbachia occurs naturally in many insect species.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"found naturally in around half of all insect species\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'Having been infected, the mosquitoes become far less capable…' The -ing clause expresses…",
+     "options": [
+      "a contrast",
+      "a cause or earlier action",
+      "a purpose",
+      "a future plan"
+     ],
+     "answer": 1,
+     "explain_es": "La cláusula con 'Having been + participio' expresa una acción anterior que causa el resultado."
+    },
+    {
+     "type": "mc",
+     "q": "What happens when a male with Wolbachia mates with a female without it?",
+     "options": [
+      "Her eggs fail to hatch",
+      "All the eggs carry Wolbachia",
+      "The offspring transmit more dengue",
+      "The female dies immediately"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"her eggs fail to hatch\"."
+    },
+    {
+     "type": "gap",
+     "q": "Once established, Wolbachia tends to ____ itself without further releases.",
+     "answer": "sustain",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"it tends to sustain itself without further releases\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "The end of dengue",
+      "A failed experiment",
+      "Why rain causes dengue",
+      "Promising results, cautiously interpreted"
+     ],
+     "answer": 3,
+     "explain_es": "Los resultados son prometedores, pero los investigadores evitan exagerarlos."
+    },
+    {
+     "type": "tf",
+     "q": "The Wolbachia method involves genetically modifying mosquitoes.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"Wolbachia does not involve altering the mosquito's genes\"."
+    },
+    {
+     "type": "mc",
+     "q": "In the last paragraph, why does the writer use 'the' in 'the mosquito itself'?",
+     "options": [
+      "Because mosquitoes are unique objects like the sun",
+      "Because it is a proper noun",
+      "Because it refers to the species already identified in the text",
+      "Because it is the first mention of any mosquito"
+     ],
+     "answer": 2,
+     "explain_es": "El artículo definido señala algo ya conocido por el lector: la especie de la que habla todo el texto."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-3-2",
+   "title": "The Myth of the Obsolete Human",
+   "level": "C1",
+   "genre": "opinion column",
+   "topic": "Technology",
+   "emoji": "🤖",
+   "words": 526,
+   "paragraphs": [
+    "Every few years, a new technology arrives accompanied by confident predictions that it will render human workers obsolete. In the early nineteenth century, English textile workers known as Luddites smashed the mechanical looms they believed would destroy their livelihoods. In the 1960s, magazines warned that automation would soon create a society with too much leisure and too few jobs. Today, the same anxiety surrounds artificial intelligence, and it is easy to see why. Programs capable of writing reports, diagnosing illnesses and producing images in seconds seem to threaten precisely the kind of skilled, white-collar work that was once considered safe.",
+    "I do not wish to dismiss these fears. They are not irrational, and the Luddites, who are often mocked as foolish enemies of progress, were in fact right about one thing: the new machines did devastate their particular trade. The weavers who lost their jobs did not find comfort in the fact that, decades later, the textile industry employed more people than ever. A technology can be a game-changer for an economy and a catastrophe for the individuals caught in its path.",
+    "Yet history also suggests that predictions of mass unemployment tend to underestimate human adaptability. Technologies rarely replace entire professions; more often, they replace specific tasks. When spreadsheet software was rolled out in the 1980s, many expected accountants to disappear. Instead, the profession grew, as accountants spent less time on arithmetic and more time on analysis and advice. Bank cashiers were supposed to vanish with the arrival of cash machines; for many years, the number of bank branches actually increased, because each one became cheaper to run.",
+    "The real danger, in my view, lies elsewhere. It lies in the unintended consequences of adopting powerful tools too quickly and without adequate thought. An algorithm trained on biased data can reproduce discrimination at an unprecedented scale. A student relying on a chatbot to write every essay may obtain a degree while losing the very skills that degree is meant to certify. A company replacing its customer-service staff with automated systems may save money in the short term while slowly eroding the trust of its clients.",
+    "These risks are not technical problems with technical solutions. They are questions about values: what we choose to automate, who benefits, and who bears the cost. In countries like Colombia, where a large proportion of workers are employed informally and access to retraining is limited, these questions are especially urgent. A cutting-edge tool that boosts productivity in a Bogotá office tower may offer nothing to a street vendor in Cúcuta, or may even make her situation more precarious.",
+    "What we need, therefore, is neither panic nor blind enthusiasm, but deliberate choices. Governments can invest in education that emphasises judgement, creativity and collaboration, the abilities that machines struggle to replicate. Companies can be required to explain how automated decisions are made. And all of us can resist the temptation to treat every new device as either salvation or apocalypse.",
+    "The human worker has been declared obsolete many times before. On each occasion, the obituary turned out to be premature. Whether it proves premature again will depend not on the machines, but on us."
+   ],
+   "glossary": [
+    [
+     "to render obsolete",
+     "volver obsoleto"
+    ],
+    [
+     "loom",
+     "telar"
+    ],
+    [
+     "livelihood",
+     "sustento, medio de vida"
+    ],
+    [
+     "white-collar",
+     "de oficina, administrativo"
+    ],
+    [
+     "game-changer",
+     "algo que lo cambia todo"
+    ],
+    [
+     "to roll out",
+     "implementar, lanzar"
+    ],
+    [
+     "unintended consequences",
+     "consecuencias no deseadas"
+    ],
+    [
+     "unprecedented",
+     "sin precedentes"
+    ],
+    [
+     "to erode",
+     "erosionar, desgastar"
+    ],
+    [
+     "cutting-edge",
+     "de vanguardia, de punta"
+    ],
+    [
+     "precarious",
+     "precario"
+    ],
+    [
+     "premature",
+     "prematuro"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the Luddites do?",
+     "options": [
+      "They wrote magazines about automation",
+      "They destroyed machines they believed threatened their jobs",
+      "They invented mechanical looms",
+      "They became accountants"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"smashed the mechanical looms they believed would destroy their livelihoods\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes the Luddites were completely wrong.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"were in fact right about one thing: the new machines did devastate their particular trade\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to the writer, what happened to accountants after spreadsheets were introduced?",
+     "options": [
+      "The profession grew and focused more on analysis",
+      "Their salaries fell dramatically",
+      "The profession disappeared",
+      "They returned to paper records"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"the profession grew, as accountants spent less time on arithmetic and more time on analysis\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "The future of universities",
+      "How to save money on customer service",
+      "The hidden risks of hasty adoption",
+      "Why algorithms are always fair"
+     ],
+     "answer": 2,
+     "explain_es": "El párrafo trata de las consecuencias no deseadas de adoptar herramientas demasiado rápido."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'unintended consequences' are results that…",
+     "options": [
+      "are always positive",
+      "were planned carefully",
+      "nobody expected or wanted",
+      "happen immediately"
+     ],
+     "answer": 2,
+     "explain_es": "'Unintended' = no intencionado; consecuencias que no se buscaban."
+    },
+    {
+     "type": "gap",
+     "q": "In Colombia, a large proportion of workers are employed ____.",
+     "answer": "informally",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"a large proportion of workers are employed informally\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer recommend?",
+     "options": [
+      "Ignoring new technology",
+      "Replacing teachers with machines",
+      "Banning artificial intelligence",
+      "Making deliberate choices about technology"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 6: \"What we need... is neither panic nor blind enthusiasm, but deliberate choices\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer works in the banking sector.",
+     "answer": "NG",
+     "explain_es": "El texto no menciona la profesión del autor."
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "u-c1-4-1",
+   "title": "The Girls Who Photographed Fairies",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Hoaxes",
+   "emoji": "🧚",
+   "words": 531,
+   "paragraphs": [
+    "In the summer of 1917, two cousins living in the Yorkshire village of Cottingley borrowed a camera from one of their fathers and disappeared down to the stream at the bottom of the garden. Elsie Wright was sixteen; Frances Griffiths was nine. When the plate was developed, it showed Frances resting her chin on her hand while four small winged figures danced in front of her. A second photograph, taken a few weeks later, appeared to show Elsie offering her hand to a gnome.",
+    "Elsie's father, an amateur photographer, is said to have dismissed the pictures immediately as a prank. Her mother was less certain. Some time later, she mentioned them at a meeting of the Theosophical Society, a movement with a keen interest in the spiritual world, and the photographs began a remarkable journey. By 1920 they had reached Sir Arthur Conan Doyle, the creator of Sherlock Holmes and, by then, a committed spiritualist.",
+    "It is often assumed that the man who invented the most rational detective in literature must have been a sceptic himself. In fact, Conan Doyle had become convinced that the living could communicate with the dead, a belief that is thought to have been strengthened by the loss of his son during the First World War. He published the photographs in The Strand Magazine in 1920, together with an article presenting them as evidence of fairies, and later expanded the story into a book.",
+    "How could so many intelligent people have taken the pictures at face value? Several factors lent credence to them. Photography was still widely regarded as a mechanical, and therefore objective, record of reality. Experts who examined the negatives reported that they found no obvious signs of double exposure. And the girls themselves seemed too young and unsophisticated to have produced such a convincing fake. Most importantly, perhaps, many readers wanted to believe. After years of war and grief, the idea of a hidden, gentler world had an obvious appeal.",
+    "Not everyone was persuaded. Critics pointed out that the fairies wore fashionable hairstyles and looked suspiciously like illustrations from contemporary children's books. Their wings were strangely still, even though the girls claimed they had been fluttering. For many sceptics, the whole affair was a textbook example of how gullible even educated people could be.",
+    "The mystery was not definitively debunked until the early 1980s, when the cousins, by then elderly women, admitted that the fairies had been cardboard cut-outs, copied from a popular book and held in place with hatpins. They explained that the prank had started as a way to avoid punishment for getting their clothes wet in the stream, and that, once a famous author was involved, they had felt too embarrassed to confess. Intriguingly, Frances maintained until her death that the last of the five photographs was genuine.",
+    "Today the Cottingley fairies are generally regarded as a gentle hoax rather than a malicious one. Yet the episode remains instructive. It reminds us that the most persuasive deceptions are not necessarily the most sophisticated, but those that tell us what we already hope is true. In an age of edited images and artificial intelligence, that lesson seems more relevant than ever."
+   ],
+   "glossary": [
+    [
+     "plate",
+     "placa fotográfica"
+    ],
+    [
+     "prank",
+     "broma, travesura"
+    ],
+    [
+     "spiritualist",
+     "espiritista"
+    ],
+    [
+     "to take at face value",
+     "tomar al pie de la letra"
+    ],
+    [
+     "to lend credence to",
+     "dar credibilidad a"
+    ],
+    [
+     "double exposure",
+     "doble exposición"
+    ],
+    [
+     "grief",
+     "duelo, pena"
+    ],
+    [
+     "gullible",
+     "crédulo, ingenuo"
+    ],
+    [
+     "to debunk",
+     "desmentir, desacreditar"
+    ],
+    [
+     "cut-out",
+     "recorte, figura recortada"
+    ],
+    [
+     "hoax",
+     "engaño, fraude"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How old was Frances when the first photograph was taken?",
+     "options": [
+      "Twenty",
+      "Twelve",
+      "Nine",
+      "Sixteen"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: \"Frances Griffiths was nine\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"Elsie's father is said to have dismissed the pictures\" is an example of…",
+     "options": [
+      "a conditional",
+      "a direct quotation",
+      "a passive reporting structure",
+      "a cleft sentence"
+     ],
+     "answer": 2,
+     "explain_es": "'is said to have + participio' es una estructura pasiva de reporte sobre el pasado."
+    },
+    {
+     "type": "tf",
+     "q": "Conan Doyle was a sceptic who rejected spiritual beliefs.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"Conan Doyle had become convinced that the living could communicate with the dead\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'lent credence to them' means…",
+     "options": [
+      "made copies of them",
+      "made them seem more believable",
+      "proved they were false",
+      "borrowed money for them"
+     ],
+     "answer": 1,
+     "explain_es": "'Lend credence to' = dar credibilidad a algo."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Why the photographs were believed",
+      "How the photographs were made",
+      "Conan Doyle's family",
+      "The girls' confession"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo enumera los factores que hicieron creíbles las fotos."
+    },
+    {
+     "type": "gap",
+     "q": "The cousins admitted that the fairies had been cardboard cut-outs held in place with ____.",
+     "answer": "hatpins",
+     "accept": [],
+     "explain_es": "Párrafo 6: \"held in place with hatpins\"."
+    },
+    {
+     "type": "tf",
+     "q": "Both cousins agreed that all five photographs were fake.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: Frances mantuvo \"that the last of the five photographs was genuine\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's main lesson?",
+     "options": [
+      "The most persuasive deceptions tell us what we hope is true",
+      "Old cameras were unreliable",
+      "Children should not be trusted",
+      "Fairies may exist after all"
+     ],
+     "answer": 0,
+     "explain_es": "Último párrafo: \"those that tell us what we already hope is true\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-4-2",
+   "title": "Yellow Underwear and Empty Suitcases",
+   "level": "C1",
+   "genre": "podcast transcript excerpt",
+   "topic": "Superstitions",
+   "emoji": "🧳",
+   "words": 480,
+   "paragraphs": [
+    "[An excerpt from Mente Abierta, a podcast about the science of everyday life. Host Sofía Rendón talks to Dr Álvaro Quintero, a cognitive psychologist who studies belief.]",
+    "SOFÍA: So, Álvaro, it's the end of the year, and in Colombia that means a lot of rituals. Yellow underwear for luck, twelve grapes at midnight, walking round the block with an empty suitcase if you want to travel. Do you do any of them?",
+    "ÁLVARO: I'm afraid I do. Every December thirty-first, I eat the grapes. My mother would be horrified if I didn't. And, yes, I've been known to walk round the block with a suitcase.",
+    "SOFÍA: But you're a scientist! Surely you think it's all far-fetched.",
+    "ÁLVARO: Intellectually, yes. I don't believe that a suitcase has any influence on airline tickets. But superstition isn't really about logic. It's about managing uncertainty. Humans hate not knowing what will happen, and rituals give us a sense of control, however illusory. There's research suggesting that people perform slightly better at certain tasks when they've been given a 'lucky' object, probably because it reduces anxiety and increases their confidence.",
+    "SOFÍA: So the ritual works, but not for the reasons people think.",
+    "ÁLVARO: Exactly. The effect is attributed to luck, when it's actually psychological. That's also why superstitions are so common among athletes, students before exams, actors before opening night: anyone facing a high-stakes situation that's partly beyond their control.",
+    "SOFÍA: Where do these beliefs come from, though? Why yellow, for example?",
+    "ÁLVARO: The origins are often hard to trace. Yellow is widely believed to represent prosperity because of its association with gold, and many of the rituals Latin Americans practise are thought to have come from Spain, then mixed with local traditions. The grapes, for instance, are commonly said to have been popularised by Spanish grape growers in the early twentieth century, who had a surplus to sell. But most explanations you'll hear are anecdotal, passed on in families rather than documented.",
+    "SOFÍA: Is there any harm in it?",
+    "ÁLVARO: In most cases, no. Eating grapes with your family is a lovely tradition. The problem arises when superstitious thinking leads people to make important decisions without evidence: avoiding medical treatment, for example, or trusting someone who claims to predict the future for a fee. The same mental shortcuts that make us enjoy a harmless ritual can make us vulnerable to manipulation.",
+    "SOFÍA: How do we tell the difference?",
+    "ÁLVARO: A useful test is to ask yourself what you lose if the belief is wrong. If you wear yellow underwear and nothing special happens, you've lost nothing. If you abandon your medication because a healer told you to, the consequences could be serious. Enjoy the rituals, but don't take every claim at face value.",
+    "SOFÍA: Final question. Will you be walking round the block this year?",
+    "ÁLVARO: Twice. My wife wants to go to Japan."
+   ],
+   "glossary": [
+    [
+     "far-fetched",
+     "descabellado, poco creíble"
+    ],
+    [
+     "illusory",
+     "ilusorio"
+    ],
+    [
+     "high-stakes",
+     "de alto riesgo, decisivo"
+    ],
+    [
+     "to attribute to",
+     "atribuir a"
+    ],
+    [
+     "to trace",
+     "rastrear el origen"
+    ],
+    [
+     "prosperity",
+     "prosperidad"
+    ],
+    [
+     "surplus",
+     "excedente"
+    ],
+    [
+     "anecdotal",
+     "anecdótico, sin datos sistemáticos"
+    ],
+    [
+     "mental shortcut",
+     "atajo mental"
+    ],
+    [
+     "healer",
+     "curandero"
+    ],
+    [
+     "to take at face value",
+     "tomar al pie de la letra"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Which New Year ritual is linked to travelling?",
+     "options": [
+      "Wearing yellow underwear",
+      "Walking round the block with an empty suitcase",
+      "Eating lentils",
+      "Eating twelve grapes"
+     ],
+     "answer": 1,
+     "explain_es": "Sofía: \"walking round the block with an empty suitcase if you want to travel\"."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Quintero believes a suitcase can influence the price of airline tickets.",
+     "answer": "F",
+     "explain_es": "Dice: \"I don't believe that a suitcase has any influence on airline tickets\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Dr Quintero, what is the main function of superstition?",
+     "options": [
+      "To manage uncertainty and give a sense of control",
+      "To make money",
+      "To entertain children",
+      "To keep families together"
+     ],
+     "answer": 0,
+     "explain_es": "\"It's about managing uncertainty... rituals give us a sense of control\"."
+    },
+    {
+     "type": "vocab",
+     "q": "'The effect is attributed to luck' means people…",
+     "options": [
+      "pay for luck",
+      "forget about luck",
+      "prove luck is not real",
+      "believe luck causes the effect"
+     ],
+     "answer": 3,
+     "explain_es": "'Attribute X to Y' = considerar que Y es la causa de X."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence is a passive reporting structure?",
+     "options": [
+      "\"My wife wants to go to Japan.\"",
+      "\"I'm afraid I do.\"",
+      "\"Is there any harm in it?\"",
+      "\"The grapes are commonly said to have been popularised by Spanish grape growers\""
+     ],
+     "answer": 3,
+     "explain_es": "'are said to have been + participio' es una estructura de reporte en pasiva."
+    },
+    {
+     "type": "gap",
+     "q": "Most explanations of these rituals are ____, passed on in families rather than documented.",
+     "answer": "anecdotal",
+     "accept": [],
+     "explain_es": "\"most explanations you'll hear are anecdotal\"."
+    },
+    {
+     "type": "heading",
+     "q": "Which phrase best summarises Dr Quintero's 'useful test'?",
+     "options": [
+      "Ask what you would lose if the belief were wrong",
+      "Check the origin of every ritual",
+      "Never trust a scientist",
+      "Always follow family traditions"
+     ],
+     "answer": 0,
+     "explain_es": "\"ask yourself what you lose if the belief is wrong\"."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Quintero has already been to Japan.",
+     "answer": "NG",
+     "explain_es": "Solo dice que su esposa quiere ir; no sabemos si él ya ha ido."
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "u-c1-5-1",
+   "title": "Review: 'The Last Train to Puerto Berrío'",
+   "level": "C1",
+   "genre": "TV review",
+   "topic": "Television",
+   "emoji": "🚂",
+   "words": 513,
+   "paragraphs": [
+    "There is a moment, about forty minutes into the first episode of The Last Train to Puerto Berrío, when the camera lingers on an abandoned railway station in the middle of the Magdalena Medio. Weeds push through the platform, a faded timetable flaps in the wind, and an old man sits on a bench as if the train might still arrive. It is such a quietly beautiful image that you almost forget you are watching a crime drama. Almost.",
+    "The eight-part series, which has quickly become one of the most talked-about Colombian productions of the year, follows Inés Barrera, a Bogotá journalist who returns to the river town where she grew up to investigate the disappearance of a teenage girl. What begins as a familiar missing-person story gradually widens into something far more ambitious: a portrait of a community still haunted by the violence of previous decades, and by the secrets it has chosen to keep.",
+    "Undoubtedly, the series' greatest strength is its lead performance. As Inés, the actress gives a performance of such restraint that a single glance often conveys more than a page of dialogue. She is neither a heroic crusader nor a damaged cliché, but a tired, intelligent woman who suspects she may be looking for something she would rather not find. The supporting cast is almost as impressive, particularly the non-professional actors recruited from the region, whose presence lends the drama a rare authenticity.",
+    "The writing, admittedly, is more hit and miss. The early episodes are gripping, layering clues and red herrings with considerable skill. In the middle of the season, however, the pace slackens noticeably, and a subplot involving a corrupt mayor feels both predictable and unnecessary. Viewers who binge-watch the series over a weekend may find these episodes easier to forgive than those watching weekly.",
+    "Then there is the plot twist. Without giving anything away, it is fair to say that the revelation at the end of episode six divides audiences. Some will find it audacious; others will feel that it asks them to suspend disbelief a little too far. Personally, I found it emotionally convincing but logically shaky, so much so that I spent the following episode trying to work out whether it actually made sense. Readers wishing to avoid spoilers should stay well clear of social media until they have reached the finale.",
+    "Visually, the series is a triumph. The cinematographer makes extraordinary use of the river, filming it at dawn, in heavy rain and under the orange glow of distant oil refineries, so that it becomes almost a character in its own right. The soundtrack, which blends traditional river music with sparse electronic textures, is equally memorable.",
+    "Is it a masterpiece? Not quite. The Last Train to Puerto Berrío is too uneven for that, and some critics have arguably been carried away by its considerable ambition. But it is a serious, intelligent and often deeply moving piece of television that takes its audience, and its setting, seriously. In an era of formulaic blockbusters and overrated streaming hits, that alone makes it worth your time."
+   ],
+   "glossary": [
+    [
+     "to linger",
+     "detenerse, demorarse"
+    ],
+    [
+     "haunted by",
+     "atormentado por"
+    ],
+    [
+     "restraint",
+     "contención, mesura"
+    ],
+    [
+     "crusader",
+     "cruzado, luchador incansable"
+    ],
+    [
+     "hit and miss",
+     "irregular, unas veces bien y otras mal"
+    ],
+    [
+     "gripping",
+     "absorbente, apasionante"
+    ],
+    [
+     "red herring",
+     "pista falsa"
+    ],
+    [
+     "to slacken",
+     "aflojar, decaer"
+    ],
+    [
+     "to give away",
+     "revelar (un secreto, el final)"
+    ],
+    [
+     "to suspend disbelief",
+     "dejar de lado la incredulidad"
+    ],
+    [
+     "shaky",
+     "poco sólido, endeble"
+    ],
+    [
+     "overrated",
+     "sobrevalorado"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Inés Barrera's job?",
+     "options": [
+      "Train driver",
+      "Journalist",
+      "Mayor",
+      "Police detective"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"Inés Barrera, a Bogotá journalist\"."
+    },
+    {
+     "type": "tf",
+     "q": "The series is only about the disappearance of one girl.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: la historia \"gradually widens into something far more ambitious\": un retrato de la comunidad."
+    },
+    {
+     "type": "mc",
+     "q": "What does the sentence adverb 'Undoubtedly' in paragraph 3 show?",
+     "options": [
+      "The reviewer is uncertain",
+      "The reviewer is quoting someone",
+      "The reviewer is strongly convinced",
+      "The reviewer is surprised"
+     ],
+     "answer": 2,
+     "explain_es": "'Undoubtedly' expresa la certeza del autor sobre toda la oración."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'hit and miss' means…",
+     "options": [
+      "sometimes good and sometimes bad",
+      "very short",
+      "consistently excellent",
+      "violent"
+     ],
+     "answer": 0,
+     "explain_es": "'Hit and miss' = irregular."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Flawless writing",
+      "Strong start, weaker middle",
+      "A new director",
+      "Why weekly viewing is best"
+     ],
+     "answer": 1,
+     "explain_es": "Los primeros episodios atrapan, pero a mitad de temporada el ritmo decae."
+    },
+    {
+     "type": "mc",
+     "q": "What was the reviewer's opinion of the plot twist?",
+     "options": [
+      "Boring and predictable",
+      "Emotionally convincing but logically weak",
+      "Completely convincing in every way",
+      "Copied from another series"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"emotionally convincing but logically shaky\"."
+    },
+    {
+     "type": "gap",
+     "q": "The reviewer says the river becomes almost a ____ in its own right.",
+     "answer": "character",
+     "accept": [],
+     "explain_es": "Párrafo 6: \"it becomes almost a character in its own right\"."
+    },
+    {
+     "type": "tf",
+     "q": "The reviewer considers the series a masterpiece.",
+     "answer": "F",
+     "explain_es": "Último párrafo: \"Is it a masterpiece? Not quite.\""
+    }
+   ]
+  },
+  {
+   "id": "u-c1-5-2",
+   "title": "Has Binge-Watching Killed the Cliffhanger?",
+   "level": "C1",
+   "genre": "essay",
+   "topic": "Streaming",
+   "emoji": "📺",
+   "words": 529,
+   "paragraphs": [
+    "For most of television's history, viewers had no choice but to wait. A gripping episode would end with a cliffhanger, and audiences would spend a week, sometimes an entire summer, speculating about what would happen next. Families arranged their evenings around broadcast schedules, and the following morning, conversations at work or school were dominated by the previous night's plot twist. Television was, in this sense, a shared and synchronised experience.",
+    "The arrival of streaming platforms changed that almost overnight. When one major service began releasing entire seasons at once in the early 2010s, it was presented as a liberation: viewers could finally watch what they wanted, when they wanted, at whatever speed they liked. Binge-watching, once a slightly embarrassing habit associated with box sets and sick days, became the default way of consuming drama. Surveys suggest that a substantial proportion of subscribers have, at some point, finished a series within a few days of its release.",
+    "Inevitably, this has transformed not only how we watch but how stories are told. Writers no longer need to remind viewers of what happened the week before, so series can afford to be denser and more complex. Episodes vary dramatically in length. The traditional cliffhanger has not disappeared, but its function has shifted: rather than sustaining interest for seven days, it now aims to persuade the viewer to let the next episode play automatically, often within seconds.",
+    "Critics of the binge model argue that something valuable has been lost. Watching ten hours of drama in a single weekend, they suggest, leaves little room for reflection; stories are consumed so rapidly that they are forgotten almost as quickly. There is some evidence to support this. Studies have found that viewers who watch a series in a single burst report enjoying it slightly less, and remember it less clearly, than those who spread it out. Furthermore, the collective conversation has fragmented. When everyone watches at a different pace, discussing a show without spoilers becomes a delicate exercise in diplomacy.",
+    "Interestingly, the industry itself seems to have reached a similar conclusion. In recent years, several platforms have returned to releasing episodes weekly, particularly for their most expensive productions. The motive is largely commercial: a series released over two months generates far more online discussion, and keeps subscribers paying for longer, than one devoured in a weekend. But the effect is also artistic. Weekly release restores anticipation, and with it, the cliffhanger's power.",
+    "Admittedly, the binge model has its virtues. Some stories are so tightly plotted that they benefit from continuous viewing, and for people with irregular schedules, the freedom to watch on demand is invaluable. Nor should we romanticise the past too much; waiting a week for an episode was not always a pleasure, and missing one could mean never seeing it at all.",
+    "Perhaps the most likely future is a hybrid one, in which different stories are released in different ways. What seems clear is that the urge to know what happens next is not a product of any particular technology. It is as old as storytelling itself. Platforms may change how that urge is satisfied, but they have not, and probably cannot, eliminate it."
+   ],
+   "glossary": [
+    [
+     "cliffhanger",
+     "final en suspenso"
+    ],
+    [
+     "to speculate",
+     "especular"
+    ],
+    [
+     "synchronised",
+     "sincronizado"
+    ],
+    [
+     "binge-watching",
+     "maratón de series"
+    ],
+    [
+     "default",
+     "predeterminado, por defecto"
+    ],
+    [
+     "dense",
+     "denso"
+    ],
+    [
+     "in a single burst",
+     "de un tirón"
+    ],
+    [
+     "to fragment",
+     "fragmentarse"
+    ],
+    [
+     "spoiler",
+     "spoiler, revelación del final"
+    ],
+    [
+     "to devour",
+     "devorar"
+    ],
+    [
+     "anticipation",
+     "expectativa, ilusión"
+    ],
+    [
+     "on demand",
+     "a la carta, bajo demanda"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does the writer describe traditional television in paragraph 1?",
+     "options": [
+      "An isolated, individual experience",
+      "A purely educational tool",
+      "An expensive luxury",
+      "A shared and synchronised experience"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 1: \"Television was... a shared and synchronised experience\"."
+    },
+    {
+     "type": "tf",
+     "q": "Binge-watching was always considered a perfectly respectable habit.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: antes era \"a slightly embarrassing habit\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, how has the function of the cliffhanger changed?",
+     "options": [
+      "It has completely disappeared",
+      "It is used to sell products",
+      "It now aims to make viewers start the next episode immediately",
+      "It only appears in the last episode"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 3: ahora busca que el espectador deje correr el siguiente episodio \"within seconds\"."
+    },
+    {
+     "type": "gap",
+     "q": "Viewers who watch a series in a single ____ remember it less clearly.",
+     "answer": "burst",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"viewers who watch a series in a single burst\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the main commercial reason for returning to weekly release?",
+     "options": [
+      "It generates more discussion and keeps subscribers paying longer",
+      "Governments require it",
+      "It is cheaper to produce",
+      "Actors prefer it"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"generates far more online discussion, and keeps subscribers paying for longer\"."
+    },
+    {
+     "type": "vocab",
+     "q": "The sentence adverb 'Admittedly' at the start of paragraph 6 introduces…",
+     "options": [
+      "a new topic unrelated to the essay",
+      "a strong criticism",
+      "a final conclusion",
+      "a point the writer concedes against their main argument"
+     ],
+     "answer": 3,
+     "explain_es": "'Admittedly' introduce una concesión: el autor reconoce algo que matiza su argumento."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "The advantages of binge-watching",
+      "Why the past was perfect",
+      "The end of streaming",
+      "How to avoid spoilers"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo reconoce las virtudes del modelo de maratón."
+    },
+    {
+     "type": "tf",
+     "q": "The writer works for a streaming platform.",
+     "answer": "NG",
+     "explain_es": "El ensayo no menciona el trabajo del autor."
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "u-c1-6-1",
+   "title": "From the Bus to the Big Stage",
+   "level": "C1",
+   "genre": "profile",
+   "topic": "Music",
+   "emoji": "🎤",
+   "words": 523,
+   "paragraphs": [
+    "Three years ago, Yeison 'El Kiko' Valdez was singing champeta on the buses of Cartagena for whatever coins passengers would give him. He would board at the market in Bazurto, sing two songs over the roar of the engine, and jump off three stops later to catch the next bus back. On a good day, he made enough to pay for lunch and a phone recharge. On a bad day, he made nothing at all.",
+    "Everything changed on a Tuesday afternoon in March, when a tourist filmed him performing a song he had written about his grandmother's fried fish stall. The video, barely a minute long, showed Yeison drumming on the back of a seat while the whole bus clapped along. Within a week it had gone viral, accumulating millions of views and prompting a wave of imitations. The catchy chorus became a soundtrack to dance challenges as far away as Mexico City and Madrid.",
+    "The speed of what followed still seems to bewilder him. \"One day I was on the bus, and the next day people were calling me from record labels I'd only seen on television,\" he says, sitting in a recording studio in Barranquilla. \"The more people shared the video, the more nervous I got. I kept thinking: what if this is all there is?\"",
+    "It is a reasonable fear. The history of popular music is littered with one-hit wonders: artists whose single moment of fame was followed by a rapid fade into obscurity. Social media has made the phenomenon even more common. The faster a song spreads online, the faster audiences tend to move on to the next novelty. Industry insiders estimate that only a small fraction of artists who go viral manage to build lasting careers.",
+    "Yeison's response has been to slow down. Rather than signing the first contract offered to him, he spent months seeking advice, eventually choosing a smaller independent label that agreed to let him keep control of his songs. He has also resisted pressure to abandon champeta in favour of more commercial reggaeton. \"Champeta is where I come from,\" he explains. \"It was born in the neighbourhoods, in the picós, with African rhythms that people here kept alive when nobody respected them. If I sold out, I'd lose the thing that makes me different.\"",
+    "His debut album, released last month, suggests he may have found a way to grow without losing his roots. Critics have praised its lyrics, which sketch vivid scenes of street life in Cartagena with humour and tenderness, and its production, which blends traditional guitar patterns with subtle electronic touches. Some reviewers have described a few tracks as derivative, but most agree that the strongest songs strike a chord in a way that no algorithm could design.",
+    "Whether his music will stand the test of time is impossible to predict. Yeison seems at peace with the uncertainty. He still visits Bazurto most weekends, and occasionally, when he is recognised, passengers will ask him to sing on the bus as he used to. Usually he agrees. \"The bigger the stage gets,\" he says, \"the more I need to remember the small ones.\""
+   ],
+   "glossary": [
+    [
+     "to board",
+     "subirse a (un vehículo)"
+    ],
+    [
+     "roar",
+     "rugido, estruendo"
+    ],
+    [
+     "to go viral",
+     "hacerse viral"
+    ],
+    [
+     "catchy",
+     "pegajoso"
+    ],
+    [
+     "to bewilder",
+     "desconcertar"
+    ],
+    [
+     "one-hit wonder",
+     "artista de un solo éxito"
+    ],
+    [
+     "to fade into obscurity",
+     "caer en el olvido"
+    ],
+    [
+     "to sell out",
+     "venderse, traicionar los principios por dinero"
+    ],
+    [
+     "lyrics",
+     "letra (de una canción)"
+    ],
+    [
+     "derivative",
+     "poco original, derivado"
+    ],
+    [
+     "to strike a chord",
+     "tocar la fibra, conmover"
+    ],
+    [
+     "to stand the test of time",
+     "resistir el paso del tiempo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How did Yeison earn money three years ago?",
+     "options": [
+      "Working at a fish stall",
+      "Playing in a band in Barranquilla",
+      "Singing champeta on buses",
+      "Selling phone recharges"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: cantaba champeta en los buses de Cartagena."
+    },
+    {
+     "type": "mc",
+     "q": "What was the viral song about?",
+     "options": [
+      "A love story",
+      "Cartagena's beaches",
+      "A bus driver",
+      "His grandmother's fried fish stall"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 2: \"a song he had written about his grandmother's fried fish stall\"."
+    },
+    {
+     "type": "vocab",
+     "q": "\"He would board at the market in Bazurto\" uses 'would' to describe…",
+     "options": [
+      "a repeated past habit",
+      "a polite request",
+      "a future plan",
+      "an unreal situation"
+     ],
+     "answer": 0,
+     "explain_es": "'Would' + infinitivo describe hábitos repetidos en el pasado."
+    },
+    {
+     "type": "mc",
+     "q": "\"The more people shared the video, the more nervous I got\" is an example of…",
+     "options": [
+      "a cleft sentence",
+      "a double comparative",
+      "a passive",
+      "a superlative"
+     ],
+     "answer": 1,
+     "explain_es": "Estructura 'the more..., the more...' = comparativo doble: dos cambios relacionados."
+    },
+    {
+     "type": "tf",
+     "q": "According to industry insiders, most artists who go viral build lasting careers.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"only a small fraction of artists who go viral manage to build lasting careers\"."
+    },
+    {
+     "type": "gap",
+     "q": "Yeison chose a smaller independent label that let him keep ____ of his songs.",
+     "answer": "control",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"agreed to let him keep control of his songs\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "Staying true to his roots",
+      "Switching to reggaeton",
+      "Leaving Cartagena",
+      "A record-breaking contract"
+     ],
+     "answer": 0,
+     "explain_es": "Yeison rechaza abandonar la champeta para no perder su identidad."
+    },
+    {
+     "type": "tf",
+     "q": "All critics agree that every song on the album is original.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"Some reviewers have described a few tracks as derivative\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-6-2",
+   "title": "What Does It Really Mean to Sell Out?",
+   "level": "C1",
+   "genre": "essay",
+   "topic": "Music industry",
+   "emoji": "💿",
+   "words": 542,
+   "paragraphs": [
+    "Few accusations wound musicians as deeply as the charge of selling out. The phrase suggests betrayal: an artist who once made music for its own sake has abandoned their principles in exchange for money, fame or mainstream acceptance. Fans who discovered a band in a small bar will often feel personally let down when that band signs with a major label, licenses a song for a car advertisement or collaborates with a pop star. Yet the more closely one examines the idea, the harder it becomes to define.",
+    "The concept has a long history. In the 1960s, when Bob Dylan famously performed with an electric band at a folk festival, some members of the audience reportedly booed, convinced that he had betrayed the acoustic tradition he had represented. Decades later, punk and indie scenes developed an almost moral distinction between independent integrity and commercial compromise. To appear on mainstream television, or to have a song played in a shopping centre, could be enough to lose credibility among one's original followers.",
+    "Part of the problem is that the accusation rests on a romantic myth: the idea that genuine art is produced in poverty and isolation, untouched by commercial considerations. This has rarely been true. Composers have always written for patrons, churches or paying audiences. Many of the most celebrated musicians in Latin American history, from bolero singers to the great salsa orchestras of the 1970s, worked within a fiercely commercial industry and still produced music that has stood the test of time.",
+    "Moreover, the economics of music have changed dramatically. Streaming services pay artists a tiny fraction of a cent per play, which means that a song must be streamed millions of times to generate a modest income. For many independent musicians, licensing a track to an advertisement or a television series is not a betrayal but a survival strategy. To condemn them for it is, arguably, to demand that they remain poor in order to satisfy their fans' sense of authenticity.",
+    "None of this means that the concern behind the accusation is entirely misplaced. There is a meaningful difference between an artist who reaches a larger audience while remaining recognisably themselves and one who deliberately reshapes their music to fit whatever the algorithm currently rewards. The latter often produces work that is catchy but derivative, designed to be consumed and forgotten. When fans complain that an artist has sold out, what they frequently mean is not that the artist has become successful, but that the music has lost its distinctive character.",
+    "Perhaps, then, a more useful question is not whether a musician has made money, but whether they still make choices that reflect their own vision. Success can coexist with artistic integrity; it is the surrender of that vision that deserves criticism. The longer a career lasts, the more likely it is that an artist will evolve, experiment and occasionally disappoint. That is not necessarily selling out. It may simply be growing up.",
+    "Fans, too, might reconsider their role. Loyalty to an artist should not mean freezing them at the moment we first discovered them. The musicians who matter most will, at some point, surprise us, and some of those surprises will strike a chord we didn't know we were waiting for."
+   ],
+   "glossary": [
+    [
+     "to sell out",
+     "venderse (por dinero o fama)"
+    ],
+    [
+     "to let someone down",
+     "decepcionar a alguien"
+    ],
+    [
+     "to license",
+     "ceder los derechos de uso"
+    ],
+    [
+     "to boo",
+     "abuchear"
+    ],
+    [
+     "credibility",
+     "credibilidad"
+    ],
+    [
+     "patron",
+     "mecenas"
+    ],
+    [
+     "to stand the test of time",
+     "resistir el paso del tiempo"
+    ],
+    [
+     "survival strategy",
+     "estrategia de supervivencia"
+    ],
+    [
+     "misplaced",
+     "injustificado, fuera de lugar"
+    ],
+    [
+     "catchy",
+     "pegajoso"
+    ],
+    [
+     "derivative",
+     "poco original"
+    ],
+    [
+     "to coexist",
+     "coexistir"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does the accusation of 'selling out' suggest, according to paragraph 1?",
+     "options": [
+      "That an artist sells many tickets",
+      "That an artist has betrayed their principles for money or fame",
+      "That an artist has become more talented",
+      "That an artist has stopped making music"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"has abandoned their principles in exchange for money, fame or mainstream acceptance\"."
+    },
+    {
+     "type": "tf",
+     "q": "Some audience members reportedly booed Bob Dylan when he performed with an electric band.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"some members of the audience reportedly booed\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 3.",
+     "options": [
+      "The myth of art untouched by money",
+      "How churches funded music",
+      "Why composers were poor",
+      "The history of salsa"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo cuestiona el mito romántico de que el arte genuino surge sin consideraciones comerciales."
+    },
+    {
+     "type": "mc",
+     "q": "Why do many independent musicians license songs to advertisements?",
+     "options": [
+      "Because they want to become actors",
+      "Because labels force them",
+      "Because streaming pays very little",
+      "Because fans ask them to"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 4: el streaming paga \"a tiny fraction of a cent per play\"; es \"a survival strategy\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 5, 'misplaced' concern is concern that is…",
+     "options": [
+      "unjustified",
+      "secret",
+      "very strong",
+      "lost"
+     ],
+     "answer": 0,
+     "explain_es": "'Misplaced' aplicado a una emoción o preocupación significa injustificada."
+    },
+    {
+     "type": "gap",
+     "q": "When fans complain, they often mean the music has lost its ____ character.",
+     "answer": "distinctive",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"the music has lost its distinctive character\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"The longer a career lasts, the more likely it is that an artist will evolve\" means…",
+     "options": [
+      "Artists should have short careers",
+      "Change only happens at the start of a career",
+      "Long careers make change less likely",
+      "As careers get longer, change becomes more likely"
+     ],
+     "answer": 3,
+     "explain_es": "Comparativo doble: a medida que aumenta una cosa, aumenta la otra."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes fans should expect artists never to change.",
+     "answer": "F",
+     "explain_es": "Último párrafo: la lealtad \"should not mean freezing them at the moment we first discovered them\"."
+    }
+   ]
+  }
+ ],
+ "7": [
+  {
+   "id": "u-c1-7-1",
+   "title": "The Dress in the Wardrobe",
+   "level": "C1",
+   "genre": "short story",
+   "topic": "Generations",
+   "emoji": "👗",
+   "words": 584,
+   "paragraphs": [
+    "The dress had been hanging at the back of her grandmother's wardrobe for fifty-one years, wrapped in a plastic cover that had turned yellow with age. When Mariana finally unzipped it, the smell of mothballs filled the bedroom, and Abuela Rosa clapped her hands as though she had been waiting for this moment all her life.",
+    "\"My quinceañera,\" she said. \"Tunja, 1973. Your great-grandfather sold two cows to pay for it.\"",
+    "It was pink, with a high lace collar and a skirt so wide that Mariana wondered how anyone had managed to dance in it. She held it up against herself in the mirror and tried not to laugh. Her own fifteenth birthday was three weeks away, and she had already told her parents, very firmly, that she did not want a party. What she wanted was a trip to Cartagena with her two best friends, or, failing that, a new laptop.",
+    "Abuela Rosa sat on the edge of the bed and looked at her the way she used to look at her as a little girl, half amused, half worried. \"In my day,\" she said, \"the quinceañera was the moment you stopped being a child. The whole town came. My father danced the waltz with me, and then the boys lined up to ask me to dance, one after another. I remember thinking it was the most important night of my life.\"",
+    "\"Was it?\"",
+    "Her grandmother considered the question with more seriousness than Mariana had expected. \"It felt like it. Looking back on it now, I'm not sure. Two years later I was married. At seventeen. Can you imagine?\"",
+    "Mariana couldn't. The girls she knew talked about university, about studying abroad, about the jobs they might have in places their grandmothers had never heard of. Marriage was something that happened to people in their thirties, if it happened at all. The rite of passage that had once marked the start of adult life now seemed to her like a costume party organised mainly for the parents.",
+    "\"I don't want to be rude,\" she said carefully. \"But it all seems a bit old-fashioned.\"",
+    "To her surprise, her grandmother laughed. \"Of course it does. Everything your parents and grandparents did will seem old-fashioned to you. And one day your granddaughter will find your photos and think you dressed like a clown.\" She paused. \"But I'll tell you something nobody told me. The party wasn't the important part. What mattered was that everyone I loved was in one room, at the same time, looking at me as if I were the most precious thing in the world. That only happens a few times in a life.\"",
+    "Mariana looked at the dress again. It still seemed absurd. But she noticed, for the first time, the tiny hand-sewn flowers along the hem, hundreds of them, each one stitched by someone who must have spent weeks on it.",
+    "\"Who made these?\" she asked.",
+    "\"My mother,\" said Abuela Rosa. \"At night, after work, by the light of a kerosene lamp.\"",
+    "Three weeks later, Mariana celebrated her fifteenth birthday with a small lunch at home, the kind of gathering her grandmother would once have considered barely a celebration at all. There was no waltz and no line of boys. But the whole family came, and when they asked her to stand up for a photograph, she was wearing a simple pink jacket with a row of tiny embroidered flowers along the cuff, flowers she had spent every evening learning to sew."
+   ],
+   "glossary": [
+    [
+     "wardrobe",
+     "armario, clóset"
+    ],
+    [
+     "mothballs",
+     "bolas de naftalina"
+    ],
+    [
+     "lace collar",
+     "cuello de encaje"
+    ],
+    [
+     "failing that",
+     "en su defecto, si no"
+    ],
+    [
+     "to look back on",
+     "recordar, mirar en retrospectiva"
+    ],
+    [
+     "rite of passage",
+     "rito de paso"
+    ],
+    [
+     "old-fashioned",
+     "anticuado"
+    ],
+    [
+     "hem",
+     "dobladillo, ruedo"
+    ],
+    [
+     "to stitch",
+     "coser, puntear"
+    ],
+    [
+     "kerosene lamp",
+     "lámpara de queroseno"
+    ],
+    [
+     "gathering",
+     "reunión"
+    ],
+    [
+     "cuff",
+     "puño (de manga)"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How did Mariana's great-grandfather pay for the quinceañera?",
+     "options": [
+      "He sold two cows",
+      "He borrowed money",
+      "The town paid for it",
+      "He worked extra hours"
+     ],
+     "answer": 0,
+     "explain_es": "\"Your great-grandfather sold two cows to pay for it\"."
+    },
+    {
+     "type": "tf",
+     "q": "At the start of the story, Mariana wanted a big quinceañera party.",
+     "answer": "F",
+     "explain_es": "Ella había dicho \"very firmly, that she did not want a party\"."
+    },
+    {
+     "type": "mc",
+     "q": "In \"looked at her the way she used to look at her as a little girl\", 'the way' means…",
+     "options": [
+      "the direction",
+      "in the same manner as",
+      "the reason why",
+      "the road"
+     ],
+     "answer": 1,
+     "explain_es": "'The way' introduce una comparación de manera: igual que como la miraba antes."
+    },
+    {
+     "type": "gap",
+     "q": "Abuela Rosa got married at the age of ____.",
+     "answer": "seventeen",
+     "accept": [
+      "17"
+     ],
+     "explain_es": "\"Two years later I was married. At seventeen.\""
+    },
+    {
+     "type": "vocab",
+     "q": "A 'rite of passage' is…",
+     "options": [
+      "a travel document",
+      "a dance step",
+      "a ceremony or event marking a new stage in life",
+      "a religious prayer"
+     ],
+     "answer": 2,
+     "explain_es": "'Rite of passage' = rito de paso, evento que marca una nueva etapa."
+    },
+    {
+     "type": "mc",
+     "q": "According to Abuela Rosa, what was the most important part of her quinceañera?",
+     "options": [
+      "The dress",
+      "The food",
+      "Dancing with the boys",
+      "Having everyone she loved in one room"
+     ],
+     "answer": 3,
+     "explain_es": "\"What mattered was that everyone I loved was in one room\"."
+    },
+    {
+     "type": "tf",
+     "q": "Abuela Rosa's mother sewed the flowers on the dress.",
+     "answer": "T",
+     "explain_es": "\"My mother... At night, after work, by the light of a kerosene lamp\"."
+    },
+    {
+     "type": "heading",
+     "q": "What does the ending of the story suggest?",
+     "options": [
+      "Mariana wore her grandmother's dress",
+      "Mariana found her own way to connect with the tradition",
+      "Mariana went to Cartagena",
+      "Mariana rejected all family traditions"
+     ],
+     "answer": 1,
+     "explain_es": "Celebró de forma sencilla, pero llevó flores bordadas que aprendió a coser: adaptó la tradición a su manera."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-7-2",
+   "title": "Why Young Colombians Are Leaving Home Later",
+   "level": "C1",
+   "genre": "report",
+   "topic": "Social change",
+   "emoji": "🏠",
+   "words": 539,
+   "paragraphs": [
+    "When Laura Benítez's parents were her age, they had already been married for six years, owned a small apartment in Kennedy and were raising two children. Laura, who is thirty-one and works as a graphic designer in Bogotá, still lives in her childhood bedroom. \"My mother says I'm like a boomerang,\" she laughs. \"I moved out for a year when I was twenty-six, and then I came back.\"",
+    "Laura's situation is far from unusual. Across Latin America, as in southern Europe, the age at which young people leave the family home has been rising for several decades. Data from national household surveys suggest that a large proportion of Colombians in their late twenties now live with at least one parent, and that the traditional milestones of adulthood, which once followed one another in quick succession, have become both later and less predictable.",
+    "Economists point first to money. Rents in the major cities have risen considerably faster than salaries, particularly for young workers, many of whom are employed on short-term contracts or in the informal sector. Without a stable income, signing a lease or applying for a mortgage is difficult, if not impossible. Staying at home, by contrast, allows young adults to save, study or support their families, and in many households their contribution to the bills is essential.",
+    "But financial pressure is only part of the story. Sociologists who study family life describe a profound shift in attitudes. For earlier generations, settling down, which meant marriage, children and a home of one's own, was regarded as the natural purpose of early adulthood. Today, many young Colombians see their twenties as a period for education, travel and experimentation, a time to find out who they are before committing to anything permanent. The number of university graduates has grown dramatically, and so has the number of people who postpone marriage or decide not to marry at all.",
+    "The generation gap this creates is not always comfortable. Some parents worry that their adult children lack independence, and harbour a quiet nostalgia for an era when, as they see it, people grew up faster. Young adults, meanwhile, often feel that their parents fail to appreciate how much harder the economy has become. \"My father talks about his first job as if anyone could buy a house with one salary,\" says Andrés, twenty-nine, from Medellín. \"That world doesn't exist any more.\"",
+    "Yet the arrangement also has benefits that are easily overlooked. Multigenerational households can provide care for elderly relatives and young children, and many families report closer relationships than they might otherwise have had. In Colombian culture, where family ties have traditionally been strong, living together into adulthood carries less stigma than it does in, for example, Scandinavia or the United States.",
+    "With hindsight, researchers suggest, the period of family life that older generations regard as normal may itself have been the exception: a few decades of rapid economic growth in which leaving home early was briefly affordable. Whether today's patterns represent a temporary response to hard times or a lasting change in how adulthood is defined remains an open question. For Laura, the answer is personal. \"I'll leave when I'm ready,\" she says. \"And this time, I'd like it to be for good.\""
+   ],
+   "glossary": [
+    [
+     "milestone",
+     "hito"
+    ],
+    [
+     "in quick succession",
+     "uno tras otro, en rápida sucesión"
+    ],
+    [
+     "lease",
+     "contrato de arrendamiento"
+    ],
+    [
+     "mortgage",
+     "hipoteca, crédito hipotecario"
+    ],
+    [
+     "to settle down",
+     "sentar cabeza, establecerse"
+    ],
+    [
+     "to postpone",
+     "aplazar"
+    ],
+    [
+     "generation gap",
+     "brecha generacional"
+    ],
+    [
+     "to harbour",
+     "albergar (un sentimiento)"
+    ],
+    [
+     "nostalgia",
+     "nostalgia"
+    ],
+    [
+     "stigma",
+     "estigma"
+    ],
+    [
+     "with hindsight",
+     "en retrospectiva"
+    ],
+    [
+     "for good",
+     "para siempre, definitivamente"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does Laura's mother call her a 'boomerang'?",
+     "options": [
+      "Because she works in Australia",
+      "Because she travels a lot",
+      "Because she moved out and then came back home",
+      "Because she plays sports"
+     ],
+     "answer": 2,
+     "explain_es": "Se mudó durante un año a los 26 y luego regresó."
+    },
+    {
+     "type": "tf",
+     "q": "Laura's parents were married and had children by the time they were her age.",
+     "answer": "T",
+     "explain_es": "Párrafo 1: llevaban seis años casados y criaban dos hijos."
+    },
+    {
+     "type": "mc",
+     "q": "What economic factor is mentioned in paragraph 3?",
+     "options": [
+      "Rents have risen faster than salaries",
+      "Mortgages are now free",
+      "Salaries have doubled",
+      "Unemployment has disappeared"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"Rents in the major cities have risen considerably faster than salaries\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'settling down' is defined in the text as…",
+     "options": [
+      "marriage, children and a home of one's own",
+      "retiring early",
+      "finding a stable job",
+      "moving to a quiet town"
+     ],
+     "answer": 0,
+     "explain_es": "El texto lo define explícitamente: \"which meant marriage, children and a home of one's own\"."
+    },
+    {
+     "type": "mc",
+     "q": "In 'many of whom are employed on short-term contracts', why is the pronoun 'whom' required?",
+     "options": [
+      "It replaces 'that'",
+      "It refers to things",
+      "It is optional in all clauses",
+      "It follows a preposition in a non-defining clause"
+     ],
+     "answer": 3,
+     "explain_es": "Tras 'many of' en una cláusula explicativa se usa obligatoriamente 'whom' (para personas); no se puede omitir ni usar 'that'."
+    },
+    {
+     "type": "gap",
+     "q": "Andrés says his father talks about his first job as ____ anyone could buy a house with one salary.",
+     "answer": "if",
+     "accept": [
+      "though"
+     ],
+     "explain_es": "\"as if anyone could buy a house with one salary\" (as if/as though + cláusula)."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "The cost of caring for the elderly",
+      "Family conflicts",
+      "Hidden benefits of living together",
+      "Why Scandinavians leave home early"
+     ],
+     "answer": 2,
+     "explain_es": "El párrafo describe ventajas que se pasan por alto, como el cuidado mutuo."
+    },
+    {
+     "type": "tf",
+     "q": "Researchers are certain that the current trend is permanent.",
+     "answer": "F",
+     "explain_es": "Último párrafo: \"remains an open question\"."
+    }
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "u-c1-8-1",
+   "title": "The Hidden Architecture of the Supermarket",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Marketing",
+   "emoji": "🛒",
+   "words": 527,
+   "paragraphs": [
+    "You walk into a supermarket intending to buy milk, eggs and a loaf of bread. Forty minutes later you leave with all three, plus a scented candle, a bag of imported crisps, two bottles of wine on special offer and a garden hose you are fairly sure you did not need. If this sounds familiar, you should not blame yourself entirely. Almost every detail of the space you have just walked through was designed to encourage precisely that outcome.",
+    "Consider the layout. Essential items such as milk, eggs and bread are rarely located near the entrance. Instead, they are typically placed at the back of the store, so that customers must walk past hundreds of other products to reach them. The longer we stay inside, retail consultants say, the more we tend to spend, which is why many supermarkets avoid windows and clocks, and why music is often slow enough to make shoppers walk at a leisurely pace.",
+    "The entrance itself is usually devoted to fresh flowers, fruit and baked goods. These create an impression of freshness and abundance, and the smell of warm bread is thought to stimulate appetite. A hungry shopper, as any parent knows, is far more likely to make impulse buys. Some chains have been reported to pump artificial bakery aromas into their stores, though most deny it.",
+    "On the shelves, position is everything. Products placed at eye level sell considerably better than those on the bottom shelf, and manufacturers frequently pay retailers substantial fees to secure these spots. Children's cereals and sweets, meanwhile, tend to be displayed lower down, exactly where a five-year-old in a trolley can reach them. The ends of aisles, known in the industry as end caps, are reserved for items that the store wants to promote, often with signs that suggest a bargain even when the price has barely changed.",
+    "Pricing tricks are equally sophisticated. A product priced at 9,990 pesos feels significantly cheaper than one at 10,000, even though the difference is trivial. Multi-buy offers persuade customers to buy three items when they wanted one, and larger packages are not always cheaper per unit, which can make bulk buying a false economy. Loyalty cards, presented as a way of rewarding customers, also give retailers detailed information about our habits, allowing them to send each of us personalised offers designed to deepen our brand loyalty.",
+    "Consumer organisations recommend that shoppers be aware of these strategies rather than simply resisting them. Writing a shopping list, eating before you go and comparing unit prices are among the most effective defences. Some experts also suggest that shoppers set themselves a budget and pay in cash, since parting with physical money tends to feel more painful than tapping a card.",
+    "None of this is illegal, and retailers would argue that they are merely responding to what customers want: convenience, variety and the occasional treat. Yet it is worth remembering that a supermarket is not a neutral space. It is one of the most carefully engineered environments most of us will ever enter, and every aisle is quietly asking us the same question: are you sure you don't need this too?"
+   ],
+   "glossary": [
+    [
+     "loaf of bread",
+     "pan (de molde o barra)"
+    ],
+    [
+     "layout",
+     "distribución, diseño"
+    ],
+    [
+     "leisurely",
+     "pausado, tranquilo"
+    ],
+    [
+     "abundance",
+     "abundancia"
+    ],
+    [
+     "impulse buy",
+     "compra impulsiva"
+    ],
+    [
+     "trolley",
+     "carrito de compras"
+    ],
+    [
+     "aisle",
+     "pasillo"
+    ],
+    [
+     "bargain",
+     "ganga"
+    ],
+    [
+     "trivial",
+     "insignificante"
+    ],
+    [
+     "false economy",
+     "falso ahorro"
+    ],
+    [
+     "brand loyalty",
+     "fidelidad a la marca"
+    ],
+    [
+     "to part with",
+     "desprenderse de"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why are essential items usually placed at the back of the supermarket?",
+     "options": [
+      "Because they are cheaper",
+      "So customers pass many other products on the way",
+      "Because they need refrigeration",
+      "To make deliveries easier"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"so that customers must walk past hundreds of other products to reach them\"."
+    },
+    {
+     "type": "tf",
+     "q": "Many supermarkets avoid windows and clocks so customers stay longer.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"which is why many supermarkets avoid windows and clocks\"."
+    },
+    {
+     "type": "vocab",
+     "q": "An 'impulse buy' (paragraph 3) is something you buy…",
+     "options": [
+      "online",
+      "for someone else",
+      "suddenly, without planning",
+      "after careful planning"
+     ],
+     "answer": 2,
+     "explain_es": "'Impulse buy' = compra no planificada, por impulso."
+    },
+    {
+     "type": "gap",
+     "q": "The ends of aisles are known in the industry as end ____.",
+     "answer": "caps",
+     "accept": [],
+     "explain_es": "Párrafo 4: \"known in the industry as end caps\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why can buying larger packages be a 'false economy'?",
+     "options": [
+      "They are not always cheaper per unit",
+      "They expire immediately",
+      "They are always more expensive",
+      "They can't be paid in cash"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"larger packages are not always cheaper per unit\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"Consumer organisations recommend that shoppers be aware of these strategies.\" Why is 'be' used instead of 'are'?",
+     "options": [
+      "It is the subjunctive after 'recommend that'",
+      "It is the passive voice",
+      "It is a mistake",
+      "It is a future form"
+     ],
+     "answer": 0,
+     "explain_es": "Tras verbos como 'recommend, suggest, insist' + that, el inglés formal usa el subjuntivo (forma base)."
+    },
+    {
+     "type": "mc",
+     "q": "In 'allowing them to send each of us personalised offers', which is the indirect object?",
+     "options": [
+      "personalised offers",
+      "each of us",
+      "them",
+      "send"
+     ],
+     "answer": 1,
+     "explain_es": "'each of us' recibe las ofertas (objeto indirecto); 'personalised offers' es el objeto directo."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "How to defend yourself as a shopper",
+      "Laws against marketing",
+      "Why cash is disappearing",
+      "The best supermarkets in Colombia"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo da consejos prácticos: lista, comer antes, comparar precios, presupuesto."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-8-2",
+   "title": "In Praise of Haggling",
+   "level": "C1",
+   "genre": "opinion column",
+   "topic": "Shopping",
+   "emoji": "🥭",
+   "words": 563,
+   "paragraphs": [
+    "My grandmother could haggle for anything. I once watched her negotiate the price of a sack of potatoes at the Paloquemao market in Bogotá with the composure of a seasoned diplomat. She began by expressing polite disappointment at the quality, moved on to a long story about her late husband, who had apparently grown far better potatoes in Boyacá, and ended by walking away, slowly, until the seller called her back. She paid about twenty per cent less than the original price, and both of them seemed delighted.",
+    "I thought of her recently while buying a pair of shoes in a shopping centre in the north of the city. The price was printed on a small white label, the assistant scanned it, and I paid. There was no conversation, no story, no theatre. The transaction took less than a minute, and it was, I realised, entirely joyless.",
+    "Fixed prices are, of course, a relatively recent invention. For most of human history, and in much of the world today, the price of a product was something to be discovered through conversation. Many historians credit nineteenth-century department stores with spreading the price tag, partly to speed up sales and partly to reassure customers that they would not be cheated. It was a sensible innovation, and I am not suggesting that we abolish it. Nobody wants to bargain for a bus ticket or a packet of paracetamol.",
+    "But I do think we have lost something by abandoning haggling almost entirely, at least in the more formal parts of the economy. For one thing, haggling is a social act. It requires us to look the seller in the eye, to recognise them as a person rather than a function, and to arrive at an agreement together. In the markets and the San Andresito shopping arcades, where bargaining is still expected, purchases often come with advice, jokes and even long-term relationships. My grandmother bought her potatoes from the same family for thirty years.",
+    "Haggling also forces us to think about value. When a price is fixed, we tend to accept it as an objective fact. When it is negotiable, we are obliged to ask what the item is really worth to us, and whether we truly want it. In an age of consumerism, in which marketing is designed to make us feel that we are always missing something, that pause for reflection is no small thing. It is remarkably difficult to make an impulse buy when you have to argue for it.",
+    "Critics will point out, rightly, that haggling can be unfair. It tends to favour the confident and the well-informed, and it can disadvantage sellers who are already struggling, especially in a country where many market traders earn very little. Bargaining aggressively with a fruit seller over a few hundred pesos, while paying full price for a coffee in an expensive café, is hardly admirable. Good haggling, as my grandmother understood, is not about crushing the other person. It is about reaching a price that both sides can live with.",
+    "So I propose a modest revival. Next time you visit a market, ask the seller for a better price, not because you need the discount, but because the conversation is worth having. Insist that it be friendly. And if you happen to know a good story about potatoes, now would be the perfect time to tell it."
+   ],
+   "glossary": [
+    [
+     "to haggle",
+     "regatear"
+    ],
+    [
+     "composure",
+     "serenidad, compostura"
+    ],
+    [
+     "seasoned",
+     "experimentado"
+    ],
+    [
+     "joyless",
+     "sin alegría"
+    ],
+    [
+     "price tag",
+     "etiqueta de precio"
+    ],
+    [
+     "to cheat",
+     "estafar, engañar"
+    ],
+    [
+     "to bargain",
+     "regatear, negociar"
+    ],
+    [
+     "shopping arcade",
+     "galería comercial"
+    ],
+    [
+     "consumerism",
+     "consumismo"
+    ],
+    [
+     "impulse buy",
+     "compra impulsiva"
+    ],
+    [
+     "to crush",
+     "aplastar"
+    ],
+    [
+     "revival",
+     "renacimiento, recuperación"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How did the writer's grandmother finish her negotiation over the potatoes?",
+     "options": [
+      "She walked away slowly until the seller called her back",
+      "She bought potatoes somewhere else",
+      "She paid the full price",
+      "She complained to the market manager"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"ended by walking away, slowly, until the seller called her back\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer enjoyed buying shoes in the shopping centre.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: la transacción fue \"entirely joyless\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did department stores spread the use of price tags, according to historians?",
+     "options": [
+      "Because the law required it",
+      "To speed up sales and reassure customers",
+      "To increase prices",
+      "To reduce the number of workers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"partly to speed up sales and partly to reassure customers\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer wants to abolish fixed prices.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"I am not suggesting that we abolish it\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Haggling as a social act",
+      "How to cheat a seller",
+      "The history of San Andresito",
+      "Why potatoes are expensive"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo presenta el regateo como un acto social que crea relaciones."
+    },
+    {
+     "type": "gap",
+     "q": "When you have to argue for something, it is difficult to make an ____ buy.",
+     "answer": "impulse",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"It is remarkably difficult to make an impulse buy when you have to argue for it\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 6, a price 'that both sides can live with' is a price that…",
+     "options": [
+      "is extremely low",
+      "includes accommodation",
+      "only the buyer likes",
+      "both sides find acceptable"
+     ],
+     "answer": 3,
+     "explain_es": "'Live with' = aceptar, tolerar algo."
+    },
+    {
+     "type": "mc",
+     "q": "\"Insist that it be friendly\" is an example of…",
+     "options": [
+      "a question",
+      "a past tense",
+      "a passive reporting verb",
+      "the subjunctive after 'insist that'"
+     ],
+     "answer": 3,
+     "explain_es": "Tras 'insist that' se usa el subjuntivo: forma base del verbo ('be')."
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "u-c1-9-1",
+   "title": "The Gardener of the Clouds",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Wildlife",
+   "emoji": "🐻",
+   "words": 565,
+   "paragraphs": [
+    "At four in the morning, the páramo above the village of Guasca is wrapped in a cold, wet silence. Frailejones, the strange furry-leaved plants that grow only in these high Andean grasslands, loom out of the mist like silent figures. Somewhere among them, according to the camera traps that the biologist Natalia Rojas checks every fortnight, a spectacled bear passed by around midnight. \"Wherever you find intact páramo and cloud forest, there's a chance he's been there,\" she says, crouching to examine a torn bromeliad. \"You just have to know what to look for.\"",
+    "The spectacled bear, named after the pale markings that often encircle its eyes, is the only bear species native to South America. It ranges along the Andes from Venezuela to Bolivia, yet remarkably few people have ever seen one in the wild. Shy and largely solitary, it spends much of its time in dense forest, and it is classified as vulnerable, with populations fragmented by roads, farms and expanding towns.",
+    "Despite its size, the bear is mostly vegetarian. It feeds on bromeliads, fruits, palm hearts and bamboo shoots, occasionally supplementing its diet with insects or carrion. This makes it, in the words of many ecologists, a 'gardener' of the mountains. Whenever it eats fruit, it disperses the seeds over long distances, helping forests regenerate. The paths it creates through dense vegetation open up spaces where light can reach the ground. Protecting the bear, therefore, means protecting the entire ecosystem that depends on it, including the páramos that supply much of Bogotá's drinking water.",
+    "The main threat is not poaching, although bears are still occasionally killed, but the loss of habitat. As farms and cattle pastures encroach on the forest edge, encounters between bears and people have become more frequent. A bear that has learned to raid a maize field, or that is suspected of attacking cattle, may be shot by whoever feels their livelihood is under threat. For a species that reproduces slowly, with females raising one or two cubs every few years, each death matters.",
+    "Conservationists have learned that whatever strategy they adopt must involve local communities. In several municipalities around Chingaza National Park, programmes now compensate farmers for livestock losses, help them build protective fencing and pay families to restore strips of forest that connect isolated fragments of habitat. Some former farmers have become guides for small groups of nature tourists, earning an income from the bear's presence rather than resenting it.",
+    "\"Twenty years ago, if you mentioned the oso de anteojos in these villages, people would talk about it as a problem,\" Rojas says. \"Now children draw it in school, and their parents send me photos when they find tracks. That change in attitude is the biggest victory we've had.\"",
+    "The bear is not yet on the brink of extinction, but its future remains uncertain. Climate change is pushing the páramo's ecosystems higher up the mountains, leaving less space for the species that depend on them. Yet there are grounds for cautious optimism. Recent camera-trap surveys have recorded bears in areas where they had not been documented for decades, a sign of the species' resilience when given the chance. As the sun rises over Guasca, Rojas packs up her equipment and points to a line of fresh claw marks on a tree trunk. \"He's still here,\" she says. \"Whoever says nature can't recover should come and see this.\""
+   ],
+   "glossary": [
+    [
+     "páramo",
+     "páramo (ecosistema andino de alta montaña)"
+    ],
+    [
+     "to loom",
+     "surgir, asomarse amenazante"
+    ],
+    [
+     "camera trap",
+     "cámara trampa"
+    ],
+    [
+     "to crouch",
+     "agacharse, ponerse en cuclillas"
+    ],
+    [
+     "carrion",
+     "carroña"
+    ],
+    [
+     "to disperse",
+     "dispersar"
+    ],
+    [
+     "poaching",
+     "caza furtiva"
+    ],
+    [
+     "to encroach on",
+     "invadir, ocupar terreno de"
+    ],
+    [
+     "livestock",
+     "ganado"
+    ],
+    [
+     "cub",
+     "cachorro, osezno"
+    ],
+    [
+     "on the brink of",
+     "al borde de"
+    ],
+    [
+     "resilience",
+     "resiliencia, capacidad de recuperación"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does Natalia Rojas know that a bear passed by around midnight?",
+     "options": [
+      "She found its den",
+      "From the camera traps",
+      "She saw it herself",
+      "A farmer told her"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"according to the camera traps that the biologist Natalia Rojas checks\"."
+    },
+    {
+     "type": "tf",
+     "q": "The spectacled bear is found in several continents.",
+     "answer": "F",
+     "explain_es": "Párrafo 2: \"the only bear species native to South America\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why do ecologists call the bear a 'gardener' of the mountains?",
+     "options": [
+      "It lives near farms",
+      "It eats only flowers",
+      "It digs the soil",
+      "It spreads seeds and helps forests regenerate"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 3: dispersa semillas \"helping forests regenerate\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, farms that 'encroach on the forest edge'…",
+     "options": [
+      "sell forest products",
+      "protect the forest",
+      "gradually take over forest land",
+      "are far away from the forest"
+     ],
+     "answer": 2,
+     "explain_es": "'Encroach on' = invadir progresivamente un espacio."
+    },
+    {
+     "type": "mc",
+     "q": "In 'may be shot by whoever feels their livelihood is under threat', 'whoever' means…",
+     "options": [
+      "nobody",
+      "a specific known person",
+      "any person who",
+      "the government"
+     ],
+     "answer": 2,
+     "explain_es": "'Whoever' = cualquier persona que; introduce una cláusula nominal."
+    },
+    {
+     "type": "gap",
+     "q": "Some programmes pay families to restore strips of forest that connect isolated ____ of habitat.",
+     "answer": "fragments",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"connect isolated fragments of habitat\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Children in danger",
+      "A change in local attitudes",
+      "A new national park",
+      "Tourism destroys the páramo"
+     ],
+     "answer": 1,
+     "explain_es": "Rojas describe cómo la comunidad pasó de ver al oso como problema a valorarlo."
+    },
+    {
+     "type": "tf",
+     "q": "According to the article, the spectacled bear is on the brink of extinction.",
+     "answer": "F",
+     "explain_es": "Último párrafo: \"The bear is not yet on the brink of extinction\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-9-2",
+   "title": "Should Zoos Still Exist?",
+   "level": "C1",
+   "genre": "essay",
+   "topic": "Animal ethics",
+   "emoji": "🦁",
+   "words": 543,
+   "paragraphs": [
+    "Few institutions provoke such conflicting emotions as the zoo. For many people, a childhood visit to see lions, elephants and giraffes is a cherished memory, the first moment they understood the astonishing diversity of life on Earth. For others, the sight of a large predator pacing the same few metres of its enclosure is a vivid symbol of human arrogance. As public attitudes towards animals have shifted, the question has become increasingly urgent: in the twenty-first century, can keeping wild animals in captivity still be justified?",
+    "Defenders of modern zoos make three principal arguments. The first concerns conservation. Many species are now on the brink of extinction in the wild, and carefully managed breeding programmes in zoos have helped to save some of them. Several species that had disappeared from their natural habitat survived only because populations were maintained in captivity and later reintroduced. The second argument concerns research: studying animals up close has contributed to veterinary medicine, to our understanding of animal behaviour and to the protection of wild populations. The third is educational. Whatever we may learn from documentaries, supporters argue, there is no substitute for the emotional impact of seeing a living animal, and that emotional connection may inspire future conservationists.",
+    "These arguments have real weight, but they deserve scrutiny. Only a fraction of the animals kept in zoos belong to endangered species, and an even smaller number are part of programmes that aim to return them to the wild. Many of the most popular attractions, such as polar bears, elephants and big cats, are precisely the animals least suited to captivity. Studies have documented repetitive behaviours, such as swaying or pacing, that are widely interpreted as signs of chronic stress. Whenever a zoo justifies keeping such species on educational grounds, it is fair to ask what lesson visitors are actually learning: respect for wild animals, or the assumption that their natural place is behind glass?",
+    "There is also a question of resources. Maintaining a single elephant in a well-designed enclosure costs a great deal of money each year. Critics argue that the same funds would achieve far more if they were invested in protecting habitat, the main reason species are disappearing in the first place. Colombia, one of the most biodiverse countries on the planet, offers an illustration: wherever forests are preserved and poaching is controlled, wildlife tends to recover without any need for cages.",
+    "Yet abolishing zoos entirely would not be without costs. Some animals, rescued from illegal trafficking or injured beyond the possibility of release, have nowhere else to go. Rescue centres and sanctuaries, which prioritise the welfare of individual animals over public display, play an indispensable role, and several Colombian institutions have moved in this direction, reducing the number of species they exhibit and focusing on native wildlife.",
+    "Perhaps, then, the question is not whether zoos should exist, but what kind of zoos deserve to. An institution that houses animals rescued from trafficking, contributes genuinely to conservation and research, and refuses to keep species whose needs it cannot meet is very different from one that treats animals as entertainment. Whoever runs a zoo today has a responsibility to prove that it belongs to the first category. Those that cannot should, sooner or later, close their gates."
+   ],
+   "glossary": [
+    [
+     "cherished",
+     "entrañable, apreciado"
+    ],
+    [
+     "to pace",
+     "dar vueltas, caminar de un lado a otro"
+    ],
+    [
+     "enclosure",
+     "recinto, jaula"
+    ],
+    [
+     "captivity",
+     "cautiverio"
+    ],
+    [
+     "on the brink of",
+     "al borde de"
+    ],
+    [
+     "breeding programme",
+     "programa de reproducción"
+    ],
+    [
+     "scrutiny",
+     "escrutinio, examen detallado"
+    ],
+    [
+     "endangered",
+     "en peligro de extinción"
+    ],
+    [
+     "chronic",
+     "crónico"
+    ],
+    [
+     "habitat",
+     "hábitat"
+    ],
+    [
+     "poaching",
+     "caza furtiva"
+    ],
+    [
+     "trafficking",
+     "tráfico ilegal"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the essay's central question?",
+     "options": [
+      "Whether keeping wild animals in captivity can still be justified",
+      "Which animals are most popular",
+      "How much zoos cost",
+      "How to build better zoos"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"can keeping wild animals in captivity still be justified?\""
+    },
+    {
+     "type": "mc",
+     "q": "Which of these is NOT one of the defenders' three main arguments?",
+     "options": [
+      "Conservation",
+      "Research",
+      "Profit",
+      "Education"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 2: los tres argumentos son conservación, investigación y educación."
+    },
+    {
+     "type": "tf",
+     "q": "Most animals in zoos belong to endangered species.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"Only a fraction of the animals kept in zoos belong to endangered species\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, the arguments 'deserve scrutiny' means they…",
+     "options": [
+      "should be examined carefully",
+      "are completely wrong",
+      "should be accepted immediately",
+      "are too complicated"
+     ],
+     "answer": 0,
+     "explain_es": "'Scrutiny' = examen minucioso."
+    },
+    {
+     "type": "gap",
+     "q": "Repetitive behaviours such as swaying or ____ are seen as signs of chronic stress.",
+     "answer": "pacing",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"such as swaying or pacing\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"Wherever forests are preserved... wildlife tends to recover\" means…",
+     "options": [
+      "nowhere in Colombia",
+      "only in one specific forest",
+      "in any place where forests are preserved",
+      "at any time forests are cut down"
+     ],
+     "answer": 2,
+     "explain_es": "'Wherever' = en cualquier lugar donde."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "The cost of elephants",
+      "The role of rescue centres",
+      "Why all zoos must close now",
+      "Illegal hunting in Colombia"
+     ],
+     "answer": 1,
+     "explain_es": "El párrafo explica que algunos animales rescatados necesitan centros y santuarios."
+    },
+    {
+     "type": "tf",
+     "q": "The writer concludes that all zoos should close immediately.",
+     "answer": "F",
+     "explain_es": "Último párrafo: la pregunta es \"what kind of zoos deserve to\" existir; solo las que no lo demuestren deberían cerrar."
+    }
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "u-c1-10-1",
+   "title": "Parlache: The Slang That Climbed Down the Hills",
+   "level": "C1",
+   "genre": "feature article",
+   "topic": "Slang",
+   "emoji": "🗨️",
+   "words": 558,
+   "paragraphs": [
+    "Ask almost any Colombian under forty what parce means, and they will tell you without hesitation: it means friend, mate, buddy. What fewer of them will know is that the word, now heard in shopping centres, university lecture halls and even television adverts, was once regarded as the marker of a marginal and somewhat feared form of speech. Parce, along with dozens of other words, comes from parlache, the slang that emerged in the working-class neighbourhoods on the hillsides of Medellín during the 1980s and 1990s.",
+    "Parlache was born in difficult circumstances. Those decades were among the most violent in the city's history, and young people in the comunas, many of whom were growing up surrounded by gangs, unemployment and fear, developed a vocabulary of their own. Some of it was playful, some of it was deliberately obscure, and a significant proportion of it referred to danger, death and money. Like many forms of slang, it functioned both as a badge of identity and as a code that outsiders could not easily understand.",
+    "The phenomenon was documented in the 1990s by linguists at the Universidad de Antioquia, who compiled hundreds of terms and analysed how they had been formed. Many were created by giving new meanings to ordinary Spanish words: camello, literally 'camel', came to mean a job, presumably because work was seen as a heavy load to carry; llave, 'key', was used for a close friend, someone who opens doors for you. Others were shortened, rearranged or borrowed from other languages and from the lyrics of popular music.",
+    "What happened next is a familiar story in sociolinguistics. Words that had been confined to a particular community were picked up by the wider population, helped along by television series, films and, eventually, social media. Each of these channels gave the vocabulary a wider audience. Expressions that had once been associated with marginality began to sound youthful and fashionable, and were soon used by middle-class teenagers who had never set foot in the neighbourhoods where they originated. Today, a number of parlache words are used across the country, and some have travelled abroad with Colombian music and migrants.",
+    "Not everyone welcomes this process. Some teachers and parents complain that slang is eroding 'correct' Spanish, and that young people who rely on it may struggle to express themselves in formal contexts. Linguists tend to be more relaxed. Every living language, they point out, is constantly being reshaped by its speakers, and none of the world's great languages has ever been fixed or pure. Much of what is now considered standard vocabulary was once regarded as slang. The real skill, they argue, is not avoiding informal language but knowing when to use it.",
+    "There is also a more uncomfortable question. When words that emerged from poverty and violence become fashionable, their history is often forgotten. A teenager who calls a friend parce in a Bogotá café may have no idea of the circumstances in which the word took on its modern meaning. For some researchers, that loss of memory matters: language, after all, is one of the ways in which communities record their experience.",
+    "Whatever its future, parlache offers a vivid reminder that language does not only flow downwards from academies, dictionaries and schools. It also climbs up, and sometimes down, the hills, carried by the people who need it most."
+   ],
+   "glossary": [
+    [
+     "slang",
+     "jerga, argot"
+    ],
+    [
+     "marginal",
+     "marginal"
+    ],
+    [
+     "hillside",
+     "ladera"
+    ],
+    [
+     "deliberately obscure",
+     "intencionalmente difícil de entender"
+    ],
+    [
+     "badge of identity",
+     "seña de identidad"
+    ],
+    [
+     "to compile",
+     "recopilar"
+    ],
+    [
+     "to be confined to",
+     "estar limitado a"
+    ],
+    [
+     "to pick up",
+     "adoptar, aprender (de manera informal)"
+    ],
+    [
+     "to set foot in",
+     "poner un pie en"
+    ],
+    [
+     "to erode",
+     "erosionar, desgastar"
+    ],
+    [
+     "to take on a meaning",
+     "adquirir un significado"
+    ],
+    [
+     "vivid",
+     "vívido"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Where did parlache originate?",
+     "options": [
+      "In Bogotá's universities",
+      "In television studios",
+      "In working-class neighbourhoods on Medellín's hillsides",
+      "In Spain"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: \"emerged in the working-class neighbourhoods on the hillsides of Medellín\"."
+    },
+    {
+     "type": "tf",
+     "q": "Parlache functioned partly as a code that outsiders could not easily understand.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"as a code that outsiders could not easily understand\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did 'camello' probably come to mean 'job'?",
+     "options": [
+      "Because work was seen as a heavy load",
+      "Because workers rode camels",
+      "Because it came from Arabic",
+      "Because of a popular song"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"presumably because work was seen as a heavy load to carry\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"The phenomenon was documented in the 1990s by linguists\" is in the passive because…",
+     "options": [
+      "the linguists are unknown",
+      "it describes a future action",
+      "it is an instruction",
+      "the writer wants to focus on the phenomenon rather than the linguists"
+     ],
+     "answer": 3,
+     "explain_es": "La pasiva pone el foco en el fenómeno documentado; el agente aparece con 'by'."
+    },
+    {
+     "type": "mc",
+     "q": "Which sentence shows correct subject-verb agreement with a quantifier?",
+     "options": [
+      "\"Each of these channels give\"",
+      "\"A number of parlache words is used\"",
+      "\"The number of speakers are growing\"",
+      "\"A number of parlache words are used\""
+     ],
+     "answer": 3,
+     "explain_es": "'A number of + plural' lleva verbo en plural; en cambio 'each of' y 'the number of' llevan verbo en singular."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 5.",
+     "options": [
+      "The end of correct Spanish",
+      "Linguists' relaxed view of slang",
+      "Why teachers love slang",
+      "A new dictionary"
+     ],
+     "answer": 1,
+     "explain_es": "Los lingüistas explican que toda lengua viva cambia y que lo importante es saber cuándo usar el lenguaje informal."
+    },
+    {
+     "type": "gap",
+     "q": "A teenager in a Bogotá café may have no idea of the circumstances in which the word took ____ its modern meaning.",
+     "answer": "on",
+     "accept": [],
+     "explain_es": "Párrafo 6: \"took on its modern meaning\" (adquirió)."
+    },
+    {
+     "type": "tf",
+     "q": "The writer grew up in one of Medellín's comunas.",
+     "answer": "NG",
+     "explain_es": "El texto no da información sobre el origen del autor."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-10-2",
+   "title": "Saving the Languages of Colombia",
+   "level": "C1",
+   "genre": "interview",
+   "topic": "Linguistic diversity",
+   "emoji": "🌿",
+   "words": 559,
+   "paragraphs": [
+    "Colombia is home to around sixty-five indigenous languages, as well as two Creole languages, Palenquero and the English-based Creole of San Andrés and Providencia, and the Romani language. Many of them are endangered. We spoke to Dr Isabel Murillo, a linguist who has spent fifteen years working with communities in the Amazon and the Pacific, about why these languages matter and what can be done to protect them.",
+    "Q: How many of Colombia's native languages are at risk? A: Most of them, to some degree. A handful, such as Wayuunaiki in La Guajira, are spoken by many thousands of people and are still being learned by children. But several have fewer than a hundred speakers, and in a few cases only a small number of elderly people remain who are fully fluent. When a language is no longer passed on to children, it is effectively on a countdown.",
+    "Q: Why do languages disappear? A: Rarely by choice. Historically, indigenous languages were actively suppressed. Children were punished at school for speaking their mother tongue, and many parents decided that their children would have a better future if they spoke only Spanish. More recently, migration to cities, the influence of the media and the economic pressure to integrate have had a similar effect. None of these pressures is new, but together they are extremely powerful.",
+    "Q: Some people argue that it's natural for languages to die, as they always have. What would you say to them? A: I'd say that the speed of what we're seeing is not natural at all. And each language that is lost takes with it a unique way of understanding the world. Many indigenous languages contain extraordinarily detailed knowledge about plants, animals and ecosystems, knowledge that has been accumulated over thousands of years. Some concepts simply cannot be translated; they get lost in translation, or they are lost altogether. When a language dies, it's not just words that disappear. It's history, humour, songs, a whole system of thought.",
+    "Q: What has been done to protect these languages? A: Quite a lot, at least on paper. The 1991 Constitution recognised indigenous languages as official in their territories, and a law passed in 2010 established the right of communities to use and develop their languages. Bilingual education programmes have been created in many regions. In San Basilio de Palenque, for example, Palenquero is now taught in schools, and young people who once felt embarrassed by it are now proud to speak it. The problem is that resources are limited, and a number of programmes depend on short-term funding.",
+    "Q: What can ordinary Colombians do? A: Start by valuing these languages. Every one of them is part of the national heritage, just like the cathedrals or the coffee landscape. Learn a few words. Listen to music sung in Wayuunaiki or Nasa Yuwe. Support writers and broadcasters who work in these languages. Most importantly, challenge the idea that speaking an indigenous language is a sign of backwardness. A child who grows up speaking two or three languages is not disadvantaged; she is rich.",
+    "Q: Are you optimistic? A: Cautiously. Languages can be revived, if communities want it and are given the means. Hebrew and Welsh are often cited as examples. Here in Colombia, I've seen teenagers recording rap in their grandparents' language and posting it online. That gives me hope."
+   ],
+   "glossary": [
+    [
+     "Creole language",
+     "lengua criolla"
+    ],
+    [
+     "endangered",
+     "en peligro (de desaparecer)"
+    ],
+    [
+     "fluent",
+     "que habla con fluidez"
+    ],
+    [
+     "to pass on",
+     "transmitir"
+    ],
+    [
+     "countdown",
+     "cuenta regresiva"
+    ],
+    [
+     "to suppress",
+     "reprimir, suprimir"
+    ],
+    [
+     "mother tongue",
+     "lengua materna"
+    ],
+    [
+     "lost in translation",
+     "perdido en la traducción"
+    ],
+    [
+     "heritage",
+     "patrimonio"
+    ],
+    [
+     "backwardness",
+     "atraso"
+    ],
+    [
+     "to revive",
+     "revitalizar, hacer revivir"
+    ],
+    [
+     "broadcaster",
+     "locutor, emisora"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Approximately how many indigenous languages are spoken in Colombia?",
+     "options": [
+      "Around two hundred",
+      "Around a thousand",
+      "Around six",
+      "Around sixty-five"
+     ],
+     "answer": 3,
+     "explain_es": "Introducción: \"around sixty-five indigenous languages\"."
+    },
+    {
+     "type": "tf",
+     "q": "Wayuunaiki is still being learned by children.",
+     "answer": "T",
+     "explain_es": "\"Wayuunaiki... are still being learned by children\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Dr Murillo, when is a language 'on a countdown'?",
+     "options": [
+      "When it borrows words from Spanish",
+      "When it has no written form",
+      "When it is no longer passed on to children",
+      "When it is taught in schools"
+     ],
+     "answer": 2,
+     "explain_es": "\"When a language is no longer passed on to children, it is effectively on a countdown\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"None of these pressures is new\" — why is the verb singular?",
+     "options": [
+      "Because it is a mistake",
+      "Because 'none of' can take a singular verb in formal English",
+      "Because 'pressures' is singular",
+      "Because it is in the past"
+     ],
+     "answer": 1,
+     "explain_es": "Con 'none of + plural', el inglés formal admite verbo singular ('is'); en registro informal también se oye 'are'."
+    },
+    {
+     "type": "vocab",
+     "q": "If a concept gets 'lost in translation', it…",
+     "options": [
+      "is forgotten by speakers",
+      "loses part of its meaning when translated",
+      "is translated perfectly",
+      "is written in a dictionary"
+     ],
+     "answer": 1,
+     "explain_es": "'Lost in translation' = perder significado al traducirse."
+    },
+    {
+     "type": "gap",
+     "q": "The 1991 ____ recognised indigenous languages as official in their territories.",
+     "answer": "Constitution",
+     "accept": [
+      "constitution"
+     ],
+     "explain_es": "\"The 1991 Constitution recognised indigenous languages as official in their territories\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for Dr Murillo's answer about what ordinary Colombians can do.",
+     "options": [
+      "Donate to universities",
+      "Stop speaking Spanish",
+      "Move to indigenous territories",
+      "Value the languages and challenge prejudice"
+     ],
+     "answer": 3,
+     "explain_es": "Propone valorar las lenguas, aprender palabras y desafiar la idea de que son señal de atraso."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Murillo is completely pessimistic about the future of these languages.",
+     "answer": "F",
+     "explain_es": "Dice: \"Cautiously\" optimista, y menciona jóvenes que graban rap en la lengua de sus abuelos."
+    }
+   ]
+  }
+ ],
+ "11": [
+  {
+   "id": "u-c1-11-1",
+   "title": "The Woman Who Lifted a Nation",
+   "level": "C1",
+   "genre": "profile",
+   "topic": "Sport",
+   "emoji": "🥇",
+   "words": 566,
+   "paragraphs": [
+    "One night in September 2000, millions of Colombians who had never paid the slightest attention to weightlifting found themselves glued to their television screens. In a hall in Sydney, a powerfully built woman from the Valle del Cauca stood beneath a loaded bar, gathered herself, and lifted. When the judges confirmed the result, María Isabel Urrutia had become the first Colombian ever to win an Olympic gold medal. For a country starved of good news at the turn of the millennium, it was a moment of almost unbearable joy.",
+    "Her path to that podium was anything but straightforward. Urrutia grew up in Candelaria, a small town surrounded by sugar-cane fields, in a family of modest means. She first made her name not in weightlifting but in athletics, competing in the shot put and discus. It was only in her twenties that coaches persuaded her to try a sport in which women had barely been allowed to compete. Women's weightlifting was not even an Olympic event until Sydney, so for most of her career, the highest prize she could aim for simply did not exist.",
+    "Determined and self-disciplined, she trained for years in facilities that bore little resemblance to the state-of-the-art centres used by her rivals in China and Eastern Europe. Equipment was often old, funding was unreliable and international travel was a constant struggle. She also had to contend with attitudes that were deeply discouraging. A muscular Afro-Colombian woman competing in a sport regarded as masculine was, for many commentators, an object of curiosity rather than admiration. Rather than allowing such prejudice to defeat her, she channelled it into her training.",
+    "By the time she reached Sydney, she was in her mid-thirties, an age at which many weightlifters have already retired. Few experts considered her a favourite. That she won against all odds is one reason her victory resonated so deeply. Another is that she represented a part of Colombia, rural, Black and working-class, that had rarely been celebrated on the national stage. Young athletes from the Pacific and the Valle who had seen few people like themselves in positions of honour suddenly had a role model to look up to.",
+    "Urrutia's influence did not end with her sporting career. She later entered politics, serving in Congress, where she spoke out about racial discrimination and the lack of support for athletes from poor regions. In 2022 she was appointed Minister of Sport, an office that gave her the opportunity, and the difficulties, of shaping the system she had once struggled against. Her time in government was not without controversy, but few would dispute that she blazed a trail for the generations that followed.",
+    "Indeed, Colombian weightlifting and athletics have since produced a series of world-class competitors, many of them women from Afro-Colombian communities. When the triple jumper Caterine Ibargüen won Olympic gold in Rio in 2016, commentators frequently traced a line back to Sydney. Urrutia had shown that it could be done.",
+    "Asked once what she hoped her legacy would be, she reportedly answered that she wanted girls from towns like Candelaria to understand that their bodies, their origins and their ambitions were nothing to be ashamed of. It is perhaps the best-known lesson of her life, and certainly the hardest-won: strength is not only a matter of how much weight you can lift, but of how much doubt you can carry without putting it down."
+   ],
+   "glossary": [
+    [
+     "glued to the screen",
+     "pegado a la pantalla"
+    ],
+    [
+     "starved of",
+     "privado de, hambriento de"
+    ],
+    [
+     "to make one's name",
+     "darse a conocer, hacerse un nombre"
+    ],
+    [
+     "shot put",
+     "lanzamiento de bala"
+    ],
+    [
+     "self-disciplined",
+     "autodisciplinado"
+    ],
+    [
+     "state-of-the-art",
+     "de última generación"
+    ],
+    [
+     "to contend with",
+     "lidiar con, enfrentar"
+    ],
+    [
+     "against all odds",
+     "contra todo pronóstico"
+    ],
+    [
+     "to look up to",
+     "admirar"
+    ],
+    [
+     "to blaze a trail",
+     "abrir camino, ser pionero"
+    ],
+    [
+     "legacy",
+     "legado"
+    ],
+    [
+     "hard-won",
+     "conseguido con mucho esfuerzo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why was Urrutia's victory historically significant for Colombia?",
+     "options": [
+      "It was the first Olympics Colombia attended",
+      "It was Colombia's first Olympic medal of any kind",
+      "It was the first Olympic gold medal won by a Colombian",
+      "It was a world record"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: \"the first Colombian ever to win an Olympic gold medal\"."
+    },
+    {
+     "type": "tf",
+     "q": "Urrutia began her sporting career in athletics.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"She first made her name... in athletics, competing in the shot put and discus\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why was the Olympic gold 'a prize that did not exist' for most of her career?",
+     "options": [
+      "Women's weightlifting was not an Olympic event until 2000",
+      "Colombia was banned from the Olympics",
+      "She was too young",
+      "Weightlifting was abolished"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"Women's weightlifting was not even an Olympic event until Sydney\"."
+    },
+    {
+     "type": "vocab",
+     "q": "Which of these is a compound adjective from paragraph 3?",
+     "options": [
+      "training",
+      "self-disciplined",
+      "rivals",
+      "constant"
+     ],
+     "answer": 1,
+     "explain_es": "'Self-disciplined' es un adjetivo compuesto (self + participio). También 'state-of-the-art'."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "An unexpected victory with deep meaning",
+      "Urrutia retires",
+      "The best age for weightlifting",
+      "Problems in Sydney"
+     ],
+     "answer": 0,
+     "explain_es": "Ganó contra todo pronóstico y representó a una parte del país poco celebrada."
+    },
+    {
+     "type": "gap",
+     "q": "In 2022 Urrutia was appointed Minister of ____.",
+     "answer": "Sport",
+     "accept": [
+      "Sports"
+     ],
+     "explain_es": "Párrafo 5: \"In 2022 she was appointed Minister of Sport\"."
+    },
+    {
+     "type": "tf",
+     "q": "Everyone agreed that her time in government was a complete success.",
+     "answer": "F",
+     "explain_es": "Párrafo 5: \"Her time in government was not without controversy\"."
+    },
+    {
+     "type": "mc",
+     "q": "In 'the best-known lesson of her life', 'best-known' is…",
+     "options": [
+      "a past participle used as a verb",
+      "a comparative",
+      "an adverb",
+      "a superlative compound adjective"
+     ],
+     "answer": 3,
+     "explain_es": "'Best-known' es la forma superlativa del adjetivo compuesto 'well-known'."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-11-2",
+   "title": "The Trouble With Role Models",
+   "level": "C1",
+   "genre": "essay",
+   "topic": "Values",
+   "emoji": "🌟",
+   "words": 559,
+   "paragraphs": [
+    "Ask a room of teenagers to name their role models, and the answers are likely to include athletes, singers, entrepreneurs and influencers with millions of followers. Ask them why, and the answers become vaguer: because they are successful, because they are rich, because they never gave up. There is nothing wrong with admiration. Yet the way we talk about exceptional people, and the expectations we place on them, deserves more critical attention than it usually receives.",
+    "The first problem is that role models are usually presented as finished products. We see the gold medal, the record-breaking album or the billion-dollar company, but rarely the years of uncertainty, the failures and the help that preceded them. Biographies and motivational videos tend to compress decades into a few dramatic scenes, so that achievement appears to flow directly from talent and willpower. This creates an unrealistic template. A young person who works hard and does not become famous may conclude that the fault lies entirely with them.",
+    "Closely related is the myth of the self-made individual. Few high achievers succeed alone. The most celebrated self-taught inventors and entrepreneurs typically benefited from mentors, family support, access to education or simply being in the right place at the right time. Acknowledging this does not diminish their achievements. It does, however, remind us that talent is distributed far more evenly than opportunity, and that a society serious about producing exceptional people must invest in the conditions that make achievement possible, not merely celebrate its results.",
+    "A second difficulty arises when role models turn out to be flawed, as all human beings are. Sports stars are caught cheating, celebrated artists are revealed to have behaved cruelly, and business leaders who were praised for their vision are later investigated for fraud. Fans who have invested their identity in such figures may react with either fierce denial or bitter disillusionment. Neither response is healthy. It may be more useful to admire specific qualities, a writer's honesty, an athlete's resilience, a scientist's curiosity, than to idolise the whole person.",
+    "Finally, the emphasis on famous role models can blind us to the remarkable people closer to home. The grandmother who raised five children after being widowed young, the teacher who stays late every day to help struggling students, the neighbour who organised the community to repair a flooded road: these people will never appear on a magazine cover, yet their determination and generosity are, in many ways, more relevant to the lives of young people than the achievements of a distant celebrity. Their example is also more achievable.",
+    "None of this means we should abandon the idea of role models. Human beings learn by imitation, and the stories of people who have overcome hardship can be genuinely inspiring, especially for those from groups that have historically been excluded from positions of power. When a young woman from a poor rural town sees someone like herself succeed, the effect can be transformative.",
+    "What we need, perhaps, is a more mature form of admiration: one that looks up to people without placing them on a pedestal, that values effort and character as much as fame, and that recognises the hidden networks of support behind every success story. The best role models, after all, are not those who make us feel small, but those who help us imagine what we ourselves might become."
+   ],
+   "glossary": [
+    [
+     "role model",
+     "modelo a seguir"
+    ],
+    [
+     "vague",
+     "vago, impreciso"
+    ],
+    [
+     "record-breaking",
+     "que bate récords"
+    ],
+    [
+     "willpower",
+     "fuerza de voluntad"
+    ],
+    [
+     "template",
+     "plantilla, modelo"
+    ],
+    [
+     "self-made",
+     "que se ha hecho a sí mismo"
+    ],
+    [
+     "self-taught",
+     "autodidacta"
+    ],
+    [
+     "flawed",
+     "imperfecto, con defectos"
+    ],
+    [
+     "disillusionment",
+     "desilusión"
+    ],
+    [
+     "to idolise",
+     "idolatrar"
+    ],
+    [
+     "to overcome",
+     "superar"
+    ],
+    [
+     "to put someone on a pedestal",
+     "poner a alguien en un pedestal"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does the writer say about teenagers' reasons for admiring role models?",
+     "options": [
+      "They focus on moral values",
+      "They never mention money",
+      "They tend to be vague",
+      "They are very detailed"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: \"the answers become vaguer\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 2.",
+     "options": [
+      "The value of failure",
+      "Famous athletes",
+      "How to write a biography",
+      "Success without the struggle"
+     ],
+     "answer": 3,
+     "explain_es": "El párrafo critica que se muestren solo los logros y no los años de incertidumbre y fracaso."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes most high achievers succeed completely alone.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"Few high achievers succeed alone\"."
+    },
+    {
+     "type": "gap",
+     "q": "According to the writer, talent is distributed far more evenly than ____.",
+     "answer": "opportunity",
+     "accept": [],
+     "explain_es": "Párrafo 3: \"talent is distributed far more evenly than opportunity\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer suggest we do when role models turn out to be flawed?",
+     "options": [
+      "Stop admiring anyone",
+      "Defend them publicly",
+      "Deny the problem",
+      "Admire specific qualities instead of the whole person"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 4: \"admire specific qualities... than to idolise the whole person\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'self-taught' describes someone who…",
+     "options": [
+      "learned without formal teaching",
+      "was taught by famous people",
+      "refuses to learn",
+      "teaches others"
+     ],
+     "answer": 0,
+     "explain_es": "'Self-taught' = autodidacta, adjetivo compuesto."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer mention the grandmother, the teacher and the neighbour?",
+     "options": [
+      "To criticise families",
+      "To describe the writer's childhood",
+      "To show that famous people are bad",
+      "To show that admirable people also exist close to home"
+     ],
+     "answer": 3,
+     "explain_es": "Párrafo 5: el énfasis en los famosos \"can blind us to the remarkable people closer to home\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer concludes that role models should be abandoned.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: \"None of this means we should abandon the idea of role models\"."
+    }
+   ]
+  }
+ ],
+ "12": [
+  {
+   "id": "u-c1-12-1",
+   "title": "From Farm to Cup: Anatomy of a Coffee Start-up",
+   "level": "C1",
+   "genre": "case study",
+   "topic": "Entrepreneurship",
+   "emoji": "☕",
+   "words": 565,
+   "paragraphs": [
+    "When Daniela Perdomo returned to her family's farm near Pitalito, in the department of Huila, after five years working for a multinational in Bogotá, her neighbours assumed she had failed. Young people from the region were supposed to leave, not come back. But Daniela had a plan. Her family, like thousands of small producers, had grown excellent coffee for three generations while earning only a small fraction of its final retail price. What if, she wondered, the farmers themselves could sell directly to the people drinking it?",
+    "The idea was hardly new, but the way she went about it was. Rather than opening a café or exporting in bulk, she designed a subscription service that would send freshly roasted coffee from a rotating group of small farms to customers in Colombian cities, and later abroad. Each bag would carry the name of the farmer who had grown it, a QR code linking to a short video of the farm, and a clear breakdown of how much of the price went to the producer.",
+    "Getting the business off the ground proved far harder than writing the plan. Daniela invested her savings and borrowed from relatives, but the first year was brutal. Roasting equipment was expensive, delivery costs ate into margins, and early customers cancelled as soon as their free trial ended. \"Had I known how long it would take to break even,\" she admits, \"I'm not sure I would have started.\" For eighteen months the company was firmly in the red, and on two occasions she came close to closing it.",
+    "The turning point came from an unexpected direction. A food blogger with a large following visited one of the partner farms and posted a series of videos about the family that grew the beans. Subscriptions tripled within a month. Daniela realised that what customers were buying was not simply coffee but a relationship. She reorganised the company around storytelling, encouraging farmers to record updates about the harvest, and began to think outside the box about marketing, organising virtual tastings in which subscribers could ask producers questions directly.",
+    "Growth brought new challenges. When a large supermarket chain offered to stock the brand nationally, the deal looked transformative. Daniela was tempted, but she insisted on careful due diligence before signing. The contract, it emerged, would have required her to lower prices so significantly that the farmers' share would have fallen. Should she have accepted, she later explained, the company would have grown faster but betrayed the principle on which it had been founded. She negotiated for months and eventually closed a smaller deal with a regional chain, on condition that the price paid to producers remained unchanged.",
+    "Today the company works with more than sixty farming families, has been in the black for three consecutive years, and exports to Canada and Spain. Revenue is still modest by multinational standards, and Daniela has had to scale back some ambitions, including a plan to open cafés in Bogotá, in order to protect cash flow. But the model has attracted attention from development agencies interested in replicating it in other agricultural sectors.",
+    "Asked what advice she would give other entrepreneurs, Daniela is characteristically direct. \"Know what you won't compromise on before you start,\" she says. \"Provided you're clear about that, every other decision becomes easier. Were I to start again tomorrow, I'd make different mistakes. But I'd still come home.\""
+   ],
+   "glossary": [
+    [
+     "retail price",
+     "precio de venta al público"
+    ],
+    [
+     "to go about something",
+     "abordar, emprender algo"
+    ],
+    [
+     "subscription",
+     "suscripción"
+    ],
+    [
+     "breakdown",
+     "desglose"
+    ],
+    [
+     "to get off the ground",
+     "despegar, poner en marcha"
+    ],
+    [
+     "to break even",
+     "alcanzar el punto de equilibrio"
+    ],
+    [
+     "in the red",
+     "en números rojos, con pérdidas"
+    ],
+    [
+     "to think outside the box",
+     "pensar de forma creativa"
+    ],
+    [
+     "due diligence",
+     "diligencia debida, análisis previo"
+    ],
+    [
+     "to close a deal",
+     "cerrar un trato"
+    ],
+    [
+     "in the black",
+     "con ganancias, en números negros"
+    ],
+    [
+     "to scale back",
+     "reducir, recortar"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why did Daniela's neighbours think she had failed?",
+     "options": [
+      "Young people from the region were expected to leave, not return",
+      "She lost her job in Bogotá",
+      "Her family sold the farm",
+      "Her coffee was of poor quality"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"Young people from the region were supposed to leave, not come back\"."
+    },
+    {
+     "type": "tf",
+     "q": "Each bag of coffee shows the name of the farmer who grew it.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"Each bag would carry the name of the farmer who had grown it\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"Had I known how long it would take to break even\" is an inverted form of…",
+     "options": [
+      "If I had known",
+      "If I have known",
+      "If I knew",
+      "If I would know"
+     ],
+     "answer": 0,
+     "explain_es": "La inversión 'Had I known' equivale a 'If I had known' (tercer condicional)."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, a company that is 'in the red' is…",
+     "options": [
+      "losing money",
+      "making a profit",
+      "owned by the government",
+      "very popular"
+     ],
+     "answer": 0,
+     "explain_es": "'In the red' = con pérdidas, en números rojos."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 4.",
+     "options": [
+      "Problems with bloggers",
+      "A new roasting machine",
+      "The company closes",
+      "Storytelling changes everything"
+     ],
+     "answer": 3,
+     "explain_es": "Los videos de un bloguero mostraron que los clientes compraban una relación; la empresa se reorganizó en torno a las historias."
+    },
+    {
+     "type": "mc",
+     "q": "Why did Daniela not accept the national supermarket deal?",
+     "options": [
+      "It would have reduced the farmers' share",
+      "The supermarket went bankrupt",
+      "The supermarket wanted exclusive rights abroad",
+      "She didn't want to grow"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"would have required her to lower prices so significantly that the farmers' share would have fallen\"."
+    },
+    {
+     "type": "gap",
+     "q": "She closed a smaller deal on ____ that the price paid to producers remained unchanged.",
+     "answer": "condition",
+     "accept": [],
+     "explain_es": "Párrafo 5: \"on condition that the price paid to producers remained unchanged\"."
+    },
+    {
+     "type": "tf",
+     "q": "Daniela has opened several cafés in Bogotá.",
+     "answer": "F",
+     "explain_es": "Párrafo 6: tuvo que reducir ambiciones, \"including a plan to open cafés in Bogotá\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c1-12-2",
+   "title": "The Art of the Deal, Colombian Style",
+   "level": "C1",
+   "genre": "podcast transcript excerpt",
+   "topic": "Negotiation",
+   "emoji": "🤝",
+   "words": 498,
+   "paragraphs": [
+    "[An excerpt from Emprende, a business podcast. Host Ricardo Lozano talks to Carolina Vélez, a negotiation consultant who trains executives and start-up founders in Medellín.]",
+    "RICARDO: Carolina, let's start with the obvious question. What do most people get wrong when they negotiate?",
+    "CAROLINA: They think negotiation is a battle. They walk in determined to win, and they treat every concession as a defeat. In my experience, the best negotiators are not the toughest ones; they're the ones who understand what the other side really needs. Unless you know that, you're essentially negotiating blind.",
+    "RICARDO: How do you find out what the other side needs?",
+    "CAROLINA: You ask, and then you listen, which sounds simple but is surprisingly rare. Most people spend the other person's speaking time preparing their next argument. I always tell my clients: do your due diligence before the meeting. Research the company, its recent results, its pressures. Should you discover that they urgently need to close a deal before the end of the quarter, for example, that changes your position completely.",
+    "RICARDO: Is there anything particularly Colombian about the way people negotiate here?",
+    "CAROLINA: There's a strong emphasis on relationships. In many business cultures, you can sit down with a stranger and talk numbers within five minutes. Here, that would often come across as cold. People want to know who you are, where you're from, perhaps who you know in common. A meeting might begin with twenty minutes of conversation about football or family. Foreign executives sometimes find this frustrating, but it isn't wasted time. Trust is part of the deal.",
+    "RICARDO: And the downside?",
+    "CAROLINA: The downside is that we tend to avoid saying no directly. A Colombian partner might say 'let's see' or 'we'll look at it', when what they mean is 'absolutely not'. If you're not used to reading between the lines, you can leave a meeting convinced you've closed a deal when nothing has actually been agreed. My advice is always to summarise the agreement in writing afterwards, as long as you do it politely.",
+    "RICARDO: What about start-ups negotiating with investors? They're often in a weak position.",
+    "CAROLINA: They feel weak, but they often have more power than they think, provided they have a clear sense of their own value. The biggest mistake founders make is accepting the first offer because they're desperate to get the company off the ground. Were they to walk away from a bad deal, they might lose an investor, but they'd keep control of their company. Never negotiate without knowing your walk-away point: the moment at which no deal is better than this deal.",
+    "RICARDO: Can you give us one technique listeners can use tomorrow?",
+    "CAROLINA: Silence. When the other person makes an offer, don't respond immediately. Pause for a few seconds. Most people find silence so uncomfortable that they start improving their offer just to fill it. It's remarkable how often it works.",
+    "RICARDO: [pause]",
+    "CAROLINA: [laughs] Very good, Ricardo. You're a fast learner."
+   ],
+   "glossary": [
+    [
+     "concession",
+     "concesión"
+    ],
+    [
+     "to negotiate blind",
+     "negociar a ciegas"
+    ],
+    [
+     "due diligence",
+     "investigación previa, diligencia debida"
+    ],
+    [
+     "to close a deal",
+     "cerrar un trato"
+    ],
+    [
+     "to talk numbers",
+     "hablar de cifras"
+    ],
+    [
+     "to come across as",
+     "parecer, dar la impresión de"
+    ],
+    [
+     "to read between the lines",
+     "leer entre líneas"
+    ],
+    [
+     "to get off the ground",
+     "poner en marcha, despegar"
+    ],
+    [
+     "to walk away",
+     "retirarse, abandonar (una negociación)"
+    ],
+    [
+     "walk-away point",
+     "punto de retirada, límite"
+    ],
+    [
+     "fast learner",
+     "alguien que aprende rápido"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to Carolina, what is the most common mistake in negotiation?",
+     "options": [
+      "Arriving late",
+      "Asking too many questions",
+      "Treating negotiation as a battle",
+      "Talking too little"
+     ],
+     "answer": 2,
+     "explain_es": "\"They think negotiation is a battle\"."
+    },
+    {
+     "type": "mc",
+     "q": "\"Should you discover that they urgently need to close a deal…\" is equivalent to…",
+     "options": [
+      "Although you discover",
+      "Because you discovered",
+      "You should discover",
+      "If you discover"
+     ],
+     "answer": 3,
+     "explain_es": "La inversión 'Should you + infinitivo' equivale a 'If you (should) discover', una condición formal."
+    },
+    {
+     "type": "tf",
+     "q": "Carolina says that in Colombia, business meetings often begin with personal conversation.",
+     "answer": "T",
+     "explain_es": "\"A meeting might begin with twenty minutes of conversation about football or family\"."
+    },
+    {
+     "type": "vocab",
+     "q": "When a Colombian partner says 'we'll look at it', Carolina says it may actually mean…",
+     "options": [
+      "'yes, definitely'",
+      "'we need more money'",
+      "'absolutely not'",
+      "'let's meet tomorrow'"
+     ],
+     "answer": 2,
+     "explain_es": "Carolina explica que a veces significa \"absolutely not\": hay que leer entre líneas."
+    },
+    {
+     "type": "gap",
+     "q": "Carolina advises summarising the agreement in ____ afterwards.",
+     "answer": "writing",
+     "accept": [],
+     "explain_es": "\"summarise the agreement in writing afterwards\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is a 'walk-away point'?",
+     "options": [
+      "The moment at which no deal is better than the deal offered",
+      "The exit of the building",
+      "The end of the quarter",
+      "The first offer"
+     ],
+     "answer": 0,
+     "explain_es": "\"the moment at which no deal is better than this deal\"."
+    },
+    {
+     "type": "heading",
+     "q": "Which technique does Carolina recommend at the end?",
+     "options": [
+      "Bringing a lawyer",
+      "Making the first offer",
+      "Using silence after an offer",
+      "Talking about football"
+     ],
+     "answer": 2,
+     "explain_es": "Recomienda el silencio: hacer una pausa tras una oferta."
+    },
+    {
+     "type": "tf",
+     "q": "Ricardo has worked as a negotiation consultant for many years.",
+     "answer": "NG",
+     "explain_es": "El texto no dice nada sobre la experiencia profesional de Ricardo."
     }
    ]
   }

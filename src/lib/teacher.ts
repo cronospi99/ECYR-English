@@ -31,6 +31,7 @@ export interface StudentData {
 
 export interface Submission {
   id: string;
+  student_id: string;
   module: string;
   task: string | null;
   prompt: string | null;
@@ -87,13 +88,34 @@ export async function loadClass(teacherId: string): Promise<{ students: StudentD
   };
 }
 
-export async function loadSubmissions(studentId: string): Promise<Submission[]> {
+const SUB_COLS = 'id,student_id,module,task,prompt,content,band,created_at';
+
+/**
+ * A student's submissions, newest first. `modules` narrows it (e.g. writing +
+ * speaking for "Trabajos"). The heavy `report` is loaded on demand.
+ */
+export async function loadSubmissions(studentId: string, opts: { modules?: string[]; limit?: number } = {}): Promise<Submission[]> {
   if (!supabase) return [];
-  const { data } = await supabase
-    .from('submissions')
-    .select('id,module,task,prompt,content,band,created_at')
-    .eq('student_id', studentId)
-    .order('created_at', { ascending: false })
-    .limit(40);
+  let q = supabase.from('submissions').select(SUB_COLS).eq('student_id', studentId);
+  if (opts.modules?.length) q = q.in('module', opts.modules);
+  const { data, error } = await q.order('created_at', { ascending: false }).limit(opts.limit ?? 150);
+  if (error) console.warn('[teacher] submissions failed:', error.message);
   return (data ?? []) as Submission[];
+}
+
+/** The latest submissions across the class (RLS: only the teacher's own students). */
+export async function loadClassSubmissions(studentIds: string[], opts: { modules?: string[]; limit?: number } = {}): Promise<Submission[]> {
+  if (!supabase || !studentIds.length) return [];
+  let q = supabase.from('submissions').select(SUB_COLS).in('student_id', studentIds.slice(0, 300));
+  if (opts.modules?.length) q = q.in('module', opts.modules);
+  const { data, error } = await q.order('created_at', { ascending: false }).limit(opts.limit ?? 80);
+  if (error) console.warn('[teacher] class submissions failed:', error.message);
+  return (data ?? []) as Submission[];
+}
+
+/** The AI feedback / report of one submission (jsonb, any shape). */
+export async function loadSubmissionReport(id: string): Promise<unknown> {
+  if (!supabase) return null;
+  const { data } = await supabase.from('submissions').select('report').eq('id', id).maybeSingle();
+  return (data as { report?: unknown } | null)?.report ?? null;
 }

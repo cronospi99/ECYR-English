@@ -319,7 +319,7 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
   return (
     <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)]">
       <div className="text-label-2 text-[11px] font-bold tracking-wide uppercase">Línea de tiempo</div>
-      <svg viewBox={`0 0 ${W} 92`} className="mt-1 h-auto w-full max-w-[520px]" role="img" aria-label={label || TL_TEXT[type]}>
+      <svg viewBox={`0 0 ${W} 92`} className="mt-1 h-auto w-full max-w-[440px]" role="img" aria-label={label || TL_TEXT[type]}>
         <defs>
           <marker id={`${uid}a`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
             <path d="M0 0 L10 5 L0 10 z" style={{ fill: c }} />

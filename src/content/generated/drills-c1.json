@@ -1,0 +1,122 @@
+{
+ "C1-1-0": {
+  "name": "Say it with a phrasal verb",
+  "prompt": "Reescribe cada frase con el phrasal verb adecuado, cuidando la posición de la partícula.",
+  "items": [
+   "I can’t stand his attitude any more. (tolerate) → I can’t ______ his attitude any more.",
+   "We argued about money and stopped speaking. (quarrel) → We ______ over money.",
+   "The meeting has been postponed until Friday. → They’ve ______ the meeting until Friday.",
+   "She raised the issue of salaries at the meeting. → She ______ the issue of salaries.",
+   "Turn off the lights. (use a pronoun) → Turn ______.",
+   "I’ve always admired my grandmother. → I’ve always ______ my grandmother."
+  ],
+  "answers": [
+   "I can’t put up with his attitude any more.",
+   "We fell out over money.",
+   "They’ve put off the meeting until Friday.",
+   "She brought up the issue of salaries.",
+   "Turn them off.",
+   "I’ve always looked up to my grandmother."
+  ]
+ },
+ "C1-1-1": {
+  "name": "Gerund or infinitive?",
+  "prompt": "Completa cada frase con la forma correcta (-ing o to + verbo) según el significado.",
+  "items": [
+   "She didn’t lock the door. She forgot. → She forgot ______ (lock) the door.",
+   "I have a clear memory of meeting him in 2019. → I remember ______ (meet) him in 2019.",
+   "He paused on the way to buy coffee. → He stopped ______ (buy) coffee.",
+   "If the app freezes, restart your phone as an experiment. → Try ______ (restart) your phone.",
+   "We said no to the offer. → We refused ______ (accept) the offer.",
+   "I’m sorry I said that. → I regret ______ (say) that."
+  ],
+  "answers": [
+   "She forgot to lock the door.",
+   "I remember meeting him in 2019.",
+   "He stopped to buy coffee.",
+   "Try restarting your phone.",
+   "We refused to accept the offer.",
+   "I regret saying that."
+  ]
+ },
+ "C1-2-0": {
+  "name": "Object + which verb form?",
+  "prompt": "Reescribe cada frase con el verbo indicado y el patrón correcto: objeto + to, verbo base o -ing.",
+  "items": [
+   "My boss said I had to stay late. (make) → My boss ______ late.",
+   "They allowed us to use the terrace. (let) → They ______ the terrace.",
+   "I’d like you to read the contract first. (want) → I ______ the contract first.",
+   "I noticed her. She was crossing the street. (see) → I ______ the street.",
+   "They forced him to sign. (passive) → He ______ sign.",
+   "We weren’t permitted to take photos. (allowed) → We ______ photos."
+  ],
+  "answers": [
+   "My boss made me stay late.",
+   "They let us use the terrace.",
+   "I want you to read the contract first.",
+   "I saw her crossing the street.",
+   "He was made to sign.",
+   "We weren’t allowed to take photos."
+  ]
+ },
+ "C1-2-1": {
+  "name": "Spotlight it",
+  "prompt": "Reescribe cada frase como una frase hendida con what (o all) para destacar la idea clave.",
+  "items": [
+   "The colour caught my eye. → What ______",
+   "We need more time. → What ______",
+   "She rewrote the entire report. (focus on the action) → What she ______",
+   "I only want an apology. (all) → All ______",
+   "Her honesty surprised me. → What ______",
+   "They cancelled the event. (focus on the action) → What they ______"
+  ],
+  "answers": [
+   "What caught my eye was the colour.",
+   "What we need is more time.",
+   "What she did was rewrite the entire report.",
+   "All I want is an apology.",
+   "What surprised me was her honesty.",
+   "What they did was cancel the event."
+  ]
+ },
+ "C1-3-0": {
+  "name": "Article or no article?",
+  "prompt": "Completa cada espacio con a, an, the o ningún artículo (—).",
+  "items": [
+   "___ internet has changed ___ way we work.",
+   "She’s studying at ___ university in Manizales. ___ university is famous for engineering.",
+   "___ robots are becoming cheaper every year.",
+   "It was ___ first time I had seen ___ MRI scan.",
+   "He’s ___ only person who understands ___ problem.",
+   "___ education is ___ key to reducing inequality."
+  ],
+  "answers": [
+   "The internet has changed the way we work.",
+   "She’s studying at a university in Manizales. The university is famous for engineering.",
+   "Robots are becoming cheaper every year. (no article)",
+   "It was the first time I had seen an MRI scan.",
+   "He’s the only person who understands the problem.",
+   "Education is the key to reducing inequality. (no article before “Education”)"
+  ]
+ },
+ "C1-3-1": {
+  "name": "Compress it",
+  "prompt": "Reescribe cada frase con una cláusula -ing (o having + participio), manteniendo el mismo sujeto.",
+  "items": [
+   "Because she didn’t know the way, she asked a police officer.",
+   "When he opened the envelope, he found a cheque.",
+   "After they had finished the survey, they analysed the data.",
+   "The report, which shows a clear trend, surprised everyone.",
+   "As I was feeling ill, I stayed at home.",
+   "She smiled and waved goodbye. (one sentence with an -ing clause)"
+  ],
+  "answers": [
+   "Not knowing the way, she asked a police officer.",
+   "Opening the envelope, he found a cheque.",
+   "Having finished the survey, they analysed the data.",
+   "The report, showing a clear trend, surprised everyone.",
+   "Feeling ill, I stayed at home.",
+   "Smiling, she waved goodbye."
+  ]
+ }
+}

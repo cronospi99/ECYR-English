@@ -154,7 +154,7 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
                 <Avatar name={l.sp} color={p.color} />
               </span>
               <div className={cn('flex max-w-[82%] min-w-0 flex-col sm:max-w-[72%]', right ? 'items-end' : 'items-start')}>
-                {!prevSame && (
+                {!prevSame && l.sp.length > 1 && (
                   <span className="mb-0.5 px-1 text-[12px] font-bold" style={{ color: ink(p.color) }}>
                     {l.sp}
                   </span>

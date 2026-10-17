@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUp, Sparkles, Trash2, LogIn } from 'lucide-react';
+import { ArrowUp, Sparkles, Trash2, LogIn, Mic } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -8,12 +8,17 @@ import { Button, ButtonLink } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Misc';
 import { Markdown } from '@/components/learning/Markdown';
 import { SpeakButton } from '@/components/learning/SpeakButton';
+import { TranslatorButton } from '@/components/learning/Translator';
 import { askCoach, CoachError, type ChatMessage, type CoachMode } from '@/lib/ai';
 import { useAuth } from '@/store/auth';
 import { useProgress, currentLevel } from '@/store/progress';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { isSupabaseConfigured } from '@/lib/supabase';
 import { cn } from '@/lib/cn';
+import { VoiceCoach } from './VoiceCoach';
+
+/** The text modes, plus the live voice conversation. */
+type PageMode = CoachMode | 'voice';
 
 const STARTERS: Record<CoachMode, string[]> = {
   chat: ['Let’s talk about my weekend', 'Practice a job interview with me', 'Ask me questions about travel', 'Role-play: ordering food in a restaurant'],
@@ -28,7 +33,8 @@ export default function CoachPage() {
   const session = useAuth((s) => s.session);
   const units = useProgress((s) => s.units);
   const award = useProgress((s) => s.award);
-  const [mode, setMode] = useState<CoachMode>('chat');
+  const [pageMode, setPageMode] = useState<PageMode>('chat');
+  const mode: CoachMode = pageMode === 'voice' ? 'chat' : pageMode;
   const [level, setLevel] = useState<CefrLevel>(currentLevel(units));
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
     try {
@@ -83,6 +89,7 @@ export default function CoachPage() {
       }
       subtitle="Tu tutor personal: conversa en inglés, corrige tus frases y entiende la gramática a tu nivel."
       actions={
+        pageMode !== 'voice' &&
         messages.length > 0 && (
           <Button variant="gray" size="sm" onClick={() => setMessages([])}>
             <Trash2 size={14} /> Nueva conversación
@@ -91,11 +98,12 @@ export default function CoachPage() {
       }
     >
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <Segmented<CoachMode>
-          value={mode}
-          onChange={setMode}
+        <Segmented<PageMode>
+          value={pageMode}
+          onChange={setPageMode}
           options={[
             { value: 'chat', label: 'Conversar' },
+            { value: 'voice', label: <span className="inline-flex items-center gap-1"><Mic size={13} /> Voz</span> },
             { value: 'correct', label: 'Corregir' },
             { value: 'explain', label: 'Explicar' },
           ]}
@@ -107,7 +115,12 @@ export default function CoachPage() {
             </Chip>
           ))}
         </div>
+        <TranslatorButton className="ml-auto" />
       </div>
+
+      {pageMode === 'voice' && !gated ? (
+        <VoiceCoach level={level} />
+      ) : (
 
       <Card className="flex h-[calc(100dvh-330px)] min-h-[420px] flex-col overflow-hidden lg:h-[calc(100dvh-300px)]">
         <div className="flex-1 space-y-3 overflow-y-auto p-4 sm:p-6">
@@ -216,6 +229,7 @@ export default function CoachPage() {
           </button>
         </form>
       </Card>
+      )}
     </Page>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Check, Eraser, Lightbulb, Play, RotateCcw, Volume2, X } from 'lucide-react';
+import { Eraser, Lightbulb, Play, RotateCcw, Volume2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { CourseBlock } from '@/content/types';
 import { Card } from '@/components/ui/Card';
@@ -8,16 +8,13 @@ import { Callout, DataTable } from '@/components/learning/Callout';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { Quiz } from '@/components/learning/Quiz';
 import { speak } from '@/lib/speech';
-import { useSettings } from '@/store/settings';
 import { cn } from '@/lib/cn';
+import { arr, str, Es, Section, Done, Miss, norm, shuffle, type OnResult } from './kit';
+import { FormulaBlock, PhrasebookBlock, SceneBlock, SpellerBlock } from './extras';
+import { NumberChartBlock, NumberGameBlock } from './NumbersChart';
+import { ClothesGameBlock, WardrobeBlock } from './Clothing';
 
-export const INTERACTIVE = new Set(['match', 'order', 'blank', 'mc', 'quiz']);
-
-type OnResult = (score: number) => void;
-
-// Small typed accessors over the loosely-typed course JSON.
-const arr = <T,>(v: unknown) => (Array.isArray(v) ? (v as T[]) : []);
-const str = (v: unknown) => (typeof v === 'string' ? v : '');
+export const INTERACTIVE = new Set(['match', 'order', 'blank', 'mc', 'quiz', 'numbergame', 'clothesgame']);
 
 export function Block({ block, onResult }: { block: CourseBlock; onResult: OnResult }) {
   switch (block.t) {
@@ -81,26 +78,25 @@ export function Block({ block, onResult }: { block: CourseBlock; onResult: OnRes
       return <DialogueBlock b={block} />;
     case 'reading':
       return <ReadingBlock b={block} />;
+    case 'phrasebook':
+      return <PhrasebookBlock b={block} />;
+    case 'formula':
+      return <FormulaBlock b={block} />;
+    case 'speller':
+      return <SpellerBlock b={block} />;
+    case 'scene':
+      return <SceneBlock b={block} />;
+    case 'numberchart':
+      return <NumberChartBlock b={block} />;
+    case 'numbergame':
+      return <NumberGameBlock b={block} onResult={onResult} />;
+    case 'wardrobe':
+      return <WardrobeBlock b={block} />;
+    case 'clothesgame':
+      return <ClothesGameBlock b={block} onResult={onResult} />;
     default:
       return null;
   }
-}
-
-function Es({ text, className }: { text?: string; className?: string }) {
-  const show = useSettings((s) => s.spanishHints);
-  if (!show || !text) return null;
-  return <div className={cn('text-label-2 text-[13px]', className)}>{text}</div>;
-}
-
-function Section({ b, children, className }: { b: CourseBlock; children: React.ReactNode; className?: string }) {
-  const help = str(b.hint) || str(b.help);
-  return (
-    <Card className={cn('p-5 sm:p-6', className)}>
-      {b.title && <h3 className="text-title-3">{b.title}</h3>}
-      {help && <p className="text-label-2 mt-1 text-[14px] text-pretty">{help}</p>}
-      <div className="mt-4">{children}</div>
-    </Card>
-  );
 }
 
 // ---------------------------------------------------------------- content ----
@@ -169,12 +165,12 @@ function CardsBlock({ b }: { b: CourseBlock }) {
             >
               {flipped ? (
                 <>
-                  <span className="text-[16px] leading-tight font-semibold">{it.w}</span>
+                  <span className={cn('leading-tight font-semibold', it.w.length > 22 ? 'text-[12px]' : it.w.length > 12 ? 'text-[14px]' : 'text-[16px]')}>{it.w}</span>
                   {it.s && <span className="mt-0.5 text-[12px] opacity-80">{it.s}</span>}
                   {it.es && <span className="mt-0.5 text-[11px] opacity-70">{it.es}</span>}
                 </>
               ) : (
-                <span className={cn('font-extrabold', it.k.length > 3 ? 'text-[18px]' : 'text-[30px]')}>{it.k}</span>
+                <span className={cn('font-extrabold', it.k.length > 6 ? 'text-[15px]' : it.k.length > 3 ? 'text-[18px]' : 'text-[30px]')}>{it.k}</span>
               )}
               {flipped && (
                 <span className="absolute top-1 right-1" onClick={(e) => e.stopPropagation()}>
@@ -633,42 +629,4 @@ function McBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
       </div>
     </Section>
   );
-}
-
-function Done({ text }: { text: string }) {
-  return (
-    <div className="text-ink-green mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-3 text-[14px] font-medium">
-      <Check size={18} className="mt-0.5 shrink-0" /> {text}
-    </div>
-  );
-}
-
-function Miss({ text }: { text: string }) {
-  return (
-    <div className="text-ink-red mt-4 flex items-start gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] p-3 text-[14px] font-medium">
-      <X size={18} className="mt-0.5 shrink-0" /> {text}
-    </div>
-  );
-}
-
-const norm = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[’']/g, "'")
-    .replace(/[.,!?¿¡]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-
-/** Deterministic shuffle (stable across renders for the same seed). */
-function shuffle<T>(a: T[], seed: number): T[] {
-  const out = [...a];
-  let s = seed * 9301 + 49297;
-  for (let i = out.length - 1; i > 0; i--) {
-    s = (s * 9301 + 49297) % 233280;
-    const j = Math.floor((s / 233280) * (i + 1));
-    [out[i], out[j]] = [out[j]!, out[i]!];
-  }
-  // avoid returning the original order
-  if (out.length > 1 && out.every((x, i) => x === a[i])) out.push(out.shift()!);
-  return out;
 }

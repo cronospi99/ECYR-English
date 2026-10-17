@@ -208,7 +208,7 @@ function ShowSearch({ level, onOpen }: { level: CefrLevel; onOpen: (s: PodcastSh
             >
               <Artwork src={s.artwork} size={48} />
               <span className="min-w-0 flex-1">
-                <span className="line-clamp-2 block text-[14.5px] leading-snug font-semibold">{s.name}</span>
+                <span className="line-clamp-2 text-[14.5px] leading-snug font-semibold">{s.name}</span>
                 <span className="text-label-2 block truncate text-[12.5px]">
                   {s.artist}
                   {s.genre && ` · ${s.genre}`}
@@ -282,7 +282,7 @@ function ShowView({ collectionId, level, onBack, onOpen }: { collectionId: numbe
                       {[fmtDate(e.date), fmtDuration(e.durationMs)].filter(Boolean).join(' · ')}
                       {pos?.done ? <span className="text-ink-green font-semibold"> · ✓ escuchado</span> : pct > 2 ? ` · ${pct}% escuchado` : ''}
                     </span>
-                    {e.description && <span className="text-label-2 mt-1 line-clamp-2 block text-[13px] leading-snug">{e.description}</span>}
+                    {e.description && <span className="text-label-2 mt-1 line-clamp-2 text-[13px] leading-snug">{e.description}</span>}
                   </span>
                 </button>
               );

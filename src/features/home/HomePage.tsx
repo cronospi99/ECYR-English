@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Award, BookOpen, Check, ChevronRight, Flame, Gamepad2, Headphones, Mic, PenLine, Play, Sigma, Sparkles, Trophy, Zap } from 'lucide-react';
+import { Award, BookOpen, Check, ChevronRight, ClipboardList, Flame, Gamepad2, Headphones, Mic, PenLine, Play, School, Sigma, Sparkles, Trophy, Zap } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { ProgressBar } from '@/components/ui/Progress';
@@ -17,6 +17,7 @@ import { dayKey, greeting } from '@/lib/date';
 import { readIelts } from '@/lib/ielts';
 import { WeekPlanCard } from '@/features/plan/WeekPlanCard';
 import { TasksWidget } from '@/features/tasks/TasksWidget';
+import { AssignButton } from '@/features/tasks/AssignButton';
 
 export default function HomePage() {
   const p = useProgress();
@@ -99,7 +100,7 @@ export default function HomePage() {
           </dl>
         </Card>
 
-        <TasksWidget />
+        {profile?.role === 'teacher' ? <TeacherCard /> : <TasksWidget />}
 
         <div className="grid gap-5 lg:grid-cols-2">
           <WeekPlanCard />
@@ -144,6 +145,33 @@ export default function HomePage() {
         </div>
       </div>
     </Page>
+  );
+}
+
+/** Teachers: the class shortcuts, with "Asignar tarea" right on Home. */
+function TeacherCard() {
+  return (
+    <Card className="p-5">
+      <div className="flex flex-wrap items-center gap-4">
+        <IconTile icon={School} color="var(--orange)" size={44} />
+        <div className="min-w-0 flex-1">
+          <h3 className="text-title-3">Sala del docente</h3>
+          <p className="text-label-2 text-subhead mt-0.5">Asigna tareas, revisa los trabajos de tu clase y sigue su progreso.</p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <AssignButton variant="brand" size="md" />
+          <ButtonLink to="/teacher?tab=work" variant="gray">
+            <PenLine size={16} aria-hidden /> Trabajos
+          </ButtonLink>
+          <ButtonLink to="/teacher?tab=tasks" variant="gray">
+            <ClipboardList size={16} aria-hidden /> Tareas
+          </ButtonLink>
+          <ButtonLink to="/teacher" variant="gray">
+            Mi clase
+          </ButtonLink>
+        </div>
+      </div>
+    </Card>
   );
 }
 

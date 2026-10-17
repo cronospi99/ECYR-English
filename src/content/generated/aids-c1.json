@@ -1,0 +1,511 @@
+{
+ "C1-1-0": [
+  {
+   "kind": "pictures",
+   "title": "Phrasal verbs de relaciones",
+   "items": [
+    {
+     "emoji": "💔",
+     "en": "fall out (with)",
+     "es": "pelearse (con)"
+    },
+    {
+     "emoji": "🤗",
+     "en": "make up",
+     "es": "reconciliarse"
+    },
+    {
+     "emoji": "🙏",
+     "en": "look up to",
+     "es": "admirar"
+    },
+    {
+     "emoji": "😤",
+     "en": "put up with",
+     "es": "aguantar, tolerar"
+    },
+    {
+     "emoji": "🤝",
+     "en": "get on (with)",
+     "es": "llevarse bien (con)"
+    },
+    {
+     "emoji": "🗣️",
+     "en": "bring up",
+     "es": "sacar un tema"
+    },
+    {
+     "emoji": "⏳",
+     "en": "put off",
+     "es": "aplazar"
+    },
+    {
+     "emoji": "🚪",
+     "en": "back out",
+     "es": "echarse para atrás"
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "¿Se separa o no?",
+   "steps": [
+    {
+     "label": "Separable con sustantivo",
+     "sentence": "She **turned off** the TV. / She **turned** the TV **off**.",
+     "change": "Las dos son correctas."
+    },
+    {
+     "label": "Separable con pronombre",
+     "sentence": "She **turned it off**.",
+     "change": "Con pronombre, la partícula va después: nunca “turned off it”."
+    },
+    {
+     "label": "Inseparable",
+     "sentence": "She **looks after** the kids. → She **looks after** them.",
+     "change": "No se separa: nunca “looks them after”."
+    },
+    {
+     "label": "De tres partes",
+     "sentence": "I can’t **put up with** him.",
+     "change": "Siempre inseparable."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "Registro: phrasal verb vs. verbo formal",
+   "from": "Coloquial",
+   "to": "Académico",
+   "items": [
+    {
+     "word": "put up with",
+     "value": 15,
+     "example": "I can’t put up with the noise.",
+     "es": "aguantar"
+    },
+    {
+     "word": "find out",
+     "value": 20,
+     "example": "We found out the truth.",
+     "es": "averiguar"
+    },
+    {
+     "word": "tolerate",
+     "value": 75,
+     "example": "The policy does not tolerate abuse.",
+     "es": "tolerar"
+    },
+    {
+     "word": "discover",
+     "value": 80,
+     "example": "Researchers discovered a link.",
+     "es": "descubrir"
+    },
+    {
+     "word": "postpone",
+     "value": 85,
+     "example": "The meeting was postponed.",
+     "es": "aplazar"
+    }
+   ]
+  }
+ ],
+ "C1-1-1": [
+  {
+   "kind": "pairs",
+   "title": "Mismo verbo, otro significado",
+   "items": [
+    {
+     "a": "I stopped smoking.",
+     "b": "I stopped to smoke.",
+     "note": "La primera: dejé el cigarrillo. La segunda: me detuve para fumar."
+    },
+    {
+     "a": "Remember to text me.",
+     "b": "I remember texting you.",
+     "note": "“Remember to” = no olvides hacerlo; “remember + -ing” = tengo el recuerdo."
+    },
+    {
+     "a": "Try to open the window.",
+     "b": "Try opening the window.",
+     "note": "“Try to” = haz el esfuerzo; “try + -ing” = pruébalo como solución."
+    },
+    {
+     "a": "I regret to tell you…",
+     "b": "I regret telling you…",
+     "note": "“Regret to” anuncia una mala noticia; “regret + -ing” = me arrepiento de haberlo hecho."
+    },
+    {
+     "a": "He went on talking.",
+     "b": "He went on to talk about prices.",
+     "note": "“Go on + -ing” = siguió; “go on to” = pasó a otro tema."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿-ing o to + verbo?",
+   "question": "¿Qué viene antes del segundo verbo?",
+   "branches": [
+    {
+     "if": "enjoy, avoid, mind, suggest, deny, risk",
+     "use": "verbo + -ing",
+     "example": "She denied taking the money."
+    },
+    {
+     "if": "decide, hope, offer, refuse, promise, afford",
+     "use": "verbo + to + infinitivo",
+     "example": "We can’t afford to wait."
+    },
+    {
+     "if": "una preposición (in, at, of, instead of)",
+     "use": "preposición + -ing",
+     "example": "Instead of calling, she wrote."
+    },
+    {
+     "if": "stop, remember, try, regret, go on",
+     "use": "ambos, con cambio de significado",
+     "example": "I’ll never forget meeting her."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del recuerdo a la obligación",
+   "steps": [
+    {
+     "label": "Deber futuro",
+     "sentence": "**Remember to lock** the door.",
+     "change": "Algo que todavía hay que hacer."
+    },
+    {
+     "label": "Recuerdo pasado",
+     "sentence": "I **remember locking** the door.",
+     "change": "La acción ocurrió antes del recuerdo."
+    },
+    {
+     "label": "Negativo",
+     "sentence": "I **don’t remember locking** it.",
+     "change": "No tengo el recuerdo."
+    },
+    {
+     "label": "Olvido",
+     "sentence": "I **forgot to lock** it.",
+     "change": "No se hizo."
+    }
+   ]
+  }
+ ],
+ "C1-2-0": [
+  {
+   "kind": "choose",
+   "title": "¿Qué forma va después del objeto?",
+   "question": "¿Qué verbo principal usas?",
+   "branches": [
+    {
+     "if": "want, expect, tell, ask, advise, allow, get",
+     "use": "objeto + to + verbo",
+     "example": "I want you to try this on."
+    },
+    {
+     "if": "make, let, have",
+     "use": "objeto + verbo base",
+     "example": "They made us wait outside."
+    },
+    {
+     "if": "see, hear, watch, notice (acción completa)",
+     "use": "objeto + verbo base",
+     "example": "I saw her leave the building."
+    },
+    {
+     "if": "see, hear, watch, notice (acción en progreso)",
+     "use": "objeto + -ing",
+     "example": "I saw her leaving the building."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Make y let en pasiva",
+   "steps": [
+    {
+     "label": "Activa con make",
+     "sentence": "They **made him wait**.",
+     "change": "make + objeto + verbo base."
+    },
+    {
+     "label": "Pasiva con make",
+     "sentence": "He **was made to wait**.",
+     "change": "En pasiva vuelve el “to”."
+    },
+    {
+     "label": "Activa con let",
+     "sentence": "They **let us leave** early.",
+     "change": "let + objeto + verbo base."
+    },
+    {
+     "label": "Sin pasiva de let",
+     "sentence": "We **were allowed to leave** early.",
+     "change": "“Let” no tiene pasiva: usa “be allowed to”."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Errores típicos de hispanohablantes",
+   "items": [
+    {
+     "a": "I want you to come.",
+     "b": "I want that you come.",
+     "note": "En inglés no se usa “that” + subjuntivo con “want”."
+    },
+    {
+     "a": "She made me laugh.",
+     "b": "She made me to laugh.",
+     "note": "Después de “make” + objeto, verbo sin “to”."
+    },
+    {
+     "a": "I heard him sing.",
+     "b": "I heard him singing.",
+     "note": "La primera: oí toda la canción. La segunda: lo oí mientras cantaba."
+    }
+   ]
+  }
+ ],
+ "C1-2-1": [
+  {
+   "kind": "transform",
+   "title": "Pon el foco en la idea clave",
+   "steps": [
+    {
+     "label": "Frase neutral",
+     "sentence": "Her confidence impresses me."
+    },
+    {
+     "label": "Hendida con what",
+     "sentence": "**What impresses me is** her confidence.",
+     "change": "What + cláusula + be + lo destacado."
+    },
+    {
+     "label": "Destacar una acción",
+     "sentence": "**What she did was** change the whole design.",
+     "change": "Para una acción: What + sujeto + did + was (to) + verbo."
+    },
+    {
+     "label": "Hendida con it",
+     "sentence": "**It was** her confidence **that** impressed me.",
+     "change": "Otra forma de destacar."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué tipo de frase hendida?",
+   "question": "¿Qué quieres destacar?",
+   "branches": [
+    {
+     "if": "Una cosa o idea",
+     "use": "What + cláusula + is + sustantivo",
+     "example": "What I need is a holiday."
+    },
+    {
+     "if": "Una acción",
+     "use": "What + sujeto + did + was + verbo",
+     "example": "What we did was call the police."
+    },
+    {
+     "if": "Un solo elemento (persona, lugar, momento)",
+     "use": "It was … that …",
+     "example": "It was in Medellín that we met."
+    },
+    {
+     "if": "Lo único, con énfasis",
+     "use": "All + cláusula + is …",
+     "example": "All I want is some peace and quiet."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Concordancia y forma",
+   "items": [
+    {
+     "a": "What I need is a new suit.",
+     "b": "What I need are new shoes.",
+     "note": "“Be” suele concordar con lo que viene después."
+    },
+    {
+     "a": "What she did was change the plan.",
+     "b": "What she did was she changed the plan.",
+     "note": "Después de “What … did was” va el verbo base (o to + verbo), sin repetir el sujeto."
+    },
+    {
+     "a": "What I love is the colour.",
+     "b": "That I love is the colour.",
+     "note": "En español “lo que” = “what”, nunca “that”."
+    }
+   ]
+  }
+ ],
+ "C1-3-0": [
+  {
+   "kind": "choose",
+   "title": "¿A/an, the o nada?",
+   "question": "¿Cómo es el sustantivo en tu frase?",
+   "branches": [
+    {
+     "if": "Singular contable, se menciona por primera vez o es uno de muchos",
+     "use": "a / an",
+     "example": "A breakthrough was announced today."
+    },
+    {
+     "if": "Específico, ya mencionado o único",
+     "use": "the",
+     "example": "The breakthrough we discussed is real. / the internet"
+    },
+    {
+     "if": "Superlativo, ordinal u “only”",
+     "use": "the",
+     "example": "It’s the first trial of its kind."
+    },
+    {
+     "if": "Idea general en plural o incontable",
+     "use": "sin artículo",
+     "example": "Technology changes fast. Robots are cheaper now."
+    },
+    {
+     "if": "Institución con su función general (school, hospital, university)",
+     "use": "sin artículo",
+     "example": "She’s at university. He’s in hospital."
+    }
+   ]
+  },
+  {
+   "kind": "transform",
+   "title": "Del primer al segundo uso",
+   "steps": [
+    {
+     "label": "Primera mención",
+     "sentence": "**A** team has developed **a** new test.",
+     "change": "Algo nuevo para el oyente."
+    },
+    {
+     "label": "Segunda mención",
+     "sentence": "**The** test costs less than a dollar.",
+     "change": "Ya sabemos de cuál hablamos."
+    },
+    {
+     "label": "Generalización",
+     "sentence": "**Tests** like this save lives.",
+     "change": "Plural general: sin artículo."
+    },
+    {
+     "label": "Idea abstracta",
+     "sentence": "**Science** moves faster than **bureaucracy**.",
+     "change": "Incontables generales: sin artículo."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Diferencias con el español",
+   "items": [
+    {
+     "a": "Technology changes fast.",
+     "b": "The technology changes fast.",
+     "note": "En general, sin artículo; con “the” hablarías de una tecnología específica."
+    },
+    {
+     "a": "She’s in hospital.",
+     "b": "She’s in the hospital.",
+     "note": "UK: “in hospital” = internada; “the hospital” = el edificio (US usa “the” en ambos casos)."
+    },
+    {
+     "a": "an hour / a university",
+     "b": "a hour / an university",
+     "note": "“A / an” depende del sonido, no de la letra."
+    }
+   ]
+  }
+ ],
+ "C1-3-1": [
+  {
+   "kind": "transform",
+   "title": "Dos frases → una",
+   "steps": [
+    {
+     "label": "Razón",
+     "sentence": "**Because she felt curious**, she opened the app."
+    },
+    {
+     "label": "Cláusula -ing",
+     "sentence": "**Feeling curious**, she opened the app.",
+     "change": "Mismo sujeto: se elimina “because she”."
+    },
+    {
+     "label": "Acción anterior",
+     "sentence": "**After they had tested** the device, they published the results."
+    },
+    {
+     "label": "Perfecta",
+     "sentence": "**Having tested** the device, they published the results.",
+     "change": "having + participio = acción anterior."
+    },
+    {
+     "label": "Negativa",
+     "sentence": "**Not knowing** the password, he gave up.",
+     "change": "“Not” va al inicio."
+    }
+   ]
+  },
+  {
+   "kind": "choose",
+   "title": "¿Qué forma de -ing clause?",
+   "question": "¿Qué relación hay con la acción principal?",
+   "branches": [
+    {
+     "if": "Ocurre al mismo tiempo o da la razón",
+     "use": "-ing",
+     "example": "Feeling tired, I went to bed."
+    },
+    {
+     "if": "Ocurre antes que la acción principal",
+     "use": "having + participio",
+     "example": "Having finished the report, she left."
+    },
+    {
+     "if": "Es negativa",
+     "use": "not + -ing",
+     "example": "Not wanting to wait, we took a taxi."
+    },
+    {
+     "if": "Tiene sentido pasivo",
+     "use": "participio (o having been + participio)",
+     "example": "Shocked by the news, he sat down."
+    }
+   ]
+  },
+  {
+   "kind": "pairs",
+   "title": "Cuidado con el sujeto colgante",
+   "items": [
+    {
+     "a": "Feeling curious, she opened the app.",
+     "b": "Feeling curious, the app was opened.",
+     "note": "En la segunda, parece que la app sentía curiosidad."
+    },
+    {
+     "a": "Walking home, I saw an accident.",
+     "b": "Walking home, an accident happened.",
+     "note": "El sujeto de la cláusula principal debe ser quien camina."
+    },
+    {
+     "a": "Not knowing the answer, he stayed quiet.",
+     "b": "Knowing not the answer, he stayed quiet.",
+     "note": "La negación va antes del -ing."
+    }
+   ]
+  }
+ ]
+}

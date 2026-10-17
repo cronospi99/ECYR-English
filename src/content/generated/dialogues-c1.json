@@ -1,0 +1,682 @@
+{
+ "C1-1-0": [
+  {
+   "title": "A friendship on the rocks",
+   "titleEs": "Una amistad en crisis",
+   "scene": "☕ En un café de Chapinero: dos amigas hablan de una pelea con una amiga en común.",
+   "cast": [
+    {
+     "name": "Valentina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Chloe",
+     "line": "So have you and Laura made up yet?",
+     "es": "¿Y ya hicieron las paces tú y Laura?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "Not really. We fell out over the wedding plans and she's been giving me the cold shoulder ever since.",
+     "es": "No mucho. Nos peleamos por los planes del matrimonio y desde entonces me ha estado ignorando."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Honestly, I don't know how you put up with her moods.",
+     "es": "La verdad, no sé cómo le aguantas los cambios de humor."
+    },
+    {
+     "sp": "Valentina",
+     "line": "I've always looked up to her, that's why. She's been through a lot.",
+     "es": "Siempre la he admirado, por eso. Ha pasado por mucho."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Still, you can't keep bottling it up. Why don't you sit down and talk it over?",
+     "es": "Aun así, no puedes seguir guardándotelo. ¿Por qué no se sientan y lo hablan?"
+    },
+    {
+     "sp": "Valentina",
+     "line": "I've been putting it off for weeks. Every time I bring it up, she clams up.",
+     "es": "Llevo semanas aplazándolo. Cada vez que saco el tema, se cierra."
+    },
+    {
+     "sp": "Chloe",
+     "line": "Then don't let it drag on. Call her tonight and get it over with.",
+     "es": "Entonces no dejes que se alargue. Llámala esta noche y sal de eso de una vez."
+    }
+   ]
+  },
+  {
+   "title": "A tricky negotiation",
+   "titleEs": "Una negociación difícil",
+   "scene": "🤝 En una oficina en Bogotá: dos socios repasan una reunión tensa con un proveedor.",
+   "cast": [
+    {
+     "name": "Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "How did it go with the supplier? Did they back down on the price?",
+     "es": "¿Cómo te fue con el proveedor? ¿Cedieron en el precio?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "Eventually. At first they wouldn't budge, but I pointed out that we could easily turn to their competitors.",
+     "es": "Al final sí. Al principio no se movían, pero les hice ver que fácilmente podíamos recurrir a la competencia."
+    },
+    {
+     "sp": "Ben",
+     "line": "Bold move. Did they see through it?",
+     "es": "Movida audaz. ¿Se dieron cuenta del farol?"
+    },
+    {
+     "sp": "Andrés",
+     "line": "If they did, they didn't let on. They came up with a ten percent discount on the spot.",
+     "es": "Si se dieron cuenta, no lo dejaron ver. Salieron con un descuento del diez por ciento ahí mismo."
+    },
+    {
+     "sp": "Ben",
+     "line": "Great. Let's not rule out renegotiating next year, though.",
+     "es": "Genial. Aunque no descartemos renegociar el próximo año."
+    },
+    {
+     "sp": "Andrés",
+     "line": "Agreed. I'll draw up the contract and send it over by Friday.",
+     "es": "De acuerdo. Redacto el contrato y lo mando para el viernes."
+    },
+    {
+     "sp": "Ben",
+     "line": "Just make sure they don't back out at the last minute.",
+     "es": "Solo asegúrate de que no se echen para atrás a última hora."
+    }
+   ]
+  }
+ ],
+ "C1-1-1": [
+  {
+   "title": "Burnout and boundaries",
+   "titleEs": "Agotamiento y límites",
+   "scene": "🎙️ En un pódcast sobre bienestar laboral grabado en Medellín: una psicóloga conversa con el presentador.",
+   "cast": [
+    {
+     "name": "Catalina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "Many listeners admit to feeling exhausted. Where should they start?",
+     "es": "Muchos oyentes admiten sentirse agotados. ¿Por dónde deberían empezar?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "I'd suggest keeping a diary for a week. Most people are surprised to see how little they rest.",
+     "es": "Sugeriría llevar un diario durante una semana. La mayoría se sorprende al ver lo poco que descansa."
+    },
+    {
+     "sp": "Oliver",
+     "line": "And once they've noticed the pattern?",
+     "es": "¿Y una vez que han notado el patrón?"
+    },
+    {
+     "sp": "Catalina",
+     "line": "They need to stop answering emails after eight. If they can't, they should at least try muting notifications.",
+     "es": "Tienen que dejar de responder correos después de las ocho. Si no pueden, al menos deberían probar silenciando las notificaciones."
+    },
+    {
+     "sp": "Oliver",
+     "line": "Some people say they can't afford to switch off.",
+     "es": "Algunos dicen que no se pueden dar el lujo de desconectarse."
+    },
+    {
+     "sp": "Catalina",
+     "line": "I understand, but refusing to rest rarely pays off. I remember telling a client that, and she's since managed to cut her hours.",
+     "es": "Lo entiendo, pero negarse a descansar rara vez rinde frutos. Recuerdo habérselo dicho a una clienta, y desde entonces ha logrado reducir sus horas."
+    },
+    {
+     "sp": "Oliver",
+     "line": "So, remember to protect your evenings, everyone.",
+     "es": "Entonces, todos: recuerden proteger sus noches."
+    },
+    {
+     "sp": "Catalina",
+     "line": "Exactly. And don't avoid asking for help when you need it.",
+     "es": "Exacto. Y no eviten pedir ayuda cuando la necesiten."
+    }
+   ]
+  },
+  {
+   "title": "A forgotten promise",
+   "titleEs": "Una promesa olvidada",
+   "scene": "📱 En Cartagena: una pareja discute sobre un recado olvidado.",
+   "cast": [
+    {
+     "name": "Sofía",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sofía",
+     "line": "Did you remember to book the restaurant for my mum's birthday?",
+     "es": "¿Te acordaste de reservar el restaurante para el cumpleaños de mi mamá?"
+    },
+    {
+     "sp": "Jack",
+     "line": "I remember calling them, but I don't remember confirming the time.",
+     "es": "Me acuerdo de haberlos llamado, pero no de haber confirmado la hora."
+    },
+    {
+     "sp": "Sofía",
+     "line": "You promised to sort it out on Monday!",
+     "es": "¡Prometiste resolverlo el lunes!"
+    },
+    {
+     "sp": "Jack",
+     "line": "I know. I stopped to buy flowers on the way and completely forgot to ring back.",
+     "es": "Lo sé. Me detuve a comprar flores en el camino y se me olvidó por completo volver a llamar."
+    },
+    {
+     "sp": "Sofía",
+     "line": "Well, try calling them now. They might still have a table.",
+     "es": "Bueno, intenta llamarlos ahora. Tal vez todavía tengan mesa."
+    },
+    {
+     "sp": "Jack",
+     "line": "I'll call straight away. I regret not writing it down.",
+     "es": "Llamo de inmediato. Me arrepiento de no haberlo anotado."
+    },
+    {
+     "sp": "Sofía",
+     "line": "And I regret to say that's the second time this month.",
+     "es": "Y lamento decirte que es la segunda vez este mes."
+    }
+   ]
+  }
+ ],
+ "C1-2-0": [
+  {
+   "title": "The dress code debate",
+   "titleEs": "El debate sobre el código de vestimenta",
+   "scene": "👔 En un bufete de abogados en Bogotá: dos asociados comentan una nueva norma.",
+   "cast": [
+    {
+     "name": "Daniela",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "James",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "James",
+     "line": "Have you heard? Management wants everyone to wear a suit on Fridays now.",
+     "es": "¿Supiste? La gerencia ahora quiere que todos usemos traje los viernes."
+    },
+    {
+     "sp": "Daniela",
+     "line": "You're joking. They used to let us dress casually at the end of the week.",
+     "es": "Estás bromeando. Antes nos dejaban vestirnos informal al final de la semana."
+    },
+    {
+     "sp": "James",
+     "line": "Apparently a client saw a junior associate wearing trainers in reception.",
+     "es": "Al parecer un cliente vio a un asociado junior con tenis en la recepción."
+    },
+    {
+     "sp": "Daniela",
+     "line": "So now they're making all of us pay for one pair of shoes?",
+     "es": "¿Y ahora nos van a hacer pagar a todos por un par de zapatos?"
+    },
+    {
+     "sp": "James",
+     "line": "Pretty much. HR has asked managers to remind their teams every Thursday.",
+     "es": "Más o menos. Recursos humanos les pidió a los jefes que se lo recuerden a sus equipos todos los jueves."
+    },
+    {
+     "sp": "Daniela",
+     "line": "I'd advise them to explain the reasoning first. People resent being made to comply without a reason.",
+     "es": "Les aconsejaría que primero explicaran el porqué. A la gente le molesta que la obliguen a cumplir sin una razón."
+    },
+    {
+     "sp": "James",
+     "line": "I heard the partners discussing it, actually. They're not all convinced.",
+     "es": "De hecho, oí a los socios discutiéndolo. No todos están convencidos."
+    }
+   ]
+  },
+  {
+   "title": "A demanding director",
+   "titleEs": "Un director exigente",
+   "scene": "🎬 En un set de rodaje en Cartagena: dos miembros del equipo comentan cómo trabaja el director.",
+   "cast": [
+    {
+     "name": "Isabela",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Diego",
+     "line": "He made the actors repeat that scene fourteen times.",
+     "es": "Hizo que los actores repitieran esa escena catorce veces."
+    },
+    {
+     "sp": "Isabela",
+     "line": "I watched him do it. He wouldn't let anyone leave until the light was perfect.",
+     "es": "Lo vi hacerlo. No dejaba que nadie se fuera hasta que la luz estuviera perfecta."
+    },
+    {
+     "sp": "Diego",
+     "line": "The lead actress was made to wait in costume for three hours.",
+     "es": "A la actriz principal la hicieron esperar con el vestuario puesto tres horas."
+    },
+    {
+     "sp": "Isabela",
+     "line": "I heard her complaining to the producer.",
+     "es": "La oí quejándose con el productor."
+    },
+    {
+     "sp": "Diego",
+     "line": "Did the producer get him to change the schedule?",
+     "es": "¿El productor logró que él cambiara el horario?"
+    },
+    {
+     "sp": "Isabela",
+     "line": "No. He told her to be patient and had the assistants bring her some food.",
+     "es": "No. Le dijo a ella que tuviera paciencia e hizo que los asistentes le llevaran comida."
+    },
+    {
+     "sp": "Diego",
+     "line": "Well, I expect him to win an award for this one.",
+     "es": "Bueno, espero que gane un premio por esta."
+    }
+   ]
+  }
+ ],
+ "C1-2-1": [
+  {
+   "title": "Reviewing a fashion show",
+   "titleEs": "Reseñando un desfile",
+   "scene": "👗 En Colombiamoda, Medellín: dos periodistas de moda comentan una colección.",
+   "cast": [
+    {
+     "name": "Mariana",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Lucy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lucy",
+     "line": "So, what did you make of the collection?",
+     "es": "¿Y qué te pareció la colección?"
+    },
+    {
+     "sp": "Mariana",
+     "line": "What struck me first was the colour palette. Those deep greens were stunning.",
+     "es": "Lo primero que me llamó la atención fue la paleta de colores. Esos verdes intensos eran impresionantes."
+    },
+    {
+     "sp": "Lucy",
+     "line": "Agreed. What I wasn't sure about was the tailoring.",
+     "es": "De acuerdo. Lo que no me convenció fue la sastrería."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Really? What she's done is reinvent the traditional ruana for the city.",
+     "es": "¿En serio? Lo que ella hizo fue reinventar la ruana tradicional para la ciudad."
+    },
+    {
+     "sp": "Lucy",
+     "line": "What I'd have liked to see is a bit more restraint in the accessories.",
+     "es": "Lo que me hubiera gustado ver es un poco más de mesura en los accesorios."
+    },
+    {
+     "sp": "Mariana",
+     "line": "Fair. But what really matters is that people will actually wear it.",
+     "es": "Es justo. Pero lo que realmente importa es que la gente de verdad se lo va a poner."
+    },
+    {
+     "sp": "Lucy",
+     "line": "True. What everyone will be talking about tomorrow is that final dress.",
+     "es": "Cierto. De lo que todos van a hablar mañana es de ese vestido final."
+    }
+   ]
+  },
+  {
+   "title": "A job interview pitch",
+   "titleEs": "Discurso en una entrevista",
+   "scene": "💼 En una entrevista para una ONG en Bogotá: el candidato explica por qué quiere el puesto.",
+   "cast": [
+    {
+     "name": "Sebastián",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hannah",
+     "line": "What attracted you to this role?",
+     "es": "¿Qué te atrajo de este cargo?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "What appeals to me most is the focus on rural education.",
+     "es": "Lo que más me atrae es el enfoque en la educación rural."
+    },
+    {
+     "sp": "Hannah",
+     "line": "And what do you think you'd bring to the team?",
+     "es": "¿Y qué crees que le aportarías al equipo?"
+    },
+    {
+     "sp": "Sebastián",
+     "line": "What I bring is ten years of fieldwork in Chocó and Nariño.",
+     "es": "Lo que aporto son diez años de trabajo de campo en Chocó y Nariño."
+    },
+    {
+     "sp": "Hannah",
+     "line": "What concerns some candidates is the amount of travel.",
+     "es": "Lo que les preocupa a algunos candidatos es la cantidad de viajes."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "Honestly, travelling is what I enjoy most about this kind of work.",
+     "es": "La verdad, viajar es lo que más disfruto de este tipo de trabajo."
+    },
+    {
+     "sp": "Hannah",
+     "line": "What we need is someone who can start in March.",
+     "es": "Lo que necesitamos es alguien que pueda empezar en marzo."
+    },
+    {
+     "sp": "Sebastián",
+     "line": "All I need is two weeks' notice for my current employer.",
+     "es": "Lo único que necesito son dos semanas de preaviso para mi empleador actual."
+    }
+   ]
+  }
+ ],
+ "C1-3-0": [
+  {
+   "title": "A scientific breakthrough",
+   "titleEs": "Un avance científico",
+   "scene": "🧬 En un noticiero de televisión en Bogotá: una periodista entrevista a un investigador.",
+   "cast": [
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mark",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Paula",
+     "line": "A team at the National University has announced a breakthrough. What exactly have you found?",
+     "es": "Un equipo de la Universidad Nacional anunció un avance. ¿Qué encontraron exactamente?"
+    },
+    {
+     "sp": "Mark",
+     "line": "We've developed a test that detects dengue in an hour. The test costs less than a cup of coffee.",
+     "es": "Desarrollamos una prueba que detecta el dengue en una hora. La prueba cuesta menos que un tinto."
+    },
+    {
+     "sp": "Paula",
+     "line": "Remarkable. Is this the first test of its kind in Latin America?",
+     "es": "Impresionante. ¿Es la primera prueba de este tipo en América Latina?"
+    },
+    {
+     "sp": "Mark",
+     "line": "It's the only one that doesn't need a laboratory. Rural clinics can use it on the spot.",
+     "es": "Es la única que no necesita laboratorio. Los centros de salud rurales la pueden usar en el sitio."
+    },
+    {
+     "sp": "Paula",
+     "line": "When will patients have access to it?",
+     "es": "¿Cuándo tendrán acceso los pacientes?"
+    },
+    {
+     "sp": "Mark",
+     "line": "We're starting a trial in a hospital in Leticia next month.",
+     "es": "El próximo mes empezamos un ensayo en un hospital de Leticia."
+    },
+    {
+     "sp": "Paula",
+     "line": "And what's the biggest obstacle?",
+     "es": "¿Y cuál es el mayor obstáculo?"
+    },
+    {
+     "sp": "Mark",
+     "line": "Funding, as always. Science moves faster than bureaucracy.",
+     "es": "La financiación, como siempre. La ciencia avanza más rápido que la burocracia."
+    }
+   ]
+  },
+  {
+   "title": "Settling into university life",
+   "titleEs": "Adaptándose a la vida universitaria",
+   "scene": "🎓 En el campus de la Universidad de los Andes: una estudiante de intercambio pregunta a un compañero.",
+   "cast": [
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Emma",
+     "line": "Is there a library open on Sundays?",
+     "es": "¿Hay alguna biblioteca abierta los domingos?"
+    },
+    {
+     "sp": "Mateo",
+     "line": "The main library is, but only until four. There's also a small one in the engineering building.",
+     "es": "La biblioteca central sí, pero solo hasta las cuatro. También hay una pequeña en el edificio de ingeniería."
+    },
+    {
+     "sp": "Emma",
+     "line": "Great. I need to find a quiet place to work. Life in Bogotá is so noisy!",
+     "es": "Genial. Necesito encontrar un lugar tranquilo para trabajar. ¡La vida en Bogotá es muy ruidosa!"
+    },
+    {
+     "sp": "Mateo",
+     "line": "Ha! You'll get used to it. Have you been to the gym yet?",
+     "es": "¡Ja! Te vas a acostumbrar. ¿Ya fuiste al gimnasio?"
+    },
+    {
+     "sp": "Emma",
+     "line": "Not yet. I've had an hour free all week, and I spent it at the bank.",
+     "es": "Todavía no. He tenido una hora libre en toda la semana y la pasé en el banco."
+    },
+    {
+     "sp": "Mateo",
+     "line": "Typical. Coffee helps, by the way. The best coffee on campus is at the café behind the chapel.",
+     "es": "Típico. El café ayuda, por cierto. El mejor café del campus es el de la cafetería detrás de la capilla."
+    },
+    {
+     "sp": "Emma",
+     "line": "Noted. Students here seem to live on coffee and arepas.",
+     "es": "Anotado. Los estudiantes aquí parecen vivir de café y arepas."
+    }
+   ]
+  }
+ ],
+ "C1-3-1": [
+  {
+   "title": "An unexpected discovery",
+   "titleEs": "Un descubrimiento inesperado",
+   "scene": "🔎 En un laboratorio de la Universidad del Valle: dos investigadores recuerdan cómo hallaron un error.",
+   "cast": [
+    {
+     "name": "Natalia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Liam",
+     "line": "How did you spot the error in the data?",
+     "es": "¿Cómo detectaste el error en los datos?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Going through the spreadsheet late one night, I noticed two identical columns.",
+     "es": "Revisando la hoja de cálculo una noche tarde, noté dos columnas idénticas."
+    },
+    {
+     "sp": "Liam",
+     "line": "And not wanting to alarm anyone, you checked it yourself first?",
+     "es": "¿Y como no querías alarmar a nadie, lo revisaste tú primero?"
+    },
+    {
+     "sp": "Natalia",
+     "line": "Exactly. Having confirmed it twice, I emailed the whole team.",
+     "es": "Exacto. Después de confirmarlo dos veces, le escribí a todo el equipo."
+    },
+    {
+     "sp": "Liam",
+     "line": "The professor, seeing the implications, cancelled the presentation.",
+     "es": "El profesor, al ver las implicaciones, canceló la presentación."
+    },
+    {
+     "sp": "Natalia",
+     "line": "Thinking back, it was the right call. We'd have been embarrassed.",
+     "es": "Pensándolo bien, fue la decisión correcta. Habríamos quedado mal."
+    },
+    {
+     "sp": "Liam",
+     "line": "Being the most careful person in the lab has its advantages!",
+     "es": "¡Ser la persona más cuidadosa del laboratorio tiene sus ventajas!"
+    }
+   ]
+  },
+  {
+   "title": "Travel chaos",
+   "titleEs": "Caos en el viaje",
+   "scene": "🌧️ En Bogotá: un viajero cuenta a una amiga cómo fue su regreso desde San Andrés.",
+   "cast": [
+    {
+     "name": "Felipe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Grace",
+     "line": "How was the trip back from San Andrés?",
+     "es": "¿Qué tal el regreso de San Andrés?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "A nightmare. Arriving at the airport, we found the flight had been cancelled.",
+     "es": "Una pesadilla. Al llegar al aeropuerto, nos encontramos con que el vuelo se había cancelado."
+    },
+    {
+     "sp": "Grace",
+     "line": "Oh no. What did you do?",
+     "es": "Ay, no. ¿Qué hicieron?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Not knowing anyone on the island, we slept in the terminal.",
+     "es": "Como no conocíamos a nadie en la isla, dormimos en la terminal."
+    },
+    {
+     "sp": "Grace",
+     "line": "That sounds awful.",
+     "es": "Suena horrible."
+    },
+    {
+     "sp": "Felipe",
+     "line": "Having slept on a bench, I woke up with a terrible backache.",
+     "es": "Después de dormir en una banca, me desperté con un dolor de espalda terrible."
+    },
+    {
+     "sp": "Grace",
+     "line": "And the airline?",
+     "es": "¿Y la aerolínea?"
+    },
+    {
+     "sp": "Felipe",
+     "line": "Apologising profusely, they put us on the first flight the next morning.",
+     "es": "Pidiendo mil disculpas, nos pusieron en el primer vuelo de la mañana siguiente."
+    }
+   ]
+  }
+ ]
+}

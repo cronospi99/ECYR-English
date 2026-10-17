@@ -1,0 +1,290 @@
+{
+ "A2-1-0": {
+  "name": "Three-part statement",
+  "prompt": "Para cada pista, di una afirmación, una negación y una pregunta en pasado simple.",
+  "items": [
+   "send / the report",
+   "see / the message",
+   "be / at the office",
+   "have / time to check it",
+   "go / to the second session"
+  ],
+  "answers": [
+   "I sent the report. / I didn’t send the report. / Did you send the report?",
+   "I saw the message. / I didn’t see the message. / Did you see the message?",
+   "I was at the office. / I wasn’t at the office. / Were you at the office?",
+   "I had time to check it. / I didn’t have time to check it. / Did you have time to check it?",
+   "I went to the second session. / I didn’t go to the second session. / Did you go to the second session?"
+  ]
+ },
+ "A2-1-1": {
+  "name": "Then and not now",
+  "prompt": "Di una oración con «used to» y enseguida di cómo es la realidad hoy.",
+  "items": [
+   "transport",
+   "food",
+   "free time",
+   "technology",
+   "where you lived"
+  ],
+  "answers": [
+   "I used to take the bus to work. Now I ride my bike.",
+   "I used to eat a lot of fast food. Now I cook at home.",
+   "I used to play video games every night. Now I go running.",
+   "I used to have an old phone with no internet. Now I have a smartphone.",
+   "I used to live in Pereira. Now I live in Bogotá."
+  ]
+ },
+ "A2-2-0": {
+  "name": "Sort and ask",
+  "prompt": "Para cada sustantivo, di si es contable o no contable, y luego haz la pregunta con «how much / how many».",
+  "items": [
+   "information",
+   "chairs",
+   "furniture",
+   "emails",
+   "homework"
+  ],
+  "answers": [
+   "Noncount. — How much information do you need?",
+   "Count. — How many chairs are there in the room?",
+   "Noncount. — How much furniture is there in the flat?",
+   "Count. — How many emails did you get today?",
+   "Noncount. — How much homework do you have tonight?"
+  ]
+ },
+ "A2-2-1": {
+  "name": "Wrap the question",
+  "prompt": "Convierte cada pregunta directa en indirecta usando una introducción distinta cada vez.",
+  "items": [
+   "Where is platform 4?",
+   "What time does it close?",
+   "How much is a single ticket?",
+   "Can I pay by card?",
+   "Is the wifi free?"
+  ],
+  "answers": [
+   "Could you tell me where platform 4 is?",
+   "Do you know what time it closes?",
+   "I’d like to know how much a single ticket is.",
+   "I was wondering if I can pay by card.",
+   "Do you have any idea if the wifi is free?"
+  ]
+ },
+ "A2-3-0": {
+  "name": "Three verdicts",
+  "prompt": "Evalúa cada cosa de tres formas: con «too», con «not … enough» y con «as … as».",
+  "items": [
+   "a flat you saw",
+   "your current phone",
+   "the school timetable",
+   "public transport in your city",
+   "your English right now"
+  ],
+  "answers": [
+   "The flat was too small. / It wasn’t bright enough. / It wasn’t as nice as my old flat.",
+   "My phone is too slow. / The battery isn’t good enough. / It isn’t as fast as my brother’s phone.",
+   "The timetable is too long. / The breaks aren’t long enough. / It isn’t as flexible as last year’s timetable.",
+   "The buses are too crowded. / There aren’t enough metro lines. / It isn’t as efficient as I would like.",
+   "My speaking is too slow. / My vocabulary isn’t big enough. / My writing isn’t as good as my reading."
+  ]
+ },
+ "A2-3-1": {
+  "name": "One step back",
+  "prompt": "Convierte cada afirmación verdadera en un deseo moviendo el verbo un paso atrás en el tiempo.",
+  "items": [
+   "I don’t have a car.",
+   "I can’t play the piano.",
+   "I live far from work.",
+   "I said something stupid.",
+   "It is raining."
+  ],
+  "answers": [
+   "I wish I had a car.",
+   "I wish I could play the piano.",
+   "I wish I lived closer to work.",
+   "I wish I hadn’t said something stupid.",
+   "I wish it weren’t raining."
+  ]
+ },
+ "A2-4-0": {
+  "name": "Open then close",
+  "prompt": "Pregunta con el presente perfecto y responde con el pasado simple y un tiempo terminado.",
+  "items": [
+   "change jobs",
+   "travel abroad",
+   "lose a document",
+   "meet the new manager",
+   "move house"
+  ],
+  "answers": [
+   "Have you ever changed jobs? — Yes, I changed jobs in 2021.",
+   "Have you ever travelled abroad? — Yes, I went to Peru two years ago.",
+   "Have you ever lost a document? — Yes, I lost my passport last summer.",
+   "Have you met the new manager? — Yes, I met her on Monday.",
+   "Have you ever moved house? — Yes, I moved to Envigado last year."
+  ]
+ },
+ "A2-4-1": {
+  "name": "Five-step process",
+  "prompt": "Describe cada proceso en exactamente cinco pasos, con un adverbio de secuencia distinto en cada paso.",
+  "items": [
+   "making coffee",
+   "sending a large file",
+   "getting to your school",
+   "preparing for an exam",
+   "opening a bank account"
+  ],
+  "answers": [
+   "First, boil the water. Then put the coffee in the filter. Next, pour the water slowly. After that, wait two minutes. Finally, serve the coffee.",
+   "First, compress the file. Then open a cloud service. Next, upload the file. After that, copy the link. Finally, send the link by email.",
+   "First, I leave home at six. Then I walk to the station. Next, I take the metro. After that, I change to a bus. Finally, I walk to school.",
+   "First, I make a study plan. Then I review my notes. Next, I do practice exercises. After that, I check my answers. Finally, I sleep well the night before.",
+   "First, choose a bank. Then make an appointment. Next, take your ID. After that, fill in the forms. Finally, sign the contract."
+  ]
+ },
+ "A2-5-0": {
+  "name": "Plan or offer",
+  "prompt": "Para cada situación, di una oración con «going to» (plan o evidencia) y otra con «will» (decisión del momento).",
+  "items": [
+   "a heavy bag on the floor",
+   "your holidays next year",
+   "a ringing phone nobody answers",
+   "the weather this afternoon",
+   "a colleague who looks lost"
+  ],
+  "answers": [
+   "That bag is going to fall. / I’ll carry it for you.",
+   "I’m going to visit my cousins in Spain. / I think I’ll go to the beach too.",
+   "Nobody is going to answer it. / I’ll get it.",
+   "Look at those clouds. It’s going to rain this afternoon. / I’ll take an umbrella.",
+   "She’s going to get lost. / I’ll show her the way."
+  ]
+ },
+ "A2-5-1": {
+  "name": "Grade the pressure",
+  "prompt": "Di la misma idea de tres formas: como obligación, como consejo y como algo que no es obligatorio.",
+  "items": [
+   "arrive on time",
+   "bring your own laptop",
+   "register in advance",
+   "wear formal clothes",
+   "pay a deposit"
+  ],
+  "answers": [
+   "You have to arrive on time. / You should arrive on time. / You don’t have to arrive on time.",
+   "You have to bring your own laptop. / You should bring your own laptop. / You don’t have to bring your own laptop.",
+   "You have to register in advance. / You should register in advance. / You don’t have to register in advance.",
+   "You have to wear formal clothes. / You should wear formal clothes. / You don’t have to wear formal clothes.",
+   "You have to pay a deposit. / You should pay a deposit. / You don’t have to pay a deposit."
+  ]
+ },
+ "A2-6-0": {
+  "name": "Swap in the pronoun",
+  "prompt": "Di cada oración con el sustantivo completo y repítela cambiando el objeto por un pronombre.",
+  "items": [
+   "turn off the lights",
+   "hand in the report",
+   "look after the children",
+   "pick up the parcel",
+   "put away the chairs"
+  ],
+  "answers": [
+   "Turn off the lights. → Turn them off.",
+   "Hand in the report. → Hand it in.",
+   "Look after the children. → Look after them.",
+   "Pick up the parcel. → Pick it up.",
+   "Put away the chairs. → Put them away."
+  ]
+ },
+ "A2-6-1": {
+  "name": "Three levels of ask",
+  "prompt": "Haz cada petición tres veces: Can you… / Could you… / Would you mind…",
+  "items": [
+   "repeat the last point",
+   "send the figures again",
+   "move the meeting to four",
+   "check my email",
+   "cover for me on Friday"
+  ],
+  "answers": [
+   "Can you repeat the last point? / Could you repeat the last point? / Would you mind repeating the last point?",
+   "Can you send the figures again? / Could you send the figures again? / Would you mind sending the figures again?",
+   "Can you move the meeting to four? / Could you move the meeting to four? / Would you mind moving the meeting to four?",
+   "Can you check my email? / Could you check my email? / Would you mind checking my email?",
+   "Can you cover for me on Friday? / Could you cover for me on Friday? / Would you mind covering for me on Friday?"
+  ]
+ },
+ "A2-7-0": {
+  "name": "Two ways to say why",
+  "prompt": "Explica el propósito de cada cosa dos veces: una con «to + verbo» y otra con «for + -ing».",
+  "items": [
+   "a password manager",
+   "a shared calendar",
+   "a group chat",
+   "a checklist",
+   "a backup drive"
+  ],
+  "answers": [
+   "A password manager is used to store passwords. / It’s for storing passwords.",
+   "A shared calendar is used to organise meetings. / It’s for organising meetings.",
+   "A group chat is used to share news quickly. / It’s for sharing news quickly.",
+   "A checklist is used to remember every task. / It’s for remembering every task.",
+   "A backup drive is used to keep copies of files. / It’s for keeping copies of files."
+  ]
+ },
+ "A2-7-1": {
+  "name": "Instruction, then suggestion",
+  "prompt": "Da cada paso dos veces: como imperativo directo y suavizado como sugerencia.",
+  "items": [
+   "restart the router",
+   "check the cable",
+   "update the app",
+   "change the password",
+   "contact support"
+  ],
+  "answers": [
+   "Restart the router. / Try restarting the router.",
+   "Check the cable. / It’s a good idea to check the cable.",
+   "Update the app. / Make sure you update the app.",
+   "Change the password. / I’d recommend changing the password.",
+   "Contact support. / The best thing to do is to contact support."
+  ]
+ },
+ "A2-8-0": {
+  "name": "Name the moment",
+  "prompt": "Completa cada frase con una cláusula de tiempo y luego dila otra vez sin «when».",
+  "items": [
+   "the day…",
+   "the year…",
+   "the moment…",
+   "the summer…",
+   "the week…"
+  ],
+  "answers": [
+   "the day when I got my first job → the day I got my first job",
+   "the year when I finished school → the year I finished school",
+   "the moment when I saw the sea for the first time → the moment I saw the sea for the first time",
+   "the summer when we travelled to Cartagena → the summer we travelled to Cartagena",
+   "the week when everything went wrong → the week everything went wrong"
+  ]
+ },
+ "A2-8-1": {
+  "name": "Future in two clauses",
+  "prompt": "Une cada par en una sola oración con una conjunción de tiempo, sin poner «will» en la cláusula de tiempo.",
+  "items": [
+   "I finish work / I call you",
+   "she arrives / we start",
+   "the file uploads / you can close the tab",
+   "you get home / send me a message",
+   "the rain stops / we leave"
+  ],
+  "answers": [
+   "When I finish work, I’ll call you.",
+   "We’ll start as soon as she arrives.",
+   "After the file uploads, you can close the tab.",
+   "When you get home, send me a message.",
+   "We’ll leave when the rain stops."
+  ]
+ }
+}

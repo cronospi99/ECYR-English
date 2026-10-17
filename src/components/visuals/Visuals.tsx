@@ -143,7 +143,7 @@ export function VisualFigure({
         </span>
         {n > 1 && (
           <span className="flex shrink-0 items-center gap-1">
-            <span className="text-label-2 mr-1 text-[13px] tabular-nums">
+            <span className="text-label-2 mr-1 hidden text-[13px] tabular-nums sm:inline">
               {k + 1} / {n}
             </span>
             <FigBtn label="Imagen anterior" onClick={() => go(-1)}>
