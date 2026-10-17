@@ -27,6 +27,7 @@ export default function FoundationsPage() {
       if (!p) continue;
       moved.set(p.unitKey, [...(moved.get(p.unitKey) ?? []), { id: t.id, title: t.title, point: p.point }]);
     }
+  for (const l of moved.values()) l.sort((a, b) => a.point - b.point);
   const movedUnits = [...moved.entries()].sort(([a], [b]) => {
     const [la, na] = a.split('-');
     const [lb, nb] = b.split('-');

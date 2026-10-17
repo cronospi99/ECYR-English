@@ -315,7 +315,7 @@ export function SceneBlock({ b }: { b: CourseBlock }) {
           sel === slot ? 'ring-ios-blue bg-card shadow-card ring-2' : 'bg-card/60 hover:bg-card',
         )}
       >
-        <span className={cn('leading-none tracking-tight', far ? 'text-[26px] opacity-80' : 'text-[46px]')} aria-hidden>
+        <span className={cn('leading-none tracking-tight whitespace-nowrap', far ? (many ? 'text-[18px] opacity-80' : 'text-[26px] opacity-80') : many ? 'text-[28px]' : 'text-[46px]')} aria-hidden>
           {many ? `${e}${e}${e}` : e}
         </span>
         <span className="text-label-2 mt-2 text-[12px]">{es}</span>

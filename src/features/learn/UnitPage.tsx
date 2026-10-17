@@ -311,7 +311,7 @@ const KIND_COLORS = ['var(--orange)', 'var(--pink)', 'var(--indigo)', 'var(--tea
 
 function Produce({ u, levelId }: { u: Unit; levelId: string }) {
   return (
-    <div className="grid gap-5 lg:grid-cols-2">
+    <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
       {u.speaking && u.speaking.length > 0 && (
         <Card className="p-6">
           <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />

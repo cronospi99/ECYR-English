@@ -87,10 +87,10 @@ export const topicsForPoint = (unitKey: string, point: number) =>
     .filter(([, p]) => p.unitKey === unitKey && p.point === point)
     .map(([id]) => id);
 
-/** /learn/a1/2 for "A1-2". */
+/** /learn/a1/2?tab=grammar for "A1-2" (the grammar tab, where the practice lives). */
 export const unitPath = (unitKey: string) => {
   const [level, n] = unitKey.split('-');
-  return `/learn/${level!.toLowerCase()}/${n}`;
+  return `/learn/${level!.toLowerCase()}/${n}?tab=grammar`;
 };
 
 export const isPreA1 = (id: string) => (PREA1_TOPICS as readonly string[]).includes(id);

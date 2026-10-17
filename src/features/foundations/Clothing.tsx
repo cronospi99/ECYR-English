@@ -407,15 +407,17 @@ const PEOPLE = [
   { name: 'Samuel', pro: 'he', e: '👦🏽' },
 ] as const;
 
+const WOMENS = new Set(['skirt', 'sarong', 'tights', 'leggings', 'blouse', 'crop top', 'bikini', 'sundress', 'dress', 'romper']);
+
 const list = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
 
 function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: ClothingItem[]; rounds: number; onResult: OnResult }) {
   const pool = useMemo(() => unique(items.filter((it) => it.set !== 'colombia' || ['top', 'outer', 'bottom', 'shoes'].includes(it.cat))), [items]);
   const { list: game, again } = useRounds(() => {
-    const by = (cats: string[]) => pool.filter((it) => cats.includes(it.cat) && it.us !== 'top');
     return randomOrder(PEOPLE)
       .slice(0, rounds)
       .map((p) => {
+        const by = (cats: string[]) => pool.filter((it) => cats.includes(it.cat) && it.us !== 'top' && (p.pro === 'she' || !WOMENS.has(it.us)));
         const dress = p.pro === 'she' && Math.random() < 0.35;
         const outfit = dress ? [pick(by(['dress'])), pick(by(['shoes']))] : [pick(by(['top', 'outer'])), pick(by(['bottom'])), pick(by(['shoes']))];
         const swapOne = () => {
