@@ -17,6 +17,8 @@ export function WritingPad({
   level,
   title,
 }: {
+  /** Where the text was written, e.g. "unit:A1-3" (kept with the student's work for the teacher). */
+  taskRef?: string;
   storageKey: string;
   criteria?: string[];
   prompt: string;
