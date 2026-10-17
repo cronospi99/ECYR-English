@@ -21,7 +21,7 @@ export const PREA1_TOPICS = [
 
 export const PREA1 = {
   title: 'Foundations',
-  nameEs: 'Primeros pasos',
+  nameEs: 'Inicial',
   color: 'var(--red)',
   tint: 'from-[#d6202b] to-[#c25e00]',
   description: 'Antes de A1: el alfabeto, saludos, to be, números, signos, preguntas y la ropa, explicados en español.',

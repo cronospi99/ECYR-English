@@ -22,6 +22,7 @@ import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
 import { UnitReadings } from '@/features/practice/UnitReadings';
+import { AssignButton } from '@/features/tasks/AssignButton';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { unitVisualPlan, type Visual } from '@/content/visuals';
 import { useAsync } from '@/hooks/useAsync';
@@ -74,11 +75,14 @@ export default function UnitPage() {
       title={unitTitle(u.title)}
       subtitle={tab === 'overview' ? undefined : u.theme}
       actions={
-        done && (
-          <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
-            <CheckCircle2 size={20} /> Completada · {done.score}%
-          </span>
-        )
+        <span className="inline-flex flex-wrap items-center gap-3">
+          {done && (
+            <span className="text-ink-green inline-flex items-center gap-1.5 text-[15px] font-semibold">
+              <CheckCircle2 size={20} /> Completada · {done.score}%
+            </span>
+          )}
+          <AssignButton preset={{ source: 'unit', level: meta.id, unit: u.n, tab: tab === 'produce' ? 'practice' : tab }} />
+        </span>
       }
     >
       <div className="material sticky top-12 z-20 -mx-4 mb-5 px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[14px] lg:px-2">

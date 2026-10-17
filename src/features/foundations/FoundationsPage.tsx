@@ -63,7 +63,7 @@ export default function FoundationsPage() {
               </ProgressRing>
             </div>
           </Card>
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-2 [&>*]:min-w-0">
             {course.map((u) => (
               <ListGroup key={u.id} header={`Unidad ${Number(u.n)} · ${u.title} — ${u.es}`} footer={u.blurb}>
                 {u.topics.map((t, k) => (
@@ -95,7 +95,7 @@ export default function FoundationsPage() {
                 Present simple, pasado, comparativos, can, there is… ahora están dentro de la lección de gramática de A1 o A2 donde se estudian, como «Práctica
                 interactiva».
               </p>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 [&>*]:min-w-0">
                 {movedUnits.map(([key, list]) => (
                   <ListGroup key={key} header={key.replace('-', ' · Unidad ')}>
                     {list.map((t) => (
