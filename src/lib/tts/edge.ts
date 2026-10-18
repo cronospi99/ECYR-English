@@ -167,8 +167,10 @@ let flushTimer: ReturnType<typeof setTimeout> | null = null;
 async function errorCode(r: Response): Promise<string> {
   if (r.status === 404) return 'not_found';
   try {
-    const j = (await r.json()) as { error?: { code?: string } };
-    return j?.error?.code || `http_${r.status}`;
+    const j = (await r.json()) as { error?: { code?: string; detail?: string } };
+    const code = j?.error?.code || `http_${r.status}`;
+    if (j?.error?.detail) logOnce(`${code} — ${j.error.detail}`);
+    return code;
   } catch {
     return `http_${r.status}`;
   }
@@ -296,4 +298,67 @@ export function presignTts(items: { text: string; voice: string; rate: number }[
 export function prefetchTts(text: string, voice: string, rate = 0): void {
   if (!edgeAvailable() && !peekTts(text, voice, rate)) return;
   fetchTts(text, voice, rate).catch(() => undefined);
+}
+
+// -------------------------------------------------------------- diagnosis --
+
+export interface TtsDiagnosis {
+  ok: boolean;
+  /** Where it stopped: config | session | sign | audio | play. */
+  step: string;
+  code?: string;
+  status?: number;
+  message: string;
+  /** Object URL of the test clip when it worked. */
+  url?: string;
+}
+
+const FIX: Record<string, string> = {
+  not_configured: 'Falta TTS_SIGNING_SECRET en Vercel, o falta volver a desplegar (Redeploy) después de agregarla. Revisa que esté marcada para Production y Preview.',
+  not_found: 'Este sitio no tiene la función /api/tts desplegada. Revisa que el despliegue venga de la rama con los cambios (main ya actualizado).',
+  signed_out: 'La sesión no es válida para la función: cierra sesión y vuelve a entrar. Si sigue, revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en Vercel.',
+  limit: 'Se alcanzó el límite de audios nuevos de esta hora. Prueba más tarde.',
+  bad_signature: 'La firma no coincide: suele pasar si TTS_SIGNING_SECRET cambió entre dos despliegues. Vuelve a desplegar y recarga la página.',
+  upstream_handshake: 'Microsoft rechazó la conexión desde Vercel. Puede ser la versión que exige (variable EDGE_TTS_VERSION) o un bloqueo temporal.',
+  upstream_no_audio: 'Microsoft respondió sin audio para esa voz.',
+  upstream_timeout: 'Microsoft tardó demasiado en responder desde Vercel.',
+  upstream_network: 'Vercel no pudo conectarse con el servicio de voces de Microsoft.',
+};
+
+/** Runs the whole path once (session → signature → audio), bypassing caches and pauses, and says where it fails. */
+export async function diagnoseTts(): Promise<TtsDiagnosis> {
+  if (!supabase) return { ok: false, step: 'config', message: 'La app no tiene Supabase configurado en este despliegue (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY).' };
+  const token = (await supabase.auth.getSession()).data.session?.access_token;
+  if (!token) return { ok: false, step: 'session', code: 'signed_out', message: 'Inicia sesión: solo los usuarios con sesión pueden generar voces naturales.' };
+  const item = { t: `Hello! This is the natural voice test, ${new Date().toISOString().slice(11, 19)}.`, v: 'en-US-AvaMultilingualNeural', r: 0 };
+  const explain = async (r: Response | null, step: string): Promise<TtsDiagnosis> => {
+    if (!r) return { ok: false, step, code: 'network', message: 'No hubo respuesta de /api/tts (sin conexión o bloqueado por el navegador).' };
+    let code = `http_${r.status}`;
+    let server = '';
+    let detail = '';
+    try {
+      const j = (await r.clone().json()) as { error?: { code?: string; message?: string; detail?: string } };
+      code = j?.error?.code || code;
+      server = j?.error?.message || '';
+      detail = j?.error?.detail || '';
+    } catch {
+      if (r.status === 404) code = 'not_found';
+    }
+    const message = FIX[code] ?? (server || `Error ${r.status} de /api/tts.`);
+    return { ok: false, step, code, status: r.status, message: detail ? `${message} Detalle: ${detail}` : message };
+  };
+  const signed = await fetch(ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ items: [item] }),
+  }).catch(() => null);
+  if (!signed?.ok) return explain(signed, 'sign');
+  const sig = ((await signed.json()) as { sigs?: (string | null)[] }).sigs?.[0];
+  if (!sig) return { ok: false, step: 'sign', code: 'rejected', message: 'La función no firmó el texto de prueba.' };
+  const audio = await fetch(`${ENDPOINT}?${new URLSearchParams({ v: item.v, r: '0', p: '0', t: item.t, s: sig })}`).catch(() => null);
+  if (!audio?.ok) return explain(audio, 'audio');
+  const blob = await audio.blob();
+  if (blob.size < 128) return { ok: false, step: 'audio', code: 'empty', message: 'Llegó un audio vacío.' };
+  blockedUntil = 0;
+  return { ok: true, step: 'play', message: `Funciona: voz natural generada (${Math.round(blob.size / 1024)} KB).`, url: URL.createObjectURL(blob) };
 }
