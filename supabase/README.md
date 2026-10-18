@@ -94,8 +94,9 @@ TTS_SIGNING_SECRET=<cadena larga al azar, p. ej. `openssl rand -hex 32`>
 No es una clave de Supabase (nunca uses la `service_role` aquí) y no lleva el
 prefijo `VITE_`, así que no llega al navegador. La función usa además
 `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` (ya configuradas) para comprobar la
-sesión. Opcionales: `EDGE_TTS_VERSION` (si Microsoft cambia la versión que exige)
-y `EDGE_TTS_FORMAT`. Sin `TTS_SIGNING_SECRET`, la app usa la voz del dispositivo.
+sesión. Opcionales: `EDGE_TTS_VERSION` (si Microsoft cambia la versión que exige),
+`EDGE_TTS_FORMAT` y `EDGE_TTS_MODE` (`auto` por defecto: primero la lectura en voz alta de
+Edge y, si Microsoft rechaza los servidores de Vercel, la vía REST de Azure; o fija `rest` / `ws`). Sin `TTS_SIGNING_SECRET`, la app usa la voz del dispositivo.
 
 Si ya ejecutaste la antigua `10_voice_cache.sql` (voces de Gemini), lo que creó
 (el bucket `voice-cache` y `voice_usage`) ya no se usa; puedes dejarlo o borrarlo.
