@@ -33,7 +33,7 @@ import { useAuth } from '@/store/auth';
 import { useSettings, type ThemePref } from '@/store/settings';
 import { useProgress, snapshot, mergeProgress, type ProgressData } from '@/store/progress';
 import { isSupabaseConfigured } from '@/lib/supabase';
-import { PERSONAS, defaultPersona, edgeIssue, personaFor, type Persona, type VoiceAccent } from '@/lib/tts';
+import { PERSONAS, defaultPersona, diagnoseTts, edgeIssue, personaFor, type Persona, type TtsDiagnosis, type VoiceAccent } from '@/lib/tts';
 import { getSpeechState, speakAs, stopSpeaking, subscribeSpeech } from '@/lib/speech';
 import { cn } from '@/lib/cn';
 import { ink, tint } from '@/lib/color';
@@ -373,6 +373,7 @@ function VoiceSettings() {
           trailing={s.voiceEngine === e.value ? <Check size={20} strokeWidth={2.6} className="text-ink-blue" aria-label="Seleccionada" /> : undefined}
         />
       ))}
+      {natural && <VoiceCheck />}
       {natural && (
         <div className="space-y-3 p-3 shadow-[inset_0_0.5px_0_var(--separator)]">
           <p className="text-label-2 px-1 text-[13px]">Tu voz para leer en voz alta:</p>
@@ -394,6 +395,40 @@ function VoiceSettings() {
         </div>
       )}
     </ListGroup>
+  );
+}
+
+/** "Probar voces naturales": runs the whole path once and says, in Spanish, where it fails. */
+function VoiceCheck() {
+  const [busy, setBusy] = useState(false);
+  const [res, setRes] = useState<TtsDiagnosis | null>(null);
+  const run = async () => {
+    setBusy(true);
+    setRes(null);
+    const r = await diagnoseTts().catch((e: unknown) => ({ ok: false, step: 'app', message: String(e) }) as TtsDiagnosis);
+    setRes(r);
+    setBusy(false);
+    if (r.url) void new Audio(r.url).play().catch(() => undefined);
+  };
+  return (
+    <div className="px-4 py-3 shadow-[inset_0_0.5px_0_var(--separator)]">
+      <Button size="sm" variant="tinted" onClick={() => void run()} disabled={busy}>
+        {busy ? <Spinner className="h-4 w-4" /> : <Sparkles size={15} />} Probar voces naturales
+      </Button>
+      {res && (
+        <p className={cn('mt-2 text-[14px] text-pretty', res.ok ? 'text-ink-green' : 'text-ink-red')} role="status">
+          {res.ok ? '✅ ' : '⚠️ '}
+          {res.message}
+          {!res.ok && (
+            <span className="text-label-2 mt-1 block font-mono text-[12px]">
+              paso: {res.step}
+              {res.code ? ` · código: ${res.code}` : ''}
+              {res.status ? ` · HTTP ${res.status}` : ''}
+            </span>
+          )}
+        </p>
+      )}
+    </div>
   );
 }
 

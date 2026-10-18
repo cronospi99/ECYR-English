@@ -15,7 +15,7 @@ import { deviceSpeak, deviceStop, deviceUnlock, hasWebSpeech, pickVoice as pickD
 
 export type Tier = 'auto' | 'light' | 'premium';
 export { PERSONAS, getPersona, personaFor, castVoices, type Persona, type PersonaId, type VoiceAccent, type VoiceGender } from './voices';
-export { edgeIssue, prefetchTts, fetchTtsBlob, splitForTts, rateFor, TtsUnavailable } from './edge';
+export { diagnoseTts, edgeIssue, prefetchTts, fetchTtsBlob, splitForTts, rateFor, TtsUnavailable, type TtsDiagnosis } from './edge';
 
 export const canSpeak = () => hasWebSpeech() || (typeof window !== 'undefined' && typeof Audio !== 'undefined');
 
