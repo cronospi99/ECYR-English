@@ -319,7 +319,7 @@ const FIX: Record<string, string> = {
   signed_out: 'La sesión no es válida para la función: cierra sesión y vuelve a entrar. Si sigue, revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en Vercel.',
   limit: 'Se alcanzó el límite de audios nuevos de esta hora. Prueba más tarde.',
   bad_signature: 'La firma no coincide: suele pasar si TTS_SIGNING_SECRET cambió entre dos despliegues. Vuelve a desplegar y recarga la página.',
-  upstream_handshake: 'Microsoft rechazó la conexión desde Vercel. Puede ser la versión que exige (variable EDGE_TTS_VERSION) o un bloqueo temporal.',
+  upstream_handshake: 'Microsoft rechazó la conexión desde Vercel por las dos vías (lectura en voz alta de Edge y Azure). Pásale el detalle a quien mantiene la app.',
   upstream_no_audio: 'Microsoft respondió sin audio para esa voz.',
   upstream_timeout: 'Microsoft tardó demasiado en responder desde Vercel.',
   upstream_network: 'Vercel no pudo conectarse con el servicio de voces de Microsoft.',

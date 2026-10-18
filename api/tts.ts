@@ -25,6 +25,8 @@
  *   VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY   already set for the app (public values).
  *   EDGE_TTS_VERSION     optional — browser version the voice service expects.
  *   EDGE_TTS_FORMAT      optional — default audio-24khz-48kbitrate-mono-mp3.
+ *   EDGE_TTS_MODE        optional — "auto" (default: Edge read-aloud WebSocket, then
+ *                        the Azure REST path if Microsoft refuses this server), "rest" or "ws".
  */
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { createHash, createHmac, randomBytes, randomUUID, timingSafeEqual } from 'node:crypto';
@@ -87,14 +89,14 @@ export interface SynthOptions {
   timeoutMs?: number;
 }
 
-export function ssml(text: string, o: SynthOptions): string {
+export function ssml(text: string, o: SynthOptions, shortName = false): string {
   const lang = /^([a-z]{2,3}-[A-Z]{2,4})/.exec(o.voice)?.[1] ?? 'en-US';
   const sign = (n: number) => (n >= 0 ? '+' : '');
   const rate = Math.round(o.rate ?? 0);
   const pitch = Math.round(o.pitch ?? 0);
   return (
     `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${lang}'>` +
-    `<voice name='${longVoiceName(o.voice)}'><prosody pitch='${sign(pitch)}${pitch}Hz' rate='${sign(rate)}${rate}%' volume='+0%'>` +
+    `<voice name='${shortName ? o.voice : longVoiceName(o.voice)}'><prosody pitch='${sign(pitch)}${pitch}Hz' rate='${sign(rate)}${rate}%' volume='+0%'>` +
     `${escapeXml(text)}</prosody></voice></speak>`
   );
 }
@@ -185,12 +187,124 @@ function synthOnce(text: string, o: SynthOptions, version: string, cookie = true
   });
 }
 
+// ------------------------------------------------- second path: Azure REST --
+// The same neural voices through Azure's regular speech REST endpoint, with a
+// short-lived token issued to the Microsoft Translator app. Used when the
+// read-aloud WebSocket refuses this server (Microsoft blocks data-centre IPs there).
+
+const TRANSLATOR_ENDPOINT = 'https://dev.microsofttranslator.com/apps/endpoint?api-version=1.0';
+const TRANSLATOR_KEY = 'oik6PdDdMnOXemTbwvMn9de/h9lFnfBaCWbGMMZqqoSaQaqUOqjVGm5NqsmjcBI1x+sS9ugjB55HEJWRiFXYFw==';
+
+/** Overridable in tests. */
+export const http = { fetch: (input: string, init?: RequestInit) => fetch(input, init) };
+
+/** The Translator app's request signature: HMAC-SHA256 of app + URL + date + id, lower-cased. */
+export function translatorSignature(url: string, now = new Date(), id = randomUUID().replace(/-/g, '')): string {
+  const date = now.toUTCString().toLowerCase();
+  const toSign = `MSTranslatorAndroidApp${encodeURIComponent(url.split('://')[1] ?? url)}${date}${id}`.toLowerCase();
+  const sig = createHmac('sha256', Buffer.from(TRANSLATOR_KEY, 'base64')).update(toSign).digest('base64');
+  return `MSTranslatorAndroidApp::${sig}::${date}::${id}`;
+}
+
+let restToken: { t: string; r: string; until: number } | null = null;
+
+async function restEndpoint(): Promise<{ t: string; r: string }> {
+  if (restToken && restToken.until > Date.now()) return restToken;
+  const id = randomUUID().replace(/-/g, '');
+  const res = await http.fetch(TRANSLATOR_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Accept-Language': 'en-US',
+      'X-ClientVersion': '4.0.530a 5fe1dc6c',
+      'X-UserId': '0f04d16a175c411e',
+      'X-HomeGeographicRegion': 'en-US',
+      'X-ClientTraceId': id,
+      'X-MT-Signature': translatorSignature(TRANSLATOR_ENDPOINT, new Date(), id),
+      'User-Agent': 'okhttp/4.5.0',
+      'Content-Type': 'application/json; charset=utf-8',
+    },
+  }).catch((e: unknown) => {
+    throw new EdgeTtsError(`token: ${e instanceof Error ? e.message : e}`, 'network');
+  });
+  if (!res.ok) throw new EdgeTtsError(`token HTTP ${res.status} ${(await res.text().catch(() => '')).slice(0, 120)}`, 'handshake');
+  const j = (await res.json().catch(() => null)) as { t?: string; r?: string } | null;
+  if (!j?.t || !j?.r) throw new EdgeTtsError('token: unexpected answer', 'handshake');
+  // The token is a JWT: keep it until a minute before it expires (about 10 minutes).
+  let exp = Date.now() + 8 * 60_000;
+  try {
+    const payload = JSON.parse(Buffer.from(j.t.split('.')[1] ?? '', 'base64url').toString('utf8')) as { exp?: number };
+    if (payload.exp) exp = payload.exp * 1000 - 60_000;
+  } catch {
+    /* not a JWT we can read: use the default */
+  }
+  restToken = { t: j.t, r: j.r, until: exp };
+  return restToken;
+}
+
+async function synthRest(text: string, o: SynthOptions, retried = false): Promise<Buffer> {
+  const ep = await restEndpoint();
+  const res = await http
+    .fetch(`https://${ep.r}.tts.speech.microsoft.com/cognitiveservices/v1`, {
+      method: 'POST',
+      headers: {
+        Authorization: ep.t.startsWith('Bearer ') ? ep.t : `Bearer ${ep.t}`,
+        'Content-Type': 'application/ssml+xml',
+        'X-Microsoft-OutputFormat': OUTPUT_FORMAT,
+        'User-Agent': 'okhttp/4.5.0',
+      },
+      body: ssml(text, o, true),
+    })
+    .catch((e: unknown) => {
+      throw new EdgeTtsError(`rest: ${e instanceof Error ? e.message : e}`, 'network');
+    });
+  if ((res.status === 401 || res.status === 403) && !retried) {
+    restToken = null;
+    return synthRest(text, o, true);
+  }
+  if (!res.ok) throw new EdgeTtsError(`rest HTTP ${res.status} ${(await res.text().catch(() => '')).slice(0, 120)}`, res.status === 400 ? 'no_audio' : 'handshake');
+  const audio = Buffer.from(await res.arrayBuffer());
+  if (audio.length < 128) throw new EdgeTtsError('rest: empty audio', 'no_audio');
+  return audio;
+}
+
+/** After the WebSocket refused this server, go straight to REST for a while (exported for tests). */
+export const providers = { wsBlockedUntil: 0 };
+/** EDGE_TTS_MODE: "auto" (default: WebSocket, then REST), "rest" or "ws". */
+const MODE = (process.env.EDGE_TTS_MODE || 'auto').toLowerCase();
+
+/**
+ * One chunk of text to MP3: the read-aloud WebSocket first, and on a refused
+ * handshake the Azure REST path (remembered for 30 minutes). With Multilingual
+ * voices that a path does not know, the base voice is used.
+ */
+export async function synthesize(text: string, o: SynthOptions): Promise<Buffer> {
+  const tryRest = async (why: string) => {
+    try {
+      return await synthRest(text, o);
+    } catch (e) {
+      if (e instanceof EdgeTtsError && e.code === 'no_audio' && /MultilingualNeural$/.test(o.voice)) {
+        return synthRest(text, { ...o, voice: o.voice.replace(/MultilingualNeural$/, 'Neural') });
+      }
+      if (e instanceof EdgeTtsError) throw new EdgeTtsError(`${why}${why ? ' | ' : ''}${e.message}`, e.code);
+      throw e;
+    }
+  };
+  if (MODE === 'rest' || (MODE === 'auto' && providers.wsBlockedUntil > Date.now())) return tryRest('');
+  try {
+    return await synthesizeWs(text, o);
+  } catch (e) {
+    if (MODE === 'ws' || !(e instanceof EdgeTtsError) || (e.code !== 'handshake' && e.code !== 'network')) throw e;
+    providers.wsBlockedUntil = Date.now() + 30 * 60_000;
+    return tryRest(e.message);
+  }
+}
+
 /**
  * One chunk of text to MP3. On a refused handshake, tries the other browser
  * versions (and once without the cookie) before giving up; the error then
  * lists every answer Microsoft gave, for the logs and the app's diagnosis.
  */
-export async function synthesize(text: string, o: SynthOptions): Promise<Buffer> {
+async function synthesizeWs(text: string, o: SynthOptions): Promise<Buffer> {
   const order = goodVersion ? [goodVersion, ...VERSIONS.filter((v) => v !== goodVersion)] : VERSIONS;
   const attempts: [string, boolean][] = [...order.map((v) => [v, true] as [string, boolean]), [order[0]!, false]];
   const refused: string[] = [];
