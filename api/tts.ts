@@ -34,8 +34,14 @@ import WebSocket from 'ws';
 
 const TRUSTED_CLIENT_TOKEN = '6A5AA1D4EAFF4E9FB37E23D68491D6F4';
 const WSS_URL = 'wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1';
-const CHROMIUM_FULL_VERSION = process.env.EDGE_TTS_VERSION || '140.0.3485.14';
-const CHROMIUM_MAJOR = CHROMIUM_FULL_VERSION.split('.')[0];
+/**
+ * The browser version the service expects in Sec-MS-GEC-Version and the
+ * User-Agent. Microsoft rotates what it accepts, so on a refused handshake the
+ * next one is tried, and the one that worked is kept for this instance.
+ * EDGE_TTS_VERSION (Vercel env) goes first when set.
+ */
+const VERSIONS = [...new Set([process.env.EDGE_TTS_VERSION, '143.0.3650.75', '140.0.3485.14', '135.0.3179.54', '130.0.2849.68'].filter((v): v is string => !!v))];
+let goodVersion: string | null = null;
 const OUTPUT_FORMAT = process.env.EDGE_TTS_FORMAT || 'audio-24khz-48kbitrate-mono-mp3';
 const WIN_EPOCH = 11644473600;
 
@@ -105,28 +111,28 @@ export function parseBinary(buf: Buffer): { path: string; audio: Buffer | null }
 
 /** Overridable in tests. */
 export const transport = {
-  url: () =>
+  url: (version: string) =>
     `${WSS_URL}?TrustedClientToken=${TRUSTED_CLIENT_TOKEN}&Sec-MS-GEC=${secMsGec()}` +
-    `&Sec-MS-GEC-Version=1-${CHROMIUM_FULL_VERSION}&ConnectionId=${randomUUID().replace(/-/g, '')}`,
+    `&Sec-MS-GEC-Version=1-${version}&ConnectionId=${randomUUID().replace(/-/g, '')}`,
 };
 
-function connect(): WebSocket {
-  return new WebSocket(transport.url(), {
-    headers: {
-      Pragma: 'no-cache',
-      'Cache-Control': 'no-cache',
-      Origin: 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold',
-      'Accept-Encoding': 'gzip, deflate, br, zstd',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${CHROMIUM_MAJOR}.0.0.0 Safari/537.36 Edg/${CHROMIUM_MAJOR}.0.0.0`,
-      Cookie: `muid=${randomBytes(16).toString('hex').toUpperCase()};`,
-    },
-  });
+function connect(version: string, cookie: boolean): WebSocket {
+  const major = version.split('.')[0];
+  const headers: Record<string, string> = {
+    Pragma: 'no-cache',
+    'Cache-Control': 'no-cache',
+    Origin: 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${major}.0.0.0 Safari/537.36 Edg/${major}.0.0.0`,
+  };
+  if (cookie) headers.Cookie = `muid=${randomBytes(16).toString('hex').toUpperCase()};`;
+  return new WebSocket(transport.url(version), { headers });
 }
 
-function synthOnce(text: string, o: SynthOptions): Promise<Buffer> {
+function synthOnce(text: string, o: SynthOptions, version: string, cookie = true): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-    const ws = connect();
+    const ws = connect(version, cookie);
     const parts: Buffer[] = [];
     let done = false;
     const finish = (err: Error | null) => {
@@ -145,10 +151,18 @@ function synthOnce(text: string, o: SynthOptions): Promise<Buffer> {
     const timer = setTimeout(() => finish(new EdgeTtsError('The voice service took too long.', 'timeout')), o.timeoutMs ?? 25_000);
 
     ws.on('unexpected-response', (_req, res) => {
-      // A 403 is usually our clock being off for the Sec-MS-GEC token: learn the skew for the retry.
+      // A 403 can be our clock being off for the Sec-MS-GEC token: learn the skew for the retry.
       const date = res.headers.date ? Date.parse(res.headers.date) : NaN;
       if (res.statusCode === 403 && !Number.isNaN(date)) clockSkew = (date - Date.now()) / 1000;
-      finish(new EdgeTtsError(`Voice service handshake failed (${res.statusCode}).`, 'handshake'));
+      const err = new EdgeTtsError(`HTTP ${res.statusCode} (v${version}${cookie ? '' : ', no cookie'})`, 'handshake');
+      let body = '';
+      res.on('data', (c: Buffer) => (body += c.toString('utf8').slice(0, 300)));
+      res.on('end', () => {
+        if (body) err.message += ` ${body.replace(/\s+/g, ' ').slice(0, 200)}`;
+        finish(err);
+      });
+      res.on('error', () => finish(err));
+      setTimeout(() => finish(err), 1500);
     });
     ws.on('error', (e) => finish(new EdgeTtsError(e.message || 'Network error.', 'network')));
     ws.on('open', () => {
@@ -171,18 +185,38 @@ function synthOnce(text: string, o: SynthOptions): Promise<Buffer> {
   });
 }
 
-/** One chunk of text to MP3. Retries once after a handshake/network failure (with any clock skew learned). */
+/**
+ * One chunk of text to MP3. On a refused handshake, tries the other browser
+ * versions (and once without the cookie) before giving up; the error then
+ * lists every answer Microsoft gave, for the logs and the app's diagnosis.
+ */
 export async function synthesize(text: string, o: SynthOptions): Promise<Buffer> {
-  try {
-    return await synthOnce(text, o);
-  } catch (e) {
-    if (e instanceof EdgeTtsError && (e.code === 'handshake' || e.code === 'network')) return synthOnce(text, o);
-    // Some newer "…MultilingualNeural" voices are not in every region: fall back to the base voice.
-    if (e instanceof EdgeTtsError && e.code === 'no_audio' && /MultilingualNeural$/.test(o.voice)) {
-      return synthOnce(text, { ...o, voice: o.voice.replace(/MultilingualNeural$/, 'Neural') });
+  const order = goodVersion ? [goodVersion, ...VERSIONS.filter((v) => v !== goodVersion)] : VERSIONS;
+  const attempts: [string, boolean][] = [...order.map((v) => [v, true] as [string, boolean]), [order[0]!, false]];
+  const refused: string[] = [];
+  for (const [version, cookie] of attempts) {
+    try {
+      const audio = await synthOnce(text, o, version, cookie);
+      goodVersion = version;
+      return audio;
+    } catch (e) {
+      if (!(e instanceof EdgeTtsError)) throw e;
+      if (e.code === 'handshake') {
+        refused.push(e.message);
+        continue;
+      }
+      if (e.code === 'network' && refused.length === 0) {
+        refused.push(`network: ${e.message}`);
+        continue;
+      }
+      // Some newer "…MultilingualNeural" voices are not in every region: fall back to the base voice.
+      if (e.code === 'no_audio' && /MultilingualNeural$/.test(o.voice)) {
+        return synthOnce(text, { ...o, voice: o.voice.replace(/MultilingualNeural$/, 'Neural') }, version, cookie);
+      }
+      throw e;
     }
-    throw e;
   }
+  throw new EdgeTtsError(`Voice service refused every handshake: ${refused.join(' | ')}`, 'handshake');
 }
 
 // ===================================================================== endpoint
@@ -333,8 +367,9 @@ export default async function handler(req: Req, res: ServerResponse) {
     audio = await synthesize(n.t, { voice: n.v, rate: n.r, pitch: n.p });
   } catch (e) {
     const code = e instanceof EdgeTtsError ? e.code : 'network';
-    console.error('[tts] synthesis failed:', code, e instanceof Error ? e.message : e);
-    return fail(res, 502, 'The voice service did not answer. Use the device voice for now.', `upstream_${code}`);
+    const detail = e instanceof Error ? e.message : String(e);
+    console.error('[tts] synthesis failed:', code, detail);
+    return send(res, 502, { error: { message: 'The voice service did not answer. Use the device voice for now.', code: `upstream_${code}`, detail: detail.slice(0, 600) } });
   }
 
   res.statusCode = 200;

@@ -167,8 +167,10 @@ let flushTimer: ReturnType<typeof setTimeout> | null = null;
 async function errorCode(r: Response): Promise<string> {
   if (r.status === 404) return 'not_found';
   try {
-    const j = (await r.json()) as { error?: { code?: string } };
-    return j?.error?.code || `http_${r.status}`;
+    const j = (await r.json()) as { error?: { code?: string; detail?: string } };
+    const code = j?.error?.code || `http_${r.status}`;
+    if (j?.error?.detail) logOnce(`${code} — ${j.error.detail}`);
+    return code;
   } catch {
     return `http_${r.status}`;
   }
@@ -333,14 +335,17 @@ export async function diagnoseTts(): Promise<TtsDiagnosis> {
     if (!r) return { ok: false, step, code: 'network', message: 'No hubo respuesta de /api/tts (sin conexión o bloqueado por el navegador).' };
     let code = `http_${r.status}`;
     let server = '';
+    let detail = '';
     try {
-      const j = (await r.clone().json()) as { error?: { code?: string; message?: string } };
+      const j = (await r.clone().json()) as { error?: { code?: string; message?: string; detail?: string } };
       code = j?.error?.code || code;
       server = j?.error?.message || '';
+      detail = j?.error?.detail || '';
     } catch {
       if (r.status === 404) code = 'not_found';
     }
-    return { ok: false, step, code, status: r.status, message: FIX[code] ?? (server || `Error ${r.status} de /api/tts.`) };
+    const message = FIX[code] ?? (server || `Error ${r.status} de /api/tts.`);
+    return { ok: false, step, code, status: r.status, message: detail ? `${message} Detalle: ${detail}` : message };
   };
   const signed = await fetch(ENDPOINT, {
     method: 'POST',
