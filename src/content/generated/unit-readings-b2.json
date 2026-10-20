@@ -283,6 +283,137 @@
      "explain_es": "Dice: \"a nurturing home isn't one without conflict. It's one where people learn how to repair things after a fight\"."
     }
    ]
+  },
+  {
+   "id": "u-b2-1-3",
+   "title": "Four Passports, One Sofa",
+   "level": "B2",
+   "genre": "article",
+   "topic": "Culture & family",
+   "focus": "Verbs followed by gerunds; noun clauses after be",
+   "emoji": "🛋️",
+   "image": "/visuals/family-multicultural.webp",
+   "paragraphs": [
+    "At first glance, the photograph looks like any other family portrait: three generations squeezed onto a living-room sofa, a golden retriever stretched out on the rug, everyone grinning at the camera. Look a little closer, however, and you start noticing details that tell a more unusual story. The grandmother is wearing a kimono-style jacket; the grandfather, a white thobe and headscarf; the aunt, a bright silk sari.",
+    "The family in the picture is fictional, but it is far from unrealistic. Mixed families are one of the fastest-growing groups in many cities, from London to Bogotá. What is striking is not that such families exist, but how ordinary they have become. Children growing up in them often switch between two or three languages without thinking twice, and many say they can't imagine celebrating only one set of holidays.",
+    "That does not mean everything is easy. Parents frequently mention having to negotiate everything from food to bedtimes. One father of two, whose wife is Colombian and whose parents are Nigerian, admits avoiding certain topics at family dinners altogether. 'The problem is that everyone has a different idea of what a \"normal\" family looks like,' he says. 'You end up apologising for things that nobody in the room actually finds strange.'",
+    "Grandparents, in particular, can find the adjustment hard. Many of them grew up in communities where marrying someone from another country was rare, and some admit resisting the idea at first. Yet researchers who study these families keep finding the same pattern: once grandchildren arrive, attitudes soften remarkably quickly. The truth is that few people can resist spoiling a grandchild, whatever language that grandchild happens to speak.",
+    "Perhaps the most valuable thing these families offer is practice. Children who are used to explaining their background tend to be good at seeing the world from more than one point of view. As one teenager put it: 'My idea of home isn't a country. It's a sofa with way too many people on it.'"
+   ],
+   "glossary": [
+    [
+     "at first glance",
+     "a primera vista"
+    ],
+    [
+     "squeezed",
+     "apretados"
+    ],
+    [
+     "grinning",
+     "sonriendo de oreja a oreja"
+    ],
+    [
+     "striking",
+     "llamativo"
+    ],
+    [
+     "switch between",
+     "alternar entre"
+    ],
+    [
+     "negotiate",
+     "negociar"
+    ],
+    [
+     "altogether",
+     "por completo"
+    ],
+    [
+     "adjustment",
+     "adaptación"
+    ],
+    [
+     "soften",
+     "suavizarse"
+    ],
+    [
+     "spoiling",
+     "consentir, malcriar"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to the writer, what is most surprising about mixed families today?",
+     "options": [
+      "That they exist at all",
+      "How normal they have become",
+      "That they all live in big cities",
+      "That they speak only one language"
+     ],
+     "answer": 1,
+     "explain_es": "'What is striking is not that such families exist, but how ordinary they have become'."
+    },
+    {
+     "type": "tf",
+     "q": "The family in the photograph is a real family the writer interviewed.",
+     "answer": "F",
+     "explain_es": "'The family in the picture is fictional'."
+    },
+    {
+     "type": "tf",
+     "q": "Grandparents usually become more accepting after grandchildren are born.",
+     "answer": "T",
+     "explain_es": "'once grandchildren arrive, attitudes soften remarkably quickly'."
+    },
+    {
+     "type": "tf",
+     "q": "The father mentioned in paragraph 3 has three children.",
+     "answer": "F",
+     "explain_es": "Es 'one father of two' = padre de dos hijos."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the father avoid some topics at family dinners?",
+     "options": [
+      "Because he doesn't speak Spanish",
+      "Because people disagree about what a normal family is",
+      "Because his children are too young",
+      "Because his parents live far away"
+     ],
+     "answer": 1,
+     "explain_es": "'everyone has a different idea of what a \"normal\" family looks like'."
+    },
+    {
+     "type": "gap",
+     "q": "Many children say they can't imagine ____ only one set of holidays.",
+     "answer": "celebrating",
+     "explain_es": "imagine + gerundio: imagine celebrating."
+    },
+    {
+     "type": "transform",
+     "q": "Complete with a noun clause after be: The problem / everyone has a different idea.",
+     "answer": "The problem is that everyone has a different idea.",
+     "accept": [
+      "The problem is that everyone has a different idea"
+     ],
+     "explain_es": "Noun clause después de be: The problem is that…"
+    },
+    {
+     "type": "mc",
+     "q": "What does the teenager's final quote suggest?",
+     "options": [
+      "Home is a feeling of belonging with family, not a place on a map",
+      "Their sofa is too small",
+      "They want to live in one country",
+      "They don't like big families"
+     ],
+     "answer": 0,
+     "explain_es": "'My idea of home isn't a country. It's a sofa with way too many people on it.'"
+    }
+   ],
+   "words": 333
   }
  ],
  "2": [

@@ -13,6 +13,7 @@ import { Block } from './blocks';
 import { useTopicRun } from './run';
 import { FOUNDATION_MAP, unitPath } from './meta';
 import NotFound from '../NotFound';
+import { TopicInserts } from '@/features/learn/inserts';
 
 interface Found {
   unit: CourseUnit;
@@ -91,6 +92,8 @@ function TopicView({ unit, topic, next, course }: Found) {
         {topic.blocks.map((b, i) => (
           <Block key={`${topic.id}-${i}`} block={b} onResult={onResult(i)} />
         ))}
+
+        <TopicInserts topicId={topic.id} />
 
         {allDone && (
           <Card className="flex items-center gap-4 p-5">

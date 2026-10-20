@@ -336,7 +336,8 @@ export const VISUALS: Visual[] = [
     levels: ['A1', 'A2'],
     kind: 'vocabulary',
     tags: ['family', 'family members', 'possessive ’s', 'describing people'],
-    places: [{ unit: 'A1-5', section: 'vocab' }],
+    // Shown as the interactive photo explorer in A1-5, A1-9 and B2-1 (src/features/learn/inserts).
+    places: [],
   },
   {
     id: 'family-garden',
@@ -347,10 +348,8 @@ export const VISUALS: Visual[] = [
     levels: ['A1', 'A2'],
     kind: 'vocabulary',
     tags: ['family', 'pets', 'family members', 'clothes', 'describing people'],
-    places: [
-      { unit: 'A1-5', section: 'vocab' },
-      { unit: 'A1-9', section: 'vocab' },
-    ],
+    // Shown as the interactive photo explorer in A1-5, A1-9 and B2-1 (src/features/learn/inserts).
+    places: [],
   },
   {
     id: 'family-multicultural',
@@ -361,10 +360,8 @@ export const VISUALS: Visual[] = [
     levels: ['A1', 'A2', 'B2'],
     kind: 'vocabulary',
     tags: ['family', 'nationalities', 'culture', 'family structures'],
-    places: [
-      { unit: 'A1-5', section: 'vocab' },
-      { unit: 'B2-1', section: 'vocab' },
-    ],
+    // Shown as the interactive photo explorer in A1-5, A1-9 and B2-1 (src/features/learn/inserts).
+    places: [],
   },
 ];
 

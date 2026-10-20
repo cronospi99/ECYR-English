@@ -210,7 +210,7 @@ function ExamRunner({ exam }: { exam: Exam }) {
             <Card className="flex items-center gap-3 p-4">
               <Trophy size={22} className="text-ink-orange" />
               <span className="text-[15px]">
-                Mejor resultado: <b>{best.best.grade.toFixed(1)}</b> ({best.best.pct}%) · {best.attempts} {best.attempts === 1 ? 'intento' : 'intentos'}
+                Mejor resultado: <b>{best.best.grade.toFixed(1).replace('.', ',')}</b> ({best.best.pct}%) · {best.attempts} {best.attempts === 1 ? 'intento' : 'intentos'}
               </span>
             </Card>
           )}
@@ -624,7 +624,7 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
           <div className={cn('p-6 text-white', passed ? 'bg-[linear-gradient(135deg,#1f8a3d,#1a7f92)]' : 'bg-[linear-gradient(135deg,#c2410c,#be185d)]')}>
             <div className="text-[14px] font-semibold opacity-90">{passed ? '¡Aprobaste!' : 'Aún no alcanzas el 3,0'}</div>
             <div className="mt-1 flex items-end gap-3">
-              <span className="text-[56px] leading-none font-extrabold tabular-nums">{result.grade.toFixed(1)}</span>
+              <span className="text-[56px] leading-none font-extrabold tabular-nums">{result.grade.toFixed(1).replace('.', ',')}</span>
               <span className="mb-1.5 text-[18px] font-semibold opacity-90">/ 5,0 · {result.pct}%</span>
             </div>
             {Object.values(result.sections).some((v) => v === null) && (
@@ -734,7 +734,7 @@ function Feedback({ m }: { m: ExamMark }) {
 async function sendToTeacher(exam: Exam, draft: Draft, result: ExamResult, writing: ExamMark | null, speaking: (ExamMark | null)[]) {
   const sheet = [
     `## ${exam.title} · ${levelName(exam.level)}`,
-    `**Nota:** ${result.grade.toFixed(1)} / 5,0 (${result.pct}%)`,
+    `**Nota:** ${result.grade.toFixed(1).replace('.', ',')} / 5,0 (${result.pct}%)`,
     ...EXAM_SECTIONS.map((s) => {
       const v = result.sections[s.id];
       return `- ${s.label}: ${v === null || v === undefined ? 'pendiente de calificación' : `${v}%`}`;

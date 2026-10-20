@@ -8,7 +8,7 @@ import { Chip, LevelChip, PageLoader } from '@/components/ui/Misc';
 import { QuestionSet, questionsToSections } from '@/components/learning/QuestionSet';
 import { PdfButton } from '@/components/learning/PdfButton';
 import { useAsync } from '@/hooks/useAsync';
-import { loadLibReadings, type LibReading } from '@/content/library';
+import { loadLibReadings, plainText, type LibReading } from '@/content/library';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { speak, speakSequence, stopSpeaking } from '@/lib/speech';
@@ -110,6 +110,7 @@ export function ReadingCard({ r, i = 0, onOpen }: { r: LibReading; i?: number; o
           {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} preguntas
         </span>
         {r.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {r.focus}</span>}
+        {r.advisory && <span className="text-ink-orange mt-0.5 block text-[11.5px] font-semibold">⚠︎ Tema adulto</span>}
       </span>
     </motion.button>
   );
@@ -122,7 +123,7 @@ export function readingSheet(r: LibReading): Worksheet {
     level: r.level,
     intro: 'Read the text carefully, then answer the questions.',
     sections: [
-      { kind: 'text', paragraphs: r.paragraphs },
+      { kind: 'text', paragraphs: r.paragraphs.map(plainText) },
       { kind: 'words', title: 'Glossary', items: r.glossary.map(([en, es]) => ({ en, es })) },
       ...questionsToSections(r.questions),
     ],
@@ -140,6 +141,8 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
   useEffect(() => () => void stopSpeaking(), [r.id]);
 
   const [all, setAll] = useState(false);
+  const [layers, setLayers] = useState<Set<string>>(() => new Set(Object.keys(r.marks ?? {})));
+  const toggleLayer = (k: string) => setLayers((s) => (s.has(k) ? new Set([...s].filter((x) => x !== k)) : new Set([...s, k])));
   const read = (i: number) => {
     setAll(false);
     if (reading === i) {
@@ -148,7 +151,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
       return;
     }
     setReading(i);
-    speak(r.paragraphs[i]!, { rate: 0.92, tier: 'premium', onEnd: () => setReading((x) => (x === i ? null : x)) });
+    speak(plainText(r.paragraphs[i]!), { rate: 0.92, tier: 'premium', onEnd: () => setReading((x) => (x === i ? null : x)) });
   };
   /** Guided reading: the whole text in a natural voice, highlighting the paragraph being read. */
   const readAll = () => {
@@ -161,7 +164,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
     setAll(true);
     setReading(0);
     speakSequence(
-      r.paragraphs.map((text) => ({ text })),
+      r.paragraphs.map((p) => ({ text: plainText(p) })),
       { rate: 0.92, gapMs: 450, onLine: setReading, onEnd: () => (setAll(false), setReading(null)) },
     );
   };
@@ -191,18 +194,43 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
           >
             {all ? <Square size={14} fill="currentColor" /> : <Volume2 size={16} />} {all ? 'Detener' : 'Escuchar toda la lectura'}
           </button>
+          {r.advisory && <p className="mt-3 rounded-[10px] bg-black/20 px-3 py-1.5 text-[12.5px]">⚠︎ {r.advisory}</p>}
         </div>
+        {r.marks && (
+          <div className="hairline-b flex flex-wrap items-center gap-1.5 px-5 py-3 sm:px-6">
+            <span className="text-label-2 mr-1 text-[12px] font-bold tracking-wide uppercase">Resalta</span>
+            {Object.entries(r.marks).map(([k, m]) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => toggleLayer(k)}
+                aria-pressed={layers.has(k)}
+                className={cn('rounded-full px-3 py-1 text-[13px] font-semibold transition-colors', layers.has(k) ? 'text-white' : 'bg-fill-2 text-label-2')}
+                style={layers.has(k) ? { background: m.color } : undefined}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+        )}
+        {r.image && <img src={r.image} alt={r.title} className="block w-full" loading="lazy" />}
         <div className="space-y-4 p-5 sm:p-6">
-          {r.paragraphs.map((p, i) => (
+          {r.paragraphs.map((p, i) =>
+            p.startsWith('## ') ? (
+              <h3 key={i} className="text-ink-orange pt-3 text-[15px] font-extrabold tracking-wide uppercase">
+                {p.slice(3)}
+              </h3>
+            ) : (
             <div key={i} className={cn('group flex gap-2 rounded-[12px] transition-colors', reading === i && 'bg-[color-mix(in_srgb,var(--blue)_8%,transparent)]')}>
               <p className="flex-1 text-[17px] leading-[1.7]">
-                <Glossed text={p} terms={terms} onTap={setGloss} />
+                {r.marks ? <Marked text={p} marks={r.marks} on={layers} terms={terms} onTap={setGloss} /> : <Glossed text={p} terms={terms} onTap={setGloss} />}
               </p>
               <button type="button" onClick={() => read(i)} className="text-ink-blue mt-1 h-8 w-8 shrink-0 rounded-full hover:bg-fill-2" aria-label={reading === i ? 'Detener' : 'Escuchar párrafo'}>
                 {reading === i ? <Square size={15} className="mx-auto" /> : <Volume2 size={16} className="mx-auto" />}
               </button>
             </div>
-          ))}
+            ),
+          )}
           {gloss && (
             <div className="bg-fill-2 sticky bottom-20 flex items-center justify-between gap-3 rounded-[14px] px-4 py-2.5 shadow-float sm:bottom-4">
               <span>
@@ -237,6 +265,33 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
         onChecked={(right, total) => completeReading(`lib-${r.id}`, Math.round((right / total) * 100), r.title, r.level)}
       />
     </div>
+  );
+}
+
+/** Text with highlight layers (`[[key|text|note]]`); the note shows on hover / long press. */
+function Marked({ text, marks, on, terms, onTap }: { text: string; marks: NonNullable<LibReading['marks']>; on: Set<string>; terms: string[]; onTap: (t: string) => void }) {
+  const parts = text.split(/(\[\[[a-z0-9]+\|[^\]]*\]\])/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const m = /^\[\[([a-z0-9]+)\|([^|\]]*)(?:\|([^\]]*))?\]\]$/.exec(part);
+        if (!m) return <Glossed key={i} text={part} terms={terms} onTap={onTap} />;
+        const [, key, inner, note] = m;
+        const layer = marks[key!];
+        if (!layer || !on.has(key!)) return <Glossed key={i} text={inner!} terms={terms} onTap={onTap} />;
+        return (
+          <span
+            key={i}
+            title={note ? `${layer.label}: ${note}` : layer.label}
+            className="rounded-[5px] px-0.5 [box-decoration-break:clone]"
+            style={{ background: `color-mix(in srgb, ${layer.color} 20%, transparent)`, boxShadow: `inset 0 -2px 0 ${layer.color}` }}
+          >
+            <Glossed text={inner!} terms={terms} onTap={onTap} />
+            {note && <sup className="ml-0.5 text-[10px] font-bold" style={{ color: layer.color }}>{key!.toUpperCase()}</sup>}
+          </span>
+        );
+      })}
+    </>
   );
 }
 

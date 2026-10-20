@@ -1,0 +1,593 @@
+[
+ {
+  "id": "r4-a2-cellphone-case-past",
+  "title": "The Cellphone Case",
+  "level": "A2",
+  "genre": "story",
+  "topic": "Relationships",
+  "focus": "Past simple: regular, irregular and negative",
+  "emoji": "📱",
+  "advisory": "Tema adulto: una relación de pareja controladora, dinero y un embarazo. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "reg": {
+    "label": "Regular (-ed)",
+    "color": "var(--blue)"
+   },
+   "irr": {
+    "label": "Irregular",
+    "color": "var(--orange)"
+   },
+   "neg": {
+    "label": "Negativa (did not)",
+    "color": "var(--red)"
+   }
+  },
+  "paragraphs": [
+   "Nicolás [[irr|met]] Valentina in a shopping mall in 2025. He [[irr|was]] twenty-seven years old and she [[irr|was]] twenty-three. They [[reg|talked]] for a few minutes near the escalators. Before they [[irr|said]] goodbye, they [[reg|exchanged]] phone numbers.",
+   "They [[reg|texted]] every day for two weeks. Then some older friends [[reg|warned]] us about her. They [[irr|said]] that she [[irr|was]] a crazy girl and that she [[reg|hurt]] other people in the past. Nicolás [[neg|did not listen]] to them. He only [[reg|answered]]: \"You [[neg|did not meet]] her. You only [[reg|listened]] to a story about her.\"",
+   "In March he [[reg|travelled]] to her city and he [[reg|visited]] her for the first time. That night they [[irr|fell]] in love. They [[reg|started]] a very fast relationship: in two weeks they [[irr|chose]] nicknames, they [[reg|planned]] a future and they [[reg|talked]] about children.",
+   "Then his behaviour [[reg|changed]]. He [[reg|tracked]] her location on her phone. He [[reg|contacted]] her cousin, her best friend and a girl from her job, and he [[reg|asked]] them careful questions about her. Some nights he [[reg|parked]] outside her building, he [[reg|watched]] her window and he [[neg|did not go]] up. He [[reg|called]] all of this \"care\".",
+   "One evening she [[irr|got]] angry with him. \"You [[reg|called]] my best friend three times last week,\" she [[irr|said]]. \"You [[irr|wrote]] to my cousin. Last Tuesday you [[reg|waited]] outside my building for two hours and you [[neg|did not tell]] me.\" Nicolás [[neg|did not answer]] her, and the silence [[reg|lasted]] a long time.",
+   "After three months he [[reg|disappeared]]. For weeks he [[neg|did not answer]] our calls or our messages. Then, at two o'clock in the morning, he [[reg|texted]] me and he [[reg|asked]] me for two million pesos. He [[reg|explained]] that the money [[irr|was]] for Valentina, because she [[reg|booked]] a date for breast surgery.",
+   "Two weeks later he [[reg|called]] me for advice. His voice [[reg|sounded]] different. He [[irr|told]] me that Valentina [[irr|was]] pregnant, and he [[irr|said]] that he [[reg|felt]] afraid because he [[neg|did not have]] money or a plan. I [[irr|told]] him that fear [[irr|was]] normal. I also [[reg|asked]] him to stop the surveillance and to talk to her.",
+   "He [[neg|did not stop]], and because of that he [[reg|discovered]] another problem. Valentina [[reg|continued]] her visits to her ex-boyfriend. This man [[irr|was]] a wizard, and people in her town [[reg|called]] him \"el brujildo\". She [[irr|went]] to his house every week. From that day, Nicolás and Valentina [[irr|fought]] about everything: the money, the surgery, the phone and the baby.",
+   "In the fourth month he [[reg|learned]] the whole truth. Valentina [[reg|lied]] to him about the pregnancy: she [[reg|ended]] it at three and a half months and she [[irr|said]] nothing for weeks. Finally she [[reg|explained]] her decision in one sentence: \"I [[irr|did]] it because I [[reg|wanted]] my child to be from my love, not from a poor guy.\"",
+   "Nicolás [[irr|left]] the city a few days later and he [[reg|started]] again in another place. Valentina [[reg|travelled]] to Spain and she [[reg|started]] a new life in Madrid. Last month she [[irr|sent]] him three million pesos with nine words: \"Come here to Madrid and make me pregnant again.\" He [[reg|read]] the message, but he [[neg|did not answer]] it."
+  ],
+  "glossary": [
+   [
+    "shopping mall",
+    "centro comercial"
+   ],
+   [
+    "escalators",
+    "escaleras eléctricas"
+   ],
+   [
+    "warned",
+    "advirtieron"
+   ],
+   [
+    "tracked",
+    "rastreó"
+   ],
+   [
+    "surveillance",
+    "vigilancia"
+   ],
+   [
+    "parked",
+    "estacionaba"
+   ],
+   [
+    "pregnant",
+    "embarazada"
+   ],
+   [
+    "wizard",
+    "brujo"
+   ],
+   [
+    "advice",
+    "consejo"
+   ],
+   [
+    "fought",
+    "pelearon"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Where did Nicolás and Valentina meet?",
+    "options": [
+     "At a bar",
+     "In a shopping mall",
+     "At work",
+     "On a bus"
+    ],
+    "answer": 1,
+    "explain_es": "'Nicolás met Valentina in a shopping mall in 2025.'"
+   },
+   {
+    "type": "tf",
+    "q": "Nicolás listened to his older friends' warning.",
+    "answer": "F",
+    "explain_es": "'Nicolás did not listen to them.'"
+   },
+   {
+    "type": "mc",
+    "q": "Which of these things did Nicolás NOT do to control Valentina?",
+    "options": [
+     "He tracked her location.",
+     "He contacted her cousin.",
+     "He read her diary.",
+     "He watched her window from his car."
+    ],
+    "answer": 2,
+    "explain_es": "El texto menciona la ubicación, la prima y la ventana, pero no un diario."
+   },
+   {
+    "type": "mc",
+    "q": "How much money did Nicolás ask the narrator for?",
+    "options": [
+     "Two million pesos",
+     "Three million pesos",
+     "Two hundred thousand pesos",
+     "Nothing"
+    ],
+    "answer": 0,
+    "explain_es": "'he asked me for two million pesos'."
+   },
+   {
+    "type": "gap",
+    "q": "Nicolás ____ (leave) the city a few days later.",
+    "answer": "left",
+    "explain_es": "leave → left (irregular)."
+   },
+   {
+    "type": "gap",
+    "q": "Valentina ____ (send) him three million pesos.",
+    "answer": "sent",
+    "explain_es": "send → sent (irregular)."
+   },
+   {
+    "type": "gap",
+    "q": "He read the message, but he ____ (not / answer) it.",
+    "answer": "did not answer",
+    "accept": [
+     "didn't answer",
+     "didn’t answer"
+    ],
+    "explain_es": "Negativo en pasado: did not + verbo en forma base."
+   },
+   {
+    "type": "transform",
+    "q": "Write the question for the answer: She travelled to Spain. (Where…?)",
+    "answer": "Where did she travel?",
+    "accept": [
+     "Where did she travel to?",
+     "Where did Valentina travel?",
+     "Where did Valentina travel to?"
+    ],
+    "explain_es": "Pregunta en pasado: Wh- + did + sujeto + verbo base."
+   }
+  ],
+  "words": 519
+ },
+ {
+  "id": "r4-b1-cellphone-case-four-tenses",
+  "title": "The Cellphone Case — Four Tenses",
+  "level": "B1",
+  "genre": "story",
+  "topic": "Relationships",
+  "focus": "Past perfect · past continuous · past simple · present perfect",
+  "emoji": "📱",
+  "advisory": "Tema adulto: una relación de pareja controladora, dinero y un embarazo. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "pperf": {
+    "label": "Past perfect",
+    "color": "var(--purple)"
+   },
+   "pcont": {
+    "label": "Past continuous",
+    "color": "var(--teal)"
+   },
+   "psimp": {
+    "label": "Past simple",
+    "color": "var(--orange)"
+   },
+   "pres": {
+    "label": "Present perfect",
+    "color": "var(--pink)"
+   }
+  },
+  "paragraphs": [
+   "## Where each tense lives — Past perfect: before the story · Past continuous: the background, still running · Past simple: the events, one after another · Present perfect: it reaches now, with us",
+   "It [[psimp|was]] a Saturday in 2025, and the rain [[pcont|was hammering]] the glass roof of the shopping mall so hard that nobody [[pcont|was hearing]] the music. Nicolás, twenty-seven, [[pcont|was standing]] by the escalators with a cold coffee in his hand, because his friend [[pperf|had cancelled]] on him twenty minutes earlier. Valentina, twenty-three, [[psimp|walked]] past him, [[psimp|stopped]], and [[psimp|looked]] at him for exactly one second longer than a stranger should. They [[psimp|talked]] for eleven minutes. They [[psimp|exchanged]] numbers. I [[pres|have heard]] this scene so many times that I can describe the colour of the tiles.",
+   "Before he [[pperf|had even saved]] her name in his contacts, the news [[pperf|had already travelled]]. Some older friends — the ones who [[pcont|were always drinking]] in the same corner of the same bar — [[psimp|warned]] us. \"We [[pres|have known]] that girl for years,\" they [[psimp|said]]. \"She [[pres|has left]] three men in pieces already.\" He [[pcont|was smiling]] at his screen while I [[pcont|was reading]] the warning out loud, and he [[psimp|answered]] without lifting his eyes: \"You people [[pres|have not met]] her. You [[pres|have only heard]] a story.\"",
+   "He [[pperf|had not slept]] the night before he [[psimp|travelled]] to see her for the first time. He [[psimp|arrived]] at three in the afternoon with a bag he [[pperf|had packed]] twice, and at midnight they [[pcont|were still talking]] on her balcony while the neighbour's television [[pcont|was leaking]] through the wall. That night they [[psimp|fell]] in love — he [[psimp|used]] that exact phrase, and he [[psimp|put]] quotation marks around it with his fingers, and he [[psimp|did not hear]] himself doing it. In two weeks they [[pperf|had chosen]] nicknames, a neighbourhood and the number of children.",
+   "By the second month he [[pcont|was checking]] her location every eleven minutes. He [[pperf|had memorised]] her schedule, her bus, the name of the girl who [[pcont|was working]] beside her on Fridays. He [[psimp|contacted]] her cousin, her best friend and a woman she [[pperf|had blocked]] a year earlier, and he [[psimp|asked]] them small, careful questions, the kind that never sound like questions. Some nights he [[psimp|parked]] under her window, he [[psimp|turned]] off the engine, and he [[pcont|was watching]] the light in her room until it [[psimp|went]] out. He [[psimp|called]] all of it care, and he [[psimp|said]] the word like a man who [[pperf|had practised]] it.",
+   "She [[psimp|broke]] one evening in April. \"You [[pcont|were sitting]] outside my building at midnight on Tuesday,\" she [[psimp|said]], \"and you [[pperf|had already written]] to my cousin before you [[psimp|wrote]] to me. You [[pres|have never trusted]] me. You [[pres|have not asked]] me one single question that you didn't know the answer to.\" He [[psimp|said]] nothing. He [[psimp|told]] me later that the silence [[psimp|lasted]] so long that he [[psimp|counted]] the neighbour's footsteps upstairs.",
+   "Then he [[psimp|disappeared]]. Three months of relationship, and one month of grey checkmarks. I [[pcont|was sleeping]] when the phone [[psimp|lit]] the ceiling at two in the morning, and the message [[psimp|was]] not an explanation — he [[psimp|asked]] me for two million pesos. \"It's for Valentina,\" he [[psimp|wrote]]. \"She [[pres|has decided]] to get her breasts done and she [[pres|has already booked]] the date. I [[pres|have never asked]] you for anything.\" He [[pperf|had vanished]] for a month, and the first sentence he [[psimp|sent]] me [[psimp|was]] a number.",
+   "Two weeks later he [[psimp|called]], and his voice [[pcont|was shaking]] in a way I [[pperf|had never heard]] before. Valentina [[pperf|had told]] him she was pregnant. \"I [[pres|have never been]] this afraid,\" he [[psimp|said]]. \"I [[pres|have not saved]] anything, I [[pres|have not told]] my father, and she [[pcont|was crying]] when she told me, and I didn't know if she was crying because she was happy.\" I [[psimp|told]] him to stop watching her and start talking to her. He [[psimp|agreed]] the way people agree when they [[pperf|have already decided]] otherwise.",
+   "He [[psimp|did not stop]], and that [[psimp|was]] how he [[psimp|found]] the other thing. While she [[pcont|was planning]] a family with him, she [[pcont|was visiting]] her ex-boyfriend every single week. The man [[psimp|was]] a wizard — a brujildo, the people in her town [[psimp|called]] him — and she [[pperf|had been]] in that house on the same day she [[pperf|had sent]] Nicolás a photograph of a baby's name written on a napkin. From that week they [[pcont|were fighting]] about everything: the money, the surgery, the phone, the candles, the child.",
+   "In the fourth month the floor [[psimp|opened]]. There [[psimp|was]] no pregnancy, and there [[pperf|had not been]] one for a long time: she [[pperf|had ended]] it at three and a half months and she [[pperf|had said]] nothing, while he [[pcont|was choosing]] names, borrowing money and apologising to his father in advance. When she finally [[psimp|explained]] herself, she [[psimp|did not soften]] one syllable: \"I [[psimp|did]] it because I [[pcont|was thinking]] about my child. I [[psimp|wanted]] my son to be from my love, not from a poor guy.\" Nicolás [[psimp|repeated]] that sentence to me twice, and the second time he [[psimp|laughed]], which [[psimp|was]] worse than crying.",
+   "He [[psimp|left]] the city with his things in the back seat, and that silence [[psimp|was]] the healthiest decision he [[pperf|had made]] all year. She [[psimp|travelled]] to Spain, and she [[pres|has started]] a new life in Madrid: a balcony, a coat, a cold light in every photograph. Last month, while he [[pcont|was working]] a double shift in another city, three million pesos [[psimp|arrived]] in his account with nine words attached — \"Come here to Madrid and make me pregnant again.\" He [[pres|has not answered]] her. He [[pres|has not deleted]] it either. I [[pres|have kept]] the screenshot on my phone, inside a case that [[pres|has outlived]] the entire story."
+  ],
+  "glossary": [
+   [
+    "hammering",
+    "golpeando"
+   ],
+   [
+    "escalators",
+    "escaleras eléctricas"
+   ],
+   [
+    "tiles",
+    "baldosas"
+   ],
+   [
+    "warned",
+    "advirtieron"
+   ],
+   [
+    "leaking",
+    "filtrándose"
+   ],
+   [
+    "memorised",
+    "memorizado"
+   ],
+   [
+    "checkmarks",
+    "chulitos (de WhatsApp)"
+   ],
+   [
+    "shaking",
+    "temblando"
+   ],
+   [
+    "outlived",
+    "sobrevivido a"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why was Nicolás alone at the mall?",
+    "options": [
+     "He was waiting for Valentina.",
+     "His friend had cancelled.",
+     "He was working there.",
+     "He had lost his phone."
+    ],
+    "answer": 1,
+    "explain_es": "'because his friend had cancelled on him twenty minutes earlier' — past perfect: pasó antes de la historia."
+   },
+   {
+    "type": "mc",
+    "q": "In 'the rain was hammering the glass roof', the past continuous shows…",
+    "options": [
+     "a short, finished action",
+     "the background of the scene",
+     "an action before another past action",
+     "a result in the present"
+    ],
+    "answer": 1,
+    "explain_es": "El past continuous describe el fondo de la escena, la acción en progreso."
+   },
+   {
+    "type": "tf",
+    "q": "By the second month, Nicolás was checking Valentina's location very often.",
+    "answer": "T",
+    "explain_es": "'By the second month he was checking her location every eleven minutes.'"
+   },
+   {
+    "type": "tf",
+    "q": "The narrator has deleted the screenshot.",
+    "answer": "F",
+    "explain_es": "'I have kept the screenshot on my phone' — present perfect: sigue igual hasta hoy."
+   },
+   {
+    "type": "mc",
+    "q": "Which sentence uses the present perfect to connect the past with now?",
+    "options": [
+     "She stopped and smiled.",
+     "He had not slept the night before.",
+     "He has not answered her.",
+     "They were fighting about everything."
+    ],
+    "answer": 2,
+    "explain_es": "'He has not answered her' — todavía no, hasta ahora."
+   },
+   {
+    "type": "gap",
+    "q": "I ____ (sleep) when the phone lit the ceiling at two in the morning.",
+    "answer": "was sleeping",
+    "explain_es": "Acción en progreso interrumpida: past continuous (was sleeping) + past simple (lit)."
+   },
+   {
+    "type": "gap",
+    "q": "Before he saved her name, the news ____ (already / travel).",
+    "answer": "had already travelled",
+    "accept": [
+     "had already traveled"
+    ],
+    "explain_es": "Algo anterior a otro momento pasado: past perfect (had + participio)."
+   },
+   {
+    "type": "error",
+    "q": "Find the mistake: She has travelled to Spain last year.",
+    "answer": "She travelled to Spain last year.",
+    "accept": [
+     "She traveled to Spain last year.",
+     "travelled"
+    ],
+    "explain_es": "Con un tiempo terminado (last year) se usa past simple, no present perfect."
+   }
+  ],
+  "words": 944
+ },
+ {
+  "id": "r4-b2-short-circuit",
+  "title": "Short Circuit",
+  "level": "B2",
+  "genre": "story",
+  "topic": "Relationships & work",
+  "focus": "Narrative structures B1–C1: inversion, clefts, conditionals, past modals",
+  "emoji": "⚡",
+  "advisory": "Tema adulto: una relación de pareja desigual, deudas y distancia familiar. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "b1": {
+    "label": "Estructuras B1",
+    "color": "var(--green)"
+   },
+   "b2": {
+    "label": "Estructuras B2",
+    "color": "var(--blue)"
+   },
+   "c1": {
+    "label": "Estructuras C1",
+    "color": "var(--purple)"
+   }
+  },
+  "paragraphs": [
+   "## Node 01 · The Contact — Buga, Valle del Cauca",
+   "[[b2|Lucho had never lived far from home before.|Past perfect (never … before)]] At twenty-five, with a diploma in electrical engineering and a suitcase that was too small for two years, he arrived in Buga to start his second job.",
+   "The town welcomed him the way small towns welcome strangers: politely, and slowly. [[b1|He spent his first weeks measuring voltages, inspecting panels and learning the names of streets|Gerund after verbs (spend + -ing)]] that all seemed to lead to the same church. [[c1|Had anyone told him then that the most dangerous circuit in Buga was not inside a building, he would have laughed.|Inversion in the third conditional (Had + subject)]]",
+   "[[c1|It was at work that he met Carolina.|Cleft sentence (It was … that)]]",
+   "She was forty-five, divorced, and [[c1|she moved through the world as though nothing could surprise her any more.|as though + past (unreal comparison)]] She spoke to engineers, to secretaries and to strangers with the same warm, tired confidence. [[b2|Lucho, who had spent his adolescence with textbooks rather than with people, found this fascinating.|Non-defining relative clause (who)]]",
+   "“You're very young,” she said, that first afternoon. “I'm twenty-five,” he answered, as if the number were a defence.",
+   "She laughed — not cruelly — and something inside him closed, like a switch. Contact.",
+   "## Node 02 · No Reference — The first three months",
+   "Here is the thing nobody at the office knew: Lucho had never had a girlfriend. Not one. [[b2|While other men his age had been learning how to argue, how to forgive and how to leave, he had been learning how current behaves when it meets resistance.|Past perfect continuous (had been + -ing)]]",
+   "So he had no reference. Nothing to compare her to.",
+   "Within three months he was in love — or in whatever [[b2|he believed love must be|Modal of deduction (must + infinitive)]]. He gave himself to Carolina completely, with the seriousness of a man wiring a hospital. [[b1|If she called, he answered. If she was sad, he cancelled his plans.|First conditional / zero conditional (if + present)]]",
+   "[[b1|Carolina lived with her seventeen-year-old son in a house that technically belonged to a bank.|Defining relative clause (that)]] She had a mortgage, a car loan and three credit cards, and [[b1|whenever she talked about money, she talked about it the way people talk about the weather|Time clause (whenever + present)]]: as something that simply happens to you.",
+   "[[b2|“If I paid the minimum every month, I would never finish,”|Second conditional (if + past, would)]] she told him once, laughing.",
+   "[[c1|He should have listened to the sentence instead of to the voice that was saying it.|Modal + perfect infinitive (should have + past participle)]]",
+   "## Node 03 · Heat, Then Fire — Year one",
+   "Her whims started small: a dinner here, a weekend there, a phone that was newer than his own. Lucho paid, and paying felt like proof.",
+   "[[c1|By the end of the first year he had asked for two advances on his salary and had had his credit limit raised twice.|Causative: have something done (had … raised)]] [[c1|Not only did he cover his own expenses, but he also began to cover hers.|Inversion after Not only]] [[b2|Despite earning a good salary for his age, he finished every month with nothing.|Despite / in spite of + gerund]]",
+   "He never called it debt. He called it helping.",
+   "There is a rule in electrical work: resistance produces heat, and heat, [[b1|if you ignore it long enough|Conditional in a clause (if + present)]], produces fire. Lucho knew the rule perfectly. He had explained it to technicians dozens of times. [[c1|What he was unable to do was apply it to his own life.|Cleft sentence (What … was)]]",
+   "[[c1|If somebody had warned him, would he have listened?|Third conditional (question form)]] Probably not. Men in love are terrible engineers.",
+   "## Node 04 · The Lights Go Out Quietly — Manizales, Caldas",
+   "His parents were waiting in Manizales.",
+   "[[b1|At first he used to visit them every month|used to + infinitive (past habit)]]; then every two months; then he stopped counting. Weekends were expensive, Carolina needed him, and the road was long. Each excuse was reasonable on its own; together, they formed a wall.",
+   "His mother phoned. He answered less and less. [[c1|His father sent messages that were shorter each time, as though brevity could hide the disappointment.|as though + modal (unreal comparison)]]",
+   "[[b2|By the time he noticed, more than a year had gone by without a single visit.|By the time + past perfect]]",
+   "An open circuit is not dramatic. Nothing explodes. Nothing burns. The current simply stops arriving, and everything downstream goes dark, quietly, without anybody shouting.",
+   "[[b1|He kept telling himself that he would go home soon.|Reported speech / future in the past (would)]] Soon became a word he no longer trusted.",
+   "## Node 05 · What Distance Removes — Ibagué, Tolima · after almost two years",
+   "[[b2|After almost two years, Lucho was transferred to Ibagué.|Passive voice (was + past participle)]]",
+   "He told himself that it was only a change of address. [[b1|“If we organise the weekends, we'll be fine,”|First conditional (if + present, will)]] he said, and he believed it.",
+   "[[c1|Having spent two years adapting himself to her schedule, her moods and her emergencies, he had almost forgotten how to spend a Sunday alone.|Perfect participle clause (Having + past participle)]] His new apartment was clean, quiet and unbearable. [[c1|He would rather have been exhausted than idle|would rather have + past participle]], so he worked late, called her at eleven, and counted days.",
+   "Distance does not break a relationship on its own. [[c1|What distance does is remove the noise|Cleft sentence (What … does is)]], and in the silence you finally hear what the relationship actually sounds like.",
+   "[[b2|What Lucho heard, although he refused to name it, was static.|Concessive clause (although) + cleft]]",
+   "## Node 06 · The Invoice — A Tuesday, over the phone",
+   "[[c1|It was Carolina who ended it.|Cleft sentence (It was … who)]]",
+   "She did it on a Tuesday, over the phone, in the same calm voice she used for everything else. [[b2|She said she needed her freedom; she said he deserved somebody his own age; she said several things that sounded reasonable and explained nothing.|Reported speech (said + backshift)]]",
+   "[[c1|No sooner had she finished than he was apologising|Inversion: No sooner … than]] — [[c1|although he could not have said what for.|Modal + perfect infinitive (could not have said)]]",
+   "He hung up. Two years, a raised credit limit and a family he had stopped visiting: that was the invoice.",
+   "A fuse is designed to break [[b2|so that the rest of the system survives|Purpose clause (so that)]]. Technically, then, he had been saved. He did not feel saved. He felt like a house at three in the morning, with everything switched off.",
+   "[[c1|If he had understood, at twenty-three, what a whim really costs, his twenty-fifth year would look completely different today.|Mixed conditional (past condition → present result)]]",
+   "## Node 07 · A Second Circuit — Ibagué · a few weeks later",
+   "He did not wait. [[b1|Within a few weeks he was with Silvia, a twenty-two-year-old girl who laughed easily and, at the beginning, asked very few questions.|Defining relative clause (who)]]",
+   "The relationship became physical almost immediately, and [[b2|for a while Lucho mistook intensity for intimacy.|Phrasal / prepositional verb: mistake A for B]]",
+   "But something had been left behind in Buga. The patience. The small attentions. The ridiculous devotion. [[c1|None of it ever appeared again.|Inversion after a negative object (None of it …)]] He was affectionate, but efficiently. Present, but not really.",
+   "[[b2|Silvia noticed. She had never met Carolina, yet she could feel her, the way you feel a wall in a dark room.|Concession: yet / and yet]]",
+   "“You treat me like an obligation,” she told him. “That's not true,” he said, and changed the subject — which is a way of admitting things.",
+   "[[b1|She has threatened to leave him at least five times.|Present perfect (unfinished time, repeated action)]] [[b1|She has never packed a single bag.|Present perfect (never + past participle)]]",
+   "## Node 08 · The Heat in the Wall — Now",
+   "Then, one night, she told him something [[c1|she had clearly been carrying for weeks|Past perfect continuous in reported speech]]: her ex-boyfriend had come to the house once.",
+   "[[b2|Nothing had happened, she said — and it probably hadn't.|Past perfect in reported speech]] [[c1|What she did not explain was why she had said nothing for so long.|Cleft sentence (What … was)]]",
+   "Lucho understood more than he admitted. [[b2|He must have felt it long before she confessed it|Modal of deduction about the past (must have + past participle)]]; a man who has lived with silence learns its shape.",
+   "And yet he did nothing. He did not shout. He did not investigate. He did not leave. [[c1|He simply carried on as usual, as if the conversation had been a small maintenance issue in an otherwise functioning system.|as if + past perfect (unreal past)]]",
+   "Silvia is tired. Not angry — tired, which is far more dangerous. [[b2|Anger is current; exhaustion is a circuit that has already been switched off and is only waiting for somebody to notice.|Comparative + relative clause (which)]]",
+   "[[b1|The system is still running. All the lights are on.|Present simple + contrast (but)]] [[b1|But if you put your hand on the wall, you can feel the heat.|First conditional (if + present, can)]]"
+  ],
+  "glossary": [
+   [
+    "suitcase",
+    "maleta"
+   ],
+   [
+    "panels",
+    "tableros eléctricos"
+   ],
+   [
+    "defence",
+    "defensa"
+   ],
+   [
+    "switch",
+    "interruptor"
+   ],
+   [
+    "current",
+    "corriente eléctrica"
+   ],
+   [
+    "resistance",
+    "resistencia"
+   ],
+   [
+    "wiring",
+    "cableando / instalando"
+   ],
+   [
+    "mortgage",
+    "hipoteca"
+   ],
+   [
+    "car loan",
+    "crédito de vehículo"
+   ],
+   [
+    "whims",
+    "caprichos"
+   ],
+   [
+    "advances on his salary",
+    "adelantos de sueldo"
+   ],
+   [
+    "expenses",
+    "gastos"
+   ],
+   [
+    "warned",
+    "advertido"
+   ],
+   [
+    "brevity",
+    "brevedad"
+   ],
+   [
+    "downstream",
+    "más adelante en el circuito"
+   ],
+   [
+    "shouting",
+    "gritar"
+   ],
+   [
+    "transferred",
+    "trasladado"
+   ],
+   [
+    "unbearable",
+    "insoportable"
+   ],
+   [
+    "idle",
+    "ocioso, sin nada que hacer"
+   ],
+   [
+    "static",
+    "estática, interferencia"
+   ],
+   [
+    "deserved",
+    "merecía"
+   ],
+   [
+    "hung up",
+    "colgó el teléfono"
+   ],
+   [
+    "invoice",
+    "factura, cuenta"
+   ],
+   [
+    "fuse",
+    "fusible"
+   ],
+   [
+    "attentions",
+    "atenciones, detalles"
+   ],
+   [
+    "devotion",
+    "devoción, entrega"
+   ],
+   [
+    "packed",
+    "empacar"
+   ],
+   [
+    "carried on",
+    "siguió adelante"
+   ],
+   [
+    "maintenance issue",
+    "asunto de mantenimiento"
+   ],
+   [
+    "exhaustion",
+    "agotamiento"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why did Lucho have 'no reference' when he met Carolina?",
+    "options": [
+     "He had never had a girlfriend.",
+     "He had just moved from Ibagué.",
+     "He didn't know anyone at work.",
+     "He was much older than her."
+    ],
+    "answer": 0,
+    "explain_es": "'Lucho had never had a girlfriend. Not one.'"
+   },
+   {
+    "type": "tf",
+    "q": "Lucho asked for advances on his salary to pay for Carolina's expenses.",
+    "answer": "T",
+    "explain_es": "'he had asked for two advances on his salary' y empezó a cubrir los gastos de ella."
+   },
+   {
+    "type": "mc",
+    "q": "What does the 'open circuit' in Node 04 represent?",
+    "options": [
+     "A fight with Carolina",
+     "Lucho slowly stopped visiting his parents",
+     "A problem at work",
+     "His transfer to Ibagué"
+    ],
+    "answer": 1,
+    "explain_es": "Node 04: dejó de visitar a sus padres en Manizales; 'more than a year had gone by without a single visit'."
+   },
+   {
+    "type": "tf",
+    "q": "Lucho ended the relationship with Carolina.",
+    "answer": "F",
+    "explain_es": "'It was Carolina who ended it.'"
+   },
+   {
+    "type": "mc",
+    "q": "'No sooner had she finished than he was apologising' means…",
+    "options": [
+     "He apologised before she finished.",
+     "He apologised immediately after she finished.",
+     "He never apologised.",
+     "She apologised first."
+    ],
+    "answer": 1,
+    "explain_es": "No sooner… than = apenas… cuando: inmediatamente después."
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite without inversion: Had anyone told him then, he would have laughed.",
+    "answer": "If anyone had told him then, he would have laughed.",
+    "accept": [
+     "If anyone had told him then, he would have laughed"
+    ],
+    "explain_es": "Tercer condicional con inversión: Had + sujeto = If + sujeto + had."
+   },
+   {
+    "type": "mc",
+    "q": "How does Silvia feel at the end of the story?",
+    "options": [
+     "Angry",
+     "Tired",
+     "Excited",
+     "Jealous of Carolina"
+    ],
+    "answer": 1,
+    "explain_es": "'Silvia is tired. Not angry — tired, which is far more dangerous.'"
+   },
+   {
+    "type": "gap",
+    "q": "Cleft sentence: ____ was at work that he met Carolina.",
+    "answer": "It",
+    "explain_es": "Cleft: It was + elemento enfatizado + that…"
+   }
+  ],
+  "words": 1281
+ }
+]

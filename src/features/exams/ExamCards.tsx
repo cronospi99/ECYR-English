@@ -30,7 +30,7 @@ export function ExamRow({ exam, color = 'var(--orange)' }: { exam: Exam; color?:
       </span>
       {r ? (
         <span className={cn('shrink-0 text-[14px] font-bold tabular-nums', final ? '' : r.best.pct >= PASS_PCT ? 'text-ink-green' : 'text-ink-orange')}>
-          {r.best.grade.toFixed(1)}
+          {r.best.grade.toFixed(1).replace('.', ',')}
         </span>
       ) : (
         <ChevronRight size={18} className={final ? 'opacity-80' : 'text-label-3'} />

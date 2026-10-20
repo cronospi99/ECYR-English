@@ -33,6 +33,7 @@ import { unitTitle } from './LevelPage';
 import NotFound from '../NotFound';
 import { UnitVerbTools } from '../verblab/unitTools';
 import { UnitGrammarTools } from '../grammar/unitTools';
+import { UnitInserts } from './inserts';
 import { UnitOverview } from './unit/UnitOverview';
 import { VocabGrid } from './unit/VocabGrid';
 import { GrammarLessons } from './unit/GrammarLesson';
@@ -114,6 +115,7 @@ export default function UnitPage() {
         {tab === 'vocab' && (
           <div className="space-y-6">
             <Vocabulary items={u.vocab} visuals={plan?.vocab} color={u.color} />
+            <UnitInserts unitKey={`${meta.id}-${u.n}`} section="vocab" />
           </div>
         )}
         {tab === 'grammar' && (
@@ -121,6 +123,7 @@ export default function UnitPage() {
             <GrammarLessons key={`${meta.id}-${u.n}`} points={u.grammar} color={u.color} unitKey={`${meta.id}-${u.n}`} />
             <UnitVerbTools unit={u} />
             <UnitGrammarTools unit={u} level={meta.id} />
+            <UnitInserts unitKey={`${meta.id}-${u.n}`} section="grammar" />
           </div>
         )}
         {tab === 'practice' && (
