@@ -28,6 +28,7 @@ export const router = createBrowserRouter([
       { path: 'learn/grammar/time-family', element: page(() => import('./features/grammar/time-family/TimeFamilyPage')) },
       { path: 'learn/:level', element: page(() => import('./features/learn/LevelPage')) },
       { path: 'learn/:level/:unit', element: page(() => import('./features/learn/UnitPage')) },
+      { path: 'exams/:examId', element: page(() => import('./features/exams/ExamPage')) },
       { path: 'practice', element: page(() => import('./features/practice/PracticePage')) },
       { path: 'practice/verbs', element: page(() => import('./features/verblab/VerbLabPage')) },
       { path: 'practice/phrasal-verbs', element: page(() => import('./features/practice/PhrasalVerbsPage')) },

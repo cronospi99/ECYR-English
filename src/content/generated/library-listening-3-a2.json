@@ -1,0 +1,1707 @@
+[
+  {
+    "id": "l3-a2-weekend-forecast",
+    "title": "The Weekend Weather",
+    "level": "A2",
+    "kind": "radio-report",
+    "topic": "Weather",
+    "focus": "Will vs be going to",
+    "emoji": "🌦️",
+    "speakers": [
+      {
+        "name": "Emma",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, it's eight o'clock on Radio Sunshine. Now let's see what the weather is going to do this weekend. Tom, what's the forecast?"
+      },
+      {
+        "s": 1,
+        "text": "Morning, Emma. Well, look at those dark clouds in the west. It's going to rain this afternoon, so take an umbrella if you're going out."
+      },
+      {
+        "s": 0,
+        "text": "Oh no. And tonight?"
+      },
+      {
+        "s": 1,
+        "text": "Tonight the rain will stop around midnight, and I think it'll be quite cold. Temperatures will drop to about five degrees."
+      },
+      {
+        "s": 0,
+        "text": "What about Saturday? I'm going to have a barbecue with my family."
+      },
+      {
+        "s": 1,
+        "text": "Good news for you. Saturday will be dry and sunny in most places. It'll probably be the best day of the weekend, with temperatures of around twenty-two degrees."
+      },
+      {
+        "s": 0,
+        "text": "Perfect! I'll buy the sausages today, then."
+      },
+      {
+        "s": 1,
+        "text": "But on Saturday evening the wind is going to get stronger, so don't leave anything light in the garden."
+      },
+      {
+        "s": 0,
+        "text": "Thanks for the warning. And Sunday?"
+      },
+      {
+        "s": 1,
+        "text": "Sunday won't be so nice, I'm afraid. There's a big storm over the sea right now, and it's moving towards us. It's going to arrive on Sunday morning."
+      },
+      {
+        "s": 0,
+        "text": "So, no picnic on Sunday?"
+      },
+      {
+        "s": 1,
+        "text": "No, I don't think it'll be a good day for a picnic. Maybe a good day for a film at home."
+      },
+      {
+        "s": 0,
+        "text": "Great advice. I'll talk to you again at nine. Thanks, Tom."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When is it going to rain?",
+        "options": [
+          "On Saturday morning",
+          "This afternoon",
+          "On Saturday evening"
+        ],
+        "answer": 1,
+        "explain_es": "Tom dice: 'It's going to rain this afternoon'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Emma going to do on Saturday?",
+        "options": [
+          "Have a picnic",
+          "Go to the cinema",
+          "Have a barbecue"
+        ],
+        "answer": 2,
+        "explain_es": "Emma dice: 'I'm going to have a barbecue with my family.'"
+      },
+      {
+        "type": "tf",
+        "q": "Saturday will probably be the best day of the weekend.",
+        "answer": "T",
+        "explain_es": "Tom dice: 'It'll probably be the best day of the weekend'."
+      },
+      {
+        "type": "gap",
+        "q": "Tonight, temperatures will drop to about ____ degrees.",
+        "answer": "five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "Tom dice: 'Temperatures will drop to about five degrees.'"
+      },
+      {
+        "type": "gap",
+        "q": "Look at those dark clouds. It's ____ rain this afternoon.",
+        "answer": "going to",
+        "explain_es": "Con evidencia presente (las nubes) se usa 'be going to': 'It's going to rain this afternoon'."
+      },
+      {
+        "type": "gap",
+        "q": "Emma decides at that moment: 'Perfect! I ____ buy the sausages today, then.'",
+        "answer": "will",
+        "accept": [
+          "'ll",
+          "ll"
+        ],
+        "explain_es": "Para una decisión en el momento se usa 'will': 'I'll buy the sausages today, then.'"
+      },
+      {
+        "type": "tf",
+        "q": "The storm is going to arrive on Sunday evening.",
+        "answer": "F",
+        "explain_es": "Tom dice: 'It's going to arrive on Sunday morning.'"
+      }
+    ],
+    "dictation": [
+      "Sunday won't be so nice, I'm afraid.",
+      "Saturday will be dry and sunny in most places."
+    ]
+  },
+  {
+    "id": "l3-a2-football-final",
+    "title": "Before the Final",
+    "level": "A2",
+    "kind": "conversation",
+    "topic": "Football",
+    "focus": "First conditional",
+    "emoji": "⚽",
+    "speakers": [
+      {
+        "name": "Diego",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Laura",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Laura, are you coming to watch the final on Sunday?"
+      },
+      {
+        "s": 1,
+        "text": "I don't know. If I finish my project on Saturday, I'll come. Where are you going to watch it?"
+      },
+      {
+        "s": 0,
+        "text": "At my brother's house. He has a huge TV. If you come, I'll make my famous chicken wings."
+      },
+      {
+        "s": 1,
+        "text": "Then I'll definitely finish my project! So, do you think Deportivo Andino will win?"
+      },
+      {
+        "s": 0,
+        "text": "I hope so. If Ramírez plays, we'll win easily. He's our best player."
+      },
+      {
+        "s": 1,
+        "text": "But he hurt his knee last week. What'll happen if he doesn't play?"
+      },
+      {
+        "s": 0,
+        "text": "If he doesn't play, it'll be very difficult. Real Caribe has a really strong defense."
+      },
+      {
+        "s": 1,
+        "text": "And what will you do if Andino wins?"
+      },
+      {
+        "s": 0,
+        "text": "If we win, I'll paint my face green and white and go to the city center with everybody."
+      },
+      {
+        "s": 1,
+        "text": "Ha! And if they lose?"
+      },
+      {
+        "s": 0,
+        "text": "If they lose, I won't talk to anybody for a week."
+      },
+      {
+        "s": 1,
+        "text": "That's a bit dramatic, Diego! Okay, what time does it start?"
+      },
+      {
+        "s": 0,
+        "text": "At four. If you get there early, you'll get the best seat on the sofa."
+      },
+      {
+        "s": 1,
+        "text": "Deal. If it rains, I'll take a taxi. See you on Sunday!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where are they going to watch the final?",
+        "options": [
+          "At the stadium",
+          "At Diego's brother's house",
+          "At Laura's house"
+        ],
+        "answer": 1,
+        "explain_es": "Diego dice: 'At my brother's house. He has a huge TV.'"
+      },
+      {
+        "type": "tf",
+        "q": "Laura has to finish a project.",
+        "answer": "T",
+        "explain_es": "Laura dice: 'If I finish my project on Saturday, I'll come.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why might Ramírez not play?",
+        "options": [
+          "He hurt his knee",
+          "He's sick",
+          "He's on vacation"
+        ],
+        "answer": 0,
+        "explain_es": "Laura dice: 'But he hurt his knee last week.'"
+      },
+      {
+        "type": "gap",
+        "q": "If you come, I ____ make my famous chicken wings.",
+        "answer": "will",
+        "accept": [
+          "'ll",
+          "ll"
+        ],
+        "explain_es": "Primer condicional: if + presente, will + verbo. 'If you come, I'll make my famous chicken wings.'"
+      },
+      {
+        "type": "transform",
+        "q": "Complete the sentence: If they lose, I ____ (not talk) to anybody for a week.",
+        "answer": "won't talk",
+        "accept": [
+          "will not talk"
+        ],
+        "explain_es": "En la parte del resultado va 'won't' + verbo: 'If they lose, I won't talk to anybody for a week.'"
+      },
+      {
+        "type": "tf",
+        "q": "The match starts at five.",
+        "answer": "F",
+        "explain_es": "Diego dice: 'At four.'"
+      },
+      {
+        "type": "mc",
+        "q": "What will Laura do if it rains?",
+        "options": [
+          "Stay at home",
+          "Watch it on her phone",
+          "Take a taxi"
+        ],
+        "answer": 2,
+        "explain_es": "Laura dice: 'If it rains, I'll take a taxi.'"
+      }
+    ],
+    "dictation": [
+      "He's our best player.",
+      "If it rains, I'll take a taxi."
+    ]
+  },
+  {
+    "id": "l3-a2-salsa-class",
+    "title": "First Salsa Class",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Dance & hobbies",
+    "focus": "Gerunds after like / love / hate / enjoy",
+    "emoji": "💃",
+    "speakers": [
+      {
+        "name": "Marta",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Kevin",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome to Salsa Viva! I'm Marta. Is this your first class?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, it is. I'm Kevin, from Melbourne. I'm on holiday in Cali for a month."
+      },
+      {
+        "s": 0,
+        "text": "Great. So, do you like dancing?"
+      },
+      {
+        "s": 1,
+        "text": "I love listening to salsa music, but I'm not very good at dancing. I hate looking silly in front of people."
+      },
+      {
+        "s": 0,
+        "text": "Don't worry. Nobody looks silly here. What do you enjoy doing in your free time?"
+      },
+      {
+        "s": 1,
+        "text": "I enjoy running and swimming. I really like doing sport, so I'm quite fit."
+      },
+      {
+        "s": 0,
+        "text": "That helps a lot. Salsa is good exercise. Do you mind dancing with different partners?"
+      },
+      {
+        "s": 1,
+        "text": "No, I don't mind. Actually, I like meeting new people."
+      },
+      {
+        "s": 0,
+        "text": "Perfect. In this class, we change partners every ten minutes. Many of our students love practising with someone new."
+      },
+      {
+        "s": 1,
+        "text": "And what about the steps? I'm terrible at remembering things."
+      },
+      {
+        "s": 0,
+        "text": "We start slowly. First, you learn the basic step. Most beginners enjoy learning it because it's easy."
+      },
+      {
+        "s": 1,
+        "text": "Sounds good. Do I need special shoes?"
+      },
+      {
+        "s": 0,
+        "text": "No, just comfortable ones. But don't wear trainers, because they stick to the floor. Most people hate dancing in trainers."
+      },
+      {
+        "s": 1,
+        "text": "Okay. I can't wait to start!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Kevin from?",
+        "options": [
+          "Melbourne",
+          "Cali",
+          "Sydney"
+        ],
+        "answer": 0,
+        "explain_es": "Kevin dice: 'I'm Kevin, from Melbourne.'"
+      },
+      {
+        "type": "tf",
+        "q": "Kevin thinks he is good at dancing.",
+        "answer": "F",
+        "explain_es": "Kevin dice: 'I'm not very good at dancing.'"
+      },
+      {
+        "type": "gap",
+        "q": "I hate ____ silly in front of people.",
+        "answer": "looking",
+        "explain_es": "Después de 'hate' va el verbo con -ing: 'I hate looking silly in front of people.'"
+      },
+      {
+        "type": "mc",
+        "q": "What does Kevin enjoy doing in his free time?",
+        "options": [
+          "Reading and cooking",
+          "Playing football",
+          "Running and swimming"
+        ],
+        "answer": 2,
+        "explain_es": "Kevin dice: 'I enjoy running and swimming.'"
+      },
+      {
+        "type": "gap",
+        "q": "Actually, I like ____ new people.",
+        "answer": "meeting",
+        "explain_es": "Después de 'like' va -ing: 'Actually, I like meeting new people.'"
+      },
+      {
+        "type": "tf",
+        "q": "Students change partners every ten minutes.",
+        "answer": "T",
+        "explain_es": "Marta dice: 'we change partners every ten minutes'."
+      },
+      {
+        "type": "mc",
+        "q": "Why shouldn't Kevin wear trainers?",
+        "options": [
+          "They aren't allowed",
+          "They stick to the floor",
+          "They are dirty"
+        ],
+        "answer": 1,
+        "explain_es": "Marta dice: 'they stick to the floor'."
+      }
+    ],
+    "dictation": [
+      "Salsa is good exercise.",
+      "We start slowly."
+    ]
+  },
+  {
+    "id": "l3-a2-recycling-instructions",
+    "title": "Our New Recycling System",
+    "level": "A2",
+    "kind": "instructions",
+    "topic": "Recycling",
+    "focus": "Sequence adverbs (first, then, after that, finally)",
+    "emoji": "♻️",
+    "speakers": [
+      {
+        "name": "Martin",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, everyone. This is Martin, the building manager. I'm going to explain how our new recycling system works."
+      },
+      {
+        "s": 0,
+        "text": "From next Monday, there are three new bins in the car park: a green one, a blue one and a black one."
+      },
+      {
+        "s": 0,
+        "text": "First, wash your bottles and tins with a little water. They must be clean, or the recycling company won't take them."
+      },
+      {
+        "s": 0,
+        "text": "Then, put all plastic bottles, tins and cartons in the blue bin."
+      },
+      {
+        "s": 0,
+        "text": "After that, take your paper and cardboard and put it in the green bin. Please fold the big boxes first."
+      },
+      {
+        "s": 0,
+        "text": "Next, put food waste, like fruit and vegetables, in the small brown box in your kitchen. You'll find one outside your door this weekend."
+      },
+      {
+        "s": 0,
+        "text": "When the brown box is full, empty it into the black bin downstairs."
+      },
+      {
+        "s": 0,
+        "text": "Finally, put everything else, like old clothes or broken toys, in the normal rubbish room, not in the new bins."
+      },
+      {
+        "s": 0,
+        "text": "Glass is different. Please take glass bottles to the big container on the corner of the street."
+      },
+      {
+        "s": 0,
+        "text": "The recycling lorry comes on Tuesdays and Fridays, early in the morning."
+      },
+      {
+        "s": 0,
+        "text": "If you have any questions, you can find me in the office on the ground floor, from nine to five."
+      },
+      {
+        "s": 0,
+        "text": "Thank you for helping. Together, we can make our building greener."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where are the new bins?",
+        "options": [
+          "In the garden",
+          "On each floor",
+          "In the car park"
+        ],
+        "answer": 2,
+        "explain_es": "Martin dice: 'there are three new bins in the car park'."
+      },
+      {
+        "type": "order",
+        "q": "Put the steps in order (write the letters): A) put paper in the green bin  B) wash bottles and tins  C) put plastic in the blue bin",
+        "answer": "BCA",
+        "accept": [
+          "B C A",
+          "B, C, A",
+          "B-C-A",
+          "B,C,A",
+          "bca"
+        ],
+        "explain_es": "Martin dice 'First, wash...', 'Then, put all plastic bottles... in the blue bin' y 'After that... the green bin'."
+      },
+      {
+        "type": "mc",
+        "q": "Which bin is for paper and cardboard?",
+        "options": [
+          "The green one",
+          "The blue one",
+          "The black one"
+        ],
+        "answer": 0,
+        "explain_es": "Martin dice: 'take your paper and cardboard and put it in the green bin'."
+      },
+      {
+        "type": "tf",
+        "q": "Glass goes in the blue bin.",
+        "answer": "F",
+        "explain_es": "Martin dice: 'Please take glass bottles to the big container on the corner of the street.'"
+      },
+      {
+        "type": "gap",
+        "q": "____, put everything else in the normal rubbish room.",
+        "answer": "Finally",
+        "explain_es": "'Finally' presenta el último paso: 'Finally, put everything else... in the normal rubbish room'."
+      },
+      {
+        "type": "gap",
+        "q": "____ that, take your paper and cardboard and put it in the green bin.",
+        "answer": "After",
+        "explain_es": "Martin dice: 'After that, take your paper and cardboard'."
+      },
+      {
+        "type": "tf",
+        "q": "Martin's office is on the ground floor.",
+        "answer": "T",
+        "explain_es": "Martin dice: 'you can find me in the office on the ground floor'."
+      }
+    ],
+    "dictation": [
+      "Please fold the big boxes first.",
+      "Thank you for helping."
+    ]
+  },
+  {
+    "id": "l3-a2-school-reunion",
+    "title": "The School Reunion",
+    "level": "A2",
+    "kind": "phone-call",
+    "topic": "Friends & reunions",
+    "focus": "Past simple irregular verbs",
+    "emoji": "🎓",
+    "speakers": [
+      {
+        "name": "Rosa",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Ben! How was the school reunion last night?"
+      },
+      {
+        "s": 1,
+        "text": "Hi, Rosa! It was brilliant. I saw lots of old friends. Some of them came from very far away."
+      },
+      {
+        "s": 0,
+        "text": "Really? Who did you see?"
+      },
+      {
+        "s": 1,
+        "text": "Well, Jake was there. He flew from Canada just for the party! He's a pilot now."
+      },
+      {
+        "s": 0,
+        "text": "Wow. And did Sarah go?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, she did. She brought photos from our school trip to Wales. We laughed so much."
+      },
+      {
+        "s": 0,
+        "text": "What did you eat?"
+      },
+      {
+        "s": 1,
+        "text": "They had a big buffet. I ate too much, and I drank about five cups of tea!"
+      },
+      {
+        "s": 0,
+        "text": "Typical you! Did you meet any of our old teachers?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, Mr Collins came. He didn't remember my name at first, but then he told everyone the story about my chemistry experiment."
+      },
+      {
+        "s": 0,
+        "text": "Oh no, the one with all the smoke?"
+      },
+      {
+        "s": 1,
+        "text": "Yes! Everybody heard about it again. Then we sang the old school song, and I felt fifteen again."
+      },
+      {
+        "s": 0,
+        "text": "That sounds lovely. What time did you get home?"
+      },
+      {
+        "s": 1,
+        "text": "I left at midnight, but I lost my keys in the taxi, so I got home at one. I slept on the sofa!"
+      },
+      {
+        "s": 0,
+        "text": "Oh, Ben! Next time, I'm coming with you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "Jake flew from Australia.",
+        "answer": "F",
+        "explain_es": "Ben dice: 'He flew from Canada just for the party!'"
+      },
+      {
+        "type": "mc",
+        "q": "What does Jake do now?",
+        "options": [
+          "He's a teacher",
+          "He's a chef",
+          "He's a pilot"
+        ],
+        "answer": 2,
+        "explain_es": "Ben dice: 'He's a pilot now.'"
+      },
+      {
+        "type": "mc",
+        "q": "What did Sarah bring?",
+        "options": [
+          "Photos from a school trip",
+          "A cake",
+          "Her old school uniform"
+        ],
+        "answer": 0,
+        "explain_es": "Ben dice: 'She brought photos from our school trip to Wales.'"
+      },
+      {
+        "type": "gap",
+        "q": "I ____ too much, and I drank about five cups of tea!",
+        "answer": "ate",
+        "explain_es": "Pasado irregular de 'eat': 'I ate too much'."
+      },
+      {
+        "type": "gap",
+        "q": "I left at midnight, but I ____ my keys in the taxi.",
+        "answer": "lost",
+        "explain_es": "Pasado irregular de 'lose': 'I lost my keys in the taxi'."
+      },
+      {
+        "type": "tf",
+        "q": "Mr Collins remembered Ben's name immediately.",
+        "answer": "F",
+        "explain_es": "Ben dice: 'He didn't remember my name at first'."
+      },
+      {
+        "type": "mc",
+        "q": "Where did Ben sleep?",
+        "options": [
+          "In his bed",
+          "On the sofa",
+          "At Rosa's house"
+        ],
+        "answer": 1,
+        "explain_es": "Ben dice: 'I slept on the sofa!'"
+      }
+    ],
+    "dictation": [
+      "He's a pilot now.",
+      "We laughed so much."
+    ]
+  },
+  {
+    "id": "l3-a2-accident-witness",
+    "title": "What Did You See?",
+    "level": "A2",
+    "kind": "interview",
+    "topic": "A street accident",
+    "focus": "Past continuous vs past simple",
+    "emoji": "🚲",
+    "speakers": [
+      {
+        "name": "Officer Wilson",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Witness",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon. I'm Officer Wilson. You saw the accident this morning, is that right?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I did. I was waiting for the bus outside the bakery."
+      },
+      {
+        "s": 0,
+        "text": "What time was it?"
+      },
+      {
+        "s": 1,
+        "text": "About half past eight. It was raining a little, and a lot of people were walking to work."
+      },
+      {
+        "s": 0,
+        "text": "Okay. Can you tell me what happened?"
+      },
+      {
+        "s": 1,
+        "text": "Well, a young man was riding his bike along the street. He was wearing headphones, I think."
+      },
+      {
+        "s": 0,
+        "text": "And the car?"
+      },
+      {
+        "s": 1,
+        "text": "A white car was coming out of the supermarket car park. The driver was looking at her phone, so she didn't see the bike."
+      },
+      {
+        "s": 0,
+        "text": "Did the car hit the bike?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, but not very hard. The cyclist fell off and dropped his bag. Some people ran to help him."
+      },
+      {
+        "s": 0,
+        "text": "Was he hurt?"
+      },
+      {
+        "s": 1,
+        "text": "He hurt his arm, but he stood up quickly. While the driver was calling an ambulance, a shop assistant brought him a chair and some water."
+      },
+      {
+        "s": 0,
+        "text": "Thank you. Was anyone else in the car?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, a little dog was sitting in the back seat. It was barking the whole time!"
+      },
+      {
+        "s": 0,
+        "text": "Thanks very much. That's really helpful."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the witness doing when the accident happened?",
+        "options": [
+          "Walking to work",
+          "Riding a bike",
+          "Waiting for the bus"
+        ],
+        "answer": 2,
+        "explain_es": "El testigo dice: 'I was waiting for the bus outside the bakery.'"
+      },
+      {
+        "type": "tf",
+        "q": "It was sunny that morning.",
+        "answer": "F",
+        "explain_es": "El testigo dice: 'It was raining a little'."
+      },
+      {
+        "type": "mc",
+        "q": "Why didn't the driver see the bike?",
+        "options": [
+          "She was looking at her phone",
+          "It was very dark",
+          "The dog was barking"
+        ],
+        "answer": 0,
+        "explain_es": "El testigo dice: 'The driver was looking at her phone, so she didn't see the bike.'"
+      },
+      {
+        "type": "gap",
+        "q": "Well, a young man ____ his bike along the street.",
+        "answer": "was riding",
+        "explain_es": "Pasado continuo para la acción en progreso: 'a young man was riding his bike along the street'."
+      },
+      {
+        "type": "gap",
+        "q": "While the driver was calling an ambulance, a shop assistant ____ him a chair.",
+        "answer": "brought",
+        "explain_es": "La acción corta va en pasado simple: 'a shop assistant brought him a chair and some water'."
+      },
+      {
+        "type": "tf",
+        "q": "The cyclist hurt his arm.",
+        "answer": "T",
+        "explain_es": "El testigo dice: 'He hurt his arm, but he stood up quickly.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who was sitting in the back seat of the car?",
+        "options": [
+          "A child",
+          "A little dog",
+          "An old man"
+        ],
+        "answer": 1,
+        "explain_es": "El testigo dice: 'a little dog was sitting in the back seat'."
+      }
+    ],
+    "dictation": [
+      "What time was it?",
+      "Some people ran to help him."
+    ]
+  },
+  {
+    "id": "l3-a2-before-mobile-phones",
+    "title": "Life Before Mobile Phones",
+    "level": "A2",
+    "kind": "podcast",
+    "topic": "Communication then and now",
+    "focus": "Used to",
+    "emoji": "☎️",
+    "speakers": [
+      {
+        "name": "Ana",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Luis",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome back to Family Stories. Today my guest is my grandfather, Luis. Grandpa, what was life like before cell phones?"
+      },
+      {
+        "s": 1,
+        "text": "Very different, Ana! When I was young, we didn't use to have a phone at home. Only one family on our street had one."
+      },
+      {
+        "s": 0,
+        "text": "So how did you use to call people?"
+      },
+      {
+        "s": 1,
+        "text": "We used to go to the store on the corner. There was a public phone there, and you used to pay with coins."
+      },
+      {
+        "s": 0,
+        "text": "And how did you meet your friends?"
+      },
+      {
+        "s": 1,
+        "text": "We used to make plans at school. If you said four o'clock in the park, you had to be there at four. Nobody could send a message to say they were late."
+      },
+      {
+        "s": 0,
+        "text": "That sounds stressful!"
+      },
+      {
+        "s": 1,
+        "text": "Not really. I think people used to arrive on time more often."
+      },
+      {
+        "s": 0,
+        "text": "Did you use to write letters?"
+      },
+      {
+        "s": 1,
+        "text": "Oh yes. I used to write to your grandmother every week when she studied in Bogotá. Her letters used to take five days to arrive."
+      },
+      {
+        "s": 0,
+        "text": "Five days! What about photos?"
+      },
+      {
+        "s": 1,
+        "text": "We used to take photos with a camera and wait a week for the store to print them. Sometimes half of them were bad."
+      },
+      {
+        "s": 0,
+        "text": "Do you miss those days?"
+      },
+      {
+        "s": 1,
+        "text": "Sometimes. But now I can see your face on a video call every Sunday, and I love that."
+      }
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "Luis's family used to have a phone at home.",
+        "answer": "F",
+        "explain_es": "Luis dice: 'we didn't use to have a phone at home'."
+      },
+      {
+        "type": "mc",
+        "q": "Where did people use to make phone calls?",
+        "options": [
+          "At school",
+          "At the post office",
+          "At the store on the corner"
+        ],
+        "answer": 2,
+        "explain_es": "Luis dice: 'We used to go to the store on the corner. There was a public phone there'."
+      },
+      {
+        "type": "gap",
+        "q": "At the public phone, you used to pay with ____.",
+        "answer": "coins",
+        "explain_es": "Luis dice: 'you used to pay with coins'."
+      },
+      {
+        "type": "gap",
+        "q": "We ____ make plans at school.",
+        "answer": "used to",
+        "explain_es": "'Used to' + verbo para hábitos del pasado: 'We used to make plans at school.'"
+      },
+      {
+        "type": "mc",
+        "q": "How long did his wife's letters take to arrive?",
+        "options": [
+          "Five days",
+          "Two days",
+          "A month"
+        ],
+        "answer": 0,
+        "explain_es": "Luis dice: 'Her letters used to take five days to arrive.'"
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: 'We used to have a phone at home.' → We ____ have a phone at home.",
+        "answer": "didn't use to",
+        "accept": [
+          "did not use to"
+        ],
+        "explain_es": "En negativo: didn't + use to (sin -d). Luis dice: 'we didn't use to have a phone at home'."
+      },
+      {
+        "type": "tf",
+        "q": "Luis has a video call with Ana every Sunday.",
+        "answer": "T",
+        "explain_es": "Luis dice: 'now I can see your face on a video call every Sunday'."
+      }
+    ],
+    "dictation": [
+      "Only one family on our street had one.",
+      "Sometimes half of them were bad."
+    ]
+  },
+  {
+    "id": "l3-a2-fruit-market",
+    "title": "New Fruits at the Market",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Food markets",
+    "focus": "Present perfect with ever / never",
+    "emoji": "🍈",
+    "speakers": [
+      {
+        "name": "Andrés",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Chloe",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome to Paloquemao, Chloe! This is one of the biggest markets in Bogotá. Have you ever been to a market like this?"
+      },
+      {
+        "s": 1,
+        "text": "Never! I've been to markets in London, but I've never seen so many fruits. What's that yellow one?"
+      },
+      {
+        "s": 0,
+        "text": "That's a granadilla. Have you ever tried one?"
+      },
+      {
+        "s": 1,
+        "text": "No, I haven't. How do you eat it?"
+      },
+      {
+        "s": 0,
+        "text": "You break the top and eat the inside with a spoon. Here, try it."
+      },
+      {
+        "s": 1,
+        "text": "Mmm, it's sweet! It's a bit strange, but I like it."
+      },
+      {
+        "s": 0,
+        "text": "And this is lulo. Colombians love lulo juice. Have you ever had it?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I have! I had a glass at the hotel yesterday. It was delicious."
+      },
+      {
+        "s": 0,
+        "text": "Great. What about this one? It's called pitahaya."
+      },
+      {
+        "s": 1,
+        "text": "I've seen it in supermarkets at home, but it was very expensive, so I've never bought it."
+      },
+      {
+        "s": 0,
+        "text": "Here it's much cheaper. But be careful, don't eat too much!"
+      },
+      {
+        "s": 1,
+        "text": "Why not?"
+      },
+      {
+        "s": 0,
+        "text": "Let's just say it's very good for your stomach!"
+      },
+      {
+        "s": 1,
+        "text": "Okay! This is the best market I've ever visited."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is Paloquemao?",
+        "options": [
+          "A museum",
+          "A restaurant",
+          "One of the biggest markets in Bogotá"
+        ],
+        "answer": 2,
+        "explain_es": "Andrés dice: 'This is one of the biggest markets in Bogotá.'"
+      },
+      {
+        "type": "tf",
+        "q": "Chloe has never been to a market before.",
+        "answer": "F",
+        "explain_es": "Chloe dice: 'I've been to markets in London'."
+      },
+      {
+        "type": "mc",
+        "q": "How do you eat a granadilla?",
+        "options": [
+          "You break the top and use a spoon",
+          "You cut it with a knife and fork",
+          "You only drink the juice"
+        ],
+        "answer": 0,
+        "explain_es": "Andrés dice: 'You break the top and eat the inside with a spoon.'"
+      },
+      {
+        "type": "gap",
+        "q": "And this is lulo. Have you ever ____ it?",
+        "answer": "had",
+        "accept": [
+          "tried"
+        ],
+        "explain_es": "Presente perfecto: have + participio. Andrés dice: 'Have you ever had it?'"
+      },
+      {
+        "type": "gap",
+        "q": "It was very expensive, so I've never ____ it.",
+        "answer": "bought",
+        "explain_es": "El participio de 'buy' es 'bought': 'so I've never bought it'."
+      },
+      {
+        "type": "tf",
+        "q": "Chloe drank lulo juice at the hotel yesterday.",
+        "answer": "T",
+        "explain_es": "Chloe dice: 'I had a glass at the hotel yesterday.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'This is the best market I've ever visit.'",
+        "answer": "visited",
+        "accept": [
+          "I've ever visited",
+          "This is the best market I've ever visited"
+        ],
+        "explain_es": "Después de 'I've ever' va el participio: 'the best market I've ever visited'."
+      }
+    ],
+    "dictation": [
+      "It was delicious.",
+      "Here it's much cheaper."
+    ]
+  },
+  {
+    "id": "l3-a2-flatmate-chores",
+    "title": "Getting Ready for Dinner",
+    "level": "A2",
+    "kind": "conversation",
+    "topic": "Flatmates & housework",
+    "focus": "Present perfect vs past simple",
+    "emoji": "🧹",
+    "speakers": [
+      {
+        "name": "Jess",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Sam",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Sam, my parents are coming for dinner tonight. Have you cleaned the bathroom?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I have. I cleaned it this morning before work."
+      },
+      {
+        "s": 0,
+        "text": "Great, thanks. And have you bought the drinks?"
+      },
+      {
+        "s": 1,
+        "text": "Not yet. I went to the shop at lunchtime, but it was closed. I'll go again later."
+      },
+      {
+        "s": 0,
+        "text": "Okay. I've already done the shopping for the food. I bought chicken and vegetables yesterday."
+      },
+      {
+        "s": 1,
+        "text": "Have you decided what to cook?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, I have. I'm going to make my grandma's chicken curry. Have you ever tried it?"
+      },
+      {
+        "s": 1,
+        "text": "No, I haven't. But I've heard it's amazing."
+      },
+      {
+        "s": 0,
+        "text": "It is! Oh no, has anyone washed the big pot? I used it on Sunday."
+      },
+      {
+        "s": 1,
+        "text": "Sorry, that was me. I made pasta last night and I left it in the sink."
+      },
+      {
+        "s": 0,
+        "text": "Sam! Can you wash it now, please?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. And look, I've just found your missing earring under the sofa!"
+      },
+      {
+        "s": 0,
+        "text": "Really? I lost it two weeks ago! Thank you."
+      },
+      {
+        "s": 1,
+        "text": "No problem. Now, have I done enough to get a big plate of curry tonight?"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who is coming to dinner?",
+        "options": [
+          "Sam's friends",
+          "Their neighbours",
+          "Jess's parents"
+        ],
+        "answer": 2,
+        "explain_es": "Jess dice: 'my parents are coming for dinner tonight'."
+      },
+      {
+        "type": "tf",
+        "q": "Sam has already bought the drinks.",
+        "answer": "F",
+        "explain_es": "Sam dice: 'Not yet.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why didn't Sam buy the drinks at lunchtime?",
+        "options": [
+          "The shop was closed",
+          "He forgot",
+          "He had no money"
+        ],
+        "answer": 0,
+        "explain_es": "Sam dice: 'I went to the shop at lunchtime, but it was closed.'"
+      },
+      {
+        "type": "gap",
+        "q": "I ____ chicken and vegetables yesterday.",
+        "answer": "bought",
+        "explain_es": "Con 'yesterday' se usa pasado simple: 'I bought chicken and vegetables yesterday.'"
+      },
+      {
+        "type": "gap",
+        "q": "Have you ____ what to cook?",
+        "answer": "decided",
+        "explain_es": "Presente perfecto: have + participio. Sam pregunta: 'Have you decided what to cook?'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'I have lost it two weeks ago!'",
+        "answer": "lost",
+        "accept": [
+          "I lost",
+          "I lost it two weeks ago"
+        ],
+        "explain_es": "Con 'two weeks ago' se usa pasado simple: 'I lost it two weeks ago!'"
+      },
+      {
+        "type": "tf",
+        "q": "Sam has found Jess's earring under the sofa.",
+        "answer": "T",
+        "explain_es": "Sam dice: 'I've just found your missing earring under the sofa!'"
+      }
+    ],
+    "dictation": [
+      "I'll go again later.",
+      "Can you wash it now, please?"
+    ]
+  },
+  {
+    "id": "l3-a2-pool-rules",
+    "title": "Swimming Pool Rules",
+    "level": "A2",
+    "kind": "announcement",
+    "topic": "Swimming pool",
+    "focus": "Modals of obligation (have to, must, don't have to)",
+    "emoji": "🏊",
+    "speakers": [
+      {
+        "name": "Announcer",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning and welcome to the Riverside Sports Center swimming pool. Please listen to some important information."
+      },
+      {
+        "s": 0,
+        "text": "All swimmers must take a shower before they get into the pool."
+      },
+      {
+        "s": 0,
+        "text": "You have to wear a swimming cap in the water. If you don't have one, you can buy one at reception for three dollars."
+      },
+      {
+        "s": 0,
+        "text": "You don't have to bring a towel. Free towels are available next to the changing rooms."
+      },
+      {
+        "s": 0,
+        "text": "Children under eight must be with an adult at all times."
+      },
+      {
+        "s": 0,
+        "text": "You mustn't run near the pool, because the floor is very wet."
+      },
+      {
+        "s": 0,
+        "text": "Food and drinks are not allowed in the pool area. You have to eat in the café on the first floor."
+      },
+      {
+        "s": 0,
+        "text": "From Monday to Friday, lanes one and two are for fast swimmers only. You don't have to swim fast in the other lanes."
+      },
+      {
+        "s": 0,
+        "text": "If you want to use the diving board, you have to ask a lifeguard first."
+      },
+      {
+        "s": 0,
+        "text": "Today, the small pool is closed for cleaning, so families have to use the main pool until four o'clock."
+      },
+      {
+        "s": 0,
+        "text": "You don't have to book for the evening classes this week. Just come along at seven."
+      },
+      {
+        "s": 0,
+        "text": "Have a great swim, and remember: if you need help, please talk to one of our lifeguards in red T-shirts."
+      }
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "Swimmers must take a shower before they get into the pool.",
+        "answer": "T",
+        "explain_es": "El anuncio dice: 'All swimmers must take a shower before they get into the pool.'"
+      },
+      {
+        "type": "mc",
+        "q": "How much does a swimming cap cost?",
+        "options": [
+          "Two dollars",
+          "Five dollars",
+          "Three dollars"
+        ],
+        "answer": 2,
+        "explain_es": "El anuncio dice: 'you can buy one at reception for three dollars'."
+      },
+      {
+        "type": "gap",
+        "q": "You ____ bring a towel. Free towels are available next to the changing rooms.",
+        "answer": "don't have to",
+        "accept": [
+          "do not have to"
+        ],
+        "explain_es": "'Don't have to' = no es necesario: 'You don't have to bring a towel.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who must be with an adult at all times?",
+        "options": [
+          "Children under eight",
+          "Children under twelve",
+          "All swimmers in lane one"
+        ],
+        "answer": 0,
+        "explain_es": "El anuncio dice: 'Children under eight must be with an adult at all times.'"
+      },
+      {
+        "type": "gap",
+        "q": "If you want to use the diving board, you ____ ask a lifeguard first.",
+        "answer": "have to",
+        "accept": [
+          "must"
+        ],
+        "explain_es": "Obligación: 'you have to ask a lifeguard first'."
+      },
+      {
+        "type": "tf",
+        "q": "You have to book for the evening classes this week.",
+        "answer": "F",
+        "explain_es": "El anuncio dice: 'You don't have to book for the evening classes this week.'"
+      },
+      {
+        "type": "mc",
+        "q": "What colour T-shirts do the lifeguards wear?",
+        "options": [
+          "Blue",
+          "Red",
+          "Yellow"
+        ],
+        "answer": 1,
+        "explain_es": "El anuncio dice: 'our lifeguards in red T-shirts'."
+      }
+    ],
+    "dictation": [
+      "Children under eight must be with an adult at all times.",
+      "Just come along at seven."
+    ]
+  },
+  {
+    "id": "l3-a2-picnic-shopping",
+    "title": "Shopping for the Class Picnic",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Shopping for food",
+    "focus": "Quantifiers (much, many, a few, a little)",
+    "emoji": "🧺",
+    "speakers": [
+      {
+        "name": "Nina",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Marco",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, Marco, we're buying food for the class picnic. There are twenty-five children. How much bread do we need?"
+      },
+      {
+        "s": 1,
+        "text": "Let's get four big loaves. That's a lot of sandwiches."
+      },
+      {
+        "s": 0,
+        "text": "Good. And how many bananas?"
+      },
+      {
+        "s": 1,
+        "text": "Not many. A lot of kids don't like bananas. Let's get a few, maybe ten."
+      },
+      {
+        "s": 0,
+        "text": "What about cheese? We don't have much cheese at school."
+      },
+      {
+        "s": 1,
+        "text": "Let's buy two packs. And a little butter, too."
+      },
+      {
+        "s": 0,
+        "text": "Should we buy some chips?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, but not too many. The teachers want the picnic to be healthy."
+      },
+      {
+        "s": 0,
+        "text": "Right. How much juice? It's going to be hot."
+      },
+      {
+        "s": 1,
+        "text": "A lot! Let's get ten bottles of orange juice and a few bottles of water."
+      },
+      {
+        "s": 0,
+        "text": "And for dessert? Maybe a few cakes?"
+      },
+      {
+        "s": 1,
+        "text": "Just a little chocolate cake. Ms Rivera is bringing fruit salad."
+      },
+      {
+        "s": 0,
+        "text": "Okay. And how much money do we have?"
+      },
+      {
+        "s": 1,
+        "text": "Eighty dollars. I think that's enough. But there aren't many carts left, so let's be quick!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many children are going to the picnic?",
+        "options": [
+          "Fifteen",
+          "Twenty-five",
+          "Thirty-five"
+        ],
+        "answer": 1,
+        "explain_es": "Nina dice: 'There are twenty-five children.'"
+      },
+      {
+        "type": "gap",
+        "q": "____ much bread do we need?",
+        "answer": "How",
+        "explain_es": "Para cosas incontables se pregunta 'How much': 'How much bread do we need?'"
+      },
+      {
+        "type": "tf",
+        "q": "They are going to buy a lot of bananas.",
+        "answer": "F",
+        "explain_es": "Marco dice: 'Not many... Let's get a few, maybe ten.'"
+      },
+      {
+        "type": "gap",
+        "q": "Let's buy two packs. And a ____ butter, too.",
+        "answer": "little",
+        "explain_es": "'Butter' es incontable, por eso 'a little': 'And a little butter, too.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why don't they want too many chips?",
+        "options": [
+          "They are expensive",
+          "The kids don't like them",
+          "The teachers want a healthy picnic"
+        ],
+        "answer": 2,
+        "explain_es": "Marco dice: 'The teachers want the picnic to be healthy.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'How many juice do we need?'",
+        "answer": "much",
+        "accept": [
+          "How much",
+          "How much juice do we need?"
+        ],
+        "explain_es": "'Juice' es incontable, así que se usa 'How much': Nina dice 'How much juice?'"
+      },
+      {
+        "type": "mc",
+        "q": "Who is bringing fruit salad?",
+        "options": [
+          "Ms Rivera",
+          "Nina",
+          "Marco"
+        ],
+        "answer": 0,
+        "explain_es": "Marco dice: 'Ms Rivera is bringing fruit salad.'"
+      }
+    ],
+    "dictation": [
+      "It's going to be hot.",
+      "Ms Rivera is bringing fruit salad."
+    ]
+  },
+  {
+    "id": "l3-a2-animal-shelter",
+    "title": "A Cat or a Dog?",
+    "level": "A2",
+    "kind": "dialogue",
+    "topic": "Pets",
+    "focus": "Comparatives and superlatives",
+    "emoji": "🐶",
+    "speakers": [
+      {
+        "name": "Helen",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Mike",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, welcome to Happy Paws Animal Shelter. How can I help?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. My family wants a pet, but we can't decide between a cat and a dog."
+      },
+      {
+        "s": 0,
+        "text": "Well, cats are usually easier than dogs. They're quieter and more independent."
+      },
+      {
+        "s": 1,
+        "text": "That's true. But my kids say dogs are friendlier and more fun."
+      },
+      {
+        "s": 0,
+        "text": "They're right. Dogs need more time, though. Do you have a garden?"
+      },
+      {
+        "s": 1,
+        "text": "A small one. Our new house is bigger than our old one, but the garden is smaller."
+      },
+      {
+        "s": 0,
+        "text": "Then a small dog is better than a big one. Come and meet Coco. She's the smallest dog in the shelter."
+      },
+      {
+        "s": 1,
+        "text": "Oh, she's lovely! How old is she?"
+      },
+      {
+        "s": 0,
+        "text": "She's three. She's older than the puppies, but she's calmer, and she already knows some commands."
+      },
+      {
+        "s": 1,
+        "text": "And that cat in the corner? He looks very relaxed."
+      },
+      {
+        "s": 0,
+        "text": "That's Tiger. He's the oldest animal here. He's ten, and he's the laziest cat I've ever met!"
+      },
+      {
+        "s": 1,
+        "text": "Ha! Which one is better with children?"
+      },
+      {
+        "s": 0,
+        "text": "Coco, definitely. She's the most patient dog we have. Children can play with her for hours."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. I think Coco is the best choice for us. Can my kids meet her on Saturday?"
+      },
+      {
+        "s": 0,
+        "text": "Of course. Saturday mornings are the busiest time, so come early."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Helen, why are cats easier than dogs?",
+        "options": [
+          "They eat less",
+          "They are cheaper",
+          "They're quieter and more independent"
+        ],
+        "answer": 2,
+        "explain_es": "Helen dice: 'They're quieter and more independent.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mike's garden is very big.",
+        "answer": "F",
+        "explain_es": "Mike dice: 'the garden is smaller' (es pequeño)."
+      },
+      {
+        "type": "gap",
+        "q": "Come and meet Coco. She's the ____ dog in the shelter.",
+        "answer": "smallest",
+        "explain_es": "Superlativo de un adjetivo corto: the + -est. 'She's the smallest dog in the shelter.'"
+      },
+      {
+        "type": "mc",
+        "q": "How old is Coco?",
+        "options": [
+          "Three",
+          "One",
+          "Ten"
+        ],
+        "answer": 0,
+        "explain_es": "Helen dice: 'She's three.'"
+      },
+      {
+        "type": "gap",
+        "q": "She's older than the puppies, but she's ____.",
+        "answer": "calmer",
+        "explain_es": "Comparativo de 'calm': 'calmer'. Helen dice: 'but she's calmer'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Tiger is the most lazy cat I've ever met.'",
+        "answer": "laziest",
+        "accept": [
+          "the laziest",
+          "Tiger is the laziest cat I've ever met"
+        ],
+        "explain_es": "'Lazy' termina en -y: el superlativo es 'the laziest'. Helen dice: 'he's the laziest cat I've ever met!'"
+      },
+      {
+        "type": "tf",
+        "q": "Saturday mornings are the quietest time at the shelter.",
+        "answer": "F",
+        "explain_es": "Helen dice: 'Saturday mornings are the busiest time'."
+      }
+    ],
+    "dictation": [
+      "Come and meet Coco.",
+      "He looks very relaxed."
+    ]
+  }
+]

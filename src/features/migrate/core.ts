@@ -547,7 +547,7 @@ export function summariseSession(d: IeltsSessionData): IeltsSessionSummary {
 // ------------------------------------------------- ECYR progress file -------
 const SKILLS: readonly Skill[] = ['listening', 'reading', 'writing', 'speaking', 'grammar', 'vocabulary'];
 const LEVELS: readonly CefrLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'];
-const KINDS: readonly ActivityKind[] = ['unit', 'topic', 'game', 'reading', 'listening', 'speaking', 'writing', 'flashcards', 'ielts', 'coach'];
+const KINDS: readonly ActivityKind[] = ['unit', 'topic', 'game', 'reading', 'listening', 'speaking', 'writing', 'flashcards', 'ielts', 'coach', 'exam'];
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const MAX_XP = 10_000_000;
 

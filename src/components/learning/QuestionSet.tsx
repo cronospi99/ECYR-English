@@ -7,8 +7,8 @@ import type { WsSection } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
 
-type Answer = number | string | string[] | undefined;
-type Verdict = 'right' | 'almost' | 'wrong';
+export type Answer = number | string | string[] | undefined;
+export type Verdict = 'right' | 'almost' | 'wrong';
 
 const TF_LABEL = { T: 'True', F: 'False', NG: 'Not given' } as const;
 const KIND_TITLE: Record<LibQuestion['type'], string> = {
@@ -25,7 +25,7 @@ const KIND_TITLE: Record<LibQuestion['type'], string> = {
 /** "you / are / where / from / ?" → "you are where from?" (punctuation sticks to the word before it). */
 const joinTiles = (t: string[]) => t.join(' ').replace(/\s+([?.!,])/g, '$1');
 
-function grade(q: LibQuestion, a: Answer): Verdict {
+export function grade(q: LibQuestion, a: Answer): Verdict {
   if (a === undefined || a === '' || (Array.isArray(a) && !a.length)) return 'wrong';
   switch (q.type) {
     case 'mc':
@@ -46,7 +46,7 @@ function grade(q: LibQuestion, a: Answer): Verdict {
   }
 }
 
-const rightAnswer = (q: LibQuestion) =>
+export const rightAnswer = (q: LibQuestion) =>
   q.type === 'mc' || q.type === 'vocab' || q.type === 'heading' ? q.options[q.answer] : q.type === 'tf' ? TF_LABEL[q.answer] : q.answer;
 
 /**
@@ -131,6 +131,64 @@ export function QuestionSet({
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+/**
+ * The same questions, controlled from outside and without their own check
+ * button: an exam keeps every section's answers and marks them all at the end.
+ */
+export function QuestionList({
+  questions,
+  answers,
+  onAnswer,
+  checked,
+  color = 'var(--blue)',
+  numberFrom = 1,
+}: {
+  questions: LibQuestion[];
+  answers: Answer[];
+  onAnswer: (i: number, a: Answer) => void;
+  checked: boolean;
+  color?: string;
+  numberFrom?: number;
+}) {
+  const ng = questions.some((q) => q.type === 'tf' && q.answer === 'NG');
+  return (
+    <div className="space-y-3">
+      {questions.map((q, i) => {
+        const v = grade(q, answers[i]);
+        const showKind = i === 0 || questions[i - 1]!.type !== q.type;
+        return (
+          <div key={i}>
+            {showKind && <div className="text-label-2 mt-2 mb-2 text-[12px] font-bold tracking-wide uppercase">{KIND_TITLE[q.type]}</div>}
+            <div className={cn('bg-card shadow-card rounded-[16px] p-4', checked && (v === 'wrong' ? 'ring-ios-red/60 ring-2' : 'ring-ios-green/60 ring-2'))}>
+              <div className="flex gap-2.5">
+                <span
+                  className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
+                  style={{ background: `color-mix(in srgb, ${color} 15%, transparent)`, color: ink(color) }}
+                >
+                  {i + numberFrom}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <Body q={q} a={answers[i]} set={(a) => !checked && onAnswer(i, a)} checked={checked} ng={ng} color={color} />
+                  {checked && (
+                    <div className="mt-2.5 text-[13.5px] leading-snug">
+                      <span className={cn('inline-flex items-center gap-1 font-semibold', v === 'wrong' ? 'text-ink-red' : 'text-ink-green')}>
+                        {v === 'wrong' ? <X size={15} /> : <Check size={15} />}
+                        {v === 'right' ? 'Correcto' : v === 'almost' ? 'Casi: revisa la ortografía' : 'Respuesta:'}
+                      </span>{' '}
+                      {v !== 'right' && <b>{rightAnswer(q)}</b>}
+                      {q.explain_es && <span className="text-label-2 block">{q.explain_es}</span>}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

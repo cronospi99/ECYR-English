@@ -1,0 +1,1623 @@
+[
+  {
+    "id": "l3-a1-lost-property",
+    "title": "Is This Your Umbrella?",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Lost property",
+    "focus": "Possessive adjectives and possessive 's",
+    "emoji": "☂️",
+    "speakers": [
+      {
+        "name": "Mrs Clarke",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Diego",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon. Welcome to the lost property office. Can I help you?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, please. I'm a student here. My friends and I can't find our things."
+      },
+      {
+        "s": 0,
+        "text": "OK. What's your name?"
+      },
+      {
+        "s": 1,
+        "text": "My name's Diego Torres. I'm in Room twelve."
+      },
+      {
+        "s": 0,
+        "text": "Right, Diego. Is this your umbrella? It's black."
+      },
+      {
+        "s": 1,
+        "text": "No, it isn't. My umbrella is green. That black one is Marta's umbrella. Her name is on it."
+      },
+      {
+        "s": 0,
+        "text": "Yes, you're right. What about this blue bag?"
+      },
+      {
+        "s": 1,
+        "text": "Yes! That's my bag. Thank you! And those are my brother's glasses. His glasses are always lost!"
+      },
+      {
+        "s": 0,
+        "text": "Ha! And this phone? Is it your sister's phone?"
+      },
+      {
+        "s": 1,
+        "text": "No, my sister's phone is pink. That's our teacher's phone. Her phone has a photo of her cat on it."
+      },
+      {
+        "s": 0,
+        "text": "Great. Please take your bag, your brother's glasses and your teacher's phone."
+      },
+      {
+        "s": 1,
+        "text": "Thanks a lot. Our teacher is very lucky today!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What colour is Diego's umbrella?",
+        "options": [
+          "Black",
+          "Green",
+          "Blue"
+        ],
+        "answer": 1,
+        "explain_es": "Diego dice: 'My umbrella is green.'"
+      },
+      {
+        "type": "mc",
+        "q": "Whose is the black umbrella?",
+        "options": [
+          "The teacher's",
+          "Diego's",
+          "Marta's"
+        ],
+        "answer": 2,
+        "explain_es": "Diego dice: 'That black one is Marta's umbrella.'"
+      },
+      {
+        "type": "tf",
+        "q": "The blue bag is Diego's.",
+        "answer": "T",
+        "explain_es": "Diego dice: 'Yes! That's my bag.'"
+      },
+      {
+        "type": "tf",
+        "q": "The phone is Diego's sister's phone.",
+        "answer": "F",
+        "explain_es": "Diego dice: 'my sister's phone is pink. That's our teacher's phone.'"
+      },
+      {
+        "type": "gap",
+        "q": "Those are my ____ glasses.",
+        "answer": "brother's",
+        "accept": [
+          "brothers"
+        ],
+        "explain_es": "Usamos 's para decir de quién es algo: 'my brother's glasses' (los lentes de mi hermano)."
+      },
+      {
+        "type": "gap",
+        "q": "That's our ____ phone.",
+        "answer": "teacher's",
+        "accept": [
+          "teachers"
+        ],
+        "explain_es": "Diego dice: 'That's our teacher's phone.' El 's indica posesión."
+      },
+      {
+        "type": "mc",
+        "q": "The teacher is a woman. Complete: '____ phone has a photo of her cat on it.'",
+        "options": [
+          "His",
+          "Her",
+          "Its"
+        ],
+        "answer": 1,
+        "explain_es": "Para una mujer usamos el posesivo 'her'. Diego dice: 'Her phone has a photo of her cat on it.'"
+      }
+    ],
+    "dictation": [
+      "Is this your umbrella?",
+      "My umbrella is green."
+    ]
+  },
+  {
+    "id": "l3-a1-language-exchange",
+    "title": "At the Language Exchange",
+    "level": "A1",
+    "kind": "conversation",
+    "topic": "Countries & nationalities",
+    "focus": "Present simple questions with do / does",
+    "emoji": "🌍",
+    "speakers": [
+      {
+        "name": "Camilo",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Hannah",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi! I'm Camilo. Is this your first time at the language exchange?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, it is. I'm Hannah. Nice to meet you."
+      },
+      {
+        "s": 0,
+        "text": "Nice to meet you too. Where are you from?"
+      },
+      {
+        "s": 1,
+        "text": "I'm Australian. I'm from Perth. Where do you live, Camilo?"
+      },
+      {
+        "s": 0,
+        "text": "I live here in Bogotá, but my family is from Pasto. Do you speak Spanish?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, a little. I study Spanish at a school near the university. Do you work or study?"
+      },
+      {
+        "s": 0,
+        "text": "I work in a hotel. I speak English with tourists every day. Does your school have classes on Saturdays?"
+      },
+      {
+        "s": 1,
+        "text": "No, it doesn't. It only has classes from Monday to Friday."
+      },
+      {
+        "s": 0,
+        "text": "Oh, I see. And what about your friend there? Where does she come from?"
+      },
+      {
+        "s": 1,
+        "text": "That's Yuki. She's Japanese, from Osaka. She teaches English here."
+      },
+      {
+        "s": 0,
+        "text": "Really? Does she like Colombian food?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, she does! She loves arepas. Do you want to meet her?"
+      },
+      {
+        "s": 0,
+        "text": "Sure! Let's go and say hello."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Hannah from?",
+        "options": [
+          "Osaka, Japan",
+          "Perth, Australia",
+          "Pasto, Colombia"
+        ],
+        "answer": 1,
+        "explain_es": "Hannah dice: 'I'm Australian. I'm from Perth.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where does Camilo work?",
+        "options": [
+          "In a school",
+          "At the university",
+          "In a restaurant",
+          "In a hotel"
+        ],
+        "answer": 3,
+        "explain_es": "Camilo dice: 'I work in a hotel.'"
+      },
+      {
+        "type": "tf",
+        "q": "Hannah's school has classes on Saturdays.",
+        "answer": "F",
+        "explain_es": "Hannah dice: 'No, it doesn't. It only has classes from Monday to Friday.'"
+      },
+      {
+        "type": "tf",
+        "q": "Yuki is an English teacher.",
+        "answer": "T",
+        "explain_es": "Hannah dice: 'She teaches English here.'"
+      },
+      {
+        "type": "gap",
+        "q": "____ you speak Spanish?",
+        "answer": "Do",
+        "accept": [
+          "do"
+        ],
+        "explain_es": "Con 'you' la pregunta en presente simple empieza con 'Do': 'Do you speak Spanish?'"
+      },
+      {
+        "type": "gap",
+        "q": "Where ____ she come from?",
+        "answer": "does",
+        "explain_es": "Con 'she' usamos 'does' en preguntas: 'Where does she come from?'"
+      },
+      {
+        "type": "transform",
+        "q": "Make a question: 'Yuki likes Colombian food.'",
+        "answer": "Does Yuki like Colombian food?",
+        "accept": [
+          "Does she like Colombian food?",
+          "Does Yuki like Colombian food"
+        ],
+        "explain_es": "Pregunta con 'does' + verbo en forma base (like, sin -s). Camilo pregunta: 'Does she like Colombian food?'"
+      }
+    ],
+    "dictation": [
+      "Where do you live, Camilo?",
+      "I work in a hotel."
+    ]
+  },
+  {
+    "id": "l3-a1-picnic-shopping",
+    "title": "Shopping for a Picnic",
+    "level": "A1",
+    "kind": "phone-call",
+    "topic": "Food & picnics",
+    "focus": "Countable and uncountable nouns with some / any",
+    "emoji": "🧺",
+    "speakers": [
+      {
+        "name": "Lucy",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Sam",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Sam. I'm at the supermarket. What do we need for the picnic tomorrow?"
+      },
+      {
+        "s": 1,
+        "text": "Hi, Lucy. Let me look in the kitchen. We have some bread, but we don't have any cheese."
+      },
+      {
+        "s": 0,
+        "text": "OK, I can buy some cheese. Do we have any tomatoes?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, there are some tomatoes in the fridge. But there aren't any apples."
+      },
+      {
+        "s": 0,
+        "text": "Right, some apples. What about drinks? Is there any orange juice?"
+      },
+      {
+        "s": 1,
+        "text": "No, there isn't any juice. Can you get some juice and some water, please?"
+      },
+      {
+        "s": 0,
+        "text": "Sure. Do you want any biscuits?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, please! Get some chocolate biscuits. Oh, and we need some sugar for the lemonade."
+      },
+      {
+        "s": 0,
+        "text": "Is there any milk for the coffee?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, there's some milk. We don't need any milk."
+      },
+      {
+        "s": 0,
+        "text": "OK. So, cheese, apples, juice, water, biscuits and sugar. Anything else?"
+      },
+      {
+        "s": 1,
+        "text": "No, that's all. Thanks, Lucy. See you soon!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Lucy?",
+        "options": [
+          "At home",
+          "At the park",
+          "At the supermarket"
+        ],
+        "answer": 2,
+        "explain_es": "Lucy dice: 'I'm at the supermarket.'"
+      },
+      {
+        "type": "tf",
+        "q": "They have some tomatoes.",
+        "answer": "T",
+        "explain_es": "Sam dice: 'there are some tomatoes in the fridge.'"
+      },
+      {
+        "type": "tf",
+        "q": "Lucy needs to buy some milk.",
+        "answer": "F",
+        "explain_es": "Sam dice: 'there's some milk. We don't need any milk.'"
+      },
+      {
+        "type": "mc",
+        "q": "What do they need for the lemonade?",
+        "options": [
+          "Some sugar",
+          "Some apples",
+          "Some milk"
+        ],
+        "answer": 0,
+        "explain_es": "Sam dice: 'we need some sugar for the lemonade.'"
+      },
+      {
+        "type": "gap",
+        "q": "We don't have ____ cheese.",
+        "answer": "any",
+        "explain_es": "En frases negativas usamos 'any': 'we don't have any cheese.'"
+      },
+      {
+        "type": "gap",
+        "q": "Can you get ____ juice and some water, please?",
+        "answer": "some",
+        "explain_es": "En peticiones y frases afirmativas usamos 'some': 'Can you get some juice and some water, please?'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'There aren't some apples.'",
+        "answer": "There aren't any apples.",
+        "accept": [
+          "There are not any apples.",
+          "There aren't any apples"
+        ],
+        "explain_es": "En negativo usamos 'any', no 'some'. Sam dice: 'there aren't any apples.'"
+      }
+    ],
+    "dictation": [
+      "We have some bread, but we don't have any cheese.",
+      "Is there any milk for the coffee?"
+    ]
+  },
+  {
+    "id": "l3-a1-first-day-office",
+    "title": "First Day at the Office",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Work & introductions",
+    "focus": "Verb to be",
+    "emoji": "💼",
+    "speakers": [
+      {
+        "name": "Grace",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Luis",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello! Are you the new designer?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I am. I'm Luis Herrera. I'm from Medellín."
+      },
+      {
+        "s": 0,
+        "text": "Welcome, Luis! I'm Grace. I'm the office manager. Is this your first job?"
+      },
+      {
+        "s": 1,
+        "text": "No, it isn't. I'm twenty-eight, and this is my third job. But I'm a little nervous today."
+      },
+      {
+        "s": 0,
+        "text": "Don't worry. We're very friendly here. This is your desk. It's next to the window."
+      },
+      {
+        "s": 1,
+        "text": "Great! Who are they?"
+      },
+      {
+        "s": 0,
+        "text": "They're Tom and Priya. They're designers, too. Tom is from Canada and Priya is from India."
+      },
+      {
+        "s": 1,
+        "text": "Are they nice?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, they are. They're very funny. And that's our boss, Mr Chang. He isn't here on Mondays, but he's in the office today."
+      },
+      {
+        "s": 1,
+        "text": "Is the kitchen on this floor?"
+      },
+      {
+        "s": 0,
+        "text": "No, it isn't. It's on the second floor. The coffee is free!"
+      },
+      {
+        "s": 1,
+        "text": "Perfect. I'm happy to be here."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is Luis's job?",
+        "options": [
+          "Office manager",
+          "Designer",
+          "Boss"
+        ],
+        "answer": 1,
+        "explain_es": "Grace pregunta 'Are you the new designer?' y Luis responde 'Yes, I am.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where is Tom from?",
+        "options": [
+          "India",
+          "Medellín",
+          "Canada",
+          "China"
+        ],
+        "answer": 2,
+        "explain_es": "Grace dice: 'Tom is from Canada and Priya is from India.'"
+      },
+      {
+        "type": "tf",
+        "q": "This is Luis's first job.",
+        "answer": "F",
+        "explain_es": "Luis dice: 'No, it isn't. ... this is my third job.'"
+      },
+      {
+        "type": "tf",
+        "q": "The kitchen is on the second floor.",
+        "answer": "T",
+        "explain_es": "Grace dice: 'It's on the second floor.'"
+      },
+      {
+        "type": "gap",
+        "q": "Tom and Priya ____ designers, too.",
+        "answer": "are",
+        "accept": [
+          "'re"
+        ],
+        "explain_es": "Con 'they' usamos 'are'. Grace dice: 'They're designers, too.'"
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: 'Mr Chang is here on Mondays.'",
+        "answer": "Mr Chang isn't here on Mondays.",
+        "accept": [
+          "Mr Chang is not here on Mondays.",
+          "He isn't here on Mondays.",
+          "Mr Chang isn't here on Mondays"
+        ],
+        "explain_es": "Negativo de 'is': 'isn't'. Grace dice: 'He isn't here on Mondays.'"
+      },
+      {
+        "type": "mc",
+        "q": "How does Luis feel today?",
+        "options": [
+          "A little nervous",
+          "Very tired",
+          "Angry"
+        ],
+        "answer": 0,
+        "explain_es": "Luis dice: 'I'm a little nervous today.'"
+      }
+    ],
+    "dictation": [
+      "This is your desk.",
+      "It's next to the window."
+    ]
+  },
+  {
+    "id": "l3-a1-coffee-farm",
+    "title": "Life on a Coffee Farm",
+    "level": "A1",
+    "kind": "monologue",
+    "topic": "Farm life",
+    "focus": "Present simple for routines",
+    "emoji": "☕",
+    "speakers": [
+      {
+        "name": "Gloria",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello! My name's Gloria, and I live on a coffee farm near Jardín, in Antioquia."
+      },
+      {
+        "s": 0,
+        "text": "I get up at five o'clock every day. First, I make coffee for my family, of course!"
+      },
+      {
+        "s": 0,
+        "text": "My husband, Jorge, feeds the chickens and the horse. Our son, Felipe, goes to school at seven."
+      },
+      {
+        "s": 0,
+        "text": "At six thirty, I walk to the coffee plants with the workers. We pick the red coffee fruit by hand."
+      },
+      {
+        "s": 0,
+        "text": "We work in the morning because the afternoon is very hot."
+      },
+      {
+        "s": 0,
+        "text": "At twelve o'clock, we have lunch together. We eat beans, rice and plantain."
+      },
+      {
+        "s": 0,
+        "text": "In the afternoon, Jorge dries the coffee in the sun, and I wash the clothes."
+      },
+      {
+        "s": 0,
+        "text": "Felipe comes home at three. He helps his dad, and then he does his homework."
+      },
+      {
+        "s": 0,
+        "text": "In the evening, we watch TV or listen to music. We don't go out much."
+      },
+      {
+        "s": 0,
+        "text": "We go to bed at nine. Farm life is hard, but I love it!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What time does Gloria get up?",
+        "options": [
+          "At four o'clock",
+          "At five o'clock",
+          "At six thirty"
+        ],
+        "answer": 1,
+        "explain_es": "Gloria dice: 'I get up at five o'clock every day.'"
+      },
+      {
+        "type": "mc",
+        "q": "What animals does Jorge feed?",
+        "options": [
+          "The dogs and the cats",
+          "The cows",
+          "The chickens and the horse"
+        ],
+        "answer": 2,
+        "explain_es": "Gloria dice: 'Jorge feeds the chickens and the horse.'"
+      },
+      {
+        "type": "tf",
+        "q": "They pick coffee in the afternoon.",
+        "answer": "F",
+        "explain_es": "Gloria dice: 'We work in the morning because the afternoon is very hot.'"
+      },
+      {
+        "type": "tf",
+        "q": "Felipe comes home at three.",
+        "answer": "T",
+        "explain_es": "Gloria dice: 'Felipe comes home at three.'"
+      },
+      {
+        "type": "gap",
+        "q": "Felipe ____ (go) to school at seven.",
+        "answer": "goes",
+        "explain_es": "Con 'he' el verbo 'go' cambia a 'goes': 'Felipe goes to school at seven.'"
+      },
+      {
+        "type": "gap",
+        "q": "Jorge ____ (dry) the coffee in the sun.",
+        "answer": "dries",
+        "explain_es": "Consonante + y → -ies con 'he': dry → dries. 'Jorge dries the coffee in the sun.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Felipe help his dad.'",
+        "answer": "Felipe helps his dad.",
+        "accept": [
+          "Felipe helps his dad",
+          "He helps his dad."
+        ],
+        "explain_es": "Con 'he' el verbo lleva -s: 'He helps his dad.'"
+      }
+    ],
+    "dictation": [
+      "We go to bed at nine.",
+      "We work in the morning because the afternoon is very hot."
+    ]
+  },
+  {
+    "id": "l3-a1-gym-timetable",
+    "title": "The Gym Timetable",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Gym & fitness",
+    "focus": "Adverbs of frequency",
+    "emoji": "🏋️",
+    "speakers": [
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Ana",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi there! Welcome to FitZone. How can I help?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. I want to join the gym. Can you tell me about the classes?"
+      },
+      {
+        "s": 0,
+        "text": "Sure. We usually have three classes every day. Spinning is always at seven in the morning."
+      },
+      {
+        "s": 1,
+        "text": "Seven? That's early. I never get up before seven!"
+      },
+      {
+        "s": 0,
+        "text": "No problem. There's often a dance class at six in the evening. It's very popular."
+      },
+      {
+        "s": 1,
+        "text": "Great. I sometimes go dancing with my friends. Is the gym busy at night?"
+      },
+      {
+        "s": 0,
+        "text": "It's usually quiet after eight. And the gym is never busy on Sunday evenings."
+      },
+      {
+        "s": 1,
+        "text": "Do you have a swimming pool?"
+      },
+      {
+        "s": 0,
+        "text": "Yes. The pool is usually open until ten, but it's always closed on Monday mornings for cleaning."
+      },
+      {
+        "s": 1,
+        "text": "And how often do the trainers help new members?"
+      },
+      {
+        "s": 0,
+        "text": "They always give you a free plan on your first day, and they often check your progress."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. I want to start on Wednesday!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When is the spinning class?",
+        "options": [
+          "At six in the evening",
+          "At eight at night",
+          "At seven in the morning"
+        ],
+        "answer": 2,
+        "explain_es": "Ben dice: 'Spinning is always at seven in the morning.'"
+      },
+      {
+        "type": "tf",
+        "q": "Ana often gets up before seven.",
+        "answer": "F",
+        "explain_es": "Ana dice: 'I never get up before seven!'"
+      },
+      {
+        "type": "mc",
+        "q": "When is the gym never busy?",
+        "options": [
+          "On Monday mornings",
+          "On Sunday evenings",
+          "On Saturday afternoons",
+          "At six in the evening"
+        ],
+        "answer": 1,
+        "explain_es": "Ben dice: 'the gym is never busy on Sunday evenings.'"
+      },
+      {
+        "type": "tf",
+        "q": "The pool is always closed on Monday mornings.",
+        "answer": "T",
+        "explain_es": "Ben dice: 'it's always closed on Monday mornings for cleaning.'"
+      },
+      {
+        "type": "gap",
+        "q": "We ____ have three classes every day.",
+        "answer": "usually",
+        "explain_es": "'Usually' significa 'normalmente' y va antes del verbo: 'We usually have three classes every day.'"
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: go / I / dancing / sometimes",
+        "answer": "I sometimes go dancing.",
+        "accept": [
+          "I sometimes go dancing"
+        ],
+        "explain_es": "El adverbio de frecuencia va antes del verbo principal: 'I sometimes go dancing with my friends.'"
+      },
+      {
+        "type": "mc",
+        "q": "When does Ana want to start?",
+        "options": [
+          "On Monday",
+          "On Wednesday",
+          "On Sunday"
+        ],
+        "answer": 1,
+        "explain_es": "Ana dice: 'I want to start on Wednesday!'"
+      }
+    ],
+    "dictation": [
+      "Spinning is always at seven in the morning.",
+      "I never get up before seven!"
+    ]
+  },
+  {
+    "id": "l3-a1-late-for-cinema",
+    "title": "Where Are You Now?",
+    "level": "A1",
+    "kind": "phone-call",
+    "topic": "Going out with friends",
+    "focus": "Present continuous for actions now",
+    "emoji": "🎬",
+    "speakers": [
+      {
+        "name": "Sara",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Jack",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Jack. Where are you? The film starts in ten minutes!"
+      },
+      {
+        "s": 1,
+        "text": "Sorry, Sara! I'm coming. I'm walking to the bus stop now."
+      },
+      {
+        "s": 0,
+        "text": "The bus stop? Jack! Hurry up!"
+      },
+      {
+        "s": 1,
+        "text": "I'm running now, really. It's raining and I'm getting very wet."
+      },
+      {
+        "s": 0,
+        "text": "Oh no. Is your brother coming too?"
+      },
+      {
+        "s": 1,
+        "text": "No, he isn't. He's studying for an exam tonight. What are you doing?"
+      },
+      {
+        "s": 0,
+        "text": "I'm standing outside the cinema. I'm holding our tickets."
+      },
+      {
+        "s": 1,
+        "text": "Is Emma with you?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, she's buying popcorn and drinks right now. People are going inside."
+      },
+      {
+        "s": 1,
+        "text": "OK, the bus is arriving. I'm getting on now."
+      },
+      {
+        "s": 0,
+        "text": "Good. We're waiting for you at the door."
+      },
+      {
+        "s": 1,
+        "text": "I'm coming! See you in five minutes."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Sara?",
+        "options": [
+          "At the bus stop",
+          "Outside the cinema",
+          "At home",
+          "In a café"
+        ],
+        "answer": 1,
+        "explain_es": "Sara dice: 'I'm standing outside the cinema.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is Emma doing?",
+        "options": [
+          "Studying for an exam",
+          "Holding the tickets",
+          "Buying popcorn and drinks"
+        ],
+        "answer": 2,
+        "explain_es": "Sara dice: 'she's buying popcorn and drinks right now.'"
+      },
+      {
+        "type": "tf",
+        "q": "It's raining.",
+        "answer": "T",
+        "explain_es": "Jack dice: 'It's raining and I'm getting very wet.'"
+      },
+      {
+        "type": "tf",
+        "q": "Jack's brother is coming to the cinema.",
+        "answer": "F",
+        "explain_es": "Jack dice: 'No, he isn't. He's studying for an exam tonight.'"
+      },
+      {
+        "type": "gap",
+        "q": "He's ____ (study) for an exam tonight.",
+        "answer": "studying",
+        "explain_es": "Presente continuo: is + verbo con -ing. 'He's studying for an exam tonight.'"
+      },
+      {
+        "type": "transform",
+        "q": "Change to the present continuous (now): 'Jack walks to the bus stop.'",
+        "answer": "Jack is walking to the bus stop.",
+        "accept": [
+          "Jack's walking to the bus stop.",
+          "He is walking to the bus stop.",
+          "Jack is walking to the bus stop"
+        ],
+        "explain_es": "Sujeto + is + verbo-ing. Jack dice: 'I'm walking to the bus stop now.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'We is waiting for you at the door.'",
+        "answer": "We are waiting for you at the door.",
+        "accept": [
+          "We're waiting for you at the door.",
+          "We are waiting for you at the door"
+        ],
+        "explain_es": "Con 'we' usamos 'are'. Sara dice: 'We're waiting for you at the door.'"
+      }
+    ],
+    "dictation": [
+      "I'm standing outside the cinema.",
+      "The film starts in ten minutes!"
+    ]
+  },
+  {
+    "id": "l3-a1-beach-house",
+    "title": "Welcome to the Beach House",
+    "level": "A1",
+    "kind": "voicemail",
+    "topic": "Holiday rentals",
+    "focus": "There is / there are + prepositions of place",
+    "emoji": "🏖️",
+    "speakers": [
+      {
+        "name": "Patricia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, this is Patricia, the owner of the beach house in Coveñas. Welcome! Here's some information for your stay."
+      },
+      {
+        "s": 0,
+        "text": "The key is under the green plant pot, next to the front door."
+      },
+      {
+        "s": 0,
+        "text": "Inside, there's a big living room with a sofa and a TV. There are two bedrooms upstairs."
+      },
+      {
+        "s": 0,
+        "text": "There are clean towels in the cupboard behind the bathroom door."
+      },
+      {
+        "s": 0,
+        "text": "In the kitchen, there's a coffee machine on the table, and there are some cups above the sink."
+      },
+      {
+        "s": 0,
+        "text": "There isn't a washing machine in the house, sorry. But there's a small bakery on the corner, and there's a laundry opposite the bakery."
+      },
+      {
+        "s": 0,
+        "text": "Outside, there are two bikes behind the house. You can use them."
+      },
+      {
+        "s": 0,
+        "text": "The beach is very near. It's only five minutes on foot, between the hotel and the fish restaurant."
+      },
+      {
+        "s": 0,
+        "text": "Are there any problems? Please call me on my mobile. My number is on the fridge."
+      },
+      {
+        "s": 0,
+        "text": "Have a wonderful holiday. Bye!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is the key?",
+        "options": [
+          "Behind the door",
+          "Under the plant pot",
+          "On the fridge"
+        ],
+        "answer": 1,
+        "explain_es": "Patricia dice: 'The key is under the green plant pot, next to the front door.'"
+      },
+      {
+        "type": "mc",
+        "q": "How many bedrooms are there?",
+        "options": [
+          "Three",
+          "One",
+          "Two"
+        ],
+        "answer": 2,
+        "explain_es": "Patricia dice: 'There are two bedrooms upstairs.'"
+      },
+      {
+        "type": "tf",
+        "q": "There's a washing machine in the house.",
+        "answer": "F",
+        "explain_es": "Patricia dice: 'There isn't a washing machine in the house, sorry.'"
+      },
+      {
+        "type": "tf",
+        "q": "The beach is five minutes on foot.",
+        "answer": "T",
+        "explain_es": "Patricia dice: 'It's only five minutes on foot.'"
+      },
+      {
+        "type": "gap",
+        "q": "There are clean towels in the cupboard ____ the bathroom door.",
+        "answer": "behind",
+        "explain_es": "'Behind' significa 'detrás de': 'in the cupboard behind the bathroom door.'"
+      },
+      {
+        "type": "gap",
+        "q": "____ two bikes behind the house.",
+        "answer": "There are",
+        "accept": [
+          "there are"
+        ],
+        "explain_es": "Con plural usamos 'there are': 'there are two bikes behind the house.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'There is some cups above the sink.'",
+        "answer": "There are some cups above the sink.",
+        "accept": [
+          "There are some cups above the sink"
+        ],
+        "explain_es": "'Cups' es plural, entonces usamos 'there are': 'there are some cups above the sink.'"
+      }
+    ],
+    "dictation": [
+      "The key is under the green plant pot, next to the front door.",
+      "There are two bedrooms upstairs."
+    ]
+  },
+  {
+    "id": "l3-a1-band-audition",
+    "title": "Join Our Band!",
+    "level": "A1",
+    "kind": "interview",
+    "topic": "Music",
+    "focus": "Can / can't for ability",
+    "emoji": "🎸",
+    "speakers": [
+      {
+        "name": "Olivia",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Kevin",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Kevin. Thanks for coming. So, you want to join our band?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I do. I love music."
+      },
+      {
+        "s": 0,
+        "text": "Great. What instruments can you play?"
+      },
+      {
+        "s": 1,
+        "text": "I can play the guitar and the piano. I can't play the drums, but I want to learn."
+      },
+      {
+        "s": 0,
+        "text": "Can you sing?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I can, but not very well. My sister can sing really well!"
+      },
+      {
+        "s": 0,
+        "text": "Ha! Can you read music?"
+      },
+      {
+        "s": 1,
+        "text": "No, I can't. I play by ear. I listen to a song, and then I can play it."
+      },
+      {
+        "s": 0,
+        "text": "That's amazing. Can you come to practice on Friday evenings?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I can. But I can't come on Saturdays because I work."
+      },
+      {
+        "s": 0,
+        "text": "No problem. We only practise on Fridays. Can you play something for us now?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. Listen to this!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What instruments can Kevin play?",
+        "options": [
+          "The drums and the guitar",
+          "The guitar and the piano",
+          "The piano and the violin"
+        ],
+        "answer": 1,
+        "explain_es": "Kevin dice: 'I can play the guitar and the piano.'"
+      },
+      {
+        "type": "tf",
+        "q": "Kevin can read music.",
+        "answer": "F",
+        "explain_es": "Olivia pregunta 'Can you read music?' y Kevin responde 'No, I can't. I play by ear.'"
+      },
+      {
+        "type": "tf",
+        "q": "Kevin's sister can sing really well.",
+        "answer": "T",
+        "explain_es": "Kevin dice: 'My sister can sing really well!'"
+      },
+      {
+        "type": "mc",
+        "q": "Why can't Kevin come on Saturdays?",
+        "options": [
+          "He works",
+          "He studies",
+          "He visits his family"
+        ],
+        "answer": 0,
+        "explain_es": "Kevin dice: 'I can't come on Saturdays because I work.'"
+      },
+      {
+        "type": "gap",
+        "q": "I ____ play the drums, but I want to learn.",
+        "answer": "can't",
+        "accept": [
+          "cannot",
+          "can not"
+        ],
+        "explain_es": "Para una habilidad que no tenemos usamos 'can't': 'I can't play the drums.'"
+      },
+      {
+        "type": "transform",
+        "q": "Make a question with 'can': 'Kevin sings.'",
+        "answer": "Can Kevin sing?",
+        "accept": [
+          "Can he sing?",
+          "Can Kevin sing"
+        ],
+        "explain_es": "Pregunta: Can + sujeto + verbo base. Olivia pregunta: 'Can you sing?'"
+      },
+      {
+        "type": "mc",
+        "q": "When does the band practise?",
+        "options": [
+          "On Saturday mornings",
+          "Every day",
+          "On Friday evenings"
+        ],
+        "answer": 2,
+        "explain_es": "Olivia dice: 'We only practise on Fridays' y pregunta por 'Friday evenings'."
+      }
+    ],
+    "dictation": [
+      "I can play the guitar and the piano.",
+      "Can you read music?"
+    ]
+  },
+  {
+    "id": "l3-a1-bakery",
+    "title": "At the Bakery",
+    "level": "A1",
+    "kind": "dialogue",
+    "topic": "Shopping for food",
+    "focus": "Demonstratives: this, that, these, those",
+    "emoji": "🥐",
+    "speakers": [
+      {
+        "name": "Mr Price",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Mia",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning! What would you like?"
+      },
+      {
+        "s": 1,
+        "text": "Hi. What are those cakes over there?"
+      },
+      {
+        "s": 0,
+        "text": "Those are lemon cakes. And these here are chocolate cakes."
+      },
+      {
+        "s": 1,
+        "text": "Mmm. How much is that big lemon cake?"
+      },
+      {
+        "s": 0,
+        "text": "That one is fifteen pounds. This small one is five pounds."
+      },
+      {
+        "s": 1,
+        "text": "I'd like this small one, please. And what's that bread on the top shelf?"
+      },
+      {
+        "s": 0,
+        "text": "That's our cheese bread. It's three pounds. It's very popular."
+      },
+      {
+        "s": 1,
+        "text": "OK, one cheese bread, please. Are these cookies fresh?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, these cookies are from this morning. They're one pound each. Those biscuits near the window are from yesterday."
+      },
+      {
+        "s": 1,
+        "text": "Can I have four of these cookies, please?"
+      },
+      {
+        "s": 0,
+        "text": "Of course. That's twelve pounds altogether, please."
+      },
+      {
+        "s": 1,
+        "text": "Here you are. Thank you!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What are the cakes over there?",
+        "options": [
+          "Chocolate cakes",
+          "Lemon cakes",
+          "Carrot cakes"
+        ],
+        "answer": 1,
+        "explain_es": "El panadero dice: 'Those are lemon cakes.'"
+      },
+      {
+        "type": "mc",
+        "q": "How much is the big lemon cake?",
+        "options": [
+          "Five pounds",
+          "Twelve pounds",
+          "Fifteen pounds",
+          "Three pounds"
+        ],
+        "answer": 2,
+        "explain_es": "El panadero dice: 'That one is fifteen pounds.'"
+      },
+      {
+        "type": "tf",
+        "q": "The biscuits near the window are from this morning.",
+        "answer": "F",
+        "explain_es": "El panadero dice: 'Those biscuits near the window are from yesterday.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mia buys four cookies.",
+        "answer": "T",
+        "explain_es": "Mia dice: 'Can I have four of these cookies, please?'"
+      },
+      {
+        "type": "gap",
+        "q": "____ are lemon cakes. (far away, plural)",
+        "answer": "Those",
+        "accept": [
+          "those"
+        ],
+        "explain_es": "Para varias cosas lejos usamos 'those': 'Those are lemon cakes.'"
+      },
+      {
+        "type": "gap",
+        "q": "I'd like ____ small one, please. (near, singular)",
+        "answer": "this",
+        "explain_es": "Para una cosa cerca usamos 'this': 'I'd like this small one, please.'"
+      },
+      {
+        "type": "mc",
+        "q": "How much does Mia pay?",
+        "options": [
+          "Eleven pounds",
+          "Fifteen pounds",
+          "Twelve pounds"
+        ],
+        "answer": 2,
+        "explain_es": "El panadero dice: 'That's twelve pounds altogether.' (5 + 3 + 4)"
+      }
+    ],
+    "dictation": [
+      "What are those cakes over there?",
+      "Are these cookies fresh?"
+    ]
+  },
+  {
+    "id": "l3-a1-cartagena-holiday",
+    "title": "How Was Cartagena?",
+    "level": "A1",
+    "kind": "conversation",
+    "topic": "Holidays",
+    "focus": "Past simple of be: was / were",
+    "emoji": "🌴",
+    "speakers": [
+      {
+        "name": "Nicolás",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Valeria",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Valeria! Where were you last week? You weren't in class."
+      },
+      {
+        "s": 1,
+        "text": "Hi, Nico! I was in Cartagena with my parents. It was my mum's birthday."
+      },
+      {
+        "s": 0,
+        "text": "Cool! How was it?"
+      },
+      {
+        "s": 1,
+        "text": "It was wonderful. The weather was hot and sunny every day."
+      },
+      {
+        "s": 0,
+        "text": "Was your hotel nice?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, it was. It was in the old city, and the rooms were really big."
+      },
+      {
+        "s": 0,
+        "text": "Were the beaches good?"
+      },
+      {
+        "s": 1,
+        "text": "They were OK, but they were very busy. There were lots of tourists."
+      },
+      {
+        "s": 0,
+        "text": "And how was the food?"
+      },
+      {
+        "s": 1,
+        "text": "The food was delicious! The fish and the coconut rice were my favourite."
+      },
+      {
+        "s": 0,
+        "text": "Were you tired after the trip?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I was very tired, but I was happy. What about you? Were you at home?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, I was. It wasn't very exciting!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who was in Cartagena with Valeria?",
+        "options": [
+          "Her parents",
+          "Her friends",
+          "Her brother"
+        ],
+        "answer": 0,
+        "explain_es": "Valeria dice: 'I was in Cartagena with my parents.'"
+      },
+      {
+        "type": "tf",
+        "q": "The weather was cold and rainy.",
+        "answer": "F",
+        "explain_es": "Valeria dice: 'The weather was hot and sunny every day.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where was the hotel?",
+        "options": [
+          "Near the airport",
+          "On the beach",
+          "In the old city"
+        ],
+        "answer": 2,
+        "explain_es": "Valeria dice: 'It was in the old city.'"
+      },
+      {
+        "type": "tf",
+        "q": "The beaches were very busy.",
+        "answer": "T",
+        "explain_es": "Valeria dice: 'they were very busy. There were lots of tourists.'"
+      },
+      {
+        "type": "gap",
+        "q": "Where ____ you last week?",
+        "answer": "were",
+        "explain_es": "Con 'you' el pasado de 'be' es 'were': 'Where were you last week?'"
+      },
+      {
+        "type": "gap",
+        "q": "The food ____ delicious!",
+        "answer": "was",
+        "explain_es": "Con una cosa (it) usamos 'was': 'The food was delicious!'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'The rooms was really big.'",
+        "answer": "The rooms were really big.",
+        "accept": [
+          "The rooms were really big"
+        ],
+        "explain_es": "'Rooms' es plural, entonces usamos 'were': 'the rooms were really big.'"
+      }
+    ],
+    "dictation": [
+      "How was it?",
+      "The weather was hot and sunny every day."
+    ]
+  },
+  {
+    "id": "l3-a1-fire-drill",
+    "title": "Fire Drill Instructions",
+    "level": "A1",
+    "kind": "announcement",
+    "topic": "Safety at school",
+    "focus": "Imperatives for instructions",
+    "emoji": "🚨",
+    "speakers": [
+      {
+        "name": "Mr Okafor",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, everyone. This is your head teacher. Today at ten o'clock, we have a fire drill. Please listen carefully."
+      },
+      {
+        "s": 0,
+        "text": "When you hear the alarm, stop work immediately."
+      },
+      {
+        "s": 0,
+        "text": "Don't take your bags or your coats. Leave everything in the classroom."
+      },
+      {
+        "s": 0,
+        "text": "Close the windows, and turn off the lights."
+      },
+      {
+        "s": 0,
+        "text": "Walk to the door quietly. Don't run, and don't push."
+      },
+      {
+        "s": 0,
+        "text": "Follow your teacher down the stairs. Don't use the lift."
+      },
+      {
+        "s": 0,
+        "text": "Go outside to the football field and stand in a line with your class."
+      },
+      {
+        "s": 0,
+        "text": "Don't talk. Your teacher needs to count the students."
+      },
+      {
+        "s": 0,
+        "text": "Wait on the football field. Don't go back inside before the second alarm."
+      },
+      {
+        "s": 0,
+        "text": "Thank you, and remember: stay calm!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What time is the fire drill?",
+        "options": [
+          "At nine o'clock",
+          "At ten o'clock",
+          "At eleven o'clock"
+        ],
+        "answer": 1,
+        "explain_es": "El director dice: 'Today at ten o'clock, we have a fire drill.'"
+      },
+      {
+        "type": "tf",
+        "q": "Students take their bags outside.",
+        "answer": "F",
+        "explain_es": "El director dice: 'Don't take your bags or your coats.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where do the students go?",
+        "options": [
+          "To the car park",
+          "To the library",
+          "To the football field"
+        ],
+        "answer": 2,
+        "explain_es": "El director dice: 'Go outside to the football field.'"
+      },
+      {
+        "type": "tf",
+        "q": "Students go down the stairs.",
+        "answer": "T",
+        "explain_es": "El director dice: 'Follow your teacher down the stairs. Don't use the lift.'"
+      },
+      {
+        "type": "gap",
+        "q": "____ to the door quietly.",
+        "answer": "Walk",
+        "accept": [
+          "walk"
+        ],
+        "explain_es": "El imperativo usa el verbo base sin sujeto: 'Walk to the door quietly.'"
+      },
+      {
+        "type": "transform",
+        "q": "Make a negative imperative: 'You use the lift.'",
+        "answer": "Don't use the lift.",
+        "accept": [
+          "Do not use the lift.",
+          "Don't use the lift",
+          "Don't use the lift!"
+        ],
+        "explain_es": "Imperativo negativo: Don't + verbo. El director dice: 'Don't use the lift.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why can't the students talk on the field?",
+        "options": [
+          "The alarm is very loud",
+          "The head teacher is speaking",
+          "The teacher needs to count the students"
+        ],
+        "answer": 2,
+        "explain_es": "El director dice: 'Don't talk. Your teacher needs to count the students.'"
+      }
+    ],
+    "dictation": [
+      "Close the windows, and turn off the lights.",
+      "Don't run, and don't push."
+    ]
+  }
+]

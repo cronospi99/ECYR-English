@@ -88,6 +88,7 @@ export function ListeningLibrary() {
               <span className="text-label-2 mt-0.5 block text-[12.5px]">
                 {t.topic} · {t.speakers.length === 1 ? '1 voz' : `${t.speakers.length} voces`} · ~{Math.max(1, Math.round(words(t) / 140))} min
               </span>
+              {t.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {t.focus}</span>}
             </span>
           </motion.button>
         ))}
@@ -180,7 +181,7 @@ function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
       <Card className="overflow-hidden">
         <div className="p-5 text-white sm:p-6" style={{ background: 'linear-gradient(135deg, var(--skill-listening), color-mix(in srgb, var(--skill-listening) 50%, #5b2bd9))' }}>
           <div className="flex items-center gap-2 text-[13px] font-semibold opacity-90">
-            <span className="rounded-full bg-white/20 px-2 py-0.5">{t.level}</span> {KIND_ES[t.kind] ?? t.kind} · {t.topic}
+            <span className="rounded-full bg-white/20 px-2 py-0.5">{t.level}</span> {KIND_ES[t.kind] ?? t.kind} · {t.topic}{t.focus ? ` · 🎯 ${t.focus}` : ''}
           </div>
           <h2 className="mt-2 text-[26px] leading-tight font-extrabold">
             {t.emoji} {t.title}

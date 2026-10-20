@@ -1,4 +1,6 @@
+import { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
+import { ExamRow, useLevelExams } from '@/features/exams/ExamCards';
 import { BookOpen, CheckCircle2 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { ListGroup, ListRow } from '@/components/ui/List';
@@ -20,6 +22,7 @@ export default function LevelPage() {
   const meta = levelMeta(level);
   const units = useProgress((s) => s.units);
   const { data, loading } = useAsync(() => (meta ? loadLevel(meta.id) : Promise.resolve(null)), [meta?.id]);
+  const exams = useLevelExams(meta?.id ?? null);
   if (!meta) return <NotFound />;
   const c = levelCompletion(units, meta.id);
 
@@ -48,12 +51,13 @@ export default function LevelPage() {
       {loading || !data ? (
         <PageLoader />
       ) : (
-        <ListGroup header={`${data.units.length} unidades`}>
+        <ListGroup header={`${data.units.length} unidades · parcial cada 4 unidades`}>
           {data.units.map((u) => {
             const done = units[`${meta.id}-${u.n}`];
+            const exam = exams.after.get(u.n);
             return (
+              <Fragment key={u.n}>
               <ListRow
-                key={u.n}
                 to={`/learn/${level}/${u.n}`}
                 leading={
                   <span
@@ -75,9 +79,20 @@ export default function LevelPage() {
                   )
                 }
               />
+              {exam && (
+                <div className="px-3 py-2.5">
+                  <ExamRow exam={exam} color={meta.color} />
+                </div>
+              )}
+              </Fragment>
             );
           })}
         </ListGroup>
+      )}
+      {exams.final && (
+        <div className="mt-6">
+          <ExamRow exam={exams.final} />
+        </div>
       )}
     </Page>
   );

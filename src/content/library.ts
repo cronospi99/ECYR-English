@@ -23,6 +23,8 @@ export interface LibReading {
   topic: string;
   emoji: string;
   words: number;
+  /** Grammar the text practises, e.g. "Past continuous vs past simple". */
+  focus?: string;
   paragraphs: string[];
   glossary: [string, string][];
   questions: LibQuestion[];
@@ -36,6 +38,8 @@ export interface LibTrack {
   level: CefrLevel;
   kind: string;
   topic: string;
+  /** Grammar the track practises. */
+  focus?: string;
   emoji: string;
   speakers: { name: string; voice: 'male' | 'female'; accent: 'us' | 'uk' | 'au' }[];
   lines: { s: number; text: string }[];

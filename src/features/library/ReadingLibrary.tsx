@@ -109,6 +109,7 @@ export function ReadingCard({ r, i = 0, onOpen }: { r: LibReading; i?: number; o
         <span className="text-label-2 mt-0.5 flex items-center gap-1 text-[12.5px]">
           {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} preguntas
         </span>
+        {r.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {r.focus}</span>}
       </span>
     </motion.button>
   );
@@ -178,6 +179,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
           <div className="flex items-center gap-2 text-[13px] font-semibold opacity-90">
             <span className="rounded-full bg-white/20 px-2 py-0.5">{r.level}</span> {GENRE_ES[r.genre] ?? r.genre} · {r.topic} · {minutes(r.words)} min
           </div>
+          {r.focus && <div className="mt-1.5 inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[12.5px] font-semibold">🎯 Gramática: {r.focus}</div>}
           <h2 className="mt-2 text-[26px] leading-tight font-extrabold">
             {r.emoji} {r.title}
           </h2>
