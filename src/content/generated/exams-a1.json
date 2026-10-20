@@ -1,0 +1,2525 @@
+[
+  {
+    "id": "a1-m1",
+    "level": "A1",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa las unidades 1 a 4: to be y posesivos, preguntas, la rutina con el presente simple y las expresiones de tiempo, los demostrativos y comparativos, los pronombres objeto y las ofertas con would. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 50,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "What time ___ your sister finish work?",
+        "options": [
+          "do",
+          "are",
+          "is",
+          "does"
+        ],
+        "answer": 3,
+        "explain_es": "Con he/she/it el auxiliar del presente simple es does: What time does your sister finish…?"
+      },
+      {
+        "type": "mc",
+        "q": "My cousins are from Pasto. ___ house is near the cathedral.",
+        "options": [
+          "Their",
+          "Our",
+          "His",
+          "Its"
+        ],
+        "answer": 0,
+        "explain_es": "Los dueños son my cousins (they) → their."
+      },
+      {
+        "type": "mc",
+        "q": "This bag is ___ than that one.",
+        "options": [
+          "heavyer",
+          "more heavy",
+          "heavier",
+          "heaviest"
+        ],
+        "answer": 2,
+        "explain_es": "Heavy termina en consonante + y: y → i + er → heavier than."
+      },
+      {
+        "type": "mc",
+        "q": "I don't know Carla. Can you introduce me to ___?",
+        "options": [
+          "she",
+          "her",
+          "hers",
+          "him"
+        ],
+        "answer": 1,
+        "explain_es": "Después de una preposición (to) usamos el pronombre objeto: her."
+      },
+      {
+        "type": "mc",
+        "q": "___ you like a cup of coffee? — Yes, please.",
+        "options": [
+          "Do",
+          "Are",
+          "Would",
+          "Will"
+        ],
+        "answer": 2,
+        "explain_es": "Para ofrecer algo con cortesía usamos Would you like…?"
+      },
+      {
+        "type": "mc",
+        "q": "We have English ___ Monday ___ seven in the morning.",
+        "options": [
+          "on / at",
+          "in / on",
+          "at / in",
+          "on / in"
+        ],
+        "answer": 0,
+        "explain_es": "Días → on (on Monday); horas → at (at seven)."
+      },
+      {
+        "type": "gap",
+        "q": "My new phone is ___ expensive than my old one.",
+        "answer": "more",
+        "explain_es": "Expensive es un adjetivo largo: more expensive than."
+      },
+      {
+        "type": "transform",
+        "q": "Write a question with the word in brackets: She is from Cúcuta. (Where)",
+        "answer": "Where is she from?",
+        "explain_es": "Palabra WH + is + sujeto + from: Where is she from?"
+      },
+      {
+        "type": "error",
+        "q": "He go to the gym after work.",
+        "answer": "He goes to the gym after work.",
+        "explain_es": "En el presente simple, con he el verbo lleva -es: go → goes."
+      },
+      {
+        "type": "order",
+        "q": "jacket / that / than / this / cheaper / is / one / .",
+        "answer": "This jacket is cheaper than that one.",
+        "accept": [
+          "That jacket is cheaper than this one."
+        ],
+        "explain_es": "Sujeto + is + comparativo + than + segundo elemento (that one)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Saturday and Sunday are the ___.",
+        "options": [
+          "weekdays",
+          "weekend",
+          "breakfast"
+        ],
+        "answer": 1,
+        "explain_es": "El weekend (fin de semana) es sábado y domingo. Weekdays son de lunes a viernes."
+      },
+      {
+        "type": "mc",
+        "q": "This T-shirt was only five thousand pesos. It's a real ___!",
+        "options": [
+          "size",
+          "cost",
+          "bargain"
+        ],
+        "answer": 2,
+        "explain_es": "A bargain = una ganga, algo mucho más barato de lo normal."
+      },
+      {
+        "type": "gap",
+        "q": "I always ___ up at half past five and have a shower.",
+        "answer": "get",
+        "accept": [
+          "wake"
+        ],
+        "explain_es": "Get up = levantarse (wake up = despertarse también es posible)."
+      },
+      {
+        "type": "mc",
+        "q": "Can you ___ me a hand with these boxes?",
+        "options": [
+          "give",
+          "take",
+          "make",
+          "do"
+        ],
+        "answer": 0,
+        "explain_es": "Give somebody a hand = ayudar a alguien."
+      },
+      {
+        "type": "mc",
+        "q": "Can I ___ these jeans on, please? I want to see the size.",
+        "options": [
+          "put",
+          "try",
+          "wear"
+        ],
+        "answer": 1,
+        "explain_es": "Try on = probarse ropa en una tienda."
+      },
+      {
+        "type": "mc",
+        "q": "A person who lives near your house is your ___.",
+        "options": [
+          "cousin",
+          "nickname",
+          "neighbour"
+        ],
+        "answer": 2,
+        "explain_es": "Neighbour = vecino, una persona que vive cerca de ti."
+      },
+      {
+        "type": "gap",
+        "q": "The bus is full of people. It's very ___.",
+        "answer": "crowded",
+        "explain_es": "Crowded = lleno de gente."
+      },
+      {
+        "type": "mc",
+        "q": "Are you ___ on Friday night? I want to invite you to dinner.",
+        "options": [
+          "cheap",
+          "late",
+          "single",
+          "free"
+        ],
+        "answer": 3,
+        "explain_es": "Free = libre, sin planes (también significa gratis)."
+      },
+      {
+        "type": "mc",
+        "q": "My friends call me «Juancho». It's my ___.",
+        "options": [
+          "job",
+          "nickname",
+          "country"
+        ],
+        "answer": 1,
+        "explain_es": "Nickname = apodo, un nombre corto o cariñoso."
+      },
+      {
+        "type": "gap",
+        "q": "There's food on the table, so please help ___!",
+        "answer": "yourself",
+        "explain_es": "Help yourself = sírvete tú mismo."
+      }
+    ],
+    "reading": {
+      "title": "A New Friend in Canada",
+      "genre": "email",
+      "paragraphs": [
+        "Hi Emma,",
+        "My name is Daniela and I'm from Manizales, a city in the coffee region of Colombia. I'm a student at the university, and my nickname is Dani. My brother Felipe is twenty-six. He's a nurse, and his hospital is near our house.",
+        "On weekdays I get up at six. I have breakfast with my mum and I take the bus at seven. My classes start at eight and finish at two. In the evening I study or watch series with Felipe. At the weekend we visit our grandparents in the country.",
+        "Manizales is smaller than Bogotá, but I think it's more beautiful, and the coffee is better! Would you like to visit us in December? You are very welcome in our house.",
+        "Write soon!",
+        "Daniela"
+      ],
+      "glossary": [
+        [
+          "coffee region",
+          "Eje Cafetero, zona cafetera"
+        ],
+        [
+          "nurse",
+          "enfermero, enfermera"
+        ],
+        [
+          "weekdays",
+          "días entre semana"
+        ],
+        [
+          "series",
+          "series de televisión"
+        ],
+        [
+          "in the country",
+          "en el campo"
+        ],
+        [
+          "welcome",
+          "bienvenido"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Where is Manizales?",
+          "options": [
+            "on the coast",
+            "in the coffee region",
+            "near Bogotá"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «Manizales, a city in the coffee region of Colombia»."
+        },
+        {
+          "type": "tf",
+          "q": "Daniela's nickname is Dani.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «my nickname is Dani»."
+        },
+        {
+          "type": "mc",
+          "q": "What is Felipe's job?",
+          "options": [
+            "student",
+            "teacher",
+            "nurse",
+            "doctor"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «He's a nurse»."
+        },
+        {
+          "type": "gap",
+          "q": "Daniela takes the bus at ___.",
+          "answer": "seven",
+          "accept": [
+            "7",
+            "7:00",
+            "seven o'clock"
+          ],
+          "explain_es": "El texto dice: «I take the bus at seven»."
+        },
+        {
+          "type": "tf",
+          "q": "Daniela thinks Bogotá is more beautiful than Manizales.",
+          "answer": "F",
+          "explain_es": "Falso. Ella dice que Manizales «is smaller than Bogotá, but I think it's more beautiful»."
+        },
+        {
+          "type": "mc",
+          "q": "What does Daniela invite Emma to do?",
+          "options": [
+            "study at her university",
+            "call her brother",
+            "visit her family in December"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «Would you like to visit us in December?»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Coffee Before Work",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Laura",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Sam",
+          "voice": "male",
+          "accent": "uk"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Hi, Sam! Would you like something to drink?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, please. I'd like a hot chocolate."
+        },
+        {
+          "s": 0,
+          "text": "A small one or a large one?"
+        },
+        {
+          "s": 1,
+          "text": "A large one, please. The small cups here are tiny."
+        },
+        {
+          "s": 0,
+          "text": "OK. And would you like a croissant? They're cheaper than the cakes."
+        },
+        {
+          "s": 1,
+          "text": "No, thanks. I have breakfast at home every day. What time do you start work today?"
+        },
+        {
+          "s": 0,
+          "text": "At ten. On Tuesdays I start later. What about you?"
+        },
+        {
+          "s": 1,
+          "text": "I start at nine, but my office is near here. It's only five minutes on foot."
+        },
+        {
+          "s": 0,
+          "text": "Lucky you. My office is farther. I take two buses."
+        },
+        {
+          "s": 1,
+          "text": "By the way, do you know the new teacher, Mr. Brooks?"
+        },
+        {
+          "s": 0,
+          "text": "Yes, I know him. He's really nice. He's my neighbour!"
+        },
+        {
+          "s": 1,
+          "text": "Great. Would he like to come to the café with us on Friday?"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What does Sam order?",
+          "options": [
+            "a coffee",
+            "a hot chocolate",
+            "a croissant",
+            "a juice"
+          ],
+          "answer": 1,
+          "explain_es": "Sam dice: «I'd like a hot chocolate»."
+        },
+        {
+          "type": "tf",
+          "q": "Sam wants a small cup.",
+          "answer": "F",
+          "explain_es": "Falso. Sam dice: «A large one, please»."
+        },
+        {
+          "type": "gap",
+          "q": "On Tuesdays, Laura starts work at ___.",
+          "answer": "ten",
+          "accept": [
+            "10",
+            "10:00",
+            "ten o'clock"
+          ],
+          "explain_es": "Laura dice: «At ten. On Tuesdays I start later»."
+        },
+        {
+          "type": "tf",
+          "q": "Sam has breakfast at home every day.",
+          "answer": "T",
+          "explain_es": "Verdadero. Sam dice: «I have breakfast at home every day»."
+        },
+        {
+          "type": "mc",
+          "q": "How does Laura go to work?",
+          "options": [
+            "on foot",
+            "by car",
+            "She takes two buses."
+          ],
+          "answer": 2,
+          "explain_es": "Laura dice: «My office is farther. I take two buses»."
+        },
+        {
+          "type": "mc",
+          "q": "Who is Mr. Brooks?",
+          "options": [
+            "Sam's brother",
+            "Laura's boss",
+            "Laura's neighbour"
+          ],
+          "answer": 2,
+          "explain_es": "Laura dice: «He's my neighbour!»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write an email to a new online friend. Introduce yourself and one person in your family, describe a typical weekday with times, compare your city with another city, and invite your friend to visit.",
+      "prompt_es": "Escribe un correo a un nuevo amigo: preséntate, habla de tu familia y tu rutina, compara tu ciudad e invítalo.",
+      "genre_es": "Correo informal",
+      "minWords": 50,
+      "maxWords": 80,
+      "criteria": [
+        "Use the verb be and possessive adjectives (my, his, her, our).",
+        "Describe your routine with the present simple and time expressions (at six, on weekdays, in the evening).",
+        "Make one comparison with -er than or more … than.",
+        "Invite your friend with «Would you like to…?»."
+      ],
+      "model": "Hi Tom,\nI'm Andrés and I'm from Neiva. I'm a student, and my sister Paula is a teacher. Her school is near our house. On weekdays I get up at six and start class at seven. In the evening I play football with my friends. Neiva is hotter than Bogotá, but it's smaller and quieter. Would you like to visit us in July?\nBest,\nAndrés"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about yourself and two people in your family: their names, ages, jobs and where they are from.",
+          "text_es": "Habla de ti y de dos personas de tu familia: nombres, edades, trabajos y de dónde son.",
+          "seconds": 60,
+          "tips": [
+            "My name is… I'm a…",
+            "My brother's name is… He's a…",
+            "Our house is in…"
+          ]
+        },
+        {
+          "text": "Describe a typical weekday: what time you get up, when you start and finish work or classes, and what you do in the evening.",
+          "text_es": "Describe un día normal entre semana con horas: cuándo te levantas, empiezas, terminas y qué haces en la noche.",
+          "seconds": 60,
+          "tips": [
+            "I get up at…",
+            "My classes start at… and finish at…",
+            "In the evening I…"
+          ]
+        },
+        {
+          "text": "Role-play: you are in a clothes shop with a friend. Compare two jackets (price, size, colour) and decide which one to buy. Use this one, that one and comparatives.",
+          "text_es": "Juego de roles: estás en una tienda con un amigo. Compara dos chaquetas (precio, talla, color) y decide cuál comprar.",
+          "seconds": 60,
+          "tips": [
+            "This one is cheaper than that one.",
+            "That one is more comfortable.",
+            "Would you like to try it on?"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a1-m2",
+    "level": "A1",
+    "kind": "midterm",
+    "n": 2,
+    "units": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "title": "Parcial 2 · Unidades 5–8",
+    "intro_es": "Evalúa las unidades 5 a 8: el presente continuo y los cuantificadores, los adverbios de frecuencia y las preguntas con how, el pasado simple (did, was/were), there is/there are con preposiciones y how much/how many. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 50,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "Shh! The baby ___.",
+        "options": [
+          "sleeps",
+          "are sleeping",
+          "sleeping",
+          "is sleeping"
+        ],
+        "answer": 3,
+        "explain_es": "Es una acción que pasa ahora mismo: is + sleeping (presente continuo)."
+      },
+      {
+        "type": "mc",
+        "q": "Nine of my ten cousins live in Cali. ___ my cousins live in Cali.",
+        "options": [
+          "No one of",
+          "Not many of",
+          "Few",
+          "Nearly all"
+        ],
+        "answer": 3,
+        "explain_es": "Nueve de diez es casi todos → nearly all."
+      },
+      {
+        "type": "mc",
+        "q": "Choose the correct sentence with «always».",
+        "options": [
+          "She always is hungry.",
+          "She is always hungry.",
+          "She is hungry always."
+        ],
+        "answer": 1,
+        "explain_es": "Con el verbo to be, el adverbio de frecuencia va después de be: She is always…"
+      },
+      {
+        "type": "mc",
+        "q": "How ___ do you go swimming? — Twice a week.",
+        "options": [
+          "long",
+          "well",
+          "often",
+          "much"
+        ],
+        "answer": 2,
+        "explain_es": "Twice a week es una frecuencia → How often…?"
+      },
+      {
+        "type": "mc",
+        "q": "___ you at the party last night? — No, I was at home.",
+        "options": [
+          "Did",
+          "Were",
+          "Was",
+          "Are"
+        ],
+        "answer": 1,
+        "explain_es": "Pasado de be con you → were. To be no usa did."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ money do you need for the trip?",
+        "options": [
+          "many",
+          "long",
+          "often",
+          "much"
+        ],
+        "answer": 3,
+        "explain_es": "Money es incontable → How much…?"
+      },
+      {
+        "type": "gap",
+        "q": "Did you ___ the match last night? (see)",
+        "answer": "see",
+        "explain_es": "Después de did el verbo vuelve a la forma base: Did you see…?"
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: They watched TV yesterday.",
+        "answer": "They didn't watch TV yesterday.",
+        "accept": [
+          "They did not watch TV yesterday."
+        ],
+        "explain_es": "Negativo en pasado: didn't + verbo en forma base (watch, no watched)."
+      },
+      {
+        "type": "error",
+        "q": "There are a pharmacy on the corner.",
+        "answer": "There is a pharmacy on the corner.",
+        "accept": [
+          "There's a pharmacy on the corner."
+        ],
+        "explain_es": "Con un sustantivo singular (a pharmacy) usamos there is."
+      },
+      {
+        "type": "order",
+        "q": "is / your / what / mother / cooking / ?",
+        "answer": "What is your mother cooking?",
+        "explain_es": "Palabra WH + is + sujeto + verbo-ing."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "My mother's sister is my ___.",
+        "options": [
+          "cousin",
+          "aunt",
+          "uncle",
+          "grandmother"
+        ],
+        "answer": 1,
+        "explain_es": "La hermana de tu mamá o papá es tu aunt (tía)."
+      },
+      {
+        "type": "mc",
+        "q": "Lucas has no brothers or sisters. He's ___.",
+        "options": [
+          "an uncle",
+          "a parent",
+          "an only child"
+        ],
+        "answer": 2,
+        "explain_es": "Only child = hijo único, sin hermanos."
+      },
+      {
+        "type": "gap",
+        "q": "My grandmother ___ after my little brother when my parents are at work.",
+        "answer": "looks",
+        "explain_es": "Look after = cuidar. Con she el verbo lleva -s: looks after."
+      },
+      {
+        "type": "mc",
+        "q": "I go to the gym on Mondays and Thursdays — ___.",
+        "options": [
+          "once a week",
+          "twice a week",
+          "hardly ever"
+        ],
+        "answer": 1,
+        "explain_es": "Dos veces por semana = twice a week."
+      },
+      {
+        "type": "mc",
+        "q": "Painting is my favourite ___. I do it every weekend.",
+        "options": [
+          "hobby",
+          "job",
+          "neighbourhood"
+        ],
+        "answer": 0,
+        "explain_es": "Hobby = pasatiempo, algo que haces en tu tiempo libre."
+      },
+      {
+        "type": "mc",
+        "q": "I saw Marta three days ___.",
+        "options": [
+          "last",
+          "before",
+          "yesterday",
+          "ago"
+        ],
+        "answer": 3,
+        "explain_es": "Ago va después del período de tiempo: three days ago = hace tres días."
+      },
+      {
+        "type": "gap",
+        "q": "We had a great ___ at the concert. It was amazing!",
+        "answer": "time",
+        "explain_es": "Have a great time = pasarla muy bien."
+      },
+      {
+        "type": "mc",
+        "q": "The film was very ___. I slept for an hour!",
+        "options": [
+          "interesting",
+          "boring",
+          "crowded"
+        ],
+        "answer": 1,
+        "explain_es": "Boring = aburrido. Si te dormiste, la película no era interesante."
+      },
+      {
+        "type": "mc",
+        "q": "The bank is ___ the pharmacy and the bakery.",
+        "options": [
+          "across from",
+          "on the corner",
+          "between"
+        ],
+        "answer": 2,
+        "explain_es": "Between = entre dos cosas."
+      },
+      {
+        "type": "gap",
+        "q": "The supermarket is five minutes from my house. It's within walking ___.",
+        "answer": "distance",
+        "explain_es": "Within walking distance = lo bastante cerca para ir caminando."
+      }
+    ],
+    "reading": {
+      "title": "Sunday Lunch in Chía",
+      "genre": "blog",
+      "paragraphs": [
+        "Every Sunday my family has lunch at my grandparents' house in Chía. We almost always go, and we hardly ever arrive on time! Their house is small, but there is a big garden behind it, and there are two old orange trees next to the gate.",
+        "Last Sunday was special. It was my grandfather's eightieth birthday, and nearly all the family came, about thirty people. Only my cousin Mateo wasn't there, because he lives in Spain now.",
+        "Today is a normal Sunday. Right now I'm writing this post on my phone in the garden. My aunt Rosa is cooking ajiaco, my uncles are playing cards and the kids are running around the trees. No one is working today!",
+        "How often do you see your grandparents? Tell me in the comments."
+      ],
+      "glossary": [
+        [
+          "on time",
+          "a tiempo, puntuales"
+        ],
+        [
+          "garden",
+          "jardín"
+        ],
+        [
+          "gate",
+          "reja, portón"
+        ],
+        [
+          "eightieth birthday",
+          "cumpleaños número ochenta"
+        ],
+        [
+          "playing cards",
+          "jugando cartas"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "tf",
+          "q": "The family usually arrives at the house on time.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «we hardly ever arrive on time!»."
+        },
+        {
+          "type": "mc",
+          "q": "Where are the orange trees?",
+          "options": [
+            "behind the house",
+            "next to the gate",
+            "in the kitchen"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «there are two old orange trees next to the gate». Behind the house está el jardín."
+        },
+        {
+          "type": "gap",
+          "q": "Last Sunday, the grandfather was ___ years old.",
+          "answer": "eighty",
+          "accept": [
+            "80"
+          ],
+          "explain_es": "El texto dice: «It was my grandfather's eightieth birthday»."
+        },
+        {
+          "type": "mc",
+          "q": "Why wasn't Mateo at the party?",
+          "options": [
+            "He was sick.",
+            "He was working.",
+            "He lives in Spain."
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «he lives in Spain now»."
+        },
+        {
+          "type": "mc",
+          "q": "What is aunt Rosa doing right now?",
+          "options": [
+            "playing cards",
+            "cooking",
+            "writing a post"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «My aunt Rosa is cooking ajiaco»."
+        },
+        {
+          "type": "tf",
+          "q": "About thirty people came to the birthday.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «nearly all the family came, about thirty people»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A Call About the New Flat",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Kate",
+          "voice": "female",
+          "accent": "au"
+        },
+        {
+          "name": "Mario",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Hi, Mario! It's Kate. Are you busy?"
+        },
+        {
+          "s": 1,
+          "text": "Hi, Kate. Not really. I'm painting my new bedroom."
+        },
+        {
+          "s": 0,
+          "text": "Oh, nice! How is the new flat?"
+        },
+        {
+          "s": 1,
+          "text": "I love it. There are two bedrooms and a small balcony. And there's a bakery right across from my building."
+        },
+        {
+          "s": 0,
+          "text": "Lucky you! Is it a quiet neighbourhood?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, it is. There aren't many cars, but there are a lot of dogs!"
+        },
+        {
+          "s": 0,
+          "text": "Ha! And how was your weekend?"
+        },
+        {
+          "s": 1,
+          "text": "It was tiring. I moved all my furniture on Saturday. My brother helped me."
+        },
+        {
+          "s": 0,
+          "text": "Did you go out on Sunday?"
+        },
+        {
+          "s": 1,
+          "text": "No, I didn't. I stayed at home and slept until eleven."
+        },
+        {
+          "s": 0,
+          "text": "Well, do you want to play tennis on Thursday? Our group plays twice a week now."
+        },
+        {
+          "s": 1,
+          "text": "Sure. See you on Thursday!"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What is Mario doing when Kate calls?",
+          "options": [
+            "painting his bedroom",
+            "cleaning the kitchen",
+            "playing tennis"
+          ],
+          "answer": 0,
+          "explain_es": "Mario dice: «I'm painting my new bedroom»."
+        },
+        {
+          "type": "gap",
+          "q": "Mario's flat has ___ bedrooms.",
+          "answer": "two",
+          "accept": [
+            "2"
+          ],
+          "explain_es": "Mario dice: «There are two bedrooms and a small balcony»."
+        },
+        {
+          "type": "mc",
+          "q": "What is across from Mario's building?",
+          "options": [
+            "a park",
+            "a supermarket",
+            "a bank",
+            "a bakery"
+          ],
+          "answer": 3,
+          "explain_es": "Mario dice: «there's a bakery right across from my building»."
+        },
+        {
+          "type": "tf",
+          "q": "There are a lot of cars in Mario's neighbourhood.",
+          "answer": "F",
+          "explain_es": "Falso. Mario dice: «There aren't many cars, but there are a lot of dogs!»."
+        },
+        {
+          "type": "mc",
+          "q": "Who helped Mario on Saturday?",
+          "options": [
+            "Kate",
+            "his brother",
+            "his neighbour"
+          ],
+          "answer": 1,
+          "explain_es": "Mario dice: «My brother helped me»."
+        },
+        {
+          "type": "tf",
+          "q": "Kate's group plays tennis twice a week now.",
+          "answer": "T",
+          "explain_es": "Verdadero. Kate dice: «Our group plays twice a week now»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a short blog post about your last weekend and your neighbourhood. Say where you were and what you did, and describe what there is near your home.",
+      "prompt_es": "Escribe una entrada de blog sobre tu último fin de semana y tu barrio: qué hiciste y qué hay cerca de tu casa.",
+      "genre_es": "Entrada de blog",
+      "minWords": 50,
+      "maxWords": 80,
+      "criteria": [
+        "Use the past simple (regular and irregular verbs) and was / were.",
+        "Use there is / there are with prepositions of place (next to, across from, between, on the corner).",
+        "Use one adverb of frequency (usually, often, hardly ever).",
+        "Use one quantifier (a lot of, a few, not many)."
+      ],
+      "model": "Last weekend was great. On Saturday I visited my cousins in Girardot. The weather was very hot, so we swam in the pool all afternoon. On Sunday I stayed at home and cleaned my room. My neighbourhood is quiet. There is a small park next to my building, and there are a few shops on the corner. I usually walk my dog in the park in the evening."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about your free time: what your hobbies are, how often you do them and how well you do them.",
+          "text_es": "Habla de tu tiempo libre: tus pasatiempos, con qué frecuencia los haces y qué tan bien.",
+          "seconds": 60,
+          "tips": [
+            "In my free time I…",
+            "I usually… / I hardly ever…",
+            "I'm good at… / I play quite well."
+          ]
+        },
+        {
+          "text": "Tell the story of your last birthday or holiday: where you were, who was with you and what you did.",
+          "text_es": "Cuenta tu último cumpleaños o vacaciones: dónde estabas, con quién y qué hicieron.",
+          "seconds": 60,
+          "tips": [
+            "Last year I was in…",
+            "My family was with me.",
+            "We went… / We ate… / Then…"
+          ]
+        },
+        {
+          "text": "Role-play: a tourist asks you about your neighbourhood. Explain what there is and where it is, and say what people are doing there right now.",
+          "text_es": "Juego de roles: un turista te pregunta por tu barrio. Explica qué hay, dónde está y qué está haciendo la gente ahora.",
+          "seconds": 60,
+          "tips": [
+            "There is a… next to…",
+            "There are a few… across from…",
+            "Right now a lot of people are…"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a1-m3",
+    "level": "A1",
+    "kind": "midterm",
+    "n": 3,
+    "units": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial 3 · Unidades 9–12",
+    "intro_es": "Evalúa las unidades 9 a 12: describir a las personas (look like, be like, the one wearing), el presente perfecto con already y yet, los adverbios de grado y los conectores, y las recomendaciones, sugerencias y peticiones con can, could y should. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "What does your brother ___? — He's tall and he has curly hair.",
+        "options": [
+          "like",
+          "be like",
+          "looks like",
+          "look like"
+        ],
+        "answer": 3,
+        "explain_es": "Para preguntar por la apariencia: What does he look like? Después de does el verbo va en forma base."
+      },
+      {
+        "type": "mc",
+        "q": "Which one is Valentina? — The girl ___ next to the window.",
+        "options": [
+          "sit",
+          "sits",
+          "sitting",
+          "is sitting"
+        ],
+        "answer": 2,
+        "explain_es": "Para identificar a alguien usamos sustantivo + verbo-ing: the girl sitting…"
+      },
+      {
+        "type": "mc",
+        "q": "I've ___ finished my homework. Can I go out now?",
+        "options": [
+          "yet",
+          "already",
+          "ever",
+          "ago"
+        ],
+        "answer": 1,
+        "explain_es": "Already marca algo que ya está hecho; va entre have y el participio."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ Cartagena in 2022. It was beautiful.",
+        "options": [
+          "have visited",
+          "have visit",
+          "visit",
+          "visited"
+        ],
+        "answer": 3,
+        "explain_es": "Con un momento exacto del pasado (in 2022) usamos el pasado simple, no el presente perfecto."
+      },
+      {
+        "type": "mc",
+        "q": "It was raining, ___ we stayed at home.",
+        "options": [
+          "because",
+          "but",
+          "so",
+          "however"
+        ],
+        "answer": 2,
+        "explain_es": "So introduce un resultado: llovía, entonces nos quedamos en casa."
+      },
+      {
+        "type": "mc",
+        "q": "You ___ visit the Gold Museum. It's amazing!",
+        "options": [
+          "should",
+          "should to",
+          "shoulds",
+          "must to"
+        ],
+        "answer": 0,
+        "explain_es": "Should + verbo en forma base, sin to y sin -s."
+      },
+      {
+        "type": "gap",
+        "q": "___ you lend me your umbrella, please? (petición muy cortés)",
+        "answer": "Could",
+        "accept": [
+          "Can"
+        ],
+        "explain_es": "Could hace la petición más cortés: Could you lend me…?"
+      },
+      {
+        "type": "transform",
+        "q": "Make a question with «yet»: She has packed her bag.",
+        "answer": "Has she packed her bag yet?",
+        "explain_es": "Pregunta en presente perfecto: Has + sujeto + participio…, y yet al final."
+      },
+      {
+        "type": "error",
+        "q": "It's a good idea arrive early.",
+        "answer": "It's a good idea to arrive early.",
+        "accept": [
+          "It is a good idea to arrive early."
+        ],
+        "explain_es": "Después de It's a good idea usamos to + verbo."
+      },
+      {
+        "type": "order",
+        "q": "about / how / a / film / watching / ?",
+        "answer": "How about watching a film?",
+        "explain_es": "How about + verbo-ing para sugerir algo."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "My uncle is middle-aged. He's about ___.",
+        "options": [
+          "fifteen",
+          "fifty",
+          "ninety"
+        ],
+        "answer": 1,
+        "explain_es": "Middle-aged = de mediana edad, entre unos cuarenta y sesenta años."
+      },
+      {
+        "type": "mc",
+        "q": "Her hair has no waves at all. It's very ___.",
+        "options": [
+          "curly",
+          "slim",
+          "straight"
+        ],
+        "answer": 2,
+        "explain_es": "Straight hair = pelo liso, sin ondas."
+      },
+      {
+        "type": "gap",
+        "q": "I ___ after my mother: we have the same eyes and the same laugh.",
+        "answer": "take",
+        "explain_es": "Take after = parecerse a un familiar mayor."
+      },
+      {
+        "type": "mc",
+        "q": "Have you ___ the hotel for our trip? (reservar)",
+        "options": [
+          "booked",
+          "packed",
+          "run"
+        ],
+        "answer": 0,
+        "explain_es": "Book = reservar un hotel, una mesa o un tiquete."
+      },
+      {
+        "type": "mc",
+        "q": "We've run ___ of milk. Can you buy some?",
+        "options": [
+          "off",
+          "out",
+          "away"
+        ],
+        "answer": 1,
+        "explain_es": "Run out of = quedarse sin algo."
+      },
+      {
+        "type": "mc",
+        "q": "The tour was expensive, but it was really ___ it.",
+        "options": [
+          "good",
+          "cost",
+          "worth"
+        ],
+        "answer": 2,
+        "explain_es": "Worth it = vale la pena."
+      },
+      {
+        "type": "gap",
+        "q": "The museum was ___ good, but it wasn't excellent. (bastante)",
+        "answer": "quite",
+        "accept": [
+          "pretty"
+        ],
+        "explain_es": "Quite (o pretty) = bastante, un grado medio."
+      },
+      {
+        "type": "mc",
+        "q": "Can I ___ your pen? I'll give it back in five minutes.",
+        "options": [
+          "lend",
+          "borrow",
+          "give"
+        ],
+        "answer": 1,
+        "explain_es": "Borrow = pedir prestado (yo lo recibo). Lend = prestar (yo lo doy)."
+      },
+      {
+        "type": "mc",
+        "q": "Can you do me a ___? I need help with my computer.",
+        "options": [
+          "favour",
+          "idea",
+          "plan"
+        ],
+        "answer": 0,
+        "explain_es": "Do someone a favour = hacerle un favor a alguien."
+      },
+      {
+        "type": "gap",
+        "q": "I don't like football much. I ___ basketball. (preferir)",
+        "answer": "prefer",
+        "explain_es": "Prefer = preferir, gustar más una opción que otra."
+      }
+    ],
+    "reading": {
+      "title": "Your Weekend in Medellín",
+      "genre": "email",
+      "paragraphs": [
+        "Hi Josh,",
+        "Great news: I've already booked your room at a small hotel in Laureles! Have you packed your bag yet? Medellín is quite warm, so you should bring T-shirts and a light jacket for the evenings.",
+        "I can't meet you at the airport on Friday because I have an exam, but my brother Simón can. He's tall and slim, and he has a short beard. Look for the man wearing a green football shirt and holding a sign with your name.",
+        "On Saturday, why don't we take the metro cable to Parque Arví? It's really beautiful and not very expensive. In the evening we could have dinner at my aunt's restaurant. Her bandeja paisa is extremely good. It's worth it!",
+        "It's a good idea to change some money at the airport, but you can pay by card almost everywhere.",
+        "See you soon,",
+        "Camila"
+      ],
+      "glossary": [
+        [
+          "light jacket",
+          "chaqueta delgada"
+        ],
+        [
+          "beard",
+          "barba"
+        ],
+        [
+          "holding a sign",
+          "sosteniendo un letrero"
+        ],
+        [
+          "metro cable",
+          "metrocable"
+        ],
+        [
+          "change some money",
+          "cambiar algo de dinero"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "tf",
+          "q": "Camila has already booked Josh's room.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «I've already booked your room»."
+        },
+        {
+          "type": "mc",
+          "q": "Why can't Camila go to the airport?",
+          "options": [
+            "She is working.",
+            "She has an exam.",
+            "She is on holiday."
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «I can't meet you at the airport on Friday because I have an exam»."
+        },
+        {
+          "type": "mc",
+          "q": "What does Simón look like?",
+          "options": [
+            "short with curly hair",
+            "middle-aged with a moustache",
+            "tall and slim with a short beard"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «He's tall and slim, and he has a short beard»."
+        },
+        {
+          "type": "gap",
+          "q": "At the airport, Josh should look for a man in a ___ football shirt.",
+          "answer": "green",
+          "explain_es": "El texto dice: «Look for the man wearing a green football shirt»."
+        },
+        {
+          "type": "mc",
+          "q": "What does Camila suggest for Saturday?",
+          "options": [
+            "taking the metro cable to Parque Arví",
+            "visiting her aunt's house",
+            "changing money in the city"
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: «On Saturday, why don't we take the metro cable to Parque Arví?»."
+        },
+        {
+          "type": "tf",
+          "q": "Camila says Josh can't pay by card in Medellín.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «you can pay by card almost everywhere»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A Birthday Surprise",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Nadia",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Ben",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Ben, it's Olivia's birthday on Friday. Have you bought her a present yet?"
+        },
+        {
+          "s": 1,
+          "text": "No, not yet. Have you got any ideas?"
+        },
+        {
+          "s": 0,
+          "text": "Why don't we buy her a plant? She loves plants."
+        },
+        {
+          "s": 1,
+          "text": "Good idea. I've already seen a nice one at the market. It's quite big, though."
+        },
+        {
+          "s": 0,
+          "text": "That's fine. And how about having a small party in the office?"
+        },
+        {
+          "s": 1,
+          "text": "Sure. We could order a cake from the bakery on the corner. Their chocolate cake is really good."
+        },
+        {
+          "s": 0,
+          "text": "Perfect. Could you call them this afternoon? I'm extremely busy today."
+        },
+        {
+          "s": 1,
+          "text": "No problem. Should we invite the people from the second floor too?"
+        },
+        {
+          "s": 0,
+          "text": "Yes, let's invite them. Olivia works with them a lot."
+        },
+        {
+          "s": 1,
+          "text": "OK. Can I borrow your phone? Mine has run out of battery."
+        },
+        {
+          "s": 0,
+          "text": "Of course. Here you are."
+        }
+      ],
+      "questions": [
+        {
+          "type": "tf",
+          "q": "Ben has already bought a present for Olivia.",
+          "answer": "F",
+          "explain_es": "Falso. Ben dice: «No, not yet»."
+        },
+        {
+          "type": "mc",
+          "q": "What present do they decide to buy?",
+          "options": [
+            "a book",
+            "flowers",
+            "a cake",
+            "a plant"
+          ],
+          "answer": 3,
+          "explain_es": "Nadia dice: «Why don't we buy her a plant?» y Ben responde «Good idea»."
+        },
+        {
+          "type": "gap",
+          "q": "Olivia's birthday is on ___.",
+          "answer": "Friday",
+          "explain_es": "Nadia dice: «it's Olivia's birthday on Friday»."
+        },
+        {
+          "type": "mc",
+          "q": "Who is going to call the bakery?",
+          "options": [
+            "Nadia",
+            "Olivia",
+            "Ben"
+          ],
+          "answer": 2,
+          "explain_es": "Nadia pregunta «Could you call them this afternoon?» y Ben responde «No problem»."
+        },
+        {
+          "type": "mc",
+          "q": "Why does Ben need Nadia's phone?",
+          "options": [
+            "His phone has no battery.",
+            "He lost his phone.",
+            "He wants to take a photo."
+          ],
+          "answer": 0,
+          "explain_es": "Ben dice: «Mine has run out of battery»."
+        },
+        {
+          "type": "tf",
+          "q": "They decide to invite the people from the second floor.",
+          "answer": "T",
+          "explain_es": "Verdadero. Nadia dice: «Yes, let's invite them»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "A friend from another country is coming to your city for a weekend. Write an email with recommendations: what they should see and do, what they need to bring, and one activity you can do together.",
+      "prompt_es": "Escribe un correo a un amigo que viene a tu ciudad con recomendaciones y una sugerencia para hacer algo juntos.",
+      "genre_es": "Correo de recomendaciones",
+      "minWords": 50,
+      "maxWords": 80,
+      "criteria": [
+        "Give recommendations with should / shouldn't and can.",
+        "Use It's a good idea to… or You need to… + verb.",
+        "Make one suggestion with Why don't we…? / How about + -ing? / We could…",
+        "Use degree adverbs (really, quite, extremely) and connect ideas with so, because or but."
+      ],
+      "model": "Hi Lena,\nI'm so happy you're coming to Bucaramanga! You should visit the Chicamocha Canyon. It's really amazing. You need to bring comfortable shoes because we're going to walk a lot. It's quite hot here, so it's a good idea to bring a hat. On Saturday night, why don't we go to a typical restaurant? I've already booked a table!\nSee you soon,\nPablo"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Describe a person in your family: what he or she looks like and what he or she is like.",
+          "text_es": "Describe a una persona de tu familia: cómo es físicamente y cómo es su personalidad.",
+          "seconds": 60,
+          "tips": [
+            "She's tall and slim, with long straight hair.",
+            "He's really friendly and quite funny.",
+            "I take after my…"
+          ]
+        },
+        {
+          "text": "Talk about this week: say three things you have already done and two things you haven't done yet.",
+          "text_es": "Habla de esta semana: tres cosas que ya hiciste y dos que todavía no has hecho.",
+          "seconds": 60,
+          "tips": [
+            "I've already…",
+            "I haven't … yet.",
+            "I've just…"
+          ]
+        },
+        {
+          "text": "Role-play: plan a Saturday with a friend. Make suggestions, ask for a favour and give a recommendation with should.",
+          "text_es": "Juego de roles: planea un sábado con un amigo. Haz sugerencias, pide un favor y da una recomendación con should.",
+          "seconds": 60,
+          "tips": [
+            "Why don't we…? / How about…?",
+            "Could you…, please?",
+            "We should… because…"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a1-m4",
+    "level": "A1",
+    "kind": "midterm",
+    "n": 4,
+    "units": [
+      13,
+      14,
+      15,
+      16
+    ],
+    "title": "Parcial 4 · Unidades 13–16",
+    "intro_es": "Evalúa las unidades 13 a 16: estar de acuerdo o no (so, neither, too, either), las peticiones con would, los superlativos y las preguntas de medidas, los planes con be going to y el presente continuo, los mensajes con tell y say, used to y los verbos + infinitivo. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "I'm not hungry. — ___ am I.",
+        "options": [
+          "So",
+          "Either",
+          "Too",
+          "Neither"
+        ],
+        "answer": 3,
+        "explain_es": "Para estar de acuerdo con una frase negativa: Neither + be + sujeto."
+      },
+      {
+        "type": "mc",
+        "q": "I don't like spicy food. — I don't like it ___.",
+        "options": [
+          "too",
+          "neither",
+          "either",
+          "so"
+        ],
+        "answer": 2,
+        "explain_es": "Al final de una frase negativa usamos either: I don't … either."
+      },
+      {
+        "type": "mc",
+        "q": "Would you mind ___ the door, please?",
+        "options": [
+          "close",
+          "to close",
+          "closing",
+          "closed"
+        ],
+        "answer": 2,
+        "explain_es": "Después de Would you mind… el verbo va en -ing."
+      },
+      {
+        "type": "mc",
+        "q": "Pico Cristóbal Colón is the ___ mountain in Colombia.",
+        "options": [
+          "highest",
+          "higher",
+          "most high",
+          "more high"
+        ],
+        "answer": 0,
+        "explain_es": "Superlativo de un adjetivo corto: the + -est → the highest."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ is the Magdalena River? — About 1,500 kilometres.",
+        "options": [
+          "high",
+          "deep",
+          "far",
+          "long"
+        ],
+        "answer": 3,
+        "explain_es": "Para preguntar por la longitud: How long…?"
+      },
+      {
+        "type": "mc",
+        "q": "We ___ our cousins in Santa Marta next weekend. We have the tickets.",
+        "options": [
+          "visit",
+          "are visiting",
+          "visited",
+          "have visited"
+        ],
+        "answer": 1,
+        "explain_es": "Un plan fijo y ya organizado (tenemos los tiquetes) → presente continuo."
+      },
+      {
+        "type": "gap",
+        "q": "Can you ___ me your email address again? (tell / say)",
+        "answer": "tell",
+        "explain_es": "Tell lleva a la persona justo después (tell me); say no."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with «used to»: I played the guitar as a child, but I don't play now.",
+        "answer": "I used to play the guitar.",
+        "accept": [
+          "I used to play the guitar as a child.",
+          "I used to play the guitar when I was a child."
+        ],
+        "explain_es": "Used to + verbo base para un hábito pasado que ya terminó."
+      },
+      {
+        "type": "error",
+        "q": "I hope visit Japan one day.",
+        "answer": "I hope to visit Japan one day.",
+        "explain_es": "Hope va seguido de to + verbo: hope to visit."
+      },
+      {
+        "type": "order",
+        "q": "the / is / biggest / by / city / far / Bogotá / .",
+        "answer": "Bogotá is by far the biggest city.",
+        "explain_es": "By far va antes del superlativo para hacerlo más fuerte."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "«This film is great.» — «I ___. I think it's boring.»",
+        "options": [
+          "agree",
+          "disagree",
+          "mind"
+        ],
+        "answer": 1,
+        "explain_es": "Disagree = no estar de acuerdo."
+      },
+      {
+        "type": "mc",
+        "q": "The opposite of «dry» weather is ___ weather.",
+        "options": [
+          "humid",
+          "deep",
+          "high"
+        ],
+        "answer": 0,
+        "explain_es": "Dry = seco; humid = húmedo."
+      },
+      {
+        "type": "gap",
+        "q": "Colombia has a ___ of about fifty-two million people.",
+        "answer": "population",
+        "explain_es": "Population = número de habitantes."
+      },
+      {
+        "type": "mc",
+        "q": "Sorry, I'm ___ late. I'll be there in ten minutes.",
+        "options": [
+          "running",
+          "being",
+          "going"
+        ],
+        "answer": 0,
+        "explain_es": "Be running late = ir con retraso."
+      },
+      {
+        "type": "mc",
+        "q": "The Atacama is a very dry ___ in Chile.",
+        "options": [
+          "rainforest",
+          "coast",
+          "desert"
+        ],
+        "answer": 2,
+        "explain_es": "Desert = desierto, una región muy seca."
+      },
+      {
+        "type": "gap",
+        "q": "Can you ___ me to buy bread on the way home? I always forget.",
+        "answer": "remind",
+        "explain_es": "Remind = recordarle algo a alguien."
+      },
+      {
+        "type": "mc",
+        "q": "Ms. Torres is in a meeting. Would you like to leave a ___?",
+        "options": [
+          "message",
+          "appointment",
+          "goal"
+        ],
+        "answer": 0,
+        "explain_es": "Leave a message = dejar un mensaje."
+      },
+      {
+        "type": "mc",
+        "q": "I'm really looking forward ___ the holidays.",
+        "options": [
+          "for",
+          "to",
+          "at"
+        ],
+        "answer": 1,
+        "explain_es": "Look forward to = esperar algo con ilusión."
+      },
+      {
+        "type": "mc",
+        "q": "___, most people pay with their phones. Twenty years ago, they paid with cash.",
+        "options": [
+          "Back then",
+          "Ago",
+          "Nowadays"
+        ],
+        "answer": 2,
+        "explain_es": "Nowadays = hoy en día, en contraste con el pasado."
+      },
+      {
+        "type": "gap",
+        "q": "I grew ___ in a small town near Tunja.",
+        "answer": "up",
+        "explain_es": "Grow up = crecer, pasar la infancia en un lugar."
+      }
+    ],
+    "reading": {
+      "title": "Salento, Then and Now",
+      "genre": "interview",
+      "paragraphs": [
+        "Hernán Gómez is sixty-eight years old. He grew up in Salento, a small town in the coffee region. We asked him how life has changed.",
+        "How was Salento when you were a child? — It was very quiet. There used to be only one bus a day to Armenia, and nobody had a car. My family used to grow coffee and bananas.",
+        "And nowadays? — Nowadays there are a lot of tourists. At the weekend it's by far the busiest town in the area. Some people don't like it, but I don't mind. The tourists are friendly, and my daughter has opened a small hotel.",
+        "What are your plans? — Next month I'm visiting my son in Medellín. He's going to show me his new apartment. And I hope to learn some English, so I can talk to the visitors!"
+      ],
+      "glossary": [
+        [
+          "grew up",
+          "creció"
+        ],
+        [
+          "nobody",
+          "nadie"
+        ],
+        [
+          "to grow",
+          "cultivar"
+        ],
+        [
+          "the busiest",
+          "el más concurrido"
+        ],
+        [
+          "I don't mind",
+          "no me molesta"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Where did Hernán grow up?",
+          "options": [
+            "Armenia",
+            "Salento",
+            "Medellín"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «He grew up in Salento»."
+        },
+        {
+          "type": "tf",
+          "q": "When Hernán was a child, there were a lot of buses to Armenia.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «There used to be only one bus a day to Armenia»."
+        },
+        {
+          "type": "gap",
+          "q": "Hernán's family used to grow coffee and ___.",
+          "answer": "bananas",
+          "explain_es": "El texto dice: «My family used to grow coffee and bananas»."
+        },
+        {
+          "type": "mc",
+          "q": "How does Hernán feel about the tourists?",
+          "options": [
+            "He hates them.",
+            "He doesn't mind them.",
+            "He is afraid of them."
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «Some people don't like it, but I don't mind. The tourists are friendly»."
+        },
+        {
+          "type": "mc",
+          "q": "What has his daughter done?",
+          "options": [
+            "moved to Medellín",
+            "learned English",
+            "opened a small hotel"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «my daughter has opened a small hotel»."
+        },
+        {
+          "type": "tf",
+          "q": "Hernán is visiting his son next month.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «Next month I'm visiting my son in Medellín»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A Message for the Dentist",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Helen",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Andrés",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good morning, Smile Dental Clinic. How can I help you?"
+        },
+        {
+          "s": 1,
+          "text": "Hello. I'd like to speak to Doctor Moreno, please."
+        },
+        {
+          "s": 0,
+          "text": "I'm sorry, she's busy at the moment. Would you like to leave a message?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, please. My name is Andrés Vega. I have an appointment tomorrow at nine."
+        },
+        {
+          "s": 0,
+          "text": "Let me see. Yes, Andrés Vega, nine o'clock."
+        },
+        {
+          "s": 1,
+          "text": "Could you tell her I'm going to be a little late? I'm taking my daughter to school first."
+        },
+        {
+          "s": 0,
+          "text": "Of course. What time can you arrive?"
+        },
+        {
+          "s": 1,
+          "text": "Around half past nine. Is that a problem?"
+        },
+        {
+          "s": 0,
+          "text": "No, I don't think so. Could you give me your phone number, please?"
+        },
+        {
+          "s": 1,
+          "text": "Sure. It's three one two, four four eight, six nine zero one."
+        },
+        {
+          "s": 0,
+          "text": "Thank you. I'll ask her to call you back this afternoon."
+        },
+        {
+          "s": 1,
+          "text": "Great. Thank you very much. Goodbye."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why can't Andrés speak to Doctor Moreno?",
+          "options": [
+            "She is on holiday.",
+            "She is busy.",
+            "She is ill."
+          ],
+          "answer": 1,
+          "explain_es": "La recepcionista dice: «she's busy at the moment»."
+        },
+        {
+          "type": "gap",
+          "q": "Andrés's appointment is tomorrow at ___.",
+          "answer": "nine",
+          "accept": [
+            "9",
+            "9:00",
+            "nine o'clock"
+          ],
+          "explain_es": "Andrés dice: «I have an appointment tomorrow at nine»."
+        },
+        {
+          "type": "mc",
+          "q": "Why is Andrés going to be late?",
+          "options": [
+            "He is taking his daughter to school.",
+            "His car is broken.",
+            "He has a meeting at work."
+          ],
+          "answer": 0,
+          "explain_es": "Andrés dice: «I'm taking my daughter to school first»."
+        },
+        {
+          "type": "tf",
+          "q": "Andrés wants to cancel his appointment.",
+          "answer": "F",
+          "explain_es": "Falso. Solo va a llegar tarde: «Could you tell her I'm going to be a little late?»."
+        },
+        {
+          "type": "mc",
+          "q": "When will Doctor Moreno call him back?",
+          "options": [
+            "this morning",
+            "tomorrow at nine",
+            "this afternoon"
+          ],
+          "answer": 2,
+          "explain_es": "La recepcionista dice: «I'll ask her to call you back this afternoon»."
+        },
+        {
+          "type": "tf",
+          "q": "The receptionist asks for Andrés's phone number.",
+          "answer": "T",
+          "explain_es": "Verdadero. Ella dice: «Could you give me your phone number, please?»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a short text about how your life has changed. Compare your life five years ago with your life now, and say what you plan to do in the future.",
+      "prompt_es": "Escribe un texto corto comparando tu vida hace cinco años con tu vida de hoy y cuenta tus planes para el futuro.",
+      "genre_es": "Texto personal",
+      "minWords": 50,
+      "maxWords": 80,
+      "criteria": [
+        "Talk about the past with used to and the past simple.",
+        "Talk about now with the present simple and the present perfect.",
+        "Talk about the future with be going to, hope to or would like to.",
+        "Make one comparison (busier than, more … than, the best)."
+      ],
+      "model": "Five years ago I lived in Sogamoso with my parents. I used to walk to school, and I didn't speak any English. Now I live in Tunja and I work in a bank. My life is busier than before, but I've made a lot of new friends. Next year I'm going to start a course in tourism, and one day I hope to travel to Canada."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about your childhood: where you grew up, what you used to do after school and what you didn't use to like.",
+          "text_es": "Habla de tu infancia: dónde creciste, qué solías hacer después del colegio y qué no te gustaba.",
+          "seconds": 60,
+          "tips": [
+            "I grew up in…",
+            "I used to… every afternoon.",
+            "I didn't use to like…"
+          ]
+        },
+        {
+          "text": "Describe the most interesting natural place in your region. Say how big, high or long it is and compare it with another place.",
+          "text_es": "Describe el lugar natural más interesante de tu región: tamaño, altura o longitud, y compáralo con otro lugar.",
+          "seconds": 60,
+          "tips": [
+            "It's the highest / the most beautiful…",
+            "It's about … metres high.",
+            "It's bigger than…"
+          ]
+        },
+        {
+          "text": "Give your opinion: is life better nowadays than when your parents were young? Give two reasons with I think or I don't think.",
+          "text_es": "Da tu opinión: ¿la vida es mejor hoy que cuando tus papás eran jóvenes? Da dos razones con I think / I don't think.",
+          "seconds": 60,
+          "tips": [
+            "I think life is better nowadays because…",
+            "Back then, people used to…",
+            "I don't think… but…"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a1-final",
+    "level": "A1",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "title": "Parcial final · Nivel A1",
+    "intro_es": "Evalúa todo el nivel A1, de la unidad 1 a la 16: to be y el presente simple, el presente continuo, el pasado, el presente perfecto, comparativos y superlativos, recomendaciones y sugerencias y los planes para el futuro. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 80,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "___ your parents teachers? — Yes, they are.",
+        "options": [
+          "Is",
+          "Does",
+          "Do",
+          "Are"
+        ],
+        "answer": 3,
+        "explain_es": "Your parents = they → Are they…? La respuesta corta también lo dice: they are."
+      },
+      {
+        "type": "mc",
+        "q": "My brother ___ TV in the morning.",
+        "options": [
+          "doesn't watch",
+          "don't watch",
+          "not watches",
+          "isn't watch"
+        ],
+        "answer": 0,
+        "explain_es": "Negativo del presente simple con he: doesn't + verbo base."
+      },
+      {
+        "type": "mc",
+        "q": "___ shoes over there are really cheap.",
+        "options": [
+          "These",
+          "This",
+          "Those",
+          "That"
+        ],
+        "answer": 2,
+        "explain_es": "Lejos (over there) y plural (shoes) → those."
+      },
+      {
+        "type": "mc",
+        "q": "I'd like ___ you to my birthday party.",
+        "options": [
+          "invite",
+          "to invite",
+          "inviting"
+        ],
+        "answer": 1,
+        "explain_es": "Would like + to + verbo: I'd like to invite…"
+      },
+      {
+        "type": "mc",
+        "q": "Look outside! It ___ again.",
+        "options": [
+          "rains",
+          "rain",
+          "raining",
+          "is raining"
+        ],
+        "answer": 3,
+        "explain_es": "Algo que pasa ahora mismo (Look outside!) → presente continuo: is raining."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ does your sister play the piano? — Very well.",
+        "options": [
+          "often",
+          "well",
+          "long",
+          "much"
+        ],
+        "answer": 1,
+        "explain_es": "La respuesta Very well indica que se pregunta por la habilidad: How well…?"
+      },
+      {
+        "type": "mc",
+        "q": "Where ___ you yesterday afternoon? — At the dentist's.",
+        "options": [
+          "did",
+          "was",
+          "were",
+          "are"
+        ],
+        "answer": 2,
+        "explain_es": "Pasado de be con you → were."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ chairs are there in the classroom?",
+        "options": [
+          "much",
+          "lot",
+          "few",
+          "many"
+        ],
+        "answer": 3,
+        "explain_es": "Chairs es contable y plural → How many…?"
+      },
+      {
+        "type": "mc",
+        "q": "Have you ___ been to San Andrés? — No, never.",
+        "options": [
+          "ever",
+          "yet",
+          "already",
+          "just"
+        ],
+        "answer": 0,
+        "explain_es": "Ever = alguna vez, para preguntar por experiencias."
+      },
+      {
+        "type": "mc",
+        "q": "My sister likes coffee. — So ___ I.",
+        "options": [
+          "am",
+          "did",
+          "does",
+          "do"
+        ],
+        "answer": 3,
+        "explain_es": "El auxiliar repite el tiempo de la primera frase (presente simple) y concuerda con I: So do I."
+      },
+      {
+        "type": "gap",
+        "q": "Caño Cristales is one of the ___ rivers in the world. (beautiful)",
+        "answer": "most beautiful",
+        "explain_es": "Beautiful es largo: superlativo con the most → the most beautiful."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with «be going to»: My plan is to buy a bike next month.",
+        "answer": "I'm going to buy a bike next month.",
+        "accept": [
+          "I am going to buy a bike next month."
+        ],
+        "explain_es": "Be going to + verbo base expresa un plan o intención."
+      },
+      {
+        "type": "error",
+        "q": "What is your new boss look like?",
+        "answer": "What does your new boss look like?",
+        "explain_es": "Look like es un verbo normal: la pregunta usa does, no is."
+      },
+      {
+        "type": "order",
+        "q": "we / why / take / don't / a / taxi / ?",
+        "answer": "Why don't we take a taxi?",
+        "explain_es": "Why don't we + verbo base para sugerir algo."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Sofía doesn't have a husband. She's ___.",
+        "options": [
+          "single",
+          "married",
+          "nice"
+        ],
+        "answer": 0,
+        "explain_es": "Single = soltera, sin pareja."
+      },
+      {
+        "type": "gap",
+        "q": "I eat ___ at about one o'clock with my colleagues.",
+        "answer": "lunch",
+        "explain_es": "Lunch = almuerzo, la comida del mediodía."
+      },
+      {
+        "type": "mc",
+        "q": "These shoes are very ___. I can walk all day in them.",
+        "options": [
+          "crowded",
+          "heavy",
+          "comfortable",
+          "expensive"
+        ],
+        "answer": 2,
+        "explain_es": "Comfortable = cómodo."
+      },
+      {
+        "type": "mc",
+        "q": "Let's ___ at the café at five, OK?",
+        "options": [
+          "give",
+          "meet",
+          "order"
+        ],
+        "answer": 1,
+        "explain_es": "Meet = encontrarse con alguien en un lugar."
+      },
+      {
+        "type": "gap",
+        "q": "My father's parents are my ___.",
+        "answer": "grandparents",
+        "explain_es": "Los papás de tus papás son tus grandparents (abuelos)."
+      },
+      {
+        "type": "mc",
+        "q": "I'm really ___ photography. I take photos every day.",
+        "options": [
+          "into",
+          "good",
+          "free"
+        ],
+        "answer": 0,
+        "explain_es": "Be into something = estar muy interesado en algo."
+      },
+      {
+        "type": "mc",
+        "q": "What ___ at the meeting? Tell me everything!",
+        "options": [
+          "arrived",
+          "stayed",
+          "happened"
+        ],
+        "answer": 2,
+        "explain_es": "Happen = pasar, ocurrir."
+      },
+      {
+        "type": "mc",
+        "q": "We have a new sofa, a table and four chairs. We bought all the ___ last month.",
+        "options": [
+          "block",
+          "furniture",
+          "corner"
+        ],
+        "answer": 1,
+        "explain_es": "Furniture = muebles (incontable)."
+      },
+      {
+        "type": "mc",
+        "q": "He has hair above his mouth. He has a ___.",
+        "options": [
+          "beard",
+          "moustache",
+          "curly"
+        ],
+        "answer": 1,
+        "explain_es": "Moustache = bigote (encima de la boca). Beard = barba (en el mentón)."
+      },
+      {
+        "type": "gap",
+        "q": "I've ___ arrived, only a minute ago.",
+        "answer": "just",
+        "explain_es": "Just = hace muy poco tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "The hotel was nice. The breakfast was bad, ___.",
+        "options": [
+          "so",
+          "though",
+          "because"
+        ],
+        "answer": 1,
+        "explain_es": "Though al final de la frase = sin embargo (informal)."
+      },
+      {
+        "type": "mc",
+        "q": "I don't want pizza tonight. Let's have sushi ___.",
+        "options": [
+          "instead",
+          "maybe",
+          "prefer"
+        ],
+        "answer": 0,
+        "explain_es": "Instead = en lugar de lo otro."
+      },
+      {
+        "type": "mc",
+        "q": "I can't talk now. Can I call you ___ later?",
+        "options": [
+          "up",
+          "on",
+          "back"
+        ],
+        "answer": 2,
+        "explain_es": "Call back = devolver la llamada."
+      },
+      {
+        "type": "gap",
+        "q": "My ___ for this year is to read twelve books.",
+        "answer": "goal",
+        "explain_es": "Goal = meta, algo que quieres lograr."
+      }
+    ],
+    "reading": {
+      "title": "From the Mountains to the Amazon",
+      "genre": "article",
+      "paragraphs": [
+        "Two years ago, Juliana Mejía was a busy teacher in Bogotá. She used to get up at five, take two buses to work and get home at eight. «I was always tired,» she says.",
+        "Then she saw a job at a small school in Leticia, in the Amazon rainforest, and she decided to apply. «My friends thought I was crazy,» she laughs.",
+        "Life in Leticia is very different. The town is much smaller and hotter than Bogotá, and it's extremely humid. There aren't many cars, but there are a lot of boats on the river. Juliana usually walks to school, and she has lunch at home every day.",
+        "She has already learned some Portuguese, because Brazil is very close, and she has made a lot of new friends. «Nowadays I'm happier and healthier,» she says.",
+        "Right now she is planning a trip down the river with her students. Next year she hopes to write a book about the children of the Amazon."
+      ],
+      "glossary": [
+        [
+          "to apply",
+          "postularse, presentarse"
+        ],
+        [
+          "crazy",
+          "loco"
+        ],
+        [
+          "boats",
+          "botes, lanchas"
+        ],
+        [
+          "very close",
+          "muy cerca"
+        ],
+        [
+          "healthier",
+          "más saludable"
+        ],
+        [
+          "down the river",
+          "río abajo"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What was Juliana's job in Bogotá?",
+          "options": [
+            "nurse",
+            "teacher",
+            "bus driver"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «Juliana Mejía was a busy teacher in Bogotá»."
+        },
+        {
+          "type": "tf",
+          "q": "In Bogotá, Juliana used to get home at eight.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «She used to get up at five, take two buses to work and get home at eight»."
+        },
+        {
+          "type": "mc",
+          "q": "What did her friends think?",
+          "options": [
+            "that it was a good idea",
+            "that she was tired",
+            "that she was crazy"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «My friends thought I was crazy»."
+        },
+        {
+          "type": "gap",
+          "q": "Leticia is smaller and ___ than Bogotá.",
+          "answer": "hotter",
+          "explain_es": "El texto dice: «The town is much smaller and hotter than Bogotá»."
+        },
+        {
+          "type": "tf",
+          "q": "There are a lot of cars in Leticia.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «There aren't many cars, but there are a lot of boats»."
+        },
+        {
+          "type": "mc",
+          "q": "Why has she learned some Portuguese?",
+          "options": [
+            "Brazil is very close.",
+            "Her students speak it at school.",
+            "She studied it in Bogotá."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: «She has already learned some Portuguese, because Brazil is very close»."
+        },
+        {
+          "type": "gap",
+          "q": "Right now she is planning a trip down the ___ with her students.",
+          "answer": "river",
+          "explain_es": "El texto dice: «Right now she is planning a trip down the river with her students»."
+        },
+        {
+          "type": "mc",
+          "q": "What does she hope to do next year?",
+          "options": [
+            "go back to Bogotá",
+            "write a book",
+            "open a school"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «Next year she hopes to write a book about the children of the Amazon»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Young Voices: A Cyclist from Duitama",
+      "kind": "interview",
+      "speakers": [
+        {
+          "name": "Rachel",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Tomás",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good evening and welcome to Young Voices. Today I'm talking to Tomás Rojas, a cyclist from Duitama. Hi, Tomás!"
+        },
+        {
+          "s": 1,
+          "text": "Hi, Rachel. Thanks for having me."
+        },
+        {
+          "s": 0,
+          "text": "How old were you when you started cycling?"
+        },
+        {
+          "s": 1,
+          "text": "I was eight. My uncle gave me an old bike, and I used to ride it to school every day."
+        },
+        {
+          "s": 0,
+          "text": "And how often do you train now?"
+        },
+        {
+          "s": 1,
+          "text": "Six days a week. I usually get up at half past four and ride for about four hours."
+        },
+        {
+          "s": 0,
+          "text": "Wow! What's the hardest part of your job?"
+        },
+        {
+          "s": 1,
+          "text": "The mountains, of course. But they're also the most beautiful part."
+        },
+        {
+          "s": 0,
+          "text": "Have you ever won a big race?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, I have. I won the national championship last year. It was the best day of my life."
+        },
+        {
+          "s": 0,
+          "text": "What are your plans for this year?"
+        },
+        {
+          "s": 1,
+          "text": "I'm going to race in France in July. I'm really looking forward to it."
+        },
+        {
+          "s": 0,
+          "text": "Good luck, Tomás. Thanks for talking to us."
+        },
+        {
+          "s": 1,
+          "text": "Thank you, Rachel. Bye!"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Where is Tomás from?",
+          "options": [
+            "Duitama",
+            "Tunja",
+            "France"
+          ],
+          "answer": 0,
+          "explain_es": "Rachel dice: «Tomás Rojas, a cyclist from Duitama»."
+        },
+        {
+          "type": "gap",
+          "q": "Tomás started cycling when he was ___.",
+          "answer": "eight",
+          "accept": [
+            "8"
+          ],
+          "explain_es": "Tomás dice: «I was eight»."
+        },
+        {
+          "type": "mc",
+          "q": "Who gave him his first bike?",
+          "options": [
+            "his father",
+            "his uncle",
+            "his teacher"
+          ],
+          "answer": 1,
+          "explain_es": "Tomás dice: «My uncle gave me an old bike»."
+        },
+        {
+          "type": "tf",
+          "q": "Tomás trains seven days a week.",
+          "answer": "F",
+          "explain_es": "Falso. Tomás dice: «Six days a week»."
+        },
+        {
+          "type": "gap",
+          "q": "He usually gets up at half past ___.",
+          "answer": "four",
+          "accept": [
+            "4"
+          ],
+          "explain_es": "Tomás dice: «I usually get up at half past four»."
+        },
+        {
+          "type": "mc",
+          "q": "What is the hardest part of his job?",
+          "options": [
+            "the heat",
+            "getting up early",
+            "the mountains"
+          ],
+          "answer": 2,
+          "explain_es": "Tomás dice: «The mountains, of course»."
+        },
+        {
+          "type": "tf",
+          "q": "Tomás won the national championship last year.",
+          "answer": "T",
+          "explain_es": "Verdadero. Tomás dice: «I won the national championship last year»."
+        },
+        {
+          "type": "mc",
+          "q": "When is he going to race in France?",
+          "options": [
+            "in June",
+            "in July",
+            "next year"
+          ],
+          "answer": 1,
+          "explain_es": "Tomás dice: «I'm going to race in France in July»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a short profile of yourself for the website of your English course. Say who you are, describe your routine, tell us about an experience you have had, and explain your plans for the future.",
+      "prompt_es": "Escribe tu perfil para la página del curso: quién eres, tu rutina, una experiencia y tus planes.",
+      "genre_es": "Perfil personal",
+      "minWords": 50,
+      "maxWords": 80,
+      "criteria": [
+        "Describe your routine with the present simple and adverbs of frequency.",
+        "Tell an experience with the present perfect (I've visited…) or the past simple.",
+        "Use one comparative or superlative (harder than, the best).",
+        "Talk about the future with be going to, hope to or would like to."
+      ],
+      "model": "Hi! I'm Natalia, I'm twenty-three and I'm from Popayán. I work in a bakery, so I always get up very early. In my free time I usually go running. I've visited three countries, and the best was Peru. Machu Picchu was amazing! English is harder than I thought, but I really enjoy it. Next year I'm going to take a course in Canada, and I hope to make new friends there."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Introduce yourself fully: your name, age, family, job or studies, and your daily routine.",
+          "text_es": "Preséntate completo: nombre, edad, familia, trabajo o estudios y tu rutina diaria.",
+          "seconds": 75,
+          "tips": [
+            "I'm … and I'm from…",
+            "I usually get up at…",
+            "My sister is… Her job is…"
+          ]
+        },
+        {
+          "text": "Tell the story of a special day in your past, like a trip, a party or a first day at work. Then say how your life has changed since then.",
+          "text_es": "Cuenta un día especial de tu pasado (un viaje, una fiesta, un primer día) y di cómo ha cambiado tu vida desde entonces.",
+          "seconds": 75,
+          "tips": [
+            "Three years ago I went to…",
+            "It was the best day because…",
+            "Since then I've…"
+          ]
+        },
+        {
+          "text": "Give your opinion: is it better to live in a big city or in a small town? Compare them and say where you hope to live in the future.",
+          "text_es": "Da tu opinión: ¿es mejor vivir en una ciudad grande o en un pueblo? Compáralos y di dónde esperas vivir en el futuro.",
+          "seconds": 75,
+          "tips": [
+            "I think a small town is quieter than…",
+            "The best thing about a big city is…",
+            "In the future I hope to live in…"
+          ]
+        }
+      ]
+    }
+  }
+]

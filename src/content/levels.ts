@@ -117,7 +117,16 @@ export const loadJeopardy = () =>
   memo<JeopardyTopic[]>('jeopardy', () => import('./generated/jeopardy-topics.json'));
 export const loadTravelGuides = () =>
   memo<TravelGuide[]>('travel', () => import('./generated/travel-guides.json'));
-export const loadVerbLab = () => memo<VerbLabData>('verblab', () => import('./generated/verb-lab.json'));
+type VerbExamples = Record<string, { base?: string; past?: string; part?: string }>;
+/** The Verb Lab bank plus the everyday verbs added later (verb-lab-extra.json: watch, call, decide…). */
+export const loadVerbLab = () =>
+  memo<VerbLabData>('verblab', () =>
+    Promise.all([import('./generated/verb-lab.json'), import('./generated/verb-lab-extra.json')]).then(([bank, extra]) => {
+      const b = bank.default as unknown as VerbLabData;
+      const x = extra.default as unknown as { verbs: VerbLabData['verbs'] };
+      return { default: { ...b, verbs: [...b.verbs, ...x.verbs].sort((p, q) => p.en.localeCompare(q.en)) } };
+    }),
+  );
 /** The C1 academic verb bank (also flagged `c1` in the Verb Lab list). */
 export const loadAcademicVerbs = () =>
   memo<AcademicVerb[]>('academic-verbs', () => import('./generated/academic-verbs.json') as Promise<{ default: AcademicVerb[] }>);
@@ -125,7 +134,8 @@ export const loadAcademicVerbs = () =>
 export const loadPhrasalExamples = () =>
   memo<Record<string, string[]>>('pv-examples', () => import('./generated/phrasal-examples.json') as Promise<{ default: Record<string, string[]> }>);
 export const loadVerbExamples = () =>
-  memo<Record<string, { base?: string; past?: string; part?: string }>>(
-    'verb-examples',
-    () => import('./generated/verb-examples.json') as Promise<{ default: Record<string, { base?: string; past?: string; part?: string }> }>,
+  memo<VerbExamples>('verb-examples', () =>
+    Promise.all([import('./generated/verb-examples.json'), import('./generated/verb-lab-extra.json')]).then(([ex, extra]) => ({
+      default: { ...(ex.default as VerbExamples), ...((extra.default as unknown as { examples: VerbExamples }).examples) },
+    })),
   );

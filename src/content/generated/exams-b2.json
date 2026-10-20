@@ -1,0 +1,2175 @@
+[
+  {
+    "id": "b2-m1",
+    "level": "B2",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa los verbos seguidos de gerundio y las cláusulas nominales después de “be”, los modales pasados de obligación y de deducción, las cláusulas relativas, el orden de los adjetivos, los conectores de contraste y las cláusulas de tiempo, razón y condición, con el vocabulario de familia, misterios, ciudades y rutinas de sueño. Incluye las cuatro habilidades.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "I can't stand ___ in traffic for two hours every morning.",
+        "options": [
+          "to sit",
+          "sitting",
+          "sit",
+          "to have sat"
+        ],
+        "answer": 1,
+        "explain_es": "“Can’t stand” va siempre seguido de gerundio (-ing): “I can’t stand sitting…”."
+      },
+      {
+        "type": "mc",
+        "q": "Why do we argue so much? The problem ___ we never really listen to each other.",
+        "options": [
+          "is what",
+          "is which",
+          "that is",
+          "is that"
+        ],
+        "answer": 3,
+        "explain_es": "Después de “be”, una cláusula nominal introducida por “that” explica el sujeto: “The problem is that…”."
+      },
+      {
+        "type": "mc",
+        "q": "The meeting was cancelled, so we ___ to the office after all. We stayed at home.",
+        "options": [
+          "didn't have to go",
+          "mustn't have gone",
+          "shouldn't go",
+          "weren't supposed going"
+        ],
+        "answer": 0,
+        "explain_es": "“Didn’t have to” expresa que en el pasado no fue necesario hacer algo, y por eso no se hizo."
+      },
+      {
+        "type": "mc",
+        "q": "The lights are off and the car has gone. They ___ out for the evening.",
+        "options": [
+          "can't have gone",
+          "should have gone",
+          "must have gone",
+          "had to go"
+        ],
+        "answer": 2,
+        "explain_es": "Es una deducción casi segura sobre el pasado a partir de la evidencia: “must have + participio”."
+      },
+      {
+        "type": "mc",
+        "q": "Cartagena, ___ walls are more than 400 years old, attracts millions of visitors every year.",
+        "options": [
+          "which",
+          "that",
+          "whose",
+          "where"
+        ],
+        "answer": 2,
+        "explain_es": "“Whose” indica posesión (las murallas de Cartagena). Además, en una cláusula no definitoria (entre comas) nunca se usa “that”."
+      },
+      {
+        "type": "mc",
+        "q": "We stayed in a ___ house near the main square.",
+        "options": [
+          "lovely old white colonial",
+          "colonial lovely white old",
+          "white lovely colonial old",
+          "old colonial lovely white"
+        ],
+        "answer": 0,
+        "explain_es": "El orden de los adjetivos es: opinión (lovely), edad (old), color (white), origen o estilo (colonial)."
+      },
+      {
+        "type": "gap",
+        "q": "After ___ (finish) my shift, I always go for a walk to wind down.",
+        "answer": "finishing",
+        "explain_es": "En una cláusula de tiempo reducida, cuando el sujeto es el mismo, se omite y se usa el gerundio tras “after”: “After finishing…”."
+      },
+      {
+        "type": "transform",
+        "q": "Although the streets were crowded, we enjoyed the market. → Despite …",
+        "answer": "Despite the crowded streets, we enjoyed the market.",
+        "accept": [
+          "Despite the streets being crowded, we enjoyed the market.",
+          "Despite the fact that the streets were crowded, we enjoyed the market.",
+          "Despite the crowds, we enjoyed the market."
+        ],
+        "explain_es": "“Despite” va seguido de un sustantivo o un gerundio, no de una oración completa; con oración hay que decir “despite the fact that…”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “Unless I don't sleep eight hours, I feel groggy all day.”",
+        "answer": "Unless I sleep eight hours, I feel groggy all day.",
+        "accept": [
+          "If I don't sleep eight hours, I feel groggy all day.",
+          "If I do not sleep eight hours, I feel groggy all day."
+        ],
+        "explain_es": "“Unless” ya significa “if not”, así que no se combina con otra negación: “Unless I sleep…” o “If I don’t sleep…”."
+      },
+      {
+        "type": "order",
+        "q": "have / the truth / told / should / me / you",
+        "answer": "You should have told me the truth.",
+        "explain_es": "“Should have + participio” expresa un reproche sobre algo que no se hizo en el pasado: “You should have told me the truth.”"
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "We had a terrible argument at Christmas, but we ___ a week later and now we talk every day.",
+        "options": [
+          "drifted apart",
+          "took after",
+          "jumped to conclusions",
+          "patched things up"
+        ],
+        "answer": 3,
+        "explain_es": "“To patch things up” es reconciliarse después de una pelea."
+      },
+      {
+        "type": "mc",
+        "q": "People always say I ___ my grandfather: we both have the same laugh and the same stubborn character.",
+        "options": [
+          "get along with",
+          "take after",
+          "see eye to eye with",
+          "bond with"
+        ],
+        "answer": 1,
+        "explain_es": "“To take after” es parecerse a un familiar mayor en el físico o en el carácter."
+      },
+      {
+        "type": "mc",
+        "q": "A ___ family is one whose members support each other and stay closely connected.",
+        "options": [
+          "close-knit",
+          "sprawling",
+          "baffling",
+          "sluggish"
+        ],
+        "answer": 0,
+        "explain_es": "“Close-knit” describe a una familia o grupo muy unido."
+      },
+      {
+        "type": "mc",
+        "q": "The detective found an important ___: a train ticket hidden inside the book.",
+        "options": [
+          "culprit",
+          "hindsight",
+          "clue",
+          "landmark"
+        ],
+        "answer": 2,
+        "explain_es": "Un “clue” es una pista, un dato que ayuda a resolver un misterio. “Culprit” es el culpable."
+      },
+      {
+        "type": "mc",
+        "q": "Don't ___. We still don't know who broke the window.",
+        "options": [
+          "shed light on it",
+          "jump to conclusions",
+          "overlook it",
+          "figure it out"
+        ],
+        "answer": 1,
+        "explain_es": "“To jump to conclusions” es sacar conclusiones precipitadas sin tener todos los datos."
+      },
+      {
+        "type": "mc",
+        "q": "Our hotel was ___ the cathedral, so we walked there in two minutes.",
+        "options": [
+          "steeped in",
+          "off the beaten track",
+          "worth a detour",
+          "a stone's throw from"
+        ],
+        "answer": 3,
+        "explain_es": "“A stone’s throw from” significa “muy cerca de”."
+      },
+      {
+        "type": "mc",
+        "q": "I stayed up until 3 a.m. finishing my report, so this morning I felt really ___.",
+        "options": [
+          "productive",
+          "groggy",
+          "vibrant",
+          "quaint"
+        ],
+        "answer": 1,
+        "explain_es": "“Groggy” es sentirse aturdido y lento por haber dormido poco."
+      },
+      {
+        "type": "gap",
+        "q": "Barichara is a ___ little town with cobbled streets and white houses. (attractively old-fashioned)",
+        "answer": "quaint",
+        "accept": [
+          "charming"
+        ],
+        "explain_es": "“Quaint” describe un lugar encantador y con aire antiguo."
+      },
+      {
+        "type": "gap",
+        "q": "On Sundays I like to ___ until ten; it's the only day I don't set an alarm. (sleep later than usual)",
+        "answer": "sleep in",
+        "explain_es": "“To sleep in” es quedarse durmiendo hasta más tarde de lo habitual, por gusto."
+      },
+      {
+        "type": "gap",
+        "q": "The detective spent weeks trying to ___ out how the thief had entered the locked room.",
+        "answer": "figure",
+        "explain_es": "“To figure out” es entender o resolver algo después de pensarlo."
+      }
+    ],
+    "reading": {
+      "title": "A Weekend in Popayán and the Case of the Vanishing Keys",
+      "genre": "blog",
+      "paragraphs": [
+        "My family has always been close-knit, although we rarely see eye to eye about anything. Last month, my brother Andrés and I travelled to Popayán to visit our grandmother Inés, who has lived in the same house in the historic centre for over fifty years. The truth is that I hadn't been there since I was a child, so I was curious to see how the city had changed.",
+        "Popayán, which is famous for its white colonial buildings, is quieter than Bogotá but surprisingly vibrant. Our grandmother's house is a stone's throw from the main square, so we spent the first afternoon walking around and soaking up the atmosphere. Despite the rain, the streets were full of students and families buying fresh bread. Andrés, who is a real night owl, wanted to explore the bars; I, on the other hand, am a morning person and was ready to hit the sack by ten.",
+        "The mystery began on Saturday morning. Grandma Inés announced that her keys had disappeared. She keeps them on a small hook by the door, and she insisted that she had hung them there the night before. Andrés immediately jumped to conclusions: he was sure the culprit was the neighbour's cat, which often wanders into the kitchen. I pointed out that it can't have been the cat, because cats don't usually carry heavy metal keys.",
+        "We searched every room for two hours. It was baffling. The keys weren't in her bag, her coat or the fridge, where my grandmother once left her glasses. Then I noticed a small clue: there was a fresh loaf of bread on the table, wrapped in paper from the bakery on the corner. Grandma must have gone out early that morning, while we were still asleep.",
+        "Sure enough, when we asked at the bakery, the owner smiled and handed us the keys. Grandma had left them on the counter while she was paying. In hindsight, we should have asked her about her morning routine first instead of searching under the sofa. She admitted that she always goes for bread before anyone else wakes up. She is, as she says herself, a creature of habit.",
+        "What I learned from the weekend is that families don't need to agree on everything to get along. Andrés and I still argue about politics, football and what time to go to bed, but searching for those keys together reminded me how much I enjoy spending time with him. Next time, though, I'll check the bakery first."
+      ],
+      "glossary": [
+        [
+          "soaking up the atmosphere",
+          "disfrutando del ambiente"
+        ],
+        [
+          "hit the sack",
+          "irse a dormir"
+        ],
+        [
+          "jumped to conclusions",
+          "sacó conclusiones precipitadas"
+        ],
+        [
+          "culprit",
+          "culpable"
+        ],
+        [
+          "baffling",
+          "desconcertante"
+        ],
+        [
+          "a creature of habit",
+          "un animal de costumbres"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why did the writer travel to Popayán?",
+          "options": [
+            "To study at the university",
+            "To find a new apartment",
+            "To attend a family wedding",
+            "To visit her grandmother"
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “Andrés and I travelled to Popayán to visit our grandmother Inés”."
+        },
+        {
+          "type": "tf",
+          "q": "The writer's grandmother moved into her current house recently.",
+          "answer": "F",
+          "explain_es": "Falso: “who has lived in the same house in the historic centre for over fifty years”."
+        },
+        {
+          "type": "mc",
+          "q": "Why did the writer reject Andrés's theory about the cat?",
+          "options": [
+            "Cats don't usually carry heavy keys.",
+            "The cat was not in the house that night.",
+            "The neighbour said the cat was asleep.",
+            "The keys were too high on the hook."
+          ],
+          "answer": 0,
+          "explain_es": "La autora dice: “it can’t have been the cat, because cats don’t usually carry heavy metal keys”."
+        },
+        {
+          "type": "tf",
+          "q": "The grandmother once left her glasses in the fridge.",
+          "answer": "T",
+          "explain_es": "Verdadero: “the fridge, where my grandmother once left her glasses”."
+        },
+        {
+          "type": "tf",
+          "q": "The bakery owner went to school with the grandmother.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto solo cuenta que el dueño “smiled and handed us the keys”; no habla de su relación con la abuela."
+        },
+        {
+          "type": "gap",
+          "q": "The clue the writer noticed was a fresh loaf of ___ on the table.",
+          "answer": "bread",
+          "explain_es": "El texto dice: “there was a fresh loaf of bread on the table”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A Call from Medellín",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Camila",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Mateo",
+          "voice": "male",
+          "accent": "uk"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Hi Mateo, it's Camila. Sorry for calling so early. I know you're not a morning person."
+        },
+        {
+          "s": 1,
+          "text": "Don't worry, I was already up. I've been burning the midnight oil all week, so I've hardly slept anyway. How's the new job in Medellín?"
+        },
+        {
+          "s": 0,
+          "text": "Honestly, it's great, although the hours are tough. I start at six, so I have to hit the sack by half past nine. Unless I get eight hours, I'm completely useless."
+        },
+        {
+          "s": 1,
+          "text": "Six? That sounds awful. I'd be groggy until lunch. What's the city like?"
+        },
+        {
+          "s": 0,
+          "text": "It's bustling and much warmer than Bogotá. My apartment is in Envigado, which is a stone's throw from a huge park. Despite the noise from the motorbikes, I love it."
+        },
+        {
+          "s": 1,
+          "text": "And have you made any friends yet?"
+        },
+        {
+          "s": 0,
+          "text": "A few. There's a woman at work who's very easygoing. We bonded over our terrible coffee machine. The truth is that I miss my family, though."
+        },
+        {
+          "s": 1,
+          "text": "Of course. How's your brother? Did you two patch things up after that argument at Christmas?"
+        },
+        {
+          "s": 0,
+          "text": "Sort of. I should have called him earlier, but I kept putting it off. In the end he sent me a message first, which was really kind of him."
+        },
+        {
+          "s": 1,
+          "text": "He must have felt bad too. You two are so similar. You really take after your dad."
+        },
+        {
+          "s": 0,
+          "text": "Please don't say that. My dad and I never see eye to eye. Anyway, the reason I called is that I need a favour."
+        },
+        {
+          "s": 1,
+          "text": "Go on."
+        },
+        {
+          "s": 0,
+          "text": "I left a box of books at your place when I moved. Could you send it to me? I was supposed to collect it before leaving, but I forgot."
+        },
+        {
+          "s": 1,
+          "text": "No problem. I'll post it on Saturday after finishing my shift at the café."
+        },
+        {
+          "s": 0,
+          "text": "You're a star. And when you come to visit, I'll take you somewhere off the beaten track. There's a quiet little village in the mountains that's really worth a detour."
+        },
+        {
+          "s": 1,
+          "text": "Deal. But only if we don't have to get up at six."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why does Camila apologise at the start of the call?",
+          "options": [
+            "She forgot Mateo's birthday.",
+            "She hasn't called for months.",
+            "She is calling very early.",
+            "She is calling from work."
+          ],
+          "answer": 2,
+          "explain_es": "Camila dice: “Sorry for calling so early. I know you’re not a morning person.”"
+        },
+        {
+          "type": "tf",
+          "q": "Camila starts work at six in the morning.",
+          "answer": "T",
+          "explain_es": "Verdadero: “I start at six, so I have to hit the sack by half past nine.”"
+        },
+        {
+          "type": "mc",
+          "q": "Where is Camila's apartment?",
+          "options": [
+            "In the centre of Bogotá",
+            "Above a café",
+            "Near a big park in Envigado",
+            "In a village in the mountains"
+          ],
+          "answer": 2,
+          "explain_es": "Camila dice: “My apartment is in Envigado, which is a stone’s throw from a huge park.”"
+        },
+        {
+          "type": "tf",
+          "q": "Camila called her brother as soon as the argument ended.",
+          "answer": "F",
+          "explain_es": "Falso: “I should have called him earlier, but I kept putting it off. In the end he sent me a message first.”"
+        },
+        {
+          "type": "mc",
+          "q": "What favour does Camila ask Mateo?",
+          "options": [
+            "To send her a box of books",
+            "To lend her some money",
+            "To visit her parents",
+            "To find her a new job"
+          ],
+          "answer": 0,
+          "explain_es": "Camila pide: “I left a box of books at your place… Could you send it to me?”"
+        },
+        {
+          "type": "gap",
+          "q": "Mateo will post the box on ___ after his shift.",
+          "answer": "Saturday",
+          "explain_es": "Mateo dice: “I’ll post it on Saturday after finishing my shift at the café.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "A friend is thinking of moving to your city. Write an email describing a neighbourhood you love, explaining what daily life is like there (routines, noise, sleep) and giving advice about getting along with the people. Write 180–250 words.",
+      "prompt_es": "Escribe un correo a un amigo que quiere mudarse a tu ciudad: describe un barrio, cuenta cómo es la vida diaria y dale consejos.",
+      "genre_es": "Correo informal",
+      "minWords": 180,
+      "maxWords": 250,
+      "criteria": [
+        "Use at least two relative clauses (one defining and one non-defining).",
+        "Contrast ideas with although, despite or however.",
+        "Include a verb + gerund pattern (enjoy, can't stand, avoid…) and a noun clause after 'be' (The truth is that…).",
+        "Use at least four words or expressions from Units 1–4 (bustling, a stone's throw from, wind down, get along…).",
+        "Organise the email in paragraphs with a friendly opening and closing."
+      ],
+      "model": "Hi Sofía,\n\nI'm so happy you're thinking of moving to Bogotá! You asked me about neighbourhoods, so here's my advice.\n\nThe area I love most is La Macarena, which is a stone's throw from the city centre but feels like a quaint little village. The streets, where you'll find tiny cafés and art galleries, are steep but charming. Although the neighbourhood is popular, it never feels too crowded, and some of the restaurants are really worth a detour.\n\nDaily life here is quite intense. The city is bustling from six in the morning, so if you're not a morning person, you'll need earplugs! I can't stand hearing buses outside my window at dawn, but I've got used to it. After finishing work, I usually walk up to the park to wind down. Despite the traffic, it's easy to get around if you avoid rush hour.\n\nAs for people, the truth is that bogotanos can seem a bit distant at first. However, once you get to know them, they are warm and generous. My advice is to join a club or a class. I bonded with my best friend at a salsa course, and now we get along brilliantly.\n\nLet me know when you're coming. You can stay with me until you find a place!\n\nBig hugs,\nJuliana"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about a member of your family you take after. In what ways are you similar, and do you always get along?",
+          "text_es": "Habla de un familiar al que te pareces: en qué se parecen y si siempre se llevan bien.",
+          "seconds": 60,
+          "tips": [
+            "Use take after, get along with and see eye to eye.",
+            "Try a noun clause: The funny thing is that…"
+          ]
+        },
+        {
+          "text": "Tell the story of a small mystery or mistake in your life, for example something that went missing. What must have happened, and what should you have done differently?",
+          "text_es": "Narra un pequeño misterio o error: qué debió de pasar y qué deberías haber hecho.",
+          "seconds": 90,
+          "tips": [
+            "Use must have / can't have / might have + past participle.",
+            "Use should have or was supposed to for regrets."
+          ]
+        },
+        {
+          "text": "Some people say big cities are better places to live than small towns. Do you agree? Compare the two and give reasons.",
+          "text_es": "Da tu opinión: ¿es mejor vivir en una gran ciudad o en un pueblo? Compara y justifica.",
+          "seconds": 90,
+          "tips": [
+            "Contrast with although, despite and however.",
+            "Use bustling, quaint, sprawling and off the beaten track."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "b2-m2",
+    "level": "B2",
+    "kind": "midterm",
+    "n": 2,
+    "units": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "title": "Parcial 2 · Unidades 5–8",
+    "intro_es": "Evalúa “It’s + adjetivo + infinitivo” y el gerundio como sujeto, el presente perfecto frente al pasado simple y al presente perfecto continuo, el pasado perfecto, las question tags y preguntas negativas, la voz pasiva y las cláusulas relativas reducidas, con el vocabulario de comunicación, noticias, tecnología y memoria. Incluye las cuatro habilidades.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "It was really kind ___ you to help me with the presentation.",
+        "options": [
+          "for",
+          "to",
+          "with",
+          "of"
+        ],
+        "answer": 3,
+        "explain_es": "Con adjetivos que describen el carácter de alguien (kind, rude, generous) se usa “of + persona”: “kind of you”."
+      },
+      {
+        "type": "mc",
+        "q": "___ people while they are speaking is considered rude in most cultures.",
+        "options": [
+          "Interrupt",
+          "Interrupting",
+          "To interrupting",
+          "Interrupted"
+        ],
+        "answer": 1,
+        "explain_es": "Un gerundio puede funcionar como sujeto de la oración: “Interrupting people is…”."
+      },
+      {
+        "type": "mc",
+        "q": "The newspaper ___ the story last night, and by this morning everyone was talking about it.",
+        "options": [
+          "broke",
+          "has broken",
+          "has been breaking",
+          "had been broken"
+        ],
+        "answer": 0,
+        "explain_es": "“Last night” es un momento terminado y definido del pasado, por eso se usa el pasado simple."
+      },
+      {
+        "type": "mc",
+        "q": "You look exhausted. ___ all day?",
+        "options": [
+          "Did you work",
+          "Have you worked",
+          "Have you been working",
+          "Had you worked"
+        ],
+        "answer": 2,
+        "explain_es": "El presente perfecto continuo destaca la actividad y su duración, con un resultado visible ahora (estás agotado)."
+      },
+      {
+        "type": "mc",
+        "q": "Nobody checked the source before sharing the post, ___?",
+        "options": [
+          "didn't they",
+          "did they",
+          "wasn't it",
+          "didn't he"
+        ],
+        "answer": 1,
+        "explain_es": "“Nobody” hace la frase negativa, así que la tag es positiva; con “nobody” se usa “they”: “did they?”."
+      },
+      {
+        "type": "mc",
+        "q": "The new privacy rules ___ across the country next year.",
+        "options": [
+          "are rolling out",
+          "have rolled out",
+          "are being roll out",
+          "will be rolled out"
+        ],
+        "answer": 3,
+        "explain_es": "Es una pasiva en futuro (will be + participio): las reglas no se implementan solas, alguien las implementa."
+      },
+      {
+        "type": "gap",
+        "q": "By the time the police arrived, the eyewitness ___ (already / leave).",
+        "answer": "had already left",
+        "accept": [
+          "'d already left"
+        ],
+        "explain_es": "El pasado perfecto (had + participio) marca la acción que ocurrió primero; “already” va entre “had” y el participio."
+      },
+      {
+        "type": "transform",
+        "q": "The students who are taking part in the memory study must sleep eight hours. → Rewrite without 'who are'.",
+        "answer": "The students taking part in the memory study must sleep eight hours.",
+        "explain_es": "En una cláusula relativa reducida se eliminan el pronombre y el verbo “be”, y queda el gerundio: “The students taking part…”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “He remembered all fifty names, what impressed everyone.”",
+        "answer": "He remembered all fifty names, which impressed everyone.",
+        "explain_es": "Para comentar toda la idea anterior después de una coma se usa “which”, nunca “what”."
+      },
+      {
+        "type": "order",
+        "q": "think / Don't / too much / we / time / spend / you / online / ?",
+        "answer": "Don't you think we spend too much time online?",
+        "explain_es": "Una pregunta negativa (“Don’t you think…?”) no pide información: busca que el otro esté de acuerdo con nuestra opinión."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Rafael is very ___: he always says exactly what he thinks, even in meetings with the boss.",
+        "options": [
+          "reserved",
+          "outspoken",
+          "tactful",
+          "absent-minded"
+        ],
+        "answer": 1,
+        "explain_es": "“Outspoken” describe a alguien que expresa sus opiniones abiertamente, aunque otros no estén de acuerdo."
+      },
+      {
+        "type": "mc",
+        "q": "Stop ___ and tell me what the doctor said!",
+        "options": [
+          "coming across",
+          "reading between the lines",
+          "sinking in",
+          "beating around the bush"
+        ],
+        "answer": 3,
+        "explain_es": "“To beat around the bush” es andarse con rodeos, evitar decir algo directamente."
+      },
+      {
+        "type": "mc",
+        "q": "The minister's claims were ___: there was no evidence at all to support them.",
+        "options": [
+          "unsubstantiated",
+          "corroborated",
+          "eyewitness",
+          "biased"
+        ],
+        "answer": 0,
+        "explain_es": "“Unsubstantiated” significa sin pruebas que lo respalden."
+      },
+      {
+        "type": "mc",
+        "q": "It was only a small mistake, but the media ___ it ___.",
+        "options": [
+          "broke / a story",
+          "got / to the bottom",
+          "blew / out of proportion",
+          "took / with a pinch of salt"
+        ],
+        "answer": 2,
+        "explain_es": "“To blow something out of proportion” es exagerar algo y hacerlo parecer mucho más importante."
+      },
+      {
+        "type": "mc",
+        "q": "You only follow people who agree with you. You're living in an ___.",
+        "options": [
+          "digital footprint",
+          "misinformation",
+          "echo chamber",
+          "data privacy"
+        ],
+        "answer": 2,
+        "explain_es": "Un “echo chamber” es un entorno donde solo se escuchan opiniones iguales a la propia."
+      },
+      {
+        "type": "mc",
+        "q": "Her name is ___; I'll remember it in a second.",
+        "options": [
+          "on the tip of my tongue",
+          "vivid",
+          "a knack for",
+          "absent-minded"
+        ],
+        "answer": 0,
+        "explain_es": "“On the tip of my tongue” es tener algo en la punta de la lengua, casi recordarlo."
+      },
+      {
+        "type": "mc",
+        "q": "Give me a day to ___ your offer before I make a decision.",
+        "options": [
+          "draw a blank",
+          "slip my mind",
+          "jog my memory",
+          "mull over"
+        ],
+        "answer": 3,
+        "explain_es": "“To mull over” es pensar algo despacio y con cuidado."
+      },
+      {
+        "type": "gap",
+        "q": "Before you share that article, take a minute to ___ it. (verify the claims; hyphenated verb)",
+        "answer": "fact-check",
+        "accept": [
+          "fact check"
+        ],
+        "explain_es": "“To fact-check” es verificar la información antes de repetirla."
+      },
+      {
+        "type": "gap",
+        "q": "Sorry I missed your birthday; it completely slipped my ___.",
+        "answer": "mind",
+        "explain_es": "“To slip one’s mind” significa olvidarse de algo."
+      },
+      {
+        "type": "gap",
+        "q": "In the interview she ___ across as confident and friendly. (gave that impression; past)",
+        "answer": "came",
+        "explain_es": "“To come across as” es dar cierta impresión; en pasado: “came across”."
+      }
+    ],
+    "reading": {
+      "title": "How a Rumour Travels",
+      "genre": "article",
+      "paragraphs": [
+        "Last March, a story spread across Pereira that the city's oldest bakery, La Espiga, was about to close. Within two days, hundreds of people had queued outside to buy their last loaf. There was only one problem: the story wasn't true. The owner, Hernán Ruiz, had simply put up a sign saying the shop would be closed for three days while a new oven was being installed.",
+        "Local journalist Paula Medina decided to get to the bottom of the rumour. 'I've been working as a reporter for twelve years, and I've never seen anything spread so fast,' she says. By tracing the messages backwards, she discovered that the story had started with a single photo of the sign, shared in a neighbourhood chat group with the words 'So sad. End of an era.' Nobody had asked Hernán directly.",
+        "According to Medina, the problem was not lying but communication. 'The woman who posted the photo didn't mean to mislead anyone. She read between the lines and imagined the worst. Then others repeated it, adding details each time, which is exactly how rumours grow.' Some messages claimed that the bakery had been sold to a supermarket chain; others said that Hernán was ill. None of these claims was ever corroborated.",
+        "Psychologists who study memory are not surprised. Dr Lucía Ospina, a researcher at a university in Manizales, explains that our brains are not video cameras. 'Every time we retell a story, we rebuild it,' she says. 'Details remembered vividly can still be completely false. Being certain is not the same as being right.' In one of her experiments, volunteers shown a short video of a robbery were later asked misleading questions. Many of them confidently described a weapon that had never appeared.",
+        "So what can ordinary people do? Medina suggests a simple rule: it is better to wait an hour than to share something unverified. 'Ask yourself who benefits from the story, and whether there's an eyewitness or just a friend of a friend,' she advises. Fact-checking a message takes far less time than correcting it later.",
+        "As for Hernán, he has turned the whole episode into a joke. A new sign now hangs in the window: 'We are NOT closing. But thank you for the record sales.' Since the rumour, the bakery has been busier than ever, which proves that even false news can have a happy ending."
+      ],
+      "glossary": [
+        [
+          "queued",
+          "hicieron fila"
+        ],
+        [
+          "get to the bottom of",
+          "llegar al fondo de"
+        ],
+        [
+          "tracing",
+          "rastreando"
+        ],
+        [
+          "mislead",
+          "engañar"
+        ],
+        [
+          "corroborated",
+          "corroborada, confirmada"
+        ],
+        [
+          "unverified",
+          "sin verificar"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why was La Espiga going to close for three days?",
+          "options": [
+            "The owner was ill.",
+            "A new oven was being installed.",
+            "It had been sold to a supermarket.",
+            "The staff were on holiday."
+          ],
+          "answer": 1,
+          "explain_es": "El cartel decía que la tienda cerraría tres días “while a new oven was being installed”."
+        },
+        {
+          "type": "tf",
+          "q": "Paula Medina has been a journalist for more than ten years.",
+          "answer": "T",
+          "explain_es": "Verdadero: “I’ve been working as a reporter for twelve years”."
+        },
+        {
+          "type": "mc",
+          "q": "How did the rumour start?",
+          "options": [
+            "Someone shared a photo of the sign with a sad comment.",
+            "The owner told a newspaper he was retiring.",
+            "A supermarket published an advert.",
+            "A radio station reported it as news."
+          ],
+          "answer": 0,
+          "explain_es": "Medina descubrió que empezó con “a single photo of the sign, shared in a neighbourhood chat group with the words ‘So sad. End of an era.’”"
+        },
+        {
+          "type": "tf",
+          "q": "The woman who posted the photo wanted to damage the bakery.",
+          "answer": "F",
+          "explain_es": "Falso: “The woman who posted the photo didn’t mean to mislead anyone.”"
+        },
+        {
+          "type": "tf",
+          "q": "Dr Ospina's volunteers were paid for taking part in the experiment.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto describe el experimento, pero no menciona si los voluntarios recibieron dinero."
+        },
+        {
+          "type": "mc",
+          "q": "What has happened to the bakery since the rumour?",
+          "options": [
+            "It has closed permanently.",
+            "It has changed its name.",
+            "It has been busier than ever.",
+            "It has lost many customers."
+          ],
+          "answer": 2,
+          "explain_es": "El último párrafo dice: “Since the rumour, the bakery has been busier than ever”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Talking Points: Are We Communicating Worse?",
+      "kind": "podcast",
+      "speakers": [
+        {
+          "name": "Ellie",
+          "voice": "female",
+          "accent": "au"
+        },
+        {
+          "name": "Martín",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Welcome back to Talking Points. I'm Ellie Grant, and today I'm joined by communication coach Martín Lozano. Martín, people say we're worse at talking to each other than ever. That's an exaggeration, isn't it?"
+        },
+        {
+          "s": 1,
+          "text": "Partly. Technology hasn't made us worse communicators, but it has changed the rules. In a text message nobody can see your face, so it's very easy to come across as rude without meaning to."
+        },
+        {
+          "s": 0,
+          "text": "I've noticed that with my own team. Someone writes the word fine with a full stop, and suddenly everyone is reading between the lines."
+        },
+        {
+          "s": 1,
+          "text": "Exactly. Being brief in writing often feels cold. It's important to add a little warmth, even if it's just a greeting."
+        },
+        {
+          "s": 0,
+          "text": "What about people who are very outspoken? Isn't it better to say exactly what you think?"
+        },
+        {
+          "s": 1,
+          "text": "Being candid is valuable, but it's a mistake to confuse honesty with harshness. The most effective people I coach are direct and tactful at the same time. They don't sugar-coat bad news, but they choose their words carefully."
+        },
+        {
+          "s": 0,
+          "text": "Give us an example."
+        },
+        {
+          "s": 1,
+          "text": "Last year I worked with a manager who had been sending very long emails late at night. Her team felt completely overwhelmed. We agreed that she would log off at seven and send one short summary every morning."
+        },
+        {
+          "s": 0,
+          "text": "And did it work?"
+        },
+        {
+          "s": 1,
+          "text": "Within a month, complaints had dropped by half, which surprised even her."
+        },
+        {
+          "s": 0,
+          "text": "You've also been researching meetings, haven't you?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, for about two years now. One finding stood out. People talk over each other much more in video calls, because of the small delay. So the meeting often ends with everyone talking at cross purposes."
+        },
+        {
+          "s": 0,
+          "text": "What's your advice?"
+        },
+        {
+          "s": 1,
+          "text": "Name the next speaker. It sounds formal, but it saves a lot of time. And if something important has been said, repeat it at the end so that it really sinks in."
+        },
+        {
+          "s": 0,
+          "text": "Martín Lozano, thank you. Listeners, the full interview will be posted on our website tomorrow."
+        },
+        {
+          "s": 1,
+          "text": "Thanks for having me, Ellie."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "According to Martín, why is it easy to sound rude in a text message?",
+          "options": [
+            "People write too quickly.",
+            "Nobody can see your face.",
+            "Text messages are too long.",
+            "People use too many emojis."
+          ],
+          "answer": 1,
+          "explain_es": "Martín dice: “In a text message nobody can see your face, so it’s very easy to come across as rude”."
+        },
+        {
+          "type": "tf",
+          "q": "Martín thinks honesty and harshness are the same thing.",
+          "answer": "F",
+          "explain_es": "Falso: “it’s a mistake to confuse honesty with harshness”."
+        },
+        {
+          "type": "mc",
+          "q": "What problem did the manager's team have?",
+          "options": [
+            "They never received any feedback.",
+            "They had too many meetings.",
+            "They didn't get along with each other.",
+            "They felt overwhelmed by her late-night emails."
+          ],
+          "answer": 3,
+          "explain_es": "Martín cuenta que la gerente “had been sending very long emails late at night. Her team felt completely overwhelmed.”"
+        },
+        {
+          "type": "gap",
+          "q": "After the change, complaints dropped by ___ within a month.",
+          "answer": "half",
+          "accept": [
+            "50%",
+            "50 percent",
+            "fifty percent",
+            "50 per cent",
+            "fifty per cent"
+          ],
+          "explain_es": "Martín dice: “Within a month, complaints had dropped by half”."
+        },
+        {
+          "type": "tf",
+          "q": "Martín has been researching meetings for about two years.",
+          "answer": "T",
+          "explain_es": "Verdadero: a la pregunta de Ellie responde “Yes, for about two years now.”"
+        },
+        {
+          "type": "mc",
+          "q": "Why do people talk over each other more in video calls?",
+          "options": [
+            "The cameras are distracting.",
+            "There is a small delay.",
+            "The meetings are longer.",
+            "People are more outspoken online."
+          ],
+          "answer": 1,
+          "explain_es": "Martín explica: “People talk over each other much more in video calls, because of the small delay.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write an opinion article for your school or company blog with the title 'Should we believe what we read online?'. Give examples of how misinformation spreads, explain what ordinary people can do, and say what technology companies should do. Write 180–250 words.",
+      "prompt_es": "Escribe un artículo de opinión sobre si debemos creer lo que leemos en internet, con ejemplos y soluciones.",
+      "genre_es": "Artículo de opinión",
+      "minWords": 180,
+      "maxWords": 250,
+      "criteria": [
+        "Use the present perfect and the present perfect continuous correctly (has spread, have been sharing).",
+        "Include at least one passive form (is being used, has been shared, will be introduced).",
+        "Use a gerund as subject or It's + adjective + infinitive (It's essential to…).",
+        "Add a comment with sentence-modifying 'which' and include one tag question or negative question.",
+        "Use at least four words from Units 5–8 (misinformation, fact-check, biased, take with a pinch of salt…)."
+      ],
+      "model": "Should We Believe What We Read Online?\n\nOver the last few years, social media has become the main source of news for millions of Colombians, which is both exciting and worrying. Information has never travelled so fast, but has it ever been less reliable?\n\nThe main problem is misinformation. Every day, false stories are being shared by people who simply haven't checked them. Last month, a friend of mine forwarded a message claiming that the metro would close for a week. It had been written as a joke, but within hours it had been blown out of proportion and thousands of people were panicking.\n\nIn my opinion, it's essential to take what we read with a pinch of salt. Fact-checking a story takes two minutes: you can look for the original source, see whether other media have corroborated it and ask yourself whether the writer might be biased. Isn't that better than spreading rumours?\n\nOf course, technology companies have a responsibility too. New tools are being rolled out to label false content, and I believe stricter rules should be introduced soon. However, no algorithm can replace common sense.\n\nTo sum up, we shouldn't stop reading online, but we should stop believing everything immediately. Being sceptical is not the same as being cynical, is it?"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "How would you describe your own communication style? Are you more outspoken or more reserved, and how do you come across to people who don't know you?",
+          "text_es": "Describe tu estilo de comunicación y la impresión que das a quienes no te conocen.",
+          "seconds": 60,
+          "tips": [
+            "Use outspoken, reserved, tactful and come across as.",
+            "Try It's hard for me to… or Being direct is…"
+          ]
+        },
+        {
+          "text": "Describe a time when a rumour or a piece of false news reached you. What had happened, how did you find out the truth, and what has changed since then?",
+          "text_es": "Narra una vez en que te llegó un rumor o una noticia falsa y cómo descubriste la verdad.",
+          "seconds": 90,
+          "tips": [
+            "Use the past perfect for what had happened before.",
+            "Use the present perfect for what has changed since then."
+          ]
+        },
+        {
+          "text": "Role-play: your friend spends six hours a day glued to their phone. Persuade them to log off more often and suggest practical changes.",
+          "text_es": "Juego de roles: convence a un amigo que pasa demasiado tiempo en el celular de desconectarse más.",
+          "seconds": 90,
+          "tips": [
+            "Use tag questions and negative questions: Isn't it…?, Don't you think…?",
+            "Use glued to a screen, addictive and log off."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "b2-m3",
+    "level": "B2",
+    "kind": "midterm",
+    "n": 3,
+    "units": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial 3 · Unidades 9–12",
+    "intro_es": "Evalúa el contraste y la excepción (unlike, while, except for), los hábitos pasados con “used to” y “would”, las cláusulas nominales y las preguntas indirectas, el condicional irreal, los deseos y lamentos, el futuro perfecto y los condicionales mixtos, con el vocabulario de culturas, quejas, valores y vida en el extranjero. Incluye las cuatro habilidades.",
+    "minutes": 60,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "___ my parents, I don't mind eating dinner late at night.",
+        "options": [
+          "While",
+          "Except",
+          "Whereas",
+          "Unlike"
+        ],
+        "answer": 3,
+        "explain_es": "“Unlike” va seguido de un sustantivo o pronombre (“Unlike my parents”); “while” y “whereas” necesitan una oración completa."
+      },
+      {
+        "type": "mc",
+        "q": "When we were kids, my grandfather ___ us to the river every Sunday.",
+        "options": [
+          "would take",
+          "was taking",
+          "has taken",
+          "would have taken"
+        ],
+        "answer": 0,
+        "explain_es": "“Would” describe acciones repetidas en el pasado (también sería correcto “used to take”)."
+      },
+      {
+        "type": "mc",
+        "q": "___ I find most frustrating is waiting on the phone for an hour.",
+        "options": [
+          "That",
+          "Which",
+          "What",
+          "It"
+        ],
+        "answer": 2,
+        "explain_es": "Una cláusula nominal con “what” (= the thing that) puede ser el sujeto de la oración: “What I find most frustrating is…”."
+      },
+      {
+        "type": "mc",
+        "q": "Could you tell me ___?",
+        "options": [
+          "when will the technician arrive",
+          "when does the technician arrive",
+          "when the technician will arrive",
+          "when arrives the technician"
+        ],
+        "answer": 2,
+        "explain_es": "En una pregunta indirecta no hay inversión ni auxiliar “do”: sujeto + verbo (“when the technician will arrive”)."
+      },
+      {
+        "type": "mc",
+        "q": "If I ___ you, I'd ask for a full refund.",
+        "options": [
+          "were",
+          "am",
+          "would be",
+          "had"
+        ],
+        "answer": 0,
+        "explain_es": "En el condicional irreal de presente se usa el pasado en la cláusula con “if”; con “I” se prefiere “were”."
+      },
+      {
+        "type": "mc",
+        "q": "By the end of this year, I ___ in Canada for three years.",
+        "options": [
+          "will live",
+          "am living",
+          "would have lived",
+          "will have been living"
+        ],
+        "answer": 3,
+        "explain_es": "El futuro perfecto continuo mira hacia atrás desde un punto del futuro y destaca la duración: “will have been living… for three years”."
+      },
+      {
+        "type": "gap",
+        "q": "I wish I ___ (not / say) those things to my sister yesterday.",
+        "answer": "hadn't said",
+        "accept": [
+          "had not said"
+        ],
+        "explain_es": "Para lamentar algo del pasado se usa “wish + pasado perfecto”: “I wish I hadn’t said…”."
+      },
+      {
+        "type": "transform",
+        "q": "I didn't learn English as a child, so I'm not fluent now. → If I had …",
+        "answer": "If I had learned English as a child, I would be fluent now.",
+        "accept": [
+          "If I had learned English as a child, I'd be fluent now.",
+          "If I had learnt English as a child, I would be fluent now.",
+          "If I had learnt English as a child, I'd be fluent now.",
+          "If I'd learned English as a child, I'd be fluent now.",
+          "If I'd learnt English as a child, I'd be fluent now."
+        ],
+        "explain_es": "Es un condicional mixto: una condición pasada (had learned) con una consecuencia presente (would be… now)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “I don't understand why did they charge me twice.”",
+        "answer": "I don't understand why they charged me twice.",
+        "accept": [
+          "I do not understand why they charged me twice."
+        ],
+        "explain_es": "Dentro de una pregunta indirecta se pierde el auxiliar “did” y el orden es sujeto + verbo: “why they charged me”."
+      },
+      {
+        "type": "order",
+        "q": "would / found / do / you / a wallet / What / if / you / ?",
+        "answer": "What would you do if you found a wallet?",
+        "accept": [
+          "If you found a wallet what would you do?"
+        ],
+        "explain_es": "Condicional irreal: “What would you do if you found…?” (pasado en la cláusula con “if”, “would” en la principal)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "It's unfair to ___: not everyone from the Caribbean coast loves dancing.",
+        "options": [
+          "fit in",
+          "paint with a broad brush",
+          "conform",
+          "put down roots"
+        ],
+        "answer": 1,
+        "explain_es": "“To paint with a broad brush” es generalizar sobre un grupo sin ver las diferencias."
+      },
+      {
+        "type": "mc",
+        "q": "Her strict ___ explains why she is always so punctual.",
+        "options": [
+          "upbringing",
+          "stereotype",
+          "custom",
+          "norm"
+        ],
+        "answer": 0,
+        "explain_es": "“Upbringing” es la crianza, la forma en que alguien fue educado de niño."
+      },
+      {
+        "type": "mc",
+        "q": "The new phone was ___, so I took it back to the shop the next day.",
+        "options": [
+          "principled",
+          "homesick",
+          "faulty",
+          "deep-rooted"
+        ],
+        "answer": 2,
+        "explain_es": "“Faulty” significa defectuoso, que no funciona bien."
+      },
+      {
+        "type": "mc",
+        "q": "The neighbours' party at 3 a.m. was ___; I finally called the building manager.",
+        "options": [
+          "a goodwill gesture",
+          "the last straw",
+          "red tape",
+          "a fresh start"
+        ],
+        "answer": 1,
+        "explain_es": "“The last straw” es la gota que rebosa la copa: el último problema que vuelve insoportable la situación."
+      },
+      {
+        "type": "mc",
+        "q": "I accepted the job, but now I'm having ___ about moving so far away.",
+        "options": [
+          "integrity",
+          "a moral compass",
+          "redress",
+          "second thoughts"
+        ],
+        "answer": 3,
+        "explain_es": "“To have second thoughts” es empezar a dudar de una decisión ya tomada."
+      },
+      {
+        "type": "mc",
+        "q": "I don't mind working late sometimes, but I ___ at working on Sundays.",
+        "options": [
+          "stand up",
+          "draw the line",
+          "compromise",
+          "fit in"
+        ],
+        "answer": 1,
+        "explain_es": "“To draw the line at something” es poner un límite a lo que uno acepta hacer."
+      },
+      {
+        "type": "mc",
+        "q": "Getting a work visa involved so much ___ that it took us six months.",
+        "options": [
+          "culture shock",
+          "redress",
+          "upbringing",
+          "red tape"
+        ],
+        "answer": 3,
+        "explain_es": "“Red tape” son los trámites y papeleos oficiales que hacen lentos los procesos."
+      },
+      {
+        "type": "gap",
+        "q": "It took me a few weeks to ___ in, but now I feel at home in Toronto. (become comfortable)",
+        "answer": "settle",
+        "explain_es": "“To settle in” es adaptarse y sentirse cómodo en un lugar nuevo."
+      },
+      {
+        "type": "gap",
+        "q": "If the manager can't help you, ask them to ___ your complaint to head office. (pass it to a higher level)",
+        "answer": "escalate",
+        "explain_es": "“To escalate” es llevar una queja a un nivel superior."
+      },
+      {
+        "type": "gap",
+        "q": "___ and large, people here are very friendly, although there are exceptions.",
+        "answer": "By",
+        "explain_es": "“By and large” significa “en general, con algunas excepciones”."
+      }
+    ],
+    "reading": {
+      "title": "A Fresh Start Five Thousand Kilometres Away",
+      "genre": "interview",
+      "paragraphs": [
+        "Natalia Restrepo, 31, left Manizales three years ago to work as a nurse in Montreal. We asked her about culture shock, Canadian customs and her plans for the future.",
+        "What surprised you most when you arrived? 'The silence! In Manizales, my neighbours would play music every weekend and nobody minded. Here, by and large, people are very quiet at home, and noise after ten at night is a big deal. Unlike in Colombia, you rarely see neighbours chatting in the street. I used to think Canadians were cold, but that was a stereotype. They're just more private.'",
+        "Was it hard to settle in? 'Very. The first winter I felt like a fish out of water. I didn't know how to dress, I didn't speak much French, and I was terribly homesick. I wish someone had told me how dark it gets at four in the afternoon! If I had known, I would have prepared myself much better.'",
+        "Did you have problems with practical things? 'Plenty of red tape, of course, but the worst was my first apartment. The heating was faulty, and the landlord ignored my emails for weeks. I'm not someone who likes to make a fuss, but when the pipes froze, that was the last straw. I wrote him a formal letter asking when exactly the repair would be done and whether he would reduce the rent. In the end, he gave me a month free as a goodwill gesture.'",
+        "Has living abroad changed your values? 'It has made me think about what really matters. Back home, I used to say yes to everything just to fit in. Now I'm much better at standing my ground. If I were still in Manizales, I probably wouldn't be so independent. That said, I miss the warmth of the people, the coffee and my mother's cooking every single day.'",
+        "What do you miss most about Colombian customs? 'Sunday lunch with the whole family. Here, people usually meet friends in cafés, while at home we would spend five hours at my grandmother's table. So I've started inviting colleagues to my flat for sancocho once a month. At first they didn't know what to expect, but now they keep asking me when the next one is!'",
+        "And the future? 'By next summer, I'll have finished a master's degree in public health, and my partner and I will have been living together for two years. We're thinking of putting down roots here. Everything about Montreal suits me, except for one thing: I'm not sure I can face twenty more winters!'"
+      ],
+      "glossary": [
+        [
+          "a big deal",
+          "algo muy importante"
+        ],
+        [
+          "a fish out of water",
+          "como pez fuera del agua"
+        ],
+        [
+          "homesick",
+          "con nostalgia de casa"
+        ],
+        [
+          "the last straw",
+          "la gota que rebosó la copa"
+        ],
+        [
+          "standing my ground",
+          "mantenerme firme"
+        ],
+        [
+          "putting down roots",
+          "echar raíces"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What does Natalia say about her neighbours in Manizales?",
+          "options": [
+            "They would play music every weekend.",
+            "They complained about noise.",
+            "They rarely spoke to her.",
+            "They helped her move to Canada."
+          ],
+          "answer": 0,
+          "explain_es": "Natalia dice: “In Manizales, my neighbours would play music every weekend and nobody minded.”"
+        },
+        {
+          "type": "tf",
+          "q": "Natalia now believes that Canadians are cold people.",
+          "answer": "F",
+          "explain_es": "Falso: “I used to think Canadians were cold, but that was a stereotype. They’re just more private.”"
+        },
+        {
+          "type": "mc",
+          "q": "What does Natalia wish someone had told her before her first winter?",
+          "options": [
+            "How expensive heating is",
+            "How to speak French",
+            "How early it gets dark",
+            "How to find an apartment"
+          ],
+          "answer": 2,
+          "explain_es": "Natalia dice: “I wish someone had told me how dark it gets at four in the afternoon!”"
+        },
+        {
+          "type": "tf",
+          "q": "The landlord eventually gave Natalia a month without paying rent.",
+          "answer": "T",
+          "explain_es": "Verdadero: “In the end, he gave me a month free as a goodwill gesture.”"
+        },
+        {
+          "type": "tf",
+          "q": "Natalia's partner is also from Colombia.",
+          "answer": "NG",
+          "explain_es": "No se dice: Natalia menciona a su pareja, pero no dice de dónde es."
+        },
+        {
+          "type": "gap",
+          "q": "By next summer, Natalia will have finished a master's degree in public ___.",
+          "answer": "health",
+          "explain_es": "Natalia dice: “I’ll have finished a master’s degree in public health”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A Complaint to Swift Relocations",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Fiona",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Andrés",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good morning, Swift Relocations, Fiona speaking. How can I help?"
+        },
+        {
+          "s": 1,
+          "text": "Hi, my name is Andrés Molina. I'm calling about a shipment that should have arrived in Lisbon last Monday. I'm afraid I have a bone to pick with your company."
+        },
+        {
+          "s": 0,
+          "text": "I'm sorry to hear that, Mr Molina. Could you tell me what your reference number is?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, it's L M four seven two."
+        },
+        {
+          "s": 0,
+          "text": "Thank you. I can see that your boxes are still at the port in Valencia. There seems to be a problem with the customs paperwork."
+        },
+        {
+          "s": 1,
+          "text": "That's exactly what your colleague said a week ago. I've been putting up with excuses for ten days now. We've moved into an empty flat, and my kids are sleeping on mattresses on the floor."
+        },
+        {
+          "s": 0,
+          "text": "I completely understand. I wish I had better news for you."
+        },
+        {
+          "s": 1,
+          "text": "I'm not trying to make a fuss, but I'd like to know whether you can guarantee a delivery date."
+        },
+        {
+          "s": 0,
+          "text": "The documents should be approved tomorrow. If everything goes well, the boxes will have arrived by Friday afternoon."
+        },
+        {
+          "s": 1,
+          "text": "And if they haven't?"
+        },
+        {
+          "s": 0,
+          "text": "Then I'll escalate the case to my manager personally. In the meantime, as a goodwill gesture, we can refund twenty per cent of the shipping cost."
+        },
+        {
+          "s": 1,
+          "text": "Twenty per cent? Honestly, if your company had checked the paperwork properly in Bogotá, we wouldn't be in this situation now."
+        },
+        {
+          "s": 0,
+          "text": "You're right, and I apologise. Would you like me to put the offer in writing?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, please. And I'd like the refund to be thirty per cent, not twenty. I'm going to stand my ground on this."
+        },
+        {
+          "s": 0,
+          "text": "I can't promise that, but I'll take it up with my manager and call you back before five o'clock today."
+        },
+        {
+          "s": 1,
+          "text": "Thank you, Fiona. I'll be waiting for your call."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Where are Andrés's boxes now?",
+          "options": [
+            "In Lisbon",
+            "In Bogotá",
+            "At the port in Valencia",
+            "In his new flat"
+          ],
+          "answer": 2,
+          "explain_es": "Fiona dice: “your boxes are still at the port in Valencia”."
+        },
+        {
+          "type": "tf",
+          "q": "This is the first time Andrés has contacted the company about the problem.",
+          "answer": "F",
+          "explain_es": "Falso: Andrés dice “That’s exactly what your colleague said a week ago”, así que ya había llamado antes."
+        },
+        {
+          "type": "mc",
+          "q": "What does Andrés say about his children?",
+          "options": [
+            "They are sleeping on mattresses on the floor.",
+            "They are staying with friends.",
+            "They have started school.",
+            "They are homesick."
+          ],
+          "answer": 0,
+          "explain_es": "Andrés dice: “my kids are sleeping on mattresses on the floor”."
+        },
+        {
+          "type": "gap",
+          "q": "If the documents are approved, the boxes will have arrived by ___ afternoon.",
+          "answer": "Friday",
+          "explain_es": "Fiona dice: “the boxes will have arrived by Friday afternoon”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Fiona offer as a goodwill gesture?",
+          "options": [
+            "Free delivery on his next move",
+            "A hotel room for the family",
+            "A refund of 30% of the shipping cost",
+            "A refund of 20% of the shipping cost"
+          ],
+          "answer": 3,
+          "explain_es": "Fiona ofrece: “as a goodwill gesture, we can refund twenty per cent of the shipping cost”. El 30 % es lo que pide Andrés."
+        },
+        {
+          "type": "tf",
+          "q": "Fiona agrees to give Andrés a thirty per cent refund.",
+          "answer": "F",
+          "explain_es": "Falso: Fiona responde “I can’t promise that, but I’ll take it up with my manager”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "You bought a product online that turned out to be faulty, and the company has not solved the problem. Write a formal letter of complaint explaining what happened, what you have already done and what you expect the company to do. Write 180–250 words.",
+      "prompt_es": "Escribe una carta formal de queja por un producto defectuoso: explica el problema y lo que esperas.",
+      "genre_es": "Carta formal de queja",
+      "minWords": 180,
+      "maxWords": 250,
+      "criteria": [
+        "Use at least two indirect questions (I would like to know whether…, Could you tell me how long…).",
+        "Include a noun clause as subject or object (What concerns me most is…).",
+        "Express a regret with wish or if only, and use a mixed or unreal conditional.",
+        "Use at least four words from Units 9–12 (faulty, refund, escalate, the last straw, stand your ground…).",
+        "Keep a polite, formal register and finish with a clear request."
+      ],
+      "model": "Dear Customer Service Manager,\n\nI am writing to complain about a laptop I bought from your online shop on 3 May (order number 58214).\n\nWhen the laptop arrived, it seemed perfect. However, after only two weeks the screen began to flicker, and now it switches off without warning. What concerns me most is that I use it every day for work, so I have already lost several hours of important tasks. I contacted your helpline twice, and on both occasions I was told that a technician would call me back. Nobody did, and that was the last straw.\n\nI would therefore like to know whether you will replace the faulty laptop or give me a full refund. Could you also tell me how long the process will take? I wish I had read the reviews of your after-sales service before ordering. If your staff had responded to my first call, I would not be writing this letter now.\n\nI am not someone who likes to make a fuss, but I am prepared to stand my ground. If I do not receive a reply within ten working days, I will have no choice but to escalate the matter to the consumer protection authority.\n\nI look forward to your prompt response.\n\nYours faithfully,\nDiana Cárdenas"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "How was your upbringing different from your parents' childhood? Talk about things your family used to do, or would do, when you were younger.",
+          "text_es": "Compara tu crianza con la infancia de tus padres y habla de costumbres familiares del pasado.",
+          "seconds": 60,
+          "tips": [
+            "Use used to for states and habits, and would for repeated actions.",
+            "Contrast with unlike and while."
+          ]
+        },
+        {
+          "text": "Describe a time you complained about a product or a service. What was the problem, what did you say, and how was it resolved?",
+          "text_es": "Narra una ocasión en que te quejaste de un producto o servicio y cómo se resolvió.",
+          "seconds": 90,
+          "tips": [
+            "Use indirect questions: I asked them whether…",
+            "Use faulty, refund, put up with and the last straw."
+          ]
+        },
+        {
+          "text": "Moral dilemma: you discover that a close friend lied on their CV to get a job. What would you do? Explain your reasoning and say where you would draw the line.",
+          "text_es": "Dilema moral: un amigo mintió en su hoja de vida. ¿Qué harías y dónde pondrías el límite?",
+          "seconds": 90,
+          "tips": [
+            "Use the unreal conditional: If I were in that situation, I'd…",
+            "Use integrity, dilemma, have qualms about and draw the line."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "b2-final",
+    "level": "B2",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial final · Nivel B2",
+    "intro_es": "Examen integrador de las 12 unidades del nivel B2: gerundios e infinitivos, modales pasados, cláusulas relativas y nominales, tiempos perfectos, voz pasiva, preguntas indirectas, condicionales irreales y mixtos, deseos y futuro perfecto, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
+    "minutes": 85,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "Have you considered ___ to your brother about the problem?",
+        "options": [
+          "to talk",
+          "talking",
+          "talk",
+          "to have talked"
+        ],
+        "answer": 1,
+        "explain_es": "“Consider” va seguido de gerundio: “Have you considered talking…?”."
+      },
+      {
+        "type": "mc",
+        "q": "You ___ brought a cake! We already had three. But thank you anyway.",
+        "options": [
+          "needn't have",
+          "mustn't have",
+          "can't have",
+          "shouldn't"
+        ],
+        "answer": 0,
+        "explain_es": "“Needn’t have + participio” indica que alguien hizo algo que no era necesario."
+      },
+      {
+        "type": "mc",
+        "q": "The café ___ we met for the first time has closed down.",
+        "options": [
+          "which",
+          "what",
+          "where",
+          "whose"
+        ],
+        "answer": 2,
+        "explain_es": "“Where” introduce una cláusula relativa que se refiere a un lugar (= in which)."
+      },
+      {
+        "type": "mc",
+        "q": "___ you're a night owl, try scheduling your hardest tasks in the evening.",
+        "options": [
+          "Unless",
+          "Since",
+          "Despite",
+          "However"
+        ],
+        "answer": 1,
+        "explain_es": "“Since” introduce una razón (= because): “Since you’re a night owl…”."
+      },
+      {
+        "type": "mc",
+        "q": "When I got to the newsroom, the editor ___ the headline.",
+        "options": [
+          "already changed",
+          "has already changed",
+          "was already changed",
+          "had already changed"
+        ],
+        "answer": 3,
+        "explain_es": "El pasado perfecto marca la acción anterior a otra acción pasada (“When I got there”), con “already” entre “had” y el participio."
+      },
+      {
+        "type": "mc",
+        "q": "You haven't told anyone about the update, ___?",
+        "options": [
+          "haven't you",
+          "have you",
+          "did you",
+          "don't you"
+        ],
+        "answer": 1,
+        "explain_es": "La frase es negativa (haven’t told), así que la question tag es positiva con el mismo auxiliar: “have you?”."
+      },
+      {
+        "type": "mc",
+        "q": "Anyone ___ to take part in the experiment should contact Dr Ruiz.",
+        "options": [
+          "wants",
+          "wanted",
+          "to want",
+          "wanting"
+        ],
+        "answer": 3,
+        "explain_es": "Es una cláusula relativa reducida: “Anyone who wants” → “Anyone wanting”."
+      },
+      {
+        "type": "mc",
+        "q": "The concert was perfect, ___ the long queue at the entrance.",
+        "options": [
+          "except for",
+          "unlike",
+          "while",
+          "although"
+        ],
+        "answer": 0,
+        "explain_es": "“Except for” introduce una única excepción y va seguido de un sustantivo."
+      },
+      {
+        "type": "mc",
+        "q": "If he weren't so shy, he ___ to the party last night.",
+        "options": [
+          "would go",
+          "went",
+          "would have gone",
+          "had gone"
+        ],
+        "answer": 2,
+        "explain_es": "Condicional mixto: un rasgo permanente del presente (weren’t so shy) explica un resultado pasado (would have gone… last night)."
+      },
+      {
+        "type": "gap",
+        "q": "It's essential ___ students to get enough sleep before an exam.",
+        "answer": "for",
+        "explain_es": "En “It’s + adjetivo + infinitivo”, la persona se introduce con “for” cuando el adjetivo no describe su carácter: “essential for students to…”."
+      },
+      {
+        "type": "gap",
+        "q": "If only I ___ (know) about the scholarship earlier. I would have applied.",
+        "answer": "had known",
+        "accept": [
+          "'d known"
+        ],
+        "explain_es": "“If only + pasado perfecto” expresa un lamento sobre el pasado."
+      },
+      {
+        "type": "transform",
+        "q": "Where is the customer service desk? → Could you tell me …?",
+        "answer": "Could you tell me where the customer service desk is?",
+        "explain_es": "En la pregunta indirecta el verbo va después del sujeto: “where the customer service desk is”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “I wish my neighbours don't play music so loudly at night.”",
+        "answer": "I wish my neighbours wouldn't play music so loudly at night.",
+        "accept": [
+          "I wish my neighbours would not play music so loudly at night.",
+          "I wish my neighbours didn't play music so loudly at night.",
+          "I wish my neighbours did not play music so loudly at night."
+        ],
+        "explain_es": "Para quejarse del comportamiento de otros se usa “wish + would/wouldn’t”; nunca el presente después de “wish”."
+      },
+      {
+        "type": "order",
+        "q": "landed / By / will / the time / we / you / wake up / have",
+        "answer": "By the time you wake up, we will have landed.",
+        "accept": [
+          "We will have landed by the time you wake up."
+        ],
+        "explain_es": "El futuro perfecto (will have + participio) indica una acción terminada antes de un momento futuro: “By the time you wake up…”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "My cousin and I were best friends as children, but we slowly ___ after university.",
+        "options": [
+          "patched things up",
+          "bonded",
+          "drifted apart",
+          "took after"
+        ],
+        "answer": 2,
+        "explain_es": "“To drift apart” es distanciarse poco a poco, sin una pelea."
+      },
+      {
+        "type": "mc",
+        "q": "The evidence against him was only ___; nobody had actually seen him take the money.",
+        "options": [
+          "circumstantial",
+          "eerie",
+          "baffling",
+          "vivid"
+        ],
+        "answer": 0,
+        "explain_es": "“Circumstantial” describe pruebas que sugieren algo pero no lo demuestran."
+      },
+      {
+        "type": "mc",
+        "q": "The newly discovered letters may ___ what really happened that night.",
+        "options": [
+          "overlook",
+          "jump to",
+          "figure",
+          "shed light on"
+        ],
+        "answer": 3,
+        "explain_es": "“To shed light on” es aclarar algo, dar una explicación."
+      },
+      {
+        "type": "mc",
+        "q": "New cafés and hostels have ___ all over the old town in the last two years.",
+        "options": [
+          "soaked up",
+          "sprung up",
+          "worn down",
+          "settled in"
+        ],
+        "answer": 1,
+        "explain_es": "“To spring up” es aparecer de repente y en gran número."
+      },
+      {
+        "type": "mc",
+        "q": "I was ___ after the twelve-hour flight, so I went straight to bed.",
+        "options": [
+          "shattered",
+          "productive",
+          "outspoken",
+          "quaint"
+        ],
+        "answer": 0,
+        "explain_es": "“To be shattered” es estar completamente agotado."
+      },
+      {
+        "type": "mc",
+        "q": "She's always ___: if she doesn't like your idea, she'll tell you, kindly but clearly.",
+        "options": [
+          "reserved",
+          "sluggish",
+          "candid",
+          "biased"
+        ],
+        "answer": 2,
+        "explain_es": "“Candid” describe a alguien honesto y directo, incluso sobre temas incómodos."
+      },
+      {
+        "type": "mc",
+        "q": "Two independent eyewitnesses ___ his version of events.",
+        "options": [
+          "backtracked",
+          "corroborated",
+          "blew up",
+          "broke"
+        ],
+        "answer": 1,
+        "explain_es": "“To corroborate” es confirmar una afirmación con pruebas independientes."
+      },
+      {
+        "type": "mc",
+        "q": "Think about your ___ before posting those photos; they may stay online forever.",
+        "options": [
+          "echo chamber",
+          "misinformation",
+          "opt-out",
+          "digital footprint"
+        ],
+        "answer": 3,
+        "explain_es": "La “digital footprint” es el rastro que dejamos en internet."
+      },
+      {
+        "type": "mc",
+        "q": "Tomás has a ___ for remembering phone numbers; he never writes them down.",
+        "options": [
+          "retention",
+          "knack",
+          "grasp",
+          "blank"
+        ],
+        "answer": 1,
+        "explain_es": "“To have a knack for” es tener una habilidad natural para algo."
+      },
+      {
+        "type": "mc",
+        "q": "She refused the bribe without a second's hesitation; she's a woman of great ___.",
+        "options": [
+          "dilemma",
+          "redress",
+          "second thoughts",
+          "integrity"
+        ],
+        "answer": 3,
+        "explain_es": "“Integrity” es la cualidad de ser honesto y tener principios morales firmes."
+      },
+      {
+        "type": "gap",
+        "q": "Lucas's constant jokes really rub me up the wrong ___.",
+        "answer": "way",
+        "explain_es": "“To rub someone up the wrong way” es irritar a alguien, a menudo sin querer."
+      },
+      {
+        "type": "gap",
+        "q": "Many teenagers feel pressure to ___ to what their friends expect. (behave as the group expects)",
+        "answer": "conform",
+        "explain_es": "“To conform” es comportarse como el grupo espera."
+      },
+      {
+        "type": "gap",
+        "q": "I refuse to put ___ with this noise any longer. Tomorrow I'm calling the landlord.",
+        "answer": "up",
+        "explain_es": "“To put up with” es tolerar algo desagradable."
+      },
+      {
+        "type": "gap",
+        "q": "Living abroad for a year really helped me broaden my ___.",
+        "answer": "horizons",
+        "explain_es": "“To broaden one’s horizons” es ampliar los conocimientos y las experiencias."
+      }
+    ],
+    "reading": {
+      "title": "What a Year in Edinburgh Taught Me",
+      "genre": "blog",
+      "paragraphs": [
+        "When I left Cali for a one-year master's degree in Edinburgh, my mother cried at the airport and my younger sister, who rarely sees eye to eye with me, said she would actually miss our arguments. I promised to write about my experience, so here it is: twelve months, a few lessons and one unsolved mystery.",
+        "The first lesson was about routines. In Cali, I used to stay up until two in the morning, and I would never get up before ten at weekends. Edinburgh changed all that. In winter the sun sets before four, so I had no choice but to become a morning person. After waking up at seven, I would walk to the library through the old town, which is steeped in history and incredibly quiet at that hour. Surprisingly, I have never been so productive.",
+        "The second lesson was about communication. Unlike most Colombians I know, many Scottish people I met were quite reserved at first, and I worried that I came across as too loud. My flatmate Callum, an easygoing engineer from Glasgow, explained that it's normal to keep a little distance with strangers. 'Give it time,' he said. He was right. By the spring we had bonded over football, terrible weather and his mother's soup, and I had discovered that being direct isn't rude if you're also kind.",
+        "The third lesson was about believing everything I read. In February, a rumour went round our building that the landlord was going to double the rent. People were furious, and some started looking for new flats. I decided to get to the bottom of it and simply asked him. The story had been blown completely out of proportion: he was only planning to replace the old windows, which would actually make the flats warmer and cheaper to heat. Since then, I've taken most online gossip with a pinch of salt.",
+        "There was a smaller lesson, too: how to complain. When my laptop broke a week before my final exams, I wanted to shout at the shop assistant. Instead, Callum suggested that I write a calm email asking whether the repair could be done in time. To my surprise, the shop not only fixed it in two days but also gave me a discount as a goodwill gesture. Being tactful, I realised, works far better than being angry.",
+        "And the mystery? Every Thursday night, someone left a bag of oranges outside our door. We never found out who. It can't have been Callum, because he was always at football training on Thursdays. It might have been the elderly woman downstairs, who always smiled when she saw us, but she denied it every time. I wish I had asked her one more time before I left.",
+        "Now that I'm back home, people often ask me whether I'd like to return. If I hadn't had such a wonderful year, I wouldn't be considering it, but the truth is that I am. By next June, I'll have saved enough money to visit again, and this time I'll stay up late on a Thursday to solve the mystery of the oranges."
+      ],
+      "glossary": [
+        [
+          "steeped in history",
+          "lleno de historia"
+        ],
+        [
+          "came across as",
+          "daba la impresión de ser"
+        ],
+        [
+          "flatmate",
+          "compañero de apartamento"
+        ],
+        [
+          "bonded over",
+          "nos unimos gracias a"
+        ],
+        [
+          "blown completely out of proportion",
+          "totalmente exagerada"
+        ],
+        [
+          "with a pinch of salt",
+          "con escepticismo"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why did Santiago become a morning person in Edinburgh?",
+          "options": [
+            "The sun set very early in winter.",
+            "His classes started very early.",
+            "His flatmate woke him up.",
+            "The library closed at noon."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “In winter the sun sets before four, so I had no choice but to become a morning person.”"
+        },
+        {
+          "type": "tf",
+          "q": "Santiago's younger sister usually agrees with him.",
+          "answer": "F",
+          "explain_es": "Falso: su hermana “rarely sees eye to eye with me”."
+        },
+        {
+          "type": "mc",
+          "q": "What did Callum advise Santiago to do?",
+          "options": [
+            "Speak more quietly",
+            "Join a football team",
+            "Give it time",
+            "Move to Glasgow"
+          ],
+          "answer": 2,
+          "explain_es": "Callum le dijo: “Give it time.”"
+        },
+        {
+          "type": "tf",
+          "q": "Santiago and Callum became friends partly because of football.",
+          "answer": "T",
+          "explain_es": "Verdadero: “By the spring we had bonded over football, terrible weather and his mother’s soup”."
+        },
+        {
+          "type": "mc",
+          "q": "What was the landlord actually planning?",
+          "options": [
+            "To double the rent",
+            "To sell the building",
+            "To replace the old windows",
+            "To ask some tenants to leave"
+          ],
+          "answer": 2,
+          "explain_es": "Santiago descubrió que “he was only planning to replace the old windows”."
+        },
+        {
+          "type": "tf",
+          "q": "Some neighbours moved out of the building because of the rumour.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto solo cuenta que “some started looking for new flats”, no que se hayan mudado."
+        },
+        {
+          "type": "mc",
+          "q": "Why does Santiago think Callum did not leave the oranges?",
+          "options": [
+            "Callum was at football training on Thursdays.",
+            "Callum didn't like oranges.",
+            "Callum said it was the neighbour.",
+            "Callum was in Glasgow every weekend."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “It can’t have been Callum, because he was always at football training on Thursdays.”"
+        },
+        {
+          "type": "gap",
+          "q": "By next June, Santiago will have saved enough money to ___ again.",
+          "answer": "visit",
+          "accept": [
+            "visit Edinburgh"
+          ],
+          "explain_es": "El último párrafo dice: “By next June, I’ll have saved enough money to visit again”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Crossing Borders",
+      "kind": "radio interview",
+      "speakers": [
+        {
+          "name": "Grace",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Jorge",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Hannah",
+          "voice": "female",
+          "accent": "au"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good evening and welcome to Crossing Borders. Tonight I'm talking to two people who have swapped countries. Jorge Patiño is a Colombian chef who moved to Sydney six years ago, and Hannah Lee is an Australian teacher who has been living in Bogotá since 2019. Welcome to you both."
+        },
+        {
+          "s": 1,
+          "text": "Thanks, Grace. It's great to be here."
+        },
+        {
+          "s": 2,
+          "text": "Thank you for having us."
+        },
+        {
+          "s": 0,
+          "text": "Hannah, let's start with you. What was your biggest culture shock?"
+        },
+        {
+          "s": 2,
+          "text": "Definitely the altitude. Bogotá is more than two and a half thousand metres high, and for the first month I was shattered all the time. I'd climb the stairs to my flat and need to sit down. It took me ages to acclimatise."
+        },
+        {
+          "s": 0,
+          "text": "And socially?"
+        },
+        {
+          "s": 2,
+          "text": "People here are incredibly warm. Unlike my friends in Sydney, who usually arrange things weeks in advance, my Colombian friends would call me at seven in the evening and say, come over now. At first it rubbed me up the wrong way, but now I love it."
+        },
+        {
+          "s": 0,
+          "text": "Jorge, is it the opposite for you?"
+        },
+        {
+          "s": 1,
+          "text": "Pretty much. When I arrived, I used to turn up at parties an hour late, because that's normal in Barranquilla. Nobody told me it was rude, but I could read between the lines. Now I'm the most punctual person I know."
+        },
+        {
+          "s": 0,
+          "text": "Did you ever feel like a fish out of water?"
+        },
+        {
+          "s": 1,
+          "text": "All the time in the first year. The worst moment was at work. I had a head chef who was very outspoken, and in Colombia that style would sound aggressive. I thought he hated me. It turned out he was just being candid. We get along brilliantly now."
+        },
+        {
+          "s": 0,
+          "text": "It's easy to generalise about a whole country, isn't it?"
+        },
+        {
+          "s": 2,
+          "text": "It is, and I try not to paint with a broad brush. By and large Colombians are very sociable, but my neighbour hardly speaks to anyone, and he's lovely."
+        },
+        {
+          "s": 0,
+          "text": "Is there anything you wish you'd done differently?"
+        },
+        {
+          "s": 1,
+          "text": "I wish I had learned to drive before moving. Getting around Sydney without a car is possible, but slow."
+        },
+        {
+          "s": 2,
+          "text": "For me, I wish I hadn't worried so much. If I had relaxed in the first few months, I would have enjoyed them much more."
+        },
+        {
+          "s": 0,
+          "text": "Final question. Where do you see yourselves in five years?"
+        },
+        {
+          "s": 1,
+          "text": "By then I'll have opened my own restaurant, I hope. Colombian food with Australian ingredients."
+        },
+        {
+          "s": 2,
+          "text": "And I'll have been living here for over ten years. I think I've already put down roots."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "How long has Jorge lived in Sydney?",
+          "options": [
+            "Two years",
+            "Four years",
+            "Ten years",
+            "Six years"
+          ],
+          "answer": 3,
+          "explain_es": "Grace presenta a Jorge como “a Colombian chef who moved to Sydney six years ago”."
+        },
+        {
+          "type": "tf",
+          "q": "Hannah felt very tired during her first month in Bogotá.",
+          "answer": "T",
+          "explain_es": "Verdadero: “for the first month I was shattered all the time”."
+        },
+        {
+          "type": "mc",
+          "q": "What used to annoy Hannah about her Colombian friends?",
+          "options": [
+            "They arrived late to dinners.",
+            "They invited her at the last minute.",
+            "They spoke too fast.",
+            "They never called her."
+          ],
+          "answer": 1,
+          "explain_es": "Hannah cuenta que la llamaban a las siete y le decían “come over now”, y que “At first it rubbed me up the wrong way”."
+        },
+        {
+          "type": "tf",
+          "q": "Someone told Jorge directly that arriving late was rude.",
+          "answer": "F",
+          "explain_es": "Falso: “Nobody told me it was rude, but I could read between the lines.”"
+        },
+        {
+          "type": "mc",
+          "q": "How did Jorge first interpret his head chef's style?",
+          "options": [
+            "He thought the chef hated him.",
+            "He thought the chef was joking.",
+            "He thought the chef was shy.",
+            "He thought the chef wanted to promote him."
+          ],
+          "answer": 0,
+          "explain_es": "Jorge dice: “I thought he hated me. It turned out he was just being candid.”"
+        },
+        {
+          "type": "gap",
+          "q": "Hannah says her ___ hardly speaks to anyone, but he is lovely.",
+          "answer": "neighbour",
+          "accept": [
+            "neighbor"
+          ],
+          "explain_es": "Hannah dice: “my neighbour hardly speaks to anyone, and he’s lovely”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Jorge wish he had done before moving?",
+          "options": [
+            "Saved more money",
+            "Learned more English",
+            "Learned to drive",
+            "Visited Sydney first"
+          ],
+          "answer": 2,
+          "explain_es": "Jorge dice: “I wish I had learned to drive before moving.”"
+        },
+        {
+          "type": "tf",
+          "q": "Hannah is planning to return to Australia within five years.",
+          "answer": "F",
+          "explain_es": "Falso: Hannah dice que dentro de cinco años “I’ll have been living here for over ten years. I think I’ve already put down roots.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "'Every young person should live abroad for at least a year as part of their education.' Write an essay giving your opinion on this statement. Consider the advantages and the disadvantages, use examples and reach a clear conclusion. Write 200–250 words.",
+      "prompt_es": "Escribe un ensayo de opinión sobre si todos los jóvenes deberían vivir un año en el extranjero.",
+      "genre_es": "Ensayo de opinión",
+      "minWords": 200,
+      "maxWords": 250,
+      "criteria": [
+        "Organise the essay into an introduction, two body paragraphs and a conclusion.",
+        "Use contrast linkers (although, however, while, unlike) and at least one unreal or mixed conditional.",
+        "Show a range of B2 grammar: relative clauses, a gerund as subject, a passive form and a past modal (must have, should have).",
+        "Use at least five words from different units of the level (broaden your horizons, culture shock, settle in, homesick, stereotype…).",
+        "Finish with a clear personal opinion."
+      ],
+      "model": "Should Every Young Person Live Abroad?\n\nIn recent years, more and more young Colombians have spent a year studying or working in another country. Some people believe that this experience should be part of everyone's education. Although I see many advantages, I do not think it should be compulsory.\n\nOn the one hand, living abroad is one of the best ways to broaden your horizons. Being far from home forces you to become independent: you learn to cook, manage money and deal with red tape on your own. Moreover, experiencing culture shock teaches you that many stereotypes are simply wrong. My cousin, who spent a year in Germany, must have felt like a fish out of water at first, but she soon discovered that her neighbours were far warmer than she had expected.\n\nOn the other hand, not everyone is ready for such a big change. Some students feel homesick and never really settle in, which can affect their studies and their mental health. In addition, a year abroad is expensive. If governments made it obligatory, families with less money would be put under enormous pressure.\n\nIn my opinion, the solution is to offer opportunities rather than obligations. Universities should create more scholarships and exchange programmes, while young people who choose to stay should not be made to feel that they have missed out. If I hadn't received a scholarship myself, I would never have been able to go."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Looking back on this level, which topic has been most useful in your life, and why? Mention something you used to find difficult in English and how that has changed.",
+          "text_es": "Reflexiona sobre el nivel: qué tema te ha sido más útil y qué te costaba antes en inglés.",
+          "seconds": 60,
+          "tips": [
+            "Use used to and the present perfect: I used to…, but now I have…",
+            "Use a noun clause: What helped me most was…"
+          ]
+        },
+        {
+          "text": "Tell the story of a time you felt like a fish out of water in a new place. Describe the place, explain what happened and say what you should have done differently.",
+          "text_es": "Narra una vez en que te sentiste como pez fuera del agua en un lugar nuevo.",
+          "seconds": 90,
+          "tips": [
+            "Use relative clauses and adjectives in the right order to describe the place.",
+            "Use the past perfect and should have for regrets."
+          ]
+        },
+        {
+          "text": "Debate: 'Social media does more harm than good to family relationships.' Give your opinion, respond to a counter-argument and suggest a solution.",
+          "text_es": "Debate: ¿las redes sociales perjudican más de lo que ayudan a las relaciones familiares?",
+          "seconds": 120,
+          "tips": [
+            "Use contrast: While some people argue that…, I believe…",
+            "Use unreal conditionals and wish: If families spent less time online…"
+          ]
+        }
+      ]
+    }
+  }
+]

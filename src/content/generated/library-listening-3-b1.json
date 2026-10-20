@@ -1,0 +1,1838 @@
+[
+  {
+    "id": "l3-b1-marathon-plan",
+    "title": "Ten Weeks to the Marathon",
+    "level": "B1",
+    "kind": "conversation",
+    "topic": "Marathon training",
+    "focus": "Future continuous and future perfect",
+    "emoji": "🏃",
+    "speakers": [
+      {
+        "name": "Megan",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Diego",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, Diego, the race is ten weeks away, so let's look at your training plan. Are you ready?"
+      },
+      {
+        "s": 1,
+        "text": "I think so. I'm a bit nervous, to be honest. I've never run more than twenty kilometres."
+      },
+      {
+        "s": 0,
+        "text": "That's normal. By the end of next month, you'll have run thirty kilometres at least once. I promise."
+      },
+      {
+        "s": 1,
+        "text": "Thirty? Wow. So what will I be doing in the first few weeks?"
+      },
+      {
+        "s": 0,
+        "text": "For the first three weeks, you'll be running four times a week. Three short runs and one long run on Sundays."
+      },
+      {
+        "s": 1,
+        "text": "And what about the gym? Will I be lifting weights as well?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, twice a week, but nothing too heavy. We want strong legs, not tired legs."
+      },
+      {
+        "s": 1,
+        "text": "Okay. And when will I be doing the really long runs?"
+      },
+      {
+        "s": 0,
+        "text": "In weeks five to eight. By week eight, you'll have completed three runs of over thirty kilometres. After that, we'll slow down."
+      },
+      {
+        "s": 1,
+        "text": "Slow down? Just before the race?"
+      },
+      {
+        "s": 0,
+        "text": "Exactly. In the last two weeks, you'll be resting more and eating lots of pasta and rice. Your body needs to recover."
+      },
+      {
+        "s": 1,
+        "text": "That sounds like the best part of the plan! What time does the race start, by the way?"
+      },
+      {
+        "s": 0,
+        "text": "At six in the morning. So this time in ten weeks, you'll be standing at the start line, probably feeling very excited."
+      },
+      {
+        "s": 1,
+        "text": "And by lunchtime I'll have finished, I hope!"
+      },
+      {
+        "s": 0,
+        "text": "If you follow the plan, you'll have finished long before lunch. Most runners at your level take about four hours."
+      },
+      {
+        "s": 1,
+        "text": "Four hours. Okay. I'll be thinking about that pasta the whole way."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many times a week will Diego run in the first three weeks?",
+        "options": [
+          "Twice",
+          "Three times",
+          "Four times",
+          "Every day"
+        ],
+        "answer": 2,
+        "explain_es": "Megan dice: 'you'll be running four times a week. Three short runs and one long run on Sundays.'"
+      },
+      {
+        "type": "mc",
+        "q": "What will Diego do in the last two weeks before the race?",
+        "options": [
+          "Run longer distances",
+          "Rest more and eat lots of pasta and rice",
+          "Lift heavy weights",
+          "Stop eating carbohydrates"
+        ],
+        "answer": 1,
+        "explain_es": "Megan: 'In the last two weeks, you'll be resting more and eating lots of pasta and rice.'"
+      },
+      {
+        "type": "tf",
+        "q": "Diego has already run more than thirty kilometres.",
+        "answer": "F",
+        "explain_es": "Diego dice: 'I've never run more than twenty kilometres.'"
+      },
+      {
+        "type": "tf",
+        "q": "Megan has run a marathon herself.",
+        "answer": "NG",
+        "explain_es": "La conversación no dice si Megan ha corrido un maratón."
+      },
+      {
+        "type": "gap",
+        "q": "By the end of next month, you'll have _____ thirty kilometres at least once.",
+        "answer": "run",
+        "accept": [
+          "run"
+        ],
+        "explain_es": "Futuro perfecto: will have + participio (run → run). Megan: 'you'll have run thirty kilometres'."
+      },
+      {
+        "type": "transform",
+        "q": "Use the future continuous (stand): 'So this time in ten weeks, you _____ at the start line.'",
+        "answer": "will be standing",
+        "accept": [
+          "'ll be standing"
+        ],
+        "explain_es": "Futuro continuo (will be + -ing) para una acción en progreso en un momento futuro: 'you'll be standing at the start line'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'By week eight, you'll completed three runs of over thirty kilometres.'",
+        "answer": "By week eight, you'll have completed three runs of over thirty kilometres.",
+        "accept": [
+          "you'll have completed",
+          "will have completed",
+          "have completed"
+        ],
+        "explain_es": "El futuro perfecto necesita 'have': 'you'll have completed three runs'."
+      }
+    ],
+    "dictation": [
+      "Three short runs and one long run on Sundays.",
+      "We want strong legs, not tired legs."
+    ]
+  },
+  {
+    "id": "l3-b1-golden-gate-tour",
+    "title": "Walking the Golden Gate",
+    "level": "B1",
+    "kind": "tour",
+    "topic": "A famous bridge",
+    "focus": "Passive in different tenses",
+    "emoji": "🌉",
+    "speakers": [
+      {
+        "name": "Rachel",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Martin",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, everyone, and welcome to the Golden Gate Bridge. Please stay together on the walkway and watch out for bikes."
+      },
+      {
+        "s": 0,
+        "text": "The bridge was opened in nineteen thirty-seven. At that time, it was the longest bridge of its kind in the world."
+      },
+      {
+        "s": 1,
+        "text": "How long did it take to build?"
+      },
+      {
+        "s": 0,
+        "text": "The work was started in nineteen thirty-three, so it was finished in about four years. Thousands of workers were employed, and a safety net was hung under the bridge to protect them."
+      },
+      {
+        "s": 1,
+        "text": "And what about the colour? Was it always orange?"
+      },
+      {
+        "s": 0,
+        "text": "Good question. The steel was covered in a red-orange paint to protect it, and people liked it so much that it was never changed. The colour is called International Orange."
+      },
+      {
+        "s": 0,
+        "text": "Interestingly, the Navy wanted it to be painted black and yellow, so that it could be seen more easily by ships."
+      },
+      {
+        "s": 1,
+        "text": "Is it being painted right now? I can see some people up there."
+      },
+      {
+        "s": 0,
+        "text": "Yes, it's being painted all the time. A team of painters works on it every day, because the salty air damages the metal."
+      },
+      {
+        "s": 0,
+        "text": "Since it opened, the bridge has been crossed by more than two billion vehicles."
+      },
+      {
+        "s": 1,
+        "text": "That's amazing. Has it ever been closed because of the weather?"
+      },
+      {
+        "s": 0,
+        "text": "Only a few times. It has been closed because of very strong winds, but that doesn't happen often."
+      },
+      {
+        "s": 0,
+        "text": "The fog, on the other hand, is very common, especially in summer. On some days the towers can't be seen at all."
+      },
+      {
+        "s": 1,
+        "text": "I hope we can see them today!"
+      },
+      {
+        "s": 0,
+        "text": "We're lucky this morning. In a few minutes, a group photo will be taken at the next viewpoint, and after that you'll be given free time to walk to the other side."
+      },
+      {
+        "s": 1,
+        "text": "Will the photos be sent to us by email?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, they'll be sent tonight. Okay, let's keep walking."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When was the bridge opened?",
+        "options": [
+          "In 1933",
+          "In 1937",
+          "In 1947",
+          "In 1973"
+        ],
+        "answer": 1,
+        "explain_es": "La guía dice: 'The bridge was opened in nineteen thirty-seven.' En 1933 empezó la obra."
+      },
+      {
+        "type": "mc",
+        "q": "Why do painters work on the bridge every day?",
+        "options": [
+          "Because the colour changes every year",
+          "Because tourists ask for it",
+          "Because the salty air damages the metal",
+          "Because the Navy wants it"
+        ],
+        "answer": 2,
+        "explain_es": "Rachel: 'because the salty air damages the metal'."
+      },
+      {
+        "type": "tf",
+        "q": "The Navy wanted the bridge to be black and yellow.",
+        "answer": "T",
+        "explain_es": "Rachel: 'the Navy wanted it to be painted black and yellow'."
+      },
+      {
+        "type": "tf",
+        "q": "Fog is rare in summer.",
+        "answer": "F",
+        "explain_es": "Rachel: 'The fog... is very common, especially in summer.'"
+      },
+      {
+        "type": "tf",
+        "q": "Rachel has worked as a tour guide for many years.",
+        "answer": "NG",
+        "explain_es": "No se dice nada sobre la experiencia de la guía."
+      },
+      {
+        "type": "gap",
+        "q": "Is it being painted right now? Yes, it's _____ painted all the time.",
+        "answer": "being",
+        "accept": [
+          "being"
+        ],
+        "explain_es": "Pasiva en presente continuo: is/are + being + participio. Rachel: 'it's being painted all the time'."
+      },
+      {
+        "type": "transform",
+        "q": "Change to the passive: 'They will send the photos tonight.' → The photos _____ tonight.",
+        "answer": "will be sent",
+        "accept": [
+          "'ll be sent"
+        ],
+        "explain_es": "Pasiva en futuro: will + be + participio. Rachel: 'they'll be sent tonight'."
+      }
+    ],
+    "dictation": [
+      "Please stay together on the walkway and watch out for bikes.",
+      "The fog, on the other hand, is very common, especially in summer."
+    ]
+  },
+  {
+    "id": "l3-b1-school-trip-delay",
+    "title": "The Bus Broke Down",
+    "level": "B1",
+    "kind": "phone-call",
+    "topic": "A school trip delay",
+    "focus": "Time clauses (as soon as, by the time, until)",
+    "emoji": "🚌",
+    "speakers": [
+      {
+        "name": "Carlos",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Ms Pineda",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello?"
+      },
+      {
+        "s": 1,
+        "text": "Hello, Mr Vargas? This is Laura Pineda, Sofía's teacher. Don't worry, everyone's fine, but I'm calling about the school trip."
+      },
+      {
+        "s": 0,
+        "text": "Oh, okay. Is something wrong?"
+      },
+      {
+        "s": 1,
+        "text": "The bus broke down about an hour ago, on the road back from Villa de Leyva. We're waiting at a petrol station until the mechanic arrives."
+      },
+      {
+        "s": 0,
+        "text": "I see. When do you think you'll get back to Bogotá?"
+      },
+      {
+        "s": 1,
+        "text": "Well, the mechanic says he'll be here by four. As soon as he checks the engine, he'll tell us if he can fix it."
+      },
+      {
+        "s": 0,
+        "text": "And if he can't?"
+      },
+      {
+        "s": 1,
+        "text": "Then the company will send another bus. But by the time it gets here, it'll probably be dark, so we might arrive quite late."
+      },
+      {
+        "s": 0,
+        "text": "How late are we talking about?"
+      },
+      {
+        "s": 1,
+        "text": "Maybe around nine. I'll send a message to all the parents as soon as I know more."
+      },
+      {
+        "s": 0,
+        "text": "Thanks. Are the kids okay? Do they have food?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, they're fine. They're eating snacks and playing cards. We won't leave the petrol station until we're sure the bus is safe."
+      },
+      {
+        "s": 0,
+        "text": "That's the most important thing. Should I wait at the school, then?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, please, but don't leave home until you receive my message. There's no point waiting outside in the cold for hours."
+      },
+      {
+        "s": 0,
+        "text": "Okay. And please tell Sofía to call me when she gets a chance."
+      },
+      {
+        "s": 1,
+        "text": "Of course. I'll tell her as soon as I hang up. Thanks for understanding, Mr Vargas."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is the group waiting?",
+        "options": [
+          "At the school",
+          "At a petrol station",
+          "In Villa de Leyva",
+          "At a restaurant"
+        ],
+        "answer": 1,
+        "explain_es": "La profesora: 'We're waiting at a petrol station until the mechanic arrives.'"
+      },
+      {
+        "type": "mc",
+        "q": "If a new bus is needed, when might they arrive in Bogotá?",
+        "options": [
+          "At four",
+          "Around six",
+          "Around nine",
+          "The next morning"
+        ],
+        "answer": 2,
+        "explain_es": "La profesora: 'Maybe around nine.'"
+      },
+      {
+        "type": "tf",
+        "q": "The mechanic has already fixed the bus.",
+        "answer": "F",
+        "explain_es": "El mecánico todavía no ha llegado: 'he'll be here by four'."
+      },
+      {
+        "type": "tf",
+        "q": "The children are eating snacks and playing cards.",
+        "answer": "T",
+        "explain_es": "La profesora: 'They're eating snacks and playing cards.'"
+      },
+      {
+        "type": "tf",
+        "q": "This is the first school trip of the year.",
+        "answer": "NG",
+        "explain_es": "La llamada no dice si es el primer paseo del año."
+      },
+      {
+        "type": "gap",
+        "q": "We're waiting at a petrol station _____ the mechanic arrives.",
+        "answer": "until",
+        "accept": [
+          "till",
+          "until"
+        ],
+        "explain_es": "'Until' = hasta que: la espera continúa hasta ese momento. La profesora: 'until the mechanic arrives'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'As soon as he will check the engine, he'll tell us if he can fix it.'",
+        "answer": "As soon as he checks the engine, he'll tell us if he can fix it.",
+        "accept": [
+          "As soon as he checks",
+          "checks"
+        ],
+        "explain_es": "Después de 'as soon as', 'when', 'until' o 'by the time' usamos presente, no 'will', aunque hablemos del futuro: 'As soon as he checks the engine'."
+      }
+    ],
+    "dictation": [
+      "They're eating snacks and playing cards.",
+      "That's the most important thing."
+    ]
+  },
+  {
+    "id": "l3-b1-free-year-podcast",
+    "title": "What Would You Do with a Free Year?",
+    "level": "B1",
+    "kind": "podcast",
+    "topic": "Dreams & free time",
+    "focus": "Second conditional",
+    "emoji": "🌍",
+    "speakers": [
+      {
+        "name": "Hannah",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Josh",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome back to Coffee Break Questions. I'm Hannah."
+      },
+      {
+        "s": 1,
+        "text": "And I'm Josh. Today's question comes from a listener in Cali: if you had a whole year free, with enough money, what would you do?"
+      },
+      {
+        "s": 0,
+        "text": "Ooh, that's a good one. Honestly, if I had a free year, I'd travel across South America by bus."
+      },
+      {
+        "s": 1,
+        "text": "By bus? Wouldn't that be really tiring?"
+      },
+      {
+        "s": 0,
+        "text": "Maybe, but if I flew everywhere, I wouldn't see the small towns. I'd start in Patagonia and finish in the north of Colombia."
+      },
+      {
+        "s": 1,
+        "text": "That sounds amazing. If I were you, I'd learn some Spanish first, though."
+      },
+      {
+        "s": 0,
+        "text": "Definitely. What about you, Josh? What would you do?"
+      },
+      {
+        "s": 1,
+        "text": "I think I'd learn to cook properly. If I had more time, I wouldn't eat toast for dinner three nights a week."
+      },
+      {
+        "s": 0,
+        "text": "Toast for dinner? Josh, that's terrible!"
+      },
+      {
+        "s": 1,
+        "text": "I know! So I'd spend six months in Italy and six months in Mexico, taking cooking classes."
+      },
+      {
+        "s": 0,
+        "text": "And would you open a restaurant when you came back?"
+      },
+      {
+        "s": 1,
+        "text": "No way. If I opened a restaurant, I'd never have a free year again!"
+      },
+      {
+        "s": 0,
+        "text": "Fair point. We also asked some listeners. Marta told us that if she didn't have to work, she'd volunteer at an animal shelter."
+      },
+      {
+        "s": 1,
+        "text": "And Luis said he'd write a novel. He's had the idea for years, but he never has time."
+      },
+      {
+        "s": 0,
+        "text": "So, what would you do if you had a free year? Send us a message and we'll read the best answers next week."
+      },
+      {
+        "s": 1,
+        "text": "See you then!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How would Hannah travel around South America?",
+        "options": [
+          "By plane",
+          "By car",
+          "By bus",
+          "By bike"
+        ],
+        "answer": 2,
+        "explain_es": "Hannah: 'I'd travel across South America by bus.'"
+      },
+      {
+        "type": "mc",
+        "q": "Where would Josh take cooking classes?",
+        "options": [
+          "In Italy and Mexico",
+          "In Colombia and Peru",
+          "In France and Spain",
+          "In Australia"
+        ],
+        "answer": 0,
+        "explain_es": "Josh: 'I'd spend six months in Italy and six months in Mexico, taking cooking classes.'"
+      },
+      {
+        "type": "tf",
+        "q": "Josh is already a very good cook.",
+        "answer": "F",
+        "explain_es": "Josh quiere 'learn to cook properly' y come tostadas de cena tres noches por semana."
+      },
+      {
+        "type": "tf",
+        "q": "The question came from a listener in Cali.",
+        "answer": "T",
+        "explain_es": "Josh: 'Today's question comes from a listener in Cali'."
+      },
+      {
+        "type": "tf",
+        "q": "Hannah has already visited Patagonia.",
+        "answer": "NG",
+        "explain_es": "Hannah dice que empezaría en la Patagonia, pero no dice si ya la conoce."
+      },
+      {
+        "type": "gap",
+        "q": "If I _____ you, I'd learn some Spanish first.",
+        "answer": "were",
+        "accept": [
+          "was"
+        ],
+        "explain_es": "Para dar consejos usamos 'If I were you, I'd...' (segundo condicional). 'Was' también se oye en inglés informal."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'If I would have more time, I wouldn't eat toast for dinner.'",
+        "answer": "If I had more time, I wouldn't eat toast for dinner.",
+        "accept": [
+          "If I had more time",
+          "had"
+        ],
+        "explain_es": "En el segundo condicional la parte con 'if' va en pasado simple, sin 'would': 'If I had more time...'"
+      }
+    ],
+    "dictation": [
+      "Toast for dinner? Josh, that's terrible!",
+      "Send us a message and we'll read the best answers next week."
+    ]
+  },
+  {
+    "id": "l3-b1-cup-final",
+    "title": "The Final We Nearly Won",
+    "level": "B1",
+    "kind": "conversation",
+    "topic": "Amateur football",
+    "focus": "Third conditional",
+    "emoji": "⚽",
+    "speakers": [
+      {
+        "name": "Jess",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Mateo",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hey, Mateo. I heard about the final on Saturday. I'm really sorry."
+      },
+      {
+        "s": 1,
+        "text": "Thanks. I still can't stop thinking about it. We lost two-one in the last minute."
+      },
+      {
+        "s": 0,
+        "text": "What happened? You were winning at half-time, weren't you?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, one-nil. If I had scored that penalty in the second half, we would have won easily."
+      },
+      {
+        "s": 0,
+        "text": "You missed a penalty? Oh no."
+      },
+      {
+        "s": 1,
+        "text": "I hit the post. If I'd kicked it a bit more to the left, it would have gone in."
+      },
+      {
+        "s": 0,
+        "text": "Come on, it wasn't only your fault. What about the rest of the team?"
+      },
+      {
+        "s": 1,
+        "text": "Well, our goalkeeper was ill, so a defender played in goal. If Carlos had been there, he would have stopped that last goal for sure."
+      },
+      {
+        "s": 0,
+        "text": "Exactly. So it was bad luck, not just you."
+      },
+      {
+        "s": 1,
+        "text": "Maybe. And our coach was angry with the referee. He said that if the referee had seen the foul on Andrés, we would have got a free kick."
+      },
+      {
+        "s": 0,
+        "text": "Honestly, if you hadn't played so well in the semi-final, you wouldn't have been in the final at all."
+      },
+      {
+        "s": 1,
+        "text": "That's true. I hadn't thought about it like that."
+      },
+      {
+        "s": 0,
+        "text": "And remember, last year you didn't even get past the first round."
+      },
+      {
+        "s": 1,
+        "text": "Ha, you're right. We've improved a lot."
+      },
+      {
+        "s": 0,
+        "text": "So stop worrying. Next year you'll win it. And you'll practise penalties every day, right?"
+      },
+      {
+        "s": 1,
+        "text": "Every single day. I promise."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the score at half-time?",
+        "options": [
+          "Nil-nil",
+          "One-nil to Mateo's team",
+          "Two-one to Mateo's team",
+          "One-nil to the other team"
+        ],
+        "answer": 1,
+        "explain_es": "Jess pregunta si iban ganando y Mateo dice: 'Yes, one-nil.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why didn't Carlos play in the final?",
+        "options": [
+          "He was ill",
+          "He was angry with the coach",
+          "He was on holiday",
+          "He was injured in the semi-final"
+        ],
+        "answer": 0,
+        "explain_es": "Mateo: 'our goalkeeper was ill, so a defender played in goal. If Carlos had been there...'"
+      },
+      {
+        "type": "tf",
+        "q": "Mateo's penalty hit the post.",
+        "answer": "T",
+        "explain_es": "Mateo: 'I hit the post.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mateo's team lost the final in the first half.",
+        "answer": "F",
+        "explain_es": "Iban ganando al medio tiempo y perdieron 'in the last minute'."
+      },
+      {
+        "type": "tf",
+        "q": "The referee apologised after the match.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que el entrenador estaba enojado con el árbitro; no se habla de disculpas."
+      },
+      {
+        "type": "gap",
+        "q": "If I _____ scored that penalty in the second half, we would have won easily.",
+        "answer": "had",
+        "accept": [
+          "'d"
+        ],
+        "explain_es": "Tercer condicional: If + had + participio, would have + participio. Mateo: 'If I had scored that penalty...'"
+      },
+      {
+        "type": "transform",
+        "q": "Complete the third conditional: 'Carlos wasn't there, so he didn't stop the last goal.' → If Carlos had been there, he _____ that last goal.",
+        "answer": "would have stopped",
+        "accept": [
+          "'d have stopped",
+          "would've stopped"
+        ],
+        "explain_es": "Resultado imaginario en el pasado: would have + participio. Mateo: 'he would have stopped that last goal for sure'."
+      }
+    ],
+    "dictation": [
+      "Thanks. I still can't stop thinking about it.",
+      "Every single day. I promise."
+    ]
+  },
+  {
+    "id": "l3-b1-neighbour-upstairs",
+    "title": "The Neighbour Upstairs",
+    "level": "B1",
+    "kind": "dialogue",
+    "topic": "Neighbours & noise",
+    "focus": "Reported speech (statements and questions)",
+    "emoji": "🏢",
+    "speakers": [
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ana",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "So, did you finally talk to the neighbour upstairs?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, I did, this morning. I knocked on her door and told her that the music had kept me awake all week."
+      },
+      {
+        "s": 0,
+        "text": "And what did she say?"
+      },
+      {
+        "s": 1,
+        "text": "She said she was really sorry. She told me that she hadn't realised the walls were so thin."
+      },
+      {
+        "s": 0,
+        "text": "Well, that's a good start. Did she explain why she plays music so late?"
+      },
+      {
+        "s": 1,
+        "text": "Yes. She said she worked night shifts at a hospital and that music helped her relax when she got home."
+      },
+      {
+        "s": 0,
+        "text": "Oh, I didn't know that. That makes it a bit more understandable."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. Then she asked me what time I usually went to bed."
+      },
+      {
+        "s": 0,
+        "text": "What did you tell her?"
+      },
+      {
+        "s": 1,
+        "text": "I said I went to bed at about eleven because I had to get up at six. Then she asked if headphones would be okay."
+      },
+      {
+        "s": 0,
+        "text": "Headphones? That's a perfect solution."
+      },
+      {
+        "s": 1,
+        "text": "That's what I said. She also asked whether I wanted to come for coffee on Sunday."
+      },
+      {
+        "s": 0,
+        "text": "Really? So now you're friends?"
+      },
+      {
+        "s": 1,
+        "text": "Maybe! She told me she had moved to the city only two months ago and didn't know anyone yet."
+      },
+      {
+        "s": 0,
+        "text": "Well, I think you handled it really well. I would have just complained to the building manager."
+      },
+      {
+        "s": 1,
+        "text": "I thought about it, but my mum always told me that a conversation was better than a complaint."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the neighbour play music late at night?",
+        "options": [
+          "She has parties every weekend",
+          "She works night shifts and music helps her relax",
+          "She is a musician",
+          "She can't hear well"
+        ],
+        "answer": 1,
+        "explain_es": "Ana: 'She said she worked night shifts at a hospital and that music helped her relax'."
+      },
+      {
+        "type": "mc",
+        "q": "What solution did the neighbour suggest?",
+        "options": [
+          "Moving to another flat",
+          "Turning the music off at eleven",
+          "Using headphones",
+          "Talking to the building manager"
+        ],
+        "answer": 2,
+        "explain_es": "Ana: 'she asked if headphones would be okay.'"
+      },
+      {
+        "type": "tf",
+        "q": "The neighbour knew that the walls were thin.",
+        "answer": "F",
+        "explain_es": "Ana: 'she hadn't realised the walls were so thin.'"
+      },
+      {
+        "type": "tf",
+        "q": "Ana has been invited for coffee on Sunday.",
+        "answer": "T",
+        "explain_es": "Ana: 'She also asked whether I wanted to come for coffee on Sunday.'"
+      },
+      {
+        "type": "tf",
+        "q": "The neighbour is a nurse.",
+        "answer": "NG",
+        "explain_es": "Solo sabemos que trabaja turnos de noche en un hospital; no se dice cuál es su trabajo."
+      },
+      {
+        "type": "transform",
+        "q": "The neighbour said: 'I'm really sorry.' → She said she _____ really sorry.",
+        "answer": "was",
+        "accept": [
+          "was"
+        ],
+        "explain_es": "En estilo indirecto el presente pasa a pasado: am → was. Ana: 'She said she was really sorry.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'She asked me what time did I usually go to bed.'",
+        "answer": "She asked me what time I usually went to bed.",
+        "accept": [
+          "what time I usually went to bed",
+          "She asked me what time I usually went to bed"
+        ],
+        "explain_es": "En preguntas indirectas no usamos 'did' y el orden es sujeto + verbo en pasado: 'what time I usually went to bed'."
+      }
+    ],
+    "dictation": [
+      "Headphones? That's a perfect solution.",
+      "And what did she say?"
+    ]
+  },
+  {
+    "id": "l3-b1-arepa-truck",
+    "title": "The Arepa Truck",
+    "level": "B1",
+    "kind": "interview",
+    "topic": "Street food business",
+    "focus": "Defining and non-defining relative clauses",
+    "emoji": "🚚",
+    "speakers": [
+      {
+        "name": "Olivia",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Jorge",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Today I'm talking to Jorge Castaño, the man who runs La Arepería Rodante, a food truck that has become famous in Miami. Jorge, welcome."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Olivia. It's great to be here."
+      },
+      {
+        "s": 0,
+        "text": "So, tell us about the truck. Where did it come from?"
+      },
+      {
+        "s": 1,
+        "text": "It's an old ice cream truck, which I bought from a retired couple in Florida. It was the only one that I could afford."
+      },
+      {
+        "s": 0,
+        "text": "And who taught you to make arepas?"
+      },
+      {
+        "s": 1,
+        "text": "My grandmother, who lived in Medellín all her life. She had a little shop where she sold arepas every morning."
+      },
+      {
+        "s": 0,
+        "text": "What makes your arepas different?"
+      },
+      {
+        "s": 1,
+        "text": "We use corn that we grind ourselves every day. And the cheese, which comes from a small farm in Georgia, is very similar to Colombian cheese."
+      },
+      {
+        "s": 0,
+        "text": "Who are your customers? Are they mostly Colombians?"
+      },
+      {
+        "s": 1,
+        "text": "Not at all. We get students who want something cheap, office workers who are in a hurry, and tourists who have never tried an arepa."
+      },
+      {
+        "s": 0,
+        "text": "Is there a dish that everyone orders?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, the arepa de choclo, which is a sweet corn arepa with cheese. People who try it usually come back the next day."
+      },
+      {
+        "s": 0,
+        "text": "And where can people find you?"
+      },
+      {
+        "s": 1,
+        "text": "We park near the university on weekdays. On Saturdays we go to Wynwood, where there's a big market."
+      },
+      {
+        "s": 0,
+        "text": "Jorge, thank you. I know where I'm having lunch today!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What kind of truck was it before?",
+        "options": [
+          "A post van",
+          "An ice cream truck",
+          "A school bus",
+          "A fire engine"
+        ],
+        "answer": 1,
+        "explain_es": "Jorge: 'It's an old ice cream truck, which I bought from a retired couple'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does the cheese come from?",
+        "options": [
+          "From Colombia",
+          "From the university",
+          "From a small farm in Georgia",
+          "From a market in Wynwood"
+        ],
+        "answer": 2,
+        "explain_es": "Jorge: 'the cheese, which comes from a small farm in Georgia'."
+      },
+      {
+        "type": "tf",
+        "q": "Most of Jorge's customers are Colombian.",
+        "answer": "F",
+        "explain_es": "Olivia pregunta si son mayormente colombianos y Jorge responde: 'Not at all.'"
+      },
+      {
+        "type": "tf",
+        "q": "Jorge's grandmother sold arepas in a shop.",
+        "answer": "T",
+        "explain_es": "Jorge: 'She had a little shop where she sold arepas every morning.'"
+      },
+      {
+        "type": "tf",
+        "q": "Jorge opened his food truck five years ago.",
+        "answer": "NG",
+        "explain_es": "La entrevista no dice cuándo abrió el food truck."
+      },
+      {
+        "type": "gap",
+        "q": "My grandmother, _____ lived in Medellín all her life, taught me.",
+        "answer": "who",
+        "accept": [
+          "who"
+        ],
+        "explain_es": "Relativo explicativo (entre comas) para personas: 'who'. Jorge: 'My grandmother, who lived in Medellín all her life'."
+      },
+      {
+        "type": "gap",
+        "q": "On Saturdays we go to Wynwood, _____ there's a big market.",
+        "answer": "where",
+        "accept": [
+          "where"
+        ],
+        "explain_es": "'Where' introduce una oración de relativo sobre un lugar: 'Wynwood, where there's a big market'."
+      }
+    ],
+    "dictation": [
+      "Thanks, Olivia. It's great to be here.",
+      "We park near the university on weekdays."
+    ]
+  },
+  {
+    "id": "l3-b1-grandpa-bogota",
+    "title": "When Grandpa Was My Age",
+    "level": "B1",
+    "kind": "conversation",
+    "topic": "City life then and now",
+    "focus": "used to / would / be used to",
+    "emoji": "👴",
+    "speakers": [
+      {
+        "name": "Isabella",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Grandpa Héctor",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Grandpa, can I ask you some questions for my school project? It's about how Bogotá has changed."
+      },
+      {
+        "s": 1,
+        "text": "Of course, sweetheart. Go ahead."
+      },
+      {
+        "s": 0,
+        "text": "How did you use to get to school when you were my age?"
+      },
+      {
+        "s": 1,
+        "text": "I used to walk. It took forty minutes, because nobody had a car in our family. My brothers and I would race each other down the hill."
+      },
+      {
+        "s": 0,
+        "text": "Forty minutes! Didn't you get tired?"
+      },
+      {
+        "s": 1,
+        "text": "Not really. We were used to it. Children walked everywhere back then."
+      },
+      {
+        "s": 0,
+        "text": "What did you use to do in your free time?"
+      },
+      {
+        "s": 1,
+        "text": "On Sundays, we would go to the park with a ball and play until it got dark. There were no mobile phones, so our mother used to whistle when it was time for dinner."
+      },
+      {
+        "s": 0,
+        "text": "Did Bogotá use to be as big as it is now?"
+      },
+      {
+        "s": 1,
+        "text": "Not at all. Lots of the neighbourhoods you know were farms. I remember cows near where the shopping centre is today."
+      },
+      {
+        "s": 0,
+        "text": "Wow. Is there anything you miss?"
+      },
+      {
+        "s": 1,
+        "text": "I miss the quiet. I'm still not used to all the traffic and noise, even after all these years."
+      },
+      {
+        "s": 0,
+        "text": "And is there anything that's better now?"
+      },
+      {
+        "s": 1,
+        "text": "Oh yes, the TransMilenio! I'm used to taking it now, and it's much faster than the old buses. And of course, I can video call your cousins in Spain."
+      },
+      {
+        "s": 0,
+        "text": "Thanks, Grandpa. This is going to be the best project in the class."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How did Grandpa get to school?",
+        "options": [
+          "By bus",
+          "By car",
+          "He walked for forty minutes",
+          "He rode a bike"
+        ],
+        "answer": 2,
+        "explain_es": "El abuelo: 'I used to walk. It took forty minutes'."
+      },
+      {
+        "type": "mc",
+        "q": "How did their mother tell them it was time for dinner?",
+        "options": [
+          "She called them on the phone",
+          "She whistled",
+          "She sent one of the brothers",
+          "She rang a bell"
+        ],
+        "answer": 1,
+        "explain_es": "El abuelo: 'our mother used to whistle when it was time for dinner'."
+      },
+      {
+        "type": "tf",
+        "q": "Grandpa's family had a car.",
+        "answer": "F",
+        "explain_es": "El abuelo: 'nobody had a car in our family'."
+      },
+      {
+        "type": "tf",
+        "q": "Grandpa is now used to the traffic and noise.",
+        "answer": "F",
+        "explain_es": "El abuelo: 'I'm still not used to all the traffic and noise'."
+      },
+      {
+        "type": "tf",
+        "q": "Grandpa's brothers still live in Bogotá.",
+        "answer": "NG",
+        "explain_es": "No se dice dónde viven ahora sus hermanos."
+      },
+      {
+        "type": "gap",
+        "q": "My brothers and I _____ race each other down the hill.",
+        "answer": "would",
+        "accept": [
+          "used to",
+          "'d"
+        ],
+        "explain_es": "'Would + verbo' describe acciones repetidas en el pasado: 'My brothers and I would race each other'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'How did you used to get to school?'",
+        "answer": "How did you use to get to school?",
+        "accept": [
+          "use to",
+          "did you use to"
+        ],
+        "explain_es": "Después de 'did' en preguntas y negativas escribimos 'use to', sin -d: 'How did you use to get to school?'"
+      }
+    ],
+    "dictation": [
+      "I miss the quiet.",
+      "Children walked everywhere back then."
+    ]
+  },
+  {
+    "id": "l3-b1-found-phone",
+    "title": "Whose Phone Is This?",
+    "level": "B1",
+    "kind": "dialogue",
+    "topic": "Lost property",
+    "focus": "Modals of deduction (must / might / can't)",
+    "emoji": "📱",
+    "speakers": [
+      {
+        "name": "Lily",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Sam",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Sam, look. Someone's left a phone on this table."
+      },
+      {
+        "s": 1,
+        "text": "Really? It must belong to the person who was sitting here before us."
+      },
+      {
+        "s": 0,
+        "text": "The woman with the red coat? She can't be far away. She left about two minutes ago."
+      },
+      {
+        "s": 1,
+        "text": "It might not be hers, though. Lots of people come in and out of this café."
+      },
+      {
+        "s": 0,
+        "text": "True. Let's see. The case has a sticker of a football team from Buenos Aires."
+      },
+      {
+        "s": 1,
+        "text": "Then it might be that Argentinian guy at the counter. He was talking about a match earlier."
+      },
+      {
+        "s": 0,
+        "text": "Hmm, it can't be his. He's still over there, and I can see his phone in his hand."
+      },
+      {
+        "s": 1,
+        "text": "Good point. Oh, it's ringing! The screen says Mum."
+      },
+      {
+        "s": 0,
+        "text": "It must be someone young, then. Should we answer?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, let's answer. Maybe the mum knows where the owner is."
+      },
+      {
+        "s": 0,
+        "text": "Let me do it. Hello? Yes, we found this phone in a café on Florida Street."
+      },
+      {
+        "s": 1,
+        "text": "What did she say?"
+      },
+      {
+        "s": 0,
+        "text": "She said it's her daughter's phone. She must be really worried, because her daughter has an exam this afternoon."
+      },
+      {
+        "s": 1,
+        "text": "An exam? Then she might be a student at the university. It's just round the corner."
+      },
+      {
+        "s": 0,
+        "text": "The mum's going to call her daughter's best friend. She thinks they might be together."
+      },
+      {
+        "s": 1,
+        "text": "Look, there's a girl running towards the café. That must be her!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where did Lily find the phone?",
+        "options": [
+          "On the floor",
+          "On their table in a café",
+          "In a taxi",
+          "At the university"
+        ],
+        "answer": 1,
+        "explain_es": "Lily: 'Someone's left a phone on this table.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why can't the phone belong to the man at the counter?",
+        "options": [
+          "He is too old",
+          "He left two minutes ago",
+          "He has his own phone in his hand",
+          "He doesn't like football"
+        ],
+        "answer": 2,
+        "explain_es": "Lily: 'it can't be his. He's still over there, and I can see his phone in his hand.'"
+      },
+      {
+        "type": "tf",
+        "q": "The phone case has a sticker of a football team.",
+        "answer": "T",
+        "explain_es": "Lily: 'The case has a sticker of a football team from Buenos Aires.'"
+      },
+      {
+        "type": "tf",
+        "q": "Sam answered the phone.",
+        "answer": "F",
+        "explain_es": "Lily dice 'Let me do it. Hello?'. Ella contestó."
+      },
+      {
+        "type": "tf",
+        "q": "The girl passed her exam.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que tiene un examen esta tarde; no sabemos el resultado."
+      },
+      {
+        "type": "gap",
+        "q": "Hmm, it _____ be his. He's still over there, and I can see his phone in his hand.",
+        "answer": "can't",
+        "accept": [
+          "cannot",
+          "can not"
+        ],
+        "explain_es": "'Can't' expresa que estamos seguros de que algo es imposible: 'it can't be his'."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a modal of deduction: 'I'm sure that girl is the owner!' → That _____ be her!",
+        "answer": "must",
+        "accept": [
+          "must"
+        ],
+        "explain_es": "'Must' = estamos casi seguros de que es verdad. Sam: 'That must be her!'"
+      }
+    ],
+    "dictation": [
+      "Someone's left a phone on this table.",
+      "What did she say?"
+    ]
+  },
+  {
+    "id": "l3-b1-rainy-holiday",
+    "title": "Rain in the Highlands",
+    "level": "B1",
+    "kind": "phone-call",
+    "topic": "Holidays & weather",
+    "focus": "wish + past simple",
+    "emoji": "🌧️",
+    "speakers": [
+      {
+        "name": "Andrés",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Natalia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi, Nati! How's Scotland? Are you having a great time?"
+      },
+      {
+        "s": 1,
+        "text": "Hi! Well, it's beautiful, but it hasn't stopped raining since we arrived. I wish the weather was better."
+      },
+      {
+        "s": 0,
+        "text": "Oh no. Is it cold too?"
+      },
+      {
+        "s": 1,
+        "text": "Very. I wish I had a warmer coat. I only packed a light jacket because I thought it was summer."
+      },
+      {
+        "s": 0,
+        "text": "It is summer! Well, in Scotland, anyway. What about the hotel?"
+      },
+      {
+        "s": 1,
+        "text": "The hotel is lovely, but it's very far from the village. I wish we had a car, because the bus only comes twice a day."
+      },
+      {
+        "s": 0,
+        "text": "Can't you rent one?"
+      },
+      {
+        "s": 1,
+        "text": "Not really. I don't know how to drive on the left, and Marcos is too scared to try. I wish he wasn't so nervous about it!"
+      },
+      {
+        "s": 0,
+        "text": "Ha! Poor Marcos. Have you tried the local food at least?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, the fish is amazing. But I wish they served breakfast later. It finishes at nine, and we're always late."
+      },
+      {
+        "s": 0,
+        "text": "Sounds like you need a holiday from your holiday."
+      },
+      {
+        "s": 1,
+        "text": "Exactly! And honestly, I wish you were here. You'd love the castles."
+      },
+      {
+        "s": 0,
+        "text": "I wish I was there too. It's thirty-four degrees in Cartagena and the air conditioning is broken."
+      },
+      {
+        "s": 1,
+        "text": "Do you want to swap? Some sun would be perfect right now."
+      },
+      {
+        "s": 0,
+        "text": "Deal! Send me some photos of the castles, okay?"
+      },
+      {
+        "s": 1,
+        "text": "I will. Love you. Bye!"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Natalia wish they had a car?",
+        "options": [
+          "The hotel has no parking",
+          "The bus only comes twice a day",
+          "Taxis are too expensive",
+          "She wants to drive on the left"
+        ],
+        "answer": 1,
+        "explain_es": "Natalia: 'I wish we had a car, because the bus only comes twice a day.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why is Natalia cold?",
+        "options": [
+          "She only packed a light jacket",
+          "The hotel has no heating",
+          "She lost her coat",
+          "She went swimming"
+        ],
+        "answer": 0,
+        "explain_es": "Natalia: 'I only packed a light jacket because I thought it was summer.'"
+      },
+      {
+        "type": "tf",
+        "q": "Breakfast at the hotel finishes at nine.",
+        "answer": "T",
+        "explain_es": "Natalia: 'It finishes at nine, and we're always late.'"
+      },
+      {
+        "type": "tf",
+        "q": "Marcos wants to drive on the left.",
+        "answer": "F",
+        "explain_es": "Natalia: 'Marcos is too scared to try.'"
+      },
+      {
+        "type": "tf",
+        "q": "Andrés has visited Scotland before.",
+        "answer": "NG",
+        "explain_es": "La llamada no dice si Andrés ha estado en Escocia."
+      },
+      {
+        "type": "gap",
+        "q": "Very. I wish I _____ a warmer coat.",
+        "answer": "had",
+        "accept": [
+          "had"
+        ],
+        "explain_es": "'Wish + pasado simple' = deseo sobre el presente: 'I wish I had a warmer coat' (no tiene uno)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'I wish he isn't so nervous about it!'",
+        "answer": "I wish he wasn't so nervous about it!",
+        "accept": [
+          "wasn't",
+          "weren't",
+          "I wish he weren't so nervous about it!"
+        ],
+        "explain_es": "Después de 'wish' el verbo va en pasado: 'I wish he wasn't so nervous about it!'"
+      }
+    ],
+    "dictation": [
+      "Sounds like you need a holiday from your holiday.",
+      "Send me some photos of the castles, okay?"
+    ]
+  },
+  {
+    "id": "l3-b1-phone-challenge",
+    "title": "The Seven-Day Phone Challenge",
+    "level": "B1",
+    "kind": "instructions",
+    "topic": "Screen time",
+    "focus": "Gerund vs infinitive",
+    "emoji": "📵",
+    "speakers": [
+      {
+        "name": "Emma",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hello, and welcome to the Seven-Day Phone Challenge. My name's Emma, and this week I'm going to help you spend less time on your screen."
+      },
+      {
+        "s": 0,
+        "text": "First, let's be honest. Most of us can't stop checking our phones. Some people pick them up more than a hundred times a day."
+      },
+      {
+        "s": 0,
+        "text": "On day one, I want you to turn off all your notifications, except calls and messages from your family. You'll be surprised how quiet your life becomes."
+      },
+      {
+        "s": 0,
+        "text": "On day two, try leaving your phone in another room while you eat. Enjoy talking to the people around you instead."
+      },
+      {
+        "s": 0,
+        "text": "On day three, decide to stop using your phone one hour before bed. Reading a book is a great way to relax."
+      },
+      {
+        "s": 0,
+        "text": "Many people tell me they're afraid of missing important news. Don't worry. If it's really important, someone will call you."
+      },
+      {
+        "s": 0,
+        "text": "On day four, avoid opening social media before lunch. If you need to know the time, use a watch."
+      },
+      {
+        "s": 0,
+        "text": "Day five is my favourite. Plan to meet a friend face to face, and agree to put both phones away."
+      },
+      {
+        "s": 0,
+        "text": "On day six, practise doing nothing for ten minutes. It sounds strange, but your brain needs to rest."
+      },
+      {
+        "s": 0,
+        "text": "Some people find it useful to write a short diary every evening. You don't need to write much, just a few lines about your day."
+      },
+      {
+        "s": 0,
+        "text": "And on day seven, think about what you've learned. Which changes do you want to keep making?"
+      },
+      {
+        "s": 0,
+        "text": "Remember to be patient with yourself. If you forget to follow a step, don't give up. Just start again the next day."
+      },
+      {
+        "s": 0,
+        "text": "One last tip: stop to notice how you feel. Most people say they sleep better and feel less stressed after a week."
+      },
+      {
+        "s": 0,
+        "text": "So, are you ready to try? Good luck, and see you on day one."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What should you do on day two?",
+        "options": [
+          "Turn off notifications",
+          "Leave your phone in another room while you eat",
+          "Meet a friend face to face",
+          "Write a diary"
+        ],
+        "answer": 1,
+        "explain_es": "Emma: 'On day two, try leaving your phone in another room while you eat.'"
+      },
+      {
+        "type": "mc",
+        "q": "What is Emma's favourite day of the challenge about?",
+        "options": [
+          "Doing nothing for ten minutes",
+          "Reading before bed",
+          "Meeting a friend without phones",
+          "Using a watch"
+        ],
+        "answer": 2,
+        "explain_es": "Emma: 'Day five is my favourite. Plan to meet a friend face to face, and agree to put both phones away.'"
+      },
+      {
+        "type": "tf",
+        "q": "On day one, you should also turn off messages from your family.",
+        "answer": "F",
+        "explain_es": "Emma dice que se apagan todas las notificaciones 'except calls and messages from your family'."
+      },
+      {
+        "type": "tf",
+        "q": "On day four, you shouldn't open social media before lunch.",
+        "answer": "T",
+        "explain_es": "Emma: 'On day four, avoid opening social media before lunch.'"
+      },
+      {
+        "type": "tf",
+        "q": "Emma has done the challenge herself many times.",
+        "answer": "NG",
+        "explain_es": "Emma no dice si ella misma ha hecho el reto."
+      },
+      {
+        "type": "gap",
+        "q": "Most of us can't stop _____ (check) our phones.",
+        "answer": "checking",
+        "accept": [
+          "checking"
+        ],
+        "explain_es": "'Stop + -ing' = dejar de hacer algo. Emma: 'Most of us can't stop checking our phones.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'On day four, avoid to open social media before lunch.'",
+        "answer": "On day four, avoid opening social media before lunch.",
+        "accept": [
+          "avoid opening",
+          "opening"
+        ],
+        "explain_es": "Después de 'avoid' siempre va gerundio (-ing): 'avoid opening social media'."
+      }
+    ],
+    "dictation": [
+      "If you need to know the time, use a watch.",
+      "Just start again the next day."
+    ]
+  },
+  {
+    "id": "l3-b1-wedding-prep",
+    "title": "Two Weeks Before the Wedding",
+    "level": "B1",
+    "kind": "dialogue",
+    "topic": "Wedding preparations",
+    "focus": "have / get something done",
+    "emoji": "💍",
+    "speakers": [
+      {
+        "name": "Clara",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Ben, the wedding's in two weeks. Can we check the list?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. Let's start with the clothes. I'm having my suit altered on Thursday. The trousers are too long."
+      },
+      {
+        "s": 0,
+        "text": "Good. My dress is ready, but I still need to get my shoes repaired. One of the heels is loose."
+      },
+      {
+        "s": 1,
+        "text": "Didn't you buy those shoes for the wedding?"
+      },
+      {
+        "s": 0,
+        "text": "No, they were my mum's. That's why I'm having them fixed and not buying new ones."
+      },
+      {
+        "s": 1,
+        "text": "That's lovely. What about the invitations? Did we have them printed in the end?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, and we had them delivered by hand to your grandparents, because they don't trust the post."
+      },
+      {
+        "s": 1,
+        "text": "Ha, that sounds like them. And the cake?"
+      },
+      {
+        "s": 0,
+        "text": "We're having it made by my cousin's bakery. It's chocolate and orange, your favourite."
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Now, the photos. Are we getting a professional photographer?"
+      },
+      {
+        "s": 0,
+        "text": "Yes, and I've asked him to take some photos at the beach before the ceremony."
+      },
+      {
+        "s": 1,
+        "text": "Great. I also need to get my hair cut, but not too short this time."
+      },
+      {
+        "s": 0,
+        "text": "Please have it done a few days before, not on the morning of the wedding!"
+      },
+      {
+        "s": 1,
+        "text": "Okay, okay. Oh, and what about the car? It's really dirty."
+      },
+      {
+        "s": 0,
+        "text": "Get it washed on Friday. And please have the windows cleaned too."
+      },
+      {
+        "s": 1,
+        "text": "Right. Suit, hair, car. I think I can remember that."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why is Ben having his suit altered?",
+        "options": [
+          "The jacket is too small",
+          "The trousers are too long",
+          "It's the wrong colour",
+          "It has a hole"
+        ],
+        "answer": 1,
+        "explain_es": "Ben: 'I'm having my suit altered on Thursday. The trousers are too long.'"
+      },
+      {
+        "type": "mc",
+        "q": "Who is making the wedding cake?",
+        "options": [
+          "Clara's mum",
+          "Ben's grandparents",
+          "The photographer",
+          "Clara's cousin's bakery"
+        ],
+        "answer": 3,
+        "explain_es": "Clara: 'We're having it made by my cousin's bakery.'"
+      },
+      {
+        "type": "tf",
+        "q": "Clara's shoes belonged to her mother.",
+        "answer": "T",
+        "explain_es": "Clara: 'No, they were my mum's.'"
+      },
+      {
+        "type": "tf",
+        "q": "The invitations were sent to Ben's grandparents by post.",
+        "answer": "F",
+        "explain_es": "Clara: 'we had them delivered by hand to your grandparents, because they don't trust the post.'"
+      },
+      {
+        "type": "tf",
+        "q": "The wedding ceremony will take place on the beach.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que habrá fotos en la playa antes de la ceremonia; no dónde será la ceremonia."
+      },
+      {
+        "type": "gap",
+        "q": "I'm having my suit _____ on Thursday. The trousers are too long.",
+        "answer": "altered",
+        "accept": [
+          "altered",
+          "shortened"
+        ],
+        "explain_es": "'Have + objeto + participio' = otra persona lo hace por nosotros: 'I'm having my suit altered'."
+      },
+      {
+        "type": "transform",
+        "q": "Use 'get something done': 'Someone needs to cut my hair.' → I also need to _____ (get / my hair / cut).",
+        "answer": "get my hair cut",
+        "accept": [
+          "get my hair cut"
+        ],
+        "explain_es": "Estructura: get + objeto + participio. Ben: 'I also need to get my hair cut'."
+      }
+    ],
+    "dictation": [
+      "Ha, that sounds like them.",
+      "Right. Suit, hair, car."
+    ]
+  }
+]

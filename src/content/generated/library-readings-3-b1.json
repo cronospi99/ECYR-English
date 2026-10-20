@@ -1,0 +1,1586 @@
+[
+  {
+    "id": "r3-b1-missed-flight",
+    "title": "The Flight That Left Without Me",
+    "level": "B1",
+    "genre": "story",
+    "topic": "Travel & airports",
+    "focus": "Past perfect in narratives",
+    "emoji": "✈️",
+    "words": 298,
+    "paragraphs": [
+      "When Daniela finally reached Gate 14 at El Dorado Airport in Bogotá, the doors had already closed. Through the window she could see her plane moving slowly away from the building. She had woken up at four o'clock, she had packed her bag the night before, and she had even checked in online. So how had everything gone so wrong?",
+      "The problems had started much earlier than she realised. The taxi she had booked never arrived, so she had to call another one. When it finally came, she had already lost twenty minutes. Then, on the motorway, they got stuck behind an accident that had happened just before dawn. The driver said he had never seen so much traffic at that hour.",
+      "At the airport, the queue for security was enormous. Daniela had travelled many times before, but she had never seen it so long. When she finally got through, she realised she had left her jacket in the tray, and she had to run back for it. Her passport was in the pocket.",
+      "At the gate, a tired airline employee explained that the plane had left on time and that there was nothing she could do. Daniela sat down and almost cried. She had saved for months for this trip to Lisbon, where her sister had lived for two years. They hadn't seen each other since her sister's wedding.",
+      "Luckily, the story didn't end there. The airline found her a seat on a flight to Madrid that evening, with a connection to Lisbon the next morning. When she landed, her sister was waiting with a big sign that said 'Finally!'. Daniela laughed. She had arrived a day late, but she had learned an important lesson: always leave home an hour earlier than you think you need to."
+    ],
+    "glossary": [
+      [
+        "gate",
+        "puerta de embarque"
+      ],
+      [
+        "checked in",
+        "hizo el check-in, se registró para el vuelo"
+      ],
+      [
+        "booked",
+        "reservado"
+      ],
+      [
+        "motorway",
+        "autopista"
+      ],
+      [
+        "stuck",
+        "atascado, trancado"
+      ],
+      [
+        "dawn",
+        "amanecer, madrugada"
+      ],
+      [
+        "queue",
+        "fila"
+      ],
+      [
+        "tray",
+        "bandeja"
+      ],
+      [
+        "saved",
+        "ahorró"
+      ],
+      [
+        "connection",
+        "vuelo de conexión"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Daniela need a second taxi?",
+        "options": [
+          "The first driver got lost",
+          "Her sister cancelled the first one",
+          "The taxi she had booked never arrived",
+          "She forgot to book one"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 2: 'The taxi she had booked never arrived, so she had to call another one.'"
+      },
+      {
+        "type": "tf",
+        "q": "Daniela had not checked in before she went to the airport.",
+        "answer": "F",
+        "explain_es": "Párrafo 1: 'she had even checked in online'. Ya había hecho el check-in."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela's sister lives in Madrid.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: su hermana vive en Lisboa ('this trip to Lisbon, where her sister had lived for two years'). Madrid fue solo la conexión."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela had flown with this airline before.",
+        "answer": "NG",
+        "explain_es": "El texto dice que había viajado muchas veces ('had travelled many times'), pero no dice con qué aerolínea."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Daniela have to run back after security?",
+        "options": [
+          "She had forgotten her ticket",
+          "She wanted to buy a coffee",
+          "A security officer called her",
+          "She had left her jacket, with her passport inside, in the tray"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: 'she had left her jacket in the tray... Her passport was in the pocket.'"
+      },
+      {
+        "type": "gap",
+        "q": "When Daniela reached the gate, the doors _____ already closed.",
+        "answer": "had",
+        "accept": [
+          "had"
+        ],
+        "explain_es": "Pasado perfecto (had + participio): las puertas se cerraron ANTES de que ella llegara. Párrafo 1: 'the doors had already closed'."
+      },
+      {
+        "type": "transform",
+        "q": "Join the sentences using the past perfect: 'The plane left. Then Daniela arrived at the gate.' → When Daniela arrived at the gate, the plane _____.",
+        "answer": "had left",
+        "accept": [
+          "had already left",
+          "had gone",
+          "had already gone"
+        ],
+        "explain_es": "La acción más antigua (el avión se fue) va en pasado perfecto. Párrafo 4: 'the plane had left on time'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error (the story is in the past): 'She has saved for months for this trip to Lisbon.'",
+        "answer": "She had saved for months for this trip to Lisbon.",
+        "accept": [
+          "had saved",
+          "She had saved for months for this trip to Lisbon"
+        ],
+        "explain_es": "En una narración en pasado, la acción anterior va en pasado perfecto: 'She had saved for months' (párrafo 4)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-garage-startup",
+    "title": "Three Years in a Garage",
+    "level": "B1",
+    "genre": "profile",
+    "topic": "Business & startups",
+    "focus": "Present perfect continuous",
+    "emoji": "🔧",
+    "words": 295,
+    "paragraphs": [
+      "If you walk down a quiet street in the south of Cali, you might hear the sound of drills and music coming from a small garage. Inside, Camila Ortega and her cousin Andrés have been building solar lamps since 2023. Their company, Lumbre, has only six employees, but it has been growing fast.",
+      "'We've been working here for almost three years,' says Camila, who studied electrical engineering. 'At first it was just the two of us and a lot of coffee. My mum has been asking us to give her the garage back for ages, but now she's one of our best salespeople!'",
+      "The idea came after a trip to La Guajira, where many families still don't have reliable electricity. Since then, the team has been designing lamps that are cheap, strong and easy to repair. They have been testing each new model on the roof of the house, in heavy rain and strong sun, before they send it anywhere.",
+      "Lumbre has been selling its lamps to schools and rural health centres for about a year. Recently, a foundation in Peru has been talking to them about a large order. 'We've been dreaming about this kind of opportunity,' Andrés admits. 'But it also means we've been sleeping very little lately.'",
+      "Not everything has been easy. The cousins have been looking for investors for months, and many banks have said no. 'People see a garage and think we aren't serious,' says Camila. 'But the garage is the reason our costs are so low.'",
+      "What's next? Lumbre has been preparing to move to a small factory next year. Camila smiles when she talks about it. 'I'll miss this place,' she says. 'We've been laughing, arguing and making mistakes in here for three years. It's where everything started.'"
+    ],
+    "glossary": [
+      [
+        "drills",
+        "taladros"
+      ],
+      [
+        "employees",
+        "empleados"
+      ],
+      [
+        "salespeople",
+        "vendedores"
+      ],
+      [
+        "reliable",
+        "confiable, estable"
+      ],
+      [
+        "repair",
+        "reparar, arreglar"
+      ],
+      [
+        "roof",
+        "techo, terraza"
+      ],
+      [
+        "order",
+        "pedido"
+      ],
+      [
+        "lately",
+        "últimamente"
+      ],
+      [
+        "investors",
+        "inversionistas"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Lumbre make?",
+        "options": [
+          "Electric bikes",
+          "Solar panels for houses",
+          "Solar lamps",
+          "Water filters"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: 'have been building solar lamps since 2023'."
+      },
+      {
+        "type": "tf",
+        "q": "Camila and Andrés are brother and sister.",
+        "answer": "F",
+        "explain_es": "Párrafo 1: 'her cousin Andrés'. Son primos."
+      },
+      {
+        "type": "tf",
+        "q": "Camila's mother now helps to sell the lamps.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: 'now she's one of our best salespeople!'"
+      },
+      {
+        "type": "tf",
+        "q": "Andrés also studied engineering at university.",
+        "answer": "NG",
+        "explain_es": "El texto solo dice que Camila estudió ingeniería eléctrica; no dice nada de los estudios de Andrés."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Camila think the garage is an advantage?",
+        "options": [
+          "It is close to La Guajira",
+          "It keeps their costs low",
+          "Banks like it",
+          "It has a big roof for parties"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: 'the garage is the reason our costs are so low.'"
+      },
+      {
+        "type": "gap",
+        "q": "Inside, Camila Ortega and her cousin Andrés _____ _____ building solar lamps since 2023.",
+        "answer": "have been",
+        "accept": [
+          "'ve been"
+        ],
+        "explain_es": "Presente perfecto continuo (have been + -ing) para una acción que empezó en el pasado y sigue: 'have been building... since 2023' (párrafo 1)."
+      },
+      {
+        "type": "transform",
+        "q": "Use the present perfect continuous: 'The cousins started looking for investors months ago, and they are still looking.' → The cousins _____ for investors for months.",
+        "answer": "have been looking",
+        "accept": [
+          "'ve been looking"
+        ],
+        "explain_es": "Acción que empezó hace meses y continúa: 'The cousins have been looking for investors for months' (párrafo 5)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'We've been work here for almost three years.'",
+        "answer": "We've been working here for almost three years.",
+        "accept": [
+          "been working",
+          "working",
+          "We have been working here for almost three years."
+        ],
+        "explain_es": "Después de 'have been' el verbo va en -ing: 'We've been working here' (párrafo 2)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-blue-doors-mystery",
+    "title": "The Mystery of the Blue Doors",
+    "level": "B1",
+    "genre": "story",
+    "topic": "A small-town mystery",
+    "focus": "Modals of deduction (must / might / can't)",
+    "emoji": "🔍",
+    "words": 313,
+    "paragraphs": [
+      "Barichara is a quiet town in Santander, famous for its white houses and green doors. So when Doña Rosa opened her front door one Monday morning and found it painted bright blue, she couldn't believe her eyes. 'This can't be my door,' she said. 'I must be dreaming.'",
+      "By Wednesday, three more doors on the same street had turned blue. Everyone had a theory. 'It must be the kids from the school,' said the baker. 'They're always playing jokes.' But the teacher disagreed. 'It can't be my students. They're on a school trip in Bucaramanga all week.'",
+      "Some people thought it might be a tourist who wanted a better photo. Others said it could be an artist preparing a secret project. Don Julio, who owns the hardware shop, noticed something important. 'This person must need a lot of blue paint,' he said, 'but nobody has bought any here. They might come from another town.'",
+      "On Friday night, two young police officers decided to watch the street. At about three in the morning, they saw a small figure walking slowly with a bucket and a brush. 'It can't be a teenager,' whispered one officer. 'Look how slowly that person is moving. It must be someone much older.'",
+      "They were right. The mystery painter was Don Ernesto, an eighty-year-old man who had worked as a painter for fifty years. He explained that the town council was planning to repaint all the doors green for a festival. When he was a boy, he said, many doors in the town were blue, and he wanted his neighbours to remember. 'People might think I'm crazy,' he said, 'but I love this town.'",
+      "In the end, the neighbours voted to keep one blue door on every street. Doña Rosa was happy to keep hers. 'It must be the most famous door in Santander now,' she says with a laugh."
+    ],
+    "glossary": [
+      [
+        "theory",
+        "teoría"
+      ],
+      [
+        "playing jokes",
+        "haciendo bromas"
+      ],
+      [
+        "hardware shop",
+        "ferretería"
+      ],
+      [
+        "figure",
+        "silueta, figura"
+      ],
+      [
+        "bucket",
+        "balde"
+      ],
+      [
+        "brush",
+        "brocha"
+      ],
+      [
+        "whispered",
+        "susurró"
+      ],
+      [
+        "town council",
+        "concejo municipal, alcaldía"
+      ],
+      [
+        "repaint",
+        "volver a pintar"
+      ],
+      [
+        "voted",
+        "votaron"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did the teacher say it couldn't be her students?",
+        "options": [
+          "They had no money for paint",
+          "They were sick at home",
+          "They don't like jokes",
+          "They were on a school trip in Bucaramanga"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 2: 'It can't be my students. They're on a school trip in Bucaramanga all week.'"
+      },
+      {
+        "type": "mc",
+        "q": "What did Don Julio notice?",
+        "options": [
+          "Nobody had bought blue paint in his shop",
+          "A tourist had bought a lot of paint",
+          "The painter used green paint too",
+          "The doors were painted during the day"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: 'nobody has bought any here'. Por eso piensa que la persona viene de otro pueblo."
+      },
+      {
+        "type": "tf",
+        "q": "The police officers watched the street on Friday night.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: 'On Friday night, two young police officers decided to watch the street.'"
+      },
+      {
+        "type": "tf",
+        "q": "The mystery painter was a teenager.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: era Don Ernesto, 'an eighty-year-old man'."
+      },
+      {
+        "type": "tf",
+        "q": "Don Ernesto paid for the paint with his own money.",
+        "answer": "NG",
+        "explain_es": "El texto no dice cómo consiguió o pagó la pintura."
+      },
+      {
+        "type": "gap",
+        "q": "'This _____ be my door,' she said. (She is sure it is impossible.)",
+        "answer": "can't",
+        "accept": [
+          "cannot",
+          "can not"
+        ],
+        "explain_es": "'Can't' expresa que estamos seguros de que algo es imposible: 'This can't be my door' (párrafo 1)."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a modal of deduction: 'I'm sure it is someone much older.' → It _____ be someone much older.",
+        "answer": "must",
+        "accept": [
+          "must"
+        ],
+        "explain_es": "'Must' expresa una deducción casi segura: 'It must be someone much older' (párrafo 4)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error (the officer is sure it is impossible): 'It mustn't be a teenager.'",
+        "answer": "It can't be a teenager.",
+        "accept": [
+          "can't",
+          "cannot",
+          "It cannot be a teenager."
+        ],
+        "explain_es": "Para decir que algo es imposible usamos 'can't', no 'mustn't' (que significa prohibición). Párrafo 4: 'It can't be a teenager'."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-remote-work",
+    "title": "From Office Desk to Kitchen Table",
+    "level": "B1",
+    "genre": "blog",
+    "topic": "Remote work",
+    "focus": "used to / would / be used to",
+    "emoji": "💻",
+    "words": 306,
+    "paragraphs": [
+      "Five years ago, my life looked very different. I used to wake up at half past five, take two buses and arrive at the office in the centre of Medellín just before eight. I would spend the whole day at the same grey desk, and I would often eat lunch in front of my computer. I didn't use to see the sun much on weekdays!",
+      "Then my company started letting people work from home, and later I got a job with a firm in Toronto that is completely remote. At first, it was strange. I wasn't used to working alone, and I missed my colleagues. I kept putting on a shirt and tie every morning, just because that was what I used to do.",
+      "It took me about six months to get used to my new routine. Now I'm used to starting my day with a walk around the neighbourhood instead of a crowded bus. My office is a corner of the kitchen, and my only colleague is a cat called Mango, who likes to sit on my keyboard during video calls.",
+      "There are things I really miss. In the old days, my friends from work and I would go for empanadas every Friday, and we would talk about everything except accounting. Now most of my conversations happen through a screen. I'm also not used to the time difference yet: in summer, Toronto is an hour ahead of Colombia, so my meetings move around.",
+      "Would I go back to the office? Probably not. I used to think that working from home was lonely and boring, but I've found ways to stay connected. I go to a co-working space twice a week, and I've joined a running club. My advice for anyone starting remote work is simple: be patient. You'll get used to it, but not overnight."
+    ],
+    "glossary": [
+      [
+        "weekdays",
+        "días entre semana"
+      ],
+      [
+        "firm",
+        "empresa, firma"
+      ],
+      [
+        "colleagues",
+        "colegas, compañeros de trabajo"
+      ],
+      [
+        "routine",
+        "rutina"
+      ],
+      [
+        "crowded",
+        "lleno de gente"
+      ],
+      [
+        "accounting",
+        "contabilidad"
+      ],
+      [
+        "time difference",
+        "diferencia horaria"
+      ],
+      [
+        "ahead",
+        "adelante (en la hora)"
+      ],
+      [
+        "co-working space",
+        "espacio de cotrabajo, coworking"
+      ],
+      [
+        "overnight",
+        "de la noche a la mañana"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How did the writer use to get to the office?",
+        "options": [
+          "By bike",
+          "By two buses",
+          "By car",
+          "On foot"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: 'I used to wake up at half past five, take two buses...'"
+      },
+      {
+        "type": "tf",
+        "q": "The writer's current company is based in Toronto.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: 'I got a job with a firm in Toronto that is completely remote.'"
+      },
+      {
+        "type": "tf",
+        "q": "Working alone felt normal for the writer from the first day.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: 'I wasn't used to working alone, and I missed my colleagues.'"
+      },
+      {
+        "type": "tf",
+        "q": "Mango belongs to the writer's sister.",
+        "answer": "NG",
+        "explain_es": "El texto dice que Mango es un gato que se sienta en el teclado, pero no dice de quién es."
+      },
+      {
+        "type": "mc",
+        "q": "What did the writer and his friends do every Friday?",
+        "options": [
+          "They went running",
+          "They worked late",
+          "They went for empanadas",
+          "They had video calls"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 4: 'my friends from work and I would go for empanadas every Friday'."
+      },
+      {
+        "type": "gap",
+        "q": "It took me about six months to get _____ to my new routine.",
+        "answer": "used",
+        "accept": [
+          "used"
+        ],
+        "explain_es": "'Get used to' = acostumbrarse (proceso). Párrafo 3: 'to get used to my new routine'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'I wasn't use to working alone.'",
+        "answer": "I wasn't used to working alone.",
+        "accept": [
+          "used",
+          "I was not used to working alone."
+        ],
+        "explain_es": "La expresión es 'be used to + -ing' (con -d): 'I wasn't used to working alone' (párrafo 2)."
+      },
+      {
+        "type": "transform",
+        "q": "Use 'would' for a repeated past action: 'Every Friday, we went for empanadas.' → Every Friday, we _____ go for empanadas.",
+        "answer": "would",
+        "accept": [
+          "used to",
+          "'d"
+        ],
+        "explain_es": "'Would + verbo' describe hábitos repetidos en el pasado: 'we would go for empanadas every Friday' (párrafo 4)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-old-jeans-new-life",
+    "title": "Old Jeans, New Life",
+    "level": "B1",
+    "genre": "article",
+    "topic": "Sustainable fashion",
+    "focus": "Passive in different tenses",
+    "emoji": "👖",
+    "words": 280,
+    "paragraphs": [
+      "Every year, millions of pairs of jeans are thrown away around the world. In Bogotá, a small brand called Remiendo is trying to change that. Since the company was founded in 2021, more than twenty thousand pairs of old jeans have been collected and turned into bags, jackets and even shoes.",
+      "The process is simple but careful. First, the old jeans are dropped off by customers at collection points in shopping centres. Then they are washed, sorted by colour and cut by hand in the company's workshop in Chapinero. Nothing is wasted: small pieces are used for keyrings, and the tiniest scraps are turned into stuffing for cushions.",
+      "Each product is made by one of fifteen seamstresses. Most of them were trained by the company itself. 'Our workers are paid fairly, and they are given time to do the job properly,' explains the founder, Lucía Restrepo. 'In fast fashion, a jacket is made in minutes. Ours take almost a day.'",
+      "Remiendo's products are not cheap, and the brand has been criticised for this. A jacket is sold for about three hundred thousand pesos, which is a lot of money for many Colombians. Restrepo understands the criticism. 'Right now, our prices are being reviewed,' she says. 'We hope a cheaper line will be launched next year.'",
+      "The brand's success has been noticed outside Colombia, too. Last month, Remiendo was invited to a sustainable fashion fair in Copenhagen, and its bags are now being sold in two shops in Mexico City. Restrepo is excited but careful. 'We don't want to grow too fast,' she says. 'If more jeans are collected, more people will be employed. That's the kind of growth we want.'"
+    ],
+    "glossary": [
+      [
+        "thrown away",
+        "botados a la basura"
+      ],
+      [
+        "founded",
+        "fundada"
+      ],
+      [
+        "dropped off",
+        "dejados, entregados"
+      ],
+      [
+        "sorted",
+        "clasificados"
+      ],
+      [
+        "workshop",
+        "taller"
+      ],
+      [
+        "scraps",
+        "retazos"
+      ],
+      [
+        "stuffing",
+        "relleno"
+      ],
+      [
+        "seamstresses",
+        "costureras, modistas"
+      ],
+      [
+        "criticised",
+        "criticada"
+      ],
+      [
+        "fair",
+        "feria"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the first step of the process?",
+        "options": [
+          "Customers drop off old jeans at collection points",
+          "The jeans are cut by hand",
+          "The jeans are washed",
+          "The jeans are sorted by colour"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: 'First, the old jeans are dropped off by customers at collection points'."
+      },
+      {
+        "type": "mc",
+        "q": "How long does it take to make a Remiendo jacket?",
+        "options": [
+          "A few minutes",
+          "About an hour",
+          "Almost a day",
+          "A whole week"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: 'Ours take almost a day.'"
+      },
+      {
+        "type": "tf",
+        "q": "Remiendo was founded in 2019.",
+        "answer": "F",
+        "explain_es": "Párrafo 1: 'founded in 2021'."
+      },
+      {
+        "type": "tf",
+        "q": "Remiendo's bags are sold in Mexico City.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: 'its bags are now being sold in two shops in Mexico City'."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía Restrepo used to work for a fast fashion company.",
+        "answer": "NG",
+        "explain_es": "El texto no menciona dónde trabajaba Lucía Restrepo antes."
+      },
+      {
+        "type": "gap",
+        "q": "Since the company was founded, more than twenty thousand pairs of old jeans have _____ collected.",
+        "answer": "been",
+        "accept": [
+          "been"
+        ],
+        "explain_es": "Pasiva en presente perfecto: have + been + participio. Párrafo 1: 'have been collected'."
+      },
+      {
+        "type": "transform",
+        "q": "Change to the passive: 'Customers drop off the old jeans at collection points.' → The old jeans _____ by customers at collection points.",
+        "answer": "are dropped off",
+        "accept": [
+          "are dropped off"
+        ],
+        "explain_es": "Pasiva en presente simple: am/is/are + participio. Párrafo 2: 'the old jeans are dropped off by customers'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'We hope a cheaper line will launched next year.'",
+        "answer": "We hope a cheaper line will be launched next year.",
+        "accept": [
+          "will be launched",
+          "be launched"
+        ],
+        "explain_es": "Pasiva en futuro: will + be + participio. Párrafo 4: 'will be launched next year'."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-hiking-accident",
+    "title": "The Night I Spent on the Mountain",
+    "level": "B1",
+    "genre": "blog",
+    "topic": "Hiking & safety",
+    "focus": "Third conditional",
+    "emoji": "🥾",
+    "words": 330,
+    "paragraphs": [
+      "Last July, I went hiking alone in El Cocuy National Park. It was supposed to be an easy day: six hours up to a lake and back. Instead, I spent a cold night on the mountain with a broken ankle. Looking back, I can see that it all happened because of a few small decisions.",
+      "The first mistake was starting late. I had planned to leave at five in the morning, but I stayed in bed for another hour. If I had left on time, I would have reached the lake before the clouds came in. Instead, by midday I could hardly see the path.",
+      "The second mistake was not telling anyone where I was going. The owner of my hostel asked me about my route, but I just said 'somewhere near the lake'. If I had given her more details, the rescue team would have found me much sooner.",
+      "Then came the fall. I was walking down a steep, wet slope when my foot slipped on a rock. I heard a horrible sound and knew immediately that something was wrong. If I hadn't been in such a hurry, I wouldn't have slipped. And if I had brought my walking poles, which were lying uselessly in my room, I might have kept my balance.",
+      "I had a phone, but there was no signal. Luckily, I had packed a warm jacket, a whistle and some chocolate. Honestly, if I hadn't had that jacket, I wouldn't have survived the night, because temperatures up there can drop below zero.",
+      "The next morning, two farmers heard my whistle and called the park rangers. Three hours later, I was in an ambulance. My ankle has healed now, and I've been back to the mountains, but I've changed my habits. I always start early, I always tell someone my route, and I never walk without my poles. If someone had given me this advice before, I would have listened. So now I'm giving it to you."
+    ],
+    "glossary": [
+      [
+        "ankle",
+        "tobillo"
+      ],
+      [
+        "path",
+        "sendero, camino"
+      ],
+      [
+        "hostel",
+        "hostal"
+      ],
+      [
+        "rescue team",
+        "equipo de rescate"
+      ],
+      [
+        "steep",
+        "empinado"
+      ],
+      [
+        "slope",
+        "pendiente, ladera"
+      ],
+      [
+        "slipped",
+        "se resbaló"
+      ],
+      [
+        "walking poles",
+        "bastones de senderismo"
+      ],
+      [
+        "whistle",
+        "pito, silbato"
+      ],
+      [
+        "park rangers",
+        "guardaparques"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the writer's plan for the day?",
+        "options": [
+          "To climb to the top of a glacier",
+          "To walk six hours up to a lake and back",
+          "To camp near a lake",
+          "To visit some farmers"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: 'six hours up to a lake and back'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer left the hostel at five in the morning.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: había planeado salir a las cinco, pero 'I stayed in bed for another hour'."
+      },
+      {
+        "type": "tf",
+        "q": "The owner of the hostel asked about the writer's route.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: 'The owner of my hostel asked me about my route'."
+      },
+      {
+        "type": "tf",
+        "q": "The two farmers had seen the writer the day before.",
+        "answer": "NG",
+        "explain_es": "El texto solo dice que los campesinos oyeron el silbato; no dice si lo habían visto antes."
+      },
+      {
+        "type": "mc",
+        "q": "What helped the writer survive the night?",
+        "options": [
+          "His walking poles",
+          "His phone",
+          "A warm jacket",
+          "A tent"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 5: 'if I hadn't had that jacket, I wouldn't have survived the night'."
+      },
+      {
+        "type": "gap",
+        "q": "If I _____ left on time, I would have reached the lake before the clouds came in.",
+        "answer": "had",
+        "accept": [
+          "'d"
+        ],
+        "explain_es": "Tercer condicional: If + had + participio, would have + participio. Párrafo 2: 'If I had left on time...'"
+      },
+      {
+        "type": "transform",
+        "q": "Complete the third conditional: 'I didn't give her details, so the rescue team didn't find me quickly.' → If I had given her more details, the rescue team _____ me much sooner.",
+        "answer": "would have found",
+        "accept": [
+          "'d have found",
+          "would've found"
+        ],
+        "explain_es": "Resultado imaginario en el pasado: would have + participio. Párrafo 3: 'the rescue team would have found me much sooner'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'If I hadn't been in such a hurry, I wouldn't slip.'",
+        "answer": "If I hadn't been in such a hurry, I wouldn't have slipped.",
+        "accept": [
+          "wouldn't have slipped",
+          "would not have slipped"
+        ],
+        "explain_es": "En el tercer condicional, la segunda parte lleva 'would have + participio': 'I wouldn't have slipped' (párrafo 4)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-language-exchange",
+    "title": "My Language Partner in Osaka",
+    "level": "B1",
+    "genre": "blog",
+    "topic": "A language exchange app",
+    "focus": "Reported speech (statements and questions)",
+    "emoji": "🗣️",
+    "words": 278,
+    "paragraphs": [
+      "Three months ago, I downloaded a language exchange app called TalkBridge. The idea is simple: you teach your language and someone else teaches you theirs. My first partner was Kenji, a nurse from Osaka who wanted to learn Spanish before a trip to Colombia.",
+      "In our first video call, Kenji asked me where I lived and why I was learning English. I told him that I lived in Bucaramanga and that I needed English for my job at a hotel. He said that he had never heard of Bucaramanga, so I showed him photos of the Chicamocha Canyon. He told me it looked amazing and that he would add it to his trip.",
+      "At the beginning, I was very nervous. I asked him if he could speak slowly, and he said he was nervous too. He admitted that he had studied Spanish for a year but had never spoken it with a real person. We agreed that we would spend thirty minutes in English and thirty minutes in Spanish.",
+      "Not every conversation was easy. Once, Kenji asked me what 'chévere' meant, and I couldn't explain it clearly. Another time, he told me in Spanish that he was 'embarazado' because he had forgotten my name. I explained that he had just said he was pregnant! He laughed and said he would never forget that word again.",
+      "Last week, he asked me whether I would meet him when he visited Colombia in December. I said yes immediately. Then my manager asked me how my English had improved so quickly, and I told her that I had a great teacher in Japan. She said she wanted to try the app too."
+    ],
+    "glossary": [
+      [
+        "downloaded",
+        "descargué"
+      ],
+      [
+        "partner",
+        "compañero, pareja de intercambio"
+      ],
+      [
+        "nurse",
+        "enfermero"
+      ],
+      [
+        "canyon",
+        "cañón"
+      ],
+      [
+        "admitted",
+        "admitió, reconoció"
+      ],
+      [
+        "agreed",
+        "acordamos"
+      ],
+      [
+        "pregnant",
+        "embarazada"
+      ],
+      [
+        "improved",
+        "mejorado"
+      ],
+      [
+        "manager",
+        "jefe, gerente"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Kenji want to learn Spanish?",
+        "options": [
+          "For his job as a nurse",
+          "Because of a trip to Colombia",
+          "Because his manager asked him",
+          "To pass an exam"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: 'wanted to learn Spanish before a trip to Colombia'."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer need English?",
+        "options": [
+          "For her job at a hotel",
+          "To travel to Japan",
+          "To study nursing",
+          "To teach at a school"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: 'I needed English for my job at a hotel'."
+      },
+      {
+        "type": "tf",
+        "q": "Kenji had visited Bucaramanga before.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: 'he had never heard of Bucaramanga'."
+      },
+      {
+        "type": "tf",
+        "q": "They use both languages in each conversation.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: 'thirty minutes in English and thirty minutes in Spanish'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's manager has already downloaded TalkBridge.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: la jefa solo dijo que quería probar la app; no sabemos si ya la descargó."
+      },
+      {
+        "type": "transform",
+        "q": "Kenji: 'Where do you live?' → Kenji asked me where I _____.",
+        "answer": "lived",
+        "accept": [
+          "lived"
+        ],
+        "explain_es": "En el estilo indirecto el verbo retrocede un tiempo (live → lived) y no hay orden de pregunta. Párrafo 2: 'Kenji asked me where I lived'."
+      },
+      {
+        "type": "transform",
+        "q": "Kenji: 'I have never heard of Bucaramanga.' → He said that he _____ heard of Bucaramanga.",
+        "answer": "had never",
+        "accept": [
+          "had never"
+        ],
+        "explain_es": "El presente perfecto pasa a pasado perfecto en estilo indirecto: 'he had never heard of Bucaramanga' (párrafo 2)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'I asked him if could he speak slowly.'",
+        "answer": "I asked him if he could speak slowly.",
+        "accept": [
+          "if he could",
+          "I asked him if he could speak slowly"
+        ],
+        "explain_es": "En preguntas indirectas usamos el orden de afirmación (sujeto + verbo): 'if he could speak slowly' (párrafo 3)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-house-renovation",
+    "title": "Our House Is Nearly Finished!",
+    "level": "B1",
+    "genre": "email",
+    "topic": "A renovation project",
+    "focus": "have / get something done",
+    "emoji": "🏠",
+    "words": 278,
+    "paragraphs": [
+      "Hi Laura, Sorry I haven't written for so long! As you know, Julián and I bought that old house in Barranco last year, and the last few months have been crazy. We wanted to do some of the work ourselves, but in the end we had most things done by professionals.",
+      "First, we had the roof repaired, because water was coming in every time it rained. Then we got the whole house rewired. The electrician said the old cables were dangerous, so we didn't really have a choice. That was expensive, but at least now we can use the microwave and the kettle at the same time!",
+      "The kitchen was the biggest project. We had the old cupboards taken out and new ones made by a carpenter from Julián's village. I wanted to paint the walls myself to save money, but after two days I gave up and got a painter to do it. Julián says I should have had it done from the start, and he's probably right.",
+      "We also had a few surprises. When the builders lifted the old floor in the living room, they found a family of mice living under it! We had to get the whole house checked for more animals before we could continue. Luckily, they didn't find anything else.",
+      "Now we're nearly finished. Next week we're having new curtains fitted, and on Saturday I'm getting my hair cut, because I haven't been to the hairdresser since March. I want to look nice for our housewarming party! You and Pedro have to come. It's on the 14th of next month at seven. Let me know if you can make it. Love, Mariana"
+    ],
+    "glossary": [
+      [
+        "rewired",
+        "con la instalación eléctrica nueva"
+      ],
+      [
+        "kettle",
+        "hervidor, olla eléctrica para el agua"
+      ],
+      [
+        "cupboards",
+        "gabinetes, alacenas"
+      ],
+      [
+        "carpenter",
+        "carpintero"
+      ],
+      [
+        "gave up",
+        "me rendí"
+      ],
+      [
+        "builders",
+        "obreros, maestros de obra"
+      ],
+      [
+        "mice",
+        "ratones"
+      ],
+      [
+        "curtains",
+        "cortinas"
+      ],
+      [
+        "fitted",
+        "instaladas"
+      ],
+      [
+        "housewarming party",
+        "fiesta de estreno de casa"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did they have the roof repaired?",
+        "options": [
+          "It was too old-fashioned",
+          "Water came in when it rained",
+          "Some mice were living in it",
+          "The electrician said it was dangerous"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: 'because water was coming in every time it rained'."
+      },
+      {
+        "type": "mc",
+        "q": "Who made the new kitchen cupboards?",
+        "options": [
+          "Julián",
+          "Mariana",
+          "A painter",
+          "A carpenter from Julián's village"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: 'new ones made by a carpenter from Julián's village'."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana painted all the kitchen walls herself.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: después de dos días se rindió y 'got a painter to do it'."
+      },
+      {
+        "type": "tf",
+        "q": "The builders found mice under the living room floor.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: 'they found a family of mice living under it!'"
+      },
+      {
+        "type": "tf",
+        "q": "Laura and Pedro have already visited the new house.",
+        "answer": "NG",
+        "explain_es": "El correo invita a Laura y Pedro a la fiesta, pero no dice si ya conocen la casa."
+      },
+      {
+        "type": "gap",
+        "q": "Next week we're having new curtains _____.",
+        "answer": "fitted",
+        "accept": [
+          "fitted",
+          "put up",
+          "installed"
+        ],
+        "explain_es": "'Have + objeto + participio' = alguien lo hace por nosotros. Párrafo 5: 'we're having new curtains fitted'."
+      },
+      {
+        "type": "transform",
+        "q": "Use 'have something done': 'A professional repaired our roof.' → We _____ (have / the roof / repair).",
+        "answer": "had the roof repaired",
+        "accept": [
+          "had the roof repaired"
+        ],
+        "explain_es": "Estructura: have + objeto + participio. Párrafo 2: 'we had the roof repaired'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'Then we got the whole house rewire.'",
+        "answer": "Then we got the whole house rewired.",
+        "accept": [
+          "rewired",
+          "got the whole house rewired"
+        ],
+        "explain_es": "Con 'get something done' el verbo va en participio: 'we got the whole house rewired' (párrafo 2)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-rain-frog",
+    "title": "The Frog That Sings in the Rain",
+    "level": "B1",
+    "genre": "biography",
+    "topic": "A scientist's discovery",
+    "focus": "Defining and non-defining relative clauses",
+    "emoji": "🐸",
+    "words": 272,
+    "paragraphs": [
+      "Isabel Montoya is a biologist who has spent most of her career in the rainforests of Chocó, one of the wettest places on Earth. In 2024, she made a discovery that surprised scientists around the world: a tiny frog whose song can only be heard when it rains.",
+      "Montoya, who grew up in Quibdó, became interested in animals as a child. Her grandfather, who was a fisherman, used to take her on the river at night to listen to the sounds of the forest. 'He knew the name of every bird and frog,' she says. 'He was the person who taught me to listen.'",
+      "The frog, which is smaller than a fingernail, lives on a plant that grows only near waterfalls. For years, local people had talked about a 'rain singer', but no scientist had ever recorded it. Montoya and her team, which included two students from a local university, spent four months searching for it.",
+      "The breakthrough came on a stormy night in March. The microphones that the team had placed near a waterfall picked up a strange, high sound. The next morning, they found the frog on a leaf where it had been hiding. It was bright orange, which is unusual for frogs in that area.",
+      "The new species, which has been named after Montoya's grandfather, is already in danger. The forest where it lives is being damaged by illegal mining. Montoya, whose work has appeared in several international journals, now spends much of her time talking to politicians. 'A discovery is only the beginning,' she says. 'The places where these animals live need protection, or the animals won't survive.'"
+    ],
+    "glossary": [
+      [
+        "biologist",
+        "biólogo, bióloga"
+      ],
+      [
+        "rainforests",
+        "selvas tropicales"
+      ],
+      [
+        "wettest",
+        "más lluviosos"
+      ],
+      [
+        "fingernail",
+        "uña"
+      ],
+      [
+        "waterfalls",
+        "cascadas"
+      ],
+      [
+        "recorded",
+        "grabado"
+      ],
+      [
+        "breakthrough",
+        "gran avance, descubrimiento clave"
+      ],
+      [
+        "picked up",
+        "captaron"
+      ],
+      [
+        "species",
+        "especie"
+      ],
+      [
+        "mining",
+        "minería"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is special about the frog's song?",
+        "options": [
+          "It can only be heard when it rains",
+          "It sounds like a bird",
+          "It is very loud",
+          "It can be heard only in the morning"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 1: 'a tiny frog whose song can only be heard when it rains'."
+      },
+      {
+        "type": "mc",
+        "q": "Who taught Montoya to listen to the forest?",
+        "options": [
+          "A university teacher",
+          "Her mother",
+          "Her grandfather",
+          "Local politicians"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 2: su abuelo pescador — 'He was the person who taught me to listen.'"
+      },
+      {
+        "type": "tf",
+        "q": "The frog is bigger than a fingernail.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: 'The frog, which is smaller than a fingernail'."
+      },
+      {
+        "type": "tf",
+        "q": "The frog has been named after Montoya's grandfather.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: 'which has been named after Montoya's grandfather'."
+      },
+      {
+        "type": "tf",
+        "q": "Montoya has won an international prize for her discovery.",
+        "answer": "NG",
+        "explain_es": "El texto dice que su trabajo apareció en revistas internacionales, pero no menciona premios."
+      },
+      {
+        "type": "gap",
+        "q": "Her grandfather, _____ was a fisherman, used to take her on the river at night.",
+        "answer": "who",
+        "accept": [
+          "who"
+        ],
+        "explain_es": "Oración de relativo explicativa (entre comas) sobre una persona: 'who'. En estas no se puede usar 'that'. Párrafo 2."
+      },
+      {
+        "type": "transform",
+        "q": "Join with a non-defining relative clause: 'It was bright orange. This is unusual for frogs in that area.' → It was bright orange, _____ is unusual for frogs in that area.",
+        "answer": "which",
+        "accept": [
+          "which"
+        ],
+        "explain_es": "'Which' después de coma puede referirse a toda la idea anterior: 'bright orange, which is unusual...' (párrafo 4)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'The microphones what the team had placed near a waterfall picked up a strange sound.'",
+        "answer": "The microphones that the team had placed near a waterfall picked up a strange sound.",
+        "accept": [
+          "that",
+          "which"
+        ],
+        "explain_es": "Para cosas usamos 'that' o 'which', nunca 'what': 'The microphones that the team had placed...' (párrafo 4)."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-community-garden",
+    "title": "Our Garden: The Next Twelve Months",
+    "level": "B1",
+    "genre": "letter",
+    "topic": "A community garden",
+    "focus": "Future continuous and future perfect",
+    "emoji": "🌱",
+    "words": 276,
+    "paragraphs": [
+      "Dear neighbours, It's hard to believe that only a year ago the empty land behind the La Floresta bus stop in Quito was full of rubbish. Thanks to more than forty volunteers, it is now a garden with vegetables, herbs and flowers. Here is what we're planning for the next twelve months.",
+      "By the end of this month, we will have finished the new water tank, so we won't need to carry buckets from the church any more. In November, a group of students from the local school will be building raised wooden boxes for people who can't bend down easily, such as older neighbours and wheelchair users.",
+      "If everything goes well, by March we will have planted twenty fruit trees along the back wall. In a few years, our children will be picking lemons, avocados and tree tomatoes on their way home from school. We will also be running free workshops on Saturday mornings, where you can learn how to make compost and grow vegetables on a balcony.",
+      "This time next year, we hope we'll be selling some of our vegetables at a small Sunday market. The money will pay for seeds and tools. By then, we will also have started a seed library, where neighbours can borrow seeds and bring back new ones after the harvest.",
+      "Of course, we need your help. The committee will be meeting on the first Tuesday of every month at 7 p.m. in the community hall, and everyone is welcome. You don't need any experience. Just bring your energy and, if possible, a pair of gloves. We look forward to seeing you. Best wishes, The La Floresta Garden Committee"
+    ],
+    "glossary": [
+      [
+        "rubbish",
+        "basura"
+      ],
+      [
+        "herbs",
+        "hierbas aromáticas"
+      ],
+      [
+        "water tank",
+        "tanque de agua"
+      ],
+      [
+        "bend down",
+        "agacharse"
+      ],
+      [
+        "wheelchair users",
+        "usuarios de silla de ruedas"
+      ],
+      [
+        "compost",
+        "abono orgánico, compost"
+      ],
+      [
+        "seeds",
+        "semillas"
+      ],
+      [
+        "borrow",
+        "pedir prestado"
+      ],
+      [
+        "harvest",
+        "cosecha"
+      ],
+      [
+        "gloves",
+        "guantes"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the land like a year ago?",
+        "options": [
+          "It was a car park",
+          "It was full of rubbish",
+          "It was a football pitch",
+          "It was a small farm"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: 'only a year ago the empty land... was full of rubbish'."
+      },
+      {
+        "type": "mc",
+        "q": "Who will build the wooden boxes in November?",
+        "options": [
+          "Students from the local school",
+          "The church",
+          "Older neighbours",
+          "The committee"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: 'a group of students from the local school will be building raised wooden boxes'."
+      },
+      {
+        "type": "tf",
+        "q": "At the moment, volunteers carry water from the church.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: cuando terminen el tanque 'we won't need to carry buckets from the church any more', así que ahora sí lo hacen."
+      },
+      {
+        "type": "tf",
+        "q": "The committee meets every Saturday morning.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: se reúne 'on the first Tuesday of every month at 7 p.m.' Los sábados son los talleres."
+      },
+      {
+        "type": "tf",
+        "q": "The Sunday market will take place in the city centre.",
+        "answer": "NG",
+        "explain_es": "Párrafo 4: habla de 'a small Sunday market', pero no dice dónde será."
+      },
+      {
+        "type": "gap",
+        "q": "By the end of this month, we will _____ the new water tank.",
+        "answer": "have finished",
+        "accept": [
+          "have completed",
+          "have built"
+        ],
+        "explain_es": "Futuro perfecto (will have + participio): acción terminada antes de un momento futuro. Párrafo 2: 'we will have finished the new water tank'."
+      },
+      {
+        "type": "transform",
+        "q": "Use the future continuous: 'In November, students are going to build wooden boxes.' → In November, students _____ wooden boxes.",
+        "answer": "will be building",
+        "accept": [
+          "'ll be building"
+        ],
+        "explain_es": "Futuro continuo (will be + -ing): acción en progreso en un momento del futuro. Párrafo 2: 'will be building raised wooden boxes'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'By March we will planted twenty fruit trees.'",
+        "answer": "By March we will have planted twenty fruit trees.",
+        "accept": [
+          "will have planted",
+          "have planted"
+        ],
+        "explain_es": "El futuro perfecto necesita 'have': will have + participio. Párrafo 3: 'by March we will have planted twenty fruit trees'."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-scam-message",
+    "title": "Five Ways to Spot a Scam Message",
+    "level": "B1",
+    "genre": "guide",
+    "topic": "Online safety & scams",
+    "focus": "Gerund vs infinitive",
+    "emoji": "🔐",
+    "words": 313,
+    "paragraphs": [
+      "Last month, Rodrigo, a retired teacher from Pereira, received a text message that seemed to come from his bank. It said his account had been blocked and asked him to click on a link to fix the problem. Rodrigo almost did it, but something made him stop to think. Instead, he decided to call the bank. The message was a scam. Here are five tips to help you avoid becoming a victim.",
+      "1. Don't hurry. Scammers want you to act quickly. Their messages often threaten to close your account, or they promise to give you a prize if you answer within an hour. Real banks don't expect you to make important decisions in minutes. If you feel pressure, stop reading and take a break.",
+      "2. Avoid clicking on links in unexpected messages. It's much safer to open your bank's app or type the address yourself. Remember to check the sender's number or email address carefully, because scammers are good at copying names and logos.",
+      "3. Never agree to share passwords or codes. Your bank will never ask you to give your PIN by phone or text. If someone keeps asking for it, refuse to continue the conversation and hang up.",
+      "4. Talk to someone you trust. Many people feel embarrassed about asking for help, especially with technology, but a second opinion can save you a lot of money. Rodrigo's granddaughter now enjoys teaching him how to recognise fake messages.",
+      "5. Report it. If you receive a scam message, try to take a screenshot and send it to your bank. It's also worth reporting the number to your phone company. Doing this helps to protect other people.",
+      "Rodrigo still remembers feeling his heart beat faster when he read that message. 'I'm glad I decided to wait,' he says. 'Now I always ask myself: why would my bank need me to click on a link?'"
+    ],
+    "glossary": [
+      [
+        "retired",
+        "jubilado, pensionado"
+      ],
+      [
+        "blocked",
+        "bloqueada"
+      ],
+      [
+        "scam",
+        "estafa"
+      ],
+      [
+        "victim",
+        "víctima"
+      ],
+      [
+        "scammers",
+        "estafadores"
+      ],
+      [
+        "threaten",
+        "amenazan"
+      ],
+      [
+        "sender",
+        "remitente"
+      ],
+      [
+        "hang up",
+        "colgar (el teléfono)"
+      ],
+      [
+        "embarrassed",
+        "avergonzado, con pena"
+      ],
+      [
+        "screenshot",
+        "captura de pantalla, pantallazo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did Rodrigo do when he received the message?",
+        "options": [
+          "He clicked on the link",
+          "He sent his PIN",
+          "He called the bank",
+          "He deleted his account"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: 'Instead, he decided to call the bank.'"
+      },
+      {
+        "type": "mc",
+        "q": "According to tip 2, what is safer than clicking on a link?",
+        "options": [
+          "Answering the message quickly",
+          "Opening the bank's app or typing the address yourself",
+          "Sending a screenshot to a friend",
+          "Copying the logo"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: 'It's much safer to open your bank's app or type the address yourself.'"
+      },
+      {
+        "type": "tf",
+        "q": "Real banks sometimes ask for your PIN by text message.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: 'Your bank will never ask you to give your PIN by phone or text.'"
+      },
+      {
+        "type": "tf",
+        "q": "Rodrigo's granddaughter helps him recognise fake messages.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: 'Rodrigo's granddaughter now enjoys teaching him how to recognise fake messages.'"
+      },
+      {
+        "type": "tf",
+        "q": "Rodrigo lost money in a scam a few years ago.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada de estafas anteriores a Rodrigo."
+      },
+      {
+        "type": "gap",
+        "q": "Avoid _____ (click) on links in unexpected messages.",
+        "answer": "clicking",
+        "accept": [
+          "clicking"
+        ],
+        "explain_es": "Después de 'avoid' usamos gerundio (-ing), no infinitivo. Párrafo 3: 'Avoid clicking on links'."
+      },
+      {
+        "type": "gap",
+        "q": "Remember _____ (check) the sender's number or email address carefully.",
+        "answer": "to check",
+        "accept": [
+          "to check"
+        ],
+        "explain_es": "'Remember + to + verbo' = acordarse de hacer algo (en el futuro). Párrafo 3: 'Remember to check the sender's number'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'Rodrigo still remembers to feel his heart beat faster when he read that message.'",
+        "answer": "Rodrigo still remembers feeling his heart beat faster when he read that message.",
+        "accept": [
+          "remembers feeling",
+          "feeling"
+        ],
+        "explain_es": "'Remember + -ing' = recordar algo que ya pasó. Párrafo 7: 'Rodrigo still remembers feeling his heart beat faster'."
+      }
+    ]
+  },
+  {
+    "id": "r3-b1-letter-from-montreal",
+    "title": "A Letter from Montreal",
+    "level": "B1",
+    "genre": "letter",
+    "topic": "A job abroad",
+    "focus": "wish + past simple",
+    "emoji": "🍁",
+    "words": 306,
+    "paragraphs": [
+      "Dear Abuela, I've been in Montreal for four months now, and I'm finally writing you a proper letter, like you always asked. My job at the hotel is going well. I work in the kitchen with people from Haiti, Vietnam, Morocco and France, and I'm learning something new every day.",
+      "But life here isn't always easy. The first thing is the weather. It's minus fifteen degrees today! I wish it wasn't so cold. I wish I could walk to the beach after work like I did in Cartagena. Here I walk to the metro wearing three jackets and I still can't feel my fingers.",
+      "The second thing is the language. Most people in Montreal speak French, and although I took classes before I came, I wish I spoke it better. My colleagues talk very fast, and sometimes I just smile and nod. Last week the chef asked me to bring onions and I brought him oranges! Everyone laughed, including me.",
+      "My apartment is very small and quite expensive. I wish it had a bigger window, because the sun goes down at half past four in winter. I share it with a Brazilian guy called Thiago, who is very kind but plays the guitar at midnight. I wish he didn't practise so late!",
+      "Most of all, I miss you and the family. I wish you lived closer, so I could visit you on Sundays and eat your arroz con coco. Video calls help, but they're not the same as a hug. Sometimes I wish I knew more people here, but I'm slowly making friends. On Saturday, Thiago and I are going ice skating for the first time. Wish me luck!",
+      "Don't worry about me. I'm happy, and I know this experience will help me become a better chef. Please give my love to everyone. Your grandson, Sebastián"
+    ],
+    "glossary": [
+      [
+        "proper",
+        "de verdad, como debe ser"
+      ],
+      [
+        "minus",
+        "menos (bajo cero)"
+      ],
+      [
+        "nod",
+        "asentir con la cabeza"
+      ],
+      [
+        "onions",
+        "cebollas"
+      ],
+      [
+        "share",
+        "comparto"
+      ],
+      [
+        "practise",
+        "practicar, ensayar"
+      ],
+      [
+        "hug",
+        "abrazo"
+      ],
+      [
+        "ice skating",
+        "patinaje sobre hielo"
+      ],
+      [
+        "give my love",
+        "dale saludos y abrazos de mi parte"
+      ],
+      [
+        "grandson",
+        "nieto"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where does Sebastián work?",
+        "options": [
+          "In a school",
+          "In a hotel kitchen",
+          "In a music shop",
+          "In a metro station"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: 'My job at the hotel... I work in the kitchen'."
+      },
+      {
+        "type": "mc",
+        "q": "What mistake did Sebastián make at work?",
+        "options": [
+          "He brought oranges instead of onions",
+          "He arrived late",
+          "He spoke Spanish to the chef",
+          "He burned some rice"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: 'the chef asked me to bring onions and I brought him oranges!'"
+      },
+      {
+        "type": "tf",
+        "q": "Sebastián lives alone.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: 'I share it with a Brazilian guy called Thiago'."
+      },
+      {
+        "type": "tf",
+        "q": "In winter, it gets dark early in Montreal.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: 'the sun goes down at half past four in winter'."
+      },
+      {
+        "type": "tf",
+        "q": "Thiago works at the same hotel as Sebastián.",
+        "answer": "NG",
+        "explain_es": "El texto no dice dónde trabaja Thiago."
+      },
+      {
+        "type": "gap",
+        "q": "It's minus fifteen degrees today! I wish it _____ so cold.",
+        "answer": "wasn't",
+        "accept": [
+          "weren't",
+          "was not",
+          "were not"
+        ],
+        "explain_es": "'Wish + pasado simple' expresa un deseo sobre el presente que no es real. Párrafo 2: 'I wish it wasn't so cold'."
+      },
+      {
+        "type": "transform",
+        "q": "Make a wish about the present: 'I don't speak French well.' → I wish I _____ French better.",
+        "answer": "spoke",
+        "accept": [
+          "spoke",
+          "could speak"
+        ],
+        "explain_es": "Después de 'wish' el verbo va en pasado: 'I wish I spoke it better' (párrafo 3)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the error: 'I wish he doesn't practise so late!'",
+        "answer": "I wish he didn't practise so late!",
+        "accept": [
+          "didn't",
+          "did not",
+          "I wish he didn't practise so late"
+        ],
+        "explain_es": "Con 'wish' para el presente usamos pasado simple: 'I wish he didn't practise so late!' (párrafo 4)."
+      }
+    ]
+  }
+]
