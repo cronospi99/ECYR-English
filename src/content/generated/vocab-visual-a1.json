@@ -20,7 +20,8 @@
      "es": "gorra",
      "ex": "He always wears a cap when he plays football.",
      "img": "/visuals/vocab/clothes/cap.webp",
-     "group": "Head & accessories"
+     "group": "Head & accessories",
+     "form": "cap"
     },
     {
      "id": "beanie",
@@ -29,7 +30,8 @@
      "ex": "It’s cold. Put on your beanie!",
      "img": "/visuals/vocab/clothes/beanie.webp",
      "group": "Head & accessories",
-     "note": "UK: bobble hat (con pompón)."
+     "note": "UK: bobble hat (con pompón).",
+     "form": "beanie"
     },
     {
      "id": "glasses",
@@ -38,7 +40,8 @@
      "ex": "My sister wears glasses to read.",
      "img": "/visuals/vocab/clothes/glasses.webp",
      "group": "Head & accessories",
-     "note": "Siempre en plural: my glasses are…"
+     "note": "Siempre en plural: my glasses are…",
+     "form": "glasses"
     },
     {
      "id": "earrings",
@@ -46,7 +49,8 @@
      "es": "aretes",
      "ex": "She has beautiful gold earrings.",
      "img": "/visuals/vocab/clothes/earrings.webp",
-     "group": "Head & accessories"
+     "group": "Head & accessories",
+     "form": "earrings"
     },
     {
      "id": "necklace",
@@ -54,7 +58,8 @@
      "es": "collar",
      "ex": "This necklace was a present from my grandmother.",
      "img": "/visuals/vocab/clothes/necklace.webp",
-     "group": "Head & accessories"
+     "group": "Head & accessories",
+     "form": "necklace"
     },
     {
      "id": "face-mask",
@@ -62,7 +67,8 @@
      "es": "tapabocas",
      "ex": "Please wear a face mask in the hospital.",
      "img": "/visuals/vocab/clothes/face-mask.webp",
-     "group": "Head & accessories"
+     "group": "Head & accessories",
+     "form": "face mask"
     },
     {
      "id": "t-shirt",
@@ -70,7 +76,8 @@
      "es": "camiseta",
      "ex": "I usually wear a black T-shirt and jeans.",
      "img": "/visuals/vocab/clothes/t-shirt.webp",
-     "group": "Upper body"
+     "group": "Upper body",
+     "form": "T-shirt"
     },
     {
      "id": "polo-shirt",
@@ -78,7 +85,8 @@
      "es": "camiseta tipo polo",
      "ex": "The waiters wear red polo shirts.",
      "img": "/visuals/vocab/clothes/polo-shirt.webp",
-     "group": "Upper body"
+     "group": "Upper body",
+     "form": "polo shirts"
     },
     {
      "id": "blouse",
@@ -86,7 +94,8 @@
      "es": "blusa",
      "ex": "She’s wearing a pink blouse today.",
      "img": "/visuals/vocab/clothes/blouse.webp",
-     "group": "Upper body"
+     "group": "Upper body",
+     "form": "blouse"
     },
     {
      "id": "shirt",
@@ -95,7 +104,8 @@
      "ex": "He wears a blue shirt to the office.",
      "img": "/visuals/vocab/clothes/shirt.webp",
      "group": "Upper body",
-     "note": "También button-up shirt o button-down shirt."
+     "note": "También button-up shirt o button-down shirt.",
+     "form": "shirt"
     },
     {
      "id": "tank-top",
@@ -104,7 +114,8 @@
      "ex": "It’s hot, so I’m wearing a tank top.",
      "img": "/visuals/vocab/clothes/tank-top.webp",
      "group": "Upper body",
-     "note": "UK: vest."
+     "note": "UK: vest.",
+     "form": "tank top"
     },
     {
      "id": "jacket",
@@ -112,7 +123,8 @@
      "es": "chaqueta",
      "ex": "Take your jacket. It’s going to rain.",
      "img": "/visuals/vocab/clothes/jacket.webp",
-     "group": "Upper body"
+     "group": "Upper body",
+     "form": "jacket"
     },
     {
      "id": "pants",
@@ -121,7 +133,8 @@
      "ex": "These pants are too long for me.",
      "img": "/visuals/vocab/clothes/pants.webp",
      "group": "Legs",
-     "note": "UK: trousers. Siempre plural: these pants."
+     "note": "UK: trousers. Siempre plural: these pants.",
+     "form": "pants"
     },
     {
      "id": "jeans",
@@ -129,7 +142,8 @@
      "es": "jean, bluyín",
      "ex": "My favourite jeans are very old.",
      "img": "/visuals/vocab/clothes/jeans.webp",
-     "group": "Legs"
+     "group": "Legs",
+     "form": "jeans"
     },
     {
      "id": "joggers",
@@ -138,7 +152,8 @@
      "ex": "I wear joggers when I go running.",
      "img": "/visuals/vocab/clothes/joggers.webp",
      "group": "Legs",
-     "note": "También sweatpants (US) o tracksuit bottoms (UK)."
+     "note": "También sweatpants (US) o tracksuit bottoms (UK).",
+     "form": "joggers"
     },
     {
      "id": "skirt",
@@ -146,7 +161,8 @@
      "es": "falda",
      "ex": "Her school uniform has a blue skirt.",
      "img": "/visuals/vocab/clothes/skirt.webp",
-     "group": "Legs"
+     "group": "Legs",
+     "form": "skirt"
     },
     {
      "id": "shorts",
@@ -154,7 +170,8 @@
      "es": "pantaloneta, shorts",
      "ex": "The players wear blue shorts.",
      "img": "/visuals/vocab/clothes/shorts.webp",
-     "group": "Legs"
+     "group": "Legs",
+     "form": "shorts"
     },
     {
      "id": "denim-shorts",
@@ -162,7 +179,8 @@
      "es": "shorts de jean",
      "ex": "On holiday I only wear denim shorts.",
      "img": "/visuals/vocab/clothes/denim-shorts.webp",
-     "group": "Legs"
+     "group": "Legs",
+     "form": "denim shorts"
     },
     {
      "id": "sneakers",
@@ -171,7 +189,8 @@
      "ex": "These sneakers are very comfortable.",
      "img": "/visuals/vocab/clothes/sneakers.webp",
      "group": "Feet",
-     "note": "UK: trainers."
+     "note": "UK: trainers.",
+     "form": "sneakers"
     },
     {
      "id": "high-heels",
@@ -179,7 +198,8 @@
      "es": "tacones",
      "ex": "She can’t walk fast in high heels.",
      "img": "/visuals/vocab/clothes/high-heels.webp",
-     "group": "Feet"
+     "group": "Feet",
+     "form": "high heels"
     },
     {
      "id": "boots",
@@ -187,7 +207,8 @@
      "es": "botas",
      "ex": "I need new boots for the mountains.",
      "img": "/visuals/vocab/clothes/boots.webp",
-     "group": "Feet"
+     "group": "Feet",
+     "form": "boots"
     },
     {
      "id": "flip-flops",
@@ -196,7 +217,8 @@
      "ex": "Take your flip-flops to the beach.",
      "img": "/visuals/vocab/clothes/flip-flops.webp",
      "group": "Feet",
-     "note": "Son un tipo de sandals (sandalias)."
+     "note": "Son un tipo de sandals (sandalias).",
+     "form": "flip-flops"
     },
     {
      "id": "slippers",
@@ -204,7 +226,8 @@
      "es": "pantuflas",
      "ex": "At home I wear my pink slippers.",
      "img": "/visuals/vocab/clothes/slippers.webp",
-     "group": "Feet"
+     "group": "Feet",
+     "form": "slippers"
     },
     {
      "id": "loafers",
@@ -212,7 +235,8 @@
      "es": "mocasines",
      "ex": "My dad wears brown loafers to work.",
      "img": "/visuals/vocab/clothes/loafers.webp",
-     "group": "Feet"
+     "group": "Feet",
+     "form": "loafers"
     },
     {
      "id": "dress",
@@ -220,7 +244,8 @@
      "es": "vestido",
      "ex": "She’s wearing a long purple dress to the party.",
      "img": "/visuals/vocab/clothes/dress.webp",
-     "group": "Full body"
+     "group": "Full body",
+     "form": "dress"
     },
     {
      "id": "suit",
@@ -228,7 +253,8 @@
      "es": "traje, vestido de hombre",
      "ex": "He wears a black suit for important meetings.",
      "img": "/visuals/vocab/clothes/suit.webp",
-     "group": "Full body"
+     "group": "Full body",
+     "form": "suit"
     }
    ]
   },
@@ -251,7 +277,8 @@
      "es": "primavera",
      "ex": "In spring the flowers come back.",
      "img": "/visuals/vocab/weather/spring.webp",
-     "group": "Seasons"
+     "group": "Seasons",
+     "form": "spring"
     },
     {
      "id": "summer",
@@ -259,7 +286,8 @@
      "es": "verano",
      "ex": "In summer the days are long and hot.",
      "img": "/visuals/vocab/weather/summer.webp",
-     "group": "Seasons"
+     "group": "Seasons",
+     "form": "summer"
     },
     {
      "id": "autumn",
@@ -268,7 +296,8 @@
      "ex": "In autumn the trees lose their leaves.",
      "img": "/visuals/vocab/weather/autumn.webp",
      "group": "Seasons",
-     "note": "Fall en EE. UU., autumn en el Reino Unido."
+     "note": "Fall en EE. UU., autumn en el Reino Unido.",
+     "form": "autumn"
     },
     {
      "id": "winter",
@@ -276,7 +305,8 @@
      "es": "invierno",
      "ex": "In winter it snows in Canada.",
      "img": "/visuals/vocab/weather/winter.webp",
-     "group": "Seasons"
+     "group": "Seasons",
+     "form": "winter"
     },
     {
      "id": "hot",
@@ -284,7 +314,8 @@
      "es": "caluroso (28–35 °C)",
      "ex": "It’s hot in Cartagena today.",
      "img": "/visuals/vocab/weather/hot.webp",
-     "group": "Temperature"
+     "group": "Temperature",
+     "form": "hot"
     },
     {
      "id": "warm",
@@ -292,7 +323,8 @@
      "es": "templado, cálido (23–28 °C)",
      "ex": "Cali is a warm city.",
      "img": "/visuals/vocab/weather/warm.webp",
-     "group": "Temperature"
+     "group": "Temperature",
+     "form": "warm"
     },
     {
      "id": "cool",
@@ -300,7 +332,8 @@
      "es": "fresco (17–23 °C)",
      "ex": "It’s cool in Medellín in the evening.",
      "img": "/visuals/vocab/weather/cool.webp",
-     "group": "Temperature"
+     "group": "Temperature",
+     "form": "cool"
     },
     {
      "id": "cold",
@@ -308,7 +341,8 @@
      "es": "frío (5–17 °C)",
      "ex": "Bogotá is cold at night.",
      "img": "/visuals/vocab/weather/cold.webp",
-     "group": "Temperature"
+     "group": "Temperature",
+     "form": "cold"
     },
     {
      "id": "sunny",
@@ -316,7 +350,8 @@
      "es": "soleado",
      "ex": "It’s a sunny day. Let’s go to the beach!",
      "img": "/visuals/vocab/weather/sunny.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "sunny"
     },
     {
      "id": "cloudy",
@@ -324,7 +359,8 @@
      "es": "nublado",
      "ex": "It’s cloudy today. I can’t see the sun.",
      "img": "/visuals/vocab/weather/cloudy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "cloudy"
     },
     {
      "id": "rainy",
@@ -332,7 +368,8 @@
      "es": "lluvioso",
      "ex": "It’s a rainy day. Take an umbrella.",
      "img": "/visuals/vocab/weather/rainy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "rainy"
     },
     {
      "id": "windy",
@@ -340,7 +377,8 @@
      "es": "ventoso",
      "ex": "It’s windy. We can fly a kite.",
      "img": "/visuals/vocab/weather/windy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "windy"
     },
     {
      "id": "snowy",
@@ -348,7 +386,8 @@
      "es": "nevado, con nieve",
      "ex": "It’s snowy. Let’s make a snowman!",
      "img": "/visuals/vocab/weather/snowy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "snowy"
     },
     {
      "id": "foggy",
@@ -357,7 +396,8 @@
      "ex": "It’s foggy. Drive slowly, please.",
      "img": "/visuals/vocab/weather/foggy.webp",
      "group": "Weather words",
-     "note": "fog → foggy (doble g)."
+     "note": "fog → foggy (doble g).",
+     "form": "foggy"
     },
     {
      "id": "stormy",
@@ -365,7 +405,8 @@
      "es": "tormentoso",
      "ex": "It’s stormy. There’s a lot of thunder.",
      "img": "/visuals/vocab/weather/stormy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "stormy"
     },
     {
      "id": "drizzly",
@@ -373,7 +414,8 @@
      "es": "con llovizna",
      "ex": "It’s drizzly — just a little rain.",
      "img": "/visuals/vocab/weather/drizzly.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "drizzly"
     },
     {
      "id": "clear",
@@ -381,7 +423,8 @@
      "es": "despejado",
      "ex": "It’s a clear night. Look at the stars!",
      "img": "/visuals/vocab/weather/clear.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "clear"
     },
     {
      "id": "freezing",
@@ -389,7 +432,8 @@
      "es": "helado, bajo cero",
      "ex": "It’s freezing! I need my jumper.",
      "img": "/visuals/vocab/weather/freezing.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "freezing"
     },
     {
      "id": "breezy",
@@ -397,7 +441,8 @@
      "es": "con brisa",
      "ex": "It’s breezy by the sea. That’s great.",
      "img": "/visuals/vocab/weather/breezy.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "breezy"
     },
     {
      "id": "misty",
@@ -405,7 +450,8 @@
      "es": "brumoso",
      "ex": "It’s a misty morning in the mountains.",
      "img": "/visuals/vocab/weather/misty.webp",
-     "group": "Weather words"
+     "group": "Weather words",
+     "form": "misty"
     }
    ]
   },
@@ -439,7 +485,7 @@
      "img": "/visuals/vocab/countries/colombia-map.webp",
      "flag": "/visuals/vocab/countries/colombia-flag.webp",
      "nat": "Colombian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "mexico",
@@ -449,7 +495,7 @@
      "img": "/visuals/vocab/countries/mexico-map.webp",
      "flag": "/visuals/vocab/countries/mexico-flag.webp",
      "nat": "Mexican",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "brazil",
@@ -459,7 +505,7 @@
      "img": "/visuals/vocab/countries/brazil-map.webp",
      "flag": "/visuals/vocab/countries/brazil-flag.webp",
      "nat": "Brazilian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "peru",
@@ -469,7 +515,7 @@
      "img": "/visuals/vocab/countries/peru-map.webp",
      "flag": "/visuals/vocab/countries/peru-flag.webp",
      "nat": "Peruvian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "argentina",
@@ -479,7 +525,7 @@
      "img": "/visuals/vocab/countries/argentina-map.webp",
      "flag": "/visuals/vocab/countries/argentina-flag.webp",
      "nat": "Argentinian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "usa",
@@ -489,7 +535,7 @@
      "img": "/visuals/vocab/countries/usa-map.webp",
      "flag": "/visuals/vocab/countries/usa-flag.webp",
      "nat": "American",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "canada",
@@ -499,7 +545,7 @@
      "img": "/visuals/vocab/countries/canada-map.webp",
      "flag": "/visuals/vocab/countries/canada-flag.webp",
      "nat": "Canadian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "spain",
@@ -509,7 +555,7 @@
      "img": "/visuals/vocab/countries/spain-map.webp",
      "flag": "/visuals/vocab/countries/spain-flag.webp",
      "nat": "Spanish",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "uk",
@@ -519,7 +565,7 @@
      "img": "/visuals/vocab/countries/uk-map.webp",
      "flag": "/visuals/vocab/countries/uk-flag.webp",
      "nat": "British",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "france",
@@ -529,7 +575,7 @@
      "img": "/visuals/vocab/countries/france-map.webp",
      "flag": "/visuals/vocab/countries/france-flag.webp",
      "nat": "French",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "italy",
@@ -539,7 +585,7 @@
      "img": "/visuals/vocab/countries/italy-map.webp",
      "flag": "/visuals/vocab/countries/italy-flag.webp",
      "nat": "Italian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "germany",
@@ -549,7 +595,7 @@
      "img": "/visuals/vocab/countries/germany-map.webp",
      "flag": "/visuals/vocab/countries/germany-flag.webp",
      "nat": "German",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "poland",
@@ -559,7 +605,7 @@
      "img": "/visuals/vocab/countries/poland-map.webp",
      "flag": "/visuals/vocab/countries/poland-flag.webp",
      "nat": "Polish",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "sweden",
@@ -569,7 +615,7 @@
      "img": "/visuals/vocab/countries/sweden-map.webp",
      "flag": "/visuals/vocab/countries/sweden-flag.webp",
      "nat": "Swedish",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "greece",
@@ -579,7 +625,7 @@
      "img": "/visuals/vocab/countries/greece-map.webp",
      "flag": "/visuals/vocab/countries/greece-flag.webp",
      "nat": "Greek",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "czech-republic",
@@ -589,7 +635,7 @@
      "img": "/visuals/vocab/countries/czech-republic-map.webp",
      "flag": "/visuals/vocab/countries/czech-republic-flag.webp",
      "nat": "Czech",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "russia",
@@ -599,7 +645,7 @@
      "img": "/visuals/vocab/countries/russia-map.webp",
      "flag": "/visuals/vocab/countries/russia-flag.webp",
      "nat": "Russian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "china",
@@ -609,7 +655,7 @@
      "img": "/visuals/vocab/countries/china-map.webp",
      "flag": "/visuals/vocab/countries/china-flag.webp",
      "nat": "Chinese",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "japan",
@@ -619,7 +665,7 @@
      "img": "/visuals/vocab/countries/japan-map.webp",
      "flag": "/visuals/vocab/countries/japan-flag.webp",
      "nat": "Japanese",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "south-korea",
@@ -629,7 +675,7 @@
      "img": "/visuals/vocab/countries/south-korea-map.webp",
      "flag": "/visuals/vocab/countries/south-korea-flag.webp",
      "nat": "South Korean",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "india",
@@ -639,7 +685,7 @@
      "img": "/visuals/vocab/countries/india-map.webp",
      "flag": "/visuals/vocab/countries/india-flag.webp",
      "nat": "Indian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "egypt",
@@ -649,7 +695,7 @@
      "img": "/visuals/vocab/countries/egypt-map.webp",
      "flag": "/visuals/vocab/countries/egypt-flag.webp",
      "nat": "Egyptian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "nigeria",
@@ -659,7 +705,7 @@
      "img": "/visuals/vocab/countries/nigeria-map.webp",
      "flag": "/visuals/vocab/countries/nigeria-flag.webp",
      "nat": "Nigerian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "south-africa",
@@ -669,7 +715,7 @@
      "img": "/visuals/vocab/countries/south-africa-map.webp",
      "flag": "/visuals/vocab/countries/south-africa-flag.webp",
      "nat": "South African",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "australia",
@@ -679,7 +725,7 @@
      "img": "/visuals/vocab/countries/australia-map.webp",
      "flag": "/visuals/vocab/countries/australia-flag.webp",
      "nat": "Australian",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "new-zealand",
@@ -689,7 +735,7 @@
      "img": "/visuals/vocab/countries/new-zealand-map.webp",
      "flag": "/visuals/vocab/countries/new-zealand-flag.webp",
      "nat": "New Zealander",
-     "gap": false
+     "nogap": true
     }
    ]
   },
@@ -719,7 +765,8 @@
      "es": "panadería",
      "ex": "I go to the bakery to buy fresh bread.",
      "img": "/visuals/vocab/city/bakery.webp",
-     "group": "Shops"
+     "group": "Shops",
+     "form": "bakery"
     },
     {
      "id": "coffee-shop",
@@ -727,7 +774,8 @@
      "es": "cafetería",
      "ex": "Let’s meet at the coffee shop at four.",
      "img": "/visuals/vocab/city/coffee-shop.webp",
-     "group": "Shops"
+     "group": "Shops",
+     "form": "coffee shop"
     },
     {
      "id": "bookstore",
@@ -736,7 +784,8 @@
      "ex": "You can buy notebooks at the bookstore.",
      "img": "/visuals/vocab/city/bookstore.webp",
      "group": "Shops",
-     "note": "UK: bookshop. Library = biblioteca."
+     "note": "UK: bookshop. Library = biblioteca.",
+     "form": "bookstore"
     },
     {
      "id": "pharmacy",
@@ -744,7 +793,8 @@
      "es": "droguería, farmacia",
      "ex": "I need some medicine from the pharmacy.",
      "img": "/visuals/vocab/city/pharmacy.webp",
-     "group": "Shops"
+     "group": "Shops",
+     "form": "pharmacy"
     },
     {
      "id": "supermarket",
@@ -752,7 +802,8 @@
      "es": "supermercado",
      "ex": "We buy fruit and milk at the supermarket.",
      "img": "/visuals/vocab/city/supermarket.webp",
-     "group": "Shops"
+     "group": "Shops",
+     "form": "supermarket"
     },
     {
      "id": "clothing-store",
@@ -760,7 +811,8 @@
      "es": "tienda de ropa",
      "ex": "There’s a sale at the clothing store.",
      "img": "/visuals/vocab/city/clothing-store.webp",
-     "group": "Shops"
+     "group": "Shops",
+     "form": "clothing store"
     },
     {
      "id": "house",
@@ -768,7 +820,8 @@
      "es": "casa",
      "ex": "My house is near the park.",
      "img": "/visuals/vocab/city/house.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "house"
     },
     {
      "id": "building",
@@ -776,7 +829,8 @@
      "es": "edificio",
      "ex": "I live in a tall building.",
      "img": "/visuals/vocab/city/building.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "building"
     },
     {
      "id": "road",
@@ -784,7 +838,8 @@
      "es": "calle, carretera",
      "ex": "Be careful when you cross the road.",
      "img": "/visuals/vocab/city/road.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "road"
     },
     {
      "id": "sidewalk",
@@ -793,7 +848,8 @@
      "ex": "Walk on the sidewalk, not on the road.",
      "img": "/visuals/vocab/city/sidewalk.webp",
      "group": "Basic",
-     "note": "UK: pavement."
+     "note": "UK: pavement.",
+     "form": "sidewalk"
     },
     {
      "id": "park",
@@ -801,7 +857,8 @@
      "es": "parque",
      "ex": "The children play in the park.",
      "img": "/visuals/vocab/city/park.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "park"
     },
     {
      "id": "traffic-light",
@@ -809,7 +866,8 @@
      "es": "semáforo",
      "ex": "Stop! The traffic light is red.",
      "img": "/visuals/vocab/city/traffic-light.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "traffic light"
     },
     {
      "id": "crosswalk",
@@ -818,7 +876,8 @@
      "ex": "Cross the street at the crosswalk.",
      "img": "/visuals/vocab/city/crosswalk.webp",
      "group": "Basic",
-     "note": "UK: zebra crossing."
+     "note": "UK: zebra crossing.",
+     "form": "crosswalk"
     },
     {
      "id": "street-light",
@@ -826,7 +885,8 @@
      "es": "poste de luz",
      "ex": "The street lights go on at six.",
      "img": "/visuals/vocab/city/street-light.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "street lights"
     },
     {
      "id": "bus-stop",
@@ -834,7 +894,8 @@
      "es": "paradero",
      "ex": "I wait at the bus stop every morning.",
      "img": "/visuals/vocab/city/bus-stop.webp",
-     "group": "Basic"
+     "group": "Basic",
+     "form": "bus stop"
     },
     {
      "id": "school",
@@ -842,7 +903,8 @@
      "es": "colegio, escuela",
      "ex": "My school is two blocks from here.",
      "img": "/visuals/vocab/city/school.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "school"
     },
     {
      "id": "hospital",
@@ -850,7 +912,8 @@
      "es": "hospital",
      "ex": "The hospital is open 24 hours.",
      "img": "/visuals/vocab/city/hospital.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "hospital"
     },
     {
      "id": "police-station",
@@ -858,7 +921,8 @@
      "es": "estación de policía",
      "ex": "Go to the police station to report a crime.",
      "img": "/visuals/vocab/city/police-station.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "police station"
     },
     {
      "id": "fire-station",
@@ -866,7 +930,8 @@
      "es": "estación de bomberos",
      "ex": "The fire station has two red trucks.",
      "img": "/visuals/vocab/city/fire-station.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "fire station"
     },
     {
      "id": "library",
@@ -874,7 +939,8 @@
      "es": "biblioteca",
      "ex": "You can borrow books from the library.",
      "img": "/visuals/vocab/city/library.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "library"
     },
     {
      "id": "bank",
@@ -882,7 +948,8 @@
      "es": "banco",
      "ex": "I need to go to the bank to get money.",
      "img": "/visuals/vocab/city/bank.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "bank"
     },
     {
      "id": "post-office",
@@ -890,7 +957,8 @@
      "es": "oficina de correos",
      "ex": "Send the package from the post office.",
      "img": "/visuals/vocab/city/post-office.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "post office"
     },
     {
      "id": "restaurant",
@@ -898,7 +966,8 @@
      "es": "restaurante",
      "ex": "We have dinner at an Italian restaurant.",
      "img": "/visuals/vocab/city/restaurant.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "restaurant"
     },
     {
      "id": "hotel",
@@ -906,7 +975,8 @@
      "es": "hotel",
      "ex": "Our hotel is next to the beach.",
      "img": "/visuals/vocab/city/hotel.webp",
-     "group": "Services"
+     "group": "Services",
+     "form": "hotel"
     }
    ]
   },
@@ -935,147 +1005,168 @@
      "en": "in",
      "es": "dentro de, en",
      "ex": "The cat is in the box.",
-     "img": "/visuals/vocab/prepositions/in.webp"
+     "img": "/visuals/vocab/prepositions/in.webp",
+     "form": "in"
     },
     {
      "id": "on",
      "en": "on",
      "es": "sobre, encima de",
      "ex": "The cat is on the table.",
-     "img": "/visuals/vocab/prepositions/on.webp"
+     "img": "/visuals/vocab/prepositions/on.webp",
+     "form": "on"
     },
     {
      "id": "under",
      "en": "under",
      "es": "debajo de",
      "ex": "The cat is under the table.",
-     "img": "/visuals/vocab/prepositions/under.webp"
+     "img": "/visuals/vocab/prepositions/under.webp",
+     "form": "under"
     },
     {
      "id": "at",
      "en": "at",
      "es": "en (un punto)",
      "ex": "She is at the door.",
-     "img": "/visuals/vocab/prepositions/at.webp"
+     "img": "/visuals/vocab/prepositions/at.webp",
+     "form": "at"
     },
     {
      "id": "above",
      "en": "above",
      "es": "arriba de (sin tocar)",
      "ex": "The lamp is above the sofa.",
-     "img": "/visuals/vocab/prepositions/above.webp"
+     "img": "/visuals/vocab/prepositions/above.webp",
+     "form": "above"
     },
     {
      "id": "over",
      "en": "over",
      "es": "por encima de",
      "ex": "The bird is flying over the house.",
-     "img": "/visuals/vocab/prepositions/over.webp"
+     "img": "/visuals/vocab/prepositions/over.webp",
+     "form": "over"
     },
     {
      "id": "below",
      "en": "below",
      "es": "abajo de",
      "ex": "The fish is below the boat.",
-     "img": "/visuals/vocab/prepositions/below.webp"
+     "img": "/visuals/vocab/prepositions/below.webp",
+     "form": "below"
     },
     {
      "id": "between",
      "en": "between",
      "es": "entre (dos)",
      "ex": "The cat is between the boxes.",
-     "img": "/visuals/vocab/prepositions/between.webp"
+     "img": "/visuals/vocab/prepositions/between.webp",
+     "form": "between"
     },
     {
      "id": "among",
      "en": "among",
      "es": "entre (muchos)",
      "ex": "The girl is among the trees.",
-     "img": "/visuals/vocab/prepositions/among.webp"
+     "img": "/visuals/vocab/prepositions/among.webp",
+     "form": "among"
     },
     {
      "id": "next-to",
      "en": "next to",
      "es": "al lado de",
      "ex": "The cat is next to the plant.",
-     "img": "/visuals/vocab/prepositions/next-to.webp"
+     "img": "/visuals/vocab/prepositions/next-to.webp",
+     "form": "next to"
     },
     {
      "id": "beside",
      "en": "beside",
      "es": "junto a",
      "ex": "He is standing beside his friend.",
-     "img": "/visuals/vocab/prepositions/beside.webp"
+     "img": "/visuals/vocab/prepositions/beside.webp",
+     "form": "beside"
     },
     {
      "id": "near",
      "en": "near",
      "es": "cerca de",
      "ex": "The school is near the park.",
-     "img": "/visuals/vocab/prepositions/near.webp"
+     "img": "/visuals/vocab/prepositions/near.webp",
+     "form": "near"
     },
     {
      "id": "opposite",
      "en": "opposite",
      "es": "enfrente de (al otro lado)",
      "ex": "The bank is opposite the supermarket.",
-     "img": "/visuals/vocab/prepositions/opposite.webp"
+     "img": "/visuals/vocab/prepositions/opposite.webp",
+     "form": "opposite"
     },
     {
      "id": "across-from",
      "en": "across from",
      "es": "frente a, al otro lado de",
      "ex": "The hotel is across from the beach.",
-     "img": "/visuals/vocab/prepositions/across-from.webp"
+     "img": "/visuals/vocab/prepositions/across-from.webp",
+     "form": "across from"
     },
     {
      "id": "in-front-of",
      "en": "in front of",
      "es": "delante de",
      "ex": "The cat is in front of the TV.",
-     "img": "/visuals/vocab/prepositions/in-front-of.webp"
+     "img": "/visuals/vocab/prepositions/in-front-of.webp",
+     "form": "in front of"
     },
     {
      "id": "behind",
      "en": "behind",
      "es": "detrás de",
      "ex": "The cat is behind the curtain.",
-     "img": "/visuals/vocab/prepositions/behind.webp"
+     "img": "/visuals/vocab/prepositions/behind.webp",
+     "form": "behind"
     },
     {
      "id": "inside",
      "en": "inside",
      "es": "adentro de",
      "ex": "The cat is inside the house.",
-     "img": "/visuals/vocab/prepositions/inside.webp"
+     "img": "/visuals/vocab/prepositions/inside.webp",
+     "form": "inside"
     },
     {
      "id": "outside",
      "en": "outside",
      "es": "afuera de",
      "ex": "The cat is outside the house.",
-     "img": "/visuals/vocab/prepositions/outside.webp"
+     "img": "/visuals/vocab/prepositions/outside.webp",
+     "form": "outside"
     },
     {
      "id": "to-the-left-of",
      "en": "to the left of",
      "es": "a la izquierda de",
      "ex": "The cat is to the left of the dog.",
-     "img": "/visuals/vocab/prepositions/to-the-left-of.webp"
+     "img": "/visuals/vocab/prepositions/to-the-left-of.webp",
+     "form": "to the left of"
     },
     {
      "id": "to-the-right-of",
      "en": "to the right of",
      "es": "a la derecha de",
      "ex": "The dog is to the right of the cat.",
-     "img": "/visuals/vocab/prepositions/to-the-right-of.webp"
+     "img": "/visuals/vocab/prepositions/to-the-right-of.webp",
+     "form": "to the right of"
     },
     {
      "id": "at-the-back-of",
      "en": "at the back of",
      "es": "al fondo de",
      "ex": "She sits at the back of the class.",
-     "img": "/visuals/vocab/prepositions/at-the-back-of.webp"
+     "img": "/visuals/vocab/prepositions/at-the-back-of.webp",
+     "form": "at the back of"
     }
    ]
   },
@@ -1111,7 +1202,8 @@
      "es": "madre",
      "ex": "My mother is a nurse.",
      "emoji": "👩",
-     "group": "Parents"
+     "group": "Parents",
+     "form": "mother"
     },
     {
      "id": "father",
@@ -1119,7 +1211,8 @@
      "es": "padre",
      "ex": "My father cooks on Sundays.",
      "emoji": "👨",
-     "group": "Parents"
+     "group": "Parents",
+     "form": "father"
     },
     {
      "id": "parents",
@@ -1128,7 +1221,8 @@
      "ex": "My parents live in Tunja.",
      "emoji": "👫",
      "group": "Parents",
-     "note": "Parents ≠ relatives (parientes)."
+     "note": "Parents ≠ relatives (parientes).",
+     "form": "parents"
     },
     {
      "id": "son",
@@ -1136,7 +1230,8 @@
      "es": "hijo",
      "ex": "Their son is five years old.",
      "emoji": "👦",
-     "group": "Children"
+     "group": "Children",
+     "form": "son"
     },
     {
      "id": "daughter",
@@ -1144,7 +1239,8 @@
      "es": "hija",
      "ex": "Their daughter plays the piano.",
      "emoji": "👧",
-     "group": "Children"
+     "group": "Children",
+     "form": "daughter"
     },
     {
      "id": "baby",
@@ -1152,7 +1248,8 @@
      "es": "bebé",
      "ex": "The baby is sleeping right now.",
      "emoji": "👶",
-     "group": "Children"
+     "group": "Children",
+     "form": "baby"
     },
     {
      "id": "brother",
@@ -1160,7 +1257,8 @@
      "es": "hermano",
      "ex": "My brother is older than me.",
      "emoji": "🧑",
-     "group": "Brothers & sisters"
+     "group": "Brothers & sisters",
+     "form": "brother"
     },
     {
      "id": "sister",
@@ -1168,7 +1266,8 @@
      "es": "hermana",
      "ex": "My sister lives in Medellín.",
      "emoji": "👩‍🦱",
-     "group": "Brothers & sisters"
+     "group": "Brothers & sisters",
+     "form": "sister"
     },
     {
      "id": "twins",
@@ -1176,7 +1275,8 @@
      "es": "gemelos",
      "ex": "Ana and Luisa are twins.",
      "emoji": "👯",
-     "group": "Brothers & sisters"
+     "group": "Brothers & sisters",
+     "form": "twins"
     },
     {
      "id": "grandmother",
@@ -1184,7 +1284,8 @@
      "es": "abuela",
      "ex": "My grandmother makes the best arepas.",
      "emoji": "👵",
-     "group": "Grandparents"
+     "group": "Grandparents",
+     "form": "grandmother"
     },
     {
      "id": "grandfather",
@@ -1192,7 +1293,8 @@
      "es": "abuelo",
      "ex": "My grandfather tells funny stories.",
      "emoji": "👴",
-     "group": "Grandparents"
+     "group": "Grandparents",
+     "form": "grandfather"
     },
     {
      "id": "grandchildren",
@@ -1200,7 +1302,8 @@
      "es": "nietos",
      "ex": "She has six grandchildren.",
      "emoji": "🧒",
-     "group": "Grandparents"
+     "group": "Grandparents",
+     "form": "grandchildren"
     },
     {
      "id": "aunt",
@@ -1208,7 +1311,8 @@
      "es": "tía",
      "ex": "My aunt is my mother’s sister.",
      "emoji": "👩‍🦰",
-     "group": "Other relatives"
+     "group": "Other relatives",
+     "form": "aunt"
     },
     {
      "id": "uncle",
@@ -1216,7 +1320,8 @@
      "es": "tío",
      "ex": "My uncle has a farm in Huila.",
      "emoji": "🧔",
-     "group": "Other relatives"
+     "group": "Other relatives",
+     "form": "uncle"
     },
     {
      "id": "cousin",
@@ -1224,7 +1329,8 @@
      "es": "primo, prima",
      "ex": "My cousin and I are in the same class.",
      "emoji": "🧑‍🤝‍🧑",
-     "group": "Other relatives"
+     "group": "Other relatives",
+     "form": "cousin"
     },
     {
      "id": "husband",
@@ -1232,7 +1338,8 @@
      "es": "esposo",
      "ex": "Her husband is a teacher.",
      "emoji": "🤵",
-     "group": "Couples"
+     "group": "Couples",
+     "form": "husband"
     },
     {
      "id": "wife",
@@ -1240,7 +1347,8 @@
      "es": "esposa",
      "ex": "His wife works at a bank.",
      "emoji": "👰",
-     "group": "Couples"
+     "group": "Couples",
+     "form": "wife"
     },
     {
      "id": "pet",
@@ -1248,7 +1356,8 @@
      "es": "mascota",
      "ex": "Our pet is a big brown dog.",
      "emoji": "🐶",
-     "group": "Couples"
+     "group": "Couples",
+     "form": "pet"
     }
    ]
   },
@@ -1278,7 +1387,8 @@
      "es": "cama",
      "ex": "My bed is next to the window.",
      "img": "/visuals/vocab/house/bed.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "bed"
     },
     {
      "id": "wardrobe",
@@ -1287,7 +1397,8 @@
      "ex": "I keep my clothes in the wardrobe.",
      "img": "/visuals/vocab/house/wardrobe.webp",
      "group": "Furniture",
-     "note": "US: closet."
+     "note": "US: closet.",
+     "form": "wardrobe"
     },
     {
      "id": "sofa",
@@ -1296,7 +1407,8 @@
      "ex": "We watch TV on the sofa.",
      "img": "/visuals/vocab/house/sofa.webp",
      "group": "Furniture",
-     "note": "También couch."
+     "note": "También couch.",
+     "form": "sofa"
     },
     {
      "id": "table",
@@ -1304,7 +1416,8 @@
      "es": "mesa",
      "ex": "The family has dinner at the table.",
      "img": "/visuals/vocab/house/table.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "table"
     },
     {
      "id": "chair",
@@ -1312,7 +1425,8 @@
      "es": "silla",
      "ex": "There are six chairs in the dining room.",
      "img": "/visuals/vocab/house/chair.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "chairs"
     },
     {
      "id": "desk",
@@ -1320,7 +1434,8 @@
      "es": "escritorio",
      "ex": "I do my homework at my desk.",
      "img": "/visuals/vocab/house/desk.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "desk"
     },
     {
      "id": "bookshelf",
@@ -1328,7 +1443,8 @@
      "es": "biblioteca, estante",
      "ex": "The bookshelf is full of comics.",
      "img": "/visuals/vocab/house/bookshelf.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "bookshelf"
     },
     {
      "id": "nightstand",
@@ -1337,7 +1453,8 @@
      "ex": "My phone is on the nightstand.",
      "img": "/visuals/vocab/house/nightstand.webp",
      "group": "Furniture",
-     "note": "UK: bedside table."
+     "note": "UK: bedside table.",
+     "form": "nightstand"
     },
     {
      "id": "coffee-table",
@@ -1345,7 +1462,8 @@
      "es": "mesa de centro",
      "ex": "Put your cup on the coffee table.",
      "img": "/visuals/vocab/house/coffee-table.webp",
-     "group": "Furniture"
+     "group": "Furniture",
+     "form": "coffee table"
     },
     {
      "id": "chest-of-drawers",
@@ -1354,7 +1472,8 @@
      "ex": "My socks are in the chest of drawers.",
      "img": "/visuals/vocab/house/chest-of-drawers.webp",
      "group": "Furniture",
-     "note": "US: dresser."
+     "note": "US: dresser.",
+     "form": "chest of drawers"
     },
     {
      "id": "refrigerator",
@@ -1363,7 +1482,8 @@
      "ex": "The milk is in the refrigerator.",
      "img": "/visuals/vocab/house/refrigerator.webp",
      "group": "Appliances",
-     "note": "Informal: fridge."
+     "note": "Informal: fridge.",
+     "form": "refrigerator"
     },
     {
      "id": "washing-machine",
@@ -1371,7 +1491,8 @@
      "es": "lavadora",
      "ex": "The washing machine is in the laundry room.",
      "img": "/visuals/vocab/house/washing-machine.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "washing machine"
     },
     {
      "id": "microwave",
@@ -1379,7 +1500,8 @@
      "es": "microondas",
      "ex": "Heat the soup in the microwave.",
      "img": "/visuals/vocab/house/microwave.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "microwave"
     },
     {
      "id": "oven",
@@ -1388,7 +1510,8 @@
      "ex": "The cake is in the oven.",
      "img": "/visuals/vocab/house/oven.webp",
      "group": "Appliances",
-     "note": "La estufa (hornillas) es stove o cooker."
+     "note": "La estufa (hornillas) es stove o cooker.",
+     "form": "oven"
     },
     {
      "id": "vacuum-cleaner",
@@ -1396,7 +1519,8 @@
      "es": "aspiradora",
      "ex": "I use the vacuum cleaner on Saturdays.",
      "img": "/visuals/vocab/house/vacuum-cleaner.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "vacuum cleaner"
     },
     {
      "id": "air-conditioner",
@@ -1404,7 +1528,8 @@
      "es": "aire acondicionado",
      "ex": "Turn on the air conditioner, please. It’s hot!",
      "img": "/visuals/vocab/house/air-conditioner.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "air conditioner"
     },
     {
      "id": "television",
@@ -1413,7 +1538,8 @@
      "ex": "The television is in the living room.",
      "img": "/visuals/vocab/house/television.webp",
      "group": "Appliances",
-     "note": "Informal: TV."
+     "note": "Informal: TV.",
+     "form": "television"
     },
     {
      "id": "blender",
@@ -1421,7 +1547,8 @@
      "es": "licuadora",
      "ex": "I make juice in the blender.",
      "img": "/visuals/vocab/house/blender.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "blender"
     },
     {
      "id": "kettle",
@@ -1429,7 +1556,8 @@
      "es": "hervidor",
      "ex": "Put the kettle on for some tea.",
      "img": "/visuals/vocab/house/kettle.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "kettle"
     },
     {
      "id": "toaster",
@@ -1437,7 +1565,8 @@
      "es": "tostadora",
      "ex": "The bread is in the toaster.",
      "img": "/visuals/vocab/house/toaster.webp",
-     "group": "Appliances"
+     "group": "Appliances",
+     "form": "toaster"
     }
    ]
   },
@@ -1477,7 +1606,7 @@
      "ex": "A is for apple.",
      "emoji": "🍎",
      "say": "A. A is for apple.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "b",
@@ -1486,7 +1615,7 @@
      "ex": "B is for banana.",
      "emoji": "🍌",
      "say": "B. B is for banana.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "c",
@@ -1495,7 +1624,7 @@
      "ex": "C is for cat.",
      "emoji": "🐱",
      "say": "C. C is for cat.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "d",
@@ -1504,7 +1633,7 @@
      "ex": "D is for dog.",
      "emoji": "🐶",
      "say": "D. D is for dog.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "e",
@@ -1513,7 +1642,7 @@
      "ex": "E is for egg.",
      "emoji": "🥚",
      "say": "E. E is for egg.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "f",
@@ -1522,7 +1651,7 @@
      "ex": "F is for fish.",
      "emoji": "🐟",
      "say": "F. F is for fish.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "g",
@@ -1531,7 +1660,7 @@
      "ex": "G is for giraffe.",
      "emoji": "🦒",
      "say": "G. G is for giraffe.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "h",
@@ -1540,7 +1669,7 @@
      "ex": "H is for house.",
      "emoji": "🏠",
      "say": "H. H is for house.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "i",
@@ -1549,7 +1678,7 @@
      "ex": "I is for ice cream.",
      "emoji": "🍦",
      "say": "I. I is for ice cream.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "j",
@@ -1558,7 +1687,7 @@
      "ex": "J is for juice.",
      "emoji": "🧃",
      "say": "J. J is for juice.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "k",
@@ -1567,7 +1696,7 @@
      "ex": "K is for kite.",
      "emoji": "🪁",
      "say": "K. K is for kite.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "l",
@@ -1576,7 +1705,7 @@
      "ex": "L is for lemon.",
      "emoji": "🍋",
      "say": "L. L is for lemon.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "m",
@@ -1585,7 +1714,7 @@
      "ex": "M is for moon.",
      "emoji": "🌙",
      "say": "M. M is for moon.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "n",
@@ -1594,7 +1723,7 @@
      "ex": "N is for nose.",
      "emoji": "👃",
      "say": "N. N is for nose.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "o",
@@ -1603,7 +1732,7 @@
      "ex": "O is for orange.",
      "emoji": "🍊",
      "say": "O. O is for orange.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "p",
@@ -1612,7 +1741,7 @@
      "ex": "P is for pizza.",
      "emoji": "🍕",
      "say": "P. P is for pizza.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "q",
@@ -1621,7 +1750,7 @@
      "ex": "Q is for queen.",
      "emoji": "👑",
      "say": "Q. Q is for queen.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "r",
@@ -1630,7 +1759,7 @@
      "ex": "R is for rainbow.",
      "emoji": "🌈",
      "say": "R. R is for rainbow.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "s",
@@ -1639,7 +1768,7 @@
      "ex": "S is for sun.",
      "emoji": "☀️",
      "say": "S. S is for sun.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "t",
@@ -1648,7 +1777,7 @@
      "ex": "T is for tiger.",
      "emoji": "🐯",
      "say": "T. T is for tiger.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "u",
@@ -1657,7 +1786,7 @@
      "ex": "U is for umbrella.",
      "emoji": "☂️",
      "say": "U. U is for umbrella.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "v",
@@ -1666,7 +1795,7 @@
      "ex": "V is for violin.",
      "emoji": "🎻",
      "say": "V. V is for violin.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "w",
@@ -1675,7 +1804,7 @@
      "ex": "W is for watch.",
      "emoji": "⌚",
      "say": "W. W is for watch.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "x",
@@ -1684,7 +1813,7 @@
      "ex": "X is in fox.",
      "emoji": "🦊",
      "say": "X. X is in fox.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "y",
@@ -1693,7 +1822,7 @@
      "ex": "Y is for yellow.",
      "emoji": "💛",
      "say": "Y. Y is for yellow.",
-     "gap": false
+     "nogap": true
     },
     {
      "id": "z",
@@ -1702,7 +1831,7 @@
      "ex": "Z is for zebra.",
      "emoji": "🦓",
      "say": "Z. Z is for zebra.",
-     "gap": false
+     "nogap": true
     }
    ]
   }

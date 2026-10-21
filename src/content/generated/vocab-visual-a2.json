@@ -1,0 +1,1208 @@
+{
+ "level": "A2",
+ "topics": [
+  {
+   "id": "clothes-seasons",
+   "level": "A2",
+   "title": "Clothes for every season",
+   "titleEs": "Ropa para cada estación",
+   "emoji": "🧥",
+   "color": "var(--orange)",
+   "cover": "/visuals/clothing/winter-01.webp",
+   "intro_es": "¿Qué te pones cuando hace frío, cuando llueve o cuando vas a la playa? Ropa de las cuatro estaciones, con su nombre en inglés de EE. UU. y del Reino Unido.",
+   "tip_es": "Para dar consejos sobre la ropa: <i>You should take a jacket.</i> · <i>You’ll need your umbrella.</i> · <i>It’s too hot for a sweater.</i>",
+   "figures": [
+    {
+     "src": "/visuals/clothing-winter.webp",
+     "title": "Winter clothing",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Ropa de invierno (US / UK)"
+    },
+    {
+     "src": "/visuals/clothing-autumn.webp",
+     "title": "Autumn clothing",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Ropa de otoño (US / UK)"
+    },
+    {
+     "src": "/visuals/clothing-spring.webp",
+     "title": "Spring clothing",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Ropa de primavera (US / UK)"
+    },
+    {
+     "src": "/visuals/clothing-summer.webp",
+     "title": "Summer clothing",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Ropa de verano (US / UK)"
+    }
+   ],
+   "items": [
+    {
+     "id": "winter-01",
+     "en": "winter coat",
+     "es": "abrigo de invierno",
+     "ex": "You need a warm winter coat in New York.",
+     "img": "/visuals/clothing/winter-01.webp",
+     "group": "Winter",
+     "form": "winter coat"
+    },
+    {
+     "id": "winter-03",
+     "en": "down jacket",
+     "es": "chaqueta de plumas",
+     "ex": "A down jacket is light but very warm.",
+     "img": "/visuals/clothing/winter-03.webp",
+     "group": "Winter",
+     "note": "UK: padded jacket.",
+     "form": "down jacket"
+    },
+    {
+     "id": "winter-10",
+     "en": "turtleneck",
+     "es": "suéter de cuello tortuga",
+     "ex": "He’s wearing a black turtleneck under his coat.",
+     "img": "/visuals/clothing/winter-10.webp",
+     "group": "Winter",
+     "note": "UK: roll-neck.",
+     "form": "turtleneck"
+    },
+    {
+     "id": "winter-13",
+     "en": "scarf",
+     "es": "bufanda",
+     "ex": "Wrap your scarf around your neck. It’s freezing!",
+     "img": "/visuals/clothing/winter-13.webp",
+     "group": "Winter",
+     "form": "scarf"
+    },
+    {
+     "id": "winter-14",
+     "en": "gloves",
+     "es": "guantes",
+     "ex": "I can’t find my gloves and my hands are cold.",
+     "img": "/visuals/clothing/winter-14.webp",
+     "group": "Winter",
+     "form": "gloves"
+    },
+    {
+     "id": "winter-23",
+     "en": "winter boots",
+     "es": "botas de invierno",
+     "ex": "Winter boots keep your feet dry in the snow.",
+     "img": "/visuals/clothing/winter-23.webp",
+     "group": "Winter",
+     "note": "UK: snow boots.",
+     "form": "Winter boots"
+    },
+    {
+     "id": "autumn-01",
+     "en": "sweater",
+     "es": "suéter, saco",
+     "ex": "Take a sweater — it gets cool in the evening.",
+     "img": "/visuals/clothing/autumn-01.webp",
+     "group": "Autumn",
+     "note": "UK: jumper.",
+     "form": "sweater"
+    },
+    {
+     "id": "autumn-13",
+     "en": "cardigan",
+     "es": "cárdigan, saco abierto",
+     "ex": "My grandmother knitted this cardigan for me.",
+     "img": "/visuals/clothing/autumn-13.webp",
+     "group": "Autumn",
+     "form": "cardigan"
+    },
+    {
+     "id": "autumn-10",
+     "en": "leather jacket",
+     "es": "chaqueta de cuero",
+     "ex": "He looks cool in his leather jacket.",
+     "img": "/visuals/clothing/autumn-10.webp",
+     "group": "Autumn",
+     "form": "leather jacket"
+    },
+    {
+     "id": "autumn-03",
+     "en": "flannel shirt",
+     "es": "camisa a cuadros de franela",
+     "ex": "In autumn I often wear a flannel shirt.",
+     "img": "/visuals/clothing/autumn-03.webp",
+     "group": "Autumn",
+     "note": "UK: checked shirt.",
+     "form": "flannel shirt"
+    },
+    {
+     "id": "autumn-23",
+     "en": "ankle boots",
+     "es": "botines",
+     "ex": "These ankle boots go well with jeans.",
+     "img": "/visuals/clothing/autumn-23.webp",
+     "group": "Autumn",
+     "form": "ankle boots"
+    },
+    {
+     "id": "autumn-25",
+     "en": "umbrella",
+     "es": "paraguas",
+     "ex": "Don’t forget your umbrella. It’s going to rain.",
+     "img": "/visuals/clothing/autumn-25.webp",
+     "group": "Autumn",
+     "note": "UK informal: brolly.",
+     "form": "umbrella"
+    },
+    {
+     "id": "spring-03",
+     "en": "rain jacket",
+     "es": "impermeable",
+     "ex": "I always carry a rain jacket in April.",
+     "img": "/visuals/clothing/spring-03.webp",
+     "group": "Spring",
+     "note": "UK: raincoat.",
+     "form": "rain jacket"
+    },
+    {
+     "id": "spring-05",
+     "en": "trench coat",
+     "es": "gabardina",
+     "ex": "A trench coat is perfect for a cool, rainy day.",
+     "img": "/visuals/clothing/spring-05.webp",
+     "group": "Spring",
+     "note": "UK: mac.",
+     "form": "trench coat"
+    },
+    {
+     "id": "spring-02",
+     "en": "denim jacket",
+     "es": "chaqueta de jean",
+     "ex": "She’s wearing a denim jacket over her dress.",
+     "img": "/visuals/clothing/spring-02.webp",
+     "group": "Spring",
+     "form": "denim jacket"
+    },
+    {
+     "id": "spring-16",
+     "en": "cargo pants",
+     "es": "pantalón cargo",
+     "ex": "Cargo pants have big pockets on the legs.",
+     "img": "/visuals/clothing/spring-16.webp",
+     "group": "Spring",
+     "note": "UK: cargo trousers.",
+     "form": "Cargo pants"
+    },
+    {
+     "id": "spring-22",
+     "en": "sunglasses",
+     "es": "gafas de sol",
+     "ex": "Put on your sunglasses. The sun is very strong.",
+     "img": "/visuals/clothing/spring-22.webp",
+     "group": "Spring",
+     "form": "sunglasses"
+    },
+    {
+     "id": "spring-25",
+     "en": "espadrilles",
+     "es": "alpargatas",
+     "ex": "Espadrilles are comfortable shoes for warm days.",
+     "img": "/visuals/clothing/spring-25.webp",
+     "group": "Spring",
+     "form": "Espadrilles"
+    },
+    {
+     "id": "summer-06",
+     "en": "sundress",
+     "es": "vestido de verano",
+     "ex": "She bought a yellow sundress for the trip.",
+     "img": "/visuals/clothing/summer-06.webp",
+     "group": "Summer",
+     "form": "sundress"
+    },
+    {
+     "id": "summer-08",
+     "en": "swimsuit",
+     "es": "vestido de baño",
+     "ex": "Pack your swimsuit — the hotel has a pool.",
+     "img": "/visuals/clothing/summer-08.webp",
+     "group": "Summer",
+     "note": "UK: swimming costume.",
+     "form": "swimsuit"
+    },
+    {
+     "id": "summer-09",
+     "en": "swim trunks",
+     "es": "pantaloneta de baño",
+     "ex": "He forgot his swim trunks at home.",
+     "img": "/visuals/clothing/summer-09.webp",
+     "group": "Summer",
+     "note": "UK: swimming shorts.",
+     "form": "swim trunks"
+    },
+    {
+     "id": "summer-18",
+     "en": "sun hat",
+     "es": "sombrero para el sol",
+     "ex": "Wear a sun hat at the beach.",
+     "img": "/visuals/clothing/summer-18.webp",
+     "group": "Summer",
+     "form": "sun hat"
+    },
+    {
+     "id": "summer-22",
+     "en": "flip-flops",
+     "es": "chanclas",
+     "ex": "You can’t wear flip-flops in the office.",
+     "img": "/visuals/clothing/summer-22.webp",
+     "group": "Summer",
+     "form": "flip-flops"
+    },
+    {
+     "id": "summer-25",
+     "en": "tote bag",
+     "es": "bolso de tela",
+     "ex": "I carry my towel in a tote bag.",
+     "img": "/visuals/clothing/summer-25.webp",
+     "group": "Summer",
+     "form": "tote bag"
+    }
+   ]
+  },
+  {
+   "id": "colombian-clothing",
+   "level": "A2",
+   "title": "Colombian clothing",
+   "titleEs": "Vestimenta colombiana",
+   "emoji": "🇨🇴",
+   "color": "var(--red)",
+   "cover": "/visuals/clothing/colombia-01.webp",
+   "intro_es": "Prendas y trajes típicos de Colombia explicados en inglés: perfecto para hablar de tu cultura con extranjeros.",
+   "tip_es": "Para explicar una prenda típica: <i>It’s a kind of… made of… People wear it in… for…</i>",
+   "figures": [
+    {
+     "src": "/visuals/clothing-colombia.webp",
+     "title": "Colombian clothing guide",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Prendas y trajes típicos de Colombia"
+    }
+   ],
+   "items": [
+    {
+     "id": "colombia-01",
+     "en": "sombrero vueltiao",
+     "es": "sombrero vueltiao",
+     "ex": "The sombrero vueltiao is a symbol of Colombia.",
+     "img": "/visuals/clothing/colombia-01.webp",
+     "group": "Accessories",
+     "form": "sombrero vueltiao"
+    },
+    {
+     "id": "colombia-08",
+     "en": "sombrero aguadeño",
+     "es": "sombrero aguadeño",
+     "ex": "Coffee farmers often wear a sombrero aguadeño.",
+     "img": "/visuals/clothing/colombia-08.webp",
+     "group": "Accessories",
+     "form": "sombrero aguadeño"
+    },
+    {
+     "id": "colombia-10",
+     "en": "mochila",
+     "es": "mochila arhuaca / wayuu",
+     "ex": "Wayuu women weave colourful mochilas by hand.",
+     "img": "/visuals/clothing/colombia-10.webp",
+     "group": "Accessories",
+     "note": "En inglés se explica: a hand-woven shoulder bag.",
+     "form": "mochilas"
+    },
+    {
+     "id": "colombia-09",
+     "en": "neckerchief",
+     "es": "pañuelo (rabo de gallo)",
+     "ex": "He’s wearing a red neckerchief around his neck.",
+     "img": "/visuals/clothing/colombia-09.webp",
+     "group": "Accessories",
+     "form": "neckerchief"
+    },
+    {
+     "id": "colombia-03",
+     "en": "ruana",
+     "es": "ruana",
+     "ex": "In Boyacá people wear a wool ruana when it’s cold.",
+     "img": "/visuals/clothing/colombia-03.webp",
+     "group": "Clothes",
+     "form": "ruana"
+    },
+    {
+     "id": "colombia-02",
+     "en": "poncho",
+     "es": "poncho",
+     "ex": "A poncho is a big piece of cloth with a hole for your head.",
+     "img": "/visuals/clothing/colombia-02.webp",
+     "group": "Clothes",
+     "form": "poncho"
+    },
+    {
+     "id": "colombia-04",
+     "en": "guayabera",
+     "es": "guayabera",
+     "ex": "A white guayabera is perfect for a hot day in Barranquilla.",
+     "img": "/visuals/clothing/colombia-04.webp",
+     "group": "Clothes",
+     "form": "guayabera"
+    },
+    {
+     "id": "colombia-06",
+     "en": "embroidered blouse",
+     "es": "blusa bordada",
+     "ex": "She bought an embroidered blouse at the market.",
+     "img": "/visuals/clothing/colombia-06.webp",
+     "group": "Clothes",
+     "form": "embroidered blouse"
+    },
+    {
+     "id": "colombia-07",
+     "en": "pollera",
+     "es": "pollera",
+     "ex": "Dancers wear a long pollera to dance cumbia.",
+     "img": "/visuals/clothing/colombia-07.webp",
+     "group": "Clothes",
+     "note": "UK: pollera dress.",
+     "form": "pollera"
+    },
+    {
+     "id": "colombia-17",
+     "en": "national team shirt",
+     "es": "camiseta de la Selección",
+     "ex": "On match days everybody wears the national team shirt.",
+     "img": "/visuals/clothing/colombia-17.webp",
+     "group": "Clothes",
+     "form": "national team shirt"
+    },
+    {
+     "id": "colombia-11",
+     "en": "espadrilles",
+     "es": "alpargatas",
+     "ex": "Traditional espadrilles are made of fique.",
+     "img": "/visuals/clothing/colombia-11.webp",
+     "group": "Shoes",
+     "form": "espadrilles"
+    },
+    {
+     "id": "colombia-13",
+     "en": "cowboy boots",
+     "es": "botas de vaquero",
+     "ex": "The llaneros ride horses in cowboy boots.",
+     "img": "/visuals/clothing/colombia-13.webp",
+     "group": "Shoes",
+     "form": "cowboy boots"
+    },
+    {
+     "id": "colombia-21",
+     "en": "traditional outfit (men)",
+     "es": "traje típico de hombre (región Andina)",
+     "ex": "His traditional outfit has white pants and a red neckerchief.",
+     "img": "/visuals/clothing/colombia-21.webp",
+     "group": "Outfits",
+     "form": "traditional outfit"
+    },
+    {
+     "id": "colombia-22",
+     "en": "traditional outfit (women)",
+     "es": "traje típico de mujer (región Andina)",
+     "ex": "Her traditional outfit has a long, colourful skirt.",
+     "img": "/visuals/clothing/colombia-22.webp",
+     "group": "Outfits",
+     "form": "traditional outfit"
+    },
+    {
+     "id": "colombia-23",
+     "en": "llanero outfit",
+     "es": "traje llanero",
+     "ex": "The llanero outfit is perfect for dancing joropo.",
+     "img": "/visuals/clothing/colombia-23.webp",
+     "group": "Outfits",
+     "form": "llanero outfit"
+    },
+    {
+     "id": "colombia-24",
+     "en": "palenquera outfit",
+     "es": "traje de palenquera",
+     "ex": "The palenquera outfit has the colours of the flag.",
+     "img": "/visuals/clothing/colombia-24.webp",
+     "group": "Outfits",
+     "form": "palenquera outfit"
+    },
+    {
+     "id": "colombia-25",
+     "en": "carnival costume",
+     "es": "traje del Carnaval de Barranquilla",
+     "ex": "People wear amazing costumes at the Barranquilla Carnival.",
+     "img": "/visuals/clothing/colombia-25.webp",
+     "group": "Outfits",
+     "note": "Costume = disfraz o traje de espectáculo.",
+     "form": "costumes"
+    }
+   ]
+  },
+  {
+   "id": "forecast",
+   "level": "A2",
+   "title": "Weather forecast & temperature",
+   "titleEs": "Pronóstico del tiempo y temperatura",
+   "emoji": "📺",
+   "color": "var(--cyan)",
+   "cover": "/visuals/vocab/weather/presenter.webp",
+   "intro_es": "Los verbos del clima, los fenómenos naturales y cómo presentar el pronóstico: <i>Tomorrow it will rain in Bogotá, with a high of 18 degrees.</i>",
+   "tip_es": "Ojo con el calco del español: <i>Hace 12 grados</i> = <b>It’s 12 degrees</b> (no «It’s doing 12 degrees»). <i>Está lloviendo</i> = <b>It’s raining</b>.",
+   "credit": "freepik",
+   "extra": "forecast",
+   "items": [
+    {
+     "id": "rain",
+     "en": "rain",
+     "es": "llover",
+     "ex": "It’s raining, so take your umbrella.",
+     "img": "/visuals/vocab/weather/verb-rain.webp",
+     "group": "Weather verbs",
+     "note": "rain – rained – rained",
+     "form": "raining"
+    },
+    {
+     "id": "snow",
+     "en": "snow",
+     "es": "nevar",
+     "ex": "It snowed a lot in Toronto last night.",
+     "img": "/visuals/vocab/weather/verb-snow.webp",
+     "group": "Weather verbs",
+     "note": "snow – snowed – snowed",
+     "form": "snowed"
+    },
+    {
+     "id": "hail",
+     "en": "hail",
+     "es": "granizar",
+     "ex": "It hailed in Bogotá yesterday afternoon.",
+     "img": "/visuals/vocab/weather/verb-hail.webp",
+     "group": "Weather verbs",
+     "note": "hail – hailed – hailed",
+     "form": "hailed"
+    },
+    {
+     "id": "shine",
+     "en": "shine",
+     "es": "brillar (el sol)",
+     "ex": "The sun is shining. What a beautiful day!",
+     "img": "/visuals/vocab/weather/verb-shine.webp",
+     "group": "Weather verbs",
+     "note": "shine – shone – shone",
+     "form": "shining"
+    },
+    {
+     "id": "blow",
+     "en": "blow",
+     "es": "soplar (el viento)",
+     "ex": "The wind blew all night and broke a window.",
+     "img": "/visuals/vocab/weather/verb-blow.webp",
+     "group": "Weather verbs",
+     "form": "blew",
+     "note": "blow – blew – blown"
+    },
+    {
+     "id": "heat-up",
+     "en": "heat up",
+     "es": "calentar(se)",
+     "ex": "The city heats up quickly in the afternoon.",
+     "img": "/visuals/vocab/weather/verb-heat.webp",
+     "group": "Weather verbs",
+     "form": "heats up"
+    },
+    {
+     "id": "lightning",
+     "en": "lightning",
+     "es": "relámpago, rayo",
+     "ex": "The lightning lit up the whole sky.",
+     "img": "/visuals/vocab/weather/lightning.webp",
+     "group": "Natural phenomena",
+     "note": "Thunder = trueno (el sonido).",
+     "form": "lightning"
+    },
+    {
+     "id": "thunder",
+     "en": "thunder",
+     "es": "trueno",
+     "ex": "The thunder was so loud that the baby woke up.",
+     "img": "/visuals/vocab/weather/stormy.webp",
+     "group": "Natural phenomena",
+     "form": "thunder"
+    },
+    {
+     "id": "raindrops",
+     "en": "raindrops",
+     "es": "gotas de lluvia",
+     "ex": "Big raindrops are falling on the window.",
+     "img": "/visuals/vocab/weather/raindrops.webp",
+     "group": "Natural phenomena",
+     "form": "raindrops"
+    },
+    {
+     "id": "snowflakes",
+     "en": "snowflakes",
+     "es": "copos de nieve",
+     "ex": "No two snowflakes are exactly the same.",
+     "img": "/visuals/vocab/weather/snowflakes.webp",
+     "group": "Natural phenomena",
+     "form": "snowflakes"
+    },
+    {
+     "id": "tornado",
+     "en": "tornado",
+     "es": "tornado",
+     "ex": "A tornado destroyed three houses in the town.",
+     "img": "/visuals/vocab/weather/tornado.webp",
+     "group": "Natural phenomena",
+     "form": "tornado"
+    },
+    {
+     "id": "wind",
+     "en": "wind",
+     "es": "viento",
+     "ex": "The wind is very strong on the coast today.",
+     "img": "/visuals/vocab/weather/wind.webp",
+     "group": "Natural phenomena",
+     "form": "wind"
+    },
+    {
+     "id": "sunlight",
+     "en": "sunlight",
+     "es": "luz del sol",
+     "ex": "Plants need sunlight to grow.",
+     "img": "/visuals/vocab/weather/sunlight.webp",
+     "group": "Natural phenomena",
+     "form": "sunlight"
+    },
+    {
+     "id": "degrees",
+     "en": "degrees",
+     "es": "grados",
+     "ex": "It’s 26 degrees in Cartagena right now.",
+     "emoji": "🌡️",
+     "group": "The forecast",
+     "note": "26 °C = twenty-six degrees Celsius. −4 = minus four.",
+     "form": "degrees"
+    },
+    {
+     "id": "high-low",
+     "en": "high / low",
+     "es": "máxima / mínima",
+     "ex": "Tomorrow: a high of 20 and a low of 9 degrees.",
+     "emoji": "📊",
+     "group": "The forecast",
+     "form": "high"
+    },
+    {
+     "id": "humid",
+     "en": "humid",
+     "es": "húmedo",
+     "ex": "Barranquilla is hot and humid in August.",
+     "emoji": "💦",
+     "group": "The forecast",
+     "form": "humid"
+    },
+    {
+     "id": "forecast",
+     "en": "forecast",
+     "es": "pronóstico",
+     "ex": "The forecast says it will be sunny tomorrow.",
+     "img": "/visuals/vocab/weather/presenter.webp",
+     "group": "The forecast",
+     "form": "forecast"
+    },
+    {
+     "id": "chance-of-rain",
+     "en": "chance of rain",
+     "es": "probabilidad de lluvia",
+     "ex": "There’s an 80% chance of rain this afternoon.",
+     "emoji": "☔",
+     "group": "The forecast",
+     "form": "chance of rain"
+    },
+    {
+     "id": "heatwave",
+     "en": "heatwave",
+     "es": "ola de calor",
+     "ex": "Spain is having a heatwave this week.",
+     "emoji": "🥵",
+     "group": "The forecast",
+     "form": "heatwave"
+    }
+   ]
+  },
+  {
+   "id": "shops-services",
+   "level": "A2",
+   "title": "Shops & services",
+   "titleEs": "Tiendas y servicios",
+   "emoji": "🛍️",
+   "color": "var(--green)",
+   "intro_es": "Más lugares para hacer diligencias: ¿adónde vas a cortarte el pelo, a arreglar el carro o a imprimir un documento?",
+   "tip_es": "En inglés británico muchas tiendas llevan <b>’s</b>: <i>the butcher’s</i> (= the butcher’s shop), <i>the chemist’s</i>, <i>the hairdresser’s</i>.",
+   "figures": [
+    {
+     "src": "/visuals/shops-city.webp",
+     "title": "Shops in a city",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Tiendas y partes de la ciudad"
+    }
+   ],
+   "items": [
+    {
+     "id": "hairdresser",
+     "en": "hairdresser’s",
+     "es": "peluquería",
+     "ex": "I’m going to the hairdresser’s to get my hair cut.",
+     "emoji": "💇",
+     "group": "Personal services",
+     "note": "Barber’s = barbería.",
+     "form": "hairdresser’s"
+    },
+    {
+     "id": "barber",
+     "en": "barber’s",
+     "es": "barbería",
+     "ex": "My brother goes to the barber’s every two weeks.",
+     "emoji": "💈",
+     "group": "Personal services",
+     "form": "barber’s"
+    },
+    {
+     "id": "dry-cleaner",
+     "en": "dry cleaner’s",
+     "es": "lavandería en seco",
+     "ex": "Take your suit to the dry cleaner’s.",
+     "emoji": "👔",
+     "group": "Personal services",
+     "form": "dry cleaner’s"
+    },
+    {
+     "id": "laundromat",
+     "en": "laundromat",
+     "es": "lavandería de autoservicio",
+     "ex": "Students wash their clothes at the laundromat.",
+     "emoji": "🧺",
+     "group": "Personal services",
+     "note": "UK: launderette.",
+     "form": "laundromat"
+    },
+    {
+     "id": "optician",
+     "en": "optician’s",
+     "es": "óptica",
+     "ex": "I need new glasses from the optician’s.",
+     "emoji": "👓",
+     "group": "Personal services",
+     "form": "optician’s"
+    },
+    {
+     "id": "dentist",
+     "en": "dentist’s",
+     "es": "consultorio del odontólogo",
+     "ex": "I have an appointment at the dentist’s on Friday.",
+     "emoji": "🦷",
+     "group": "Personal services",
+     "form": "dentist’s"
+    },
+    {
+     "id": "butcher",
+     "en": "butcher’s",
+     "es": "carnicería",
+     "ex": "We buy chicken and beef at the butcher’s.",
+     "emoji": "🥩",
+     "group": "Food shops",
+     "form": "butcher’s"
+    },
+    {
+     "id": "greengrocer",
+     "en": "greengrocer’s",
+     "es": "frutería, verdulería",
+     "ex": "The greengrocer’s has fresh mangoes today.",
+     "emoji": "🥬",
+     "group": "Food shops",
+     "form": "greengrocer’s"
+    },
+    {
+     "id": "fishmonger",
+     "en": "fishmonger’s",
+     "es": "pescadería",
+     "ex": "The fishmonger’s near the port sells fresh fish.",
+     "emoji": "🐟",
+     "group": "Food shops",
+     "form": "fishmonger’s"
+    },
+    {
+     "id": "corner-shop",
+     "en": "corner shop",
+     "es": "tienda de barrio",
+     "ex": "I buy eggs and milk at the corner shop.",
+     "emoji": "🏪",
+     "group": "Food shops",
+     "note": "US: convenience store.",
+     "form": "corner shop"
+    },
+    {
+     "id": "hardware-store",
+     "en": "hardware store",
+     "es": "ferretería",
+     "ex": "Buy some nails at the hardware store.",
+     "emoji": "🔨",
+     "group": "Other shops",
+     "form": "hardware store"
+    },
+    {
+     "id": "stationery",
+     "en": "stationery shop",
+     "es": "papelería",
+     "ex": "I print my homework at the stationery shop.",
+     "emoji": "✏️",
+     "group": "Other shops",
+     "form": "stationery shop"
+    },
+    {
+     "id": "florist",
+     "en": "florist’s",
+     "es": "floristería",
+     "ex": "He bought roses at the florist’s.",
+     "emoji": "💐",
+     "group": "Other shops",
+     "form": "florist’s"
+    },
+    {
+     "id": "jeweller",
+     "en": "jeweller’s",
+     "es": "joyería",
+     "ex": "The jeweller’s is fixing my watch.",
+     "emoji": "💍",
+     "group": "Other shops",
+     "note": "US: jeweler’s.",
+     "form": "jeweller’s"
+    },
+    {
+     "id": "toy-shop",
+     "en": "toy shop",
+     "es": "juguetería",
+     "ex": "The toy shop is full of children in December.",
+     "emoji": "🧸",
+     "group": "Other shops",
+     "form": "toy shop"
+    },
+    {
+     "id": "gas-station",
+     "en": "gas station",
+     "es": "bomba de gasolina",
+     "ex": "Let’s stop at the gas station before the trip.",
+     "emoji": "⛽",
+     "group": "Services",
+     "note": "UK: petrol station.",
+     "form": "gas station"
+    },
+    {
+     "id": "garage",
+     "en": "garage",
+     "es": "taller mecánico",
+     "ex": "My car is at the garage. The brakes are broken.",
+     "emoji": "🔧",
+     "group": "Services",
+     "form": "garage"
+    },
+    {
+     "id": "atm",
+     "en": "ATM",
+     "es": "cajero automático",
+     "ex": "Is there an ATM near here?",
+     "emoji": "🏧",
+     "group": "Services",
+     "note": "UK: cash machine.",
+     "form": "ATM"
+    },
+    {
+     "id": "gym",
+     "en": "gym",
+     "es": "gimnasio",
+     "ex": "She goes to the gym three times a week.",
+     "emoji": "🏋️",
+     "group": "Services",
+     "form": "gym"
+    },
+    {
+     "id": "vet",
+     "en": "vet’s",
+     "es": "veterinaria",
+     "ex": "We took the dog to the vet’s.",
+     "emoji": "🐕",
+     "group": "Services",
+     "form": "vet’s"
+    }
+   ]
+  },
+  {
+   "id": "prepositions-movement",
+   "level": "A2",
+   "title": "Prepositions of movement",
+   "titleEs": "Preposiciones de movimiento",
+   "emoji": "🏃",
+   "color": "var(--orange)",
+   "cover": "/visuals/vocab/movement/across.webp",
+   "intro_es": "Las preposiciones de movimiento dicen <b>hacia dónde va</b> algo o alguien. Van con verbos de movimiento: <i>walk, run, go, drive, jump, climb</i>.",
+   "tip_es": "<b>In</b> = estar dentro; <b>into</b> = entrar. <b>On</b> = estar encima; <b>onto</b> = subirse. <i>The cat is in the box</i> / <i>The cat jumps into the box</i>.",
+   "figures": [
+    {
+     "src": "/visuals/prepositions-place-movement.webp",
+     "title": "Prepositions of place and movement",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Lugar (estático) frente a movimiento (dirección)"
+    }
+   ],
+   "items": [
+    {
+     "id": "to",
+     "en": "to",
+     "es": "a, hacia (destino)",
+     "ex": "He is going to the house.",
+     "img": "/visuals/vocab/movement/to.webp",
+     "form": "to"
+    },
+    {
+     "id": "from",
+     "en": "from",
+     "es": "de, desde",
+     "ex": "He is coming from the house.",
+     "img": "/visuals/vocab/movement/from.webp",
+     "form": "from"
+    },
+    {
+     "id": "into",
+     "en": "into",
+     "es": "hacia adentro de",
+     "ex": "He is going into the building.",
+     "img": "/visuals/vocab/movement/into.webp",
+     "form": "into"
+    },
+    {
+     "id": "out-of",
+     "en": "out of",
+     "es": "hacia afuera de",
+     "ex": "He is coming out of the building.",
+     "img": "/visuals/vocab/movement/out-of.webp",
+     "form": "out of"
+    },
+    {
+     "id": "onto",
+     "en": "onto",
+     "es": "hacia encima de, subir a",
+     "ex": "He is getting onto the bus.",
+     "img": "/visuals/vocab/movement/onto.webp",
+     "form": "onto"
+    },
+    {
+     "id": "off",
+     "en": "off",
+     "es": "bajarse de",
+     "ex": "He is getting off the bus.",
+     "img": "/visuals/vocab/movement/off.webp",
+     "form": "off"
+    },
+    {
+     "id": "towards",
+     "en": "towards",
+     "es": "hacia",
+     "ex": "He is walking towards the city.",
+     "img": "/visuals/vocab/movement/towards.webp",
+     "note": "US: toward.",
+     "form": "towards"
+    },
+    {
+     "id": "away-from",
+     "en": "away from",
+     "es": "alejándose de",
+     "ex": "He is walking away from the city.",
+     "img": "/visuals/vocab/movement/away-from.webp",
+     "form": "away from"
+    },
+    {
+     "id": "through",
+     "en": "through",
+     "es": "a través de, por dentro",
+     "ex": "He is going through the tunnel.",
+     "img": "/visuals/vocab/movement/through.webp",
+     "form": "through"
+    },
+    {
+     "id": "across",
+     "en": "across",
+     "es": "de un lado al otro",
+     "ex": "He is walking across the bridge.",
+     "img": "/visuals/vocab/movement/across.webp",
+     "form": "across"
+    },
+    {
+     "id": "along",
+     "en": "along",
+     "es": "a lo largo de",
+     "ex": "He is walking along the river.",
+     "img": "/visuals/vocab/movement/along.webp",
+     "form": "along"
+    },
+    {
+     "id": "up",
+     "en": "up",
+     "es": "hacia arriba",
+     "ex": "He is going up the stairs.",
+     "img": "/visuals/vocab/movement/up.webp",
+     "form": "up"
+    },
+    {
+     "id": "down",
+     "en": "down",
+     "es": "hacia abajo",
+     "ex": "He is going down the stairs.",
+     "img": "/visuals/vocab/movement/down.webp",
+     "form": "down"
+    },
+    {
+     "id": "over",
+     "en": "over",
+     "es": "por encima de",
+     "ex": "He is jumping over the wall.",
+     "img": "/visuals/vocab/movement/over.webp",
+     "form": "over"
+    },
+    {
+     "id": "under",
+     "en": "under",
+     "es": "por debajo de",
+     "ex": "He is going under the barrier.",
+     "img": "/visuals/vocab/movement/under.webp",
+     "form": "under"
+    },
+    {
+     "id": "past",
+     "en": "past",
+     "es": "pasando por (sin entrar)",
+     "ex": "He is walking past the store.",
+     "img": "/visuals/vocab/movement/past.webp",
+     "form": "past"
+    },
+    {
+     "id": "beyond",
+     "en": "beyond",
+     "es": "más allá de",
+     "ex": "The road continues beyond the mountains.",
+     "img": "/visuals/vocab/movement/beyond.webp",
+     "form": "beyond"
+    },
+    {
+     "id": "around",
+     "en": "around",
+     "es": "alrededor de",
+     "ex": "He is running around the tree.",
+     "img": "/visuals/vocab/movement/around.webp",
+     "note": "UK también: round.",
+     "form": "around"
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "level": "A2",
+   "title": "Health & symptoms",
+   "titleEs": "Salud y síntomas",
+   "emoji": "🤒",
+   "color": "var(--red)",
+   "cover": "/visuals/vocab/health/headache.webp",
+   "intro_es": "Cómo decir qué te duele: <b>I have a…</b> (<i>I have a headache</i>) o <b>I feel…</b> (<i>I feel dizzy</i>). Y cómo dar consejos con <i>should</i>.",
+   "tip_es": "Los dolores con <b>-ache</b> (headache, stomachache, backache, earache, toothache) van con <b>a</b>: <i>I have a headache</i>. Pero <i>I have muscle aches</i>.",
+   "figures": [
+    {
+     "src": "/visuals/health-symptoms.webp",
+     "title": "Health symptoms",
+     "w": 1216,
+     "h": 1294,
+     "titleEs": "Síntomas, vocabulario de salud y modales para dar consejos"
+    }
+   ],
+   "items": [
+    {
+     "id": "headache",
+     "en": "headache",
+     "es": "dolor de cabeza",
+     "ex": "I have a headache. I need some water.",
+     "img": "/visuals/vocab/health/headache.webp",
+     "group": "Symptoms",
+     "form": "headache"
+    },
+    {
+     "id": "fever",
+     "en": "fever",
+     "es": "fiebre",
+     "ex": "She has a fever, so she’s staying in bed.",
+     "img": "/visuals/vocab/health/fever.webp",
+     "group": "Symptoms",
+     "form": "fever"
+    },
+    {
+     "id": "sore-throat",
+     "en": "sore throat",
+     "es": "dolor de garganta",
+     "ex": "I have a sore throat and I can’t sing.",
+     "img": "/visuals/vocab/health/sore-throat.webp",
+     "group": "Symptoms",
+     "form": "sore throat"
+    },
+    {
+     "id": "cough",
+     "en": "cough",
+     "es": "tos",
+     "ex": "He has a bad cough. He should see a doctor.",
+     "img": "/visuals/vocab/health/cough.webp",
+     "group": "Symptoms",
+     "form": "cough"
+    },
+    {
+     "id": "runny-nose",
+     "en": "runny nose",
+     "es": "moqueo",
+     "ex": "I have a runny nose. Can I have a tissue?",
+     "img": "/visuals/vocab/health/runny-nose.webp",
+     "group": "Symptoms",
+     "form": "runny nose"
+    },
+    {
+     "id": "stomachache",
+     "en": "stomachache",
+     "es": "dolor de estómago",
+     "ex": "I ate too much and now I have a stomachache.",
+     "img": "/visuals/vocab/health/stomachache.webp",
+     "group": "Symptoms",
+     "form": "stomachache"
+    },
+    {
+     "id": "nausea",
+     "en": "nauseous",
+     "es": "con náuseas",
+     "ex": "I feel nauseous on long bus trips.",
+     "img": "/visuals/vocab/health/nausea.webp",
+     "group": "Symptoms",
+     "note": "Sustantivo: nausea.",
+     "form": "nauseous"
+    },
+    {
+     "id": "dizzy",
+     "en": "dizzy",
+     "es": "mareado",
+     "ex": "Sit down if you feel dizzy.",
+     "img": "/visuals/vocab/health/dizziness.webp",
+     "group": "Symptoms",
+     "note": "Sustantivo: dizziness.",
+     "form": "dizzy"
+    },
+    {
+     "id": "tired",
+     "en": "tired",
+     "es": "cansado",
+     "ex": "I feel tired because I slept badly.",
+     "img": "/visuals/vocab/health/tiredness.webp",
+     "group": "Symptoms",
+     "note": "Sustantivo: tiredness.",
+     "form": "tired"
+    },
+    {
+     "id": "backache",
+     "en": "backache",
+     "es": "dolor de espalda",
+     "ex": "Carrying heavy boxes gave me a backache.",
+     "img": "/visuals/vocab/health/backache.webp",
+     "group": "Symptoms",
+     "form": "backache"
+    },
+    {
+     "id": "muscle-ache",
+     "en": "muscle ache",
+     "es": "dolor muscular",
+     "ex": "After the marathon I had muscle aches everywhere.",
+     "img": "/visuals/vocab/health/muscle-ache.webp",
+     "group": "Symptoms",
+     "form": "muscle aches"
+    },
+    {
+     "id": "earache",
+     "en": "earache",
+     "es": "dolor de oído",
+     "ex": "Children often get an earache after swimming.",
+     "img": "/visuals/vocab/health/earache.webp",
+     "group": "Symptoms",
+     "form": "earache"
+    },
+    {
+     "id": "doctor",
+     "en": "doctor",
+     "es": "médico",
+     "ex": "You should see a doctor about that cough.",
+     "img": "/visuals/vocab/health/doctor.webp",
+     "group": "Health words",
+     "form": "doctor"
+    },
+    {
+     "id": "medicine",
+     "en": "medicine",
+     "es": "medicamento",
+     "ex": "Take this medicine twice a day.",
+     "img": "/visuals/vocab/health/medicine.webp",
+     "group": "Health words",
+     "form": "medicine"
+    },
+    {
+     "id": "stay-hydrated",
+     "en": "stay hydrated",
+     "es": "mantenerse hidratado",
+     "ex": "It’s hot, so stay hydrated and drink lots of water.",
+     "img": "/visuals/vocab/health/water.webp",
+     "group": "Health words",
+     "form": "stay hydrated"
+    },
+    {
+     "id": "clinic",
+     "en": "clinic",
+     "es": "clínica, consultorio",
+     "ex": "The clinic opens at seven in the morning.",
+     "img": "/visuals/vocab/health/hospital.webp",
+     "group": "Health words",
+     "form": "clinic"
+    },
+    {
+     "id": "rest",
+     "en": "rest",
+     "es": "descansar",
+     "ex": "You should rest for a couple of days.",
+     "emoji": "🛌",
+     "group": "Health words",
+     "form": "rest"
+    },
+    {
+     "id": "get-better",
+     "en": "get better",
+     "es": "mejorarse",
+     "ex": "I hope you get better soon!",
+     "emoji": "💪",
+     "group": "Health words",
+     "form": "get better"
+    }
+   ]
+  }
+ ]
+}

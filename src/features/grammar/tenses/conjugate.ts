@@ -142,7 +142,9 @@ export function conjugate(o: BuildOptions): { parts: Part[]; text: string } {
     }
     const first = rest[0];
     if (first) {
-      const contractSubj = o.contractions && o.subject.pronoun && SUBJ_CONTR[first] && !(neg && first !== 'am' && NEG[first]) && !(first === 'had' && !rest[1] && o.tense !== 'pastPerfect');
+      // Avoid contractions the reader can't disambiguate ("It's written" = is? has?).
+      const ambiguous = (first === 'is' && passive && rest.length === 1) || ((first === 'has' || first === 'had') && rest.length === 1 && partForm(o.verb) === o.verb.en);
+      const contractSubj = o.contractions && o.subject.pronoun && SUBJ_CONTR[first] && !ambiguous && !(neg && first !== 'am' && NEG[first]);
       if (contractSubj) A(SUBJ_CONTR[first]!, true);
       else if (neg && o.contractions && NEG[first]) {
         A(NEG[first]!.slice(0, -3));
@@ -167,10 +169,6 @@ export function conjugate(o: BuildOptions): { parts: Part[]; text: string } {
         V(main);
       }
     }
-  }
-  // fix "wo" + "n't" → won't
-  for (let i = 0; i < parts.length - 1; i++) {
-    if (parts[i]!.text === 'wil' && parts[i + 1]!.text === "n't") parts[i]!.text = 'wo';
   }
   if (time && !midAdverb) T(time);
   parts.push({ text: o.polarity === 'q' ? '?' : '.', role: 'other', join: true });
