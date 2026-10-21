@@ -66,7 +66,7 @@ export const GRAMMAR_MODULES: GrammarModule[] = [
     subtitle: 'Escribe una frase y mira su línea del tiempo',
     description: 'Detecta el tiempo verbal de lo que escribes y lo dibuja al instante, construye frases en los 14 tiempos (con pasiva y contracciones), señala errores típicos y practica emparejando frases y líneas del tiempo.',
     cover: '',
-    levels: ['A1', 'A2', 'B1', 'B2', 'C1'],
+    levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
     ref: 'grammar:tenses',
   },
   {

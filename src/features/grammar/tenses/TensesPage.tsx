@@ -20,7 +20,7 @@ export default function TensesPage() {
   return (
     <Page
       back={{ to: '/learn/grammar', label: 'Gramática' }}
-      eyebrow="A1 – C1 · Todos los tiempos verbales en una línea"
+      eyebrow="A1 – C2 · Todos los tiempos verbales en una línea"
       title="Tense Timeline"
       subtitle="Escribe una frase y mira cómo se mueve la línea del tiempo, constrúyela pieza a pieza o practica dibujando el tiempo correcto."
       wide

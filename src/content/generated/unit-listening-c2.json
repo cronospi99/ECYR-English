@@ -737,5 +737,1427 @@
     "So far, nobody has identified one."
    ]
   }
+ ],
+ "3": [
+  {
+   "id": "ul-c2-3-1",
+   "title": "What Did We Actually See?",
+   "level": "C2",
+   "kind": "conversation",
+   "topic": "Memory & Perception",
+   "focus": "Modals of speculation and deduction (present, past, future)",
+   "emoji": "🚲",
+   "speakers": [
+    {
+     "name": "Nina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oscar",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Oscar, the police officer's just rung. She wants us both to give statements about the accident this afternoon. Can you remember what colour the van was?"
+    },
+    {
+     "s": 1,
+     "text": "White. Definitely white. Well, I think so. I only caught a glimpse of it before it turned the corner."
+    },
+    {
+     "s": 0,
+     "text": "I thought it was grey. Silver, maybe."
+    },
+    {
+     "s": 1,
+     "text": "Hmm. It can't have been silver. I'd have noticed. Silver catches the light."
+    },
+    {
+     "s": 0,
+     "text": "It was overcast, though. It might easily have looked white to you and grey to me."
+    },
+    {
+     "s": 1,
+     "text": "True. Okay. What about the cyclist? Did you see whether he went through the red light?"
+    },
+    {
+     "s": 0,
+     "text": "That's the thing. I'm racking my brains and I genuinely can't discern whether the light was red or amber. I was looking at my phone, then I heard the brakes."
+    },
+    {
+     "s": 1,
+     "text": "Same, more or less. I was looking at the café menu. I've got a gut feeling the cyclist was in the right, but I couldn't swear to it."
+    },
+    {
+     "s": 0,
+     "text": "You must have seen something, though. You were facing the junction."
+    },
+    {
+     "s": 1,
+     "text": "I was facing it, but that's not the same as watching it. I think my brain's filling in the gaps. Every time I replay it, I get a slightly different version."
+    },
+    {
+     "s": 0,
+     "text": "Maybe we should write down what we remember separately, before we talk any more. Otherwise we'll end up agreeing on a story that might not be true."
+    },
+    {
+     "s": 1,
+     "text": "Good idea. The officer will probably ask us that anyway. They'll have seen this a thousand times."
+    },
+    {
+     "s": 0,
+     "text": "Do you think the cyclist will be okay?"
+    },
+    {
+     "s": 1,
+     "text": "He was sitting up and talking when the ambulance came, so he can't have been too badly hurt. He'll be sore tomorrow, I should think."
+    },
+    {
+     "s": 0,
+     "text": "I hope so. Right, pen and paper. No conferring."
+    },
+    {
+     "s": 1,
+     "text": "No conferring. Although, for the record, the van was white."
+    },
+    {
+     "s": 0,
+     "text": "Oscar!"
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why is Oscar unsure about the van's colour?",
+     "options": [
+      "He only saw it briefly",
+      "He is colour-blind",
+      "It was dark",
+      "He was not there"
+     ],
+     "answer": 0,
+     "explain_es": "\"I only caught a glimpse of it before it turned the corner.\""
+    },
+    {
+     "type": "mc",
+     "q": "'It can't have been silver' expresses…",
+     "options": [
+      "permission",
+      "a future possibility",
+      "advice",
+      "a strong negative deduction about the past"
+     ],
+     "answer": 3,
+     "explain_es": "'Can't have + participio' = deducción negativa segura."
+    },
+    {
+     "type": "mc",
+     "q": "How does Nina explain their different memories of the colour?",
+     "options": [
+      "One of them is lying",
+      "The van changed colour",
+      "The overcast light could have affected perception",
+      "They saw different vans"
+     ],
+     "answer": 2,
+     "explain_es": "\"It was overcast ... It might easily have looked white to you and grey to me.\""
+    },
+    {
+     "type": "gap",
+     "q": "Nina says she is ______ her brains but can't tell whether the light was red or amber. (1 word, -ing form)",
+     "answer": "racking",
+     "accept": [],
+     "explain_es": "'Rack your brains' = devanarse los sesos."
+    },
+    {
+     "type": "mc",
+     "q": "What does Oscar mean by 'I was facing it, but that's not the same as watching it'?",
+     "options": [
+      "He was too far away",
+      "He was looking in a mirror",
+      "He was asleep",
+      "Being in front of something doesn't guarantee attention"
+     ],
+     "answer": 3,
+     "explain_es": "Distingue entre estar de cara y prestar atención."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Nina suggest writing their memories down separately?",
+     "options": [
+      "Because the police require it",
+      "To compare handwriting",
+      "To save time",
+      "To avoid influencing each other's recollections"
+     ],
+     "answer": 3,
+     "explain_es": "\"Otherwise we'll end up agreeing on a story that might not be true.\""
+    },
+    {
+     "type": "mc",
+     "q": "'They'll have seen this a thousand times' is…",
+     "options": [
+      "a question",
+      "a complaint",
+      "a prediction about the future",
+      "a confident assumption about the police's experience"
+     ],
+     "answer": 3,
+     "explain_es": "'Will have + participio' = suposición sobre el pasado/presente."
+    },
+    {
+     "type": "tf",
+     "q": "Oscar believes the cyclist was seriously injured.",
+     "answer": "F",
+     "explain_es": "\"he can't have been too badly hurt\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the effect of Oscar's final remark?",
+     "options": [
+      "He changes his story",
+      "He breaks their agreement humorously",
+      "He admits he was wrong",
+      "He apologises"
+     ],
+     "answer": 1,
+     "explain_es": "Rompe en broma el pacto de no hablar."
+    }
+   ],
+   "dictation": [
+    "I only caught a glimpse of it before it turned the corner.",
+    "I think my brain's filling in the gaps.",
+    "Right, pen and paper. No conferring."
+   ]
+  },
+  {
+   "id": "ul-c2-3-2",
+   "title": "Why We See What We Expect",
+   "level": "C2",
+   "kind": "talk",
+   "topic": "Cognitive Bias",
+   "focus": "Needn't have vs didn't need to; should have, might have, could have",
+   "emoji": "🧠",
+   "speakers": [
+    {
+     "name": "Dr Kim",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Audience member",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Let me start with a confession. Last year I bought a house. Before I signed, a surveyor told me the roof would need replacing within five years. I didn't want to hear it. I loved the house. So I found a second surveyor, who said the roof was fine, and I believed him. Guess what I'm paying for this spring."
+    },
+    {
+     "s": 0,
+     "text": "That, in a nutshell, is confirmation bias: the tendency to seek out and believe information that supports what we already want to think. And here's the uncomfortable part. Knowing about it doesn't protect you. I teach this stuff. I still fell for it."
+    },
+    {
+     "s": 0,
+     "text": "With the benefit of hindsight, I should have listened to the first surveyor. I could have negotiated a lower price. I might even have walked away. Instead, I let wishful thinking cloud my judgement."
+    },
+    {
+     "s": 0,
+     "text": "Now, people often ask me how to avoid this. The honest answer is: you can't, entirely. But you can build habits. One is to actively look for evidence against your preferred view. Another is to ask someone who has no stake in the decision."
+    },
+    {
+     "s": 1,
+     "text": "Can I ask something? You said you got a second opinion. Isn't that what we're supposed to do?"
+    },
+    {
+     "s": 0,
+     "text": "Great question. A second opinion is good if you're genuinely open to it. My problem was that I went looking for a particular answer. I needn't have bothered with the second surveyor at all, really. I'd already decided. I just wanted permission."
+    },
+    {
+     "s": 1,
+     "text": "So what should you have done?"
+    },
+    {
+     "s": 0,
+     "text": "I didn't need to ignore my feelings. Loving a house is fine. What I should have done was separate the decision from the emotion: write down what would make me walk away, before I fell in love with the place, and stick to it."
+    },
+    {
+     "s": 0,
+     "text": "We all have blind spots. Mine, clearly, is old houses with big windows. Yours might be a political view, a friend, a favourite sports team. The goal isn't to eliminate bias. It's to notice when it's driving."
+    },
+    {
+     "s": 1,
+     "text": "Is it worse in some people than others?"
+    },
+    {
+     "s": 0,
+     "text": "Some research suggests people who are very confident in their intelligence can be more susceptible, because they're better at building arguments for what they already believe. Which is a slightly alarming thought for a room full of academics."
+    },
+    {
+     "s": 0,
+     "text": "So, homework. Next time you make a decision you care about, write down one piece of evidence that would change your mind. If you can't think of one, that's your warning sign."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does Dr Kim begin with a personal confession?",
+     "options": [
+      "To show that even experts fall victim to confirmation bias",
+      "To change the topic",
+      "To complain about surveyors",
+      "To advertise her house"
+     ],
+     "answer": 0,
+     "explain_es": "\"I teach this stuff. I still fell for it.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does she say about knowing about confirmation bias?",
+     "options": [
+      "It fully protects you",
+      "It does not protect you",
+      "It is unnecessary",
+      "It makes it worse"
+     ],
+     "answer": 1,
+     "explain_es": "\"Knowing about it doesn't protect you.\""
+    },
+    {
+     "type": "gap",
+     "q": "With the benefit of ______, she should have listened to the first surveyor. (1 word)",
+     "answer": "hindsight",
+     "accept": [],
+     "explain_es": "'With the benefit of hindsight' = a toro pasado, en retrospectiva."
+    },
+    {
+     "type": "mc",
+     "q": "'I needn't have bothered with the second surveyor' means…",
+     "options": [
+      "she didn't consult him",
+      "she was obliged to consult him",
+      "she will consult him in future",
+      "she consulted him, but it was pointless"
+     ],
+     "answer": 3,
+     "explain_es": "'Needn't have + participio': lo hizo, pero no hacía falta."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'I didn't need to ignore my feelings' mean?",
+     "options": [
+      "It wasn't necessary to ignore her feelings",
+      "She ignored her feelings unnecessarily",
+      "She had no feelings",
+      "She should ignore feelings"
+     ],
+     "answer": 0,
+     "explain_es": "'Didn't need to' = no era necesario (sin decir si lo hizo)."
+    },
+    {
+     "type": "mc",
+     "q": "What does she recommend doing before falling in love with a choice?",
+     "options": [
+      "Avoiding emotions entirely",
+      "Writing down what would make you walk away",
+      "Getting three opinions",
+      "Asking friends"
+     ],
+     "answer": 1,
+     "explain_es": "\"write down what would make me walk away, before I fell in love with the place\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why might very confident, intelligent people be more susceptible?",
+     "options": [
+      "They read less",
+      "They are better at constructing arguments for existing beliefs",
+      "They are more emotional",
+      "They trust experts too much"
+     ],
+     "answer": 1,
+     "explain_es": "\"better at building arguments for what they already believe\"."
+    },
+    {
+     "type": "tf",
+     "q": "Dr Kim says the goal is to eliminate bias completely.",
+     "answer": "F",
+     "explain_es": "\"The goal isn't to eliminate bias. It's to notice when it's driving.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the 'warning sign' mentioned in the homework?",
+     "options": [
+      "Feeling emotional",
+      "Asking too many people",
+      "Changing your mind too often",
+      "Being unable to name evidence that would change your mind"
+     ],
+     "answer": 3,
+     "explain_es": "\"If you can't think of one, that's your warning sign.\""
+    }
+   ],
+   "dictation": [
+    "Guess what I'm paying for this spring.",
+    "I just wanted permission.",
+    "We all have blind spots."
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "ul-c2-4-1",
+   "title": "Taking the Plunge",
+   "level": "C2",
+   "kind": "interview",
+   "topic": "Careers & Entrepreneurship",
+   "focus": "Advanced verb patterns: gerund vs infinitive with change of meaning",
+   "emoji": "🚀",
+   "speakers": [
+    {
+     "name": "Hugo",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Amaya",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Amaya Cruz founded her furniture-repair company five years ago. It now employs sixty people. Amaya, it's been described as a meteoric rise. Does it feel like that?"
+    },
+    {
+     "s": 1,
+     "text": "Not from the inside. From the inside it felt like five years of not sleeping. But I'll take 'meteoric'."
+    },
+    {
+     "s": 0,
+     "text": "You were working as a lawyer before. What made you take the plunge?"
+    },
+    {
+     "s": 1,
+     "text": "I remember sitting in a meeting about a contract dispute and realising I'd stopped caring about any of it. I'd always loved fixing old chairs, it was my weekend thing. And I thought, if I don't try doing this properly now, I never will."
+    },
+    {
+     "s": 0,
+     "text": "How did you get a foot in the door? Furniture's a crowded market."
+    },
+    {
+     "s": 1,
+     "text": "I tried to get into big retailers first, and failed completely. Nobody would take my calls. So I tried offering free repairs to a few cafés in exchange for a little sign saying who'd done it. That worked far better than any advertising."
+    },
+    {
+     "s": 0,
+     "text": "Were there moments you nearly gave up?"
+    },
+    {
+     "s": 1,
+     "text": "Oh, constantly. The second year was the worst. We'd lost a big client, the van broke down, and I seriously considered cutting my losses and going back to law. I even stopped to look at job adverts one evening. Then a customer emailed to say we'd saved her grandmother's rocking chair, and I closed the laptop."
+    },
+    {
+     "s": 0,
+     "text": "Do you regret leaving law?"
+    },
+    {
+     "s": 1,
+     "text": "I regret not leaving sooner. I don't regret anything else. Well, I regret to say I've forgotten most of my contract law, but that's probably fine."
+    },
+    {
+     "s": 0,
+     "text": "What's next for the company?"
+    },
+    {
+     "s": 1,
+     "text": "We're going to expand into two more cities. But I'm conscious of not resting on our laurels. The moment you think you've made it, someone younger and hungrier comes along."
+    },
+    {
+     "s": 0,
+     "text": "And advice for anyone thinking of doing what you did?"
+    },
+    {
+     "s": 1,
+     "text": "Remember to talk to people who've failed, not just people who've succeeded. You learn far more. And try to keep one foot in reality. Passion's great, but it doesn't pay the rent."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does Amaya react to the phrase 'meteoric rise'?",
+     "options": [
+      "She thinks it is accurate",
+      "She rejects it angrily",
+      "She jokes that it didn't feel like it but accepts it",
+      "She is embarrassed"
+     ],
+     "answer": 2,
+     "explain_es": "\"Not from the inside ... But I'll take 'meteoric'.\""
+    },
+    {
+     "type": "mc",
+     "q": "What led Amaya to leave law?",
+     "options": [
+      "She inherited a company",
+      "She was dismissed",
+      "She realised she no longer cared about her work",
+      "She moved city"
+     ],
+     "answer": 2,
+     "explain_es": "\"realising I'd stopped caring about any of it\"."
+    },
+    {
+     "type": "mc",
+     "q": "'If I don't try doing this properly now' — 'try doing' here suggests…",
+     "options": [
+      "refusing to act",
+      "a habit",
+      "making a great effort that fails",
+      "making an experiment"
+     ],
+     "answer": 3,
+     "explain_es": "'Try + -ing' = probar algo para ver si funciona."
+    },
+    {
+     "type": "mc",
+     "q": "How did she eventually get a foot in the door?",
+     "options": [
+      "Through big retailers",
+      "By offering free repairs to cafés in exchange for publicity",
+      "Through online advertising",
+      "Through her law firm"
+     ],
+     "answer": 1,
+     "explain_es": "\"offering free repairs to a few cafés in exchange for a little sign\"."
+    },
+    {
+     "type": "gap",
+     "q": "In the second year she seriously considered ______ her losses and going back to law. (1 word, -ing form)",
+     "answer": "cutting",
+     "accept": [],
+     "explain_es": "'Cut your losses' = retirarse a tiempo para no perder más."
+    },
+    {
+     "type": "mc",
+     "q": "'I even stopped to look at job adverts' means she…",
+     "options": [
+      "used to look at adverts",
+      "never looked at adverts",
+      "paused in order to look at adverts",
+      "gave up looking at adverts"
+     ],
+     "answer": 2,
+     "explain_es": "'Stop + to-infinitivo' = detenerse para hacer algo."
+    },
+    {
+     "type": "mc",
+     "q": "What made her decide to continue?",
+     "options": [
+      "A grateful customer's email",
+      "A loan",
+      "A new van",
+      "Her family's advice"
+     ],
+     "answer": 0,
+     "explain_es": "El correo sobre la mecedora de la abuela."
+    },
+    {
+     "type": "mc",
+     "q": "'I regret not leaving sooner' means she…",
+     "options": [
+      "is sorry she left",
+      "will leave soon",
+      "has no regrets",
+      "is sorry she didn't leave earlier"
+     ],
+     "answer": 3,
+     "explain_es": "'Regret + -ing' sobre el pasado."
+    },
+    {
+     "type": "mc",
+     "q": "What advice does she give about failure?",
+     "options": [
+      "Talk to people who have failed as well as those who succeeded",
+      "Never think about failure",
+      "Failure is always positive",
+      "Avoid people who have failed"
+     ],
+     "answer": 0,
+     "explain_es": "\"Remember to talk to people who've failed, not just people who've succeeded.\""
+    }
+   ],
+   "dictation": [
+    "Nobody would take my calls.",
+    "I regret not leaving sooner.",
+    "Passion's great, but it doesn't pay the rent."
+   ]
+  },
+  {
+   "id": "ul-c2-4-2",
+   "title": "Cracks in the Glass Ceiling",
+   "level": "C2",
+   "kind": "business report",
+   "topic": "Work & Equality",
+   "focus": "Nominalisation and complex noun phrases",
+   "emoji": "📊",
+   "speakers": [
+    {
+     "name": "Presenter",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Analyst",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Director",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "New figures published this morning show a modest increase in the proportion of women on the boards of the country's largest companies. But, as our business desk reports, the picture further down the ladder is rather less encouraging."
+    },
+    {
+     "s": 1,
+     "text": "The headline number is a rise from thirty-one to thirty-four per cent of board seats held by women over the last two years. That's real progress, albeit slow. The more revealing figure, though, is the representation of women in senior executive roles, the people actually running the companies day to day. There, the improvement is barely measurable."
+    },
+    {
+     "s": 0,
+     "text": "Why the difference?"
+    },
+    {
+     "s": 1,
+     "text": "Board appointments are highly visible and subject to considerable public pressure. Executive promotion happens through internal processes that are far less transparent. Companies have made headway on the first while the second has largely stalled."
+    },
+    {
+     "s": 0,
+     "text": "We spoke to a director at one of the firms named in the report."
+    },
+    {
+     "s": 2,
+     "text": "The introduction of targets for boards was a make-or-break moment. Without them, I doubt we'd have seen any change. But the glass ceiling hasn't disappeared. It's just moved. Women reaching middle management are still falling by the wayside at a far higher rate than men."
+    },
+    {
+     "s": 0,
+     "text": "What explains that attrition?"
+    },
+    {
+     "s": 2,
+     "text": "A combination of factors. The concentration of senior roles requiring long hours and constant availability. The absence of flexible working at senior level. And, frankly, the persistence of informal networks, the golf, the after-work drinks, from which a lot of women are effectively excluded."
+    },
+    {
+     "s": 1,
+     "text": "The report recommends the extension of reporting requirements to executive teams, which would at least make the scale of the problem visible. Several industry bodies have already expressed support."
+    },
+    {
+     "s": 0,
+     "text": "And the government's response?"
+    },
+    {
+     "s": 1,
+     "text": "A statement welcoming the findings, with a commitment to a review. Critics point out that a similar review was announced three years ago."
+    },
+    {
+     "s": 0,
+     "text": "Thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the headline finding of the report?",
+     "options": [
+      "Women now hold most board seats",
+      "A modest rise in women's share of board seats",
+      "No change at all",
+      "A fall in women on boards"
+     ],
+     "answer": 1,
+     "explain_es": "\"a rise from thirty-one to thirty-four per cent\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to the analyst, which figure is more revealing?",
+     "options": [
+      "Salaries",
+      "Total employment",
+      "Board seats",
+      "Women in senior executive roles"
+     ],
+     "answer": 3,
+     "explain_es": "\"The more revealing figure, though, is the representation of women in senior executive roles\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why has progress differed between boards and executive roles?",
+     "options": [
+      "Executive promotion is less transparent and under less public pressure",
+      "Women prefer board roles",
+      "Laws only cover executives",
+      "Boards are smaller"
+     ],
+     "answer": 0,
+     "explain_es": "Los nombramientos de consejo son visibles; los ascensos internos, opacos."
+    },
+    {
+     "type": "gap",
+     "q": "The analyst says companies have made ______ on board appointments while executive promotion has stalled. (1 word)",
+     "answer": "headway",
+     "accept": [],
+     "explain_es": "'Make headway' = avanzar, progresar."
+    },
+    {
+     "type": "mc",
+     "q": "What does the director mean by 'It's just moved'?",
+     "options": [
+      "The glass ceiling now exists at a different level",
+      "Her office relocated",
+      "Women have left the company",
+      "Targets have been abolished"
+     ],
+     "answer": 0,
+     "explain_es": "La barrera sigue existiendo, pero a otro nivel."
+    },
+    {
+     "type": "mc",
+     "q": "Which phrase is an example of nominalisation?",
+     "options": [
+      "I doubt",
+      "are still falling",
+      "The introduction of targets for boards",
+      "It's just moved"
+     ],
+     "answer": 2,
+     "explain_es": "'The introduction of' sustantiva el verbo 'introduce'."
+    },
+    {
+     "type": "mc",
+     "q": "Which of these is NOT given as a cause of women leaving?",
+     "options": [
+      "Lack of senior flexible working",
+      "Informal networks",
+      "Lower qualifications",
+      "Long hours"
+     ],
+     "answer": 2,
+     "explain_es": "No se mencionan cualificaciones."
+    },
+    {
+     "type": "tf",
+     "q": "The government has promised a review for the first time.",
+     "answer": "F",
+     "explain_es": "\"a similar review was announced three years ago\"."
+    }
+   ],
+   "dictation": [
+    "That's real progress, albeit slow.",
+    "But the glass ceiling hasn't disappeared.",
+    "It's just moved."
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "ul-c2-5-1",
+   "title": "A Breakthrough, Purportedly",
+   "level": "C2",
+   "kind": "science news",
+   "topic": "Science & Medicine",
+   "focus": "Advanced passives: reporting passives and passive infinitives",
+   "emoji": "🔬",
+   "speakers": [
+    {
+     "name": "Newsreader",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Dr Patel",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Professor Grant",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "A blood test that can purportedly detect more than twenty types of cancer before symptoms appear is said to have produced promising results in a large trial. The test is reported to have identified cancers in around half of the participants who were later diagnosed, many of them at an early stage. Our health correspondent, Dr Meera Patel, is with me. Meera, how significant is this?"
+    },
+    {
+     "s": 1,
+     "text": "Potentially very significant, but I'd stress 'potentially'. Early detection is known to improve survival for many cancers, so a test like this could, in theory, save a great many lives. But the technology is still in its infancy, and these results have yet to be published in a peer-reviewed journal."
+    },
+    {
+     "s": 0,
+     "text": "Half sounds rather low."
+    },
+    {
+     "s": 1,
+     "text": "It is, and that's important. It means the test missed around half of the cancers that were there. The concern is that a negative result might give people false reassurance. They might be less likely to go to the doctor if they notice symptoms later."
+    },
+    {
+     "s": 0,
+     "text": "And false positives?"
+    },
+    {
+     "s": 1,
+     "text": "Those are thought to be relatively rare in this trial, which is encouraging. But even a small percentage of false alarms, across millions of people, would mean a lot of anxiety and a lot of unnecessary further tests."
+    },
+    {
+     "s": 0,
+     "text": "We also spoke to Professor James Grant, an epidemiologist who was not involved in the study."
+    },
+    {
+     "s": 2,
+     "text": "I think the jury is still out. The test appears to have been tested mostly on people at higher risk. Whether it performs as well in the general population remains to be seen. Claims like this need to stand up to scrutiny before anyone starts talking about national screening."
+    },
+    {
+     "s": 0,
+     "text": "The company behind the test is understood to be seeking approval in several countries. Meera, when might patients see it?"
+    },
+    {
+     "s": 1,
+     "text": "Not for several years, I'd say. Regulators will want to see far more data. It's an exciting development, but it's one step on a long road."
+    },
+    {
+     "s": 0,
+     "text": "Dr Meera Patel, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the new test purportedly able to do?",
+     "options": [
+      "Cure cancer",
+      "Prevent cancer",
+      "Detect many types of cancer before symptoms appear",
+      "Replace all scans"
+     ],
+     "answer": 2,
+     "explain_es": "\"can purportedly detect more than twenty types of cancer before symptoms appear\"."
+    },
+    {
+     "type": "gap",
+     "q": "The test is reported to have ______ cancers in around half of the participants later diagnosed. (1 word)",
+     "answer": "identified",
+     "accept": [
+      "detected"
+     ],
+     "explain_es": "Pasiva de reporte + infinitivo perfecto: 'is reported to have identified'."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Dr Patel stress the word 'potentially'?",
+     "options": [
+      "The technology is new and results are not yet peer-reviewed",
+      "The trial was small",
+      "She doubts early detection helps",
+      "The test has been banned"
+     ],
+     "answer": 0,
+     "explain_es": "\"the technology is still in its infancy, and these results have yet to be published\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the main concern about the test missing cancers?",
+     "options": [
+      "Negative results could falsely reassure people",
+      "It is too expensive",
+      "It takes too long",
+      "Doctors will refuse to use it"
+     ],
+     "answer": 0,
+     "explain_es": "\"a negative result might give people false reassurance\"."
+    },
+    {
+     "type": "tf",
+     "q": "False positives were common in the trial.",
+     "answer": "F",
+     "explain_es": "\"Those are thought to be relatively rare\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Professor Grant's main reservation?",
+     "options": [
+      "The test was tested mostly on higher-risk people",
+      "Cancer can't be detected in blood",
+      "The company is dishonest",
+      "The test is too slow"
+     ],
+     "answer": 0,
+     "explain_es": "\"tested mostly on people at higher risk\"."
+    },
+    {
+     "type": "mc",
+     "q": "'The jury is still out' means…",
+     "options": [
+      "a court case is ongoing",
+      "the result is negative",
+      "no conclusion has yet been reached",
+      "experts have agreed"
+     ],
+     "answer": 2,
+     "explain_es": "Expresión: aún no hay veredicto."
+    },
+    {
+     "type": "mc",
+     "q": "When does Dr Patel expect patients might see the test?",
+     "options": [
+      "Already available",
+      "Next month",
+      "Never",
+      "Not for several years"
+     ],
+     "answer": 3,
+     "explain_es": "\"Not for several years, I'd say.\""
+    }
+   ],
+   "dictation": [
+    "Half sounds rather low.",
+    "I think the jury is still out.",
+    "It's an exciting development, but it's one step on a long road."
+   ]
+  },
+  {
+   "id": "ul-c2-5-2",
+   "title": "Editing Our Children?",
+   "level": "C2",
+   "kind": "discussion",
+   "topic": "Bioethics",
+   "focus": "Causatives: have/get something done; have someone do",
+   "emoji": "🧬",
+   "speakers": [
+    {
+     "name": "Chair",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Felix",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Grace",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Our question tonight: should parents ever be allowed to have their embryos genetically edited? Felix, you're a geneticist. Where do you stand?"
+    },
+    {
+     "s": 1,
+     "text": "For serious inherited diseases, I think there's arguably a case. If a couple both carry a gene for a devastating condition, and they could have it corrected before pregnancy, it's hard to say that's wrong. It's not so different from having a child vaccinated."
+    },
+    {
+     "s": 2,
+     "text": "I'd disagree with that comparison. A vaccine protects one child. An edit to an embryo is passed on to every future generation. Nobody can give informed consent on behalf of people who don't exist yet."
+    },
+    {
+     "s": 1,
+     "text": "That's a fair point. But we make decisions affecting future generations all the time. Climate policy, for one."
+    },
+    {
+     "s": 2,
+     "text": "Yes, and look how well that's gone. My worry is the slippery slope. It starts with serious disease. Then people want their children's height adjusted, or their intelligence boosted. Wealthy parents will have it done abroad if it's banned here."
+    },
+    {
+     "s": 0,
+     "text": "Felix, is that realistic?"
+    },
+    {
+     "s": 1,
+     "text": "Height and intelligence are influenced by thousands of genes. We genuinely don't know how to edit for them, and it would appear we're nowhere near being able to. So the fear is, I'd say, premature."
+    },
+    {
+     "s": 2,
+     "text": "Premature, but not unreasonable. The technology is moving fast. And the unintended consequences of editing a single gene aren't fully understood. Some genes do more than one thing."
+    },
+    {
+     "s": 1,
+     "text": "I agree on that. Which is why any use should be tightly regulated. I'd have every case reviewed by an independent panel."
+    },
+    {
+     "s": 2,
+     "text": "And who sits on the panel? This is an ethical minefield. Scientists shouldn't be the only ones deciding."
+    },
+    {
+     "s": 0,
+     "text": "Is there anything you agree on?"
+    },
+    {
+     "s": 1,
+     "text": "That we shouldn't let it happen in secret."
+    },
+    {
+     "s": 2,
+     "text": "Yes. And that we should get the public involved now, before the decisions are made for us."
+    },
+    {
+     "s": 0,
+     "text": "We'll leave it there."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "In which cases does Felix think editing might be justified?",
+     "options": [
+      "Never",
+      "Serious inherited diseases",
+      "Any parental choice",
+      "Improving intelligence"
+     ],
+     "answer": 1,
+     "explain_es": "\"For serious inherited diseases, I think there's arguably a case.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Grace reject the vaccination comparison?",
+     "options": [
+      "Vaccines are dangerous",
+      "Vaccines are more expensive",
+      "Editing is illegal everywhere",
+      "Embryo edits are inherited by future generations who cannot consent"
+     ],
+     "answer": 3,
+     "explain_es": "\"An edit to an embryo is passed on to every future generation.\""
+    },
+    {
+     "type": "gap",
+     "q": "Grace: 'Wealthy parents will have it ______ abroad if it's banned here.' (1 word)",
+     "answer": "done",
+     "accept": [],
+     "explain_es": "Causativa 'have it done'."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Felix call the fear about height and intelligence 'premature'?",
+     "options": [
+      "It is too expensive",
+      "It is already banned",
+      "Such traits involve thousands of genes and can't yet be edited",
+      "Parents don't want it"
+     ],
+     "answer": 2,
+     "explain_es": "\"influenced by thousands of genes ... nowhere near being able to\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Grace mean by 'the slippery slope'?",
+     "options": [
+      "Regulators are corrupt",
+      "Funding will fall",
+      "Accepting limited use could lead gradually to more problematic uses",
+      "The science is unreliable"
+     ],
+     "answer": 2,
+     "explain_es": "Empieza con enfermedades y acaba en mejoras."
+    },
+    {
+     "type": "mc",
+     "q": "'I'd have every case reviewed by an independent panel' means Felix would…",
+     "options": [
+      "review cases himself",
+      "ban all cases",
+      "ask parents to review",
+      "arrange for a panel to review each case"
+     ],
+     "answer": 3,
+     "explain_es": "Causativa: hacer que otro lo revise."
+    },
+    {
+     "type": "mc",
+     "q": "What do the speakers agree on at the end?",
+     "options": [
+      "Editing should be banned",
+      "It shouldn't happen in secret and the public should be involved",
+      "Scientists should decide",
+      "Height editing is acceptable"
+     ],
+     "answer": 1,
+     "explain_es": "\"That we shouldn't let it happen in secret\"; \"get the public involved now\"."
+    },
+    {
+     "type": "tf",
+     "q": "Felix believes the unintended consequences of editing are fully understood.",
+     "answer": "F",
+     "explain_es": "Felix dice \"I agree on that\" al comentario de Grace de que no se entienden del todo."
+    }
+   ],
+   "dictation": [
+    "Yes, and look how well that's gone.",
+    "Some genes do more than one thing.",
+    "That we shouldn't let it happen in secret."
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "ul-c2-6-1",
+   "title": "Wolves in the Glen?",
+   "level": "C2",
+   "kind": "guided walk",
+   "topic": "Rewilding",
+   "focus": "Mixed and implied conditionals",
+   "emoji": "🐺",
+   "speakers": [
+    {
+     "name": "Isla",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Visitor",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Right, if everyone gathers round. What you're looking at is twenty years of rewilding. When the estate was bought, this whole hillside was bare. Sheep had grazed it for two centuries. If they hadn't been removed, you'd still be looking at grass and bracken today."
+    },
+    {
+     "s": 1,
+     "text": "It looks pretty pristine now. Was it planted?"
+    },
+    {
+     "s": 0,
+     "text": "Some of it. But most of these birches seeded themselves. The seeds were in the soil all along. They just never got the chance. Had the deer numbers not been brought down, though, even these wouldn't have survived. Deer eat the young shoots."
+    },
+    {
+     "s": 1,
+     "text": "So who controls the deer? There aren't any predators here, are there?"
+    },
+    {
+     "s": 0,
+     "text": "Not natural ones, no. That's the big debate. Wolves are what's called a keystone species. If we still had them, the deer would behave very differently. They'd avoid open valleys, keep moving, and the trees would recover on their own."
+    },
+    {
+     "s": 1,
+     "text": "Are you going to bring wolves back?"
+    },
+    {
+     "s": 0,
+     "text": "I'd love to, honestly. But I wouldn't be allowed to, and the local farmers would be furious. Many of them would have lost livestock if wolves had been reintroduced when the project started. So for now, we cull the deer ourselves. It's not ideal, but otherwise the woodland would never have replenished."
+    },
+    {
+     "s": 1,
+     "text": "Has anything surprised you?"
+    },
+    {
+     "s": 0,
+     "text": "The speed. I thought it would take fifty years to see real change. Within ten, we had red squirrels back, and golden eagles nesting on that crag. If you'd told me that at the start, I wouldn't have believed you."
+    },
+    {
+     "s": 1,
+     "text": "Does it make any difference on a bigger scale? It's one estate."
+    },
+    {
+     "s": 0,
+     "text": "On its own, it's a drop in the ocean. But there are dozens of projects like this now, and together they're becoming a serious carbon sink. And people come to see it, which matters. If nobody had ever seen what's possible, nobody would be asking for more."
+    },
+    {
+     "s": 1,
+     "text": "Fair enough."
+    },
+    {
+     "s": 0,
+     "text": "Right, let's head up to the viewpoint. Mind the stream, it's deeper than it looks."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What would the hillside look like if the sheep had not been removed?",
+     "options": [
+      "A forest",
+      "Farmland with crops",
+      "A lake",
+      "Grass and bracken"
+     ],
+     "answer": 3,
+     "explain_es": "\"If they hadn't been removed, you'd still be looking at grass and bracken today.\""
+    },
+    {
+     "type": "mc",
+     "q": "'If they hadn't been removed, you'd still be looking at grass' is…",
+     "options": [
+      "a zero conditional",
+      "a first conditional",
+      "a mixed conditional (past cause, present result)",
+      "a future conditional"
+     ],
+     "answer": 2,
+     "explain_es": "Condición pasada + resultado presente."
+    },
+    {
+     "type": "mc",
+     "q": "Where did most of the birch trees come from?",
+     "options": [
+      "They were planted by volunteers",
+      "Seeds already in the soil",
+      "Birds carried the seeds",
+      "Imported saplings"
+     ],
+     "answer": 1,
+     "explain_es": "\"most of these birches seeded themselves. The seeds were in the soil all along.\""
+    },
+    {
+     "type": "gap",
+     "q": "______ the deer numbers not been brought down, even these trees wouldn't have survived. (1 word)",
+     "answer": "Had",
+     "accept": [
+      "had"
+     ],
+     "explain_es": "Condicional invertida."
+    },
+    {
+     "type": "mc",
+     "q": "Why are wolves described as a keystone species?",
+     "options": [
+      "They live in groups",
+      "They eat trees",
+      "Their presence changes the behaviour of other species and the landscape",
+      "They are rare"
+     ],
+     "answer": 2,
+     "explain_es": "Cambiarían el comportamiento de los ciervos y el bosque se recuperaría."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Isla not reintroduce wolves?",
+     "options": [
+      "There is no space",
+      "They would eat the eagles",
+      "It isn't permitted and farmers would object",
+      "She dislikes them"
+     ],
+     "answer": 2,
+     "explain_es": "\"I wouldn't be allowed to, and the local farmers would be furious.\""
+    },
+    {
+     "type": "mc",
+     "q": "What surprised Isla most?",
+     "options": [
+      "How quickly the changes happened",
+      "The number of deer",
+      "The cost",
+      "The lack of visitors"
+     ],
+     "answer": 0,
+     "explain_es": "\"The speed.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Isla respond to the idea that one estate is 'a drop in the ocean'?",
+     "options": [
+      "She accepts it but points to the combined effect of many projects",
+      "She changes the subject",
+      "She denies it",
+      "She agrees it is pointless"
+     ],
+     "answer": 0,
+     "explain_es": "\"together they're becoming a serious carbon sink\"."
+    }
+   ],
+   "dictation": [
+    "The seeds were in the soil all along.",
+    "It's not ideal, but otherwise the woodland would never have replenished.",
+    "Mind the stream, it's deeper than it looks."
+   ]
+  },
+  {
+   "id": "ul-c2-6-2",
+   "title": "Before the Tipping Point",
+   "level": "C2",
+   "kind": "panel discussion",
+   "topic": "Climate Policy",
+   "focus": "Inverted conditionals and alternatives to if",
+   "emoji": "🌍",
+   "speakers": [
+    {
+     "name": "Moderator",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Dr Lund",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Tariq",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "We're talking about tipping points, thresholds beyond which parts of the climate system may change irreversibly. Dr Lund, how close are we?"
+    },
+    {
+     "s": 1,
+     "text": "Closer than is comfortable. Some ice sheets and some forest systems may be approaching thresholds. Were the Amazon to lose much more of its forest, parts of it could shift towards savannah, and that would turn a carbon sink into a carbon source."
+    },
+    {
+     "s": 0,
+     "text": "Tariq, you work on policy. Is the message getting through?"
+    },
+    {
+     "s": 2,
+     "text": "Partly. The problem is that a tipping point sounds like a cliff edge, a single date. It isn't. It's more like a zone of risk. Should governments wait for certainty, they'll be too late."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. But for the scientific uncertainty, I suspect action would have been faster. Politicians use 'we're not sure' as a reason to delay, when it should be a reason for caution."
+    },
+    {
+     "s": 0,
+     "text": "What can actually be done to stave off the worst?"
+    },
+    {
+     "s": 2,
+     "text": "Cut emissions, obviously. But also protect what's already working. Peatlands, mangroves, old forests. Supposing we stopped deforestation tomorrow, that alone would make a huge difference. It's cheaper to keep a forest than to replant one."
+    },
+    {
+     "s": 1,
+     "text": "And deal with problems early. With forest fires, for instance, if you nip them in the bud with good monitoring, you avoid disasters that are almost impossible to control later."
+    },
+    {
+     "s": 0,
+     "text": "Some listeners will say their own actions are a drop in the ocean."
+    },
+    {
+     "s": 2,
+     "text": "Individually, they are. Provided enough people act together, they aren't. And individual choices shape what politicians think is possible."
+    },
+    {
+     "s": 1,
+     "text": "I'd add that despair is a luxury. Were we to give up now, we'd guarantee the outcome we fear."
+    },
+    {
+     "s": 0,
+     "text": "On that note, thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What could happen if the Amazon lost much more forest?",
+     "options": [
+      "Parts could become savannah and release carbon",
+      "Nothing significant",
+      "It would absorb more carbon",
+      "Rainfall would increase"
+     ],
+     "answer": 0,
+     "explain_es": "\"turn a carbon sink into a carbon source\"."
+    },
+    {
+     "type": "gap",
+     "q": "Dr Lund: '______ the Amazon to lose much more of its forest, parts of it could shift towards savannah.' (1 word)",
+     "answer": "Were",
+     "accept": [
+      "were"
+     ],
+     "explain_es": "Condicional invertida con 'were to'."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Tariq say a tipping point is not like a cliff edge?",
+     "options": [
+      "It is a zone of risk rather than a single date",
+      "It only affects ice",
+      "It doesn't exist",
+      "It is far in the future"
+     ],
+     "answer": 0,
+     "explain_es": "\"It's more like a zone of risk.\""
+    },
+    {
+     "type": "mc",
+     "q": "'But for the scientific uncertainty, action would have been faster' means…",
+     "options": [
+      "Uncertainty helped action",
+      "Action was fast despite uncertainty",
+      "Without the uncertainty, action would have been faster",
+      "Science was certain"
+     ],
+     "answer": 2,
+     "explain_es": "'But for' = si no hubiera sido por."
+    },
+    {
+     "type": "mc",
+     "q": "What does Dr Lund think uncertainty should lead to?",
+     "options": [
+      "More research only",
+      "Caution and action",
+      "Despair",
+      "Delay"
+     ],
+     "answer": 1,
+     "explain_es": "\"it should be a reason for caution\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Tariq emphasise protecting existing ecosystems?",
+     "options": [
+      "It is required by law",
+      "Politicians prefer it",
+      "It is cheaper than replanting",
+      "It is easier to measure"
+     ],
+     "answer": 2,
+     "explain_es": "\"It's cheaper to keep a forest than to replant one.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does 'nip them in the bud' mean in context?",
+     "options": [
+      "Plant new buds",
+      "Allow fires to burn naturally",
+      "Stop problems at an early stage",
+      "Monitor them after they spread"
+     ],
+     "answer": 2,
+     "explain_es": "Atajar a tiempo."
+    },
+    {
+     "type": "tf",
+     "q": "Tariq says individual actions make no difference at all.",
+     "answer": "F",
+     "explain_es": "\"Provided enough people act together, they aren't.\""
+    }
+   ],
+   "dictation": [
+    "It isn't. It's more like a zone of risk.",
+    "It's cheaper to keep a forest than to replant one.",
+    "I'd add that despair is a luxury."
+   ]
+  }
  ]
 }
