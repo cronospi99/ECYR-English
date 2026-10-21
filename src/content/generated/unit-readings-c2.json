@@ -1,0 +1,2302 @@
+{
+ "1": [
+  {
+   "id": "u-c2-1-1",
+   "title": "The Accent I Keep Losing",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Identity & Language",
+   "emoji": "🗣️",
+   "words": 817,
+   "paragraphs": [
+    "For the first few months after I moved to Edinburgh, I was forever being asked where I was from. It was a reasonable question, and I had been answering it, in one form or another, since I was nineteen. What I had not anticipated was that the question would gradually change shape. By my third winter, people had stopped asking where I was from and had started asking where I had been. My accent, it seemed, had been quietly packing its bags.",
+    "Linguists have a rather unromantic name for this: accommodation. When we talk to others, we tend to adjust our speech towards theirs, usually without noticing. Over years, those small, temporary adjustments can harden into something more permanent. The vowels flatten or stretch; the rhythm of a sentence begins to rise where it once fell. None of this is unusual. What is unusual, I think, is how personally we take it.",
+    "I say this because I have been taking it very personally indeed. On a recent visit home to Valparaíso, an aunt I had not seen for a decade listened to me for about thirty seconds before announcing, with the bluntness reserved for close family, that I was sounding like a foreigner. She was not being unkind; she was, if anything, being affectionate. But I found myself replaying the remark for days afterwards, as if she had caught me out in a lie.",
+    "The lie, if that is what it was, lay in the assumption that the way I speak is a fixed fact about me, like my height or the shape of my hands. Psychologists who study identity have long argued otherwise. Our sense of self, they suggest, is less a possession than a performance, something we are continually doing rather than something we simply have. On this view, an accent is not a birthmark but a costume we have been wearing for so long that we have forgotten it can come off.",
+    "The trouble with that argument is that it sounds liberating on paper and feels like loss in practice. I have been weighing it up for months now, and I am still not sure whether I am growing or dissolving. When I catch myself saying 'wee' instead of 'small', I feel a flicker of pride at having belonged somewhere new, followed almost immediately by a pang of guilt, as though I have been unfaithful to the people who taught me to talk.",
+    "A researcher I spoke to in Glasgow, who has been recording migrants' speech for nearly twenty years, was gently amused by my anxiety. 'People imagine there's a single original voice that's being eroded,' she told me. 'But nobody has only one voice. You've always been speaking differently to your grandmother and to your boss. Migration just makes the range more audible.' She pointed out that many of the people she had interviewed had been switching between accents several times a day, often within a single conversation, and that most of them regarded this not as a betrayal but as a skill.",
+    "I wanted to ask her whether she had ever felt the same unease herself, but I hesitated, and the moment passed. Later, I emailed to say I was wondering if she might be willing to talk about her own experience. Her reply was brief and characteristically generous: she had been a Liverpudlian in London, a Londoner in Toronto and a 'posh English woman' in Glasgow, and she had long since given up deciding which of them was the real one.",
+    "There is something consoling in that. The demand that we be one thing, consistently and forever, is a fairly recent and fairly peculiar expectation. For most of human history, people who moved, traded or married across borders would have had to sound different in different places simply to be understood. The idea that a shift in pronunciation amounts to a shift in loyalty would, I suspect, have puzzled them.",
+    "None of which means the unease will disappear. Belonging, after all, is not only something we feel; it is something other people grant or withhold. My aunt's remark stung precisely because it seemed to suggest that home had quietly revoked my membership. Yet the next morning, she was teasing me about it over breakfast, and by the end of the week she had stopped mentioning it altogether. I had not changed back. She had simply been getting used to the newer version of me, as families eventually do.",
+    "So I have decided, provisionally, to stop worrying about which accent is authentic. I am being, I suppose, a little more forgiving of myself. The voice I have now is the record of everywhere I have lived and everyone I have listened to. It is not the voice I started with. But then, I am not the person I started as, and I would be rather disappointed if I were."
+   ],
+   "glossary": [
+    [
+     "to pack one's bags",
+     "hacer las maletas (fig.: irse, desaparecer)"
+    ],
+    [
+     "accommodation (linguistics)",
+     "acomodación, ajuste del habla al interlocutor"
+    ],
+    [
+     "to harden into",
+     "consolidarse, endurecerse hasta convertirse en"
+    ],
+    [
+     "bluntness",
+     "franqueza brusca"
+    ],
+    [
+     "to catch someone out",
+     "pillar a alguien (en una mentira o error)"
+    ],
+    [
+     "birthmark",
+     "marca de nacimiento, lunar"
+    ],
+    [
+     "to weigh something up",
+     "sopesar"
+    ],
+    [
+     "a flicker of pride",
+     "un destello de orgullo"
+    ],
+    [
+     "a pang of guilt",
+     "una punzada de culpa"
+    ],
+    [
+     "unfaithful",
+     "infiel, desleal"
+    ],
+    [
+     "to be eroded",
+     "ir desgastándose"
+    ],
+    [
+     "long since",
+     "hace ya mucho tiempo"
+    ],
+    [
+     "consoling",
+     "reconfortante"
+    ],
+    [
+     "to revoke",
+     "revocar, retirar"
+    ],
+    [
+     "provisionally",
+     "de forma provisional"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does the writer suggest by saying people 'had started asking where I had been'?",
+     "options": [
+      "Her travel plans had become a topic of curiosity",
+      "Her accent now sounded as if it came from several places",
+      "People suspected she had been hiding her origins",
+      "She had begun to talk about her travels too much"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: el acento 'had been quietly packing its bags'; ya no suena de un lugar concreto, sino de varios sitios por los que ha pasado."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 2, the writer's attitude towards linguistic accommodation is best described as…",
+     "options": [
+      "alarmed by how quickly it happens",
+      "dismissive of the scientific explanation",
+      "accepting of it as normal while noting our emotional reaction",
+      "critical of linguists for using unromantic terms"
+     ],
+     "answer": 2,
+     "explain_es": "\"None of this is unusual. What is unusual, I think, is how personally we take it.\" Acepta el fenómeno, pero subraya la reacción emocional."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer mention that her aunt 'was not being unkind'?",
+     "options": [
+      "To excuse her aunt's rudeness to readers",
+      "To show that the hurt came from the remark's meaning rather than its tone",
+      "To suggest that her aunt was secretly proud of her",
+      "To contrast her aunt with less affectionate relatives"
+     ],
+     "answer": 1,
+     "explain_es": "La tía era cariñosa; aun así, la autora no deja de pensar en el comentario: lo que duele es lo que implica, no el tono."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'caught me out' is closest in meaning to…",
+     "options": [
+      "rescued me",
+      "exposed me",
+      "ignored me",
+      "imitated me"
+     ],
+     "answer": 1,
+     "explain_es": "'To catch someone out' = descubrir a alguien en un error o mentira."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'it' refer to in 'I have been weighing it up for months now' (paragraph 5)?",
+     "options": [
+      "The aunt's remark",
+      "The view that identity is a performance",
+      "The decision to return to Chile",
+      "The researcher's recordings"
+     ],
+     "answer": 1,
+     "explain_es": "'That argument' del párrafo anterior: la identidad como algo que hacemos, no que tenemos."
+    },
+    {
+     "type": "tf",
+     "q": "The writer feels purely proud when she uses Scottish words.",
+     "answer": "F",
+     "explain_es": "Siente \"a flicker of pride\" seguido de \"a pang of guilt\": la emoción es mixta."
+    },
+    {
+     "type": "mc",
+     "q": "The researcher in Glasgow argues that migration…",
+     "options": [
+      "destroys a person's original voice",
+      "makes an existing variety of voices easier to hear",
+      "should be studied only through recordings",
+      "causes most people to feel disloyal"
+     ],
+     "answer": 1,
+     "explain_es": "\"Migration just makes the range more audible.\""
+    },
+    {
+     "type": "tf",
+     "q": "Most of the researcher's interviewees saw switching accents as a skill.",
+     "answer": "T",
+     "explain_es": "\"most of them regarded this not as a betrayal but as a skill\"."
+    },
+    {
+     "type": "tf",
+     "q": "The researcher has published a book based on her recordings of migrants.",
+     "answer": "NG",
+     "explain_es": "Sabemos que lleva casi veinte años grabando a migrantes, pero el texto no menciona ningún libro."
+    },
+    {
+     "type": "mc",
+     "q": "The sentence 'I emailed to say I was wondering if she might be willing to talk' is an example of…",
+     "options": [
+      "the past continuous for an interrupted action",
+      "past tenses used for politeness and distance",
+      "a third conditional",
+      "reported speech of a future plan"
+     ],
+     "answer": 1,
+     "explain_es": "'I was wondering if…' usa el pasado para suavizar una petición: distancia cortés, no tiempo pasado real."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 8.",
+     "options": [
+      "A modern and unusual demand",
+      "The history of trade routes",
+      "Why accents never change",
+      "Loyalty to one's homeland"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo dice que exigir ser 'una sola cosa' es \"a fairly recent and fairly peculiar expectation\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 9.",
+     "options": [
+      "A family that refuses to change",
+      "Belonging as something others confer",
+      "Breakfast traditions in Valparaíso",
+      "Why the writer changed back"
+     ],
+     "answer": 1,
+     "explain_es": "\"Belonging ... is something other people grant or withhold\" y la tía acaba aceptando la nueva versión."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The aunt had not stopped objecting because the writer changed back; she had simply been getting ____ to the newer version of her. (1 word)",
+     "answer": "used",
+     "accept": [
+      "accustomed"
+     ],
+     "explain_es": "\"She had simply been getting used to the newer version of me\": 'get used to' + continuo perfecto para un proceso gradual."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: In the last paragraph the writer uses a stative verb dynamically, saying she is ____ a little more forgiving of herself. (1 word)",
+     "answer": "being",
+     "accept": [],
+     "explain_es": "\"I am being ... a little more forgiving\": 'be' en continuo describe un comportamiento temporal y voluntario."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-1-2",
+   "title": "Home Is a Verb",
+   "level": "C2",
+   "genre": "personal essay",
+   "topic": "Belonging & Roots",
+   "emoji": "🏠",
+   "words": 799,
+   "paragraphs": [
+    "For most of my childhood, the question 'Where's home?' was the conversational equivalent of a trapdoor. Asked casually at a party or a school gate, it seemed to expect a single word in reply: a city, a country, a dot on a map. I had several dots and no confidence about which one counted. My father's job had taken us from Lagos to Rotterdam, from Rotterdam to Kuala Lumpur and finally to a town on the south coast of England that none of us had heard of until the removal van pulled up outside. By the time I was twelve, I had been the new girl five times.",
+    "Sociologists have a label for children like me: 'third culture kids', people raised in a culture other than that of their parents for a significant part of their development. The label was coined in the 1950s, and it has been doing a great deal of work ever since, appearing in university admissions essays, corporate relocation brochures and, more recently, in a cottage industry of memoirs. I resisted it for years. It sounded less like a description than a diagnosis, as though rootlessness were a condition one might eventually be cured of.",
+    "What changed my mind was not a book but a conversation with my grandmother, who had never left the region where she was born. I had gone to stay with her one summer when I was in my twenties, and I was complaining, at some length, that I did not really belong anywhere. She let me finish, then asked what I meant by 'belong'. I said something about feeling at ease, being understood, not having to explain myself. She considered this for a moment and said: 'Then you're asking for something nobody has. I've lived in this village for eighty years, and I'm still explaining myself every day.'",
+    "I have been thinking about that remark, on and off, for almost two decades. It took me a long time to see what she was doing. She was not dismissing my unease; she was relocating it. I had assumed that people with a single, uncomplicated origin possessed something I lacked, a kind of passive membership that required no effort. She was telling me that belonging, even for those who appear to have it by birthright, is not a state but an activity. It has to be renewed, negotiated, occasionally defended. It is, to borrow a phrase I have since come across in several places, a verb rather than a noun.",
+    "This idea has its critics, and they are not wrong to be wary. To describe belonging as something we do can sound uncomfortably like blaming people who are excluded for not trying hard enough. A refugee who has been waiting years for papers is not failing to 'do' belonging; she is being prevented from it. Any honest account has to admit that some doors are locked from the inside, by laws, by prejudice, by the quiet refusal of neighbours to say good morning.",
+    "Still, within those limits, I have found the verb more useful than the noun. If home is a place, then I have lost several and will never recover them; the flat in Rotterdam has since been demolished, and the school in Kuala Lumpur has moved to another district. If home is something I make, then I have been making it all along, in the habits I carry from one kitchen to the next, in the songs I sing without realising I know the words, in the friends who have known me in three languages.",
+    "I notice, too, that I have stopped apologising for the complicated answer. When someone asks where I am from these days, I tend to ask them how long they have got. Most laugh; a few look genuinely curious; one or two, I suspect, are hoping for the short version and are disappointed. That is fine. The short version was never true, and I have spent too long pretending that it might be.",
+    "My own children, who were both born in the town where we now live, are growing up with a single dot on the map. I used to imagine that this would spare them the trapdoor. I am less sure now. My daughter, who is fourteen, has lately been insisting that she does not feel at home in the town at all, that she is only waiting to leave. I was tempted to tell her how lucky she was. Instead, I found myself repeating what her great-grandmother told me. Belonging is not something you are given and then keep. It is something you keep doing, or it slowly stops being yours.",
+    "She rolled her eyes, as fourteen-year-olds do. But the next evening, I noticed, she had invited a classmate round for dinner."
+   ],
+   "glossary": [
+    [
+     "trapdoor",
+     "trampilla (fig.: trampa, terreno resbaladizo)"
+    ],
+    [
+     "removal van",
+     "camión de mudanzas"
+    ],
+    [
+     "to coin (a term)",
+     "acuñar (un término)"
+    ],
+    [
+     "cottage industry",
+     "pequeña industria, sector artesanal (fig.: moda creciente)"
+    ],
+    [
+     "rootlessness",
+     "desarraigo"
+    ],
+    [
+     "at some length",
+     "largo y tendido"
+    ],
+    [
+     "on and off",
+     "de vez en cuando, intermitentemente"
+    ],
+    [
+     "to relocate",
+     "trasladar, reubicar"
+    ],
+    [
+     "birthright",
+     "derecho de nacimiento"
+    ],
+    [
+     "to be wary",
+     "ser cauteloso, desconfiar"
+    ],
+    [
+     "to be demolished",
+     "ser derribado"
+    ],
+    [
+     "to spare someone something",
+     "ahorrarle algo a alguien"
+    ],
+    [
+     "lately",
+     "últimamente"
+    ],
+    [
+     "to roll one's eyes",
+     "poner los ojos en blanco"
+    ],
+    [
+     "to invite someone round",
+     "invitar a alguien a casa"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does the writer compare the question 'Where's home?' to a trapdoor?",
+     "options": [
+      "It was asked to embarrass her deliberately",
+      "It looked harmless but could make her lose her footing",
+      "It led to long and tiring conversations",
+      "It was usually asked by people who had never travelled"
+     ],
+     "answer": 1,
+     "explain_es": "Una trampilla parece suelo firme pero se abre: la pregunta parecía sencilla y la desestabilizaba."
+    },
+    {
+     "type": "mc",
+     "q": "What was the writer's initial objection to the term 'third culture kids'?",
+     "options": [
+      "It was too recent to be reliable",
+      "It implied that her experience was a disorder",
+      "It was used only by corporations",
+      "It ignored the role of parents"
+     ],
+     "answer": 1,
+     "explain_es": "\"It sounded less like a description than a diagnosis\"."
+    },
+    {
+     "type": "vocab",
+     "q": "'A cottage industry of memoirs' (paragraph 2) suggests that such memoirs are…",
+     "options": [
+      "written in rural areas",
+      "numerous, small-scale and somewhat fashionable",
+      "officially sponsored by universities",
+      "very expensive to produce"
+     ],
+     "answer": 1,
+     "explain_es": "'Cottage industry' en sentido figurado: muchos productos pequeños, una moda en crecimiento."
+    },
+    {
+     "type": "mc",
+     "q": "What is the effect of the grandmother's reply in paragraph 3?",
+     "options": [
+      "It confirms that the writer will never belong anywhere",
+      "It suggests that belonging requires ongoing effort even for the rooted",
+      "It criticises the writer's parents for moving so often",
+      "It shows that the grandmother regretted never travelling"
+     ],
+     "answer": 1,
+     "explain_es": "\"I'm still explaining myself every day\": incluso quien nunca se ha movido tiene que trabajar la pertenencia."
+    },
+    {
+     "type": "mc",
+     "q": "'She was not dismissing my unease; she was relocating it.' This means the grandmother…",
+     "options": [
+      "ignored the writer's feelings",
+      "placed the problem in a different, shared area of experience",
+      "suggested the writer move house again",
+      "found the writer's complaint amusing"
+     ],
+     "answer": 1,
+     "explain_es": "Traslada la inquietud: no es un problema solo de los desarraigados, sino de todos."
+    },
+    {
+     "type": "tf",
+     "q": "The writer first heard the phrase 'a verb rather than a noun' from her grandmother.",
+     "answer": "F",
+     "explain_es": "\"to borrow a phrase I have since come across in several places\": la abuela no usó esa frase."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 5, the writer's attitude towards critics of her view is…",
+     "options": [
+      "contemptuous",
+      "partly sympathetic",
+      "indifferent",
+      "openly hostile"
+     ],
+     "answer": 1,
+     "explain_es": "\"they are not wrong to be wary\": reconoce que tienen parte de razón."
+    },
+    {
+     "type": "mc",
+     "q": "The example of the refugee is used to show that…",
+     "options": [
+      "refugees do not wish to belong",
+      "belonging can be blocked by forces outside the individual",
+      "laws are rarely enforced",
+      "the writer's experience was worse than a refugee's"
+     ],
+     "answer": 1,
+     "explain_es": "\"she is being prevented from it\"; \"some doors are locked from the inside\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer's former flat in Rotterdam no longer exists.",
+     "answer": "T",
+     "explain_es": "\"the flat in Rotterdam has since been demolished\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer's husband grew up in the town where the family now lives.",
+     "answer": "NG",
+     "explain_es": "El texto dice que sus hijos nacieron allí; no menciona al marido."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer ask people 'how long they have got'?",
+     "options": [
+      "To avoid answering the question",
+      "To signal humorously that the true answer is long",
+      "Because she is usually in a hurry",
+      "To discourage further questions about her family"
+     ],
+     "answer": 1,
+     "explain_es": "Ya no se disculpa por la respuesta complicada; la broma anuncia que es larga."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Places lost, practices kept",
+      "A return to Rotterdam",
+      "Why schools move district",
+      "Learning songs in three languages"
+     ],
+     "answer": 0,
+     "explain_es": "Contrasta los lugares perdidos con los hábitos y amistades que sigue construyendo."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The writer's daughter has lately ____ insisting that she does not feel at home in the town. (1 word)",
+     "answer": "been",
+     "accept": [],
+     "explain_es": "\"has lately been insisting\": presente perfecto continuo para una actitud repetida y reciente, con matiz de irritación."
+    },
+    {
+     "type": "mc",
+     "q": "What does the final paragraph imply?",
+     "options": [
+      "The daughter has decided to leave the town",
+      "The daughter has quietly begun to 'do' belonging",
+      "The writer regrets repeating the grandmother's words",
+      "The classmate is the daughter's only friend"
+     ],
+     "answer": 1,
+     "explain_es": "Pone los ojos en blanco pero invita a una compañera: empieza a 'hacer' pertenencia, como decía la bisabuela."
+    }
+   ]
+  }
+ ],
+ "2": [
+  {
+   "id": "u-c2-2-1",
+   "title": "The Rumour That Outran Its Correction",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Misinformation",
+   "emoji": "📰",
+   "words": 808,
+   "paragraphs": [
+    "It was on a Tuesday afternoon in March that the rumour first appeared, and by Thursday it had reached, by one estimate, a third of the town. Someone had posted a photograph of a water treatment plant, its outflow stained an alarming shade of orange, along with the claim that the local council had known about contamination for months and said nothing. The photograph was real. The claim was not. The orange colour, as the council explained within hours, came from a harmless mineral deposit disturbed during routine maintenance, and independent tests confirmed that the water was safe to drink.",
+    "What happened next is the part that interests researchers. Not only did the correction fail to stop the rumour; in some neighbourhoods, sales of bottled water actually rose after it was published. Six weeks later, a survey found that almost half of those who had seen both the original post and the council's statement still believed the water had been unsafe. Many of them could accurately recall the correction. They simply did not let it change their minds.",
+    "Psychologists call this the continued influence effect, and it is far from new. In laboratory studies going back decades, participants who are told a false detail about an event, and later told explicitly that the detail was wrong, continue to rely on it when asked to explain what happened. What seems to matter is not whether people remember the retraction but whether the retraction leaves a gap. If a story makes sense with the false detail and stops making sense without it, the mind will cling to the detail rather than tolerate an unexplained hole.",
+    "This is why bare denials so often backfire. 'The water is not contaminated' asks the listener to discard an explanation without offering a replacement. Worse, it repeats the very words, water and contaminated, that formed the original claim, and repetition, as advertisers have always understood, breeds familiarity. Rarely does a correction travel as far or as fast as the falsehood it targets, and seldom does it arrive carrying the same emotional charge. A photograph of orange water is vivid; a paragraph about mineral deposits is not.",
+    "So what does work? The evidence, while far from conclusive, points in a few consistent directions. The first is that it is the alternative explanation, rather than the denial itself, that does most of the work. Corrections that tell people what actually happened, and why the misleading impression arose, tend to be more effective than those that merely insist the original claim is false. In the case of the water plant, it was only when the council published a short video of an engineer scraping the orange sediment from a pipe that the bottled-water sales began to fall.",
+    "The second is timing. Researchers have experimented with what they call prebunking, a kind of inoculation in which people are warned in advance about the techniques used to mislead them. Participants shown a brief explanation of, say, how emotionally loaded images are used to bypass scepticism become noticeably better at resisting such images later. Well established this approach is not, and its long-term effects remain uncertain. But the logic is appealing: it is easier to keep a false belief out than to dig it up once it has taken root.",
+    "The third, and perhaps the most uncomfortable, concerns the messenger. People are far more likely to accept a correction from someone they regard as being on their side. In the town in question, the council was already unpopular, having closed a library and raised parking charges the previous year. What persuaded many sceptics, according to the local newspaper, was not the official statement but a post from a well-known retired nurse, who filmed herself filling a glass from her kitchen tap and drinking it. Little did she expect that her thirty-second clip would be watched more times than every council announcement that year combined.",
+    "None of this should be taken to mean that facts are powerless. On the contrary, the research suggests that most people do update their beliefs when presented with clear, credible information; they simply do so more slowly, and less completely, than we might wish. The problem lies less in human irrationality than in the mismatch between how quickly a vivid story spreads and how slowly a careful correction follows.",
+    "Perhaps the most striking lesson of the orange water episode is how little the original poster seems to have intended. Interviewed months later, he said he had been genuinely worried and had shared the image to warn his neighbours. Only afterwards did he realise how many people had taken his speculation as fact. 'What I should have written,' he said, 'was a question, not an answer.' It is a distinction worth remembering, and one that rather more of us might bear in mind before pressing share."
+   ],
+   "glossary": [
+    [
+     "outflow",
+     "desagüe, caudal de salida"
+    ],
+    [
+     "stained",
+     "manchado, teñido"
+    ],
+    [
+     "deposit",
+     "sedimento, depósito"
+    ],
+    [
+     "retraction",
+     "rectificación, retractación"
+    ],
+    [
+     "to cling to",
+     "aferrarse a"
+    ],
+    [
+     "bare denial",
+     "mero desmentido"
+    ],
+    [
+     "to backfire",
+     "resultar contraproducente"
+    ],
+    [
+     "to breed familiarity",
+     "generar familiaridad"
+    ],
+    [
+     "emotional charge",
+     "carga emocional"
+    ],
+    [
+     "sediment",
+     "sedimento"
+    ],
+    [
+     "prebunking",
+     "desmentir de forma preventiva"
+    ],
+    [
+     "inoculation",
+     "inoculación, vacuna (fig.)"
+    ],
+    [
+     "to bypass",
+     "eludir, sortear"
+    ],
+    [
+     "to take root",
+     "arraigar"
+    ],
+    [
+     "mismatch",
+     "desajuste, desfase"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main purpose of the first paragraph?",
+     "options": [
+      "To criticise the council's maintenance work",
+      "To establish the facts of a case the article will analyse",
+      "To argue that photographs should not be trusted",
+      "To describe the history of the town's water supply"
+     ],
+     "answer": 1,
+     "explain_es": "Presenta el caso (foto real, afirmación falsa, desmentido) que después se analiza."
+    },
+    {
+     "type": "tf",
+     "q": "Most people who saw both the post and the correction had forgotten the correction six weeks later.",
+     "answer": "F",
+     "explain_es": "\"Many of them could accurately recall the correction. They simply did not let it change their minds.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, people cling to a false detail mainly because…",
+     "options": [
+      "they distrust the source of the retraction",
+      "removing it would leave their explanation incomplete",
+      "they cannot remember the retraction",
+      "the false detail is usually more recent"
+     ],
+     "answer": 1,
+     "explain_es": "\"the mind will cling to the detail rather than tolerate an unexplained hole\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why, according to the writer, does 'The water is not contaminated' risk backfiring?",
+     "options": [
+      "It sounds too formal to be believed",
+      "It repeats the key words of the false claim without replacing it",
+      "It was published too late",
+      "It contradicts the photograph"
+     ],
+     "answer": 1,
+     "explain_es": "Repite 'water' y 'contaminated' y no ofrece una explicación alternativa."
+    },
+    {
+     "type": "mc",
+     "q": "The sentence 'Rarely does a correction travel as far or as fast as the falsehood it targets' uses inversion to…",
+     "options": [
+      "ask a rhetorical question",
+      "emphasise how unusual it is for corrections to keep pace",
+      "show that the information is uncertain",
+      "report someone else's opinion"
+     ],
+     "answer": 1,
+     "explain_es": "Inversión tras adverbio restrictivo ('Rarely') para enfatizar."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: It is the alternative ____, rather than the denial itself, that does most of the work. (1 word)",
+     "answer": "explanation",
+     "accept": [],
+     "explain_es": "Frase escindida (it-cleft) del párrafo 5: \"it is the alternative explanation ... that does most of the work\"."
+    },
+    {
+     "type": "tf",
+     "q": "The video of the engineer was followed by a fall in bottled-water sales.",
+     "answer": "T",
+     "explain_es": "\"it was only when the council published a short video ... that the bottled-water sales began to fall\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 6, 'inoculation' is used to mean…",
+     "options": [
+      "a medical injection",
+      "advance protection against persuasion",
+      "a legal warning",
+      "a scientific experiment"
+     ],
+     "answer": 1,
+     "explain_es": "Uso metafórico: proteger a la gente antes de la exposición a técnicas de manipulación."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's attitude towards prebunking?",
+     "options": [
+      "Enthusiastic and certain",
+      "Cautiously positive",
+      "Dismissive",
+      "Hostile"
+     ],
+     "answer": 1,
+     "explain_es": "\"Well established this approach is not ... But the logic is appealing\": optimismo prudente."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 7.",
+     "options": [
+      "Who says it matters as much as what is said",
+      "Why the library was closed",
+      "A nurse's medical advice",
+      "The cost of parking in the town"
+     ],
+     "answer": 0,
+     "explain_es": "El párrafo trata del mensajero: la gente acepta correcciones de quien considera 'de su lado'."
+    },
+    {
+     "type": "tf",
+     "q": "The retired nurse had previously worked for the council.",
+     "answer": "NG",
+     "explain_es": "El texto no dice dónde trabajó la enfermera."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'Little did she expect' imply about the nurse?",
+     "options": [
+      "She had planned a publicity campaign",
+      "She was surprised by how widely her clip was watched",
+      "She regretted posting the video",
+      "She doubted the water was safe"
+     ],
+     "answer": 1,
+     "explain_es": "La inversión negativa con 'Little' enfatiza que no esperaba en absoluto ese alcance."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 8.",
+     "options": [
+      "Facts work, but slowly",
+      "Humans are irrational",
+      "Why corrections should be shorter",
+      "The end of reliable news"
+     ],
+     "answer": 0,
+     "explain_es": "\"most people do update their beliefs ... they simply do so more slowly\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The original poster said: 'What I should have written was a ____, not an answer.' (1 word)",
+     "answer": "question",
+     "accept": [],
+     "explain_es": "Pseudo-hendida (wh-cleft): \"What I should have written was a question, not an answer.\""
+    }
+   ]
+  },
+  {
+   "id": "u-c2-2-2",
+   "title": "In Defence of Rhetoric",
+   "level": "C2",
+   "genre": "opinion essay",
+   "topic": "Rhetoric & Persuasion",
+   "emoji": "🎤",
+   "words": 761,
+   "paragraphs": [
+    "Rhetoric has a reputation problem. Say that a politician's speech was 'mere rhetoric' and everyone knows what you mean: it was empty, manipulative, more interested in sounding good than in being true. The word has become a polite synonym for spin. Yet for most of Western intellectual history, rhetoric was regarded not as a vice but as a discipline, one of the three foundations of education alongside grammar and logic. What I want to argue here is that we abandoned that view at our cost, and that the remedy for bad persuasion is not less rhetoric but more of it, better taught and more widely understood.",
+    "Consider first what rhetoric actually is. Stripped of its connotations, it is simply the study of how language moves people: how arguments are arranged, how examples are chosen, how a sentence can be shaped so that its most important word lands at the moment of greatest attention. None of this is inherently deceptive. A doctor explaining a diagnosis to a frightened patient uses rhetoric. So does a teacher who chooses a story rather than a statistic to make a point stick. What distinguishes honest persuasion from manipulation is not the presence of technique but the purpose to which it is put.",
+    "Critics will object that this is naive. Technique, they will say, is morally neutral in theory but rarely in practice, and those most skilled in it tend to be those with most to gain. There is something in this. Seldom has the gap between eloquence and integrity been more conspicuous than in the career of the charismatic demagogue, and anyone who has watched a crowd being worked up by a skilled speaker will understand the instinct to distrust the whole enterprise. But the conclusion does not follow. That a skill can be abused is an argument for spreading it, not for surrendering it to those who will abuse it.",
+    "Here the historical record is instructive. In ancient Athens, the teaching of rhetoric was controversial precisely because it was democratising: it gave citizens without wealth or connections the tools to argue their case in the assembly and the courts. The philosophers who denounced the professional teachers of rhetoric did so partly on principle and partly, one suspects, because they disliked seeing the advantages of a privileged education handed out for a fee. The pattern recurs. Those who can already persuade are often the first to insist that persuasion is beneath us.",
+    "What we lose when rhetoric disappears from the curriculum is not the practice of persuasion, which continues regardless, but the capacity to recognise it. A student who has never been taught how an argument can be framed is at the mercy of whoever frames it first. She may sense that a speech is manipulative without being able to say why, and an objection one cannot articulate is easily dismissed. By contrast, a listener who can identify a false dilemma, a loaded term or an appeal to fear has a defence that no fact-checking website can provide, because it travels with her into every conversation.",
+    "Nor should we overlook the positive case. Democratic life depends on people being able to make their views heard by those who do not already share them. That is a rhetorical task. It requires knowing one's audience, anticipating objections, conceding what must be conceded and pressing what can be pressed. A movement that cannot do these things will lose to one that can, however strong its arguments on paper. It is no accident that the most effective reformers of the last two centuries were, almost without exception, formidable rhetoricians.",
+    "I am not suggesting that teaching rhetoric would cure our public discourse overnight. Some people will always prefer a comforting falsehood to an uncomfortable truth, and no amount of training will change that. Nor am I claiming that every persuasive technique is equally acceptable; there is a real moral difference between an appeal to shared values and an appeal to tribal resentment. Precisely because the difference matters, though, we need citizens equipped to notice it.",
+    "So when I hear a speech dismissed as 'mere rhetoric', I am inclined to ask a different question. Not whether the speaker was using rhetoric, since all speakers are, but whether it was used well or badly, honestly or otherwise, and whether the audience had the means to tell. Only when we can answer that question will we be in a position to judge. Until then, the phrase 'mere rhetoric' tells us more about the listener's lack of training than about the speaker's lack of substance."
+   ],
+   "glossary": [
+    [
+     "spin",
+     "manipulación informativa, 'propaganda'"
+    ],
+    [
+     "at our cost",
+     "en perjuicio nuestro"
+    ],
+    [
+     "stripped of",
+     "despojado de"
+    ],
+    [
+     "to make a point stick",
+     "hacer que una idea cale"
+    ],
+    [
+     "inherently",
+     "intrínsecamente"
+    ],
+    [
+     "conspicuous",
+     "llamativo, evidente"
+    ],
+    [
+     "demagogue",
+     "demagogo"
+    ],
+    [
+     "to work up (a crowd)",
+     "enardecer (a una multitud)"
+    ],
+    [
+     "to surrender",
+     "entregar, ceder"
+    ],
+    [
+     "assembly",
+     "asamblea"
+    ],
+    [
+     "to denounce",
+     "denunciar, condenar"
+    ],
+    [
+     "to be at the mercy of",
+     "estar a merced de"
+    ],
+    [
+     "false dilemma",
+     "falso dilema"
+    ],
+    [
+     "loaded term",
+     "término cargado (tendencioso)"
+    ],
+    [
+     "formidable",
+     "temible, extraordinario"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the writer's central claim?",
+     "options": [
+      "Rhetoric should be banned from politics",
+      "Better and wider rhetorical education is the answer to manipulative persuasion",
+      "Grammar and logic are more important than rhetoric",
+      "Most politicians use rhetoric honestly"
+     ],
+     "answer": 1,
+     "explain_es": "\"the remedy for bad persuasion is not less rhetoric but more of it, better taught and more widely understood\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: ____ I want to argue here is that we abandoned the classical view of rhetoric at our cost. (1 word)",
+     "answer": "What",
+     "accept": [
+      "what"
+     ],
+     "explain_es": "Pseudo-hendida (wh-cleft): \"What I want to argue here is that…\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer mention a doctor and a teacher in paragraph 2?",
+     "options": [
+      "To show that rhetoric is used in non-manipulative everyday contexts",
+      "To criticise professionals for using persuasion",
+      "To prove that statistics are useless",
+      "To contrast science with the humanities"
+     ],
+     "answer": 0,
+     "explain_es": "Ejemplos de retórica honesta: la técnica no es engañosa en sí."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, what separates honest persuasion from manipulation?",
+     "options": [
+      "The amount of technique used",
+      "The purpose behind the technique",
+      "Whether statistics are included",
+      "The speaker's level of education"
+     ],
+     "answer": 1,
+     "explain_es": "\"not the presence of technique but the purpose to which it is put\"."
+    },
+    {
+     "type": "mc",
+     "q": "How does the writer respond to the critics in paragraph 3?",
+     "options": [
+      "By rejecting their observation entirely",
+      "By accepting part of their point but rejecting their conclusion",
+      "By agreeing that rhetoric should be avoided",
+      "By changing the subject to ancient Athens"
+     ],
+     "answer": 1,
+     "explain_es": "\"There is something in this ... But the conclusion does not follow.\""
+    },
+    {
+     "type": "vocab",
+     "q": "'Conspicuous' in paragraph 3 is closest in meaning to…",
+     "options": [
+      "hidden",
+      "obvious",
+      "unusual",
+      "harmful"
+     ],
+     "answer": 1,
+     "explain_es": "'Conspicuous' = llamativo, que salta a la vista."
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, the teaching of rhetoric in Athens was controversial partly because it benefited people without privilege.",
+     "answer": "T",
+     "explain_es": "\"it was democratising: it gave citizens without wealth or connections the tools…\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer imply about the philosophers who denounced rhetoric teachers?",
+     "options": [
+      "Their motives may not have been entirely principled",
+      "They were themselves poor",
+      "They were the best speakers in Athens",
+      "They later changed their minds"
+     ],
+     "answer": 0,
+     "explain_es": "\"partly on principle and partly, one suspects, because they disliked seeing the advantages of a privileged education handed out for a fee\"."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 5, what does 'it' refer to in 'because it travels with her into every conversation'?",
+     "options": [
+      "A fact-checking website",
+      "The ability to recognise rhetorical techniques",
+      "A manipulative speech",
+      "The curriculum"
+     ],
+     "answer": 1,
+     "explain_es": "Se refiere a la defensa: la capacidad de identificar falsos dilemas, términos cargados, etc."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes that fact-checking websites are useless.",
+     "answer": "NG",
+     "explain_es": "Dice que ofrecen menos que la formación retórica, pero no que sean inútiles; no se afirma."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Persuasion as a democratic necessity",
+      "The decline of reform movements",
+      "How to anticipate objections in court",
+      "Why strong arguments always win"
+     ],
+     "answer": 0,
+     "explain_es": "La vida democrática exige persuadir a quien no piensa como uno: es una tarea retórica."
+    },
+    {
+     "type": "mc",
+     "q": "The sentence 'Precisely because the difference matters, though, we need citizens equipped to notice it' uses fronting to…",
+     "options": [
+      "make the reason the focus of the sentence",
+      "introduce a new topic",
+      "soften a criticism",
+      "report an opinion"
+     ],
+     "answer": 0,
+     "explain_es": "Se antepone 'Precisely because the difference matters' para poner el énfasis en la razón."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 7.",
+     "options": [
+      "Realistic limits to the argument",
+      "A cure for public discourse",
+      "Every technique is acceptable",
+      "The power of tribal resentment"
+     ],
+     "answer": 0,
+     "explain_es": "La autora acota su tesis: no curará el discurso de la noche a la mañana ni todo vale."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Only when we can answer that question ____ we be in a position to judge. (1 word)",
+     "answer": "will",
+     "accept": [],
+     "explain_es": "Inversión tras 'Only when…': \"Only when we can answer that question will we be in a position to judge.\""
+    }
+   ]
+  }
+ ],
+ "3": [
+  {
+   "id": "u-c2-3-1",
+   "title": "The Witness Who Was Certain",
+   "level": "C2",
+   "genre": "literary non-fiction",
+   "topic": "Memory & Perception",
+   "emoji": "👁️",
+   "words": 759,
+   "paragraphs": [
+    "The woman in the witness box was not lying. Of that, everyone in the courtroom seemed sure, and they were right. She had been at the bus stop on the evening in question; she had seen a man run from the newsagent's with a bag under his arm; she had looked straight at his face under the street light for perhaps two seconds. When she was asked whether the man was in court, she pointed at the defendant without hesitation. 'I'll never forget that face,' she said. It was the most persuasive moment of the trial, and it was almost certainly mistaken.",
+    "We now know this because, three years later, another man confessed to the robbery and was able to describe details that only the culprit could have known. The defendant, who had spent those three years in prison, was released. The witness, interviewed afterwards, was distraught. She had not invented anything. She had simply remembered, with complete sincerity, something that had never quite happened in the way she recalled it.",
+    "Cases like this have transformed the way psychologists think about memory. For much of the twentieth century, the popular model was something like a video recording: events were captured, stored and later played back, perhaps with some loss of quality over time. That model, we can now say with some confidence, must be wrong. Memory is not retrieved so much as rebuilt. Each time we recall an event, we reconstruct it from fragments, filling the gaps with expectation, inference and whatever information has reached us since.",
+    "Consider what the witness would have experienced that evening. The light will have been poor; the man was moving; she was frightened. Under such conditions, the brain captures surprisingly little detail about a stranger's face. What it captures instead is a general impression, an outline into which later information can easily be poured. When, a week later, police showed her a set of photographs, the outline may well have been filled in by the face she saw there. By the time she reached the courtroom, she could not have distinguished between what she had seen at the bus stop and what she had seen in the police station. Nor would she have had any reason to try.",
+    "The most unsettling finding of this research is that confidence and accuracy are only loosely connected. A witness who has rehearsed a memory several times, been encouraged by an officer ('Good, that's our suspect') and seen the defendant's face in newspapers will typically become more certain, not less, as the trial approaches. Juries, understandably, find certainty persuasive. A witness who says 'I think it might have been him' sounds weaker than one who says 'It was definitely him', even though the hesitant witness may be the more reliable of the two.",
+    "None of this means that eyewitnesses are worthless. Under the right conditions, initial identifications made quickly and with appropriate caution can be reasonably accurate. The problem lies in the conditions. Many of the safeguards now recommended by researchers are strikingly simple: the officer conducting an identification should not know which person in the line-up is the suspect, so that she cannot unconsciously signal it; the witness should be told that the culprit might not be present at all; and her level of confidence should be recorded at once, in her own words, before anything has had the chance to inflate it.",
+    "It is tempting to read stories like this as a warning about other people's memories. That would be a mistake. Most of us will have had the experience of recounting an anecdote for years, only to be told by a sibling that we have got it all wrong: it was not you who fell in the river but your cousin; it was not summer but late autumn. Our first reaction will usually be disbelief. Surely we cannot have invented a memory so vivid? But vividness, it turns out, is no guarantee. Some of our most cherished recollections may be composites, assembled over decades from photographs, family stories and things we were told we did.",
+    "The witness in the robbery case later said that she wished someone had warned her. 'I needn't have been so sure,' she said, 'but nobody told me that being sure wasn't the same as being right.' It is hard to think of a more useful sentence to put before a jury, or before ourselves. Our memories are not liars. They are storytellers, and like all storytellers they will tend to improve the tale with every telling."
+   ],
+   "glossary": [
+    [
+     "witness box",
+     "estrado de los testigos"
+    ],
+    [
+     "newsagent's",
+     "quiosco, tienda de prensa"
+    ],
+    [
+     "culprit",
+     "culpable"
+    ],
+    [
+     "distraught",
+     "consternado, angustiado"
+    ],
+    [
+     "to retrieve",
+     "recuperar"
+    ],
+    [
+     "to fill the gaps",
+     "rellenar los huecos"
+    ],
+    [
+     "outline",
+     "contorno, esbozo"
+    ],
+    [
+     "to rehearse (a memory)",
+     "repasar, ensayar mentalmente"
+    ],
+    [
+     "loosely connected",
+     "vagamente relacionado"
+    ],
+    [
+     "safeguard",
+     "salvaguarda, garantía"
+    ],
+    [
+     "line-up",
+     "rueda de reconocimiento"
+    ],
+    [
+     "to inflate",
+     "inflar, exagerar"
+    ],
+    [
+     "to recount",
+     "relatar, contar"
+    ],
+    [
+     "cherished",
+     "preciado, entrañable"
+    ],
+    [
+     "composite",
+     "compuesto, amalgama"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the effect of the final sentence of paragraph 1?",
+     "options": [
+      "It reveals that the witness was dishonest",
+      "It undermines the persuasiveness just described",
+      "It suggests the defendant confessed",
+      "It introduces a second witness"
+     ],
+     "answer": 1,
+     "explain_es": "Tras describir el momento más persuasivo del juicio, \"it was almost certainly mistaken\" lo desmonta."
+    },
+    {
+     "type": "tf",
+     "q": "The witness deliberately invented details of the robbery.",
+     "answer": "F",
+     "explain_es": "\"She had not invented anything\"; recordaba con total sinceridad."
+    },
+    {
+     "type": "mc",
+     "q": "'That model, we can now say with some confidence, must be wrong.' The modal 'must' here expresses…",
+     "options": [
+      "obligation",
+      "a confident deduction",
+      "a future plan",
+      "permission"
+     ],
+     "answer": 1,
+     "explain_es": "'Must be' = deducción segura en presente."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, memory is best described as…",
+     "options": [
+      "a recording that loses quality",
+      "a reconstruction made anew each time",
+      "a fixed store of fragments",
+      "a video that cannot be edited"
+     ],
+     "answer": 1,
+     "explain_es": "\"Memory is not retrieved so much as rebuilt.\""
+    },
+    {
+     "type": "mc",
+     "q": "In 'The light will have been poor', 'will have been' is used to…",
+     "options": [
+      "predict the future",
+      "make an assumption about the past",
+      "describe a habit",
+      "express willingness"
+     ],
+     "answer": 1,
+     "explain_es": "'Will have + participio' = suposición segura sobre el pasado."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'an outline into which later information can easily be poured' suggests that the first impression is…",
+     "options": [
+      "detailed and reliable",
+      "vague and easily filled by later input",
+      "impossible to change",
+      "stored in photographs"
+     ],
+     "answer": 1,
+     "explain_es": "Un contorno vacío que se 'rellena' con información posterior."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer say the witness 'could not have distinguished' between the two faces?",
+     "options": [
+      "She had poor eyesight",
+      "The reconstructed memory had merged the two sources",
+      "The police had lied to her",
+      "She had refused to look at the photographs"
+     ],
+     "answer": 1,
+     "explain_es": "La foto de la comisaría rellenó el esbozo; ya no podía separar las fuentes."
+    },
+    {
+     "type": "tf",
+     "q": "According to the text, witnesses usually become less confident as a trial approaches.",
+     "answer": "F",
+     "explain_es": "\"will typically become more certain, not less, as the trial approaches\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Simple procedures to protect accuracy",
+      "Why eyewitnesses should be ignored",
+      "The training of police officers",
+      "How line-ups were invented"
+     ],
+     "answer": 0,
+     "explain_es": "Enumera salvaguardas sencillas para las identificaciones."
+    },
+    {
+     "type": "tf",
+     "q": "The writer says that most police forces have already adopted the recommended safeguards.",
+     "answer": "NG",
+     "explain_es": "El texto dice que los investigadores las recomiendan, pero no si la policía las ha adoptado."
+    },
+    {
+     "type": "mc",
+     "q": "What is the purpose of the sibling anecdote in paragraph 7?",
+     "options": [
+      "To show that the problem applies to everyone's memories",
+      "To criticise the writer's family",
+      "To prove that summer memories are less reliable",
+      "To introduce a second court case"
+     ],
+     "answer": 0,
+     "explain_es": "\"It is tempting to read stories like this as a warning about other people's memories. That would be a mistake.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Our first reaction to being contradicted ____ usually be disbelief. (1 word)",
+     "answer": "will",
+     "accept": [],
+     "explain_es": "'Will' para comportamiento típico o predecible: \"Our first reaction will usually be disbelief.\""
+    },
+    {
+     "type": "mc",
+     "q": "The witness says 'I needn't have been so sure'. She means that…",
+     "options": [
+      "she was not sure at all",
+      "her certainty was unnecessary, yet she had it",
+      "she didn't need to attend the trial",
+      "she should have been more certain"
+     ],
+     "answer": 1,
+     "explain_es": "'Needn't have + participio': algo que ocurrió pero no era necesario."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 8.",
+     "options": [
+      "Memory as a storyteller",
+      "The witness is punished",
+      "A new trial begins",
+      "Why juries ignore warnings"
+     ],
+     "answer": 0,
+     "explain_es": "\"Our memories are not liars. They are storytellers.\""
+    }
+   ]
+  },
+  {
+   "id": "u-c2-3-2",
+   "title": "The Blue Door",
+   "level": "C2",
+   "genre": "fiction extract",
+   "topic": "Memory & Childhood",
+   "emoji": "🚪",
+   "words": 799,
+   "paragraphs": [
+    "The house, when Tomás finally found it, had a green door. He stood on the opposite pavement for some time, holding the paper bag of pastries he had bought as a kind of offering, and tried to make the door turn blue. It would not. It was green, a deep bottle green, and the paint around the letterbox was flaking in a way that suggested it had been green for years.",
+    "He must have got the street wrong. That was the obvious explanation, and he clung to it for nearly a minute. But the street was right. There was the lamppost with the dent in it, at about the height a small boy's bicycle handlebar would reach; there was the low wall where his grandmother would sit in the evenings, shelling peas into a bowl and passing comment on everyone who walked by. The wall was shorter than he remembered, which he had expected. Walls always were. The door, he had not expected.",
+    "He had told the story of the blue door so often that it had become a sort of signature. At dinner parties, when people swapped memories of childhood, he would describe it: the colour of a swimming pool, he would say, the colour of a summer sky over the harbour, so bright that the postman used to joke he needed sunglasses to deliver the letters. He would describe his grandmother repainting it every spring, standing on a kitchen chair, and the smell of the paint mingling with the smell of bread from the bakery on the corner. People liked the story. He had liked telling it.",
+    "The bakery, he now noticed, was a mobile phone shop.",
+    "A woman came out of the house next door, glanced at him, and then glanced again, with the particular wariness reserved for men who stand too long on pavements. He crossed the road and, because he could think of nothing else to do, explained. He had lived here as a boy, he said, with his grandmother, forty years ago. He had come back for the first time. He was sorry to be staring. It was only that he remembered the door as blue.",
+    "'Blue?' She considered the door as if it might be at fault. 'I've been here since nineteen eighty-six. It's always been green, as far as I know. The old lady before the current owners, she'd have it repainted every few years, but always the same colour. She was very particular.' She paused. 'Your grandmother, would that have been? Señora Ibáñez?'",
+    "He nodded. It was absurd how much he wanted the woman to say that she remembered a blue door after all, that there had been a brief, glorious blue period in the early eighties that everyone had since forgotten. She did not say this. Instead she said that his grandmother had been a formidable woman who would tell you exactly what she thought of your haircut, and that the street had been quieter without her. Then, perhaps sensing that he needed something, she added: 'She'll have told everyone about you, you know. The grandson in the north. We all knew your name.'",
+    "Afterwards, sitting on the low wall with the pastries untouched beside him, he tried to work out where the blue had come from. He could not have made it up out of nothing; memories did not work like that, did they? Perhaps there had been a blue door somewhere else: a neighbour's, a friend's, a door in a book he had loved. Perhaps it had been the sky reflected in the glass panel that he now saw, looking more carefully, was set into the top of the green door. Perhaps, at some dinner party long ago, he had simply said blue because it sounded better than green, and the lie had been repeated until it hardened into truth.",
+    "He found, to his surprise, that he did not much mind which it was. He needn't have come all this way to check, he supposed; he could have gone on telling the story, and nobody would ever have known. But he had not come to check the door. He had come, he realised, to see whether anything of her was still here. And something was: in the wall, in the dented lamppost, in a neighbour who still remembered her opinions about haircuts.",
+    "When he finally stood up to leave, he left the pastries on the wall. Someone would find them. His grandmother, he thought, would have approved; she had never been able to bear waste. And as he walked back towards the station, he caught himself rehearsing a new version of the story, one in which the door was green, and the colour mattered less than he had always believed."
+   ],
+   "glossary": [
+    [
+     "pavement",
+     "acera"
+    ],
+    [
+     "offering",
+     "ofrenda"
+    ],
+    [
+     "letterbox",
+     "ranura del buzón (en la puerta)"
+    ],
+    [
+     "flaking",
+     "descascarillado"
+    ],
+    [
+     "dent",
+     "abolladura"
+    ],
+    [
+     "to shell peas",
+     "desgranar guisantes"
+    ],
+    [
+     "to pass comment on",
+     "opinar sobre, hacer comentarios de"
+    ],
+    [
+     "signature (fig.)",
+     "sello personal, seña de identidad"
+    ],
+    [
+     "to swap memories",
+     "intercambiar recuerdos"
+    ],
+    [
+     "to mingle",
+     "mezclarse"
+    ],
+    [
+     "wariness",
+     "recelo, cautela"
+    ],
+    [
+     "particular (about)",
+     "exigente, quisquilloso"
+    ],
+    [
+     "formidable",
+     "imponente, de armas tomar"
+    ],
+    [
+     "glass panel",
+     "panel de cristal"
+    ],
+    [
+     "to bear (waste)",
+     "soportar (el desperdicio)"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why did Tomás buy the pastries?",
+     "options": [
+      "He was hungry after the journey",
+      "As a gesture of goodwill towards whoever he might meet",
+      "Because the bakery on the corner was still open",
+      "To give to his grandmother"
+     ],
+     "answer": 1,
+     "explain_es": "\"as a kind of offering\": un gesto para quien encontrara."
+    },
+    {
+     "type": "mc",
+     "q": "'He must have got the street wrong' expresses…",
+     "options": [
+      "a certainty he later confirms",
+      "a deduction he soon has to abandon",
+      "an obligation to return",
+      "a regret about the past"
+     ],
+     "answer": 1,
+     "explain_es": "Deducción sobre el pasado ('must have + participio') que descarta enseguida: \"But the street was right.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does 'would' express in 'his grandmother would sit in the evenings, shelling peas'?",
+     "options": [
+      "A future in the past",
+      "A past habit",
+      "A polite request",
+      "A conditional result"
+     ],
+     "answer": 1,
+     "explain_es": "'Would' para hábitos repetidos en el pasado."
+    },
+    {
+     "type": "tf",
+     "q": "Tomás was surprised that the wall seemed lower than he remembered.",
+     "answer": "F",
+     "explain_es": "\"The wall was shorter than he remembered, which he had expected.\""
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, the story had 'become a sort of signature'. This means it was…",
+     "options": [
+      "a legal document",
+      "something closely associated with him",
+      "a secret he kept",
+      "an autograph"
+     ],
+     "answer": 1,
+     "explain_es": "Seña de identidad: algo que lo caracterizaba en las cenas."
+    },
+    {
+     "type": "mc",
+     "q": "What is the effect of the one-sentence paragraph 'The bakery, he now noticed, was a mobile phone shop'?",
+     "options": [
+      "It adds humour by describing modern technology",
+      "It deepens the sense that the remembered past has gone",
+      "It explains why the door was green",
+      "It suggests the grandmother worked there"
+     ],
+     "answer": 1,
+     "explain_es": "Otro detalle del recuerdo que ya no existe; el párrafo aislado lo subraya."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the neighbour look at Tomás 'with the particular wariness'?",
+     "options": [
+      "She recognises him",
+      "His behaviour seems suspicious",
+      "She is expecting a delivery",
+      "He is blocking her door"
+     ],
+     "answer": 1,
+     "explain_es": "Recelo hacia los hombres que se quedan demasiado tiempo mirando en la acera."
+    },
+    {
+     "type": "mc",
+     "q": "'She'd have it repainted every few years' shows…",
+     "options": [
+      "the grandmother repainted the door herself",
+      "the grandmother regularly arranged for someone else to repaint it",
+      "the neighbour repainted the door",
+      "the door was never repainted"
+     ],
+     "answer": 1,
+     "explain_es": "Causativa 'have something done' + 'would' habitual: se lo pintaban otros."
+    },
+    {
+     "type": "tf",
+     "q": "The neighbour confirms that the door was briefly blue in the early eighties.",
+     "answer": "F",
+     "explain_es": "\"She did not say this.\" Era solo lo que Tomás deseaba."
+    },
+    {
+     "type": "mc",
+     "q": "'She'll have told everyone about you' is the neighbour's way of…",
+     "options": [
+      "predicting a future event",
+      "making a confident assumption about the grandmother's past behaviour",
+      "warning Tomás about gossip",
+      "asking for information"
+     ],
+     "answer": 1,
+     "explain_es": "'Will have + participio' para suposición sobre el pasado, aquí en tono consolador."
+    },
+    {
+     "type": "tf",
+     "q": "Tomás eventually discovers where the idea of the blue door came from.",
+     "answer": "F",
+     "explain_es": "Plantea varias hipótesis ('Perhaps…') y decide que no le importa cuál es."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Tomás reflects that he ____ have come all this way to check, since the story would have been safe. (1 word)",
+     "answer": "needn't",
+     "accept": [
+      "need not",
+      "neednt"
+     ],
+     "explain_es": "\"He needn't have come all this way to check\": vino, aunque no era necesario."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for the second-to-last paragraph.",
+     "options": [
+      "The real purpose of the journey",
+      "Checking the facts",
+      "A quarrel with the neighbour",
+      "Why the door was repainted"
+     ],
+     "answer": 0,
+     "explain_es": "\"He had not come to check the door. He had come ... to see whether anything of her was still here.\""
+    },
+    {
+     "type": "mc",
+     "q": "The ending suggests that Tomás…",
+     "options": [
+      "will stop telling the story",
+      "is ready to accept a less perfect version of his memory",
+      "has decided to buy the house",
+      "feels angry with his grandmother"
+     ],
+     "answer": 1,
+     "explain_es": "Ensaya una nueva versión en la que la puerta es verde y el color importa menos."
+    }
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "u-c2-4-1",
+   "title": "The Uneasy Arithmetic of Merit",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Meritocracy & Success",
+   "emoji": "🏆",
+   "words": 788,
+   "paragraphs": [
+    "Few ideas enjoy such broad approval as meritocracy. Ask politicians on the left and the right what kind of society they want, and most will describe some version of it: a system in which positions are allocated on the basis of talent and effort rather than birth or connections. The appeal is obvious. A meritocracy promises fairness to those at the bottom and legitimacy to those at the top. Its critics, however, have become increasingly vocal, and their objections deserve closer attention than they usually receive.",
+    "The first objection concerns the measurement of merit itself. Talent and effort are not directly observable; what institutions observe instead are proxies such as examination results, degrees from prestigious universities and records of previous employment. These proxies are far from neutral. A child growing up in a household filled with books, supported by private tuition and spared the need to earn money during her studies, will arrive at the examination hall with advantages unrelated to any innate ability. The resulting scores, presented as objective evidence of merit, are in part a measurement of accumulated privilege.",
+    "Defenders of meritocracy acknowledge this but argue that the solution lies in the improvement of measurement rather than its abandonment. Widening access to good schools, introducing contextual admissions that take an applicant's background into account, and the removal of unpaid internships as a route into certain professions are all reforms aimed at bringing the proxies closer to what they are meant to capture. There is substantial evidence that such measures, carefully implemented, can make a meaningful difference.",
+    "The second objection is subtler and, for many, more troubling. It concerns not the accuracy of the system but its psychological effects on winners and losers alike. In a society that believes its rewards are distributed according to merit, success becomes a moral verdict as well as an economic outcome. Those who prosper are encouraged to regard their position as deserved, and those who struggle are left with the implication that their failure is, at some level, their own fault. Researchers studying attitudes to inequality have found that belief in meritocracy is associated with greater tolerance of large income gaps and, in some studies, with reduced sympathy for people living in poverty.",
+    "The irony here is considerable. The original coinage of the word 'meritocracy', in a satirical novel published in 1958, was intended as a warning. The book imagined a future Britain in which intelligence testing had replaced inherited privilege, and in which the resulting elite, convinced of its own superiority, had become more arrogant and less compassionate than the aristocracy it displaced. The author lived to see the word adopted as a slogan by the very politicians whose assumptions he had set out to mock, and he did not hesitate to say so.",
+    "A third line of criticism points to the role of luck. Even setting aside inherited advantages, outcomes in competitive fields are shaped by chance to a degree that participants rarely acknowledge. Being born in a particular month can affect a child's chances of being selected for sports teams; graduating during a recession can depress earnings for a decade; a single encounter with the right mentor can redirect a career. The successful, studies suggest, consistently underestimate the contribution of such factors, preferring to remember the hours of effort rather than the fortunate timing.",
+    "None of this amounts to an argument for abandoning merit as a principle. A surgeon should be selected for her competence, not her surname, and few would wish to return to a world of hereditary office. What the critics are proposing is rather a shift in emphasis: from the celebration of individual achievement towards the recognition of the conditions that make achievement possible. This might involve greater investment in the early years, when gaps in opportunity first open up, or a renewed respect for forms of work that do not require academic credentials but are nonetheless essential to the functioning of society.",
+    "There is also a case for a little more humility at the top. The executive who stops to consider how much of her success depended on circumstances beyond her control is not thereby diminished. If anything, the acknowledgement of good fortune tends to be accompanied by a greater willingness to share its benefits. The question, perhaps, is not whether merit should matter, but whether we can learn to reward it without mistaking our rewards for proof of our virtue.",
+    "Meritocracy, in the end, may be best understood as an aspiration rather than a description. As an aspiration, it remains powerful and worth pursuing. As a description of how any existing society actually works, it is, at best, an incomplete account, and at worst a comforting story told by the fortunate about themselves."
+   ],
+   "glossary": [
+    [
+     "to allocate",
+     "asignar"
+    ],
+    [
+     "legitimacy",
+     "legitimidad"
+    ],
+    [
+     "vocal",
+     "que se hace oír, contundente"
+    ],
+    [
+     "proxy",
+     "indicador indirecto, sustituto"
+    ],
+    [
+     "private tuition",
+     "clases particulares"
+    ],
+    [
+     "innate",
+     "innato"
+    ],
+    [
+     "contextual admissions",
+     "admisiones que tienen en cuenta el contexto social"
+    ],
+    [
+     "unpaid internship",
+     "prácticas no remuneradas"
+    ],
+    [
+     "verdict",
+     "veredicto"
+    ],
+    [
+     "to prosper",
+     "prosperar"
+    ],
+    [
+     "coinage",
+     "acuñación (de una palabra)"
+    ],
+    [
+     "to displace",
+     "desplazar, sustituir"
+    ],
+    [
+     "to depress (earnings)",
+     "reducir, deprimir (los ingresos)"
+    ],
+    [
+     "hereditary office",
+     "cargo hereditario"
+    ],
+    [
+     "credentials",
+     "títulos, credenciales"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does the writer begin by noting meritocracy's broad approval?",
+     "options": [
+      "To show that criticism of it is pointless",
+      "To set up a challenge to a widely held assumption",
+      "To praise politicians of all parties",
+      "To explain why the word was invented"
+     ],
+     "answer": 1,
+     "explain_es": "Presenta el consenso para luego examinar las objeciones, que \"deserve closer attention\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, examination results are described as 'proxies' because they…",
+     "options": [
+      "measure merit directly",
+      "stand in for qualities that cannot be observed directly",
+      "are written by private tutors",
+      "are used only by universities"
+     ],
+     "answer": 1,
+     "explain_es": "\"Talent and effort are not directly observable; what institutions observe instead are proxies\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'spared the need to earn money' means she…",
+     "options": [
+      "was forced to work",
+      "did not have to work",
+      "chose to save money",
+      "earned more than others"
+     ],
+     "answer": 1,
+     "explain_es": "'To spare someone something' = librarle de ello."
+    },
+    {
+     "type": "mc",
+     "q": "Which phrase in paragraph 3 is an example of nominalisation?",
+     "options": [
+      "are all reforms",
+      "the removal of unpaid internships",
+      "can make a meaningful difference",
+      "carefully implemented"
+     ],
+     "answer": 1,
+     "explain_es": "'the removal of' convierte el verbo 'remove' en sustantivo."
+    },
+    {
+     "type": "mc",
+     "q": "The participle clause 'A child growing up in a household filled with books' could be rewritten as…",
+     "options": [
+      "A child who grows up in a household which is filled with books",
+      "A child who has grown a household of books",
+      "A child while filling a household with books",
+      "A child grown in books"
+     ],
+     "answer": 0,
+     "explain_es": "'growing up' = who grows up; 'filled with' = which is filled with (relativas reducidas)."
+    },
+    {
+     "type": "tf",
+     "q": "Defenders of meritocracy believe that measuring merit should be abandoned.",
+     "answer": "F",
+     "explain_es": "\"the solution lies in the improvement of measurement rather than its abandonment\"."
+    },
+    {
+     "type": "mc",
+     "q": "What makes the second objection 'subtler' than the first?",
+     "options": [
+      "It concerns the moral and psychological effects of believing in merit",
+      "It relies on more complex statistics",
+      "It is supported by fewer researchers",
+      "It concerns only wealthy people"
+     ],
+     "answer": 0,
+     "explain_es": "No trata de la exactitud del sistema, sino de cómo afecta moral y psicológicamente a ganadores y perdedores."
+    },
+    {
+     "type": "mc",
+     "q": "What is ironic about the history of the word 'meritocracy'?",
+     "options": [
+      "It was coined by a politician",
+      "A term intended as satire became a political ideal",
+      "It was first used in a scientific paper",
+      "Its author supported intelligence testing"
+     ],
+     "answer": 1,
+     "explain_es": "Nació en una novela satírica como advertencia y acabó como eslogan."
+    },
+    {
+     "type": "tf",
+     "q": "The author of the 1958 novel publicly objected to how the word was later used.",
+     "answer": "T",
+     "explain_es": "\"he did not hesitate to say so\"."
+    },
+    {
+     "type": "tf",
+     "q": "The novel was a bestseller when it was first published.",
+     "answer": "NG",
+     "explain_es": "No se menciona su éxito comercial."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "The underestimated role of chance",
+      "How to choose a mentor",
+      "Sport and the school calendar",
+      "Why recessions happen"
+     ],
+     "answer": 0,
+     "explain_es": "Ejemplos del papel de la suerte, que los triunfadores subestiman."
+    },
+    {
+     "type": "mc",
+     "q": "In 'The executive who stops to consider how much of her success depended on circumstances', 'stops to consider' means she…",
+     "options": [
+      "gives up considering",
+      "pauses in order to consider",
+      "refuses to consider",
+      "used to consider"
+     ],
+     "answer": 1,
+     "explain_es": "'Stop + to-infinitivo' = detenerse para hacer algo; 'stop + -ing' = dejar de hacerlo."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The critics propose a shift from celebrating individual ____ towards recognising the conditions that make it possible. (1 word)",
+     "answer": "achievement",
+     "accept": [],
+     "explain_es": "\"from the celebration of individual achievement towards the recognition of the conditions\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's overall conclusion about meritocracy?",
+     "options": [
+      "It is a dangerous illusion that should be rejected",
+      "It is a valuable ideal but a misleading description of reality",
+      "It accurately describes most modern societies",
+      "It matters only in education"
+     ],
+     "answer": 1,
+     "explain_es": "\"best understood as an aspiration rather than a description\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-4-2",
+   "title": "A Curriculum Vitae of Failures",
+   "level": "C2",
+   "genre": "opinion column",
+   "topic": "Failure & Careers",
+   "emoji": "📄",
+   "words": 825,
+   "paragraphs": [
+    "A few years ago, a university lecturer did something that, by the standards of academic life, bordered on the reckless. Alongside his conventional curriculum vitae, with its list of degrees, publications and prizes, he published a second document listing everything he had applied for and not got: the fellowships declined, the journals that had rejected his papers, the jobs that had gone to someone else. The second list was considerably longer than the first. It was also, by a wide margin, the more widely read.",
+    "I remember reading it at the time and feeling a peculiar mixture of relief and unease. Relief, because it confirmed what anyone who has tried to build a career in a competitive field suspects: that the polished record of achievement presented on a CV is a highly selective account, edited to remove the setbacks that made the successes possible. Unease, because I could not quite decide whether the exercise was an act of honesty or a more sophisticated form of self-promotion. Only someone whose position was secure, after all, could afford to advertise his failures.",
+    "That objection has some force. A 'failure CV' published by a tenured professor is not the same thing as one published by a graduate struggling to find her first post. For the professor, the list of rejections serves as a charming footnote to a story whose ending is already known. For the graduate, it might be read by a prospective employer as evidence of unsuitability. The candour that one person can afford is a risk that another cannot.",
+    "And yet I have come to think that the exercise matters, not for what it reveals about any individual but for what it reveals about the system. Consider the arithmetic. In many fields, the success rate for applications to major funding bodies hovers somewhere between ten and twenty per cent. A researcher submitting ten proposals can therefore expect to have eight or nine of them turned down, even if every one is of high quality. Rejection, under such conditions, is not a sign of failure but a structural feature of the process. Treating it as a personal verdict is both inaccurate and corrosive.",
+    "The problem is that we rarely see the arithmetic. What we see are the outcomes: the colleague who has just won the grant, the former classmate whose start-up has been acquired, the friend whose novel is in the shop window. Each of these achievements arrives detached from the dozens of attempts that preceded it, and our own failures, by contrast, are experienced in full, one painful email at a time. It is a comparison rigged against us, and it is hardly surprising that so many people in competitive professions report feeling like impostors.",
+    "I tried keeping a failure CV of my own for a while, partly as an experiment and partly as a form of therapy. The results were instructive. Within a year, the document contained eleven rejections, three projects abandoned for lack of funding, and one memorable occasion on which I was shortlisted for a post and then forgot to attend the interview because I had written down the wrong date. Looking back over the list, I was struck less by its length than by how few of the entries I still regretted. Most had led, often by circuitous routes, to something else: a different collaboration, a better idea, a job I had not known existed.",
+    "This is not to romanticise failure, which is often simply painful and occasionally ruinous. Some setbacks do not lead anywhere useful, and the cheerful insistence that every rejection is a hidden opportunity can be its own kind of tyranny. I regret to say that I have encountered this attitude most often among people who have never experienced a serious failure themselves. But there is a difference between pretending that failure is good and admitting that it is normal. The second is merely accurate; the first is a sales pitch.",
+    "What would change if more of us were willing to make that admission? Perhaps not very much at first. Institutions are slow to alter the habits by which they evaluate people, and a CV that lists rejections will continue to be read, in many quarters, with suspicion. But culture is shaped by small acts of disclosure as much as by policy. A senior colleague who mentions, in passing, that her first three applications were unsuccessful gives junior staff a permission that no mentoring scheme can provide.",
+    "I meant to stop the experiment after a year. I have gone on keeping the list, somewhat to my own surprise, and I now consult it more often than I consult my conventional CV. It is a less flattering document, certainly. It is also a more truthful one, and on difficult days it reminds me of something the polished version conceals: that the people whose careers I envy have almost certainly failed more often than I have, and simply went on applying."
+   ],
+   "glossary": [
+    [
+     "to border on",
+     "rayar en"
+    ],
+    [
+     "reckless",
+     "temerario, imprudente"
+    ],
+    [
+     "fellowship",
+     "beca de investigación"
+    ],
+    [
+     "by a wide margin",
+     "con mucha diferencia"
+    ],
+    [
+     "setback",
+     "revés, contratiempo"
+    ],
+    [
+     "to afford to",
+     "poder permitirse"
+    ],
+    [
+     "tenured",
+     "con plaza fija (en la universidad)"
+    ],
+    [
+     "candour",
+     "franqueza, sinceridad"
+    ],
+    [
+     "to hover",
+     "rondar, oscilar"
+    ],
+    [
+     "corrosive",
+     "corrosivo, dañino"
+    ],
+    [
+     "rigged",
+     "amañado"
+    ],
+    [
+     "impostor",
+     "impostor"
+    ],
+    [
+     "shortlisted",
+     "preseleccionado"
+    ],
+    [
+     "circuitous",
+     "indirecto, sinuoso"
+    ],
+    [
+     "sales pitch",
+     "discurso de venta"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What was unusual about the lecturer's second document?",
+     "options": [
+      "It exaggerated his achievements",
+      "It recorded his unsuccessful applications",
+      "It was written anonymously",
+      "It was shorter than his normal CV"
+     ],
+     "answer": 1,
+     "explain_es": "Listaba todo lo que solicitó y no consiguió."
+    },
+    {
+     "type": "mc",
+     "q": "Why did the columnist feel 'unease' on reading it?",
+     "options": [
+      "The columnist suspected it might be disguised self-promotion",
+      "The columnist disliked the lecturer personally",
+      "The columnist thought it contained false information",
+      "The columnist had applied for the same jobs"
+     ],
+     "answer": 0,
+     "explain_es": "\"I could not quite decide whether the exercise was an act of honesty or a more sophisticated form of self-promotion.\""
+    },
+    {
+     "type": "mc",
+     "q": "The point made in paragraph 3 is that…",
+     "options": [
+      "only graduates should publish failure CVs",
+      "the risk of honesty depends on one's career security",
+      "professors are more honest than graduates",
+      "employers never read CVs carefully"
+     ],
+     "answer": 1,
+     "explain_es": "La franqueza que uno puede permitirse es un riesgo para otro."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'candour' is closest in meaning to…",
+     "options": [
+      "frankness",
+      "modesty",
+      "ambition",
+      "humour"
+     ],
+     "answer": 0,
+     "explain_es": "'Candour' = franqueza, sinceridad."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer describe the success rates for funding applications?",
+     "options": [
+      "To show that most researchers are not good enough",
+      "To show that rejection is built into the system",
+      "To criticise funding bodies for corruption",
+      "To encourage readers to apply less often"
+     ],
+     "answer": 1,
+     "explain_es": "\"Rejection ... is not a sign of failure but a structural feature of the process.\""
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, a researcher can expect most high-quality proposals to be accepted.",
+     "answer": "F",
+     "explain_es": "Con una tasa del 10-20 %, de diez propuestas \"eight or nine\" serán rechazadas."
+    },
+    {
+     "type": "mc",
+     "q": "What makes the comparison in paragraph 5 'rigged against us'?",
+     "options": [
+      "We see others' successes without their failures but live our own failures fully",
+      "Our colleagues lie about their achievements",
+      "Employers prefer people with more failures",
+      "Shop windows display only famous novels"
+     ],
+     "answer": 0,
+     "explain_es": "Los logros ajenos llegan 'detached' de los intentos previos; nuestros fracasos se viven completos."
+    },
+    {
+     "type": "mc",
+     "q": "'I tried keeping a failure CV' means the writer…",
+     "options": [
+      "attempted unsuccessfully to start one",
+      "kept one as an experiment to see what would happen",
+      "regretted keeping one",
+      "stopped keeping one immediately"
+     ],
+     "answer": 1,
+     "explain_es": "'Try + -ing' = probar algo como experimento; 'try + to' = intentar (con esfuerzo)."
+    },
+    {
+     "type": "tf",
+     "q": "The writer missed an interview because of a mistake with the date.",
+     "answer": "T",
+     "explain_es": "\"forgot to attend the interview because I had written down the wrong date\"."
+    },
+    {
+     "type": "mc",
+     "q": "'I regret to say that I have encountered this attitude…' Here 'regret to say' is used to…",
+     "options": [
+      "express sorrow about a past action",
+      "politely introduce an unwelcome observation",
+      "apologise for forgetting",
+      "describe a future plan"
+     ],
+     "answer": 1,
+     "explain_es": "'Regret + to-infinitivo' anuncia con cortesía algo desagradable; 'regret + -ing' es lamentar algo hecho."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 7.",
+     "options": [
+      "Normal, not noble",
+      "Why failure is always good",
+      "The tyranny of employers",
+      "How to avoid setbacks"
+     ],
+     "answer": 0,
+     "explain_es": "Distingue entre fingir que el fracaso es bueno y admitir que es normal."
+    },
+    {
+     "type": "tf",
+     "q": "The writer's university has introduced a policy requiring failure CVs.",
+     "answer": "NG",
+     "explain_es": "No se menciona ninguna política institucional así."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The writer meant to stop after a year, but has gone on ____ the list ever since. (1 word, -ing form)",
+     "answer": "keeping",
+     "accept": [],
+     "explain_es": "'Go on + -ing' = seguir haciendo lo mismo; 'go on + to' = pasar a hacer algo nuevo."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's final attitude to the failure CV?",
+     "options": [
+      "It is valued as a more honest record",
+      "It is too depressing to read",
+      "It will soon be published online",
+      "It is less useful than the conventional CV"
+     ],
+     "answer": 0,
+     "explain_es": "\"It is a less flattering document ... It is also a more truthful one\"."
+    }
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "u-c2-5-1",
+   "title": "The Algorithm Will See You Now",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "AI & Medicine",
+   "emoji": "🩺",
+   "words": 837,
+   "paragraphs": [
+    "The radiologist I spent a morning with in a large teaching hospital is, by her own admission, slightly embarrassed by how much she has come to rely on her new colleague. The colleague does not drink coffee, never asks for leave and is reported to have examined more chest X-rays in its first year than she will see in her entire career. It is a piece of software, and it is one of a growing number of artificial intelligence systems that are said to be transforming the way diseases are detected.",
+    "The claims made for such systems are, on the face of it, remarkable. Algorithms trained on millions of images are believed to be capable of spotting early signs of lung cancer, diabetic eye disease and certain skin conditions with an accuracy that matches, and in some studies exceeds, that of experienced specialists. In regions where specialists are scarce, the technology is expected to allow patients to have their scans assessed within hours rather than weeks. It is not difficult to see why health ministries are enthusiastic.",
+    "It would appear, however, that the reality is somewhat more complicated than the headlines suggest. Much of the evidence for these systems comes from retrospective studies, in which an algorithm is tested on a collection of images whose diagnoses are already known. Such studies are useful, but they are generally considered to be a poor guide to performance in the messy conditions of a working hospital, where scanners vary, patients move and images are taken by staff of differing experience. Several systems that performed impressively in the laboratory are understood to have proved disappointing once deployed.",
+    "There is also the question of what the algorithms have actually learned. In one widely discussed case, a system designed to detect a particular lung condition was found to have been relying in part on the type of scanner used, since patients who were seriously ill tended to be scanned with portable machines at their bedside. The software had not learned to recognise the disease so much as to recognise the circumstances in which the disease was likely to be found. Errors of this kind are thought to be more common than published results might indicate, precisely because they are difficult to detect without careful investigation.",
+    "Concerns about bias are, arguably, more serious still. An algorithm can only be as representative as the data on which it was trained. If those data were collected predominantly from one population, the system may perform less well for patients who differ from that population in skin tone, age or genetic background. Developers are now being urged to have their training data audited for such imbalances before seeking approval, although it remains unclear how consistently this is done.",
+    "None of these difficulties, it should be stressed, is necessarily insurmountable, and few of the clinicians I spoke to wished to see the technology abandoned. What most of them did wish for was a more measured conversation about its place. The radiologist put it this way: the software is very good at noticing things, but it is not responsible for what happens next. When it flags a shadow on a scan, it is she who must decide whether to have the patient recalled, whether to order further tests, how to explain the uncertainty to a frightened family. Those decisions are not merely technical. They involve judgement, communication and accountability, and it is by no means clear that these can be delegated to a machine.",
+    "The question of accountability is likely to become pressing. If an algorithm fails to detect a tumour that a human would have spotted, who is to blame: the hospital that bought the system, the company that built it, or the doctor who trusted it? At present, the answer would seem to be the doctor, since most systems are approved only as aids to human decision-making. Yet as the software becomes more accurate, the temptation to defer to it will presumably grow, and the line between assistance and replacement may become increasingly difficult to draw.",
+    "Some ethicists have suggested that patients should be told whenever an algorithm has been involved in their diagnosis, and given the opportunity to have their results reviewed by a human specialist if they so wish. Others regard this as impractical, pointing out that patients are not normally informed about the many other tools, from blood analysers to dosage calculators, that shape their care. The disagreement reflects a deeper uncertainty about whether AI is merely another instrument, or something qualitatively different.",
+    "What seems reasonably certain is that the technology will not go away. The radiologist, for her part, has made her peace with it. She has had the software configured so that it shows her its suggestions only after she has formed her own opinion, a small precaution she describes as 'keeping my eye in'. It is, perhaps, a model worth considering more widely: not a choice between human and machine, but an arrangement in which each is used to check the other."
+   ],
+   "glossary": [
+    [
+     "teaching hospital",
+     "hospital universitario"
+    ],
+    [
+     "on the face of it",
+     "a primera vista"
+    ],
+    [
+     "scarce",
+     "escaso"
+    ],
+    [
+     "retrospective study",
+     "estudio retrospectivo"
+    ],
+    [
+     "messy",
+     "caótico, desordenado"
+    ],
+    [
+     "to deploy",
+     "implantar, poner en funcionamiento"
+    ],
+    [
+     "portable machine",
+     "equipo portátil"
+    ],
+    [
+     "predominantly",
+     "predominantemente"
+    ],
+    [
+     "to audit",
+     "auditar, revisar"
+    ],
+    [
+     "insurmountable",
+     "insuperable"
+    ],
+    [
+     "measured",
+     "mesurado, ponderado"
+    ],
+    [
+     "to flag",
+     "señalar, marcar"
+    ],
+    [
+     "to recall (a patient)",
+     "volver a citar (a un paciente)"
+    ],
+    [
+     "to defer to",
+     "remitirse a, someterse al criterio de"
+    ],
+    [
+     "to keep one's eye in",
+     "mantener la práctica, no perder el ojo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does the writer introduce the software as the radiologist's 'colleague'?",
+     "options": [
+      "To mock the radiologist",
+      "To suggest humorously how integral it has become to her work",
+      "Because it was designed by a doctor",
+      "To show that it has replaced her"
+     ],
+     "answer": 1,
+     "explain_es": "La personificación ('does not drink coffee') subraya con humor su papel en el trabajo diario."
+    },
+    {
+     "type": "mc",
+     "q": "'is reported to have examined more chest X-rays…' is an example of…",
+     "options": [
+      "a causative",
+      "a reporting passive with a perfect infinitive",
+      "a mixed conditional",
+      "a cleft sentence"
+     ],
+     "answer": 1,
+     "explain_es": "'is reported to have examined': pasiva de reporte + infinitivo perfecto (acción anterior)."
+    },
+    {
+     "type": "mc",
+     "q": "What, according to paragraph 2, is a major potential benefit in regions with few specialists?",
+     "options": [
+      "Cheaper scanners",
+      "Much faster assessment of scans",
+      "More specialists trained",
+      "Fewer patients needing scans"
+     ],
+     "answer": 1,
+     "explain_es": "\"allow patients to have their scans assessed within hours rather than weeks\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why are retrospective studies described as 'a poor guide'?",
+     "options": [
+      "They use too few images",
+      "They do not reflect the varied conditions of real hospitals",
+      "They are carried out by companies",
+      "They are never published"
+     ],
+     "answer": 1,
+     "explain_es": "Las condiciones 'messy' de un hospital real difieren del laboratorio."
+    },
+    {
+     "type": "mc",
+     "q": "What did the lung-condition system turn out to be partly detecting?",
+     "options": [
+      "The disease itself",
+      "The type of scanner, which correlated with severity",
+      "The age of the patients",
+      "Errors made by radiologists"
+     ],
+     "answer": 1,
+     "explain_es": "\"relying in part on the type of scanner used\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'not ... so much as' is used to…",
+     "options": [
+      "compare two equal things",
+      "correct one description with a more accurate one",
+      "express a condition",
+      "add an example"
+     ],
+     "answer": 1,
+     "explain_es": "'Not A so much as B' = no tanto A como B: corrige la descripción."
+    },
+    {
+     "type": "tf",
+     "q": "The writer states that bias in training data is now always checked before approval.",
+     "answer": "F",
+     "explain_es": "\"it remains unclear how consistently this is done\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Developers are being urged to have their training data ____ for imbalances. (1 word)",
+     "answer": "audited",
+     "accept": [
+      "checked"
+     ],
+     "explain_es": "Causativa 'have + objeto + participio': \"to have their training data audited\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the radiologist's main point in paragraph 6?",
+     "options": [
+      "The software makes too many mistakes",
+      "Decisions after detection require human judgement and accountability",
+      "She would prefer the software to be removed",
+      "Families trust machines more than doctors"
+     ],
+     "answer": 1,
+     "explain_es": "\"it is not responsible for what happens next\"."
+    },
+    {
+     "type": "tf",
+     "q": "At present, responsibility for a missed diagnosis would seem to lie with the doctor.",
+     "answer": "T",
+     "explain_es": "\"At present, the answer would seem to be the doctor\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 8.",
+     "options": [
+      "Should patients be told?",
+      "The cost of blood analysers",
+      "Why ethicists agree",
+      "How to calculate a dose"
+     ],
+     "answer": 0,
+     "explain_es": "Debate sobre informar a los pacientes cuando interviene un algoritmo."
+    },
+    {
+     "type": "tf",
+     "q": "Most patients surveyed said they would want to be told about AI involvement.",
+     "answer": "NG",
+     "explain_es": "No se menciona ninguna encuesta a pacientes."
+    },
+    {
+     "type": "mc",
+     "q": "Which expression in paragraph 3 is used to hedge a claim?",
+     "options": [
+      "It would appear",
+      "are generally considered",
+      "Both of these",
+      "Neither of these"
+     ],
+     "answer": 2,
+     "explain_es": "'It would appear' y 'are generally considered' suavizan las afirmaciones (lenguaje de cautela académica)."
+    },
+    {
+     "type": "mc",
+     "q": "What is the purpose of the radiologist's precaution described at the end?",
+     "options": [
+      "To speed up her work",
+      "To keep her own judgement sharp and independent",
+      "To hide the software from patients",
+      "To test the software for errors"
+     ],
+     "answer": 1,
+     "explain_es": "Ve las sugerencias solo después de formarse su opinión: \"keeping my eye in\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-5-2",
+   "title": "What Your Spit Says About Your Cousins",
+   "level": "C2",
+   "genre": "essay",
+   "topic": "Genetics & Privacy",
+   "emoji": "🧬",
+   "words": 807,
+   "paragraphs": [
+    "It has never been easier to have your genome read. For the price of a pair of trainers, a company will post you a small plastic tube; you spit into it, send it back, and a few weeks later receive an account of your ancestry, your likely tolerance for caffeine and, if you pay a little more, your predisposition to certain diseases. Millions of people have done so, and the practice is widely regarded as a harmless diversion, somewhere between a horoscope and a family tree. I want to suggest that this view is, at the very least, incomplete.",
+    "The difficulty begins with a fact about genetics that is easily overlooked. Your DNA is not only yours. You share roughly half of it with each parent and each sibling, a quarter with each grandparent, and smaller but still identifiable portions with cousins you may never have met. When you have your sample analysed, you are therefore disclosing information about dozens of other people, none of whom has been asked for consent. The decision is presented as a personal one, but its consequences are, by their nature, collective.",
+    "This might seem an abstract concern, were it not for the uses to which genetic databases have already been put. In several countries, investigators are known to have identified suspects in long-unsolved crimes by uploading DNA from a crime scene to genealogy websites and searching for partial matches among the suspect's relatives. The relatives themselves had not been accused of anything; they had simply submitted samples out of curiosity about their heritage. Whatever one thinks of the outcome in particular cases, it is difficult to argue that those who took part did so on the understanding that their data might be used in this way.",
+    "Defenders of the industry point out, reasonably enough, that most companies now ask customers whether they wish their data to be available for law enforcement searches, and that many customers say yes. They also note that genetic information has contributed to important medical research, and that participants are often motivated by a genuine wish to help. Both points have merit. Yet consent obtained through a box ticked at the end of a lengthy online form is, it could be argued, a rather thin form of agreement, particularly when the implications extend to people who never saw the form at all.",
+    "There are, moreover, questions about permanence. A password that has been stolen can be changed; a genome cannot. Data that is held securely today may be sold, merged or leaked tomorrow, should the company that holds it be acquired, go bankrupt or suffer a breach. Several firms in the sector are reported to have been in financial difficulty in recent years, and it is not always clear what becomes of their databases when they change hands. Customers who had their samples processed a decade ago may have no idea where their information currently resides.",
+    "It would be wrong to suggest that the risks are purely hypothetical, but equally wrong to exaggerate them. Most people who take a genetic test will experience nothing worse than a mildly surprising revelation about their great-grandparents. Some will learn things they would have preferred not to know, such as an unexpected half-sibling or a parent who is not, biologically speaking, a parent. And a smaller number may find that the information has consequences they did not foresee, whether in a police investigation, an insurance application or a family dispute.",
+    "What, then, might a more responsible approach look like? One possibility is regulatory: clearer rules about how genetic data may be stored, shared and sold, with meaningful penalties for misuse. Another is cultural. We might come to regard the decision to have one's DNA tested less as a private purchase and more as something to be discussed, at least with close relatives, beforehand. This would not be a requirement, still less a veto, but a recognition that the information one is about to release is not entirely one's own.",
+    "I am not arguing that nobody should take these tests. The curiosity that drives people to them is understandable, and the pleasure of discovering a forgotten branch of the family is real. I took one myself, some years ago, and had the results explained to me by a genetic counsellor, which I would recommend to anyone considering it. But I did so without thinking of my cousins, and I suspect that is true of most customers. It is that omission, rather than the test itself, that seems to me worth reconsidering.",
+    "The language used to market these products speaks of discovery, of finding out who you really are. The more accurate message might be rather less flattering: that who you are is inseparable from who they are, and that what you choose to reveal about yourself, you are also revealing about them."
+   ],
+   "glossary": [
+    [
+     "trainers",
+     "zapatillas deportivas"
+    ],
+    [
+     "predisposition",
+     "predisposición"
+    ],
+    [
+     "diversion",
+     "entretenimiento, pasatiempo"
+    ],
+    [
+     "sibling",
+     "hermano/a"
+    ],
+    [
+     "to disclose",
+     "revelar, divulgar"
+    ],
+    [
+     "collective",
+     "colectivo"
+    ],
+    [
+     "long-unsolved",
+     "sin resolver desde hace tiempo"
+    ],
+    [
+     "partial match",
+     "coincidencia parcial"
+    ],
+    [
+     "law enforcement",
+     "fuerzas del orden"
+    ],
+    [
+     "to have merit",
+     "tener sus méritos, ser válido"
+    ],
+    [
+     "thin (agreement)",
+     "endeble, poco sólido"
+    ],
+    [
+     "breach",
+     "brecha (de seguridad)"
+    ],
+    [
+     "to change hands",
+     "cambiar de dueño"
+    ],
+    [
+     "to reside",
+     "residir, estar alojado"
+    ],
+    [
+     "veto",
+     "veto"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does the writer characterise the popular view of genetic tests in paragraph 1?",
+     "options": [
+      "As dangerous and irresponsible",
+      "As a harmless form of entertainment",
+      "As a serious medical procedure",
+      "As a scientific breakthrough"
+     ],
+     "answer": 1,
+     "explain_es": "\"widely regarded as a harmless diversion, somewhere between a horoscope and a family tree\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: It has never been easier to have your ____ read. (1 word)",
+     "answer": "genome",
+     "accept": [],
+     "explain_es": "Causativa: \"to have your genome read\" (otro lo hace por ti)."
+    },
+    {
+     "type": "mc",
+     "q": "What is the 'fact about genetics that is easily overlooked'?",
+     "options": [
+      "DNA changes over time",
+      "Genetic information is shared with relatives",
+      "Tests are often inaccurate",
+      "Ancestry results are guesses"
+     ],
+     "answer": 1,
+     "explain_es": "\"Your DNA is not only yours.\""
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'by their nature' means…",
+     "options": [
+      "naturally occurring",
+      "inherently",
+      "in the countryside",
+      "occasionally"
+     ],
+     "answer": 1,
+     "explain_es": "'By their nature' = por su propia naturaleza, intrínsecamente."
+    },
+    {
+     "type": "mc",
+     "q": "'This might seem an abstract concern, were it not for the uses…' The structure means…",
+     "options": [
+      "If it were not for these uses, the concern might seem abstract",
+      "The concern was abstract until recently",
+      "The uses are abstract",
+      "Nobody knows how the data is used"
+     ],
+     "answer": 0,
+     "explain_es": "Condicional invertida 'were it not for' = si no fuera por."
+    },
+    {
+     "type": "mc",
+     "q": "What point does the crime-investigation example illustrate?",
+     "options": [
+      "Genealogy websites are run by the police",
+      "Data can be used in ways contributors did not anticipate",
+      "Most criminals have taken genetic tests",
+      "Investigators should not solve old crimes"
+     ],
+     "answer": 1,
+     "explain_es": "Los familiares no esperaban que sus datos se usaran así."
+    },
+    {
+     "type": "tf",
+     "q": "The writer firmly condemns the outcome of every such police investigation.",
+     "answer": "F",
+     "explain_es": "\"Whatever one thinks of the outcome in particular cases\": no juzga los resultados."
+    },
+    {
+     "type": "mc",
+     "q": "How does the writer treat the industry's defence in paragraph 4?",
+     "options": [
+      "Dismisses it entirely",
+      "Accepts its points but questions the quality of consent",
+      "Accepts it without reservation",
+      "Ignores it"
+     ],
+     "answer": 1,
+     "explain_es": "\"Both points have merit. Yet consent ... is, it could be argued, a rather thin form of agreement\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer contrast a password with a genome?",
+     "options": [
+      "To show genomes are harder to steal",
+      "To stress that genetic data cannot be changed once exposed",
+      "To recommend stronger passwords",
+      "To explain how breaches happen"
+     ],
+     "answer": 1,
+     "explain_es": "\"A password that has been stolen can be changed; a genome cannot.\""
+    },
+    {
+     "type": "tf",
+     "q": "Several genetics companies are reported to have had financial problems.",
+     "answer": "T",
+     "explain_es": "\"Several firms in the sector are reported to have been in financial difficulty\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A sense of proportion",
+      "Insurance companies ban tests",
+      "The dangers of half-siblings",
+      "Why tests are inaccurate"
+     ],
+     "answer": 0,
+     "explain_es": "Ni riesgos puramente hipotéticos ni exagerados: equilibra la valoración."
+    },
+    {
+     "type": "mc",
+     "q": "What 'cultural' change does the writer propose?",
+     "options": [
+      "Banning tests for under-18s",
+      "Discussing a test with close relatives beforehand",
+      "Giving relatives a legal veto",
+      "Publishing all results openly"
+     ],
+     "answer": 1,
+     "explain_es": "\"something to be discussed, at least with close relatives, beforehand\"; explícitamente \"not ... a veto\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has never taken a genetic test.",
+     "answer": "F",
+     "explain_es": "\"I took one myself, some years ago\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's main purpose in the essay as a whole?",
+     "options": [
+      "To persuade readers never to take genetic tests",
+      "To encourage readers to consider the collective dimension of their choice",
+      "To advertise genetic counselling",
+      "To explain how DNA is analysed"
+     ],
+     "answer": 1,
+     "explain_es": "\"I am not arguing that nobody should take these tests\"; lo que propone reconsiderar es la 'omission' de pensar en los demás."
+    }
+   ]
+  }
+ ]
+}

@@ -1,119 +1,224 @@
+import type { CSSProperties } from 'react';
+
 /**
- * Highlighter colors for "Mis notas". A note stays plain text: a highlighted
- * stretch is wrapped in invisible characters (a start mark per color and one
- * end mark), so the textarea, the character count, search and the cloud copy
- * keep working unchanged, and the marks take no room on screen.
+ * Formatting for "Mis notas": highlighter colours, bold and italics. A note
+ * stays plain text: formatted stretches are wrapped in invisible marker
+ * characters, so the character count, search, titles and the cloud copy keep
+ * working unchanged, and the marks take no room on screen.
+ *
+ * - Colour: a start mark per colour (U+2061–U+2064) and one end mark (U+2060).
+ * - Bold: U+206A on / U+206B off. Italic: U+206C on / U+206D off. These are
+ *   deprecated, default-ignorable format characters (invisible everywhere, no
+ *   effect in modern text rendering), so a note leaking somewhere unstripped
+ *   still reads clean.
+ *
+ * The marks are independent toggles (a state machine, not nested tags), so
+ * bold, italic and a colour combine and overlap freely. An orphan end mark is
+ * harmless; an unclosed start mark lasts to the end of the note.
  */
 export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink';
 
 export const HIGHLIGHTS: { id: HighlightColor; label: string; mark: string; bg: string }[] = [
-  { id: 'yellow', label: 'Amarillo', mark: '⁡', bg: 'color-mix(in srgb, #ffd60a 55%, transparent)' },
-  { id: 'green', label: 'Verde', mark: '⁢', bg: 'color-mix(in srgb, #30d158 40%, transparent)' },
-  { id: 'blue', label: 'Azul', mark: '⁣', bg: 'color-mix(in srgb, #64d2ff 45%, transparent)' },
-  { id: 'pink', label: 'Rosa', mark: '⁤', bg: 'color-mix(in srgb, #ff6fb5 40%, transparent)' },
+  { id: 'yellow', label: 'Amarillo', mark: '\u2061', bg: 'color-mix(in srgb, #ffd60a 55%, transparent)' },
+  { id: 'green', label: 'Verde', mark: '\u2062', bg: 'color-mix(in srgb, #30d158 40%, transparent)' },
+  { id: 'blue', label: 'Azul', mark: '\u2063', bg: 'color-mix(in srgb, #64d2ff 45%, transparent)' },
+  { id: 'pink', label: 'Rosa', mark: '\u2064', bg: 'color-mix(in srgb, #ff6fb5 40%, transparent)' },
 ];
-export const END_MARK = '⁠';
+export const END_MARK = '\u2060';
+export const BOLD_ON = '\u206A';
+export const BOLD_OFF = '\u206B';
+export const ITALIC_ON = '\u206C';
+export const ITALIC_OFF = '\u206D';
 
 const START = new Map(HIGHLIGHTS.map((h) => [h.mark, h]));
-const ANY_MARK = /[⁠-⁤]/g;
+const BG = new Map(HIGHLIGHTS.map((h) => [h.id, h.bg]));
+// U+2065 (unassigned, default-ignorable) is stripped too, in case it ever shows up.
+const ANY_MARK = /[\u2060-\u2065\u206A-\u206D]/g;
 
+/** The note as plain text (all formatting marks dropped). */
 export const stripHighlights = (s: string) => s.replace(ANY_MARK, '');
+export const stripMarks = stripHighlights;
+export const isHighlightColor = (c: unknown): c is HighlightColor => typeof c === 'string' && BG.has(c as HighlightColor);
 
-export interface Segment {
-  text: string;
+export interface Fmt {
   color: HighlightColor | null;
+  bold: boolean;
+  italic: boolean;
 }
 
-/** Splits a note into plain and highlighted stretches (marks dropped). */
+export interface Segment extends Fmt {
+  text: string;
+}
+
+export const PLAIN: Fmt = { color: null, bold: false, italic: false };
+const sameFmt = (a: Fmt, b: Fmt) => a.color === b.color && a.bold === b.bold && a.italic === b.italic;
+const fmtOf = (g: Fmt): Fmt => ({ color: g.color, bold: g.bold, italic: g.italic });
+
+/** Splits a note into stretches of the same formatting (marks dropped, empty stretches skipped). */
 export function segments(s: string): Segment[] {
   const out: Segment[] = [];
-  let color: HighlightColor | null = null;
+  let f: Fmt = { ...PLAIN };
   let buf = '';
   const flush = () => {
-    if (buf) out.push({ text: buf, color });
+    if (!buf) return;
+    const last = out[out.length - 1];
+    if (last && sameFmt(last, f)) last.text += buf;
+    else out.push({ text: buf, ...f });
     buf = '';
   };
   for (const ch of s) {
     const h = START.get(ch);
-    if (h) {
+    let next: Fmt | null = null;
+    if (h) next = { ...f, color: h.id };
+    else if (ch === END_MARK) next = { ...f, color: null };
+    else if (ch === BOLD_ON) next = { ...f, bold: true };
+    else if (ch === BOLD_OFF) next = { ...f, bold: false };
+    else if (ch === ITALIC_ON) next = { ...f, italic: true };
+    else if (ch === ITALIC_OFF) next = { ...f, italic: false };
+    else if (ch === '\u2065') next = f;
+    if (next) {
       flush();
-      color = h.id;
-    } else if (ch === END_MARK) {
-      flush();
-      color = null;
+      f = next;
     } else buf += ch;
   }
   flush();
   return out;
 }
 
-/** The color in force at a position of the raw text (null outside highlights). */
-function colorAt(s: string, pos: number): HighlightColor | null {
-  let color: HighlightColor | null = null;
-  for (let i = 0; i < pos && i < s.length; i++) {
-    const h = START.get(s[i]!);
-    if (h) color = h.id;
-    else if (s[i] === END_MARK) color = null;
-  }
-  return color;
-}
-
 const markOf = (c: HighlightColor) => HIGHLIGHTS.find((h) => h.id === c)!.mark;
 
+/** The canonical marked text of a list of stretches (what segments() reads back). */
+export function serialize(segs: Segment[]): string {
+  let out = '';
+  let cur: Fmt = PLAIN;
+  for (const g of segs) {
+    if (!g.text) continue;
+    if (cur.color && cur.color !== g.color) out += END_MARK;
+    if (cur.bold && !g.bold) out += BOLD_OFF;
+    if (cur.italic && !g.italic) out += ITALIC_OFF;
+    if (g.color && g.color !== cur.color) out += markOf(g.color);
+    if (g.bold && !cur.bold) out += BOLD_ON;
+    if (g.italic && !cur.italic) out += ITALIC_ON;
+    out += g.text;
+    cur = g;
+  }
+  if (cur.color) out += END_MARK;
+  if (cur.bold) out += BOLD_OFF;
+  if (cur.italic) out += ITALIC_OFF;
+  return out;
+}
+
+/** Drops empty stretches and merges neighbours with the same formatting. */
+function merge(segs: Segment[]): Segment[] {
+  const out: Segment[] = [];
+  for (const g of segs) {
+    if (!g.text) continue;
+    const last = out[out.length - 1];
+    if (last && sameFmt(last, g)) last.text += g.text;
+    else out.push({ ...g });
+  }
+  return out;
+}
+
+/** Stretches inside the plain-text range [a, b). */
+function sliceSegs(segs: Segment[], a: number, b: number): Segment[] {
+  const out: Segment[] = [];
+  let pos = 0;
+  for (const g of segs) {
+    const end = pos + g.text.length;
+    const s = Math.max(a, pos);
+    const e = Math.min(b, end);
+    if (e > s) out.push({ ...g, text: g.text.slice(s - pos, e - pos) });
+    pos = end;
+  }
+  return out;
+}
+
+const plainLen = (segs: Segment[]) => segs.reduce((n, g) => n + g.text.length, 0);
+
+/** Length of the visible text. */
+export const plainLength = (s: string) => stripHighlights(s).length;
+
+/** The marked text of the plain-text range [a, b) (for copying with its formatting). */
+export function sliceMarked(s: string, a: number, b: number): string {
+  return serialize(sliceSegs(segments(s), a, b));
+}
+
+/** Applies a formatting patch (e.g. { bold: true } or { color: null }) to the plain-text range [a, b). */
+export function formatRange(s: string, a: number, b: number, patch: Partial<Fmt>): string {
+  if (b < a) [a, b] = [b, a];
+  const segs = segments(s);
+  const total = plainLen(segs);
+  const head = sliceSegs(segs, 0, a);
+  const mid = sliceSegs(segs, a, b).map((g) => ({ ...g, ...patch }));
+  const tail = sliceSegs(segs, b, total);
+  return serialize(merge([...head, ...mid, ...tail]));
+}
+
+/** Replaces the plain-text range [a, b) with `insert` (plain text taking `fmt`, or formatted stretches). */
+export function replaceRange(s: string, a: number, b: number, insert: string | Segment[], fmt: Fmt = fmtAt(s, a)): string {
+  if (b < a) [a, b] = [b, a];
+  const segs = segments(s);
+  const total = plainLen(segs);
+  const ins = typeof insert === 'string' ? [{ text: insert, ...fmtOf(fmt) }] : insert;
+  return serialize(merge([...sliceSegs(segs, 0, a), ...ins, ...sliceSegs(segs, b, total)]));
+}
+
+/** The formatting new text typed at plain offset `pos` takes: that of the character before it (or after, at the start). */
+export function fmtAt(s: string, pos: number): Fmt {
+  const segs = segments(s);
+  let p = 0;
+  let prev: Fmt | null = null;
+  for (const g of segs) {
+    const end = p + g.text.length;
+    if (pos > p && pos <= end) return fmtOf(g);
+    if (pos <= p) return prev ?? fmtOf(g);
+    prev = g;
+    p = end;
+  }
+  return prev ? fmtOf(prev) : { ...PLAIN };
+}
+
+/** Whether every visible character of [a, b) is bold (or italic). Line breaks alone don't count. */
+export function rangeAll(s: string, a: number, b: number, key: 'bold' | 'italic'): boolean {
+  const part = sliceSegs(segments(s), Math.min(a, b), Math.max(a, b));
+  const visible = part.filter((g) => /\S/.test(g.text));
+  const check = visible.length ? visible : part;
+  return check.length > 0 && check.every((g) => g[key]);
+}
+
+/** Inline style of a formatted stretch (shared by the editor and read-only renderings). */
+export function segStyle(g: Fmt): CSSProperties {
+  const st: CSSProperties = {};
+  if (g.color) {
+    st.background = BG.get(g.color);
+    st.borderRadius = 3;
+    st.WebkitBoxDecorationBreak = 'clone';
+    st.boxDecorationBreak = 'clone';
+  }
+  if (g.bold) st.fontWeight = 700;
+  if (g.italic) st.fontStyle = 'italic';
+  return st;
+}
+
 /**
- * Applies `color` (or removes highlighting with null) to the raw range
- * [start, end), keeping the highlights around it intact. Returns the new text
- * and the range of the same characters in it.
+ * Compatibility helper (raw offsets, as in a textarea holding the marked text):
+ * highlights raw range [start, end) and returns the new text and the range of
+ * the same characters in it.
  */
 export function applyHighlight(s: string, start: number, end: number, color: HighlightColor | null): { text: string; start: number; end: number } {
   if (end < start) [start, end] = [end, start];
-  const before = colorAt(s, start);
-  const after = colorAt(s, end);
-  const head = s.slice(0, start);
-  const mid = stripHighlights(s.slice(start, end));
-  const tail = s.slice(end);
-  let open = '';
-  let close = '';
-  // Close the highlight the selection starts inside, and reopen the one it ends inside.
-  if (before) open += END_MARK;
-  if (color) {
-    open += markOf(color);
-    close += END_MARK;
-  }
-  if (after) close += markOf(after);
-  // Sentinels around the selection survive tidy() and give its new position.
-  const raw = tidy(head + open + '\uE000' + mid + '\uE001' + close + tail);
-  const a = raw.indexOf('\uE000');
-  const b = raw.indexOf('\uE001') - 1;
-  return { text: raw.replace(/[\uE000\uE001]/g, ''), start: a, end: b };
+  const a = stripHighlights(s.slice(0, start)).length;
+  const b = stripHighlights(s.slice(0, end)).length;
+  const text = formatRange(s, a, b, { color });
+  const rawAt = (plain: number) => {
+    let n = 0;
+    for (let i = 0; i < text.length; i++) {
+      if (n === plain && !ANY_MARK_ONE.test(text[i]!)) return i;
+      if (!ANY_MARK_ONE.test(text[i]!)) n++;
+    }
+    return text.length;
+  };
+  return { text, start: rawAt(a), end: rawAt(b) };
 }
-
-/** Drops empty highlights and redundant marks left by edits. */
-function tidy(s: string): string {
-  let out = '';
-  let color: string | null = null;
-  let pending: string | null = null; // a start mark waiting for its first character
-  for (const ch of s) {
-    if (START.has(ch)) {
-      pending = ch;
-      continue;
-    }
-    if (ch === END_MARK) {
-      if (pending) pending = null;
-      else if (color) {
-        out += END_MARK;
-        color = null;
-      }
-      continue;
-    }
-    if (pending && pending !== color) {
-      if (color) out += END_MARK;
-      out += pending;
-      color = pending;
-    }
-    pending = null;
-    out += ch;
-  }
-  if (color) out += END_MARK;
-  return out;
-}
+const ANY_MARK_ONE = /[⁠-⁥⁪-⁭]/;

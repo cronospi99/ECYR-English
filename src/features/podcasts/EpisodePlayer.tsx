@@ -1,6 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { Pause, Play, RotateCcw, RotateCw } from 'lucide-react';
 import { Spinner } from '@/components/ui/Misc';
+import { SeekBar } from '@/components/learning/AudioScrubber';
 import { fmtClock, getPosition, savePosition, type PodcastEpisode } from '@/lib/podcasts';
 
 export interface PlayerHandle {
@@ -71,8 +72,6 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
     if (a) a.currentTime = Math.min(Math.max(0, a.currentTime + s), a.duration || Infinity);
   };
 
-  const pct = d ? Math.min(100, (t / d) * 100) : 0;
-
   return (
     <div>
       <audio
@@ -118,6 +117,17 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
       <div className="flex items-center gap-2 sm:gap-3">
         <button
           type="button"
+          onClick={() => skip(-5)}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20"
+          aria-label="Retroceder 5 segundos"
+        >
+          <span className="relative flex items-center justify-center">
+            <RotateCcw size={20} />
+            <span className="absolute text-[7.5px] font-bold">5</span>
+          </span>
+        </button>
+        <button
+          type="button"
           onClick={() => skip(-10)}
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20"
           aria-label="Retroceder 10 segundos"
@@ -161,25 +171,18 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
         </select>
       </div>
       <div className="mt-4">
-        <input
-          type="range"
-          min={0}
-          max={Math.max(1, Math.round(d))}
-          step={1}
-          value={Math.round(t)}
-          onChange={(e) => {
-            const v = Number(e.target.value);
+        <SeekBar
+          time={t}
+          duration={d}
+          tone="onColor"
+          label="Posición del episodio"
+          onToggle={toggle}
+          onSeek={(v) => {
             setT(v);
             if (audio.current) audio.current.currentTime = v;
           }}
-          aria-label="Posición del episodio"
-          aria-valuetext={`${fmtClock(t)} de ${fmtClock(d)} (${Math.round(pct)}%)`}
-          className="block w-full cursor-pointer accent-white"
+          right={<span>{d ? `-${fmtClock(Math.max(0, d - t))}` : ''}</span>}
         />
-        <div className="mt-1.5 flex justify-between text-[12px] font-medium tabular-nums opacity-90">
-          <span>{fmtClock(t)}</span>
-          <span>{d ? `-${fmtClock(Math.max(0, d - t))}` : '--:--'}</span>
-        </div>
       </div>
       {resumed !== null && !error && (
         <div className="mt-2 flex flex-wrap items-center gap-2 text-[12.5px] opacity-95">

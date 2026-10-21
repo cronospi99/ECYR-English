@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
-import { Languages, Play, Square, Volume2 } from 'lucide-react';
-import { canSpeak, castVoices, speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
+import { Languages, Volume2 } from 'lucide-react';
+import { canSpeak, castVoices, speakAs, stopSpeaking } from '@/lib/speech';
+import { sequencePlayer } from '@/lib/tts/seekable';
+import { AudioScrubber, usePlayer, usePlayerState } from '@/components/learning/AudioScrubber';
 import { useSettings } from '@/store/settings';
 import type { CastMember } from '@/content/dialogues';
 import { cn } from '@/lib/cn';
@@ -41,7 +43,6 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
   const { speechRate } = useSettings();
   const reduce = useReducedMotion();
   const [playing, setPlaying] = useState<number | null>(null);
-  const [all, setAll] = useState(false);
   const [showEs, setShowEs] = useState(false);
   const run = useRef(0);
   useEffect(
@@ -69,32 +70,25 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
   };
   const hasEs = lines.some((l) => l.es);
   const speech = canSpeak();
+  // The whole conversation on a scrubbable timeline: the next segment loads while the current one plays.
+  const player = usePlayer(
+    () => sequencePlayer(lines.map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })), { rate: speechRate }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lines, voices, speechRate],
+  );
+  const ps = usePlayerState(player);
+  const allLine = ps.status === 'playing' || ps.status === 'loading' ? ps.line : null;
 
   const stop = () => {
     run.current++;
     stopSpeaking();
     setPlaying(null);
-    setAll(false);
   };
-  const play = (k: number, chain: boolean) => {
+  /** One line on its own (this pauses the whole-conversation player, which keeps its place). */
+  const play = (k: number) => {
     const id = ++run.current;
-    if (k >= lines.length) return stop();
     setPlaying(k);
-    setAll(chain);
-    const done = () => {
-      if (id !== run.current) return;
-      setPlaying(null);
-      setAll(false);
-    };
-    if (chain) {
-      // The whole conversation: the next line loads while the current one plays.
-      speakSequence(
-        lines.slice(k).map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })),
-        { rate: speechRate, onLine: (i) => id === run.current && setPlaying(k + i), onEnd: done },
-      );
-    } else {
-      speakAs(lines[k]!.line, speakerOf(lines[k]!.sp), { rate: speechRate, tier: 'premium', onEnd: done });
-    }
+    speakAs(lines[k]!.line, speakerOf(lines[k]!.sp), { rate: speechRate, tier: 'premium', onEnd: () => id === run.current && setPlaying(null) });
   };
 
   return (
@@ -134,23 +128,25 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
             <Languages size={14} aria-hidden /> {showEs ? 'Ocultar traducción' : 'Ver traducción'}
           </button>
         )}
-        {speech && (
-          <button
-            type="button"
-            onClick={() => (all ? stop() : play(0, true))}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 text-[13px] font-semibold text-white"
-            style={{ background: deep(all ? 'var(--red)' : 'var(--blue)') }}
-          >
-            {all ? <Square size={13} fill="currentColor" aria-hidden /> : <Play size={13} fill="currentColor" aria-hidden />}
-            {all ? 'Parar' : 'Escuchar todo'}
-          </button>
-        )}
       </div>
+      {speech && (
+        <AudioScrubber
+          compact
+          player={player}
+          speeds={[]}
+          label={title ? `Diálogo "${title}": posición` : 'Posición del diálogo'}
+          onPlay={() => {
+            run.current++;
+            setPlaying(null);
+          }}
+          className="mb-3"
+        />
+      )}
       <ol className="space-y-2.5" aria-live="off">
         {lines.map((l, k) => {
           const p = people.get(l.sp)!;
           const right = p.side === 'right';
-          const on = playing === k;
+          const on = (allLine ?? playing) === k;
           const prevSame = k > 0 && lines[k - 1]!.sp === l.sp;
           return (
             <motion.li
@@ -193,7 +189,7 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
                   {speech && (
                     <button
                       type="button"
-                      onClick={() => (on ? stop() : play(k, false))}
+                      onClick={() => (playing === k ? stop() : play(k))}
                       aria-label={`Escuchar a ${l.sp}: ${l.line}`}
                       className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors hover:bg-[var(--fill)]"
                       style={{ color: ink(p.color) }}

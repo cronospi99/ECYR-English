@@ -151,6 +151,51 @@
      "Where did Valentina travel to?"
     ],
     "explain_es": "Pregunta en pasado: Wh- + did + sujeto + verbo base."
+   },
+   {
+    "type": "mc",
+    "q": "How old was Valentina when she met Nicolás?",
+    "options": [
+     "Twenty-seven",
+     "Twenty-three",
+     "Thirty"
+    ],
+    "answer": 1,
+    "explain_es": "El párrafo 1 dice: 'He was twenty-seven years old and she was twenty-three'."
+   },
+   {
+    "type": "tf",
+    "q": "Nicolás travelled to Valentina's city in March.",
+    "answer": "T",
+    "explain_es": "El párrafo 3 dice: 'In March he travelled to her city and he visited her for the first time'."
+   },
+   {
+    "type": "gap",
+    "q": "He told me that Valentina was ____, and he said that he felt afraid.",
+    "answer": "pregnant",
+    "explain_es": "El párrafo 7 dice: 'He told me that Valentina was pregnant, and he said that he felt afraid'."
+   },
+   {
+    "type": "vocab",
+    "q": "In paragraph 8, Valentina's ex-boyfriend was 'a wizard'. A wizard is…",
+    "options": [
+     "a doctor",
+     "a police officer",
+     "a man who says he can do magic"
+    ],
+    "answer": 2,
+    "explain_es": "'Wizard' es brujo o mago: en su pueblo lo llamaban 'el brujildo'."
+   },
+   {
+    "type": "mc",
+    "q": "What did Valentina lie to Nicolás about?",
+    "options": [
+     "The money",
+     "The pregnancy",
+     "Her job"
+    ],
+    "answer": 1,
+    "explain_es": "El párrafo 9 dice: 'Valentina lied to him about the pregnancy'."
    }
   ],
   "words": 519
@@ -306,6 +351,54 @@
      "travelled"
     ],
     "explain_es": "Con un tiempo terminado (last year) se usa past simple, no present perfect."
+   },
+   {
+    "type": "mc",
+    "q": "What had Nicolás not done the night before he first travelled to see Valentina?",
+    "options": [
+     "He had not packed his bag",
+     "He had not slept",
+     "He had not called her"
+    ],
+    "answer": 1,
+    "explain_es": "El párrafo 4 dice: 'He had not slept the night before he travelled to see her for the first time'. (Empacó la maleta dos veces.)"
+   },
+   {
+    "type": "tf",
+    "q": "Valentina confronted Nicolás one evening in April.",
+    "answer": "T",
+    "explain_es": "El párrafo 6 dice: 'She broke one evening in April' y le reclamó que la vigilaba."
+   },
+   {
+    "type": "order",
+    "q": "she was visiting / While she was planning / her ex-boyfriend / a family with him, / .",
+    "answer": "While she was planning a family with him, she was visiting her ex-boyfriend.",
+    "accept": [
+     "She was visiting her ex-boyfriend while she was planning a family with him."
+    ],
+    "explain_es": "Párrafo 9: 'While she was planning a family with him, she was visiting her ex-boyfriend every single week'. Dos acciones en pasado continuo al mismo tiempo."
+   },
+   {
+    "type": "mc",
+    "q": "Why does the narrator say Nicolás's laugh was 'worse than crying'?",
+    "options": [
+     "He thought the situation was funny",
+     "He was happy to be free",
+     "It showed how deeply hurt and shocked he was"
+    ],
+    "answer": 2,
+    "explain_es": "Inferencia: reír al repetir la frase cruel de Valentina (párrafo 10) muestra un dolor tan grande que ya no podía llorar."
+   },
+   {
+    "type": "vocab",
+    "q": "In paragraph 11, a phone case that 'has outlived the entire story' is a case that…",
+    "options": [
+     "has lasted longer than the whole relationship",
+     "is broken",
+     "was very expensive"
+    ],
+    "answer": 0,
+    "explain_es": "'Outlive' es durar más que algo: la funda sigue existiendo aunque la historia terminó."
    }
   ],
   "words": 944
@@ -586,6 +679,54 @@
     "q": "Cleft sentence: ____ was at work that he met Carolina.",
     "answer": "It",
     "explain_es": "Cleft: It was + elemento enfatizado + that…"
+   },
+   {
+    "type": "mc",
+    "q": "How old was Carolina when Lucho met her?",
+    "options": [
+     "Twenty-five",
+     "Thirty-five",
+     "Forty-five"
+    ],
+    "answer": 2,
+    "explain_es": "El párrafo 5 dice: 'She was forty-five, divorced...'."
+   },
+   {
+    "type": "mc",
+    "q": "What does the narrator suggest with 'He should have listened to the sentence instead of to the voice that was saying it'?",
+    "options": [
+     "Carolina had a beautiful singing voice",
+     "Her words showed a serious money problem, but Lucho was charmed by the way she spoke",
+     "Lucho couldn't hear her well"
+    ],
+    "answer": 1,
+    "explain_es": "Inferencia: la frase sobre pagar el mínimo revelaba deudas (párrafo 13), pero Lucho prestó atención a su encanto, no al contenido. 'Should have' + participio expresa un error del pasado."
+   },
+   {
+    "type": "vocab",
+    "q": "In paragraph 16, Carolina's 'whims' are…",
+    "options": [
+     "serious illnesses",
+     "problems at work",
+     "sudden wishes for things she wanted"
+    ],
+    "answer": 2,
+    "explain_es": "'Whim' es un capricho: una cena, un fin de semana, un teléfono nuevo."
+   },
+   {
+    "type": "gap",
+    "q": "After almost two years, Lucho was transferred to ____.",
+    "answer": "Ibagué",
+    "accept": [
+     "Ibague"
+    ],
+    "explain_es": "El párrafo 29 dice: 'After almost two years, Lucho was transferred to Ibagué'."
+   },
+   {
+    "type": "tf",
+    "q": "Silvia has packed her bags several times to leave Lucho.",
+    "answer": "F",
+    "explain_es": "El párrafo 47 dice que ha amenazado con irse cinco veces, pero 'She has never packed a single bag'."
    }
   ],
   "words": 1281

@@ -110,20 +110,27 @@ function halt() {
   deviceStop();
 }
 
-function playUrl(id: number, url: string): Promise<Outcome> {
+/** Plays one clip; `from` starts it that many seconds in, `onMeta` gets its real length. */
+function playUrl(id: number, url: string, o: { from?: number; onMeta?: (duration: number) => void } = {}): Promise<Outcome> {
   const a = audio();
   if (!a || id !== state.id) return Promise.resolve('stopped');
   return new Promise((resolve) => {
     const done = (r: Outcome) => {
       if (settle !== done) return;
       settle = null;
-      a.onended = a.onerror = null;
+      a.onended = a.onerror = a.onloadedmetadata = null;
       resolve(r);
     };
     settle = done;
     a.onended = () => done('ended');
     a.onerror = () => done('failed');
+    a.onloadedmetadata = () => {
+      if (Number.isFinite(a.duration) && a.duration > 0) o.onMeta?.(a.duration);
+      if (o.from && Math.abs(a.currentTime - o.from) > 0.05) a.currentTime = Math.min(o.from, Math.max(0, a.duration - 0.05));
+    };
     a.src = url;
+    // Starting part-way: the position is kept as the start position until the clip's metadata arrives.
+    if (o.from) a.currentTime = o.from;
     // The speed is already in the recording (prosody rate): play it as is.
     a.defaultPlaybackRate = 1;
     a.playbackRate = 1;
@@ -306,18 +313,41 @@ export interface SequenceLine {
 export function speakSequence(lines: SequenceLine[], opts: { rate?: number; tier?: Tier; gapMs?: number; onLine?: (i: number) => void; onEnd?: () => void } = {}): number {
   const id = begin();
   const rate = opts.rate ?? useSettings.getState().speechRate ?? 0.95;
+  void playSegments(id, sequenceSegments(lines, opts.tier), rate, { onLine: opts.onLine, onEnd: opts.onEnd, gapMs: opts.gapMs ?? 220 });
+  return id;
+}
+
+/** The segments of a whole dialogue or track: a distinct natural voice per character (or none, for the device). */
+function sequenceSegments(lines: SequenceLine[], tier: Tier = 'premium'): Segment[] {
   const all = lines.map((l) => l.text).join(' ');
-  const premium = premiumFor(all, opts.tier ?? 'premium');
+  const premium = premiumFor(all, tier);
   const cast = castVoices(lines.flatMap((l) => (l.speaker ? [{ name: l.speaker.name, voice: l.speaker.voice, accent: l.speaker.accent }] : [])));
   const def = defaultPersona();
-  const segs = lines.flatMap((l, i) => {
+  return lines.flatMap((l, i) => {
     const p = l.speaker ? (l.speaker.persona ? getPersona(l.speaker.persona) : cast.get(l.speaker.name)!) : def;
     const device = l.speaker ? speakerDevice(l.speaker) : () => ({ lang: def.lang, voice: pickDeviceVoice(def.lang) });
     return segmentsOf(l.text, premium ? p.edge : null, i, device);
   });
-  void playSegments(id, segs, rate, { onLine: opts.onLine, onEnd: opts.onEnd, gapMs: opts.gapMs ?? 220 });
-  return id;
 }
+
+/**
+ * Building blocks for the seekable player (./seekable.ts), which runs its own
+ * loop over the same segments so it can start any of them part-way through.
+ * Not for general use: play things with speak / speakAs / speakSequence.
+ */
+export const ttsEngine = {
+  begin,
+  setPhase,
+  finish: (id: number) => finish(id),
+  isCurrent: (id: number) => id === state.id,
+  unlock,
+  playUrl,
+  playDevice,
+  sequenceSegments,
+  /** Position (s) of the clip now playing in the shared audio element. */
+  clipTime: () => el?.currentTime ?? 0,
+};
+export type { Segment as TtsSegment };
 
 /** Spanish (tips, instructions) in a Colombian voice. */
 export function speakSpanish(text: string, opts: { rate?: number; gender?: VoiceGender; tier?: Tier; onEnd?: () => void } = {}): number {

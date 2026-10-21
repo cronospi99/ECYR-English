@@ -30,6 +30,7 @@ const extras: Record<CefrLevel, () => Promise<{ default: unknown }>> = {
   B1: () => import('./generated/writing-extra-b1.json'),
   B2: () => import('./generated/writing-extra-b2.json'),
   C1: () => import('./generated/writing-extra-c1.json'),
+  C2: () => import('./generated/writing-extra-c2.json'),
 };
 
 export const writingStorageKey = (level: CefrLevel, n: number, k: number) => (k === 0 ? `ecyr:writing:${level}-${n}` : `ecyr:writing:${level}-${n}-x${k}`);

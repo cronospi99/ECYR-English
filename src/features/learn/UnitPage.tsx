@@ -22,6 +22,7 @@ import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
 import { UnitReadings } from '@/features/practice/UnitReadings';
+import { UnitListenings } from './unit/UnitListening';
 import { AssignButton } from '@/features/tasks/AssignButton';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { unitVisualPlan, type Visual } from '@/content/visuals';
@@ -348,6 +349,10 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
 
       <div className="lg:col-span-2">
         <UnitReadings level={levelId as CefrLevel} unit={u.n} />
+      </div>
+
+      <div className="empty:hidden lg:col-span-2">
+        <UnitListenings level={levelId as CefrLevel} unit={u.n} />
       </div>
 
       {u.dynamics && u.dynamics.length > 0 && (

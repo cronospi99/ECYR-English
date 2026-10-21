@@ -122,6 +122,43 @@
         "q": "My brother fell asleep on the sofa while my mother ____ an old song.",
         "answer": "was singing",
         "explain_es": "El párrafo 4 usa pasado continuo para la acción de fondo: 'while my mother was singing an old song'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does the family live?",
+        "options": [
+          "In Bogotá",
+          "In Bucaramanga",
+          "In Medellín"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'my family was at home in Bucaramanga'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, the father 'lit' the candles. This means he…",
+        "options": [
+          "put them in a drawer",
+          "bought them in a shop",
+          "started a small fire on them to make light"
+        ],
+        "answer": 2,
+        "explain_es": "'Lit' es el pasado de 'light' (encender): prendió las velas para tener luz."
+      },
+      {
+        "type": "gap",
+        "q": "My father told funny ____ about his school days.",
+        "answer": "stories",
+        "accept": [
+          "story"
+        ],
+        "explain_es": "El párrafo 4 dice: 'My father told funny stories about his school days'."
+      },
+      {
+        "type": "tf",
+        "q": "The family turned on the TV when the lights came back.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'nobody wanted to turn on the TV'."
       }
     ]
   },
@@ -248,6 +285,40 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 4 dice: 'At first they weren't interested, but after ten minutes they were laughing and running'."
+      },
+      {
+        "type": "mc",
+        "q": "Why was the street a good place to play?",
+        "options": [
+          "It had a big park",
+          "It was quiet and there weren't many cars",
+          "It was next to the school"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'Our street was quiet, and there weren't many cars, so it was our playground'."
+      },
+      {
+        "type": "tf",
+        "q": "Nobody ever found the writer when they played hide-and-seek.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'I always used to hide behind Doña Rosa's big plant pots, and nobody ever found me'."
+      },
+      {
+        "type": "gap",
+        "q": "She used to give us hot chocolate with ____.",
+        "answer": "cheese",
+        "explain_es": "El párrafo 3 dice: 'She used to give us hot chocolate with cheese'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'Maybe some old games never die' means…",
+        "options": [
+          "old games are dangerous",
+          "some old games are still fun for children today",
+          "children never play outside"
+        ],
+        "answer": 1,
+        "explain_es": "El escritor ve que sus hijos disfrutan el escondite: algunos juegos antiguos siguen vivos."
       }
     ]
   },
@@ -378,6 +449,40 @@
         "q": "They arrived in Villa de Leyva when it was dark.",
         "answer": "T",
         "explain_es": "El párrafo 4 dice: 'We finally got to Villa de Leyva at eight in the evening. It was dark and cold'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Tomás bring for the trip?",
+        "options": [
+          "Coffee",
+          "A hat",
+          "Sandwiches"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'Tomás brought sandwiches and I made coffee'."
+      },
+      {
+        "type": "tf",
+        "q": "They stood next to the road for an hour before somebody helped them.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'We stood next to the road for an hour. Then a farmer came...'."
+      },
+      {
+        "type": "gap",
+        "q": "While we waited, we ate in a small restaurant and ____ a lot of coffee.",
+        "answer": "drank",
+        "explain_es": "El párrafo 3 dice: 'we ate in a small restaurant and drank a lot of coffee'. 'Drink' → 'drank' (irregular)."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, the farmer 'gave us a lift'. This means he…",
+        "options": [
+          "took us in his truck",
+          "gave us some money",
+          "fixed the car"
+        ],
+        "answer": 0,
+        "explain_es": "'Give someone a lift' es llevar a alguien en tu vehículo: los llevó al siguiente pueblo."
       }
     ]
   },
@@ -508,6 +613,40 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo 4 dice: 'it is less friendly. In the past, everybody knew your name.'"
+      },
+      {
+        "type": "mc",
+        "q": "According to the writer, what is the most important question for many people now?",
+        "options": [
+          "Where can I eat?",
+          "Where can I park?",
+          "What is your name?"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 dice: 'Now the most important question for many people is \"Where can I park?\"'."
+      },
+      {
+        "type": "tf",
+        "q": "The traffic is lighter now than in the past.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'The traffic is heavier now'."
+      },
+      {
+        "type": "gap",
+        "q": "There are more cafés, galleries and ____ than before.",
+        "answer": "restaurants",
+        "explain_es": "El párrafo 2 dice: 'there are more cafés, galleries and restaurants'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'rents' are…",
+        "options": [
+          "old shops in the street",
+          "noisy cars",
+          "the money you pay every month to live in a house or flat"
+        ],
+        "answer": 2,
+        "explain_es": "'Rent' es el arriendo: por eso algunos vecinos se mudaron a zonas más baratas."
       }
     ]
   },
@@ -640,6 +779,41 @@
         ],
         "answer": 1,
         "explain_es": "'Proud' es orgulloso: se sentían felices por el buen trabajo."
+      },
+      {
+        "type": "mc",
+        "q": "How many volunteers went to the school?",
+        "options": [
+          "Ten",
+          "Twenty",
+          "Thirty",
+          "Forty"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'thirty volunteers from our company'."
+      },
+      {
+        "type": "tf",
+        "q": "Before the volunteers came, the classrooms were grey and dark.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'the classrooms were grey and dark'."
+      },
+      {
+        "type": "gap",
+        "q": "We used yellow, light blue and ____.",
+        "answer": "green",
+        "explain_es": "El párrafo 3 dice: 'We used yellow, light blue and green'."
+      },
+      {
+        "type": "mc",
+        "q": "What did a little girl say about the new classrooms?",
+        "options": [
+          "'It looks like a rainbow!'",
+          "'It's too dark!'",
+          "'I want to paint too!'"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'A little girl said, \"It looks like a rainbow!\"'."
       }
     ]
   },
@@ -773,6 +947,40 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 4 dice: 'Please send me the correct shoes or return my money'."
+      },
+      {
+        "type": "mc",
+        "q": "What colour are the shoes in the package?",
+        "options": [
+          "Black",
+          "White",
+          "Red"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'the shoes are white, not black'."
+      },
+      {
+        "type": "tf",
+        "q": "Valentina has always recommended the website to her friends.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'I have always recommended your website to my friends'."
+      },
+      {
+        "type": "gap",
+        "q": "I have kept the box and the ____.",
+        "answer": "receipt",
+        "explain_es": "El párrafo 4 dice: 'I have kept the box and the receipt'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'the line went dead' means…",
+        "options": [
+          "the person on the phone was angry",
+          "the music was very loud",
+          "the phone call stopped"
+        ],
+        "answer": 2,
+        "explain_es": "Esperó veinte minutos y luego la llamada se cortó: 'the line went dead'."
       }
     ]
   },
@@ -903,6 +1111,44 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo 4 dice: 'In most places, they are paid for in cash'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 1, food 'stands' are…",
+        "options": [
+          "tall buildings",
+          "people who wait in a line",
+          "small places in the street where people sell food"
+        ],
+        "answer": 2,
+        "explain_es": "'Stand' es un puesto callejero: 'small food stands everywhere'."
+      },
+      {
+        "type": "gap",
+        "q": "The idea came to Mexico about a ____ years ago.",
+        "answer": "hundred",
+        "accept": [
+          "100",
+          "one hundred"
+        ],
+        "explain_es": "El párrafo 2 dice: 'brought to Mexico by immigrants from Lebanon about a hundred years ago'."
+      },
+      {
+        "type": "mc",
+        "q": "What is often put on the top of the spit?",
+        "options": [
+          "An onion",
+          "A whole pineapple",
+          "Corn tortillas"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'A whole pineapple is often put on the top'."
+      },
+      {
+        "type": "tf",
+        "q": "People usually eat tacos al pastor sitting at a table.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'they are eaten standing up next to the stand'."
       }
     ]
   },
@@ -1039,6 +1285,43 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 4 dice: 'I must know all the road signs'."
+      },
+      {
+        "type": "mc",
+        "q": "Why didn't the writer learn to drive when she was young?",
+        "options": [
+          "She was afraid",
+          "She never had time",
+          "She didn't have money"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'I never had time when I was young'."
+      },
+      {
+        "type": "gap",
+        "q": "He also told me that I have to check the ____ every few seconds.",
+        "answer": "mirrors",
+        "accept": [
+          "mirror"
+        ],
+        "explain_es": "El párrafo 2 dice: 'I have to check the mirrors every few seconds'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'I felt terrible' means she felt…",
+        "options": [
+          "very bad",
+          "very happy",
+          "very hungry"
+        ],
+        "answer": 0,
+        "explain_es": "Casi choca con una moto y el profesor tuvo que frenar: se sintió muy mal."
+      },
+      {
+        "type": "tf",
+        "q": "Her husband thinks she is a careful driver.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'My husband says I don't have to worry, because I'm a careful driver'."
       }
     ]
   },
@@ -1169,6 +1452,40 @@
         ],
         "answer": 1,
         "explain_es": "'Torch' (inglés británico) es una linterna."
+      },
+      {
+        "type": "mc",
+        "q": "Which food does the guide recommend?",
+        "options": [
+          "Big pieces of meat",
+          "Fresh fish",
+          "Pasta, rice and tins of tuna"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 recomienda comida ligera: 'like pasta, rice and a few tins of tuna'."
+      },
+      {
+        "type": "tf",
+        "q": "The sun can be strong during the day in the mountains.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'the sun is strong during the day'."
+      },
+      {
+        "type": "gap",
+        "q": "A few bananas and a little ____ are great snacks.",
+        "answer": "chocolate",
+        "explain_es": "El párrafo 3 dice: 'A few bananas and a little chocolate are great snacks'."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 5, why do many people go camping?",
+        "options": [
+          "To meet new friends",
+          "For a little peace and quiet",
+          "To play loud music"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'Many people go camping because they want a little peace and quiet'."
       }
     ]
   },
@@ -1303,6 +1620,40 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo 5 dice: 'All the money goes to the school trip.'"
+      },
+      {
+        "type": "mc",
+        "q": "How many finalists are left?",
+        "options": [
+          "Forty",
+          "Ten",
+          "Four"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'Now only four finalists are left'."
+      },
+      {
+        "type": "tf",
+        "q": "Sofía's song always makes the teachers cry.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'It is a song which always makes the teachers cry!'"
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, Daniela does 'impressions' of people. This means she…",
+        "options": [
+          "takes photos of them",
+          "copies the way they talk and act",
+          "writes songs about them"
+        ],
+        "answer": 1,
+        "explain_es": "Hacer 'impressions' es imitar a alguien; por eso imita al profesor Vargas y hace reír a todos."
+      },
+      {
+        "type": "gap",
+        "q": "Tickets, which cost 5,000 pesos, are on sale in the ____.",
+        "answer": "library",
+        "explain_es": "El párrafo 5 dice: 'Tickets, which cost 5,000 pesos, are on sale in the library'."
       }
     ]
   },
@@ -1430,6 +1781,43 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo 5 dice: 'three stars out of five'."
+      },
+      {
+        "type": "mc",
+        "q": "How much does it cost to download FitStep?",
+        "options": [
+          "Five dollars",
+          "Nothing, it is free",
+          "Fifteen dollars"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'It is free'. Solo las funciones más interesantes cuestan dinero."
+      },
+      {
+        "type": "tf",
+        "q": "Yesterday's challenge was very difficult for the writer.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice que tenía que caminar diez mil pasos 'and I did it easily'."
+      },
+      {
+        "type": "gap",
+        "q": "I got fifteen ____ on the first day!",
+        "answer": "notifications",
+        "accept": [
+          "notification"
+        ],
+        "explain_es": "El párrafo 3 dice: 'I got fifteen notifications on the first day!'"
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'features' are…",
+        "options": [
+          "prices for the app",
+          "messages from friends",
+          "things that the app can do"
+        ],
+        "answer": 2,
+        "explain_es": "'Features' son funciones de la app: hay que pagar por las más interesantes."
       }
     ]
   },
@@ -1557,6 +1945,40 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 5 dice: 'I've never ridden a horse, so that's next.'"
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 1, 'one by one' means…",
+        "options": [
+          "all at the same time",
+          "one after the other",
+          "only one thing"
+        ],
+        "answer": 1,
+        "explain_es": "Hace las cosas de su lista una por una, es decir, una después de otra."
+      },
+      {
+        "type": "tf",
+        "q": "Gloria has said 'I want to go home' on her adventures.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'But I've never said \"I want to go home.\"'"
+      },
+      {
+        "type": "gap",
+        "q": "I was very nervous on the plane, and my hands were ____.",
+        "answer": "cold",
+        "explain_es": "El párrafo 4 dice: 'I was very nervous on the plane, and my hands were cold'."
+      },
+      {
+        "type": "mc",
+        "q": "What kind of music does Gloria's granddaughter love?",
+        "options": [
+          "Salsa",
+          "Classical music",
+          "Rock music"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'My granddaughter loves rock music'."
       }
     ]
   }
