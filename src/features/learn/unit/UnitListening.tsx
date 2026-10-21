@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { Headphones } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
+import { ButtonLink } from '@/components/ui/Button';
 import { useAsync } from '@/hooks/useAsync';
 import { loadUnitListenings } from '@/content/unitListening';
 import type { CefrLevel } from '@/content/types';
@@ -9,14 +11,23 @@ import { TrackCard, TrackPlayer } from '@/features/library/ListeningLibrary';
 /**
  * The unit's own listening tracks as compact cards; one opens the full player
  * in place (scrubbable audio, transcript, questions and dictation). Progress
- * is saved like the library's tracks. Renders nothing when the unit has none.
+ * is saved like the library's tracks. A unit without tracks points to the library.
  */
 export function UnitListenings({ level, unit }: { level: CefrLevel; unit: number }) {
   const { data } = useAsync(() => loadUnitListenings(level, unit), [level, unit]);
   const [openId, setOpenId] = useState<string | null>(null);
   const activity = useProgress((s) => s.activity);
   const top = useRef<HTMLDivElement>(null);
-  if (!data?.length) return null;
+  if (!data) return null;
+  if (!data.length)
+    return (
+      <Card className="flex flex-col items-start gap-3 p-6">
+        <p className="text-label-2 text-[15px]">Esta unidad aún no tiene listenings propios. Practica con la biblioteca de audios de tu nivel.</p>
+        <ButtonLink to="/practice/listening" variant="tinted">
+          <Headphones size={17} /> Ir a la biblioteca de listening
+        </ButtonLink>
+      </Card>
+    );
 
   const open = data.find((t) => t.id === openId);
   const go = (id: string | null) => {

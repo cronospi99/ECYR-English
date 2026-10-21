@@ -318,6 +318,10 @@ export function RichNoteEditor({
   const snapBefore = useRef<Snap | null>(null);
   const inputKind = useRef('other');
   const composing = useRef(false);
+  /** The reconcile right after a composition (its pending format belongs to the composed word). */
+  const compEnded = useRef(false);
+  /** A composition already has its undo step: its later updates join it. */
+  const compOpen = useRef(false);
   /** Bold / italic chosen with a bare caret, applied to what is typed next. */
   const pending = useRef<{ fmt: Fmt; base: string; at: number } | null>(null);
   const [empty, setEmpty] = useState(() => !stripMarks(initial));
@@ -448,11 +452,13 @@ export function RichNoteEditor({
       const kind = inputKind.current;
       const now = Date.now();
       const coalesce =
-        (kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500 && !applied && prevSnap.sel[0] === h.caret && prevSnap.sel[1] === h.caret;
+        compOpen.current ||
+        ((kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500 && !applied && prevSnap.sel[0] === h.caret && prevSnap.sel[1] === h.caret);
       if (!coalesce) {
         h.past.push(prevSnap);
         if (h.past.length > 300) h.past.shift();
       }
+      if (composing.current || compEnded.current) compOpen.current = true;
       h.future = [];
       h.kind = kind;
       h.at = now;
@@ -463,6 +469,8 @@ export function RichNoteEditor({
     }
     snapBefore.current = null;
     if (composing.current) return;
+    compEnded.current = false;
+    compOpen.current = false;
     if (!rerender) {
       // Re-render only when the DOM drifted from the canonical rendering.
       const probe = root.ownerDocument.createElement('div');
@@ -591,10 +599,12 @@ export function RichNoteEditor({
     const onInput = () => reconcile();
     const onCompStart = () => {
       composing.current = true;
+      compOpen.current = false;
       if (!snapBefore.current) snapBefore.current = { text: model.current, sel: getSel() ?? lastSel.current };
     };
     const onCompEnd = () => {
       composing.current = false;
+      compEnded.current = true;
       inputKind.current = 'type';
       // Some browsers fire the last input after compositionend; reconcile once the dust settles.
       requestAnimationFrame(() => reconcile());
