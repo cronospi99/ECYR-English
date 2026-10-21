@@ -145,6 +145,36 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 6: el resultado más importante es social: \"we grew a community\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"exchange it for other products\" (paragraph 3) refer to?",
+        "options": [
+          "the money the family saves",
+          "the extra produce they grow",
+          "the neighbourhood",
+          "the monthly food bill"
+        ],
+        "answer": 1,
+        "explain_es": "'It' se refiere a \"their surplus\", es decir, los productos que les sobran (párrafo 3)."
+      },
+      {
+        "type": "tf",
+        "q": "The workshops teach people how to collect rainwater.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: los talleres enseñan a \"collect rainwater in recycled containers\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 4, what do some researchers believe would happen if thousands of roofs were green?",
+        "options": [
+          "Drains would no longer be needed",
+          "Food prices would fall",
+          "The effect on local temperatures could be measurable",
+          "Concrete buildings would become stronger"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 4: \"the effect on local temperatures could be measurable\"."
       }
     ]
   },
@@ -302,6 +332,36 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo empieza con \"Not everyone was so positive\" y describe los problemas."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'which' in paragraph 1 refer to?",
+        "options": [
+          "the employees",
+          "the results of the trial",
+          "the business forum",
+          "the companies"
+        ],
+        "answer": 1,
+        "explain_es": "\"The results, which were presented at a business forum\": 'which' remite a los resultados."
+      },
+      {
+        "type": "tf",
+        "q": "All of the participating companies had fewer than fifty employees.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: una empresa de logística tenía \"more than two hundred\" empleados."
+      },
+      {
+        "type": "mc",
+        "q": "How many companies have decided to keep the shorter week?",
+        "options": [
+          "Twenty-three",
+          "Two",
+          "Five",
+          "Eighteen"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 6: \"eighteen of the twenty-three companies have decided to keep the shorter week\"."
       }
     ]
   },
@@ -463,6 +523,36 @@
         ],
         "answer": 2,
         "explain_es": "Párrafo 6: \"banning a tool rarely teaches anyone how to use it wisely\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'this' in \"For a few weeks, this seemed to work\" (paragraph 2) refer to?",
+        "options": [
+          "the ban and handwritten work in class",
+          "the chatbot's feedback",
+          "the students' essays",
+          "the writer's anger"
+        ],
+        "answer": 0,
+        "explain_es": "'This' se refiere a la prohibición y a escribir todo a mano en clase, descritos justo antes."
+      },
+      {
+        "type": "tf",
+        "q": "After the feedback activity, students' writing improved faster than in previous years.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"their writing improved more quickly than in previous years\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer invite readers to leave a comment?",
+        "options": [
+          "To complain about her students",
+          "To sell an AI product",
+          "To learn from other teachers' experiences",
+          "To ask for a new job"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 6: quiere saber \"how other teachers are dealing with this\"."
       }
     ]
   },
@@ -610,6 +700,36 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo trata de las pantallas y los dispositivos."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'this pressure' in paragraph 3 refer to?",
+        "options": [
+          "pressure from school",
+          "sleep pressure created by adenosine",
+          "pressure from parents",
+          "the pressure of exams"
+        ],
+        "answer": 1,
+        "explain_es": "En el párrafo 3, la adenosina crea \"sleep pressure\"; 'this pressure' remite a eso."
+      },
+      {
+        "type": "tf",
+        "q": "Doctors often advise families to keep phones out of the bedroom.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"keep phones out of the bedroom\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer suggest in the final sentence of the text?",
+        "options": [
+          "Teenagers usually lie about sleep",
+          "Teenagers' sleep problems may have a real biological cause",
+          "Parents should be stricter",
+          "Schools should never change their timetables"
+        ],
+        "answer": 1,
+        "explain_es": "\"when a teenager says they cannot sleep, they may be telling the truth\": hay una causa biológica real."
       }
     ]
   },
@@ -759,6 +879,36 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo habla del pasado de Cartagena como puerto de esclavizados, que muchos turistas desconocen."
+      },
+      {
+        "type": "mc",
+        "q": "What does Mauricio mean when he says the neighbourhood \"feels emptier\" (paragraph 2)?",
+        "options": [
+          "The houses are falling down",
+          "Few people actually live there now",
+          "There are no tourists at night",
+          "The restaurants have closed"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"At night it is full of visitors, but very few people actually live there\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rising rents have forced some local families to move away from the centre.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: las familias locales \"have been pushed out to areas much further from the centre\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Mauricio's main purpose in his advice about haggling (paragraph 6)?",
+        "options": [
+          "To help tourists save money",
+          "To warn that vendors are dishonest",
+          "To make visitors think about the impact on vendors' lives",
+          "To explain the local currency"
+        ],
+        "answer": 2,
+        "explain_es": "\"For you it's nothing; for them it might be lunch\": quiere que el visitante piense en el vendedor."
       }
     ]
   },
@@ -920,6 +1070,25 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 6: \"it should be one part of your learning, not all of it\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"It sounds childish\" (paragraph 2) refer to?",
+        "options": [
+          "the speech-recognition feature",
+          "the nasal vowel",
+          "the app's design",
+          "being motivated by the streak counter"
+        ],
+        "answer": 3,
+        "explain_es": "'It' remite a la idea de tener miedo de perder la racha (streak counter)."
+      },
+      {
+        "type": "gap",
+        "q": "The writer gives the app a final rating of three and a half ____ out of five.",
+        "answer": "stars",
+        "accept": [],
+        "explain_es": "Párrafo 6: \"three and a half stars out of five\"."
       }
     ]
   },
@@ -1072,6 +1241,36 @@
         "q": "In the end, the family opened the farm to visitors.",
         "answer": "T",
         "explain_es": "Párrafo 7: el letrero dice \"visitors welcome\" y la finca nunca se vendió."
+      },
+      {
+        "type": "mc",
+        "q": "How did Elena feel when her grandfather mentioned her job (paragraph 2)?",
+        "options": [
+          "Embarrassed",
+          "Relieved",
+          "Amused",
+          "Bored"
+        ],
+        "answer": 0,
+        "explain_es": "\"Elena felt her face burn\": se sintió avergonzada."
+      },
+      {
+        "type": "tf",
+        "q": "Elena worked beside her grandfather for about a week.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"For the next week, Elena worked beside him\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the sign at the end of the story suggest?",
+        "options": [
+          "The chocolate company bought the farm",
+          "Elena turned her plan into a business",
+          "Don Aurelio moved to Bogotá",
+          "The farm stopped producing cacao"
+        ],
+        "answer": 1,
+        "explain_es": "El letrero \"Chocolate Aurelio: visitors welcome\" muestra que el plan de Elena se hizo realidad."
       }
     ]
   },
@@ -1233,6 +1432,24 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo trata de la cámara, la luz, el fondo y la ropa: la imagen en pantalla."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer suggest doing if your internet connection is unstable?",
+        "options": [
+          "Cancel the interview",
+          "Use your phone's camera",
+          "Borrow a quieter, more reliable space",
+          "Ask the company to call you"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 2: pedir a un amigo o biblioteca \"a quieter, more reliable space\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer says it is acceptable to ask for a question to be repeated.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"Sorry, could you repeat that?\" es \"perfectly acceptable\"."
       }
     ]
   },
@@ -1398,6 +1615,27 @@
         ],
         "answer": 2,
         "explain_es": "Párrafo 6: \"a programme to protect long-term tenants should be considered\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'This figure' in paragraph 2 refer to?",
+        "options": [
+          "the 70-minute average journey",
+          "the number of minibuses",
+          "the number of respondents",
+          "the night-shift workers"
+        ],
+        "answer": 0,
+        "explain_es": "'This figure' remite a \"an average of 70 minutes\", que ahora es de unos 35."
+      },
+      {
+        "type": "gap",
+        "q": "Household spending on transport has fallen by approximately ____ per cent.",
+        "answer": "15",
+        "accept": [
+          "fifteen"
+        ],
+        "explain_es": "Párrafo 3: \"fallen by approximately 15 per cent\"."
       }
     ]
   },
@@ -1551,6 +1789,33 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo da consejos sencillos para corredores comunes."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"It simply drips off the body\" (paragraph 3) refer to?",
+        "options": [
+          "humid air",
+          "sweat",
+          "the heat",
+          "the body's core temperature"
+        ],
+        "answer": 1,
+        "explain_es": "En el párrafo 3, 'it' remite a \"sweat\", que no puede evaporarse en aire húmedo."
+      },
+      {
+        "type": "gap",
+        "q": "Heatstroke is a medical emergency in which the core temperature rises above ____ degrees.",
+        "answer": "40",
+        "accept": [
+          "forty"
+        ],
+        "explain_es": "Párrafo 4: \"the core temperature rises above 40 degrees\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer warns that drinking too much water can also be dangerous.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"too much water can also be dangerous\"."
       }
     ]
   },
@@ -1702,6 +1967,36 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo presenta las críticas y la respuesta del autor."
+      },
+      {
+        "type": "mc",
+        "q": "What change does the writer describe in paragraph 1?",
+        "options": [
+          "Second-hand shops have become more expensive than new ones",
+          "People once bought used clothes out of necessity but now choose to",
+          "Friends now feel pity for second-hand shoppers",
+          "Second-hand shops have closed in Berlin"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: se pasó de comprar ropa usada \"because they had to\" a hacerlo \"because they want to\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which items does the writer mention as obvious exceptions to buying second-hand?",
+        "options": [
+          "Coats and jackets",
+          "Jeans and shirts",
+          "Underwear, running shoes and certain work clothes",
+          "Vintage pieces"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 6: \"Underwear, running shoes and certain work clothes are obvious exceptions\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to paragraph 4, some low-quality used clothing exported to Latin America ends up as waste.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: gran parte de esa ropa \"ends up as waste\"."
       }
     ]
   },
@@ -1863,6 +2158,24 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo explica cómo su oficio de costurera le permitió espiar."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'It' in \"It was a modest job\" (paragraph 3) refer to?",
+        "options": [
+          "her work as a seamstress",
+          "her childhood",
+          "the patriot cause",
+          "her move to Santafé"
+        ],
+        "answer": 0,
+        "explain_es": "'It' se refiere a su trabajo de costurera, mencionado en la frase anterior."
+      },
+      {
+        "type": "tf",
+        "q": "Some documents suggest that La Pola's real name may have been Apolonia.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: \"her real name may have been Apolonia\"."
       }
     ]
   },
@@ -2024,6 +2337,30 @@
         ],
         "answer": 0,
         "explain_es": "Párrafo 6: \"Before, young people thought their town was boring ... Now some of them want to be journalists\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Hernando Suárez start the podcast project?",
+        "options": [
+          "Young people were not hearing local stories in the format they used",
+          "The radio station was about to close",
+          "The university asked him to",
+          "Older listeners wanted podcasts"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: \"Nobody was telling our own stories in the format they used\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Suárez mean by \"enthusiasm alone doesn't pay the electricity bill\"?",
+        "options": [
+          "The volunteers have lost interest",
+          "The station needs more money, not just good will",
+          "The electricity company is unreliable",
+          "The team should stop producing podcasts"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: con el entusiasmo no basta; necesitan recursos económicos."
       }
     ]
   },
@@ -2362,6 +2699,36 @@
         ],
         "answer": 0,
         "explain_es": "Párrafo 6: los mercados no saben ponerles precio y los políticos los descuidan \"until ... the sponge has been wrung dry\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"they absorb it and release it gradually\" (paragraph 2) refer to?",
+        "options": [
+          "volcanic ash",
+          "rain and fog",
+          "the dry season",
+          "decomposing vegetation"
+        ],
+        "answer": 1,
+        "explain_es": "En el párrafo 2, los suelos absorben \"rain and fog\" y la liberan poco a poco."
+      },
+      {
+        "type": "tf",
+        "q": "Colombia is home to roughly half of the world's páramos.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"Colombia is home to roughly half of the world's páramos\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 4.",
+        "options": [
+          "A plant built for the cold",
+          "The legal response",
+          "Mounting pressures on a fragile ecosystem",
+          "How the sponge works"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 enumera amenazas: agricultura, ganadería, minería y cambio climático."
       }
     ]
   },
@@ -2527,6 +2894,24 @@
         ],
         "answer": 1,
         "explain_es": "\"so far\" indica satisfacción, pero con una prudente reserva sobre el futuro."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 4, who largely compiles the checklists the writer objects to?",
+        "options": [
+          "Experienced travellers",
+          "Marketing departments and algorithms",
+          "Local residents",
+          "Schoolteachers"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: \"a checklist compiled largely by marketing departments and algorithms\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer describes a rainy port city in northern Portugal as a place where he was very happy.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"it rained relentlessly and I have rarely been happier\"."
       }
     ]
   },
@@ -2692,6 +3077,30 @@
         "q": "The exhibition will travel to Medellín after it closes in Bogotá.",
         "answer": "NG",
         "explain_es": "Solo se dice que está abierta hasta marzo; no se mencionan otras sedes."
+      },
+      {
+        "type": "mc",
+        "q": "What practical advice does the reviewer give visitors?",
+        "options": [
+          "Visit on a weekday morning and allow at least two hours",
+          "Book tickets online in advance",
+          "Skip the opening rooms",
+          "Avoid the gift shop"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 5: \"go on a weekday morning and to allow at least two hours\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to the final paragraph, the exhibition suggests that the distinction between art and craft…",
+        "options": [
+          "has always been perfectly clear",
+          "depended mainly on who made things and who decided",
+          "is based on the materials used",
+          "was invented by weavers"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: la distinción \"was never much more than a matter of who was doing the making, and who was doing the deciding\"."
       }
     ]
   },
@@ -3031,6 +3440,24 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 6: su nombre sobrevive sobre todo en la geografía, pero la ecología moderna \"owe something\" a él."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'It' in \"It was entirely characteristic of him\" (paragraph 1) refer to?",
+        "options": [
+          "his habit of stopping to measure and record nature",
+          "his failure to reach the summit",
+          "his altitude sickness",
+          "his age"
+        ],
+        "answer": 0,
+        "explain_es": "'It' remite a detenerse para medir temperatura, presión y anotar plantas e insectos."
+      },
+      {
+        "type": "tf",
+        "q": "A young Charles Darwin took Humboldt's accounts with him aboard the Beagle.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: Darwin \"took them with him aboard the Beagle\"."
       }
     ]
   },
@@ -3196,6 +3623,24 @@
         ],
         "answer": 1,
         "explain_es": "Párrafo 6: \"the most compelling reasons for learning a language were never neurological\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'the pendulum had swung decisively the other way' (paragraph 1) mean?",
+        "options": [
+          "Opinion had moved to the opposite view, seeing bilingualism positively",
+          "Researchers had stopped studying bilingualism",
+          "Bilingual children had fallen further behind",
+          "The early studies had been confirmed"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 1 y 2: se pasó del miedo al bilingüismo a la idea de que daba \"a distinct cognitive advantage\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the writer, the fear that bilingualism causes harm has been comprehensively dismissed.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"the older fear that bilingualism causes harm has been comprehensively dismissed\"."
       }
     ]
   },
@@ -3361,6 +3806,24 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo trata del sentido de pertenencia y de los días de asistencia coordinados."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'This problem' in paragraph 3 refer to?",
+        "options": [
+          "long commuting times",
+          "difficulty separating work from home life",
+          "high stress among office workers",
+          "the lack of promotions"
+        ],
+        "answer": 1,
+        "explain_es": "'This problem' remite a la dificultad de separar trabajo y vida personal mencionada justo antes."
+      },
+      {
+        "type": "tf",
+        "q": "Junior staff reported fewer opportunities for informal learning.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"Junior staff, moreover, reported fewer opportunities for informal learning\"."
       }
     ]
   },
@@ -3520,6 +3983,30 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 6: \"None of this guarantees that the truth will catch up. But it improves the odds\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"It arrives later\" (paragraph 2) refer to?",
+        "options": [
+          "a false story",
+          "a social media study",
+          "a correction",
+          "the original claim"
+        ],
+        "answer": 2,
+        "explain_es": "En el párrafo 2, 'It' remite a \"A correction\", descrita como sobria y menos interesante."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Why myths spread faster",
+          "Lessons for those who correct falsehoods",
+          "The backfire effect revisited",
+          "How memory stores information"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 6 da consejos prácticos para periodistas y verificadores."
       }
     ]
   },
@@ -3687,6 +4174,24 @@
         ],
         "answer": 2,
         "explain_es": "Párrafo 8: las llamadas disminuyeron y \"She did not regret it, or told herself she did not\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'It was, she told the trainees..., the whole point' (paragraph 1) refer to?",
+        "options": [
+          "Speaking words that were never her own",
+          "Interpreting for presidents",
+          "Falling asleep during speeches",
+          "Mentoring trainees"
+        ],
+        "answer": 0,
+        "explain_es": "'It' remite a que ella hablaba pero las palabras nunca eran suyas: la esencia de interpretar."
+      },
+      {
+        "type": "tf",
+        "q": "The mining company executives had arrived that same morning.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: los ejecutivos fueron \"flown in that morning\"."
       }
     ]
   },
@@ -3855,6 +4360,24 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 7: \"install atmospheric collectors ... to measure deposition rates directly over a full year\"."
+      },
+      {
+        "type": "tf",
+        "q": "The lakes sampled were in Colombia and Ecuador at altitudes between 3,600 and 4,700 metres.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: \"fourteen glacial and páramo lakes in Colombia and Ecuador at altitudes ranging from 3,600 to 4,700 metres\"."
+      },
+      {
+        "type": "mc",
+        "q": "What precaution did the authors take to reduce contamination of samples?",
+        "options": [
+          "They worked only at night",
+          "They wore cotton garments and used blank control samples",
+          "They sealed the lakes",
+          "They analysed samples in the field only"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: \"wearing cotton garments and using blank control samples\"."
       }
     ]
   },
@@ -4200,6 +4723,24 @@
         ],
         "answer": 1,
         "explain_es": "Párrafo 6: \"I find I no longer think about it, which is perhaps the most telling result\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer say the Ciclovía had been for him as a driver?",
+        "options": [
+          "Mainly an inconvenience",
+          "His favourite weekend activity",
+          "Completely unknown",
+          "A reason to buy a bicycle"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: \"as a driver I had experienced it chiefly as an inconvenience\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's new bicycle is kept inside his flat at night.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"its replacement now spends its nights in my flat\"."
       }
     ]
   }

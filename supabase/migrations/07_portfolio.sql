@@ -46,7 +46,7 @@ create table if not exists public.portfolio_items (
   description   text
                 constraint portfolio_description_len check (char_length(description) <= 2000),
   level         text
-                constraint portfolio_level check (level is null or level in ('A1','A2','B1','B2','C1')),
+                constraint portfolio_level check (level is null or level in ('A1','A2','B1','B2','C1','C2')),
   skill         text
                 constraint portfolio_skill check (skill is null or skill in ('listening','reading','writing','speaking','grammar','vocabulary')),
   done_at       date,

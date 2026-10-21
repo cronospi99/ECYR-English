@@ -1,6 +1,7 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { animate, useMotionValue, useMotionValueEvent, useReducedMotion } from 'motion/react';
 import { cn } from '@/lib/cn';
+import { CEFR_LEVELS } from '@/content/types';
 
 /**
  * A climber walks the trail up the mountain to `progress` (0–1).
@@ -18,13 +19,8 @@ function trailFrom(x0: number) {
   return `M${a} 288 C${a + span * 0.28} 272 ${a + span * 0.52} 296 ${a + span * 0.74} 284 C${a + span * 0.86} 278 ${a + span * 0.94} 286 62 284 ${TRAIL_TAIL}`;
 }
 
-const CAMPS: { at: number; label: string }[] = [
-  { at: 0, label: 'A1' },
-  { at: 0.2, label: 'A2' },
-  { at: 0.4, label: 'B1' },
-  { at: 0.6, label: 'B2' },
-  { at: 0.8, label: 'C1' },
-];
+/** One camp where each CEFR level starts: each level is an equal stretch of the trail. */
+const CAMPS: { at: number; label: string }[] = CEFR_LEVELS.map((label, i) => ({ at: i / CEFR_LEVELS.length, label }));
 
 /** Sky colours, exported so a wrapper can extend the sky above the drawing. */
 export const SKY_VARS = {

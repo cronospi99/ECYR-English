@@ -130,6 +130,41 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 4 dice: 'Our flat is on the third floor'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does Chloe work?",
+        "options": [
+          "At a school",
+          "At a restaurant",
+          "At a big hospital",
+          "At a football club"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Chloe is a nurse at a big hospital near our flat'."
+      },
+      {
+        "type": "tf",
+        "q": "Chloe's room is next to Valentina's room.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'Her room is next to my room'."
+      },
+      {
+        "type": "gap",
+        "q": "Chloe's favourite things are music and ____.",
+        "answer": "football",
+        "explain_es": "El párrafo 3 dice: 'Her favourite things are music and football'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'Are you free on Sunday?' means…",
+        "options": [
+          "Do you have time on Sunday?",
+          "Is it cheap on Sunday?",
+          "Are you happy on Sunday?"
+        ],
+        "answer": 0,
+        "explain_es": "'Free' aquí significa 'libre, sin planes': Valentina pregunta si su mamá tiene tiempo para visitarlas el domingo."
       }
     ]
   },
@@ -255,6 +290,42 @@
         "q": "In the evening, he ____ (watch) TV or reads about animals.",
         "answer": "watches",
         "explain_es": "Los verbos que terminan en -ch agregan -es con 'he': 'he watches TV'."
+      },
+      {
+        "type": "gap",
+        "q": "Andrés Rincón works at a zoo in ____.",
+        "answer": "Cali",
+        "explain_es": "El párrafo 1 dice: 'Andrés Rincón works at a zoo in Cali'."
+      },
+      {
+        "type": "mc",
+        "q": "What colour is Andrés's uniform?",
+        "options": [
+          "Blue",
+          "Brown",
+          "Green",
+          "White"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'puts on his green uniform'."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés has lunch alone.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'He has lunch at one o'clock with his friends from work'."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Andrés go to bed at nine?",
+        "options": [
+          "He starts work at nine",
+          "He doesn't like TV",
+          "His children go to bed at nine",
+          "He is tired"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'He goes to bed at nine because he is tired!'"
       }
     ]
   },
@@ -383,6 +454,42 @@
         ],
         "answer": 0,
         "explain_es": "'Helmets' son cascos: se usan en la cabeza para protegerse."
+      },
+      {
+        "type": "gap",
+        "q": "The club meets in front of Simón Bolívar ____.",
+        "answer": "Park",
+        "explain_es": "El párrafo 2 dice: 'in front of Simón Bolívar Park'."
+      },
+      {
+        "type": "mc",
+        "q": "Which town outside the city does the club sometimes visit?",
+        "options": [
+          "Villa de Leyva",
+          "La Calera",
+          "Zipaquirá",
+          "Salento"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'We sometimes go to towns outside the city, like La Calera'."
+      },
+      {
+        "type": "tf",
+        "q": "Members sometimes bring their children.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'The members sometimes bring their children'."
+      },
+      {
+        "type": "mc",
+        "q": "Where do the members often have breakfast?",
+        "options": [
+          "At home",
+          "In the park",
+          "At a small café",
+          "At a restaurant in La Calera"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'we often have breakfast together at a small café'."
       }
     ]
   },
@@ -518,6 +625,47 @@
           "'re waiting"
         ],
         "explain_es": "Con 'we' usamos 'are' + verbo -ing. El párrafo 4 dice: 'We are waiting for you'."
+      },
+      {
+        "type": "tf",
+        "q": "Juliana is at home right now.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'I'm at Sofía's birthday party right now'."
+      },
+      {
+        "type": "mc",
+        "q": "What music are people dancing to?",
+        "options": [
+          "Salsa",
+          "Rock",
+          "Pop",
+          "Reggaeton"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'some people are dancing to salsa music'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'The sun is shining' means…",
+        "options": [
+          "it is sunny",
+          "it is raining",
+          "it is night"
+        ],
+        "answer": 0,
+        "explain_es": "'The sun is shining' significa que brilla el sol, es decir, hace sol."
+      },
+      {
+        "type": "mc",
+        "q": "What does Juliana tell Mateo not to forget?",
+        "options": [
+          "His phone",
+          "A present",
+          "A cake",
+          "His jacket"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 dice: 'Don't forget a present!'"
       }
     ]
   },
@@ -652,6 +800,41 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 3 dice: 'There aren't any chairs, so we eat on the sofa!'"
+      },
+      {
+        "type": "gap",
+        "q": "Camila's new apartment is in ____.",
+        "answer": "Barranquilla",
+        "explain_es": "El párrafo 1 dice: 'We are in our new apartment in Barranquilla!'"
+      },
+      {
+        "type": "tf",
+        "q": "There is a new fridge in the kitchen.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'There is a new fridge'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the kitchen?",
+        "options": [
+          "Next to the living room",
+          "Next to the bathroom",
+          "On the balcony",
+          "Under the bedroom"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'The kitchen is next to the living room'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 1, 'boxes everywhere' means there are boxes…",
+        "options": [
+          "in one room",
+          "outside only",
+          "in all places"
+        ],
+        "answer": 2,
+        "explain_es": "'Everywhere' significa 'en todas partes': después de la mudanza hay cajas por todo el apartamento."
       }
     ]
   },
@@ -781,6 +964,44 @@
         "q": "If you see Mango, call ____ on 312 555 0198.",
         "answer": "Isabel",
         "explain_es": "El párrafo 4 dice: 'Call Isabel on 312 555 0198'."
+      },
+      {
+        "type": "gap",
+        "q": "Mango's family lives on Calle 10 in ____.",
+        "answer": "Popayán",
+        "accept": [
+          "Popayan"
+        ],
+        "explain_es": "El párrafo 1 dice: 'We live on Calle 10 in Popayán, near the main square'."
+      },
+      {
+        "type": "tf",
+        "q": "Mango can see very well at night.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'But he can see very well at night'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does the notice ask people to look?",
+        "options": [
+          "In their garden and garage",
+          "In the river",
+          "At the vet",
+          "In the supermarket"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'Please look in your garden and your garage'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'paws' are…",
+        "options": [
+          "a cat's feet",
+          "a cat's ears",
+          "a kind of door"
+        ],
+        "answer": 0,
+        "explain_es": "'Paws' son las patas de un animal: Mango abre puertas 'with his paws'."
       }
     ]
   },
@@ -910,6 +1131,41 @@
           "coffee"
         ],
         "explain_es": "El párrafo 4 dice: 'It says Coffee first!'"
+      },
+      {
+        "type": "gap",
+        "q": "Daniela's raincoat is ____.",
+        "answer": "yellow",
+        "explain_es": "El párrafo 2 dice: 'This is my yellow raincoat'."
+      },
+      {
+        "type": "mc",
+        "q": "Why is the raincoat very useful?",
+        "options": [
+          "It is cheap",
+          "It is a present",
+          "It rains a lot in Manizales",
+          "It is very big"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'It rains a lot there, so this coat is very useful'."
+      },
+      {
+        "type": "tf",
+        "q": "The T-shirt is a present from Daniela's best friend.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'this T-shirt is a present from my best friend'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'comfortable' means…",
+        "options": [
+          "nice to wear",
+          "very old",
+          "very cheap"
+        ],
+        "answer": 0,
+        "explain_es": "'Comfortable' significa cómodo: las botas son viejas, pero se sienten bien al usarlas."
       }
     ]
   },
@@ -1038,6 +1294,41 @@
         ],
         "answer": 0,
         "explain_es": "El párrafo 4 dice: 'The café in the museum was closed'."
+      },
+      {
+        "type": "gap",
+        "q": "The writer visited the museum on Saturday, 12 ____.",
+        "answer": "March",
+        "explain_es": "El encabezado dice: 'Saturday, 12 March'."
+      },
+      {
+        "type": "tf",
+        "q": "It was the writer's first visit to the Gold Museum.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'It was my first visit, and it was fantastic!'"
+      },
+      {
+        "type": "mc",
+        "q": "Who was full of questions?",
+        "options": [
+          "Ana",
+          "Pedro",
+          "Lucía",
+          "The writer"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'Ana was very quiet, but Pedro was full of questions!'"
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'earrings' are…",
+        "options": [
+          "big things you wear on your face",
+          "old coins",
+          "small things you wear on your ears"
+        ],
+        "answer": 2,
+        "explain_es": "'Earrings' son aretes: el texto los da como ejemplo de objetos pequeños de oro."
       }
     ]
   },
@@ -1171,6 +1462,42 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 4 dice: 'Martín stopped to take photos of the birds'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the small town?",
+        "options": [
+          "Near Cuenca, in Ecuador",
+          "Near Quito",
+          "Near Bogotá",
+          "On the coast"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 1 dice: 'a small town in the mountains near Cuenca, in Ecuador'."
+      },
+      {
+        "type": "gap",
+        "q": "On Saturday, they walked to the town and visited the old ____.",
+        "answer": "church",
+        "explain_es": "El párrafo 2 dice: 'they walked to the town and visited the old church'."
+      },
+      {
+        "type": "tf",
+        "q": "Martín and Elena stayed inside on Sunday because of the rain.",
+        "answer": "F",
+        "explain_es": "Se quedaron adentro el sábado por la tarde. El párrafo 4 dice que el domingo 'the sun returned' y montaron en bicicleta."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Martín and Elena go to the mountains?",
+        "options": [
+          "They wanted to visit family",
+          "They wanted to work",
+          "They wanted to buy a house",
+          "They wanted a quiet weekend away from the city"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 1 dice: 'They wanted a quiet weekend away from the city'."
       }
     ]
   },
@@ -1308,6 +1635,45 @@
         ],
         "answer": 1,
         "explain_es": "'Pick up' aquí significa 'recoger' a los niños en la entrada del colegio."
+      },
+      {
+        "type": "gap",
+        "q": "The class is going to visit the National Coffee Park in ____.",
+        "answer": "Quindío",
+        "accept": [
+          "Quindio"
+        ],
+        "explain_es": "El párrafo 1 dice: 'the National Coffee Park in Quindío'."
+      },
+      {
+        "type": "mc",
+        "q": "What are the students going to do after lunch?",
+        "options": [
+          "Make coffee",
+          "Ride the cable car",
+          "Visit Armenia",
+          "Swim"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'After lunch, they are going to ride the cable car'."
+      },
+      {
+        "type": "tf",
+        "q": "The students need a hat and sun cream.",
+        "answer": "T",
+        "explain_es": "El párrafo 5 dice: 'Your child needs a hat, sun cream, water and a snack'."
+      },
+      {
+        "type": "mc",
+        "q": "Who wrote the letter?",
+        "options": [
+          "Ms Herrera, the class teacher",
+          "A guide at the park",
+          "A student in 5B",
+          "The bus driver"
+        ],
+        "answer": 0,
+        "explain_es": "El final de la carta dice: 'Ms Herrera, Class teacher'."
       }
     ]
   },
@@ -1433,6 +1799,44 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 2 dice: 'The camera is better, too, and my photos at night are much nicer now'."
+      },
+      {
+        "type": "gap",
+        "q": "The writer's old phone is a Zeta ____.",
+        "answer": "2",
+        "accept": [
+          "two"
+        ],
+        "explain_es": "El párrafo 1 dice: 'My old phone is a Zeta 2'."
+      },
+      {
+        "type": "tf",
+        "q": "The new phone is lighter than the old phone.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'The new phone is bigger than the old phone, but it is lighter'."
+      },
+      {
+        "type": "mc",
+        "q": "What was the problem with the old phone's battery?",
+        "options": [
+          "It was very heavy",
+          "It was too expensive",
+          "It was dead at lunchtime",
+          "It was very hot"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'With my old phone, the battery was dead at lunchtime!'"
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'brighter' means…",
+        "options": [
+          "with more light",
+          "more expensive",
+          "slower"
+        ],
+        "answer": 0,
+        "explain_es": "'Brighter' es el comparativo de 'bright' (luminoso): la pantalla nueva tiene más luz."
       }
     ]
   },
@@ -1569,6 +1973,42 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 5 dice: 'Serve them with guacamole or cheese'."
+      },
+      {
+        "type": "gap",
+        "q": "Patacones are a popular snack from the Colombian ____.",
+        "answer": "coast",
+        "explain_es": "El párrafo 1 dice: 'a popular snack from the Colombian coast'."
+      },
+      {
+        "type": "mc",
+        "q": "How many pieces do you cut each plantain into?",
+        "options": [
+          "Two",
+          "Three",
+          "Four",
+          "Six"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'cut each plantain into four thick pieces'."
+      },
+      {
+        "type": "mc",
+        "q": "What do you use to press each piece flat?",
+        "options": [
+          "A spoon",
+          "Your hands",
+          "A plate",
+          "A knife"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'Now press each piece flat with a plate'."
+      },
+      {
+        "type": "tf",
+        "q": "The cooking class is on Thursday.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'Welcome to our Thursday cooking class!'"
       }
     ]
   }

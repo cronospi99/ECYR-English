@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las once migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `12` **en orden** (no hay `10`):
-`05` y de `07` a `12` dependen de la tabla `profiles` que crea `01`.)
+Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `13` **en orden** (no hay `10`):
+`05` y de `07` a `13` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `12_notes.sql` (las nuevas: `11_podcasts.sql` y `12_notes.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `13_c2_level.sql` (la nueva: `13_c2_level.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -30,6 +30,7 @@ Incluye las once migraciones en orden y se puede re-ejecutar sin perder datos.
 | `09_assignments.sql` | **Tareas**: `assignments`, destinatarios y estado por estudiante (entregas con archivo, detección automática, retroalimentación con `review_assignment()`). Sin ella, el botón "Asignar tarea" avisa que falta. |
 | `11_podcasts.sql` | **Podcasts**: `podcast_quizzes` (preguntas generadas por IA, una vez por episodio y nivel, compartidas) y `podcast_usage`. |
 | `12_notes.sql` | **Mis notas**: `student_notes`, privadas (cada cuenta solo ve las suyas; el docente no las ve). |
+| `13_c2_level.sql` | **Nivel C2**: amplía las validaciones de nivel de `portfolio_items`, `assignments` y `podcast_quizzes` para aceptar `C2`. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 

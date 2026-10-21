@@ -142,6 +142,48 @@
      ],
      "answer": 1,
      "explain_es": "'Remember + to-infinitivo' se refiere a acordarse de hacer algo pendiente; 'remember + -ing' sería recordar algo ya hecho."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer describe as 'often overlooked' about Dunbar's number (paragraph 2)?",
+     "options": [
+      "That it was invented in the 1990s",
+      "That Dunbar never claimed we have 150 friends in a meaningful sense",
+      "That companies use it",
+      "That it applies to primates"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"what is often overlooked is that Dunbar never claimed we have 150 friends in any meaningful sense\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the 2021 study conclude about the primate data?",
+     "options": [
+      "It confirmed exactly 150",
+      "The margin of error was so large the figure could range from a handful to several hundred",
+      "It proved humans have no limit",
+      "It showed women have more friends than men"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: el margen de error era tan grande que la cifra podía ir de unos pocos a varios cientos."
+    },
+    {
+     "type": "tf",
+     "q": "Researchers broadly agree that shared time is important in building friendships.",
+     "answer": "T",
+     "explain_es": "Párrafo 4: \"Where researchers do tend to see eye to eye is on the importance of time\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, why do friendships often fade after major life changes?",
+     "options": [
+      "Friends usually have a serious argument",
+      "People spend fewer hours together unless they make an effort",
+      "People become less friendly with age",
+      "Social media replaces them"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"Nobody has necessarily fallen out; the bond has simply been starved of time\"."
     }
    ]
   },
@@ -287,6 +329,48 @@
      ],
      "answer": 3,
      "explain_es": "'Regret + -ing' expresa arrepentimiento por algo que ya se hizo; 'regret to + infinitivo' se usa para anunciar algo negativo."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by an 'echo chamber' (paragraph 3)?",
+     "options": [
+      "A noisy restaurant",
+      "A group in which everyone agrees and nobody's ideas are tested",
+      "A political party",
+      "A music studio"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: un círculo de amigos que coincide en todo, donde las ideas nunca se ponen a prueba."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, how should agreeing to disagree be seen?",
+     "options": [
+      "As a defeat",
+      "As an acknowledgement that the friendship matters more than the point",
+      "As a sign of weakness",
+      "As the start of an argument"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"Agreeing to disagree is not a defeat\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why have some exasperating friends 'grown on' the writer?",
+     "options": [
+      "They always agree with him",
+      "They refuse to let him get away with lazy thinking",
+      "They buy him aguardiente",
+      "They avoid politics"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"because they refuse to let me get away with lazy thinking\"."
+    },
+    {
+     "type": "tf",
+     "q": "The two friends from the dinner changed their political views after reconciling.",
+     "answer": "F",
+     "explain_es": "Párrafo 7: \"Neither has changed their mind about politics\"."
     }
    ]
   }
@@ -434,6 +518,48 @@
      ],
      "answer": 1,
      "explain_es": "'Pull off a look' = lograr que un estilo le quede bien a uno."
+    },
+    {
+     "type": "mc",
+     "q": "What does Juliana mean by calling second-hand clothes 'a badge of honour'?",
+     "options": [
+      "Something people are now proud of",
+      "A kind of uniform",
+      "A discount card",
+      "A sign of poverty"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: antes daba vergüenza; ahora es motivo de orgullo."
+    },
+    {
+     "type": "mc",
+     "q": "Why can buying a second-hand jacket feel like 'a small act of resistance' (paragraph 3)?",
+     "options": [
+      "It goes against the polluting, fast-fashion habit of buying and discarding quickly",
+      "It is illegal",
+      "It protests against shop owners",
+      "It supports political parties"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: frente a la moda rápida y contaminante, comprar usado es una forma de oponerse."
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, the trend is driven entirely by ethical concerns.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"it would be naïve to attribute the trend entirely to ethics\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which activities does Juliana's shop now run in response to criticism?",
+     "options": [
+      "Fashion shows",
+      "Repair workshops and swap days",
+      "Online auctions",
+      "Discount days for paca sellers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"Her shop now runs repair workshops and swap days\"."
     }
    ]
   },
@@ -579,6 +705,48 @@
      "q": "The writer has worked as a career adviser.",
      "answer": "NG",
      "explain_es": "El ensayo no dice nada sobre la profesión del autor."
+    },
+    {
+     "type": "mc",
+     "q": "Why might a very formally dressed candidate seem 'out of touch' at a tech start-up?",
+     "options": [
+      "Formal clothes are expensive",
+      "The outfit would not be appropriate to the relaxed company culture",
+      "Start-ups ban suits",
+      "Interviewers prefer jeans"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: lo que importa es \"less the formality of the outfit than its appropriateness\"."
+    },
+    {
+     "type": "mc",
+     "q": "In the 2012 study, which participants made fewer errors?",
+     "options": [
+      "Those told the coat was a painter's coat",
+      "Those told the coat was a doctor's coat",
+      "Those wearing no coat",
+      "Those wearing pyjamas"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: los que creían llevar una bata de médico cometieron menos errores."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by talent that 'arrives in unfamiliar packaging' (paragraph 5)?",
+     "options": [
+      "Capable people whose appearance does not fit a narrow corporate ideal",
+      "Products sold in new boxes",
+      "Employees who arrive late",
+      "Candidates from abroad only"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: personas talentosas juzgadas por peinados, vestimenta indígena o estilos regionales."
+    },
+    {
+     "type": "tf",
+     "q": "According to paragraph 6, less explicit dress rules can be harder for outsiders to learn.",
+     "answer": "T",
+     "explain_es": "Párrafo 6: \"the rules are less explicit, and therefore harder for outsiders to learn\"."
     }
    ]
   }
@@ -730,6 +898,54 @@
      ],
      "answer": 2,
      "explain_es": "El artículo definido señala algo ya conocido por el lector: la especie de la que habla todo el texto."
+    },
+    {
+     "type": "mc",
+     "q": "When did the new Wolbachia approach arrive in Bello?",
+     "options": [
+      "In 2005",
+      "In 2015",
+      "In the 1990s",
+      "Last year"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"In 2015, a very different approach arrived in Bello\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did local radio stations explain the project?",
+     "options": [
+      "To sell mosquito nets",
+      "To reassure a public sceptical about releasing insects",
+      "To recruit scientists",
+      "To announce insecticide spraying"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: para tranquilizar a \"a public that was understandably sceptical\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why is it difficult to attribute every fall in dengue to the programme?",
+     "options": [
+      "Dengue naturally fluctuates with rainfall, temperature and immunity",
+      "The data was lost",
+      "Hospitals stopped reporting cases",
+      "Scientists refused to publish"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: el dengue \"naturally fluctuates from year to year\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to the final paragraph, how will the technique relate to insecticides and clean-up campaigns?",
+     "options": [
+      "It will replace them completely",
+      "It adds a new tool to the existing ones",
+      "It makes them more dangerous",
+      "It has nothing to do with them"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"will not render insecticides... obsolete; rather, it adds a powerful new tool\"."
     }
    ]
   },
@@ -879,6 +1095,48 @@
      "q": "The writer works in the banking sector.",
      "answer": "NG",
      "explain_es": "El texto no menciona la profesión del autor."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer say AI seems especially threatening today (paragraph 1)?",
+     "options": [
+      "It threatens skilled, white-collar work once considered safe",
+      "It is cheaper than looms",
+      "It only affects factories",
+      "It creates too much leisure"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: amenaza \"precisely the kind of skilled, white-collar work that was once considered safe\"."
+    },
+    {
+     "type": "mc",
+     "q": "What point does the writer make with the phrase 'a game-changer for an economy and a catastrophe for the individuals' (paragraph 2)?",
+     "options": [
+      "Technology can benefit society overall while badly harming particular workers",
+      "Technology always harms the economy",
+      "Games are bad for the economy",
+      "Weavers became rich"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: la tecnología puede transformar la economía y a la vez arruinar a individuos concretos."
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, the number of bank branches increased for many years after cash machines arrived.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"the number of bank branches actually increased\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by 'the obituary turned out to be premature' (paragraph 7)?",
+     "options": [
+      "Predictions that human workers were finished proved wrong",
+      "Workers died young",
+      "Newspapers stopped publishing",
+      "Machines broke down"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: cada vez que se declaró obsoleto al trabajador humano, la predicción resultó errónea."
     }
    ]
   }
@@ -1026,6 +1284,54 @@
      ],
      "answer": 0,
      "explain_es": "Último párrafo: \"those that tell us what we already hope is true\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who was Conan Doyle by 1920, according to paragraph 2?",
+     "options": [
+      "A photographer",
+      "A committed spiritualist and the creator of Sherlock Holmes",
+      "Elsie's uncle",
+      "A member of the Yorkshire police"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"the creator of Sherlock Holmes and, by then, a committed spiritualist\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 4, why was photography trusted so much at the time?",
+     "options": [
+      "It was very expensive",
+      "It was seen as a mechanical and therefore objective record",
+      "Only experts could use cameras",
+      "Photos were always in colour"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: se consideraba \"a mechanical, and therefore objective, record of reality\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did critics notice about the fairies' appearance?",
+     "options": [
+      "They had fashionable hairstyles and looked like book illustrations",
+      "They were too large",
+      "They had no wings",
+      "They were blurred"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"wore fashionable hairstyles and looked suspiciously like illustrations\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did the cousins not confess earlier?",
+     "options": [
+      "They had forgotten",
+      "Once a famous author was involved, they felt too embarrassed",
+      "They were paid to stay silent",
+      "Nobody asked them"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"once a famous author was involved, they had felt too embarrassed to confess\"."
     }
    ]
   },
@@ -1179,6 +1485,54 @@
      "q": "Dr Quintero has already been to Japan.",
      "answer": "NG",
      "explain_es": "Solo dice que su esposa quiere ir; no sabemos si él ya ha ido."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Dr Quintero eat the grapes every year?",
+     "options": [
+      "He believes they bring luck",
+      "His mother would be horrified if he didn't",
+      "His doctor recommends it",
+      "He grows grapes"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"My mother would be horrified if I didn't\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to research mentioned in paragraph 5, why might a 'lucky' object improve performance?",
+     "options": [
+      "It brings real luck",
+      "It reduces anxiety and increases confidence",
+      "It distracts competitors",
+      "It improves memory permanently"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"probably because it reduces anxiety and increases their confidence\"."
+    },
+    {
+     "type": "mc",
+     "q": "When does superstitious thinking become harmful, according to Dr Quintero?",
+     "options": [
+      "When people eat too many grapes",
+      "When it leads to important decisions without evidence",
+      "When people wear yellow",
+      "When it is practised in families"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 11: el problema surge al tomar decisiones importantes sin pruebas, como abandonar un tratamiento médico."
+    },
+    {
+     "type": "mc",
+     "q": "Why will Dr Quintero walk round the block twice this year?",
+     "options": [
+      "He wants to lose weight",
+      "His wife wants to go to Japan",
+      "He lost the first suitcase",
+      "His mother asked him to"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 15: \"Twice. My wife wants to go to Japan\"."
     }
    ]
   }
@@ -1330,6 +1684,48 @@
      "q": "The reviewer considers the series a masterpiece.",
      "answer": "F",
      "explain_es": "Último párrafo: \"Is it a masterpiece? Not quite.\""
+    },
+    {
+     "type": "mc",
+     "q": "What effect does the image of the abandoned station have on the reviewer (paragraph 1)?",
+     "options": [
+      "It is so beautiful that you almost forget it is a crime drama",
+      "It is frightening",
+      "It is boring",
+      "It confuses the plot"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"so quietly beautiful... you almost forget you are watching a crime drama\"."
+    },
+    {
+     "type": "mc",
+     "q": "What lends the drama 'a rare authenticity', according to paragraph 3?",
+     "options": [
+      "Non-professional actors from the region",
+      "Famous international stars",
+      "Real news footage",
+      "Filming in Bogotá"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: los actores no profesionales de la región aportan autenticidad."
+    },
+    {
+     "type": "mc",
+     "q": "Which subplot does the reviewer find predictable and unnecessary?",
+     "options": [
+      "The missing girl",
+      "A corrupt mayor",
+      "The journalist's childhood",
+      "The railway station"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"a subplot involving a corrupt mayor feels both predictable and unnecessary\"."
+    },
+    {
+     "type": "tf",
+     "q": "The reviewer advises viewers who want to avoid spoilers to stay away from social media until the finale.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"should stay well clear of social media until they have reached the finale\"."
     }
    ]
   },
@@ -1479,6 +1875,54 @@
      "q": "The writer works for a streaming platform.",
      "answer": "NG",
      "explain_es": "El ensayo no menciona el trabajo del autor."
+    },
+    {
+     "type": "mc",
+     "q": "How was releasing entire seasons at once presented in the early 2010s?",
+     "options": [
+      "As a liberation for viewers",
+      "As a temporary experiment",
+      "As a way to save money",
+      "As a punishment for piracy"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"it was presented as a liberation\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, why can streaming series afford to be denser and more complex?",
+     "options": [
+      "Budgets are larger",
+      "Writers no longer need to remind viewers of the previous week's events",
+      "Episodes are shorter",
+      "Viewers are more educated"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"Writers no longer need to remind viewers of what happened the week before\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by discussing a show without spoilers being 'a delicate exercise in diplomacy'?",
+     "options": [
+      "It requires care because people are at different points in the series",
+      "Diplomats watch more television",
+      "It is impossible",
+      "It is very easy"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: como cada uno ve a su ritmo, hay que tener tacto para no revelar la trama."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's conclusion about the urge to know what happens next?",
+     "options": [
+      "Streaming has destroyed it",
+      "It is as old as storytelling and platforms probably cannot eliminate it",
+      "It was created by television",
+      "It only exists in weekly releases"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"It is as old as storytelling itself... they have not, and probably cannot, eliminate it\"."
     }
    ]
   }
@@ -1630,6 +2074,54 @@
      "q": "All critics agree that every song on the album is original.",
      "answer": "F",
      "explain_es": "Párrafo 6: \"Some reviewers have described a few tracks as derivative\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who filmed the video that made Yeison famous?",
+     "options": [
+      "His grandmother",
+      "A record label",
+      "A tourist",
+      "A bus driver"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 2: \"a tourist filmed him performing\"."
+    },
+    {
+     "type": "mc",
+     "q": "What fear does Yeison express with 'what if this is all there is?' (paragraph 3)?",
+     "options": [
+      "That his fame might not last",
+      "That buses would stop running",
+      "That he would lose his voice",
+      "That nobody would watch the video"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4 lo confirma: el temor a ser \"one-hit wonder\" y caer en el olvido."
+    },
+    {
+     "type": "mc",
+     "q": "According to Yeison, why does he refuse to abandon champeta?",
+     "options": [
+      "It earns more money than reggaeton",
+      "It is where he comes from and what makes him different",
+      "His label forbids it",
+      "Reggaeton is out of fashion"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"Champeta is where I come from... If I sold out, I'd lose the thing that makes me different\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Yeison mean by 'the more I need to remember the small ones' (paragraph 7)?",
+     "options": [
+      "He wants to stay connected to his humble beginnings",
+      "He prefers small concerts for money",
+      "He wants to build small stages",
+      "He has forgotten his old songs"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: sigue visitando Bazurto y cantando en los buses para no olvidar sus orígenes."
     }
    ]
   },
@@ -1779,6 +2271,54 @@
      "q": "The writer believes fans should expect artists never to change.",
      "answer": "F",
      "explain_es": "Último párrafo: la lealtad \"should not mean freezing them at the moment we first discovered them\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, what could make an artist lose credibility in punk and indie scenes?",
+     "options": [
+      "Appearing on mainstream television or having a song played in a shopping centre",
+      "Playing acoustic guitar",
+      "Performing in small bars",
+      "Writing their own songs"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: aparecer en televisión comercial o sonar en un centro comercial podía bastar para perder credibilidad."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer mention the great salsa orchestras of the 1970s?",
+     "options": [
+      "To show that commercial work can still produce lasting art",
+      "To prove salsa is better than punk",
+      "To criticise Latin American music",
+      "To show they were poor"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: trabajaron en una industria muy comercial y aun así crearon música que perdura."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 6, what deserves criticism?",
+     "options": [
+      "Making money",
+      "The surrender of an artist's own vision",
+      "Experimenting",
+      "Long careers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"it is the surrender of that vision that deserves criticism\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer suggest fans should NOT do (paragraph 7)?",
+     "options": [
+      "Support artists financially",
+      "Freeze artists at the moment they first discovered them",
+      "Listen to new albums",
+      "Go to concerts"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"Loyalty to an artist should not mean freezing them at the moment we first discovered them\"."
     }
    ]
   }
@@ -1938,6 +2478,54 @@
      ],
      "answer": 1,
      "explain_es": "Celebró de forma sencilla, pero llevó flores bordadas que aprendió a coser: adaptó la tradición a su manera."
+    },
+    {
+     "type": "mc",
+     "q": "How long had the dress been hanging in the wardrobe?",
+     "options": [
+      "Fifteen years",
+      "Fifty-one years",
+      "Three weeks",
+      "Seventeen years"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"for fifty-one years\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did Mariana want instead of a party?",
+     "options": [
+      "A new dress",
+      "A trip to Cartagena with friends or a new laptop",
+      "A waltz with her father",
+      "Sewing lessons"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"a trip to Cartagena with her two best friends, or, failing that, a new laptop\"."
+    },
+    {
+     "type": "mc",
+     "q": "How did Abuela Rosa react when Mariana called the tradition old-fashioned?",
+     "options": [
+      "She was offended",
+      "She laughed and agreed it would seem so",
+      "She cried",
+      "She left the room"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 9: \"To her surprise, her grandmother laughed. 'Of course it does.'\""
+    },
+    {
+     "type": "mc",
+     "q": "What made Mariana see the dress differently (paragraph 10)?",
+     "options": [
+      "Its colour",
+      "The hundreds of tiny hand-sewn flowers along the hem",
+      "Its price",
+      "The lace collar"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 10: notó por primera vez las diminutas flores cosidas a mano."
     }
    ]
   },
@@ -2089,6 +2677,48 @@
      "q": "Researchers are certain that the current trend is permanent.",
      "answer": "F",
      "explain_es": "Último párrafo: \"remains an open question\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, what has happened to the traditional milestones of adulthood?",
+     "options": [
+      "They have become later and less predictable",
+      "They have disappeared completely",
+      "They happen earlier",
+      "They are the same as before"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"have become both later and less predictable\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to sociologists, how do many young Colombians now see their twenties?",
+     "options": [
+      "As a time to marry quickly",
+      "As a period for education, travel and finding out who they are",
+      "As a time to buy property",
+      "As the end of youth"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"a period for education, travel and experimentation\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to the article, living with parents into adulthood carries less stigma in Colombia than in Scandinavia.",
+     "answer": "T",
+     "explain_es": "Párrafo 6: \"carries less stigma than it does in, for example, Scandinavia\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do researchers suggest about the family pattern older generations regard as normal (paragraph 7)?",
+     "options": [
+      "It may itself have been an exception made possible by rapid growth",
+      "It will return soon",
+      "It was always normal",
+      "It was invented by governments"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: \"may itself have been the exception\"."
     }
    ]
   }
@@ -2246,6 +2876,48 @@
      ],
      "answer": 0,
      "explain_es": "El párrafo da consejos prácticos: lista, comer antes, comparar precios, presupuesto."
+    },
+    {
+     "type": "mc",
+     "q": "Why do supermarkets often play slow music?",
+     "options": [
+      "To make shoppers walk at a leisurely pace",
+      "To calm employees",
+      "Because it is cheaper",
+      "To cover the noise of trolleys"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: la música lenta hace que los clientes caminen despacio."
+    },
+    {
+     "type": "mc",
+     "q": "Why are children's cereals and sweets often displayed on lower shelves?",
+     "options": [
+      "They are cheaper",
+      "So that young children in trolleys can reach them",
+      "They are heavier",
+      "Adults do not buy them"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"exactly where a five-year-old in a trolley can reach them\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to the text, loyalty cards give retailers detailed information about customers' habits.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"give retailers detailed information about our habits\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why do some experts suggest paying in cash?",
+     "options": [
+      "Cash is accepted everywhere",
+      "Parting with physical money feels more painful than tapping a card",
+      "Cards are unsafe",
+      "Cash gives discounts"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"parting with physical money tends to feel more painful than tapping a card\"."
     }
    ]
   },
@@ -2395,6 +3067,54 @@
      ],
      "answer": 3,
      "explain_es": "Tras 'insist that' se usa el subjuntivo: forma base del verbo ('be')."
+    },
+    {
+     "type": "mc",
+     "q": "How much less than the original price did the grandmother pay for the potatoes?",
+     "options": [
+      "About twenty per cent",
+      "Half",
+      "About five per cent",
+      "Nothing; she got them free"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"She paid about twenty per cent less than the original price\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which items does the writer say nobody wants to bargain for?",
+     "options": [
+      "Potatoes and shoes",
+      "A bus ticket or a packet of paracetamol",
+      "Coffee and fruit",
+      "Houses and cars"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"Nobody wants to bargain for a bus ticket or a packet of paracetamol\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, what does haggling force us to do?",
+     "options": [
+      "Spend more money",
+      "Think about what an item is really worth to us",
+      "Visit more shops",
+      "Pay in cash"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: nos obliga a preguntarnos \"what the item is really worth to us\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer criticise in paragraph 6?",
+     "options": [
+      "Paying full price at markets",
+      "Bargaining aggressively with a fruit seller while paying full price for an expensive coffee",
+      "Telling stories to sellers",
+      "Shopping in markets"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: regatear agresivamente con un frutero mientras se paga el café caro \"is hardly admirable\"."
     }
    ]
   }
@@ -2546,6 +3266,54 @@
      "q": "According to the article, the spectacled bear is on the brink of extinction.",
      "answer": "F",
      "explain_es": "Último párrafo: \"The bear is not yet on the brink of extinction\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the spectacled bear named after?",
+     "options": [
+      "Its long claws",
+      "The pale markings that often encircle its eyes",
+      "Its diet",
+      "The scientist who discovered it"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"named after the pale markings that often encircle its eyes\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 4, what is the main threat to the bear?",
+     "options": [
+      "Poaching",
+      "Loss of habitat",
+      "Disease",
+      "Tourism"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"The main threat is not poaching... but the loss of habitat\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does each bear death matter so much?",
+     "options": [
+      "Bears reproduce slowly, with females raising one or two cubs every few years",
+      "Bears are worth a lot of money",
+      "Each bear has a name",
+      "Bears live only in Guasca"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: \"For a species that reproduces slowly... each death matters\"."
+    },
+    {
+     "type": "mc",
+     "q": "What gives Rojas grounds for cautious optimism (paragraph 7)?",
+     "options": [
+      "Bears have been recorded in areas where they had not been seen for decades",
+      "Climate change has stopped",
+      "Poaching is now legal",
+      "The páramo is growing"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: los registros recientes muestran osos donde no se documentaban desde hacía décadas."
     }
    ]
   },
@@ -2694,6 +3462,54 @@
      "q": "The writer concludes that all zoos should close immediately.",
      "answer": "F",
      "explain_es": "Último párrafo: la pregunta es \"what kind of zoos deserve to\" existir; solo las que no lo demuestren deberían cerrar."
+    },
+    {
+     "type": "mc",
+     "q": "How do some people see a large predator pacing in its enclosure (paragraph 1)?",
+     "options": [
+      "As a symbol of human arrogance",
+      "As a sign of good health",
+      "As entertainment",
+      "As an educational success"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"a vivid symbol of human arrogance\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, which popular zoo animals are least suited to captivity?",
+     "options": [
+      "Small birds and reptiles",
+      "Polar bears, elephants and big cats",
+      "Insects",
+      "Farm animals"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"polar bears, elephants and big cats, are precisely the animals least suited to captivity\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do critics say the money spent on keeping elephants could achieve instead?",
+     "options": [
+      "Building bigger zoos",
+      "Protecting habitat",
+      "Buying more animals",
+      "Paying zoo staff"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: se lograría mucho más invirtiendo en \"protecting habitat\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer conclude about zoos that cannot prove they serve animals' welfare and conservation?",
+     "options": [
+      "They should receive more funding",
+      "They should, sooner or later, close",
+      "They should become museums",
+      "They should move abroad"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"Those that cannot should, sooner or later, close their gates\"."
     }
    ]
   }
@@ -2845,6 +3661,54 @@
      "q": "The writer grew up in one of Medellín's comunas.",
      "answer": "NG",
      "explain_es": "El texto no da información sobre el origen del autor."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'parce' mean, according to paragraph 1?",
+     "options": [
+      "Money",
+      "Friend, mate, buddy",
+      "Danger",
+      "A job"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"it means friend, mate, buddy\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why was 'llave' used for a close friend?",
+     "options": [
+      "Because a friend is someone who opens doors for you",
+      "Because friends share houses",
+      "Because it rhymes with 'parce'",
+      "Because it came from English"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"someone who opens doors for you\"."
+    },
+    {
+     "type": "mc",
+     "q": "How did parlache words spread to the wider population?",
+     "options": [
+      "Through dictionaries and schools",
+      "Through television series, films and social media",
+      "Through government campaigns",
+      "Through newspapers only"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"helped along by television series, films and, eventually, social media\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to linguists, what is 'the real skill' regarding slang?",
+     "options": [
+      "Avoiding informal language completely",
+      "Knowing when to use it",
+      "Inventing new words",
+      "Translating it into English"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"not avoiding informal language but knowing when to use it\"."
     }
    ]
   },
@@ -2996,6 +3860,48 @@
      "q": "Dr Murillo is completely pessimistic about the future of these languages.",
      "answer": "F",
      "explain_es": "Dice: \"Cautiously\" optimista, y menciona jóvenes que graban rap en la lengua de sus abuelos."
+    },
+    {
+     "type": "mc",
+     "q": "Which two Creole languages are spoken in Colombia?",
+     "options": [
+      "Wayuunaiki and Nasa Yuwe",
+      "Palenquero and the English-based Creole of San Andrés and Providencia",
+      "Romani and Spanish",
+      "Hebrew and Welsh"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"Palenquero and the English-based Creole of San Andrés and Providencia\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Dr Murillo, why did many parents stop passing on indigenous languages?",
+     "options": [
+      "They believed their children would have a better future speaking only Spanish",
+      "The languages had no grammar",
+      "Children refused to learn them",
+      "They moved abroad"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: los padres pensaban que sus hijos tendrían mejor futuro hablando solo español."
+    },
+    {
+     "type": "tf",
+     "q": "According to Dr Murillo, many language protection programmes depend on short-term funding.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"a number of programmes depend on short-term funding\"."
+    },
+    {
+     "type": "mc",
+     "q": "What gives Dr Murillo hope at the end of the interview?",
+     "options": [
+      "New government laws",
+      "Teenagers recording rap in their grandparents' language and posting it online",
+      "University research",
+      "Tourism in Palenque"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"teenagers recording rap in their grandparents' language and posting it online\"."
     }
    ]
   }
@@ -3149,6 +4055,48 @@
      ],
      "answer": 3,
      "explain_es": "'Best-known' es la forma superlativa del adjetivo compuesto 'well-known'."
+    },
+    {
+     "type": "mc",
+     "q": "Where did Urrutia grow up?",
+     "options": [
+      "In Sydney",
+      "In Candelaria, surrounded by sugar-cane fields",
+      "In Bogotá",
+      "In Rio"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"Urrutia grew up in Candelaria, a small town surrounded by sugar-cane fields\"."
+    },
+    {
+     "type": "mc",
+     "q": "How did Urrutia respond to the prejudice she faced?",
+     "options": [
+      "She gave up weightlifting",
+      "She channelled it into her training",
+      "She moved to China",
+      "She stopped giving interviews"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"she channelled it into her training\"."
+    },
+    {
+     "type": "tf",
+     "q": "Most experts considered Urrutia the favourite to win in Sydney.",
+     "answer": "F",
+     "explain_es": "Párrafo 4: \"Few experts considered her a favourite\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why do commentators trace a line from Caterine Ibargüen back to Sydney?",
+     "options": [
+      "Urrutia had shown that such a victory could be achieved",
+      "Ibargüen was Urrutia's daughter",
+      "They competed together",
+      "Ibargüen won in Sydney"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 6: \"Urrutia had shown that it could be done\"."
     }
    ]
   },
@@ -3298,6 +4246,48 @@
      "q": "The writer concludes that role models should be abandoned.",
      "answer": "F",
      "explain_es": "Párrafo 6: \"None of this means we should abandon the idea of role models\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, what conclusion might a hard-working young person who does not become famous wrongly draw?",
+     "options": [
+      "That the fault lies entirely with them",
+      "That fame is easy",
+      "That role models are lying",
+      "That they should change school"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"may conclude that the fault lies entirely with them\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer say about the two common reactions of fans when a role model is exposed?",
+     "options": [
+      "Both denial and disillusionment are unhealthy",
+      "Denial is the best response",
+      "Disillusionment is always justified",
+      "Fans should stop watching sport"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: \"fierce denial or bitter disillusionment. Neither response is healthy\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to paragraph 6, stories of people overcoming hardship can be especially inspiring for historically excluded groups.",
+     "answer": "T",
+     "explain_es": "Párrafo 6: \"especially for those from groups that have historically been excluded from positions of power\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'placing them on a pedestal' (paragraph 7) mean?",
+     "options": [
+      "treating someone as perfect and above criticism",
+      "giving someone a prize",
+      "building a statue",
+      "ignoring someone"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: admirar sin idealizar; \"on a pedestal\" significa considerar a alguien perfecto."
     }
    ]
   }
@@ -3449,6 +4439,54 @@
      "q": "Daniela has opened several cafés in Bogotá.",
      "answer": "F",
      "explain_es": "Párrafo 6: tuvo que reducir ambiciones, \"including a plan to open cafés in Bogotá\"."
+    },
+    {
+     "type": "mc",
+     "q": "Where is Daniela's family farm?",
+     "options": [
+      "Near Pitalito, in Huila",
+      "Near Medellín",
+      "In Bogotá",
+      "In Canada"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: \"her family's farm near Pitalito, in the department of Huila\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the QR code on each bag link to?",
+     "options": [
+      "A discount voucher",
+      "A short video of the farm",
+      "The company's bank account",
+      "A recipe"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"a QR code linking to a short video of the farm\"."
+    },
+    {
+     "type": "mc",
+     "q": "What turning point made subscriptions triple?",
+     "options": [
+      "A government grant",
+      "A food blogger's videos about a partner farm's family",
+      "A supermarket deal",
+      "A price reduction"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: un bloguero publicó vídeos sobre la familia y las suscripciones se triplicaron en un mes."
+    },
+    {
+     "type": "mc",
+     "q": "Why has Daniela scaled back her plan to open cafés in Bogotá?",
+     "options": [
+      "To protect cash flow",
+      "Because farmers objected",
+      "Because cafés are illegal",
+      "Because she moved to Spain"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 6: \"in order to protect cash flow\"."
     }
    ]
   },
@@ -3602,6 +4640,54 @@
      "q": "Ricardo has worked as a negotiation consultant for many years.",
      "answer": "NG",
      "explain_es": "El texto no dice nada sobre la experiencia profesional de Ricardo."
+    },
+    {
+     "type": "mc",
+     "q": "What does Carolina say most people do while the other person is speaking?",
+     "options": [
+      "Take careful notes",
+      "Prepare their next argument",
+      "Ask questions",
+      "Look at their phones"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"Most people spend the other person's speaking time preparing their next argument\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Carolina say the twenty minutes of personal conversation is not wasted time?",
+     "options": [
+      "Trust is part of the deal",
+      "It helps people relax before lunch",
+      "It is required by law",
+      "It reduces the price"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 7: \"Trust is part of the deal\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Carolina, what is the biggest mistake start-up founders make with investors?",
+     "options": [
+      "Asking for too much money",
+      "Accepting the first offer out of desperation",
+      "Refusing to meet investors",
+      "Talking about football"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 11: \"accepting the first offer because they're desperate\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Ricardo's '[pause]' at the end show?",
+     "options": [
+      "He has lost his connection",
+      "He is jokingly using the silence technique Carolina just described",
+      "He did not understand",
+      "He is angry"
+     ],
+     "answer": 1,
+     "explain_es": "Ricardo aplica el silencio que Carolina acaba de recomendar; ella ríe y dice que aprende rápido."
     }
    ]
   }

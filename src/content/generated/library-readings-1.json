@@ -131,6 +131,33 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 4 dice: 'At ten o'clock, Ana and her grandfather sit on a bench and eat arepas'."
+      },
+      {
+        "type": "mc",
+        "q": "Where does Ana live?",
+        "options": [
+          "In Villa de Leyva",
+          "In Bogotá",
+          "In a big city in Boyacá",
+          "In Venezuela"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 1 dice: 'Ana lives in Villa de Leyva, a small town in Boyacá'."
+      },
+      {
+        "type": "tf",
+        "q": "There is bread at the market.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice que hay puestos 'with fruit, vegetables, cheese and bread'."
+      },
+      {
+        "type": "gap",
+        "q": "Ana buys six oranges and a bag of ____.",
+        "answer": "strawberries",
+        "accept": [
+          "strawberry"
+        ],
+        "explain_es": "El párrafo 3 dice: 'Ana buys six oranges and a bag of strawberries'."
       }
     ]
   },
@@ -249,6 +276,46 @@
         ],
         "answer": 0,
         "explain_es": "Camilo escribe: 'I am your new pen pal'."
+      },
+      {
+        "type": "tf",
+        "q": "The weather in Medellín is nice all year.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'The weather is nice all year'."
+      },
+      {
+        "type": "mc",
+        "q": "How many people are there in Camilo's family?",
+        "options": [
+          "Three",
+          "Four",
+          "Five",
+          "Six"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'There are five people in my family'."
+      },
+      {
+        "type": "gap",
+        "q": "Camilo's brother, Tomás, is only ____.",
+        "answer": "four",
+        "accept": [
+          "4",
+          "four years old"
+        ],
+        "explain_es": "El párrafo 2 dice: 'My brother, Tomás, is only four'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Camilo's grandmother cook on Sundays?",
+        "options": [
+          "Arepas and eggs",
+          "Fish and potatoes",
+          "Rice, beans and chicken",
+          "Soup and bread"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'She cooks rice, beans and chicken for everyone'."
       }
     ]
   },
@@ -377,6 +444,36 @@
         "q": "The library has ten computers.",
         "answer": "F",
         "explain_es": "La biblioteca tiene seis computadores: 'the six computers'."
+      },
+      {
+        "type": "gap",
+        "q": "The library closes at ____ in the afternoon.",
+        "answer": "4:00",
+        "accept": [
+          "four",
+          "4",
+          "four o'clock",
+          "4 o'clock"
+        ],
+        "explain_es": "El párrafo 1 dice que abre 'from 7:30 in the morning to 4:00 in the afternoon'."
+      },
+      {
+        "type": "tf",
+        "q": "Mrs. Rojas is in the library every day.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice sobre la bibliotecaria: 'She is here every day'."
+      },
+      {
+        "type": "mc",
+        "q": "What happens if your book is late?",
+        "options": [
+          "You pay money",
+          "You cannot use the computers",
+          "You must talk to the director",
+          "You cannot take a new book for one week"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 dice: 'Is your book late? Then you cannot take a new book for one week'."
       }
     ]
   },
@@ -508,6 +605,33 @@
         ],
         "answer": 1,
         "explain_es": "'Calm' significa tranquilo; el texto dice 'calm and quiet'."
+      },
+      {
+        "type": "tf",
+        "q": "Capybaras live in cold places.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice que viven 'in hot places near rivers and lakes'."
+      },
+      {
+        "type": "mc",
+        "q": "Why can capybaras see and breathe in the water?",
+        "options": [
+          "They have very long legs",
+          "Their eyes, ears and nose are on the top of their head",
+          "They have big mouths",
+          "They are very small"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 explica: 'Their eyes, ears and nose are on the top of their head, so they can see and breathe in the water'."
+      },
+      {
+        "type": "gap",
+        "q": "Other animals, like ____, often sit on their backs.",
+        "answer": "birds",
+        "accept": [
+          "bird"
+        ],
+        "explain_es": "El párrafo 4 dice: 'other animals, like birds, often sit on their backs!'"
       }
     ]
   },
@@ -631,6 +755,45 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 5 dice: 'In the evening, I go dancing salsa with my husband'."
+      },
+      {
+        "type": "mc",
+        "q": "How old is Rosa?",
+        "options": [
+          "28",
+          "33",
+          "38",
+          "48"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'She is 38 years old'."
+      },
+      {
+        "type": "gap",
+        "q": "Rosa's first bus leaves at five ____.",
+        "answer": "thirty",
+        "accept": [
+          "30"
+        ],
+        "explain_es": "El párrafo 2 dice: 'my first bus leaves at five thirty'."
+      },
+      {
+        "type": "tf",
+        "q": "Rosa eats lunch alone.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'I eat lunch with the other drivers'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Rosa do after work?",
+        "options": [
+          "She sleeps",
+          "She goes to the gym",
+          "She helps her son with his homework",
+          "She drives a taxi"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'I go home and help my son with his homework'."
       }
     ]
   },
@@ -752,6 +915,45 @@
         ],
         "answer": 3,
         "explain_es": "Sofía dice: 'I am tired but happy'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Sofía's blog about?",
+        "options": [
+          "Bogotá",
+          "Food in Colombia",
+          "Her school",
+          "Her dog"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 1 dice: 'this is my blog about Bogotá'."
+      },
+      {
+        "type": "tf",
+        "q": "Sofía and her dad ride to a big park.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'We start near our house and go to a big park'."
+      },
+      {
+        "type": "gap",
+        "q": "There are even cats in ____!",
+        "answer": "baskets",
+        "accept": [
+          "basket"
+        ],
+        "explain_es": "El párrafo 3 dice: 'and even cats in baskets!'"
+      },
+      {
+        "type": "mc",
+        "q": "What do Sofía and her dad drink?",
+        "options": [
+          "Coffee",
+          "Water",
+          "Milk",
+          "Fresh orange juice"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'We stop for a fresh orange juice and a snack'."
       }
     ]
   },
@@ -864,6 +1066,42 @@
         "q": "Haruto shows Daniela how to write her name in Japanese.",
         "answer": "T",
         "explain_es": "El párrafo 3 dice: 'He also shows her how to write her name in Japanese'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is Haruto from?",
+        "options": [
+          "Tokyo",
+          "Osaka",
+          "Barranquilla",
+          "Kyoto"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'he is from Osaka, Japan'."
+      },
+      {
+        "type": "gap",
+        "q": "Daniela teaches Haruto Spanish words, like 'amigo' and '____'.",
+        "answer": "playa",
+        "explain_es": "El párrafo 3 dice: 'Daniela teaches Haruto Spanish words, like 'amigo' and 'playa''."
+      },
+      {
+        "type": "tf",
+        "q": "Haruto looks happy on the first day at lunch.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'Haruto sits alone at lunch. He looks sad'."
+      },
+      {
+        "type": "mc",
+        "q": "Who is Haruto's best friend now?",
+        "options": [
+          "Daniela",
+          "His mother",
+          "A boy from the football team",
+          "His teacher"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'But Daniela is his best friend, his tomodachi'."
       }
     ]
   },
@@ -987,6 +1225,42 @@
         "q": "The guide says soda is not a good breakfast every day.",
         "answer": "T",
         "explain_es": "El consejo final dice: 'sweet cakes and soda are not a good breakfast every day'."
+      },
+      {
+        "type": "gap",
+        "q": "Cook an egg in a ____ and put it on a warm arepa.",
+        "answer": "pan",
+        "explain_es": "El párrafo 2 dice: 'Cook an egg in a pan and put it on a warm arepa'."
+      },
+      {
+        "type": "mc",
+        "q": "Which fruits go with the yogurt?",
+        "options": [
+          "Mango and apple",
+          "Strawberries and orange",
+          "Banana and papaya",
+          "Pineapple and banana"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Cut a banana and some papaya. Put the fruit in a bowl with yogurt'."
+      },
+      {
+        "type": "tf",
+        "q": "You can put cinnamon and honey in the oatmeal.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'Add cinnamon and a little honey'."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tip in the last paragraph?",
+        "options": [
+          "Drink a glass of water in the morning",
+          "Eat cake every morning",
+          "Don't eat breakfast at school",
+          "Drink soda with your fruit"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 5 dice: 'Tip: Drink a glass of water in the morning too'."
       }
     ]
   },
@@ -1121,6 +1395,30 @@
         "q": "Marco gives the hostel five stars.",
         "answer": "F",
         "explain_es": "Marco le da cuatro estrellas: 'four stars out of five'."
+      },
+      {
+        "type": "tf",
+        "q": "Marco is from Italy.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'Review by Marco, from Italy'."
+      },
+      {
+        "type": "gap",
+        "q": "Salento is in the ____ region of Colombia.",
+        "answer": "coffee",
+        "explain_es": "El párrafo 2 dice: 'a small, colorful town in the coffee region of Colombia'."
+      },
+      {
+        "type": "mc",
+        "q": "Who is Doña Marta?",
+        "options": [
+          "A tour guide",
+          "Another guest",
+          "The owner of the hostel",
+          "A coffee farmer"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'The owner, Doña Marta, is very friendly'."
       }
     ]
   },
@@ -1249,6 +1547,45 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 4 dice: 'there is more rain tomorrow'."
+      },
+      {
+        "type": "gap",
+        "q": "It rained from six in the evening to ____ in the morning.",
+        "answer": "four",
+        "accept": [
+          "4",
+          "four o'clock"
+        ],
+        "explain_es": "El párrafo 1 dice: 'from six in the evening to four in the morning'."
+      },
+      {
+        "type": "tf",
+        "q": "The river near the town is very high now.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'The river near the town is very high now'."
+      },
+      {
+        "type": "mc",
+        "q": "What are the firefighters doing?",
+        "options": [
+          "Giving blankets",
+          "Opening the schools",
+          "Building new houses",
+          "Cleaning the streets"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 dice: 'Firefighters are cleaning the streets'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'be careful' means…",
+        "options": [
+          "be fast",
+          "pay attention so nothing bad happens",
+          "be happy"
+        ],
+        "answer": 1,
+        "explain_es": "'Be careful' significa 'ten cuidado': prestar atención para evitar problemas, porque va a llover más."
       }
     ]
   },
@@ -1377,6 +1714,30 @@
         ],
         "answer": 3,
         "explain_es": "La última frase dice: 'Her story shows that falling is part of learning'."
+      },
+      {
+        "type": "gap",
+        "q": "Mariana Pajón was born in Medellín in ____.",
+        "answer": "1991",
+        "explain_es": "El párrafo 1 dice: 'Mariana Pajón was born in Medellín, Colombia, in 1991'."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana was often the only girl in the race.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'she was often the only girl in the race'."
+      },
+      {
+        "type": "mc",
+        "q": "What did people in Colombia do after her race in London?",
+        "options": [
+          "They went to the airport",
+          "They started a BMX school",
+          "They celebrated in the streets",
+          "They watched a film about her"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'Many people in Colombia watched the race on TV and celebrated in the streets'."
       }
     ]
   },
@@ -1512,6 +1873,30 @@
         "q": "Laura bought him a hot chocolate and a big piece of ____.",
         "answer": "cake",
         "explain_es": "El párrafo 4 dice: 'a hot chocolate and a big piece of cake'."
+      },
+      {
+        "type": "tf",
+        "q": "Julián was reading a book on the bus.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice que 'He was listening to music and looking out of the window'."
+      },
+      {
+        "type": "mc",
+        "q": "Who called the phone?",
+        "options": [
+          "Laura's mother",
+          "Laura's friend",
+          "The bus driver",
+          "Julián's mother"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice que en la pantalla aparecía 'Mom' y la mujer explicó que su hija, Laura, era estudiante."
+      },
+      {
+        "type": "gap",
+        "q": "When the bus stopped near the ____, a young woman got off quickly.",
+        "answer": "university",
+        "explain_es": "El párrafo 1 dice: 'When the bus stopped near the university, a young woman got off quickly'."
       }
     ]
   },
@@ -1640,6 +2025,33 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 4 dice: 'so hotels are often full'."
+      },
+      {
+        "type": "gap",
+        "q": "The festival lasts for about ____ days.",
+        "answer": "ten",
+        "accept": [
+          "10"
+        ],
+        "explain_es": "El párrafo 1 dice: 'For about ten days, there are concerts, dances, food stalls and parades'."
+      },
+      {
+        "type": "mc",
+        "q": "How do silleteros carry the silletas?",
+        "options": [
+          "On their heads",
+          "In cars",
+          "On horses",
+          "On their backs"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'they carry them on their backs'."
+      },
+      {
+        "type": "tf",
+        "q": "Grandparents teach the silletero work to their children and grandchildren.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'Grandparents teach the work to their children and grandchildren'."
       }
     ]
   },
@@ -1776,6 +2188,30 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 5 dice: 'I miss my mum's cooking'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is Lucía from?",
+        "options": [
+          "Lima",
+          "Arequipa",
+          "Dublin",
+          "Madrid"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'My friends in Arequipa keep asking me...', y en el párrafo 2 compara el frío con 'any winter in Arequipa'."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía understood the bus drivers easily.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'I didn't understand the bus drivers because they speak very fast'."
+      },
+      {
+        "type": "gap",
+        "q": "Last weekend, Lucía and her classmates ate fish and ____ on the beach.",
+        "answer": "chips",
+        "explain_es": "El párrafo 4 dice: 'Then we ate fish and chips on the beach'."
       }
     ]
   },
@@ -1913,6 +2349,33 @@
         ],
         "answer": 2,
         "explain_es": "El aviso dice: 'Last year, the coding course was full in only two days!'."
+      },
+      {
+        "type": "mc",
+        "q": "When is the Creative Writing course?",
+        "options": [
+          "Tuesdays",
+          "Mondays and Wednesdays",
+          "Thursdays",
+          "Saturdays"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'Creative Writing (Tuesdays, 4 to 6 p.m.)'."
+      },
+      {
+        "type": "tf",
+        "q": "At the end of the photography course, there is an exhibition of the students' photos.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'there is going to be an exhibition of your best pictures in the library'."
+      },
+      {
+        "type": "gap",
+        "q": "To register, you must bring a copy of your ____ card.",
+        "answer": "ID",
+        "accept": [
+          "identity"
+        ],
+        "explain_es": "El párrafo 6 dice: 'Bring a copy of your ID card'."
       }
     ]
   },
@@ -2046,6 +2509,35 @@
         ],
         "answer": 3,
         "explain_es": "La conclusión dice: 'a small amount of pocket money is a good way to learn'."
+      },
+      {
+        "type": "gap",
+        "q": "When he was thirteen, Andrés got ____ pesos a week.",
+        "answer": "20,000",
+        "accept": [
+          "20000",
+          "20.000",
+          "twenty thousand"
+        ],
+        "explain_es": "El párrafo 2 dice: 'my parents started giving me 20,000 pesos a week'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Andrés spend his first pocket money on?",
+        "options": [
+          "Books and clothes",
+          "Bus tickets",
+          "Snacks and video games",
+          "A guitar"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'I spent everything on snacks and video games in two days'."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés thinks children should get money for helping at home.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice que algunos creen que los niños deben ayudar en casa gratis, y Andrés dice: 'I agree with that'."
       }
     ]
   },
@@ -2178,6 +2670,33 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 4 dice: 'The group is now going to visit schools to teach children about turtles'."
+      },
+      {
+        "type": "gap",
+        "q": "The volunteers protected the turtle eggs for almost two ____.",
+        "answer": "months",
+        "accept": [
+          "month"
+        ],
+        "explain_es": "El párrafo 1 dice: 'protected the turtle eggs for almost two months'."
+      },
+      {
+        "type": "mc",
+        "q": "Who saw the female turtles first and called the group?",
+        "options": [
+          "Local fishermen",
+          "Tourists",
+          "The police",
+          "Teachers"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice: 'Local fishermen saw them and called a small environmental group'."
+      },
+      {
+        "type": "tf",
+        "q": "Baby turtles sometimes walk the wrong way because of street lamps.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 explica que a veces la luz más brillante es 'a street lamp, so they walk the wrong way'."
       }
     ]
   },
@@ -2316,6 +2835,36 @@
         ],
         "answer": 1,
         "explain_es": "'Record' como verbo aquí es grabar música."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the band from?",
+        "options": [
+          "Mexico City",
+          "Monterrey",
+          "Guadalajara",
+          "Bogotá"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'Las Nubes Rojas is a rock band from Guadalajara, Mexico'."
+      },
+      {
+        "type": "tf",
+        "q": "The band was very calm before the concert at the festival.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'We were very nervous before the concert'."
+      },
+      {
+        "type": "mc",
+        "q": "Why are they going to record their album in the garage?",
+        "options": [
+          "Because the sound is better there",
+          "Because their neighbors asked them",
+          "Because it is near the school",
+          "Because they don't have much money"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'We don't have much money, so we're going to record it in the garage'."
       }
     ]
   },
@@ -2452,6 +3001,33 @@
         ],
         "answer": 3,
         "explain_es": "La última frase dice: 'I'm going to cook ceviche for my friends in Toronto next month!'."
+      },
+      {
+        "type": "mc",
+        "q": "Who recommended the cooking class?",
+        "options": [
+          "Hannah's sister",
+          "Their hotel",
+          "A friend in Toronto",
+          "Chef Rosa"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'Our hotel recommended a cooking class in the Barranco neighbourhood'."
+      },
+      {
+        "type": "gap",
+        "q": "Chef Rosa explained that Peru has thousands of kinds of ____.",
+        "answer": "potatoes",
+        "accept": [
+          "potato"
+        ],
+        "explain_es": "El párrafo 3 dice: 'Peru has thousands of kinds of potatoes'."
+      },
+      {
+        "type": "tf",
+        "q": "The kitchen was very hot.",
+        "answer": "T",
+        "explain_es": "El párrafo 5 dice: 'My only complaint is that the kitchen was very hot'."
       }
     ]
   },
@@ -2588,6 +3164,33 @@
         ],
         "answer": 0,
         "explain_es": "'Join us' significa unirse a nosotros, jugar con nosotros."
+      },
+      {
+        "type": "gap",
+        "q": "Sebas and Aunt Clara are going to arrive in Bogotá on the ____.",
+        "answer": "18th",
+        "accept": [
+          "18"
+        ],
+        "explain_es": "El párrafo 2 dice: 'You're going to arrive in Bogotá on the 18th, right?'"
+      },
+      {
+        "type": "tf",
+        "q": "Natalia tells Sebas to bring a warm jacket.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice que puede hacer frío por la noche, 'so bring a warm jacket!'"
+      },
+      {
+        "type": "mc",
+        "q": "How many days are they going to spend in Santa Marta?",
+        "options": [
+          "Two",
+          "Three",
+          "Four",
+          "Five"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'we're going to spend four days on the coast, in Santa Marta'."
       }
     ]
   },
@@ -2727,6 +3330,39 @@
         "q": "To remember your dreams, keep a ____ next to your bed.",
         "answer": "notebook",
         "explain_es": "El párrafo 5 dice: 'try keeping a notebook next to your bed'."
+      },
+      {
+        "type": "mc",
+        "q": "Over a lifetime, how much time do we spend dreaming?",
+        "options": [
+          "About two years",
+          "About six years",
+          "About ten years",
+          "About twenty years"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'Over a lifetime, that adds up to around six years'."
+      },
+      {
+        "type": "mc",
+        "q": "What can we infer about the dream of an exam you hadn't studied for?",
+        "options": [
+          "It predicts that you will fail",
+          "It only happens to children",
+          "It is a common dream when people feel stressed",
+          "It is a message from the gods"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 relaciona el estrés con sueños negativos y dice 'you are certainly not alone', es decir, es un sueño frecuente."
+      },
+      {
+        "type": "order",
+        "q": "the brain decides what to keep and what to forget / the brain receives huge amounts of information during the day / we fall asleep",
+        "answer": "the brain receives huge amounts of information during the day / we fall asleep / the brain decides what to keep and what to forget",
+        "accept": [
+          "the brain receives huge amounts of information during the day we fall asleep the brain decides what to keep and what to forget"
+        ],
+        "explain_es": "Según la teoría del párrafo 3, primero recibimos mucha información durante el día y luego, al dormir, el cerebro decide qué guardar y qué olvidar."
       }
     ]
   },
@@ -2870,6 +3506,33 @@
           "one hundred one"
         ],
         "explain_es": "El párrafo 5 dice: 'at the age of 101'."
+      },
+      {
+        "type": "order",
+        "q": "she was hired by the organisation that became NASA / she received the Presidential Medal of Freedom / she graduated from university / she worked as a teacher",
+        "answer": "she graduated from university / she worked as a teacher / she was hired by the organisation that became NASA / she received the Presidential Medal of Freedom",
+        "accept": [
+          "she graduated from university she worked as a teacher she was hired by the organisation that became NASA she received the Presidential Medal of Freedom"
+        ],
+        "explain_es": "Orden del texto: se graduó a los 18 (párrafo 2), trabajó como profesora, fue contratada en 1953 (párrafo 3) y recibió la medalla en 2015 (párrafo 5)."
+      },
+      {
+        "type": "mc",
+        "q": "What does John Glenn's request suggest about Johnson?",
+        "options": [
+          "He trusted her more than the new machines",
+          "He didn't know her",
+          "He wanted to replace her",
+          "He thought her work was too slow"
+        ],
+        "answer": 0,
+        "explain_es": "En el párrafo 4, Glenn insistió en que ella revisara personalmente los números de las nuevas computadoras: confiaba más en ella que en las máquinas."
+      },
+      {
+        "type": "tf",
+        "q": "Johnson worked on calculations for the mission that took humans to the Moon.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'She also worked on calculations for the Apollo 11 mission, which took humans to the Moon in 1969'."
       }
     ]
   },
@@ -3009,6 +3672,39 @@
         "q": "The writer's school is a private school.",
         "answer": "NG",
         "explain_es": "El texto no dice si el colegio es público o privado."
+      },
+      {
+        "type": "gap",
+        "q": "The writer has been a teacher in Cali for ____ years.",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "El párrafo 1 dice: 'I have been a secondary school teacher in Cali for eight years'."
+      },
+      {
+        "type": "mc",
+        "q": "Why do some students arrive at class exhausted?",
+        "options": [
+          "They play video games all night",
+          "Their classes start very early",
+          "They do too much sport",
+          "They have long bus journeys, family duties or jobs, plus a lot of homework"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 menciona los viajes largos en bus, ayudar a la familia y trabajos de medio tiempo, además de 'two or three hours of homework every night'."
+      },
+      {
+        "type": "mc",
+        "q": "Which of these tasks would the writer probably like?",
+        "options": [
+          "Copying fifty sentences",
+          "Interviewing a grandparent",
+          "Three hours of worksheets",
+          "Repeating the same exercise ten times"
+        ],
+        "answer": 1,
+        "explain_es": "En el párrafo 4 el autor da como ejemplo de tarea valiosa 'interviewing a grandparent'; prefiere tareas cortas que hagan pensar."
       }
     ]
   },
@@ -3148,6 +3844,38 @@
         ],
         "answer": 3,
         "explain_es": "El párrafo 5 dice: 'to build 200 filters for local families'."
+      },
+      {
+        "type": "mc",
+        "q": "Why was boiling water a problem for some families?",
+        "options": [
+          "Gas is expensive",
+          "Their stoves were broken",
+          "Boiling water tastes bad",
+          "They didn't have bottles"
+        ],
+        "answer": 0,
+        "explain_es": "En el párrafo 2 Valeria explica: 'gas is expensive... Some families couldn't afford it'."
+      },
+      {
+        "type": "order",
+        "q": "charcoal / small stones / a piece of clean cotton cloth / sand",
+        "answer": "small stones / sand / charcoal / a piece of clean cotton cloth",
+        "accept": [
+          "small stones sand charcoal a piece of clean cotton cloth"
+        ],
+        "explain_es": "El párrafo 3 describe las capas en este orden: 'small stones, sand, charcoal and a piece of clean cotton cloth'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'point out' means…",
+        "options": [
+          "hide something",
+          "draw a picture",
+          "say something so people notice it"
+        ],
+        "answer": 2,
+        "explain_es": "'Point out' significa señalar o hacer notar algo: el equipo aclara que su filtro no es perfecto."
       }
     ]
   },
@@ -3293,6 +4021,33 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo 5 dice: 'start making small games now, even if they are simple'."
+      },
+      {
+        "type": "gap",
+        "q": "Camila's latest game has been downloaded more than half a ____ times.",
+        "answer": "million",
+        "explain_es": "El párrafo 1 dice: 'has been downloaded more than half a million times'."
+      },
+      {
+        "type": "order",
+        "q": "a friend asked her to help with the art for a game / she started working for a studio in Montreal / Camila studied graphic design / she worked on a game every weekend for six months",
+        "answer": "Camila studied graphic design / a friend asked her to help with the art for a game / she worked on a game every weekend for six months / she started working for a studio in Montreal",
+        "accept": [
+          "Camila studied graphic design a friend asked her to help with the art for a game she worked on a game every weekend for six months she started working for a studio in Montreal"
+        ],
+        "explain_es": "Primero estudió diseño gráfico; en tercer año un amigo le pidió ayuda y trabajaron seis meses (párrafo 2); hoy trabaja en Montreal (párrafo 1)."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Camila recommend studying history, music or psychology?",
+        "options": [
+          "Because good ideas often come from unexpected places",
+          "Because games are boring",
+          "Because you need a second job",
+          "Because studios ask for these degrees"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 5 dice: 'The best ideas often come from somewhere unexpected'."
       }
     ]
   },
@@ -3437,6 +4192,39 @@
         "q": "An interview is a conversation, not an ____.",
         "answer": "exam",
         "explain_es": "El último párrafo dice: 'an interview is a conversation, not an exam'."
+      },
+      {
+        "type": "order",
+        "q": "practise out loud / ask your own questions / research the company / plan the practical details / prepare your stories",
+        "answer": "research the company / prepare your stories / practise out loud / plan the practical details / ask your own questions",
+        "accept": [
+          "research the company prepare your stories practise out loud plan the practical details ask your own questions"
+        ],
+        "explain_es": "La guía presenta los pasos en este orden: 1 investigar la empresa, 2 preparar historias, 3 practicar en voz alta, 4 planear los detalles prácticos y 5 hacer tus propias preguntas."
+      },
+      {
+        "type": "mc",
+        "q": "When should you choose your clothes for the interview?",
+        "options": [
+          "On the morning of the interview",
+          "A week before",
+          "The night before",
+          "After you arrive"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'Choose clean, appropriate clothes the night before'."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's attitude to not getting the job?",
+        "options": [
+          "It means you are not good at interviews",
+          "You should stop looking for jobs",
+          "You should ask the company for an explanation",
+          "It is still useful practice for the next interview"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 7 dice: 'Even if you don't get the job, every interview is good practice for the next one'."
       }
     ]
   },
@@ -3580,6 +4368,39 @@
         "q": "According to the writer, second-hand markets are popular only with older people.",
         "answer": "F",
         "explain_es": "El párrafo 5 dice que son populares 'among young people'."
+      },
+      {
+        "type": "gap",
+        "q": "Huge piles of unwanted clothes have been dumped in the ____ Desert.",
+        "answer": "Atacama",
+        "accept": [
+          "Atacama Desert"
+        ],
+        "explain_es": "El párrafo 3 dice que la ropa se ha tirado 'in places such as the Atacama Desert in northern Chile'."
+      },
+      {
+        "type": "mc",
+        "q": "Why do people throw clothes away after wearing them only a few times?",
+        "options": [
+          "The clothes are too big",
+          "The clothes are so cheap",
+          "The clothes are made of cotton",
+          "Shops ask them to"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'Because clothes are so cheap, people tend to wear them only a few times before throwing them away'."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer suggest in the last sentence?",
+        "options": [
+          "Shopping should be banned",
+          "Only governments can solve the problem",
+          "Small changes by many people could make a big difference",
+          "Expensive brands are always better"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 termina: 'If we all bought fewer, better clothes and kept them for longer, the difference could be enormous'."
       }
     ]
   },
@@ -3726,6 +4547,33 @@
         ],
         "answer": 1,
         "explain_es": "El último párrafo dice: 'If you prefer fast action, you might be disappointed'."
+      },
+      {
+        "type": "gap",
+        "q": "The story takes place in the year ____.",
+        "answer": "2090",
+        "explain_es": "El párrafo 2 dice: 'It is the year 2090, and most of the planet has turned into desert'."
+      },
+      {
+        "type": "order",
+        "q": "Elena has to decide who she can trust / a group of strangers arrives / they ask for shelter",
+        "answer": "a group of strangers arrives / they ask for shelter / Elena has to decide who she can trust",
+        "accept": [
+          "a group of strangers arrives they ask for shelter Elena has to decide who she can trust"
+        ],
+        "explain_es": "El párrafo 2 describe la secuencia: llegan unos desconocidos, piden refugio y Elena tiene que decidir en quién confiar."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the frailejón make the landscape look like another planet?",
+        "options": [
+          "It is strange and silvery and grows in few places",
+          "It is very tall and green",
+          "It is a plastic decoration",
+          "It only appears at night"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 describe 'The strange, silvery frailejón plants, which only grow in a few places in the world'."
       }
     ]
   },
@@ -3871,6 +4719,33 @@
         ],
         "answer": 1,
         "explain_es": "El párrafo 5 dice que desde entonces organizan una cena cada mes en el patio."
+      },
+      {
+        "type": "order",
+        "q": "the electricity came back / the power went out / someone created a group chat / people brought food from their fridges / Tomás went downstairs with a candle",
+        "answer": "the power went out / Tomás went downstairs with a candle / people brought food from their fridges / the electricity came back / someone created a group chat",
+        "accept": [
+          "the power went out Tomás went downstairs with a candle people brought food from their fridges the electricity came back someone created a group chat"
+        ],
+        "explain_es": "La historia sigue este orden: se va la luz (párrafo 2), Tomás baja (párrafo 3), traen comida (párrafo 4), vuelve la luz y alguien crea un chat (párrafo 5)."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Tomás go downstairs?",
+        "options": [
+          "He wanted to complain about the noise",
+          "A neighbour knocked on his door",
+          "He needed to buy candles",
+          "It was hot, his phone was dying and he heard voices outside"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice que tenía calor, el teléfono casi sin batería, se sentía ansioso y oía voces en el patio."
+      },
+      {
+        "type": "tf",
+        "q": "After the electricity came back, everyone went upstairs immediately.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice: 'Everyone cheered, but nobody went upstairs immediately'."
       }
     ]
   },
@@ -4012,6 +4887,39 @@
         ],
         "answer": 2,
         "explain_es": "El párrafo 6 dice: 'I will contact the consumer protection authority'."
+      },
+      {
+        "type": "gap",
+        "q": "Daniela ordered the laptop on 2 ____.",
+        "answer": "September",
+        "accept": [
+          "Sept"
+        ],
+        "explain_es": "El párrafo 2 dice: 'a laptop that I ordered from your website on 2 September'."
+      },
+      {
+        "type": "mc",
+        "q": "What has Daniela attached to the email?",
+        "options": [
+          "Only a copy of her receipt",
+          "Photographs of the box and screen and a copy of her receipt",
+          "A video of the laptop",
+          "A letter from her university"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'I have attached photographs of both the box and the screen, as well as a copy of my receipt'."
+      },
+      {
+        "type": "mc",
+        "q": "How has Daniela done her first assignments?",
+        "options": [
+          "On a computer she borrowed from a friend",
+          "On her phone",
+          "By hand",
+          "In the university library"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'I have had to borrow a computer from a friend in order to complete my first assignments'."
       }
     ]
   }

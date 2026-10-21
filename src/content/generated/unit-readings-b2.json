@@ -134,6 +134,48 @@
       "cook"
      ],
      "explain_es": "Mateo dice: \"The solution is that we all cook a little\" (una cláusula nominal después de 'be')."
+    },
+    {
+     "type": "mc",
+     "q": "How long has Gloria hosted the Sunday lunch?",
+     "options": [
+      "About ten years",
+      "Almost four decades",
+      "Since last Christmas",
+      "Seventy-four years"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"has hosted the lunch for almost four decades\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Mateo complaining about when he says his great-aunt knows his news 'by Sunday'?",
+     "options": [
+      "His mother never listens",
+      "In a big family, news spreads quickly and secrets are impossible",
+      "His great-aunt lives too far away",
+      "Nobody talks to him"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"Being part of a big family means never being able to keep a secret\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the phrase 'patch things up' in paragraph 4 mean?",
+     "options": [
+      "repair a garment",
+      "make peace after a disagreement",
+      "divide an inheritance",
+      "organise a lunch"
+     ],
+     "answer": 1,
+     "explain_es": "Las hermanas volvieron a hablarse: \"patch things up\" significa reconciliarse."
+    },
+    {
+     "type": "tf",
+     "q": "According to paragraph 5, many families now meet only at Christmas.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"many families now meet only at Christmas\"."
     }
    ]
   },
@@ -281,6 +323,48 @@
      ],
      "answer": 3,
      "explain_es": "Dice: \"a nurturing home isn't one without conflict. It's one where people learn how to repair things after a fight\"."
+    },
+    {
+     "type": "mc",
+     "q": "What worries Dr Ríos more than siblings arguing?",
+     "options": [
+      "Parents constantly comparing their children",
+      "Children watching television",
+      "Siblings sharing a bedroom",
+      "Grandparents interfering"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: \"What worries me is not arguing itself, but parents comparing their children all the time\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'don't see eye to eye' (paragraph 4) mean?",
+     "options": [
+      "don't look at each other",
+      "disagree",
+      "don't meet often",
+      "have bad eyesight"
+     ],
+     "answer": 1,
+     "explain_es": "\"don't see eye to eye ... on anything important\": no estar de acuerdo."
+    },
+    {
+     "type": "tf",
+     "q": "According to Dr Ríos, siblings usually drift apart slowly.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"Usually it happens slowly\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which activity does Dr Ríos suggest to help children bond?",
+     "options": [
+      "Competitions between siblings",
+      "Cooking a meal together",
+      "Separate bedrooms",
+      "Extra homework"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"Give them shared projects rather than competitions: cooking a meal together...\"."
     }
    ]
   },
@@ -411,6 +495,48 @@
      ],
      "answer": 0,
      "explain_es": "'My idea of home isn't a country. It's a sofa with way too many people on it.'"
+    },
+    {
+     "type": "mc",
+     "q": "What details in the photograph tell 'a more unusual story'?",
+     "options": [
+      "The golden retriever",
+      "The clothes from different cultures worn by family members",
+      "The size of the sofa",
+      "The smiles on their faces"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: el kimono, el thobe y el sari muestran orígenes culturales diversos."
+    },
+    {
+     "type": "tf",
+     "q": "Children in mixed families often switch between languages without thinking about it.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"switch between two or three languages without thinking twice\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 4, why did some grandparents find the adjustment hard?",
+     "options": [
+      "They did not like children",
+      "Marrying someone from another country was rare where they grew up",
+      "They lived far away",
+      "They did not speak English"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: crecieron en comunidades donde casarse con un extranjero \"was rare\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'practice' refer to in paragraph 5?",
+     "options": [
+      "practising a musical instrument",
+      "experience of seeing the world from more than one point of view",
+      "practising for exams",
+      "learning to cook"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: los niños que explican su origen aprenden a ver el mundo desde varios puntos de vista."
     }
    ],
    "words": 333
@@ -554,6 +680,48 @@
      ],
      "answer": 1,
      "explain_es": "Último párrafo: \"the sea... finally took them\", pero \"we will probably never know for certain\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'Its' in \"Its crew expected to see the three lighthouse keepers\" (paragraph 1) refer to?",
+     "options": [
+      "the island",
+      "the lighthouse",
+      "the Hesperus, the supply ship",
+      "the Flannan Isles"
+     ],
+     "answer": 2,
+     "explain_es": "'Its' remite al barco de suministros, el Hesperus."
+    },
+    {
+     "type": "tf",
+     "q": "The investigators found signs of storm damage at the west landing.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"a storm had clearly caused serious damage\" en el desembarcadero oeste."
+    },
+    {
+     "type": "mc",
+     "q": "Why is the missing third coat important, according to paragraph 4?",
+     "options": [
+      "It suggests one keeper left in a hurry, possibly breaking the rules",
+      "It proves the men were kidnapped",
+      "It shows the weather was warm",
+      "It belonged to Joseph Moore"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: una norma obligaba a uno a quedarse dentro; el abrigo sugiere que salió con prisa."
+    },
+    {
+     "type": "mc",
+     "q": "Why do most historians reject the more imaginative theories?",
+     "options": [
+      "There is no evidence to support them",
+      "They were invented by the keepers",
+      "They are too recent",
+      "The government banned them"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"there is no evidence to support them\"."
     }
    ]
   },
@@ -689,6 +857,48 @@
      ],
      "answer": 1,
      "explain_es": "El párrafo enumera todo lo que debería o no debería haber hecho (should/shouldn't have)."
+    },
+    {
+     "type": "mc",
+     "q": "Why was the writer so angry about the missing bike?",
+     "options": [
+      "It was a gift from her father",
+      "It had cost three months' savings and she needed it for work",
+      "It was brand new",
+      "It belonged to her neighbour"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"That bike had cost me three months' savings, and I needed it to get to work\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'In my head, the case was closed' (paragraph 3) suggest?",
+     "options": [
+      "She had already decided who was guilty without proof",
+      "The police had closed the case",
+      "She had forgotten about the bike",
+      "She had found the bike"
+     ],
+     "answer": 0,
+     "explain_es": "Con pocos indicios, ya había decidido que el inquilino era culpable."
+    },
+    {
+     "type": "tf",
+     "q": "Some neighbours suggested calling the police.",
+     "answer": "T",
+     "explain_es": "Párrafo 4: \"others suggested calling the police\"."
+    },
+    {
+     "type": "mc",
+     "q": "What was the man in 7B actually doing on Sunday night?",
+     "options": [
+      "Taking his rubbish out",
+      "Stealing a bike",
+      "Moving into the building",
+      "Coming home from the hospital"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: \"had simply been taking his rubbish out\"."
     }
    ]
   }
@@ -831,6 +1041,43 @@
      ],
      "answer": 3,
      "explain_es": "'Although' conecta ideas opuestas: es mayormente de bajada, pero el sol es fuerte."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by saying arrival in Barichara feels like 'stepping into an old photograph'?",
+     "options": [
+      "The town looks old-fashioned and unchanged",
+      "The town is in black and white",
+      "There are many photographers",
+      "The bus was very old"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 1: calles de piedra, casas blancas y tejados rojos dan una sensación de pasado conservado."
+    },
+    {
+     "type": "tf",
+     "q": "The walk along the Camino Real takes around two and a half hours.",
+     "answer": "T",
+     "explain_es": "Párrafo 4: \"The walk takes around two and a half hours\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do some residents complain about in paragraph 5?",
+     "options": [
+      "The lack of tourists",
+      "Property prices rising beyond local families' reach",
+      "Noisy motorbikes",
+      "The bus service"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"property prices have risen beyond the reach of local families\"."
+    },
+    {
+     "type": "gap",
+     "q": "The writer advises visitors to give themselves at least two ____ in Barichara.",
+     "answer": "nights",
+     "accept": [],
+     "explain_es": "Párrafo 6: \"give yourself at least two nights\"."
     }
    ]
   },
@@ -972,6 +1219,48 @@
      ],
      "answer": 2,
      "explain_es": "Último párrafo: \"What matters is knowing what you need\"."
+    },
+    {
+     "type": "mc",
+     "q": "How does the writer answer the question of which life is better?",
+     "options": [
+      "The small town is clearly better",
+      "The city is clearly better",
+      "Both have disappointed and surprised her",
+      "She refuses to answer"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 1: \"both have disappointed me and both have surprised me\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by 'the right kind of noise' (paragraph 3)?",
+     "options": [
+      "Natural, peaceful sounds such as birds and rain",
+      "Loud music from bars",
+      "Traffic in the town",
+      "Complete silence"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: pájaros al amanecer, lluvia en el techo, campanas: sonidos agradables."
+    },
+    {
+     "type": "tf",
+     "q": "The writer missed meeting a wide variety of people while living in the small town.",
+     "answer": "T",
+     "explain_es": "Párrafo 4: \"I missed the variety of people I used to meet in the capital\"."
+    },
+    {
+     "type": "mc",
+     "q": "What has the writer done differently since returning to Bogotá?",
+     "options": [
+      "She lives far from her office",
+      "She chose an apartment within walking distance of her office",
+      "She sold her van",
+      "She stopped going out at weekends"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"I chose an apartment within walking distance of my office\"."
     }
    ]
   }
@@ -1114,6 +1403,43 @@
      ],
      "answer": 3,
      "explain_es": "Los hábitos pueden adelantar el reloj interno solo \"by an hour or so\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 1, how do owls feel during the day?",
+     "options": [
+      "They feel most alert before lunch",
+      "They struggle in the morning but come alive in the evening",
+      "They sleep all afternoon",
+      "They feel the same all day"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: los búhos \"struggle in the morning but come alive in the evening\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'its' in \"Light is its most important signal\" (paragraph 2) refer to?",
+     "options": [
+      "the brain's internal clock",
+      "melatonin",
+      "the morning",
+      "the body"
+     ],
+     "answer": 0,
+     "explain_es": "'Its' remite a \"an internal clock in the brain\"."
+    },
+    {
+     "type": "tf",
+     "q": "Young children tend to wake up early.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"Young children tend to be early risers\"."
+    },
+    {
+     "type": "gap",
+     "q": "Experts suggest that good habits can move the internal clock earlier by an ____ or so.",
+     "answer": "hour",
+     "accept": [],
+     "explain_es": "Párrafo 6: \"move the internal clock earlier by an hour or so\"."
     }
    ]
   },
@@ -1263,6 +1589,48 @@
      ],
      "answer": 2,
      "explain_es": "Recomienda paciencia, horarios regulares y \"find a reason to get up that matters to you\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Wilson's wife say about him?",
+     "options": [
+      "He is the most boring guest in Colombia",
+      "He is the best baker in Cali",
+      "He works too little",
+      "He is a night owl"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 3: \"My wife says I'm the most boring guest in Colombia\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who are the bakery's first customers at six?",
+     "options": [
+      "Schoolchildren",
+      "Construction workers and night-shift nurses",
+      "Taxi drivers",
+      "Tourists"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"the construction workers and the nurses from the night shift start coming in\"."
+    },
+    {
+     "type": "tf",
+     "q": "Wilson stopped drinking coffee after midday to help him adjust.",
+     "answer": "T",
+     "explain_es": "Párrafo 9: \"I stopped drinking coffee after midday\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Wilson mean by 'We're a kind of secret club' (paragraph 11)?",
+     "options": [
+      "He belongs to a private organisation",
+      "People who are awake at four in the morning share a special experience",
+      "He meets friends at a nightclub",
+      "He keeps the bakery's recipes secret"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 11: barrenderos, taxistas y él comparten la ciudad de madrugada."
     }
    ]
   }
@@ -1405,6 +1773,48 @@
      ],
      "answer": 1,
      "explain_es": "Natalia ahora disfruta la franqueza, pero eso le causa problemas en Colombia con su tía."
+    },
+    {
+     "type": "tf",
+     "q": "Natalia found the German language her biggest challenge in Hamburg.",
+     "answer": "F",
+     "explain_es": "Párrafo 1: \"My German was fine\"; lo difícil fue el estilo de comunicación."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 3, why do people often 'talk at cross purposes'?",
+     "options": [
+      "They speak different languages",
+      "Each follows the communication rules they grew up with and thinks the other is difficult",
+      "They never attend meetings",
+      "Their bosses give unclear instructions"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: ambos siguen sus propias normas culturales y creen que el otro es difícil."
+    },
+    {
+     "type": "vocab",
+     "q": "The phrase 'mince their words' (paragraph 2) is used to say that in direct cultures people rarely…",
+     "options": [
+      "speak too fast",
+      "soften what they say to be polite",
+      "use long words",
+      "speak in public"
+     ],
+     "answer": 1,
+     "explain_es": "\"rarely mince their words\": casi nunca suavizan lo que dicen."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Natalia now find directness 'relaxing'?",
+     "options": [
+      "She no longer has to guess what people think",
+      "Her colleagues are friendlier",
+      "She works fewer hours",
+      "Her boss never criticises her"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 6: \"It's actually relaxing not to have to guess what people think\"."
     }
    ]
   },
@@ -1542,6 +1952,54 @@
      "q": "Lucía worked in marketing before becoming an advice columnist.",
      "answer": "NG",
      "explain_es": "La columna no dice nada sobre el pasado profesional de Lucía."
+    },
+    {
+     "type": "mc",
+     "q": "What do the writer's friends advise her to do?",
+     "options": [
+      "Change jobs",
+      "Stop being indirect and confront Andrés",
+      "Talk to her manager first",
+      "Stay silent"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"stop beating around the bush and confront him\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Lucía recommend sending an email before the meeting?",
+     "options": [
+      "To remind Andrés to arrive on time",
+      "To create a written record that the ideas came from the writer",
+      "To avoid attending the meeting",
+      "To complain to the manager"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: crea \"a written record that they came from you\"."
+    },
+    {
+     "type": "mc",
+     "q": "When talking privately to Andrés, what should the writer focus on?",
+     "options": [
+      "His character",
+      "Specific situations rather than his personality",
+      "Her friends' opinions",
+      "Their manager's mistakes"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"focusing on specific situations rather than on his character\"."
+    },
+    {
+     "type": "mc",
+     "q": "How might a good manager make meetings fairer, according to paragraph 8?",
+     "options": [
+      "By cancelling meetings",
+      "By asking each person to speak in turn",
+      "By promoting the quietest employee",
+      "By recording every meeting"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 8: \"by asking each person to speak in turn\"."
     }
    ]
   }
@@ -1691,6 +2149,48 @@
      ],
      "answer": 0,
      "explain_es": "Ella dice que cuando se exageran estas historias, \"people stop trusting the real warnings\"."
+    },
+    {
+     "type": "tf",
+     "q": "The video in the rumour was about eleven seconds long.",
+     "answer": "T",
+     "explain_es": "Párrafo 1: \"It was only eleven seconds long\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the idiom 'take it with a pinch of salt' (paragraph 3) mean?",
+     "options": [
+      "believe it completely",
+      "not fully believe it",
+      "share it quickly",
+      "report it to the police"
+     ],
+     "answer": 1,
+     "explain_es": "Pineda decidió no creerlo del todo hasta investigarlo."
+    },
+    {
+     "type": "mc",
+     "q": "What had the animal in the video actually been doing?",
+     "options": [
+      "A hippo was hunting fish",
+      "A cow was swimming across the river after escaping",
+      "A dog was playing near the bridge",
+      "Children were swimming"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"That's my neighbour's cow... She had escaped and was swimming across\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the biologist conclude about the video?",
+     "options": [
+      "The animal was a young hippo",
+      "The shape of the head was clearly that of a cow",
+      "The video was fake",
+      "It was impossible to tell"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"the shape of the head was clearly that of a cow\"."
     }
    ]
   },
@@ -1836,6 +2336,48 @@
      ],
      "answer": 2,
      "explain_es": "Aconseja detenerse diez segundos, preguntarse quién lo creó y verificar en dos sitios confiables."
+    },
+    {
+     "type": "mc",
+     "q": "What kind of false content was most common when Andrea started in 2020?",
+     "options": [
+      "Manipulated audio",
+      "Text such as invented quotes and fake headlines",
+      "AI-generated videos",
+      "Edited photos of footballers"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"most of the false content we saw was text: invented quotes, fake headlines\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why would the team probably not check a silly story about a celebrity?",
+     "options": [
+      "It is too difficult to check",
+      "It is not likely to cause much harm",
+      "Celebrities never lie",
+      "It is illegal"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: priorizan lo que puede causar daño; una historia tonta \"probably isn't worth our time\"."
+    },
+    {
+     "type": "mc",
+     "q": "How does the team respond to accusations of bias?",
+     "options": [
+      "By ignoring them",
+      "By publishing their sources and explaining how they reached their verdict",
+      "By deleting the articles",
+      "By suing the critics"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"we always publish our sources and explain exactly how we reached our verdict\"."
+    },
+    {
+     "type": "tf",
+     "q": "Andrea says you should be most careful when a story makes you very angry or very excited.",
+     "answer": "T",
+     "explain_es": "Párrafo 7: \"that's exactly when you should be most careful\"."
     }
    ]
   }
@@ -1979,6 +2521,48 @@
      ],
      "answer": 2,
      "explain_es": "Las preguntas negativas se usan para expresar una opinión esperando que el lector esté de acuerdo."
+    },
+    {
+     "type": "mc",
+     "q": "Why, according to paragraph 1, do people accept app permissions without thinking?",
+     "options": [
+      "They have read the conditions before",
+      "They want to use the service quickly, e.g. to order lunch",
+      "They trust the government",
+      "The law requires it"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: aceptan \"because we want to order lunch or edit a selfie\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to the writer, collected data has been used to predict who people will vote for.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"It has been used to predict what we will buy, who we will vote for...\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'Neither argument convinces me' (paragraph 3) show about the writer?",
+     "options": [
+      "She rejects both defences of the tech industry",
+      "She agrees with one of the arguments",
+      "She is not sure about the issue",
+      "She thinks both arguments are excellent"
+     ],
+     "answer": 0,
+     "explain_es": "La escritora rechaza ambos argumentos: que el servicio es gratis y que siempre se puede optar por no participar."
+    },
+    {
+     "type": "mc",
+     "q": "According to the writer, privacy is ultimately about…",
+     "options": [
+      "technology",
+      "money",
+      "power: who has it and who doesn't",
+      "advertising"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 7: \"It's about power: who has it, and who doesn't\"."
     }
    ]
   },
@@ -2120,6 +2704,48 @@
      "q": "The parents' version of the experiment has already finished.",
      "answer": "F",
      "explain_es": "Último párrafo: \"a version for parents is being planned for next term\": todavía no ha ocurrido."
+    },
+    {
+     "type": "mc",
+     "q": "How did students first react to Mónica Arango's proposal?",
+     "options": [
+      "With enthusiasm",
+      "As if she had asked them to stop breathing",
+      "They ignored it",
+      "They asked for a longer experiment"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 1: \"They looked at me as if I had asked them to stop breathing\"."
+    },
+    {
+     "type": "tf",
+     "q": "Three students gave up before Wednesday.",
+     "answer": "T",
+     "explain_es": "Párrafo 3: \"Three students gave up before Wednesday\"."
+    },
+    {
+     "type": "mc",
+     "q": "What problem with school announcements did some students mention?",
+     "options": [
+      "They were too long",
+      "They were sometimes posted only on Instagram",
+      "They were sent at night",
+      "They were in English"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"school announcements were sometimes posted only on Instagram\"."
+    },
+    {
+     "type": "mc",
+     "q": "What was Arango's main purpose with the experiment?",
+     "options": [
+      "To show that technology is bad",
+      "To let students decide how much attention to give to technology",
+      "To ban phones at school",
+      "To improve exam results"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: quería que decidieran \"how much of their attention they're willing to give away\"."
     }
    ]
   }
@@ -2262,6 +2888,48 @@
      ],
      "answer": 2,
      "explain_es": "El párrafo tranquiliza: estos momentos muestran que el recuerdo sigue almacenado."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, how often do most adults have tip-of-the-tongue states?",
+     "options": [
+      "About once a day",
+      "About once a week",
+      "About once a year",
+      "Only in old age"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"most adults have them about once a week\"."
+    },
+    {
+     "type": "tf",
+     "q": "People in a tip-of-the-tongue state can often remember the first letter of the missing word.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: suelen recordar información relacionada, \"such as its first letter\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does trying harder rarely help you remember a word?",
+     "options": [
+      "It makes you tired",
+      "Concentrating may activate a wrong word that gets in the way",
+      "It reduces stress",
+      "It makes the memory disappear"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: concentrarse puede activar una palabra equivocada que estorba."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer mean by 'Go and wash the dishes' at the end?",
+     "options": [
+      "Do something else and the word will probably come back",
+      "Housework improves memory permanently",
+      "The writer dislikes washing dishes",
+      "Forgetting is caused by stress at home"
+     ],
+     "answer": 0,
+     "explain_es": "Retoma el ejemplo inicial: al pensar en otra cosa, el nombre aparece solo."
     }
    ]
   },
@@ -2406,6 +3074,48 @@
      ],
      "answer": 0,
      "explain_es": "El párrafo muestra que Valentina todavía olvida cosas cotidianas."
+    },
+    {
+     "type": "mc",
+     "q": "How did Valentina describe herself at school?",
+     "options": [
+      "As the best student",
+      "As the absent-minded one",
+      "As a memory champion",
+      "As a quiet reader"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"At school I was the absent-minded one\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Valentina mean when she says holding Colombian records is 'less impressive than it sounds'?",
+     "options": [
+      "There are not many competitors",
+      "The records are fake",
+      "She lost them later",
+      "The competitions are very easy"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: \"There aren't many of us\"."
+    },
+    {
+     "type": "tf",
+     "q": "Valentina runs workshops for secondary school students who struggle with exams.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"She now runs workshops for secondary school students who struggle with exams\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Valentina, why do many young people think they are bad at studying?",
+     "options": [
+      "They are lazy",
+      "Nobody has taught them how memory works",
+      "Their teachers are poor",
+      "They sleep too little"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"really nobody has taught them how memory works\"."
     }
    ]
   }
@@ -2552,6 +3262,48 @@
      ],
      "answer": 1,
      "explain_es": "El párrafo muestra la diversidad dentro de un mismo país."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer mention the Colombian businesswoman going to Tokyo?",
+     "options": [
+      "To show how a generalisation can help avoid mistakes",
+      "To criticise Japanese culture",
+      "To show that Colombians are always late",
+      "To describe a real meeting"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: conocer las normas generales le ayudaría a \"avoid embarrassing mistakes\"."
+    },
+    {
+     "type": "tf",
+     "q": "According to the essay, stereotypes tend to change easily when new evidence appears.",
+     "answer": "F",
+     "explain_es": "Párrafo 3: \"Stereotypes... tend to resist evidence\"."
+    },
+    {
+     "type": "mc",
+     "q": "What real consequence of stereotypes do some Colombians experience abroad?",
+     "options": [
+      "Free upgrades on flights",
+      "Jokes, suspicion or extra searches at airports",
+      "Higher salaries",
+      "Faster visas"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"jokes, suspicion or extra searches at airports\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to the conclusion, when does the problem with generalisations begin?",
+     "options": [
+      "When we travel abroad",
+      "When we stop observing and start assuming",
+      "When we make jokes",
+      "When we learn a language"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"The problem begins when we stop observing and start assuming\"."
     }
    ]
   },
@@ -2686,6 +3438,54 @@
      ],
      "answer": 0,
      "explain_es": "La autora concluye que no tiene que elegir: tiene rasgos de ambas culturas."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer say that in Cali 'silence was considered almost rude' (paragraph 2)?",
+     "options": [
+      "People were always visiting and talking, so being quiet seemed unfriendly",
+      "The neighbours complained about noise",
+      "Her grandmother was deaf",
+      "Children had to sing at dinner"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: la casa siempre estaba llena de gente; el silencio parecía poco amable."
+    },
+    {
+     "type": "mc",
+     "q": "What did the writer's grandmother teach her to make?",
+     "options": [
+      "Chontaduro",
+      "Aborrajados",
+      "Peanut butter sandwiches",
+      "Tamales"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"my grandmother had taught me to make aborrajados\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the writer's friends in the US imagine about her life in Colombia?",
+     "options": [
+      "Something from the news",
+      "A big farm",
+      "A quiet village",
+      "A modern city like New York"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: \"They imagined something from the news\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, what was 'the wrong question'?",
+     "options": [
+      "Whether she was American or Colombian",
+      "Whether she could dance salsa",
+      "Whether she missed the cold",
+      "Whether she was punctual"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 5: pensaba que debía elegir entre ser estadounidense o colombiana; ahora sabe que era la pregunta equivocada."
     }
    ]
   }
@@ -2834,6 +3634,54 @@
      ],
      "answer": 0,
      "explain_es": "Sección 3: decidir exactamente qué resolvería el problema."
+    },
+    {
+     "type": "mc",
+     "q": "According to section 3, what usually wins a dispute?",
+     "options": [
+      "Shouting loudest",
+      "Having the best records",
+      "Calling every day",
+      "Asking friends for help"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 3: \"not who shouts loudest but who has the best records\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why should you decide exactly what you want before contacting the company?",
+     "options": [
+      "Companies respond more easily to specific requests",
+      "It makes the call shorter",
+      "It is required by law",
+      "Supervisors insist on it"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 4: \"Companies find it much easier to respond when the request is specific\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which government body can you complain to if a company does not answer?",
+     "options": [
+      "The Consumer Protection Statute",
+      "The Superintendence of Industry and Commerce",
+      "The manufacturer",
+      "The local police"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 6: \"the Superintendence of Industry and Commerce, the government body that protects consumers\"."
+    },
+    {
+     "type": "vocab",
+     "q": "The phrase 'at the end of your tether' (final paragraph) is closest in meaning to…",
+     "options": [
+      "very patient",
+      "so annoyed that you cannot cope any more",
+      "at the end of a queue",
+      "finished with shopping"
+     ],
+     "answer": 1,
+     "explain_es": "\"don't wait until you're at the end of your tether\": no esperar a estar al límite de la paciencia."
     }
    ]
   },
@@ -2979,6 +3827,48 @@
      ],
      "answer": 3,
      "explain_es": "Hernando: \"patience and paperwork are more powerful than anger\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'the last straw' mean in paragraph 1?",
+     "options": [
+      "The final problem that made him lose patience",
+      "A drinking straw",
+      "The first problem",
+      "A cheap solution"
+     ],
+     "answer": 0,
+     "explain_es": "El frigorífico fue el último problema tras muchos otros; ahí dijo basta."
+    },
+    {
+     "type": "mc",
+     "q": "Why did Hernando stop and apologise to Yesenia?",
+     "options": [
+      "He knew from experience that shouting rarely works",
+      "She threatened to hang up",
+      "His daughter told him to",
+      "He had called the wrong number"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 2: como maestro durante treinta años \"he knew that shouting rarely worked\"."
+    },
+    {
+     "type": "tf",
+     "q": "Hernando attached photos and receipts to his formal email.",
+     "answer": "T",
+     "explain_es": "Párrafo 5: \"attached photos of the warm milk and the receipts\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why wasn't the offer exactly the 'redress' Hernando had asked for?",
+     "options": [
+      "Nothing could replace his sister's fish",
+      "The fridge was smaller",
+      "The voucher had expired",
+      "The fridge never arrived"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 6: \"nothing could replace his sister's fish\"."
     }
    ]
   }
@@ -3122,6 +4012,54 @@
      ],
      "answer": 2,
      "explain_es": "El párrafo explica las limitaciones del estudio y por qué no hay que generalizar."
+    },
+    {
+     "type": "mc",
+     "q": "Over how many countries did the research assistants 'lose' wallets?",
+     "options": [
+      "Four",
+      "Seventeen",
+      "Forty",
+      "Hundreds"
+     ],
+     "answer": 2,
+     "explain_es": "Párrafo 2: \"in hundreds of cities in forty countries\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do the researchers suggest the key shows about people who returned wallets?",
+     "options": [
+      "They wanted a reward",
+      "They were thinking about the owner's problem",
+      "They needed a key themselves",
+      "They were afraid of the police"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: sugiere que la gente pensaba \"about the owner's problem, not just their own reputation\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which factors probably affected return rates between countries?",
+     "options": [
+      "The colour of the wallets",
+      "Trust in institutions and the quality of the postal system",
+      "The weather",
+      "The age of the research assistants"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: \"trust in institutions and the quality of the postal system\"."
+    },
+    {
+     "type": "vocab",
+     "q": "The phrase 'have qualms about' (paragraph 6) is closest in meaning to…",
+     "options": [
+      "feel uneasy about",
+      "enjoy",
+      "are proud of",
+      "forget about"
+     ],
+     "answer": 0,
+     "explain_es": "\"many people have qualms about taking what isn't theirs\": sienten reparos o incomodidad moral."
     }
    ]
   },
@@ -3265,6 +4203,48 @@
      ],
      "answer": 1,
      "explain_es": "\"he wishes he had refused immediately... instead of asking for time\" (wish + past perfect)."
+    },
+    {
+     "type": "mc",
+     "q": "How did Patricia justify her request?",
+     "options": [
+      "She said the investors had asked for it",
+      "She said it was just a question of timing and everybody does it",
+      "She said it was a legal requirement",
+      "She said Camilo would get a bonus"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"It's just a question of timing. Everybody does it\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the detail about Camilo's mother in paragraph 3 suggest?",
+     "options": [
+      "The job meant a lot to Camilo and his family",
+      "His mother worked at the firm",
+      "His family wanted him to leave",
+      "His mother disliked offices"
+     ],
+     "answer": 0,
+     "explain_es": "Su madre presumía de que trabajaba en una oficina con vista: el trabajo era motivo de orgullo, y había mucho en juego."
+    },
+    {
+     "type": "mc",
+     "q": "What did Camilo suggest in his email?",
+     "options": [
+      "Delaying the report",
+      "Presenting the real numbers with a clear explanation",
+      "Asking another employee",
+      "Contacting the investors directly"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 7: \"suggested they present the real numbers with a clear explanation\"."
+    },
+    {
+     "type": "tf",
+     "q": "The quarterly report went out with the original figures.",
+     "answer": "T",
+     "explain_es": "Párrafo 8: \"The report went out with the original figures\"."
     }
    ]
   }
@@ -3407,6 +4387,48 @@
      ],
      "answer": 0,
      "explain_es": "Último párrafo: \"I will have been working at the engineering firm for eighteen months\" (future perfect continuous)."
+    },
+    {
+     "type": "mc",
+     "q": "How did the writer feel about bureaucracy in Montreal?",
+     "options": [
+      "It was much easier than in Colombia",
+      "It was also slow and complicated",
+      "It did not exist",
+      "It was only a problem for students"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"I had imagined that bureaucracy was a Colombian speciality. It isn't\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why did the writer feel 'like a fish out of water' at work?",
+     "options": [
+      "She did not have an office",
+      "Quebec French had its own vocabulary and rhythm and colleagues mixed languages",
+      "She did not like engineering",
+      "Her colleagues were unfriendly"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 5: el francés de Quebec tenía su propio vocabulario y sus colegas mezclaban francés e inglés."
+    },
+    {
+     "type": "tf",
+     "q": "The writer would make the same decision to move again.",
+     "answer": "T",
+     "explain_es": "Párrafo 7: \"Would I do it again? Absolutely\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer hope to have done by this time next year, as a humorous final point?",
+     "options": [
+      "Bought a proper winter coat",
+      "Returned to Bogotá",
+      "Learned to ski",
+      "Opened a café"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 8: \"I hope, I will have bought a proper winter coat\"."
     }
    ]
   },
@@ -3553,6 +4575,48 @@
      ],
      "answer": 2,
      "explain_es": "'will have been living' = future perfect continuous: duración hasta un punto del futuro."
+    },
+    {
+     "type": "mc",
+     "q": "According to Yolimar, what was the hardest part of moving to Colombia?",
+     "options": [
+      "Learning Spanish",
+      "The red tape: without papers she could not work or rent",
+      "Finding a school",
+      "The hot weather"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 2: \"The hardest part was the red tape\"."
+    },
+    {
+     "type": "tf",
+     "q": "Colombia's temporary protection status was introduced in 2021.",
+     "answer": "T",
+     "explain_es": "Párrafo 2: \"introduced in 2021\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Klaus say he would have done differently?",
+     "options": [
+      "Moved to Medellín",
+      "Been more patient at the beginning",
+      "Learned German",
+      "Stayed in Hamburg"
+     ],
+     "answer": 1,
+     "explain_es": "Párrafo 4: \"If I had been more patient at the beginning, I would have enjoyed that first year much more\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do experts predict Colombia will have become by 2035?",
+     "options": [
+      "One of the most diverse societies in South America",
+      "A country with no emigration",
+      "The richest country in the region",
+      "A country closed to foreigners"
+     ],
+     "answer": 0,
+     "explain_es": "Párrafo 6: \"Colombia will have become one of the most diverse societies in South America\"."
     }
    ]
   }

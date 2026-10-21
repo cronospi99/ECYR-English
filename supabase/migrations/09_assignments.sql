@@ -65,7 +65,7 @@ create table if not exists public.assignments (
   --     "label": "Unit 3 · Práctica" }       optional: human summary
   target              jsonb not null default '{}'::jsonb,
   level               text
-                      constraint assignments_level check (level is null or level in ('A1','A2','B1','B2','C1')),
+                      constraint assignments_level check (level is null or level in ('A1','A2','B1','B2','C1','C2')),
   due_at              timestamptz,
   requires_submission boolean not null default false,
   audience            text not null default 'class'

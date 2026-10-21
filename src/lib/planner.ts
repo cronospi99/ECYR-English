@@ -931,7 +931,7 @@ export function recommend(input: {
         text: `Promedias ${Math.round(avg * 100)}% en tus últimas semanas. ¡Esa constancia es lo que te lleva a la cima!`,
       });
   }
-  if (levelRatio >= 0.8 && level !== 'C1')
+  if (levelRatio >= 0.8 && level !== 'C2')
     out.push({
       tone: 'tip',
       title: `Casi terminas ${level}`,

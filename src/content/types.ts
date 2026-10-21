@@ -1,6 +1,6 @@
-/** CEFR levels covered by the platform. C2 is reserved for future content. */
-export type CefrLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
-export const CEFR_LEVELS: readonly CefrLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1'] as const;
+/** CEFR levels covered by the platform. C2 (Proficiency) has 10 units. */
+export type CefrLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+export const CEFR_LEVELS: readonly CefrLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 
 export type Skill = 'listening' | 'reading' | 'writing' | 'speaking' | 'grammar' | 'vocabulary';
 
