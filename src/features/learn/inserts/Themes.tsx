@@ -125,7 +125,8 @@ export function SpellingDictation() {
   const [score, setScore] = useState(0);
   const award = useProgress((s) => s.award);
   const w = words[i];
-  const spell = (word: string) => speak(word.split('').map((c) => LETTER_NAMES[c.toLowerCase()] ?? c.toUpperCase()).join(', ') + '.', { rate: 0.7 });
+  // The voice layer slows spelled letters down by itself (src/lib/tts: splitSpelled).
+  const spell = (word: string) => speak(word.split('').map((c) => LETTER_NAMES[c.toLowerCase()] ?? c.toUpperCase()).join(', ') + '.', { tier: 'premium' });
   const check = () => {
     if (!w) return;
     const r = checkTyped(val, w);

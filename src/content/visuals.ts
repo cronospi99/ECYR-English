@@ -363,6 +363,68 @@ export const VISUALS: Visual[] = [
     // Shown as the interactive photo explorer in A1-5, A1-9 and B2-1 (src/features/learn/inserts).
     places: [],
   },
+  {
+    id: 'shops-city',
+    title: 'Shops in a City',
+    titleEs: 'Tiendas y lugares de la ciudad, de básico a avanzado: bakery, pharmacy, post office, skyscraper, highway…',
+    w: 1536,
+    h: 1024,
+    levels: ['A1', 'A2'],
+    kind: 'vocabulary',
+    tags: ['city', 'places in town', 'shops', 'there is / there are', 'directions'],
+    places: [
+      { unit: 'A1-8', section: 'vocab' },
+      { unit: 'B2-3', section: 'vocab' },
+    ],
+  },
+  {
+    id: 'health-symptoms',
+    title: 'Health Symptoms and Advice',
+    titleEs: 'Síntomas (headache, fever, sore throat…), vocabulario de salud y modales para dar consejos',
+    w: 1216,
+    h: 1294,
+    levels: ['A1', 'A2'],
+    kind: 'functions',
+    tags: ['health', 'symptoms', 'should', 'must', 'have to', 'might', 'advice'],
+    places: [
+      { unit: 'A1-11', section: 'grammar', focus: 'Modals “can” and “should” for recommendations' },
+      { unit: 'A2-5', section: 'grammar', focus: 'Modals for necessity and suggestion' },
+    ],
+  },
+  {
+    id: 'house-vs-apartment',
+    title: 'House vs Apartment',
+    titleEs: 'Dos viviendas en arriendo con precio, servicios, estrato, habitaciones y baños: para comparar',
+    w: 1536,
+    h: 1024,
+    levels: ['A1', 'A2', 'B1'],
+    kind: 'functions',
+    tags: ['housing', 'comparatives', 'superlatives', 'renting', 'prices', 'rooms'],
+    // Shown inside the "Which home would you rent?" activity (src/features/learn/inserts).
+    places: [],
+  },
+  {
+    id: 'house-vs-apartment-photos',
+    title: 'House vs Apartment: Inside',
+    titleEs: 'Por dentro: sala, cocina, habitación y baño, y lo mejor de cada una (jardín, garaje, gimnasio, piscina, ascensor)',
+    w: 1402,
+    h: 1122,
+    levels: ['A1', 'A2', 'B1'],
+    kind: 'vocabulary',
+    tags: ['housing', 'rooms', 'furniture', 'amenities'],
+    places: [],
+  },
+  {
+    id: 'loft-vs-toscana',
+    title: 'Loft vs Tuscan House',
+    titleEs: 'Un loft urbano y una casa estilo toscano: precios, estrato, espacios y ventajas de cada una',
+    w: 1536,
+    h: 1024,
+    levels: ['A2', 'B1', 'B2'],
+    kind: 'functions',
+    tags: ['housing', 'comparatives', 'would rather', 'preferences', 'renting'],
+    places: [],
+  },
 ];
 
 export const visualUrl = (v: Visual, thumb = false) => `/visuals/${v.id}${thumb ? '-thumb' : ''}.webp`;

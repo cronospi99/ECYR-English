@@ -16,6 +16,9 @@ const CountriesNationalities = lazy(() => import('./Themes').then((m) => ({ defa
 const SpellingDictation = lazy(() => import('./Themes').then((m) => ({ default: m.SpellingDictation })));
 const WeatherLesson = lazy(() => import('./Themes').then((m) => ({ default: m.WeatherLesson })));
 const WearingVerbs = lazy(() => import('./Themes').then((m) => ({ default: m.WearingVerbs })));
+const CityPlaces = lazy(() => import('./CityHealthHomes').then((m) => ({ default: m.CityPlaces })));
+const HealthAdvice = lazy(() => import('./CityHealthHomes').then((m) => ({ default: m.HealthAdvice })));
+const HousingCompare = lazy(() => import('./CityHealthHomes').then((m) => ({ default: m.HousingCompare })));
 const GtleGame = lazy(() => import('./Gtle').then((m) => ({ default: m.GtleGame })));
 
 type Insert = () => ReactNode;
@@ -26,14 +29,20 @@ const UNIT_INSERTS: Record<string, Insert[]> = {
   'A1-1:vocab': [() => <CountriesNationalities />, () => <SpellingDictation />, game('jobs')],
   'A1-1:grammar': [game('questions')],
   'A1-2:grammar': [game('daily-routines')],
-  'A1-3:grammar': [game('comparatives')],
+  'A1-3:grammar': [() => <HousingCompare />, game('comparatives')],
   'A1-5:vocab': [() => <FamilyPhotos />, () => <FamilyTreePuzzle />],
   'A1-6:grammar': [() => <FrequencyTools />],
+  'A1-8:vocab': [() => <CityPlaces />],
   'A1-8:grammar': [game('prepositions-game')],
+  'A1-11:grammar': [() => <HealthAdvice />],
   'A1-9:vocab': [() => <FamilyPhotos only={['family-garden', 'family-living-room']} />, () => <WearingVerbs />, game('clothes-game')],
   'A1-14:vocab': [() => <CountriesNationalities />, () => <WeatherLesson />, game('weather')],
-  'A1-14:grammar': [game('comparatives')],
+  'A1-14:grammar': [() => <HousingCompare />, game('comparatives')],
+  'A2-3:grammar': [() => <HousingCompare />],
   'A2-5:vocab': [() => <WeatherLesson />, game('weather')],
+  'A2-5:grammar': [() => <HealthAdvice />],
+  'B1-2:grammar': [() => <HousingCompare start={1} />],
+  'B1-8:grammar': [() => <HousingCompare start={1} />],
   'B2-1:vocab': [() => <FamilyPhotos only={['family-multicultural']} />],
 };
 

@@ -4,8 +4,8 @@
  * speaker, joined into one MP3 the engine plays and can save to the class library.
  */
 import { castVoices, type VoiceAccent } from '@/lib/tts/voices';
-import { edgeAvailable, edgeIssue, fetchTtsBlob, splitForTts } from '@/lib/tts/edge';
-import { speak, speakSequence, speakSpanish, stopSpeaking } from '@/lib/tts';
+import { edgeAvailable, edgeIssue, fetchTtsBlob, rateFor, splitForTts } from '@/lib/tts/edge';
+import { SPELL_RATE, speak, speakSequence, speakSpanish, splitSpelled, stopSpeaking } from '@/lib/tts';
 
 interface Part {
   speakers?: { name: string; gender?: string }[];
@@ -84,7 +84,13 @@ export const ieltsTts = {
   async recordSection(p: Part): Promise<{ b64: string; mime: string }> {
     if (!edgeAvailable()) throw new Error(edgeIssue() ?? 'Natural voices are not available right now.');
     const c = cast(p);
-    const jobs = lines(p).flatMap((l) => splitForTts(l.text).map((text) => ({ text, voice: c.get(l.speaker)!.edge })));
+    // Names spelled letter by letter are recorded slower, with a pause between letters.
+    const slow = rateFor(0.95 * SPELL_RATE);
+    const jobs = lines(p).flatMap((l) =>
+      splitSpelled(l.text).flatMap((part) =>
+        part.slow ? [{ text: part.text, voice: c.get(l.speaker)!.edge, rate: slow }] : splitForTts(part.text).map((text) => ({ text, voice: c.get(l.speaker)!.edge, rate: 0 })),
+      ),
+    );
     if (!jobs.length) throw new Error('The section has no script to read.');
     // A few chunks at a time: fast, without flooding the voice service.
     const out: Blob[] = new Array(jobs.length);
@@ -92,7 +98,7 @@ export const ieltsTts = {
     const worker = async () => {
       while (next < jobs.length) {
         const i = next++;
-        out[i] = await fetchTtsBlob(jobs[i]!.text, jobs[i]!.voice, 0);
+        out[i] = await fetchTtsBlob(jobs[i]!.text, jobs[i]!.voice, jobs[i]!.rate);
       }
     };
     await Promise.all([worker(), worker(), worker()]);
