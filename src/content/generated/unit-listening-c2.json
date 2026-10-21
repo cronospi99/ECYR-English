@@ -2159,5 +2159,718 @@
     "I'd add that despair is a luxury."
    ]
   }
+ ],
+ "7": [
+  {
+   "id": "ul-c2-7-1",
+   "title": "Two Critics, One Film",
+   "level": "C2",
+   "kind": "film podcast",
+   "topic": "Cinema & Criticism",
+   "focus": "Ellipsis and substitution (so, not, do so, one)",
+   "emoji": "🎬",
+   "speakers": [
+    {
+     "name": "Zoe",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Rupert",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "So, 'The Lantern Keeper'. Everyone's calling it the film of the year. Is it?"
+    },
+    {
+     "s": 1,
+     "text": "I don't think so. It's a very good film. It isn't a great one."
+    },
+    {
+     "s": 0,
+     "text": "Oh, come on. The lead performance alone is a tour de force. She's in every scene and she's utterly mesmerising."
+    },
+    {
+     "s": 1,
+     "text": "She is, I'll grant you that. She steals the show. But the script lets her down. The second half is, frankly, hackneyed. The long-lost brother turning up in the storm? I've seen that a hundred times."
+    },
+    {
+     "s": 0,
+     "text": "You have, but not done like this. The point isn't the twist, it's how she reacts to it. That scene in the kitchen is absolutely devastating."
+    },
+    {
+     "s": 1,
+     "text": "I thought it was slightly overlong."
+    },
+    {
+     "s": 0,
+     "text": "Of course you did."
+    },
+    {
+     "s": 1,
+     "text": "Look, I'm not panning it. I gave it four stars."
+    },
+    {
+     "s": 0,
+     "text": "Four stars with the phrase 'a perfectly competent drama'. That's damning with faint praise, Rupert."
+    },
+    {
+     "s": 1,
+     "text": "Is it? I meant it kindly."
+    },
+    {
+     "s": 0,
+     "text": "Nobody reading 'competent' thinks you mean it kindly."
+    },
+    {
+     "s": 1,
+     "text": "Fair. All right, I'll put it differently. The direction is understated in a way I admire. The photography is genuinely beautiful. And the score is one of the best I've heard this year. The writing isn't, and that matters."
+    },
+    {
+     "s": 0,
+     "text": "I think the writing's deliberately simple. It leaves room for the actors."
+    },
+    {
+     "s": 1,
+     "text": "Perhaps it does. Perhaps it doesn't. We'll have to disagree."
+    },
+    {
+     "s": 0,
+     "text": "We always do. Would you recommend it to listeners?"
+    },
+    {
+     "s": 1,
+     "text": "Yes, absolutely. Just not as the film of the year."
+    },
+    {
+     "s": 0,
+     "text": "And I'd say go and see it on the biggest screen you can find. Next week: the new superhero film, which I suspect neither of us will enjoy."
+    },
+    {
+     "s": 1,
+     "text": "I suspect not."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "In 'It isn't a great one', 'one' replaces…",
+     "options": [
+      "a scene",
+      "a year",
+      "a lead performance",
+      "a film"
+     ],
+     "answer": 3,
+     "explain_es": "Sustitución: one = film."
+    },
+    {
+     "type": "mc",
+     "q": "What does Zoe think of the lead performance?",
+     "options": [
+      "It is too understated",
+      "It is a tour de force",
+      "It is weak",
+      "It is overrated"
+     ],
+     "answer": 1,
+     "explain_es": "\"The lead performance alone is a tour de force.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Rupert's main criticism?",
+     "options": [
+      "The photography",
+      "The script, especially the second half",
+      "The acting",
+      "The music"
+     ],
+     "answer": 1,
+     "explain_es": "\"But the script lets her down. The second half is, frankly, hackneyed.\""
+    },
+    {
+     "type": "gap",
+     "q": "Rupert insists: 'I'm not ______ it. I gave it four stars.' (1 word, -ing form)",
+     "answer": "panning",
+     "accept": [],
+     "explain_es": "'Pan' = criticar duramente."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Zoe say Rupert is 'damning with faint praise'?",
+     "options": [
+      "He gave it one star",
+      "He refused to review it",
+      "Calling it 'perfectly competent' sounds dismissive",
+      "He praised the wrong actor"
+     ],
+     "answer": 2,
+     "explain_es": "'Competent' suena a elogio tibio que en realidad critica."
+    },
+    {
+     "type": "mc",
+     "q": "Which element does Rupert praise?",
+     "options": [
+      "The script",
+      "The length",
+      "The twist",
+      "The understated direction and the score"
+     ],
+     "answer": 3,
+     "explain_es": "\"The direction is understated in a way I admire ... the score is one of the best\"."
+    },
+    {
+     "type": "mc",
+     "q": "In 'Perhaps it does. Perhaps it doesn't', 'does' refers to…",
+     "options": [
+      "is deliberately simple",
+      "leaves room for the actors",
+      "steals the show",
+      "matters"
+     ],
+     "answer": 1,
+     "explain_es": "Elipsis: does (leave room for the actors)."
+    },
+    {
+     "type": "mc",
+     "q": "In 'I suspect not', 'not' replaces…",
+     "options": [
+      "we will enjoy it",
+      "the film is new",
+      "it is a superhero film",
+      "we will review it"
+     ],
+     "answer": 0,
+     "explain_es": "'I suspect not' = I suspect we won't enjoy it."
+    }
+   ],
+   "dictation": [
+    "It's a very good film.",
+    "She steals the show.",
+    "Of course you did."
+   ]
+  },
+  {
+   "id": "ul-c2-7-2",
+   "title": "Behind the Canvas",
+   "level": "C2",
+   "kind": "curator's talk",
+   "topic": "Visual Art",
+   "focus": "Adjective order and compound modifiers",
+   "emoji": "🖼️",
+   "speakers": [
+    {
+     "name": "Curator",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Visitor",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome, everyone. This room brings together the late work of Tomasz Wilk, and I'd like to start with this one: a large, square, early-morning landscape, painted in nineteen seventy-one. What do you notice first?"
+    },
+    {
+     "s": 1,
+     "text": "The colour. That strange pale green. It looks almost luminous."
+    },
+    {
+     "s": 0,
+     "text": "Exactly. Wilk mixed his own pigments, and this particular green appears nowhere else in his oeuvre. He described it in a letter as 'the colour of a hospital corridor at dawn'. He'd just spent three months in hospital."
+    },
+    {
+     "s": 1,
+     "text": "That changes how I see it."
+    },
+    {
+     "s": 0,
+     "text": "It tends to. Now, Wilk was often described in his lifetime as avant-garde, but I think that's slightly misleading. If you look closely, there are echoes of nineteenth-century Dutch painting: the low horizon, the enormous sky. It's not pastiche, though. He absorbs the tradition and makes it strange."
+    },
+    {
+     "s": 1,
+     "text": "Was he well known?"
+    },
+    {
+     "s": 0,
+     "text": "Not widely. He was admired by other painters but largely ignored by the highbrow critics of the day, who found him too quiet. That's partly why this exhibition exists. His work seems to resonate with younger audiences now in a way it didn't then."
+    },
+    {
+     "s": 1,
+     "text": "Why do you think that is?"
+    },
+    {
+     "s": 0,
+     "text": "Perhaps because it's so understated. We live in a very noisy, attention-grabbing world. These small, slow-moving, carefully observed paintings ask you to stand still. Visitors keep telling us they've spent ten minutes in front of a single canvas."
+    },
+    {
+     "s": 1,
+     "text": "Is that one next to it from the same period? The little round grey one?"
+    },
+    {
+     "s": 0,
+     "text": "Yes, a beautiful, tiny, oval study for this larger work. You can see him working out the composition. It's one of my favourite pieces in the show."
+    },
+    {
+     "s": 1,
+     "text": "It's lovely. Very calm."
+    },
+    {
+     "s": 0,
+     "text": "Let's move on to the next room, where things become rather less calm. Mind the step."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Which description shows correct adjective order?",
+     "options": [
+      "a square large early-morning landscape",
+      "an early-morning square large landscape",
+      "a landscape large square early-morning",
+      "a large, square, early-morning landscape"
+     ],
+     "answer": 3,
+     "explain_es": "Tamaño – forma – modificador compuesto – sustantivo."
+    },
+    {
+     "type": "mc",
+     "q": "What is unusual about the green in the painting?",
+     "options": [
+      "It was added later",
+      "It was bought in a shop",
+      "It has faded",
+      "It appears nowhere else in his body of work"
+     ],
+     "answer": 3,
+     "explain_es": "\"appears nowhere else in his oeuvre\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the visitor say 'That changes how I see it'?",
+     "options": [
+      "She sees it in better light",
+      "She learns the price",
+      "She dislikes green",
+      "She learns the green was linked to his hospital stay"
+     ],
+     "answer": 3,
+     "explain_es": "La cita sobre el pasillo de hospital al amanecer."
+    },
+    {
+     "type": "gap",
+     "q": "The curator says the painting is not ______, because Wilk makes the tradition strange. (1 word)",
+     "answer": "pastiche",
+     "accept": [],
+     "explain_es": "'Pastiche' = imitación de estilo sin aportación propia."
+    },
+    {
+     "type": "mc",
+     "q": "How did critics of his time view Wilk?",
+     "options": [
+      "As a forger",
+      "As too quiet, largely ignoring him",
+      "As too commercial",
+      "As a genius"
+     ],
+     "answer": 1,
+     "explain_es": "\"largely ignored by the highbrow critics of the day, who found him too quiet\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the curator think his work resonates with younger audiences now?",
+     "options": [
+      "It is shown online",
+      "It is cheap",
+      "It is colourful and loud",
+      "Its understated stillness contrasts with a noisy world"
+     ],
+     "answer": 3,
+     "explain_es": "\"We live in a very noisy, attention-grabbing world.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which phrase contains compound modifiers?",
+     "options": [
+      "a beautiful, tiny, oval study",
+      "a single canvas",
+      "the next room",
+      "small, slow-moving, carefully observed paintings"
+     ],
+     "answer": 3,
+     "explain_es": "'slow-moving' y 'carefully observed' son modificadores compuestos."
+    },
+    {
+     "type": "tf",
+     "q": "The visitor describes the small grey study as round, but the curator calls it oval.",
+     "answer": "T",
+     "explain_es": "Visitante: \"The little round grey one?\"; comisaria: \"a beautiful, tiny, oval study\"."
+    }
+   ],
+   "dictation": [
+    "That changes how I see it.",
+    "It's not pastiche, though.",
+    "Let's move on to the next room, where things become rather less calm."
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "ul-c2-8-1",
+   "title": "Twenty Years for Nothing",
+   "level": "C2",
+   "kind": "radio feature",
+   "topic": "Justice & the Law",
+   "focus": "The subjunctive and formulaic expressions",
+   "emoji": "⚖️",
+   "speakers": [
+    {
+     "name": "Reporter",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Daniel",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Barrister",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Last month, the Court of Appeal quashed the conviction of Daniel Price, who had spent nineteen years in prison for a murder he did not commit. It's one of the most serious miscarriages of justice in recent memory. I met Daniel at his sister's flat, where he's been living since his release."
+    },
+    {
+     "s": 1,
+     "text": "People ask how it feels. Honestly? Strange. I'm grateful, so be it. But nobody can give me back nineteen years. I went in at twenty-two. I came out at forty-one."
+    },
+    {
+     "s": 0,
+     "text": "Daniel's conviction rested largely on the testimony of a single witness, who later admitted she had been pressured by police. His barrister, Rebecca Hale, worked on the appeal for six years."
+    },
+    {
+     "s": 2,
+     "text": "The evidence that would have cleared him was in the file all along. A second witness had described a different man entirely, and that statement was never disclosed to the defence. Due process wasn't followed. It's as simple as that."
+    },
+    {
+     "s": 0,
+     "text": "What needs to change?"
+    },
+    {
+     "s": 2,
+     "text": "I'd insist that every piece of evidence gathered by the police be disclosed to the defence automatically, not only what the prosecution considers relevant. The right to a fair trial is enshrined in law, but it means nothing if the defence can't see the evidence."
+    },
+    {
+     "s": 0,
+     "text": "Has anyone apologised to you, Daniel?"
+    },
+    {
+     "s": 1,
+     "text": "Not officially. The judge said it was 'a matter of profound regret'. Which, I suppose, is something. If need be, I'll take them to court for compensation. I'd rather not. I'd rather they just did the decent thing."
+    },
+    {
+     "s": 0,
+     "text": "How are you spending your days?"
+    },
+    {
+     "s": 1,
+     "text": "Learning things. How to use a smartphone. How much bread costs. My nephew's teaching me to cook. And I'm writing to other men inside who say they're innocent. Some of them are, I'm sure of it. God help them."
+    },
+    {
+     "s": 2,
+     "text": "Daniel's case should be a wake-up call. It's essential that the system be able to admit its mistakes quickly, not after two decades."
+    },
+    {
+     "s": 0,
+     "text": "Daniel Price, speaking to me in east London."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the Court of Appeal do last month?",
+     "options": [
+      "Reduced his sentence",
+      "Overturned Daniel's conviction",
+      "Confirmed Daniel's conviction",
+      "Ordered a retrial"
+     ],
+     "answer": 1,
+     "explain_es": "'Quash' = anular."
+    },
+    {
+     "type": "mc",
+     "q": "How does Daniel describe his feelings?",
+     "options": [
+      "Purely joyful",
+      "Angry and bitter only",
+      "Grateful but aware of what he has lost",
+      "Indifferent"
+     ],
+     "answer": 2,
+     "explain_es": "\"I'm grateful ... But nobody can give me back nineteen years.\""
+    },
+    {
+     "type": "mc",
+     "q": "What was the key undisclosed evidence?",
+     "options": [
+      "Fingerprints",
+      "A confession",
+      "A second witness describing a different man",
+      "A video recording"
+     ],
+     "answer": 2,
+     "explain_es": "\"A second witness had described a different man entirely\"."
+    },
+    {
+     "type": "gap",
+     "q": "The barrister would insist that every piece of evidence ______ disclosed to the defence automatically. (1 word)",
+     "answer": "be",
+     "accept": [],
+     "explain_es": "Subjuntivo tras 'insist that'."
+    },
+    {
+     "type": "mc",
+     "q": "What does the barrister mean by 'enshrined in law'?",
+     "options": [
+      "Hidden in old laws",
+      "Formally protected by law",
+      "Only in theory",
+      "Recently abolished"
+     ],
+     "answer": 1,
+     "explain_es": "'Enshrine' = consagrar, proteger formalmente."
+    },
+    {
+     "type": "tf",
+     "q": "Daniel has received an official apology.",
+     "answer": "F",
+     "explain_es": "\"Not officially.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Daniel's attitude to suing for compensation?",
+     "options": [
+      "He has already won",
+      "He will if necessary but would prefer not to",
+      "He is eager to sue",
+      "He refuses completely"
+     ],
+     "answer": 1,
+     "explain_es": "\"If need be, I'll take them to court ... I'd rather not.\""
+    },
+    {
+     "type": "mc",
+     "q": "'God help them' expresses…",
+     "options": [
+      "anger at the prisoners",
+      "a request to the reporter",
+      "a formulaic wish of sympathy for those still imprisoned",
+      "a religious instruction"
+     ],
+     "answer": 2,
+     "explain_es": "Expresión fija con subjuntivo: compasión."
+    }
+   ],
+   "dictation": [
+    "I went in at twenty-two. I came out at forty-one.",
+    "It's as simple as that.",
+    "Daniel's case should be a wake-up call."
+   ]
+  },
+  {
+   "id": "ul-c2-8-2",
+   "title": "From the Grassroots Up",
+   "level": "C2",
+   "kind": "interview",
+   "topic": "Protest & Change",
+   "focus": "Concession and contrast: albeit, notwithstanding, much as, however + adjective",
+   "emoji": "✊",
+   "speakers": [
+    {
+     "name": "Host",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Rosa",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Rosa Jiménez started a campaign three years ago to stop the closure of her town's only bus route. Rosa, what happened?"
+    },
+    {
+     "s": 1,
+     "text": "The council announced that the route would end, and it was clear the decision had already been made. The consultation was going to rubber-stamp it. Most of the people who used that bus were elderly or didn't drive. They were completely disenfranchised by the process."
+    },
+    {
+     "s": 0,
+     "text": "So you organised."
+    },
+    {
+     "s": 1,
+     "text": "I did, albeit very badly at first. I put up a poster in the library and three people came to the first meeting. One of them was my mum."
+    },
+    {
+     "s": 0,
+     "text": "But it grew."
+    },
+    {
+     "s": 1,
+     "text": "It did. What galvanised people was a photo someone posted of a ninety-year-old woman waiting at the stop in the rain. It went everywhere. Within a week, we had four hundred people at a meeting."
+    },
+    {
+     "s": 0,
+     "text": "And the council backed down?"
+    },
+    {
+     "s": 1,
+     "text": "Partially. They kept the route, albeit with fewer buses. Much as I'd like to say we won outright, we didn't. But we stopped it disappearing."
+    },
+    {
+     "s": 0,
+     "text": "Did you face opposition?"
+    },
+    {
+     "s": 1,
+     "text": "Some. People said we were just defending the status quo, that we should accept change. However reasonable that sounds, it misses the point. Not all change is progress. Cutting the only link some people have to the hospital isn't progress."
+    },
+    {
+     "s": 0,
+     "text": "Was it worth it?"
+    },
+    {
+     "s": 1,
+     "text": "Notwithstanding the hours, and there were a lot of hours, absolutely. I wish I'd started sooner, actually. And I learned that you don't need to be an expert. You just need to turn up and keep turning up."
+    },
+    {
+     "s": 0,
+     "text": "What advice would you give someone else?"
+    },
+    {
+     "s": 1,
+     "text": "Find the one image or story that makes people feel it. Facts matter, but people act on feelings. And never assume a decision's final until the bus has actually stopped running."
+    },
+    {
+     "s": 0,
+     "text": "Rosa Jiménez, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why did Rosa believe the consultation was not genuine?",
+     "options": [
+      "Nobody was invited",
+      "The decision had already been made and would be rubber-stamped",
+      "It was online only",
+      "It was held too late"
+     ],
+     "answer": 1,
+     "explain_es": "\"The consultation was going to rubber-stamp it.\""
+    },
+    {
+     "type": "mc",
+     "q": "Who was most affected by the bus route closure?",
+     "options": [
+      "Elderly people and non-drivers",
+      "Council staff",
+      "Tourists",
+      "Students"
+     ],
+     "answer": 0,
+     "explain_es": "\"elderly or didn't drive\"."
+    },
+    {
+     "type": "gap",
+     "q": "Rosa organised the campaign, ______ very badly at first. (1 word)",
+     "answer": "albeit",
+     "accept": [],
+     "explain_es": "'Albeit' = aunque (concesión breve)."
+    },
+    {
+     "type": "mc",
+     "q": "What galvanised support for the campaign?",
+     "options": [
+      "A photo of an elderly woman waiting in the rain",
+      "A celebrity endorsement",
+      "A newspaper article",
+      "A council error"
+     ],
+     "answer": 0,
+     "explain_es": "La foto de la mujer de noventa años bajo la lluvia."
+    },
+    {
+     "type": "mc",
+     "q": "What was the outcome?",
+     "options": [
+      "A new route replaced it",
+      "The route was cancelled",
+      "The route was expanded",
+      "The route was kept with fewer buses"
+     ],
+     "answer": 3,
+     "explain_es": "\"They kept the route, albeit with fewer buses.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Rosa respond to the claim she was defending the status quo?",
+     "options": [
+      "She agrees",
+      "She says not all change is progress",
+      "She admits the campaign was wrong",
+      "She ignores it"
+     ],
+     "answer": 1,
+     "explain_es": "\"Not all change is progress.\""
+    },
+    {
+     "type": "mc",
+     "q": "'Notwithstanding the hours … absolutely' means…",
+     "options": [
+      "the hours made it not worth it",
+      "despite the hours, it was worth it",
+      "she didn't spend many hours",
+      "she regrets the hours"
+     ],
+     "answer": 1,
+     "explain_es": "'Notwithstanding' = a pesar de."
+    },
+    {
+     "type": "mc",
+     "q": "What is Rosa's main advice?",
+     "options": [
+      "Rely only on facts",
+      "Hire experts",
+      "Find a story that makes people feel the issue, and persist",
+      "Avoid social media"
+     ],
+     "answer": 2,
+     "explain_es": "\"Find the one image or story that makes people feel it\"."
+    }
+   ],
+   "dictation": [
+    "One of them was my mum.",
+    "Not all change is progress.",
+    "You just need to turn up and keep turning up."
+   ]
+  }
  ]
 }

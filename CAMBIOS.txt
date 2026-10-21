@@ -8,6 +8,143 @@ funcione en producción y algunos puntos para revisar.
 
 
 ======================================================================
+ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
+======================================================================
+
+UN PASO EN SUPABASE: ejecutar supabase/migrations/13_c2_level.sql (SQL
+Editor → pegar → Run). Solo amplía las validaciones de nivel para aceptar
+"C2" en tareas asignadas, Mis trabajos y quizzes de podcasts. Sin ella,
+asignar una tarea de C2 da error. Vercel no necesita cambios.
+
+K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
+- 10 unidades completas, con la misma estructura de los demás niveles.
+  Se diseñaron con los descriptores C2 del MCER, el English Grammar
+  Profile y las tareas del examen Cambridge C2 Proficiency. Los temas de
+  los libros de C2 solo se usaron como referencia; todos los textos son
+  originales.
+  1 Identity and belonging · 2 The power of words · 3 Mind and perception
+  · 4 Ambition and achievement · 5 Science, technology and ethics · 6 The
+  natural world · 7 Arts, culture and criticism · 8 Power, justice and
+  society · 9 Body, risk and wellbeing · 10 Time, change and legacy.
+- Cada unidad trae:
+  · 12 expresiones C2: modismos, colocaciones y registro.
+  · 3 puntos de gramática completos, 30 en total: inversión, cleft
+    sentences, subjuntivo, condicionales invertidos, nominalización,
+    elipsis, pasivas de reporte, hedging, etc.
+  · Ayudas visuales, ejercicios con respuestas modelo, diálogos con audio
+    y explicación paso a paso.
+  · Speaking tipo CPE y 12 preguntas de test.
+  · Writing con modelo: ensayo de la Parte 1 (240–280 palabras) o
+    artículo, reseña, carta o informe de la Parte 2 (280–320).
+  · Writings extra, 2 lecturas largas con 14 preguntas, 2 listenings,
+    dinámicas para clase y tarea.
+- Evaluaciones C2: parcial 1 (U1–4), parcial 2 (U5–8), parcial 3 (U9–10)
+  y final. Siempre evalúan las 4 habilidades, vocabulario y gramática.
+- Biblioteca de Práctica: 12 lecturas y 12 audios nuevos de nivel C2.
+- C2 aparece en Aprender, en la montaña de progreso y en los filtros de
+  nivel de toda la app.
+
+L. VOCABULARIO VISUAL (Práctica › Vocabulario, primera pestaña)
+- 29 temas con imágenes por nivel, de A1 a C2, y 549 palabras con audio,
+  significado en español y ejemplo. Usan tus propios gráficos de las
+  clases: ropa y accesorios, clima y estaciones, países con mapas
+  ilustrados y banderas, ciudad, preposiciones de lugar y de movimiento,
+  síntomas, casa…
+  En los niveles altos hay temas como modismos del clima, la industria de
+  la moda, urbanismo y crítica.
+- Cada tema trae tarjetas con foto, la infografía y práctica: imagen →
+  palabra, escucha y elige, significado y completar. También tiene hoja de
+  tarea en PDF y créditos de imágenes (Freepik / Flaticon).
+- Las mismas imágenes están en las pestañas de Vocabulario de las
+  unidades de todos los niveles.
+  · "Countries" usa los mapas y banderas de tu clase.
+  · "Weather" usa las tarjetas de estaciones, los íconos y los verbos del
+    clima.
+  · "Wearing verbs" trae fotos de ropa.
+
+M. LÍNEA DE TIEMPO DE LOS TIEMPOS VERBALES (Gramática › Tense Timeline)
+- Escribe: el estudiante escribe una frase y la línea del tiempo se mueve
+  en vivo. Muestra puntos, tramos, el "pasado del pasado", el futuro, los
+  hábitos y las expresiones de tiempo, junto con el nombre del tiempo en
+  inglés y español. También detecta errores típicos ("I have saw", "since
+  three years", "I am agree…") y propone la corrección.
+- Construye: se elige sujeto, verbo, tiempo, afirmativa / negativa /
+  pregunta y expresión de tiempo; la frase se conjuga sola y la línea se
+  anima. Hay un control para pasar de un tiempo a otro.
+- Practica: elegir la línea correcta para una frase, o escribir una frase
+  para una línea. Además hay una pestaña con los 15 tiempos.
+- Aparece dentro de las lecciones de tiempos verbales (A1–C2), en el
+  centro de Gramática y como pestaña en Verb Lab.
+
+N. NOTAS: NEGRITA Y CURSIVA
+- Botones B y I (y Ctrl/⌘+B, Ctrl/⌘+I) que se combinan con los 4 colores.
+  También hay un botón "Quitar todo el formato". Las notas viejas se abren
+  igual y se siguen sincronizando.
+
+O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
+- Se abre en una ventana desde cualquier página:
+  · Conjugación: busca un verbo en inglés o español, incluso con
+    "went" → go, y muestra sus formas y 10 tiempos en afirmativa,
+    negativa y pregunta, con ejemplos.
+  · Phrasal verbs: buscador y familias.
+- El panel de herramientas ya no tapa contenido en computador: el
+  contenido tiene ahora un margen a la derecha.
+
+P. BARRA PARA ADELANTAR Y REGRESAR EN LOS LISTENINGS
+- Todos los audios tienen una barra para ir a un segundo exacto, botones
+  ⟲5 s y ⟲10 s, velocidad y tiempo mm:ss. Mientras suena, se resalta la
+  línea de la transcripción, y tocar una línea salta a ella. Funciona en:
+  · Biblioteca de listening
+  · Diálogos de las lecciones
+  · Diálogos y dictado
+  · Podcasts
+  · Simulador IELTS por secciones y práctica libre
+- No aparece en el simulacro completo de IELTS ni en los parciales, que
+  son condiciones de examen.
+
+Q. LISTENINGS POR UNIDAD
+- Cada unidad de A1 a C2 tiene ahora 2 listenings propios, 164 en total.
+  Practican la gramática y el vocabulario de la lección, con distintos
+  formatos (diálogo, entrevista, mensaje de voz, anuncio, podcast,
+  conferencia), 8–10 preguntas y dictado. Están en la pestaña Producción
+  › Listening.
+
+R. LECTURAS CON MÍNIMO 12 PREGUNTAS
+- Todas las lecturas (biblioteca, lecturas de unidad e historias) tienen
+  ahora al menos 12 preguntas: más de 1.000 preguntas nuevas.
+  · En los niveles bajos son de opción múltiple, verdadero/falso, completar
+    y vocabulario.
+  · En los altos se suman inferencia, actitud del autor, referencia,
+    títulos para cada párrafo y "not given".
+- Las preguntas de ordenar eventos se califican bien. Las de "escribe las
+  letras" se responden escribiendo.
+
+S. "SHORT CIRCUIT" EN CINCO NIVELES
+- La historia ahora está también en A1, A2, B1 y C1, además de la B2. Cada
+  versión trae vocabulario y gramática de su nivel, capas de resaltado
+  (A1: be / present simple / can; A2: pasados regulares e irregulares; B1:
+  los cuatro pasados y used to; C1: inversión, cleft, cláusulas de
+  participio, con notas), glosario y 13–15 preguntas.
+
+T. MEJOR DISTRIBUCIÓN DEL CONTENIDO
+- La pestaña Producción de cada unidad ahora se divide por habilidad
+  (Speaking · Writing · Reading · Listening · Clase), en vez de una sola
+  página muy larga.
+- C1 tenía menos práctica que los demás niveles. Ahora cada unidad trae 8
+  preguntas de test, 3 dinámicas, tarea y resumen para el tablero.
+- Las actividades interactivas se repartieron para no repetir la misma
+  en varias unidades: por ejemplo, Countries ya no aparece dos veces en A1
+  y la ciudad pasa a fotos reales en A1 U8.
+
+U. ARREGLOS DE INTERFAZ
+- Las filas de filtros y pestañas que se deslizan de lado se desvanecen
+  en el borde para indicar que hay más (antes se veían cortadas, como
+  "Size &" en Adjetivos).
+- En computador, el panel de herramientas (Verb Lab, notas, traductor) ya
+  no queda encima de tarjetas ni botones.
+
+
+======================================================================
 ACTUALIZACIÓN · OCTUBRE 2026 — EVALUACIONES, MATERIAL NUEVO Y MÁS
 ======================================================================
 
