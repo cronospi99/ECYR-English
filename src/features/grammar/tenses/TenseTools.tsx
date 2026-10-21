@@ -212,22 +212,22 @@ export function WriteMode({ lex, focus, compact = false, initial }: { lex: Lexic
             </button>
           )}
         </div>
-        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-          <span className="text-label-2 text-[12.5px] font-semibold">Prueba:</span>
+        <div className="no-scrollbar -mx-1 mt-2 flex items-center gap-1.5 overflow-x-auto px-1 py-0.5 sm:flex-wrap sm:overflow-visible">
+          <span className="text-label-2 shrink-0 text-[12.5px] font-semibold">Prueba:</span>
           {samples.map((s) => (
-            <button key={s.text} type="button" onClick={() => setText(s.text)} className="bg-fill-2 hover:bg-fill rounded-full px-2.5 py-1 text-left text-[13px]">
+            <button key={s.text} type="button" onClick={() => setText(s.text)} className="bg-fill-2 hover:bg-fill shrink-0 rounded-full px-2.5 py-1 text-left text-[13px] whitespace-nowrap">
               {s.text}
             </button>
           ))}
-          <button type="button" aria-label="Otras frases" onClick={() => setSamples(pick(pool, compact ? 3 : 5))} className="text-ink-blue rounded-full p-1">
+          <button type="button" aria-label="Otras frases" onClick={() => setSamples(pick(pool, compact ? 3 : 5))} className="text-ink-blue shrink-0 rounded-full p-1">
             <Shuffle size={15} />
           </button>
         </div>
         {!compact && (
-          <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-            <span className="text-label-2 text-[12.5px] font-semibold">Errores típicos:</span>
+          <div className="no-scrollbar -mx-1 mt-1.5 flex items-center gap-1.5 overflow-x-auto px-1 py-0.5 sm:flex-wrap sm:overflow-visible">
+            <span className="text-label-2 shrink-0 text-[12.5px] font-semibold">Errores típicos:</span>
             {MISTAKE_EXAMPLES.map((s) => (
-              <button key={s} type="button" onClick={() => setText(s)} className="rounded-full px-2.5 py-1 text-left text-[13px]" style={{ background: tint('var(--orange)', 12) }}>
+              <button key={s} type="button" onClick={() => setText(s)} className="shrink-0 rounded-full px-2.5 py-1 text-left text-[13px] whitespace-nowrap" style={{ background: tint('var(--orange)', 12) }}>
                 {s}
               </button>
             ))}
@@ -428,8 +428,8 @@ export function BuildMode({ lex, focus, compact = false, passiveDefault = false 
           <div className="min-w-0 flex-1 text-center">
             <div className="text-label-2 text-[11px] font-bold tracking-wide uppercase">Cambiar tiempo</div>
             <AnimatePresence mode="popLayout" initial={false}>
-              <motion.div key={tense} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="truncate text-[16px] font-bold" style={{ color: ink(color, 66) }}>
-                {info.en} <span className="text-label-2 font-medium">· {info.es}</span>
+              <motion.div key={tense} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} className="text-[16px] leading-tight font-bold" style={{ color: ink(color, 66) }}>
+                {info.en} <span className="text-label-2 block text-[13px] font-medium sm:inline">· {info.es}</span>
               </motion.div>
             </AnimatePresence>
           </div>

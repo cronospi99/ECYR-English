@@ -27,17 +27,17 @@ function TopicCard({ t, onOpen, i }: { t: VisualTopic; onOpen: () => void; i: nu
       whileTap={{ scale: 0.98 }}
       className="bg-card shadow-card group flex flex-col overflow-hidden rounded-[20px] text-left"
     >
-      <div className="grid h-32 grid-cols-4 gap-1 p-2" style={{ background: `color-mix(in srgb, ${t.color} 14%, var(--card))` }}>
+      <div className="grid h-36 grid-cols-4 grid-rows-1 gap-1 p-2 sm:h-32" style={{ background: `color-mix(in srgb, ${t.color} 14%, var(--card))` }}>
         {t.cover ? (
-          <div className="col-span-2 row-span-1 overflow-hidden rounded-[12px] bg-white">
+          <div className="col-span-2 min-h-0 overflow-hidden rounded-[12px] bg-white">
             <img src={t.cover} alt="" loading="lazy" className="h-full w-full object-contain p-1" />
           </div>
         ) : (
           <div className="col-span-2 flex items-center justify-center rounded-[12px] bg-white text-[48px]">{t.emoji}</div>
         )}
-        <div className="col-span-2 grid grid-cols-2 gap-1">
+        <div className="col-span-2 grid min-h-0 grid-cols-2 grid-rows-2 gap-1">
           {preview.map((w) => (
-            <div key={w.id} className="flex items-center justify-center overflow-hidden rounded-[9px] bg-white">
+            <div key={w.id} className="flex min-h-0 items-center justify-center overflow-hidden rounded-[9px] bg-white">
               {w.img ? <img src={w.img} alt="" loading="lazy" className="h-full w-full object-contain p-0.5" /> : <span className="text-[22px]">{w.emoji}</span>}
             </div>
           ))}

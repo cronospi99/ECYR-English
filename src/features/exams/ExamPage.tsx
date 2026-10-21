@@ -472,7 +472,7 @@ function WritingTask({ exam, text, onChange }: { exam: Exam; text: string; onCha
       <span className="rounded-full px-2 py-0.5 text-[12px] font-bold" style={{ background: tint('var(--orange)', 14), color: ink('var(--orange)') }}>
         {W.genre_es}
       </span>
-      <p className="mt-2 text-[16px] leading-snug font-semibold text-pretty">{W.prompt}</p>
+      <p className="mt-2 text-[16px] leading-snug font-semibold whitespace-pre-line text-pretty">{W.prompt}</p>
       <p className="text-label-2 mt-1 text-[14px]">{W.prompt_es}</p>
       <ul className="mt-3 space-y-1 text-[14px]">
         {W.criteria.map((c) => (

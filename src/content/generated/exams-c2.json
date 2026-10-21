@@ -1,0 +1,2215 @@
+[
+  {
+    "id": "c2-m1",
+    "level": "C2",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa el aspecto perfecto y continuo con matices, los tiempos pasados para distanciarse y ser cortés, los verbos de estado usados dinámicamente, las oraciones hendidas, el fronting y la inversión tras adverbiales negativos, los modales de especulación y deducción, “needn't have” frente a “didn't need to”, “will” y “would” para suposiciones y conducta típica, la nominalización, las cláusulas de participio y los patrones verbales con cambio de significado, con el vocabulario de identidad, retórica, percepción y ambición. Formato CPE: open cloze, formación de palabras, transformaciones con palabra clave y texto con huecos. Incluye las cuatro habilidades.",
+    "minutes": 65,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "By the time her citizenship papers finally arrived, Amira ___ in the country for nearly eleven years.",
+        "options": [
+          "has been living",
+          "would live",
+          "was living",
+          "had been living"
+        ],
+        "answer": 3,
+        "explain_es": "Pasado perfecto continuo: duración hasta un punto del pasado (cuando llegaron los papeles). “Has been living” se ancla en el presente y “was living” no expresa la duración acumulada."
+      },
+      {
+        "type": "mc",
+        "q": "We ___ if you could possibly spare a few minutes to look over our proposal before Friday.",
+        "options": [
+          "had hoped for",
+          "were hoping",
+          "hope that",
+          "are hoping about"
+        ],
+        "answer": 1,
+        "explain_es": "El pasado continuo “were hoping” se refiere al presente pero suaviza la petición (distanciamiento por cortesía). Las otras opciones no encajan con “if you could…”."
+      },
+      {
+        "type": "mc",
+        "q": "There's no answer at her flat, and her car has gone. She ___ for the airport already — her flight was at seven.",
+        "options": [
+          "must have left",
+          "should have left",
+          "can have left",
+          "needn't have left"
+        ],
+        "answer": 0,
+        "explain_es": "Deducción lógica sobre el pasado: “must have + participio” (estoy casi seguro). “Can have” no se usa en afirmativa y “should/needn't have” expresan obligación o necesidad, no deducción."
+      },
+      {
+        "type": "mc",
+        "q": "We ___ a taxi: the hotel turned out to be just round the corner, but we only discovered that after paying the fare.",
+        "options": [
+          "couldn't have taken",
+          "didn't need to take",
+          "needn't have taken",
+          "mustn't have taken"
+        ],
+        "answer": 2,
+        "explain_es": "“Needn't have + participio” indica que hicimos algo que resultó innecesario (sí tomamos el taxi). “Didn't need to take” sugiere normalmente que no lo hicimos."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: ___ was only when the results were published that anyone realised how close the vote had been.",
+        "answer": "It",
+        "explain_es": "Oración hendida con “it” (it-cleft): It + be + elemento destacado + that… Aquí se destaca el momento: “It was only when…”."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: No ___ had she sat down than the phone started ringing again.",
+        "answer": "sooner",
+        "explain_es": "Inversión tras adverbial negativo: “No sooner had + sujeto + participio… than…” significa ‘apenas… cuando…’."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: My grandfather ___ sit for hours by the window with his old maps; it's just what he does.",
+        "answer": "will",
+        "accept": [
+          "'ll"
+        ],
+        "explain_es": "“Will” (sin acento) describe un comportamiento típico o característico en el presente: “He'll sit for hours…”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). The company expanded rapidly, and this surprised analysts. (EXPANSION) → What surprised analysts ______ the company.",
+        "answer": "was the rapid expansion of",
+        "accept": [
+          "What surprised analysts was the rapid expansion of the company."
+        ],
+        "explain_es": "Se combinan una wh-cleft (What surprised analysts was…) y una nominalización: “expanded rapidly” → “the rapid expansion of”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). Although the plan was ambitious, it lacked proper funding. (THOUGH) → Ambitious ______, it lacked proper funding.",
+        "answer": "though the plan was",
+        "accept": [
+          "though it was",
+          "Ambitious though the plan was, it lacked proper funding.",
+          "Ambitious though it was, it lacked proper funding."
+        ],
+        "explain_es": "Fronting concesivo: adjetivo + though + sujeto + verbo (“Ambitious though the plan was…”) es una forma enfática y formal de “although”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “I'll never forget to see the Northern Lights for the first time.”",
+        "answer": "I'll never forget seeing the Northern Lights for the first time.",
+        "accept": [
+          "I will never forget seeing the Northern Lights for the first time."
+        ],
+        "explain_es": "“Forget + -ing” se refiere a un recuerdo de algo que ya ocurrió; “forget + to” significa olvidar hacer algo pendiente. Aquí se trata de un recuerdo."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Having grown up between Lagos and Leeds, she says she has ___ — at home in both cities, fully owned by neither.",
+        "options": [
+          "a fish out of water",
+          "a sore thumb",
+          "a foot in both camps",
+          "a kindred spirit"
+        ],
+        "answer": 2,
+        "explain_es": "“To have a foot in both camps” es pertenecer a dos grupos o mundos a la vez."
+      },
+      {
+        "type": "mc",
+        "q": "The minister's apology was widely seen as ___: he expressed regret while quietly blaming everyone else.",
+        "options": [
+          "derivative",
+          "disingenuous",
+          "unassuming",
+          "rootless"
+        ],
+        "answer": 1,
+        "explain_es": "“Disingenuous” describe a alguien que finge sinceridad o ingenuidad pero no es honesto."
+      },
+      {
+        "type": "mc",
+        "q": "The firm claims to value its junior staff, but critics say it merely ___ the idea while cutting training budgets.",
+        "options": [
+          "pays lip service to",
+          "puts down roots in",
+          "minces its words about",
+          "strikes a chord with"
+        ],
+        "answer": 0,
+        "explain_es": "“To pay lip service to something” es apoyar algo de palabra sin hacer nada real al respecto."
+      },
+      {
+        "type": "mc",
+        "q": "I'd completely forgotten the name of the village until an old postcard ___.",
+        "options": [
+          "jogged my memory",
+          "clouded my judgement",
+          "lost my train of thought",
+          "racked my brains"
+        ],
+        "answer": 0,
+        "explain_es": "“To jog someone's memory” es ayudar a alguien a recordar algo. “Rack your brains” es esforzarse mucho por recordar."
+      },
+      {
+        "type": "mc",
+        "q": "After seven years without promotion, and with the ___ still firmly in place, she left to set up her own consultancy.",
+        "options": [
+          "foot in the door",
+          "glass ceiling",
+          "make-or-break",
+          "meteoric rise"
+        ],
+        "answer": 1,
+        "explain_es": "El “glass ceiling” (techo de cristal) es la barrera invisible que impide a ciertos grupos ascender a los puestos más altos."
+      },
+      {
+        "type": "mc",
+        "q": "The project was clearly failing, so the investors decided to ___ and withdraw before losing any more money.",
+        "options": [
+          "rest on their laurels",
+          "take the plunge",
+          "fall by the wayside",
+          "cut their losses"
+        ],
+        "answer": 3,
+        "explain_es": "“To cut your losses” es abandonar algo que va mal para no perder más."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Youth workers argue that ___ teenagers need a sense of purpose more than stricter discipline. (AFFECT)",
+        "answer": "disaffected",
+        "explain_es": "Prefijo dis- + participio: “disaffected” describe a alguien desencantado o alejado de una institución o grupo."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The speech was criticised for its ___ of complex issues into catchy three-word slogans. (SIMPLE)",
+        "answer": "oversimplification",
+        "accept": [
+          "over-simplification",
+          "simplification"
+        ],
+        "explain_es": "Prefijo over- + sustantivo: “oversimplification” es simplificar algo en exceso. Hace falta un sustantivo después de “its”."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Her ___ comments about the team's blind spots impressed even the most sceptical board members. (PERCEIVE)",
+        "answer": "perceptive",
+        "explain_es": "Se necesita un adjetivo: “perceptive” significa perspicaz, capaz de notar lo que otros no ven."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Critics argue that a genuine ___ is impossible when inherited wealth can buy every advantage. (MERIT)",
+        "answer": "meritocracy",
+        "explain_es": "“Meritocracy” (meritocracia) es un sistema en el que se avanza por méritos y no por origen o dinero."
+      }
+    ],
+    "reading": {
+      "title": "Speaking Up, Sounding Out",
+      "genre": "article",
+      "paragraphs": [
+        "When Danielle Okafor was invited to her first graduate assessment day, she had spent weeks rehearsing answers about leadership and teamwork. What she had not prepared for was the remark, delivered with a friendly smile by one of the assessors, that she 'didn't sound like someone from round here'. She had been born four miles from the office. 'It was meant as a compliment,' she says now, eight years and two promotions later. 'That was the strange part. I was being praised for having sanded off the parts of my voice that connected me to my family.'",
+        "Danielle's experience is far from unusual. Surveys conducted in several English-speaking countries suggest that a significant proportion of professionals with regional or working-class accents have, at some point, modified the way they speak in order to be taken seriously at work. Linguists describe this as 'accent levelling' or, borrowing a term from the study of bilingual speakers, 'code-switching'. [1] ______ For many, the adjustment happens so gradually that they barely notice it until a relative remarks on it at a family gathering.",
+        "Why should the sound of a vowel matter in an office where everyone is supposedly judged on results? The answer lies partly in the way perception works. Within seconds of hearing a stranger speak, listeners make assumptions not only about where that person comes from but about their intelligence, reliability and even honesty. Rarely are these judgements conscious, and seldom do they survive closer acquaintance; yet in a fifteen-minute interview, closer acquaintance is precisely what is missing. Confirmation bias then does the rest. An interviewer who has already decided that a candidate seems 'less polished' will tend to notice the hesitations that confirm the impression and overlook the insights that contradict it.",
+        "Not everyone accepts that this amounts to discrimination. Some recruiters insist that what they are evaluating is clarity, not origin, and that a candidate who cannot adapt their speech to a formal setting may genuinely struggle with clients. There is something to this argument. Adapting one's register to an audience is, after all, a skill that every competent communicator possesses. [2] ______ A barrister from Glasgow who speaks with flawless precision is still, in many listeners' minds, 'a Scottish barrister'; a colleague raised in the leafy suburbs of the capital is simply 'a barrister'.",
+        "The consequences extend well beyond hurt feelings. Researchers who have tracked graduate careers point out that the professions in which accent bias appears strongest — law, finance, the upper ranks of the civil service — are also those in which progress depends most heavily on informal impressions: who 'fits in', who seems 'ready' for a client-facing role. What critics find most troubling is that such impressions are almost never recorded, and therefore almost never challenged. A candidate rejected for weak grades can at least see the reason; a candidate rejected for not seeming quite right is left to guess.",
+        "Danielle herself has become something of a campaigner. Now a senior manager, she runs workshops in which interviewers listen to recordings of identical answers read aloud by speakers with different accents and are then asked to rate them. 'People are horrified by their own scores,' she says. 'Nobody thinks of themselves as biased. That's what makes it so hard to tackle.' Interestingly, she has started to let her original accent return. 'I used to think I'd lost it,' she laughs. 'It turns out I'd only been hiding it.'",
+        "Whether organisations will follow her lead remains to be seen. Some have added accent to the characteristics covered by their diversity training; others regard the whole issue as a distraction from more measurable inequalities of pay and promotion. What seems beyond dispute is that a voice carries more than words. It carries a history, and for millions of people the choice between being heard and being themselves is one they should never have been asked to make."
+      ],
+      "glossary": [
+        [
+          "assessment day",
+          "jornada de evaluación (selección de personal)"
+        ],
+        [
+          "sanded off",
+          "limado, pulido hasta borrarlo"
+        ],
+        [
+          "levelling",
+          "nivelación, uniformización"
+        ],
+        [
+          "closer acquaintance",
+          "un conocimiento más cercano"
+        ],
+        [
+          "barrister",
+          "abogado litigante (Reino Unido)"
+        ],
+        [
+          "client-facing",
+          "de trato directo con clientes"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [1]?",
+          "options": [
+            "The term was first used in the 1950s to describe radio announcers.",
+            "Bilingual speakers, after all, rarely choose which language they dream in.",
+            "Neither label, however, quite captures how unconscious the process tends to be.",
+            "Most of them, unsurprisingly, describe the change as a deliberate career strategy."
+          ],
+          "answer": 2,
+          "explain_es": "La frase introduce la idea de que el proceso es inconsciente, que la oración siguiente desarrolla: “the adjustment happens so gradually that they barely notice it”. La opción de la “estrategia deliberada” contradice esa idea."
+        },
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [2]?",
+          "options": [
+            "The difficulty is that clarity and accent are routinely confused, and only one of them is ever marked.",
+            "Glasgow, for its part, has produced a remarkable number of senior judges.",
+            "Most clients, in fact, prefer advisers who share their own regional background.",
+            "That is why many firms now offer elocution lessons to their junior staff."
+          ],
+          "answer": 0,
+          "explain_es": "Tras conceder parte del argumento (“There is something to this argument”), el autor señala su debilidad; el ejemplo del abogado de Glasgow ilustra que solo un acento queda “marcado”."
+        },
+        {
+          "type": "mc",
+          "q": "What made the assessor's comment particularly uncomfortable for Danielle?",
+          "options": [
+            "It wrongly suggested that she had been born abroad.",
+            "It was made in front of the other candidates.",
+            "It came from someone with a stronger accent than hers.",
+            "It praised her for having lost part of what linked her to her family."
+          ],
+          "answer": 3,
+          "explain_es": "Danielle dice: “I was being praised for having sanded off the parts of my voice that connected me to my family.”"
+        },
+        {
+          "type": "mc",
+          "q": "According to the third paragraph, why are short interviews especially vulnerable to accent bias?",
+          "options": [
+            "Candidates speak less naturally when they are nervous.",
+            "Interviewers are usually too tired to listen carefully.",
+            "Formal questions favour speakers with neutral accents.",
+            "Listeners have no time to revise their first assumptions."
+          ],
+          "answer": 3,
+          "explain_es": "El texto explica que esos juicios “seldom survive closer acquaintance; yet in a fifteen-minute interview, closer acquaintance is precisely what is missing”."
+        },
+        {
+          "type": "mc",
+          "q": "How does the writer treat the recruiters' argument in the fourth paragraph?",
+          "options": [
+            "By accepting part of it before identifying its weakness",
+            "By dismissing it as an excuse for prejudice",
+            "By showing that it is supported by research",
+            "By agreeing with it without reservation"
+          ],
+          "answer": 0,
+          "explain_es": "El autor concede (“There is something to this argument”) y luego señala el problema: la claridad y el acento se confunden."
+        },
+        {
+          "type": "tf",
+          "q": "Danielle's workshops have led several firms to change their recruitment procedures.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto describe los talleres y la reacción de los participantes, pero no menciona cambios en los procesos de selección de ninguna empresa."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Second Thoughts: Can We Trust Our Memories?",
+      "kind": "radio discussion",
+      "speakers": [
+        {
+          "name": "Helen",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Marcus",
+          "voice": "male",
+          "accent": "au"
+        },
+        {
+          "name": "Priya",
+          "voice": "female",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good evening and welcome to Second Thoughts. Tonight's question: can we trust our own memories? With me are Marcus Bell, a cognitive psychologist, and Priya Nair, whose memoir about growing up between Kerala and Chicago came out last spring. Priya, let's start with you. When you were writing the book, did you ever doubt what you remembered?"
+        },
+        {
+          "s": 2,
+          "text": "Constantly. I had this vivid memory of my grandmother teaching me to cook on the day we left India — the smell of cardamom, the sound of her bangles, all of it. Then my mother read the draft and said, very calmly, 'She was in hospital that week. You must be thinking of your aunt.' I was devastated, honestly. It was the emotional heart of the chapter."
+        },
+        {
+          "s": 1,
+          "text": "And that's absolutely typical, I'm afraid. What people tend to assume is that memory works like a recording — you press play and the event comes back. It doesn't. Every time you recall something, you're effectively rebuilding it, and you'll fill the gaps with whatever seems most plausible. Your grandmother may well have taught you to cook at some point; your brain just attached that scene to the most meaningful day."
+        },
+        {
+          "s": 0,
+          "text": "So the memory wasn't false, exactly. Just… relocated?"
+        },
+        {
+          "s": 1,
+          "text": "Relocated is a lovely way of putting it. The ingredients were real. The recipe was invented."
+        },
+        {
+          "s": 2,
+          "text": "Which, as a writer, I found quite liberating in the end. I didn't cut the scene. I kept it, but I added a paragraph about my mother's correction. And readers told me that was the part that really struck a chord with them, because everyone has a family story that turns out to be, well, negotiable."
+        },
+        {
+          "s": 0,
+          "text": "Marcus, does it matter? If a memory feels true and helps us make sense of who we are, where's the harm?"
+        },
+        {
+          "s": 1,
+          "text": "In everyday life, very little. The problems start when memory is treated as evidence. Eyewitness testimony is the classic case. Witnesses are often completely confident, and juries find confidence very persuasive, yet confidence and accuracy are only loosely related. Several convictions have been overturned precisely because DNA showed that a perfectly sincere witness had been mistaken."
+        },
+        {
+          "s": 2,
+          "text": "Can I come in there? Because I think there's a difference between a witness and a memoirist. Nobody goes to prison because I misremembered a kitchen."
+        },
+        {
+          "s": 1,
+          "text": "Fair point. Although memoirists do shape how whole families see themselves, which isn't nothing."
+        },
+        {
+          "s": 0,
+          "text": "Let's talk about hindsight. We often say 'I knew it all along' about things we definitely didn't know. Why do we do that?"
+        },
+        {
+          "s": 1,
+          "text": "It's called hindsight bias. Once we know how something turned out, the brain quietly rewrites what we believed beforehand. Investors will swear they had a gut feeling about a crash. But when you look at what they actually wrote at the time, there's usually no sign of it whatsoever."
+        },
+        {
+          "s": 2,
+          "text": "My father is a master of this. He'll tell anyone who listens that he always knew I'd become a writer. At the time, he wanted me to study pharmacy, and he said so every single day."
+        },
+        {
+          "s": 0,
+          "text": "So is there anything we can do to protect ourselves from these distortions?"
+        },
+        {
+          "s": 1,
+          "text": "Write things down while they're fresh — a diary is far more reliable than a reminiscence. And be wary of the memories you feel most certain about, because they're usually the ones you've retold most often, and every retelling is a chance to edit."
+        },
+        {
+          "s": 0,
+          "text": "Priya, a last word?"
+        },
+        {
+          "s": 2,
+          "text": "Only that I've stopped thinking of my memories as facts. I think of them as drafts. And, oddly enough, that's made me a lot kinder — to my family and to myself."
+        },
+        {
+          "s": 0,
+          "text": "Priya Nair and Marcus Bell, thank you both. Next week: why do we find it so hard to change our minds?"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What did Priya's mother point out about the cooking scene?",
+          "options": [
+            "The family had never cooked with cardamom.",
+            "The scene had actually taken place in Chicago.",
+            "The grandmother had been in hospital that week.",
+            "Priya had been too young to remember anything."
+          ],
+          "answer": 2,
+          "explain_es": "La madre dice: “She was in hospital that week. You must be thinking of your aunt.”"
+        },
+        {
+          "type": "mc",
+          "q": "According to Marcus, what happens each time we recall a memory?",
+          "options": [
+            "It is replayed exactly as it happened.",
+            "It becomes slightly more accurate.",
+            "We reconstruct it and fill in the gaps with what seems plausible.",
+            "We lose part of it permanently."
+          ],
+          "answer": 2,
+          "explain_es": "Marcus explica: “Every time you recall something, you're effectively rebuilding it, and you'll fill the gaps with whatever seems most plausible.”"
+        },
+        {
+          "type": "tf",
+          "q": "Priya decided to remove the scene from her memoir.",
+          "answer": "F",
+          "explain_es": "Falso: “I didn't cut the scene. I kept it, but I added a paragraph about my mother's correction.”"
+        },
+        {
+          "type": "mc",
+          "q": "What point does Marcus make about eyewitnesses?",
+          "options": [
+            "Their confidence is a poor guide to their accuracy.",
+            "DNA evidence has made them unnecessary.",
+            "They often lie in order to protect themselves.",
+            "Juries rarely believe what they say."
+          ],
+          "answer": 0,
+          "explain_es": "Marcus dice que “confidence and accuracy are only loosely related”."
+        },
+        {
+          "type": "mc",
+          "q": "Why does Priya mention her father?",
+          "options": [
+            "To give an example of hindsight bias",
+            "To criticise his memory for dates",
+            "To show how much he supported her writing",
+            "To explain why she studied pharmacy"
+          ],
+          "answer": 0,
+          "explain_es": "Su padre dice que siempre supo que sería escritora, aunque entonces quería que estudiara farmacia: un ejemplo del “hindsight bias”."
+        },
+        {
+          "type": "gap",
+          "q": "Marcus recommends keeping a ___ because it is more reliable than a reminiscence.",
+          "answer": "diary",
+          "accept": [
+            "journal"
+          ],
+          "explain_es": "Marcus aconseja: “Write things down while they're fresh — a diary is far more reliable than a reminiscence.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Choose ONE task.\n\nPART 1 — Essay (240–280 words). Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answer.\n\nText 1 — In defence of merit: For all its flaws, meritocracy remains the fairest principle a society has yet devised. Rewarding people for effort and ability, rather than for birth or connections, gives everyone a reason to strive and ensures that the most demanding jobs are done by those best equipped to do them. Where the system fails, the answer is to widen access to education and training, not to abandon the ideal.\n\nText 2 — The trap of deserving: Meritocracy flatters its winners and blames its losers. Those who succeed come to believe that every advantage they enjoy has been earned, forgetting the schools, contacts and luck that helped them. Those who fail are told, implicitly, that they have only themselves to blame. A society that ranks people so relentlessly by achievement risks breeding arrogance at the top and resentment at the bottom.\n\nPART 2 — Article (280–320 words). An international magazine is publishing a series called 'Labels'. Write an article about a label that has been applied to you — national, professional, generational or any other — explaining how it has shaped the way others perceive you and whether you have accepted or resisted it.",
+      "prompt_es": "Elige UNA tarea: Parte 1, un ensayo que resume y evalúa dos textos sobre la meritocracia (240–280 palabras), o Parte 2, un artículo sobre una etiqueta que te han puesto y cómo influye en la forma en que te perciben (280–320 palabras).",
+      "genre_es": "Ensayo (Parte 1) o artículo (Parte 2)",
+      "minWords": 240,
+      "maxWords": 320,
+      "criteria": [
+        "Part 1: summarise the key point of each text in your own words, evaluate both and develop your own view. Part 2: cover every element of the task in an engaging article register.",
+        "Use aspect precisely (perfect and continuous forms) and at least one past form for distancing or a stative verb used dynamically.",
+        "Highlight key ideas with a cleft sentence, a fronted structure and a negative inversion (Rarely…, Not only…, No sooner…).",
+        "Speculate and evaluate with modals (may well have, can't have, needn't have) and compress ideas with nominalisation and participle clauses.",
+        "Use at least five expressions from Units 1–4 (a sense of belonging, pay lip service to, confirmation bias, glass ceiling, meritocracy, fall by the wayside…) in a consistent formal register."
+      ],
+      "model": "PART 1 — Model essay\n\nBoth texts consider whether rewarding achievement is a fair basis for organising society, but they reach sharply different conclusions.\n\nThe first writer maintains that meritocracy, however imperfect, is preferable to any alternative. Its central virtue, in this view, is that it replaces inherited privilege with effort and talent, giving everyone an incentive to work and placing the most capable people in the most demanding roles. Its failures, the author concedes, are real, but they call for broader access to education rather than a rejection of the principle. This is a persuasive defence, not least because few of us would want a surgeon chosen for her surname. However, it assumes that access can be widened easily, which history suggests is far from certain.\n\nThe second writer focuses on the psychological consequences of the system. What troubles this author is not reward itself but the moral story attached to it: winners attribute their success entirely to themselves, while those who fall by the wayside are encouraged to feel that their failure is deserved. Rarely is this point made so bluntly, and it strikes me as the more original of the two arguments, although it says little about what should replace meritocracy.\n\nIn my view, the two positions are less incompatible than they first appear. We may well need merit to allocate jobs, but we need humility to interpret the results. A society that rewarded achievement while openly acknowledging the role of luck would be both more efficient and, arguably, considerably kinder.\n\nPART 2 — Model article\n\nYou Don't Sound Colombian\n\nI have been hearing this sentence, in one form or another, for most of my adult life. It is usually delivered as a compliment, often with a slightly puzzled smile, and it always leaves me wondering what exactly a Colombian is supposed to sound like.\n\nThe label I carry is not a rare one. I am, in the words of a former manager, 'the international one' — the colleague consulted whenever a client calls from abroad, and gently reminded, when promotions are discussed, that her real strength lies in 'cultural sensitivity'. For years I was flattered. It was only when I compared my career with those of colleagues who had joined at the same time that I realised how much the label had limited what others thought I could do.\n\nWhat makes labels so powerful is that they are rarely spoken aloud. Nobody ever told me I was unsuited to leading a team. They simply never asked. Labels work through confirmation bias: once someone has decided what you are, they notice everything that fits the picture and overlook everything that does not.\n\nNot that I want to disown my origins. I have a foot in both camps, and I would not give up either. I still find myself thinking in Spanish when I am tired, and I am being entirely sincere when I say that my upbringing is the best thing about me. What I resist is the idea that it is the only thing.\n\nSo these days, when someone tells me I do not sound Colombian, I smile and ask what they were expecting. The answers are often revealing. More importantly, the question tends to make people think twice before attaching the next label to the next newcomer — and that, I have come to believe, is how labels slowly lose their power."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Long turn: 'Does success mean the same thing to every generation?' Speak for about two minutes. You may talk about money, freedom and recognition, or ideas of your own.",
+          "text_es": "Turno largo: ¿el éxito significa lo mismo para todas las generaciones? Habla unos dos minutos sobre dinero, libertad o reconocimiento.",
+          "seconds": 120,
+          "tips": [
+            "Compress ideas with nominalisation: the pursuit of wealth, a lack of recognition.",
+            "Use verb patterns that change meaning: stop to think / stop thinking, go on to…",
+            "Use make headway, take the plunge, rest on your laurels, a meteoric rise."
+          ]
+        },
+        {
+          "text": "Long turn: 'How far can we trust our first impressions?' Describe a time when your impression of a person or place turned out to be wrong, and explain what you think caused the mistake.",
+          "text_es": "Turno largo: ¿hasta qué punto podemos fiarnos de las primeras impresiones? Cuenta una vez en que te equivocaste y por qué.",
+          "seconds": 120,
+          "tips": [
+            "Speculate about the past: I must have…, she can't have…, I needn't have worried.",
+            "Use a gut feeling, a blind spot, confirmation bias, with hindsight."
+          ]
+        },
+        {
+          "text": "Discussion: 'The words we use to describe groups of people shape how those people are treated.' Discuss this statement with reference to news headlines, official labels and everyday conversation. Concede at least one point before making your own.",
+          "text_es": "Discusión: las palabras con que describimos a los grupos influyen en cómo se les trata. Analiza titulares, etiquetas oficiales y conversaciones cotidianas.",
+          "seconds": 150,
+          "tips": [
+            "Signal key points with clefts and inversion: What concerns me is…, Not only does…",
+            "Report precisely: allege, insinuate, concede, refute; describe language as loaded or disingenuous."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c2-m2",
+    "level": "C2",
+    "kind": "midterm",
+    "n": 2,
+    "units": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "title": "Parcial 2 · Unidades 5–8",
+    "intro_es": "Evalúa la pasiva de reporte y los infinitivos pasivos, los causativos (have/get something done), el lenguaje académico de matización, los condicionales mixtos, invertidos y sus alternativas (but for, provided, were it not for), la elipsis y la sustitución, los intensificadores con adjetivos graduables y no graduables, los modificadores compuestos, el subjuntivo, el pasado irreal y las estructuras de concesión, con el vocabulario de ciencia y ética, naturaleza, arte y crítica, y poder y justicia. Formato CPE: open cloze, formación de palabras, transformaciones con palabra clave y texto con huecos. Incluye las cuatro habilidades.",
+    "minutes": 65,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "The portrait, long attributed to the master himself, ___ by one of his pupils.",
+        "options": [
+          "is now thought to have been painted",
+          "is now thought to paint",
+          "is now thinking to be painted",
+          "now thinks to have been painted"
+        ],
+        "answer": 0,
+        "explain_es": "Pasiva de reporte con infinitivo pasivo perfecto: sujeto + is thought + to have been + participio, porque la acción (pintar) es anterior a la creencia actual."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ last month, which is why I now check every email twice before clicking on anything.",
+        "options": [
+          "had stolen my bank details",
+          "was had my bank details stolen",
+          "got stolen my bank details",
+          "had my bank details stolen"
+        ],
+        "answer": 3,
+        "explain_es": "Causativo de experiencia (algo negativo que nos pasa): have + objeto + participio → “I had my bank details stolen”. El orden objeto + participio es obligatorio."
+      },
+      {
+        "type": "mc",
+        "q": "If the council had protected the wetland in the 1990s, the village ___ every winter now.",
+        "options": [
+          "wouldn't have flooded",
+          "hadn't flooded",
+          "wouldn't flood",
+          "won't flood"
+        ],
+        "answer": 2,
+        "explain_es": "Condicional mixto: causa en el pasado (had protected) y resultado en el presente (wouldn't flood… now)."
+      },
+      {
+        "type": "mc",
+        "q": "The final act was ___ magnificent — I've never heard an audience fall so completely silent.",
+        "options": [
+          "absolutely",
+          "very",
+          "slightly",
+          "fairly"
+        ],
+        "answer": 0,
+        "explain_es": "“Magnificent” es un adjetivo no graduable (extremo): se combina con “absolutely”, “utterly” o “quite”, no con “very”, “fairly” o “slightly”."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: ___ it not for the volunteers, the nature reserve would have closed years ago.",
+        "answer": "Were",
+        "explain_es": "“Were it not for…” es una alternativa formal e invertida a “If it weren't for…” (sin “if”)."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: 'Will the reforms survive the election?' 'I hope ___, but I wouldn't bet on it.'",
+        "answer": "so",
+        "explain_es": "Sustitución: “so” reemplaza toda la cláusula afirmativa después de hope, think, expect, suppose (I hope so = I hope they will survive)."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: The river has been polluted for decades. It's high time we ___ something about it.",
+        "answer": "did",
+        "accept": [
+          "started",
+          "tried"
+        ],
+        "explain_es": "“It's (high) time + sujeto + pasado” expresa que algo ya debería estar ocurriendo: el pasado tiene aquí valor de irrealidad presente."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). Although I admire her courage, I cannot support her methods. (MUCH) → ______ her courage, I cannot support her methods.",
+        "answer": "Much as I admire",
+        "accept": [
+          "Much as I admire her courage, I cannot support her methods."
+        ],
+        "explain_es": "“Much as” + cláusula es una forma formal de concesión equivalente a “although”: “Much as I admire her courage…”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). 'You must submit the report by Friday,' the director told us. (INSISTED) → The director ______ the report by Friday.",
+        "answer": "insisted that we submit",
+        "accept": [
+          "insisted we submit",
+          "insisted that we should submit",
+          "insisted we should submit",
+          "insisted on our submitting",
+          "insisted on us submitting",
+          "The director insisted that we submit the report by Friday."
+        ],
+        "explain_es": "Subjuntivo tras verbos de exigencia: insist that + sujeto + forma base (submit, no “submits” ni “submitted”). También es posible “should submit”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “They live in a five-bedrooms Victorian house near the coast.”",
+        "answer": "They live in a five-bedroom Victorian house near the coast.",
+        "explain_es": "En los modificadores compuestos con número + sustantivo, el sustantivo va en singular: a five-bedroom house, a ten-minute walk, a three-year-old child."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Editing the genes of human embryos remains ___: every possible benefit seems to raise a new moral dilemma.",
+        "options": [
+          "a carbon sink",
+          "a drop in the ocean",
+          "an ethical minefield",
+          "a tour de force"
+        ],
+        "answer": 2,
+        "explain_es": "“An ethical minefield” es una situación llena de problemas morales difíciles, como un campo de minas."
+      },
+      {
+        "type": "mc",
+        "q": "Critics warn that allowing facial recognition in shops is ___ that will end in constant surveillance of ordinary citizens.",
+        "options": [
+          "a tipping point",
+          "a keystone species",
+          "the status quo",
+          "a slippery slope"
+        ],
+        "answer": 3,
+        "explain_es": "“A slippery slope” es un primer paso que, según se teme, llevará inevitablemente a consecuencias cada vez peores."
+      },
+      {
+        "type": "mc",
+        "q": "Wolves are a ___: remove them, and the entire ecosystem around them begins to change.",
+        "options": [
+          "man-made habitat",
+          "keystone species",
+          "carbon sink",
+          "pristine landscape"
+        ],
+        "answer": 1,
+        "explain_es": "Una “keystone species” (especie clave) es aquella de la que depende el equilibrio de todo un ecosistema."
+      },
+      {
+        "type": "mc",
+        "q": "By calling the novel 'perfectly competent', the reviewer ___ it with faint praise.",
+        "options": [
+          "resonated",
+          "damned",
+          "stole",
+          "panned"
+        ],
+        "answer": 1,
+        "explain_es": "“To damn with faint praise” es criticar algo elogiándolo de forma tan tibia que el elogio suena a desaprobación."
+      },
+      {
+        "type": "mc",
+        "q": "The campaign began as a ___ movement of parents and teachers long before any national charity became involved.",
+        "options": [
+          "rubber-stamp",
+          "collateral",
+          "grassroots",
+          "doublespeak"
+        ],
+        "answer": 2,
+        "explain_es": "“Grassroots” describe un movimiento que nace de la gente común y no de los líderes o las instituciones."
+      },
+      {
+        "type": "mc",
+        "q": "The Court of Appeal ___ his conviction after new DNA evidence emerged.",
+        "options": [
+          "galvanised",
+          "enshrined",
+          "quashed",
+          "curtailed"
+        ],
+        "answer": 2,
+        "explain_es": "“To quash a conviction” es anular oficialmente una condena."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The new treatment is ___ the most significant advance in the field for a decade, though the trials were small. (ARGUE)",
+        "answer": "arguably",
+        "explain_es": "“Arguably” es un adverbio de matización (hedging): presenta una afirmación como defendible, pero no como un hecho indiscutible."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The rapid ___ of fish stocks in the North Sea has alarmed marine biologists. (DEPLETE)",
+        "answer": "depletion",
+        "explain_es": "Hace falta un sustantivo después de “The rapid”: “depletion” es el agotamiento de un recurso."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Critics found the sequel ___ and predictable, borrowing almost every idea from the original film. (DERIVE)",
+        "answer": "derivative",
+        "explain_es": "“Derivative” describe una obra poco original, que copia o imita otras."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Millions of citizens were effectively ___ by the new voter-registration rules. (FRANCHISE)",
+        "answer": "disenfranchised",
+        "explain_es": "Prefijo dis- + en- + franchise: “disenfranchised” significa privado del derecho al voto o de representación."
+      }
+    ],
+    "reading": {
+      "title": "Resurrection Ecology",
+      "genre": "article",
+      "paragraphs": [
+        "In a laboratory on the edge of a university campus, a team of geneticists is attempting something that, until recently, belonged firmly to the realm of science fiction. Using DNA recovered from remains preserved in the permafrost, together with the genome of the Asian elephant, its closest living relative, they hope to produce a cold-adapted animal that would, to all intents and purposes, be a woolly mammoth. The company funding the project insists that the first calves could be born within the decade. Whether they should be is another matter entirely.",
+        "Advocates of what has come to be called 'de-extinction' present it as an act of ecological repair. Mammoths, they argue, were once a keystone species of the Arctic steppe, trampling snow, felling trees and maintaining vast grasslands that reflected sunlight and kept the frozen ground beneath them cold. Were herds of cold-adapted elephants to be released into Siberia, the theory goes, they could help slow the thawing of the permafrost, one of the largest carbon sinks on the planet. [1] ______",
+        "It is precisely this framing that troubles many ecologists. Even supposing the science works, they point out, a handful of animals would be a drop in the ocean: to have any measurable effect on the permafrost, tens of thousands would be needed, spread over an area the size of a small country. Herds of that size would take centuries to build up, and by then the tipping point for the Arctic may well have been passed. Critics also note that the money involved — hundreds of millions of dollars of private investment — could protect a great many living species that are on the verge of disappearing and require no genetic engineering at all.",
+        "Then there is the question of the animals themselves. Elephants are intensely social creatures that learn how to behave from their elders. A calf carried by a surrogate elephant mother, born into a species that has not existed for four thousand years, would have no herd to teach it how to be a mammoth. 'We would be creating an animal whose entire way of life has been lost,' one animal-welfare researcher told me. 'It would, in a sense, be the loneliest creature on Earth.' [2] ______",
+        "Such reassurances do little to address the deeper objection, which is philosophical rather than practical. To some, de-extinction represents humanity playing God: an attempt to undo with technology a loss that technology itself helped to cause. Others reply that this objection proves too much. If it is wrong to intervene in nature, they argue, then vaccination, selective crop breeding and the reintroduction of wolves to national parks are wrong too. What distinguishes legitimate restoration from hubris is not whether humans intervene, but whether the intervention is undertaken with humility and subjected to rigorous scrutiny.",
+        "There is also a less obvious risk. If extinction comes to be seen as reversible, some conservationists fear, governments and industries may feel less urgency about preventing it. Why protect a threatened habitat at great expense, the reasoning might go, if its inhabitants can simply be recreated in a laboratory later? This 'moral hazard' argument is speculative, but it is hardly far-fetched; the history of environmental policy is littered with technological promises that were used to justify delay.",
+        "For now, the jury is still out. The science is in its infancy, and many of the claims made on its behalf have yet to stand up to scrutiny. But the debate it has provoked is valuable in itself, forcing us to ask what conservation is actually for. Is it to preserve the world as we found it, to restore the world as it once was, or to build a new one? The mammoth, should it ever walk the tundra again, will not answer that question for us."
+      ],
+      "glossary": [
+        [
+          "permafrost",
+          "suelo permanentemente congelado"
+        ],
+        [
+          "trampling",
+          "pisoteando"
+        ],
+        [
+          "felling trees",
+          "derribando árboles"
+        ],
+        [
+          "surrogate mother",
+          "madre sustituta (de alquiler)"
+        ],
+        [
+          "hubris",
+          "arrogancia desmedida, soberbia"
+        ],
+        [
+          "moral hazard",
+          "riesgo moral (incentivo para actuar con menos cuidado)"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [1]?",
+          "options": [
+            "Siberian winters, however, are now considerably milder than they were a century ago.",
+            "Elephants, after all, have never been seen anywhere near the Arctic.",
+            "Seen in this light, the mammoth is less a scientific curiosity than a tool in the fight against climate change.",
+            "Most ecologists regard this as the only realistic way to save the permafrost."
+          ],
+          "answer": 2,
+          "explain_es": "La frase resume el argumento de los defensores (la ‘reparación’ climática) y prepara el párrafo siguiente: “It is precisely this framing that troubles many ecologists”. La opción de “most ecologists” contradice ese párrafo."
+        },
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [2]?",
+          "options": [
+            "Proponents counter that the first calves would be raised together and studied with great care, much as captive-bred birds are before their release.",
+            "This is why the calves are expected to be born in zoos across Europe.",
+            "The researcher has since left her post to work for the company.",
+            "Mammoths, unlike elephants, are thought to have lived alone for most of the year."
+          ],
+          "answer": 0,
+          "explain_es": "El párrafo siguiente empieza con “Such reassurances…”, que necesita una garantía previa de los defensores: criar a las crías juntas y con cuidado."
+        },
+        {
+          "type": "mc",
+          "q": "According to advocates, how might mammoth-like animals help the climate?",
+          "options": [
+            "By maintaining grasslands that keep the ground beneath them frozen",
+            "By eating plants that release large amounts of carbon",
+            "By replacing elephants in warmer regions",
+            "By attracting tourists whose money would fund conservation"
+          ],
+          "answer": 0,
+          "explain_es": "Los defensores dicen que mantendrían praderas que “reflected sunlight and kept the frozen ground beneath them cold”, frenando el deshielo del permafrost."
+        },
+        {
+          "type": "mc",
+          "q": "What is the critics' main practical objection in the third paragraph?",
+          "options": [
+            "The numbers and time required make the plan unrealistic.",
+            "The animals would suffer in the Arctic cold.",
+            "Private investors are likely to withdraw their money.",
+            "The genetic technology has already failed."
+          ],
+          "answer": 0,
+          "explain_es": "Se necesitarían decenas de miles de animales y siglos para formar las manadas: “a handful of animals would be a drop in the ocean”."
+        },
+        {
+          "type": "mc",
+          "q": "What does the writer say about the 'moral hazard' argument?",
+          "options": [
+            "It is speculative but by no means unreasonable.",
+            "It has been proved by recent environmental policy.",
+            "It is unsupported and therefore irrelevant.",
+            "It was put forward by the project's investors."
+          ],
+          "answer": 0,
+          "explain_es": "El autor dice: “This ‘moral hazard’ argument is speculative, but it is hardly far-fetched”."
+        },
+        {
+          "type": "tf",
+          "q": "The writer believes the de-extinction debate is worthwhile whatever the outcome of the project.",
+          "answer": "T",
+          "explain_es": "Verdadero: “the debate it has provoked is valuable in itself, forcing us to ask what conservation is actually for.”"
+        }
+      ]
+    },
+    "listening": {
+      "title": "The Verdict: The Salt Road",
+      "kind": "radio arts review",
+      "speakers": [
+        {
+          "name": "Nadia",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Ben",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Carla",
+          "voice": "female",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Welcome back to The Verdict. This week we're discussing The Salt Road, the new film from director Aoife Brennan. It tells the story of a dock worker wrongly convicted of arson in the 1970s and his daughter's thirty-year fight to clear his name. Ben, you've called it the best British film of the year. That's quite a claim."
+        },
+        {
+          "s": 1,
+          "text": "It is, and I stand by it. What Brennan does brilliantly is resist the temptation to turn a miscarriage of justice into a courtroom thriller. The trial is over in about ten minutes. The film is really about what happens afterwards — the slow erosion of a family. And Mara Quinn, as the daughter, is absolutely extraordinary. She steals the show from much better-known actors."
+        },
+        {
+          "s": 0,
+          "text": "Carla, I gather you were rather less impressed."
+        },
+        {
+          "s": 2,
+          "text": "I was. I mean, I don't want to pan it, because there's a lot of craft on display, and the photography is gorgeous. But I found it slightly hackneyed. We've seen the grieving family, the tireless campaigner, the crusading journalist so many times before. Brennan hits every beat you'd expect her to, and she does so very tastefully, but tastefully isn't the same as boldly."
+        },
+        {
+          "s": 1,
+          "text": "But that's rather the point, isn't it? The story is true. You can't accuse real life of being derivative."
+        },
+        {
+          "s": 2,
+          "text": "You can accuse a film-maker of telling it in a derivative way, though. Compare it with Brennan's earlier work, which was genuinely avant-garde — fragmented, unpredictable, sometimes infuriating. This feels as if she's applying for an awards ceremony."
+        },
+        {
+          "s": 0,
+          "text": "What about Mara Quinn? Ben's clearly a fan."
+        },
+        {
+          "s": 2,
+          "text": "Oh, she's superb — no argument there. It's the script I have problems with, not the cast."
+        },
+        {
+          "s": 0,
+          "text": "Let's turn to the politics. The film ends with a caption saying that none of the police officers involved was ever prosecuted. Some viewers have found that ending very powerful; others say it's manipulative."
+        },
+        {
+          "s": 1,
+          "text": "Powerful, I'd say. It isn't manipulation to state a fact. And the film seems to have galvanised a new campaign: there's already a petition calling for the original case files to be made public."
+        },
+        {
+          "s": 2,
+          "text": "I'd agree with that, actually. The last ten minutes are the strongest part of the film. The scene where the conviction is finally quashed is very understated — no music, just the daughter sitting in silence in the corridor. That really resonated with me. If only the rest of the film had trusted its audience as much."
+        },
+        {
+          "s": 0,
+          "text": "Which leaves us with a split verdict. Ben, is there anything you'd change?"
+        },
+        {
+          "s": 1,
+          "text": "The length, perhaps. At two hours forty, it does feel long in places. But I'd rather a film overreached than played it safe."
+        },
+        {
+          "s": 2,
+          "text": "And I'd rather it surprised me. Look, I'd still recommend it. I just wouldn't call it a tour de force."
+        },
+        {
+          "s": 0,
+          "text": "We'll leave it there. The Salt Road is in cinemas from Friday. Next week: is the novel dying, or has it simply moved online?"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "According to Ben, what is unusual about the film's structure?",
+          "options": [
+            "It begins at the end of the daughter's campaign.",
+            "It has almost no dialogue in the first ten minutes.",
+            "It is told from the journalist's point of view.",
+            "The trial takes up very little of the film."
+          ],
+          "answer": 3,
+          "explain_es": "Ben dice: “The trial is over in about ten minutes. The film is really about what happens afterwards.”"
+        },
+        {
+          "type": "tf",
+          "q": "Carla thinks Brennan's earlier films were more experimental than The Salt Road.",
+          "answer": "T",
+          "explain_es": "Verdadero: Carla describe su obra anterior como “genuinely avant-garde — fragmented, unpredictable”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Carla mean when she says that 'tastefully isn't the same as boldly'?",
+          "options": [
+            "The director should have used more music.",
+            "The film is well made but takes no real risks.",
+            "The film is too violent for most viewers.",
+            "The film's political message is offensive."
+          ],
+          "answer": 1,
+          "explain_es": "Carla critica que la película “hits every beat you'd expect”: está bien hecha, pero es previsible y no arriesga."
+        },
+        {
+          "type": "mc",
+          "q": "What real-world effect does Ben attribute to the film?",
+          "options": [
+            "It has prompted an official apology from the government.",
+            "It has led to the prosecution of the police officers.",
+            "It has increased applications to law schools.",
+            "It has inspired a petition for the case files to be released."
+          ],
+          "answer": 3,
+          "explain_es": "Ben dice que la película “seems to have galvanised a new campaign: there's already a petition calling for the original case files to be made public”."
+        },
+        {
+          "type": "mc",
+          "q": "Which part of the film does Carla praise most?",
+          "options": [
+            "The scenes with the journalist",
+            "The scene in which the conviction is overturned",
+            "The opening courtroom scenes",
+            "The soundtrack"
+          ],
+          "answer": 1,
+          "explain_es": "Carla destaca la escena en que se anula la condena: “very understated — no music… That really resonated with me.”"
+        },
+        {
+          "type": "gap",
+          "q": "Ben's only criticism of the film concerns its ___.",
+          "answer": "length",
+          "accept": [
+            "running time",
+            "runtime",
+            "duration"
+          ],
+          "explain_es": "Ben dice: “The length, perhaps. At two hours forty, it does feel long in places.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Choose ONE task.\n\nPART 1 — Essay (240–280 words). Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answer.\n\nText 1 — Engineering our way out: The climate crisis will not be solved by asking billions of people to fly less and eat less meat. Behaviour changes far too slowly, and appeals to individual virtue have achieved remarkably little. Our best hope lies in technology: cheap renewable energy, machines that capture carbon from the air and, if necessary, techniques to cool the planet directly. Research into such solutions deserves far more public investment than it currently receives.\n\nText 2 — The danger of the quick fix: Every promise of a technological rescue gives governments and industries a reason to delay. Carbon capture remains costly and unproven at scale, and schemes to cool the planet could have unintended consequences that no laboratory can predict. Technology has a role to play, but it cannot replace the harder political work of cutting emissions now. To bet the future on inventions that may never materialise is not optimism; it is negligence.\n\nPART 2 — Review (280–320 words). A cultural magazine has invited readers to review a film, novel, exhibition or play that deals with a social or political issue. Write a review assessing how successfully the work treats its subject, both as a work of art and as a contribution to public debate, and say who you would recommend it to.",
+      "prompt_es": "Elige UNA tarea: Parte 1, un ensayo que resume y evalúa dos textos sobre la tecnología frente al cambio climático (240–280 palabras), o Parte 2, una reseña de una obra que trate un tema social o político (280–320 palabras).",
+      "genre_es": "Ensayo (Parte 1) o reseña (Parte 2)",
+      "minWords": 240,
+      "maxWords": 320,
+      "criteria": [
+        "Part 1: summarise the key point of each text in your own words, evaluate both and develop your own view. Part 2: assess the work as art and as argument, and make a clear recommendation.",
+        "Report claims with distance (is thought to have…, it has been suggested that…) and hedge carefully (arguably, it would appear, tends to).",
+        "Use at least one mixed or inverted conditional (Had…, Were…, Should…) and one alternative to if (provided, but for, otherwise).",
+        "Include ellipsis or substitution, a correctly modified ungradable adjective (utterly, absolutely) and a concession structure (albeit, much as, notwithstanding).",
+        "Use at least five expressions from Units 5–8 (unintended consequences, stave off, tipping point, derivative, grassroots, the status quo…) in a consistent formal register."
+      ],
+      "model": "PART 1 — Model essay\n\nThe two texts address the role technology should play in tackling climate change, the first presenting it as our principal hope and the second as a potentially dangerous distraction.\n\nAccording to the first writer, efforts to change individual behaviour have largely failed and will continue to do so, since habits shift too slowly to match the scale of the crisis. Public money, it is argued, should therefore be directed towards technical solutions, ranging from renewable energy to carbon removal and even direct cooling of the planet. Much as this realism is welcome, the argument arguably underestimates how quickly behaviour can change when it is backed by policy, as the decline of smoking demonstrates.\n\nThe second writer accepts that technology is useful but warns that the promise of a future solution encourages inaction in the present. Carbon capture, the author points out, is expensive and largely untested, while attempts to cool the planet could produce effects that nobody is in a position to foresee. This strikes me as the more convincing position: had governments acted on existing knowledge thirty years ago, we would not now be so dependent on technologies that do not yet exist.\n\nIn my view, the choice the texts present is a false one. Investment in research is essential, provided that it complements, rather than replaces, immediate cuts in emissions. Were we to treat technology as an insurance policy rather than a rescue plan, we might stave off the worst effects of warming without staking everything on breakthroughs that might never arrive.\n\nPART 2 — Model review\n\nBread and Roses: A Century of Protest Posters\n\nExhibitions about protest run an obvious risk. Displayed behind glass and lit like altarpieces, the angry slogans of the past can easily become decorative, their urgency softened into nostalgia. That Bread and Roses largely avoids this trap is a considerable achievement, albeit not an unqualified one.\n\nThe exhibition brings together more than two hundred posters, from the hand-painted banners of early suffrage campaigns to the digital images shared by today's climate activists. Its most striking room is devoted to grassroots movements whose names are now largely forgotten: rent strikers, dockers, mothers campaigning for safer streets. Few of these designs are what one would call beautiful, yet several are utterly arresting. A small black-and-white print demanding 'Clean Water Now' is so stark that visitors fall silent in front of it.\n\nWhere the exhibition is less successful is in its final section. Having traced how posters galvanised earlier generations, the curators seem unsure what to say about the present, and the room devoted to social media is a rather hackneyed collection of screens and hashtags. A bolder show would have asked whether online images still have the power to challenge the status quo, or whether they merely let us feel that we have done so.\n\nNotwithstanding this weakness, Bread and Roses is a thoughtful, beautifully designed and genuinely moving show. As a piece of curation it is intelligent rather than daring; as a contribution to public debate, it reminds us that many rights we now take for granted were once dismissed as unrealistic demands painted on cardboard.\n\nI would recommend it to anyone interested in design or history, and above all to younger visitors who suspect that protest never changes anything. They may well leave thinking otherwise. Should you go, allow at least two hours: the captions are every bit as rewarding as the images."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Long turn: 'Should there be limits on what science is allowed to do?' Choose one area — gene editing, artificial intelligence or animal research — and explain where you would draw the line, and why.",
+          "text_es": "Turno largo: ¿debería haber límites a lo que la ciencia puede hacer? Elige un campo y explica dónde pondrías el límite.",
+          "seconds": 120,
+          "tips": [
+            "Hedge and report with distance: It is widely believed that…, it would appear that…, arguably…",
+            "Use an ethical minefield, a slippery slope, play God, informed consent, unintended consequences."
+          ]
+        },
+        {
+          "text": "Long turn: Describe a film, book or work of art that divided opinion. Explain what critics and audiences said about it, and give your own verdict.",
+          "text_es": "Turno largo: describe una obra que haya dividido opiniones, lo que dijeron críticos y público, y tu propio veredicto.",
+          "seconds": 120,
+          "tips": [
+            "Match intensifiers to adjectives: absolutely stunning, rather disappointing, utterly predictable.",
+            "Use derivative, hackneyed, a tour de force, steal the show; avoid repetition with so, not and one."
+          ]
+        },
+        {
+          "text": "Discussion: 'Peaceful protest has never changed anything on its own.' Discuss this view with reference to environmental campaigns and movements for civil rights. Concede points before you counter them, and say what you would recommend to a young activist today.",
+          "text_es": "Discusión: ¿la protesta pacífica, por sí sola, nunca ha cambiado nada? Analiza campañas ambientales y de derechos civiles.",
+          "seconds": 150,
+          "tips": [
+            "Concede with much as, albeit, however + adjective; recommend with the subjunctive: I'd suggest that she join…",
+            "Use grassroots, galvanise, the status quo, disenfranchised; It's high time governments listened."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c2-m3",
+    "level": "C2",
+    "kind": "midterm",
+    "n": 3,
+    "units": [
+      9,
+      10
+    ],
+    "title": "Parcial 3 · Unidades 9–10",
+    "intro_es": "Evalúa el futuro en el pasado (was to, was about to, would), los marcadores discursivos y mecanismos de cohesión de nivel C2, los verbos con preposición y phrasal verbs en registro formal, las formas de futuro avanzadas (futuro perfecto continuo, be to, be on the verge of, be due to), las estructuras comparativas con matices y los proverbios y expresiones fijas, con el vocabulario de salud, riesgo y deporte, y de tiempo, cambio y legado. Formato CPE: open cloze, formación de palabras, transformaciones con palabra clave y texto con huecos. Incluye las cuatro habilidades.",
+    "minutes": 65,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "She left the clinic that afternoon, unaware that she ___ never run competitively again.",
+        "options": [
+          "has to",
+          "is to",
+          "was to",
+          "will"
+        ],
+        "answer": 2,
+        "explain_es": "Futuro en el pasado con “was to”: lo que el destino tenía reservado, visto desde un momento del pasado (‘estaba destinada a no volver a correr’)."
+      },
+      {
+        "type": "mc",
+        "q": "We were ___ boarding when the announcement came that the flight had been cancelled.",
+        "options": [
+          "about to",
+          "due to",
+          "bound to",
+          "on the point of"
+        ],
+        "answer": 3,
+        "explain_es": "“Be on the point of + -ing” expresa algo inminente. “About to”, “due to” y “bound to” van seguidos de infinitivo (to board), no de -ing."
+      },
+      {
+        "type": "mc",
+        "q": "By the time the new hospital finally opens, local residents ___ for it for over a decade.",
+        "options": [
+          "will have been campaigning",
+          "are campaigning",
+          "will be campaigned",
+          "will campaign"
+        ],
+        "answer": 0,
+        "explain_es": "Futuro perfecto continuo: duración de una actividad hasta un punto del futuro (by the time… opens)."
+      },
+      {
+        "type": "mc",
+        "q": "The trial produced encouraging results. ___, the sample was far too small to justify any firm conclusions.",
+        "options": [
+          "Thereby",
+          "Moreover",
+          "That said",
+          "Hence"
+        ],
+        "answer": 2,
+        "explain_es": "“That said” introduce una matización o contraste tras una afirmación positiva. “Hence” indica consecuencia, “moreover” añade y “thereby” significa ‘de ese modo’."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: The ___ we wait, the harder it will be to repair the damage.",
+        "answer": "longer",
+        "explain_es": "Comparativo doble: “The + comparativo…, the + comparativo…” (cuanto más esperemos, más difícil será)."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: All staff ___ to report to the main hall at 9 a.m. sharp; attendance is compulsory.",
+        "answer": "are",
+        "explain_es": "“Be to + infinitivo” expresa instrucciones u órdenes oficiales: “All staff are to report…”."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: Losing the contract was a blow, but every cloud has a silver ___: at last we had time to develop our own product.",
+        "answer": "lining",
+        "explain_es": "Proverbio “Every cloud has a silver lining”: todo lo malo tiene algo bueno."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). The plane was just about to land when the storm hit. (VERGE) → The plane ______ when the storm hit.",
+        "answer": "was on the verge of landing",
+        "accept": [
+          "The plane was on the verge of landing when the storm hit."
+        ],
+        "explain_es": "“Be on the verge of + -ing” expresa que algo está a punto de ocurrir; aquí en pasado: “was on the verge of landing”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). The new version is much less reliable than the old one. (NOWHERE) → The new version is ______ the old one.",
+        "answer": "nowhere near as reliable as",
+        "accept": [
+          "The new version is nowhere near as reliable as the old one."
+        ],
+        "explain_es": "“Nowhere near as + adjetivo + as” expresa una gran diferencia: ‘ni de lejos tan… como’."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “The success of the scheme is entirely dependent of continued government funding.”",
+        "answer": "The success of the scheme is entirely dependent on continued government funding.",
+        "accept": [
+          "The success of the scheme is entirely dependent upon continued government funding."
+        ],
+        "explain_es": "En registro formal, “dependent” y “contingent” rigen la preposición “on”: dependent on, contingent on/upon."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Taking a year off to sail round the world was ___: she had savings, proper training and a clear plan B.",
+        "options": [
+          "a calculated risk",
+          "a level playing field",
+          "a drop in the ocean",
+          "a clean bill of health"
+        ],
+        "answer": 0,
+        "explain_es": "“A calculated risk” es un riesgo asumido tras valorar con cuidado las posibles consecuencias."
+      },
+      {
+        "type": "mc",
+        "q": "Months of night shifts had begun to ___ her health.",
+        "options": [
+          "be on the mend from",
+          "take their toll on",
+          "move the goalposts for",
+          "throw in the towel on"
+        ],
+        "answer": 1,
+        "explain_es": "“To take its/their toll on” es causar un daño o desgaste progresivo."
+      },
+      {
+        "type": "mc",
+        "q": "Every time we hit a target, management ___ and demands even more.",
+        "options": [
+          "takes the plunge",
+          "throws in the towel",
+          "moves the goalposts",
+          "runs the risk"
+        ],
+        "answer": 2,
+        "explain_es": "“To move the goalposts” es cambiar las reglas o los objetivos de forma injusta cuando ya se está cerca de cumplirlos."
+      },
+      {
+        "type": "mc",
+        "q": "The invention of the printing press is widely regarded as ___ in the history of ideas.",
+        "options": [
+          "a bygone",
+          "an ephemeral",
+          "a watershed",
+          "a posterity"
+        ],
+        "answer": 2,
+        "explain_es": "“A watershed” es un momento decisivo que marca un antes y un después."
+      },
+      {
+        "type": "mc",
+        "q": "Older residents tend to see the 1960s ___, forgetting the poverty and the damp, overcrowded housing.",
+        "options": [
+          "for posterity",
+          "as a level playing field",
+          "in the fullness of time",
+          "through rose-tinted glasses"
+        ],
+        "answer": 3,
+        "explain_es": "“To see something through rose-tinted glasses” es idealizarlo, verlo mejor de lo que fue."
+      },
+      {
+        "type": "mc",
+        "q": "The old quarter is ___ history; almost every street has a story to tell.",
+        "options": [
+          "heralded by",
+          "steeped in",
+          "perpetuated by",
+          "harked back to"
+        ],
+        "answer": 1,
+        "explain_es": "“To be steeped in” significa estar impregnado o lleno de algo (historia, tradición)."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Chronic fatigue can be extremely ___, leaving some patients unable to work for months. (DEBILITATE)",
+        "answer": "debilitating",
+        "explain_es": "Se necesita un adjetivo: “debilitating” describe algo que debilita gravemente."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: By the end of the school year, many teachers are showing clear signs of ___. (BURN)",
+        "answer": "burnout",
+        "accept": [
+          "burn-out"
+        ],
+        "explain_es": "“Burnout” es el agotamiento físico y mental causado por el estrés laboral prolongado."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: A truly ___ design never looks dated, however many years go by. (TIME)",
+        "answer": "timeless",
+        "explain_es": "Sufijo -less: “timeless” describe algo que no pasa de moda, que resiste el paso del tiempo."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Campaigners are concerned about the ___ of outdated stereotypes in children's advertising. (PERPETUATE)",
+        "answer": "perpetuation",
+        "explain_es": "Hace falta un sustantivo después de “the”: “perpetuation” es el hecho de mantener o prolongar algo (normalmente negativo)."
+      }
+    ],
+    "reading": {
+      "title": "The Mountain Remembers",
+      "genre": "article",
+      "paragraphs": [
+        "In the spring of 2004, a Norwegian climber called Lene Halvorsen set off from base camp on what was to be the final expedition of her career. She was forty-six, had survived two avalanches and had once spent a night in a crevasse with a broken ankle. She knew, in other words, exactly what she was letting herself in for. Three weeks later she was back in Oslo, having turned round two hundred metres below the summit of an 8,000-metre peak. 'Everyone assumed I'd thrown in the towel,' she recalls. 'In fact, it was the best decision I ever made.'",
+        "Halvorsen, now in her sixties, has spent the years since thinking about why people like her climb at all. Her conclusion is less romantic than the one usually offered by documentaries. Mountaineers, she argues, are not reckless thrill-seekers but some of the most risk-averse people she has ever met: obsessive planners who check the weather forecast a dozen times a day. [1] ______ The real danger lies not in ignoring risk but in being persuaded, by exhaustion, ambition and the money already spent, to redefine it.",
+        "This phenomenon, known among climbers as 'summit fever', is well documented. The higher climbers go, the less oxygen reaches the brain, and the less oxygen reaches the brain, the worse their judgement becomes. Add to that the cost of the expedition — a commercial ascent can cost upwards of fifty thousand dollars — and months of training, and it is hardly surprising that turning back can feel like an unbearable loss. A striking proportion of deaths at high altitude occur not on the way up but on the descent, when exhausted climbers who have pushed on past a sensible turnaround time run out of daylight, oxygen or strength.",
+        "Over the past three decades, the character of high-altitude climbing has been transformed. What was once the preserve of small, self-sufficient teams has become an industry. Guided expeditions now take clients with relatively little experience to summits that, a generation ago, only elite mountaineers would have attempted. Supporters of this change point out that it has created a level playing field of sorts: one no longer needs to belong to a national club or a wealthy family to stand on the roof of the world. Critics counter that it has also created queues at altitudes where every minute counts, and a culture in which the summit is treated as a product that has been paid for.",
+        "Then there is the question of what climbers leave behind. For decades, the most popular routes were littered with discarded oxygen cylinders, torn tents and tonnes of human waste, much of it frozen into the ice. [2] ______ Clean-up campaigns, many of them led by local guides, have removed huge quantities of rubbish in recent years; nevertheless, the mountain's memory, as Halvorsen puts it, 'is a great deal longer than ours'.",
+        "The legacy is not only environmental. Generations of high-altitude workers from Himalayan communities have made commercial climbing possible, often taking on the most dangerous tasks — fixing ropes, carrying loads through unstable icefalls — for a fraction of what their clients pay. Their names have rarely appeared in the history books, which have tended to celebrate the visitors who reached the top rather than those who carried them there. That is beginning to change: several record-breaking ascents in the past decade have been made by local climbers, and a new generation is determined to leave its mark on the story of the mountains it grew up beneath.",
+        "For Halvorsen, the meaning of her own decision has become clearer with time. 'Had I gone on, I would probably have reached the summit,' she says. 'And I would very probably have died on the way down.' She pauses. 'The mountain will still be there in a thousand years. The question is what kind of people we want to have been when we look back on it.'"
+      ],
+      "glossary": [
+        [
+          "crevasse",
+          "grieta profunda en un glaciar"
+        ],
+        [
+          "letting herself in for",
+          "metiéndose en (algo difícil)"
+        ],
+        [
+          "turnaround time",
+          "hora límite para dar la vuelta"
+        ],
+        [
+          "the preserve of",
+          "terreno exclusivo de"
+        ],
+        [
+          "icefalls",
+          "cascadas de hielo (zonas de glaciar fracturado)"
+        ],
+        [
+          "thrill-seekers",
+          "buscadores de emociones fuertes"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [1]?",
+          "options": [
+            "Most of them, unsurprisingly, have never suffered a serious injury.",
+            "Documentaries, by contrast, rarely mention the weather at all.",
+            "What sets them apart is not a disregard for danger but a willingness to accept a calculated risk.",
+            "This explains why so few of them ever reach a summit."
+          ],
+          "answer": 2,
+          "explain_es": "La frase completa la idea de que los alpinistas son prudentes y prepara el contraste siguiente: el peligro no está en ignorar el riesgo, sino en redefinirlo."
+        },
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [2]?",
+          "options": [
+            "As temperatures rise and glaciers retreat, waste that lay buried for half a century is now re-emerging and being carried downhill.",
+            "Not a single cylinder, however, has ever been found on the northern routes.",
+            "Climbers are now required to carry their oxygen cylinders to the summit themselves.",
+            "Glaciers, after all, have been retreating since the end of the last ice age."
+          ],
+          "answer": 0,
+          "explain_es": "La frase continúa la idea de los residuos congelados en el hielo y explica por qué el problema sigue vivo, antes de mencionar las campañas de limpieza."
+        },
+        {
+          "type": "mc",
+          "q": "What does the writer imply by saying that Halvorsen 'knew exactly what she was letting herself in for'?",
+          "options": [
+            "She had already climbed the same mountain before.",
+            "She was fully aware of the dangers of the expedition.",
+            "She had been warned not to go by her family.",
+            "She expected to reach the summit without difficulty."
+          ],
+          "answer": 1,
+          "explain_es": "La frase resume su experiencia previa (avalanchas, una noche en una grieta): conocía perfectamente los peligros."
+        },
+        {
+          "type": "mc",
+          "q": "According to the third paragraph, why do so many deaths happen on the descent?",
+          "options": [
+            "Climbers carry too much equipment on the way down.",
+            "The descent routes are technically more difficult.",
+            "Climbers who have continued for too long run out of time, oxygen or energy.",
+            "Guides tend to leave their clients after the summit."
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice que los escaladores que han seguido “past a sensible turnaround time run out of daylight, oxygen or strength”."
+        },
+        {
+          "type": "mc",
+          "q": "What do critics of commercial expeditions object to in the fourth paragraph?",
+          "options": [
+            "The exclusion of national climbing clubs",
+            "Overcrowding and the idea that the summit can be bought",
+            "The high cost of the training required",
+            "The shortage of oxygen on guided routes"
+          ],
+          "answer": 1,
+          "explain_es": "Los críticos hablan de “queues at altitudes where every minute counts” y de una cultura en la que la cima es “a product that has been paid for”."
+        },
+        {
+          "type": "tf",
+          "q": "Halvorsen regrets not having reached the summit.",
+          "answer": "F",
+          "explain_es": "Falso: dice que dar la vuelta “was the best decision I ever made” y que, si hubiera seguido, probablemente habría muerto en el descenso."
+        }
+      ]
+    },
+    "listening": {
+      "title": "The Long Game: Life After the Final Whistle",
+      "kind": "podcast",
+      "speakers": [
+        {
+          "name": "Jenna",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Tom",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Leila",
+          "voice": "female",
+          "accent": "au"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "This is The Long Game, and today we're talking about what happens when an athletic career comes to an end. I'm joined by former rugby international Tom Ashby, who retired three years ago, and by Dr Leila Haddad, a sports psychologist who works with athletes in transition. Tom, take us back to the day you knew it was over."
+        },
+        {
+          "s": 1,
+          "text": "It wasn't a single day, really. I'd had a knee injury that just wasn't healing, and I was about to sign a new two-year contract. The medical came back, and the surgeon told me, quite bluntly, that if I carried on I'd be running the risk of not walking properly by the age of forty. So I didn't sign. On paper it was my decision, but it didn't feel like one."
+        },
+        {
+          "s": 0,
+          "text": "Leila, is that typical?"
+        },
+        {
+          "s": 2,
+          "text": "Very. Only a minority of elite athletes actually choose the moment they retire. Most are pushed out — by injury, by deselection, or by their bodies simply saying no. And, broadly speaking, the less control they have over the ending, the harder the adjustment tends to be."
+        },
+        {
+          "s": 0,
+          "text": "Harder in what way?"
+        },
+        {
+          "s": 2,
+          "text": "Well, think about it. From the age of twelve or so, every day has been structured for you: training, meals, travel, sleep. Your whole identity is bound up with the sport. Then, almost overnight, all of that disappears. We see high rates of anxiety and depression in the first couple of years, and a lot of former athletes describe it as a kind of grief."
+        },
+        {
+          "s": 1,
+          "text": "That's exactly the word. I was grieving for a version of myself. And the strange thing was that I'd been completely burnt out in my last season — I was dreading every training session — and yet the moment it ended, I'd have given anything to go back."
+        },
+        {
+          "s": 0,
+          "text": "Is that nostalgia doing its work?"
+        },
+        {
+          "s": 2,
+          "text": "Partly. Nostalgia's fascinating, because it isn't just sadness. There's research suggesting it can actually lift people's mood and give them a sense of continuity — a feeling that their life makes sense as a story. The danger comes when you start seeing the past through rose-tinted glasses and measuring everything new against it. Nothing in an office is ever going to feel like a full stadium."
+        },
+        {
+          "s": 1,
+          "text": "I'll be honest, I did that for a good year. My wife would tell you I talked about the cup final every single weekend."
+        },
+        {
+          "s": 0,
+          "text": "So what helped?"
+        },
+        {
+          "s": 1,
+          "text": "Two things. Talking to other ex-players — I hadn't realised how many of them had been through exactly the same thing. And retraining. I'm doing a degree in physiotherapy now. By next summer I'll have been studying for three years, and I'm due to qualify in July."
+        },
+        {
+          "s": 0,
+          "text": "Leila, what should sports organisations be doing differently?"
+        },
+        {
+          "s": 2,
+          "text": "Starting much, much earlier. The best clubs now insist that young players keep up some kind of education alongside their training. It's not that they expect them to fail; it's that every career ends, and the earlier people plan for it, the better they cope. Clubs that do nothing until the final contract runs out are, frankly, letting their players down."
+        },
+        {
+          "s": 0,
+          "text": "Tom, what would you say to an athlete who's on the verge of retiring right now?"
+        },
+        {
+          "s": 1,
+          "text": "That your legacy isn't the trophies on the shelf. It's what you go on to do with everything you've learnt. And don't be too proud to ask for help."
+        },
+        {
+          "s": 0,
+          "text": "Tom Ashby and Dr Leila Haddad, thank you both."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why did Tom decide not to sign a new contract?",
+          "options": [
+            "He wanted to start his degree immediately.",
+            "His club offered him a much lower salary.",
+            "A surgeon warned him about long-term damage to his knee.",
+            "He had lost his place in the national team."
+          ],
+          "answer": 2,
+          "explain_es": "Tom cuenta que el cirujano le dijo que “I'd be running the risk of not walking properly by the age of forty”."
+        },
+        {
+          "type": "mc",
+          "q": "According to Leila, which athletes tend to find retirement hardest?",
+          "options": [
+            "Those who have earned the most money",
+            "Those who have least control over when it happens",
+            "Those who retire at a very young age",
+            "Those who have played team sports"
+          ],
+          "answer": 1,
+          "explain_es": "Leila dice: “the less control they have over the ending, the harder the adjustment tends to be.”"
+        },
+        {
+          "type": "tf",
+          "q": "Tom was enjoying his final season before he retired.",
+          "answer": "F",
+          "explain_es": "Falso: Tom dice que estaba “completely burnt out in my last season — I was dreading every training session”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Leila say about nostalgia?",
+          "options": [
+            "It disappears completely after about two years.",
+            "It is always a symptom of depression.",
+            "It mainly affects athletes who were unsuccessful.",
+            "It can improve mood, but it becomes a problem when the past is idealised."
+          ],
+          "answer": 3,
+          "explain_es": "Leila explica que la nostalgia “can actually lift people's mood”, pero el peligro es ver el pasado “through rose-tinted glasses”."
+        },
+        {
+          "type": "gap",
+          "q": "Tom is studying physiotherapy and is due to ___ in July.",
+          "answer": "qualify",
+          "accept": [
+            "graduate",
+            "finish"
+          ],
+          "explain_es": "Tom dice: “I'm due to qualify in July.” (“be due to” = estar previsto)."
+        },
+        {
+          "type": "mc",
+          "q": "What does Leila criticise some clubs for?",
+          "options": [
+            "Paying retired players too little",
+            "Forcing young players to give up their studies",
+            "Ignoring the advice of psychologists",
+            "Waiting until players' contracts end before offering any support"
+          ],
+          "answer": 3,
+          "explain_es": "Leila critica a los clubes que “do nothing until the final contract runs out”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Choose ONE task.\n\nPART 1 — Essay (240–280 words). Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answer.\n\nText 1 — Let them climb trees: Today's children are among the most closely supervised in history. Playgrounds have been stripped of anything that might cause a bruise, and many children are no longer allowed to walk to school alone. Yet risk is how children learn to judge danger, manage fear and recover from failure. A child who has never fallen off a wall is not safer; they are simply less prepared for the risks that adult life will inevitably bring.\n\nText 2 — Safety is not a luxury: Nostalgic accounts of a childhood spent roaming freely tend to forget the children who did not survive it. Road deaths among children have fallen dramatically precisely because parents, schools and governments took safety seriously. Moreover, not all children face the same risks: a busy main road or an unsafe neighbourhood is not an adventure playground. Encouraging 'healthy risk' is easy for those whose surroundings are already safe.\n\nPART 2 — Report (280–320 words). Your college principal has asked you to write a report on how well the college supports students' wellbeing during exam periods. In your report, evaluate two or three of the current measures, explain what students think of them and recommend changes for next year.",
+      "prompt_es": "Elige UNA tarea: Parte 1, un ensayo que resume y evalúa dos textos sobre cuánto riesgo deben correr los niños (240–280 palabras), o Parte 2, un informe sobre el apoyo al bienestar de los estudiantes en época de exámenes (280–320 palabras).",
+      "genre_es": "Ensayo (Parte 1) o informe (Parte 2)",
+      "minWords": 240,
+      "maxWords": 320,
+      "criteria": [
+        "Part 1: summarise the key point of each text in your own words, evaluate both and develop your own view. Part 2: use clear headings, evaluate the current measures and make practical recommendations.",
+        "Use future forms in the past (was to, was about to, would) and advanced future forms (will have been -ing, be to, be due to, be on the verge of).",
+        "Link ideas with a range of C2 discourse markers (That said, By the same token, Admittedly, Even so) and precise formal verbs and prepositions (contingent on, account for, look into).",
+        "Measure differences with nuanced comparatives (nowhere near as…, every bit as…, the more…, the more…).",
+        "Use at least five expressions from Units 9–10 (a calculated risk, run the risk of, take its toll, risk-averse, burnout, stand the test of time…) and keep proverbs out of formal writing unless used deliberately."
+      ],
+      "model": "PART 1 — Model essay\n\nBoth texts examine how much risk children should be exposed to, but while the first treats risk as an essential part of growing up, the second warns that enthusiasm for it can overlook very real dangers.\n\nThe first writer contends that modern children are excessively protected, citing sanitised playgrounds and the decline in children travelling on their own. The central claim is that encountering danger teaches children to assess risk, cope with fear and bounce back from setbacks, so that overprotection leaves them less, rather than more, prepared for adult life. There is a good deal of truth in this. That said, the argument relies on a rather idealised picture of childhood and offers little evidence that cautious upbringings actually produce less resilient adults.\n\nThe second writer challenges precisely this idealisation, observing that the sharp fall in child deaths on the roads is the direct result of a greater emphasis on safety. A further point, and in my view the stronger one, concerns inequality: the risks children face depend heavily on where they live, and advice to embrace danger is far easier to follow in a quiet suburb than in a deprived inner city.\n\nOn balance, I would argue that the two positions can be reconciled. The aim should not be to expose children to more risk in general, but to distinguish between the kind that teaches and the kind that maims. A fall from a tree is a calculated risk; a busy dual carriageway is not. The more carefully adults draw this distinction, the freer children can be wherever it is genuinely safe for them to explore.\n\nPART 2 — Model report\n\nStudent wellbeing during the summer examination period\n\nIntroduction\nThe aim of this report is to evaluate the measures currently in place to support students during exams and to recommend improvements for next year. It is based on an online survey completed by 214 students and on discussions with the student council.\n\nCurrent measures\nQuiet study rooms: The extended opening hours of the library and study rooms were by far the most popular measure, with over 70% of respondents describing them as useful. That said, several students pointed out that the rooms were frequently full by mid-morning, so those arriving later had to work in noisier areas.\n\nCounselling sessions: Although the drop-in sessions were well regarded by those who attended them, only a small minority of students knew that they existed. A number of respondents had been on the verge of seeking help but did not know where to go. Moreover, the sessions were held in the middle of the morning, precisely when most exams were taking place.\n\nExam timetable: The timetable was due to be published in March but did not appear until late April. Students reported that this delay took its toll on their ability to plan revision, and several described symptoms of burnout by the final week.\n\nRecommendations\nIn the light of these findings, I would recommend:\n• opening an additional study room during the peak exam weeks;\n• publicising the counselling service through tutors and the student app, and moving the sessions to the late afternoon;\n• guaranteeing that the timetable is published at least ten weeks before exams begin.\n\nConclusion\nThe college's current support is nowhere near as ineffective as some complaints suggest, but its impact is contingent on clear communication. Provided these relatively inexpensive changes are implemented, next year's students should find the exam period considerably less stressful."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Long turn: 'Is it ever right to take a serious risk with your own health or safety?' Talk about extreme sports, demanding careers or personal challenges, and explain where you would draw the line.",
+          "text_es": "Turno largo: ¿está justificado arriesgar la propia salud o seguridad? Habla de deportes extremos, trabajos exigentes o retos personales.",
+          "seconds": 120,
+          "tips": [
+            "Look forward from the past: I was about to give up when…, little did I know I was to…",
+            "Use a calculated risk, run the risk of, risk-averse, take its toll on, throw in the towel."
+          ]
+        },
+        {
+          "text": "Long turn: Describe a tradition, place or object from your community that you would like to survive for future generations. Explain why it matters and what threatens it.",
+          "text_es": "Turno largo: describe una tradición, lugar u objeto de tu comunidad que quisieras conservar para el futuro, por qué importa y qué lo amenaza.",
+          "seconds": 120,
+          "tips": [
+            "Use advanced future forms: is due to be demolished, is on the verge of disappearing, by 2040 we will have been…",
+            "Use steeped in, bygone, stand the test of time, for posterity, leave its mark on."
+          ]
+        },
+        {
+          "text": "Discussion: 'People always believe the past was better than it really was.' Discuss this statement with reference to health, technology and community life, and reach a balanced conclusion.",
+          "text_es": "Discusión: ¿la gente siempre cree que el pasado fue mejor de lo que realmente fue? Habla de salud, tecnología y vida comunitaria.",
+          "seconds": 150,
+          "tips": [
+            "Compare with nuance: nowhere near as…, every bit as…, the older we get, the more…",
+            "Signpost your argument: Admittedly…, That said…, By the same token…; use through rose-tinted glasses."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c2-final",
+    "level": "C2",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "title": "Parcial final · Nivel C2",
+    "intro_es": "Examen integrador de las 10 unidades del nivel C2: aspecto y verbos de estado, distanciamiento con tiempos pasados, oraciones hendidas e inversión, modales de deducción, nominalización y patrones verbales, pasiva de reporte y causativos, lenguaje de matización, condicionales mixtos e invertidos, elipsis e intensificadores, subjuntivo, pasado irreal y concesión, futuro en el pasado, marcadores discursivos, formas de futuro avanzadas, comparativos con matices y expresiones fijas, con el vocabulario de todo el nivel. Formato CPE. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
+    "minutes": 95,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "We ___ of selling the house and moving to the coast, but nothing has been decided yet.",
+        "options": [
+          "think",
+          "are thought",
+          "are thinking",
+          "have thought"
+        ],
+        "answer": 2,
+        "explain_es": "Verbo de estado usado dinámicamente: “think of + -ing” en continuo significa ‘estar considerando’ (un proceso), no ‘opinar’."
+      },
+      {
+        "type": "mc",
+        "q": "Only after every vote had been counted ___ how close the election had been.",
+        "options": [
+          "the candidates did realise",
+          "the candidates realised",
+          "did the candidates realise",
+          "realised the candidates"
+        ],
+        "answer": 2,
+        "explain_es": "Inversión tras “Only after…”: el auxiliar va delante del sujeto en la cláusula principal (did the candidates realise)."
+      },
+      {
+        "type": "mc",
+        "q": "'Mark says the meeting was a complete waste of time.' 'Well, he ___ say that — he never wanted it in the first place.'",
+        "options": [
+          "will have",
+          "would",
+          "should",
+          "must"
+        ],
+        "answer": 1,
+        "explain_es": "“He WOULD say that” (con acento en would) expresa que el comentario es típico de esa persona y previsible, a menudo con fastidio."
+      },
+      {
+        "type": "mc",
+        "q": "The documents are reported ___ before the police arrived at the building.",
+        "options": [
+          "to be destroyed",
+          "having been destroyed",
+          "to have been destroyed",
+          "to have destroyed"
+        ],
+        "answer": 2,
+        "explain_es": "Pasiva de reporte con infinitivo pasivo perfecto: la destrucción ocurrió antes del momento del reporte y los documentos reciben la acción."
+      },
+      {
+        "type": "mc",
+        "q": "The early results are ___ encouraging, although it is far too soon to draw any firm conclusions.",
+        "options": [
+          "fairly",
+          "utterly",
+          "absolutely",
+          "totally"
+        ],
+        "answer": 0,
+        "explain_es": "“Encouraging” es un adjetivo graduable: admite atenuadores como “fairly” o “quite”. “Utterly”, “absolutely” y “totally” se usan con adjetivos extremos."
+      },
+      {
+        "type": "mc",
+        "q": "I'd rather you ___ anyone about the merger until it has been officially announced.",
+        "options": [
+          "won't tell",
+          "don't tell",
+          "didn't tell",
+          "hadn't told"
+        ],
+        "answer": 2,
+        "explain_es": "“Would rather + otro sujeto + pasado” expresa una preferencia sobre el presente o el futuro: “I'd rather you didn't tell…”."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: ___ I known about the rail strike, I would have driven to the conference instead.",
+        "answer": "Had",
+        "explain_es": "Condicional invertido de tercer tipo: “Had I known…” = “If I had known…”, más formal."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: The new system is cheaper and, ___ is more, far easier for staff to use.",
+        "answer": "what",
+        "explain_es": "Marcador discursivo de adición “what is more” (además, es más), propio del registro formal y semiformal."
+      },
+      {
+        "type": "gap",
+        "q": "Open cloze — write ONE word: The bridge is ___ to reopen next month, although engineers have warned of possible delays.",
+        "answer": "due",
+        "accept": [
+          "scheduled",
+          "expected",
+          "set"
+        ],
+        "explain_es": "“Be due to + infinitivo” expresa algo programado para una fecha concreta."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). The decision was delayed because the data was unreliable. (UNRELIABILITY) → The ______ delayed the decision.",
+        "answer": "unreliability of the data",
+        "accept": [
+          "The unreliability of the data delayed the decision."
+        ],
+        "explain_es": "Nominalización: la causa “because the data was unreliable” pasa a ser el sujeto nominal “The unreliability of the data”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). It was a mistake not to back up the files before the update. (SHOULD) → I ______ the files before the update.",
+        "answer": "should have backed up",
+        "accept": [
+          "should've backed up",
+          "really should have backed up",
+          "I should have backed up the files before the update."
+        ],
+        "explain_es": "“Should have + participio” expresa arrepentimiento o crítica sobre algo que no se hizo en el pasado."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). Despite the appalling weather, the festival went ahead as planned. (NOTWITHSTANDING) → ______, the festival went ahead as planned.",
+        "answer": "The appalling weather notwithstanding",
+        "accept": [
+          "Notwithstanding the appalling weather",
+          "The appalling weather notwithstanding, the festival went ahead as planned.",
+          "Notwithstanding the appalling weather, the festival went ahead as planned."
+        ],
+        "explain_es": "“Notwithstanding” es una preposición formal de concesión; puede ir antes o después del sustantivo: “Notwithstanding the appalling weather” o “The appalling weather notwithstanding”."
+      },
+      {
+        "type": "transform",
+        "q": "Key-word transformation — complete the second sentence (3–8 words, including the word in capitals). If you practise more, you will become more confident. (THE) → The more ______ you will become.",
+        "answer": "you practise, the more confident",
+        "accept": [
+          "you practice, the more confident",
+          "The more you practise, the more confident you will become.",
+          "The more you practice, the more confident you will become."
+        ],
+        "explain_es": "Comparativo doble: “The more you practise, the more confident you will become.” (cuanto más…, más…)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “Little did he know that he will become president twenty years later.”",
+        "answer": "Little did he know that he would become president twenty years later.",
+        "accept": [
+          "Little did he know that he was to become president twenty years later.",
+          "Little did he know he would become president twenty years later.",
+          "Little did he know he was to become president twenty years later."
+        ],
+        "explain_es": "Futuro en el pasado: desde un punto del pasado se usa “would” (o “was to”), no “will”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "At the formal dinner, in his jeans and trainers, he ___.",
+        "options": [
+          "stuck out like a sore thumb",
+          "had a foot in both camps",
+          "struck a chord",
+          "put down roots"
+        ],
+        "answer": 0,
+        "explain_es": "“To stick out like a sore thumb” es llamar la atención por no encajar con el entorno."
+      },
+      {
+        "type": "mc",
+        "q": "The journalist ___ that the minister had known about the leak, though she stopped short of saying so directly.",
+        "options": [
+          "insinuated",
+          "conceded",
+          "refuted",
+          "minced"
+        ],
+        "answer": 0,
+        "explain_es": "“To insinuate” es sugerir algo negativo de forma indirecta, sin decirlo abiertamente."
+      },
+      {
+        "type": "mc",
+        "q": "His belief that the business would recover on its own was little more than ___.",
+        "options": [
+          "hindsight",
+          "wishful thinking",
+          "a blind spot",
+          "a gut feeling"
+        ],
+        "answer": 1,
+        "explain_es": "“Wishful thinking” es creer algo porque uno desea que sea verdad, no porque haya pruebas."
+      },
+      {
+        "type": "mc",
+        "q": "After her ___ from intern to chief executive in just six years, she became a regular guest on business podcasts.",
+        "options": [
+          "make-or-break",
+          "glass ceiling",
+          "meteoric rise",
+          "foot in the door"
+        ],
+        "answer": 2,
+        "explain_es": "“A meteoric rise” es un ascenso rapidísimo y espectacular."
+      },
+      {
+        "type": "mc",
+        "q": "Her final novel is widely regarded as ___, the crowning achievement of a remarkable career.",
+        "options": [
+          "derivative",
+          "a pastiche",
+          "a tour de force",
+          "hackneyed"
+        ],
+        "answer": 2,
+        "explain_es": "“A tour de force” es una obra magistral que demuestra un gran talento."
+      },
+      {
+        "type": "mc",
+        "q": "Opposition MPs accused the parliament of merely ___ decisions the government had already taken.",
+        "options": [
+          "enshrining",
+          "galvanising",
+          "quashing",
+          "rubber-stamping"
+        ],
+        "answer": 3,
+        "explain_es": "“To rubber-stamp” es aprobar algo automáticamente, sin examinarlo ni debatirlo."
+      },
+      {
+        "type": "mc",
+        "q": "After a minor operation, she's ___ and should be back at work next week.",
+        "options": [
+          "on the mend",
+          "risk-averse",
+          "throwing in the towel",
+          "moving the goalposts"
+        ],
+        "answer": 0,
+        "explain_es": "“To be on the mend” es estar recuperándose de una enfermedad o lesión."
+      },
+      {
+        "type": "mc",
+        "q": "The architect hoped her library would ___ — a building people would still admire in a hundred years' time.",
+        "options": [
+          "hark back to",
+          "be steeped in",
+          "herald",
+          "stand the test of time"
+        ],
+        "answer": 3,
+        "explain_es": "“To stand the test of time” es seguir siendo válido o apreciado después de mucho tiempo."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: After years of moving between countries, he felt completely ___, unsure where he really belonged. (ROOT)",
+        "answer": "rootless",
+        "explain_es": "Sufijo -less: “rootless” describe a alguien sin raíces ni sentido de pertenencia."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The senator's ___ about his expenses did even more damage than the expenses themselves. (HONEST)",
+        "answer": "dishonesty",
+        "explain_es": "Prefijo dis- + sufijo -y: “dishonesty” (falta de honestidad). Se necesita un sustantivo después del posesivo."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Optical illusions exploit the limits of human ___. (PERCEIVE)",
+        "answer": "perception",
+        "explain_es": "Se necesita un sustantivo: “perception” es la percepción, la forma en que captamos e interpretamos lo que nos rodea."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The drug has ___ been tested on thousands of patients, although no data has yet been published. (PURPORT)",
+        "answer": "purportedly",
+        "explain_es": "“Purportedly” es un adverbio de distanciamiento: indica que algo se afirma, pero no está demostrado."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: The natural ___ of the aquifer will take decades if extraction continues at its current rate. (REPLENISH)",
+        "answer": "replenishment",
+        "explain_es": "Sufijo -ment: “replenishment” es la reposición o recarga de un recurso."
+      },
+      {
+        "type": "gap",
+        "q": "Word formation — use the word in capitals: Campaigners have condemned the ___ of press freedom under the new security law. (CURTAIL)",
+        "answer": "curtailment",
+        "explain_es": "Sufijo -ment: “curtailment” es la restricción o reducción de un derecho o una libertad."
+      }
+    ],
+    "reading": {
+      "title": "The Afterlife of Data",
+      "genre": "article",
+      "paragraphs": [
+        "When Marta Lindqvist's father died, he left behind a house full of furniture, a modest pension and roughly forty thousand digital photographs, eleven years of emails and a social media account that continued, with unnerving cheerfulness, to remind his friends of his birthday. 'The furniture was easy,' she says. 'We knew what to do with a wardrobe. Nobody had ever told us what to do with a man's inbox.'",
+        "Marta's predicament is fast becoming one of the defining dilemmas of our time. It has been estimated that within a few decades the dead will outnumber the living on some of the largest social platforms. [1] ______ Unlike letters in a drawer, however, these traces are held not by families but by companies, whose terms of service — accepted with a careless click years earlier — may determine whether relatives can access them at all.",
+        "For historians, the situation is both a gift and a threat. Never before has ordinary life been documented in such detail; a researcher in the twenty-second century could, in principle, reconstruct the daily concerns of millions of anonymous people who would once have vanished without trace. Yet digital records are far more ephemeral than they appear. Formats become obsolete, companies go bankrupt, servers are quietly switched off. Paradoxically, a parish register from 1650 stands a better chance of reaching posterity than a blog written in 2010.",
+        "The more immediate questions, though, are personal and ethical. Should a dead person's private messages be read by their children? Does a widow have the right to keep her husband's profile online if his own wishes are unknown? Lawyers have begun to advise clients to draw up a 'digital will', specifying which accounts should be closed, preserved or handed over, and to whom. Few people have done so. Much as we plan for the fate of our possessions, it would appear that we are reluctant to imagine our online selves outliving us.",
+        "Further complicating matters is the arrival of so-called 'griefbots': chatbots trained on a dead person's messages, emails and voice recordings, which allow the bereaved to hold simulated conversations with them. Several start-ups now offer such services, and their marketing is careful to present them as a source of comfort rather than a replacement for the person who has gone. [2] ______ Others report that the experience was oddly flat: the bot had the person's phrases but not their timing, their vocabulary but not their silences.",
+        "Psychologists are divided. Some argue that maintaining a bond with the dead is a normal and healthy part of mourning, and that a griefbot is merely a more sophisticated version of rereading old letters. Others worry that a simulation which never tires and is always available could make it harder for people to accept a loss, leaving them suspended in a conversation that can never really move forward. There is also the uncomfortable matter of consent. The person being simulated never agreed to it, and words they once wrote to one friend may be recombined into things they would never have said to anyone.",
+        "Marta, for her part, decided against a griefbot. [3] ______ She downloaded her father's photographs, printed the hundred she liked best and asked the platform to turn his account into a memorial page, where friends still occasionally leave messages on the anniversary of his death. His emails she has kept but not read. 'Perhaps one day,' she says. 'In the fullness of time. For now, it's enough to know they're there.'",
+        "What her story suggests is that the question of digital legacy is not, at heart, a technological one. Every generation has had to decide what to keep and what to let go, which stories to perpetuate and which to allow to fade. What has changed is the sheer quantity of what we leave behind, and the fact that, for the first time, much of it is owned by someone else. Unless we decide what should happen to our digital selves, others will decide for us."
+      ],
+      "glossary": [
+        [
+          "unnerving",
+          "inquietante, desconcertante"
+        ],
+        [
+          "predicament",
+          "situación difícil, apuro"
+        ],
+        [
+          "parish register",
+          "registro parroquial"
+        ],
+        [
+          "the bereaved",
+          "los deudos, quienes han perdido a un ser querido"
+        ],
+        [
+          "mourning",
+          "duelo"
+        ],
+        [
+          "outliving us",
+          "sobreviviéndonos"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [1]?",
+          "options": [
+            "Most users, it would appear, delete their accounts long before they die.",
+            "Platforms have therefore stopped allowing elderly people to open accounts.",
+            "Each of these accounts is, in effect, an archive of a life: what a person found funny, whom they loved, what they argued about at two in the morning.",
+            "The living, meanwhile, are spending less time online than ever before."
+          ],
+          "answer": 2,
+          "explain_es": "La frase describe las cuentas como un archivo de una vida, y la siguiente las compara con “letters in a drawer”: “Unlike letters in a drawer, however, these traces…”."
+        },
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [2]?",
+          "options": [
+            "Some users say that the chance to 'hear' a parent's voice again helped them through the first months of grief.",
+            "Grief, after all, rarely lasts more than a few weeks.",
+            "None of these companies, however, has yet attracted a single customer.",
+            "The technology was originally developed by historians in the 1990s."
+          ],
+          "answer": 0,
+          "explain_es": "“Some users say…” prepara el contraste con la oración siguiente: “Others report that the experience was oddly flat”."
+        },
+        {
+          "type": "mc",
+          "q": "Gapped text — which sentence best fills gap [3]?",
+          "options": [
+            "She had, in fact, already built one herself the previous year.",
+            "The platform had refused to close his account under any circumstances.",
+            "Her father, she points out, would have been delighted by the idea.",
+            "What she wanted, she explains, was not to keep talking to her father but to remember him accurately."
+          ],
+          "answer": 3,
+          "explain_es": "La frase explica por qué rechazó el griefbot y conecta con lo que hizo después: conservar fotos y crear una página conmemorativa. La opción de la plataforma contradice que la cuenta se convirtiera en memorial."
+        },
+        {
+          "type": "mc",
+          "q": "What did Marta find most difficult to deal with after her father's death?",
+          "options": [
+            "Replying to his friends' birthday messages",
+            "Sorting out his pension",
+            "Deciding what to do with his online presence",
+            "Dividing his possessions among the family"
+          ],
+          "answer": 2,
+          "explain_es": "Marta dice: “The furniture was easy… Nobody had ever told us what to do with a man's inbox.”"
+        },
+        {
+          "type": "mc",
+          "q": "Why does the writer mention a parish register from 1650?",
+          "options": [
+            "To explain where digital archives originated",
+            "To argue that blogs have little historical value",
+            "To show that historians prefer paper documents",
+            "To show that old physical records may outlast digital ones"
+          ],
+          "answer": 3,
+          "explain_es": "El ejemplo ilustra que los registros digitales son “far more ephemeral than they appear”: un registro de 1650 tiene más posibilidades de llegar a la posteridad que un blog de 2010."
+        },
+        {
+          "type": "mc",
+          "q": "What does the writer suggest about digital wills in the fourth paragraph?",
+          "options": [
+            "Few people make one, perhaps because they would rather not imagine their own death online.",
+            "Lawyers generally advise their clients against them.",
+            "They only cover photographs and emails.",
+            "They are now a legal requirement in most countries."
+          ],
+          "answer": 0,
+          "explain_es": "“Few people have done so… it would appear that we are reluctant to imagine our online selves outliving us.”"
+        },
+        {
+          "type": "mc",
+          "q": "What concern about consent is raised in the sixth paragraph?",
+          "options": [
+            "Users are not told how much the service will cost.",
+            "The person being simulated never agreed and might be made to 'say' things they never would have.",
+            "Psychologists cannot study grieving users without permission.",
+            "Children are using griefbots without their parents' permission."
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice que la persona simulada “never agreed to it” y que sus palabras pueden recombinarse en cosas que “they would never have said to anyone”."
+        },
+        {
+          "type": "tf",
+          "q": "Marta has read all of her father's emails.",
+          "answer": "F",
+          "explain_es": "Falso: “His emails she has kept but not read.”"
+        }
+      ]
+    },
+    "listening": {
+      "title": "Open Forum: Will Anyone Need to Learn a Language in 2050?",
+      "kind": "panel discussion",
+      "speakers": [
+        {
+          "name": "Diane",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Rafael",
+          "voice": "male",
+          "accent": "us"
+        },
+        {
+          "name": "Hannah",
+          "voice": "female",
+          "accent": "au"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good evening and welcome to Open Forum. Real-time translation has improved so dramatically that you can now hold a conversation in Japanese through an earpiece without knowing a word of the language. So tonight we ask: by 2050, will anyone still need to learn a foreign language? With me are Rafael Ortega, whose company makes translation earbuds, and Hannah Okoye, professor of linguistics. Rafael, you're the optimist, I take it."
+        },
+        {
+          "s": 1,
+          "text": "I'd call myself a realist, actually. Ten years ago, machine translation was a joke — you'd type in a menu and get poetry, and not the good kind. Today our devices handle over forty languages with a delay of under a second. By the time my daughter leaves school, I'd expect that delay to have disappeared altogether. So, for practical purposes — ordering food, doing business, getting through an airport — no, I don't think most people will need to."
+        },
+        {
+          "s": 2,
+          "text": "And for practical purposes, I'd agree with a surprising amount of that. Where I part company with Rafael is over the phrase 'for practical purposes'. Language isn't only a tool for transmitting information. It's how we build relationships, how we joke, how we signal who we are. What a translation device gives you is the content of what someone says. What it can't give you is the experience of having become, in a small way, a different person in another language."
+        },
+        {
+          "s": 1,
+          "text": "That's a lovely idea, but isn't it a bit of a luxury? Millions of people learn English because they have to, not because they want to be transformed. If technology removes that pressure, surely that's a good thing. It levels the playing field."
+        },
+        {
+          "s": 2,
+          "text": "It might. Or it might do the opposite. The cheapest devices will translate the big languages very well and the small ones badly, if at all, so speakers of minority languages could end up more excluded, not less. And there's a subtler risk. If the economic reason to learn languages disappears, governments will cut language teaching, and only wealthy families will keep paying for it. Bilingualism would become a mark of privilege."
+        },
+        {
+          "s": 0,
+          "text": "Rafael, is that a fair concern?"
+        },
+        {
+          "s": 1,
+          "text": "It's fair, and I won't pretend we've solved it. We've been training our software on smaller languages, but for many of them the data simply isn't there. That said, I'd point out that the alternative — expecting everyone on the planet to learn English — isn't exactly kind to minority languages either."
+        },
+        {
+          "s": 0,
+          "text": "Let me bring in a question from our audience. Someone has written: 'Won't people stop bothering to learn languages if a machine can do it for them?'"
+        },
+        {
+          "s": 2,
+          "text": "Some will, undoubtedly. But we stopped needing to do mental arithmetic when calculators arrived, and people still do number puzzles for fun. My hunch is that language learning will become less like a qualification and more like learning a musical instrument — something people do because it enriches their lives. Fewer learners, perhaps, but far more committed ones."
+        },
+        {
+          "s": 1,
+          "text": "I'd go along with that. In fact, our own research shows that quite a lot of customers use the earbuds as a stepping stone. They start off relying on the device, and then find they want to understand without it."
+        },
+        {
+          "s": 0,
+          "text": "That's an unexpected admission from the man who sells them."
+        },
+        {
+          "s": 1,
+          "text": "What can I say? I learnt Portuguese the hard way, living in Lisbon for three years. I wouldn't swap that for any device in the world."
+        },
+        {
+          "s": 0,
+          "text": "Hannah, a final thought?"
+        },
+        {
+          "s": 2,
+          "text": "Only that we've heard predictions like this before. When the telephone arrived, people said letter-writing was finished; when television arrived, they said reading was. The more powerful the technology, the more we seem to value the things it can't do."
+        },
+        {
+          "s": 0,
+          "text": "Hannah Okoye, Rafael Ortega, thank you both. And thank you all for listening."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "How does Rafael describe himself?",
+          "options": [
+            "As a realist rather than an optimist",
+            "As an optimist about education",
+            "As a sceptic about technology",
+            "As a former linguist"
+          ],
+          "answer": 0,
+          "explain_es": "Rafael responde: “I'd call myself a realist, actually.”"
+        },
+        {
+          "type": "tf",
+          "q": "According to Rafael, translation devices currently handle fewer than twenty languages.",
+          "answer": "F",
+          "explain_es": "Falso: Rafael dice que “our devices handle over forty languages”."
+        },
+        {
+          "type": "mc",
+          "q": "What is Hannah's main objection to Rafael's view?",
+          "options": [
+            "Machine translation will never be accurate enough.",
+            "Practical communication does not really matter.",
+            "Translation devices are too expensive for most people.",
+            "Language is about identity and relationships, not just information."
+          ],
+          "answer": 3,
+          "explain_es": "Hannah dice: “Language isn't only a tool for transmitting information. It's how we build relationships… how we signal who we are.”"
+        },
+        {
+          "type": "mc",
+          "q": "Why does Hannah think translation technology might increase inequality?",
+          "options": [
+            "Governments will ban the cheapest devices.",
+            "English will lose its global importance.",
+            "Wealthy people will refuse to use the devices.",
+            "Minority languages may be poorly served, and language teaching may become a privilege."
+          ],
+          "answer": 3,
+          "explain_es": "Hannah menciona que los idiomas pequeños se traducirán mal y que, si se recorta la enseñanza, “Bilingualism would become a mark of privilege.”"
+        },
+        {
+          "type": "gap",
+          "q": "Rafael admits that for many smaller languages there simply isn't enough ___ to train the software.",
+          "answer": "data",
+          "explain_es": "Rafael dice: “for many of them the data simply isn't there.”"
+        },
+        {
+          "type": "mc",
+          "q": "What does Hannah compare future language learning to?",
+          "options": [
+            "Learning a musical instrument",
+            "Doing mental arithmetic",
+            "Writing letters",
+            "Watching television"
+          ],
+          "answer": 0,
+          "explain_es": "Hannah dice que aprender idiomas será “more like learning a musical instrument — something people do because it enriches their lives”."
+        },
+        {
+          "type": "tf",
+          "q": "Rafael's company has found that some customers use the earbuds as a step towards learning a language.",
+          "answer": "T",
+          "explain_es": "Verdadero: “a lot of customers use the earbuds as a stepping stone… then find they want to understand without it.”"
+        },
+        {
+          "type": "mc",
+          "q": "What point does Hannah make in her final comment?",
+          "options": [
+            "The telephone really did destroy letter-writing.",
+            "Powerful technologies tend to make us value what they cannot do.",
+            "Predictions about technology usually turn out to be correct.",
+            "Television has reduced the amount people read."
+          ],
+          "answer": 1,
+          "explain_es": "Hannah concluye: “The more powerful the technology, the more we seem to value the things it can't do.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Choose ONE task.\n\nPART 1 — Essay (240–280 words). Read the two texts below. Write an essay summarising and evaluating the key points from both texts. Use your own words throughout as far as possible, and include your own ideas in your answer.\n\nText 1 — A common language, a common future: The spread of English as a global language has done more to connect humanity than any treaty. A researcher in Seoul can read a study from São Paulo the day it is published; a student from a small town can apply to universities on five continents. For millions of learners, English is not a threat to their identity but a passport to opportunity, and to deny them access to it in the name of cultural protection would be patronising.\n\nText 2 — The price of one voice: Every language encodes a way of seeing the world, and roughly one disappears every few weeks. The dominance of English accelerates this loss, as parents abandon their own languages in the belief that their children will be better off without them. Meanwhile, native speakers of English enjoy an advantage they did nothing to earn, while everyone else must compete in a second language. A truly global culture would be multilingual, not monolingual.\n\nPART 2 — Letter (280–320 words). A national newspaper has published an article arguing that, thanks to instant translation technology, schools should stop teaching foreign languages and spend the money on other subjects. Write a letter to the editor responding to the article, explaining why you agree or disagree and suggesting what role language learning should play in the future.",
+      "prompt_es": "Elige UNA tarea: Parte 1, un ensayo que resume y evalúa dos textos sobre el inglés como lengua global (240–280 palabras), o Parte 2, una carta al director de un periódico sobre la propuesta de dejar de enseñar idiomas en los colegios (280–320 palabras).",
+      "genre_es": "Ensayo (Parte 1) o carta formal (Parte 2)",
+      "minWords": 240,
+      "maxWords": 320,
+      "criteria": [
+        "Part 1: summarise the key point of each text in your own words, evaluate both and develop your own view. Part 2: respond to the article point by point in a formal letter with a clear purpose and appropriate opening and closing.",
+        "Show a wide range of C2 grammar: a cleft sentence, a negative inversion, an inverted conditional and a reporting passive.",
+        "Hedge and concede precisely (arguably, it would appear, albeit, much as, notwithstanding) and link ideas with C2 discourse markers.",
+        "Use nominalisation and nuanced comparatives (nowhere near as…, every bit as…, the more…, the more…) to write concisely and persuasively.",
+        "Use at least six expressions from across the level (a sense of belonging, pay lip service to, a level playing field, unintended consequences, stand the test of time, the status quo…) with accurate collocation and register."
+      ],
+      "model": "PART 1 — Model essay\n\nThe two texts consider the global spread of English, the first celebrating it as a source of connection and opportunity, the second lamenting its cost to linguistic diversity and fairness.\n\nThe first writer argues that a shared language has brought people together more effectively than any political agreement, enabling scientists to exchange research instantly and allowing students from modest backgrounds to pursue opportunities abroad. It is further claimed that most learners regard English as an asset rather than a threat to their identity, and that restricting it would be condescending. This is a compelling point, since it respects the choices learners actually make. However, it pays little attention to who sets the terms of that choice.\n\nIt is precisely this question that the second writer raises. Each language, the author maintains, carries a distinctive view of the world, and the dominance of English is hastening their disappearance as parents stop passing their mother tongue on to their children. Not only does this impoverish human culture, but it also hands native speakers an unearned advantage. The argument is powerful, albeit somewhat idealistic: a multilingual global culture is an attractive goal, but nowhere near as easy to achieve as the writer implies.\n\nIn my view, the most convincing position lies between the two. English is every bit as valuable as the first text claims, yet its value need not come at the expense of other languages. Were schools to promote English alongside, rather than instead of, local languages, learners could enjoy the benefits of global communication without losing a sense of belonging to their own linguistic community.\n\nPART 2 — Model letter\n\nDear Editor,\n\nI am writing in response to the article 'Why our schools should stop teaching languages', published in your newspaper on 3 May. Much as I share the author's enthusiasm for new technology, I believe the proposal to abolish foreign-language teaching is profoundly mistaken.\n\nThe article's central argument is that translation devices have made language learning unnecessary. It is true that such devices have improved dramatically, and they are undoubtedly useful for ordering a meal or reading a timetable. However, to reduce a language to a means of exchanging information is to misunderstand what it is. What learning a language offers is not merely the ability to be understood, but the experience of seeing the world from another perspective. No device, however sophisticated, can supply that.\n\nFurthermore, the proposal is likely to have unintended consequences. Were state schools to stop teaching languages, it would not be the wealthy who suffered: their children would continue to receive private lessons. Bilingualism would become a privilege, and the level playing field the author claims to value would be further undermined. Nor should we forget that the cheapest translation tools perform poorly in smaller languages, which would leave minority communities more excluded than they are now.\n\nThat is not to say that language teaching should remain as it is. Rather than abandoning the subject, schools should use technology to make it more communicative, with translation tools supporting learners rather than replacing them. I would also suggest that the curriculum place greater emphasis on culture, so that pupils understand why languages matter, not simply how they work.\n\nOur grandparents were told that calculators would make mathematics pointless; it would appear that the prediction did not stand the test of time. I hope your readers will be equally sceptical of this one.\n\nYours faithfully,\nLaura Méndez"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Long turn: Look back on your English learning journey. Describe a moment when you realised your English had reached a new level, and explain what you think made the difference.",
+          "text_es": "Turno largo: mira atrás en tu camino con el inglés. Describe un momento en que notaste que habías alcanzado un nuevo nivel y qué marcó la diferencia.",
+          "seconds": 120,
+          "tips": [
+            "Use aspect and future in the past: I'd been studying for years when…, I was about to give up…",
+            "Highlight with a cleft: What made the difference was…; use with hindsight, a watershed, make headway."
+          ]
+        },
+        {
+          "text": "Long turn: 'Every generation believes that its own era is uniquely important.' Are the changes of the last twenty years a genuine watershed? Refer to technology, work and the environment.",
+          "text_es": "Turno largo: ¿los cambios de los últimos veinte años son realmente un punto de inflexión? Habla de tecnología, trabajo y medio ambiente.",
+          "seconds": 150,
+          "tips": [
+            "Hedge and compare: arguably, it would appear, nowhere near as…, every bit as…",
+            "Use a watershed, a tipping point, herald, unintended consequences, through rose-tinted glasses."
+          ]
+        },
+        {
+          "text": "Discussion: 'In a world of instant translation, learning a language is a personal luxury rather than a necessity.' Discuss both sides, speculate about the future and reach a reasoned conclusion.",
+          "text_es": "Discusión: con la traducción instantánea, ¿aprender un idioma es un lujo personal y no una necesidad? Presenta ambas posturas, especula sobre el futuro y concluye.",
+          "seconds": 150,
+          "tips": [
+            "Speculate about the future: is bound to, may well, by 2050 we will have…; use inverted conditionals: Were translation to become perfect…",
+            "Concede and counter: Much as I see the appeal…, Notwithstanding…; use a level playing field, a sense of belonging."
+          ]
+        }
+      ]
+    }
+  }
+]
