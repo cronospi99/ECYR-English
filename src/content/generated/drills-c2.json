@@ -1,0 +1,602 @@
+{
+ "C2-1-0": {
+  "name": "Choose the aspect",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo que la primera (transformación tipo CPE).",
+  "items": [
+   "I started learning Portuguese three years ago and I'm still at it. (BEEN) → I ______ three years.",
+   "This is my first visit to my grandparents' village. (NEVER) → I ______ before.",
+   "Her eyes were red because she had spent hours in tears. (CRYING) → Her eyes were red because she ______ hours.",
+   "My brother constantly borrows my clothes without asking, which drives me mad. (FOREVER) → My brother ______ without asking.",
+   "I've intended to ring you for weeks but haven't got round to it. (MEANING) → I ______ for weeks.",
+   "Next month marks twenty years of my parents' life in Cali. (HAVE) → By next month, my parents ______ for twenty years."
+  ],
+  "answers": [
+   "I have been learning Portuguese for three years.",
+   "I have never visited my grandparents' village before.",
+   "Her eyes were red because she had been crying for hours.",
+   "My brother is forever borrowing my clothes without asking.",
+   "I've been meaning to ring you for weeks.",
+   "By next month, my parents will have been living in Cali for twenty years."
+  ]
+ },
+ "C2-1-1": {
+  "name": "Soften it",
+  "prompt": "Reescribe cada frase con un tiempo pasado que la haga más cortés o distante, usando la palabra en mayúsculas.",
+  "items": [
+   "Can you lend me your notes? (WONDERING) → I ______ me your notes.",
+   "Do you need anything else, madam? (DID) → ______ anything else, madam?",
+   "I expected the decision to be reversed, but it wasn't. (HOPED) → I ______ reversed.",
+   "Would you consider joining the board? (THOUGHT) → I ______ joining the board.",
+   "Please give us an extension. (HOPING) → We ______ an extension.",
+   "I want to talk to you about my salary. (WANTED) → I ______ about my salary."
+  ],
+  "answers": [
+   "I was wondering if you could lend me your notes.",
+   "Did you need anything else, madam?",
+   "I had hoped the decision would be reversed.",
+   "I thought you might consider joining the board.",
+   "We were hoping you might give us an extension.",
+   "I wanted to talk to you about my salary."
+  ]
+ },
+ "C2-1-2": {
+  "name": "State or action?",
+  "prompt": "Reescribe cada frase con la palabra en mayúsculas en forma continua, conservando el significado.",
+  "items": [
+   "My cousin is currently in a relationship with a musician. (SEEING) → My cousin ______ a musician.",
+   "He's normally easy-going, but today he's acting stubbornly. (BEING) → He ______ today.",
+   "I'm considering applying for dual nationality. (THINKING) → I ______ dual nationality.",
+   "They are going through a difficult period at the moment. (HAVING) → They ______ at the moment.",
+   "My sister's baby is due in March. (EXPECTING) → My sister ______ in March.",
+   "People keep telling me good things about your new restaurant. (HEARING) → I ______ about your new restaurant."
+  ],
+  "answers": [
+   "My cousin is seeing a musician.",
+   "He's being stubborn today.",
+   "I'm thinking of applying for dual nationality.",
+   "They're having a difficult time at the moment.",
+   "My sister is expecting a baby in March.",
+   "I'm hearing good things about your new restaurant."
+  ]
+ },
+ "C2-2-0": {
+  "name": "Shift the focus",
+  "prompt": "Reescribe cada frase como oración escindida (cleft) usando la palabra en mayúsculas, sin cambiarla (estilo CPE).",
+  "items": [
+   "Her tone, not her words, offended me. (IT) → It ______ offended me.",
+   "I only wanted a straight answer. (ALL) → All ______ a straight answer.",
+   "The speaker skilfully exploited the audience's fears. (DID) → What ______ the audience's fears.",
+   "I only realised it was propaganda when I checked the sources. (UNTIL) → It ______ that I realised it was propaganda.",
+   "His inability to listen really irritates me. (WHAT) → ______ his inability to listen.",
+   "The campaign failed because it relied on slogans. (REASON) → The ______ relied on slogans."
+  ],
+  "answers": [
+   "It was her tone, not her words, that offended me.",
+   "All I wanted was a straight answer.",
+   "What the speaker did was skilfully exploit the audience's fears.",
+   "It wasn't until I checked the sources that I realised it was propaganda.",
+   "What really irritates me is his inability to listen.",
+   "The reason (why) the campaign failed was that it relied on slogans."
+  ]
+ },
+ "C2-2-1": {
+  "name": "Front it",
+  "prompt": "Reescribe cada frase empezando con las palabras dadas, adelantando el elemento e invirtiendo cuando corresponda.",
+  "items": [
+   "The rhetoric was so inflammatory that the broadcast was cut. → So ______",
+   "The public reaction was so strong that the slogan was dropped. → Such ______",
+   "The minister's refusal to comment was even more revealing. → Even more revealing ______",
+   "However hard I tried, I couldn't follow his logic. → Try ______",
+   "The era of long, reasoned speeches has passed. → Gone ______",
+   "It may sound odd, but I find his bluntness refreshing. → Odd ______"
+  ],
+  "answers": [
+   "So inflammatory was the rhetoric that the broadcast was cut.",
+   "Such was the public reaction that the slogan was dropped.",
+   "Even more revealing was the minister's refusal to comment.",
+   "Try as I might, I couldn't follow his logic.",
+   "Gone are the days of long, reasoned speeches.",
+   "Odd as it may sound, I find his bluntness refreshing."
+  ]
+ },
+ "C2-2-2": {
+  "name": "Turn it around",
+  "prompt": "Reescribe cada frase empezando con las palabras dadas (transformación tipo CPE).",
+  "items": [
+   "The government didn't admit the error until the inquiry. → Not until ______",
+   "They had no idea the microphone was still on. → Little ______",
+   "As soon as the article was published, the threats started. → No sooner ______",
+   "You must not reveal your sources in any circumstances. → Under no circumstances ______",
+   "She not only misquoted him but also distorted his argument. → Not only ______",
+   "We only grasped the scale of the deception after reading the leaked emails. → Only after ______"
+  ],
+  "answers": [
+   "Not until the inquiry did the government admit the error.",
+   "Little did they know (that) the microphone was still on.",
+   "No sooner had the article been published than the threats started.",
+   "Under no circumstances must you reveal your sources.",
+   "Not only did she misquote him, but she also distorted his argument.",
+   "Only after reading the leaked emails did we grasp the scale of the deception."
+  ]
+ },
+ "C2-3-0": {
+  "name": "Speculate precisely",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "I'm sure she was exaggerating about the snake. (MUST) → She ______ about the snake.",
+   "It's impossible that he remembers his second birthday. (CAN'T) → He ______ his second birthday.",
+   "It's quite likely that the witness confused the two men. (WELL) → The witness ______ the two men.",
+   "Perhaps they're not answering because they're asleep. (MIGHT) → They're not answering; they ______.",
+   "The parcel will almost certainly arrive tomorrow. (BOUND) → The parcel ______ tomorrow.",
+   "There's a slim chance that the old photos are still in the loft. (JUST) → The old photos ______ in the loft."
+  ],
+  "answers": [
+   "She must have been exaggerating about the snake.",
+   "He can't remember his second birthday.",
+   "The witness may well have confused the two men.",
+   "They're not answering; they might be asleep.",
+   "The parcel is bound to arrive tomorrow.",
+   "The old photos might just still be in the loft."
+  ]
+ },
+ "C2-3-1": {
+  "name": "Judging the past",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "It wasn't necessary for you to bring a gift, but thank you. (NEEDN'T) → You ______ a gift, but thank you.",
+   "We didn't have to show our passports, so we walked straight through. (NEED) → We ______ our passports, so we walked straight through.",
+   "It was a mistake not to back up the files. (SHOULD) → I ______ the files.",
+   "It's annoying that you didn't tell me the meeting was cancelled. (MIGHT) → You ______ the meeting was cancelled!",
+   "Taking a taxi was an option, but we chose to walk. (COULD) → We ______, but we chose to walk.",
+   "I regret saying that to her. (OUGHT) → I ______ that to her."
+  ],
+  "answers": [
+   "You needn't have brought a gift, but thank you.",
+   "We didn't need to show our passports, so we walked straight through.",
+   "I should have backed up the files.",
+   "You might have told me the meeting was cancelled!",
+   "We could have taken a taxi, but we chose to walk.",
+   "I ought not to have said that to her."
+  ]
+ },
+ "C2-3-2": {
+  "name": "Assume and characterise",
+  "prompt": "Reescribe cada frase con will, won't o would para expresar suposición o comportamiento típico, usando la palabra en mayúsculas.",
+  "items": [
+   "I'm sure that's Javier at the door; he's always early. (BE) → That ______ at the door.",
+   "I assume you've heard about the merger. (WILL) → You ______ about the merger.",
+   "When we were children, our aunt used to tell us ghost stories. (WOULD) → When we were children, our aunt ______.",
+   "It's so annoying that he keeps checking his phone at dinner. (WILL) → He ______ at dinner!",
+   "Of course she defended him; that's typical of her. (WOULD) → She ______, wouldn't she?",
+   "The machine refuses to start in cold weather. (WON'T) → The machine ______ in cold weather."
+  ],
+  "answers": [
+   "That'll be Javier at the door.",
+   "You will have heard about the merger.",
+   "When we were children, our aunt would tell us ghost stories.",
+   "He will keep checking his phone at dinner!",
+   "She would defend him, wouldn't she?",
+   "The machine won't start in cold weather."
+  ]
+ },
+ "C2-4-0": {
+  "name": "Make it noun-heavy",
+  "prompt": "Reescribe cada frase en estilo de informe, convirtiendo el verbo o adjetivo principal en sustantivo. Empieza como se indica.",
+  "items": [
+   "Sales increased sharply in the third quarter. → There was ______",
+   "The board decided to merge the two departments, which surprised everyone. → The board's ______",
+   "The project failed because it was badly managed. → The project's ______",
+   "Employees are reluctant to adopt the new software. → There is ______",
+   "If we reduce costs, we'll be able to invest more. → A reduction ______",
+   "More and more customers want sustainable products. → There is ______"
+  ],
+  "answers": [
+   "There was a sharp increase in sales in the third quarter.",
+   "The board's decision to merge the two departments surprised everyone.",
+   "The project's failure was due to poor management.",
+   "There is reluctance among employees to adopt the new software.",
+   "A reduction in costs will enable greater investment.",
+   "There is growing demand for sustainable products."
+  ]
+ },
+ "C2-4-1": {
+  "name": "Trim the clause",
+  "prompt": "Reescribe cada frase con una cláusula de participio o una relativa reducida, empezando como se indica.",
+  "items": [
+   "The employees who were made redundant received a generous package. → The employees ______",
+   "Because she had worked there for a decade, she knew everyone. → Having ______",
+   "Anyone who wishes to apply should submit a CV by Friday. → Anyone ______",
+   "He was the only candidate who passed all three interviews. → He was the only candidate ______",
+   "As they were confronted with falling sales, the directors changed strategy. → Confronted ______",
+   "Because I didn't know the dress code, I turned up in jeans. → Not ______"
+  ],
+  "answers": [
+   "The employees made redundant received a generous package.",
+   "Having worked there for a decade, she knew everyone.",
+   "Anyone wishing to apply should submit a CV by Friday.",
+   "He was the only candidate to pass all three interviews.",
+   "Confronted with falling sales, the directors changed strategy.",
+   "Not knowing the dress code, I turned up in jeans."
+  ]
+ },
+ "C2-4-2": {
+  "name": "Same verb, new meaning",
+  "prompt": "Completa la segunda frase con el verbo en mayúsculas en la forma correcta (-ing o to + infinitivo) para que signifique lo mismo.",
+  "items": [
+   "Taking the post in Lima would involve moving my whole family. (MEAN) → Taking the post in Lima ______ my whole family.",
+   "After finishing her degree, she later became a celebrated architect. (WENT) → After finishing her degree, she ______ a celebrated architect.",
+   "I'm sorry I didn't accept that offer. (REGRET) → I ______ that offer.",
+   "We are sorry to tell you that your application has been unsuccessful. (REGRET) → We ______ your application has been unsuccessful.",
+   "The website should be updated. (NEEDS) → The website ______.",
+   "As an experiment, I switched the laptop off and on again. (TRIED) → I ______ the laptop off and on again."
+  ],
+  "answers": [
+   "Taking the post in Lima would mean moving my whole family.",
+   "After finishing her degree, she went on to become a celebrated architect.",
+   "I regret not accepting that offer.",
+   "We regret to inform you that your application has been unsuccessful.",
+   "The website needs updating.",
+   "I tried switching the laptop off and on again."
+  ]
+ },
+ "C2-5-0": {
+  "name": "Report it impersonally",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "People believe that the virus originated in bats. (BELIEVED) → The virus ______ in bats.",
+   "Experts think the company is testing a new chip. (THOUGHT) → The company ______ a new chip.",
+   "They say there are over a million users. (SAID) → There ______ over a million users.",
+   "It is alleged that the records were falsified. (ALLEGED) → The records ______ falsified.",
+   "Nobody likes it when people ignore them. (BEING) → Nobody likes ______.",
+   "It is reported that the CEO has resigned. (REPORTED) → The CEO ______."
+  ],
+  "answers": [
+   "The virus is believed to have originated in bats.",
+   "The company is thought to be testing a new chip.",
+   "There are said to be over a million users.",
+   "The records are alleged to have been falsified.",
+   "Nobody likes being ignored.",
+   "The CEO is reported to have resigned."
+  ]
+ },
+ "C2-5-1": {
+  "name": "Who does it?",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas usando una estructura causativa (transformación tipo CPE).",
+  "items": [
+   "A technician is going to install the new software for us. (HAVING) → We ______ installed.",
+   "Someone hacked my email account last week. (HAD) → I ______ last week.",
+   "I'll ask my secretary to book your flight. (HAVE) → I'll ______ your flight.",
+   "We finally persuaded the landlord to repair the roof. (GOT) → We finally ______ the roof.",
+   "A private lab sequenced our genome. (HAD) → We ______ by a private lab.",
+   "I refuse to tolerate you lying to your patients. (HAVE) → I won't ______ to your patients."
+  ],
+  "answers": [
+   "We are having the new software installed.",
+   "I had my email account hacked last week.",
+   "I'll have my secretary book your flight.",
+   "We finally got the landlord to repair the roof.",
+   "We had our genome sequenced by a private lab.",
+   "I won't have you lying to your patients."
+  ]
+ },
+ "C2-5-2": {
+  "name": "Hedge it",
+  "prompt": "Reescribe cada afirmación de forma más prudente y académica usando la palabra en mayúsculas.",
+  "items": [
+   "Social media causes loneliness. (MAY) → Social media ______ loneliness.",
+   "Older users are more cautious online. (TEND) → Older users ______ online.",
+   "The treatment is effective. (APPEAR) → It ______ effective.",
+   "This proves that the policy failed. (SUGGESTS) → This ______ failed.",
+   "Surveillance is a threat to democracy. (ARGUED) → It ______ a threat to democracy.",
+   "The model explains the data completely. (EXTENT) → The model explains the data ______."
+  ],
+  "answers": [
+   "Social media may contribute to loneliness.",
+   "Older users tend to be more cautious online.",
+   "It would appear that the treatment is effective.",
+   "This suggests that the policy may have failed.",
+   "It could be argued that surveillance is a threat to democracy.",
+   "The model explains the data to some extent."
+  ]
+ },
+ "C2-6-0": {
+  "name": "Cross the timelines",
+  "prompt": "Completa cada frase con un condicional mixto o implícito, usando la palabra en mayúsculas.",
+  "items": [
+   "We didn't plant trees ten years ago, so the town has no shade now. (WOULD) → If we had planted trees ten years ago, the town ______ now.",
+   "She isn't a patient person, so she didn't wait for the results. (HAVE) → If she were more patient, she ______ for the results.",
+   "They ignored the warnings, which is why the species is extinct today. (IF) → ______ the warnings, the species wouldn't be extinct today.",
+   "I don't speak Portuguese, so I couldn't follow the debate on Amazon policy. (FOLLOWED) → If I spoke Portuguese, I ______ the debate.",
+   "If it hadn't been for the volunteers, the beach clean-up would have failed. (WITHOUT) → ______, the beach clean-up would have failed.",
+   "I would have joined the protest; however, I was ill. (BUT) → I would have joined ______."
+  ],
+  "answers": [
+   "If we had planted trees ten years ago, the town would have shade now.",
+   "If she were more patient, she would have waited for the results.",
+   "If they hadn't ignored the warnings, the species wouldn't be extinct today.",
+   "If I spoke Portuguese, I could have followed the debate.",
+   "Without the volunteers, the beach clean-up would have failed.",
+   "I would have joined the protest, but I was ill."
+  ]
+ },
+ "C2-6-1": {
+  "name": "Invert the condition",
+  "prompt": "Reescribe cada frase sin if, empezando con las palabras dadas (transformación tipo CPE).",
+  "items": [
+   "If you require further information, please contact our office. → Should ______",
+   "If the ice sheet were to collapse, sea levels would rise dramatically. → Were ______",
+   "If we had known the area was protected, we wouldn't have camped there. → Had ______",
+   "If it weren't for international aid, the reserve would close. → Were ______",
+   "If the volunteers hadn't acted quickly, the turtles would have died. → Had ______",
+   "Without the early warning system, hundreds would have died. → Had it not ______"
+  ],
+  "answers": [
+   "Should you require further information, please contact our office.",
+   "Were the ice sheet to collapse, sea levels would rise dramatically.",
+   "Had we known the area was protected, we wouldn't have camped there.",
+   "Were it not for international aid, the reserve would close.",
+   "Had the volunteers not acted quickly, the turtles would have died.",
+   "Had it not been for the early warning system, hundreds would have died."
+  ]
+ },
+ "C2-6-2": {
+  "name": "Without if",
+  "prompt": "Reescribe cada frase con la palabra en mayúsculas, sin usar if.",
+  "items": [
+   "If it hadn't been for the rangers, the rhinos would have been poached. (BUT) → ______, the rhinos would have been poached.",
+   "You can fish here, but only if you return what you catch. (PROVIDED) → You can fish here ______ what you catch.",
+   "Imagine the Amazon reached a tipping point. What would happen? (SUPPOSING) → ______, what would happen?",
+   "We must cut emissions now. If we don't, temperatures will soar. (OTHERWISE) → We must cut emissions now; ______.",
+   "The reef will die if water temperatures don't fall. (UNLESS) → The reef will die ______.",
+   "They agreed to sell the land if it was kept as a nature reserve. (CONDITION) → They agreed to sell the land ______ as a nature reserve."
+  ],
+  "answers": [
+   "But for the rangers, the rhinos would have been poached.",
+   "You can fish here provided (that) you return what you catch.",
+   "Supposing the Amazon reached a tipping point, what would happen?",
+   "We must cut emissions now; otherwise, temperatures will soar.",
+   "The reef will die unless water temperatures fall.",
+   "They agreed to sell the land on condition that it was kept as a nature reserve."
+  ]
+ },
+ "C2-7-0": {
+  "name": "Say it once",
+  "prompt": "Reescribe cada frase evitando la repetición con so, not, one, do so, to o un auxiliar, usando la palabra en mayúsculas.",
+  "items": [
+   "Will the director's new film be as good as her last film? (ONE) → Will the director's new film be as good as her ______?",
+   "'Is the concert sold out?' 'I'm afraid that it is sold out.' (SO) → 'I'm ______.'",
+   "'Will the critics hate it?' 'I hope they won't hate it.' (NOT) → 'I ______.'",
+   "The board was asked to reconsider its decision, but it declined to reconsider its decision. (DO) → …but it declined ______.",
+   "I haven't seen the exhibition yet, but I'm going to see it. (TO) → I haven't seen the exhibition yet, but I'm going ______.",
+   "Is the manuscript authentic? If it is authentic, it's priceless. (SO) → Is the manuscript authentic? ______, it's priceless."
+  ],
+  "answers": [
+   "Will the director's new film be as good as her last one?",
+   "I'm afraid so.",
+   "I hope not.",
+   "The board was asked to reconsider its decision, but it declined to do so.",
+   "I haven't seen the exhibition yet, but I'm going to.",
+   "Is the manuscript authentic? If so, it's priceless."
+  ]
+ },
+ "C2-7-1": {
+  "name": "Pick the right intensifier",
+  "prompt": "Corrige o reescribe cada frase con el intensificador o atenuador adecuado; usa la palabra en mayúsculas cuando aparezca.",
+  "items": [
+   "The ending was very magnificent. (Corrige el intensificador.)",
+   "I was absolutely tired after the four-hour opera. (Corrige el intensificador.)",
+   "Her debut novel received wide acclaim. (HIGHLY) → Her debut novel was ______.",
+   "The audience was disappointed, and they felt it bitterly. (BITTERLY) → The audience was ______.",
+   "The plot was a little predictable, I'm afraid. (SOMEWHAT) → The plot was ______, I'm afraid.",
+   "Her performance was completely extraordinary. (QUITE) → Her performance was ______."
+  ],
+  "answers": [
+   "The ending was absolutely magnificent.",
+   "I was extremely tired after the four-hour opera.",
+   "Her debut novel was highly acclaimed.",
+   "The audience was bitterly disappointed.",
+   "The plot was somewhat predictable, I'm afraid.",
+   "Her performance was quite extraordinary."
+  ]
+ },
+ "C2-7-2": {
+  "name": "Order and compound",
+  "prompt": "Ordena los adjetivos o crea un adjetivo compuesto para completar cada frase.",
+  "items": [
+   "a / Italian / beautiful / old / leather / handbag (Ordena.)",
+   "The documentary lasts two hours. → It's a ______ documentary.",
+   "The novel provokes a great deal of thought. → It's a highly ______ novel.",
+   "The production has won several awards. → It's an ______ production.",
+   "a / wooden / Japanese / small / tea / box / lovely (Ordena.)",
+   "The film was shot beautifully. → It's a ______ film."
+  ],
+  "answers": [
+   "a beautiful old Italian leather handbag",
+   "It's a two-hour documentary.",
+   "It's a highly thought-provoking novel.",
+   "It's an award-winning production.",
+   "a lovely small Japanese wooden tea box",
+   "It's a beautifully shot film."
+  ]
+ },
+ "C2-8-0": {
+  "name": "Make it formal",
+  "prompt": "Reescribe cada frase en registro formal con un subjuntivo o una fórmula fija, usando la palabra en mayúsculas.",
+  "items": [
+   "The committee wants him to step down immediately. (DEMANDS) → The committee ______ immediately.",
+   "Every citizen must have access to legal aid. (ESSENTIAL) → It is ______ access to legal aid.",
+   "The judge recommended not publishing the witnesses' names. (BE) → The judge recommended that the witnesses' names ______.",
+   "Whatever happens, we will defend this right. (COME) → ______, we will defend this right.",
+   "That may be true, but the law is still unjust. (BE) → ______, the law is still unjust.",
+   "I don't want to criticise the judge, but the ruling is odd. (FAR) → ______ the judge, but the ruling is odd."
+  ],
+  "answers": [
+   "The committee demands that he step down immediately.",
+   "It is essential that every citizen have access to legal aid.",
+   "The judge recommended that the witnesses' names not be published.",
+   "Come what may, we will defend this right.",
+   "Be that as it may, the law is still unjust.",
+   "Far be it from me to criticise the judge, but the ruling is odd."
+  ]
+ },
+ "C2-8-1": {
+  "name": "Wishes and regrets",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "I regret not reading the contract before signing. (WISH) → I ______ before signing.",
+   "It's a pity I'm not old enough to vote. (ONLY) → If ______ to vote.",
+   "The government should have reformed the police long ago. (HIGH) → It's ______ the police.",
+   "Please don't mention my name in the report. (RATHER) → I'd ______ my name in the report.",
+   "He behaves like the owner of the place, but he isn't. (AS) → He behaves ______ the place.",
+   "It annoys me that my neighbour keeps playing loud music. (WOULD) → I wish ______ loud music."
+  ],
+  "answers": [
+   "I wish I had read the contract before signing.",
+   "If only I were old enough to vote.",
+   "It's high time the government reformed the police.",
+   "I'd rather you didn't mention my name in the report.",
+   "He behaves as if he owned the place.",
+   "I wish my neighbour would stop playing loud music."
+  ]
+ },
+ "C2-8-2": {
+  "name": "Concede the point",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "Although the evidence was overwhelming, the jury acquitted him. (DESPITE) → ______, the jury acquitted him.",
+   "I admire her a lot, but I can't support her campaign. (MUCH) → ______, I can't support her campaign.",
+   "The reform was a success, though only a partial one. (ALBEIT) → The reform was a success, ______.",
+   "It doesn't matter how popular the policy is; it's unconstitutional. (HOWEVER) → ______, it's unconstitutional.",
+   "In spite of the ban, thousands gathered in the square. (NOTWITHSTANDING) → ______, thousands gathered in the square.",
+   "Although it may seem ironic, the protest strengthened the government. (IRONIC) → ______, the protest strengthened the government."
+  ],
+  "answers": [
+   "Despite the overwhelming evidence, the jury acquitted him.",
+   "Much as I admire her, I can't support her campaign.",
+   "The reform was a success, albeit a partial one.",
+   "However popular the policy may be, it's unconstitutional.",
+   "Notwithstanding the ban, thousands gathered in the square.",
+   "Ironic as it may seem, the protest strengthened the government."
+  ]
+ },
+ "C2-9-0": {
+  "name": "The future that was",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "I intended to take up yoga, but I never did. (GOING) → I ______ yoga, but I never did.",
+   "The final was scheduled for Saturday, but it was cancelled. (HAVE) → The final ______ on Saturday.",
+   "She was just going to dive when the whistle blew. (ABOUT) → She ______ when the whistle blew.",
+   "He didn't know it then, but that injury ended his career. (WAS) → That injury ______ his career.",
+   "The patient was very close to giving up when the new treatment arrived. (POINT) → The patient ______ when the new treatment arrived.",
+   "The flight was scheduled to land at six. (DUE) → The flight ______ at six."
+  ],
+  "answers": [
+   "I was going to take up yoga, but I never did.",
+   "The final was to have been played on Saturday.",
+   "She was about to dive when the whistle blew.",
+   "That injury was to end his career.",
+   "The patient was on the point of giving up when the new treatment arrived.",
+   "The flight was due to land at six."
+  ]
+ },
+ "C2-9-1": {
+  "name": "Link it",
+  "prompt": "Une o reescribe las ideas con el marcador del discurso en mayúsculas.",
+  "items": [
+   "The study was small. However, its findings are striking. (ADMITTEDLY) → ______, the study was small; even so, its findings are striking.",
+   "Smokers had a higher risk. Non-smokers had a lower one. (CONVERSELY) → Smokers had a higher risk; ______.",
+   "Both diet and sleep matter, but sleep is often ignored. (LATTER) → Both diet and sleep matter, but ______.",
+   "The trial lacked funding, and this explains its small size. (HENCE) → The trial lacked funding; ______.",
+   "Extreme sports are dangerous. But I must say, accidents are rarer than you'd think. (MIND) → Extreme sports are dangerous. ______.",
+   "Running is cheap. It's also good for mental health. (WHAT) → Running is cheap. ______."
+  ],
+  "answers": [
+   "Admittedly, the study was small; even so, its findings are striking.",
+   "Smokers had a higher risk; conversely, non-smokers had a lower one.",
+   "Both diet and sleep matter, but the latter is often ignored.",
+   "The trial lacked funding; hence its small size.",
+   "Extreme sports are dangerous. Mind you, accidents are rarer than you'd think.",
+   "Running is cheap. What is more, it's good for mental health."
+  ]
+ },
+ "C2-9-2": {
+  "name": "Formalise it",
+  "prompt": "Reescribe cada frase en registro formal con el verbo en mayúsculas y su preposición correcta.",
+  "items": [
+   "Researchers looked into the effects of night shifts. (INVESTIGATED) → Researchers ______ night shifts.",
+   "The conference has been put off until March. (POSTPONED) → The conference ______.",
+   "Patients should stay away from alcohol during the trial. (REFRAIN) → Patients should ______ during the trial.",
+   "Stress can lead to heart disease. (RESULT) → Heart disease can ______ stress.",
+   "The committee is made up of seven doctors. (COMPRISES) → The committee ______.",
+   "All staff must follow the safety rules. (COMPLY) → All staff must ______."
+  ],
+  "answers": [
+   "Researchers investigated the effects of night shifts.",
+   "The conference has been postponed until March.",
+   "Patients should refrain from drinking alcohol during the trial.",
+   "Heart disease can result from stress.",
+   "The committee comprises seven doctors.",
+   "All staff must comply with the safety rules."
+  ]
+ },
+ "C2-10-0": {
+  "name": "Futures with precision",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "It has been officially announced that the president will visit the ruins on Friday. (IS) → The president ______ on Friday.",
+   "According to the schedule, the bridge will open in May. (DUE) → The bridge ______ in May.",
+   "The old language will disappear very soon. (VERGE) → The old language ______.",
+   "My grandparents started running the bakery forty years ago next year. (HAVE) → By next year, my grandparents ______ for forty years.",
+   "Visitors must not touch the exhibits. (ARE) → Visitors ______ the exhibits.",
+   "The archive will almost certainly be digitised by 2030. (SET) → The archive ______ by 2030."
+  ],
+  "answers": [
+   "The president is to visit the ruins on Friday.",
+   "The bridge is due to open in May.",
+   "The old language is on the verge of disappearing.",
+   "By next year, my grandparents will have been running the bakery for forty years.",
+   "Visitors are not to touch the exhibits.",
+   "The archive is set to be digitised by 2030."
+  ]
+ },
+ "C2-10-1": {
+  "name": "Compare with nuance",
+  "prompt": "Completa la segunda frase con la palabra en mayúsculas para que signifique lo mismo (transformación tipo CPE).",
+  "items": [
+   "The new library isn't nearly as beautiful as the old one. (NOWHERE) → The new library ______ the old one.",
+   "As cities grow bigger, they become more anonymous. (THE) → ______ cities grow, ______ they become.",
+   "Folk music is just as important as classical music. (BIT) → Folk music ______ classical music.",
+   "It isn't really nostalgia; it's more a sense of loss. (SO) → It's ______ a sense of loss.",
+   "Prices are slightly higher than last year. (MARGINALLY) → Prices ______ last year.",
+   "No building in the town is nearly as old as this one. (FAR) → This is ______ in the town."
+  ],
+  "answers": [
+   "The new library is nowhere near as beautiful as the old one.",
+   "The bigger cities grow, the more anonymous they become.",
+   "Folk music is every bit as important as classical music.",
+   "It's not so much nostalgia as a sense of loss.",
+   "Prices are marginally higher than last year.",
+   "This is by far the oldest building in the town."
+  ]
+ },
+ "C2-10-2": {
+  "name": "Complete the expression",
+  "prompt": "Completa el proverbio o la expresión fija; en las tres últimas, usa la palabra en mayúsculas.",
+  "items": [
+   "We lost the funding, but now we're free to choose our own projects. Well, every cloud ______.",
+   "Don't celebrate yet; the contract isn't signed. Don't count ______.",
+   "He still writes all his letters by hand. Old habits ______.",
+   "In general, the restoration has been a success. (LARGE) → ______, the restoration has been a success.",
+   "Uncertainty is an inherent part of any reform. (PARCEL) → Uncertainty is ______ any reform.",
+   "The museum will need a new roof eventually. (LATER) → ______, the museum will need a new roof."
+  ],
+  "answers": [
+   "Well, every cloud has a silver lining.",
+   "Don't count your chickens before they hatch.",
+   "Old habits die hard.",
+   "By and large, the restoration has been a success.",
+   "Uncertainty is part and parcel of any reform.",
+   "Sooner or later, the museum will need a new roof."
+  ]
+ }
+}

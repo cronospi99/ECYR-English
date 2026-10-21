@@ -1,0 +1,1839 @@
+{
+ "level": "A1",
+ "topics": [
+  {
+   "id": "clothes",
+   "level": "A1",
+   "title": "Clothes & accessories",
+   "titleEs": "Ropa y accesorios",
+   "emoji": "👕",
+   "color": "var(--pink)",
+   "cover": "/visuals/vocab/clothes/rack.webp",
+   "intro_es": "La ropa de la cabeza a los pies, con las fotos de la clase. Recuerda los tres verbos: <b>wear</b> (llevar puesto), <b>put on</b> (ponerse) y <b>take off</b> (quitarse).",
+   "tip_es": "Muchas prendas de las piernas van siempre en plural: pants, jeans, shorts, joggers. Para contarlas: <i>a pair of jeans</i>, <i>two pairs of shorts</i>.",
+   "credit": "freepik",
+   "extra": "wearing",
+   "items": [
+    {
+     "id": "cap",
+     "en": "cap",
+     "es": "gorra",
+     "ex": "He always wears a cap when he plays football.",
+     "img": "/visuals/vocab/clothes/cap.webp",
+     "group": "Head & accessories",
+     "form": "cap"
+    },
+    {
+     "id": "beanie",
+     "en": "beanie",
+     "es": "gorro de lana",
+     "ex": "It’s cold. Put on your beanie!",
+     "img": "/visuals/vocab/clothes/beanie.webp",
+     "group": "Head & accessories",
+     "note": "UK: bobble hat (con pompón).",
+     "form": "beanie"
+    },
+    {
+     "id": "glasses",
+     "en": "glasses",
+     "es": "gafas",
+     "ex": "My sister wears glasses to read.",
+     "img": "/visuals/vocab/clothes/glasses.webp",
+     "group": "Head & accessories",
+     "note": "Siempre en plural: my glasses are…",
+     "form": "glasses"
+    },
+    {
+     "id": "earrings",
+     "en": "earrings",
+     "es": "aretes",
+     "ex": "She has beautiful gold earrings.",
+     "img": "/visuals/vocab/clothes/earrings.webp",
+     "group": "Head & accessories",
+     "form": "earrings"
+    },
+    {
+     "id": "necklace",
+     "en": "necklace",
+     "es": "collar",
+     "ex": "This necklace was a present from my grandmother.",
+     "img": "/visuals/vocab/clothes/necklace.webp",
+     "group": "Head & accessories",
+     "form": "necklace"
+    },
+    {
+     "id": "face-mask",
+     "en": "face mask",
+     "es": "tapabocas",
+     "ex": "Please wear a face mask in the hospital.",
+     "img": "/visuals/vocab/clothes/face-mask.webp",
+     "group": "Head & accessories",
+     "form": "face mask"
+    },
+    {
+     "id": "t-shirt",
+     "en": "T-shirt",
+     "es": "camiseta",
+     "ex": "I usually wear a black T-shirt and jeans.",
+     "img": "/visuals/vocab/clothes/t-shirt.webp",
+     "group": "Upper body",
+     "form": "T-shirt"
+    },
+    {
+     "id": "polo-shirt",
+     "en": "polo shirt",
+     "es": "camiseta tipo polo",
+     "ex": "The waiters wear red polo shirts.",
+     "img": "/visuals/vocab/clothes/polo-shirt.webp",
+     "group": "Upper body",
+     "form": "polo shirts"
+    },
+    {
+     "id": "blouse",
+     "en": "blouse",
+     "es": "blusa",
+     "ex": "She’s wearing a pink blouse today.",
+     "img": "/visuals/vocab/clothes/blouse.webp",
+     "group": "Upper body",
+     "form": "blouse"
+    },
+    {
+     "id": "shirt",
+     "en": "shirt",
+     "es": "camisa (de botones)",
+     "ex": "He wears a blue shirt to the office.",
+     "img": "/visuals/vocab/clothes/shirt.webp",
+     "group": "Upper body",
+     "note": "También button-up shirt o button-down shirt.",
+     "form": "shirt"
+    },
+    {
+     "id": "tank-top",
+     "en": "tank top",
+     "es": "esqueleto, camiseta sin mangas",
+     "ex": "It’s hot, so I’m wearing a tank top.",
+     "img": "/visuals/vocab/clothes/tank-top.webp",
+     "group": "Upper body",
+     "note": "UK: vest.",
+     "form": "tank top"
+    },
+    {
+     "id": "jacket",
+     "en": "jacket",
+     "es": "chaqueta",
+     "ex": "Take your jacket. It’s going to rain.",
+     "img": "/visuals/vocab/clothes/jacket.webp",
+     "group": "Upper body",
+     "form": "jacket"
+    },
+    {
+     "id": "pants",
+     "en": "pants",
+     "es": "pantalón",
+     "ex": "These pants are too long for me.",
+     "img": "/visuals/vocab/clothes/pants.webp",
+     "group": "Legs",
+     "note": "UK: trousers. Siempre plural: these pants.",
+     "form": "pants"
+    },
+    {
+     "id": "jeans",
+     "en": "jeans",
+     "es": "jean, bluyín",
+     "ex": "My favourite jeans are very old.",
+     "img": "/visuals/vocab/clothes/jeans.webp",
+     "group": "Legs",
+     "form": "jeans"
+    },
+    {
+     "id": "joggers",
+     "en": "joggers",
+     "es": "sudadera (pantalón)",
+     "ex": "I wear joggers when I go running.",
+     "img": "/visuals/vocab/clothes/joggers.webp",
+     "group": "Legs",
+     "note": "También sweatpants (US) o tracksuit bottoms (UK).",
+     "form": "joggers"
+    },
+    {
+     "id": "skirt",
+     "en": "skirt",
+     "es": "falda",
+     "ex": "Her school uniform has a blue skirt.",
+     "img": "/visuals/vocab/clothes/skirt.webp",
+     "group": "Legs",
+     "form": "skirt"
+    },
+    {
+     "id": "shorts",
+     "en": "shorts",
+     "es": "pantaloneta, shorts",
+     "ex": "The players wear blue shorts.",
+     "img": "/visuals/vocab/clothes/shorts.webp",
+     "group": "Legs",
+     "form": "shorts"
+    },
+    {
+     "id": "denim-shorts",
+     "en": "denim shorts",
+     "es": "shorts de jean",
+     "ex": "On holiday I only wear denim shorts.",
+     "img": "/visuals/vocab/clothes/denim-shorts.webp",
+     "group": "Legs",
+     "form": "denim shorts"
+    },
+    {
+     "id": "sneakers",
+     "en": "sneakers",
+     "es": "tenis",
+     "ex": "These sneakers are very comfortable.",
+     "img": "/visuals/vocab/clothes/sneakers.webp",
+     "group": "Feet",
+     "note": "UK: trainers.",
+     "form": "sneakers"
+    },
+    {
+     "id": "high-heels",
+     "en": "high heels",
+     "es": "tacones",
+     "ex": "She can’t walk fast in high heels.",
+     "img": "/visuals/vocab/clothes/high-heels.webp",
+     "group": "Feet",
+     "form": "high heels"
+    },
+    {
+     "id": "boots",
+     "en": "boots",
+     "es": "botas",
+     "ex": "I need new boots for the mountains.",
+     "img": "/visuals/vocab/clothes/boots.webp",
+     "group": "Feet",
+     "form": "boots"
+    },
+    {
+     "id": "flip-flops",
+     "en": "flip-flops",
+     "es": "chanclas",
+     "ex": "Take your flip-flops to the beach.",
+     "img": "/visuals/vocab/clothes/flip-flops.webp",
+     "group": "Feet",
+     "note": "Son un tipo de sandals (sandalias).",
+     "form": "flip-flops"
+    },
+    {
+     "id": "slippers",
+     "en": "slippers",
+     "es": "pantuflas",
+     "ex": "At home I wear my pink slippers.",
+     "img": "/visuals/vocab/clothes/slippers.webp",
+     "group": "Feet",
+     "form": "slippers"
+    },
+    {
+     "id": "loafers",
+     "en": "loafers",
+     "es": "mocasines",
+     "ex": "My dad wears brown loafers to work.",
+     "img": "/visuals/vocab/clothes/loafers.webp",
+     "group": "Feet",
+     "form": "loafers"
+    },
+    {
+     "id": "dress",
+     "en": "dress",
+     "es": "vestido",
+     "ex": "She’s wearing a long purple dress to the party.",
+     "img": "/visuals/vocab/clothes/dress.webp",
+     "group": "Full body",
+     "form": "dress"
+    },
+    {
+     "id": "suit",
+     "en": "suit",
+     "es": "traje, vestido de hombre",
+     "ex": "He wears a black suit for important meetings.",
+     "img": "/visuals/vocab/clothes/suit.webp",
+     "group": "Full body",
+     "form": "suit"
+    }
+   ]
+  },
+  {
+   "id": "weather",
+   "level": "A1",
+   "title": "Weather & seasons",
+   "titleEs": "El clima y las estaciones",
+   "emoji": "⛅",
+   "color": "var(--blue)",
+   "cover": "/visuals/vocab/weather/partly-cloudy.webp",
+   "intro_es": "Para hablar del clima usamos <b>it</b>: <i>It’s sunny. It’s cold. It’s raining.</i> Nunca «Is sunny» ni «It’s doing 12 degrees».",
+   "tip_es": "Muchas palabras del clima son sustantivo + <b>-y</b>: sun → sunny, cloud → cloudy, rain → rainy, wind → windy, snow → snowy.",
+   "credit": "freepik",
+   "extra": "weather",
+   "items": [
+    {
+     "id": "spring",
+     "en": "spring",
+     "es": "primavera",
+     "ex": "In spring the flowers come back.",
+     "img": "/visuals/vocab/weather/spring.webp",
+     "group": "Seasons",
+     "form": "spring"
+    },
+    {
+     "id": "summer",
+     "en": "summer",
+     "es": "verano",
+     "ex": "In summer the days are long and hot.",
+     "img": "/visuals/vocab/weather/summer.webp",
+     "group": "Seasons",
+     "form": "summer"
+    },
+    {
+     "id": "autumn",
+     "en": "autumn / fall",
+     "es": "otoño",
+     "ex": "In autumn the trees lose their leaves.",
+     "img": "/visuals/vocab/weather/autumn.webp",
+     "group": "Seasons",
+     "note": "Fall en EE. UU., autumn en el Reino Unido.",
+     "form": "autumn"
+    },
+    {
+     "id": "winter",
+     "en": "winter",
+     "es": "invierno",
+     "ex": "In winter it snows in Canada.",
+     "img": "/visuals/vocab/weather/winter.webp",
+     "group": "Seasons",
+     "form": "winter"
+    },
+    {
+     "id": "hot",
+     "en": "hot",
+     "es": "caluroso (28–35 °C)",
+     "ex": "It’s hot in Cartagena today.",
+     "img": "/visuals/vocab/weather/hot.webp",
+     "group": "Temperature",
+     "form": "hot"
+    },
+    {
+     "id": "warm",
+     "en": "warm",
+     "es": "templado, cálido (23–28 °C)",
+     "ex": "Cali is a warm city.",
+     "img": "/visuals/vocab/weather/warm.webp",
+     "group": "Temperature",
+     "form": "warm"
+    },
+    {
+     "id": "cool",
+     "en": "cool",
+     "es": "fresco (17–23 °C)",
+     "ex": "It’s cool in Medellín in the evening.",
+     "img": "/visuals/vocab/weather/cool.webp",
+     "group": "Temperature",
+     "form": "cool"
+    },
+    {
+     "id": "cold",
+     "en": "cold",
+     "es": "frío (5–17 °C)",
+     "ex": "Bogotá is cold at night.",
+     "img": "/visuals/vocab/weather/cold.webp",
+     "group": "Temperature",
+     "form": "cold"
+    },
+    {
+     "id": "sunny",
+     "en": "sunny",
+     "es": "soleado",
+     "ex": "It’s a sunny day. Let’s go to the beach!",
+     "img": "/visuals/vocab/weather/sunny.webp",
+     "group": "Weather words",
+     "form": "sunny"
+    },
+    {
+     "id": "cloudy",
+     "en": "cloudy",
+     "es": "nublado",
+     "ex": "It’s cloudy today. I can’t see the sun.",
+     "img": "/visuals/vocab/weather/cloudy.webp",
+     "group": "Weather words",
+     "form": "cloudy"
+    },
+    {
+     "id": "rainy",
+     "en": "rainy",
+     "es": "lluvioso",
+     "ex": "It’s a rainy day. Take an umbrella.",
+     "img": "/visuals/vocab/weather/rainy.webp",
+     "group": "Weather words",
+     "form": "rainy"
+    },
+    {
+     "id": "windy",
+     "en": "windy",
+     "es": "ventoso",
+     "ex": "It’s windy. We can fly a kite.",
+     "img": "/visuals/vocab/weather/windy.webp",
+     "group": "Weather words",
+     "form": "windy"
+    },
+    {
+     "id": "snowy",
+     "en": "snowy",
+     "es": "nevado, con nieve",
+     "ex": "It’s snowy. Let’s make a snowman!",
+     "img": "/visuals/vocab/weather/snowy.webp",
+     "group": "Weather words",
+     "form": "snowy"
+    },
+    {
+     "id": "foggy",
+     "en": "foggy",
+     "es": "con niebla",
+     "ex": "It’s foggy. Drive slowly, please.",
+     "img": "/visuals/vocab/weather/foggy.webp",
+     "group": "Weather words",
+     "note": "fog → foggy (doble g).",
+     "form": "foggy"
+    },
+    {
+     "id": "stormy",
+     "en": "stormy",
+     "es": "tormentoso",
+     "ex": "It’s stormy. There’s a lot of thunder.",
+     "img": "/visuals/vocab/weather/stormy.webp",
+     "group": "Weather words",
+     "form": "stormy"
+    },
+    {
+     "id": "drizzly",
+     "en": "drizzly",
+     "es": "con llovizna",
+     "ex": "It’s drizzly — just a little rain.",
+     "img": "/visuals/vocab/weather/drizzly.webp",
+     "group": "Weather words",
+     "form": "drizzly"
+    },
+    {
+     "id": "clear",
+     "en": "clear",
+     "es": "despejado",
+     "ex": "It’s a clear night. Look at the stars!",
+     "img": "/visuals/vocab/weather/clear.webp",
+     "group": "Weather words",
+     "form": "clear"
+    },
+    {
+     "id": "freezing",
+     "en": "freezing",
+     "es": "helado, bajo cero",
+     "ex": "It’s freezing! I need my jumper.",
+     "img": "/visuals/vocab/weather/freezing.webp",
+     "group": "Weather words",
+     "form": "freezing"
+    },
+    {
+     "id": "breezy",
+     "en": "breezy",
+     "es": "con brisa",
+     "ex": "It’s breezy by the sea. That’s great.",
+     "emoji": "🍃",
+     "group": "Weather words",
+     "form": "breezy"
+    },
+    {
+     "id": "misty",
+     "en": "misty",
+     "es": "brumoso",
+     "ex": "It’s a misty morning in the mountains.",
+     "img": "/visuals/vocab/weather/misty.webp",
+     "group": "Weather words",
+     "form": "misty"
+    }
+   ]
+  },
+  {
+   "id": "countries",
+   "level": "A1",
+   "title": "Countries, nationalities & flags",
+   "titleEs": "Países, nacionalidades y banderas",
+   "emoji": "🌍",
+   "color": "var(--teal)",
+   "cover": "/visuals/vocab/geography/travel.webp",
+   "intro_es": "El <b>país</b> es el lugar (<i>Colombia</i>); la <b>nacionalidad</b> es lo que eres (<i>Colombian</i>). En inglés las dos van con mayúscula: <i>I’m Colombian</i>.",
+   "tip_es": "Terminaciones de nacionalidad: <b>-an / -ian</b> (Mexican, Italian), <b>-ese</b> (Japanese, Chinese), <b>-ish</b> (Spanish, British) y algunas irregulares (French, Greek, Czech).",
+   "figures": [
+    {
+     "src": "/visuals/vocab/geography/world.webp",
+     "title": "Map of the world",
+     "w": 900,
+     "h": 598,
+     "titleEs": "Mapa ilustrado del mundo"
+    }
+   ],
+   "credit": "freepik",
+   "extra": "countries",
+   "items": [
+    {
+     "id": "colombia",
+     "en": "Colombia",
+     "es": "colombiano/a",
+     "ex": "Colombia is famous for coffee and its two coasts.",
+     "img": "/visuals/vocab/countries/colombia-map.webp",
+     "flag": "/visuals/vocab/countries/colombia-flag.webp",
+     "nat": "Colombian",
+     "nogap": true
+    },
+    {
+     "id": "mexico",
+     "en": "Mexico",
+     "es": "mexicano/a",
+     "ex": "Mexico is famous for tacos and mariachis.",
+     "img": "/visuals/vocab/countries/mexico-map.webp",
+     "flag": "/visuals/vocab/countries/mexico-flag.webp",
+     "nat": "Mexican",
+     "nogap": true
+    },
+    {
+     "id": "brazil",
+     "en": "Brazil",
+     "es": "brasileño/a",
+     "ex": "Brazil has the biggest rainforest in the world.",
+     "img": "/visuals/vocab/countries/brazil-map.webp",
+     "flag": "/visuals/vocab/countries/brazil-flag.webp",
+     "nat": "Brazilian",
+     "nogap": true
+    },
+    {
+     "id": "peru",
+     "en": "Peru",
+     "es": "peruano/a",
+     "ex": "In Peru you can visit old Inca temples.",
+     "img": "/visuals/vocab/countries/peru-map.webp",
+     "flag": "/visuals/vocab/countries/peru-flag.webp",
+     "nat": "Peruvian",
+     "nogap": true
+    },
+    {
+     "id": "argentina",
+     "en": "Argentina",
+     "es": "argentino/a",
+     "ex": "People dance tango in Argentina.",
+     "img": "/visuals/vocab/countries/argentina-map.webp",
+     "flag": "/visuals/vocab/countries/argentina-flag.webp",
+     "nat": "Argentinian",
+     "nogap": true
+    },
+    {
+     "id": "usa",
+     "en": "the United States",
+     "es": "estadounidense",
+     "ex": "The United States has big deserts and canyons.",
+     "img": "/visuals/vocab/countries/usa-map.webp",
+     "flag": "/visuals/vocab/countries/usa-flag.webp",
+     "nat": "American",
+     "nogap": true
+    },
+    {
+     "id": "canada",
+     "en": "Canada",
+     "es": "canadiense",
+     "ex": "Canada has polar bears and glaciers.",
+     "img": "/visuals/vocab/countries/canada-map.webp",
+     "flag": "/visuals/vocab/countries/canada-flag.webp",
+     "nat": "Canadian",
+     "nogap": true
+    },
+    {
+     "id": "spain",
+     "en": "Spain",
+     "es": "español/a",
+     "ex": "Spain is famous for flamenco and football.",
+     "img": "/visuals/vocab/countries/spain-map.webp",
+     "flag": "/visuals/vocab/countries/spain-flag.webp",
+     "nat": "Spanish",
+     "nogap": true
+    },
+    {
+     "id": "uk",
+     "en": "the United Kingdom",
+     "es": "británico/a",
+     "ex": "The United Kingdom has red double-decker buses.",
+     "img": "/visuals/vocab/countries/uk-map.webp",
+     "flag": "/visuals/vocab/countries/uk-flag.webp",
+     "nat": "British",
+     "nogap": true
+    },
+    {
+     "id": "france",
+     "en": "France",
+     "es": "francés/a",
+     "ex": "France is famous for croissants and the Eiffel Tower.",
+     "img": "/visuals/vocab/countries/france-map.webp",
+     "flag": "/visuals/vocab/countries/france-flag.webp",
+     "nat": "French",
+     "nogap": true
+    },
+    {
+     "id": "italy",
+     "en": "Italy",
+     "es": "italiano/a",
+     "ex": "Italy is famous for pizza and the Colosseum.",
+     "img": "/visuals/vocab/countries/italy-map.webp",
+     "flag": "/visuals/vocab/countries/italy-flag.webp",
+     "nat": "Italian",
+     "nogap": true
+    },
+    {
+     "id": "germany",
+     "en": "Germany",
+     "es": "alemán/a",
+     "ex": "Germany is famous for its castles and sausages.",
+     "img": "/visuals/vocab/countries/germany-map.webp",
+     "flag": "/visuals/vocab/countries/germany-flag.webp",
+     "nat": "German",
+     "nogap": true
+    },
+    {
+     "id": "poland",
+     "en": "Poland",
+     "es": "polaco/a",
+     "ex": "Poland has old castles and big forests.",
+     "img": "/visuals/vocab/countries/poland-map.webp",
+     "flag": "/visuals/vocab/countries/poland-flag.webp",
+     "nat": "Polish",
+     "nogap": true
+    },
+    {
+     "id": "sweden",
+     "en": "Sweden",
+     "es": "sueco/a",
+     "ex": "In Sweden you can see the northern lights.",
+     "img": "/visuals/vocab/countries/sweden-map.webp",
+     "flag": "/visuals/vocab/countries/sweden-flag.webp",
+     "nat": "Swedish",
+     "nogap": true
+    },
+    {
+     "id": "greece",
+     "en": "Greece",
+     "es": "griego/a",
+     "ex": "Greece has beautiful islands and ancient temples.",
+     "img": "/visuals/vocab/countries/greece-map.webp",
+     "flag": "/visuals/vocab/countries/greece-flag.webp",
+     "nat": "Greek",
+     "nogap": true
+    },
+    {
+     "id": "czech-republic",
+     "en": "the Czech Republic",
+     "es": "checo/a",
+     "ex": "The Czech Republic is famous for its castles.",
+     "img": "/visuals/vocab/countries/czech-republic-map.webp",
+     "flag": "/visuals/vocab/countries/czech-republic-flag.webp",
+     "nat": "Czech",
+     "nogap": true
+    },
+    {
+     "id": "russia",
+     "en": "Russia",
+     "es": "ruso/a",
+     "ex": "Russia is the biggest country in the world.",
+     "img": "/visuals/vocab/countries/russia-map.webp",
+     "flag": "/visuals/vocab/countries/russia-flag.webp",
+     "nat": "Russian",
+     "nogap": true
+    },
+    {
+     "id": "china",
+     "en": "China",
+     "es": "chino/a",
+     "ex": "China is famous for pandas and the Great Wall.",
+     "img": "/visuals/vocab/countries/china-map.webp",
+     "flag": "/visuals/vocab/countries/china-flag.webp",
+     "nat": "Chinese",
+     "nogap": true
+    },
+    {
+     "id": "japan",
+     "en": "Japan",
+     "es": "japonés/a",
+     "ex": "Japan is famous for anime and Mount Fuji.",
+     "img": "/visuals/vocab/countries/japan-map.webp",
+     "flag": "/visuals/vocab/countries/japan-flag.webp",
+     "nat": "Japanese",
+     "nogap": true
+    },
+    {
+     "id": "south-korea",
+     "en": "South Korea",
+     "es": "surcoreano/a",
+     "ex": "South Korea is famous for K-pop and technology.",
+     "img": "/visuals/vocab/countries/south-korea-map.webp",
+     "flag": "/visuals/vocab/countries/south-korea-flag.webp",
+     "nat": "South Korean",
+     "nogap": true
+    },
+    {
+     "id": "india",
+     "en": "India",
+     "es": "indio/a",
+     "ex": "India is famous for its temples and elephants.",
+     "img": "/visuals/vocab/countries/india-map.webp",
+     "flag": "/visuals/vocab/countries/india-flag.webp",
+     "nat": "Indian",
+     "nogap": true
+    },
+    {
+     "id": "egypt",
+     "en": "Egypt",
+     "es": "egipcio/a",
+     "ex": "Egypt is famous for the pyramids and the Nile.",
+     "img": "/visuals/vocab/countries/egypt-map.webp",
+     "flag": "/visuals/vocab/countries/egypt-flag.webp",
+     "nat": "Egyptian",
+     "nogap": true
+    },
+    {
+     "id": "nigeria",
+     "en": "Nigeria",
+     "es": "nigeriano/a",
+     "ex": "Nigeria has lions, elephants and giraffes.",
+     "img": "/visuals/vocab/countries/nigeria-map.webp",
+     "flag": "/visuals/vocab/countries/nigeria-flag.webp",
+     "nat": "Nigerian",
+     "nogap": true
+    },
+    {
+     "id": "south-africa",
+     "en": "South Africa",
+     "es": "sudafricano/a",
+     "ex": "South Africa has amazing wild animals.",
+     "img": "/visuals/vocab/countries/south-africa-map.webp",
+     "flag": "/visuals/vocab/countries/south-africa-flag.webp",
+     "nat": "South African",
+     "nogap": true
+    },
+    {
+     "id": "australia",
+     "en": "Australia",
+     "es": "australiano/a",
+     "ex": "Australia is famous for koalas and kangaroos.",
+     "img": "/visuals/vocab/countries/australia-map.webp",
+     "flag": "/visuals/vocab/countries/australia-flag.webp",
+     "nat": "Australian",
+     "nogap": true
+    },
+    {
+     "id": "new-zealand",
+     "en": "New Zealand",
+     "es": "neozelandés/a",
+     "ex": "New Zealand has mountains and lots of sheep.",
+     "img": "/visuals/vocab/countries/new-zealand-map.webp",
+     "flag": "/visuals/vocab/countries/new-zealand-flag.webp",
+     "nat": "New Zealander",
+     "nogap": true
+    }
+   ]
+  },
+  {
+   "id": "city",
+   "level": "A1",
+   "title": "Places in a city",
+   "titleEs": "Lugares de la ciudad",
+   "emoji": "🏙️",
+   "color": "var(--green)",
+   "cover": "/visuals/vocab/city/bakery.webp",
+   "intro_es": "Tiendas, servicios y partes de la calle. Con lugares usamos <b>the</b> y <b>to</b>: <i>I go to the bakery to buy bread.</i>",
+   "tip_es": "Sin <b>the</b>: <i>go home</i>, <i>go to work</i>, <i>go to school</i>, <i>go to bed</i>.",
+   "figures": [
+    {
+     "src": "/visuals/shops-city.webp",
+     "title": "Shops in a city",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Tiendas y partes de la ciudad, de básico a avanzado"
+    }
+   ],
+   "items": [
+    {
+     "id": "bakery",
+     "en": "bakery",
+     "es": "panadería",
+     "ex": "I go to the bakery to buy fresh bread.",
+     "img": "/visuals/vocab/city/bakery.webp",
+     "group": "Shops",
+     "form": "bakery"
+    },
+    {
+     "id": "coffee-shop",
+     "en": "coffee shop",
+     "es": "cafetería",
+     "ex": "Let’s meet at the coffee shop at four.",
+     "img": "/visuals/vocab/city/coffee-shop.webp",
+     "group": "Shops",
+     "form": "coffee shop"
+    },
+    {
+     "id": "bookstore",
+     "en": "bookstore",
+     "es": "librería",
+     "ex": "You can buy notebooks at the bookstore.",
+     "img": "/visuals/vocab/city/bookstore.webp",
+     "group": "Shops",
+     "note": "UK: bookshop. Library = biblioteca.",
+     "form": "bookstore"
+    },
+    {
+     "id": "pharmacy",
+     "en": "pharmacy",
+     "es": "droguería, farmacia",
+     "ex": "I need some medicine from the pharmacy.",
+     "img": "/visuals/vocab/city/pharmacy.webp",
+     "group": "Shops",
+     "form": "pharmacy"
+    },
+    {
+     "id": "supermarket",
+     "en": "supermarket",
+     "es": "supermercado",
+     "ex": "We buy fruit and milk at the supermarket.",
+     "img": "/visuals/vocab/city/supermarket.webp",
+     "group": "Shops",
+     "form": "supermarket"
+    },
+    {
+     "id": "clothing-store",
+     "en": "clothing store",
+     "es": "tienda de ropa",
+     "ex": "There’s a sale at the clothing store.",
+     "img": "/visuals/vocab/city/clothing-store.webp",
+     "group": "Shops",
+     "form": "clothing store"
+    },
+    {
+     "id": "house",
+     "en": "house",
+     "es": "casa",
+     "ex": "My house is near the park.",
+     "img": "/visuals/vocab/city/house.webp",
+     "group": "Basic",
+     "form": "house"
+    },
+    {
+     "id": "building",
+     "en": "building",
+     "es": "edificio",
+     "ex": "I live in a tall building.",
+     "img": "/visuals/vocab/city/building.webp",
+     "group": "Basic",
+     "form": "building"
+    },
+    {
+     "id": "road",
+     "en": "road",
+     "es": "calle, carretera",
+     "ex": "Be careful when you cross the road.",
+     "img": "/visuals/vocab/city/road.webp",
+     "group": "Basic",
+     "form": "road"
+    },
+    {
+     "id": "sidewalk",
+     "en": "sidewalk",
+     "es": "andén, acera",
+     "ex": "Walk on the sidewalk, not on the road.",
+     "img": "/visuals/vocab/city/sidewalk.webp",
+     "group": "Basic",
+     "note": "UK: pavement.",
+     "form": "sidewalk"
+    },
+    {
+     "id": "park",
+     "en": "park",
+     "es": "parque",
+     "ex": "The children play in the park.",
+     "img": "/visuals/vocab/city/park.webp",
+     "group": "Basic",
+     "form": "park"
+    },
+    {
+     "id": "traffic-light",
+     "en": "traffic light",
+     "es": "semáforo",
+     "ex": "Stop! The traffic light is red.",
+     "img": "/visuals/vocab/city/traffic-light.webp",
+     "group": "Basic",
+     "form": "traffic light"
+    },
+    {
+     "id": "crosswalk",
+     "en": "crosswalk",
+     "es": "cebra, paso peatonal",
+     "ex": "Cross the street at the crosswalk.",
+     "img": "/visuals/vocab/city/crosswalk.webp",
+     "group": "Basic",
+     "note": "UK: zebra crossing.",
+     "form": "crosswalk"
+    },
+    {
+     "id": "street-light",
+     "en": "street light",
+     "es": "poste de luz",
+     "ex": "The street lights go on at six.",
+     "img": "/visuals/vocab/city/street-light.webp",
+     "group": "Basic",
+     "form": "street lights"
+    },
+    {
+     "id": "bus-stop",
+     "en": "bus stop",
+     "es": "paradero",
+     "ex": "I wait at the bus stop every morning.",
+     "img": "/visuals/vocab/city/bus-stop.webp",
+     "group": "Basic",
+     "form": "bus stop"
+    },
+    {
+     "id": "school",
+     "en": "school",
+     "es": "colegio, escuela",
+     "ex": "My school is two blocks from here.",
+     "img": "/visuals/vocab/city/school.webp",
+     "group": "Services",
+     "form": "school"
+    },
+    {
+     "id": "hospital",
+     "en": "hospital",
+     "es": "hospital",
+     "ex": "The hospital is open 24 hours.",
+     "img": "/visuals/vocab/city/hospital.webp",
+     "group": "Services",
+     "form": "hospital"
+    },
+    {
+     "id": "police-station",
+     "en": "police station",
+     "es": "estación de policía",
+     "ex": "Go to the police station to report a crime.",
+     "img": "/visuals/vocab/city/police-station.webp",
+     "group": "Services",
+     "form": "police station"
+    },
+    {
+     "id": "fire-station",
+     "en": "fire station",
+     "es": "estación de bomberos",
+     "ex": "The fire station has two red trucks.",
+     "img": "/visuals/vocab/city/fire-station.webp",
+     "group": "Services",
+     "form": "fire station"
+    },
+    {
+     "id": "library",
+     "en": "library",
+     "es": "biblioteca",
+     "ex": "You can borrow books from the library.",
+     "img": "/visuals/vocab/city/library.webp",
+     "group": "Services",
+     "form": "library"
+    },
+    {
+     "id": "bank",
+     "en": "bank",
+     "es": "banco",
+     "ex": "I need to go to the bank to get money.",
+     "img": "/visuals/vocab/city/bank.webp",
+     "group": "Services",
+     "form": "bank"
+    },
+    {
+     "id": "post-office",
+     "en": "post office",
+     "es": "oficina de correos",
+     "ex": "Send the package from the post office.",
+     "img": "/visuals/vocab/city/post-office.webp",
+     "group": "Services",
+     "form": "post office"
+    },
+    {
+     "id": "restaurant",
+     "en": "restaurant",
+     "es": "restaurante",
+     "ex": "We have dinner at an Italian restaurant.",
+     "img": "/visuals/vocab/city/restaurant.webp",
+     "group": "Services",
+     "form": "restaurant"
+    },
+    {
+     "id": "hotel",
+     "en": "hotel",
+     "es": "hotel",
+     "ex": "Our hotel is next to the beach.",
+     "img": "/visuals/vocab/city/hotel.webp",
+     "group": "Services",
+     "form": "hotel"
+    }
+   ]
+  },
+  {
+   "id": "prepositions-place",
+   "level": "A1",
+   "title": "Prepositions of place",
+   "titleEs": "Preposiciones de lugar",
+   "emoji": "📦",
+   "color": "var(--orange)",
+   "cover": "/visuals/vocab/prepositions/in.webp",
+   "intro_es": "Las preposiciones de lugar dicen <b>dónde está</b> algo. Mira el gato: ¿está <i>in</i>, <i>on</i> o <i>under</i>?",
+   "tip_es": "<b>Above</b> y <b>over</b> son parecidas, pero <i>over</i> suele indicar que algo cubre o pasa por encima. <b>Between</b> = entre dos; <b>among</b> = entre muchos.",
+   "figures": [
+    {
+     "src": "/visuals/prepositions-place.webp",
+     "title": "Prepositions of place",
+     "w": 1374,
+     "h": 1145,
+     "titleEs": "60 preposiciones de lugar con dibujo y ejemplo"
+    }
+   ],
+   "items": [
+    {
+     "id": "in",
+     "en": "in",
+     "es": "dentro de, en",
+     "ex": "The cat is in the box.",
+     "img": "/visuals/vocab/prepositions/in.webp",
+     "form": "in"
+    },
+    {
+     "id": "on",
+     "en": "on",
+     "es": "sobre, encima de",
+     "ex": "The cat is on the table.",
+     "img": "/visuals/vocab/prepositions/on.webp",
+     "form": "on"
+    },
+    {
+     "id": "under",
+     "en": "under",
+     "es": "debajo de",
+     "ex": "The cat is under the table.",
+     "img": "/visuals/vocab/prepositions/under.webp",
+     "form": "under"
+    },
+    {
+     "id": "at",
+     "en": "at",
+     "es": "en (un punto)",
+     "ex": "She is at the door.",
+     "img": "/visuals/vocab/prepositions/at.webp",
+     "form": "at"
+    },
+    {
+     "id": "above",
+     "en": "above",
+     "es": "arriba de (sin tocar)",
+     "ex": "The lamp is above the sofa.",
+     "img": "/visuals/vocab/prepositions/above.webp",
+     "form": "above"
+    },
+    {
+     "id": "over",
+     "en": "over",
+     "es": "por encima de",
+     "ex": "The bird is flying over the house.",
+     "img": "/visuals/vocab/prepositions/over.webp",
+     "form": "over"
+    },
+    {
+     "id": "below",
+     "en": "below",
+     "es": "abajo de",
+     "ex": "The fish is below the boat.",
+     "img": "/visuals/vocab/prepositions/below.webp",
+     "form": "below"
+    },
+    {
+     "id": "between",
+     "en": "between",
+     "es": "entre (dos)",
+     "ex": "The cat is between the boxes.",
+     "img": "/visuals/vocab/prepositions/between.webp",
+     "form": "between"
+    },
+    {
+     "id": "among",
+     "en": "among",
+     "es": "entre (muchos)",
+     "ex": "The girl is among the trees.",
+     "img": "/visuals/vocab/prepositions/among.webp",
+     "form": "among"
+    },
+    {
+     "id": "next-to",
+     "en": "next to",
+     "es": "al lado de",
+     "ex": "The cat is next to the plant.",
+     "img": "/visuals/vocab/prepositions/next-to.webp",
+     "form": "next to"
+    },
+    {
+     "id": "beside",
+     "en": "beside",
+     "es": "junto a",
+     "ex": "He is standing beside his friend.",
+     "img": "/visuals/vocab/prepositions/beside.webp",
+     "form": "beside"
+    },
+    {
+     "id": "near",
+     "en": "near",
+     "es": "cerca de",
+     "ex": "The school is near the park.",
+     "img": "/visuals/vocab/prepositions/near.webp",
+     "form": "near"
+    },
+    {
+     "id": "opposite",
+     "en": "opposite",
+     "es": "enfrente de (al otro lado)",
+     "ex": "The bank is opposite the supermarket.",
+     "img": "/visuals/vocab/prepositions/opposite.webp",
+     "form": "opposite"
+    },
+    {
+     "id": "across-from",
+     "en": "across from",
+     "es": "frente a, al otro lado de",
+     "ex": "The hotel is across from the beach.",
+     "img": "/visuals/vocab/prepositions/across-from.webp",
+     "form": "across from"
+    },
+    {
+     "id": "in-front-of",
+     "en": "in front of",
+     "es": "delante de",
+     "ex": "The cat is in front of the TV.",
+     "img": "/visuals/vocab/prepositions/in-front-of.webp",
+     "form": "in front of"
+    },
+    {
+     "id": "behind",
+     "en": "behind",
+     "es": "detrás de",
+     "ex": "The cat is behind the curtain.",
+     "img": "/visuals/vocab/prepositions/behind.webp",
+     "form": "behind"
+    },
+    {
+     "id": "inside",
+     "en": "inside",
+     "es": "adentro de",
+     "ex": "The cat is inside the house.",
+     "img": "/visuals/vocab/prepositions/inside.webp",
+     "form": "inside"
+    },
+    {
+     "id": "outside",
+     "en": "outside",
+     "es": "afuera de",
+     "ex": "The cat is outside the house.",
+     "img": "/visuals/vocab/prepositions/outside.webp",
+     "form": "outside"
+    },
+    {
+     "id": "to-the-left-of",
+     "en": "to the left of",
+     "es": "a la izquierda de",
+     "ex": "The cat is to the left of the dog.",
+     "img": "/visuals/vocab/prepositions/to-the-left-of.webp",
+     "form": "to the left of"
+    },
+    {
+     "id": "to-the-right-of",
+     "en": "to the right of",
+     "es": "a la derecha de",
+     "ex": "The dog is to the right of the cat.",
+     "img": "/visuals/vocab/prepositions/to-the-right-of.webp",
+     "form": "to the right of"
+    },
+    {
+     "id": "at-the-back-of",
+     "en": "at the back of",
+     "es": "al fondo de",
+     "ex": "She sits at the back of the class.",
+     "img": "/visuals/vocab/prepositions/at-the-back-of.webp",
+     "form": "at the back of"
+    }
+   ]
+  },
+  {
+   "id": "family",
+   "level": "A1",
+   "title": "Family",
+   "titleEs": "La familia",
+   "emoji": "👨‍👩‍👧",
+   "color": "var(--purple)",
+   "intro_es": "Los miembros de la familia. Para decir de quién es algo usamos <b>’s</b>: <i>my mother’s sister</i> = mi tía.",
+   "tip_es": "<b>Cousin</b> sirve para primo y prima. <b>Grandparents</b> = abuelos; <b>grandchildren</b> = nietos.",
+   "figures": [
+    {
+     "src": "/visuals/family-living-room.webp",
+     "title": "A family in the living room",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Retrato familiar con etiquetas"
+    },
+    {
+     "src": "/visuals/family-garden.webp",
+     "title": "A family in the garden",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Retrato familiar con mascotas"
+    }
+   ],
+   "items": [
+    {
+     "id": "mother",
+     "en": "mother",
+     "es": "madre",
+     "ex": "My mother is a nurse.",
+     "emoji": "👩",
+     "group": "Parents",
+     "form": "mother"
+    },
+    {
+     "id": "father",
+     "en": "father",
+     "es": "padre",
+     "ex": "My father cooks on Sundays.",
+     "emoji": "👨",
+     "group": "Parents",
+     "form": "father"
+    },
+    {
+     "id": "parents",
+     "en": "parents",
+     "es": "padres (mamá y papá)",
+     "ex": "My parents live in Tunja.",
+     "emoji": "👫",
+     "group": "Parents",
+     "note": "Parents ≠ relatives (parientes).",
+     "form": "parents"
+    },
+    {
+     "id": "son",
+     "en": "son",
+     "es": "hijo",
+     "ex": "Their son is five years old.",
+     "emoji": "👦",
+     "group": "Children",
+     "form": "son"
+    },
+    {
+     "id": "daughter",
+     "en": "daughter",
+     "es": "hija",
+     "ex": "Their daughter plays the piano.",
+     "emoji": "👧",
+     "group": "Children",
+     "form": "daughter"
+    },
+    {
+     "id": "baby",
+     "en": "baby",
+     "es": "bebé",
+     "ex": "The baby is sleeping right now.",
+     "emoji": "👶",
+     "group": "Children",
+     "form": "baby"
+    },
+    {
+     "id": "brother",
+     "en": "brother",
+     "es": "hermano",
+     "ex": "My brother is older than me.",
+     "emoji": "🧑",
+     "group": "Brothers & sisters",
+     "form": "brother"
+    },
+    {
+     "id": "sister",
+     "en": "sister",
+     "es": "hermana",
+     "ex": "My sister lives in Medellín.",
+     "emoji": "👩‍🦱",
+     "group": "Brothers & sisters",
+     "form": "sister"
+    },
+    {
+     "id": "twins",
+     "en": "twins",
+     "es": "gemelos",
+     "ex": "Ana and Luisa are twins.",
+     "emoji": "👯",
+     "group": "Brothers & sisters",
+     "form": "twins"
+    },
+    {
+     "id": "grandmother",
+     "en": "grandmother",
+     "es": "abuela",
+     "ex": "My grandmother makes the best arepas.",
+     "emoji": "👵",
+     "group": "Grandparents",
+     "form": "grandmother"
+    },
+    {
+     "id": "grandfather",
+     "en": "grandfather",
+     "es": "abuelo",
+     "ex": "My grandfather tells funny stories.",
+     "emoji": "👴",
+     "group": "Grandparents",
+     "form": "grandfather"
+    },
+    {
+     "id": "grandchildren",
+     "en": "grandchildren",
+     "es": "nietos",
+     "ex": "She has six grandchildren.",
+     "emoji": "🧒",
+     "group": "Grandparents",
+     "form": "grandchildren"
+    },
+    {
+     "id": "aunt",
+     "en": "aunt",
+     "es": "tía",
+     "ex": "My aunt is my mother’s sister.",
+     "emoji": "👩‍🦰",
+     "group": "Other relatives",
+     "form": "aunt"
+    },
+    {
+     "id": "uncle",
+     "en": "uncle",
+     "es": "tío",
+     "ex": "My uncle has a farm in Huila.",
+     "emoji": "🧔",
+     "group": "Other relatives",
+     "form": "uncle"
+    },
+    {
+     "id": "cousin",
+     "en": "cousin",
+     "es": "primo, prima",
+     "ex": "My cousin and I are in the same class.",
+     "emoji": "🧑‍🤝‍🧑",
+     "group": "Other relatives",
+     "form": "cousin"
+    },
+    {
+     "id": "husband",
+     "en": "husband",
+     "es": "esposo",
+     "ex": "Her husband is a teacher.",
+     "emoji": "🤵",
+     "group": "Couples",
+     "form": "husband"
+    },
+    {
+     "id": "wife",
+     "en": "wife",
+     "es": "esposa",
+     "ex": "His wife works at a bank.",
+     "emoji": "👰",
+     "group": "Couples",
+     "form": "wife"
+    },
+    {
+     "id": "pet",
+     "en": "pet",
+     "es": "mascota",
+     "ex": "Our pet is a big brown dog.",
+     "emoji": "🐶",
+     "group": "Couples",
+     "form": "pet"
+    }
+   ]
+  },
+  {
+   "id": "house",
+   "level": "A1",
+   "title": "Furniture & appliances",
+   "titleEs": "Muebles y electrodomésticos",
+   "emoji": "🛋️",
+   "color": "var(--indigo)",
+   "cover": "/visuals/vocab/house/sofa.webp",
+   "intro_es": "Lo que hay en una casa: muebles (<i>furniture</i>, siempre singular) y electrodomésticos (<i>appliances</i>).",
+   "tip_es": "<b>Furniture</b> no tiene plural: <i>a piece of furniture</i>, <i>a lot of furniture</i> (nunca «furnitures»).",
+   "figures": [
+    {
+     "src": "/visuals/house-appliances-furniture.webp",
+     "title": "Appliances and furniture",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Electrodomésticos y muebles con sus partes"
+    }
+   ],
+   "items": [
+    {
+     "id": "bed",
+     "en": "bed",
+     "es": "cama",
+     "ex": "My bed is next to the window.",
+     "img": "/visuals/vocab/house/bed.webp",
+     "group": "Furniture",
+     "form": "bed"
+    },
+    {
+     "id": "wardrobe",
+     "en": "wardrobe",
+     "es": "clóset, armario",
+     "ex": "I keep my clothes in the wardrobe.",
+     "img": "/visuals/vocab/house/wardrobe.webp",
+     "group": "Furniture",
+     "note": "US: closet.",
+     "form": "wardrobe"
+    },
+    {
+     "id": "sofa",
+     "en": "sofa",
+     "es": "sofá",
+     "ex": "We watch TV on the sofa.",
+     "img": "/visuals/vocab/house/sofa.webp",
+     "group": "Furniture",
+     "note": "También couch.",
+     "form": "sofa"
+    },
+    {
+     "id": "table",
+     "en": "table",
+     "es": "mesa",
+     "ex": "The family has dinner at the table.",
+     "img": "/visuals/vocab/house/table.webp",
+     "group": "Furniture",
+     "form": "table"
+    },
+    {
+     "id": "chair",
+     "en": "chair",
+     "es": "silla",
+     "ex": "There are six chairs in the dining room.",
+     "img": "/visuals/vocab/house/chair.webp",
+     "group": "Furniture",
+     "form": "chairs"
+    },
+    {
+     "id": "desk",
+     "en": "desk",
+     "es": "escritorio",
+     "ex": "I do my homework at my desk.",
+     "img": "/visuals/vocab/house/desk.webp",
+     "group": "Furniture",
+     "form": "desk"
+    },
+    {
+     "id": "bookshelf",
+     "en": "bookshelf",
+     "es": "biblioteca, estante",
+     "ex": "The bookshelf is full of comics.",
+     "img": "/visuals/vocab/house/bookshelf.webp",
+     "group": "Furniture",
+     "form": "bookshelf"
+    },
+    {
+     "id": "nightstand",
+     "en": "nightstand",
+     "es": "mesa de noche",
+     "ex": "My phone is on the nightstand.",
+     "img": "/visuals/vocab/house/nightstand.webp",
+     "group": "Furniture",
+     "note": "UK: bedside table.",
+     "form": "nightstand"
+    },
+    {
+     "id": "coffee-table",
+     "en": "coffee table",
+     "es": "mesa de centro",
+     "ex": "Put your cup on the coffee table.",
+     "img": "/visuals/vocab/house/coffee-table.webp",
+     "group": "Furniture",
+     "form": "coffee table"
+    },
+    {
+     "id": "chest-of-drawers",
+     "en": "chest of drawers",
+     "es": "cómoda",
+     "ex": "My socks are in the chest of drawers.",
+     "img": "/visuals/vocab/house/chest-of-drawers.webp",
+     "group": "Furniture",
+     "note": "US: dresser.",
+     "form": "chest of drawers"
+    },
+    {
+     "id": "refrigerator",
+     "en": "refrigerator",
+     "es": "nevera",
+     "ex": "The milk is in the refrigerator.",
+     "img": "/visuals/vocab/house/refrigerator.webp",
+     "group": "Appliances",
+     "note": "Informal: fridge.",
+     "form": "refrigerator"
+    },
+    {
+     "id": "washing-machine",
+     "en": "washing machine",
+     "es": "lavadora",
+     "ex": "The washing machine is in the laundry room.",
+     "img": "/visuals/vocab/house/washing-machine.webp",
+     "group": "Appliances",
+     "form": "washing machine"
+    },
+    {
+     "id": "microwave",
+     "en": "microwave",
+     "es": "microondas",
+     "ex": "Heat the soup in the microwave.",
+     "img": "/visuals/vocab/house/microwave.webp",
+     "group": "Appliances",
+     "form": "microwave"
+    },
+    {
+     "id": "oven",
+     "en": "oven",
+     "es": "horno, estufa",
+     "ex": "The cake is in the oven.",
+     "img": "/visuals/vocab/house/oven.webp",
+     "group": "Appliances",
+     "note": "La estufa (hornillas) es stove o cooker.",
+     "form": "oven"
+    },
+    {
+     "id": "vacuum-cleaner",
+     "en": "vacuum cleaner",
+     "es": "aspiradora",
+     "ex": "I use the vacuum cleaner on Saturdays.",
+     "img": "/visuals/vocab/house/vacuum-cleaner.webp",
+     "group": "Appliances",
+     "form": "vacuum cleaner"
+    },
+    {
+     "id": "air-conditioner",
+     "en": "air conditioner",
+     "es": "aire acondicionado",
+     "ex": "Turn on the air conditioner, please. It’s hot!",
+     "img": "/visuals/vocab/house/air-conditioner.webp",
+     "group": "Appliances",
+     "form": "air conditioner"
+    },
+    {
+     "id": "television",
+     "en": "television",
+     "es": "televisor",
+     "ex": "The television is in the living room.",
+     "img": "/visuals/vocab/house/television.webp",
+     "group": "Appliances",
+     "note": "Informal: TV.",
+     "form": "television"
+    },
+    {
+     "id": "blender",
+     "en": "blender",
+     "es": "licuadora",
+     "ex": "I make juice in the blender.",
+     "img": "/visuals/vocab/house/blender.webp",
+     "group": "Appliances",
+     "form": "blender"
+    },
+    {
+     "id": "kettle",
+     "en": "kettle",
+     "es": "hervidor",
+     "ex": "Put the kettle on for some tea.",
+     "img": "/visuals/vocab/house/kettle.webp",
+     "group": "Appliances",
+     "form": "kettle"
+    },
+    {
+     "id": "toaster",
+     "en": "toaster",
+     "es": "tostadora",
+     "ex": "The bread is in the toaster.",
+     "img": "/visuals/vocab/house/toaster.webp",
+     "group": "Appliances",
+     "form": "toaster"
+    }
+   ]
+  },
+  {
+   "id": "alphabet",
+   "level": "A1",
+   "title": "The alphabet & spelling",
+   "titleEs": "El abecedario y deletrear",
+   "emoji": "🔤",
+   "color": "var(--red)",
+   "cover": "/visuals/vocab/alphabet/watch.webp",
+   "intro_es": "Las 26 letras en inglés y cómo suenan. Toca una letra para escucharla y aprende a deletrear tu nombre: <i>How do you spell it?</i>",
+   "tip_es": "Las letras que más confunden: <b>E</b> /iː/ suena «i», <b>I</b> /aɪ/ suena «ai», <b>G</b> /dʒiː/ y <b>J</b> /dʒeɪ/, <b>H</b> /eɪtʃ/, <b>W</b> «dábliu», <b>Y</b> «uai».",
+   "figures": [
+    {
+     "src": "/visuals/vocab/alphabet/alphabet-chart.webp",
+     "title": "The English alphabet",
+     "w": 1100,
+     "h": 619,
+     "titleEs": "Las letras con su pronunciación"
+    },
+    {
+     "src": "/visuals/vocab/alphabet/phonemic-chart.webp",
+     "title": "Phonemic chart",
+     "w": 740,
+     "h": 516,
+     "titleEs": "Los sonidos del inglés (IPA)"
+    }
+   ],
+   "credit": "freepik",
+   "extra": "spelling",
+   "items": [
+    {
+     "id": "a",
+     "en": "A",
+     "es": "se dice «ei»",
+     "ex": "A is for apple.",
+     "emoji": "🍎",
+     "say": "A. A is for apple.",
+     "nogap": true
+    },
+    {
+     "id": "b",
+     "en": "B",
+     "es": "se dice «bi»",
+     "ex": "B is for banana.",
+     "emoji": "🍌",
+     "say": "B. B is for banana.",
+     "nogap": true
+    },
+    {
+     "id": "c",
+     "en": "C",
+     "es": "se dice «si»",
+     "ex": "C is for cat.",
+     "emoji": "🐱",
+     "say": "C. C is for cat.",
+     "nogap": true
+    },
+    {
+     "id": "d",
+     "en": "D",
+     "es": "se dice «di»",
+     "ex": "D is for dog.",
+     "emoji": "🐶",
+     "say": "D. D is for dog.",
+     "nogap": true
+    },
+    {
+     "id": "e",
+     "en": "E",
+     "es": "se dice «i»",
+     "ex": "E is for egg.",
+     "emoji": "🥚",
+     "say": "E. E is for egg.",
+     "nogap": true
+    },
+    {
+     "id": "f",
+     "en": "F",
+     "es": "se dice «ef»",
+     "ex": "F is for fish.",
+     "emoji": "🐟",
+     "say": "F. F is for fish.",
+     "nogap": true
+    },
+    {
+     "id": "g",
+     "en": "G",
+     "es": "se dice «yi»",
+     "ex": "G is for giraffe.",
+     "emoji": "🦒",
+     "say": "G. G is for giraffe.",
+     "nogap": true
+    },
+    {
+     "id": "h",
+     "en": "H",
+     "es": "se dice «eich»",
+     "ex": "H is for house.",
+     "emoji": "🏠",
+     "say": "H. H is for house.",
+     "nogap": true
+    },
+    {
+     "id": "i",
+     "en": "I",
+     "es": "se dice «ai»",
+     "ex": "I is for ice cream.",
+     "emoji": "🍦",
+     "say": "I. I is for ice cream.",
+     "nogap": true
+    },
+    {
+     "id": "j",
+     "en": "J",
+     "es": "se dice «yei»",
+     "ex": "J is for juice.",
+     "emoji": "🧃",
+     "say": "J. J is for juice.",
+     "nogap": true
+    },
+    {
+     "id": "k",
+     "en": "K",
+     "es": "se dice «kei»",
+     "ex": "K is for kite.",
+     "emoji": "🪁",
+     "say": "K. K is for kite.",
+     "nogap": true
+    },
+    {
+     "id": "l",
+     "en": "L",
+     "es": "se dice «el»",
+     "ex": "L is for lemon.",
+     "emoji": "🍋",
+     "say": "L. L is for lemon.",
+     "nogap": true
+    },
+    {
+     "id": "m",
+     "en": "M",
+     "es": "se dice «em»",
+     "ex": "M is for moon.",
+     "emoji": "🌙",
+     "say": "M. M is for moon.",
+     "nogap": true
+    },
+    {
+     "id": "n",
+     "en": "N",
+     "es": "se dice «en»",
+     "ex": "N is for nose.",
+     "emoji": "👃",
+     "say": "N. N is for nose.",
+     "nogap": true
+    },
+    {
+     "id": "o",
+     "en": "O",
+     "es": "se dice «ou»",
+     "ex": "O is for orange.",
+     "emoji": "🍊",
+     "say": "O. O is for orange.",
+     "nogap": true
+    },
+    {
+     "id": "p",
+     "en": "P",
+     "es": "se dice «pi»",
+     "ex": "P is for pizza.",
+     "emoji": "🍕",
+     "say": "P. P is for pizza.",
+     "nogap": true
+    },
+    {
+     "id": "q",
+     "en": "Q",
+     "es": "se dice «kiu»",
+     "ex": "Q is for queen.",
+     "emoji": "👑",
+     "say": "Q. Q is for queen.",
+     "nogap": true
+    },
+    {
+     "id": "r",
+     "en": "R",
+     "es": "se dice «ar»",
+     "ex": "R is for rainbow.",
+     "emoji": "🌈",
+     "say": "R. R is for rainbow.",
+     "nogap": true
+    },
+    {
+     "id": "s",
+     "en": "S",
+     "es": "se dice «es»",
+     "ex": "S is for sun.",
+     "emoji": "☀️",
+     "say": "S. S is for sun.",
+     "nogap": true
+    },
+    {
+     "id": "t",
+     "en": "T",
+     "es": "se dice «ti»",
+     "ex": "T is for tiger.",
+     "emoji": "🐯",
+     "say": "T. T is for tiger.",
+     "nogap": true
+    },
+    {
+     "id": "u",
+     "en": "U",
+     "es": "se dice «iu»",
+     "ex": "U is for umbrella.",
+     "emoji": "☂️",
+     "say": "U. U is for umbrella.",
+     "nogap": true
+    },
+    {
+     "id": "v",
+     "en": "V",
+     "es": "se dice «vi»",
+     "ex": "V is for violin.",
+     "emoji": "🎻",
+     "say": "V. V is for violin.",
+     "nogap": true
+    },
+    {
+     "id": "w",
+     "en": "W",
+     "es": "se dice «dábliu»",
+     "ex": "W is for watch.",
+     "emoji": "⌚",
+     "say": "W. W is for watch.",
+     "nogap": true
+    },
+    {
+     "id": "x",
+     "en": "X",
+     "es": "se dice «ex»",
+     "ex": "X is in fox.",
+     "emoji": "🦊",
+     "say": "X. X is in fox.",
+     "nogap": true
+    },
+    {
+     "id": "y",
+     "en": "Y",
+     "es": "se dice «uai»",
+     "ex": "Y is for yellow.",
+     "emoji": "💛",
+     "say": "Y. Y is for yellow.",
+     "nogap": true
+    },
+    {
+     "id": "z",
+     "en": "Z",
+     "es": "se dice «zi / zed»",
+     "ex": "Z is for zebra.",
+     "emoji": "🦓",
+     "say": "Z. Z is for zebra.",
+     "nogap": true
+    }
+   ]
+  }
+ ]
+}

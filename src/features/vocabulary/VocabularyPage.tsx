@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Search, Sparkles } from 'lucide-react';
@@ -20,8 +20,11 @@ import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
 
-type Tab = 'linking' | 'adjectives' | 'adverbs';
+const VisualVocab = lazy(() => import('./VisualVocab').then((m) => ({ default: m.VisualVocab })));
+
+type Tab = 'visual' | 'linking' | 'adjectives' | 'adverbs';
 const TABS: { value: Tab; label: string }[] = [
+  { value: 'visual', label: '🖼️ Vocabulario visual' },
   { value: 'linking', label: '🔗 Linking words' },
   { value: 'adjectives', label: '🎨 Adjetivos' },
   { value: 'adverbs', label: '⚡ Adverbios' },
@@ -29,18 +32,23 @@ const TABS: { value: Tab; label: string }[] = [
 
 export default function VocabularyPage() {
   const [params, setParams] = useSearchParams();
-  const tab = (TABS.find((t) => t.value === params.get('tab'))?.value ?? 'linking') as Tab;
+  const tab = (TABS.find((t) => t.value === params.get('tab'))?.value ?? 'visual') as Tab;
   return (
     <Page
       back={{ to: '/practice', label: 'Práctica' }}
       eyebrow="Palabras que hacen fluido tu inglés"
       title="Vocabulario"
-      subtitle="Conectores para unir ideas, cientos de adjetivos para describir y adverbios por tipo, con ejemplos, audio, quiz y tarea en PDF."
+      subtitle="Vocabulario con imágenes por nivel (A1–C2), conectores para unir ideas, cientos de adjetivos y adverbios por tipo, con ejemplos, audio, quiz y tarea en PDF."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
         <Segmented<Tab> value={tab} onChange={(t) => setParams({ tab: t })} options={TABS} />
       </div>
+      {tab === 'visual' && (
+        <Suspense fallback={<PageLoader />}>
+          <VisualVocab />
+        </Suspense>
+      )}
       {tab === 'linking' && <Linking />}
       {tab === 'adjectives' && <Adjectives />}
       {tab === 'adverbs' && <Adverbs />}

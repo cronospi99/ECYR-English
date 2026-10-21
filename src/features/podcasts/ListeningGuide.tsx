@@ -89,6 +89,16 @@ const GUIDE: Record<CefrLevel, GuideLevel> = {
       'Entendí sin necesitar la velocidad lenta.',
     ],
   },
+  C2: {
+    plan: ['Escucha 1: a 1,25× o 1,5×, sin pausas, como un hablante experto.', 'Escucha 2: analiza retórica, ironía, implicaturas y registro; compáralo con otra fuente.'],
+    predictions: 2,
+    expect: 'Escribe 5 expresiones idiomáticas, colocaciones o términos técnicos que esperas oír.',
+    whileTask: 'Anota la postura de cada hablante, lo que se insinúa sin decirse y las expresiones con su minuto.',
+    ideasHint: 'En inglés, con precisión y concisión: tesis, matices, evidencia y tono.',
+    summary: 'Escribe un resumen de 80–100 palabras en inglés que sintetice y evalúe las ideas.',
+    extra: { q: 'Evaluación crítica (120–160 palabras): ¿qué supuestos tiene el argumento? ¿Cómo lo rebatirías?', lines: 6 },
+    checks: [...BASE_CHECKS, 'Capté implicaturas, ironía y cambios de registro.', 'Puedo evaluar críticamente los argumentos en inglés.', 'Entendí a velocidad real, con acentos variados.'],
+  },
 };
 
 // ------------------------------------------------------------------- notes --

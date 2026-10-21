@@ -75,6 +75,18 @@ export const LEVELS: LevelMeta[] = [
     description: 'Usa el inglés con precisión, registro y estilo en contextos académicos y profesionales.',
     canDo: ['Matizar y suavizar opiniones', 'Dominar registro formal e informal', 'Debatir temas complejos'],
   },
+  {
+    id: 'C2',
+    name: 'Proficiency',
+    nameEs: 'Maestría',
+    book: 'Grammar Summit',
+    module: '',
+    units: 10,
+    color: 'var(--red)',
+    tint: 'from-[#d0234a] to-[#1c1c1e]',
+    description: 'Comprende prácticamente todo y exprésate con precisión, matices y estilo, como un usuario experto del idioma.',
+    canDo: ['Resumir y evaluar textos complejos', 'Usar énfasis, inversión y registro con naturalidad', 'Argumentar con matices finos y sin esfuerzo'],
+  },
 ];
 
 export const TOTAL_UNITS = LEVELS.reduce((n, l) => n + l.units, 0);
@@ -94,6 +106,7 @@ const loaders: Record<CefrLevel, () => Promise<{ default: unknown }>> = {
       const b = book.default as unknown as LevelBook;
       return { default: { ...b, units: b.units.map((u) => (u.writing ? u : { ...u, writing: tasks[String(u.n)] })) } };
     }),
+  C2: () => import('./generated/level-c2.json'),
 };
 
 const cache = new Map<string, Promise<unknown>>();

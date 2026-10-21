@@ -63,7 +63,7 @@ alter table public.podcast_quizzes
 alter table public.podcast_quizzes
   add constraint podcast_quizzes_key_format check (episode_key ~ '^itunes:[0-9]{1,15}:[0-9]{1,20}$');
 alter table public.podcast_quizzes
-  add constraint podcast_quizzes_level check (level in ('A1','A2','B1','B2','C1'));
+  add constraint podcast_quizzes_level check (level in ('A1','A2','B1','B2','C1','C2'));
 alter table public.podcast_quizzes
   add constraint podcast_quizzes_text_len check (
     char_length(show_name) <= 300 and char_length(episode_title) <= 500 and char_length(episode_url) <= 2000);

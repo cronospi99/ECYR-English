@@ -18,7 +18,7 @@ export type PortfolioKind = (typeof PORTFOLIO_KINDS)[number];
 export const PORTFOLIO_SKILLS = ['listening', 'reading', 'writing', 'speaking', 'grammar', 'vocabulary'] as const;
 export type PortfolioSkill = (typeof PORTFOLIO_SKILLS)[number];
 
-export const PORTFOLIO_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1'] as const;
+export const PORTFOLIO_LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
 export type PortfolioLevel = (typeof PORTFOLIO_LEVELS)[number];
 
 export type ScoreScale = 'percent' | 'band';

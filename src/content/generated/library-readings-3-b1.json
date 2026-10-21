@@ -129,6 +129,40 @@
           "She had saved for months for this trip to Lisbon"
         ],
         "explain_es": "En una narración en pasado, la acción anterior va en pasado perfecto: 'She had saved for months' (párrafo 4)."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, the queue for security was 'enormous'. This means it was…",
+        "options": [
+          "closed",
+          "very long",
+          "moving fast"
+        ],
+        "answer": 1,
+        "explain_es": "'Enormous' significa enorme: Daniela 'had never seen it so long'."
+      },
+      {
+        "type": "order",
+        "q": "that / just before dawn / They got stuck behind / had happened / an accident / .",
+        "answer": "They got stuck behind an accident that had happened just before dawn.",
+        "explain_es": "Párrafo 2: 'they got stuck behind an accident that had happened just before dawn'. El pasado perfecto marca lo que ocurrió antes."
+      },
+      {
+        "type": "mc",
+        "q": "What can we infer about Daniela and her sister?",
+        "options": [
+          "They hadn't seen each other for a long time and were excited to meet",
+          "They had argued at the wedding",
+          "Her sister didn't want her to visit"
+        ],
+        "answer": 0,
+        "explain_es": "Inferencia: no se veían desde la boda (párrafo 4) y la hermana la esperaba con un cartel que decía 'Finally!' (párrafo 5)."
+      },
+      {
+        "type": "gap",
+        "q": "Her lesson: always leave home an hour ____ than you think you need to.",
+        "answer": "earlier",
+        "explain_es": "El párrafo 5 dice: 'always leave home an hour earlier than you think you need to'."
       }
     ]
   },
@@ -258,6 +292,48 @@
           "We have been working here for almost three years."
         ],
         "explain_es": "Después de 'have been' el verbo va en -ing: 'We've been working here' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "Where does the team test each new lamp model?",
+        "options": [
+          "In a laboratory in Cali",
+          "On the roof of the house",
+          "In La Guajira"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'They have been testing each new model on the roof of the house, in heavy rain and strong sun'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'reliable' electricity is electricity that…",
+        "options": [
+          "is very expensive",
+          "works well all the time",
+          "comes only from the sun"
+        ],
+        "answer": 1,
+        "explain_es": "'Reliable' es confiable: muchas familias en La Guajira no tienen electricidad que funcione siempre."
+      },
+      {
+        "type": "mc",
+        "q": "Why has Andrés probably been sleeping very little lately?",
+        "options": [
+          "Because the garage is too noisy at night",
+          "Because he is ill",
+          "Because the possible large order from Peru means a lot of extra work"
+        ],
+        "answer": 2,
+        "explain_es": "Inferencia: en el párrafo 4 relaciona el pedido de la fundación de Perú ('this kind of opportunity') con dormir poco."
+      },
+      {
+        "type": "order",
+        "q": "to move / has been preparing / to a small factory / Lumbre / next year / .",
+        "answer": "Lumbre has been preparing to move to a small factory next year.",
+        "accept": [
+          "Next year Lumbre has been preparing to move to a small factory."
+        ],
+        "explain_es": "Párrafo 6: 'Lumbre has been preparing to move to a small factory next year.'"
       }
     ]
   },
@@ -392,6 +468,40 @@
           "It cannot be a teenager."
         ],
         "explain_es": "Para decir que algo es imposible usamos 'can't', no 'mustn't' (que significa prohibición). Párrafo 4: 'It can't be a teenager'."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Don Ernesto paint the doors blue?",
+        "options": [
+          "He wanted to take a better photo",
+          "He wanted his neighbours to remember that many doors used to be blue",
+          "The town council paid him to do it"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'When he was a boy... many doors in the town were blue, and he wanted his neighbours to remember'."
+      },
+      {
+        "type": "tf",
+        "q": "In the end, the neighbours decided to paint all the doors green again.",
+        "answer": "F",
+        "explain_es": "El párrafo 6 dice: 'the neighbours voted to keep one blue door on every street'."
+      },
+      {
+        "type": "mc",
+        "q": "What can we infer about the baker's theory?",
+        "options": [
+          "Everybody agreed with it",
+          "It was the correct answer",
+          "It was wrong, because the students were away all week"
+        ],
+        "answer": 2,
+        "explain_es": "Inferencia: el panadero culpó a los niños, pero la profesora explicó que estaban en Bucaramanga toda la semana (párrafo 2) y el pintor resultó ser Don Ernesto."
+      },
+      {
+        "type": "order",
+        "q": "a lot of / must need / This person / blue paint / .",
+        "answer": "This person must need a lot of blue paint.",
+        "explain_es": "Párrafo 3: Don Julio dice 'This person must need a lot of blue paint'. 'Must' + verbo base expresa deducción."
       }
     ]
   },
@@ -524,6 +634,45 @@
           "'d"
         ],
         "explain_es": "'Would + verbo' describe hábitos repetidos en el pasado: 'we would go for empanadas every Friday' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "How often does the writer go to a co-working space?",
+        "options": [
+          "Once a week",
+          "Twice a week",
+          "Every day"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'I go to a co-working space twice a week'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'Toronto is an hour ahead of Colombia' means the time in Toronto is…",
+        "options": [
+          "the same as in Colombia",
+          "one hour later than in Colombia",
+          "one hour earlier than in Colombia"
+        ],
+        "answer": 1,
+        "explain_es": "'Ahead' significa adelantado: en Toronto el reloj marca una hora más."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer suggest with 'You'll get used to it, but not overnight'?",
+        "options": [
+          "It happens very quickly",
+          "It is impossible to adapt",
+          "Adapting to remote work takes time"
+        ],
+        "answer": 2,
+        "explain_es": "Inferencia: 'not overnight' significa 'no de un día para otro'; a él le tomó unos seis meses (párrafo 3)."
+      },
+      {
+        "type": "order",
+        "q": "is / of the kitchen / My office / a corner / .",
+        "answer": "My office is a corner of the kitchen.",
+        "explain_es": "Párrafo 3: 'My office is a corner of the kitchen'."
       }
     ]
   },
@@ -655,6 +804,41 @@
           "be launched"
         ],
         "explain_es": "Pasiva en futuro: will + be + participio. Párrafo 4: 'will be launched next year'."
+      },
+      {
+        "type": "mc",
+        "q": "How many seamstresses make Remiendo's products?",
+        "options": [
+          "Five",
+          "Fifteen",
+          "Fifty",
+          "Twenty"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'Each product is made by one of fifteen seamstresses'."
+      },
+      {
+        "type": "gap",
+        "q": "The tiniest scraps are turned into ____ for cushions.",
+        "answer": "stuffing",
+        "explain_es": "El párrafo 2 dice: 'the tiniest scraps are turned into stuffing for cushions'."
+      },
+      {
+        "type": "mc",
+        "q": "What can we infer from 'In fast fashion, a jacket is made in minutes. Ours take almost a day'?",
+        "options": [
+          "Remiendo values careful work more than speed",
+          "Remiendo's workers are lazy",
+          "Fast fashion jackets are more expensive"
+        ],
+        "answer": 0,
+        "explain_es": "Inferencia: Lucía compara la rapidez de la moda rápida con el trabajo cuidadoso y bien pagado de su taller (párrafo 3)."
+      },
+      {
+        "type": "order",
+        "q": "for about / is sold / A jacket / three hundred thousand pesos / .",
+        "answer": "A jacket is sold for about three hundred thousand pesos.",
+        "explain_es": "Párrafo 4: 'A jacket is sold for about three hundred thousand pesos'. Pasiva en presente: is + participio."
       }
     ]
   },
@@ -788,6 +972,45 @@
           "would not have slipped"
         ],
         "explain_es": "En el tercer condicional, la segunda parte lleva 'would have + participio': 'I wouldn't have slipped' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "Who called the park rangers?",
+        "options": [
+          "The owner of the hostel",
+          "Two farmers",
+          "The writer, with a phone"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 6 dice: 'two farmers heard my whistle and called the park rangers'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, a 'steep' slope is one that…",
+        "options": [
+          "is flat and dry",
+          "is covered in snow",
+          "goes up or down very sharply"
+        ],
+        "answer": 2,
+        "explain_es": "'Steep' significa empinado; por eso era peligroso bajar con el suelo mojado."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say the walking poles were 'lying uselessly' in the room?",
+        "options": [
+          "They were broken",
+          "They could have helped on the mountain, but the writer didn't take them",
+          "The hostel owner had hidden them"
+        ],
+        "answer": 1,
+        "explain_es": "Inferencia: en el párrafo 4 dice que con los bastones 'I might have kept my balance', pero se quedaron en la habitación."
+      },
+      {
+        "type": "order",
+        "q": "my route / always tell / I / someone / .",
+        "answer": "I always tell someone my route.",
+        "explain_es": "Párrafo 6: 'I always tell someone my route'. El adverbio de frecuencia va antes del verbo."
       }
     ]
   },
@@ -915,6 +1138,40 @@
           "I asked him if he could speak slowly"
         ],
         "explain_es": "En preguntas indirectas usamos el orden de afirmación (sujeto + verbo): 'if he could speak slowly' (párrafo 3)."
+      },
+      {
+        "type": "gap",
+        "q": "He laughed and said he would never ____ that word again.",
+        "answer": "forget",
+        "explain_es": "El párrafo 4 dice: 'He laughed and said he would never forget that word again'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Kenji really want to say when he used the word 'embarazado'?",
+        "options": [
+          "That he was pregnant",
+          "That he was embarrassed because he had forgotten the writer's name",
+          "That he was very tired"
+        ],
+        "answer": 1,
+        "explain_es": "Inferencia: en el párrafo 4 lo dijo 'because he had forgotten my name', así que quería decir que estaba avergonzado."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, Kenji 'admitted' that he had never spoken Spanish with a real person. 'Admitted' means…",
+        "options": [
+          "he said something true that was a little difficult to say",
+          "he refused to say it",
+          "he forgot it"
+        ],
+        "answer": 0,
+        "explain_es": "'Admit' es admitir o reconocer algo, a menudo algo que da un poco de vergüenza."
+      },
+      {
+        "type": "order",
+        "q": "We agreed / in English / thirty minutes / that we would spend / .",
+        "answer": "We agreed that we would spend thirty minutes in English.",
+        "explain_es": "Párrafo 3: 'We agreed that we would spend thirty minutes in English and thirty minutes in Spanish'."
       }
     ]
   },
@@ -1048,6 +1305,43 @@
           "got the whole house rewired"
         ],
         "explain_es": "Con 'get something done' el verbo va en participio: 'we got the whole house rewired' (párrafo 2)."
+      },
+      {
+        "type": "tf",
+        "q": "Mariana and Julián did most of the work themselves.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'in the end we had most things done by professionals'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, a 'housewarming party' is a party…",
+        "options": [
+          "for a birthday",
+          "to celebrate moving into a new home",
+          "to say goodbye to friends"
+        ],
+        "answer": 1,
+        "explain_es": "Es la fiesta para estrenar casa: la hacen al terminar la renovación."
+      },
+      {
+        "type": "mc",
+        "q": "What does Julián's comment in paragraph 3 suggest?",
+        "options": [
+          "Mariana is a great painter",
+          "They should not have bought the house",
+          "Paying a painter from the start would have saved time"
+        ],
+        "answer": 2,
+        "explain_es": "Inferencia: Julián dice 'I should have had it done from the start'; Mariana se rindió después de dos días."
+      },
+      {
+        "type": "order",
+        "q": "on Saturday / my hair / I'm getting / cut / .",
+        "answer": "I'm getting my hair cut on Saturday.",
+        "accept": [
+          "On Saturday I'm getting my hair cut."
+        ],
+        "explain_es": "Párrafo 5: 'on Saturday I'm getting my hair cut'. Estructura: get + objeto + participio."
       }
     ]
   },
@@ -1179,6 +1473,45 @@
           "which"
         ],
         "explain_es": "Para cosas usamos 'that' o 'which', nunca 'what': 'The microphones that the team had placed...' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "How long did the team search for the frog?",
+        "options": [
+          "Four weeks",
+          "Four months",
+          "Four years"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'spent four months searching for it'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'the breakthrough' is…",
+        "options": [
+          "a bad storm",
+          "a broken microphone",
+          "an important discovery after a lot of work"
+        ],
+        "answer": 2,
+        "explain_es": "'Breakthrough' es un gran avance: esa noche por fin grabaron el sonido de la rana."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Montoya now spend much of her time talking to politicians?",
+        "options": [
+          "To get money for new microphones",
+          "To ask them to protect the forest where the frog lives",
+          "Because she wants to become a politician"
+        ],
+        "answer": 1,
+        "explain_es": "Inferencia: el bosque 'is being damaged by illegal mining' y ella dice que esos lugares 'need protection' (párrafo 5)."
+      },
+      {
+        "type": "order",
+        "q": "by illegal mining / The forest / is being damaged / where it lives / .",
+        "answer": "The forest where it lives is being damaged by illegal mining.",
+        "explain_es": "Párrafo 5: 'The forest where it lives is being damaged by illegal mining'."
       }
     ]
   },
@@ -1311,6 +1644,46 @@
           "have planted"
         ],
         "explain_es": "El futuro perfecto necesita 'have': will have + participio. Párrafo 3: 'by March we will have planted twenty fruit trees'."
+      },
+      {
+        "type": "mc",
+        "q": "What will the money from the Sunday market pay for?",
+        "options": [
+          "A new water tank",
+          "Seeds and tools",
+          "Free workshops"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 dice: 'The money will pay for seeds and tools'."
+      },
+      {
+        "type": "gap",
+        "q": "You don't need any experience. Just bring your energy and, if possible, a pair of ____.",
+        "answer": "gloves",
+        "accept": [
+          "glove"
+        ],
+        "explain_es": "El párrafo 5 dice: 'Just bring your energy and, if possible, a pair of gloves'."
+      },
+      {
+        "type": "mc",
+        "q": "What can we infer about the fruit trees?",
+        "options": [
+          "They are already giving lemons",
+          "They will be sold at the market",
+          "They will take a few years to give fruit"
+        ],
+        "answer": 2,
+        "explain_es": "Inferencia: se plantarán en marzo, pero 'In a few years, our children will be picking lemons...' (párrafo 3)."
+      },
+      {
+        "type": "order",
+        "q": "By then, / a seed library / we will also have started / .",
+        "answer": "By then, we will also have started a seed library.",
+        "accept": [
+          "We will also have started a seed library by then."
+        ],
+        "explain_es": "Párrafo 4: 'By then, we will also have started a seed library'. Futuro perfecto: will have + participio."
       }
     ]
   },
@@ -1444,6 +1817,45 @@
           "feeling"
         ],
         "explain_es": "'Remember + -ing' = recordar algo que ya pasó. Párrafo 7: 'Rodrigo still remembers feeling his heart beat faster'."
+      },
+      {
+        "type": "mc",
+        "q": "According to tip 5, what should you send to your bank?",
+        "options": [
+          "Your PIN",
+          "A screenshot of the message",
+          "Your password"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 6 dice: 'try to take a screenshot and send it to your bank'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'hang up' means…",
+        "options": [
+          "wait on the line",
+          "call back later",
+          "end the phone call"
+        ],
+        "answer": 2,
+        "explain_es": "'Hang up' es colgar: si alguien insiste en pedir tu PIN, termina la llamada."
+      },
+      {
+        "type": "mc",
+        "q": "Why do scammers often threaten to close your account?",
+        "options": [
+          "To make you act quickly without thinking",
+          "Because your account really has a problem",
+          "Because the bank asks them to"
+        ],
+        "answer": 0,
+        "explain_es": "Inferencia: el párrafo 2 dice 'Scammers want you to act quickly'; la amenaza crea presión."
+      },
+      {
+        "type": "order",
+        "q": "decided / I'm glad / to wait / I / .",
+        "answer": "I'm glad I decided to wait.",
+        "explain_es": "Párrafo 7: Rodrigo dice 'I'm glad I decided to wait'. 'Decide' va seguido de infinitivo."
       }
     ]
   },
@@ -1580,6 +1992,40 @@
           "I wish he didn't practise so late"
         ],
         "explain_es": "Con 'wish' para el presente usamos pasado simple: 'I wish he didn't practise so late!' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "What are Sebastián and Thiago going to do on Saturday?",
+        "options": [
+          "Play the guitar",
+          "Visit Cartagena",
+          "Go ice skating"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 5 dice: 'On Saturday, Thiago and I are going ice skating for the first time'."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'sometimes I just smile and nod' suggest about Sebastián?",
+        "options": [
+          "He is always very happy at work",
+          "He doesn't always understand what his colleagues say",
+          "He doesn't like his colleagues"
+        ],
+        "answer": 1,
+        "explain_es": "Inferencia: sus compañeros hablan francés muy rápido (párrafo 3), así que a veces sonríe sin entender."
+      },
+      {
+        "type": "gap",
+        "q": "Video calls help, but they're not the same as a ____.",
+        "answer": "hug",
+        "explain_es": "El párrafo 5 dice: 'Video calls help, but they're not the same as a hug'."
+      },
+      {
+        "type": "order",
+        "q": "will help me / I know / become a better chef / this experience / .",
+        "answer": "I know this experience will help me become a better chef.",
+        "explain_es": "Párrafo 6: 'I know this experience will help me become a better chef'."
       }
     ]
   }

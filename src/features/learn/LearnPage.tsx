@@ -17,7 +17,7 @@ export default function LearnPage() {
   const preDone = PREA1_TOPICS.filter((id) => topics[id]).length;
 
   return (
-    <Page title="Aprender" subtitle="Tu ruta de Pre-A1 a C1. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
+    <Page title="Aprender" subtitle="Tu ruta de Pre-A1 a C2. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
       <Card className="relative mb-6 overflow-hidden">
         <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 rounded-[16px] px-4 py-3">
@@ -35,7 +35,7 @@ export default function LearnPage() {
             ))}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-ink-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C1</div>
+            <div className="text-ink-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C2</div>
             <div className="text-title-3">Gramática interactiva</div>
             <p className="text-label-2 text-subhead line-clamp-2">
               Time Machine, Time &amp; Family, Modal Verbs y Verb Lab: explicaciones con práctica y corrección al instante.

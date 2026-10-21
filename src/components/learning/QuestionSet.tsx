@@ -25,6 +25,20 @@ const KIND_TITLE: Record<LibQuestion['type'], string> = {
 /** "you / are / where / from / ?" → "you are where from?" (punctuation sticks to the word before it). */
 const joinTiles = (t: string[]) => t.join(' ').replace(/\s+([?.!,])/g, '$1');
 
+/**
+ * The tiles of an "order" item. A lead-in such as "Put the words in order:" is
+ * not a tile. Fewer than two tiles means the item is answered by typing
+ * (e.g. "write the letters": BCA).
+ */
+export function orderTiles(q: string): string[] {
+  const body = q.replace(/^[^/]*?\border\b[^:/]*:\s*/i, '');
+  return body.includes('/') ? body.split(/\s*\/\s*/).filter(Boolean) : [];
+}
+
+/** Long tiles are events or steps, not words. */
+const isEventOrder = (q: LibQuestion) => q.type === 'order' && orderTiles(q.q).some((t) => t.split(' ').length >= 4);
+const kindTitle = (q: LibQuestion) => (isEventOrder(q) ? 'Put the events in order' : KIND_TITLE[q.type]);
+
 export function grade(q: LibQuestion, a: Answer): Verdict {
   if (a === undefined || a === '' || (Array.isArray(a) && !a.length)) return 'wrong';
   switch (q.type) {
@@ -35,11 +49,18 @@ export function grade(q: LibQuestion, a: Answer): Verdict {
     case 'tf':
       return a === q.answer ? 'right' : 'wrong';
     case 'order': {
-      const words = q.q.split(/\s*\/\s*/).filter(Boolean);
+      const words = orderTiles(q.q);
+      if (words.length < 2) return checkTyped(String(a), q.answer, q.accept);
+      const picked = (a as string[]).map((k) => words[Number(k)]!);
+      // Event order written as "a / b / c": compare tile by tile.
+      if (q.answer.includes('/')) {
+        const want = q.answer.split(/\s*\/\s*/).filter(Boolean);
+        const norm = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+        if (want.length === picked.length && want.every((t, i) => norm(t) === norm(picked[i]!))) return 'right';
+      }
       // Clause order may vary ("If it rains, …" / "… if it rains"): commas don't count.
       const nc = (s: string) => s.replace(/,/g, '');
-      const given = nc(joinTiles((a as string[]).map((k) => words[Number(k)]!)));
-      return checkTyped(given, nc(q.answer), (q.accept ?? []).map(nc)) === 'right' ? 'right' : 'wrong';
+      return checkTyped(nc(joinTiles(picked)), nc(q.answer), (q.accept ?? []).map(nc)) === 'right' ? 'right' : 'wrong';
     }
     default:
       return checkTyped(String(a), q.answer, q.accept);
@@ -77,10 +98,10 @@ export function QuestionSet({
     <div className="space-y-3">
       {questions.map((q, i) => {
         const v = verdicts[i]!;
-        const showKind = i === 0 || questions[i - 1]!.type !== q.type;
+        const showKind = i === 0 || kindTitle(questions[i - 1]!) !== kindTitle(q);
         return (
           <div key={i}>
-            {showKind && <div className="text-label-2 mt-2 mb-2 text-[12px] font-bold tracking-wide uppercase">{KIND_TITLE[q.type]}</div>}
+            {showKind && <div className="text-label-2 mt-2 mb-2 text-[12px] font-bold tracking-wide uppercase">{kindTitle(q)}</div>}
             <div
               className={cn('bg-card shadow-card rounded-[16px] p-4', checked && (v === 'wrong' ? 'ring-ios-red/60 ring-2' : 'ring-ios-green/60 ring-2'))}
             >
@@ -159,10 +180,10 @@ export function QuestionList({
     <div className="space-y-3">
       {questions.map((q, i) => {
         const v = grade(q, answers[i]);
-        const showKind = i === 0 || questions[i - 1]!.type !== q.type;
+        const showKind = i === 0 || kindTitle(questions[i - 1]!) !== kindTitle(q);
         return (
           <div key={i}>
-            {showKind && <div className="text-label-2 mt-2 mb-2 text-[12px] font-bold tracking-wide uppercase">{KIND_TITLE[q.type]}</div>}
+            {showKind && <div className="text-label-2 mt-2 mb-2 text-[12px] font-bold tracking-wide uppercase">{kindTitle(q)}</div>}
             <div className={cn('bg-card shadow-card rounded-[16px] p-4', checked && (v === 'wrong' ? 'ring-ios-red/60 ring-2' : 'ring-ios-green/60 ring-2'))}>
               <div className="flex gap-2.5">
                 <span
@@ -273,6 +294,7 @@ function Body({ q, a, set, checked, ng, color }: { q: LibQuestion; a: Answer; se
       return <Typed q={q} a={a} set={set} checked={checked} />;
     }
     case 'order':
+      if (orderTiles(q.q).length < 2) return <Typed q={q} a={a} set={set} checked={checked} />;
       return <Tiles q={q} a={(a as string[]) ?? []} set={set} checked={checked} color={color} />;
     default:
       return <Typed q={q} a={a} set={set} checked={checked} />;
@@ -298,7 +320,7 @@ function Typed({ q, a, set, checked }: { q: LibQuestion; a: Answer; set: (a: Ans
 }
 
 function Tiles({ q, a, set, checked, color }: { q: LibQuestion; a: string[]; set: (a: Answer) => void; checked: boolean; color: string }) {
-  const words = useMemo(() => q.q.split(/\s*\/\s*/).filter(Boolean), [q.q]);
+  const words = useMemo(() => orderTiles(q.q), [q.q]);
   // Tiles are tracked by index so repeated words ("the … the") stay separate.
   const left = words.map((w, k) => ({ w, k })).filter(({ k }) => !a.includes(`${k}`));
   const built = a.map((k) => words[Number(k)]!);
@@ -344,7 +366,7 @@ export function questionsToSections(questions: LibQuestion[]): WsSection[] {
   const out: WsSection[] = [];
   for (const q of questions) {
     const last = out[out.length - 1];
-    const title = KIND_TITLE[q.type];
+    const title = kindTitle(q);
     if (q.type === 'mc' || q.type === 'vocab' || q.type === 'heading') {
       const item = { q: q.q, options: q.options, answer: q.answer };
       if (last?.kind === 'mc' && last.title === title) last.items.push(item);
@@ -354,7 +376,8 @@ export function questionsToSections(questions: LibQuestion[]): WsSection[] {
       if (last?.kind === 'tf') last.items.push(item);
       else out.push({ kind: 'tf', title, ng: questions.some((x) => x.type === 'tf' && x.answer === 'NG'), items: [item] });
     } else {
-      const item = { q: q.type === 'order' ? q.q.replace(/\s*\/\s*/g, '  /  ') : q.q, answer: String(q.answer) };
+      const tiles = q.type === 'order' ? orderTiles(q.q) : [];
+      const item = { q: tiles.length > 1 ? tiles.join('  /  ') : q.q, answer: String(q.answer) };
       if (last?.kind === 'write' && last.title === title) last.items.push(item);
       else out.push({ kind: 'write', title, items: [item], lines: q.type === 'gap' ? 0 : 1 });
     }

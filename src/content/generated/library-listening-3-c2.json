@@ -1,0 +1,2852 @@
+[
+  {
+    "id": "l3-c2-dreams-lecture",
+    "title": "What Are Dreams For?",
+    "level": "C2",
+    "kind": "lecture",
+    "topic": "Sleep & the Mind",
+    "focus": "Hedging and impersonal structures in academic English",
+    "emoji": "💤",
+    "speakers": [
+      {
+        "name": "Helen",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Priya",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, let's make a start. Today's question is one that's been around for, well, roughly as long as there have been people asleep, which is to say forever: what are dreams actually for? And I should warn you at the outset that I'm not going to give you a tidy answer, because, frankly, there isn't one."
+      },
+      {
+        "s": 0,
+        "text": "What I can do is walk you through the main contenders. And I'd ask you to bear in mind, as we go, that most of the evidence here is, shall we say, indirect. We can measure brain activity during sleep with considerable precision. What we can't do is see the dream itself. We rely on what people tell us when they wake up, and memory, as we discussed last week, is not the most reliable of witnesses."
+      },
+      {
+        "s": 0,
+        "text": "So, contender number one. The idea that dreams have no function at all. On this view, sometimes called the activation-synthesis model, the sleeping brain fires off more or less random signals, and the higher parts of the brain do their best to stitch them into some kind of story. The dream, in other words, is a by-product. Rather like the noise a car engine makes. It tells you the engine's running, but the engine isn't running in order to make noise."
+      },
+      {
+        "s": 1,
+        "text": "Sorry, can I just jump in? If dreams are random, why do so many people have the same kinds of dreams? Falling, being chased, turning up to an exam unprepared?"
+      },
+      {
+        "s": 0,
+        "text": "Good question, and it's precisely the one critics of that model tend to raise. The recurrence of certain themes across cultures would seem to suggest that something more than randomness is going on. Though, to be fair, defenders of the model would say that the brain's interpretive machinery is itself fairly uniform, so you'd expect similar stories to emerge from similar raw material. It's not a knockout blow either way."
+      },
+      {
+        "s": 0,
+        "text": "Contender number two, and this is the one that's attracted most attention over the last couple of decades: dreams as a kind of overnight memory processing. There's reasonably good evidence that sleep, and in particular certain stages of sleep, plays a role in consolidating memories, in deciding, if you like, what to keep and what to throw away. And it's been suggested that dreaming may be the subjective experience of that sorting process."
+      },
+      {
+        "s": 2,
+        "text": "So when I dream about my primary school with my current flatmates in it, that's my brain filing things?"
+      },
+      {
+        "s": 1,
+        "text": "Badly, in my case."
+      },
+      {
+        "s": 0,
+        "text": "Well, the filing system's not known for its tidiness. But yes, that's one interpretation."
+      },
+      {
+        "s": 2,
+        "text": "And is there any way of checking that?"
+      },
+      {
+        "s": 0,
+        "text": "Indirectly. People who are deprived of certain stages of sleep tend to do worse on memory tests the next day. That's suggestive. It doesn't tell us whether the dream itself matters, or just the sleep it happens in. Mixing old and new material is very characteristic of dreams, and it fits rather nicely with the idea that the brain is trying to integrate recent experience into older networks. I'd stress the word 'fits', though. Fitting the evidence isn't the same as being proven by it."
+      },
+      {
+        "s": 0,
+        "text": "Then there's a third family of theories, which focus on emotion. The idea here is that dreams provide a sort of safe rehearsal space for threatening situations. You're chased, you escape, and you wake up having, in some sense, practised. Some researchers have gone further and argued that dreaming helps take the sting out of painful memories, that we revisit them in a context where the stress chemistry is turned down, so they become a bit less raw."
+      },
+      {
+        "s": 1,
+        "text": "Is there any actual evidence for that, or is it just a nice story?"
+      },
+      {
+        "s": 0,
+        "text": "There's some. Not as much as one might like. There are studies suggesting that people who dream about a distressing experience tend to report feeling somewhat better about it the next day. But the samples are small, and it's notoriously hard to control for everything else going on in people's lives. So I'd put it in the 'promising but unconfirmed' category."
+      },
+      {
+        "s": 2,
+        "text": "What about the idea that dreams have hidden meanings? The psychoanalytic stuff?"
+      },
+      {
+        "s": 0,
+        "text": "Ah. Yes. Well, it would be fair to say that the idea of dreams as disguised wishes, which you'll associate with Freud, has fallen rather out of favour in experimental circles, largely because it's so difficult to test. If a dream about a train can mean almost anything, then no dream can ever count as evidence against the theory. And a theory that nothing can contradict isn't, strictly speaking, a scientific one."
+      },
+      {
+        "s": 0,
+        "text": "That said, I wouldn't want to dismiss the broader intuition entirely. Dreams do seem to draw on our concerns, our anxieties, the things we're preoccupied with. You don't need an elaborate symbolic code to see that someone worried about their job might dream about being late for work."
+      },
+      {
+        "s": 1,
+        "text": "So which one do you think is right?"
+      },
+      {
+        "s": 0,
+        "text": "Honestly? I suspect it's a mistake to look for a single function. Evolution tends to be opportunistic. Something that arises for one reason gets co-opted for others. It's entirely possible that dreaming is partly a by-product, partly involved in memory and partly in emotional regulation, and that the proportions vary from person to person and night to night."
+      },
+      {
+        "s": 0,
+        "text": "What I'd really like you to take away is a sense of how carefully claims in this area need to be worded. You'll notice I've said 'it would appear', 'there's some evidence', 'it's been suggested' rather a lot today. That's not me being evasive. It's an accurate reflection of where the science is."
+      },
+      {
+        "s": 2,
+        "text": "It's a bit unsatisfying, though, isn't it?"
+      },
+      {
+        "s": 0,
+        "text": "It is. But I'd rather you left here unsatisfied and accurately informed than satisfied and misled. For next week, I'd like you to read the two papers on the reading list about dream recall and come prepared to tell me which of them you find more convincing, and, more importantly, why."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Dr Marsh warn that she will not give 'a tidy answer'?",
+        "options": [
+          "The students will find the topic boring",
+          "The science does not support a single definitive answer",
+          "She has not prepared the lecture",
+          "Dreams are impossible to study"
+        ],
+        "answer": 1,
+        "explain_es": "\"I'm not going to give you a tidy answer, because, frankly, there isn't one.\""
+      },
+      {
+        "type": "mc",
+        "q": "What is the main limitation of dream research, according to the lecturer?",
+        "options": [
+          "Brain activity cannot be measured",
+          "Dreams occur too rarely",
+          "Researchers depend on people's unreliable reports of dreams",
+          "There are too few sleep laboratories"
+        ],
+        "answer": 2,
+        "explain_es": "\"We rely on what people tell us when they wake up\"."
+      },
+      {
+        "type": "mc",
+        "q": "What point does the car engine analogy make?",
+        "options": [
+          "The brain needs fuel during sleep",
+          "Dreams are mechanical and predictable",
+          "Dreams are produced deliberately by the brain",
+          "Dreams may be a side effect rather than a purpose"
+        ],
+        "answer": 3,
+        "explain_es": "Un subproducto, como el ruido del motor."
+      },
+      {
+        "type": "mc",
+        "q": "How does the lecturer evaluate Tom's objection about recurring dreams?",
+        "options": [
+          "It is a fair point but not decisive",
+          "It is irrelevant",
+          "It supports the random model",
+          "It completely disproves the random model"
+        ],
+        "answer": 0,
+        "explain_es": "\"It's not a knockout blow either way.\""
+      },
+      {
+        "type": "gap",
+        "q": "Dr Marsh says that fitting the evidence isn't the same as being ______ by it. (1 word)",
+        "answer": "proven",
+        "accept": [
+          "proved"
+        ],
+        "explain_es": "Distingue entre encajar con los datos y ser demostrado por ellos."
+      },
+      {
+        "type": "mc",
+        "q": "According to the emotion-based theories, dreaming may help…",
+        "options": [
+          "reduce the emotional intensity of painful memories",
+          "predict future threats",
+          "us forget all painful memories",
+          "improve physical fitness"
+        ],
+        "answer": 0,
+        "explain_es": "\"helps take the sting out of painful memories\"."
+      },
+      {
+        "type": "tf",
+        "q": "Dr Marsh considers the evidence for emotional processing to be conclusive.",
+        "answer": "F",
+        "explain_es": "Lo sitúa en \"promising but unconfirmed\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why has the Freudian approach lost favour in experimental circles?",
+        "options": [
+          "Freud withdrew it",
+          "It has been disproved by brain scans",
+          "It ignored memory",
+          "It cannot be tested or contradicted"
+        ],
+        "answer": 3,
+        "explain_es": "\"a theory that nothing can contradict isn't, strictly speaking, a scientific one\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the lecturer's own view?",
+        "options": [
+          "Dreams have no function at all",
+          "Only the memory theory is correct",
+          "Dreams probably serve several overlapping functions",
+          "Dreams serve one single function"
+        ],
+        "answer": 2,
+        "explain_es": "\"it's a mistake to look for a single function\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does she emphasise phrases like 'it would appear'?",
+        "options": [
+          "To make the lecture longer",
+          "Because they reflect the real uncertainty of the science",
+          "To avoid answering students",
+          "Because the department requires it"
+        ],
+        "answer": 1,
+        "explain_es": "\"It's an accurate reflection of where the science is.\""
+      }
+    ],
+    "dictation": [
+      "Fitting the evidence isn't the same as being proven by it.",
+      "It's not a knockout blow either way.",
+      "Evolution tends to be opportunistic."
+    ]
+  },
+  {
+    "id": "l3-c2-four-day-week-panel",
+    "title": "Is the Four-Day Week Here to Stay?",
+    "level": "C2",
+    "kind": "panel discussion",
+    "topic": "Work & Productivity",
+    "focus": "Concession and contrast: albeit, notwithstanding, much as, however + adjective",
+    "emoji": "📅",
+    "speakers": [
+      {
+        "name": "Nadia",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Greg",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Siobhan",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Liam",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening and welcome. Tonight's question: is the four-day week a genuine revolution in how we work, or a perk that only certain kinds of companies can afford? With me are Greg Holloway, a labour economist; Siobhan Kerr, who runs a design agency that switched to a four-day week two years ago; and Liam Torres, a union representative. Siobhan, you've actually done it. How's it gone?"
+      },
+      {
+        "s": 2,
+        "text": "Better than I expected, to be honest. Much as I'd like to claim I'd planned it all perfectly, we stumbled into it, really. We tried it as a three-month trial, fully expecting to go back. Output didn't drop. If anything, it went up slightly. People stopped wasting time in meetings because they knew they only had four days. And our sick days roughly halved."
+      },
+      {
+        "s": 0,
+        "text": "Greg, is that typical?"
+      },
+      {
+        "s": 1,
+        "text": "It's consistent with what the larger trials have found, albeit with some important caveats. Most of the organisations that took part in those trials volunteered, which means they were probably the ones most likely to succeed. You don't get many companies saying, 'Yes, sign us up, we expect this to go terribly.' So I'd be cautious about generalising from them."
+      },
+      {
+        "s": 2,
+        "text": "That's fair, but it cuts both ways. We volunteered because we were desperate. We were losing staff to bigger agencies. It wasn't idealism."
+      },
+      {
+        "s": 1,
+        "text": "Sure, and I'm not dismissing your experience. However impressive the results, though, the question is whether they'd hold up in sectors where output is tied directly to hours. A hospital ward can't produce four days' worth of nursing in five days' worth of patients."
+      },
+      {
+        "s": 3,
+        "text": "Can I come in there? Because that's exactly the point I'd make, but from the other side. Nobody serious is saying a nurse should just work twenty per cent less and somehow cover the same shifts. What we're saying is that the gains from productivity, which have been considerable over the last few decades, have gone almost entirely to employers. Working time hasn't really budged since the nineteen-seventies. A shorter week is one way of sharing those gains."
+      },
+      {
+        "s": 1,
+        "text": "Notwithstanding the fairness argument, which I have some sympathy with, you still need someone to pay for the extra staff in the hospital."
+      },
+      {
+        "s": 3,
+        "text": "Absolutely. And that's a political choice, not a law of nature."
+      },
+      {
+        "s": 1,
+        "text": "Well, everything's a political choice if you go back far enough."
+      },
+      {
+        "s": 3,
+        "text": "Fair enough. But some are rather more obviously political than others."
+      },
+      {
+        "s": 0,
+        "text": "Siobhan, did anything go wrong?"
+      },
+      {
+        "s": 2,
+        "text": "Oh, plenty. Clients didn't love it at first. We had one who insisted on calling on Fridays, every single Friday, I think just to make a point. And some of the team found the four days quite intense. You do compress things. One of our junior designers told me she was more tired on Thursday evenings than she'd ever been on a Friday before."
+      },
+      {
+        "s": 1,
+        "text": "Which is actually quite an important finding. Some studies suggest that a portion of the productivity gain comes from intensification, people simply working harder in fewer hours. That's fine up to a point. Beyond that point, you're just burning people out more efficiently."
+      },
+      {
+        "s": 3,
+        "text": "Though, to be fair, that's a design problem, not an argument against the idea."
+      },
+      {
+        "s": 1,
+        "text": "I'd go along with that, broadly."
+      },
+      {
+        "s": 0,
+        "text": "A rare moment of consensus. Let's not waste it."
+      },
+      {
+        "s": 0,
+        "text": "Liam, what about people who don't want it? Not everyone does."
+      },
+      {
+        "s": 3,
+        "text": "True. We've got members who'd rather keep five shorter days, particularly parents who need to be there for the school run. So, no, it shouldn't be one-size-fits-all. The principle is reducing hours without reducing pay. The four-day week is just the most visible version of it."
+      },
+      {
+        "s": 2,
+        "text": "That's what we found too, actually. We ended up with a couple of people doing four days and a couple doing five shorter days. It's messier to manage, I'll grant you. But it's held together."
+      },
+      {
+        "s": 0,
+        "text": "Greg, final word from you. Is it here to stay?"
+      },
+      {
+        "s": 1,
+        "text": "In some sectors, I'd say yes, probably. Knowledge work, creative industries, places where hours were always a rather poor measure of output. Elsewhere, much as I'd like to be optimistic, I think it'll take a lot more than enthusiasm. It'll take investment, and it'll take political will. Whether we get either is, well, anyone's guess."
+      },
+      {
+        "s": 0,
+        "text": "Thank you all. That's all we have time for tonight."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How does Siobhan describe her company's decision to adopt a four-day week?",
+        "options": [
+          "It was imposed by the government",
+          "It was suggested by clients",
+          "It was carefully planned in advance",
+          "It began as a trial they expected to abandon"
+        ],
+        "answer": 3,
+        "explain_es": "\"We tried it as a three-month trial, fully expecting to go back.\""
+      },
+      {
+        "type": "mc",
+        "q": "What caveat does Greg raise about the large trials?",
+        "options": [
+          "They lasted too short a time",
+          "They were funded by unions",
+          "The participating companies were self-selected and likely to succeed",
+          "They only involved hospitals"
+        ],
+        "answer": 2,
+        "explain_es": "Las empresas se ofrecieron voluntarias: sesgo de selección."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Siobhan say 'it cuts both ways'?",
+        "options": [
+          "The four-day week has advantages and disadvantages",
+          "Her clients both liked and disliked it",
+          "Her company volunteered out of need, not optimism",
+          "She disagrees with all of Greg's points"
+        ],
+        "answer": 2,
+        "explain_es": "Se apuntaron por desesperación, no por idealismo."
+      },
+      {
+        "type": "gap",
+        "q": "Greg says: '______ impressive the results, the question is whether they'd hold up in other sectors.' (1 word)",
+        "answer": "However",
+        "accept": [
+          "however"
+        ],
+        "explain_es": "'However + adjetivo' = por muy… que sea."
+      },
+      {
+        "type": "mc",
+        "q": "What is Liam's main argument for a shorter week?",
+        "options": [
+          "Companies should close on Fridays",
+          "Workers are lazy on Fridays",
+          "Productivity gains should be shared with workers",
+          "Hospitals need fewer nurses"
+        ],
+        "answer": 2,
+        "explain_es": "\"the gains from productivity ... have gone almost entirely to employers\"."
+      },
+      {
+        "type": "tf",
+        "q": "Greg completely rejects the fairness argument.",
+        "answer": "F",
+        "explain_es": "\"which I have some sympathy with\"."
+      },
+      {
+        "type": "mc",
+        "q": "What problem did the junior designer report?",
+        "options": [
+          "She lost pay",
+          "She wanted to work on Fridays",
+          "She was bored",
+          "The compressed week left her more exhausted"
+        ],
+        "answer": 3,
+        "explain_es": "\"more tired on Thursday evenings than she'd ever been on a Friday\"."
+      },
+      {
+        "type": "mc",
+        "q": "On which point do Greg and Liam eventually broadly agree?",
+        "options": [
+          "Productivity has not increased",
+          "All workers want a four-day week",
+          "Intensification is a design issue rather than a reason to reject the idea",
+          "Hospitals should adopt four-day weeks immediately"
+        ],
+        "answer": 2,
+        "explain_es": "Liam: \"that's a design problem\"; Greg: \"I'd go along with that, broadly.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does Liam say about parents?",
+        "options": [
+          "They work longer hours",
+          "They are excluded from the scheme",
+          "They all prefer four days",
+          "Some prefer five shorter days"
+        ],
+        "answer": 3,
+        "explain_es": "\"members who'd rather keep five shorter days\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Greg's final position?",
+        "options": [
+          "It should be banned",
+          "It is a passing fashion",
+          "The four-day week will spread everywhere soon",
+          "It will likely last in some sectors but needs investment and political will elsewhere"
+        ],
+        "answer": 3,
+        "explain_es": "\"In some sectors, I'd say yes, probably ... It'll take investment, and ... political will.\""
+      }
+    ],
+    "dictation": [
+      "That's fair, but it cuts both ways.",
+      "And that's a political choice, not a law of nature.",
+      "It's messier to manage, I'll grant you."
+    ]
+  },
+  {
+    "id": "l3-c2-buried-river-documentary",
+    "title": "The River Beneath the Streets",
+    "level": "C2",
+    "kind": "radio documentary",
+    "topic": "Cities & History",
+    "focus": "Participle and reduced relative clauses",
+    "emoji": "🏞️",
+    "speakers": [
+      {
+        "name": "Narrator",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Joan",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Marcus",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Dana",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Standing on the corner of Mill Lane on a weekday morning, you'd have no idea there was a river here. There's traffic, a bus stop, a café selling overpriced sourdough. But if you crouch down by this drain cover and listen, you can just hear it. Water, moving fast, about four metres below the tarmac."
+      },
+      {
+        "s": 0,
+        "text": "The Fleetbrook once ran openly through the centre of this town. Fed by springs in the hills to the north, it powered three mills, supplied the brewery and, by the eighteen-sixties, carried most of the town's sewage. Which is, more or less, why it disappeared."
+      },
+      {
+        "s": 1,
+        "text": "My great-grandmother used to talk about the smell. She said in summer you couldn't open a window on this street. People were dying of cholera, and the river got the blame, quite rightly. So they bricked it over. Out of sight, out of mind."
+      },
+      {
+        "s": 0,
+        "text": "Joan Pemberton has lived on Mill Lane all her life. Her house, built in eighteen eighty-two, stands almost directly over the old riverbed."
+      },
+      {
+        "s": 1,
+        "text": "When it rains heavily, you can hear it rumbling under the floor. My husband used to say it was the ghosts of the millers. I'd say, no, love, it's the drains."
+      },
+      {
+        "s": 0,
+        "text": "The culvert built to contain the Fleetbrook was, by the standards of its day, a triumph of engineering. Lined with brick, wide enough for a man to walk through, it carried the river for nearly two kilometres before releasing it into the estuary. For more than a century, nobody gave it much thought."
+      },
+      {
+        "s": 2,
+        "text": "The trouble is, it was designed for Victorian rainfall. And Victorian rainfall isn't what we're getting."
+      },
+      {
+        "s": 0,
+        "text": "Marcus Reid is a hydrologist working with the town council."
+      },
+      {
+        "s": 2,
+        "text": "When you put a river in a pipe, you fix its capacity. It can carry so much water and no more. In twenty-nineteen, we had a storm that dumped almost a month's rain in six hours. The culvert simply couldn't cope. Water backed up, came out through the drains, and flooded about forty properties on this street and the two either side."
+      },
+      {
+        "s": 1,
+        "text": "Including mine. Thirty centimetres of brown water in the front room. Having lived here seventy years, I'd never seen anything like it."
+      },
+      {
+        "s": 0,
+        "text": "Since then, the council has been considering something that would have seemed unthinkable a generation ago. Opening the river up again."
+      },
+      {
+        "s": 3,
+        "text": "We call it daylighting. It's been done in quite a few cities now, Seoul, Zurich, a couple in the States. You take a river that's been buried and you bring it back to the surface, give it a channel, some banks, room to spread when it needs to."
+      },
+      {
+        "s": 0,
+        "text": "Dana Whitfield is an urban designer who's advised on several such projects."
+      },
+      {
+        "s": 3,
+        "text": "The flood argument is the one that gets the funding. But honestly, it's not the only benefit. Cities that have done this find that the streets alongside become places people actually want to be. Property values go up. Wildlife comes back surprisingly quickly. And there's something about running water that just changes how people feel about a neighbourhood."
+      },
+      {
+        "s": 0,
+        "text": "Not everyone is convinced. Opening the Fleetbrook would mean closing part of Mill Lane to traffic, and the businesses relying on passing trade are worried."
+      },
+      {
+        "s": 1,
+        "text": "I can see both sides, I really can. The café owner, Kemal, he's been here twelve years. If the road shuts for two years of building work, he could go under."
+      },
+      {
+        "s": 2,
+        "text": "That's a genuine concern, and we're not dismissing it. Any scheme approved would have to include support for affected businesses during construction. But we've also got to weigh that against the cost of doing nothing, which, given the forecasts, is likely to be another serious flood within the decade."
+      },
+      {
+        "s": 0,
+        "text": "And there's the question of what, exactly, would come back to the surface."
+      },
+      {
+        "s": 3,
+        "text": "People sometimes imagine a pristine mountain stream. It won't be that, at least not at first. Urban rivers carry runoff from roads, all sorts of pollution. The water quality has to be dealt with before you open anything up, otherwise you've just got a smelly ditch, and you've proved the Victorians right."
+      },
+      {
+        "s": 0,
+        "text": "The council is due to decide next spring. For Joan, the decision is personal."
+      },
+      {
+        "s": 1,
+        "text": "I'd like to see it before I go, if I'm honest. The actual river. My great-grandmother hated it, and she had good reason. But I think she'd be pleased to know it was clean enough to look at again."
+      },
+      {
+        "s": 0,
+        "text": "Back at the drain cover on Mill Lane, the water is still running, invisible, unhurried, as it has for a hundred and fifty years. Whether it sees daylight again depends on decisions being made in the council chamber a few streets away. For now, you'll just have to listen."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How does the narrator first make the listener aware of the river?",
+        "options": [
+          "By reading from a history book",
+          "By showing old maps",
+          "By describing the sound of water beneath a drain cover",
+          "By interviewing a hydrologist"
+        ],
+        "answer": 2,
+        "explain_es": "\"if you crouch down by this drain cover and listen, you can just hear it\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why was the Fleetbrook covered over?",
+        "options": [
+          "Because the mills closed",
+          "To prevent floods",
+          "To build a new road",
+          "Because it was polluted and linked to disease"
+        ],
+        "answer": 3,
+        "explain_es": "Olía mal, había cólera y \"the river got the blame\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Joan's attitude to her husband's joke about ghosts?",
+        "options": [
+          "She believed it",
+          "She found it frightening",
+          "She was affectionately sceptical",
+          "She was offended"
+        ],
+        "answer": 2,
+        "explain_es": "\"no, love, it's the drains\"."
+      },
+      {
+        "type": "gap",
+        "q": "The culvert was designed for Victorian ______, which is not what the town now gets. (1 word)",
+        "answer": "rainfall",
+        "accept": [],
+        "explain_es": "\"it was designed for Victorian rainfall\"."
+      },
+      {
+        "type": "mc",
+        "q": "What happened during the storm in 2019?",
+        "options": [
+          "The river changed course",
+          "The culvert collapsed",
+          "Water backed up through the drains and flooded properties",
+          "The estuary froze"
+        ],
+        "answer": 2,
+        "explain_es": "\"Water backed up, came out through the drains, and flooded about forty properties\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to Dana, why is flood prevention emphasised in daylighting projects?",
+        "options": [
+          "It is the only real benefit",
+          "It is the argument that secures funding",
+          "Residents demand it",
+          "It is required by law"
+        ],
+        "answer": 1,
+        "explain_es": "\"The flood argument is the one that gets the funding.\""
+      },
+      {
+        "type": "tf",
+        "q": "Joan is entirely opposed to the daylighting scheme.",
+        "answer": "F",
+        "explain_es": "Ve los dos lados y le gustaría ver el río antes de morir."
+      },
+      {
+        "type": "mc",
+        "q": "What does Marcus say must be weighed against the concerns of businesses?",
+        "options": [
+          "The cost of doing nothing",
+          "The price of property",
+          "The wishes of tourists",
+          "The history of the mills"
+        ],
+        "answer": 0,
+        "explain_es": "\"the cost of doing nothing\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Dana mean by 'you've proved the Victorians right'?",
+        "options": [
+          "An unclean open river would confirm why it was buried",
+          "Rivers should never be touched",
+          "Victorian engineering was superior",
+          "Covering rivers was always the best solution"
+        ],
+        "answer": 0,
+        "explain_es": "Si el agua está sucia, será una zanja maloliente, como pensaban los victorianos."
+      },
+      {
+        "type": "mc",
+        "q": "When is the council due to decide?",
+        "options": [
+          "Next spring",
+          "Within the decade",
+          "Next month",
+          "It has already decided"
+        ],
+        "answer": 0,
+        "explain_es": "\"The council is due to decide next spring.\""
+      }
+    ],
+    "dictation": [
+      "Out of sight, out of mind.",
+      "When you put a river in a pipe, you fix its capacity.",
+      "For now, you'll just have to listen."
+    ]
+  },
+  {
+    "id": "l3-c2-taste-expert-interview",
+    "title": "The Nose Knows (Mostly)",
+    "level": "C2",
+    "kind": "interview",
+    "topic": "Taste & Perception",
+    "focus": "Modals of speculation and deduction (present, past, future)",
+    "emoji": "☕",
+    "speakers": [
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Rosa",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "My guest today has one of the more unusual jobs I've come across. Rosa Delgado is a professional coffee taster, or cupper, to use the trade term. She can apparently tell you which hillside a bean was grown on. Rosa, is that true, or is that just good marketing?"
+      },
+      {
+        "s": 1,
+        "text": "Bit of both, honestly. On a good day, with a coffee I know well, I can often tell you the region, sometimes the farm. But I'd be lying if I said I never get it wrong. Anyone who claims they're never wrong must be either very lucky or not being entirely straight with you."
+      },
+      {
+        "s": 0,
+        "text": "How did you end up doing this? It can't have been a career you planned at school."
+      },
+      {
+        "s": 1,
+        "text": "No, definitely not. I was working in a café in Brisbane, pretty bored, and the owner started bringing in these little sample bags from different producers. He'd line them up and make us taste them blind. I was hopeless at first. Couldn't tell one from another. And then, after a few months, something clicked."
+      },
+      {
+        "s": 0,
+        "text": "Clicked how?"
+      },
+      {
+        "s": 1,
+        "text": "It's hard to describe. It wasn't that I suddenly had a better tongue. I think what changed was attention. I started noticing things that must have been there all along. A sort of dried-apricot quality in some Ethiopian coffees, a kind of cocoa heaviness in others. Once you've got a name for something, you can't unnotice it."
+      },
+      {
+        "s": 0,
+        "text": "So it's learned, not innate?"
+      },
+      {
+        "s": 1,
+        "text": "Mostly learned. There's some variation between people, obviously. Some folks are more sensitive to bitterness, for example. But the research I've read suggests that experts don't actually have more sensitive noses than anyone else. What they've got is a better vocabulary and a better memory for smells. They can retrieve the label faster."
+      },
+      {
+        "s": 0,
+        "text": "I have to ask about the famous experiments with wine, where experts were given white wine dyed red and described it as if it were red."
+      },
+      {
+        "s": 1,
+        "text": "Yeah, look, I love those experiments, and they're humbling. They show that expectation shapes perception enormously. If you see red, your brain goes looking for red-wine words. It'll happily find them. And I'm sure the same would happen to me with coffee if someone set me up cleverly enough."
+      },
+      {
+        "s": 0,
+        "text": "Doesn't that undermine the whole profession?"
+      },
+      {
+        "s": 1,
+        "text": "I don't think so. It undermines the idea that tasting is pure, objective measurement. Which, fair enough, it isn't. But it doesn't mean we're making it up. That's why we taste blind whenever it matters. We take away the label, the price, the story on the packet. Then we've only got the cup."
+      },
+      {
+        "s": 0,
+        "text": "Have you ever been badly caught out?"
+      },
+      {
+        "s": 1,
+        "text": "Oh, plenty of times. The worst was at a competition in Melbourne, years ago. I was absolutely convinced one sample was a Kenyan. Bright, acidic, blackcurrant, textbook Kenyan. Turned out it was from Colombia, from a farm that had been experimenting with a new variety. I must have gone the colour of a tomato. But it taught me something. My memory said Kenya, so I stopped tasting and started recognising. Those aren't the same thing."
+      },
+      {
+        "s": 0,
+        "text": "What about the future? Could a machine do your job?"
+      },
+      {
+        "s": 1,
+        "text": "There are electronic noses being developed, and they'll probably get very good at detecting defects, things like mould or over-fermentation. That's useful. But whether a machine will ever tell you that a coffee tastes like your grandmother's kitchen on a winter morning, I'm not so sure. And that, in the end, is what people are paying for."
+      },
+      {
+        "s": 0,
+        "text": "That's quite a romantic view for someone who's just told me how unreliable perception is."
+      },
+      {
+        "s": 1,
+        "text": "Ha. Maybe. I'd say I'm a romantic with a spreadsheet. I believe in the experience, but I write everything down, because I don't trust my memory of it."
+      },
+      {
+        "s": 0,
+        "text": "Last question. What should listeners do if they want to taste better?"
+      },
+      {
+        "s": 1,
+        "text": "Slow down. Taste two coffees side by side rather than one on its own; comparison does most of the work. And don't worry about the fancy words. If it reminds you of something, say so. You might well be right."
+      },
+      {
+        "s": 0,
+        "text": "Rosa Delgado, thank you."
+      },
+      {
+        "s": 1,
+        "text": "Pleasure. Now I need a coffee."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Rosa imply about people who claim never to be wrong?",
+        "options": [
+          "They work in wine, not coffee",
+          "They are the best tasters",
+          "They have innate talent",
+          "They are either lucky or not honest"
+        ],
+        "answer": 3,
+        "explain_es": "\"must be either very lucky or not being entirely straight with you\"."
+      },
+      {
+        "type": "gap",
+        "q": "Ben says: 'It ______ have been a career you planned at school.' (1 word, negative)",
+        "answer": "can't",
+        "accept": [
+          "cannot",
+          "couldn't"
+        ],
+        "explain_es": "'Can't have + participio' = deducción negativa sobre el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "What first led Rosa towards professional tasting?",
+        "options": [
+          "A university course",
+          "A competition win",
+          "Blind tastings organised by her café's owner",
+          "Her family's coffee farm"
+        ],
+        "answer": 2,
+        "explain_es": "El dueño del café les hacía catar a ciegas."
+      },
+      {
+        "type": "mc",
+        "q": "What does Rosa say changed when 'something clicked'?",
+        "options": [
+          "She moved to Ethiopia",
+          "She started drinking more coffee",
+          "Her tongue became more sensitive",
+          "She began paying closer attention and naming flavours"
+        ],
+        "answer": 3,
+        "explain_es": "\"what changed was attention\"; ponerle nombre."
+      },
+      {
+        "type": "tf",
+        "q": "According to research Rosa has read, experts have more sensitive noses than other people.",
+        "answer": "F",
+        "explain_es": "\"experts don't actually have more sensitive noses than anyone else\"."
+      },
+      {
+        "type": "mc",
+        "q": "What do the wine experiments show, according to Rosa?",
+        "options": [
+          "Experts are frauds",
+          "Expectation strongly influences perception",
+          "Colour has no effect",
+          "Red wine tastes like white"
+        ],
+        "answer": 1,
+        "explain_es": "\"They show that expectation shapes perception enormously.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why do tasters work blind 'whenever it matters'?",
+        "options": [
+          "It is a competition rule only",
+          "Because labels are often wrong",
+          "It is faster",
+          "To remove information that could bias perception"
+        ],
+        "answer": 3,
+        "explain_es": "\"We take away the label, the price, the story on the packet.\""
+      },
+      {
+        "type": "mc",
+        "q": "What lesson did Rosa learn from the Melbourne competition?",
+        "options": [
+          "She should avoid competitions",
+          "Colombian coffee is always acidic",
+          "She had relied on recognition instead of tasting",
+          "Kenyan coffee is overrated"
+        ],
+        "answer": 2,
+        "explain_es": "\"I stopped tasting and started recognising. Those aren't the same thing.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does she predict about electronic noses?",
+        "options": [
+          "They will never work",
+          "They already describe flavours poetically",
+          "They will replace tasters completely",
+          "They will probably be good at detecting defects"
+        ],
+        "answer": 3,
+        "explain_es": "\"they'll probably get very good at detecting defects\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'a romantic with a spreadsheet' suggest about Rosa?",
+        "options": [
+          "She values experience but records it carefully because memory is unreliable",
+          "She wants to become an accountant",
+          "She dislikes numbers",
+          "She is not serious about coffee"
+        ],
+        "answer": 0,
+        "explain_es": "\"I believe in the experience, but I write everything down\"."
+      }
+    ],
+    "dictation": [
+      "Once you've got a name for something, you can't unnotice it.",
+      "Then we've only got the cup.",
+      "If it reminds you of something, say so."
+    ]
+  },
+  {
+    "id": "l3-c2-flops-podcast",
+    "title": "Glorious Flops",
+    "level": "C2",
+    "kind": "podcast",
+    "topic": "Business & Innovation",
+    "focus": "Advanced verb patterns: gerund vs infinitive with change of meaning",
+    "emoji": "📉",
+    "speakers": [
+      {
+        "name": "Kat",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Josh",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome back to Glorious Flops, the podcast about products that should have changed the world and, er, didn't. I'm Kat."
+      },
+      {
+        "s": 1,
+        "text": "And I'm Josh. And today, Kat, I believe you've brought me a personal favourite."
+      },
+      {
+        "s": 0,
+        "text": "I have. Today we're talking about the self-heating soup can. Picture it: you're on a mountain, it's freezing, you pull a tab, and three minutes later you've got hot tomato soup. No stove, no fire."
+      },
+      {
+        "s": 1,
+        "text": "That actually sounds brilliant."
+      },
+      {
+        "s": 0,
+        "text": "It was brilliant. In theory. I remember seeing the advert as a kid and thinking it was the future. My dad bought a box for a camping trip."
+      },
+      {
+        "s": 1,
+        "text": "And?"
+      },
+      {
+        "s": 0,
+        "text": "And I remember trying to open one in the tent and it sort of… fizzed. Then it got hot on one side and stayed stone cold on the other. My dad stopped to read the instructions, which nobody ever does, and it turned out you had to shake it for a full minute first."
+      },
+      {
+        "s": 1,
+        "text": "Which, to be fair, is the kind of thing you'd put on the front of the can."
+      },
+      {
+        "s": 0,
+        "text": "You would think so. It was in tiny print on the bottom. Anyway, the company had spent years trying to perfect the heating element, and the technology did work, mostly. What they forgot to do was ask whether people actually wanted to pay four times the price of normal soup for the privilege."
+      },
+      {
+        "s": 1,
+        "text": "See, this is the thing that fascinates me about flops. It's rarely that the idea is stupid. It's that someone fell in love with solving a problem that customers didn't really feel they had."
+      },
+      {
+        "s": 0,
+        "text": "Exactly. And there were safety issues, too. A few cans overheated. Nobody was seriously hurt, but there were reports of them bulging, and one apparently went off like a small firework in a supermarket in Ohio."
+      },
+      {
+        "s": 1,
+        "text": "Oh no."
+      },
+      {
+        "s": 0,
+        "text": "Oh yes. They tried recalling a batch, but by then the newspapers had got hold of it, and 'exploding soup' is the kind of headline that, once printed, you don't really recover from."
+      },
+      {
+        "s": 1,
+        "text": "I'd like to go on to something you mentioned in your notes, because I think it's the interesting bit. The founder didn't just give up, did he?"
+      },
+      {
+        "s": 0,
+        "text": "No, and this is why I love this story. He regretted launching too early, he said so publicly, which founders almost never do. But he went on to sell the heating technology to a company making emergency meals for disaster relief."
+      },
+      {
+        "s": 1,
+        "text": "Ah, so the soup can failed, but the idea found the right customer."
+      },
+      {
+        "s": 0,
+        "text": "Right. People stuck after an earthquake, with no power and no gas, don't care that it costs four times as much. They care that it's hot."
+      },
+      {
+        "s": 1,
+        "text": "That's a really nice reversal. It reminds me of what one of our guests said last season, that a flop is often just a good idea standing in the wrong room."
+      },
+      {
+        "s": 0,
+        "text": "I remember that. I meant to steal that line for the intro and forgot."
+      },
+      {
+        "s": 1,
+        "text": "Well, you've stolen it now. On air. I'll be sending you an invoice."
+      },
+      {
+        "s": 0,
+        "text": "Put it on my tab. Before we wrap up, though, I want to give listeners the takeaway, because we always try to have one."
+      },
+      {
+        "s": 1,
+        "text": "Go for it."
+      },
+      {
+        "s": 0,
+        "text": "Stop asking 'Can we build it?' and start asking 'Who needs this badly enough to pay for it?' If the honest answer is 'campers who'll use it once', you might want to try finding a different customer before you try building a factory."
+      },
+      {
+        "s": 1,
+        "text": "Wise words. Next week: the smart fork that told you off for eating too fast."
+      },
+      {
+        "s": 0,
+        "text": "I genuinely cannot wait."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the podcast about?",
+        "options": [
+          "Cooking on camping trips",
+          "Safety regulations",
+          "Successful inventions",
+          "Products that failed despite promise"
+        ],
+        "answer": 3,
+        "explain_es": "\"products that should have changed the world and ... didn't\"."
+      },
+      {
+        "type": "mc",
+        "q": "'My dad stopped to read the instructions' means he…",
+        "options": [
+          "gave up reading the instructions",
+          "never read instructions",
+          "used to read instructions",
+          "paused in order to read the instructions"
+        ],
+        "answer": 3,
+        "explain_es": "'Stop + to-infinitivo' = parar para hacer algo."
+      },
+      {
+        "type": "tf",
+        "q": "The instructions were clearly printed on the front of the can.",
+        "answer": "F",
+        "explain_es": "\"It was in tiny print on the bottom.\""
+      },
+      {
+        "type": "mc",
+        "q": "According to Kat, what did the company forget to do?",
+        "options": [
+          "Test the technology",
+          "Check whether people would pay the high price",
+          "Advertise the product",
+          "Hire engineers"
+        ],
+        "answer": 1,
+        "explain_es": "\"What they forgot to do was ask whether people actually wanted to pay four times the price\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Josh find fascinating about flops?",
+        "options": [
+          "They often solve problems customers don't feel they have",
+          "They are usually stupid ideas",
+          "They always involve safety issues",
+          "They are cheap to produce"
+        ],
+        "answer": 0,
+        "explain_es": "\"someone fell in love with solving a problem that customers didn't really feel they had\"."
+      },
+      {
+        "type": "gap",
+        "q": "The company tried ______ a batch, but the newspapers had already got the story. (1 word, -ing form)",
+        "answer": "recalling",
+        "accept": [],
+        "explain_es": "'Try + -ing' = probar una solución (aquí, retirar un lote)."
+      },
+      {
+        "type": "mc",
+        "q": "'He regretted launching too early' means he…",
+        "options": [
+          "refused to launch",
+          "planned to launch later",
+          "was sorry to announce a launch",
+          "was sorry that he had launched too early"
+        ],
+        "answer": 3,
+        "explain_es": "'Regret + -ing' = lamentar algo ya hecho."
+      },
+      {
+        "type": "mc",
+        "q": "What eventually happened to the heating technology?",
+        "options": [
+          "It was used in smart forks",
+          "It was banned in Ohio",
+          "It was abandoned",
+          "It was sold for use in emergency meals"
+        ],
+        "answer": 3,
+        "explain_es": "\"sell the heating technology to a company making emergency meals for disaster relief\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'a good idea standing in the wrong room' mean?",
+        "options": [
+          "An idea stolen from someone else",
+          "A good idea marketed to the wrong customers",
+          "A badly designed product",
+          "An idea that is too early"
+        ],
+        "answer": 1,
+        "explain_es": "La idea encontró a su cliente adecuado en otro contexto."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of the exchange about the 'invoice'?",
+        "options": [
+          "Hostile",
+          "Anxious",
+          "Formal",
+          "Playful"
+        ],
+        "answer": 3,
+        "explain_es": "Broma entre presentadores."
+      }
+    ],
+    "dictation": [
+      "It was brilliant. In theory.",
+      "Put it on my tab.",
+      "Next week: the smart fork that told you off for eating too fast."
+    ]
+  },
+  {
+    "id": "l3-c2-jury-service-phonein",
+    "title": "Twelve Strangers: Your Stories of Jury Service",
+    "level": "C2",
+    "kind": "phone-in",
+    "topic": "Law & Citizenship",
+    "focus": "Unreal past: wish, if only, it's (high) time, would rather, as if",
+    "emoji": "⚖️",
+    "speakers": [
+      {
+        "name": "Martin",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Gwen",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Raj",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Lorraine",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "You're listening to Midday Live, and this morning we're asking: have you served on a jury, and what was it really like? The lines have been busy since nine. Let's go straight to Gwen in Swansea. Gwen, good morning."
+      },
+      {
+        "s": 1,
+        "text": "Morning, Martin. I did jury service about five years ago. A fraud case. Six weeks."
+      },
+      {
+        "s": 0,
+        "text": "Six weeks! How did you feel when the letter arrived?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly? I wished I'd never registered to vote. I had a small business, and I thought, how on earth am I going to manage? I'd much rather they'd picked someone retired."
+      },
+      {
+        "s": 0,
+        "text": "And how did it turn out?"
+      },
+      {
+        "s": 1,
+        "text": "That's the strange thing. By the end, I was glad I'd done it. You sit there with eleven people you'd never otherwise meet, a bus driver, a vicar, a lad of nineteen, and you all have to agree on something that matters enormously to someone's life. I've never taken anything so seriously."
+      },
+      {
+        "s": 0,
+        "text": "Did you reach a verdict?"
+      },
+      {
+        "s": 1,
+        "text": "We did, after two days. I won't say what. But I still think about the defendant sometimes. If only we'd been allowed to ask more questions ourselves. You feel as if you're watching a play where half the script's been cut."
+      },
+      {
+        "s": 0,
+        "text": "That's a theme we've heard a lot this morning. Raj in Leicester, you've got a different take?"
+      },
+      {
+        "s": 2,
+        "text": "I have, yeah. I was on a jury for an assault case, and I came away feeling it's high time the system was reformed. Some of the jurors clearly hadn't followed the evidence. One woman said in the deliberation room that she'd decided on the first day because the defendant 'had shifty eyes'."
+      },
+      {
+        "s": 0,
+        "text": "What did you do?"
+      },
+      {
+        "s": 2,
+        "text": "We argued with her, quite a lot. It took a whole afternoon. In the end, she came round. But I keep thinking: what if she hadn't? What if there'd been three of her?"
+      },
+      {
+        "s": 0,
+        "text": "So would you rather cases like that were decided by a judge alone?"
+      },
+      {
+        "s": 2,
+        "text": "Not exactly. I'd rather jurors were given a bit more guidance, about how to weigh evidence, about the difference between a hunch and a reason. It's as if they expect you to know all that already, just by being an adult."
+      },
+      {
+        "s": 0,
+        "text": "Lorraine, you're calling from Bristol, but I'm guessing you're not from Bristol originally."
+      },
+      {
+        "s": 3,
+        "text": "Ha, no, I moved here from Ohio fifteen years ago. I've done jury service in both countries, which I think is pretty rare."
+      },
+      {
+        "s": 0,
+        "text": "That must give you an interesting perspective."
+      },
+      {
+        "s": 3,
+        "text": "It does. The main difference is that in the States, the lawyers can question potential jurors before the trial and get rid of the ones they don't like. Here, you just turn up and you're on. I'd rather the British way, honestly. Back home it sometimes felt as though the case had been half-won before anyone said a word, just by picking the right twelve people."
+      },
+      {
+        "s": 0,
+        "text": "And what about the experience itself? Was it similar?"
+      },
+      {
+        "s": 3,
+        "text": "Surprisingly, yes. That moment in the deliberation room when you realise nobody's coming to tell you the answer, that's universal. I remember wishing someone would just walk in and tell us what really happened. But nobody does. That's the whole point."
+      },
+      {
+        "s": 0,
+        "text": "Gwen, you're still on the line. Do you recognise that?"
+      },
+      {
+        "s": 1,
+        "text": "Absolutely. It's the loneliest responsibility I've ever had, and I wasn't even alone."
+      },
+      {
+        "s": 0,
+        "text": "We'll take a short break. After the news, a retired judge will be responding to some of your comments, including Raj's suggestion about guidance for jurors. Stay with us."
+      }
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Gwen says that when the letter arrived, she ______ she'd never registered to vote. (1 word)",
+        "answer": "wished",
+        "accept": [],
+        "explain_es": "'Wish + past perfect' para lamentar algo del pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Gwen initially want to avoid jury service?",
+        "options": [
+          "She was worried about her business",
+          "She had moved house",
+          "She disliked courts",
+          "She was ill"
+        ],
+        "answer": 0,
+        "explain_es": "\"I had a small business ... how on earth am I going to manage?\""
+      },
+      {
+        "type": "mc",
+        "q": "How did Gwen feel by the end of the trial?",
+        "options": [
+          "Indifferent",
+          "Relieved it was over and regretful",
+          "Glad she had taken part",
+          "Angry with the judge"
+        ],
+        "answer": 2,
+        "explain_es": "\"By the end, I was glad I'd done it.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does Gwen mean by 'watching a play where half the script's been cut'?",
+        "options": [
+          "The trial was entertaining",
+          "The lawyers were actors",
+          "The trial was too short",
+          "Jurors felt they lacked important information"
+        ],
+        "answer": 3,
+        "explain_es": "Le habría gustado poder hacer más preguntas: faltaba información."
+      },
+      {
+        "type": "mc",
+        "q": "What prompted Raj to call for reform?",
+        "options": [
+          "A juror who decided based on appearance",
+          "A long trial",
+          "Being paid too little",
+          "A judge's mistake"
+        ],
+        "answer": 0,
+        "explain_es": "La jurado que decidió por los 'shifty eyes' del acusado."
+      },
+      {
+        "type": "tf",
+        "q": "Raj wants juries to be replaced by judges.",
+        "answer": "F",
+        "explain_es": "\"Not exactly. I'd rather jurors were given a bit more guidance\"."
+      },
+      {
+        "type": "mc",
+        "q": "What reform does Raj suggest?",
+        "options": [
+          "Letting jurors question witnesses",
+          "Shorter trials",
+          "Paying jurors more",
+          "Giving jurors guidance on weighing evidence"
+        ],
+        "answer": 3,
+        "explain_es": "\"about how to weigh evidence, about the difference between a hunch and a reason\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the main difference Lorraine identifies between the US and British systems?",
+        "options": [
+          "British trials are longer",
+          "US juries are larger",
+          "US lawyers can screen and remove potential jurors",
+          "British jurors are paid"
+        ],
+        "answer": 2,
+        "explain_es": "En EE. UU. los abogados pueden interrogar y descartar jurados."
+      },
+      {
+        "type": "mc",
+        "q": "Which system does Lorraine prefer?",
+        "options": [
+          "The American one",
+          "Neither",
+          "She has no preference",
+          "The British one"
+        ],
+        "answer": 3,
+        "explain_es": "\"I'd rather the British way, honestly.\""
+      },
+      {
+        "type": "mc",
+        "q": "What experience do Gwen and Lorraine agree is universal?",
+        "options": [
+          "Realising no one will tell the jury the answer",
+          "Disagreeing with the judge",
+          "Boredom in court",
+          "Making friends"
+        ],
+        "answer": 0,
+        "explain_es": "\"nobody's coming to tell you the answer, that's universal\"; Gwen: \"Absolutely.\""
+      }
+    ],
+    "dictation": [
+      "I've never taken anything so seriously.",
+      "But I keep thinking: what if she hadn't?",
+      "But nobody does. That's the whole point."
+    ]
+  },
+  {
+    "id": "l3-c2-seed-vault-report",
+    "title": "A Vault Against the End of the World",
+    "level": "C2",
+    "kind": "radio report",
+    "topic": "Food Security & Science",
+    "focus": "Advanced passives: reporting passives and passive infinitives",
+    "emoji": "🌾",
+    "speakers": [
+      {
+        "name": "Anchor",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ingrid",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Kofi",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "It's been called the world's agricultural insurance policy. Built into a mountainside on a remote Arctic archipelago, a seed vault holds more than a million samples of crops from almost every country on earth. Our science correspondent, Tom Ashby, has been given rare access. Tom."
+      },
+      {
+        "s": 1,
+        "text": "Thanks. I'm standing at the entrance now, which is essentially a concrete wedge sticking out of the snow. It's minus fourteen out here, and the wind is, well, let's say bracing. Behind me is a tunnel running about a hundred and thirty metres into the rock. The seeds are kept at minus eighteen degrees, and the permafrost is supposed to keep them cold even if the power fails."
+      },
+      {
+        "s": 0,
+        "text": "Supposed to?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, and that's part of the story. A few years ago, warmer than expected temperatures caused meltwater to seep into the entrance tunnel. No seeds are reported to have been damaged, but it was a wake-up call. I'm joined by Ingrid Larsen, who works for the organisation that manages the vault."
+      },
+      {
+        "s": 2,
+        "text": "Hello. Yes, the incident was taken very seriously. The tunnel has since been waterproofed and the drainage rebuilt. I'd stress that the vault itself was never in danger. But it was a reminder that even a facility designed to last for centuries has to be adapted to a climate that's changing faster than anyone planned for."
+      },
+      {
+        "s": 1,
+        "text": "So, lesson learned?"
+      },
+      {
+        "s": 2,
+        "text": "Lesson very much learned. The tunnel is now monitored all year round, not just in the summer months."
+      },
+      {
+        "s": 1,
+        "text": "What exactly is stored here?"
+      },
+      {
+        "s": 2,
+        "text": "Duplicates, mainly. Most countries have their own gene banks, and the vault is meant to be a backup for those. If a national collection is lost, through war, natural disaster or simple mismanagement, the seeds can be returned to the depositor. They remain the property of the country that sent them. We just look after them."
+      },
+      {
+        "s": 1,
+        "text": "And has that ever actually happened?"
+      },
+      {
+        "s": 2,
+        "text": "It has. The first withdrawal was made by researchers whose gene bank had been forced to close because of conflict. Seeds that had been deposited a few years earlier were sent back, grown, and the new seeds produced were then redeposited. So the system was shown to work, which, frankly, was a relief."
+      },
+      {
+        "s": 1,
+        "text": "I'm now inside the vault itself. It's eerily quiet, rows of shelves stacked with plain black boxes, each one sealed. Kofi Mensah is a plant geneticist who's visited from Ghana to deposit samples."
+      },
+      {
+        "s": 3,
+        "text": "Hi. Yeah, I'm bringing varieties of sorghum and millet, crops that are thought to have been grown in our region for thousands of years. Some of them are only cultivated now by a handful of farmers. If those farmers stop, the varieties could be lost for good."
+      },
+      {
+        "s": 1,
+        "text": "Why does that matter, if there are modern, higher-yielding varieties available?"
+      },
+      {
+        "s": 3,
+        "text": "Because the modern varieties are often quite uniform. They're bred for yield under ideal conditions. The older ones may be less productive, but some are believed to carry traits like drought tolerance or resistance to particular pests. As the climate changes, those traits could turn out to be enormously valuable. You don't know which genes you'll need in fifty years. So you keep as many as you can."
+      },
+      {
+        "s": 1,
+        "text": "Is the vault the answer, then?"
+      },
+      {
+        "s": 3,
+        "text": "It's part of the answer. I'd be careful about thinking of it as a solution on its own. Seeds in a freezer don't evolve. In the field, crops keep adapting to new conditions, new diseases. Ideally you want both: seeds stored safely and seeds being grown, by farmers, every season."
+      },
+      {
+        "s": 2,
+        "text": "I'd agree with that entirely. The vault is meant to be a last resort, not a first one."
+      },
+      {
+        "s": 1,
+        "text": "Before I leave, I'm shown a box that's due to be deposited this afternoon. It contains a variety of bean that's said to have been saved by a single family, passed down through four generations. It'll now be kept here, in the dark and the cold, possibly for centuries. Ingrid, does this place ever feel strange to you?"
+      },
+      {
+        "s": 2,
+        "text": "All the time. You're preparing for disasters you hope will never happen. But I find it quite hopeful, actually. Someone in two hundred years might open one of these boxes and plant something that feeds a city. That's not a bad thing to have been part of."
+      },
+      {
+        "s": 1,
+        "text": "From the Arctic, for now, back to you."
+      },
+      {
+        "s": 0,
+        "text": "Tom Ashby, thank you. Fascinating stuff."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the anchor repeat the words 'Supposed to?'",
+        "options": [
+          "She wants to end the report",
+          "She disagrees with the temperature",
+          "She didn't hear Tom",
+          "She is questioning whether the permafrost can be relied on"
+        ],
+        "answer": 3,
+        "explain_es": "Señala la duda que da pie a la historia del agua de deshielo."
+      },
+      {
+        "type": "gap",
+        "q": "No seeds are reported to have ______ damaged by the meltwater. (1 word)",
+        "answer": "been",
+        "accept": [],
+        "explain_es": "Pasiva de reporte con infinitivo perfecto pasivo: 'to have been damaged'."
+      },
+      {
+        "type": "mc",
+        "q": "How does Ingrid describe the meltwater incident?",
+        "options": [
+          "A reminder that the vault must adapt to climate change",
+          "A rumour spread by the media",
+          "A disaster that destroyed samples",
+          "An unimportant event"
+        ],
+        "answer": 0,
+        "explain_es": "\"it was a reminder that even a facility designed to last for centuries has to be adapted\"."
+      },
+      {
+        "type": "tf",
+        "q": "Seeds stored in the vault become the property of the organisation that manages it.",
+        "answer": "F",
+        "explain_es": "\"They remain the property of the country that sent them.\""
+      },
+      {
+        "type": "mc",
+        "q": "What happened in the first withdrawal?",
+        "options": [
+          "The vault was closed",
+          "Seeds were sold to companies",
+          "Seeds were found to be dead",
+          "Seeds were returned, grown and new seeds redeposited"
+        ],
+        "answer": 3,
+        "explain_es": "Se devolvieron, se cultivaron y se volvieron a depositar."
+      },
+      {
+        "type": "mc",
+        "q": "Why is Kofi depositing old varieties of sorghum and millet?",
+        "options": [
+          "The law requires it",
+          "They are worth a lot of money",
+          "They might be lost if the few farmers growing them stop",
+          "They are the most productive"
+        ],
+        "answer": 2,
+        "explain_es": "\"If those farmers stop, the varieties could be lost for good.\""
+      },
+      {
+        "type": "mc",
+        "q": "What potential value do older varieties have?",
+        "options": [
+          "Higher yield",
+          "Lower cost",
+          "Better taste",
+          "Traits such as drought tolerance or pest resistance"
+        ],
+        "answer": 3,
+        "explain_es": "\"some are believed to carry traits like drought tolerance or resistance to particular pests\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Kofi's reservation about the vault?",
+        "options": [
+          "It accepts too few countries",
+          "It is too far away",
+          "It is too expensive",
+          "Stored seeds do not adapt as field crops do"
+        ],
+        "answer": 3,
+        "explain_es": "\"Seeds in a freezer don't evolve.\""
+      },
+      {
+        "type": "tf",
+        "q": "Ingrid disagrees with Kofi about the role of the vault.",
+        "answer": "F",
+        "explain_es": "\"I'd agree with that entirely. The vault is meant to be a last resort\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does Ingrid feel about her work?",
+        "options": [
+          "Depressed by constant preparation for disaster",
+          "Anxious about her job",
+          "Strange but ultimately hopeful",
+          "Bored"
+        ],
+        "answer": 2,
+        "explain_es": "\"I find it quite hopeful, actually.\""
+      }
+    ],
+    "dictation": [
+      "We just look after them.",
+      "You don't know which genes you'll need in fifty years.",
+      "The vault is meant to be a last resort, not a first one."
+    ]
+  },
+  {
+    "id": "l3-c2-comedy-writers-conversation",
+    "title": "Is That Supposed to Be Funny?",
+    "level": "C2",
+    "kind": "conversation",
+    "topic": "Comedy & Writing",
+    "focus": "Ellipsis and substitution (so, not, do so, one)",
+    "emoji": "😂",
+    "speakers": [
+      {
+        "name": "Ellie",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Dev",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, so, the scene in the dentist's waiting room. Did you rewrite it?"
+      },
+      {
+        "s": 1,
+        "text": "I did. Well, I tried to. I'm not sure it's any better. Possibly worse."
+      },
+      {
+        "s": 0,
+        "text": "Let's have a look. Hmm. You've cut the bit with the fish tank."
+      },
+      {
+        "s": 1,
+        "text": "I have. Didn't you say it was too long?"
+      },
+      {
+        "s": 0,
+        "text": "I said the build-up was too long. Not the payoff. The fish tank was the best thing in it."
+      },
+      {
+        "s": 1,
+        "text": "Was it? I thought you hated it."
+      },
+      {
+        "s": 0,
+        "text": "I hated the first version. I loved the second one. You've cut the second one."
+      },
+      {
+        "s": 1,
+        "text": "Ah. Right. Okay, I'll put it back. Do you want the shorter build-up with it or the longer?"
+      },
+      {
+        "s": 0,
+        "text": "The shorter, definitely. The audience gets it in two lines. We don't need four."
+      },
+      {
+        "s": 1,
+        "text": "Fair. Although I'd argue the third line's doing something. It's where she starts suspecting the dentist isn't a real dentist."
+      },
+      {
+        "s": 0,
+        "text": "Is it? I thought that came later."
+      },
+      {
+        "s": 1,
+        "text": "No, it's set up there. If you cut it, the reveal at the end doesn't land."
+      },
+      {
+        "s": 0,
+        "text": "Hmm. I suppose so. Fine, keep the third line, lose the fourth."
+      },
+      {
+        "s": 1,
+        "text": "Deal. What about the receptionist? Is she working for you?"
+      },
+      {
+        "s": 0,
+        "text": "She's working, but she's not funny yet. She's just efficient. Comedy characters need a want. What does she want?"
+      },
+      {
+        "s": 1,
+        "text": "To go home?"
+      },
+      {
+        "s": 0,
+        "text": "Everyone wants to go home. That's not a want, that's a Tuesday."
+      },
+      {
+        "s": 1,
+        "text": "Okay, okay. What if she's desperately trying to get the dentist to notice her, and he never does so, because he's obsessed with the fish?"
+      },
+      {
+        "s": 0,
+        "text": "Oh, I like that. That ties the fish tank in properly. It's not just a gag any more."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. And the fish could be the one thing he's genuinely good at caring for. Which is sort of sad, actually."
+      },
+      {
+        "s": 0,
+        "text": "Sad is good. The best comedy's always got a sad one hiding underneath it somewhere."
+      },
+      {
+        "s": 1,
+        "text": "Do you think the producers will go for sad?"
+      },
+      {
+        "s": 0,
+        "text": "I think not, if we pitch it as sad. If we pitch it as funny and it happens to be sad, they'll never notice."
+      },
+      {
+        "s": 1,
+        "text": "Ha. That's very cynical."
+      },
+      {
+        "s": 0,
+        "text": "It's very practical. Same thing, in this business."
+      },
+      {
+        "s": 1,
+        "text": "Okay, I'll do another pass tonight. Fish back in, third line stays, receptionist in love with an oblivious dentist."
+      },
+      {
+        "s": 0,
+        "text": "Perfect. And Dev? Don't cut anything else without asking me."
+      },
+      {
+        "s": 1,
+        "text": "I won't. Probably."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Dev cut the fish tank section?",
+        "options": [
+          "He thought Ellie wanted the scene shorter",
+          "It was too expensive to film",
+          "The producers asked him to",
+          "He disliked it"
+        ],
+        "answer": 0,
+        "explain_es": "\"Didn't you say it was too long?\""
+      },
+      {
+        "type": "mc",
+        "q": "What had Ellie actually criticised?",
+        "options": [
+          "The payoff",
+          "The receptionist",
+          "The ending",
+          "The length of the build-up"
+        ],
+        "answer": 3,
+        "explain_es": "\"I said the build-up was too long. Not the payoff.\""
+      },
+      {
+        "type": "mc",
+        "q": "In 'You've cut the second one', 'one' refers to…",
+        "options": [
+          "the second scene",
+          "the second line",
+          "the second version of the fish tank bit",
+          "the second dentist"
+        ],
+        "answer": 2,
+        "explain_es": "Sustitución: 'one' = version."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Dev want to keep the third line?",
+        "options": [
+          "It is short",
+          "The producers like it",
+          "It is the funniest line",
+          "It sets up the final reveal"
+        ],
+        "answer": 3,
+        "explain_es": "\"If you cut it, the reveal at the end doesn't land.\""
+      },
+      {
+        "type": "gap",
+        "q": "Ellie concedes Dev's point about the third line: 'I suppose ______.' (1 word)",
+        "answer": "so",
+        "accept": [],
+        "explain_es": "Sustitución con 'so' de una cláusula completa."
+      },
+      {
+        "type": "mc",
+        "q": "What does Ellie mean by 'that's not a want, that's a Tuesday'?",
+        "options": [
+          "Comedy should be realistic",
+          "The scene is set on a Tuesday",
+          "Wanting to go home is too ordinary to define a character",
+          "The receptionist works part-time"
+        ],
+        "answer": 2,
+        "explain_es": "Querer irse a casa es algo corriente, no una motivación de personaje."
+      },
+      {
+        "type": "mc",
+        "q": "In 'he never does so', 'does so' replaces…",
+        "options": [
+          "goes home",
+          "works as a dentist",
+          "cares for the fish",
+          "notices her"
+        ],
+        "answer": 3,
+        "explain_es": "'Do so' = notice her."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Ellie like Dev's new idea for the receptionist?",
+        "options": [
+          "It connects the fish tank to the characters' story",
+          "It is less sad",
+          "It makes the scene shorter",
+          "It removes the fish tank"
+        ],
+        "answer": 0,
+        "explain_es": "\"That ties the fish tank in properly. It's not just a gag any more.\""
+      },
+      {
+        "type": "mc",
+        "q": "What strategy does Ellie suggest for dealing with the producers?",
+        "options": [
+          "Pitch it as funny and let the sadness be discovered",
+          "Cut the sad elements",
+          "Avoid showing them the scene",
+          "Pitch the scene as sad"
+        ],
+        "answer": 0,
+        "explain_es": "\"If we pitch it as funny and it happens to be sad, they'll never notice.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does Dev's final reply, 'I won't. Probably.', suggest?",
+        "options": [
+          "He is promising seriously",
+          "He wants to quit",
+          "He is teasing Ellie",
+          "He is angry"
+        ],
+        "answer": 2,
+        "explain_es": "Respuesta en broma."
+      }
+    ],
+    "dictation": [
+      "Everyone wants to go home.",
+      "Sad is good.",
+      "It's very practical. Same thing, in this business."
+    ]
+  },
+  {
+    "id": "l3-c2-language-revival-seminar",
+    "title": "Bringing a Language Back",
+    "level": "C2",
+    "kind": "seminar",
+    "topic": "Language & Identity",
+    "focus": "Cleft sentences (it-clefts and wh-clefts)",
+    "emoji": "🗣️",
+    "speakers": [
+      {
+        "name": "Dr Evans",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Mia",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Carlos",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Hannah",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, everyone, let's pick up where we left off. You've all read the case studies on language revitalisation. What I'd like to start with is a simple question: what, in your view, makes the difference between a revival that works and one that doesn't? Mia, you looked like you had something to say."
+      },
+      {
+        "s": 1,
+        "text": "Yeah. I mean, what struck me most was that it's not really the government policy that decides it. It's whether parents actually speak the language to their kids at home. You can have all the signs and official documents you want, but if it stops at the front door, it's basically a museum piece."
+      },
+      {
+        "s": 0,
+        "text": "Good. Intergenerational transmission, the jargon calls it. Carlos, do you agree?"
+      },
+      {
+        "s": 2,
+        "text": "Partly. But I'd push back a little. What the Welsh case shows, I think, is that policy can create the conditions for that home use. It was the introduction of Welsh-medium schools that made a lot of English-speaking parents decide their kids should learn it. Some of those kids then grew up and used it with their own children."
+      },
+      {
+        "s": 1,
+        "text": "Sure, but that's the second generation. The schools didn't do it directly."
+      },
+      {
+        "s": 2,
+        "text": "No, but they did it eventually. Which is kind of the point. Revival is slow."
+      },
+      {
+        "s": 0,
+        "text": "Hannah, you've been quiet."
+      },
+      {
+        "s": 3,
+        "text": "I was thinking about the Māori example, actually. What I found really interesting was the language nests, the preschools where elders, often grandparents, just immersed tiny children in the language all day. It wasn't teachers with textbooks. It was people who'd grown up speaking it, passing it on almost the way a family would."
+      },
+      {
+        "s": 0,
+        "text": "And why do you think that model was so effective?"
+      },
+      {
+        "s": 3,
+        "text": "I think it's because it treats the language as something you live in rather than something you study. And it gave the older generation a role. A lot of them had been punished at school for speaking Māori. So it was healing as well as educational."
+      },
+      {
+        "s": 1,
+        "text": "That's what gets me about these stories, though. It's always the same pattern. The language gets suppressed, often brutally, and then decades later everyone's scrambling to save it."
+      },
+      {
+        "s": 0,
+        "text": "Indeed. Though I'd be careful about saying 'always'. Some languages decline without any active suppression, simply because a bigger language offers more economic opportunities. It's the market, rather than the state, that does the damage in those cases."
+      },
+      {
+        "s": 2,
+        "text": "Which is harder to fight, arguably. You can't pass a law that makes Spanish less useful in Los Angeles."
+      },
+      {
+        "s": 0,
+        "text": "Quite. Now, let me play devil's advocate. Some critics argue that revival efforts are sentimental, that resources would be better spent teaching children a global language. What would you say to that?"
+      },
+      {
+        "s": 3,
+        "text": "I'd say it's a false choice. Most of the kids in those programmes end up bilingual. They speak English as well. It's not either-or."
+      },
+      {
+        "s": 1,
+        "text": "And honestly, what the critics miss is the identity side. When you lose your language, you lose a way of seeing things, jokes, songs, place names that tell you the history of the land. That's not sentimental. That's knowledge."
+      },
+      {
+        "s": 2,
+        "text": "I'd add that there's some evidence bilingual children do slightly better on certain cognitive tasks, though I wouldn't want to overstate that."
+      },
+      {
+        "s": 0,
+        "text": "Wise not to. The evidence on cognitive benefits is quite contested. I'd rest the case on identity and rights rather than on test scores."
+      },
+      {
+        "s": 3,
+        "text": "Can I ask something? Is there a point where a language is too far gone to bring back?"
+      },
+      {
+        "s": 0,
+        "text": "Excellent question, and it's the one I'd like you to think about for next week. There's at least one case, Hebrew, where a language that had largely ceased to be spoken at home was revived as a mother tongue for millions. But it's often argued that the circumstances were quite exceptional. What I'd like each of you to do is find one language that has very few remaining speakers and assess whether revival is realistic. Two pages, please."
+      },
+      {
+        "s": 1,
+        "text": "Two pages? That's cruel."
+      },
+      {
+        "s": 0,
+        "text": "It's character-building. See you on Thursday."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Mia, what mainly decides whether a revival succeeds?",
+        "options": [
+          "The number of signs",
+          "Whether parents speak the language at home",
+          "Funding for universities",
+          "Government policy"
+        ],
+        "answer": 1,
+        "explain_es": "\"It's whether parents actually speak the language to their kids at home.\""
+      },
+      {
+        "type": "gap",
+        "q": "Carlos: 'It was the introduction of Welsh-medium ______ that made a lot of parents decide their kids should learn it.' (1 word)",
+        "answer": "schools",
+        "accept": [],
+        "explain_es": "Hendida 'It was … that…' para enfatizar la causa."
+      },
+      {
+        "type": "mc",
+        "q": "How does Carlos respond to Mia's point?",
+        "options": [
+          "He changes the subject",
+          "He accepts part of it but argues policy can create conditions for home use",
+          "He completely disagrees",
+          "He agrees entirely"
+        ],
+        "answer": 1,
+        "explain_es": "\"Partly. But I'd push back a little.\""
+      },
+      {
+        "type": "mc",
+        "q": "What made the Māori 'language nests' distinctive, according to Hannah?",
+        "options": [
+          "Elders immersed young children in the language",
+          "They taught only adults",
+          "Children studied with textbooks",
+          "They were run by the government"
+        ],
+        "answer": 0,
+        "explain_es": "\"elders ... just immersed tiny children in the language all day\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Hannah describe the nests as 'healing'?",
+        "options": [
+          "They gave a role to elders once punished for speaking the language",
+          "They improved children's health",
+          "They reduced costs",
+          "They were located in hospitals"
+        ],
+        "answer": 0,
+        "explain_es": "Muchos mayores habían sido castigados por hablar maorí."
+      },
+      {
+        "type": "mc",
+        "q": "What qualification does Dr Evans add to Mia's claim about suppression?",
+        "options": [
+          "Suppression never happens",
+          "Only governments cause decline",
+          "Some languages decline through economic pressure rather than active suppression",
+          "Mia exaggerated the brutality"
+        ],
+        "answer": 2,
+        "explain_es": "\"It's the market, rather than the state, that does the damage in those cases.\""
+      },
+      {
+        "type": "mc",
+        "q": "How does Hannah answer the devil's advocate argument?",
+        "options": [
+          "She calls it a false choice because children become bilingual",
+          "She says global languages are unimportant",
+          "She agrees that resources are wasted",
+          "She refuses to answer"
+        ],
+        "answer": 0,
+        "explain_es": "\"I'd say it's a false choice ... It's not either-or.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does Dr Evans think about the cognitive-benefits argument?",
+        "options": [
+          "The evidence is contested, so identity and rights are a firmer basis",
+          "It has been disproved",
+          "It applies only to Welsh",
+          "It is the strongest argument"
+        ],
+        "answer": 0,
+        "explain_es": "\"I'd rest the case on identity and rights rather than on test scores.\""
+      },
+      {
+        "type": "tf",
+        "q": "Dr Evans says Hebrew's revival is easily repeated elsewhere.",
+        "answer": "F",
+        "explain_es": "\"it's often argued that the circumstances were quite exceptional\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the assignment for next week?",
+        "options": [
+          "Write about Welsh schools",
+          "Learn basic Māori",
+          "Interview a bilingual family",
+          "Assess whether revival is realistic for a language with few speakers"
+        ],
+        "answer": 3,
+        "explain_es": "\"find one language that has very few remaining speakers and assess whether revival is realistic\"."
+      }
+    ],
+    "dictation": [
+      "No, but they did it eventually.",
+      "That's not sentimental. That's knowledge.",
+      "It's character-building."
+    ]
+  },
+  {
+    "id": "l3-c2-marathon-debrief",
+    "title": "The Race That Got Away",
+    "level": "C2",
+    "kind": "interview",
+    "topic": "Sport & Psychology",
+    "focus": "Future forms in the past (was to, was about to, would)",
+    "emoji": "🏃‍♀️",
+    "speakers": [
+      {
+        "name": "Sam",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Jade",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Jade, thanks for coming in. It's been three weeks since the championship marathon. How are you feeling now?"
+      },
+      {
+        "s": 1,
+        "text": "Better. Physically I was fine after about a week. Mentally, it's taken a bit longer, if I'm honest."
+      },
+      {
+        "s": 0,
+        "text": "Let's go back to the start of that day. You were the favourite. Was that a weight?"
+      },
+      {
+        "s": 1,
+        "text": "It was always going to be. I'd won the trial in March, I'd run the fastest time in the world that year, so everyone assumed I was going to win. I assumed I was going to win. That was probably the first mistake."
+      },
+      {
+        "s": 0,
+        "text": "Talk me through the race."
+      },
+      {
+        "s": 1,
+        "text": "The plan was simple. I was to sit in the pack until about thirty kilometres, then my coach and I had agreed I'd push hard on the long climb by the river. It's where I'd trained most, I knew every bump in that road."
+      },
+      {
+        "s": 0,
+        "text": "And for thirty kilometres?"
+      },
+      {
+        "s": 1,
+        "text": "Perfect. Honestly, it felt easy. Too easy, maybe. I remember thinking, this is going to be my day. I was about to make my move when I felt my left calf go tight. Not a cramp exactly, more like a warning."
+      },
+      {
+        "s": 0,
+        "text": "What went through your head?"
+      },
+      {
+        "s": 1,
+        "text": "Panic, for about three seconds. Then I thought, okay, I'll give it a kilometre and see. That's what you're taught. But by then, the Kenyan runner, Wanjiru, had gone. She made her move right where I was supposed to make mine. Which, in hindsight, was very smart of her. She must have known it was my strongest section."
+      },
+      {
+        "s": 0,
+        "text": "Did you go with her?"
+      },
+      {
+        "s": 1,
+        "text": "I tried. For about four hundred metres. And then the calf went properly. I knew I wasn't going to catch her. That's a horrible moment, when you realise the race you've been imagining for a year isn't going to happen."
+      },
+      {
+        "s": 0,
+        "text": "You finished, though. Fifth."
+      },
+      {
+        "s": 1,
+        "text": "I did. My coach said afterwards that I could have stopped and nobody would have blamed me. But I'd promised myself I would finish whatever happened. That was something I'd decided years ago, after I dropped out of a race as a junior and regretted it for months."
+      },
+      {
+        "s": 0,
+        "text": "Looking back, would you do anything differently?"
+      },
+      {
+        "s": 1,
+        "text": "Lots. I'd taper differently, for one. The physio thinks I'd overtrained slightly in the last fortnight, which is why the calf was vulnerable. And I'd have a plan B. We only had a plan A. We'd never really discussed what would happen if someone else went first."
+      },
+      {
+        "s": 0,
+        "text": "That's quite a candid admission."
+      },
+      {
+        "s": 1,
+        "text": "Well, there's no point pretending. You learn more from the races you lose. That sounds like a cliché, but I'd swap every cliché in the world for that gold medal."
+      },
+      {
+        "s": 0,
+        "text": "People said afterwards you were destined to win that race. Does that word, 'destined', bother you?"
+      },
+      {
+        "s": 1,
+        "text": "It does, actually. Nobody's destined for anything. I was going to win if everything went right, and it didn't. That's sport. The day before, I'd have told you I was certain. I'm never going to say that again."
+      },
+      {
+        "s": 0,
+        "text": "What's next?"
+      },
+      {
+        "s": 1,
+        "text": "There's a big city marathon in the spring. I was going to skip it, but I've changed my mind. I want to race again before that one starts to feel like the only one that matters."
+      },
+      {
+        "s": 0,
+        "text": "Jade, thank you. Good luck."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Sam. I'll need it. Well, I'll need a plan B, anyway."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Jade say assuming she would win was 'the first mistake'?",
+        "options": [
+          "Overconfidence affected her preparation",
+          "She had not trained enough",
+          "Her coach disagreed",
+          "She disliked the course"
+        ],
+        "answer": 0,
+        "explain_es": "Ella misma daba por hecha la victoria: exceso de confianza."
+      },
+      {
+        "type": "gap",
+        "q": "Jade explains: 'I was ______ sit in the pack until about thirty kilometres.' (1 word)",
+        "answer": "to",
+        "accept": [],
+        "explain_es": "'Was to + infinitivo' = plan acordado en el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why had Jade chosen the climb by the river for her attack?",
+        "options": [
+          "It was the shortest section",
+          "Her rivals were weakest there",
+          "She had trained there most and knew it well",
+          "It was downhill"
+        ],
+        "answer": 2,
+        "explain_es": "\"It's where I'd trained most\"."
+      },
+      {
+        "type": "mc",
+        "q": "'I was about to make my move when I felt my left calf go tight' means…",
+        "options": [
+          "she never intended to attack",
+          "she was on the point of attacking when the problem began",
+          "she had already attacked",
+          "she attacked after the problem"
+        ],
+        "answer": 1,
+        "explain_es": "'Was about to … when' = estaba a punto de … cuando."
+      },
+      {
+        "type": "mc",
+        "q": "What does Jade deduce about Wanjiru?",
+        "options": [
+          "She was injured too",
+          "She had not studied the course",
+          "She was lucky",
+          "She must have known it was Jade's strongest section"
+        ],
+        "answer": 3,
+        "explain_es": "\"She must have known it was my strongest section.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why did Jade insist on finishing the race?",
+        "options": [
+          "She thought she could still win",
+          "She had resolved to do so after regretting dropping out as a junior",
+          "Prize money depended on it",
+          "Her coach demanded it"
+        ],
+        "answer": 1,
+        "explain_es": "\"after I dropped out of a race as a junior and regretted it for months\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the physio believe contributed to the injury?",
+        "options": [
+          "Bad weather",
+          "Slight overtraining in the final fortnight",
+          "A fall",
+          "Poor shoes"
+        ],
+        "answer": 1,
+        "explain_es": "\"I'd overtrained slightly in the last fortnight\"."
+      },
+      {
+        "type": "tf",
+        "q": "Jade and her coach had prepared a plan B.",
+        "answer": "F",
+        "explain_es": "\"We only had a plan A.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why does the word 'destined' bother Jade?",
+        "options": [
+          "It is a cliché she likes",
+          "It was used by her rival",
+          "It is grammatically wrong",
+          "It implies the outcome was predetermined, ignoring how sport works"
+        ],
+        "answer": 3,
+        "explain_es": "\"Nobody's destined for anything ... That's sport.\""
+      },
+      {
+        "type": "mc",
+        "q": "What has Jade decided about the spring marathon?",
+        "options": [
+          "She will run it so that the lost race does not dominate her thinking",
+          "She will coach instead",
+          "She will decide later",
+          "She will skip it"
+        ],
+        "answer": 0,
+        "explain_es": "\"I was going to skip it, but I've changed my mind.\""
+      }
+    ],
+    "dictation": [
+      "Not a cramp exactly, more like a warning.",
+      "You learn more from the races you lose.",
+      "Nobody's destined for anything."
+    ]
+  },
+  {
+    "id": "l3-c2-urban-foxes-debate",
+    "title": "Foxes on the High Street",
+    "level": "C2",
+    "kind": "debate",
+    "topic": "Urban Wildlife",
+    "focus": "Inverted conditionals (Should…, Were…, Had…)",
+    "emoji": "🦊",
+    "speakers": [
+      {
+        "name": "Fiona",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Councillor Hart",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Dr Okafor",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Dale",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening, and welcome to this community debate. The motion is that the council should introduce a programme to control the urban fox population. Speaking for the motion, Councillor Peter Hart. Against, Dr Ada Okafor, an urban ecologist. And we'll hear later from Dale Mitchell, a resident. Councillor, the floor is yours."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. I want to be clear: I'm not anti-fox. But my inbox tells a story. Bins torn open, gardens dug up, chickens killed, people woken at three in the morning by what sounds like someone being murdered. Should the numbers continue to rise as they have, those complaints will only multiply. We have a duty to residents."
+      },
+      {
+        "s": 2,
+        "text": "Can I respond to the numbers point? Because the evidence suggests urban fox populations are actually fairly stable. They're limited by territory. Were the council to remove foxes from an area, others would simply move in from neighbouring territories, usually within weeks. You'd be paying for a programme that, in practice, achieves very little."
+      },
+      {
+        "s": 1,
+        "text": "That's one study."
+      },
+      {
+        "s": 2,
+        "text": "It's several, actually, over about thirty years. Had culling worked, cities that tried it in the past would have fewer foxes now. They don't."
+      },
+      {
+        "s": 1,
+        "text": "With respect, I'm not proposing culling, at least not primarily. I'm proposing managing the problem. Fertility control, for instance."
+      },
+      {
+        "s": 2,
+        "text": "Which is extremely expensive, very difficult to administer to wild animals, and has never been shown to work at scale in foxes. I'm not saying it's impossible. I'm saying there's no evidence yet that it would."
+      },
+      {
+        "s": 0,
+        "text": "Let's bring in Dale. Dale, you've had a rather direct experience, I gather."
+      },
+      {
+        "s": 3,
+        "text": "Yeah, mate. Lost six chickens in one night last spring. Absolutely gutted. My kids had named every one of them."
+      },
+      {
+        "s": 0,
+        "text": "So you support the motion?"
+      },
+      {
+        "s": 3,
+        "text": "That's the funny thing. I did. I was furious. But then I looked into it, and honestly, the problem was my coop. The wire was too thin and it wasn't dug into the ground. Had I built it properly in the first place, I'd still have my chickens. Now it's fox-proof, and we haven't had a problem since."
+      },
+      {
+        "s": 1,
+        "text": "That's admirable, Dale, but not everyone can rebuild a coop."
+      },
+      {
+        "s": 3,
+        "text": "Sure. But you don't need to kill foxes to fix a bin, either. Get bins with proper lids. Most of the mess comes from food we leave lying around."
+      },
+      {
+        "s": 2,
+        "text": "That's exactly the point. Foxes are in our cities because we feed them, deliberately or not. Reduce the food, and you reduce the conflict. It's cheaper, it's humane, and it works."
+      },
+      {
+        "s": 1,
+        "text": "So your answer to residents is essentially, it's your fault?"
+      },
+      {
+        "s": 2,
+        "text": "Not fault. Responsibility. There's a difference. And the council has a role there: better bin design, education, advice on fox-proofing. That's money well spent."
+      },
+      {
+        "s": 0,
+        "text": "Councillor, if Dr Okafor's evidence is right, does your motion still stand?"
+      },
+      {
+        "s": 1,
+        "text": "I'd say this. Should the measures she describes be tried properly for, say, two years, and complaints still rise, I'd want the option of further action. I'm not wedded to culling. I'm wedded to residents being listened to."
+      },
+      {
+        "s": 2,
+        "text": "I'd accept that. Provided the decision's based on data, not on how loud the complaints are."
+      },
+      {
+        "s": 0,
+        "text": "Well, that's closer to agreement than I expected. Dale, a final word?"
+      },
+      {
+        "s": 3,
+        "text": "Just that the fox isn't the villain. He's just a bloke trying to get dinner, same as the rest of us. Build a decent fence."
+      },
+      {
+        "s": 0,
+        "text": "On that note, let's take questions from the floor."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What evidence does Councillor Hart base his case on?",
+        "options": [
+          "His own garden",
+          "Complaints from residents",
+          "Scientific population surveys",
+          "A national report"
+        ],
+        "answer": 1,
+        "explain_es": "\"my inbox tells a story\"."
+      },
+      {
+        "type": "gap",
+        "q": "Hart: '______ the numbers continue to rise as they have, those complaints will only multiply.' (1 word)",
+        "answer": "Should",
+        "accept": [
+          "should"
+        ],
+        "explain_es": "Condicional invertida: 'Should + sujeto' = If."
+      },
+      {
+        "type": "mc",
+        "q": "According to Dr Okafor, what happens when foxes are removed from an area?",
+        "options": [
+          "Foxes from nearby territories move in",
+          "Other animals take over",
+          "Rat numbers fall",
+          "The area remains fox-free"
+        ],
+        "answer": 0,
+        "explain_es": "\"others would simply move in from neighbouring territories\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'Had culling worked, cities that tried it would have fewer foxes now' express?",
+        "options": [
+          "A future plan",
+          "A past condition with a present result that did not happen",
+          "A real past event",
+          "A polite request"
+        ],
+        "answer": 1,
+        "explain_es": "Condicional mixta invertida."
+      },
+      {
+        "type": "mc",
+        "q": "What is Dr Okafor's view of fertility control?",
+        "options": [
+          "It is costly and unproven at scale",
+          "It is illegal",
+          "It is the best option",
+          "It is proven and cheap"
+        ],
+        "answer": 0,
+        "explain_es": "\"extremely expensive ... never been shown to work at scale in foxes\"."
+      },
+      {
+        "type": "mc",
+        "q": "How did Dale's opinion change?",
+        "options": [
+          "He moved house",
+          "He stopped keeping chickens",
+          "He came to support culling",
+          "He realised his coop was the real problem"
+        ],
+        "answer": 3,
+        "explain_es": "\"the problem was my coop\"."
+      },
+      {
+        "type": "tf",
+        "q": "Dale has lost more chickens since rebuilding his coop.",
+        "answer": "F",
+        "explain_es": "\"we haven't had a problem since\"."
+      },
+      {
+        "type": "mc",
+        "q": "What distinction does Dr Okafor draw?",
+        "options": [
+          "Between town and country",
+          "Between foxes and dogs",
+          "Between fault and responsibility",
+          "Between culling and hunting"
+        ],
+        "answer": 2,
+        "explain_es": "\"Not fault. Responsibility. There's a difference.\""
+      },
+      {
+        "type": "mc",
+        "q": "What compromise does Councillor Hart propose?",
+        "options": [
+          "Immediate culling",
+          "Abandoning the motion",
+          "Banning chickens",
+          "Trying non-lethal measures for about two years before considering more"
+        ],
+        "answer": 3,
+        "explain_es": "\"Should the measures she describes be tried properly for, say, two years...\""
+      },
+      {
+        "type": "mc",
+        "q": "What condition does Dr Okafor attach to accepting the compromise?",
+        "options": [
+          "That culling is banned forever",
+          "That decisions be based on data, not the volume of complaints",
+          "That residents pay for bins",
+          "That she leads the programme"
+        ],
+        "answer": 1,
+        "explain_es": "\"Provided the decision's based on data, not on how loud the complaints are.\""
+      }
+    ],
+    "dictation": [
+      "That's one study.",
+      "Not fault. Responsibility. There's a difference.",
+      "Build a decent fence."
+    ]
+  },
+  {
+    "id": "l3-c2-time-capsule-interview",
+    "title": "Letters to 2075",
+    "level": "C2",
+    "kind": "interview",
+    "topic": "Archives & the Future",
+    "focus": "Advanced future forms: future perfect continuous, be to, be on the verge of, be due to",
+    "emoji": "⏳",
+    "speakers": [
+      {
+        "name": "Paula",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Gordon",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Gordon Fraser is the archivist behind a project that's just been completed in his home town: a time capsule, buried beneath the new library, which is not to be opened until 2075. Gordon, welcome."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. Lovely to be here."
+      },
+      {
+        "s": 0,
+        "text": "So, first question. Why 2075?"
+      },
+      {
+        "s": 1,
+        "text": "It's fifty years after the library opened, which seemed neat. But also, it's long enough that most of the adults who contributed won't be around, and short enough that some of the children will. One of the pupils who wrote a letter is seven. By the time it's opened, she'll have been waiting for it for fifty years. She's promised to come."
+      },
+      {
+        "s": 0,
+        "text": "What's actually in it?"
+      },
+      {
+        "s": 1,
+        "text": "Letters, mostly. About four hundred, from residents of all ages. Photographs. A local newspaper. A school timetable. A bus ticket, which I insisted on, because I think future historians will be every bit as interested in how we got about as in what we thought about the big issues."
+      },
+      {
+        "s": 0,
+        "text": "That's an interesting point. What do you think people will find most surprising?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly? Probably the things we think are least remarkable. When we open old capsules, it's never the grand statements that fascinate people. It's the price of milk, or the slang, or a teenager complaining about her phone battery. The ordinary stuff is what goes first, because nobody thinks to keep it."
+      },
+      {
+        "s": 0,
+        "text": "Did people write differently, knowing their letters wouldn't be read for half a century?"
+      },
+      {
+        "s": 1,
+        "text": "Very much so. Some wrote as if they were talking to their grandchildren. Others were quite anxious. A lot of letters talk about the climate, and you can feel people wondering whether things will have got better or worse. One man wrote, 'By the time you read this, you'll have been living with the consequences of our choices for decades. I'm sorry if we got it wrong.' That one stayed with me."
+      },
+      {
+        "s": 0,
+        "text": "Are there any rules about what could go in?"
+      },
+      {
+        "s": 1,
+        "text": "A few. Nothing perishable, obviously. Nothing digital, which surprised people."
+      },
+      {
+        "s": 0,
+        "text": "Why nothing digital?"
+      },
+      {
+        "s": 1,
+        "text": "Because we've no idea whether anyone will be able to read it. Think of the floppy disks from the nineties. Most computers today can't open them. We're on the verge of losing an enormous amount of digital history simply because the formats change. Paper, kept dry and dark, lasts centuries. So everything's on acid-free paper, sealed in a stainless-steel container."
+      },
+      {
+        "s": 0,
+        "text": "And how do you make sure it's actually opened? People forget."
+      },
+      {
+        "s": 1,
+        "text": "That's the biggest risk, frankly. Time capsules are notoriously forgotten. Some are never found again. So we've done several things. There's a plaque on the library wall. The capsule's recorded in the council's official archive. And the library's due to receive an annual reminder, which sounds absurd, but it's the sort of thing that works."
+      },
+      {
+        "s": 0,
+        "text": "Do you feel any sadness, knowing you probably won't see it opened?"
+      },
+      {
+        "s": 1,
+        "text": "A little. I'll be a hundred and four in 2075, so the odds aren't great. But I think that's rather the point. The more you think about it, the more it becomes a kind of gift. You're doing something for people you'll never meet. There aren't many chances to do that."
+      },
+      {
+        "s": 0,
+        "text": "If you could add one more thing now, what would it be?"
+      },
+      {
+        "s": 1,
+        "text": "Ha. A note saying, 'Please forgive the bus ticket.' No, actually. I'd add a list of the questions we're arguing about right now. Not the answers. Just the questions. I suspect future readers will find it fascinating to see which ones still matter, and which ones they've long since forgotten."
+      },
+      {
+        "s": 0,
+        "text": "Gordon Fraser, thank you."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. See you in 2075."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why was 2075 chosen for the opening?",
+        "options": [
+          "It was chosen by the pupils",
+          "It is the library's centenary",
+          "It balances a neat anniversary with some contributors being alive",
+          "It is when the library closes"
+        ],
+        "answer": 2,
+        "explain_es": "Cincuenta años, y lo bastante corto para que algunos niños lo vean."
+      },
+      {
+        "type": "gap",
+        "q": "By the time the capsule is opened, the seven-year-old will have been ______ for it for fifty years. (1 word)",
+        "answer": "waiting",
+        "accept": [],
+        "explain_es": "Futuro perfecto continuo: \"she'll have been waiting for it for fifty years\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Gordon insist on including a bus ticket?",
+        "options": [
+          "Buses will no longer exist",
+          "Future historians will be just as interested in everyday transport",
+          "It was his own ticket",
+          "It was required by the council"
+        ],
+        "answer": 1,
+        "explain_es": "\"every bit as interested in how we got about\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to Gordon, what fascinates people most when old capsules are opened?",
+        "options": [
+          "Ordinary details of everyday life",
+          "Official documents",
+          "Photographs of famous people",
+          "Grand statements"
+        ],
+        "answer": 0,
+        "explain_es": "\"It's the price of milk, or the slang...\""
+      },
+      {
+        "type": "mc",
+        "q": "What theme appeared in many letters?",
+        "options": [
+          "The climate",
+          "Sport",
+          "Technology prices",
+          "Royalty"
+        ],
+        "answer": 0,
+        "explain_es": "\"A lot of letters talk about the climate\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why was nothing digital included?",
+        "options": [
+          "Digital files are too large",
+          "Future readers may be unable to access the formats",
+          "Digital items are too expensive",
+          "The council banned it"
+        ],
+        "answer": 1,
+        "explain_es": "\"we've no idea whether anyone will be able to read it\"."
+      },
+      {
+        "type": "tf",
+        "q": "Gordon thinks we are close to losing a great deal of digital history.",
+        "answer": "T",
+        "explain_es": "\"We're on the verge of losing an enormous amount of digital history\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which measure is NOT mentioned to ensure the capsule is opened?",
+        "options": [
+          "A website countdown",
+          "A plaque",
+          "A record in the council archive",
+          "An annual reminder"
+        ],
+        "answer": 0,
+        "explain_es": "No se menciona ninguna web."
+      },
+      {
+        "type": "mc",
+        "q": "How does Gordon feel about probably not seeing the capsule opened?",
+        "options": [
+          "Determined to live to 104",
+          "Deeply bitter",
+          "Slightly sad but sees it as a gift to others",
+          "Indifferent"
+        ],
+        "answer": 2,
+        "explain_es": "\"A little ... it becomes a kind of gift.\""
+      },
+      {
+        "type": "mc",
+        "q": "What would Gordon add now?",
+        "options": [
+          "A digital copy of the letters",
+          "More photographs",
+          "A list of today's debated questions",
+          "A new bus ticket"
+        ],
+        "answer": 2,
+        "explain_es": "\"a list of the questions we're arguing about right now\"."
+      }
+    ],
+    "dictation": [
+      "Nothing perishable, obviously.",
+      "That's the biggest risk, frankly.",
+      "Not the answers. Just the questions."
+    ]
+  }
+]

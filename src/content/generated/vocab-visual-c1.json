@@ -1,0 +1,658 @@
+{
+ "level": "C1",
+ "topics": [
+  {
+   "id": "weather-metaphors",
+   "level": "C1",
+   "title": "Weather metaphors in the news",
+   "titleEs": "Metáforas del clima en el periodismo",
+   "emoji": "📰",
+   "color": "var(--blue)",
+   "cover": "/visuals/vocab/weather/stormy.webp",
+   "intro_es": "Los titulares convierten la política, la economía y las emociones en clima. Reconocer estas metáforas te ayuda a leer prensa en inglés y a escribir con más fuerza.",
+   "tip_es": "Muchas siguen el patrón <b>a + [fenómeno] + of + sustantivo</b>: <i>a storm of protest, a flood of emails, a hail of bullets, a wave of strikes</i>.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "storm-of-protest",
+     "en": "a storm of protest",
+     "es": "una ola de protestas",
+     "ex": "The new tax provoked a storm of protest.",
+     "img": "/visuals/vocab/weather/stormy.webp",
+     "def": "a sudden, strong reaction of anger",
+     "form": "a storm of protest"
+    },
+    {
+     "id": "flood-of-complaints",
+     "en": "a flood of complaints",
+     "es": "una avalancha de quejas",
+     "ex": "The airline received a flood of complaints after the cancellations.",
+     "img": "/visuals/vocab/weather/raindrops.webp",
+     "def": "a very large number arriving at once",
+     "form": "a flood of complaints"
+    },
+    {
+     "id": "hail-of-criticism",
+     "en": "a hail of criticism",
+     "es": "una lluvia de críticas",
+     "ex": "The minister faced a hail of criticism over the scandal.",
+     "img": "/visuals/vocab/weather/verb-hail.webp",
+     "def": "a lot of criticism coming from all sides",
+     "form": "a hail of criticism"
+    },
+    {
+     "id": "whirlwind",
+     "en": "a whirlwind",
+     "es": "un torbellino",
+     "ex": "After a whirlwind romance, they got married in Las Vegas.",
+     "img": "/visuals/vocab/weather/tornado.webp",
+     "def": "something that happens very fast and intensely",
+     "note": "a whirlwind tour / romance / visit",
+     "form": "a whirlwind"
+    },
+    {
+     "id": "frosty-reception",
+     "en": "a frosty reception",
+     "es": "un recibimiento frío",
+     "ex": "The proposal got a frosty reception from the unions.",
+     "img": "/visuals/vocab/weather/freezing.webp",
+     "def": "an unfriendly welcome",
+     "form": "a frosty reception"
+    },
+    {
+     "id": "political-climate",
+     "en": "the political climate",
+     "es": "el clima político",
+     "ex": "In the current political climate, reform seems unlikely.",
+     "img": "/visuals/vocab/weather/partly-cloudy.webp",
+     "def": "the general mood and attitudes in politics",
+     "form": "political climate"
+    },
+    {
+     "id": "cloud-hanging-over",
+     "en": "a cloud hanging over",
+     "es": "una sombra que pesa sobre",
+     "ex": "Doubts about his past left a cloud hanging over his campaign.",
+     "img": "/visuals/vocab/weather/cloudy.webp",
+     "def": "a problem that spoils a situation",
+     "form": "a cloud hanging over"
+    },
+    {
+     "id": "perfect-storm",
+     "en": "a perfect storm",
+     "es": "una tormenta perfecta",
+     "ex": "High inflation and a drought created a perfect storm for farmers.",
+     "img": "/visuals/vocab/weather/lightning.webp",
+     "def": "a rare combination of bad factors",
+     "form": "a perfect storm"
+    },
+    {
+     "id": "winds-of-change",
+     "en": "the winds of change",
+     "es": "vientos de cambio",
+     "ex": "The winds of change are blowing through the industry.",
+     "img": "/visuals/vocab/weather/wind.webp",
+     "def": "forces that bring important change",
+     "form": "The winds of change"
+    },
+    {
+     "id": "ray-of-hope",
+     "en": "a ray of hope",
+     "es": "un rayo de esperanza",
+     "ex": "The new treatment offers a ray of hope to patients.",
+     "img": "/visuals/vocab/weather/sunlight.webp",
+     "def": "a small sign that things may improve",
+     "form": "a ray of hope"
+    },
+    {
+     "id": "snowball",
+     "en": "snowball",
+     "es": "crecer como una bola de nieve",
+     "ex": "What began as a small protest snowballed into a national movement.",
+     "img": "/visuals/vocab/weather/snowflakes.webp",
+     "def": "grow quickly in size or importance",
+     "form": "snowballed"
+    },
+    {
+     "id": "foggy",
+     "en": "foggy",
+     "es": "confuso, borroso",
+     "ex": "My memory of that night is a bit foggy.",
+     "img": "/visuals/vocab/weather/foggy.webp",
+     "def": "unclear, confused",
+     "form": "foggy"
+    },
+    {
+     "id": "brewing",
+     "en": "be brewing",
+     "es": "estar gestándose",
+     "ex": "Trouble has been brewing in the party for months.",
+     "img": "/visuals/vocab/weather/drizzly.webp",
+     "def": "be starting to develop (something bad)",
+     "form": "brewing"
+    },
+    {
+     "id": "weather-a-crisis",
+     "en": "weather a crisis",
+     "es": "capear una crisis",
+     "ex": "The government weathered the crisis better than expected.",
+     "img": "/visuals/vocab/weather/verb-blow.webp",
+     "def": "come through a difficult situation",
+     "form": "weathered the crisis"
+    },
+    {
+     "id": "sunny-disposition",
+     "en": "a sunny disposition",
+     "es": "un carácter alegre",
+     "ex": "Despite everything, she kept her sunny disposition.",
+     "img": "/visuals/vocab/weather/sunny.webp",
+     "def": "a cheerful personality",
+     "form": "sunny disposition"
+    },
+    {
+     "id": "icy-silence",
+     "en": "an icy silence",
+     "es": "un silencio glacial",
+     "ex": "His joke was met with an icy silence.",
+     "img": "/visuals/vocab/weather/cold.webp",
+     "def": "a cold, hostile silence",
+     "form": "an icy silence"
+    }
+   ]
+  },
+  {
+   "id": "geopolitics-identity",
+   "level": "C1",
+   "title": "Geopolitics & national identity",
+   "titleEs": "Geopolítica e identidad nacional",
+   "emoji": "🏳️",
+   "color": "var(--teal)",
+   "cover": "/visuals/vocab/geography/world.webp",
+   "intro_es": "Banderas, fronteras y lo que significa pertenecer a un país: vocabulario para debates, ensayos y noticias internacionales.",
+   "tip_es": "Matices de registro: <i>country</i> (neutro), <i>nation</i> (la gente y su identidad), <i>state</i> (la entidad política), <i>homeland</i> (con carga emocional).",
+   "figures": [
+    {
+     "src": "/visuals/vocab/geography/world.webp",
+     "title": "Map of the world",
+     "w": 900,
+     "h": 598,
+     "titleEs": "Mapa ilustrado del mundo"
+    }
+   ],
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "sovereignty",
+     "en": "sovereignty",
+     "es": "soberanía",
+     "ex": "The dispute is about sovereignty over a group of islands.",
+     "emoji": "👑",
+     "group": "States",
+     "form": "sovereignty"
+    },
+    {
+     "id": "superpower",
+     "en": "superpower",
+     "es": "superpotencia",
+     "ex": "China and the US are often described as rival superpowers.",
+     "img": "/visuals/vocab/geography/world.webp",
+     "group": "States",
+     "form": "superpowers"
+    },
+    {
+     "id": "landlocked",
+     "en": "landlocked",
+     "es": "sin salida al mar",
+     "ex": "Bolivia and Paraguay are landlocked countries.",
+     "emoji": "🗺️",
+     "group": "States",
+     "form": "landlocked"
+    },
+    {
+     "id": "border-dispute",
+     "en": "border dispute",
+     "es": "disputa fronteriza",
+     "ex": "A long border dispute damaged relations between the neighbours.",
+     "emoji": "🧱",
+     "group": "States",
+     "form": "border dispute"
+    },
+    {
+     "id": "alliance",
+     "en": "alliance",
+     "es": "alianza",
+     "ex": "The two countries formed a military alliance.",
+     "emoji": "🤝",
+     "group": "States",
+     "form": "alliance"
+    },
+    {
+     "id": "national-identity",
+     "en": "national identity",
+     "es": "identidad nacional",
+     "ex": "Football plays a big role in Brazil’s national identity.",
+     "img": "/visuals/vocab/countries/brazil-flag.webp",
+     "group": "Identity",
+     "form": "national identity"
+    },
+    {
+     "id": "patriotism",
+     "en": "patriotism",
+     "es": "patriotismo",
+     "ex": "Wearing the national team shirt is a common form of patriotism.",
+     "img": "/visuals/vocab/countries/colombia-flag.webp",
+     "group": "Identity",
+     "note": "Patriotism (amor al país) ≠ nationalism (superioridad sobre otros).",
+     "form": "patriotism"
+    },
+    {
+     "id": "nationalism",
+     "en": "nationalism",
+     "es": "nacionalismo",
+     "ex": "Rising nationalism worries many European leaders.",
+     "emoji": "📣",
+     "group": "Identity",
+     "form": "nationalism"
+    },
+    {
+     "id": "heritage",
+     "en": "heritage",
+     "es": "patrimonio, herencia cultural",
+     "ex": "Cartagena’s old town is part of the world’s heritage.",
+     "img": "/visuals/vocab/countries/colombia-map.webp",
+     "group": "Identity",
+     "form": "heritage"
+    },
+    {
+     "id": "national-anthem",
+     "en": "national anthem",
+     "es": "himno nacional",
+     "ex": "The players sang the national anthem before the match.",
+     "emoji": "🎶",
+     "group": "Identity",
+     "form": "national anthem"
+    },
+    {
+     "id": "diaspora",
+     "en": "diaspora",
+     "es": "diáspora",
+     "ex": "The Colombian diaspora in Spain is very large.",
+     "emoji": "✈️",
+     "group": "People",
+     "form": "diaspora"
+    },
+    {
+     "id": "expatriate",
+     "en": "expatriate",
+     "es": "expatriado",
+     "ex": "Many expatriates live in Medellín.",
+     "emoji": "🧳",
+     "group": "People",
+     "note": "Informal: expat.",
+     "form": "expatriates"
+    },
+    {
+     "id": "dual-nationality",
+     "en": "dual nationality",
+     "es": "doble nacionalidad",
+     "ex": "She has dual nationality: Colombian and Spanish.",
+     "emoji": "🛂",
+     "group": "People",
+     "form": "dual nationality"
+    },
+    {
+     "id": "asylum-seeker",
+     "en": "asylum seeker",
+     "es": "solicitante de asilo",
+     "ex": "The asylum seekers waited months for an answer.",
+     "emoji": "🏠",
+     "group": "People",
+     "form": "asylum seekers"
+    },
+    {
+     "id": "assimilation",
+     "en": "assimilation",
+     "es": "asimilación",
+     "ex": "Assimilation is harder when you don’t speak the language.",
+     "emoji": "🧩",
+     "group": "People",
+     "form": "Assimilation"
+    },
+    {
+     "id": "multicultural",
+     "en": "multicultural",
+     "es": "multicultural",
+     "ex": "Toronto is one of the most multicultural cities in the world.",
+     "img": "/visuals/vocab/countries/canada-map.webp",
+     "group": "People",
+     "form": "multicultural"
+    }
+   ]
+  },
+  {
+   "id": "architecture",
+   "level": "C1",
+   "title": "Architecture & cityscapes",
+   "titleEs": "Arquitectura y paisaje urbano",
+   "emoji": "🏛️",
+   "color": "var(--indigo)",
+   "cover": "/visuals/vocab/city/library.webp",
+   "intro_es": "Para describir edificios y lugares con el lenguaje de una guía de viaje o de una crítica de arquitectura.",
+   "tip_es": "Adjetivos con matiz: <i>imposing</i> (respeto), <i>grand</i> (lujo), <i>quaint</i> (encanto antiguo), <i>soulless</i> (sin carácter), <i>an eyesore</i> (feo y molesto).",
+   "figures": [
+    {
+     "src": "/visuals/shops-city.webp",
+     "title": "Shops in a city",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Edificios de una ciudad, de básico a avanzado"
+    }
+   ],
+   "items": [
+    {
+     "id": "facade",
+     "en": "façade",
+     "es": "fachada",
+     "ex": "The bookshop has a beautiful red façade.",
+     "img": "/visuals/vocab/city/bookstore.webp",
+     "group": "Parts of a building",
+     "note": "También se escribe facade.",
+     "form": "façade"
+    },
+    {
+     "id": "column",
+     "en": "column",
+     "es": "columna",
+     "ex": "The library is supported by six stone columns.",
+     "img": "/visuals/vocab/city/library.webp",
+     "group": "Parts of a building",
+     "form": "columns"
+    },
+    {
+     "id": "dome",
+     "en": "dome",
+     "es": "cúpula",
+     "ex": "The cathedral’s dome can be seen from miles away.",
+     "emoji": "🕌",
+     "group": "Parts of a building",
+     "form": "dome"
+    },
+    {
+     "id": "spire",
+     "en": "spire",
+     "es": "aguja (de iglesia)",
+     "ex": "The church spire rises above the rooftops.",
+     "emoji": "⛪",
+     "group": "Parts of a building",
+     "form": "spire"
+    },
+    {
+     "id": "arch",
+     "en": "arch",
+     "es": "arco",
+     "ex": "We walked through a stone arch into the courtyard.",
+     "emoji": "🌉",
+     "group": "Parts of a building",
+     "form": "arch"
+    },
+    {
+     "id": "courtyard",
+     "en": "courtyard",
+     "es": "patio interior",
+     "ex": "Colonial houses usually have a central courtyard with plants.",
+     "emoji": "🪴",
+     "group": "Parts of a building",
+     "form": "courtyard"
+    },
+    {
+     "id": "high-rise",
+     "en": "high-rise",
+     "es": "edificio de gran altura",
+     "ex": "Old houses were replaced by high-rise apartments.",
+     "img": "/visuals/vocab/city/skyscraper.webp",
+     "group": "Styles",
+     "form": "high-rise"
+    },
+    {
+     "id": "colonial",
+     "en": "colonial",
+     "es": "colonial",
+     "ex": "Popayán is known for its white colonial buildings.",
+     "emoji": "🏚️",
+     "group": "Styles",
+     "form": "colonial"
+    },
+    {
+     "id": "brutalist",
+     "en": "brutalist",
+     "es": "brutalista",
+     "ex": "The university has a massive brutalist concrete building.",
+     "emoji": "🧱",
+     "group": "Styles",
+     "form": "brutalist"
+    },
+    {
+     "id": "art-deco",
+     "en": "art deco",
+     "es": "art déco",
+     "ex": "Miami Beach is full of pastel art deco hotels.",
+     "img": "/visuals/vocab/city/hotel.webp",
+     "group": "Styles",
+     "form": "art deco"
+    },
+    {
+     "id": "cobbled",
+     "en": "cobbled",
+     "es": "empedrado",
+     "ex": "We wandered through the cobbled streets of Villa de Leyva.",
+     "emoji": "🪨",
+     "group": "Atmosphere",
+     "form": "cobbled"
+    },
+    {
+     "id": "derelict",
+     "en": "derelict",
+     "es": "abandonado, en ruinas",
+     "ex": "The derelict factory was turned into a cultural centre.",
+     "img": "/visuals/vocab/city/industrial-area.webp",
+     "group": "Atmosphere",
+     "form": "derelict"
+    },
+    {
+     "id": "restored",
+     "en": "restored",
+     "es": "restaurado",
+     "ex": "The restored theatre reopened after ten years.",
+     "emoji": "🎭",
+     "group": "Atmosphere",
+     "form": "restored"
+    },
+    {
+     "id": "imposing",
+     "en": "imposing",
+     "es": "imponente",
+     "ex": "The bank is an imposing neoclassical building.",
+     "img": "/visuals/vocab/city/bank.webp",
+     "group": "Atmosphere",
+     "form": "imposing"
+    },
+    {
+     "id": "understated",
+     "en": "understated",
+     "es": "sobrio, discreto",
+     "ex": "The museum’s understated design lets the art speak.",
+     "emoji": "◽",
+     "group": "Atmosphere",
+     "form": "understated"
+    },
+    {
+     "id": "eyesore",
+     "en": "eyesore",
+     "es": "adefesio, monstruosidad",
+     "ex": "Many locals think the new tower is an eyesore.",
+     "emoji": "🙈",
+     "group": "Atmosphere",
+     "form": "eyesore"
+    }
+   ]
+  },
+  {
+   "id": "fashion-criticism",
+   "level": "C1",
+   "title": "The language of fashion criticism",
+   "titleEs": "El registro de la crítica de moda",
+   "emoji": "✒️",
+   "color": "var(--pink)",
+   "cover": "/visuals/vocab/clothes/suit.webp",
+   "intro_es": "Cómo hablan las revistas y los críticos sobre la ropa: adjetivos evaluativos y expresiones para elogiar o destrozar un look (unidad «Clothes & appearance»).",
+   "tip_es": "La crítica suele combinar un adverbio con el adjetivo: <i>effortlessly chic, impeccably tailored, hopelessly dated, unapologetically flamboyant</i>.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "tailored",
+     "en": "tailored",
+     "es": "hecho a medida, entallado",
+     "ex": "A tailored suit always looks more expensive.",
+     "img": "/visuals/vocab/clothes/suit.webp",
+     "group": "Praise",
+     "form": "tailored"
+    },
+    {
+     "id": "timeless",
+     "en": "timeless",
+     "es": "atemporal",
+     "ex": "A white shirt is a timeless piece.",
+     "img": "/visuals/vocab/clothes/shirt.webp",
+     "group": "Praise",
+     "form": "timeless"
+    },
+    {
+     "id": "chic",
+     "en": "chic",
+     "es": "chic, elegante",
+     "ex": "She looked effortlessly chic in jeans and a blouse.",
+     "img": "/visuals/vocab/clothes/blouse.webp",
+     "group": "Praise",
+     "form": "chic"
+    },
+    {
+     "id": "effortless",
+     "en": "effortless",
+     "es": "sin esfuerzo aparente",
+     "ex": "His style is relaxed and effortless.",
+     "img": "/visuals/vocab/clothes/t-shirt.webp",
+     "group": "Praise",
+     "form": "effortless"
+    },
+    {
+     "id": "statement-piece",
+     "en": "statement piece",
+     "es": "prenda protagonista",
+     "ex": "The gold necklace was the statement piece of the outfit.",
+     "img": "/visuals/vocab/clothes/necklace.webp",
+     "group": "Praise",
+     "form": "statement piece"
+    },
+    {
+     "id": "pull-off",
+     "en": "pull off",
+     "es": "lucir con éxito (algo difícil)",
+     "ex": "Not everyone can pull off a purple ball gown.",
+     "img": "/visuals/vocab/clothes/dress.webp",
+     "group": "Praise",
+     "form": "pull off"
+    },
+    {
+     "id": "flamboyant",
+     "en": "flamboyant",
+     "es": "extravagante, llamativo",
+     "ex": "The singer is famous for his flamboyant stage costumes.",
+     "emoji": "🦚",
+     "group": "Neutral or ambiguous",
+     "form": "flamboyant"
+    },
+    {
+     "id": "minimalist",
+     "en": "minimalist",
+     "es": "minimalista",
+     "ex": "Her minimalist wardrobe has only black, white and grey.",
+     "emoji": "◻️",
+     "group": "Neutral or ambiguous",
+     "form": "minimalist"
+    },
+    {
+     "id": "eclectic",
+     "en": "eclectic",
+     "es": "ecléctico",
+     "ex": "He has an eclectic style that mixes vintage and sportswear.",
+     "emoji": "🎨",
+     "group": "Neutral or ambiguous",
+     "form": "eclectic"
+    },
+    {
+     "id": "avant-garde",
+     "en": "avant-garde",
+     "es": "vanguardista",
+     "ex": "The avant-garde collection confused many critics.",
+     "emoji": "🌀",
+     "group": "Neutral or ambiguous",
+     "form": "avant-garde"
+    },
+    {
+     "id": "ill-fitting",
+     "en": "ill-fitting",
+     "es": "que queda mal de talla",
+     "ex": "An ill-fitting jacket can ruin an expensive look.",
+     "img": "/visuals/vocab/clothes/jacket.webp",
+     "group": "Criticism",
+     "form": "ill-fitting"
+    },
+    {
+     "id": "garish",
+     "en": "garish",
+     "es": "chillón, estridente",
+     "ex": "The garish colours were a bit too much for a funeral.",
+     "emoji": "🌈",
+     "group": "Criticism",
+     "form": "garish"
+    },
+    {
+     "id": "dated",
+     "en": "dated",
+     "es": "anticuado",
+     "ex": "Those shoulder pads look terribly dated now.",
+     "emoji": "📼",
+     "group": "Criticism",
+     "form": "dated"
+    },
+    {
+     "id": "frumpy",
+     "en": "frumpy",
+     "es": "desaliñado, sin gracia",
+     "ex": "The uniform makes everyone look frumpy.",
+     "emoji": "🥱",
+     "group": "Criticism",
+     "form": "frumpy"
+    },
+    {
+     "id": "fashion-faux-pas",
+     "en": "fashion faux pas",
+     "es": "metedura de pata de moda",
+     "ex": "Wearing socks with sandals is a classic fashion faux pas.",
+     "img": "/visuals/vocab/clothes/flip-flops.webp",
+     "group": "Criticism",
+     "form": "fashion faux pas"
+    },
+    {
+     "id": "dressed-to-the-nines",
+     "en": "dressed to the nines",
+     "es": "vestido de punta en blanco",
+     "ex": "Everyone at the gala was dressed to the nines.",
+     "img": "/visuals/vocab/clothes/high-heels.webp",
+     "group": "Criticism",
+     "form": "dressed to the nines"
+    }
+   ]
+  }
+ ]
+}

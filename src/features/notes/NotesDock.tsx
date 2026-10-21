@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Languages, NotebookPen } from 'lucide-react';
+import { FlaskConical, Languages, NotebookPen } from 'lucide-react';
+import { PageLoader } from '@/components/ui/Misc';
 import { Sheet } from '@/features/portfolio/Sheet';
 import { TranslatorHost, registerTranslatorNoteSaver, useTranslator } from '@/components/learning/Translator';
 import { useAuth } from '@/store/auth';
@@ -9,13 +10,20 @@ import { cn } from '@/lib/cn';
 import { NotesPanel } from './NotesPanel';
 import { currentPageInfo } from './pageInfo';
 
+// The quick Verb Lab (conjugation + phrasal verbs) loads only when first opened.
+const QuickVerbLab = lazy(() => import('@/features/verblab/QuickVerbLab'));
+const VERB_LAB_PATH = '/practice/verbs';
+
 /**
- * The floating dock (bottom-right, above the mobile tab bar): "Mis notas" and
- * the translator, available on every page of the app shell.
+ * The floating dock (bottom-right above the mobile tab bar; a vertical column
+ * at the right edge on desktop): quick Verb Lab, "Mis notas" and the
+ * translator, available on every page of the app shell. AppShell keeps a
+ * right gutter on desktop so the column never covers page content.
  */
 export function NotesDock() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const [verbs, setVerbs] = useState(false);
   const tOpen = useTranslator((s) => s.open);
   const toggleT = useTranslator((s) => s.toggle);
   const closeT = useTranslator((s) => s.close);
@@ -30,19 +38,31 @@ export function NotesDock() {
   }, []);
 
   // Navigating closes the sheet (e.g. "back to the page of this note").
-  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    setOpen(false);
+    setVerbs(false);
+  }, [pathname]);
 
-  // Alt+N opens the notes from anywhere.
+  const onVerbLab = pathname === VERB_LAB_PATH;
+
+  // Alt+N opens the notes, Alt+V the quick Verb Lab, from anywhere (e.code: Option+V on a Mac types √).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'n' || e.key === 'N' || e.code === 'KeyN')) {
+      if (!e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.code === 'KeyN' || e.key === 'n' || e.key === 'N') {
         e.preventDefault();
+        setVerbs(false);
         setOpen((v) => !v);
+      } else if ((e.code === 'KeyV' || e.key === 'v' || e.key === 'V') && !onVerbLab) {
+        e.preventDefault();
+        setOpen(false);
+        closeT();
+        setVerbs((v) => !v);
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [onVerbLab, closeT]);
 
   const onNotesPage = pathname === '/notes';
   const btn =
@@ -58,12 +78,29 @@ export function NotesDock() {
         role="toolbar"
         aria-label="Herramientas"
       >
+        {!onVerbLab && (
+          <button
+            type="button"
+            className={cn(btn, 'text-ink-orange hover:bg-fill-2', verbs && 'bg-fill-2')}
+            onClick={() => {
+              closeT();
+              setOpen(false);
+              setVerbs(true);
+            }}
+            aria-label="Verb Lab: conjugación y phrasal verbs (Alt+V)"
+            title="Verb Lab: conjugación y phrasal verbs (Alt+V)"
+            aria-haspopup="dialog"
+          >
+            <FlaskConical size={20} strokeWidth={2.1} />
+          </button>
+        )}
         {!onNotesPage && (
           <button
             type="button"
             className={cn(btn, 'text-ink-yellow hover:bg-fill-2', open && 'bg-fill-2')}
             onClick={() => {
               closeT();
+              setVerbs(false);
               setOpen(true);
             }}
             aria-label="Mis notas (Alt+N)"
@@ -88,6 +125,12 @@ export function NotesDock() {
       </div>
 
       <TranslatorHost />
+
+      <Sheet open={verbs} onClose={() => setVerbs(false)} title="Verb Lab" className="h-[90dvh] sm:h-[min(84vh,780px)]">
+        <Suspense fallback={<PageLoader />}>
+          <QuickVerbLab onNavigate={() => setVerbs(false)} />
+        </Suspense>
+      </Sheet>
 
       <Sheet
         open={open}

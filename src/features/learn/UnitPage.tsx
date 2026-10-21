@@ -22,6 +22,7 @@ import { Quiz, type QuizItem } from '@/components/learning/Quiz';
 import { SpeakButton } from '@/components/learning/SpeakButton';
 import { UnitWritingTasks } from '@/features/practice/UnitWritingTasks';
 import { UnitReadings } from '@/features/practice/UnitReadings';
+import { UnitListenings } from './unit/UnitListening';
 import { AssignButton } from '@/features/tasks/AssignButton';
 import { VisualFigure } from '@/components/visuals/Visuals';
 import { unitVisualPlan, type Visual } from '@/content/visuals';
@@ -312,72 +313,100 @@ function SectionHead({ icon, color, title, meta }: { icon: typeof Mic; color: st
 
 const KIND_COLORS = ['var(--orange)', 'var(--pink)', 'var(--indigo)', 'var(--teal)'];
 
+type Skill = 'speaking' | 'writing' | 'reading' | 'listening' | 'class';
+
+/**
+ * Production, one skill at a time: each unit now has speaking, writing,
+ * readings, listenings and class activities, too much for a single page.
+ */
 function Produce({ u, levelId }: { u: Unit; levelId: string }) {
+  const [params, setParams] = useSearchParams();
+  const skills: { value: Skill; label: string }[] = [
+    ...(u.speaking?.length ? [{ value: 'speaking' as const, label: '🎙️ Speaking' }] : []),
+    { value: 'writing', label: '✍️ Writing' },
+    { value: 'reading', label: '📖 Reading' },
+    { value: 'listening', label: '🎧 Listening' },
+    ...(u.dynamics?.length || u.homework ? [{ value: 'class' as const, label: '👥 Clase' }] : []),
+  ];
+  const skill = skills.find((k) => k.value === params.get('skill'))?.value ?? skills[0]!.value;
+  const setSkill = (k: Skill) =>
+    setParams(
+      (p) => {
+        p.set('skill', k);
+        return p;
+      },
+      { replace: true },
+    );
   return (
-    <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
-      {u.speaking && u.speaking.length > 0 && (
-        <Card className="p-6">
-          <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />
-          <ol className="space-y-2.5">
-            {u.speaking.map((s, k) => {
-              const c = KIND_COLORS[k % KIND_COLORS.length]!;
-              return (
-                <li key={s.text} className="bg-fill-2 flex gap-3 rounded-[14px] p-3.5">
-                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: deep(c) }}>
-                    {k + 1}
-                  </span>
-                  <div className="min-w-0">
-                    {s.kind && (
-                      <span className="rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase" style={{ background: tint(c, 14), color: ink(c) }}>
-                        {s.kind}
-                      </span>
-                    )}
-                    <p className="mt-1 text-[15px] leading-snug text-pretty">{s.text}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-          <ButtonLink to="/practice/speaking" variant="tinted" className="mt-4">
-            <Mic size={17} /> Practicar speaking con micrófono
-          </ButtonLink>
-        </Card>
-      )}
-
-      <UnitWritingTasks level={levelId as CefrLevel} unit={u.n} />
-
-      <div className="lg:col-span-2">
-        <UnitReadings level={levelId as CefrLevel} unit={u.n} />
+    <div>
+      <div className="no-scrollbar mb-5 overflow-x-auto">
+        <Segmented<Skill> value={skill} onChange={setSkill} options={skills} />
       </div>
+      <div className="grid gap-5 [&>*]:min-w-0">
+        {skill === 'speaking' && u.speaking && u.speaking.length > 0 && (
+          <Card className="p-6">
+            <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />
+            <ol className="space-y-2.5">
+              {u.speaking.map((s, k) => {
+                const c = KIND_COLORS[k % KIND_COLORS.length]!;
+                return (
+                  <li key={s.text} className="bg-fill-2 flex gap-3 rounded-[14px] p-3.5">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white" style={{ background: deep(c) }}>
+                      {k + 1}
+                    </span>
+                    <div className="min-w-0">
+                      {s.kind && (
+                        <span className="rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase" style={{ background: tint(c, 14), color: ink(c) }}>
+                          {s.kind}
+                        </span>
+                      )}
+                      <p className="mt-1 text-[15px] leading-snug text-pretty">{s.text}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            <ButtonLink to="/practice/speaking" variant="tinted" className="mt-4">
+              <Mic size={17} /> Practicar speaking con micrófono
+            </ButtonLink>
+          </Card>
+        )}
 
-      {u.dynamics && u.dynamics.length > 0 && (
-        <Card className="p-6 lg:col-span-2">
-          <SectionHead icon={Users} color="var(--teal)" title="Dinámicas para clase" meta={`${u.dynamics.length} actividades`} />
-          <div className="grid gap-3 md:grid-cols-2">
-            {u.dynamics.map((d) => (
-              <div key={d.name} className="bg-fill-2 rounded-[14px] p-4" style={{ boxShadow: 'inset 3px 0 0 var(--teal)' }}>
-                <div className="flex items-start justify-between gap-2">
-                  <div className="text-headline">{d.name}</div>
-                  {d.minutes && <span className="bg-card text-label-2 shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold">⏱ {d.minutes}</span>}
+        {skill === 'writing' && <UnitWritingTasks level={levelId as CefrLevel} unit={u.n} />}
+
+        {skill === 'reading' && <UnitReadings level={levelId as CefrLevel} unit={u.n} />}
+
+        {skill === 'listening' && <UnitListenings level={levelId as CefrLevel} unit={u.n} />}
+
+        {skill === 'class' && u.dynamics && u.dynamics.length > 0 && (
+          <Card className="p-6">
+            <SectionHead icon={Users} color="var(--teal)" title="Dinámicas para clase" meta={`${u.dynamics.length} actividades`} />
+            <div className="grid gap-3 md:grid-cols-2">
+              {u.dynamics.map((d) => (
+                <div key={d.name} className="bg-fill-2 rounded-[14px] p-4" style={{ boxShadow: 'inset 3px 0 0 var(--teal)' }}>
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="text-headline">{d.name}</div>
+                    {d.minutes && <span className="bg-card text-label-2 shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold">⏱ {d.minutes}</span>}
+                  </div>
+                  {d.mode && <div className="text-ink-teal text-[12px] font-semibold">{d.mode}</div>}
+                  {d.how && <p className="mt-2 text-[14px] text-pretty">{d.how}</p>}
+                  {d.payoff && <p className="text-label-2 mt-2 text-[13px] italic">{d.payoff}</p>}
                 </div>
-                {d.mode && <div className="text-ink-teal text-[12px] font-semibold">{d.mode}</div>}
-                {d.how && <p className="mt-2 text-[14px] text-pretty">{d.how}</p>}
-                {d.payoff && <p className="text-label-2 mt-2 text-[13px] italic">{d.payoff}</p>}
-              </div>
-            ))}
-          </div>
-        </Card>
-      )}
+              ))}
+            </div>
+          </Card>
+        )}
 
-      {u.homework && (
-        <Card className="flex items-start gap-3 p-6 lg:col-span-2">
-          <IconTile icon={ClipboardList} color="var(--blue)" size={34} />
-          <div className="min-w-0">
-            <h3 className="text-headline">Tarea · {u.homework.title}</h3>
-            <p className="text-label-2 mt-1 text-[15px] text-pretty">{u.homework.task}</p>
-          </div>
-        </Card>
-      )}
+        {skill === 'class' && u.homework && (
+          <Card className="flex items-start gap-3 p-6">
+            <IconTile icon={ClipboardList} color="var(--blue)" size={34} />
+            <div className="min-w-0">
+              <h3 className="text-headline">Tarea · {u.homework.title}</h3>
+              <p className="text-label-2 mt-1 text-[15px] text-pretty">{u.homework.task}</p>
+            </div>
+          </Card>
+        )}
+      </div>
     </div>
   );
 }

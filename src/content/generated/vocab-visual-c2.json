@@ -1,0 +1,481 @@
+{
+ "level": "C2",
+ "topics": [
+  {
+   "id": "nature-idioms",
+   "level": "C2",
+   "title": "Idioms & compounds from nature",
+   "titleEs": "Modismos y compuestos de la naturaleza",
+   "emoji": "🌿",
+   "color": "var(--green)",
+   "cover": "/visuals/vocab/weather/sunlight.webp",
+   "intro_es": "El inglés culto está lleno de imágenes de la naturaleza: plantas, mar, hielo y tierra. Úsalas con precisión en ensayos y debates sobre el medio ambiente (unidad «The natural world»).",
+   "tip_es": "Los adjetivos compuestos con guion (<i>far-reaching, man-made, deep-rooted</i>) solo llevan guion delante del sustantivo: <i>a far-reaching reform</i>, pero <i>the reform is far reaching</i> también se acepta.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "tip-of-the-iceberg",
+     "en": "the tip of the iceberg",
+     "es": "la punta del iceberg",
+     "ex": "The reported cases are just the tip of the iceberg.",
+     "emoji": "🧊",
+     "def": "a small, visible part of a much larger problem",
+     "form": "the tip of the iceberg"
+    },
+    {
+     "id": "drop-in-the-ocean",
+     "en": "a drop in the ocean",
+     "es": "una gota en el océano",
+     "ex": "The donation was welcome, but a drop in the ocean.",
+     "img": "/visuals/vocab/weather/raindrops.webp",
+     "def": "an amount too small to make a difference",
+     "form": "a drop in the ocean"
+    },
+    {
+     "id": "nip-in-the-bud",
+     "en": "nip something in the bud",
+     "es": "cortar algo de raíz",
+     "ex": "Teachers should nip bullying in the bud.",
+     "emoji": "🌱",
+     "def": "stop a problem at an early stage",
+     "form": "nip bullying in the bud"
+    },
+    {
+     "id": "bear-fruit",
+     "en": "bear fruit",
+     "es": "dar fruto",
+     "ex": "Years of conservation work are finally bearing fruit.",
+     "emoji": "🍎",
+     "def": "produce good results",
+     "form": "bearing fruit"
+    },
+    {
+     "id": "uncharted-waters",
+     "en": "uncharted waters",
+     "es": "aguas desconocidas",
+     "ex": "With rewilding on this scale, we are in uncharted waters.",
+     "emoji": "🧭",
+     "def": "a new situation with no previous experience",
+     "form": "uncharted waters"
+    },
+    {
+     "id": "sea-change",
+     "en": "a sea change",
+     "es": "un cambio radical",
+     "ex": "There has been a sea change in attitudes to plastic.",
+     "emoji": "🌊",
+     "def": "a profound transformation",
+     "form": "a sea change"
+    },
+    {
+     "id": "on-thin-ice",
+     "en": "be on thin ice",
+     "es": "pisar terreno resbaladizo",
+     "ex": "Ministers who ignore the data are on thin ice.",
+     "img": "/visuals/vocab/weather/freezing.webp",
+     "def": "be in a risky situation",
+     "form": "on thin ice"
+    },
+    {
+     "id": "landslide-victory",
+     "en": "a landslide victory",
+     "es": "una victoria aplastante",
+     "ex": "The green party won a landslide victory in the city.",
+     "emoji": "⛰️",
+     "def": "a win by a huge margin",
+     "form": "a landslide victory"
+    },
+    {
+     "id": "breath-of-fresh-air",
+     "en": "a breath of fresh air",
+     "es": "un soplo de aire fresco",
+     "ex": "Her ideas were a breath of fresh air in a tired debate.",
+     "emoji": "🌬️",
+     "def": "something new and refreshing",
+     "form": "a breath of fresh air"
+    },
+    {
+     "id": "make-hay",
+     "en": "make hay while the sun shines",
+     "es": "aprovechar mientras se pueda",
+     "ex": "Tourism is booming, so the town is making hay while the sun shines.",
+     "img": "/visuals/vocab/weather/sunny.webp",
+     "def": "take advantage of good conditions while they last",
+     "form": "making hay while the sun shines"
+    },
+    {
+     "id": "far-reaching",
+     "en": "far-reaching",
+     "es": "de gran alcance",
+     "ex": "The new law will have far-reaching consequences for farmers.",
+     "emoji": "📡",
+     "def": "affecting many people or things",
+     "form": "far-reaching"
+    },
+    {
+     "id": "man-made",
+     "en": "man-made",
+     "es": "artificial, causado por el ser humano",
+     "ex": "Most scientists agree that climate change is largely man-made.",
+     "emoji": "🏭",
+     "def": "made or caused by people",
+     "note": "Alternativa neutral: human-made.",
+     "form": "man-made"
+    },
+    {
+     "id": "deep-rooted",
+     "en": "deep-rooted",
+     "es": "profundamente arraigado",
+     "ex": "Deep-rooted habits are the hardest to change.",
+     "emoji": "🌳",
+     "def": "firmly established and hard to change",
+     "form": "Deep-rooted"
+    },
+    {
+     "id": "weather-beaten",
+     "en": "weather-beaten",
+     "es": "curtido por la intemperie",
+     "ex": "The fisherman had a weather-beaten face.",
+     "img": "/visuals/vocab/weather/windy.webp",
+     "def": "damaged or marked by the weather",
+     "form": "weather-beaten"
+    },
+    {
+     "id": "go-against-the-grain",
+     "en": "go against the grain",
+     "es": "ir a contracorriente",
+     "ex": "Choosing a simple life goes against the grain of consumer culture.",
+     "emoji": "🪵",
+     "def": "be contrary to what is normal or expected",
+     "form": "goes against the grain"
+    },
+    {
+     "id": "branch-out",
+     "en": "branch out",
+     "es": "diversificarse",
+     "ex": "The cooperative branched out into eco-tourism.",
+     "emoji": "🌿",
+     "def": "start doing something new",
+     "form": "branched out"
+    }
+   ]
+  },
+  {
+   "id": "identity-belonging",
+   "level": "C2",
+   "title": "Identity & belonging",
+   "titleEs": "Identidad y pertenencia",
+   "emoji": "🧭",
+   "color": "var(--purple)",
+   "cover": "/visuals/vocab/geography/travel.webp",
+   "intro_es": "Las palabras para hablar de raíces, desarraigo y pertenencia a varias culturas (unidad «Identity and belonging»). Las banderas y mapas sirven de símbolo para cada idea.",
+   "tip_es": "<b>Melting pot</b> (las culturas se funden) frente a <b>mosaic</b> o <b>salad bowl</b> (conviven sin mezclarse): dos modelos opuestos de integración.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "sense-of-belonging",
+     "en": "a sense of belonging",
+     "es": "sentido de pertenencia",
+     "ex": "Sport gives many teenagers a sense of belonging.",
+     "emoji": "🫂",
+     "def": "the feeling of being accepted as part of a group",
+     "form": "a sense of belonging"
+    },
+    {
+     "id": "rootless",
+     "en": "rootless",
+     "es": "desarraigado",
+     "ex": "Moving every two years left her feeling rootless.",
+     "emoji": "🍂",
+     "def": "without a place you feel connected to",
+     "form": "rootless"
+    },
+    {
+     "id": "displacement",
+     "en": "displacement",
+     "es": "desplazamiento",
+     "ex": "The conflict caused the displacement of millions of people.",
+     "emoji": "🚶",
+     "def": "being forced to leave your home",
+     "form": "displacement"
+    },
+    {
+     "id": "homeland",
+     "en": "homeland",
+     "es": "patria, tierra natal",
+     "ex": "He never stopped longing for his homeland.",
+     "img": "/visuals/vocab/countries/colombia-map.webp",
+     "def": "the country where you were born, with emotional weight",
+     "form": "homeland"
+    },
+    {
+     "id": "ancestry",
+     "en": "ancestry",
+     "es": "ascendencia",
+     "ex": "She traced her ancestry back to a village in Spain.",
+     "img": "/visuals/vocab/countries/spain-map.webp",
+     "def": "your family origins",
+     "form": "ancestry"
+    },
+    {
+     "id": "kinship",
+     "en": "kinship",
+     "es": "parentesco, afinidad",
+     "ex": "Migrants often feel a kinship with others who have left home.",
+     "emoji": "🤝",
+     "def": "a close connection between people",
+     "form": "kinship"
+    },
+    {
+     "id": "allegiance",
+     "en": "allegiance",
+     "es": "lealtad",
+     "ex": "Athletes with two passports must choose their allegiance.",
+     "img": "/visuals/vocab/countries/uk-flag.webp",
+     "def": "loyalty to a country, group or cause",
+     "form": "allegiance"
+    },
+    {
+     "id": "straddle",
+     "en": "straddle two cultures",
+     "es": "vivir a caballo entre dos culturas",
+     "ex": "Second-generation migrants often straddle two cultures.",
+     "img": "/visuals/vocab/countries/usa-flag.webp",
+     "def": "belong to two cultures at the same time",
+     "form": "straddle two cultures"
+    },
+    {
+     "id": "torn-between",
+     "en": "be torn between",
+     "es": "estar dividido entre",
+     "ex": "He was torn between his parents’ traditions and his friends’ lifestyle.",
+     "emoji": "⚖️",
+     "def": "find it hard to choose between two things",
+     "form": "torn between"
+    },
+    {
+     "id": "hyphenated-identity",
+     "en": "hyphenated identity",
+     "es": "identidad compuesta",
+     "ex": "Terms like “Colombian-American” describe a hyphenated identity.",
+     "emoji": "➖",
+     "def": "an identity that combines two origins",
+     "form": "hyphenated identity"
+    },
+    {
+     "id": "melting-pot",
+     "en": "melting pot",
+     "es": "crisol de culturas",
+     "ex": "New York has long been described as a melting pot.",
+     "emoji": "🍲",
+     "def": "a place where cultures mix into one",
+     "form": "melting pot"
+    },
+    {
+     "id": "cultural-mosaic",
+     "en": "cultural mosaic",
+     "es": "mosaico cultural",
+     "ex": "Canada prefers the image of a cultural mosaic.",
+     "img": "/visuals/vocab/countries/canada-map.webp",
+     "def": "cultures that coexist without losing their identity",
+     "form": "cultural mosaic"
+    },
+    {
+     "id": "cosmopolitan",
+     "en": "cosmopolitan",
+     "es": "cosmopolita",
+     "ex": "Her cosmopolitan upbringing made her feel at home anywhere.",
+     "img": "/visuals/vocab/geography/world.webp",
+     "def": "open to and shaped by many cultures",
+     "form": "cosmopolitan"
+    },
+    {
+     "id": "parochial",
+     "en": "parochial",
+     "es": "provinciano, de miras estrechas",
+     "ex": "The debate was criticised as narrow and parochial.",
+     "emoji": "🏘️",
+     "def": "only interested in local matters",
+     "form": "parochial"
+    },
+    {
+     "id": "insular",
+     "en": "insular",
+     "es": "cerrado, aislado",
+     "ex": "Small island communities can become insular.",
+     "img": "/visuals/vocab/geography/oceania.webp",
+     "def": "not interested in other cultures or ideas",
+     "form": "insular"
+    },
+    {
+     "id": "reclaim-roots",
+     "en": "reclaim your roots",
+     "es": "recuperar tus raíces",
+     "ex": "Many young people are reclaiming their roots by learning indigenous languages.",
+     "emoji": "🌱",
+     "def": "reconnect with your origins",
+     "form": "reclaiming their roots"
+    }
+   ]
+  },
+  {
+   "id": "arts-criticism",
+   "level": "C2",
+   "title": "Arts & criticism",
+   "titleEs": "Artes y crítica",
+   "emoji": "🎭",
+   "color": "var(--red)",
+   "cover": "/visuals/vocab/city/library.webp",
+   "intro_es": "El lenguaje evaluativo de reseñas de cine, literatura y arte (unidad «Arts, culture and criticism»): elogiar, matizar y destrozar con elegancia.",
+   "tip_es": "Matiza con <b>adverbios de grado</b>: <i>utterly compelling, mildly amusing, somewhat derivative, deeply poignant</i>. Con adjetivos extremos (<i>masterful</i>) usa <i>utterly / truly</i>, no <i>very</i>.",
+   "items": [
+    {
+     "id": "tour-de-force",
+     "en": "a tour de force",
+     "es": "una obra maestra, un alarde",
+     "ex": "Her performance as the old queen is a tour de force.",
+     "emoji": "🏆",
+     "def": "an extremely impressive achievement",
+     "form": "a tour de force"
+    },
+    {
+     "id": "masterful",
+     "en": "masterful",
+     "es": "magistral",
+     "ex": "The director’s masterful use of silence builds tension.",
+     "emoji": "🎬",
+     "def": "showing great skill",
+     "form": "masterful"
+    },
+    {
+     "id": "seminal",
+     "en": "seminal",
+     "es": "fundamental, influyente",
+     "ex": "It is a seminal novel that shaped Latin American literature.",
+     "emoji": "📚",
+     "def": "very influential on later work",
+     "form": "seminal"
+    },
+    {
+     "id": "poignant",
+     "en": "poignant",
+     "es": "conmovedor",
+     "ex": "The film ends with a poignant scene at the airport.",
+     "emoji": "🥲",
+     "def": "causing a sharp feeling of sadness",
+     "form": "poignant"
+    },
+    {
+     "id": "evocative",
+     "en": "evocative",
+     "es": "evocador",
+     "ex": "The photographs are evocative of a lost Bogotá.",
+     "emoji": "🖼️",
+     "def": "bringing strong images or memories to mind",
+     "form": "evocative"
+    },
+    {
+     "id": "subversive",
+     "en": "subversive",
+     "es": "subversivo",
+     "ex": "Her paintings carry a subversive message about power.",
+     "emoji": "✊",
+     "def": "challenging established ideas",
+     "form": "subversive"
+    },
+    {
+     "id": "rave-reviews",
+     "en": "rave reviews",
+     "es": "críticas entusiastas",
+     "ex": "The play opened to rave reviews.",
+     "emoji": "⭐",
+     "def": "extremely positive reviews",
+     "form": "rave reviews"
+    },
+    {
+     "id": "critically-acclaimed",
+     "en": "critically acclaimed",
+     "es": "aclamado por la crítica",
+     "ex": "The critically acclaimed series won six awards.",
+     "emoji": "🎖️",
+     "def": "praised by critics",
+     "form": "critically acclaimed"
+    },
+    {
+     "id": "pan",
+     "en": "pan",
+     "es": "destrozar (una obra)",
+     "ex": "Critics panned the sequel as lazy and predictable.",
+     "emoji": "🍳",
+     "def": "criticise very severely",
+     "form": "panned"
+    },
+    {
+     "id": "lacklustre",
+     "en": "lacklustre",
+     "es": "deslucido, mediocre",
+     "ex": "The orchestra gave a lacklustre performance.",
+     "emoji": "🥱",
+     "def": "lacking energy or brilliance",
+     "note": "US: lackluster.",
+     "form": "lacklustre"
+    },
+    {
+     "id": "pretentious",
+     "en": "pretentious",
+     "es": "pretencioso",
+     "ex": "Some viewers found the long silences pretentious.",
+     "emoji": "🧐",
+     "def": "trying to seem more important or clever than it is",
+     "form": "pretentious"
+    },
+    {
+     "id": "overwrought",
+     "en": "overwrought",
+     "es": "recargado, sobreactuado",
+     "ex": "The overwrought dialogue spoils an otherwise good story.",
+     "emoji": "😩",
+     "def": "too elaborate or emotional",
+     "form": "overwrought"
+    },
+    {
+     "id": "derivative",
+     "en": "derivative",
+     "es": "poco original",
+     "ex": "The album is pleasant but derivative.",
+     "emoji": "📋",
+     "def": "copying the style of others",
+     "form": "derivative"
+    },
+    {
+     "id": "kitsch",
+     "en": "kitsch",
+     "es": "kitsch, cursi",
+     "ex": "The hotel lobby was full of kitsch souvenirs.",
+     "emoji": "🦩",
+     "def": "tasteless art or objects, sometimes enjoyed ironically",
+     "form": "kitsch"
+    },
+    {
+     "id": "highbrow",
+     "en": "highbrow",
+     "es": "culto, intelectual",
+     "ex": "The festival mixes highbrow theatre with street performance.",
+     "emoji": "🎻",
+     "def": "intellectual, for educated tastes",
+     "note": "Lo contrario: lowbrow.",
+     "form": "highbrow"
+    },
+    {
+     "id": "stand-the-test-of-time",
+     "en": "stand the test of time",
+     "es": "resistir el paso del tiempo",
+     "ex": "Few comedies stand the test of time.",
+     "emoji": "⏳",
+     "def": "remain good or popular for a long time",
+     "form": "stand the test of time"
+    }
+   ]
+  }
+ ]
+}

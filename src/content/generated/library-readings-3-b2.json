@@ -131,6 +131,60 @@
           "They couldn't have been ordinary burglars looking for gold."
         ],
         "explain_es": "Párrafo 6: para deducir que algo es imposible en el pasado se usa \"can't have\", no \"mustn't have\"."
+      },
+      {
+        "type": "mc",
+        "q": "Who is Héctor Rivas?",
+        "options": [
+          "The inspector leading the investigation",
+          "A retired locksmith",
+          "The museum's director and grandson of its founder",
+          "The tour guide"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: \"The museum's director, Héctor Rivas, grandson of the founder\"."
+      },
+      {
+        "type": "tf",
+        "q": "Two of the museum's eight cameras had not been working since September.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"Two of the eight cameras had stopped working in September\"."
+      },
+      {
+        "type": "mc",
+        "q": "Where was the key to the glass case kept?",
+        "options": [
+          "In an unlocked drawer in the director's office",
+          "In a safe in the courtyard",
+          "With the last guard",
+          "Inside the service tunnel"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: la llave estaba \"in an unlocked drawer in the director's office\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Dr Ortiz believe the thieves were not ordinary burglars?",
+        "options": [
+          "They left fingerprints",
+          "They took the frog and left larger, heavier pieces behind",
+          "They melted the gold immediately",
+          "They came through the main entrance"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: \"why would they choose the frog and leave the larger, heavier pieces behind?\"."
+      },
+      {
+        "type": "vocab",
+        "q": "The phrase 'lined up' in paragraph 6 is closest in meaning to…",
+        "options": [
+          "standing in a queue",
+          "arranged in advance",
+          "drawn on paper",
+          "arrested"
+        ],
+        "answer": 1,
+        "explain_es": "\"had a private buyer lined up\": tenían un comprador ya preparado de antemano."
       }
     ]
   },
@@ -265,6 +319,55 @@
           "Even though the pay is low, I can organise my day around my kids."
         ],
         "explain_es": "Párrafo 3: después de \"in spite of\" no va una oración con verbo conjugado; se dice \"In spite of the low pay\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to critics in paragraph 2, what does the gig economy do?",
+        "options": [
+          "It gives workers more freedom",
+          "It increases salaries",
+          "It transfers business risks onto workers",
+          "It guarantees paid holidays"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 2: los críticos dicen que \"transfers the risks of the business onto the people doing the work\"."
+      },
+      {
+        "type": "tf",
+        "q": "Julián has a university degree in accounting.",
+        "answer": "T",
+        "explain_es": "Párrafo 1: \"he has a degree in accounting\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Julián's 'bitter laugh' in paragraph 4 suggest?",
+        "options": [
+          "He found the app's message funny",
+          "He thought the message was a joke from a friend",
+          "He was grateful for the app's support",
+          "He felt the app's response was completely inadequate"
+        ],
+        "answer": 3,
+        "explain_es": "La risa amarga indica que un simple mensaje le pareció insuficiente: \"That was all\"."
+      },
+      {
+        "type": "gap",
+        "q": "In some countries, platforms have agreed to provide basic ____ in exchange for keeping the current model.",
+        "answer": "insurance",
+        "accept": [],
+        "explain_es": "Párrafo 6: \"provide basic insurance in exchange for keeping the current model\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Julián mean by \"we're not invisible\" (paragraph 7)?",
+        "options": [
+          "Riders should be recognised and given some protection",
+          "Riders want to wear brighter clothes",
+          "Riders should be filmed while working",
+          "Riders want to become famous"
+        ],
+        "answer": 0,
+        "explain_es": "Pide \"a little security\": aunque trabajen solos, merecen ser tenidos en cuenta."
       }
     ]
   },
@@ -397,6 +500,55 @@
         "answer": "Having",
         "accept": [],
         "explain_es": "Párrafo 5: \"Having + participio\" indica que una acción terminó antes de la otra."
+      },
+      {
+        "type": "mc",
+        "q": "Who directed the documentary?",
+        "options": [
+          "Daniela Archbold",
+          "A Berlin orchestra",
+          "A team of young scientists",
+          "Marta Lindqvist, a Swedish marine biologist"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 1: \"Directed by the Swedish marine biologist Marta Lindqvist\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the film, corals are animals that live in partnership with tiny algae.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"Corals, we learn, are animals living in partnership with tiny algae\"."
+      },
+      {
+        "type": "mc",
+        "q": "What criticism does the reviewer make of the music?",
+        "options": [
+          "It is too quiet",
+          "It sometimes tells viewers what to feel",
+          "It was recorded badly",
+          "It does not suit underwater scenes at all"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: la música es \"too dramatic, telling us what to feel\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'which' in \"which is perhaps the best compliment\" (paragraph 6) refer to?",
+        "options": [
+          "people discussing how they could help",
+          "the price of a ticket",
+          "the underwater scenes",
+          "the streaming release"
+        ],
+        "answer": 0,
+        "explain_es": "'Which' remite a que la gente salía del cine hablando de cómo ayudar."
+      },
+      {
+        "type": "gap",
+        "q": "The reviewer gives the film four ____ out of five.",
+        "answer": "stars",
+        "accept": [],
+        "explain_es": "Párrafo 6: \"My rating: four stars out of five\"."
       }
     ]
   },
@@ -527,6 +679,60 @@
         "answer": "to have",
         "accept": [],
         "explain_es": "Párrafo 2: para hablar de algo anterior se usa \"is known to have + participio\"."
+      },
+      {
+        "type": "mc",
+        "q": "How many times had the photograph been shared within six hours?",
+        "options": [
+          "About 4,000",
+          "More than 400,000",
+          "A few thousand",
+          "Three million"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"Within six hours it had been shared more than 400,000 times\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"from that moment it was out of control\" (paragraph 2) refer to?",
+        "options": [
+          "the online group",
+          "the fact-checking organisation",
+          "the false story about the jaguar",
+          "the AI tool"
+        ],
+        "answer": 2,
+        "explain_es": "'It' remite a la publicación falsa, que se difundió sin control al perder su contexto."
+      },
+      {
+        "type": "tf",
+        "q": "The person who first added the false caption is expected to face charges.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: \"investigators have said that no charges are expected\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "The cost to businesses",
+          "How the story began",
+          "Simple habits to avoid being fooled",
+          "Turning the story into a joke"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 6 da consejos para no dejarse engañar."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Quintero say that humour is 'a good sign'?",
+        "options": [
+          "It shows people realise they were tricked",
+          "It means the jaguar was found",
+          "It brings more customers to the supermarket",
+          "It stops fake news from spreading"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 7: \"It means people realise they were tricked\"."
       }
     ]
   },
@@ -655,6 +861,57 @@
         "answer": "By March, sales had been rising steadily for six weeks.",
         "accept": [],
         "explain_es": "Párrafo 6: el punto de referencia (\"by March\") es pasado, por eso se usa \"had been rising\", no el presente perfecto."
+      },
+      {
+        "type": "mc",
+        "q": "How had Don Ernesto been paying the two employees?",
+        "options": [
+          "With money from the supermarket",
+          "By borrowing from his brother",
+          "With Camila's salary",
+          "By selling the shop"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"He had also been borrowing money from his brother to pay the two employees\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Camila's comparison of the bakery to 'the mountains around the city' suggest?",
+        "options": [
+          "She had always assumed it would never change",
+          "She thought it was too far away",
+          "She wanted to move to the mountains",
+          "She found the bakery boring"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: imaginaba que la panadería \"would simply be there forever, like the mountains\"."
+      },
+      {
+        "type": "gap",
+        "q": "Camila persuaded her father to concentrate on the ____ types of bread that customers had been buying for decades.",
+        "answer": "six",
+        "accept": [
+          "6"
+        ],
+        "explain_es": "Párrafo 5: \"concentrate on the six that customers had been buying for decades\"."
+      },
+      {
+        "type": "tf",
+        "q": "The weekend offer of free coffee brought in a large profit.",
+        "answer": "F",
+        "explain_es": "Párrafo 6: \"attracted crowds but no profit\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Camila mean by \"We'd both been pretending\" (paragraph 7)?",
+        "options": [
+          "She and her father had been acting as if everything was fine",
+          "They had been acting in a play",
+          "They had been lying to customers",
+          "They had been pretending to be bakers"
+        ],
+        "answer": 0,
+        "explain_es": "Ella enviaba mensajes alegres sin preguntar y él sonreía como si nada pasara."
       }
     ]
   },
@@ -787,6 +1044,57 @@
           "I wish I had not made myself so available to everyone back then."
         ],
         "explain_es": "Párrafo 3: el arrepentimiento es sobre el pasado (\"back then\"), así que se necesita \"hadn't made\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the writer accept the second project immediately?",
+        "options": [
+          "He needed the money",
+          "He wanted to look committed",
+          "His colleagues refused it",
+          "He enjoyed long hours"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"I accepted immediately because I wanted to look committed\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 4, how was leaving work at six seen in the writer's company?",
+        "options": [
+          "As a sign of good organisation",
+          "As normal and healthy",
+          "As a lack of ambition",
+          "As a reward for good work"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 4: \"leaving at six was seen as a lack of ambition\"."
+      },
+      {
+        "type": "gap",
+        "q": "The writer stopped working completely for ____ weeks during his recovery.",
+        "answer": "eight",
+        "accept": [
+          "8"
+        ],
+        "explain_es": "Párrafo 5: \"I stopped working completely for eight weeks\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer now keeps his phone in a drawer after seven.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"my phone stays in a drawer after seven\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer mean by listening to his body 'before it had to shout'?",
+        "options": [
+          "He should have noticed the early warning signs before the breakdown",
+          "He should have gone to a louder office",
+          "He wanted to become a singer",
+          "His doctor shouted at him"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 7: lamenta no haber hecho caso a las señales antes del colapso."
       }
     ]
   },
@@ -921,6 +1229,60 @@
           "If I'd known the plan would last, I'd have moved my shop."
         ],
         "explain_es": "Párrafo 4: en la cláusula con \"if\" no se usa \"would\"; se dice \"If I had known\"."
+      },
+      {
+        "type": "mc",
+        "q": "Under the original plan, when could delivery vans enter the historic centre?",
+        "options": [
+          "Only at night",
+          "Only before ten in the morning",
+          "At any time",
+          "Only on weekends"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"Delivery vans could enter only before ten in the morning\"."
+      },
+      {
+        "type": "tf",
+        "q": "There have been no traffic deaths in the centre since the ban began.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"there have been no traffic deaths there since the ban began\"."
+      },
+      {
+        "type": "mc",
+        "q": "What complaint do some older residents have?",
+        "options": [
+          "They now depend on buses or taxis to visit the doctor",
+          "The cafés are too noisy",
+          "They cannot sleep because of the market",
+          "The car parks are too expensive"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: \"they now depend on buses or taxis to visit the doctor\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 5, what seems to be the main lesson of Valdemora's experience?",
+        "options": [
+          "Small towns should ban buses",
+          "Patience: the town kept going through a chaotic first year",
+          "Big cities cannot change",
+          "Shopkeepers should decide transport policy"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: \"the main lesson seems to be about patience\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is Elena Garrido's one regret?",
+        "options": [
+          "Closing the centre to cars",
+          "Ignoring the petition",
+          "Not planning the bus routes better at the beginning",
+          "Retiring too early"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 7: \"If we had planned the bus routes better at the beginning...\"."
       }
     ]
   },
@@ -1051,6 +1413,55 @@
           "I am still not used to the new layout."
         ],
         "explain_es": "Párrafo 5: \"be used to\" = estar acostumbrado a algo."
+      },
+      {
+        "type": "mc",
+        "q": "Why are habits useful, according to paragraph 1?",
+        "options": [
+          "They save mental energy",
+          "They make us happier",
+          "They help us wake up earlier",
+          "They are easy to change"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 1: \"it saves mental energy\"."
+      },
+      {
+        "type": "gap",
+        "q": "Researchers describe a habit as a loop with three parts: a cue, a routine and a ____.",
+        "answer": "reward",
+        "accept": [],
+        "explain_es": "Párrafo 2: \"a cue, a routine and a reward\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to studies, what is easier than deleting a routine?",
+        "options": [
+          "Ignoring the cue",
+          "Replacing the routine",
+          "Removing the reward",
+          "Waiting twenty-one days"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"it is much easier to replace a routine than to delete it\"."
+      },
+      {
+        "type": "mc",
+        "q": "What was the average time participants needed to form a new habit?",
+        "options": [
+          "Twenty-one days",
+          "Eighteen days",
+          "About two months",
+          "254 days"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 4: \"with an average of about two months\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the studies, an occasional slip makes almost no difference in the long term.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"an occasional slip makes almost no difference in the long term\"."
       }
     ]
   },
@@ -1184,6 +1595,57 @@
           "By the time I finish my degree, I will have been studying this forest for two years."
         ],
         "explain_es": "Entrada del jueves: con \"by the time\" y una duración (\"for two years\") se usa \"will have been studying\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the purpose of the expedition?",
+        "options": [
+          "To film a documentary",
+          "To count frogs and birds in the forest",
+          "To visit Ticuna communities",
+          "To find a pink dolphin"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"spend ten days counting frogs and birds in the forest\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer feel about the guides saying the rain is normal (paragraph 2)?",
+        "options": [
+          "Relieved",
+          "Excited",
+          "Not very reassured",
+          "Angry with the guides"
+        ],
+        "answer": 2,
+        "explain_es": "\"which is not exactly comforting\": la explicación no la tranquiliza."
+      },
+      {
+        "type": "mc",
+        "q": "What does Don Eliseo mean by \"The river is my street\"?",
+        "options": [
+          "He lives on a boat",
+          "He knows the river so well that travelling at night does not worry him",
+          "He wants to build a road",
+          "He is afraid of the forest"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: responde con una sonrisa a la preocupación por viajar de noche; conoce el río perfectamente."
+      },
+      {
+        "type": "gap",
+        "q": "By Tuesday, the group had counted more than ____ species of birds.",
+        "answer": "140",
+        "accept": [
+          "one hundred and forty"
+        ],
+        "explain_es": "Párrafo 5: \"We've counted more than 140 species of birds so far\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer is looking forward to returning to Bogotá.",
+        "answer": "F",
+        "explain_es": "Párrafo 6: \"Strangely, I'm not looking forward to it\"."
       }
     ]
   },
@@ -1315,6 +1777,55 @@
           "It is high time governments required clear privacy summaries on every product."
         ],
         "explain_es": "Párrafo 6: con \"It's high time\" el verbo va en pasado: \"required\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer say most people do with privacy policies?",
+        "options": [
+          "They read them carefully",
+          "They accept devices without reading them",
+          "They send them to lawyers",
+          "They print them out"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"Most of us accept them without reading a single line of the privacy policy\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer suggesting by mentioning 'page thirty-seven of a document nobody reads'?",
+        "options": [
+          "Companies hide risks where users will not find them",
+          "Privacy policies are too short",
+          "Users should read page thirty-seven first",
+          "Manufacturers publish too many books"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: critica que las empresas oculten los riesgos en documentos largos que nadie lee."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer mention her neighbour who has difficulty walking?",
+        "options": [
+          "To show that voice assistants are dangerous",
+          "To show that smart devices can be genuinely useful",
+          "To criticise her daughter",
+          "To explain how to change passwords"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: los dispositivos \"can be genuinely useful, especially for older people or people with disabilities\"."
+      },
+      {
+        "type": "gap",
+        "q": "The writer wants governments to require short privacy summaries, in the same way that food packets show ____.",
+        "answer": "calories",
+        "accept": [],
+        "explain_es": "Párrafo 6: \"in the same way that food packets show calories\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's sister has switched off the camera in her living room.",
+        "answer": "T",
+        "explain_es": "Párrafo 7: \"has now switched off the camera in her living room\"."
       }
     ]
   },
@@ -1445,6 +1956,55 @@
           "It was the pandemic which almost destroyed the restaurant."
         ],
         "explain_es": "Párrafo 4: \"It was... that\" enfatiza quién o qué hizo la acción."
+      },
+      {
+        "type": "mc",
+        "q": "What impressed Andrea most when she watched her grandmother cook?",
+        "options": [
+          "Her speed",
+          "How calm she was",
+          "Her expensive ingredients",
+          "Her written recipes"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"What struck me was how calm she was\"."
+      },
+      {
+        "type": "mc",
+        "q": "What had Fogón's building been before it became a restaurant?",
+        "options": [
+          "A law office",
+          "A bakery",
+          "A shoe repair shop",
+          "An apartment"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: \"a former shoe repair shop that would become Fogón\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Lina Caicedo mean by \"she isn't a museum\" (paragraph 5)?",
+        "options": [
+          "Andrea respects tradition but also makes creative changes",
+          "Andrea's restaurant is too modern",
+          "Andrea does not display old objects",
+          "The restaurant is closed on Mondays"
+        ],
+        "answer": 0,
+        "explain_es": "Caicedo explica que Andrea respeta la tradición pero añade \"small, surprising changes\"."
+      },
+      {
+        "type": "tf",
+        "q": "Andrea believes her legal training has been useful in running the restaurant.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: puede leer contratos, negociar y mantener la calma gracias a sus años de abogada."
+      },
+      {
+        "type": "gap",
+        "q": "Last time she visited, Andrea's grandmother said the soup needed more ____.",
+        "answer": "coriander",
+        "accept": [],
+        "explain_es": "Párrafo 7: \"she said it needed more coriander\"."
       }
     ]
   },
@@ -1573,6 +2133,60 @@
           "situated"
         ],
         "explain_es": "Párrafo 1: \"a small record shop located in the centre of Medellín\" (= which is located)."
+      },
+      {
+        "type": "mc",
+        "q": "What does Daniela mean by \"everything in a cloud\" (paragraph 4)?",
+        "options": [
+          "Her generation grew up with digital files they could not physically hold",
+          "She lives in a rainy city",
+          "Her music was always too loud",
+          "She stores records in the sky"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: contrasta lo digital con \"the first music collection I can actually see\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to audio experts, what partly explains vinyl's 'warm' sound?",
+        "options": [
+          "Its higher quality",
+          "Imperfections in the format",
+          "The coloured discs",
+          "Cleaning the disc"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: el sonido cálido es \"partly the result of imperfections\"."
+      },
+      {
+        "type": "tf",
+        "q": "A British survey found that almost half of vinyl buyers hardly used their record player or had none.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"almost half of vinyl buyers owned a record player that they hardly used, or none at all\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do independent musicians often have to wait for their records?",
+        "options": [
+          "Shops refuse to sell them",
+          "There are few factories and major labels order huge quantities",
+          "They cannot afford to record",
+          "Streaming companies block them"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: hay pocas fábricas y deben esperar detrás de los grandes sellos."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Gloria Castaño describe the revival as 'a kind of revenge'?",
+        "options": [
+          "People who called her crazy now come to buy records",
+          "She has beaten a rival shop",
+          "She plans to raise her prices",
+          "Her customers threw away her records"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 7: los que le decían que estaba loca ahora vienen a pedir discos."
       }
     ]
   }

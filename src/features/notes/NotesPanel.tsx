@@ -1,13 +1,14 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type RefObject } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type RefObject } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, Cloud, CloudOff, Eraser, Highlighter, MapPin, NotebookPen, Plus, Search, Trash2 } from 'lucide-react';
+import { Bold, ChevronLeft, Cloud, CloudOff, Eraser, Highlighter, Italic, MapPin, NotebookPen, Plus, RemoveFormatting, Search, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/Misc';
 import { useAuth } from '@/store/auth';
 import { MAX_NOTE_BODY, noteTitle, useNotes, visibleNotes, type Note } from '@/store/notes';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
-import { applyHighlight, HIGHLIGHTS, segments, stripHighlights, type HighlightColor } from '@/lib/highlights';
+import { HIGHLIGHTS, segments, segStyle, stripHighlights, type HighlightColor, type Segment } from '@/lib/highlights';
+import { RichNoteEditor, type FormatState, type RichEditorHandle } from './RichNoteEditor';
 import { currentPageInfo } from './pageInfo';
 import { refreshNotes, useNotesSync } from './sync';
 
@@ -115,7 +116,9 @@ export function NotesPanel({ variant, onNavigate, startNew = false }: { variant:
                 )}
               >
                 <span className="w-full truncate text-[15px] font-semibold">{noteTitle(n)}</span>
-                <span className="text-label-2 line-clamp-1 w-full text-[13px]">{snippet(n)}</span>
+                <span className="text-label-2 line-clamp-1 w-full text-[13px]">
+                  <Formatted segs={snippet(n)} />
+                </span>
                 <span className="text-label-2 flex w-full items-center gap-1.5 text-[12px]">
                   <span className="shrink-0">{relativeTime(n.updatedAt)}</span>
                   {n.pageTitle && (
@@ -155,9 +158,50 @@ export function NotesPanel({ variant, onNavigate, startNew = false }: { variant:
   );
 }
 
-function snippet(n: Note) {
-  const rest = stripHighlights(n.body).trim().split('\n').slice(1).join(' ').trim();
-  return rest || ' ';
+/** The note after its first line, on one line, keeping bold / italics / highlights. */
+function snippet(n: Note): Segment[] {
+  const out: Segment[] = [];
+  let seenFirst = false;
+  let started = false;
+  let len = 0;
+  for (const g of segments(n.body)) {
+    let t = g.text;
+    if (!seenFirst) {
+      // Skip leading blank space and the title line (as noteTitle does).
+      const lead = t.match(/^\s*/)![0].length;
+      if (!started && lead === t.length) continue;
+      if (!started) t = t.slice(lead);
+      started = true;
+      const nl = t.indexOf('\n');
+      if (nl < 0) continue;
+      t = t.slice(nl + 1);
+      seenFirst = true;
+    }
+    t = t.replace(/\s*\n\s*/g, ' ');
+    if (!out.length) t = t.trimStart();
+    if (!t) continue;
+    out.push({ ...g, text: t.slice(0, 240 - len) });
+    len += t.length;
+    if (len >= 240) break;
+  }
+  return out.length ? out : [{ text: '\u00A0', color: null, bold: false, italic: false }];
+}
+
+/** Read-only rendering of formatted stretches. */
+export function Formatted({ segs }: { segs: Segment[] }) {
+  return (
+    <>
+      {segs.map((g, i) =>
+        g.color || g.bold || g.italic ? (
+          <span key={i} style={segStyle(g)}>
+            {g.text}
+          </span>
+        ) : (
+          g.text
+        ),
+      )}
+    </>
+  );
 }
 
 function NoteEditor({
@@ -185,26 +229,11 @@ function NoteEditor({
   const [confirm, setConfirm] = useState(false);
   const latest = useRef({ id: note?.id ?? null, text });
   const stored = useRef(note?.body ?? '');
-  const area = useRef<HTMLTextAreaElement>(null);
-  const areaId = useId();
-
-  // Focus with the caret at the end (not the start) of an existing note.
-  useEffect(() => {
-    const el = area.current;
-    if (!el) return;
-    el.focus({ preventScroll: true });
-    el.setSelectionRange(el.value.length, el.value.length);
-  }, []);
+  const editor = useRef<RichEditorHandle>(null);
+  const [fmt, setFmt] = useState<FormatState>({ bold: false, italic: false, range: false });
+  const labelId = useId();
 
   latest.current.text = text;
-
-  // The textarea grows with its text (no inner scroll), so the highlight mirror stays aligned.
-  useLayoutEffect(() => {
-    const el = area.current;
-    if (!el) return;
-    el.style.height = 'auto';
-    el.style.height = `${el.scrollHeight}px`;
-  }, [text]);
 
   // Autosave while typing (debounced); the very first character creates the note.
   useEffect(() => {
@@ -295,32 +324,21 @@ function NoteEditor({
           </Link>
         </div>
       )}
-      <HighlightBar area={area} text={text} setText={setText} />
-      <label htmlFor={areaId} className="sr-only">
+      <FormatBar editor={editor} fmt={fmt} />
+      <span id={labelId} className="sr-only">
         Texto de la nota
-      </label>
-      {/* The textarea sits over a mirror of its own text that paints the highlights behind it. */}
-      <div className="relative min-h-[260px] flex-1">
-        <div aria-hidden className={cn(NOTE_TEXT, 'pointer-events-none absolute inset-0 text-transparent')}>
-          {segments(text).map((g, i) =>
-            g.color ? (
-              <mark key={i} className="rounded-[3px] text-transparent" style={{ background: HIGHLIGHTS.find((h) => h.id === g.color)!.bg }}>
-                {g.text}
-              </mark>
-            ) : (
-              <span key={i}>{g.text}</span>
-            ),
-          )}
-          {'\u200b'}
-        </div>
-        <textarea
-          id={areaId}
-          ref={area}
-          value={text}
+      </span>
+      <div className="min-h-[260px] flex-1">
+        <RichNoteEditor
+          ref={editor}
+          initial={note?.body ?? ''}
+          onChange={setText}
+          onFormat={setFmt}
           maxLength={MAX_NOTE_BODY}
-          onChange={(e) => setText(e.target.value)}
+          labelledBy={labelId}
+          autoFocus
           placeholder="Escribe tu nota… (la primera línea es el título)"
-          className={cn(NOTE_TEXT, 'placeholder:text-label-3 relative block min-h-[260px] w-full resize-none overflow-hidden bg-transparent outline-none')}
+          className={cn(NOTE_TEXT, 'min-h-[260px]')}
         />
       </div>
       <div className="text-label-2 flex justify-between gap-3 px-4 pb-3 text-[12px]">
@@ -335,35 +353,60 @@ function NoteEditor({
 
 const NOTE_TEXT = 'whitespace-pre-wrap break-words px-4 py-3 text-[16px] leading-relaxed';
 
-/** Highlighter pens: select text, then tap a color (or the eraser). */
-function HighlightBar({ area, text, setText }: { area: RefObject<HTMLTextAreaElement | null>; text: string; setText: (t: string) => void }) {
-  const [hint, setHint] = useState(false);
+/** Bold, italics and highlighter pens: select text, then tap a button (Ctrl/⌘+B, Ctrl/⌘+I also work). */
+function FormatBar({ editor, fmt }: { editor: RefObject<RichEditorHandle | null>; fmt: FormatState }) {
+  const [hint, setHint] = useState<string | null>(null);
+  useEffect(() => {
+    if (fmt.range) setHint(null);
+  }, [fmt.range]);
+  const mac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
+  const kb = mac ? '⌘' : 'Ctrl+';
   const paint = (color: HighlightColor | null) => {
-    const el = area.current;
-    if (!el) return;
-    const { selectionStart: a, selectionEnd: b } = el;
-    if (a === b) {
-      setHint(true);
-      el.focus();
-      return;
-    }
-    setHint(false);
-    const r = applyHighlight(text, a, b, color);
-    setText(r.text);
-    requestAnimationFrame(() => {
-      el.focus({ preventScroll: true });
-      el.setSelectionRange(r.end, r.end);
-    });
+    if (!editor.current?.highlight(color)) {
+      setHint('Selecciona primero el texto que quieres resaltar.');
+      editor.current?.focus();
+    } else setHint(null);
   };
+  const clear = () => {
+    if (!editor.current?.clearFormat()) {
+      setHint('Selecciona el texto al que quieres quitar el formato.');
+      editor.current?.focus();
+    } else setHint(null);
+  };
+  // Keep the selection: a mousedown on a button would blur the editor first.
+  const keep = (e: React.MouseEvent) => e.preventDefault();
+  const tool = 'inline-flex h-8 w-8 items-center justify-center rounded-[9px] transition-colors active:scale-90';
   return (
-    <div className="flex flex-wrap items-center gap-1.5 px-4 pt-3">
+    <div className="flex flex-wrap items-center gap-1.5 px-4 pt-3" role="toolbar" aria-label="Formato del texto">
+      <button
+        type="button"
+        onMouseDown={keep}
+        onClick={() => editor.current?.toggle('bold')}
+        aria-pressed={fmt.bold}
+        title={`Negrita (${kb}B)`}
+        aria-label={`Negrita (${kb}B)`}
+        className={cn(tool, fmt.bold ? 'bg-label text-bg' : 'text-label hover:bg-fill-2')}
+      >
+        <Bold size={16} strokeWidth={2.8} />
+      </button>
+      <button
+        type="button"
+        onMouseDown={keep}
+        onClick={() => editor.current?.toggle('italic')}
+        aria-pressed={fmt.italic}
+        title={`Cursiva (${kb}I)`}
+        aria-label={`Cursiva (${kb}I)`}
+        className={cn(tool, fmt.italic ? 'bg-label text-bg' : 'text-label hover:bg-fill-2')}
+      >
+        <Italic size={16} strokeWidth={2.4} />
+      </button>
+      <span className="bg-separator mx-0.5 h-5 w-px" aria-hidden />
       <Highlighter size={15} className="text-label-2" aria-hidden />
       {HIGHLIGHTS.map((h) => (
         <button
           key={h.id}
           type="button"
-          // Keep the selection: a mousedown on the button would blur the textarea first.
-          onMouseDown={(e) => e.preventDefault()}
+          onMouseDown={keep}
           onClick={() => paint(h.id)}
           title={`Resaltar en ${h.label.toLowerCase()}`}
           aria-label={`Resaltar en ${h.label.toLowerCase()}`}
@@ -371,17 +414,17 @@ function HighlightBar({ area, text, setText }: { area: RefObject<HTMLTextAreaEle
           style={{ background: h.bg }}
         />
       ))}
-      <button
-        type="button"
-        onMouseDown={(e) => e.preventDefault()}
-        onClick={() => paint(null)}
-        title="Quitar resaltado"
-        aria-label="Quitar resaltado"
-        className="text-label-2 hover:bg-fill-2 inline-flex h-7 w-7 items-center justify-center rounded-full"
-      >
+      <button type="button" onMouseDown={keep} onClick={() => paint(null)} title="Quitar resaltado" aria-label="Quitar resaltado" className={cn(tool, 'text-label-2 hover:bg-fill-2 rounded-full')}>
         <Eraser size={15} />
       </button>
-      {hint && <span className="text-label-2 text-[12px]">Selecciona primero el texto que quieres resaltar.</span>}
+      <button type="button" onMouseDown={keep} onClick={clear} title="Quitar todo el formato" aria-label="Quitar todo el formato" className={cn(tool, 'text-label-2 hover:bg-fill-2 rounded-full')}>
+        <RemoveFormatting size={15} />
+      </button>
+      {hint && (
+        <span className="text-label-2 w-full text-[12px]" role="status">
+          {hint}
+        </span>
+      )}
     </div>
   );
 }

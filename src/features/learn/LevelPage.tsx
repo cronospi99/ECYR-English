@@ -33,9 +33,11 @@ export default function LevelPage() {
       title={`${meta.id} · ${meta.nameEs}`}
       subtitle={meta.description}
       actions={
-        <ButtonLink to={`/play/${meta.module}`} variant="tinted">
-          <BookOpen size={17} /> Libro interactivo
-        </ButtonLink>
+        meta.module && (
+          <ButtonLink to={`/play/${meta.module}`} variant="tinted">
+            <BookOpen size={17} /> Libro interactivo
+          </ButtonLink>
+        )
       }
     >
       <Card className="mb-6 p-5">

@@ -97,7 +97,7 @@ export function levelOfExam(id: string): ExamLevel | null {
   const k = id.split('-')[0] ?? '';
   if (k === 'prea1') return 'PreA1';
   const up = k.toUpperCase();
-  return (['A1', 'A2', 'B1', 'B2', 'C1'] as const).find((l) => l === up) ?? null;
+  return (['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const).find((l) => l === up) ?? null;
 }
 
 export const loadExam = (id: string) => {

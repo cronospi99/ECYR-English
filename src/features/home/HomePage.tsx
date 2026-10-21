@@ -42,7 +42,7 @@ export default function HomePage() {
           <span className="brand-text">Go For It!</span> 🏔️
         </>
       }
-      subtitle="Tu escalada de A1 a C1, paso a paso."
+      subtitle="Tu escalada de A1 a C2, paso a paso."
       wide
     >
       <div className="space-y-5">

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
@@ -6,13 +7,16 @@ import { AcademicVerbs } from './academic';
 import { IrregularPatterns } from './irregular';
 import { EdSoundDrill, EdSoundRules, PhrasalFamilies, VerbExplorer, VerbFormsQuiz, VerbPatterns, WithVerbLab } from './components';
 
-type Tab = 'verbs' | 'irregular' | 'academic' | 'ed' | 'quiz' | 'phrasal' | 'patterns';
+const TenseLab = lazy(() => import('@/features/grammar/tenses/TenseTools').then((m) => ({ default: m.TenseLab })));
+
+type Tab = 'verbs' | 'irregular' | 'academic' | 'ed' | 'quiz' | 'tenses' | 'phrasal' | 'patterns';
 const TABS: { value: Tab; label: string }[] = [
   { value: 'verbs', label: 'Verbos' },
   { value: 'irregular', label: 'Irregulares por patrones' },
   { value: 'academic', label: '🎓 C1 académicos' },
   { value: 'ed', label: 'Pronunciación -ed' },
   { value: 'quiz', label: 'Quiz de formas' },
+  { value: 'tenses', label: '⏱ Tiempos verbales' },
   { value: 'phrasal', label: 'Phrasal verbs' },
   { value: 'patterns', label: 'Patrones' },
 ];
@@ -49,6 +53,13 @@ export default function VerbLabPage() {
               <div className="mx-auto max-w-xl">
                 <VerbFormsQuiz data={data} />
               </div>
+            )}
+            {tab === 'tenses' && (
+              <Suspense fallback={null}>
+                <div className="mx-auto max-w-3xl">
+                  <TenseLab title="Tense Timeline: escribe, construye, practica" />
+                </div>
+              </Suspense>
             )}
             {tab === 'phrasal' && <PhrasalFamilies data={data} />}
             {tab === 'patterns' && <VerbPatterns data={data} />}

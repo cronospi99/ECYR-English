@@ -24,7 +24,7 @@ const STAGES = [
 ] as const;
 
 /** Speaks "dreamed / dreamt" as two words, not "slash". */
-const spoken = (s: string) => s.replace(/\s*\/\s*/g, ', ');
+export const spoken = (s: string) => s.replace(/\s*\/\s*/g, ', ');
 
 /**
  * The verb "bubble" from the original Verb Quest: the three forms on a track,
@@ -90,7 +90,6 @@ export function VerbBubble({
     };
   }, [anchor, onClose]);
 
-  const forms = { base: verb.en, past: verb.past, part: verb.part };
   const content = (
     <motion.div
       ref={box}
@@ -145,42 +144,11 @@ export function VerbBubble({
         </button>
       </div>
 
-      {/* the three forms on a track */}
-      <div className="mt-4 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-1.5">
-        {STAGES.map((s, i) => (
-          <StageCell key={s.key} i={i} label={s.label} sub={s.sub} color={s.color} word={forms[s.key]} />
-        )).flatMap((el, i) => (i < 2 ? [el, <ArrowRight key={`a${i}`} size={16} className="text-label-3 self-center" aria-hidden />] : [el]))}
-      </div>
+      <VerbFormsTrack verb={verb} className="mt-4" />
 
       {academic && <AcademicPanel a={academic} />}
 
-      {/* one example per form */}
-      <div className="mt-4 space-y-2">
-        {STAGES.map((s, i) => {
-          const sentence = ex?.[s.key];
-          if (!sentence) return null;
-          return (
-            <motion.div
-              key={s.key}
-              initial={{ opacity: 0, x: -6 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.12 + i * 0.07 }}
-              className="bg-fill-2 flex items-start gap-2.5 rounded-[14px] py-2 pr-2 pl-3"
-              style={{ borderLeft: `4px solid ${s.color}` }}
-            >
-              <span className="w-[74px] shrink-0 pt-0.5 text-[11px] font-bold uppercase" style={{ color: ink(s.color) }}>
-                {s.label}
-              </span>
-              <span className="flex-1 text-[15px] leading-snug">
-                <Highlight text={sentence} terms={forms[s.key].split(/\s*\/\s*/)} color={s.color} />
-              </span>
-              <button type="button" onClick={() => speak(sentence, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${sentence}`}>
-                <Volume2 size={15} />
-              </button>
-            </motion.div>
-          );
-        })}
-      </div>
+      <VerbFormExamples verb={verb} ex={ex} className="mt-4" />
 
       {verb.sound && <p className="text-label-2 mt-3 text-[13px]">💡 {SOUND[verb.sound].tip}</p>}
 
@@ -205,6 +173,54 @@ export function VerbBubble({
       {content}
     </>,
     document.body,
+  );
+}
+
+type FormKey = (typeof STAGES)[number]['key'];
+const formsOf = (verb: LabVerb): Record<FormKey, string> => ({ base: verb.en, past: verb.past, part: verb.part });
+
+/** The three forms on a track (base → past → participle), each one tappable to hear it. */
+export function VerbFormsTrack({ verb, className }: { verb: LabVerb; className?: string }) {
+  const forms = formsOf(verb);
+  return (
+    <div className={cn('grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-1.5', className)}>
+      {STAGES.map((s, i) => (
+        <StageCell key={s.key} i={i} label={s.label} sub={s.sub} color={s.color} word={forms[s.key]} />
+      )).flatMap((el, i) => (i < 2 ? [el, <ArrowRight key={`a${i}`} size={16} className="text-label-3 self-center" aria-hidden />] : [el]))}
+    </div>
+  );
+}
+
+/** One example sentence per form, with the form highlighted and audio. */
+export function VerbFormExamples({ verb, ex, className }: { verb: LabVerb; ex?: Partial<Record<FormKey, string>> | null; className?: string }) {
+  const forms = formsOf(verb);
+  return (
+    <div className={cn('space-y-2', className)}>
+      {STAGES.map((s, i) => {
+        const sentence = ex?.[s.key];
+        if (!sentence) return null;
+        return (
+          <motion.div
+            key={s.key}
+            initial={{ opacity: 0, x: -6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.12 + i * 0.07 }}
+            className="bg-fill-2 flex items-start gap-2.5 rounded-[14px] py-2 pr-2 pl-3"
+            style={{ borderLeft: `4px solid ${s.color}` }}
+          >
+            <span className="w-[74px] shrink-0 pt-0.5 text-[11px] font-bold uppercase" style={{ color: ink(s.color) }}>
+              {s.label}
+            </span>
+            <span className="flex-1 text-[15px] leading-snug">
+              <Highlight text={sentence} terms={forms[s.key].split(/\s*\/\s*/)} color={s.color} />
+            </span>
+            <button type="button" onClick={() => speak(sentence, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${sentence}`}>
+              <Volume2 size={15} />
+            </button>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 }
 

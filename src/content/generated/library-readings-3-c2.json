@@ -1,0 +1,2605 @@
+[
+  {
+    "id": "r3-c2-octopus-mind-science",
+    "title": "The Alien Intelligence Next Door",
+    "level": "C2",
+    "genre": "science feature",
+    "topic": "Animal Minds",
+    "focus": "Hedging and impersonal structures in academic English",
+    "emoji": "🐙",
+    "words": 631,
+    "paragraphs": [
+      "If one were to design an intelligent creature from scratch, it seems unlikely that the result would resemble an octopus. It has no skeleton, lives for barely a year or two in most species, and receives no instruction whatsoever from its parents, who typically die before their young hatch. Yet there is a growing body of evidence to suggest that octopuses are capable of problem-solving, play and perhaps even something approaching individual personality. They would appear, in short, to be the closest thing to an alien mind that we are ever likely to meet.",
+      "The anecdotes are well known among those who work with them. Octopuses have been observed unscrewing jars from the inside, squirting jets of water at laboratory lights they apparently dislike, and escaping from their tanks at night to raid neighbouring ones before returning, as if nothing had happened, by morning. Such stories are entertaining, but they are, it must be acknowledged, difficult to interpret. Anecdote is not evidence, and there is a well-documented tendency for researchers to read human motives into animal behaviour.",
+      "More controlled studies, however, tend to support the impression of a flexible intelligence. Octopuses can learn to navigate mazes, distinguish between shapes and, according to some experiments, recognise individual humans, reacting differently to keepers who have treated them kindly and those who have not. It has also been reported that some individuals use coconut shells as portable shelters, carrying them across the sea floor for later use, a behaviour which, if confirmed, would arguably qualify as tool use.",
+      "What makes these findings particularly intriguing is the octopus's evolutionary history. The last common ancestor of octopuses and humans is generally thought to have been a small, worm-like creature that lived more than five hundred million years ago and possessed, at most, a very simple nervous system. It follows that whatever intelligence the octopus has evolved independently of our own. If that is the case, it would suggest that complex minds are not a single, unlikely accident but a solution that evolution may arrive at more than once.",
+      "The architecture of that mind is strikingly unfamiliar. Of an octopus's five hundred million or so neurons, roughly two-thirds are located not in its brain but in its arms. Each arm appears to be capable of a degree of independent action: an arm that has been severed will, for a time, continue to reach for food and pass it towards where the mouth would have been. Quite what it is like to be such a creature, if it is like anything at all, is a question that is perhaps impossible to answer, but it has led some philosophers to speculate that octopus experience may be distributed in ways that have no human equivalent.",
+      "Caution is clearly warranted. Much of the research has been carried out on a small number of species, often in artificial conditions, and the extent to which laboratory behaviour reflects life in the wild remains uncertain. There is also a risk that the octopus's undeniable charm encourages more generous interpretations than the data strictly justify. Nonetheless, the weight of evidence has been considered sufficient for several countries to extend animal welfare protections to octopuses used in research, a development that would have seemed improbable only a generation ago.",
+      "That shift raises uncomfortable questions about the growing interest in octopus farming. Critics argue that confining a solitary, curious and apparently easily bored animal in crowded tanks would be difficult to reconcile with what is now known about its needs. Supporters of the industry counter that welfare standards can be developed. Which view will prevail is, for now, an open question. What seems reasonably clear is that the octopus has forced scientists to reconsider some long-held assumptions about where, and in what form, intelligence might be found."
+    ],
+    "glossary": [
+      [
+        "from scratch",
+        "desde cero"
+      ],
+      [
+        "to hatch",
+        "salir del huevo, eclosionar"
+      ],
+      [
+        "to squirt",
+        "lanzar un chorro"
+      ],
+      [
+        "to raid",
+        "asaltar, saquear"
+      ],
+      [
+        "to read into",
+        "interpretar, atribuir"
+      ],
+      [
+        "portable shelter",
+        "refugio portátil"
+      ],
+      [
+        "common ancestor",
+        "antepasado común"
+      ],
+      [
+        "it follows that",
+        "de ello se deduce que"
+      ],
+      [
+        "severed",
+        "cortado, amputado"
+      ],
+      [
+        "distributed",
+        "distribuido, repartido"
+      ],
+      [
+        "warranted",
+        "justificado"
+      ],
+      [
+        "to extend protections to",
+        "ampliar la protección a"
+      ],
+      [
+        "to reconcile with",
+        "conciliar con"
+      ],
+      [
+        "to prevail",
+        "imponerse, prevalecer"
+      ],
+      [
+        "long-held",
+        "arraigado, mantenido desde hace tiempo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the writer say an octopus is an unlikely design for an intelligent creature?",
+        "options": [
+          "It has a very small brain",
+          "It is too large",
+          "It lacks features usually associated with intelligence, such as long life and parental teaching",
+          "It lives only in laboratories"
+        ],
+        "answer": 2,
+        "explain_es": "Sin esqueleto, vida corta y sin enseñanza parental."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's attitude to the anecdotes in paragraph 2?",
+        "options": [
+          "They prove octopuses are intelligent",
+          "They are more useful than experiments",
+          "They are entirely invented",
+          "They are entertaining but scientifically unreliable"
+        ],
+        "answer": 3,
+        "explain_es": "\"Anecdote is not evidence\"."
+      },
+      {
+        "type": "tf",
+        "q": "Some octopuses appear to react differently to kind and unkind keepers.",
+        "answer": "T",
+        "explain_es": "\"reacting differently to keepers who have treated them kindly and those who have not\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say the coconut-shell behaviour 'would arguably qualify as tool use'?",
+        "options": [
+          "It has been confirmed many times",
+          "Octopuses make the shells themselves",
+          "The claim is tentative and depends on confirmation and definition",
+          "All scientists agree it is tool use"
+        ],
+        "answer": 2,
+        "explain_es": "'If confirmed' y 'arguably': doble cautela."
+      },
+      {
+        "type": "mc",
+        "q": "What does the octopus's evolutionary history suggest, according to the writer?",
+        "options": [
+          "Octopuses descended from humans",
+          "Worms are intelligent",
+          "Intelligence requires a skeleton",
+          "Complex minds may have evolved more than once"
+        ],
+        "answer": 3,
+        "explain_es": "\"a solution that evolution may arrive at more than once\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'It follows that' introduces…",
+        "options": [
+          "a logical conclusion",
+          "a contrast",
+          "a quotation",
+          "an example"
+        ],
+        "answer": 0,
+        "explain_es": "Marca una deducción lógica."
+      },
+      {
+        "type": "tf",
+        "q": "Most of an octopus's neurons are found in its brain.",
+        "answer": "F",
+        "explain_es": "\"roughly two-thirds are located not in its brain but in its arms\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "How arms regrow",
+          "Philosophers disagree about animals",
+          "The size of the octopus brain",
+          "A mind spread through the body"
+        ],
+        "answer": 3,
+        "explain_es": "Las neuronas repartidas por los brazos: una mente distribuida."
+      },
+      {
+        "type": "mc",
+        "q": "Which of the following is NOT given as a reason for caution in paragraph 6?",
+        "options": [
+          "Laboratory conditions may be unrepresentative",
+          "Researchers may be biased by the animal's appeal",
+          "Few species have been studied",
+          "Octopuses are too dangerous to study"
+        ],
+        "answer": 3,
+        "explain_es": "No se menciona peligrosidad."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The evidence has been considered ____ for several countries to extend welfare protections to octopuses. (1 word)",
+        "answer": "sufficient",
+        "accept": [
+          "enough"
+        ],
+        "explain_es": "\"the weight of evidence has been considered sufficient\": pasiva impersonal."
+      },
+      {
+        "type": "tf",
+        "q": "Octopus farming has already been banned in several countries.",
+        "answer": "NG",
+        "explain_es": "Se mencionan protecciones en investigación, no prohibiciones de la cría."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer present the debate on octopus farming?",
+        "options": [
+          "As unresolved",
+          "As settled in favour of critics",
+          "As settled in favour of the industry",
+          "As irrelevant to science"
+        ],
+        "answer": 0,
+        "explain_es": "\"Which view will prevail is, for now, an open question.\""
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a reporting passive: People generally think that the last common ancestor was a worm-like creature. → The last common ancestor ____ a worm-like creature.",
+        "answer": "is generally thought to have been",
+        "accept": [
+          "is generally thought to be",
+          "is generally believed to have been"
+        ],
+        "explain_es": "Pasiva de reporte con infinitivo perfecto para un estado pasado."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-lighthouse-keeper-story",
+    "title": "The Last Keeper",
+    "level": "C2",
+    "genre": "short story",
+    "topic": "Solitude & Change",
+    "focus": "Aspect and nuance: perfect and continuous forms",
+    "emoji": "🗼",
+    "words": 605,
+    "paragraphs": [
+      "By the time the letter arrived, Agnes had been keeping the light on Carrow Head for thirty-one years, and she had been expecting it for at least ten of them. The envelope was thick and official, the kind that is never good news. She left it unopened on the kitchen table while she climbed the hundred and twelve steps to the lamp room, as she had done every evening since her husband died, and lit the lamp, which no longer needed her to light it.",
+      "That was the joke, of course, and she had been telling it to herself for years. The light had been automatic since 1998. A computer in a city she had never visited switched it on at dusk and off at dawn, and a technician came out twice a year to replace whatever had worn out. Agnes's official title had long since changed from 'keeper' to 'attendant', and her duties had shrunk to keeping the paint fresh, the windows clean and the visitors' book up to date. But she had gone on climbing the stairs at dusk, and she had gone on pressing the switch that no longer did anything, because it seemed wrong to let the light come on by itself with nobody there to see it.",
+      "She opened the letter the next morning. It was polite and regretful and full of phrases such as 'operational review' and 'transition arrangements'. The cottage was to be sold. Her position would end in March. In recognition of her long service, she was invited to a small ceremony at which she would be presented with a framed photograph of the lighthouse.",
+      "'A photograph,' she said aloud, to the cat. 'As if I'd forget what it looks like.'",
+      "She had been thinking, lately, about the keepers who had come before her. There had been a logbook going back to 1861, now kept in a museum on the mainland, and she had read it so often that she knew whole entries by heart. Storm all night. Lamp maintained. Brig sighted SW, in difficulty, could do nothing. One keeper, in the winter of 1883, had written the same words every day for six weeks: Nothing to report. Agnes had always found those entries the most moving of all. She imagined him sitting where she sat, watching the same grey water, having nothing to report and reporting it anyway, because that was what keepers did.",
+      "In the weeks that followed, people kept telling her how lucky she was. She would be closer to the shops. She would have neighbours. She would not have to climb those stairs in her seventies. She knew they meant well, and she smiled and agreed, and did not try to explain that she had never once, in thirty-one years, thought of the stairs as something she had to do.",
+      "On her last evening, she climbed them slowly, counting as she always did. The sea was calm, the sky a deepening violet. She stood by the switch and waited, and at the moment the computer in the distant city decided that dusk had arrived, she pressed it, and the light came on. It would have come on anyway. She knew that. But for one more night, it had not come on alone.",
+      "She wrote a final entry in the visitors' book before she left, in the careful hand she had always used for the logbook. She had considered a number of things to say: something about the sea, perhaps, or the years. In the end, she wrote only four words, and they were not her own.",
+      "Nothing to report. Lamp maintained."
+    ],
+    "glossary": [
+      [
+        "to keep the light",
+        "cuidar del faro"
+      ],
+      [
+        "lamp room",
+        "sala de la linterna"
+      ],
+      [
+        "to wear out",
+        "desgastarse"
+      ],
+      [
+        "attendant",
+        "encargado, vigilante"
+      ],
+      [
+        "to shrink",
+        "reducirse, encogerse"
+      ],
+      [
+        "visitors' book",
+        "libro de visitas"
+      ],
+      [
+        "operational review",
+        "revisión operativa (lenguaje burocrático)"
+      ],
+      [
+        "transition arrangements",
+        "medidas de transición"
+      ],
+      [
+        "logbook",
+        "cuaderno de bitácora, diario"
+      ],
+      [
+        "by heart",
+        "de memoria"
+      ],
+      [
+        "brig",
+        "bergantín"
+      ],
+      [
+        "mainland",
+        "tierra firme, continente"
+      ],
+      [
+        "to mean well",
+        "tener buena intención"
+      ],
+      [
+        "deepening",
+        "cada vez más intenso"
+      ],
+      [
+        "careful hand",
+        "letra cuidadosa"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "'She had been expecting it for at least ten of them' suggests that Agnes…",
+        "options": [
+          "had written to the authorities ten years earlier",
+          "had recently asked to retire",
+          "was surprised by the letter",
+          "had long anticipated the end of her job"
+        ],
+        "answer": 3,
+        "explain_es": "Pasado perfecto continuo: una expectativa prolongada antes de la llegada de la carta."
+      },
+      {
+        "type": "mc",
+        "q": "What is 'the joke' referred to in paragraph 2?",
+        "options": [
+          "The lighthouse had no stairs",
+          "Her husband had been a comedian",
+          "The technician never came",
+          "The lamp did not actually need her to light it"
+        ],
+        "answer": 3,
+        "explain_es": "Ella enciende un faro que ya es automático."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Agnes continue pressing the switch?",
+        "options": [
+          "The computer often failed",
+          "Visitors expected it",
+          "It felt wrong for the light to come on with nobody there",
+          "Her contract required it"
+        ],
+        "answer": 2,
+        "explain_es": "\"it seemed wrong to let the light come on by itself with nobody there to see it\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'had long since changed' means the title had changed…",
+        "options": [
+          "very recently",
+          "a long time before",
+          "gradually over many years",
+          "temporarily"
+        ],
+        "answer": 1,
+        "explain_es": "'Long since' = hace ya mucho tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of the official letter, as Agnes perceives it?",
+        "options": [
+          "Hostile",
+          "Apologetic and emotional",
+          "Warm and personal",
+          "Polite but impersonal"
+        ],
+        "answer": 3,
+        "explain_es": "\"polite and regretful and full of phrases such as 'operational review'\"."
+      },
+      {
+        "type": "mc",
+        "q": "'As if I'd forget what it looks like' reveals that Agnes finds the gift…",
+        "options": [
+          "generous",
+          "confusing",
+          "rather absurd",
+          "insulting to the cat"
+        ],
+        "answer": 2,
+        "explain_es": "Ironía: no necesita una foto de un lugar que conoce de sobra."
+      },
+      {
+        "type": "tf",
+        "q": "Agnes had read the old logbook many times.",
+        "answer": "T",
+        "explain_es": "\"she had read it so often that she knew whole entries by heart\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Agnes find the 1883 entries the most moving?",
+        "options": [
+          "They were the shortest",
+          "They were written by her ancestor",
+          "They described a famous shipwreck",
+          "They showed a keeper faithfully recording even when nothing happened"
+        ],
+        "answer": 3,
+        "explain_es": "\"having nothing to report and reporting it anyway, because that was what keepers did\"."
+      },
+      {
+        "type": "tf",
+        "q": "Agnes's family had worked at the lighthouse since 1861.",
+        "answer": "NG",
+        "explain_es": "El cuaderno empieza en 1861, pero no se dice que fueran sus antepasados."
+      },
+      {
+        "type": "mc",
+        "q": "How did Agnes respond to people who said she was lucky?",
+        "options": [
+          "She agreed outwardly while privately disagreeing",
+          "She cried",
+          "She asked to stay",
+          "She argued with them"
+        ],
+        "answer": 0,
+        "explain_es": "Sonreía y asentía, sin explicar lo que sentía."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for the paragraph beginning 'On her last evening'.",
+        "options": [
+          "Counting the steps for the first time",
+          "A storm at sea",
+          "The computer breaks down",
+          "Not alone, one last time"
+        ],
+        "answer": 3,
+        "explain_es": "\"for one more night, it had not come on alone\"."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: In the end Agnes wrote four words in the visitors' book which were not her ____. (1 word)",
+        "answer": "own",
+        "accept": [],
+        "explain_es": "Eran palabras del antiguo cuaderno de bitácora."
+      },
+      {
+        "type": "mc",
+        "q": "What does the ending suggest about Agnes?",
+        "options": [
+          "She is angry with the authorities",
+          "She has nothing to say about her life",
+          "She intends to return",
+          "She sees herself as part of a long tradition of keepers"
+        ],
+        "answer": 3,
+        "explain_es": "Cita las entradas de los antiguos fareros: se integra en esa tradición."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-quiet-office-opinion",
+    "title": "What the Open-Plan Office Took Away",
+    "level": "C2",
+    "genre": "opinion column",
+    "topic": "Work & Concentration",
+    "focus": "Cleft sentences (it-clefts and wh-clefts)",
+    "emoji": "🎧",
+    "words": 584,
+    "paragraphs": [
+      "It was the noise-cancelling headphones that first gave it away. Walk through almost any modern office and you will see them: large, padded, often expensive, worn by people who are not listening to anything at all. What they are doing is building a wall. In workplaces designed to remove walls, employees have quietly reconstructed them, one pair of ears at a time.",
+      "The open-plan office was sold to us as a revolution in collaboration. Knock down the partitions, the argument went, and ideas would flow freely between desks; junior staff would learn by overhearing their seniors; the hierarchy symbolised by the corner office would dissolve into a democratic sea of shared tables. What actually happened was rather different. Several studies that tracked employees before and after a move to open-plan layouts found that face-to-face interaction fell, sometimes dramatically, while email and instant messaging rose. When everyone can hear everything, it turns out, people stop saying very much out loud.",
+      "It is not collaboration, however, that I most mourn. It is concentration. The kind of work that most of us are paid to do, writing, analysing, designing, solving problems, depends on sustained stretches of attention that open offices make almost impossible. Research on interruptions suggests that it can take many minutes to return fully to a complex task after being distracted, and that a working day broken into fragments produces work that is not only slower but measurably worse. What an open office offers in abundance is precisely the kind of interruption that most damages this work: the overheard phone call, the colleague who 'just has a quick question', the conversation two desks away about last night's football.",
+      "Why, then, have they proved so durable? The honest answer, I suspect, is cost. It is the price of floor space, rather than any evidence about productivity, that has driven most of the redesigns of the past thirty years. An open office can accommodate considerably more people per square metre than one divided into rooms, and the language of collaboration has provided a flattering justification for what is, at heart, an accounting decision.",
+      "None of this means that the alternative is a return to rows of closed doors. What many workers seem to want is not isolation but choice: a quiet room when they need to think, a shared space when they need to talk, and the freedom to move between them without explaining themselves. The most thoughtful recent designs reflect this, offering a variety of spaces rather than a single model imposed on everyone.",
+      "Where these designs succeed, it is usually because they treat silence as a resource rather than a luxury. One firm I visited had introduced a simple rule: certain areas of the floor were designated for focused work, and conversation there was simply not permitted. The initial reaction was scepticism. Within months, those areas were the most sought-after in the building, and managers reported that the quality of written reports had noticeably improved.",
+      "What strikes me most about the open-plan experiment is how long it took us to admit that it was not working. Employees had been signalling their discomfort for years, through headphones, through working from home whenever possible, through booking meeting rooms simply to be alone. It was only when productivity data became impossible to ignore that organisations began to listen. Perhaps the lesson is broader than office design. When people go to great lengths to recreate something you have taken away, it is usually a sign that they needed it."
+    ],
+    "glossary": [
+      [
+        "to give something away",
+        "delatar, revelar"
+      ],
+      [
+        "padded",
+        "acolchado"
+      ],
+      [
+        "partition",
+        "mampara, tabique"
+      ],
+      [
+        "to overhear",
+        "oír por casualidad"
+      ],
+      [
+        "to dissolve",
+        "disolverse"
+      ],
+      [
+        "to mourn",
+        "lamentar la pérdida de, llorar"
+      ],
+      [
+        "sustained",
+        "continuo, prolongado"
+      ],
+      [
+        "in abundance",
+        "en abundancia"
+      ],
+      [
+        "durable",
+        "duradero"
+      ],
+      [
+        "floor space",
+        "superficie útil"
+      ],
+      [
+        "at heart",
+        "en el fondo"
+      ],
+      [
+        "designated",
+        "designado, reservado"
+      ],
+      [
+        "sought-after",
+        "codiciado, solicitado"
+      ],
+      [
+        "to go to great lengths",
+        "hacer grandes esfuerzos"
+      ],
+      [
+        "to signal",
+        "indicar, dar señales de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does the writer suggest employees are doing with their headphones?",
+        "options": [
+          "Ignoring their managers' instructions",
+          "Attending online meetings",
+          "Creating a private barrier in an open space",
+          "Listening to music to relax"
+        ],
+        "answer": 2,
+        "explain_es": "\"What they are doing is building a wall.\""
+      },
+      {
+        "type": "gap",
+        "q": "Summary: ____ actually happened after the move to open-plan offices was that face-to-face interaction fell. (1 word)",
+        "answer": "What",
+        "accept": [
+          "what"
+        ],
+        "explain_es": "Pseudo-hendida: \"What actually happened was rather different.\""
+      },
+      {
+        "type": "tf",
+        "q": "Studies found that people talked face to face more after moving to open-plan offices.",
+        "answer": "F",
+        "explain_es": "\"face-to-face interaction fell, sometimes dramatically\"."
+      },
+      {
+        "type": "mc",
+        "q": "'It is not collaboration, however, that I most mourn. It is concentration.' The cleft structure is used to…",
+        "options": [
+          "contrast and emphasise the writer's main concern",
+          "describe a sequence of events",
+          "introduce a new speaker",
+          "soften a criticism"
+        ],
+        "answer": 0,
+        "explain_es": "La hendida 'It is… that' enfatiza el foco: la concentración, no la colaboración."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 3, interrupted work is…",
+        "options": [
+          "faster but less accurate",
+          "unaffected in quality",
+          "slower and of lower quality",
+          "more creative"
+        ],
+        "answer": 2,
+        "explain_es": "\"not only slower but measurably worse\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer believe is the real reason open-plan offices persist?",
+        "options": [
+          "Employee preference",
+          "Government regulations",
+          "The cost of space",
+          "Evidence of higher productivity"
+        ],
+        "answer": 2,
+        "explain_es": "\"It is the price of floor space ... that has driven most of the redesigns\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'a flattering justification' is one that…",
+        "options": [
+          "makes a decision look better than it is",
+          "is legally required",
+          "is based on research",
+          "criticises the decision"
+        ],
+        "answer": 0,
+        "explain_es": "'Flattering' = que favorece, que embellece."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "Choice rather than closed doors",
+          "The end of shared spaces",
+          "A return to private offices",
+          "Why workers prefer isolation"
+        ],
+        "answer": 0,
+        "explain_es": "\"What many workers seem to want is not isolation but choice\"."
+      },
+      {
+        "type": "tf",
+        "q": "The firm's quiet areas were initially popular with all employees.",
+        "answer": "F",
+        "explain_es": "\"The initial reaction was scepticism.\""
+      },
+      {
+        "type": "tf",
+        "q": "The firm the writer visited later abolished its quiet areas.",
+        "answer": "NG",
+        "explain_es": "No se menciona."
+      },
+      {
+        "type": "mc",
+        "q": "Which of these is NOT mentioned as a way employees signalled discomfort?",
+        "options": [
+          "Complaining to trade unions",
+          "Booking meeting rooms to be alone",
+          "Working from home",
+          "Wearing headphones"
+        ],
+        "answer": 0,
+        "explain_es": "Los sindicatos no se mencionan."
+      },
+      {
+        "type": "mc",
+        "q": "What broader lesson does the writer draw at the end?",
+        "options": [
+          "When people work hard to recreate something removed, they probably needed it",
+          "Managers never listen",
+          "Offices should be abolished",
+          "Productivity data is unreliable"
+        ],
+        "answer": 0,
+        "explain_es": "Última frase del texto."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as an it-cleft: The cost of space drove most redesigns. → It was ____ most redesigns.",
+        "answer": "the cost of space that drove",
+        "accept": [
+          "the cost of space which drove"
+        ],
+        "explain_es": "Hendida con 'It was + foco + that…'."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-translator-interview",
+    "title": "Carrying a Book Across the Water",
+    "level": "C2",
+    "genre": "interview",
+    "topic": "Literary Translation",
+    "focus": "Ellipsis and substitution (so, not, do so, one)",
+    "emoji": "🖋️",
+    "words": 604,
+    "paragraphs": [
+      "Lucía Ferrer has translated more than forty novels from English into Spanish, and a handful in the other direction. We met in a café near her flat, where she had been working since six that morning on a particularly stubborn paragraph. 'Three sentences,' she said. 'Three days. That's not unusual, I'm afraid.'",
+      "Q: Do readers realise how much of a translated novel is, in a sense, yours? A: I hope not, frankly. If they did, I'd have failed. The ideal is that they forget there was a translator at all, and most of the time they do. But every sentence involves dozens of choices the author never had to make, because the author was working in one language and I'm working in two. Sometimes the choices are tiny, sometimes they're enormous. Usually they're both at once.",
+      "Q: Can you give an example of an enormous one? A: Humour is the obvious one. A pun almost never survives the journey. You can try to find an equivalent, or you can let it go and make the reader laugh somewhere else, a few lines later, where the original didn't. I tend to do the latter, though some translators would say I shouldn't. Then there are dialects. If a character in a Scottish novel speaks broad Glaswegian, do you give her an Andalusian accent? Some translators do so. I'd rather not, because suddenly she's from Seville, and the whole novel has shifted three thousand kilometres.",
+      "Q: So what do you do instead? A: I try to find a register rather than a place. Something that sounds informal, working-class, slightly rough, without pointing to any particular map. It's never entirely satisfactory. But then, no solution is. The question isn't whether you lose something. You always do. The question is whether you lose the right thing.",
+      "Q: Do authors ever object? A: Occasionally. Most don't read Spanish, so they can't. The ones who do are usually generous. I had one, a very fine novelist, who sent me forty pages of notes on my first draft, all of them perfectly polite and most of them wrong. I accepted a few, not many. He was disappointed, I think, but he wrote to me afterwards to say the reviews had been better in Spain than at home, and he supposed that meant something.",
+      "Q: Is translation an art or a craft? A: Both, obviously, but I prefer to call it a craft, because the word 'art' makes people expect inspiration, and translation is mostly patience. You read the original so many times that you begin to hear it, and then you try to write the book the author would have written had they been born in Madrid instead of Manchester. You never quite succeed. Nobody does.",
+      "Q: Are you worried about machine translation? A: For instruction manuals, yes, and I don't think I should be, because nobody went into this to translate manuals. For novels, less so. A machine can produce a sentence that is correct. What it can't yet do is decide which of five correct sentences is the right one for this character, on this page, after what happened in chapter three. Perhaps it will one day. I hope not, but I suspect so.",
+      "Q: What's the paragraph that's been taking you three days? A: A man describing his father's hands. It's very simple in English. It's simple in Spanish, too, but it's a different simple, and I haven't found it yet. I will, eventually. Or I'll find one that's close enough and spend the next ten years wishing I'd found a better one. That's the job."
+    ],
+    "glossary": [
+      [
+        "a handful",
+        "un puñado, unos pocos"
+      ],
+      [
+        "stubborn",
+        "rebelde, obstinado"
+      ],
+      [
+        "pun",
+        "juego de palabras"
+      ],
+      [
+        "to let it go",
+        "dejarlo pasar, renunciar a ello"
+      ],
+      [
+        "broad (accent)",
+        "cerrado, marcado"
+      ],
+      [
+        "register",
+        "registro (lingüístico)"
+      ],
+      [
+        "rough",
+        "tosco, áspero"
+      ],
+      [
+        "satisfactory",
+        "satisfactorio"
+      ],
+      [
+        "draft",
+        "borrador"
+      ],
+      [
+        "craft",
+        "oficio, artesanía"
+      ],
+      [
+        "inspiration",
+        "inspiración"
+      ],
+      [
+        "instruction manual",
+        "manual de instrucciones"
+      ],
+      [
+        "close enough",
+        "lo bastante aproximado"
+      ],
+      [
+        "to go into (a profession)",
+        "dedicarse a"
+      ],
+      [
+        "to hear (a text)",
+        "'oír' (captar el ritmo de un texto)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Lucía hope readers do not realise how much of a novel is hers?",
+        "options": [
+          "Authors would be angry",
+          "She is not credited by publishers",
+          "A successful translation should be invisible",
+          "She is embarrassed by her translations"
+        ],
+        "answer": 2,
+        "explain_es": "\"The ideal is that they forget there was a translator at all.\""
+      },
+      {
+        "type": "mc",
+        "q": "In 'and most of the time they do', 'do' replaces…",
+        "options": [
+          "realise how much is hers",
+          "read novels",
+          "forget there was a translator",
+          "fail"
+        ],
+        "answer": 2,
+        "explain_es": "Sustitución: 'they do (forget there was a translator)'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Lucía usually do with a pun that cannot be translated?",
+        "options": [
+          "She keeps the English words",
+          "She omits it and adds humour elsewhere",
+          "She asks the author for a new pun",
+          "She explains it in a footnote"
+        ],
+        "answer": 1,
+        "explain_es": "\"let it go and make the reader laugh somewhere else\"; \"I tend to do the latter\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does she avoid giving a Glaswegian character an Andalusian accent?",
+        "options": [
+          "It would be offensive to Scots",
+          "It relocates the character geographically",
+          "Publishers forbid it",
+          "She cannot imitate it"
+        ],
+        "answer": 1,
+        "explain_es": "\"suddenly she's from Seville, and the whole novel has shifted\"."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: Some translators give the character a regional Spanish accent; others would rather ____. (1 word)",
+        "answer": "not",
+        "accept": [],
+        "explain_es": "Elipsis con 'not': \"I'd rather not\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'The question is whether you lose the right thing' means a good translator…",
+        "options": [
+          "loses as little text as possible",
+          "chooses carefully what to sacrifice",
+          "avoids any loss",
+          "focuses on correct grammar"
+        ],
+        "answer": 1,
+        "explain_es": "Siempre se pierde algo; lo importante es elegir qué."
+      },
+      {
+        "type": "tf",
+        "q": "Most authors Lucía translates are able to read her Spanish versions.",
+        "answer": "F",
+        "explain_es": "\"Most don't read Spanish, so they can't.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does the anecdote about the novelist's notes show?",
+        "options": [
+          "Lucía trusted her judgement and was later vindicated",
+          "Lucía accepted all his suggestions",
+          "The novelist refused to work with her again",
+          "The book failed in Spain"
+        ],
+        "answer": 0,
+        "explain_es": "Aceptó pocas notas y las críticas fueron mejores en España."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Lucía prefer the word 'craft'?",
+        "options": [
+          "Translators are paid as craftspeople",
+          "It sounds more modest to publishers",
+          "Art is more difficult",
+          "'Art' suggests inspiration, but translation is mostly patience"
+        ],
+        "answer": 3,
+        "explain_es": "\"translation is mostly patience\"."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía believes machines will never translate novels well.",
+        "answer": "F",
+        "explain_es": "\"Perhaps it will one day. I hope not, but I suspect so.\""
+      },
+      {
+        "type": "mc",
+        "q": "In 'I hope not, but I suspect so', 'so' stands for…",
+        "options": [
+          "she will find the paragraph",
+          "manuals are boring",
+          "translation is a craft",
+          "machines will one day choose the right sentence"
+        ],
+        "answer": 3,
+        "explain_es": "Sustitución con 'so' de la cláusula anterior."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía has translated more novels into English than into Spanish.",
+        "answer": "F",
+        "explain_es": "Más de cuarenta al español y \"a handful in the other direction\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is her attitude to the difficult paragraph?",
+        "options": [
+          "Patient and realistic",
+          "Indifferent",
+          "Despairing",
+          "Overconfident"
+        ],
+        "answer": 0,
+        "explain_es": "\"I will, eventually. Or I'll find one that's close enough... That's the job.\""
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-salt-history",
+    "title": "The Mineral That Built Empires",
+    "level": "C2",
+    "genre": "history essay",
+    "topic": "History & Trade",
+    "focus": "Participle and reduced relative clauses",
+    "emoji": "🧂",
+    "words": 628,
+    "paragraphs": [
+      "Sprinkled on chips, dissolved in soup, scattered on icy pavements, salt has become so cheap and so abundant that it is difficult to imagine it ever being worth fighting over. Yet for most of recorded history, salt was among the most valuable commodities on earth. Needed by every human body and essential for preserving food in the centuries before refrigeration, it shaped trade routes, filled royal treasuries and, on more than one occasion, provoked rebellion.",
+      "The reason is straightforward. Before the advent of modern preservation, meat and fish left untreated would spoil within days. Packed in salt, or soaked in brine, they could last for months, making it possible to feed armies on the march, sailors on long voyages and whole cities through the winter. A society lacking reliable access to salt was, in a very real sense, a society living from harvest to harvest. Those controlling its supply therefore possessed enormous power.",
+      "Some of the earliest large-scale industries grew up around salt production. In ancient China, workers drilling hundreds of metres into the ground extracted brine using bamboo pipes, boiling it over fires fuelled by natural gas rising from the same wells. Taxes levied on the trade became one of the state's principal sources of revenue, financing, among other things, the construction of defensive walls. Recognising its importance, successive dynasties tightened their control, at times establishing a full state monopoly.",
+      "Elsewhere, salt travelled vast distances. Caravans crossing the Sahara carried slabs of rock salt cut from desert mines southwards to the markets of West Africa, returning with gold, ivory and other goods. Accounts written by medieval travellers describe towns built entirely from blocks of salt, their inhabitants dependent on supplies of food brought in from hundreds of kilometres away. In such places, it was said, salt was exchanged for gold almost weight for weight, a claim probably exaggerated but revealing nonetheless.",
+      "Europe, too, organised much of its economic life around the mineral. Cities situated near salt deposits, or controlling the routes along which salt was transported, grew wealthy on the proceeds. Fishing fleets operating in the North Sea depended on vast quantities of salt to preserve their catch, and the competition to secure it shaped alliances and conflicts between trading powers. Words still in everyday use bear witness to this history: the term 'salary' is often said to derive from the Latin for salt, although the precise connection remains disputed by scholars.",
+      "Because it was so essential, salt was also an obvious target for taxation, and taxes imposed on a necessity tend to fall hardest on the poor. In France, a much-resented salt tax, requiring households in some regions to buy a fixed quantity at prices set by the state, became a lasting symbol of royal injustice and contributed to the grievances that preceded the Revolution. In the twentieth century, a march to the sea organised in protest against a colonial salt monopoly in India drew worldwide attention, turning the simple act of collecting salt from the shore into a gesture of defiance.",
+      "What finally ended salt's long reign was not politics but technology. The development of new extraction methods in the nineteenth century, combined with railways capable of moving heavy goods cheaply, caused prices to collapse. Refrigeration then removed much of the demand for salt as a preservative. Within a few generations, a substance once guarded by soldiers had become something people threw on roads in winter.",
+      "Looking at a salt cellar on a café table today, it is easy to forget all this. But the story of salt offers a useful reminder that value is rarely intrinsic. It depends on scarcity, on need and on who controls the supply, and what seems trivially cheap to one generation may have been worth an empire to another."
+    ],
+    "glossary": [
+      [
+        "to sprinkle",
+        "espolvorear"
+      ],
+      [
+        "commodity",
+        "materia prima, mercancía"
+      ],
+      [
+        "royal treasury",
+        "tesoro real, arcas reales"
+      ],
+      [
+        "advent",
+        "llegada, aparición"
+      ],
+      [
+        "to spoil",
+        "estropearse, echarse a perder"
+      ],
+      [
+        "brine",
+        "salmuera"
+      ],
+      [
+        "to levy (a tax)",
+        "imponer, recaudar (un impuesto)"
+      ],
+      [
+        "monopoly",
+        "monopolio"
+      ],
+      [
+        "caravan",
+        "caravana"
+      ],
+      [
+        "slab",
+        "bloque, losa"
+      ],
+      [
+        "proceeds",
+        "ganancias, beneficios"
+      ],
+      [
+        "to bear witness to",
+        "dar testimonio de"
+      ],
+      [
+        "grievance",
+        "agravio, queja"
+      ],
+      [
+        "defiance",
+        "desafío, rebeldía"
+      ],
+      [
+        "salt cellar",
+        "salero"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the writer begin with images of salt on chips and pavements?",
+        "options": [
+          "To criticise excessive salt consumption",
+          "To show how salt is used in cooking",
+          "To contrast its present cheapness with its historical value",
+          "To explain how salt is produced"
+        ],
+        "answer": 2,
+        "explain_es": "Contraste entre la abundancia actual y su valor histórico."
+      },
+      {
+        "type": "mc",
+        "q": "'Needed by every human body…' (paragraph 1) is a participle clause meaning…",
+        "options": [
+          "Because it is needed by every human body",
+          "If it is needed",
+          "Although every body needs it",
+          "When the body needs it"
+        ],
+        "answer": 0,
+        "explain_es": "Cláusula de participio pasado con valor causal."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 2, why did salt give power to those who controlled it?",
+        "options": [
+          "It was required for building",
+          "It was used as currency everywhere",
+          "It was rare in all regions",
+          "It made food storage, and therefore long campaigns and winters, possible"
+        ],
+        "answer": 3,
+        "explain_es": "Permitía conservar alimentos para ejércitos, marineros y ciudades."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: Meat and fish left ____ would spoil within days. (1 word)",
+        "answer": "untreated",
+        "accept": [],
+        "explain_es": "Relativa reducida: 'left untreated' = que se dejaban sin tratar."
+      },
+      {
+        "type": "tf",
+        "q": "In ancient China, natural gas was used to boil brine.",
+        "answer": "T",
+        "explain_es": "\"boiling it over fires fuelled by natural gas rising from the same wells\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'levied' is closest in meaning to…",
+        "options": [
+          "reduced",
+          "imposed",
+          "avoided",
+          "paid back"
+        ],
+        "answer": 1,
+        "explain_es": "'To levy a tax' = imponer un impuesto."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer treat the claim that salt was exchanged for gold 'weight for weight'?",
+        "options": [
+          "As likely exaggerated but still telling",
+          "As entirely false",
+          "As a modern invention",
+          "As established fact"
+        ],
+        "answer": 0,
+        "explain_es": "\"a claim probably exaggerated but revealing nonetheless\"."
+      },
+      {
+        "type": "tf",
+        "q": "Scholars agree that 'salary' comes from the Latin word for salt.",
+        "answer": "F",
+        "explain_es": "\"the precise connection remains disputed by scholars\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Salt in French cuisine",
+          "A colonial trade agreement",
+          "Taxing a necessity",
+          "The invention of the railway"
+        ],
+        "answer": 2,
+        "explain_es": "Impuestos sobre la sal y las protestas que provocaron."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the Indian salt march attract worldwide attention, according to the text?",
+        "options": [
+          "It was the largest protest in history",
+          "It ended the monopoly immediately",
+          "It turned an everyday act into a symbol of resistance",
+          "It was organised by the French"
+        ],
+        "answer": 2,
+        "explain_es": "\"turning the simple act of collecting salt ... into a gesture of defiance\"."
+      },
+      {
+        "type": "mc",
+        "q": "What ended salt's high value?",
+        "options": [
+          "The discovery of a substitute",
+          "Political revolutions",
+          "A ban on salt taxes",
+          "New extraction methods, cheap transport and refrigeration"
+        ],
+        "answer": 3,
+        "explain_es": "\"not politics but technology\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer believes salt prices will rise again in the future.",
+        "answer": "NG",
+        "explain_es": "No hay predicción sobre precios futuros."
+      },
+      {
+        "type": "mc",
+        "q": "What general point does the writer make in the final paragraph?",
+        "options": [
+          "Cafés waste salt",
+          "Salt should be more expensive",
+          "Value depends on scarcity, need and control rather than on the thing itself",
+          "History repeats itself exactly"
+        ],
+        "answer": 2,
+        "explain_es": "\"value is rarely intrinsic\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-urban-heat-report",
+    "title": "Cooling the Overheated City",
+    "level": "C2",
+    "genre": "report",
+    "topic": "Cities & Climate",
+    "focus": "Nominalisation and complex noun phrases",
+    "emoji": "🌡️",
+    "words": 607,
+    "paragraphs": [
+      "## Summary This report examines the causes and consequences of the urban heat island effect, the tendency of cities to be significantly warmer than the surrounding countryside, and evaluates a range of measures available to municipal authorities. Its principal conclusion is that a combination of low-cost interventions, implemented consistently across neighbourhoods, can achieve a substantial reduction in summer temperatures, with corresponding benefits for public health.",
+      "## Causes The intensification of heat in urban areas is attributable to several interrelated factors. The replacement of vegetation and soil with asphalt, concrete and brick results in the absorption of large quantities of solar energy during the day and its gradual release at night. The narrowness of many streets, combined with the height of surrounding buildings, limits the circulation of air and the escape of heat. In addition, the concentration of vehicles, air-conditioning units and industrial activity contributes a considerable volume of waste heat. In the city centre examined for this report, night-time temperatures during the hottest week of last summer exceeded those recorded in nearby rural areas by up to seven degrees.",
+      "## Consequences The health implications are serious. Prolonged exposure to high temperatures, particularly the absence of relief at night, is associated with a marked increase in hospital admissions and mortality among elderly people, young children and those with chronic illnesses. The distribution of this risk is uneven. Residents of densely built, low-income districts, characterised by a scarcity of trees and green space and by poorly insulated housing, experience the greatest exposure while possessing the fewest resources for adaptation. There is also a significant economic dimension: the rise in demand for cooling places considerable strain on electricity networks and raises household energy costs.",
+      "## Possible measures A number of interventions have been evaluated in comparable cities.",
+      "Tree planting and green space: The expansion of the urban tree canopy is among the most effective measures available. Shade from mature trees can reduce surface temperatures dramatically, while evaporation from leaves cools the surrounding air. The principal limitation is time, since newly planted trees require many years to reach maturity.",
+      "Reflective surfaces: The application of light-coloured coatings to roofs and pavements reduces the absorption of solar energy. The low cost of this measure and the speed of its implementation make it particularly attractive, although concerns have been raised regarding glare.",
+      "Water features and permeable paving: The introduction of fountains, restored streams and paving that allows rainwater to soak into the ground contributes to cooling through evaporation, with the additional benefit of a reduction in flood risk.",
+      "Building regulations: The inclusion of shading, insulation and ventilation requirements in planning rules for new construction offers long-term benefits, although its impact on the existing building stock is limited.",
+      "## Recommendations On the basis of the evidence reviewed, it is recommended that the authority:",
+      "(a) give priority in its tree-planting programme to the districts identified as most vulnerable, rather than distributing new trees evenly across the city;",
+      "(b) undertake the immediate application of reflective coatings to the roofs of schools, clinics and other public buildings;",
+      "(c) establish a network of 'cool spaces', such as libraries and community centres, offering free access to shaded and air-conditioned areas during heatwaves;",
+      "(d) carry out an annual assessment of the effectiveness of these measures, with the publication of the results.",
+      "## Conclusion The urban heat island effect is not an unavoidable consequence of city life but, to a considerable extent, the product of design choices. Its mitigation therefore lies largely within the authority's control. Given the projected increase in the frequency and severity of heatwaves, the adoption of the measures outlined above should be regarded not as an optional improvement but as a matter of urgency."
+    ],
+    "glossary": [
+      [
+        "urban heat island",
+        "isla de calor urbana"
+      ],
+      [
+        "municipal authority",
+        "autoridad municipal, ayuntamiento"
+      ],
+      [
+        "attributable to",
+        "atribuible a"
+      ],
+      [
+        "waste heat",
+        "calor residual"
+      ],
+      [
+        "relief",
+        "alivio"
+      ],
+      [
+        "mortality",
+        "mortalidad"
+      ],
+      [
+        "poorly insulated",
+        "mal aislado"
+      ],
+      [
+        "strain",
+        "presión, sobrecarga"
+      ],
+      [
+        "tree canopy",
+        "cubierta arbórea, dosel"
+      ],
+      [
+        "evaporation",
+        "evaporación"
+      ],
+      [
+        "coating",
+        "revestimiento, capa"
+      ],
+      [
+        "glare",
+        "deslumbramiento"
+      ],
+      [
+        "permeable paving",
+        "pavimento permeable"
+      ],
+      [
+        "building stock",
+        "parque de edificios"
+      ],
+      [
+        "mitigation",
+        "mitigación"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the principal conclusion of the report?",
+        "options": [
+          "Cities cannot reduce their temperatures",
+          "A consistent combination of inexpensive measures can significantly lower temperatures",
+          "Only new buildings can be cooled",
+          "Air conditioning is the most effective solution"
+        ],
+        "answer": 1,
+        "explain_es": "Resumen: \"a combination of low-cost interventions ... can achieve a substantial reduction\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which phrase in 'Causes' is an example of nominalisation?",
+        "options": [
+          "The replacement of vegetation and soil",
+          "nearby rural areas",
+          "limits",
+          "results in"
+        ],
+        "answer": 0,
+        "explain_es": "'The replacement of' transforma el verbo 'replace' en sustantivo."
+      },
+      {
+        "type": "tf",
+        "q": "Night-time temperatures in the city centre were up to seven degrees higher than in nearby rural areas.",
+        "answer": "T",
+        "explain_es": "\"exceeded those recorded in nearby rural areas by up to seven degrees\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why is the lack of relief at night particularly significant?",
+        "options": [
+          "It improves sleep",
+          "It is associated with more hospital admissions and deaths among vulnerable groups",
+          "It affects only tourists",
+          "It increases electricity prices only"
+        ],
+        "answer": 1,
+        "explain_es": "\"particularly the absence of relief at night, is associated with a marked increase in hospital admissions and mortality\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the report say about the distribution of risk?",
+        "options": [
+          "Wealthy districts are most affected",
+          "Poorer, densely built areas face the most exposure with the fewest resources",
+          "It mainly affects rural residents",
+          "It is equal across the city"
+        ],
+        "answer": 1,
+        "explain_es": "\"experience the greatest exposure while possessing the fewest resources for adaptation\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In 'Consequences', 'places considerable strain on' means…",
+        "options": [
+          "removes",
+          "puts heavy pressure on",
+          "improves",
+          "reduces pressure on"
+        ],
+        "answer": 1,
+        "explain_es": "'Place strain on' = someter a presión."
+      },
+      {
+        "type": "mc",
+        "q": "What is the main limitation of tree planting, according to the report?",
+        "options": [
+          "Trees increase flood risk",
+          "Residents dislike trees",
+          "Its high cost",
+          "The time trees need to mature"
+        ],
+        "answer": 3,
+        "explain_es": "\"The principal limitation is time\"."
+      },
+      {
+        "type": "tf",
+        "q": "Concerns have been raised about glare from reflective surfaces.",
+        "answer": "T",
+        "explain_es": "\"concerns have been raised regarding glare\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which measure is said to bring the additional benefit of reducing flood risk?",
+        "options": [
+          "Building regulations",
+          "Water features and permeable paving",
+          "Cool spaces",
+          "Reflective coatings"
+        ],
+        "answer": 1,
+        "explain_es": "\"with the additional benefit of a reduction in flood risk\"."
+      },
+      {
+        "type": "heading",
+        "q": "Which heading best summarises recommendation (a)?",
+        "options": [
+          "Equal trees for every district",
+          "Planting only in parks",
+          "Ending tree planting",
+          "Targeting the most vulnerable areas"
+        ],
+        "answer": 3,
+        "explain_es": "Prioridad para los distritos más vulnerables en lugar de repartir por igual."
+      },
+      {
+        "type": "tf",
+        "q": "The report states the exact cost of each recommendation.",
+        "answer": "NG",
+        "explain_es": "No se dan cifras de coste."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The report argues that the heat island effect is largely the product of design ____. (1 word)",
+        "answer": "choices",
+        "accept": [],
+        "explain_es": "\"the product of design choices\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite using nominalisation: Because heatwaves will probably become more frequent… → Given the projected ____ of heatwaves…",
+        "answer": "increase in the frequency",
+        "accept": [
+          "rise in the frequency"
+        ],
+        "explain_es": "Nominalización: 'become more frequent' → 'an increase in the frequency'."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-chess-prodigy-profile",
+    "title": "The Girl Who Was to Be Champion",
+    "level": "C2",
+    "genre": "profile",
+    "topic": "Talent & Expectation",
+    "focus": "Future forms in the past (was to, was about to, would)",
+    "emoji": "♟️",
+    "words": 600,
+    "paragraphs": [
+      "When Mireille Ndiaye won her country's adult chess championship at the age of eleven, the newspapers knew exactly what story to tell. She was to be the first world champion from her region, the coach of the national team declared. She would play in the great tournaments of Europe and Asia. Within a decade, one commentator predicted, she would be a household name. Mireille, who at the time was mostly interested in horses, read the articles with polite bewilderment and went back to her homework.",
+      "For the next five years, the predictions seemed to be coming true. She became a grandmaster at fifteen, one of the youngest ever to do so. Sponsors arrived, followed by an agent, a nutritionist and a team of analysts who prepared her openings with the meticulousness of military planners. She travelled more in a single year than most adults do in a lifetime. She was, as she later put it, 'living inside a prophecy'.",
+      "The difficulty with prophecies is that they leave very little room for the person they describe. By sixteen, Mireille was spending up to ten hours a day studying chess. She had stopped riding; she had lost touch with most of her school friends; she had begun, she recalls, to experience every game as a test she was about to fail, rather than a contest she might win. Her results remained excellent. Her enjoyment, quietly, had disappeared.",
+      "The crisis came at a tournament in which she was expected to qualify for the world championship cycle. She was about to make her twentieth move in a winning position when she found that she could not remember why she was playing at all. She resigned the game, to the astonishment of her opponent, and withdrew from the event the same evening. Her team assumed it was a temporary lapse. It was not. Within a month, she had announced that she was taking an indefinite break from competitive chess.",
+      "The reaction was harsh. Some called her ungrateful; others suggested, less kindly, that she had never had the temperament for the top level. The coach who had first proclaimed her destiny said that he was 'deeply disappointed'. Few people asked what she wanted. 'Everyone had a future for me,' she says now. 'Nobody had asked if it was mine.'",
+      "What followed was, by the standards of the prophecy, a failure. She went to university, studied veterinary medicine and now runs a small practice treating, among others, horses. She played no serious chess for almost eight years. Then, gradually, she started again, first online, anonymously, and later at a local club where nobody seemed to care who she had once been. She found, to her surprise, that she loved the game again.",
+      "She was never to become world champion. Her rating today is lower than it was at sixteen, and she has no ambition to raise it. But she now coaches a group of talented children at her club, and she is careful, she says, about what she tells them. She does not talk about destinies. She talks about the pleasure of a well-played endgame, the value of a wasted afternoon, and the importance of having something in one's life that has nothing to do with winning.",
+      "Was the prophecy wrong? In a narrow sense, yes. In another sense, Mireille suggests, it was simply asking the wrong question. 'They wanted to know how far I would go,' she says. 'I'd rather they'd asked where I wanted to go. I would have told them. It just took me a long time to find out.'"
+    ],
+    "glossary": [
+      [
+        "household name",
+        "nombre conocido por todos"
+      ],
+      [
+        "bewilderment",
+        "desconcierto"
+      ],
+      [
+        "grandmaster",
+        "gran maestro (ajedrez)"
+      ],
+      [
+        "meticulousness",
+        "meticulosidad"
+      ],
+      [
+        "prophecy",
+        "profecía"
+      ],
+      [
+        "to lose touch with",
+        "perder el contacto con"
+      ],
+      [
+        "to resign (chess)",
+        "abandonar (rendirse)"
+      ],
+      [
+        "lapse",
+        "lapsus, fallo pasajero"
+      ],
+      [
+        "indefinite",
+        "indefinido"
+      ],
+      [
+        "temperament",
+        "temperamento"
+      ],
+      [
+        "to proclaim",
+        "proclamar"
+      ],
+      [
+        "destiny",
+        "destino"
+      ],
+      [
+        "practice (vet's)",
+        "consulta, clínica"
+      ],
+      [
+        "rating",
+        "puntuación (Elo)"
+      ],
+      [
+        "endgame",
+        "final (de partida)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "'She was to be the first world champion from her region' expresses…",
+        "options": [
+          "a fact that later came true",
+          "a confident prediction made at the time",
+          "the writer's opinion",
+          "an obligation imposed by law"
+        ],
+        "answer": 1,
+        "explain_es": "'Was to be' = futuro en el pasado: lo que se preveía entonces."
+      },
+      {
+        "type": "mc",
+        "q": "How did Mireille react to the early newspaper coverage?",
+        "options": [
+          "With polite confusion and indifference",
+          "With anger",
+          "With excitement",
+          "By giving interviews"
+        ],
+        "answer": 0,
+        "explain_es": "\"polite bewilderment\" y volvió a sus deberes."
+      },
+      {
+        "type": "mc",
+        "q": "What does Mireille mean by 'living inside a prophecy'?",
+        "options": [
+          "She believed in fortune-telling",
+          "She travelled constantly",
+          "She wrote about her future",
+          "Her life was organised around others' predictions for her"
+        ],
+        "answer": 3,
+        "explain_es": "Toda su vida giraba en torno a las predicciones."
+      },
+      {
+        "type": "mc",
+        "q": "'every game as a test she was about to fail' suggests she felt…",
+        "options": [
+          "constant imminent failure",
+          "bored",
+          "confident",
+          "relaxed"
+        ],
+        "answer": 0,
+        "explain_es": "'Be about to' = inminencia: sentía que iba a fracasar en cualquier momento."
+      },
+      {
+        "type": "tf",
+        "q": "Mireille's results declined sharply when she was sixteen.",
+        "answer": "F",
+        "explain_es": "\"Her results remained excellent. Her enjoyment, quietly, had disappeared.\""
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'resigned the game' means she…",
+        "options": [
+          "complained about the game",
+          "postponed the game",
+          "won the game",
+          "gave up the game"
+        ],
+        "answer": 3,
+        "explain_es": "En ajedrez, 'resign' = rendirse, abandonar."
+      },
+      {
+        "type": "mc",
+        "q": "Why was her opponent astonished?",
+        "options": [
+          "Mireille cried",
+          "Mireille made an illegal move",
+          "Mireille resigned while winning",
+          "Mireille offered a draw"
+        ],
+        "answer": 2,
+        "explain_es": "Abandonó \"in a winning position\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "The coach's support",
+          "A new contract",
+          "A harsh judgement",
+          "Return to competition"
+        ],
+        "answer": 2,
+        "explain_es": "Reacciones duras; pocos preguntaron qué quería ella."
+      },
+      {
+        "type": "tf",
+        "q": "When Mireille started playing again, she went to a local club before playing online.",
+        "answer": "F",
+        "explain_es": "Al revés: \"first online, anonymously, and later at a local club\"."
+      },
+      {
+        "type": "mc",
+        "q": "'She was never to become world champion' tells us…",
+        "options": [
+          "what happened later, viewed from the past",
+          "that she lost the final",
+          "that she was forbidden to compete",
+          "that she still hopes to become champion"
+        ],
+        "answer": 0,
+        "explain_es": "'Was never to' = futuro en el pasado que anticipa lo que (no) llegó a ocurrir."
+      },
+      {
+        "type": "tf",
+        "q": "Mireille's patients include horses.",
+        "answer": "T",
+        "explain_es": "\"runs a small practice treating, among others, horses\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Mireille avoid when coaching children?",
+        "options": [
+          "Talking about destinies",
+          "Discussing endgames",
+          "Encouraging hobbies",
+          "Playing online"
+        ],
+        "answer": 0,
+        "explain_es": "\"She does not talk about destinies.\""
+      },
+      {
+        "type": "gap",
+        "q": "Summary: Mireille says: 'I'd ____ they'd asked where I wanted to go.' (1 word)",
+        "answer": "rather",
+        "accept": [],
+        "explain_es": "'Would rather + past perfect' para preferencias sobre el pasado."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-tasting-menu-review",
+    "title": "Review: Brasa, a Restaurant That Tries Very Hard",
+    "level": "C2",
+    "genre": "restaurant review",
+    "topic": "Food & Criticism",
+    "focus": "Intensifiers, downtoners and gradable vs ungradable adjectives",
+    "emoji": "🍽️",
+    "words": 568,
+    "paragraphs": [
+      "There is a particular kind of restaurant that makes you feel faintly guilty for being hungry. Brasa, which opened last spring in a converted warehouse near the river, is one of them. The lighting is very dim, the staff are extremely earnest, and the menu, which is not so much a list of dishes as a short philosophical essay, informs you that the kitchen 'works in dialogue with fire'. I have nothing against fire. I simply wanted dinner.",
+      "Dinner, at Brasa, means a tasting menu of fourteen courses, priced at a figure I will not repeat here in case you are eating. There is no alternative. You may inform the staff of allergies, and they will be absolutely charming about it, but you may not, as far as I could establish, simply order a plate of something and go home.",
+      "To be fair, some of what follows is genuinely superb. An early course of grilled leeks, blackened outside and almost impossibly sweet within, served with a sauce of smoked hazelnuts, was utterly delicious, the kind of dish you remember for weeks. A single scallop, cooked for seconds over embers and dressed with nothing but brown butter and lemon, was quite perfect, in the ungradable sense of the word: there was nothing whatsoever to add or take away.",
+      "The problems begin when the kitchen's ambition outruns its judgement, which it does fairly often. A 'deconstructed' potato, presented as a powder, a foam and a single crisp, was moderately interesting and entirely unsatisfying; it is a rare achievement to make a potato less pleasurable than a potato. A course of fermented plums with pine-needle ice was slightly too clever by half, and a lamb dish, though beautifully cooked, arrived buried under so many garnishes that I spent the first minute excavating it. None of these was a disaster. All were somewhat less than the sum of their very expensive parts.",
+      "Then there is the pacing. Fourteen courses served over three and a half hours leaves a great deal of time for explanation, and the staff use all of it. Each dish is introduced with a short speech about its origins, its farmer and, in one case, its 'emotional temperature'. The first few of these are rather charming. By the eleventh, I was fairly desperate for a plate that arrived in silence.",
+      "It would be unfair to dismiss Brasa entirely, and I do not wish to. The kitchen is clearly talented, the ingredients are exceptional, and when the cooks trust them, the results are absolutely remarkable. The wine list is thoughtful and, by the standards of the room, reasonably priced. The service, for all its earnestness, is warm and attentive.",
+      "But a restaurant is not only a stage for a chef's ideas; it is a place where people come to eat and to talk to each other. Brasa sometimes forgets this. It is so very keen to impress that it occasionally neglects to please, and there is a difference. The best dishes I ate here were the simplest, and the simplest were the ones that seemed least interested in being admired.",
+      "Would I go back? Possibly, if they introduced a shorter menu, or simply let me order the leeks and the scallop and leave before the plums. At present, Brasa is a fairly good restaurant trying extremely hard to be a great one. With a little less effort, it might succeed."
+    ],
+    "glossary": [
+      [
+        "faintly",
+        "ligeramente"
+      ],
+      [
+        "earnest",
+        "serio, formal, entregado"
+      ],
+      [
+        "converted warehouse",
+        "almacén reformado"
+      ],
+      [
+        "tasting menu",
+        "menú degustación"
+      ],
+      [
+        "leek",
+        "puerro"
+      ],
+      [
+        "embers",
+        "brasas"
+      ],
+      [
+        "scallop",
+        "vieira"
+      ],
+      [
+        "to outrun",
+        "superar, ir más allá de"
+      ],
+      [
+        "too clever by half",
+        "que se pasa de listo"
+      ],
+      [
+        "garnish",
+        "guarnición, decoración"
+      ],
+      [
+        "to excavate",
+        "excavar"
+      ],
+      [
+        "pacing",
+        "ritmo"
+      ],
+      [
+        "the sum of its parts",
+        "la suma de sus partes"
+      ],
+      [
+        "to neglect to",
+        "dejar de, olvidarse de"
+      ],
+      [
+        "to be keen to",
+        "estar deseoso de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does the opening sentence suggest about Brasa?",
+        "options": [
+          "It serves very large portions",
+          "Its atmosphere is so serious that ordinary appetite seems out of place",
+          "It is cheap",
+          "It is very welcoming to hungry customers"
+        ],
+        "answer": 1,
+        "explain_es": "Ironía: el restaurante es tan solemne que uno se siente culpable por tener hambre."
+      },
+      {
+        "type": "mc",
+        "q": "What is the reviewer's attitude to the menu description 'works in dialogue with fire'?",
+        "options": [
+          "Confused",
+          "Angry",
+          "Mildly mocking",
+          "Admiring"
+        ],
+        "answer": 2,
+        "explain_es": "\"I have nothing against fire. I simply wanted dinner.\""
+      },
+      {
+        "type": "tf",
+        "q": "Diners at Brasa can order individual dishes if they prefer.",
+        "answer": "F",
+        "explain_es": "\"There is no alternative\"; no se puede pedir un solo plato."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the reviewer say the scallop was 'quite perfect, in the ungradable sense of the word'?",
+        "options": [
+          "'Quite' with an ungradable adjective means 'completely'",
+          "The reviewer is being sarcastic",
+          "'Quite' here means 'fairly', so it was only adequate",
+          "The scallop was too small"
+        ],
+        "answer": 0,
+        "explain_es": "Con adjetivos no graduables, 'quite' significa 'totalmente'."
+      },
+      {
+        "type": "mc",
+        "q": "Which dish does the reviewer criticise for making a potato 'less pleasurable than a potato'?",
+        "options": [
+          "The deconstructed potato",
+          "The lamb",
+          "The scallop",
+          "The grilled leeks"
+        ],
+        "answer": 0,
+        "explain_es": "Patata 'deconstruida' en polvo, espuma y crujiente."
+      },
+      {
+        "type": "vocab",
+        "q": "'Too clever by half' (paragraph 4) means the dish was…",
+        "options": [
+          "badly cooked",
+          "excessively ingenious, to its detriment",
+          "very intelligent",
+          "half-finished"
+        ],
+        "answer": 1,
+        "explain_es": "Expresión: pasarse de listo; ingenio que perjudica."
+      },
+      {
+        "type": "mc",
+        "q": "What was the problem with the lamb dish?",
+        "options": [
+          "It was too small",
+          "It was undercooked",
+          "It was hidden under too many garnishes",
+          "It was cold"
+        ],
+        "answer": 2,
+        "explain_es": "\"buried under so many garnishes that I spent the first minute excavating it\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "Rude staff",
+          "Too much talking",
+          "Emotional food",
+          "A fast meal"
+        ],
+        "answer": 1,
+        "explain_es": "Ritmo lento y explicaciones excesivas."
+      },
+      {
+        "type": "tf",
+        "q": "The reviewer found the wine list expensive compared with the rest of the restaurant.",
+        "answer": "F",
+        "explain_es": "\"by the standards of the room, reasonably priced\"."
+      },
+      {
+        "type": "mc",
+        "q": "'It is so very keen to impress that it occasionally neglects to please' means the restaurant…",
+        "options": [
+          "never impresses its customers",
+          "focuses on impressing at the expense of enjoyment",
+          "has neglectful staff",
+          "pleases everyone"
+        ],
+        "answer": 1,
+        "explain_es": "Quiere impresionar tanto que olvida agradar."
+      },
+      {
+        "type": "tf",
+        "q": "The reviewer has visited Brasa more than once.",
+        "answer": "NG",
+        "explain_es": "No se indica si es su primera visita."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The reviewer concludes that Brasa is a ____ good restaurant trying extremely hard to be a great one. (1 word)",
+        "answer": "fairly",
+        "accept": [],
+        "explain_es": "'Fairly' es un atenuador (downtoner) con adjetivo graduable."
+      },
+      {
+        "type": "mc",
+        "q": "What is the irony in the final sentence?",
+        "options": [
+          "Less effort might bring greater success",
+          "The restaurant is closing",
+          "The reviewer wants more courses",
+          "Great restaurants never try"
+        ],
+        "answer": 0,
+        "explain_es": "\"With a little less effort, it might succeed.\""
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-forgery-feature",
+    "title": "The Forger's Fingerprint",
+    "level": "C2",
+    "genre": "feature article",
+    "topic": "Art & Deception",
+    "focus": "Modals of speculation and deduction (present, past, future)",
+    "emoji": "🎨",
+    "words": 626,
+    "paragraphs": [
+      "For almost forty years, a small landscape painting hung in the dining room of a provincial museum, labelled as the work of a celebrated nineteenth-century master. Visitors admired it; scholars cited it; it appeared on postcards sold in the gift shop. Then, during routine conservation work, a technician noticed something odd. A pigment in the sky, a particular shade of blue, contained a compound that was not manufactured until the 1930s, several decades after the artist's death. Either the master had somehow acquired paint from the future, or the painting could not be his.",
+      "It must have been an uncomfortable morning for the curators. Forgeries are, in one sense, a museum's worst nightmare: they cast doubt not only on a single object but on the judgement of everyone who has vouched for it. Yet they are also more common than most institutions care to admit. Estimates vary widely, and are necessarily speculative, but some specialists believe that a significant proportion of the works circulating on the art market may be wrongly attributed, whether through deliberate fraud or honest error.",
+      "How could so many experts have been deceived for so long? Part of the answer lies in what forgers choose to copy. The most successful rarely reproduce famous works, which would be recognised immediately. Instead, they create 'new' paintings in the style of an established artist, often filling a gap in the known record: a missing period, a subject the artist is documented as having painted but which has never been found. Such works can't be compared directly with an original, because no original exists. They need only be plausible, and they will often be accompanied by a convincing history of ownership, itself forged.",
+      "Expectation plays a role too. A scholar who has spent years studying an artist may well see what she hopes to see, particularly when a discovery would crown a career. The forger, in effect, collaborates with his victims' desires. The landscape in the provincial museum, it later emerged, had been bought at a time when the institution was eager to expand its collection of nineteenth-century art, and its arrival was greeted with considerable fanfare. Nobody, it seems, had wanted to look too closely.",
+      "Technology has changed the balance considerably. Analysis of pigments, canvas fibres and the chemical composition of paint layers can now reveal anachronisms invisible to the naked eye. Infrared imaging can expose underdrawings, the preliminary sketches beneath the paint, which in genuine works tend to show hesitation and correction, and in copies often look suspiciously confident. Some researchers are experimenting with algorithms trained to recognise the characteristic brushwork of individual painters, although such systems are still some way from being accepted as reliable evidence.",
+      "Forgers, of course, adapt. A sophisticated forger today will use period canvases, scraped of their original images, and will grind his own pigments from historically appropriate materials. He might even study the scientific literature on authentication in order to avoid its traps. It would be naive to imagine that the contest between detection and deception will ever be decisively won. Each new method of analysis is likely to be followed, sooner or later, by a new method of evasion.",
+      "As for the landscape, it has not been destroyed. The museum, after some debate, decided to keep it on display, relabelled as a forgery and accompanied by an explanation of how it was discovered. It has, by all accounts, become one of the most popular objects in the collection. Visitors who once glanced at it in passing now stand in front of it for minutes at a time, examining the sky. Its creator will probably never be identified. Whoever he was, he can hardly have imagined that his work would one day be admired precisely for being fake."
+    ],
+    "glossary": [
+      [
+        "provincial",
+        "provincial, de provincias"
+      ],
+      [
+        "to cite",
+        "citar"
+      ],
+      [
+        "pigment",
+        "pigmento"
+      ],
+      [
+        "curator",
+        "conservador, comisario (de museo)"
+      ],
+      [
+        "to cast doubt on",
+        "poner en duda"
+      ],
+      [
+        "to vouch for",
+        "responder por, avalar"
+      ],
+      [
+        "wrongly attributed",
+        "atribuido erróneamente"
+      ],
+      [
+        "plausible",
+        "verosímil"
+      ],
+      [
+        "history of ownership",
+        "historial de propiedad, procedencia"
+      ],
+      [
+        "to crown (a career)",
+        "coronar (una carrera)"
+      ],
+      [
+        "fanfare",
+        "bombo y platillo"
+      ],
+      [
+        "anachronism",
+        "anacronismo"
+      ],
+      [
+        "underdrawing",
+        "dibujo subyacente"
+      ],
+      [
+        "to grind",
+        "moler"
+      ],
+      [
+        "evasion",
+        "evasión, elusión"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What first revealed that the landscape might be a forgery?",
+        "options": [
+          "A postcard showing a different painting",
+          "A pigment that did not exist in the artist's lifetime",
+          "A missing signature",
+          "A visitor's complaint"
+        ],
+        "answer": 1,
+        "explain_es": "Un azul con un compuesto fabricado a partir de los años 30."
+      },
+      {
+        "type": "mc",
+        "q": "'It must have been an uncomfortable morning for the curators' expresses…",
+        "options": [
+          "a confident deduction about the past",
+          "a criticism of the curators",
+          "a future prediction",
+          "an obligation"
+        ],
+        "answer": 0,
+        "explain_es": "'Must have been' = deducción segura sobre el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why are forgeries described as 'a museum's worst nightmare'?",
+        "options": [
+          "They attract thieves",
+          "They are expensive to insure",
+          "They are often damaged",
+          "They undermine trust in the experts who authenticated them"
+        ],
+        "answer": 3,
+        "explain_es": "\"they cast doubt ... on the judgement of everyone who has vouched for it\"."
+      },
+      {
+        "type": "tf",
+        "q": "Specialists agree on exactly how many artworks on the market are wrongly attributed.",
+        "answer": "F",
+        "explain_es": "\"Estimates vary widely, and are necessarily speculative\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do successful forgers avoid copying famous works?",
+        "options": [
+          "Famous works are too difficult to paint",
+          "Copies of famous works would be recognised immediately",
+          "Buyers prefer unknown artists",
+          "Famous works are protected by law"
+        ],
+        "answer": 1,
+        "explain_es": "\"which would be recognised immediately\"."
+      },
+      {
+        "type": "mc",
+        "q": "'Such works can't be compared directly with an original' means comparison is…",
+        "options": [
+          "forbidden",
+          "impossible because no original exists",
+          "unnecessary",
+          "expensive"
+        ],
+        "answer": 1,
+        "explain_es": "'Can't' = imposibilidad lógica: no existe original."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'collaborates with his victims' desires' suggests the forger…",
+        "options": [
+          "warns experts of fraud",
+          "exploits what experts want to believe",
+          "shares profits with victims",
+          "works openly with museums"
+        ],
+        "answer": 1,
+        "explain_es": "El falsificador se aprovecha de lo que las víctimas desean encontrar."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "Science joins the hunt",
+          "Why forgers use canvas",
+          "Algorithms replace experts",
+          "The history of infrared"
+        ],
+        "answer": 0,
+        "explain_es": "Análisis de pigmentos, infrarrojos, algoritmos."
+      },
+      {
+        "type": "tf",
+        "q": "In genuine paintings, underdrawings often show signs of hesitation.",
+        "answer": "T",
+        "explain_es": "\"in genuine works tend to show hesitation and correction\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's view of the future of forgery detection?",
+        "options": [
+          "Forgers will give up",
+          "Algorithms have already solved the problem",
+          "Detection will soon defeat forgery completely",
+          "The contest is likely to continue indefinitely"
+        ],
+        "answer": 3,
+        "explain_es": "\"It would be naive to imagine that the contest ... will ever be decisively won.\""
+      },
+      {
+        "type": "tf",
+        "q": "The museum's decision to keep the painting on display was made without any disagreement.",
+        "answer": "F",
+        "explain_es": "\"after some debate\"."
+      },
+      {
+        "type": "tf",
+        "q": "The forger of the landscape was later sent to prison.",
+        "answer": "NG",
+        "explain_es": "Su autor \"will probably never be identified\"; no se menciona ninguna condena."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The forger can hardly ____ imagined that his work would one day be admired for being fake. (1 word)",
+        "answer": "have",
+        "accept": [],
+        "explain_es": "'Can hardly have + participio' = deducción negativa sobre el pasado."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-boredom-essay",
+    "title": "In Praise of Boredom",
+    "level": "C2",
+    "genre": "essay",
+    "topic": "Attention & Creativity",
+    "focus": "Inversion after negative and restrictive adverbials",
+    "emoji": "🥱",
+    "words": 615,
+    "paragraphs": [
+      "Never before have human beings had so many ways of avoiding boredom, and rarely have we been so anxious about it. The smartphone, the streaming service and the endless scroll have made it possible to fill every spare moment, from the queue at the supermarket to the thirty seconds it takes for the kettle to boil. Not once in a typical day, for many of us, are we left with nothing to look at. This essay is an attempt to suggest that we may have lost something in the process.",
+      "Boredom has an unenviable reputation. It is associated with idleness, restlessness and, in children, with the kind of behaviour that ends in broken windows. Psychologists have linked chronic boredom to poor concentration, risk-taking and low mood. Little wonder, then, that we treat it as a problem to be solved, and that entire industries have grown up promising to solve it.",
+      "Yet occasional boredom, as distinct from the chronic kind, may serve a purpose. Some researchers have suggested that it acts as a signal, a kind of mental discomfort that tells us our current activity is not meeting our needs and pushes us to look for something more meaningful. Seen in this light, boredom is not a malfunction but a motivator. Only when we are allowed to feel it, the argument goes, do we have a reason to change what we are doing.",
+      "There is also some evidence, though it is far from conclusive, that boredom can encourage creative thought. In a frequently cited experiment, participants who first completed a deliberately tedious task, copying numbers from a telephone directory, subsequently came up with more inventive answers to a problem-solving exercise than those who had not. The explanation offered was that boredom sends the mind wandering, and that a wandering mind makes connections a focused one does not. Not until the external world falls quiet, perhaps, does the internal one begin to speak.",
+      "Writers and artists have long understood this intuitively. Many have described their best ideas arriving not at the desk but in moments of apparent emptiness: on long walks, during train journeys, in the bath. Such moments were once an unavoidable part of life. Now they must be actively defended, and few of us defend them. No sooner does a pause appear than we reach for a screen to fill it.",
+      "I should not want to romanticise this. Boredom can be miserable, and there is nothing noble about enduring a dull meeting or a delayed flight. Nor am I suggesting that we abandon our devices, which bring genuine pleasure and connection. Under no circumstances would I wish to return to an era in which the only alternative to boredom was more boredom. The point is not that boredom is good in itself, but that the instant elimination of every empty moment may deprive us of whatever benefits it brings.",
+      "What might a modest defence of boredom look like in practice? It could be as simple as leaving the phone in a pocket while waiting for a bus, or taking a walk without headphones, or allowing children an afternoon with nothing planned. Such experiments are, admittedly, small. But only by conducting them can we discover what our minds do when they are not being constantly fed.",
+      "Seldom do we ask what our attention is for. We treat it as something to be spent, and we allow others to compete for it. Perhaps it would be worth, now and then, leaving a little of it unspent, simply to see what grows in the space. The answer may be nothing at all. Or it may, on a good day, be the best idea we have had in months."
+    ],
+    "glossary": [
+      [
+        "spare moment",
+        "rato libre"
+      ],
+      [
+        "kettle",
+        "hervidor"
+      ],
+      [
+        "unenviable",
+        "poco envidiable"
+      ],
+      [
+        "idleness",
+        "ociosidad"
+      ],
+      [
+        "restlessness",
+        "inquietud"
+      ],
+      [
+        "chronic",
+        "crónico"
+      ],
+      [
+        "malfunction",
+        "fallo, avería"
+      ],
+      [
+        "motivator",
+        "motivador"
+      ],
+      [
+        "tedious",
+        "tedioso"
+      ],
+      [
+        "telephone directory",
+        "guía telefónica"
+      ],
+      [
+        "to wander",
+        "divagar, vagar"
+      ],
+      [
+        "intuitively",
+        "intuitivamente"
+      ],
+      [
+        "to romanticise",
+        "idealizar"
+      ],
+      [
+        "to endure",
+        "soportar"
+      ],
+      [
+        "to deprive of",
+        "privar de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Summary: Never before ____ human beings had so many ways of avoiding boredom. (1 word)",
+        "answer": "have",
+        "accept": [],
+        "explain_es": "Inversión tras 'Never before': auxiliar antes del sujeto."
+      },
+      {
+        "type": "mc",
+        "q": "What contrast does the first paragraph present?",
+        "options": [
+          "Less technology, more boredom",
+          "Children are more bored than adults",
+          "Supermarkets are boring",
+          "More ways to avoid boredom, yet more anxiety about it"
+        ],
+        "answer": 3,
+        "explain_es": "Nunca tantas formas de evitarlo y nunca tanta ansiedad."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say 'Little wonder' in paragraph 2?",
+        "options": [
+          "It is surprising that we fear boredom",
+          "Boredom is a recent invention",
+          "Given boredom's bad associations, our desire to eliminate it is unsurprising",
+          "Industries have failed"
+        ],
+        "answer": 2,
+        "explain_es": "'Little wonder' = no es de extrañar."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 3, occasional boredom may function as…",
+        "options": [
+          "a form of rest",
+          "a cause of broken windows",
+          "a sign of illness",
+          "a signal prompting us to seek something more meaningful"
+        ],
+        "answer": 3,
+        "explain_es": "\"acts as a signal ... pushes us to look for something more meaningful\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer presents the evidence on boredom and creativity as conclusive.",
+        "answer": "F",
+        "explain_es": "\"though it is far from conclusive\"."
+      },
+      {
+        "type": "mc",
+        "q": "In the experiment described, what did participants do first?",
+        "options": [
+          "Took a walk",
+          "Copied numbers from a telephone directory",
+          "Watched a film",
+          "Solved a creative problem"
+        ],
+        "answer": 1,
+        "explain_es": "\"copying numbers from a telephone directory\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'Not until the external world falls quiet … does the internal one begin to speak' suggests that…",
+        "options": [
+          "inner thoughts emerge only when outside stimulation stops",
+          "the world is always noisy",
+          "silence prevents thinking",
+          "speaking aloud helps creativity"
+        ],
+        "answer": 0,
+        "explain_es": "Inversión tras 'Not until': la mente interior aparece cuando cesa el estímulo externo."
+      },
+      {
+        "type": "mc",
+        "q": "'No sooner does a pause appear than we reach for a screen' means…",
+        "options": [
+          "pauses rarely appear",
+          "we wait a long time before using a screen",
+          "we fill pauses immediately",
+          "screens create pauses"
+        ],
+        "answer": 2,
+        "explain_es": "'No sooner… than' = en cuanto."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Limits to the argument",
+          "Abandon your devices",
+          "The nobility of delay",
+          "Return to the past"
+        ],
+        "answer": 0,
+        "explain_es": "El autor acota su tesis: no idealiza el aburrimiento ni pide abandonar los dispositivos."
+      },
+      {
+        "type": "tf",
+        "q": "The writer would like to return to an era before smartphones.",
+        "answer": "F",
+        "explain_es": "\"Under no circumstances would I wish to return to an era…\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which of these is NOT suggested as a practical experiment?",
+        "options": [
+          "Leaving the phone in a pocket at the bus stop",
+          "Walking without headphones",
+          "Banning screens at work",
+          "Giving children unplanned time"
+        ],
+        "answer": 2,
+        "explain_es": "No se propone prohibir pantallas en el trabajo."
+      },
+      {
+        "type": "tf",
+        "q": "The writer has personally tried the experiments suggested.",
+        "answer": "NG",
+        "explain_es": "El texto no lo indica."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with inversion: We seldom ask what our attention is for. → Seldom ____ what our attention is for.",
+        "answer": "do we ask",
+        "accept": [],
+        "explain_es": "Inversión tras 'Seldom': do + sujeto + verbo."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-coastal-retreat-letter",
+    "title": "An Open Letter on the Future of Saltmere",
+    "level": "C2",
+    "genre": "open letter",
+    "topic": "Coastal Erosion",
+    "focus": "Mixed and inverted conditionals (Should…, Were…, Had…)",
+    "emoji": "🌊",
+    "words": 603,
+    "paragraphs": [
+      "To the residents of Saltmere, and to the County Council,",
+      "We are writing as members of the Saltmere Coastal Forum, a group of residents, fishermen, scientists and business owners who have spent the past two years studying the future of our village. Our conclusions are not easy to write, and they will not be easy to read. We believe, however, that you deserve to hear them plainly.",
+      "The cliffs on which the northern half of Saltmere stands are retreating. They have always done so; the village church, as many of you know, once stood three fields further inland than its ruins do now. What has changed is the pace. Over the past twenty years, the cliff edge has moved back by an average of more than a metre a year, and in the storms of last winter we lost almost six metres in a single night. Had the sea wall at Cliff Road not been reinforced in 2015, the Henderson family's house would now be on the beach.",
+      "We understand the instinct to fight. Many of us share it. But we must be honest about the cost. The engineers who advised us estimate that protecting the entire northern frontage with rock armour would cost in the region of forty million pounds, a sum that neither the council nor central government has indicated any willingness to provide. Were such funding to be found, the defences would need to be maintained and eventually replaced, at further expense, for as long as anyone wished to keep the village where it is. And even then, by deflecting the waves, they would be likely to accelerate erosion further along the coast, at the expense of our neighbours in Brackley.",
+      "The alternative, which is known in the jargon as managed realignment, is to plan for a gradual and orderly move inland. This would mean identifying land, safe for at least a century, on which homes, the school and the lifeboat station could be rebuilt over the coming decades, and supporting households through the transition. It would also mean accepting that some of what we love will, in time, be lost.",
+      "We do not pretend that this is a painless option. If we had begun planning thirty years ago, when the warning signs first appeared, we would be in a far stronger position today, with land already secured and funds already set aside. We did not, and nor did the authorities responsible for us. That is a reason for urgency, not for despair.",
+      "We therefore ask the council for three things. First, that it commit to a long-term plan for Saltmere, developed with residents rather than imposed upon them. Second, that it identify and secure suitable land for relocation within the next five years. Third, that it establish a fund to compensate households whose homes are lost, so that no family is left to bear that burden alone. Should these steps not be taken, we fear that the village will face the worst of both worlds: neither protected nor prepared, simply waiting for the next storm.",
+      "To our fellow residents, we say this. Were the choice between staying and leaving entirely ours, many of us would stay. It is not. The sea is making that choice, slowly and without consulting anyone. What remains in our hands is whether we respond to it together, with time to plan, or separately, in emergency, one collapsed garden at a time.",
+      "Saltmere has survived for eight hundred years because its people adapted. Its church moved once before. We believe it can do so again, provided we begin now.",
+      "Yours sincerely,",
+      "The Saltmere Coastal Forum"
+    ],
+    "glossary": [
+      [
+        "to retreat",
+        "retroceder"
+      ],
+      [
+        "inland",
+        "tierra adentro"
+      ],
+      [
+        "to reinforce",
+        "reforzar"
+      ],
+      [
+        "sea wall",
+        "malecón, dique"
+      ],
+      [
+        "frontage",
+        "frente, fachada (costera)"
+      ],
+      [
+        "rock armour",
+        "escollera"
+      ],
+      [
+        "to deflect",
+        "desviar"
+      ],
+      [
+        "erosion",
+        "erosión"
+      ],
+      [
+        "managed realignment",
+        "reubicación planificada (retirada gestionada)"
+      ],
+      [
+        "orderly",
+        "ordenado"
+      ],
+      [
+        "lifeboat station",
+        "estación de salvamento marítimo"
+      ],
+      [
+        "to set aside",
+        "reservar, apartar"
+      ],
+      [
+        "relocation",
+        "reubicación, traslado"
+      ],
+      [
+        "to bear a burden",
+        "cargar con un peso"
+      ],
+      [
+        "the worst of both worlds",
+        "lo peor de ambas opciones"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the main purpose of the letter?",
+        "options": [
+          "To announce the closure of the school",
+          "To demand a sea wall for the whole village",
+          "To criticise the Henderson family",
+          "To argue for planned relocation and request specific council action"
+        ],
+        "answer": 3,
+        "explain_es": "Propone la 'managed realignment' y pide tres medidas al ayuntamiento."
+      },
+      {
+        "type": "mc",
+        "q": "Why do the writers mention the village church?",
+        "options": [
+          "To show that erosion is not a new phenomenon",
+          "Because the Forum meets there",
+          "To ask for funds to restore it",
+          "Because it is about to collapse"
+        ],
+        "answer": 0,
+        "explain_es": "La iglesia estaba antes más hacia el interior: la erosión siempre ha existido."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: ____ the sea wall at Cliff Road not been reinforced, the Henderson house would now be on the beach. (1 word)",
+        "answer": "Had",
+        "accept": [
+          "had"
+        ],
+        "explain_es": "Condicional mixta invertida: 'Had … not been reinforced' (pasado) + 'would now be' (presente)."
+      },
+      {
+        "type": "tf",
+        "q": "Central government has offered forty million pounds to protect the village.",
+        "answer": "F",
+        "explain_es": "Ni el ayuntamiento ni el gobierno central han mostrado disposición a pagarlo."
+      },
+      {
+        "type": "mc",
+        "q": "What disadvantage of rock armour is mentioned besides cost?",
+        "options": [
+          "It is ugly",
+          "It could worsen erosion elsewhere along the coast",
+          "It would block the harbour",
+          "It requires no maintenance"
+        ],
+        "answer": 1,
+        "explain_es": "\"likely to accelerate erosion further along the coast\"."
+      },
+      {
+        "type": "mc",
+        "q": "'Were such funding to be found…' means…",
+        "options": [
+          "Because funding was found",
+          "If such funding were found",
+          "Although funding was found",
+          "When funding is found"
+        ],
+        "answer": 1,
+        "explain_es": "Condicional invertida con 'were to'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'managed realignment' refers to…",
+        "options": [
+          "a planned, gradual move away from the coast",
+          "building higher walls",
+          "selling homes to developers",
+          "moving the sea"
+        ],
+        "answer": 0,
+        "explain_es": "Retirada planificada hacia el interior."
+      },
+      {
+        "type": "mc",
+        "q": "'If we had begun planning thirty years ago, we would be in a far stronger position today' is…",
+        "options": [
+          "a first conditional",
+          "a third conditional",
+          "a zero conditional",
+          "a mixed conditional"
+        ],
+        "answer": 3,
+        "explain_es": "Condición pasada + resultado presente: condicional mixta."
+      },
+      {
+        "type": "tf",
+        "q": "The writers blame only the authorities for the lack of earlier planning.",
+        "answer": "F",
+        "explain_es": "\"We did not, and nor did the authorities\": se incluyen a sí mismos."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Three requests",
+          "The history of Brackley",
+          "Why storms are worsening",
+          "A plan rejected"
+        ],
+        "answer": 0,
+        "explain_es": "Enumera tres peticiones."
+      },
+      {
+        "type": "mc",
+        "q": "What do the writers mean by 'the worst of both worlds'?",
+        "options": [
+          "Losing both the church and the school",
+          "Having two councils",
+          "Being neither protected by defences nor prepared to move",
+          "Paying for walls and relocation"
+        ],
+        "answer": 2,
+        "explain_es": "\"neither protected nor prepared\"."
+      },
+      {
+        "type": "tf",
+        "q": "The Forum has already identified the land for relocation.",
+        "answer": "NG",
+        "explain_es": "Piden al ayuntamiento que la identifique; no se dice que ellos ya la tengan."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of the final paragraph?",
+        "options": [
+          "Hopeful and determined",
+          "Indifferent",
+          "Angry",
+          "Resigned and bitter"
+        ],
+        "answer": 0,
+        "explain_es": "Recuerda la capacidad de adaptación del pueblo: esperanza condicionada a actuar ya."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-grandmothers-language-memoir",
+    "title": "The Language I Wish I Had Kept",
+    "level": "C2",
+    "genre": "memoir",
+    "topic": "Language & Family",
+    "focus": "Unreal past: wish, if only, it's (high) time, would rather, as if",
+    "emoji": "👵",
+    "words": 641,
+    "paragraphs": [
+      "My grandmother spoke to her hens in Galician. She spoke to the priest, the postman and my mother in Spanish, but the hens, the cow and, when she thought nobody was listening, the photograph of my grandfather on the dresser all received the language she had grown up with in a village in the hills above Lugo. I would hear it through the kitchen door, low and musical, and I understood perhaps one word in five. I wish now that I had understood the rest.",
+      "It was not that she refused to teach me. It was rather that nobody thought it worth teaching. My mother, who had moved to Madrid at seventeen, had spent years trying to lose her accent, and she regarded Galician, with the particular impatience of the recently escaped, as a language of poverty and mud. If only she had seen it differently. But I understand why she did not. For her generation, getting on meant getting out, and getting out meant sounding as if you had always been somewhere else.",
+      "So I grew up with Spanish, and later English, and a handful of Galician words that I used without knowing they were Galician: the name for a particular kind of drizzle, a word for the feeling of being homesick for a place you have never left, an expression my grandmother used whenever I was being stubborn. I assumed for years that everyone knew them. When I discovered, at university, that my friends from Valencia and Seville had no idea what I was talking about, I felt a strange mixture of embarrassment and pride, as though I had found an unexpected room in a house I thought I knew.",
+      "My grandmother died when I was twenty-three. In the weeks afterwards, sorting through her things, I found a bundle of letters she had written to my grandfather during the years he had worked in Switzerland. They were in Galician. I could not read them. I sat on her bed with the letters in my lap and felt, for the first time, the full weight of what had not been passed on. It was as if she had left me a key and I had never learned which door it opened.",
+      "I would rather not exaggerate. I have since taken classes, read novels, listened to the radio, and I can now read those letters, slowly, with a dictionary at my elbow. They are not, it turns out, especially dramatic: the price of feed, a neighbour's wedding, a cow that had stopped giving milk. But every so often, in the middle of a list of chores, there is a sentence of such tenderness that I have to put the page down. I would give a great deal to have heard her say those sentences aloud.",
+      "Galician, I should add, is not dying. It is spoken by hundreds of thousands of people, taught in schools and broadcast on television, and in many ways it is in better health than it was when my grandmother was young. But languages are not only lost on a national scale. They are lost one family at a time, in kitchens, through a series of small, sensible decisions that nobody intends to be final.",
+      "My daughter is seven. She speaks Spanish and English, and she is beginning to learn Galician, mostly from me, mostly badly. Some of my friends find this sweet; others think it is a waste of time she could spend on Mandarin. Perhaps they are right. But it is high time, I think, that somebody in my family stopped making the sensible decision. When she says the word for that particular kind of drizzle, looking out of the window at a grey morning, I hear something I had thought was gone. It is not my grandmother's voice. But it is not entirely unlike it."
+    ],
+    "glossary": [
+      [
+        "hen",
+        "gallina"
+      ],
+      [
+        "dresser",
+        "aparador"
+      ],
+      [
+        "to get on",
+        "prosperar, salir adelante"
+      ],
+      [
+        "to get out",
+        "salir (de un lugar), marcharse"
+      ],
+      [
+        "drizzle",
+        "llovizna"
+      ],
+      [
+        "homesick",
+        "nostálgico, con morriña"
+      ],
+      [
+        "stubborn",
+        "terco, cabezota"
+      ],
+      [
+        "bundle",
+        "fajo, montón"
+      ],
+      [
+        "to pass on",
+        "transmitir"
+      ],
+      [
+        "at one's elbow",
+        "a mano, al lado"
+      ],
+      [
+        "feed",
+        "pienso"
+      ],
+      [
+        "chore",
+        "tarea doméstica"
+      ],
+      [
+        "tenderness",
+        "ternura"
+      ],
+      [
+        "to broadcast",
+        "emitir"
+      ],
+      [
+        "sensible",
+        "sensato"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does the opening paragraph reveal about the grandmother's use of Galician?",
+        "options": [
+          "She reserved it for private, intimate contexts",
+          "She refused to speak it",
+          "She taught it to the priest",
+          "She used it in public with officials"
+        ],
+        "answer": 0,
+        "explain_es": "Lo hablaba con los animales y la foto del abuelo, cuando nadie escuchaba."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The writer says: 'I ____ now that I had understood the rest.' (1 word)",
+        "answer": "wish",
+        "accept": [],
+        "explain_es": "'Wish + past perfect' para lamentar el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the writer's mother look down on Galician?",
+        "options": [
+          "She preferred English",
+          "She had never heard it",
+          "She associated it with poverty and the life she had escaped",
+          "Her teachers forbade it"
+        ],
+        "answer": 2,
+        "explain_es": "\"a language of poverty and mud\"; \"the recently escaped\"."
+      },
+      {
+        "type": "mc",
+        "q": "'sounding as if you had always been somewhere else' implies that social success meant…",
+        "options": [
+          "returning to the village",
+          "hiding one's origins",
+          "learning many languages",
+          "travelling abroad"
+        ],
+        "answer": 1,
+        "explain_es": "'As if + past perfect': aparentar otra procedencia."
+      },
+      {
+        "type": "tf",
+        "q": "The writer knew from childhood that certain words were Galician.",
+        "answer": "F",
+        "explain_es": "\"I used without knowing they were Galician\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'As though I had found an unexpected room in a house I thought I knew' expresses…",
+        "options": [
+          "fear",
+          "the surprise of discovering a hidden part of one's own identity",
+          "confusion about architecture",
+          "a desire to move house"
+        ],
+        "answer": 1,
+        "explain_es": "Metáfora del descubrimiento de algo propio desconocido."
+      },
+      {
+        "type": "mc",
+        "q": "What did the letters make the writer realise?",
+        "options": [
+          "How much had not been passed down",
+          "The grandfather had never left Galicia",
+          "The letters were worthless",
+          "The grandparents had been unhappy"
+        ],
+        "answer": 0,
+        "explain_es": "\"the full weight of what had not been passed on\"."
+      },
+      {
+        "type": "mc",
+        "q": "'I would rather not exaggerate' is used to…",
+        "options": [
+          "refuse to talk about the letters",
+          "introduce a balanced, realistic account",
+          "criticise other writers",
+          "express a preference for fiction"
+        ],
+        "answer": 1,
+        "explain_es": "Matiza: las cartas no son dramáticas, aunque tienen frases tiernas."
+      },
+      {
+        "type": "tf",
+        "q": "The letters are mostly about dramatic events.",
+        "answer": "F",
+        "explain_es": "\"They are not, it turns out, especially dramatic\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "The death of Galician",
+          "Television in Galicia",
+          "Lost one family at a time",
+          "National language policy"
+        ],
+        "answer": 2,
+        "explain_es": "El gallego no muere, pero se pierde familia a familia."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's daughter is learning Mandarin.",
+        "answer": "NG",
+        "explain_es": "Algunos amigos lo sugieren, pero no se dice que lo estudie."
+      },
+      {
+        "type": "mc",
+        "q": "'It is high time … that somebody in my family stopped making the sensible decision' means…",
+        "options": [
+          "the family has always been sensible",
+          "it is too late to change",
+          "it is overdue for someone to break the pattern",
+          "the decision was made long ago"
+        ],
+        "answer": 2,
+        "explain_es": "'It's high time + pasado' = ya va siendo hora de."
+      },
+      {
+        "type": "mc",
+        "q": "What does the final sentence suggest?",
+        "options": [
+          "Something of the grandmother survives through the daughter",
+          "The writer has given up on the language",
+          "The daughter dislikes Galician",
+          "The daughter sounds exactly like the grandmother"
+        ],
+        "answer": 0,
+        "explain_es": "\"It is not my grandmother's voice. But it is not entirely unlike it.\""
+      }
+    ]
+  }
+]

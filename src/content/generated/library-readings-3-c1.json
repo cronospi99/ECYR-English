@@ -134,6 +134,60 @@
         ],
         "answer": 1,
         "explain_es": "Párrafo 6: \"neither the miracle ... nor the folly\" y \"should not be left solely to the scientists and investors\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 1, the resulting animal would arguably be…",
+        "options": [
+          "an exact copy of a mammoth",
+          "a cold-tolerant elephant with a shaggy coat",
+          "a new species of bison",
+          "a robot"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"less a mammoth than a cold-tolerant elephant with a shaggy coat\"."
+      },
+      {
+        "type": "tf",
+        "q": "Supporters argue that techniques developed for de-extinction could help endangered species.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: las técnicas podrían beneficiar a especies en peligro \"by restoring genetic diversity\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do some ethicists object to raising a mammoth-like calf in a research facility?",
+        "options": [
+          "It would be too expensive to feed",
+          "It would have no herd to teach it how to behave",
+          "It would escape into the wild",
+          "It would be dangerous to scientists"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: los elefantes aprenden de los mayores; la cría \"would presumably have no one to teach it\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'this' in \"this suggests that the project treats animals primarily as proofs of concept\" (paragraph 4) refer to?",
+        "options": [
+          "the high cost of the project",
+          "the calf's lack of a herd to learn from",
+          "the climate argument",
+          "the shrinking conservation budget"
+        ],
+        "answer": 1,
+        "explain_es": "'This' remite a que la cría no tendría quién le enseñara a ser mamut."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "A dangerous message about extinction",
+          "Benefits for the Arctic",
+          "The welfare of surrogate mothers",
+          "Who should decide"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 5 trata de la idea de que ver la extinción como reversible podría restar urgencia a evitarla."
       }
     ]
   },
@@ -266,6 +320,54 @@
         "q": "Germán Rueda was eventually dismissed by the company.",
         "answer": "NG",
         "explain_es": "El texto no dice qué le pasó a Germán; solo que unos ingenieros confirmaron las sospechas de Valeria."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"She very nearly left it until Monday\" (paragraph 1) refer to?",
+        "options": [
+          "her speech",
+          "her coat",
+          "the email with the concrete test results",
+          "the hospital extension"
+        ],
+        "answer": 2,
+        "explain_es": "'It' remite al correo del laboratorio con los resultados rutinarios."
+      },
+      {
+        "type": "mc",
+        "q": "What does Germán's behaviour 'without quite meeting her eye' (paragraph 3) suggest?",
+        "options": [
+          "He was tired",
+          "He was probably uncomfortable or hiding something",
+          "He had poor eyesight",
+          "He was busy reading the report"
+        ],
+        "answer": 1,
+        "explain_es": "Evitar la mirada sugiere incomodidad o que ocultaba algo sobre el informe corregido."
+      },
+      {
+        "type": "tf",
+        "q": "The building was to house a children's ward.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"the building was to house a children's ward\"."
+      },
+      {
+        "type": "mc",
+        "q": "How did the compliance department respond to Valeria's concerns?",
+        "options": [
+          "It stopped the pour immediately",
+          "It promised a confidential review and apparently did nothing",
+          "It dismissed Germán",
+          "It called a journalist"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: \"promised a confidential review and then, it seemed, did nothing\"."
+      },
+      {
+        "type": "tf",
+        "q": "Independent engineers eventually confirmed Valeria's suspicions.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"independent engineers would eventually confirm her suspicions\"."
       }
     ]
   },
@@ -407,6 +509,60 @@
         ],
         "answer": 0,
         "explain_es": "Párrafo 6: \"These concerns deserve consideration, but they are hardly new: similar objections accompanied the introduction of seat belts\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 2, why does maximising engagement become the main goal of product design?",
+        "options": [
+          "Users demand it",
+          "Advertising income depends on how long and how often people use the platform",
+          "Governments require it",
+          "Engineers enjoy the challenge"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: los ingresos publicitarios dependen \"on the duration and frequency of user engagement\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'Each' in \"Each represents a deliberate decision\" (paragraph 2) refer to?",
+        "options": [
+          "each user",
+          "each advertiser",
+          "each of the design features just listed",
+          "each notification interval"
+        ],
+        "answer": 2,
+        "explain_es": "'Each' remite a cada una de las funciones enumeradas: scroll infinito, reproducción automática y notificaciones."
+      },
+      {
+        "type": "tf",
+        "q": "The writer argues that self-discipline measures have no value at all.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: \"Such measures are not without value\", aunque su eficacia es limitada."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 5, what would the proposed regulations NOT do?",
+        "options": [
+          "Ban autoplay for under-eighteens",
+          "Disable non-essential notifications by default",
+          "Prevent adults from using social media as much as they wish",
+          "Require disclosure of success metrics"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 5: \"none would prevent adults from using it as much as they wish\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 4.",
+        "options": [
+          "Why data is the new oil",
+          "The limits of individual willpower",
+          "Evidence from Colombian schools",
+          "A history of seat belts"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 explica que la autodisciplina individual es insuficiente ante el desequilibrio de poder."
       }
     ]
   },
@@ -537,6 +693,54 @@
         ],
         "answer": 1,
         "explain_es": "Párrafo 6: \"she is finally being given credit that was taken from her\"."
+      },
+      {
+        "type": "mc",
+        "q": "What practical problem first preoccupied Carvajal?",
+        "options": [
+          "Schools had no electricity",
+          "Children in cold highland schools were washing in freezing water",
+          "Teachers were badly paid",
+          "Trains could not reach the villages"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: los niños \"were routinely washing in freezing water\" y muchos enfermaban."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say the story 'becomes uncomfortable' in paragraph 4?",
+        "options": [
+          "The heater stopped working",
+          "The patent was filed in her husband's name and her role was erased",
+          "The carpenter claimed the invention",
+          "The ministry refused to pay"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: la patente se presentó a nombre de Mejía y su papel fue \"actively erased\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does 'it' in \"The letters and sketches it contained\" (paragraph 6) refer to?",
+        "options": [
+          "the university archive",
+          "the box of papers",
+          "the science museum",
+          "the replica of the heater"
+        ],
+        "answer": 1,
+        "explain_es": "'It' remite a \"a box of papers\" donada por una sobrina nieta."
+      },
+      {
+        "type": "tf",
+        "q": "Some historians believe the couple probably saw the invention as a joint enterprise.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"the couple are likely to have regarded the invention as a joint enterprise\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mejía publicly corrected the record after Carvajal's death.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: Mejía \"never once corrected the record, even after her death in 1979\"."
       }
     ]
   },
@@ -673,6 +877,60 @@
         "answer": "to monitor",
         "accept": [],
         "explain_es": "\"urge somebody to do something\": \"urges participating firms to monitor\"."
+      },
+      {
+        "type": "tf",
+        "q": "The pilot involved organisations in Colombia and Chile.",
+        "answer": "T",
+        "explain_es": "Párrafo 1: \"forty-one organisations in Colombia and Chile\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 3, how did many employees use the extra day?",
+        "options": [
+          "For a second job",
+          "For medical appointments, childcare or study",
+          "For unpaid overtime",
+          "For travelling abroad"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"using the additional day for medical appointments, childcare or study\"."
+      },
+      {
+        "type": "mc",
+        "q": "What did some team leaders accuse senior management of?",
+        "options": [
+          "Cutting their pay",
+          "Underestimating the planning involved",
+          "Ignoring customer complaints",
+          "Hiring too many new staff"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: \"accused senior management of underestimating the planning involved\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did most of the organisations that withdrew give up the four-day week?",
+        "options": [
+          "Staff were unhappy",
+          "Productivity fell sharply",
+          "It was hard to coordinate with clients working a standard week",
+          "The government banned it"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 5: culparon a \"the difficulty of coordinating with clients\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 4.",
+        "options": [
+          "Better-rested staff",
+          "Problems during the transition",
+          "Who stayed and who left",
+          "Advice for future employers"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 4 describe las dificultades: reuniones comprimidas, rotación del día libre y horas extra."
       }
     ]
   },
@@ -805,6 +1063,55 @@
         ],
         "answer": 3,
         "explain_es": "Párrafo 6: \"a system capable of correcting its errors\" y \"the beginning of an argument, not the end of one\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 2, what happened to effects that did reappear in replications?",
+        "options": [
+          "They were usually larger",
+          "They were often considerably smaller",
+          "They were identical",
+          "They were never reported"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"those that did reappear were often considerably smaller than originally reported\"."
+      },
+      {
+        "type": "vocab",
+        "q": "The phrase 'held up' in paragraph 2 is closest in meaning to…",
+        "options": [
+          "were delayed",
+          "were stolen",
+          "remained valid when tested again",
+          "were raised"
+        ],
+        "answer": 2,
+        "explain_es": "\"fewer than half of the findings held up\": se sostuvieron al volver a probarlas."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 4, why did young researchers avoid replication studies?",
+        "options": [
+          "Their careers depended on new publications, not confirming others' results",
+          "Replication was illegal",
+          "They lacked the equipment",
+          "Their professors forbade it"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: las carreras dependían del número de publicaciones y las revistas preferían la novedad."
+      },
+      {
+        "type": "tf",
+        "q": "Some journals now accept papers based on their design alone, whatever the outcome.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"committing to publication whatever the outcome\"."
+      },
+      {
+        "type": "gap",
+        "q": "A professor describes the replication exercise in Bogotá as \"humbling but ____\".",
+        "answer": "invaluable",
+        "accept": [],
+        "explain_es": "Párrafo 5: \"humbling but invaluable\"."
       }
     ]
   },
@@ -940,6 +1247,60 @@
         "q": "Daniel Osei used to work as a marine biologist.",
         "answer": "NG",
         "explain_es": "El texto no dice nada sobre la carrera anterior de Osei."
+      },
+      {
+        "type": "mc",
+        "q": "Which metals do the nodules contain, according to paragraph 2?",
+        "options": [
+          "Gold, silver and copper",
+          "Cobalt, nickel and manganese",
+          "Iron, zinc and lead",
+          "Lithium and platinum"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"contain cobalt, nickel and manganese\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Dr Lindqvist mean by \"We are proposing to strip-mine a place we have not yet even catalogued\"?",
+        "options": [
+          "The area has already been fully studied",
+          "We would destroy an ecosystem before even knowing what lives there",
+          "Mining should be done more slowly",
+          "The maps of the seabed are wrong"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: la mayoría de los animales recogidos eran nuevos para la ciencia; se destruiría lo desconocido."
+      },
+      {
+        "type": "mc",
+        "q": "What concern about sediment plumes is raised in paragraph 5?",
+        "options": [
+          "They could drift far and smother filter-feeding animals",
+          "They would make the water too warm",
+          "They would damage the ships",
+          "They would block sunlight on beaches"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 5: podrían desplazarse cientos de kilómetros, \"potentially smothering filter-feeding animals\"."
+      },
+      {
+        "type": "tf",
+        "q": "Colombia is among the countries calling for a moratorium on deep-sea mining.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"Chile, Costa Rica and Colombia among them\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which best describes the campaigner's attitude at the end of the article?",
+        "options": [
+          "Determined but not very hopeful",
+          "Delighted with the decision",
+          "Completely indifferent",
+          "Ready to give up"
+        ],
+        "answer": 0,
+        "explain_es": "\"This is not over\" muestra determinación, pero \"we're not expecting much\" muestra poca esperanza."
       }
     ]
   },
@@ -1076,6 +1437,60 @@
         ],
         "answer": 2,
         "explain_es": "\"The brink\" = el borde; estar \"on the brink\" es estar a punto de desaparecer."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 1, how many of today's languages could fall silent by the end of the century?",
+        "options": [
+          "Up to half",
+          "About a tenth",
+          "All of them",
+          "Only a few dozen"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 1: \"up to half could fall silent by the end of this century\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Rosalba speak Spanish to her own children?",
+        "options": [
+          "Tikuyé had been forgotten",
+          "Her father wanted them to do well at school, where Tikuyé was punished",
+          "Her husband did not speak Tikuyé",
+          "The government required it"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: su padre quería que les fuera bien en la escuela y los maestros castigaban el uso del tikuyé."
+      },
+      {
+        "type": "tf",
+        "q": "According to the writer, research has shown exactly why speaking an ancestral language improves young people's wellbeing.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: hay una asociación, pero \"the causes of that association are complex\"."
+      },
+      {
+        "type": "mc",
+        "q": "What do the elders ask of the children in the 'language nest' sessions?",
+        "options": [
+          "To pay a small fee",
+          "To use Tikuyé while they are there",
+          "To record the stories",
+          "To learn to cook"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: \"All they ask in return is that the children use Tikuyé while they are there\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Rosalba feel hopeful at the end?",
+        "options": [
+          "A dictionary has been published",
+          "Her great-granddaughter corrected her pronunciation of a bird's name",
+          "The government funded the project",
+          "Her grandchildren moved back to the village"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: su bisnieta de seis años corrigió su pronunciación; entonces supo que tenían una oportunidad."
       }
     ]
   },
@@ -1217,6 +1632,60 @@
         ],
         "answer": 2,
         "explain_es": "Párrafo 6: \"thought-provoking, occasionally delicious and refreshingly honest\" y \"I left less sceptical than I arrived\"."
+      },
+      {
+        "type": "mc",
+        "q": "How much does the tasting menu cost?",
+        "options": [
+          "80 Singapore dollars",
+          "180 Singapore dollars",
+          "Eight dollars per course",
+          "It is free for critics"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: \"priced at a not-inconsiderable 180 Singapore dollars\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does the chef explain why most dishes are plant-based?",
+        "options": [
+          "Cultivated meat is too expensive",
+          "It lets the star ingredient be judged in context",
+          "Diners prefer vegetables",
+          "The licence limits meat dishes"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: Tan lo defiende \"as a way of letting the star ingredient be judged in context\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the review, cultivated meat imitates minced meat better than whole cuts.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"much better at imitating minced or finely chopped meat than whole cuts\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the reviewer criticise about the service?",
+        "options": [
+          "The waiters were rude",
+          "The service was too slow",
+          "Staff were sometimes over-eager to explain the science",
+          "The waiters did not know the menu"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 5: \"occasionally over-eager to explain the science\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the reviewer suggest about people who claim certainty about cultivated meat's future?",
+        "options": [
+          "They are probably experts",
+          "They are probably selling something",
+          "They have eaten there many times",
+          "They are usually vegetarians"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: \"anyone who claims certainty either way is probably selling something\"."
       }
     ]
   },
@@ -1361,6 +1830,60 @@
         ],
         "answer": 1,
         "explain_es": "\"With hindsight\" = en retrospectiva, con lo que se sabe ahora."
+      },
+      {
+        "type": "mc",
+        "q": "Why are the two countries not named in the interview?",
+        "options": [
+          "Varga has forgotten their names",
+          "The talks were confidential",
+          "The countries no longer exist",
+          "The treaty failed"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"The talks were confidential, so the countries are not named here\"."
+      },
+      {
+        "type": "mc",
+        "q": "What caused the downstream delegation to walk out in the second winter?",
+        "options": [
+          "A disagreement over money",
+          "Flooding in a border town caused by water released from a dam",
+          "An insult from Varga",
+          "A change of mediator"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: el agua liberada de una presa causó inundaciones y la delegación se retiró."
+      },
+      {
+        "type": "mc",
+        "q": "According to Varga, what did the delegates actually need (paragraph 6)?",
+        "options": [
+          "More detailed hydrological models",
+          "Reassurance that the other side would honour an agreement",
+          "More time to study the data",
+          "A different mediator"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: necesitaban confianza en que el otro lado cumpliría; era cuestión de \"trust rather than data\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Varga mean by \"Don't mistake silence for agreement\"?",
+        "options": [
+          "A party that says nothing may not actually agree",
+          "Mediators should talk less",
+          "Silence always means yes",
+          "Negotiations should be held in silence"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 7: advierte que el silencio de una parte no significa que esté de acuerdo."
+      },
+      {
+        "type": "tf",
+        "q": "Varga keeps a notebook and believes it helped her remember what she learned.",
+        "answer": "T",
+        "explain_es": "Párrafo 7: \"Half of what I learned, I'd have forgotten by now if I hadn't written it down\"."
       }
     ]
   },
@@ -1496,6 +2019,60 @@
         ],
         "answer": 0,
         "explain_es": "Párrafo 5: \"spend heavily on preventing rare, spectacular dangers and comparatively little on common, mundane ones\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 2, which kinds of risks frighten us most?",
+        "options": [
+          "Routine and familiar ones",
+          "Dramatic, unfamiliar or uncontrollable ones",
+          "Ones we choose ourselves",
+          "Statistically common ones"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 2: los riesgos \"dramatic, unfamiliar or outside our control\" nos asustan más."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer mean by the 'illusion of control' (paragraph 4)?",
+        "options": [
+          "Feeling safe when driving because one is in charge, though that is misleading",
+          "Pilots controlling passengers",
+          "Governments controlling the media",
+          "Being unable to control a car"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: al conducir siente que nada malo pasará porque controla el volante, lo cual es engañoso."
+      },
+      {
+        "type": "vocab",
+        "q": "The word 'mundane' in paragraph 5 is closest in meaning to…",
+        "options": [
+          "ordinary and everyday",
+          "spectacular",
+          "worldwide",
+          "dangerous"
+        ],
+        "answer": 0,
+        "explain_es": "Contrasta \"rare, spectacular dangers\" con \"common, mundane ones\": corrientes, cotidianos."
+      },
+      {
+        "type": "mc",
+        "q": "What question does the writer now ask when something frightens them?",
+        "options": [
+          "Would an expert worry?",
+          "Is this risk in the news?",
+          "If this risk were boring, would I still be worried?",
+          "Can I control this risk?"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 6: \"if this risk were boring, would I still be worried?\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer says the new strategy on flights has worked perfectly.",
+        "answer": "F",
+        "explain_es": "Párrafo 6: recordar las cifras reales funciona \"with mixed results\"."
       }
     ]
   },
@@ -1628,6 +2205,60 @@
         "q": "The writer wants the project to be cancelled completely.",
         "answer": "F",
         "explain_es": "Párrafo 6: \"I do not ask that the project be abandoned. I ask that it be properly examined.\""
+      },
+      {
+        "type": "mc",
+        "q": "How tall would the proposed Torre Bahía be?",
+        "options": [
+          "Twenty-eight storeys",
+          "Forty-eight storeys",
+          "Four hundred metres",
+          "Sixty storeys"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"the forty-eight-storey hotel and apartment tower\"."
+      },
+      {
+        "type": "mc",
+        "q": "Who does the writer want to review the traffic and drainage study?",
+        "options": [
+          "Consultants paid by the developer",
+          "The architect",
+          "The city's own engineers",
+          "Hotel guests"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: \"reviewed by the city's own engineers rather than by consultants paid by the developer\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the writer, the current plans appear to ignore rising sea levels.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"rising sea levels, which the current plans appear to ignore entirely\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer suggest by calling the city 'careless' rather than 'bold' (paragraph 5)?",
+        "options": [
+          "Sacrificing its historic character for short-term investment would be irresponsible",
+          "Modern buildings are always ugly",
+          "Visitors prefer new hotels",
+          "The architect lacks experience"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 5: sacrificar su activo más valioso por inversión a corto plazo no es valentía sino descuido."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 4.",
+        "options": [
+          "Visual impact on the skyline",
+          "Drainage and traffic",
+          "A rushed and unresponsive consultation",
+          "The writer's proposals"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 critica una consulta de tres semanas en Navidad y solicitudes sin respuesta."
       }
     ]
   }

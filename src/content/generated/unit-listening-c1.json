@@ -1,0 +1,5098 @@
+{
+ "1": [
+  {
+   "id": "ul-c1-1-1",
+   "title": "Why Friendships Fade",
+   "level": "C1",
+   "kind": "podcast",
+   "topic": "Friendship, opinions and disagreeing politely",
+   "focus": "Phrasal verbs",
+   "emoji": "🫂",
+   "speakers": [
+    {
+     "name": "Hannah",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Dev",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome back to Social Animals. Today we're looking at something almost everyone has experienced but rarely talks about: friendships that just, well, fizzle out. Dev, you've been reading up on this."
+    },
+    {
+     "s": 1,
+     "text": "I have. And the first thing that struck me is how few friendships end with a dramatic falling-out. Most of them simply drift apart. Nobody breaks anything off; people just stop keeping up."
+    },
+    {
+     "s": 0,
+     "text": "That rings true. I can think of three or four friends from university I was incredibly close to, and now we barely catch up once a year."
+    },
+    {
+     "s": 1,
+     "text": "And the research suggests that's completely normal. One study found we replace about half our close friends every seven years. Life moves on. People move away, settle down, have kids, take up new jobs."
+    },
+    {
+     "s": 0,
+     "text": "So is it something we should worry about?"
+    },
+    {
+     "s": 1,
+     "text": "Not necessarily. Some friendships are tied to a particular stage of life, and when that stage ends, they wind down naturally. The problem is when we let go of friendships we actually value, just because we never got round to calling."
+    },
+    {
+     "s": 0,
+     "text": "Right. And there's that awkwardness, isn't there? The longer you leave it, the harder it is to pick up the phone."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. People assume the other person has moved on, or that they'll come across as needy. In fact, studies show people consistently underestimate how pleased friends are to hear from them."
+    },
+    {
+     "s": 0,
+     "text": "That's quite reassuring. What about friendships that end badly? The genuine fallings-out?"
+    },
+    {
+     "s": 1,
+     "text": "Those are different. Usually, there's been a build-up. Someone feels let down, they don't bring it up, and it festers. Then one small thing sets it off."
+    },
+    {
+     "s": 0,
+     "text": "And can those be patched up?"
+    },
+    {
+     "s": 1,
+     "text": "Often, yes, if both sides are willing to open up. It sometimes takes years, though. People need time to get over the hurt before they can bury the hatchet."
+    },
+    {
+     "s": 0,
+     "text": "I'll admit, I've got one friendship like that. We fell out over a holiday, of all things. It's been five years."
+    },
+    {
+     "s": 1,
+     "text": "Have you thought about reaching out?"
+    },
+    {
+     "s": 0,
+     "text": "I have, but, um, I keep putting it off. I suppose I'm worried she'll turn me down."
+    },
+    {
+     "s": 1,
+     "text": "Well, the evidence suggests she probably won't. And even if she does, you'll have tried."
+    },
+    {
+     "s": 0,
+     "text": "Fair point. OK, listeners, if you've reconnected with an old friend, or if you've decided to let a friendship go, we'd love to hear from you."
+    },
+    {
+     "s": 1,
+     "text": "And Hannah, I'll be asking next week whether you've sent that message."
+    },
+    {
+     "s": 0,
+     "text": "No pressure, then. Thanks, Dev."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main topic of this episode?",
+     "options": [
+      "How to make new friends at university",
+      "Why friendships fade and whether they can be revived",
+      "The psychology of romantic relationships",
+      "How social media affects friendship"
+     ],
+     "answer": 1,
+     "explain_es": "Hannah: \"friendships that just, well, fizzle out.\" Después hablan de cómo recuperarlas."
+    },
+    {
+     "type": "mc",
+     "q": "According to Dev, how do most friendships end?",
+     "options": [
+      "With a dramatic argument",
+      "They gradually drift apart",
+      "One person moves abroad",
+      "Through a misunderstanding online"
+     ],
+     "answer": 1,
+     "explain_es": "Dev: \"how few friendships end with a dramatic falling-out. Most of them simply drift apart.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did one study find?",
+     "options": [
+      "We replace about half our close friends every seven years",
+      "Most people have only two close friends",
+      "Friendships last longer than marriages",
+      "People lose all university friends within a decade"
+     ],
+     "answer": 0,
+     "explain_es": "Dev: \"we replace about half our close friends every seven years.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dev believes that every lost friendship is cause for concern.",
+     "answer": "F",
+     "explain_es": "Dev: \"Not necessarily. Some friendships are tied to a particular stage of life\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do people consistently underestimate, according to studies?",
+     "options": [
+      "How busy their friends are",
+      "How pleased friends are to hear from them",
+      "How long friendships last",
+      "How much they have changed"
+     ],
+     "answer": 1,
+     "explain_es": "Dev: \"people consistently underestimate how pleased friends are to hear from them.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Dev describe friendships that end badly?",
+     "options": [
+      "They end suddenly with no warning",
+      "There is usually a build-up of unspoken resentment",
+      "They are always caused by money",
+      "They can never be repaired"
+     ],
+     "answer": 1,
+     "explain_es": "Dev: \"Usually, there's been a build-up. Someone feels let down, they don't bring it up, and it festers.\""
+    },
+    {
+     "type": "tf",
+     "q": "Hannah fell out with her friend over a holiday.",
+     "answer": "T",
+     "explain_es": "Hannah: \"We fell out over a holiday, of all things.\""
+    },
+    {
+     "type": "tf",
+     "q": "Hannah's former friend has tried to contact her.",
+     "answer": "NG",
+     "explain_es": "No se menciona que la amiga haya intentado contactar con ella."
+    },
+    {
+     "type": "mc",
+     "q": "Why hasn't Hannah contacted her friend?",
+     "options": [
+      "She doesn't have her number",
+      "She fears being rejected",
+      "She is still angry",
+      "Her friend lives abroad"
+     ],
+     "answer": 1,
+     "explain_es": "Hannah: \"I keep putting it off. I suppose I'm worried she'll turn me down.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Dev says people need time to get ____ the hurt before they can bury the hatchet. (1 word)",
+     "answer": "over",
+     "accept": [
+      "over"
+     ],
+     "explain_es": "Dev: \"People need time to get over the hurt before they can bury the hatchet.\" Phrasal verb: get over = superar."
+    }
+   ],
+   "dictation": [
+    "Life moves on.",
+    "Those are different.",
+    "And even if she does, you'll have tried."
+   ]
+  },
+  {
+   "id": "ul-c1-1-2",
+   "title": "Fifteen Years of Silence",
+   "level": "C1",
+   "kind": "interview",
+   "topic": "Friendship, opinions and disagreeing politely",
+   "focus": "Gerund & infinitive constructions",
+   "emoji": "✉️",
+   "speakers": [
+    {
+     "name": "Host Joanna",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Teresa",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guest today, Teresa Molina, didn't speak to her closest friend for fifteen years. Last spring, they reconciled. Teresa, thank you for agreeing to share this."
+    },
+    {
+     "s": 1,
+     "text": "Thank you. I hesitated about doing it, to be honest, but I've come to think it might help someone."
+    },
+    {
+     "s": 0,
+     "text": "Let's go back to the beginning. How did you meet?"
+    },
+    {
+     "s": 1,
+     "text": "We struck up a friendship on the first day of secondary school. I remember noticing her because she was the only other girl reading on the bus. We hit it off immediately. We were completely on the same wavelength."
+    },
+    {
+     "s": 0,
+     "text": "And what went wrong?"
+    },
+    {
+     "s": 1,
+     "text": "She got married when we were twenty-six, and I'd promised to give a speech. The night before, I panicked and, well, I decided not to go. I told her I was ill. I wasn't."
+    },
+    {
+     "s": 0,
+     "text": "That's quite a confession."
+    },
+    {
+     "s": 1,
+     "text": "It is. I regret lying to her more than anything I've ever done. She found out a few weeks later, and she simply stopped answering my calls. I tried phoning for a while, and then I stopped trying."
+    },
+    {
+     "s": 0,
+     "text": "Why did you stop?"
+    },
+    {
+     "s": 1,
+     "text": "Pride, mainly. I kept telling myself she'd overreacted. I didn't want to admit I'd let her down. I'd sooner have argued that I was right than apologised."
+    },
+    {
+     "s": 0,
+     "text": "So what changed?"
+    },
+    {
+     "s": 1,
+     "text": "My mother died two years ago, and at the funeral, I found myself looking round for her. That was when I realised I'd never stopped missing her."
+    },
+    {
+     "s": 0,
+     "text": "How did you get back in touch?"
+    },
+    {
+     "s": 1,
+     "text": "I wrote a letter. A real one, on paper. I remember spending three weekends trying to get the wording right. In the end I just stopped trying to justify myself and wrote, \"I'm sorry. I was a coward, and I've regretted it every day.\""
+    },
+    {
+     "s": 0,
+     "text": "And she answered?"
+    },
+    {
+     "s": 1,
+     "text": "Not for two months. I'd almost given up hoping. Then one morning she called. She said she'd meant to write back many times but couldn't bring herself to do it."
+    },
+    {
+     "s": 0,
+     "text": "What was it like meeting again?"
+    },
+    {
+     "s": 1,
+     "text": "Awkward at first. We both tried to avoid mentioning the wedding. But then she stopped to look at me and said, \"You still read on the bus, don't you?\" And we both burst out laughing."
+    },
+    {
+     "s": 0,
+     "text": "And now?"
+    },
+    {
+     "s": 1,
+     "text": "We meet every Sunday. It's not the same as before, it can't be, but it's grown into something maybe deeper."
+    },
+    {
+     "s": 0,
+     "text": "Any advice for listeners in a similar situation?"
+    },
+    {
+     "s": 1,
+     "text": "Don't wait for a funeral. And when you apologise, don't explain. Just apologise."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why is Teresa being interviewed?",
+     "options": [
+      "She has written a book about friendship",
+      "She reconciled with a friend after fifteen years of silence",
+      "She organises weddings",
+      "She is a psychologist"
+     ],
+     "answer": 1,
+     "explain_es": "Joanna: \"didn't speak to her closest friend for fifteen years. Last spring, they reconciled.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Teresa first notice her friend?",
+     "options": [
+      "They sat together in class",
+      "She was the only other girl reading on the bus",
+      "They lived on the same street",
+      "They were in the same sports team"
+     ],
+     "answer": 1,
+     "explain_es": "Teresa: \"she was the only other girl reading on the bus.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Teresa do on the night before the wedding?",
+     "options": [
+      "She had an argument with the groom",
+      "She decided not to go and pretended to be ill",
+      "She lost her speech",
+      "She told her friend a secret"
+     ],
+     "answer": 1,
+     "explain_es": "Teresa: \"I decided not to go. I told her I was ill. I wasn't.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Teresa stop trying to contact her friend?",
+     "options": [
+      "She moved abroad",
+      "Mainly out of pride",
+      "Her friend asked her to stop",
+      "She lost her number"
+     ],
+     "answer": 1,
+     "explain_es": "Teresa: \"Pride, mainly.\""
+    },
+    {
+     "type": "tf",
+     "q": "Teresa's friend attended her mother's funeral.",
+     "answer": "F",
+     "explain_es": "Teresa: \"at the funeral, I found myself looking round for her.\" No estaba allí."
+    },
+    {
+     "type": "mc",
+     "q": "How did Teresa get back in touch?",
+     "options": [
+      "By email",
+      "By writing a letter on paper",
+      "Through a mutual friend",
+      "By turning up at her house"
+     ],
+     "answer": 1,
+     "explain_es": "Teresa: \"I wrote a letter. A real one, on paper.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Teresa spent three ____ trying to get the wording of her letter right. (1 word)",
+     "answer": "weekends",
+     "accept": [
+      "weekends"
+     ],
+     "explain_es": "Teresa: \"I remember spending three weekends trying to get the wording right.\""
+    },
+    {
+     "type": "tf",
+     "q": "Teresa's friend is now divorced.",
+     "answer": "NG",
+     "explain_es": "No se dice nada sobre el estado civil actual de la amiga."
+    },
+    {
+     "type": "mc",
+     "q": "What is the key point of Teresa's advice about apologising?",
+     "options": [
+      "Explain your reasons fully",
+      "Apologise without justifying yourself",
+      "Wait until the other person is ready",
+      "Ask a friend to help you"
+     ],
+     "answer": 1,
+     "explain_es": "Teresa: \"when you apologise, don't explain. Just apologise.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"I regret ____ to her more than anything I've ever done.\" (1 word)",
+     "answer": "lying",
+     "accept": [
+      "lying"
+     ],
+     "explain_es": "regret + gerundio = arrepentirse de algo pasado (regret + to-infinitive es para anunciar malas noticias)."
+    }
+   ],
+   "dictation": [
+    "We hit it off immediately.",
+    "I tried phoning for a while, and then I stopped trying.",
+    "Don't wait for a funeral."
+   ]
+  }
+ ],
+ "2": [
+  {
+   "id": "ul-c1-2-1",
+   "title": "Dressing the Characters",
+   "level": "C1",
+   "kind": "interview",
+   "topic": "Fashion, style and first impressions",
+   "focus": "Review of verb patterns",
+   "emoji": "🧵",
+   "speakers": [
+    {
+     "name": "Host Ben",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Designer Ruth",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guest today is Ruth Adebayo, a costume designer who's worked on more than forty stage productions. Ruth, what does a costume designer actually do?"
+    },
+    {
+     "s": 1,
+     "text": "In a nutshell, I help the audience understand who a character is before they've said a word. Clothes do an enormous amount of storytelling."
+    },
+    {
+     "s": 0,
+     "text": "Where do you start?"
+    },
+    {
+     "s": 1,
+     "text": "With the script, always. I read it three or four times, and I try to imagine what each character would choose to wear, which is not necessarily what looks best. Then I sit down with the director, who usually wants me to explain every decision."
+    },
+    {
+     "s": 0,
+     "text": "Can you give me an example of a decision like that?"
+    },
+    {
+     "s": 1,
+     "text": "Sure. In a production of a Chekhov play last year, the director wanted the young heroine to wear white throughout. I persuaded her to let me dress her in hand-me-downs instead, slightly too big, slightly faded. It made the audience feel she was living in someone else's life."
+    },
+    {
+     "s": 0,
+     "text": "That's a lovely detail. How do actors react to their costumes?"
+    },
+    {
+     "s": 1,
+     "text": "It varies enormously. Some actors refuse to rehearse until they've got the shoes. Shoes make you walk differently, and that changes everything. Others, er, would happily perform in their own jeans if I let them."
+    },
+    {
+     "s": 0,
+     "text": "Do you ever have disagreements?"
+    },
+    {
+     "s": 1,
+     "text": "Of course. I once had an actor who insisted on wearing a very expensive designer suit for a character who was supposed to be broke. I had to convince him that it would undermine the whole performance."
+    },
+    {
+     "s": 0,
+     "text": "How did you manage it?"
+    },
+    {
+     "s": 1,
+     "text": "I made him try on both and look in the mirror. The cheap suit made him stand differently. He ended up thanking me."
+    },
+    {
+     "s": 0,
+     "text": "What about historical productions? How accurate do you have to be?"
+    },
+    {
+     "s": 1,
+     "text": "Less than people think. I tend to avoid being slavishly accurate. Audiences expect a character to look the part, but they need to recognise the signals. A completely accurate eighteenth-century outfit can look ridiculous to a modern eye."
+    },
+    {
+     "s": 0,
+     "text": "You must spend a lot of time shopping."
+    },
+    {
+     "s": 1,
+     "text": "Ha, yes. I love rummaging through second-hand markets. You can't fake the way fabric wears with age. I've learned to trust my instincts there."
+    },
+    {
+     "s": 0,
+     "text": "Is there a costume you're most proud of?"
+    },
+    {
+     "s": 1,
+     "text": "Probably a dress I made for a woman playing a queen who'd lost everything. Understated, almost plain, but in a fabric that caught the light whenever she moved. It managed to suggest power and loss at the same time."
+    },
+    {
+     "s": 0,
+     "text": "And what would you advise someone wanting to get into the profession?"
+    },
+    {
+     "s": 1,
+     "text": "Learn to sew properly. It sounds old-fashioned, but it lets you talk to the people making your costumes on equal terms. And go to the theatre constantly."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to Ruth, what is the main job of a costume designer?",
+     "options": [
+      "To make actors look attractive",
+      "To help the audience understand characters through clothes",
+      "To buy clothes cheaply",
+      "To follow fashion trends"
+     ],
+     "answer": 1,
+     "explain_es": "Ruth: \"I help the audience understand who a character is before they've said a word.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Ruth advises anyone entering the profession to learn to ____ properly. (1 word)",
+     "answer": "sew",
+     "accept": [
+      "sew"
+     ],
+     "explain_es": "Ruth: \"Learn to sew properly.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Ruth persuade the Chekhov director to do?",
+     "options": [
+      "Use bright colours",
+      "Dress the heroine in hand-me-downs instead of white",
+      "Cut a scene",
+      "Hire a different actor"
+     ],
+     "answer": 1,
+     "explain_es": "Ruth: \"I persuaded her to let me dress her in hand-me-downs instead\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why are shoes important to some actors?",
+     "options": [
+      "They are expensive",
+      "They change the way you walk",
+      "They are hard to find",
+      "They are more comfortable"
+     ],
+     "answer": 1,
+     "explain_es": "Ruth: \"Shoes make you walk differently, and that changes everything.\""
+    },
+    {
+     "type": "tf",
+     "q": "The actor in the designer suit refused to change his mind.",
+     "answer": "F",
+     "explain_es": "Ruth: \"He ended up thanking me.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Ruth's view on historical accuracy?",
+     "options": [
+      "Costumes should be perfectly accurate",
+      "Complete accuracy can look ridiculous to modern audiences",
+      "History is not important in theatre",
+      "Only experts notice inaccuracy"
+     ],
+     "answer": 1,
+     "explain_es": "Ruth: \"A completely accurate eighteenth-century outfit can look ridiculous to a modern eye.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ruth trained as a fashion designer before working in theatre.",
+     "answer": "NG",
+     "explain_es": "No se menciona su formación."
+    },
+    {
+     "type": "mc",
+     "q": "What made the queen's dress special?",
+     "options": [
+      "It was covered in jewels",
+      "It was understated but caught the light when she moved",
+      "It was a genuine historical dress",
+      "It was very colourful"
+     ],
+     "answer": 1,
+     "explain_es": "Ruth: \"Understated, almost plain, but in a fabric that caught the light whenever she moved.\""
+    },
+    {
+     "type": "mc",
+     "q": "What can we infer about Ruth's attitude to her work?",
+     "options": [
+      "She finds it repetitive",
+      "She is passionate and detail-oriented",
+      "She prefers film to theatre",
+      "She dislikes working with directors"
+     ],
+     "answer": 1,
+     "explain_es": "Sus ejemplos muestran pasión y atención al detalle (zapatos, telas desgastadas, el vestido de la reina)."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"I made him ____ on both and look in the mirror.\" (1 word)",
+     "answer": "try",
+     "accept": [
+      "try"
+     ],
+     "explain_es": "make + objeto + infinitivo sin to: made him try."
+    }
+   ],
+   "dictation": [
+    "Clothes do an enormous amount of storytelling.",
+    "It varies enormously.",
+    "Learn to sew properly."
+   ]
+  },
+  {
+   "id": "ul-c1-2-2",
+   "title": "The Twenty-Pound Gala Challenge",
+   "level": "C1",
+   "kind": "podcast",
+   "topic": "Fashion, style and first impressions",
+   "focus": "Cleft sentences with what",
+   "emoji": "👗",
+   "speakers": [
+    {
+     "name": "Leah",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Marcus",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Worn Well. This week, Marcus and I set ourselves a challenge. We each had twenty pounds and two hours in charity shops to put together an outfit for a black-tie gala. Marcus, you go first. What did you find?"
+    },
+    {
+     "s": 1,
+     "text": "Well, what I was most worried about was the jacket. Men's evening jackets are either enormous or tiny. But what happened was, in the third shop, I found a midnight-blue velvet dinner jacket for eight pounds."
+    },
+    {
+     "s": 0,
+     "text": "Eight pounds! And did it fit?"
+    },
+    {
+     "s": 1,
+     "text": "Almost. The sleeves were a bit long. What I did was fold them under and pin them, which, er, is not a long-term solution."
+    },
+    {
+     "s": 0,
+     "text": "And the rest?"
+    },
+    {
+     "s": 1,
+     "text": "A white shirt for three pounds, black trousers for five, and a bow tie I borrowed from my granddad. So, technically sixteen pounds."
+    },
+    {
+     "s": 0,
+     "text": "Very impressive. How did people react at the gala?"
+    },
+    {
+     "s": 1,
+     "text": "What surprised me was that nobody guessed. Someone actually asked me which designer it was. I said \"Oxfam\" and she thought I was joking."
+    },
+    {
+     "s": 0,
+     "text": "Ha! That's the thing, isn't it? People do judge a book by its cover. If you look the part, nobody asks questions."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. And what I've realised is that velvet is a cheat. It looks expensive, whatever it cost. Anyway, your turn. Were you dressed to the nines?"
+    },
+    {
+     "s": 0,
+     "text": "Hmm. Let's say I tried. What I wanted was something timeless, a long black dress. What I found was a lot of sequins from about 1987."
+    },
+    {
+     "s": 1,
+     "text": "Oh no."
+    },
+    {
+     "s": 0,
+     "text": "It's fine. In the end, I went for a plain navy silk dress for eleven pounds. It was a bit dull on its own, so what I did was add a vintage brooch and some long gloves. Very understated elegance. Or so I told myself."
+    },
+    {
+     "s": 1,
+     "text": "It looked fantastic, honestly. What made it work was the gloves. Not many people could pull those off."
+    },
+    {
+     "s": 0,
+     "text": "Thank you. But what I didn't plan for was the shoes. I had nothing under nine pounds, so I wore my own. Which is cheating, I admit."
+    },
+    {
+     "s": 1,
+     "text": "We'll let it go. So, lessons for listeners?"
+    },
+    {
+     "s": 0,
+     "text": "For me, it's that what matters isn't the label but the fit. A cheap dress that fits beats an expensive one that doesn't."
+    },
+    {
+     "s": 1,
+     "text": "And for me, it's go to charity shops in wealthy areas. That's where the good stuff ends up."
+    },
+    {
+     "s": 0,
+     "text": "A bit cynical, but true. Next week, we're dressing down: a whole office wardrobe from hand-me-downs. Thanks for listening."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What was the challenge?",
+     "options": [
+      "To design a dress for a gala",
+      "To create a gala outfit from charity shops for twenty pounds",
+      "To borrow clothes from friends",
+      "To make an outfit by hand"
+     ],
+     "answer": 1,
+     "explain_es": "Leah: \"We each had twenty pounds and two hours in charity shops to put together an outfit for a black-tie gala.\""
+    },
+    {
+     "type": "mc",
+     "q": "What was Marcus most worried about?",
+     "options": [
+      "The shoes",
+      "The jacket",
+      "The bow tie",
+      "The trousers"
+     ],
+     "answer": 1,
+     "explain_es": "Marcus: \"what I was most worried about was the jacket.\""
+    },
+    {
+     "type": "mc",
+     "q": "How much did Marcus spend in total?",
+     "options": [
+      "Eight pounds",
+      "Eleven pounds",
+      "Sixteen pounds",
+      "Twenty pounds"
+     ],
+     "answer": 2,
+     "explain_es": "Marcus: \"So, technically sixteen pounds.\""
+    },
+    {
+     "type": "tf",
+     "q": "Someone at the gala asked Marcus which designer made his jacket.",
+     "answer": "T",
+     "explain_es": "Marcus: \"Someone actually asked me which designer it was.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Marcus call velvet \"a cheat\"?",
+     "options": [
+      "It is uncomfortable",
+      "It looks expensive whatever it cost",
+      "It is easy to damage",
+      "It is out of fashion"
+     ],
+     "answer": 1,
+     "explain_es": "Marcus: \"velvet is a cheat. It looks expensive, whatever it cost.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Leah find when she first looked for a long black dress?",
+     "options": [
+      "Nothing in her size",
+      "Lots of sequinned dresses from the 1980s",
+      "Only very expensive dresses",
+      "Designer dresses"
+     ],
+     "answer": 1,
+     "explain_es": "Leah: \"What I found was a lot of sequins from about 1987.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which speaker admits to cheating?",
+     "options": [
+      "Marcus",
+      "Leah",
+      "Both of them"
+     ],
+     "answer": 1,
+     "explain_es": "Leah: \"I wore my own. Which is cheating, I admit.\" (Marcus también tomó prestada la pajarita, pero no lo admite como trampa.)"
+    },
+    {
+     "type": "tf",
+     "q": "Marcus will repair the sleeves of his jacket properly.",
+     "answer": "NG",
+     "explain_es": "Solo dice que doblarlas con alfileres \"is not a long-term solution\"; no dice qué hará."
+    },
+    {
+     "type": "mc",
+     "q": "How does Leah describe Marcus's advice about wealthy areas?",
+     "options": [
+      "Wrong",
+      "A bit cynical, but true",
+      "Very generous",
+      "Irrelevant"
+     ],
+     "answer": 1,
+     "explain_es": "Leah: \"A bit cynical, but true.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Leah's lesson is that what matters isn't the label but the ____. (1 word)",
+     "answer": "fit",
+     "accept": [
+      "fit"
+     ],
+     "explain_es": "Leah: \"what matters isn't the label but the fit.\" Oración escindida con what."
+    }
+   ],
+   "dictation": [
+    "Very impressive.",
+    "If you look the part, nobody asks questions.",
+    "A cheap dress that fits beats an expensive one that doesn't."
+   ]
+  }
+ ],
+ "3": [
+  {
+   "id": "ul-c1-3-1",
+   "title": "How the Fridge Changed Dinner",
+   "level": "C1",
+   "kind": "lecture",
+   "topic": "Scientific advances and attitudes toward technology",
+   "focus": "Indefinite & definite articles",
+   "emoji": "🧊",
+   "speakers": [
+    {
+     "name": "Professor Hale",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Student Mia",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good afternoon. Today I want to look at a technology most of us take completely for granted: the refrigerator. It's not glamorous, but it's arguably one of the most important inventions of the twentieth century."
+    },
+    {
+     "s": 0,
+     "text": "Before refrigeration, keeping food fresh was a constant struggle. In cities, people relied on ice, which was cut from frozen lakes in winter and stored in ice houses insulated with sawdust."
+    },
+    {
+     "s": 0,
+     "text": "The ice was then delivered to homes by an iceman, who'd come round once or twice a week."
+    },
+    {
+     "s": 0,
+     "text": "Now, the first practical refrigerators for the home appeared in the 1910s and 1920s. They were expensive, noisy and, in some cases, dangerous, because the early models used toxic gases. A leak could, and occasionally did, kill a family in their sleep."
+    },
+    {
+     "s": 1,
+     "text": "Sorry, so how did they become safe?"
+    },
+    {
+     "s": 0,
+     "text": "Good question. The breakthrough came in the late 1920s with a new, non-toxic refrigerant. It made the fridge safe, cheap to produce and, crucially, something the average family could afford."
+    },
+    {
+     "s": 0,
+     "text": "By the 1950s, the majority of American households owned one."
+    },
+    {
+     "s": 0,
+     "text": "And this is where it gets interesting, because the fridge didn't just preserve food. It changed the way people shopped, cooked and even lived."
+    },
+    {
+     "s": 0,
+     "text": "Think about shopping. Without a fridge, you bought milk and meat daily. With one, a single weekly trip became possible, which, in turn, helped create the supermarket."
+    },
+    {
+     "s": 0,
+     "text": "And the supermarket helped create the suburb, because people needed cars to carry a week's shopping home."
+    },
+    {
+     "s": 1,
+     "text": "So the fridge is partly responsible for the suburbs?"
+    },
+    {
+     "s": 0,
+     "text": "That's a slight exaggeration, but it's part of the story. Technologies rarely act alone. The car, the fridge and the supermarket grew up together."
+    },
+    {
+     "s": 0,
+     "text": "Then there's diet. Fresh fruit and vegetables could be transported long distances. Frozen food arrived. The ready meal arrived. In many ways, the modern diet is a product of the cold chain."
+    },
+    {
+     "s": 0,
+     "text": "Of course, there were unintended consequences. The chemicals that made fridges safe turned out to damage the ozone layer. That was only discovered in the 1970s, and those gases were finally phased out after an international agreement in 1987."
+    },
+    {
+     "s": 1,
+     "text": "And today? Are fridges still a problem for the environment?"
+    },
+    {
+     "s": 0,
+     "text": "Less so, but they use a lot of electricity, and the cold chain as a whole has a significant carbon footprint. Researchers are now working on cutting-edge cooling systems that use magnets instead of gas."
+    },
+    {
+     "s": 0,
+     "text": "Whether they'll render the current technology obsolete remains to be seen."
+    },
+    {
+     "s": 0,
+     "text": "For next week, please read the chapter on the history of air conditioning, which tells a remarkably similar story."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main argument of the lecture?",
+     "options": [
+      "Fridges are dangerous",
+      "The fridge had far-reaching effects on how people live",
+      "Ice houses were better than fridges",
+      "Air conditioning is more important than refrigeration"
+     ],
+     "answer": 1,
+     "explain_es": "Prof. Hale: \"the fridge didn't just preserve food. It changed the way people shopped, cooked and even lived.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The harmful gases were finally phased out after an international agreement in ____. (year)",
+     "answer": "1987",
+     "accept": [
+      "1987"
+     ],
+     "explain_es": "Prof. Hale: \"those gases were finally phased out after an international agreement in 1987.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why were some early refrigerators dangerous?",
+     "options": [
+      "They often caught fire",
+      "They used toxic gases",
+      "They were too heavy",
+      "They gave electric shocks"
+     ],
+     "answer": 1,
+     "explain_es": "Prof. Hale: \"the early models used toxic gases.\""
+    },
+    {
+     "type": "tf",
+     "q": "By the 1950s, most American households owned a fridge.",
+     "answer": "T",
+     "explain_es": "Prof. Hale: \"By the 1950s, the majority of American households owned one.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to the lecturer, how did the fridge contribute to the growth of suburbs?",
+     "options": [
+      "Fridges were cheaper in the suburbs",
+      "Weekly shopping led to supermarkets, which required cars",
+      "Factories moved to the suburbs",
+      "Ice houses were built outside cities"
+     ],
+     "answer": 1,
+     "explain_es": "Prof. Hale: \"a single weekly trip became possible, which ... helped create the supermarket. And the supermarket helped create the suburb\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the lecturer's reaction to Mia's suggestion about the suburbs?",
+     "options": [
+      "He fully agrees",
+      "He says it is a slight exaggeration but partly true",
+      "He says it is completely wrong",
+      "He ignores it"
+     ],
+     "answer": 1,
+     "explain_es": "Prof. Hale: \"That's a slight exaggeration, but it's part of the story.\""
+    },
+    {
+     "type": "mc",
+     "q": "What unintended consequence does the lecturer mention?",
+     "options": [
+      "Damage to the ozone layer",
+      "Higher food prices",
+      "The disappearance of local shops",
+      "Health problems from frozen food"
+     ],
+     "answer": 0,
+     "explain_es": "Prof. Hale: \"The chemicals that made fridges safe turned out to damage the ozone layer.\""
+    },
+    {
+     "type": "tf",
+     "q": "Magnetic cooling systems are already used in most new fridges.",
+     "answer": "F",
+     "explain_es": "Prof. Hale: \"Researchers are now working on cutting-edge cooling systems that use magnets\". Aún están en desarrollo: \"remains to be seen\"."
+    },
+    {
+     "type": "tf",
+     "q": "The lecturer has personally worked on magnetic cooling research.",
+     "answer": "NG",
+     "explain_es": "No se menciona."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"It's arguably one of the most important inventions of ____ twentieth century.\" (1 word)",
+     "answer": "the",
+     "accept": [
+      "the"
+     ],
+     "explain_es": "Se usa \"the\" con siglos (the twentieth century)."
+    }
+   ],
+   "dictation": [
+    "Technologies rarely act alone.",
+    "The car, the fridge and the supermarket grew up together.",
+    "Whether they'll render the current technology obsolete remains to be seen."
+   ]
+  },
+  {
+   "id": "ul-c1-3-2",
+   "title": "Blood by Drone",
+   "level": "C1",
+   "kind": "news",
+   "topic": "Scientific advances and attitudes toward technology",
+   "focus": "-ing clauses",
+   "emoji": "🛸",
+   "speakers": [
+    {
+     "name": "Anchor Sam",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Reporter Grace",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Dr Mensah",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Now, a story from the Scottish Highlands, where a hospital has begun using drones to deliver blood and medicines to remote clinics. Grace Allan reports."
+    },
+    {
+     "s": 1,
+     "text": "Flying at about a hundred kilometres an hour, the small white drone takes just twenty minutes to cross the hills between Inverness and a clinic that used to be ninety minutes away by road. Having been loaded with two units of blood, it's launched from the hospital roof, and it lands on a marked square in the clinic car park."
+    },
+    {
+     "s": 1,
+     "text": "The service has been running for three months. Dr Kwame Mensah, who leads the project, says it's already a game-changer."
+    },
+    {
+     "s": 2,
+     "text": "Absolutely. Before this, if a patient needed blood urgently at one of our rural clinics, we'd send a car. In winter, with snow on the roads, that could take hours."
+    },
+    {
+     "s": 2,
+     "text": "Now, having received the request, we can have blood there in less than half an hour."
+    },
+    {
+     "s": 1,
+     "text": "The drones are flown automatically, following routes programmed in advance, but each flight is monitored by a pilot sitting at a screen in the hospital."
+    },
+    {
+     "s": 1,
+     "text": "So far, the system has completed more than four hundred deliveries. Only two flights have been cancelled, both because of high winds."
+    },
+    {
+     "s": 0,
+     "text": "Grace, what about safety? Hasn't there been some concern locally?"
+    },
+    {
+     "s": 1,
+     "text": "There has."
+    },
+    {
+     "s": 1,
+     "text": "Some residents, worried about noise and privacy, objected when the trial was first announced. The hospital says the drones carry no cameras pointing at the ground, and they fly above a hundred and twenty metres, which keeps the noise to a minimum."
+    },
+    {
+     "s": 1,
+     "text": "Not everyone is convinced, though. Speaking at a public meeting last week, a local farmer said that the drones were frightening his sheep. The hospital has agreed to adjust the routes."
+    },
+    {
+     "s": 2,
+     "text": "Look, there are drawbacks to any new technology."
+    },
+    {
+     "s": 2,
+     "text": "We're listening. But weighing up a few nervous sheep against a patient who might die waiting for blood, I think most people understand."
+    },
+    {
+     "s": 1,
+     "text": "The question now is whether the system can be scaled. The NHS is considering rolling it out across other rural areas, but the cost is significant, about half a million pounds a year for this route alone."
+    },
+    {
+     "s": 1,
+     "text": "Supporters argue that, having reduced the number of emergency ambulance journeys, the drones will pay for themselves within a few years. Critics say the money would be better spent on staff."
+    },
+    {
+     "s": 0,
+     "text": "And the patients themselves?"
+    },
+    {
+     "s": 1,
+     "text": "Those I spoke to were overwhelmingly positive. One woman, having needed a transfusion after an accident in January, told me she simply wouldn't be here without it."
+    },
+    {
+     "s": 0,
+     "text": "Grace Allan, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the news story about?",
+     "options": [
+      "A new hospital in the Highlands",
+      "Drones delivering blood and medicine to remote clinics",
+      "A shortage of blood donors",
+      "An accident involving a drone"
+     ],
+     "answer": 1,
+     "explain_es": "Sam: \"a hospital has begun using drones to deliver blood and medicines to remote clinics.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long does the drone take to reach the clinic?",
+     "options": [
+      "Ten minutes",
+      "Twenty minutes",
+      "Ninety minutes",
+      "Two hours"
+     ],
+     "answer": 1,
+     "explain_es": "Grace: \"takes just twenty minutes to cross the hills\"."
+    },
+    {
+     "type": "tf",
+     "q": "The service has been running for three months.",
+     "answer": "T",
+     "explain_es": "Grace: \"The service has been running for three months.\""
+    },
+    {
+     "type": "mc",
+     "q": "How are the drones controlled?",
+     "options": [
+      "Entirely by remote pilots",
+      "Automatically, but monitored by a pilot",
+      "By the clinic staff",
+      "By satellite from London"
+     ],
+     "answer": 1,
+     "explain_es": "Grace: \"The drones are flown automatically ... but each flight is monitored by a pilot\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why were two flights cancelled?",
+     "options": [
+      "Technical faults",
+      "High winds",
+      "Snow",
+      "Complaints from residents"
+     ],
+     "answer": 1,
+     "explain_es": "Grace: \"Only two flights have been cancelled, both because of high winds.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did the local farmer complain about?",
+     "options": [
+      "Noise in his house",
+      "The drones frightening his sheep",
+      "Privacy",
+      "The cost of the service"
+     ],
+     "answer": 1,
+     "explain_es": "Grace: \"a local farmer said that the drones were frightening his sheep.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Dr Mensah's attitude to the complaints?",
+     "options": [
+      "He dismisses them completely",
+      "He acknowledges them but believes the benefits are greater",
+      "He agrees the service should stop",
+      "He refuses to comment"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Mensah: \"there are drawbacks ... We're listening. But weighing up a few nervous sheep against a patient who might die...\""
+    },
+    {
+     "type": "tf",
+     "q": "The NHS has already decided to extend the service across Scotland.",
+     "answer": "F",
+     "explain_es": "Grace: \"The NHS is considering rolling it out across other rural areas\"."
+    },
+    {
+     "type": "tf",
+     "q": "The drones are manufactured in Scotland.",
+     "answer": "NG",
+     "explain_es": "No se menciona dónde se fabrican."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Critics argue the money would be better spent on ____. (1 word)",
+     "answer": "staff",
+     "accept": [
+      "staff"
+     ],
+     "explain_es": "Grace: \"Critics say the money would be better spent on staff.\""
+    }
+   ],
+   "dictation": [
+    "The service has been running for three months.",
+    "Look, there are drawbacks to any new technology.",
+    "Critics say the money would be better spent on staff."
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "ul-c1-4-1",
+   "title": "The Ghost of Room Fourteen",
+   "level": "C1",
+   "kind": "radio-report",
+   "topic": "Personal beliefs, luck and hoaxes",
+   "focus": "Reporting clauses",
+   "emoji": "👻",
+   "speakers": [
+    {
+     "name": "Presenter Neil",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Reporter Amira",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Owner Mr Ford",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "For years, the Black Swan Inn in Yorkshire has claimed to be one of the most haunted hotels in England."
+    },
+    {
+     "s": 0,
+     "text": "This week, its owner made a surprising announcement. Amira Khan reports."
+    },
+    {
+     "s": 1,
+     "text": "Room fourteen of the Black Swan has a waiting list of nearly a year. Guests pay double the normal rate to sleep there, hoping to meet the so-called Grey Lady, a servant who, according to legend, died in the room in 1790."
+    },
+    {
+     "s": 1,
+     "text": "But on Monday, the owner, Peter Ford, admitted that the ghost had been, in his words, \"a bit of a family invention\". I asked him to explain."
+    },
+    {
+     "s": 2,
+     "text": "Well, my father bought the place in the seventies, and it was struggling. He told a journalist the story of the Grey Lady, and, er, the next week we were fully booked."
+    },
+    {
+     "s": 2,
+     "text": "He never actually claimed to have seen her. He just never denied it."
+    },
+    {
+     "s": 1,
+     "text": "Mr Ford insists that he didn't set out to deceive anyone. He says he decided to come clean after a guest complained that the ghost hadn't appeared and demanded a refund."
+    },
+    {
+     "s": 2,
+     "text": "That was the moment I thought, this has gone too far. People were taking it at face value. Some guests were genuinely frightened."
+    },
+    {
+     "s": 1,
+     "text": "Not everyone has welcomed his confession. Local historian Margaret Lowe, who has researched the inn, pointed out that there really was a servant who died there in 1790, although there's no evidence that she ever haunted anyone."
+    },
+    {
+     "s": 1,
+     "text": "Mrs Lowe also suggested that Mr Ford's announcement might itself be a publicity stunt. Mr Ford denied this, and assured me that bookings had actually fallen since Monday."
+    },
+    {
+     "s": 1,
+     "text": "Meanwhile, some regular guests have refused to accept the confession. One woman, who has stayed in room fourteen six times, insisted that she had heard footsteps every single time."
+    },
+    {
+     "s": 1,
+     "text": "She accused Mr Ford of \"betraying the Grey Lady\"."
+    },
+    {
+     "s": 2,
+     "text": "I can't tell people what they did or didn't experience. Old buildings make noises."
+    },
+    {
+     "s": 2,
+     "text": "Pipes, wood, the wind. People hear what they want to hear."
+    },
+    {
+     "s": 1,
+     "text": "A paranormal society in Leeds has urged the owner to let them carry out an investigation before the story is finally closed. Mr Ford has agreed, although he warned them not to expect much."
+    },
+    {
+     "s": 1,
+     "text": "And what about room fourteen? Mr Ford has promised to keep it open, but he's lowered the price."
+    },
+    {
+     "s": 1,
+     "text": "The ghost, he joked, has been \"demoted to standard rate\"."
+    },
+    {
+     "s": 0,
+     "text": "Amira Khan reporting."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the report about?",
+     "options": [
+      "A newly discovered ghost",
+      "A hotel owner admitting the hotel's famous ghost was invented",
+      "A fire at a historic inn",
+      "A paranormal investigation that found evidence"
+     ],
+     "answer": 1,
+     "explain_es": "Amira: \"the owner, Peter Ford, admitted that the ghost had been ... 'a bit of a family invention'.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Mr Ford has lowered the price of room fourteen; the ghost has been \"demoted to ____ rate\". (1 word)",
+     "answer": "standard",
+     "accept": [
+      "standard"
+     ],
+     "explain_es": "Amira: \"The ghost, he joked, has been 'demoted to standard rate'.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Mr Ford's father tell the ghost story?",
+     "options": [
+      "He had seen a ghost",
+      "The inn was struggling financially",
+      "A journalist asked him to",
+      "To scare away guests"
+     ],
+     "answer": 1,
+     "explain_es": "Mr Ford: \"it was struggling. He told a journalist the story of the Grey Lady\"."
+    },
+    {
+     "type": "mc",
+     "q": "What made Mr Ford decide to reveal the truth?",
+     "options": [
+      "A journalist discovered it",
+      "A guest demanded a refund because the ghost didn't appear",
+      "His father asked him to",
+      "The historian threatened him"
+     ],
+     "answer": 1,
+     "explain_es": "Amira: \"after a guest complained that the ghost hadn't appeared and demanded a refund.\""
+    },
+    {
+     "type": "tf",
+     "q": "According to the historian, a servant really did die at the inn in 1790.",
+     "answer": "T",
+     "explain_es": "Amira: \"there really was a servant who died there in 1790\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did Margaret Lowe suggest about the announcement?",
+     "options": [
+      "It might be a publicity stunt",
+      "It was brave",
+      "It was historically accurate",
+      "It would ruin the town"
+     ],
+     "answer": 0,
+     "explain_es": "Amira: \"Mrs Lowe also suggested that Mr Ford's announcement might itself be a publicity stunt.\""
+    },
+    {
+     "type": "tf",
+     "q": "Bookings have increased since the announcement, according to Mr Ford.",
+     "answer": "F",
+     "explain_es": "Mr Ford \"assured me that bookings had actually fallen since Monday.\""
+    },
+    {
+     "type": "mc",
+     "q": "Who accused Mr Ford of \"betraying the Grey Lady\"?",
+     "options": [
+      "The historian",
+      "A regular guest",
+      "The paranormal society",
+      "A journalist"
+     ],
+     "answer": 1,
+     "explain_es": "Amira: \"One woman, who has stayed in room fourteen six times ... accused Mr Ford of 'betraying the Grey Lady'.\""
+    },
+    {
+     "type": "tf",
+     "q": "The paranormal society has already found evidence of a ghost.",
+     "answer": "NG",
+     "explain_es": "Solo se dice que han pedido investigar y Mr Ford ha aceptado; no hay resultados."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Mr Ford ____ that he didn't set out to deceive anyone.\" (1 word; a reporting verb meaning 'says firmly')",
+     "answer": "insists",
+     "accept": [
+      "insists",
+      "insisted",
+      "maintains"
+     ],
+     "explain_es": "Verbo introductorio: insist = afirmar con firmeza."
+    }
+   ],
+   "dictation": [
+    "He just never denied it.",
+    "Old buildings make noises.",
+    "People hear what they want to hear."
+   ]
+  },
+  {
+   "id": "ul-c1-4-2",
+   "title": "Lucky Socks and Pre-Match Rituals",
+   "level": "C1",
+   "kind": "seminar",
+   "topic": "Personal beliefs, luck and hoaxes",
+   "focus": "Reporting clauses in the passive",
+   "emoji": "🧦",
+   "speakers": [
+    {
+     "name": "Dr Price",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Tom",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Aisha",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "OK, let's begin. This week's topic is superstition in professional sport. Tom, you've been looking at football. What did you find?"
+    },
+    {
+     "s": 1,
+     "text": "Well, superstitions are said to be extremely common among footballers. One survey suggests that around eighty per cent of professional players have at least one pre-match ritual."
+    },
+    {
+     "s": 0,
+     "text": "What kind of rituals?"
+    },
+    {
+     "s": 1,
+     "text": "All sorts. Some players are known to put their left boot on before their right, every single time. One famous goalkeeper is reported to have worn the same unwashed shirt for an entire season."
+    },
+    {
+     "s": 2,
+     "text": "Ugh. Was that true, or just a story?"
+    },
+    {
+     "s": 1,
+     "text": "Fair question. It's widely claimed, but I couldn't find a reliable source. A lot of this is anecdotal, which is a bit of a problem."
+    },
+    {
+     "s": 0,
+     "text": "That's a really important point. Much of what is said about sporting superstitions comes from interviews and memoirs rather than systematic research. We should be careful not to lend too much credence to individual stories. Aisha, what about the research side?"
+    },
+    {
+     "s": 2,
+     "text": "So, there actually is some interesting research. Superstitions are thought to reduce anxiety. When an outcome is uncertain and partly outside your control, a ritual is believed to give you a sense of control."
+    },
+    {
+     "s": 0,
+     "text": "Is there any evidence that they improve performance?"
+    },
+    {
+     "s": 2,
+     "text": "There was a well-known study in 2010 where golfers were told they'd been given a \"lucky ball\". They were found to putt significantly better than golfers using an ordinary ball."
+    },
+    {
+     "s": 1,
+     "text": "Seriously? That sounds a bit far-fetched."
+    },
+    {
+     "s": 2,
+     "text": "I thought so too. And actually, when other researchers tried to repeat it, they couldn't reproduce the result. So the original finding has been largely debunked, or at least seriously questioned."
+    },
+    {
+     "s": 0,
+     "text": "That's a classic replication problem. So where does that leave us?"
+    },
+    {
+     "s": 2,
+     "text": "I'd say it is generally accepted that rituals reduce stress. Whether they improve results is much less clear."
+    },
+    {
+     "s": 1,
+     "text": "There's also the risk side. A player whose ritual is interrupted, say, because they forgot their lucky socks, is said to perform worse because they're anxious about it."
+    },
+    {
+     "s": 0,
+     "text": "Interesting. So the superstition creates the problem it claims to solve."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. And coaches are increasingly reported to be replacing superstitions with routines, things like breathing exercises, that have the same calming effect without the dependency."
+    },
+    {
+     "s": 0,
+     "text": "Good. For next week, I'd like each of you to find one claim about superstition that's attributed to \"research\" in the media, and track down the original study. Let's see how many survive."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the seminar topic?",
+     "options": [
+      "The history of football",
+      "Superstition in professional sport",
+      "Golf training methods",
+      "Sports psychology careers"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Price: \"This week's topic is superstition in professional sport.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to one survey, what percentage of professional players have a pre-match ritual?",
+     "options": [
+      "About eight per cent",
+      "About forty per cent",
+      "About eighty per cent",
+      "All of them"
+     ],
+     "answer": 2,
+     "explain_es": "Tom: \"around eighty per cent of professional players have at least one pre-match ritual.\""
+    },
+    {
+     "type": "tf",
+     "q": "Tom found a reliable source for the story about the goalkeeper's shirt.",
+     "answer": "F",
+     "explain_es": "Tom: \"It's widely claimed, but I couldn't find a reliable source.\""
+    },
+    {
+     "type": "mc",
+     "q": "What problem does Dr Price highlight about much of the evidence?",
+     "options": [
+      "It is too old",
+      "It comes from interviews and memoirs, not systematic research",
+      "It only covers football",
+      "It is too expensive to collect"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Price: \"Much of what is said ... comes from interviews and memoirs rather than systematic research.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Aisha, why do superstitions reduce anxiety?",
+     "options": [
+      "They give a sense of control in uncertain situations",
+      "They make players more confident about their skills",
+      "Fans expect them",
+      "Coaches require them"
+     ],
+     "answer": 0,
+     "explain_es": "Aisha: \"a ritual is believed to give you a sense of control.\""
+    },
+    {
+     "type": "mc",
+     "q": "What happened when researchers tried to repeat the \"lucky ball\" study?",
+     "options": [
+      "They got even stronger results",
+      "They couldn't reproduce the result",
+      "They found the ball was weighted",
+      "They abandoned the study"
+     ],
+     "answer": 1,
+     "explain_es": "Aisha: \"they couldn't reproduce the result.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which student initially reacts with disbelief to the golf study?",
+     "options": [
+      "Tom",
+      "Aisha"
+     ],
+     "answer": 0,
+     "explain_es": "Tom: \"Seriously? That sounds a bit far-fetched.\""
+    },
+    {
+     "type": "tf",
+     "q": "Aisha has interviewed professional golfers herself.",
+     "answer": "NG",
+     "explain_es": "No se menciona."
+    },
+    {
+     "type": "mc",
+     "q": "What does Dr Price mean by \"the superstition creates the problem it claims to solve\"?",
+     "options": [
+      "Interrupted rituals can cause the anxiety they are meant to reduce",
+      "Superstitions are always harmful",
+      "Rituals make players lazy",
+      "Coaches create superstitions"
+     ],
+     "answer": 0,
+     "explain_es": "Tom explica que un jugador cuyo ritual se interrumpe \"is said to perform worse because they're anxious about it.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Coaches are increasingly reported to be replacing superstitions with ____, such as breathing exercises. (1 word)",
+     "answer": "routines",
+     "accept": [
+      "routines"
+     ],
+     "explain_es": "Tom: \"coaches are increasingly reported to be replacing superstitions with routines\". Pasiva impersonal: are reported to be."
+    }
+   ],
+   "dictation": [
+    "A lot of this is anecdotal, which is a bit of a problem.",
+    "That's a classic replication problem.",
+    "Let's see how many survive."
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "ul-c1-5-1",
+   "title": "Two Critics, One Space Western",
+   "level": "C1",
+   "kind": "podcast",
+   "topic": "Movie and TV trends, genres and reviews",
+   "focus": "Sentence adverbs",
+   "emoji": "🎬",
+   "speakers": [
+    {
+     "name": "Kate",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Luis",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Second Opinion. This week we're reviewing Salt Road, the new eight-part space western everyone seems to be binge-watching. Luis, you've seen all of it?"
+    },
+    {
+     "s": 1,
+     "text": "I have. Admittedly, I watched the last four episodes in one night, which probably tells you something."
+    },
+    {
+     "s": 0,
+     "text": "It tells me you didn't sleep. So, overall?"
+    },
+    {
+     "s": 1,
+     "text": "Overall, I thought it was gripping. Visually, it's stunning. The desert planet looks genuinely alien, not like a quarry in Spain with a filter on it."
+    },
+    {
+     "s": 0,
+     "text": "I'll give you that. Unfortunately, for me, the writing doesn't match the visuals. The first two episodes are really slow."
+    },
+    {
+     "s": 1,
+     "text": "They're slow, sure, but deliberately so. Arguably, the show needs that time to establish the characters."
+    },
+    {
+     "s": 0,
+     "text": "Maybe. But frankly, I nearly gave up after episode two. And I suspect a lot of viewers will."
+    },
+    {
+     "s": 1,
+     "text": "That's fair. Interestingly, the ratings did drop after episode two, then shot back up. Presumably because of word of mouth."
+    },
+    {
+     "s": 0,
+     "text": "OK, let's talk about the cast, without giving away anything. Clearly, Amara Osei is the star. She's extraordinary as the bounty hunter."
+    },
+    {
+     "s": 1,
+     "text": "Absolutely. Honestly, she carries the show. Every scene she's in, you can't take your eyes off her."
+    },
+    {
+     "s": 0,
+     "text": "The supporting cast is more hit and miss, though. The villain is, um, let's say, a bit pantomime."
+    },
+    {
+     "s": 1,
+     "text": "Ha. Surprisingly, I liked him. He knows exactly what kind of show he's in."
+    },
+    {
+     "s": 0,
+     "text": "Now, I have to mention the plot twist in episode six. No spoilers, listeners, I promise. Luis?"
+    },
+    {
+     "s": 1,
+     "text": "Personally, I didn't see it coming. Understandably, some people online are saying it's the best twist of the year."
+    },
+    {
+     "s": 0,
+     "text": "See, I thought it was clever, but I'd guessed it by episode four. Ideally, a twist should surprise you and feel inevitable afterwards. This one only did the second part."
+    },
+    {
+     "s": 1,
+     "text": "Fair. Generally, though, would you recommend it?"
+    },
+    {
+     "s": 0,
+     "text": "Cautiously, yes. You have to suspend disbelief quite a lot, and the middle drags. But it's ambitious, and ambitious television is rare."
+    },
+    {
+     "s": 1,
+     "text": "I'd go further. Undoubtedly, it'll be one of the most talked-about shows of the year. Whether it's critically acclaimed in five years, I'm less sure."
+    },
+    {
+     "s": 0,
+     "text": "So, scores. I'm giving it three and a half stars out of five."
+    },
+    {
+     "s": 1,
+     "text": "Four and a half from me. Hopefully, the second season keeps the visuals and tightens the script."
+    },
+    {
+     "s": 0,
+     "text": "On that, we agree. Next week: is the blockbuster dead? Thanks for listening."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What are Kate and Luis reviewing?",
+     "options": [
+      "A space western series",
+      "A documentary about deserts",
+      "A blockbuster film",
+      "A video game"
+     ],
+     "answer": 0,
+     "explain_es": "Kate: \"Salt Road, the new eight-part space western\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Luis admire most about the show's look?",
+     "options": [
+      "The costumes",
+      "The desert planet looks genuinely alien",
+      "The use of real locations in Spain",
+      "The special effects in space battles"
+     ],
+     "answer": 1,
+     "explain_es": "Luis: \"The desert planet looks genuinely alien\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Kate's main criticism?",
+     "options": [
+      "The acting is poor",
+      "The writing doesn't match the visuals and the start is slow",
+      "It is too short",
+      "It is too violent"
+     ],
+     "answer": 1,
+     "explain_es": "Kate: \"the writing doesn't match the visuals. The first two episodes are really slow.\""
+    },
+    {
+     "type": "tf",
+     "q": "The ratings fell after episode two and then rose again.",
+     "answer": "T",
+     "explain_es": "Luis: \"the ratings did drop after episode two, then shot back up.\""
+    },
+    {
+     "type": "mc",
+     "q": "What do both critics agree about?",
+     "options": [
+      "The villain is excellent",
+      "Amara Osei is outstanding",
+      "The twist was predictable",
+      "The show deserves five stars"
+     ],
+     "answer": 1,
+     "explain_es": "Kate: \"Amara Osei is the star. She's extraordinary\" — Luis: \"Absolutely. Honestly, she carries the show.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which critic guessed the plot twist before it happened?",
+     "options": [
+      "Kate",
+      "Luis",
+      "Both",
+      "Neither"
+     ],
+     "answer": 0,
+     "explain_es": "Kate: \"I'd guessed it by episode four.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Kate, what should an ideal twist do?",
+     "options": [
+      "Shock the audience as much as possible",
+      "Surprise you and feel inevitable afterwards",
+      "Come in the first episode",
+      "Be explained by the characters"
+     ],
+     "answer": 1,
+     "explain_es": "Kate: \"a twist should surprise you and feel inevitable afterwards.\""
+    },
+    {
+     "type": "tf",
+     "q": "Salt Road has already been confirmed for a second season.",
+     "answer": "NG",
+     "explain_es": "Luis espera que la segunda temporada mejore (\"Hopefully\"), pero no se dice que esté confirmada."
+    },
+    {
+     "type": "mc",
+     "q": "What is Kate's overall recommendation?",
+     "options": [
+      "She strongly recommends it",
+      "She cautiously recommends it",
+      "She advises viewers to avoid it",
+      "She has no opinion"
+     ],
+     "answer": 1,
+     "explain_es": "Kate: \"Cautiously, yes.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Kate gives the show three and a half stars, while Luis gives it four and a ____. (1 word)",
+     "answer": "half",
+     "accept": [
+      "half"
+     ],
+     "explain_es": "Luis: \"Four and a half from me.\""
+    }
+   ],
+   "dictation": [
+    "Overall, I thought it was gripping.",
+    "The supporting cast is more hit and miss, though.",
+    "But it's ambitious, and ambitious television is rare."
+   ]
+  },
+  {
+   "id": "ul-c1-5-2",
+   "title": "Falling for a Living",
+   "level": "C1",
+   "kind": "interview",
+   "topic": "Movie and TV trends, genres and reviews",
+   "focus": "such…that / so…that",
+   "emoji": "🎢",
+   "speakers": [
+    {
+     "name": "Host Priya",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Stunt performer Jack",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guest today has been set on fire, thrown through windows and dropped off buildings, all professionally. Jack Moran has been a stunt performer for eighteen years. Jack, welcome."
+    },
+    {
+     "s": 1,
+     "text": "Thanks. It sounds much more dramatic when you list it like that."
+    },
+    {
+     "s": 0,
+     "text": "How did you get into it?"
+    },
+    {
+     "s": 1,
+     "text": "By accident, really. I was a gymnast, and I was so bored after giving up competition that I answered an advert for extras on an action film. The stunt coordinator saw me fall off a horse, quite badly, actually, and offered me a job."
+    },
+    {
+     "s": 0,
+     "text": "Falling off a horse got you a job?"
+    },
+    {
+     "s": 1,
+     "text": "It was such a good fall that he assumed I'd done it on purpose. I didn't correct him."
+    },
+    {
+     "s": 0,
+     "text": "What's the most dangerous stunt you've done?"
+    },
+    {
+     "s": 1,
+     "text": "Probably a car going off a bridge into a river. The water was so cold that my hands stopped working after about thirty seconds. And you're inside a sinking car, so, er, you really need your hands."
+    },
+    {
+     "s": 0,
+     "text": "That's terrifying."
+    },
+    {
+     "s": 1,
+     "text": "It was. But the preparation was so thorough that I never felt in real danger. We rehearsed it twenty times in a pool first. There were four divers in the water."
+    },
+    {
+     "s": 0,
+     "text": "Do audiences realise how much planning goes into these scenes?"
+    },
+    {
+     "s": 1,
+     "text": "Not really, and that's sort of the point. If a stunt is done well, it looks so natural that nobody thinks about it. The best stunts are the ones you don't notice."
+    },
+    {
+     "s": 0,
+     "text": "Have you been injured?"
+    },
+    {
+     "s": 1,
+     "text": "Plenty of times. Broken ribs, a shoulder, a fractured ankle. The ankle was such a stupid accident. I tripped over a cable walking to lunch."
+    },
+    {
+     "s": 0,
+     "text": "After eighteen years of jumping off buildings."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. My mum still laughs about it."
+    },
+    {
+     "s": 0,
+     "text": "How has the industry changed?"
+    },
+    {
+     "s": 1,
+     "text": "Hugely. These days so much is done digitally that people assume stunts are disappearing. They're not. Directors still want real bodies doing real things, because audiences can feel the difference, even if they can't explain it."
+    },
+    {
+     "s": 0,
+     "text": "And safety?"
+    },
+    {
+     "s": 1,
+     "text": "It's so much better than when I started. There used to be a culture where if you complained, someone else would happily take your job. That's changing, although slowly."
+    },
+    {
+     "s": 0,
+     "text": "Is there a stunt you still want to do?"
+    },
+    {
+     "s": 1,
+     "text": "A high fall, from about thirty metres, onto an airbag. I've done twenty-five. The fear is such a strange feeling at that height that you have to sort of switch your brain off."
+    },
+    {
+     "s": 0,
+     "text": "And when will you stop?"
+    },
+    {
+     "s": 1,
+     "text": "When my body tells me to. It's already sending, er, polite emails."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Jack's job?",
+     "options": [
+      "A gymnastics coach",
+      "A stunt performer",
+      "A film director",
+      "A diver"
+     ],
+     "answer": 1,
+     "explain_es": "Priya: \"Jack Moran has been a stunt performer for eighteen years.\""
+    },
+    {
+     "type": "mc",
+     "q": "How did Jack get his first stunt job?",
+     "options": [
+      "He trained at a stunt school",
+      "A coordinator saw him fall off a horse",
+      "His mother worked in films",
+      "He won a competition"
+     ],
+     "answer": 1,
+     "explain_es": "Jack: \"The stunt coordinator saw me fall off a horse ... and offered me a job.\""
+    },
+    {
+     "type": "tf",
+     "q": "The horse fall that got Jack his job was deliberate.",
+     "answer": "F",
+     "explain_es": "Jack: \"he assumed I'd done it on purpose. I didn't correct him.\" Fue un accidente."
+    },
+    {
+     "type": "mc",
+     "q": "What was the main problem in the river stunt?",
+     "options": [
+      "The car didn't sink",
+      "The cold water stopped his hands working",
+      "The divers were late",
+      "The bridge collapsed"
+     ],
+     "answer": 1,
+     "explain_es": "Jack: \"The water was so cold that my hands stopped working after about thirty seconds.\""
+    },
+    {
+     "type": "mc",
+     "q": "How many times did they rehearse the river stunt in a pool?",
+     "options": [
+      "Four",
+      "Ten",
+      "Twenty",
+      "Thirty"
+     ],
+     "answer": 2,
+     "explain_es": "Jack: \"We rehearsed it twenty times in a pool first.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Jack, what makes a stunt successful?",
+     "options": [
+      "It looks spectacular and dangerous",
+      "It looks so natural that nobody notices it",
+      "It is filmed in one take",
+      "It uses digital effects"
+     ],
+     "answer": 1,
+     "explain_es": "Jack: \"The best stunts are the ones you don't notice.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is ironic about Jack's ankle injury?",
+     "options": [
+      "It happened during a simple walk to lunch",
+      "It happened during his most dangerous stunt",
+      "It was caused by his mother",
+      "It happened on his first day"
+     ],
+     "answer": 0,
+     "explain_es": "Jack: \"I tripped over a cable walking to lunch.\""
+    },
+    {
+     "type": "tf",
+     "q": "Jack thinks digital effects will soon replace stunt performers.",
+     "answer": "F",
+     "explain_es": "Jack: \"people assume stunts are disappearing. They're not.\""
+    },
+    {
+     "type": "tf",
+     "q": "Jack has worked on more than a hundred films.",
+     "answer": "NG",
+     "explain_es": "No se menciona el número de películas."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Jack's body is already sending \"polite ____\", suggesting he will retire soon. (1 word)",
+     "answer": "emails",
+     "accept": [
+      "emails"
+     ],
+     "explain_es": "Jack: \"It's already sending, er, polite emails.\" Metáfora humorística."
+    }
+   ],
+   "dictation": [
+    "It sounds much more dramatic when you list it like that.",
+    "I didn't correct him.",
+    "When my body tells me to."
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "ul-c1-6-1",
+   "title": "Why We Can't Stop Humming",
+   "level": "C1",
+   "kind": "lecture",
+   "topic": "Musical tastes, artists and defining success",
+   "focus": "Double comparatives",
+   "emoji": "🎶",
+   "speakers": [
+    {
+     "name": "Dr Sato",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Student Ollie",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good morning. Today's topic is one you've all experienced: the earworm, that song you can't get out of your head. And, more broadly, the question of why some songs become hits and others fade into obscurity."
+    },
+    {
+     "s": 0,
+     "text": "Let's start with a simple principle known as the mere exposure effect. Basically, the more often we hear something, the more we tend to like it. Up to a point."
+    },
+    {
+     "s": 1,
+     "text": "Up to what point?"
+    },
+    {
+     "s": 0,
+     "text": "Good question. Studies suggest that liking increases with repetition and then, after a certain number of plays, starts to decline. So the curve looks like an upside-down U. The catchier a song is, the faster you reach the top of that curve, and, unfortunately, the faster you get tired of it."
+    },
+    {
+     "s": 0,
+     "text": "That partly explains the one-hit wonder. A song that's extremely catchy can go viral, but the very quality that makes it spread also makes people sick of it more quickly."
+    },
+    {
+     "s": 1,
+     "text": "So songs that grow on you slowly last longer?"
+    },
+    {
+     "s": 0,
+     "text": "Broadly, yes. Research on chart data suggests that songs which climb the charts slowly tend to stay there longer. The slower the rise, the longer the stay, roughly speaking."
+    },
+    {
+     "s": 0,
+     "text": "Now, what makes a song catchy in the first place? One large study of earworms found a few common features. A fairly fast tempo, a melody that's simple to sing, and an unusual interval or leap somewhere in the tune. Something slightly surprising."
+    },
+    {
+     "s": 0,
+     "text": "So it's a balance. The more predictable a melody is, the easier it is to remember, but the more boring it becomes. Too much surprise, though, and it becomes hard to follow."
+    },
+    {
+     "s": 1,
+     "text": "What about lyrics? Do they matter?"
+    },
+    {
+     "s": 0,
+     "text": "They matter for emotion more than memory. A lyric that strikes a chord with people's experience makes a song feel personal. But people often remember the melody and get the words completely wrong."
+    },
+    {
+     "s": 1,
+     "text": "That's definitely me."
+    },
+    {
+     "s": 0,
+     "text": "You're not alone. Now, why do some songs stand the test of time? This is harder. Partly, it's that they become attached to memories. The older we get, the more we value the music of our teenage years."
+    },
+    {
+     "s": 0,
+     "text": "And there's a cultural effect. The more a song is used in films, adverts, weddings, the more it becomes part of shared memory. It's a self-reinforcing loop."
+    },
+    {
+     "s": 1,
+     "text": "Isn't that a bit depressing? It sounds like quality doesn't matter."
+    },
+    {
+     "s": 0,
+     "text": "It matters, but it's not sufficient. Plenty of brilliant songs are forgotten, and plenty of derivative ones are hits. Luck and timing play a huge role."
+    },
+    {
+     "s": 0,
+     "text": "For next week, I'd like you to keep an earworm diary. Every time a song gets stuck in your head, note what it was and what you were doing. We'll compare results."
+    },
+    {
+     "s": 1,
+     "text": "What if it's always the same song?"
+    },
+    {
+     "s": 0,
+     "text": "Then the harder you try to stop it, the worse it'll get. That's another finding, I'm afraid."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the lecture mainly about?",
+     "options": [
+      "How to write a hit song",
+      "Why songs get stuck in our heads and why some last",
+      "The history of the music charts",
+      "How to stop earworms"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Sato: \"the earworm ... And, more broadly, the question of why some songs become hits and others fade into obscurity.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the \"mere exposure effect\"?",
+     "options": [
+      "The more we hear something, the more we tend to like it",
+      "We remember only the first song we hear",
+      "Exposure to loud music damages hearing",
+      "We prefer songs we hear live"
+     ],
+     "answer": 0,
+     "explain_es": "Dr Sato: \"the more often we hear something, the more we tend to like it.\""
+    },
+    {
+     "type": "mc",
+     "q": "What shape does the curve of liking over repetition have?",
+     "options": [
+      "A straight line upwards",
+      "An upside-down U",
+      "A flat line",
+      "A wave"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Sato: \"the curve looks like an upside-down U.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why do very catchy songs often become one-hit wonders?",
+     "options": [
+      "They are badly produced",
+      "People get tired of them more quickly",
+      "Radio stations stop playing them",
+      "They are too long"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Sato: \"the very quality that makes it spread also makes people sick of it more quickly.\""
+    },
+    {
+     "type": "tf",
+     "q": "Songs that climb the charts slowly tend to stay there longer.",
+     "answer": "T",
+     "explain_es": "Dr Sato: \"songs which climb the charts slowly tend to stay there longer.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which feature is NOT mentioned as typical of earworms?",
+     "options": [
+      "A fairly fast tempo",
+      "A simple melody",
+      "An unusual interval or leap",
+      "A long instrumental solo"
+     ],
+     "answer": 3,
+     "explain_es": "Menciona tempo rápido, melodía sencilla y un intervalo inusual; no un solo largo."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: According to Dr Sato, the harder you try to stop an earworm, the ____ it gets. (1 word)",
+     "answer": "worse",
+     "accept": [
+      "worse"
+     ],
+     "explain_es": "Dr Sato: \"the harder you try to stop it, the worse it'll get.\" Doble comparativo."
+    },
+    {
+     "type": "mc",
+     "q": "What is Ollie's reaction to the idea that culture reinforces songs?",
+     "options": [
+      "He is excited",
+      "He finds it a bit depressing",
+      "He disagrees completely",
+      "He is confused"
+     ],
+     "answer": 1,
+     "explain_es": "Ollie: \"Isn't that a bit depressing? It sounds like quality doesn't matter.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dr Sato carried out the large study of earworms herself.",
+     "answer": "NG",
+     "explain_es": "Solo dice \"One large study of earworms found...\"; no dice quién lo hizo."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"The ____ we get, the more we value the music of our teenage years.\" (1 word)",
+     "answer": "older",
+     "accept": [
+      "older"
+     ],
+     "explain_es": "Doble comparativo: The + comparativo..., the + comparativo..."
+    }
+   ],
+   "dictation": [
+    "Up to a point.",
+    "Luck and timing play a huge role.",
+    "We'll compare results."
+   ]
+  },
+  {
+   "id": "ul-c1-6-2",
+   "title": "Life After the Hit",
+   "level": "C1",
+   "kind": "monologue",
+   "topic": "Musical tastes, artists and defining success",
+   "focus": "will & would for habits",
+   "emoji": "🎸",
+   "speakers": [
+    {
+     "name": "Danny",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "People still stop me in the supermarket, you know. They'll look at me for a few seconds, and then they'll start humming. Always the chorus. Never the verses."
+    },
+    {
+     "s": 0,
+     "text": "For anyone who doesn't know, I was the singer in a band called The Paper Kites. We had one hit, in 1998. \"Summer Static\". It went to number two, and it stayed in the charts for eleven weeks. So yes, I'm a one-hit wonder. I've made my peace with that."
+    },
+    {
+     "s": 0,
+     "text": "When we were starting out, we'd rehearse in my parents' garage every evening. My dad would bang on the door at ten o'clock exactly, and shout, \"That's enough noise for one night!\" Every single night, for three years."
+    },
+    {
+     "s": 0,
+     "text": "We'd play anywhere. Pubs, weddings, a school fete once, which was a disaster. And we'd write constantly. Most of it was rubbish, honestly. Derivative stuff. We'd copy whoever was big that month."
+    },
+    {
+     "s": 0,
+     "text": "Then one night, our bass player came in with this riff, and the song took about an hour to write. I remember thinking, that's quite catchy. That was it. No big moment."
+    },
+    {
+     "s": 0,
+     "text": "Six months later, we were on television. And for about a year, everything was mad. Hotels, interviews, people screaming. I'd wake up and not know which country I was in."
+    },
+    {
+     "s": 0,
+     "text": "The second album sold almost nothing. The record company would ring every week, asking for \"another Summer Static\". But you can't do that on purpose. If you try, it sounds like a cheap copy."
+    },
+    {
+     "s": 0,
+     "text": "By 2002, the band had split up, and I'd, er, I'd lost a lot of money. I won't pretend that part was easy."
+    },
+    {
+     "s": 0,
+     "text": "These days, I teach guitar to teenagers. And I love it, honestly. Some of them have no idea who I am, which is quite refreshing."
+    },
+    {
+     "s": 0,
+     "text": "I'll still play the song sometimes, at a wedding or a charity gig. And the funny thing is, people's faces change. The song strikes a chord, not because it's brilliant, but because it reminds them of being seventeen."
+    },
+    {
+     "s": 0,
+     "text": "My students will sometimes find the video online and laugh at my hair. Fair enough. It was very big hair."
+    },
+    {
+     "s": 0,
+     "text": "Do I wish we'd had more hits? Of course. But lots of bands never have one. Ours has stood the test of time better than anyone expected."
+    },
+    {
+     "s": 0,
+     "text": "And it still pays for the occasional holiday. So, you know, I'll keep humming along with the people in the supermarket."
+    },
+    {
+     "s": 0,
+     "text": "My dad, by the way, is eighty-one now. And he'll still tell anyone who'll listen that the song was written in his garage."
+    },
+    {
+     "s": 0,
+     "text": "He'll leave out the part about banging on the door, of course."
+    },
+    {
+     "s": 0,
+     "text": "Every time he tells the story, the garage gets a bit bigger. Last time, it had a stage."
+    },
+    {
+     "s": 0,
+     "text": "That's the thing about a hit. Everyone wants a piece of it, even your dad."
+    },
+    {
+     "s": 0,
+     "text": "Anyway. Time for my next lesson."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Danny's monologue mainly about?",
+     "options": [
+      "How to write a hit song",
+      "His life during and after his band's single hit",
+      "His father's musical career",
+      "Teaching guitar to teenagers"
+     ],
+     "answer": 1,
+     "explain_es": "Danny cuenta la historia de su único éxito y su vida después."
+    },
+    {
+     "type": "mc",
+     "q": "How do people react when they recognise Danny in the supermarket?",
+     "options": [
+      "They ask for an autograph",
+      "They start humming the chorus",
+      "They take photos",
+      "They ignore him"
+     ],
+     "answer": 1,
+     "explain_es": "Danny: \"They'll look at me for a few seconds, and then they'll start humming. Always the chorus.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: \"Summer Static\" reached number ____ and stayed in the charts for eleven weeks. (1 word)",
+     "answer": "two",
+     "accept": [
+      "two",
+      "2"
+     ],
+     "explain_es": "Danny: \"It went to number two, and it stayed in the charts for eleven weeks.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Danny describe most of the band's early songs?",
+     "options": [
+      "Brilliant but unknown",
+      "Mostly rubbish and derivative",
+      "Too complicated",
+      "Very political"
+     ],
+     "answer": 1,
+     "explain_es": "Danny: \"Most of it was rubbish, honestly. Derivative stuff.\""
+    },
+    {
+     "type": "tf",
+     "q": "\"Summer Static\" took months to write.",
+     "answer": "F",
+     "explain_es": "Danny: \"the song took about an hour to write.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Danny think it is impossible to write \"another Summer Static\" on purpose?",
+     "options": [
+      "The band had split up",
+      "Trying makes it sound like a cheap copy",
+      "The record company wouldn't pay",
+      "He had lost his voice"
+     ],
+     "answer": 1,
+     "explain_es": "Danny: \"If you try, it sounds like a cheap copy.\""
+    },
+    {
+     "type": "tf",
+     "q": "Danny lost a lot of money after the band split up.",
+     "answer": "T",
+     "explain_es": "Danny: \"I'd, er, I'd lost a lot of money.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Danny, why does the song move people at weddings?",
+     "options": [
+      "It is technically brilliant",
+      "It reminds them of being young",
+      "It has very emotional lyrics",
+      "It is very rare"
+     ],
+     "answer": 1,
+     "explain_es": "Danny: \"because it reminds them of being seventeen.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Danny's attitude to his past fame?",
+     "options": [
+      "Bitter and resentful",
+      "Accepting and good-humoured",
+      "Embarrassed and secretive",
+      "Desperate to be famous again"
+     ],
+     "answer": 1,
+     "explain_es": "Danny: \"I've made my peace with that.\" y bromea sobre su pelo y su padre."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"He'll ____ out the part about banging on the door, of course.\" (1 word)",
+     "answer": "leave",
+     "accept": [
+      "leave"
+     ],
+     "explain_es": "\"will\" para un hábito presente típico; leave out = omitir."
+    }
+   ],
+   "dictation": [
+    "I've made my peace with that.",
+    "But you can't do that on purpose.",
+    "Time for my next lesson."
+   ]
+  }
+ ],
+ "7": [
+  {
+   "id": "ul-c1-7-1",
+   "title": "Learning to Drive, Then and Now",
+   "level": "C1",
+   "kind": "radio-report",
+   "topic": "Lifestyle change and generational attitudes",
+   "focus": "Optional & required relative pronouns",
+   "emoji": "🚙",
+   "speakers": [
+    {
+     "name": "Presenter Helen",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Reporter Sam",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Instructor Bev",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "For generations, passing the driving test was the rite of passage that marked the end of childhood. But fewer young people are now learning to drive. Sam Okoro has been finding out why."
+    },
+    {
+     "s": 1,
+     "text": "In 1990, around eighty per cent of British people aged twenty to twenty-nine held a driving licence. Today, the figure is closer to sixty per cent. The reasons people give are varied, but the one that comes up most is cost."
+    },
+    {
+     "s": 1,
+     "text": "I went to meet Bev Harris, who has been a driving instructor in Bristol for thirty-four years, and whose own instructor, she tells me, was her uncle."
+    },
+    {
+     "s": 2,
+     "text": "My uncle taught me in a Ford Escort that he'd bought from a neighbour. It had a gearbox you had to fight with. The lessons he gave me cost nothing, apart from patience."
+    },
+    {
+     "s": 1,
+     "text": "And the lessons you give now?"
+    },
+    {
+     "s": 2,
+     "text": "Around forty pounds an hour. Most learners need about forty-five hours. Then there's insurance, which for a seventeen-year-old can be two or three thousand pounds a year."
+    },
+    {
+     "s": 2,
+     "text": "It adds up to a figure that a lot of families just can't afford."
+    },
+    {
+     "s": 1,
+     "text": "But it isn't only money. For many young people I spoke to, the car simply doesn't mean what it meant to their parents."
+    },
+    {
+     "s": 1,
+     "text": "One nineteen-year-old I met, who lives in central Bristol, told me the freedom his dad found in a car, he finds in his phone and a bus pass. The friends he wants to see are, as he put it, \"one message away\"."
+    },
+    {
+     "s": 2,
+     "text": "That's the generation gap in a nutshell. When I was young, the car was the thing that let you escape. You'd look back on your first drive alone as a milestone."
+    },
+    {
+     "s": 2,
+     "text": "These days, I get learners whose parents have booked the lessons, and who'd honestly rather be somewhere else."
+    },
+    {
+     "s": 1,
+     "text": "Others, though, still see it as formative. A student I spoke to, whose family lives in a village with two buses a day, said passing her test last month was \"the biggest moment of my life so far\"."
+    },
+    {
+     "s": 1,
+     "text": "And there are regional differences. In rural areas, where public transport is limited, the proportion of young drivers has fallen much less."
+    },
+    {
+     "s": 2,
+     "text": "With hindsight, I think we made the car too central. Whole towns were built around it. So the young people who live in those places don't really have a choice."
+    },
+    {
+     "s": 1,
+     "text": "Is there any nostalgia, I asked her, for the old days?"
+    },
+    {
+     "s": 2,
+     "text": "For the cars, a little. For the roads, no. There was a lot of bad driving that nobody did anything about. The test I took in 1985 lasted twenty minutes. Today's is far more demanding, and that's a good thing."
+    },
+    {
+     "s": 1,
+     "text": "So, is the driving test still a rite of passage? For some, clearly. But for a growing number, the milestone that matters is something else entirely."
+    },
+    {
+     "s": 0,
+     "text": "Sam Okoro reporting."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the report about?",
+     "options": [
+      "The history of the Ford Escort",
+      "Why fewer young people are learning to drive",
+      "How to pass the driving test",
+      "Road safety in Bristol"
+     ],
+     "answer": 1,
+     "explain_es": "Helen: \"fewer young people are now learning to drive. Sam Okoro has been finding out why.\""
+    },
+    {
+     "type": "mc",
+     "q": "What percentage of people aged 20–29 held a licence in 1990?",
+     "options": [
+      "About forty per cent",
+      "About sixty per cent",
+      "About eighty per cent",
+      "Almost everyone"
+     ],
+     "answer": 2,
+     "explain_es": "Sam: \"In 1990, around eighty per cent ... held a driving licence.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Most learners need about ____-five hours of lessons. (1 word)",
+     "answer": "forty",
+     "accept": [
+      "forty",
+      "40"
+     ],
+     "explain_es": "Bev: \"Most learners need about forty-five hours.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which cost does Bev say can be two or three thousand pounds a year for a seventeen-year-old?",
+     "options": [
+      "Lessons",
+      "Insurance",
+      "Petrol",
+      "The test fee"
+     ],
+     "answer": 1,
+     "explain_es": "Bev: \"insurance, which for a seventeen-year-old can be two or three thousand pounds a year.\""
+    },
+    {
+     "type": "mc",
+     "q": "Where does the nineteen-year-old say he finds the freedom his father found in a car?",
+     "options": [
+      "In his bicycle",
+      "In his phone and a bus pass",
+      "In travelling abroad",
+      "In his job"
+     ],
+     "answer": 1,
+     "explain_es": "Sam: \"he finds in his phone and a bus pass.\""
+    },
+    {
+     "type": "tf",
+     "q": "In rural areas, the proportion of young drivers has fallen as much as in cities.",
+     "answer": "F",
+     "explain_es": "Sam: \"In rural areas ... the proportion of young drivers has fallen much less.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Bev's view of the modern driving test?",
+     "options": [
+      "It is too easy",
+      "It is far more demanding, which is good",
+      "It is unfair to young people",
+      "It should be shorter"
+     ],
+     "answer": 1,
+     "explain_es": "Bev: \"Today's is far more demanding, and that's a good thing.\""
+    },
+    {
+     "type": "tf",
+     "q": "Bev is planning to retire next year.",
+     "answer": "NG",
+     "explain_es": "No se menciona."
+    },
+    {
+     "type": "mc",
+     "q": "Who describes passing the test as \"the biggest moment of my life so far\"?",
+     "options": [
+      "Bev",
+      "A student from a village",
+      "The nineteen-year-old in Bristol",
+      "Sam"
+     ],
+     "answer": 1,
+     "explain_es": "Sam: \"A student ... whose family lives in a village with two buses a day, said passing her test ... was 'the biggest moment of my life so far'.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"My uncle taught me in a Ford Escort ____ he'd bought from a neighbour.\" (1 word; optional relative pronoun)",
+     "answer": "that",
+     "accept": [
+      "that",
+      "which"
+     ],
+     "explain_es": "El pronombre es objeto, así que puede omitirse: a Ford Escort (that/which) he'd bought."
+    }
+   ],
+   "dictation": [
+    "The reasons people give are varied, but the one that comes up most is cost.",
+    "That's the generation gap in a nutshell.",
+    "For the cars, a little."
+   ]
+  },
+  {
+   "id": "ul-c1-7-2",
+   "title": "The Family Photo Album",
+   "level": "C1",
+   "kind": "conversation",
+   "topic": "Lifestyle change and generational attitudes",
+   "focus": "as if / as though / the way / like",
+   "emoji": "📸",
+   "speakers": [
+    {
+     "name": "Rosa",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Grandson Leo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Pass me that album, Leo. The green one. I want to show you something."
+    },
+    {
+     "s": 1,
+     "text": "This one? Wow, it's heavy. Grandma, why is everyone in these photos dressed as if they're going to a wedding?"
+    },
+    {
+     "s": 0,
+     "text": "Because that's what you did when someone took a photo. It wasn't like now, where you take two hundred pictures of your lunch. A photo was an event."
+    },
+    {
+     "s": 1,
+     "text": "Is this you? You look as though you're about to burst into tears."
+    },
+    {
+     "s": 0,
+     "text": "Ha. I probably was. That was my first day at school, 1958. My mother made me wear shoes that were two sizes too big, so I'd grow into them."
+    },
+    {
+     "s": 1,
+     "text": "That's brutal."
+    },
+    {
+     "s": 0,
+     "text": "That was the way things were done. Nothing was wasted. Look at this one, my brother's eighteenth birthday. We had cake and lemonade in the kitchen, and the whole street came."
+    },
+    {
+     "s": 1,
+     "text": "It looks like a film set. Everyone's smiling like they've been told to."
+    },
+    {
+     "s": 0,
+     "text": "They had been told to! My father would stand there with the camera and say, \"Nobody moves until I say so.\" It took forever."
+    },
+    {
+     "s": 1,
+     "text": "And who's this? He looks as if he owns the place."
+    },
+    {
+     "s": 0,
+     "text": "That's your grandfather, the summer we met. He did act like he owned the place, to be fair. He was very confident."
+    },
+    {
+     "s": 1,
+     "text": "You're blushing, Grandma."
+    },
+    {
+     "s": 0,
+     "text": "Am I? Well, with hindsight, I was lucky. Anyway, look at the way we went on holiday. Six of us in one car, no seatbelts, sandwiches on our laps."
+    },
+    {
+     "s": 1,
+     "text": "That sounds terrifying. Mum won't let me ride in the front till I'm twelve."
+    },
+    {
+     "s": 0,
+     "text": "I know. Sometimes I feel as if I grew up on another planet. But I'm not one of those people who say everything was better. It wasn't. A lot of it was harder."
+    },
+    {
+     "s": 1,
+     "text": "What was better, then?"
+    },
+    {
+     "s": 0,
+     "text": "People talked more, I think. We didn't have a screen to look at, so we looked at each other. That's the thing I hark back to, not the shoes."
+    },
+    {
+     "s": 1,
+     "text": "You talk as though phones are evil."
+    },
+    {
+     "s": 0,
+     "text": "No, no. I video-call your aunt in Chicago every week. Thirty years ago, it would have cost a fortune. I'm just saying, the way you young people live, you sometimes miss what's right in front of you."
+    },
+    {
+     "s": 1,
+     "text": "OK, point taken. Can we scan these, so I can keep them?"
+    },
+    {
+     "s": 0,
+     "text": "Of course. But promise me you'll print a few. Photos are meant to be held, like this."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What are Rosa and Leo doing?",
+     "options": [
+      "Taking new photos",
+      "Looking through an old family photo album",
+      "Planning a wedding",
+      "Cleaning the attic"
+     ],
+     "answer": 1,
+     "explain_es": "Rosa: \"Pass me that album, Leo.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why are people so dressed up in the old photos?",
+     "options": [
+      "They were at a wedding",
+      "Having a photo taken was a special event",
+      "They were going to church",
+      "They were actors"
+     ],
+     "answer": 1,
+     "explain_es": "Rosa: \"A photo was an event.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Rosa asks Leo to ____ a few photos, because photos are meant to be held. (1 word)",
+     "answer": "print",
+     "accept": [
+      "print"
+     ],
+     "explain_es": "Rosa: \"promise me you'll print a few. Photos are meant to be held\"."
+    },
+    {
+     "type": "tf",
+     "q": "Rosa's father let people move freely when taking photos.",
+     "answer": "F",
+     "explain_es": "Rosa: \"My father would stand there with the camera and say, 'Nobody moves until I say so.'\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Rosa describe Leo's grandfather when they met?",
+     "options": [
+      "Shy",
+      "Very confident",
+      "Rude",
+      "Serious"
+     ],
+     "answer": 1,
+     "explain_es": "Rosa: \"He was very confident.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Rosa's attitude to the past?",
+     "options": [
+      "Everything was better then",
+      "Some things were better, but a lot was harder",
+      "She prefers not to remember it",
+      "Everything is better now"
+     ],
+     "answer": 1,
+     "explain_es": "Rosa: \"I'm not one of those people who say everything was better. It wasn't. A lot of it was harder.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Rosa miss most about the past?",
+     "options": [
+      "The clothes",
+      "People talking to each other more",
+      "The cheap holidays",
+      "The shoes"
+     ],
+     "answer": 1,
+     "explain_es": "Rosa: \"People talked more, I think ... That's the thing I hark back to\"."
+    },
+    {
+     "type": "tf",
+     "q": "Rosa's brother still lives on the same street.",
+     "answer": "NG",
+     "explain_es": "Rosa menciona el cumpleaños de su hermano, pero no dice dónde vive ahora."
+    },
+    {
+     "type": "mc",
+     "q": "Who suggests scanning the photos?",
+     "options": [
+      "Rosa",
+      "Leo"
+     ],
+     "answer": 1,
+     "explain_es": "Leo: \"Can we scan these, so I can keep them?\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"You look as ____ you're about to burst into tears.\" (1 word)",
+     "answer": "though",
+     "accept": [
+      "though",
+      "if"
+     ],
+     "explain_es": "\"as though\" / \"as if\" para describir una impresión."
+    }
+   ],
+   "dictation": [
+    "A photo was an event.",
+    "That was the way things were done.",
+    "Photos are meant to be held, like this."
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "ul-c1-8-1",
+   "title": "The Massage Chair I Didn't Need",
+   "level": "C1",
+   "kind": "phone-call",
+   "topic": "Shopping habits, marketing and advertising",
+   "focus": "Placement of direct & indirect objects",
+   "emoji": "💺",
+   "speakers": [
+    {
+     "name": "Customer Paul",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Agent Dana",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Hi, I'm calling about an order. I bought a massage chair from your website last Thursday, and I'd like to return it."
+    },
+    {
+     "s": 1,
+     "text": "I'm sorry to hear that. Could you give me the order number, please?"
+    },
+    {
+     "s": 0,
+     "text": "Sure, it's 4-4-7-1-9. I'll be honest with you, it was an impulse buy. I saw the advert at two in the morning, and it was on sale, so, er, I just clicked."
+    },
+    {
+     "s": 1,
+     "text": "That happens more than you'd think. Is there anything wrong with the chair itself?"
+    },
+    {
+     "s": 0,
+     "text": "No, it works fine. It's just enormous. It takes up half my living room. And at nine hundred dollars, it's not exactly a bargain, even with the discount."
+    },
+    {
+     "s": 1,
+     "text": "I understand. Our return policy allows thirty days, so you're well within that. Have you still got the original packaging?"
+    },
+    {
+     "s": 0,
+     "text": "I have, yes. The box is in the garage. It took two people to get it in."
+    },
+    {
+     "s": 1,
+     "text": "OK, good. So, what I'll do is send you a return label by email. Could you print it and attach it to the box?"
+    },
+    {
+     "s": 0,
+     "text": "Of course. And then? Do I take it to a post office? Because it's very heavy."
+    },
+    {
+     "s": 1,
+     "text": "No, no. We'll arrange a collection for you. A courier will come to your address. Could you tell me which days suit you?"
+    },
+    {
+     "s": 0,
+     "text": "Any day next week except Wednesday."
+    },
+    {
+     "s": 1,
+     "text": "Let's say Tuesday, then. The courier will give you a receipt. Please keep it, because we'll need you to show it to us if there are any problems with the refund."
+    },
+    {
+     "s": 0,
+     "text": "And when will I get my money back?"
+    },
+    {
+     "s": 1,
+     "text": "Once the chair arrives at our warehouse and has been checked, the refund goes back to your card. That usually takes about ten working days."
+    },
+    {
+     "s": 0,
+     "text": "Ten days. OK. One more question. I paid an extra fifty dollars for delivery. Will you refund that too?"
+    },
+    {
+     "s": 1,
+     "text": "Let me check. Hmm. Normally delivery isn't refundable for a change of mind. But since you're a loyal customer, I can offer you a voucher for fifty dollars instead."
+    },
+    {
+     "s": 0,
+     "text": "A voucher? I'd rather have the money, honestly. I'm not sure I'll be buying anything else soon."
+    },
+    {
+     "s": 1,
+     "text": "I understand. Let me speak to my manager and explain the situation to her. Could you hold for a moment?"
+    },
+    {
+     "s": 0,
+     "text": "Sure."
+    },
+    {
+     "s": 1,
+     "text": "Thanks for waiting. My manager has agreed to refund the delivery as well, as a one-off."
+    },
+    {
+     "s": 0,
+     "text": "That's great. Thank you. And could you remove my email from your advertising list? I think that's how this started."
+    },
+    {
+     "s": 1,
+     "text": "Done. You won't get any more offers from us."
+    },
+    {
+     "s": 0,
+     "text": "Thank you. You've saved me from myself."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why is Paul calling?",
+     "options": [
+      "To complain about a broken chair",
+      "To return a massage chair he bought on impulse",
+      "To order a second chair",
+      "To ask about a delivery delay"
+     ],
+     "answer": 1,
+     "explain_es": "Paul: \"I'd like to return it ... it was an impulse buy.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The refund usually takes about ____ working days once the chair has been checked. (1 word)",
+     "answer": "ten",
+     "accept": [
+      "ten",
+      "10"
+     ],
+     "explain_es": "Dana: \"That usually takes about ten working days.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Paul's main problem with the chair?",
+     "options": [
+      "It doesn't work",
+      "It is enormous",
+      "It is noisy",
+      "It is the wrong colour"
+     ],
+     "answer": 1,
+     "explain_es": "Paul: \"It's just enormous. It takes up half my living room.\""
+    },
+    {
+     "type": "tf",
+     "q": "Paul is outside the return period.",
+     "answer": "F",
+     "explain_es": "Dana: \"Our return policy allows thirty days, so you're well within that.\""
+    },
+    {
+     "type": "mc",
+     "q": "How will the chair be returned?",
+     "options": [
+      "Paul will take it to the post office",
+      "A courier will collect it",
+      "Paul will drive it to the warehouse",
+      "The company will send a technician"
+     ],
+     "answer": 1,
+     "explain_es": "Dana: \"We'll arrange a collection for you. A courier will come to your address.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why must Paul keep the courier's receipt?",
+     "options": [
+      "To get a discount",
+      "In case there are problems with the refund",
+      "To track the delivery",
+      "For tax purposes"
+     ],
+     "answer": 1,
+     "explain_es": "Dana: \"we'll need you to show it to us if there are any problems with the refund.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Dana first offer instead of refunding the delivery charge?",
+     "options": [
+      "Free delivery next time",
+      "A fifty-dollar voucher",
+      "A smaller chair",
+      "Nothing at all"
+     ],
+     "answer": 1,
+     "explain_es": "Dana: \"I can offer you a voucher for fifty dollars instead.\""
+    },
+    {
+     "type": "tf",
+     "q": "Paul accepts the voucher.",
+     "answer": "F",
+     "explain_es": "Paul: \"A voucher? I'd rather have the money, honestly.\""
+    },
+    {
+     "type": "tf",
+     "q": "Paul has bought products from the company many times before.",
+     "answer": "NG",
+     "explain_es": "Dana le llama \"a loyal customer\", pero no se dice cuántas compras ha hecho."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Let me speak to my manager and explain the situation ____ her.\" (1 word)",
+     "answer": "to",
+     "accept": [
+      "to"
+     ],
+     "explain_es": "explain + objeto directo + to + persona (no \"explain her the situation\")."
+    }
+   ],
+   "dictation": [
+    "That happens more than you'd think.",
+    "Could you hold for a moment?",
+    "You've saved me from myself."
+   ]
+  },
+  {
+   "id": "ul-c1-8-2",
+   "title": "Pitching the New Juice Brand",
+   "level": "C1",
+   "kind": "conversation",
+   "topic": "Shopping habits, marketing and advertising",
+   "focus": "Verbs in the subjunctive",
+   "emoji": "🧃",
+   "speakers": [
+    {
+     "name": "Director Fiona",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Planner Raj",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Designer Chloe",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Right, let's get started. We need to agree on the launch campaign for Sunny Press before we present it to the client on Friday. Raj, what does the research say?"
+    },
+    {
+     "s": 1,
+     "text": "The target audience is clear. Young professionals, twenty-five to thirty-five, reasonable disposable income, care about health but don't have much time. Brand loyalty in juice is weak, so they'll switch if we give them a reason."
+    },
+    {
+     "s": 0,
+     "text": "Good. So what's the reason?"
+    },
+    {
+     "s": 1,
+     "text": "Honesty. The client's juice has no added sugar, and it's cold-pressed. My recommendation is that the campaign focus entirely on what's not in the bottle."
+    },
+    {
+     "s": 2,
+     "text": "I like that. But can I suggest that we not use the word \"healthy\"? Every brand says it. People have stopped hearing it."
+    },
+    {
+     "s": 0,
+     "text": "Agreed. It's essential that the message be simple. One idea, not five. What else, Chloe?"
+    },
+    {
+     "s": 2,
+     "text": "For the design, I'd propose that the bottle be the hero. Clear plastic, so you can see the colour. Minimal text. I'd insist that the logo be small."
+    },
+    {
+     "s": 1,
+     "text": "The client won't like a small logo."
+    },
+    {
+     "s": 2,
+     "text": "Then we need to be sold on it ourselves, and convince them. Big logos look cheap. We're not trying to look like a discount brand."
+    },
+    {
+     "s": 0,
+     "text": "Fair point. What about price? It's not cheap. Four pounds a bottle."
+    },
+    {
+     "s": 1,
+     "text": "That's the risk. Some people will see it as a false economy. Why pay four pounds when you can buy a carton for one?"
+    },
+    {
+     "s": 2,
+     "text": "So we answer that directly. Something like, \"Four pounds. Because that's what fruit costs.\""
+    },
+    {
+     "s": 0,
+     "text": "I love that. Bold. Raj, is that too aggressive?"
+    },
+    {
+     "s": 1,
+     "text": "Hmm. It could work, but I'd recommend that we test it with a focus group first. It's vital that we not alienate older shoppers who might haggle over every penny."
+    },
+    {
+     "s": 0,
+     "text": "OK. I propose that Raj organise a focus group before Friday, if possible. Chloe, can you mock up three versions of the poster?"
+    },
+    {
+     "s": 2,
+     "text": "Sure. By Thursday morning. I'll do one bold, one playful, and one very minimal, so the client has a real choice."
+    },
+    {
+     "s": 1,
+     "text": "And one more thing. Competitors will try to drive up their advertising once we launch. I'd suggest that the client keep some budget back for the second month."
+    },
+    {
+     "s": 0,
+     "text": "Good. I'll put that in the proposal. Is it agreed, then, that the core message be honesty and price?"
+    },
+    {
+     "s": 1,
+     "text": "Agreed."
+    },
+    {
+     "s": 2,
+     "text": "Agreed. As long as the logo stays small. I'm not moving on that, whatever the client says about brand recognition."
+    },
+    {
+     "s": 0,
+     "text": "We'll see what the client says. Thanks, everyone."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the purpose of the meeting?",
+     "options": [
+      "To agree on a launch campaign for a juice brand",
+      "To hire a new designer",
+      "To review last year's sales",
+      "To choose a new client"
+     ],
+     "answer": 0,
+     "explain_es": "Fiona: \"We need to agree on the launch campaign for Sunny Press\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who is the target audience?",
+     "options": [
+      "Teenagers",
+      "Young professionals aged 25–35",
+      "Retired people",
+      "Families with young children"
+     ],
+     "answer": 1,
+     "explain_es": "Raj: \"Young professionals, twenty-five to thirty-five\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Raj suggests the client keep some budget back for the ____ month. (1 word)",
+     "answer": "second",
+     "accept": [
+      "second",
+      "2nd"
+     ],
+     "explain_es": "Raj: \"I'd suggest that the client keep some budget back for the second month.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Chloe not want to use the word \"healthy\"?",
+     "options": [
+      "It is legally restricted",
+      "Every brand says it and people ignore it",
+      "The juice isn't healthy",
+      "The client dislikes it"
+     ],
+     "answer": 1,
+     "explain_es": "Chloe: \"Every brand says it. People have stopped hearing it.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Chloe want a small logo?",
+     "options": [
+      "Big logos look cheap",
+      "It is cheaper to print",
+      "The client asked for it",
+      "It fits the bottle better"
+     ],
+     "answer": 0,
+     "explain_es": "Chloe: \"Big logos look cheap.\""
+    },
+    {
+     "type": "tf",
+     "q": "A bottle of the juice costs four pounds.",
+     "answer": "T",
+     "explain_es": "Fiona: \"Four pounds a bottle.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Raj's concern about the slogan \"Because that's what fruit costs\"?",
+     "options": [
+      "It is too long",
+      "It might alienate older shoppers",
+      "It is not true",
+      "It is too similar to a competitor's"
+     ],
+     "answer": 1,
+     "explain_es": "Raj: \"It's vital that we not alienate older shoppers\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which speaker will mock up three versions of the poster?",
+     "options": [
+      "Fiona",
+      "Raj",
+      "Chloe"
+     ],
+     "answer": 2,
+     "explain_es": "Fiona: \"Chloe, can you mock up three versions of the poster?\" Chloe: \"Sure.\""
+    },
+    {
+     "type": "tf",
+     "q": "The client has already approved the small logo.",
+     "answer": "NG",
+     "explain_es": "Fiona: \"We'll see what the client says.\" Aún no se sabe."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"It's essential that the message ____ simple.\" (1 word)",
+     "answer": "be",
+     "accept": [
+      "be"
+     ],
+     "explain_es": "Subjuntivo tras \"It's essential that\": se usa la forma base (be), no \"is\"."
+    }
+   ],
+   "dictation": [
+    "Big logos look cheap.",
+    "I love that.",
+    "We'll see what the client says."
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "ul-c1-9-1",
+   "title": "On the Trail of the Spectacled Bear",
+   "level": "C1",
+   "kind": "tour",
+   "topic": "Animals, ethics and the natural world",
+   "focus": "whenever / wherever vs when / where",
+   "emoji": "🐻",
+   "speakers": [
+    {
+     "name": "Ranger Andrés",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Visitor Emma",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Visitor Tom",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good morning, everyone, and welcome to the reserve. Before we set off, a few ground rules. Whenever you hear me whistle twice, please stop and stay completely still. It usually means I've spotted something."
+    },
+    {
+     "s": 1,
+     "text": "Will we actually see a bear?"
+    },
+    {
+     "s": 0,
+     "text": "Honestly? Probably not. Spectacled bears are incredibly shy. But wherever they've been, they leave signs, and I'll show you how to read them."
+    },
+    {
+     "s": 0,
+     "text": "OK, let's go. Stay on the path wherever possible. The cloud forest is a fragile ecosystem, and every footstep off the trail damages plants that took decades to grow."
+    },
+    {
+     "s": 2,
+     "text": "Why is it called a spectacled bear?"
+    },
+    {
+     "s": 0,
+     "text": "Because of the pale markings around its eyes. They look a bit like glasses. And every bear's markings are unique, like fingerprints. That's how researchers identify individuals."
+    },
+    {
+     "s": 0,
+     "text": "Right, look here. See these bromeliads, these spiky plants, torn open on the ground? A bear's been feeding. They pull them apart to get at the soft centre. This was recent, maybe yesterday."
+    },
+    {
+     "s": 1,
+     "text": "How many bears live in the reserve?"
+    },
+    {
+     "s": 0,
+     "text": "We think around thirty. When I started working here, fifteen years ago, it was fewer than twenty. So conservation is working, slowly."
+    },
+    {
+     "s": 2,
+     "text": "What's the biggest threat to them?"
+    },
+    {
+     "s": 0,
+     "text": "Habitat loss, mostly. Farms keep encroaching on the forest, and wherever a road is built, bears end up in conflict with people. Some farmers shoot them when they eat their maize. And poaching still happens, though it's much rarer now."
+    },
+    {
+     "s": 0,
+     "text": "We work with the farmers rather than against them. Whenever a bear damages a crop, the reserve pays compensation. It's not perfect, but it's reduced the killings dramatically."
+    },
+    {
+     "s": 1,
+     "text": "That seems fair."
+    },
+    {
+     "s": 0,
+     "text": "It's the only thing that works. If people lose money whenever a bear appears, the bear will lose."
+    },
+    {
+     "s": 0,
+     "text": "OK, stop for a moment. Look up, in that tree. See the platform of broken branches? That's a bear nest. They build them to rest in during the day."
+    },
+    {
+     "s": 2,
+     "text": "In a tree? I had no idea bears climbed that high."
+    },
+    {
+     "s": 0,
+     "text": "They're excellent climbers. Wherever there's fruit, they'll find a way up."
+    },
+    {
+     "s": 0,
+     "text": "Now, the species isn't on the brink of extinction, but it's classified as vulnerable. Its resilience depends on whether we can keep the forest connected. Bears need to move between valleys to find mates."
+    },
+    {
+     "s": 0,
+     "text": "We're coming to the viewpoint now. Whenever the clouds lift, you can see all three valleys from here. Cameras ready."
+    },
+    {
+     "s": 1,
+     "text": "It's beautiful."
+    },
+    {
+     "s": 0,
+     "text": "It is. And with luck, it'll still look like this when your grandchildren come."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does it usually mean when the ranger whistles twice?",
+     "options": [
+      "The tour is over",
+      "He has spotted something",
+      "Someone is lost",
+      "It is going to rain"
+     ],
+     "answer": 1,
+     "explain_es": "Andrés: \"Whenever you hear me whistle twice ... It usually means I've spotted something.\""
+    },
+    {
+     "type": "mc",
+     "q": "How likely is it that the group will see a bear?",
+     "options": [
+      "Very likely",
+      "Not very likely",
+      "Certain",
+      "Impossible"
+     ],
+     "answer": 1,
+     "explain_es": "Andrés: \"Honestly? Probably not. Spectacled bears are incredibly shy.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The reserve has around ____ bears today. (1 word)",
+     "answer": "thirty",
+     "accept": [
+      "thirty",
+      "30"
+     ],
+     "explain_es": "Andrés: \"We think around thirty.\""
+    },
+    {
+     "type": "tf",
+     "q": "The bear population in the reserve has grown in the last fifteen years.",
+     "answer": "T",
+     "explain_es": "Andrés: \"We think around thirty. When I started ... it was fewer than twenty.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to the ranger, what is the biggest threat to the bears?",
+     "options": [
+      "Climate change",
+      "Habitat loss",
+      "Tourism",
+      "Disease"
+     ],
+     "answer": 1,
+     "explain_es": "Andrés: \"Habitat loss, mostly.\""
+    },
+    {
+     "type": "mc",
+     "q": "How has the reserve reduced the killing of bears by farmers?",
+     "options": [
+      "By building fences",
+      "By paying compensation when bears damage crops",
+      "By moving the bears",
+      "By banning farming"
+     ],
+     "answer": 1,
+     "explain_es": "Andrés: \"Whenever a bear damages a crop, the reserve pays compensation.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which visitor is surprised that bears climb so high?",
+     "options": [
+      "Emma",
+      "Tom"
+     ],
+     "answer": 1,
+     "explain_es": "Tom: \"In a tree? I had no idea bears climbed that high.\""
+    },
+    {
+     "type": "tf",
+     "q": "The spectacled bear is on the brink of extinction.",
+     "answer": "F",
+     "explain_es": "Andrés: \"the species isn't on the brink of extinction, but it's classified as vulnerable.\""
+    },
+    {
+     "type": "tf",
+     "q": "The reserve receives funding from the government.",
+     "answer": "NG",
+     "explain_es": "No se menciona de dónde viene el dinero."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ they've been, they leave signs.\" (1 word)",
+     "answer": "Wherever",
+     "accept": [
+      "Wherever",
+      "wherever"
+     ],
+     "explain_es": "\"Wherever\" = en cualquier lugar donde; generaliza sobre todos los lugares."
+    }
+   ],
+   "dictation": [
+    "Stay on the path wherever possible.",
+    "This was recent, maybe yesterday.",
+    "Bears need to move between valleys to find mates."
+   ]
+  },
+  {
+   "id": "ul-c1-9-2",
+   "title": "Can You Buy Your Way to Green?",
+   "level": "C1",
+   "kind": "debate",
+   "topic": "Animals, ethics and the natural world",
+   "focus": "Noun clauses with whoever / whatever",
+   "emoji": "🌳",
+   "speakers": [
+    {
+     "name": "Chair Laura",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Dr Mwangi",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Ms Carter",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good evening. Tonight's question: carbon offsetting. Is paying to plant trees or protect forests a genuine solution, or a way for polluters to feel better? Dr Mwangi, you work on conservation projects in Kenya. You're broadly in favour?"
+    },
+    {
+     "s": 1,
+     "text": "With conditions, yes. Whatever you think of the concept, offset money is currently funding real conservation. In the project I work on, it pays for rangers, it stops poaching, and it gives local communities an income that doesn't depend on cutting down forest."
+    },
+    {
+     "s": 2,
+     "text": "Can I come in? Nobody's denying that some projects do good work. My concern is that offsets let whoever is doing the polluting carry on exactly as before. An airline can sell you a \"carbon-neutral\" flight, and nothing about the flight has changed."
+    },
+    {
+     "s": 1,
+     "text": "That's true, but the alternative isn't that the flight disappears. People will fly anyway. Surely it's better that whoever flies pays something towards protecting an ecosystem."
+    },
+    {
+     "s": 2,
+     "text": "It's better than nothing, maybe. But \"better than nothing\" isn't a climate policy. And whatever the marketing says, a tree planted today won't absorb that carbon for decades, if it survives at all."
+    },
+    {
+     "s": 0,
+     "text": "Dr Mwangi, how do you respond to the point about survival?"
+    },
+    {
+     "s": 1,
+     "text": "It's a fair one. Badly managed planting schemes have been a real problem. Whoever designed some of those projects didn't consult local people, and the trees died within a couple of years."
+    },
+    {
+     "s": 1,
+     "text": "That's why I'm in favour of protecting existing forests rather than planting new ones."
+    },
+    {
+     "s": 2,
+     "text": "Even then, there's the question of whether the forest was ever actually under threat. Some studies have found that many protected areas would have survived anyway."
+    },
+    {
+     "s": 2,
+     "text": "So the offset isn't stopping anything. It's just, um, paying for something that was going to happen."
+    },
+    {
+     "s": 1,
+     "text": "In some cases, yes. That's why verification is crucial. But I'd reject the idea that we should throw the whole system out. Biodiversity in our region has recovered noticeably since the funding began."
+    },
+    {
+     "s": 0,
+     "text": "Ms Carter, is there a version of offsetting you'd support?"
+    },
+    {
+     "s": 2,
+     "text": "Possibly. If it came after serious cuts, not instead of them. Whichever company wants to call itself green should first show it has reduced its own emissions. Then offsets can deal with whatever is genuinely impossible to cut."
+    },
+    {
+     "s": 1,
+     "text": "I'd actually agree with that. Offsetting should be the last step, not the first."
+    },
+    {
+     "s": 0,
+     "text": "So there's more common ground than I expected. What should the public do?"
+    },
+    {
+     "s": 2,
+     "text": "Be sceptical of whatever label says \"carbon neutral\". Ask what's been reduced first."
+    },
+    {
+     "s": 1,
+     "text": "And if you do pay for an offset, find out who runs the project and whether local communities benefit. Whoever is on the ground should have a say."
+    },
+    {
+     "s": 0,
+     "text": "Thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the topic of the debate?",
+     "options": [
+      "Whether carbon offsetting is a genuine solution",
+      "How to reduce poaching in Kenya",
+      "Whether people should stop flying",
+      "The cost of planting trees"
+     ],
+     "answer": 0,
+     "explain_es": "Laura: \"Tonight's question: carbon offsetting. Is paying to plant trees ... a genuine solution\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does offset money pay for in Dr Mwangi's project?",
+     "options": [
+      "Only tree planting",
+      "Rangers, anti-poaching and local incomes",
+      "Research flights",
+      "New roads"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Mwangi: \"it pays for rangers, it stops poaching, and it gives local communities an income\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Ms Carter's main concern?",
+     "options": [
+      "Offsets are too expensive",
+      "Offsets let polluters carry on as before",
+      "Trees grow too fast",
+      "Conservation projects are corrupt"
+     ],
+     "answer": 1,
+     "explain_es": "Ms Carter: \"offsets let whoever is doing the polluting carry on exactly as before.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dr Mwangi prefers planting new forests to protecting existing ones.",
+     "answer": "F",
+     "explain_es": "Dr Mwangi: \"I'm in favour of protecting existing forests rather than planting new ones.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did some tree-planting schemes fail, according to Dr Mwangi?",
+     "options": [
+      "There was not enough rain",
+      "Local people weren't consulted",
+      "The trees were the wrong species",
+      "Funding ran out"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Mwangi: \"Whoever designed some of those projects didn't consult local people, and the trees died\"."
+    },
+    {
+     "type": "mc",
+     "q": "What do some studies suggest about protected forests?",
+     "options": [
+      "Many would have survived anyway",
+      "Most are destroyed within ten years",
+      "They absorb no carbon",
+      "They are too small to matter"
+     ],
+     "answer": 0,
+     "explain_es": "Ms Carter: \"many protected areas would have survived anyway.\""
+    },
+    {
+     "type": "mc",
+     "q": "On what point do the two speakers finally agree?",
+     "options": [
+      "Offsets should be banned",
+      "Offsetting should come after real emission cuts",
+      "Airlines should be taxed",
+      "Only governments should buy offsets"
+     ],
+     "answer": 1,
+     "explain_es": "Ms Carter: \"If it came after serious cuts\" — Dr Mwangi: \"Offsetting should be the last step, not the first.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the chair's reaction near the end?",
+     "options": [
+      "She is surprised by how much they agree",
+      "She thinks the debate has failed",
+      "She sides with Ms Carter",
+      "She is impatient"
+     ],
+     "answer": 0,
+     "explain_es": "Laura: \"So there's more common ground than I expected.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ms Carter works for an airline.",
+     "answer": "NG",
+     "explain_es": "No se dice dónde trabaja Ms Carter."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Ms Carter advises the public to be sceptical of ____ label says \"carbon neutral\". (1 word)",
+     "answer": "whatever",
+     "accept": [
+      "whatever"
+     ],
+     "explain_es": "Ms Carter: \"Be sceptical of whatever label says 'carbon neutral'.\" Oración nominal con whatever."
+    }
+   ],
+   "dictation": [
+    "Can I come in?",
+    "That's why verification is crucial.",
+    "Offsetting should be the last step, not the first."
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "ul-c1-10-1",
+   "title": "How a Word Gets into the Dictionary",
+   "level": "C1",
+   "kind": "lecture",
+   "topic": "Effective communication and attitudes toward language",
+   "focus": "Overview of passives",
+   "emoji": "📖",
+   "speakers": [
+    {
+     "name": "Dr Ellis",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Student Marco",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good morning. A question I'm often asked is, \"Who decides which words go into the dictionary?\" The honest answer is that nobody decides, at least not in the way people imagine. Words are collected, not invented by lexicographers."
+    },
+    {
+     "s": 0,
+     "text": "Let me explain the process. For a major English dictionary, new words are tracked in an enormous database of real language, what we call a corpus."
+    },
+    {
+     "s": 0,
+     "text": "It's made up of billions of words that have been taken from books, newspapers, websites, transcripts of speech."
+    },
+    {
+     "s": 0,
+     "text": "When a new word appears, it's flagged automatically. But a single appearance isn't enough. A word has to be used by a lot of different people, in different places, over a period of several years."
+    },
+    {
+     "s": 0,
+     "text": "If it's only used by one group, or for one summer, it's usually ignored."
+    },
+    {
+     "s": 1,
+     "text": "So slang words that go viral for a few months don't get in?"
+    },
+    {
+     "s": 0,
+     "text": "Generally not. Many of them are monitored, but they're never added, because they've disappeared by the time the editors look again. Others have been on the list for a decade before being accepted."
+    },
+    {
+     "s": 0,
+     "text": "Once a word has been judged stable enough, a definition is drafted. That's harder than it sounds. The editor has to look at hundreds of examples and work out what the word actually means in use, which isn't always what people think it means."
+    },
+    {
+     "s": 0,
+     "text": "The draft is then checked by other editors, and in specialist areas, like medicine or law, it's sent to outside experts. Each entry may be revised several times before it's published."
+    },
+    {
+     "s": 1,
+     "text": "How long does all that take?"
+    },
+    {
+     "s": 0,
+     "text": "For a straightforward word, months. For a complicated one, years. And remember that existing entries are being updated all the time, too."
+    },
+    {
+     "s": 0,
+     "text": "Words change meaning. \"Awful\" used to mean \"full of awe\". The entry for it has been rewritten more than once."
+    },
+    {
+     "s": 0,
+     "text": "Now, some people believe that, once a word has been included, it's been officially approved as correct English. That's a misunderstanding. The dictionary describes how the language is used; it doesn't tell you how it should be used."
+    },
+    {
+     "s": 1,
+     "text": "So if enough people use a word wrongly, does it become right?"
+    },
+    {
+     "s": 0,
+     "text": "That's the big question, isn't it? From the dictionary's point of view, yes, eventually. \"Decimate\" originally meant to kill one in ten. Today it's used to mean \"destroy most of\", and that meaning has been recorded for over a century."
+    },
+    {
+     "s": 0,
+     "text": "Interestingly, more and more loan words are being added. English has always borrowed. Words have been taken from Hindi, Arabic, Spanish, Japanese. In the last update alone, dozens of words from other languages were included."
+    },
+    {
+     "s": 0,
+     "text": "Finally, will dictionaries still be needed in twenty years? I'd say yes, though they'll be consulted on screens, not shelves. And the corpus will probably have been expanded to include far more spoken language."
+    },
+    {
+     "s": 0,
+     "text": "For next week, I'd like each of you to find a word that's been added in the last five years and track its first recorded use. You'll be surprised how old some \"new\" words are."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main point of the lecture?",
+     "options": [
+      "Lexicographers invent new words",
+      "Words are collected from real usage, not invented or approved",
+      "Slang should not be included in dictionaries",
+      "Dictionaries will disappear soon"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Ellis: \"Words are collected, not invented by lexicographers\" y \"The dictionary describes how the language is used\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is a corpus?",
+     "options": [
+      "A list of banned words",
+      "A huge database of real language",
+      "A committee of editors",
+      "A printed dictionary"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Ellis: \"an enormous database of real language, what we call a corpus.\""
+    },
+    {
+     "type": "mc",
+     "q": "What must happen before a new word is considered?",
+     "options": [
+      "It must be used widely by different people over several years",
+      "A famous writer must use it",
+      "It must appear in a newspaper",
+      "It must be approved by the government"
+     ],
+     "answer": 0,
+     "explain_es": "Dr Ellis: \"A word has to be used by a lot of different people, in different places, over a period of several years.\""
+    },
+    {
+     "type": "tf",
+     "q": "Slang words that are popular for only a few months are usually added quickly.",
+     "answer": "F",
+     "explain_es": "Dr Ellis: \"Generally not ... they've disappeared by the time the editors look again.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is drafting a definition difficult?",
+     "options": [
+      "Editors must study many examples to see what the word means in use",
+      "Definitions must be very short",
+      "Experts often disagree",
+      "Words have no fixed spelling"
+     ],
+     "answer": 0,
+     "explain_es": "Dr Ellis: \"The editor has to look at hundreds of examples and work out what the word actually means in use\"."
+    },
+    {
+     "type": "mc",
+     "q": "What misunderstanding does Dr Ellis correct?",
+     "options": [
+      "That dictionaries are expensive",
+      "That inclusion means a word is officially approved as correct",
+      "That old words are removed",
+      "That editors are volunteers"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Ellis: \"some people believe that, once a word has been included, it's been officially approved as correct English. That's a misunderstanding.\""
+    },
+    {
+     "type": "mc",
+     "q": "What example does she give of a word whose meaning changed?",
+     "options": [
+      "\"Viral\"",
+      "\"Awful\"",
+      "\"Corpus\"",
+      "\"Slang\""
+     ],
+     "answer": 1,
+     "explain_es": "Dr Ellis: \"'Awful' used to mean 'full of awe'.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dr Ellis has worked as a dictionary editor.",
+     "answer": "NG",
+     "explain_es": "No se dice explícitamente si ha trabajado como lexicógrafa."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: In specialist areas such as medicine or law, draft definitions are sent to outside ____. (1 word)",
+     "answer": "experts",
+     "accept": [
+      "experts"
+     ],
+     "explain_es": "Dr Ellis: \"in specialist areas, like medicine or law, it's sent to outside experts.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Existing entries are ____ updated all the time, too.\" (1 word)",
+     "answer": "being",
+     "accept": [
+      "being"
+     ],
+     "explain_es": "Pasiva en presente continuo: are being updated."
+    }
+   ],
+   "dictation": [
+    "Words change meaning.",
+    "That's the big question, isn't it?",
+    "English has always borrowed."
+   ]
+  },
+  {
+   "id": "ul-c1-10-2",
+   "title": "Raising Children in Three Languages",
+   "level": "C1",
+   "kind": "podcast",
+   "topic": "Effective communication and attitudes toward language",
+   "focus": "Subject-verb agreement with quantifiers",
+   "emoji": "🗨️",
+   "speakers": [
+    {
+     "name": "Host Nina",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Guest Yusuf",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Mother Tongues. My guest today is Yusuf, who lives in Toronto with his wife and two kids, and the family speaks three languages at home. Yusuf, how does that work?"
+    },
+    {
+     "s": 1,
+     "text": "Chaotically, at times. So, I'm from Turkey, my wife's from Brazil, and we live in Canada. I speak Turkish to the children, my wife speaks Portuguese, and between ourselves we speak English. Each of us sticks to our own language with the kids. That's the rule."
+    },
+    {
+     "s": 0,
+     "text": "And does it work?"
+    },
+    {
+     "s": 1,
+     "text": "Mostly. Both of our children understand all three. But neither of them speaks Turkish as well as I'd like. English is everywhere, so it's always winning."
+    },
+    {
+     "s": 0,
+     "text": "That's common, isn't it?"
+    },
+    {
+     "s": 1,
+     "text": "Very. A number of families we know have given up on the third language completely. The number of hours you need is huge. Every one of the experts we talked to said the same thing: if a language isn't used outside the home, it's hard to keep it alive."
+    },
+    {
+     "s": 0,
+     "text": "So what do you do about Turkish?"
+    },
+    {
+     "s": 1,
+     "text": "We go to Istanbul every summer. Two months. And none of my relatives speaks English, which is perfect. After a week, the kids have no choice. By August, my daughter is chatting away and picking up slang I've never heard."
+    },
+    {
+     "s": 0,
+     "text": "Do the children ever mix the languages?"
+    },
+    {
+     "s": 1,
+     "text": "All the time. My son will start a sentence in English, use a Portuguese word in the middle, and finish in Turkish. People used to think that was a sign of confusion. Actually, most of the research suggests it's the opposite. He's choosing whatever word gets his point across fastest."
+    },
+    {
+     "s": 0,
+     "text": "What's been the hardest part?"
+    },
+    {
+     "s": 1,
+     "text": "Honestly? Feeling like the odd one out. My wife and the kids share a lot of Brazilian culture, music, food. Turkish feels like my thing alone. And there's a bit of grief, sometimes, when my son replies in English to something I've said in Turkish."
+    },
+    {
+     "s": 0,
+     "text": "That sounds painful."
+    },
+    {
+     "s": 1,
+     "text": "It is, a little. But the majority of my friends who grew up bilingual say the same thing: they resisted as teenagers and were grateful as adults. So I'm playing a long game."
+    },
+    {
+     "s": 0,
+     "text": "Any advice for listeners in the same situation?"
+    },
+    {
+     "s": 1,
+     "text": "Be consistent, but don't be strict. Some parents punish children for answering in the wrong language, and the result is that the child hates the language. Make it fun. Songs, cartoons, cooking. And get the grandparents involved. Each grandparent is worth about ten hours of lessons."
+    },
+    {
+     "s": 0,
+     "text": "Yusuf, thank you."
+    },
+    {
+     "s": 1,
+     "text": "Thank you. Or, er, teşekkürler. Obrigado."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How many languages does Yusuf's family speak at home?",
+     "options": [
+      "Two",
+      "Three",
+      "Four",
+      "Five"
+     ],
+     "answer": 1,
+     "explain_es": "Nina: \"the family speaks three languages at home.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the family rule?",
+     "options": [
+      "Everyone speaks English at dinner",
+      "Each parent sticks to their own language with the children",
+      "The children choose the language",
+      "They change language every day"
+     ],
+     "answer": 1,
+     "explain_es": "Yusuf: \"Each of us sticks to our own language with the kids. That's the rule.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is English \"always winning\"?",
+     "options": [
+      "The parents prefer it",
+      "English is everywhere",
+      "It is easier to learn",
+      "The school requires it"
+     ],
+     "answer": 1,
+     "explain_es": "Yusuf: \"English is everywhere, so it's always winning.\""
+    },
+    {
+     "type": "tf",
+     "q": "Many families Yusuf knows have stopped using their third language.",
+     "answer": "T",
+     "explain_es": "Yusuf: \"A number of families we know have given up on the third language completely.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Every summer, the family spends two ____ in Istanbul. (1 word)",
+     "answer": "months",
+     "accept": [
+      "months"
+     ],
+     "explain_es": "Yusuf: \"We go to Istanbul every summer. Two months.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Yusuf interpret his son mixing languages?",
+     "options": [
+      "As a sign of confusion",
+      "As choosing the fastest way to get his point across",
+      "As laziness",
+      "As a problem to be corrected"
+     ],
+     "answer": 1,
+     "explain_es": "Yusuf: \"He's choosing whatever word gets his point across fastest.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Yusuf find hardest?",
+     "options": [
+      "The cost of travel",
+      "Feeling like the odd one out",
+      "Helping with homework",
+      "Speaking Portuguese"
+     ],
+     "answer": 1,
+     "explain_es": "Yusuf: \"Feeling like the odd one out.\""
+    },
+    {
+     "type": "tf",
+     "q": "Yusuf's wife is learning Turkish.",
+     "answer": "NG",
+     "explain_es": "No se menciona."
+    },
+    {
+     "type": "mc",
+     "q": "What is Yusuf's advice about strictness?",
+     "options": [
+      "Punish children who answer in the wrong language",
+      "Be consistent but not strict",
+      "Let children choose freely",
+      "Only speak English"
+     ],
+     "answer": 1,
+     "explain_es": "Yusuf: \"Be consistent, but don't be strict.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Neither of them ____ Turkish as well as I'd like.\" (1 word; present simple)",
+     "answer": "speaks",
+     "accept": [
+      "speaks",
+      "speak"
+     ],
+     "explain_es": "Neither of + plural lleva normalmente verbo en singular en registro formal: neither of them speaks."
+    }
+   ],
+   "dictation": [
+    "English is everywhere, so it's always winning.",
+    "That sounds painful.",
+    "So I'm playing a long game."
+   ]
+  }
+ ],
+ "11": [
+  {
+   "id": "ul-c1-11-1",
+   "title": "The Mechanic Who Built a Hand",
+   "level": "C1",
+   "kind": "radio-report",
+   "topic": "Role models, values and high achievers",
+   "focus": "Compound adjectives",
+   "emoji": "🦾",
+   "speakers": [
+    {
+     "name": "Presenter Joe",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Reporter Lena",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Mateo",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Tonight, the story of a self-taught engineer whose low-cost prosthetic hands are changing lives across Central America. Lena Brooks reports from Guatemala."
+    },
+    {
+     "s": 1,
+     "text": "In a small, brightly lit workshop on the edge of Quetzaltenango, a twenty-eight-year-old mechanic is fitting a 3D-printed hand onto the arm of a nine-year-old girl."
+    },
+    {
+     "s": 1,
+     "text": "She closes her new fingers around a plastic cup and lifts it. Her mother starts crying."
+    },
+    {
+     "s": 1,
+     "text": "Mateo Ruiz never went to university. He left school at fifteen to work in his uncle's car-repair shop. But he's become one of the best-known names in low-cost prosthetics in the region."
+    },
+    {
+     "s": 2,
+     "text": "It started with my cousin. He lost his hand in a farm accident, and a prosthetic from the city cost more than his family earned in two years. I thought, I fix engines all day. How hard can a hand be?"
+    },
+    {
+     "s": 1,
+     "text": "Very hard, it turned out. Mateo spent two years teaching himself design software from online videos, often working through the night after long, back-breaking shifts at the garage."
+    },
+    {
+     "s": 2,
+     "text": "My first hand was terrible. Heavy, ugly, and it broke after a week. My cousin was very kind about it. He said it was \"a good-looking disaster\"."
+    },
+    {
+     "s": 1,
+     "text": "But Mateo kept going. His current design, a lightweight, easy-to-repair model, costs about eighty dollars to make, compared with several thousand for a commercial device. It's fully open-source, so anyone with a 3D printer can download and build it."
+    },
+    {
+     "s": 1,
+     "text": "So far, the workshop has fitted more than six hundred hands, mostly to children. Because children grow, they need a new hand every year or so, which makes expensive devices almost impossible for poor families."
+    },
+    {
+     "s": 2,
+     "text": "For children, a cheap hand is better than an expensive one. When they grow out of it, we make a bigger one. Free."
+    },
+    {
+     "s": 1,
+     "text": "Not everyone is convinced. A doctor I spoke to warned that some home-made devices are poorly fitted and can cause long-term problems."
+    },
+    {
+     "s": 1,
+     "text": "Mateo agrees that quality control is essential and now works with a local physiotherapist, who checks every fitting."
+    },
+    {
+     "s": 1,
+     "text": "His story has made him something of a role model."
+    },
+    {
+     "s": 1,
+     "text": "Young people from across the country write to him asking how to start. Last year, he was invited to speak at a conference in Mexico City, alongside some of the most highly qualified engineers in the field."
+    },
+    {
+     "s": 2,
+     "text": "I was nervous. They all had PhDs. I had grease under my fingernails. But they listened. Good ideas don't need a certificate."
+    },
+    {
+     "s": 1,
+     "text": "Mateo's next goal is a hand with simple electronic sensors, at a price families can afford. He's confident he'll get there."
+    },
+    {
+     "s": 1,
+     "text": "Back in the workshop, the nine-year-old is now trying to pick up a pencil. On the third attempt, she manages it, and the whole room cheers."
+    },
+    {
+     "s": 0,
+     "text": "Lena Brooks reporting."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the report about?",
+     "options": [
+      "A car mechanic who became a famous racing driver",
+      "A self-taught engineer making low-cost prosthetic hands",
+      "A new hospital in Guatemala",
+      "A university engineering programme"
+     ],
+     "answer": 1,
+     "explain_es": "Joe: \"a self-taught engineer whose low-cost prosthetic hands are changing lives\"."
+    },
+    {
+     "type": "mc",
+     "q": "What inspired Mateo to start?",
+     "options": [
+      "A television programme",
+      "His cousin losing his hand in a farm accident",
+      "A university project",
+      "A request from a doctor"
+     ],
+     "answer": 1,
+     "explain_es": "Mateo: \"It started with my cousin. He lost his hand in a farm accident\"."
+    },
+    {
+     "type": "mc",
+     "q": "How did Mateo learn design software?",
+     "options": [
+      "At university",
+      "From online videos",
+      "From his uncle",
+      "At a course in Mexico City"
+     ],
+     "answer": 1,
+     "explain_es": "Lena: \"teaching himself design software from online videos\"."
+    },
+    {
+     "type": "tf",
+     "q": "Mateo's first prosthetic hand was a great success.",
+     "answer": "F",
+     "explain_es": "Mateo: \"My first hand was terrible. Heavy, ugly, and it broke after a week.\""
+    },
+    {
+     "type": "mc",
+     "q": "How much does Mateo's current design cost to make?",
+     "options": [
+      "About eight dollars",
+      "About eighty dollars",
+      "About eight hundred dollars",
+      "Several thousand dollars"
+     ],
+     "answer": 1,
+     "explain_es": "Lena: \"costs about eighty dollars to make\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why are cheap hands especially important for children?",
+     "options": [
+      "Children need a new hand every year or so as they grow",
+      "Children prefer bright colours",
+      "Children break things more often",
+      "Children cannot use electronic hands"
+     ],
+     "answer": 0,
+     "explain_es": "Lena: \"Because children grow, they need a new hand every year or so\"."
+    },
+    {
+     "type": "mc",
+     "q": "How has Mateo responded to concerns about poorly fitted devices?",
+     "options": [
+      "He ignores them",
+      "He now works with a physiotherapist who checks every fitting",
+      "He stopped making hands for children",
+      "He sells only to hospitals"
+     ],
+     "answer": 1,
+     "explain_es": "Lena: \"now works with a local physiotherapist, who checks every fitting.\""
+    },
+    {
+     "type": "tf",
+     "q": "Mateo has received an international award for his work.",
+     "answer": "NG",
+     "explain_es": "Solo se menciona que fue invitado a una conferencia; no se habla de premios."
+    },
+    {
+     "type": "mc",
+     "q": "What does Mateo mean by \"Good ideas don't need a certificate\"?",
+     "options": [
+      "Qualifications are useless",
+      "Valuable ideas can come from people without formal qualifications",
+      "He wants to get a degree",
+      "Engineers should not have PhDs"
+     ],
+     "answer": 1,
+     "explain_es": "Lo dice tras contar que los demás tenían doctorados y él no, \"But they listened.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Mateo's current model is a lightweight, easy-to-____ design. (1 word)",
+     "answer": "repair",
+     "accept": [
+      "repair"
+     ],
+     "explain_es": "Lena: \"a lightweight, easy-to-repair model\". Adjetivo compuesto con guiones."
+    }
+   ],
+   "dictation": [
+    "Her mother starts crying.",
+    "How hard can a hand be?",
+    "Good ideas don't need a certificate."
+   ]
+  },
+  {
+   "id": "ul-c1-11-2",
+   "title": "Choosing the Teacher of the Year",
+   "level": "C1",
+   "kind": "debate",
+   "topic": "Role models, values and high achievers",
+   "focus": "Superlative compound adjectives",
+   "emoji": "🏆",
+   "speakers": [
+    {
+     "name": "Chair Diane",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Judge Peter",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Judge Asha",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Right, we've narrowed it down to two finalists for Teacher of the Year. We need a decision by five o'clock. Peter, make your case for Mr Lewis."
+    },
+    {
+     "s": 1,
+     "text": "Happily. Frank Lewis is, without question, the longest-serving teacher on our list. Forty-one years at the same school. He's taught the parents of half his current students. Several former pupils described him as the most inspiring person they've ever met."
+    },
+    {
+     "s": 2,
+     "text": "No one disputes that. But I'd argue Ms Okafor's achievements are more far-reaching."
+    },
+    {
+     "s": 0,
+     "text": "Go on, Asha."
+    },
+    {
+     "s": 2,
+     "text": "Grace Okafor is only twenty-nine, but she's already one of the most innovative, forward-thinking teachers I've come across. She took over the worst-performing science department in the district and, in three years, it's become one of the best-performing. Against all odds, honestly. The school was close to being closed."
+    },
+    {
+     "s": 1,
+     "text": "That's impressive. But results aren't everything. Frank is the kindest, most patient man I know. Students who were written off by other teachers have done remarkable things because he refused to give up on them."
+    },
+    {
+     "s": 2,
+     "text": "I don't doubt it. But Grace has done that on a larger scale. She set up a free after-school club, which has become the best-attended programme in the school. And she's trained other teachers in her methods. That's a legacy that will outlast her."
+    },
+    {
+     "s": 1,
+     "text": "With respect, Frank's legacy already has. Forty years of students. One of them is now a surgeon who credits him with her whole career."
+    },
+    {
+     "s": 0,
+     "text": "Can I ask both of you: what is the award actually for? Lifetime achievement, or this year?"
+    },
+    {
+     "s": 2,
+     "text": "This year, according to the criteria. \"Outstanding contribution in the past twelve months.\""
+    },
+    {
+     "s": 1,
+     "text": "Hmm. That's, er, a fair point. Although I'd say Frank's contribution this year was as strong as ever. He's still the most hard-working member of staff, and he's in his sixties."
+    },
+    {
+     "s": 2,
+     "text": "Nobody's questioning his dedication. I just think Grace is the most deserving candidate under these criteria. She's a trailblazer."
+    },
+    {
+     "s": 1,
+     "text": "And Frank is a role model. The most widely respected teacher in the region."
+    },
+    {
+     "s": 0,
+     "text": "OK. Here's a thought. The organisers mentioned that we can recommend a separate lifetime achievement award. What if Grace gets Teacher of the Year, and Frank gets that?"
+    },
+    {
+     "s": 1,
+     "text": "I'd be comfortable with that, as long as it's presented on the same night, not as an afterthought."
+    },
+    {
+     "s": 2,
+     "text": "Agreed. He deserves a proper moment."
+    },
+    {
+     "s": 0,
+     "text": "Good. That's settled. I'll write to the organisers this afternoon."
+    },
+    {
+     "s": 1,
+     "text": "And Diane, make sure the speech is short. Frank hates fuss."
+    },
+    {
+     "s": 0,
+     "text": "Noted."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What are the judges trying to decide?",
+     "options": [
+      "Which school should receive funding",
+      "Who should win Teacher of the Year",
+      "Who should be head teacher",
+      "Which subject is most important"
+     ],
+     "answer": 1,
+     "explain_es": "Diane: \"we've narrowed it down to two finalists for Teacher of the Year.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long has Mr Lewis taught at the same school?",
+     "options": [
+      "Twenty-nine years",
+      "Thirty years",
+      "Forty-one years",
+      "Sixty years"
+     ],
+     "answer": 2,
+     "explain_es": "Peter: \"Forty-one years at the same school.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Ms Okafor achieve with the science department?",
+     "options": [
+      "She closed it",
+      "She turned it from the worst to one of the best-performing",
+      "She doubled its size",
+      "She moved it to a new building"
+     ],
+     "answer": 1,
+     "explain_es": "Asha: \"She took over the worst-performing science department ... it's become one of the best-performing.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Ms Okafor set up a free after-school ____ that is now the best-attended programme in the school. (1 word)",
+     "answer": "club",
+     "accept": [
+      "club"
+     ],
+     "explain_es": "Asha: \"She set up a free after-school club, which has become the best-attended programme in the school.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is the award criteria important to the discussion?",
+     "options": [
+      "It is for contribution in the past twelve months",
+      "It is only for science teachers",
+      "It is for teachers under thirty",
+      "It requires a public vote"
+     ],
+     "answer": 0,
+     "explain_es": "Asha: \"'Outstanding contribution in the past twelve months.'\""
+    },
+    {
+     "type": "tf",
+     "q": "Peter immediately rejects the point about the criteria.",
+     "answer": "F",
+     "explain_es": "Peter: \"That's, er, a fair point.\""
+    },
+    {
+     "type": "mc",
+     "q": "What compromise does Diane suggest?",
+     "options": [
+      "Give the award to both jointly",
+      "Grace gets Teacher of the Year and Frank gets a lifetime achievement award",
+      "Postpone the decision",
+      "Ask the students to vote"
+     ],
+     "answer": 1,
+     "explain_es": "Diane: \"What if Grace gets Teacher of the Year, and Frank gets that?\""
+    },
+    {
+     "type": "mc",
+     "q": "Which judge insists that Frank's award be presented on the same night?",
+     "options": [
+      "Diane",
+      "Peter",
+      "Asha"
+     ],
+     "answer": 1,
+     "explain_es": "Peter: \"as long as it's presented on the same night, not as an afterthought.\""
+    },
+    {
+     "type": "tf",
+     "q": "Frank Lewis plans to retire this year.",
+     "answer": "NG",
+     "explain_es": "No se menciona su jubilación."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Frank Lewis is, without question, the ____-serving teacher on our list.\" (1 word)",
+     "answer": "longest",
+     "accept": [
+      "longest"
+     ],
+     "explain_es": "Superlativo de adjetivo compuesto: long-serving → longest-serving."
+    }
+   ],
+   "dictation": [
+    "We need a decision by five o'clock.",
+    "That's settled.",
+    "Frank hates fuss."
+   ]
+  }
+ ],
+ "12": [
+  {
+   "id": "ul-c1-12-1",
+   "title": "Closing the Deal on Bamboo Bikes",
+   "level": "C1",
+   "kind": "phone-call",
+   "topic": "Entrepreneurship, negotiation and the ideal job",
+   "focus": "Subject-verb inversion in conditionals",
+   "emoji": "🚴",
+   "speakers": [
+    {
+     "name": "Buyer Anna",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Supplier Kofi",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Hello, Kofi? It's Anna from Green Wheel. Thanks for making time. I wanted to follow up on our quote before our board meets on Thursday."
+    },
+    {
+     "s": 1,
+     "text": "Of course, Anna. Good to hear from you. Have you had a chance to look at the figures?"
+    },
+    {
+     "s": 0,
+     "text": "I have, and I'll be honest. The frames are beautiful, but the unit price is higher than we'd budgeted for. Were we to place a larger order, could you bring it down?"
+    },
+    {
+     "s": 1,
+     "text": "Possibly. What sort of volume are we talking about?"
+    },
+    {
+     "s": 0,
+     "text": "We'd been thinking of two hundred frames for the first season. Should the first batch sell well, we could go up to five hundred next year."
+    },
+    {
+     "s": 1,
+     "text": "OK. Had you mentioned five hundred at the start, I'd have priced it differently. For two hundred, the best I can do is a five per cent discount. For five hundred, I could go to twelve."
+    },
+    {
+     "s": 0,
+     "text": "Twelve's interesting. But we're a small company, and we're only just in the black. I can't commit to five hundred without knowing the first batch will sell."
+    },
+    {
+     "s": 1,
+     "text": "I understand. What if we did this: you order two hundred now at the five per cent rate, and should you reorder within twelve months, I'll apply the twelve per cent retrospectively to the first order as well."
+    },
+    {
+     "s": 0,
+     "text": "That's creative. I like it. Let me check one thing, though. Delivery. Our last supplier was three months late, and it nearly sank us."
+    },
+    {
+     "s": 1,
+     "text": "Our lead time is ten weeks from the deposit. Should there be any delay on our side, we'd cover the cost of air freight. That's in the contract."
+    },
+    {
+     "s": 0,
+     "text": "Good. And quality? We've done our due diligence, and your references are excellent. But were any frames to crack in the first year, what happens?"
+    },
+    {
+     "s": 1,
+     "text": "We replace them free of charge. To be fair, it's never happened yet. Bamboo is surprisingly strong."
+    },
+    {
+     "s": 0,
+     "text": "I'm sure. OK, one last point. Payment terms. We'd prefer thirty per cent upfront and the rest on delivery, rather than fifty-fifty."
+    },
+    {
+     "s": 1,
+     "text": "Hmm. That's tight for us. Our workshop is still scaling up. Could we meet in the middle? Forty per cent upfront?"
+    },
+    {
+     "s": 0,
+     "text": "Forty I can probably get past the board. Should they object, I'll call you on Friday."
+    },
+    {
+     "s": 1,
+     "text": "Perfect. Then I'll draft the agreement tonight. Should you need anything else for Thursday, a sample frame, photos, anything, just say."
+    },
+    {
+     "s": 0,
+     "text": "A sample frame would be brilliant, actually. The board likes to touch things."
+    },
+    {
+     "s": 1,
+     "text": "I'll courier one tomorrow. And Anna, had you not called today, I was going to call you. We really want this partnership to get off the ground."
+    },
+    {
+     "s": 0,
+     "text": "So do we. Speak soon, Kofi."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the purpose of Anna's call?",
+     "options": [
+      "To complain about a late delivery",
+      "To negotiate the terms of an order before her board meets",
+      "To cancel an order",
+      "To sell bikes to Kofi"
+     ],
+     "answer": 1,
+     "explain_es": "Anna: \"I wanted to follow up on our quote before our board meets on Thursday.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Anna's first concern?",
+     "options": [
+      "The design",
+      "The unit price",
+      "The colour",
+      "The weight"
+     ],
+     "answer": 1,
+     "explain_es": "Anna: \"the unit price is higher than we'd budgeted for.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Kofi's lead time is ____ weeks from the deposit. (1 word)",
+     "answer": "ten",
+     "accept": [
+      "ten",
+      "10"
+     ],
+     "explain_es": "Kofi: \"Our lead time is ten weeks from the deposit.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Kofi's creative solution?",
+     "options": [
+      "A free trial of fifty frames",
+      "Apply the twelve per cent discount retrospectively if Anna reorders within twelve months",
+      "Lower the quality to reduce the price",
+      "Deliver by air at no cost"
+     ],
+     "answer": 1,
+     "explain_es": "Kofi: \"should you reorder within twelve months, I'll apply the twelve per cent retrospectively\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why is delivery time so important to Anna?",
+     "options": [
+      "Her last supplier was three months late",
+      "She has a launch event next week",
+      "Her warehouse is full",
+      "Shipping costs are rising"
+     ],
+     "answer": 0,
+     "explain_es": "Anna: \"Our last supplier was three months late, and it nearly sank us.\""
+    },
+    {
+     "type": "tf",
+     "q": "Kofi's company has had to replace cracked frames several times.",
+     "answer": "F",
+     "explain_es": "Kofi: \"To be fair, it's never happened yet.\""
+    },
+    {
+     "type": "mc",
+     "q": "What payment terms do they finally agree on, provisionally?",
+     "options": [
+      "Thirty per cent upfront",
+      "Forty per cent upfront",
+      "Fifty per cent upfront",
+      "Full payment on delivery"
+     ],
+     "answer": 1,
+     "explain_es": "Kofi: \"Forty per cent upfront?\" Anna: \"Forty I can probably get past the board.\""
+    },
+    {
+     "type": "tf",
+     "q": "Green Wheel has been in business for more than ten years.",
+     "answer": "NG",
+     "explain_es": "Anna dice que son \"a small company\" que acaba de tener beneficios; no se dice cuántos años lleva."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Anna want a sample frame?",
+     "options": [
+      "To test it in a laboratory",
+      "Because the board likes to touch things",
+      "To show customers",
+      "To compare it with another supplier"
+     ],
+     "answer": 1,
+     "explain_es": "Anna: \"The board likes to touch things.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ we to place a larger order, could you bring it down?\" (1 word)",
+     "answer": "Were",
+     "accept": [
+      "Were",
+      "were"
+     ],
+     "explain_es": "Inversión condicional formal: Were we to = If we were to."
+    }
+   ],
+   "dictation": [
+    "Have you had a chance to look at the figures?",
+    "Bamboo is surprisingly strong.",
+    "We really want this partnership to get off the ground."
+   ]
+  },
+  {
+   "id": "ul-c1-12-2",
+   "title": "Pitch Night: The Rooftop Farm",
+   "level": "C1",
+   "kind": "interview",
+   "topic": "Entrepreneurship, negotiation and the ideal job",
+   "focus": "Adverb clauses of condition",
+   "emoji": "🥬",
+   "speakers": [
+    {
+     "name": "Host Rob",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Founder Jada",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Founders' Corner. My guest, Jada Owens, pitched her company, Up Top Farms, to a panel of investors last night. Jada, first of all, how did it go?"
+    },
+    {
+     "s": 1,
+     "text": "Better than I expected, honestly. Two of the five investors made offers. But both came with conditions, so I haven't said yes to anyone yet."
+    },
+    {
+     "s": 0,
+     "text": "Remind us what the business does."
+    },
+    {
+     "s": 1,
+     "text": "We turn unused rooftops in the city into vegetable farms. Restaurants on the floors below buy the produce, so it travels about twenty metres instead of two hundred miles."
+    },
+    {
+     "s": 0,
+     "text": "And the conditions?"
+    },
+    {
+     "s": 1,
+     "text": "The first investor offered two hundred thousand dollars, on condition that we focus only on restaurants and drop our community gardens. I'm not sure I can accept that. The community side is why I started."
+    },
+    {
+     "s": 0,
+     "text": "And the second?"
+    },
+    {
+     "s": 1,
+     "text": "She offered less, a hundred and fifty, but she'd let us keep the community gardens provided that they break even within two years. That seems reasonable, as long as we can find sponsors."
+    },
+    {
+     "s": 0,
+     "text": "Which way are you leaning?"
+    },
+    {
+     "s": 1,
+     "text": "The second, probably. Even if it means growing more slowly. Unless the first investor changes his mind, I'll most likely go with her."
+    },
+    {
+     "s": 0,
+     "text": "What were the hardest questions on the night?"
+    },
+    {
+     "s": 1,
+     "text": "Revenue. They wanted to know how we'd make money in winter. We're in Chicago, so, er, rooftops are frozen for four months. I explained that we're installing greenhouses, but only if the building owners agree. Otherwise, we'd scale back production in winter and focus on selling seedlings."
+    },
+    {
+     "s": 0,
+     "text": "Were you nervous?"
+    },
+    {
+     "s": 1,
+     "text": "Terrified. But I'd rehearsed so much. A mentor told me, \"Assuming you get asked the worst possible question, what will you say?\" So I prepared answers for twenty worst questions. In the end, they only asked three of them."
+    },
+    {
+     "s": 0,
+     "text": "What would you tell someone preparing their first pitch?"
+    },
+    {
+     "s": 1,
+     "text": "Know your numbers better than anyone in the room. And don't accept money just because it's offered. Supposing the investor wants a completely different company, are you willing to run it?"
+    },
+    {
+     "s": 0,
+     "text": "And what happens if neither deal works out?"
+    },
+    {
+     "s": 1,
+     "text": "Then we carry on. We're not in the red. We could grow slowly from our own revenue, as long as we keep costs down. It would just take longer to get the bigger projects off the ground."
+    },
+    {
+     "s": 0,
+     "text": "When do you have to decide?"
+    },
+    {
+     "s": 1,
+     "text": "By Friday. In case either of them withdraws, I've also kept talking to a bank. Just as a backup."
+    },
+    {
+     "s": 0,
+     "text": "Jada, good luck with the decision."
+    },
+    {
+     "s": 1,
+     "text": "Thanks, Rob. And if anyone listening owns an empty roof, you know where to find me."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does Up Top Farms do?",
+     "options": [
+      "It sells gardening tools",
+      "It turns unused rooftops into vegetable farms",
+      "It runs restaurants",
+      "It builds greenhouses for farms"
+     ],
+     "answer": 1,
+     "explain_es": "Jada: \"We turn unused rooftops in the city into vegetable farms.\""
+    },
+    {
+     "type": "mc",
+     "q": "How many investors made offers?",
+     "options": [
+      "One",
+      "Two",
+      "Three",
+      "Five"
+     ],
+     "answer": 1,
+     "explain_es": "Jada: \"Two of the five investors made offers.\""
+    },
+    {
+     "type": "mc",
+     "q": "What was the condition of the first offer?",
+     "options": [
+      "Focus only on restaurants and drop the community gardens",
+      "Move the business to another city",
+      "Hire a new CEO",
+      "Break even within one year"
+     ],
+     "answer": 0,
+     "explain_es": "Jada: \"on condition that we focus only on restaurants and drop our community gardens.\""
+    },
+    {
+     "type": "tf",
+     "q": "The second investor offered more money than the first.",
+     "answer": "F",
+     "explain_es": "Jada: \"She offered less, a hundred and fifty\"."
+    },
+    {
+     "type": "mc",
+     "q": "Which offer is Jada leaning towards?",
+     "options": [
+      "The first",
+      "The second",
+      "Neither",
+      "The bank's"
+     ],
+     "answer": 1,
+     "explain_es": "Jada: \"The second, probably.\""
+    },
+    {
+     "type": "mc",
+     "q": "What will the company do in winter if building owners don't agree to greenhouses?",
+     "options": [
+      "Close completely",
+      "Scale back production and sell seedlings",
+      "Move to another city",
+      "Buy vegetables from other farms"
+     ],
+     "answer": 1,
+     "explain_es": "Jada: \"we'd scale back production in winter and focus on selling seedlings.\""
+    },
+    {
+     "type": "mc",
+     "q": "How did Jada prepare for the pitch?",
+     "options": [
+      "She hired a coach",
+      "She prepared answers to twenty worst-case questions",
+      "She watched other pitches online",
+      "She didn't prepare"
+     ],
+     "answer": 1,
+     "explain_es": "Jada: \"I prepared answers for twenty worst questions.\""
+    },
+    {
+     "type": "tf",
+     "q": "Jada's company is currently losing money.",
+     "answer": "F",
+     "explain_es": "Jada: \"We're not in the red.\""
+    },
+    {
+     "type": "tf",
+     "q": "The bank has already approved a loan.",
+     "answer": "NG",
+     "explain_es": "Jada solo dice que ha seguido hablando con un banco \"as a backup\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The second investor would let them keep the community gardens ____ that they break even within two years. (1 word)",
+     "answer": "provided",
+     "accept": [
+      "provided",
+      "providing"
+     ],
+     "explain_es": "Jada: \"provided that they break even within two years.\" Cláusula condicional."
+    }
+   ],
+   "dictation": [
+    "Better than I expected, honestly.",
+    "Know your numbers better than anyone in the room.",
+    "Then we carry on."
+   ]
+  }
+ ]
+}

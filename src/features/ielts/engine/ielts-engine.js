@@ -3484,8 +3484,11 @@ document.getElementById("tabs").addEventListener("click", (e)=>{
   setModule(btn.dataset.mod);
 });
 
-function setModule(mod){
+function setModule(mod, opts){
   state.mod = mod;
+  // A paper opened from the Full mock test is sat under exam conditions (no
+  // seek bar on the Listening audio); opened any other way it is practice.
+  state.mockRun = !!(opts && opts.mock);
   document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("active", b.dataset.mod===mod));
   const labels = {dashboard:"Home", listening:"Listening", reading:"Reading", writing:"Writing",
                   speaking:"Speaking", practice:"Free practice", mock:"Full mock test", progress:"Progress",
@@ -5152,6 +5155,7 @@ function renderPracticeListening(){
   const part = parts[idx];
   const audio = (state.listening.customAudio || {})[part.id];
   const res = P.result;
+  const scrub = (audio || listeningPartVoice(part) === "browser") && !!(window.__ecyrTts && window.__ecyrTts.mountScrubber);
 
   body.innerHTML = `
     <div class="gen-card">
@@ -5166,7 +5170,8 @@ function renderPracticeListening(){
           </select>
         </div>
       </div>
-      ${audio ? `<div style="margin-top:12px;"><audio controls src="data:${audio.mime};base64,${audio.b64}" style="width:100%;"></audio></div>`
+      ${scrub ? `<div class="ix-scrub" id="prScrub" style="margin-top:12px;"></div>`
+        : audio ? `<div style="margin-top:12px;"><audio controls src="data:${audio.mime};base64,${audio.b64}" style="width:100%;"></audio></div>`
               : `<p class="pr-note" style="margin-top:10px;">No audio attached to this section yet — attach it in the <b>Listening</b> paper and it plays here too. You can still answer from the transcript below.</p>`}
       ${part.script ? `<details style="margin-top:10px;"><summary style="font-size:12.5px;color:var(--slate);cursor:pointer;">Show the transcript</summary>
         <div class="pr-passage" style="margin-top:10px;">${escapeHtml(part.script).replace(/\n/g,"<br>")}</div></details>` : ""}
@@ -5183,6 +5188,7 @@ function renderPracticeListening(){
     <div id="prDrillResult">${res ? practiceDrillResultHTML(res) : ""}</div>
   `;
 
+  if(scrub) mountListeningScrubber(document.getElementById("prScrub"), part, false);
   document.getElementById("prSection").addEventListener("change", e=>{
     P.sectionIdx = Number(e.target.value); P.answers = {}; P.result = null;
     renderPractice();
@@ -5753,7 +5759,7 @@ function renderMockTest(){
       Each paper here carries the clock from the real thing, and at 00:00 your answers are locked for marking, so a practice run tells you what a real one would.
     </p>
   `;
-  panel.querySelectorAll("[data-mod]").forEach(b=>b.addEventListener("click", ()=>setModule(b.dataset.mod)));
+  panel.querySelectorAll("[data-mod]").forEach(b=>b.addEventListener("click", ()=>setModule(b.dataset.mod, { mock:true })));
 }
 
 /* =========================================================================
@@ -6484,6 +6490,7 @@ function renderListening(){
       : custom ? ["Official recording attached", "Playing your attached audio file"]
       : ["No audio attached", "Attach the official recording below to enable playback"];
     const transcriptOpen = !!L.transcriptOpen[part.id];
+    const scrub = playable && listeningScrubbable();
 
     const block = document.createElement("div");
     block.style.marginBottom = "34px";
@@ -6492,12 +6499,13 @@ function renderListening(){
       <p style="font-size:13.5px;color:var(--slate);margin:0 0 14px;line-height:1.6;">${part.context || ""}</p>
       
       <div class="audio-player">
-        <button class="playbtn" data-pid="${part.id}" ${!playable ? 'style="opacity:.35;cursor:not-allowed;"' : ''}>${isPlaying ? "⏸" : "▶"}</button>
+        ${scrub ? "" : `<button class="playbtn" data-pid="${part.id}" ${!playable ? 'style="opacity:.35;cursor:not-allowed;"' : ''}>${isPlaying ? "⏸" : "▶"}</button>`}
         <div class="info">
           <b>Audio Track</b> <span class="audio-source-note ${playable?'real':''}">${trackNote[0]}</span><br>
           <span style="opacity:.7;">${trackNote[1]}</span>
         </div>
-        <div class="rate">
+        ${scrub ? `<div class="ix-scrub" data-scrub="${part.id}" style="flex:1 1 100%;min-width:0;"></div>` : ""}
+        <div class="rate" ${scrub ? 'style="display:none;"' : ""}>
           <select data-rate="${part.id}">
             <option value="1">1.0x Speed</option>
             <option value="0.9">0.9x Speed</option>
@@ -6530,6 +6538,7 @@ function renderListening(){
       <hr class="rule">
     `;
     container.appendChild(block);
+    if(scrub) mountListeningScrubber(block.querySelector("[data-scrub]"), part, true);
   });
 
   container.querySelectorAll(".playbtn").forEach(b=>{
@@ -6837,6 +6846,36 @@ function measureListeningAudioDurations(){
   });
   // A removed section must stop counting towards the paper's length.
   Object.keys(L.audioDur).forEach(pid=>{ if(!custom[pid]) delete L.audioDur[pid]; });
+}
+
+/* Outside a full mock test each section gets a seekable player from the
+   platform (window.__ecyrTts.mountScrubber): a bar to jump to any second,
+   back 5 s / 10 s and the speed. Sat from the Full mock test, the paper keeps
+   the exam's single play button. The handle stands in for activeAudioEl, so
+   the pause/stop code above and below works unchanged. */
+function listeningScrubbable(){
+  return !state.mockRun && !!(window.__ecyrTts && window.__ecyrTts.mountScrubber);
+}
+function mountListeningScrubber(host, part, paper){
+  if(!host) return;
+  const custom = state.listening.customAudio && state.listening.customAudio[part.id];
+  const handle = window.__ecyrTts.mountScrubber(host, {
+    source: custom || part,
+    src: custom ? ()=>`data:${custom.mime};base64,${custom.b64}` : null,
+    part: custom ? null : part,
+    onPlay: ()=>{
+      if(activeAudioEl && activeAudioEl !== handle) activeAudioEl.pause();
+      activeAudioEl = handle;
+      activeListeningAudio = { partId: part.id };
+      if(!paper) return;
+      // The paper is timed by its audio; the first play also unlocks the transcript.
+      startExamTimer("listening");
+      if(!state.listening.playedParts[part.id]){
+        state.listening.playedParts[part.id] = true;
+        setTimeout(()=>{ if(state.mod === "listening") renderListening(); }, 0);
+      }
+    }
+  });
 }
 
 function toggleListeningAudio(pid){

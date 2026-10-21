@@ -1,0 +1,1130 @@
+[
+ {
+  "id": "r5-a1-short-circuit",
+  "title": "Short Circuit · A1",
+  "level": "A1",
+  "genre": "story",
+  "topic": "Relationships & work",
+  "focus": "Verb be, present simple, can and there is / there are",
+  "emoji": "⚡",
+  "advisory": "Tema adulto: una relación de pareja desigual, deudas y distancia familiar. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "be": {
+    "label": "Verbo be",
+    "color": "var(--blue)"
+   },
+   "pres": {
+    "label": "Presente simple",
+    "color": "var(--orange)"
+   },
+   "can": {
+    "label": "Can / can't",
+    "color": "var(--green)"
+   },
+   "there": {
+    "label": "There is / there are",
+    "color": "var(--purple)"
+   }
+  },
+  "paragraphs": [
+   "## Node 01 · The Contact — Buga",
+   "Lucho [[be|is]] twenty-five. He [[be|is]] an electrical engineer from Manizales, but now he [[pres|works]] in Buga.",
+   "At work, he [[pres|meets]] Carolina. She [[be|is]] forty-five and divorced. “You [[be|are]] very young,” she [[pres|says]]. She [[pres|laughs]], and Lucho [[pres|falls]] in love.",
+   "## Node 02 · No Experience — The first months",
+   "Carolina [[be|is]] Lucho's first girlfriend. When she [[pres|calls]], he always [[pres|answers]]. When she [[be|is]] sad, he [[pres|changes]] his plans.",
+   "She [[pres|lives]] with her son. He [[be|is]] seventeen. [[there|There are]] big money problems in her house: [[there|there is]] a bank loan, [[there|there is]] a car loan and [[there|there are]] three credit cards.",
+   "## Node 03 · Heat, Then Fire — Year one",
+   "Carolina [[pres|likes]] expensive dinners and new phones. Lucho [[pres|pays]] for everything. At the end of the month, he [[pres|has]] no money.",
+   "[[there|There is]] a rule in electricity: a bad connection [[pres|makes]] heat, and heat [[pres|makes]] fire. Lucho [[pres|knows]] the rule, but he [[can|can't see]] the problem in his life.",
+   "## Node 04 · The Lights Go Out — Manizales",
+   "His parents [[pres|live]] in Manizales, but he [[pres|doesn't visit]] them. His mother [[pres|calls]], but he [[pres|doesn't answer]]. “I [[can|can go]] next month,” he [[pres|says]]. He never [[pres|goes]].",
+   "## Node 05 · Distance — Ibagué",
+   "After two years, his company [[pres|sends]] Lucho to Ibagué. His new apartment [[be|is]] quiet, and he [[be|is]] lonely. He [[pres|calls]] Carolina every night.",
+   "## Node 06 · The End — A Tuesday",
+   "One Tuesday, Carolina [[pres|calls]]. “I [[pres|want]] my freedom,” she [[pres|says]]. “You [[pres|need]] a girlfriend of your age.” Lucho [[pres|says]] sorry, but he [[pres|doesn't know]] why.",
+   "## Node 07 · A Second Circuit — Ibagué",
+   "A few weeks later, Lucho [[pres|has]] a new girlfriend, Silvia. She [[be|is]] twenty-two. But Lucho [[be|isn't]] the same man. He [[be|is]] nice, but cold.",
+   "“I [[be|am]] a job for you,” Silvia [[pres|says]]. “That [[be|isn't]] true,” Lucho [[pres|answers]]. Silvia often [[pres|says]], “I [[can|can leave]] you!” But she never [[pres|goes]].",
+   "## Node 08 · The Heat in the Wall — Now",
+   "One night, Silvia [[pres|tells]] him a secret: her ex-boyfriend [[be|was]] at her house. Lucho [[pres|doesn't shout]]. He [[pres|does]] nothing.",
+   "Now Silvia [[be|is]] tired, not angry. All the lights [[be|are]] on, but you [[can|can feel]] the heat in the wall."
+  ],
+  "glossary": [
+   [
+    "electrical engineer",
+    "ingeniero electricista"
+   ],
+   [
+    "divorced",
+    "divorciada"
+   ],
+   [
+    "falls in love",
+    "se enamora"
+   ],
+   [
+    "girlfriend",
+    "novia"
+   ],
+   [
+    "plans",
+    "planes"
+   ],
+   [
+    "bank loan",
+    "préstamo del banco"
+   ],
+   [
+    "car loan",
+    "crédito del carro"
+   ],
+   [
+    "credit cards",
+    "tarjetas de crédito"
+   ],
+   [
+    "connection",
+    "conexión"
+   ],
+   [
+    "heat",
+    "calor"
+   ],
+   [
+    "lonely",
+    "solo, sin compañía"
+   ],
+   [
+    "freedom",
+    "libertad"
+   ],
+   [
+    "shout",
+    "gritar"
+   ],
+   [
+    "wall",
+    "pared"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "How old is Lucho?",
+    "options": [
+     "Seventeen",
+     "Twenty-two",
+     "Twenty-five",
+     "Forty-five"
+    ],
+    "answer": 2,
+    "explain_es": "'Lucho is twenty-five.'"
+   },
+   {
+    "type": "mc",
+    "q": "Where does Lucho meet Carolina?",
+    "options": [
+     "At work",
+     "At a party",
+     "In Manizales",
+     "On the bus"
+    ],
+    "answer": 0,
+    "explain_es": "'At work, he meets Carolina.'"
+   },
+   {
+    "type": "tf",
+    "q": "Carolina is younger than Lucho.",
+    "answer": "F",
+    "explain_es": "Carolina tiene cuarenta y cinco años: 'She is forty-five'. Lucho tiene veinticinco."
+   },
+   {
+    "type": "tf",
+    "q": "Carolina has a son.",
+    "answer": "T",
+    "explain_es": "'She lives with her son. He is seventeen.'"
+   },
+   {
+    "type": "mc",
+    "q": "What money problems are there in Carolina's house?",
+    "options": [
+     "There is a bank loan, a car loan and three credit cards.",
+     "There are two bank loans.",
+     "There is no money problem.",
+     "There is one credit card."
+    ],
+    "answer": 0,
+    "explain_es": "'there is a bank loan, there is a car loan and there are three credit cards.'"
+   },
+   {
+    "type": "tf",
+    "q": "Lucho visits his parents every month.",
+    "answer": "F",
+    "explain_es": "'His parents live in Manizales, but he doesn't visit them.'"
+   },
+   {
+    "type": "vocab",
+    "q": "In Ibagué, Lucho is 'lonely'. What does 'lonely' mean?",
+    "options": [
+     "Happy and busy",
+     "Sad because he is alone",
+     "Very tired from work",
+     "Angry with his company"
+    ],
+    "answer": 1,
+    "explain_es": "'Lonely' = triste por estar solo. 'His new apartment is quiet, and he is lonely.'"
+   },
+   {
+    "type": "mc",
+    "q": "Who ends the relationship?",
+    "options": [
+     "Lucho",
+     "Carolina",
+     "Silvia",
+     "Lucho's mother"
+    ],
+    "answer": 1,
+    "explain_es": "'One Tuesday, Carolina calls. “I want my freedom,” she says.'"
+   },
+   {
+    "type": "tf",
+    "q": "Silvia is twenty-two.",
+    "answer": "T",
+    "explain_es": "'She is twenty-two.'"
+   },
+   {
+    "type": "gap",
+    "q": "Lucho ____ (be) an electrical engineer.",
+    "answer": "is",
+    "explain_es": "Verbo be con he/she/it: is. 'He is an electrical engineer.'"
+   },
+   {
+    "type": "gap",
+    "q": "Carolina ____ (live) with her son.",
+    "answer": "lives",
+    "explain_es": "Presente simple con she: se añade -s. 'She lives with her son.'"
+   },
+   {
+    "type": "gap",
+    "q": "There ____ three credit cards. (is / are)",
+    "answer": "are",
+    "explain_es": "Plural (three credit cards) → there are."
+   },
+   {
+    "type": "gap",
+    "q": "Lucho ____ (not / answer) his mother.",
+    "answer": "doesn't answer",
+    "accept": [
+     "does not answer",
+     "doesn’t answer"
+    ],
+    "explain_es": "Negativo en presente simple con he: doesn't + verbo base. 'he doesn't answer'."
+   }
+  ],
+  "words": 351
+ },
+ {
+  "id": "r5-a2-short-circuit",
+  "title": "Short Circuit · A2",
+  "level": "A2",
+  "genre": "story",
+  "topic": "Relationships & work",
+  "focus": "Past simple: regular, irregular and negative",
+  "emoji": "⚡",
+  "advisory": "Tema adulto: una relación de pareja desigual, deudas y distancia familiar. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "reg": {
+    "label": "Regular (-ed)",
+    "color": "var(--blue)"
+   },
+   "irr": {
+    "label": "Irregular",
+    "color": "var(--orange)"
+   },
+   "neg": {
+    "label": "Negativa (did not)",
+    "color": "var(--red)"
+   }
+  },
+  "paragraphs": [
+   "## Node 01 · The Contact — Buga",
+   "Lucho [[irr|was]] twenty-five when he [[reg|arrived]] in Buga for his second job. He [[irr|had]] a diploma in electrical engineering, and he [[neg|did not know]] anybody in the town.",
+   "At work, he [[irr|met]] Carolina. She [[irr|was]] forty-five and divorced, and she [[irr|spoke]] to everybody with a warm, tired smile. “You're very young,” she [[irr|said]] that first afternoon. “I'm twenty-five,” he [[reg|answered]]. She [[reg|laughed]], and something inside him [[reg|closed]], like a switch.",
+   "## Node 02 · No Reference — The first three months",
+   "Nobody at the office [[irr|knew]] this: Lucho never [[irr|had]] a girlfriend before Carolina. After three months he [[irr|was]] in love. When she [[reg|called]], he [[reg|answered]]. When she [[irr|was]] sad, he [[reg|cancelled]] his plans.",
+   "Carolina [[reg|lived]] with her seventeen-year-old son. She [[irr|had]] a mortgage, a car loan and three credit cards. “I can never pay it all,” she [[irr|told]] him once, and she [[reg|laughed]]. Lucho [[reg|listened]] to her voice, but he [[neg|did not listen]] to the words.",
+   "## Node 03 · Heat, Then Fire — Year one",
+   "Her whims [[reg|started]] small: a dinner, a weekend away, a new phone. Lucho [[irr|paid]] for everything. He [[reg|asked]] his company for two advances on his salary, and he [[irr|began]] to pay her bills too. At the end of every month he [[irr|had]] nothing. He [[neg|did not call]] it debt. He [[reg|called]] it “helping”.",
+   "In electrical work, resistance makes heat, and heat makes fire. Lucho [[irr|taught]] this rule to technicians, but he [[neg|did not see]] it in his own life.",
+   "## Node 04 · The Lights Go Out Quietly — Manizales",
+   "His parents [[reg|waited]] for him in Manizales. At first he [[reg|visited]] them every month, then every two months, and then he [[reg|stopped]]. His mother [[reg|phoned]], but he [[neg|did not answer]] very often. Nothing [[reg|exploded]]. The lights just [[irr|went]] out, quietly.",
+   "## Node 05 · What Distance Removes — Ibagué",
+   "After almost two years, the company [[irr|sent]] Lucho to Ibagué. His new apartment [[irr|was]] clean and quiet, but he [[reg|hated]] the silence. He [[reg|worked]] late and he [[reg|called]] Carolina at eleven every night.",
+   "## Node 06 · The Invoice — A Tuesday",
+   "Carolina [[reg|ended]] it. She [[reg|phoned]] him on a Tuesday and [[irr|said]] she [[reg|wanted]] her freedom. Lucho [[reg|apologised]], but he [[neg|did not know]] why. Then he [[irr|hung]] up. Two years, a lot of debt and a family far away: that [[irr|was]] the invoice.",
+   "## Node 07 · A Second Circuit — Ibagué",
+   "A few weeks later he [[irr|found]] a new girlfriend, Silvia. She [[irr|was]] twenty-two and she [[reg|laughed]] easily. But Lucho [[irr|was]] a different man now: kind, but cold.",
+   "“You treat me like an obligation,” she [[irr|told]] him. “That's not true,” he [[irr|said]], and he [[reg|changed]] the subject. She [[reg|threatened]] to leave him five times, but she never [[reg|packed]] a bag.",
+   "## Node 08 · The Heat in the Wall — Now",
+   "Then one night she [[irr|told]] him a secret: her ex-boyfriend [[irr|came]] to her house once. Lucho [[neg|did not shout]]. He [[neg|did not leave]]. He [[irr|did]] nothing.",
+   "Today Silvia is tired, not angry. All the lights are on. But if you put your hand on the wall, you can feel the heat."
+  ],
+  "glossary": [
+   [
+    "diploma",
+    "título, diploma"
+   ],
+   [
+    "switch",
+    "interruptor"
+   ],
+   [
+    "mortgage",
+    "hipoteca"
+   ],
+   [
+    "car loan",
+    "crédito del carro"
+   ],
+   [
+    "credit cards",
+    "tarjetas de crédito"
+   ],
+   [
+    "whims",
+    "caprichos"
+   ],
+   [
+    "advances on his salary",
+    "adelantos de sueldo"
+   ],
+   [
+    "bills",
+    "cuentas por pagar"
+   ],
+   [
+    "debt",
+    "deuda"
+   ],
+   [
+    "resistance",
+    "resistencia"
+   ],
+   [
+    "technicians",
+    "técnicos"
+   ],
+   [
+    "apologised",
+    "pidió disculpas"
+   ],
+   [
+    "hung up",
+    "colgó (el teléfono)"
+   ],
+   [
+    "invoice",
+    "factura, cuenta"
+   ],
+   [
+    "obligation",
+    "obligación"
+   ],
+   [
+    "threatened",
+    "amenazó"
+   ],
+   [
+    "packed",
+    "empacó"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Where did Lucho meet Carolina?",
+    "options": [
+     "At university",
+     "At work in Buga",
+     "In Manizales",
+     "In Ibagué"
+    ],
+    "answer": 1,
+    "explain_es": "'At work, he met Carolina' en Buga, su segundo trabajo."
+   },
+   {
+    "type": "tf",
+    "q": "Lucho had a lot of girlfriends before Carolina.",
+    "answer": "F",
+    "explain_es": "'Lucho never had a girlfriend before Carolina.'"
+   },
+   {
+    "type": "mc",
+    "q": "What did Carolina say about her money problems?",
+    "options": [
+     "“I can never pay it all.”",
+     "“I have no problems.”",
+     "“My son pays everything.”",
+     "“The bank helps me.”"
+    ],
+    "answer": 0,
+    "explain_es": "'“I can never pay it all,” she told him once, and she laughed.'"
+   },
+   {
+    "type": "vocab",
+    "q": "In Node 06, “Two years, a lot of debt and a family far away: that was the invoice.” Here 'invoice' means…",
+    "options": [
+     "the price Lucho paid for the relationship",
+     "a letter from the bank",
+     "a present from Carolina",
+     "a new job"
+    ],
+    "answer": 0,
+    "explain_es": "'Invoice' = factura: aquí es una metáfora del costo total de la relación para Lucho."
+   },
+   {
+    "type": "tf",
+    "q": "Lucho paid for Carolina's whims.",
+    "answer": "T",
+    "explain_es": "'Her whims started small… Lucho paid for everything.'"
+   },
+   {
+    "type": "mc",
+    "q": "What did Lucho call his debt?",
+    "options": [
+     "A problem",
+     "A loan",
+     "“Helping”",
+     "A present"
+    ],
+    "answer": 2,
+    "explain_es": "'He did not call it debt. He called it “helping”.'"
+   },
+   {
+    "type": "tf",
+    "q": "Lucho visited his parents every month for two years.",
+    "answer": "F",
+    "explain_es": "'At first he visited them every month, then every two months, and then he stopped.'"
+   },
+   {
+    "type": "mc",
+    "q": "Why did Lucho go to Ibagué?",
+    "options": [
+     "Carolina wanted to live there.",
+     "The company sent him.",
+     "His parents lived there.",
+     "He wanted a new girlfriend."
+    ],
+    "answer": 1,
+    "explain_es": "'After almost two years, the company sent Lucho to Ibagué.'"
+   },
+   {
+    "type": "mc",
+    "q": "How did Carolina end the relationship?",
+    "options": [
+     "In a letter",
+     "At a restaurant",
+     "On the phone",
+     "With a text message"
+    ],
+    "answer": 2,
+    "explain_es": "'She phoned him on a Tuesday and said she wanted her freedom.'"
+   },
+   {
+    "type": "tf",
+    "q": "Silvia left Lucho.",
+    "answer": "F",
+    "explain_es": "'She threatened to leave him five times, but she never packed a bag.'"
+   },
+   {
+    "type": "gap",
+    "q": "Lucho ____ (meet) Carolina at work.",
+    "answer": "met",
+    "explain_es": "meet → met (irregular)."
+   },
+   {
+    "type": "gap",
+    "q": "Lucho ____ (pay) for everything.",
+    "answer": "paid",
+    "explain_es": "pay → paid (irregular: no se escribe 'payed')."
+   },
+   {
+    "type": "gap",
+    "q": "At first he ____ (visit) them every month.",
+    "answer": "visited",
+    "explain_es": "visit → visited (regular, -ed)."
+   },
+   {
+    "type": "gap",
+    "q": "Lucho ____ (not / shout).",
+    "answer": "did not shout",
+    "accept": [
+     "didn't shout",
+     "didn’t shout"
+    ],
+    "explain_es": "Negativo en pasado: did not + verbo base."
+   },
+   {
+    "type": "transform",
+    "q": "Write the question: She phoned him on a Tuesday. (When…?)",
+    "answer": "When did she phone him?",
+    "accept": [
+     "When did Carolina phone him?",
+     "When did she phone Lucho?",
+     "When did Carolina phone Lucho?"
+    ],
+    "explain_es": "Pregunta en pasado: Wh- + did + sujeto + verbo base (phone, no phoned)."
+   }
+  ],
+  "words": 504
+ },
+ {
+  "id": "r5-b1-short-circuit",
+  "title": "Short Circuit · B1",
+  "level": "B1",
+  "genre": "story",
+  "topic": "Relationships & work",
+  "focus": "Past simple · past continuous · past perfect · used to",
+  "emoji": "⚡",
+  "advisory": "Tema adulto: una relación de pareja desigual, deudas y distancia familiar. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "psimp": {
+    "label": "Past simple",
+    "color": "var(--orange)"
+   },
+   "pcont": {
+    "label": "Past continuous",
+    "color": "var(--teal)"
+   },
+   "pperf": {
+    "label": "Past perfect",
+    "color": "var(--purple)"
+   },
+   "used": {
+    "label": "Used to",
+    "color": "var(--green)"
+   }
+  },
+  "paragraphs": [
+   "## Node 01 · The Contact — Buga, Valle del Cauca",
+   "Lucho [[pperf|had never lived|Past perfect (never … before)]] far from home before. At twenty-five, with a diploma in electrical engineering and a small suitcase, he [[psimp|arrived]] in Buga to start his second job. During his first weeks he [[pcont|was always measuring|Past continuous (repeated background action)]] voltages and inspecting panels. Then, at work, he [[psimp|met]] Carolina.",
+   "She [[psimp|was]] forty-five and divorced, and nothing seemed to surprise her. Lucho [[pperf|had spent|Past perfect (before the story)]] his teenage years with books, not with people, so he [[psimp|found]] her fascinating. “You're very young,” she [[psimp|said]] that first afternoon. “I'm twenty-five,” he [[psimp|answered]]. She [[psimp|laughed]], and something inside him [[psimp|closed]], like a switch.",
+   "## Node 02 · No Reference — The first three months",
+   "Nobody at the office knew it, but Lucho [[pperf|had never had]] a girlfriend. While other young men [[pcont|were learning|Past continuous (while + action in progress)]] how to argue and forgive, he [[pcont|was studying]] how electric current behaves. So he [[psimp|had]] no reference.",
+   "Within three months he [[psimp|was]] in love. If she [[psimp|called]], he [[psimp|answered]]. If she [[psimp|was]] sad, he [[psimp|cancelled]] his plans. Carolina [[psimp|lived]] with her seventeen-year-old son in a house that really belonged to the bank. She [[psimp|had]] a mortgage, a car loan and three credit cards. “If I only pay the minimum, I'll never finish,” she [[psimp|told]] him once, laughing.",
+   "## Node 03 · Heat, Then Fire — Year one",
+   "Her whims [[psimp|started]] small: a dinner here, a weekend there, a new phone. Lucho [[psimp|paid]], and paying [[psimp|felt]] like proof of love. By the end of the first year, he [[pperf|had asked|Past perfect (By the end of … + had)]] for two advances on his salary, and the bank [[pperf|had raised]] his credit limit twice. He [[pcont|was paying]] for her expenses as well as his own. He never [[psimp|called]] it debt. He [[psimp|called]] it helping.",
+   "There is a rule in electrical work: resistance produces heat, and heat produces fire. Lucho [[pperf|had explained]] it to technicians dozens of times, but he [[psimp|couldn't]] apply it to his own life.",
+   "## Node 04 · The Lights Go Out Quietly — Manizales, Caldas",
+   "His parents [[pcont|were waiting]] for him in Manizales. At first he [[used|used to visit|used to + infinitive (past habit)]] them every month; then every two months; then he [[psimp|stopped]] counting. Weekends [[psimp|were]] expensive, and Carolina [[psimp|needed]] him. His mother [[used|used to phone]] every Sunday, but he [[psimp|answered]] less and less. When Lucho finally [[psimp|noticed]], more than a year [[pperf|had passed|Past perfect (when + past simple, had + participle)]] without a single visit.",
+   "An open circuit is not dramatic. Nothing explodes. The current simply stops arriving, and everything goes dark, quietly.",
+   "## Node 05 · What Distance Removes — Ibagué, Tolima",
+   "After almost two years, his company [[psimp|transferred]] Lucho to Ibagué. For two years he [[pperf|had organised]] his life around her moods and her emergencies, so he [[pperf|had almost forgotten]] how to spend a Sunday alone. Every night he [[pcont|was working]] late, calling her at eleven and counting the days. In the silence, Lucho [[psimp|heard]] the truth about the relationship, but he [[psimp|didn't want]] to say it.",
+   "## Node 06 · The Invoice — A Tuesday, over the phone",
+   "In the end, Carolina [[psimp|ended]] it. She [[psimp|called]] him one Tuesday while he [[pcont|was having|Past continuous interrupted by past simple]] dinner. She [[psimp|said]] she needed her freedom and that he deserved somebody his own age. As soon as she [[pperf|had finished]], he [[psimp|apologised]] — but he [[psimp|didn't know]] why.",
+   "He [[psimp|hung]] up. Two years, a higher credit limit and a family he [[pperf|had stopped]] visiting: that was the invoice. He [[psimp|felt]] like a house at three in the morning, with everything switched off.",
+   "## Node 07 · A Second Circuit — Ibagué · a few weeks later",
+   "A few weeks later he [[pcont|was going out]] with Silvia, a twenty-two-year-old girl who laughed easily. With Carolina he [[used|used to remember]] every small detail. But he [[pperf|had left]] something behind in Buga: the patience, the small attentions, the crazy devotion. He [[psimp|was]] affectionate, but in an efficient way.",
+   "Silvia [[psimp|noticed]]. She [[pperf|had never met]] Carolina, but she could feel her. “You treat me like an obligation,” she [[psimp|told]] him. “That's not true,” he [[psimp|said]], and [[psimp|changed]] the subject. She has threatened to leave him five times, but she has never packed a bag.",
+   "## Node 08 · The Heat in the Wall — Now",
+   "Then one night she [[psimp|told]] him a secret that she [[pperf|had kept]] for weeks: her ex-boyfriend [[pperf|had come]] to her house once. Nothing [[pperf|had happened]], she said. Lucho [[psimp|understood]] more than he [[psimp|admitted]], but he [[psimp|did]] nothing. He just [[psimp|carried on]] as usual.",
+   "Silvia is tired now. Not angry — tired, which is far more dangerous. All the lights are on. But if you put your hand on the wall, you can feel the heat."
+  ],
+  "glossary": [
+   [
+    "voltages",
+    "voltajes"
+   ],
+   [
+    "panels",
+    "tableros eléctricos"
+   ],
+   [
+    "fascinating",
+    "fascinante"
+   ],
+   [
+    "switch",
+    "interruptor"
+   ],
+   [
+    "current",
+    "corriente eléctrica"
+   ],
+   [
+    "mortgage",
+    "hipoteca"
+   ],
+   [
+    "whims",
+    "caprichos"
+   ],
+   [
+    "proof",
+    "prueba"
+   ],
+   [
+    "advances on his salary",
+    "adelantos de sueldo"
+   ],
+   [
+    "credit limit",
+    "cupo de la tarjeta"
+   ],
+   [
+    "expenses",
+    "gastos"
+   ],
+   [
+    "resistance",
+    "resistencia"
+   ],
+   [
+    "technicians",
+    "técnicos"
+   ],
+   [
+    "open circuit",
+    "circuito abierto"
+   ],
+   [
+    "transferred",
+    "trasladó"
+   ],
+   [
+    "moods",
+    "estados de ánimo"
+   ],
+   [
+    "apologised",
+    "pidió disculpas"
+   ],
+   [
+    "hung up",
+    "colgó (el teléfono)"
+   ],
+   [
+    "invoice",
+    "factura, cuenta"
+   ],
+   [
+    "devotion",
+    "devoción, entrega"
+   ],
+   [
+    "affectionate",
+    "cariñoso"
+   ],
+   [
+    "obligation",
+    "obligación"
+   ],
+   [
+    "carried on",
+    "siguió como si nada"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why was the job in Buga a big change for Lucho?",
+    "options": [
+     "He had never lived far from home.",
+     "He had never worked before.",
+     "He didn't speak Spanish.",
+     "He had lived in Buga as a child."
+    ],
+    "answer": 0,
+    "explain_es": "'Lucho had never lived far from home before' y era su segundo trabajo."
+   },
+   {
+    "type": "tf",
+    "q": "Carolina was younger than Lucho.",
+    "answer": "F",
+    "explain_es": "'She was forty-five and divorced'; Lucho tenía veinticinco."
+   },
+   {
+    "type": "mc",
+    "q": "Why did Lucho have 'no reference'?",
+    "options": [
+     "He had never had a girlfriend.",
+     "He had lost his diploma.",
+     "His parents had never met Carolina.",
+     "He was new in the office."
+    ],
+    "answer": 0,
+    "explain_es": "'Lucho had never had a girlfriend… So he had no reference.'"
+   },
+   {
+    "type": "tf",
+    "q": "By the end of the first year, Lucho had asked for two advances on his salary.",
+    "answer": "T",
+    "explain_es": "'By the end of the first year, he had asked for two advances on his salary'."
+   },
+   {
+    "type": "mc",
+    "q": "What is the electrical rule in Node 03?",
+    "options": [
+     "Current produces light.",
+     "Resistance produces heat, and heat produces fire.",
+     "An open circuit always explodes.",
+     "A fuse never breaks."
+    ],
+    "answer": 1,
+    "explain_es": "'resistance produces heat, and heat produces fire.'"
+   },
+   {
+    "type": "tf",
+    "q": "At first, Lucho used to visit his parents every month.",
+    "answer": "T",
+    "explain_es": "'At first he used to visit them every month; then every two months; then he stopped counting.'"
+   },
+   {
+    "type": "mc",
+    "q": "What was Lucho doing when Carolina called him?",
+    "options": [
+     "He was working late.",
+     "He was having dinner.",
+     "He was visiting his parents.",
+     "He was sleeping."
+    ],
+    "answer": 1,
+    "explain_es": "'She called him one Tuesday while he was having dinner' — past continuous interrumpido por past simple."
+   },
+   {
+    "type": "tf",
+    "q": "Silvia had met Carolina before.",
+    "answer": "F",
+    "explain_es": "'She had never met Carolina, but she could feel her.'"
+   },
+   {
+    "type": "mc",
+    "q": "How does Silvia feel at the end of the story?",
+    "options": [
+     "Angry",
+     "Tired",
+     "Happy",
+     "Jealous"
+    ],
+    "answer": 1,
+    "explain_es": "'Silvia is tired now. Not angry — tired, which is far more dangerous.'"
+   },
+   {
+    "type": "gap",
+    "q": "At first he ____ (visit) them every month. (past habit)",
+    "answer": "used to visit",
+    "explain_es": "Hábito en el pasado que ya no ocurre: used to + verbo base."
+   },
+   {
+    "type": "gap",
+    "q": "His parents ____ (wait) for him in Manizales. (past continuous)",
+    "answer": "were waiting",
+    "explain_es": "Past continuous: was/were + -ing para una acción en progreso de fondo."
+   },
+   {
+    "type": "gap",
+    "q": "By the end of the first year, he ____ (ask) for two advances.",
+    "answer": "had asked",
+    "explain_es": "'By the end of…' + past perfect (had + participio): pasó antes de ese momento."
+   },
+   {
+    "type": "gap",
+    "q": "She called him while he ____ (have) dinner.",
+    "answer": "was having",
+    "explain_es": "Acción larga interrumpida: while + past continuous."
+   },
+   {
+    "type": "vocab",
+    "q": "In Node 05, 'For two years he had organised his life around her moods'. What are 'moods'?",
+    "options": [
+     "Plans for the weekend",
+     "The way someone feels at a particular time",
+     "Money problems",
+     "Jobs at the office"
+    ],
+    "answer": 1,
+    "explain_es": "'Moods' = estados de ánimo: cómo se siente una persona en un momento."
+   }
+  ],
+  "words": 745
+ },
+ {
+  "id": "r5-c1-short-circuit",
+  "title": "Short Circuit · C1",
+  "level": "C1",
+  "genre": "story",
+  "topic": "Relationships & work",
+  "focus": "Inversion, cleft sentences, participle clauses and advanced vocabulary",
+  "emoji": "⚡",
+  "advisory": "Tema adulto: una relación de pareja desigual, deudas y distancia familiar. Recomendada para jóvenes y adultos.",
+  "marks": {
+   "inv": {
+    "label": "Inversión",
+    "color": "var(--purple)"
+   },
+   "cleft": {
+    "label": "Cleft sentences",
+    "color": "var(--blue)"
+   },
+   "part": {
+    "label": "Participle clauses",
+    "color": "var(--teal)"
+   },
+   "adv": {
+    "label": "Otras estructuras C1",
+    "color": "var(--orange)"
+   },
+   "voc": {
+    "label": "Vocabulario C1",
+    "color": "var(--pink)"
+   }
+  },
+  "paragraphs": [
+   "## Node 01 · The Contact — Buga, Valle del Cauca",
+   "[[inv|Never before had Lucho lived|Negative adverbial inversion (Never before + had + subject)]] more than a bus ride away from his parents. At twenty-five, [[part|armed with a diploma in electrical engineering and a suitcase hopelessly inadequate for two years|Past participle clause (armed with …)]], he arrived in Buga to take up his second post.",
+   "The town received him the way small towns receive outsiders: [[voc|courteously|C1 vocabulary: politely, with good manners]], and without haste. [[part|Measuring voltages, inspecting panels and memorising streets that all seemed to converge on the same church|Present participle clause (-ing, simultaneous actions)]], he barely noticed his first weeks slip by. [[inv|Had anyone suggested that the most hazardous circuit in Buga lay outside any building, he would have laughed it off.|Inverted third conditional (Had + subject + past participle)]]",
+   "[[cleft|It was at work, of all places, that he met Carolina.|It-cleft (It was … that) for emphasis]]",
+   "She was forty-five, divorced, and [[adv|moved through the world as though nothing could catch her off guard any longer|as though + past modal (unreal comparison)]]. She addressed engineers, secretaries and strangers with the same warm, [[voc|weary|C1 vocabulary: tired, worn out]] self-assurance. Lucho, [[part|having spent his adolescence buried in textbooks rather than among people|Perfect participle clause (having + past participle)]], found her [[voc|mesmerising|C1 vocabulary: so fascinating you cannot look away]].",
+   "“You're very young,” she remarked, that first afternoon. “I'm twenty-five,” he replied, [[adv|as if the figure were some kind of defence|as if + subjunctive were (unreal comparison)]].",
+   "She laughed — not unkindly — and something inside him snapped shut, like a switch. Contact.",
+   "## Node 02 · No Reference — The first three months",
+   "[[cleft|What nobody at the office knew was that Lucho had never had a girlfriend.|Wh-cleft (What … was that)]] Not one. While his peers [[adv|had been learning how to argue, how to forgive and how to walk away|Past perfect continuous (had been + -ing)]], he had been studying how current behaves when it [[voc|encounters|C1 vocabulary: meets, comes up against]] resistance.",
+   "He had, in short, no [[voc|frame of reference|C1 collocation: a set of experiences used to judge something]]. Nothing to measure her against.",
+   "Within three months he was in love — or in whatever he had decided love must be. He [[voc|devoted himself|C1 vocabulary: devote oneself to = give all one's time and energy to]] to Carolina [[voc|wholeheartedly|C1 vocabulary: completely, without doubts]], with the [[voc|solemnity|C1 vocabulary: deep seriousness]] of a man wiring a hospital. If she called, he answered; if she sounded low, he cancelled whatever he had planned.",
+   "Carolina shared a house with her seventeen-year-old son — a house that, strictly speaking, belonged to a bank. She was [[voc|juggling|C1 vocabulary: managing several things with difficulty]] a mortgage, a car loan and three credit cards, and whenever money came up, she spoke of it the way people speak of the weather: as something that simply [[voc|befalls|C1 vocabulary (formal): happens to someone, usually something bad]] you.",
+   "“If I only ever paid the minimum, I'd never get to the end of it,” she once told him, laughing.",
+   "[[adv|He should have paid attention to the sentence rather than to the voice delivering it.|Past modal of criticism (should have + past participle)]]",
+   "## Node 03 · Heat, Then Fire — Year one",
+   "Her whims started [[voc|modestly|C1 vocabulary: in a small way]]: a dinner here, a weekend away there, a phone more recent than his own. Lucho paid, and paying felt like proof.",
+   "By the end of the first year, he had requested two advances on his salary and [[adv|had had his credit limit raised twice|Causative (have + object + past participle)]]. [[inv|Not only was he covering his own expenses, but he had also begun to cover hers.|Inversion after Not only … but also]] [[part|Though earning a respectable salary for his age|Reduced adverbial clause (Though + -ing)]], he ended every month [[voc|broke|Informal C1 vocabulary: with no money at all]].",
+   "He never referred to it as debt. He called it helping.",
+   "Electrical work has a rule: resistance generates heat, and heat, [[part|left unattended for long enough|Past participle clause (= if it is left unattended)]], generates fire. Lucho knew the rule [[voc|inside out|C1 idiom: completely, in every detail]]; he had explained it to technicians dozens of times. [[cleft|What he could not do was apply it to himself.|Wh-cleft (What … was + infinitive)]]",
+   "[[inv|Had somebody warned him, would he have listened?|Inverted third conditional in a question]] Probably not. Men in love make terrible engineers.",
+   "## Node 04 · The Lights Go Out Quietly — Manizales, Caldas",
+   "His parents were waiting in Manizales.",
+   "At first he [[adv|would visit|would + infinitive (past habit)]] them every month; then every other month; then he lost count. Weekends were expensive, Carolina needed him, the road was long. Each excuse was [[voc|plausible|C1 vocabulary: reasonable, easy to believe]] in isolation; together, they formed a wall.",
+   "His mother phoned; he answered less and less. His father's messages grew shorter each time, as though brevity might [[voc|conceal|C1 vocabulary (formal): hide]] his disappointment.",
+   "[[inv|Only when he finally looked at a calendar did he realise|Inversion after Only when … (did + subject)]] that more than a year had gone by without a single visit.",
+   "An open circuit is undramatic. Nothing explodes; nothing burns. The current simply stops arriving, and everything downstream goes dark — quietly, [[part|with nobody raising their voice|Absolute clause (with + noun + -ing)]].",
+   "He kept assuring himself that he would go home soon. Soon became a word he no longer trusted.",
+   "## Node 05 · What Distance Removes — Ibagué, Tolima · after almost two years",
+   "After almost two years, Lucho was transferred to Ibagué.",
+   "He told himself it was merely a change of address. “If we organise the weekends, we'll be fine,” he said, and he believed it.",
+   "[[part|Having spent two years adapting himself to her schedule, her moods and her emergencies|Perfect participle clause (Having + past participle)]], he had [[voc|all but|C1 vocabulary: almost completely]] forgotten how to spend a Sunday alone. His new flat was spotless, silent and unbearable. [[adv|He would rather have been exhausted than idle|would rather have + past participle]], so he worked late, rang her at eleven and counted the days.",
+   "Distance does not break a relationship on its own. [[cleft|What distance does is strip away the noise|Wh-cleft with do (What … does is + infinitive)]], and in the silence you finally hear what the relationship actually sounds like.",
+   "[[cleft|What Lucho heard, though he refused to name it, was static.|Wh-cleft + concessive clause (though)]]",
+   "## Node 06 · The Invoice — A Tuesday, over the phone",
+   "[[cleft|It was Carolina who ended it.|It-cleft (It was … who)]]",
+   "She did so on a Tuesday, over the phone, in the same [[voc|composed|C1 vocabulary: calm and in control]] voice she used for everything else. She said she needed her freedom; she said he deserved someone his own age; she said several things that sounded reasonable and explained nothing.",
+   "[[inv|No sooner had she finished than he was apologising|Inversion: No sooner … than]] — [[adv|though he could not have said what for|Past modal (could not have + past participle)]].",
+   "He hung up. Two years, an [[voc|inflated|C1 vocabulary: made bigger than it should be]] credit limit and a family he had stopped visiting: that was the invoice.",
+   "A fuse is designed to blow so that the rest of the system survives. Technically, then, he had been saved. He did not feel saved. He felt like a house at three in the morning, with everything switched off.",
+   "[[inv|Had he grasped, at twenty-five, what a whim really costs, his life would look entirely different today.|Mixed conditional with inversion (past condition → present result)]]",
+   "## Node 07 · A Second Circuit — Ibagué · a few weeks later",
+   "He did not wait. Within a few weeks he was seeing Silvia, a twenty-two-year-old who laughed easily and, initially at least, asked very few questions.",
+   "The relationship became physical almost at once, and for a while Lucho [[voc|mistook intensity for intimacy|C1 vocabulary: mistake A for B = confuse one thing with another]].",
+   "But something had been left behind in Buga: the patience, the small attentions, the absurd devotion. [[inv|Never again did any of it resurface.|Inversion after Never again (did + subject)]] He was affectionate, but efficiently so. Present, but not quite.",
+   "Silvia noticed. She had never met Carolina, yet she could sense her, the way you sense a wall in a darkened room.",
+   "“You treat me like an obligation,” she told him. “That's not true,” he said, and changed the subject — which is, of course, one way of admitting things.",
+   "She has threatened to leave him at least five times. [[inv|Not once has she packed a bag.|Inversion after Not once (has + subject)]]",
+   "## Node 08 · The Heat in the Wall — Now",
+   "Then, one night, she told him something [[adv|she had evidently been carrying around for weeks|Past perfect continuous]]: her ex-boyfriend had once come to the house.",
+   "Nothing had happened, she said — and it probably hadn't. [[cleft|What she did not explain was why she had kept quiet for so long.|Wh-cleft (What … was)]]",
+   "Lucho understood more than he [[voc|let on|C1 phrasal verb: let on = show or admit what you know]]. [[adv|He must have sensed it long before she confessed|Past modal of deduction (must have + past participle)]]; a man who has lived with silence learns its shape.",
+   "And yet he did nothing. He did not shout. He did not investigate. He did not leave. He simply carried on as usual, [[adv|as if the conversation had been a minor maintenance issue in an otherwise functioning system|as if + past perfect (unreal past)]].",
+   "Silvia is tired. Not angry — tired, which is far more [[voc|ominous|C1 vocabulary: suggesting that something bad will happen]]. Anger is current; exhaustion is a circuit [[part|already switched off|Reduced relative clause (past participle)]], waiting only for somebody to notice.",
+   "The system is still running. All the lights are on. [[inv|Only if you put your hand on the wall will you feel the heat.|Inversion after Only if (will + subject)]]"
+  ],
+  "glossary": [
+   [
+    "courteously",
+    "con cortesía"
+   ],
+   [
+    "haste",
+    "prisa"
+   ],
+   [
+    "converge",
+    "confluir, coincidir"
+   ],
+   [
+    "hazardous",
+    "peligroso"
+   ],
+   [
+    "laughed it off",
+    "se lo habría tomado a risa"
+   ],
+   [
+    "weary",
+    "cansado, agotado"
+   ],
+   [
+    "self-assurance",
+    "seguridad en sí misma"
+   ],
+   [
+    "mesmerising",
+    "hipnotizante, cautivadora"
+   ],
+   [
+    "snapped shut",
+    "se cerró de golpe"
+   ],
+   [
+    "peers",
+    "contemporáneos, gente de su edad"
+   ],
+   [
+    "frame of reference",
+    "marco de referencia"
+   ],
+   [
+    "wholeheartedly",
+    "de todo corazón"
+   ],
+   [
+    "solemnity",
+    "solemnidad"
+   ],
+   [
+    "juggling",
+    "haciendo malabares con"
+   ],
+   [
+    "befalls",
+    "le sobreviene, le pasa"
+   ],
+   [
+    "mortgage",
+    "hipoteca"
+   ],
+   [
+    "whims",
+    "caprichos"
+   ],
+   [
+    "broke",
+    "sin un peso"
+   ],
+   [
+    "unattended",
+    "desatendido"
+   ],
+   [
+    "inside out",
+    "al derecho y al revés"
+   ],
+   [
+    "plausible",
+    "creíble, razonable"
+   ],
+   [
+    "conceal",
+    "ocultar"
+   ],
+   [
+    "downstream",
+    "más adelante en el circuito"
+   ],
+   [
+    "all but",
+    "casi por completo"
+   ],
+   [
+    "spotless",
+    "impecable"
+   ],
+   [
+    "idle",
+    "ocioso, sin nada que hacer"
+   ],
+   [
+    "strip away",
+    "quitar, eliminar"
+   ],
+   [
+    "static",
+    "estática, interferencia"
+   ],
+   [
+    "composed",
+    "sereno, contenido"
+   ],
+   [
+    "inflated",
+    "inflado"
+   ],
+   [
+    "fuse",
+    "fusible"
+   ],
+   [
+    "grasped",
+    "comprendido"
+   ],
+   [
+    "mistook",
+    "confundió"
+   ],
+   [
+    "resurface",
+    "resurgir, volver a aparecer"
+   ],
+   [
+    "let on",
+    "dejaba ver, admitía"
+   ],
+   [
+    "ominous",
+    "amenazante, de mal agüero"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why does the narrator say Lucho had 'no frame of reference' when he met Carolina?",
+    "options": [
+     "He had never been in a relationship to compare this one with.",
+     "He did not know anyone in Buga.",
+     "He had studied a different kind of engineering.",
+     "He could not understand Carolina's accent."
+    ],
+    "answer": 0,
+    "explain_es": "Node 02: 'What nobody at the office knew was that Lucho had never had a girlfriend… Nothing to measure her against.'"
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best summarises Node 03?",
+    "options": [
+     "Love paid for on credit",
+     "A promotion at work",
+     "A quarrel with his parents",
+     "The first visit to Ibagué"
+    ],
+    "answer": 0,
+    "explain_es": "Node 03 cuenta cómo Lucho pagó los caprichos de Carolina con adelantos de sueldo y más cupo de crédito: 'He never referred to it as debt.'"
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best fits Node 05?",
+    "options": [
+     "Silence reveals the truth",
+     "A happy reunion",
+     "Carolina moves to Ibagué",
+     "A new hobby"
+    ],
+    "answer": 0,
+    "explain_es": "Node 05: la distancia 'strip[s] away the noise, and in the silence you finally hear what the relationship actually sounds like'."
+   },
+   {
+    "type": "tf",
+    "q": "Lucho's salary was low for a man of his age.",
+    "answer": "F",
+    "explain_es": "Node 03: 'Though earning a respectable salary for his age, he ended every month broke.' El sueldo era bueno; el problema eran los gastos."
+   },
+   {
+    "type": "tf",
+    "q": "Carolina's son disapproved of the relationship.",
+    "answer": "NG",
+    "explain_es": "El texto solo dice que Carolina vivía con su hijo de diecisiete años; no menciona su opinión."
+   },
+   {
+    "type": "tf",
+    "q": "Lucho's parents travelled to Buga to see him.",
+    "answer": "NG",
+    "explain_es": "Node 04 dice que sus padres 'were waiting in Manizales' y que él dejó de visitarlos, pero no dice si ellos lo visitaron."
+   },
+   {
+    "type": "mc",
+    "q": "What does the narrator imply with 'Men in love make terrible engineers'?",
+    "options": [
+     "Love stops people from applying knowledge they already have.",
+     "Engineers are bad at relationships by nature.",
+     "Lucho lost his job because of Carolina.",
+     "Lucho's technical knowledge was poor."
+    ],
+    "answer": 0,
+    "explain_es": "Inferencia: Lucho 'knew the rule inside out', pero 'What he could not do was apply it to himself'."
+   },
+   {
+    "type": "mc",
+    "q": "What can be inferred from 'and changed the subject — which is, of course, one way of admitting things'?",
+    "options": [
+     "Silvia's accusation was at least partly true.",
+     "Lucho did not hear what Silvia said.",
+     "Silvia was joking.",
+     "Lucho wanted to talk about Carolina."
+    ],
+    "answer": 0,
+    "explain_es": "Node 07: cambiar de tema es 'one way of admitting things', es decir, Lucho reconoce sin palabras que ella tiene razón."
+   },
+   {
+    "type": "vocab",
+    "q": "'For a while Lucho mistook intensity for intimacy' means that he…",
+    "options": [
+     "confused strong physical passion with real emotional closeness",
+     "was afraid of being close to Silvia",
+     "preferred calm relationships",
+     "made a mistake at work"
+    ],
+    "answer": 0,
+    "explain_es": "Mistake A for B = confundir A con B: creyó que la intensidad era intimidad."
+   },
+   {
+    "type": "vocab",
+    "q": "In Node 08, exhaustion is described as 'far more ominous' than anger. 'Ominous' is closest in meaning to…",
+    "options": [
+     "threatening, a sign of something bad",
+     "noisy",
+     "temporary",
+     "easy to fix"
+    ],
+    "answer": 0,
+    "explain_es": "'Ominous' = de mal agüero: el cansancio de Silvia anuncia el final mejor que la rabia."
+   },
+   {
+    "type": "gap",
+    "q": "Complete the inversion: \"No sooner had she finished ____ he was apologising.\"",
+    "answer": "than",
+    "explain_es": "La estructura es No sooner + had + sujeto + participio … than: 'No sooner had she finished than he was apologising'."
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite with inversion: Silvia has not packed a bag once. → Not once ____",
+    "answer": "has she packed a bag",
+    "accept": [
+     "has Silvia packed a bag",
+     "has she packed a bag.",
+     "has Silvia packed a bag."
+    ],
+    "explain_es": "Tras 'Not once' al inicio, se invierte el auxiliar y el sujeto: 'Not once has she packed a bag.'"
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite as an it-cleft to emphasise Carolina: Carolina ended it.",
+    "answer": "It was Carolina who ended it.",
+    "accept": [
+     "It was Carolina who ended it",
+     "It was Carolina that ended it.",
+     "It was Carolina that ended it"
+    ],
+    "explain_es": "It-cleft: It was + elemento enfatizado + who/that… 'It was Carolina who ended it.'"
+   },
+   {
+    "type": "mc",
+    "q": "What does the final image of the wall suggest about Lucho and Silvia's relationship?",
+    "options": [
+     "It looks normal on the surface but is close to breaking down.",
+     "It is finally stable and safe.",
+     "Silvia has already left.",
+     "Lucho is planning to go back to Carolina."
+    ],
+    "answer": 0,
+    "explain_es": "Node 08: 'All the lights are on. Only if you put your hand on the wall will you feel the heat' — todo parece funcionar, pero hay un problema oculto que se calienta."
+   }
+  ],
+  "words": 1297
+ }
+]

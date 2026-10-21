@@ -12,7 +12,7 @@ const AREAS = [
     icon: BookOpen,
     color: 'var(--skill-reading)',
     title: 'Reading',
-    body: 'Biblioteca de lecturas originales A1–C1 (noticias, entrevistas, ciencia, opinión…) con glosario y preguntas, más 32 guías de viaje.',
+    body: 'Biblioteca de lecturas originales A1–C2 (noticias, entrevistas, ciencia, opinión…) con glosario y preguntas, más 32 guías de viaje.',
     skill: 'reading' as const,
   },
   {
@@ -20,7 +20,7 @@ const AREAS = [
     icon: Headphones,
     color: 'var(--skill-listening)',
     title: 'Listening',
-    body: 'Biblioteca de audios A1–C1 con varias voces y acentos (diálogos, podcasts, clases, anuncios), preguntas tipo IELTS y dictados.',
+    body: 'Biblioteca de audios A1–C2 con varias voces y acentos (diálogos, podcasts, clases, anuncios), preguntas tipo IELTS y dictados.',
     skill: 'listening' as const,
   },
   {

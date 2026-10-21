@@ -232,7 +232,7 @@ export function climbProgress(units: Record<string, Completion>) {
 /** Current working level: the first level that is not yet ≥ 80% complete. */
 export function currentLevel(units: Record<string, Completion>): CefrLevel {
   for (const l of CEFR_LEVELS) if (levelCompletion(units, l).ratio < 0.8) return l;
-  return 'C1';
+  return 'C2';
 }
 
 export const unitsDone = (units: Record<string, Completion>) => Object.keys(units).length;

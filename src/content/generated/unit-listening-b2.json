@@ -1,0 +1,4987 @@
+{
+ "1": [
+  {
+   "id": "ul-b2-1-1",
+   "title": "Twins, Not Copies",
+   "level": "B2",
+   "kind": "interview",
+   "topic": "Personality, friendship and family structures",
+   "focus": "Verbs followed by gerunds",
+   "emoji": "👯",
+   "speakers": [
+    {
+     "name": "Host Rachel",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Nora",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Nell",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guests today are identical twins, Nora and Nell, who are thirty-two and have, er, chosen very different lives. Nora's a surgeon, Nell's a jazz drummer. Welcome, both of you."
+    },
+    {
+     "s": 1,
+     "text": "Thanks for having us."
+    },
+    {
+     "s": 2,
+     "text": "Yeah, thanks. We don't usually agree to interviews, so this is a treat."
+    },
+    {
+     "s": 0,
+     "text": "Let's start with childhood. Were you close?"
+    },
+    {
+     "s": 1,
+     "text": "Very. We were inseparable until we were about twelve. We even enjoyed wearing the same clothes, which seems mad now."
+    },
+    {
+     "s": 2,
+     "text": "And then I started resenting being \"one of the twins\". I couldn't stand being compared all the time. Teachers would say, \"Your sister finished her homework, why didn't you?\""
+    },
+    {
+     "s": 0,
+     "text": "So how did you deal with that?"
+    },
+    {
+     "s": 2,
+     "text": "I stopped trying to be like Nora. I took up the drums, mostly to annoy everyone, if I'm honest."
+    },
+    {
+     "s": 1,
+     "text": "It worked. I remember lying in bed and hearing her practise for hours."
+    },
+    {
+     "s": 0,
+     "text": "Did you drift apart as teenagers?"
+    },
+    {
+     "s": 1,
+     "text": "For a while, yes. There was a lot of sibling rivalry. We avoided talking to each other for most of one summer."
+    },
+    {
+     "s": 2,
+     "text": "Our mum kept suggesting going on holiday together, just the two of us. We finally agreed, mostly to make her stop asking."
+    },
+    {
+     "s": 1,
+     "text": "And that trip changed everything. We spent two weeks in Portugal, and we realised we actually got along brilliantly when nobody was comparing us."
+    },
+    {
+     "s": 0,
+     "text": "What about now? Do you see eye to eye on most things?"
+    },
+    {
+     "s": 2,
+     "text": "On the important things, yes. On music, absolutely not. Nora listens to the radio news while she's operating. I can't imagine doing that."
+    },
+    {
+     "s": 1,
+     "text": "It helps me concentrate! And I don't mind admitting I can't keep a beat to save my life."
+    },
+    {
+     "s": 0,
+     "text": "Do people still mix you up?"
+    },
+    {
+     "s": 2,
+     "text": "All the time. A patient once stopped me in the supermarket and kept thanking me for his new hip."
+    },
+    {
+     "s": 1,
+     "text": "And she just accepted it!"
+    },
+    {
+     "s": 2,
+     "text": "Well, I didn't want to risk upsetting him. I said, \"You're very welcome,\" and walked off."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What makes Nora and Nell interesting interview guests?",
+     "options": [
+      "They are identical twins with very different careers",
+      "They run a business together",
+      "They have written a book about twins",
+      "They grew up in different countries"
+     ],
+     "answer": 0,
+     "explain_es": "Rachel: \"identical twins ... who ... have, er, chosen very different lives. Nora's a surgeon, Nell's a jazz drummer.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Nell start to feel unhappy at around twelve?",
+     "options": [
+      "She was always being compared to her sister",
+      "She had no friends at school",
+      "Her parents preferred Nora",
+      "She failed her exams"
+     ],
+     "answer": 0,
+     "explain_es": "Nell: \"I couldn't stand being compared all the time.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Nell, why did she take up the drums?",
+     "options": [
+      "Her teacher recommended it",
+      "Mainly to annoy everyone",
+      "To join her sister's band",
+      "To earn money"
+     ],
+     "answer": 1,
+     "explain_es": "Nell: \"I took up the drums, mostly to annoy everyone, if I'm honest.\""
+    },
+    {
+     "type": "tf",
+     "q": "The twins stopped talking to each other for a whole year.",
+     "answer": "F",
+     "explain_es": "Nora: \"We avoided talking to each other for most of one summer.\" No fue un año."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The twins finally spent two weeks on holiday together in ____. (1 word)",
+     "answer": "Portugal",
+     "accept": [
+      "Portugal",
+      "portugal"
+     ],
+     "explain_es": "Nora: \"We spent two weeks in Portugal\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did the twins discover on the trip?",
+     "options": [
+      "They got along well when nobody compared them",
+      "They wanted to live in Portugal",
+      "They had very little in common",
+      "Nell wanted to become a doctor"
+     ],
+     "answer": 0,
+     "explain_es": "Nora: \"we actually got along brilliantly when nobody was comparing us.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which twin says she has no sense of rhythm?",
+     "options": [
+      "Nora",
+      "Nell"
+     ],
+     "answer": 0,
+     "explain_es": "Nora: \"I can't keep a beat to save my life.\""
+    },
+    {
+     "type": "tf",
+     "q": "Nora plays music during operations.",
+     "answer": "NG",
+     "explain_es": "Nell dice que Nora escucha \"the radio news\" mientras opera, no música. No se menciona que ponga música."
+    },
+    {
+     "type": "mc",
+     "q": "What can we infer about Nell's reaction in the supermarket?",
+     "options": [
+      "She was annoyed with the patient",
+      "She chose to pretend she was Nora to be kind",
+      "She explained the mistake politely",
+      "She called her sister immediately"
+     ],
+     "answer": 1,
+     "explain_es": "Nell: \"I didn't want to risk upsetting him. I said, 'You're very welcome,' and walked off.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"I couldn't stand ____ compared all the time.\" (1 word)",
+     "answer": "being",
+     "accept": [
+      "being"
+     ],
+     "explain_es": "can't stand + gerundio (aquí pasivo: being compared)."
+    }
+   ],
+   "dictation": [
+    "We were inseparable until we were about twelve.",
+    "I stopped trying to be like Nora.",
+    "And that trip changed everything."
+   ]
+  },
+  {
+   "id": "ul-b2-1-2",
+   "title": "The Family Group Chat",
+   "level": "B2",
+   "kind": "phone-call",
+   "topic": "Personality, friendship and family structures",
+   "focus": "Noun clauses after ‘be’",
+   "emoji": "💬",
+   "speakers": [
+    {
+     "name": "Host Darren",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Lisa",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Marco",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "You're listening to Talkback. Today's topic: the family group chat. Love it or hate it? Lisa's on line one. Lisa, go ahead."
+    },
+    {
+     "s": 1,
+     "text": "Hi Darren. Look, my problem is that my family never stops messaging. There are fourteen of us in one chat, and my phone buzzes from six in the morning."
+    },
+    {
+     "s": 0,
+     "text": "Fourteen! What sort of things do they send?"
+    },
+    {
+     "s": 1,
+     "text": "Everything. Photos of dinner, jokes, er, political videos from my uncle. The thing is, I love them, we're a really close-knit family, but I'm going mad."
+    },
+    {
+     "s": 0,
+     "text": "Have you thought about leaving the chat?"
+    },
+    {
+     "s": 1,
+     "text": "That's the problem. If I leave, my mum will think something's wrong. The truth is that it's the only way she feels connected to everybody since Dad died."
+    },
+    {
+     "s": 0,
+     "text": "That's a tricky one. What's the solution, do you think?"
+    },
+    {
+     "s": 1,
+     "text": "My plan is that I mute it during the week and catch up on Sundays. That way nobody gets hurt."
+    },
+    {
+     "s": 0,
+     "text": "Sounds sensible. Thanks, Lisa. Marco, you're on Talkback."
+    },
+    {
+     "s": 2,
+     "text": "Hey, Darren. I've got the opposite story, actually. My question is whether a group chat can, um, patch things up."
+    },
+    {
+     "s": 0,
+     "text": "Go on."
+    },
+    {
+     "s": 2,
+     "text": "So, my brother and I didn't see eye to eye for years. He was the black sheep, I was the one who stayed near my parents. We drifted apart. Then my niece made a group chat for Grandma's ninetieth."
+    },
+    {
+     "s": 0,
+     "text": "And that changed things?"
+    },
+    {
+     "s": 2,
+     "text": "Slowly. At first he just sent thumbs-up emojis. But then he started joking with me, and last month we met for a beer. The fact is, I don't think we'd have spoken without that chat."
+    },
+    {
+     "s": 0,
+     "text": "That's lovely. So the lesson is that it depends how you use it?"
+    },
+    {
+     "s": 2,
+     "text": "Exactly. My view is that the chat isn't good or bad. It's a tool. The danger is when people say things there they'd never say face to face."
+    },
+    {
+     "s": 0,
+     "text": "Wise words. Thanks, Marco. After the break, we'll hear from a listener whose sister rubs everyone up the wrong way in the chat."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the topic of today's programme?",
+     "options": [
+      "Family group chats",
+      "Mobile phone prices",
+      "Grandparents' birthdays",
+      "Sibling rivalry at school"
+     ],
+     "answer": 0,
+     "explain_es": "Darren: \"Today's topic: the family group chat.\""
+    },
+    {
+     "type": "mc",
+     "q": "How many people are in Lisa's family chat?",
+     "options": [
+      "Four",
+      "Ten",
+      "Fourteen",
+      "Forty"
+     ],
+     "answer": 2,
+     "explain_es": "Lisa: \"There are fourteen of us in one chat\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why doesn't Lisa want to leave the chat?",
+     "options": [
+      "Her mother would think something was wrong",
+      "She would miss the jokes",
+      "Her uncle would be angry",
+      "She needs it for work"
+     ],
+     "answer": 0,
+     "explain_es": "Lisa: \"If I leave, my mum will think something's wrong.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Lisa's plan?",
+     "options": [
+      "To leave the chat",
+      "To mute it during the week and catch up on Sundays",
+      "To start a smaller chat",
+      "To ask her uncle to stop posting"
+     ],
+     "answer": 1,
+     "explain_es": "Lisa: \"My plan is that I mute it during the week and catch up on Sundays.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Lisa feel about her family overall?",
+     "options": [
+      "She resents them",
+      "She loves them but finds the chat overwhelming",
+      "She rarely sees them",
+      "She is indifferent"
+     ],
+     "answer": 1,
+     "explain_es": "Lisa: \"I love them, we're a really close-knit family, but I'm going mad.\""
+    },
+    {
+     "type": "tf",
+     "q": "Marco's brother used to be considered the black sheep of the family.",
+     "answer": "T",
+     "explain_es": "Marco: \"He was the black sheep\"."
+    },
+    {
+     "type": "tf",
+     "q": "Marco's brother lives abroad.",
+     "answer": "NG",
+     "explain_es": "Marco dice que se distanciaron, pero no dice dónde vive su hermano."
+    },
+    {
+     "type": "mc",
+     "q": "Who created the chat that helped Marco and his brother?",
+     "options": [
+      "Marco",
+      "Marco's brother",
+      "Marco's niece",
+      "Marco's grandmother"
+     ],
+     "answer": 2,
+     "explain_es": "Marco: \"Then my niece made a group chat for Grandma's ninetieth.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which caller sees the chat as neither good nor bad?",
+     "options": [
+      "Lisa",
+      "Marco",
+      "Both callers"
+     ],
+     "answer": 1,
+     "explain_es": "Marco: \"My view is that the chat isn't good or bad. It's a tool.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Marco says the danger is ____ people say things in the chat they'd never say face to face. (1 word)",
+     "answer": "when",
+     "accept": [
+      "when"
+     ],
+     "explain_es": "Marco: \"The danger is when people say things there they'd never say face to face.\""
+    }
+   ],
+   "dictation": [
+    "The thing is, I love them, we're a really close-knit family, but I'm going mad.",
+    "That way nobody gets hurt.",
+    "My view is that the chat isn't good or bad."
+   ]
+  }
+ ],
+ "2": [
+  {
+   "id": "ul-b2-2-1",
+   "title": "The Hike That Went Wrong",
+   "level": "B2",
+   "kind": "conversation",
+   "topic": "Past obligation, speculation and unsolved mysteries",
+   "focus": "Past modals of obligation",
+   "emoji": "🥾",
+   "speakers": [
+    {
+     "name": "Ethan",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Maya",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "So, are you going to tell me what happened on Saturday, or do I have to read about it in the local paper?"
+    },
+    {
+     "s": 1,
+     "text": "Ha. Don't. Honestly, it wasn't that dramatic. Well, OK, it was a bit dramatic."
+    },
+    {
+     "s": 0,
+     "text": "You had to be rescued, Maya."
+    },
+    {
+     "s": 1,
+     "text": "We didn't have to be rescued. A ranger just, er, helped us find the path again. That's different."
+    },
+    {
+     "s": 0,
+     "text": "Fine. So what went wrong?"
+    },
+    {
+     "s": 1,
+     "text": "Where do I start? First, we should have checked the weather. We didn't, and the fog came down at about two o'clock."
+    },
+    {
+     "s": 0,
+     "text": "Didn't you have a map?"
+    },
+    {
+     "s": 1,
+     "text": "We had one on Leo's phone. But his battery died. We ought to have brought a paper map. Everyone says that, and we ignored it."
+    },
+    {
+     "s": 0,
+     "text": "And you were supposed to register at the visitor centre, weren't you? That's the rule on that trail."
+    },
+    {
+     "s": 1,
+     "text": "We were supposed to, yes. But it was closed when we arrived, so we just went. We shouldn't have done that. Nobody knew where we were."
+    },
+    {
+     "s": 0,
+     "text": "So how did the ranger find you?"
+    },
+    {
+     "s": 1,
+     "text": "Luckily, my sister knew our plan. When we didn't call by six, she phoned the park. So we didn't have to wait all night, thank goodness."
+    },
+    {
+     "s": 0,
+     "text": "Thank goodness for your sister. Were you cold?"
+    },
+    {
+     "s": 1,
+     "text": "Freezing. And the stupid thing is, we needn't have carried so much water. We had six litres each. If we'd taken less water and more warm clothes, we'd have been fine."
+    },
+    {
+     "s": 0,
+     "text": "Six litres? That's heavy."
+    },
+    {
+     "s": 1,
+     "text": "I know. We had to stop every twenty minutes. In hindsight, I was carrying a swimming pool on my back."
+    },
+    {
+     "s": 0,
+     "text": "So, lessons learned?"
+    },
+    {
+     "s": 1,
+     "text": "Plenty. Next time I'll check the forecast, take a paper map, and tell someone exactly where I'm going. And I'll carry a jacket instead of a lake."
+    },
+    {
+     "s": 0,
+     "text": "And you'll let the ranger know you're coming?"
+    },
+    {
+     "s": 1,
+     "text": "Absolutely. He wasn't angry, but he made it very clear we had been lucky."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the conversation mainly about?",
+     "options": [
+      "Planning a hike for next weekend",
+      "Mistakes Maya made on a hike",
+      "A newspaper article about rangers",
+      "Buying hiking equipment"
+     ],
+     "answer": 1,
+     "explain_es": "Maya repasa lo que salió mal: \"Where do I start? First, we should have checked the weather.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Maya describe the ranger's role?",
+     "options": [
+      "He rescued them by helicopter",
+      "He helped them find the path again",
+      "He gave them a fine",
+      "He drove them home"
+     ],
+     "answer": 1,
+     "explain_es": "Maya: \"A ranger just, er, helped us find the path again.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why couldn't they use the map?",
+     "options": [
+      "It got wet",
+      "It was on a phone with a dead battery",
+      "They lost it",
+      "It was the wrong map"
+     ],
+     "answer": 1,
+     "explain_es": "Maya: \"We had one on Leo's phone. But his battery died.\""
+    },
+    {
+     "type": "tf",
+     "q": "They registered at the visitor centre before starting.",
+     "answer": "F",
+     "explain_es": "Maya: \"it was closed when we arrived, so we just went.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Maya's ____ phoned the park when the hikers didn't call by six. (1 word)",
+     "answer": "sister",
+     "accept": [
+      "sister"
+     ],
+     "explain_es": "Maya: \"my sister knew our plan. When we didn't call by six, she phoned the park.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Maya think about the water they carried?",
+     "options": [
+      "It was not enough",
+      "It was unnecessary to carry so much",
+      "It saved their lives",
+      "It was too cold"
+     ],
+     "answer": 1,
+     "explain_es": "Maya: \"we needn't have carried so much water.\""
+    },
+    {
+     "type": "tf",
+     "q": "Leo had been on that trail before.",
+     "answer": "NG",
+     "explain_es": "No se menciona si Leo conocía la ruta."
+    },
+    {
+     "type": "mc",
+     "q": "What is Ethan's attitude at the start of the conversation?",
+     "options": [
+      "Teasing but concerned",
+      "Angry and critical",
+      "Uninterested",
+      "Jealous"
+     ],
+     "answer": 0,
+     "explain_es": "Ethan bromea (\"do I have to read about it in the local paper?\") pero pregunta con interés."
+    },
+    {
+     "type": "mc",
+     "q": "Who says the rule on that trail is to register at the visitor centre?",
+     "options": [
+      "Ethan",
+      "Maya",
+      "The ranger"
+     ],
+     "answer": 0,
+     "explain_es": "Ethan: \"you were supposed to register at the visitor centre, weren't you? That's the rule on that trail.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"We ought to have ____ a paper map.\" (1 word)",
+     "answer": "brought",
+     "accept": [
+      "brought",
+      "taken"
+     ],
+     "explain_es": "Ought to have + participio: crítica de una obligación pasada no cumplida."
+    }
+   ],
+   "dictation": [
+    "We didn't, and the fog came down at about two o'clock.",
+    "Nobody knew where we were.",
+    "He wasn't angry, but he made it very clear we had been lucky."
+   ]
+  },
+  {
+   "id": "ul-b2-2-2",
+   "title": "The Circle in the Barley Field",
+   "level": "B2",
+   "kind": "podcast",
+   "topic": "Past obligation, speculation and unsolved mysteries",
+   "focus": "Modals for degrees of certainty about the past",
+   "emoji": "🌾",
+   "speakers": [
+    {
+     "name": "Owen",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Freya",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Strange But True. This week, a mystery from a small farm in Wiltshire. Freya, set the scene."
+    },
+    {
+     "s": 1,
+     "text": "So, a farmer called Tom Barker woke up last Tuesday and found a perfect circle, forty metres wide, in his barley field. Inside it, the barley was flattened in a spiral pattern."
+    },
+    {
+     "s": 0,
+     "text": "Eerie. And it appeared overnight?"
+    },
+    {
+     "s": 1,
+     "text": "That's the baffling part. He walked the field at nine p.m. and saw nothing. At six a.m., there it was."
+    },
+    {
+     "s": 0,
+     "text": "OK, let's not jump to conclusions. What are the explanations?"
+    },
+    {
+     "s": 1,
+     "text": "Well, first, the obvious one. It must have been made by people. Crop circles have been made by hoaxers for decades."
+    },
+    {
+     "s": 0,
+     "text": "But in one night? In the dark?"
+    },
+    {
+     "s": 1,
+     "text": "It's possible. A group of four or five could have done it with planks and rope in about six hours. Back in the nineties, two men admitted they'd made hundreds."
+    },
+    {
+     "s": 0,
+     "text": "Were there any clues? Footprints?"
+    },
+    {
+     "s": 1,
+     "text": "Not that the farmer saw. But it had rained, so prints might have been washed away. And there's a footpath right next to the field."
+    },
+    {
+     "s": 0,
+     "text": "What about the wind? Could a storm have done it?"
+    },
+    {
+     "s": 1,
+     "text": "Very unlikely. Wind can't have made such a precise shape. Storms flatten crops in a messy way, not in neat spirals."
+    },
+    {
+     "s": 0,
+     "text": "And of course, some listeners have written in saying it might have been, er, visitors from elsewhere."
+    },
+    {
+     "s": 1,
+     "text": "Ha. I'll take that with a pinch of salt. There's no evidence for that at all."
+    },
+    {
+     "s": 0,
+     "text": "Did anyone see anything that night?"
+    },
+    {
+     "s": 1,
+     "text": "Here's where it gets interesting. A neighbour says she saw lights in the field around two a.m. Torches, she thinks."
+    },
+    {
+     "s": 0,
+     "text": "So the culprits may have been local students?"
+    },
+    {
+     "s": 1,
+     "text": "Possibly. Though that's purely circumstantial. Lights don't prove anything. In hindsight, the farmer wishes he'd had a camera on the field."
+    },
+    {
+     "s": 0,
+     "text": "Has anyone come forward?"
+    },
+    {
+     "s": 1,
+     "text": "Not yet. But the circle has shed light on one thing: people love a mystery. Tom's charging three pounds to walk through it, and he's made more than he would from the barley."
+    },
+    {
+     "s": 0,
+     "text": "Brilliant. If you know who did it, get in touch."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What mystery is discussed?",
+     "options": [
+      "A missing farmer",
+      "A circle that appeared in a field overnight",
+      "Strange lights in the sky over London",
+      "A burned barley crop"
+     ],
+     "answer": 1,
+     "explain_es": "Freya: \"found a perfect circle, forty metres wide, in his barley field.\""
+    },
+    {
+     "type": "mc",
+     "q": "How wide was the circle?",
+     "options": [
+      "Four metres",
+      "Fourteen metres",
+      "Forty metres",
+      "Four hundred metres"
+     ],
+     "answer": 2,
+     "explain_es": "Freya: \"a perfect circle, forty metres wide\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to Freya, how long might it take a group to make the circle?",
+     "options": [
+      "About one hour",
+      "About six hours",
+      "Two days",
+      "A week"
+     ],
+     "answer": 1,
+     "explain_es": "Freya: \"A group of four or five could have done it with planks and rope in about six hours.\""
+    },
+    {
+     "type": "tf",
+     "q": "The farmer found clear footprints in the field.",
+     "answer": "F",
+     "explain_es": "Freya: \"Not that the farmer saw. But it had rained, so prints might have been washed away.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Freya reject the wind theory?",
+     "options": [
+      "There was no wind that night",
+      "Wind can't make such a precise shape",
+      "The field is protected by trees",
+      "Experts tested it"
+     ],
+     "answer": 1,
+     "explain_es": "Freya: \"Wind can't have made such a precise shape.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Freya's attitude to the idea of \"visitors from elsewhere\"?",
+     "options": [
+      "She finds it convincing",
+      "She is sceptical",
+      "She is frightened",
+      "She has no opinion"
+     ],
+     "answer": 1,
+     "explain_es": "Freya: \"I'll take that with a pinch of salt. There's no evidence for that at all.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did the neighbour see?",
+     "options": [
+      "Lights in the field around two a.m.",
+      "A helicopter",
+      "Students walking home",
+      "A van on the footpath"
+     ],
+     "answer": 0,
+     "explain_es": "Freya: \"A neighbour says she saw lights in the field around two a.m.\""
+    },
+    {
+     "type": "tf",
+     "q": "The neighbour recognised the people with the torches.",
+     "answer": "NG",
+     "explain_es": "Solo dice que vio luces (\"Torches, she thinks\"); no se dice si reconoció a alguien."
+    },
+    {
+     "type": "mc",
+     "q": "What can we infer about the farmer now?",
+     "options": [
+      "He is angry about losing his barley",
+      "He is making money from the mystery",
+      "He has called the police",
+      "He plans to sell the farm"
+     ],
+     "answer": 1,
+     "explain_es": "Freya: \"Tom's charging three pounds to walk through it, and he's made more than he would from the barley.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The evidence of the lights is only ____, so it doesn't prove who did it. (1 word)",
+     "answer": "circumstantial",
+     "accept": [
+      "circumstantial"
+     ],
+     "explain_es": "Freya: \"that's purely circumstantial. Lights don't prove anything.\""
+    }
+   ],
+   "dictation": [
+    "OK, let's not jump to conclusions.",
+    "Lights don't prove anything.",
+    "If you know who did it, get in touch."
+   ]
+  }
+ ],
+ "3": [
+  {
+   "id": "ul-b2-3-1",
+   "title": "Walking Tour of Valparaíso",
+   "level": "B2",
+   "kind": "tour",
+   "topic": "Describing places, contrast and city vs. small-town life",
+   "focus": "Defining & non-defining relative clauses / Order of modifiers",
+   "emoji": "🎨",
+   "speakers": [
+    {
+     "name": "Guide Camila",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Visitor Greg",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome, everyone, to Valparaíso, the city that's built on forty-two hills. My name's Camila, and I've lived here all my life."
+    },
+    {
+     "s": 0,
+     "text": "We're starting at the bottom, in the old port area, which used to be one of the busiest harbours in South America. Before the Panama Canal opened, every ship that sailed between the Atlantic and the Pacific stopped here."
+    },
+    {
+     "s": 1,
+     "text": "Sorry, so when did things change?"
+    },
+    {
+     "s": 0,
+     "text": "In 1914. Once the canal opened, the ships that had come here no longer needed to. The city went through a really difficult period."
+    },
+    {
+     "s": 0,
+     "text": "Now, if you look up, you'll see one of our famous funiculars. This one, which was built in 1883, is still working. It takes about a minute to reach the top."
+    },
+    {
+     "s": 1,
+     "text": "Is it safe? It looks, um, quite old."
+    },
+    {
+     "s": 0,
+     "text": "Ha, everyone asks that. It's checked every week, I promise. The people who operate it have done it for decades."
+    },
+    {
+     "s": 0,
+     "text": "OK, here we are at the top. These colourful old wooden houses are typical of the hill. Many of them were built by sailors, who used leftover ship paint. That's why the colours are so bright."
+    },
+    {
+     "s": 0,
+     "text": "And look at this wall. The artist who painted this mural is a woman from the neighbourhood. Street art is everywhere here, and most of it is legal."
+    },
+    {
+     "s": 1,
+     "text": "Legal? Really?"
+    },
+    {
+     "s": 0,
+     "text": "Yes. Owners often invite artists to paint their walls, which protects them from graffiti. A beautiful big blue whale is much harder to cover with tags."
+    },
+    {
+     "s": 0,
+     "text": "Down this street, there's a small family-run café where you can try a local cake called a chilenito. It's two thin round biscuits with caramel inside."
+    },
+    {
+     "s": 1,
+     "text": "And the poet's house? The one everyone talks about?"
+    },
+    {
+     "s": 0,
+     "text": "Pablo Neruda's house, which he called La Sebastiana, is a ten-minute walk from here. We'll go there after the coffee."
+    },
+    {
+     "s": 0,
+     "text": "From his top window, you can see the whole bay, which is what he loved most about the place."
+    },
+    {
+     "s": 1,
+     "text": "Sounds perfect. Lead the way."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is special about Valparaíso's geography, according to Camila?",
+     "options": [
+      "It is built on forty-two hills",
+      "It is surrounded by desert",
+      "It is on an island",
+      "It has no beach"
+     ],
+     "answer": 0,
+     "explain_es": "Camila: \"the city that's built on forty-two hills.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did the city go through a difficult period after 1914?",
+     "options": [
+      "There was an earthquake",
+      "Ships no longer needed to stop there",
+      "The port was closed by the government",
+      "A fire destroyed the old town"
+     ],
+     "answer": 1,
+     "explain_es": "Camila: \"Once the canal opened, the ships that had come here no longer needed to.\""
+    },
+    {
+     "type": "mc",
+     "q": "When was the funicular built?",
+     "options": [
+      "In 1814",
+      "In 1883",
+      "In 1914",
+      "In 1983"
+     ],
+     "answer": 1,
+     "explain_es": "Camila: \"This one, which was built in 1883, is still working.\""
+    },
+    {
+     "type": "tf",
+     "q": "The funicular is checked every week.",
+     "answer": "T",
+     "explain_es": "Camila: \"It's checked every week, I promise.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why are the houses so brightly coloured?",
+     "options": [
+      "The city paid for the paint",
+      "Sailors used leftover ship paint",
+      "It is a law",
+      "To attract tourists"
+     ],
+     "answer": 1,
+     "explain_es": "Camila: \"Many of them were built by sailors, who used leftover ship paint.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why do owners invite artists to paint their walls?",
+     "options": [
+      "To earn money from tourists",
+      "It protects the walls from graffiti",
+      "The council requires it",
+      "To advertise their businesses"
+     ],
+     "answer": 1,
+     "explain_es": "Camila: \"Owners often invite artists to paint their walls, which protects them from graffiti.\""
+    },
+    {
+     "type": "tf",
+     "q": "The mural artist studied art in Santiago.",
+     "answer": "NG",
+     "explain_es": "Solo se dice que es \"a woman from the neighbourhood\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who seems surprised that the street art is legal?",
+     "options": [
+      "Camila",
+      "Greg"
+     ],
+     "answer": 1,
+     "explain_es": "Greg: \"Legal? Really?\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Neruda's house, La Sebastiana, is a ____-minute walk from the mural. (1 word)",
+     "answer": "ten",
+     "accept": [
+      "ten",
+      "10"
+     ],
+     "explain_es": "Camila: \"is a ten-minute walk from here.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete the adjectives in the right order: \"These colourful ____ wooden houses are typical of the hill.\" (1 word)",
+     "answer": "old",
+     "accept": [
+      "old"
+     ],
+     "explain_es": "Orden: opinión/color (colourful) → edad (old) → material (wooden)."
+    }
+   ],
+   "dictation": [
+    "It takes about a minute to reach the top.",
+    "Street art is everywhere here, and most of it is legal.",
+    "We'll go there after the coffee."
+   ]
+  },
+  {
+   "id": "ul-b2-3-2",
+   "title": "Lisbon or Coimbra?",
+   "level": "B2",
+   "kind": "debate",
+   "topic": "Describing places, contrast and city vs. small-town life",
+   "focus": "Connecting contrasting ideas",
+   "emoji": "🏙️",
+   "speakers": [
+    {
+     "name": "Host Simon",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Inês",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Rafael",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Student Choices. Today, two students argue about where to study in Portugal. Inês studies in Lisbon, Rafael in Coimbra. Inês, why the capital?"
+    },
+    {
+     "s": 1,
+     "text": "Well, Lisbon is just so vibrant. There's always something happening. Although it's expensive, the opportunities are incredible. I've already done two internships."
+    },
+    {
+     "s": 2,
+     "text": "Can I come in there? Lisbon's great, but it's sprawling. You spend an hour on public transport every day. In Coimbra, everything is a stone's throw from the university."
+    },
+    {
+     "s": 1,
+     "text": "That's true, but, um, Coimbra is tiny. Once you've seen the old town, what else is there?"
+    },
+    {
+     "s": 2,
+     "text": "Actually, quite a lot. Despite its size, Coimbra is steeped in history. The university is seven hundred years old. You really soak up the atmosphere."
+    },
+    {
+     "s": 0,
+     "text": "Rafael, isn't it a bit quiet, though?"
+    },
+    {
+     "s": 2,
+     "text": "In some ways, yes. Whereas Lisbon never sleeps, Coimbra has a more, er, human rhythm. But the student life is amazing. The traditions, the music, the capes. It's unique."
+    },
+    {
+     "s": 1,
+     "text": "I'll admit the traditions are lovely. Nevertheless, I wanted a city where I could meet people from all over the world, not just students."
+    },
+    {
+     "s": 0,
+     "text": "What about cost?"
+    },
+    {
+     "s": 2,
+     "text": "That's my strongest argument. My rent is half what Inês pays. Even though I earn less from part-time work, I save more."
+    },
+    {
+     "s": 1,
+     "text": "Fair. Rents in Lisbon are crazy. On the other hand, salaries are higher, and there are more jobs."
+    },
+    {
+     "s": 0,
+     "text": "And for weekends?"
+    },
+    {
+     "s": 1,
+     "text": "Lisbon, obviously. Beaches, concerts, new cafés springing up every week."
+    },
+    {
+     "s": 2,
+     "text": "Coimbra's not bad, though. It's off the beaten track, so there aren't many tourists. And Porto and Lisbon are both easy to reach by train."
+    },
+    {
+     "s": 0,
+     "text": "So, final words. Inês?"
+    },
+    {
+     "s": 1,
+     "text": "If you want energy and career opportunities, choose Lisbon, even though your wallet will suffer."
+    },
+    {
+     "s": 2,
+     "text": "And if you want a quaint, affordable city with real student life, Coimbra is definitely worth a detour. Or, er, four years."
+    },
+    {
+     "s": 0,
+     "text": "Thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main topic of the debate?",
+     "options": [
+      "Which Portuguese city is better for students",
+      "How to find an internship",
+      "The history of Portuguese universities",
+      "Travelling by train in Portugal"
+     ],
+     "answer": 0,
+     "explain_es": "Simon: \"two students argue about where to study in Portugal.\""
+    },
+    {
+     "type": "mc",
+     "q": "What advantage of Lisbon does Inês mention first?",
+     "options": [
+      "It is cheap",
+      "It is vibrant and full of opportunities",
+      "It has an old university",
+      "It is quiet"
+     ],
+     "answer": 1,
+     "explain_es": "Inês: \"Lisbon is just so vibrant ... the opportunities are incredible.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Rafael's complaint about Lisbon?",
+     "options": [
+      "It is too small",
+      "It is sprawling and you spend a lot of time travelling",
+      "It has no student life",
+      "It is boring at weekends"
+     ],
+     "answer": 1,
+     "explain_es": "Rafael: \"it's sprawling. You spend an hour on public transport every day.\""
+    },
+    {
+     "type": "tf",
+     "q": "The University of Coimbra is about seven hundred years old.",
+     "answer": "T",
+     "explain_es": "Rafael: \"The university is seven hundred years old.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Rafael consider his strongest argument?",
+     "options": [
+      "The traditions",
+      "The cost of living",
+      "The weather",
+      "The train connections"
+     ],
+     "answer": 1,
+     "explain_es": "Rafael: \"That's my strongest argument. My rent is half what Inês pays.\""
+    },
+    {
+     "type": "tf",
+     "q": "Rafael earns more from part-time work than Inês.",
+     "answer": "F",
+     "explain_es": "Rafael: \"Even though I earn less from part-time work, I save more.\""
+    },
+    {
+     "type": "tf",
+     "q": "Inês plans to stay in Lisbon after graduating.",
+     "answer": "NG",
+     "explain_es": "No se menciona qué hará Inês después de terminar sus estudios."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Rafael's rent is ____ what Inês pays in Lisbon. (1 word)",
+     "answer": "half",
+     "accept": [
+      "half"
+     ],
+     "explain_es": "Rafael: \"My rent is half what Inês pays.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which speaker mentions new cafés springing up every week?",
+     "options": [
+      "Simon",
+      "Inês",
+      "Rafael"
+     ],
+     "answer": 1,
+     "explain_es": "Inês: \"Beaches, concerts, new cafés springing up every week.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ its size, Coimbra is steeped in history.\" (1 word)",
+     "answer": "Despite",
+     "accept": [
+      "Despite",
+      "despite",
+      "Notwithstanding"
+     ],
+     "explain_es": "\"Despite\" + sustantivo para contrastar ideas."
+    }
+   ],
+   "dictation": [
+    "Although it's expensive, the opportunities are incredible.",
+    "Rents in Lisbon are crazy.",
+    "Thank you both."
+   ]
+  }
+ ],
+ "4": [
+  {
+   "id": "ul-b2-4-1",
+   "title": "Baking While the City Sleeps",
+   "level": "B2",
+   "kind": "interview",
+   "topic": "Sleep, daily routines and time-of-day preferences",
+   "focus": "Reduced time clauses",
+   "emoji": "🥖",
+   "speakers": [
+    {
+     "name": "Host Paula",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Sean",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Most of us are fast asleep when today's guest starts work. Sean runs a bakery in Melbourne and has worked nights for eleven years. Sean, what does your day look like?"
+    },
+    {
+     "s": 1,
+     "text": "Well, my \"day\" starts at about ten p.m. After waking up, I have a big breakfast. Eggs, toast, the lot. People think it's strange, eating eggs at ten at night."
+    },
+    {
+     "s": 0,
+     "text": "And then?"
+    },
+    {
+     "s": 1,
+     "text": "Then I cycle to the bakery. Arriving at about eleven, I switch on the ovens and check the doughs we prepared the afternoon before."
+    },
+    {
+     "s": 0,
+     "text": "What's the busiest part of the night?"
+    },
+    {
+     "s": 1,
+     "text": "Between two and five. While waiting for the bread to rise, I'm shaping croissants. There's no time to sit down, honestly."
+    },
+    {
+     "s": 0,
+     "text": "Isn't it lonely?"
+    },
+    {
+     "s": 1,
+     "text": "Not really. There are three of us. And having worked together for years, we don't need to talk much. We just, er, know what to do."
+    },
+    {
+     "s": 0,
+     "text": "When do you finish?"
+    },
+    {
+     "s": 1,
+     "text": "About six thirty, when the first customers arrive. Before leaving, I always have one coffee with the morning staff. It's the only social part of my day."
+    },
+    {
+     "s": 0,
+     "text": "And how do you sleep in the daytime?"
+    },
+    {
+     "s": 1,
+     "text": "That took ages to learn. Once home, I don't look at my phone. I've got blackout curtains, and I wear earplugs because of the traffic."
+    },
+    {
+     "s": 0,
+     "text": "Do you ever feel groggy?"
+    },
+    {
+     "s": 1,
+     "text": "At first, all the time. In my first year, I was shattered. I'd power through the night and then sleep for twelve hours at weekends. Now, I'm a creature of habit. Same times, every day, even on my days off."
+    },
+    {
+     "s": 0,
+     "text": "Even on your days off?"
+    },
+    {
+     "s": 1,
+     "text": "Yes, that's the secret. If I switch to a normal routine on Saturday, Monday night is a disaster."
+    },
+    {
+     "s": 0,
+     "text": "Is there anything you miss?"
+    },
+    {
+     "s": 1,
+     "text": "Dinner with friends. When invited out, I usually have to say no. But I get the best bread in the city, still warm. That's worth a lot."
+    },
+    {
+     "s": 0,
+     "text": "Sean, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Sean's job?",
+     "options": [
+      "He delivers newspapers",
+      "He runs a bakery and works nights",
+      "He is a night nurse",
+      "He drives a taxi"
+     ],
+     "answer": 1,
+     "explain_es": "Paula: \"Sean runs a bakery in Melbourne and has worked nights for eleven years.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Sean do after waking up?",
+     "options": [
+      "Goes to the gym",
+      "Has a big breakfast",
+      "Checks his phone",
+      "Goes back to sleep"
+     ],
+     "answer": 1,
+     "explain_es": "Sean: \"After waking up, I have a big breakfast.\""
+    },
+    {
+     "type": "mc",
+     "q": "When is the busiest part of the night?",
+     "options": [
+      "Between ten and midnight",
+      "Between two and five",
+      "At six thirty",
+      "At eleven"
+     ],
+     "answer": 1,
+     "explain_es": "Sean: \"Between two and five.\""
+    },
+    {
+     "type": "tf",
+     "q": "Sean works alone at night.",
+     "answer": "F",
+     "explain_es": "Sean: \"There are three of us.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the only social part of Sean's day?",
+     "options": [
+      "Breakfast with his family",
+      "A coffee with the morning staff",
+      "Talking to customers",
+      "Dinner with friends"
+     ],
+     "answer": 1,
+     "explain_es": "Sean: \"I always have one coffee with the morning staff. It's the only social part of my day.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: To sleep in the daytime, Sean uses blackout ____ and earplugs. (1 word)",
+     "answer": "curtains",
+     "accept": [
+      "curtains"
+     ],
+     "explain_es": "Sean: \"I've got blackout curtains, and I wear earplugs because of the traffic.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Sean's \"secret\" for coping with night work?",
+     "options": [
+      "Drinking lots of coffee",
+      "Keeping the same times every day, even on days off",
+      "Sleeping twelve hours at weekends",
+      "Taking naps at work"
+     ],
+     "answer": 1,
+     "explain_es": "Sean: \"Same times, every day, even on my days off ... that's the secret.\""
+    },
+    {
+     "type": "tf",
+     "q": "Sean is planning to stop working nights soon.",
+     "answer": "NG",
+     "explain_es": "No se menciona ningún plan de cambiar de horario."
+    },
+    {
+     "type": "mc",
+     "q": "What is Sean's overall attitude to his job?",
+     "options": [
+      "He hates it but needs the money",
+      "He accepts the sacrifices and values the rewards",
+      "He finds it boring",
+      "He wants to be a chef"
+     ],
+     "answer": 1,
+     "explain_es": "Echa de menos cenas con amigos, pero dice: \"I get the best bread in the city, still warm. That's worth a lot.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ worked together for years, we don't need to talk much.\" (1 word)",
+     "answer": "Having",
+     "accept": [
+      "Having",
+      "having"
+     ],
+     "explain_es": "Cláusula reducida de participio perfecto: Having worked = Because we have worked."
+    }
+   ],
+   "dictation": [
+    "Then I cycle to the bakery.",
+    "That took ages to learn.",
+    "That's worth a lot."
+   ]
+  },
+  {
+   "id": "ul-b2-4-2",
+   "title": "Can I Start at Ten?",
+   "level": "B2",
+   "kind": "conversation",
+   "topic": "Sleep, daily routines and time-of-day preferences",
+   "focus": "Clauses of reason and condition",
+   "emoji": "🕙",
+   "speakers": [
+    {
+     "name": "Manager Helen",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Jamie",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Come in, Jamie. You wanted to talk about your hours?"
+    },
+    {
+     "s": 1,
+     "text": "Yes, thanks for making time. I'll get straight to it. I was wondering if I could start at ten instead of eight thirty."
+    },
+    {
+     "s": 0,
+     "text": "OK. Can I ask why?"
+    },
+    {
+     "s": 1,
+     "text": "Well, I'm really not a morning person. I'm sure you've noticed. Since I started here, I've been arriving groggy and sluggish, and honestly, I don't do my best work until about eleven."
+    },
+    {
+     "s": 0,
+     "text": "I have noticed you're quieter in the mornings. But you always stay late, don't you?"
+    },
+    {
+     "s": 1,
+     "text": "Exactly. Because I'm more productive in the evenings, I often burn the midnight oil at home. I'd rather do those hours here, properly."
+    },
+    {
+     "s": 0,
+     "text": "Hmm. I'm open to it, as long as the team isn't affected. The problem is the nine o'clock meeting on Mondays."
+    },
+    {
+     "s": 1,
+     "text": "I could join that one. Provided that it's only Mondays, I'll come in early and power through."
+    },
+    {
+     "s": 0,
+     "text": "That would help. What about clients? They call from nine."
+    },
+    {
+     "s": 1,
+     "text": "Most of my clients are in New York, so they don't call until after two our time. Unless something urgent comes up, mornings are usually quiet for me."
+    },
+    {
+     "s": 0,
+     "text": "Fair point. And you'd stay until?"
+    },
+    {
+     "s": 1,
+     "text": "Six thirty. That way I'd do the same hours. Even if I'm shattered at the end of the day, it's better than being half asleep at nine."
+    },
+    {
+     "s": 0,
+     "text": "OK. Here's what I suggest. We try it for one month, on condition that your work gets done and nobody's left waiting for you."
+    },
+    {
+     "s": 1,
+     "text": "That's completely fair."
+    },
+    {
+     "s": 0,
+     "text": "And, er, in case there's a problem, we'll review it at the end of the month. If it's not working, we go back to the old hours. Deal?"
+    },
+    {
+     "s": 1,
+     "text": "Deal. Thanks, Helen. I really appreciate it."
+    },
+    {
+     "s": 0,
+     "text": "No problem. As it happens, I'm a night owl myself. I just never had the courage to ask."
+    },
+    {
+     "s": 1,
+     "text": "Ha! Well, maybe you should."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does Jamie want?",
+     "options": [
+      "A pay rise",
+      "To start work at ten instead of eight thirty",
+      "To work from home",
+      "A new job title"
+     ],
+     "answer": 1,
+     "explain_es": "Jamie: \"I was wondering if I could start at ten instead of eight thirty.\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Jamie describe himself in the mornings?",
+     "options": [
+      "Energetic",
+      "Groggy and sluggish",
+      "Stressed",
+      "Organised"
+     ],
+     "answer": 1,
+     "explain_es": "Jamie: \"I've been arriving groggy and sluggish\"."
+    },
+    {
+     "type": "tf",
+     "q": "Jamie often works late at home in the evenings.",
+     "answer": "T",
+     "explain_es": "Jamie: \"I often burn the midnight oil at home.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Helen's main concern at first?",
+     "options": [
+      "The Monday nine o'clock meeting",
+      "Jamie's salary",
+      "The office closing time",
+      "Jamie's holiday"
+     ],
+     "answer": 0,
+     "explain_es": "Helen: \"The problem is the nine o'clock meeting on Mondays.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Helen and Jamie will ____ the new arrangement at the end of the month. (1 word)",
+     "answer": "review",
+     "accept": [
+      "review"
+     ],
+     "explain_es": "Helen: \"we'll review it at the end of the month.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Helen finally agree to?",
+     "options": [
+      "A permanent change",
+      "A one-month trial",
+      "A three-month trial",
+      "Nothing"
+     ],
+     "answer": 1,
+     "explain_es": "Helen: \"We try it for one month\"."
+    },
+    {
+     "type": "tf",
+     "q": "Jamie will work fewer hours with the new timetable.",
+     "answer": "F",
+     "explain_es": "Jamie: \"Six thirty. That way I'd do the same hours.\""
+    },
+    {
+     "type": "tf",
+     "q": "Other colleagues have asked Helen for flexible hours.",
+     "answer": "NG",
+     "explain_es": "No se dice si otros empleados lo han pedido."
+    },
+    {
+     "type": "mc",
+     "q": "What surprising information does Helen reveal at the end?",
+     "options": [
+      "She is leaving the company",
+      "She is also a night owl",
+      "She used to work in New York",
+      "She starts work at six"
+     ],
+     "answer": 1,
+     "explain_es": "Helen: \"As it happens, I'm a night owl myself.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"I'm open to it, as ____ as the team isn't affected.\" (1 word)",
+     "answer": "long",
+     "accept": [
+      "long"
+     ],
+     "explain_es": "\"as long as\" introduce una condición."
+    }
+   ],
+   "dictation": [
+    "I'll get straight to it.",
+    "That's completely fair.",
+    "I just never had the courage to ask."
+   ]
+  }
+ ],
+ "5": [
+  {
+   "id": "ul-b2-5-1",
+   "title": "Feedback Without Tears",
+   "level": "B2",
+   "kind": "podcast",
+   "topic": "Personality types and commenting on communication behaviour",
+   "focus": "It’s + adjective / noun + infinitive",
+   "emoji": "🗣️",
+   "speakers": [
+    {
+     "name": "Nadia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Callum",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Work Smarter. Today: giving feedback. Callum, you train managers to do this. Where do most people go wrong?"
+    },
+    {
+     "s": 1,
+     "text": "Honestly? They beat around the bush. They're so worried about upsetting someone that the message gets lost completely."
+    },
+    {
+     "s": 0,
+     "text": "So it's important to be direct?"
+    },
+    {
+     "s": 1,
+     "text": "It's essential to be clear. But that's not the same as being blunt. It's a mistake to think you have to choose between honest and kind."
+    },
+    {
+     "s": 0,
+     "text": "Give us an example."
+    },
+    {
+     "s": 1,
+     "text": "OK. Say a colleague's report is late and full of errors. It's tempting to say, \"Don't worry, it's fine,\" and then fix it yourself. That helps nobody."
+    },
+    {
+     "s": 0,
+     "text": "Because they never find out."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. On the other hand, it's unfair to say, \"This is a disaster,\" in front of the whole team. It's humiliating, and it's pointless, because they'll stop listening."
+    },
+    {
+     "s": 0,
+     "text": "So what's the middle way?"
+    },
+    {
+     "s": 1,
+     "text": "First, it's a good idea to do it privately and quickly. Ideally the same day. Then it's helpful to describe the specific thing, not the person. \"The figures on page three are wrong,\" not \"You're careless.\""
+    },
+    {
+     "s": 0,
+     "text": "What about the famous \"feedback sandwich\"? Something nice, then the criticism, then something nice again?"
+    },
+    {
+     "s": 1,
+     "text": "Ugh. I'm not a fan, to be honest. People learn to ignore the bread. They hear the compliment and think, \"Uh-oh, here it comes.\""
+    },
+    {
+     "s": 0,
+     "text": "Ha, that's so true."
+    },
+    {
+     "s": 1,
+     "text": "It's much more effective to ask a question. \"How did you feel the report went?\" Most people already know what went wrong. It's easier for them to say it themselves."
+    },
+    {
+     "s": 0,
+     "text": "And if they get defensive?"
+    },
+    {
+     "s": 1,
+     "text": "It's natural to feel defensive. It's your job to stay calm and, um, not take it personally. And it's never too late to say, \"Let's talk again tomorrow.\""
+    },
+    {
+     "s": 0,
+     "text": "Last tip?"
+    },
+    {
+     "s": 1,
+     "text": "It's worth remembering that feedback goes both ways. Ask your team how you're doing. It's amazing what you'll learn."
+    },
+    {
+     "s": 0,
+     "text": "Callum, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main topic of the episode?",
+     "options": [
+      "How to write a report",
+      "How to give feedback effectively",
+      "How to get promoted",
+      "How to run a meeting"
+     ],
+     "answer": 1,
+     "explain_es": "Nadia: \"Today: giving feedback.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Callum, what is the most common mistake?",
+     "options": [
+      "Being too aggressive",
+      "Beating around the bush",
+      "Giving feedback in writing",
+      "Waiting too long"
+     ],
+     "answer": 1,
+     "explain_es": "Callum: \"They beat around the bush.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is saying \"Don't worry, it's fine\" unhelpful?",
+     "options": [
+      "The colleague never finds out what was wrong",
+      "It sounds rude",
+      "It takes too long",
+      "It makes the manager look weak"
+     ],
+     "answer": 0,
+     "explain_es": "Callum: \"That helps nobody.\" Nadia: \"Because they never find out.\" Callum: \"Exactly.\""
+    },
+    {
+     "type": "tf",
+     "q": "Callum recommends giving criticism in front of the whole team.",
+     "answer": "F",
+     "explain_es": "Callum: \"it's unfair to say, 'This is a disaster,' in front of the whole team.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Callum's opinion of the \"feedback sandwich\"?",
+     "options": [
+      "He thinks it is the best method",
+      "He is not a fan of it",
+      "He has never heard of it",
+      "He uses it with new employees only"
+     ],
+     "answer": 1,
+     "explain_es": "Callum: \"Ugh. I'm not a fan, to be honest.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Callum suggest asking a question?",
+     "options": [
+      "Most people already know what went wrong",
+      "It saves time",
+      "It avoids conflict completely",
+      "Managers don't need to prepare"
+     ],
+     "answer": 0,
+     "explain_es": "Callum: \"Most people already know what went wrong.\""
+    },
+    {
+     "type": "tf",
+     "q": "Callum has written a book about feedback.",
+     "answer": "NG",
+     "explain_es": "Solo se dice que forma a directivos (\"you train managers\"); no se habla de ningún libro."
+    },
+    {
+     "type": "mc",
+     "q": "Who says \"Because they never find out\"?",
+     "options": [
+      "Nadia",
+      "Callum"
+     ],
+     "answer": 0,
+     "explain_es": "Nadia: \"Because they never find out.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Callum advises describing the specific thing, not the ____. (1 word)",
+     "answer": "person",
+     "accept": [
+      "person"
+     ],
+     "explain_es": "Callum: \"describe the specific thing, not the person.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"It's a mistake ____ think you have to choose between honest and kind.\" (1 word)",
+     "answer": "to",
+     "accept": [
+      "to"
+     ],
+     "explain_es": "It's + sustantivo/adjetivo + infinitivo con to."
+    }
+   ],
+   "dictation": [
+    "It's essential to be clear.",
+    "It's natural to feel defensive.",
+    "It's amazing what you'll learn."
+   ]
+  },
+  {
+   "id": "ul-b2-5-2",
+   "title": "Are You Too Blunt?",
+   "level": "B2",
+   "kind": "phone-call",
+   "topic": "Personality types and commenting on communication behaviour",
+   "focus": "Gerunds as subjects",
+   "emoji": "📻",
+   "speakers": [
+    {
+     "name": "Host Grant",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Shona",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Ray",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good afternoon, this is Talk Time. Today's question: is being honest always a good thing? Shona, you're first."
+    },
+    {
+     "s": 1,
+     "text": "Hi Grant. So, I'm quite outspoken. My friends call me candid; my sister calls me rude. Ha. Telling people the truth is just how I was brought up."
+    },
+    {
+     "s": 0,
+     "text": "Has it ever got you into trouble?"
+    },
+    {
+     "s": 1,
+     "text": "Oh, constantly. Last month a friend asked if I liked her new haircut, and I said, \"Not really.\" She didn't speak to me for a week."
+    },
+    {
+     "s": 0,
+     "text": "Ouch. Would you do it again?"
+    },
+    {
+     "s": 1,
+     "text": "Probably, yes. Sugar-coating everything feels dishonest to me. But I've learned that choosing the right moment matters. Saying it two hours before her wedding party wasn't ideal."
+    },
+    {
+     "s": 0,
+     "text": "Ha! Fair enough. Thanks, Shona. Ray, what's your view?"
+    },
+    {
+     "s": 2,
+     "text": "G'day, Grant. I'm the opposite. I'm quite reserved, and being direct is really hard for me. I always try to be tactful."
+    },
+    {
+     "s": 0,
+     "text": "Is that a problem?"
+    },
+    {
+     "s": 2,
+     "text": "It can be. At work, people sometimes misunderstand me. My boss told me I come across as vague. I was trying to say a project wasn't working, but I was so polite that she thought I loved it."
+    },
+    {
+     "s": 0,
+     "text": "So you were talking at cross purposes?"
+    },
+    {
+     "s": 2,
+     "text": "Completely. She kept adding more work, and I kept saying, \"Mm, it's interesting.\" Reading between the lines doesn't come naturally to everyone."
+    },
+    {
+     "s": 0,
+     "text": "What did you do in the end?"
+    },
+    {
+     "s": 2,
+     "text": "I wrote it down. Writing an email was easier than saying it. I got straight to the point: \"This isn't working, and here's why.\""
+    },
+    {
+     "s": 0,
+     "text": "And how did she react?"
+    },
+    {
+     "s": 2,
+     "text": "She thanked me. Getting clear information was a relief for her, apparently."
+    },
+    {
+     "s": 0,
+     "text": "So maybe there's a middle ground between you two?"
+    },
+    {
+     "s": 1,
+     "text": "Can I jump in? Ray, I think you're braver than you think. And honestly, mincing your words isn't always kind."
+    },
+    {
+     "s": 2,
+     "text": "And Shona, being blunt isn't always honest either. Sometimes it's just, um, easier for the speaker."
+    },
+    {
+     "s": 0,
+     "text": "Great point to finish on. Thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What question does the programme discuss?",
+     "options": [
+      "Is being honest always a good thing?",
+      "How to find a better job",
+      "Should friends live together?",
+      "How to plan a wedding"
+     ],
+     "answer": 0,
+     "explain_es": "Grant: \"Today's question: is being honest always a good thing?\""
+    },
+    {
+     "type": "mc",
+     "q": "How does Shona's sister describe her?",
+     "options": [
+      "Candid",
+      "Rude",
+      "Reserved",
+      "Tactful"
+     ],
+     "answer": 1,
+     "explain_es": "Shona: \"my sister calls me rude.\""
+    },
+    {
+     "type": "mc",
+     "q": "What happened when Shona gave her opinion about the haircut?",
+     "options": [
+      "Her friend laughed",
+      "Her friend didn't speak to her for a week",
+      "Her friend changed her hair",
+      "Her friend agreed"
+     ],
+     "answer": 1,
+     "explain_es": "Shona: \"She didn't speak to me for a week.\""
+    },
+    {
+     "type": "mc",
+     "q": "What has Shona learned?",
+     "options": [
+      "To never give her opinion",
+      "That choosing the right moment matters",
+      "To always sugar-coat",
+      "To write things down"
+     ],
+     "answer": 1,
+     "explain_es": "Shona: \"I've learned that choosing the right moment matters.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ray finds it easy to be direct.",
+     "answer": "F",
+     "explain_es": "Ray: \"being direct is really hard for me.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Ray's boss misunderstand him?",
+     "options": [
+      "He was too rude",
+      "He was so polite that she thought he loved the project",
+      "He sent the wrong email",
+      "He never spoke in meetings"
+     ],
+     "answer": 1,
+     "explain_es": "Ray: \"I was so polite that she thought I loved it.\""
+    },
+    {
+     "type": "mc",
+     "q": "How did Ray finally solve the problem?",
+     "options": [
+      "He asked a colleague to speak for him",
+      "He wrote an email getting straight to the point",
+      "He changed jobs",
+      "He stopped doing the extra work"
+     ],
+     "answer": 1,
+     "explain_es": "Ray: \"Writing an email was easier than saying it. I got straight to the point\"."
+    },
+    {
+     "type": "tf",
+     "q": "Ray's boss decided to cancel the project.",
+     "answer": "NG",
+     "explain_es": "Solo se dice que \"She thanked me\"; no se sabe qué pasó con el proyecto."
+    },
+    {
+     "type": "mc",
+     "q": "Which speaker suggests that bluntness can sometimes just be easier for the speaker?",
+     "options": [
+      "Grant",
+      "Shona",
+      "Ray"
+     ],
+     "answer": 2,
+     "explain_es": "Ray: \"being blunt isn't always honest either. Sometimes it's just, um, easier for the speaker.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Shona believes that ____ everything feels dishonest. (1 word, -ing form)",
+     "answer": "sugar-coating",
+     "accept": [
+      "sugar-coating",
+      "sugarcoating",
+      "Sugar-coating"
+     ],
+     "explain_es": "Shona: \"Sugar-coating everything feels dishonest to me.\" Gerundio como sujeto."
+    }
+   ],
+   "dictation": [
+    "Telling people the truth is just how I was brought up.",
+    "Writing an email was easier than saying it.",
+    "Great point to finish on."
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "ul-b2-6-1",
+   "title": "Sinkhole on Market Street",
+   "level": "B2",
+   "kind": "news",
+   "topic": "Rumours, journalism and unravelling a story",
+   "focus": "Present perfect vs. simple past / Present perfect vs. present perfect continuous",
+   "emoji": "🕳️",
+   "speakers": [
+    {
+     "name": "Anchor Louise",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Reporter Mike",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good evening. Our top story: a large sinkhole has opened up on Market Street in the city centre. Mike Torres has been at the scene all day. Mike, what's the latest?"
+    },
+    {
+     "s": 1,
+     "text": "Thanks, Louise. Well, as you can see behind me, the hole is enormous. It's about eight metres wide and five metres deep. It appeared at around six fifteen this morning."
+    },
+    {
+     "s": 0,
+     "text": "Has anyone been hurt?"
+    },
+    {
+     "s": 1,
+     "text": "Fortunately, no. A delivery van was driving along the street when the road started to crack. The driver jumped out just in time. The van has since fallen in. It's still down there, actually."
+    },
+    {
+     "s": 0,
+     "text": "Incredible. What caused it?"
+    },
+    {
+     "s": 1,
+     "text": "Engineers have been investigating since early this morning. The main theory is that an old water pipe burst during the night. Water has been washing away the soil under the road, possibly for weeks."
+    },
+    {
+     "s": 0,
+     "text": "For weeks? Had there been any warning signs?"
+    },
+    {
+     "s": 1,
+     "text": "Some residents say they'd noticed small cracks in the pavement last month and reported them to the city. The city hasn't confirmed that yet."
+    },
+    {
+     "s": 0,
+     "text": "What's happening at the moment?"
+    },
+    {
+     "s": 1,
+     "text": "Crews have been pumping water out of the hole for about eight hours. They've also cut off the water supply to around three hundred homes. Those residents have been told to expect no water until tomorrow afternoon."
+    },
+    {
+     "s": 0,
+     "text": "And the businesses on Market Street?"
+    },
+    {
+     "s": 1,
+     "text": "Most of them have closed for the day. I spoke to a café owner who's been running her business here for twenty years. She said she's never seen anything like it. She's been handing out free coffee to the workers."
+    },
+    {
+     "s": 0,
+     "text": "That's kind. How long will the street be closed?"
+    },
+    {
+     "s": 1,
+     "text": "That's the big question. The mayor said this afternoon that the road will stay closed for at least two weeks. There have been rumours that it could be months, but nothing's been confirmed."
+    },
+    {
+     "s": 0,
+     "text": "And the van?"
+    },
+    {
+     "s": 1,
+     "text": "A crane arrived about an hour ago. They've been trying to lift it out since then, but, er, it hasn't moved yet."
+    },
+    {
+     "s": 0,
+     "text": "Mike, thank you. We'll come back to you later in the programme."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the top story?",
+     "options": [
+      "A water pipe has burst in a hospital",
+      "A large sinkhole has opened on a city street",
+      "A van crashed into a café",
+      "An earthquake hit the city"
+     ],
+     "answer": 1,
+     "explain_es": "Louise: \"a large sinkhole has opened up on Market Street\"."
+    },
+    {
+     "type": "mc",
+     "q": "How deep is the hole?",
+     "options": [
+      "Three metres",
+      "Five metres",
+      "Eight metres",
+      "Twenty metres"
+     ],
+     "answer": 1,
+     "explain_es": "Mike: \"It's about eight metres wide and five metres deep.\""
+    },
+    {
+     "type": "tf",
+     "q": "The van driver was injured.",
+     "answer": "F",
+     "explain_es": "Mike: \"Fortunately, no ... The driver jumped out just in time.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the main theory about the cause?",
+     "options": [
+      "Heavy rain",
+      "An old water pipe burst",
+      "Construction work",
+      "An earthquake"
+     ],
+     "answer": 1,
+     "explain_es": "Mike: \"an old water pipe burst during the night.\""
+    },
+    {
+     "type": "mc",
+     "q": "What had some residents noticed last month?",
+     "options": [
+      "Strange noises",
+      "Small cracks in the pavement",
+      "Water in their basements",
+      "A smell of gas"
+     ],
+     "answer": 1,
+     "explain_es": "Mike: \"they'd noticed small cracks in the pavement last month\"."
+    },
+    {
+     "type": "mc",
+     "q": "How many homes have had their water cut off?",
+     "options": [
+      "About thirty",
+      "About three hundred",
+      "About three thousand",
+      "None"
+     ],
+     "answer": 1,
+     "explain_es": "Mike: \"They've also cut off the water supply to around three hundred homes.\""
+    },
+    {
+     "type": "tf",
+     "q": "The café owner has been running her business on Market Street for twenty years.",
+     "answer": "T",
+     "explain_es": "Mike: \"a café owner who's been running her business here for twenty years.\""
+    },
+    {
+     "type": "tf",
+     "q": "The café owner will receive money from the city.",
+     "answer": "NG",
+     "explain_es": "No se menciona ninguna compensación."
+    },
+    {
+     "type": "mc",
+     "q": "What is the reporter's attitude to the rumours about the closure?",
+     "options": [
+      "He confirms them",
+      "He reports them carefully, saying nothing has been confirmed",
+      "He thinks they are ridiculous",
+      "He started them"
+     ],
+     "answer": 1,
+     "explain_es": "Mike: \"There have been rumours that it could be months, but nothing's been confirmed.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Crews have been ____ water out of the hole for about eight hours. (1 word)",
+     "answer": "pumping",
+     "accept": [
+      "pumping"
+     ],
+     "explain_es": "Present perfect continuous para una acción en curso desde hace horas: have been pumping."
+    }
+   ],
+   "dictation": [
+    "It appeared at around six fifteen this morning.",
+    "The city hasn't confirmed that yet.",
+    "We'll come back to you later in the programme."
+   ]
+  },
+  {
+   "id": "ul-b2-6-2",
+   "title": "The Celebrity Who Never Came",
+   "level": "B2",
+   "kind": "interview",
+   "topic": "Rumours, journalism and unravelling a story",
+   "focus": "Past perfect and time adverbs",
+   "emoji": "📰",
+   "speakers": [
+    {
+     "name": "Host Jo",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Editor Pete",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guest is Pete Hall, editor of the Bramley Gazette, a small local paper that got a big story badly wrong last spring. Pete, thanks for being so honest about it."
+    },
+    {
+     "s": 1,
+     "text": "Well, we have to be. If we want people to trust us, we've got to admit our mistakes."
+    },
+    {
+     "s": 0,
+     "text": "So what happened?"
+    },
+    {
+     "s": 1,
+     "text": "A reader emailed us one Friday afternoon. She said a very famous pop star had bought a house in the village. She'd seen him at the bakery that morning, apparently."
+    },
+    {
+     "s": 0,
+     "text": "And you believed her?"
+    },
+    {
+     "s": 1,
+     "text": "Not at first. But by the evening, three more people had sent us the same rumour. One even had a blurry photo. So we thought, right, we've got to break this story before the national papers do."
+    },
+    {
+     "s": 0,
+     "text": "Had you checked it with anyone?"
+    },
+    {
+     "s": 1,
+     "text": "That's the problem. We hadn't corroborated it properly. We'd called the estate agent, but he hadn't called back before we published. With hindsight, we should have waited."
+    },
+    {
+     "s": 0,
+     "text": "And the story went out?"
+    },
+    {
+     "s": 1,
+     "text": "On Saturday morning. By lunchtime, there were two hundred people outside the house. Fans, photographers, a TV van."
+    },
+    {
+     "s": 0,
+     "text": "And who actually lived there?"
+    },
+    {
+     "s": 1,
+     "text": "A retired dentist called Gerald. He'd only moved in the week before. He looks a bit like the singer, I suppose, if you've had a few drinks."
+    },
+    {
+     "s": 0,
+     "text": "Oh no."
+    },
+    {
+     "s": 1,
+     "text": "Yes. By the time we realised, the whole thing had been blown out of proportion. Gerald hadn't been able to leave his house for six hours."
+    },
+    {
+     "s": 0,
+     "text": "How did you find out it was wrong?"
+    },
+    {
+     "s": 1,
+     "text": "The singer's manager called us. He was, er, not happy. The singer had been in Los Angeles all week, recording an album."
+    },
+    {
+     "s": 0,
+     "text": "So you had to backtrack."
+    },
+    {
+     "s": 1,
+     "text": "Completely. We published an apology on the front page, and we sent Gerald flowers. He was very kind about it, actually. He said it was the most exciting weekend he'd had in years."
+    },
+    {
+     "s": 0,
+     "text": "What have you changed since then?"
+    },
+    {
+     "s": 1,
+     "text": "Every story now needs two independent sources. And if something sounds too good to be true, we take it with a pinch of salt. It usually is."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why is Pete being interviewed?",
+     "options": [
+      "His newspaper won an award",
+      "His newspaper published a false story",
+      "He interviewed a pop star",
+      "He bought a house in the village"
+     ],
+     "answer": 1,
+     "explain_es": "Jo: \"a small local paper that got a big story badly wrong last spring.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did the first reader claim?",
+     "options": [
+      "A pop star had bought a house in the village",
+      "The bakery was closing",
+      "A dentist was retiring",
+      "A TV programme was being filmed"
+     ],
+     "answer": 0,
+     "explain_es": "Pete: \"She said a very famous pop star had bought a house in the village.\""
+    },
+    {
+     "type": "mc",
+     "q": "What made the newspaper believe the rumour?",
+     "options": [
+      "The pop star's manager confirmed it",
+      "More people sent the same rumour, one with a photo",
+      "The estate agent confirmed it",
+      "It appeared on national TV"
+     ],
+     "answer": 1,
+     "explain_es": "Pete: \"three more people had sent us the same rumour. One even had a blurry photo.\""
+    },
+    {
+     "type": "tf",
+     "q": "The estate agent had confirmed the story before it was published.",
+     "answer": "F",
+     "explain_es": "Pete: \"We'd called the estate agent, but he hadn't called back before we published.\""
+    },
+    {
+     "type": "mc",
+     "q": "Who really lived in the house?",
+     "options": [
+      "The pop star's manager",
+      "A retired dentist",
+      "A photographer",
+      "The reader who emailed"
+     ],
+     "answer": 1,
+     "explain_es": "Pete: \"A retired dentist called Gerald.\""
+    },
+    {
+     "type": "mc",
+     "q": "Where had the singer really been?",
+     "options": [
+      "On holiday in Spain",
+      "In Los Angeles recording an album",
+      "At home in London",
+      "On tour in Australia"
+     ],
+     "answer": 1,
+     "explain_es": "Pete: \"The singer had been in Los Angeles all week, recording an album.\""
+    },
+    {
+     "type": "mc",
+     "q": "How did Gerald react to the situation in the end?",
+     "options": [
+      "He sued the newspaper",
+      "He was kind and found it exciting",
+      "He moved away",
+      "He refused to speak to them"
+     ],
+     "answer": 1,
+     "explain_es": "Pete: \"He was very kind about it ... He said it was the most exciting weekend he'd had in years.\""
+    },
+    {
+     "type": "tf",
+     "q": "The newspaper lost many readers after the mistake.",
+     "answer": "NG",
+     "explain_es": "No se menciona si la Gazette perdió lectores."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Now every story needs two independent ____. (1 word)",
+     "answer": "sources",
+     "accept": [
+      "sources"
+     ],
+     "explain_es": "Pete: \"Every story now needs two independent sources.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"By the time we realised, the whole thing ____ been blown out of proportion.\" (1 word)",
+     "answer": "had",
+     "accept": [
+      "had"
+     ],
+     "explain_es": "Past perfect con \"by the time\" para algo ocurrido antes de otro momento pasado."
+    }
+   ],
+   "dictation": [
+    "If we want people to trust us, we've got to admit our mistakes.",
+    "With hindsight, we should have waited.",
+    "It usually is."
+   ]
+  }
+ ],
+ "7": [
+  {
+   "id": "ul-b2-7-1",
+   "title": "Smile, You're on the Door Camera",
+   "level": "B2",
+   "kind": "conversation",
+   "topic": "Opinions about technology and its regulation",
+   "focus": "Tag questions / Negative questions for opinions",
+   "emoji": "📷",
+   "speakers": [
+    {
+     "name": "Erin",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Kevin",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Did you see the email? From next month, we'll need to use facial recognition to get into the building. No more ID cards."
+    },
+    {
+     "s": 1,
+     "text": "I saw it. It's a bit creepy, isn't it?"
+    },
+    {
+     "s": 0,
+     "text": "Is it? Isn't it just more convenient? You won't lose your card, will you?"
+    },
+    {
+     "s": 1,
+     "text": "Sure, but don't you think they should have asked us first? Nobody consulted us."
+    },
+    {
+     "s": 0,
+     "text": "Hmm, that's fair. Although, they did say we could opt out, didn't they?"
+    },
+    {
+     "s": 1,
+     "text": "Did they? I didn't read that far. Where does it say that?"
+    },
+    {
+     "s": 0,
+     "text": "At the bottom. You can keep using a card if you fill in a form. But I bet most people won't bother."
+    },
+    {
+     "s": 1,
+     "text": "That's the problem, isn't it? Everything's designed so you just click \"yes\". And what happens to the data? They haven't explained that, have they?"
+    },
+    {
+     "s": 0,
+     "text": "It says it's stored on the company's own servers. Not in the cloud. And it's deleted when you leave the company, apparently."
+    },
+    {
+     "s": 1,
+     "text": "OK, but servers get hacked, don't they? Remember the gym that lost everyone's details last year?"
+    },
+    {
+     "s": 0,
+     "text": "Ha, yes. Isn't that the gym you go to?"
+    },
+    {
+     "s": 1,
+     "text": "It is! That's why I'm paranoid. Your face isn't like a password, is it? You can't change it if it's stolen."
+    },
+    {
+     "s": 0,
+     "text": "Wow. I hadn't thought of it like that. That's actually quite scary. Shouldn't the company have thought about that?"
+    },
+    {
+     "s": 1,
+     "text": "You'd hope so. Wouldn't it make sense to have a meeting about it, at least?"
+    },
+    {
+     "s": 0,
+     "text": "Let's suggest it. We're not the only ones worried, are we? Priya in accounts was complaining this morning."
+    },
+    {
+     "s": 1,
+     "text": "Exactly. And, um, aren't we supposed to have a privacy officer? Whatever happened to her?"
+    },
+    {
+     "s": 0,
+     "text": "She left in March, didn't she? I don't think anyone's replaced her."
+    },
+    {
+     "s": 1,
+     "text": "Well, that says it all, doesn't it? I'm filling in the opt-out form today."
+    },
+    {
+     "s": 0,
+     "text": "You know what? So am I. Better safe than sorry."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What new system is the company introducing?",
+     "options": [
+      "A new ID card",
+      "Facial recognition to enter the building",
+      "Fingerprint scanners for computers",
+      "A new email system"
+     ],
+     "answer": 1,
+     "explain_es": "Erin: \"we'll need to use facial recognition to get into the building.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Kevin's first reaction?",
+     "options": [
+      "He thinks it is creepy",
+      "He thinks it is a great idea",
+      "He doesn't care",
+      "He wants to try it"
+     ],
+     "answer": 0,
+     "explain_es": "Kevin: \"It's a bit creepy, isn't it?\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Employees who don't want the system can ____ out by filling in a form. (1 word)",
+     "answer": "opt",
+     "accept": [
+      "opt"
+     ],
+     "explain_es": "Erin: \"they did say we could opt out\" ... \"if you fill in a form.\""
+    },
+    {
+     "type": "tf",
+     "q": "Employees can choose to keep using a card.",
+     "answer": "T",
+     "explain_es": "Erin: \"You can keep using a card if you fill in a form.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is Kevin especially worried about data?",
+     "options": [
+      "His gym lost everyone's details last year",
+      "He works in IT",
+      "He has been hacked before at work",
+      "He read an article"
+     ],
+     "answer": 0,
+     "explain_es": "Kevin: \"Remember the gym that lost everyone's details last year?\" ... \"That's why I'm paranoid.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is Kevin's main argument about faces?",
+     "options": [
+      "They change with age",
+      "You can't change your face if the data is stolen",
+      "Cameras don't recognise everyone",
+      "Faces are easy to copy"
+     ],
+     "answer": 1,
+     "explain_es": "Kevin: \"Your face isn't like a password, is it? You can't change it if it's stolen.\""
+    },
+    {
+     "type": "tf",
+     "q": "Priya in accounts supports the new system.",
+     "answer": "F",
+     "explain_es": "Erin: \"Priya in accounts was complaining this morning.\""
+    },
+    {
+     "type": "tf",
+     "q": "The company plans to hire a new privacy officer soon.",
+     "answer": "NG",
+     "explain_es": "Erin solo dice: \"I don't think anyone's replaced her.\" No se habla de planes."
+    },
+    {
+     "type": "mc",
+     "q": "How does Erin's attitude change during the conversation?",
+     "options": [
+      "She becomes more worried and decides to opt out",
+      "She becomes more enthusiastic about the system",
+      "She stays exactly the same",
+      "She gets angry with Kevin"
+     ],
+     "answer": 0,
+     "explain_es": "Al principio lo ve conveniente; al final dice: \"So am I. Better safe than sorry.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete the tag: \"We're not the only ones worried, ____ we?\" (1 word)",
+     "answer": "are",
+     "accept": [
+      "are"
+     ],
+     "explain_es": "Afirmación negativa (We're not) → tag positivo: are we?"
+    }
+   ],
+   "dictation": [
+    "It's a bit creepy, isn't it?",
+    "Nobody consulted us.",
+    "Better safe than sorry."
+   ]
+  },
+  {
+   "id": "ul-b2-7-2",
+   "title": "The App That Will Run the Buses",
+   "level": "B2",
+   "kind": "radio-report",
+   "topic": "Opinions about technology and its regulation",
+   "focus": "Passive of present continuous, present perfect, future",
+   "emoji": "🚌",
+   "speakers": [
+    {
+     "name": "Presenter Amy",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Reporter Tom",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Commuter Joy",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Next: from January, paper bus tickets in the city will be replaced by a single app. Tom Bell has been finding out how it works."
+    },
+    {
+     "s": 1,
+     "text": "Thanks, Amy. The new app, called GoCity, is currently being tested by about two thousand volunteers. It's been downloaded more than fifteen thousand times since the trial started in September."
+    },
+    {
+     "s": 0,
+     "text": "And what does it do?"
+    },
+    {
+     "s": 1,
+     "text": "Basically, it'll do everything. Tickets will be bought through the app, buses will be tracked in real time, and fares will be calculated automatically at the end of each day."
+    },
+    {
+     "s": 0,
+     "text": "What do the volunteers think?"
+    },
+    {
+     "s": 1,
+     "text": "I've been speaking to some of them. Joy, you've been using it for a month. What's your verdict?"
+    },
+    {
+     "s": 2,
+     "text": "Mostly positive. It's much quicker. But, er, I'm glued to my screen even more now, checking where the bus is. It's quite addictive, actually."
+    },
+    {
+     "s": 1,
+     "text": "Any problems?"
+    },
+    {
+     "s": 2,
+     "text": "A few. The app was updated last week and it crashed twice. And I keep getting notifications. It's a bit overwhelming."
+    },
+    {
+     "s": 0,
+     "text": "Tom, there have been concerns about data privacy, haven't there?"
+    },
+    {
+     "s": 1,
+     "text": "Yes. Some campaigners are worried that every journey is being recorded. The council says the data is being stored for only ninety days and won't be sold."
+    },
+    {
+     "s": 0,
+     "text": "Can people opt out?"
+    },
+    {
+     "s": 1,
+     "text": "They can. Paper tickets will be phased out, but contactless bank cards will still be accepted on every bus. So you won't be forced to leave a digital footprint, at least not a detailed one."
+    },
+    {
+     "s": 0,
+     "text": "And what about older passengers who don't have smartphones?"
+    },
+    {
+     "s": 1,
+     "text": "That's been a big issue. Free workshops are being organised in libraries, and a helpline has been set up."
+    },
+    {
+     "s": 2,
+     "text": "My mum went to one of the workshops. She's eighty-two and she's now better at it than I am."
+    },
+    {
+     "s": 0,
+     "text": "Ha! When will it be rolled out fully?"
+    },
+    {
+     "s": 1,
+     "text": "The full service will be launched on January the fifth. And by the summer, it's expected that trains will have been added too."
+    },
+    {
+     "s": 0,
+     "text": "Tom, thanks."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the report about?",
+     "options": [
+      "A new bus app replacing paper tickets",
+      "A strike by bus drivers",
+      "Free buses for older people",
+      "A new train line"
+     ],
+     "answer": 0,
+     "explain_es": "Amy: \"paper bus tickets in the city will be replaced by a single app.\""
+    },
+    {
+     "type": "mc",
+     "q": "How many volunteers are testing the app?",
+     "options": [
+      "About two hundred",
+      "About two thousand",
+      "About fifteen thousand",
+      "About ninety"
+     ],
+     "answer": 1,
+     "explain_es": "Tom: \"is currently being tested by about two thousand volunteers.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Joy say about using the app?",
+     "options": [
+      "It is slow",
+      "It is quicker but quite addictive",
+      "It is too expensive",
+      "It never works"
+     ],
+     "answer": 1,
+     "explain_es": "Joy: \"It's much quicker ... It's quite addictive, actually.\""
+    },
+    {
+     "type": "tf",
+     "q": "The app crashed after an update last week.",
+     "answer": "T",
+     "explain_es": "Joy: \"The app was updated last week and it crashed twice.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long will journey data be stored, according to the council?",
+     "options": [
+      "Thirty days",
+      "Ninety days",
+      "One year",
+      "Forever"
+     ],
+     "answer": 1,
+     "explain_es": "Tom: \"the data is being stored for only ninety days\"."
+    },
+    {
+     "type": "mc",
+     "q": "How can people avoid using the app?",
+     "options": [
+      "By buying paper tickets",
+      "By paying with contactless bank cards",
+      "By paying the driver in cash",
+      "They can't avoid it"
+     ],
+     "answer": 1,
+     "explain_es": "Tom: \"contactless bank cards will still be accepted on every bus.\""
+    },
+    {
+     "type": "tf",
+     "q": "The council plans to sell the data to advertisers.",
+     "answer": "F",
+     "explain_es": "Tom: \"won't be sold.\""
+    },
+    {
+     "type": "tf",
+     "q": "The helpline is open twenty-four hours a day.",
+     "answer": "NG",
+     "explain_es": "Tom solo dice \"a helpline has been set up\"; no se menciona su horario."
+    },
+    {
+     "type": "mc",
+     "q": "Who mentions that her mother has become very good at using the app?",
+     "options": [
+      "Amy",
+      "Joy"
+     ],
+     "answer": 1,
+     "explain_es": "Joy: \"My mum went to one of the workshops. She's eighty-two and she's now better at it than I am.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The full service will be ____ on January the fifth. (1 word)",
+     "answer": "launched",
+     "accept": [
+      "launched",
+      "rolled out"
+     ],
+     "explain_es": "Tom: \"The full service will be launched on January the fifth.\" Pasiva en futuro."
+    }
+   ],
+   "dictation": [
+    "It's a bit overwhelming.",
+    "That's been a big issue.",
+    "Free workshops are being organised in libraries, and a helpline has been set up."
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "ul-b2-8-1",
+   "title": "How Memory Champions Remember",
+   "level": "B2",
+   "kind": "lecture",
+   "topic": "Psychology, memory and how the brain works",
+   "focus": "Reduced relative clauses",
+   "emoji": "🧠",
+   "speakers": [
+    {
+     "name": "Dr Kapoor",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Student Alex",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good morning. Today I want to talk about people known as memory champions, people competing in events where they memorise hundreds of numbers or the order of a deck of cards in under a minute."
+    },
+    {
+     "s": 0,
+     "text": "Now, you might assume these people were born with extraordinary brains. In fact, studies carried out at several universities show that their brains look, well, pretty ordinary."
+    },
+    {
+     "s": 0,
+     "text": "So what's the difference? Almost all of them use a technique called the method of loci, or the memory palace. It's a technique dating back to ancient Greece."
+    },
+    {
+     "s": 0,
+     "text": "It works like this. You imagine a building you know well, your home, say."
+    },
+    {
+     "s": 0,
+     "text": "Then you place each item to be remembered somewhere along a route through that building."
+    },
+    {
+     "s": 1,
+     "text": "Sorry, can you give an example?"
+    },
+    {
+     "s": 0,
+     "text": "Of course. Imagine a shopping list containing eggs, bread and soap. You picture eggs smashed all over your front door, a giant loaf sitting on the sofa, soap bubbles filling the bathroom. The more vivid and ridiculous the image, the better."
+    },
+    {
+     "s": 1,
+     "text": "Why ridiculous?"
+    },
+    {
+     "s": 0,
+     "text": "Because the brain is very good at remembering things that are strange or emotional, and very bad at remembering lists of words presented without context."
+    },
+    {
+     "s": 0,
+     "text": "In one study, a group of volunteers with no previous training practised the method for thirty minutes a day. After six weeks, their scores had more than doubled. And retention four months later was still high."
+    },
+    {
+     "s": 1,
+     "text": "Does it work for exams? For things like, um, dates and definitions?"
+    },
+    {
+     "s": 0,
+     "text": "It can. But there's a catch. Memorising facts isn't the same as understanding them. Students using only this method can recall a definition perfectly and still not grasp what it means."
+    },
+    {
+     "s": 0,
+     "text": "So my advice is: use it for things that have to be learned by heart, like vocabulary or formulas. Combine it with real understanding for everything else."
+    },
+    {
+     "s": 0,
+     "text": "Right. For homework, I'd like you to build a memory palace with ten items from today's reading list. We'll test each other on Thursday."
+    },
+    {
+     "s": 1,
+     "text": "Ten items? I'll be racking my brains all week."
+    },
+    {
+     "s": 0,
+     "text": "That's rather the point, Alex."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the lecture mainly about?",
+     "options": [
+      "Why some people are born with better memories",
+      "Techniques used by memory champions",
+      "The history of ancient Greece",
+      "How to sleep better before exams"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Kapoor habla de \"memory champions\" y de la técnica que usan."
+    },
+    {
+     "type": "mc",
+     "q": "What did studies show about memory champions' brains?",
+     "options": [
+      "They are much larger",
+      "They look pretty ordinary",
+      "They use more energy",
+      "They are damaged"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Kapoor: \"their brains look, well, pretty ordinary.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: In the study, volunteers practised the method for ____ minutes a day. (1 word)",
+     "answer": "thirty",
+     "accept": [
+      "thirty",
+      "30"
+     ],
+     "explain_es": "Dr Kapoor: \"practised the method for thirty minutes a day.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why should the images be ridiculous?",
+     "options": [
+      "The brain remembers strange or emotional things well",
+      "They are more fun to draw",
+      "They take less time",
+      "They are easier to explain to others"
+     ],
+     "answer": 0,
+     "explain_es": "Dr Kapoor: \"the brain is very good at remembering things that are strange or emotional\"."
+    },
+    {
+     "type": "tf",
+     "q": "The volunteers in the study had already been trained before.",
+     "answer": "F",
+     "explain_es": "Dr Kapoor: \"a group of volunteers with no previous training\"."
+    },
+    {
+     "type": "tf",
+     "q": "After six weeks, the volunteers' scores had more than doubled.",
+     "answer": "T",
+     "explain_es": "Dr Kapoor: \"After six weeks, their scores had more than doubled.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is the lecturer's warning about the method?",
+     "options": [
+      "It can damage your memory",
+      "Memorising facts is not the same as understanding them",
+      "It only works for numbers",
+      "It takes years to learn"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Kapoor: \"Memorising facts isn't the same as understanding them.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dr Kapoor has competed in memory championships herself.",
+     "answer": "NG",
+     "explain_es": "No se menciona."
+    },
+    {
+     "type": "mc",
+     "q": "Who says they will be racking their brains all week?",
+     "options": [
+      "Dr Kapoor",
+      "Alex"
+     ],
+     "answer": 1,
+     "explain_es": "Alex: \"Ten items? I'll be racking my brains all week.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Imagine a shopping list ____ eggs, bread and soap.\" (1 word, -ing form)",
+     "answer": "containing",
+     "accept": [
+      "containing"
+     ],
+     "explain_es": "Oración de relativo reducida: a list containing = a list which contains."
+    }
+   ],
+   "dictation": [
+    "It works like this.",
+    "The more vivid and ridiculous the image, the better.",
+    "We'll test each other on Thursday."
+   ]
+  },
+  {
+   "id": "ul-b2-8-2",
+   "title": "Locked Out Again",
+   "level": "B2",
+   "kind": "phone-call",
+   "topic": "Psychology, memory and how the brain works",
+   "focus": "Sentence-modifying ‘which’",
+   "emoji": "🔑",
+   "speakers": [
+    {
+     "name": "Becky",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Dan",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Dan? It's me. Don't laugh, but I've done it again."
+    },
+    {
+     "s": 1,
+     "text": "Oh no. Locked out?"
+    },
+    {
+     "s": 0,
+     "text": "Locked out. The keys are inside, on the kitchen table. I can actually see them through the window, which is driving me crazy."
+    },
+    {
+     "s": 1,
+     "text": "Becky, that's the third time this month, which must be some kind of record."
+    },
+    {
+     "s": 0,
+     "text": "I know, I know. I'm so absent-minded at the moment. I've got this exam on Friday and I just can't think about anything else."
+    },
+    {
+     "s": 1,
+     "text": "Do you want me to come over? I've still got your spare key. Well, I think I have. Hang on."
+    },
+    {
+     "s": 0,
+     "text": "You think?"
+    },
+    {
+     "s": 1,
+     "text": "I'm racking my brains. It's either in my car or in the drawer by the door. Give me a second."
+    },
+    {
+     "s": 0,
+     "text": "Take your time. I'm only standing in the rain, with no umbrella, while the neighbours watch me through their curtains."
+    },
+    {
+     "s": 1,
+     "text": "OK, found it! It was in the drawer, which is lucky, because my car's at the garage."
+    },
+    {
+     "s": 0,
+     "text": "You're a lifesaver. How long will you be?"
+    },
+    {
+     "s": 1,
+     "text": "About twenty minutes, if the traffic on the bridge isn't too bad. Hey, while I'm on my way, can I ask you something? What was the name of that restaurant you told me about? It's on the tip of my tongue."
+    },
+    {
+     "s": 0,
+     "text": "Restaurant? Um... I'm drawing a blank. Was it the Thai one?"
+    },
+    {
+     "s": 1,
+     "text": "No, the Italian. Near the river. Started with a \"B\"."
+    },
+    {
+     "s": 0,
+     "text": "Oh! Bellini's. You'll love it. The tiramisu alone is worth the trip. Ask for a table by the window, which has a view of the river."
+    },
+    {
+     "s": 1,
+     "text": "Bellini's, that's it. I'll book it for Saturday, which gives you something to look forward to after the exam."
+    },
+    {
+     "s": 0,
+     "text": "Aw, thanks. You know what? This keeps happening, so I'm going to get one of those key-finder tags."
+    },
+    {
+     "s": 1,
+     "text": "Good idea. Although you'd probably forget where you'd put the tag."
+    },
+    {
+     "s": 0,
+     "text": "Very funny. Just hurry up, please. I'm getting soaked."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does Becky call Dan?",
+     "options": [
+      "She has lost her phone",
+      "She is locked out of her home",
+      "She needs help with her exam",
+      "She wants to book a restaurant"
+     ],
+     "answer": 1,
+     "explain_es": "Dan: \"Locked out?\" Becky: \"Locked out.\""
+    },
+    {
+     "type": "mc",
+     "q": "Where are Becky's keys?",
+     "options": [
+      "In her car",
+      "On the kitchen table",
+      "At Dan's house",
+      "In her bag"
+     ],
+     "answer": 1,
+     "explain_es": "Becky: \"The keys are inside, on the kitchen table.\""
+    },
+    {
+     "type": "mc",
+     "q": "How many times has this happened this month?",
+     "options": [
+      "Once",
+      "Twice",
+      "Three times",
+      "Four times"
+     ],
+     "answer": 2,
+     "explain_es": "Dan: \"that's the third time this month\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Becky say she is so absent-minded?",
+     "options": [
+      "She hasn't been sleeping",
+      "She is worried about an exam on Friday",
+      "She has just moved house",
+      "She has a new job"
+     ],
+     "answer": 1,
+     "explain_es": "Becky: \"I've got this exam on Friday and I just can't think about anything else.\""
+    },
+    {
+     "type": "tf",
+     "q": "Dan found the spare key in his car.",
+     "answer": "F",
+     "explain_es": "Dan: \"It was in the drawer, which is lucky, because my car's at the garage.\""
+    },
+    {
+     "type": "mc",
+     "q": "What can we infer about the weather?",
+     "options": [
+      "It is very hot",
+      "It is raining",
+      "It is snowing",
+      "It is windy but dry"
+     ],
+     "answer": 1,
+     "explain_es": "Becky: \"I'm only standing in the rain\" y \"I'm getting soaked.\""
+    },
+    {
+     "type": "mc",
+     "q": "Which restaurant is Dan trying to remember?",
+     "options": [
+      "A Thai restaurant",
+      "An Italian restaurant near the river",
+      "A café near Becky's house",
+      "A Greek restaurant"
+     ],
+     "answer": 1,
+     "explain_es": "Dan: \"No, the Italian. Near the river. Started with a 'B'.\""
+    },
+    {
+     "type": "tf",
+     "q": "Becky has already passed her exam.",
+     "answer": "F",
+     "explain_es": "El examen es el viernes; Dan reserva el sábado \"after the exam\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Dan's attitude towards Becky?",
+     "options": [
+      "Annoyed and unwilling to help",
+      "Teasing but helpful",
+      "Worried and serious",
+      "Completely indifferent"
+     ],
+     "answer": 1,
+     "explain_es": "Bromea (\"that must be some kind of record\", \"you'd probably forget where you'd put the tag\") pero va a ayudarla."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Dan will book Bellini's for Saturday, ____ gives Becky something to look forward to. (1 word)",
+     "answer": "which",
+     "accept": [
+      "which"
+     ],
+     "explain_es": "\"which\" comenta toda la oración anterior (sentence-modifying which)."
+    }
+   ],
+   "dictation": [
+    "Don't laugh, but I've done it again.",
+    "You're a lifesaver.",
+    "Just hurry up, please."
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "ul-b2-9-1",
+   "title": "Lunch Breaks Around the World",
+   "level": "B2",
+   "kind": "seminar",
+   "topic": "Cultural generalisations and childhood habits",
+   "focus": "Contrast and exception",
+   "emoji": "🥪",
+   "speakers": [
+    {
+     "name": "Tutor Dr Bell",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Sofia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Kenji",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Right, let's start. Last week I asked you to compare lunch habits in two countries. Sofia, you looked at Spain and the UK."
+    },
+    {
+     "s": 1,
+     "text": "Yes. So, by and large, lunch in Spain is the main meal of the day, whereas in the UK it's often just a sandwich at your desk."
+    },
+    {
+     "s": 0,
+     "text": "And timing?"
+    },
+    {
+     "s": 1,
+     "text": "That's the biggest difference. Unlike British workers, who usually eat around one, many Spaniards eat between two and three thirty. Apart from big cities, where things are changing, it's still a long break."
+    },
+    {
+     "s": 0,
+     "text": "Is that true for everyone, though? We need to be careful not to paint with a broad brush."
+    },
+    {
+     "s": 1,
+     "text": "Absolutely. Younger office workers in Madrid often take shorter lunches, while older people and rural areas keep the long tradition. So it's a norm, but not a rule."
+    },
+    {
+     "s": 0,
+     "text": "Good. Kenji, you compared Japan and the US."
+    },
+    {
+     "s": 2,
+     "text": "Right. In both countries lunch is fairly quick. But, um, the style is really different. In Japan, a lot of people bring a bento box from home, whereas in the US it's more common to buy something nearby."
+    },
+    {
+     "s": 0,
+     "text": "Any exceptions?"
+    },
+    {
+     "s": 2,
+     "text": "Plenty. Except that bento culture is strong, Japanese convenience stores sell millions of lunches a day. So \"everyone brings food from home\" is a bit of a stereotype."
+    },
+    {
+     "s": 1,
+     "text": "Can I add something? I think the stereotype of the British sandwich is also a bit unfair. Lots of people go to the pub on Fridays."
+    },
+    {
+     "s": 0,
+     "text": "Fair point. Kenji, what about eating at your desk?"
+    },
+    {
+     "s": 2,
+     "text": "In the US, it's very common. In Japan, people tend to eat with colleagues, although that's changing too. Some companies even have rules against eating alone at your desk."
+    },
+    {
+     "s": 0,
+     "text": "Interesting. So what's the general conclusion?"
+    },
+    {
+     "s": 1,
+     "text": "I'd say lunch habits are deep-rooted, but not fixed. While culture shapes them, work pressure is changing them everywhere."
+    },
+    {
+     "s": 2,
+     "text": "And, er, people who move abroad usually conform quite quickly. I ate at my desk within a week of arriving in Boston."
+    },
+    {
+     "s": 0,
+     "text": "Ha, that's the power of fitting in. Excellent work, both of you. Next week, we'll look at dinner times."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What did the students have to do for the seminar?",
+     "options": [
+      "Compare lunch habits in two countries",
+      "Cook a typical lunch",
+      "Interview office workers",
+      "Write about dinner times"
+     ],
+     "answer": 0,
+     "explain_es": "Dr Bell: \"I asked you to compare lunch habits in two countries.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Sofia, what is lunch in Spain?",
+     "options": [
+      "A quick sandwich",
+      "The main meal of the day",
+      "Usually skipped",
+      "Eaten at noon"
+     ],
+     "answer": 1,
+     "explain_es": "Sofia: \"lunch in Spain is the main meal of the day\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Sofia concludes that lunch habits are deep-rooted, but work ____ is changing them everywhere. (1 word)",
+     "answer": "pressure",
+     "accept": [
+      "pressure"
+     ],
+     "explain_es": "Sofia: \"While culture shapes them, work pressure is changing them everywhere.\""
+    },
+    {
+     "type": "tf",
+     "q": "Sofia says all Spanish people take long lunch breaks.",
+     "answer": "F",
+     "explain_es": "Sofia: \"Younger office workers in Madrid often take shorter lunches ... it's a norm, but not a rule.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why does Kenji call \"everyone brings food from home\" a stereotype?",
+     "options": [
+      "Convenience stores sell millions of lunches a day",
+      "Most people eat in restaurants",
+      "Bento boxes are too expensive",
+      "Japanese people rarely eat lunch"
+     ],
+     "answer": 0,
+     "explain_es": "Kenji: \"Japanese convenience stores sell millions of lunches a day.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does the tutor warn the students about?",
+     "options": [
+      "Speaking too fast",
+      "Generalising too much",
+      "Using too many statistics",
+      "Being late"
+     ],
+     "answer": 1,
+     "explain_es": "Dr Bell: \"We need to be careful not to paint with a broad brush.\""
+    },
+    {
+     "type": "tf",
+     "q": "Kenji now eats lunch at his desk in Boston.",
+     "answer": "T",
+     "explain_es": "Kenji: \"I ate at my desk within a week of arriving in Boston.\""
+    },
+    {
+     "type": "tf",
+     "q": "Kenji prefers American food to Japanese food.",
+     "answer": "NG",
+     "explain_es": "Kenji no expresa preferencias de comida."
+    },
+    {
+     "type": "mc",
+     "q": "Who defends the British against the sandwich stereotype?",
+     "options": [
+      "Dr Bell",
+      "Sofia",
+      "Kenji"
+     ],
+     "answer": 1,
+     "explain_es": "Sofia: \"I think the stereotype of the British sandwich is also a bit unfair.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ British workers, who usually eat around one, many Spaniards eat between two and three thirty.\" (1 word)",
+     "answer": "Unlike",
+     "accept": [
+      "Unlike",
+      "unlike"
+     ],
+     "explain_es": "\"Unlike\" + sustantivo para marcar contraste."
+    }
+   ],
+   "dictation": [
+    "That's the biggest difference.",
+    "So it's a norm, but not a rule.",
+    "Next week, we'll look at dinner times."
+   ]
+  },
+  {
+   "id": "ul-b2-9-2",
+   "title": "Growing Up Everywhere",
+   "level": "B2",
+   "kind": "podcast",
+   "topic": "Cultural generalisations and childhood habits",
+   "focus": "Past habits: used to and would",
+   "emoji": "🌍",
+   "speakers": [
+    {
+     "name": "Host Lou",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Adam",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to Belonging. My guest is Adam, who's what people call a \"third culture kid\". Adam, what does that mean?"
+    },
+    {
+     "s": 1,
+     "text": "Basically, it means I grew up in countries that weren't my parents' country. My dad was a diplomat, so we'd move every three years. Kenya, Germany, Chile, then Thailand."
+    },
+    {
+     "s": 0,
+     "text": "Wow. What was that like as a child?"
+    },
+    {
+     "s": 1,
+     "text": "Exciting and exhausting. I used to hate the first day at a new school. I'd stand at the door and think, \"Here we go again.\""
+    },
+    {
+     "s": 0,
+     "text": "How did you fit in?"
+    },
+    {
+     "s": 1,
+     "text": "I got very good at watching people. I'd figure out the norms in about a week. Who sat where, which jokes were OK, er, what you could wear. Then I'd just conform."
+    },
+    {
+     "s": 0,
+     "text": "So you'd sort of become a different person in each place?"
+    },
+    {
+     "s": 1,
+     "text": "A bit, yes. In Germany I used to be really punctual. In Chile I became much more relaxed about time. My mum would laugh and say, \"Which Adam are we getting today?\""
+    },
+    {
+     "s": 0,
+     "text": "And at home? What was your upbringing like?"
+    },
+    {
+     "s": 1,
+     "text": "Home was the one thing that stayed the same. We'd always have pancakes on Sunday, wherever we were. And my parents would speak English at home, so that was my anchor."
+    },
+    {
+     "s": 0,
+     "text": "Did people make assumptions about you?"
+    },
+    {
+     "s": 1,
+     "text": "Constantly. People used to say, \"You're American, so you must love fast food.\" I didn't even live in America until I was eighteen."
+    },
+    {
+     "s": 0,
+     "text": "Ha. So stereotypes followed you around."
+    },
+    {
+     "s": 1,
+     "text": "They did. But honestly, growing up like that made me suspicious of generalisations. When you've lived in five countries, you see that customs are deep-rooted, but people are, by and large, more similar than different."
+    },
+    {
+     "s": 0,
+     "text": "What about now? Where do you feel at home?"
+    },
+    {
+     "s": 1,
+     "text": "That's the hardest question. I used to say \"nowhere\". Now I'd say \"airports\", which is only half a joke."
+    },
+    {
+     "s": 0,
+     "text": "Do you want your kids to grow up the same way?"
+    },
+    {
+     "s": 1,
+     "text": "I'm not sure. I'd like them to have one place they call home. But I'd also like them to have that, um, flexibility. Maybe two countries instead of five."
+    },
+    {
+     "s": 0,
+     "text": "Adam, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is a \"third culture kid\", according to Adam?",
+     "options": [
+      "A child who speaks three languages",
+      "A child who grows up in countries that are not their parents' country",
+      "A child with parents from three countries",
+      "A child who studies culture"
+     ],
+     "answer": 1,
+     "explain_es": "Adam: \"it means I grew up in countries that weren't my parents' country.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Adam's family move so often?",
+     "options": [
+      "His mother was a teacher",
+      "His father was a diplomat",
+      "They loved travelling",
+      "His father worked for an airline"
+     ],
+     "answer": 1,
+     "explain_es": "Adam: \"My dad was a diplomat, so we'd move every three years.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Adam use to hate?",
+     "options": [
+      "Flying",
+      "The first day at a new school",
+      "Learning languages",
+      "Sunday pancakes"
+     ],
+     "answer": 1,
+     "explain_es": "Adam: \"I used to hate the first day at a new school.\""
+    },
+    {
+     "type": "mc",
+     "q": "How did Adam fit in at new schools?",
+     "options": [
+      "By watching people and copying the norms",
+      "By joining sports teams",
+      "By refusing to change",
+      "By making friends with other foreigners"
+     ],
+     "answer": 0,
+     "explain_es": "Adam: \"I got very good at watching people. I'd figure out the norms in about a week.\""
+    },
+    {
+     "type": "tf",
+     "q": "Adam became more relaxed about time in Chile.",
+     "answer": "T",
+     "explain_es": "Adam: \"In Chile I became much more relaxed about time.\""
+    },
+    {
+     "type": "mc",
+     "q": "What stayed the same wherever the family lived?",
+     "options": [
+      "Their house",
+      "Home routines like Sunday pancakes and speaking English",
+      "Adam's school",
+      "Their friends"
+     ],
+     "answer": 1,
+     "explain_es": "Adam: \"We'd always have pancakes on Sunday, wherever we were. And my parents would speak English at home\"."
+    },
+    {
+     "type": "tf",
+     "q": "Adam lived in America as a young child.",
+     "answer": "F",
+     "explain_es": "Adam: \"I didn't even live in America until I was eighteen.\""
+    },
+    {
+     "type": "tf",
+     "q": "Adam has two children.",
+     "answer": "NG",
+     "explain_es": "Habla de \"my kids\" en hipótesis; no se dice cuántos hijos tiene ni si los tiene."
+    },
+    {
+     "type": "mc",
+     "q": "What is Adam's attitude when he says he feels at home in airports?",
+     "options": [
+      "Completely serious",
+      "Partly joking",
+      "Angry",
+      "Sad and regretful"
+     ],
+     "answer": 1,
+     "explain_es": "Adam: \"Now I'd say 'airports', which is only half a joke.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: As a child, Adam's family ____ move every three years. (1 word)",
+     "answer": "would",
+     "accept": [
+      "would",
+      "used to"
+     ],
+     "explain_es": "\"would\" para hábitos repetidos en el pasado: we'd move = we would move."
+    }
+   ],
+   "dictation": [
+    "Exciting and exhausting.",
+    "Home was the one thing that stayed the same.",
+    "That's the hardest question."
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "ul-b2-10-1",
+   "title": "The Gym That Wouldn't Let Me Go",
+   "level": "B2",
+   "kind": "conversation",
+   "topic": "Everyday annoyances and diplomatic complaining",
+   "focus": "Noun clauses and relative clauses",
+   "emoji": "🏋️",
+   "speakers": [
+    {
+     "name": "Zara",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Owen",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "You look stressed. What's up?"
+    },
+    {
+     "s": 1,
+     "text": "Don't ask. Well, you can ask. It's the gym. I've been trying to cancel my membership for three months."
+    },
+    {
+     "s": 0,
+     "text": "Three months? Why can't you just cancel?"
+    },
+    {
+     "s": 1,
+     "text": "That's what I want to know. What they told me when I joined was that I could leave any time. What they didn't tell me was that you have to cancel in person, at the branch where you signed up."
+    },
+    {
+     "s": 0,
+     "text": "And where did you sign up?"
+    },
+    {
+     "s": 1,
+     "text": "In Leeds. I moved to Bristol in January. The fact that I don't live there anymore doesn't seem to matter."
+    },
+    {
+     "s": 0,
+     "text": "That's ridiculous. Can't you email them?"
+    },
+    {
+     "s": 1,
+     "text": "I've emailed them six times. Whether anyone reads the emails is another question. I got one reply, which just said someone would call me. Nobody called."
+    },
+    {
+     "s": 0,
+     "text": "Have they kept taking the money?"
+    },
+    {
+     "s": 1,
+     "text": "Every month. Forty pounds. What really annoys me is that they took an extra \"admin fee\" in March. I have no idea what it's for."
+    },
+    {
+     "s": 0,
+     "text": "Honestly, I wouldn't put up with that. Have you looked at your contract?"
+    },
+    {
+     "s": 1,
+     "text": "Yes, and the bit that says you must cancel in person is in tiny print on page nine. Whoever designed that contract knew exactly what they were doing."
+    },
+    {
+     "s": 0,
+     "text": "What about your bank? Can't you just stop the payments?"
+    },
+    {
+     "s": 1,
+     "text": "I thought about that, but I'm worried they'll send debt collectors. That's what happened to a friend of mine."
+    },
+    {
+     "s": 0,
+     "text": "OK, here's what I'd do. Write a formal letter, send it recorded delivery, and say that you consider the contract cancelled. Then, if they don't reply in two weeks, contact the consumer rights people."
+    },
+    {
+     "s": 1,
+     "text": "That's a good idea. Why I didn't think of that, I don't know."
+    },
+    {
+     "s": 0,
+     "text": "Because you've been banging your head against a wall for three months. Honestly, the last straw would be the admin fee for me. Ask for that back too."
+    },
+    {
+     "s": 1,
+     "text": "I will. And I'm going to stand my ground this time. Forty pounds a month for a gym I can't even get to!"
+    },
+    {
+     "s": 0,
+     "text": "And next time, read page nine."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Owen's problem?",
+     "options": [
+      "He can't cancel his gym membership",
+      "His gym has closed",
+      "He was injured at the gym",
+      "He lost his gym card"
+     ],
+     "answer": 0,
+     "explain_es": "Owen: \"I've been trying to cancel my membership for three months.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why can't Owen cancel easily?",
+     "options": [
+      "He must cancel in person at the Leeds branch",
+      "He signed a five-year contract",
+      "He owes the gym money",
+      "The gym has no email address"
+     ],
+     "answer": 0,
+     "explain_es": "Owen: \"you have to cancel in person, at the branch where you signed up.\" Se apuntó en Leeds."
+    },
+    {
+     "type": "mc",
+     "q": "How many times has Owen emailed the gym?",
+     "options": [
+      "Twice",
+      "Three times",
+      "Six times",
+      "Nine times"
+     ],
+     "answer": 2,
+     "explain_es": "Owen: \"I've emailed them six times.\""
+    },
+    {
+     "type": "tf",
+     "q": "Someone from the gym called Owen after his emails.",
+     "answer": "F",
+     "explain_es": "Owen: \"someone would call me. Nobody called.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: In March, the gym also took an extra \"____ fee\". (1 word)",
+     "answer": "admin",
+     "accept": [
+      "admin"
+     ],
+     "explain_es": "Owen: \"they took an extra 'admin fee' in March.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why doesn't Owen want to stop the payments through his bank?",
+     "options": [
+      "He is afraid they will send debt collectors",
+      "His bank won't allow it",
+      "He might want to go back",
+      "He doesn't know how"
+     ],
+     "answer": 0,
+     "explain_es": "Owen: \"I'm worried they'll send debt collectors.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Zara advise Owen to do first?",
+     "options": [
+      "Go to Leeds in person",
+      "Write a formal letter sent by recorded delivery",
+      "Post a review online",
+      "Call his lawyer"
+     ],
+     "answer": 1,
+     "explain_es": "Zara: \"Write a formal letter, send it recorded delivery\"."
+    },
+    {
+     "type": "tf",
+     "q": "Owen's friend had to pay the debt collectors.",
+     "answer": "NG",
+     "explain_es": "Owen solo dice \"That's what happened to a friend of mine\"; no se sabe si pagó."
+    },
+    {
+     "type": "mc",
+     "q": "How does Owen feel by the end of the conversation?",
+     "options": [
+      "More determined",
+      "Completely defeated",
+      "Angry with Zara",
+      "Ready to join another gym"
+     ],
+     "answer": 0,
+     "explain_es": "Owen: \"I'm going to stand my ground this time.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"What really annoys me ____ that they took an extra admin fee.\" (1 word)",
+     "answer": "is",
+     "accept": [
+      "is"
+     ],
+     "explain_es": "Una oración nominal con \"What\" funciona como sujeto singular: What annoys me is..."
+    }
+   ],
+   "dictation": [
+    "Don't ask.",
+    "Every month.",
+    "And next time, read page nine."
+   ]
+  },
+  {
+   "id": "ul-b2-10-2",
+   "title": "Drilling at Seven A.M.",
+   "level": "B2",
+   "kind": "dialogue",
+   "topic": "Everyday annoyances and diplomatic complaining",
+   "focus": "Indirect questions",
+   "emoji": "🏨",
+   "speakers": [
+    {
+     "name": "Guest Mr Novak",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Receptionist Lily",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Good morning. I'm sorry to bother you, but I have a bone to pick with the hotel, I'm afraid."
+    },
+    {
+     "s": 1,
+     "text": "Of course, sir. What seems to be the problem?"
+    },
+    {
+     "s": 0,
+     "text": "I'm in room 412. At seven o'clock this morning, I was woken up by someone drilling in the next room. I'd like to know why nobody mentioned this when I booked."
+    },
+    {
+     "s": 1,
+     "text": "I'm very sorry. There's some renovation work on the fourth floor this week. Could you tell me which website you booked through?"
+    },
+    {
+     "s": 0,
+     "text": "Directly through your website. And there was nothing about renovations. Could you explain why the drilling has to start at seven?"
+    },
+    {
+     "s": 1,
+     "text": "I understand your frustration. I'm not sure what time the builders are allowed to start, but I'll check with the manager."
+    },
+    {
+     "s": 0,
+     "text": "I'd appreciate that. I'm here for a conference, and I need to be able to sleep. Do you know whether there are any rooms on another floor?"
+    },
+    {
+     "s": 1,
+     "text": "Let me have a look. Er, the hotel's quite full because of the conference, but I'll see what I can do. Do you mind if I ask how long you're staying?"
+    },
+    {
+     "s": 0,
+     "text": "Three more nights. And to be honest, I'd also like to know if the hotel is going to offer any kind of redress. I'm paying full price for a room I can't use in the morning."
+    },
+    {
+     "s": 1,
+     "text": "That's completely fair. I can't promise anything myself, but I'll take it up with the manager straight away."
+    },
+    {
+     "s": 0,
+     "text": "Thank you. I don't want to make a fuss, but last night the air conditioning was also faulty. It was the last straw, really, this morning."
+    },
+    {
+     "s": 1,
+     "text": "I'm sorry to hear that too. Could you tell me what was wrong with it, so I can report it?"
+    },
+    {
+     "s": 0,
+     "text": "It was making a loud clicking noise all night."
+    },
+    {
+     "s": 1,
+     "text": "OK. Good news. I've found a room on the eighth floor, away from the work. And the manager says we can offer you a free breakfast every day as a goodwill gesture."
+    },
+    {
+     "s": 0,
+     "text": "That's very kind. Do you know when the new room will be ready?"
+    },
+    {
+     "s": 1,
+     "text": "It's ready now. I'll ask someone to move your luggage while you're at the conference."
+    },
+    {
+     "s": 0,
+     "text": "Perfect. Thank you, Lily. You've been very helpful."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is Mr Novak's main complaint?",
+     "options": [
+      "His room was dirty",
+      "He was woken by drilling at seven a.m.",
+      "His booking was lost",
+      "The breakfast was cold"
+     ],
+     "answer": 1,
+     "explain_es": "Mr Novak: \"At seven o'clock this morning, I was woken up by someone drilling in the next room.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is there drilling?",
+     "options": [
+      "A pipe has burst",
+      "There is renovation work on the fourth floor",
+      "A new lift is being installed",
+      "There is a fire alarm test"
+     ],
+     "answer": 1,
+     "explain_es": "Lily: \"There's some renovation work on the fourth floor this week.\""
+    },
+    {
+     "type": "tf",
+     "q": "Mr Novak booked through a travel website.",
+     "answer": "F",
+     "explain_es": "Mr Novak: \"Directly through your website.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why is Mr Novak staying at the hotel?",
+     "options": [
+      "For a holiday",
+      "For a conference",
+      "For a wedding",
+      "For a job interview"
+     ],
+     "answer": 1,
+     "explain_es": "Mr Novak: \"I'm here for a conference\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Lily found Mr Novak a new room on the ____ floor. (1 word)",
+     "answer": "eighth",
+     "accept": [
+      "eighth",
+      "8th"
+     ],
+     "explain_es": "Lily: \"I've found a room on the eighth floor, away from the work.\""
+    },
+    {
+     "type": "mc",
+     "q": "What else was wrong with the room?",
+     "options": [
+      "The shower",
+      "The air conditioning",
+      "The TV",
+      "The window"
+     ],
+     "answer": 1,
+     "explain_es": "Mr Novak: \"last night the air conditioning was also faulty.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does the hotel offer as a goodwill gesture?",
+     "options": [
+      "A refund for one night",
+      "Free breakfast every day",
+      "A free dinner",
+      "An upgrade to a suite"
+     ],
+     "answer": 1,
+     "explain_es": "Lily: \"we can offer you a free breakfast every day as a goodwill gesture.\""
+    },
+    {
+     "type": "tf",
+     "q": "Mr Novak will move his own luggage to the new room.",
+     "answer": "F",
+     "explain_es": "Lily: \"I'll ask someone to move your luggage while you're at the conference.\""
+    },
+    {
+     "type": "mc",
+     "q": "How would you describe Mr Novak's way of complaining?",
+     "options": [
+      "Aggressive and rude",
+      "Firm but polite",
+      "Shy and unclear",
+      "Humorous"
+     ],
+     "answer": 1,
+     "explain_es": "Es firme (\"I'd like to know why...\") pero educado (\"I'm sorry to bother you\", \"I don't want to make a fuss\")."
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"Do you know ____ there are any rooms on another floor?\" (1 word)",
+     "answer": "whether",
+     "accept": [
+      "whether",
+      "if"
+     ],
+     "explain_es": "Pregunta indirecta de sí/no con whether/if y orden de afirmación (there are)."
+    }
+   ],
+   "dictation": [
+    "I'd like to know why nobody mentioned this when I booked.",
+    "I understand your frustration.",
+    "You've been very helpful."
+   ]
+  }
+ ],
+ "11": [
+  {
+   "id": "ul-b2-11-1",
+   "title": "The Dilemma Game",
+   "level": "B2",
+   "kind": "podcast",
+   "topic": "Ethics, hypothetical situations, wishes and regrets",
+   "focus": "Present unreal conditional",
+   "emoji": "⚖️",
+   "speakers": [
+    {
+     "name": "Mel",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Josh",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome to The Dilemma Game, where we ask each other impossible questions. Josh, you're first. Ready?"
+    },
+    {
+     "s": 1,
+     "text": "As I'll ever be."
+    },
+    {
+     "s": 0,
+     "text": "OK. You find a wallet in the street with five hundred dollars in it and an ID card. Nobody's around. What would you do?"
+    },
+    {
+     "s": 1,
+     "text": "Easy. I'd take it to the police. Or, actually, I'd look up the person and return it myself. I wouldn't keep the money, even if nobody ever found out."
+    },
+    {
+     "s": 0,
+     "text": "Not even fifty dollars as a reward?"
+    },
+    {
+     "s": 1,
+     "text": "Only if they offered it. Taking it myself would feel like stealing. Where would you draw the line?"
+    },
+    {
+     "s": 0,
+     "text": "Same, I think. Next one. Your best friend has a job interview, and you know he lied on his CV. The company asks you for a reference. Would you tell them?"
+    },
+    {
+     "s": 1,
+     "text": "Oof. That's a real dilemma. If I told them, I'd lose my friend. If I didn't tell them, I'd be lying too."
+    },
+    {
+     "s": 0,
+     "text": "So what would you do?"
+    },
+    {
+     "s": 1,
+     "text": "I'd talk to him first. Unless he agreed to correct the CV, I wouldn't give the reference. I'd say I couldn't do it."
+    },
+    {
+     "s": 0,
+     "text": "That's very principled. Would you really do that?"
+    },
+    {
+     "s": 1,
+     "text": "I'd like to think so. I'd probably have second thoughts at three in the morning, though."
+    },
+    {
+     "s": 0,
+     "text": "Ha. My turn. Ask me one."
+    },
+    {
+     "s": 1,
+     "text": "OK. A shop undercharges you by twenty dollars. You only notice when you get home. Would you go back?"
+    },
+    {
+     "s": 0,
+     "text": "Hmm. Honestly? It depends. If it were a small family shop, I'd go back the next day. If it were a huge supermarket, I'd, er, probably have fewer qualms about it."
+    },
+    {
+     "s": 1,
+     "text": "Ah! So your moral compass depends on the size of the shop?"
+    },
+    {
+     "s": 0,
+     "text": "When you put it like that, it sounds terrible. But I think most people would feel the same."
+    },
+    {
+     "s": 1,
+     "text": "Imagine if everyone thought that, though. What if all the customers kept the twenty dollars?"
+    },
+    {
+     "s": 0,
+     "text": "OK, OK, you've convinced me. I'd go back. Even to the supermarket."
+    },
+    {
+     "s": 1,
+     "text": "Integrity wins again. Listeners, what would you do? Send us your answers."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the podcast format?",
+     "options": [
+      "The hosts ask each other moral dilemmas",
+      "Listeners call in with problems",
+      "An expert explains the law",
+      "The hosts review books"
+     ],
+     "answer": 0,
+     "explain_es": "Mel: \"where we ask each other impossible questions.\""
+    },
+    {
+     "type": "mc",
+     "q": "What would Josh do with the wallet?",
+     "options": [
+      "Keep the money",
+      "Return it or take it to the police",
+      "Leave it in the street",
+      "Give it to a charity"
+     ],
+     "answer": 1,
+     "explain_es": "Josh: \"I'd take it to the police. Or, actually, I'd look up the person and return it myself.\""
+    },
+    {
+     "type": "tf",
+     "q": "Josh would accept a reward only if the owner offered it.",
+     "answer": "T",
+     "explain_es": "Josh: \"Only if they offered it.\""
+    },
+    {
+     "type": "mc",
+     "q": "What problem does Josh see in the CV dilemma?",
+     "options": [
+      "He would lose his friend or be lying too",
+      "He doesn't know the company",
+      "He has never written a reference",
+      "His friend is not qualified"
+     ],
+     "answer": 0,
+     "explain_es": "Josh: \"If I told them, I'd lose my friend. If I didn't tell them, I'd be lying too.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: In the wallet dilemma, the wallet contains five ____ dollars and an ID card. (1 word)",
+     "answer": "hundred",
+     "accept": [
+      "hundred"
+     ],
+     "explain_es": "Mel: \"a wallet in the street with five hundred dollars in it and an ID card.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Mel's first answer to the shop question depend on?",
+     "options": [
+      "The amount of money",
+      "The size of the shop",
+      "Whether anyone saw",
+      "How far away the shop is"
+     ],
+     "answer": 1,
+     "explain_es": "Mel: \"If it were a small family shop, I'd go back ... If it were a huge supermarket, I'd ... probably have fewer qualms\"."
+    },
+    {
+     "type": "mc",
+     "q": "Who points out that Mel's moral compass seems to depend on the size of the shop?",
+     "options": [
+      "Mel",
+      "Josh",
+      "A listener"
+     ],
+     "answer": 1,
+     "explain_es": "Josh: \"So your moral compass depends on the size of the shop?\""
+    },
+    {
+     "type": "tf",
+     "q": "Mel once kept money that a shop had undercharged her.",
+     "answer": "NG",
+     "explain_es": "Se habla de forma hipotética; no se dice que le haya pasado."
+    },
+    {
+     "type": "mc",
+     "q": "How does Mel's position change by the end?",
+     "options": [
+      "She decides she would go back even to the supermarket",
+      "She decides she would keep the money",
+      "She refuses to answer",
+      "She thinks the question is unfair"
+     ],
+     "answer": 0,
+     "explain_es": "Mel: \"I'd go back. Even to the supermarket.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"____ he agreed to correct the CV, I wouldn't give the reference.\" (1 word)",
+     "answer": "Unless",
+     "accept": [
+      "Unless",
+      "unless"
+     ],
+     "explain_es": "\"Unless\" = if ... not: a menos que corrija el CV."
+    }
+   ],
+   "dictation": [
+    "Easy.",
+    "That's a real dilemma.",
+    "Integrity wins again."
+   ]
+  },
+  {
+   "id": "ul-b2-11-2",
+   "title": "The Inspector Who Spoke Up",
+   "level": "B2",
+   "kind": "interview",
+   "topic": "Ethics, hypothetical situations, wishes and regrets",
+   "focus": "Wishes and regrets",
+   "emoji": "🏭",
+   "speakers": [
+    {
+     "name": "Host Claire",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Graham",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "My guest today is Graham Pike, a former safety inspector at a food factory who reported his own company for breaking hygiene rules. Graham, thanks for coming in."
+    },
+    {
+     "s": 1,
+     "text": "Thanks for having me. It's still not easy to talk about, so bear with me."
+    },
+    {
+     "s": 0,
+     "text": "Take your time. What did you notice?"
+    },
+    {
+     "s": 1,
+     "text": "For about a year, I'd seen temperature records being changed. Fridges that should have been at four degrees were at nine or ten, and someone was writing \"four\" on the forms."
+    },
+    {
+     "s": 0,
+     "text": "Did you say anything at the time?"
+    },
+    {
+     "s": 1,
+     "text": "Not at first. That's my biggest regret. I wish I'd spoken up straight away. I kept telling myself it wasn't my job to cause trouble."
+    },
+    {
+     "s": 0,
+     "text": "Why did you stay quiet?"
+    },
+    {
+     "s": 1,
+     "text": "Fear, mostly. I had a mortgage, two kids. And my manager was a friend. I had real qualms about getting him into trouble. If only I'd had the courage earlier, fewer people might have got ill."
+    },
+    {
+     "s": 0,
+     "text": "People got ill?"
+    },
+    {
+     "s": 1,
+     "text": "Yes. About forty people had food poisoning from one batch of chicken. That was when I drew the line. I couldn't look at myself in the mirror."
+    },
+    {
+     "s": 0,
+     "text": "So you went to the authorities."
+    },
+    {
+     "s": 1,
+     "text": "I did. I gave them copies of everything. The factory was closed for two months and fined heavily."
+    },
+    {
+     "s": 0,
+     "text": "And what happened to you?"
+    },
+    {
+     "s": 1,
+     "text": "I lost my job, officially for \"restructuring\". And some colleagues stopped speaking to me. I wish they understood that I did it to protect customers, not to hurt them."
+    },
+    {
+     "s": 0,
+     "text": "Do you ever wish you hadn't done it?"
+    },
+    {
+     "s": 1,
+     "text": "Honestly, there were nights when I had second thoughts. But no. I wish I'd done it sooner, that's all. My kids are proud of me, and that matters more than anything."
+    },
+    {
+     "s": 0,
+     "text": "What would you say to someone in the same situation?"
+    },
+    {
+     "s": 1,
+     "text": "Write everything down, keep copies, and find someone you trust to talk to. And, um, don't wait as long as I did. Standing up for what's right gets harder the longer you leave it."
+    },
+    {
+     "s": 0,
+     "text": "Graham, thank you for your honesty."
+    },
+    {
+     "s": 1,
+     "text": "Thank you. I just wish this kind of thing didn't still happen."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why is Graham being interviewed?",
+     "options": [
+      "He started a food company",
+      "He reported his own company for breaking hygiene rules",
+      "He was fined for poor hygiene",
+      "He wrote a book about factories"
+     ],
+     "answer": 1,
+     "explain_es": "Claire: \"who reported his own company for breaking hygiene rules.\""
+    },
+    {
+     "type": "mc",
+     "q": "What did Graham notice?",
+     "options": [
+      "Temperature records were being changed",
+      "Workers were stealing food",
+      "The factory was losing money",
+      "Machines were broken"
+     ],
+     "answer": 0,
+     "explain_es": "Graham: \"I'd seen temperature records being changed.\""
+    },
+    {
+     "type": "mc",
+     "q": "What temperature should the fridges have been?",
+     "options": [
+      "Two degrees",
+      "Four degrees",
+      "Nine degrees",
+      "Ten degrees"
+     ],
+     "answer": 1,
+     "explain_es": "Graham: \"Fridges that should have been at four degrees were at nine or ten\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Graham's biggest regret?",
+     "options": [
+      "Reporting the company",
+      "Not speaking up straight away",
+      "Losing his friend",
+      "Taking the job"
+     ],
+     "answer": 1,
+     "explain_es": "Graham: \"That's my biggest regret. I wish I'd spoken up straight away.\""
+    },
+    {
+     "type": "mc",
+     "q": "What finally made Graham act?",
+     "options": [
+      "A new manager arrived",
+      "About forty people got food poisoning",
+      "He was offered a new job",
+      "His children asked him to"
+     ],
+     "answer": 1,
+     "explain_es": "Graham: \"About forty people had food poisoning ... That was when I drew the line.\""
+    },
+    {
+     "type": "tf",
+     "q": "The factory was closed permanently.",
+     "answer": "F",
+     "explain_es": "Graham: \"The factory was closed for two months and fined heavily.\""
+    },
+    {
+     "type": "tf",
+     "q": "Graham's manager was also dismissed.",
+     "answer": "NG",
+     "explain_es": "No se dice qué le pasó a su jefe."
+    },
+    {
+     "type": "mc",
+     "q": "How do Graham's children feel about what he did?",
+     "options": [
+      "Embarrassed",
+      "Proud",
+      "Angry",
+      "They don't know about it"
+     ],
+     "answer": 1,
+     "explain_es": "Graham: \"My kids are proud of me\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is Graham's main advice?",
+     "options": [
+      "Stay quiet to protect your job",
+      "Write everything down and don't wait too long",
+      "Talk to journalists first",
+      "Leave the company immediately"
+     ],
+     "answer": 1,
+     "explain_es": "Graham: \"Write everything down, keep copies ... don't wait as long as I did.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Graham wishes his colleagues ____ that he acted to protect customers. (1 word)",
+     "answer": "understood",
+     "accept": [
+      "understood"
+     ],
+     "explain_es": "Graham: \"I wish they understood that I did it to protect customers\". Wish + pasado para el presente."
+    }
+   ],
+   "dictation": [
+    "It's still not easy to talk about, so bear with me.",
+    "I wish I'd spoken up straight away.",
+    "My kids are proud of me, and that matters more than anything."
+   ]
+  }
+ ],
+ "12": [
+  {
+   "id": "ul-b2-12-1",
+   "title": "Countdown to Seoul",
+   "level": "B2",
+   "kind": "phone-call",
+   "topic": "Travel, culture shock and future life plans",
+   "focus": "Future perfect and future perfect continuous",
+   "emoji": "✈️",
+   "speakers": [
+    {
+     "name": "Ellie",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Mum",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Hi Mum! Can you hear me? The signal's terrible in this café."
+    },
+    {
+     "s": 1,
+     "text": "Just about, darling. So, how's the packing going? Only ten days left!"
+    },
+    {
+     "s": 0,
+     "text": "Don't remind me. I'm trying not to panic. By this time next week, I'll have packed my whole life into two suitcases."
+    },
+    {
+     "s": 1,
+     "text": "Two suitcases for a year? You'll be a fish out of water without your shoe collection."
+    },
+    {
+     "s": 0,
+     "text": "Ha, very funny. I'm sending a box by post. Anyway, the good news is the visa came through today. Finally. The red tape was a nightmare."
+    },
+    {
+     "s": 1,
+     "text": "Oh, that's a relief! And when do you start work?"
+    },
+    {
+     "s": 0,
+     "text": "On the third of March. So by the time you visit at Easter, I'll have been working at the school for about six weeks."
+    },
+    {
+     "s": 1,
+     "text": "Will you have found a flat by then?"
+    },
+    {
+     "s": 0,
+     "text": "The school's giving me one for the first month. Hopefully, by April I'll have moved into my own place. Somewhere near the river, if I can afford it."
+    },
+    {
+     "s": 1,
+     "text": "And the language? You've been practising, haven't you?"
+    },
+    {
+     "s": 0,
+     "text": "Every day. By the time I land, I'll have been studying Korean for eight months. I can read the alphabet, order food, and, um, apologise very politely."
+    },
+    {
+     "s": 1,
+     "text": "Well, that's the important bit. Are you nervous?"
+    },
+    {
+     "s": 0,
+     "text": "A bit. Everyone talks about culture shock. Apparently the second month is the worst, when the excitement wears off and you get homesick."
+    },
+    {
+     "s": 1,
+     "text": "You'll be fine. You settled in so quickly at university."
+    },
+    {
+     "s": 0,
+     "text": "That was Manchester, Mum. Not quite the same as Seoul."
+    },
+    {
+     "s": 1,
+     "text": "True. But you'll get around. You always do. Just promise me you'll call every Sunday."
+    },
+    {
+     "s": 0,
+     "text": "I promise. Although with the time difference, Sunday evening for me will be Sunday morning for you. You'll have only just woken up."
+    },
+    {
+     "s": 1,
+     "text": "I'll set an alarm. And by the end of the year, I'll have become an expert in video calls."
+    },
+    {
+     "s": 0,
+     "text": "Ha! I'd love to see that. OK, the battery's dying. Love you!"
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the main topic of the call?",
+     "options": [
+      "Ellie's preparations for moving to Seoul",
+      "Ellie's holiday plans",
+      "Her mother's visit to Manchester",
+      "A problem with Ellie's visa"
+     ],
+     "answer": 0,
+     "explain_es": "Hablan de la mudanza de Ellie a Seúl en diez días."
+    },
+    {
+     "type": "mc",
+     "q": "How many days are left before Ellie leaves?",
+     "options": [
+      "Three",
+      "Seven",
+      "Ten",
+      "Thirty"
+     ],
+     "answer": 2,
+     "explain_es": "Mum: \"Only ten days left!\""
+    },
+    {
+     "type": "tf",
+     "q": "Ellie's visa has been approved.",
+     "answer": "T",
+     "explain_es": "Ellie: \"the visa came through today. Finally.\""
+    },
+    {
+     "type": "mc",
+     "q": "When does Ellie start work?",
+     "options": [
+      "On the first of March",
+      "On the third of March",
+      "At Easter",
+      "In April"
+     ],
+     "answer": 1,
+     "explain_es": "Ellie: \"On the third of March.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Ellie is posting a ____ because she can only take two suitcases. (1 word)",
+     "answer": "box",
+     "accept": [
+      "box"
+     ],
+     "explain_es": "Ellie: \"I'm sending a box by post.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long will Ellie have been studying Korean when she lands?",
+     "options": [
+      "Three months",
+      "Six months",
+      "Eight months",
+      "A year"
+     ],
+     "answer": 2,
+     "explain_es": "Ellie: \"By the time I land, I'll have been studying Korean for eight months.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Ellie, when is culture shock usually worst?",
+     "options": [
+      "The first week",
+      "The second month",
+      "After six months",
+      "At the end of the year"
+     ],
+     "answer": 1,
+     "explain_es": "Ellie: \"Apparently the second month is the worst\"."
+    },
+    {
+     "type": "tf",
+     "q": "Ellie has lived abroad before.",
+     "answer": "NG",
+     "explain_es": "Solo se menciona que estudió en Manchester; no se dice si ha vivido en el extranjero."
+    },
+    {
+     "type": "mc",
+     "q": "Who promises to set an alarm for the Sunday calls?",
+     "options": [
+      "Ellie",
+      "Mum"
+     ],
+     "answer": 1,
+     "explain_es": "Mum: \"I'll set an alarm.\""
+    },
+    {
+     "type": "gap",
+     "q": "Complete: \"By the time you visit at Easter, I'll have been ____ at the school for about six weeks.\" (1 word)",
+     "answer": "working",
+     "accept": [
+      "working"
+     ],
+     "explain_es": "Future perfect continuous: will have been + -ing para la duración hasta un momento futuro."
+    }
+   ],
+   "dictation": [
+    "The red tape was a nightmare.",
+    "You've been practising, haven't you?",
+    "Just promise me you'll call every Sunday."
+   ]
+  },
+  {
+   "id": "ul-b2-12-2",
+   "title": "The Accidental Expat",
+   "level": "B2",
+   "kind": "radio-report",
+   "topic": "Travel, culture shock and future life plans",
+   "focus": "Mixed conditionals",
+   "emoji": "🌮",
+   "speakers": [
+    {
+     "name": "Presenter Ian",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Ingrid",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "In our series about people who've made a fresh start abroad, I'm talking to Ingrid, a Norwegian who's lived in Oaxaca, in Mexico, for nine years. Ingrid, you call yourself an \"accidental expat\". Why?"
+    },
+    {
+     "s": 1,
+     "text": "Because I never planned any of this. I came for a two-week holiday. On the last day, I missed my flight, and that changed everything."
+    },
+    {
+     "s": 0,
+     "text": "How?"
+    },
+    {
+     "s": 1,
+     "text": "Well, I had to stay three more days, and I met a woman who ran a weaving workshop. She offered me a job. If I hadn't missed that flight, I wouldn't be living here now."
+    },
+    {
+     "s": 0,
+     "text": "Incredible. What was the hardest part at the beginning?"
+    },
+    {
+     "s": 1,
+     "text": "The language, definitely. I only knew \"hola\" and \"gracias\". And the red tape. Getting a work visa took nearly a year. I felt like a fish out of water."
+    },
+    {
+     "s": 0,
+     "text": "Did you ever think about going back?"
+    },
+    {
+     "s": 1,
+     "text": "Oh, often, in the first year. I was so homesick. I missed the snow, if you can believe it. If I were a less stubborn person, I'd have gone home after six months."
+    },
+    {
+     "s": 0,
+     "text": "So being stubborn helped."
+    },
+    {
+     "s": 1,
+     "text": "Very much. And, um, my Norwegian friends say I've changed a lot. If I hadn't moved here, I'd probably be much more serious. Mexico has made me relax."
+    },
+    {
+     "s": 0,
+     "text": "What about the culture shock? Was it hard to acclimatise?"
+    },
+    {
+     "s": 1,
+     "text": "The heat was hard. And the pace of life. In Norway, if a meeting is at nine, it starts at nine. Here, it starts, er, when everyone arrives. If I still had my Norwegian attitude to time, I'd be stressed all day."
+    },
+    {
+     "s": 0,
+     "text": "Have you put down roots now?"
+    },
+    {
+     "s": 1,
+     "text": "Completely. I have my own workshop with six weavers, and I'm married to a local teacher. If I'd gone home, I wouldn't have any of that."
+    },
+    {
+     "s": 0,
+     "text": "Any advice for people thinking of moving abroad?"
+    },
+    {
+     "s": 1,
+     "text": "Learn the language before you go, if you can. I wish I had. And be patient. It broadens your horizons, but it takes time."
+    },
+    {
+     "s": 0,
+     "text": "And do you ever miss Norway now?"
+    },
+    {
+     "s": 1,
+     "text": "I miss my family. And bread. Proper dark bread. But I go back every summer, and after two weeks, I'm ready to come home. To Oaxaca, I mean."
+    },
+    {
+     "s": 0,
+     "text": "Ingrid, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does Ingrid call herself an \"accidental expat\"?",
+     "options": [
+      "She moved because of a job transfer",
+      "She never planned to live abroad; missing a flight changed everything",
+      "Her parents moved to Mexico",
+      "She won a prize"
+     ],
+     "answer": 1,
+     "explain_es": "Ingrid: \"I never planned any of this ... I missed my flight, and that changed everything.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long has Ingrid lived in Oaxaca?",
+     "options": [
+      "Two weeks",
+      "One year",
+      "Six years",
+      "Nine years"
+     ],
+     "answer": 3,
+     "explain_es": "Ian: \"who's lived in Oaxaca, in Mexico, for nine years.\""
+    },
+    {
+     "type": "mc",
+     "q": "Who did Ingrid meet after missing her flight?",
+     "options": [
+      "Her future husband",
+      "A woman who ran a weaving workshop",
+      "A Norwegian friend",
+      "A travel agent"
+     ],
+     "answer": 1,
+     "explain_es": "Ingrid: \"I met a woman who ran a weaving workshop. She offered me a job.\""
+    },
+    {
+     "type": "mc",
+     "q": "How long did it take to get a work visa?",
+     "options": [
+      "A month",
+      "Six months",
+      "Nearly a year",
+      "Two years"
+     ],
+     "answer": 2,
+     "explain_es": "Ingrid: \"Getting a work visa took nearly a year.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ingrid missed the snow during her first year.",
+     "answer": "T",
+     "explain_es": "Ingrid: \"I missed the snow, if you can believe it.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to her friends, how has Ingrid changed?",
+     "options": [
+      "She has become more serious",
+      "She has become more relaxed",
+      "She has become more stressed",
+      "She has not changed"
+     ],
+     "answer": 1,
+     "explain_es": "Ingrid: \"If I hadn't moved here, I'd probably be much more serious. Mexico has made me relax.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ingrid's husband is from Norway.",
+     "answer": "F",
+     "explain_es": "Ingrid: \"I'm married to a local teacher.\""
+    },
+    {
+     "type": "tf",
+     "q": "Ingrid's workshop sells its products abroad.",
+     "answer": "NG",
+     "explain_es": "Solo se dice que tiene un taller con seis tejedores; no se habla de exportaciones."
+    },
+    {
+     "type": "mc",
+     "q": "What does Ingrid's comment \"to Oaxaca, I mean\" suggest?",
+     "options": [
+      "She is confused about where she lives",
+      "She now considers Oaxaca her home",
+      "She wants to move back to Norway",
+      "She is joking about her family"
+     ],
+     "answer": 1,
+     "explain_es": "Ingrid: \"I'm ready to come home. To Oaxaca, I mean.\" Considera Oaxaca su hogar."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: If Ingrid hadn't missed that flight, she ____ be living in Mexico now. (1 word)",
+     "answer": "wouldn't",
+     "accept": [
+      "wouldn't",
+      "would not"
+     ],
+     "explain_es": "Condicional mixto: pasado irreal (hadn't missed) → resultado presente (wouldn't be living)."
+    }
+   ],
+   "dictation": [
+    "If I hadn't missed that flight, I wouldn't be living here now.",
+    "The heat was hard.",
+    "I wish I had."
+   ]
+  }
+ ]
+}

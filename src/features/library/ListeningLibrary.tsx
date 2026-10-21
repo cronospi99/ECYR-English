@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Check, Eye, EyeOff, Pause, Play, RotateCcw, Volume2, X } from 'lucide-react';
+import { ArrowLeft, Check, Eye, EyeOff, Play, Volume2, X } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Chip, LevelChip, PageLoader } from '@/components/ui/Misc';
@@ -12,7 +12,9 @@ import { useAsync } from '@/hooks/useAsync';
 import { checkTyped, loadLibTracks, type LibTrack } from '@/content/library';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { useProgress } from '@/store/progress';
-import { speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
+import { speakAs } from '@/lib/speech';
+import { sequencePlayer } from '@/lib/tts/seekable';
+import { AudioScrubber, usePlayer, usePlayerState } from '@/components/learning/AudioScrubber';
 import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
@@ -63,37 +65,43 @@ export function ListeningLibrary() {
       {!data.length && <p className="text-label-2">Los audios se están preparando.</p>}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((t, i) => (
-          <motion.button
-            key={t.id}
-            type="button"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: Math.min(i * 0.015, 0.4) }}
-            onClick={() => setParams({ track: t.id })}
-            className="bg-card shadow-card flex items-start gap-3 rounded-[18px] p-4 text-left transition-transform active:scale-[0.99]"
-          >
-            <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]" style={{ background: 'color-mix(in srgb, var(--skill-listening) 16%, transparent)' }}>
-              {t.emoji}
-              <span className="bg-card absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center rounded-full shadow">
-                <Play size={10} fill="currentColor" className="text-ink-blue" />
-              </span>
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="flex flex-wrap items-center gap-1.5">
-                <LevelChip level={t.level} />
-                <span className="text-label-2 text-[12px] font-semibold">{KIND_ES[t.kind] ?? t.kind}</span>
-                {doneIds.has(t.id) && <span className="text-ink-green text-[12px] font-semibold">✓</span>}
-              </span>
-              <span className="mt-1 block text-[16px] leading-snug font-bold">{t.title}</span>
-              <span className="text-label-2 mt-0.5 block text-[12.5px]">
-                {t.topic} · {t.speakers.length === 1 ? '1 voz' : `${t.speakers.length} voces`} · ~{Math.max(1, Math.round(words(t) / 140))} min
-              </span>
-              {t.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {t.focus}</span>}
-            </span>
-          </motion.button>
+          <TrackCard key={t.id} t={t} i={i} done={doneIds.has(t.id)} onOpen={() => setParams({ track: t.id })} />
         ))}
       </div>
     </div>
+  );
+}
+
+/** A track in a list: emoji, level, kind, length and focus. */
+export function TrackCard({ t, i, done, onOpen }: { t: LibTrack; i: number; done: boolean; onOpen: () => void }) {
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: Math.min(i * 0.015, 0.4) }}
+      onClick={onOpen}
+      className="bg-card shadow-card flex items-start gap-3 rounded-[18px] p-4 text-left transition-transform active:scale-[0.99]"
+    >
+      <span className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] text-[26px]" style={{ background: 'color-mix(in srgb, var(--skill-listening) 16%, transparent)' }}>
+        {t.emoji}
+        <span className="bg-card absolute -right-1 -bottom-1 flex h-5 w-5 items-center justify-center rounded-full shadow">
+          <Play size={10} fill="currentColor" className="text-ink-blue" />
+        </span>
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="flex flex-wrap items-center gap-1.5">
+          <LevelChip level={t.level} />
+          <span className="text-label-2 text-[12px] font-semibold">{KIND_ES[t.kind] ?? t.kind}</span>
+          {done && <span className="text-ink-green text-[12px] font-semibold">✓</span>}
+        </span>
+        <span className="mt-1 block text-[16px] leading-snug font-bold">{t.title}</span>
+        <span className="text-label-2 mt-0.5 block text-[12.5px]">
+          {t.topic} · {t.speakers.length === 1 ? '1 voz' : `${t.speakers.length} voces`} · ~{Math.max(1, Math.round(words(t) / 140))} min
+        </span>
+        {t.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {t.focus}</span>}
+      </span>
+    </motion.button>
   );
 }
 
@@ -112,69 +120,32 @@ export function trackSheet(t: LibTrack): Worksheet {
 }
 
 function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
-  const [playing, setPlaying] = useState(false);
-  const [line, setLine] = useState(-1);
+  return <TrackPlayer t={t} onBack={onBack} backLabel="Biblioteca" />;
+}
+
+/**
+ * One listening track: the scrubbable player (header), the transcript with
+ * the line being heard highlighted (a tap on a line jumps there), and the
+ * questions / dictation. Shared by the library and the unit listenings.
+ */
+export function TrackPlayer({ t, onBack, backLabel }: { t: LibTrack; onBack: () => void; backLabel: string }) {
   const [show, setShow] = useState(false);
-  const [rate, setRate] = useState('0.95');
   const [plays, setPlays] = useState(0);
   const [mode, setMode] = useState<'questions' | 'dictation'>('questions');
-  const stop = useRef(false);
   const award = useProgress((s) => s.award);
-
-  useEffect(
-    () => () => {
-      stop.current = true;
-      stopSpeaking();
-    },
-    [],
+  // The whole track in one go: each speaker keeps a distinct voice, the next segment loads while one plays.
+  const player = usePlayer(
+    () => sequencePlayer(t.lines.map((l) => ({ text: l.text, speaker: t.speakers[l.s] ?? t.speakers[0]! })), { gapMs: 280 }),
+    [t],
   );
-
-  const playFrom = (k: number) => {
-    if (k >= t.lines.length) {
-      setPlaying(false);
-      setLine(-1);
-      return;
-    }
-    setLine(k);
-    // The whole track in one go: each speaker keeps a distinct voice, the next line loads while one plays.
-    speakSequence(
-      t.lines.slice(k).map((l) => ({ text: l.text, speaker: t.speakers[l.s] ?? t.speakers[0]! })),
-      {
-        rate: Number(rate),
-        gapMs: 280,
-        onLine: (i) => !stop.current && setLine(k + i),
-        onEnd: () => {
-          if (stop.current) return;
-          setPlaying(false);
-          setLine(-1);
-        },
-      },
-    );
-  };
-  const toggle = () => {
-    if (playing) {
-      stop.current = true;
-      stopSpeaking();
-      setPlaying(false);
-      return;
-    }
-    stop.current = false;
-    setPlaying(true);
-    if (line < 0) setPlays((n) => n + 1);
-    playFrom(line < 0 ? 0 : line);
-  };
-  const restart = () => {
-    stop.current = true;
-    stopSpeaking();
-    setLine(-1);
-    setPlaying(false);
-  };
+  const ps = usePlayerState(player);
+  const line = ps.status === 'idle' ? -1 : ps.line;
 
   return (
     <div className="mx-auto max-w-3xl">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <Button variant="plain" onClick={onBack}>
-          <ArrowLeft size={16} /> Biblioteca
+          <ArrowLeft size={16} /> {backLabel}
         </Button>
         <PdfButton build={() => trackSheet(t)} />
       </div>
@@ -193,43 +164,43 @@ function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
               </span>
             ))}
           </div>
-          <div className="mt-5 flex items-center gap-3">
-            <button type="button" onClick={toggle} className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-[#1c1c1e] shadow-float" aria-label={playing ? 'Pausar' : 'Reproducir'}>
-              {playing ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" className="ml-1" />}
-            </button>
-            <button type="button" onClick={restart} className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20" aria-label="Desde el inicio">
-              <RotateCcw size={18} />
-            </button>
-            <div className="min-w-0 flex-1">
-              <div className="h-1.5 overflow-hidden rounded-full bg-white/25">
-                <div className="h-full rounded-full bg-white transition-[width]" style={{ width: `${line < 0 ? 0 : ((line + 1) / t.lines.length) * 100}%` }} />
-              </div>
-              <div className="mt-1 text-[12px] opacity-85">
+          <AudioScrubber
+            className="mt-5"
+            player={player}
+            tone="onColor"
+            restart
+            label={`Posición en "${t.title}"`}
+            onPlay={(before) => (before.status === 'idle' || before.status === 'ended' || before.time < 0.3) && setPlays((n) => n + 1)}
+            right={
+              <span>
                 {line < 0 ? `${t.lines.length} intervenciones` : `${line + 1} / ${t.lines.length}`} · escuchado {plays}×
-              </div>
-            </div>
-            <select value={rate} onChange={(e) => setRate(e.target.value)} className="rounded-full bg-white/20 px-2 py-1 text-[13px] font-semibold outline-none" aria-label="Velocidad">
-              <option value="0.8">0.8×</option>
-              <option value="0.95">1×</option>
-              <option value="1.1">1.1×</option>
-            </select>
-          </div>
+              </span>
+            }
+          />
         </div>
         <div className="p-4 sm:p-5">
           <Button variant="gray" size="sm" onClick={() => setShow((x) => !x)}>
             {show ? <EyeOff size={15} /> : <Eye size={15} />} {show ? 'Ocultar transcripción' : 'Ver transcripción'}
           </Button>
           {show && (
-            <div className="mt-3 space-y-2">
+            <div className="mt-3 space-y-1">
               {t.lines.map((l, i) => {
                 const color = SPEAKER_COLORS[l.s % SPEAKER_COLORS.length]!;
                 return (
-                  <div key={i} className={cn('flex gap-2 rounded-[12px] px-3 py-2 transition-colors', line === i ? 'bg-fill-2' : '')}>
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => player.seek(player.lineStart?.(i) ?? 0)}
+                    aria-current={line === i || undefined}
+                    title="Escuchar desde aquí"
+                    className={cn('flex w-full gap-2 rounded-[12px] px-3 py-2 text-left transition-colors', line === i ? 'bg-fill-2' : 'hover:bg-fill-2')}
+                    style={line === i ? { boxShadow: `inset 3px 0 0 ${color}` } : undefined}
+                  >
                     <span className="w-20 shrink-0 truncate text-[13px] font-bold" style={{ color: ink(color) }}>
                       {t.speakers[l.s]?.name}
                     </span>
                     <span className="flex-1 text-[15px] leading-snug">{l.text}</span>
-                  </div>
+                  </button>
                 );
               })}
             </div>

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Eye, EyeOff, Headphones, Pause, Play, RotateCcw, Volume2 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -11,7 +11,9 @@ import { loadLevel } from '@/content/levels';
 import { CEFR_LEVELS, type CefrLevel, type DialogueLine } from '@/content/types';
 import { useProgress } from '@/store/progress';
 import { useSettings } from '@/store/settings';
-import { speakAs, speakSequence, stopSpeaking } from '@/lib/speech';
+import { speakAs, stopSpeaking } from '@/lib/speech';
+import { sequencePlayer } from '@/lib/tts/seekable';
+import { AudioScrubber, usePlayer, usePlayerState } from '@/components/learning/AudioScrubber';
 import { cn } from '@/lib/cn';
 import { unitTitle } from '../learn/LevelPage';
 import { ListeningLibrary } from '@/features/library/ListeningLibrary';
@@ -44,7 +46,7 @@ export default function ListeningPage() {
             value={tab}
             onChange={setTab}
             options={[
-              { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'library', label: 'Biblioteca A1–C2' },
               { value: 'podcasts', label: 'Podcasts' },
               { value: 'dialogues', label: 'Diálogos y dictado' },
               { value: 'months', label: 'Audio real · Meses' },
@@ -155,18 +157,19 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
     const i = speakers.indexOf(sp);
     return { name: sp, voice: i % 2 ? ('male' as const) : ('female' as const), accent: i % 2 ? ('uk' as const) : ('us' as const) };
   };
-  const play = (k = 0, single = false) => {
-    if (k >= clip.lines.length) return setPlaying(null);
+  // The whole clip on a scrubbable timeline; 🔊 replays one line (that pauses the clip, which keeps its place).
+  const player = usePlayer(
+    () => sequencePlayer(clip.lines.map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })), { rate: speechRate * 0.95 }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [clip, speechRate],
+  );
+  const ps = usePlayerState(player);
+  const current = ps.status === 'playing' || ps.status === 'loading' ? ps.line : playing;
+  const play = (k: number) => {
     setPlaying(k);
-    if (single) {
-      speakAs(clip.lines[k]!.line, speakerOf(clip.lines[k]!.sp), { rate: speechRate * 0.95, tier: 'premium', onEnd: () => setPlaying(null) });
-      return;
-    }
-    speakSequence(
-      clip.lines.slice(k).map((l) => ({ text: l.line, speaker: speakerOf(l.sp) })),
-      { rate: speechRate * 0.95, onLine: (i) => setPlaying(k + i), onEnd: () => setPlaying(null) },
-    );
+    speakAs(clip.lines[k]!.line, speakerOf(clip.lines[k]!.sp), { rate: speechRate * 0.95, tier: 'premium', onEnd: () => setPlaying(null) });
   };
+  useEffect(() => () => stopSpeaking(), []);
 
   const check = () => {
     setChecked(true);
@@ -183,26 +186,20 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
           <h3 className="text-title-3">{clip.title}</h3>
         </div>
         <div className="flex gap-2">
-          {playing === null ? (
-            <Button onClick={() => play()}>
-              <Play size={16} fill="currentColor" /> Reproducir
-            </Button>
-          ) : (
-            <Button
-              variant="gray"
-              onClick={() => {
-                stopSpeaking();
-                setPlaying(null);
-              }}
-            >
-              <Pause size={16} /> Parar
-            </Button>
-          )}
           <Button variant="gray" onClick={() => setShow((s) => !s)} aria-label={show ? 'Ocultar transcripción' : 'Ver transcripción'}>
             {show ? <EyeOff size={16} /> : <Eye size={16} />}
           </Button>
         </div>
       </div>
+
+      <AudioScrubber
+        compact
+        player={player}
+        speeds={[]}
+        label={`Posición en "${clip.title}"`}
+        onPlay={() => setPlaying(null)}
+        className="mt-4"
+      />
 
       <p className="text-label-2 mt-4 text-[14px]">
         <Headphones size={14} className="mr-1 inline" /> Escucha y escribe la palabra que falta en cada línea. Toca 🔊 para repetir una línea.
@@ -215,10 +212,10 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
           const after = rest.join(gap);
           const ok = norm(answers[i]!) === norm(gap);
           return (
-            <li key={i} className={cn('rounded-[14px] p-3 transition-colors', playing === i ? 'bg-[color-mix(in_srgb,var(--blue)_10%,transparent)]' : 'bg-fill-2')}>
+            <li key={i} className={cn('rounded-[14px] p-3 transition-colors', current === i ? 'bg-[color-mix(in_srgb,var(--blue)_10%,transparent)]' : 'bg-fill-2')}>
               <div className="mb-1 flex items-center gap-2">
                 <span className="text-label-2 text-[12px] font-semibold">{l.sp}</span>
-                <button type="button" onClick={() => play(i, true)} className="text-ink-blue" aria-label="Repetir línea">
+                <button type="button" onClick={() => play(i)} className="text-ink-blue" aria-label="Repetir línea">
                   <Volume2 size={15} />
                 </button>
               </div>

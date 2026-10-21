@@ -60,6 +60,16 @@ export const GRAMMAR_MODULES: GrammarModule[] = [
     ref: 'grammar:do-make',
   },
   {
+    slug: 'tenses',
+    to: '/learn/grammar/tenses',
+    title: 'Tense Timeline',
+    subtitle: 'Escribe una frase y mira su línea del tiempo',
+    description: 'Detecta el tiempo verbal de lo que escribes y lo dibuja al instante, construye frases en los 14 tiempos (con pasiva y contracciones), señala errores típicos y practica emparejando frases y líneas del tiempo.',
+    cover: '',
+    levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+    ref: 'grammar:tenses',
+  },
+  {
     slug: 'verbs',
     to: '/practice/verbs',
     title: 'Verb Lab',
@@ -90,7 +100,7 @@ export default function GrammarHubPage() {
                   <div className="h-24 w-28 shrink-0 rounded-[14px] bg-cover bg-center" style={{ backgroundImage: `url(${m.cover})` }} aria-hidden />
                 ) : (
                   <div className="brand-gradient flex h-24 w-28 shrink-0 items-center justify-center rounded-[14px] text-[30px] font-extrabold text-white" aria-hidden>
-                    V
+                    {m.title.charAt(0)}
                   </div>
                 )}
                 <div className="min-w-0 flex-1">
