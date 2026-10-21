@@ -1,0 +1,741 @@
+{
+ "1": [
+  {
+   "id": "ul-c2-1-1",
+   "title": "A Foot in Both Camps",
+   "level": "C2",
+   "kind": "podcast",
+   "topic": "Identity & Belonging",
+   "focus": "Stative verbs used dynamically",
+   "emoji": "🎙️",
+   "speakers": [
+    {
+     "name": "Leila",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Marco",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Welcome back to Elsewhere, the podcast for people who aren't quite sure where they're from. I'm Leila, and with me, as ever, is Marco, who has just moved back to Melbourne after twelve years in London. Marco, how's it going?"
+    },
+    {
+     "s": 1,
+     "text": "Honestly? It's weird. I'm loving being near my family again, but I'm feeling a bit like a fish out of water. Which is ridiculous, because I grew up here."
+    },
+    {
+     "s": 0,
+     "text": "It's not ridiculous at all. Reverse culture shock is a real thing. What's been the strangest part?"
+    },
+    {
+     "s": 1,
+     "text": "The small stuff. People keep saying I sound like a Pom now. My nephew, who's nine, was imitating me at dinner. And I've been finding myself apologising for things nobody here apologises for."
+    },
+    {
+     "s": 0,
+     "text": "That's so English of you."
+    },
+    {
+     "s": 1,
+     "text": "I know! I was being polite to a parking meter yesterday. Actually said 'sorry' to it."
+    },
+    {
+     "s": 0,
+     "text": "So where do you feel you belong now? Here, there, both?"
+    },
+    {
+     "s": 1,
+     "text": "I think I've got a foot in both camps, and that's not always comfortable. When I was in London, I was always the Aussie. Now I'm here, I'm the one who's gone a bit English. You stick out like a sore thumb in both places, just in different ways."
+    },
+    {
+     "s": 0,
+     "text": "I hear that from so many listeners. But I wonder whether it's also a kind of freedom. You're not stuck being one thing."
+    },
+    {
+     "s": 1,
+     "text": "Maybe. I'm thinking about it differently than I did a month ago, for sure. At first I was seeing it as a loss. Now I'm wondering whether I've just gained an extra home."
+    },
+    {
+     "s": 0,
+     "text": "Have you met anyone else in the same boat?"
+    },
+    {
+     "s": 1,
+     "text": "Funnily enough, yes. There's a guy at work who spent ten years in Berlin. We had lunch and within five minutes we were finishing each other's sentences. A real kindred spirit."
+    },
+    {
+     "s": 0,
+     "text": "That's lovely. So are you going to put down roots this time?"
+    },
+    {
+     "s": 1,
+     "text": "That's the plan. I've been looking at flats near the beach. Though my mum is being very unsubtle about wanting me within walking distance of her."
+    },
+    {
+     "s": 0,
+     "text": "Mums tend to be. Listeners, if you've moved back somewhere you once called home, we'd love to hear how you're finding it. Marco, any last words?"
+    },
+    {
+     "s": 1,
+     "text": "Just that it gets easier. I think. Ask me again in six months."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does Marco describe his feelings about being back in Melbourne?",
+     "options": [
+      "Regretful about leaving London",
+      "Entirely happy",
+      "Happy to be near family but out of place",
+      "Indifferent"
+     ],
+     "answer": 2,
+     "explain_es": "\"I'm loving being near my family again, but I'm feeling a bit like a fish out of water.\""
+    },
+    {
+     "type": "mc",
+     "q": "'I'm loving being near my family' uses a stative verb dynamically to express…",
+     "options": [
+      "a past habit",
+      "a future plan",
+      "a current, intense and temporary experience",
+      "a permanent fact"
+     ],
+     "answer": 2,
+     "explain_es": "'Love' en continuo: experiencia actual e intensa."
+    },
+    {
+     "type": "mc",
+     "q": "What example does Marco give of his new 'English' habits?",
+     "options": [
+      "Queuing",
+      "Drinking tea",
+      "Apologising to a parking meter",
+      "Talking about the weather"
+     ],
+     "answer": 2,
+     "explain_es": "\"I was being polite to a parking meter yesterday.\""
+    },
+    {
+     "type": "gap",
+     "q": "Marco says he has 'a foot in both ______', which is not always comfortable. (1 word)",
+     "answer": "camps",
+     "accept": [],
+     "explain_es": "'Have a foot in both camps' = pertenecer en parte a dos grupos."
+    },
+    {
+     "type": "mc",
+     "q": "What does Marco mean by sticking out 'like a sore thumb'?",
+     "options": [
+      "He is very noticeable as different",
+      "He is popular",
+      "He is tired",
+      "He is injured"
+     ],
+     "answer": 0,
+     "explain_es": "Resaltar como diferente."
+    },
+    {
+     "type": "mc",
+     "q": "How has Marco's view changed over the past month?",
+     "options": [
+      "From seeing it as a loss to seeing a possible extra home",
+      "From optimism to pessimism",
+      "He now wants to return to London",
+      "It hasn't changed"
+     ],
+     "answer": 0,
+     "explain_es": "\"At first I was seeing it as a loss. Now I'm wondering whether I've just gained an extra home.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is said about Marco's colleague?",
+     "options": [
+      "He disagrees with Marco",
+      "He has had a similar experience and they connected immediately",
+      "He wants to move to London",
+      "He is from Berlin"
+     ],
+     "answer": 1,
+     "explain_es": "Pasó diez años en Berlín: \"A real kindred spirit.\""
+    },
+    {
+     "type": "tf",
+     "q": "Marco's mother is being subtle about where she wants him to live.",
+     "answer": "F",
+     "explain_es": "\"my mum is being very unsubtle\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'my mum is being very unsubtle' suggest?",
+     "options": [
+      "She is behaving unsubtly at the moment, on this issue",
+      "She doesn't care",
+      "She is always unsubtle",
+      "She is ill"
+     ],
+     "answer": 0,
+     "explain_es": "'Be' en continuo: comportamiento temporal."
+    }
+   ],
+   "dictation": [
+    "Reverse culture shock is a real thing.",
+    "You're not stuck being one thing.",
+    "Ask me again in six months."
+   ]
+  },
+  {
+   "id": "ul-c2-1-2",
+   "title": "Tracing a Family Name",
+   "level": "C2",
+   "kind": "phone call",
+   "topic": "Roots & Ancestry",
+   "focus": "Past tenses for distancing and politeness",
+   "emoji": "📞",
+   "speakers": [
+    {
+     "name": "Carmen",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Archivist",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 1,
+     "text": "Good morning, County Records Office, Hugh speaking."
+    },
+    {
+     "s": 0,
+     "text": "Oh, hello. Good morning. I was wondering if you might be able to help me. I'm trying to trace my great-grandfather, who I believe emigrated from your area around nineteen-ten."
+    },
+    {
+     "s": 1,
+     "text": "Certainly, I'll do my best. Do you have a name?"
+    },
+    {
+     "s": 0,
+     "text": "Yes, Thomas Breen. I was hoping you might have some record of him, a baptism, a school register, anything really."
+    },
+    {
+     "s": 1,
+     "text": "Breen. That's quite a common name round here, I'm afraid. Do you know which parish he came from?"
+    },
+    {
+     "s": 0,
+     "text": "Not exactly. Family stories said it was a village near the coast. I did think it might be somewhere called Kilmore, but I'm not certain."
+    },
+    {
+     "s": 1,
+     "text": "That narrows it down a little. There are two Kilmores in the county, as it happens. Did he leave alone, or with family?"
+    },
+    {
+     "s": 0,
+     "text": "Alone, as far as we know. He was eighteen. And this is the slightly awkward part. My grandmother always said he'd been disowned by his father. Nobody knew why. I wanted to ask whether records like yours might shed any light on that sort of thing."
+    },
+    {
+     "s": 1,
+     "text": "Ah. Well, we wouldn't usually have anything as personal as that, I'm afraid. But sometimes court records or parish notes mention family disputes. It's a long shot, but it's not impossible."
+    },
+    {
+     "s": 0,
+     "text": "That would be wonderful. I'd really appreciate it if you could look."
+    },
+    {
+     "s": 1,
+     "text": "Of course. I was going to suggest, actually, that you send us an email with everything you know. Dates, names, any letters. It makes the search much easier."
+    },
+    {
+     "s": 0,
+     "text": "I'll do that today. Can I ask, roughly how long would it take?"
+    },
+    {
+     "s": 1,
+     "text": "Usually a couple of weeks. And there's a small search fee, which I'll include in my reply."
+    },
+    {
+     "s": 0,
+     "text": "That's absolutely fine. I just wanted to say, it means a lot. My family's always felt a bit rootless. We've moved so often. I suppose I'm looking for some sense of belonging, even if it's a hundred years late."
+    },
+    {
+     "s": 1,
+     "text": "You'd be surprised how many people say exactly that. I hope we find him for you, Mrs Breen."
+    },
+    {
+     "s": 0,
+     "text": "Thank you so much. You've been very kind."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does Carmen say 'I was wondering if you might be able to help me'?",
+     "options": [
+      "She is unsure what she wants",
+      "She is complaining",
+      "She is talking about the past",
+      "She is making a polite, tentative request"
+     ],
+     "answer": 3,
+     "explain_es": "Pasado y modal para distanciar y suavizar la petición."
+    },
+    {
+     "type": "mc",
+     "q": "What does Carmen hope to find?",
+     "options": [
+      "A living relative",
+      "Her great-grandfather's grave",
+      "Any record of her great-grandfather before he emigrated",
+      "Her grandmother's letters"
+     ],
+     "answer": 2,
+     "explain_es": "\"a baptism, a school register, anything really\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why is the name Breen a problem?",
+     "options": [
+      "It is spelled wrongly",
+      "It does not exist",
+      "It is common in the area",
+      "It is from another county"
+     ],
+     "answer": 2,
+     "explain_es": "\"That's quite a common name round here\"."
+    },
+    {
+     "type": "tf",
+     "q": "There is only one village called Kilmore in the county.",
+     "answer": "F",
+     "explain_es": "\"There are two Kilmores in the county\"."
+    },
+    {
+     "type": "gap",
+     "q": "Carmen's grandmother said Thomas had been ______ by his father. (1 word)",
+     "answer": "disowned",
+     "accept": [],
+     "explain_es": "'To disown' = repudiar."
+    },
+    {
+     "type": "mc",
+     "q": "What does the archivist say about finding information on the family dispute?",
+     "options": [
+      "It is impossible",
+      "It is certain",
+      "It is unlikely but possible",
+      "It is illegal"
+     ],
+     "answer": 2,
+     "explain_es": "\"It's a long shot, but it's not impossible.\""
+    },
+    {
+     "type": "mc",
+     "q": "'I was going to suggest, actually, that you send us an email' is…",
+     "options": [
+      "a polite way of making a suggestion",
+      "a criticism",
+      "a past habit",
+      "a plan he abandoned"
+     ],
+     "answer": 0,
+     "explain_es": "'Was going to' suaviza la sugerencia."
+    },
+    {
+     "type": "mc",
+     "q": "How long does a search usually take?",
+     "options": [
+      "A couple of weeks",
+      "Several months",
+      "A year",
+      "A few days"
+     ],
+     "answer": 0,
+     "explain_es": "\"Usually a couple of weeks.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does Carmen say her family has always felt?",
+     "options": [
+      "Proud of its history",
+      "Disowned",
+      "Rootless",
+      "Wealthy"
+     ],
+     "answer": 2,
+     "explain_es": "\"My family's always felt a bit rootless.\""
+    }
+   ],
+   "dictation": [
+    "Do you have a name?",
+    "It's a long shot, but it's not impossible.",
+    "You've been very kind."
+   ]
+  }
+ ],
+ "2": [
+  {
+   "id": "ul-c2-2-1",
+   "title": "Anatomy of a Speech",
+   "level": "C2",
+   "kind": "radio analysis",
+   "topic": "Rhetoric",
+   "focus": "Cleft sentences (it-clefts and wh-clefts)",
+   "emoji": "🎤",
+   "speakers": [
+    {
+     "name": "Rachel",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Professor Lane",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Last night's conference speech by the opposition leader has already produced one sound bite that's everywhere this morning: 'We will not be the generation that looked away.' Professor David Lane studies political rhetoric. Professor, why has that line struck such a chord?"
+    },
+    {
+     "s": 1,
+     "text": "Well, what makes it work is the structure. It's a negative, it's about identity, and it's in the future. It doesn't promise any specific policy. What it does is invite the audience to imagine being judged by their grandchildren. That's very powerful."
+    },
+    {
+     "s": 0,
+     "text": "Some critics say it's just spin. All emotion, no substance."
+    },
+    {
+     "s": 1,
+     "text": "I'd be careful there. It's true that the line itself contains no policy. But it was the passage immediately afterwards, on housing, that contained the actual proposals. The sound bite is the hook. Whether the proposals stand up is a separate question."
+    },
+    {
+     "s": 0,
+     "text": "What else did you notice?"
+    },
+    {
+     "s": 1,
+     "text": "The use of three. She did it repeatedly. 'Not for the few, not for the lucky, not for the loud.' It's one of the oldest techniques there is. What the rule of three does is give a sense of completeness. Two items feel like a comparison. Four feel like a list. Three feel like a conclusion."
+    },
+    {
+     "s": 0,
+     "text": "Did anything fall flat?"
+    },
+    {
+     "s": 1,
+     "text": "There was one moment, yes. She said her party had always defended public services. Now, given the record, a lot of listeners will have heard that as paying lip service rather than as a serious claim. It's when a speaker overreaches like that that audiences stop trusting the rest."
+    },
+    {
+     "s": 0,
+     "text": "And her delivery?"
+    },
+    {
+     "s": 1,
+     "text": "Very controlled. What I found interesting was how often she paused. Not after the big lines, before them. It creates anticipation. You lean in."
+    },
+    {
+     "s": 0,
+     "text": "Is there a risk that we, the media, focus too much on technique and not enough on content?"
+    },
+    {
+     "s": 1,
+     "text": "Absolutely, and I'm part of the problem. It's the policies, not the rhetoric, that will actually affect people's lives. But rhetoric is how policies reach people. Ignore it, and you don't understand why some ideas spread and others don't."
+    },
+    {
+     "s": 0,
+     "text": "Professor Lane, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "According to Professor Lane, why does the sound bite work?",
+     "options": [
+      "Its structure invites listeners to imagine future judgement",
+      "It attacks opponents directly",
+      "It is very long",
+      "It contains a precise policy"
+     ],
+     "answer": 0,
+     "explain_es": "\"What it does is invite the audience to imagine being judged by their grandchildren.\""
+    },
+    {
+     "type": "gap",
+     "q": "'It was the passage immediately afterwards, on ______, that contained the actual proposals.' (1 word)",
+     "answer": "housing",
+     "accept": [],
+     "explain_es": "Hendida 'It was … that…'."
+    },
+    {
+     "type": "mc",
+     "q": "How does the professor respond to the accusation of 'spin'?",
+     "options": [
+      "He says spin is good",
+      "He refuses to comment",
+      "He agrees completely",
+      "He cautions that the proposals came after the line"
+     ],
+     "answer": 3,
+     "explain_es": "\"I'd be careful there ... The sound bite is the hook.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does the rule of three achieve, according to him?",
+     "options": [
+      "A sense of completeness",
+      "A sense of comparison",
+      "A sense of humour",
+      "A sense of doubt"
+     ],
+     "answer": 0,
+     "explain_es": "\"What the rule of three does is give a sense of completeness.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did one moment 'fall flat'?",
+     "options": [
+      "A claim about defending public services seemed insincere given the record",
+      "She forgot her words",
+      "The microphone failed",
+      "The audience left"
+     ],
+     "answer": 0,
+     "explain_es": "Muchos lo oirían como 'paying lip service'."
+    },
+    {
+     "type": "tf",
+     "q": "The speaker paused mainly after her big lines.",
+     "answer": "F",
+     "explain_es": "\"Not after the big lines, before them.\""
+    },
+    {
+     "type": "mc",
+     "q": "What effect do pauses before key lines have?",
+     "options": [
+      "They signal the end",
+      "They confuse listeners",
+      "They create anticipation",
+      "They hide mistakes"
+     ],
+     "answer": 2,
+     "explain_es": "\"It creates anticipation. You lean in.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does the professor admit at the end?",
+     "options": [
+      "Rhetoric is unimportant",
+      "Policies don't matter",
+      "The speech was a failure",
+      "He is partly responsible for focusing on technique"
+     ],
+     "answer": 3,
+     "explain_es": "\"I'm part of the problem.\""
+    }
+   ],
+   "dictation": [
+    "The sound bite is the hook.",
+    "Three feel like a conclusion.",
+    "But rhetoric is how policies reach people."
+   ]
+  },
+  {
+   "id": "ul-c2-2-2",
+   "title": "Did You Twist My Words?",
+   "level": "C2",
+   "kind": "debate",
+   "topic": "Media & Misinformation",
+   "focus": "Inversion after negative and restrictive adverbials",
+   "emoji": "📰",
+   "speakers": [
+    {
+     "name": "Host",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Joanna",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Kevin",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Joining me are Joanna Reid, the journalist whose report on the Greenfield housing company has caused such a stir, and Kevin Doyle, the company's head of communications. Kevin, you've alleged that the report was deliberately misleading."
+    },
+    {
+     "s": 2,
+     "text": "I have, and I won't mince my words. Never in twenty years of working with the press have I seen a story so selectively edited. Ms Reid took a forty-minute interview with our chief executive and used eleven seconds of it."
+    },
+    {
+     "s": 1,
+     "text": "Eleven seconds in which he said, and I quote, 'Safety inspections are a box-ticking exercise.' I didn't twist his words. I reported them."
+    },
+    {
+     "s": 2,
+     "text": "Out of context. What he went on to say was that inspections should be more rigorous, not less. That's the opposite of what your piece insinuated."
+    },
+    {
+     "s": 1,
+     "text": "I'd refute that. The full transcript is on our website. Anyone can read it. Not once did I suggest he opposed inspections. I reported that he'd described them dismissively, which he did."
+    },
+    {
+     "s": 0,
+     "text": "Kevin, will you concede that the quote is accurate?"
+    },
+    {
+     "s": 2,
+     "text": "I'll concede that he said those words, yes. But only when you hear the whole answer do you understand what he meant. Leaving that out is, frankly, disingenuous."
+    },
+    {
+     "s": 1,
+     "text": "With respect, we published the full answer online the same day. Little did I expect the company to complain about a transcript it had approved."
+    },
+    {
+     "s": 0,
+     "text": "You approved it?"
+    },
+    {
+     "s": 2,
+     "text": "The transcript, yes. Not the edit."
+    },
+    {
+     "s": 0,
+     "text": "Joanna, do you accept any criticism?"
+    },
+    {
+     "s": 1,
+     "text": "I'd accept that the headline was sharper than I'd have written. Headlines aren't written by reporters. But rarely have I been so confident in a story's accuracy."
+    },
+    {
+     "s": 0,
+     "text": "And Kevin, what would satisfy the company?"
+    },
+    {
+     "s": 2,
+     "text": "A correction making clear what he actually proposed. Nothing more."
+    },
+    {
+     "s": 1,
+     "text": "If there's a factual error, we'll correct it. So far, nobody has identified one."
+    },
+    {
+     "s": 0,
+     "text": "We'll leave it there. Thank you both."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does Kevin allege about the report?",
+     "options": [
+      "It was too long",
+      "It was entirely invented",
+      "It was deliberately misleading through selective editing",
+      "It was published without permission"
+     ],
+     "answer": 2,
+     "explain_es": "\"you've alleged that the report was deliberately misleading\"; \"selectively edited\"."
+    },
+    {
+     "type": "gap",
+     "q": "Kevin: '______ in twenty years of working with the press have I seen a story so selectively edited.' (1 word)",
+     "answer": "Never",
+     "accept": [
+      "never"
+     ],
+     "explain_es": "Inversión tras 'Never'."
+    },
+    {
+     "type": "mc",
+     "q": "How does Joanna answer the accusation of twisting words?",
+     "options": [
+      "She blames her editor",
+      "She admits it",
+      "She refuses to answer",
+      "She says she reported his words accurately"
+     ],
+     "answer": 3,
+     "explain_es": "\"I didn't twist his words. I reported them.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to Kevin, what did the chief executive actually argue?",
+     "options": [
+      "Inspections should be more rigorous",
+      "Inspections are perfect",
+      "Inspections should be abolished",
+      "Inspections are too expensive"
+     ],
+     "answer": 0,
+     "explain_es": "\"inspections should be more rigorous, not less\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does Kevin concede?",
+     "options": [
+      "That the report was fair",
+      "That the quote is accurate",
+      "That the company was wrong",
+      "That he approved the edit"
+     ],
+     "answer": 1,
+     "explain_es": "\"I'll concede that he said those words, yes.\""
+    },
+    {
+     "type": "mc",
+     "q": "'Little did I expect the company to complain…' means Joanna…",
+     "options": [
+      "did not hear the complaint",
+      "wanted the company to complain",
+      "predicted the complaint",
+      "was surprised by the complaint"
+     ],
+     "answer": 3,
+     "explain_es": "Inversión con 'Little': no lo esperaba en absoluto."
+    },
+    {
+     "type": "tf",
+     "q": "Joanna wrote the headline herself.",
+     "answer": "F",
+     "explain_es": "\"Headlines aren't written by reporters.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does the company want?",
+     "options": [
+      "Removal of the transcript",
+      "The journalist's dismissal",
+      "A correction clarifying the proposal",
+      "Compensation"
+     ],
+     "answer": 2,
+     "explain_es": "\"A correction making clear what he actually proposed.\""
+    }
+   ],
+   "dictation": [
+    "I didn't twist his words. I reported them.",
+    "The transcript, yes. Not the edit.",
+    "So far, nobody has identified one."
+   ]
+  }
+ ]
+}

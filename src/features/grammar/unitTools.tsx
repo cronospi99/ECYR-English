@@ -68,6 +68,10 @@ const RULES: Rule[] = [
   { test: /used to|past habits|would for habits/i, label: 'Línea: hábitos', module: 'tenses', tools: ['habits'] },
   { test: /comparing tenses|time contrast: past, present, future/i, label: 'Línea: comparar', module: 'tenses', tools: ['compare'] },
   { test: /passive (?:in|of) (?:the )?present continuous|passive with(?:out)? “by”/i, label: 'Línea: pasiva', module: 'tenses', tools: ['passive'] },
+  { test: /aspect and nuance: perfect and continuous/i, label: 'Línea: aspecto', module: 'tenses', tools: ['all'], levels: ['C2'] },
+  { test: /advanced future forms: future perfect/i, label: 'Línea: futuro perfecto', module: 'tenses', tools: ['future-perfect'], levels: ['C2'] },
+  { test: /future forms in the past/i, label: 'Línea: futuro en el pasado', module: 'tenses', tools: ['future'], levels: ['C2'] },
+  { test: /will and would for assumption and characteristic/i, label: 'Línea: hábitos', module: 'tenses', tools: ['habits'], levels: ['C2'] },
 ];
 
 export function grammarToolsForUnit(u: Unit, level: CefrLevel) {

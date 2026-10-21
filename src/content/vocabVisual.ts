@@ -76,7 +76,4 @@ export async function loadVisualTopic(level: CefrLevel, id: string): Promise<Vis
   return (await loadVisualTopics(level)).find((t) => t.id === id) ?? null;
 }
 
-/** Topic counts for the level selector, without loading every file. */
-export const VISUAL_TOPIC_COUNT: Record<CefrLevel, number> = { A1: 8, A2: 6, B1: 4, B2: 4, C1: 4, C2: 3 };
-
 export const VISUAL_CREDIT = 'Imágenes e íconos: Freepik / Flaticon (presentaciones de clase con plantilla de Slidesgo).';
