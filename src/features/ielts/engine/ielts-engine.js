@@ -10229,8 +10229,8 @@ function escapeXml(s){
    at the limit the only edits left are corrections to what is already written.
    ========================================================================= */
 const WRITING_WORD_RULES = {
-  task1: { min:150, max:170 },
-  task2: { min:250, max:280 }
+  task1: { min:150, max:220 },
+  task2: { min:250, max:320 }
 };
 
 function countWords(v){
