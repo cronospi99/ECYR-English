@@ -1,0 +1,881 @@
+[
+  {
+    "id": "r3-c2-octopus-mind-science",
+    "title": "The Alien Intelligence Next Door",
+    "level": "C2",
+    "genre": "science feature",
+    "topic": "Animal Minds",
+    "focus": "Hedging and impersonal structures in academic English",
+    "emoji": "🐙",
+    "words": 631,
+    "paragraphs": [
+      "If one were to design an intelligent creature from scratch, it seems unlikely that the result would resemble an octopus. It has no skeleton, lives for barely a year or two in most species, and receives no instruction whatsoever from its parents, who typically die before their young hatch. Yet there is a growing body of evidence to suggest that octopuses are capable of problem-solving, play and perhaps even something approaching individual personality. They would appear, in short, to be the closest thing to an alien mind that we are ever likely to meet.",
+      "The anecdotes are well known among those who work with them. Octopuses have been observed unscrewing jars from the inside, squirting jets of water at laboratory lights they apparently dislike, and escaping from their tanks at night to raid neighbouring ones before returning, as if nothing had happened, by morning. Such stories are entertaining, but they are, it must be acknowledged, difficult to interpret. Anecdote is not evidence, and there is a well-documented tendency for researchers to read human motives into animal behaviour.",
+      "More controlled studies, however, tend to support the impression of a flexible intelligence. Octopuses can learn to navigate mazes, distinguish between shapes and, according to some experiments, recognise individual humans, reacting differently to keepers who have treated them kindly and those who have not. It has also been reported that some individuals use coconut shells as portable shelters, carrying them across the sea floor for later use, a behaviour which, if confirmed, would arguably qualify as tool use.",
+      "What makes these findings particularly intriguing is the octopus's evolutionary history. The last common ancestor of octopuses and humans is generally thought to have been a small, worm-like creature that lived more than five hundred million years ago and possessed, at most, a very simple nervous system. It follows that whatever intelligence the octopus has evolved independently of our own. If that is the case, it would suggest that complex minds are not a single, unlikely accident but a solution that evolution may arrive at more than once.",
+      "The architecture of that mind is strikingly unfamiliar. Of an octopus's five hundred million or so neurons, roughly two-thirds are located not in its brain but in its arms. Each arm appears to be capable of a degree of independent action: an arm that has been severed will, for a time, continue to reach for food and pass it towards where the mouth would have been. Quite what it is like to be such a creature, if it is like anything at all, is a question that is perhaps impossible to answer, but it has led some philosophers to speculate that octopus experience may be distributed in ways that have no human equivalent.",
+      "Caution is clearly warranted. Much of the research has been carried out on a small number of species, often in artificial conditions, and the extent to which laboratory behaviour reflects life in the wild remains uncertain. There is also a risk that the octopus's undeniable charm encourages more generous interpretations than the data strictly justify. Nonetheless, the weight of evidence has been considered sufficient for several countries to extend animal welfare protections to octopuses used in research, a development that would have seemed improbable only a generation ago.",
+      "That shift raises uncomfortable questions about the growing interest in octopus farming. Critics argue that confining a solitary, curious and apparently easily bored animal in crowded tanks would be difficult to reconcile with what is now known about its needs. Supporters of the industry counter that welfare standards can be developed. Which view will prevail is, for now, an open question. What seems reasonably clear is that the octopus has forced scientists to reconsider some long-held assumptions about where, and in what form, intelligence might be found."
+    ],
+    "glossary": [
+      [
+        "from scratch",
+        "desde cero"
+      ],
+      [
+        "to hatch",
+        "salir del huevo, eclosionar"
+      ],
+      [
+        "to squirt",
+        "lanzar un chorro"
+      ],
+      [
+        "to raid",
+        "asaltar, saquear"
+      ],
+      [
+        "to read into",
+        "interpretar, atribuir"
+      ],
+      [
+        "portable shelter",
+        "refugio portátil"
+      ],
+      [
+        "common ancestor",
+        "antepasado común"
+      ],
+      [
+        "it follows that",
+        "de ello se deduce que"
+      ],
+      [
+        "severed",
+        "cortado, amputado"
+      ],
+      [
+        "distributed",
+        "distribuido, repartido"
+      ],
+      [
+        "warranted",
+        "justificado"
+      ],
+      [
+        "to extend protections to",
+        "ampliar la protección a"
+      ],
+      [
+        "to reconcile with",
+        "conciliar con"
+      ],
+      [
+        "to prevail",
+        "imponerse, prevalecer"
+      ],
+      [
+        "long-held",
+        "arraigado, mantenido desde hace tiempo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the writer say an octopus is an unlikely design for an intelligent creature?",
+        "options": [
+          "It has a very small brain",
+          "It is too large",
+          "It lacks features usually associated with intelligence, such as long life and parental teaching",
+          "It lives only in laboratories"
+        ],
+        "answer": 2,
+        "explain_es": "Sin esqueleto, vida corta y sin enseñanza parental."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's attitude to the anecdotes in paragraph 2?",
+        "options": [
+          "They prove octopuses are intelligent",
+          "They are more useful than experiments",
+          "They are entirely invented",
+          "They are entertaining but scientifically unreliable"
+        ],
+        "answer": 3,
+        "explain_es": "\"Anecdote is not evidence\"."
+      },
+      {
+        "type": "tf",
+        "q": "Some octopuses appear to react differently to kind and unkind keepers.",
+        "answer": "T",
+        "explain_es": "\"reacting differently to keepers who have treated them kindly and those who have not\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say the coconut-shell behaviour 'would arguably qualify as tool use'?",
+        "options": [
+          "It has been confirmed many times",
+          "Octopuses make the shells themselves",
+          "The claim is tentative and depends on confirmation and definition",
+          "All scientists agree it is tool use"
+        ],
+        "answer": 2,
+        "explain_es": "'If confirmed' y 'arguably': doble cautela."
+      },
+      {
+        "type": "mc",
+        "q": "What does the octopus's evolutionary history suggest, according to the writer?",
+        "options": [
+          "Octopuses descended from humans",
+          "Worms are intelligent",
+          "Intelligence requires a skeleton",
+          "Complex minds may have evolved more than once"
+        ],
+        "answer": 3,
+        "explain_es": "\"a solution that evolution may arrive at more than once\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'It follows that' introduces…",
+        "options": [
+          "a logical conclusion",
+          "a contrast",
+          "a quotation",
+          "an example"
+        ],
+        "answer": 0,
+        "explain_es": "Marca una deducción lógica."
+      },
+      {
+        "type": "tf",
+        "q": "Most of an octopus's neurons are found in its brain.",
+        "answer": "F",
+        "explain_es": "\"roughly two-thirds are located not in its brain but in its arms\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "How arms regrow",
+          "Philosophers disagree about animals",
+          "The size of the octopus brain",
+          "A mind spread through the body"
+        ],
+        "answer": 3,
+        "explain_es": "Las neuronas repartidas por los brazos: una mente distribuida."
+      },
+      {
+        "type": "mc",
+        "q": "Which of the following is NOT given as a reason for caution in paragraph 6?",
+        "options": [
+          "Laboratory conditions may be unrepresentative",
+          "Researchers may be biased by the animal's appeal",
+          "Few species have been studied",
+          "Octopuses are too dangerous to study"
+        ],
+        "answer": 3,
+        "explain_es": "No se menciona peligrosidad."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The evidence has been considered ____ for several countries to extend welfare protections to octopuses. (1 word)",
+        "answer": "sufficient",
+        "accept": [
+          "enough"
+        ],
+        "explain_es": "\"the weight of evidence has been considered sufficient\": pasiva impersonal."
+      },
+      {
+        "type": "tf",
+        "q": "Octopus farming has already been banned in several countries.",
+        "answer": "NG",
+        "explain_es": "Se mencionan protecciones en investigación, no prohibiciones de la cría."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer present the debate on octopus farming?",
+        "options": [
+          "As unresolved",
+          "As settled in favour of critics",
+          "As settled in favour of the industry",
+          "As irrelevant to science"
+        ],
+        "answer": 0,
+        "explain_es": "\"Which view will prevail is, for now, an open question.\""
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a reporting passive: People generally think that the last common ancestor was a worm-like creature. → The last common ancestor ____ a worm-like creature.",
+        "answer": "is generally thought to have been",
+        "accept": [
+          "is generally thought to be",
+          "is generally believed to have been"
+        ],
+        "explain_es": "Pasiva de reporte con infinitivo perfecto para un estado pasado."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-lighthouse-keeper-story",
+    "title": "The Last Keeper",
+    "level": "C2",
+    "genre": "short story",
+    "topic": "Solitude & Change",
+    "focus": "Aspect and nuance: perfect and continuous forms",
+    "emoji": "🗼",
+    "words": 605,
+    "paragraphs": [
+      "By the time the letter arrived, Agnes had been keeping the light on Carrow Head for thirty-one years, and she had been expecting it for at least ten of them. The envelope was thick and official, the kind that is never good news. She left it unopened on the kitchen table while she climbed the hundred and twelve steps to the lamp room, as she had done every evening since her husband died, and lit the lamp, which no longer needed her to light it.",
+      "That was the joke, of course, and she had been telling it to herself for years. The light had been automatic since 1998. A computer in a city she had never visited switched it on at dusk and off at dawn, and a technician came out twice a year to replace whatever had worn out. Agnes's official title had long since changed from 'keeper' to 'attendant', and her duties had shrunk to keeping the paint fresh, the windows clean and the visitors' book up to date. But she had gone on climbing the stairs at dusk, and she had gone on pressing the switch that no longer did anything, because it seemed wrong to let the light come on by itself with nobody there to see it.",
+      "She opened the letter the next morning. It was polite and regretful and full of phrases such as 'operational review' and 'transition arrangements'. The cottage was to be sold. Her position would end in March. In recognition of her long service, she was invited to a small ceremony at which she would be presented with a framed photograph of the lighthouse.",
+      "'A photograph,' she said aloud, to the cat. 'As if I'd forget what it looks like.'",
+      "She had been thinking, lately, about the keepers who had come before her. There had been a logbook going back to 1861, now kept in a museum on the mainland, and she had read it so often that she knew whole entries by heart. Storm all night. Lamp maintained. Brig sighted SW, in difficulty, could do nothing. One keeper, in the winter of 1883, had written the same words every day for six weeks: Nothing to report. Agnes had always found those entries the most moving of all. She imagined him sitting where she sat, watching the same grey water, having nothing to report and reporting it anyway, because that was what keepers did.",
+      "In the weeks that followed, people kept telling her how lucky she was. She would be closer to the shops. She would have neighbours. She would not have to climb those stairs in her seventies. She knew they meant well, and she smiled and agreed, and did not try to explain that she had never once, in thirty-one years, thought of the stairs as something she had to do.",
+      "On her last evening, she climbed them slowly, counting as she always did. The sea was calm, the sky a deepening violet. She stood by the switch and waited, and at the moment the computer in the distant city decided that dusk had arrived, she pressed it, and the light came on. It would have come on anyway. She knew that. But for one more night, it had not come on alone.",
+      "She wrote a final entry in the visitors' book before she left, in the careful hand she had always used for the logbook. She had considered a number of things to say: something about the sea, perhaps, or the years. In the end, she wrote only four words, and they were not her own.",
+      "Nothing to report. Lamp maintained."
+    ],
+    "glossary": [
+      [
+        "to keep the light",
+        "cuidar del faro"
+      ],
+      [
+        "lamp room",
+        "sala de la linterna"
+      ],
+      [
+        "to wear out",
+        "desgastarse"
+      ],
+      [
+        "attendant",
+        "encargado, vigilante"
+      ],
+      [
+        "to shrink",
+        "reducirse, encogerse"
+      ],
+      [
+        "visitors' book",
+        "libro de visitas"
+      ],
+      [
+        "operational review",
+        "revisión operativa (lenguaje burocrático)"
+      ],
+      [
+        "transition arrangements",
+        "medidas de transición"
+      ],
+      [
+        "logbook",
+        "cuaderno de bitácora, diario"
+      ],
+      [
+        "by heart",
+        "de memoria"
+      ],
+      [
+        "brig",
+        "bergantín"
+      ],
+      [
+        "mainland",
+        "tierra firme, continente"
+      ],
+      [
+        "to mean well",
+        "tener buena intención"
+      ],
+      [
+        "deepening",
+        "cada vez más intenso"
+      ],
+      [
+        "careful hand",
+        "letra cuidadosa"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "'She had been expecting it for at least ten of them' suggests that Agnes…",
+        "options": [
+          "had written to the authorities ten years earlier",
+          "had recently asked to retire",
+          "was surprised by the letter",
+          "had long anticipated the end of her job"
+        ],
+        "answer": 3,
+        "explain_es": "Pasado perfecto continuo: una expectativa prolongada antes de la llegada de la carta."
+      },
+      {
+        "type": "mc",
+        "q": "What is 'the joke' referred to in paragraph 2?",
+        "options": [
+          "The lighthouse had no stairs",
+          "Her husband had been a comedian",
+          "The technician never came",
+          "The lamp did not actually need her to light it"
+        ],
+        "answer": 3,
+        "explain_es": "Ella enciende un faro que ya es automático."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Agnes continue pressing the switch?",
+        "options": [
+          "The computer often failed",
+          "Visitors expected it",
+          "It felt wrong for the light to come on with nobody there",
+          "Her contract required it"
+        ],
+        "answer": 2,
+        "explain_es": "\"it seemed wrong to let the light come on by itself with nobody there to see it\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 2, 'had long since changed' means the title had changed…",
+        "options": [
+          "very recently",
+          "a long time before",
+          "gradually over many years",
+          "temporarily"
+        ],
+        "answer": 1,
+        "explain_es": "'Long since' = hace ya mucho tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of the official letter, as Agnes perceives it?",
+        "options": [
+          "Hostile",
+          "Apologetic and emotional",
+          "Warm and personal",
+          "Polite but impersonal"
+        ],
+        "answer": 3,
+        "explain_es": "\"polite and regretful and full of phrases such as 'operational review'\"."
+      },
+      {
+        "type": "mc",
+        "q": "'As if I'd forget what it looks like' reveals that Agnes finds the gift…",
+        "options": [
+          "generous",
+          "confusing",
+          "rather absurd",
+          "insulting to the cat"
+        ],
+        "answer": 2,
+        "explain_es": "Ironía: no necesita una foto de un lugar que conoce de sobra."
+      },
+      {
+        "type": "tf",
+        "q": "Agnes had read the old logbook many times.",
+        "answer": "T",
+        "explain_es": "\"she had read it so often that she knew whole entries by heart\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Agnes find the 1883 entries the most moving?",
+        "options": [
+          "They were the shortest",
+          "They were written by her ancestor",
+          "They described a famous shipwreck",
+          "They showed a keeper faithfully recording even when nothing happened"
+        ],
+        "answer": 3,
+        "explain_es": "\"having nothing to report and reporting it anyway, because that was what keepers did\"."
+      },
+      {
+        "type": "tf",
+        "q": "Agnes's family had worked at the lighthouse since 1861.",
+        "answer": "NG",
+        "explain_es": "El cuaderno empieza en 1861, pero no se dice que fueran sus antepasados."
+      },
+      {
+        "type": "mc",
+        "q": "How did Agnes respond to people who said she was lucky?",
+        "options": [
+          "She agreed outwardly while privately disagreeing",
+          "She cried",
+          "She asked to stay",
+          "She argued with them"
+        ],
+        "answer": 0,
+        "explain_es": "Sonreía y asentía, sin explicar lo que sentía."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for the paragraph beginning 'On her last evening'.",
+        "options": [
+          "Counting the steps for the first time",
+          "A storm at sea",
+          "The computer breaks down",
+          "Not alone, one last time"
+        ],
+        "answer": 3,
+        "explain_es": "\"for one more night, it had not come on alone\"."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: In the end Agnes wrote four words in the visitors' book which were not her ____. (1 word)",
+        "answer": "own",
+        "accept": [],
+        "explain_es": "Eran palabras del antiguo cuaderno de bitácora."
+      },
+      {
+        "type": "mc",
+        "q": "What does the ending suggest about Agnes?",
+        "options": [
+          "She is angry with the authorities",
+          "She has nothing to say about her life",
+          "She intends to return",
+          "She sees herself as part of a long tradition of keepers"
+        ],
+        "answer": 3,
+        "explain_es": "Cita las entradas de los antiguos fareros: se integra en esa tradición."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-quiet-office-opinion",
+    "title": "What the Open-Plan Office Took Away",
+    "level": "C2",
+    "genre": "opinion column",
+    "topic": "Work & Concentration",
+    "focus": "Cleft sentences (it-clefts and wh-clefts)",
+    "emoji": "🎧",
+    "words": 584,
+    "paragraphs": [
+      "It was the noise-cancelling headphones that first gave it away. Walk through almost any modern office and you will see them: large, padded, often expensive, worn by people who are not listening to anything at all. What they are doing is building a wall. In workplaces designed to remove walls, employees have quietly reconstructed them, one pair of ears at a time.",
+      "The open-plan office was sold to us as a revolution in collaboration. Knock down the partitions, the argument went, and ideas would flow freely between desks; junior staff would learn by overhearing their seniors; the hierarchy symbolised by the corner office would dissolve into a democratic sea of shared tables. What actually happened was rather different. Several studies that tracked employees before and after a move to open-plan layouts found that face-to-face interaction fell, sometimes dramatically, while email and instant messaging rose. When everyone can hear everything, it turns out, people stop saying very much out loud.",
+      "It is not collaboration, however, that I most mourn. It is concentration. The kind of work that most of us are paid to do, writing, analysing, designing, solving problems, depends on sustained stretches of attention that open offices make almost impossible. Research on interruptions suggests that it can take many minutes to return fully to a complex task after being distracted, and that a working day broken into fragments produces work that is not only slower but measurably worse. What an open office offers in abundance is precisely the kind of interruption that most damages this work: the overheard phone call, the colleague who 'just has a quick question', the conversation two desks away about last night's football.",
+      "Why, then, have they proved so durable? The honest answer, I suspect, is cost. It is the price of floor space, rather than any evidence about productivity, that has driven most of the redesigns of the past thirty years. An open office can accommodate considerably more people per square metre than one divided into rooms, and the language of collaboration has provided a flattering justification for what is, at heart, an accounting decision.",
+      "None of this means that the alternative is a return to rows of closed doors. What many workers seem to want is not isolation but choice: a quiet room when they need to think, a shared space when they need to talk, and the freedom to move between them without explaining themselves. The most thoughtful recent designs reflect this, offering a variety of spaces rather than a single model imposed on everyone.",
+      "Where these designs succeed, it is usually because they treat silence as a resource rather than a luxury. One firm I visited had introduced a simple rule: certain areas of the floor were designated for focused work, and conversation there was simply not permitted. The initial reaction was scepticism. Within months, those areas were the most sought-after in the building, and managers reported that the quality of written reports had noticeably improved.",
+      "What strikes me most about the open-plan experiment is how long it took us to admit that it was not working. Employees had been signalling their discomfort for years, through headphones, through working from home whenever possible, through booking meeting rooms simply to be alone. It was only when productivity data became impossible to ignore that organisations began to listen. Perhaps the lesson is broader than office design. When people go to great lengths to recreate something you have taken away, it is usually a sign that they needed it."
+    ],
+    "glossary": [
+      [
+        "to give something away",
+        "delatar, revelar"
+      ],
+      [
+        "padded",
+        "acolchado"
+      ],
+      [
+        "partition",
+        "mampara, tabique"
+      ],
+      [
+        "to overhear",
+        "oír por casualidad"
+      ],
+      [
+        "to dissolve",
+        "disolverse"
+      ],
+      [
+        "to mourn",
+        "lamentar la pérdida de, llorar"
+      ],
+      [
+        "sustained",
+        "continuo, prolongado"
+      ],
+      [
+        "in abundance",
+        "en abundancia"
+      ],
+      [
+        "durable",
+        "duradero"
+      ],
+      [
+        "floor space",
+        "superficie útil"
+      ],
+      [
+        "at heart",
+        "en el fondo"
+      ],
+      [
+        "designated",
+        "designado, reservado"
+      ],
+      [
+        "sought-after",
+        "codiciado, solicitado"
+      ],
+      [
+        "to go to great lengths",
+        "hacer grandes esfuerzos"
+      ],
+      [
+        "to signal",
+        "indicar, dar señales de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does the writer suggest employees are doing with their headphones?",
+        "options": [
+          "Ignoring their managers' instructions",
+          "Attending online meetings",
+          "Creating a private barrier in an open space",
+          "Listening to music to relax"
+        ],
+        "answer": 2,
+        "explain_es": "\"What they are doing is building a wall.\""
+      },
+      {
+        "type": "gap",
+        "q": "Summary: ____ actually happened after the move to open-plan offices was that face-to-face interaction fell. (1 word)",
+        "answer": "What",
+        "accept": [
+          "what"
+        ],
+        "explain_es": "Pseudo-hendida: \"What actually happened was rather different.\""
+      },
+      {
+        "type": "tf",
+        "q": "Studies found that people talked face to face more after moving to open-plan offices.",
+        "answer": "F",
+        "explain_es": "\"face-to-face interaction fell, sometimes dramatically\"."
+      },
+      {
+        "type": "mc",
+        "q": "'It is not collaboration, however, that I most mourn. It is concentration.' The cleft structure is used to…",
+        "options": [
+          "contrast and emphasise the writer's main concern",
+          "describe a sequence of events",
+          "introduce a new speaker",
+          "soften a criticism"
+        ],
+        "answer": 0,
+        "explain_es": "La hendida 'It is… that' enfatiza el foco: la concentración, no la colaboración."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 3, interrupted work is…",
+        "options": [
+          "faster but less accurate",
+          "unaffected in quality",
+          "slower and of lower quality",
+          "more creative"
+        ],
+        "answer": 2,
+        "explain_es": "\"not only slower but measurably worse\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer believe is the real reason open-plan offices persist?",
+        "options": [
+          "Employee preference",
+          "Government regulations",
+          "The cost of space",
+          "Evidence of higher productivity"
+        ],
+        "answer": 2,
+        "explain_es": "\"It is the price of floor space ... that has driven most of the redesigns\"."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'a flattering justification' is one that…",
+        "options": [
+          "makes a decision look better than it is",
+          "is legally required",
+          "is based on research",
+          "criticises the decision"
+        ],
+        "answer": 0,
+        "explain_es": "'Flattering' = que favorece, que embellece."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "Choice rather than closed doors",
+          "The end of shared spaces",
+          "A return to private offices",
+          "Why workers prefer isolation"
+        ],
+        "answer": 0,
+        "explain_es": "\"What many workers seem to want is not isolation but choice\"."
+      },
+      {
+        "type": "tf",
+        "q": "The firm's quiet areas were initially popular with all employees.",
+        "answer": "F",
+        "explain_es": "\"The initial reaction was scepticism.\""
+      },
+      {
+        "type": "tf",
+        "q": "The firm the writer visited later abolished its quiet areas.",
+        "answer": "NG",
+        "explain_es": "No se menciona."
+      },
+      {
+        "type": "mc",
+        "q": "Which of these is NOT mentioned as a way employees signalled discomfort?",
+        "options": [
+          "Complaining to trade unions",
+          "Booking meeting rooms to be alone",
+          "Working from home",
+          "Wearing headphones"
+        ],
+        "answer": 0,
+        "explain_es": "Los sindicatos no se mencionan."
+      },
+      {
+        "type": "mc",
+        "q": "What broader lesson does the writer draw at the end?",
+        "options": [
+          "When people work hard to recreate something removed, they probably needed it",
+          "Managers never listen",
+          "Offices should be abolished",
+          "Productivity data is unreliable"
+        ],
+        "answer": 0,
+        "explain_es": "Última frase del texto."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as an it-cleft: The cost of space drove most redesigns. → It was ____ most redesigns.",
+        "answer": "the cost of space that drove",
+        "accept": [
+          "the cost of space which drove"
+        ],
+        "explain_es": "Hendida con 'It was + foco + that…'."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-translator-interview",
+    "title": "Carrying a Book Across the Water",
+    "level": "C2",
+    "genre": "interview",
+    "topic": "Literary Translation",
+    "focus": "Ellipsis and substitution (so, not, do so, one)",
+    "emoji": "🖋️",
+    "words": 590,
+    "paragraphs": [
+      "Lucía Ferrer has translated more than forty novels from English into Spanish, and a handful in the other direction. We met in a café near her flat, where she had been working since six that morning on a particularly stubborn paragraph. 'Three sentences,' she said. 'Three days. That's not unusual, I'm afraid.'",
+      "Do readers realise how much of a translated novel is, in a sense, yours?",
+      "I hope not, frankly. If they did, I'd have failed. The ideal is that they forget there was a translator at all, and most of the time they do. But every sentence involves dozens of choices the author never had to make, because the author was working in one language and I'm working in two. Sometimes the choices are tiny, sometimes they're enormous. Usually they're both at once.",
+      "Can you give an example of an enormous one?",
+      "Humour is the obvious one. A pun almost never survives the journey. You can try to find an equivalent, or you can let it go and make the reader laugh somewhere else, a few lines later, where the original didn't. I tend to do the latter, though some translators would say I shouldn't. Then there are dialects. If a character in a Scottish novel speaks broad Glaswegian, do you give her an Andalusian accent? Some translators do so. I'd rather not, because suddenly she's from Seville, and the whole novel has shifted three thousand kilometres.",
+      "So what do you do instead?",
+      "I try to find a register rather than a place. Something that sounds informal, working-class, slightly rough, without pointing to any particular map. It's never entirely satisfactory. But then, no solution is. The question isn't whether you lose something. You always do. The question is whether you lose the right thing.",
+      "Do authors ever object?",
+      "Occasionally. Most don't read Spanish, so they can't. The ones who do are usually generous. I had one, a very fine novelist, who sent me forty pages of notes on my first draft, all of them perfectly polite and most of them wrong. I accepted a few, not many. He was disappointed, I think, but he wrote to me afterwards to say the reviews had been better in Spain than at home, and he supposed that meant something.",
+      "Is translation an art or a craft?",
+      "Both, obviously, but I prefer to call it a craft, because the word 'art' makes people expect inspiration, and translation is mostly patience. You read the original so many times that you begin to hear it, and then you try to write the book the author would have written had they been born in Madrid instead of Manchester. You never quite succeed. Nobody does.",
+      "Are you worried about machine translation?",
+      "For instruction manuals, yes, and I don't think I should be, because nobody went into this to translate manuals. For novels, less so. A machine can produce a sentence that is correct. What it can't yet do is decide which of five correct sentences is the right one for this character, on this page, after what happened in chapter three. Perhaps it will one day. I hope not, but I suspect so.",
+      "What's the paragraph that's been taking you three days?",
+      "A man describing his father's hands. It's very simple in English. It's simple in Spanish, too, but it's a different simple, and I haven't found it yet. I will, eventually. Or I'll find one that's close enough and spend the next ten years wishing I'd found a better one. That's the job."
+    ],
+    "glossary": [
+      [
+        "a handful",
+        "un puñado, unos pocos"
+      ],
+      [
+        "stubborn",
+        "rebelde, obstinado"
+      ],
+      [
+        "pun",
+        "juego de palabras"
+      ],
+      [
+        "to let it go",
+        "dejarlo pasar, renunciar a ello"
+      ],
+      [
+        "broad (accent)",
+        "cerrado, marcado"
+      ],
+      [
+        "register",
+        "registro (lingüístico)"
+      ],
+      [
+        "rough",
+        "tosco, áspero"
+      ],
+      [
+        "satisfactory",
+        "satisfactorio"
+      ],
+      [
+        "draft",
+        "borrador"
+      ],
+      [
+        "craft",
+        "oficio, artesanía"
+      ],
+      [
+        "inspiration",
+        "inspiración"
+      ],
+      [
+        "instruction manual",
+        "manual de instrucciones"
+      ],
+      [
+        "close enough",
+        "lo bastante aproximado"
+      ],
+      [
+        "to go into (a profession)",
+        "dedicarse a"
+      ],
+      [
+        "to hear (a text)",
+        "'oír' (captar el ritmo de un texto)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does Lucía hope readers do not realise how much of a novel is hers?",
+        "options": [
+          "Authors would be angry",
+          "She is not credited by publishers",
+          "A successful translation should be invisible",
+          "She is embarrassed by her translations"
+        ],
+        "answer": 2,
+        "explain_es": "\"The ideal is that they forget there was a translator at all.\""
+      },
+      {
+        "type": "mc",
+        "q": "In 'and most of the time they do', 'do' replaces…",
+        "options": [
+          "realise how much is hers",
+          "read novels",
+          "forget there was a translator",
+          "fail"
+        ],
+        "answer": 2,
+        "explain_es": "Sustitución: 'they do (forget there was a translator)'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Lucía usually do with a pun that cannot be translated?",
+        "options": [
+          "She keeps the English words",
+          "She omits it and adds humour elsewhere",
+          "She asks the author for a new pun",
+          "She explains it in a footnote"
+        ],
+        "answer": 1,
+        "explain_es": "\"let it go and make the reader laugh somewhere else\"; \"I tend to do the latter\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does she avoid giving a Glaswegian character an Andalusian accent?",
+        "options": [
+          "It would be offensive to Scots",
+          "It relocates the character geographically",
+          "Publishers forbid it",
+          "She cannot imitate it"
+        ],
+        "answer": 1,
+        "explain_es": "\"suddenly she's from Seville, and the whole novel has shifted\"."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: Some translators give the character a regional Spanish accent; others would rather ____. (1 word)",
+        "answer": "not",
+        "accept": [],
+        "explain_es": "Elipsis con 'not': \"I'd rather not\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'The question is whether you lose the right thing' means a good translator…",
+        "options": [
+          "loses as little text as possible",
+          "chooses carefully what to sacrifice",
+          "avoids any loss",
+          "focuses on correct grammar"
+        ],
+        "answer": 1,
+        "explain_es": "Siempre se pierde algo; lo importante es elegir qué."
+      },
+      {
+        "type": "tf",
+        "q": "Most authors Lucía translates are able to read her Spanish versions.",
+        "answer": "F",
+        "explain_es": "\"Most don't read Spanish, so they can't.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does the anecdote about the novelist's notes show?",
+        "options": [
+          "Lucía trusted her judgement and was later vindicated",
+          "Lucía accepted all his suggestions",
+          "The novelist refused to work with her again",
+          "The book failed in Spain"
+        ],
+        "answer": 0,
+        "explain_es": "Aceptó pocas notas y las críticas fueron mejores en España."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Lucía prefer the word 'craft'?",
+        "options": [
+          "Translators are paid as craftspeople",
+          "It sounds more modest to publishers",
+          "Art is more difficult",
+          "'Art' suggests inspiration, but translation is mostly patience"
+        ],
+        "answer": 3,
+        "explain_es": "\"translation is mostly patience\"."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía believes machines will never translate novels well.",
+        "answer": "F",
+        "explain_es": "\"Perhaps it will one day. I hope not, but I suspect so.\""
+      },
+      {
+        "type": "mc",
+        "q": "In 'I hope not, but I suspect so', 'so' stands for…",
+        "options": [
+          "she will find the paragraph",
+          "manuals are boring",
+          "translation is a craft",
+          "machines will one day choose the right sentence"
+        ],
+        "answer": 3,
+        "explain_es": "Sustitución con 'so' de la cláusula anterior."
+      },
+      {
+        "type": "tf",
+        "q": "Lucía has translated more novels into English than into Spanish.",
+        "answer": "F",
+        "explain_es": "Más de cuarenta al español y \"a handful in the other direction\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is her attitude to the difficult paragraph?",
+        "options": [
+          "Patient and realistic",
+          "Indifferent",
+          "Despairing",
+          "Overconfident"
+        ],
+        "answer": 0,
+        "explain_es": "\"I will, eventually. Or I'll find one that's close enough... That's the job.\""
+      }
+    ]
+  }
+]

@@ -168,7 +168,7 @@ export interface Piece {
   timeId?: number;
 }
 
-const TOKEN_RE = /\d{1,2}:\d{2}|[A-Za-z]+(?:'[A-Za-z]+)*|\d+(?:st|nd|rd|th|s|am|pm)?|[.,;:!?]/g;
+const TOKEN_RE = /\d{1,2}:\d{2}|\p{L}+(?:'\p{L}+)*|\d+(?:st|nd|rd|th|s|am|pm)?|[.,;:!?]/gu;
 const NT_SPECIAL: Record<string, string> = { wo: 'will', ca: 'can', sha: 'shall', ai: 'is' };
 const CONTR: Record<string, string> = { ll: 'will', ve: 'have', re: 'are', m: 'am', d: "'d", s: "'s" };
 
@@ -405,6 +405,7 @@ const TIME_RULES: TimeRule[] = [
     R(`every (?:single )?(?:day|morning|night|evening|afternoon|week|weekend|month|year|summer|winter|${DAY}|time|${NUMW} ${UNIT})|(?:once|twice|${NUMW} times) (?:a|per|every) (?:day|week|month|year)|hardly ever|almost always|always|usually|often|sometimes|rarely|seldom|frequently|normally|generally|occasionally|daily|weekly|how often`),
     () => ({ kind: 'freq', pos: null }),
   ],
+  [R(`twice|(?:three|four|five|many|several|a few|a couple of) times`), () => ({ kind: 'ever', pos: null })],
   [R(`all (?:day(?: long)?|morning|afternoon|evening|night|week|year|my life|the time)|the whole (?:day|week|morning|afternoon|night)`), () => ({ kind: 'duration', pos: null })],
   [R(`how long`), () => ({ kind: 'howlong', pos: null })],
   [R(`already`), () => ({ kind: 'already', pos: null })],
@@ -646,7 +647,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
           vg.chain.push({ p, norm: 'had', tag: 'AUX', lemma: 'have' }, { p: idx[kk + 1]!, norm: 'better', tag: 'AUX', lemma: 'better' });
           return 2;
         }
-        vg.chain.push({ p, norm: w, tag: 'AUX', lemma: w });
+        vg.chain.push({ p, norm: w, tag: 'AUX', lemma: BE_FIN.has(w) ? 'be' : HAVE_FIN.has(w) ? 'have' : DO_FIN.has(w) ? 'do' : w });
         return 1;
       }
       if ((w === 'used' || w === 'use') && N(kk + 1) === 'to' && forms(N(kk + 2)).base) {
@@ -837,7 +838,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
           k++;
           continue;
         }
-        if (vg.subject.length && cont(vg.chain.at(-1)!, k, true).n) break;
+        if (vg.subject.length && !DETS.has(P[vg.subject.at(-1)!]!.norm) && cont(vg.chain.at(-1)!, k, true).n) break;
         if (!vg.subject.length && ADVERBS.has(w)) {
           k++;
           continue;
@@ -1089,7 +1090,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       c.kind = pastCtx ? 'pastSimple' : 'presentSimple';
       c.note = undefined;
     }
-    if (vg && !vg.subject.some((i) => !ADVERBS.has(P[i]!.norm)) && !vg.wh.length && !question && vg.chain[0]!.tag === 'BASE' && !c.conn && ci === 0 && !SUBJ_PRONOUNS.has(P[vg.chain[0]!.p - 1]?.norm ?? '')) c.kind = 'imperative';
+    if (vg && !vg.subject.some((i) => !ADVERBS.has(P[i]!.norm)) && !vg.wh.length && !question && (vg.chain[0]!.tag === 'BASE' || vg.chain[0]!.tag === 'BASEPAST') && !c.conn && ci === 0 && !SUBJ_PRONOUNS.has(P[vg.chain[0]!.p - 1]?.norm ?? '')) c.kind = 'imperative';
   });
   clauses.forEach((c) => {
     if (c.kind === 'presentSimple' || c.kind === 'presentContinuous' || c.kind === 'presentPerfect') {
