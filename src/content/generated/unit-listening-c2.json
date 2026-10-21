@@ -2555,7 +2555,7 @@
     },
     {
      "s": 1,
-     "text": "People ask how it feels. Honestly? Strange. I'm grateful, so be it. But nobody can give me back nineteen years. I went in at twenty-two. I came out at forty-one."
+     "text": "People ask how it feels. Honestly? Strange. I'm grateful, don't get me wrong. But nobody can give me back nineteen years. I went in at twenty-two. I came out at forty-one."
     },
     {
      "s": 0,
@@ -2870,6 +2870,735 @@
     "One of them was my mum.",
     "Not all change is progress.",
     "You just need to turn up and keep turning up."
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "ul-c2-9-1",
+   "title": "The Climb I Wasn't Supposed to Finish",
+   "level": "C2",
+   "kind": "interview",
+   "topic": "Risk & Recovery",
+   "focus": "Future forms in the past (was to, was about to, would)",
+   "emoji": "🧗",
+   "speakers": [
+    {
+     "name": "Host",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Callum",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Physio",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Two years ago, the climber Callum Reid fell twelve metres on a sea cliff in Cornwall. Doctors told him he might never climb again. Last month, he completed the same route. Callum, take us back to that day."
+    },
+    {
+     "s": 1,
+     "text": "It was supposed to be an easy day, actually. I was to meet a friend at the top and we'd planned to do two more routes in the afternoon. I was about to clip into the last bolt when the rock I was holding just came away in my hand."
+    },
+    {
+     "s": 0,
+     "text": "Did you know straight away how bad it was?"
+    },
+    {
+     "s": 1,
+     "text": "I knew my leg was broken. I didn't know that I'd fractured two vertebrae as well. That came later, in hospital. It was a calculated risk, climbing that cliff. Every climb is. But you don't really expect the rock itself to let you down."
+    },
+    {
+     "s": 0,
+     "text": "You were told you might never climb again."
+    },
+    {
+     "s": 1,
+     "text": "I was. And for a few months I believed it. I nearly threw in the towel completely. I was going to sell all my gear."
+    },
+    {
+     "s": 0,
+     "text": "Let's bring in Ellie Morgan, the physiotherapist who worked with Callum. Ellie, what was his recovery like?"
+    },
+    {
+     "s": 2,
+     "text": "Slow, and not linear. There were weeks when he seemed to be on the mend and then a setback would knock him back. The danger with athletes is that they run the risk of pushing too hard, too early. Callum was no exception."
+    },
+    {
+     "s": 1,
+     "text": "Guilty."
+    },
+    {
+     "s": 2,
+     "text": "But he listened, eventually. We set very small targets. Walking to the end of the road. Then a flight of stairs. Climbing wasn't even mentioned for a year."
+    },
+    {
+     "s": 0,
+     "text": "When did you know you would climb again?"
+    },
+    {
+     "s": 1,
+     "text": "When Ellie gave me a clean bill of health, about eighteen months after the fall. I cried, which I'm not ashamed of."
+    },
+    {
+     "s": 0,
+     "text": "And going back to that same cliff?"
+    },
+    {
+     "s": 1,
+     "text": "I would never have forgiven myself if I hadn't. It wasn't about proving anything. It was about finishing a sentence I'd started."
+    },
+    {
+     "s": 0,
+     "text": "Callum Reid and Ellie Morgan, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "gap",
+     "q": "Callum says: 'I was ______ meet a friend at the top.' (1 word)",
+     "answer": "to",
+     "accept": [],
+     "explain_es": "'Was to + infinitivo' = plan en el pasado."
+    },
+    {
+     "type": "mc",
+     "q": "What was Callum about to do when the rock came away?",
+     "options": [
+      "Clip into the last bolt",
+      "Reach the top",
+      "Take a photo",
+      "Start abseiling"
+     ],
+     "answer": 0,
+     "explain_es": "\"I was about to clip into the last bolt\"."
+    },
+    {
+     "type": "mc",
+     "q": "What did Callum not know immediately after the fall?",
+     "options": [
+      "That his leg was broken",
+      "That his friend had called for help",
+      "That he had fractured two vertebrae",
+      "Where he was"
+     ],
+     "answer": 2,
+     "explain_es": "\"I didn't know that I'd fractured two vertebrae as well.\""
+    },
+    {
+     "type": "mc",
+     "q": "What does 'it was a calculated risk' mean in this context?",
+     "options": [
+      "The risk was impossible to estimate",
+      "The risk was ignored",
+      "The risk was carefully weighed and accepted",
+      "The risk was financial"
+     ],
+     "answer": 2,
+     "explain_es": "Riesgo calculado: asumido tras valorarlo."
+    },
+    {
+     "type": "mc",
+     "q": "What does Callum say about the months after the accident?",
+     "options": [
+      "He planned his comeback immediately",
+      "He climbed in secret",
+      "He changed sports",
+      "He nearly gave up climbing altogether"
+     ],
+     "answer": 3,
+     "explain_es": "\"I nearly threw in the towel completely.\""
+    },
+    {
+     "type": "mc",
+     "q": "What, according to Ellie, is the danger with athletes?",
+     "options": [
+      "They refuse physiotherapy",
+      "They exaggerate pain",
+      "They don't take recovery seriously",
+      "They risk pushing too hard too early"
+     ],
+     "answer": 3,
+     "explain_es": "\"they run the risk of pushing too hard, too early\"."
+    },
+    {
+     "type": "mc",
+     "q": "How did Ellie structure his recovery?",
+     "options": [
+      "With very small targets",
+      "With intensive climbing sessions",
+      "With complete rest for two years",
+      "With surgery only"
+     ],
+     "answer": 0,
+     "explain_es": "\"We set very small targets.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why did Callum return to the same cliff?",
+     "options": [
+      "To complete something he had begun",
+      "For a sponsor",
+      "To film a documentary",
+      "To prove he was the best"
+     ],
+     "answer": 0,
+     "explain_es": "\"It was about finishing a sentence I'd started.\""
+    }
+   ],
+   "dictation": [
+    "It was supposed to be an easy day, actually.",
+    "Every climb is.",
+    "I cried, which I'm not ashamed of."
+   ]
+  },
+  {
+   "id": "ul-c2-9-2",
+   "title": "Burnout at Work: What the Evidence Says",
+   "level": "C2",
+   "kind": "seminar",
+   "topic": "Wellbeing at Work",
+   "focus": "Discourse markers and cohesive devices at C2",
+   "emoji": "🔋",
+   "speakers": [
+    {
+     "name": "Dr Shaw",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Nadia",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Let's look at burnout. First of all, a definition. Burnout isn't simply being tired. It's a state of chronic exhaustion, cynicism about one's work and a sense of reduced effectiveness, and it tends to build up over months rather than days."
+    },
+    {
+     "s": 1,
+     "text": "Is it more common than it used to be?"
+    },
+    {
+     "s": 0,
+     "text": "That's hard to say with certainty. Reported cases have risen, granted. That said, part of the increase may reflect greater awareness rather than a genuine rise. Either way, the costs are considerable, both for individuals and for organisations."
+    },
+    {
+     "s": 0,
+     "text": "Now, what causes it? Contrary to popular belief, long hours alone are not the main factor. The research points instead to a mismatch between demands and resources: too much work, too little control, too little recognition. By the same token, people who work long hours but feel in control are often surprisingly resilient."
+    },
+    {
+     "s": 1,
+     "text": "So it's about how work is organised, not just how much there is?"
+    },
+    {
+     "s": 0,
+     "text": "Precisely. And this has important implications. Wellness apps and yoga classes, while pleasant, tend to address the symptoms. In other words, they treat burnout as an individual problem when it's often structural."
+    },
+    {
+     "s": 1,
+     "text": "What would a structural approach look like?"
+    },
+    {
+     "s": 0,
+     "text": "Clear workloads, for one. Managers who don't keep moving the goalposts. Fair processes, so that people feel they're on a level playing field. And genuine breaks. A sedentary eight hours with lunch at the desk takes its toll, physically and mentally."
+    },
+    {
+     "s": 1,
+     "text": "Doesn't that cost money?"
+    },
+    {
+     "s": 0,
+     "text": "In the short term, yes. Having said that, the cost of debilitating burnout, sickness absence, staff turnover, is almost certainly higher. Moreover, organisations that invest in prevention tend to find it easier to recruit."
+    },
+    {
+     "s": 1,
+     "text": "So the business case and the human case point the same way."
+    },
+    {
+     "s": 0,
+     "text": "For once, yes. Which brings me, incidentally, to your assignment: design a two-page burnout prevention policy for a mid-sized company. Be specific."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does Dr Shaw define burnout?",
+     "options": [
+      "Ordinary tiredness after a long week",
+      "A sudden breakdown",
+      "A physical injury",
+      "Chronic exhaustion, cynicism and reduced effectiveness"
+     ],
+     "answer": 3,
+     "explain_es": "\"chronic exhaustion, cynicism about one's work and a sense of reduced effectiveness\"."
+    },
+    {
+     "type": "mc",
+     "q": "'Reported cases have risen, granted. That said…' The marker 'That said' introduces…",
+     "options": [
+      "a conclusion",
+      "a time sequence",
+      "an example",
+      "a qualification of the previous point"
+     ],
+     "answer": 3,
+     "explain_es": "'That said' matiza lo anterior."
+    },
+    {
+     "type": "mc",
+     "q": "What is the main cause of burnout, according to the research?",
+     "options": [
+      "Personality",
+      "A mismatch between demands and resources",
+      "Poor diet",
+      "Long hours alone"
+     ],
+     "answer": 1,
+     "explain_es": "\"a mismatch between demands and resources\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'By the same token' signal?",
+     "options": [
+      "A personal opinion",
+      "A summary",
+      "A contrasting example",
+      "A related point following the same logic"
+     ],
+     "answer": 3,
+     "explain_es": "Introduce un punto paralelo con la misma lógica."
+    },
+    {
+     "type": "mc",
+     "q": "What is his criticism of wellness apps and yoga classes?",
+     "options": [
+      "They are too expensive",
+      "They address symptoms and treat a structural problem as individual",
+      "Employees dislike them",
+      "They don't work at all"
+     ],
+     "answer": 1,
+     "explain_es": "\"they treat burnout as an individual problem when it's often structural\"."
+    },
+    {
+     "type": "gap",
+     "q": "Managers who keep moving the ______ contribute to burnout. (1 word)",
+     "answer": "goalposts",
+     "accept": [],
+     "explain_es": "'Move the goalposts' = cambiar las reglas a mitad del juego."
+    },
+    {
+     "type": "mc",
+     "q": "Why does he argue prevention is worth the cost?",
+     "options": [
+      "It is legally required",
+      "It is cheap",
+      "Staff demand it",
+      "Burnout's costs are almost certainly higher"
+     ],
+     "answer": 3,
+     "explain_es": "\"the cost of debilitating burnout ... is almost certainly higher\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the assignment?",
+     "options": [
+      "Read a book on sleep",
+      "Design a burnout prevention policy",
+      "Write an essay on yoga",
+      "Interview a manager"
+     ],
+     "answer": 1,
+     "explain_es": "\"design a two-page burnout prevention policy\"."
+    }
+   ],
+   "dictation": [
+    "Burnout isn't simply being tired.",
+    "So it's about how work is organised, not just how much there is?",
+    "So the business case and the human case point the same way."
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "ul-c2-10-1",
+   "title": "The Mill That Will Outlive Us",
+   "level": "C2",
+   "kind": "radio interview",
+   "topic": "Heritage & Legacy",
+   "focus": "Advanced future forms: future perfect continuous, be to, be on the verge of, be due to",
+   "emoji": "🏭",
+   "speakers": [
+    {
+     "name": "Presenter",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Margaret",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "The old textile mill at Hebden Bridge is due to reopen next spring, not as a factory but as a community arts centre. Margaret Holt chairs the trust that saved it. Margaret, how long has this taken?"
+    },
+    {
+     "s": 1,
+     "text": "By the time the doors open, we'll have been working on it for eleven years. When we started, the building was on the verge of collapse. The roof had gone, there were trees growing inside."
+    },
+    {
+     "s": 0,
+     "text": "Why was it worth saving?"
+    },
+    {
+     "s": 1,
+     "text": "Because this whole valley is steeped in the history of that mill. My grandmother worked there. So did half the town's grandparents. When it closed in the seventies, it felt like the end of something. We wanted to make sure it wasn't simply erased."
+    },
+    {
+     "s": 0,
+     "text": "Some people would say you're looking at the past through rose-tinted glasses. The mill wasn't exactly a pleasant place to work."
+    },
+    {
+     "s": 1,
+     "text": "Oh, I know. My grandmother would be the first to tell you. Twelve-hour shifts, the noise, the dust. We're not trying to hark back to some golden age. Part of the exhibition is about exactly that, the hardship. Heritage isn't only about the nice bits."
+    },
+    {
+     "s": 0,
+     "text": "What will the building actually be used for?"
+    },
+    {
+     "s": 1,
+     "text": "Studios for local artists, a café, a small museum, and a space for the school to use. The weaving looms are to be restored and demonstrated once a month, so children can hear what it sounded like."
+    },
+    {
+     "s": 0,
+     "text": "Does it feel like a legacy?"
+    },
+    {
+     "s": 1,
+     "text": "I'd like to think so. Buildings like this stand the test of time in a way that people don't. We're doing it for posterity, really. In fifty years, nobody will remember who chaired the trust, and that's fine. They'll remember the building."
+    },
+    {
+     "s": 0,
+     "text": "And the official opening?"
+    },
+    {
+     "s": 1,
+     "text": "It's due to take place on the first of April. Which, given how long this has taken, some people think is a joke."
+    },
+    {
+     "s": 0,
+     "text": "Margaret Holt, thank you."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the mill going to become?",
+     "options": [
+      "A shopping centre",
+      "Luxury flats",
+      "A community arts centre",
+      "A factory again"
+     ],
+     "answer": 2,
+     "explain_es": "\"not as a factory but as a community arts centre\"."
+    },
+    {
+     "type": "gap",
+     "q": "By the time the doors open, they'll have been ______ on it for eleven years. (1 word)",
+     "answer": "working",
+     "accept": [],
+     "explain_es": "Futuro perfecto continuo."
+    },
+    {
+     "type": "mc",
+     "q": "What condition was the building in at the start?",
+     "options": [
+      "On the verge of collapse",
+      "Being used as a warehouse",
+      "Good",
+      "Recently renovated"
+     ],
+     "answer": 0,
+     "explain_es": "\"the building was on the verge of collapse\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why was the mill important to the town?",
+     "options": [
+      "It was famous abroad",
+      "The valley's history and families were closely tied to it",
+      "It was very profitable",
+      "It was the oldest building in England"
+     ],
+     "answer": 1,
+     "explain_es": "\"this whole valley is steeped in the history of that mill\"."
+    },
+    {
+     "type": "mc",
+     "q": "How does Margaret respond to the 'rose-tinted glasses' comment?",
+     "options": [
+      "She acknowledges the hardship and says the exhibition includes it",
+      "She ends the interview",
+      "She agrees heritage should be idealised",
+      "She denies the hardships existed"
+     ],
+     "answer": 0,
+     "explain_es": "\"Heritage isn't only about the nice bits.\""
+    },
+    {
+     "type": "mc",
+     "q": "'The weaving looms are to be restored' expresses…",
+     "options": [
+      "a past habit",
+      "a possibility",
+      "a formal plan",
+      "an obligation on listeners"
+     ],
+     "answer": 2,
+     "explain_es": "'Be to + infinitivo pasivo' = plan establecido."
+    },
+    {
+     "type": "mc",
+     "q": "What does Margaret say people will remember in fifty years?",
+     "options": [
+      "The cost",
+      "Who chaired the trust",
+      "The opening date",
+      "The building"
+     ],
+     "answer": 3,
+     "explain_es": "\"They'll remember the building.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why do some people think the opening date is a joke?",
+     "options": [
+      "It is in winter",
+      "It falls on April Fools' Day after a very long project",
+      "It was cancelled",
+      "It is on a Sunday"
+     ],
+     "answer": 1,
+     "explain_es": "El 1 de abril, tras tantos años."
+    }
+   ],
+   "dictation": [
+    "The roof had gone, there were trees growing inside.",
+    "Heritage isn't only about the nice bits.",
+    "They'll remember the building."
+   ]
+  },
+  {
+   "id": "ul-c2-10-2",
+   "title": "Clearing Out Dad's House",
+   "level": "C2",
+   "kind": "conversation",
+   "topic": "Family & Memory",
+   "focus": "Comparative structures with nuance (the more…the more, nowhere near, every bit as)",
+   "emoji": "📦",
+   "speakers": [
+    {
+     "name": "Anna",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "s": 0,
+     "text": "Jack, we have to make decisions. We can't keep everything. The flat's nowhere near as big as this house."
+    },
+    {
+     "s": 1,
+     "text": "I know, I know. But every time I pick something up, there's a story attached. This clock was Grandpa's."
+    },
+    {
+     "s": 0,
+     "text": "And it hasn't worked since nineteen eighty-five. The more we keep, the harder it'll be to find anything that actually matters."
+    },
+    {
+     "s": 1,
+     "text": "That's very practical of you."
+    },
+    {
+     "s": 0,
+     "text": "One of us has to be. Look, what about these? Boxes of old magazines. Do we need forty years of fishing magazines?"
+    },
+    {
+     "s": 1,
+     "text": "Dad loved those. Although, to be fair, he never reread them. They were ephemeral, really. He'd read each one once and put it on the pile."
+    },
+    {
+     "s": 0,
+     "text": "Exactly. Recycling. What's this?"
+    },
+    {
+     "s": 1,
+     "text": "Oh. It's his letters. From when he was in the navy. To Mom."
+    },
+    {
+     "s": 0,
+     "text": "Okay. Those stay. Those are every bit as important as anything in this house."
+    },
+    {
+     "s": 1,
+     "text": "Agreed. You see, this is why I can't rush. If we'd thrown everything out by the bag-load, we'd have lost these."
+    },
+    {
+     "s": 0,
+     "text": "Fair point. Slowly, then. But not too slowly. Rome wasn't built in a day, but it wasn't cleared out in a year either."
+    },
+    {
+     "s": 1,
+     "text": "That's not how the saying goes."
+    },
+    {
+     "s": 0,
+     "text": "It is now. What about the record player?"
+    },
+    {
+     "s": 1,
+     "text": "Keep it. It's a bit of a bygone thing, but it works better than half the modern speakers I've owned. They don't make them like that any more."
+    },
+    {
+     "s": 0,
+     "text": "Now you sound exactly like him."
+    },
+    {
+     "s": 1,
+     "text": "Ha. Well, the apple doesn't fall far from the tree."
+    },
+    {
+     "s": 0,
+     "text": "I'll take that as a yes. Okay. Letters, record player, the photos. Everything else, we decide one box at a time."
+    },
+    {
+     "s": 1,
+     "text": "Deal. And Anna? Thanks for doing this with me."
+    },
+    {
+     "s": 0,
+     "text": "Of course. He'd have hated us arguing over a broken clock anyway."
+    }
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why do Anna and Jack need to get rid of things?",
+     "options": [
+      "They are selling everything",
+      "Their father asked them to",
+      "They are moving abroad",
+      "The flat is much smaller than the house"
+     ],
+     "answer": 3,
+     "explain_es": "\"The flat's nowhere near as big as this house.\""
+    },
+    {
+     "type": "mc",
+     "q": "'The flat's nowhere near as big as this house' means the flat is…",
+     "options": [
+      "much smaller",
+      "the same size",
+      "slightly smaller",
+      "bigger"
+     ],
+     "answer": 0,
+     "explain_es": "'Nowhere near as … as' = ni mucho menos tan… como."
+    },
+    {
+     "type": "gap",
+     "q": "Anna: 'The ______ we keep, the harder it'll be to find anything that actually matters.' (1 word)",
+     "answer": "more",
+     "accept": [],
+     "explain_es": "Comparativa doble 'the more…, the harder…'."
+    },
+    {
+     "type": "mc",
+     "q": "Why does Jack agree to recycle the magazines?",
+     "options": [
+      "They were damaged",
+      "They were valuable",
+      "Anna insisted angrily",
+      "His father never reread them; they were ephemeral"
+     ],
+     "answer": 3,
+     "explain_es": "\"he never reread them. They were ephemeral, really.\""
+    },
+    {
+     "type": "mc",
+     "q": "What do they decide about the letters?",
+     "options": [
+      "To sell them",
+      "To recycle them",
+      "To keep them as equally important as anything else",
+      "To give them to the navy"
+     ],
+     "answer": 2,
+     "explain_es": "\"Those are every bit as important as anything in this house.\""
+    },
+    {
+     "type": "mc",
+     "q": "What is humorous about Anna's version of the proverb?",
+     "options": [
+      "She forgets it",
+      "She quotes it perfectly",
+      "She says it in Italian",
+      "She invents a new ending to 'Rome wasn't built in a day'"
+     ],
+     "answer": 3,
+     "explain_es": "Inventa: 'it wasn't cleared out in a year either'."
+    },
+    {
+     "type": "mc",
+     "q": "What does Jack mean by 'the apple doesn't fall far from the tree'?",
+     "options": [
+      "He wants to plant trees",
+      "He is like his father",
+      "He dislikes apples",
+      "He is leaving home"
+     ],
+     "answer": 1,
+     "explain_es": "Proverbio: los hijos se parecen a los padres."
+    },
+    {
+     "type": "mc",
+     "q": "How will they deal with the remaining items?",
+     "options": [
+      "Hire a company",
+      "Keep everything",
+      "Decide one box at a time",
+      "Throw everything away"
+     ],
+     "answer": 2,
+     "explain_es": "\"Everything else, we decide one box at a time.\""
+    }
+   ],
+   "dictation": [
+    "One of us has to be.",
+    "They don't make them like that any more.",
+    "He'd have hated us arguing over a broken clock anyway."
    ]
   }
  ]

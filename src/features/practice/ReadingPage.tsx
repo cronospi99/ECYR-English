@@ -123,7 +123,7 @@ export default function ReadingPage() {
             value={tab}
             onChange={setTab}
             options={[
-              { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'library', label: 'Biblioteca A1–C2' },
               { value: 'unit', label: 'Por unidad' },
               { value: 'story', label: 'Historias A1' },
               { value: 'travel', label: 'Guías de viaje' },

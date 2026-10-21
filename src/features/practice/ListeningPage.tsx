@@ -46,7 +46,7 @@ export default function ListeningPage() {
             value={tab}
             onChange={setTab}
             options={[
-              { value: 'library', label: 'Biblioteca A1–C1' },
+              { value: 'library', label: 'Biblioteca A1–C2' },
               { value: 'podcasts', label: 'Podcasts' },
               { value: 'dialogues', label: 'Diálogos y dictado' },
               { value: 'months', label: 'Audio real · Meses' },
