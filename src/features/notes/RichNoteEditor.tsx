@@ -322,6 +322,8 @@ export function RichNoteEditor({
   const compEnded = useRef(false);
   /** A composition already has its undo step: its later updates join it. */
   const compOpen = useRef(false);
+  /** The input being reconciled started with a pending bold / italic: it opens a new undo step. */
+  const breakNext = useRef(false);
   /** Bold / italic chosen with a bare caret, applied to what is typed next. */
   const pending = useRef<{ fmt: Fmt; base: string; at: number } | null>(null);
   const [empty, setEmpty] = useState(() => !stripMarks(initial));
@@ -453,12 +455,13 @@ export function RichNoteEditor({
       const now = Date.now();
       const coalesce =
         compOpen.current ||
-        ((kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500 && !applied && prevSnap.sel[0] === h.caret && prevSnap.sel[1] === h.caret);
+        ((kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500 && !applied && !breakNext.current && prevSnap.sel[0] === h.caret && prevSnap.sel[1] === h.caret);
       if (!coalesce) {
         h.past.push(prevSnap);
         if (h.past.length > 300) h.past.shift();
       }
       if (composing.current || compEnded.current) compOpen.current = true;
+      breakNext.current = false;
       h.future = [];
       h.kind = kind;
       h.at = now;
@@ -594,12 +597,16 @@ export function RichNoteEditor({
         return;
       }
       inputKind.current = t.startsWith('delete') ? 'delete' : t.startsWith('insert') ? 'type' : 'other';
-      if (!snapBefore.current) snapBefore.current = { text: model.current, sel: getSel() ?? lastSel.current };
+      if (!snapBefore.current) {
+        snapBefore.current = { text: model.current, sel: getSel() ?? lastSel.current };
+        breakNext.current = !!pending.current;
+      }
     };
     const onInput = () => reconcile();
     const onCompStart = () => {
       composing.current = true;
       compOpen.current = false;
+      breakNext.current = !!pending.current;
       if (!snapBefore.current) snapBefore.current = { text: model.current, sel: getSel() ?? lastSel.current };
     };
     const onCompEnd = () => {

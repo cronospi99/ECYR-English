@@ -26,6 +26,7 @@ export const router = createBrowserRouter([
       { path: 'learn/grammar/time-machine', element: page(() => import('./features/grammar/time-machine/TimeMachinePage')) },
       { path: 'learn/grammar/modals', element: page(() => import('./features/grammar/modals/ModalsPage')) },
       { path: 'learn/grammar/do-make', element: page(() => import('./features/grammar/do-make/DoMakePage')) },
+      { path: 'learn/grammar/tenses', element: page(() => import('./features/grammar/tenses/TensesPage')) },
       { path: 'learn/grammar/time-family', element: page(() => import('./features/grammar/time-family/TimeFamilyPage')) },
       { path: 'learn/:level', element: page(() => import('./features/learn/LevelPage')) },
       { path: 'learn/:level/:unit', element: page(() => import('./features/learn/UnitPage')) },

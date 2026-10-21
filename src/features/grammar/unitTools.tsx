@@ -10,7 +10,7 @@ import { Segmented } from '@/components/ui/Segmented';
  * that fit a unit's grammar, the same way Verb Lab does for verb forms.
  * Each module's registry is code-split and only loaded when a unit needs it.
  */
-type ModuleId = 'modals' | 'time-family' | 'time-machine' | 'do-make';
+type ModuleId = 'modals' | 'time-family' | 'time-machine' | 'do-make' | 'tenses';
 type Registry = Record<string, { title: string; Component: ComponentType }>;
 
 const REGISTRIES: Record<ModuleId, () => Promise<Registry>> = {
@@ -18,6 +18,7 @@ const REGISTRIES: Record<ModuleId, () => Promise<Registry>> = {
   'time-family': () => import('./time-family/tools').then((m) => m.TIME_FAMILY_TOOLS as unknown as Registry),
   'time-machine': () => import('./time-machine/tools').then((m) => m.TIME_MACHINE_TOOLS as unknown as Registry),
   'do-make': () => import('./do-make/tools').then((m) => m.DO_MAKE_TOOLS),
+  tenses: () => import('./tenses/tools').then((m) => m.TENSE_TOOLS),
 };
 
 const MODULE_INFO: Record<ModuleId, { title: string; to: string }> = {
@@ -25,6 +26,7 @@ const MODULE_INFO: Record<ModuleId, { title: string; to: string }> = {
   'time-family': { title: 'Time & Family', to: '/learn/grammar/time-family' },
   'time-machine': { title: 'Time Machine', to: '/learn/grammar/time-machine' },
   'do-make': { title: 'Do vs Make', to: '/learn/grammar/do-make' },
+  tenses: { title: 'Tense Timeline', to: '/learn/grammar/tenses' },
 };
 
 interface Rule {
@@ -56,6 +58,16 @@ const RULES: Rule[] = [
   // Do vs Make: daily routines and chores (A1), "how to do things" (A2 Payload)
   { test: /my day, my routine|imperatives and infinitives for giving suggestions/i, label: 'Do vs Make', module: 'do-make', tools: ['lesson', 'sort'], levels: ['A1', 'A2'] },
   { test: /possessive adjectives|possessive ’s|family/i, label: 'Familia y ’s', module: 'time-family', tools: ['genitive-rules', 'riddles'], levels: ['A1', 'A2'] },
+  // Tense Timeline (grammar point names start after " · ", so "if + past perfect" doesn't count)
+  { test: /present simple wh-questions|present continuous: yes|adverbs of frequency/i, label: 'Línea: presente', module: 'tenses', tools: ['present'], levels: ['A1'] },
+  { test: /past simple with ordinary verbs|simple past: ordinary verbs/i, label: 'Línea: pasado', module: 'tenses', tools: ['past'] },
+  { test: /(?:^|· )(?:present perfect|simple past vs\.? present perfect|accomplishments with the simple past)/i, label: 'Línea: perfecto', module: 'tenses', tools: ['perfect'] },
+  { test: /(?:^|· )(?:past continuous vs|past perfect)|narrative tenses/i, label: 'Línea: narrativos', module: 'tenses', tools: ['narrative'] },
+  { test: /(?:^|· )(?:future with|predicting the future)/i, label: 'Línea: futuro', module: 'tenses', tools: ['future'] },
+  { test: /(?:^|· )(?:future perfect|goals with the future perfect)/i, label: 'Línea: futuro perfecto', module: 'tenses', tools: ['future-perfect'] },
+  { test: /used to|past habits|would for habits/i, label: 'Línea: hábitos', module: 'tenses', tools: ['habits'] },
+  { test: /comparing tenses|time contrast: past, present, future/i, label: 'Línea: comparar', module: 'tenses', tools: ['compare'] },
+  { test: /passive (?:in|of) (?:the )?present continuous|passive with(?:out)? “by”/i, label: 'Línea: pasiva', module: 'tenses', tools: ['passive'] },
 ];
 
 export function grammarToolsForUnit(u: Unit, level: CefrLevel) {

@@ -1741,5 +1741,865 @@
         "explain_es": "\"With a little less effort, it might succeed.\""
       }
     ]
+  },
+  {
+    "id": "r3-c2-forgery-feature",
+    "title": "The Forger's Fingerprint",
+    "level": "C2",
+    "genre": "feature article",
+    "topic": "Art & Deception",
+    "focus": "Modals of speculation and deduction (present, past, future)",
+    "emoji": "🎨",
+    "words": 626,
+    "paragraphs": [
+      "For almost forty years, a small landscape painting hung in the dining room of a provincial museum, labelled as the work of a celebrated nineteenth-century master. Visitors admired it; scholars cited it; it appeared on postcards sold in the gift shop. Then, during routine conservation work, a technician noticed something odd. A pigment in the sky, a particular shade of blue, contained a compound that was not manufactured until the 1930s, several decades after the artist's death. Either the master had somehow acquired paint from the future, or the painting could not be his.",
+      "It must have been an uncomfortable morning for the curators. Forgeries are, in one sense, a museum's worst nightmare: they cast doubt not only on a single object but on the judgement of everyone who has vouched for it. Yet they are also more common than most institutions care to admit. Estimates vary widely, and are necessarily speculative, but some specialists believe that a significant proportion of the works circulating on the art market may be wrongly attributed, whether through deliberate fraud or honest error.",
+      "How could so many experts have been deceived for so long? Part of the answer lies in what forgers choose to copy. The most successful rarely reproduce famous works, which would be recognised immediately. Instead, they create 'new' paintings in the style of an established artist, often filling a gap in the known record: a missing period, a subject the artist is documented as having painted but which has never been found. Such works can't be compared directly with an original, because no original exists. They need only be plausible, and they will often be accompanied by a convincing history of ownership, itself forged.",
+      "Expectation plays a role too. A scholar who has spent years studying an artist may well see what she hopes to see, particularly when a discovery would crown a career. The forger, in effect, collaborates with his victims' desires. The landscape in the provincial museum, it later emerged, had been bought at a time when the institution was eager to expand its collection of nineteenth-century art, and its arrival was greeted with considerable fanfare. Nobody, it seems, had wanted to look too closely.",
+      "Technology has changed the balance considerably. Analysis of pigments, canvas fibres and the chemical composition of paint layers can now reveal anachronisms invisible to the naked eye. Infrared imaging can expose underdrawings, the preliminary sketches beneath the paint, which in genuine works tend to show hesitation and correction, and in copies often look suspiciously confident. Some researchers are experimenting with algorithms trained to recognise the characteristic brushwork of individual painters, although such systems are still some way from being accepted as reliable evidence.",
+      "Forgers, of course, adapt. A sophisticated forger today will use period canvases, scraped of their original images, and will grind his own pigments from historically appropriate materials. He might even study the scientific literature on authentication in order to avoid its traps. It would be naive to imagine that the contest between detection and deception will ever be decisively won. Each new method of analysis is likely to be followed, sooner or later, by a new method of evasion.",
+      "As for the landscape, it has not been destroyed. The museum, after some debate, decided to keep it on display, relabelled as a forgery and accompanied by an explanation of how it was discovered. It has, by all accounts, become one of the most popular objects in the collection. Visitors who once glanced at it in passing now stand in front of it for minutes at a time, examining the sky. Its creator will probably never be identified. Whoever he was, he can hardly have imagined that his work would one day be admired precisely for being fake."
+    ],
+    "glossary": [
+      [
+        "provincial",
+        "provincial, de provincias"
+      ],
+      [
+        "to cite",
+        "citar"
+      ],
+      [
+        "pigment",
+        "pigmento"
+      ],
+      [
+        "curator",
+        "conservador, comisario (de museo)"
+      ],
+      [
+        "to cast doubt on",
+        "poner en duda"
+      ],
+      [
+        "to vouch for",
+        "responder por, avalar"
+      ],
+      [
+        "wrongly attributed",
+        "atribuido erróneamente"
+      ],
+      [
+        "plausible",
+        "verosímil"
+      ],
+      [
+        "history of ownership",
+        "historial de propiedad, procedencia"
+      ],
+      [
+        "to crown (a career)",
+        "coronar (una carrera)"
+      ],
+      [
+        "fanfare",
+        "bombo y platillo"
+      ],
+      [
+        "anachronism",
+        "anacronismo"
+      ],
+      [
+        "underdrawing",
+        "dibujo subyacente"
+      ],
+      [
+        "to grind",
+        "moler"
+      ],
+      [
+        "evasion",
+        "evasión, elusión"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What first revealed that the landscape might be a forgery?",
+        "options": [
+          "A postcard showing a different painting",
+          "A pigment that did not exist in the artist's lifetime",
+          "A missing signature",
+          "A visitor's complaint"
+        ],
+        "answer": 1,
+        "explain_es": "Un azul con un compuesto fabricado a partir de los años 30."
+      },
+      {
+        "type": "mc",
+        "q": "'It must have been an uncomfortable morning for the curators' expresses…",
+        "options": [
+          "a confident deduction about the past",
+          "a criticism of the curators",
+          "a future prediction",
+          "an obligation"
+        ],
+        "answer": 0,
+        "explain_es": "'Must have been' = deducción segura sobre el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why are forgeries described as 'a museum's worst nightmare'?",
+        "options": [
+          "They attract thieves",
+          "They are expensive to insure",
+          "They are often damaged",
+          "They undermine trust in the experts who authenticated them"
+        ],
+        "answer": 3,
+        "explain_es": "\"they cast doubt ... on the judgement of everyone who has vouched for it\"."
+      },
+      {
+        "type": "tf",
+        "q": "Specialists agree on exactly how many artworks on the market are wrongly attributed.",
+        "answer": "F",
+        "explain_es": "\"Estimates vary widely, and are necessarily speculative\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do successful forgers avoid copying famous works?",
+        "options": [
+          "Famous works are too difficult to paint",
+          "Copies of famous works would be recognised immediately",
+          "Buyers prefer unknown artists",
+          "Famous works are protected by law"
+        ],
+        "answer": 1,
+        "explain_es": "\"which would be recognised immediately\"."
+      },
+      {
+        "type": "mc",
+        "q": "'Such works can't be compared directly with an original' means comparison is…",
+        "options": [
+          "forbidden",
+          "impossible because no original exists",
+          "unnecessary",
+          "expensive"
+        ],
+        "answer": 1,
+        "explain_es": "'Can't' = imposibilidad lógica: no existe original."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'collaborates with his victims' desires' suggests the forger…",
+        "options": [
+          "warns experts of fraud",
+          "exploits what experts want to believe",
+          "shares profits with victims",
+          "works openly with museums"
+        ],
+        "answer": 1,
+        "explain_es": "El falsificador se aprovecha de lo que las víctimas desean encontrar."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "Science joins the hunt",
+          "Why forgers use canvas",
+          "Algorithms replace experts",
+          "The history of infrared"
+        ],
+        "answer": 0,
+        "explain_es": "Análisis de pigmentos, infrarrojos, algoritmos."
+      },
+      {
+        "type": "tf",
+        "q": "In genuine paintings, underdrawings often show signs of hesitation.",
+        "answer": "T",
+        "explain_es": "\"in genuine works tend to show hesitation and correction\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's view of the future of forgery detection?",
+        "options": [
+          "Forgers will give up",
+          "Algorithms have already solved the problem",
+          "Detection will soon defeat forgery completely",
+          "The contest is likely to continue indefinitely"
+        ],
+        "answer": 3,
+        "explain_es": "\"It would be naive to imagine that the contest ... will ever be decisively won.\""
+      },
+      {
+        "type": "tf",
+        "q": "The museum's decision to keep the painting on display was made without any disagreement.",
+        "answer": "F",
+        "explain_es": "\"after some debate\"."
+      },
+      {
+        "type": "tf",
+        "q": "The forger of the landscape was later sent to prison.",
+        "answer": "NG",
+        "explain_es": "Su autor \"will probably never be identified\"; no se menciona ninguna condena."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The forger can hardly ____ imagined that his work would one day be admired for being fake. (1 word)",
+        "answer": "have",
+        "accept": [],
+        "explain_es": "'Can hardly have + participio' = deducción negativa sobre el pasado."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-boredom-essay",
+    "title": "In Praise of Boredom",
+    "level": "C2",
+    "genre": "essay",
+    "topic": "Attention & Creativity",
+    "focus": "Inversion after negative and restrictive adverbials",
+    "emoji": "🥱",
+    "words": 615,
+    "paragraphs": [
+      "Never before have human beings had so many ways of avoiding boredom, and rarely have we been so anxious about it. The smartphone, the streaming service and the endless scroll have made it possible to fill every spare moment, from the queue at the supermarket to the thirty seconds it takes for the kettle to boil. Not once in a typical day, for many of us, are we left with nothing to look at. This essay is an attempt to suggest that we may have lost something in the process.",
+      "Boredom has an unenviable reputation. It is associated with idleness, restlessness and, in children, with the kind of behaviour that ends in broken windows. Psychologists have linked chronic boredom to poor concentration, risk-taking and low mood. Little wonder, then, that we treat it as a problem to be solved, and that entire industries have grown up promising to solve it.",
+      "Yet occasional boredom, as distinct from the chronic kind, may serve a purpose. Some researchers have suggested that it acts as a signal, a kind of mental discomfort that tells us our current activity is not meeting our needs and pushes us to look for something more meaningful. Seen in this light, boredom is not a malfunction but a motivator. Only when we are allowed to feel it, the argument goes, do we have a reason to change what we are doing.",
+      "There is also some evidence, though it is far from conclusive, that boredom can encourage creative thought. In a frequently cited experiment, participants who first completed a deliberately tedious task, copying numbers from a telephone directory, subsequently came up with more inventive answers to a problem-solving exercise than those who had not. The explanation offered was that boredom sends the mind wandering, and that a wandering mind makes connections a focused one does not. Not until the external world falls quiet, perhaps, does the internal one begin to speak.",
+      "Writers and artists have long understood this intuitively. Many have described their best ideas arriving not at the desk but in moments of apparent emptiness: on long walks, during train journeys, in the bath. Such moments were once an unavoidable part of life. Now they must be actively defended, and few of us defend them. No sooner does a pause appear than we reach for a screen to fill it.",
+      "I should not want to romanticise this. Boredom can be miserable, and there is nothing noble about enduring a dull meeting or a delayed flight. Nor am I suggesting that we abandon our devices, which bring genuine pleasure and connection. Under no circumstances would I wish to return to an era in which the only alternative to boredom was more boredom. The point is not that boredom is good in itself, but that the instant elimination of every empty moment may deprive us of whatever benefits it brings.",
+      "What might a modest defence of boredom look like in practice? It could be as simple as leaving the phone in a pocket while waiting for a bus, or taking a walk without headphones, or allowing children an afternoon with nothing planned. Such experiments are, admittedly, small. But only by conducting them can we discover what our minds do when they are not being constantly fed.",
+      "Seldom do we ask what our attention is for. We treat it as something to be spent, and we allow others to compete for it. Perhaps it would be worth, now and then, leaving a little of it unspent, simply to see what grows in the space. The answer may be nothing at all. Or it may, on a good day, be the best idea we have had in months."
+    ],
+    "glossary": [
+      [
+        "spare moment",
+        "rato libre"
+      ],
+      [
+        "kettle",
+        "hervidor"
+      ],
+      [
+        "unenviable",
+        "poco envidiable"
+      ],
+      [
+        "idleness",
+        "ociosidad"
+      ],
+      [
+        "restlessness",
+        "inquietud"
+      ],
+      [
+        "chronic",
+        "crónico"
+      ],
+      [
+        "malfunction",
+        "fallo, avería"
+      ],
+      [
+        "motivator",
+        "motivador"
+      ],
+      [
+        "tedious",
+        "tedioso"
+      ],
+      [
+        "telephone directory",
+        "guía telefónica"
+      ],
+      [
+        "to wander",
+        "divagar, vagar"
+      ],
+      [
+        "intuitively",
+        "intuitivamente"
+      ],
+      [
+        "to romanticise",
+        "idealizar"
+      ],
+      [
+        "to endure",
+        "soportar"
+      ],
+      [
+        "to deprive of",
+        "privar de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "gap",
+        "q": "Summary: Never before ____ human beings had so many ways of avoiding boredom. (1 word)",
+        "answer": "have",
+        "accept": [],
+        "explain_es": "Inversión tras 'Never before': auxiliar antes del sujeto."
+      },
+      {
+        "type": "mc",
+        "q": "What contrast does the first paragraph present?",
+        "options": [
+          "Less technology, more boredom",
+          "Children are more bored than adults",
+          "Supermarkets are boring",
+          "More ways to avoid boredom, yet more anxiety about it"
+        ],
+        "answer": 3,
+        "explain_es": "Nunca tantas formas de evitarlo y nunca tanta ansiedad."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer say 'Little wonder' in paragraph 2?",
+        "options": [
+          "It is surprising that we fear boredom",
+          "Boredom is a recent invention",
+          "Given boredom's bad associations, our desire to eliminate it is unsurprising",
+          "Industries have failed"
+        ],
+        "answer": 2,
+        "explain_es": "'Little wonder' = no es de extrañar."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 3, occasional boredom may function as…",
+        "options": [
+          "a form of rest",
+          "a cause of broken windows",
+          "a sign of illness",
+          "a signal prompting us to seek something more meaningful"
+        ],
+        "answer": 3,
+        "explain_es": "\"acts as a signal ... pushes us to look for something more meaningful\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer presents the evidence on boredom and creativity as conclusive.",
+        "answer": "F",
+        "explain_es": "\"though it is far from conclusive\"."
+      },
+      {
+        "type": "mc",
+        "q": "In the experiment described, what did participants do first?",
+        "options": [
+          "Took a walk",
+          "Copied numbers from a telephone directory",
+          "Watched a film",
+          "Solved a creative problem"
+        ],
+        "answer": 1,
+        "explain_es": "\"copying numbers from a telephone directory\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'Not until the external world falls quiet … does the internal one begin to speak' suggests that…",
+        "options": [
+          "inner thoughts emerge only when outside stimulation stops",
+          "the world is always noisy",
+          "silence prevents thinking",
+          "speaking aloud helps creativity"
+        ],
+        "answer": 0,
+        "explain_es": "Inversión tras 'Not until': la mente interior aparece cuando cesa el estímulo externo."
+      },
+      {
+        "type": "mc",
+        "q": "'No sooner does a pause appear than we reach for a screen' means…",
+        "options": [
+          "pauses rarely appear",
+          "we wait a long time before using a screen",
+          "we fill pauses immediately",
+          "screens create pauses"
+        ],
+        "answer": 2,
+        "explain_es": "'No sooner… than' = en cuanto."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Limits to the argument",
+          "Abandon your devices",
+          "The nobility of delay",
+          "Return to the past"
+        ],
+        "answer": 0,
+        "explain_es": "El autor acota su tesis: no idealiza el aburrimiento ni pide abandonar los dispositivos."
+      },
+      {
+        "type": "tf",
+        "q": "The writer would like to return to an era before smartphones.",
+        "answer": "F",
+        "explain_es": "\"Under no circumstances would I wish to return to an era…\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which of these is NOT suggested as a practical experiment?",
+        "options": [
+          "Leaving the phone in a pocket at the bus stop",
+          "Walking without headphones",
+          "Banning screens at work",
+          "Giving children unplanned time"
+        ],
+        "answer": 2,
+        "explain_es": "No se propone prohibir pantallas en el trabajo."
+      },
+      {
+        "type": "tf",
+        "q": "The writer has personally tried the experiments suggested.",
+        "answer": "NG",
+        "explain_es": "El texto no lo indica."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with inversion: We seldom ask what our attention is for. → Seldom ____ what our attention is for.",
+        "answer": "do we ask",
+        "accept": [],
+        "explain_es": "Inversión tras 'Seldom': do + sujeto + verbo."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-coastal-retreat-letter",
+    "title": "An Open Letter on the Future of Saltmere",
+    "level": "C2",
+    "genre": "open letter",
+    "topic": "Coastal Erosion",
+    "focus": "Mixed and inverted conditionals (Should…, Were…, Had…)",
+    "emoji": "🌊",
+    "words": 603,
+    "paragraphs": [
+      "To the residents of Saltmere, and to the County Council,",
+      "We are writing as members of the Saltmere Coastal Forum, a group of residents, fishermen, scientists and business owners who have spent the past two years studying the future of our village. Our conclusions are not easy to write, and they will not be easy to read. We believe, however, that you deserve to hear them plainly.",
+      "The cliffs on which the northern half of Saltmere stands are retreating. They have always done so; the village church, as many of you know, once stood three fields further inland than its ruins do now. What has changed is the pace. Over the past twenty years, the cliff edge has moved back by an average of more than a metre a year, and in the storms of last winter we lost almost six metres in a single night. Had the sea wall at Cliff Road not been reinforced in 2015, the Henderson family's house would now be on the beach.",
+      "We understand the instinct to fight. Many of us share it. But we must be honest about the cost. The engineers who advised us estimate that protecting the entire northern frontage with rock armour would cost in the region of forty million pounds, a sum that neither the council nor central government has indicated any willingness to provide. Were such funding to be found, the defences would need to be maintained and eventually replaced, at further expense, for as long as anyone wished to keep the village where it is. And even then, by deflecting the waves, they would be likely to accelerate erosion further along the coast, at the expense of our neighbours in Brackley.",
+      "The alternative, which is known in the jargon as managed realignment, is to plan for a gradual and orderly move inland. This would mean identifying land, safe for at least a century, on which homes, the school and the lifeboat station could be rebuilt over the coming decades, and supporting households through the transition. It would also mean accepting that some of what we love will, in time, be lost.",
+      "We do not pretend that this is a painless option. If we had begun planning thirty years ago, when the warning signs first appeared, we would be in a far stronger position today, with land already secured and funds already set aside. We did not, and nor did the authorities responsible for us. That is a reason for urgency, not for despair.",
+      "We therefore ask the council for three things. First, that it commit to a long-term plan for Saltmere, developed with residents rather than imposed upon them. Second, that it identify and secure suitable land for relocation within the next five years. Third, that it establish a fund to compensate households whose homes are lost, so that no family is left to bear that burden alone. Should these steps not be taken, we fear that the village will face the worst of both worlds: neither protected nor prepared, simply waiting for the next storm.",
+      "To our fellow residents, we say this. Were the choice between staying and leaving entirely ours, many of us would stay. It is not. The sea is making that choice, slowly and without consulting anyone. What remains in our hands is whether we respond to it together, with time to plan, or separately, in emergency, one collapsed garden at a time.",
+      "Saltmere has survived for eight hundred years because its people adapted. Its church moved once before. We believe it can do so again, provided we begin now.",
+      "Yours sincerely,",
+      "The Saltmere Coastal Forum"
+    ],
+    "glossary": [
+      [
+        "to retreat",
+        "retroceder"
+      ],
+      [
+        "inland",
+        "tierra adentro"
+      ],
+      [
+        "to reinforce",
+        "reforzar"
+      ],
+      [
+        "sea wall",
+        "malecón, dique"
+      ],
+      [
+        "frontage",
+        "frente, fachada (costera)"
+      ],
+      [
+        "rock armour",
+        "escollera"
+      ],
+      [
+        "to deflect",
+        "desviar"
+      ],
+      [
+        "erosion",
+        "erosión"
+      ],
+      [
+        "managed realignment",
+        "reubicación planificada (retirada gestionada)"
+      ],
+      [
+        "orderly",
+        "ordenado"
+      ],
+      [
+        "lifeboat station",
+        "estación de salvamento marítimo"
+      ],
+      [
+        "to set aside",
+        "reservar, apartar"
+      ],
+      [
+        "relocation",
+        "reubicación, traslado"
+      ],
+      [
+        "to bear a burden",
+        "cargar con un peso"
+      ],
+      [
+        "the worst of both worlds",
+        "lo peor de ambas opciones"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the main purpose of the letter?",
+        "options": [
+          "To announce the closure of the school",
+          "To demand a sea wall for the whole village",
+          "To criticise the Henderson family",
+          "To argue for planned relocation and request specific council action"
+        ],
+        "answer": 3,
+        "explain_es": "Propone la 'managed realignment' y pide tres medidas al ayuntamiento."
+      },
+      {
+        "type": "mc",
+        "q": "Why do the writers mention the village church?",
+        "options": [
+          "To show that erosion is not a new phenomenon",
+          "Because the Forum meets there",
+          "To ask for funds to restore it",
+          "Because it is about to collapse"
+        ],
+        "answer": 0,
+        "explain_es": "La iglesia estaba antes más hacia el interior: la erosión siempre ha existido."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: ____ the sea wall at Cliff Road not been reinforced, the Henderson house would now be on the beach. (1 word)",
+        "answer": "Had",
+        "accept": [
+          "had"
+        ],
+        "explain_es": "Condicional mixta invertida: 'Had … not been reinforced' (pasado) + 'would now be' (presente)."
+      },
+      {
+        "type": "tf",
+        "q": "Central government has offered forty million pounds to protect the village.",
+        "answer": "F",
+        "explain_es": "Ni el ayuntamiento ni el gobierno central han mostrado disposición a pagarlo."
+      },
+      {
+        "type": "mc",
+        "q": "What disadvantage of rock armour is mentioned besides cost?",
+        "options": [
+          "It is ugly",
+          "It could worsen erosion elsewhere along the coast",
+          "It would block the harbour",
+          "It requires no maintenance"
+        ],
+        "answer": 1,
+        "explain_es": "\"likely to accelerate erosion further along the coast\"."
+      },
+      {
+        "type": "mc",
+        "q": "'Were such funding to be found…' means…",
+        "options": [
+          "Because funding was found",
+          "If such funding were found",
+          "Although funding was found",
+          "When funding is found"
+        ],
+        "answer": 1,
+        "explain_es": "Condicional invertida con 'were to'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'managed realignment' refers to…",
+        "options": [
+          "a planned, gradual move away from the coast",
+          "building higher walls",
+          "selling homes to developers",
+          "moving the sea"
+        ],
+        "answer": 0,
+        "explain_es": "Retirada planificada hacia el interior."
+      },
+      {
+        "type": "mc",
+        "q": "'If we had begun planning thirty years ago, we would be in a far stronger position today' is…",
+        "options": [
+          "a first conditional",
+          "a third conditional",
+          "a zero conditional",
+          "a mixed conditional"
+        ],
+        "answer": 3,
+        "explain_es": "Condición pasada + resultado presente: condicional mixta."
+      },
+      {
+        "type": "tf",
+        "q": "The writers blame only the authorities for the lack of earlier planning.",
+        "answer": "F",
+        "explain_es": "\"We did not, and nor did the authorities\": se incluyen a sí mismos."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "Three requests",
+          "The history of Brackley",
+          "Why storms are worsening",
+          "A plan rejected"
+        ],
+        "answer": 0,
+        "explain_es": "Enumera tres peticiones."
+      },
+      {
+        "type": "mc",
+        "q": "What do the writers mean by 'the worst of both worlds'?",
+        "options": [
+          "Losing both the church and the school",
+          "Having two councils",
+          "Being neither protected by defences nor prepared to move",
+          "Paying for walls and relocation"
+        ],
+        "answer": 2,
+        "explain_es": "\"neither protected nor prepared\"."
+      },
+      {
+        "type": "tf",
+        "q": "The Forum has already identified the land for relocation.",
+        "answer": "NG",
+        "explain_es": "Piden al ayuntamiento que la identifique; no se dice que ellos ya la tengan."
+      },
+      {
+        "type": "mc",
+        "q": "What is the tone of the final paragraph?",
+        "options": [
+          "Hopeful and determined",
+          "Indifferent",
+          "Angry",
+          "Resigned and bitter"
+        ],
+        "answer": 0,
+        "explain_es": "Recuerda la capacidad de adaptación del pueblo: esperanza condicionada a actuar ya."
+      }
+    ]
+  },
+  {
+    "id": "r3-c2-grandmothers-language-memoir",
+    "title": "The Language I Wish I Had Kept",
+    "level": "C2",
+    "genre": "memoir",
+    "topic": "Language & Family",
+    "focus": "Unreal past: wish, if only, it's (high) time, would rather, as if",
+    "emoji": "👵",
+    "words": 641,
+    "paragraphs": [
+      "My grandmother spoke to her hens in Galician. She spoke to the priest, the postman and my mother in Spanish, but the hens, the cow and, when she thought nobody was listening, the photograph of my grandfather on the dresser all received the language she had grown up with in a village in the hills above Lugo. I would hear it through the kitchen door, low and musical, and I understood perhaps one word in five. I wish now that I had understood the rest.",
+      "It was not that she refused to teach me. It was rather that nobody thought it worth teaching. My mother, who had moved to Madrid at seventeen, had spent years trying to lose her accent, and she regarded Galician, with the particular impatience of the recently escaped, as a language of poverty and mud. If only she had seen it differently. But I understand why she did not. For her generation, getting on meant getting out, and getting out meant sounding as if you had always been somewhere else.",
+      "So I grew up with Spanish, and later English, and a handful of Galician words that I used without knowing they were Galician: the name for a particular kind of drizzle, a word for the feeling of being homesick for a place you have never left, an expression my grandmother used whenever I was being stubborn. I assumed for years that everyone knew them. When I discovered, at university, that my friends from Valencia and Seville had no idea what I was talking about, I felt a strange mixture of embarrassment and pride, as though I had found an unexpected room in a house I thought I knew.",
+      "My grandmother died when I was twenty-three. In the weeks afterwards, sorting through her things, I found a bundle of letters she had written to my grandfather during the years he had worked in Switzerland. They were in Galician. I could not read them. I sat on her bed with the letters in my lap and felt, for the first time, the full weight of what had not been passed on. It was as if she had left me a key and I had never learned which door it opened.",
+      "I would rather not exaggerate. I have since taken classes, read novels, listened to the radio, and I can now read those letters, slowly, with a dictionary at my elbow. They are not, it turns out, especially dramatic: the price of feed, a neighbour's wedding, a cow that had stopped giving milk. But every so often, in the middle of a list of chores, there is a sentence of such tenderness that I have to put the page down. I would give a great deal to have heard her say those sentences aloud.",
+      "Galician, I should add, is not dying. It is spoken by hundreds of thousands of people, taught in schools and broadcast on television, and in many ways it is in better health than it was when my grandmother was young. But languages are not only lost on a national scale. They are lost one family at a time, in kitchens, through a series of small, sensible decisions that nobody intends to be final.",
+      "My daughter is seven. She speaks Spanish and English, and she is beginning to learn Galician, mostly from me, mostly badly. Some of my friends find this sweet; others think it is a waste of time she could spend on Mandarin. Perhaps they are right. But it is high time, I think, that somebody in my family stopped making the sensible decision. When she says the word for that particular kind of drizzle, looking out of the window at a grey morning, I hear something I had thought was gone. It is not my grandmother's voice. But it is not entirely unlike it."
+    ],
+    "glossary": [
+      [
+        "hen",
+        "gallina"
+      ],
+      [
+        "dresser",
+        "aparador"
+      ],
+      [
+        "to get on",
+        "prosperar, salir adelante"
+      ],
+      [
+        "to get out",
+        "salir (de un lugar), marcharse"
+      ],
+      [
+        "drizzle",
+        "llovizna"
+      ],
+      [
+        "homesick",
+        "nostálgico, con morriña"
+      ],
+      [
+        "stubborn",
+        "terco, cabezota"
+      ],
+      [
+        "bundle",
+        "fajo, montón"
+      ],
+      [
+        "to pass on",
+        "transmitir"
+      ],
+      [
+        "at one's elbow",
+        "a mano, al lado"
+      ],
+      [
+        "feed",
+        "pienso"
+      ],
+      [
+        "chore",
+        "tarea doméstica"
+      ],
+      [
+        "tenderness",
+        "ternura"
+      ],
+      [
+        "to broadcast",
+        "emitir"
+      ],
+      [
+        "sensible",
+        "sensato"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does the opening paragraph reveal about the grandmother's use of Galician?",
+        "options": [
+          "She reserved it for private, intimate contexts",
+          "She refused to speak it",
+          "She taught it to the priest",
+          "She used it in public with officials"
+        ],
+        "answer": 0,
+        "explain_es": "Lo hablaba con los animales y la foto del abuelo, cuando nadie escuchaba."
+      },
+      {
+        "type": "gap",
+        "q": "Summary: The writer says: 'I ____ now that I had understood the rest.' (1 word)",
+        "answer": "wish",
+        "accept": [],
+        "explain_es": "'Wish + past perfect' para lamentar el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the writer's mother look down on Galician?",
+        "options": [
+          "She preferred English",
+          "She had never heard it",
+          "She associated it with poverty and the life she had escaped",
+          "Her teachers forbade it"
+        ],
+        "answer": 2,
+        "explain_es": "\"a language of poverty and mud\"; \"the recently escaped\"."
+      },
+      {
+        "type": "mc",
+        "q": "'sounding as if you had always been somewhere else' implies that social success meant…",
+        "options": [
+          "returning to the village",
+          "hiding one's origins",
+          "learning many languages",
+          "travelling abroad"
+        ],
+        "answer": 1,
+        "explain_es": "'As if + past perfect': aparentar otra procedencia."
+      },
+      {
+        "type": "tf",
+        "q": "The writer knew from childhood that certain words were Galician.",
+        "answer": "F",
+        "explain_es": "\"I used without knowing they were Galician\"."
+      },
+      {
+        "type": "vocab",
+        "q": "'As though I had found an unexpected room in a house I thought I knew' expresses…",
+        "options": [
+          "fear",
+          "the surprise of discovering a hidden part of one's own identity",
+          "confusion about architecture",
+          "a desire to move house"
+        ],
+        "answer": 1,
+        "explain_es": "Metáfora del descubrimiento de algo propio desconocido."
+      },
+      {
+        "type": "mc",
+        "q": "What did the letters make the writer realise?",
+        "options": [
+          "How much had not been passed down to her",
+          "Her grandfather had lived in Galicia",
+          "The letters were worthless",
+          "Her grandparents had been unhappy"
+        ],
+        "answer": 0,
+        "explain_es": "\"the full weight of what had not been passed on\"."
+      },
+      {
+        "type": "mc",
+        "q": "'I would rather not exaggerate' is used to…",
+        "options": [
+          "refuse to talk about the letters",
+          "introduce a balanced, realistic account",
+          "criticise other writers",
+          "express a preference for fiction"
+        ],
+        "answer": 1,
+        "explain_es": "Matiza: las cartas no son dramáticas, aunque tienen frases tiernas."
+      },
+      {
+        "type": "tf",
+        "q": "The letters are mostly about dramatic events.",
+        "answer": "F",
+        "explain_es": "\"They are not, it turns out, especially dramatic\"."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 6.",
+        "options": [
+          "The death of Galician",
+          "Television in Galicia",
+          "Lost one family at a time",
+          "National language policy"
+        ],
+        "answer": 2,
+        "explain_es": "El gallego no muere, pero se pierde familia a familia."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's daughter is learning Mandarin.",
+        "answer": "NG",
+        "explain_es": "Algunos amigos lo sugieren, pero no se dice que lo estudie."
+      },
+      {
+        "type": "mc",
+        "q": "'It is high time … that somebody in my family stopped making the sensible decision' means…",
+        "options": [
+          "the family has always been sensible",
+          "it is too late to change",
+          "it is overdue for someone to break the pattern",
+          "the decision was made long ago"
+        ],
+        "answer": 2,
+        "explain_es": "'It's high time + pasado' = ya va siendo hora de."
+      },
+      {
+        "type": "mc",
+        "q": "What does the final sentence suggest?",
+        "options": [
+          "Something of the grandmother survives through the daughter",
+          "The writer has given up on the language",
+          "The daughter dislikes Galician",
+          "The daughter sounds exactly like the grandmother"
+        ],
+        "answer": 0,
+        "explain_es": "\"It is not my grandmother's voice. But it is not entirely unlike it.\""
+      }
+    ]
   }
 ]
