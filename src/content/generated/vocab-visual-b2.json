@@ -1,0 +1,668 @@
+{
+ "level": "B2",
+ "topics": [
+  {
+   "id": "weather-idioms",
+   "level": "B2",
+   "title": "Weather idioms",
+   "titleEs": "Modismos con el clima",
+   "emoji": "🌦️",
+   "color": "var(--blue)",
+   "cover": "/visuals/vocab/weather/rainy.webp",
+   "intro_es": "El inglés usa el clima para hablar de emociones, problemas y relaciones. Mira el dibujo: casi siempre te da una pista del significado.",
+   "tip_es": "No traduzcas los modismos palabra por palabra. Aprende cada uno con su situación típica y fíjate en la forma fija: <i>steal <b>someone’s</b> thunder</i>, <i>be <b>on</b> cloud nine</i>.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "raining-cats-and-dogs",
+     "en": "it’s raining cats and dogs",
+     "es": "está lloviendo a cántaros",
+     "ex": "Take a taxi — it’s raining cats and dogs out there!",
+     "img": "/visuals/vocab/weather/rainy.webp",
+     "def": "it is raining very heavily",
+     "form": "raining cats and dogs"
+    },
+    {
+     "id": "under-the-weather",
+     "en": "under the weather",
+     "es": "indispuesto, un poco enfermo",
+     "ex": "I’m feeling a bit under the weather, so I’ll stay home.",
+     "img": "/visuals/vocab/weather/cloudy.webp",
+     "def": "slightly ill",
+     "form": "under the weather"
+    },
+    {
+     "id": "storm-in-a-teacup",
+     "en": "a storm in a teacup",
+     "es": "una tormenta en un vaso de agua",
+     "ex": "Their argument was just a storm in a teacup.",
+     "emoji": "🫖",
+     "def": "a lot of anger about something unimportant",
+     "note": "US: a tempest in a teapot.",
+     "form": "a storm in a teacup"
+    },
+    {
+     "id": "silver-lining",
+     "en": "every cloud has a silver lining",
+     "es": "no hay mal que por bien no venga",
+     "ex": "I lost my job, but every cloud has a silver lining: now I can study.",
+     "img": "/visuals/vocab/weather/partly-cloudy.webp",
+     "def": "something good comes out of every bad situation",
+     "form": "every cloud has a silver lining"
+    },
+    {
+     "id": "steal-thunder",
+     "en": "steal someone’s thunder",
+     "es": "robarle el protagonismo a alguien",
+     "ex": "She stole my thunder by announcing her news at my birthday party.",
+     "img": "/visuals/vocab/weather/lightning.webp",
+     "def": "take attention or praise away from someone",
+     "form": "stole my thunder"
+    },
+    {
+     "id": "on-cloud-nine",
+     "en": "be on cloud nine",
+     "es": "estar en las nubes de felicidad",
+     "ex": "Since he got the scholarship, he’s been on cloud nine.",
+     "emoji": "☁️",
+     "def": "be extremely happy",
+     "form": "on cloud nine"
+    },
+    {
+     "id": "head-in-the-clouds",
+     "en": "have your head in the clouds",
+     "es": "estar en la luna",
+     "ex": "He always has his head in the clouds during maths class.",
+     "emoji": "💭",
+     "def": "not pay attention to what is happening",
+     "form": "head in the clouds"
+    },
+    {
+     "id": "break-the-ice",
+     "en": "break the ice",
+     "es": "romper el hielo",
+     "ex": "The teacher played a game to break the ice on the first day.",
+     "emoji": "🧊",
+     "def": "make people feel relaxed when they first meet",
+     "form": "break the ice"
+    },
+    {
+     "id": "rain-check",
+     "en": "take a rain check",
+     "es": "dejarlo para otra ocasión",
+     "ex": "I can’t come tonight — can I take a rain check?",
+     "emoji": "🎟️",
+     "def": "refuse an offer now but accept it later",
+     "form": "take a rain check"
+    },
+    {
+     "id": "weather-the-storm",
+     "en": "weather the storm",
+     "es": "capear el temporal",
+     "ex": "The small company managed to weather the storm of the crisis.",
+     "img": "/visuals/vocab/weather/stormy.webp",
+     "def": "survive a difficult period",
+     "form": "weather the storm"
+    },
+    {
+     "id": "calm-before-the-storm",
+     "en": "the calm before the storm",
+     "es": "la calma antes de la tormenta",
+     "ex": "The office was quiet — the calm before the storm of the sales season.",
+     "img": "/visuals/vocab/weather/clear.webp",
+     "def": "a quiet period before trouble starts",
+     "form": "the calm before the storm"
+    },
+    {
+     "id": "right-as-rain",
+     "en": "as right as rain",
+     "es": "como nuevo",
+     "ex": "Drink this tea and you’ll be as right as rain tomorrow.",
+     "img": "/visuals/vocab/weather/raindrops.webp",
+     "def": "healthy again after an illness",
+     "form": "as right as rain"
+    },
+    {
+     "id": "snowed-under",
+     "en": "be snowed under",
+     "es": "estar hasta el cuello de trabajo",
+     "ex": "I can’t go out this week; I’m snowed under with exams.",
+     "img": "/visuals/vocab/weather/snowy.webp",
+     "def": "have too much work",
+     "form": "snowed under"
+    },
+    {
+     "id": "fair-weather-friend",
+     "en": "a fair-weather friend",
+     "es": "un amigo solo para los buenos momentos",
+     "ex": "When I had problems, I discovered he was just a fair-weather friend.",
+     "img": "/visuals/vocab/weather/sunny.webp",
+     "def": "a friend who disappears when you need help",
+     "form": "a fair-weather friend"
+    },
+    {
+     "id": "brainstorm",
+     "en": "brainstorm",
+     "es": "lluvia de ideas",
+     "ex": "Let’s brainstorm some names for the new café.",
+     "img": "/visuals/vocab/weather/verb-rain.webp",
+     "def": "suggest many ideas quickly in a group",
+     "form": "brainstorm"
+    },
+    {
+     "id": "breeze",
+     "en": "a breeze",
+     "es": "pan comido",
+     "ex": "The exam was a breeze — I finished in twenty minutes.",
+     "img": "/visuals/vocab/weather/breezy.webp",
+     "def": "something very easy",
+     "form": "a breeze"
+    }
+   ]
+  },
+  {
+   "id": "climate-change",
+   "level": "B2",
+   "title": "Climate change collocations",
+   "titleEs": "Colocaciones del cambio climático",
+   "emoji": "🌍",
+   "color": "var(--green)",
+   "cover": "/visuals/vocab/weather/sunlight.webp",
+   "intro_es": "Las combinaciones de palabras que aparecen en cualquier noticia o ensayo sobre el clima. Apréndelas en bloque: <i>cut emissions</i>, no «reduce the emissions down».",
+   "tip_es": "Verbos que van con estos sustantivos: <i><b>tackle</b> climate change</i>, <i><b>reduce / cut</b> emissions</i>, <i><b>switch to</b> renewable energy</i>, <i><b>raise</b> awareness</i>.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "global-warming",
+     "en": "global warming",
+     "es": "calentamiento global",
+     "ex": "Global warming is making heatwaves more frequent.",
+     "img": "/visuals/vocab/weather/hot.webp",
+     "group": "The problem",
+     "form": "Global warming"
+    },
+    {
+     "id": "greenhouse-gases",
+     "en": "greenhouse gases",
+     "es": "gases de efecto invernadero",
+     "ex": "Cars and factories release greenhouse gases.",
+     "emoji": "🏭",
+     "group": "The problem",
+     "form": "greenhouse gases"
+    },
+    {
+     "id": "fossil-fuels",
+     "en": "fossil fuels",
+     "es": "combustibles fósiles",
+     "ex": "We still depend on fossil fuels like oil and coal.",
+     "emoji": "🛢️",
+     "group": "The problem",
+     "form": "fossil fuels"
+    },
+    {
+     "id": "carbon-footprint",
+     "en": "carbon footprint",
+     "es": "huella de carbono",
+     "ex": "Flying less is the fastest way to reduce your carbon footprint.",
+     "emoji": "👣",
+     "group": "The problem",
+     "form": "carbon footprint"
+    },
+    {
+     "id": "deforestation",
+     "en": "deforestation",
+     "es": "deforestación",
+     "ex": "Deforestation in the Amazon has reached record levels.",
+     "emoji": "🪓",
+     "group": "The problem",
+     "form": "Deforestation"
+    },
+    {
+     "id": "rising-sea-levels",
+     "en": "rising sea levels",
+     "es": "aumento del nivel del mar",
+     "ex": "Rising sea levels threaten coastal cities like Cartagena.",
+     "emoji": "🌊",
+     "group": "The consequences",
+     "form": "Rising sea levels"
+    },
+    {
+     "id": "melting-glaciers",
+     "en": "melting glaciers",
+     "es": "deshielo de los glaciares",
+     "ex": "Melting glaciers in the Andes put water supplies at risk.",
+     "emoji": "🏔️",
+     "group": "The consequences",
+     "form": "Melting glaciers"
+    },
+    {
+     "id": "extreme-weather-events",
+     "en": "extreme weather events",
+     "es": "fenómenos meteorológicos extremos",
+     "ex": "Extreme weather events are becoming more common.",
+     "img": "/visuals/vocab/weather/tornado.webp",
+     "group": "The consequences",
+     "form": "Extreme weather events"
+    },
+    {
+     "id": "biodiversity-loss",
+     "en": "biodiversity loss",
+     "es": "pérdida de biodiversidad",
+     "ex": "Biodiversity loss affects bees, birds and fish.",
+     "emoji": "🐝",
+     "group": "The consequences",
+     "form": "Biodiversity loss"
+    },
+    {
+     "id": "cut-emissions",
+     "en": "cut emissions",
+     "es": "reducir las emisiones",
+     "ex": "Governments promised to cut emissions by half by 2030.",
+     "emoji": "✂️",
+     "group": "The solutions",
+     "form": "cut emissions"
+    },
+    {
+     "id": "renewable-energy",
+     "en": "renewable energy",
+     "es": "energía renovable",
+     "ex": "Most of the country’s electricity comes from renewable energy.",
+     "img": "/visuals/vocab/weather/sunlight.webp",
+     "group": "The solutions",
+     "form": "renewable energy"
+    },
+    {
+     "id": "wind-power",
+     "en": "wind power",
+     "es": "energía eólica",
+     "ex": "La Guajira has great potential for wind power.",
+     "img": "/visuals/vocab/weather/wind.webp",
+     "group": "The solutions",
+     "form": "wind power"
+    },
+    {
+     "id": "carbon-neutral",
+     "en": "carbon-neutral",
+     "es": "carbono neutral",
+     "ex": "The university wants to be carbon-neutral by 2035.",
+     "emoji": "⚖️",
+     "group": "The solutions",
+     "form": "carbon-neutral"
+    },
+    {
+     "id": "sustainable",
+     "en": "sustainable",
+     "es": "sostenible",
+     "ex": "We need a more sustainable way of producing food.",
+     "emoji": "🌱",
+     "group": "The solutions",
+     "form": "sustainable"
+    },
+    {
+     "id": "offset",
+     "en": "offset",
+     "es": "compensar",
+     "ex": "Some airlines let you offset the emissions of your flight.",
+     "emoji": "🌳",
+     "group": "The solutions",
+     "form": "offset"
+    },
+    {
+     "id": "tipping-point",
+     "en": "tipping point",
+     "es": "punto de no retorno",
+     "ex": "Scientists warn that we are close to a tipping point.",
+     "emoji": "⏳",
+     "group": "The solutions",
+     "form": "tipping point"
+    }
+   ]
+  },
+  {
+   "id": "urban-planning",
+   "level": "B2",
+   "title": "Urban planning & cityscapes",
+   "titleEs": "Urbanismo y paisaje urbano",
+   "emoji": "🌆",
+   "color": "var(--indigo)",
+   "cover": "/visuals/vocab/city/advanced.webp",
+   "intro_es": "Para describir ciudades con precisión (como en la unidad «Exploring new cities»): cómo están organizadas, qué las hace vivibles y cómo cambian.",
+   "tip_es": "<b>Bustling</b> (positivo, lleno de vida) frente a <b>overcrowded</b> (negativo, demasiada gente). <b>Quaint</b> es encantador y antiguo, a veces un poco irónico.",
+   "figures": [
+    {
+     "src": "/visuals/shops-city.webp",
+     "title": "Shops in a city",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "De lo básico a lo avanzado en una ciudad"
+    }
+   ],
+   "items": [
+    {
+     "id": "skyline",
+     "en": "skyline",
+     "es": "perfil de la ciudad",
+     "ex": "The skyline of the city changes every year.",
+     "img": "/visuals/vocab/city/skyscraper.webp",
+     "group": "Cityscape",
+     "form": "skyline"
+    },
+    {
+     "id": "skyscraper",
+     "en": "skyscraper",
+     "es": "rascacielos",
+     "ex": "The new skyscraper has seventy floors.",
+     "img": "/visuals/vocab/city/skyscraper.webp",
+     "group": "Cityscape",
+     "form": "skyscraper"
+    },
+    {
+     "id": "landmark",
+     "en": "landmark",
+     "es": "lugar emblemático",
+     "ex": "The bridge has become the city’s most famous landmark.",
+     "img": "/visuals/vocab/city/bridge.webp",
+     "group": "Cityscape",
+     "form": "landmark"
+    },
+    {
+     "id": "stadium",
+     "en": "stadium",
+     "es": "estadio",
+     "ex": "The new stadium was built on the edge of the city.",
+     "img": "/visuals/vocab/city/stadium.webp",
+     "group": "Cityscape",
+     "form": "stadium"
+    },
+    {
+     "id": "industrial-area",
+     "en": "industrial area",
+     "es": "zona industrial",
+     "ex": "The old industrial area is now full of art galleries.",
+     "img": "/visuals/vocab/city/industrial-area.webp",
+     "group": "Zones",
+     "form": "industrial area"
+    },
+    {
+     "id": "suburbs",
+     "en": "suburbs",
+     "es": "afueras, barrios residenciales",
+     "ex": "Many families move to the suburbs for more space.",
+     "emoji": "🏘️",
+     "group": "Zones",
+     "form": "suburbs"
+    },
+    {
+     "id": "outskirts",
+     "en": "outskirts",
+     "es": "periferia",
+     "ex": "The airport is on the outskirts of the city.",
+     "img": "/visuals/vocab/city/airport.webp",
+     "group": "Zones",
+     "form": "outskirts"
+    },
+    {
+     "id": "city-centre",
+     "en": "city centre",
+     "es": "centro de la ciudad",
+     "ex": "The city centre is closed to cars on Sundays.",
+     "emoji": "🏛️",
+     "group": "Zones",
+     "note": "US: downtown.",
+     "form": "city centre"
+    },
+    {
+     "id": "mixed-use",
+     "en": "mixed-use",
+     "es": "de uso mixto",
+     "ex": "The mixed-use building has shops below and flats above.",
+     "emoji": "🏬",
+     "group": "Zones",
+     "form": "mixed-use"
+    },
+    {
+     "id": "ring-road",
+     "en": "ring road",
+     "es": "anillo vial, circunvalar",
+     "ex": "The ring road takes traffic away from the centre.",
+     "img": "/visuals/vocab/city/highway.webp",
+     "group": "Infrastructure",
+     "note": "US: beltway.",
+     "form": "ring road"
+    },
+    {
+     "id": "cycle-lane",
+     "en": "cycle lane",
+     "es": "ciclorruta",
+     "ex": "The council has built forty kilometres of cycle lanes.",
+     "emoji": "🚲",
+     "group": "Infrastructure",
+     "form": "cycle lanes"
+    },
+    {
+     "id": "green-belt",
+     "en": "green belt",
+     "es": "cinturón verde",
+     "ex": "Building is not allowed in the green belt around the city.",
+     "emoji": "🌲",
+     "group": "Infrastructure",
+     "form": "green belt"
+    },
+    {
+     "id": "urban-sprawl",
+     "en": "urban sprawl",
+     "es": "expansión urbana descontrolada",
+     "ex": "Urban sprawl has swallowed the farms around the city.",
+     "emoji": "🗺️",
+     "group": "Change",
+     "form": "Urban sprawl"
+    },
+    {
+     "id": "gentrification",
+     "en": "gentrification",
+     "es": "gentrificación",
+     "ex": "Gentrification has pushed rents up in the old neighbourhood.",
+     "emoji": "☕",
+     "group": "Change",
+     "form": "Gentrification"
+    },
+    {
+     "id": "regeneration",
+     "en": "regeneration",
+     "es": "renovación urbana",
+     "ex": "The regeneration project turned the old port into a park.",
+     "emoji": "🏗️",
+     "group": "Change",
+     "form": "regeneration"
+    },
+    {
+     "id": "bustling",
+     "en": "bustling",
+     "es": "bullicioso, animado",
+     "ex": "We had lunch in a bustling square full of street musicians.",
+     "emoji": "🎶",
+     "group": "Change",
+     "form": "bustling"
+    },
+    {
+     "id": "sprawling",
+     "en": "sprawling",
+     "es": "extenso, desparramado",
+     "ex": "Mexico City is a huge, sprawling metropolis.",
+     "emoji": "🌐",
+     "group": "Change",
+     "form": "sprawling"
+    },
+    {
+     "id": "quaint",
+     "en": "quaint",
+     "es": "pintoresco",
+     "ex": "Barichara is a quaint colonial town with stone streets.",
+     "emoji": "🏡",
+     "group": "Change",
+     "form": "quaint"
+    }
+   ]
+  },
+  {
+   "id": "fashion-industry",
+   "level": "B2",
+   "title": "The fashion industry",
+   "titleEs": "La industria de la moda",
+   "emoji": "👗",
+   "color": "var(--pink)",
+   "cover": "/visuals/vocab/clothes/rack.webp",
+   "intro_es": "Detrás de cada prenda hay diseñadores, fábricas, marcas y residuos. Vocabulario para debatir sobre la moda rápida y la moda sostenible.",
+   "tip_es": "Ojo: <b>fashion</b> es la industria y las tendencias; <b>fashionable</b> = de moda; <b>in fashion / out of fashion</b>. <b>Mode</b> no se usa para «moda».",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "fast-fashion",
+     "en": "fast fashion",
+     "es": "moda rápida",
+     "ex": "Fast fashion produces cheap clothes that people throw away quickly.",
+     "emoji": "🛍️",
+     "group": "The business",
+     "form": "Fast fashion"
+    },
+    {
+     "id": "designer-label",
+     "en": "designer label",
+     "es": "marca de diseñador",
+     "ex": "She only buys clothes with a designer label.",
+     "emoji": "🏷️",
+     "group": "The business",
+     "form": "designer label"
+    },
+    {
+     "id": "brand",
+     "en": "brand",
+     "es": "marca",
+     "ex": "The brand opened a new store in Medellín.",
+     "img": "/visuals/vocab/clothes/polo-shirt.webp",
+     "group": "The business",
+     "form": "brand"
+    },
+    {
+     "id": "collection",
+     "en": "collection",
+     "es": "colección",
+     "ex": "The designer presented her autumn collection in Paris.",
+     "img": "/visuals/vocab/clothes/dress.webp",
+     "group": "The business",
+     "form": "collection"
+    },
+    {
+     "id": "catwalk",
+     "en": "catwalk",
+     "es": "pasarela",
+     "ex": "The models walked down the catwalk in silver boots.",
+     "img": "/visuals/vocab/clothes/high-heels.webp",
+     "group": "The business",
+     "note": "US también: runway.",
+     "form": "catwalk"
+    },
+    {
+     "id": "trend",
+     "en": "trend",
+     "es": "tendencia",
+     "ex": "Oversized jackets are the big trend this season.",
+     "img": "/visuals/vocab/clothes/jacket.webp",
+     "group": "The business",
+     "form": "trend"
+    },
+    {
+     "id": "go-out-of-fashion",
+     "en": "go out of fashion",
+     "es": "pasar de moda",
+     "ex": "Skinny jeans went out of fashion a few years ago.",
+     "img": "/visuals/vocab/clothes/jeans.webp",
+     "group": "The business",
+     "form": "went out of fashion"
+    },
+    {
+     "id": "knock-off",
+     "en": "knock-off",
+     "es": "imitación, copia",
+     "ex": "That isn’t a real designer bag — it’s a cheap knock-off.",
+     "emoji": "🎭",
+     "group": "The business",
+     "form": "knock-off"
+    },
+    {
+     "id": "sweatshop",
+     "en": "sweatshop",
+     "es": "taller de explotación",
+     "ex": "Many cheap T-shirts are made in sweatshops.",
+     "emoji": "🧵",
+     "group": "The dark side",
+     "form": "sweatshops"
+    },
+    {
+     "id": "working-conditions",
+     "en": "working conditions",
+     "es": "condiciones laborales",
+     "ex": "Garment workers protested about their working conditions.",
+     "emoji": "⚠️",
+     "group": "The dark side",
+     "form": "working conditions"
+    },
+    {
+     "id": "textile-waste",
+     "en": "textile waste",
+     "es": "residuos textiles",
+     "ex": "Tonnes of textile waste end up in the desert in Chile.",
+     "emoji": "🗑️",
+     "group": "The dark side",
+     "form": "textile waste"
+    },
+    {
+     "id": "ethically-sourced",
+     "en": "ethically sourced",
+     "es": "de origen ético",
+     "ex": "All the cotton in this shirt is ethically sourced.",
+     "emoji": "🌿",
+     "group": "Alternatives",
+     "form": "ethically sourced"
+    },
+    {
+     "id": "second-hand",
+     "en": "second-hand",
+     "es": "de segunda mano",
+     "ex": "I buy most of my clothes second-hand.",
+     "emoji": "♻️",
+     "group": "Alternatives",
+     "form": "second-hand"
+    },
+    {
+     "id": "thrift-store",
+     "en": "thrift store",
+     "es": "tienda de ropa de segunda",
+     "ex": "I found this coat at a thrift store for ten dollars.",
+     "emoji": "🏪",
+     "group": "Alternatives",
+     "note": "UK: charity shop.",
+     "form": "thrift store"
+    },
+    {
+     "id": "upcycling",
+     "en": "upcycling",
+     "es": "suprarreciclaje",
+     "ex": "Upcycling turns old jeans into bags and jackets.",
+     "img": "/visuals/vocab/clothes/denim-shorts.webp",
+     "group": "Alternatives",
+     "form": "Upcycling"
+    },
+    {
+     "id": "capsule-wardrobe",
+     "en": "capsule wardrobe",
+     "es": "armario cápsula",
+     "ex": "A capsule wardrobe has only a few pieces that all match.",
+     "img": "/visuals/vocab/clothes/t-shirt.webp",
+     "group": "Alternatives",
+     "form": "capsule wardrobe"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,762 @@
+{
+ "level": "B1",
+ "topics": [
+  {
+   "id": "extreme-weather",
+   "level": "B1",
+   "title": "Extreme weather & natural phenomena",
+   "titleEs": "Clima extremo y fenómenos naturales",
+   "emoji": "🌪️",
+   "color": "var(--indigo)",
+   "cover": "/visuals/vocab/weather/stormy.webp",
+   "intro_es": "Cuando el clima se vuelve peligroso: tormentas, inundaciones, sequías… y los verbos y colocaciones para contar lo que pasó en las noticias.",
+   "tip_es": "Colocaciones de noticias: <i>a storm <b>hits</b></i>, <i>a hurricane <b>makes landfall</b></i>, <i>heavy / torrential rain</i>, <i>to be <b>hit by</b> floods</i>, <i>gale-force winds</i>.",
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "thunderstorm",
+     "en": "thunderstorm",
+     "es": "tormenta eléctrica",
+     "ex": "A violent thunderstorm hit the city last night.",
+     "img": "/visuals/vocab/weather/lightning.webp",
+     "group": "Storms",
+     "form": "thunderstorm"
+    },
+    {
+     "id": "tornado",
+     "en": "tornado",
+     "es": "tornado",
+     "ex": "The tornado tore the roofs off several houses.",
+     "img": "/visuals/vocab/weather/tornado.webp",
+     "group": "Storms",
+     "form": "tornado"
+    },
+    {
+     "id": "hurricane",
+     "en": "hurricane",
+     "es": "huracán",
+     "ex": "The hurricane is expected to reach the coast on Monday.",
+     "emoji": "🌀",
+     "group": "Storms",
+     "form": "hurricane"
+    },
+    {
+     "id": "hailstorm",
+     "en": "hailstorm",
+     "es": "granizada",
+     "ex": "A sudden hailstorm covered the streets of Bogotá in ice.",
+     "img": "/visuals/vocab/weather/verb-hail.webp",
+     "group": "Storms",
+     "form": "hailstorm"
+    },
+    {
+     "id": "blizzard",
+     "en": "blizzard",
+     "es": "ventisca, tormenta de nieve",
+     "ex": "Flights were cancelled because of the blizzard.",
+     "img": "/visuals/vocab/weather/snowflakes.webp",
+     "group": "Storms",
+     "form": "blizzard"
+    },
+    {
+     "id": "gale",
+     "en": "gale",
+     "es": "vendaval",
+     "ex": "Gale-force winds knocked down trees all over the island.",
+     "img": "/visuals/vocab/weather/wind.webp",
+     "group": "Storms",
+     "form": "Gale"
+    },
+    {
+     "id": "flood",
+     "en": "flood",
+     "es": "inundación",
+     "ex": "Heavy rain caused floods in the south of the country.",
+     "emoji": "🌊",
+     "group": "Water",
+     "form": "floods"
+    },
+    {
+     "id": "landslide",
+     "en": "landslide",
+     "es": "derrumbe, deslizamiento",
+     "ex": "A landslide blocked the road to the town for two days.",
+     "emoji": "⛰️",
+     "group": "Water",
+     "form": "landslide"
+    },
+    {
+     "id": "downpour",
+     "en": "downpour",
+     "es": "aguacero",
+     "ex": "We got caught in a downpour on the way home.",
+     "img": "/visuals/vocab/weather/rainy.webp",
+     "group": "Water",
+     "form": "downpour"
+    },
+    {
+     "id": "drought",
+     "en": "drought",
+     "es": "sequía",
+     "ex": "The long drought destroyed most of the crops.",
+     "emoji": "🏜️",
+     "group": "Heat and dry",
+     "form": "drought"
+    },
+    {
+     "id": "heatwave",
+     "en": "heatwave",
+     "es": "ola de calor",
+     "ex": "During the heatwave, temperatures reached 44 degrees.",
+     "img": "/visuals/vocab/weather/hot.webp",
+     "group": "Heat and dry",
+     "form": "heatwave"
+    },
+    {
+     "id": "wildfire",
+     "en": "wildfire",
+     "es": "incendio forestal",
+     "ex": "Firefighters spent a week fighting the wildfire.",
+     "emoji": "🔥",
+     "group": "Heat and dry",
+     "form": "wildfire"
+    },
+    {
+     "id": "earthquake",
+     "en": "earthquake",
+     "es": "terremoto, temblor",
+     "ex": "The earthquake measured 6.2 on the Richter scale.",
+     "emoji": "🫨",
+     "group": "Earth",
+     "form": "earthquake"
+    },
+    {
+     "id": "volcanic-eruption",
+     "en": "volcanic eruption",
+     "es": "erupción volcánica",
+     "ex": "The volcanic eruption sent ash ten kilometres into the sky.",
+     "emoji": "🌋",
+     "group": "Earth",
+     "form": "volcanic eruption"
+    },
+    {
+     "id": "avalanche",
+     "en": "avalanche",
+     "es": "avalancha",
+     "ex": "Skiers were warned about the risk of an avalanche.",
+     "emoji": "🏔️",
+     "group": "Earth",
+     "form": "avalanche"
+    },
+    {
+     "id": "tsunami",
+     "en": "tsunami",
+     "es": "tsunami",
+     "ex": "The tsunami warning was cancelled after an hour.",
+     "emoji": "🌊",
+     "group": "Earth",
+     "form": "tsunami"
+    },
+    {
+     "id": "northern-lights",
+     "en": "northern lights",
+     "es": "auroras boreales",
+     "ex": "We travelled to Sweden to see the northern lights.",
+     "img": "/visuals/vocab/geography/northern-lights.webp",
+     "group": "Wonders of nature",
+     "form": "northern lights"
+    },
+    {
+     "id": "rainbow",
+     "en": "rainbow",
+     "es": "arcoíris",
+     "ex": "After the storm, a double rainbow appeared over the valley.",
+     "emoji": "🌈",
+     "group": "Wonders of nature",
+     "form": "rainbow"
+    }
+   ]
+  },
+  {
+   "id": "travel-geography",
+   "level": "B1",
+   "title": "Travel & geography",
+   "titleEs": "Viajes y geografía",
+   "emoji": "🗺️",
+   "color": "var(--teal)",
+   "cover": "/visuals/vocab/geography/world.webp",
+   "intro_es": "Continentes, paisajes y accidentes geográficos para describir un viaje o recomendar un destino.",
+   "tip_es": "Ríos, mares, cordilleras y desiertos llevan <b>the</b> (<i>the Amazon, the Andes, the Sahara</i>); países, ciudades, lagos y montañas sueltas no (<i>Colombia, Lake Titicaca, Mount Everest</i>).",
+   "figures": [
+    {
+     "src": "/visuals/vocab/geography/world.webp",
+     "title": "Map of the world",
+     "w": 900,
+     "h": 598,
+     "titleEs": "Mapa ilustrado del mundo"
+    }
+   ],
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "north-america",
+     "en": "North America",
+     "es": "América del Norte",
+     "ex": "Canada, the USA and Mexico are in North America.",
+     "img": "/visuals/vocab/geography/north-america.webp",
+     "group": "Continents",
+     "form": "North America"
+    },
+    {
+     "id": "south-america",
+     "en": "South America",
+     "es": "Suramérica",
+     "ex": "Colombia is in the north of South America.",
+     "img": "/visuals/vocab/geography/south-america.webp",
+     "group": "Continents",
+     "note": "“America” a secas suele significar EE. UU.",
+     "form": "South America"
+    },
+    {
+     "id": "europe",
+     "en": "Europe",
+     "es": "Europa",
+     "ex": "You can cross half of Europe by train.",
+     "img": "/visuals/vocab/geography/europe.webp",
+     "group": "Continents",
+     "form": "Europe"
+    },
+    {
+     "id": "africa",
+     "en": "Africa",
+     "es": "África",
+     "ex": "Africa has 54 countries.",
+     "img": "/visuals/vocab/geography/africa.webp",
+     "group": "Continents",
+     "form": "Africa"
+    },
+    {
+     "id": "asia",
+     "en": "Asia",
+     "es": "Asia",
+     "ex": "Asia is the largest and most populated continent.",
+     "img": "/visuals/vocab/geography/asia.webp",
+     "group": "Continents",
+     "form": "Asia"
+    },
+    {
+     "id": "oceania",
+     "en": "Oceania",
+     "es": "Oceanía",
+     "ex": "Australia and New Zealand are in Oceania.",
+     "img": "/visuals/vocab/geography/oceania.webp",
+     "group": "Continents",
+     "form": "Oceania"
+    },
+    {
+     "id": "antarctica",
+     "en": "Antarctica",
+     "es": "la Antártida",
+     "ex": "Nobody lives in Antarctica permanently.",
+     "img": "/visuals/vocab/geography/antarctica.webp",
+     "group": "Continents",
+     "form": "Antarctica"
+    },
+    {
+     "id": "mountain-range",
+     "en": "mountain range",
+     "es": "cordillera",
+     "ex": "The Andes is the longest mountain range in the world.",
+     "emoji": "🏔️",
+     "group": "Landscape",
+     "form": "mountain range"
+    },
+    {
+     "id": "valley",
+     "en": "valley",
+     "es": "valle",
+     "ex": "The town lies in a green valley between two rivers.",
+     "emoji": "🏞️",
+     "group": "Landscape",
+     "form": "valley"
+    },
+    {
+     "id": "rainforest",
+     "en": "rainforest",
+     "es": "selva tropical",
+     "ex": "The Amazon rainforest covers nine countries.",
+     "emoji": "🌳",
+     "group": "Landscape",
+     "form": "rainforest"
+    },
+    {
+     "id": "desert",
+     "en": "desert",
+     "es": "desierto",
+     "ex": "The Tatacoa Desert is famous for its starry skies.",
+     "emoji": "🏜️",
+     "group": "Landscape",
+     "note": "Dessert (doble s) = postre.",
+     "form": "Desert"
+    },
+    {
+     "id": "coastline",
+     "en": "coastline",
+     "es": "costa, litoral",
+     "ex": "Colombia has a coastline on two oceans.",
+     "emoji": "🏖️",
+     "group": "Landscape",
+     "form": "coastline"
+    },
+    {
+     "id": "island",
+     "en": "island",
+     "es": "isla",
+     "ex": "San Andrés is a small island in the Caribbean.",
+     "emoji": "🏝️",
+     "group": "Landscape",
+     "note": "La s no se pronuncia: /ˈaɪlənd/.",
+     "form": "island"
+    },
+    {
+     "id": "waterfall",
+     "en": "waterfall",
+     "es": "cascada",
+     "ex": "We swam under a beautiful waterfall.",
+     "emoji": "💦",
+     "group": "Landscape",
+     "form": "waterfall"
+    },
+    {
+     "id": "glacier",
+     "en": "glacier",
+     "es": "glaciar",
+     "ex": "The glacier is melting faster every year.",
+     "emoji": "🧊",
+     "group": "Landscape",
+     "form": "glacier"
+    },
+    {
+     "id": "volcano",
+     "en": "volcano",
+     "es": "volcán",
+     "ex": "You can climb the volcano with a local guide.",
+     "emoji": "🌋",
+     "group": "Landscape",
+     "form": "volcano"
+    },
+    {
+     "id": "border",
+     "en": "border",
+     "es": "frontera",
+     "ex": "We crossed the border into Ecuador at Ipiales.",
+     "emoji": "🛂",
+     "group": "Travel words",
+     "form": "border"
+    },
+    {
+     "id": "sightseeing",
+     "en": "sightseeing",
+     "es": "turismo, visitar lugares",
+     "ex": "We spent the morning sightseeing in the old town.",
+     "emoji": "📸",
+     "group": "Travel words",
+     "form": "sightseeing"
+    },
+    {
+     "id": "off-the-beaten-track",
+     "en": "off the beaten track",
+     "es": "fuera de las rutas turísticas",
+     "ex": "I prefer places that are off the beaten track.",
+     "emoji": "🥾",
+     "group": "Travel words",
+     "form": "off the beaten track"
+    },
+    {
+     "id": "itinerary",
+     "en": "itinerary",
+     "es": "itinerario",
+     "ex": "Our itinerary includes three days in Cusco.",
+     "emoji": "🗒️",
+     "group": "Travel words",
+     "form": "itinerary"
+    }
+   ]
+  },
+  {
+   "id": "fashion-style",
+   "level": "B1",
+   "title": "Fashion & style adjectives",
+   "titleEs": "Moda y adjetivos de estilo",
+   "emoji": "🕶️",
+   "color": "var(--pink)",
+   "cover": "/visuals/vocab/clothes/sneakers.webp",
+   "intro_es": "Para describir cómo se viste alguien no basta con el nombre de la prenda: necesitas adjetivos de estilo, ajuste y estampado.",
+   "tip_es": "Orden de adjetivos: opinión → tamaño → edad → forma → color → patrón → material: <i>a lovely <b>old blue checked cotton</b> shirt</i>.",
+   "figures": [
+    {
+     "src": "/visuals/clothing-autumn.webp",
+     "title": "Autumn clothing",
+     "w": 1536,
+     "h": 1024,
+     "titleEs": "Ropa de otoño (US / UK)"
+    }
+   ],
+   "credit": "freepik",
+   "items": [
+    {
+     "id": "casual",
+     "en": "casual",
+     "es": "informal, casual",
+     "ex": "On Fridays we can wear casual clothes to work.",
+     "img": "/visuals/vocab/clothes/jeans.webp",
+     "group": "Style",
+     "form": "casual"
+    },
+    {
+     "id": "formal",
+     "en": "formal",
+     "es": "formal, elegante",
+     "ex": "The wedding invitation says formal dress.",
+     "img": "/visuals/vocab/clothes/suit.webp",
+     "group": "Style",
+     "form": "formal"
+    },
+    {
+     "id": "smart",
+     "en": "smart",
+     "es": "bien vestido, elegante",
+     "ex": "You look very smart in that jacket!",
+     "img": "/visuals/vocab/clothes/loafers.webp",
+     "group": "Style",
+     "note": "En EE. UU. se prefiere dressy o sharp.",
+     "form": "smart"
+    },
+    {
+     "id": "sporty",
+     "en": "sporty",
+     "es": "deportivo",
+     "ex": "She has a sporty style: joggers and sneakers.",
+     "img": "/visuals/vocab/clothes/joggers.webp",
+     "group": "Style",
+     "form": "sporty"
+    },
+    {
+     "id": "elegant",
+     "en": "elegant",
+     "es": "elegante",
+     "ex": "Her long purple dress was really elegant.",
+     "img": "/visuals/vocab/clothes/dress.webp",
+     "group": "Style",
+     "form": "elegant"
+    },
+    {
+     "id": "trendy",
+     "en": "trendy",
+     "es": "a la moda",
+     "ex": "These colourful sneakers are very trendy right now.",
+     "img": "/visuals/vocab/clothes/sneakers.webp",
+     "group": "Style",
+     "form": "trendy"
+    },
+    {
+     "id": "old-fashioned",
+     "en": "old-fashioned",
+     "es": "pasado de moda",
+     "ex": "My dad thinks my grandfather’s hat is old-fashioned.",
+     "emoji": "🎩",
+     "group": "Style",
+     "form": "old-fashioned"
+    },
+    {
+     "id": "scruffy",
+     "en": "scruffy",
+     "es": "desarreglado",
+     "ex": "He looked scruffy in his old, dirty T-shirt.",
+     "emoji": "🥴",
+     "group": "Style",
+     "form": "scruffy"
+    },
+    {
+     "id": "vintage",
+     "en": "vintage",
+     "es": "vintage, de época",
+     "ex": "I bought a vintage leather jacket at the flea market.",
+     "emoji": "📻",
+     "group": "Style",
+     "form": "vintage"
+    },
+    {
+     "id": "baggy",
+     "en": "baggy",
+     "es": "ancho, holgado",
+     "ex": "Baggy jeans are back in fashion.",
+     "emoji": "👖",
+     "group": "Fit",
+     "form": "Baggy"
+    },
+    {
+     "id": "tight",
+     "en": "tight",
+     "es": "apretado, ajustado",
+     "ex": "These shoes are too tight. I need a bigger size.",
+     "emoji": "🤏",
+     "group": "Fit",
+     "form": "tight"
+    },
+    {
+     "id": "loose",
+     "en": "loose",
+     "es": "suelto",
+     "ex": "Wear something loose when it’s hot.",
+     "emoji": "🌬️",
+     "group": "Fit",
+     "form": "loose"
+    },
+    {
+     "id": "fits",
+     "en": "fit",
+     "es": "quedar bien de talla",
+     "ex": "This shirt doesn’t fit me. It’s too small.",
+     "emoji": "📏",
+     "group": "Fit",
+     "note": "Fit = talla. Suit = combinar / favorecer: Blue suits you.",
+     "form": "fit"
+    },
+    {
+     "id": "striped",
+     "en": "striped",
+     "es": "a rayas",
+     "ex": "He’s wearing a blue and white striped shirt.",
+     "emoji": "🦓",
+     "group": "Patterns",
+     "form": "striped"
+    },
+    {
+     "id": "checked",
+     "en": "checked",
+     "es": "a cuadros",
+     "ex": "A checked shirt is perfect for autumn.",
+     "emoji": "🏁",
+     "group": "Patterns",
+     "note": "US: plaid.",
+     "form": "checked"
+    },
+    {
+     "id": "floral",
+     "en": "floral",
+     "es": "de flores",
+     "ex": "She wore a floral dress to the garden party.",
+     "emoji": "🌸",
+     "group": "Patterns",
+     "form": "floral"
+    },
+    {
+     "id": "plain",
+     "en": "plain",
+     "es": "liso, sin estampado",
+     "ex": "I prefer plain T-shirts without logos.",
+     "emoji": "⬜",
+     "group": "Patterns",
+     "form": "plain"
+    },
+    {
+     "id": "polka-dot",
+     "en": "polka-dot",
+     "es": "de lunares",
+     "ex": "The singer wore a red polka-dot skirt.",
+     "emoji": "🔴",
+     "group": "Patterns",
+     "form": "polka-dot"
+    }
+   ]
+  },
+  {
+   "id": "city-problems",
+   "level": "B1",
+   "title": "City problems",
+   "titleEs": "Problemas de la ciudad",
+   "emoji": "🚦",
+   "color": "var(--orange)",
+   "cover": "/visuals/vocab/city/advanced.webp",
+   "intro_es": "Lo que funciona mal en una ciudad y cómo quejarte o proponer soluciones: <i>There’s too much traffic. The city should build more bike lanes.</i>",
+   "tip_es": "Para quejarte: <i>There’s too much / There are too many…</i>, <i>There isn’t enough…</i>. Para proponer: <i>The council should… · Why don’t they…? · It would be better if…</i>",
+   "figures": [
+    {
+     "src": "/visuals/vocab/city/advanced.webp",
+     "title": "A big city from above",
+     "w": 670,
+     "h": 440,
+     "titleEs": "Partes avanzadas de una ciudad"
+    }
+   ],
+   "items": [
+    {
+     "id": "traffic-jam",
+     "en": "traffic jam",
+     "es": "trancón, atasco",
+     "ex": "I was stuck in a traffic jam for an hour.",
+     "emoji": "🚗",
+     "group": "Transport",
+     "form": "traffic jam"
+    },
+    {
+     "id": "rush-hour",
+     "en": "rush hour",
+     "es": "hora pico",
+     "ex": "Avoid the metro at rush hour.",
+     "emoji": "⏰",
+     "group": "Transport",
+     "form": "rush hour"
+    },
+    {
+     "id": "pothole",
+     "en": "pothole",
+     "es": "hueco (en la calle)",
+     "ex": "My bike tyre burst because of a pothole.",
+     "emoji": "🕳️",
+     "group": "Transport",
+     "form": "pothole"
+    },
+    {
+     "id": "overcrowded",
+     "en": "overcrowded",
+     "es": "abarrotado",
+     "ex": "The buses are always overcrowded in the morning.",
+     "emoji": "🚌",
+     "group": "Transport",
+     "form": "overcrowded"
+    },
+    {
+     "id": "air-pollution",
+     "en": "air pollution",
+     "es": "contaminación del aire",
+     "ex": "Air pollution is a serious problem in big cities.",
+     "emoji": "🏭",
+     "group": "Environment",
+     "form": "Air pollution"
+    },
+    {
+     "id": "noise",
+     "en": "noise",
+     "es": "ruido",
+     "ex": "The noise from the bars keeps us awake at night.",
+     "emoji": "📢",
+     "group": "Environment",
+     "form": "noise"
+    },
+    {
+     "id": "litter",
+     "en": "litter",
+     "es": "basura (en la calle)",
+     "ex": "There’s a lot of litter in the park after weekends.",
+     "emoji": "🗑️",
+     "group": "Environment",
+     "note": "Verbo: to litter = tirar basura.",
+     "form": "litter"
+    },
+    {
+     "id": "green-spaces",
+     "en": "green spaces",
+     "es": "zonas verdes",
+     "ex": "Our neighbourhood needs more green spaces.",
+     "emoji": "🌳",
+     "group": "Environment",
+     "form": "green spaces"
+    },
+    {
+     "id": "graffiti",
+     "en": "graffiti",
+     "es": "grafiti",
+     "ex": "Some people think graffiti is art; others think it’s vandalism.",
+     "emoji": "🎨",
+     "group": "Environment",
+     "form": "graffiti"
+    },
+    {
+     "id": "crime",
+     "en": "crime",
+     "es": "delincuencia",
+     "ex": "Crime has gone down since they installed more street lights.",
+     "emoji": "🚨",
+     "group": "Society",
+     "form": "Crime"
+    },
+    {
+     "id": "homelessness",
+     "en": "homelessness",
+     "es": "habitabilidad en calle",
+     "ex": "The city opened two new shelters to fight homelessness.",
+     "emoji": "⛺",
+     "group": "Society",
+     "form": "homelessness"
+    },
+    {
+     "id": "high-rents",
+     "en": "high rents",
+     "es": "arriendos altos",
+     "ex": "Young people leave the centre because of high rents.",
+     "emoji": "💸",
+     "group": "Society",
+     "form": "high rents"
+    },
+    {
+     "id": "power-cut",
+     "en": "power cut",
+     "es": "corte de luz",
+     "ex": "There was a power cut during the storm.",
+     "emoji": "🔌",
+     "group": "Services",
+     "note": "US: power outage.",
+     "form": "power cut"
+    },
+    {
+     "id": "water-shortage",
+     "en": "water shortage",
+     "es": "escasez de agua",
+     "ex": "The water shortage lasted for three weeks.",
+     "emoji": "🚰",
+     "group": "Services",
+     "form": "water shortage"
+    },
+    {
+     "id": "bike-lane",
+     "en": "bike lane",
+     "es": "ciclorruta",
+     "ex": "The new bike lane goes all the way to the university.",
+     "emoji": "🚲",
+     "group": "Solutions",
+     "form": "bike lane"
+    },
+    {
+     "id": "pedestrian-zone",
+     "en": "pedestrian zone",
+     "es": "zona peatonal",
+     "ex": "The old town is now a pedestrian zone.",
+     "emoji": "🚶",
+     "group": "Solutions",
+     "form": "pedestrian zone"
+    },
+    {
+     "id": "recycling",
+     "en": "recycling",
+     "es": "reciclaje",
+     "ex": "Recycling bins are now on every corner.",
+     "emoji": "♻️",
+     "group": "Solutions",
+     "form": "Recycling"
+    },
+    {
+     "id": "public-transport",
+     "en": "public transport",
+     "es": "transporte público",
+     "ex": "Good public transport reduces traffic.",
+     "emoji": "🚇",
+     "group": "Solutions",
+     "note": "US: public transportation.",
+     "form": "public transport"
+    }
+   ]
+  }
+ ]
+}

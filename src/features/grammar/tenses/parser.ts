@@ -252,7 +252,7 @@ type Person = '1s' | '2' | '3s' | 'pl';
 const SUBJ_PRONOUNS = new Set(['i', 'you', 'he', 'she', 'it', 'we', 'they', 'there']);
 const DETS = new Set(['a', 'an', 'the', 'my', 'your', 'his', 'her', 'its', 'our', 'their', 'this', 'that', 'these', 'those', 'some', 'any', 'no', 'every', 'each', 'many', 'much', 'few', 'several', 'all', 'both', 'another', 'other', 'which', 'whose', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'new', 'old', 'good', 'bad', 'big', 'small', 'little', 'best', "'s"]);
 const PREPS = new Set(['to', 'of', 'in', 'on', 'at', 'for', 'with', 'from', 'about', 'by', 'into', 'like', 'than', 'as', 'without', 'near', 'around', 'during', 'through']);
-const ADVERBS = new Set(['not', 'never', 'always', 'usually', 'often', 'sometimes', 'rarely', 'seldom', 'already', 'just', 'ever', 'still', 'really', 'also', 'probably', 'definitely', 'certainly', 'even', 'hardly', 'recently', 'only', 'actually', 'normally', 'generally', 'finally', 'surely', 'frequently', 'occasionally', 'completely', 'nearly', 'almost', 'totally', 'simply', 'all', 'both', 'soon', 'maybe', 'perhaps', 'quickly', 'slowly', 'suddenly', 'immediately', 'then', 'now', 'once', 'again', 'lately', 'currently', 'mostly', 'easily', 'barely', 'truly', 'honestly', 'personally', 'obviously', 'clearly', 'fully']);
+const ADVERBS = new Set(['please', 'not', 'never', 'always', 'usually', 'often', 'sometimes', 'rarely', 'seldom', 'already', 'just', 'ever', 'still', 'really', 'also', 'probably', 'definitely', 'certainly', 'even', 'hardly', 'recently', 'only', 'actually', 'normally', 'generally', 'finally', 'surely', 'frequently', 'occasionally', 'completely', 'nearly', 'almost', 'totally', 'simply', 'all', 'both', 'soon', 'maybe', 'perhaps', 'quickly', 'slowly', 'suddenly', 'immediately', 'then', 'now', 'once', 'again', 'lately', 'currently', 'mostly', 'easily', 'barely', 'truly', 'honestly', 'personally', 'obviously', 'clearly', 'fully']);
 const WH = new Set(['what', 'where', 'when', 'why', 'who', 'whom', 'whose', 'which', 'how']);
 const BE_FIN = new Set(['am', 'is', 'are', 'was', 'were']);
 const HAVE_FIN = new Set(['have', 'has', 'had']);
@@ -262,7 +262,7 @@ const AUX_FIRST = new Set([...BE_FIN, ...HAVE_FIN, ...DO_FIN, ...MODALS]);
 /** be + base form that is really an adjective ("I am free") — no warning. */
 const ADJ_LIKE = new Set(['free', 'clean', 'open', 'empty', 'dry', 'warm', 'cool', 'calm', 'tidy', 'slow', 'quiet', 'wrong', 'right', 'better', 'fine', 'close', 'last', 'busy', 'ready', 'double', 'clear', 'dirty', 'smooth', 'light', 'dark', 'wet', 'black', 'white', 'blind', 'present', 'perfect', 'secure', 'safe', 'sure', 'well', 'level', 'round', 'even', 'fit', 'mean', 'like', 'back', 'home', 'out', 'up', 'down', 'off', 'over', 'next', 'complete', 'separate', 'correct', 'average', 'equal', 'humble', 'narrow', 'direct', 'live', 'cold', 'hot', 'brown', 'green', 'yellow', 'blue', 'red', 'thin', 'slim', 'lower', 'tired', 'total', 'loose', 'tame', 'smart', 'sound', 'weird', 'cheap', 'faint', 'rough', 'tight', 'firm', 'flat', 'idle', 'short', 'long', 'mature', 'prime', 'still', 'stuck', 'welcome', 'worth', 'alert', 'bust', 'dull', 'false', 'grand', 'proud', 'sick', 'sour', 'square', 'steady', 'stiff', 'sweet', 'weary', 'wise', 'young', 'american', 'ok', 'okay']);
 /** be + participle used as an adjective, not a passive ("I am tired"). */
-const ADJ_PART = new Set(['tired', 'bored', 'interested', 'excited', 'married', 'divorced', 'worried', 'scared', 'frightened', 'surprised', 'pleased', 'closed', 'finished', 'done', 'gone', 'lost', 'broken', 'confused', 'embarrassed', 'disappointed', 'annoyed', 'amazed', 'shocked', 'relaxed', 'satisfied', 'stressed', 'exhausted', 'involved', 'located', 'born', 'used', 'dressed', 'engaged', 'crowded', 'retired', 'qualified', 'prepared', 'organised', 'organized', 'concerned', 'delighted', 'impressed', 'tied', 'stuck', 'hurt', 'injured', 'drunk', 'lit', 'mixed', 'known', 'supposed', 'allowed', 'expected', 'based', 'called', 'named', 'made']);
+const ADJ_PART = new Set(['tired', 'bored', 'interested', 'excited', 'married', 'divorced', 'worried', 'scared', 'frightened', 'surprised', 'pleased', 'closed', 'finished', 'done', 'gone', 'lost', 'broken', 'confused', 'embarrassed', 'disappointed', 'annoyed', 'amazed', 'shocked', 'relaxed', 'satisfied', 'stressed', 'exhausted', 'involved', 'located', 'used', 'dressed', 'engaged', 'crowded', 'retired', 'qualified', 'concerned', 'delighted', 'impressed', 'stuck', 'drunk', 'supposed']);
 /** Regular verbs that are never nouns, so "have + base" is surely a mistake. */
 const HAVE_BASE_ERR = new Set(['finish', 'arrive', 'decide', 'visit', 'live', 'try', 'stay', 'wait', 'listen', 'explain', 'invite', 'receive', 'complete', 'prepare', 'happen', 'learn', 'study', 'travel', 'watch', 'clean', 'cook', 'work', 'play', 'start']);
 const STATIVE = new Set(['be', 'have', 'know', 'like', 'love', 'hate', 'want', 'need', 'believe', 'understand', 'own', 'belong', 'seem', 'prefer', 'remember', 'mean', 'agree', 'disagree', 'live', 'cost', 'contain', 'depend', 'deserve', 'exist', 'matter', 'owe', 'possess', 'recognize', 'realize', 'suppose', 'wish', 'forget', 'doubt', 'appear', 'consist', 'include', 'involve', 'weigh', 'fit', 'adore', 'dislike', 'detest', 'think', 'feel', 'look', 'sound', 'smell', 'taste']);
@@ -270,7 +270,9 @@ const STATIVE = new Set(['be', 'have', 'know', 'like', 'love', 'hate', 'want', '
 const NOUNISH = new Set(['school', 'bed', 'work', 'church', 'class', 'college', 'university', 'town', 'market', 'hospital', 'prison', 'sea', 'sleep', 'lunch', 'dinner', 'breakfast', 'court', 'jail', 'war', 'parties', 'party', 'concerts', 'the', 'a', 'an', 'my', 'your', 'his', 'her', 'our', 'their', 'bogotá', 'bogota', 'paris', 'london', 'cali', 'medellín']);
 const REPORT = new Set(['say', 'said', 'says', 'think', 'thought', 'thinks', 'know', 'knew', 'knows', 'believe', 'believed', 'hope', 'hoped', 'tell', 'told', 'told', 'feel', 'felt', 'realize', 'realized', 'realise', 'realised', 'explain', 'explained', 'mean', 'meant', 'sure', 'guess', 'promise', 'promised', 'heard', 'hear', 'see', 'saw', 'noticed', 'notice', 'me', 'us', 'him', 'her', 'them', 'you']);
 /** Common "do + past" readings where the word is also a base ("lay the table"). */
-const PAST_AS_BASE_OK = new Set(['lay', 'bore', 'wound', 'found', 'ground', 'bound', 'fell', 'saw', 'felt', 'left', 'rose', 'stole']);
+const PAST_AS_BASE_OK = new Set(['lay', 'bore', 'wound', 'ground', 'bound']);
+/** Verbs that introduce a reported clause without "that" ("I think it will rain"). */
+const FRAME = new Set(['think', 'thought', 'hope', 'hoped', 'believe', 'guess', 'suppose', 'bet', 'expect', 'imagine', 'sure', 'know', 'knew', 'said', 'say', 'says', 'promise', 'promised', 'feel', 'felt', 'realized', 'realised', 'told', 'mean', 'wish', 'heard', 'noticed', 'remember', 'forgot']);
 
 const SUB_CONN: string[][] = [
   ['as', 'soon', 'as'],
@@ -492,9 +494,13 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
   const question = /\?\s*$/.test(text) || (P.length > 1 && AUX_FIRST.has(P[0]!.norm) && SUBJ_PRONOUNS.has(P[1]!.norm) && P[1]!.norm !== 'there') || (P.length > 2 && WH.has(P[0]!.norm) && AUX_FIRST.has(P[1]!.norm) && SUBJ_PRONOUNS.has(P[2]!.norm));
 
   // ---- resolve 's / 'd -----------------------------------------------------
-  const nextContent = (i: number) => {
+  const nextIdx = (i: number) => {
     let j = i + 1;
-    while (j < P.length && !P[j]!.punct && (ADVERBS.has(P[j]!.norm) || P[j]!.norm === 'not') && !['been'].includes(P[j]!.norm)) j++;
+    while (j < P.length && !P[j]!.punct && (ADVERBS.has(P[j]!.norm) || P[j]!.norm === 'not')) j++;
+    return j;
+  };
+  const nextContent = (i: number) => {
+    const j = nextIdx(i);
     return j < P.length && !P[j]!.punct ? P[j]!.norm : '';
   };
   P.forEach((pc, i) => {
@@ -504,6 +510,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       const f = forms(nx);
       if (nx === 'been' || nx === 'got' || nx === 'gotten') pc.norm = 'has';
       else if (nx === 'going' || f.ing) pc.norm = 'is';
+      else if (f.part && !f.base && (P.slice(i + 1, nextIdx(i)).some((x) => /^(just|already|never|ever|recently|finally|not)$/.test(x.norm)) || DETS.has(P[nextIdx(i) + 1]?.norm ?? '') || SUBJ_PRONOUNS.has(P[nextIdx(i) + 1]?.norm ?? '') || /^(me|him|them|us)$/.test(P[nextIdx(i) + 1]?.norm ?? ''))) pc.norm = 'has';
       else if (ADJ_PART.has(nx)) pc.norm = 'is';
       else if (f.part && !f.base) pc.norm = 'has';
       else if (/^(he|she|it|there|that|what|who|where|how|here|this|everything|nothing|everyone|someone|somebody|everybody|nobody|why|when)$/.test(prev)) pc.norm = 'is';
@@ -572,7 +579,12 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
   for (let i = 0; i < P.length; i++) {
     const pc = P[i]!;
     if (pc.punct) {
-      if (/[,;:]/.test(pc.norm) && segs.at(-1)!.idx.length) segs.push({ conn: null, connIdx: [], idx: [] });
+      if (segs.at(-1)!.idx.length) segs.push({ conn: null, connIdx: [], idx: [] });
+      continue;
+    }
+    // "I think | it will rain": a subject pronoun right after a reporting verb opens a clause
+    if (i > 1 && SUBJ_PRONOUNS.has(pc.norm) && FRAME.has(P[i - 1]!.norm) && pc.timeId === undefined && segs.at(-1)!.idx.length) {
+      segs.push({ conn: 'that', connIdx: [], idx: [i] });
       continue;
     }
     if (pc.timeId === undefined) {
@@ -600,15 +612,10 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
 
   // ---- verb group ------------------------------------------------------------
   const isTime = (i: number) => P[i]!.timeId !== undefined;
-  const isVerbish = (w: string) => {
-    if (AUX_FIRST.has(w)) return true;
-    const f = forms(w);
-    return !!(f.third || f.past || f.base);
-  };
 
   function extract(idx: number[], q: boolean): VG | null {
     const vg: VG = { wh: [], subject: [], chain: [], negs: [], inverted: false, errs: [] };
-    const N = (k: number) => (k < idx.length ? P[idx[k]!]!.norm : '');
+    const N = (k: number) => (k >= 0 && k < idx.length ? P[idx[k]!]!.norm : '');
     let k = 0;
     if (WH.has(N(0))) {
       vg.wh.push(idx[0]!);
@@ -715,7 +722,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
           push({ p, norm: 'use', tag: 'AUX', lemma: 'use' });
           return { n: 1, done: false };
         }
-        if (f.base && !(f.past && f.past.en !== w && !PAST_AS_BASE_OK.has(w) && DO_FIN.has(pn) && pn === 'did')) {
+        if (f.base && !(f.past && f.past.en !== w && !PAST_AS_BASE_OK.has(w) && DO_FIN.has(pn))) {
           push({ p, norm: w, tag: 'BASE', lemma: f.base.en });
           return { n: 1, done: true };
         }
@@ -756,7 +763,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
           push({ p, norm: w, tag: 'ING', lemma: f.ing.en });
           return { n: 1, done: true };
         }
-        if (f.part && !(f.base && !f.past && f.part.en === w && !ADJ_PART.has(w))) {
+        if (f.part && !(f.base && !f.past && f.part.en === w && /^(come|become|overcome)$/.test(w))) {
           push({ p, norm: w, tag: 'PP', lemma: f.part.en });
           return { n: 1, done: true };
         }
@@ -861,8 +868,10 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
         const prev = N(k - 1);
         const prevIsDet = k > 0 && (DETS.has(prev) || PREPS.has(prev)) && !vg.wh.includes(idx[k - 1]!);
         const gerundSubject = !!f.ing && !f.base && (AUX_FIRST.has(N(k + 1)) || !!forms(N(k + 1)).third);
+        const nx1 = forms(N(k + 1));
+        const nounBeforeVerb = vg.subject.length === 0 && !SUBJ_PRONOUNS.has(w) && !!f.base && !f.third && !!nx1.third && !nx1.base && !q;
         const pluralNoun = vg.subject.length === 0 && /s$/.test(w) && !!f.third && (AUX_FIRST.has(N(k + 1)) || !!forms(N(k + 1)).base || !!forms(N(k + 1)).past);
-        if (verbish && !prevIsDet && !gerundSubject && !pluralNoun && !ADVERBS.has(w) && !PERSON[w] && !DETS.has(w) && !PREPS.has(w)) break;
+        if (verbish && !prevIsDet && !nounBeforeVerb && !gerundSubject && !pluralNoun && !ADVERBS.has(w) && !PERSON[w] && !DETS.has(w) && !PREPS.has(w)) break;
         vg.subject.push(i);
         k++;
       }
@@ -1000,7 +1009,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       })
       .join(' ');
     const last = ch.at(-1)!;
-    const adjectival = last.tag === 'PP' && ADJ_PART.has(last.norm) && !P.some((p) => p.norm === 'by');
+    const adjectival = /^(BEP|BEX) PP$/.test(sig) && ADJ_PART.has(last.norm) && !P.some((p) => p.norm === 'by');
     const pas = (k: ClauseKind) => ({ kind: k, passive: !adjectival });
     const hasPastTime = ctimes.some((t) => (t.pos ?? 0) < 0 && t.kind !== 'since') || times.some((t) => t.kind === 'period');
     const T: [RegExp, () => { kind: ClauseKind; passive: boolean; note?: string }][] = [
@@ -1017,7 +1026,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       [/^(USED|DIDX use|DOP use) to/, () => ({ kind: 'usedTo', passive: false })],
       [/^HAVP been ING$/, () => ({ kind: 'presentPerfectContinuous', passive: false })],
       [/^HAVP been PP$/, () => pas('presentPerfect')],
-      [/^HAVP got$/, () => ({ kind: 'presentSimple', passive: false, note: 'haveGot' })],
+      [/^HAVP PP$/, () => (last.norm === 'got' && !ctimes.length ? { kind: 'presentSimple', passive: false, note: 'haveGot' } : { kind: 'presentPerfect', passive: false })],
       [/^HAVP (PP|been)$/, () => ({ kind: 'presentPerfect', passive: false })],
       [/^HAVP to/, () => ({ kind: 'presentSimple', passive: false, note: 'haveTo' })],
       [/^HAVP$/, () => ({ kind: 'presentSimple', passive: false })],
@@ -1050,6 +1059,25 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
     return { kind: 'presentSimple', passive: false };
   }
 
+  // "I think / I hope / I'm sure (that) …": keep only the reported clause.
+  for (let ci = clauses.length - 2; ci >= 0; ci--) {
+    const c = clauses[ci]!;
+    const nx = clauses[ci + 1]!;
+    const vg = vgs[ci];
+    if (nx.conn === 'that' && vg && vg.chain.length <= 2 && (FRAME.has(c.lemma) || FRAME.has(P[vg.chain.at(-1)!.p + 1]?.norm ?? '')) && c.kind === 'presentSimple' && c.polarity !== 'q') {
+      for (const pc of P) if (pc.clause === ci && pc.role !== 'time') pc.role = 'other';
+      clauses.splice(ci, 1);
+      vgs.splice(ci, 1);
+    }
+  }
+  clauses.forEach((c, i) => {
+    if (c.index !== i) {
+      for (const pc of P) if (pc.clause === c.index) pc.clause = i;
+      for (const t of c.times) t.clause = i;
+      c.index = i;
+    }
+  });
+
   // ---- cross-clause adjustments ---------------------------------------------
   const pastFamily = (k: ClauseKind) => k === 'pastSimple' || k === 'pastContinuous' || k === 'pastPerfect' || k === 'pastPerfectContinuous' || k === 'usedTo' || k === 'wouldHabit';
   const futureFamily = (k: ClauseKind) => k === 'futureSimple' || k === 'futureContinuous' || k === 'futurePerfect' || k === 'futurePerfectContinuous' || k === 'goingTo';
@@ -1061,7 +1089,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       c.kind = pastCtx ? 'pastSimple' : 'presentSimple';
       c.note = undefined;
     }
-    if (vg && !vg.subject.length && !vg.wh.length && !question && vg.chain[0]!.tag === 'BASE' && !c.conn && ci === 0 && !SUBJ_PRONOUNS.has(P[vg.chain[0]!.p - 1]?.norm ?? '')) c.kind = 'imperative';
+    if (vg && !vg.subject.some((i) => !ADVERBS.has(P[i]!.norm)) && !vg.wh.length && !question && vg.chain[0]!.tag === 'BASE' && !c.conn && ci === 0 && !SUBJ_PRONOUNS.has(P[vg.chain[0]!.p - 1]?.norm ?? '')) c.kind = 'imperative';
   });
   clauses.forEach((c) => {
     if (c.kind === 'presentSimple' || c.kind === 'presentContinuous' || c.kind === 'presentPerfect') {
@@ -1117,7 +1145,8 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
             });
           } else {
             const ingw = entry ? ingForm(entry) : e.lemma + 'ing';
-            warn({ msg: `Tras am/is/are el verbo necesita -ing (presente continuo): «${be.surface} ${ingw}», o quita «${be.surface}» para el presente simple.`, wrong: pc.surface, right: ingw, fixed: fix(pc.start, pc.end, ingw) });
+            const bn = be.norm === 'BEP?' ? 'be' : be.norm;
+            warn({ msg: `Después de «${bn}» el verbo necesita -ing (forma continua): «${ingw}». Si querías el ${bn === 'was' || bn === 'were' ? 'pasado simple' : 'presente simple'}, quita «${bn}».`, wrong: pc.surface, right: ingw, fixed: fix(pc.start, pc.end, ingw) });
           }
           break;
         }
@@ -1156,9 +1185,7 @@ export function parseSentence(input: string, lex: Lexicon): ParseResult {
       else if (n0 === 'do' || n0 === 'does') right = per === '3s' ? 'does' : 'do';
       else if (f0.tag === 'BASE' && real.length === 1 && per === '3s' && c.kind === 'presentSimple') right = thirdPerson(f0.lemma);
       else if (f0.tag === 'THIRD' && real.length === 1 && per !== '3s') right = f0.lemma;
-      const surf = w0.surface.toLowerCase().replace(/^'/, '');
-      const map: Record<string, string> = { m: 'am', re: 'are', s: 'is', ve: 'have' };
-      const cur = map[surf] ?? surf;
+      const cur = w0.surface.startsWith("'") ? w0.norm : w0.surface.toLowerCase();
       if (right && cur !== right) {
         const subj = vg.subject.map((i) => P[i]!.surface).join(' ');
         const rep = w0.surface.startsWith("'") ? ` ${right}` : right;

@@ -105,11 +105,12 @@ export function conjugate(o: BuildOptions): { parts: Part[]; text: string } {
 
   if (o.polarity === 'q') {
     if (c.aux.length) {
-      if (o.tense === 'usedTo' && !passive) {
+      if (o.tense === 'usedTo') {
         A('did');
         S(subjLower);
         A('use');
         A('to');
+        if (passive) A('be');
         V(c.main);
       } else {
         A(c.aux[0]!);
@@ -137,13 +138,11 @@ export function conjugate(o: BuildOptions): { parts: Part[]; text: string } {
       rest = [c.doAux];
       main = o.verb.en;
     }
-    if (neg && o.tense === 'usedTo' && !passive) {
-      rest = ['did', 'use', 'to'];
-    }
+    if (neg && o.tense === 'usedTo') rest = passive ? ['did', 'use', 'to', 'be'] : ['did', 'use', 'to'];
     const first = rest[0];
     if (first) {
       // Avoid contractions the reader can't disambiguate ("It's written" = is? has?).
-      const ambiguous = (first === 'is' && passive && rest.length === 1) || ((first === 'has' || first === 'had') && rest.length === 1 && partForm(o.verb) === o.verb.en);
+      const ambiguous = (first === 'is' && passive && rest.length === 1) || ((first === 'has' || first === 'had') && rest.length === 1 && (partForm(o.verb) === o.verb.en || ['gone', 'done', 'finished', 'lost', 'broken', 'closed'].includes(partForm(o.verb))));
       const contractSubj = o.contractions && o.subject.pronoun && SUBJ_CONTR[first] && !ambiguous && !(neg && first !== 'am' && NEG[first]);
       if (contractSubj) A(SUBJ_CONTR[first]!, true);
       else if (neg && o.contractions && NEG[first]) {

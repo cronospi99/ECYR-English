@@ -172,7 +172,8 @@ export function AppShell() {
   return (
     <div className="min-h-dvh">
       <Sidebar />
-      <div className="lg:pl-[264px]">
+      {/* lg:pr-12: a gutter for the floating tool dock (NotesDock, right edge) so it never covers content. */}
+      <div className="lg:pl-[264px] lg:pr-12">
         <MobileTopBar />
         <SandboxBanner />
         <Outlet />
