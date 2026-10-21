@@ -41,6 +41,8 @@ export function humanTask(module: string, task: string | null): string {
   if (!t) return MODULES.includes(module) ? `IELTS Simulator · ${skill}` : skill;
   if ((m = /^unit:(.+)$/i.exec(t))) return `Curso · ${refDetail(m[1]!)}`;
   if ((m = /^practice:(writing|speaking|reading|listening)(?::(.+))?$/i.exec(t))) return `Práctica de ${cap(m[1]!)}${m[2] ? ` · ${refDetail(m[2])}` : ''}`;
+  if ((m = /^exam:(prea1|a1|a2|b1|b2|c1)-(m(\d)|final)(?::speaking-(\d))?$/i.exec(t)))
+    return `${m[2]!.toLowerCase() === 'final' ? 'Parcial final' : `Parcial ${m[3]}`} · ${m[1]!.toLowerCase() === 'prea1' ? 'Pre-A1' : m[1]!.toUpperCase()}${m[4] ? ` · Speaking ${m[4]}` : ''}`;
   if (t === 'coach:live') return 'AI Coach · conversación en vivo';
   if ((m = /^coach(?::(.+))?$/i.exec(t))) return `AI Coach${m[1] ? ` · ${m[1].replace(/[-_]+/g, ' ')}` : ''}`;
   if ((m = /^task\s*([12])$/i.exec(t))) return `IELTS · Writing Task ${m[1]}`;

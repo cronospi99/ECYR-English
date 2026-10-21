@@ -1,0 +1,1837 @@
+[
+  {
+    "id": "l3-b2-rooster-court-case",
+    "title": "The Rooster in Court",
+    "level": "B2",
+    "kind": "radio-report",
+    "topic": "Law & neighbours",
+    "focus": "Passive reporting structures (it is said that / is thought to)",
+    "emoji": "🐓",
+    "speakers": [
+      {
+        "name": "Helen",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Now, a rather unusual court case has been attracting attention this week in Villa de Leyva, in central Colombia. Our correspondent Tom Reed has been following it. Tom, what's this all about?"
+      },
+      {
+        "s": 1,
+        "text": "Well, Helen, it's about a rooster. A couple who moved to the area from Bogotá last year took their neighbour to court, claiming that his rooster was making their lives impossible. The bird is said to start crowing at around four every morning."
+      },
+      {
+        "s": 0,
+        "text": "Four in the morning. I can see why they might be upset."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. And it isn't just once. According to the couple's lawyer, the rooster is reported to have crowed more than forty times in a single hour. They recorded it on their phones and presented the recordings as evidence."
+      },
+      {
+        "s": 0,
+        "text": "And what does the neighbour say?"
+      },
+      {
+        "s": 1,
+        "text": "He's a farmer called Don Rigoberto, who's lived on the same land for over sixty years. He's thought to be one of the oldest residents in the area, and he argues that roosters have always been part of village life. He told the court that the couple knew exactly where they were moving."
+      },
+      {
+        "s": 0,
+        "text": "So it's really a conflict between newcomers and locals."
+      },
+      {
+        "s": 1,
+        "text": "That's how many people see it, yes. It's widely believed that the number of city people buying weekend houses in the region has doubled in the last five years, and similar complaints are said to be increasing, about church bells, dogs, even tractors."
+      },
+      {
+        "s": 0,
+        "text": "Has the judge made a decision yet?"
+      },
+      {
+        "s": 1,
+        "text": "She has, this morning. She ruled that the rooster can stay, but Don Rigoberto has been asked to keep it in a closed shed at night, which should reduce the noise. Both sides are said to be reasonably satisfied, although the couple's lawyer described the result as only a partial victory."
+      },
+      {
+        "s": 0,
+        "text": "And what's the reaction been in the village?"
+      },
+      {
+        "s": 1,
+        "text": "Mostly amusement. The rooster, whose name is apparently Napoleón, has become a local celebrity. It's been reported that tourists are visiting the farm just to take selfies with him."
+      },
+      {
+        "s": 0,
+        "text": "Only in a small town. Do experts think the case will have wider consequences?"
+      },
+      {
+        "s": 1,
+        "text": "Some legal experts do. It's expected that the decision will be used as an example in future disputes, because it tries to balance the right to rest with respect for rural traditions. But in the end, as one villager told me, the best solution would be for neighbours to talk before calling a lawyer."
+      },
+      {
+        "s": 0,
+        "text": "Wise words. Tom Reed, thank you."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where did the couple move from?",
+        "options": [
+          "Villa de Leyva",
+          "Bogotá",
+          "Another country",
+          "A farm nearby"
+        ],
+        "answer": 1,
+        "explain_es": "Tom dice: \"A couple who moved to the area from Bogotá last year\"."
+      },
+      {
+        "type": "tf",
+        "q": "The rooster crows only once every morning.",
+        "answer": "F",
+        "explain_es": "Según el abogado, \"crowed more than forty times in a single hour\"."
+      },
+      {
+        "type": "mc",
+        "q": "What did the judge decide?",
+        "options": [
+          "The rooster must be sold",
+          "The couple must move house",
+          "Don Rigoberto must pay a fine",
+          "The rooster can stay but must be kept in a closed shed at night"
+        ],
+        "answer": 3,
+        "explain_es": "\"She ruled that the rooster can stay, but... keep it in a closed shed at night\"."
+      },
+      {
+        "type": "tf",
+        "q": "The couple's lawyer called the result a complete victory.",
+        "answer": "F",
+        "explain_es": "Lo describió como \"only a partial victory\"."
+      },
+      {
+        "type": "tf",
+        "q": "Napoleón has appeared on national television.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que es una celebridad local y que los turistas se toman selfies con él."
+      },
+      {
+        "type": "transform",
+        "q": "People say that the bird starts crowing at around four. → The bird is said ...",
+        "answer": "The bird is said to start crowing at around four.",
+        "accept": [
+          "The bird is said to start crowing at about four."
+        ],
+        "explain_es": "\"The bird is said to start crowing at around four every morning\": pasiva de reporte con \"is said to + infinitivo\"."
+      },
+      {
+        "type": "gap",
+        "q": "The rooster is reported to ____ more than forty times in a single hour.",
+        "answer": "have crowed",
+        "accept": [],
+        "explain_es": "Para algo que ya ocurrió se usa el infinitivo perfecto: \"is reported to have crowed\"."
+      }
+    ],
+    "dictation": [
+      "The bird is said to start crowing at around four every morning.",
+      "He told the court that the couple knew exactly where they were moving."
+    ]
+  },
+  {
+    "id": "l3-b2-minimalism-podcast",
+    "title": "Living With Less",
+    "level": "B2",
+    "kind": "podcast",
+    "topic": "Lifestyle & minimalism",
+    "focus": "Wishes and regrets (wish / if only + past perfect)",
+    "emoji": "📦",
+    "speakers": [
+      {
+        "name": "Laura",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Daniel",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hi everyone, and welcome to Less Is More, the podcast about living with less. I'm Laura, and my guest today is Daniel, who sold or gave away almost everything he owned three years ago. Daniel, welcome."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Laura. It's great to be here."
+      },
+      {
+        "s": 0,
+        "text": "So let's start at the beginning. What made you decide to get rid of your things?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly, it was a move. I was moving from a big house to a small apartment in Chicago, and I spent four weekends packing boxes. I kept finding things I'd completely forgotten about. Three coffee machines, for example. I remember thinking, I wish I hadn't spent so much money on stuff I never use."
+      },
+      {
+        "s": 0,
+        "text": "Three coffee machines? That's impressive."
+      },
+      {
+        "s": 1,
+        "text": "I know. And that was just the kitchen. So I made a rule: if I hadn't touched something in a year, it had to go. Now I own around a hundred and fifty items, including my clothes."
+      },
+      {
+        "s": 0,
+        "text": "Do you have any regrets? Is there anything you wish you'd kept?"
+      },
+      {
+        "s": 1,
+        "text": "Just one thing, really. My grandfather's record collection. I sold it in the first month, when I was very enthusiastic, and I wish I'd kept at least a few of them. They weren't valuable, but they reminded me of him. If only I'd waited a little longer before making that decision."
+      },
+      {
+        "s": 0,
+        "text": "That's a common mistake, isn't it? People get carried away at the beginning."
+      },
+      {
+        "s": 1,
+        "text": "Absolutely. My advice is to start with the easy things, like old cables and clothes that don't fit, and leave anything sentimental until the end."
+      },
+      {
+        "s": 0,
+        "text": "What about other people? Did your family understand?"
+      },
+      {
+        "s": 1,
+        "text": "Not at first. My mom kept saying she wished I would stop giving everything away. She thought I was going through some kind of crisis. Now she's actually started clearing out her own garage, so I think she's changed her mind."
+      },
+      {
+        "s": 0,
+        "text": "And what's the biggest benefit for you?"
+      },
+      {
+        "s": 1,
+        "text": "Time, definitely. I used to spend my Saturdays shopping or tidying. Now I go hiking or see friends. My only real regret is that I didn't do this ten years earlier. I wish someone had told me in college that owning more doesn't make you happier."
+      },
+      {
+        "s": 0,
+        "text": "If our listeners want to try, what's the first step?"
+      },
+      {
+        "s": 1,
+        "text": "Take one drawer, just one, and empty it onto the table. Ask yourself whether you'd buy each thing again today. You'll be surprised how often the answer is no."
+      },
+      {
+        "s": 0,
+        "text": "One drawer. I think I can manage that. Daniel, thank you so much."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What made Daniel start getting rid of his things?",
+        "options": [
+          "A friend's advice",
+          "Losing his job",
+          "Moving to a smaller apartment",
+          "A book about minimalism"
+        ],
+        "answer": 2,
+        "explain_es": "Daniel: \"I was moving from a big house to a small apartment in Chicago\"."
+      },
+      {
+        "type": "tf",
+        "q": "Daniel now owns about a hundred and fifty items, including his clothes.",
+        "answer": "T",
+        "explain_es": "\"Now I own around a hundred and fifty items, including my clothes.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does Daniel regret selling?",
+        "options": [
+          "His grandfather's record collection",
+          "His coffee machines",
+          "His house in Chicago",
+          "His old cables"
+        ],
+        "answer": 0,
+        "explain_es": "\"My grandfather's record collection... I wish I'd kept at least a few of them.\""
+      },
+      {
+        "type": "tf",
+        "q": "His grandfather's records were worth a lot of money.",
+        "answer": "F",
+        "explain_es": "Daniel dice: \"They weren't valuable, but they reminded me of him.\""
+      },
+      {
+        "type": "tf",
+        "q": "Daniel gave the coffee machines to his neighbours.",
+        "answer": "NG",
+        "explain_es": "Menciona las tres cafeteras, pero no dice qué hizo con ellas."
+      },
+      {
+        "type": "transform",
+        "q": "I regret spending so much money on stuff I never use. → I wish I ...",
+        "answer": "I wish I hadn't spent so much money on stuff I never use.",
+        "accept": [
+          "I wish I had not spent so much money on stuff I never use."
+        ],
+        "explain_es": "\"I wish I hadn't spent so much money\": wish + past perfect para lamentar el pasado."
+      },
+      {
+        "type": "gap",
+        "q": "If only I ____ (wait) a little longer before making that decision.",
+        "answer": "had waited",
+        "accept": [
+          "'d waited"
+        ],
+        "explain_es": "\"If only I'd waited a little longer\": if only + past perfect."
+      }
+    ],
+    "dictation": [
+      "Take one drawer, just one, and empty it onto the table.",
+      "You'll be surprised how often the answer is no."
+    ]
+  },
+  {
+    "id": "l3-b2-old-house-renovation",
+    "title": "Saving an Old House",
+    "level": "B2",
+    "kind": "conversation",
+    "topic": "Homes & renovation",
+    "focus": "Causative have/get",
+    "emoji": "🔨",
+    "speakers": [
+      {
+        "name": "Owen",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Natalia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Natalia! I heard you finally bought that old house in Barichara. How's it going?"
+      },
+      {
+        "s": 1,
+        "text": "Slowly! It's beautiful, but it's about a hundred and fifty years old, so everything needs fixing. We're having the whole roof replaced next month."
+      },
+      {
+        "s": 0,
+        "text": "The whole roof? Can't you just repair the broken tiles?"
+      },
+      {
+        "s": 1,
+        "text": "That's what we hoped, but we got an engineer to inspect it, and he said the wooden beams underneath are rotten. If we don't have them changed, the roof could collapse in the rainy season."
+      },
+      {
+        "s": 0,
+        "text": "Oh no. That must be expensive."
+      },
+      {
+        "s": 1,
+        "text": "Very. But we're trying to save money in other ways. My husband is painting the walls himself, instead of having them done by a professional. He's using traditional lime paint, so it's quite slow."
+      },
+      {
+        "s": 0,
+        "text": "What about the electricity? Old houses usually have terrible wiring."
+      },
+      {
+        "s": 1,
+        "text": "Exactly. We had the wiring checked in the first week, and it was a disaster. Some of the cables were older than my grandmother. So we're getting the whole system redone by a local electrician."
+      },
+      {
+        "s": 0,
+        "text": "Sensible. And the kitchen?"
+      },
+      {
+        "s": 1,
+        "text": "That's the fun part. We're having a new kitchen built with local stone, and I've had a carpenter make the cupboards from recycled wood. I wanted to keep the character of the house."
+      },
+      {
+        "s": 0,
+        "text": "It sounds amazing. Have you had any problems with permits? I know some towns are strict about historic buildings."
+      },
+      {
+        "s": 1,
+        "text": "Barichara is very strict. You can't change the front of the house at all. We had to get an architect to draw new plans three times before the town approved them."
+      },
+      {
+        "s": 0,
+        "text": "Three times! I'd have given up."
+      },
+      {
+        "s": 1,
+        "text": "I nearly did. Oh, and last week we had a window broken by one of the workers, so we had to get it replaced as well."
+      },
+      {
+        "s": 0,
+        "text": "Wow. So when do you think you'll move in?"
+      },
+      {
+        "s": 1,
+        "text": "If everything goes well, in March. We're getting the floors polished in February, and then it's just furniture. You'll have to come and visit."
+      },
+      {
+        "s": 0,
+        "text": "I'd love to. Send me photos when the roof is done."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the roof need to be replaced?",
+        "options": [
+          "It was damaged in a storm",
+          "The wooden beams under it are rotten",
+          "The town ordered it",
+          "The tiles are the wrong colour"
+        ],
+        "answer": 1,
+        "explain_es": "El ingeniero dijo que \"the wooden beams underneath are rotten\"."
+      },
+      {
+        "type": "tf",
+        "q": "Natalia's husband is paying a professional to paint the walls.",
+        "answer": "F",
+        "explain_es": "\"My husband is painting the walls himself, instead of having them done by a professional.\""
+      },
+      {
+        "type": "mc",
+        "q": "What is the new kitchen being built with?",
+        "options": [
+          "Recycled plastic",
+          "Imported marble",
+          "Old bricks",
+          "Local stone"
+        ],
+        "answer": 3,
+        "explain_es": "\"We're having a new kitchen built with local stone\"."
+      },
+      {
+        "type": "tf",
+        "q": "The town approved the first plans the architect drew.",
+        "answer": "F",
+        "explain_es": "Tuvieron que pedir los planos \"three times before the town approved them\"."
+      },
+      {
+        "type": "tf",
+        "q": "The electrician is a member of Natalia's family.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que es \"a local electrician\"."
+      },
+      {
+        "type": "transform",
+        "q": "A local electrician is redoing the whole system for us. → We're getting the whole system ...",
+        "answer": "We're getting the whole system redone by a local electrician.",
+        "accept": [
+          "We are getting the whole system redone by a local electrician.",
+          "We're getting the whole system redone."
+        ],
+        "explain_es": "Causativa: get + objeto + participio (redone), cuando otra persona hace el trabajo."
+      },
+      {
+        "type": "error",
+        "q": "We had the wiring check in the first week.",
+        "answer": "We had the wiring checked in the first week.",
+        "accept": [
+          "We had the wiring checked in the first week, and it was a disaster."
+        ],
+        "explain_es": "En la causativa \"have + objeto\" va seguido del participio pasado: \"checked\"."
+      }
+    ],
+    "dictation": [
+      "We had the wiring checked in the first week, and it was a disaster.",
+      "You'll have to come and visit."
+    ]
+  },
+  {
+    "id": "l3-b2-new-life-melbourne",
+    "title": "From Medellín to Melbourne",
+    "level": "B2",
+    "kind": "interview",
+    "topic": "Moving abroad",
+    "focus": "Used to vs would vs get used to",
+    "emoji": "🦘",
+    "speakers": [
+      {
+        "name": "Kylie",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Andrés",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome to New Arrivals, the show where we talk to people who've recently made Australia their home. Today I'm with Andrés, who moved from Medellín to Melbourne two years ago. Andrés, thanks for joining us."
+      },
+      {
+        "s": 1,
+        "text": "Thanks for inviting me, Kylie."
+      },
+      {
+        "s": 0,
+        "text": "So what was your life like back in Colombia?"
+      },
+      {
+        "s": 1,
+        "text": "Well, I used to work as a sound engineer for a TV channel. My days were long, but I'd always have lunch with my family on Sundays. My mother would cook for about fifteen people. That's probably what I miss most."
+      },
+      {
+        "s": 0,
+        "text": "And what was the hardest thing to get used to here?"
+      },
+      {
+        "s": 1,
+        "text": "The weather, definitely. In Medellín it's spring all year, so I wasn't used to having four seasons in one day. That first winter, I'd leave home in a T-shirt and come back frozen."
+      },
+      {
+        "s": 0,
+        "text": "That's very Melbourne. What about the language? Did you speak English before you came?"
+      },
+      {
+        "s": 1,
+        "text": "I did, but I'd learned it from American films, so the accent here was a shock. People would say things like arvo or brekkie, and I'd just smile and nod. It took me months to get used to it."
+      },
+      {
+        "s": 0,
+        "text": "And now?"
+      },
+      {
+        "s": 1,
+        "text": "Now I say arvo myself. My friends back home laugh at me."
+      },
+      {
+        "s": 0,
+        "text": "What about work? Is it different?"
+      },
+      {
+        "s": 1,
+        "text": "Very. In Colombia I used to stay at the office until eight or nine. Here, people leave at five and nobody thinks you're lazy. At first I felt guilty, but I'm getting used to having free evenings. I've even started playing football twice a week."
+      },
+      {
+        "s": 0,
+        "text": "Is there anything you still find strange?"
+      },
+      {
+        "s": 1,
+        "text": "Dinner time. People eat at six here. I'm still not used to that. At home we'd usually eat at eight or later."
+      },
+      {
+        "s": 0,
+        "text": "Any advice for someone who's thinking of moving?"
+      },
+      {
+        "s": 1,
+        "text": "Be patient. Everything feels strange for the first year, and you'll probably miss things you didn't use to notice, like the noise of the street or the smell of arepas in the morning. But you do get used to it. Little by little, the new place becomes home."
+      },
+      {
+        "s": 0,
+        "text": "That's lovely. Andrés, thanks for sharing your story."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was Andrés's job in Colombia?",
+        "options": [
+          "Teacher",
+          "Football coach",
+          "Sound engineer",
+          "Cook"
+        ],
+        "answer": 2,
+        "explain_es": "\"I used to work as a sound engineer for a TV channel.\""
+      },
+      {
+        "type": "tf",
+        "q": "Andrés learned his English from Australian television.",
+        "answer": "F",
+        "explain_es": "Lo aprendió \"from American films\"."
+      },
+      {
+        "type": "mc",
+        "q": "What does Andrés miss most about Colombia?",
+        "options": [
+          "Sunday lunches with his family",
+          "His job at the TV channel",
+          "The weather in winter",
+          "Working late at the office"
+        ],
+        "answer": 0,
+        "explain_es": "Habla de los almuerzos del domingo: \"That's probably what I miss most.\""
+      },
+      {
+        "type": "tf",
+        "q": "Andrés now finds it completely normal to have dinner at six.",
+        "answer": "F",
+        "explain_es": "\"People eat at six here. I'm still not used to that.\""
+      },
+      {
+        "type": "tf",
+        "q": "Andrés plays football with people from his office.",
+        "answer": "NG",
+        "explain_es": "Dice que juega fútbol dos veces por semana, pero no con quién."
+      },
+      {
+        "type": "gap",
+        "q": "In Medellín it's spring all year, so I wasn't ____ having four seasons in one day.",
+        "answer": "used to",
+        "accept": [],
+        "explain_es": "\"be used to + -ing\" = estar acostumbrado a algo."
+      },
+      {
+        "type": "error",
+        "q": "At first I felt guilty, but I'm getting used to have free evenings.",
+        "answer": "At first I felt guilty, but I'm getting used to having free evenings.",
+        "accept": [
+          "At first I felt guilty, but I am getting used to having free evenings."
+        ],
+        "explain_es": "Después de \"get used to\" se usa -ing: \"getting used to having\"."
+      }
+    ],
+    "dictation": [
+      "Now I say arvo myself.",
+      "Little by little, the new place becomes home."
+    ]
+  },
+  {
+    "id": "l3-b2-campsite-mystery",
+    "title": "Who Opened the Tent?",
+    "level": "B2",
+    "kind": "dialogue",
+    "topic": "Camping & wildlife",
+    "focus": "Past modals of deduction (must have, might have, can't have)",
+    "emoji": "⛺",
+    "speakers": [
+      {
+        "name": "Liam",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Chloe",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Chloe, come and look at this. The tent's completely open and our stuff is everywhere."
+      },
+      {
+        "s": 1,
+        "text": "Oh no. We were only gone for two hours. Someone must have broken in while we were at the waterfall."
+      },
+      {
+        "s": 0,
+        "text": "I'm not so sure. Look, the zip isn't broken. It's just been pulled open from the bottom. A person can't have done that. They'd have just opened it normally."
+      },
+      {
+        "s": 1,
+        "text": "Fair point. What's missing?"
+      },
+      {
+        "s": 0,
+        "text": "Let me check. Wallet, phone charger, car keys, all still here. But the bag of bread has gone, and so have the biscuits."
+      },
+      {
+        "s": 1,
+        "text": "So it can't have been a thief. No thief would steal biscuits and leave a wallet."
+      },
+      {
+        "s": 0,
+        "text": "Exactly. It must have been an animal. Maybe a possum? They're always looking for food around campsites."
+      },
+      {
+        "s": 1,
+        "text": "In the middle of the day, though? Possums usually come out at night. It might have been a bird. The ranger said the cockatoos here are really clever."
+      },
+      {
+        "s": 0,
+        "text": "A cockatoo can't have opened a zip, surely."
+      },
+      {
+        "s": 1,
+        "text": "You'd be surprised. Look at these marks on the bag. They could have been made by a beak."
+      },
+      {
+        "s": 0,
+        "text": "Hmm, or teeth. And there are footprints in the mud near the door. Small ones, with long claws."
+      },
+      {
+        "s": 1,
+        "text": "Those might have been left by a goanna. They're big lizards, and they're amazing at finding food."
+      },
+      {
+        "s": 0,
+        "text": "Great. So a giant lizard might have been inside our tent. That makes me feel much better."
+      },
+      {
+        "s": 1,
+        "text": "Well, whatever it was, we must have left the food too close to the entrance. That was our mistake."
+      },
+      {
+        "s": 0,
+        "text": "You're right. We should have put it in the car like the ranger told us."
+      },
+      {
+        "s": 1,
+        "text": "Let's ask the ranger at the office. She must have seen this kind of thing a hundred times."
+      },
+      {
+        "s": 0,
+        "text": "Good idea. And tonight, everything goes in the car. Even the chocolate."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long were Liam and Chloe away from the tent?",
+        "options": [
+          "Half an hour",
+          "Two hours",
+          "All morning",
+          "One night"
+        ],
+        "answer": 1,
+        "explain_es": "Chloe: \"We were only gone for two hours.\""
+      },
+      {
+        "type": "tf",
+        "q": "The car keys had disappeared.",
+        "answer": "F",
+        "explain_es": "Liam: \"Wallet, phone charger, car keys, all still here.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why does Chloe think it can't have been a thief?",
+        "options": [
+          "The tent was locked",
+          "There were animal footprints",
+          "The ranger was nearby",
+          "Only food was taken and the wallet was left"
+        ],
+        "answer": 3,
+        "explain_es": "\"No thief would steal biscuits and leave a wallet.\""
+      },
+      {
+        "type": "tf",
+        "q": "Chloe says possums usually come out at night.",
+        "answer": "T",
+        "explain_es": "Chloe: \"Possums usually come out at night.\""
+      },
+      {
+        "type": "tf",
+        "q": "They had seen a goanna near the campsite earlier that day.",
+        "answer": "NG",
+        "explain_es": "Hablan de un posible goanna por las huellas, pero no dicen haber visto uno."
+      },
+      {
+        "type": "gap",
+        "q": "No thief would steal biscuits and leave a wallet, so it ____ been a thief.",
+        "answer": "can't have",
+        "accept": [
+          "cannot have",
+          "couldn't have",
+          "could not have"
+        ],
+        "explain_es": "\"So it can't have been a thief\": deducción negativa sobre el pasado."
+      },
+      {
+        "type": "transform",
+        "q": "I'm sure we left the food too close to the entrance. → We must ...",
+        "answer": "We must have left the food too close to the entrance.",
+        "accept": [],
+        "explain_es": "\"we must have left the food too close to the entrance\": certeza sobre el pasado."
+      }
+    ],
+    "dictation": [
+      "We were only gone for two hours.",
+      "And tonight, everything goes in the car."
+    ]
+  },
+  {
+    "id": "l3-b2-charity-bike-ride",
+    "title": "Eleven Hundred Kilometres for a Hospital",
+    "level": "B2",
+    "kind": "interview",
+    "topic": "Charity & sport",
+    "focus": "Future perfect continuous",
+    "emoji": "🚴",
+    "speakers": [
+      {
+        "name": "Mark",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Isabel",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning and welcome back to Weekend Breakfast. My guest this morning is Isabel Garzón, who's about to start a very long bike ride for charity. Isabel, where exactly are you going?"
+      },
+      {
+        "s": 1,
+        "text": "Morning, Mark. I'm cycling from Bogotá to Cartagena, which is about eleven hundred kilometres, to raise money for a children's hospital."
+      },
+      {
+        "s": 0,
+        "text": "Eleven hundred kilometres! How long will it take?"
+      },
+      {
+        "s": 1,
+        "text": "About three weeks, if everything goes to plan. By the time I reach Cartagena, I'll have been cycling for twenty-one days, with only two rest days."
+      },
+      {
+        "s": 0,
+        "text": "And you're not exactly starting on flat ground, are you?"
+      },
+      {
+        "s": 1,
+        "text": "No, that's the scary part. Bogotá is two thousand six hundred metres above sea level, and the first week is mostly mountains. By the end of the first day, I'll have been climbing and descending for about seven hours."
+      },
+      {
+        "s": 0,
+        "text": "How have you been preparing?"
+      },
+      {
+        "s": 1,
+        "text": "I've been training for eight months. In fact, by the time I set off on Monday, I'll have been getting up at five every morning since February, which is probably the hardest part of all."
+      },
+      {
+        "s": 0,
+        "text": "Are you doing this alone?"
+      },
+      {
+        "s": 1,
+        "text": "Not completely. My brother is driving a support van with food, water and spare tyres. Poor thing, by the end of the trip he'll have been listening to my complaints for three weeks."
+      },
+      {
+        "s": 0,
+        "text": "How much are you hoping to raise?"
+      },
+      {
+        "s": 1,
+        "text": "Our target is fifty million pesos, which is roughly ten thousand pounds. We've already collected about sixty per cent, mostly from friends and local businesses."
+      },
+      {
+        "s": 0,
+        "text": "That's fantastic. What will the money be used for?"
+      },
+      {
+        "s": 1,
+        "text": "The hospital needs a new play area for children who stay there for long treatments. Some of them will have been living in the hospital for months by the time it opens, so it really matters to them."
+      },
+      {
+        "s": 0,
+        "text": "What are you most looking forward to?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly, the sea. When I finally see the Caribbean, I'll have been dreaming about that moment for almost a year. I think I'll probably cry."
+      },
+      {
+        "s": 0,
+        "text": "Well, good luck, Isabel. Listeners can donate through our website."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why is Isabel doing the bike ride?",
+        "options": [
+          "To raise money for a children's hospital",
+          "To train for a professional race",
+          "To visit her family in Cartagena",
+          "To film a travel documentary"
+        ],
+        "answer": 0,
+        "explain_es": "\"to raise money for a children's hospital\"."
+      },
+      {
+        "type": "tf",
+        "q": "Isabel will cycle every single day without a rest.",
+        "answer": "F",
+        "explain_es": "Tendrá \"only two rest days\", pero sí tiene descansos."
+      },
+      {
+        "type": "mc",
+        "q": "Who is driving the support van?",
+        "options": [
+          "A friend from the hospital",
+          "Mark",
+          "Her brother",
+          "A local business owner"
+        ],
+        "answer": 2,
+        "explain_es": "\"My brother is driving a support van\"."
+      },
+      {
+        "type": "tf",
+        "q": "They have already raised more than half of their target.",
+        "answer": "T",
+        "explain_es": "\"We've already collected about sixty per cent\"."
+      },
+      {
+        "type": "tf",
+        "q": "Isabel has cycled from Bogotá to Cartagena before.",
+        "answer": "NG",
+        "explain_es": "No se dice si lo ha hecho antes."
+      },
+      {
+        "type": "gap",
+        "q": "By the time I reach Cartagena, I'll ____ (cycle) for twenty-one days.",
+        "answer": "have been cycling",
+        "accept": [],
+        "explain_es": "Futuro perfecto continuo: will have been + -ing para la duración hasta un momento futuro."
+      },
+      {
+        "type": "transform",
+        "q": "My brother will listen to my complaints for three weeks. → By the end of the trip, my brother will have ...",
+        "answer": "By the end of the trip, my brother will have been listening to my complaints for three weeks.",
+        "accept": [
+          "By the end of the trip, my brother'll have been listening to my complaints for three weeks."
+        ],
+        "explain_es": "\"by the end of the trip he'll have been listening to my complaints for three weeks\"."
+      }
+    ],
+    "dictation": [
+      "I've been training for eight months.",
+      "I think I'll probably cry."
+    ]
+  },
+  {
+    "id": "l3-b2-school-reunion",
+    "title": "Twenty Years Later",
+    "level": "B2",
+    "kind": "conversation",
+    "topic": "Life choices",
+    "focus": "Mixed conditionals",
+    "emoji": "🎓",
+    "speakers": [
+      {
+        "name": "Sophie",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "James",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "James? Is that really you? I haven't seen you since our last day at school!"
+      },
+      {
+        "s": 1,
+        "text": "Sophie! Twenty years. You look exactly the same. So, are you still in Manchester?"
+      },
+      {
+        "s": 0,
+        "text": "No, I'm living in Lisbon now. I teach English there. And you? Last time I heard, you were going to study medicine."
+      },
+      {
+        "s": 1,
+        "text": "That was the plan. But I failed chemistry in the final year, so I didn't get into medical school. If I'd passed that exam, I'd probably be a doctor now."
+      },
+      {
+        "s": 0,
+        "text": "Do you regret it?"
+      },
+      {
+        "s": 1,
+        "text": "Not really. I studied engineering instead, and now I design bridges. And if I were a doctor, I wouldn't have met my wife. She was in my engineering class."
+      },
+      {
+        "s": 0,
+        "text": "Well, that sounds like it worked out. My story's a bit similar, actually. I was offered a job in a bank in London when I graduated."
+      },
+      {
+        "s": 1,
+        "text": "And you turned it down?"
+      },
+      {
+        "s": 0,
+        "text": "I did. I went to Portugal for a summer instead, and I never came back. If I'd accepted the bank job, I'd be living in London now and earning a lot more money."
+      },
+      {
+        "s": 1,
+        "text": "But would you be happier?"
+      },
+      {
+        "s": 0,
+        "text": "Definitely not. I'm terrible with numbers. If I were better at maths, I might have taken the offer seriously, but I knew it wasn't for me."
+      },
+      {
+        "s": 1,
+        "text": "Do you remember Daniel Hughes? The one who always played guitar at lunch?"
+      },
+      {
+        "s": 0,
+        "text": "Of course. Didn't he start a band?"
+      },
+      {
+        "s": 1,
+        "text": "He did, and they're quite famous now. They're touring Japan this month. Honestly, if he hadn't been so stubborn about music, he'd be working in his dad's shop today."
+      },
+      {
+        "s": 0,
+        "text": "Good for him. Mr Peters always told him he was wasting his time."
+      },
+      {
+        "s": 1,
+        "text": "If Mr Peters had seen them at the festival last summer, he wouldn't think that now."
+      },
+      {
+        "s": 0,
+        "text": "Ha! Well, if I hadn't seen the reunion post online, I wouldn't be here talking to you. Let's get a drink and find the others."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where does Sophie live now?",
+        "options": [
+          "Manchester",
+          "London",
+          "Tokyo",
+          "Lisbon"
+        ],
+        "answer": 3,
+        "explain_es": "Sophie: \"I'm living in Lisbon now.\""
+      },
+      {
+        "type": "tf",
+        "q": "James didn't get into medical school because he failed chemistry.",
+        "answer": "T",
+        "explain_es": "\"I failed chemistry in the final year, so I didn't get into medical school.\""
+      },
+      {
+        "type": "mc",
+        "q": "Where did James meet his wife?",
+        "options": [
+          "At school",
+          "In his engineering class",
+          "At a hospital",
+          "At a festival"
+        ],
+        "answer": 1,
+        "explain_es": "\"She was in my engineering class.\""
+      },
+      {
+        "type": "tf",
+        "q": "Sophie accepted the bank job but left after a year.",
+        "answer": "F",
+        "explain_es": "Ella lo rechazó: \"And you turned it down?\" – \"I did.\""
+      },
+      {
+        "type": "tf",
+        "q": "Mr Peters went to see Daniel's band at the festival.",
+        "answer": "F",
+        "explain_es": "\"If Mr Peters had seen them...\" indica que no los vio."
+      },
+      {
+        "type": "gap",
+        "q": "If I'd passed that exam, I'd probably ____ a doctor now.",
+        "answer": "be",
+        "accept": [],
+        "explain_es": "Condicional mixto: pasado irreal (had passed) con resultado presente (would be... now)."
+      },
+      {
+        "type": "transform",
+        "q": "I didn't accept the bank job, so I'm not living in London now. → If I'd accepted the bank job, I ...",
+        "answer": "If I'd accepted the bank job, I'd be living in London now.",
+        "accept": [
+          "If I'd accepted the bank job, I would be living in London now.",
+          "If I had accepted the bank job, I would be living in London now.",
+          "If I'd accepted the bank job, I would live in London now."
+        ],
+        "explain_es": "\"If I'd accepted the bank job, I'd be living in London now\": causa pasada, resultado presente."
+      }
+    ],
+    "dictation": [
+      "You look exactly the same.",
+      "Let's get a drink and find the others."
+    ]
+  },
+  {
+    "id": "l3-b2-missed-flight-story",
+    "title": "The Flight I Missed",
+    "level": "B2",
+    "kind": "monologue",
+    "topic": "Travel stories",
+    "focus": "Narrative tenses (past perfect continuous)",
+    "emoji": "✈️",
+    "speakers": [
+      {
+        "name": "Rachel",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "I want to tell you about the day I missed the most important flight of my life. It was three years ago, and I was supposed to be flying from Boston to Mexico City for my best friend's wedding. I was going to be her maid of honor."
+      },
+      {
+        "s": 0,
+        "text": "I'd been planning the trip for months. I'd bought a dress, I'd written a speech, and I'd been practising it in front of the mirror every night for a week."
+      },
+      {
+        "s": 0,
+        "text": "The flight was at seven in the morning, so I set two alarms for four o'clock. The problem was that the night before, I'd been working on a project for my boss until almost two, and I was exhausted."
+      },
+      {
+        "s": 0,
+        "text": "When I finally woke up, the sun was shining. I looked at my phone and it was six fifteen. Both alarms had been ringing for over two hours, apparently, and I hadn't heard a thing."
+      },
+      {
+        "s": 0,
+        "text": "I'd never moved so fast in my life. I threw everything into my suitcase, called a taxi and spent the whole journey to the airport praying."
+      },
+      {
+        "s": 0,
+        "text": "But it was no good. By the time I reached the check-in desk, the gate had closed. The woman at the desk looked at me sadly and said the plane had been boarding for twenty minutes."
+      },
+      {
+        "s": 0,
+        "text": "I sat on the floor and cried. I'd been looking forward to that wedding for a whole year, and now I was going to miss it."
+      },
+      {
+        "s": 0,
+        "text": "Then something unexpected happened. A man who'd been standing behind me in the line came over and asked if I was okay. It turned out he worked for another airline."
+      },
+      {
+        "s": 0,
+        "text": "He told me there was a flight to Mexico City via Houston that afternoon, and he helped me get one of the last seats. It cost me a fortune, but I didn't care."
+      },
+      {
+        "s": 0,
+        "text": "I arrived at the church just forty minutes before the ceremony. My friend had been calling me all day, and she was almost as stressed as I was."
+      },
+      {
+        "s": 0,
+        "text": "I changed into my dress in the back of a car while her cousin was driving through the traffic."
+      },
+      {
+        "s": 0,
+        "text": "In the end, I walked down the aisle on time, and nobody noticed that my hair was still wet. My speech was a success, although I'd forgotten half of the jokes I'd been practising."
+      },
+      {
+        "s": 0,
+        "text": "The funniest part is what happened next. The man from the airport and I had been sending each other messages for a few weeks when he invited me for coffee."
+      },
+      {
+        "s": 0,
+        "text": "We got married last year. So whenever people ask me how we met, I tell them I owe it all to two alarms I didn't hear."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why was Rachel flying to Mexico City?",
+        "options": [
+          "For a job interview",
+          "To visit her parents",
+          "For her best friend's wedding",
+          "To meet a client"
+        ],
+        "answer": 2,
+        "explain_es": "\"I was supposed to be flying from Boston to Mexico City for my best friend's wedding.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why didn't she hear her alarms?",
+        "options": [
+          "She had been working until almost two and was exhausted",
+          "Her phone was switched off",
+          "She had set them for the wrong time",
+          "She was sleeping at a friend's house"
+        ],
+        "answer": 0,
+        "explain_es": "\"I'd been working on a project for my boss until almost two, and I was exhausted.\""
+      },
+      {
+        "type": "tf",
+        "q": "Rachel reached the gate just before it closed.",
+        "answer": "F",
+        "explain_es": "\"By the time I reached the check-in desk, the gate had closed.\""
+      },
+      {
+        "type": "tf",
+        "q": "The man who helped her worked for another airline.",
+        "answer": "T",
+        "explain_es": "\"It turned out he worked for another airline.\""
+      },
+      {
+        "type": "tf",
+        "q": "The wedding ceremony started late because of Rachel.",
+        "answer": "F",
+        "explain_es": "\"I walked down the aisle on time\"."
+      },
+      {
+        "type": "gap",
+        "q": "Both alarms ____ (ring) for over two hours, and I hadn't heard a thing.",
+        "answer": "had been ringing",
+        "accept": [],
+        "explain_es": "Pasado perfecto continuo: una acción que duró hasta un momento del pasado (cuando se despertó)."
+      },
+      {
+        "type": "error",
+        "q": "The man and I have been sending each other messages for a few weeks when he invited me for coffee.",
+        "answer": "The man and I had been sending each other messages for a few weeks when he invited me for coffee.",
+        "accept": [],
+        "explain_es": "La invitación es pasada, así que la acción anterior que duraba va en pasado perfecto continuo: \"had been sending\"."
+      }
+    ],
+    "dictation": [
+      "I sat on the floor and cried.",
+      "It cost me a fortune, but I didn't care."
+    ]
+  },
+  {
+    "id": "l3-b2-broadband-complaint",
+    "title": "A Complaint About Broadband",
+    "level": "B2",
+    "kind": "phone-call",
+    "topic": "Complaints & services",
+    "focus": "Cleft sentences for emphasis",
+    "emoji": "📶",
+    "speakers": [
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Mrs Ward",
+        "voice": "female",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon, you're through to FastLink customer service. My name's Ben. How can I help you today?"
+      },
+      {
+        "s": 1,
+        "text": "Hello, Ben. I'm calling about my broadband. This is the fourth time I've called this month, and to be honest, I'm running out of patience."
+      },
+      {
+        "s": 0,
+        "text": "I'm sorry to hear that. Could I take your account number, please?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, it's four seven two, nine one eight, three three."
+      },
+      {
+        "s": 0,
+        "text": "Thank you, Mrs Ward. I can see there have been some problems with your connection. What exactly is happening?"
+      },
+      {
+        "s": 1,
+        "text": "What happens is that the internet stops working every evening at about seven, exactly when I need it. I work from home, and I often have video calls with clients in Canada."
+      },
+      {
+        "s": 0,
+        "text": "I understand. Have you tried restarting the router?"
+      },
+      {
+        "s": 1,
+        "text": "Yes, Ben, many times. What I don't understand is why everyone keeps asking me that. Every agent I've spoken to has told me to restart the router, and it has never made any difference."
+      },
+      {
+        "s": 0,
+        "text": "That's fair. I'm sorry you've had to repeat yourself."
+      },
+      {
+        "s": 1,
+        "text": "It's not the problem itself that annoys me most. It's the fact that nobody calls back. Last week I was promised an engineer, and nobody came."
+      },
+      {
+        "s": 0,
+        "text": "I can see that note on your account. It looks like the visit was cancelled, but you weren't informed. I do apologise. That shouldn't have happened."
+      },
+      {
+        "s": 1,
+        "text": "What I need is a proper solution, not another apology. I've been paying for a premium service for six months."
+      },
+      {
+        "s": 0,
+        "text": "Absolutely. What I can do is book an engineer for tomorrow morning, between eight and twelve, and I'll mark it as urgent. I'll also call you personally afterwards to check it's been fixed."
+      },
+      {
+        "s": 1,
+        "text": "Tomorrow morning would work. And what about the money? It's the evenings that I pay for, really, and I haven't had them for weeks."
+      },
+      {
+        "s": 0,
+        "text": "You're right. What I'm going to do is apply a credit of one month's payment to your account. That should appear on your next bill."
+      },
+      {
+        "s": 1,
+        "text": "Well, thank you. That's the first useful thing anyone has said to me this month."
+      },
+      {
+        "s": 0,
+        "text": "I'm glad I could help. Is there anything else I can do for you today?"
+      },
+      {
+        "s": 1,
+        "text": "No, that's all. Just make sure the engineer actually turns up this time."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many times has Mrs Ward called this month?",
+        "options": [
+          "Twice",
+          "Four times",
+          "Three times",
+          "Six times"
+        ],
+        "answer": 1,
+        "explain_es": "\"This is the fourth time I've called this month\"."
+      },
+      {
+        "type": "mc",
+        "q": "When does her internet stop working?",
+        "options": [
+          "Every morning at eight",
+          "Only at weekends",
+          "During storms",
+          "Every evening at about seven"
+        ],
+        "answer": 3,
+        "explain_es": "\"the internet stops working every evening at about seven\"."
+      },
+      {
+        "type": "tf",
+        "q": "Restarting the router has fixed the problem for a few days.",
+        "answer": "F",
+        "explain_es": "\"it has never made any difference\"."
+      },
+      {
+        "type": "tf",
+        "q": "An engineer visited last week but couldn't repair the connection.",
+        "answer": "F",
+        "explain_es": "La visita se canceló: \"nobody came\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mrs Ward will get a credit of one month's payment.",
+        "answer": "T",
+        "explain_es": "Ben: \"apply a credit of one month's payment to your account\"."
+      },
+      {
+        "type": "transform",
+        "q": "Nobody calls back, and that annoys me most. → What annoys me most is ...",
+        "answer": "What annoys me most is that nobody calls back.",
+        "accept": [
+          "What annoys me most is the fact that nobody calls back."
+        ],
+        "explain_es": "Oración hendida con \"What...\": \"What annoys me most is (the fact) that nobody calls back.\""
+      },
+      {
+        "type": "gap",
+        "q": "It's the evenings ____ I pay for, really.",
+        "answer": "that",
+        "accept": [
+          "which"
+        ],
+        "explain_es": "Estructura \"It's + elemento enfatizado + that...\"."
+      }
+    ],
+    "dictation": [
+      "What I need is a proper solution, not another apology.",
+      "Tomorrow morning would work."
+    ]
+  },
+  {
+    "id": "l3-b2-flatmates-chores",
+    "title": "Time for a Kitchen Talk",
+    "level": "B2",
+    "kind": "conversation",
+    "topic": "Sharing a flat",
+    "focus": "Unreal past (it's time, would rather)",
+    "emoji": "🧽",
+    "speakers": [
+      {
+        "name": "Megan",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Josh",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Josh, have you got a minute? I think it's time we talked about the kitchen."
+      },
+      {
+        "s": 1,
+        "text": "Uh oh. That sounds serious. Is this about the pan I left in the sink?"
+      },
+      {
+        "s": 0,
+        "text": "It's about the pans, plural. There are four in there, and one of them has been there since Sunday. It's high time we had some kind of system."
+      },
+      {
+        "s": 1,
+        "text": "Fair enough. I know I've been a bit lazy. I'd rather we didn't make a big spreadsheet, though. My last flat had one, and it was a nightmare."
+      },
+      {
+        "s": 0,
+        "text": "Okay, no spreadsheet. But I'd rather you washed your things straight after dinner, instead of leaving them until the morning. By then everything's dry and disgusting."
+      },
+      {
+        "s": 1,
+        "text": "That's reasonable. What about the bins? I always seem to be the one taking them out."
+      },
+      {
+        "s": 0,
+        "text": "You're right, you do. Would you rather we took turns every week, or should one person do the bins and the other do the bathroom?"
+      },
+      {
+        "s": 1,
+        "text": "Honestly, I'd rather do the bins forever than clean the bathroom."
+      },
+      {
+        "s": 0,
+        "text": "Deal. I don't mind the bathroom. And while we're talking, it's about time we did something about the fridge. There's a yoghurt in there that expired in March."
+      },
+      {
+        "s": 1,
+        "text": "That's not mine, I promise. I think it was Sam's, before he moved out."
+      },
+      {
+        "s": 0,
+        "text": "Well, Sam left six weeks ago. It's time somebody threw it away."
+      },
+      {
+        "s": 1,
+        "text": "I'll do it tonight. Is there anything else? I'd rather we sorted everything out now than argued about it next week."
+      },
+      {
+        "s": 0,
+        "text": "Just one more thing. Your friends are lovely, but I'd rather they didn't come round on weeknights after ten. I've got work at seven."
+      },
+      {
+        "s": 1,
+        "text": "Sure. Sorry, I didn't realise it was bothering you. You should have said something earlier."
+      },
+      {
+        "s": 0,
+        "text": "I know. I probably should have. I guess I just hate having these conversations."
+      },
+      {
+        "s": 1,
+        "text": "Well, this one wasn't so bad. Shall we celebrate with a takeaway? I'll even wash the plates afterwards."
+      },
+      {
+        "s": 0,
+        "text": "Now that's a deal."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long has one of the pans been in the sink?",
+        "options": [
+          "Since last night",
+          "For six weeks",
+          "Since Sunday",
+          "Since March"
+        ],
+        "answer": 2,
+        "explain_es": "\"one of them has been there since Sunday\"."
+      },
+      {
+        "type": "tf",
+        "q": "Josh wants to make a spreadsheet for the chores.",
+        "answer": "F",
+        "explain_es": "\"I'd rather we didn't make a big spreadsheet\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which job will Megan do?",
+        "options": [
+          "Clean the bathroom",
+          "Take out the bins",
+          "Wash Josh's pans",
+          "Order the takeaway"
+        ],
+        "answer": 0,
+        "explain_es": "Josh prefiere las basuras y Megan dice: \"I don't mind the bathroom.\""
+      },
+      {
+        "type": "tf",
+        "q": "Josh admits that the old yoghurt is his.",
+        "answer": "F",
+        "explain_es": "\"That's not mine, I promise. I think it was Sam's\"."
+      },
+      {
+        "type": "tf",
+        "q": "Megan has to be at work at seven.",
+        "answer": "T",
+        "explain_es": "\"I've got work at seven.\""
+      },
+      {
+        "type": "gap",
+        "q": "I'd rather you ____ (wash) your things straight after dinner.",
+        "answer": "washed",
+        "accept": [],
+        "explain_es": "\"would rather + otra persona + pasado simple\": \"I'd rather you washed...\"."
+      },
+      {
+        "type": "error",
+        "q": "It's high time we have some kind of system.",
+        "answer": "It's high time we had some kind of system.",
+        "accept": [
+          "It is high time we had some kind of system."
+        ],
+        "explain_es": "Después de \"It's high time + sujeto\" se usa el pasado: \"had\"."
+      }
+    ],
+    "dictation": [
+      "I don't mind the bathroom.",
+      "I'll do it tonight."
+    ]
+  },
+  {
+    "id": "l3-b2-zoos-debate",
+    "title": "Should Zoos Still Exist?",
+    "level": "B2",
+    "kind": "debate",
+    "topic": "Animals & ethics",
+    "focus": "Linking contrast (although, whereas, despite)",
+    "emoji": "🦍",
+    "speakers": [
+      {
+        "name": "Anna",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Peter",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Sarah",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening and welcome to tonight's debate. The question is simple: should zoos still exist in the twenty-first century? Arguing for zoos is Dr Peter Hall, a conservation biologist. Arguing against is Sarah Mills, an animal rights campaigner. Peter, you first."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. Although I understand why people feel uncomfortable seeing animals in enclosures, modern zoos play a vital role in conservation. Several species, such as the Arabian oryx, would have disappeared completely without breeding programmes in zoos."
+      },
+      {
+        "s": 0,
+        "text": "Sarah, how do you respond?"
+      },
+      {
+        "s": 2,
+        "text": "Those success stories are real, but they're rare. Whereas a few species have been saved, the vast majority of animals in zoos aren't endangered at all. They're there because they attract visitors, not because they need protection."
+      },
+      {
+        "s": 1,
+        "text": "That's partly true. However, those popular animals bring in the money that pays for research and protection in the wild. Despite what critics say, many zoos now spend a significant part of their income on conservation projects."
+      },
+      {
+        "s": 2,
+        "text": "But even though some zoos do good work, the animals still suffer. Elephants, for example, walk many kilometres a day in the wild, while in most zoos they have a tiny space. In spite of better enclosures, many of them show signs of stress."
+      },
+      {
+        "s": 0,
+        "text": "Peter, is that fair?"
+      },
+      {
+        "s": 1,
+        "text": "For some species, yes, and I'd agree that certain animals, like elephants and orcas, probably shouldn't be kept in captivity. Nevertheless, for smaller species, especially frogs and other amphibians, zoos are sometimes the only safe place left."
+      },
+      {
+        "s": 0,
+        "text": "What about education? Zoos often say they teach children to care about nature."
+      },
+      {
+        "s": 2,
+        "text": "I'm not convinced. Despite all those school visits, studies suggest that most children leave without learning much. They remember the ice cream, not the information. Children can learn about animals from documentaries, while the animals stay where they belong."
+      },
+      {
+        "s": 1,
+        "text": "I'd disagree there. A documentary is wonderful, whereas seeing a real gorilla breathing a few metres away creates an emotional connection that a screen can't."
+      },
+      {
+        "s": 0,
+        "text": "So is there any common ground between you?"
+      },
+      {
+        "s": 2,
+        "text": "Perhaps. While I'd prefer a world without zoos, I could accept sanctuaries that rescue injured animals and don't breed them for display."
+      },
+      {
+        "s": 1,
+        "text": "And although I believe zoos are necessary, I agree they need to change. Fewer species, more space, and much more honesty about why the animals are there."
+      },
+      {
+        "s": 0,
+        "text": "Interesting. So, although you began on opposite sides, you're not as far apart as we thought. Let's take some questions from the audience."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is Peter Hall's job?",
+        "options": [
+          "Zoo director",
+          "Animal rights campaigner",
+          "Conservation biologist",
+          "Documentary maker"
+        ],
+        "answer": 2,
+        "explain_es": "Anna lo presenta como \"a conservation biologist\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to Sarah, why are most animals kept in zoos?",
+        "options": [
+          "Because they attract visitors",
+          "Because they are endangered",
+          "Because they are injured",
+          "Because scientists study them"
+        ],
+        "answer": 0,
+        "explain_es": "\"They're there because they attract visitors, not because they need protection.\""
+      },
+      {
+        "type": "tf",
+        "q": "Peter agrees that elephants probably shouldn't be kept in captivity.",
+        "answer": "T",
+        "explain_es": "\"certain animals, like elephants and orcas, probably shouldn't be kept in captivity\"."
+      },
+      {
+        "type": "tf",
+        "q": "Sarah believes children learn a lot from school visits to zoos.",
+        "answer": "F",
+        "explain_es": "\"most children leave without learning much\"."
+      },
+      {
+        "type": "tf",
+        "q": "Both speakers agree that zoos should breed more animals for display.",
+        "answer": "F",
+        "explain_es": "Sarah solo aceptaría santuarios que \"don't breed them for display\"."
+      },
+      {
+        "type": "transform",
+        "q": "Some zoos do good work. The animals still suffer. → Even though ...",
+        "answer": "Even though some zoos do good work, the animals still suffer.",
+        "accept": [
+          "Even though some zoos do good work, the animals suffer."
+        ],
+        "explain_es": "\"Even though\" une dos ideas que contrastan y va seguido de sujeto + verbo."
+      },
+      {
+        "type": "error",
+        "q": "Despite of all those school visits, most children leave without learning much.",
+        "answer": "Despite all those school visits, most children leave without learning much.",
+        "accept": [
+          "In spite of all those school visits, most children leave without learning much."
+        ],
+        "explain_es": "Se dice \"despite\" o \"in spite of\", nunca \"despite of\"."
+      }
+    ],
+    "dictation": [
+      "They remember the ice cream, not the information.",
+      "Let's take some questions from the audience."
+    ]
+  },
+  {
+    "id": "l3-b2-botanic-garden-tour",
+    "title": "A Tour of Ashworth Botanic Garden",
+    "level": "B2",
+    "kind": "tour",
+    "topic": "Plants & conservation",
+    "focus": "Reduced relative clauses",
+    "emoji": "🌿",
+    "speakers": [
+      {
+        "name": "Gemma",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Ryan",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good morning, everyone, and welcome to Ashworth Botanic Garden. My name's Gemma, and I'll be your guide for the next hour. The garden, founded in eighteen sixty-two, contains over twelve thousand plant species collected from all over the world."
+      },
+      {
+        "s": 0,
+        "text": "Let's start here, by the main gate. The large tree standing on your left is a cedar of Lebanon, planted by the garden's first director. It's the oldest tree in the collection, and it's survived two fires and a terrible storm in nineteen eighty-seven."
+      },
+      {
+        "s": 1,
+        "text": "Excuse me, what's the building with the glass roof behind it?"
+      },
+      {
+        "s": 0,
+        "text": "That's the Palm House, built in the eighteen seventies. We'll go inside later. The plants kept in there need a constant temperature of around twenty-five degrees, so it's lovely on a cold day like this."
+      },
+      {
+        "s": 0,
+        "text": "Now, if you follow me down this path, you'll see the rock garden. Most of the plants growing here come from mountain regions, including the Andes and the Himalayas. They're used to poor soil and strong winds, which is why they look so small."
+      },
+      {
+        "s": 1,
+        "text": "Are any of them endangered?"
+      },
+      {
+        "s": 0,
+        "text": "Quite a few. The flower with blue petals near the steps is a Himalayan poppy, now protected in the wild. Seeds collected by our botanists are stored in a seed bank located underneath the visitor centre."
+      },
+      {
+        "s": 1,
+        "text": "How many seeds do you keep?"
+      },
+      {
+        "s": 0,
+        "text": "Over a million, from about four thousand species. Scientists working on conservation projects around the world can request samples. It's a kind of insurance policy for the planet."
+      },
+      {
+        "s": 0,
+        "text": "Moving on, we've now reached the pond. The giant leaves floating on the water belong to a water lily originally found in the Amazon. Each leaf can support the weight of a small child, although we don't let visitors test that, I'm afraid."
+      },
+      {
+        "s": 1,
+        "text": "That's a shame. My son would love to try."
+      },
+      {
+        "s": 0,
+        "text": "Everyone says that! Next to the pond you'll find the Children's Garden, designed by local schoolchildren in twenty nineteen. The sculptures made from recycled bottles were their idea too."
+      },
+      {
+        "s": 0,
+        "text": "Finally, before we go into the Palm House, just a few practical points. Visitors wishing to take photos for commercial purposes need a permit from the office. And the café, situated beside the shop, serves lunch until three."
+      },
+      {
+        "s": 0,
+        "text": "Right, let's go inside, and please mind the step at the entrance. The floor is often wet."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When was the garden founded?",
+        "options": [
+          "1987",
+          "1862",
+          "In the 1870s",
+          "2019"
+        ],
+        "answer": 1,
+        "explain_es": "Gemma: \"The garden, founded in eighteen sixty-two\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do the plants in the rock garden look so small?",
+        "options": [
+          "They are very young",
+          "They don't get enough water",
+          "Visitors walk on them",
+          "They're used to poor soil and strong winds"
+        ],
+        "answer": 3,
+        "explain_es": "\"They're used to poor soil and strong winds, which is why they look so small.\""
+      },
+      {
+        "type": "tf",
+        "q": "The seed bank is underneath the visitor centre.",
+        "answer": "T",
+        "explain_es": "\"a seed bank located underneath the visitor centre\"."
+      },
+      {
+        "type": "tf",
+        "q": "Visitors are allowed to stand on the water lily leaves.",
+        "answer": "F",
+        "explain_es": "\"we don't let visitors test that\"."
+      },
+      {
+        "type": "tf",
+        "q": "The Children's Garden won a national prize.",
+        "answer": "NG",
+        "explain_es": "Solo se dice que lo diseñaron niños del lugar en 2019."
+      },
+      {
+        "type": "transform",
+        "q": "The large tree which is standing on your left is a cedar. → The large tree ...",
+        "answer": "The large tree standing on your left is a cedar.",
+        "accept": [
+          "The large tree standing on your left is a cedar of Lebanon."
+        ],
+        "explain_es": "Se omite \"which is\" y queda el participio -ing: \"the large tree standing on your left\"."
+      },
+      {
+        "type": "gap",
+        "q": "Seeds ____ (collect) by our botanists are stored in a seed bank.",
+        "answer": "collected",
+        "accept": [],
+        "explain_es": "Relativa reducida con participio pasado: \"Seeds collected by our botanists\" (= which are collected)."
+      }
+    ],
+    "dictation": [
+      "It's a kind of insurance policy for the planet.",
+      "The floor is often wet."
+    ]
+  }
+]

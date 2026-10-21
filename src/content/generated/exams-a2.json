@@ -1,0 +1,2659 @@
+[
+  {
+    "id": "a2-m1",
+    "level": "A2",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa el pasado simple y “used to”, las expresiones de cantidad y las preguntas indirectas, las comparaciones con too / enough / as … as y los deseos con “wish”, y el contraste entre pasado simple y presente perfecto con adverbios de secuencia. Incluye comprensión lectora y auditiva, escritura y expresión oral.",
+    "minutes": 50,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "We ___ ready at eight, so the bus left without us.",
+        "options": [
+          "didn't",
+          "don't",
+          "weren't",
+          "wasn't"
+        ],
+        "answer": 2,
+        "explain_es": "El verbo “to be” en pasado no usa “did”: cambia a was / were. Con “we” se usa “were”, y en negativo “weren’t”."
+      },
+      {
+        "type": "mc",
+        "q": "When I was a child, I ___ play football in the street every afternoon.",
+        "options": [
+          "used to",
+          "use to",
+          "was used to",
+          "am used to"
+        ],
+        "answer": 0,
+        "explain_es": "“Used to + verbo base” expresa un hábito del pasado que ya no existe. En afirmativo se escribe “used to”, con -d."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: you / use / did / to / have / long hair / ?",
+        "answer": "Did you use to have long hair?",
+        "accept": [
+          "Did you use to have long hair"
+        ],
+        "explain_es": "En preguntas con “used to” se usa el auxiliar “did” y el verbo pierde la -d final: “Did you use to…?”."
+      },
+      {
+        "type": "gap",
+        "q": "How ___ people are coming to the party tonight?",
+        "answer": "many",
+        "explain_es": "“People” es contable (plural), por eso la pregunta es “how many”. “How much” es para sustantivos incontables."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as an indirect question: “What time does the bank open?” → Do you know …?",
+        "answer": "Do you know what time the bank opens?",
+        "accept": [
+          "Do you know what time the bank opens"
+        ],
+        "explain_es": "En la pregunta indirecta desaparece el auxiliar “does” y se usa el orden de afirmación: sujeto + verbo (“the bank opens”)."
+      },
+      {
+        "type": "mc",
+        "q": "The flat is nice, but it isn’t ___ for a family of five.",
+        "options": [
+          "too big",
+          "big enough",
+          "enough big"
+        ],
+        "answer": 1,
+        "explain_es": "“Enough” va después del adjetivo: “big enough”. “Too big” significaría que el apartamento es demasiado grande, lo cual contradice la frase."
+      },
+      {
+        "type": "mc",
+        "q": "I hate my long commute. I wish I ___ closer to the office.",
+        "options": [
+          "lived",
+          "live",
+          "will live",
+          "am living"
+        ],
+        "answer": 0,
+        "explain_es": "Un deseo sobre el presente lleva el verbo un paso atrás en el tiempo: “I wish + pasado simple” (“I wish I lived…”)."
+      },
+      {
+        "type": "mc",
+        "q": "___, open the app. Then enter your code and choose a plan.",
+        "options": [
+          "Finally",
+          "After that",
+          "Meanwhile",
+          "First"
+        ],
+        "answer": 3,
+        "explain_es": "“First” abre una secuencia de pasos; luego vienen “then”, “after that” y “finally”."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ my homework yet. Can you wait ten more minutes?",
+        "options": [
+          "didn't finish",
+          "don't finish",
+          "haven't finished",
+          "wasn't finished"
+        ],
+        "answer": 2,
+        "explain_es": "“Yet” en negativo indica algo esperado que todavía no ocurre; el periodo sigue abierto, por eso se usa el presente perfecto."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “I have seen that film last Saturday.”",
+        "answer": "I saw that film last Saturday.",
+        "accept": [
+          "I saw that film last Saturday"
+        ],
+        "explain_es": "“Last Saturday” es un tiempo terminado, así que se usa el pasado simple (“I saw”), no el presente perfecto."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "I moved to Bogotá ten years ___.",
+        "options": [
+          "ago",
+          "since",
+          "for",
+          "already"
+        ],
+        "answer": 0,
+        "explain_es": "“Ago” cuenta hacia atrás desde hoy y va después del periodo: “ten years ago”."
+      },
+      {
+        "type": "mc",
+        "q": "Which word means “very quickly and without warning”?",
+        "options": [
+          "gradually",
+          "recently",
+          "finally",
+          "suddenly"
+        ],
+        "answer": 3,
+        "explain_es": "“Suddenly” significa de repente, rápido y sin aviso."
+      },
+      {
+        "type": "gap",
+        "q": "My father ___ smoking when I was born, and he never smoked again.",
+        "answer": "quit",
+        "accept": [
+          "stopped"
+        ],
+        "explain_es": "“To quit” es dejar de hacer algo (un trabajo o un hábito). Su pasado es igual: “quit”."
+      },
+      {
+        "type": "mc",
+        "q": "We’ve ___ coffee. Can you buy some more on your way home?",
+        "options": [
+          "looked up",
+          "run out of",
+          "put up with",
+          "run into"
+        ],
+        "answer": 1,
+        "explain_es": "“To run out of” significa quedarse sin algo, terminar la provisión."
+      },
+      {
+        "type": "mc",
+        "q": "Don’t buy more chairs. We have ___ — more than enough for everyone.",
+        "options": [
+          "plenty",
+          "a few",
+          "a little",
+          "a couple"
+        ],
+        "answer": 0,
+        "explain_es": "“Plenty” significa más que suficiente, que es justo lo que dice la segunda parte de la frase."
+      },
+      {
+        "type": "mc",
+        "q": "The bus was so ___ that I had to stand for the whole trip.",
+        "options": [
+          "convenient",
+          "decent",
+          "crowded",
+          "polite"
+        ],
+        "answer": 2,
+        "explain_es": "“Crowded” significa lleno de gente; por eso no había asiento."
+      },
+      {
+        "type": "gap",
+        "q": "The flat is small and noisy, but I can ___ it for one more year. (3 words: accept something unpleasant)",
+        "answer": "put up with",
+        "explain_es": "“To put up with” es aguantar o tolerar algo desagradable sin quejarse."
+      },
+      {
+        "type": "mc",
+        "q": "The hotel was great. The only ___ was the price — it was very expensive.",
+        "options": [
+          "space",
+          "noise",
+          "expense",
+          "drawback"
+        ],
+        "answer": 3,
+        "explain_es": "“Drawback” es una desventaja de algo que en general es bueno."
+      },
+      {
+        "type": "mc",
+        "q": "I’ve lived in Medellín ___ 2019.",
+        "options": [
+          "for",
+          "since",
+          "ago",
+          "yet"
+        ],
+        "answer": 1,
+        "explain_es": "“Since” marca el punto de inicio (2019); “for” marcaría una duración (“for five years”)."
+      },
+      {
+        "type": "gap",
+        "q": "I still haven’t answered her email. I’ll finally ___ it this weekend. (3 words: do something you have been delaying)",
+        "answer": "get round to",
+        "accept": [
+          "get around to"
+        ],
+        "explain_es": "“To get round to” es por fin hacer algo que se venía posponiendo."
+      }
+    ],
+    "reading": {
+      "title": "Back to La Estrella",
+      "genre": "blog",
+      "paragraphs": [
+        "Last month I went back to La Estrella, the neighbourhood in Manizales where I spent my childhood. I moved to Bogotá fifteen years ago, and I didn’t visit once in all that time. Back then, the street was quiet. There used to be a small bakery on the corner, and my brother and I used to buy bread there every morning before school.",
+        "When I arrived, I noticed a lot of changes. The bakery isn’t there any more; there is a big supermarket instead. The streets are much more crowded now, and there isn’t enough parking for all the cars. My old house looks smaller than I remember, and it isn’t as colourful as it used to be.",
+        "Of course, some things haven’t changed. Doña Rosa, our old neighbour, still lives in the green house. First, she gave me a big hug. Then she made a little coffee for us, and after that we looked at some old photos together. She asked me if I was happy in Bogotá.",
+        "I have visited many cities so far, but no place is like La Estrella. Sometimes I wish I lived closer to my family. Finally, before I left, I wrote my phone number on a piece of paper for Doña Rosa. This time, I don’t want to wait another fifteen years."
+      ],
+      "glossary": [
+        [
+          "bakery",
+          "panadería"
+        ],
+        [
+          "crowded",
+          "lleno de gente"
+        ],
+        [
+          "parking",
+          "parqueadero"
+        ],
+        [
+          "hug",
+          "abrazo"
+        ],
+        [
+          "so far",
+          "hasta ahora"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "tf",
+          "q": "The writer visited La Estrella many times after moving to Bogotá.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: “I didn’t visit once in all that time”."
+        },
+        {
+          "type": "mc",
+          "q": "What used to be on the corner?",
+          "options": [
+            "a supermarket",
+            "a bakery",
+            "a green house",
+            "a car park"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: “There used to be a small bakery on the corner”."
+        },
+        {
+          "type": "tf",
+          "q": "According to the writer, there isn’t enough parking in the neighbourhood now.",
+          "answer": "T",
+          "explain_es": "Verdadero: “there isn’t enough parking for all the cars”."
+        },
+        {
+          "type": "mc",
+          "q": "How does the writer’s old house look now?",
+          "options": [
+            "bigger and more colourful",
+            "exactly the same",
+            "smaller and less colourful",
+            "new and modern"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: “My old house looks smaller than I remember, and it isn’t as colourful as it used to be”."
+        },
+        {
+          "type": "gap",
+          "q": "Doña Rosa still lives in the ___ house.",
+          "answer": "green",
+          "explain_es": "El texto dice: “Doña Rosa … still lives in the green house”."
+        },
+        {
+          "type": "mc",
+          "q": "What did they do after Doña Rosa made coffee?",
+          "options": [
+            "They looked at old photos.",
+            "They went to the supermarket.",
+            "They visited the bakery.",
+            "They called the writer’s brother."
+          ],
+          "answer": 0,
+          "explain_es": "La secuencia es: “First, she gave me a big hug. Then she made a little coffee … and after that we looked at some old photos together”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A new flat",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Camila",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Andrés",
+          "voice": "male",
+          "accent": "uk"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Hi Andrés! Guess what? I moved into my new flat last Saturday."
+        },
+        {
+          "s": 1,
+          "text": "Congratulations! How is it? Is it better than your old place?"
+        },
+        {
+          "s": 0,
+          "text": "Well, it’s very convenient. It’s only ten minutes from my office, so I walk to work now."
+        },
+        {
+          "s": 1,
+          "text": "That’s great. You used to spend an hour on the bus every day."
+        },
+        {
+          "s": 0,
+          "text": "Exactly. But the flat isn’t big enough. There’s only one bedroom, and the kitchen is tiny."
+        },
+        {
+          "s": 1,
+          "text": "Is it noisy? Your street is near the market, isn’t it?"
+        },
+        {
+          "s": 0,
+          "text": "Yes, there’s too much noise in the mornings. I wish the market opened later."
+        },
+        {
+          "s": 1,
+          "text": "Have you bought any furniture yet?"
+        },
+        {
+          "s": 0,
+          "text": "Not yet. I’ve bought a bed and a couple of chairs, but I haven’t found a good table so far."
+        },
+        {
+          "s": 1,
+          "text": "My cousin sells second-hand furniture. I can ask him how much a table costs."
+        },
+        {
+          "s": 0,
+          "text": "Yes, please! And do you know if he delivers to Chapinero?"
+        },
+        {
+          "s": 1,
+          "text": "I’m not sure. I’ll call him tonight and ask."
+        },
+        {
+          "s": 0,
+          "text": "Thanks. First, come and see the flat on Sunday. Then we can have lunch together."
+        },
+        {
+          "s": 1,
+          "text": "Perfect. See you on Sunday at one."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "When did Camila move into her new flat?",
+          "options": [
+            "last Sunday",
+            "last Saturday",
+            "yesterday",
+            "a month ago"
+          ],
+          "answer": 1,
+          "explain_es": "Camila dice: “I moved into my new flat last Saturday”."
+        },
+        {
+          "type": "tf",
+          "q": "Camila’s new flat is far from her office.",
+          "answer": "F",
+          "explain_es": "Falso: “It’s only ten minutes from my office, so I walk to work now”."
+        },
+        {
+          "type": "mc",
+          "q": "What is the problem with the kitchen?",
+          "options": [
+            "It’s very small.",
+            "It’s too noisy.",
+            "It’s dirty.",
+            "It’s expensive."
+          ],
+          "answer": 0,
+          "explain_es": "Camila dice: “the kitchen is tiny” (muy pequeña)."
+        },
+        {
+          "type": "gap",
+          "q": "Camila wishes the market ___ later.",
+          "answer": "opened",
+          "explain_es": "Camila dice: “I wish the market opened later”. Después de “wish” va el pasado simple."
+        },
+        {
+          "type": "mc",
+          "q": "What hasn’t Camila found yet?",
+          "options": [
+            "a bed",
+            "a chair",
+            "a good table",
+            "a sofa"
+          ],
+          "answer": 2,
+          "explain_es": "Camila dice: “I haven’t found a good table so far”."
+        },
+        {
+          "type": "tf",
+          "q": "Andrés is going to visit Camila’s flat on Sunday.",
+          "answer": "T",
+          "explain_es": "Verdadero: Camila lo invita (“come and see the flat on Sunday”) y Andrés responde “See you on Sunday at one”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write an email to a friend about the place where you lived as a child. Say what you used to do there, how your life is different now, what you have done so far this year, and one thing you wish.",
+      "prompt_es": "Escribe un correo a un amigo sobre el lugar de tu infancia: qué hacías, qué ha cambiado y un deseo.",
+      "genre_es": "Correo informal",
+      "minWords": 80,
+      "maxWords": 120,
+      "criteria": [
+        "Use the simple past and “used to” for past habits.",
+        "Use the present perfect with so far, already or yet.",
+        "Compare with too, enough or (not) as … as.",
+        "Include a wish: I wish + past simple.",
+        "Use sequence words: first, then, after that, finally."
+      ],
+      "model": "Hi Lucía,\n\nHow are you? Yesterday I found some old photos from my childhood in Pasto. When I was a kid, I used to play in the park near my house every afternoon, and my grandmother used to make empanadas on Sundays. Life is different now. Bogotá is too busy for me, and my flat isn’t as quiet as our old house. I’ve visited Pasto twice so far this year, but I haven’t seen my old school yet. I wish I had more free time! Next month, first I’ll visit my grandmother, and then I’ll walk around the old neighbourhood.\n\nWrite soon,\nMateo"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Tell me about your childhood. Where did you live, and what did you use to do after school?",
+          "text_es": "Habla de tu infancia: dónde vivías y qué solías hacer después del colegio.",
+          "seconds": 60,
+          "tips": [
+            "Use “used to” for habits that stopped.",
+            "Add time words: back then, ago, at the time."
+          ]
+        },
+        {
+          "text": "Describe something you have achieved recently. Explain the steps you took: first, then, after that, finally.",
+          "text_es": "Describe algo que lograste hace poco y los pasos que seguiste.",
+          "seconds": 75,
+          "tips": [
+            "Use the present perfect for the result and the simple past for the steps.",
+            "Use sequence words to guide your listener."
+          ]
+        },
+        {
+          "text": "Is your town or city better now than ten years ago? Compare using too, enough and as … as, and say what you wish was different.",
+          "text_es": "Da tu opinión: ¿tu ciudad está mejor que hace diez años? Compara y expresa un deseo.",
+          "seconds": 90,
+          "tips": [
+            "Example: There isn’t enough parking.",
+            "Example: I wish there were more parks."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a2-m2",
+    "level": "A2",
+    "kind": "midterm",
+    "n": 2,
+    "units": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "title": "Parcial 2 · Unidades 5–8",
+    "intro_es": "Evalúa el futuro con “be going to” y “will”, los modales de obligación y consejo, los verbos de dos partes y las peticiones corteses, el propósito con infinitivo y gerundio, los imperativos y las oraciones de tiempo con when, before y as soon as. Incluye las cuatro habilidades.",
+    "minutes": 50,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "Look at those dark clouds. It ___ rain.",
+        "options": [
+          "will to",
+          "goes to",
+          "is about",
+          "is going to"
+        ],
+        "answer": 3,
+        "explain_es": "Cuando hay evidencia visible en el presente (las nubes), se usa “be going to”: “It is going to rain”."
+      },
+      {
+        "type": "mc",
+        "q": "That was the summer ___ I decided to change careers.",
+        "options": [
+          "which",
+          "when",
+          "who",
+          "what"
+        ],
+        "answer": 1,
+        "explain_es": "“When” introduce una cláusula relativa de tiempo que se refiere a un sustantivo de tiempo (“the summer”)."
+      },
+      {
+        "type": "mc",
+        "q": "Entry to the museum is free. You ___ pay anything.",
+        "options": [
+          "don't have to",
+          "mustn't",
+          "had better",
+          "should"
+        ],
+        "answer": 0,
+        "explain_es": "“Don’t have to” indica que no es necesario. “Mustn’t” sería una prohibición, que no tiene sentido aquí."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “You had better to book now; the flights are filling up.”",
+        "answer": "You had better book now; the flights are filling up.",
+        "accept": [
+          "You'd better book now; the flights are filling up.",
+          "You had better book now; the flights are filling up",
+          "You'd better book now; the flights are filling up"
+        ],
+        "explain_es": "Después de “had better” va el verbo base sin “to”: “had better book”."
+      },
+      {
+        "type": "mc",
+        "q": "The music is too loud. Could you turn ___?",
+        "options": [
+          "down it",
+          "down",
+          "it",
+          "it down"
+        ],
+        "answer": 3,
+        "explain_es": "“Turn down” es separable: cuando el objeto es un pronombre, va obligatoriamente en medio: “turn it down”."
+      },
+      {
+        "type": "mc",
+        "q": "Would you mind ___ the window? It’s really cold.",
+        "options": [
+          "close",
+          "to close",
+          "closing",
+          "closed"
+        ],
+        "answer": 2,
+        "explain_es": "Después de “Would you mind” se usa el gerundio (-ing): “Would you mind closing…?”."
+      },
+      {
+        "type": "transform",
+        "q": "Make this request more polite with “Would you mind…?”: “Send me the file.”",
+        "answer": "Would you mind sending me the file?",
+        "accept": [
+          "Would you mind sending me the file"
+        ],
+        "explain_es": "“Would you mind” va seguido de verbo en -ing: “Would you mind sending…?”. Es la forma más indirecta y cortés."
+      },
+      {
+        "type": "mc",
+        "q": "This little brush is ___ the keyboard.",
+        "options": [
+          "to cleaning",
+          "for clean",
+          "for cleaning",
+          "cleaning for"
+        ],
+        "answer": 2,
+        "explain_es": "Para expresar la función de un objeto se usa “for + -ing”: después de una preposición siempre va gerundio."
+      },
+      {
+        "type": "gap",
+        "q": "I’d recommend ___ (back) up your files before the update.",
+        "answer": "backing",
+        "explain_es": "Después de “recommend” se usa el gerundio: “I’d recommend backing up…”."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: as soon as / I’ll / I / call you / hear from them",
+        "answer": "I’ll call you as soon as I hear from them.",
+        "accept": [
+          "I'll call you as soon as I hear from them.",
+          "I'll call you as soon as I hear from them",
+          "As soon as I hear from them, I’ll call you.",
+          "As soon as I hear from them, I'll call you.",
+          "I’ll call you as soon as I hear from them",
+          "As soon as I hear from them, I’ll call you",
+          "As soon as I hear from them, I'll call you"
+        ],
+        "explain_es": "En la cláusula de tiempo (“as soon as I hear”) nunca va “will”; el futuro solo aparece en la oración principal (“I’ll call you”)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "The ___ for the project is Friday at 5 p.m. We must finish by then.",
+        "options": [
+          "backup",
+          "deadline",
+          "warning",
+          "plan"
+        ],
+        "answer": 1,
+        "explain_es": "“Deadline” es la fecha u hora límite para terminar algo."
+      },
+      {
+        "type": "mc",
+        "q": "The concert was ___ because of the rain. It’s now next Saturday.",
+        "options": [
+          "postponed",
+          "required",
+          "warned",
+          "planned"
+        ],
+        "answer": 0,
+        "explain_es": "“To postpone” es aplazar, mover algo para más adelante."
+      },
+      {
+        "type": "gap",
+        "q": "Hurry up! The train is ___ leave. (2 words: in a few minutes)",
+        "answer": "about to",
+        "explain_es": "“To be about to” significa estar a punto de hacer algo."
+      },
+      {
+        "type": "mc",
+        "q": "Can you ___ my cat while I’m on holiday?",
+        "options": [
+          "pick up",
+          "put away",
+          "look after",
+          "hand in"
+        ],
+        "answer": 2,
+        "explain_es": "“To look after” es cuidar a una persona, un animal o una cosa."
+      },
+      {
+        "type": "mc",
+        "q": "Please ___ this form with your name and address.",
+        "options": [
+          "fill in",
+          "turn on",
+          "sort out",
+          "get back to"
+        ],
+        "answer": 0,
+        "explain_es": "“To fill in / fill out” es llenar un formulario con la información requerida."
+      },
+      {
+        "type": "gap",
+        "q": "I don’t know the answer now, but I’ll ___ you tomorrow. (3 words: reply later)",
+        "answer": "get back to",
+        "explain_es": "“To get back to someone” es responderle más tarde."
+      },
+      {
+        "type": "mc",
+        "q": "Take a small torch. It might ___ if there is no electricity.",
+        "options": [
+          "make sure",
+          "avoid",
+          "come in handy",
+          "keep going"
+        ],
+        "answer": 2,
+        "explain_es": "“To come in handy” significa resultar útil."
+      },
+      {
+        "type": "mc",
+        "q": "The new museum is really good. It’s ___ visiting.",
+        "options": [
+          "point",
+          "worth",
+          "purpose",
+          "tool"
+        ],
+        "answer": 1,
+        "explain_es": "“Worth + -ing” indica que algo vale la pena: “It’s worth visiting”."
+      },
+      {
+        "type": "mc",
+        "q": "I studied engineering for five years, and I ___ in 2022.",
+        "options": [
+          "realised",
+          "graduated",
+          "noticed",
+          "postponed"
+        ],
+        "answer": 1,
+        "explain_es": "“To graduate” es terminar una carrera y recibir el título."
+      },
+      {
+        "type": "gap",
+        "q": "Your new passport will be ready in two weeks. In the ___, you can travel with your ID card.",
+        "answer": "meantime",
+        "explain_es": "“In the meantime” significa mientras tanto, en el periodo entre ahora y un evento futuro."
+      }
+    ],
+    "reading": {
+      "title": "Volunteer Week at Playa Blanca",
+      "genre": "email",
+      "paragraphs": [
+        "Dear volunteers, thank you for joining our beach clean-up week in Cartagena. We are going to start on Monday 14 July at 7 a.m. and finish on Friday afternoon. Ms Diana Pérez is in charge of the group, so please contact her if you have a problem.",
+        "Before you arrive, please fill in the online form and hand it in by Thursday. This is the deadline, and we can’t postpone it, because we need the information to buy enough equipment. You don’t have to bring gloves or bags; we will give them to you. However, you must wear a hat, and you should bring a big bottle of water. It’s going to be very hot, so you’d better use sun cream too.",
+        "Every morning, a bus will pick you up at the Clock Tower. Don’t be late: the bus will leave at 6:30 sharp, and it can’t wait for anyone. As soon as we get to the beach, put your things in the blue tent. Then Diana will explain the plan for the day.",
+        "Last year, we collected 600 kilos of plastic. That was the week when we realised how much work there is to do. A small torch comes in handy in the evenings, because the camp has very few lights. Would you mind replying to this email to confirm? We’ll get back to you within two days. See you soon! Felipe Rojas, Volunteer Coordinator"
+      ],
+      "glossary": [
+        [
+          "clean-up",
+          "limpieza"
+        ],
+        [
+          "gloves",
+          "guantes"
+        ],
+        [
+          "sun cream",
+          "bloqueador solar"
+        ],
+        [
+          "tent",
+          "carpa"
+        ],
+        [
+          "torch",
+          "linterna"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Who is in charge of the group?",
+          "options": [
+            "Felipe Rojas",
+            "Diana Pérez",
+            "the bus driver",
+            "the volunteers"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: “Ms Diana Pérez is in charge of the group”."
+        },
+        {
+          "type": "tf",
+          "q": "Volunteers have to bring their own gloves and bags.",
+          "answer": "F",
+          "explain_es": "Falso: “You don’t have to bring gloves or bags; we will give them to you”."
+        },
+        {
+          "type": "gap",
+          "q": "Volunteers must wear a ___.",
+          "answer": "hat",
+          "explain_es": "El texto dice: “you must wear a hat”."
+        },
+        {
+          "type": "mc",
+          "q": "Why is the Thursday deadline important?",
+          "options": [
+            "The bus leaves on Thursday.",
+            "The beach closes on Thursday.",
+            "Diana is on holiday after Thursday.",
+            "They need the information to buy enough equipment."
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “we need the information to buy enough equipment”."
+        },
+        {
+          "type": "tf",
+          "q": "The bus will wait for volunteers who arrive late.",
+          "answer": "F",
+          "explain_es": "Falso: “the bus will leave at 6:30 sharp, and it can’t wait for anyone”."
+        },
+        {
+          "type": "mc",
+          "q": "Why is a torch useful?",
+          "options": [
+            "There are very few lights at the camp.",
+            "The bus leaves very early.",
+            "The beach has many tents.",
+            "Diana asks everyone to bring one."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “A small torch comes in handy in the evenings, because the camp has very few lights”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Calling the repair shop",
+      "kind": "phone-call",
+      "speakers": [
+        {
+          "name": "Karen",
+          "voice": "female",
+          "accent": "au"
+        },
+        {
+          "name": "Sebastián",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good morning, TecnoFix, Karen speaking. How can I help you?"
+        },
+        {
+          "s": 1,
+          "text": "Hi, my name’s Sebastián. My laptop keeps turning off, and I have an important deadline on Friday."
+        },
+        {
+          "s": 0,
+          "text": "I see. When did the problem start?"
+        },
+        {
+          "s": 1,
+          "text": "It started on Monday, the day when I installed a new program."
+        },
+        {
+          "s": 0,
+          "text": "OK. First, try turning it off and on again. Then delete the new program."
+        },
+        {
+          "s": 1,
+          "text": "I’ve already tried that, but it didn’t help."
+        },
+        {
+          "s": 0,
+          "text": "Then you’d better bring it to the shop. You don’t have to make an appointment."
+        },
+        {
+          "s": 1,
+          "text": "Great. Could you look at it today? I need it to finish my report."
+        },
+        {
+          "s": 0,
+          "text": "Sure, I’ll look at it this afternoon. But it’s a good idea to make a backup of your files before you come."
+        },
+        {
+          "s": 1,
+          "text": "Of course. Would you mind calling me as soon as it’s ready?"
+        },
+        {
+          "s": 0,
+          "text": "Not at all. Please fill in a form with your phone number when you arrive."
+        },
+        {
+          "s": 1,
+          "text": "Perfect. Is the repair going to be expensive?"
+        },
+        {
+          "s": 0,
+          "text": "Don’t worry. Checking it is free, and we’ll tell you the price before we repair anything."
+        },
+        {
+          "s": 1,
+          "text": "Thank you. I’ll be there in half an hour."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What is the problem with Sebastián’s laptop?",
+          "options": [
+            "The screen is broken.",
+            "It keeps turning off.",
+            "It is very slow.",
+            "The keyboard doesn’t work."
+          ],
+          "answer": 1,
+          "explain_es": "Sebastián dice: “My laptop keeps turning off”."
+        },
+        {
+          "type": "gap",
+          "q": "The problem started on ___, when he installed a new program.",
+          "answer": "Monday",
+          "explain_es": "Sebastián dice: “It started on Monday, the day when I installed a new program”."
+        },
+        {
+          "type": "tf",
+          "q": "Sebastián needs an appointment to bring his laptop to the shop.",
+          "answer": "F",
+          "explain_es": "Falso. Karen dice: “You don’t have to make an appointment”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Karen say is a good idea before he comes?",
+          "options": [
+            "to buy a new laptop",
+            "to call the shop again",
+            "to make a backup of his files",
+            "to delete all his files"
+          ],
+          "answer": 2,
+          "explain_es": "Karen dice: “it’s a good idea to make a backup of your files before you come”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Karen ask him to do when he arrives?",
+          "options": [
+            "fill in a form with his phone number",
+            "pay for the repair",
+            "turn off the laptop",
+            "wait for half an hour"
+          ],
+          "answer": 0,
+          "explain_es": "Karen dice: “Please fill in a form with your phone number when you arrive”."
+        },
+        {
+          "type": "tf",
+          "q": "Checking the laptop costs nothing.",
+          "answer": "T",
+          "explain_es": "Verdadero. Karen dice: “Checking it is free”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Your friend is going to stay in your flat for a week while you are away. Write a note with instructions. Say what some things are for, ask for two favours and tell your friend about your plans.",
+      "prompt_es": "Escribe una nota con instrucciones y dos favores para un amigo que se queda en tu apartamento.",
+      "genre_es": "Nota informal con instrucciones",
+      "minWords": 80,
+      "maxWords": 120,
+      "criteria": [
+        "Use “be going to” or “will” for your plans and offers.",
+        "Use must, have to, don’t have to or should for rules and advice.",
+        "Include at least two phrasal verbs (look after, turn off, pick up, put away…).",
+        "Make polite requests with “Could you…?” or “Would you mind + -ing?”.",
+        "Use a time clause with when, before or as soon as (no “will” inside it)."
+      ],
+      "model": "Hi Tomás,\n\nThanks for staying in my flat! I’m going to be in Cali until Sunday, so here are a few instructions. The small key is for opening the main door. You have to water the plants every two days, but you don’t have to clean the flat. Could you look after my cat, Mango? His food is in the blue container. Would you mind picking up my letters from reception? Before you go to bed, please turn off the kitchen lights. When you leave, put the key under the mat. As soon as I get back, I’ll cook dinner for you.\n\nThanks a lot!\nValeria"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "What are you going to do next weekend? Talk about your plans and one thing you have to do.",
+          "text_es": "Cuenta tus planes para el próximo fin de semana y algo que tienes que hacer.",
+          "seconds": 60,
+          "tips": [
+            "Use “be going to” for plans you have already made.",
+            "Add an obligation with “have to” or “need to”."
+          ]
+        },
+        {
+          "text": "Describe an object that comes in handy in your daily life. What is it for, and how do you use it? Give simple instructions.",
+          "text_es": "Describe un objeto útil: para qué sirve y cómo se usa, con instrucciones.",
+          "seconds": 75,
+          "tips": [
+            "Use “It’s for + -ing” and “I use it to + verb”.",
+            "Give instructions with imperatives: First, turn it on…"
+          ]
+        },
+        {
+          "text": "Role-play: you need a favour from a colleague, for example to pick up a package or to look after your plants. Make two polite requests, then imagine the answers and reply with “will”.",
+          "text_es": "Juego de roles: pide dos favores con cortesía a un compañero y responde a sus respuestas.",
+          "seconds": 90,
+          "tips": [
+            "Could you…? / Would you mind + -ing?",
+            "Answer with: Sure, I’ll… / I’m afraid I can’t…"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a2-m3",
+    "level": "A2",
+    "kind": "midterm",
+    "n": 3,
+    "units": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial 3 · Unidades 9–12",
+    "intro_es": "Evalúa el contraste entre pasado, presente y futuro, el primer condicional (if, unless, as long as), los gustos con gerundio y respuestas cortas, las razones con because / because of, la voz pasiva en presente y pasado, y el pasado continuo frente al presente perfecto continuo. Incluye las cuatro habilidades.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "transform",
+        "q": "Join the sentences with “If”: You leave now. You’ll catch the bus.",
+        "answer": "If you leave now, you’ll catch the bus.",
+        "accept": [
+          "If you leave now, you'll catch the bus.",
+          "If you leave now, you will catch the bus.",
+          "You'll catch the bus if you leave now.",
+          "You will catch the bus if you leave now.",
+          "If you leave now, you’ll catch the bus",
+          "If you leave now, you'll catch the bus",
+          "If you leave now, you will catch the bus",
+          "You'll catch the bus if you leave now",
+          "You will catch the bus if you leave now"
+        ],
+        "explain_es": "Primer condicional: “if” + presente simple en la condición, y “will” en la consecuencia. Nunca va “will” después de “if”."
+      },
+      {
+        "type": "mc",
+        "q": "We won’t get tickets ___ we book this week.",
+        "options": [
+          "as long",
+          "in case",
+          "if",
+          "unless"
+        ],
+        "answer": 3,
+        "explain_es": "“Unless” significa “si no”: no conseguiremos boletas si no reservamos esta semana."
+      },
+      {
+        "type": "mc",
+        "q": "Back then, nobody had a smartphone. Nowadays, almost everybody ___ one.",
+        "options": [
+          "had",
+          "has",
+          "is having",
+          "used to have"
+        ],
+        "answer": 1,
+        "explain_es": "“Nowadays” marca la situación actual, por eso se usa el presente simple (“has”). “Have” de posesión no va en continuo."
+      },
+      {
+        "type": "mc",
+        "q": "I can’t stand ___ in traffic for hours.",
+        "options": [
+          "sit",
+          "to sitting",
+          "sitting",
+          "sat"
+        ],
+        "answer": 2,
+        "explain_es": "Después de verbos de gusto o disgusto como “can’t stand”, la actividad va en gerundio (-ing)."
+      },
+      {
+        "type": "mc",
+        "q": "“I’ve never been to San Andrés.” — “___.”",
+        "options": [
+          "Neither have I",
+          "So have I",
+          "Neither do I",
+          "So I have"
+        ],
+        "answer": 0,
+        "explain_es": "Para estar de acuerdo con una frase negativa se usa “Neither” + el mismo auxiliar (“have”) + sujeto: “Neither have I”."
+      },
+      {
+        "type": "gap",
+        "q": "We cancelled the picnic ___ the rain. (2 words)",
+        "answer": "because of",
+        "explain_es": "“Because of” es una preposición y va seguida de un sustantivo (“the rain”). “Because” necesitaría sujeto y verbo."
+      },
+      {
+        "type": "mc",
+        "q": "This old bridge ___ in 1950.",
+        "options": [
+          "built",
+          "is built",
+          "was built",
+          "was build"
+        ],
+        "answer": 2,
+        "explain_es": "Pasiva en pasado: was / were + participio pasado (“was built”). 1950 es tiempo terminado."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “Mobile phones aren’t allow during the exam.”",
+        "answer": "Mobile phones aren’t allowed during the exam.",
+        "accept": [
+          "Mobile phones aren't allowed during the exam.",
+          "Mobile phones are not allowed during the exam.",
+          "Mobile phones aren’t allowed during the exam",
+          "Mobile phones aren't allowed during the exam",
+          "Mobile phones are not allowed during the exam"
+        ],
+        "explain_es": "La voz pasiva necesita el participio pasado: “are allowed”, no “are allow”."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ dinner when the lights suddenly went out.",
+        "options": [
+          "cooked",
+          "was cooking",
+          "have cooked",
+          "am cooking"
+        ],
+        "answer": 1,
+        "explain_es": "El pasado continuo (“was cooking”) describe la acción en progreso que fue interrumpida por el pasado simple (“went out”)."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: since / she / Portuguese / has / learning / been / January",
+        "answer": "She has been learning Portuguese since January.",
+        "accept": [
+          "She's been learning Portuguese since January.",
+          "She has been learning Portuguese since January",
+          "She's been learning Portuguese since January"
+        ],
+        "explain_es": "Presente perfecto continuo: has / have + been + -ing, para una actividad que empezó en el pasado y continúa hasta ahora."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Take an umbrella ___ it rains later.",
+        "options": [
+          "unless",
+          "in case",
+          "as long as",
+          "nowadays"
+        ],
+        "answer": 1,
+        "explain_es": "“In case” expresa precaución: por si acaso llueve."
+      },
+      {
+        "type": "mc",
+        "q": "The service at this hospital has ___ a lot. It’s much better than last year.",
+        "options": [
+          "improved",
+          "expected",
+          "ended up",
+          "allowed"
+        ],
+        "answer": 0,
+        "explain_es": "“To improve” es mejorar."
+      },
+      {
+        "type": "gap",
+        "q": "We wanted to go to the beach, but in the end we ___ staying at home. (2 words: a result you didn’t plan)",
+        "answer": "ended up",
+        "explain_es": "“To end up + -ing” es terminar haciendo algo que no se había planeado."
+      },
+      {
+        "type": "mc",
+        "q": "Which word describes a PERSON who has nothing interesting to do?",
+        "options": [
+          "boring",
+          "worth",
+          "enjoy",
+          "bored"
+        ],
+        "answer": 3,
+        "explain_es": "“Bored” describe cómo se siente la persona; “boring” describe la cosa o actividad que aburre."
+      },
+      {
+        "type": "mc",
+        "q": "I’m really ___ salsa. I go dancing every weekend.",
+        "options": [
+          "into",
+          "fond",
+          "prefer",
+          "enjoy"
+        ],
+        "answer": 0,
+        "explain_es": "“To be into something” (informal) es estar muy interesado o aficionado a algo."
+      },
+      {
+        "type": "gap",
+        "q": "I’m ___ this noise! It has been going on all week. (3 words: tired of something annoying)",
+        "answer": "fed up with",
+        "explain_es": "“Fed up with” significa harto de algo que molesta desde hace tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "Who ___ the telephone?",
+        "options": [
+          "delivered",
+          "invented",
+          "damaged",
+          "allowed"
+        ],
+        "answer": 1,
+        "explain_es": "“To invent” es crear algo que no existía antes."
+      },
+      {
+        "type": "mc",
+        "q": "The film is ___ a true story.",
+        "options": [
+          "carried out",
+          "handled",
+          "based on",
+          "built"
+        ],
+        "answer": 2,
+        "explain_es": "“To be based on” es estar basado en algo."
+      },
+      {
+        "type": "mc",
+        "q": "After running for two hours, I was completely ___.",
+        "options": [
+          "exhausted",
+          "interrupted",
+          "progress",
+          "lately"
+        ],
+        "answer": 0,
+        "explain_es": "“Exhausted” significa agotado, extremadamente cansado."
+      },
+      {
+        "type": "gap",
+        "q": "I ___ my old teacher at the supermarket yesterday. What a surprise! (2 words: met by chance)",
+        "answer": "ran into",
+        "explain_es": "“To run into someone” es encontrarse con alguien por casualidad. Pasado: “ran into”."
+      }
+    ],
+    "reading": {
+      "title": "From Farm to Cup",
+      "genre": "article",
+      "paragraphs": [
+        "The Herrera family farm, near Salento, was built by Jorge Herrera’s grandfather in 1952. Back then, the family used to sell all their coffee to big companies. Nowadays, they sell it directly to cafés in Bogotá and Medellín, and next year they are going to open their own shop.",
+        "The coffee is still produced in the traditional way. The beans are picked by hand, washed and then dried in the sun for about ten days. After that, they are packed in bags and delivered by truck. Chemicals aren’t allowed on the farm.",
+        "Jorge’s daughter, Natalia, has been working on the farm for six years. “I didn’t use to like farm work,” she says. “I couldn’t stand getting up at five. But now I really enjoy working outside.” She was studying in Bogotá when her father got sick, so she came home to help.",
+        "Life on the farm isn’t always easy. Two years ago, many plants were damaged because of a storm. “If the weather is good this year, we’ll have our best harvest,” says Natalia. “But we always keep some money in case something goes wrong.”"
+      ],
+      "glossary": [
+        [
+          "beans",
+          "granos"
+        ],
+        [
+          "picked",
+          "recogidos"
+        ],
+        [
+          "dried",
+          "secados"
+        ],
+        [
+          "storm",
+          "tormenta"
+        ],
+        [
+          "harvest",
+          "cosecha"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Who built the farm?",
+          "options": [
+            "Jorge Herrera",
+            "Natalia",
+            "Jorge’s grandfather",
+            "a big company"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: “The Herrera family farm … was built by Jorge Herrera’s grandfather in 1952”."
+        },
+        {
+          "type": "tf",
+          "q": "Today the family sells all its coffee to big companies.",
+          "answer": "F",
+          "explain_es": "Falso: eso era antes (“Back then”). “Nowadays, they sell it directly to cafés”."
+        },
+        {
+          "type": "gap",
+          "q": "The beans are dried in the sun for about ___ days.",
+          "answer": "ten",
+          "accept": [
+            "10"
+          ],
+          "explain_es": "El texto dice: “dried in the sun for about ten days”."
+        },
+        {
+          "type": "tf",
+          "q": "Natalia always liked farm work.",
+          "answer": "F",
+          "explain_es": "Falso. Natalia dice: “I didn’t use to like farm work”."
+        },
+        {
+          "type": "mc",
+          "q": "What was Natalia doing when her father got sick?",
+          "options": [
+            "working on the farm",
+            "studying in Bogotá",
+            "opening a shop",
+            "travelling to Medellín"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: “She was studying in Bogotá when her father got sick”."
+        },
+        {
+          "type": "mc",
+          "q": "Why were many plants damaged two years ago?",
+          "options": [
+            "because of chemicals",
+            "because nobody picked them",
+            "because of a truck accident",
+            "because of a storm"
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “many plants were damaged because of a storm”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "A long week",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Juliana",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Martín",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Martín, you look exhausted! What’s going on?"
+        },
+        {
+          "s": 1,
+          "text": "I’ve been working on a project all week, and I haven’t been sleeping well lately."
+        },
+        {
+          "s": 0,
+          "text": "Oh no. And what happened last night? You weren’t at the English class."
+        },
+        {
+          "s": 1,
+          "text": "I was driving to the class when my car broke down. I waited two hours for help."
+        },
+        {
+          "s": 0,
+          "text": "That’s terrible. Was the car repaired?"
+        },
+        {
+          "s": 1,
+          "text": "It was taken to a garage near my house this morning. It’s going to be ready on Friday."
+        },
+        {
+          "s": 0,
+          "text": "Well, if it’s ready on Friday, we can go out on Saturday. Do you like jazz?"
+        },
+        {
+          "s": 1,
+          "text": "Not really. I can’t stand listening to jazz for a long time."
+        },
+        {
+          "s": 0,
+          "text": "Neither can I, to be honest. I prefer salsa."
+        },
+        {
+          "s": 1,
+          "text": "So do I! There’s a salsa night at Café Luna on Saturday."
+        },
+        {
+          "s": 0,
+          "text": "Great. But I’ll only go as long as we don’t stay out too late. I’m working on Sunday."
+        },
+        {
+          "s": 1,
+          "text": "No problem. And I’ll take some money in case we need a taxi."
+        },
+        {
+          "s": 0,
+          "text": "Perfect. Let’s meet at eight."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Why is Martín tired?",
+          "options": [
+            "He has been working on a project all week.",
+            "He was at a concert last night.",
+            "He has been driving all day.",
+            "He went to a salsa night."
+          ],
+          "answer": 0,
+          "explain_es": "Martín dice: “I’ve been working on a project all week, and I haven’t been sleeping well lately”."
+        },
+        {
+          "type": "tf",
+          "q": "Martín went to the English class last night.",
+          "answer": "F",
+          "explain_es": "Falso. Juliana dice “You weren’t at the English class”, y Martín explica que su carro se dañó."
+        },
+        {
+          "type": "gap",
+          "q": "Martín waited ___ hours for help.",
+          "answer": "two",
+          "accept": [
+            "2"
+          ],
+          "explain_es": "Martín dice: “I waited two hours for help”."
+        },
+        {
+          "type": "mc",
+          "q": "When is the car going to be ready?",
+          "options": [
+            "today",
+            "on Friday",
+            "on Saturday",
+            "on Sunday"
+          ],
+          "answer": 1,
+          "explain_es": "Martín dice: “It’s going to be ready on Friday”."
+        },
+        {
+          "type": "tf",
+          "q": "Juliana likes jazz more than salsa.",
+          "answer": "F",
+          "explain_es": "Falso. Juliana dice: “Neither can I … I prefer salsa”."
+        },
+        {
+          "type": "mc",
+          "q": "Why will Martín take some money?",
+          "options": [
+            "to buy concert tickets",
+            "to pay for the garage",
+            "in case they need a taxi",
+            "to buy dinner"
+          ],
+          "answer": 2,
+          "explain_es": "Martín dice: “I’ll take some money in case we need a taxi”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a short blog post about how your town or city has changed. Say what it used to be like, what it is like nowadays and what is going to happen. Say what you enjoy or can’t stand about it, and why.",
+      "prompt_es": "Escribe una entrada de blog sobre cómo ha cambiado tu ciudad: antes, ahora y en el futuro.",
+      "genre_es": "Entrada de blog",
+      "minWords": 80,
+      "maxWords": 120,
+      "criteria": [
+        "Contrast past, present and future: used to, nowadays, be going to.",
+        "Include a first conditional sentence with if, unless or as long as.",
+        "Use verbs of liking + -ing: enjoy, can’t stand, don’t mind.",
+        "Give reasons with because, because of, since or so.",
+        "Write at least one passive sentence (was built, is used…)."
+      ],
+      "model": "My Town, Then and Now\n\nI grew up in San Rafael, a small town in Boyacá. Twenty years ago it used to be very quiet, and there weren’t many tourists. Nowadays, hundreds of people visit it every weekend because of the lake. The old train station was built in 1920, and now it is used as a library. I really enjoy walking around the main square, but I can’t stand driving in the centre because the streets are too narrow. Next year, the town is going to open a new bus terminal. If the buses are fast, I’ll visit my parents more often — as long as the tickets aren’t too expensive!"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "What do you enjoy doing in your free time, and what can’t you stand? Explain why.",
+          "text_es": "Habla de lo que te gusta y lo que no soportas hacer en tu tiempo libre, con razones.",
+          "seconds": 60,
+          "tips": [
+            "Use verbs + -ing: I enjoy cooking, I can’t stand waiting.",
+            "Give reasons with because or because of."
+          ]
+        },
+        {
+          "text": "Tell a story about a day when something went wrong. What were you doing when it happened? What happened next?",
+          "text_es": "Narra un día en que algo salió mal: qué estabas haciendo y qué pasó.",
+          "seconds": 90,
+          "tips": [
+            "Background: I was walking home when…",
+            "Use suddenly or just then for the interruption."
+          ]
+        },
+        {
+          "text": "How has life in your city changed in the last ten years, and how will it change in the future? Give your opinion and use at least one “if” sentence.",
+          "text_es": "Opina sobre cómo ha cambiado tu ciudad y cómo cambiará, con una frase condicional.",
+          "seconds": 90,
+          "tips": [
+            "Back then… / Nowadays… / Next year…",
+            "If the city builds a metro, people will…"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a2-m4",
+    "level": "A2",
+    "kind": "midterm",
+    "n": 4,
+    "units": [
+      13,
+      14,
+      15,
+      16
+    ],
+    "title": "Parcial 4 · Unidades 13–16",
+    "intro_es": "Evalúa los adjetivos en -ing / -ed y los pronombres relativos who, which, that y whose, los modales de certeza, permiso, obligación y prohibición, el segundo condicional y should have / would have, y el estilo indirecto para afirmaciones y peticiones. Incluye las cuatro habilidades.",
+    "minutes": 55,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "The instructions were really ___, so everybody made mistakes.",
+        "options": [
+          "confused",
+          "confusing",
+          "confuse",
+          "confusion"
+        ],
+        "answer": 1,
+        "explain_es": "El adjetivo en -ing describe la cosa que causa el efecto: las instrucciones son “confusing”; las personas estarían “confused”."
+      },
+      {
+        "type": "mc",
+        "q": "The technician ___ came yesterday fixed the printer in ten minutes.",
+        "options": [
+          "who",
+          "which",
+          "whose",
+          "what"
+        ],
+        "answer": 0,
+        "explain_es": "“Who” se usa para personas en una cláusula relativa (“the technician who came…”)."
+      },
+      {
+        "type": "gap",
+        "q": "That’s the woman ___ son plays in the national team.",
+        "answer": "whose",
+        "explain_es": "“Whose” expresa posesión dentro de una cláusula relativa: la mujer cuyo hijo juega en la selección."
+      },
+      {
+        "type": "mc",
+        "q": "Nobody is answering the phone. They ___ be in a meeting.",
+        "options": [
+          "can't",
+          "must",
+          "mustn't",
+          "have to"
+        ],
+        "answer": 1,
+        "explain_es": "“Must” expresa una conclusión segura a partir de la evidencia (nadie contesta)."
+      },
+      {
+        "type": "mc",
+        "q": "You ___ smoke here. It’s against the rules.",
+        "options": [
+          "don't have to",
+          "might",
+          "needn't",
+          "mustn't"
+        ],
+        "answer": 3,
+        "explain_es": "“Mustn’t” expresa prohibición. “Don’t have to” y “needn’t” significan que no es necesario."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with “allowed”: “We can’t eat in the library.”",
+        "answer": "We aren’t allowed to eat in the library.",
+        "accept": [
+          "We aren't allowed to eat in the library.",
+          "We are not allowed to eat in the library.",
+          "We're not allowed to eat in the library.",
+          "We aren’t allowed to eat in the library",
+          "We aren't allowed to eat in the library",
+          "We are not allowed to eat in the library",
+          "We're not allowed to eat in the library"
+        ],
+        "explain_es": "La prohibición se puede expresar con “not allowed to + verbo”: “We aren’t allowed to eat…”."
+      },
+      {
+        "type": "mc",
+        "q": "If I ___ more money, I would buy a new car.",
+        "options": [
+          "have",
+          "will have",
+          "would have",
+          "had"
+        ],
+        "answer": 3,
+        "explain_es": "Segundo condicional (situación imaginaria): “if” + pasado simple, y “would” + verbo base en la consecuencia."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “I should have call you yesterday.”",
+        "answer": "I should have called you yesterday.",
+        "accept": [
+          "I should have called you yesterday"
+        ],
+        "explain_es": "“Should have” va seguido del participio pasado: “should have called”."
+      },
+      {
+        "type": "mc",
+        "q": "“I’m tired,” Laura said last night. → Laura said she ___ tired.",
+        "options": [
+          "is",
+          "has been",
+          "was",
+          "were"
+        ],
+        "answer": 2,
+        "explain_es": "En estilo indirecto el verbo suele retroceder un tiempo: “am” → “was”."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: told / not / us / he / to / be late",
+        "answer": "He told us not to be late.",
+        "accept": [
+          "He told us not to be late"
+        ],
+        "explain_es": "Las órdenes se reportan con verbo + objeto + (not) to + verbo: “He told us not to be late”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "My car is very ___. It never breaks down.",
+        "options": [
+          "reliable",
+          "annoying",
+          "broken",
+          "impressive"
+        ],
+        "answer": 0,
+        "explain_es": "“Reliable” significa confiable, que siempre funciona bien."
+      },
+      {
+        "type": "gap",
+        "q": "He isn’t rude; he just ___ a bit shy. (3 words: gives the impression of being)",
+        "answer": "comes across as",
+        "explain_es": "“To come across as” es dar cierta impresión a los demás."
+      },
+      {
+        "type": "mc",
+        "q": "The talk about space was ___. Everybody wanted to learn more.",
+        "options": [
+          "fascinated",
+          "disappointed",
+          "fascinating",
+          "exhausted"
+        ],
+        "answer": 2,
+        "explain_es": "“Fascinating” describe algo que causa mucho interés. “Fascinated” describe a la persona que siente el interés."
+      },
+      {
+        "type": "mc",
+        "q": "Smoking is ___ in all public buildings.",
+        "options": [
+          "certain",
+          "prohibited",
+          "likely",
+          "assumed"
+        ],
+        "answer": 1,
+        "explain_es": "“Prohibited” significa prohibido por una regla o ley."
+      },
+      {
+        "type": "mc",
+        "q": "It’s ___ to rain today — the sky is completely blue.",
+        "options": [
+          "unlikely",
+          "probably",
+          "evidence",
+          "strictly"
+        ],
+        "answer": 0,
+        "explain_es": "“Unlikely” significa poco probable."
+      },
+      {
+        "type": "gap",
+        "q": "The meeting ___ start at nine, but it started at ten. (3 words: was expected to, by arrangement)",
+        "answer": "was supposed to",
+        "explain_es": "“To be supposed to” indica lo que se esperaba según un acuerdo o regla. Es pasado: “was supposed to”."
+      },
+      {
+        "type": "mc",
+        "q": "They offered me the job, but I ___ it ___ because the salary was too low.",
+        "options": [
+          "put / away",
+          "looked / after",
+          "turned / down",
+          "picked / up"
+        ],
+        "answer": 2,
+        "explain_es": "“To turn down” es rechazar una oferta: “I turned it down”."
+      },
+      {
+        "type": "mc",
+        "q": "___, I should have studied harder. Now I can see that.",
+        "options": [
+          "In hindsight",
+          "Otherwise",
+          "Instead of",
+          "In your shoes"
+        ],
+        "answer": 0,
+        "explain_es": "“In hindsight” significa mirando hacia atrás, con lo que sé ahora."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ me to buy milk on the way home, but I forgot.",
+        "options": [
+          "said",
+          "admitted",
+          "reminded",
+          "mentioned"
+        ],
+        "answer": 2,
+        "explain_es": "“Remind someone to do something” es recordarle a alguien que haga algo. “Said” no lleva objeto personal."
+      },
+      {
+        "type": "gap",
+        "q": "___, the new manager starts on Monday — that’s what everyone is saying.",
+        "answer": "Apparently",
+        "accept": [
+          "apparently"
+        ],
+        "explain_es": "“Apparently” significa al parecer, según lo que dice la gente."
+      }
+    ],
+    "reading": {
+      "title": "The Lost Laptop",
+      "genre": "story",
+      "paragraphs": [
+        "Last Friday, Daniel Ospina had a terrible morning. Daniel is a designer who works for a small company in Barranquilla. That day he had a presentation for an important client, and the presentation was on his laptop. But when he got to the office, the laptop wasn’t in his bag.",
+        "“It must be on the bus,” he thought. “Or it might be at the café where I had breakfast.” He felt confused and worried. His boss, Mrs Cárdenas, told him to call the bus company immediately. The woman who answered the phone said that she couldn’t find any laptops in the lost property office.",
+        "Then Daniel’s phone rang. It was the owner of the café. “Your laptop is here,” she said. “My daughter found it under a table.” She told him that the laptop was safe and asked him to come before eleven.",
+        "Daniel arrived at the meeting just in time, and his presentation was impressive. Later, he told his colleagues, “I should have checked my bag before I left the café. If I lost it again, I would cry!” Now there is a new rule in the office: employees have to keep a backup of important files, and they mustn’t take company laptops to cafés."
+      ],
+      "glossary": [
+        [
+          "client",
+          "cliente"
+        ],
+        [
+          "worried",
+          "preocupado"
+        ],
+        [
+          "lost property office",
+          "oficina de objetos perdidos"
+        ],
+        [
+          "just in time",
+          "justo a tiempo"
+        ],
+        [
+          "colleagues",
+          "compañeros de trabajo"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What is Daniel’s job?",
+          "options": [
+            "He’s a bus driver.",
+            "He’s a designer.",
+            "He owns a café.",
+            "He’s a manager."
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: “Daniel is a designer who works for a small company in Barranquilla”."
+        },
+        {
+          "type": "tf",
+          "q": "At first, Daniel thought the laptop was at home.",
+          "answer": "F",
+          "explain_es": "Falso. Pensó que estaba en el bus o en el café: “It must be on the bus … Or it might be at the café”."
+        },
+        {
+          "type": "mc",
+          "q": "Who told Daniel to call the bus company?",
+          "options": [
+            "the café owner",
+            "a woman on the phone",
+            "his boss",
+            "the client"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: “His boss, Mrs Cárdenas, told him to call the bus company immediately”."
+        },
+        {
+          "type": "gap",
+          "q": "The café owner’s daughter found the laptop under a ___.",
+          "answer": "table",
+          "explain_es": "La dueña dice: “My daughter found it under a table”."
+        },
+        {
+          "type": "tf",
+          "q": "Daniel’s presentation went well.",
+          "answer": "T",
+          "explain_es": "Verdadero: “his presentation was impressive”."
+        },
+        {
+          "type": "mc",
+          "q": "What is the new rule in the office?",
+          "options": [
+            "Employees can’t use laptops.",
+            "Employees must have breakfast at the office.",
+            "Employees aren’t allowed to go to meetings.",
+            "Employees have to keep a backup of important files."
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “employees have to keep a backup of important files, and they mustn’t take company laptops to cafés”."
+        }
+      ]
+    },
+    "listening": {
+      "title": "News from the manager",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Ricardo",
+          "voice": "male",
+          "accent": "au"
+        },
+        {
+          "name": "Paula",
+          "voice": "female",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Paula, did you talk to the new manager this morning?"
+        },
+        {
+          "s": 1,
+          "text": "Yes. She said the office was going to close early on Friday."
+        },
+        {
+          "s": 0,
+          "text": "Really? Why?"
+        },
+        {
+          "s": 1,
+          "text": "Apparently, the electricity is going to be off for some repairs. She told us to save all our work before three."
+        },
+        {
+          "s": 0,
+          "text": "Are we allowed to work from home that afternoon?"
+        },
+        {
+          "s": 1,
+          "text": "Yes, we can, but we have to answer emails until five."
+        },
+        {
+          "s": 0,
+          "text": "OK. By the way, do you know the man who’s waiting at reception? He looks lost."
+        },
+        {
+          "s": 1,
+          "text": "He must be the new designer. He’s supposed to start today."
+        },
+        {
+          "s": 0,
+          "text": "He looks a bit confused. I should have shown him around this morning."
+        },
+        {
+          "s": 1,
+          "text": "Don’t worry. If I were you, I’d go and say hello now."
+        },
+        {
+          "s": 0,
+          "text": "Good idea. Did the manager say anything about the car park?"
+        },
+        {
+          "s": 1,
+          "text": "She reminded us not to park in front of the main door. It’s strictly prohibited."
+        },
+        {
+          "s": 0,
+          "text": "Thanks, Paula. I’ll go and talk to the new designer."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What did the manager say about Friday?",
+          "options": [
+            "The office is going to close early.",
+            "There is going to be a party.",
+            "Everybody must work late.",
+            "The office will be closed all day."
+          ],
+          "answer": 0,
+          "explain_es": "Paula dice: “She said the office was going to close early on Friday”."
+        },
+        {
+          "type": "gap",
+          "q": "The manager told them to save their work before ___.",
+          "answer": "three",
+          "accept": [
+            "3",
+            "3 pm",
+            "3 p.m.",
+            "three o’clock",
+            "three o'clock"
+          ],
+          "explain_es": "Paula dice: “She told us to save all our work before three”."
+        },
+        {
+          "type": "tf",
+          "q": "They are not allowed to work from home on Friday afternoon.",
+          "answer": "F",
+          "explain_es": "Falso. Paula dice: “Yes, we can, but we have to answer emails until five”."
+        },
+        {
+          "type": "mc",
+          "q": "Who does Paula think the man at reception is?",
+          "options": [
+            "a client",
+            "the new manager",
+            "the new designer",
+            "an electrician"
+          ],
+          "answer": 2,
+          "explain_es": "Paula dice: “He must be the new designer”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Ricardo regret?",
+          "options": [
+            "parking in front of the door",
+            "not showing the man around",
+            "not saving his work",
+            "arriving late"
+          ],
+          "answer": 1,
+          "explain_es": "Ricardo dice: “I should have shown him around this morning”."
+        },
+        {
+          "type": "tf",
+          "q": "Parking in front of the main door is prohibited.",
+          "answer": "T",
+          "explain_es": "Verdadero: “She reminded us not to park in front of the main door. It’s strictly prohibited”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a message to a friend about a mistake you made recently. Say what happened, what other people told you or asked you to do, what you should have done, and what you would do if it happened again.",
+      "prompt_es": "Escribe un mensaje a un amigo sobre un error reciente: qué pasó, qué te dijeron y qué harías diferente.",
+      "genre_es": "Mensaje informal",
+      "minWords": 80,
+      "maxWords": 120,
+      "criteria": [
+        "Report what someone said or asked: said that…, told me to…, asked me to….",
+        "Use “should have” + past participle for a regret.",
+        "Include a second conditional: If + past simple, I would….",
+        "Use a relative clause with who, which, that or whose.",
+        "Use -ed / -ing adjectives (embarrassing, worried, annoying…)."
+      ],
+      "model": "Hi Sara,\n\nYou won’t believe what happened to me yesterday! I took a taxi to the airport, and I left my phone in it. It was so embarrassing. A woman who works at the information desk was really helpful. She told me to call the taxi company, and they said that the driver had my phone. Luckily, the driver, whose name was Hugo, brought it back an hour later. I should have checked the seat before I got out. If it happened again, I would write down the taxi number. I was so worried, but everything was fine in the end!\n\nHugs,\nCamilo"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about the rules at your home, school or job. What are you allowed to do, what do you have to do, and what mustn’t you do?",
+          "text_es": "Habla de las reglas de tu casa, colegio o trabajo: permisos, obligaciones y prohibiciones.",
+          "seconds": 60,
+          "tips": [
+            "Permission: can, be allowed to.",
+            "Obligation: have to, be supposed to. Prohibition: mustn’t."
+          ]
+        },
+        {
+          "text": "Tell a story about a time you made a mistake. What happened, what did people tell you, and what should you have done?",
+          "text_es": "Narra una vez que cometiste un error, qué te dijeron y qué deberías haber hecho.",
+          "seconds": 90,
+          "tips": [
+            "Report words: She told me to… / He said that…",
+            "Regret: I should have… / I shouldn’t have…"
+          ]
+        },
+        {
+          "text": "If you could change one thing about your city, what would you change and why? What would happen as a result?",
+          "text_es": "Opina: si pudieras cambiar algo de tu ciudad, ¿qué cambiarías y por qué?",
+          "seconds": 90,
+          "tips": [
+            "If I could…, I would…",
+            "Use probably, might or could for possible results."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "a2-final",
+    "level": "A2",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "title": "Parcial final · Nivel A2",
+    "intro_es": "Examen integrador de las 16 unidades del nivel A2: tiempos pasados, presentes y futuros, condicionales, voz pasiva, modales, cláusulas relativas y estilo indirecto, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
+    "minutes": 85,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "Did you ___ to school by bus when you were a child?",
+        "options": [
+          "use to go",
+          "used to go",
+          "used go",
+          "using to go"
+        ],
+        "answer": 0,
+        "explain_es": "En preguntas con “did”, “used to” pierde la -d: “Did you use to go…?”."
+      },
+      {
+        "type": "transform",
+        "q": "Make it indirect: “How much does the repair cost?” → I’d like to know …",
+        "answer": "I’d like to know how much the repair costs.",
+        "accept": [
+          "I'd like to know how much the repair costs.",
+          "I would like to know how much the repair costs.",
+          "I’d like to know how much the repair costs",
+          "I'd like to know how much the repair costs",
+          "I would like to know how much the repair costs"
+        ],
+        "explain_es": "En la pregunta indirecta desaparece “does” y el verbo va en orden de afirmación: “how much the repair costs”."
+      },
+      {
+        "type": "mc",
+        "q": "There’s too much traffic and not ___ buses in this city.",
+        "options": [
+          "too",
+          "as",
+          "enough",
+          "many enough"
+        ],
+        "answer": 2,
+        "explain_es": "“Not enough + sustantivo” indica que hay menos de lo necesario: “not enough buses”."
+      },
+      {
+        "type": "mc",
+        "q": "She ___ in three different countries since 2015.",
+        "options": [
+          "lived",
+          "has lived",
+          "lives",
+          "was living"
+        ],
+        "answer": 1,
+        "explain_es": "Con “since” el periodo sigue abierto hasta ahora, así que se usa el presente perfecto: “has lived”."
+      },
+      {
+        "type": "gap",
+        "q": "Look at that queue! We ___ be late. (3 words: evidence in the present)",
+        "answer": "are going to",
+        "accept": [
+          "'re going to",
+          "’re going to"
+        ],
+        "explain_es": "Cuando hay evidencia visible (la fila), se usa “be going to” para predecir: “We are going to be late”."
+      },
+      {
+        "type": "mc",
+        "q": "Before you ___ the email, check the attachment.",
+        "options": [
+          "will send",
+          "sent",
+          "sending",
+          "send"
+        ],
+        "answer": 3,
+        "explain_es": "Dentro de una cláusula de tiempo (“before…”) nunca va “will”: se usa el presente simple “send”."
+      },
+      {
+        "type": "mc",
+        "q": "The film ___ I watched last night was really disappointing.",
+        "options": [
+          "who",
+          "whose",
+          "which",
+          "what"
+        ],
+        "answer": 2,
+        "explain_es": "“Which” (o “that”) se usa para cosas en una cláusula relativa. “Who” es para personas."
+      },
+      {
+        "type": "mc",
+        "q": "If the payment ___ arrive today, call the bank immediately.",
+        "options": [
+          "doesn't",
+          "won't",
+          "didn't",
+          "isn't"
+        ],
+        "answer": 0,
+        "explain_es": "Primer condicional: después de “if” va el presente simple (“doesn’t arrive”), nunca “will”."
+      },
+      {
+        "type": "mc",
+        "q": "“I don’t like getting up early.” — “___ do I.”",
+        "options": [
+          "So",
+          "Neither",
+          "Either",
+          "Too"
+        ],
+        "answer": 1,
+        "explain_es": "Para coincidir con una frase negativa se usa “Neither + auxiliar + sujeto”: “Neither do I”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “This photo was took by my grandfather.”",
+        "answer": "This photo was taken by my grandfather.",
+        "accept": [
+          "This photo was taken by my grandfather"
+        ],
+        "explain_es": "La pasiva en pasado se forma con was / were + participio pasado: “was taken”, no “was took”."
+      },
+      {
+        "type": "mc",
+        "q": "While we ___ for the bus, it started to rain.",
+        "options": [
+          "were waiting",
+          "waited",
+          "have waited",
+          "are waiting"
+        ],
+        "answer": 0,
+        "explain_es": "Con “while” se usa el pasado continuo para la acción de fondo (“were waiting”), interrumpida por el pasado simple (“started”)."
+      },
+      {
+        "type": "gap",
+        "q": "That ___ be right — the numbers don’t add up.",
+        "answer": "can’t",
+        "accept": [
+          "can't",
+          "cannot",
+          "can not"
+        ],
+        "explain_es": "“Can’t” expresa una conclusión negativa segura: es imposible que eso sea correcto."
+      },
+      {
+        "type": "mc",
+        "q": "What ___ you do if you won the lottery?",
+        "options": [
+          "will",
+          "did",
+          "do",
+          "would"
+        ],
+        "answer": 3,
+        "explain_es": "Segundo condicional (situación imaginaria): “if” + pasado (“won”) y “would” en la oración principal."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: she / me / told / would / she / call / the next day",
+        "answer": "She told me she would call the next day.",
+        "accept": [
+          "She told me that she would call the next day.",
+          "She told me she would call the next day",
+          "She told me that she would call the next day"
+        ],
+        "explain_es": "Estilo indirecto: “tell” lleva objeto personal (“me”) y “will” retrocede a “would”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "I can’t remember much about my first school. My ___ of those years is very bad.",
+        "options": [
+          "memory",
+          "childhood",
+          "experience",
+          "moment"
+        ],
+        "answer": 0,
+        "explain_es": "“Memory” es la capacidad de recordar o un recuerdo."
+      },
+      {
+        "type": "mc",
+        "q": "It’s ___ to say “please” and “thank you”.",
+        "options": [
+          "urgent",
+          "polite",
+          "crowded",
+          "decent"
+        ],
+        "answer": 1,
+        "explain_es": "“Polite” significa educado, cortés."
+      },
+      {
+        "type": "gap",
+        "q": "Please turn ___ the lights when you leave the room.",
+        "answer": "off",
+        "explain_es": "“To turn off” es apagar una luz o una máquina."
+      },
+      {
+        "type": "mc",
+        "q": "What’s the ___ of this button? — It’s for turning the screen on.",
+        "options": [
+          "worth",
+          "tool",
+          "point",
+          "device"
+        ],
+        "answer": 2,
+        "explain_es": "“The point of” significa el propósito o la razón de algo."
+      },
+      {
+        "type": "gap",
+        "q": "Please ___ you close the door when you leave. (2 words: check that something is done)",
+        "answer": "make sure",
+        "explain_es": "“To make sure” es asegurarse de que algo se haga o sea cierto."
+      },
+      {
+        "type": "mc",
+        "q": "I waited for hours, and ___ the doctor called my name.",
+        "options": [
+          "eventually",
+          "meanwhile",
+          "while",
+          "until"
+        ],
+        "answer": 0,
+        "explain_es": "“Eventually” significa finalmente, después de mucho tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "Using phones to pay is a growing ___ in Colombia.",
+        "options": [
+          "consequence",
+          "trend",
+          "lesson",
+          "evidence"
+        ],
+        "answer": 1,
+        "explain_es": "“Trend” es una tendencia, una dirección general de cambio."
+      },
+      {
+        "type": "mc",
+        "q": "I ___ coffee to tea. I drink three cups a day.",
+        "options": [
+          "prefer",
+          "enjoy",
+          "mind",
+          "stand"
+        ],
+        "answer": 0,
+        "explain_es": "“To prefer A to B” es preferir una cosa a otra."
+      },
+      {
+        "type": "gap",
+        "q": "The tests were ___ by a team of engineers last year. (2 words: done, completed)",
+        "answer": "carried out",
+        "explain_es": "“To carry out” es realizar un trabajo planeado. En pasiva: “were carried out”."
+      },
+      {
+        "type": "mc",
+        "q": "The police are going to ___ the accident. They want to know what happened.",
+        "options": [
+          "run into",
+          "go on",
+          "look into",
+          "keep an eye"
+        ],
+        "answer": 2,
+        "explain_es": "“To look into” es investigar algo."
+      },
+      {
+        "type": "mc",
+        "q": "The ending of the film was ___. We expected something much better.",
+        "options": [
+          "impressive",
+          "disappointing",
+          "disappointed",
+          "fascinated"
+        ],
+        "answer": 1,
+        "explain_es": "“Disappointing” describe la cosa que decepciona; “disappointed” describe a la persona."
+      },
+      {
+        "type": "mc",
+        "q": "You can’t ___ that he’s at home just because his car is outside.",
+        "options": [
+          "assume",
+          "figure out",
+          "allow",
+          "warn"
+        ],
+        "answer": 0,
+        "explain_es": "“To assume” es dar algo por hecho sin comprobarlo."
+      },
+      {
+        "type": "gap",
+        "q": "We took the bus ___ taking a taxi, and we saved a lot of money. (2 words: in place of)",
+        "answer": "instead of",
+        "explain_es": "“Instead of + -ing” significa en lugar de."
+      },
+      {
+        "type": "mc",
+        "q": "He ___ that he broke the window and said sorry.",
+        "options": [
+          "refused",
+          "promised",
+          "admitted",
+          "insisted"
+        ],
+        "answer": 2,
+        "explain_es": "“To admit” es reconocer que algo malo es verdad."
+      }
+    ],
+    "reading": {
+      "title": "The Café That Almost Didn’t Open",
+      "genre": "article",
+      "paragraphs": [
+        "Five years ago, Lina Vargas was working in a bank in Bogotá. She used to start at seven in the morning and finish at eight in the evening. “Back then, I was always exhausted,” she remembers. “I didn’t have enough time for my family, and I was fed up with the traffic.”",
+        "One day, while she was waiting for a bus in the rain, she decided to change her life. She quit her job and moved to Villa de Leyva, a small town where her grandparents used to live. “My friends told me I was crazy,” she says. “They said I would lose all my money.”",
+        "Lina’s café, El Patio, was opened in 2021 in an old house that was built in 1890. Everything is made by hand: the bread is baked every morning, and the coffee is bought from local farmers. Dogs are allowed inside, but customers aren’t allowed to smoke in the garden.",
+        "The first year was hard. “I should have asked for more advice,” Lina admits. “At the time, I didn’t know how much flour I needed, and I often ran out of milk.” But she has been learning a lot since then, and the café has become very popular with tourists who visit at weekends.",
+        "What’s next? “I’m going to open a second café next year if I find a good place,” she says. “If I were rich, I’d open ten! But I’m happy here. I can’t imagine going back to the bank.”"
+      ],
+      "glossary": [
+        [
+          "exhausted",
+          "agotada"
+        ],
+        [
+          "fed up with",
+          "harta de"
+        ],
+        [
+          "baked",
+          "horneado"
+        ],
+        [
+          "advice",
+          "consejo"
+        ],
+        [
+          "flour",
+          "harina"
+        ],
+        [
+          "popular with",
+          "popular entre"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "Where did Lina work five years ago?",
+          "options": [
+            "in a café",
+            "in a bank",
+            "on a farm",
+            "in a school"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: “Five years ago, Lina Vargas was working in a bank in Bogotá”."
+        },
+        {
+          "type": "tf",
+          "q": "Lina had enough time for her family when she worked in Bogotá.",
+          "answer": "F",
+          "explain_es": "Falso. Ella dice: “I didn’t have enough time for my family”."
+        },
+        {
+          "type": "mc",
+          "q": "What was Lina doing when she decided to change her life?",
+          "options": [
+            "driving to work",
+            "talking to her grandparents",
+            "baking bread",
+            "waiting for a bus in the rain"
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “while she was waiting for a bus in the rain, she decided to change her life”."
+        },
+        {
+          "type": "tf",
+          "q": "Lina’s friends thought her plan was a good idea.",
+          "answer": "F",
+          "explain_es": "Falso: “My friends told me I was crazy … They said I would lose all my money”."
+        },
+        {
+          "type": "gap",
+          "q": "The old house where the café is was built in ___.",
+          "answer": "1890",
+          "explain_es": "El texto dice: “an old house that was built in 1890”."
+        },
+        {
+          "type": "tf",
+          "q": "Customers can bring their dogs into the café.",
+          "answer": "T",
+          "explain_es": "Verdadero: “Dogs are allowed inside”."
+        },
+        {
+          "type": "mc",
+          "q": "What does Lina regret about the first year?",
+          "options": [
+            "not asking for more advice",
+            "opening the café",
+            "buying coffee from local farmers",
+            "moving to Villa de Leyva"
+          ],
+          "answer": 0,
+          "explain_es": "Lina dice: “I should have asked for more advice”."
+        },
+        {
+          "type": "mc",
+          "q": "What is Lina going to do next year if she finds a good place?",
+          "options": [
+            "go back to the bank",
+            "open ten cafés",
+            "open a second café",
+            "sell El Patio"
+          ],
+          "answer": 2,
+          "explain_es": "Lina dice: “I’m going to open a second café next year if I find a good place”. Abrir diez cafés es solo una situación imaginaria (“If I were rich”)."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Life as a mountain guide",
+      "kind": "interview",
+      "speakers": [
+        {
+          "name": "Andrea",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Julián",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Welcome back to City Voices. Today my guest is Julián Mora, a guide who works in the Las Garzas Canyon in Santander. Welcome, Julián."
+        },
+        {
+          "s": 1,
+          "text": "Thanks, Andrea. It’s great to be here."
+        },
+        {
+          "s": 0,
+          "text": "How long have you been working as a guide?"
+        },
+        {
+          "s": 1,
+          "text": "I’ve been doing this job for eight years. Before that, I used to be a maths teacher."
+        },
+        {
+          "s": 0,
+          "text": "Why did you change?"
+        },
+        {
+          "s": 1,
+          "text": "Because I loved the mountains. I was spending every weekend there, so I decided to make it my job."
+        },
+        {
+          "s": 0,
+          "text": "What’s a typical day like?"
+        },
+        {
+          "s": 1,
+          "text": "First, I pick up the tourists at their hotels at six. Then we walk for about five hours. The paths are checked every morning, so they’re very safe."
+        },
+        {
+          "s": 0,
+          "text": "Have you ever had a dangerous experience?"
+        },
+        {
+          "s": 1,
+          "text": "Once, yes. We were crossing a river when a big storm started. I should have checked the weather that morning."
+        },
+        {
+          "s": 0,
+          "text": "What happened?"
+        },
+        {
+          "s": 1,
+          "text": "Everybody was fine, but we had to wait three hours until the rain stopped. Since then, I always carry an extra radio in case something goes wrong."
+        },
+        {
+          "s": 0,
+          "text": "What advice would you give our listeners?"
+        },
+        {
+          "s": 1,
+          "text": "You don’t have to be very fit, but you must bring good shoes. And if you come in April, you’ll see thousands of birds."
+        },
+        {
+          "s": 0,
+          "text": "And what are your plans for the future?"
+        },
+        {
+          "s": 1,
+          "text": "I’m going to write a guidebook. My wife told me to do it years ago, and she was right!"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "How long has Julián been working as a guide?",
+          "options": [
+            "five years",
+            "six years",
+            "eight years",
+            "three years"
+          ],
+          "answer": 2,
+          "explain_es": "Julián dice: “I’ve been doing this job for eight years”."
+        },
+        {
+          "type": "gap",
+          "q": "Before he became a guide, Julián used to be a ___ teacher.",
+          "answer": "maths",
+          "accept": [
+            "math"
+          ],
+          "explain_es": "Julián dice: “Before that, I used to be a maths teacher”."
+        },
+        {
+          "type": "tf",
+          "q": "Julián picks up the tourists at their hotels at six.",
+          "answer": "T",
+          "explain_es": "Verdadero: “First, I pick up the tourists at their hotels at six”."
+        },
+        {
+          "type": "mc",
+          "q": "Why are the paths safe?",
+          "options": [
+            "They are new.",
+            "They are checked every morning.",
+            "The tourists walk slowly.",
+            "There is a radio on every path."
+          ],
+          "answer": 1,
+          "explain_es": "Julián dice: “The paths are checked every morning, so they’re very safe”."
+        },
+        {
+          "type": "mc",
+          "q": "What were they doing when the storm started?",
+          "options": [
+            "They were crossing a river.",
+            "They were eating lunch.",
+            "They were driving to the hotel.",
+            "They were checking the weather."
+          ],
+          "answer": 0,
+          "explain_es": "Julián dice: “We were crossing a river when a big storm started”."
+        },
+        {
+          "type": "tf",
+          "q": "Julián checked the weather on the morning of the storm.",
+          "answer": "F",
+          "explain_es": "Falso. Él dice: “I should have checked the weather that morning”, es decir, no lo hizo."
+        },
+        {
+          "type": "gap",
+          "q": "They had to wait ___ hours until the rain stopped.",
+          "answer": "three",
+          "accept": [
+            "3"
+          ],
+          "explain_es": "Julián dice: “we had to wait three hours until the rain stopped”."
+        },
+        {
+          "type": "mc",
+          "q": "Who told Julián to write a guidebook?",
+          "options": [
+            "a tourist",
+            "Andrea",
+            "another guide",
+            "his wife"
+          ],
+          "answer": 3,
+          "explain_es": "Julián dice: “My wife told me to do it years ago”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write an email to a friend about an important change in your life, for example a new job, a move or a new school. Explain what your life used to be like, what happened, how things are now and what your plans are. Give your friend one piece of advice.",
+      "prompt_es": "Escribe un correo sobre un cambio importante en tu vida: antes, qué pasó, ahora, tus planes y un consejo.",
+      "genre_es": "Correo informal",
+      "minWords": 90,
+      "maxWords": 120,
+      "criteria": [
+        "Contrast past and present: used to, simple past and present perfect (so far, since, for).",
+        "Include a past continuous + simple past sentence (I was … when …).",
+        "Talk about the future with “going to” or “will” and a conditional (if…).",
+        "Give advice or a regret with should, had better or should have.",
+        "Use a relative clause (who, which, that) and linkers: because, so, first, then."
+      ],
+      "model": "Hi Manuela,\n\nGuess what? I’ve changed jobs! I used to work in a call centre, and I didn’t enjoy it at all. One day I was talking to an angry customer when I decided to quit. First, I looked for courses online, and then I studied web design for six months. I’ve been working at a small agency in Medellín since March, and so far I love it. The people who work with me are friendly. Next year I’m going to take an English course, because if I speak English well, I’ll get better clients. You should come and visit me soon!\n\nLove,\nPaula"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about how you have changed since you were a child. What did you use to do, what do you do now, and what have you achieved so far?",
+          "text_es": "Habla de cómo has cambiado desde niño: antes, ahora y tus logros.",
+          "seconds": 75,
+          "tips": [
+            "I used to… but nowadays I…",
+            "Use the present perfect: I have learnt…, so far I have…."
+          ]
+        },
+        {
+          "text": "Tell a story about an important moment in your life. What were you doing when it happened, what happened next, and what did people tell you?",
+          "text_es": "Narra un momento importante: qué hacías, qué pasó y qué te dijeron.",
+          "seconds": 120,
+          "tips": [
+            "Background with the past continuous, events with the simple past.",
+            "Report words: My mother told me to… / He said that…."
+          ]
+        },
+        {
+          "text": "If you could live in any city in the world, which one would you choose and why? What would you have to do to make it possible, and what might be difficult?",
+          "text_es": "Opina: ¿en qué ciudad del mundo vivirías y por qué? ¿Qué tendrías que hacer?",
+          "seconds": 90,
+          "tips": [
+            "If I could live anywhere, I would…",
+            "Use have to, might and because to develop your answer."
+          ]
+        }
+      ]
+    }
+  }
+]

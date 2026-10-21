@@ -1,0 +1,1579 @@
+[
+  {
+    "id": "r3-b2-museum-heist",
+    "title": "The Golden Frog That Vanished",
+    "level": "B2",
+    "genre": "news",
+    "topic": "Crime & mysteries",
+    "focus": "Past modals of deduction (must have, might have, can't have)",
+    "emoji": "🐸",
+    "words": 469,
+    "paragraphs": [
+      "Police in Popayán are still trying to work out how a 900-year-old gold pendant disappeared from the Rivas Museum on Sunday night, apparently without setting off a single alarm. The piece, a small frog made by Quimbaya craftsmen, was in its glass case when the last guard checked the room at 11 p.m. When the cleaners arrived at six the next morning, the case was empty but completely undamaged.",
+      "\"Whoever did this must have known the building extremely well,\" said Inspector Paula Henao, who is leading the investigation. \"The thieves can't have come through the main entrance, because it was locked and the cameras show nobody there. They might have entered through the old service tunnel under the courtyard, but we haven't found any footprints yet.\"",
+      "The museum's director, Héctor Rivas, grandson of the founder, admitted that security had been a concern for some time. Two of the eight cameras had stopped working in September, and the replacement parts had not arrived. \"Someone must have noticed that,\" he said. \"It can't have been a coincidence that the frog was in the one room with no working camera.\"",
+      "Several theories are already circulating in the city. Some residents believe the robbery might have been an inside job, pointing out that the glass case could only be opened with a special key. Others think the thieves may simply have copied the key, which was kept in an unlocked drawer in the director's office. A retired locksmith interviewed by a local radio station suggested that a skilled professional could have opened the case in less than a minute without leaving any marks.",
+      "Investigators have also questioned a group of visitors who joined the last guided tour of the day. According to the guide, one man asked unusually detailed questions about the alarm system and left before the tour ended. \"At the time I thought he must have been an engineer or a student,\" she said. \"Now I'm not so sure. He might have been checking the room.\" Police have asked anyone who recognises the man from a blurry photograph to contact them.",
+      "Experts warn that the pendant will be almost impossible to sell openly. \"A piece like this is too famous,\" explained Dr Camila Ortiz, an archaeologist at a local university. \"The thieves must have had a private buyer lined up before they took it. Otherwise, why would they choose the frog and leave the larger, heavier pieces behind? They can't have been ordinary burglars looking for gold to melt down.\"",
+      "For now, the frog's empty case remains in the centre of the room, surrounded by police tape. Visitors have kept coming, some of them clearly attracted by the mystery. \"Last week nobody talked about this museum,\" said one tourist from Medellín. \"Now everyone wants to see the place where it disappeared.\""
+    ],
+    "glossary": [
+      [
+        "pendant",
+        "colgante, dije"
+      ],
+      [
+        "setting off",
+        "activar, hacer sonar (una alarma)"
+      ],
+      [
+        "undamaged",
+        "intacto, sin daños"
+      ],
+      [
+        "inside job",
+        "robo con complicidad de alguien de adentro"
+      ],
+      [
+        "locksmith",
+        "cerrajero"
+      ],
+      [
+        "blurry",
+        "borroso"
+      ],
+      [
+        "lined up",
+        "conseguido de antemano, listo"
+      ],
+      [
+        "burglars",
+        "ladrones (que entran a un lugar)"
+      ],
+      [
+        "melt down",
+        "fundir"
+      ],
+      [
+        "police tape",
+        "cinta policial"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When was the theft discovered?",
+        "options": [
+          "At 11 p.m., by the last guard",
+          "At six in the morning, by the cleaners",
+          "On Sunday afternoon, by a tourist",
+          "When an alarm went off"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"When the cleaners arrived at six the next morning, the case was empty\"."
+      },
+      {
+        "type": "tf",
+        "q": "The glass case had been broken.",
+        "answer": "F",
+        "explain_es": "Párrafo 1: el estuche estaba \"completely undamaged\"."
+      },
+      {
+        "type": "tf",
+        "q": "Inspector Henao is sure the thieves used the service tunnel.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: dice \"They might have entered through the old service tunnel\", pero aún no han encontrado huellas: es solo una posibilidad."
+      },
+      {
+        "type": "mc",
+        "q": "Why was the frog's room especially vulnerable?",
+        "options": [
+          "The guard there was new",
+          "The key was hidden in the case",
+          "Its camera wasn't working",
+          "The tunnel opened into it"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: el sapo estaba \"in the one room with no working camera\"."
+      },
+      {
+        "type": "tf",
+        "q": "The man who asked about the alarm system has been arrested.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: la policía pide información sobre él, pero el texto no dice que lo hayan arrestado."
+      },
+      {
+        "type": "gap",
+        "q": "The thieves ____ come through the main entrance, because it was locked.",
+        "answer": "can't have",
+        "accept": [
+          "cannot have",
+          "couldn't have",
+          "could not have"
+        ],
+        "explain_es": "Párrafo 2: \"can't have come\" expresa certeza de que algo NO pasó en el pasado."
+      },
+      {
+        "type": "transform",
+        "q": "I'm sure the thieves had a private buyer. → The thieves must ...",
+        "answer": "The thieves must have had a private buyer.",
+        "accept": [
+          "The thieves must have had a private buyer lined up."
+        ],
+        "explain_es": "Párrafo 6: certeza sobre el pasado = must have + participio (had)."
+      },
+      {
+        "type": "error",
+        "q": "They mustn't have been ordinary burglars looking for gold.",
+        "answer": "They can't have been ordinary burglars looking for gold.",
+        "accept": [
+          "They cannot have been ordinary burglars looking for gold.",
+          "They couldn't have been ordinary burglars looking for gold."
+        ],
+        "explain_es": "Párrafo 6: para deducir que algo es imposible en el pasado se usa \"can't have\", no \"mustn't have\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-gig-economy-riders",
+    "title": "Riding for the App",
+    "level": "B2",
+    "genre": "article",
+    "topic": "Work & economy",
+    "focus": "Linking contrast (although, whereas, despite)",
+    "emoji": "🛵",
+    "words": 468,
+    "paragraphs": [
+      "Every evening at around six, Julián Moreno parks his motorbike outside a shopping centre in Chapinero, opens three different apps on his phone and waits. Although he has a degree in accounting, he has been working as a delivery rider for almost two years. \"I never planned to do this,\" he says. \"But despite sending more than a hundred CVs, I couldn't find an office job that paid enough to cover my rent.\"",
+      "Julián is part of what economists call the gig economy, a system in which people are paid for individual tasks, or \"gigs\", rather than receiving a regular salary. Whereas a traditional employee has a contract, fixed hours and paid holidays, a gig worker is usually considered self-employed. The platforms argue that this gives workers freedom. Critics, on the other hand, say it simply transfers the risks of the business onto the people doing the work.",
+      "For many riders, flexibility is the main attraction. Valentina Ruiz, a single mother of two, logs on only while her children are at school. \"In spite of the low pay per order, I can organise my day around my kids,\" she explains. \"No boss would let me do that.\" Others use the apps as a second income. However, surveys suggest that a growing number of riders depend on them completely, even though the work was originally presented as a way to earn a little extra.",
+      "The problems become clear when something goes wrong. Last March, Julián was knocked off his bike by a taxi. Although his injuries were not serious, he could not work for three weeks, and since he had no sick pay, he earned nothing during that time. \"The app sent me a message wishing me a quick recovery,\" he remembers, with a bitter laugh. \"That was all.\"",
+      "Incomes are also unpredictable. On a rainy Friday night a rider might complete fifteen orders, whereas on a quiet Tuesday afternoon he may wait an hour for a single one. The algorithms that distribute the orders are not transparent, so workers often feel they are being judged by a system they do not understand. Despite this, many riders say they would not go back to a traditional job, mainly because they value being their own boss.",
+      "Governments around the world are trying to find a balance. In some countries, courts have ruled that riders should be treated as employees, while in others the platforms have agreed to provide basic insurance in exchange for keeping the current model. Colombia is debating similar changes, although no final decision has been made.",
+      "Back in Chapinero, Julián's phone finally vibrates: a pizza order, four kilometres away. He puts on his helmet. \"I'm not asking for a miracle,\" he says before riding off. \"Just a little security. Even though we work alone, we're not invisible.\""
+    ],
+    "glossary": [
+      [
+        "delivery rider",
+        "domiciliario, repartidor"
+      ],
+      [
+        "self-employed",
+        "independiente, trabajador por cuenta propia"
+      ],
+      [
+        "logs on",
+        "se conecta (a la aplicación)"
+      ],
+      [
+        "knocked off",
+        "tumbado, derribado"
+      ],
+      [
+        "sick pay",
+        "pago por incapacidad"
+      ],
+      [
+        "bitter",
+        "amargo"
+      ],
+      [
+        "unpredictable",
+        "impredecible"
+      ],
+      [
+        "algorithms",
+        "algoritmos"
+      ],
+      [
+        "ruled",
+        "dictaminaron, fallaron"
+      ],
+      [
+        "helmet",
+        "casco"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Julián start working as a delivery rider?",
+        "options": [
+          "He wanted more free time",
+          "He had just finished school",
+          "He enjoys riding his motorbike",
+          "He couldn't find a well-paid office job"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 1: \"I couldn't find an office job that paid enough to cover my rent\"."
+      },
+      {
+        "type": "tf",
+        "q": "Valentina works only while her children are at school.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"logs on only while her children are at school\"."
+      },
+      {
+        "type": "tf",
+        "q": "The app paid Julián while he was injured.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: no tenía \"sick pay\" y \"earned nothing\"; solo recibió un mensaje."
+      },
+      {
+        "type": "mc",
+        "q": "According to paragraph 5, why do riders feel judged unfairly?",
+        "options": [
+          "The system that gives out orders isn't transparent",
+          "Customers leave bad reviews",
+          "Their bosses watch them all the time",
+          "They work fewer hours than employees"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 5: \"The algorithms that distribute the orders are not transparent\"."
+      },
+      {
+        "type": "tf",
+        "q": "Colombia has already decided to treat riders as employees.",
+        "answer": "F",
+        "explain_es": "Párrafo 6: Colombia lo está debatiendo, \"although no final decision has been made\"."
+      },
+      {
+        "type": "gap",
+        "q": "____ sending more than a hundred CVs, I couldn't find an office job.",
+        "answer": "Despite",
+        "accept": [
+          "In spite of"
+        ],
+        "explain_es": "Párrafo 1: \"despite\" (o \"in spite of\") va seguido de sustantivo o verbo en -ing."
+      },
+      {
+        "type": "transform",
+        "q": "His injuries were not serious. He could not work for three weeks. → Although ...",
+        "answer": "Although his injuries were not serious, he could not work for three weeks.",
+        "accept": [
+          "Although his injuries were not serious, he couldn't work for three weeks.",
+          "Although his injuries weren't serious, he couldn't work for three weeks."
+        ],
+        "explain_es": "Párrafo 4: \"although\" introduce una oración completa (sujeto + verbo) que contrasta con la otra."
+      },
+      {
+        "type": "error",
+        "q": "In spite of the pay is low, I can organise my day around my kids.",
+        "answer": "In spite of the low pay, I can organise my day around my kids.",
+        "accept": [
+          "Although the pay is low, I can organise my day around my kids.",
+          "Even though the pay is low, I can organise my day around my kids."
+        ],
+        "explain_es": "Párrafo 3: después de \"in spite of\" no va una oración con verbo conjugado; se dice \"In spite of the low pay\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-coral-documentary-review",
+    "title": "Review: The Last Gardens of the Sea",
+    "level": "B2",
+    "genre": "review",
+    "topic": "Nature & film",
+    "focus": "Participle clauses",
+    "emoji": "🪸",
+    "words": 466,
+    "paragraphs": [
+      "Filmed over three years in more than twenty locations, The Last Gardens of the Sea is the most ambitious documentary about coral reefs I have seen. Directed by the Swedish marine biologist Marta Lindqvist, it takes viewers from the Great Barrier Reef in Australia to the islands of San Andrés in the Colombian Caribbean, showing both the beauty of these ecosystems and the speed at which they are disappearing.",
+      "The film opens with an unforgettable sequence. Diving slowly through a cloud of tiny silver fish, the camera reaches a reef so colourful that it hardly looks real. Having let us enjoy this paradise for several minutes, Lindqvist then cuts to the same reef two years later: white, silent and almost empty. It is a simple technique, but it works. Watching the two images side by side, I felt a genuine sense of loss.",
+      "Much of the documentary explains coral bleaching, the process that turns living reefs white. Lindqvist's explanations are clear without being simplistic. Corals, we learn, are animals living in partnership with tiny algae that give them their colour and much of their food. Stressed by rising water temperatures, the corals expel the algae, and if the heat continues for too long, they starve. Using animated diagrams, the film makes this complicated biology easy to follow.",
+      "Not everything is gloomy, however. The strongest part of the film follows a team of young scientists in San Andrés who are growing coral fragments on underwater \"trees\" made of plastic pipes. Having grown for about a year, the fragments are attached to damaged reefs, where many of them survive. Interviewed on the boat after a long day, one of the researchers, Daniela Archbold, admits that the project cannot save the oceans alone. \"But knowing that something we planted is now home to fish,\" she says, \"keeps me going.\"",
+      "The film does have weaknesses. Lasting almost two hours, it feels too long in the middle, especially during a section about ocean chemistry that repeats information already given. The music, performed by an orchestra in Berlin, is beautiful but sometimes too dramatic, telling us what to feel instead of letting the images speak for themselves. Some viewers may also find the final message slightly vague. Having shown us the scale of the problem, Lindqvist offers few concrete suggestions beyond \"reducing our carbon footprint\".",
+      "Even so, this is an important and often breathtaking film. Shot with remarkable patience, the underwater scenes alone justify the price of a ticket. Leaving the cinema, I heard several people discussing how they could help, which is perhaps the best compliment a documentary can receive. Released next month on streaming platforms, it deserves a wide audience, particularly among teenagers, who will inherit the consequences of what we do now. My rating: four stars out of five."
+    ],
+    "glossary": [
+      [
+        "bleaching",
+        "blanqueamiento"
+      ],
+      [
+        "algae",
+        "algas"
+      ],
+      [
+        "expel",
+        "expulsan"
+      ],
+      [
+        "starve",
+        "mueren de hambre"
+      ],
+      [
+        "gloomy",
+        "deprimente, sombrío"
+      ],
+      [
+        "fragments",
+        "fragmentos"
+      ],
+      [
+        "vague",
+        "vago, impreciso"
+      ],
+      [
+        "carbon footprint",
+        "huella de carbono"
+      ],
+      [
+        "breathtaking",
+        "impresionante, que deja sin aliento"
+      ],
+      [
+        "inherit",
+        "heredar"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How long did it take to film the documentary?",
+        "options": [
+          "Two years",
+          "Three years",
+          "Almost two hours",
+          "One year"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"Filmed over three years in more than twenty locations\"."
+      },
+      {
+        "type": "tf",
+        "q": "The opening sequence shows the same reef at two different times.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: primero el arrecife lleno de color y luego \"the same reef two years later\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do corals lose their colour?",
+        "options": [
+          "Fish eat the algae",
+          "Plastic pipes damage them",
+          "They push out their algae when the water gets too hot",
+          "Divers touch them too often"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: \"Stressed by rising water temperatures, the corals expel the algae\"."
+      },
+      {
+        "type": "tf",
+        "q": "Most of the coral fragments planted in San Andrés die.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: los fragmentos se fijan a arrecifes dañados, \"where many of them survive\"."
+      },
+      {
+        "type": "tf",
+        "q": "The documentary won a prize at a festival in Berlin.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: Berlín aparece solo porque allí tocó la orquesta; no se menciona ningún premio."
+      },
+      {
+        "type": "heading",
+        "q": "Choose the best heading for paragraph 5.",
+        "options": [
+          "A message of hope",
+          "How corals grow",
+          "Teenagers and the future",
+          "Too long, too loud and too vague"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 critica la duración, la música dramática y el mensaje final impreciso."
+      },
+      {
+        "type": "transform",
+        "q": "The camera dives slowly through a cloud of fish. It reaches a colourful reef. → Diving ...",
+        "answer": "Diving slowly through a cloud of fish, the camera reaches a colourful reef.",
+        "accept": [
+          "Diving through a cloud of fish, the camera reaches a colourful reef."
+        ],
+        "explain_es": "Párrafo 2: una cláusula de participio presente (-ing) une dos acciones del mismo sujeto."
+      },
+      {
+        "type": "gap",
+        "q": "____ shown us the scale of the problem, Lindqvist offers few concrete suggestions.",
+        "answer": "Having",
+        "accept": [],
+        "explain_es": "Párrafo 5: \"Having + participio\" indica que una acción terminó antes de la otra."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-fake-jaguar-news",
+    "title": "How a Fake Jaguar Fooled a City",
+    "level": "B2",
+    "genre": "news",
+    "topic": "Media & fake news",
+    "focus": "Passive reporting structures (it is said that / is thought to)",
+    "emoji": "🐆",
+    "words": 465,
+    "paragraphs": [
+      "On Tuesday morning, a photograph of a jaguar walking calmly between the shelves of a supermarket in Cali appeared on social media. Within six hours it had been shared more than 400,000 times. The animal was said to have escaped from a private collection, and several accounts claimed that three shoppers had been injured. By lunchtime, worried parents were calling schools, and one shopping centre had closed its doors as a precaution.",
+      "There was only one problem: none of it was true. The image is now known to have been created with an artificial intelligence tool, and no jaguar had escaped from anywhere. \"It is believed that the original post was published as a joke in a small online group,\" explained Sara Quintero, a journalist who works for an independent fact-checking organisation. \"Somebody then copied it without the context, added a dramatic caption, and from that moment it was out of control.\"",
+      "Fact-checkers say the story spread so quickly because it combined several powerful ingredients. It was shocking, it was local, and it appeared to come from witnesses. It is often said that a lie travels around the world while the truth is still putting on its shoes, and research seems to support the idea. False news stories are thought to spread considerably faster than accurate ones, partly because they tend to be more surprising and emotional.",
+      "Several details should have raised doubts. The supermarket's name was not visible, the shelves contained products that are not sold in Colombia, and the jaguar's shadow fell in the wrong direction. Moreover, the city's environmental authority published a statement before noon saying it had received no reports of a missing animal. Unfortunately, the statement was shared only a few thousand times.",
+      "The incident is reported to have cost local businesses a considerable amount of money. The shopping centre that closed is estimated to have lost several million pesos in sales, and police officers spent the morning answering calls instead of dealing with real emergencies. The person who first added the false caption is believed to be a teenager, but investigators have said that no charges are expected.",
+      "Experts recommend some simple habits to avoid being fooled. Before sharing something alarming, check whether a reliable news organisation is reporting it. Look carefully at the image: hands, shadows and text are often wrong in pictures produced by AI. And remember that a message saying \"please share urgently\" is a warning sign in itself.",
+      "By Wednesday the jaguar had become a joke. Hundreds of people posted edited versions of the picture, showing the animal buying bread, paying at the till or waiting for a bus. \"Humour is a good sign,\" said Quintero. \"It means people realise they were tricked. The real question is whether they will remember the lesson next time.\""
+    ],
+    "glossary": [
+      [
+        "shelves",
+        "estantes, góndolas"
+      ],
+      [
+        "as a precaution",
+        "por precaución"
+      ],
+      [
+        "fact-checking",
+        "verificación de datos"
+      ],
+      [
+        "caption",
+        "pie de foto, texto que acompaña una imagen"
+      ],
+      [
+        "raised doubts",
+        "generado dudas"
+      ],
+      [
+        "statement",
+        "comunicado"
+      ],
+      [
+        "charges",
+        "cargos (judiciales)"
+      ],
+      [
+        "alarming",
+        "alarmante"
+      ],
+      [
+        "till",
+        "caja registradora"
+      ],
+      [
+        "tricked",
+        "engañados"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did several social media accounts claim?",
+        "options": [
+          "The jaguar had been caught",
+          "The supermarket had closed",
+          "Three shoppers had been injured",
+          "Schools had been evacuated"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"several accounts claimed that three shoppers had been injured\"."
+      },
+      {
+        "type": "tf",
+        "q": "The jaguar had really escaped from a private collection.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"none of it was true\" y \"no jaguar had escaped from anywhere\"."
+      },
+      {
+        "type": "tf",
+        "q": "The original picture was probably posted as a joke.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: \"It is believed that the original post was published as a joke\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which detail should have made people suspicious?",
+        "options": [
+          "The jaguar's shadow fell the wrong way",
+          "The photo was in black and white",
+          "The jaguar was very small",
+          "The supermarket's name was misspelt"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: \"the jaguar's shadow fell in the wrong direction\"."
+      },
+      {
+        "type": "tf",
+        "q": "The environmental authority's statement was read on national television.",
+        "answer": "NG",
+        "explain_es": "Párrafo 4: se dice que el comunicado se compartió poco, pero no se menciona la televisión."
+      },
+      {
+        "type": "transform",
+        "q": "People say that a lie travels around the world quickly. → A lie is said ...",
+        "answer": "A lie is said to travel around the world quickly.",
+        "accept": [
+          "A lie is said to travel quickly around the world."
+        ],
+        "explain_es": "Párrafo 3: \"is said to + infinitivo\" es la forma pasiva de \"people say that...\"."
+      },
+      {
+        "type": "transform",
+        "q": "Experts think that false stories spread faster than true ones. → False stories are thought ...",
+        "answer": "False stories are thought to spread faster than true ones.",
+        "accept": [
+          "False stories are thought to spread faster than accurate ones."
+        ],
+        "explain_es": "Párrafo 3: \"False news stories are thought to spread considerably faster\"."
+      },
+      {
+        "type": "gap",
+        "q": "The image is now known ____ been created with an artificial intelligence tool.",
+        "answer": "to have",
+        "accept": [],
+        "explain_es": "Párrafo 2: para hablar de algo anterior se usa \"is known to have + participio\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-family-bakery-crisis",
+    "title": "The Bakery on Calle 36",
+    "level": "B2",
+    "genre": "story",
+    "topic": "Family business",
+    "focus": "Narrative tenses (past perfect continuous)",
+    "emoji": "🥖",
+    "words": 492,
+    "paragraphs": [
+      "By the time Camila got back to Bucaramanga that December, the bakery had been losing money for almost a year. Nobody had told her. Her father, Don Ernesto, had been answering her video calls from the shop every Sunday, smiling in front of the shelves of bread as if nothing was wrong. It was only when she walked through the door on her first afternoon home and saw the half-empty display cases that she understood something had changed.",
+      "\"Since when?\" she asked her mother that night, while they were washing the dishes. Her mother sighed. A large supermarket had opened two blocks away the previous January, and since then customers had been disappearing one by one. Her father had been getting up at three every morning instead of four, baking more varieties to win them back, but the extra bread often ended up being given to neighbours at closing time. He had also been borrowing money from his brother to pay the two employees, who had worked there for over fifteen years.",
+      "Camila didn't sleep well. She had been living in Bogotá for six years, working in digital marketing for a clothing company, and she had always imagined that the bakery would simply be there forever, like the mountains around the city. Lying awake, she realised she had been avoiding the question of the family business for a long time, because thinking about it meant thinking about her parents getting older.",
+      "The next morning she went down to the shop at five. Her father had already been working for two hours, and the kitchen smelled of butter and anise. He looked tired. They had been talking for barely ten minutes when he admitted everything: the debts, the supermarket, the nights he had been lying awake doing calculations. \"I didn't want to worry you,\" he said. \"You had your own life.\"",
+      "Over the following weeks, Camila did what she knew best. She photographed the almojábanas and the pan de bono coming out of the oven, opened an Instagram account and started taking orders by WhatsApp. She persuaded her father to stop baking twenty types of bread and concentrate on the six that customers had been buying for decades. She also contacted three offices nearby that had been looking for someone to deliver breakfast every morning.",
+      "Not everything worked. A weekend offer of free coffee attracted crowds but no profit, and a cousin's attempt to make cupcakes ended in disaster. But by March, sales had been rising steadily for six weeks, and the first part of the uncle's loan had been paid back.",
+      "Camila never went back to her job in Bogotá. Sometimes, at four in the morning, standing next to her father in the warm kitchen, she remembered the young woman who had been sending him cheerful messages from a city office, never asking the right questions. \"We'd both been pretending,\" she told a friend later. \"The bread was what made us stop.\""
+    ],
+    "glossary": [
+      [
+        "display cases",
+        "vitrinas"
+      ],
+      [
+        "sighed",
+        "suspiró"
+      ],
+      [
+        "borrowing",
+        "pidiendo prestado"
+      ],
+      [
+        "avoiding",
+        "evitando"
+      ],
+      [
+        "anise",
+        "anís"
+      ],
+      [
+        "debts",
+        "deudas"
+      ],
+      [
+        "persuaded",
+        "convenció"
+      ],
+      [
+        "profit",
+        "ganancia"
+      ],
+      [
+        "steadily",
+        "de manera constante"
+      ],
+      [
+        "paid back",
+        "devuelto, pagado (un préstamo)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How did Camila realise there was a problem?",
+        "options": [
+          "Her mother phoned her in Bogotá",
+          "Her uncle asked her for money",
+          "She read a message from the bank",
+          "She saw the half-empty display cases"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 1: lo entendió cuando \"saw the half-empty display cases\"."
+      },
+      {
+        "type": "tf",
+        "q": "The supermarket opened about a year before Camila's visit.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: abrió \"the previous January\" y ella llegó en diciembre."
+      },
+      {
+        "type": "tf",
+        "q": "The bakery's two employees had only recently started working there.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"had worked there for over fifteen years\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why had Camila avoided thinking about the bakery?",
+        "options": [
+          "She didn't like baking",
+          "It meant thinking about her parents getting older",
+          "She was planning to sell it",
+          "Her boss didn't let her travel"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"thinking about it meant thinking about her parents getting older\"."
+      },
+      {
+        "type": "tf",
+        "q": "Camila's mother used to work at the counter of the bakery.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada sobre el trabajo de la mamá en la panadería."
+      },
+      {
+        "type": "gap",
+        "q": "Her father ____ (get up) at three every morning instead of four.",
+        "answer": "had been getting up",
+        "accept": [],
+        "explain_es": "Párrafo 2: pasado perfecto continuo para una acción repetida que duraba hasta un momento del pasado."
+      },
+      {
+        "type": "transform",
+        "q": "Her father started work at three. At five he was still working. → At five, her father had ...",
+        "answer": "At five, her father had been working for two hours.",
+        "accept": [
+          "At five, her father had already been working for two hours."
+        ],
+        "explain_es": "Párrafo 4: \"Her father had already been working for two hours\" (había estado trabajando)."
+      },
+      {
+        "type": "error",
+        "q": "By March, sales have been rising steadily for six weeks.",
+        "answer": "By March, sales had been rising steadily for six weeks.",
+        "accept": [],
+        "explain_es": "Párrafo 6: el punto de referencia (\"by March\") es pasado, por eso se usa \"had been rising\", no el presente perfecto."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-burnout-blog",
+    "title": "What I Wish I'd Known About Burnout",
+    "level": "B2",
+    "genre": "blog",
+    "topic": "Work & mental health",
+    "focus": "Wishes and regrets (wish / if only + past perfect)",
+    "emoji": "🔥",
+    "words": 469,
+    "paragraphs": [
+      "Two years ago, on an ordinary Tuesday, I sat down at my desk in Santiago, opened my laptop and started crying. I couldn't stop. I wasn't sad about anything specific; I simply couldn't face another email. My doctor later called it burnout, a state of physical and emotional exhaustion caused by long-term stress at work. I'm writing this post because I wish someone had explained it to me earlier.",
+      "Looking back, the warning signs were everywhere. For months I had been sleeping badly, forgetting simple things and feeling irritated by colleagues I actually liked. I used to love my job as a project manager, but slowly it had become a list of fires to put out. If only I had paid attention to those signals instead of drinking more coffee and telling myself it was just a busy period. Busy periods end. Mine didn't.",
+      "My biggest regret is that I never said no. When my boss asked me to take on a second project, I accepted immediately because I wanted to look committed. When a client sent messages at eleven at night, I answered within minutes. I wish I hadn't made myself so available, because once people know you will always reply, they expect it. I also wish I had taken my holidays. In three years I took a total of nine days off, and I spent most of them checking my phone.",
+      "I don't only blame myself, of course. Our company had a culture in which staying late was admired and leaving at six was seen as a lack of ambition. Many of my colleagues felt the same way, but nobody talked about it. I wish managers would understand that exhausted employees make more mistakes, not fewer. And I wish we could talk about mental health at work as openly as we talk about a broken leg.",
+      "Recovery took almost five months. I stopped working completely for eight weeks, saw a psychologist and, slowly, learned to rest without feeling guilty. One exercise she gave me was to write down the things I wished I had done differently. The list was long, but writing it helped me turn regret into decisions.",
+      "Today I work for a smaller company and my phone stays in a drawer after seven. I still have stressful days, but I can recognise the signs now. If you are reading this and some of it sounds familiar, please don't wait until you break down at your desk. Talk to someone. Take the holiday. Say no to the extra project.",
+      "People sometimes ask me if I wish the burnout had never happened. Honestly, I'm not sure. It was the worst period of my life, but it forced me to change. What I really wish is that I had listened to my body before it had to shout."
+    ],
+    "glossary": [
+      [
+        "burnout",
+        "agotamiento laboral, síndrome de burnout"
+      ],
+      [
+        "exhaustion",
+        "agotamiento"
+      ],
+      [
+        "warning signs",
+        "señales de alerta"
+      ],
+      [
+        "irritated",
+        "irritado, molesto"
+      ],
+      [
+        "put out",
+        "apagar"
+      ],
+      [
+        "take on",
+        "asumir, encargarse de"
+      ],
+      [
+        "committed",
+        "comprometido"
+      ],
+      [
+        "guilty",
+        "culpable"
+      ],
+      [
+        "break down",
+        "derrumbarse, quebrarse emocionalmente"
+      ],
+      [
+        "regret",
+        "arrepentimiento"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What happened to the writer on that Tuesday?",
+        "options": [
+          "He started crying at his desk and couldn't stop",
+          "He was fired by his boss",
+          "He had an accident on the way to work",
+          "He sent an angry email to a client"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 1: \"I sat down at my desk... and started crying. I couldn't stop.\""
+      },
+      {
+        "type": "tf",
+        "q": "The writer never enjoyed working as a project manager.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"I used to love my job as a project manager\"."
+      },
+      {
+        "type": "mc",
+        "q": "How many days of holiday did he take in three years?",
+        "options": [
+          "Five",
+          "Eight",
+          "Nine",
+          "Eleven"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: \"In three years I took a total of nine days off\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer believes his company's culture was part of the problem.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: en la empresa se admiraba quedarse tarde y salir a las seis se veía como falta de ambición."
+      },
+      {
+        "type": "tf",
+        "q": "His psychologist advised him to look for a job in another country.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: se menciona un ejercicio de escritura, pero nada sobre buscar trabajo en otro país."
+      },
+      {
+        "type": "transform",
+        "q": "I regret not taking my holidays. → I wish ...",
+        "answer": "I wish I had taken my holidays.",
+        "accept": [
+          "I wish I'd taken my holidays."
+        ],
+        "explain_es": "Párrafo 3: para lamentar algo del pasado se usa \"wish + past perfect\"."
+      },
+      {
+        "type": "gap",
+        "q": "If only I ____ (pay) attention to those signals.",
+        "answer": "had paid",
+        "accept": [
+          "'d paid"
+        ],
+        "explain_es": "Párrafo 2: \"If only I had paid attention\" expresa arrepentimiento sobre el pasado."
+      },
+      {
+        "type": "error",
+        "q": "I wish I didn't make myself so available to everyone back then.",
+        "answer": "I wish I hadn't made myself so available to everyone back then.",
+        "accept": [
+          "I wish I had not made myself so available to everyone back then."
+        ],
+        "explain_es": "Párrafo 3: el arrepentimiento es sobre el pasado (\"back then\"), así que se necesita \"hadn't made\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-car-free-town",
+    "title": "Ten Years Without Cars",
+    "level": "B2",
+    "genre": "article",
+    "topic": "Cities & transport",
+    "focus": "Mixed conditionals",
+    "emoji": "🚳",
+    "words": 495,
+    "paragraphs": [
+      "Ten years ago, the mayor of Valdemora, a town of about 60,000 people in northern Spain, made a decision that almost cost her the next election. She closed the entire historic centre to private cars. Delivery vans could enter only before ten in the morning, and residents had to leave their cars in car parks on the edge of town. Shopkeepers protested, drivers were furious, and a local newspaper called the plan \"economic suicide\".",
+      "Today the same newspaper describes the centre as \"the heart of the town\". The narrow streets that were once full of traffic are now full of children, cafés and market stalls. \"If the mayor hadn't been so stubborn back then, we would still be breathing exhaust fumes every day,\" says Rosa Ibarra, who has run a bookshop on the main square for twenty-five years. \"I was one of the people who signed the petition against her. I'm glad she ignored us.\"",
+      "The figures are impressive. Air pollution in the centre has fallen by almost two thirds, and there have been no traffic deaths there since the ban began. Many residents believe that if the town had kept its cars, it would be a very different place now. \"My kids walk to school alone,\" says Javier Montes, a father of three. \"If the streets were still full of cars, I wouldn't have let them do that at the age of nine.\"",
+      "Not everyone is convinced, however. Some older residents complain that they now depend on buses or taxis to visit the doctor, and several businesses that relied on passing drivers closed in the first two years. \"If I had known the plan would last, I would have moved my shop out of the centre much earlier,\" admits Andrés Vidal, who used to sell car parts there. \"I would probably be richer now.\"",
+      "Urban planners from around the world now visit Valdemora to learn from its experience. Most of them agree that the town's size made the change easier. If Valdemora were a city of three million people, the ban would have required a far larger investment in public transport. Still, the main lesson seems to be about patience. The first year was chaotic, but the town did not give up.",
+      "The former mayor, Elena Garrido, now retired, is surprisingly modest about her role. \"If I hadn't had the support of a few brave councillors, I would be remembered today as the woman who destroyed the town's economy,\" she says, laughing. \"Instead, people stop me in the street to say thank you. It's strange.\"",
+      "Asked whether she has any regrets, she pauses. \"Only one. If we had planned the bus routes better at the beginning, older people wouldn't have suffered so much in those first months. That's the mistake I'd fix if I could go back.\" Then she looks out of the window at the square, where a group of teenagers are playing football in the place where a car park once stood."
+    ],
+    "glossary": [
+      [
+        "historic centre",
+        "centro histórico"
+      ],
+      [
+        "shopkeepers",
+        "comerciantes, tenderos"
+      ],
+      [
+        "market stalls",
+        "puestos de mercado"
+      ],
+      [
+        "stubborn",
+        "terco, obstinado"
+      ],
+      [
+        "exhaust fumes",
+        "gases del exhosto"
+      ],
+      [
+        "petition",
+        "petición (firmada por muchas personas)"
+      ],
+      [
+        "ban",
+        "prohibición"
+      ],
+      [
+        "relied on",
+        "dependían de"
+      ],
+      [
+        "chaotic",
+        "caótico"
+      ],
+      [
+        "councillors",
+        "concejales"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did a local newspaper call the plan at first?",
+        "options": [
+          "The heart of the town",
+          "Economic suicide",
+          "A brave experiment",
+          "A chaotic year"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: el periódico lo llamó \"economic suicide\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rosa Ibarra supported the ban from the beginning.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: ella firmó \"the petition against her\" (contra la alcaldesa)."
+      },
+      {
+        "type": "mc",
+        "q": "How has air pollution in the centre changed?",
+        "options": [
+          "It has doubled",
+          "It has stayed the same",
+          "It has fallen slightly",
+          "It has fallen by almost two thirds"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"Air pollution in the centre has fallen by almost two thirds\"."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés Vidal now sells bicycles in Valdemora.",
+        "answer": "NG",
+        "explain_es": "Párrafo 4: dice que antes vendía repuestos de carro, pero no qué hace ahora."
+      },
+      {
+        "type": "tf",
+        "q": "Urban planners think Valdemora's small size made the change easier.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"Most of them agree that the town's size made the change easier.\""
+      },
+      {
+        "type": "transform",
+        "q": "The mayor was stubborn, so we aren't breathing exhaust fumes any more. → If the mayor hadn't been stubborn, we ...",
+        "answer": "If the mayor hadn't been stubborn, we would still be breathing exhaust fumes.",
+        "accept": [
+          "If the mayor hadn't been stubborn, we'd still be breathing exhaust fumes.",
+          "If the mayor had not been stubborn, we would still be breathing exhaust fumes."
+        ],
+        "explain_es": "Párrafo 2: condicional mixto: causa pasada (hadn't been) y resultado presente (would still be breathing)."
+      },
+      {
+        "type": "gap",
+        "q": "If Valdemora ____ a city of three million people, the ban would have required a far larger investment.",
+        "answer": "were",
+        "accept": [
+          "was"
+        ],
+        "explain_es": "Párrafo 5: situación irreal permanente (presente) con resultado en el pasado: \"If Valdemora were...\"."
+      },
+      {
+        "type": "error",
+        "q": "If I would have known the plan would last, I would have moved my shop.",
+        "answer": "If I had known the plan would last, I would have moved my shop.",
+        "accept": [
+          "If I'd known the plan would last, I would have moved my shop.",
+          "If I'd known the plan would last, I'd have moved my shop."
+        ],
+        "explain_es": "Párrafo 4: en la cláusula con \"if\" no se usa \"would\"; se dice \"If I had known\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-psychology-of-habits",
+    "title": "Why Habits Are So Hard to Break",
+    "level": "B2",
+    "genre": "science",
+    "topic": "Psychology",
+    "focus": "Used to vs would vs get used to",
+    "emoji": "🔁",
+    "words": 501,
+    "paragraphs": [
+      "Think about what you did this morning before you were fully awake. You probably switched off your alarm, picked up your phone and walked to the bathroom without making a single conscious decision. According to psychologists, around 40 per cent of our daily actions are habits rather than choices. That is useful, because it saves mental energy, but it also explains why changing our behaviour is so difficult.",
+      "Researchers describe a habit as a loop with three parts: a cue, a routine and a reward. The cue is a trigger, such as a time, a place or a feeling. The routine is the behaviour itself, and the reward is the pleasant feeling that makes the brain want to repeat it. Take Lucía Ferreira, a 34-year-old architect in Montevideo. \"I used to buy a chocolate bar every afternoon at four,\" she says. \"I would leave my desk, walk to the kiosk and eat it on the way back. I didn't even like it that much.\" When she analysed the loop, she realised the real reward was not the chocolate but the short break and the chat with the kiosk owner.",
+      "This is a key insight. Studies suggest that it is much easier to replace a routine than to delete it. Instead of fighting the cue, people can keep the cue and the reward but change the behaviour in between. Lucía now takes a ten-minute walk at four o'clock and stops to talk to a colleague. \"At first it felt strange,\" she admits. \"But I got used to it surprisingly quickly.\"",
+      "How long does it take to form a new habit? A popular idea says twenty-one days, but research tells a different story. In one well-known study, participants took anywhere between eighteen and 254 days to get used to a new behaviour, with an average of about two months. Simple habits, like drinking a glass of water after breakfast, became automatic faster than complicated ones, like going to the gym.",
+      "Environment matters, too. People who want to eat more healthily are advised to keep fruit on the kitchen table and biscuits in a high cupboard. A man interviewed by researchers explained that he used to watch television for three hours every night simply because the sofa faced the screen. When he moved the sofa towards the window, he started reading instead. \"I'm still not used to the new layout,\" he joked, \"but I've read six books this year.\"",
+      "Perhaps the most encouraging finding is that missing a day does not ruin the process. Many people give up after one mistake because they believe that habits require perfection. In fact, the studies show that an occasional slip makes almost no difference in the long term. What matters is returning to the routine the next day.",
+      "So if you are trying to get used to waking up earlier or practising a language every day, be patient with yourself. Your brain spent years building its old patterns. It will need some time to build new ones."
+    ],
+    "glossary": [
+      [
+        "conscious",
+        "consciente"
+      ],
+      [
+        "loop",
+        "ciclo, bucle"
+      ],
+      [
+        "cue",
+        "señal, estímulo"
+      ],
+      [
+        "trigger",
+        "detonante"
+      ],
+      [
+        "reward",
+        "recompensa"
+      ],
+      [
+        "insight",
+        "hallazgo, idea reveladora"
+      ],
+      [
+        "cupboard",
+        "alacena, gabinete"
+      ],
+      [
+        "layout",
+        "distribución, organización (de un espacio)"
+      ],
+      [
+        "encouraging",
+        "alentador"
+      ],
+      [
+        "slip",
+        "desliz, pequeño error"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to psychologists, what part of our daily actions are habits?",
+        "options": [
+          "About 10 per cent",
+          "About 25 per cent",
+          "Around 40 per cent",
+          "More than 70 per cent"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"around 40 per cent of our daily actions are habits\"."
+      },
+      {
+        "type": "mc",
+        "q": "What was the real reward of Lucía's chocolate habit?",
+        "options": [
+          "The short break and the chat with the kiosk owner",
+          "The taste of the chocolate",
+          "The energy from the sugar",
+          "Saving money"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: \"the real reward was not the chocolate but the short break and the chat\"."
+      },
+      {
+        "type": "tf",
+        "q": "The study found that every new habit takes twenty-one days to form.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: los participantes tardaron \"between eighteen and 254 days\"."
+      },
+      {
+        "type": "tf",
+        "q": "Simple habits became automatic faster than complicated ones.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: los hábitos simples se volvieron automáticos más rápido que ir al gimnasio."
+      },
+      {
+        "type": "tf",
+        "q": "The man who moved his sofa also sold his television.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: solo dice que movió el sofá y empezó a leer."
+      },
+      {
+        "type": "gap",
+        "q": "\"I ____ buy a chocolate bar every afternoon at four,\" Lucía says.",
+        "answer": "used to",
+        "accept": [
+          "would"
+        ],
+        "explain_es": "Párrafo 2: \"used to\" (o \"would\") describe una acción repetida en el pasado que ya no ocurre."
+      },
+      {
+        "type": "error",
+        "q": "At first it felt strange, but I got used to do it quickly.",
+        "answer": "At first it felt strange, but I got used to doing it quickly.",
+        "accept": [],
+        "explain_es": "Párrafo 3: después de \"get used to\" va un sustantivo o verbo en -ing, no el infinitivo."
+      },
+      {
+        "type": "transform",
+        "q": "The new layout still feels strange to me. → I'm still not ...",
+        "answer": "I'm still not used to the new layout.",
+        "accept": [
+          "I am still not used to the new layout."
+        ],
+        "explain_es": "Párrafo 5: \"be used to\" = estar acostumbrado a algo."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-amazon-expedition-diary",
+    "title": "Amazon Diary: Ten Days on the River",
+    "level": "B2",
+    "genre": "diary",
+    "topic": "Travel & science",
+    "focus": "Future perfect continuous",
+    "emoji": "🛶",
+    "words": 476,
+    "paragraphs": [
+      "Monday, 4 March – Leticia. Tomorrow morning we finally leave. There are seven of us: four biology students, our professor, Dr Ramírez, and two guides from a Ticuna community who know the river better than any map. The plan is to travel up the Amacayacu River by canoe and spend ten days counting frogs and birds in the forest. By the time we come back, we'll have been living without electricity or mobile signal for almost two weeks. I'm excited and a little terrified.",
+      "Wednesday, 6 March. It has been raining since dawn. The guides say this is normal at this time of year, which is not exactly comforting. We spent the morning setting up camp on a small hill above the river. My boots are already wet and I suspect they will stay that way. Dr Ramírez told us that by Friday we will have been walking through the forest for six hours a day, so we'd better get used to the mud.",
+      "Friday, 8 March. Today I saw a pink river dolphin! It appeared next to the canoe and disappeared again before I could take a photo. In the afternoon we recorded eleven species of frog, two of which we couldn't identify. Julián, the youngest student, thinks one of them could be a new species. Dr Ramírez laughed and said that if he's right, by the end of the year he'll have been answering journalists' questions instead of studying for exams.",
+      "Sunday, 10 March. A difficult day. Marcela has a fever, and we've decided she should go back to Leticia with one of the guides. It will take them about nine hours by canoe. I can't stop thinking that by the time they arrive tonight, they'll have been travelling in the dark for at least three hours. The guide, Don Eliseo, just smiled when I mentioned it. \"The river is my street,\" he said.",
+      "Tuesday, 12 March. Good news: Marcela is fine. Don Eliseo returned this afternoon with fruit, batteries and a message saying she only had a bad infection. The rest of us are tired but happy. Our notebooks are full. We've counted more than 140 species of birds so far, and the professor says that by Thursday we'll have been collecting data for a full week, which is enough for a solid scientific report.",
+      "Thursday, 14 March. Our last night in the forest. I'm writing by the light of a torch while the others are packing. Tomorrow we'll start the journey back to Leticia. Strangely, I'm not looking forward to it. This time next week I'll be sitting in a lecture hall in Bogotá, and I'll probably be missing the sound of the rain on the tent. By the time I finish my degree, I'll have been studying this forest for two years, and I already know I want to come back."
+    ],
+    "glossary": [
+      [
+        "canoe",
+        "canoa"
+      ],
+      [
+        "terrified",
+        "aterrado, muerto de miedo"
+      ],
+      [
+        "dawn",
+        "amanecer"
+      ],
+      [
+        "comforting",
+        "reconfortante, tranquilizador"
+      ],
+      [
+        "mud",
+        "barro"
+      ],
+      [
+        "pink river dolphin",
+        "delfín rosado"
+      ],
+      [
+        "species",
+        "especies"
+      ],
+      [
+        "fever",
+        "fiebre"
+      ],
+      [
+        "torch",
+        "linterna"
+      ],
+      [
+        "lecture hall",
+        "auditorio, salón de clases"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who are the two guides?",
+        "options": [
+          "Two biology students",
+          "Two journalists from Bogotá",
+          "Two professors from Leticia",
+          "Two people from a Ticuna community"
+        ],
+        "answer": 3,
+        "explain_es": "Entrada del lunes: \"two guides from a Ticuna community who know the river better than any map\"."
+      },
+      {
+        "type": "tf",
+        "q": "The group will have mobile signal during most of the trip.",
+        "answer": "F",
+        "explain_es": "Entrada del lunes: vivirán \"without electricity or mobile signal\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer took a good photo of the pink river dolphin.",
+        "answer": "F",
+        "explain_es": "Entrada del viernes: desapareció \"before I could take a photo\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did Marcela return to Leticia?",
+        "options": [
+          "She was homesick",
+          "She had a fever",
+          "She broke her boots",
+          "She had to take an exam"
+        ],
+        "answer": 1,
+        "explain_es": "Entrada del domingo: \"Marcela has a fever\"."
+      },
+      {
+        "type": "tf",
+        "q": "Scientists later confirmed that Julián's frog is a new species.",
+        "answer": "NG",
+        "explain_es": "Entrada del viernes: Julián lo cree posible, pero el diario no dice que se haya confirmado."
+      },
+      {
+        "type": "gap",
+        "q": "By Friday we ____ (walk) through the forest for six hours a day.",
+        "answer": "will have been walking",
+        "accept": [
+          "'ll have been walking"
+        ],
+        "explain_es": "Entrada del miércoles: futuro perfecto continuo = will have been + -ing, para la duración hasta un momento futuro."
+      },
+      {
+        "type": "transform",
+        "q": "We started collecting data last Thursday. We will still be collecting it this Thursday. → By Thursday, we will have ...",
+        "answer": "By Thursday, we will have been collecting data for a full week.",
+        "accept": [
+          "By Thursday, we'll have been collecting data for a full week.",
+          "By Thursday, we will have been collecting data for a week.",
+          "By Thursday, we'll have been collecting data for a week."
+        ],
+        "explain_es": "Entrada del martes: \"by Thursday we'll have been collecting data for a full week\"."
+      },
+      {
+        "type": "error",
+        "q": "By the time I finish my degree, I'll be studying this forest for two years.",
+        "answer": "By the time I finish my degree, I'll have been studying this forest for two years.",
+        "accept": [
+          "By the time I finish my degree, I will have been studying this forest for two years."
+        ],
+        "explain_es": "Entrada del jueves: con \"by the time\" y una duración (\"for two years\") se usa \"will have been studying\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-smart-home-privacy",
+    "title": "What Does Your Smart Home Know?",
+    "level": "B2",
+    "genre": "opinion",
+    "topic": "Technology & privacy",
+    "focus": "Unreal past (it's time, would rather)",
+    "emoji": "🏠",
+    "words": 465,
+    "paragraphs": [
+      "Last month my sister proudly showed me her new smart home. The lights switched on when she walked into a room, the speaker in the kitchen ordered coffee when the packet was nearly empty, and the doorbell sent a video to her phone every time someone walked past. \"Isn't it amazing?\" she asked. It was. But on the way home, I couldn't stop wondering who else was watching that video.",
+      "Smart devices are now everywhere: speakers that listen for our voices, thermostats that learn our routines, televisions that recommend what to watch next. Most of us accept them without reading a single line of the privacy policy. I would rather we didn't. It's time we started asking what these machines collect, where the information goes and who makes money from it.",
+      "Consider what a typical smart home knows. It knows when you wake up, when you leave the house and when nobody is at home. It knows what you buy, what you watch and, in some cases, what you say. Individually, these details seem harmless. Together, they create a detailed portrait of your life that can be extremely valuable to advertisers, insurance companies and, potentially, criminals.",
+      "Manufacturers usually reply that the data is anonymous and used only to improve their services. Perhaps. But there have been several cases in which recordings from smart speakers were heard by employees, or in which security cameras were hacked because users had never changed the factory password. I'd rather companies were honest about these risks than hid them on page thirty-seven of a document nobody reads.",
+      "I am not suggesting we throw our devices away. They can be genuinely useful, especially for older people or people with disabilities who live alone. A neighbour of mine, who has difficulty walking, uses a voice assistant to call her daughter and turn on the lights, and she would hate to lose it. The question is not whether we use technology but how much control we keep over it.",
+      "So what can we do? First, it's high time governments required clear, short privacy summaries on every smart product, in the same way that food packets show calories. Second, it's about time manufacturers made the most private settings the default, so that sharing data is a choice rather than an accident. And as users, we should spend ten minutes checking the settings before we plug anything in. If you'd rather your speaker didn't store your recordings, there is usually an option to delete them automatically.",
+      "My sister, by the way, has now switched off the camera in her living room. \"I'd rather the doorbell filmed the street than my sofa,\" she told me. It's a small change, but it's a start. A home should be the one place where we are not being watched."
+    ],
+    "glossary": [
+      [
+        "thermostats",
+        "termostatos"
+      ],
+      [
+        "privacy policy",
+        "política de privacidad"
+      ],
+      [
+        "harmless",
+        "inofensivo"
+      ],
+      [
+        "portrait",
+        "retrato"
+      ],
+      [
+        "advertisers",
+        "anunciantes"
+      ],
+      [
+        "hacked",
+        "hackeados, vulnerados"
+      ],
+      [
+        "factory password",
+        "contraseña de fábrica"
+      ],
+      [
+        "disabilities",
+        "discapacidades"
+      ],
+      [
+        "default",
+        "opción predeterminada, por defecto"
+      ],
+      [
+        "settings",
+        "configuración, ajustes"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What worried the writer after visiting her sister?",
+        "options": [
+          "The cost of the devices",
+          "The noise of the speaker",
+          "Who else could be watching the doorbell video",
+          "The lights switching on by themselves"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"I couldn't stop wondering who else was watching that video.\""
+      },
+      {
+        "type": "tf",
+        "q": "The writer wants everyone to get rid of their smart devices.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: \"I am not suggesting we throw our devices away.\""
+      },
+      {
+        "type": "mc",
+        "q": "Why can the information from a smart home be valuable?",
+        "options": [
+          "Together, the details form a detailed picture of your life",
+          "It helps you pay lower taxes",
+          "It makes the devices cheaper",
+          "It is always anonymous"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: juntos, los datos \"create a detailed portrait of your life\"."
+      },
+      {
+        "type": "tf",
+        "q": "Some cameras were hacked because users never changed the factory password.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"security cameras were hacked because users had never changed the factory password\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's neighbour has a camera in her living room.",
+        "answer": "NG",
+        "explain_es": "Párrafo 5: la vecina usa un asistente de voz; no se menciona ninguna cámara suya."
+      },
+      {
+        "type": "gap",
+        "q": "It's time we ____ (start) asking what these machines collect.",
+        "answer": "started",
+        "accept": [],
+        "explain_es": "Párrafo 2: después de \"It's time + sujeto\" se usa el pasado simple con sentido presente."
+      },
+      {
+        "type": "transform",
+        "q": "I want companies to be honest about the risks. → I'd rather companies ...",
+        "answer": "I'd rather companies were honest about the risks.",
+        "accept": [
+          "I would rather companies were honest about the risks.",
+          "I'd rather companies were honest about these risks."
+        ],
+        "explain_es": "Párrafo 4: \"would rather + sujeto + pasado\" expresa una preferencia sobre lo que hacen otros."
+      },
+      {
+        "type": "error",
+        "q": "It's high time governments require clear privacy summaries on every product.",
+        "answer": "It's high time governments required clear privacy summaries on every product.",
+        "accept": [
+          "It is high time governments required clear privacy summaries on every product."
+        ],
+        "explain_es": "Párrafo 6: con \"It's high time\" el verbo va en pasado: \"required\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-lawyer-turned-chef",
+    "title": "From Courtroom to Kitchen",
+    "level": "B2",
+    "genre": "profile",
+    "topic": "Careers & food",
+    "focus": "Cleft sentences for emphasis",
+    "emoji": "👩‍🍳",
+    "words": 467,
+    "paragraphs": [
+      "It was a plate of sancocho that changed Andrea Solano's life. In 2017 she was a successful corporate lawyer in Cali, working twelve-hour days and earning more money than she had time to spend. One Sunday, exhausted, she visited her grandmother in Buga and watched her prepare the family soup from memory, without measuring anything. \"What struck me was how calm she was,\" Andrea remembers. \"I hadn't felt that calm in years.\"",
+      "Today Andrea runs Fogón, a small restaurant in the San Antonio neighbourhood that critics have called one of the most interesting places to eat in the Valle del Cauca. But the journey from the courtroom to the kitchen was neither quick nor easy. What people don't realise, she says, is how frightened she was. \"It wasn't the cooking that scared me. It was telling my parents. They had paid for five years of law school.\"",
+      "She kept her job for another year while taking evening classes at a cookery school. It was there that she met her future business partner, a pastry chef called Mauricio Lenis. \"The thing I admired about Mauricio was his discipline,\" she says. \"I thought lawyers worked hard. Chefs work harder.\" In 2019 she finally resigned, sold her apartment and, with Mauricio, rented a former shoe repair shop that would become Fogón.",
+      "The first year was brutal. What almost destroyed the restaurant was not a lack of customers but the pandemic, which closed it only months after it opened. It was during those months that Andrea had her most important idea: she began cooking traditional recipes from the region's grandmothers, recording their stories and selling the dishes as takeaway meals with a short biography of the woman who had created them. The project went viral, and when Fogón reopened, there was a queue outside.",
+      "What makes the restaurant special, according to food writer Lina Caicedo, is the combination of memory and technique. \"Andrea respects tradition, but she isn't a museum,\" Caicedo explains. \"Her grandmother's sancocho is still on the menu, but it's the small, surprising changes that make you come back.\"",
+      "Does she ever miss the law? Andrea laughs. \"What I miss is the salary,\" she admits. \"Restaurants are a terrible business if you want to get rich.\" But she insists that her legal training has been useful. \"It's because of my years as a lawyer that I can read a contract, negotiate with suppliers and stay calm when something goes wrong. Nothing in a kitchen is as stressful as a courtroom.\"",
+      "Her grandmother, now ninety-one, comes to the restaurant every few months. She always orders the soup, and she always has a comment. \"Last time she said it needed more coriander,\" Andrea says, smiling. \"The person whose opinion matters most to me is still the woman who started all this.\""
+    ],
+    "glossary": [
+      [
+        "corporate lawyer",
+        "abogada corporativa"
+      ],
+      [
+        "measuring",
+        "medir"
+      ],
+      [
+        "struck",
+        "impresionó, llamó la atención"
+      ],
+      [
+        "courtroom",
+        "sala de audiencias, tribunal"
+      ],
+      [
+        "pastry chef",
+        "repostero, pastelero"
+      ],
+      [
+        "resigned",
+        "renunció"
+      ],
+      [
+        "brutal",
+        "durísimo, brutal"
+      ],
+      [
+        "takeaway",
+        "para llevar"
+      ],
+      [
+        "queue",
+        "fila"
+      ],
+      [
+        "suppliers",
+        "proveedores"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where was Andrea when she first thought about changing her life?",
+        "options": [
+          "At a cookery school",
+          "At her grandmother's home in Buga",
+          "In a courtroom in Cali",
+          "At a restaurant in San Antonio"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: visitó a su abuela en Buga y la vio preparar el sancocho."
+      },
+      {
+        "type": "tf",
+        "q": "Andrea left her job as a lawyer immediately after that visit.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: \"She kept her job for another year\"."
+      },
+      {
+        "type": "mc",
+        "q": "What frightened Andrea most about changing careers?",
+        "options": [
+          "Learning to cook",
+          "Losing her apartment",
+          "Working with Mauricio",
+          "Telling her parents"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 2: \"It wasn't the cooking that scared me. It was telling my parents.\""
+      },
+      {
+        "type": "tf",
+        "q": "The pandemic closed Fogón only months after it opened.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: la pandemia \"closed it only months after it opened\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mauricio now has his own bakery in Buga.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada sobre el presente de Mauricio."
+      },
+      {
+        "type": "transform",
+        "q": "Her grandmother's calm struck her. → What struck her ...",
+        "answer": "What struck her was her grandmother's calm.",
+        "accept": [
+          "What struck her was how calm her grandmother was."
+        ],
+        "explain_es": "Párrafo 1: la oración hendida con \"What...\" pone énfasis en la información final."
+      },
+      {
+        "type": "gap",
+        "q": "It was during those months ____ Andrea had her most important idea.",
+        "answer": "that",
+        "accept": [],
+        "explain_es": "Párrafo 4: estructura \"It was + elemento enfatizado + that...\"."
+      },
+      {
+        "type": "transform",
+        "q": "The pandemic almost destroyed the restaurant. → It was ...",
+        "answer": "It was the pandemic that almost destroyed the restaurant.",
+        "accept": [
+          "It was the pandemic which almost destroyed the restaurant."
+        ],
+        "explain_es": "Párrafo 4: \"It was... that\" enfatiza quién o qué hizo la acción."
+      }
+    ]
+  },
+  {
+    "id": "r3-b2-vinyl-comeback",
+    "title": "Why Young People Are Buying Records Again",
+    "level": "B2",
+    "genre": "article",
+    "topic": "Music & culture",
+    "focus": "Reduced relative clauses",
+    "emoji": "💿",
+    "words": 470,
+    "paragraphs": [
+      "Walk into Disco Rayado, a small record shop located in the centre of Medellín, on a Saturday afternoon and you will find something that would have seemed impossible fifteen years ago: teenagers queuing to buy vinyl. Most of the customers flicking through the boxes were born long after compact discs had replaced records, and many of them have never owned a CD at all.",
+      "The return of vinyl is one of the music industry's most surprising stories. Sales of records, once considered a dead format, have grown every year for more than a decade in countries such as the United States and the United Kingdom. In some markets, records now earn more money than CDs. Albums released by today's pop stars are often available on coloured vinyl, and limited editions signed by the artist can sell out in minutes.",
+      "Why would anyone pay forty dollars for something they can stream for free? The answers given by customers are remarkably similar. \"Streaming is great for discovering music, but it feels disposable,\" says Tomás Arango, a nineteen-year-old engineering student holding three albums under his arm. \"A record is something you choose. You put it on, you sit down and you listen to the whole thing. Nobody skips songs on vinyl.\"",
+      "Others talk about the physical object itself: the large cover designed by the artist, the lyrics printed inside, the ritual of cleaning the disc before playing it. For people living most of their lives through screens, holding something real seems to matter. \"My generation grew up with everything in a cloud,\" says Daniela Zuluaga, a graphic designer working for an advertising agency. \"This is the first music collection I can actually see.\"",
+      "Not everyone is enthusiastic, however. Audio experts point out that the famous \"warm\" sound of vinyl is partly the result of imperfections, and that a high-quality digital file contains more information than a record. Critics also note that many of the records sold today are bought by people who rarely play them. A survey carried out in Britain found that almost half of vinyl buyers owned a record player that they hardly used, or none at all.",
+      "The boom has also created problems for the industry. There are relatively few factories able to press records, and the waiting time for a new album can be several months. Independent musicians hoping to release their work on vinyl often have to wait behind major labels ordering hundreds of thousands of copies. Prices have risen as a result.",
+      "For shop owners like Gloria Castaño, who opened Disco Rayado in 1994, the revival is a kind of revenge. \"People told me I was crazy to keep selling records,\" she says, looking at the queue stretching out of the door. \"Now the same people come in asking for albums they threw away thirty years ago.\""
+    ],
+    "glossary": [
+      [
+        "queuing",
+        "haciendo fila"
+      ],
+      [
+        "flicking through",
+        "hojeando, pasando rápidamente"
+      ],
+      [
+        "sell out",
+        "agotarse"
+      ],
+      [
+        "stream",
+        "escuchar en streaming"
+      ],
+      [
+        "disposable",
+        "desechable"
+      ],
+      [
+        "skips",
+        "se salta"
+      ],
+      [
+        "lyrics",
+        "letras (de canciones)"
+      ],
+      [
+        "press",
+        "prensar, fabricar (discos)"
+      ],
+      [
+        "revival",
+        "resurgimiento"
+      ],
+      [
+        "revenge",
+        "desquite, venganza"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who are most of the customers at Disco Rayado on Saturday afternoons?",
+        "options": [
+          "Retired collectors",
+          "Tourists",
+          "Teenagers",
+          "Musicians"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"teenagers queuing to buy vinyl\"."
+      },
+      {
+        "type": "tf",
+        "q": "In some markets, records now earn more money than CDs.",
+        "answer": "T",
+        "explain_es": "Párrafo 2: \"In some markets, records now earn more money than CDs.\""
+      },
+      {
+        "type": "mc",
+        "q": "According to Tomás, what makes vinyl different from streaming?",
+        "options": [
+          "You listen to the whole album without skipping songs",
+          "It is cheaper",
+          "It has more songs",
+          "You can discover new music faster"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: \"you listen to the whole thing. Nobody skips songs on vinyl.\""
+      },
+      {
+        "type": "tf",
+        "q": "Audio experts agree that vinyl sounds better than any digital file.",
+        "answer": "F",
+        "explain_es": "Párrafo 5: un archivo digital de alta calidad \"contains more information than a record\"."
+      },
+      {
+        "type": "tf",
+        "q": "Gloria Castaño is planning to open a second shop.",
+        "answer": "NG",
+        "explain_es": "Párrafo 7: no se mencionan planes de abrir otra tienda."
+      },
+      {
+        "type": "transform",
+        "q": "Albums which are released by today's pop stars are often on coloured vinyl. → Albums ...",
+        "answer": "Albums released by today's pop stars are often on coloured vinyl.",
+        "accept": [],
+        "explain_es": "Párrafo 2: se omite \"which are\" y queda el participio pasado: \"Albums released by...\"."
+      },
+      {
+        "type": "transform",
+        "q": "Musicians who hope to release their work on vinyl often have to wait. → Musicians ...",
+        "answer": "Musicians hoping to release their work on vinyl often have to wait.",
+        "accept": [],
+        "explain_es": "Párrafo 6: con verbos activos se reduce la relativa con -ing: \"musicians hoping to...\"."
+      },
+      {
+        "type": "gap",
+        "q": "Disco Rayado is a small record shop ____ in the centre of Medellín.",
+        "answer": "located",
+        "accept": [
+          "situated"
+        ],
+        "explain_es": "Párrafo 1: \"a small record shop located in the centre of Medellín\" (= which is located)."
+      }
+    ]
+  }
+]

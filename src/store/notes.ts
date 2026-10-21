@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { stripHighlights } from '@/lib/highlights';
 
 /**
  * "Mis notas" — private text notes. Local-first (this browser is always the
@@ -171,6 +172,6 @@ export function visibleNotes(notes: Note[], uid: string | null) {
 
 /** First line of a note, for list rows. */
 export function noteTitle(n: Pick<Note, 'body'>) {
-  const line = n.body.trim().split('\n')[0]?.trim() ?? '';
+  const line = stripHighlights(n.body).trim().split('\n')[0]?.trim() ?? '';
   return line ? (line.length > 80 ? `${line.slice(0, 80)}…` : line) : 'Nota vacía';
 }

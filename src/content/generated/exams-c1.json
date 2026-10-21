@@ -1,0 +1,2181 @@
+[
+  {
+    "id": "c1-m1",
+    "level": "C1",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa los phrasal verbs, el gerundio y el infinitivo (con cambio de significado), los patrones verbales con objeto, las oraciones hendidas con “what”, los artículos, las cláusulas de -ing y el estilo indirecto con verbos de reporte y en pasiva impersonal, con el vocabulario de relaciones, apariencia, ciencia y creencias. Incluye las cuatro habilidades.",
+    "minutes": 60,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "I'm not sure how much longer I can ___ his constant sarcasm.",
+        "options": [
+          "put off",
+          "put up with",
+          "put across",
+          "put down to"
+        ],
+        "answer": 1,
+        "explain_es": "“Put up with” significa tolerar algo desagradable. “Put off” es posponer, “put across” es comunicar una idea y “put down to” es atribuir."
+      },
+      {
+        "type": "mc",
+        "q": "I distinctly remember ___ the door, so someone else must have left it open.",
+        "options": [
+          "to lock",
+          "lock",
+          "to have locked",
+          "locking"
+        ],
+        "answer": 3,
+        "explain_es": "“Remember + -ing” se refiere al recuerdo de algo que ya hiciste; “remember + to” sería no olvidar hacer algo en el futuro."
+      },
+      {
+        "type": "mc",
+        "q": "The organisers made all the guests ___ their phones at the entrance.",
+        "options": [
+          "leave",
+          "to leave",
+          "leaving",
+          "left"
+        ],
+        "answer": 0,
+        "explain_es": "“Make + objeto” va seguido del infinitivo sin “to”: “made the guests leave”."
+      },
+      {
+        "type": "mc",
+        "q": "___ impressed me most about the collection was its restraint.",
+        "options": [
+          "That",
+          "Which",
+          "What",
+          "It"
+        ],
+        "answer": 2,
+        "explain_es": "En una oración hendida (cleft sentence) la cláusula inicial empieza con “What” y luego viene “be” + la información destacada."
+      },
+      {
+        "type": "mc",
+        "q": "___ smartphone has completely changed ___ way we communicate.",
+        "options": [
+          "A / a",
+          "The / a",
+          "The / the",
+          "(no article) / the"
+        ],
+        "answer": 2,
+        "explain_es": "“The smartphone” con sentido genérico se refiere al invento en general; “the way” es específico porque lo define la cláusula “we communicate”."
+      },
+      {
+        "type": "mc",
+        "q": "The temple ___ built more than two thousand years ago.",
+        "options": [
+          "is believed to have been",
+          "is believed to be",
+          "believes to have been",
+          "is believing to have"
+        ],
+        "answer": 0,
+        "explain_es": "Pasiva impersonal de reporte: sujeto + “is believed” + infinitivo perfecto (to have been) porque la construcción es anterior al momento presente de la creencia."
+      },
+      {
+        "type": "gap",
+        "q": "___ (not / realise) how late it was, the team kept working until midnight.",
+        "answer": "Not realising",
+        "accept": [
+          "Not realizing"
+        ],
+        "explain_es": "Una cláusula de -ing reemplaza a una cláusula de razón con el mismo sujeto; la negación va delante: “Not realising…”."
+      },
+      {
+        "type": "transform",
+        "q": "'I faked the photographs,' the photographer said. → The photographer admitted …",
+        "answer": "The photographer admitted faking the photographs.",
+        "accept": [
+          "The photographer admitted having faked the photographs.",
+          "The photographer admitted to faking the photographs.",
+          "The photographer admitted to having faked the photographs.",
+          "The photographer admitted that he had faked the photographs.",
+          "The photographer admitted that she had faked the photographs.",
+          "The photographer admitted he had faked the photographs.",
+          "The photographer admitted she had faked the photographs."
+        ],
+        "explain_es": "“Admit” puede ir seguido de gerundio (admitted faking / having faked) o de una cláusula con “that” y el verbo un paso atrás en el tiempo (had faked)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “She refused apologising, even though everyone knew she was wrong.”",
+        "answer": "She refused to apologise, even though everyone knew she was wrong.",
+        "accept": [
+          "She refused to apologize, even though everyone knew she was wrong."
+        ],
+        "explain_es": "“Refuse” va seguido de infinitivo con “to”, nunca de gerundio."
+      },
+      {
+        "type": "order",
+        "q": "nervous / What / him / made / was / the strict / dress code",
+        "answer": "What made him nervous was the strict dress code.",
+        "explain_es": "Oración hendida con “what”: What + cláusula (made him nervous) + was + la información destacada (the strict dress code)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "We ___ immediately at the conference; within an hour it felt as if we'd known each other for years.",
+        "options": [
+          "fell out",
+          "begged to differ",
+          "buried the hatchet",
+          "hit it off"
+        ],
+        "answer": 3,
+        "explain_es": "“To hit it off” es caerse bien desde el primer momento."
+      },
+      {
+        "type": "mc",
+        "q": "I didn't like the song at first, but it's slowly ___ me.",
+        "options": [
+          "coming across",
+          "growing on",
+          "striking up",
+          "falling out with"
+        ],
+        "answer": 1,
+        "explain_es": "“To grow on someone” es empezar a gustarle a alguien con el tiempo."
+      },
+      {
+        "type": "mc",
+        "q": "Professor Díaz is just an ___; we've only spoken a couple of times.",
+        "options": [
+          "acquaintance",
+          "wavelength",
+          "trendsetter",
+          "omen"
+        ],
+        "answer": 0,
+        "explain_es": "Un “acquaintance” es un conocido, alguien a quien conoces un poco pero no es amigo cercano."
+      },
+      {
+        "type": "mc",
+        "q": "Not everyone could ___ a bright yellow suit, but he looked fantastic in it.",
+        "options": [
+          "dress down",
+          "look the part",
+          "pull off",
+          "judge"
+        ],
+        "answer": 2,
+        "explain_es": "“To pull off a look” es llevar con éxito una prenda o estilo difícil."
+      },
+      {
+        "type": "mc",
+        "q": "Her style is ___: neutral colours, simple lines and no visible logos.",
+        "options": [
+          "dressed to the nines",
+          "understated",
+          "far-fetched",
+          "obsolete"
+        ],
+        "answer": 1,
+        "explain_es": "“Understated” describe un estilo elegante y discreto, que no llama la atención."
+      },
+      {
+        "type": "mc",
+        "q": "One ___ of the new system is that it needs a constant internet connection.",
+        "options": [
+          "breakthrough",
+          "game-changer",
+          "hoax",
+          "drawback"
+        ],
+        "answer": 3,
+        "explain_es": "Un “drawback” es una desventaja o un problema."
+      },
+      {
+        "type": "mc",
+        "q": "Only someone very ___ would believe that a celebrity is giving away free cars on social media.",
+        "options": [
+          "anecdotal",
+          "gullible",
+          "timeless",
+          "cutting-edge"
+        ],
+        "answer": 1,
+        "explain_es": "“Gullible” describe a alguien demasiado crédulo, fácil de engañar."
+      },
+      {
+        "type": "gap",
+        "q": "Streaming has rendered DVDs almost ___. (no longer used)",
+        "answer": "obsolete",
+        "explain_es": "“To render obsolete” es dejar algo anticuado e inútil."
+      },
+      {
+        "type": "gap",
+        "q": "Scientists quickly ___ the claim that the lake had healing powers. (proved it false; past)",
+        "answer": "debunked",
+        "explain_es": "“To debunk” es demostrar que una creencia o historia es falsa."
+      },
+      {
+        "type": "gap",
+        "q": "His evidence is purely ___: a few stories from friends, but no actual research. (based on personal stories)",
+        "answer": "anecdotal",
+        "explain_es": "“Anecdotal” describe algo basado en historias personales y no en investigaciones."
+      }
+    ],
+    "reading": {
+      "title": "The Bride of the Hotel Mirador",
+      "genre": "article",
+      "paragraphs": [
+        "For decades, the abandoned Hotel Mirador, perched on a cliff above the misty town of San Isidro, has been the subject of local superstition. It is said that a young bride vanished there on her wedding night in 1952, and many residents still refuse to walk past the building after dark. So when a blurred photograph of a pale figure in a long white dress appeared on social media last October, it travelled round the country in a matter of hours.",
+        "The image was undeniably eerie. Taken, its anonymous poster claimed, through a broken window on the third floor, it showed a woman standing perfectly still at the end of a corridor, her face hidden by a veil. Within a day, it had been shared more than two hundred thousand times. Television programmes invited psychics to comment on it, and a local councillor even suggested that the hotel be blessed by a priest. What very few people did was ask where the photograph had actually come from.",
+        "Enter Valeria Ortiz, a 23-year-old photography student who had grown up hearing stories about the Mirador. 'My grandmother would never let us mention the bride at the dinner table,' she recalls. 'But what struck me about the picture wasn't the ghost. It was the dress. It was far too well made.' Refusing to take the image at face value, Valeria ran it through a free online tool that analyses metadata, the hidden information stored inside digital files. The results showed that the photo had been taken on a sunny Sunday afternoon three weeks earlier, using a camera model that had only been released that year.",
+        "The rest of the mystery unravelled quickly. Searching through local fashion pages, Valeria found a design student, Mariana Celis, who had organised a photoshoot inside the hotel to promote her graduation collection, a series of vintage-style wedding gowns inspired by the legend. Mariana admitted that she had posted the photo herself, although she insisted that she had never meant to deceive anyone. 'I wanted people to talk about the dresses,' she said. 'I didn't expect them to start calling priests.'",
+        "Not everyone was convinced by the explanation. Some residents claimed that the debunking was itself a hoax, and one popular account argued that the student's confession had lent credence to the legend rather than destroying it, since she had chosen the hotel for a reason. Psychologists are not surprised by this reaction. Beliefs that are tied to family stories and local identity are notoriously hard to shift, and evidence that contradicts them is often dismissed as an attack on the community itself.",
+        "For Valeria, the episode was a lesson in how easily a single image can be stripped of its context. 'People aren't gullible because they're stupid,' she says. 'They believe things because the story fits what they already feel.' As for Mariana, her entire collection sold out within a week of the confession. Whether the bride of the Mirador approves of the dresses remains, of course, unknown."
+      ],
+      "glossary": [
+        [
+          "perched on a cliff",
+          "encaramado en un acantilado"
+        ],
+        [
+          "veil",
+          "velo"
+        ],
+        [
+          "metadata",
+          "metadatos"
+        ],
+        [
+          "unravelled",
+          "se fue aclarando"
+        ],
+        [
+          "lent credence to",
+          "dado credibilidad a"
+        ],
+        [
+          "stripped of its context",
+          "despojada de su contexto"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "According to local legend, what happened at the Hotel Mirador?",
+          "options": [
+            "A fire destroyed the third floor in 1952.",
+            "A priest blessed the building every year.",
+            "A famous photographer died there.",
+            "A bride disappeared on her wedding night."
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: “It is said that a young bride vanished there on her wedding night in 1952”."
+        },
+        {
+          "type": "tf",
+          "q": "The photograph was shared more than 200,000 times within a day.",
+          "answer": "T",
+          "explain_es": "Verdadero: “Within a day, it had been shared more than two hundred thousand times.”"
+        },
+        {
+          "type": "mc",
+          "q": "What first made Valeria suspicious of the photograph?",
+          "options": [
+            "The quality of the dress",
+            "The position of the window",
+            "The colour of the light",
+            "The date of the post"
+          ],
+          "answer": 0,
+          "explain_es": "Valeria dice: “what struck me about the picture wasn’t the ghost. It was the dress. It was far too well made.”"
+        },
+        {
+          "type": "tf",
+          "q": "The photograph had been taken at night.",
+          "answer": "F",
+          "explain_es": "Falso: los metadatos mostraron que la foto “had been taken on a sunny Sunday afternoon three weeks earlier”."
+        },
+        {
+          "type": "mc",
+          "q": "Why did Mariana post the photo?",
+          "options": [
+            "To frighten the residents of San Isidro",
+            "To win a photography competition",
+            "To attract attention to her dresses",
+            "To prove that ghosts exist"
+          ],
+          "answer": 2,
+          "explain_es": "Mariana explica: “I wanted people to talk about the dresses.”"
+        },
+        {
+          "type": "tf",
+          "q": "Mariana was paid by a television programme for her confession.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto menciona que la televisión invitó a psíquicos, pero nada sobre un pago a Mariana."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Mind Matters: The Science of First Impressions",
+      "kind": "podcast",
+      "speakers": [
+        {
+          "name": "Rachel",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Omar",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Hello and welcome to Mind Matters. I'm Rachel Hughes, and my guest today is Dr Omar Vélez, a social psychologist who has spent the last decade studying first impressions. Omar, we're always told not to judge a book by its cover. Is that advice actually realistic?"
+        },
+        {
+          "s": 1,
+          "text": "Honestly, not entirely. What the research shows is that we form an impression of someone within about a tenth of a second, long before we've had a chance to think. Whether we like it or not, appearance, posture and clothing all feed into that snap judgement."
+        },
+        {
+          "s": 0,
+          "text": "So the outfit really matters. I remember turning up to a job interview in jeans because I thought I'd come across as relaxed and creative. I didn't get the job."
+        },
+        {
+          "s": 1,
+          "text": "You're not alone. In one of our studies, we asked recruiters to watch short videos of candidates giving identical answers. The only thing we changed was what they were wearing. Candidates who were dressed formally were rated as more competent, even by recruiters who insisted that clothes made no difference to them."
+        },
+        {
+          "s": 0,
+          "text": "That's quite worrying. Does it mean we should all be dressed to the nines every day?"
+        },
+        {
+          "s": 1,
+          "text": "Not at all. What matters is looking the part for the context. A suit at a beach wedding sends the wrong message just as clearly as trainers at a funeral. Interestingly, people who dress in a slightly understated way tend to be trusted more than those who are obviously trying to impress."
+        },
+        {
+          "s": 0,
+          "text": "And what about first impressions in friendship? How lasting are they? I've got close friends I really didn't like when I first met them."
+        },
+        {
+          "s": 1,
+          "text": "That's very common, and it's the good news in all of this. First impressions are powerful, but they're not fixed. Repeated contact allows a person to grow on us. In fact, some of the strongest friendships begin with mild irritation, because both people have had to revise their opinion."
+        },
+        {
+          "s": 0,
+          "text": "What about the feeling that you've simply hit it off with someone? That instant connection people describe?"
+        },
+        {
+          "s": 1,
+          "text": "We tend to attribute that to fate or chemistry, but usually it's similarity. We hit it off with people who share our sense of humour, our rhythm of speech, even our way of dressing. It feels magical, but it's fairly predictable."
+        },
+        {
+          "s": 0,
+          "text": "So some of us are a little superstitious about friendship."
+        },
+        {
+          "s": 1,
+          "text": "Very much so. I've interviewed people who refuse to become friends with anyone born on a particular day of the week, which is far-fetched, to say the least. There's no evidence whatsoever to support it."
+        },
+        {
+          "s": 0,
+          "text": "If listeners want to make a better first impression tomorrow, what would you suggest?"
+        },
+        {
+          "s": 1,
+          "text": "Three things. Stop checking your phone when you meet someone, because it signals that they're not your priority. Try asking one genuine question about them, and remember to use their name. Those small gestures have far more impact than an expensive jacket."
+        },
+        {
+          "s": 0,
+          "text": "Dr Omar Vélez, thank you. Next week, we'll be asking whether our memories of childhood can be trusted."
+        },
+        {
+          "s": 1,
+          "text": "My pleasure, Rachel."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "According to Dr Vélez, how quickly do we form a first impression?",
+          "options": [
+            "In about ten seconds",
+            "Within the first minute",
+            "In about a tenth of a second",
+            "After several meetings"
+          ],
+          "answer": 2,
+          "explain_es": "Omar dice: “we form an impression of someone within about a tenth of a second”."
+        },
+        {
+          "type": "tf",
+          "q": "Rachel got the job she interviewed for in jeans.",
+          "answer": "F",
+          "explain_es": "Falso: Rachel cuenta que fue en jeans y “I didn’t get the job.”"
+        },
+        {
+          "type": "mc",
+          "q": "In the study, what was different between the videos?",
+          "options": [
+            "The candidates' clothes",
+            "The candidates' answers",
+            "The length of the interviews",
+            "The recruiters' instructions"
+          ],
+          "answer": 0,
+          "explain_es": "Omar explica: “The only thing we changed was what they were wearing.” Las respuestas eran idénticas."
+        },
+        {
+          "type": "tf",
+          "q": "According to Dr Vélez, people who dress in an understated way are often trusted more.",
+          "answer": "T",
+          "explain_es": "Verdadero: “people who dress in a slightly understated way tend to be trusted more than those who are obviously trying to impress.”"
+        },
+        {
+          "type": "mc",
+          "q": "What does Dr Vélez say usually explains 'hitting it off' with someone?",
+          "options": [
+            "Fate",
+            "Physical attraction",
+            "Shared superstitions",
+            "Similarity between people"
+          ],
+          "answer": 3,
+          "explain_es": "Omar dice: “We tend to attribute that to fate or chemistry, but usually it’s similarity.”"
+        },
+        {
+          "type": "gap",
+          "q": "Dr Vélez advises people to stop checking their ___ when they meet someone.",
+          "answer": "phone",
+          "accept": [
+            "phones",
+            "mobile",
+            "mobile phone"
+          ],
+          "explain_es": "Su primer consejo es: “Stop checking your phone when you meet someone”."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write an article for an online magazine with the title 'Can we still trust our eyes?'. Discuss how appearances, edited images and new technology shape what we believe, give examples and suggest how readers can protect themselves from being misled. Write 250–320 words.",
+      "prompt_es": "Escribe un artículo de revista sobre si todavía podemos confiar en lo que vemos, con ejemplos y consejos.",
+      "genre_es": "Artículo de revista",
+      "minWords": 250,
+      "maxWords": 320,
+      "criteria": [
+        "Use at least two cleft sentences with 'What…' to highlight key ideas.",
+        "Report claims with a variety of reporting verbs and at least one impersonal passive (It is said that…, X is believed to…).",
+        "Include at least one -ing clause and use articles (a/an, the, zero article) accurately.",
+        "Use at least five expressions from Units 1–4 (take at face value, judge a book by its cover, debunk, cutting-edge, gullible, hoax…).",
+        "Keep an engaging but formal magazine register and end with a clear conclusion."
+      ],
+      "model": "Can We Still Trust Our Eyes?\n\nWe have always been told not to judge a book by its cover, yet most of us do it every day. What has changed in recent years is not human nature but the tools that shape what we see.\n\nConsider fashion. A carefully styled photograph can make an ordinary jacket look like the work of a trendsetter, and influencers are paid to make expensive outfits seem effortless. It is widely assumed that these images reflect real life, but most of them have been edited, filtered and staged. Scrolling through them late at night, we compare ourselves with people who do not actually exist in that form.\n\nThe problem becomes more serious when images claim to show facts. Cutting-edge software can now produce a convincing photograph of an event that never happened, and such pictures are believed to spread far faster than any correction. A friend of mine recently admitted sharing a picture of a giant snake in the Magdalena River before discovering that it was a hoax. She is not gullible; she simply took the image at face value because it came from someone she trusted.\n\nWhat worries me most is that each new fake lends credence to the idea that nothing can be believed. Paradoxically, a public that doubts everything is as easy to manipulate as one that doubts nothing.\n\nSo what can we do? Fact-checkers and journalists play a vital role in debunking false images, but the responsibility is also ours. Before sharing a picture, we can ask three simple questions: who took it, when, and why? Having asked them, we may find that the most reliable tool we have is not technology, but curiosity.\n\nIn short, our eyes still matter. What they need is a little help from our judgement."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Describe a friendship that began badly but later improved, or one that you have lost. How did you meet, what happened, and how do you feel about it now?",
+          "text_es": "Describe una amistad que empezó mal y mejoró, o una que perdiste: cómo se conocieron y qué pasó.",
+          "seconds": 90,
+          "tips": [
+            "Use phrasal verbs and idioms: hit it off, fall out, grow on, bury the hatchet.",
+            "Contrast remember + -ing and remember + to."
+          ]
+        },
+        {
+          "text": "Describe the style of someone you know whose way of dressing you admire. What is it about their look that works, and what impression does it create?",
+          "text_es": "Describe el estilo de alguien cuya forma de vestir admiras y la impresión que causa.",
+          "seconds": 90,
+          "tips": [
+            "Use cleft sentences: What I like about her style is…",
+            "Use understated, pull off, look the part and timeless."
+          ]
+        },
+        {
+          "text": "Some people say superstitions are harmless traditions; others say they encourage people to believe anything. Discuss both views, report what others claim and give your own opinion.",
+          "text_es": "Opina: ¿las supersticiones son tradiciones inofensivas o fomentan la credulidad? Presenta ambas posturas.",
+          "seconds": 120,
+          "tips": [
+            "Use passive reporting: It is often said that…, Black cats are believed to…",
+            "Use far-fetched, anecdotal, debunk and take at face value."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c1-m2",
+    "level": "C1",
+    "kind": "midterm",
+    "n": 2,
+    "units": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "title": "Parcial 2 · Unidades 5–8",
+    "intro_es": "Evalúa los adverbios de oración, las estructuras “so…that / such…that”, los dobles comparativos, “will” y “would” para hábitos, los pronombres relativos opcionales y obligatorios, “as if / as though / the way”, la posición de los objetos directo e indirecto y el subjuntivo, con el vocabulario de cine, música, cambios generacionales y consumo. Incluye las cuatro habilidades.",
+    "minutes": 60,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "I haven't checked this myself, but ___, the director never intended the film to be a comedy.",
+        "options": [
+          "obviously",
+          "apparently",
+          "undoubtedly",
+          "clearly"
+        ],
+        "answer": 1,
+        "explain_es": "“Apparently” indica que la información viene de otra fuente y no la hemos comprobado; los otros adverbios expresan certeza, lo que contradice “I haven’t checked this myself”."
+      },
+      {
+        "type": "mc",
+        "q": "It was ___ gripping series that we watched all eight episodes in one night.",
+        "options": [
+          "such a",
+          "so",
+          "so a",
+          "such"
+        ],
+        "answer": 0,
+        "explain_es": "“Such” va con un sintagma nominal (a gripping series); con un sustantivo contable singular se necesita “such a”."
+      },
+      {
+        "type": "mc",
+        "q": "The more I listen to this album, ___ I like it.",
+        "options": [
+          "more",
+          "the most",
+          "the more",
+          "much more"
+        ],
+        "answer": 2,
+        "explain_es": "En un doble comparativo cada parte empieza con “the”: “The more…, the more…”."
+      },
+      {
+        "type": "mc",
+        "q": "My brother is so annoying. He ___ sing the same chorus over and over until we beg him to stop.",
+        "options": [
+          "would",
+          "will",
+          "is used to",
+          "used"
+        ],
+        "answer": 1,
+        "explain_es": "“Will” describe un hábito presente, a menudo molesto. “Would” se usaría para hábitos del pasado."
+      },
+      {
+        "type": "mc",
+        "q": "The neighbour ___ lent us the ladder has moved away.",
+        "options": [
+          "(no pronoun)",
+          "which",
+          "whose",
+          "who"
+        ],
+        "answer": 3,
+        "explain_es": "El pronombre es el sujeto de la cláusula relativa (él prestó la escalera), así que no se puede omitir; para personas se usa “who”."
+      },
+      {
+        "type": "mc",
+        "q": "He talks about the nineties ___ he had lived through them, but he was born in 2003.",
+        "options": [
+          "the way",
+          "as if",
+          "like that",
+          "so that"
+        ],
+        "answer": 1,
+        "explain_es": "“As if” introduce una situación imaginada o irreal; por eso va seguido de un tiempo pasado (had lived)."
+      },
+      {
+        "type": "gap",
+        "q": "The manager insisted that the customer ___ (give) a full refund.",
+        "answer": "be given",
+        "explain_es": "Después de “insist that” se usa el subjuntivo, la forma base del verbo; aquí en pasiva: “be given”."
+      },
+      {
+        "type": "transform",
+        "q": "The shop assistant showed the new collection to me. → The shop assistant showed me …",
+        "answer": "The shop assistant showed me the new collection.",
+        "explain_es": "Con verbos de dos objetos se puede poner primero a la persona sin preposición: “showed me the new collection”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “The soundtrack was such beautiful that I bought it the same day.”",
+        "answer": "The soundtrack was so beautiful that I bought it the same day.",
+        "explain_es": "Con un adjetivo solo (sin sustantivo) se usa “so”, no “such”: “so beautiful that…”."
+      },
+      {
+        "type": "order",
+        "q": "the crowd / became / The louder / played / the wilder / the band",
+        "answer": "The louder the band played, the wilder the crowd became.",
+        "explain_es": "Doble comparativo: “The + comparativo + sujeto + verbo, the + comparativo + sujeto + verbo”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "Please don't tell me how it ends. I hate ___.",
+        "options": [
+          "plot twists",
+          "blockbusters",
+          "binge-watching",
+          "spoilers"
+        ],
+        "answer": 3,
+        "explain_es": "Un “spoiler” es información que revela lo que pasa y arruina la sorpresa."
+      },
+      {
+        "type": "mc",
+        "q": "Everyone loved that film, but I found it ___; it didn't deserve all those awards.",
+        "options": [
+          "overrated",
+          "gripping",
+          "critically acclaimed",
+          "catchy"
+        ],
+        "answer": 0,
+        "explain_es": "“Overrated” significa sobrevalorado, elogiado más de lo que merece."
+      },
+      {
+        "type": "mc",
+        "q": "To enjoy a superhero film, you have to ___ for a couple of hours.",
+        "options": [
+          "give away the plot",
+          "be hit and miss",
+          "suspend disbelief",
+          "sell out"
+        ],
+        "answer": 2,
+        "explain_es": "“To suspend disbelief” es aceptar una historia poco realista mientras la ves."
+      },
+      {
+        "type": "mc",
+        "q": "The band's first single was so ___ that the whole country was humming it within weeks.",
+        "options": [
+          "tone-deaf",
+          "derivative",
+          "catchy",
+          "overrated"
+        ],
+        "answer": 2,
+        "explain_es": "“Catchy” describe una melodía pegajosa, fácil de recordar."
+      },
+      {
+        "type": "mc",
+        "q": "Many reality-show winners ___ after a year or two.",
+        "options": [
+          "fade into obscurity",
+          "strike a chord",
+          "stand the test of time",
+          "go viral"
+        ],
+        "answer": 0,
+        "explain_es": "“To fade into obscurity” es caer en el olvido después de un periodo de fama."
+      },
+      {
+        "type": "mc",
+        "q": "Getting your first job is an important ___ in anyone's life.",
+        "options": [
+          "nostalgia",
+          "generation gap",
+          "upbringing",
+          "milestone"
+        ],
+        "answer": 3,
+        "explain_es": "Un “milestone” es un hito, un acontecimiento importante en la vida."
+      },
+      {
+        "type": "mc",
+        "q": "This jacket was a total ___: I saw it in the window and bought it without thinking.",
+        "options": [
+          "brand loyalty",
+          "impulse buy",
+          "target audience",
+          "disposable income"
+        ],
+        "answer": 1,
+        "explain_es": "Un “impulse buy” es una compra impulsiva, sin planificar."
+      },
+      {
+        "type": "gap",
+        "q": "Cheap printers can be a false ___ because the ink is so expensive.",
+        "answer": "economy",
+        "explain_es": "“To be a false economy” es algo barato al principio pero más caro a largo plazo."
+      },
+      {
+        "type": "gap",
+        "q": "The film's soundtrack harks ___ to the pop music of the 1980s.",
+        "answer": "back",
+        "explain_es": "“To hark back to” es recordar o parecerse a una época anterior."
+      },
+      {
+        "type": "gap",
+        "q": "At the market, my aunt always tries to ___ over the price. (argue about a price)",
+        "answer": "haggle",
+        "explain_es": "“To haggle” es regatear."
+      }
+    ],
+    "reading": {
+      "title": "Why We Keep Going Back",
+      "genre": "article",
+      "paragraphs": [
+        "Last year, a survey of streaming habits in Latin America produced a surprising result. Although thousands of new series are released every month, the programmes people watched most were ones they had already seen, sometimes many times. For a large number of viewers, the evening ritual is not discovering something new but returning, once again, to an old favourite.",
+        "Psychologists have a straightforward explanation: rewatching is a form of comfort. When life feels unpredictable, a story whose ending we already know offers a reassuring sense of control. 'There are no spoilers when you've seen something ten times,' says media researcher Daniela Quintero. 'The pleasure isn't in the plot twist; it's in the anticipation of it. You'll find people quoting the lines before the characters say them.'",
+        "Nostalgia plays a large part, too. Many of the most rewatched series hark back to the years in which their viewers were teenagers, a formative period when tastes in music, fashion and humour are established. Watching them again is a little like looking through an old photo album, only far more absorbing. Quintero's own mother, she admits, will watch the same telenovela from the nineties every December, as though it were a family tradition.",
+        "Music offers a revealing parallel. Listeners will often play the same album on repeat for weeks, and the songs they loved at sixteen tend to remain their favourites for life. Researchers have found that the older we get, the less likely we are to explore new genres, which suggests that rewatching is part of a much broader pattern rather than a strange quirk of television.",
+        "The streaming companies, naturally, have noticed. Rather than investing only in expensive blockbusters, several platforms are now competing for the rights to older series, which are cheap to acquire and remarkably effective at keeping subscribers. For the platforms, it is essential that a viewer stay subscribed from one month to the next, and nothing achieves this as reliably as the shows people already love. Critics argue that this strategy is a false economy for culture as a whole: the more money is spent on the past, the less is left for original, risky projects.",
+        "Not everyone sees the trend so pessimistically. Some writers point out that rewatching is nothing new. Long before streaming, families would gather to watch the same Christmas films year after year, and children have always demanded the same bedtime story night after night. What has changed is simply the scale. With an entire archive available at the touch of a button, our oldest habit has become our most visible one.",
+        "So is it a problem? Probably not, in moderation. A gripping new series can still strike a chord in a way no rerun can, and the shows we rewatch today were, after all, risky originals once. The real question may be whether the programmes being made now will stand the test of time well enough for someone, twenty years from now, to curl up on the sofa and watch them again."
+      ],
+      "glossary": [
+        [
+          "ritual",
+          "ritual, costumbre"
+        ],
+        [
+          "anticipation",
+          "expectativa"
+        ],
+        [
+          "absorbing",
+          "absorbente"
+        ],
+        [
+          "to acquire",
+          "adquirir"
+        ],
+        [
+          "at the touch of a button",
+          "con solo tocar un botón"
+        ],
+        [
+          "curl up",
+          "acurrucarse"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What was surprising about the survey results?",
+          "options": [
+            "The most-watched programmes were ones viewers had already seen.",
+            "People watched fewer series than before.",
+            "Most viewers preferred films to series.",
+            "Few people used streaming platforms."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “the programmes people watched most were ones they had already seen”."
+        },
+        {
+          "type": "tf",
+          "q": "According to Quintero, the pleasure of rewatching comes mainly from surprise.",
+          "answer": "F",
+          "explain_es": "Falso: “The pleasure isn’t in the plot twist; it’s in the anticipation of it.”"
+        },
+        {
+          "type": "mc",
+          "q": "Why are platforms buying the rights to older series?",
+          "options": [
+            "Critics recommend them.",
+            "New series are too difficult to produce.",
+            "They are cheap and keep subscribers.",
+            "They attract new advertisers."
+          ],
+          "answer": 2,
+          "explain_es": "Las series antiguas son “cheap to acquire and remarkably effective at keeping subscribers”."
+        },
+        {
+          "type": "tf",
+          "q": "Quintero's mother watches a telenovela from the nineties every December.",
+          "answer": "T",
+          "explain_es": "Verdadero: “Quintero’s own mother… will watch the same telenovela from the nineties every December”."
+        },
+        {
+          "type": "mc",
+          "q": "What do critics say about this strategy?",
+          "options": [
+            "It is illegal in some countries.",
+            "It leaves less money for original projects.",
+            "It makes subscriptions more expensive.",
+            "It is too risky for the platforms."
+          ],
+          "answer": 1,
+          "explain_es": "Los críticos dicen: “the more money is spent on the past, the less is left for original, risky projects”."
+        },
+        {
+          "type": "tf",
+          "q": "Quintero believes rewatching is harmful to children.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto menciona que los niños piden el mismo cuento, pero no da la opinión de Quintero sobre si es dañino."
+        }
+      ]
+    },
+    "listening": {
+      "title": "Sound and Vision: An Interview with Lina Arango",
+      "kind": "interview",
+      "speakers": [
+        {
+          "name": "Tom",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Lina",
+          "voice": "female",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "You're listening to Sound and Vision. My guest this evening is the singer-songwriter Lina Arango, whose third album has just gone straight to number one. Lina, congratulations. Did you expect it to do so well?"
+        },
+        {
+          "s": 1,
+          "text": "Not in the slightest. Frankly, my record label was nervous. The album is quieter and much more personal than anything I've done before, and there's no obvious single on it. So when the first three concerts sold out in under an hour, I was genuinely shocked."
+        },
+        {
+          "s": 0,
+          "text": "Your first album had a song that went viral, of course. Did you ever worry about becoming a one-hit wonder?"
+        },
+        {
+          "s": 1,
+          "text": "All the time. When a song goes viral, people feel as if they know you, but they only know thirty seconds of you. The more that song was played, the more pressure I felt to write another one exactly like it, which is the worst thing an artist can do."
+        },
+        {
+          "s": 0,
+          "text": "So what changed?"
+        },
+        {
+          "s": 1,
+          "text": "My grandmother, actually. She was a bolero singer in Cartagena in the sixties, and when I was a child she would sit me on the piano stool and make me listen to the same three records until I knew every breath. She told me that a song stands the test of time only if it's honest. Catchy is easy; honest is hard."
+        },
+        {
+          "s": 0,
+          "text": "Is that why you've released the new album on vinyl first, before it goes on streaming platforms?"
+        },
+        {
+          "s": 1,
+          "text": "Partly. I wanted people to listen to it from beginning to end, the way my grandmother did. But I'll be honest, there's a commercial side too. Vinyl sales have been climbing for years, and fans who buy a physical record tend to show real brand loyalty. They'll follow you for decades."
+        },
+        {
+          "s": 0,
+          "text": "Some critics say vinyl is just another luxury product for people with disposable income. Is that fair?"
+        },
+        {
+          "s": 1,
+          "text": "It's a fair point. Records are expensive, and I didn't want anyone to be shut out. That's why I insisted that the album be available for free on our website for a week before the release. My manager wasn't sold on the idea at first, but it worked."
+        },
+        {
+          "s": 0,
+          "text": "Let's talk about the lyrics. The song Paper Boats has really struck a chord with listeners. What's it about?"
+        },
+        {
+          "s": 1,
+          "text": "It's about my father, who left Colombia when I was eight. I wrote it in one night, which almost never happens to me. I sent it to him before anyone else heard it, and he called me in tears."
+        },
+        {
+          "s": 0,
+          "text": "And what's next? A world tour?"
+        },
+        {
+          "s": 1,
+          "text": "A small one. I'd rather play to two hundred people in a room where they can hear every word than to twenty thousand in a stadium. The bigger the venue, the harder it is to connect."
+        },
+        {
+          "s": 0,
+          "text": "Lina Arango, thank you. Her album, Salt and Ink, is out now."
+        },
+        {
+          "s": 1,
+          "text": "Thank you, Tom. It's been a real pleasure."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "How did Lina's record label feel about the new album before its release?",
+          "options": [
+            "Excited",
+            "Indifferent",
+            "Angry",
+            "Nervous"
+          ],
+          "answer": 3,
+          "explain_es": "Lina dice: “Frankly, my record label was nervous.”"
+        },
+        {
+          "type": "tf",
+          "q": "Lina's first three concerts sold out in less than an hour.",
+          "answer": "T",
+          "explain_es": "Verdadero: “the first three concerts sold out in under an hour”."
+        },
+        {
+          "type": "mc",
+          "q": "According to Lina's grandmother, what makes a song last?",
+          "options": [
+            "Being catchy",
+            "Being honest",
+            "Being short",
+            "Being played on the radio"
+          ],
+          "answer": 1,
+          "explain_es": "Su abuela le dijo que “a song stands the test of time only if it’s honest. Catchy is easy; honest is hard.”"
+        },
+        {
+          "type": "tf",
+          "q": "Lina's manager supported the free online release from the beginning.",
+          "answer": "F",
+          "explain_es": "Falso: “My manager wasn’t sold on the idea at first, but it worked.”"
+        },
+        {
+          "type": "gap",
+          "q": "Lina's father left Colombia when she was ___.",
+          "answer": "eight",
+          "accept": [
+            "8",
+            "eight years old",
+            "8 years old"
+          ],
+          "explain_es": "Lina dice: “my father, who left Colombia when I was eight”."
+        },
+        {
+          "type": "mc",
+          "q": "Why does Lina prefer small venues?",
+          "options": [
+            "They are cheaper to rent.",
+            "Her manager insists on it.",
+            "She suffers from stage fright.",
+            "It is easier to connect with the audience."
+          ],
+          "answer": 3,
+          "explain_es": "Lina explica: “The bigger the venue, the harder it is to connect.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a review for a culture website of a film or series that you believe is either overrated or underrated. Briefly describe it without spoiling the plot, evaluate the story, acting and music, compare it with others in its genre and say who would enjoy it. Write 250–320 words.",
+      "prompt_es": "Escribe una reseña de una película o serie que consideres sobrevalorada o infravalorada.",
+      "genre_es": "Reseña",
+      "minWords": 250,
+      "maxWords": 320,
+      "criteria": [
+        "Use sentence adverbs (Frankly, Admittedly, Surprisingly…) to signal your attitude.",
+        "Include so…that or such…that, and a double comparative (The further…, the more…).",
+        "Use at least one 'as if / as though' comparison and a relative clause with an omitted object pronoun.",
+        "Use at least five words from Units 5–8 (gripping, plot twist, overrated, critically acclaimed, strike a chord, hark back to…).",
+        "End with a clear recommendation for a specific type of viewer."
+      ],
+      "model": "Underrated: The Last Harbour Deserves Better\n\nWhen the eight-part series The Last Harbour was released last spring, critics were divided. Some called it the most gripping drama of the decade; others dismissed it as slow and pretentious. Having watched it twice, I am convinced that it is one of the most underrated series of recent years.\n\nThe story follows Inés, a retired fisherwoman who returns to her village on the Pacific coast after thirty years away. What begins as a quiet family drama gradually becomes a mystery, as she uncovers secrets her brothers have kept since their father's death. Admittedly, the first two episodes are slow. However, the further you go, the more rewarding it becomes, and the plot twist at the end of episode five is so carefully prepared that it feels inevitable rather than cheap.\n\nThe acting is outstanding. Carmen Villa plays Inés as though she had lived in that village all her life, and the supporting cast never puts a foot wrong. Equally impressive is the soundtrack, which harks back to the traditional currulao music of the region without ever feeling like a museum piece.\n\nSurprisingly, the series has received little attention outside Colombia, perhaps because it refuses to follow the rules of the typical blockbuster. There are no car chases and no easy villains, only people the viewer slowly comes to care about. Frankly, it was such a refreshing change from formula television that I found myself recommending it to everyone I met.\n\nIf you are looking for something to binge-watch in a single weekend, this is not for you. But if you are prepared to be patient and let a story grow on you, The Last Harbour will strike a chord long after the final episode."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about a song, album or artist that has been important to you at different stages of your life. What would you listen to as a teenager, and how have your tastes changed?",
+          "text_es": "Habla de la música que te ha marcado en distintas etapas de tu vida y de cómo ha cambiado tu gusto.",
+          "seconds": 90,
+          "tips": [
+            "Use would for past habits and will for present ones.",
+            "Use a double comparative: The older I get, the more…"
+          ]
+        },
+        {
+          "text": "Describe a film or series you found gripping. Without giving away the plot, explain what made it so compelling and how it compares with others in the same genre.",
+          "text_es": "Describe una película o serie que te atrapó, sin revelar la trama, y compárala con otras del género.",
+          "seconds": 90,
+          "tips": [
+            "Use so…that and such…that.",
+            "Use sentence adverbs: Admittedly, Surprisingly, Frankly."
+          ]
+        },
+        {
+          "text": "Role-play: you are a consumer-rights campaigner speaking at a public meeting. Argue that advertising aimed at children should be strictly regulated, and propose two specific measures.",
+          "text_es": "Juego de roles: como defensor del consumidor, argumenta a favor de regular la publicidad dirigida a niños.",
+          "seconds": 120,
+          "tips": [
+            "Use the subjunctive: We recommend that every advert be…, It is essential that…",
+            "Use target audience, consumerism and impulse buy."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c1-m3",
+    "level": "C1",
+    "kind": "midterm",
+    "n": 3,
+    "units": [
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial 3 · Unidades 9–12",
+    "intro_es": "Evalúa “whenever / wherever” frente a “when / where”, las cláusulas nominales con “whoever / whatever”, la voz pasiva (incluido “have something done”), la concordancia con cuantificadores, los adjetivos compuestos y sus superlativos, la inversión en condicionales y las cláusulas de condición, con el vocabulario de naturaleza, lenguaje, personas excepcionales y negocios. Incluye las cuatro habilidades.",
+    "minutes": 60,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "You can camp ___ you like in the reserve, as long as you don't light fires.",
+        "options": [
+          "wherever",
+          "where",
+          "whenever",
+          "when"
+        ],
+        "answer": 0,
+        "explain_es": "“Wherever” significa “en cualquier lugar”: el sitio exacto no importa."
+      },
+      {
+        "type": "mc",
+        "q": "___ is responsible for this damage will have to pay for the repairs.",
+        "options": [
+          "Whatever",
+          "Who",
+          "Whoever",
+          "Whichever"
+        ],
+        "answer": 2,
+        "explain_es": "“Whoever” (= la persona que sea) introduce una cláusula nominal que funciona como sujeto y se refiere a personas."
+      },
+      {
+        "type": "mc",
+        "q": "I'm ___ my hair ___ tomorrow, so I'll look a bit different at the meeting.",
+        "options": [
+          "cutting / done",
+          "having / to cut",
+          "having / cut",
+          "getting / cutting"
+        ],
+        "answer": 2,
+        "explain_es": "“Have something done” (have + objeto + participio) indica que otra persona realiza el servicio para ti."
+      },
+      {
+        "type": "mc",
+        "q": "A number of species ___ already disappeared from the region.",
+        "options": [
+          "have",
+          "has",
+          "is",
+          "was"
+        ],
+        "answer": 0,
+        "explain_es": "“A number of” + sustantivo plural lleva el verbo en plural: “A number of species have…”."
+      },
+      {
+        "type": "mc",
+        "q": "Each of the volunteers ___ given a certificate at the end of the course.",
+        "options": [
+          "were",
+          "have been",
+          "are being",
+          "was"
+        ],
+        "answer": 3,
+        "explain_es": "“Each of” lleva siempre el verbo en singular."
+      },
+      {
+        "type": "mc",
+        "q": "Footballers are among ___ athletes in the world.",
+        "options": [
+          "the most high-paid",
+          "the highest-paid",
+          "the high-paidest",
+          "the higher-paid"
+        ],
+        "answer": 1,
+        "explain_es": "En los adjetivos compuestos el superlativo se forma en el primer elemento: “high-paid” → “the highest-paid”."
+      },
+      {
+        "type": "gap",
+        "q": "The course lasted ten weeks: it was a ___ course.",
+        "answer": "ten-week",
+        "accept": [
+          "10-week"
+        ],
+        "explain_es": "En un adjetivo compuesto con número, el sustantivo va en singular y con guion: “a ten-week course” (no “ten-weeks”)."
+      },
+      {
+        "type": "transform",
+        "q": "If I had known about the problem, I would have acted sooner. → Had …",
+        "answer": "Had I known about the problem, I would have acted sooner.",
+        "accept": [
+          "Had I known about the problem, I'd have acted sooner."
+        ],
+        "explain_es": "En registro formal se puede eliminar “if” e invertir sujeto y “had”: “Had I known…”."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “Take an umbrella in case it will rain.”",
+        "answer": "Take an umbrella in case it rains.",
+        "explain_es": "Después de “in case” se usa el presente para hablar del futuro, nunca “will”."
+      },
+      {
+        "type": "order",
+        "q": "the delivery / Should / be / late / let / know / us",
+        "answer": "Should the delivery be late, let us know.",
+        "accept": [
+          "Let us know should the delivery be late."
+        ],
+        "explain_es": "Condicional con inversión: “Should + sujeto + verbo base” equivale a “If the delivery is late”."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "The Amazon has an extraordinary ___: thousands of species can live in a single hectare.",
+        "options": [
+          "biodiversity",
+          "habitat",
+          "conservation",
+          "resilience"
+        ],
+        "answer": 0,
+        "explain_es": "“Biodiversity” es la variedad de seres vivos de una zona."
+      },
+      {
+        "type": "mc",
+        "q": "Farmland is steadily ___ the forest where the jaguars live.",
+        "options": [
+          "offsetting",
+          "poaching",
+          "encroaching on",
+          "conserving"
+        ],
+        "answer": 2,
+        "explain_es": "“To encroach on” es invadir poco a poco un territorio."
+      },
+      {
+        "type": "mc",
+        "q": "This frog is ___ extinction; only a few hundred remain in the wild.",
+        "options": [
+          "endangered by",
+          "on the brink of",
+          "encroached on",
+          "offset by"
+        ],
+        "answer": 1,
+        "explain_es": "“To be on the brink of” es estar al borde de un cambio grave, normalmente negativo."
+      },
+      {
+        "type": "mc",
+        "q": "After a year in Ireland, she ___ a strong accent without taking any classes.",
+        "options": [
+          "got across",
+          "got her tongue around",
+          "was lost in",
+          "picked up"
+        ],
+        "answer": 3,
+        "explain_es": "“To pick up” (un idioma o acento) es aprenderlo de manera informal, sin clases."
+      },
+      {
+        "type": "mc",
+        "q": "Spanish is her ___, but she writes her novels in English.",
+        "options": [
+          "dialect",
+          "mother tongue",
+          "slang",
+          "loan word"
+        ],
+        "answer": 1,
+        "explain_es": "La “mother tongue” es la lengua materna, la primera que aprendiste."
+      },
+      {
+        "type": "mc",
+        "q": "She was the first woman in her country to fly a commercial plane; she truly ___ for others to follow.",
+        "options": [
+          "looked up to",
+          "overcame",
+          "was self-taught",
+          "blazed a trail"
+        ],
+        "answer": 3,
+        "explain_es": "“To blaze a trail” es abrir camino, ser el primero en hacer algo que otros siguen después."
+      },
+      {
+        "type": "mc",
+        "q": "After two years of losses, the company finally ___: its income and its costs were exactly the same.",
+        "options": [
+          "broke even",
+          "scaled back",
+          "closed a deal",
+          "thought outside the box"
+        ],
+        "answer": 0,
+        "explain_es": "“To break even” es ganar justo lo necesario para cubrir los costos, sin pérdidas ni ganancias."
+      },
+      {
+        "type": "gap",
+        "q": "The joke was lost in ___; nobody in the German audience laughed.",
+        "answer": "translation",
+        "explain_es": "“To be lost in translation” es perder el sentido al pasar de un idioma a otro."
+      },
+      {
+        "type": "gap",
+        "q": "___ all odds, the team from the small village won the national championship.",
+        "answer": "Against",
+        "explain_es": "“Against all odds” significa “contra todo pronóstico”."
+      },
+      {
+        "type": "gap",
+        "q": "Before buying the company, the investors carried out careful due ___.",
+        "answer": "diligence",
+        "explain_es": "“Due diligence” es la revisión cuidadosa que se hace antes de cerrar un negocio."
+      }
+    ],
+    "reading": {
+      "title": "Against All Odds: The Birdwatcher Who Built a Business",
+      "genre": "article",
+      "paragraphs": [
+        "Twenty years ago, Rosa Mosquera could name every bird in the forest around her village in the Chocó, yet she had never owned a single book about them. Self-taught and fiercely determined, she learned by listening. Whenever a new call echoed through the trees, she would follow it for hours until she found its source. Today she runs one of the best-known eco-tourism startups on Colombia's Pacific coast, and her story is told in schools across the region.",
+        "Her village sits on the edge of one of the most biodiverse ecosystems on the planet. Hundreds of species of birds have been recorded there, and several of them are found nowhere else on earth. For decades, however, the forest was under pressure. Illegal logging was common, some animals were poached for the pet trade, and farms gradually encroached on land that had once been home to rare hummingbirds.",
+        "Rosa's idea was simple: if the forest could earn money while it was still standing, fewer people would want to cut it down. In 2016, with a loan of just two thousand dollars, she trained six young people from the village as guides. Getting the business off the ground was much harder than she had imagined. None of the guides spoke English, much of the equipment had to be borrowed, and for the first three years the company was in the red. 'Had I known how difficult it would be,' she laughs, 'I might never have started.'",
+        "The turning point came when a group of foreign scientists arrived to study a little-known species of tanager. Rosa guided them for a month, and the article they later published described her as the most knowledgeable field guide they had ever worked with. Within a year, bookings had tripled. Each of the guides now speaks at least basic English, and a number of them are studying biology at university with scholarships funded by the company's revenue.",
+        "Rosa insists that the business is about more than birds. The guides are taught to explain the local names for each species, many of which come from the region's Afro-Colombian and indigenous languages. 'When a visitor learns that one bird has three names, they understand that the forest belongs to a culture, not just to nature,' she says. Whoever joins a tour must also spend an afternoon helping with a reforestation project, which offsets part of the carbon from their flight.",
+        "Not everything has gone smoothly. Last year the company had to scale back its operations after floods damaged the main trail, and some neighbours still question whether tourism will change the village for the worse. Rosa admits that growth must be careful and slow. 'As long as the community makes the decisions, we'll be fine,' she says. 'The day outsiders start deciding for us is the day we stop.'"
+      ],
+      "glossary": [
+        [
+          "fiercely determined",
+          "sumamente decidida"
+        ],
+        [
+          "logging",
+          "tala de árboles"
+        ],
+        [
+          "poached",
+          "cazados ilegalmente"
+        ],
+        [
+          "in the red",
+          "en números rojos"
+        ],
+        [
+          "tanager",
+          "tangara (un ave)"
+        ],
+        [
+          "scale back",
+          "reducir"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "How did Rosa first learn about birds?",
+          "options": [
+            "By reading books about them",
+            "By studying biology at university",
+            "By listening to and following their calls",
+            "From foreign scientists"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: “she learned by listening. Whenever a new call echoed through the trees, she would follow it for hours”."
+        },
+        {
+          "type": "tf",
+          "q": "The company made a profit in its first three years.",
+          "answer": "F",
+          "explain_es": "Falso: “for the first three years the company was in the red”."
+        },
+        {
+          "type": "mc",
+          "q": "What was the turning point for the business?",
+          "options": [
+            "A government grant",
+            "A television documentary",
+            "An article published by a group of scientists",
+            "A new road to the village"
+          ],
+          "answer": 2,
+          "explain_es": "Los científicos publicaron un artículo que la describía como la guía más experta, y “Within a year, bookings had tripled.”"
+        },
+        {
+          "type": "tf",
+          "q": "All of the guides now speak at least basic English.",
+          "answer": "T",
+          "explain_es": "Verdadero: “Each of the guides now speaks at least basic English”."
+        },
+        {
+          "type": "mc",
+          "q": "What must everyone who joins a tour do?",
+          "options": [
+            "Help with a reforestation project",
+            "Learn three names for each bird",
+            "Pay for a scholarship",
+            "Stay in the village for a month"
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “Whoever joins a tour must also spend an afternoon helping with a reforestation project”."
+        },
+        {
+          "type": "tf",
+          "q": "The floods destroyed the company's office.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto solo menciona que las inundaciones “damaged the main trail”; no habla de ninguna oficina."
+        }
+      ]
+    },
+    "listening": {
+      "title": "The Pitch: Habla Viva",
+      "kind": "business meeting",
+      "speakers": [
+        {
+          "name": "Graham",
+          "voice": "male",
+          "accent": "au"
+        },
+        {
+          "name": "Isabel",
+          "voice": "female",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Thanks for coming in, Isabel. I've read your proposal, but I'd like to hear it in your own words. What exactly does your startup do?"
+        },
+        {
+          "s": 1,
+          "text": "Of course. Habla Viva is an app that helps people learn Colombia's indigenous and creole languages. Over sixty languages are spoken in the country, and many of them are on the brink of disappearing. Most apps focus on English or French, and nobody is paying attention to Wayuunaiki or Palenquero."
+        },
+        {
+          "s": 0,
+          "text": "It's a noble cause, but investors need more than a cause. Who is your target market?"
+        },
+        {
+          "s": 1,
+          "text": "Two groups. First, young people from those communities who grew up in cities and never picked up their grandparents' language. Second, schools. A number of regional education departments have already expressed interest in using it in their classrooms."
+        },
+        {
+          "s": 0,
+          "text": "And where does the content come from? I'd be worried about accuracy."
+        },
+        {
+          "s": 1,
+          "text": "That's our strongest point. Every lesson is recorded by native speakers and checked by a committee from each community. Nothing is published until they approve it. We pay them for their time, so the money goes back to the people whose language it is."
+        },
+        {
+          "s": 0,
+          "text": "What about revenue? At the moment you're in the red, aren't you?"
+        },
+        {
+          "s": 1,
+          "text": "We are, yes, but only slightly. The basic app is free for whoever downloads it. Schools pay an annual licence, and we expect to break even within eighteen months, provided we sign at least forty schools."
+        },
+        {
+          "s": 0,
+          "text": "Forty is ambitious. How many have you signed so far?"
+        },
+        {
+          "s": 1,
+          "text": "Twelve. Had we had a proper sales team, it would be more. That's precisely why we're here."
+        },
+        {
+          "s": 0,
+          "text": "I'll be honest. Our fund usually looks for products that can scale internationally. Is there any chance of that?"
+        },
+        {
+          "s": 1,
+          "text": "I think so. The technology we've built works for any minority language. Should the Colombian model succeed, we could adapt it for Peru, Mexico or even New Zealand within two years."
+        },
+        {
+          "s": 0,
+          "text": "That's more interesting. What would you do with our money, specifically?"
+        },
+        {
+          "s": 1,
+          "text": "Three things. Hire two salespeople, record another eight languages, and improve the speech recognition feature, which at the moment struggles with tonal sounds."
+        },
+        {
+          "s": 0,
+          "text": "All right. I'd like our team to carry out due diligence before we make any commitment. Can you send us your accounts by Friday?"
+        },
+        {
+          "s": 1,
+          "text": "Absolutely. I'll have them sent over this afternoon."
+        },
+        {
+          "s": 0,
+          "text": "Good. Whatever happens, Isabel, it's a remarkable project. I'll be in touch next week."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What makes Habla Viva different from most language apps?",
+          "options": [
+            "It is completely free for everyone.",
+            "It uses artificial intelligence teachers.",
+            "It is only available to schools.",
+            "It teaches indigenous and creole languages."
+          ],
+          "answer": 3,
+          "explain_es": "Isabel dice que la app enseña “Colombia’s indigenous and creole languages”, mientras que “Most apps focus on English or French”."
+        },
+        {
+          "type": "tf",
+          "q": "Lessons are published before the communities check them.",
+          "answer": "F",
+          "explain_es": "Falso: “Nothing is published until they approve it.”"
+        },
+        {
+          "type": "mc",
+          "q": "When does Isabel expect the company to break even?",
+          "options": [
+            "Within six months",
+            "Within eighteen months",
+            "Within a year",
+            "Within two years"
+          ],
+          "answer": 1,
+          "explain_es": "Isabel dice: “we expect to break even within eighteen months, provided we sign at least forty schools”."
+        },
+        {
+          "type": "gap",
+          "q": "So far, Isabel has signed ___ schools.",
+          "answer": "twelve",
+          "accept": [
+            "12"
+          ],
+          "explain_es": "A la pregunta “How many have you signed so far?” Isabel responde: “Twelve.”"
+        },
+        {
+          "type": "tf",
+          "q": "Graham's fund usually invests in products that can grow internationally.",
+          "answer": "T",
+          "explain_es": "Verdadero: “Our fund usually looks for products that can scale internationally.”"
+        },
+        {
+          "type": "mc",
+          "q": "What does Graham ask Isabel to send by Friday?",
+          "options": [
+            "Her accounts",
+            "A list of schools",
+            "A demo of the app",
+            "Recordings of the lessons"
+          ],
+          "answer": 0,
+          "explain_es": "Graham pregunta: “Can you send us your accounts by Friday?”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Your local council has invited residents to propose projects for the coming year. Write a proposal suggesting a project to protect a natural area or an endangered language in your region. Describe the current situation, the measures you propose, how they would be funded and the expected benefits. Write 250–320 words.",
+      "prompt_es": "Escribe una propuesta formal al concejo municipal para proteger un área natural o una lengua en peligro.",
+      "genre_es": "Propuesta formal",
+      "minWords": 250,
+      "maxWords": 320,
+      "criteria": [
+        "Use a range of passive forms, including at least one passive with a modal or 'have something done'.",
+        "Include at least one inverted conditional (Should…, Were…, Had…) and two adverb clauses of condition (as long as, provided, unless, in case).",
+        "Use compound adjectives (long-term, three-year, cost-effective…) and correct subject-verb agreement after quantifiers.",
+        "Use at least five words from Units 9–12 (biodiversity, habitat, conservation, to offset, revenue, to get off the ground…).",
+        "Organise the proposal with clear headings and finish with a recommendation."
+      ],
+      "model": "Proposal: Protecting the Wetlands of La Ciénaga\n\nIntroduction\nThe aim of this proposal is to suggest a three-year project to protect the wetlands on the northern edge of our town, which are home to remarkable biodiversity, including several endangered bird species.\n\nThe current situation\nOver the last decade, a number of new housing developments have encroached on the wetlands, and much of the natural habitat has already been lost. None of the existing protection measures is enforced effectively. Unless action is taken soon, the ecosystem could be on the brink of collapse within a generation.\n\nProposed measures\nFirst, I recommend that a protected nature reserve be created, with clear boundaries and a small visitor centre. The centre could be run by local young people, who would be trained as guides. Second, the main paths should be repaired and signposted, so that visitors stay on them and do not disturb nesting areas. Finally, a long-term monitoring programme should be set up in partnership with the regional university.\n\nFunding\nThe project would initially require public money, but it could become largely self-funding. Entrance fees and guided tours would generate revenue, provided the reserve is promoted effectively. Local businesses could also sponsor tree-planting days to offset their carbon emissions.\n\nBenefits\nAs long as the community is involved from the start, the reserve would create jobs, attract eco-tourism and give our schools an outstanding outdoor classroom. Should the project succeed, it could serve as a model for other towns in the region.\n\nRecommendation\nWere the council to approve this proposal, the first phase could get off the ground next spring. I strongly believe that this is one of the most cost-effective investments the town could make in its future."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about a person you look up to. What qualities make them exceptional, and what obstacles have they had to overcome?",
+          "text_es": "Habla de una persona a la que admiras: sus cualidades y los obstáculos que ha superado.",
+          "seconds": 90,
+          "tips": [
+            "Use compound adjectives: hard-working, open-minded, the best-known…",
+            "Use look up to, resilient, against all odds and leave a legacy."
+          ]
+        },
+        {
+          "text": "Describe a natural place in your country that you think should be better protected. What lives there, what threatens it, and what could be done?",
+          "text_es": "Describe un lugar natural de tu país que debería protegerse mejor y qué se podría hacer.",
+          "seconds": 90,
+          "tips": [
+            "Use passives: is threatened by, should be protected, has been damaged.",
+            "Use habitat, endangered, encroach on and conservation."
+          ]
+        },
+        {
+          "text": "Role-play: you are pitching a new business idea to an investor. Explain the idea, how it would make money and what would happen should things go wrong. Answer one possible objection.",
+          "text_es": "Juego de roles: presenta una idea de negocio a un inversionista y responde a una objeción.",
+          "seconds": 120,
+          "tips": [
+            "Use inversion: Should sales fall…, Were we to expand…",
+            "Use break even, revenue, get off the ground and scale back."
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "c1-final",
+    "level": "C1",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "title": "Parcial final · Nivel C1",
+    "intro_es": "Examen integrador de las 12 unidades del nivel C1: patrones verbales, oraciones hendidas, artículos, estilo indirecto y pasiva de reporte, adverbios de oración, relativos, subjuntivo, cláusulas con -ever, voz pasiva y concordancia, adjetivos compuestos e inversión condicional, con el vocabulario de todo el nivel. Evalúa gramática, vocabulario, lectura, escucha, escritura y expresión oral.",
+    "minutes": 90,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "We stopped ___ coffee on the way, which is why we were late.",
+        "options": [
+          "buying",
+          "buy",
+          "to buy",
+          "bought"
+        ],
+        "answer": 2,
+        "explain_es": "“Stop + to” expresa propósito (paramos para comprar); “stop + -ing” significaría dejar de hacerlo."
+      },
+      {
+        "type": "mc",
+        "q": "I saw him ___ out of the building in a hurry, so I didn't stop to say hello.",
+        "options": [
+          "to rush",
+          "rushing",
+          "rushed",
+          "to have rushed"
+        ],
+        "answer": 1,
+        "explain_es": "Con verbos de percepción se usa objeto + -ing para una acción en progreso (“saw him rushing”); también sería posible el infinitivo sin “to” (“saw him rush”)."
+      },
+      {
+        "type": "mc",
+        "q": "___ unemployment is a serious problem in ___ region where I grew up.",
+        "options": [
+          "The / a",
+          "An / the",
+          "(no article) / a",
+          "(no article) / the"
+        ],
+        "answer": 3,
+        "explain_es": "“Unemployment” en sentido general no lleva artículo; “the region” es específica porque la define la cláusula “where I grew up”."
+      },
+      {
+        "type": "mc",
+        "q": "The minister ___ to have left the country after the scandal.",
+        "options": [
+          "reports",
+          "is reported",
+          "has reported",
+          "is reporting"
+        ],
+        "answer": 1,
+        "explain_es": "Pasiva impersonal de reporte: sujeto + “is reported” + infinitivo perfecto (to have left)."
+      },
+      {
+        "type": "mc",
+        "q": "It was ___ that the audience gave it a standing ovation.",
+        "options": [
+          "so a moving performance",
+          "such moving performance",
+          "so moving performance",
+          "such a moving performance"
+        ],
+        "answer": 3,
+        "explain_es": "“Such a” + adjetivo + sustantivo contable singular: “such a moving performance that…”."
+      },
+      {
+        "type": "mc",
+        "q": "When I was little, my father ___ sing to us in the car every Sunday.",
+        "options": [
+          "would",
+          "will",
+          "was used to",
+          "is used to"
+        ],
+        "answer": 0,
+        "explain_es": "“Would” describe acciones repetidas en el pasado, a menudo con tono nostálgico."
+      },
+      {
+        "type": "mc",
+        "q": "This is the book ___ I told you about last week.",
+        "options": [
+          "what",
+          "who",
+          "(no pronoun needed)",
+          "whose"
+        ],
+        "answer": 2,
+        "explain_es": "El pronombre es el objeto de la cláusula (I told you about the book), así que puede omitirse; “that” o “which” también serían correctos."
+      },
+      {
+        "type": "mc",
+        "q": "The committee insisted that the results ___ published before the review.",
+        "options": [
+          "weren't be",
+          "don't be",
+          "not be",
+          "not are"
+        ],
+        "answer": 2,
+        "explain_es": "En el subjuntivo la negación es “not” + forma base, sin auxiliar: “that the results not be published”."
+      },
+      {
+        "type": "mc",
+        "q": "___ we to lower our prices, our competitors would do the same immediately.",
+        "options": [
+          "Were",
+          "Had",
+          "Should",
+          "If"
+        ],
+        "answer": 0,
+        "explain_es": "Inversión formal con “were”: “Were we to lower…” equivale a “If we lowered…”."
+      },
+      {
+        "type": "gap",
+        "q": "Call me ___ you need help; it doesn't matter what time it is.",
+        "answer": "whenever",
+        "explain_es": "“Whenever” significa “en cualquier momento”: la hora exacta no importa."
+      },
+      {
+        "type": "gap",
+        "q": "He is one of the ___ (well / dress) men in the city.",
+        "answer": "best-dressed",
+        "accept": [
+          "best dressed"
+        ],
+        "explain_es": "El superlativo de un adjetivo compuesto se forma en el primer elemento: “well-dressed” → “best-dressed”."
+      },
+      {
+        "type": "transform",
+        "q": "Someone is repairing my laptop at the moment. → I am having …",
+        "answer": "I am having my laptop repaired at the moment.",
+        "accept": [
+          "I'm having my laptop repaired at the moment.",
+          "I am having my laptop repaired.",
+          "I'm having my laptop repaired."
+        ],
+        "explain_es": "“Have something done” en presente continuo: “I am having my laptop repaired”, porque otra persona hace el trabajo."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: “A number of customers has complained about the new prices.”",
+        "answer": "A number of customers have complained about the new prices.",
+        "explain_es": "“A number of” + sustantivo plural lleva verbo en plural (have), a diferencia de “the number of”, que lleva singular."
+      },
+      {
+        "type": "order",
+        "q": "as though / He / behaved / nothing / had / happened",
+        "answer": "He behaved as though nothing had happened.",
+        "explain_es": "“As though” introduce una situación imaginada o irreal; por eso va seguido del pasado perfecto (had happened)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "After years of not speaking to each other, the two sisters finally decided to ___.",
+        "options": [
+          "beg to differ",
+          "strike up",
+          "fall out",
+          "bury the hatchet"
+        ],
+        "answer": 3,
+        "explain_es": "“To bury the hatchet” es hacer las paces después de una larga pelea."
+      },
+      {
+        "type": "mc",
+        "q": "She arrived at the gala ___, in a sequinned gown and diamonds.",
+        "options": [
+          "dressed down",
+          "dressed to the nines",
+          "in hand-me-downs",
+          "understated"
+        ],
+        "answer": 1,
+        "explain_es": "“To be dressed to the nines” es ir vestido de forma muy elegante."
+      },
+      {
+        "type": "mc",
+        "q": "Cheap solar panels have been a real ___ for rural communities without electricity.",
+        "options": [
+          "game-changer",
+          "drawback",
+          "hoax",
+          "omen"
+        ],
+        "answer": 0,
+        "explain_es": "Un “game-changer” es algo que cambia por completo una situación."
+      },
+      {
+        "type": "mc",
+        "q": "Many people believe that a black cat crossing your path is a bad ___.",
+        "options": [
+          "hoax",
+          "superstition",
+          "omen",
+          "credence"
+        ],
+        "answer": 2,
+        "explain_es": "Un “omen” es un presagio, una señal de que algo bueno o malo va a pasar."
+      },
+      {
+        "type": "mc",
+        "q": "The series is ___: some episodes are brilliant, while others are terrible.",
+        "options": [
+          "critically acclaimed",
+          "hit and miss",
+          "gripping",
+          "a blockbuster"
+        ],
+        "answer": 1,
+        "explain_es": "“To be hit and miss” es ser irregular en calidad."
+      },
+      {
+        "type": "mc",
+        "q": "Her latest album sounds ___; it's basically a copy of what was popular ten years ago.",
+        "options": [
+          "catchy",
+          "tone-deaf",
+          "viral",
+          "derivative"
+        ],
+        "answer": 3,
+        "explain_es": "“Derivative” describe algo que copia un estilo existente sin originalidad."
+      },
+      {
+        "type": "mc",
+        "q": "For many teenagers, getting a driving licence is a ___.",
+        "options": [
+          "generation gap",
+          "rite of passage",
+          "nostalgia",
+          "hindsight"
+        ],
+        "answer": 1,
+        "explain_es": "Un “rite of passage” es un rito de paso, un evento que marca una etapa importante de la vida."
+      },
+      {
+        "type": "mc",
+        "q": "The advert was designed to appeal to its ___ of people aged 18 to 25.",
+        "options": [
+          "brand loyalty",
+          "disposable income",
+          "bargain",
+          "target audience"
+        ],
+        "answer": 3,
+        "explain_es": "El “target audience” es el público objetivo al que va dirigido un producto."
+      },
+      {
+        "type": "mc",
+        "q": "Her ___ research on vaccines changed medicine forever.",
+        "options": [
+          "groundbreaking",
+          "self-taught",
+          "resilient",
+          "determined"
+        ],
+        "answer": 0,
+        "explain_es": "“Groundbreaking” describe algo innovador, nuevo y muy importante."
+      },
+      {
+        "type": "mc",
+        "q": "We need someone who can ___; the usual solutions just aren't working.",
+        "options": [
+          "break even",
+          "close a deal",
+          "think outside the box",
+          "scale back"
+        ],
+        "answer": 2,
+        "explain_es": "“To think outside the box” es pensar de forma creativa y original."
+      },
+      {
+        "type": "gap",
+        "q": "The forest showed remarkable ___ and recovered within ten years of the fire. (ability to recover)",
+        "answer": "resilience",
+        "explain_es": "“Resilience” es la capacidad de un sistema o persona para recuperarse."
+      },
+      {
+        "type": "gap",
+        "q": "It took me weeks to get my tongue ___ the Welsh place names.",
+        "answer": "around",
+        "accept": [
+          "round"
+        ],
+        "explain_es": "“To get your tongue around” es lograr pronunciar algo difícil."
+      },
+      {
+        "type": "gap",
+        "q": "After months of negotiations, the startup finally closed a ___ with a major supermarket chain.",
+        "answer": "deal",
+        "explain_es": "“To close a deal” es cerrar con éxito un acuerdo comercial."
+      },
+      {
+        "type": "gap",
+        "q": "Please don't take everything he says at face ___; he loves to exaggerate.",
+        "answer": "value",
+        "explain_es": "“To take something at face value” es aceptar algo tal como parece, sin cuestionarlo."
+      }
+    ],
+    "reading": {
+      "title": "Threads of Change",
+      "genre": "article",
+      "paragraphs": [
+        "When Julián Arboleda and Camila Reyes met at a university debate in Barranquilla in 2015, they could hardly have disagreed more. He argued that fashion was a harmless pleasure; she insisted that it was one of the most polluting industries on earth. 'I remember thinking she was arrogant,' Julián admits. 'She probably thought I was shallow.' Yet the conversation continued long after the debate had ended, and within a year the two had founded Hilo, a company that turns plastic waste collected from Caribbean beaches into fabric.",
+        "What makes Hilo unusual is not the technology itself, which had already been developed elsewhere, but the way the company has adapted it. Rather than shipping the plastic to factories abroad, Hilo processes it in a converted warehouse near the port, employing more than eighty people from neighbourhoods where unemployment is high. Each of the workers is offered free English and design classes, and a number of former beach collectors now work as supervisors.",
+        "The company's commitment goes beyond the factory floor. For every kilo of plastic it buys, Hilo pays collectors a fair price, and it funds the conservation of a stretch of mangroves near Ciénaga, a habitat on which many local fishing families depend. 'Whatever we take from the sea, we try to give something back,' says Camila. The mangroves, which had been on the brink of disappearing, are now slowly recovering.",
+        "The early years were anything but glamorous. The first collection, launched in 2017, was a commercial disaster. The jackets were stiff, and the colours, Camila now concedes, looked as though they had been chosen in the dark. With the company deep in the red, the founders fell out so badly over its future that they stopped speaking for almost three months. 'Had we not had a mutual friend who forced us into the same room, Hilo wouldn't exist,' says Julián. They buried the hatchet over a long lunch and agreed on a radical change of direction: fewer products, timeless designs and complete transparency about how each garment was made.",
+        "The strategy worked, though not immediately. Hilo's understated shirts and trousers began to attract a loyal following among young professionals who wanted to dress well without feeding the consumerism they criticised. The real breakthrough came in 2021, when a documentary about ocean plastic, which went on to become one of the most-watched films on a major streaming platform, featured the warehouse in its final scene. Almost overnight, orders multiplied by ten. 'The more people understood the process, the more they wanted to be part of it,' Camila explains.",
+        "Not everyone is sold on the idea. Some environmental researchers argue that recycled polyester still releases tiny fibres when it is washed, and that the only truly sustainable garment is the one you already own. Critics have also pointed out that Hilo's prices are well above what most Colombians can afford, which, they say, turns sustainability into a luxury for people with disposable income. Julián does not dismiss these concerns. 'It is essential that we be honest about our limitations,' he says. 'Whoever tells you a product is perfectly green is selling you something.'",
+        "Superstition, surprisingly, plays a part in the company's culture. Every new collection is launched on the same date, 14 March, the anniversary of the original debate, and the founders refuse to change it, even when it falls on a weekend. 'It's not that we believe it brings luck,' Camila laughs. 'Well, not entirely.'",
+        "Today Hilo is in the black and expanding into Peru and Mexico. Asked what advice he would give to young entrepreneurs, Julián pauses for a long time. 'Find someone who disagrees with you,' he says eventually. 'Agreeing is comfortable. Disagreeing well is how anything new gets made.'"
+      ],
+      "glossary": [
+        [
+          "shallow",
+          "superficial"
+        ],
+        [
+          "converted warehouse",
+          "bodega reacondicionada"
+        ],
+        [
+          "concedes",
+          "admite"
+        ],
+        [
+          "garment",
+          "prenda de vestir"
+        ],
+        [
+          "fibres",
+          "fibras"
+        ],
+        [
+          "in the black",
+          "con ganancias"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What did Julián and Camila disagree about when they first met?",
+          "options": [
+            "Whether to start a company together",
+            "Which university was better",
+            "Whether fashion harms the environment",
+            "How to recycle plastic"
+          ],
+          "answer": 2,
+          "explain_es": "Él decía que la moda era “a harmless pleasure”; ella, que era “one of the most polluting industries on earth”."
+        },
+        {
+          "type": "tf",
+          "q": "Hilo invented the technology that turns plastic into fabric.",
+          "answer": "F",
+          "explain_es": "Falso: la tecnología “had already been developed elsewhere”; lo novedoso es cómo la adaptaron."
+        },
+        {
+          "type": "mc",
+          "q": "Why was the first collection unsuccessful?",
+          "options": [
+            "The jackets were stiff and the colours were badly chosen.",
+            "It was too expensive to produce.",
+            "It was launched in the wrong country.",
+            "Nobody knew it was made from plastic."
+          ],
+          "answer": 0,
+          "explain_es": "El texto dice: “The jackets were stiff, and the colours… looked as though they had been chosen in the dark.”"
+        },
+        {
+          "type": "tf",
+          "q": "The founders stopped speaking to each other for almost three months.",
+          "answer": "T",
+          "explain_es": "Verdadero: “they stopped speaking for almost three months”."
+        },
+        {
+          "type": "mc",
+          "q": "What caused orders to multiply by ten in 2021?",
+          "options": [
+            "A famous influencer wearing a Hilo shirt",
+            "A government contract",
+            "The opening of a shop in Mexico",
+            "A documentary that showed the warehouse"
+          ],
+          "answer": 3,
+          "explain_es": "Un documental sobre el plástico en el océano “featured the warehouse in its final scene. Almost overnight, orders multiplied by ten.”"
+        },
+        {
+          "type": "tf",
+          "q": "Julián rejects the critics' concerns completely.",
+          "answer": "F",
+          "explain_es": "Falso: “Julián does not dismiss these concerns”, y reconoce que deben ser honestos sobre sus limitaciones."
+        },
+        {
+          "type": "tf",
+          "q": "Hilo's employees earn more than workers in similar factories.",
+          "answer": "NG",
+          "explain_es": "No se dice: el texto menciona las clases gratuitas y los ascensos, pero no compara los salarios."
+        },
+        {
+          "type": "gap",
+          "q": "Julián's advice to young entrepreneurs is to find someone who ___ with them.",
+          "answer": "disagrees",
+          "explain_es": "Julián dice: “Find someone who disagrees with you.”"
+        }
+      ]
+    },
+    "listening": {
+      "title": "Open Question: Is the Generation Gap Getting Wider?",
+      "kind": "panel discussion",
+      "speakers": [
+        {
+          "name": "Laura",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Henry",
+          "voice": "male",
+          "accent": "uk"
+        },
+        {
+          "name": "Zoe",
+          "voice": "female",
+          "accent": "au"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good evening and welcome to Open Question. Tonight's topic is whether the generation gap is wider today than ever before. With me are the sociologist Professor Henry Walsh and Zoe Mitchell, who founded a youth climate network at the age of nineteen. Professor Walsh, let's start with you. Is the gap really getting wider?"
+        },
+        {
+          "s": 1,
+          "text": "I'd argue that it isn't, although it certainly feels that way. Every generation has looked back on its own youth with nostalgia and accused the next one of being lazy or rude. You'll find complaints about young people's manners in texts that are over two thousand years old. What has changed is the speed at which habits spread, not the habits themselves."
+        },
+        {
+          "s": 0,
+          "text": "Zoe, do you agree?"
+        },
+        {
+          "s": 2,
+          "text": "Partly, but I'd beg to differ on one point. My grandparents would leave school, settle down and stay in the same town for fifty years. My generation can't count on any of that. Housing is unaffordable, jobs are temporary, and the climate is changing in ways nobody planned for. So the milestones that used to define adulthood simply aren't available in the same way."
+        },
+        {
+          "s": 1,
+          "text": "That's a fair point, and the data supports it. In many countries, the average age at which people buy their first home has risen by almost a decade. But I'd add that young people have also been remarkably resilient. They've invented new milestones, such as moving abroad or launching a project online."
+        },
+        {
+          "s": 0,
+          "text": "Let's talk about language. Many older listeners write to us complaining that they simply can't understand how teenagers speak. Is the language being damaged?"
+        },
+        {
+          "s": 1,
+          "text": "Not at all. Slang has always existed, and most of it fades within a few years. Whatever words survive tend to be the useful ones. The word cool was considered slang in the 1950s, and now even politicians use it."
+        },
+        {
+          "s": 2,
+          "text": "And honestly, a lot of what gets called slang comes from online communities in other countries. Teenagers in Bogotá use loan words from Korean or Japanese, which shows how connected they are. The more languages they come into contact with, the richer their vocabulary becomes."
+        },
+        {
+          "s": 0,
+          "text": "Zoe, your network has grown enormously. What do you think explains that?"
+        },
+        {
+          "s": 2,
+          "text": "Mostly the fact that we never told people what to think. Whoever joined could propose a project, as long as it was local and measurable. One group in Medellín has replanted the hillsides around their school, and another in Perth has been cleaning the same beach every Saturday for three years. Nobody's being lectured; everyone's doing something."
+        },
+        {
+          "s": 0,
+          "text": "Professor, some critics say movements like this are more about image than impact. Is that fair?"
+        },
+        {
+          "s": 1,
+          "text": "It would be unfair to generalise. Some campaigns are certainly more performance than substance, but the evidence suggests that local, sustained action of the kind Zoe describes does change behaviour. The real risk is the opposite one: that young people burn out because they feel responsible for problems they didn't create."
+        },
+        {
+          "s": 2,
+          "text": "That's very real. Several of our coordinators have had to step back for a while. We now insist that every volunteer take at least one month off a year."
+        },
+        {
+          "s": 0,
+          "text": "We have time for one listener question. María from Cali asks, what can older people actually do to close the gap?"
+        },
+        {
+          "s": 1,
+          "text": "Listen more than you lecture. Ask young people what they're worried about before telling them what they ought to worry about."
+        },
+        {
+          "s": 2,
+          "text": "And share what you know. My grandmother taught me more about gardening than any app ever could. Knowledge travels in both directions, or at least it should."
+        },
+        {
+          "s": 0,
+          "text": "A perfect place to finish. Professor Henry Walsh and Zoe Mitchell, thank you both."
+        },
+        {
+          "s": 1,
+          "text": "Thank you, Laura."
+        },
+        {
+          "s": 2,
+          "text": "Thanks for having us."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What is Professor Walsh's main argument at the start?",
+          "options": [
+            "Young people are lazier than in the past.",
+            "The speed at which habits spread has changed, not the habits themselves.",
+            "Older generations have become less tolerant.",
+            "The generation gap disappeared in the twentieth century."
+          ],
+          "answer": 1,
+          "explain_es": "Walsh dice: “What has changed is the speed at which habits spread, not the habits themselves.”"
+        },
+        {
+          "type": "tf",
+          "q": "Zoe agrees completely with Professor Walsh.",
+          "answer": "F",
+          "explain_es": "Falso: Zoe responde “Partly, but I’d beg to differ on one point.”"
+        },
+        {
+          "type": "mc",
+          "q": "According to Professor Walsh, what has happened to the average age of buying a first home?",
+          "options": [
+            "It has risen by almost a decade.",
+            "It has fallen slightly.",
+            "It has doubled.",
+            "It has stayed the same."
+          ],
+          "answer": 0,
+          "explain_es": "Walsh dice: “the average age at which people buy their first home has risen by almost a decade”."
+        },
+        {
+          "type": "gap",
+          "q": "The word 'cool' was considered slang in the ___.",
+          "answer": "1950s",
+          "accept": [
+            "fifties",
+            "1950's",
+            "nineteen fifties"
+          ],
+          "explain_es": "Walsh dice: “The word cool was considered slang in the 1950s”."
+        },
+        {
+          "type": "tf",
+          "q": "Zoe thinks loan words show that teenagers are poorly educated.",
+          "answer": "F",
+          "explain_es": "Falso: Zoe dice que los préstamos lingüísticos muestran “how connected they are”."
+        },
+        {
+          "type": "mc",
+          "q": "What condition did Zoe's network set for new projects?",
+          "options": [
+            "They had to be approved by a professor.",
+            "They had to involve schools.",
+            "They had to be local and measurable.",
+            "They had to be funded by sponsors."
+          ],
+          "answer": 2,
+          "explain_es": "Zoe dice: “Whoever joined could propose a project, as long as it was local and measurable.”"
+        },
+        {
+          "type": "tf",
+          "q": "Every volunteer in Zoe's network must now take at least a month off each year.",
+          "answer": "T",
+          "explain_es": "Verdadero: “We now insist that every volunteer take at least one month off a year.”"
+        },
+        {
+          "type": "mc",
+          "q": "What does Professor Walsh advise older people to do?",
+          "options": [
+            "Learn teenage slang",
+            "Listen more than they lecture",
+            "Join a climate network",
+            "Use more apps"
+          ],
+          "answer": 1,
+          "explain_es": "Walsh responde: “Listen more than you lecture.”"
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "'Each generation believes it faces greater challenges than the one before.' Write an essay discussing this statement with reference to at least two of the following: work and housing, technology, consumer culture, the environment. Present both sides and reach a reasoned conclusion. Write 260–320 words.",
+      "prompt_es": "Escribe un ensayo argumentativo sobre si cada generación enfrenta retos mayores que la anterior.",
+      "genre_es": "Ensayo argumentativo",
+      "minWords": 260,
+      "maxWords": 320,
+      "criteria": [
+        "Structure the essay with a clear thesis, balanced arguments and a reasoned conclusion.",
+        "Use advanced structures: a cleft sentence, an inverted conditional, the subjunctive and a passive reporting structure.",
+        "Include sentence adverbs and a double comparative to express your stance.",
+        "Use at least six expressions from different units of the level (generation gap, with hindsight, consumerism, resilience, game-changer, leave a legacy…).",
+        "Keep a formal register and accurate subject-verb agreement throughout."
+      ],
+      "model": "Is Every Generation's Struggle the Hardest?\n\nIt is often said that young people today face greater challenges than any generation before them. While this claim contains an element of truth, I believe it reflects a natural human tendency rather than an objective fact.\n\nAdmittedly, today's young adults confront problems that their grandparents could hardly have imagined. Climate change is no longer a distant threat but a daily reality, and housing in most cities has become unaffordable for anyone without family support. What makes the situation particularly frustrating is that many of these problems were created by earlier generations. Consumerism, encouraged for decades, has left a legacy of waste that the young are now expected to clean up.\n\nHowever, with hindsight, every generation has believed its own burden to be uniquely heavy. My grandparents grew up during a period of violence in rural Colombia, and many of them left school at twelve to work. Few would argue that their lives were easier than ours. Moreover, young people today enjoy opportunities that would once have seemed like science fiction: technology has been a game-changer for education, and a teenager with a phone can now access more knowledge than a university library once held.\n\nIt seems, then, that challenges change shape rather than size. The more we know about the world, the more aware we become of its problems, which may explain why each generation feels overwhelmed. Were we to compare hardship across eras, we would probably find that resilience, not suffering, is what generations have most in common.\n\nIn conclusion, it is essential that society take young people's concerns seriously without pretending that the past was simple. The generation gap narrows when both sides recognise that every era demands its own kind of courage."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Looking back on this level, which topic changed the way you think, and why? Mention one habit or belief you used to have and explain how it has changed.",
+          "text_es": "Reflexiona sobre el nivel: qué tema cambió tu forma de pensar y qué hábito o creencia has cambiado.",
+          "seconds": 90,
+          "tips": [
+            "Use a cleft sentence: What surprised me most was…",
+            "Use with hindsight, look back on and formative."
+          ]
+        },
+        {
+          "text": "Describe an exceptional person from your country, past or present. Explain what they achieved, what obstacles they overcame and what legacy they have left.",
+          "text_es": "Describe a una persona excepcional de tu país: sus logros, sus obstáculos y su legado.",
+          "seconds": 120,
+          "tips": [
+            "Use compound adjectives and superlatives: the best-known, world-famous.",
+            "Use passive reporting: She is said to have…"
+          ]
+        },
+        {
+          "text": "Debate: 'Technology has done more to divide generations than to unite them.' Present a balanced argument, anticipate a counter-argument and reach a conclusion.",
+          "text_es": "Debate: ¿la tecnología ha dividido más que unido a las generaciones? Argumenta con equilibrio.",
+          "seconds": 120,
+          "tips": [
+            "Use sentence adverbs: Admittedly, Arguably, Undeniably.",
+            "Use inversion and conditions: Were we to…, as long as, provided that."
+          ]
+        }
+      ]
+    }
+  }
+]

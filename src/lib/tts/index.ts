@@ -157,6 +157,8 @@ interface Segment {
   edge: string | null;
   /** Index of the dialogue line it belongs to (for highlighting). */
   line: number;
+  /** A word spelled letter by letter: said slower, with a pause between letters. */
+  slow?: boolean;
   device: () => { lang: string; voice?: SpeechSynthesisVoice; pitch?: number };
 }
 
@@ -167,11 +169,12 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
  * if the natural voice fails, the rest continues on the device voice.
  */
 async function playSegments(id: number, segs: Segment[], rate: number, o: { onLine?: (i: number) => void; onEnd?: () => void; gapMs?: number } = {}) {
-  const r = rateFor(rate);
+  const base = rateFor(rate);
+  const rateOf = (s: Segment) => (s.slow ? rateFor(rate * SPELL_RATE) : base);
   let natural = segs.some((s) => s.edge);
   // Inside the tap (before any await): unlock audio on iOS if the first clip must be fetched.
-  if (natural && segs[0]?.edge && !peekTts(segs[0].text, segs[0].edge, r)) unlock();
-  if (natural) presignTts(segs.flatMap((s) => (s.edge ? [{ text: s.text, voice: s.edge, rate: r }] : [])));
+  if (natural && segs[0]?.edge && !peekTts(segs[0].text, segs[0].edge, rateOf(segs[0]))) unlock();
+  if (natural) presignTts(segs.flatMap((s) => (s.edge ? [{ text: s.text, voice: s.edge, rate: rateOf(s) }] : [])));
   let line = -1;
   for (let i = 0; i < segs.length; i++) {
     if (id !== state.id) return;
@@ -183,6 +186,7 @@ async function playSegments(id: number, segs: Segment[], rate: number, o: { onLi
       o.onLine?.(line);
     }
     let outcome: Outcome = 'failed';
+    const r = rateOf(seg);
     if (natural && seg.edge) {
       let url = peekTts(seg.text, seg.edge, r);
       if (!url) {
@@ -190,13 +194,13 @@ async function playSegments(id: number, segs: Segment[], rate: number, o: { onLi
         url = await fetchTts(seg.text, seg.edge, r).catch(() => null);
       }
       const next = segs[i + 1];
-      if (url && next?.edge) prefetchTts(next.text, next.edge, r);
+      if (url && next?.edge) prefetchTts(next.text, next.edge, rateOf(next));
       if (url) outcome = await playUrl(id, url);
       if (outcome === 'stopped') return;
       if (outcome === 'failed') natural = false;
     }
     if (outcome !== 'ended') {
-      if ((await playDevice(id, seg.text, seg, rate)) === 'stopped') return;
+      if ((await playDevice(id, seg.text, seg, seg.slow ? rate * SPELL_RATE : rate)) === 'stopped') return;
     }
   }
   finish(id, o.onEnd);
@@ -224,9 +228,34 @@ function personaForSpeak(opts: SpeakOptions): Persona {
   return personaFor(def.gender === 'female' ? 'male' : 'female', opts.accent === 'en-GB' ? 'uk' : 'us');
 }
 
+/** Spelled words play at this share of the learner's speed. */
+export const SPELL_RATE = 0.62;
+const LETTER = String.raw`(?:double[ -][A-Za-z]|[A-Za-z])`;
+const CAP = String.raw`(?:double[ -][A-Za-z]|[A-Z])`;
+/** "W-I-L-S-O-N", "U M B R E L L A", "A, R, A, N, G, O", "R-U-double S-E-L-L": three letters or more. */
+const SPELLED = new RegExp(String.raw`\b${LETTER}(?:\s*[-–]\s*${LETTER}){2,}\b|\b${CAP}(?:[.,]?\s+${CAP}){2,}\b`, 'g');
+
+/** Splits off words spelled letter by letter; they are rewritten "W, I, L, S, O, N." so each letter gets a pause. */
+export function splitSpelled(text: string): { text: string; slow: boolean }[] {
+  const out: { text: string; slow: boolean }[] = [];
+  let last = 0;
+  for (const m of text.matchAll(SPELLED)) {
+    const letters = m[0].split(/\s*[-–,.]\s*|\s+(?!(?<=double\s)[A-Za-z])/).map((x) => x.trim()).filter(Boolean);
+    if (letters.length < 3) continue;
+    const before = text.slice(last, m.index).trim();
+    if (before) out.push({ text: before, slow: false });
+    out.push({ text: letters.map((l) => l.replace(/^double[ -]/i, 'double ').replace(/[a-z]$/, (c) => c.toUpperCase())).join(', ') + '.', slow: true });
+    last = m.index! + m[0].length;
+  }
+  const rest = text.slice(last).replace(/^[\s.,;:]+/, '').trim();
+  if (rest && /[A-Za-z0-9]/.test(rest)) out.push({ text: rest, slow: false });
+  return out.length ? out : [{ text, slow: false }];
+}
+
 function segmentsOf(text: string, edge: string | null, line: number, device: Segment['device']): Segment[] {
-  if (!edge) return [{ text, edge: null, line, device }];
-  return splitForTts(text).map((t) => ({ text: t, edge, line, device }));
+  return splitSpelled(text).flatMap((part): Segment[] =>
+    !edge || part.slow ? [{ text: part.text, edge, line, device, slow: part.slow }] : splitForTts(part.text).map((t) => ({ text: t, edge, line, device })),
+  );
 }
 
 /** Reads `text` aloud. Returns an id to compare with `getSpeechState().id`. */

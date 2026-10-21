@@ -1,0 +1,1634 @@
+[
+  {
+    "id": "r3-c1-de-extinction-essay",
+    "title": "Bringing Back the Mammoth?",
+    "level": "C1",
+    "genre": "essay",
+    "topic": "Science & Ethics",
+    "focus": "Hedging and distancing language",
+    "emoji": "🦣",
+    "words": 550,
+    "paragraphs": [
+      "Every few years, a headline announces that the woolly mammoth, the dodo or the Tasmanian tiger is about to walk the Earth again. Such claims tend to be somewhat exaggerated. What is actually being proposed, in most cases, is not resurrection in any strict sense but the genetic editing of a living relative, such as the Asian elephant, so that it carries a handful of traits that appear to have characterised the extinct species. The resulting animal would, arguably, be less a mammoth than a cold-tolerant elephant with a shaggy coat. Even so, the prospect raises questions that it would be unwise to dismiss as science fiction.",
+      "Supporters of de-extinction put forward a number of arguments, some of which seem reasonably persuasive. It has been suggested, for instance, that large herbivores once played a role in maintaining the Arctic grasslands, trampling snow and thereby helping to keep the permafrost frozen. If that is the case, reintroducing a mammoth-like animal could conceivably slow the release of the carbon stored beneath the tundra. Others argue that the techniques developed along the way are likely to benefit species that are endangered but not yet lost, by restoring genetic diversity to populations that have shrunk to dangerously small numbers.",
+      "Critics, however, tend to be unconvinced. The climate argument, they point out, rests on assumptions that remain largely untested: it is by no means certain that a few hundred animals, assuming they could be bred at all, would have any measurable effect on an area the size of Siberia. There is also, it would seem, a question of priorities. Conservation budgets are notoriously limited, and money spent on reviving one charismatic species may well be money not spent on protecting the thousands of less glamorous ones that are disappearing as we speak, from Colombian frogs to Indonesian beetles.",
+      "Then there is the welfare of the animals themselves. Elephants are highly social creatures that learn much of their behaviour from older members of the herd. A calf born to a surrogate mother of a different species, and raised in a research facility, would presumably have no one to teach it how to be a mammoth, whatever that might mean. To some ethicists, this suggests that the project treats animals primarily as proofs of concept rather than as beings with interests of their own.",
+      "Perhaps the most subtle objection concerns the message de-extinction sends. If extinction comes to be seen as reversible, the argument goes, the urgency of preventing it could be weakened. Why fund the slow, unglamorous work of protecting habitats if a laboratory can apparently undo the damage later? This fear may be overstated, since most people are unlikely to regard a gene-edited elephant as a genuine substitute for a lost ecosystem. Nevertheless, it is not entirely fanciful.",
+      "On balance, it seems fair to say that de-extinction is neither the miracle its promoters describe nor the folly its opponents fear. Its most valuable contribution may turn out to be indirect: the tools it produces could help save species that are still with us. Whether that justifies the expense and the risks is, to a large extent, a matter of judgement. What does appear clear is that the decision should not be left solely to the scientists and investors who stand to gain most from it."
+    ],
+    "glossary": [
+      [
+        "shaggy",
+        "lanudo, de pelo largo y desordenado"
+      ],
+      [
+        "herbivores",
+        "herbívoros"
+      ],
+      [
+        "trampling",
+        "pisoteando"
+      ],
+      [
+        "permafrost",
+        "suelo permanentemente congelado"
+      ],
+      [
+        "conceivably",
+        "posiblemente, es concebible que"
+      ],
+      [
+        "notoriously",
+        "como es bien sabido (en sentido negativo)"
+      ],
+      [
+        "surrogate mother",
+        "madre sustituta, madre de alquiler"
+      ],
+      [
+        "proofs of concept",
+        "pruebas de concepto"
+      ],
+      [
+        "fanciful",
+        "fantasioso, descabellado"
+      ],
+      [
+        "folly",
+        "locura, insensatez"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to the writer, what is usually being proposed under the name of de-extinction?",
+        "options": [
+          "Cloning animals from perfectly preserved frozen cells",
+          "Editing the genes of a living relative so that it has some traits of the extinct species",
+          "Breeding the last surviving members of extinct species in zoos",
+          "Building robotic copies of extinct animals for museums"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"the genetic editing of a living relative, such as the Asian elephant, so that it carries a handful of traits\"; no es una resurrección en sentido estricto."
+      },
+      {
+        "type": "tf",
+        "q": "The writer presents the climate argument as one that research has already confirmed.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: el argumento climático \"rests on assumptions that remain largely untested\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer mention Colombian frogs and Indonesian beetles?",
+        "options": [
+          "To show which species scientists want to revive next",
+          "To prove that conservation budgets are growing",
+          "To give examples of less glamorous species that might lose funding",
+          "To compare their intelligence with that of elephants"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 3: el dinero gastado en una especie carismática \"may well be money not spent on protecting the thousands of less glamorous ones\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the hedging phrase from paragraph 3: \"There is also, it ______, a question of priorities.\" (2 words)",
+        "answer": "would seem",
+        "accept": [
+          "would appear"
+        ],
+        "explain_es": "\"it would seem\" suaviza la afirmación: el autor se distancia y no la presenta como un hecho absoluto."
+      },
+      {
+        "type": "tf",
+        "q": "Scientists have already produced a living mammoth-like calf.",
+        "answer": "NG",
+        "explain_es": "El texto habla de propuestas y de lo que \"would\" pasar con un ternero, pero nunca dice si ya nació alguno."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 5, the fear is \"not entirely fanciful\". \"Fanciful\" is closest in meaning to…",
+        "options": [
+          "decorative",
+          "expensive",
+          "popular",
+          "imaginative and unrealistic"
+        ],
+        "answer": 3,
+        "explain_es": "\"Fanciful\" = fantasioso, poco realista: el autor admite que el temor tiene algo de fundamento."
+      },
+      {
+        "type": "gap",
+        "q": "Complete with the hedged modal phrase from paragraph 2: \"reintroducing a mammoth-like animal ______ slow the release of the carbon stored beneath the tundra.\" (2 words)",
+        "answer": "could conceivably",
+        "accept": [],
+        "explain_es": "Párrafo 2: \"could conceivably slow\"; \"could\" + \"conceivably\" presentan el efecto como una simple posibilidad."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's overall conclusion?",
+        "options": [
+          "De-extinction should be banned immediately",
+          "De-extinction is neither a miracle nor a folly, and the decision should not be left only to those who profit",
+          "De-extinction is the best way to fight climate change",
+          "Only scientists are qualified to decide about de-extinction"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: \"neither the miracle ... nor the folly\" y \"should not be left solely to the scientists and investors\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-whistleblower-story",
+    "title": "The Second Version",
+    "level": "C1",
+    "genre": "story",
+    "topic": "Work & Ethics",
+    "focus": "Future in the past (was to, was about to, was due to)",
+    "emoji": "📁",
+    "words": 568,
+    "paragraphs": [
+      "On the Thursday it all began, Valeria Ortiz was about to leave the office early. Her sister was to be married on Saturday in Cartagena, and Valeria, who was supposed to be giving a speech, had not written a word of it. She was reaching for her coat when an email arrived from the site laboratory at Torres del Río, the hospital extension her firm was building on the outskirts of Medellín. It was a routine batch of concrete test results, the kind she had filed hundreds of times. She very nearly left it until Monday.",
+      "The figures were poor. Three of the samples had failed to reach the required strength, one of them by a wide margin. Valeria knew what that meant: the slabs were to be poured on the upper floors the following week, and nothing could go ahead until the problem had been investigated. She forwarded the results to her manager, Germán Rueda, and went home to struggle with her speech, assuming that would be the end of it as far as she was concerned.",
+      "It was not. On Monday morning she opened the shared folder and found a new version of the report. The dates and sample numbers were identical, but every result now comfortably exceeded the standard. When she asked Germán about it, he told her, without quite meeting her eye, that the laboratory had made an error and had sent a correction. The pour was going ahead on Wednesday as planned. The client, he added, was due to inspect the site at the end of the month, and the last thing anyone needed was a delay.",
+      "Valeria spent that night at her kitchen table, the two versions of the report side by side. She told herself that she was an accountant, not an engineer, and that there might be an innocent explanation. But she also knew that the building was to house a children's ward, and that if the concrete was not what it should be, it would be years before anyone found out, by which time it might be too late. At two in the morning she was on the point of deleting the original file altogether. Instead, she copied it onto a memory stick.",
+      "What followed was, in many ways, worse than she had feared. She raised the matter with the compliance department, which promised a confidential review and then, it seemed, did nothing. The pour went ahead. A fortnight later she was told that her position was to be \"restructured\", and that she would be moved to a branch office two hours away. Colleagues who had once invited her to lunch now found reasons to be busy. She was about to accept the transfer, simply to make it all stop, when a former classmate who worked as a journalist persuaded her to speak to a lawyer first.",
+      "She could not have known then that the case was to drag on for more than a year, or that independent engineers would eventually confirm her suspicions and order part of the structure to be reinforced at enormous cost. Nor could she have predicted that she would never work in construction again. When people ask whether she regrets it, Valeria usually pauses before answering. \"I was going to stay quiet,\" she says. \"For about four hours, I was absolutely going to. Then I thought about who would be sleeping on that ward.\""
+    ],
+    "glossary": [
+      [
+        "batch",
+        "lote, tanda"
+      ],
+      [
+        "slabs",
+        "losas, placas de concreto"
+      ],
+      [
+        "poured",
+        "vaciado, fundido (el concreto)"
+      ],
+      [
+        "comfortably exceeded",
+        "superaba holgadamente"
+      ],
+      [
+        "without quite meeting her eye",
+        "sin llegar a mirarla a los ojos"
+      ],
+      [
+        "ward",
+        "pabellón, sala de hospital"
+      ],
+      [
+        "on the point of",
+        "a punto de"
+      ],
+      [
+        "fortnight",
+        "dos semanas, quincena"
+      ],
+      [
+        "drag on",
+        "alargarse, prolongarse"
+      ],
+      [
+        "reinforced",
+        "reforzado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why was Valeria planning to leave early on the Thursday?",
+        "options": [
+          "She had to visit the building site",
+          "She was meeting a journalist",
+          "She still had to write a speech for her sister's wedding",
+          "She had a medical appointment"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: su hermana \"was to be married on Saturday\" y Valeria \"had not written a word\" del discurso."
+      },
+      {
+        "type": "tf",
+        "q": "The first set of results showed that all the samples met the required standard.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"Three of the samples had failed to reach the required strength\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete with the future-in-the-past structure from paragraph 2: \"the slabs ______ poured on the upper floors the following week.\" (3 words)",
+        "answer": "were to be",
+        "accept": [],
+        "explain_es": "\"were to be poured\" = estaba previsto que se vaciaran: un plan futuro visto desde el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "How did Germán explain the new version of the report?",
+        "options": [
+          "He said Valeria had misread the figures",
+          "He said the client had asked for new tests",
+          "He said the samples had been tested again on Monday",
+          "He said the laboratory had made an error and sent a correction"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"the laboratory had made an error and had sent a correction\"."
+      },
+      {
+        "type": "tf",
+        "q": "Valeria deleted the original file in the middle of the night.",
+        "answer": "F",
+        "explain_es": "Párrafo 4: estuvo \"on the point of deleting\" el archivo, pero \"Instead, she copied it onto a memory stick\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete from paragraph 5: \"She ______ accept the transfer, simply to make it all stop, when a former classmate … persuaded her to speak to a lawyer first.\" (3 words)",
+        "answer": "was about to",
+        "accept": [
+          "was going to"
+        ],
+        "explain_es": "\"was about to\" + infinitivo = estaba a punto de; la acción se interrumpe (\"when ...\")."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 6, the case was \"to drag on for more than a year\". \"Drag on\" means…",
+        "options": [
+          "end suddenly",
+          "be cancelled",
+          "continue for longer than expected or wanted",
+          "be decided in court"
+        ],
+        "answer": 2,
+        "explain_es": "\"Drag on\" = alargarse, prolongarse más de lo deseado."
+      },
+      {
+        "type": "tf",
+        "q": "Germán Rueda was eventually dismissed by the company.",
+        "answer": "NG",
+        "explain_es": "El texto no dice qué le pasó a Germán; solo que unos ingenieros confirmaron las sospechas de Valeria."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-attention-economy-opinion",
+    "title": "Who Owns Your Afternoon?",
+    "level": "C1",
+    "genre": "opinion",
+    "topic": "Technology & Society",
+    "focus": "Nominalisation in formal writing",
+    "emoji": "📱",
+    "words": 500,
+    "paragraphs": [
+      "The defining commodity of the twenty-first century, we are frequently told, is data. I would suggest that this is only half right. What is ultimately being bought and sold is not information about us but our attention: the finite number of waking hours in which we are able to look, listen and respond. The recognition of this fact is the starting point for any serious discussion of what has come to be called the attention economy.",
+      "The logic is straightforward. Free platforms derive their revenue from advertising, and advertising income depends on the duration and frequency of user engagement. The maximisation of engagement therefore becomes the overriding objective of product design. Infinite scrolling, the automatic playback of the next video, the arrival of notifications at carefully calculated intervals: none of these features is accidental. Each represents a deliberate decision to reduce the friction that might otherwise prompt a user to put the phone down.",
+      "The consequences of this design philosophy are increasingly well documented. Surveys conducted in several countries, Colombia among them, point to a steady increase in daily screen time among adolescents and a corresponding decline in sustained reading. Teachers report a reduction in students' tolerance for difficulty; clinicians note a rise in complaints about sleep disruption and anxiety. Establishing a direct causal link is admittedly difficult, and the existence of a correlation should not be mistaken for proof. Yet the accumulation of evidence is hard to ignore.",
+      "It is often argued that the solution lies in individual self-discipline: the installation of screen-time limits, the deletion of particular apps, the occasional \"digital detox\". Such measures are not without value, but their effectiveness is limited by an obvious imbalance of power. On one side is a tired individual at the end of a long working day; on the other is a team of engineers and behavioural scientists whose sole responsibility is the prolongation of that individual's session. To frame the problem as a failure of willpower is, in effect, to blame the fish for the efficiency of the net.",
+      "A more promising approach would involve the regulation of design itself. Proposals currently under discussion in various jurisdictions include the prohibition of autoplay for under-eighteens, a requirement for the default disabling of non-essential notifications, and the mandatory disclosure of the metrics that platforms use to evaluate success. None of these would entail the abolition of social media, and none would prevent adults from using it as much as they wish. What they would achieve is a modest rebalancing of the relationship between user and platform.",
+      "Opponents will doubtless warn of excessive state interference and the stifling of innovation. These concerns deserve consideration, but they are hardly new: similar objections accompanied the introduction of seat belts and the restriction of tobacco advertising. The real question is not whether intervention is justified, but whether our attention is a resource we are prepared to defend. If it is, its protection cannot be left entirely to the discretion of those who profit from its depletion."
+    ],
+    "glossary": [
+      [
+        "commodity",
+        "mercancía, bien que se compra y vende"
+      ],
+      [
+        "finite",
+        "finito, limitado"
+      ],
+      [
+        "overriding",
+        "primordial, que prima sobre todo"
+      ],
+      [
+        "friction",
+        "fricción, obstáculo"
+      ],
+      [
+        "sustained reading",
+        "lectura prolongada y concentrada"
+      ],
+      [
+        "willpower",
+        "fuerza de voluntad"
+      ],
+      [
+        "jurisdictions",
+        "jurisdicciones"
+      ],
+      [
+        "disclosure",
+        "divulgación, revelación obligatoria"
+      ],
+      [
+        "stifling",
+        "asfixia, freno"
+      ],
+      [
+        "depletion",
+        "agotamiento"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to the writer, what is really being bought and sold?",
+        "options": [
+          "Personal data",
+          "Advertising space",
+          "Our attention",
+          "Mobile devices"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"What is ultimately being bought and sold is not information about us but our attention\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer believes that features such as infinite scrolling appeared by accident.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"none of these features is accidental\"; son \"a deliberate decision\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer claims it has been proven that screen time causes anxiety.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: \"Establishing a direct causal link is admittedly difficult\" y la correlación \"should not be mistaken for proof\"."
+      },
+      {
+        "type": "gap",
+        "q": "Nominalisation: \"Teachers say that students tolerate difficulty less.\" → \"Teachers report a ______ in students' tolerance for difficulty.\" (1 word, paragraph 3)",
+        "answer": "reduction",
+        "accept": [
+          "decline",
+          "decrease"
+        ],
+        "explain_es": "El texto convierte el verbo en sustantivo: \"a reduction in students' tolerance\", típico del registro formal."
+      },
+      {
+        "type": "mc",
+        "q": "What does the image of the fish and the net suggest?",
+        "options": [
+          "Social media is as natural as fishing",
+          "Individuals are blamed for a problem created by powerful, specialised teams",
+          "Engineers are as tired as ordinary users",
+          "Digital detoxes are the most effective solution"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 4: hablar de falta de voluntad es \"to blame the fish for the efficiency of the net\", dado el \"imbalance of power\"."
+      },
+      {
+        "type": "transform",
+        "q": "Nominalise, using a noun from paragraph 5: \"They propose to ban autoplay for under-eighteens.\" → \"They propose the ______ of autoplay for under-eighteens.\" (1 word)",
+        "answer": "prohibition",
+        "accept": [
+          "banning"
+        ],
+        "explain_es": "Párrafo 5: \"the prohibition of autoplay for under-eighteens\": el verbo \"ban/prohibit\" pasa a sustantivo."
+      },
+      {
+        "type": "vocab",
+        "q": "In the last sentence, \"depletion\" is closest in meaning to…",
+        "options": [
+          "growth",
+          "protection",
+          "measurement",
+          "using up"
+        ],
+        "answer": 3,
+        "explain_es": "\"Depletion\" = agotamiento: las plataformas se benefician de agotar nuestra atención."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer respond to warnings about state interference?",
+        "options": [
+          "The concerns deserve consideration, but similar objections were made about seat belts and tobacco advertising",
+          "The concerns are completely unfounded and should be ignored",
+          "The concerns prove that regulation is a mistake",
+          "The writer does not mention any opponents"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 6: \"These concerns deserve consideration, but they are hardly new: similar objections accompanied the introduction of seat belts\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-forgotten-inventor-biography",
+    "title": "The Inventor Nobody Credited",
+    "level": "C1",
+    "genre": "biography",
+    "topic": "History & Innovation",
+    "focus": "Advanced passives (is believed to have, having been)",
+    "emoji": "💡",
+    "words": 549,
+    "paragraphs": [
+      "Few people in Colombia today have heard of Inés Carvajal, and those who have tend to know her only as a footnote: the wife of an engineer, mentioned in passing in a history of the national railways. Yet Carvajal is now believed to have designed one of the earliest solar water heaters in Latin America, a device that was installed in dozens of rural schools in the 1930s and that is said to have been in use in some villages until the 1970s.",
+      "Born in Tunja in 1902, Carvajal is thought to have been educated largely at home, by a father who taught mathematics at a local college and who, unusually for the period, saw no reason why his daughter should not study it too. Having been refused a place at the engineering faculty in Bogotá on the grounds that it did not admit women, she enrolled instead in a teacher-training course. It was there, according to letters that were discovered only recently, that she first became preoccupied with a practical problem: children in the cold highland schools where she was sent to teach were routinely washing in freezing water, and many were reported to be falling ill throughout the rainy season.",
+      "Her solution was elegantly simple. A series of blackened copper pipes, mounted in a glass-fronted wooden box and angled towards the sun, fed warm water into an insulated tank. None of the individual elements was new, but the arrangement, and in particular a valve that prevented the warm water from flowing back into the pipes at night, appears to have been her own. The first prototype is understood to have been built in 1931 behind a school in Ráquira, with the help of a local carpenter.",
+      "It is at this point that the story becomes uncomfortable. The patent application for the heater, submitted in 1933, was filed in the name of her husband, Álvaro Mejía, whom she had married the previous year. It has long been assumed that Mejía was the inventor, and he was credited as such in a ministry report praising the scheme. Carvajal's role was not merely overlooked; it was, in some documents, actively erased. Drawings now known to be in her handwriting were later copied out and signed by him.",
+      "Whether Mejía deliberately took credit, or whether the arrangement was simply taken for granted by both of them in an era when a married woman could not easily hold property in her own name, remains unclear. Some historians argue that the couple are likely to have regarded the invention as a joint enterprise. Others point out that, having been praised publicly for the heater, Mejía never once corrected the record, even after her death in 1979.",
+      "Carvajal's work came to light only in 2019, when a box of papers was donated to a university archive in Tunja by a great-niece. The letters and sketches it contained are being studied by a team of historians and engineers, and a replica of the heater is to be displayed at a science museum in Bogotá next year. It is a belated acknowledgement, but perhaps not an insignificant one. As one of the researchers put it, she is not being given credit she did not earn; she is finally being given credit that was taken from her."
+    ],
+    "glossary": [
+      [
+        "footnote",
+        "nota al pie, detalle secundario"
+      ],
+      [
+        "preoccupied with",
+        "absorta en, muy preocupada por"
+      ],
+      [
+        "blackened",
+        "ennegrecido"
+      ],
+      [
+        "insulated tank",
+        "tanque con aislamiento térmico"
+      ],
+      [
+        "valve",
+        "válvula"
+      ],
+      [
+        "filed",
+        "radicado, presentado (un trámite)"
+      ],
+      [
+        "overlooked",
+        "pasado por alto"
+      ],
+      [
+        "erased",
+        "borrado"
+      ],
+      [
+        "took credit",
+        "se atribuyó el mérito"
+      ],
+      [
+        "belated",
+        "tardío"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How was Carvajal remembered before her papers were found?",
+        "options": [
+          "As a famous teacher in Tunja",
+          "As the founder of a railway company",
+          "As an engineer's wife mentioned briefly in a history of the railways",
+          "As the first woman to study engineering in Bogotá"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: la conocían \"only as a footnote: the wife of an engineer, mentioned in passing in a history of the national railways\"."
+      },
+      {
+        "type": "tf",
+        "q": "Carvajal studied at the engineering faculty in Bogotá.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"Having been refused a place at the engineering faculty in Bogotá ... she enrolled instead in a teacher-training course\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete from paragraph 1: \"Carvajal is now believed ______ designed one of the earliest solar water heaters in Latin America.\" (2 words)",
+        "answer": "to have",
+        "accept": [],
+        "explain_es": "Pasiva de distanciamiento: \"is believed to have + participio\" para una creencia actual sobre algo pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Which part of the heater appears to have been Carvajal's own idea?",
+        "options": [
+          "The copper pipes",
+          "The glass-fronted box",
+          "The insulated tank",
+          "A valve that stopped warm water flowing back at night"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"None of the individual elements was new, but ... a valve that prevented the warm water from flowing back ... appears to have been her own\"."
+      },
+      {
+        "type": "tf",
+        "q": "A ministry report gave Mejía the credit for the heater.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"he was credited as such in a ministry report praising the scheme\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with the passive used in paragraph 1: \"People say that the heater was in use in some villages until the 1970s.\" → \"The heater is said ______ in use in some villages until the 1970s.\" (3 words)",
+        "answer": "to have been",
+        "accept": [],
+        "explain_es": "Párrafo 1: \"is said to have been in use\"; \"is said to have been\" se refiere a un estado pasado."
+      },
+      {
+        "type": "tf",
+        "q": "Carvajal and Mejía had three children.",
+        "answer": "NG",
+        "explain_es": "El texto no menciona hijos de la pareja."
+      },
+      {
+        "type": "mc",
+        "q": "What does the researcher's final comment mean?",
+        "options": [
+          "Carvajal is being praised too generously",
+          "Carvajal is receiving recognition that was hers but was taken away",
+          "Carvajal never wanted any recognition",
+          "Mejía and Carvajal deserve equal credit"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 6: \"she is finally being given credit that was taken from her\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-four-day-week-report",
+    "title": "The Four-Day Week: Pilot Findings",
+    "level": "C1",
+    "genre": "report",
+    "topic": "Work & Productivity",
+    "focus": "Reporting verbs with patterns",
+    "emoji": "📊",
+    "words": 495,
+    "paragraphs": [
+      "Introduction. This report summarises the findings of a six-month pilot in which forty-one organisations in Colombia and Chile, employing a little over 2,300 people between them, reduced the working week from five days to four without any reduction in pay. Participants agreed to maintain existing levels of output, and researchers from two universities monitored the results through surveys, interviews and company data. The pilot ended in March; this summary draws on the final round of interviews.",
+      "Productivity. Most managers reported that output had remained stable, and a minority claimed to have seen a measurable improvement. The finance director of a logistics firm in Barranquilla described the change as \"the best decision we have made in a decade\", attributing a fall in errors to staff being better rested. Not all assessments were so positive, however. Two manufacturing companies admitted struggling to cover shifts and warned that the model might not be viable for businesses with continuous production lines.",
+      "Wellbeing. Employees overwhelmingly described themselves as less stressed. Many mentioned using the additional day for medical appointments, childcare or study, which, several pointed out, they had previously had to squeeze into evenings or weekends. A software developer in Santiago confessed to having been sceptical at first, but acknowledged that she now found it hard to imagine returning to a five-day week. Recorded sick days fell by around a fifth across the sample, although the researchers cautioned against reading too much into a single six-month period.",
+      "Difficulties. The transition was not friction-free. A number of team leaders complained of having to compress meetings into fewer hours and accused senior management of underestimating the planning involved. In customer-facing roles, staff were obliged to rotate their day off, and some employees objected to being given little choice about which day that would be. One retail chain denied having pressured staff to work unpaid overtime, after a union representative alleged that informal expectations had crept back in towards the end of the trial.",
+      "Outcomes. Of the forty-one organisations, thirty-four have decided to continue with a four-day week, three have opted for a modified version, and four have returned to their previous arrangements. Those that withdrew mostly blamed the difficulty of coordinating with clients who continued to work a standard week. Notably, none of the continuing companies reported any intention of reducing salaries in the future, and several said they had begun advertising the shorter week as a way of attracting candidates.",
+      "Recommendations. On the basis of these findings, the research team recommends extending the pilot to a larger and more varied group of employers, including public bodies and small businesses, before any national policy is considered. It also urges participating firms to monitor workloads closely, so that the reduction in hours does not simply result in the same amount of work being crammed into less time. Finally, it advises employers considering the model to consult staff early and to allow at least a month of preparation before the first four-day week begins."
+    ],
+    "glossary": [
+      [
+        "pilot",
+        "prueba piloto"
+      ],
+      [
+        "output",
+        "producción, rendimiento"
+      ],
+      [
+        "viable",
+        "viable, factible"
+      ],
+      [
+        "squeeze into",
+        "acomodar a la fuerza en, meter apretado en"
+      ],
+      [
+        "sceptical",
+        "escéptica"
+      ],
+      [
+        "cautioned against",
+        "advirtieron que no convenía"
+      ],
+      [
+        "friction-free",
+        "sin roces ni dificultades"
+      ],
+      [
+        "crept back in",
+        "volvieron a colarse poco a poco"
+      ],
+      [
+        "opted for",
+        "optaron por"
+      ],
+      [
+        "crammed into",
+        "embutido, apretujado en"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did the participating organisations agree to do?",
+        "options": [
+          "Reduce salaries by a fifth",
+          "Hire more staff",
+          "Maintain their existing levels of output",
+          "Work longer hours on four days"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"Participants agreed to maintain existing levels of output\"."
+      },
+      {
+        "type": "tf",
+        "q": "The finance director in Barranquilla said the change led to more mistakes.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: atribuyó \"a fall in errors to staff being better rested\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete with the correct form, as in paragraph 2: \"Two manufacturing companies admitted ______ to cover shifts.\" (1 word)",
+        "answer": "struggling",
+        "accept": [
+          "having struggled"
+        ],
+        "explain_es": "\"admit\" va seguido de -ing: \"admitted struggling\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why did the researchers urge caution about the fall in sick days?",
+        "options": [
+          "The figures came from only one company",
+          "Employees had lied in the surveys",
+          "Sick days had actually risen",
+          "The pilot lasted only six months"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"cautioned against reading too much into a single six-month period\"."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected words): \"One retail chain denied to have pressured staff to work unpaid overtime.\"",
+        "answer": "denied having pressured",
+        "accept": [
+          "denied pressuring",
+          "having pressured"
+        ],
+        "explain_es": "\"deny\" va seguido de -ing, no de infinitivo: \"denied having pressured\" (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "How many organisations returned to their previous arrangements?",
+        "options": [
+          "Three",
+          "Four",
+          "Seven",
+          "Thirty-four"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: \"four have returned to their previous arrangements\"."
+      },
+      {
+        "type": "tf",
+        "q": "Some companies are now using the shorter week to attract job candidates.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"several said they had begun advertising the shorter week as a way of attracting candidates\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete from paragraph 6: \"It also urges participating firms ______ workloads closely.\" (2 words)",
+        "answer": "to monitor",
+        "accept": [],
+        "explain_es": "\"urge somebody to do something\": \"urges participating firms to monitor\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-replication-crisis-science",
+    "title": "When the Results Won't Repeat",
+    "level": "C1",
+    "genre": "science",
+    "topic": "Science & Research",
+    "focus": "Negative inversion (rarely has, not only… but, no sooner… than)",
+    "emoji": "🔬",
+    "words": 490,
+    "paragraphs": [
+      "In 2011, a psychology paper claimed to show that people could, in some small way, sense events before they happened. The statistics were conventional, the journal was respected, and the peer reviewers had approved it. Rarely has a single article provoked so much soul-searching. If methods that everyone accepted could produce such an implausible result, researchers began to ask, what else might those methods have produced?",
+      "The answer, when it came, was unsettling. Over the following decade, large teams set out to repeat dozens of well-known experiments, following the original procedures as closely as possible. In some fields, fewer than half of the findings held up. Not only did many effects fail to appear at all, but those that did reappear were often considerably smaller than originally reported. Famous results that had found their way into textbooks, popular talks and corporate training courses turned out to rest on surprisingly little.",
+      "How had this happened? Seldom was outright fraud to blame. The problem lay, rather, in a set of habits so widespread that few researchers regarded them as questionable. A scientist might run several analyses and report only the one that produced a significant result; collect data until the numbers looked promising and then stop; or quietly drop an experimental condition that had not worked. No sooner had a \"positive\" finding been obtained than it could be written up, whereas null results were left in a drawer, since journals showed little interest in publishing them. Individually, each choice could seem harmless. Collectively, they flooded the literature with false positives.",
+      "Incentives made matters worse. Hiring and promotion depended heavily on the number of publications, and on no account would a young researcher's career benefit from spending two years confirming somebody else's result. Journals, too, generally preferred novelty to confirmation. Only when replication projects began to attract funding and attention did the situation begin to change.",
+      "Today, a range of reforms is gaining ground. Increasingly, researchers \"pre-register\" their studies, publicly stating their hypotheses and methods before collecting any data, so that the analysis cannot be adjusted afterwards. Some journals now accept papers on the basis of the design alone, committing to publication whatever the outcome. Data and code are more often shared, allowing others to check the calculations. At one university in Bogotá, for example, graduate students in psychology must now replicate a published study as part of their training, an exercise one professor describes as \"humbling but invaluable\".",
+      "It would be a mistake to conclude that science is broken. On the contrary, the fact that the problem was identified and is being addressed by scientists themselves is a sign of a system capable of correcting its errors. Never before have researchers been so open about the limitations of their own work. Under no circumstances, however, should the lesson be forgotten: a single striking study, however prestigious the journal that published it, is the beginning of an argument, not the end of one."
+    ],
+    "glossary": [
+      [
+        "peer reviewers",
+        "evaluadores pares (revisores científicos)"
+      ],
+      [
+        "soul-searching",
+        "examen de conciencia, reflexión profunda"
+      ],
+      [
+        "implausible",
+        "inverosímil, poco creíble"
+      ],
+      [
+        "held up",
+        "se sostuvieron, resistieron la prueba"
+      ],
+      [
+        "outright fraud",
+        "fraude descarado"
+      ],
+      [
+        "null results",
+        "resultados nulos (sin efecto)"
+      ],
+      [
+        "flooded",
+        "inundaron"
+      ],
+      [
+        "false positives",
+        "falsos positivos"
+      ],
+      [
+        "gaining ground",
+        "ganando terreno"
+      ],
+      [
+        "humbling",
+        "aleccionador, que enseña humildad"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did the 2011 paper cause so much concern?",
+        "options": [
+          "It was written by a famous scientist",
+          "It was rejected by every journal",
+          "It used accepted methods but produced a result that was hard to believe",
+          "It accused other researchers of fraud"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"If methods that everyone accepted could produce such an implausible result ...\"."
+      },
+      {
+        "type": "tf",
+        "q": "According to the text, deliberate fraud explains most of the findings that failed to replicate.",
+        "answer": "F",
+        "explain_es": "Párrafo 3: \"Seldom was outright fraud to blame\"; el problema eran hábitos muy extendidos."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the inversion from paragraph 2: \"Not only ______ many effects fail to appear at all, but those that did reappear were often considerably smaller.\" (1 word)",
+        "answer": "did",
+        "accept": [],
+        "explain_es": "Tras \"Not only\" al inicio se invierte con el auxiliar: \"Not only did many effects fail ...\"."
+      },
+      {
+        "type": "mc",
+        "q": "What happened to null results, according to the text?",
+        "options": [
+          "They were rarely published because journals were not interested",
+          "They were published in the most prestigious journals",
+          "They were deliberately changed into positive results",
+          "They were shared with other teams"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 3: \"null results were left in a drawer, since journals showed little interest in publishing them\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with inversion, beginning with \"Rarely\": \"A single article has rarely provoked so much soul-searching.\"",
+        "answer": "Rarely has a single article provoked so much soul-searching.",
+        "accept": [
+          "Rarely has a single article provoked so much soul searching"
+        ],
+        "explain_es": "Párrafo 1: \"Rarely has a single article provoked ...\"; adverbio negativo + auxiliar + sujeto."
+      },
+      {
+        "type": "tf",
+        "q": "Pre-registration means that hypotheses and methods are made public before any data is collected.",
+        "answer": "T",
+        "explain_es": "Párrafo 5: \"publicly stating their hypotheses and methods before collecting any data\"."
+      },
+      {
+        "type": "tf",
+        "q": "The replication requirement at the university in Bogotá was introduced in 2015.",
+        "answer": "NG",
+        "explain_es": "El texto menciona el requisito, pero no dice cuándo empezó."
+      },
+      {
+        "type": "mc",
+        "q": "What is the writer's final view?",
+        "options": [
+          "Science is broken and cannot be trusted",
+          "Journals should stop publishing psychology",
+          "Young researchers should avoid replication",
+          "Science can correct itself, but one striking study is only the start of an argument"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 6: \"a system capable of correcting its errors\" y \"the beginning of an argument, not the end of one\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-deep-sea-mining-news",
+    "title": "Mining the Abyss: Licence Sparks Fury",
+    "level": "C1",
+    "genre": "news",
+    "topic": "Environment & Oceans",
+    "focus": "Participle and absolute clauses",
+    "emoji": "🌊",
+    "words": 498,
+    "paragraphs": [
+      "KINGSTON — Ignoring months of protests from scientists and environmental groups, an international mining consortium has been granted permission to begin trial extraction of metal-rich nodules from the floor of the Pacific Ocean, in a decision that critics described yesterday as \"a point of no return\". Meeting behind closed doors on Tuesday, the council of the body that regulates the international seabed approved a two-year test licence for Meridian Seabed Resources, a consortium registered in Canada.",
+      "The nodules, potato-sized lumps lying on the seabed at depths of four to six kilometres, contain cobalt, nickel and manganese, all of which are used in the batteries of electric vehicles. Formed over millions of years, they grow at a rate of a few millimetres per million years, which, scientists point out, means that once removed they are effectively gone for ever.",
+      "Speaking at a press conference after the vote, Meridian's chief executive, Daniel Osei, insisted that the operation would be carried out responsibly. \"Having studied this area for over a decade, we understand its ecology better than anyone,\" he said. \"The world needs these metals for the energy transition, and taking them from the ocean floor causes far less damage than cutting down rainforest to dig open-pit mines on land.\"",
+      "Marine biologists strongly disagree. Collecting the nodules requires vehicles the size of a combine harvester to crawl across the seabed, sucking up sediment along with the nodules and pumping it to a ship on the surface. The process, they warn, will destroy habitats that scientists have barely begun to explore. Asked how many species might be affected, Dr Sofía Lindqvist, a deep-sea ecologist based in Gothenburg, said that nobody could answer that question honestly. \"In some of our surveys, nine out of ten animals collected were new to science,\" she said. \"We are proposing to strip-mine a place we have not yet even catalogued.\"",
+      "Concerns also focus on the plumes of sediment that the mining would generate. Released back into the water, these clouds of fine particles could drift for hundreds of kilometres, potentially smothering filter-feeding animals and disrupting fisheries far from the mining site itself. Meridian says its equipment has been designed to minimise plumes, though independent testing has so far been limited.",
+      "The decision has divided governments. A group of more than thirty countries, Chile, Costa Rica and Colombia among them, has called for a moratorium on deep-sea mining until its environmental effects are better understood. Other states, their economies heavily dependent on future royalties, have backed the licence. Several car manufacturers, meanwhile, have pledged not to use metals from the seabed, citing the risk to their reputations.",
+      "With the test licence now approved, attention is turning to the next stage. Environmental groups, their legal options narrowing, say they will press for the trial to be monitored by independent observers. \"This is not over,\" said one campaigner outside the meeting, holding a banner reading \"Leave the deep alone\". \"But having been ignored for so long, we're not expecting much.\""
+    ],
+    "glossary": [
+      [
+        "consortium",
+        "consorcio"
+      ],
+      [
+        "nodules",
+        "nódulos"
+      ],
+      [
+        "combine harvester",
+        "cosechadora"
+      ],
+      [
+        "sediment",
+        "sedimento"
+      ],
+      [
+        "strip-mine",
+        "arrasar con minería a cielo abierto"
+      ],
+      [
+        "catalogued",
+        "catalogado, inventariado"
+      ],
+      [
+        "plumes",
+        "nubes, penachos (de sedimento)"
+      ],
+      [
+        "smothering",
+        "asfixiando, sepultando"
+      ],
+      [
+        "moratorium",
+        "moratoria, suspensión temporal"
+      ],
+      [
+        "royalties",
+        "regalías"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What exactly has Meridian Seabed Resources been given?",
+        "options": [
+          "Permission to mine the seabed permanently",
+          "A two-year test licence",
+          "Funding from the Canadian government",
+          "A licence to explore rainforests"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"approved a two-year test licence for Meridian Seabed Resources\"."
+      },
+      {
+        "type": "tf",
+        "q": "The nodules grow back within a few decades.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: crecen \"a few millimetres per million years\", así que \"once removed they are effectively gone for ever\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the participle clause from paragraph 3: \"______ studied this area for over a decade, we understand its ecology better than anyone.\" (1 word)",
+        "answer": "Having",
+        "accept": [],
+        "explain_es": "\"Having + participio\" expresa una acción anterior a la del verbo principal."
+      },
+      {
+        "type": "mc",
+        "q": "What is Osei's main argument for seabed mining?",
+        "options": [
+          "It creates more jobs than any other industry",
+          "The metals are not needed on land",
+          "It has been fully tested by independent experts",
+          "It is less damaging than digging mines in rainforests"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"causes far less damage than cutting down rainforest to dig open-pit mines on land\"."
+      },
+      {
+        "type": "tf",
+        "q": "Dr Lindqvist says that in some surveys most of the animals collected were unknown to science.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"nine out of ten animals collected were new to science\"."
+      },
+      {
+        "type": "transform",
+        "q": "Join the sentences with a participle clause, as in paragraph 5: \"The particles are released back into the water. They could drift for hundreds of kilometres.\"",
+        "answer": "Released back into the water, they could drift for hundreds of kilometres.",
+        "accept": [
+          "Released back into the water, the particles could drift for hundreds of kilometres",
+          "Released back into the water they could drift for hundreds of kilometres",
+          "Released back into the water the particles could drift for hundreds of kilometres"
+        ],
+        "explain_es": "Párrafo 5: \"Released back into the water, these clouds ... could drift\"; el participio pasado reemplaza una oración pasiva."
+      },
+      {
+        "type": "mc",
+        "q": "Why have several car manufacturers refused to use seabed metals?",
+        "options": [
+          "Because of the risk to their reputations",
+          "Because the metals are too expensive",
+          "Because the government has banned them",
+          "Because the batteries do not work"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 6: \"citing the risk to their reputations\"."
+      },
+      {
+        "type": "tf",
+        "q": "Daniel Osei used to work as a marine biologist.",
+        "answer": "NG",
+        "explain_es": "El texto no dice nada sobre la carrera anterior de Osei."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-language-loss-article",
+    "title": "The Last Speakers",
+    "level": "C1",
+    "genre": "article",
+    "topic": "Language & Culture",
+    "focus": "Cleft sentences (what…, it is… that)",
+    "emoji": "🗣️",
+    "words": 534,
+    "paragraphs": [
+      "It is often said that a language dies every few weeks somewhere in the world. Whatever the precise figure, what is not in dispute is the direction of travel: of the roughly seven thousand languages spoken today, linguists estimate that up to half could fall silent by the end of this century. What makes the loss so difficult to grasp is that it happens quietly. There is rarely a single moment of extinction; rather, there is a generation of parents who decide, often for understandable reasons, to speak to their children in something else.",
+      "It was precisely such a decision that Rosalba Yepes, now eighty-one, describes when she talks about her childhood in a village in the Vaupés region of south-eastern Colombia. Her parents spoke Tikuyé, a language with perhaps forty fluent speakers today. \"What my father wanted,\" she explains, \"was for us to do well at the mission school, and the teachers punished us if they heard Tikuyé.\" It was Spanish, therefore, that she spoke to her own children, and it is Spanish that her grandchildren speak now.",
+      "Why should this matter to anyone outside the community? The answer most commonly given is that every language encodes a particular way of understanding the world. Tikuyé, for example, has more than twenty words for different stages in the ripening of a single palm fruit, and verbs that indicate whether the speaker saw an event personally or merely heard about it. What disappears with a language, in other words, is not just vocabulary but knowledge: of plants, of land, of history, and of ways of reasoning that may exist nowhere else.",
+      "Yet it is not only scholars who lose out. For the communities themselves, the decline of a language is frequently bound up with a broader sense of dislocation. Research in several countries has suggested that young people who are able to speak their ancestral language tend to report a stronger sense of identity and wellbeing, though the causes of that association are complex. What many elders mourn is less the words themselves than the songs, jokes and stories that cannot be fully translated.",
+      "The good news is that decline is not inevitable. The examples most often cited are those of languages that were brought back from the brink through determined community effort, typically through \"language nests\" in which young children are cared for entirely in the endangered language. It is this model that a small group in Rosalba's village has begun to adapt. Twice a week, she and two other elders spend the afternoon with a dozen children, cooking, telling stories and naming plants. All they ask in return is that the children use Tikuyé while they are there.",
+      "Technology can help, too, although its role is easily overstated. Recordings and digital dictionaries preserve a language, but it is speakers, not archives, that keep it alive. What revitalisation ultimately depends on is whether a language is used in daily life and whether young people see a reason to use it. Asked what gives her hope, Rosalba points to her great-granddaughter, aged six, who recently corrected her pronunciation of a bird's name. \"That,\" she says, laughing, \"was the moment I knew we had a chance.\""
+    ],
+    "glossary": [
+      [
+        "direction of travel",
+        "tendencia, rumbo que llevan las cosas"
+      ],
+      [
+        "fall silent",
+        "enmudecer, dejar de hablarse"
+      ],
+      [
+        "encodes",
+        "codifica"
+      ],
+      [
+        "ripening",
+        "maduración"
+      ],
+      [
+        "bound up with",
+        "estrechamente ligado a"
+      ],
+      [
+        "dislocation",
+        "desarraigo"
+      ],
+      [
+        "elders",
+        "mayores, abuelos de la comunidad"
+      ],
+      [
+        "mourn",
+        "lamentan, lloran la pérdida de"
+      ],
+      [
+        "brink",
+        "borde (de la desaparición)"
+      ],
+      [
+        "overstated",
+        "exagerado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why, according to the writer, is language loss so difficult to grasp?",
+        "options": [
+          "Because nobody knows how many languages exist",
+          "Because governments hide the figures",
+          "Because it happens quietly, without a single moment of extinction",
+          "Because it only happens in remote places"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"What makes the loss so difficult to grasp is that it happens quietly\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rosalba spoke Tikuyé to her own children.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"It was Spanish, therefore, that she spoke to her own children\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the cleft sentence from paragraph 2: \"What my father wanted ______ for us to do well at the mission school.\" (1 word)",
+        "answer": "was",
+        "accept": [],
+        "explain_es": "Oración escindida: \"What + sujeto + verbo + be + foco\": \"What my father wanted was ...\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which feature of Tikuyé is given as an example of encoded knowledge?",
+        "options": [
+          "It has no words for colours",
+          "Its verbs show whether the speaker saw an event or only heard about it",
+          "It uses the same word for all fruits",
+          "It borrows most of its words from Spanish"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"verbs that indicate whether the speaker saw an event personally or merely heard about it\"."
+      },
+      {
+        "type": "tf",
+        "q": "Rosalba's grandchildren study Tikuyé at their state school.",
+        "answer": "NG",
+        "explain_es": "El texto dice que sus nietos hablan español y describe el \"language nest\", pero no menciona clases de tikuyé en la escuela."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the cleft sentence from paragraph 6: \"it is speakers, not archives, ______ keep it alive.\" (1 word)",
+        "answer": "that",
+        "accept": [
+          "who"
+        ],
+        "explain_es": "\"It is + foco + that ...\": la estructura destaca a los hablantes frente a los archivos."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as a cleft sentence beginning with \"What\": \"Many elders mourn the songs and stories.\"",
+        "answer": "What many elders mourn is the songs and stories.",
+        "accept": [
+          "What many elders mourn are the songs and stories",
+          "What many elders mourn is the songs and stories"
+        ],
+        "explain_es": "Párrafo 4: \"What many elders mourn is less the words themselves than the songs ...\"."
+      },
+      {
+        "type": "vocab",
+        "q": "Languages \"brought back from the brink\" (paragraph 5) were…",
+        "options": [
+          "translated into other languages",
+          "invented again from nothing",
+          "very close to disappearing",
+          "taught only in universities"
+        ],
+        "answer": 2,
+        "explain_es": "\"The brink\" = el borde; estar \"on the brink\" es estar a punto de desaparecer."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-cultivated-meat-review",
+    "title": "Dinner Grown in a Tank",
+    "level": "C1",
+    "genre": "review",
+    "topic": "Food & Technology",
+    "focus": "Compound adjectives",
+    "emoji": "🧫",
+    "words": 486,
+    "paragraphs": [
+      "I arrived at Cell & Ember, a sixty-seat restaurant tucked behind a row of old shophouses in Singapore's Tiong Bahru district, in a deeply sceptical frame of mind. The restaurant is one of a handful worldwide licensed to serve cultivated chicken: meat grown from animal cells in steel tanks rather than taken from a slaughtered bird. The concept has been the subject of so much breathless, investor-driven hype that I half expected a science-fair exhibit masquerading as dinner. What I got was more interesting, and more complicated, than that.",
+      "The eight-course tasting menu, priced at a not-inconsiderable 180 Singapore dollars, is built around the same ingredient served in different forms. Only three of the dishes contain cultivated meat; the rest are plant-based, a decision the head chef, Marcus Tan, defends as a way of letting the star ingredient be judged in context. The opening course, a paper-thin rice cracker topped with cultivated chicken skin crisped in its own fat, was genuinely excellent: salty, shatteringly crunchy and unmistakably chicken-flavoured.",
+      "The second meat dish was less successful. A slow-cooked \"breast\", bound with a small amount of plant protein to give it structure, had a uniform, almost spongy texture that no amount of well-judged seasoning could disguise. Cultivated meat, it turns out, is much better at imitating minced or finely chopped meat than whole cuts, which depend on muscle fibres and connective tissue that are still difficult to reproduce in a tank. Tan is admirably open about this. \"We're not pretending it's a farm-raised bird,\" he told me. \"It's a new ingredient. We're still learning what it does well.\"",
+      "What it does well, on this evidence, is dumplings. The third meat course, a trio of hand-folded dumplings in a ginger-infused broth, was the high point of the meal, the filling juicy and deeply savoury in a way that made the technological backstory seem almost beside the point. My dining companion, a lifelong vegetarian who had agreed to come only out of curiosity, ate all of hers and then asked, slightly guiltily, whether there were any more.",
+      "Service was warm and knowledgeable, if occasionally over-eager to explain the science. A ten-minute talk on bioreactors between courses, delivered by a well-meaning young waiter, was more than most diners will want. The drinks list, by contrast, is short and thoughtfully chosen, with several low-alcohol options and an excellent house-made lime soda. Dessert, a coconut and pandan custard, was pleasant but instantly forgettable.",
+      "Is cultivated meat the future? On the basis of one meal, I cannot say, and anyone who claims certainty either way is probably selling something. The environmental claims are still hotly debated, and the cost of production remains far too high for everyday eating. But as a dining experience, Cell & Ember is thought-provoking, occasionally delicious and refreshingly honest about its limits. I left less sceptical than I arrived, which, for a long-time cynic like me, is no small achievement."
+    ],
+    "glossary": [
+      [
+        "tucked behind",
+        "escondido detrás de"
+      ],
+      [
+        "slaughtered",
+        "sacrificado (en el matadero)"
+      ],
+      [
+        "breathless",
+        "exaltado, entusiasta en exceso"
+      ],
+      [
+        "hype",
+        "bombo publicitario"
+      ],
+      [
+        "masquerading as",
+        "haciéndose pasar por"
+      ],
+      [
+        "shatteringly crunchy",
+        "crujientísimo"
+      ],
+      [
+        "minced",
+        "molido (carne molida)"
+      ],
+      [
+        "connective tissue",
+        "tejido conectivo"
+      ],
+      [
+        "beside the point",
+        "irrelevante, sin importancia"
+      ],
+      [
+        "over-eager",
+        "demasiado entusiasta"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How did the reviewer feel on arriving at the restaurant?",
+        "options": [
+          "Excited and hungry",
+          "Deeply sceptical",
+          "Nervous about the price",
+          "Already convinced by the concept"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 1: \"in a deeply sceptical frame of mind\"."
+      },
+      {
+        "type": "tf",
+        "q": "All eight courses on the tasting menu contain cultivated meat.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: \"Only three of the dishes contain cultivated meat; the rest are plant-based\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why was the second meat dish less successful?",
+        "options": [
+          "It was too salty",
+          "It was served cold",
+          "It contained too much ginger",
+          "Its texture was uniform and spongy, as whole cuts are hard to reproduce"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 3: \"a uniform, almost spongy texture\" porque los cortes enteros dependen de fibras y tejido conectivo difíciles de reproducir."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the compound adjective from paragraph 4: \"a trio of ______ dumplings in a ginger-infused broth\" (= dumplings that were folded by hand)",
+        "answer": "hand-folded",
+        "accept": [
+          "hand folded"
+        ],
+        "explain_es": "Adjetivo compuesto sustantivo + participio: \"hand-folded\" (doblados a mano)."
+      },
+      {
+        "type": "tf",
+        "q": "The reviewer's dining companion does not normally eat meat.",
+        "answer": "T",
+        "explain_es": "Párrafo 4: \"a lifelong vegetarian\"."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected compound adjective): \"A ten-minutes talk on bioreactors was more than most diners will want.\"",
+        "answer": "ten-minute",
+        "accept": [
+          "ten minute",
+          "10-minute"
+        ],
+        "explain_es": "En los adjetivos compuestos con número el sustantivo va en singular: \"a ten-minute talk\" (párrafo 5)."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, the technology seemed \"almost beside the point\". This means it seemed…",
+        "options": [
+          "irrelevant",
+          "dangerous",
+          "very impressive",
+          "difficult to understand"
+        ],
+        "answer": 0,
+        "explain_es": "\"Beside the point\" = irrelevante: la comida estaba tan rica que la tecnología dejó de importar."
+      },
+      {
+        "type": "mc",
+        "q": "What is the reviewer's overall verdict?",
+        "options": [
+          "Cultivated meat will soon replace farming",
+          "The restaurant is overpriced and dishonest",
+          "The meal was thought-provoking and honest, and left the reviewer less sceptical",
+          "The reviewer would never return"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 6: \"thought-provoking, occasionally delicious and refreshingly honest\" y \"I left less sceptical than I arrived\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-mediator-interview",
+    "title": "Inside the Room: A Mediator Looks Back",
+    "level": "C1",
+    "genre": "interview",
+    "topic": "Diplomacy & Negotiation",
+    "focus": "Modal perfects (should have, needn't have, can't have)",
+    "emoji": "🕊️",
+    "words": 486,
+    "paragraphs": [
+      "For eleven years, Dr Helena Varga worked as a mediator in international disputes over water. Her most difficult case, a three-year negotiation between two neighbouring states over a shared river, ended in a treaty that is still in force. The talks were confidential, so the countries are not named here. She now teaches negotiation at a university in Geneva. We spoke to her about what she would do differently.",
+      "Q: Looking back, was the agreement inevitable? A: Not at all. It could easily have collapsed, and on at least two occasions it very nearly did. People assume that because a treaty was signed, it must have been obvious all along that both sides wanted one. In reality, there were months when I was convinced we'd failed.",
+      "Q: What was the lowest point? A: The second winter. Water released from a dam upstream caused flooding in a border town, and the delegation from downstream walked out. I should have seen it coming. There had been warning signs in the local press for weeks, and I might have prepared both sides for it if I'd been paying closer attention to what was happening outside the room rather than inside it.",
+      "Q: How did you get them back to the table? A: Slowly, and mostly informally. I visited both capitals and listened far more than I spoke. One of the negotiators told me later that he needn't have walked out at all; he'd been instructed to by his minister, who was facing an election. That's the kind of thing a mediator rarely knows at the time. You can only guess at the pressures people are under.",
+      "Q: Is there anything you regret? A: Yes. Early on, I put forward a compromise on dry-season water quotas which I thought was elegant. It was rejected immediately, and I was hurt, frankly. With hindsight, it can't have looked elegant to them; it must have looked as though I was taking sides, because the proposal came from me rather than emerging from the parties themselves. I shouldn't have pushed it so hard. A month later, almost the same idea was suggested by one of the delegations, and it was accepted within a week.",
+      "Q: Did you ever feel you'd overprepared? A: Constantly. I spent weeks building detailed hydrological models that nobody wanted to discuss. I could have saved myself the trouble. What the delegates actually needed was reassurance that the other side would honour an agreement, and that is a question of trust rather than data. They would have signed much sooner if I'd understood that.",
+      "Q: What advice would you give a young mediator? A: Don't mistake silence for agreement, and don't take rejection personally. Had I understood that at the start, I would have saved myself a great deal of anxiety. And keep a notebook. Half of what I learned, I'd have forgotten by now if I hadn't written it down."
+    ],
+    "glossary": [
+      [
+        "in force",
+        "vigente"
+      ],
+      [
+        "upstream",
+        "río arriba"
+      ],
+      [
+        "downstream",
+        "río abajo"
+      ],
+      [
+        "walked out",
+        "se retiró, abandonó la reunión"
+      ],
+      [
+        "border town",
+        "pueblo fronterizo"
+      ],
+      [
+        "quotas",
+        "cuotas"
+      ],
+      [
+        "With hindsight",
+        "en retrospectiva, viéndolo ahora"
+      ],
+      [
+        "taking sides",
+        "tomar partido"
+      ],
+      [
+        "honour an agreement",
+        "cumplir un acuerdo"
+      ],
+      [
+        "reassurance",
+        "garantía, tranquilidad"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does Varga say about whether the agreement was inevitable?",
+        "options": [
+          "It could easily have collapsed",
+          "It was obvious from the start",
+          "Both sides wanted it from the first day",
+          "It was imposed by other countries"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 2: \"Not at all. It could easily have collapsed\"."
+      },
+      {
+        "type": "tf",
+        "q": "Varga believes she could have anticipated the walk-out.",
+        "answer": "T",
+        "explain_es": "Párrafo 3: \"I should have seen it coming. There had been warning signs in the local press for weeks\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete from paragraph 3: \"I ______ seen it coming.\" (2 words)",
+        "answer": "should have",
+        "accept": [
+          "should've"
+        ],
+        "explain_es": "\"should have + participio\" expresa una crítica o arrepentimiento sobre el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why did one negotiator walk out, according to what he told her later?",
+        "options": [
+          "He disliked Varga personally",
+          "His town had been flooded",
+          "His minister, who was facing an election, told him to",
+          "He disagreed with the water quotas"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 4: \"he'd been instructed to by his minister, who was facing an election\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a modal perfect, as in paragraph 5: \"It is impossible that it looked elegant to them.\" → \"It ______ looked elegant to them.\" (2 words)",
+        "answer": "can't have",
+        "accept": [
+          "cannot have",
+          "couldn't have",
+          "could not have",
+          "can not have"
+        ],
+        "explain_es": "\"can't have + participio\" = deducción negativa sobre el pasado (es imposible que ...)."
+      },
+      {
+        "type": "mc",
+        "q": "Why was almost the same compromise accepted a month later?",
+        "options": [
+          "The weather had changed",
+          "Varga offered money to both sides",
+          "A new minister had been elected",
+          "This time it was suggested by one of the delegations"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 5: \"almost the same idea was suggested by one of the delegations, and it was accepted\"."
+      },
+      {
+        "type": "tf",
+        "q": "Varga studied hydrology at university.",
+        "answer": "NG",
+        "explain_es": "Ella construyó modelos hidrológicos, pero el texto no dice qué estudió."
+      },
+      {
+        "type": "vocab",
+        "q": "\"With hindsight\" (paragraph 5) means…",
+        "options": [
+          "in secret",
+          "looking back now, knowing what happened",
+          "without any doubt",
+          "from the other side's point of view"
+        ],
+        "answer": 1,
+        "explain_es": "\"With hindsight\" = en retrospectiva, con lo que se sabe ahora."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-risk-psychology-blog",
+    "title": "Why I Fear Flying but Text at Red Lights",
+    "level": "C1",
+    "genre": "blog",
+    "topic": "Psychology of Risk",
+    "focus": "Mixed and inverted conditionals (had I known, should you, were it not for)",
+    "emoji": "🎲",
+    "words": 528,
+    "paragraphs": [
+      "Had you told me five years ago that I would one day write a blog post about my own irrationality, I would have laughed. I'm an actuary, after all. I spend my working days in Bogotá calculating the probability of things going wrong, and I like to think of myself as a person who weighs risks sensibly. Then, last year, I caught myself gripping the armrest on a perfectly smooth flight to Lima when, only that morning, I had answered a text message at a red light. If I were as rational as I claim to be, it would be the other way round.",
+      "Psychologists have known about this mismatch for decades. We are not, it turns out, very good at judging risk by numbers. Instead, we rely on feelings, and our feelings are shaped by a handful of predictable biases. Risks that are dramatic, unfamiliar or outside our control frighten us far more than ones that are routine, familiar and self-chosen, even when the routine ones are statistically much more dangerous. Were it not for this tendency, nobody would be more nervous in a plane than in a car.",
+      "Another factor is what researchers call the availability heuristic: we judge how likely something is by how easily examples come to mind. A plane crash dominates the news for days; the thousands of road deaths each year rarely make headlines. If air accidents were reported as rarely as car accidents, we would probably think about them just as little. Had I not watched hours of documentaries about aviation disasters as a teenager, I suspect I would be a much calmer passenger today.",
+      "Then there is the illusion of control. When I'm driving, my hands are on the wheel, and I feel, rather foolishly, that nothing bad can happen because I'm in charge. On a plane, I have handed my fate to strangers. Should the pilot make a mistake, there is nothing I can do about it. The fact that the pilot has thousands of hours of training and I have a phone in my lap does not seem to register with the part of my brain that produces fear.",
+      "Does any of this matter? I think it does, because our misjudgements shape public policy as well as private behaviour. Governments under pressure from frightened voters tend to spend heavily on preventing rare, spectacular dangers and comparatively little on common, mundane ones. If we had paid as much attention to road safety as we have to plane crashes over the past twenty years, many more people would be alive today.",
+      "So what am I doing about it? Not as much as I should, admittedly. My phone now goes in the glove compartment whenever I drive, a habit I would have dismissed as unnecessary a year ago. On flights, I try to remind myself of the actual numbers, with mixed results. And I've started asking a simple question whenever something frightens me: if this risk were boring, would I still be worried? Should you decide to try it yourself, I'd love to hear how it goes. Had I started earlier, I might have saved myself a lot of white knuckles."
+    ],
+    "glossary": [
+      [
+        "actuary",
+        "actuario (experto en cálculo de riesgos)"
+      ],
+      [
+        "weighs risks",
+        "sopesa los riesgos"
+      ],
+      [
+        "gripping the armrest",
+        "agarrando con fuerza el apoyabrazos"
+      ],
+      [
+        "mismatch",
+        "desajuste, discrepancia"
+      ],
+      [
+        "biases",
+        "sesgos"
+      ],
+      [
+        "availability heuristic",
+        "heurística de disponibilidad"
+      ],
+      [
+        "make headlines",
+        "salir en primera plana, ser noticia"
+      ],
+      [
+        "mundane",
+        "cotidiano, rutinario"
+      ],
+      [
+        "glove compartment",
+        "guantera"
+      ],
+      [
+        "white knuckles",
+        "nudillos blancos (tensión, miedo)"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What made the writer notice their own irrationality?",
+        "options": [
+          "A car accident in Bogotá",
+          "A conversation with a psychologist",
+          "A failed calculation at work",
+          "Being frightened on a smooth flight after texting at a red light that morning"
+        ],
+        "answer": 3,
+        "explain_es": "Párrafo 1: \"gripping the armrest on a perfectly smooth flight ... only that morning, I had answered a text message at a red light\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer works as a pilot.",
+        "answer": "F",
+        "explain_es": "Párrafo 1: \"I'm an actuary\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the inverted conditional from paragraph 2: \"______ it not for this tendency, nobody would be more nervous in a plane than in a car.\" (1 word)",
+        "answer": "Were",
+        "accept": [],
+        "explain_es": "\"Were it not for ...\" = \"If it were not for ...\": condicional invertido formal."
+      },
+      {
+        "type": "mc",
+        "q": "What is the \"availability heuristic\"?",
+        "options": [
+          "Choosing the safest available form of transport",
+          "Judging how likely something is by how easily examples come to mind",
+          "Trusting experts who are available on television",
+          "Avoiding risks that are not familiar"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 3: \"we judge how likely something is by how easily examples come to mind\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with inversion, beginning with \"Had\": \"If I had started earlier, I might have saved myself a lot of white knuckles.\"",
+        "answer": "Had I started earlier, I might have saved myself a lot of white knuckles.",
+        "accept": [
+          "Had I started earlier I might have saved myself a lot of white knuckles"
+        ],
+        "explain_es": "Párrafo 6: \"Had I started earlier, I might have saved ...\"; se omite \"if\" y se invierte \"had\" + sujeto."
+      },
+      {
+        "type": "tf",
+        "q": "The writer now keeps the phone in the glove compartment while driving.",
+        "answer": "T",
+        "explain_es": "Párrafo 6: \"My phone now goes in the glove compartment whenever I drive\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the mixed conditional from paragraph 3: \"Had I not watched hours of documentaries ... as a teenager, I suspect I ______ a much calmer passenger today.\" (2 words)",
+        "answer": "would be",
+        "accept": [
+          "'d be"
+        ],
+        "explain_es": "Condicional mixto: pasado (\"Had I not watched\") con resultado presente (\"would be ... today\")."
+      },
+      {
+        "type": "mc",
+        "q": "What point does the writer make about governments?",
+        "options": [
+          "They spend heavily on rare, spectacular dangers and little on common ones",
+          "They ignore what voters think",
+          "They have reduced road deaths dramatically",
+          "They should ban mobile phones"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 5: \"spend heavily on preventing rare, spectacular dangers and comparatively little on common, mundane ones\"."
+      }
+    ]
+  },
+  {
+    "id": "r3-c1-tower-letter",
+    "title": "Letter: Stop and Look at the Tower",
+    "level": "C1",
+    "genre": "letter",
+    "topic": "Architecture & Cities",
+    "focus": "The subjunctive (insist / recommend that)",
+    "emoji": "🏙️",
+    "words": 493,
+    "paragraphs": [
+      "Dear Editor, I write as a resident of the Getsemaní neighbourhood, and as a retired structural engineer, to express my grave concern about the proposed Torre Bahía, the forty-eight-storey hotel and apartment tower whose design was presented to the city council last week. Let me say at the outset that I am not opposed to tall buildings, nor to modern architecture. I am, however, opposed to this building, in this place, approved in this manner.",
+      "The tower would stand barely four hundred metres from the walls of the historic centre, a World Heritage site. The architect's own visual studies, which were made public only after a formal request, show that it would be clearly visible from within the old city and would dominate the skyline seen from the bay. International heritage guidelines recommend that any new development in the buffer zone of a protected site be assessed for its visual impact before a permit is granted. To my knowledge, no such assessment has been carried out. I therefore urge that the council suspend the approval process until one has been completed by independent specialists.",
+      "My second concern relates to infrastructure. Getsemaní's drainage system already struggles during the rainy season, and its narrow streets were never designed for the traffic that several hundred hotel rooms and apartments would generate. It is essential that the developer publish a full traffic and drainage study, and that the study be reviewed by the city's own engineers rather than by consultants paid by the developer. Residents also ask that the study take account of rising sea levels, which the current plans appear to ignore entirely.",
+      "Third, there is the question of process. The consultation period lasted just three weeks and coincided with the Christmas holidays, when many residents were away. Several neighbourhood associations requested that the deadline be extended; their requests went unanswered. It is hardly surprising, under these circumstances, that so many people feel the decision has already been taken behind closed doors. If the council wishes to retain public trust, it is vital that it be seen to listen, not merely to inform.",
+      "The architect, in a recent interview, suggested that critics were \"nostalgic\" and \"afraid of the future\". I would gently point out that the future of Cartagena depends very largely on the historic character that attracts visitors in the first place. A city that sacrifices its most valuable asset for short-term investment is not being bold; it is being careless.",
+      "I do not ask that the project be abandoned. I ask that it be properly examined. Specifically, I propose that the council commission an independent heritage impact assessment, that it extend the consultation by at least sixty days, and that it hold a public hearing in the neighbourhood itself. Should the tower survive that scrutiny, so be it. If it cannot, it would be far better that we find out now than after the concrete has been poured. Yours faithfully, Ramiro Castellanos Díaz, Cartagena."
+    ],
+    "glossary": [
+      [
+        "grave concern",
+        "profunda preocupación"
+      ],
+      [
+        "at the outset",
+        "desde el principio"
+      ],
+      [
+        "skyline",
+        "perfil urbano, silueta de la ciudad"
+      ],
+      [
+        "buffer zone",
+        "zona de amortiguamiento"
+      ],
+      [
+        "permit",
+        "licencia, permiso"
+      ],
+      [
+        "drainage",
+        "drenaje, alcantarillado"
+      ],
+      [
+        "behind closed doors",
+        "a puerta cerrada"
+      ],
+      [
+        "asset",
+        "activo, patrimonio valioso"
+      ],
+      [
+        "hearing",
+        "audiencia"
+      ],
+      [
+        "scrutiny",
+        "escrutinio, examen minucioso"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What is the writer's attitude to tall buildings in general?",
+        "options": [
+          "He thinks they should be banned in Cartagena",
+          "He prefers them to historic buildings",
+          "He is not opposed to them",
+          "He has never thought about them"
+        ],
+        "answer": 2,
+        "explain_es": "Párrafo 1: \"I am not opposed to tall buildings, nor to modern architecture\"."
+      },
+      {
+        "type": "tf",
+        "q": "The architect published the visual studies voluntarily.",
+        "answer": "F",
+        "explain_es": "Párrafo 2: los estudios \"were made public only after a formal request\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete with the subjunctive, as in paragraph 3: \"It is essential that the developer ______ a full traffic and drainage study.\" (1 word)",
+        "answer": "publish",
+        "accept": [],
+        "explain_es": "Tras \"It is essential that\" se usa el subjuntivo: verbo base sin -s, \"the developer publish\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the writer criticise the consultation?",
+        "options": [
+          "It lasted only three weeks and coincided with the Christmas holidays",
+          "It was held in English only",
+          "It was organised by the architect",
+          "It took place in another city"
+        ],
+        "answer": 0,
+        "explain_es": "Párrafo 4: \"lasted just three weeks and coincided with the Christmas holidays\"."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected words): \"Several neighbourhood associations requested that the deadline was extended.\"",
+        "answer": "be extended",
+        "accept": [
+          "should be extended"
+        ],
+        "explain_es": "Tras \"request that\" va el subjuntivo: \"that the deadline be extended\" (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "The city council has already replied to the writer.",
+        "answer": "NG",
+        "explain_es": "El texto no dice si el concejo respondió a esta carta (solo que las asociaciones no recibieron respuesta)."
+      },
+      {
+        "type": "mc",
+        "q": "How does the writer respond to the claim that critics are \"nostalgic\"?",
+        "options": [
+          "He agrees that he is afraid of the future",
+          "He argues that Cartagena's future depends on its historic character",
+          "He says the architect should resign",
+          "He ignores it completely"
+        ],
+        "answer": 1,
+        "explain_es": "Párrafo 5: \"the future of Cartagena depends very largely on the historic character that attracts visitors\"."
+      },
+      {
+        "type": "tf",
+        "q": "The writer wants the project to be cancelled completely.",
+        "answer": "F",
+        "explain_es": "Párrafo 6: \"I do not ask that the project be abandoned. I ask that it be properly examined.\""
+      }
+    ]
+  }
+]

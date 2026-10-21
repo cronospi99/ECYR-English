@@ -1,0 +1,1575 @@
+[
+  {
+    "id": "r3-a1-new-flatmate",
+    "title": "My New Flatmate",
+    "level": "A1",
+    "genre": "email",
+    "topic": "Home & people",
+    "focus": "Verb to be",
+    "emoji": "🏠",
+    "words": 137,
+    "paragraphs": [
+      "Hi Mum, How are you? I'm fine. My new flatmate is here! Her name is Chloe and she is from Leeds, in England. She is twenty-four years old.",
+      "Chloe is a nurse at a big hospital near our flat. She is very friendly and she is a good cook, too. Her room is next to my room. It is small, but it is very nice.",
+      "We are very different. I am quiet, but Chloe isn't quiet! She is funny and she is always happy. Her favourite things are music and football. Are you surprised? I'm not a football fan, but now I'm interested.",
+      "Our flat is on the third floor. The kitchen isn't big, but the living room is great. Are you free on Sunday? Chloe and I are at home all day. Visit us! Love, Valentina"
+    ],
+    "glossary": [
+      [
+        "flatmate",
+        "compañera de apartamento"
+      ],
+      [
+        "nurse",
+        "enfermera"
+      ],
+      [
+        "friendly",
+        "amable, simpática"
+      ],
+      [
+        "cook",
+        "cocinera"
+      ],
+      [
+        "quiet",
+        "callada, tranquila"
+      ],
+      [
+        "funny",
+        "chistosa, divertida"
+      ],
+      [
+        "surprised",
+        "sorprendida"
+      ],
+      [
+        "floor",
+        "piso (de un edificio)"
+      ],
+      [
+        "free",
+        "libre, desocupada"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Chloe from?",
+        "options": [
+          "London",
+          "Leeds",
+          "Cali",
+          "Manchester"
+        ],
+        "answer": 1,
+        "explain_es": "Valentina escribe: 'she is from Leeds, in England'."
+      },
+      {
+        "type": "tf",
+        "q": "Chloe is a teacher.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'Chloe is a nurse at a big hospital'. Es enfermera, no profesora."
+      },
+      {
+        "type": "mc",
+        "q": "How old is Chloe?",
+        "options": [
+          "Twenty-two",
+          "Thirty-four",
+          "Twenty-four"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'She is twenty-four years old'."
+      },
+      {
+        "type": "tf",
+        "q": "The kitchen in the flat is big.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'The kitchen isn't big'."
+      },
+      {
+        "type": "gap",
+        "q": "Chloe ____ a good cook, too.",
+        "answer": "is",
+        "accept": [
+          "'s"
+        ],
+        "explain_es": "Con 'she/he/it' usamos 'is'. El texto dice: 'she is a good cook, too'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'We is very different.'",
+        "answer": "We are very different.",
+        "accept": [
+          "We're very different.",
+          "We are very different"
+        ],
+        "explain_es": "Con 'we' el verbo 'to be' es 'are'. El párrafo 3 dice: 'We are very different'."
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: 'Chloe is quiet.'",
+        "answer": "Chloe isn't quiet.",
+        "accept": [
+          "Chloe is not quiet.",
+          "Chloe isn't quiet",
+          "She isn't quiet.",
+          "She is not quiet."
+        ],
+        "explain_es": "La forma negativa es 'is not / isn't'. El texto dice: 'Chloe isn't quiet!'"
+      },
+      {
+        "type": "mc",
+        "q": "What floor is the flat on?",
+        "options": [
+          "The first floor",
+          "The second floor",
+          "The fifth floor",
+          "The third floor"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'Our flat is on the third floor'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-zookeeper",
+    "title": "A Day with a Zookeeper",
+    "level": "A1",
+    "genre": "profile",
+    "topic": "Jobs & animals",
+    "focus": "Present simple for routines",
+    "emoji": "🦒",
+    "words": 141,
+    "paragraphs": [
+      "Andrés Rincón works at a zoo in Cali. He is a zookeeper, and he loves animals. His day starts very early.",
+      "Andrés gets up at five o'clock every morning. He has a quick breakfast and takes the bus to the zoo. He arrives at six thirty and puts on his green uniform.",
+      "First, he cleans the animals' homes. Then he gives the animals their food. The giraffes eat leaves, and the monkeys eat fruit. The big cats eat meat, but Andrés doesn't feed them. Another zookeeper does that job.",
+      "At eleven, Andrés talks to visitors. Children ask a lot of questions, and he answers them. He has lunch at one o'clock with his friends from work.",
+      "He finishes work at three. In the evening, he watches TV or reads about animals. He goes to bed at nine because he is tired!"
+    ],
+    "glossary": [
+      [
+        "zoo",
+        "zoológico"
+      ],
+      [
+        "zookeeper",
+        "cuidador de zoológico"
+      ],
+      [
+        "uniform",
+        "uniforme"
+      ],
+      [
+        "cleans",
+        "limpia"
+      ],
+      [
+        "leaves",
+        "hojas"
+      ],
+      [
+        "meat",
+        "carne"
+      ],
+      [
+        "feed",
+        "alimentar, dar de comer"
+      ],
+      [
+        "visitors",
+        "visitantes"
+      ],
+      [
+        "tired",
+        "cansado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What time does Andrés get up?",
+        "options": [
+          "At six thirty",
+          "At five o'clock",
+          "At three o'clock",
+          "At nine"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'Andrés gets up at five o'clock every morning'."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés goes to the zoo by bus.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'takes the bus to the zoo'."
+      },
+      {
+        "type": "mc",
+        "q": "What do the giraffes eat?",
+        "options": [
+          "Fruit",
+          "Meat",
+          "Leaves"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'The giraffes eat leaves'."
+      },
+      {
+        "type": "tf",
+        "q": "Andrés feeds the big cats.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'Andrés doesn't feed them. Another zookeeper does that job'."
+      },
+      {
+        "type": "gap",
+        "q": "Andrés ____ (finish) work at three.",
+        "answer": "finishes",
+        "explain_es": "En presente simple con 'he' agregamos -es a los verbos que terminan en -sh: 'He finishes work at three'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'He get up at five o'clock every morning.'",
+        "answer": "He gets up at five o'clock every morning.",
+        "accept": [
+          "He gets up at five o'clock every morning",
+          "Andrés gets up at five o'clock every morning."
+        ],
+        "explain_es": "Con 'he' el verbo lleva -s: 'gets'. El texto dice: 'Andrés gets up at five o'clock'."
+      },
+      {
+        "type": "mc",
+        "q": "Who asks a lot of questions?",
+        "options": [
+          "Children",
+          "Other zookeepers",
+          "His friends"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'Children ask a lot of questions'."
+      },
+      {
+        "type": "gap",
+        "q": "In the evening, he ____ (watch) TV or reads about animals.",
+        "answer": "watches",
+        "explain_es": "Los verbos que terminan en -ch agregan -es con 'he': 'he watches TV'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-cycling-club",
+    "title": "The Sunday Cycling Club",
+    "level": "A1",
+    "genre": "blog",
+    "topic": "Sport & clubs",
+    "focus": "Adverbs of frequency",
+    "emoji": "🚴",
+    "words": 142,
+    "paragraphs": [
+      "Welcome to the Rueda Libre Cycling Club in Bogotá! We are a friendly group of cyclists, and new members are always welcome.",
+      "We usually meet on Sunday mornings at seven o'clock in front of Simón Bolívar Park. We often ride on the Ciclovía, when the big streets are closed to cars. Our rides are usually two or three hours long.",
+      "We sometimes go to towns outside the city, like La Calera. These rides are longer and harder, so we never go without water and snacks. We always wear helmets, too.",
+      "After the ride, we often have breakfast together at a small café. The members sometimes bring their children. We rarely ride in the rain, but we hardly ever stay at home on Sundays. Our club is never boring!",
+      "Do you want to join us? Membership is free. Send us a message today!"
+    ],
+    "glossary": [
+      [
+        "cyclists",
+        "ciclistas"
+      ],
+      [
+        "members",
+        "miembros, socios"
+      ],
+      [
+        "ride",
+        "montar (en bicicleta); recorrido"
+      ],
+      [
+        "closed",
+        "cerradas"
+      ],
+      [
+        "snacks",
+        "mecato, pasabocas"
+      ],
+      [
+        "helmets",
+        "cascos"
+      ],
+      [
+        "boring",
+        "aburrido"
+      ],
+      [
+        "join",
+        "unirse"
+      ],
+      [
+        "free",
+        "gratis"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When does the club usually meet?",
+        "options": [
+          "On Saturday afternoons",
+          "On Sunday mornings",
+          "On Friday evenings"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'We usually meet on Sunday mornings at seven o'clock'."
+      },
+      {
+        "type": "mc",
+        "q": "How long are the rides usually?",
+        "options": [
+          "All day",
+          "One hour",
+          "Two or three hours"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Our rides are usually two or three hours long'."
+      },
+      {
+        "type": "tf",
+        "q": "The members always wear helmets.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'We always wear helmets, too'."
+      },
+      {
+        "type": "tf",
+        "q": "Membership of the club costs money.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice: 'Membership is free'."
+      },
+      {
+        "type": "gap",
+        "q": "The rides are long, so we ____ go without water and snacks.",
+        "answer": "never",
+        "explain_es": "'Never' significa 'nunca'. El párrafo 3 dice: 'we never go without water and snacks'."
+      },
+      {
+        "type": "order",
+        "q": "Put the words in order: often / have / we / breakfast / together",
+        "answer": "We often have breakfast together.",
+        "accept": [
+          "We often have breakfast together"
+        ],
+        "explain_es": "El adverbio de frecuencia va antes del verbo principal: 'we often have breakfast together' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "How often does the club ride in the rain?",
+        "options": [
+          "Always",
+          "Usually",
+          "Rarely"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'We rarely ride in the rain'. 'Rarely' significa 'casi nunca'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 3, 'helmets' are…",
+        "options": [
+          "things you wear on your head",
+          "things you eat",
+          "bicycles for children"
+        ],
+        "answer": 0,
+        "explain_es": "'Helmets' son cascos: se usan en la cabeza para protegerse."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-birthday-party",
+    "title": "At Sofía's Birthday Party",
+    "level": "A1",
+    "genre": "message",
+    "topic": "Celebrations",
+    "focus": "Present continuous for actions now",
+    "emoji": "🎂",
+    "words": 129,
+    "paragraphs": [
+      "Hi Mateo! Where are you? I'm at Sofía's birthday party right now. It's great! Everyone is here, and we are having a lot of fun.",
+      "At the moment, I'm sitting in the garden with Laura and David. Laura is eating a big piece of chocolate cake, and David is taking photos with his new phone. Sofía's dad is cooking hamburgers on the barbecue.",
+      "Inside the house, some people are dancing to salsa music. Sofía is wearing a beautiful red dress, and she is opening her presents. Her little brother is helping her. He is very excited!",
+      "The sun is shining and nobody is leaving early. Are you coming? Please come soon! We are waiting for you, and Sofía is asking about you. Don't forget a present! See you, Juliana"
+    ],
+    "glossary": [
+      [
+        "right now",
+        "ahora mismo"
+      ],
+      [
+        "having a lot of fun",
+        "divirtiéndonos mucho"
+      ],
+      [
+        "garden",
+        "jardín"
+      ],
+      [
+        "piece",
+        "pedazo, porción"
+      ],
+      [
+        "barbecue",
+        "asador, parrilla"
+      ],
+      [
+        "wearing",
+        "lleva puesto"
+      ],
+      [
+        "presents",
+        "regalos"
+      ],
+      [
+        "excited",
+        "emocionado"
+      ],
+      [
+        "shining",
+        "brillando"
+      ],
+      [
+        "waiting",
+        "esperando"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is Juliana sitting?",
+        "options": [
+          "In the kitchen",
+          "In the living room",
+          "In the garden"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'I'm sitting in the garden with Laura and David'."
+      },
+      {
+        "type": "mc",
+        "q": "What is David doing?",
+        "options": [
+          "Eating cake",
+          "Dancing",
+          "Taking photos",
+          "Cooking"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'David is taking photos with his new phone'."
+      },
+      {
+        "type": "tf",
+        "q": "Sofía's dad is cooking hamburgers.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'Sofía's dad is cooking hamburgers on the barbecue'."
+      },
+      {
+        "type": "tf",
+        "q": "Sofía is wearing a blue dress.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'Sofía is wearing a beautiful red dress'. Es rojo, no azul."
+      },
+      {
+        "type": "gap",
+        "q": "Laura ____ (eat) a big piece of chocolate cake.",
+        "answer": "is eating",
+        "accept": [
+          "'s eating"
+        ],
+        "explain_es": "Presente continuo: is + verbo con -ing. El texto dice: 'Laura is eating a big piece of chocolate cake'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Sofía are opening her presents.'",
+        "answer": "Sofía is opening her presents.",
+        "accept": [
+          "Sofía is opening her presents",
+          "Sofía's opening her presents."
+        ],
+        "explain_es": "Con una sola persona (she) usamos 'is': 'she is opening her presents' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "Who is helping Sofía?",
+        "options": [
+          "Laura",
+          "Her dad",
+          "Mateo",
+          "Her little brother"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 dice: 'Her little brother is helping her'."
+      },
+      {
+        "type": "gap",
+        "q": "We ____ (wait) for you.",
+        "answer": "are waiting",
+        "accept": [
+          "'re waiting"
+        ],
+        "explain_es": "Con 'we' usamos 'are' + verbo -ing. El párrafo 4 dice: 'We are waiting for you'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-moving-house",
+    "title": "Our New Apartment",
+    "level": "A1",
+    "genre": "email",
+    "topic": "Moving house",
+    "focus": "There is / there are + prepositions of place",
+    "emoji": "📦",
+    "words": 144,
+    "paragraphs": [
+      "Dear Tom, We are in our new apartment in Barranquilla! Moving house is hard work, but we are very happy. There are boxes everywhere, but the apartment is lovely.",
+      "There are two bedrooms and there is one bathroom. In the living room, there is a big sofa under the window, and there is a small table in front of the sofa. There isn't a TV yet.",
+      "The kitchen is next to the living room. There is a new fridge, and there are some shelves above the sink. There aren't any chairs, so we eat on the sofa!",
+      "Outside, there is a small balcony. From the balcony, we can see the river. Near our building, there is a supermarket and there are two good restaurants. There is a bus stop opposite the supermarket, too.",
+      "Are you free next month? Come and visit! Best wishes, Camila"
+    ],
+    "glossary": [
+      [
+        "moving house",
+        "mudarse de casa"
+      ],
+      [
+        "boxes",
+        "cajas"
+      ],
+      [
+        "everywhere",
+        "por todas partes"
+      ],
+      [
+        "under",
+        "debajo de"
+      ],
+      [
+        "in front of",
+        "delante de, frente a"
+      ],
+      [
+        "fridge",
+        "nevera"
+      ],
+      [
+        "shelves",
+        "repisas, estantes"
+      ],
+      [
+        "above",
+        "encima de, arriba de"
+      ],
+      [
+        "sink",
+        "lavaplatos"
+      ],
+      [
+        "opposite",
+        "enfrente de"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many bedrooms are there?",
+        "options": [
+          "One",
+          "Two",
+          "Three"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'There are two bedrooms'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the sofa?",
+        "options": [
+          "Under the window",
+          "Next to the fridge",
+          "On the balcony",
+          "Opposite the supermarket"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice: 'there is a big sofa under the window'."
+      },
+      {
+        "type": "tf",
+        "q": "There is a TV in the living room.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'There isn't a TV yet'."
+      },
+      {
+        "type": "tf",
+        "q": "Camila can see the river from the balcony.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'From the balcony, we can see the river'."
+      },
+      {
+        "type": "gap",
+        "q": "Near the building, ____ two good restaurants.",
+        "answer": "there are",
+        "accept": [
+          "There are"
+        ],
+        "explain_es": "Con sustantivos en plural usamos 'there are': 'there are two good restaurants' (párrafo 4)."
+      },
+      {
+        "type": "gap",
+        "q": "There is a bus stop ____ the supermarket.",
+        "answer": "opposite",
+        "accept": [
+          "opposite to"
+        ],
+        "explain_es": "'Opposite' significa 'enfrente de'. El párrafo 4 dice: 'There is a bus stop opposite the supermarket'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'There is some shelves above the sink.'",
+        "answer": "There are some shelves above the sink.",
+        "accept": [
+          "There are some shelves above the sink"
+        ],
+        "explain_es": "'Shelves' es plural, entonces usamos 'there are' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "Why do Camila and her family eat on the sofa?",
+        "options": [
+          "The kitchen is small",
+          "They like watching TV",
+          "There aren't any chairs"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'There aren't any chairs, so we eat on the sofa!'"
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-lost-cat",
+    "title": "Lost Cat: Please Help Us Find Mango",
+    "level": "A1",
+    "genre": "notice",
+    "topic": "Pets",
+    "focus": "Can / can't for ability",
+    "emoji": "🐈",
+    "words": 131,
+    "paragraphs": [
+      "LOST CAT! Our cat Mango is lost. He is orange and white, and he is three years old. We live on Calle 10 in Popayán, near the main square.",
+      "Mango is a clever cat. He can open doors with his paws, and he can climb very tall trees. He can jump onto high walls, too. But he can't come down from trees easily, so please look up!",
+      "Mango can't hear very well, so he doesn't always come when you call him. But he can see very well at night. He can't swim, so he never goes near the river.",
+      "He is very friendly. He can sit on your lap for hours! Can you help us? Please look in your garden and your garage. Call Isabel on 312 555 0198. Thank you!"
+    ],
+    "glossary": [
+      [
+        "lost",
+        "perdido"
+      ],
+      [
+        "clever",
+        "inteligente, astuto"
+      ],
+      [
+        "paws",
+        "patas"
+      ],
+      [
+        "climb",
+        "trepar, subir"
+      ],
+      [
+        "jump",
+        "saltar"
+      ],
+      [
+        "walls",
+        "muros, paredes"
+      ],
+      [
+        "easily",
+        "fácilmente"
+      ],
+      [
+        "hear",
+        "oír"
+      ],
+      [
+        "lap",
+        "regazo, piernas"
+      ],
+      [
+        "garage",
+        "garaje"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What colour is Mango?",
+        "options": [
+          "Black and white",
+          "Orange and white",
+          "Grey",
+          "Orange and black"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'He is orange and white'."
+      },
+      {
+        "type": "tf",
+        "q": "Mango is ten years old.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'he is three years old'."
+      },
+      {
+        "type": "mc",
+        "q": "What can Mango open?",
+        "options": [
+          "Windows",
+          "Boxes",
+          "Doors"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'He can open doors with his paws'."
+      },
+      {
+        "type": "tf",
+        "q": "Mango can swim.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'He can't swim, so he never goes near the river'."
+      },
+      {
+        "type": "gap",
+        "q": "Mango ____ climb very tall trees.",
+        "answer": "can",
+        "explain_es": "Usamos 'can' para hablar de habilidades. El párrafo 2 dice: 'he can climb very tall trees'."
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: 'Mango can hear very well.'",
+        "answer": "Mango can't hear very well.",
+        "accept": [
+          "Mango cannot hear very well.",
+          "He can't hear very well.",
+          "Mango can't hear very well"
+        ],
+        "explain_es": "La forma negativa de 'can' es 'can't / cannot'. El párrafo 3 dice: 'Mango can't hear very well'."
+      },
+      {
+        "type": "mc",
+        "q": "Why does the notice say 'please look up'?",
+        "options": [
+          "Because Mango likes birds",
+          "Because Mango can't come down from trees easily",
+          "Because Mango sleeps on the roof"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'he can't come down from trees easily, so please look up!'"
+      },
+      {
+        "type": "gap",
+        "q": "If you see Mango, call ____ on 312 555 0198.",
+        "answer": "Isabel",
+        "explain_es": "El párrafo 4 dice: 'Call Isabel on 312 555 0198'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-favourite-clothes",
+    "title": "My Favourite Clothes",
+    "level": "A1",
+    "genre": "blog",
+    "topic": "Clothes",
+    "focus": "Demonstratives: this, that, these, those",
+    "emoji": "👕",
+    "words": 135,
+    "paragraphs": [
+      "Hi, I'm Daniela and this is my fashion blog! Today I want to show you my favourite clothes. Look at the photos!",
+      "This is my yellow raincoat. It's from a small shop in Manizales. It rains a lot there, so this coat is very useful. These are my boots. They're old, but they're very comfortable.",
+      "In this photo, I'm with my sister at the market. That is her blue dress over there on the chair. It's beautiful! And those are her white trainers. I love those trainers, but they are very expensive.",
+      "Now look at the next photo. These jeans are my favourite jeans. I wear them every weekend. And this T-shirt is a present from my best friend. It says 'Coffee first!'",
+      "What about you? What are your favourite clothes? Write in the comments!"
+    ],
+    "glossary": [
+      [
+        "fashion",
+        "moda"
+      ],
+      [
+        "raincoat",
+        "impermeable"
+      ],
+      [
+        "useful",
+        "útil"
+      ],
+      [
+        "boots",
+        "botas"
+      ],
+      [
+        "comfortable",
+        "cómodas"
+      ],
+      [
+        "dress",
+        "vestido"
+      ],
+      [
+        "trainers",
+        "tenis"
+      ],
+      [
+        "expensive",
+        "caros"
+      ],
+      [
+        "present",
+        "regalo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where is the raincoat from?",
+        "options": [
+          "A market in Bogotá",
+          "Her best friend",
+          "A small shop in Manizales"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'It's from a small shop in Manizales'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela's boots are new.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'They're old, but they're very comfortable'."
+      },
+      {
+        "type": "mc",
+        "q": "Whose are the white trainers?",
+        "options": [
+          "Daniela's",
+          "Her sister's",
+          "Her best friend's"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 habla de la hermana: 'those are her white trainers'."
+      },
+      {
+        "type": "tf",
+        "q": "Daniela wears her jeans every weekend.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'I wear them every weekend'."
+      },
+      {
+        "type": "gap",
+        "q": "____ are my boots. (near me, plural)",
+        "answer": "These",
+        "accept": [
+          "these"
+        ],
+        "explain_es": "Para cosas cerca y en plural usamos 'these'. El párrafo 2 dice: 'These are my boots'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'This jeans are my favourite jeans.'",
+        "answer": "These jeans are my favourite jeans.",
+        "accept": [
+          "These jeans are my favourite jeans"
+        ],
+        "explain_es": "'Jeans' es plural, entonces usamos 'these', no 'this' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "Daniela says 'That is her blue dress over there.' We use 'that' for…",
+        "options": [
+          "one thing far from us",
+          "many things near us",
+          "many things far from us"
+        ],
+        "answer": 0,
+        "explain_es": "'That' es para una cosa lejos. Para varias cosas lejos usamos 'those'; para varias cerca, 'these'."
+      },
+      {
+        "type": "gap",
+        "q": "Daniela's T-shirt says '____ first!'",
+        "answer": "Coffee",
+        "accept": [
+          "coffee"
+        ],
+        "explain_es": "El párrafo 4 dice: 'It says Coffee first!'"
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-gold-museum",
+    "title": "A Day at the Gold Museum",
+    "level": "A1",
+    "genre": "diary",
+    "topic": "Museums & culture",
+    "focus": "Past simple of be: was / were",
+    "emoji": "🏛️",
+    "words": 135,
+    "paragraphs": [
+      "Saturday, 12 March. Today I was at the Gold Museum in Bogotá with my cousins, Pedro and Ana. It was my first visit, and it was fantastic!",
+      "The museum was very big. There were three floors, and there were thousands of gold objects. Some were very small, like earrings, and some were very big, like masks. The masks were my favourite.",
+      "Our guide was a young woman called Lucía. She was very nice, and her stories were interesting. Ana was very quiet, but Pedro was full of questions!",
+      "The tickets weren't expensive. At lunchtime we were very hungry. The café in the museum was closed, so our lunch was at a small restaurant across the street. The food was delicious.",
+      "In the evening, I was tired, but I was happy. It was a perfect day!"
+    ],
+    "glossary": [
+      [
+        "cousins",
+        "primos"
+      ],
+      [
+        "objects",
+        "objetos"
+      ],
+      [
+        "earrings",
+        "aretes"
+      ],
+      [
+        "masks",
+        "máscaras"
+      ],
+      [
+        "guide",
+        "guía"
+      ],
+      [
+        "quiet",
+        "callada"
+      ],
+      [
+        "full of",
+        "lleno de"
+      ],
+      [
+        "tickets",
+        "entradas, boletas"
+      ],
+      [
+        "hungry",
+        "con hambre"
+      ],
+      [
+        "delicious",
+        "delicioso"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who was at the museum with the writer?",
+        "options": [
+          "Two friends",
+          "Two cousins",
+          "The writer’s parents"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'with my cousins, Pedro and Ana'."
+      },
+      {
+        "type": "mc",
+        "q": "How many floors were there?",
+        "options": [
+          "Two",
+          "Four",
+          "Five",
+          "Three"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'There were three floors'."
+      },
+      {
+        "type": "tf",
+        "q": "The masks were the writer's favourite.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'The masks were my favourite'."
+      },
+      {
+        "type": "tf",
+        "q": "The tickets were very expensive.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'The tickets weren't expensive'."
+      },
+      {
+        "type": "gap",
+        "q": "The museum ____ very big.",
+        "answer": "was",
+        "explain_es": "Para una cosa en pasado usamos 'was'. El párrafo 2 dice: 'The museum was very big'."
+      },
+      {
+        "type": "gap",
+        "q": "There ____ thousands of gold objects.",
+        "answer": "were",
+        "explain_es": "Con plural usamos 'there were'. El párrafo 2 dice: 'there were thousands of gold objects'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Our guide were a young woman called Lucía.'",
+        "answer": "Our guide was a young woman called Lucía.",
+        "accept": [
+          "Our guide was a young woman called Lucía"
+        ],
+        "explain_es": "'Our guide' es una persona (she), entonces usamos 'was' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "Why was lunch at a restaurant across the street?",
+        "options": [
+          "The museum café was closed",
+          "The museum café was expensive",
+          "Pedro wanted pizza"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'The café in the museum was closed'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-mountain-weekend",
+    "title": "A Weekend in the Mountains",
+    "level": "A1",
+    "genre": "story",
+    "topic": "Countryside",
+    "focus": "Past simple: regular verbs",
+    "emoji": "⛰️",
+    "words": 140,
+    "paragraphs": [
+      "Last weekend, Martín and his wife, Elena, visited a small town in the mountains near Cuenca, in Ecuador. They wanted a quiet weekend away from the city.",
+      "On Saturday morning, they arrived at a little wooden house next to a lake. They opened the windows and looked at the beautiful view. Then they walked to the town and visited the old church.",
+      "In the afternoon, it started to rain, so they stayed inside. Elena cooked soup, and Martín played the guitar. They talked and laughed for hours.",
+      "On Sunday, the sun returned. They rented two bicycles and cycled around the lake. Martín stopped to take photos of the birds. Elena wanted to swim, but the water was very cold!",
+      "In the evening, they travelled back to the city. They were tired, but they really enjoyed their weekend in the country."
+    ],
+    "glossary": [
+      [
+        "wooden",
+        "de madera"
+      ],
+      [
+        "lake",
+        "lago"
+      ],
+      [
+        "view",
+        "vista, paisaje"
+      ],
+      [
+        "church",
+        "iglesia"
+      ],
+      [
+        "stayed",
+        "se quedaron"
+      ],
+      [
+        "laughed",
+        "se rieron"
+      ],
+      [
+        "returned",
+        "volvió, regresó"
+      ],
+      [
+        "rented",
+        "alquilaron"
+      ],
+      [
+        "cycled",
+        "montaron en bicicleta"
+      ],
+      [
+        "enjoyed",
+        "disfrutaron"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where was the house?",
+        "options": [
+          "In the city centre",
+          "Near the beach",
+          "Next to a lake"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'a little wooden house next to a lake'."
+      },
+      {
+        "type": "tf",
+        "q": "It rained on Saturday afternoon.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'In the afternoon, it started to rain'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Elena cook?",
+        "options": [
+          "Rice",
+          "Soup",
+          "Fish",
+          "Pasta"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'Elena cooked soup'."
+      },
+      {
+        "type": "tf",
+        "q": "The water in the lake was warm.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'the water was very cold!'"
+      },
+      {
+        "type": "gap",
+        "q": "Martín ____ (play) the guitar.",
+        "answer": "played",
+        "explain_es": "Los verbos regulares en pasado terminan en -ed: 'Martín played the guitar' (párrafo 3)."
+      },
+      {
+        "type": "transform",
+        "q": "Change to the past simple: 'They rent two bicycles.'",
+        "answer": "They rented two bicycles.",
+        "accept": [
+          "They rented two bicycles"
+        ],
+        "explain_es": "'Rent' es regular: rent → rented. El párrafo 4 dice: 'They rented two bicycles'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'On Saturday morning, they arrive at a little wooden house.'",
+        "answer": "On Saturday morning, they arrived at a little wooden house.",
+        "accept": [
+          "On Saturday morning, they arrived at a little wooden house",
+          "They arrived at a little wooden house."
+        ],
+        "explain_es": "Es una acción del pasado, entonces 'arrive' cambia a 'arrived' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "What did Martín take photos of?",
+        "options": [
+          "The church",
+          "Elena",
+          "The birds",
+          "The lake"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'Martín stopped to take photos of the birds'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-school-trip",
+    "title": "Our School Trip to the Coffee Park",
+    "level": "A1",
+    "genre": "letter",
+    "topic": "School trips",
+    "focus": "Be going to for plans",
+    "emoji": "🎢",
+    "words": 150,
+    "paragraphs": [
+      "Dear parents, Next Friday, Class 5B is going to visit the National Coffee Park in Quindío. The students are very excited!",
+      "We are going to leave the school at six thirty in the morning. The bus is going to stop in Armenia for breakfast. We are going to arrive at the park at about ten o'clock.",
+      "In the morning, a guide is going to show us a coffee farm. The students are going to learn about coffee plants, and they are going to make their own coffee. After lunch, they are going to ride the cable car.",
+      "We aren't going to stay at the park in the evening. We are going to come back at about seven o'clock. Please pick up your children at the school gate.",
+      "Your child needs a hat, sun cream, water and a snack. It is going to be hot! Thank you. Ms Herrera, Class teacher"
+    ],
+    "glossary": [
+      [
+        "excited",
+        "emocionados"
+      ],
+      [
+        "leave",
+        "salir de"
+      ],
+      [
+        "guide",
+        "guía"
+      ],
+      [
+        "farm",
+        "finca"
+      ],
+      [
+        "plants",
+        "plantas"
+      ],
+      [
+        "cable car",
+        "teleférico, cable"
+      ],
+      [
+        "pick up",
+        "recoger"
+      ],
+      [
+        "gate",
+        "portón, entrada"
+      ],
+      [
+        "sun cream",
+        "bloqueador solar"
+      ],
+      [
+        "snack",
+        "mecato, refrigerio"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When is the trip?",
+        "options": [
+          "Next Monday",
+          "Next Friday",
+          "Next Saturday"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'Next Friday, Class 5B is going to visit the National Coffee Park'."
+      },
+      {
+        "type": "mc",
+        "q": "Where is the bus going to stop for breakfast?",
+        "options": [
+          "Pereira",
+          "Manizales",
+          "Armenia",
+          "Cali"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'The bus is going to stop in Armenia for breakfast'."
+      },
+      {
+        "type": "tf",
+        "q": "The students are going to make their own coffee.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'they are going to make their own coffee'."
+      },
+      {
+        "type": "tf",
+        "q": "The class is going to stay at the park in the evening.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'We aren't going to stay at the park in the evening'."
+      },
+      {
+        "type": "gap",
+        "q": "We ____ leave the school at six thirty.",
+        "answer": "are going to",
+        "accept": [
+          "'re going to"
+        ],
+        "explain_es": "Para planes usamos 'be going to' + verbo: 'We are going to leave the school at six thirty' (párrafo 2)."
+      },
+      {
+        "type": "transform",
+        "q": "Use 'be going to': 'The students learn about coffee plants.'",
+        "answer": "The students are going to learn about coffee plants.",
+        "accept": [
+          "The students are going to learn about coffee plants",
+          "They're going to learn about coffee plants."
+        ],
+        "explain_es": "Estructura: sujeto + are + going to + verbo. El párrafo 3 dice: 'The students are going to learn about coffee plants'."
+      },
+      {
+        "type": "mc",
+        "q": "What time are they going to come back?",
+        "options": [
+          "At ten o'clock",
+          "At six thirty",
+          "At about seven o'clock"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 4 dice: 'We are going to come back at about seven o'clock'."
+      },
+      {
+        "type": "vocab",
+        "q": "'Please pick up your children at the school gate' means…",
+        "options": [
+          "call your children",
+          "collect your children",
+          "wake up your children"
+        ],
+        "answer": 1,
+        "explain_es": "'Pick up' aquí significa 'recoger' a los niños en la entrada del colegio."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-old-new-phone",
+    "title": "Old Phone, New Phone",
+    "level": "A1",
+    "genre": "review",
+    "topic": "Technology",
+    "focus": "Comparatives",
+    "emoji": "📱",
+    "words": 157,
+    "paragraphs": [
+      "I have a new phone, the Zeta 5. My old phone is a Zeta 2, and it is five years old. Which phone is better? Here is my review.",
+      "The new phone is bigger than the old phone, but it is lighter. The screen is brighter and clearer, so photos and videos look great. The camera is better, too, and my photos at night are much nicer now.",
+      "The new phone is also faster. Apps open quickly, and the battery is stronger. With my old phone, the battery was dead at lunchtime! Now it is fine in the evening.",
+      "But the new phone isn't perfect. It is more expensive than the old one. It costs eight hundred dollars! It is also more difficult to use. The old phone is easier for my grandmother, and she prefers it.",
+      "So, is the new phone better? For me, yes. But for my grandmother, the old phone is simpler and friendlier!"
+    ],
+    "glossary": [
+      [
+        "review",
+        "reseña, opinión"
+      ],
+      [
+        "lighter",
+        "más liviano"
+      ],
+      [
+        "screen",
+        "pantalla"
+      ],
+      [
+        "brighter",
+        "más brillante"
+      ],
+      [
+        "battery",
+        "batería"
+      ],
+      [
+        "dead",
+        "descargada"
+      ],
+      [
+        "expensive",
+        "caro"
+      ],
+      [
+        "prefers",
+        "prefiere"
+      ],
+      [
+        "simpler",
+        "más sencillo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How old is the old phone?",
+        "options": [
+          "Two years old",
+          "Five years old",
+          "Eight years old"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 1 dice: 'My old phone is a Zeta 2, and it is five years old'."
+      },
+      {
+        "type": "tf",
+        "q": "The new phone is smaller than the old phone.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'The new phone is bigger than the old phone'."
+      },
+      {
+        "type": "mc",
+        "q": "How much does the new phone cost?",
+        "options": [
+          "$80",
+          "$500",
+          "$1,800",
+          "$800"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'It costs eight hundred dollars!'"
+      },
+      {
+        "type": "tf",
+        "q": "The writer's grandmother prefers the old phone.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'The old phone is easier for my grandmother, and she prefers it'."
+      },
+      {
+        "type": "gap",
+        "q": "The new phone is ____ (big) than the old phone.",
+        "answer": "bigger",
+        "explain_es": "Adjetivo corto: big → bigger (se dobla la g). El párrafo 2 dice: 'The new phone is bigger than the old phone'."
+      },
+      {
+        "type": "gap",
+        "q": "It is ____ (expensive) than the old one.",
+        "answer": "more expensive",
+        "explain_es": "Con adjetivos largos usamos 'more': 'It is more expensive than the old one' (párrafo 4)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'The new phone is more fast.'",
+        "answer": "The new phone is faster.",
+        "accept": [
+          "The new phone is also faster.",
+          "The new phone is faster"
+        ],
+        "explain_es": "'Fast' es corto: fast → faster, sin 'more'. El párrafo 3 dice: 'The new phone is also faster'."
+      },
+      {
+        "type": "mc",
+        "q": "Why are the photos at night nicer now?",
+        "options": [
+          "The screen is bigger",
+          "The battery is stronger",
+          "The camera is better"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'The camera is better, too, and my photos at night are much nicer now'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a1-cooking-class",
+    "title": "Cooking Class: Easy Patacones",
+    "level": "A1",
+    "genre": "guide",
+    "topic": "Cooking class",
+    "focus": "Imperatives for instructions",
+    "emoji": "🍳",
+    "words": 147,
+    "paragraphs": [
+      "Welcome to our Thursday cooking class! Today's recipe is patacones, a popular snack from the Colombian coast. They are easy and delicious. Follow these steps.",
+      "First, wash your hands and put on an apron. Take two green plantains. Cut off the ends and remove the skin. Then cut each plantain into four thick pieces.",
+      "Next, heat some oil in a pan. Put the pieces in the hot oil and fry them for about three minutes. Don't touch the hot oil! Use a spoon to take the pieces out.",
+      "Now press each piece flat with a plate. Be careful, they are hot! Put the flat pieces back in the oil and fry them again until they are golden.",
+      "Finally, put the patacones on paper to remove the oil. Add a little salt. Serve them with guacamole or cheese. Enjoy your food, and don't forget to clean your table!"
+    ],
+    "glossary": [
+      [
+        "recipe",
+        "receta"
+      ],
+      [
+        "apron",
+        "delantal"
+      ],
+      [
+        "plantains",
+        "plátanos"
+      ],
+      [
+        "remove",
+        "quitar"
+      ],
+      [
+        "skin",
+        "cáscara"
+      ],
+      [
+        "thick",
+        "gruesos"
+      ],
+      [
+        "heat",
+        "calentar"
+      ],
+      [
+        "fry",
+        "freír"
+      ],
+      [
+        "press",
+        "aplastar"
+      ],
+      [
+        "golden",
+        "dorados"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What do you need for the recipe?",
+        "options": [
+          "Three yellow plantains",
+          "Four potatoes",
+          "Two green plantains"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice: 'Take two green plantains'."
+      },
+      {
+        "type": "mc",
+        "q": "How long do you fry the pieces the first time?",
+        "options": [
+          "One minute",
+          "About three minutes",
+          "Ten minutes"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'fry them for about three minutes'."
+      },
+      {
+        "type": "tf",
+        "q": "You fry the pieces two times.",
+        "answer": "T",
+        "explain_es": "Primero se fríen (párrafo 3) y luego: 'fry them again until they are golden' (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "You add sugar at the end.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice: 'Add a little salt'. Es sal, no azúcar."
+      },
+      {
+        "type": "gap",
+        "q": "____ your hands and put on an apron.",
+        "answer": "Wash",
+        "accept": [
+          "wash"
+        ],
+        "explain_es": "El imperativo usa el verbo en forma base, sin sujeto: 'wash your hands' (párrafo 2)."
+      },
+      {
+        "type": "transform",
+        "q": "Make a negative imperative: 'You touch the hot oil.'",
+        "answer": "Don't touch the hot oil!",
+        "accept": [
+          "Don't touch the hot oil.",
+          "Don't touch the hot oil",
+          "Do not touch the hot oil."
+        ],
+        "explain_es": "Imperativo negativo: Don't + verbo. El párrafo 3 dice: 'Don't touch the hot oil!'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'To add a little salt.'",
+        "answer": "Add a little salt.",
+        "accept": [
+          "Add a little salt"
+        ],
+        "explain_es": "En instrucciones el imperativo no lleva 'to': 'Add a little salt' (párrafo 5)."
+      },
+      {
+        "type": "mc",
+        "q": "What can you serve patacones with?",
+        "options": [
+          "Rice",
+          "Chocolate",
+          "Soup",
+          "Guacamole or cheese"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'Serve them with guacamole or cheese'."
+      }
+    ]
+  }
+]

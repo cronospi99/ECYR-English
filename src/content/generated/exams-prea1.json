@@ -1,0 +1,1043 @@
+[
+  {
+    "id": "prea1-m1",
+    "level": "PreA1",
+    "kind": "midterm",
+    "n": 1,
+    "units": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "title": "Parcial 1 · Unidades 1–4",
+    "intro_es": "Evalúa el alfabeto y el deletreo, los saludos, el verbo to be, los posesivos, los números, la puntuación, this/that/these/those y las preguntas con WH. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 45,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "My sister ___ a nurse.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": 1,
+        "explain_es": "Con she (my sister) el verbo to be es is."
+      },
+      {
+        "type": "mc",
+        "q": "___ are my keys. (aquí, en mi mano)",
+        "options": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ],
+        "answer": 2,
+        "explain_es": "Cerca y plural (keys) → these."
+      },
+      {
+        "type": "mc",
+        "q": "Pedro and Lucía are here with ___ dog.",
+        "options": [
+          "his",
+          "her",
+          "their",
+          "our"
+        ],
+        "answer": 2,
+        "explain_es": "Hay dos dueños (Pedro y Lucía) → their."
+      },
+      {
+        "type": "mc",
+        "q": "___ is your birthday? — On the fifth of June.",
+        "options": [
+          "Where",
+          "How",
+          "Who",
+          "When"
+        ],
+        "answer": 3,
+        "explain_es": "La respuesta es una fecha (un momento) → When."
+      },
+      {
+        "type": "mc",
+        "q": "Is your teacher from Cali? — No, she ___.",
+        "options": [
+          "isn't",
+          "aren't",
+          "not",
+          "doesn't"
+        ],
+        "answer": 0,
+        "explain_es": "Respuesta corta negativa con she: No, she isn't."
+      },
+      {
+        "type": "mc",
+        "q": "This bag is Laura's. It's ___.",
+        "options": [
+          "her",
+          "she",
+          "hers",
+          "she's"
+        ],
+        "answer": 2,
+        "explain_es": "Sin sustantivo después usamos el pronombre posesivo hers (el suyo, de ella)."
+      },
+      {
+        "type": "gap",
+        "q": "We ___ from Medellín. (be)",
+        "answer": "are",
+        "explain_es": "Con we el verbo to be es are."
+      },
+      {
+        "type": "transform",
+        "q": "Make a question: You are a student.",
+        "answer": "Are you a student?",
+        "explain_es": "En la pregunta de sí/no, are va antes del sujeto: Are you…?"
+      },
+      {
+        "type": "error",
+        "q": "That shoes are very nice.",
+        "answer": "Those shoes are very nice.",
+        "explain_es": "Shoes es plural; lejos y plural → those."
+      },
+      {
+        "type": "order",
+        "q": "your / where / parents / are / ?",
+        "answer": "Where are your parents?",
+        "explain_es": "Palabra WH + are + sujeto (your parents)."
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "How do you spell «Bella» aloud?",
+        "options": [
+          "B – E – L – A",
+          "capital B – E – double L – A",
+          "capital B – I – double L – A"
+        ],
+        "answer": 1,
+        "explain_es": "Bella empieza con mayúscula (capital B) y tiene dos L seguidas (double L). La E se dice «i»."
+      },
+      {
+        "type": "mc",
+        "q": "It is 8:00 p.m. You arrive at a party. You say: «___!»",
+        "options": [
+          "Good morning",
+          "Good afternoon",
+          "Good evening",
+          "Good night"
+        ],
+        "answer": 2,
+        "explain_es": "Para saludar en la noche usamos Good evening. Good night es para despedirse."
+      },
+      {
+        "type": "mc",
+        "q": "«Nice to meet you.» — «___»",
+        "options": [
+          "Nice to meet you, too.",
+          "I'm fine.",
+          "Goodbye.",
+          "Fifteen."
+        ],
+        "answer": 0,
+        "explain_es": "La respuesta natural a Nice to meet you es Nice to meet you, too."
+      },
+      {
+        "type": "gap",
+        "q": "80 in words = ___",
+        "answer": "eighty",
+        "explain_es": "Ochenta = eighty, con una sola T."
+      },
+      {
+        "type": "mc",
+        "q": "December is the ___ month of the year.",
+        "options": [
+          "twelve",
+          "twelfth",
+          "twelveth",
+          "twentieth"
+        ],
+        "answer": 1,
+        "explain_es": "Diciembre es el mes número 12 → ordinal twelfth (twelve → twelfth)."
+      },
+      {
+        "type": "mc",
+        "q": "The symbol @ is called ___.",
+        "options": [
+          "and",
+          "hashtag",
+          "dot",
+          "at"
+        ],
+        "answer": 3,
+        "explain_es": "En los correos, @ se dice at: ana at gmail dot com."
+      },
+      {
+        "type": "mc",
+        "q": "Which letter is pronounced «yei» /dʒeɪ/?",
+        "options": [
+          "G",
+          "H",
+          "Y",
+          "J"
+        ],
+        "answer": 3,
+        "explain_es": "J se pronuncia /dʒeɪ/ («yei»). G se dice «yi»."
+      },
+      {
+        "type": "gap",
+        "q": "See you ___! (mañana)",
+        "answer": "tomorrow",
+        "explain_es": "See you tomorrow = hasta mañana."
+      },
+      {
+        "type": "mc",
+        "q": "«How are you?» — «___»",
+        "options": [
+          "I'm twenty.",
+          "I'm from Cali.",
+          "Fine, thanks.",
+          "My name's Leo."
+        ],
+        "answer": 2,
+        "explain_es": "How are you? pregunta cómo estás → Fine, thanks."
+      },
+      {
+        "type": "mc",
+        "q": "$15 = ___",
+        "options": [
+          "fifty dollars",
+          "fifteen dollars",
+          "five dollars"
+        ],
+        "answer": 1,
+        "explain_es": "15 = fifteen. El símbolo $ se escribe antes, pero se dice después: fifteen dollars."
+      }
+    ],
+    "reading": {
+      "title": "My Best Friend and Me",
+      "genre": "blog",
+      "paragraphs": [
+        "Hi! My name is Valeria Ríos. I am fifteen years old and I am from Pereira. My email is vale.rios@mail.com.",
+        "This is my best friend, Tomás. His family is from Tunja, but they are in Pereira now. Their house is on Fifth Street, number 48. Tomás is fourteen. His birthday is on the second of March. My birthday is on the twenty-first of May.",
+        "Our English teacher is Mr. Cole. He is from Canada. Is he nice? Yes, he is!"
+      ],
+      "glossary": [
+        [
+          "best friend",
+          "mejor amigo"
+        ],
+        [
+          "family",
+          "familia"
+        ],
+        [
+          "Street",
+          "calle"
+        ],
+        [
+          "birthday",
+          "cumpleaños"
+        ],
+        [
+          "nice",
+          "amable, simpático"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "tf",
+          "q": "Valeria is from Tunja.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «I am from Pereira». La familia de Tomás es de Tunja."
+        },
+        {
+          "type": "mc",
+          "q": "How old is Tomás?",
+          "options": [
+            "fifteen",
+            "fourteen",
+            "forty",
+            "twelve"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «Tomás is fourteen». Fifteen es la edad de Valeria."
+        },
+        {
+          "type": "gap",
+          "q": "Tomás's birthday is on the second of ___.",
+          "answer": "March",
+          "explain_es": "El texto dice: «His birthday is on the second of March»."
+        },
+        {
+          "type": "mc",
+          "q": "Where is Mr. Cole from?",
+          "options": [
+            "Pereira",
+            "Tunja",
+            "Canada"
+          ],
+          "answer": 2,
+          "explain_es": "El texto dice: «He is from Canada»."
+        },
+        {
+          "type": "tf",
+          "q": "Tomás's family is in Pereira now.",
+          "answer": "T",
+          "explain_es": "Verdadero. El texto dice: «they are in Pereira now»."
+        },
+        {
+          "type": "gap",
+          "q": "Their house is number ___ on Fifth Street.",
+          "answer": "48",
+          "accept": [
+            "forty-eight",
+            "forty eight"
+          ],
+          "explain_es": "El texto dice: «Their house is on Fifth Street, number 48»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "At the School Office",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Ms. Grant",
+          "voice": "female",
+          "accent": "us"
+        },
+        {
+          "name": "Diego",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good morning. What is your name, please?"
+        },
+        {
+          "s": 1,
+          "text": "Good morning. My name is Diego Arango."
+        },
+        {
+          "s": 0,
+          "text": "How do you spell your last name?"
+        },
+        {
+          "s": 1,
+          "text": "A, R, A, N, G, O. Arango."
+        },
+        {
+          "s": 0,
+          "text": "Thank you. How old are you, Diego?"
+        },
+        {
+          "s": 1,
+          "text": "I am sixteen."
+        },
+        {
+          "s": 0,
+          "text": "And what is your phone number?"
+        },
+        {
+          "s": 1,
+          "text": "It is three one five, two two four, zero nine seven six."
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What time of day is it?",
+          "options": [
+            "morning",
+            "afternoon",
+            "evening"
+          ],
+          "answer": 0,
+          "explain_es": "Los dos dicen «Good morning», así que es por la mañana."
+        },
+        {
+          "type": "gap",
+          "q": "Diego's last name is ___.",
+          "answer": "Arango",
+          "explain_es": "Diego dice: «My name is Diego Arango» y lo deletrea: A, R, A, N, G, O."
+        },
+        {
+          "type": "mc",
+          "q": "How old is Diego?",
+          "options": [
+            "six",
+            "sixty",
+            "fifteen",
+            "sixteen"
+          ],
+          "answer": 3,
+          "explain_es": "Diego dice: «I am sixteen»."
+        },
+        {
+          "type": "tf",
+          "q": "The woman asks for Diego's email.",
+          "answer": "F",
+          "explain_es": "Falso. Ella pregunta: «what is your phone number?», no el correo."
+        },
+        {
+          "type": "gap",
+          "q": "Diego's phone number starts with ___.",
+          "answer": "315",
+          "accept": [
+            "three one five",
+            "three-one-five"
+          ],
+          "explain_es": "Diego dice: «It is three one five, two two four…»."
+        },
+        {
+          "type": "tf",
+          "q": "Diego spells his last name.",
+          "answer": "T",
+          "explain_es": "Verdadero. Ella pregunta «How do you spell your last name?» y él dice «A, R, A, N, G, O»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "Write a short message to your new English teacher. Say hello, give your name and spell it, and say how old you are, where you are from and when your birthday is.",
+      "prompt_es": "Escribe un mensaje corto a tu nuevo profesor: saluda, di tu nombre y deletréalo, tu edad, de dónde eres y tu cumpleaños.",
+      "genre_es": "Mensaje de presentación",
+      "minWords": 20,
+      "maxWords": 40,
+      "criteria": [
+        "Start with a greeting (Hello / Hi / Good morning) and end with a farewell (See you…).",
+        "Use the verb be: I am / I'm, My name is…",
+        "Use possessive adjectives: my name, my birthday.",
+        "Write a number or a date in words (fifteen, the ninth of April)."
+      ],
+      "model": "Good morning, Ms. Grant! My name is Sara Ortiz, S-A-R-A. I am fifteen years old and I am from Ibagué. My birthday is on the ninth of April. See you on Monday!"
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Introduce yourself. Say your name and spell it. Then say how old you are and where you are from.",
+          "text_es": "Preséntate: di tu nombre y deletréalo, tu edad y de dónde eres.",
+          "seconds": 40,
+          "tips": [
+            "My name is… It's spelled…",
+            "I'm … years old.",
+            "I'm from…"
+          ]
+        },
+        {
+          "text": "Look around you. Point at four things, near and far, and say what they are with this, that, these and those.",
+          "text_es": "Mira a tu alrededor y señala cuatro cosas, cerca y lejos, usando this, that, these y those.",
+          "seconds": 40,
+          "tips": [
+            "This is my pencil.",
+            "These are my books.",
+            "That is a window.",
+            "Those are chairs."
+          ]
+        },
+        {
+          "text": "Role-play: you meet a new classmate. Say hello, ask three questions with What, Where and How old, and say goodbye.",
+          "text_es": "Juego de roles: conoces a un compañero nuevo. Salúdalo, hazle tres preguntas (What, Where, How old) y despídete.",
+          "seconds": 45,
+          "tips": [
+            "Hi! Nice to meet you.",
+            "What is your name? Where are you from? How old are you?",
+            "See you later!"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "prea1-final",
+    "level": "PreA1",
+    "kind": "final",
+    "n": 0,
+    "units": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "title": "Parcial final · Nivel Pre-A1",
+    "intro_es": "Evalúa todo el nivel Pre-A1: alfabeto, saludos, to be, posesivos, números, puntuación, demostrativos, preguntas WH, la ropa, el posesivo 's y whose. Incluye escucha, lectura, escritura y expresión oral.",
+    "minutes": 75,
+    "grammar": [
+      {
+        "type": "mc",
+        "q": "___ you ready? — Yes, we are.",
+        "options": [
+          "Is",
+          "Am",
+          "Are",
+          "Do"
+        ],
+        "answer": 2,
+        "explain_es": "La respuesta es «we are», así que la pregunta usa Are."
+      },
+      {
+        "type": "mc",
+        "q": "Whose jacket is this? — It's ___.",
+        "options": [
+          "Camilo",
+          "of Camilo",
+          "Camilos",
+          "Camilo's"
+        ],
+        "answer": 3,
+        "explain_es": "Para decir de quién es algo usamos dueño + 's: Camilo's."
+      },
+      {
+        "type": "mc",
+        "q": "___ umbrella is this? — It's mine.",
+        "options": [
+          "Who's",
+          "Who",
+          "Whose",
+          "Where"
+        ],
+        "answer": 2,
+        "explain_es": "Whose = de quién. Who's significa who is."
+      },
+      {
+        "type": "mc",
+        "q": "My two daughters share a room. The ___ bedroom is very big.",
+        "options": [
+          "daughter's",
+          "daughters'",
+          "daughters",
+          "daughter"
+        ],
+        "answer": 1,
+        "explain_es": "Plural regular terminado en -s: solo se añade el apóstrofo → daughters'."
+      },
+      {
+        "type": "mc",
+        "q": "What is Andrés wearing? — He ___ a blue shirt.",
+        "options": [
+          "wearing",
+          "are wearing",
+          "wear",
+          "is wearing"
+        ],
+        "answer": 3,
+        "explain_es": "He → is wearing (be + wearing)."
+      },
+      {
+        "type": "mc",
+        "q": "Look at that house over there. ___ door is red.",
+        "options": [
+          "Its",
+          "It's",
+          "His",
+          "Their"
+        ],
+        "answer": 0,
+        "explain_es": "La casa es «it»; su posesivo es its, sin apóstrofo. It's = it is."
+      },
+      {
+        "type": "mc",
+        "q": "___ flowers over there are beautiful.",
+        "options": [
+          "This",
+          "These",
+          "That",
+          "Those"
+        ],
+        "answer": 3,
+        "explain_es": "Lejos (over there) y plural (flowers) → those."
+      },
+      {
+        "type": "mc",
+        "q": "How ___ is the jacket? — It's thirty dollars.",
+        "options": [
+          "many",
+          "often",
+          "old",
+          "much"
+        ],
+        "answer": 3,
+        "explain_es": "Para preguntar el precio usamos How much…?"
+      },
+      {
+        "type": "mc",
+        "q": "My brother and I are students. ___ school is in Cali.",
+        "options": [
+          "Their",
+          "My",
+          "Our",
+          "Your"
+        ],
+        "answer": 2,
+        "explain_es": "My brother and I = we → our."
+      },
+      {
+        "type": "mc",
+        "q": "They ___ from Peru. They're from Ecuador.",
+        "options": [
+          "aren't",
+          "isn't",
+          "not",
+          "don't"
+        ],
+        "answer": 0,
+        "explain_es": "Negativo de they are → they aren't."
+      },
+      {
+        "type": "gap",
+        "q": "The ___ toys are on the floor. (the children)",
+        "answer": "children's",
+        "explain_es": "Children es un plural irregular (no termina en -s) → children's."
+      },
+      {
+        "type": "transform",
+        "q": "Make it negative: He is at home.",
+        "answer": "He is not at home.",
+        "accept": [
+          "He isn't at home.",
+          "He's not at home."
+        ],
+        "explain_es": "Para el negativo añadimos not después de is: He is not / isn't."
+      },
+      {
+        "type": "error",
+        "q": "This is the car of my father.",
+        "answer": "This is my father's car.",
+        "explain_es": "Con personas usamos dueño + 's + cosa: my father's car."
+      },
+      {
+        "type": "order",
+        "q": "these / whose / are / shoes / ?",
+        "answer": "Whose shoes are these?",
+        "explain_es": "Whose + cosa + are + these?"
+      }
+    ],
+    "vocabulary": [
+      {
+        "type": "mc",
+        "q": "You wear these on your feet when you run.",
+        "options": [
+          "gloves",
+          "a scarf",
+          "sneakers",
+          "a hat"
+        ],
+        "answer": 2,
+        "explain_es": "Sneakers (tenis) van en los pies."
+      },
+      {
+        "type": "mc",
+        "q": "In British English, «pants» (pantalón) are ___.",
+        "options": [
+          "trousers",
+          "jumpers",
+          "trainers",
+          "shorts"
+        ],
+        "answer": 0,
+        "explain_es": "Pants (EE. UU.) = trousers (Reino Unido)."
+      },
+      {
+        "type": "mc",
+        "q": "It's very cold. Put on your ___ and your gloves.",
+        "options": [
+          "swimsuit",
+          "coat",
+          "sandals",
+          "shorts"
+        ],
+        "answer": 1,
+        "explain_es": "Con frío nos ponemos un coat (abrigo)."
+      },
+      {
+        "type": "gap",
+        "q": "one dress → two ___",
+        "answer": "dresses",
+        "explain_es": "Las palabras que terminan en -ss forman el plural con -es: dresses."
+      },
+      {
+        "type": "mc",
+        "q": "You see your boss at 3:00 p.m. You say: «___»",
+        "options": [
+          "Good morning.",
+          "Good evening.",
+          "Good night.",
+          "Good afternoon."
+        ],
+        "answer": 3,
+        "explain_es": "De 12:00 m. a 6:00 p. m. decimos Good afternoon."
+      },
+      {
+        "type": "mc",
+        "q": "The symbol ? is called ___.",
+        "options": [
+          "a period",
+          "a comma",
+          "an apostrophe",
+          "a question mark"
+        ],
+        "answer": 3,
+        "explain_es": "? = question mark (signo de interrogación). En inglés solo va al final."
+      },
+      {
+        "type": "mc",
+        "q": "Choose the correct sentence.",
+        "options": [
+          "I am from colombia.",
+          "I am from Colombia.",
+          "i am from Colombia."
+        ],
+        "answer": 1,
+        "explain_es": "En inglés el pronombre I y los nombres de países van siempre con mayúscula."
+      },
+      {
+        "type": "gap",
+        "q": "3rd = ___",
+        "answer": "third",
+        "explain_es": "El ordinal de three es irregular: third."
+      },
+      {
+        "type": "mc",
+        "q": "How do you say the year 2005?",
+        "options": [
+          "twenty five",
+          "two thousand and five",
+          "two hundred five"
+        ],
+        "answer": 1,
+        "explain_es": "Los años 2000–2009 se dicen two thousand (and) five."
+      },
+      {
+        "type": "gap",
+        "q": "Have a nice ___! (que tengas un buen día)",
+        "answer": "day",
+        "explain_es": "Have a nice day! es una despedida amable."
+      },
+      {
+        "type": "mc",
+        "q": "Which word is NOT clothing?",
+        "options": [
+          "skirt",
+          "belt",
+          "pencil",
+          "socks"
+        ],
+        "answer": 2,
+        "explain_es": "Pencil (lápiz) no es ropa; skirt, belt y socks sí."
+      },
+      {
+        "type": "gap",
+        "q": "American English: sweater. British English: ___.",
+        "answer": "jumper",
+        "explain_es": "Sweater (EE. UU.) = jumper (Reino Unido)."
+      },
+      {
+        "type": "mc",
+        "q": "write + -ing = ___",
+        "options": [
+          "writeing",
+          "writing",
+          "writting"
+        ],
+        "answer": 1,
+        "explain_es": "Si el verbo termina en -e muda, quitamos la e: writing."
+      },
+      {
+        "type": "mc",
+        "q": "How do you spell «Hello» aloud?",
+        "options": [
+          "H – E – L – O",
+          "H – I – double L – O",
+          "H – E – double L – O"
+        ],
+        "answer": 2,
+        "explain_es": "Hello tiene dos L seguidas (double L); la E se dice «i»."
+      }
+    ],
+    "reading": {
+      "title": "The Lost and Found Box",
+      "genre": "story",
+      "paragraphs": [
+        "It is Monday, the third of October, and it is cold in Bogotá. Our teacher, Ms. Peña, is at her desk with a big box. «Whose things are these?» she asks.",
+        "Four things are in the box: a green scarf, two black gloves, a red cap and a white sweater. The scarf is Martín's. The gloves are the twins', Lina and Laura. The red cap is mine!",
+        "«Whose sweater is this?» Ms. Peña asks. The name on it is J. Ruiz. Julián Ruiz is not here today. He is at home. Is he sick? Maybe."
+      ],
+      "glossary": [
+        [
+          "box",
+          "caja"
+        ],
+        [
+          "desk",
+          "escritorio"
+        ],
+        [
+          "things",
+          "cosas"
+        ],
+        [
+          "twins",
+          "gemelos, gemelas"
+        ],
+        [
+          "sick",
+          "enfermo"
+        ],
+        [
+          "Maybe",
+          "tal vez"
+        ]
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What is the date?",
+          "options": [
+            "the thirteenth of October",
+            "the third of October",
+            "the third of November"
+          ],
+          "answer": 1,
+          "explain_es": "El texto dice: «It is Monday, the third of October»."
+        },
+        {
+          "type": "tf",
+          "q": "It is hot in Bogotá today.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «it is cold in Bogotá»."
+        },
+        {
+          "type": "gap",
+          "q": "The green scarf is ___.",
+          "answer": "Martín's",
+          "accept": [
+            "Martin's"
+          ],
+          "explain_es": "El texto dice: «The scarf is Martín's»."
+        },
+        {
+          "type": "mc",
+          "q": "Whose gloves are they?",
+          "options": [
+            "Martín's",
+            "Julián's",
+            "Ms. Peña's",
+            "the twins'"
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: «The gloves are the twins', Lina and Laura»."
+        },
+        {
+          "type": "mc",
+          "q": "What colour is the cap?",
+          "options": [
+            "green",
+            "white",
+            "black",
+            "red"
+          ],
+          "answer": 3,
+          "explain_es": "El texto dice: «a red cap»."
+        },
+        {
+          "type": "tf",
+          "q": "The red cap is the writer's.",
+          "answer": "T",
+          "explain_es": "Verdadero. El narrador dice: «The red cap is mine!»."
+        },
+        {
+          "type": "gap",
+          "q": "The name on the sweater is J. ___.",
+          "answer": "Ruiz",
+          "explain_es": "El texto dice: «The name on it is J. Ruiz»."
+        },
+        {
+          "type": "tf",
+          "q": "Julián is in the classroom today.",
+          "answer": "F",
+          "explain_es": "Falso. El texto dice: «Julián Ruiz is not here today. He is at home»."
+        }
+      ]
+    },
+    "listening": {
+      "title": "In a Clothes Shop in Cartagena",
+      "kind": "dialogue",
+      "speakers": [
+        {
+          "name": "Shop assistant",
+          "voice": "female",
+          "accent": "uk"
+        },
+        {
+          "name": "Customer",
+          "voice": "male",
+          "accent": "us"
+        }
+      ],
+      "lines": [
+        {
+          "s": 0,
+          "text": "Good afternoon. Welcome to Sol y Mar."
+        },
+        {
+          "s": 1,
+          "text": "Hi. How much is this shirt?"
+        },
+        {
+          "s": 0,
+          "text": "That blue shirt is twenty-five dollars."
+        },
+        {
+          "s": 1,
+          "text": "And how much are those shorts over there?"
+        },
+        {
+          "s": 0,
+          "text": "These white shorts? They are eighteen dollars."
+        },
+        {
+          "s": 1,
+          "text": "OK. The shirt is for me, and the shorts are for my brother. His name is Nico."
+        },
+        {
+          "s": 0,
+          "text": "Great. That is forty-three dollars, please."
+        },
+        {
+          "s": 1,
+          "text": "Here you are. Thank you. Goodbye!"
+        },
+        {
+          "s": 0,
+          "text": "Thank you. Have a nice day!"
+        }
+      ],
+      "questions": [
+        {
+          "type": "mc",
+          "q": "What colour is the shirt?",
+          "options": [
+            "white",
+            "blue",
+            "red"
+          ],
+          "answer": 1,
+          "explain_es": "La vendedora dice: «That blue shirt is twenty-five dollars»."
+        },
+        {
+          "type": "gap",
+          "q": "The shirt is ___ dollars.",
+          "answer": "twenty-five",
+          "accept": [
+            "25",
+            "twenty five"
+          ],
+          "explain_es": "La vendedora dice: «That blue shirt is twenty-five dollars»."
+        },
+        {
+          "type": "mc",
+          "q": "How much are the shorts?",
+          "options": [
+            "$80",
+            "$8",
+            "$28",
+            "$18"
+          ],
+          "answer": 3,
+          "explain_es": "La vendedora dice: «They are eighteen dollars»."
+        },
+        {
+          "type": "tf",
+          "q": "The shorts are for the man's sister.",
+          "answer": "F",
+          "explain_es": "Falso. El cliente dice: «the shorts are for my brother»."
+        },
+        {
+          "type": "gap",
+          "q": "The man's brother's name is ___.",
+          "answer": "Nico",
+          "explain_es": "El cliente dice: «His name is Nico»."
+        },
+        {
+          "type": "mc",
+          "q": "How much is it in total?",
+          "options": [
+            "$34",
+            "$25",
+            "$43"
+          ],
+          "answer": 2,
+          "explain_es": "La vendedora dice: «That is forty-three dollars, please»."
+        },
+        {
+          "type": "tf",
+          "q": "The shop is called Sol y Mar.",
+          "answer": "T",
+          "explain_es": "Verdadero. La vendedora dice: «Welcome to Sol y Mar»."
+        },
+        {
+          "type": "tf",
+          "q": "The shirt is for the man.",
+          "answer": "T",
+          "explain_es": "Verdadero. El cliente dice: «The shirt is for me»."
+        }
+      ]
+    },
+    "writing": {
+      "prompt": "What are you wearing today? Describe your clothes and the clothes of a friend or a person in your family. Say the colours and use 's (for example, my sister's bag).",
+      "prompt_es": "Describe la ropa que llevas hoy y la de un amigo o familiar, con colores y el posesivo 's.",
+      "genre_es": "Descripción corta",
+      "minWords": 20,
+      "maxWords": 40,
+      "criteria": [
+        "Use be + wearing: I am wearing… / She is wearing…",
+        "Name at least four clothes with their colours.",
+        "Use a possessive adjective (my, his, her).",
+        "Use possessive 's (my mom's, Paula's)."
+      ],
+      "model": "Today I am wearing blue jeans, a white T-shirt and black sneakers. This is my sister, Paula. She is wearing a yellow dress. Her jacket is red. The green bag is my mom's."
+    },
+    "speaking": {
+      "prompts": [
+        {
+          "text": "Talk about two people in your family. Say their names, how old they are and where they are from. Spell one of the names.",
+          "text_es": "Habla de dos personas de tu familia: nombre, edad y de dónde son. Deletrea uno de los nombres.",
+          "seconds": 45,
+          "tips": [
+            "This is my… His / Her name is…",
+            "He's / She's … years old.",
+            "It's spelled…"
+          ]
+        },
+        {
+          "text": "Describe what you are wearing today, with colours. Then describe what a person near you is wearing.",
+          "text_es": "Describe la ropa que llevas hoy, con colores, y la de una persona cerca de ti.",
+          "seconds": 40,
+          "tips": [
+            "I'm wearing…",
+            "He's / She's wearing…",
+            "My shoes are black."
+          ]
+        },
+        {
+          "text": "Role-play: you find a phone, a bag and some keys in your classroom. Ask who the owners are with Whose, and answer with 's, mine or yours.",
+          "text_es": "Juego de roles: encuentras un celular, un bolso y unas llaves en el salón. Pregunta de quién son con Whose y responde con 's, mine o yours.",
+          "seconds": 45,
+          "tips": [
+            "Whose phone is this?",
+            "Whose keys are these?",
+            "It's Juan's. / They're mine."
+          ]
+        }
+      ]
+    }
+  }
+]

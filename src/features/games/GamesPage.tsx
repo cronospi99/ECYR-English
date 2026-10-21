@@ -10,6 +10,7 @@ import { useProgress } from '@/store/progress';
 import { Segmented } from '@/components/ui/Segmented';
 import { useGames, TRACKED_GAMES } from '@/store/games';
 import { GameProgressView } from './GameProgress';
+import { GtleGallery } from '@/features/learn/inserts/Gtle';
 
 export default function GamesPage() {
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
@@ -75,6 +76,10 @@ export default function GamesPage() {
           <GameCard key={g.slug} g={g} plays={playsOf(g.slug)} />
         ))}
       </div>
+
+      <h2 className="text-title-2 mt-10 mb-1 px-1">Games to Learn English</h2>
+      <p className="text-label-2 mb-3 px-1 text-[14px]">Juegos de vocabulario y gramática A1–A2 de gamestolearnenglish.com. También aparecen dentro de las lecciones donde se estudia cada tema.</p>
+      <GtleGallery />
 
       <h2 className="text-title-2 mt-10 mb-3 px-1">Libros y cursos interactivos</h2>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">

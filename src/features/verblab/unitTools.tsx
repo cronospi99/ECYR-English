@@ -4,6 +4,7 @@ import { Wrench, ChevronRight } from 'lucide-react';
 import type { Unit, VerbLabData } from '@/content/types';
 import { Card } from '@/components/ui/Card';
 import { Segmented } from '@/components/ui/Segmented';
+import { IrregularPatterns } from './irregular';
 import { EdSoundDrill, EdSoundRules, PatternCard, PatternQuizCard, PhrasalFamilies, VerbFormsQuiz, useVerbLab } from './components';
 
 /**
@@ -17,7 +18,8 @@ type Tool =
   | { kind: 'forms'; field: 'past' | 'part'; only: 'all' | 'irregular' }
   | { kind: 'pattern'; id: number }
   | { kind: 'pattern-quiz'; id: string }
-  | { kind: 'phrasal' };
+  | { kind: 'phrasal' }
+  | { kind: 'irregular' };
 
 const RULES: { test: RegExp; tools: Tool[]; label: string }[] = [
   {
@@ -28,7 +30,7 @@ const RULES: { test: RegExp; tools: Tool[]; label: string }[] = [
   {
     test: /present perfect|past participle|participles|passive|future perfect|should have|would have|past modals|have something done|past perfect/i,
     label: 'Participios',
-    tools: [{ kind: 'forms', field: 'part', only: 'irregular' }],
+    tools: [{ kind: 'irregular' }, { kind: 'forms', field: 'part', only: 'irregular' }],
   },
   {
     test: /gerund|infinitive|verb patterns|verbs \+ infinitives|would rather/i,
@@ -62,6 +64,8 @@ function ToolView({ t, data }: { t: Tool; data: VerbLabData }) {
       return <PatternQuizCard data={data} quizId={t.id} />;
     case 'phrasal':
       return <PhrasalFamilies data={data} />;
+    case 'irregular':
+      return <IrregularPatterns compact />;
   }
 }
 

@@ -10,19 +10,21 @@ import { Segmented } from '@/components/ui/Segmented';
  * that fit a unit's grammar, the same way Verb Lab does for verb forms.
  * Each module's registry is code-split and only loaded when a unit needs it.
  */
-type ModuleId = 'modals' | 'time-family' | 'time-machine';
+type ModuleId = 'modals' | 'time-family' | 'time-machine' | 'do-make';
 type Registry = Record<string, { title: string; Component: ComponentType }>;
 
 const REGISTRIES: Record<ModuleId, () => Promise<Registry>> = {
   modals: () => import('./modals/tools').then((m) => m.MODAL_TOOLS as unknown as Registry),
   'time-family': () => import('./time-family/tools').then((m) => m.TIME_FAMILY_TOOLS as unknown as Registry),
   'time-machine': () => import('./time-machine/tools').then((m) => m.TIME_MACHINE_TOOLS as unknown as Registry),
+  'do-make': () => import('./do-make/tools').then((m) => m.DO_MAKE_TOOLS),
 };
 
 const MODULE_INFO: Record<ModuleId, { title: string; to: string }> = {
   modals: { title: 'Modal Verbs', to: '/learn/grammar/modals' },
   'time-family': { title: 'Time & Family', to: '/learn/grammar/time-family' },
   'time-machine': { title: 'Time Machine', to: '/learn/grammar/time-machine' },
+  'do-make': { title: 'Do vs Make', to: '/learn/grammar/do-make' },
 };
 
 interface Rule {
@@ -51,6 +53,8 @@ const RULES: Rule[] = [
   { test: /referring to time in the past|sequence adverbs/i, label: 'Expresiones de tiempo', module: 'time-machine', tools: ['time-words'] },
   // Time & Family
   { test: /time expressions/i, label: 'La hora', module: 'time-family', tools: ['time-rules', 'clock'], levels: ['A1', 'A2'] },
+  // Do vs Make: daily routines and chores (A1), "how to do things" (A2 Payload)
+  { test: /my day, my routine|imperatives and infinitives for giving suggestions/i, label: 'Do vs Make', module: 'do-make', tools: ['lesson', 'sort'], levels: ['A1', 'A2'] },
   { test: /possessive adjectives|possessive ’s|family/i, label: 'Familia y ’s', module: 'time-family', tools: ['genitive-rules', 'riddles'], levels: ['A1', 'A2'] },
 ];
 

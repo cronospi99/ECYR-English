@@ -6,7 +6,7 @@ import { LEVELS, TOTAL_UNITS } from '@/content/levels';
 import { dayKey, daysBetween } from '@/lib/date';
 import { useSettings } from '@/store/settings';
 
-export type ActivityKind = 'unit' | 'topic' | 'game' | 'reading' | 'listening' | 'speaking' | 'writing' | 'flashcards' | 'ielts' | 'coach';
+export type ActivityKind = 'unit' | 'topic' | 'game' | 'reading' | 'listening' | 'speaking' | 'writing' | 'flashcards' | 'ielts' | 'coach' | 'exam';
 
 export interface Activity {
   id: string;

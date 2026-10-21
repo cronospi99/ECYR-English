@@ -7,6 +7,126 @@ etapa. Al final están los pasos que hay que hacer en Supabase para que todo
 funcione en producción y algunos puntos para revisar.
 
 
+======================================================================
+ACTUALIZACIÓN · OCTUBRE 2026 — EVALUACIONES, MATERIAL NUEVO Y MÁS
+======================================================================
+
+No requiere cambios en Supabase ni en Vercel: basta con unir la rama a main.
+La calificación con IA del writing y el speaking usa la función "gemini"
+que ya está desplegada.
+
+A. EVALUACIONES (PARCIALES)
+- Un parcial cada 4 unidades y un parcial final por nivel: aparecen en la
+  lista de unidades de cada nivel (debajo de las unidades 4, 8, 12 y 16) y
+  el final al terminar la lista. Pre-A1 tiene un parcial (unidades 1–4) y
+  el final; están en la página de Foundations. 25 exámenes en total.
+- Cada examen evalúa SIEMPRE las 4 habilidades + vocabulario + gramática:
+  Listening (audio con voces naturales, se puede escuchar 2 veces),
+  Reading, Grammar, Vocabulary, Writing y Speaking (grabación con
+  micrófono). El contenido sale de las unidades que cubre.
+- Nota sobre 5,0 (se aprueba con 3,0 = 60%). Cada habilidad vale 1/6.
+  Listening, reading, gramática y vocabulario se califican solos; el
+  writing y el speaking los califica la IA al entregar.
+- Al terminar: nota, barra por habilidad, revisión de cada respuesta con
+  explicación en español, la transcripción del listening, un modelo de
+  writing y la retroalimentación de la IA.
+- Las respuestas se guardan mientras el estudiante presenta el examen
+  (puede cerrar y continuar). Hay temporizador con el tiempo sugerido.
+- El docente recibe en "Trabajos" el writing con la hoja de resultados
+  completa (nota y % por habilidad) y cada respuesta de speaking
+  transcrita, con la etiqueta "Parcial N · Nivel".
+
+B. FOTOS DE FAMILIAS
+- Las 3 fotos familiares son ahora interactivas: se toca a cada persona y
+  una voz dice quién es y su parentesco; modo "¿Quién es?" con preguntas
+  ("Tap Santiago's grandfather"). Están en A1 U5 (familia), A1 U9
+  (descripción de personas, ropa), B2 U1 (familias) y Pre-A1 genitivo 's.
+- Lecturas nuevas sobre cada foto (A1 U5: 3 lecturas con la foto arriba;
+  B2 U1: artículo "Four Passports, One Sofa") y writings: "Describe a
+  family photo", "My own family photo" (A1) y "What makes a family?" (B2).
+- Las fotos también están en la Biblioteca visual.
+
+C. RESALTADORES EN LAS NOTAS
+- El bloc de notas tiene 4 resaltadores (amarillo, verde, azul y rosa) y
+  un borrador: se selecciona el texto y se toca el color. Las notas siguen
+  siendo solo texto y se sincronizan igual.
+
+D. LECCIÓN DO vs MAKE
+- Nuevo módulo en Gramática interactiva: la regla (actividad vs
+  resultado), más de 50 colocaciones por familias con audio, los errores
+  típicos ("do the bed" → make the bed), un juego para clasificar, práctica
+  y los pronombres reflexivos y posesivos de la misma clase.
+- Aparece dentro de A1 U2 (rutinas) y A2 U7.
+
+E. VERB LAB
+- 444 verbos nuevos de uso diario (watch, call, decide, laugh, smile,
+  borrow, celebrate… y algunos irregulares que faltaban): ahora son más de
+  1.460, cada uno con sus 3 formas, traducción, sonido de -ed y ejemplos.
+- Pestaña nueva "Irregulares por patrones": los 6 grupos (AAA, ABB, ABA,
+  i-a-u, participios en -n y "rebeldes"), trucos, pares confusos
+  (lie/lay, rise/raise…), laboratorio de pronunciación con pares mínimos y
+  un juego "¿Qué código tiene?". Se inserta en las lecciones de
+  participios (present perfect, pasiva…).
+
+F. 12 READINGS Y 12 LISTENINGS MÁS POR NIVEL
+- 120 actividades nuevas en Práctica (A1–C1), cada una enfocada en un
+  tiempo verbal o estructura distinta, con temas nuevos. La tarjeta y la
+  lectura muestran el foco gramatical ("🎯 Past continuous vs past
+  simple").
+
+G. MATERIAL DEL ZIP (ADAPTADO, SIN NOMBRES NI LOGOS ANTERIORES)
+- Countries & nationalities (A1 U1, A1 U14 y Pre-A1 verb be): 29 países
+  con bandera y audio, terminaciones (-an, -ese, -ish, irregulares) y quiz.
+- Alphabet: dictado "Listen and write" (la voz deletrea, el estudiante
+  escribe) en A1 U1 y Pre-A1 Alphabet.
+- Clothes: wear / put on / take off / try on / get dressed y la ropa por
+  partes del cuerpo (A1 U9 y Pre-A1 Clothing).
+- Weather: estaciones (con la nota del clima en Colombia), temperaturas,
+  adjetivos, verbos y un pronóstico por ciudades (A2 U5 "Forecast" y A1
+  U14).
+- Frecuencia y familia: escala de frecuencia, orden de palabras,
+  "Frequency Detective", "Routine Builder" (A1 U6) y el árbol familiar de 5
+  generaciones con familia política (A1 U5).
+- Preposiciones: las dos infografías de lugar y movimiento dentro de A1 U8
+  y en la Biblioteca visual.
+- The Cellphone Case (versión past simple A2 y versión de 4 tiempos B1) y
+  Short Circuit (B2, estructuras B1–C1): lecturas con resaltado por tiempo
+  verbal o por nivel, glosario y preguntas. Aparecen en la Biblioteca y en
+  A2 U1, A2 U12, B1 U4, B2 U6 y C1 U1. Llevan una nota de "tema adulto".
+- Se corrigieron errores del material original al adaptarlo (por ejemplo
+  "do the bed", "It's doing 12 degrees", "it heats today", "wrote" marcado
+  como regular).
+
+H. JUEGOS DE GAMES TO LEARN ENGLISH
+- Los 7 juegos (Jobs, Questions, Daily Routines, Prepositions,
+  Comparatives, Clothes y Weather) están dentro de las lecciones donde se
+  ve cada tema y en Juegos → "Games to Learn English". Cada uno muestra el
+  crédito y el enlace a gamestolearnenglish.com, que permite su uso libre a
+  docentes. El juego solo se carga cuando el estudiante toca "Jugar aquí".
+
+
+I. CIUDAD, SALUD Y VIVIENDA (5 IMÁGENES NUEVAS)
+- "Places in a city" (A1 U8, vocabulario): tiendas y lugares de básico a
+  avanzado con audio y el quiz "Where do you go to…?". La infografía
+  "Shops in a City" también está en A1 U8 y B2 U3.
+- "Health symptoms" (A1 U11 y A2 U5, gramática): 12 síntomas con audio,
+  vocabulario de salud, los modales para dar consejos (should, shouldn't,
+  must, have to, could, might), el juego "Doctor, doctor!" (el paciente
+  dice su síntoma y eliges el mejor consejo) y práctica.
+- "Which home would you rent?" (A1 U3 y U14, A2 U3, B1 U2 y U8): la casa,
+  el apartamento, el loft y la casa toscana con precios, servicios,
+  estrato, habitaciones, baños y lo que ofrece cada una; fotos por dentro;
+  preguntas con comparativos, superlativos, "not as … as" y "would
+  rather", y una tarea oral/escrita. Writings nuevos: "Which home would
+  you rent?" (A2 U3) y "Loft or Tuscan house?" (B1 U8).
+
+J. VOCES MÁS LENTAS AL DELETREAR
+- Cuando un audio deletrea un nombre o una palabra (W-I-L-S-O-N,
+  "A, R, A, N, G, O", "R-U-double S-E-L-L"), esas letras se leen más
+  despacio (alrededor de 40% más lento) y con una pausa entre cada letra.
+  Funciona en diálogos, listenings, exámenes, el simulador IELTS y el
+  dictado "Listen and write".
+
 ----------------------------------------------------------------------
 1. LECCIONES DE GRAMÁTICA: UNA SOLA LECCIÓN, MÁS VISUAL
 ----------------------------------------------------------------------

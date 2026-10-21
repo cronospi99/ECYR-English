@@ -1,0 +1,1563 @@
+[
+  {
+    "id": "r3-a2-power-cut",
+    "title": "The Night the Lights Went Out",
+    "level": "A2",
+    "genre": "story",
+    "topic": "Home & family",
+    "focus": "Past continuous vs past simple",
+    "emoji": "🕯️",
+    "words": 183,
+    "paragraphs": [
+      "Last Tuesday evening, my family was at home in Bucaramanga. My mother was cooking rice and beans, my little brother was playing a video game, and I was doing my maths homework at the kitchen table. Outside, it was raining hard.",
+      "At about eight o'clock, there was a loud noise and all the lights went out. My brother shouted because he was winning his game. My mother just laughed. 'Don't worry,' she said. 'The rice is almost ready.'",
+      "While my mother was looking for candles, my father came home. He was carrying a big bag of bread, and he was completely wet. He found the candles in a drawer and lit them. Then we sat together in the kitchen and ate dinner by candlelight.",
+      "Without our phones or the TV, we talked a lot. My father told funny stories about his school days, and my brother fell asleep on the sofa while my mother was singing an old song. When the lights came back at half past ten, nobody wanted to turn on the TV. It was the best evening of the month."
+    ],
+    "glossary": [
+      [
+        "went out",
+        "se apagaron (se fue la luz)"
+      ],
+      [
+        "loud noise",
+        "ruido fuerte"
+      ],
+      [
+        "candles",
+        "velas"
+      ],
+      [
+        "completely wet",
+        "empapado"
+      ],
+      [
+        "drawer",
+        "cajón"
+      ],
+      [
+        "lit",
+        "encendió, prendió (pasado de light)"
+      ],
+      [
+        "by candlelight",
+        "a la luz de las velas"
+      ],
+      [
+        "fell asleep",
+        "se quedó dormido"
+      ],
+      [
+        "came back",
+        "volvió, regresó"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What was the writer doing when the lights went out?",
+        "options": [
+          "Watching TV",
+          "Cooking rice",
+          "Doing maths homework",
+          "Playing a video game"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'I was doing my maths homework at the kitchen table'."
+      },
+      {
+        "type": "tf",
+        "q": "It was a sunny evening.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'Outside, it was raining hard.'"
+      },
+      {
+        "type": "mc",
+        "q": "Why did the brother shout?",
+        "options": [
+          "He was winning his game",
+          "He was afraid of the dark",
+          "He hurt his hand",
+          "His dinner was cold"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice: 'My brother shouted because he was winning his game.'"
+      },
+      {
+        "type": "gap",
+        "q": "While my mother ____ for candles, my father came home.",
+        "answer": "was looking",
+        "explain_es": "Pasado continuo para la acción larga: 'While my mother was looking for candles, my father came home.'"
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'At about eight o'clock, there was a loud noise and all the lights were going out.'",
+        "answer": "went out",
+        "accept": [
+          "the lights went out",
+          "all the lights went out"
+        ],
+        "explain_es": "Es una acción corta y completa, así que va en pasado simple: 'all the lights went out' (párrafo 2)."
+      },
+      {
+        "type": "tf",
+        "q": "The father found the candles in a drawer.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'He found the candles in a drawer and lit them.'"
+      },
+      {
+        "type": "mc",
+        "q": "What time did the lights come back?",
+        "options": [
+          "At eight o'clock",
+          "At nine thirty",
+          "At ten o'clock",
+          "At half past ten"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'When the lights came back at half past ten'."
+      },
+      {
+        "type": "gap",
+        "q": "My brother fell asleep on the sofa while my mother ____ an old song.",
+        "answer": "was singing",
+        "explain_es": "El párrafo 4 usa pasado continuo para la acción de fondo: 'while my mother was singing an old song'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-childhood-games",
+    "title": "The Games We Used to Play",
+    "level": "A2",
+    "genre": "blog",
+    "topic": "Childhood",
+    "focus": "Used to",
+    "emoji": "🪀",
+    "words": 182,
+    "paragraphs": [
+      "When I was a child in Cali, I didn't have a tablet or a smartphone. My friends and I used to play outside every afternoon after school. Our street was quiet, and there weren't many cars, so it was our playground.",
+      "Our favourite game was a kind of dodgeball. We used to make a ball from old socks and newspaper. My cousin Andrés used to throw the ball very hard, and everybody was afraid of him! We also used to play hide-and-seek. I always used to hide behind Doña Rosa's big plant pots, and nobody ever found me.",
+      "On rainy days, we used to stay at my grandmother's house and play cards or marbles on the floor. She used to give us hot chocolate with cheese, and sometimes she played with us. She was very good at marbles!",
+      "Did you use to play games like these? Today, my children prefer video games. Last weekend, I taught them hide-and-seek in the park. At first they weren't interested, but after ten minutes they were laughing and running everywhere. Maybe some old games never die."
+    ],
+    "glossary": [
+      [
+        "playground",
+        "lugar para jugar, parque infantil"
+      ],
+      [
+        "dodgeball",
+        "ponchado, quemados"
+      ],
+      [
+        "socks",
+        "medias"
+      ],
+      [
+        "throw",
+        "lanzar, tirar"
+      ],
+      [
+        "afraid of",
+        "con miedo de"
+      ],
+      [
+        "hide-and-seek",
+        "las escondidas"
+      ],
+      [
+        "plant pots",
+        "materas"
+      ],
+      [
+        "marbles",
+        "canicas, bolitas"
+      ],
+      [
+        "cards",
+        "cartas, naipes"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where did the writer and friends use to play?",
+        "options": [
+          "In the park",
+          "At school",
+          "In their street",
+          "At a sports centre"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'Our street was quiet... so it was our playground.'"
+      },
+      {
+        "type": "tf",
+        "q": "There used to be a lot of cars in the writer's street.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'there weren't many cars'."
+      },
+      {
+        "type": "gap",
+        "q": "We ____ make a ball from old socks and newspaper.",
+        "answer": "used to",
+        "explain_es": "El párrafo 2 dice: 'We used to make a ball from old socks and newspaper.' Used to + verbo = hábito en el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why was everybody afraid of Andrés?",
+        "options": [
+          "He threw the ball very hard",
+          "He was the oldest",
+          "He shouted a lot",
+          "He always won at cards"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice: 'My cousin Andrés used to throw the ball very hard, and everybody was afraid of him!'"
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with 'used to': 'My grandmother gave us hot chocolate.' → My grandmother ____ us hot chocolate.",
+        "answer": "used to give",
+        "explain_es": "Después de 'used to' va el verbo en forma base: 'She used to give us hot chocolate' (párrafo 3)."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's grandmother never played with the children.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'sometimes she played with us'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Did you used to play games like these?'",
+        "answer": "use to",
+        "accept": [
+          "did you use to",
+          "Did you use to play games like these?"
+        ],
+        "explain_es": "En preguntas con 'did' se escribe 'use to', sin -d: 'Did you use to play games like these?' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "How did the writer's children react to hide-and-seek?",
+        "options": [
+          "They wanted to go home",
+          "They preferred cards",
+          "They were never interested",
+          "They enjoyed it after a few minutes"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'At first they weren't interested, but after ten minutes they were laughing and running'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-road-trip",
+    "title": "A Road Trip That Went Wrong",
+    "level": "A2",
+    "genre": "diary",
+    "topic": "Travel",
+    "focus": "Past simple irregular verbs",
+    "emoji": "🚗",
+    "words": 199,
+    "paragraphs": [
+      "Saturday, 14 June. Today my friends Camila, Tomás and I drove from Bogotá to Villa de Leyva. We left at six in the morning because we wanted to see the sunrise from the road. Tomás brought sandwiches and I made coffee. Everything began perfectly.",
+      "After two hours, the car made a strange noise and stopped. Tomás got out and looked at the engine, but he didn't know what the problem was. We stood next to the road for an hour. Then a farmer came in an old truck. He saw our car and gave us a lift to the next town.",
+      "In the town, we found a mechanic. He said the car needed a new part, and it took three hours to arrive. While we waited, we ate in a small restaurant and drank a lot of coffee. Camila bought a hat, and Tomás slept on a bench in the square.",
+      "We finally got to Villa de Leyva at eight in the evening. It was dark and cold, and we felt very tired. But we sat in the beautiful main square, under the stars, and laughed about our long day. The trip went wrong, but I'll never forget it."
+    ],
+    "glossary": [
+      [
+        "drove",
+        "manejamos (pasado de drive)"
+      ],
+      [
+        "sunrise",
+        "amanecer"
+      ],
+      [
+        "engine",
+        "motor"
+      ],
+      [
+        "truck",
+        "camión"
+      ],
+      [
+        "gave us a lift",
+        "nos llevó, nos dio un aventón"
+      ],
+      [
+        "mechanic",
+        "mecánico"
+      ],
+      [
+        "part",
+        "repuesto, pieza"
+      ],
+      [
+        "bench",
+        "banca"
+      ],
+      [
+        "square",
+        "plaza"
+      ],
+      [
+        "went wrong",
+        "salió mal"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did they leave at six in the morning?",
+        "options": [
+          "To avoid the traffic",
+          "To arrive for lunch",
+          "To see the sunrise",
+          "Because Tomás had to work"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'because we wanted to see the sunrise from the road'."
+      },
+      {
+        "type": "tf",
+        "q": "Tomás knew how to fix the car.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'he didn't know what the problem was'."
+      },
+      {
+        "type": "gap",
+        "q": "Then a farmer ____ in an old truck.",
+        "answer": "came",
+        "explain_es": "Pasado irregular de 'come': 'Then a farmer came in an old truck' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "Who helped them first?",
+        "options": [
+          "A farmer",
+          "A mechanic",
+          "A police officer",
+          "Camila's father"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice que un granjero los vio y 'gave us a lift to the next town'."
+      },
+      {
+        "type": "gap",
+        "q": "The mechanic said the car needed a new part, and it ____ (take) three hours to arrive.",
+        "answer": "took",
+        "explain_es": "Pasado irregular de 'take': 'it took three hours to arrive' (párrafo 3)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Camila buyed a hat.'",
+        "answer": "bought",
+        "accept": [
+          "Camila bought a hat",
+          "Camila bought a hat."
+        ],
+        "explain_es": "'Buy' es irregular: el pasado es 'bought'. El párrafo 3 dice: 'Camila bought a hat'."
+      },
+      {
+        "type": "mc",
+        "q": "What did Tomás do in the town?",
+        "options": [
+          "He bought a hat",
+          "He fixed the car",
+          "He drove back to Bogotá",
+          "He slept on a bench"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 3 dice: 'Tomás slept on a bench in the square'."
+      },
+      {
+        "type": "tf",
+        "q": "They arrived in Villa de Leyva when it was dark.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'We finally got to Villa de Leyva at eight in the evening. It was dark and cold'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-neighbourhood-then-now",
+    "title": "My Neighbourhood, Then and Now",
+    "level": "A2",
+    "genre": "blog",
+    "topic": "City life & change",
+    "focus": "Comparatives and superlatives",
+    "emoji": "🏘️",
+    "words": 183,
+    "paragraphs": [
+      "I grew up in Barranco, in Lima, and I still live here. When I was a teenager, it was a quiet area with old houses and small shops. Today it is much busier and more popular, especially with tourists.",
+      "The streets are cleaner and safer than before, and there are more cafés, galleries and restaurants. The new restaurants are more expensive than the old ones, but the food is often better. My favourite place is still the oldest bakery on my street. Its bread is the best in the neighbourhood, and it is also the cheapest!",
+      "However, some things are worse. The traffic is heavier now, and at weekends the main square is noisier than a football stadium. Rents are higher, too, so some of my old neighbours moved to cheaper areas further from the sea.",
+      "So, is my neighbourhood better or worse today? It's difficult to say. It is more colourful and more exciting than it was, but it is less friendly. In the past, everybody knew your name. Now the most important question for many people is 'Where can I park?'"
+    ],
+    "glossary": [
+      [
+        "busier",
+        "más concurrido, más movido"
+      ],
+      [
+        "galleries",
+        "galerías de arte"
+      ],
+      [
+        "bakery",
+        "panadería"
+      ],
+      [
+        "cheapest",
+        "la más barata"
+      ],
+      [
+        "worse",
+        "peor(es)"
+      ],
+      [
+        "heavier",
+        "más pesado (tráfico)"
+      ],
+      [
+        "noisier",
+        "más ruidoso"
+      ],
+      [
+        "rents",
+        "arriendos"
+      ],
+      [
+        "neighbours",
+        "vecinos"
+      ],
+      [
+        "park",
+        "parquear"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "The writer moved to Barranco last year.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'I grew up in Barranco... and I still live here.'"
+      },
+      {
+        "type": "mc",
+        "q": "How are the streets now?",
+        "options": [
+          "Dirtier and more dangerous",
+          "Quieter and emptier",
+          "Narrower and older",
+          "Cleaner and safer"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'The streets are cleaner and safer than before'."
+      },
+      {
+        "type": "gap",
+        "q": "The new restaurants are more ____ than the old ones.",
+        "answer": "expensive",
+        "explain_es": "Con adjetivos largos se usa 'more': 'more expensive than the old ones' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "What does the writer say about the oldest bakery?",
+        "options": [
+          "It closed last year",
+          "Its bread is the best and the cheapest",
+          "It is the most expensive place",
+          "It sells only cakes"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 2 dice: 'Its bread is the best in the neighbourhood, and it is also the cheapest!'"
+      },
+      {
+        "type": "transform",
+        "q": "Write the comparative of 'high': Rents are ____ now.",
+        "answer": "higher",
+        "explain_es": "Adjetivo corto + -er: 'Rents are higher, too' (párrafo 3)."
+      },
+      {
+        "type": "tf",
+        "q": "Some old neighbours moved to areas closer to the sea.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice que se fueron a zonas 'further from the sea' (más lejos del mar)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'At weekends the square is more noisy than a football stadium.'",
+        "answer": "noisier",
+        "accept": [
+          "noisier than",
+          "the square is noisier than a football stadium"
+        ],
+        "explain_es": "'Noisy' termina en -y, así que el comparativo es 'noisier': 'noisier than a football stadium' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "According to the writer, what is worse today?",
+        "options": [
+          "The friendliness",
+          "The colours",
+          "The food",
+          "The bread"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'it is less friendly. In the past, everybody knew your name.'"
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-volunteer-day",
+    "title": "A Rainbow for Our School",
+    "level": "A2",
+    "genre": "report",
+    "topic": "Volunteering",
+    "focus": "Sequence adverbs (first, then, after that, finally)",
+    "emoji": "🎨",
+    "words": 185,
+    "paragraphs": [
+      "Last Saturday, thirty volunteers from our company spent the day at a small primary school in Soacha, near Bogotá. The school building was old, and the classrooms were grey and dark. Our job was to paint them and make them happier places for the children.",
+      "First, we met at the school at seven o'clock, and the head teacher, Mrs Ortiz, gave us coffee and explained the plan. Then we moved all the desks and chairs into the playground. After that, we cleaned the walls with water and soap. It was hard work, but everybody helped.",
+      "Next, we started painting. We used yellow, light blue and green. Some volunteers painted animals and flowers on the walls of the youngest children's classroom. At one o'clock, we stopped for lunch. Parents brought rice, chicken and juice for everyone.",
+      "After lunch, we finished the last two classrooms, and then we carried the furniture back inside. Finally, at five o'clock, the children arrived with their families to see their new classrooms. A little girl said, 'It looks like a rainbow!' We were tired and covered in paint, but very proud."
+    ],
+    "glossary": [
+      [
+        "volunteers",
+        "voluntarios"
+      ],
+      [
+        "head teacher",
+        "rectora, directora"
+      ],
+      [
+        "playground",
+        "patio de recreo"
+      ],
+      [
+        "walls",
+        "paredes"
+      ],
+      [
+        "soap",
+        "jabón"
+      ],
+      [
+        "youngest",
+        "los más pequeños"
+      ],
+      [
+        "furniture",
+        "muebles"
+      ],
+      [
+        "covered in paint",
+        "llenos de pintura"
+      ],
+      [
+        "proud",
+        "orgullosos"
+      ],
+      [
+        "rainbow",
+        "arcoíris"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did the volunteers go to the school?",
+        "options": [
+          "To teach English",
+          "To build a playground",
+          "To paint the classrooms",
+          "To cook lunch"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'Our job was to paint them'."
+      },
+      {
+        "type": "order",
+        "q": "Put the steps in order (write the letters): A) cleaned the walls  B) moved the desks  C) had coffee with Mrs Ortiz  D) started painting",
+        "answer": "CBAD",
+        "accept": [
+          "C B A D",
+          "C, B, A, D",
+          "C-B-A-D",
+          "C,B,A,D",
+          "cbad"
+        ],
+        "explain_es": "El texto sigue el orden con 'First' (café), 'Then' (mover los pupitres), 'After that' (limpiar paredes) y 'Next' (pintar)."
+      },
+      {
+        "type": "gap",
+        "q": "____ that, we cleaned the walls with water and soap.",
+        "answer": "After",
+        "explain_es": "El párrafo 2 dice: 'After that, we cleaned the walls with water and soap.'"
+      },
+      {
+        "type": "tf",
+        "q": "Parents brought lunch for the volunteers.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'Parents brought rice, chicken and juice for everyone.'"
+      },
+      {
+        "type": "mc",
+        "q": "What did some volunteers paint in the youngest children's classroom?",
+        "options": [
+          "Animals and flowers",
+          "Numbers and letters",
+          "Football players",
+          "The name of the school"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'Some volunteers painted animals and flowers'."
+      },
+      {
+        "type": "tf",
+        "q": "The volunteers finished all the classrooms before lunch.",
+        "answer": "F",
+        "explain_es": "El párrafo 4 dice: 'After lunch, we finished the last two classrooms'."
+      },
+      {
+        "type": "gap",
+        "q": "____, at five o'clock, the children arrived with their families.",
+        "answer": "Finally",
+        "explain_es": "'Finally' presenta el último paso: 'Finally, at five o'clock, the children arrived' (párrafo 4)."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, 'proud' means…",
+        "options": [
+          "very angry",
+          "happy because you did something good",
+          "bored and sleepy"
+        ],
+        "answer": 1,
+        "explain_es": "'Proud' es orgulloso: se sentían felices por el buen trabajo."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-online-shopping-mistake",
+    "title": "The Wrong Shoes",
+    "level": "A2",
+    "genre": "email",
+    "topic": "Online shopping",
+    "focus": "Present perfect vs past simple",
+    "emoji": "📦",
+    "words": 201,
+    "paragraphs": [
+      "Dear ModaYa Customer Service, I am writing about my order number 45821. I ordered a pair of black running shoes, size 38, on your website on 2 May. The package arrived yesterday, but I have found three problems.",
+      "First, the shoes are white, not black. Second, they are size 42, not 38, so they are much too big for me. And third, you have charged me twice. I checked my bank account last night, and I saw two payments of 180,000 pesos.",
+      "This is not the first time I have had a problem with your shop. Last month I bought a jacket from you, and it arrived two weeks late. I have been your customer for three years, and I have always recommended your website to my friends. But now I am not so sure.",
+      "I have already sent a message through your app, but nobody has answered yet. I called your phone number twice yesterday, but I waited for twenty minutes and then the line went dead. Please send me the correct shoes or return my money, and please give back the second payment as soon as possible. I have kept the box and the receipt. Best regards, Valentina Restrepo"
+    ],
+    "glossary": [
+      [
+        "order",
+        "pedido"
+      ],
+      [
+        "package",
+        "paquete"
+      ],
+      [
+        "charged",
+        "cobraron"
+      ],
+      [
+        "twice",
+        "dos veces"
+      ],
+      [
+        "payments",
+        "pagos"
+      ],
+      [
+        "recommended",
+        "recomendado"
+      ],
+      [
+        "yet",
+        "todavía"
+      ],
+      [
+        "the line went dead",
+        "se cortó la llamada"
+      ],
+      [
+        "return my money",
+        "devolver mi dinero"
+      ],
+      [
+        "receipt",
+        "recibo, factura"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did Valentina order?",
+        "options": [
+          "A jacket",
+          "White sandals",
+          "Black running shoes",
+          "A sports bag"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'I ordered a pair of black running shoes, size 38'."
+      },
+      {
+        "type": "tf",
+        "q": "The shoes are the right size.",
+        "answer": "F",
+        "explain_es": "El párrafo 2 dice: 'they are size 42, not 38'."
+      },
+      {
+        "type": "mc",
+        "q": "How many times did the shop charge her?",
+        "options": [
+          "Twice",
+          "Once",
+          "Three times",
+          "Four times"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 2 dice: 'you have charged me twice'."
+      },
+      {
+        "type": "gap",
+        "q": "Last month I ____ a jacket from you, and it arrived two weeks late.",
+        "answer": "bought",
+        "explain_es": "Con un tiempo terminado ('Last month') se usa pasado simple: 'Last month I bought a jacket' (párrafo 3)."
+      },
+      {
+        "type": "gap",
+        "q": "I have already sent a message through your app, but nobody ____ yet.",
+        "answer": "has answered",
+        "accept": [
+          "has replied"
+        ],
+        "explain_es": "Con 'yet' se usa presente perfecto: 'nobody has answered yet' (párrafo 4)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'I have called your phone number twice yesterday.'",
+        "answer": "called",
+        "accept": [
+          "I called",
+          "I called your phone number twice yesterday"
+        ],
+        "explain_es": "Con 'yesterday' se usa pasado simple, no presente perfecto: 'I called your phone number twice yesterday' (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "Valentina has been a customer of the shop for three years.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'I have been your customer for three years'."
+      },
+      {
+        "type": "mc",
+        "q": "What does Valentina want?",
+        "options": [
+          "A discount on her next order",
+          "To speak to the manager in person",
+          "A new jacket",
+          "The correct shoes or her money back"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'Please send me the correct shoes or return my money'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-tacos-al-pastor",
+    "title": "Tacos al Pastor: Mexico City's Street Food",
+    "level": "A2",
+    "genre": "article",
+    "topic": "Food & street food",
+    "focus": "Passive (present and past simple)",
+    "emoji": "🌮",
+    "words": 186,
+    "paragraphs": [
+      "Walk through Mexico City at night and you will see small food stands everywhere. At many of them, tacos al pastor are sold until very late. They are one of the most popular street foods in Mexico, and millions of them are eaten every day.",
+      "The idea for this taco was brought to Mexico by immigrants from Lebanon about a hundred years ago. In Lebanon, meat was cooked on a tall vertical spit. In Mexico, the lamb was replaced by pork, and new flavours were added.",
+      "Today, the pork is mixed with chilli, spices and pineapple juice, and it is left in the fridge for a day. Then it is cooked slowly on the spit. A whole pineapple is often put on the top. When you order, the meat is cut into very thin pieces and served on small corn tortillas with onion, coriander and a piece of pineapple.",
+      "Tacos al pastor are not expensive. In most places, they are paid for in cash, and they are eaten standing up next to the stand. Many visitors say they are the best thing they ate in Mexico."
+    ],
+    "glossary": [
+      [
+        "stands",
+        "puestos (de comida)"
+      ],
+      [
+        "spit",
+        "asador vertical, trompo"
+      ],
+      [
+        "lamb",
+        "cordero"
+      ],
+      [
+        "pork",
+        "carne de cerdo"
+      ],
+      [
+        "flavours",
+        "sabores"
+      ],
+      [
+        "spices",
+        "especias"
+      ],
+      [
+        "pineapple",
+        "piña"
+      ],
+      [
+        "thin",
+        "delgado"
+      ],
+      [
+        "coriander",
+        "cilantro"
+      ],
+      [
+        "cash",
+        "efectivo"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Where did the idea for tacos al pastor come from?",
+        "options": [
+          "Spain",
+          "The USA",
+          "Colombia",
+          "Lebanon"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'The idea for this taco was brought to Mexico by immigrants from Lebanon'."
+      },
+      {
+        "type": "tf",
+        "q": "In Mexico, lamb is used instead of pork.",
+        "answer": "F",
+        "explain_es": "Es al revés. El párrafo 2 dice: 'the lamb was replaced by pork'."
+      },
+      {
+        "type": "gap",
+        "q": "Millions of tacos al pastor ____ eaten every day.",
+        "answer": "are",
+        "explain_es": "Pasiva en presente (be + participio): 'millions of them are eaten every day' (párrafo 1)."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite in the passive: 'Immigrants brought the idea to Mexico.' → The idea ____ to Mexico by immigrants.",
+        "answer": "was brought",
+        "explain_es": "Pasiva en pasado: was + participio. 'The idea for this taco was brought to Mexico by immigrants' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "How long is the meat left in the fridge?",
+        "options": [
+          "An hour",
+          "A day",
+          "A week",
+          "Two days"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'it is left in the fridge for a day'."
+      },
+      {
+        "type": "tf",
+        "q": "The tacos are served on corn tortillas.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'served on small corn tortillas'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'The meat is cutted into very thin pieces.'",
+        "answer": "cut",
+        "accept": [
+          "is cut",
+          "The meat is cut into very thin pieces"
+        ],
+        "explain_es": "El participio de 'cut' es 'cut': 'the meat is cut into very thin pieces' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "How do people usually pay for tacos al pastor?",
+        "options": [
+          "In cash",
+          "By card",
+          "With an app",
+          "They are free"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 4 dice: 'In most places, they are paid for in cash'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-learning-to-drive",
+    "title": "Learning to Drive at Thirty-Five",
+    "level": "A2",
+    "genre": "blog",
+    "topic": "Driving",
+    "focus": "Modals of obligation (have to, must, don't have to)",
+    "emoji": "🚦",
+    "words": 197,
+    "paragraphs": [
+      "I'm thirty-five, and last month I finally started driving lessons in Pereira. I never had time when I was young, but now I want to drive my children to school. In Colombia, you have to take a course at a driving school before you can get a licence.",
+      "My teacher, Don Hernán, is very patient, but he is also strict. On the first day he said, 'You must wear your seat belt all the time, and you mustn't use your phone. Never!' He also told me that I have to check the mirrors every few seconds. That's a lot of things to remember!",
+      "The good news is that I don't have to buy a car yet. The driving school has its own cars, and they have two brake pedals: one for me and one for the teacher. Last week I almost hit a motorbike, and Don Hernán had to use his brake. I felt terrible.",
+      "Next month I have to take the theory exam. I don't have to learn the whole book, but I must know all the road signs. My husband says I don't have to worry, because I'm a careful driver. I hope he's right!"
+    ],
+    "glossary": [
+      [
+        "driving lessons",
+        "clases de conducción"
+      ],
+      [
+        "licence",
+        "licencia de conducción, pase"
+      ],
+      [
+        "patient",
+        "paciente"
+      ],
+      [
+        "strict",
+        "estricto"
+      ],
+      [
+        "seat belt",
+        "cinturón de seguridad"
+      ],
+      [
+        "mirrors",
+        "espejos"
+      ],
+      [
+        "brake",
+        "freno"
+      ],
+      [
+        "theory exam",
+        "examen teórico"
+      ],
+      [
+        "road signs",
+        "señales de tránsito"
+      ],
+      [
+        "careful",
+        "cuidadosa"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why does the writer want to drive?",
+        "options": [
+          "To drive her children to school",
+          "For her new job",
+          "To travel around Colombia",
+          "Because her husband can't drive"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 1 dice: 'now I want to drive my children to school'."
+      },
+      {
+        "type": "tf",
+        "q": "Don Hernán is patient but strict.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'is very patient, but he is also strict'."
+      },
+      {
+        "type": "gap",
+        "q": "You ____ wear your seat belt all the time.",
+        "answer": "must",
+        "accept": [
+          "have to"
+        ],
+        "explain_es": "El profesor da una regla obligatoria: 'You must wear your seat belt all the time' (párrafo 2)."
+      },
+      {
+        "type": "gap",
+        "q": "The good news is that I ____ buy a car yet.",
+        "answer": "don't have to",
+        "accept": [
+          "do not have to"
+        ],
+        "explain_es": "'Don't have to' = no es necesario: 'I don't have to buy a car yet' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "Why do the driving school's cars have two brake pedals?",
+        "options": [
+          "They are very old cars",
+          "It is only for racing",
+          "So the teacher can stop the car too",
+          "Because the car is very big"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 3 dice: 'one for me and one for the teacher'; el profesor usó su freno."
+      },
+      {
+        "type": "tf",
+        "q": "The writer hit a motorbike last week.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice: 'I almost hit a motorbike' (casi lo golpea, pero no)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Next month I have take the theory exam.'",
+        "answer": "have to take",
+        "accept": [
+          "have to",
+          "I have to take the theory exam"
+        ],
+        "explain_es": "La estructura es 'have to' + verbo: 'Next month I have to take the theory exam' (párrafo 4)."
+      },
+      {
+        "type": "mc",
+        "q": "What must she know for the theory exam?",
+        "options": [
+          "The whole book",
+          "How to fix a car",
+          "The names of all the streets",
+          "All the road signs"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 4 dice: 'I must know all the road signs'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-camping-weekend",
+    "title": "Your First Camping Weekend",
+    "level": "A2",
+    "genre": "guide",
+    "topic": "Outdoors & camping",
+    "focus": "Quantifiers (much, many, a few, a little)",
+    "emoji": "⛺",
+    "words": 197,
+    "paragraphs": [
+      "Are you going camping for the first time this weekend? Here are a few tips. You don't need much money to go camping, but you need to plan carefully.",
+      "Clothes: Nights in the mountains can be very cold, so take a few warm sweaters and a good jacket. You don't need many T-shirts. Two or three are enough. And don't forget a little sun cream, because the sun is strong during the day.",
+      "Food and water: How much food should you take? Choose food that is light and easy to cook, like pasta, rice and a few tins of tuna. Add a little salt and oil for cooking. Bring a lot of water, because there isn't much water at many campsites. A few bananas and a little chocolate are great snacks.",
+      "Equipment: You need a tent, a sleeping bag and a torch. Many campsites have only a few toilets and very little light at night, so a torch is very important. How many people can sleep in your tent? Check before you go!",
+      "Finally, try to make very little noise at night. Many people go camping because they want a little peace and quiet. Enjoy the stars!"
+    ],
+    "glossary": [
+      [
+        "tips",
+        "consejos"
+      ],
+      [
+        "sweaters",
+        "sacos, buzos"
+      ],
+      [
+        "sun cream",
+        "bloqueador solar"
+      ],
+      [
+        "tins of tuna",
+        "latas de atún"
+      ],
+      [
+        "campsites",
+        "zonas de camping"
+      ],
+      [
+        "snacks",
+        "mecato, algo para picar"
+      ],
+      [
+        "tent",
+        "carpa"
+      ],
+      [
+        "sleeping bag",
+        "bolsa de dormir"
+      ],
+      [
+        "torch",
+        "linterna"
+      ],
+      [
+        "peace and quiet",
+        "paz y tranquilidad"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "You need a lot of money to go camping.",
+        "answer": "F",
+        "explain_es": "El párrafo 1 dice: 'You don't need much money to go camping'."
+      },
+      {
+        "type": "mc",
+        "q": "How many T-shirts does the guide suggest?",
+        "options": [
+          "One",
+          "Five or six",
+          "Ten",
+          "Two or three"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'You don't need many T-shirts. Two or three are enough.'"
+      },
+      {
+        "type": "gap",
+        "q": "Take ____ warm sweaters and a good jacket.",
+        "answer": "a few",
+        "explain_es": "'Sweaters' es contable en plural, por eso 'a few': 'take a few warm sweaters' (párrafo 2)."
+      },
+      {
+        "type": "gap",
+        "q": "Add a ____ salt and oil for cooking.",
+        "answer": "little",
+        "explain_es": "'Salt' es incontable, por eso 'a little': 'Add a little salt and oil' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "Why should you bring a lot of water?",
+        "options": [
+          "Because it is very hot",
+          "Because there isn't much water at many campsites",
+          "To wash the tent",
+          "To wash your clothes"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'because there isn't much water at many campsites'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'How much people can sleep in your tent?'",
+        "answer": "many",
+        "accept": [
+          "How many",
+          "How many people can sleep in your tent?"
+        ],
+        "explain_es": "'People' es contable, así que se usa 'How many': 'How many people can sleep in your tent?' (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "A torch is important because there is very little light at night.",
+        "answer": "T",
+        "explain_es": "El párrafo 4 dice: 'very little light at night, so a torch is very important'."
+      },
+      {
+        "type": "vocab",
+        "q": "In paragraph 4, a 'torch' is…",
+        "options": [
+          "a kind of tent",
+          "a small light you carry",
+          "a cooking pot"
+        ],
+        "answer": 1,
+        "explain_es": "'Torch' (inglés británico) es una linterna."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-talent-show",
+    "title": "Meet the Talent Show Finalists",
+    "level": "A2",
+    "genre": "news",
+    "topic": "School & entertainment",
+    "focus": "Relative pronouns (who, which, that)",
+    "emoji": "🎤",
+    "words": 196,
+    "paragraphs": [
+      "This Friday, our school's talent show final takes place in the main hall. Last month, more than forty students took part in the first round. Now only four finalists are left. Here they are!",
+      "Sofía Mejía is a fifteen-year-old girl who sings and plays the guitar. She is going to sing a song that her grandfather wrote when he was young. It is a song which always makes the teachers cry!",
+      "The Ruiz twins, Mateo and Lucas, are two boys who dance together. They do a kind of street dance which they learned from videos online. Their costume, which their mother made, has hundreds of little lights.",
+      "Daniela Gómez is the student who made everybody laugh in the first round. She does impressions of famous people and teachers. The teacher that she copies best is Mr Vargas, the science teacher, who says he thinks it is very funny.",
+      "Finally, there is Julián Torres, a quiet boy who does magic tricks. In the first round, he made a phone disappear: a phone that belonged to the head teacher! Tickets, which cost 5,000 pesos, are on sale in the library. All the money goes to the school trip."
+    ],
+    "glossary": [
+      [
+        "takes place",
+        "se realiza"
+      ],
+      [
+        "took part",
+        "participaron"
+      ],
+      [
+        "first round",
+        "primera ronda"
+      ],
+      [
+        "twins",
+        "gemelos"
+      ],
+      [
+        "costume",
+        "vestuario, disfraz"
+      ],
+      [
+        "impressions",
+        "imitaciones"
+      ],
+      [
+        "magic tricks",
+        "trucos de magia"
+      ],
+      [
+        "disappear",
+        "desaparecer"
+      ],
+      [
+        "belonged to",
+        "pertenecía a, era de"
+      ],
+      [
+        "on sale",
+        "a la venta"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "tf",
+        "q": "More than forty students took part in the first round.",
+        "answer": "T",
+        "explain_es": "El párrafo 1 dice: 'more than forty students took part in the first round'."
+      },
+      {
+        "type": "mc",
+        "q": "Who wrote Sofía's song?",
+        "options": [
+          "Sofía",
+          "Her music teacher",
+          "Mr Vargas",
+          "Her grandfather"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 2 dice: 'a song that her grandfather wrote when he was young'."
+      },
+      {
+        "type": "gap",
+        "q": "The Ruiz twins are two boys ____ dance together.",
+        "answer": "who",
+        "accept": [
+          "that"
+        ],
+        "explain_es": "Para personas se usa 'who' (o 'that'): 'two boys who dance together' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "How did the twins learn their dance?",
+        "options": [
+          "From videos online",
+          "At a dance school",
+          "From their mother",
+          "From Mr Vargas"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'street dance which they learned from videos online'."
+      },
+      {
+        "type": "gap",
+        "q": "Their costume, ____ their mother made, has hundreds of little lights.",
+        "answer": "which",
+        "explain_es": "Para cosas, con comas, se usa 'which': 'Their costume, which their mother made' (párrafo 3)."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'Daniela is the student which made everybody laugh.'",
+        "answer": "who",
+        "accept": [
+          "that",
+          "the student who made everybody laugh"
+        ],
+        "explain_es": "Daniela es una persona, así que se usa 'who': 'the student who made everybody laugh' (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "Julián made the science teacher's phone disappear.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice que el teléfono 'belonged to the head teacher', no al profesor de ciencias."
+      },
+      {
+        "type": "mc",
+        "q": "What will the ticket money pay for?",
+        "options": [
+          "New guitars",
+          "The school trip",
+          "Books for the library",
+          "Costumes for the show"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 5 dice: 'All the money goes to the school trip.'"
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-new-app-review",
+    "title": "App Review: FitStep",
+    "level": "A2",
+    "genre": "review",
+    "topic": "Technology & apps",
+    "focus": "Too / enough",
+    "emoji": "📱",
+    "words": 199,
+    "paragraphs": [
+      "Last month I downloaded FitStep, a new app that counts your steps and gives you small challenges every day. It is free, and a lot of my friends use it, so I wanted to try it.",
+      "The good things first. The design is simple enough for anyone to understand, even my grandmother. The daily challenges are fun, and they aren't too difficult. For example, yesterday's challenge was to walk ten thousand steps, and I did it easily.",
+      "But there are some problems. The app sends too many messages. I got fifteen notifications on the first day! Also, the letters on the main screen are too small, and the buttons aren't big enough for my fingers. The app also uses too much battery: my phone was dead by four o'clock every afternoon.",
+      "Another problem is the free version. It isn't complete enough, and you have to pay for the most interesting features. I think fifteen dollars a month is too expensive for a walking app.",
+      "So, is FitStep good enough? For beginners, yes. It's easy, and it really helped me walk more. But if you are a serious runner, it isn't advanced enough. My score: three stars out of five."
+    ],
+    "glossary": [
+      [
+        "downloaded",
+        "descargué"
+      ],
+      [
+        "steps",
+        "pasos"
+      ],
+      [
+        "challenges",
+        "retos"
+      ],
+      [
+        "notifications",
+        "notificaciones"
+      ],
+      [
+        "screen",
+        "pantalla"
+      ],
+      [
+        "buttons",
+        "botones"
+      ],
+      [
+        "battery",
+        "batería"
+      ],
+      [
+        "dead",
+        "descargado, sin batería"
+      ],
+      [
+        "features",
+        "funciones"
+      ],
+      [
+        "advanced",
+        "avanzado"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What does FitStep do?",
+        "options": [
+          "It teaches languages",
+          "It plays music",
+          "It counts your steps",
+          "It finds restaurants"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 1 dice: 'a new app that counts your steps'."
+      },
+      {
+        "type": "tf",
+        "q": "The writer's grandmother can understand the design.",
+        "answer": "T",
+        "explain_es": "El párrafo 2 dice: 'simple enough for anyone to understand, even my grandmother'."
+      },
+      {
+        "type": "gap",
+        "q": "The app sends ____ many messages.",
+        "answer": "too",
+        "explain_es": "'Too many' = demasiados: 'The app sends too many messages' (párrafo 3)."
+      },
+      {
+        "type": "gap",
+        "q": "The buttons aren't big ____ for my fingers.",
+        "answer": "enough",
+        "explain_es": "'Enough' va después del adjetivo: 'aren't big enough' (párrafo 3)."
+      },
+      {
+        "type": "mc",
+        "q": "What happened to the writer's phone every afternoon?",
+        "options": [
+          "It got very hot",
+          "It was dead by four o'clock",
+          "It broke",
+          "It lost the app"
+        ],
+        "answer": 1,
+        "explain_es": "El párrafo 3 dice: 'my phone was dead by four o'clock every afternoon'."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with 'too': 'Fifteen dollars a month is not cheap enough.' → Fifteen dollars a month is ____.",
+        "answer": "too expensive",
+        "explain_es": "'Not cheap enough' significa lo mismo que 'too expensive' (párrafo 4)."
+      },
+      {
+        "type": "tf",
+        "q": "The writer recommends FitStep for serious runners.",
+        "answer": "F",
+        "explain_es": "El párrafo 5 dice: 'if you are a serious runner, it isn't advanced enough'."
+      },
+      {
+        "type": "mc",
+        "q": "How many stars does the writer give the app?",
+        "options": [
+          "Three",
+          "One",
+          "Four",
+          "Five"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 5 dice: 'three stars out of five'."
+      }
+    ]
+  },
+  {
+    "id": "r3-a2-never-too-late",
+    "title": "Never Too Late: Gloria, 68",
+    "level": "A2",
+    "genre": "interview",
+    "topic": "New experiences",
+    "focus": "Present perfect with ever / never",
+    "emoji": "👵",
+    "words": 190,
+    "paragraphs": [
+      "Gloria Castaño is sixty-eight and lives in Manizales. Last year she made a list of things she has never done, and now she is doing them one by one. We asked her some questions.",
+      "Why did you make the list? My granddaughter asked me, 'Grandma, have you ever been on a plane?' I said, 'No, never.' Then I thought, there are so many things I have never tried! So I started a list.",
+      "What have you done so far? I've flown to Cartagena, and I've seen the sea for the first time. I've also eaten sushi. I didn't like it! And I've learned to swim. My grandson taught me in a pool near my house.",
+      "Have you ever felt afraid? Oh yes! I was very nervous on the plane, and my hands were cold. But I've never said 'I want to go home.' It's normal to feel a little afraid.",
+      "What's next? I've never ridden a horse, so that's next. And I've never been to a concert. My granddaughter loves rock music, so maybe we'll go together. Have you ever been to a rock concert? People say it's very loud!"
+    ],
+    "glossary": [
+      [
+        "one by one",
+        "uno por uno"
+      ],
+      [
+        "granddaughter",
+        "nieta"
+      ],
+      [
+        "so far",
+        "hasta ahora"
+      ],
+      [
+        "flown",
+        "volado (participio de fly)"
+      ],
+      [
+        "the sea",
+        "el mar"
+      ],
+      [
+        "grandson",
+        "nieto"
+      ],
+      [
+        "nervous",
+        "nerviosa"
+      ],
+      [
+        "ridden a horse",
+        "montado a caballo"
+      ],
+      [
+        "loud",
+        "ruidoso, fuerte"
+      ]
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Who gave Gloria the idea for the list?",
+        "options": [
+          "Her doctor",
+          "A TV programme",
+          "Her granddaughter",
+          "A friend from Cartagena"
+        ],
+        "answer": 2,
+        "explain_es": "El párrafo 2 dice que su nieta le preguntó: 'Grandma, have you ever been on a plane?'"
+      },
+      {
+        "type": "tf",
+        "q": "Gloria saw the sea for the first time in Cartagena.",
+        "answer": "T",
+        "explain_es": "El párrafo 3 dice: 'I've flown to Cartagena, and I've seen the sea for the first time.'"
+      },
+      {
+        "type": "gap",
+        "q": "Grandma, have you ____ been on a plane?",
+        "answer": "ever",
+        "explain_es": "'Ever' se usa en preguntas sobre experiencias: 'have you ever been on a plane?' (párrafo 2)."
+      },
+      {
+        "type": "mc",
+        "q": "What did Gloria think of sushi?",
+        "options": [
+          "She didn't like it",
+          "She loved it",
+          "She has never tried it",
+          "She wants to cook it"
+        ],
+        "answer": 0,
+        "explain_es": "El párrafo 3 dice: 'I've also eaten sushi. I didn't like it!'"
+      },
+      {
+        "type": "transform",
+        "q": "Write the present perfect of 'ride': I've never ____ a horse.",
+        "answer": "ridden",
+        "explain_es": "El participio de 'ride' es 'ridden': 'I've never ridden a horse' (párrafo 5)."
+      },
+      {
+        "type": "tf",
+        "q": "Gloria learned to swim at the beach.",
+        "answer": "F",
+        "explain_es": "El párrafo 3 dice que su nieto le enseñó 'in a pool near my house'."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake: 'I've never went to a concert.'",
+        "answer": "been",
+        "accept": [
+          "never been",
+          "I've never been to a concert"
+        ],
+        "explain_es": "Con presente perfecto se usa el participio: 'I've never been to a concert' (párrafo 5)."
+      },
+      {
+        "type": "mc",
+        "q": "What is next on her list?",
+        "options": [
+          "Flying to Cartagena",
+          "Eating sushi",
+          "Learning to swim",
+          "Riding a horse"
+        ],
+        "answer": 3,
+        "explain_es": "El párrafo 5 dice: 'I've never ridden a horse, so that's next.'"
+      }
+    ]
+  }
+]

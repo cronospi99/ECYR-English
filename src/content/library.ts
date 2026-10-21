@@ -23,10 +23,25 @@ export interface LibReading {
   topic: string;
   emoji: string;
   words: number;
+  /** Grammar the text practises, e.g. "Past continuous vs past simple". */
+  focus?: string;
+  /** A picture the text is about (public path), shown above it. */
+  image?: string;
+  /** Content note shown before reading (mature themes). */
+  advisory?: string;
+  /**
+   * Highlight layers the reader can switch on. Paragraphs then mark text as
+   * `[[key|text]]` or `[[key|text|note]]` (note = the structure's name);
+   * a paragraph starting with "## " is a section heading.
+   */
+  marks?: Record<string, { label: string; color: string }>;
   paragraphs: string[];
   glossary: [string, string][];
   questions: LibQuestion[];
 }
+
+/** Paragraph text without highlight markup (for audio, search and PDFs). */
+export const plainText = (p: string) => p.replace(/^## /, '').replace(/\[\[[a-z0-9]+\|([^|\]]*)(?:\|[^\]]*)?\]\]/g, '$1');
 
 // --------------------------------------------------------------- listening --
 
@@ -36,6 +51,8 @@ export interface LibTrack {
   level: CefrLevel;
   kind: string;
   topic: string;
+  /** Grammar the track practises. */
+  focus?: string;
   emoji: string;
   speakers: { name: string; voice: 'male' | 'female'; accent: 'us' | 'uk' | 'au' }[];
   lines: { s: number; text: string }[];

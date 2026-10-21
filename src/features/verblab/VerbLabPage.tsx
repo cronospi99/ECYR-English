@@ -3,11 +3,13 @@ import { VisualsFor } from '@/components/visuals/UnitVisuals';
 import { Page } from '@/components/ui/Page';
 import { Segmented } from '@/components/ui/Segmented';
 import { AcademicVerbs } from './academic';
+import { IrregularPatterns } from './irregular';
 import { EdSoundDrill, EdSoundRules, PhrasalFamilies, VerbExplorer, VerbFormsQuiz, VerbPatterns, WithVerbLab } from './components';
 
-type Tab = 'verbs' | 'academic' | 'ed' | 'quiz' | 'phrasal' | 'patterns';
+type Tab = 'verbs' | 'irregular' | 'academic' | 'ed' | 'quiz' | 'phrasal' | 'patterns';
 const TABS: { value: Tab; label: string }[] = [
   { value: 'verbs', label: 'Verbos' },
+  { value: 'irregular', label: 'Irregulares por patrones' },
   { value: 'academic', label: '🎓 C1 académicos' },
   { value: 'ed', label: 'Pronunciación -ed' },
   { value: 'quiz', label: 'Quiz de formas' },
@@ -23,7 +25,7 @@ export default function VerbLabPage() {
       back={{ to: '/practice', label: 'Práctica' }}
       eyebrow="Herramientas para enseñar y aprender verbos"
       title="Verb Lab"
-      subtitle="Más de 1.000 verbos con sus tres formas, una sección de verbos académicos C1, los sonidos de -ed, familias de phrasal verbs y los 10 patrones verbales del inglés."
+      subtitle="Más de 1.400 verbos con sus tres formas, una sección de verbos académicos C1, los sonidos de -ed, familias de phrasal verbs y los 10 patrones verbales del inglés."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
@@ -33,6 +35,7 @@ export default function VerbLabPage() {
         {(data) => (
           <>
             {tab === 'verbs' && <VerbExplorer data={data} />}
+            {tab === 'irregular' && <IrregularPatterns />}
             {tab === 'academic' && <AcademicVerbs />}
             {tab === 'ed' && (
               <div className="space-y-5">

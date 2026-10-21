@@ -1,0 +1,1873 @@
+[
+  {
+    "id": "l3-c1-repatriation-debate",
+    "title": "Should the Museum Give It Back?",
+    "level": "C1",
+    "kind": "debate",
+    "topic": "Museums & Heritage",
+    "focus": "Hedging and distancing language",
+    "emoji": "🏺",
+    "speakers": [
+      {
+        "name": "Claire",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Samuel",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ruth",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening and welcome to tonight's debate. The question before us is whether the Hartwell Museum in Manchester should return a gold pectoral, a chest ornament, to Colombia, where it's thought to have been made by Zenú goldsmiths over a thousand years ago. Arguing for its return is Doctor Samuel Okafor, a historian of collecting. Arguing for a more cautious approach is Professor Ruth Harland, a former museum director. Samuel, you go first."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. Well, I'd suggest the case is fairly clear. The records we have seem to indicate that the pectoral was removed from a burial site in the eighteen-nineties and sold to a British collector without anything resembling consent. Now, I'm not claiming that every object in every museum was stolen; that would be an oversimplification. But in this instance, the evidence would appear to point quite firmly in one direction."
+      },
+      {
+        "s": 2,
+        "text": "I'd broadly accept that the circumstances of its acquisition were, let's say, less than ideal. Where I'd differ is on the conclusion. It's not entirely clear who the rightful recipient would be. There are, as I understand it, at least two organisations claiming to represent the descendants of the people who made it."
+      },
+      {
+        "s": 1,
+        "text": "That's a fair point, up to a point. But the Colombian government has submitted a formal request, and, as far as I'm aware, both organisations have said they'd support the object going to Bogotá while the question of long-term custody is resolved. So the practical obstacle may be somewhat smaller than it seems."
+      },
+      {
+        "s": 0,
+        "text": "Ruth, one argument often made by museums is that objects are better protected where they are. Is that still a credible position?"
+      },
+      {
+        "s": 2,
+        "text": "I think it's become much harder to make, frankly, and I'd be wary of anyone who makes it too confidently. Bogotá's Gold Museum is, by all accounts, one of the finest of its kind in the world. My concern is rather different. If every object with a contested history were returned, encyclopaedic museums, the ones that let a schoolchild in Manchester see the art of five continents in an afternoon, would arguably cease to exist."
+      },
+      {
+        "s": 1,
+        "text": "With respect, I'm not sure that follows. Nobody's suggesting that museums should be emptied. What's being proposed is that, where there's reasonably good evidence that an object was taken without consent, the presumption should shift towards return. Many museums, it's worth noting, have already begun to work this way, and they appear to be thriving."
+      },
+      {
+        "s": 0,
+        "text": "Is there a middle ground? Some institutions have opted for long-term loans or shared ownership."
+      },
+      {
+        "s": 2,
+        "text": "Yes, and I'd tend to see that as the most promising route. A joint arrangement could, in principle, allow the pectoral to spend part of its time in Colombia and part here, with the Colombian side having the final say. That would seem to me to respect both the history and the educational value of the collection."
+      },
+      {
+        "s": 1,
+        "text": "I'm somewhat sceptical. A loan implies that the lender is the owner. If we're asking a country to borrow back its own heritage, that strikes me as rather missing the point. That said, I'd accept that a shared arrangement might be a reasonable first step, provided ownership is transferred."
+      },
+      {
+        "s": 0,
+        "text": "We have a question from the audience. Someone asks whether returning objects could, in effect, be a way for museums to avoid a wider conversation about colonial history. Ruth?"
+      },
+      {
+        "s": 2,
+        "text": "It's possible. There's a risk, I suppose, that a few high-profile returns are used as a kind of public relations exercise. Returning an object should, ideally, be the start of a relationship, with research partnerships and exchanges of staff, not a ceremony after which everyone goes home."
+      },
+      {
+        "s": 1,
+        "text": "On that, we're in complete agreement, which is perhaps a surprising place to end up."
+      },
+      {
+        "s": 0,
+        "text": "Indeed. Let's take a short break and then open the floor to more questions."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Samuel, where was the pectoral apparently taken from?",
+        "options": [
+          "A church in Bogotá",
+          "A burial site",
+          "A private collection in London",
+          "A museum in Madrid"
+        ],
+        "answer": 1,
+        "explain_es": "Samuel: \"removed from a burial site in the eighteen-nineties\"."
+      },
+      {
+        "type": "tf",
+        "q": "Ruth argues that the object would not be safe in Bogotá.",
+        "answer": "F",
+        "explain_es": "Ruth dice que el Museo del Oro es \"one of the finest of its kind in the world\"; su preocupación es otra."
+      },
+      {
+        "type": "gap",
+        "q": "Samuel hedges: \"the evidence would ______ to point quite firmly in one direction.\" (1 word)",
+        "answer": "appear",
+        "accept": [
+          "seem"
+        ],
+        "explain_es": "\"would appear to\" suaviza la afirmación: el hablante se distancia un poco de ella."
+      },
+      {
+        "type": "mc",
+        "q": "What is Ruth's main concern about returning objects?",
+        "options": [
+          "Colombia might sell the object",
+          "The object could be damaged in transport",
+          "Museums would lose visitors' money",
+          "Encyclopaedic museums might cease to exist"
+        ],
+        "answer": 3,
+        "explain_es": "Ruth: \"encyclopaedic museums ... would arguably cease to exist\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why is Samuel sceptical about long-term loans?",
+        "options": [
+          "A loan implies that the lender is the owner",
+          "Loans are too expensive to insure",
+          "Colombia has refused all loans",
+          "Loans are illegal in Britain"
+        ],
+        "answer": 0,
+        "explain_es": "Samuel: \"A loan implies that the lender is the owner\"."
+      },
+      {
+        "type": "gap",
+        "q": "Samuel distances himself from the claim: \"and, as far as I'm ______, both organisations have said they'd support the object going to Bogotá.\" (1 word)",
+        "answer": "aware",
+        "accept": [],
+        "explain_es": "\"as far as I'm aware\" = que yo sepa: limita la seguridad de la afirmación."
+      },
+      {
+        "type": "tf",
+        "q": "Both speakers agree that a return should be the start of a longer relationship.",
+        "answer": "T",
+        "explain_es": "Ruth lo propone y Samuel responde: \"On that, we're in complete agreement\"."
+      }
+    ],
+    "dictation": [
+      "That's a fair point, up to a point.",
+      "Is there a middle ground?"
+    ]
+  },
+  {
+    "id": "l3-c1-school-start-lecture",
+    "title": "Why Teenagers Can't Wake Up",
+    "level": "C1",
+    "kind": "lecture",
+    "topic": "Sleep & Education",
+    "focus": "Nominalisation in formal writing",
+    "emoji": "😴",
+    "speakers": [
+      {
+        "name": "Doctor Marsh",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon. In today's lecture I'd like to look at the relationship between adolescent sleep and school start times, an area where the gap between research findings and actual policy is, I think, unusually wide. I'll begin with the biology, move on to the evidence from interventions, and finish with the main obstacles to implementation."
+      },
+      {
+        "s": 0,
+        "text": "So, the biology first. With the onset of puberty, there's a measurable shift in the timing of the body clock. Specifically, we see a delay in the release of melatonin, the hormone that signals to the brain that it's time to sleep. In practical terms, this means that a typical fifteen-year-old isn't physically ready for sleep until around eleven at night, sometimes later."
+      },
+      {
+        "s": 0,
+        "text": "Now, the recommendation for this age group is somewhere between eight and ten hours a night. If you combine a late sleep onset with a school day that starts at seven, which, as many of you will know, is common in Colombia and elsewhere in Latin America, the result is chronic sleep deprivation. And the consequences of that deprivation are well documented: a decline in concentration, an increase in irritability and a greater vulnerability to anxiety and depression."
+      },
+      {
+        "s": 0,
+        "text": "It's important to stress that this isn't a question of laziness or a lack of discipline. The common perception of teenagers as unwilling to get up is, in large part, a misinterpretation of a biological reality. Telling them to go to bed earlier has limited effect, because their brains simply aren't producing the signal for sleep yet."
+      },
+      {
+        "s": 0,
+        "text": "So what happens when schools change their timetables? There's now a substantial body of evidence from districts that have delayed their start times, typically by about an hour. The findings are fairly consistent. There's an increase in total sleep, which is perhaps not surprising, but also an improvement in attendance, a reduction in lateness and, in several studies, a modest rise in exam performance, particularly in the first lessons of the day."
+      },
+      {
+        "s": 0,
+        "text": "One of the more striking findings concerns road safety. In one district in the United States, the introduction of a later start was followed by a significant reduction in car accidents involving teenage drivers. We need to be careful about causation here, but the association has appeared in more than one place."
+      },
+      {
+        "s": 0,
+        "text": "Given all this, you might expect the adoption of later start times to be widespread. It isn't. And the reasons have very little to do with the science. The first obstacle is cost. A change to the school timetable usually requires the reorganisation of transport, since the same buses often serve primary and secondary schools one after the other."
+      },
+      {
+        "s": 0,
+        "text": "The second is resistance from families. A later start for teenagers can mean a mismatch with parents' working hours and with younger siblings' timetables, and that creates genuine difficulties for childcare. The third is the scheduling of after-school activities, sports in particular, which would end later and, in some regions, after dark."
+      },
+      {
+        "s": 0,
+        "text": "None of these problems is trivial, and I don't want to dismiss them. But what the research suggests is that the benefits, both for individual students and, arguably, for society, considerably outweigh the costs. The challenge, really, is one of coordination rather than knowledge."
+      },
+      {
+        "s": 0,
+        "text": "For Thursday's seminar, I'd like you to read the case study on a group of schools in Medellín that piloted a later start last year. Come prepared to discuss the evaluation of that pilot, and in particular the limitations of its design. Thanks very much."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What happens to melatonin with the onset of puberty?",
+        "options": [
+          "Its production stops completely",
+          "It is released earlier in the evening",
+          "Its release is delayed",
+          "It is only produced during the day"
+        ],
+        "answer": 2,
+        "explain_es": "\"we see a delay in the release of melatonin\"."
+      },
+      {
+        "type": "gap",
+        "q": "A typical fifteen-year-old isn't ready for sleep until around ______ at night. (1 word or a number)",
+        "answer": "eleven",
+        "accept": [
+          "11",
+          "11 pm",
+          "11pm"
+        ],
+        "explain_es": "\"isn't physically ready for sleep until around eleven at night\"."
+      },
+      {
+        "type": "tf",
+        "q": "The lecturer says teenagers' sleep problems are mainly caused by laziness.",
+        "answer": "F",
+        "explain_es": "\"this isn't a question of laziness or a lack of discipline\"; es una realidad biológica."
+      },
+      {
+        "type": "gap",
+        "q": "Nominalisation: delayed start times led to \"an increase in total sleep\" and \"an ______ in attendance\". (1 word)",
+        "answer": "improvement",
+        "accept": [],
+        "explain_es": "La conferencista usa sustantivos (\"an improvement in attendance\") en lugar de verbos (\"attendance improved\"), propio del registro académico."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with a noun, as the lecturer does: \"When the district introduced a later start, car accidents fell.\" → \"The ______ of a later start was followed by a reduction in car accidents.\" (1 word)",
+        "answer": "introduction",
+        "accept": [],
+        "explain_es": "\"the introduction of a later start was followed by a significant reduction in car accidents\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why is cost an obstacle to later start times?",
+        "options": [
+          "Teachers would demand higher salaries",
+          "Transport has to be reorganised, because the same buses serve several schools",
+          "Schools would have to build new classrooms",
+          "Families would have to pay for breakfast at school"
+        ],
+        "answer": 1,
+        "explain_es": "\"requires the reorganisation of transport, since the same buses often serve primary and secondary schools one after the other\"."
+      },
+      {
+        "type": "mc",
+        "q": "What is the lecturer's main conclusion?",
+        "options": [
+          "The research evidence is still too weak",
+          "Later start times only help a few students",
+          "Parents should set earlier bedtimes",
+          "The challenge is coordination, not a lack of knowledge"
+        ],
+        "answer": 3,
+        "explain_es": "\"The challenge, really, is one of coordination rather than knowledge.\""
+      }
+    ],
+    "dictation": [
+      "So, the biology first.",
+      "None of these problems is trivial, and I don't want to dismiss them."
+    ]
+  },
+  {
+    "id": "l3-c1-app-launch-postmortem",
+    "title": "What Went Wrong with the Launch",
+    "level": "C1",
+    "kind": "conversation",
+    "topic": "Business & Start-ups",
+    "focus": "Modal perfects (should have, might have, can't have, needn't have)",
+    "emoji": "🚀",
+    "speakers": [
+      {
+        "name": "Priya",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Tom",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Carla",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Right, let's get started. The aim of this meeting isn't to blame anyone; it's to understand what went wrong with the launch so we don't repeat it. Tom, do you want to begin with the technical side?"
+      },
+      {
+        "s": 1,
+        "text": "Sure. In short, the servers couldn't cope. We'd tested for about fifty thousand users on the first day, and we got nearly four times that. Looking back, we should have planned for a much bigger spike, especially after the influencer campaign went out."
+      },
+      {
+        "s": 2,
+        "text": "To be fair, nobody expected that campaign to take off the way it did. The agency told us the videos would reach maybe a few hundred thousand people. They must have reached several million by the Saturday."
+      },
+      {
+        "s": 0,
+        "text": "Even so, couldn't we have scaled up faster once we saw the numbers climbing?"
+      },
+      {
+        "s": 1,
+        "text": "We could have, in theory. The problem was that the only person with the authority to approve the extra server costs was on a flight to Madrid. We might have avoided most of the outage if someone else had been able to sign it off. It was a process failure as much as a technical one."
+      },
+      {
+        "s": 2,
+        "text": "That's worth noting for next time. Honestly, I also think we shouldn't have launched on a Friday evening. If anything breaks, half the team's offline until Monday."
+      },
+      {
+        "s": 0,
+        "text": "Fair point. What about the app-store reviews? We went from four point eight to three point one stars in forty-eight hours."
+      },
+      {
+        "s": 2,
+        "text": "That was mostly people who couldn't log in. Some of them can't have even seen the main features, which is frustrating, because the ones who did get in seemed to love it. But we ought to have had a status page ready, with a clear message explaining what was happening. Instead, people were left staring at an error screen."
+      },
+      {
+        "s": 1,
+        "text": "And the support inbox was overwhelmed. I think we'd have been better off with an automatic reply that at least acknowledged the problem."
+      },
+      {
+        "s": 0,
+        "text": "Was there anything that went well? I'd rather not leave this meeting thinking it was a complete disaster."
+      },
+      {
+        "s": 1,
+        "text": "Actually, yes. The data was never at risk. Security held up perfectly, which, given the load, could easily have gone the other way. If the encryption had failed, we'd be having a very different conversation."
+      },
+      {
+        "s": 2,
+        "text": "And sign-ups were huge. Even with the outage, we'd reached our three-month target by Tuesday. So in a strange way, we needn't have worried about whether people would be interested."
+      },
+      {
+        "s": 0,
+        "text": "That's encouraging. So, if I'm summarising correctly: we underestimated demand, the approval process depended too much on one person, and our communication with users was poor. Is that fair?"
+      },
+      {
+        "s": 1,
+        "text": "That's fair. I'd add that we should have run a proper load test with real devices, not just simulations. The simulations missed some of the bottlenecks."
+      },
+      {
+        "s": 0,
+        "text": "Okay. Tom, could you draft a revised launch checklist by Friday? Carla, could you look into a status page? And I'll talk to finance about who can approve emergency spending."
+      },
+      {
+        "s": 2,
+        "text": "Will do. And for what it's worth, I think we handled the weekend better than it might have seemed from the outside."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How many users arrived on the first day compared with the number they had tested for?",
+        "options": [
+          "About the same number",
+          "Twice as many",
+          "Nearly four times as many",
+          "Ten times as many"
+        ],
+        "answer": 2,
+        "explain_es": "Tom: \"We'd tested for about fifty thousand users ... and we got nearly four times that.\""
+      },
+      {
+        "type": "gap",
+        "q": "Tom: \"Looking back, we ______ planned for a much bigger spike.\" (2 words)",
+        "answer": "should have",
+        "accept": [
+          "should've",
+          "ought to have"
+        ],
+        "explain_es": "\"should have + participio\" = crítica sobre algo que no se hizo en el pasado."
+      },
+      {
+        "type": "mc",
+        "q": "Why couldn't they scale up the servers faster?",
+        "options": [
+          "The only person who could approve the cost was on a flight",
+          "The servers were sold out",
+          "The agency refused to pay",
+          "Tom was on holiday"
+        ],
+        "answer": 0,
+        "explain_es": "Tom: \"the only person with the authority to approve the extra server costs was on a flight to Madrid\"."
+      },
+      {
+        "type": "tf",
+        "q": "Carla thinks Friday evening was a bad time to launch.",
+        "answer": "T",
+        "explain_es": "Carla: \"we shouldn't have launched on a Friday evening. If anything breaks, half the team's offline\"."
+      },
+      {
+        "type": "gap",
+        "q": "Carla makes a logical deduction about the past: \"Some of them ______ even seen the main features.\" (2 words)",
+        "answer": "can't have",
+        "accept": [
+          "cannot have",
+          "couldn't have",
+          "could not have"
+        ],
+        "explain_es": "\"can't have + participio\" = es imposible que lo hayan visto (no pudieron iniciar sesión)."
+      },
+      {
+        "type": "tf",
+        "q": "Users' personal data was exposed during the outage.",
+        "answer": "F",
+        "explain_es": "Tom: \"The data was never at risk. Security held up perfectly\"."
+      },
+      {
+        "type": "mc",
+        "q": "What will Priya do after the meeting?",
+        "options": [
+          "Write a new launch checklist",
+          "Set up a status page",
+          "Call the influencer agency",
+          "Talk to finance about who can approve emergency spending"
+        ],
+        "answer": 3,
+        "explain_es": "Priya: \"I'll talk to finance about who can approve emergency spending.\""
+      }
+    ],
+    "dictation": [
+      "That's worth noting for next time.",
+      "The data was never at risk."
+    ]
+  },
+  {
+    "id": "l3-c1-volcano-evacuation-report",
+    "title": "Evacuation on the Slopes",
+    "level": "C1",
+    "kind": "radio-report",
+    "topic": "Natural Hazards",
+    "focus": "Participle and absolute clauses",
+    "emoji": "🌋",
+    "speakers": [
+      {
+        "name": "Mark",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Ana",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Doctor Vega",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good evening. Thousands of people have been evacuated from villages in central Ecuador after the Cerro Tambor volcano, dormant for more than a century, began emitting ash and gas early this morning. Our correspondent, Ana Torres, sent this report from the town of Pujilí."
+      },
+      {
+        "s": 1,
+        "text": "Arriving here just after dawn, we found the main square already full of buses, their engines running, waiting to take families to shelters further down the valley. Having been woken by a series of small tremors at around three in the morning, many residents had already packed what they could carry."
+      },
+      {
+        "s": 1,
+        "text": "The ash cloud, visible from more than fifty kilometres away, has drifted west throughout the day, covering fields and rooftops in a fine grey layer. Speaking to me outside a school that's been turned into a temporary shelter, one farmer described leaving her cows behind, the roads being too crowded for her to bring the trailer."
+      },
+      {
+        "s": 1,
+        "text": "The authorities, criticised in the past for reacting too slowly to natural disasters, appear to have moved quickly this time. Alerted by monitoring stations on the volcano's northern side, the civil defence agency raised the alert level to orange shortly before four a.m., triggering the evacuation of eleven villages within a fifteen-kilometre radius."
+      },
+      {
+        "s": 1,
+        "text": "I asked Doctor Pablo Vega, a volcanologist at the national geophysical institute, how serious the situation is."
+      },
+      {
+        "s": 2,
+        "text": "At this stage, it's difficult to say. Seismic activity increased sharply overnight, and the gas readings suggest that magma is moving closer to the surface. Judging by the pattern so far, we're more likely to see continued ash emissions than a major eruption, but we can't rule anything out."
+      },
+      {
+        "s": 1,
+        "text": "And the greatest danger, Doctor Vega?"
+      },
+      {
+        "s": 2,
+        "text": "Lahars, without a doubt. These are mudflows formed when hot material melts the snow and ice on the summit. Travelling at speeds of up to sixty kilometres an hour, they follow river valleys and can bury a village in minutes. That's why the evacuation zone extends so far along the rivers."
+      },
+      {
+        "s": 1,
+        "text": "Lahars are a particular fear in this region. Older residents remember stories from their grandparents, told and retold over generations, of a mudflow that destroyed a settlement in the eighteen-seventies."
+      },
+      {
+        "s": 1,
+        "text": "With schools closed and most shops shuttered, the town has taken on an eerie quiet this afternoon. Volunteers, many of them students from a nearby university, have been handing out masks and bottled water, the ash making breathing uncomfortable even here, some twenty-five kilometres from the crater."
+      },
+      {
+        "s": 1,
+        "text": "Not everyone has agreed to leave. Some families, worried about looting, have stayed behind in their homes, a decision officials describe as understandable but extremely risky."
+      },
+      {
+        "s": 1,
+        "text": "The government has said that the evacuation will remain in place for at least seventy-two hours, the situation being reviewed every six hours. Flights from Quito's airport have been diverted as a precaution."
+      },
+      {
+        "s": 1,
+        "text": "For now, the people sheltering here can only wait, watching the grey column rising above the mountains and hoping it rises no higher. Ana Torres, in Pujilí."
+      },
+      {
+        "s": 0,
+        "text": "And we'll bring you more on that story as it develops."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What woke many residents in the night?",
+        "options": [
+          "The noise of the buses",
+          "A series of small tremors",
+          "The civil defence sirens",
+          "Falling ash on their roofs"
+        ],
+        "answer": 1,
+        "explain_es": "\"Having been woken by a series of small tremors at around three in the morning\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the participle clause: \"______ been woken by a series of small tremors at around three in the morning, many residents had already packed what they could carry.\" (1 word)",
+        "answer": "Having",
+        "accept": [],
+        "explain_es": "\"Having been + participio\": participio perfecto pasivo, acción anterior a \"had already packed\"."
+      },
+      {
+        "type": "tf",
+        "q": "The reporter says the authorities were slow to react this time.",
+        "answer": "F",
+        "explain_es": "\"criticised in the past for reacting too slowly ... appear to have moved quickly this time\"."
+      },
+      {
+        "type": "mc",
+        "q": "According to Doctor Vega, what is most likely to happen next?",
+        "options": [
+          "A major eruption within hours",
+          "The volcano will become dormant again tonight",
+          "An earthquake in Quito",
+          "Continued ash emissions rather than a major eruption"
+        ],
+        "answer": 3,
+        "explain_es": "\"we're more likely to see continued ash emissions than a major eruption\"."
+      },
+      {
+        "type": "gap",
+        "q": "Lahars can travel at speeds of up to ______ kilometres an hour. (1 word or a number)",
+        "answer": "sixty",
+        "accept": [
+          "60"
+        ],
+        "explain_es": "\"Travelling at speeds of up to sixty kilometres an hour\"."
+      },
+      {
+        "type": "gap",
+        "q": "Complete the absolute clause: the farmer left her cows behind, \"the roads ______ too crowded for her to bring the trailer.\" (1 word)",
+        "answer": "being",
+        "accept": [],
+        "explain_es": "Cláusula absoluta: sujeto propio (\"the roads\") + participio (\"being\") = \"because the roads were too crowded\"."
+      },
+      {
+        "type": "tf",
+        "q": "Some families have refused to leave because they are afraid of looting.",
+        "answer": "T",
+        "explain_es": "\"Some families, worried about looting, have stayed behind in their homes\"."
+      }
+    ],
+    "dictation": [
+      "At this stage, it's difficult to say.",
+      "Not everyone has agreed to leave."
+    ]
+  },
+  {
+    "id": "l3-c1-space-tourism-seminar",
+    "title": "Seminar: Who Is Space For?",
+    "level": "C1",
+    "kind": "seminar",
+    "topic": "Space & Ethics",
+    "focus": "Cleft sentences (what…, it's… that, the reason why…)",
+    "emoji": "🛰️",
+    "speakers": [
+      {
+        "name": "Doctor Whitfield",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Mariana",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Liam",
+        "voice": "male",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Okay, let's make a start. Last week's reading was on commercial space tourism, and what I'd like us to focus on today is the ethical question rather than the technical one. Mariana, you wrote your response paper on this. What was it that struck you most?"
+      },
+      {
+        "s": 1,
+        "text": "I think what struck me most was the carbon footprint. A single suborbital flight, according to one of the estimates in the article, produces more emissions per passenger than a typical person in Colombia generates in a year. It's not the flights themselves that worry me so much as the idea that they could become routine."
+      },
+      {
+        "s": 0,
+        "text": "That's an interesting distinction. Liam, do you agree?"
+      },
+      {
+        "s": 2,
+        "text": "Partly. But what the article doesn't really address is the counterargument that these companies are funding technology that will make space cheaper for everyone, including scientists. It was private investment, after all, that brought down the cost of launching satellites."
+      },
+      {
+        "s": 1,
+        "text": "Sure, but the reason why that argument doesn't fully convince me is that the benefits go mainly to the same people. All we're really doing is giving very wealthy people a ten-minute view and calling it progress."
+      },
+      {
+        "s": 2,
+        "text": "I'd push back on that. What a lot of astronauts say is that seeing Earth from space changes how they think about the planet. It's sometimes called the overview effect. If more people experienced that, it might actually increase concern for the environment."
+      },
+      {
+        "s": 0,
+        "text": "That's a fascinating claim. Is there evidence for it, though? What I'd want to know is whether that change in attitude lasts, and whether it translates into behaviour."
+      },
+      {
+        "s": 2,
+        "text": "That's fair. The studies I found were mostly interviews, so the samples were tiny. It's the anecdotes that are powerful, not the data."
+      },
+      {
+        "s": 1,
+        "text": "And it's the anecdotes that the companies use in their marketing, which makes me a bit suspicious."
+      },
+      {
+        "s": 0,
+        "text": "Let's broaden this out. Some ethicists argue that what matters isn't whether space tourism is good or bad in itself, but who gets to make the rules. At the moment, it's largely private companies and a handful of governments that are deciding."
+      },
+      {
+        "s": 1,
+        "text": "Yes, and that's what I find troubling. Space is supposed to belong to all humanity, according to the treaties. But it's the richest countries that have the launch sites, and it's their companies that will profit."
+      },
+      {
+        "s": 2,
+        "text": "Although, to be fair, it was a multinational effort that built the space station. Cooperation is possible."
+      },
+      {
+        "s": 0,
+        "text": "It is. So perhaps the question we should be asking is not whether space tourism should exist, but under what conditions. What would a fair framework look like? A tax on flights to fund climate projects, for instance?"
+      },
+      {
+        "s": 1,
+        "text": "That's actually what I suggested in the conclusion of my paper. A levy on each ticket, invested in reducing emissions in the countries most affected by climate change."
+      },
+      {
+        "s": 2,
+        "text": "I could live with that, as long as it doesn't kill off the research side."
+      },
+      {
+        "s": 0,
+        "text": "Good. For next week, I'd like each of you to draft a one-page policy proposal along those lines. What I'll be looking for is a clear argument, supported by evidence, not just opinion."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What struck Mariana most in the reading?",
+        "options": [
+          "The price of the tickets",
+          "The danger to passengers",
+          "The carbon footprint of the flights",
+          "The view of Earth from space"
+        ],
+        "answer": 2,
+        "explain_es": "Mariana: \"what struck me most was the carbon footprint\"."
+      },
+      {
+        "type": "gap",
+        "q": "Mariana: \"It's not the flights themselves ______ worry me so much as the idea that they could become routine.\" (1 word)",
+        "answer": "that",
+        "accept": [
+          "which"
+        ],
+        "explain_es": "Oración escindida \"It's ... that ...\": destaca qué le preocupa realmente."
+      },
+      {
+        "type": "mc",
+        "q": "What is Liam's first counterargument?",
+        "options": [
+          "Private investment brings down costs, which also helps scientists",
+          "Space tourism produces very few emissions",
+          "Only governments should go to space",
+          "Tourists pay for climate projects already"
+        ],
+        "answer": 0,
+        "explain_es": "Liam: \"these companies are funding technology that will make space cheaper for everyone, including scientists\"."
+      },
+      {
+        "type": "tf",
+        "q": "Liam admits that the evidence for the overview effect is limited.",
+        "answer": "T",
+        "explain_es": "Liam: \"The studies I found were mostly interviews, so the samples were tiny.\""
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as a cleft sentence beginning with \"What\": \"I'll be looking for a clear argument.\"",
+        "answer": "What I'll be looking for is a clear argument.",
+        "accept": [
+          "What I will be looking for is a clear argument"
+        ],
+        "explain_es": "El profesor dice: \"What I'll be looking for is a clear argument, supported by evidence\"."
+      },
+      {
+        "type": "tf",
+        "q": "Doctor Whitfield argues that space tourism should be banned.",
+        "answer": "F",
+        "explain_es": "Propone preguntar \"under what conditions\" debería existir, no prohibirlo."
+      },
+      {
+        "type": "mc",
+        "q": "What does Mariana propose in the conclusion of her paper?",
+        "options": [
+          "Banning private launch sites",
+          "A levy on each ticket, invested in reducing emissions in the most affected countries",
+          "Free flights for scientists",
+          "A limit of one flight per year"
+        ],
+        "answer": 1,
+        "explain_es": "Mariana: \"A levy on each ticket, invested in reducing emissions in the countries most affected\"."
+      }
+    ],
+    "dictation": [
+      "That's an interesting distinction.",
+      "I could live with that, as long as it doesn't kill off the research side."
+    ]
+  },
+  {
+    "id": "l3-c1-wedding-venue-complaint",
+    "title": "A Wedding Gone Wrong",
+    "level": "C1",
+    "kind": "phone-call",
+    "topic": "Consumer Rights",
+    "focus": "The subjunctive (insist / recommend / ask that)",
+    "emoji": "💍",
+    "speakers": [
+      {
+        "name": "Graham",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Natalia",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Good afternoon, Ashcombe Manor, Graham Booth speaking."
+      },
+      {
+        "s": 1,
+        "text": "Hi, Mr Booth. My name's Natalia Gómez. My husband and I held our wedding reception with you on the fourteenth, and I'm calling because, frankly, I'm very unhappy with how it went. I sent an email last week, but I haven't had a reply."
+      },
+      {
+        "s": 0,
+        "text": "I'm sorry to hear that, Mrs Gómez. I do have your email here. I'm afraid it was only passed to me this morning. Could you take me through the main issues?"
+      },
+      {
+        "s": 1,
+        "text": "Of course. When we booked, we specifically asked that the marquee be ready by two o'clock so the florist could decorate it. It wasn't ready until after four. Then the vegetarian menu we'd agreed on was replaced, without any warning, by plain pasta, and about a third of our guests are vegetarian. And the band's power supply failed twice."
+      },
+      {
+        "s": 0,
+        "text": "I see. That's clearly not the standard we aim for. Regarding the marquee, I understand there was a problem with the contractor."
+      },
+      {
+        "s": 1,
+        "text": "That may be, but our contract was with you, not with them. Our wedding planner actually suggested that we confirm the timings in writing, which we did. I have the email right here."
+      },
+      {
+        "s": 0,
+        "text": "No, you're quite right, and I'm not disputing that. What would you like us to do?"
+      },
+      {
+        "s": 1,
+        "text": "Well, I'm not trying to be unreasonable. But I do insist that the cost of the catering be refunded in full, since the menu wasn't what we paid for. And I'd ask that you cover the florist's extra charge, because she had to stay three hours longer."
+      },
+      {
+        "s": 0,
+        "text": "I'll need to discuss the full refund with our finance director, but I'd certainly recommend that we refund the florist's charge. Our policy requires that any compensation over a certain amount be approved by head office."
+      },
+      {
+        "s": 1,
+        "text": "I understand that, but I'd prefer that this not drag on for weeks. We've already waited ten days for a response."
+      },
+      {
+        "s": 0,
+        "text": "That's fair. Suppose I propose that head office give you a decision by Friday. Would that be acceptable?"
+      },
+      {
+        "s": 1,
+        "text": "That would be fine, as long as it's in writing. And I'd also suggest that you review how you handle dietary requirements. Some of our guests have allergies, and if it had been something more serious than a menu change, someone could have been hurt."
+      },
+      {
+        "s": 0,
+        "text": "Absolutely. I'll raise that with the kitchen today. It's essential that the chef be made aware of every dietary note on a booking, and clearly that didn't happen."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. I appreciate you taking it seriously."
+      },
+      {
+        "s": 0,
+        "text": "Not at all. Once again, I'm very sorry. We're supposed to make a wedding day easier for couples, not harder. I'll email you this afternoon to confirm what we've discussed."
+      },
+      {
+        "s": 1,
+        "text": "Thanks, Mr Booth. I'll look out for it. Goodbye."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why is Natalia phoning the hotel?",
+        "options": [
+          "To book a second reception",
+          "Because her email about the reception has not been answered",
+          "To thank the staff for the wedding",
+          "To change the date of her wedding"
+        ],
+        "answer": 1,
+        "explain_es": "Natalia: \"I sent an email last week, but I haven't had a reply.\""
+      },
+      {
+        "type": "mc",
+        "q": "Which of these problems does Natalia NOT mention?",
+        "options": [
+          "The marquee was late",
+          "The menu was changed",
+          "The band's power supply failed",
+          "It rained during the ceremony"
+        ],
+        "answer": 3,
+        "explain_es": "Menciona la carpa, el menú y la electricidad de la banda; nunca habla del clima."
+      },
+      {
+        "type": "gap",
+        "q": "Natalia: \"we specifically asked that the marquee ______ ready by two o'clock.\" (1 word)",
+        "answer": "be",
+        "accept": [],
+        "explain_es": "Tras \"ask that\" se usa el subjuntivo: verbo base \"be\", no \"was\"."
+      },
+      {
+        "type": "tf",
+        "q": "Graham agrees immediately to refund the full cost of the catering.",
+        "answer": "F",
+        "explain_es": "Graham: \"I'll need to discuss the full refund with our finance director\"."
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected words): \"Our policy requires that any compensation over a certain amount is approved by head office.\"",
+        "answer": "be approved",
+        "accept": [
+          "should be approved"
+        ],
+        "explain_es": "Tras \"require that\" va el subjuntivo: \"be approved\"."
+      },
+      {
+        "type": "gap",
+        "q": "Graham proposes that head office give Natalia a decision by ______. (1 word)",
+        "answer": "Friday",
+        "accept": [],
+        "explain_es": "\"Suppose I propose that head office give you a decision by Friday.\""
+      },
+      {
+        "type": "tf",
+        "q": "Natalia says that some of her guests have allergies.",
+        "answer": "T",
+        "explain_es": "Natalia: \"Some of our guests have allergies\"."
+      }
+    ],
+    "dictation": [
+      "What would you like us to do?",
+      "I appreciate you taking it seriously."
+    ]
+  },
+  {
+    "id": "l3-c1-coffee-blight-news",
+    "title": "A New Threat to Colombian Coffee",
+    "level": "C1",
+    "kind": "news",
+    "topic": "Agriculture",
+    "focus": "Advanced passives (is believed to have, is said to have been)",
+    "emoji": "☕",
+    "speakers": [
+      {
+        "name": "Helen",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Daniel",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Coffee growers in Colombia's central mountain region are preparing for heavy losses after a new strain of leaf rust, a fungal disease that attacks the leaves of coffee plants, was confirmed in at least four departments. Daniel Brooks reports from Manizales."
+      },
+      {
+        "s": 1,
+        "text": "The new strain is believed to have arrived in the region about eighteen months ago, though it was only formally identified in August. It's thought to have spread faster than earlier strains because of unusually warm, wet weather, and it's now reported to be present on more than a third of farms in the area."
+      },
+      {
+        "s": 1,
+        "text": "What makes it particularly alarming is that it appears to affect varieties that had been bred specifically to resist the disease. Those varieties were planted across much of the country after a major outbreak more than a decade ago, and they were widely considered to have solved the problem."
+      },
+      {
+        "s": 1,
+        "text": "On a farm outside Chinchiná, I met Hernán Ospina, whose family has been growing coffee for four generations. Walking between the rows, he showed me leaves covered in orange powder. He told me that around half his plants had been infected, and that he expects to lose at least forty per cent of this year's harvest."
+      },
+      {
+        "s": 1,
+        "text": "Mr Ospina says he wasn't warned about the strain until it had already spread to his neighbours' farms. Many growers feel they should have been informed much earlier. The national growers' federation, for its part, says that samples were being analysed throughout the spring and that no warning could be issued until the results had been verified."
+      },
+      {
+        "s": 0,
+        "text": "So there's some frustration with how the warning was handled?"
+      },
+      {
+        "s": 1,
+        "text": "Certainly. Although it should be said that most farmers I spoke to accept that the federation was in a difficult position. What they want now is for help to be delivered quickly."
+      },
+      {
+        "s": 0,
+        "text": "And what's being done to contain the disease?"
+      },
+      {
+        "s": 1,
+        "text": "Several measures are being introduced. Fungicide is being distributed free of charge to small farmers, and technicians are being sent to the worst-affected areas to advise on pruning. In the longer term, researchers are working on new resistant varieties, but those are expected to take at least five years to be developed and tested."
+      },
+      {
+        "s": 0,
+        "text": "What about the economic impact?"
+      },
+      {
+        "s": 1,
+        "text": "That's the big worry. Coffee is grown by more than half a million families in Colombia, most of them on small plots. If the harvest falls as sharply as some fear, rural incomes will be hit hard. Prices are also expected to rise internationally, although the full effect isn't likely to be felt by consumers for several months."
+      },
+      {
+        "s": 0,
+        "text": "Is there any sign that the disease has spread beyond Colombia?"
+      },
+      {
+        "s": 1,
+        "text": "Not yet confirmed. But cases are said to have been reported near the border with Ecuador, and authorities there have been asked to step up inspections. Scientists I've spoken to say it's almost certain to reach other producing countries eventually, given how easily the spores are carried by the wind and on people's clothing."
+      },
+      {
+        "s": 1,
+        "text": "Back on his farm, Mr Ospina told me he has no intention of giving up. Having been through the last outbreak, he says, he knows that recovery is possible, if slow. But he admits that this time, the damage is expected to be worse."
+      },
+      {
+        "s": 0,
+        "text": "Daniel Brooks reporting from Manizales."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When was the new strain formally identified?",
+        "options": [
+          "Eighteen months ago",
+          "In the spring",
+          "In August",
+          "More than a decade ago"
+        ],
+        "answer": 2,
+        "explain_es": "\"it was only formally identified in August\"."
+      },
+      {
+        "type": "gap",
+        "q": "Daniel: \"The new strain is believed ______ arrived in the region about eighteen months ago.\" (2 words)",
+        "answer": "to have",
+        "accept": [],
+        "explain_es": "\"is believed to have + participio\": pasiva impersonal sobre algo ocurrido en el pasado."
+      },
+      {
+        "type": "tf",
+        "q": "The new strain affects coffee varieties that were bred to resist the disease.",
+        "answer": "T",
+        "explain_es": "\"it appears to affect varieties that had been bred specifically to resist the disease\"."
+      },
+      {
+        "type": "mc",
+        "q": "How does the growers' federation explain the late warning?",
+        "options": [
+          "The results had to be verified first",
+          "Farmers did not answer their phones",
+          "The government banned the warning",
+          "Nobody had noticed the disease"
+        ],
+        "answer": 0,
+        "explain_es": "\"no warning could be issued until the results had been verified\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite as in the report: \"People say that cases have been reported near the border with Ecuador.\" → \"Cases are said ______ reported near the border with Ecuador.\" (3 words)",
+        "answer": "to have been",
+        "accept": [],
+        "explain_es": "\"cases are said to have been reported\": pasiva de distanciamiento con infinitivo perfecto pasivo."
+      },
+      {
+        "type": "gap",
+        "q": "New resistant varieties are expected to take at least ______ years to develop and test. (1 word or a number)",
+        "answer": "five",
+        "accept": [
+          "5"
+        ],
+        "explain_es": "\"expected to take at least five years to be developed and tested\"."
+      },
+      {
+        "type": "tf",
+        "q": "Mr Ospina plans to stop growing coffee.",
+        "answer": "F",
+        "explain_es": "\"Mr Ospina told me he has no intention of giving up.\""
+      }
+    ],
+    "dictation": [
+      "That's the big worry.",
+      "Not yet confirmed."
+    ]
+  },
+  {
+    "id": "l3-c1-glassworks-tour",
+    "title": "Inside a Family Glassworks",
+    "level": "C1",
+    "kind": "tour",
+    "topic": "Craft & Heritage",
+    "focus": "Compound adjectives",
+    "emoji": "🫙",
+    "speakers": [
+      {
+        "name": "Sofía",
+        "voice": "female",
+        "accent": "us"
+      },
+      {
+        "name": "Andrew",
+        "voice": "male",
+        "accent": "uk"
+      },
+      {
+        "name": "Kylie",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome, everyone, to Vidrios Arellano. I'm Sofía, and I'm the fourth generation of my family to work here. This is a family-run workshop, founded in nineteen thirty-two by my great-grandfather, and almost everything you'll see today is still made by hand. Please stay behind the yellow line near the furnaces; they're running at well over a thousand degrees."
+      },
+      {
+        "s": 0,
+        "text": "So, this is the heart of the workshop. That large brick-lined furnace you can see has been burning, almost without interruption, for over forty years. We only let it cool down once a year, for a two-week maintenance period in January."
+      },
+      {
+        "s": 1,
+        "text": "Sorry, did you say forty years? Isn't that incredibly expensive in terms of fuel?"
+      },
+      {
+        "s": 0,
+        "text": "It is, but turning it off and on would be even more costly, because reheating it takes several days. We've recently switched to a more energy-efficient burner, which has cut our gas use by about a quarter."
+      },
+      {
+        "s": 0,
+        "text": "Now, if you look over here, you'll see Don Ramiro, our master glassblower. He's sixty-eight, and he's been doing this since he was a twelve-year-old apprentice. Watch how he gathers the molten glass on the end of the blowpipe. It's a slow, carefully controlled movement; if he rushes, the glass will sag."
+      },
+      {
+        "s": 2,
+        "text": "How long does it take to become that skilled?"
+      },
+      {
+        "s": 0,
+        "text": "To be honest, most people say it's a lifelong process. You can learn the basics in a couple of years, but the really fine, thin-walled pieces take a decade or more to master."
+      },
+      {
+        "s": 0,
+        "text": "What makes our glass distinctive is that much of it is made from recycled bottles. We collect them from restaurants around Guadalajara, crush them, and melt them down. That's why some pieces have these tiny air bubbles and a slightly greenish tint. Some customers think they're flaws, but for us, they're part of the character of hand-blown glass."
+      },
+      {
+        "s": 1,
+        "text": "And is that also why the prices are so reasonable? I was expecting something much more expensive."
+      },
+      {
+        "s": 0,
+        "text": "Partly. Using recycled glass keeps our costs down. But we've also made a conscious decision to stay a small-scale, locally focused business. We sell mostly to people in the region and to a few independent shops abroad, rather than to big department stores."
+      },
+      {
+        "s": 0,
+        "text": "Next, we'll go into the cooling room. Every piece has to cool slowly in a temperature-controlled oven, called an annealing oven, for around twelve hours. If it cools too fast, the glass becomes stressed and can crack days or even weeks later."
+      },
+      {
+        "s": 2,
+        "text": "Do you ever have pieces that break anyway?"
+      },
+      {
+        "s": 0,
+        "text": "All the time. A good glassblower has to be very patient and very thick-skinned. Don Ramiro says the broken pieces are the ones that teach you the most."
+      },
+      {
+        "s": 0,
+        "text": "And finally, at the end of the tour, there's a short hands-on session where you can try blowing a small bubble of glass yourselves, under supervision, of course. Long-sleeved shirts are recommended, and please tie back long hair. Shall we go through?"
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "How often is the main furnace allowed to cool down?",
+        "options": [
+          "Every weekend",
+          "Once a year, for two weeks in January",
+          "Every forty years",
+          "Only when there is a power cut"
+        ],
+        "answer": 1,
+        "explain_es": "\"We only let it cool down once a year, for a two-week maintenance period in January.\""
+      },
+      {
+        "type": "gap",
+        "q": "Sofía: \"We've recently switched to a more ______ burner.\" (compound adjective = that uses less energy)",
+        "answer": "energy-efficient",
+        "accept": [
+          "energy efficient"
+        ],
+        "explain_es": "Adjetivo compuesto sustantivo + adjetivo: \"energy-efficient\"."
+      },
+      {
+        "type": "tf",
+        "q": "Don Ramiro started learning the craft when he was twelve.",
+        "answer": "T",
+        "explain_es": "\"he's been doing this since he was a twelve-year-old apprentice\"."
+      },
+      {
+        "type": "mc",
+        "q": "Why do some pieces have tiny bubbles and a greenish tint?",
+        "options": [
+          "They are made too quickly",
+          "They are damaged in the cooling room",
+          "They are coloured on purpose with chemicals",
+          "They are made from recycled bottles"
+        ],
+        "answer": 3,
+        "explain_es": "\"much of it is made from recycled bottles ... That's why some pieces have these tiny air bubbles and a slightly greenish tint.\""
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected compound adjective): \"He's been doing this since he was a twelve-years-old apprentice.\"",
+        "answer": "twelve-year-old",
+        "accept": [
+          "twelve year old",
+          "12-year-old"
+        ],
+        "explain_es": "En un adjetivo compuesto delante del sustantivo, \"year\" va en singular: \"a twelve-year-old apprentice\"."
+      },
+      {
+        "type": "gap",
+        "q": "Each piece cools in the annealing oven for around ______ hours. (1 word or a number)",
+        "answer": "twelve",
+        "accept": [
+          "12"
+        ],
+        "explain_es": "\"in a temperature-controlled oven, called an annealing oven, for around twelve hours\"."
+      },
+      {
+        "type": "tf",
+        "q": "Visitors can try glassblowing on their own, without supervision.",
+        "answer": "F",
+        "explain_es": "\"you can try blowing a small bubble of glass yourselves, under supervision, of course\"."
+      }
+    ],
+    "dictation": [
+      "Do you ever have pieces that break anyway?",
+      "Shall we go through?"
+    ]
+  },
+  {
+    "id": "l3-c1-chess-comeback-podcast",
+    "title": "The Comeback Grandmaster",
+    "level": "C1",
+    "kind": "podcast",
+    "topic": "Sport & the Mind",
+    "focus": "Negative inversion (never before, no sooner… than, little did I)",
+    "emoji": "♟️",
+    "speakers": [
+      {
+        "name": "Ben",
+        "voice": "male",
+        "accent": "au"
+      },
+      {
+        "name": "Valentina",
+        "voice": "female",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Welcome back to Second Wind, the podcast about people who came back from setbacks. My guest today is Valentina Ríos, the chess grandmaster from Cali who stepped away from competition for six years and then, last month, won one of the strongest tournaments of her career. Valentina, thanks for joining me."
+      },
+      {
+        "s": 1,
+        "text": "Thanks for having me, Ben. It's been quite a month."
+      },
+      {
+        "s": 0,
+        "text": "Let's go back to the beginning. You stopped playing at twenty-four, when you were ranked in the world's top fifty. Why?"
+      },
+      {
+        "s": 1,
+        "text": "Burnout, basically. I'd been playing seriously since I was seven, and by my early twenties I wasn't enjoying it at all. Not only was I losing games I should have won, but I'd also stopped sleeping properly. Never before had I felt so detached from something I'd once loved."
+      },
+      {
+        "s": 0,
+        "text": "Was there a particular moment when you decided to stop?"
+      },
+      {
+        "s": 1,
+        "text": "There was. I was at a tournament in Germany, and I'd just lost a game in under twenty moves, which for someone at my level is pretty humiliating. No sooner had I got back to the hotel than I booked a flight home. I didn't even play the last two rounds."
+      },
+      {
+        "s": 0,
+        "text": "What did you do in those six years?"
+      },
+      {
+        "s": 1,
+        "text": "I went back to university and studied architecture. And I didn't touch a chessboard. Not once did I play a serious game in all that time. People find that hard to believe, but I needed a complete break."
+      },
+      {
+        "s": 0,
+        "text": "So what brought you back?"
+      },
+      {
+        "s": 1,
+        "text": "Funnily enough, it was teaching. A friend asked me to help at a chess club for kids in a neighbourhood in Cali, just for one afternoon. Seldom have I laughed so much. They played fast, they made terrible mistakes, and they didn't care. It reminded me why I'd fallen in love with the game in the first place."
+      },
+      {
+        "s": 0,
+        "text": "And how did it feel, returning to competition after so long?"
+      },
+      {
+        "s": 1,
+        "text": "Terrifying. Little did I know how much the game had changed. Everyone was preparing with computer engines, and the openings were completely different. For the first year, I lost more than I won. Only after I stopped comparing myself to the player I'd been did I start improving."
+      },
+      {
+        "s": 0,
+        "text": "And then last month's win. Did you expect it?"
+      },
+      {
+        "s": 1,
+        "text": "Not at all. At no point did I think I'd finish first. I was just hoping to avoid finishing last. But I was playing without fear, and I think that made the difference."
+      },
+      {
+        "s": 0,
+        "text": "What would you say to someone who's thinking of quitting something they love?"
+      },
+      {
+        "s": 1,
+        "text": "I'd say it's okay to step away. Rarely is a break the end of something. Sometimes it's exactly what makes a second chapter possible."
+      },
+      {
+        "s": 0,
+        "text": "Valentina Ríos, thank you so much."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "Why did Valentina stop playing at twenty-four?",
+        "options": [
+          "Burnout",
+          "An injury",
+          "Lack of money",
+          "She was banned from competing"
+        ],
+        "answer": 0,
+        "explain_es": "Valentina: \"Burnout, basically.\""
+      },
+      {
+        "type": "gap",
+        "q": "Valentina: \"No sooner had I got back to the hotel ______ I booked a flight home.\" (1 word)",
+        "answer": "than",
+        "accept": [],
+        "explain_es": "La estructura es \"No sooner had + sujeto + participio ... than ...\"."
+      },
+      {
+        "type": "tf",
+        "q": "She studied architecture during her six-year break.",
+        "answer": "T",
+        "explain_es": "\"I went back to university and studied architecture.\""
+      },
+      {
+        "type": "mc",
+        "q": "What brought her back to chess?",
+        "options": [
+          "A sponsorship offer",
+          "A tournament invitation from Germany",
+          "Helping at a chess club for children",
+          "A computer chess program"
+        ],
+        "answer": 2,
+        "explain_es": "\"it was teaching. A friend asked me to help at a chess club for kids\"."
+      },
+      {
+        "type": "transform",
+        "q": "Rewrite with inversion, beginning with \"Little\": \"I didn't know how much the game had changed.\"",
+        "answer": "Little did I know how much the game had changed.",
+        "accept": [],
+        "explain_es": "Valentina: \"Little did I know how much the game had changed.\" Adverbio negativo + auxiliar + sujeto."
+      },
+      {
+        "type": "tf",
+        "q": "In her first year back, she won more games than she lost.",
+        "answer": "F",
+        "explain_es": "\"For the first year, I lost more than I won.\""
+      },
+      {
+        "type": "mc",
+        "q": "What does she think made the difference in last month's win?",
+        "options": [
+          "Months of computer preparation",
+          "A new coach",
+          "An easy group of opponents",
+          "Playing without fear"
+        ],
+        "answer": 3,
+        "explain_es": "\"I was playing without fear, and I think that made the difference.\""
+      }
+    ],
+    "dictation": [
+      "It's been quite a month.",
+      "So what brought you back?"
+    ]
+  },
+  {
+    "id": "l3-c1-difficult-author-conversation",
+    "title": "The Author Who Wouldn't Cut",
+    "level": "C1",
+    "kind": "conversation",
+    "topic": "Publishing",
+    "focus": "Reporting verbs with patterns",
+    "emoji": "📚",
+    "speakers": [
+      {
+        "name": "Eleanor",
+        "voice": "female",
+        "accent": "uk"
+      },
+      {
+        "name": "Josh",
+        "voice": "male",
+        "accent": "us"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "So, how did the call with Martín go? You look exhausted."
+      },
+      {
+        "s": 1,
+        "text": "I am. It went about as badly as it could have. I suggested cutting the first three chapters, as we'd agreed, and he accused me of not having read them properly."
+      },
+      {
+        "s": 0,
+        "text": "Oh dear. Did you explain why?"
+      },
+      {
+        "s": 1,
+        "text": "I tried. I pointed out that the story doesn't really start until chapter four, and that most readers won't stay with it that long. He insisted on keeping them, because apparently they contain the emotional key to the whole book."
+      },
+      {
+        "s": 0,
+        "text": "Well, to be fair, he's not entirely wrong. The grandmother's backstory is in there. Did he refuse outright, or was there any room for negotiation?"
+      },
+      {
+        "s": 1,
+        "text": "At first he refused to discuss it at all. Then, towards the end, he admitted that chapter two was probably too long, and he offered to rewrite it. So that's something."
+      },
+      {
+        "s": 0,
+        "text": "That's more than something. Last time, he threatened to take the book to another publisher."
+      },
+      {
+        "s": 1,
+        "text": "He mentioned that again, actually. Not directly, but he reminded me that two other publishers had made offers before he signed with us."
+      },
+      {
+        "s": 0,
+        "text": "Typical. What about the ending? Marketing are still urging us to change it."
+      },
+      {
+        "s": 1,
+        "text": "I didn't even get to the ending. I'd planned to raise it, but he complained about the cover design first, and that took twenty minutes. He described it as, and I quote, a supermarket romance."
+      },
+      {
+        "s": 0,
+        "text": "Honestly, I'd half agree with him on that one. I warned the design team that it was too bright for a literary novel."
+      },
+      {
+        "s": 1,
+        "text": "Well, he's demanding to see three alternatives by next week. I told him I couldn't promise that, but I agreed to ask."
+      },
+      {
+        "s": 0,
+        "text": "Okay. Here's what I'd propose. I'll call him myself on Monday. I'll congratulate him on the new draft, because it really is much stronger, and then I'll encourage him to think about the opening as a reader rather than as the author."
+      },
+      {
+        "s": 1,
+        "text": "Good luck. He blamed me for the delay with the last book, too, even though he delivered the manuscript four months late."
+      },
+      {
+        "s": 0,
+        "text": "I remember. But he apologised for that eventually, didn't he? He's difficult, but he's not unreasonable once he calms down."
+      },
+      {
+        "s": 1,
+        "text": "I hope you're right. I'd recommend avoiding the word cut, though. Try tighten."
+      },
+      {
+        "s": 0,
+        "text": "Noted. Tighten it is."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "What did Josh suggest to Martín?",
+        "options": [
+          "Changing the title",
+          "Rewriting the ending",
+          "Moving to another publisher",
+          "Cutting the first three chapters"
+        ],
+        "answer": 3,
+        "explain_es": "Josh: \"I suggested cutting the first three chapters\"."
+      },
+      {
+        "type": "gap",
+        "q": "Josh: \"he accused me ______ not having read them properly.\" (1 word)",
+        "answer": "of",
+        "accept": [],
+        "explain_es": "Patrón del verbo: \"accuse somebody of + -ing\"."
+      },
+      {
+        "type": "tf",
+        "q": "Martín offered to rewrite chapter two.",
+        "answer": "T",
+        "explain_es": "Josh: \"he admitted that chapter two was probably too long, and he offered to rewrite it\"."
+      },
+      {
+        "type": "mc",
+        "q": "How did Martín describe the cover design?",
+        "options": [
+          "As too dark",
+          "As a supermarket romance",
+          "As perfect for a literary novel",
+          "As old-fashioned"
+        ],
+        "answer": 1,
+        "explain_es": "Josh: \"He described it as, and I quote, a supermarket romance.\""
+      },
+      {
+        "type": "error",
+        "q": "Find and correct the mistake (write only the corrected words): \"I'll encourage him think about the opening as a reader.\"",
+        "answer": "encourage him to think",
+        "accept": [
+          "to think"
+        ],
+        "explain_es": "Patrón: \"encourage somebody to do something\": \"encourage him to think\"."
+      },
+      {
+        "type": "tf",
+        "q": "Eleanor thinks the new draft is weaker than the previous one.",
+        "answer": "F",
+        "explain_es": "Eleanor: \"it really is much stronger\"."
+      },
+      {
+        "type": "mc",
+        "q": "Which word does Josh advise Eleanor to avoid?",
+        "options": [
+          "Tighten",
+          "Chapter",
+          "Cut",
+          "Ending"
+        ],
+        "answer": 2,
+        "explain_es": "Josh: \"I'd recommend avoiding the word cut, though. Try tighten.\""
+      }
+    ],
+    "dictation": [
+      "Did you explain why?",
+      "I hope you're right."
+    ]
+  },
+  {
+    "id": "l3-c1-flat-deposit-dialogue",
+    "title": "Getting the Deposit Back",
+    "level": "C1",
+    "kind": "dialogue",
+    "topic": "Housing",
+    "focus": "Ellipsis and substitution (so, not, neither, one/ones)",
+    "emoji": "🔑",
+    "speakers": [
+      {
+        "name": "Zoe",
+        "voice": "female",
+        "accent": "au"
+      },
+      {
+        "name": "Sam",
+        "voice": "male",
+        "accent": "uk"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "So, the landlord's coming at ten tomorrow for the final inspection. Do you think we'll get the whole deposit back?"
+      },
+      {
+        "s": 1,
+        "text": "I hope so. Though if he notices the mark on the living-room wall, I suspect not."
+      },
+      {
+        "s": 0,
+        "text": "Which mark? The one by the window, or the one behind the sofa?"
+      },
+      {
+        "s": 1,
+        "text": "Both, actually. The one by the window was there when we moved in, I'm fairly sure. The other one's mine, I'm afraid. I tried to clean it last week, but I'm not sure I managed to."
+      },
+      {
+        "s": 0,
+        "text": "Did you take photos when we moved in? I didn't."
+      },
+      {
+        "s": 1,
+        "text": "Neither did I, unfortunately. But the agent did. There should be a report somewhere with pictures. I'll look for it tonight, unless you already have."
+      },
+      {
+        "s": 0,
+        "text": "I haven't. Please do. If it shows the window mark, that's one less thing to argue about."
+      },
+      {
+        "s": 1,
+        "text": "What about the oven? Have you cleaned it?"
+      },
+      {
+        "s": 0,
+        "text": "Not yet, but I'm planning to this afternoon. It's disgusting. I'd rather not think about what's in there."
+      },
+      {
+        "s": 1,
+        "text": "I'll help, if you like. I owe you one after the wall."
+      },
+      {
+        "s": 0,
+        "text": "You do. And the curtains: should we wash them or get them dry-cleaned? The tenancy agreement says they should be returned in the condition received."
+      },
+      {
+        "s": 1,
+        "text": "Washed, I'd say. They're cheap ones. Dry-cleaning would cost more than they're worth."
+      },
+      {
+        "s": 0,
+        "text": "True. What about the light bulb in the bathroom? It's been dead for weeks."
+      },
+      {
+        "s": 1,
+        "text": "I bought a new one yesterday. Haven't put it in yet, but I will."
+      },
+      {
+        "s": 0,
+        "text": "And the keys? I've got mine, and the spare set's in the drawer. Have you got yours?"
+      },
+      {
+        "s": 1,
+        "text": "Somewhere. I think so, anyway. If not, we'll have to pay for new ones, and I'd prefer not to."
+      },
+      {
+        "s": 0,
+        "text": "Let's look now, then, rather than at nine forty-five tomorrow morning. And if he does try to keep part of the deposit?"
+      },
+      {
+        "s": 1,
+        "text": "Then we ask him to explain why in writing. He's legally required to, apparently. My cousin had the same problem last year, and the tribunal ruled in her favour."
+      },
+      {
+        "s": 0,
+        "text": "Good. Fingers crossed it doesn't come to that."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "When is the landlord coming for the final inspection?",
+        "options": [
+          "This afternoon",
+          "Tonight",
+          "At ten tomorrow",
+          "At nine forty-five tomorrow"
+        ],
+        "answer": 2,
+        "explain_es": "Zoe: \"the landlord's coming at ten tomorrow for the final inspection\"."
+      },
+      {
+        "type": "tf",
+        "q": "Sam caused the mark behind the sofa.",
+        "answer": "T",
+        "explain_es": "Sam: \"The one by the window was there when we moved in ... The other one's mine, I'm afraid.\""
+      },
+      {
+        "type": "gap",
+        "q": "Zoe: \"Did you take photos when we moved in? I didn't.\" Sam: \"______ did I, unfortunately.\" (1 word)",
+        "answer": "Neither",
+        "accept": [
+          "Nor"
+        ],
+        "explain_es": "\"Neither did I\" evita repetir \"I didn't take photos either\" (sustitución con inversión)."
+      },
+      {
+        "type": "mc",
+        "q": "Why does Sam think they should wash the curtains rather than dry-clean them?",
+        "options": [
+          "Dry-cleaning would cost more than the curtains are worth",
+          "The tenancy agreement says so",
+          "The landlord prefers washed curtains",
+          "There is no dry cleaner nearby"
+        ],
+        "answer": 0,
+        "explain_es": "Sam: \"They're cheap ones. Dry-cleaning would cost more than they're worth.\""
+      },
+      {
+        "type": "gap",
+        "q": "Sam avoids repeating \"curtains\": \"They're cheap ______.\" (1 word)",
+        "answer": "ones",
+        "accept": [],
+        "explain_es": "\"ones\" sustituye a un sustantivo plural ya mencionado (\"curtains\")."
+      },
+      {
+        "type": "tf",
+        "q": "Sam has already put the new light bulb in.",
+        "answer": "F",
+        "explain_es": "Sam: \"Haven't put it in yet, but I will.\""
+      },
+      {
+        "type": "mc",
+        "q": "What will they do if the landlord keeps part of the deposit?",
+        "options": [
+          "Call Sam's cousin",
+          "Refuse to give back the keys",
+          "Pay without arguing",
+          "Ask him to explain why in writing"
+        ],
+        "answer": 3,
+        "explain_es": "Sam: \"Then we ask him to explain why in writing.\""
+      }
+    ],
+    "dictation": [
+      "I'll help, if you like.",
+      "Fingers crossed it doesn't come to that."
+    ]
+  },
+  {
+    "id": "l3-c1-correspondent-interview",
+    "title": "Twenty Years as a Correspondent",
+    "level": "C1",
+    "kind": "interview",
+    "topic": "Journalism",
+    "focus": "Emphatic structures (do/did, the thing is, what … is)",
+    "emoji": "🎙️",
+    "speakers": [
+      {
+        "name": "Michael",
+        "voice": "male",
+        "accent": "us"
+      },
+      {
+        "name": "Hannah",
+        "voice": "female",
+        "accent": "au"
+      }
+    ],
+    "lines": [
+      {
+        "s": 0,
+        "text": "Hannah Moreau, you've spent twenty years as a foreign correspondent, most of them based in Bogotá and Mexico City. You've just announced your retirement. How does it feel?"
+      },
+      {
+        "s": 1,
+        "text": "Strange, honestly. I do love this job, and I'll miss it terribly. But the thing is, the job I'm leaving isn't the one I started. It's changed almost beyond recognition."
+      },
+      {
+        "s": 0,
+        "text": "In what way?"
+      },
+      {
+        "s": 1,
+        "text": "Speed, above all. When I started, I'd file one story a day, maybe two. Now you're expected to post updates every hour, record a video, write a thread. The problem is, there's very little time left to actually find things out."
+      },
+      {
+        "s": 0,
+        "text": "Do you think the quality of reporting has suffered?"
+      },
+      {
+        "s": 1,
+        "text": "In some places, it really has. But I don't want to sound like a dinosaur. Some of the best journalism I've ever read has been produced in the last five years. What does worry me is the economics. Foreign bureaus are expensive, and many news organisations have simply closed theirs."
+      },
+      {
+        "s": 0,
+        "text": "You did take some significant risks in your career. Was there ever a moment you thought about stopping?"
+      },
+      {
+        "s": 1,
+        "text": "Oh, there were several. The one that stays with me most is a night in two thousand and nine, covering a prison riot. We did get out safely in the end, but for about an hour I genuinely didn't know whether we would. The thing that kept me going, oddly, was the thought that if I didn't tell the story, nobody would."
+      },
+      {
+        "s": 0,
+        "text": "Did your family ever ask you to give it up?"
+      },
+      {
+        "s": 1,
+        "text": "They did, many times. And I do understand why. My mother still sends me a message every time there's a news story about a journalist being attacked anywhere in the world."
+      },
+      {
+        "s": 0,
+        "text": "Social media must have changed how you work as well."
+      },
+      {
+        "s": 1,
+        "text": "Enormously. It's a wonderful source, I'll admit that. Half my best leads in the last decade came from someone posting a video. But it's also a swamp of misinformation. What you absolutely have to do now is verify everything, twice, before you go anywhere near publishing it."
+      },
+      {
+        "s": 0,
+        "text": "Is there a story you regret not telling?"
+      },
+      {
+        "s": 1,
+        "text": "Yes. There was a community on the Pacific coast whose land was being taken, slowly and quietly, and I did start investigating it, but I was pulled off to cover an election. By the time I came back, the story had moved on. I do think about that a lot."
+      },
+      {
+        "s": 0,
+        "text": "What advice would you give a young journalist starting out?"
+      },
+      {
+        "s": 1,
+        "text": "Learn a language properly. Not well enough to order dinner, but well enough to understand a joke. It's the single most useful thing I ever did. And do look after yourself. Nobody else will, believe me."
+      },
+      {
+        "s": 0,
+        "text": "Hannah Moreau, thank you, and enjoy your retirement."
+      },
+      {
+        "s": 1,
+        "text": "Thank you. I fully intend to."
+      }
+    ],
+    "questions": [
+      {
+        "type": "mc",
+        "q": "According to Hannah, what has changed most in her job?",
+        "options": [
+          "The equipment",
+          "The speed of reporting",
+          "The languages she uses",
+          "The countries she covers"
+        ],
+        "answer": 1,
+        "explain_es": "Hannah: \"Speed, above all.\""
+      },
+      {
+        "type": "gap",
+        "q": "Hannah adds emphasis: \"I ______ love this job, and I'll miss it terribly.\" (1 word)",
+        "answer": "do",
+        "accept": [],
+        "explain_es": "El auxiliar enfático \"do\" + verbo base refuerza la afirmación: \"I do love this job\"."
+      },
+      {
+        "type": "mc",
+        "q": "What worries Hannah most about the industry?",
+        "options": [
+          "Young journalists are lazy",
+          "Readers prefer videos",
+          "The economics: many foreign bureaus have closed",
+          "Governments censor the news"
+        ],
+        "answer": 2,
+        "explain_es": "Hannah: \"What does worry me is the economics. Foreign bureaus are expensive\"."
+      },
+      {
+        "type": "tf",
+        "q": "During the prison riot, Hannah was always sure she would get out safely.",
+        "answer": "F",
+        "explain_es": "\"for about an hour I genuinely didn't know whether we would\"."
+      },
+      {
+        "type": "transform",
+        "q": "Add emphasis with \"do\", as Hannah does: \"I understand why.\"",
+        "answer": "I do understand why.",
+        "accept": [],
+        "explain_es": "Hannah: \"And I do understand why.\" El \"do\" enfático subraya que sí lo entiende."
+      },
+      {
+        "type": "tf",
+        "q": "Hannah regrets not finishing a story about a community on the Pacific coast.",
+        "answer": "T",
+        "explain_es": "\"I did start investigating it, but I was pulled off to cover an election ... I do think about that a lot.\""
+      },
+      {
+        "type": "mc",
+        "q": "What is her main advice to young journalists?",
+        "options": [
+          "Learn a language well enough to understand a joke",
+          "Always work for a large organisation",
+          "Avoid social media completely",
+          "Specialise in elections"
+        ],
+        "answer": 0,
+        "explain_es": "\"Learn a language properly. Not well enough to order dinner, but well enough to understand a joke.\""
+      }
+    ],
+    "dictation": [
+      "In what way?",
+      "I fully intend to."
+    ]
+  }
+]

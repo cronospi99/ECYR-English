@@ -1,16 +1,17 @@
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronLeft, Cloud, CloudOff, MapPin, NotebookPen, Plus, Search, Trash2 } from 'lucide-react';
+import { ChevronLeft, Cloud, CloudOff, Eraser, Highlighter, MapPin, NotebookPen, Plus, Search, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { EmptyState } from '@/components/ui/Misc';
 import { useAuth } from '@/store/auth';
 import { MAX_NOTE_BODY, noteTitle, useNotes, visibleNotes, type Note } from '@/store/notes';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
+import { applyHighlight, HIGHLIGHTS, segments, stripHighlights, type HighlightColor } from '@/lib/highlights';
 import { currentPageInfo } from './pageInfo';
 import { refreshNotes, useNotesSync } from './sync';
 
-const fold = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const fold = (s: string) => stripHighlights(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 /** null = list; 'new' = a draft not stored until the first character. */
 type Sel = string | 'new' | null;
@@ -155,7 +156,7 @@ export function NotesPanel({ variant, onNavigate, startNew = false }: { variant:
 }
 
 function snippet(n: Note) {
-  const rest = n.body.trim().split('\n').slice(1).join(' ').trim();
+  const rest = stripHighlights(n.body).trim().split('\n').slice(1).join(' ').trim();
   return rest || ' ';
 }
 
@@ -196,6 +197,14 @@ function NoteEditor({
   }, []);
 
   latest.current.text = text;
+
+  // The textarea grows with its text (no inner scroll), so the highlight mirror stays aligned.
+  useLayoutEffect(() => {
+    const el = area.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${el.scrollHeight}px`;
+  }, [text]);
 
   // Autosave while typing (debounced); the very first character creates the note.
   useEffect(() => {
@@ -286,24 +295,93 @@ function NoteEditor({
           </Link>
         </div>
       )}
+      <HighlightBar area={area} text={text} setText={setText} />
       <label htmlFor={areaId} className="sr-only">
         Texto de la nota
       </label>
-      <textarea
-        id={areaId}
-        ref={area}
-        value={text}
-        maxLength={MAX_NOTE_BODY}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Escribe tu nota… (la primera línea es el título)"
-        className="placeholder:text-label-3 min-h-[260px] w-full flex-1 resize-none bg-transparent px-4 py-3 text-[16px] leading-relaxed outline-none"
-      />
+      {/* The textarea sits over a mirror of its own text that paints the highlights behind it. */}
+      <div className="relative min-h-[260px] flex-1">
+        <div aria-hidden className={cn(NOTE_TEXT, 'pointer-events-none absolute inset-0 text-transparent')}>
+          {segments(text).map((g, i) =>
+            g.color ? (
+              <mark key={i} className="rounded-[3px] text-transparent" style={{ background: HIGHLIGHTS.find((h) => h.id === g.color)!.bg }}>
+                {g.text}
+              </mark>
+            ) : (
+              <span key={i}>{g.text}</span>
+            ),
+          )}
+          {'\u200b'}
+        </div>
+        <textarea
+          id={areaId}
+          ref={area}
+          value={text}
+          maxLength={MAX_NOTE_BODY}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Escribe tu nota… (la primera línea es el título)"
+          className={cn(NOTE_TEXT, 'placeholder:text-label-3 relative block min-h-[260px] w-full resize-none overflow-hidden bg-transparent outline-none')}
+        />
+      </div>
       <div className="text-label-2 flex justify-between gap-3 px-4 pb-3 text-[12px]">
         <SyncLine />
         <span className="shrink-0 tabular-nums">
-          {text.length.toLocaleString('es')}/{MAX_NOTE_BODY.toLocaleString('es')}
+          {stripHighlights(text).length.toLocaleString('es')}/{MAX_NOTE_BODY.toLocaleString('es')}
         </span>
       </div>
+    </div>
+  );
+}
+
+const NOTE_TEXT = 'whitespace-pre-wrap break-words px-4 py-3 text-[16px] leading-relaxed';
+
+/** Highlighter pens: select text, then tap a color (or the eraser). */
+function HighlightBar({ area, text, setText }: { area: RefObject<HTMLTextAreaElement | null>; text: string; setText: (t: string) => void }) {
+  const [hint, setHint] = useState(false);
+  const paint = (color: HighlightColor | null) => {
+    const el = area.current;
+    if (!el) return;
+    const { selectionStart: a, selectionEnd: b } = el;
+    if (a === b) {
+      setHint(true);
+      el.focus();
+      return;
+    }
+    setHint(false);
+    const r = applyHighlight(text, a, b, color);
+    setText(r.text);
+    requestAnimationFrame(() => {
+      el.focus({ preventScroll: true });
+      el.setSelectionRange(r.end, r.end);
+    });
+  };
+  return (
+    <div className="flex flex-wrap items-center gap-1.5 px-4 pt-3">
+      <Highlighter size={15} className="text-label-2" aria-hidden />
+      {HIGHLIGHTS.map((h) => (
+        <button
+          key={h.id}
+          type="button"
+          // Keep the selection: a mousedown on the button would blur the textarea first.
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={() => paint(h.id)}
+          title={`Resaltar en ${h.label.toLowerCase()}`}
+          aria-label={`Resaltar en ${h.label.toLowerCase()}`}
+          className="h-7 w-7 rounded-full border border-black/10 transition-transform active:scale-90"
+          style={{ background: h.bg }}
+        />
+      ))}
+      <button
+        type="button"
+        onMouseDown={(e) => e.preventDefault()}
+        onClick={() => paint(null)}
+        title="Quitar resaltado"
+        aria-label="Quitar resaltado"
+        className="text-label-2 hover:bg-fill-2 inline-flex h-7 w-7 items-center justify-center rounded-full"
+      >
+        <Eraser size={15} />
+      </button>
+      {hint && <span className="text-label-2 text-[12px]">Selecciona primero el texto que quieres resaltar.</span>}
     </div>
   );
 }

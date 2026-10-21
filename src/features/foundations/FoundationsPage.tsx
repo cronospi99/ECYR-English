@@ -11,10 +11,12 @@ import { useProgress } from '@/store/progress';
 import { deep } from '@/lib/color';
 import { cn } from '@/lib/cn';
 import { FOUNDATION_MAP, PREA1, unitPath } from './meta';
+import { ExamRow, useLevelExams } from '@/features/exams/ExamCards';
 
 export default function FoundationsPage() {
   const { data, loading } = useAsync(() => Promise.all([loadPreA1(), loadFoundations()]), []);
   const topics = useProgress((s) => s.topics);
+  const exams = useLevelExams('PreA1');
   const course = data?.[0];
   const total = course?.reduce((n, u) => n + u.topics.length, 0) ?? 0;
   const done = course?.reduce((n, u) => n + u.topics.filter((t) => topics[t.id]).length, 0) ?? 0;
@@ -88,6 +90,18 @@ export default function FoundationsPage() {
               </ListGroup>
             ))}
           </div>
+
+          {exams.all.length > 0 && (
+            <div className="mt-8">
+              <h2 className="text-title-3">Evaluaciones Pre-A1</h2>
+              <p className="text-label-2 mt-1 mb-3 text-[15px]">Un parcial al terminar la unidad 4 y el parcial final del nivel: listening, reading, writing, speaking, gramática y vocabulario.</p>
+              <div className="grid gap-3 md:grid-cols-2">
+                {exams.all.map((e) => (
+                  <ExamRow key={e.id} exam={e} color="var(--green)" />
+                ))}
+              </div>
+            </div>
+          )}
 
           {movedUnits.length > 0 && (
             <div className="mt-8">
