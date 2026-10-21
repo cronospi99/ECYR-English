@@ -331,8 +331,8 @@ export function WeatherForecast() {
   const w = WEATHER_WORDS.find((x) => f.words.includes(x.w));
   return (
     <Card className="overflow-hidden">
-      <div className="grid sm:grid-cols-[minmax(0,1fr)_220px]">
-        <div className="p-4 sm:p-5">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_220px]">
+        <div className="min-w-0 p-4 sm:p-5">
           <h4 className="text-headline">📺 Weather forecast</h4>
           <p className="text-label-2 text-[14px]">Elige una ciudad y escucha el pronóstico. Luego preséntalo tú en voz alta, como en las noticias.</p>
           <div className="no-scrollbar mt-2 flex gap-2 overflow-x-auto py-1">
@@ -410,7 +410,7 @@ export function WeatherLesson() {
         <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
           {WEATHER_WORDS.map((w) => (
             <button key={w.w} type="button" onClick={() => speak(w.ex)} className="bg-fill-2 flex items-center gap-2.5 rounded-[14px] p-2 text-left">
-              <Pic src={w.img} emoji={w.emoji} className="h-14 w-14" />
+              <Pic src={w.img} emoji={w.emoji} className="h-12 w-12 sm:h-14 sm:w-14" />
               <span className="min-w-0">
                 <span className="block text-[15px] font-bold">{w.w}</span>
                 <span className="text-label-2 block text-[12.5px] leading-snug">{w.ex}</span>

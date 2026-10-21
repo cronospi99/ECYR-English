@@ -82,7 +82,7 @@ function WordCard({ w, color, open, onToggle }: { w: VisualWord; color: string; 
           aria-label={`${w.en}: ver ejemplo`}
           className={cn('block w-full p-2 text-left', open && 'sm:w-1/2')}
         >
-          <Picture w={w} className="aspect-[4/3] w-full" />
+          <Picture w={w} className={cn('aspect-[4/3] w-full', open && 'mx-auto max-w-[260px]')} />
           <div className="px-1.5 pt-2 pb-1">
             <div className="text-[16px] leading-tight font-bold">{w.en}</div>
             {w.nat && (

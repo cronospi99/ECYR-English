@@ -95,7 +95,7 @@ export const WEATHER_WORDS = [
   { w: 'foggy', img: `${W}/foggy.webp`, emoji: '🌫️', ex: 'It’s foggy. Drive slowly!', noun: 'fog' },
   { w: 'misty', img: `${W}/misty.webp`, emoji: '🌁', ex: 'It’s a misty morning in the mountains.', noun: 'mist' },
   { w: 'drizzly', img: `${W}/drizzly.webp`, emoji: '🌦️', ex: 'It’s drizzly — just a little rain.', noun: 'drizzle' },
-  { w: 'breezy', img: `${W}/breezy.webp`, emoji: '🍃', ex: 'It’s breezy and very nice by the sea.', noun: 'breeze' },
+  { w: 'breezy', emoji: '🍃', ex: 'It’s breezy and very nice by the sea.', noun: 'breeze' },
   { w: 'clear', img: `${W}/clear.webp`, emoji: '🌌', ex: 'It’s a clear night. Look at the stars!', noun: 'clear sky' },
   { w: 'humid', emoji: '💦', ex: 'It’s very humid in Barranquilla.', noun: 'humidity' },
 ];

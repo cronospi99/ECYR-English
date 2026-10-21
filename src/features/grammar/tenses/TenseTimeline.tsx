@@ -123,10 +123,13 @@ function MarkView({
           )}
           {m.lane > 0 && <motion.line initial={false} animate={{ x1: (a + b) / 2, x2: (a + b) / 2, y1: y + h / 2, y2: axisY }} transition={SPRING} stroke={m.color} strokeOpacity={0.35} strokeDasharray="2 3" />}
           <motion.rect
-            initial={{ x, width: w, y: y - h / 2, height: h, opacity: 0 }}
+            initial={{ x, width: w, y: y - h / 2, height: h, rx: h / 2, opacity: 0 }}
             animate={{ x, width: w, y: y - h / 2, height: h, rx: h / 2, opacity: 1 }}
             transition={SPRING}
-            style={{ fill, stroke: point ? 'var(--card)' : m.color, strokeWidth: point ? 2.5 : 1.5, strokeOpacity: point ? 1 : m.style === 'faint' ? 0 : 0.9 }}
+            fill={fill}
+            stroke={point ? 'var(--card)' : m.color}
+            strokeWidth={point ? 2.5 : 1.5}
+            strokeOpacity={point ? 1 : m.style === 'faint' ? 0 : 0.9}
           />
           {wavy && (
             <g clipPath={`url(#${clip})`}>
@@ -135,11 +138,11 @@ function MarkView({
           )}
           {m.style === 'perfect' && <motion.line initial={false} animate={{ x1: a, x2: b, y1: y, y2: y }} transition={SPRING} stroke={m.color} strokeWidth={2.5} />}
           {m.arrow && (
-            <motion.path initial={false} animate={{ x: b, y }} transition={SPRING} d="M -2 -8 L 9 0 L -2 8 Z" style={{ fill: m.color }} />
+            <motion.path initial={false} animate={{ x: b, y }} transition={SPRING} d="M -2 -8 L 9 0 L -2 8 Z" fill={m.color} />
           )}
           {m.badge !== undefined && (
             <motion.g initial={false} animate={{ x: point ? a : a + 9, y: y - h / 2 - 10 }} transition={SPRING}>
-              <circle r={8} style={{ fill: m.color }} />
+              <circle r={8} fill={m.color} />
               <text y={3.6} fontSize={10.5} fontWeight={800} textAnchor="middle" fill="#fff">
                 {m.badge}
               </text>
@@ -160,7 +163,7 @@ function MarkView({
                 initial={{ cx: x, cy: y, r: 0 }}
                 animate={{ cx: x, cy: y, r: compact ? 4.5 : 5.5 }}
                 transition={{ ...SPRING, delay: i * 0.03 }}
-                style={{ fill: m.color, stroke: 'var(--card)', strokeWidth: 1.5 }}
+                fill={m.color} stroke="var(--card)" strokeWidth={1.5}
               />
             );
           })}
@@ -183,8 +186,8 @@ function MarkView({
       return (
         <motion.g {...fade} initial={{ opacity: 0, x }} animate={{ opacity: 1, x }} transition={SPRING}>
           <line x1={0} x2={0} y1={top - 6} y2={axisY} stroke={m.color} strokeWidth={2} />
-          <path d={`M 0 ${top - 6} L 13 ${top - 1} L 0 ${top + 4} Z`} style={{ fill: m.color }} />
-          <text x={-4} y={top - 9} fontSize={11} fontWeight={700} textAnchor={x > W - 80 ? 'end' : 'start'} style={{ fill: m.color }}>
+          <path d={`M 0 ${top - 6} L 13 ${top - 1} L 0 ${top + 4} Z`} fill={m.color} />
+          <text x={-4} y={top - 9} fontSize={11} fontWeight={700} textAnchor={x > W - 80 ? 'end' : 'start'} fill={m.color}>
             {m.label}
           </text>
         </motion.g>
@@ -202,7 +205,7 @@ function MarkView({
           <motion.path initial={{ d, pathLength: 0 }} animate={{ d, pathLength: 1 }} transition={{ ...SPRING, pathLength: { duration: 0.6 } }} fill="none" stroke={m.color} strokeWidth={1.6} strokeDasharray={m.dashed ? '4 4' : undefined} />
           <motion.path initial={false} animate={{ x: x2, y: y2 }} transition={SPRING} d="M -4 -7 L 0 0 L 4 -7" fill="none" stroke={m.color} strokeWidth={1.6} />
           {m.label && (
-            <motion.text initial={false} animate={{ x: (x1 + x2) / 2, y: cy + 4 }} transition={SPRING} fontSize={10.5} fontWeight={700} textAnchor="middle" style={{ fill: m.color }}>
+            <motion.text initial={false} animate={{ x: (x1 + x2) / 2, y: cy + 4 }} transition={SPRING} fontSize={10.5} fontWeight={700} textAnchor="middle" fill={m.color}>
               {m.label}
             </motion.text>
           )}
@@ -224,11 +227,11 @@ function MarkView({
       const y = laneY(m.lane);
       return (
         <motion.g {...fade} initial={{ opacity: 0, x: px(m.x), y }} animate={{ opacity: 1, x: px(m.x), y }} transition={SPRING}>
-          <circle r={11} style={{ fill: tint(m.color, 18), stroke: m.color }} strokeWidth={1.5} strokeDasharray="3 3" />
-          <text y={4} fontSize={12} fontWeight={800} textAnchor="middle" style={{ fill: m.color }}>
+          <circle r={11} fill={tint(m.color, 18)} stroke={m.color} strokeWidth={1.5} strokeDasharray="3 3" />
+          <text y={4} fontSize={12} fontWeight={800} textAnchor="middle" fill={m.color}>
             ?
           </text>
-          <text y={-16} fontSize={10.5} fontWeight={700} textAnchor="middle" style={{ fill: m.color }}>
+          <text y={-16} fontSize={10.5} fontWeight={700} textAnchor="middle" fill={m.color}>
             {m.label}
           </text>
         </motion.g>
