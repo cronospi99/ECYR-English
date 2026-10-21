@@ -39,11 +39,11 @@ export function Rich({ html, className }: { html: string; className?: string }) 
 const said = (w: VisualWord) => w.say ?? w.en.replace(/\s*\(.*?\)\s*/g, ' ').split(' / ')[0]!.trim();
 
 /** The picture of a card: an image on white, or a large emoji. */
-export function Picture({ w, className, size = 'md' }: { w: VisualWord; className?: string; size?: 'sm' | 'md' | 'lg' }) {
+export function Picture({ w, className, size = 'md', eager }: { w: VisualWord; className?: string; size?: 'sm' | 'md' | 'lg'; eager?: boolean }) {
   return (
     <div className={cn('relative flex items-center justify-center overflow-hidden rounded-[14px] bg-white', className)}>
       {w.img ? (
-        <img src={w.img} alt="" loading="lazy" decoding="async" draggable={false} className="h-full w-full object-contain p-1.5" />
+        <img src={w.img} alt="" loading={eager ? 'eager' : 'lazy'} decoding="async" draggable={false} className="h-full w-full object-contain p-1.5" />
       ) : (
         <span className={cn('leading-none select-none', size === 'lg' ? 'text-[64px]' : size === 'sm' ? 'text-[34px]' : 'text-[46px]')} aria-hidden>
           {w.emoji ?? '🖼️'}
@@ -264,7 +264,7 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
                       v === 'wrong' && 'ring-ios-red ring-[3px]',
                     )}
                   >
-                    <Picture w={w} className="aspect-[4/3] w-full" size="sm" />
+                    <Picture w={w} className="aspect-[4/3] w-full" size="sm" eager />
                     {pick && <div className="px-1 pt-1 text-[13.5px] font-semibold">{w.en}</div>}
                   </button>
                 );
@@ -279,6 +279,7 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
               w={r.flagQ ? { ...r.target, img: r.target.flag, flag: undefined } : { ...r.target, flag: undefined }}
               className="aspect-[4/3] w-full max-w-[320px] sm:max-w-none"
               size="lg"
+              eager
             />
           ) : (
             <div className="rounded-[16px] p-4" style={{ background: tint(color, 10) }}>

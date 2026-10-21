@@ -2532,10 +2532,10 @@
         "type": "mc",
         "q": "What did the letters make the writer realise?",
         "options": [
-          "How much had not been passed down to her",
-          "Her grandfather had lived in Galicia",
+          "How much had not been passed down",
+          "The grandfather had never left Galicia",
           "The letters were worthless",
-          "Her grandparents had been unhappy"
+          "The grandparents had been unhappy"
         ],
         "answer": 0,
         "explain_es": "\"the full weight of what had not been passed on\"."
