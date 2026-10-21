@@ -6,6 +6,10 @@
 import { castVoices, type VoiceAccent } from '@/lib/tts/voices';
 import { edgeAvailable, edgeIssue, fetchTtsBlob, rateFor, splitForTts } from '@/lib/tts/edge';
 import { SPELL_RATE, speak, speakSequence, speakSpanish, splitSpelled, stopSpeaking } from '@/lib/tts';
+import { createElement } from 'react';
+import { createRoot, type Root } from 'react-dom/client';
+import { mediaPlayer, sequencePlayer, type SeekablePlayer } from '@/lib/tts/seekable';
+import { AudioScrubber } from '@/components/learning/AudioScrubber';
 
 interface Part {
   speakers?: { name: string; gender?: string }[];
@@ -37,6 +41,30 @@ function lines(p: Part): { speaker: string; text: string }[] {
     }
     return { speaker: current, text: l };
   });
+}
+
+/** The speaker of each line, with the voice the section is recorded in. */
+function sequenceOf(p: Part) {
+  const c = cast(p);
+  const accent = accentOf(p.accent);
+  const genderOf = (name: string) => (speakersOf(p).find((s) => s.name === name)?.gender === 'male' ? ('male' as const) : ('female' as const));
+  return lines(p).map((l) => ({ text: l.text, speaker: { name: l.speaker, voice: genderOf(l.speaker), accent, persona: c.get(l.speaker)?.id } }));
+}
+
+// Seekable players for the sections, one per recording / script object, so a
+// re-render of the engine's panel (it redraws with innerHTML) keeps playback.
+const players = new WeakMap<object, SeekablePlayer>();
+const roots = new Map<HTMLElement, Root>();
+
+export interface ScrubberOptions {
+  /** What identifies the audio (the attached recording, or the section). */
+  source: object;
+  /** The recording's URL (lazily: data: URLs are large). */
+  src?: (() => string) | null;
+  /** A section with no recording: read by the voices, line by line. */
+  part?: Part | null;
+  /** The learner pressed play. */
+  onPlay?: () => void;
 }
 
 function toBase64(bytes: Uint8Array): string {
@@ -74,6 +102,33 @@ export const ieltsTts = {
       { rate: 0.95 * (rate || 1), gapMs: 300, onEnd: () => !shim.stopped && onEnd() },
     );
     return shim;
+  },
+
+  /**
+   * Renders the platform's scrubber (play / pause, a bar to drag to any
+   * second, back 5 s / 10 s, speed) into `host`. Returns a stand-in for the
+   * <audio> element the engine pauses.
+   */
+  mountScrubber(host: HTMLElement, o: ScrubberOptions) {
+    // Panels the engine has redrawn: their roots go (after the current event).
+    for (const [el, root] of roots) {
+      if (el.isConnected || el === host) continue;
+      roots.delete(el);
+      setTimeout(() => root.unmount(), 0);
+    }
+    let player = players.get(o.source);
+    if (!player) {
+      player = o.src ? mediaPlayer(o.src()) : sequencePlayer(o.part ? sequenceOf(o.part) : [], { gapMs: 300 });
+      players.set(o.source, player);
+    }
+    const p = player;
+    let root = roots.get(host);
+    if (!root) {
+      root = createRoot(host);
+      roots.set(host, root);
+    }
+    root.render(createElement(AudioScrubber, { player: p, color: 'var(--indigo)', speeds: [1, 0.9, 0.8], restart: true, label: 'Posición de la sección', onPlay: () => o.onPlay?.() }));
+    return { playbackRate: 1, pause: () => p.pause() };
   },
 
   voicesFor(p: Part) {

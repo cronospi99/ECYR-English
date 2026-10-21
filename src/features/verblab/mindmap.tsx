@@ -279,10 +279,7 @@ function MindMap({ family, onClose }: { family: MindFamily; onClose: () => void 
 
 function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily; index: number; onIndex: (i: number) => void; onClose: () => void }) {
   const it = family.items[index]!;
-  const { data: extra } = useAsync(loadPhrasalExamples, []);
-  const showEs = useSettings((s) => s.spanishHints);
-  const examples = [it.ex, ...(extra?.[`${it.pv}|${it.def}`] ?? [])].filter(Boolean);
-  const terms = phrasalTerms(it.pv);
+  const examples = usePhrasalExamples(it);
   const n = family.items.length;
 
   return (
@@ -320,44 +317,7 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
           </button>
         </div>
 
-        <div className="mt-4 rounded-[16px] p-4" style={{ background: `color-mix(in srgb, ${family.color} 12%, var(--card))` }}>
-          <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(family.color) }}>
-            Significado
-          </div>
-          <p className="mt-0.5 text-[17px] font-semibold">{it.def}</p>
-          {it.es && showEs && <p className="text-label-2 mt-1 text-[14px]">🇪🇸 {it.es}</p>}
-        </div>
-
-        <div className="text-label-2 mt-4 mb-2 text-[11px] font-bold tracking-wide uppercase">Ejemplos</div>
-        <ul className="space-y-2">
-          {examples.map((e, k) => (
-            <motion.li
-              key={k}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.05 + k * 0.06 }}
-              className="bg-fill-2 flex items-start gap-3 rounded-[14px] py-2.5 pr-2 pl-3"
-              style={{ borderLeft: `4px solid ${family.color}` }}
-            >
-              <span className="flex-1 text-[16px] leading-snug">
-                <Highlight text={e} terms={terms} color={family.color} />
-              </span>
-              <button type="button" onClick={() => speak(e, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${e}`}>
-                <Volume2 size={16} />
-              </button>
-            </motion.li>
-          ))}
-        </ul>
-
-        {it.ctx && it.ctx.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {it.ctx.map((c) => (
-              <span key={c} className="bg-fill-2 text-label-2 rounded-full px-2.5 py-1 text-[12px] font-medium">
-                #{c}
-              </span>
-            ))}
-          </div>
-        )}
+        <PhrasalInfo item={it} color={family.color} examples={examples} />
 
         {n > 1 && (
           <div className="mt-5 flex items-center justify-between gap-3">
@@ -373,6 +333,62 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
           </div>
         )}
       </motion.section>
+    </>
+  );
+}
+
+/** The full phrasal-verb list's extra examples for an item, after its own example. */
+export function usePhrasalExamples(it: Pick<MindItem, 'pv' | 'def' | 'ex'>) {
+  const { data: extra } = useAsync(loadPhrasalExamples, []);
+  return [it.ex, ...(extra?.[`${it.pv}|${it.def}`] ?? [])].filter(Boolean);
+}
+
+/** Meaning (+ Spanish), examples with audio and context tags of a phrasal verb. */
+export function PhrasalInfo({ item: it, color, examples }: { item: MindItem; color: string; examples?: string[] }) {
+  const own = usePhrasalExamples(it);
+  const list = examples ?? own;
+  const showEs = useSettings((s) => s.spanishHints);
+  const terms = phrasalTerms(it.pv);
+  return (
+    <>
+      <div className="mt-4 rounded-[16px] p-4" style={{ background: `color-mix(in srgb, ${color} 12%, var(--card))` }}>
+        <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
+          Significado
+        </div>
+        <p className="mt-0.5 text-[17px] font-semibold">{it.def}</p>
+        {it.es && showEs && <p className="text-label-2 mt-1 text-[14px]">🇪🇸 {it.es}</p>}
+      </div>
+
+      <div className="text-label-2 mt-4 mb-2 text-[11px] font-bold tracking-wide uppercase">Ejemplos</div>
+      <ul className="space-y-2">
+        {list.map((e, k) => (
+          <motion.li
+            key={k}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.05 + k * 0.06 }}
+            className="bg-fill-2 flex items-start gap-3 rounded-[14px] py-2.5 pr-2 pl-3"
+            style={{ borderLeft: `4px solid ${color}` }}
+          >
+            <span className="flex-1 text-[16px] leading-snug">
+              <Highlight text={e} terms={terms} color={color} />
+            </span>
+            <button type="button" onClick={() => speak(e, { rate: 0.92 })} className="text-ink-blue shrink-0 rounded-full p-1.5 hover:bg-fill" aria-label={`Escuchar: ${e}`}>
+              <Volume2 size={16} />
+            </button>
+          </motion.li>
+        ))}
+      </ul>
+
+      {it.ctx && it.ctx.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {it.ctx.map((c) => (
+            <span key={c} className="bg-fill-2 text-label-2 rounded-full px-2.5 py-1 text-[12px] font-medium">
+              #{c}
+            </span>
+          ))}
+        </div>
+      )}
     </>
   );
 }

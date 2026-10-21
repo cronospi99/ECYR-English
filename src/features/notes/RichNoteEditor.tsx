@@ -313,7 +313,8 @@ export function RichNoteEditor({
   const el = useRef<HTMLDivElement>(null);
   const model = useRef(initial);
   const lastSel = useRef<Sel>([stripMarks(initial).length, stripMarks(initial).length]);
-  const hist = useRef<{ past: Snap[]; future: Snap[]; kind: string; at: number }>({ past: [], future: [], kind: '', at: 0 });
+  // `caret`: where the last typing burst left the caret (a burst continues only from there).
+  const hist = useRef<{ past: Snap[]; future: Snap[]; kind: string; at: number; caret: number }>({ past: [], future: [], kind: '', at: 0, caret: -1 });
   const snapBefore = useRef<Snap | null>(null);
   const inputKind = useRef('other');
   const composing = useRef(false);
@@ -423,6 +424,7 @@ export function RichNoteEditor({
     const prev = model.current;
     const prevSnap = snapBefore.current ?? { text: prev, sel: lastSel.current };
     let rerender = false;
+    let applied = false; // a pending bold / italic took effect: a new undo step
 
     if (!composing.current) {
       if (next.length > maxLength) {
@@ -436,6 +438,7 @@ export function RichNoteEditor({
           next = formatRange(next, ins[0], ins[1], pending.current.fmt);
           pending.current = null;
           rerender = true;
+          applied = true;
         }
       }
     }
@@ -444,7 +447,8 @@ export function RichNoteEditor({
       const h = hist.current;
       const kind = inputKind.current;
       const now = Date.now();
-      const coalesce = (kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500;
+      const coalesce =
+        (kind === 'type' || kind === 'delete') && kind === h.kind && now - h.at < 1500 && !applied && prevSnap.sel[0] === h.caret && prevSnap.sel[1] === h.caret;
       if (!coalesce) {
         h.past.push(prevSnap);
         if (h.past.length > 300) h.past.shift();
@@ -452,6 +456,7 @@ export function RichNoteEditor({
       h.future = [];
       h.kind = kind;
       h.at = now;
+      h.caret = sel && sel[0] === sel[1] ? sel[0] : -1;
       model.current = next;
       cb.current.onChange(next);
       setEmpty(!stripMarks(next));

@@ -87,48 +87,48 @@
      "type": "mc",
      "q": "What does the writer suggest by saying people 'had started asking where I had been'?",
      "options": [
-      "Her travel plans had become a topic of curiosity",
       "Her accent now sounded as if it came from several places",
+      "She had begun to talk about her travels too much",
       "People suspected she had been hiding her origins",
-      "She had begun to talk about her travels too much"
+      "Her travel plans had become a topic of curiosity"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Párrafo 1: el acento 'had been quietly packing its bags'; ya no suena de un lugar concreto, sino de varios sitios por los que ha pasado."
     },
     {
      "type": "mc",
      "q": "In paragraph 2, the writer's attitude towards linguistic accommodation is best described as…",
      "options": [
-      "alarmed by how quickly it happens",
       "dismissive of the scientific explanation",
       "accepting of it as normal while noting our emotional reaction",
-      "critical of linguists for using unromantic terms"
+      "critical of linguists for using unromantic terms",
+      "alarmed by how quickly it happens"
      ],
-     "answer": 2,
+     "answer": 1,
      "explain_es": "\"None of this is unusual. What is unusual, I think, is how personally we take it.\" Acepta el fenómeno, pero subraya la reacción emocional."
     },
     {
      "type": "mc",
      "q": "Why does the writer mention that her aunt 'was not being unkind'?",
      "options": [
+      "To contrast her aunt with less affectionate relatives",
       "To excuse her aunt's rudeness to readers",
-      "To show that the hurt came from the remark's meaning rather than its tone",
       "To suggest that her aunt was secretly proud of her",
-      "To contrast her aunt with less affectionate relatives"
+      "To show that the hurt came from the remark's meaning rather than its tone"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "La tía era cariñosa; aun así, la autora no deja de pensar en el comentario: lo que duele es lo que implica, no el tono."
     },
     {
      "type": "vocab",
      "q": "In paragraph 3, 'caught me out' is closest in meaning to…",
      "options": [
-      "rescued me",
       "exposed me",
       "ignored me",
-      "imitated me"
+      "imitated me",
+      "rescued me"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'To catch someone out' = descubrir a alguien en un error o mentira."
     },
     {
@@ -137,8 +137,8 @@
      "options": [
       "The aunt's remark",
       "The view that identity is a performance",
-      "The decision to return to Chile",
-      "The researcher's recordings"
+      "The researcher's recordings",
+      "The decision to return to Chile"
      ],
      "answer": 1,
      "explain_es": "'That argument' del párrafo anterior: la identidad como algo que hacemos, no que tenemos."
@@ -154,11 +154,11 @@
      "q": "The researcher in Glasgow argues that migration…",
      "options": [
       "destroys a person's original voice",
+      "causes most people to feel disloyal",
       "makes an existing variety of voices easier to hear",
-      "should be studied only through recordings",
-      "causes most people to feel disloyal"
+      "should be studied only through recordings"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"Migration just makes the range more audible.\""
     },
     {
@@ -177,36 +177,36 @@
      "type": "mc",
      "q": "The sentence 'I emailed to say I was wondering if she might be willing to talk' is an example of…",
      "options": [
-      "the past continuous for an interrupted action",
-      "past tenses used for politeness and distance",
       "a third conditional",
-      "reported speech of a future plan"
+      "reported speech of a future plan",
+      "past tenses used for politeness and distance",
+      "the past continuous for an interrupted action"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'I was wondering if…' usa el pasado para suavizar una petición: distancia cortés, no tiempo pasado real."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 8.",
      "options": [
-      "A modern and unusual demand",
+      "Loyalty to one's homeland",
       "The history of trade routes",
       "Why accents never change",
-      "Loyalty to one's homeland"
+      "A modern and unusual demand"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "El párrafo dice que exigir ser 'una sola cosa' es \"a fairly recent and fairly peculiar expectation\"."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 9.",
      "options": [
-      "A family that refuses to change",
       "Belonging as something others confer",
       "Breakfast traditions in Valparaíso",
-      "Why the writer changed back"
+      "Why the writer changed back",
+      "A family that refuses to change"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"Belonging ... is something other people grant or withhold\" y la tía acaba aceptando la nueva versión."
     },
     {
@@ -325,48 +325,48 @@
      "type": "mc",
      "q": "What was the writer's initial objection to the term 'third culture kids'?",
      "options": [
+      "It ignored the role of parents",
       "It was too recent to be reliable",
       "It implied that her experience was a disorder",
-      "It was used only by corporations",
-      "It ignored the role of parents"
+      "It was used only by corporations"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"It sounded less like a description than a diagnosis\"."
     },
     {
      "type": "vocab",
      "q": "'A cottage industry of memoirs' (paragraph 2) suggests that such memoirs are…",
      "options": [
+      "very expensive to produce",
       "written in rural areas",
-      "numerous, small-scale and somewhat fashionable",
       "officially sponsored by universities",
-      "very expensive to produce"
+      "numerous, small-scale and somewhat fashionable"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'Cottage industry' en sentido figurado: muchos productos pequeños, una moda en crecimiento."
     },
     {
      "type": "mc",
      "q": "What is the effect of the grandmother's reply in paragraph 3?",
      "options": [
+      "It criticises the writer's parents for moving so often",
       "It confirms that the writer will never belong anywhere",
       "It suggests that belonging requires ongoing effort even for the rooted",
-      "It criticises the writer's parents for moving so often",
       "It shows that the grandmother regretted never travelling"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"I'm still explaining myself every day\": incluso quien nunca se ha movido tiene que trabajar la pertenencia."
     },
     {
      "type": "mc",
      "q": "'She was not dismissing my unease; she was relocating it.' This means the grandmother…",
      "options": [
-      "ignored the writer's feelings",
-      "placed the problem in a different, shared area of experience",
+      "found the writer's complaint amusing",
       "suggested the writer move house again",
-      "found the writer's complaint amusing"
+      "placed the problem in a different, shared area of experience",
+      "ignored the writer's feelings"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Traslada la inquietud: no es un problema solo de los desarraigados, sino de todos."
     },
     {
@@ -379,10 +379,10 @@
      "type": "mc",
      "q": "In paragraph 5, the writer's attitude towards critics of her view is…",
      "options": [
-      "contemptuous",
+      "openly hostile",
       "partly sympathetic",
-      "indifferent",
-      "openly hostile"
+      "contemptuous",
+      "indifferent"
      ],
      "answer": 1,
      "explain_es": "\"they are not wrong to be wary\": reconoce que tienen parte de razón."
@@ -391,12 +391,12 @@
      "type": "mc",
      "q": "The example of the refugee is used to show that…",
      "options": [
-      "refugees do not wish to belong",
       "belonging can be blocked by forces outside the individual",
+      "the writer's experience was worse than a refugee's",
       "laws are rarely enforced",
-      "the writer's experience was worse than a refugee's"
+      "refugees do not wish to belong"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"she is being prevented from it\"; \"some doors are locked from the inside\"."
     },
     {
@@ -417,8 +417,8 @@
      "options": [
       "To avoid answering the question",
       "To signal humorously that the true answer is long",
-      "Because she is usually in a hurry",
-      "To discourage further questions about her family"
+      "To discourage further questions about her family",
+      "Because she is usually in a hurry"
      ],
      "answer": 1,
      "explain_es": "Ya no se disculpa por la respuesta complicada; la broma anuncia que es larga."
@@ -427,12 +427,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
-      "Places lost, practices kept",
       "A return to Rotterdam",
       "Why schools move district",
-      "Learning songs in three languages"
+      "Learning songs in three languages",
+      "Places lost, practices kept"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "Contrasta los lugares perdidos con los hábitos y amistades que sigue construyendo."
     },
     {
@@ -446,12 +446,12 @@
      "type": "mc",
      "q": "What does the final paragraph imply?",
      "options": [
-      "The daughter has decided to leave the town",
       "The daughter has quietly begun to 'do' belonging",
       "The writer regrets repeating the grandmother's words",
+      "The daughter has decided to leave the town",
       "The classmate is the daughter's only friend"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Pone los ojos en blanco pero invita a una compañera: empieza a 'hacer' pertenencia, como decía la bisabuela."
     }
    ]
@@ -544,12 +544,12 @@
      "type": "mc",
      "q": "What is the main purpose of the first paragraph?",
      "options": [
+      "To describe the history of the town's water supply",
       "To criticise the council's maintenance work",
       "To establish the facts of a case the article will analyse",
-      "To argue that photographs should not be trusted",
-      "To describe the history of the town's water supply"
+      "To argue that photographs should not be trusted"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Presenta el caso (foto real, afirmación falsa, desmentido) que después se analiza."
     },
     {
@@ -574,24 +574,24 @@
      "type": "mc",
      "q": "Why, according to the writer, does 'The water is not contaminated' risk backfiring?",
      "options": [
-      "It sounds too formal to be believed",
       "It repeats the key words of the false claim without replacing it",
       "It was published too late",
+      "It sounds too formal to be believed",
       "It contradicts the photograph"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Repite 'water' y 'contaminated' y no ofrece una explicación alternativa."
     },
     {
      "type": "mc",
      "q": "The sentence 'Rarely does a correction travel as far or as fast as the falsehood it targets' uses inversion to…",
      "options": [
-      "ask a rhetorical question",
       "emphasise how unusual it is for corrections to keep pace",
-      "show that the information is uncertain",
-      "report someone else's opinion"
+      "ask a rhetorical question",
+      "report someone else's opinion",
+      "show that the information is uncertain"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Inversión tras adverbio restrictivo ('Rarely') para enfatizar."
     },
     {
@@ -611,12 +611,12 @@
      "type": "vocab",
      "q": "In paragraph 6, 'inoculation' is used to mean…",
      "options": [
-      "a medical injection",
-      "advance protection against persuasion",
+      "a scientific experiment",
       "a legal warning",
-      "a scientific experiment"
+      "a medical injection",
+      "advance protection against persuasion"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Uso metafórico: proteger a la gente antes de la exposición a técnicas de manipulación."
     },
     {
@@ -625,8 +625,8 @@
      "options": [
       "Enthusiastic and certain",
       "Cautiously positive",
-      "Dismissive",
-      "Hostile"
+      "Hostile",
+      "Dismissive"
      ],
      "answer": 1,
      "explain_es": "\"Well established this approach is not ... But the logic is appealing\": optimismo prudente."
@@ -635,12 +635,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 7.",
      "options": [
+      "The cost of parking in the town",
       "Who says it matters as much as what is said",
       "Why the library was closed",
-      "A nurse's medical advice",
-      "The cost of parking in the town"
+      "A nurse's medical advice"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "El párrafo trata del mensajero: la gente acepta correcciones de quien considera 'de su lado'."
     },
     {
@@ -653,10 +653,10 @@
      "type": "mc",
      "q": "What does 'Little did she expect' imply about the nurse?",
      "options": [
-      "She had planned a publicity campaign",
+      "She doubted the water was safe",
       "She was surprised by how widely her clip was watched",
       "She regretted posting the video",
-      "She doubted the water was safe"
+      "She had planned a publicity campaign"
      ],
      "answer": 1,
      "explain_es": "La inversión negativa con 'Little' enfatiza que no esperaba en absoluto ese alcance."
@@ -665,12 +665,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 8.",
      "options": [
-      "Facts work, but slowly",
       "Humans are irrational",
-      "Why corrections should be shorter",
-      "The end of reliable news"
+      "Facts work, but slowly",
+      "The end of reliable news",
+      "Why corrections should be shorter"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "\"most people do update their beliefs ... they simply do so more slowly\"."
     },
     {
@@ -767,12 +767,12 @@
      "type": "mc",
      "q": "What is the writer's central claim?",
      "options": [
-      "Rhetoric should be banned from politics",
-      "Better and wider rhetorical education is the answer to manipulative persuasion",
       "Grammar and logic are more important than rhetoric",
-      "Most politicians use rhetoric honestly"
+      "Most politicians use rhetoric honestly",
+      "Rhetoric should be banned from politics",
+      "Better and wider rhetorical education is the answer to manipulative persuasion"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "\"the remedy for bad persuasion is not less rhetoric but more of it, better taught and more widely understood\"."
     },
     {
@@ -789,8 +789,8 @@
      "q": "Why does the writer mention a doctor and a teacher in paragraph 2?",
      "options": [
       "To show that rhetoric is used in non-manipulative everyday contexts",
-      "To criticise professionals for using persuasion",
       "To prove that statistics are useless",
+      "To criticise professionals for using persuasion",
       "To contrast science with the humanities"
      ],
      "answer": 0,
@@ -800,9 +800,9 @@
      "type": "mc",
      "q": "According to paragraph 2, what separates honest persuasion from manipulation?",
      "options": [
-      "The amount of technique used",
-      "The purpose behind the technique",
       "Whether statistics are included",
+      "The purpose behind the technique",
+      "The amount of technique used",
       "The speaker's level of education"
      ],
      "answer": 1,
@@ -812,24 +812,24 @@
      "type": "mc",
      "q": "How does the writer respond to the critics in paragraph 3?",
      "options": [
-      "By rejecting their observation entirely",
       "By accepting part of their point but rejecting their conclusion",
       "By agreeing that rhetoric should be avoided",
-      "By changing the subject to ancient Athens"
+      "By changing the subject to ancient Athens",
+      "By rejecting their observation entirely"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"There is something in this ... But the conclusion does not follow.\""
     },
     {
      "type": "vocab",
      "q": "'Conspicuous' in paragraph 3 is closest in meaning to…",
      "options": [
-      "hidden",
       "obvious",
-      "unusual",
-      "harmful"
+      "hidden",
+      "harmful",
+      "unusual"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Conspicuous' = llamativo, que salta a la vista."
     },
     {
@@ -843,9 +843,9 @@
      "q": "What does the writer imply about the philosophers who denounced rhetoric teachers?",
      "options": [
       "Their motives may not have been entirely principled",
-      "They were themselves poor",
       "They were the best speakers in Athens",
-      "They later changed their minds"
+      "They later changed their minds",
+      "They were themselves poor"
      ],
      "answer": 0,
      "explain_es": "\"partly on principle and partly, one suspects, because they disliked seeing the advantages of a privileged education handed out for a fee\"."
@@ -854,10 +854,10 @@
      "type": "mc",
      "q": "In paragraph 5, what does 'it' refer to in 'because it travels with her into every conversation'?",
      "options": [
-      "A fact-checking website",
+      "The curriculum",
       "The ability to recognise rhetorical techniques",
-      "A manipulative speech",
-      "The curriculum"
+      "A fact-checking website",
+      "A manipulative speech"
      ],
      "answer": 1,
      "explain_es": "Se refiere a la defensa: la capacidad de identificar falsos dilemas, términos cargados, etc."
@@ -872,36 +872,36 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
+      "Why strong arguments always win",
       "Persuasion as a democratic necessity",
-      "The decline of reform movements",
       "How to anticipate objections in court",
-      "Why strong arguments always win"
+      "The decline of reform movements"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "La vida democrática exige persuadir a quien no piensa como uno: es una tarea retórica."
     },
     {
      "type": "mc",
      "q": "The sentence 'Precisely because the difference matters, though, we need citizens equipped to notice it' uses fronting to…",
      "options": [
-      "make the reason the focus of the sentence",
       "introduce a new topic",
       "soften a criticism",
+      "make the reason the focus of the sentence",
       "report an opinion"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Se antepone 'Precisely because the difference matters' para poner el énfasis en la razón."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 7.",
      "options": [
-      "Realistic limits to the argument",
-      "A cure for public discourse",
       "Every technique is acceptable",
-      "The power of tribal resentment"
+      "Realistic limits to the argument",
+      "The power of tribal resentment",
+      "A cure for public discourse"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "La autora acota su tesis: no curará el discurso de la noche a la mañana ni todo vale."
     },
     {
@@ -1000,12 +1000,12 @@
      "type": "mc",
      "q": "What is the effect of the final sentence of paragraph 1?",
      "options": [
-      "It reveals that the witness was dishonest",
       "It undermines the persuasiveness just described",
+      "It reveals that the witness was dishonest",
       "It suggests the defendant confessed",
       "It introduces a second witness"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Tras describir el momento más persuasivo del juicio, \"it was almost certainly mistaken\" lo desmonta."
     },
     {
@@ -1018,22 +1018,22 @@
      "type": "mc",
      "q": "'That model, we can now say with some confidence, must be wrong.' The modal 'must' here expresses…",
      "options": [
-      "obligation",
       "a confident deduction",
+      "obligation",
       "a future plan",
       "permission"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Must be' = deducción segura en presente."
     },
     {
      "type": "mc",
      "q": "According to paragraph 3, memory is best described as…",
      "options": [
-      "a recording that loses quality",
+      "a video that cannot be edited",
       "a reconstruction made anew each time",
-      "a fixed store of fragments",
-      "a video that cannot be edited"
+      "a recording that loses quality",
+      "a fixed store of fragments"
      ],
      "answer": 1,
      "explain_es": "\"Memory is not retrieved so much as rebuilt.\""
@@ -1042,12 +1042,12 @@
      "type": "mc",
      "q": "In 'The light will have been poor', 'will have been' is used to…",
      "options": [
+      "express willingness",
       "predict the future",
       "make an assumption about the past",
-      "describe a habit",
-      "express willingness"
+      "describe a habit"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Will have + participio' = suposición segura sobre el pasado."
     },
     {
@@ -1066,12 +1066,12 @@
      "type": "mc",
      "q": "Why does the writer say the witness 'could not have distinguished' between the two faces?",
      "options": [
+      "She had refused to look at the photographs",
       "She had poor eyesight",
       "The reconstructed memory had merged the two sources",
-      "The police had lied to her",
-      "She had refused to look at the photographs"
+      "The police had lied to her"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "La foto de la comisaría rellenó el esbozo; ya no podía separar las fuentes."
     },
     {
@@ -1084,12 +1084,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
+      "How line-ups were invented",
       "Simple procedures to protect accuracy",
-      "Why eyewitnesses should be ignored",
       "The training of police officers",
-      "How line-ups were invented"
+      "Why eyewitnesses should be ignored"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "Enumera salvaguardas sencillas para las identificaciones."
     },
     {
@@ -1102,12 +1102,12 @@
      "type": "mc",
      "q": "What is the purpose of the sibling anecdote in paragraph 7?",
      "options": [
-      "To show that the problem applies to everyone's memories",
-      "To criticise the writer's family",
       "To prove that summer memories are less reliable",
-      "To introduce a second court case"
+      "To introduce a second court case",
+      "To criticise the writer's family",
+      "To show that the problem applies to everyone's memories"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "\"It is tempting to read stories like this as a warning about other people's memories. That would be a mistake.\""
     },
     {
@@ -1121,24 +1121,24 @@
      "type": "mc",
      "q": "The witness says 'I needn't have been so sure'. She means that…",
      "options": [
-      "she was not sure at all",
-      "her certainty was unnecessary, yet she had it",
+      "she should have been more certain",
       "she didn't need to attend the trial",
-      "she should have been more certain"
+      "her certainty was unnecessary, yet she had it",
+      "she was not sure at all"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'Needn't have + participio': algo que ocurrió pero no era necesario."
     },
     {
      "type": "heading",
      "q": "Choose the best heading for paragraph 8.",
      "options": [
-      "Memory as a storyteller",
-      "The witness is punished",
+      "Why juries ignore warnings",
       "A new trial begins",
-      "Why juries ignore warnings"
+      "Memory as a storyteller",
+      "The witness is punished"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "\"Our memories are not liars. They are storytellers.\""
     }
    ]
@@ -1230,12 +1230,12 @@
      "type": "mc",
      "q": "Why did Tomás buy the pastries?",
      "options": [
-      "He was hungry after the journey",
       "As a gesture of goodwill towards whoever he might meet",
+      "To give to his grandmother",
       "Because the bakery on the corner was still open",
-      "To give to his grandmother"
+      "He was hungry after the journey"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"as a kind of offering\": un gesto para quien encontrara."
     },
     {
@@ -1243,21 +1243,21 @@
      "q": "'He must have got the street wrong' expresses…",
      "options": [
       "a certainty he later confirms",
-      "a deduction he soon has to abandon",
+      "a regret about the past",
       "an obligation to return",
-      "a regret about the past"
+      "a deduction he soon has to abandon"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Deducción sobre el pasado ('must have + participio') que descarta enseguida: \"But the street was right.\""
     },
     {
      "type": "mc",
      "q": "What does 'would' express in 'his grandmother would sit in the evenings, shelling peas'?",
      "options": [
-      "A future in the past",
+      "A conditional result",
       "A past habit",
-      "A polite request",
-      "A conditional result"
+      "A future in the past",
+      "A polite request"
      ],
      "answer": 1,
      "explain_es": "'Would' para hábitos repetidos en el pasado."
@@ -1272,24 +1272,24 @@
      "type": "vocab",
      "q": "In paragraph 3, the story had 'become a sort of signature'. This means it was…",
      "options": [
-      "a legal document",
       "something closely associated with him",
-      "a secret he kept",
-      "an autograph"
+      "an autograph",
+      "a legal document",
+      "a secret he kept"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Seña de identidad: algo que lo caracterizaba en las cenas."
     },
     {
      "type": "mc",
      "q": "What is the effect of the one-sentence paragraph 'The bakery, he now noticed, was a mobile phone shop'?",
      "options": [
+      "It suggests the grandmother worked there",
       "It adds humour by describing modern technology",
-      "It deepens the sense that the remembered past has gone",
       "It explains why the door was green",
-      "It suggests the grandmother worked there"
+      "It deepens the sense that the remembered past has gone"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Otro detalle del recuerdo que ya no existe; el párrafo aislado lo subraya."
     },
     {
@@ -1308,9 +1308,9 @@
      "type": "mc",
      "q": "'She'd have it repainted every few years' shows…",
      "options": [
-      "the grandmother repainted the door herself",
-      "the grandmother regularly arranged for someone else to repaint it",
       "the neighbour repainted the door",
+      "the grandmother regularly arranged for someone else to repaint it",
+      "the grandmother repainted the door herself",
       "the door was never repainted"
      ],
      "answer": 1,
@@ -1326,12 +1326,12 @@
      "type": "mc",
      "q": "'She'll have told everyone about you' is the neighbour's way of…",
      "options": [
-      "predicting a future event",
       "making a confident assumption about the grandmother's past behaviour",
-      "warning Tomás about gossip",
-      "asking for information"
+      "asking for information",
+      "predicting a future event",
+      "warning Tomás about gossip"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Will have + participio' para suposición sobre el pasado, aquí en tono consolador."
     },
     {
@@ -1354,22 +1354,22 @@
      "type": "heading",
      "q": "Choose the best heading for the second-to-last paragraph.",
      "options": [
-      "The real purpose of the journey",
       "Checking the facts",
       "A quarrel with the neighbour",
-      "Why the door was repainted"
+      "Why the door was repainted",
+      "The real purpose of the journey"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "\"He had not come to check the door. He had come ... to see whether anything of her was still here.\""
     },
     {
      "type": "mc",
      "q": "The ending suggests that Tomás…",
      "options": [
-      "will stop telling the story",
+      "feels angry with his grandmother",
       "is ready to accept a less perfect version of his memory",
-      "has decided to buy the house",
-      "feels angry with his grandmother"
+      "will stop telling the story",
+      "has decided to buy the house"
      ],
      "answer": 1,
      "explain_es": "Ensaya una nueva versión en la que la puerta es verde y el color importa menos."
@@ -1464,22 +1464,22 @@
      "type": "mc",
      "q": "Why does the writer begin by noting meritocracy's broad approval?",
      "options": [
-      "To show that criticism of it is pointless",
-      "To set up a challenge to a widely held assumption",
+      "To explain why the word was invented",
       "To praise politicians of all parties",
-      "To explain why the word was invented"
+      "To show that criticism of it is pointless",
+      "To set up a challenge to a widely held assumption"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Presenta el consenso para luego examinar las objeciones, que \"deserve closer attention\"."
     },
     {
      "type": "mc",
      "q": "According to paragraph 2, examination results are described as 'proxies' because they…",
      "options": [
-      "measure merit directly",
+      "are used only by universities",
       "stand in for qualities that cannot be observed directly",
-      "are written by private tutors",
-      "are used only by universities"
+      "measure merit directly",
+      "are written by private tutors"
      ],
      "answer": 1,
      "explain_es": "\"Talent and effort are not directly observable; what institutions observe instead are proxies\"."
@@ -1488,36 +1488,36 @@
      "type": "vocab",
      "q": "In paragraph 2, 'spared the need to earn money' means she…",
      "options": [
-      "was forced to work",
       "did not have to work",
       "chose to save money",
-      "earned more than others"
+      "earned more than others",
+      "was forced to work"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'To spare someone something' = librarle de ello."
     },
     {
      "type": "mc",
      "q": "Which phrase in paragraph 3 is an example of nominalisation?",
      "options": [
-      "are all reforms",
       "the removal of unpaid internships",
       "can make a meaningful difference",
+      "are all reforms",
       "carefully implemented"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'the removal of' convierte el verbo 'remove' en sustantivo."
     },
     {
      "type": "mc",
      "q": "The participle clause 'A child growing up in a household filled with books' could be rewritten as…",
      "options": [
-      "A child who grows up in a household which is filled with books",
-      "A child who has grown a household of books",
+      "A child grown in books",
       "A child while filling a household with books",
-      "A child grown in books"
+      "A child who has grown a household of books",
+      "A child who grows up in a household which is filled with books"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "'growing up' = who grows up; 'filled with' = which is filled with (relativas reducidas)."
     },
     {
@@ -1530,12 +1530,12 @@
      "type": "mc",
      "q": "What makes the second objection 'subtler' than the first?",
      "options": [
-      "It concerns the moral and psychological effects of believing in merit",
-      "It relies on more complex statistics",
+      "It concerns only wealthy people",
       "It is supported by fewer researchers",
-      "It concerns only wealthy people"
+      "It relies on more complex statistics",
+      "It concerns the moral and psychological effects of believing in merit"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "No trata de la exactitud del sistema, sino de cómo afecta moral y psicológicamente a ganadores y perdedores."
     },
     {
@@ -1566,24 +1566,24 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
-      "The underestimated role of chance",
       "How to choose a mentor",
       "Sport and the school calendar",
+      "The underestimated role of chance",
       "Why recessions happen"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Ejemplos del papel de la suerte, que los triunfadores subestiman."
     },
     {
      "type": "mc",
      "q": "In 'The executive who stops to consider how much of her success depended on circumstances', 'stops to consider' means she…",
      "options": [
-      "gives up considering",
-      "pauses in order to consider",
       "refuses to consider",
-      "used to consider"
+      "gives up considering",
+      "used to consider",
+      "pauses in order to consider"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'Stop + to-infinitivo' = detenerse para hacer algo; 'stop + -ing' = dejar de hacerlo."
     },
     {
@@ -1597,12 +1597,12 @@
      "type": "mc",
      "q": "What is the writer's overall conclusion about meritocracy?",
      "options": [
-      "It is a dangerous illusion that should be rejected",
-      "It is a valuable ideal but a misleading description of reality",
       "It accurately describes most modern societies",
-      "It matters only in education"
+      "It matters only in education",
+      "It is a dangerous illusion that should be rejected",
+      "It is a valuable ideal but a misleading description of reality"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "\"best understood as an aspiration rather than a description\"."
     }
    ]
@@ -1693,24 +1693,24 @@
      "type": "mc",
      "q": "What was unusual about the lecturer's second document?",
      "options": [
+      "It was shorter than his normal CV",
       "It exaggerated his achievements",
       "It recorded his unsuccessful applications",
-      "It was written anonymously",
-      "It was shorter than his normal CV"
+      "It was written anonymously"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "Listaba todo lo que solicitó y no consiguió."
     },
     {
      "type": "mc",
      "q": "Why did the columnist feel 'unease' on reading it?",
      "options": [
-      "The columnist suspected it might be disguised self-promotion",
       "The columnist disliked the lecturer personally",
-      "The columnist thought it contained false information",
-      "The columnist had applied for the same jobs"
+      "The columnist suspected it might be disguised self-promotion",
+      "The columnist had applied for the same jobs",
+      "The columnist thought it contained false information"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "\"I could not quite decide whether the exercise was an act of honesty or a more sophisticated form of self-promotion.\""
     },
     {
@@ -1719,8 +1719,8 @@
      "options": [
       "only graduates should publish failure CVs",
       "the risk of honesty depends on one's career security",
-      "professors are more honest than graduates",
-      "employers never read CVs carefully"
+      "employers never read CVs carefully",
+      "professors are more honest than graduates"
      ],
      "answer": 1,
      "explain_es": "La franqueza que uno puede permitirse es un riesgo para otro."
@@ -1729,24 +1729,24 @@
      "type": "vocab",
      "q": "In paragraph 3, 'candour' is closest in meaning to…",
      "options": [
-      "frankness",
-      "modesty",
       "ambition",
-      "humour"
+      "humour",
+      "modesty",
+      "frankness"
      ],
-     "answer": 0,
+     "answer": 3,
      "explain_es": "'Candour' = franqueza, sinceridad."
     },
     {
      "type": "mc",
      "q": "Why does the writer describe the success rates for funding applications?",
      "options": [
+      "To encourage readers to apply less often",
       "To show that most researchers are not good enough",
-      "To show that rejection is built into the system",
       "To criticise funding bodies for corruption",
-      "To encourage readers to apply less often"
+      "To show that rejection is built into the system"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "\"Rejection ... is not a sign of failure but a structural feature of the process.\""
     },
     {
@@ -1760,9 +1760,9 @@
      "q": "What makes the comparison in paragraph 5 'rigged against us'?",
      "options": [
       "We see others' successes without their failures but live our own failures fully",
-      "Our colleagues lie about their achievements",
+      "Shop windows display only famous novels",
       "Employers prefer people with more failures",
-      "Shop windows display only famous novels"
+      "Our colleagues lie about their achievements"
      ],
      "answer": 0,
      "explain_es": "Los logros ajenos llegan 'detached' de los intentos previos; nuestros fracasos se viven completos."
@@ -1773,8 +1773,8 @@
      "options": [
       "attempted unsuccessfully to start one",
       "kept one as an experiment to see what would happen",
-      "regretted keeping one",
-      "stopped keeping one immediately"
+      "stopped keeping one immediately",
+      "regretted keeping one"
      ],
      "answer": 1,
      "explain_es": "'Try + -ing' = probar algo como experimento; 'try + to' = intentar (con esfuerzo)."
@@ -1789,9 +1789,9 @@
      "type": "mc",
      "q": "'I regret to say that I have encountered this attitude…' Here 'regret to say' is used to…",
      "options": [
-      "express sorrow about a past action",
-      "politely introduce an unwelcome observation",
       "apologise for forgetting",
+      "politely introduce an unwelcome observation",
+      "express sorrow about a past action",
       "describe a future plan"
      ],
      "answer": 1,
@@ -1801,12 +1801,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 7.",
      "options": [
-      "Normal, not noble",
       "Why failure is always good",
+      "Normal, not noble",
       "The tyranny of employers",
       "How to avoid setbacks"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "Distingue entre fingir que el fracaso es bueno y admitir que es normal."
     },
     {
@@ -1826,12 +1826,12 @@
      "type": "mc",
      "q": "What is the writer's final attitude to the failure CV?",
      "options": [
-      "It is valued as a more honest record",
       "It is too depressing to read",
+      "It is valued as a more honest record",
       "It will soon be published online",
       "It is less useful than the conventional CV"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "\"It is a less flattering document ... It is also a more truthful one\"."
     }
    ]
@@ -1936,36 +1936,36 @@
      "type": "mc",
      "q": "'is reported to have examined more chest X-rays…' is an example of…",
      "options": [
-      "a causative",
-      "a reporting passive with a perfect infinitive",
       "a mixed conditional",
-      "a cleft sentence"
+      "a cleft sentence",
+      "a causative",
+      "a reporting passive with a perfect infinitive"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "'is reported to have examined': pasiva de reporte + infinitivo perfecto (acción anterior)."
     },
     {
      "type": "mc",
      "q": "What, according to paragraph 2, is a major potential benefit in regions with few specialists?",
      "options": [
-      "Cheaper scanners",
       "Much faster assessment of scans",
+      "Fewer patients needing scans",
       "More specialists trained",
-      "Fewer patients needing scans"
+      "Cheaper scanners"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"allow patients to have their scans assessed within hours rather than weeks\"."
     },
     {
      "type": "mc",
      "q": "Why are retrospective studies described as 'a poor guide'?",
      "options": [
-      "They use too few images",
       "They do not reflect the varied conditions of real hospitals",
       "They are carried out by companies",
+      "They use too few images",
       "They are never published"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Las condiciones 'messy' de un hospital real difieren del laboratorio."
     },
     {
@@ -1973,23 +1973,23 @@
      "q": "What did the lung-condition system turn out to be partly detecting?",
      "options": [
       "The disease itself",
-      "The type of scanner, which correlated with severity",
       "The age of the patients",
+      "The type of scanner, which correlated with severity",
       "Errors made by radiologists"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"relying in part on the type of scanner used\"."
     },
     {
      "type": "vocab",
      "q": "In paragraph 4, 'not ... so much as' is used to…",
      "options": [
-      "compare two equal things",
       "correct one description with a more accurate one",
-      "express a condition",
-      "add an example"
+      "compare two equal things",
+      "add an example",
+      "express a condition"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "'Not A so much as B' = no tanto A como B: corrige la descripción."
     },
     {
@@ -2011,12 +2011,12 @@
      "type": "mc",
      "q": "What is the radiologist's main point in paragraph 6?",
      "options": [
-      "The software makes too many mistakes",
       "Decisions after detection require human judgement and accountability",
       "She would prefer the software to be removed",
-      "Families trust machines more than doctors"
+      "Families trust machines more than doctors",
+      "The software makes too many mistakes"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"it is not responsible for what happens next\"."
     },
     {
@@ -2029,12 +2029,12 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 8.",
      "options": [
-      "Should patients be told?",
       "The cost of blood analysers",
       "Why ethicists agree",
+      "Should patients be told?",
       "How to calculate a dose"
      ],
-     "answer": 0,
+     "answer": 2,
      "explain_es": "Debate sobre informar a los pacientes cuando interviene un algoritmo."
     },
     {
@@ -2059,12 +2059,12 @@
      "type": "mc",
      "q": "What is the purpose of the radiologist's precaution described at the end?",
      "options": [
-      "To speed up her work",
-      "To keep her own judgement sharp and independent",
       "To hide the software from patients",
-      "To test the software for errors"
+      "To speed up her work",
+      "To test the software for errors",
+      "To keep her own judgement sharp and independent"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "Ve las sugerencias solo después de formarse su opinión: \"keeping my eye in\"."
     }
    ]
@@ -2155,12 +2155,12 @@
      "type": "mc",
      "q": "How does the writer characterise the popular view of genetic tests in paragraph 1?",
      "options": [
-      "As dangerous and irresponsible",
       "As a harmless form of entertainment",
+      "As dangerous and irresponsible",
       "As a serious medical procedure",
       "As a scientific breakthrough"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"widely regarded as a harmless diversion, somewhere between a horoscope and a family tree\"."
     },
     {
@@ -2174,12 +2174,12 @@
      "type": "mc",
      "q": "What is the 'fact about genetics that is easily overlooked'?",
      "options": [
-      "DNA changes over time",
       "Genetic information is shared with relatives",
-      "Tests are often inaccurate",
-      "Ancestry results are guesses"
+      "Ancestry results are guesses",
+      "DNA changes over time",
+      "Tests are often inaccurate"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"Your DNA is not only yours.\""
     },
     {
@@ -2187,11 +2187,11 @@
      "q": "In paragraph 2, 'by their nature' means…",
      "options": [
       "naturally occurring",
-      "inherently",
       "in the countryside",
+      "inherently",
       "occasionally"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "'By their nature' = por su propia naturaleza, intrínsecamente."
     },
     {
@@ -2199,9 +2199,9 @@
      "q": "'This might seem an abstract concern, were it not for the uses…' The structure means…",
      "options": [
       "If it were not for these uses, the concern might seem abstract",
-      "The concern was abstract until recently",
+      "Nobody knows how the data is used",
       "The uses are abstract",
-      "Nobody knows how the data is used"
+      "The concern was abstract until recently"
      ],
      "answer": 0,
      "explain_es": "Condicional invertida 'were it not for' = si no fuera por."
@@ -2210,12 +2210,12 @@
      "type": "mc",
      "q": "What point does the crime-investigation example illustrate?",
      "options": [
-      "Genealogy websites are run by the police",
       "Data can be used in ways contributors did not anticipate",
+      "Investigators should not solve old crimes",
       "Most criminals have taken genetic tests",
-      "Investigators should not solve old crimes"
+      "Genealogy websites are run by the police"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "Los familiares no esperaban que sus datos se usaran así."
     },
     {
@@ -2229,23 +2229,23 @@
      "q": "How does the writer treat the industry's defence in paragraph 4?",
      "options": [
       "Dismisses it entirely",
-      "Accepts its points but questions the quality of consent",
+      "Ignores it",
       "Accepts it without reservation",
-      "Ignores it"
+      "Accepts its points but questions the quality of consent"
      ],
-     "answer": 1,
+     "answer": 3,
      "explain_es": "\"Both points have merit. Yet consent ... is, it could be argued, a rather thin form of agreement\"."
     },
     {
      "type": "mc",
      "q": "Why does the writer contrast a password with a genome?",
      "options": [
+      "To explain how breaches happen",
       "To show genomes are harder to steal",
       "To stress that genetic data cannot be changed once exposed",
-      "To recommend stronger passwords",
-      "To explain how breaches happen"
+      "To recommend stronger passwords"
      ],
-     "answer": 1,
+     "answer": 2,
      "explain_es": "\"A password that has been stolen can be changed; a genome cannot.\""
     },
     {
@@ -2258,24 +2258,24 @@
      "type": "heading",
      "q": "Choose the best heading for paragraph 6.",
      "options": [
-      "A sense of proportion",
       "Insurance companies ban tests",
-      "The dangers of half-siblings",
-      "Why tests are inaccurate"
+      "A sense of proportion",
+      "Why tests are inaccurate",
+      "The dangers of half-siblings"
      ],
-     "answer": 0,
+     "answer": 1,
      "explain_es": "Ni riesgos puramente hipotéticos ni exagerados: equilibra la valoración."
     },
     {
      "type": "mc",
      "q": "What 'cultural' change does the writer propose?",
      "options": [
-      "Banning tests for under-18s",
       "Discussing a test with close relatives beforehand",
+      "Publishing all results openly",
       "Giving relatives a legal veto",
-      "Publishing all results openly"
+      "Banning tests for under-18s"
      ],
-     "answer": 1,
+     "answer": 0,
      "explain_es": "\"something to be discussed, at least with close relatives, beforehand\"; explícitamente \"not ... a veto\"."
     },
     {
@@ -2289,12 +2289,2310 @@
      "q": "What is the writer's main purpose in the essay as a whole?",
      "options": [
       "To persuade readers never to take genetic tests",
-      "To encourage readers to consider the collective dimension of their choice",
       "To advertise genetic counselling",
-      "To explain how DNA is analysed"
+      "To explain how DNA is analysed",
+      "To encourage readers to consider the collective dimension of their choice"
+     ],
+     "answer": 3,
+     "explain_es": "\"I am not arguing that nobody should take these tests\"; lo que propone reconsiderar es la 'omission' de pensar en los demás."
+    }
+   ]
+  }
+ ],
+ "6": [
+  {
+   "id": "u-c2-6-1",
+   "title": "The Farm That Let Go",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Rewilding",
+   "emoji": "🦫",
+   "words": 805,
+   "paragraphs": [
+    "Had you driven past Hollins Farm fifteen years ago, you would have seen what looked like a model of agricultural order: hedges trimmed square, fields of winter wheat running to the horizon, not a thistle out of place. Drive past today and you might assume the owners had died, or emigrated, or simply given up. The hedges have swollen into thickets. Scrub and young oak have crept across the old wheat fields. In the valley bottom, where a straightened stream once ran in a neat ditch, there is now a sprawling, untidy wetland, full of fallen branches and the sound of frogs.",
+    "The owners have done none of those things. Ruth and Callum Mercer still live in the farmhouse, and they are, if anything, busier than they were when they farmed conventionally. What they gave up was not the land but the attempt to control it. 'If we hadn't been losing money every year, we probably wouldn't be here now,' Ruth told me, standing at the edge of what used to be their best field. 'People assume we did it for idealistic reasons. The truth is, we were desperate.'",
+    "The farm had been running at a loss for most of a decade. The soil, ploughed and fertilised for generations, had grown thin and compacted; yields were falling, and the costs of fuel and chemicals were rising. Were it not for the subsidies they received, the Mercers would have gone bankrupt years earlier. When a conservation charity approached them with a proposal to let the land 'rewild' under supervision, they agreed, as Callum puts it, 'mostly because we couldn't think of anything worse that could happen'.",
+    "What happened instead surprised everyone, including the charity. Within three years, the number of bird species recorded on the farm had nearly doubled. Rare butterflies that had not been seen in the county for decades reappeared along the edges of the scrub. Small herds of hardy cattle and pigs, introduced to mimic the grazing and rooting of long-vanished wild animals, began to create a patchwork of open glades and dense cover that turned out to suit a far wider range of creatures than the uniform fields had done.",
+    "The most dramatic change came with the beavers. A licensed pair was released into the stream six years ago, and they set about rearranging the valley with an energy that no engineer could have matched. Their dams slowed the water and spread it sideways into the surrounding land, creating the wetland that now dominates the valley floor. The effects have been felt well beyond the farm's boundaries. During a severe storm two winters ago, the village downstream, which had flooded three times in the previous decade, stayed dry. Hydrologists who studied the event concluded that, but for the beaver dams holding back the water, the peak flow through the village would have been significantly higher.",
+    "Not everyone has been won over. Neighbouring farmers complain that the scrub harbours foxes and weeds that spread onto their own land. Some local people, attached to the tidy landscape they grew up with, regard the farm as an eyesore and the project as a waste of good agricultural land at a time when food security is a growing concern. 'Supposing every farmer did what they've done,' one neighbour said, 'where would our food come from?'",
+    "It is a fair question, and the Mercers do not dismiss it. They point out that their land was among the least productive in the area and that rewilding makes most sense on precisely such marginal ground, where the costs of farming outweigh the returns. They also note that the farm still produces food, in the form of meat from the free-roaming cattle and pigs, albeit in much smaller quantities than before. Their income now comes from a mixture of meat sales, nature tourism, conservation grants and payments for the carbon stored in the regenerating soil and woodland.",
+    "Whether that model could be widely replicated is uncertain. Much depends on government policy, which in many countries is shifting towards rewarding farmers for environmental benefits as well as food production. Should those payments be reduced in future, projects like this could become far harder to sustain. Provided they continue, however, ecologists believe that rewilding marginal land could make a substantial contribution to reversing the decline in wildlife, without significantly affecting national food supplies.",
+    "Walking back to the farmhouse at dusk, Ruth stopped to point out a barn owl quartering the rough grass where the wheat used to grow. She had not seen one on the farm in twenty years. 'If you'd told me then that I'd end up being proud of all this mess,' she said, 'I'd have laughed at you.' She is not laughing now. Or rather, she is, but for an entirely different reason."
+   ],
+   "glossary": [
+    [
+     "thicket",
+     "matorral, espesura"
+    ],
+    [
+     "scrub",
+     "monte bajo, maleza"
+    ],
+    [
+     "to creep across",
+     "extenderse poco a poco por"
+    ],
+    [
+     "sprawling",
+     "extenso, desparramado"
+    ],
+    [
+     "compacted",
+     "compactado"
+    ],
+    [
+     "subsidy",
+     "subvención"
+    ],
+    [
+     "hardy",
+     "resistente"
+    ],
+    [
+     "to root (of pigs)",
+     "hozar"
+    ],
+    [
+     "glade",
+     "claro (del bosque)"
+    ],
+    [
+     "to set about",
+     "ponerse manos a la obra"
+    ],
+    [
+     "peak flow",
+     "caudal máximo"
+    ],
+    [
+     "to harbour",
+     "albergar, dar cobijo"
+    ],
+    [
+     "eyesore",
+     "adefesio, monstruosidad visual"
+    ],
+    [
+     "marginal land",
+     "tierra poco productiva"
+    ],
+    [
+     "to quarter (of an owl)",
+     "batir (un terreno) en busca de presa"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the purpose of the first paragraph?",
+     "options": [
+      "To describe the history of the village",
+      "To contrast the farm's past order with its present wildness",
+      "To explain how hedges are trimmed",
+      "To criticise the owners for neglecting the farm"
      ],
      "answer": 1,
-     "explain_es": "\"I am not arguing that nobody should take these tests\"; lo que propone reconsiderar es la 'omission' de pensar en los demás."
+     "explain_es": "Contrasta el orden agrícola de hace quince años con la vegetación actual."
+    },
+    {
+     "type": "mc",
+     "q": "'Had you driven past Hollins Farm fifteen years ago, you would have seen…' is an example of…",
+     "options": [
+      "an implied conditional with 'otherwise'",
+      "a reported question",
+      "an inverted third conditional",
+      "a mixed conditional"
+     ],
+     "answer": 2,
+     "explain_es": "'Had you driven' = If you had driven: condicional invertida."
+    },
+    {
+     "type": "mc",
+     "q": "Ruth says: 'If we hadn't been losing money every year, we probably wouldn't be here now.' This sentence…",
+     "options": [
+      "describes a future possibility",
+      "refers only to the past",
+      "describes a past condition with a present result",
+      "expresses a polite request"
+     ],
+     "answer": 2,
+     "explain_es": "Condicional mixta: condición pasada (hadn't been losing) y resultado presente (wouldn't be here now)."
+    },
+    {
+     "type": "tf",
+     "q": "The Mercers decided to rewild mainly for idealistic reasons.",
+     "answer": "F",
+     "explain_es": "\"People assume we did it for idealistic reasons. The truth is, we were desperate.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: ____ it not for the subsidies they received, the Mercers would have gone bankrupt years earlier. (1 word)",
+     "answer": "Were",
+     "accept": [
+      "were"
+     ],
+     "explain_es": "'Were it not for' = si no hubiera sido por / de no ser por."
+    },
+    {
+     "type": "mc",
+     "q": "Why were cattle and pigs introduced?",
+     "options": [
+      "To provide the main source of income",
+      "To clear the stream",
+      "To imitate the effects of wild animals that had disappeared",
+      "To keep foxes away"
+     ],
+     "answer": 2,
+     "explain_es": "\"introduced to mimic the grazing and rooting of long-vanished wild animals\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'a patchwork of open glades and dense cover' describes…",
+     "options": [
+      "fenced fields",
+      "a type of quilt",
+      "an evenly planted forest",
+      "a mixed landscape of open and thick areas"
+     ],
+     "answer": 3,
+     "explain_es": "'Patchwork' = mosaico; mezcla de claros y vegetación densa."
+    },
+    {
+     "type": "mc",
+     "q": "What did hydrologists conclude about the storm?",
+     "options": [
+      "The village flooded despite the dams",
+      "The dams caused flooding upstream",
+      "The storm was weaker than predicted",
+      "The beaver dams reduced the peak flow through the village"
+     ],
+     "answer": 3,
+     "explain_es": "\"but for the beaver dams ... the peak flow ... would have been significantly higher\"."
+    },
+    {
+     "type": "tf",
+     "q": "The village downstream had never flooded before the beavers arrived.",
+     "answer": "F",
+     "explain_es": "Se había inundado tres veces en la década anterior."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Food prices rise",
+      "Local objections",
+      "A new tourist attraction",
+      "The return of foxes"
+     ],
+     "answer": 1,
+     "explain_es": "Recoge las quejas de vecinos y agricultores."
+    },
+    {
+     "type": "mc",
+     "q": "How do the Mercers respond to the question about food supply?",
+     "options": [
+      "They argue rewilding suits unproductive land and still produces some food",
+      "They say food can be imported",
+      "They admit they should return to farming wheat",
+      "They dismiss it as irrelevant"
+     ],
+     "answer": 0,
+     "explain_es": "Su tierra era de las menos productivas; siguen produciendo carne, aunque menos."
+    },
+    {
+     "type": "tf",
+     "q": "The Mercers earn more money now than they did when farming conventionally.",
+     "answer": "NG",
+     "explain_es": "Se enumeran sus fuentes de ingresos, pero no se compara la cantidad."
+    },
+    {
+     "type": "mc",
+     "q": "'Provided they continue, however, ecologists believe…' Here 'provided' means…",
+     "options": [
+      "because",
+      "although",
+      "unless",
+      "on condition that"
+     ],
+     "answer": 3,
+     "explain_es": "'Provided (that)' = siempre que, con tal de que."
+    },
+    {
+     "type": "mc",
+     "q": "What does the final sentence suggest about Ruth?",
+     "options": [
+      "She has stopped working on the farm",
+      "She now laughs out of pleasure rather than disbelief",
+      "She finds the neighbours' complaints funny",
+      "She regrets the project"
+     ],
+     "answer": 1,
+     "explain_es": "Antes se habría reído por incredulidad; ahora ríe por satisfacción."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-6-2",
+   "title": "Not Just Any Tree, Not Just Anywhere",
+   "level": "C2",
+   "genre": "op-ed",
+   "topic": "Climate & Forests",
+   "emoji": "🌳",
+   "words": 782,
+   "paragraphs": [
+    "There are few environmental causes as easy to love as tree planting. It is visible, hopeful and pleasingly simple: put a sapling in the ground, wait, and watch it pull carbon out of the sky. Governments announce targets measured in billions of trees; companies promise to plant one for every product sold; schoolchildren are photographed in muddy boots, spades in hand. Were I a politician in search of a popular policy, I would find it hard to think of a better one. And that, I am afraid, is part of the problem.",
+    "Let me be clear from the outset. Forests are indispensable. They store vast quantities of carbon, regulate rainfall, stabilise soils and shelter a large share of the world's land-based species. Had we not cleared so many of them over the past two centuries, we would be facing a considerably less severe climate crisis today. Protecting and restoring forests is, beyond any reasonable doubt, one of the most important things humanity can do. My objection is not to trees. It is to the assumption that planting them is straightforwardly good, wherever and however it is done.",
+    "Consider, first, the question of where. Not every treeless landscape is a forest waiting to happen. Grasslands, peat bogs and savannahs are ecosystems in their own right, many of them rich in wildlife and, in the case of peat, far more effective at storing carbon than the conifers sometimes planted on top of them. Planting trees on a healthy peat bog, which requires draining it first, can release more carbon than the trees will absorb for decades. Supposing a scheme of that kind were judged by the number of saplings alone, it would look like a triumph. Judged by its effect on the atmosphere, it would be a failure.",
+    "Then there is the question of what. A great deal of the planting carried out under ambitious national targets consists of fast-growing monocultures, often of a single non-native species, laid out in rows. Such plantations can be valuable sources of timber, but they support far less wildlife than mixed native woodland, are more vulnerable to disease and fire, and, if harvested on short cycles, may return much of their carbon to the atmosphere within a generation. To count them as equivalent to a restored natural forest is, at best, optimistic accounting.",
+    "Finally, there is the question of survival. A sapling is not a tree. Studies of large-scale planting campaigns have found that, in some cases, a majority of the young trees died within a few years, through drought, grazing or simple neglect once the cameras had gone. A target met on the day of planting tells us very little about what will be standing in twenty years. Should funding be tied only to the number planted rather than the number that survive, this outcome is all but guaranteed.",
+    "None of this would matter greatly if tree planting were merely one tool among many. The danger is that it has become something else: a substitute for harder decisions. A company that promises to plant a million trees may be less inclined to reduce the emissions that made the trees necessary in the first place. A government that celebrates its planting figures may be quietly approving the clearance of ancient woodland for a new road. Given the choice between protecting an old forest and planting a new one, the old forest is almost always the better bet, since it may take centuries for a plantation to match its carbon stores and biodiversity.",
+    "What, then, would a better approach look like? It would start by protecting what already exists. It would favour natural regeneration, letting land recover on its own with the seeds already present in the soil, wherever that is feasible; this is often cheaper and produces more resilient woodland than planting. Where planting is necessary, it would use a mix of native species suited to local conditions, chosen in consultation with the communities who will live alongside them. And it would measure success not in saplings but in hectares of healthy, growing forest a decade or more later.",
+    "Unless we make that shift, I fear we will look back on the great planting campaigns of this decade as a missed opportunity, one in which enormous goodwill and considerable money were spent on gestures that photographed well but delivered less than they promised. Otherwise, there is no reason why they should not succeed. The enthusiasm is real, and so is the need.",
+    "So by all means plant a tree. But ask, first, whether it is the right tree, in the right place, and whether anyone will be there to look after it once the photographers have gone home."
+   ],
+   "glossary": [
+    [
+     "sapling",
+     "árbol joven, plantón"
+    ],
+    [
+     "from the outset",
+     "desde el principio"
+    ],
+    [
+     "indispensable",
+     "imprescindible"
+    ],
+    [
+     "peat bog",
+     "turbera"
+    ],
+    [
+     "savannah",
+     "sabana"
+    ],
+    [
+     "conifer",
+     "conífera"
+    ],
+    [
+     "to drain",
+     "drenar, desecar"
+    ],
+    [
+     "monoculture",
+     "monocultivo"
+    ],
+    [
+     "non-native",
+     "no autóctono, exótico"
+    ],
+    [
+     "timber",
+     "madera (de construcción)"
+    ],
+    [
+     "to harvest",
+     "talar, cosechar"
+    ],
+    [
+     "optimistic accounting",
+     "contabilidad optimista"
+    ],
+    [
+     "all but guaranteed",
+     "prácticamente garantizado"
+    ],
+    [
+     "natural regeneration",
+     "regeneración natural"
+    ],
+    [
+     "resilient",
+     "resistente, resiliente"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does the writer say the popularity of tree planting is 'part of the problem'?",
+     "options": [
+      "Popular policies are always wrong",
+      "Politicians dislike trees",
+      "Its appeal may discourage critical scrutiny",
+      "Schoolchildren should not be involved"
+     ],
+     "answer": 2,
+     "explain_es": "Su atractivo hace que se acepte sin examen crítico, como explica el artículo."
+    },
+    {
+     "type": "mc",
+     "q": "'Were I a politician in search of a popular policy' means…",
+     "options": [
+      "If I were a politician",
+      "When I was a politician",
+      "Although I was a politician",
+      "Because I am a politician"
+     ],
+     "answer": 0,
+     "explain_es": "Condicional invertida: 'Were I' = If I were."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Had we not cleared so many forests, we ____ be facing a less severe climate crisis today. (1 word)",
+     "answer": "would",
+     "accept": [],
+     "explain_es": "Condicional mixta invertida: pasado (Had we not cleared) + presente (would be facing today)."
+    },
+    {
+     "type": "tf",
+     "q": "The writer is opposed to protecting forests.",
+     "answer": "F",
+     "explain_es": "\"Forests are indispensable ... My objection is not to trees.\""
+    },
+    {
+     "type": "mc",
+     "q": "Why can planting trees on a peat bog be counterproductive?",
+     "options": [
+      "Trees do not grow in peat",
+      "Bogs contain no wildlife",
+      "Draining the bog releases carbon",
+      "Peat is too expensive to buy"
+     ],
+     "answer": 2,
+     "explain_es": "\"which requires draining it first, can release more carbon than the trees will absorb for decades\"."
+    },
+    {
+     "type": "mc",
+     "q": "What does the writer criticise about monoculture plantations?",
+     "options": [
+      "They are counted as equal to natural forests despite offering less",
+      "They use too many native species",
+      "They are always illegal",
+      "They grow too slowly"
+     ],
+     "answer": 0,
+     "explain_es": "\"To count them as equivalent to a restored natural forest is, at best, optimistic accounting.\""
+    },
+    {
+     "type": "vocab",
+     "q": "'Optimistic accounting' in paragraph 4 suggests that the figures are…",
+     "options": [
+      "presented in an overly favourable way",
+      "deliberately falsified",
+      "carefully audited",
+      "too low"
+     ],
+     "answer": 0,
+     "explain_es": "Contabilidad 'optimista': cifras presentadas de forma demasiado favorable."
+    },
+    {
+     "type": "mc",
+     "q": "'Should funding be tied only to the number planted…' could be rewritten as…",
+     "options": [
+      "Because funding was tied",
+      "Unless funding is tied",
+      "If funding is tied only to the number planted",
+      "Funding ought to be tied only to the number planted"
+     ],
+     "answer": 2,
+     "explain_es": "'Should + sujeto' = If + sujeto (condicional invertida de primer tipo, formal)."
+    },
+    {
+     "type": "tf",
+     "q": "Studies show that most young trees in all planting campaigns survive.",
+     "answer": "F",
+     "explain_es": "En algunos casos \"a majority of the young trees died within a few years\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "The benefits of new roads",
+      "Planting as a substitute for harder choices",
+      "Why companies plant trees",
+      "Ancient woodland is overrated"
+     ],
+     "answer": 1,
+     "explain_es": "El peligro: plantar se convierte en sustituto de decisiones más difíciles."
+    },
+    {
+     "type": "mc",
+     "q": "According to the writer, natural regeneration is often…",
+     "options": [
+      "impossible in most places",
+      "cheaper and produces more resilient woodland",
+      "less effective than monocultures",
+      "more expensive than planting"
+     ],
+     "answer": 1,
+     "explain_es": "\"this is often cheaper and produces more resilient woodland than planting\"."
+    },
+    {
+     "type": "tf",
+     "q": "The writer has personally led a tree-planting campaign.",
+     "answer": "NG",
+     "explain_es": "El texto no dice nada sobre su experiencia personal en campañas."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 8, 'Otherwise' refers to the situation in which…",
+     "options": [
+      "we make the shift the writer recommends",
+      "photographers stay longer",
+      "we fail to make the shift",
+      "funding is reduced"
+     ],
+     "answer": 0,
+     "explain_es": "'Otherwise' = si hacemos ese cambio (en caso contrario a 'unless we make that shift'), las campañas pueden tener éxito."
+    },
+    {
+     "type": "mc",
+     "q": "What is the overall tone of the final paragraph?",
+     "options": [
+      "Bitterly sarcastic",
+      "Supportive but cautionary",
+      "Despairing",
+      "Indifferent"
+     ],
+     "answer": 1,
+     "explain_es": "\"by all means plant a tree. But ask, first…\": apoyo con advertencia."
+    }
+   ]
+  }
+ ],
+ "7": [
+  {
+   "id": "u-c2-7-1",
+   "title": "Who Needs Critics?",
+   "level": "C2",
+   "genre": "essay",
+   "topic": "Criticism & Taste",
+   "emoji": "🎭",
+   "words": 803,
+   "paragraphs": [
+    "Every few years, someone declares the death of the critic, and every few years the critic declines to die. The latest obituary was prompted by the rise of recommendation algorithms and star ratings, which, we are told, have made the professional reviewer redundant. Why read a twelve-hundred-word essay on a new novel when a few thousand readers have already given it an average of four point two out of five? Why trust one person's taste when you can consult everyone's? The argument is superficially persuasive. I think it is profoundly mistaken, and I want to explain why.",
+    "Start with what a rating actually tells you. A score of four point two is a summary of approval, and approval is a perfectly useful thing to know. But it tells you almost nothing about why people approved, or whether the reasons that pleased them would please you. A thriller that is utterly gripping and a quietly devastating literary novel may receive identical scores from entirely different audiences. The number flattens them into equivalence. A good critic does the opposite: she distinguishes, she explains, she tells you what kind of experience a work offers and what it asks of you in return.",
+    "The algorithm, for its part, does something subtler and, in a sense, more limiting. It recommends what people like you have liked before. That is very helpful if you want more of the same, and rather less so if you do not. It is designed, quite deliberately, to minimise disappointment, and in doing so it also minimises surprise. Yet some of the most important encounters any of us have with art are with works we would never have chosen: the film we saw because a friend insisted, the strange, slow, difficult book that bored us for fifty pages and then rearranged the way we see the world. A critic who is any good is, among other things, a professional insister.",
+    "None of this is to romanticise the profession. Critics can be lazy, cliquish and absurdly pleased with their own cleverness; some write chiefly to be quoted, others chiefly to wound. A great deal of reviewing has always been little more than consumer advice dressed up in elegant prose. And it would be naive to pretend that critical consensus is free of fashion, snobbery or the influence of publishers' marketing budgets. If the algorithm is fallible, so, unquestionably, are we.",
+    "But the best criticism has never been primarily about telling people what to buy. It is about attention: the patient, informed, slightly obsessive attention to how a work is made and what it is doing. A first-rate review of a painting might draw your eye to the way a single cold blue shadow organises an entire canvas. A good review of a film might show you why a scene that seemed merely slow was in fact the emotional hinge of the whole story. You may disagree with the critic's verdict, and often you should. Even so, you will see the work more clearly for having argued with her.",
+    "That last point is perhaps the crux. Criticism is not a substitute for one's own judgement; it is a provocation to it. A rating invites agreement or indifference, and very little else. A strong, well-argued review invites a response. It gives you something to push against, and in pushing you discover what you actually think. Many readers can name a critic whose opinions they almost invariably disagree with and whom they nonetheless read faithfully, precisely because the disagreement is so productive.",
+    "There is also a wider cultural function that ratings cannot perform. Critics, at their best, make arguments about value in public. They ask what a society chooses to celebrate and what it overlooks, whose work gets reviewed and whose does not. They can champion difficult, unfashionable or marginal art that would never accumulate enough ratings to surface in anyone's recommendations. When a once-neglected writer is rediscovered, it is very often because a critic insisted, against the indifference of the market, that she deserved another look.",
+    "So is the critic necessary? Not in the sense that anyone needs to be told what to like. But if we want a culture in which art is argued about rather than merely consumed, in which taste is something we develop rather than something that is predicted for us, then yes, I believe so. The algorithm can tell you what you will probably enjoy. Only a critic can tell you why something matters, and occasionally persuade you that it matters even though you did not enjoy it at all.",
+    "Perhaps the obituary writers will be proved right eventually. I hope not. And if they are, I suspect we will find ourselves missing, rather sooner than we expect, the sound of someone arguing passionately about a book we have not yet read."
+   ],
+   "glossary": [
+    [
+     "obituary",
+     "necrológica"
+    ],
+    [
+     "redundant",
+     "superfluo, innecesario"
+    ],
+    [
+     "superficially",
+     "superficialmente"
+    ],
+    [
+     "gripping",
+     "apasionante, trepidante"
+    ],
+    [
+     "to flatten into",
+     "aplanar, reducir a"
+    ],
+    [
+     "cliquish",
+     "elitista, de camarilla"
+    ],
+    [
+     "dressed up in",
+     "disfrazado de"
+    ],
+    [
+     "fallible",
+     "falible"
+    ],
+    [
+     "canvas",
+     "lienzo"
+    ],
+    [
+     "emotional hinge",
+     "eje emocional, bisagra"
+    ],
+    [
+     "crux",
+     "quid, punto clave"
+    ],
+    [
+     "provocation",
+     "estímulo, provocación"
+    ],
+    [
+     "invariably",
+     "invariablemente"
+    ],
+    [
+     "to champion",
+     "defender, abanderar"
+    ],
+    [
+     "to surface",
+     "salir a la superficie, aparecer"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "How does the writer describe the argument that critics are redundant?",
+     "options": [
+      "Too complex to evaluate",
+      "Superficially persuasive but profoundly mistaken",
+      "Supported by most critics",
+      "Entirely convincing"
+     ],
+     "answer": 1,
+     "explain_es": "\"superficially persuasive ... profoundly mistaken\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 2, what is the main limitation of a rating?",
+     "options": [
+      "It shows approval but not the reasons for it",
+      "It is too difficult to calculate",
+      "It is often dishonest",
+      "It favours literary novels"
+     ],
+     "answer": 0,
+     "explain_es": "\"it tells you almost nothing about why people approved\"."
+    },
+    {
+     "type": "mc",
+     "q": "The adverbs in 'utterly gripping' and 'quietly devastating' function as…",
+     "options": [
+      "connectors",
+      "intensifier and modifying adverb for strong adjectives",
+      "time markers",
+      "downtoners for gradable adjectives"
+     ],
+     "answer": 1,
+     "explain_es": "'Utterly' intensifica un adjetivo extremo; 'quietly' matiza la forma de 'devastating'."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer describe a critic as 'a professional insister'?",
+     "options": [
+      "Critics demand payment",
+      "Critics push us towards works we would not have chosen",
+      "Critics are aggressive by nature",
+      "Critics always insist on the same opinion"
+     ],
+     "answer": 1,
+     "explain_es": "Como el amigo que insiste: nos lleva a obras que nunca habríamos elegido."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'cliquish' most nearly means…",
+     "options": [
+      "very clear",
+      "kind and generous",
+      "old-fashioned",
+      "forming exclusive small groups"
+     ],
+     "answer": 3,
+     "explain_es": "'Cliquish' = que forma camarillas cerradas."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: If the algorithm is fallible, ____, unquestionably, are critics. (1 word)",
+     "answer": "so",
+     "accept": [
+      "So"
+     ],
+     "explain_es": "Sustitución/elipsis con 'so' + inversión: \"so, unquestionably, are we\"."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's attitude to the profession in paragraph 4?",
+     "options": [
+      "Uncritically admiring",
+      "Self-critical and candid",
+      "Contemptuous",
+      "Indifferent"
+     ],
+     "answer": 1,
+     "explain_es": "Reconoce defectos de los críticos (\"lazy, cliquish...\"), incluido el propio grupo ('we')."
+    },
+    {
+     "type": "mc",
+     "q": "What does 'the best criticism' focus on, according to paragraph 5?",
+     "options": [
+      "Biographies of artists",
+      "Box-office figures",
+      "Close, informed attention to how a work is made",
+      "Consumer advice"
+     ],
+     "answer": 2,
+     "explain_es": "\"It is about attention: the patient, informed, slightly obsessive attention…\"."
+    },
+    {
+     "type": "mc",
+     "q": "'A single cold blue shadow' illustrates…",
+     "options": [
+      "an ellipsis",
+      "correct adjective order (opinion/size – temperature – colour – noun)",
+      "an ungradable adjective with an intensifier",
+      "a compound modifier"
+     ],
+     "answer": 1,
+     "explain_es": "Orden de adjetivos: 'single' (número) + 'cold' (cualidad) + 'blue' (color) + sustantivo."
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes readers should usually accept a critic's verdict.",
+     "answer": "F",
+     "explain_es": "\"You may disagree with the critic's verdict, and often you should.\""
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Criticism as a spur to thinking",
+      "How to write a review",
+      "Why ratings are popular",
+      "Critics who agree with everyone"
+     ],
+     "answer": 0,
+     "explain_es": "\"it is a provocation to it\": la crítica estimula el propio juicio."
+    },
+    {
+     "type": "tf",
+     "q": "The writer names a specific neglected writer who was rediscovered by a critic.",
+     "answer": "F",
+     "explain_es": "Habla en general (\"When a once-neglected writer is rediscovered…\"), sin nombres."
+    },
+    {
+     "type": "mc",
+     "q": "In 'then yes, I believe so', 'so' replaces…",
+     "options": [
+      "the critic is necessary",
+      "the algorithm is useful",
+      "people need to be told what to like",
+      "taste is predicted"
+     ],
+     "answer": 0,
+     "explain_es": "'I believe so' sustituye a la cláusula 'the critic is necessary'."
+    },
+    {
+     "type": "tf",
+     "q": "The writer is certain that critics will survive.",
+     "answer": "F",
+     "explain_es": "\"Perhaps the obituary writers will be proved right eventually. I hope not.\" Expresa esperanza, no certeza."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-7-2",
+   "title": "A Quietly Extraordinary Retrospective",
+   "level": "C2",
+   "genre": "exhibition review",
+   "topic": "Visual Art",
+   "emoji": "🖼️",
+   "words": 783,
+   "paragraphs": [
+    "It is a rare exhibition that makes you want to apologise to the artist. Inés Carvallo, who died in 1991 in relative obscurity, spent forty years painting small, unassuming interiors: kitchen tables, half-open doors, an empty chair by a rain-streaked window. During her lifetime, critics who noticed her at all tended to describe her work as charming, pleasant or, most damningly, modest. The current retrospective, the first full survey of her career, makes those adjectives look not merely inadequate but faintly ridiculous. This is a profoundly ambitious body of work that happens to be painted on a small scale. The two are not the same thing, and it has taken us an unconscionably long time to notice the difference.",
+    "The exhibition is arranged chronologically, which in this case is exactly the right decision. The early rooms show a competent, somewhat derivative young painter working through the influences of her training: there are echoes of the Dutch masters in the handling of light, and rather too obvious borrowings from the French intimists in the colour. These are perfectly decent pictures. Few of them, though, would have persuaded you that their author would become one of the most original painters of her generation, and I suspect the curators know it. They have wisely kept this section brief.",
+    "Then something changes. Around 1962, after the death of her husband, Carvallo stopped painting people altogether. The interiors empty out. What remains are rooms in which someone has evidently just been present, or is about to arrive: a cup with a spoon still in it, a coat thrown over the back of a chair, a book face down at a page the reader never returned to. It would be easy to read these as straightforwardly elegiac, and some undoubtedly are. But the finest of them are stranger than that. They seem less concerned with absence than with attention itself, with the peculiar quality of a room when no one is looking at it.",
+    "Technically, the mature work is quite remarkable. Carvallo built up her surfaces in thin, translucent layers, sometimes dozens of them, so that the colours seem to glow from within rather than sit on the surface. A whitewashed wall in one painting from the late sixties turns out, on close inspection, to contain pale greens, warm ochres and a barely perceptible violet. Step back, and it is simply white, though a white so alive that it makes the real walls of the gallery look dead by comparison. I have rarely seen paint used with such patient, almost stubborn, precision.",
+    "The centrepiece of the show, and the work most visitors will remember, is a slightly larger canvas from 1974, showing a narrow, sun-filled corridor ending in a closed door. Nothing happens in it. There is no figure, no object of obvious significance, merely light falling across bare floorboards. And yet it is absolutely gripping. I stood in front of it for a long time, and so, I noticed, did nearly everyone else. Quite why it should be so affecting is hard to say. Perhaps it is the sense that the door might open at any moment; perhaps it is the sense that it never will.",
+    "If the exhibition has a weakness, it lies in the final room, devoted to the work of her last decade. Failing eyesight forced Carvallo to work more broadly, and the late paintings, while undeniably moving as documents of a struggle, lack the extraordinary control of the middle years. The curators present them with what feels like slightly excessive reverence. A more selective hang would have served her better, and would have allowed the show to end on a high note rather than a fairly muted one.",
+    "That reservation aside, this is an utterly absorbing exhibition and, in its quiet way, a deeply important one. It raises uncomfortable questions about why Carvallo was overlooked for so long. Her subject matter, domestic, interior and small-scale, was for decades associated with women painters and therefore treated, almost automatically, as minor. Her refusal to promote herself did not help, nor did her decision to remain in a provincial city far from the major galleries. None of this tells us anything about the quality of her work. All of it tells us a good deal about the habits of the art world.",
+    "Go, and give yourself time. These are not paintings that reveal themselves at a glance; they reward the kind of slow, sustained looking that most of us rarely give to anything. Do so, and you may find, as I did, that you leave the gallery seeing ordinary rooms a little differently, and wondering how many other quietly extraordinary artists we have managed to miss."
+   ],
+   "glossary": [
+    [
+     "obscurity",
+     "anonimato, olvido"
+    ],
+    [
+     "unassuming",
+     "sencillo, sin pretensiones"
+    ],
+    [
+     "rain-streaked",
+     "surcado por la lluvia"
+    ],
+    [
+     "damningly",
+     "de forma condenatoria"
+    ],
+    [
+     "unconscionably",
+     "desmesuradamente, inadmisiblemente"
+    ],
+    [
+     "derivative",
+     "poco original, imitativo"
+    ],
+    [
+     "borrowing",
+     "préstamo, influencia tomada"
+    ],
+    [
+     "elegiac",
+     "elegíaco"
+    ],
+    [
+     "translucent",
+     "translúcido"
+    ],
+    [
+     "whitewashed",
+     "encalado"
+    ],
+    [
+     "ochre",
+     "ocre"
+    ],
+    [
+     "barely perceptible",
+     "apenas perceptible"
+    ],
+    [
+     "reverence",
+     "reverencia, veneración"
+    ],
+    [
+     "muted",
+     "apagado, discreto"
+    ],
+    [
+     "provincial",
+     "provinciano, de provincias"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What does the reviewer mean by 'It is a rare exhibition that makes you want to apologise to the artist'?",
+     "options": [
+      "The reviewer once wrote a negative review",
+      "The exhibition is badly organised",
+      "The artist was rude to critics",
+      "The artist has been unfairly underrated"
+     ],
+     "answer": 3,
+     "explain_es": "Sugiere que se la ha infravalorado injustamente durante décadas."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the reviewer say 'modest' was the most damning adjective?",
+     "options": [
+      "It was used by her husband",
+      "It was untrue about her personality",
+      "It referred to her prices",
+      "It implied her work lacked ambition"
+     ],
+     "answer": 3,
+     "explain_es": "'Modest' minimizaba su ambición artística; el crítico distingue escala pequeña de ambición pequeña."
+    },
+    {
+     "type": "mc",
+     "q": "In 'The two are not the same thing', 'the two' refers to…",
+     "options": [
+      "two paintings",
+      "two critics",
+      "charm and pleasantness",
+      "small scale and lack of ambition"
+     ],
+     "answer": 3,
+     "explain_es": "Ser de pequeño formato no equivale a ser poco ambicioso."
+    },
+    {
+     "type": "mc",
+     "q": "What is the reviewer's view of the early work?",
+     "options": [
+      "It shows no influences",
+      "It is entirely without merit",
+      "It is the best part of the show",
+      "It is competent but derivative"
+     ],
+     "answer": 3,
+     "explain_es": "\"a competent, somewhat derivative young painter\"; \"perfectly decent pictures\"."
+    },
+    {
+     "type": "mc",
+     "q": "'Few of them, though, would have persuaded you…, and I suspect the curators know it.' Here 'it' refers to…",
+     "options": [
+      "the identity of the artist",
+      "the visitors' opinions",
+      "the fact that the early works are not exceptional",
+      "the date of the paintings"
+     ],
+     "answer": 2,
+     "explain_es": "Los comisarios saben que las primeras obras no anticipan su genio; por eso la sala es breve."
+    },
+    {
+     "type": "tf",
+     "q": "After 1962, Carvallo's paintings no longer included human figures.",
+     "answer": "T",
+     "explain_es": "\"Carvallo stopped painting people altogether.\""
+    },
+    {
+     "type": "mc",
+     "q": "According to the reviewer, the finest post-1962 works are concerned mainly with…",
+     "options": [
+      "religious themes",
+      "grief for her husband",
+      "the quality of attention itself",
+      "the history of furniture"
+     ],
+     "answer": 2,
+     "explain_es": "\"less concerned with absence than with attention itself\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'barely perceptible' is closest in meaning to…",
+     "options": [
+      "hardly noticeable",
+      "clearly visible",
+      "bright",
+      "unpleasant"
+     ],
+     "answer": 0,
+     "explain_es": "'Barely' es un atenuador: apenas perceptible."
+    },
+    {
+     "type": "mc",
+     "q": "'A narrow, sun-filled corridor' contains…",
+     "options": [
+      "two ungradable adjectives with intensifiers",
+      "a compound modifier (sun-filled)",
+      "a cleft structure",
+      "an ellipsis"
+     ],
+     "answer": 1,
+     "explain_es": "'Sun-filled' es un modificador compuesto (sustantivo + participio)."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The reviewer stood before the corridor painting for a long time, and ____ did nearly everyone else. (1 word)",
+     "answer": "so",
+     "accept": [],
+     "explain_es": "Sustitución con 'so' + inversión: \"and so ... did nearly everyone else\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A weaker final chapter",
+      "How the show was funded",
+      "The triumph of late style",
+      "The artist's illness"
+     ],
+     "answer": 0,
+     "explain_es": "La debilidad de la última sala: obra tardía con menos control."
+    },
+    {
+     "type": "tf",
+     "q": "The reviewer thinks all the late paintings should have been excluded.",
+     "answer": "F",
+     "explain_es": "Pide \"a more selective hang\", no excluir toda la obra tardía."
+    },
+    {
+     "type": "tf",
+     "q": "Carvallo sold very few paintings during her lifetime.",
+     "answer": "NG",
+     "explain_es": "Se dice que murió en relativo olvido, pero no se mencionan sus ventas."
+    },
+    {
+     "type": "mc",
+     "q": "What reasons does the reviewer give for Carvallo being overlooked?",
+     "options": [
+      "Gendered prejudice about her subjects, self-effacement and location",
+      "Hostility from the curators",
+      "Her refusal to paint interiors",
+      "Poor technique and few paintings"
+     ],
+     "answer": 0,
+     "explain_es": "Temas asociados a mujeres pintoras, no promocionarse y vivir en una ciudad de provincias."
+    }
+   ]
+  }
+ ],
+ "8": [
+  {
+   "id": "u-c2-8-1",
+   "title": "The Art of Not Quite Saying",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Euphemism & Doublespeak",
+   "emoji": "🗝️",
+   "words": 822,
+   "paragraphs": [
+    "When a large company announced last spring that it was 'rightsizing its workforce to unlock future growth', several thousand people learned, in effect, that they had lost their jobs. Nobody in the announcement was dismissed, sacked or made redundant. Positions were 'impacted'. Colleagues were 'transitioned'. The chief executive spoke warmly of a 'difficult but necessary journey'. One former employee, interviewed by a local radio station, put it more simply. 'I wish they had just told us the truth,' she said. 'It's as if they thought we wouldn't notice we'd been fired.'",
+    "Euphemism is as old as language. Every culture has its polite ways of referring to death, illness, bodily functions and other matters that make people uncomfortable, and many of these serve an entirely humane purpose. To say that someone has 'passed away' rather than 'died' is not, in most contexts, an attempt to deceive. It is a way of softening a blow, of signalling sympathy, of acknowledging that some facts are painful to hear stated baldly. Much as we may mock such phrases, few of us would wish to do without them at a funeral.",
+    "The language of the corporate announcement belongs to a different category. Its purpose is not to spare the feelings of the listener but to protect the speaker from the consequences of what is being said. The writer George Orwell, who devoted a famous essay to the subject, argued that political language of this kind is designed 'to make lies sound truthful and murder respectable'. That may sound excessive when applied to a press release about restructuring. The mechanism, however, is the same: an action with a clear agent and clear victims is reframed as an impersonal process, something that simply happened, like the weather.",
+    "Consider how often the passive voice and abstract nouns appear in such statements. 'Mistakes were made' is the classic example, a sentence that admits an error while carefully declining to say who made it. Military briefings speak of 'collateral damage' rather than civilians killed; prison systems refer to 'enhanced interrogation' rather than torture; governments announce 'fiscal consolidation' rather than cuts to schools and hospitals. In each case the vocabulary performs a kind of moral anaesthesia. The listener understands, at some level, what is being described, but the words have been chosen so that nothing quite registers.",
+    "Critics of this tendency are sometimes accused of pedantry. Language changes, the argument goes, and insisting that every term be blunt would make public life impossibly harsh. There is something to this. Diplomacy, for example, depends on a degree of studied vagueness, and a negotiator who said exactly what he thought at every stage would rarely reach agreement. Notwithstanding these exceptions, though, the line between tact and evasion is usually easier to draw than defenders of doublespeak suggest. The test is simple: does the phrase help the listener understand, or does it help the speaker avoid responsibility?",
+    "The cost of failing that test is not merely aesthetic. When official language consistently obscures who did what to whom, citizens lose the ability to hold anyone accountable. It is difficult to protest against a 'workforce optimisation'; it is considerably easier to protest against the dismissal of three thousand workers. This is why campaigners have long insisted that the first step in any struggle for justice is to name the problem plainly. Many of the most effective movements of the last century began, in a sense, as campaigns of translation, replacing an official euphemism with a word that made people angry.",
+    "Some institutions have begun to respond. A number of public bodies now require that official communications be written in plain language, and several have published guidelines discouraging terms that conceal the agent of an action. The results are uneven, and the guidelines themselves are not always followed. But the principle seems sound. However uncomfortable plain speech may be for those in power, it is a precondition of democratic scrutiny.",
+    "It is high time, perhaps, that the rest of us adopted a similar discipline. Euphemism is not only something done to us by press offices; it is something we do ourselves, at work and at home, whenever we would rather not take responsibility for an unpleasant decision. We 'let people go', we 'pursue other opportunities', we suggest that a relationship 'didn't work out', as though it had failed of its own accord. Some of these softenings are kind. Others are merely convenient, albeit in ways we may not care to examine.",
+    "The former employee who spoke to the radio station had a final remark. She said she would rather have been told 'You're fired' to her face than read about 'workforce transition' in an email. 'At least then,' she said, 'I'd have known someone was actually responsible.' It is a fair summary of what is at stake. Plain language does not make bad news any better. It does, however, make it possible to argue back."
+   ],
+   "glossary": [
+    [
+     "rightsizing",
+     "'reajuste de plantilla' (eufemismo de despidos)"
+    ],
+    [
+     "to be made redundant",
+     "ser despedido (por reducción de plantilla)"
+    ],
+    [
+     "to soften a blow",
+     "amortiguar un golpe"
+    ],
+    [
+     "baldly",
+     "sin rodeos, crudamente"
+    ],
+    [
+     "to do without",
+     "prescindir de"
+    ],
+    [
+     "to reframe",
+     "replantear, reformular"
+    ],
+    [
+     "collateral damage",
+     "daños colaterales"
+    ],
+    [
+     "fiscal consolidation",
+     "consolidación fiscal (recortes)"
+    ],
+    [
+     "moral anaesthesia",
+     "anestesia moral"
+    ],
+    [
+     "pedantry",
+     "pedantería"
+    ],
+    [
+     "studied vagueness",
+     "vaguedad calculada"
+    ],
+    [
+     "evasion",
+     "evasiva, elusión"
+    ],
+    [
+     "to hold someone accountable",
+     "pedir cuentas a alguien"
+    ],
+    [
+     "precondition",
+     "condición previa"
+    ],
+    [
+     "of its own accord",
+     "por sí solo, espontáneamente"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the purpose of the opening anecdote?",
+     "options": [
+      "To criticise local radio",
+      "To illustrate how euphemism can conceal unwelcome facts",
+      "To praise the company's communication",
+      "To report on unemployment statistics"
+     ],
+     "answer": 1,
+     "explain_es": "Ejemplo de lenguaje corporativo que oculta despidos."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The former employee said: 'I ____ they had just told us the truth.' (1 word)",
+     "answer": "wish",
+     "accept": [
+      "Wish"
+     ],
+     "explain_es": "'Wish + past perfect' para lamentar algo del pasado."
+    },
+    {
+     "type": "mc",
+     "q": "'It's as if they thought we wouldn't notice' suggests the employee felt…",
+     "options": [
+      "patronised",
+      "grateful",
+      "confused about her contract",
+      "relieved"
+     ],
+     "answer": 0,
+     "explain_es": "'As if + pasado' expresa una impresión irreal: la trataron como si no fuera a darse cuenta."
+    },
+    {
+     "type": "mc",
+     "q": "What distinction does the writer draw in paragraphs 2 and 3?",
+     "options": [
+      "Between British and American usage",
+      "Between spoken and written language",
+      "Between humane euphemisms and self-protective ones",
+      "Between old and new euphemisms"
+     ],
+     "answer": 2,
+     "explain_es": "Unos suavizan por empatía; otros protegen al hablante."
+    },
+    {
+     "type": "mc",
+     "q": "'Much as we may mock such phrases…' means…",
+     "options": [
+      "As much as possible",
+      "Because we mock such phrases",
+      "Although we may mock such phrases",
+      "We mock such phrases too much"
+     ],
+     "answer": 2,
+     "explain_es": "'Much as' = aunque (concesión)."
+    },
+    {
+     "type": "mc",
+     "q": "According to the writer, what do terms like 'collateral damage' achieve?",
+     "options": [
+      "They are required by law",
+      "They dull the moral impact of what is described",
+      "They make the speaker sound uncertain",
+      "They make the facts clearer"
+     ],
+     "answer": 1,
+     "explain_es": "\"the vocabulary performs a kind of moral anaesthesia\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 5, 'studied vagueness' refers to vagueness that is…",
+     "options": [
+      "academic",
+      "accidental",
+      "confusing to the speaker",
+      "deliberate and carefully controlled"
+     ],
+     "answer": 3,
+     "explain_es": "'Studied' = calculado, intencionado."
+    },
+    {
+     "type": "mc",
+     "q": "What test does the writer propose for distinguishing tact from evasion?",
+     "options": [
+      "Whether it helps understanding or avoids responsibility",
+      "Whether it appears in a dictionary",
+      "Whether the phrase is short",
+      "Whether it is used in diplomacy"
+     ],
+     "answer": 0,
+     "explain_es": "\"does the phrase help the listener understand, or does it help the speaker avoid responsibility?\""
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A history of protest songs",
+      "The aesthetics of language",
+      "Naming as the first step to justice",
+      "Why workers are optimised"
+     ],
+     "answer": 2,
+     "explain_es": "Las campañas empiezan nombrando el problema con claridad."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Some public bodies require that official communications ____ written in plain language. (1 word)",
+     "answer": "be",
+     "accept": [],
+     "explain_es": "Subjuntivo tras 'require that': \"require that official communications be written\"."
+    },
+    {
+     "type": "tf",
+     "q": "All public bodies with plain-language guidelines follow them consistently.",
+     "answer": "F",
+     "explain_es": "\"the guidelines themselves are not always followed\"."
+    },
+    {
+     "type": "mc",
+     "q": "'However uncomfortable plain speech may be…' is closest in meaning to…",
+     "options": [
+      "No matter how uncomfortable plain speech may be",
+      "Plain speech is never uncomfortable",
+      "When plain speech becomes uncomfortable",
+      "Because plain speech is uncomfortable"
+     ],
+     "answer": 0,
+     "explain_es": "'However + adjetivo' = por muy… que sea (concesión)."
+    },
+    {
+     "type": "tf",
+     "q": "The writer suggests readers also use euphemisms in their own lives.",
+     "answer": "T",
+     "explain_es": "\"it is something we do ourselves, at work and at home\"."
+    },
+    {
+     "type": "tf",
+     "q": "The former employee has since found a new job.",
+     "answer": "NG",
+     "explain_es": "No se menciona su situación laboral posterior."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-8-2",
+   "title": "Ordinary People, Hard Questions",
+   "level": "C2",
+   "genre": "op-ed",
+   "topic": "Democracy & Citizens' Assemblies",
+   "emoji": "⚖️",
+   "words": 762,
+   "paragraphs": [
+    "Imagine being chosen, more or less at random, to help decide a question your government has been avoiding for twenty years. A letter arrives. You are invited, along with ninety-nine other residents selected by lottery to reflect the population in age, gender, region and background, to spend six weekends hearing evidence, questioning experts and debating with strangers. At the end, you will vote on recommendations that will be submitted to parliament. You are paid for your time. You may say no, but most people, it turns out, say yes.",
+    "This is the citizens' assembly, and over the past two decades it has moved from the margins of political theory into the practice of a growing number of democracies. Assemblies have deliberated on electoral reform, climate policy, end-of-life care and some of the most divisive moral questions societies face. Their supporters regard them as a cure for much that ails representative politics: polarisation, short-termism and the suspicion that decisions are made by a professional class remote from ordinary life. Their detractors regard them, at best, as expensive theatre.",
+    "I should declare an interest. Some years ago I attended an assembly as an observer, and I came away more impressed than I had expected to be. The participants included a retired lorry driver, a pharmacist, a student who had never voted and a farmer who announced on the first morning that he had come 'to make sure nobody did anything daft'. By the final weekend, he was among the most thoughtful contributors in the room. What struck me most was not that people changed their minds, although some did, but how seriously they took the obligation to understand views they did not share.",
+    "Much of this, I think, has to do with the conditions. Politicians argue in public, under the eyes of journalists and party whips, with every concession liable to be reported as a defeat. Assembly members deliberate in small groups, guided by trained facilitators, with time to ask naive questions and no career to protect. It is hardly surprising that they behave differently. If only parliaments could reproduce those conditions, many of their pathologies might ease. They cannot, of course, which is precisely the argument for assemblies as a complement to them.",
+    "The objections deserve a hearing. The first is that assemblies lack democratic legitimacy: nobody elected the members, and they cannot be voted out. This is true, albeit a little odd as a criticism, since the whole point of random selection is to produce a body that looks more like the population than any elected chamber does. A second objection is more serious. Assemblies depend heavily on the experts who brief them and the organisers who set their agenda, and a poorly designed process could steer participants towards conclusions chosen in advance. Safeguards exist, such as balanced panels of witnesses and independent oversight, but they are only as good as the people who enforce them.",
+    "The third objection, and the one I find hardest to dismiss, concerns what happens afterwards. An assembly that produces careful recommendations which the government then ignores may do more harm than good, confirming the cynicism it was meant to dispel. There have been cases where this has happened, and the participants' sense of betrayal was palpable. It is essential, therefore, that any government convening an assembly commit in advance to responding formally to each recommendation, explaining publicly which it accepts and why it rejects the others.",
+    "Notwithstanding these difficulties, the record so far is encouraging. Where assemblies have been taken seriously, they have helped break deadlocks on questions that elected politicians found too dangerous to touch. Their recommendations have often been more ambitious than politicians expected, and more nuanced than either side of a polarised debate would have predicted. Perhaps most importantly, participants almost invariably report a greater trust in democratic institutions, and in their fellow citizens, than they had before.",
+    "I would not suggest that assemblies replace elections, still less that every decision be delegated to randomly chosen citizens. Representative democracy, for all its faults, remains the best mechanism yet devised for holding power to account. But it is high time we stopped treating ordinary people as a problem to be managed and started treating them as a resource. The farmer who came to make sure nobody did anything daft put it rather well on the last day. 'I'd rather they asked people like us more often,' he said. 'We don't always get it right. But at least we're not pretending to know everything.'",
+    "Far be it from me to improve on that."
+   ],
+   "glossary": [
+    [
+     "by lottery",
+     "por sorteo"
+    ],
+    [
+     "to deliberate",
+     "deliberar"
+    ],
+    [
+     "divisive",
+     "polémico, que divide"
+    ],
+    [
+     "to ail",
+     "aquejar"
+    ],
+    [
+     "short-termism",
+     "cortoplacismo"
+    ],
+    [
+     "detractor",
+     "detractor"
+    ],
+    [
+     "to declare an interest",
+     "declarar un conflicto de intereses"
+    ],
+    [
+     "daft",
+     "tonto, disparatado"
+    ],
+    [
+     "party whip",
+     "jefe de disciplina de un partido"
+    ],
+    [
+     "facilitator",
+     "moderador, facilitador"
+    ],
+    [
+     "to steer",
+     "conducir, orientar"
+    ],
+    [
+     "oversight",
+     "supervisión"
+    ],
+    [
+     "to dispel",
+     "disipar"
+    ],
+    [
+     "palpable",
+     "palpable, evidente"
+    ],
+    [
+     "deadlock",
+     "punto muerto, bloqueo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why does the article begin with 'Imagine being chosen…'?",
+     "options": [
+      "To persuade readers to apply",
+      "To show how unfair the lottery is",
+      "To describe the writer's own selection",
+      "To make the reader experience the process from a participant's view"
+     ],
+     "answer": 3,
+     "explain_es": "Sitúa al lector en el lugar de un participante."
+    },
+    {
+     "type": "tf",
+     "q": "Assembly members are chosen to reflect the population.",
+     "answer": "T",
+     "explain_es": "\"selected by lottery to reflect the population in age, gender, region and background\"."
+    },
+    {
+     "type": "mc",
+     "q": "How do detractors view citizens' assemblies?",
+     "options": [
+      "As illegal",
+      "As more legitimate than parliament",
+      "As costly performances with little real effect",
+      "As a cure for polarisation"
+     ],
+     "answer": 2,
+     "explain_es": "\"at best, as expensive theatre\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the writer 'declare an interest'?",
+     "options": [
+      "To admit to having been paid by an assembly",
+      "To criticise the organisers",
+      "Because they are a politician",
+      "To be transparent about a personal experience that shaped their view"
+     ],
+     "answer": 3,
+     "explain_es": "Revela que asistió como observador y salió impresionado."
+    },
+    {
+     "type": "mc",
+     "q": "What impressed the writer most?",
+     "options": [
+      "Participants' commitment to understanding opposing views",
+      "The speed of decision-making",
+      "The number of people who changed their minds",
+      "The quality of the experts"
+     ],
+     "answer": 0,
+     "explain_es": "\"how seriously they took the obligation to understand views they did not share\"."
+    },
+    {
+     "type": "mc",
+     "q": "The anecdote about the farmer serves to show…",
+     "options": [
+      "that assemblies are dominated by older men",
+      "that most participants are daft",
+      "that farmers distrust politics",
+      "how participation can transform initial scepticism"
+     ],
+     "answer": 3,
+     "explain_es": "Empieza receloso y acaba siendo de los más reflexivos."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: ____ only parliaments could reproduce those conditions, many of their problems might ease. (1 word)",
+     "answer": "If",
+     "accept": [
+      "if"
+     ],
+     "explain_es": "'If only + pasado' expresa un deseo irreal sobre el presente."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 5, 'albeit' is closest in meaning to…",
+     "options": [
+      "although",
+      "because",
+      "unless",
+      "therefore"
+     ],
+     "answer": 0,
+     "explain_es": "'Albeit' = aunque (concesión, ante adjetivo o frase breve)."
+    },
+    {
+     "type": "mc",
+     "q": "Which objection does the writer find most difficult to dismiss?",
+     "options": [
+      "Cost",
+      "Lack of legitimacy",
+      "Governments ignoring recommendations",
+      "Influence of experts"
+     ],
+     "answer": 2,
+     "explain_es": "\"The third objection, and the one I find hardest to dismiss, concerns what happens afterwards.\""
+    },
+    {
+     "type": "gap",
+     "q": "Summary: It is essential that any government convening an assembly ____ in advance to responding formally. (1 word)",
+     "answer": "commit",
+     "accept": [],
+     "explain_es": "Subjuntivo tras 'It is essential that': \"commit\" (sin -s)."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 7.",
+     "options": [
+      "Why politicians fear assemblies",
+      "An encouraging record",
+      "Distrust of fellow citizens",
+      "Deadlock in parliament"
+     ],
+     "answer": 1,
+     "explain_es": "\"Notwithstanding these difficulties, the record so far is encouraging.\""
+    },
+    {
+     "type": "tf",
+     "q": "The writer argues that citizens' assemblies should replace elections.",
+     "answer": "F",
+     "explain_es": "\"I would not suggest that assemblies replace elections\"."
+    },
+    {
+     "type": "tf",
+     "q": "The farmer was later elected to parliament.",
+     "answer": "NG",
+     "explain_es": "No se dice nada sobre su futuro político."
+    },
+    {
+     "type": "mc",
+     "q": "'Far be it from me to improve on that' is…",
+     "options": [
+      "an inverted conditional",
+      "a criticism of the farmer",
+      "a formulaic subjunctive expressing modest agreement",
+      "a reported command"
+     ],
+     "answer": 2,
+     "explain_es": "Expresión subjuntiva fija: 'no seré yo quien intente mejorarlo'."
+    }
+   ]
+  }
+ ],
+ "9": [
+  {
+   "id": "u-c2-9-1",
+   "title": "The Summit We Were Not to Reach",
+   "level": "C2",
+   "genre": "literary non-fiction",
+   "topic": "Risk & Mountaineering",
+   "emoji": "🏔️",
+   "words": 896,
+   "paragraphs": [
+    "We left the hut at three in the morning, under a sky so crowded with stars that it seemed almost vulgar. There were four of us: Marta, who had organised the trip and was to lead the final section; her brother Joaquín, by far the most experienced of us; a quiet Austrian engineer called Lukas; and me, the least experienced, who had been training for this for a year and was determined not to be the reason we turned back. We were about to attempt a peak that none of us had climbed before, by a route that, according to the guidebook, was 'serious but straightforward in good conditions'. It was the last four words that would come to matter.",
+    "For the first three hours, everything went as planned. The snow was firm, the wind light, the ridge exactly as the photographs had promised. I remember thinking, with the dangerous euphoria of the well-prepared amateur, that this was going to be easier than I had feared. In retrospect, that thought should have worried me more than it did. Experienced climbers have a saying that the mountain does not know how much you have trained, and I was soon to discover what it meant.",
+    "Around dawn, the weather began to turn. It did not happen dramatically. A thin veil of cloud drifted across the summit, then another; the wind picked up, though not by much; the temperature, if anything, rose slightly. None of these signs was alarming in itself. Taken together, however, they amounted to something Joaquín did not like, and he said so. Marta, who had been watching the same sky, agreed that the forecast had probably been optimistic, but she pointed out, reasonably enough, that we were only two hours from the top and that conditions might improve as the morning went on.",
+    "What followed was the most instructive conversation I have ever witnessed, conducted at four thousand metres in a rising wind. Nobody raised their voice. Joaquín set out the case for turning back: the cloud was thickening, the descent would take longer than the ascent, and an afternoon storm, if it came, would catch us on the most exposed part of the ridge. Marta set out the case for continuing: the forecast had not mentioned storms, we were strong, and we might never have another chance. Lukas, characteristically, asked a series of precise questions about timing. I said nothing, partly out of deference and partly because I badly wanted to go on and did not trust myself to admit it.",
+    "Researchers who study decision-making in the mountains have identified a set of traps into which even skilled climbers reliably fall. One is familiarity: the more often we have done something safely, the less attention we pay to its risks. Another is what has been called summit fever, the tendency for the desire to reach a goal to intensify as it draws nearer, precisely when the cost of pursuing it is often greatest. A third is the reluctance of individuals within a group to voice doubts, particularly if they are less experienced or less confident than the others. I was, that morning, a textbook example of the third.",
+    "In the end, it was Marta who made the decision, and she made it against her own inclination. We would give it thirty more minutes, she said, and if the summit was still in cloud, we would turn round, no further discussion. Thirty minutes later the summit had vanished entirely. She looked at it for a long moment, then nodded, and we began the descent. I felt a disappointment so intense that it was almost physical. I also felt, underneath it, an enormous relief, which I would not have admitted to anyone at the time.",
+    "The storm arrived at two o'clock that afternoon, by which point we were back at the hut, drinking tea and pretending not to watch the window. A party of three who had been climbing the same ridge on the other side, and who had decided to push on, was forced to spend the night in an emergency shelter. They survived, though one of them lost two toes to frostbite. When we met them the following day, they were cheerful and slightly embarrassed, and nobody said what everyone was thinking.",
+    "I have thought about that morning many times since, and about the difference between courage and stubbornness, which is so often invisible until afterwards. It would be comforting to believe that we turned back because we were wise. The truth is more complicated. We turned back because one person spoke up, another listened, and a third was willing to set a clear rule and keep to it. Had any of those things failed to happen, I suspect we would have carried on, and the story I am telling would be very different, if I were telling it at all.",
+    "We never did climb that peak. Marta went back the following year with Joaquín and reached the summit in perfect weather. She sent me a photograph from the top, with a single line of text: 'Serious but straightforward in good conditions.' I keep it above my desk, as a reminder that the conditions are the part we do not control, and that knowing when to turn round is not a failure of ambition but its most difficult form."
+   ],
+   "glossary": [
+    [
+     "hut",
+     "refugio de montaña"
+    ],
+    [
+     "ridge",
+     "arista, cresta"
+    ],
+    [
+     "euphoria",
+     "euforia"
+    ],
+    [
+     "in retrospect",
+     "en retrospectiva"
+    ],
+    [
+     "veil",
+     "velo"
+    ],
+    [
+     "to pick up (wind)",
+     "arreciar, aumentar"
+    ],
+    [
+     "exposed",
+     "expuesto, al descubierto"
+    ],
+    [
+     "deference",
+     "deferencia, respeto"
+    ],
+    [
+     "summit fever",
+     "'fiebre de cumbre'"
+    ],
+    [
+     "to voice doubts",
+     "expresar dudas"
+    ],
+    [
+     "textbook example",
+     "ejemplo de manual"
+    ],
+    [
+     "inclination",
+     "inclinación, preferencia"
+    ],
+    [
+     "to push on",
+     "seguir adelante"
+    ],
+    [
+     "frostbite",
+     "congelación"
+    ],
+    [
+     "to speak up",
+     "hablar, alzar la voz"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "'Marta, who … was to lead the final section' expresses…",
+     "options": [
+      "a habit",
+      "an obligation in the present",
+      "a conditional result",
+      "a plan that existed in the past"
+     ],
+     "answer": 3,
+     "explain_es": "'Was to + infinitivo' = futuro en el pasado: lo que estaba previsto."
+    },
+    {
+     "type": "mc",
+     "q": "Why does the narrator say 'It was the last four words that would come to matter'?",
+     "options": [
+      "The guidebook was wrong about the route",
+      "The route was easier than described",
+      "Good conditions were not guaranteed, and that changed everything",
+      "The narrator disliked the guidebook"
+     ],
+     "answer": 2,
+     "explain_es": "'in good conditions': el tiempo cambió. 'Would come to' anticipa el futuro desde el pasado."
+    },
+    {
+     "type": "mc",
+     "q": "What does the narrator now think about the early euphoria?",
+     "options": [
+      "It helped the group succeed",
+      "It was shared by everyone",
+      "It was justified by his training",
+      "It should have been a warning sign"
+     ],
+     "answer": 3,
+     "explain_es": "\"In retrospect, that thought should have worried me more than it did.\""
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'the wind picked up' means the wind…",
+     "options": [
+      "became stronger",
+      "carried objects",
+      "changed direction",
+      "dropped"
+     ],
+     "answer": 0,
+     "explain_es": "'Pick up' (del viento) = arreciar."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 3, 'Taken together, however, they amounted to something…' The discourse marker 'however' introduces…",
+     "options": [
+      "a conclusion",
+      "an example",
+      "a contrast with the previous sentence",
+      "a time sequence"
+     ],
+     "answer": 2,
+     "explain_es": "Contrasta 'none ... was alarming in itself' con su efecto conjunto."
+    },
+    {
+     "type": "mc",
+     "q": "Why did the narrator say nothing during the discussion?",
+     "options": [
+      "Through not understanding the arguments",
+      "Out of agreement with Joaquín",
+      "Out of deference and distrust of the wish to continue",
+      "Because of the cold"
+     ],
+     "answer": 2,
+     "explain_es": "\"partly out of deference and partly because I badly wanted to go on\"."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, 'summit fever' is dangerous because…",
+     "options": [
+      "desire grows as the goal approaches, just when risk is often highest",
+      "climbers lose physical strength near the top",
+      "summits are always colder",
+      "experienced climbers ignore it"
+     ],
+     "answer": 0,
+     "explain_es": "\"the desire to reach a goal to intensify as it draws nearer, precisely when the cost ... is often greatest\"."
+    },
+    {
+     "type": "tf",
+     "q": "The narrator considers himself an example of the reluctance to voice doubts.",
+     "answer": "T",
+     "explain_es": "\"I was, that morning, a textbook example of the third.\""
+    },
+    {
+     "type": "tf",
+     "q": "Marta wanted to turn back immediately.",
+     "answer": "F",
+     "explain_es": "Tomó la decisión \"against her own inclination\" y primero propuso esperar treinta minutos."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "A clear rule, reluctantly applied",
+      "An argument between siblings",
+      "Reaching the summit",
+      "The narrator's private triumph"
+     ],
+     "answer": 0,
+     "explain_es": "Marta fija una regla (30 minutos) y la cumple, aunque no quisiera."
+    },
+    {
+     "type": "mc",
+     "q": "'…nobody said what everyone was thinking' implies that…",
+     "options": [
+      "everyone was angry with Marta",
+      "the narrator's group had taken a bigger risk",
+      "the other party had lied",
+      "the other party had been lucky not to suffer worse"
+     ],
+     "answer": 3,
+     "explain_es": "Lo que todos pensaban: que podrían haber muerto; mejor callarlo."
+    },
+    {
+     "type": "tf",
+     "q": "The other party had been climbing for more years than the narrator's group.",
+     "answer": "NG",
+     "explain_es": "No se compara la experiencia de ambos grupos."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: The narrator believes that, ____ any of those things failed to happen, they would have carried on. (1 word, inverted form)",
+     "answer": "had",
+     "accept": [
+      "Had"
+     ],
+     "explain_es": "Inversión: \"Had any of those things failed to happen\" = If any of those things had failed…"
+    },
+    {
+     "type": "mc",
+     "q": "What does the narrator conclude about turning round?",
+     "options": [
+      "It depends entirely on the guidebook",
+      "It should be avoided where possible",
+      "It is a sign of weak ambition",
+      "It is the hardest form of ambition"
+     ],
+     "answer": 3,
+     "explain_es": "\"not a failure of ambition but its most difficult form\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-9-2",
+   "title": "The Hardest Training Is Rest",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Sport & Mental Health",
+   "emoji": "🏃",
+   "words": 871,
+   "paragraphs": [
+    "When the distance runner Amara Okoye withdrew from a major championship two seasons ago, the announcement ran to three sentences and gave no reason beyond 'personal health'. Within hours, social media had supplied several. She was injured; she was out of form; she had fallen out with her coach; she was, in the phrase one commentator chose, 'not mentally tough enough for the big stage'. The last of these, Okoye later said, was the one that stung, not least because it was so nearly the opposite of the truth.",
+    "What had actually happened was that, after six years of competing at the highest level, she had stopped sleeping. She would lie awake running through race plans, split times and worst-case scenarios, then train twice the next day on three or four hours of rest. Her times were, if anything, improving. It was her physiotherapist who first noticed that something was wrong, prompted by an apparently trivial detail: Okoye, who had always been meticulous, had begun to forget appointments. Within a month she had been diagnosed with severe burnout, and her medical team advised her to stop competing altogether for at least six months.",
+    "Okoye's case is far from unique. Over the past decade, a growing number of elite athletes have spoken publicly about anxiety, depression and exhaustion, and in doing so have begun to shift a culture that for generations treated psychological difficulty as a private weakness to be overcome rather than a health problem to be treated. Sports psychologists have welcomed the change, while cautioning against a narrative in which every disclosure is framed as heroic. The point, as one put it to me, is not that athletes who struggle are especially brave; it is that struggling is ordinary, and that the conditions of elite sport make it more likely.",
+    "Those conditions are well documented. Elite athletes typically train for many hours a day, often from early adolescence, in environments where performance is measured with extraordinary precision and failure is public. Their identities, and frequently their incomes, are bound up with results over which they have only partial control. Injury can end a career overnight. Moreover, the qualities that make them successful, such as perfectionism, a willingness to tolerate pain and an ability to ignore discomfort, may also make them slow to recognise when they need help.",
+    "It follows that the most significant changes are likely to be structural rather than individual. Some national federations now require that psychological support be made available to all funded athletes, not merely to those in crisis. Others have introduced routine screening for sleep problems and signs of overtraining, on the grounds that physical and mental fatigue are closely intertwined. A small number of coaches have begun to build mandatory rest periods into training plans, treating recovery not as time lost but as part of the work. Whether such measures will prove effective in the long run remains to be seen, but early indications are promising.",
+    "There is, nevertheless, a tension that no policy can entirely resolve. Elite sport is, by its nature, about pushing the body and mind towards their limits, and athletes who refuse to take risks rarely win. The question, then, is not how to remove risk altogether, which would be neither possible nor desirable, but how to distinguish between a calculated risk and a reckless one. Training through mild discomfort before an important race may be entirely sensible. Training through months of insomnia, as Okoye did, is something else. The difficulty is that from the inside, as she herself has acknowledged, the two can feel remarkably similar.",
+    "Okoye's own recovery was neither quick nor linear. For the first few weeks, she said, she felt guilty every morning she did not run, as though she were betraying the people who had invested in her. She was on the point of returning to training several times, and each time her team persuaded her to wait. What eventually helped, alongside therapy, was a series of conversations with retired athletes, several of whom told her that they wished they had stopped sooner. 'They weren't telling me to give up,' she said. 'They were telling me that taking a break wasn't the same thing.'",
+    "She returned to competition fourteen months after her withdrawal. Her first race back was, by her own standards, unremarkable; she finished sixth and was, she said, delighted. She has since set a personal best, and she speaks about her burnout with a frankness that would have been almost unthinkable for an athlete of her standing a generation ago. Asked whether she worries that her openness might be held against her, she shrugged. 'People were going to talk anyway,' she said. 'At least now they're talking about something real.'",
+    "Perhaps the most telling detail of her story concerns the physiotherapist who first noticed the missed appointments. Had she dismissed them, as she might easily have done, Okoye believes she would have carried on until something broke. Her advice to younger athletes is accordingly simple: surround yourself with people who will notice, and learn to listen when they speak up. In a culture that still celebrates the ability to push through, that may be the hardest training of all."
+   ],
+   "glossary": [
+    [
+     "to withdraw from",
+     "retirarse de"
+    ],
+    [
+     "out of form",
+     "en baja forma"
+    ],
+    [
+     "to sting",
+     "escocer, doler"
+    ],
+    [
+     "split times",
+     "tiempos parciales"
+    ],
+    [
+     "meticulous",
+     "meticuloso"
+    ],
+    [
+     "burnout",
+     "agotamiento extremo, síndrome de desgaste"
+    ],
+    [
+     "disclosure",
+     "revelación, confesión"
+    ],
+    [
+     "to be bound up with",
+     "estar ligado a"
+    ],
+    [
+     "overtraining",
+     "sobreentrenamiento"
+    ],
+    [
+     "intertwined",
+     "entrelazado"
+    ],
+    [
+     "mandatory",
+     "obligatorio"
+    ],
+    [
+     "calculated risk",
+     "riesgo calculado"
+    ],
+    [
+     "reckless",
+     "temerario"
+    ],
+    [
+     "linear",
+     "lineal"
+    ],
+    [
+     "to hold something against someone",
+     "guardarle rencor a alguien por algo"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "Why did the comment about mental toughness hurt Okoye most?",
+     "options": [
+      "It was almost the reverse of the truth",
+      "It was published in a newspaper",
+      "It came from her coach",
+      "It mentioned her injury"
+     ],
+     "answer": 0,
+     "explain_es": "\"so nearly the opposite of the truth\": su problema era exceso de exigencia, no falta de dureza."
+    },
+    {
+     "type": "mc",
+     "q": "'She would lie awake running through race plans' describes…",
+     "options": [
+      "a polite request",
+      "a repeated past behaviour",
+      "a single past event",
+      "a future plan"
+     ],
+     "answer": 1,
+     "explain_es": "'Would' para comportamiento repetido en el pasado; 'run through' = repasar."
+    },
+    {
+     "type": "tf",
+     "q": "Okoye's performances were getting worse before her diagnosis.",
+     "answer": "F",
+     "explain_es": "\"Her times were, if anything, improving.\""
+    },
+    {
+     "type": "mc",
+     "q": "What first alerted her physiotherapist?",
+     "options": [
+      "Her complaints about sleep",
+      "Her slower times",
+      "Her forgetting appointments",
+      "An injury"
+     ],
+     "answer": 2,
+     "explain_es": "\"Okoye, who had always been meticulous, had begun to forget appointments.\""
+    },
+    {
+     "type": "mc",
+     "q": "What reservation do sports psychologists express in paragraph 3?",
+     "options": [
+      "Disclosures should not always be portrayed as heroic",
+      "Mental health problems are rare in sport",
+      "The culture has not changed at all",
+      "Athletes should not speak publicly"
+     ],
+     "answer": 0,
+     "explain_es": "\"cautioning against a narrative in which every disclosure is framed as heroic\"."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 4, 'bound up with' is closest in meaning to…",
+     "options": [
+      "protected from",
+      "limited by",
+      "closely connected to",
+      "opposed to"
+     ],
+     "answer": 2,
+     "explain_es": "'Be bound up with' = estar estrechamente ligado a."
+    },
+    {
+     "type": "mc",
+     "q": "What does the discourse marker 'Moreover' introduce in paragraph 4?",
+     "options": [
+      "A conclusion",
+      "A contrast",
+      "An additional, reinforcing point",
+      "An example of injury"
+     ],
+     "answer": 2,
+     "explain_es": "Añade un argumento: las cualidades del éxito dificultan pedir ayuda."
+    },
+    {
+     "type": "mc",
+     "q": "'It follows that…' at the start of paragraph 5 signals…",
+     "options": [
+      "a quotation",
+      "a logical consequence of the previous paragraph",
+      "a change of topic",
+      "a personal opinion"
+     ],
+     "answer": 1,
+     "explain_es": "Marcador de consecuencia lógica."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Some federations require that psychological support ____ made available to all funded athletes. (1 word)",
+     "answer": "be",
+     "accept": [],
+     "explain_es": "Subjuntivo tras 'require that'."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "New rules for coaches",
+      "The benefits of insomnia",
+      "Calculated versus reckless risk",
+      "Why athletes should avoid risk"
+     ],
+     "answer": 2,
+     "explain_es": "Distinción entre riesgo calculado y temerario."
+    },
+    {
+     "type": "mc",
+     "q": "'She was on the point of returning to training several times' means she…",
+     "options": [
+      "refused to return",
+      "nearly returned but did not",
+      "returned only once",
+      "returned several times"
+     ],
+     "answer": 1,
+     "explain_es": "'Be on the point of' = estar a punto de (futuro en el pasado que no llega a cumplirse)."
+    },
+    {
+     "type": "tf",
+     "q": "The retired athletes advised Okoye to retire.",
+     "answer": "F",
+     "explain_es": "\"They weren't telling me to give up.\""
+    },
+    {
+     "type": "tf",
+     "q": "Okoye now works as a coach for younger athletes.",
+     "answer": "NG",
+     "explain_es": "Da consejos a jóvenes, pero no se dice que sea entrenadora."
+    },
+    {
+     "type": "mc",
+     "q": "What is the main message of the final paragraph?",
+     "options": [
+      "Recognising and accepting others' warnings is a vital skill",
+      "Physiotherapists are more important than coaches",
+      "Athletes should push through all difficulties",
+      "Younger athletes face less pressure"
+     ],
+     "answer": 0,
+     "explain_es": "\"surround yourself with people who will notice, and learn to listen when they speak up\"."
+    }
+   ]
+  }
+ ],
+ "10": [
+  {
+   "id": "u-c2-10-1",
+   "title": "A Library for Readers Not Yet Born",
+   "level": "C2",
+   "genre": "feature article",
+   "topic": "Legacy & Long-term Thinking",
+   "emoji": "📚",
+   "words": 885,
+   "paragraphs": [
+    "In a forest outside a northern European city, a thousand spruce trees are growing in neat rows. By the time they are ready to be felled, in about eighty years, most of the people who planted them will be dead. The trees are destined to become paper, and the paper is to be used to print an anthology of a hundred books, one contributed each year by a different writer. None of the manuscripts will be read until then. They are kept, sealed, in a wood-lined room in the city's public library, where visitors can see the titles but not a single word of the texts.",
+    "The project, which by the time it concludes will have been running for a century, was conceived as an experiment in what its founder calls 'cathedral thinking': the willingness to begin something whose completion you will not live to see. The writers who contribute know that they will never hear how their work is received. Several have said that this is precisely its appeal. Free of reviews, sales figures and the pressure to be topical, they are writing, as one of them put it, 'for people we can only imagine, about a world we cannot predict'.",
+    "It is easy to be charmed by such schemes and equally easy to be cynical about them. Critics have pointed out that a library of sealed manuscripts is every bit as vulnerable to fire, flood or political upheaval as any other building, and that the readers of the future may be nowhere near as interested in our books as we would like them to be. Both points are fair. Yet the project's value lies less in the certainty of its outcome than in the habit of mind it tries to cultivate. We live, as many observers have noted, in an age of extraordinary short-termism. Companies report their profits quarterly; politicians plan for the next election; news is measured in minutes. Against that background, a commitment measured in generations is not merely unusual. It is almost subversive.",
+    "Long-term thinking of this kind was once far more common. Medieval masons laid foundations for cathedrals that would take centuries to complete. Farmers planted oaks for their grandchildren's ships. The proverb that society grows great when old people plant trees in whose shade they will never sit is older than any of the institutions now trying to revive it. What seems to have changed is not our capacity to think ahead but the incentives that reward us for doing so. The further into the future a benefit lies, the less it appears to be worth to us now, a tendency economists call discounting and the rest of us might simply call impatience.",
+    "The consequences are most obvious in relation to the environment. Decisions taken in this decade about energy, land and water will shape the conditions in which people are living well into the next century. By 2100, a child born today will have been living with the effects of those decisions for her entire life. Yet the people most affected have no vote, no voice and no lobbyists. Some countries have experimented with ways of representing them: one has appointed a commissioner for future generations, whose task is to assess whether public bodies are taking long-term consequences into account. Another is due to introduce a requirement that major legislation be accompanied by an assessment of its effects fifty years ahead. Whether such measures will make much difference is uncertain, but they are, at the very least, an acknowledgement of the problem.",
+    "There is, of course, a risk of grandiosity in all this. Nobody can know what the people of 2100 will value, and it would be presumptuous to plan their lives for them. The most thoughtful advocates of long-term thinking are careful to distinguish between imposing our preferences on the future and preserving its options. Planting a forest, protecting a language or keeping a library open does not dictate what future generations will do; it simply ensures that they have more to choose from. As the old saying has it, we do not inherit the earth from our ancestors so much as borrow it from our children.",
+    "The writers contributing to the forest library seem to understand this instinctively. Their manuscripts, according to those few who have spoken about them, are not prophecies or warnings but simply stories, written in the hope that someone, someday, will find them worth reading. One contributor described handing over her manuscript as 'the most hopeful thing I have ever done', precisely because it assumed that there would be a future, and that it would contain readers.",
+    "The spruce trees, meanwhile, are growing. They are on the verge of their first thinning, a routine operation that will remove the weakest so that the rest can thrive. The foresters responsible for them will retire long before the trees are harvested, and will hand them on to successors they have not yet met. It is a small thing, a few hectares of forest and a room full of sealed paper. But it is a reminder that some of the most worthwhile things we do are those whose results we will never see, and that a legacy, in the end, is less about being remembered than about leaving something behind that others can use."
+   ],
+   "glossary": [
+    [
+     "spruce",
+     "abeto (pícea)"
+    ],
+    [
+     "to fell",
+     "talar"
+    ],
+    [
+     "to be destined to",
+     "estar destinado a"
+    ],
+    [
+     "anthology",
+     "antología"
+    ],
+    [
+     "manuscript",
+     "manuscrito"
+    ],
+    [
+     "to conceive",
+     "concebir, idear"
+    ],
+    [
+     "topical",
+     "de actualidad"
+    ],
+    [
+     "upheaval",
+     "agitación, convulsión"
+    ],
+    [
+     "subversive",
+     "subversivo"
+    ],
+    [
+     "mason",
+     "cantero, albañil"
+    ],
+    [
+     "discounting (econ.)",
+     "descuento (valoración menor del futuro)"
+    ],
+    [
+     "lobbyist",
+     "miembro de un grupo de presión"
+    ],
+    [
+     "grandiosity",
+     "grandilocuencia, megalomanía"
+    ],
+    [
+     "presumptuous",
+     "presuntuoso, atrevido"
+    ],
+    [
+     "thinning (forestry)",
+     "clareo, entresaca"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "'The trees are destined to become paper, and the paper is to be used…' The structure 'is to be used' expresses…",
+     "options": [
+      "a formal arrangement or plan",
+      "a past habit",
+      "a possibility",
+      "an obligation imposed on the reader"
+     ],
+     "answer": 0,
+     "explain_es": "'Be to + infinitivo' = plan o disposición formal."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: By the time it concludes, the project will have been ____ for a century. (1 word)",
+     "answer": "running",
+     "accept": [],
+     "explain_es": "Futuro perfecto continuo: \"will have been running for a century\"."
+    },
+    {
+     "type": "mc",
+     "q": "Why do some writers find the project appealing?",
+     "options": [
+      "They are free from commercial and critical pressures",
+      "They will be paid more",
+      "Their books will be famous immediately",
+      "They can edit their work later"
+     ],
+     "answer": 0,
+     "explain_es": "\"Free of reviews, sales figures and the pressure to be topical\"."
+    },
+    {
+     "type": "mc",
+     "q": "How does the writer respond to the critics' points in paragraph 3?",
+     "options": [
+      "By agreeing that the project should end",
+      "By ignoring them",
+      "By rejecting them as unfounded",
+      "By accepting them but locating the project's value elsewhere"
+     ],
+     "answer": 3,
+     "explain_es": "\"Both points are fair. Yet the project's value lies less in the certainty of its outcome than in the habit of mind…\""
+    },
+    {
+     "type": "mc",
+     "q": "'nowhere near as interested in our books as we would like them to be' means future readers may be…",
+     "options": [
+      "exactly as interested",
+      "slightly more interested",
+      "uninterested in any books",
+      "far less interested than we hope"
+     ],
+     "answer": 3,
+     "explain_es": "'Nowhere near as … as' = ni de lejos tan… como."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 3, 'subversive' suggests that long-term commitment…",
+     "options": [
+      "is dangerous to the public",
+      "challenges prevailing norms",
+      "is illegal",
+      "is old-fashioned"
+     ],
+     "answer": 1,
+     "explain_es": "'Subversive' = que desafía lo establecido (aquí, el cortoplacismo)."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 4, what has changed since the Middle Ages?",
+     "options": [
+      "The incentives that reward long-term thinking",
+      "The value of trees",
+      "Our ability to plan ahead",
+      "The number of cathedrals"
+     ],
+     "answer": 0,
+     "explain_es": "\"not our capacity to think ahead but the incentives that reward us for doing so\"."
+    },
+    {
+     "type": "mc",
+     "q": "'The further into the future a benefit lies, the less it appears to be worth' is an example of…",
+     "options": [
+      "a reporting passive",
+      "an ellipsis",
+      "a double comparative showing parallel change",
+      "an inverted conditional"
+     ],
+     "answer": 2,
+     "explain_es": "Estructura 'the + comparativo…, the + comparativo'."
+    },
+    {
+     "type": "tf",
+     "q": "Future generations are currently represented by lobbyists in most countries.",
+     "answer": "F",
+     "explain_es": "\"the people most affected have no vote, no voice and no lobbyists\"."
+    },
+    {
+     "type": "mc",
+     "q": "'Another is due to introduce a requirement…' indicates that the requirement…",
+     "options": [
+      "is scheduled to be introduced",
+      "is under secret discussion",
+      "has been rejected",
+      "has already been introduced"
+     ],
+     "answer": 0,
+     "explain_es": "'Be due to' = estar previsto para."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Why the future cannot be predicted",
+      "The arrogance of foresters",
+      "Inheriting the earth",
+      "Preserving options, not imposing choices"
+     ],
+     "answer": 3,
+     "explain_es": "Distingue entre imponer preferencias y preservar opciones."
+    },
+    {
+     "type": "tf",
+     "q": "The writer quotes the full text of one of the manuscripts.",
+     "answer": "F",
+     "explain_es": "Los manuscritos están sellados; solo se citan palabras de una autora sobre entregarlo."
+    },
+    {
+     "type": "tf",
+     "q": "The foresters have already chosen their successors.",
+     "answer": "F",
+     "explain_es": "\"successors they have not yet met\"."
+    },
+    {
+     "type": "mc",
+     "q": "What view of legacy does the article end with?",
+     "options": [
+      "Legacy is impossible to achieve",
+      "Legacy is about leaving something useful for others",
+      "Legacy is about personal fame",
+      "Legacy depends on writing books"
+     ],
+     "answer": 1,
+     "explain_es": "\"less about being remembered than about leaving something behind that others can use\"."
+    }
+   ]
+  },
+  {
+   "id": "u-c2-10-2",
+   "title": "The Uses of Nostalgia",
+   "level": "C2",
+   "genre": "essay",
+   "topic": "Nostalgia & Change",
+   "emoji": "📻",
+   "words": 855,
+   "paragraphs": [
+    "For most of its history, nostalgia was a disease. The word was coined in the late seventeenth century by a Swiss medical student to describe a condition afflicting soldiers serving far from home: a melancholy so severe that it was thought capable of killing them. Physicians blamed it variously on the change of air, the ringing of cowbells and, in one memorable theory, damage to the eardrums caused by the clanging of Alpine life. Treatments ranged from leeches to threats. It was not until well into the twentieth century that nostalgia shed its medical associations and became what it is today: a mild, bittersweet, slightly embarrassing pleasure.",
+    "That embarrassment is worth examining. Nostalgia has a poor reputation among intellectuals, who tend to regard it as sentimental at best and politically dangerous at worst. There is good reason for the suspicion. Longing for a lost golden age is the stock in trade of demagogues, and the past it invokes is almost always a fiction, a time when everyone knew their place and nobody locked their doors, or so we are told. As the saying goes, the good old days were rarely as good as they are remembered, and for many people, they were not good at all.",
+    "And yet recent research in psychology suggests that this picture is incomplete. Studies in which participants are asked to recall a nostalgic memory have found, fairly consistently, that the experience tends to raise rather than lower their mood. People who have just been nostalgic report feeling more connected to others, more confident that their lives have meaning, and more optimistic about the future. Far from being a retreat from the present, nostalgia appears in many cases to function as a resource for coping with it, particularly at moments of loneliness, transition or uncertainty.",
+    "How can both views be right? Part of the answer lies in a distinction that some scholars have drawn between two kinds of nostalgia. The first, which we might call restorative, seeks to rebuild the lost home exactly as it was, and treats any change as betrayal. This is the nostalgia of political movements that promise to make the nation what it once was. The second, which we might call reflective, dwells on the longing itself, aware that the past cannot be recovered and that memory is partial. It is every bit as emotional as the first, but it is ironic, questioning and, crucially, compatible with change.",
+    "Most of the nostalgia that people experience in daily life seems to be of the second kind. The middle-aged man who listens to the music of his adolescence does not, for the most part, wish to return to being sixteen, with all its humiliations. He is revisiting a version of himself that still lives inside him, checking, perhaps, that the thread connecting then to now is intact. In this sense, nostalgia is less about the past than about continuity, a way of reassuring ourselves that we remain recognisably the same people despite everything that has changed around us.",
+    "This may explain why nostalgia tends to increase during periods of rapid change. When the familiar landmarks of life are disappearing, whether through ageing, migration, technological upheaval or the loss of people we love, the need for continuity becomes more acute. It is no coincidence that interest in old photographs, recipes and family histories often surges during difficult years. People are not hiding from the future; they are gathering what they need to face it.",
+    "None of this rehabilitates the restorative variety. The politics of the lost golden age remains as misleading as ever, and the more vividly it is described, the more suspicious we should be. But a blanket dismissal of nostalgia risks throwing the baby out with the bathwater. To feel affection for what has gone is not the same as wanting it back, and to treat every expression of longing as reactionary is to misunderstand one of the most ordinary ways in which human beings make sense of time.",
+    "There is, I think, a further point. A society that has no use for nostalgia may find it harder to value what it has. Our sense of what is worth preserving, a building, a dialect, a tradition, often begins with the recognition that it might one day be lost, and with the anticipatory nostalgia that recognition produces. By the time a neighbourhood has been demolished, it is too late to campaign for it. Those who feel a pang of loss in advance are sometimes the only ones who act in time.",
+    "So I have stopped apologising for my own nostalgia, which mostly takes the form of an unreasonable attachment to the radio programmes of my childhood. I do not believe they were better than what is broadcast today; in many respects, they were nowhere near as good. But listening to them reminds me of the kitchen where I first heard them, and of the people who were there, and that is reason enough. The past, as a much-quoted line has it, is a foreign country. It does no harm to visit, as long as we remember to come home."
+   ],
+   "glossary": [
+    [
+     "to coin",
+     "acuñar"
+    ],
+    [
+     "to afflict",
+     "afligir, aquejar"
+    ],
+    [
+     "eardrum",
+     "tímpano"
+    ],
+    [
+     "clanging",
+     "estruendo metálico"
+    ],
+    [
+     "leech",
+     "sanguijuela"
+    ],
+    [
+     "to shed",
+     "desprenderse de"
+    ],
+    [
+     "bittersweet",
+     "agridulce"
+    ],
+    [
+     "stock in trade",
+     "recurso habitual, especialidad"
+    ],
+    [
+     "to invoke",
+     "invocar"
+    ],
+    [
+     "restorative",
+     "restaurador"
+    ],
+    [
+     "to dwell on",
+     "recrearse en, darle vueltas a"
+    ],
+    [
+     "acute",
+     "agudo, intenso"
+    ],
+    [
+     "to surge",
+     "dispararse, aumentar bruscamente"
+    ],
+    [
+     "to throw the baby out with the bathwater",
+     "tirar el grano con la paja"
+    ],
+    [
+     "anticipatory",
+     "anticipatorio"
+    ]
+   ],
+   "questions": [
+    {
+     "type": "mc",
+     "q": "What is the purpose of the first paragraph?",
+     "options": [
+      "To prove that nostalgia is still a disease",
+      "To describe life in the Alps",
+      "To criticise seventeenth-century doctors",
+      "To show how the meaning of nostalgia has changed"
+     ],
+     "answer": 3,
+     "explain_es": "Recorre la historia de la palabra, de enfermedad a placer agridulce."
+    },
+    {
+     "type": "mc",
+     "q": "What is the writer's tone in describing early theories of nostalgia?",
+     "options": [
+      "Angry",
+      "Neutral and technical",
+      "Wryly amused",
+      "Deeply respectful"
+     ],
+     "answer": 2,
+     "explain_es": "Detalles como los cencerros o las sanguijuelas, \"in one memorable theory\", muestran ironía divertida."
+    },
+    {
+     "type": "vocab",
+     "q": "In paragraph 2, 'stock in trade' means…",
+     "options": [
+      "a type of shop",
+      "a rare exception",
+      "a financial investment",
+      "something habitually used"
+     ],
+     "answer": 3,
+     "explain_es": "'Stock in trade' = recurso habitual de alguien."
+    },
+    {
+     "type": "mc",
+     "q": "Why do intellectuals tend to distrust nostalgia?",
+     "options": [
+      "It is a recognised medical disorder",
+      "It reduces economic growth",
+      "It makes people forget the past",
+      "It is linked to idealised, often fictional pasts used by demagogues"
+     ],
+     "answer": 3,
+     "explain_es": "\"Longing for a lost golden age is the stock in trade of demagogues\"."
+    },
+    {
+     "type": "tf",
+     "q": "Psychological studies have generally found that nostalgia worsens people's mood.",
+     "answer": "F",
+     "explain_es": "\"the experience tends to raise rather than lower their mood\"."
+    },
+    {
+     "type": "mc",
+     "q": "What distinguishes reflective nostalgia from restorative nostalgia?",
+     "options": [
+      "It accepts that the past cannot be recovered",
+      "It is less emotional",
+      "It rejects all change",
+      "It is mainly political"
+     ],
+     "answer": 0,
+     "explain_es": "Es consciente de que el pasado no se recupera y es compatible con el cambio."
+    },
+    {
+     "type": "mc",
+     "q": "'It is every bit as emotional as the first' means reflective nostalgia is…",
+     "options": [
+      "just as emotional",
+      "much less emotional",
+      "slightly more emotional",
+      "emotional only in parts"
+     ],
+     "answer": 0,
+     "explain_es": "'Every bit as … as' = igual de… que (énfasis en la igualdad)."
+    },
+    {
+     "type": "mc",
+     "q": "According to paragraph 5, what is nostalgia mainly about?",
+     "options": [
+      "Escaping responsibility",
+      "Wishing to be young again",
+      "A sense of continuity in one's identity",
+      "Rejecting modern music"
+     ],
+     "answer": 2,
+     "explain_es": "\"nostalgia is less about the past than about continuity\"."
+    },
+    {
+     "type": "heading",
+     "q": "Choose the best heading for paragraph 6.",
+     "options": [
+      "Hiding from the future",
+      "Why technology causes loneliness",
+      "The decline of family history",
+      "Gathering resources in times of change"
+     ],
+     "answer": 3,
+     "explain_es": "\"they are gathering what they need to face it\"."
+    },
+    {
+     "type": "gap",
+     "q": "Summary: Rejecting nostalgia completely risks throwing the ____ out with the bathwater. (1 word)",
+     "answer": "baby",
+     "accept": [],
+     "explain_es": "Expresión fija: 'throw the baby out with the bathwater' = desechar lo bueno junto con lo malo."
+    },
+    {
+     "type": "mc",
+     "q": "In paragraph 7, 'the more vividly it is described, the more suspicious we should be' advises readers to…",
+     "options": [
+      "become increasingly wary as the golden-age picture grows more vivid",
+      "avoid descriptions of the past",
+      "trust detailed descriptions",
+      "describe the past more vividly"
+     ],
+     "answer": 0,
+     "explain_es": "Comparativa doble: cuanto más vívida la imagen, más recelo."
+    },
+    {
+     "type": "mc",
+     "q": "What 'further point' does the writer make in paragraph 8?",
+     "options": [
+      "Demolition is usually justified",
+      "Nostalgia prevents action",
+      "Societies should ignore the past",
+      "Anticipatory nostalgia can motivate people to preserve things in time"
+     ],
+     "answer": 3,
+     "explain_es": "\"Those who feel a pang of loss in advance are sometimes the only ones who act in time.\""
+    },
+    {
+     "type": "tf",
+     "q": "The writer believes the radio programmes of their childhood were better than today's.",
+     "answer": "F",
+     "explain_es": "\"I do not believe they were better ... they were nowhere near as good.\""
+    },
+    {
+     "type": "tf",
+     "q": "The writer still lives in the house where they first heard the programmes.",
+     "answer": "NG",
+     "explain_es": "Menciona la cocina donde los oyó, pero no dónde vive ahora."
     }
    ]
   }
