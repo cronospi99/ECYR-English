@@ -6,6 +6,7 @@ import {
   isHighlightColor,
   PLAIN,
   rangeAll,
+  rangeValue,
   replaceRange,
   segments,
   segStyle,
@@ -41,12 +42,18 @@ export interface RichEditorHandle {
   highlight: (color: HighlightColor | null) => boolean;
   /** Removes all formatting from the selection. False when nothing is selected. */
   clearFormat: () => boolean;
+  /** Text size / font (index in SIZES / FONTS) of the selection; with a bare caret, for the next characters typed. */
+  setSize: (i: number) => void;
+  setFont: (i: number) => void;
   focus: () => void;
 }
 
 export interface FormatState {
   bold: boolean;
   italic: boolean;
+  /** Index in SIZES / FONTS of the selection (or caret); null when the selection mixes several. */
+  size: number | null;
+  font: number | null;
   /** Some text is selected (not just a caret). */
   range: boolean;
 }
@@ -55,10 +62,10 @@ export interface FormatState {
 const NOTE_MIME = 'application/x-ecyr-note';
 
 const BLOCK = new Set(['DIV', 'P', 'LI', 'UL', 'OL', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'PRE', 'SECTION', 'ARTICLE', 'TR']);
-const MARK_RE = /[\u2060-\u2065\u206A-\u206D]/;
+const MARK_RE = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/;
 
 /** DOM text → model text of the same length (marks never reach the DOM; nbsp typed by the browser becomes a space). */
-const cleanText = (s: string) => s.replace(/[\u2060-\u2065\u206A-\u206D]/g, '').replace(/\u00A0/g, ' ').replace(/\r\n?/g, '\n');
+const cleanText = (s: string) => s.replace(/[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/g, '').replace(/\u00A0/g, ' ').replace(/\r\n?/g, '\n');
 /** Length in the model of the first `off` UTF-16 units of a DOM text node. */
 const cleanLen = (raw: string, off: number) => cleanText(raw.slice(0, off)).length;
 /** DOM offset within `raw` of model offset `pos` (skips marks / \r). */
@@ -86,6 +93,8 @@ function buildInto(target: HTMLElement, text: string) {
     if (g.color) span.setAttribute('data-c', g.color);
     if (g.bold) span.setAttribute('data-b', '1');
     if (g.italic) span.setAttribute('data-i', '1');
+    if (g.size) span.setAttribute('data-s', String(g.size));
+    if (g.font) span.setAttribute('data-f', String(g.font));
     const st = segStyle(g);
     if (st.background) {
       span.style.background = String(st.background);
@@ -95,6 +104,8 @@ function buildInto(target: HTMLElement, text: string) {
     }
     if (g.bold) span.style.fontWeight = '700';
     if (g.italic) span.style.fontStyle = 'italic';
+    if (st.fontSize) span.style.fontSize = String(st.fontSize);
+    if (st.fontFamily) span.style.fontFamily = String(st.fontFamily);
     span.textContent = g.text;
     nodes.push(span);
   }
@@ -115,6 +126,8 @@ function clipboardHtml(text: string) {
       let h = esc(g.text);
       if (g.italic) h = `<i>${h}</i>`;
       if (g.bold) h = `<b>${h}</b>`;
+      const st = segStyle(g);
+      if (st.fontSize || st.fontFamily) h = `<span style="${st.fontSize ? `font-size:${String(st.fontSize)};` : ''}${st.fontFamily ? `font-family:${String(st.fontFamily).replace(/"/g, "'")}` : ''}">${h}</span>`;
       if (g.color) h = `<mark style="background:${String(segStyle(g).background)}">${h}</mark>`;
       return h;
     })
@@ -131,7 +144,13 @@ type Tok =
 function elFmt(el: HTMLElement, f: Fmt): Fmt {
   if (el.hasAttribute('data-seg')) {
     const c = el.getAttribute('data-c');
-    return { color: isHighlightColor(c) ? c : null, bold: el.getAttribute('data-b') === '1', italic: el.getAttribute('data-i') === '1' };
+    return {
+      color: isHighlightColor(c) ? c : null,
+      bold: el.getAttribute('data-b') === '1',
+      italic: el.getAttribute('data-i') === '1',
+      size: Number(el.getAttribute('data-s')) || 0,
+      font: Number(el.getAttribute('data-f')) || 0,
+    };
   }
   const out = { ...f };
   const tag = el.tagName;
@@ -360,10 +379,10 @@ export function RichNoteEditor({
     if (!f) return;
     const [a, b] = lastSel.current;
     const t = model.current;
-    if (a !== b) f({ bold: rangeAll(t, a, b, 'bold'), italic: rangeAll(t, a, b, 'italic'), range: true });
+    if (a !== b) f({ bold: rangeAll(t, a, b, 'bold'), italic: rangeAll(t, a, b, 'italic'), size: rangeValue(t, a, b, 'size'), font: rangeValue(t, a, b, 'font'), range: true });
     else {
       const p = pending.current?.fmt ?? fmtAt(t, a);
-      f({ bold: p.bold, italic: p.italic, range: false });
+      f({ bold: p.bold, italic: p.italic, size: p.size, font: p.font, range: false });
     }
   }, []);
 
@@ -521,10 +540,30 @@ export function RichNoteEditor({
     [commit, emitFormat, getSel, setSel],
   );
 
+  /** Size / font on the selection; with a bare caret, for what is typed next. */
+  const setKey = useCallback(
+    (key: 'size' | 'font', value: number) => {
+      const [a, b] = getSel() ?? lastSel.current;
+      const t = model.current;
+      if (a === b) {
+        const base = pending.current?.fmt ?? fmtAt(t, a);
+        pending.current = { fmt: { ...base, [key]: value }, base: stripMarks(t), at: a };
+        el.current?.focus({ preventScroll: true });
+        setSel([a, a]);
+        emitFormat();
+        return;
+      }
+      commit(formatRange(t, a, b, { [key]: value }), [a, b], 'format');
+    },
+    [commit, emitFormat, getSel, setSel],
+  );
+
   useImperativeHandle(
     ref,
     () => ({
       toggle: toggleKey,
+      setSize: (i) => setKey('size', i),
+      setFont: (i) => setKey('font', i),
       highlight: (color) => {
         const [a, b] = getSel() ?? lastSel.current;
         if (a === b) return false;
@@ -543,7 +582,7 @@ export function RichNoteEditor({
       },
       focus: () => el.current?.focus({ preventScroll: true }),
     }),
-    [commit, emitFormat, getSel, toggleKey],
+    [commit, emitFormat, getSel, setKey, toggleKey],
   );
 
   // First render, editable mode, focus.
