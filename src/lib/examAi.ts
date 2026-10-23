@@ -16,7 +16,7 @@ export interface ExamMark {
   transcript?: string;
 }
 
-async function generate(parts: unknown[]): Promise<string> {
+export async function generate(parts: unknown[]): Promise<string> {
   if (!supabase) throw new Error('La calificación con IA necesita conexión con el servidor.');
   const { data: s } = await supabase.auth.getSession();
   if (!s.session) throw new Error('Inicia sesión para que la IA califique esta parte.');
