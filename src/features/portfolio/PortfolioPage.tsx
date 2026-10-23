@@ -1,3 +1,4 @@
+import { TeacherReviews } from './TeacherReviews';
 import { useState } from 'react';
 import { Briefcase, CloudOff, Lock, Plus } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
@@ -51,6 +52,7 @@ function Portfolio({ uid, hasTeacher, isTeacher }: { uid: string; hasTeacher: bo
         </Button>
       }
     >
+      {!isTeacher && <TeacherReviews />}
       <PortfolioListView state={state} owner onAdd={openNew} onEdit={(item) => setSheet({ open: true, item })} />
 
       <UploadSheet

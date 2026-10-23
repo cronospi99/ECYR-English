@@ -11,10 +11,12 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-UN PASO EN SUPABASE: ejecutar supabase/migrations/13_c2_level.sql (SQL
-Editor → pegar → Run). Solo amplía las validaciones de nivel para aceptar
-"C2" en tareas asignadas, Mis trabajos y quizzes de podcasts. Sin ella,
-asignar una tarea de C2 da error. Vercel no necesita cambios.
+DOS PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+  1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
+     asignadas, Mis trabajos y quizzes de podcasts.
+  2. supabase/migrations/14_submission_reviews.sql — activa la revisión
+     manual del docente (sección W).
+Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
 - 10 unidades completas, con la misma estructura de los demás niveles.
@@ -104,9 +106,13 @@ V. HILO DE CLASE (solo docentes · Sala del docente › Material)
 - «Generar» funciona sin IA; «Con IA» escribe además la historia completa
   al nivel (función gemini ya desplegada). Botones para otra idea y copiar.
 - Oculto para estudiantes.
-- MOTIVACIÓN (10 a 70 años): eliges quién está en clase (Niños 10–13,
-  Adolescentes 14–17, Jóvenes adultos 18–30, Adultos 30–70). Cambian los
-  personajes, el tono y:
+- MOTIVACIÓN (10 a 70 años): indicas cuántos estudiantes hay de cada
+  grupo (Niños 10–13, Adolescentes 14–17, Jóvenes adultos 18–30, Adultos
+  30–70) con contadores − / +. Una barra muestra la proporción. El grupo
+  mayoritario define personajes y tono; si la clase mezcla niños o
+  adolescentes con adultos, se marca "Grupo intergeneracional" y el gancho
+  y el energizante pasan a ser actividades para todas las edades. La IA
+  recibe la composición exacta de la clase. Cambian:
   · Gancho de 30 s para captar la atención apenas empieza la clase.
   · Energizante de 1–2 min a mitad de clase (Simon says, duelos de 10 s,
     esquinas, speed chat…).
@@ -114,7 +120,24 @@ V. HILO DE CLASE (solo docentes · Sala del docente › Material)
     vocabulario y la gramática de las unidades (mímica, tabú, dibujo,
     frases, robo, "post viral", debate…), cronómetro grande con sonido al
     terminar, 2 a 4 equipos con marcador y corona al que va ganando.
+    El número de equipos se sugiere según el tamaño de la clase (2 hasta 8
+    estudiantes, 3 hasta 15, luego 4) y cada equipo sale equilibrado por
+    edades (p. ej. 17 → 4 equipos de 1🧒 2🎧 2☕).
     Espacio = iniciar/pausar, Esc = salir.
+
+W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
+- Al abrir un writing o speaking: seleccionas palabras del texto del
+  estudiante → «Comentar». Cada comentario queda resaltado y numerado sobre
+  el texto, con la lista debajo (se borran con 🗑).
+- Parciales: las 6 notas por habilidad son editables (al lado se ve la de
+  la IA). La nota final /5,0 se recalcula en vivo y muestra tachada la de
+  la IA si cambió. Las habilidades pendientes se marcan en naranja.
+  Otros trabajos: nota opcional sobre 100.
+- Comentario general, «Visible para el estudiante» o «Borrador (solo tú)»
+  y «Guardar revisión». En la lista aparece «✓ Revisado · 4,3/5 · 1 💬».
+- El estudiante ve en «Mis trabajos › Revisiones de tu profe» la nota,
+  las notas por habilidad, el comentario y sus frases resaltadas con cada
+  corrección. El texto original del estudiante nunca se modifica.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:

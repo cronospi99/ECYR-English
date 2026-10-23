@@ -11,7 +11,7 @@
  */
 import type { CefrLevel, Unit } from '@/content/types';
 import { generate } from './examAi';
-import { audienceOf, energizerFor, hookFor, type Audience, type Energizer } from './engagement';
+import { audienceOf, describeMix, dominant, energizerForMix, hookForMix, type Audience, type Energizer, type Mix } from './engagement';
 
 export type ThreadStyle = 'story' | 'mystery' | 'gossip' | 'news' | 'diary' | 'trip';
 
@@ -60,7 +60,9 @@ export interface Thread {
   opener: Activity;
   closer: Activity;
   tips: string[];
+  /** The largest age group (drives names and the team challenge's tone). */
   audience: Audience;
+  mix: Mix;
   /** 30-second attention grabber before the opener. */
   hook: string;
   /** 1–2 minute brain break for the middle of the class. */
@@ -72,7 +74,7 @@ export interface ThreadInput {
   units: Unit[];
   topic: string;
   style: ThreadStyle;
-  audience: Audience;
+  mix: Mix;
   seed: number;
 }
 
@@ -233,7 +235,8 @@ export function stageOf(i: number, n: number) {
 
 const CUES = ['Cuéntala en 3 frases; ellos adivinan qué sigue.', 'Haz una pregunta y deja que la clase invente el detalle.', 'Pausa en el momento clave: ¿qué pasa ahora?', 'Que la cuenten en parejas con las palabras de la unidad.'];
 
-export function buildLocal({ level, units, topic, style, audience, seed }: ThreadInput): Thread {
+export function buildLocal({ level, units, topic, style, mix, seed }: ThreadInput): Thread {
+  const audience = dominant(mix);
   const seedPlan = pick(SEEDS[style], seed);
   const [a, b, c] = pick(audienceOf(audience).names, seed + 1);
   const chapters: Chapter[] = units.map((u, i) => {
@@ -278,8 +281,9 @@ export function buildLocal({ level, units, topic, style, audience, seed }: Threa
       'Cierra con una pregunta abierta: la próxima clase empieza sola.',
     ],
     audience,
-    hook: hookFor(audience, a, seed),
-    energizer: energizerFor(audience, seed),
+    mix,
+    hook: hookForMix(mix, a, seed),
+    energizer: energizerForMix(mix, seed),
   };
 }
 
@@ -287,7 +291,7 @@ export function buildLocal({ level, units, topic, style, audience, seed }: Threa
 
 const SHAPE = `{"title":"English title","premise":"ONE short sentence in Spanish","story":"the whole thread in English, one short paragraph per chapter, each starting with 'Chapter N · <unit title>' on its own line","characters":[{"name":"","role":"Spanish, a few words"}],"chapters":[{"unit":0,"link":"Spanish, max 6 words: how it follows the previous chapter","scene":"ONE sentence in English at the level: what happens","cue":"Spanish, max 14 words: what the teacher does","questions":["2 short English questions that need the unit's vocabulary or grammar"]}],"opener":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"closer":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"tips":["2 tips in Spanish, max 10 words each"],"hook":"Spanish, max 20 words: a 30-second attention grabber that starts the class","energizer":{"title":"","minutes":2,"how":"Spanish, max 20 words: a 1–2 minute movement or competition break using the units"}}`;
 
-function prompt({ level, units, topic, style, audience }: ThreadInput) {
+function prompt({ level, units, topic, style, mix }: ThreadInput) {
   const st = STYLES.find((s) => s.id === style)!;
   const list = units
     .map((u) => `- Unit ${u.n} "${unitName(u)}" (theme: ${u.theme}). Vocabulary: ${u.vocab.slice(0, 10).map((v) => v.term).join('; ')}. Grammar: ${u.grammar.map((g) => g.name).join('; ')}.`)
@@ -299,7 +303,7 @@ ${list}
 
 Rules:
 - English text (story, scene, questions) must be strictly at ${level}: vocabulary and grammar a ${level} student can read; reuse the units' vocabulary and grammar naturally.
-- The class is ${audienceOf(audience).ai}. Characters, situations and humour must hook THEM and keep the energy up; nothing offensive; fictional people only, never real ones.
+- The class: ${describeMix(mix)}. Characters, situations and humour must hook THEM and keep the energy up; nothing offensive; fictional people only, never real ones.
 - One chapter per unit, in the order given, with the "unit" number as given.
 - "opener" (start of class, recalls or sets up the thread) and "closer" (end of class activity or questions) must each fit in 5 minutes or less: the steps' minutes must add up to the activity's minutes (≤ 5).
 - Teacher instructions in Spanish; student-facing language in English.

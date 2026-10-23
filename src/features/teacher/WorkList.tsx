@@ -8,7 +8,7 @@
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronRight, FileText, Mic, PenLine, RefreshCw } from 'lucide-react';
+import { CheckCircle2, ChevronDown, ChevronRight, FileText, Mic, PenLine, RefreshCw } from 'lucide-react';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Segmented } from '@/components/ui/Segmented';
@@ -17,6 +17,8 @@ import { Markdown } from '@/components/learning/Markdown';
 import { loadClassSubmissions, loadSubmissionReport, loadSubmissions, type StudentData, type Submission } from '@/lib/teacher';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
+import { loadReviews, type Review } from '@/lib/reviews';
+import { ReviewPanel } from './ReviewPanel';
 import { ink, tint } from '@/lib/color';
 
 const MODULES = ['writing', 'speaking'];
@@ -41,7 +43,7 @@ export function humanTask(module: string, task: string | null): string {
   if (!t) return MODULES.includes(module) ? `IELTS Simulator · ${skill}` : skill;
   if ((m = /^unit:(.+)$/i.exec(t))) return `Curso · ${refDetail(m[1]!)}`;
   if ((m = /^practice:(writing|speaking|reading|listening)(?::(.+))?$/i.exec(t))) return `Práctica de ${cap(m[1]!)}${m[2] ? ` · ${refDetail(m[2])}` : ''}`;
-  if ((m = /^exam:(prea1|a1|a2|b1|b2|c1)-(m(\d)|final)(?::speaking-(\d))?$/i.exec(t)))
+  if ((m = /^exam:(prea1|a1|a2|b1|b2|c1|c2)-(m(\d)|final)(?::speaking-(\d))?$/i.exec(t)))
     return `${m[2]!.toLowerCase() === 'final' ? 'Parcial final' : `Parcial ${m[3]}`} · ${m[1]!.toLowerCase() === 'prea1' ? 'Pre-A1' : m[1]!.toUpperCase()}${m[4] ? ` · Speaking ${m[4]}` : ''}`;
   if (t === 'coach:live') return 'AI Coach · conversación en vivo';
   if ((m = /^coach(?::(.+))?$/i.exec(t))) return `AI Coach${m[1] ? ` · ${m[1].replace(/[-_]+/g, ' ')}` : ''}`;
@@ -110,13 +112,33 @@ const dateFmt = (iso: string) => new Date(iso).toLocaleString('es', { day: 'nume
 function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: Map<string, string>; linkStudent?: boolean }) {
   const [open, setOpen] = useState<string | null>(null);
   const [reports, setReports] = useState<Record<string, string | null>>({});
+  const [raw, setRaw] = useState<Record<string, unknown>>({});
+  const [reviews, setReviews] = useState<Record<string, Review>>({});
+  const [reviewsOff, setReviewsOff] = useState(false);
+  const idKey = list.map((x) => x.id).join(',');
+
+  useEffect(() => {
+    let alive = true;
+    void loadReviews(list.map((x) => x.id)).then((r) => {
+      if (!alive) return;
+      setReviews(r.reviews);
+      setReviewsOff(r.missing);
+    });
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idKey]);
 
   const toggle = (x: Submission) => {
     const next = open === x.id ? null : x.id;
     setOpen(next);
     if (next && !(x.id in reports)) {
       setReports((r) => ({ ...r, [x.id]: null }));
-      void loadSubmissionReport(x.id).then((rep) => setReports((r) => ({ ...r, [x.id]: reportToMarkdown(rep) || '' })));
+      void loadSubmissionReport(x.id).then((rep) => {
+        setRaw((m) => ({ ...m, [x.id]: rep }));
+        setReports((r) => ({ ...r, [x.id]: reportToMarkdown(rep) || '' }));
+      });
     }
   };
 
@@ -128,6 +150,7 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
         const isOpen = open === x.id;
         const rep = reports[x.id];
         const name = names?.get(x.student_id);
+        const rv = reviews[x.id];
         return (
           <li key={x.id}>
             <button
@@ -143,6 +166,13 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
                 <span className="flex flex-wrap items-baseline gap-x-2">
                   {name && <span className="truncate text-[15px] font-semibold">{name}</span>}
                   <span className={cn('text-[14px]', name ? 'text-label-2' : 'font-semibold')}>{humanTask(x.module, x.task)}</span>
+                  {rv && (
+                    <span className="text-ink-green inline-flex items-center gap-1 text-[12px] font-bold">
+                      <CheckCircle2 size={13} aria-hidden /> {rv.shared ? 'Revisado' : 'Borrador'}
+                      {rv.grade != null ? ` · ${rv.grade.toFixed(1).replace('.', ',')}/5` : rv.score != null ? ` · ${rv.score}/100` : ''}
+                      {rv.notes.length > 0 && ` · ${rv.notes.length} 💬`}
+                    </span>
+                  )}
                   {x.band != null && (
                     <span className="text-ink-indigo text-[12px] font-bold tabular-nums">Banda {Number(x.band).toFixed(1)}</span>
                   )}
@@ -175,10 +205,31 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
                     <p className="text-[14px] whitespace-pre-wrap">{x.prompt}</p>
                   </div>
                 )}
-                <div>
-                  <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">{x.module === 'speaking' ? 'Transcripción' : 'Texto del estudiante'}</div>
-                  <p className="bg-fill-2 max-h-[420px] overflow-y-auto rounded-[12px] p-3 text-[15px] leading-relaxed whitespace-pre-wrap">{x.content || '—'}</p>
-                </div>
+                {reviewsOff && (
+                  <div>
+                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">{x.module === 'speaking' ? 'Transcripción' : 'Texto del estudiante'}</div>
+                    <p className="bg-fill-2 max-h-[420px] overflow-y-auto rounded-[12px] p-3 text-[15px] leading-relaxed whitespace-pre-wrap">{x.content || '—'}</p>
+                    <p className="text-label-2 mt-1 text-[12px]">Para comentar y cambiar notas, activa las revisiones en Supabase (14_submission_reviews.sql).</p>
+                  </div>
+                )}
+                {!reviewsOff && rep !== undefined && rep !== null && (
+                  <ReviewPanel
+                    key={x.id}
+                    id={x.id}
+                    text={x.content ?? ''}
+                    report={raw[x.id]}
+                    review={rv}
+                    title={humanTask(x.module, x.task)}
+                    onSaved={(r) =>
+                      setReviews((m) => {
+                        const n = { ...m };
+                        if (r) n[x.id] = { ...r, notes: Array.isArray(r.notes) ? r.notes : [] };
+                        else delete n[x.id];
+                        return n;
+                      })
+                    }
+                  />
+                )}
                 <div>
                   <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Feedback de la IA</div>
                   {rep === undefined || rep === null ? (

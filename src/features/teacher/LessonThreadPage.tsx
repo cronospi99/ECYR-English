@@ -1,6 +1,6 @@
 import { Fragment, lazy, Suspense, useMemo, useState } from 'react';
 
-import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, School, Sparkles, Trophy, Wand2, Zap } from 'lucide-react';
+import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, Minus, Plus, School, Sparkles, Trophy, Users, Wand2, Zap } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Button, ButtonLink } from '@/components/ui/Button';
@@ -14,7 +14,8 @@ import { supabase } from '@/lib/supabase';
 import { STYLES, buildLocal, buildWithAi, threadToText, type Activity, type Chapter, type Thread, type ThreadStyle } from '@/lib/lessonThread';
 import { unitTitle } from '@/features/learn/LevelPage';
 import { cn } from '@/lib/cn';
-import { AUDIENCES, type Audience } from '@/lib/engagement';
+import { AUDIENCES, EMPTY_MIX, balanceTeams, isIntergenerational, mixTotal, suggestedTeams, type Mix } from '@/lib/engagement';
+
 
 const TeamChallenge = lazy(() => import('./TeamChallenge').then((m) => ({ default: m.TeamChallenge })));
 import { ink, tint } from '@/lib/color';
@@ -33,7 +34,8 @@ export default function LessonThreadPage() {
   const [picked, setPicked] = useState<number[]>([1]);
   const [topic, setTopic] = useState('');
   const [style, setStyle] = useState<ThreadStyle>('story');
-  const [audience, setAudience] = useState<Audience>('teens');
+  const [mix, setMix] = useState<Mix>({ ...EMPTY_MIX, teens: 12 });
+  const total = mixTotal(mix);
   const [seed, setSeed] = useState(0);
   const [thread, setThread] = useState<Thread | null>(null);
   const [busy, setBusy] = useState(false);
@@ -58,7 +60,7 @@ export default function LessonThreadPage() {
 
   const toggle = (n: number) =>
     setPicked((p) => (p.includes(n) ? (p.length > 1 ? p.filter((x) => x !== n) : p) : p.length >= MAX_UNITS ? [...p.slice(1), n] : [...p, n]));
-  const input = (s: number) => ({ level, units, topic: topic.trim(), style, audience, seed: s });
+  const input = (s: number) => ({ level, units, topic: topic.trim(), style, mix, seed: s });
   const local = (s = seed) => {
     setError(null);
     setThread(buildLocal(input(s)));
@@ -109,27 +111,7 @@ export default function LessonThreadPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="¿Quiénes están en clase?">
-          {AUDIENCES.map((a) => (
-            <button
-              key={a.id}
-              type="button"
-              role="radio"
-              aria-checked={audience === a.id}
-              onClick={() => setAudience(a.id)}
-              className={cn('flex items-center gap-2 rounded-[14px] px-3 py-1.5 text-left transition-colors', audience === a.id ? 'text-white' : 'bg-fill-2 hover:bg-fill')}
-              style={audience === a.id ? { background: ink(color) } : undefined}
-            >
-              <span className="text-[20px]" aria-hidden>
-                {a.emoji}
-              </span>
-              <span className="leading-tight">
-                <span className="block text-[14px] font-semibold">{a.label}</span>
-                <span className="block text-[11.5px] opacity-75">{a.ages} años</span>
-              </span>
-            </button>
-          ))}
-        </div>
+        <MixPicker mix={mix} onChange={setMix} color={color} />
 
         {loading || !book ? (
           <PageLoader />
@@ -175,10 +157,10 @@ export default function LessonThreadPage() {
             placeholder="Tema o idea (opcional): una fiesta sorpresa, un viaje…"
             className="bg-fill-2 placeholder:text-label-3 h-10 min-w-0 flex-1 basis-60 rounded-[12px] px-3.5 text-[15px] outline-none focus:ring-2"
           />
-          <Button onClick={() => local()} disabled={!units.length}>
+          <Button onClick={() => local()} disabled={!units.length || !total}>
             <Wand2 size={17} /> Generar
           </Button>
-          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || busy || !supabase} title="Gemini escribe la historia completa al nivel">
+          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || !total || busy || !supabase} title="Gemini escribe la historia completa al nivel">
             <Sparkles size={17} /> {busy ? 'Escribiendo…' : 'Con IA'}
           </Button>
         </div>
@@ -204,6 +186,7 @@ export default function LessonThreadPage() {
         <Suspense fallback={null}>
           <TeamChallenge
             audience={thread.audience}
+            mix={thread.mix}
             level={thread.level}
             vocab={thread.chapters.flatMap((c) => c.vocab)}
             grammar={thread.chapters.flatMap((c) => c.grammar)}
@@ -322,6 +305,7 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
               <span className="block text-[14px] opacity-85">Mímica, tabú, dibujo, duelos… con el vocabulario de hoy. Proyéctalo.</span>
             </span>
           </button>
+          <TeamsPreview mix={t.mix} />
         </Node>
         <Node icon={<DoorClosed size={16} />} color={color}>
           <Moment label="Cerrar clase" a={t.closer} color={color} />
@@ -431,5 +415,106 @@ function Branch({ c, color }: { c: Chapter; color: string }) {
         ))}
       </ul>
     </Card>
+  );
+}
+
+// -------------------------------------------------------------- class mix --
+
+/** How many students of each age group: a stepper per group. */
+function MixPicker({ mix, onChange, color }: { mix: Mix; onChange: (m: Mix) => void; color: string }) {
+  const total = mixTotal(mix);
+  const set = (id: keyof Mix, n: number) => onChange({ ...mix, [id]: Math.max(0, Math.min(60, n)) });
+  return (
+    <div>
+      <div className="text-label-2 mb-2 flex items-center gap-1.5 text-[12px] font-semibold tracking-wide uppercase">
+        <Users size={14} /> Estudiantes · {total}
+        {isIntergenerational(mix) && <span className="bg-fill-2 text-label rounded-full px-2 py-0.5 text-[11px] normal-case">Grupo intergeneracional</span>}
+      </div>
+      <div className="grid grid-cols-2 gap-1.5 md:grid-cols-4">
+        {AUDIENCES.map((a) => {
+          const n = mix[a.id] || 0;
+          const on = n > 0;
+          return (
+            <div
+              key={a.id}
+              className={cn('flex flex-col gap-1.5 rounded-[14px] p-2 transition-colors', !on && 'bg-fill-2/60')}
+              style={on ? { background: tint(color, 14), boxShadow: `inset 0 0 0 1.5px ${color}` } : undefined}
+            >
+              <span className="flex min-w-0 flex-1 items-center gap-2">
+                <span className="text-[22px]" aria-hidden>
+                  {a.emoji}
+                </span>
+                <span className="min-w-0 leading-tight">
+                  <span className="block text-[13.5px] font-semibold">{a.label}</span>
+                  <span className="text-label-2 block text-[11.5px]">{a.ages} años</span>
+                </span>
+              </span>
+              <span className="flex items-center justify-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => set(a.id, n - 1)}
+                  disabled={!n}
+                  aria-label={`Menos ${a.label.toLowerCase()}`}
+                  className="bg-card inline-flex h-7 w-7 items-center justify-center rounded-full disabled:opacity-40"
+                >
+                  <Minus size={14} />
+                </button>
+                <input
+                  value={n}
+                  onChange={(e) => set(a.id, Number(e.target.value.replace(/\D/g, '')) || 0)}
+                  inputMode="numeric"
+                  aria-label={`Número de ${a.label.toLowerCase()}`}
+                  className="w-8 bg-transparent text-center text-[15px] font-bold tabular-nums outline-none"
+                  style={on ? { color: ink(color) } : undefined}
+                />
+                <button type="button" onClick={() => set(a.id, n + 1)} aria-label={`Más ${a.label.toLowerCase()}`} className="bg-card inline-flex h-7 w-7 items-center justify-center rounded-full">
+                  <Plus size={14} />
+                </button>
+              </span>
+            </div>
+          );
+        })}
+      </div>
+      {total > 0 && <MixBar mix={mix} />}
+    </div>
+  );
+}
+
+const MIX_COLORS: Record<keyof Mix, string> = { kids: '#ffb340', teens: '#bf5af2', young: '#0a84ff', adults: '#30b0a0' };
+
+/** The class as a proportional bar. */
+function MixBar({ mix }: { mix: Mix }) {
+  const total = mixTotal(mix);
+  return (
+    <div className="mt-2 flex h-2 overflow-hidden rounded-full" aria-hidden>
+      {AUDIENCES.filter((a) => mix[a.id]).map((a) => (
+        <span key={a.id} style={{ flex: mix[a.id], background: MIX_COLORS[a.id] }} title={`${a.label}: ${Math.round((mix[a.id] / total) * 100)}%`} />
+      ))}
+    </div>
+  );
+}
+
+/** Suggested balanced teams for the challenge. */
+function TeamsPreview({ mix }: { mix: Mix }) {
+  const total = mixTotal(mix);
+  const n = suggestedTeams(total);
+  const teams = balanceTeams(mix, n);
+  return (
+    <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[13px]">
+      <span className="text-label-2 font-semibold">
+        {n} equipos para {total}:
+      </span>
+      {teams.map((t, k) => (
+        <span key={k} className="bg-card shadow-card inline-flex items-center gap-1 rounded-full px-2.5 py-1">
+          <b className="mr-0.5">{['🦁', '🦊', '🐼', '🐸'][k]}</b>
+          {AUDIENCES.filter((a) => t[a.id]).map((a) => (
+            <span key={a.id}>
+              {t[a.id]}
+              {a.emoji}
+            </span>
+          ))}
+        </span>
+      ))}
+    </div>
   );
 }

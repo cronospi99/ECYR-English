@@ -152,3 +152,68 @@ export function challengeDeck(audience: Audience, level: CefrLevel, vocab: strin
     .sort((a, b) => a.k - b.k)
     .map((x) => x.c);
 }
+
+// ------------------------------------------------------------- class mix --
+
+/** How many students of each age group are in the room. */
+export type Mix = Record<Audience, number>;
+
+export const EMPTY_MIX: Mix = { kids: 0, teens: 0, young: 0, adults: 0 };
+export const mixTotal = (m: Mix) => AUDIENCES.reduce((n, a) => n + (m[a.id] || 0), 0);
+
+/** The largest group (ties go to the younger one, who needs the most energy). */
+export function dominant(m: Mix): Audience {
+  return AUDIENCES.reduce((best, a) => ((m[a.id] || 0) > (m[best] || 0) ? a.id : best), AUDIENCES[0]!.id);
+}
+
+/** Groups that are at least a fifth of the class. */
+export function mainGroups(m: Mix): Audience[] {
+  const total = mixTotal(m);
+  return AUDIENCES.filter((a) => total && (m[a.id] || 0) / total >= 0.2).map((a) => a.id);
+}
+
+/** Children and adults (30+) in the same room call for activities everyone can do. */
+export const isIntergenerational = (m: Mix) => {
+  const g = mainGroups(m);
+  return g.length > 1 && (g.includes('kids') || (g.includes('teens') && g.includes('adults')));
+};
+
+/** The class as the AI should picture it. */
+export function describeMix(m: Mix): string {
+  const total = mixTotal(m);
+  const parts = AUDIENCES.filter((a) => m[a.id]).map((a) => `${m[a.id]} ${a.label.toLowerCase()} (${a.ages}): ${a.ai}`);
+  if (parts.length === 1) return `${total} students, all ${parts[0]}`;
+  return `${total} students, a mixed group — ${parts.join('; ')}. Find situations that hook every group at once, give each group a moment to shine and never make the adults feel childish or the young ones bored`;
+}
+
+const MIXED_ENERGIZERS: Energizer[] = [
+  { title: 'Esquinas', minutes: 2, how: 'Cada esquina es una opción (A/B/C/D); se mueven a su respuesta y uno de cada esquina explica.' },
+  { title: 'Parejas cruzadas', minutes: 2, how: 'Parejas de edades distintas: 30 s cada uno para contar algo con la gramática de hoy.' },
+  { title: 'Mímica por equipos mixtos', minutes: 2, how: 'Un joven actúa y un adulto adivina (y al revés) con las palabras de hoy.' },
+];
+
+const MIXED_HOOKS: ((name: string) => string)[] = [
+  (n) => `Pregunta: «¿Quién creen que es ${n}?». Que respondan un joven y un adulto: dos versiones de la misma historia.`,
+  () => 'Muestra un objeto que todas las edades conocen (un celular viejo, una llave) y pregunta qué historia esconde.',
+];
+
+export const hookForMix = (m: Mix, name: string, seed: number) => (isIntergenerational(m) ? pick(MIXED_HOOKS, seed)(name) : hookFor(dominant(m), name, seed));
+export const energizerForMix = (m: Mix, seed: number) => (isIntergenerational(m) ? pick(MIXED_ENERGIZERS, seed) : energizerFor(dominant(m), seed));
+
+/** Teams for the class size: 2 up to 8 students, 3 up to 15, then 4. */
+export const suggestedTeams = (total: number) => (total <= 8 ? 2 : total <= 15 ? 3 : 4);
+
+/**
+ * Balanced teams: students are dealt group by group, round-robin, so every
+ * team gets the same age mix and the same size (±1).
+ */
+export function balanceTeams(m: Mix, teams: number): Mix[] {
+  const out: Mix[] = Array.from({ length: teams }, () => ({ ...EMPTY_MIX }));
+  let k = 0;
+  for (const a of AUDIENCES)
+    for (let i = 0; i < (m[a.id] || 0); i++) {
+      out[k % teams]![a.id]++;
+      k++;
+    }
+  return out;
+}
