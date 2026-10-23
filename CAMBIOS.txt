@@ -104,6 +104,17 @@ V. HILO DE CLASE (solo docentes · Sala del docente › Material)
 - «Generar» funciona sin IA; «Con IA» escribe además la historia completa
   al nivel (función gemini ya desplegada). Botones para otra idea y copiar.
 - Oculto para estudiantes.
+- MOTIVACIÓN (10 a 70 años): eliges quién está en clase (Niños 10–13,
+  Adolescentes 14–17, Jóvenes adultos 18–30, Adultos 30–70). Cambian los
+  personajes, el tono y:
+  · Gancho de 30 s para captar la atención apenas empieza la clase.
+  · Energizante de 1–2 min a mitad de clase (Simon says, duelos de 10 s,
+    esquinas, speed chat…).
+  · Reto por equipos a pantalla completa para proyectar: tarjetas con el
+    vocabulario y la gramática de las unidades (mímica, tabú, dibujo,
+    frases, robo, "post viral", debate…), cronómetro grande con sonido al
+    terminar, 2 a 4 equipos con marcador y corona al que va ganando.
+    Espacio = iniciar/pausar, Esc = salir.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:

@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
-import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, School, Sparkles, Wand2 } from 'lucide-react';
+import { Fragment, lazy, Suspense, useMemo, useState } from 'react';
+
+import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, School, Sparkles, Trophy, Wand2, Zap } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Button, ButtonLink } from '@/components/ui/Button';
@@ -13,6 +14,9 @@ import { supabase } from '@/lib/supabase';
 import { STYLES, buildLocal, buildWithAi, threadToText, type Activity, type Chapter, type Thread, type ThreadStyle } from '@/lib/lessonThread';
 import { unitTitle } from '@/features/learn/LevelPage';
 import { cn } from '@/lib/cn';
+import { AUDIENCES, type Audience } from '@/lib/engagement';
+
+const TeamChallenge = lazy(() => import('./TeamChallenge').then((m) => ({ default: m.TeamChallenge })));
 import { ink, tint } from '@/lib/color';
 
 const MAX_UNITS = 4;
@@ -29,10 +33,12 @@ export default function LessonThreadPage() {
   const [picked, setPicked] = useState<number[]>([1]);
   const [topic, setTopic] = useState('');
   const [style, setStyle] = useState<ThreadStyle>('story');
+  const [audience, setAudience] = useState<Audience>('teens');
   const [seed, setSeed] = useState(0);
   const [thread, setThread] = useState<Thread | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [game, setGame] = useState(false);
   const { data: book, loading } = useAsync(() => loadLevel(level), [level]);
   const units = useMemo(() => (book?.units ?? []).filter((u) => picked.includes(u.n)).sort((a, b) => a.n - b.n), [book, picked]);
   const color = levelMeta(level)?.color ?? 'var(--purple)';
@@ -52,7 +58,7 @@ export default function LessonThreadPage() {
 
   const toggle = (n: number) =>
     setPicked((p) => (p.includes(n) ? (p.length > 1 ? p.filter((x) => x !== n) : p) : p.length >= MAX_UNITS ? [...p.slice(1), n] : [...p, n]));
-  const input = (s: number) => ({ level, units, topic: topic.trim(), style, seed: s });
+  const input = (s: number) => ({ level, units, topic: topic.trim(), style, audience, seed: s });
   const local = (s = seed) => {
     setError(null);
     setThread(buildLocal(input(s)));
@@ -71,7 +77,7 @@ export default function LessonThreadPage() {
   };
 
   return (
-    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Una historia, varias unidades, inicio y cierre en 5 minutos." wide>
+    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Una historia que engancha, varias unidades, un reto por equipos y cierre en 5 minutos." wide>
       <Card className="mb-6 space-y-4 p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-3">
           <div className="no-scrollbar overflow-x-auto">
@@ -101,6 +107,28 @@ export default function LessonThreadPage() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="¿Quiénes están en clase?">
+          {AUDIENCES.map((a) => (
+            <button
+              key={a.id}
+              type="button"
+              role="radio"
+              aria-checked={audience === a.id}
+              onClick={() => setAudience(a.id)}
+              className={cn('flex items-center gap-2 rounded-[14px] px-3 py-1.5 text-left transition-colors', audience === a.id ? 'text-white' : 'bg-fill-2 hover:bg-fill')}
+              style={audience === a.id ? { background: ink(color) } : undefined}
+            >
+              <span className="text-[20px]" aria-hidden>
+                {a.emoji}
+              </span>
+              <span className="leading-tight">
+                <span className="block text-[14px] font-semibold">{a.label}</span>
+                <span className="block text-[11.5px] opacity-75">{a.ages} años</span>
+              </span>
+            </button>
+          ))}
         </div>
 
         {loading || !book ? (
@@ -169,7 +197,19 @@ export default function LessonThreadPage() {
             setSeed(seed + 1);
             local(seed + 1);
           }}
+          onChallenge={() => setGame(true)}
         />
+      )}
+      {thread && game && (
+        <Suspense fallback={null}>
+          <TeamChallenge
+            audience={thread.audience}
+            level={thread.level}
+            vocab={thread.chapters.flatMap((c) => c.vocab)}
+            grammar={thread.chapters.flatMap((c) => c.grammar)}
+            onClose={() => setGame(false)}
+          />
+        </Suspense>
       )}
     </Page>
   );
@@ -177,7 +217,7 @@ export default function LessonThreadPage() {
 
 // ------------------------------------------------------------------ result --
 
-function Plan({ t, color, onAnother }: { t: Thread; color: string; onAnother: () => void }) {
+function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; onAnother: () => void; onChallenge: () => void }) {
   const [copied, setCopied] = useState(false);
   const st = STYLES.find((s) => s.id === t.style)!;
   const copy = async () => {
@@ -200,6 +240,12 @@ function Plan({ t, color, onAnother }: { t: Thread; color: string; onAnother: ()
         </div>
         <h2 className="mt-1 text-[26px] leading-tight font-bold">{t.title}</h2>
         <p className="mt-1.5 max-w-xl text-[15px] opacity-90">{t.premise}</p>
+        <div className="mt-3 flex max-w-xl items-start gap-2 rounded-[14px] bg-white/15 px-3 py-2 text-[14.5px]">
+          <span aria-hidden>🎣</span>
+          <span>
+            <b>Gancho (30 s):</b> {t.hook}
+          </span>
+        </div>
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {t.characters.map((c) => (
             <span key={c.name} title={c.role} className="inline-flex items-center gap-1.5 rounded-full bg-white/15 py-1 pr-3 pl-1 text-[13px]">
@@ -241,11 +287,42 @@ function Plan({ t, color, onAnother }: { t: Thread; color: string; onAnother: ()
         <Node icon={<DoorOpen size={16} />} color={color}>
           <Moment label="Abrir clase" a={t.opener} color={color} />
         </Node>
-        {t.chapters.map((c) => (
-          <Node key={c.unit} icon={<span className="text-[15px]">{STAGE_EMOJI[c.stage] ?? '🌿'}</span>} color={color} soft>
-            <Branch c={c} color={color} />
-          </Node>
+        {t.chapters.map((c, i) => (
+          <Fragment key={c.unit}>
+            <Node icon={<span className="text-[15px]">{STAGE_EMOJI[c.stage] ?? '🌿'}</span>} color={color} soft>
+              <Branch c={c} color={color} />
+            </Node>
+            {i === Math.max(0, Math.ceil(t.chapters.length / 2) - 1) && (
+              <Node icon={<Zap size={16} />} color="var(--orange)">
+                <div className="flex items-start gap-3 rounded-[18px] p-4" style={{ background: tint('var(--orange)', 14) }}>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[12px] font-bold tracking-wide uppercase" style={{ color: ink('var(--orange)') }}>
+                      Energizante · {t.energizer.minutes} min
+                    </div>
+                    <div className="text-headline mt-0.5">{t.energizer.title}</div>
+                    <p className="mt-1 text-[14.5px]">{t.energizer.how}</p>
+                  </div>
+                </div>
+              </Node>
+            )}
+          </Fragment>
         ))}
+        <Node icon={<Trophy size={16} />} color="var(--pink)">
+          <button
+            type="button"
+            onClick={onChallenge}
+            className="group flex w-full items-center gap-4 rounded-[18px] p-4 text-left text-white transition-transform active:scale-[0.99]"
+            style={{ background: 'linear-gradient(120deg, #5e2bff, #ff2d8a)' }}
+          >
+            <span className="text-[40px] leading-none transition-transform group-hover:scale-110" aria-hidden>
+              🏆
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[18px] font-bold">Reto por equipos</span>
+              <span className="block text-[14px] opacity-85">Mímica, tabú, dibujo, duelos… con el vocabulario de hoy. Proyéctalo.</span>
+            </span>
+          </button>
+        </Node>
         <Node icon={<DoorClosed size={16} />} color={color}>
           <Moment label="Cerrar clase" a={t.closer} color={color} />
         </Node>
