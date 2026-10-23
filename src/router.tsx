@@ -45,6 +45,7 @@ export const router = createBrowserRouter([
       { path: 'portfolio', element: page(() => import('./features/portfolio/PortfolioPage')) },
       { path: 'import', element: page(() => import('./features/migrate/ImportPage')) },
       { path: 'teacher', element: page(() => import('./features/teacher/TeacherPage')) },
+      { path: 'teacher/thread', element: page(() => import('./features/teacher/LessonThreadPage')) },
       { path: 'teacher/student/:id', element: page(() => import('./features/teacher/StudentPage')) },
       { path: 'tasks', element: page(() => import('./features/tasks/TasksPage')) },
       { path: 'learn/visuals', element: page(() => import('./features/visuals/VisualsPage')) },

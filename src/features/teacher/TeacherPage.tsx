@@ -24,6 +24,7 @@ import {
   Users,
   Wrench,
   type LucideIcon,
+  Wand2,
 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -302,6 +303,10 @@ interface Item {
 
 function MaterialTab() {
   const groups: { title: string; items: Item[] }[] = [
+    {
+      title: 'Planeación de clase',
+      items: [{ to: '/teacher/thread', title: 'Hilo de clase', sub: 'Una historia central por unidades + inicio y cierre de 5 min', icon: Wand2, color: 'var(--purple)' }],
+    },
     {
       title: 'Cursos por nivel',
       items: [
