@@ -12,18 +12,51 @@ import type { CSSProperties } from 'react';
  *   effect in modern text rendering), so a note leaking somewhere unstripped
  *   still reads clean.
  *
+ * - Size and font (and ten colours in all): a two-character mark, a prefix
+ *   (U+FE00 size, U+FE01 font, U+FE02 extra colour) and a parameter
+ *   (U+FE03 + n). These are variation selectors, also invisible. Size 0 and
+ *   font 0 are the defaults.
+ *
  * The marks are independent toggles (a state machine, not nested tags), so
  * bold, italic and a colour combine and overlap freely. An orphan end mark is
  * harmless; an unclosed start mark lasts to the end of the note.
  */
-export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink';
+export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink' | 'orange' | 'red' | 'purple' | 'teal' | 'gray' | 'brown';
 
 export const HIGHLIGHTS: { id: HighlightColor; label: string; mark: string; bg: string }[] = [
   { id: 'yellow', label: 'Amarillo', mark: '\u2061', bg: 'color-mix(in srgb, #ffd60a 55%, transparent)' },
   { id: 'green', label: 'Verde', mark: '\u2062', bg: 'color-mix(in srgb, #30d158 40%, transparent)' },
   { id: 'blue', label: 'Azul', mark: '\u2063', bg: 'color-mix(in srgb, #64d2ff 45%, transparent)' },
   { id: 'pink', label: 'Rosa', mark: '\u2064', bg: 'color-mix(in srgb, #ff6fb5 40%, transparent)' },
+  { id: 'orange', label: 'Naranja', mark: '\uFE02\uFE04', bg: 'color-mix(in srgb, #ff9f0a 45%, transparent)' },
+  { id: 'red', label: 'Rojo', mark: '\uFE02\uFE05', bg: 'color-mix(in srgb, #ff453a 38%, transparent)' },
+  { id: 'purple', label: 'Morado', mark: '\uFE02\uFE06', bg: 'color-mix(in srgb, #bf5af2 38%, transparent)' },
+  { id: 'teal', label: 'Turquesa', mark: '\uFE02\uFE07', bg: 'color-mix(in srgb, #40c8c8 45%, transparent)' },
+  { id: 'gray', label: 'Gris', mark: '\uFE02\uFE08', bg: 'color-mix(in srgb, #8e8e93 40%, transparent)' },
+  { id: 'brown', label: 'Café', mark: '\uFE02\uFE09', bg: 'color-mix(in srgb, #a2845e 45%, transparent)' },
 ];
+
+/** Text sizes (index = the size mark's parameter; 0 is the normal size). */
+export const SIZES: { label: string; em: number | null }[] = [
+  { label: 'Normal', em: null },
+  { label: 'Pequeño', em: 0.82 },
+  { label: 'Grande', em: 1.3 },
+  { label: 'Muy grande', em: 1.7 },
+  { label: 'Enorme', em: 2.3 },
+];
+
+/** Fonts (index = the font mark's parameter; 0 is the app's own). */
+export const FONTS: { label: string; family: string | null }[] = [
+  { label: 'Inter (app)', family: null },
+  { label: 'Google · Roboto', family: "Roboto, 'Google Sans', Arial, sans-serif" },
+  { label: 'Apple · San Francisco', family: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif" },
+  { label: 'Microsoft · Segoe UI', family: "'Segoe UI', Calibri, Arial, sans-serif" },
+  { label: 'Georgia (con serifa)', family: "Georgia, 'Times New Roman', serif" },
+];
+const SIZE_PREFIX = '\uFE00';
+const FONT_PREFIX = '\uFE01';
+const COLOR_PREFIX = '\uFE02';
+const PARAM0 = 0xfe03;
 export const END_MARK = '\u2060';
 export const BOLD_ON = '\u206A';
 export const BOLD_OFF = '\u206B';
@@ -31,9 +64,10 @@ export const ITALIC_ON = '\u206C';
 export const ITALIC_OFF = '\u206D';
 
 const START = new Map(HIGHLIGHTS.map((h) => [h.mark, h]));
+const START_EXT = new Map(HIGHLIGHTS.filter((h) => h.mark.length === 2).map((h) => [h.mark.charCodeAt(1) - PARAM0, h]));
 const BG = new Map(HIGHLIGHTS.map((h) => [h.id, h.bg]));
 // U+2065 (unassigned, default-ignorable) is stripped too, in case it ever shows up.
-const ANY_MARK = /[\u2060-\u2065\u206A-\u206D]/g;
+const ANY_MARK = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/g;
 
 /** The note as plain text (all formatting marks dropped). */
 export const stripHighlights = (s: string) => s.replace(ANY_MARK, '');
@@ -44,15 +78,19 @@ export interface Fmt {
   color: HighlightColor | null;
   bold: boolean;
   italic: boolean;
+  /** Index in SIZES (0 = normal). */
+  size: number;
+  /** Index in FONTS (0 = the app's). */
+  font: number;
 }
 
 export interface Segment extends Fmt {
   text: string;
 }
 
-export const PLAIN: Fmt = { color: null, bold: false, italic: false };
-const sameFmt = (a: Fmt, b: Fmt) => a.color === b.color && a.bold === b.bold && a.italic === b.italic;
-const fmtOf = (g: Fmt): Fmt => ({ color: g.color, bold: g.bold, italic: g.italic });
+export const PLAIN: Fmt = { color: null, bold: false, italic: false, size: 0, font: 0 };
+const sameFmt = (a: Fmt, b: Fmt) => a.color === b.color && a.bold === b.bold && a.italic === b.italic && a.size === b.size && a.font === b.font;
+const fmtOf = (g: Fmt): Fmt => ({ color: g.color, bold: g.bold, italic: g.italic, size: g.size, font: g.font });
 
 /** Splits a note into stretches of the same formatting (marks dropped, empty stretches skipped). */
 export function segments(s: string): Segment[] {
@@ -66,10 +104,19 @@ export function segments(s: string): Segment[] {
     else out.push({ text: buf, ...f });
     buf = '';
   };
-  for (const ch of s) {
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i]!;
     const h = START.get(ch);
     let next: Fmt | null = null;
-    if (h) next = { ...f, color: h.id };
+    if (ch === SIZE_PREFIX || ch === FONT_PREFIX || ch === COLOR_PREFIX) {
+      const n = s.charCodeAt(i + 1) - PARAM0;
+      if (n >= 0 && n <= 10) {
+        i++;
+        if (ch === SIZE_PREFIX) next = { ...f, size: n < SIZES.length ? n : 0 };
+        else if (ch === FONT_PREFIX) next = { ...f, font: n < FONTS.length ? n : 0 };
+        else next = START_EXT.get(n) ? { ...f, color: START_EXT.get(n)!.id } : f;
+      } else next = f;
+    } else if (h) next = { ...f, color: h.id };
     else if (ch === END_MARK) next = { ...f, color: null };
     else if (ch === BOLD_ON) next = { ...f, bold: true };
     else if (ch === BOLD_OFF) next = { ...f, bold: false };
@@ -96,6 +143,8 @@ export function serialize(segs: Segment[]): string {
     if (cur.color && cur.color !== g.color) out += END_MARK;
     if (cur.bold && !g.bold) out += BOLD_OFF;
     if (cur.italic && !g.italic) out += ITALIC_OFF;
+    if (g.size !== cur.size) out += SIZE_PREFIX + String.fromCharCode(PARAM0 + g.size);
+    if (g.font !== cur.font) out += FONT_PREFIX + String.fromCharCode(PARAM0 + g.font);
     if (g.color && g.color !== cur.color) out += markOf(g.color);
     if (g.bold && !cur.bold) out += BOLD_ON;
     if (g.italic && !cur.italic) out += ITALIC_ON;
@@ -105,6 +154,8 @@ export function serialize(segs: Segment[]): string {
   if (cur.color) out += END_MARK;
   if (cur.bold) out += BOLD_OFF;
   if (cur.italic) out += ITALIC_OFF;
+  if (cur.size) out += SIZE_PREFIX + String.fromCharCode(PARAM0);
+  if (cur.font) out += FONT_PREFIX + String.fromCharCode(PARAM0);
   return out;
 }
 
@@ -187,6 +238,15 @@ export function rangeAll(s: string, a: number, b: number, key: 'bold' | 'italic'
   return check.length > 0 && check.every((g) => g[key]);
 }
 
+/** The size / font shared by every visible character of [a, b), or null when they differ. */
+export function rangeValue(s: string, a: number, b: number, key: 'size' | 'font'): number | null {
+  const part = sliceSegs(segments(s), Math.min(a, b), Math.max(a, b));
+  const visible = part.filter((g) => /\S/.test(g.text));
+  const check = visible.length ? visible : part;
+  if (!check.length) return 0;
+  return check.every((g) => g[key] === check[0]![key]) ? check[0]![key] : null;
+}
+
 /** Inline style of a formatted stretch (shared by the editor and read-only renderings). */
 export function segStyle(g: Fmt): CSSProperties {
   const st: CSSProperties = {};
@@ -198,6 +258,10 @@ export function segStyle(g: Fmt): CSSProperties {
   }
   if (g.bold) st.fontWeight = 700;
   if (g.italic) st.fontStyle = 'italic';
+  const em = SIZES[g.size]?.em;
+  if (em) st.fontSize = `${em}em`;
+  const fam = FONTS[g.font]?.family;
+  if (fam) st.fontFamily = fam;
   return st;
 }
 
@@ -221,4 +285,4 @@ export function applyHighlight(s: string, start: number, end: number, color: Hig
   };
   return { text, start: rawAt(a), end: rawAt(b) };
 }
-const ANY_MARK_ONE = /[⁠-⁥⁪-⁭]/;
+const ANY_MARK_ONE = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/;

@@ -81,6 +81,19 @@ N. NOTAS: NEGRITA Y CURSIVA
   También hay un botón "Quitar todo el formato". Las notas viejas se abren
   igual y se siguen sincronizando.
 
+N2. NOTAS: TAMAÑO, FUENTES Y MÁS COLORES
+- Menú de tamaño de letra (Pequeño, Normal, Grande, Muy grande, Enorme) y
+  menú de fuente: Inter (la de la app), Google · Roboto, Apple · San
+  Francisco, Microsoft · Segoe UI y Georgia. Se aplican a la selección, o a
+  lo que se escriba después si no hay nada seleccionado. Se combinan con
+  negrita, cursiva y resaltado.
+- Los resaltadores pasan de 4 a 10 colores: se suman naranja, rojo,
+  morado, turquesa, gris y café.
+- Las fuentes de Apple y Microsoft se ven solo en los equipos que las
+  traen (si no, se usa una parecida del sistema). Roboto se descarga de
+  Google Fonts.
+- Las notas anteriores se abren igual y todo sigue guardándose como texto.
+
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:
   · Conjugación: busca un verbo en inglés o español, incluso con

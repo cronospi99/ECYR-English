@@ -7,7 +7,7 @@ import { useAuth } from '@/store/auth';
 import { MAX_NOTE_BODY, noteTitle, useNotes, visibleNotes, type Note } from '@/store/notes';
 import { relativeTime } from '@/lib/date';
 import { cn } from '@/lib/cn';
-import { HIGHLIGHTS, segments, segStyle, stripHighlights, type HighlightColor, type Segment } from '@/lib/highlights';
+import { FONTS, HIGHLIGHTS, PLAIN, SIZES, segments, segStyle, stripHighlights, type HighlightColor, type Segment } from '@/lib/highlights';
 import { RichNoteEditor, type FormatState, type RichEditorHandle } from './RichNoteEditor';
 import { currentPageInfo } from './pageInfo';
 import { refreshNotes, useNotesSync } from './sync';
@@ -184,7 +184,7 @@ function snippet(n: Note): Segment[] {
     len += t.length;
     if (len >= 240) break;
   }
-  return out.length ? out : [{ text: '\u00A0', color: null, bold: false, italic: false }];
+  return out.length ? out : [{ text: '\u00A0', ...PLAIN }];
 }
 
 /** Read-only rendering of formatted stretches. */
@@ -193,7 +193,7 @@ export function Formatted({ segs }: { segs: Segment[] }) {
     <>
       {segs.map((g, i) =>
         g.color || g.bold || g.italic ? (
-          <span key={i} style={segStyle(g)}>
+          <span key={i} style={segStyle({ ...g, size: 0, font: 0 })}>
             {g.text}
           </span>
         ) : (
@@ -230,7 +230,7 @@ function NoteEditor({
   const latest = useRef({ id: note?.id ?? null, text });
   const stored = useRef(note?.body ?? '');
   const editor = useRef<RichEditorHandle>(null);
-  const [fmt, setFmt] = useState<FormatState>({ bold: false, italic: false, range: false });
+  const [fmt, setFmt] = useState<FormatState>({ bold: false, italic: false, size: 0, font: 0, range: false });
   const labelId = useId();
 
   latest.current.text = text;
@@ -400,6 +400,34 @@ function FormatBar({ editor, fmt }: { editor: RefObject<RichEditorHandle | null>
       >
         <Italic size={16} strokeWidth={2.4} />
       </button>
+      <select
+        value={fmt.size ?? ''}
+        onChange={(e) => editor.current?.setSize(Number(e.target.value))}
+        aria-label="Tamaño de letra"
+        title="Tamaño de letra"
+        className="bg-fill-2 text-label h-8 max-w-[108px] rounded-[9px] px-1.5 text-[13px] outline-none"
+      >
+        {fmt.size === null && <option value="">Mixto</option>}
+        {SIZES.map((z, i) => (
+          <option key={z.label} value={i}>
+            {z.label}
+          </option>
+        ))}
+      </select>
+      <select
+        value={fmt.font ?? ''}
+        onChange={(e) => editor.current?.setFont(Number(e.target.value))}
+        aria-label="Fuente"
+        title="Tipo de letra"
+        className="bg-fill-2 text-label h-8 max-w-[150px] rounded-[9px] px-1.5 text-[13px] outline-none"
+      >
+        {fmt.font === null && <option value="">Mixta</option>}
+        {FONTS.map((f, i) => (
+          <option key={f.label} value={i}>
+            {f.label}
+          </option>
+        ))}
+      </select>
       <span className="bg-separator mx-0.5 h-5 w-px" aria-hidden />
       <Highlighter size={15} className="text-label-2" aria-hidden />
       {HIGHLIGHTS.map((h) => (
