@@ -104,9 +104,13 @@ V. HILO DE CLASE (solo docentes · Sala del docente › Material)
 - «Generar» funciona sin IA; «Con IA» escribe además la historia completa
   al nivel (función gemini ya desplegada). Botones para otra idea y copiar.
 - Oculto para estudiantes.
-- MOTIVACIÓN (10 a 70 años): eliges quién está en clase (Niños 10–13,
-  Adolescentes 14–17, Jóvenes adultos 18–30, Adultos 30–70). Cambian los
-  personajes, el tono y:
+- MOTIVACIÓN (10 a 70 años): indicas cuántos estudiantes hay de cada
+  grupo (Niños 10–13, Adolescentes 14–17, Jóvenes adultos 18–30, Adultos
+  30–70) con contadores − / +. Una barra muestra la proporción. El grupo
+  mayoritario define personajes y tono; si la clase mezcla niños o
+  adolescentes con adultos, se marca "Grupo intergeneracional" y el gancho
+  y el energizante pasan a ser actividades para todas las edades. La IA
+  recibe la composición exacta de la clase. Cambian:
   · Gancho de 30 s para captar la atención apenas empieza la clase.
   · Energizante de 1–2 min a mitad de clase (Simon says, duelos de 10 s,
     esquinas, speed chat…).
@@ -114,6 +118,9 @@ V. HILO DE CLASE (solo docentes · Sala del docente › Material)
     vocabulario y la gramática de las unidades (mímica, tabú, dibujo,
     frases, robo, "post viral", debate…), cronómetro grande con sonido al
     terminar, 2 a 4 equipos con marcador y corona al que va ganando.
+    El número de equipos se sugiere según el tamaño de la clase (2 hasta 8
+    estudiantes, 3 hasta 15, luego 4) y cada equipo sale equilibrado por
+    edades (p. ej. 17 → 4 equipos de 1🧒 2🎧 2☕).
     Espacio = iniciar/pausar, Esc = salir.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)

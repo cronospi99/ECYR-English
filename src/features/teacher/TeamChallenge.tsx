@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Minus, Pause, Play, Plus, RotateCcw, SkipForward, X } from 'lucide-react';
 import type { CefrLevel } from '@/content/types';
-import { challengeDeck, type Audience } from '@/lib/engagement';
+import { AUDIENCES, balanceTeams, challengeDeck, mixTotal, suggestedTeams, type Audience, type Mix } from '@/lib/engagement';
 
 const TEAMS = [
   { name: 'Lions', emoji: '🦁', color: '#ff9f0a' },
@@ -32,10 +32,11 @@ function beep() {
  * Full-screen team game for the projector: challenge cards made from the
  * selected units' words and grammar, a big countdown and a scoreboard.
  */
-export function TeamChallenge({ audience, level, vocab, grammar, onClose }: { audience: Audience; level: CefrLevel; vocab: string[]; grammar: string[]; onClose: () => void }) {
+export function TeamChallenge({ audience, mix, level, vocab, grammar, onClose }: { audience: Audience; mix: Mix; level: CefrLevel; vocab: string[]; grammar: string[]; onClose: () => void }) {
   const [seed] = useState(() => Math.floor(Math.random() * 1000));
   const deck = useMemo(() => challengeDeck(audience, level, vocab, grammar, seed), [audience, level, vocab, grammar, seed]);
-  const [teams, setTeams] = useState(2);
+  const [teams, setTeams] = useState(() => suggestedTeams(mixTotal(mix)));
+  const members = useMemo(() => balanceTeams(mix, teams), [mix, teams]);
   const [scores, setScores] = useState([0, 0, 0, 0]);
   const [i, setI] = useState(0);
   const card = deck[i % deck.length]!;
@@ -144,6 +145,9 @@ export function TeamChallenge({ audience, level, vocab, grammar, onClose }: { au
           <div key={t.name} className="rounded-[20px] p-3 text-center ring-2" style={{ background: `${t.color}22`, boxShadow: scores[k] === leader && leader > 0 ? `0 0 0 2px ${t.color}, 0 0 30px ${t.color}66` : undefined, ['--tw-ring-color' as string]: `${t.color}66` }}>
             <div className="text-[15px] font-semibold">
               {t.emoji} {t.name} {scores[k] === leader && leader > 0 && '👑'}
+            </div>
+            <div className="text-[12px] opacity-75">
+              {AUDIENCES.filter((a) => members[k]![a.id]).map((a) => `${members[k]![a.id]}${a.emoji}`).join(' ')}
             </div>
             <motion.div key={scores[k]} initial={{ scale: 1.4 }} animate={{ scale: 1 }} className="text-[44px] leading-tight font-bold tabular-nums">
               {scores[k]}
