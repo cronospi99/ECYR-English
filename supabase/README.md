@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `13` **en orden** (no hay `10`):
-`05` y de `07` a `13` dependen de la tabla `profiles` que crea `01`.)
+Incluye las trece migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `14` **en orden** (no hay `10`):
+`05` y de `07` a `14` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `13_c2_level.sql` (la nueva: `13_c2_level.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `14_submission_reviews.sql` (las nuevas: `13_c2_level.sql` y `14_submission_reviews.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -31,6 +31,7 @@ Incluye las doce migraciones en orden y se puede re-ejecutar sin perder datos.
 | `11_podcasts.sql` | **Podcasts**: `podcast_quizzes` (preguntas generadas por IA, una vez por episodio y nivel, compartidas) y `podcast_usage`. |
 | `12_notes.sql` | **Mis notas**: `student_notes`, privadas (cada cuenta solo ve las suyas; el docente no las ve). |
 | `13_c2_level.sql` | **Nivel C2**: amplía las validaciones de nivel de `portfolio_items`, `assignments` y `podcast_quizzes` para aceptar `C2`. |
+| `14_submission_reviews.sql` | **Revisión del docente**: `submission_reviews` (comentario general, comentarios sobre frases del texto, nota y, en parciales, notas por habilidad) y `review_submission()`. El estudiante ve en «Mis trabajos» las revisiones que el docente marcó como visibles. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 
