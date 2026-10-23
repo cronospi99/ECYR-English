@@ -33,6 +33,8 @@ export interface Activity {
 export interface Chapter {
   unit: number;
   unitTitle: string;
+  /** Its place in the arc: Inicio, Nudo, Giro, Desenlace. */
+  stage: string;
   /** How this branch grows from the previous one (Spanish, for the teacher). */
   link: string;
   /** What happens in this chapter. English at the level when written by the AI; Spanish teacher notes when local. */
@@ -91,47 +93,47 @@ const SEEDS: Record<ThreadStyle, Seed[]> = {
   story: [
     {
       title: (t) => (t ? `The Day Everything Changed · ${t}` : 'The Day Everything Changed'),
-      premise: (a, b) => `${a} recibe una invitación misteriosa y tiene que decidir con ${b} si ir. Cada unidad añade un paso de su día.`,
+      premise: (a, b) => `${a} recibe una invitación misteriosa y decide con ${b} si ir.`,
       beats: ['presentar a los personajes y su situación', 'aparece una complicación inesperada', 'los personajes toman una decisión o hacen un plan', 'final sorpresa o reflexión'],
     },
     {
       title: () => 'A Small Problem in the Neighbourhood',
-      premise: (a, b, c) => `${a} y ${b} descubren que ${c}, un vecino querido, está por irse del barrio. Quieren hacer algo antes de que sea tarde.`,
+      premise: (a, b, c) => `${a} y ${b} descubren que ${c}, su vecino, se va del barrio.`,
       beats: ['mostrar el barrio y a los personajes', 'descubrir el problema', 'organizar la ayuda', 'resolver y celebrar'],
     },
   ],
   mystery: [
     {
       title: () => 'The Missing Bag',
-      premise: (a, b, c) => `La mochila de ${a} desapareció. ${b} ayuda a buscarla y ${c} parece saber algo. Cada unidad entrega una pista.`,
+      premise: (a, b, c) => `La mochila de ${a} desapareció; ${b} ayuda y ${c} parece saber algo.`,
       beats: ['qué pasó y quiénes estaban', 'primera pista y primeras sospechas', 'segunda pista que cambia la teoría', 'se revela la verdad'],
     },
   ],
   gossip: [
     {
       title: () => 'Did You Hear About…?',
-      premise: (a, b, c) => `${a} le cuenta a ${b} un chisme sobre ${c}. Con cada unidad el chisme crece, se corrige o se desmiente. Mantenerlo amable y sin gente real.`,
+      premise: (a, b, c) => `${a} le cuenta a ${b} un chisme sobre ${c}. Cada unidad lo hace crecer… o lo desmiente.`,
       beats: ['el chisme empieza', 'detalles y rumores (¿quién dijo qué?)', 'versiones que se contradicen', 'la verdad sale a la luz'],
     },
   ],
   news: [
     {
       title: () => 'Breaking News from Town',
-      premise: (a, b, c) => `Un suceso en el pueblo: ${a} es testigo, ${b} es reportero y ${c} da una entrevista. Cada unidad es una nota de seguimiento.`,
+      premise: (a, b, c) => `Algo pasó en el pueblo: ${a} lo vio, ${b} lo reporta y ${c} da la entrevista.`,
       beats: ['titular y hechos básicos', 'testigos y detalles', 'reacciones y opiniones', 'seguimiento: qué pasó después'],
     },
   ],
   diary: [
     {
       title: () => 'Dear Diary…',
-      premise: (a, b) => `El diario de ${a}: una entrada por unidad. ${b} aparece en varias y la vida de ${a} cambia poco a poco.`,
+      premise: (a, b) => `El diario de ${a}: una entrada por unidad, y ${b} cambia su vida.`,
       beats: ['primera entrada: quién soy y cómo es mi vida', 'algo nuevo llega', 'un problema o un cambio', 'mirar atrás y hacer planes'],
     },
   ],
   trip: [
     {
       title: () => 'The Trip We Almost Missed',
-      premise: (a, b, c) => `${a} y ${b} viajan para llegar a un evento importante. ${c} les cuesta una parada inesperada. Cada unidad es una escala.`,
+      premise: (a, b, c) => `${a} y ${b} viajan a un evento; ${c} los obliga a parar. Cada unidad, una escala.`,
       beats: ['preparar y salir', 'primera parada y primer problema', 'pedir ayuda y cambiar el plan', 'llegar (o casi) y contar el viaje'],
     },
   ],
@@ -139,19 +141,19 @@ const SEEDS: Record<ThreadStyle, Seed[]> = {
 
 const QUESTIONS: Record<'low' | 'mid' | 'high', ((ctx: { a: string; term: string; gram: string; topic: string }) => string)[]> = {
   low: [
-    ({ a, term }) => `Make a sentence about ${a} with "${term}".`,
-    ({ a, gram }) => `Say two true sentences about ${a}. Use: ${gram}.`,
-    ({ term }) => `What is "${term}" in Spanish? Say it in a sentence in English.`,
+    ({ a, term }) => `Say a sentence about ${a} with "${term}".`,
+    ({ a }) => `Who is ${a}? Where is ${a} now?`,
+    ({ a, term }) => `Does ${a} like "${term}"? Why?`,
   ],
   mid: [
-    ({ a, term }) => `What would ${a} say next? Use "${term}".`,
-    ({ a, gram }) => `Tell what happened to ${a} using: ${gram}.`,
-    ({ a }) => `Why did ${a} do that? Give a reason and an example.`,
+    ({ a, term }) => `What does ${a} say next? Use "${term}".`,
+    ({ a }) => `Why did ${a} do that?`,
+    ({ a, term }) => `How did "${term}" change ${a}’s day?`,
   ],
   high: [
-    ({ a, gram }) => `Retell this part from ${a}’s point of view using: ${gram}.`,
-    ({ a, term }) => `Do you agree with ${a}? Defend your view using "${term}".`,
-    ({ topic }) => `What does this part of the story say about ${topic}? Give a nuanced answer.`,
+    ({ a }) => `Retell this part as ${a}.`,
+    ({ a, term }) => `Do you agree with ${a}? Use "${term}".`,
+    ({ a }) => `What would you have done in ${a}’s place?`,
   ],
 };
 const band = (l: CefrLevel) => (l === 'A1' || l === 'A2' ? 'low' : l === 'B1' ? 'mid' : 'high');
@@ -161,9 +163,9 @@ const OPENERS: ((n: { a: string; first: string; level: CefrLevel }) => Activity)
     title: 'Previously on… (inicio con el hilo)',
     minutes: 5,
     steps: [
-      { min: 1, text: `Proyecta una sola imagen o escribe en el tablero: «${a}…». Los estudiantes dicen qué creen que pasa.` },
-      { min: 2, text: 'En parejas, cada uno cuenta en 2–3 frases lo que recuerda del hilo (o lo que imagina, si es la primera clase).' },
-      { min: 2, text: 'Un estudiante cuenta al grupo; tú anotas 3 palabras clave en el tablero. Esas palabras serán el hilo de hoy.' },
+      { min: 1, text: `Escribe «${a}…» en el tablero: ¿qué pasa?` },
+      { min: 2, text: 'En parejas: lo que recuerdan (o imaginan) del hilo.' },
+      { min: 2, text: 'Un estudiante lo cuenta; anota 3 palabras clave.' },
     ],
     questions: [],
   }),
@@ -171,8 +173,8 @@ const OPENERS: ((n: { a: string; first: string; level: CefrLevel }) => Activity)
     title: 'Objeto misterioso',
     minutes: 4,
     steps: [
-      { min: 1, text: `Muestra un objeto (o su emoji) relacionado con «${first}». Pregunta: Who does it belong to? Where is it from?` },
-      { min: 3, text: 'Cada pareja inventa quién es el dueño y por qué es importante para la historia. Compartan 2 ideas.' },
+      { min: 1, text: `Muestra un objeto de «${first}»: Whose is it?` },
+      { min: 3, text: 'Parejas inventan el dueño y por qué importa.' },
     ],
     questions: [],
   }),
@@ -183,19 +185,19 @@ const CLOSERS: ((n: { a: string; gram: string; terms: string[]; level: CefrLevel
     title: 'Cadena de frases',
     minutes: 5,
     steps: [
-      { min: 1, text: `Explica: entre todos escriben el siguiente trozo de la historia de ${a}, una frase cada uno.` },
-      { min: 3, text: `Cada estudiante añade una frase que use ${gram} o una de estas palabras: ${terms.slice(0, 4).join(', ')}. Tú escribes lo que dicen.` },
-      { min: 1, text: 'Lean la versión final en voz alta. Corrige solo el error más importante.' },
+      { min: 1, text: `Continúan la historia de ${a}: una frase cada uno.` },
+      { min: 3, text: `Cada frase usa ${gram} o: ${terms.slice(0, 3).join(', ')}.` },
+      { min: 1, text: 'Leen la versión final; corrige un solo error.' },
     ],
     questions: [`What happens next to ${a}?`, `Which word from today helped you most?`],
   }),
-  ({ a, terms, level }) => ({
+  ({ a, level }) => ({
     title: 'Silla caliente',
     minutes: 5,
     steps: [
-      { min: 1, text: `Un voluntario es ${a} en la silla caliente. Los demás preparan una pregunta que use una de: ${terms.slice(0, 4).join(', ')}.` },
-      { min: 3, text: `El grupo entrevista a ${a}. ${level === 'A1' || level === 'A2' ? 'Respuestas de una frase.' : 'Pide justificar con “because” o un ejemplo.'}` },
-      { min: 1, text: 'Cambio de personaje o cierre: cada uno dice una cosa nueva que sabe de la historia.' },
+      { min: 1, text: `Un voluntario es ${a}; el resto prepara preguntas.` },
+      { min: 3, text: `Entrevista a ${a}${level === 'A1' || level === 'A2' ? ' (respuestas de una frase)' : ' (que justifique con because)'}.` },
+      { min: 1, text: 'Cada uno dice algo nuevo que sabe.' },
     ],
     questions: [`How do you feel, ${a}?`, `What are you going to do tomorrow?`],
   }),
@@ -203,9 +205,9 @@ const CLOSERS: ((n: { a: string; gram: string; terms: string[]; level: CefrLevel
     title: 'Ticket de salida 3-2-1',
     minutes: 4,
     steps: [
-      { min: 1, text: 'Escriban en un papel: 3 palabras nuevas, 2 frases con la estructura de hoy, 1 pregunta que le harían al personaje.' },
-      { min: 2, text: 'Intercambian el ticket con un compañero que corrige una frase.' },
-      { min: 1, text: 'Lee dos tickets al azar y anuncia cómo continúa la historia mañana.' },
+      { min: 1, text: '3 palabras · 2 frases · 1 pregunta al personaje.' },
+      { min: 2, text: 'Intercambian y corrigen una frase.' },
+      { min: 1, text: 'Lee dos y anuncia cómo sigue mañana.' },
     ],
     questions: [`Make a sentence about ${a} with: ${gram}.`],
   }),
@@ -213,13 +215,23 @@ const CLOSERS: ((n: { a: string; gram: string; terms: string[]; level: CefrLevel
     title: 'Predicción: ¿qué pasará?',
     minutes: 5,
     steps: [
-      { min: 1, text: `Pregunta: What is going to happen to ${a}? What do you think?` },
-      { min: 3, text: 'Parejas escriben 2 predicciones; votan la más probable y la más loca.' },
-      { min: 1, text: 'Deja la predicción ganadora anotada para abrir la siguiente clase.' },
+      { min: 1, text: `What is going to happen to ${a}?` },
+      { min: 3, text: 'Parejas escriben 2 predicciones y votan.' },
+      { min: 1, text: 'La ganadora abre la próxima clase.' },
     ],
     questions: [`What will ${a} do?`, `Do you think ${a} is right?`],
   }),
 ];
+
+/** Where a chapter sits in the arc. */
+export function stageOf(i: number, n: number) {
+  if (n === 1) return 'Todo en uno';
+  if (i === 0) return 'Inicio';
+  if (i === n - 1) return 'Desenlace';
+  return n === 4 && i === 2 ? 'Giro' : 'Nudo';
+}
+
+const CUES = ['Cuéntala en 3 frases; ellos adivinan qué sigue.', 'Haz una pregunta y deja que la clase invente el detalle.', 'Pausa en el momento clave: ¿qué pasa ahora?', 'Que la cuenten en parejas con las palabras de la unidad.'];
 
 export function buildLocal({ level, units, topic, style, seed }: ThreadInput): Thread {
   const seedPlan = pick(SEEDS[style], seed);
@@ -230,18 +242,16 @@ export function buildLocal({ level, units, topic, style, seed }: ThreadInput): T
     const grammar = u.grammar.map((g) => g.name);
     const gram = grammar[0] ?? unitName(u);
     const qs = QUESTIONS[band(level)];
-    const questions = [0, 1, 2].map((k) => pick(qs, seed + i + k)({ a: pick([a, b], i + k), term: vocab[k % Math.max(1, vocab.length)] ?? 'story', gram: grammar[k % Math.max(1, grammar.length)] ?? gram, topic: u.theme.toLowerCase() }));
+    const questions = [0, 1].map((k) => pick(qs, seed + i + k)({ a: pick([a, b], i + k), term: vocab[k % Math.max(1, vocab.length)] ?? 'story', gram: grammar[k % Math.max(1, grammar.length)] ?? gram, topic: u.theme.toLowerCase() }));
     return {
       unit: u.n,
       unitTitle: unitName(u),
-      link:
-        i === 0
-          ? `Abre el hilo con esta unidad: ${beat}.`
-          : `Parte de lo que pasó en «${unitName(units[i - 1]!)}» y avanza la historia: ${beat}.`,
-      scene: `En esta parte: ${beat}. Haz que el tema de la unidad (${u.theme}) sea lo que ${a} y ${b} enfrentan, y que las palabras ${vocab.slice(0, 3).join(', ')} muevan la historia.`,
+      link: i === 0 ? 'Abre el hilo' : `Sigue de «${unitName(units[i - 1]!)}»`,
+      stage: stageOf(i, units.length),
+      scene: beat.charAt(0).toUpperCase() + beat.slice(1) + '.',
       vocab,
       grammar,
-      cue: `Cuenta esta parte en 3–4 frases simples usando ${vocab.slice(0, 3).join(', ')}. Pide a los estudiantes que digan qué sigue con ${gram}. ${u.speaking?.[0] ? `Speaking de la unidad: ${u.speaking[0].text}` : ''}`.trim(),
+      cue: pick(CUES, seed + i),
       questions,
     };
   });
@@ -263,17 +273,16 @@ export function buildLocal({ level, units, topic, style, seed }: ThreadInput): T
     opener: pick(OPENERS, seed)({ a, first: unitName(units[0]!), level }),
     closer: pick(CLOSERS, seed + 2)(closerBase),
     tips: [
-      'Cuenta la historia tú, en inglés simple de este nivel, y deja que los estudiantes completen o cambien detalles: la historia es de ellos.',
-      'Cada unidad es una rama: si la clase se desvía, vuelve al personaje con «And what about ' + a + '?».',
-      'Cierra siempre con el hilo abierto (una pregunta o predicción) para que la siguiente clase empiece sola.',
-      'Corrige solo el error que más afecta la comprensión durante la actividad; el resto, al final.',
+      'Cuenta tú la historia; ellos completan los detalles.',
+      `Si se desvían: «And what about ${a}?»`,
+      'Cierra con una pregunta abierta: la próxima clase empieza sola.',
     ],
   };
 }
 
 // ----------------------------------------------------------------- Gemini --
 
-const SHAPE = `{"title":"English title","premise":"2 sentences in Spanish for the teacher","story":"the whole thread as one continuous text in English, with a short heading line per chapter like 'Chapter 1 · <unit title>'","characters":[{"name":"","role":"Spanish, a few words"}],"chapters":[{"unit":0,"link":"Spanish: how this branch grows from the previous one","scene":"2–3 sentences in English at the level: what happens","cue":"Spanish: what the teacher does, in 2 sentences","questions":["3 English questions that need the unit's vocabulary or grammar"]}],"opener":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish instruction"}],"questions":["English"]},"closer":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish instruction"}],"questions":["English"]},"tips":["Spanish tip"]}`;
+const SHAPE = `{"title":"English title","premise":"ONE short sentence in Spanish","story":"the whole thread in English, one short paragraph per chapter, each starting with 'Chapter N · <unit title>' on its own line","characters":[{"name":"","role":"Spanish, a few words"}],"chapters":[{"unit":0,"link":"Spanish, max 6 words: how it follows the previous chapter","scene":"ONE sentence in English at the level: what happens","cue":"Spanish, max 14 words: what the teacher does","questions":["2 short English questions that need the unit's vocabulary or grammar"]}],"opener":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"closer":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"tips":["2 tips in Spanish, max 10 words each"]}`;
 
 function prompt({ level, units, topic, style }: ThreadInput) {
   const st = STYLES.find((s) => s.id === style)!;
@@ -291,6 +300,8 @@ Rules:
 - One chapter per unit, in the order given, with the "unit" number as given.
 - "opener" (start of class, recalls or sets up the thread) and "closer" (end of class activity or questions) must each fit in 5 minutes or less: the steps' minutes must add up to the activity's minutes (≤ 5).
 - Teacher instructions in Spanish; student-facing language in English.
+- Be brief and concrete: the teacher reads this in seconds before class. The story: about 60–90 words per chapter.
+- 2 or 3 steps per activity.
 Return ONLY valid JSON, no markdown, in this shape:
 ${SHAPE}`;
 }
@@ -308,17 +319,25 @@ function activity(v: unknown, fallback: Activity): Activity {
   return { title: str(o.title) || fallback.title, minutes: Math.min(5, total || Number(o.minutes) || 5), steps, questions: strs(o.questions) };
 }
 
+const renameActivity = (a: Activity, f: (t: string) => string): Activity => ({ ...a, steps: a.steps.map((x) => ({ ...x, text: f(x.text) })), questions: a.questions.map(f) });
+
 function parseAi(text: string, local: Thread): Thread {
   const o = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1)) as Record<string, unknown>;
   const rows = Array.isArray(o.chapters) ? (o.chapters as Record<string, unknown>[]) : [];
+  const characters = Array.isArray(o.characters)
+    ? (o.characters as Record<string, unknown>[]).map((c) => ({ name: str(c.name), role: str(c.role) })).filter((c) => c.name).slice(0, 5)
+    : [];
+  // Anything still taken from the local plan uses the AI's characters, not the local names.
+  const names = local.characters.map((c, i) => [c.name, characters[i]?.name] as const).filter((x): x is readonly [string, string] => !!x[1]);
+  const rename = (t: string) => names.reduce((acc, [from, to]) => acc.split(from).join(to), t);
   const chapters: Chapter[] = local.chapters.map((lc, i) => {
-    const r = rows.find((x) => Number(x.unit) === lc.unit) ?? rows[i] ?? {};
+    const r = rows.find((x) => Number(x.unit) === lc.unit) ?? (rows.length === local.chapters.length ? rows[i] : undefined) ?? {};
     return {
       ...lc,
-      link: str(r.link) || lc.link,
-      scene: str(r.scene) || lc.scene,
-      cue: str(r.cue) || lc.cue,
-      questions: strs(r.questions, 5).length ? strs(r.questions, 5) : lc.questions,
+      link: str(r.link) || rename(lc.link),
+      scene: str(r.scene) || rename(lc.scene),
+      cue: str(r.cue) || rename(lc.cue),
+      questions: strs(r.questions, 3).length ? strs(r.questions, 3) : lc.questions.map(rename),
     };
   });
   if (!str(o.story) && !rows.length) throw new Error('empty');
@@ -328,13 +347,11 @@ function parseAi(text: string, local: Thread): Thread {
     title: str(o.title) || local.title,
     premise: str(o.premise) || local.premise,
     story: str(o.story) || undefined,
-    characters: Array.isArray(o.characters)
-      ? (o.characters as Record<string, unknown>[]).map((c) => ({ name: str(c.name), role: str(c.role) })).filter((c) => c.name).slice(0, 5)
-      : local.characters,
+    characters: characters.length ? characters : local.characters,
     chapters,
-    opener: activity(o.opener, local.opener),
-    closer: activity(o.closer, local.closer),
-    tips: strs(o.tips, 5).length ? strs(o.tips, 5) : local.tips,
+    opener: activity(o.opener, renameActivity(local.opener, rename)),
+    closer: activity(o.closer, renameActivity(local.closer, rename)),
+    tips: strs(o.tips, 3).length ? strs(o.tips, 3) : local.tips,
   };
 }
 

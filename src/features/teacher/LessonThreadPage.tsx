@@ -1,24 +1,27 @@
 import { useMemo, useState } from 'react';
-import { Clipboard, Check, Dices, Sparkles, School, Wand2, BookOpenText, DoorOpen, DoorClosed } from 'lucide-react';
+import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, School, Sparkles, Wand2 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Button, ButtonLink } from '@/components/ui/Button';
 import { Segmented } from '@/components/ui/Segmented';
-import { Chip, PageLoader } from '@/components/ui/Misc';
+import { PageLoader } from '@/components/ui/Misc';
 import { useAsync } from '@/hooks/useAsync';
 import { useClass } from './useClass';
-import { loadLevel } from '@/content/levels';
+import { levelMeta, loadLevel } from '@/content/levels';
 import { CEFR_LEVELS, type CefrLevel } from '@/content/types';
 import { supabase } from '@/lib/supabase';
-import { STYLES, buildLocal, buildWithAi, threadToText, type Activity, type Thread, type ThreadStyle } from '@/lib/lessonThread';
+import { STYLES, buildLocal, buildWithAi, threadToText, type Activity, type Chapter, type Thread, type ThreadStyle } from '@/lib/lessonThread';
 import { unitTitle } from '@/features/learn/LevelPage';
+import { cn } from '@/lib/cn';
+import { ink, tint } from '@/lib/color';
 
 const MAX_UNITS = 4;
+const STAGE_EMOJI: Record<string, string> = { Inicio: '🌱', Nudo: '🌿', Giro: '🌀', Desenlace: '🌳', 'Todo en uno': '🌳' };
 
 /**
- * Class thread generator (teachers only): one level, up to four of its units and
- * an optional topic become a central story with each unit as a branch, plus a
- * 5-minute opener and a 5-minute closer.
+ * Class thread (teachers only): one level, up to four of its units and an
+ * optional topic become one story, each unit a branch, with a 5-minute opener
+ * and closer. Shown as a thread: opener → branches → closer.
  */
 export default function LessonThreadPage() {
   const { isTeacher } = useClass();
@@ -30,18 +33,16 @@ export default function LessonThreadPage() {
   const [thread, setThread] = useState<Thread | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
   const { data: book, loading } = useAsync(() => loadLevel(level), [level]);
-
   const units = useMemo(() => (book?.units ?? []).filter((u) => picked.includes(u.n)).sort((a, b) => a.n - b.n), [book, picked]);
+  const color = levelMeta(level)?.color ?? 'var(--purple)';
 
   if (!isTeacher)
     return (
       <Page title="Hilo de clase">
-        <Card className="mx-auto max-w-xl p-6 text-center">
+        <Card className="mx-auto max-w-md p-6 text-center">
           <School size={40} className="text-ink-orange mx-auto" />
           <h2 className="text-title-3 mt-3">Solo para docentes</h2>
-          <p className="text-label-2 mt-1">Esta herramienta de planeación solo está disponible con una cuenta de docente.</p>
           <ButtonLink to="/profile" className="mt-4">
             Ir a mi perfil
           </ButtonLink>
@@ -51,53 +52,28 @@ export default function LessonThreadPage() {
 
   const toggle = (n: number) =>
     setPicked((p) => (p.includes(n) ? (p.length > 1 ? p.filter((x) => x !== n) : p) : p.length >= MAX_UNITS ? [...p.slice(1), n] : [...p, n]));
-  const input = (s = seed) => ({ level, units, topic: topic.trim(), style, seed: s });
-
+  const input = (s: number) => ({ level, units, topic: topic.trim(), style, seed: s });
   const local = (s = seed) => {
-    if (!units.length) return;
     setError(null);
     setThread(buildLocal(input(s)));
   };
   const withAi = async () => {
-    if (!units.length) return;
     setBusy(true);
     setError(null);
     try {
-      setThread(await buildWithAi(input()));
+      setThread(await buildWithAi(input(seed)));
     } catch (e) {
       setError((e as Error).message);
-      setThread(buildLocal(input()));
+      setThread(buildLocal(input(seed)));
     } finally {
       setBusy(false);
     }
   };
-  const another = () => {
-    const s = seed + 1;
-    setSeed(s);
-    local(s);
-  };
-  const copy = async () => {
-    if (!thread) return;
-    try {
-      await navigator.clipboard.writeText(threadToText(thread));
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {
-      setError('No se pudo copiar. Selecciona el texto manualmente.');
-    }
-  };
 
   return (
-    <Page
-      back={{ to: '/teacher?tab=material', label: 'Sala del docente' }}
-      eyebrow="Planeación de clase · solo docentes"
-      title="Hilo de clase"
-      subtitle="Elige un nivel y sus unidades: se crea un hilo central (cuento, misterio, chisme…) con cada unidad como una rama, más un inicio y un cierre de máximo 5 minutos."
-      wide
-    >
-      <Card className="mb-6 space-y-5 p-5">
-        <div>
-          <div className="text-label-2 mb-2 text-[13px] font-semibold uppercase">Nivel (no se mezclan niveles)</div>
+    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Una historia, varias unidades, inicio y cierre en 5 minutos." wide>
+      <Card className="mb-6 space-y-4 p-4 sm:p-5">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="no-scrollbar overflow-x-auto">
             <Segmented<CefrLevel>
               value={level}
@@ -109,66 +85,75 @@ export default function LessonThreadPage() {
               options={CEFR_LEVELS.map((l) => ({ value: l, label: l }))}
             />
           </div>
-        </div>
-
-        <div>
-          <div className="text-label-2 mb-2 text-[13px] font-semibold uppercase">
-            Unidades del hilo <span className="font-normal normal-case">· hasta {MAX_UNITS}, en orden: cada una es una rama</span>
-          </div>
-          {loading || !book ? (
-            <PageLoader />
-          ) : (
-            <div className="flex flex-wrap gap-2">
-              {book.units.map((u) => (
-                <Chip key={u.n} active={picked.includes(u.n)} onClick={() => toggle(u.n)}>
-                  {u.n} · {unitTitle(u.title)}
-                </Chip>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="thread-topic" className="text-label-2 mb-2 block text-[13px] font-semibold uppercase">
-            Tema o idea (opcional)
-          </label>
-          <input
-            id="thread-topic"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            maxLength={120}
-            placeholder="Ej.: una fiesta sorpresa en el barrio, un viaje a Cartagena…"
-            className="bg-fill-2 placeholder:text-label-3 w-full rounded-[12px] px-3.5 py-2.5 text-[15px] outline-none focus:ring-2"
-          />
-        </div>
-
-        <div>
-          <div className="text-label-2 mb-2 text-[13px] font-semibold uppercase">Tipo de hilo</div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Tipo de hilo">
             {STYLES.map((s) => (
-              <Chip key={s.id} active={style === s.id} onClick={() => setStyle(s.id)}>
-                {s.emoji} {s.label}
-              </Chip>
+              <button
+                key={s.id}
+                type="button"
+                role="radio"
+                aria-checked={style === s.id}
+                onClick={() => setStyle(s.id)}
+                title={s.label}
+                className={cn('flex h-9 items-center gap-1.5 rounded-full px-3 text-[14px] font-medium transition-colors', style === s.id ? 'text-white' : 'bg-fill-2 hover:bg-fill')}
+                style={style === s.id ? { background: ink(color) } : undefined}
+              >
+                <span aria-hidden>{s.emoji}</span> {s.label}
+              </button>
             ))}
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
+        {loading || !book ? (
+          <PageLoader />
+        ) : (
+          <div>
+            <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">
+              Unidades · {picked.length}/{MAX_UNITS}
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 lg:grid-cols-6">
+              {book.units.map((u) => {
+                const k = picked.indexOf(u.n);
+                const on = k >= 0;
+                return (
+                  <button
+                    key={u.n}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => toggle(u.n)}
+                    title={u.theme}
+                    className={cn('flex min-w-0 items-center gap-2 rounded-[12px] p-1.5 pr-2.5 text-left text-[13px] transition-colors', on ? 'font-semibold' : 'bg-fill-2/60 hover:bg-fill-2')}
+                    style={on ? { background: tint(color, 16), boxShadow: `inset 0 0 0 1.5px ${color}` } : undefined}
+                  >
+                    <span
+                      className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
+                      style={on ? { background: ink(color), color: '#fff' } : { background: 'var(--fill-2)' }}
+                    >
+                      {on ? k + 1 : u.n}
+                    </span>
+                    <span className="truncate">{unitTitle(u.title)}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div className="flex flex-wrap items-center gap-2">
+          <input
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            maxLength={120}
+            aria-label="Tema o idea (opcional)"
+            placeholder="Tema o idea (opcional): una fiesta sorpresa, un viaje…"
+            className="bg-fill-2 placeholder:text-label-3 h-10 min-w-0 flex-1 basis-60 rounded-[12px] px-3.5 text-[15px] outline-none focus:ring-2"
+          />
           <Button onClick={() => local()} disabled={!units.length}>
-            <Wand2 size={17} /> Generar plan
+            <Wand2 size={17} /> Generar
           </Button>
-          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || busy || !supabase}>
-            <Sparkles size={17} /> {busy ? 'Escribiendo con IA…' : 'Generar con IA (historia completa)'}
+          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || busy || !supabase} title="Gemini escribe la historia completa al nivel">
+            <Sparkles size={17} /> {busy ? 'Escribiendo…' : 'Con IA'}
           </Button>
-          {thread && (
-            <Button variant="gray" onClick={another}>
-              <Dices size={17} /> Otra idea
-            </Button>
-          )}
         </div>
-        <p className="text-label-2 text-[13px]">
-          «Generar plan» no usa internet ni IA: arma el hilo con el vocabulario y la gramática de las unidades. Con IA, Gemini escribe además la historia completa al nivel.
-        </p>
         {error && (
           <p role="alert" className="text-ink-red text-[14px]">
             {error}
@@ -176,136 +161,198 @@ export default function LessonThreadPage() {
         )}
       </Card>
 
-      {thread && <Plan thread={thread} onCopy={() => void copy()} copied={copied} />}
+      {thread && (
+        <Plan
+          t={thread}
+          color={color}
+          onAnother={() => {
+            setSeed(seed + 1);
+            local(seed + 1);
+          }}
+        />
+      )}
     </Page>
   );
 }
 
-function ActivityCard({ icon, heading, a }: { icon: React.ReactNode; heading: string; a: Activity }) {
-  return (
-    <Card className="p-5">
-      <div className="text-label-2 flex items-center gap-2 text-[13px] font-semibold uppercase">
-        {icon} {heading} · {a.minutes} min
-      </div>
-      <h3 className="text-headline mt-1">{a.title}</h3>
-      <ol className="mt-3 space-y-2">
-        {a.steps.map((s, i) => (
-          <li key={i} className="bg-fill-2 flex gap-3 rounded-[12px] p-3 text-[15px]">
-            <span className="bg-card text-label-2 h-fit shrink-0 rounded-full px-2 py-0.5 text-[12px] font-bold">{s.min} min</span>
-            <span className="min-w-0 text-pretty">{s.text}</span>
-          </li>
-        ))}
-      </ol>
-      {a.questions.length > 0 && (
-        <ul className="mt-3 space-y-1.5 text-[15px]">
-          {a.questions.map((q) => (
-            <li key={q} className="flex gap-2">
-              <span aria-hidden>❓</span>
-              <span className="min-w-0">{q}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Card>
-  );
-}
+// ------------------------------------------------------------------ result --
 
-function Plan({ thread: t, onCopy, copied }: { thread: Thread; onCopy: () => void; copied: boolean }) {
+function Plan({ t, color, onAnother }: { t: Thread; color: string; onAnother: () => void }) {
+  const [copied, setCopied] = useState(false);
+  const st = STYLES.find((s) => s.id === t.style)!;
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(threadToText(t));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch {
+      /* clipboard blocked */
+    }
+  };
   return (
-    <div className="space-y-5">
-      <Card className="p-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="text-label-2 text-[13px] font-semibold uppercase">
-              {t.level} · {STYLES.find((s) => s.id === t.style)?.label} · {t.source === 'ia' ? 'Escrito con IA' : 'Plan sin IA'}
-            </div>
-            <h2 className="text-title-2 mt-1">{t.title}</h2>
-          </div>
-          <Button variant="gray" onClick={onCopy}>
-            {copied ? <Check size={16} /> : <Clipboard size={16} />} {copied ? 'Copiado' : 'Copiar plan'}
-          </Button>
+    <div className="mx-auto max-w-3xl">
+      <div className="relative overflow-hidden rounded-[22px] p-5 text-white" style={{ background: `linear-gradient(135deg, ${ink(color)}, color-mix(in srgb, ${ink(color)} 55%, #000))` }}>
+        <span aria-hidden className="pointer-events-none absolute -top-3 -right-2 text-[96px] leading-none opacity-20">
+          {st.emoji}
+        </span>
+        <div className="text-[12px] font-semibold tracking-wide uppercase opacity-80">
+          {t.level} · {st.label} {t.source === 'ia' && '· IA'}
         </div>
-        <p className="mt-2 text-[15px] text-pretty">{t.premise}</p>
-        <ul className="mt-3 flex flex-wrap gap-2">
+        <h2 className="mt-1 text-[26px] leading-tight font-bold">{t.title}</h2>
+        <p className="mt-1.5 max-w-xl text-[15px] opacity-90">{t.premise}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           {t.characters.map((c) => (
-            <li key={c.name} className="bg-fill-2 rounded-full px-3 py-1 text-[13px]">
-              <b>{c.name}</b> · {c.role}
-            </li>
+            <span key={c.name} title={c.role} className="inline-flex items-center gap-1.5 rounded-full bg-white/15 py-1 pr-3 pl-1 text-[13px]">
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-[12px] font-bold" style={{ color: ink(color) }}>
+                {c.name[0]}
+              </span>
+              {c.name}
+            </span>
           ))}
-        </ul>
-      </Card>
-
-      <ActivityCard icon={<DoorOpen size={15} />} heading="Inicio de clase" a={t.opener} />
+          <span className="ml-auto flex gap-1.5">
+            <button type="button" onClick={onAnother} title="Otra idea" aria-label="Otra idea" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
+              <Dices size={17} />
+            </button>
+            <button type="button" onClick={() => void copy()} title="Copiar plan" aria-label="Copiar plan" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
+              {copied ? <Check size={17} /> : <Clipboard size={17} />}
+            </button>
+          </span>
+        </div>
+      </div>
 
       {t.story && (
-        <Card className="p-5">
-          <div className="text-label-2 flex items-center gap-2 text-[13px] font-semibold uppercase">
-            <BookOpenText size={15} /> Historia completa (nivel {t.level})
-          </div>
-          <div className="mt-2 space-y-2 text-[15.5px] leading-relaxed text-pretty">
+        <details className="bg-card shadow-card group mt-4 rounded-[18px] p-4">
+          <summary className="flex cursor-pointer list-none items-center gap-2 font-semibold">
+            📖 Leer la historia <ChevronDown size={16} className="text-label-2 ml-auto transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="mt-3 space-y-2 text-[15.5px] leading-relaxed">
             {t.story.split(/\n+/).map((p, i) => (
-              <p key={i} className={/^(chapter|capítulo)\b/i.test(p) ? 'text-label-2 pt-2 font-semibold' : undefined}>
+              <p key={i} className={/^(chapter|capítulo)\b/i.test(p) ? 'pt-1 text-[13px] font-semibold uppercase' : undefined} style={/^(chapter|capítulo)\b/i.test(p) ? { color: ink(color) } : undefined}>
                 {p}
               </p>
             ))}
           </div>
-        </Card>
+        </details>
       )}
 
-      <div>
-        <h3 className="text-title-3 mb-3 px-1">Las ramas, una por unidad</h3>
-        <ol className="space-y-4">
-          {t.chapters.map((c, i) => (
-            <li key={c.unit}>
-              <Card className="p-5">
-                <div className="flex items-center gap-2 text-[13px] font-semibold uppercase">
-                  <span className="bg-fill-2 inline-flex h-6 w-6 items-center justify-center rounded-full">{i + 1}</span>
-                  <span className="text-label-2">
-                    Unidad {c.unit} · {c.unitTitle}
-                  </span>
-                </div>
-                <p className="text-label-2 mt-2 text-[14px] italic text-pretty">{c.link}</p>
-                <p className="mt-2 text-[15.5px] text-pretty">{c.scene}</p>
-                <div className="mt-3 grid gap-3 md:grid-cols-2 [&>*]:min-w-0">
-                  <div className="bg-fill-2 rounded-[12px] p-3 text-[14px]">
-                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Vocabulario que alimenta el hilo</div>
-                    {c.vocab.join(' · ')}
-                  </div>
-                  <div className="bg-fill-2 rounded-[12px] p-3 text-[14px]">
-                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Gramática</div>
-                    {c.grammar.join(' · ')}
-                  </div>
-                </div>
-                <p className="mt-3 text-[14.5px] text-pretty">
-                  <b>Cómo guiarla:</b> {c.cue}
-                </p>
-                <ul className="mt-3 space-y-1.5 text-[15px]">
-                  {c.questions.map((q) => (
-                    <li key={q} className="flex gap-2">
-                      <span aria-hidden>❓</span>
-                      <span className="min-w-0">{q}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </li>
-          ))}
-        </ol>
-      </div>
+      {/* The thread: a line with the opener, one node per unit, the closer. */}
+      <ol className="relative mt-6 space-y-4 pl-9">
+        <span aria-hidden className="absolute top-3 bottom-3 left-[15px] w-[3px] rounded-full" style={{ background: tint(color, 35) }} />
+        <Node icon={<DoorOpen size={16} />} color={color}>
+          <Moment label="Abrir clase" a={t.opener} color={color} />
+        </Node>
+        {t.chapters.map((c) => (
+          <Node key={c.unit} icon={<span className="text-[15px]">{STAGE_EMOJI[c.stage] ?? '🌿'}</span>} color={color} soft>
+            <Branch c={c} color={color} />
+          </Node>
+        ))}
+        <Node icon={<DoorClosed size={16} />} color={color}>
+          <Moment label="Cerrar clase" a={t.closer} color={color} />
+        </Node>
+      </ol>
 
-      <ActivityCard icon={<DoorClosed size={15} />} heading="Cierre de clase" a={t.closer} />
-
-      <Card className="p-5">
-        <h3 className="text-headline">Consejos para llevar el hilo</h3>
-        <ul className="text-label-2 mt-2 space-y-1.5 text-[14.5px]">
-          {t.tips.map((x) => (
-            <li key={x} className="flex gap-2">
-              <span aria-hidden>•</span>
-              <span className="min-w-0 text-pretty">{x}</span>
-            </li>
-          ))}
-        </ul>
-      </Card>
+      <ul className="mt-5 flex flex-col gap-1.5 text-[14px]">
+        {t.tips.map((x) => (
+          <li key={x} className="text-label-2 flex items-start gap-2">
+            <Lightbulb size={15} className="text-ink-yellow mt-0.5 shrink-0" /> {x}
+          </li>
+        ))}
+      </ul>
     </div>
+  );
+}
+
+function Node({ icon, color, soft, children }: { icon: React.ReactNode; color: string; soft?: boolean; children: React.ReactNode }) {
+  return (
+    <li className="relative">
+      <span
+        className="absolute top-3 -left-9 inline-flex h-[33px] w-[33px] items-center justify-center rounded-full ring-4 ring-[var(--bg)]"
+        style={soft ? { background: tint(color, 20), color: ink(color) } : { background: ink(color), color: '#fff' }}
+      >
+        {icon}
+      </span>
+      {children}
+    </li>
+  );
+}
+
+/** Opener or closer: a minute bar and short steps. */
+function Moment({ label, a, color }: { label: string; a: Activity; color: string }) {
+  const total = a.steps.reduce((n, s) => n + s.min, 0) || 1;
+  return (
+    <Card className="p-4">
+      <div className="flex items-baseline justify-between gap-2">
+        <h3 className="text-headline">
+          <span className="text-label-2 mr-1.5 text-[12px] font-semibold tracking-wide uppercase">{label}</span>
+          {a.title}
+        </h3>
+        <span className="shrink-0 text-[13px] font-semibold" style={{ color: ink(color) }}>
+          ⏱ {a.minutes} min
+        </span>
+      </div>
+      <div className="mt-3 flex h-2 gap-1 overflow-hidden rounded-full" aria-hidden>
+        {a.steps.map((s, i) => (
+          <span key={i} className="rounded-full" style={{ flex: s.min || 0.5, background: tint(color, 30 + i * 22) }} />
+        ))}
+      </div>
+      <ol className="mt-2.5 space-y-1.5">
+        {a.steps.map((s, i) => (
+          <li key={i} className="flex gap-2.5 text-[14.5px]">
+            <span className="text-label-2 w-9 shrink-0 text-[12px] leading-[22px] font-semibold tabular-nums">{s.min}′</span>
+            <span className="min-w-0">{s.text}</span>
+          </li>
+        ))}
+      </ol>
+      {a.questions.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {a.questions.map((q) => (
+            <span key={q} className="bg-fill-2 rounded-[10px] px-2.5 py-1 text-[13.5px]">
+              {q}
+            </span>
+          ))}
+        </div>
+      )}
+      <span className="sr-only">{total} minutos</span>
+    </Card>
+  );
+}
+
+/** One unit = one branch of the story. */
+function Branch({ c, color }: { c: Chapter; color: string }) {
+  return (
+    <Card className="p-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase" style={{ background: tint(color, 16), color: ink(color) }}>
+          {c.stage}
+        </span>
+        <span className="text-label-2 text-[13px]">
+          U{c.unit} · {c.unitTitle}
+        </span>
+      </div>
+      <p className="mt-2 text-[16px] leading-snug font-semibold text-pretty">{c.scene}</p>
+      <div className="mt-2.5 flex flex-wrap gap-1.5">
+        {c.vocab.slice(0, 6).map((v) => (
+          <span key={v} className="bg-fill-2 rounded-full px-2.5 py-0.5 text-[13px]">
+            {v}
+          </span>
+        ))}
+        {c.grammar.map((g) => (
+          <span key={g} className="rounded-full px-2.5 py-0.5 text-[13px] font-medium" style={{ background: tint(color, 14), color: ink(color) }}>
+            {g}
+          </span>
+        ))}
+      </div>
+      <p className="text-label-2 mt-2.5 text-[13.5px]">👉 {c.cue}</p>
+      <ul className="mt-2 space-y-1">
+        {c.questions.map((q) => (
+          <li key={q} className="text-[14.5px]">
+            <span aria-hidden className="mr-1.5">
+              ❓
+            </span>
+            {q}
+          </li>
+        ))}
+      </ul>
+    </Card>
   );
 }

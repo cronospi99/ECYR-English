@@ -94,20 +94,16 @@ N2. NOTAS: TAMAÑO, FUENTES Y MÁS COLORES
   Google Fonts.
 - Las notas anteriores se abren igual y todo sigue guardándose como texto.
 
-V. HILO DE CLASE (solo docentes · Sala del docente › Material › Planeación de clase)
-- Eliges un nivel (A1–C2, sin mezclar niveles), de 1 a 4 de sus unidades
-  y, si quieres, un tema o idea. El motor arma un hilo central, que puede
-  ser cuento, misterio, chisme, noticia, diario o viaje, donde cada unidad
-  es una rama que lo alimenta.
-- Entrega: personajes, un inicio de clase y un cierre de clase de máximo 5
-  min con pasos cronometrados; por cada unidad, cómo nace del capítulo
-  anterior, el vocabulario y la gramática que lo alimentan, cómo guiarla y
-  3 preguntas del nivel. Se puede copiar todo el plan.
-- «Generar plan» funciona sin IA ni internet. «Generar con IA» usa la
-  función gemini que ya está desplegada para escribir además la historia
-  completa al nivel; si falla, se entrega el plan sin IA.
-- Está oculto para estudiantes: no aparece en su menú y la ruta
-  (/teacher/thread) les muestra «Solo para docentes».
+V. HILO DE CLASE (solo docentes · Sala del docente › Material)
+- Nivel (sin mezclar) + 1 a 4 unidades + tema opcional + tipo de hilo
+  (cuento, misterio, chisme, noticia, diario, viaje).
+- Resultado visual: tarjeta con título y personajes, y una línea de tiempo
+  Abrir clase → una rama por unidad (Inicio / Nudo / Giro / Desenlace, con
+  su vocabulario, gramática, una guía corta y 2 preguntas) → Cerrar clase.
+  Apertura y cierre de máx. 5 min con barra de minutos.
+- «Generar» funciona sin IA; «Con IA» escribe además la historia completa
+  al nivel (función gemini ya desplegada). Botones para otra idea y copiar.
+- Oculto para estudiantes.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:
