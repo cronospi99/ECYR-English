@@ -1,0 +1,1692 @@
+[
+ {
+  "id": "r6-a1-death-car",
+  "title": "The Death Car · A1",
+  "level": "A1",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "There is / there are, present simple and can",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "there": {
+    "label": "There is / there are",
+    "color": "var(--purple)"
+   },
+   "pres": {
+    "label": "Presente simple",
+    "color": "var(--orange)"
+   },
+   "can": {
+    "label": "Can / can't",
+    "color": "var(--green)"
+   }
+  },
+  "paragraphs": [
+   "## A cold night",
+   "It is a cold, wet night in September. George and Marie Winston are in their car. They [[pres|go]] to a party at the Harrisons' house. The Harrisons are their friends. Lisa Harrison is engaged!",
+   "## The radio",
+   "[[there|There is]] music on the radio. Then a man [[pres|speaks]]: “Police warning! A dangerous man is out of the hospital. His name is John Downey. He is a murderer. Lock your doors!”",
+   "Marie is afraid. “[[there|There is]] a killer near here!”",
+   "“Don't worry,” says George. “But [[there|there is]] a problem with the car.”",
+   "## The car stops",
+   "The car [[pres|goes]] slowly, and then it [[pres|stops]] under a big tree. [[there|There are]] no houses here.",
+   "“I [[can|can't walk]] in the rain in my party shoes,” says Marie.",
+   "“I [[can|can run]] to a house and phone the Harrisons,” says George.",
+   "“But I [[can|can't stay]] here alone!”",
+   "“Get in the back and lie down under this blanket. Lock the doors. Nobody [[can|can see]] you. Open the door only for three knocks.” George [[pres|runs]] into the dark.",
+   "## Three knocks",
+   "Marie [[pres|waits]]. Then she [[pres|hears]] a noise on the roof. Knock… knock… knock. Three knocks! Is it George?",
+   "But then [[there|there is]] another knock. And another. It isn't George! Marie [[pres|doesn't move]]. Bump, bump, bump. All night, [[there|there are]] knocks on the roof. Marie [[pres|doesn't sleep]].",
+   "## Morning",
+   "In the morning, [[there|there are]] three police cars on the road. A police officer [[pres|takes]] Marie's hand. “You are safe now. Come with me to the police car. Don't look back. Please, don't look back!”",
+   "But near the police car, Marie [[pres|stops]]. She [[pres|turns]] and [[pres|looks]] back.",
+   "George is in the tree above the car. He is dead. [[there|There is]] a rope around his neck. The wind [[pres|moves]] his body, and his feet [[pres|hit]] the roof of the car: bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "engaged",
+    "comprometida (para casarse)"
+   ],
+   [
+    "warning",
+    "aviso, advertencia"
+   ],
+   [
+    "dangerous",
+    "peligroso"
+   ],
+   [
+    "murderer",
+    "asesino"
+   ],
+   [
+    "killer",
+    "asesino"
+   ],
+   [
+    "afraid",
+    "asustado/a"
+   ],
+   [
+    "lock",
+    "cerrar con llave"
+   ],
+   [
+    "blanket",
+    "manta, cobija"
+   ],
+   [
+    "roof",
+    "techo"
+   ],
+   [
+    "knock",
+    "golpe (en una puerta)"
+   ],
+   [
+    "safe",
+    "a salvo, seguro/a"
+   ],
+   [
+    "rope",
+    "cuerda, soga"
+   ],
+   [
+    "wind",
+    "viento"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Where are George and Marie going?",
+    "options": [
+     "To the hospital",
+     "To the police station",
+     "To a party at the Harrisons' house",
+     "To their house"
+    ],
+    "answer": 2,
+    "explain_es": "'They go to a party at the house of their friends, the Harrisons.'"
+   },
+   {
+    "type": "mc",
+    "q": "Why is there a party?",
+    "options": [
+     "It is Christmas.",
+     "It is Lisa’s birthday.",
+     "Lisa Harrison is engaged.",
+     "George has a new car."
+    ],
+    "answer": 2,
+    "explain_es": "'Lisa Harrison is engaged!' Es una fiesta de compromiso."
+   },
+   {
+    "type": "tf",
+    "q": "John Downey is a murderer.",
+    "answer": "T",
+    "explain_es": "El aviso de la policía dice: 'He is a murderer.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie is happy about the news on the radio.",
+    "answer": "F",
+    "explain_es": "Marie tiene miedo: 'Marie is afraid.'"
+   },
+   {
+    "type": "mc",
+    "q": "Where does the car stop?",
+    "options": [
+     "At the hospital",
+     "At the party",
+     "Under a big tree",
+     "At a house"
+    ],
+    "answer": 2,
+    "explain_es": "'then it stops under a big tree.'"
+   },
+   {
+    "type": "tf",
+    "q": "There are a lot of houses near the car.",
+    "answer": "F",
+    "explain_es": "'There are no houses here.' No hay casas cerca."
+   },
+   {
+    "type": "mc",
+    "q": "What is George's signal?",
+    "options": [
+     "Three knocks",
+     "A song",
+     "A phone call",
+     "The car lights"
+    ],
+    "answer": 0,
+    "explain_es": "'Open the door only for three knocks.'"
+   },
+   {
+    "type": "vocab",
+    "q": "What is a 'blanket'?",
+    "options": [
+     "A small window",
+     "A police officer",
+     "A type of car",
+     "A big piece of cloth to keep you warm"
+    ],
+    "answer": 3,
+    "explain_es": "'Blanket' = manta o cobija. Marie se esconde 'under this blanket'."
+   },
+   {
+    "type": "tf",
+    "q": "Marie sleeps in the car.",
+    "answer": "F",
+    "explain_es": "'Marie doesn't sleep.' Escucha los golpes toda la noche."
+   },
+   {
+    "type": "mc",
+    "q": "What makes the noise on the roof all night?",
+    "options": [
+     "George's feet",
+     "John Downey",
+     "A police car",
+     "The rain"
+    ],
+    "answer": 0,
+    "explain_es": "El final: George está colgado del árbol y 'his feet hit the roof of the car: bump, bump, bump.'"
+   },
+   {
+    "type": "gap",
+    "q": "There ____ three police cars on the road. (is / are)",
+    "answer": "are",
+    "explain_es": "Plural (three police cars) → there are."
+   },
+   {
+    "type": "gap",
+    "q": "Marie ____ (hear) a noise on the roof.",
+    "answer": "hears",
+    "explain_es": "Presente simple con she: se añade -s. 'she hears a noise on the roof.'"
+   },
+   {
+    "type": "gap",
+    "q": "I ____ walk in the rain in my party shoes. (can / can't)",
+    "answer": "can't",
+    "accept": [
+     "cannot",
+     "can not",
+     "can’t"
+    ],
+    "explain_es": "Marie no puede caminar con sus zapatos de fiesta: 'I can't walk in the rain in my party shoes.'"
+   }
+  ],
+  "words": 302
+ },
+ {
+  "id": "r6-a2-death-car",
+  "title": "The Death Car · A2",
+  "level": "A2",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "Past simple: regular, irregular and negative",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "reg": {
+    "label": "Regular (-ed)",
+    "color": "var(--blue)"
+   },
+   "irr": {
+    "label": "Irregular",
+    "color": "var(--orange)"
+   },
+   "neg": {
+    "label": "Negativa (didn't / wasn't)",
+    "color": "var(--red)"
+   }
+  },
+  "paragraphs": [
+   "## The party",
+   "It [[irr|was]] a cold, wet night in September. George and Marie Winston [[irr|were]] in their car on a quiet country road. They [[irr|were]] on their way to a party at the Harrisons' house. The Harrisons [[irr|were]] old friends. The Harrisons' daughter Lisa [[irr|was]] engaged.",
+   "Rain [[irr|fell]] hard, and the radio [[reg|played]] soft classical music.",
+   "## The radio",
+   "Suddenly, the music [[reg|stopped]] and a serious voice [[irr|spoke]]. “This is a police warning. This evening a man [[reg|escaped]] from a hospital for dangerous criminals. His name is John Downey. Two years ago, he [[reg|killed]] six people. He is very dangerous. Lock your doors and windows!”",
+   "Marie [[irr|felt]] cold. “A killer! And he is somewhere out there,” she [[irr|said]].",
+   "“Don't worry,” George [[reg|answered]]. “We're almost there. But I'm worried about the car. The engine [[neg|didn't sound]] right this afternoon.”",
+   "## The car stops",
+   "A few minutes later, the car [[irr|began]] to lose power. George [[reg|pressed]] the pedal, but the engine [[neg|didn't respond]]. Slowly, the car [[reg|stopped]]. George [[reg|pulled]] it off the road, under a big tree.",
+   "“Oh no!” he [[irr|said]]. “It's an hour's walk to the party.”",
+   "“I [[neg|didn't bring]] my walking shoes,” Marie [[reg|replied]].",
+   "“Then wait here. I'll go to the nearest farm and phone the Harrisons.”",
+   "“Alone? Did you forget the radio? There's a murderer out there!”",
+   "George [[irr|thought]] for a moment. “Get in the back and lie on the floor under this blanket. Lock the doors. When I'm back, I'll knock three times. Don't open the door without three knocks.” Then he [[irr|ran]] off into the dark.",
+   "## Three knocks",
+   "Marie [[reg|locked]] the doors and [[reg|waited]] under the blanket. She [[irr|was]] scared, but she [[irr|was]] a strong woman. Soon she [[irr|heard]] a strange scratching sound on the roof. Then she [[irr|heard]] three knocks: one, two, three. Was it George? She [[neg|didn't move]].",
+   "Then there [[irr|was]] a fourth knock, and a fifth. It [[neg|wasn't]] George! The knocking [[neg|didn't stop]]. Bump, bump, bump, bump. All night, Marie [[reg|stayed]] on the floor. She [[neg|didn't sleep]]. Where was George? Why [[neg|didn't he come]] back?",
+   "## Morning",
+   "At sunrise, she [[irr|heard]] cars on the road. Three police cars [[reg|stopped]] around her. Marie [[irr|sat]] up and [[reg|opened]] the door. A police officer [[reg|hurried]] to her and [[irr|took]] her hand.",
+   "“Come with me to the police car,” he [[irr|said]]. “You're safe now. Look only at the police car. Don't look back. Please, don't look back.”",
+   "His voice [[irr|made]] Marie afraid. A few steps from the police car, she [[reg|stopped]] and [[reg|turned]] around.",
+   "George's body [[irr|hung]] from a branch above the car, with a rope around his neck. The wind [[irr|blew]] it from side to side, and his feet [[reg|touched]] the roof of the car: bump, bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "engaged",
+    "comprometida (para casarse)"
+   ],
+   [
+    "warning",
+    "aviso, advertencia"
+   ],
+   [
+    "escaped",
+    "se escapó"
+   ],
+   [
+    "dangerous",
+    "peligroso"
+   ],
+   [
+    "murderer",
+    "asesino"
+   ],
+   [
+    "engine",
+    "motor"
+   ],
+   [
+    "pedal",
+    "pedal (acelerador)"
+   ],
+   [
+    "respond",
+    "responder, reaccionar"
+   ],
+   [
+    "nearest",
+    "más cercano"
+   ],
+   [
+    "blanket",
+    "manta, cobija"
+   ],
+   [
+    "scratching",
+    "arañazos, rasguños (sonido)"
+   ],
+   [
+    "sunrise",
+    "amanecer"
+   ],
+   [
+    "hurried",
+    "se apresuró"
+   ],
+   [
+    "safe",
+    "a salvo"
+   ],
+   [
+    "hung",
+    "colgaba"
+   ],
+   [
+    "rope",
+    "cuerda, soga"
+   ],
+   [
+    "blew",
+    "sopló"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why were George and Marie on the road?",
+    "options": [
+     "They were going to the hospital.",
+     "They were going home from work.",
+     "They were looking for John Downey.",
+     "They were going to a party at the Harrisons’ house."
+    ],
+    "answer": 3,
+    "explain_es": "'They were on their way to a party at the house of their friends, the Harrisons.'"
+   },
+   {
+    "type": "tf",
+    "q": "The radio played rock music.",
+    "answer": "F",
+    "explain_es": "'the radio played soft classical music.'"
+   },
+   {
+    "type": "mc",
+    "q": "What did the radio say about John Downey?",
+    "options": [
+     "He was a police officer.",
+     "He lived near the Harrisons.",
+     "He escaped from a hospital this evening.",
+     "He was a friend of George."
+    ],
+    "answer": 2,
+    "explain_es": "'This evening a man escaped from a hospital for dangerous criminals. His name is John Downey.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie felt cold when she heard the news.",
+    "answer": "T",
+    "explain_es": "'Marie felt cold.' Tiene miedo por el aviso."
+   },
+   {
+    "type": "mc",
+    "q": "What happened to the car?",
+    "options": [
+     "It hit a tree.",
+     "The police stopped it.",
+     "It lost power and stopped.",
+     "It went very fast."
+    ],
+    "answer": 2,
+    "explain_es": "'the car began to lose power… Slowly, the car stopped.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie wanted to walk to the party.",
+    "answer": "F",
+    "explain_es": "Marie no quería caminar: 'I didn't bring my walking shoes.'"
+   },
+   {
+    "type": "mc",
+    "q": "What was the signal for Marie?",
+    "options": [
+     "One knock",
+     "Three knocks",
+     "A light",
+     "Her name"
+    ],
+    "answer": 1,
+    "explain_es": "'When I come back, I'll knock three times.'"
+   },
+   {
+    "type": "vocab",
+    "q": "'I'll go to the nearest farm.' What does 'nearest' mean?",
+    "options": [
+     "The closest",
+     "The most beautiful",
+     "The oldest",
+     "The biggest"
+    ],
+    "answer": 0,
+    "explain_es": "'Nearest' = el más cercano (superlativo de near)."
+   },
+   {
+    "type": "tf",
+    "q": "Marie slept a little in the car.",
+    "answer": "F",
+    "explain_es": "'She didn't sleep.'"
+   },
+   {
+    "type": "mc",
+    "q": "What did the police officer tell Marie?",
+    "options": [
+     "\"Open the window.\"",
+     "\"Run to the tree.\"",
+     "\"Call George.\"",
+     "\"Don't look back.\""
+    ],
+    "answer": 3,
+    "explain_es": "'Look straight ahead. Don't look back.'"
+   },
+   {
+    "type": "gap",
+    "q": "Then George ____ (run) off into the dark.",
+    "answer": "ran",
+    "explain_es": "Run es irregular: run → ran. 'Then he ran off into the dark.'"
+   },
+   {
+    "type": "gap",
+    "q": "Suddenly, the music ____ (stop).",
+    "answer": "stopped",
+    "explain_es": "Verbo regular: stop → stopped (se dobla la p). 'Suddenly, the music stopped'."
+   },
+   {
+    "type": "gap",
+    "q": "Marie ____ (not / sleep) all night.",
+    "answer": "didn't sleep",
+    "accept": [
+     "did not sleep",
+     "didn’t sleep"
+    ],
+    "explain_es": "Negativa en pasado: didn't + verbo base. 'She didn't sleep.'"
+   },
+   {
+    "type": "mc",
+    "q": "What really made the noise on the roof?",
+    "options": [
+     "John Downey",
+     "A cat",
+     "The rain",
+     "George's feet"
+    ],
+    "answer": 3,
+    "explain_es": "'George's body hung from the tree… his feet touched the roof of the car: bump, bump, bump, bump.'"
+   }
+  ],
+  "words": 449
+ },
+ {
+  "id": "r6-b1-death-car",
+  "title": "The Death Car · B1",
+  "level": "B1",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "Past simple · past continuous · past perfect · have to / must",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "psimp": {
+    "label": "Past simple",
+    "color": "var(--orange)"
+   },
+   "pcont": {
+    "label": "Past continuous",
+    "color": "var(--teal)"
+   },
+   "pperf": {
+    "label": "Past perfect",
+    "color": "var(--purple)"
+   },
+   "oblig": {
+    "label": "Have to / must",
+    "color": "var(--green)"
+   }
+  },
+  "paragraphs": [
+   "## A September night",
+   "It [[pcont|was raining]] heavily that September night as George and Marie Winston [[pcont|were driving]] along the empty country lanes. They [[pcont|were heading]] for the home of their old friends, the Harrisons, who [[pperf|had invited]] them to a party. Lisa, the Harrisons' daughter, [[pperf|had just got]] engaged, and everyone [[pcont|was looking]] forward to the celebration. Inside the car it was warm, and the radio [[pcont|was playing]] classical music.",
+   "## The warning",
+   "They were only a few miles from the Harrisons' house when a news announcer [[psimp|interrupted]] the music. “Police are warning the public tonight. A patient called John Downey has escaped from a secure psychiatric hospital. Downey murdered six people before the police caught him two years ago. He is extremely strong and dangerous. Residents [[oblig|must lock]] all doors and windows, and they [[oblig|must phone]] the police straight away if they notice anything unusual.”",
+   "Marie [[psimp|shivered]]. “That's horrible. He could be anywhere.”",
+   "“Forget it,” George [[psimp|said]]. “We're nearly there. Anyway, I'm more worried about the car. There's something wrong with the engine again. If it gets worse, we'll [[oblig|have to spend]] the night with the Harrisons and get it repaired in the morning.”",
+   "## The car stops",
+   "While he [[pcont|was speaking]], the car [[psimp|started]] to slow down. George [[psimp|pushed]] the accelerator, but the engine just [[psimp|coughed]] a few times and then [[psimp|died]]. Just before the car stopped, he [[psimp|steered]] it off the road, and it [[psimp|ended]] up under a huge tree.",
+   "“Great,” George [[psimp|muttered]]. “Now we'll [[oblig|have to walk]] the rest of the way.”",
+   "“In this rain? It's at least an hour, and I'm wearing high heels and my best dress!”",
+   "“All right. You'll [[oblig|have to wait]] here while I go and find a house with a phone. Someone can drive out and collect us.”",
+   "“George, you [[oblig|mustn't leave]] me here! Remember the radio!”",
+   "“Listen. Lock the doors, lie on the floor in the back and cover yourself with this blanket. Nobody will see you. When I get back, I'll knock three times. You [[oblig|must only open]] the door if you hear three knocks.” With that, he [[psimp|disappeared]] into the darkness.",
+   "## Three knocks",
+   "Marie [[psimp|locked]] the doors and [[psimp|lay]] down under the blanket. She was terrified, but she [[pperf|had always been]] a woman with a strong will. She [[pperf|hadn't been]] there long when she [[psimp|heard]] a scratching noise above her. Something [[pcont|was moving]] on the roof.",
+   "She [[psimp|stopped]] breathing and [[psimp|listened]]. Knock. Knock. Knock. Three slow knocks! [[oblig|Did she have to]] open the door now? Then came a fourth knock, and a fifth. It wasn't George. She [[pcont|was trembling]] all over, but she [[psimp|made]] herself stay still. Bump, bump, bump, bump. The noise went on and on.",
+   "## Morning",
+   "When the sun [[psimp|rose]], Marie [[pcont|was still lying]] on the floor. She [[pperf|hadn't slept]] for a single moment, and the knocking [[pperf|had never stopped]]. Why [[pperf|hadn't George come]] back?",
+   "Suddenly she [[psimp|heard]] several vehicles racing along the road. Their tyres [[psimp|screeched]] as they [[psimp|stopped]] all around her. Marie [[psimp|sat]] up and [[psimp|looked]] out. Three police cars! Two of them [[pcont|were still flashing]] their lights.",
+   "A policeman [[psimp|ran]] to her car and [[psimp|took]] her hand as she [[psimp|opened]] the door. “Come with me to the police car, Miss. You're safe now. You [[oblig|have to look]] straight ahead. Don't look back. Whatever happens, don't look back.”",
+   "His voice [[psimp|frightened]] her more than anything else that night. She couldn't stop herself. A few metres from the police car, she [[psimp|stopped]] and [[psimp|turned]] around.",
+   "George's body [[pcont|was hanging]] from a branch, right above her car, with a rope around his neck. The wind [[pcont|was swinging]] his body slowly, and each time it moved, his feet [[psimp|hit]] the roof: bump, bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "lanes",
+    "caminos rurales estrechos"
+   ],
+   [
+    "heading for",
+    "dirigiéndose a"
+   ],
+   [
+    "engaged",
+    "comprometida (para casarse)"
+   ],
+   [
+    "announcer",
+    "locutor"
+   ],
+   [
+    "secure",
+    "de alta seguridad"
+   ],
+   [
+    "psychiatric",
+    "psiquiátrico"
+   ],
+   [
+    "residents",
+    "residentes, vecinos"
+   ],
+   [
+    "shivered",
+    "se estremeció, tembló"
+   ],
+   [
+    "repaired",
+    "reparado"
+   ],
+   [
+    "accelerator",
+    "acelerador"
+   ],
+   [
+    "steered",
+    "dirigió, giró (el volante)"
+   ],
+   [
+    "muttered",
+    "murmuró, refunfuñó"
+   ],
+   [
+    "high heels",
+    "tacones altos"
+   ],
+   [
+    "collect",
+    "recoger (a alguien)"
+   ],
+   [
+    "strong will",
+    "fuerza de voluntad"
+   ],
+   [
+    "trembling",
+    "temblando"
+   ],
+   [
+    "screeched",
+    "chirriaron"
+   ],
+   [
+    "flashing",
+    "destellando, parpadeando"
+   ],
+   [
+    "swinging",
+    "balanceando"
+   ],
+   [
+    "tyres",
+    "llantas, neumáticos"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "What was the weather like that night?",
+    "options": [
+     "It was hot.",
+     "It was snowing.",
+     "It was raining heavily.",
+     "It was sunny."
+    ],
+    "answer": 2,
+    "explain_es": "'It was raining heavily that September night'."
+   },
+   {
+    "type": "tf",
+    "q": "The Harrisons had invited the Winstons to a party.",
+    "answer": "T",
+    "explain_es": "'the Harrisons, who had invited them to a party.'"
+   },
+   {
+    "type": "mc",
+    "q": "According to the radio, what must residents do?",
+    "options": [
+     "Lock all doors and windows",
+     "Leave their houses",
+     "Look for Downey",
+     "Drive to the hospital"
+    ],
+    "answer": 0,
+    "explain_es": "'Residents must lock all doors and windows, and they must phone the police straight away'."
+   },
+   {
+    "type": "tf",
+    "q": "George was more worried about the escaped man than about the car.",
+    "answer": "F",
+    "explain_es": "George dice: 'I'm more worried about the car.'"
+   },
+   {
+    "type": "mc",
+    "q": "What was George doing when the car started to slow down?",
+    "options": [
+     "He was speaking.",
+     "He was sleeping.",
+     "He was eating.",
+     "He was phoning the Harrisons."
+    ],
+    "answer": 0,
+    "explain_es": "'While he was speaking, the car started to slow down.' Past continuous (acción en progreso) + past simple (acción que interrumpe)."
+   },
+   {
+    "type": "tf",
+    "q": "Marie was wearing comfortable walking shoes.",
+    "answer": "F",
+    "explain_es": "'I'm wearing high heels and my best dress!'"
+   },
+   {
+    "type": "mc",
+    "q": "Why did George tell Marie to lie under the blanket?",
+    "options": [
+     "So that she could sleep",
+     "So that nobody could see her",
+     "To hide the radio",
+     "To keep warm"
+    ],
+    "answer": 1,
+    "explain_es": "'cover yourself with this blanket. Nobody will see you.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie had slept a little before the police arrived.",
+    "answer": "F",
+    "explain_es": "'She hadn't slept for a single moment'."
+   },
+   {
+    "type": "mc",
+    "q": "How did Marie know it was not George on the roof?",
+    "options": [
+     "She heard a voice.",
+     "There were more than three knocks.",
+     "The police told her.",
+     "She saw a stranger."
+    ],
+    "answer": 1,
+    "explain_es": "'Then came a fourth knock, and a fifth. It wasn't George.' La señal eran solo tres golpes."
+   },
+   {
+    "type": "gap",
+    "q": "It ____ (rain) heavily that September night.",
+    "answer": "was raining",
+    "explain_es": "Past continuous para la escena de fondo: 'It was raining heavily that September night'."
+   },
+   {
+    "type": "gap",
+    "q": "She ____ (not / sleep) for a single moment.",
+    "answer": "hadn't slept",
+    "accept": [
+     "had not slept",
+     "hadn’t slept"
+    ],
+    "explain_es": "Past perfect: algo que (no) había ocurrido antes de otro momento del pasado (el amanecer). 'She hadn't slept for a single moment'."
+   },
+   {
+    "type": "gap",
+    "q": "“Now we'll ____ walk.” (must / have to)",
+    "answer": "have to",
+    "explain_es": "Must no tiene futuro: will + have to. 'Now we'll have to walk.'"
+   },
+   {
+    "type": "vocab",
+    "q": "'Their tyres screeched.' What does 'screeched' mean?",
+    "options": [
+     "Broke into pieces",
+     "Moved very slowly",
+     "Became very hot",
+     "Made a high, sharp noise"
+    ],
+    "answer": 3,
+    "explain_es": "'Screech' = chirriar: un sonido agudo, como el de las llantas al frenar de golpe."
+   },
+   {
+    "type": "mc",
+    "q": "What was the knocking on the roof?",
+    "options": [
+     "A branch in the wind",
+     "George's feet hitting the roof",
+     "Rain and hail",
+     "John Downey with a stick"
+    ],
+    "answer": 1,
+    "explain_es": "'George was hanging from the tree above her car… his feet hit the roof: bump, bump, bump, bump.'"
+   }
+  ],
+  "words": 616
+ },
+ {
+  "id": "r6-b2-death-car",
+  "title": "The Death Car · B2",
+  "level": "B2",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "Narrative tenses, reported speech and suspense vocabulary",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "nar": {
+    "label": "Tiempos narrativos",
+    "color": "var(--orange)"
+   },
+   "rep": {
+    "label": "Estilo indirecto",
+    "color": "var(--blue)"
+   },
+   "sus": {
+    "label": "Vocabulario de suspenso",
+    "color": "var(--purple)"
+   }
+  },
+  "paragraphs": [
+   "## An engagement party",
+   "Rain [[nar|was hammering|Past continuous (background scene)]] against the windscreen as George and Marie Winston [[nar|made|Past simple (main action)]] their way through the deserted countryside. It was a raw September night, and the couple were on their way to the Harrisons' house, where friends and neighbours [[nar|had gathered|Past perfect (earlier action)]] to celebrate Lisa Harrison's engagement. A local station [[nar|was playing|Past continuous]] classical music, and for a while neither of them spoke.",
+   "## The radio",
+   "They were perhaps five miles from the party when the music [[nar|cut out|Past simple (interrupting event)]] and a newsreader's voice [[sus|crackled|Suspense vocabulary: crackle = make short, sharp, dry noises]] through the speakers. The police, he said, [[rep|had issued an urgent warning|Reported speech: have issued → had issued]]. Earlier that evening a patient named John Downey [[rep|had escaped from a secure hospital|Reported speech: escaped → had escaped]]. Two years before, Downey had been convicted of murdering six people. The announcer described him as large, immensely strong and extremely dangerous, and he [[rep|urged listeners to lock their doors and windows|Reported command: urge + object + to-infinitive]] and [[rep|to call the police at once|Reported command: to-infinitive]] if they noticed anyone behaving oddly.",
+   "Marie [[sus|shuddered|Suspense vocabulary: shook suddenly with fear or cold]]. “A murderer on the loose,” she whispered. “He could be out there right now, [[sus|lurking|Suspense vocabulary: waiting hidden, ready to attack]] in the dark.”",
+   "George told her [[rep|not to worry|Reported command, negative: tell + object + not to]]. He pointed out [[rep|that they were nearly there|Reported statement: we are → they were]] and added [[rep|that the car was a bigger problem|Reported statement: is → was]]. It [[nar|had been losing|Past perfect continuous (action in progress up to a past moment)]] power for the last few miles, and he suspected [[rep|that the old carburettor fault had come back|Reported speech: has come back → had come back]]. If things got worse, he said, they [[rep|would have to stay the night|Reported speech: will → would]] at the Harrisons'.",
+   "## The car stops",
+   "Almost as he spoke, the engine began to [[sus|falter|Suspense vocabulary: lose strength, stop working properly]]. George [[nar|stamped|Past simple]] on the accelerator, but the car merely coughed, crawled a few more metres and died. He just managed to steer it onto the grass verge, where it rolled to a halt beneath a large, overhanging tree.",
+   "George swore. Marie protested [[rep|that it would take them at least an hour to walk|Reported statement: will → would]] and [[rep|that her heels and her new dress would be ruined|Reported statement: will be → would be]]. So George suggested [[rep|that she wait in the car|Reported suggestion: suggest + (that) + subject + base form]] while he ran to the nearest farmhouse to phone for a lift.",
+   "“And leave me here alone?” Marie cried. “With a [[sus|maniac|Suspense vocabulary: a violent, mentally unstable person]] on the loose?”",
+   "George had a plan. She was to lock every door, lie on the floor in the back and cover herself with a blanket. “No one will know you're here,” he promised. “When I get back, you'll hear three knocks. Don't open the door for anything else.” Then he [[nar|slipped|Past simple]] out into the rain and [[nar|was swallowed|Past simple passive]] by the darkness.",
+   "## Three knocks",
+   "Marie locked the doors and settled under the blanket. She was frightened, but she [[nar|had never been|Past perfect]] the hysterical type. She [[nar|had barely settled|Past perfect (barely … when)]], however, when a faint scratching sound came from the roof.",
+   "She [[sus|froze|Suspense vocabulary: suddenly stopped moving because of fear]], not daring to breathe. Then came three slow, heavy knocks. George? Her hand moved towards the lock — and stopped. A fourth knock. A fifth. Whoever was up there, it was not her husband. [[sus|Trembling|Suspense vocabulary: shaking with fear]], she forced herself to lie absolutely still while the [[sus|relentless|Suspense vocabulary: never stopping, never getting weaker]] rhythm continued above her head: bump, bump, bump, bump.",
+   "Minutes [[sus|dragged|Suspense vocabulary: drag = pass very slowly]] into hours. Every time she thought the noise had stopped, it started again, patient and regular, as if someone were tapping out a message she could not understand. She kept telling herself that George would be back at any moment. He never came.",
+   "## Morning",
+   "By the time a grey dawn [[nar|crept|Past simple (creep – crept)]] over the fields, Marie had not closed her eyes once. The knocking [[nar|had gone on|Past perfect]] all night without a pause, and George [[nar|had never returned|Past perfect]]. Had he lost his way in the storm? Or had something far worse happened to him?",
+   "Then she heard engines: several vehicles, [[sus|tearing|Suspense vocabulary: tear down a road = move extremely fast]] down the road. Tyres screeched as they pulled up around her. Marie sat up and peered through the misty glass. Police cars — three of them, two with their lights still flashing.",
+   "An officer ran to the car, and as she unlocked the door, he took her firmly by the hand. He told her [[rep|that she was safe now|Reported statement: you are → she was]] and asked her [[rep|to walk with him to the police car|Reported request: ask + object + to-infinitive]]. Then, in a lower voice, he said: “Keep your eyes on the police car. Don't look back. Whatever you do, don't look back.”",
+   "There was something in his tone that [[sus|turned her blood to ice|Suspense idiom: made her feel sudden, intense fear]]. Ten metres from safety, she stopped and slowly turned her head towards the abandoned car.",
+   "Her husband [[nar|was hanging|Past continuous (the scene she sees)]] from the branch above it, a rope tight around his neck. Every gust swung his body to and fro, and his feet [[nar|were knocking|Past continuous]] softly against the roof — bump, bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "windscreen",
+    "parabrisas"
+   ],
+   [
+    "deserted",
+    "desierto, vacío"
+   ],
+   [
+    "raw",
+    "crudo, frío y húmedo"
+   ],
+   [
+    "gathered",
+    "se habían reunido"
+   ],
+   [
+    "crackled",
+    "crepitó, sonó con interferencias"
+   ],
+   [
+    "issued",
+    "emitido"
+   ],
+   [
+    "convicted",
+    "condenado"
+   ],
+   [
+    "immensely",
+    "enormemente"
+   ],
+   [
+    "urged",
+    "instó, pidió con insistencia"
+   ],
+   [
+    "shuddered",
+    "se estremeció"
+   ],
+   [
+    "on the loose",
+    "suelto, en libertad"
+   ],
+   [
+    "lurking",
+    "acechando"
+   ],
+   [
+    "carburettor",
+    "carburador"
+   ],
+   [
+    "falter",
+    "fallar, flaquear"
+   ],
+   [
+    "stamped",
+    "pisó con fuerza"
+   ],
+   [
+    "verge",
+    "borde de la carretera, berma"
+   ],
+   [
+    "overhanging",
+    "que sobresale por encima"
+   ],
+   [
+    "lift",
+    "aventón, que alguien te lleve"
+   ],
+   [
+    "maniac",
+    "maníaco, loco peligroso"
+   ],
+   [
+    "hysterical",
+    "histérico/a"
+   ],
+   [
+    "froze",
+    "se quedó paralizada"
+   ],
+   [
+    "relentless",
+    "implacable, incesante"
+   ],
+   [
+    "dragged",
+    "se hicieron eternos"
+   ],
+   [
+    "dawn",
+    "amanecer"
+   ],
+   [
+    "peered",
+    "miró con dificultad"
+   ],
+   [
+    "to and fro",
+    "de un lado a otro"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why had people gathered at the Harrisons' house?",
+    "options": [
+     "To celebrate Lisa's engagement",
+     "To celebrate George's birthday",
+     "To wait for the police",
+     "To listen to the news"
+    ],
+    "answer": 0,
+    "explain_es": "'friends and neighbours had gathered to celebrate the engagement of the Harrisons' daughter, Lisa.'"
+   },
+   {
+    "type": "tf",
+    "q": "According to the announcer, Downey had escaped that same evening.",
+    "answer": "T",
+    "explain_es": "'Earlier that evening a patient named John Downey had escaped from a secure hospital.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie had met John Downey before.",
+    "answer": "NG",
+    "explain_es": "El texto no dice nada sobre si Marie conocía a Downey; solo lo oye en la radio."
+   },
+   {
+    "type": "tf",
+    "q": "The Harrisons called the police when the Winstons did not arrive.",
+    "answer": "NG",
+    "explain_es": "El texto no explica quién avisó a la policía; solo dice que llegaron al amanecer."
+   },
+   {
+    "type": "mc",
+    "q": "What did George tell Marie after the news?",
+    "options": [
+     "Not to worry",
+     "To drive the car",
+     "To call the police",
+     "To lock the doors at once"
+    ],
+    "answer": 0,
+    "explain_es": "Estilo indirecto: 'George told her not to worry.' (tell + objeto + not to + infinitivo)."
+   },
+   {
+    "type": "gap",
+    "q": "“We are nearly there.” → George pointed out that they ____ nearly there.",
+    "answer": "were",
+    "explain_es": "En estilo indirecto el presente retrocede al pasado: are → were. 'He pointed out that they were nearly there'."
+   },
+   {
+    "type": "gap",
+    "q": "“Lock your doors.” → The announcer urged listeners ____ their doors.",
+    "answer": "to lock",
+    "explain_es": "Orden en estilo indirecto: urge + objeto + to + infinitivo. 'he urged listeners to lock their doors and windows'."
+   },
+   {
+    "type": "gap",
+    "q": "By dawn, Marie ____ (not / close) her eyes once.",
+    "answer": "had not closed",
+    "accept": [
+     "hadn't closed",
+     "hadn’t closed"
+    ],
+    "explain_es": "Past perfect: anterior al amanecer. 'Marie had not closed her eyes once.'"
+   },
+   {
+    "type": "vocab",
+    "q": "'He could be out there right now, lurking in the dark.' 'Lurking' means…",
+    "options": [
+     "running away fast",
+     "waiting hidden, ready to attack",
+     "shouting loudly",
+     "sleeping peacefully"
+    ],
+    "answer": 1,
+    "explain_es": "'Lurk' = acechar, esperar escondido para atacar."
+   },
+   {
+    "type": "vocab",
+    "q": "'the relentless rhythm continued' — 'relentless' is closest in meaning to…",
+    "options": [
+     "very quiet",
+     "musical",
+     "never stopping",
+     "irregular"
+    ],
+    "answer": 2,
+    "explain_es": "'Relentless' = incesante, que no se detiene ni pierde fuerza."
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best fits the section 'Three knocks'?",
+    "options": [
+     "A signal turns into a nightmare",
+     "An argument about money",
+     "Help arrives at last",
+     "News from the hospital"
+    ],
+    "answer": 0,
+    "explain_es": "La señal acordada (tres golpes) se convierte en un golpeteo terrorífico: 'A fourth knock. A fifth. Whoever was up there, it was not her husband.'"
+   },
+   {
+    "type": "mc",
+    "q": "Why did the officer tell Marie not to look back?",
+    "options": [
+     "He wanted to stop her from seeing her husband's body.",
+     "Her car was on fire.",
+     "John Downey was standing behind her.",
+     "He was in a hurry."
+    ],
+    "answer": 0,
+    "explain_es": "Inferencia: la policía ya había visto lo que había en el árbol. 'Her husband was hanging from the branch above it'."
+   },
+   {
+    "type": "mc",
+    "q": "Why does the writer mention that the car stopped 'beneath a large, overhanging tree'?",
+    "options": [
+     "It explains why the radio stopped working.",
+     "It shows the car was protected from the rain.",
+     "It describes the Harrisons' garden.",
+     "It prepares the reader for the ending without revealing it (foreshadowing)."
+    ],
+    "answer": 3,
+    "explain_es": "Técnica de suspenso: el árbol aparece como un detalle sin importancia, pero es donde aparece George al final (presagio o foreshadowing)."
+   },
+   {
+    "type": "mc",
+    "q": "What is the effect of repeating 'bump, bump, bump, bump' at the end?",
+    "options": [
+     "The reader suddenly understands what the noise in the night really was.",
+     "It shows that the storm had started again.",
+     "It means Marie was knocking on the window.",
+     "It shows that the police cars were noisy."
+    ],
+    "answer": 0,
+    "explain_es": "La onomatopeya se repite en la noche y en la escena final: 'his feet were knocking softly against the roof — bump, bump, bump, bump.' Así se revela el giro."
+   },
+   {
+    "type": "mc",
+    "q": "'Whoever was up there, it was not her husband.' Why is this sentence ironic?",
+    "options": [
+     "There was nobody on the roof.",
+     "Her husband was in the police car.",
+     "It was John Downey's brother.",
+     "It was her husband, but he was dead."
+    ],
+    "answer": 3,
+    "explain_es": "Ironía: Marie cree que no es George porque no hace la señal, pero el ruido lo hacen los pies del cuerpo de George."
+   }
+  ],
+  "words": 751
+ },
+ {
+  "id": "r6-c1-death-car",
+  "title": "The Death Car · C1",
+  "level": "C1",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "Inversion, participle clauses, cleft sentences and advanced vocabulary",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "inv": {
+    "label": "Inversión",
+    "color": "var(--purple)"
+   },
+   "part": {
+    "label": "Participle clauses",
+    "color": "var(--teal)"
+   },
+   "cleft": {
+    "label": "Cleft sentences",
+    "color": "var(--blue)"
+   },
+   "voc": {
+    "label": "Vocabulario C1",
+    "color": "var(--pink)"
+   }
+  },
+  "paragraphs": [
+   "## The road to the party",
+   "[[part|Hammered by rain that refused to ease|Past participle clause (= the car was being hammered by rain)]], the Winstons' car crept along the unlit country lanes. Beyond the headlights, the countryside was [[voc|bleak|C1 vocabulary: cold, empty and unwelcoming]] and utterly dark. It was a bitter September night, and George and Marie were on their way to the Harrisons', where the engagement of their friends' daughter, Lisa, was to be celebrated. Classical music drifted from the radio; [[part|lulled by it|Past participle clause expressing reason (= because she was lulled)]], Marie had almost begun to doze. Neither of them had the slightest reason to suspect that this would be anything other than a pleasant evening among old friends.",
+   "## The radio",
+   "[[cleft|It was a few miles short of their destination that the music suddenly cut out.|It-cleft (It was … that) emphasising place]] In its place came a newsreader's [[voc|clipped|C1 vocabulary: short, quick and formal (of a way of speaking)]] voice. A patient named John Downey had escaped from a secure psychiatric unit earlier that evening. [[part|Convicted of six murders two years earlier|Past participle clause (= he had been convicted)]], Downey was described as powerfully built and extremely dangerous. [[inv|Under no circumstances were residents to approach him|Negative adverbial inversion: Under no circumstances + were + subject]]; instead, they were to lock their doors and call the police the moment they saw anything [[voc|untoward|C1 vocabulary (formal): unusual and suspicious]]. Then the bulletin ended and the violins returned as if nothing had happened, which somehow made it worse.",
+   "Marie pulled her coat tighter. “A [[voc|deranged|C1 vocabulary: mentally unstable and dangerous]] killer, wandering around out there. It makes my blood run cold.” George's grip tightened on the wheel.",
+   "“Put it out of your mind,” George said. “[[cleft|What I'm worried about is the car.|Wh-cleft: What … is …]] It's been losing power for miles — that carburettor again, I expect. Any worse, and we'll have to [[voc|impose on|C1 phrasal verb: ask for hospitality that causes someone inconvenience]] the Harrisons for the night.”",
+   "## The car stops",
+   "[[inv|Hardly had the words left his mouth when|Inversion after Hardly … when (one event immediately after another)]] the engine began to [[voc|splutter|C1 vocabulary: make a series of short, choking noises]]. George pumped the accelerator, to no avail. [[part|Coughing feebly|Present participle clause (simultaneous action)]], the car lost the last of its momentum, and George only just managed to [[voc|coax|C1 vocabulary: make something move or work with patience and care]] it onto the verge, where it came to rest beneath the spreading branches of an old tree. Rain drummed on the roof with renewed [[voc|ferocity|C1 vocabulary: fierce, violent intensity]].",
+   "“Marvellous,” he snapped. “Now we walk.”",
+   "“An hour in this downpour? In heels? My dress will be ruined.”",
+   "“Then you'll stay here while I go and look for a house with a telephone. Someone can come and fetch us.”",
+   "“Have you forgotten what we've just heard? You can't leave me alone out here!”",
+   "[[cleft|It was then that George came up with his plan.|It-cleft (It was then that …) emphasising time]] She would lock every door, lie on the floor in the back and hide under the blanket. “Nobody will know you're here. When I get back, I'll knock three times. [[inv|Only if you hear three knocks should you open the door.|Inversion after Only if (should + subject)]]” Marie was far from convinced, but she could see no alternative. [[inv|Little did either of them know|Inversion after Little (did + subject + know) – foreshadowing]] how much those three knocks would come to mean. [[part|Having said this|Perfect participle clause (Having + past participle = after he had said this)]], he slipped out into the rain, and within seconds the blackness had swallowed him.",
+   "## Three knocks",
+   "Marie locked the doors and curled up beneath the blanket, [[part|resigned to a long wait|Past participle clause (= as she was resigned to a long wait)]]. Afraid as she was, she was not one to panic. [[inv|Barely had a few minutes passed, however, when|Inversion after Barely … when]] a faint scratching reached her from somewhere overhead. On the roof. Directly above her head.",
+   "She lay rigid, [[part|scarcely daring to breathe|Present participle clause (manner)]]. Then came three knocks, slow and [[voc|deliberate|C1 vocabulary: done slowly and on purpose]]. Her heart leapt — George? [[cleft|What came next, though, was a fourth knock|Wh-cleft: What … was …]], and then a fifth. Whoever — or whatever — was up there, it was not her husband. [[part|Trembling uncontrollably|Present participle clause (manner)]], she forced herself to stay motionless as the knocking went on, [[voc|unrelenting|C1 vocabulary: never stopping or becoming less intense]]: bump, bump, bump, bump.",
+   "Time lost all meaning. [[part|Lying in the dark with the blanket pressed against her face|Present participle clause (simultaneous situation)]], she tried to reason with herself: a branch, perhaps, or hailstones. But branches do not scratch, and hail does not keep time. [[cleft|What frightened her most was the regularity of it|Wh-cleft: What … was …]] — patient and unhurried, as if whoever was making it had all the time in the world.",
+   "## Morning",
+   "[[inv|Not once during that endless night did she close her eyes|Negative adverbial inversion: Not once + did + subject]], and not once did the knocking stop. By the time a pale dawn [[voc|seeped|C1 vocabulary: spread slowly, like liquid through a small gap]] across the fields, a single question was going round and round in her head: why had George not come back? Had he lost his way in the storm? Had he been hurt? [[inv|So exhausted was she|Inversion after So + adjective (+ be + subject)]] that she could no longer tell whether minutes or hours were passing.",
+   "Then, out of nowhere, engines — several of them, approaching at speed. Tyres screeched as the vehicles [[voc|converged|C1 vocabulary: came together from different directions to one point]] on her. [[part|Pulling herself upright|Present participle clause (sequence of actions)]], Marie peered through the fogged-up window: three police cars, two of them with their lights still flashing. Relief flooded through her. At last, it was over.",
+   "An officer sprinted towards her, and as she unlocked the door he seized her hand. “Come with me to the car, Miss. You're safe now. Keep your eyes on the police car. Don't look back. Whatever you do, don't look back.”",
+   "[[cleft|It was the way he said it that filled her with dread.|It-cleft (It was … that) emphasising the cause]] She could not help herself. Every instinct told her to obey him; every nerve begged her to turn. Ten yards short of the police car, she stopped and turned round.",
+   "[[part|Suspended from the branch above the car by a rope around his neck|Past participle clause describing the subject]], George's body was swaying in the wind. And with every swing, his feet [[voc|grazed|C1 vocabulary: touched lightly in passing]] the roof — bump, bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "hammered",
+    "azotado"
+   ],
+   [
+    "bleak",
+    "desolado, inhóspito"
+   ],
+   [
+    "lulled",
+    "arrullada, adormecida"
+   ],
+   [
+    "doze",
+    "dormitar"
+   ],
+   [
+    "clipped",
+    "cortante, seco (al hablar)"
+   ],
+   [
+    "convicted",
+    "condenado"
+   ],
+   [
+    "untoward",
+    "fuera de lo normal, sospechoso"
+   ],
+   [
+    "deranged",
+    "trastornado"
+   ],
+   [
+    "bulletin",
+    "boletín informativo"
+   ],
+   [
+    "impose on",
+    "abusar de la hospitalidad de"
+   ],
+   [
+    "splutter",
+    "chisporrotear, toser (un motor)"
+   ],
+   [
+    "to no avail",
+    "en vano"
+   ],
+   [
+    "momentum",
+    "impulso, inercia"
+   ],
+   [
+    "coax",
+    "llevar con maña"
+   ],
+   [
+    "verge",
+    "borde de la carretera, berma"
+   ],
+   [
+    "ferocity",
+    "ferocidad"
+   ],
+   [
+    "downpour",
+    "aguacero"
+   ],
+   [
+    "fetch",
+    "ir a buscar, recoger"
+   ],
+   [
+    "resigned",
+    "resignada"
+   ],
+   [
+    "rigid",
+    "rígida, tiesa"
+   ],
+   [
+    "deliberate",
+    "pausado, intencionado"
+   ],
+   [
+    "unrelenting",
+    "implacable, incesante"
+   ],
+   [
+    "hailstones",
+    "granizo"
+   ],
+   [
+    "seeped",
+    "se filtró"
+   ],
+   [
+    "converged",
+    "convergieron"
+   ],
+   [
+    "fogged-up",
+    "empañado"
+   ],
+   [
+    "sprinted",
+    "corrió a toda velocidad"
+   ],
+   [
+    "dread",
+    "pavor"
+   ],
+   [
+    "suspended",
+    "colgado, suspendido"
+   ],
+   [
+    "grazed",
+    "rozaban"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why had Marie almost begun to doze at the start?",
+    "options": [
+     "She had taken some medicine.",
+     "She had been working all day.",
+     "She was lulled by the music on the radio.",
+     "George asked her to sleep."
+    ],
+    "answer": 2,
+    "explain_es": "'Classical music drifted from the radio; lulled by it, Marie had almost begun to doze.'"
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best summarises 'The radio'?",
+    "options": [
+     "A warning from the outside world",
+     "A quarrel between husband and wife",
+     "An unexpected guest",
+     "Lost on the way to the party"
+    ],
+    "answer": 0,
+    "explain_es": "La sección presenta el boletín de la policía sobre Downey, que rompe la calma del viaje."
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best fits 'Morning'?",
+    "options": [
+     "A peaceful sunrise",
+     "Back at the party",
+     "A long walk home",
+     "Rescue and revelation"
+    ],
+    "answer": 3,
+    "explain_es": "Llega la policía (rescate) y Marie descubre la verdad al mirar atrás (revelación): 'Suspended from the branch above the car…'"
+   },
+   {
+    "type": "tf",
+    "q": "Residents were told to approach Downey if they saw him.",
+    "answer": "F",
+    "explain_es": "'Under no circumstances were residents to approach him'."
+   },
+   {
+    "type": "tf",
+    "q": "George blamed the car's loss of power on the carburettor.",
+    "answer": "T",
+    "explain_es": "'It's been losing power for miles — that carburettor again, I expect.'"
+   },
+   {
+    "type": "tf",
+    "q": "Marie had visited the Harrisons' house many times before.",
+    "answer": "NG",
+    "explain_es": "El texto dice que son amigos, pero no menciona visitas anteriores."
+   },
+   {
+    "type": "mc",
+    "q": "What does 'Little did either of them know how much those three knocks would come to mean' suggest?",
+    "options": [
+     "The knocks will be too quiet to hear.",
+     "They will forget the signal.",
+     "George does not trust Marie.",
+     "The agreed signal will become terribly important later."
+    ],
+    "answer": 3,
+    "explain_es": "Inversión con Little como presagio: el narrador anuncia que los tres golpes tendrán un significado terrible."
+   },
+   {
+    "type": "mc",
+    "q": "Why is 'What frightened her most was the regularity of it — patient and unhurried' an effective clue?",
+    "options": [
+     "It suggests the police were nearby.",
+     "It proves John Downey was on the roof.",
+     "It shows that Marie likes music.",
+     "It hints that the sound is not made by a living person acting on purpose."
+    ],
+    "answer": 3,
+    "explain_es": "Técnica de suspenso: un ritmo regular, 'as if whoever was making it had all the time in the world', anticipa que es el cuerpo balanceándose con el viento."
+   },
+   {
+    "type": "vocab",
+    "q": "'call the police the moment they saw anything untoward' — 'untoward' means…",
+    "options": [
+     "unusual and suspicious",
+     "beautiful",
+     "far away",
+     "familiar"
+    ],
+    "answer": 0,
+    "explain_es": "'Untoward' (formal) = fuera de lo normal, sospechoso."
+   },
+   {
+    "type": "vocab",
+    "q": "'Tyres screeched as the vehicles converged on her.' 'Converged' means…",
+    "options": [
+     "waited in a line",
+     "came together from different directions",
+     "crashed into each other",
+     "drove away quickly"
+    ],
+    "answer": 1,
+    "explain_es": "'Converge' = confluir: los coches llegan desde distintos lados hacia el mismo punto."
+   },
+   {
+    "type": "gap",
+    "q": "Complete the inversion: \"Hardly had the words left his mouth ____ the engine began to splutter.\"",
+    "answer": "when",
+    "explain_es": "Estructura: Hardly + had + sujeto + participio … when. 'Hardly had the words left his mouth when the engine began to splutter.'"
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite with inversion: She did not close her eyes once that night. → Not once that night ____ her eyes.",
+    "answer": "did she close",
+    "explain_es": "Tras 'Not once' al inicio, se invierte auxiliar y sujeto: 'Not once during that endless night did she close her eyes'."
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite as an it-cleft: The way he said it filled her with dread. → It was ____",
+    "answer": "the way he said it that filled her with dread",
+    "accept": [
+     "the way he said it that filled her with dread.",
+     "It was the way he said it that filled her with dread.",
+     "It was the way he said it that filled her with dread"
+    ],
+    "explain_es": "It-cleft: It was + elemento enfatizado + that… 'It was the way he said it that filled her with dread.'"
+   },
+   {
+    "type": "mc",
+    "q": "'Whoever — or whatever — was up there, it was not her husband.' What makes this sentence ironic?",
+    "options": [
+     "Marie was lying to the police.",
+     "There was nobody on the roof at all.",
+     "The reader later learns that it was her husband, although he was dead.",
+     "George had come back alive."
+    ],
+    "answer": 2,
+    "explain_es": "Ironía dramática: Marie descarta a George porque no da la señal, pero el ruido lo hacen sus pies."
+   }
+  ],
+  "words": 880
+ },
+ {
+  "id": "r6-c2-death-car",
+  "title": "The Death Car · C2",
+  "level": "C2",
+  "genre": "story",
+  "topic": "Urban legends & suspense",
+  "focus": "Fronting, ellipsis, subjunctive and formal structures, literary vocabulary",
+  "emoji": "🚗",
+  "advisory": "Tema adulto: suspenso, un asesino fugado y una muerte por ahorcamiento. Es ficción: adaptación de una leyenda urbana clásica (versión de MDH, 1994). Recomendada para jóvenes y adultos.",
+  "marks": {
+   "front": {
+    "label": "Fronting",
+    "color": "var(--purple)"
+   },
+   "ellip": {
+    "label": "Elipsis",
+    "color": "var(--teal)"
+   },
+   "subj": {
+    "label": "Subjuntivo y registro formal",
+    "color": "var(--blue)"
+   },
+   "lit": {
+    "label": "Vocabulario literario",
+    "color": "var(--pink)"
+   }
+  },
+  "paragraphs": [
+   "## A September engagement",
+   "The rain had not let up since dusk. It drummed on the roof of the Winstons' car with a [[lit|monotony|Literary vocabulary: dull sameness, repetition without change]] that was almost hypnotic, and the headlights, for all their effort, [[lit|carved|Literary verb: cut a shape out of something]] no more than a narrow tunnel out of the dark. George was concentrating on the road; Marie [[ellip|was not|Ellipsis: 'was not (concentrating)' – the repeated verb is left out]], content to let the music on the radio wash over her. Behind them lay the town; ahead, [[ellip|the empty lanes|Ellipsis: 'ahead (lay) the empty lanes' – the verb is not repeated]] and, at the end of them, the Harrisons' lighted windows.",
+   "The occasion was a happy one. The Harrisons, friends of many years, were throwing a party to mark the engagement of their daughter, Lisa, and [[subj|it was only fitting that the Winstons be there|Mandative subjunctive: it is fitting that + subject + base form (be)]]. Neither of them spoke much. There was, after all, nothing that needed saying: the evening ahead promised warmth, champagne and the comfortable noise of old friends.",
+   "## The radio",
+   "[[front|Some five miles short of the house|Fronting: adverbial of place placed first for emphasis]], the music broke off. [[front|In its place came a voice|Fronting with full inversion: adverbial + verb + subject]], flat and official. A patient had escaped from a secure hospital that evening: one John Downey, who two years earlier had been convicted of killing six people. He was, the announcer said, large, unusually strong and extremely dangerous. The police requested [[subj|that every household keep its doors and windows locked|Mandative subjunctive after request: keep, not keeps]] and [[subj|that any sighting be reported at once|Mandative subjunctive, passive: be + past participle]]. Then, [[lit|incongruously|Literary vocabulary: strangely, in a way that does not fit the situation]], the violins resumed.",
+   "A chill went through Marie. “Six people,” she murmured. “And he's out there somewhere, [[lit|prowling|Literary vocabulary: moving quietly, like a hunting animal]].”",
+   "George's reply was brisk, [[ellip|perhaps deliberately so|Ellipsis: 'perhaps (it was) deliberately so']]. “He could be anywhere in the county.” “[[ellip|Unlikely to be here, though.|Ellipsis: '(He is) unlikely to be here' – subject and verb left out]] Besides, we've a more pressing problem. The car's been losing power for miles — the carburettor again, I suspect. [[subj|Should it get any worse|Formal conditional inversion: Should + subject + base form (= If it gets)]], we'll have to throw ourselves on the Harrisons' mercy for the night.”",
+   "## The car stops",
+   "[[front|Prophetic those words proved|Fronting of the complement: adjective before subject and verb]]. Within a minute the engine had begun to cough. George coaxed the accelerator, cursed it, [[lit|implored|Literary vocabulary: begged desperately]] it — all to no purpose. The car [[lit|shuddered|Literary vocabulary: shook violently]] and died, and with the last of its momentum he steered it off the road, to rest beneath a great, overhanging tree. Its branches, black against a blacker sky, stretched directly over the roof.",
+   "“Splendid,” he said. “Now we walk.” He said it lightly enough, but Marie, who knew him better than anyone, heard the strain beneath the joke.",
+   "“An hour, in this? I'm in heels, George. And this dress won't survive it, [[ellip|even if I do|Ellipsis: 'even if I do (survive it)' – do replaces the verb phrase]].”",
+   "“Then you wait here, and I'll make for the nearest farmhouse and telephone the Harrisons. They can send someone for us.”",
+   "“And leave me alone? [[ellip|With that man out there?|Ellipsis: '(Would you leave me alone) with that man out there?' – verbless question]]”",
+   "George's instructions were precise. [[subj|It was essential that she lock every door|Mandative subjunctive: it is essential that + subject + base form]], lie flat in the back and pull the blanket over herself. Nobody would see her. On his return he would knock three times, and he insisted [[subj|that she open the door to no other signal|Mandative subjunctive after insist: open, not opened]]. Marie listened and said nothing. [[subj|Had she been asked to approve the plan|Inverted third conditional (formal): Had + subject + past participle]], she would have refused; asked for a better one, she [[ellip|could not have|Ellipsis: 'could not have (offered one)']]. Then he slipped out, and the night [[lit|engulfed|Literary vocabulary: surrounded and swallowed completely]] him.",
+   "## Three knocks",
+   "Marie locked the doors and arranged herself beneath the blanket for what she assumed would be a long wait. [[front|Afraid she certainly was|Fronting of the complement for contrast]]; [[ellip|hysterical, never|Ellipsis: 'hysterical, (she was) never']].",
+   "She had not been lying there long when a sound reached her — a faint, [[lit|insistent|Literary vocabulary: continuing in a way that demands attention]] scratching, as of something dragged across metal, directly above her head.",
+   "She held her breath. Then came three knocks, slow and evenly spaced. Her hand had almost found the lock when a fourth came; then a fifth, and a sixth. [[front|This much she knew|Fronting of the object (this much) before subject and verb]]: it was not George. [[front|Who or what it was, she dared not imagine|Fronting of a noun clause (object) for emphasis]]. [[lit|Rigid|Literary vocabulary: stiff, unable to move]] with terror, she lay motionless as the knocking settled into a [[lit|remorseless|Literary vocabulary: cruel and never stopping]] rhythm: bump, bump, bump, bump.",
+   "Hours, or what felt like hours, crawled by. She tried to reason the sound away — a loose branch, hail, the creak of cooling metal — but no branch keeps time, and no hailstorm pauses to listen. [[front|Worse than the noise itself|Fronting of a comparative complement, with inversion (… was its patience)]] was its patience: the unhurried, almost courteous regularity of something that had nowhere else to be. [[front|Of George there was no sign|Fronting of a prepositional phrase (Of + noun) – formal, literary]].",
+   "## Morning",
+   "[[front|Through the whole of that night|Fronting of a time adverbial for emphasis]] the knocking continued, and through the whole of it Marie lay awake. When at last a [[lit|wan|Literary vocabulary: pale and weak (of light or a face)]] light crept over the fields, she was still there, cramped and frozen, asking herself the same question over and over: where was George, and why had he not come? [[subj|Were he merely lost|Formal conditional inversion: Were + subject (= If he were merely lost)]], he would surely have found his way back by now. [[front|The alternative she would not allow herself to consider|Fronting of the object before subject and verb]]. Her limbs ached; her mind ached more.",
+   "The answer, when it came, came at speed. Engines [[lit|tore|Literary vocabulary: tear through = break violently through]] through the silence; tyres shrieked; vehicles pulled up on every side. Marie sat up and looked out. Police cars — three of them, two still pulsing blue. Relief, [[lit|giddy|Literary vocabulary: light-headed, almost dizzy with emotion]] and absurd, rose in her throat. Doors flew open and men in uniform spilled out, and one of them, younger than the rest, [[lit|blanched|Literary vocabulary: turned pale from shock or fear]] as he glanced at something above her car.",
+   "An officer ran to her. As she unlocked the door, he took her hand in his. “Come with me to the car, Miss. You're quite safe now. Eyes on the police car. Don't look back — [[ellip|not once|Ellipsis: '(do) not (look back) once']].”",
+   "[[front|So gentle, so careful was his voice|Fronting with inversion: So + adjective + be + subject]] that it filled her with a cold, [[lit|nameless|Literary vocabulary: too terrible to be described]] horror. It was the voice of a man trying not to let her see something. She could no more have obeyed him than stopped breathing. A few yards short of safety, she halted, turned and looked back.",
+   "[[front|From the branch above the car, at the end of a rope, hung her husband.|Fronting with full inversion: place adverbials + verb + subject]] The wind moved him [[lit|to and fro|Literary vocabulary: backwards and forwards]], gently, patiently; and each time it did, his feet brushed the roof of the car: bump, bump, bump, bump."
+  ],
+  "glossary": [
+   [
+    "let up",
+    "amainar"
+   ],
+   [
+    "dusk",
+    "anochecer"
+   ],
+   [
+    "monotony",
+    "monotonía"
+   ],
+   [
+    "hypnotic",
+    "hipnótico"
+   ],
+   [
+    "carved",
+    "abrían, tallaban"
+   ],
+   [
+    "fitting",
+    "apropiado, lo justo"
+   ],
+   [
+    "broke off",
+    "se interrumpió"
+   ],
+   [
+    "incongruously",
+    "de forma incongruente"
+   ],
+   [
+    "prowling",
+    "merodeando"
+   ],
+   [
+    "brisk",
+    "enérgico, cortante"
+   ],
+   [
+    "pressing",
+    "urgente, apremiante"
+   ],
+   [
+    "throw ourselves on",
+    "ponernos a merced de"
+   ],
+   [
+    "prophetic",
+    "profético"
+   ],
+   [
+    "coaxed",
+    "trató con mimo"
+   ],
+   [
+    "implored",
+    "imploró"
+   ],
+   [
+    "shuddered",
+    "se sacudió"
+   ],
+   [
+    "overhanging",
+    "que sobresale por encima"
+   ],
+   [
+    "strain",
+    "tensión"
+   ],
+   [
+    "engulfed",
+    "engulló"
+   ],
+   [
+    "insistent",
+    "insistente"
+   ],
+   [
+    "evenly spaced",
+    "a intervalos regulares"
+   ],
+   [
+    "rigid",
+    "rígida"
+   ],
+   [
+    "remorseless",
+    "despiadado, implacable"
+   ],
+   [
+    "creak",
+    "crujido"
+   ],
+   [
+    "courteous",
+    "cortés"
+   ],
+   [
+    "wan",
+    "pálido, mortecino"
+   ],
+   [
+    "cramped",
+    "entumecida, encogida"
+   ],
+   [
+    "tore",
+    "rasgaron"
+   ],
+   [
+    "pulsing",
+    "latiendo, destellando"
+   ],
+   [
+    "giddy",
+    "mareante, eufórico"
+   ],
+   [
+    "blanched",
+    "palideció"
+   ],
+   [
+    "nameless",
+    "indescriptible"
+   ],
+   [
+    "halted",
+    "se detuvo"
+   ],
+   [
+    "to and fro",
+    "de un lado a otro"
+   ],
+   [
+    "brushed",
+    "rozaban"
+   ]
+  ],
+  "questions": [
+   {
+    "type": "mc",
+    "q": "Why was it 'only fitting that the Winstons be there'?",
+    "options": [
+     "They lived next door.",
+     "George was Lisa's uncle.",
+     "They had organised the party.",
+     "The Harrisons were friends of many years."
+    ],
+    "answer": 3,
+    "explain_es": "'The Harrisons, friends of many years, were throwing a party… it was only fitting that the Winstons be there.'"
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best fits 'The radio'?",
+    "options": [
+     "An intrusion into a comfortable evening",
+     "George loses his temper",
+     "A long walk in the rain",
+     "A love song for Lisa"
+    ],
+    "answer": 0,
+    "explain_es": "El boletín interrumpe la música y la calma: 'the music broke off. In its place came a voice, flat and official.'"
+   },
+   {
+    "type": "heading",
+    "q": "Which heading best fits 'Three knocks'?",
+    "options": [
+     "A happy reunion",
+     "The Harrisons call",
+     "Repairing the engine",
+     "A signal betrayed"
+    ],
+    "answer": 3,
+    "explain_es": "La señal pactada se vuelve una amenaza: 'Then came three knocks… then a fifth, and a sixth. This much she knew: it was not George.'"
+   },
+   {
+    "type": "tf",
+    "q": "The police asked that sightings of Downey be reported immediately.",
+    "answer": "T",
+    "explain_es": "'that any sighting be reported at once'."
+   },
+   {
+    "type": "tf",
+    "q": "Downey had escaped from the same hospital once before.",
+    "answer": "NG",
+    "explain_es": "El texto solo menciona esta fuga; no dice nada de fugas anteriores."
+   },
+   {
+    "type": "tf",
+    "q": "Marie was asked to approve George's plan.",
+    "answer": "F",
+    "explain_es": "'Had she been asked to approve the plan, she would have refused' — el condicional invertido implica que no se lo preguntaron."
+   },
+   {
+    "type": "mc",
+    "q": "Why does the young officer blanch as he glances above her car?",
+    "options": [
+     "He has seen George's body in the tree.",
+     "He is afraid of the storm.",
+     "He has seen John Downey running away.",
+     "He recognises Marie."
+    ],
+    "answer": 0,
+    "explain_es": "Inferencia: 'one of them, younger than the rest, blanched as he glanced at something above her car' anticipa el final sin revelarlo."
+   },
+   {
+    "type": "mc",
+    "q": "What is the effect of 'Prophetic those words proved'?",
+    "options": [
+     "It means the radio was wrong.",
+     "Fronting the adjective makes the reader feel that misfortune is now certain.",
+     "It is a simple description of the weather.",
+     "It shows that George is a fortune teller."
+    ],
+    "answer": 1,
+    "explain_es": "Fronting del complemento: al poner 'Prophetic' al inicio, el narrador subraya que las palabras de George se cumplen y crea presagio."
+   },
+   {
+    "type": "mc",
+    "q": "Why does the narrator say 'no branch keeps time, and no hailstorm pauses to listen'?",
+    "options": [
+     "To rule out natural explanations and deepen the dread",
+     "To describe the Harrisons' garden",
+     "To explain the weather forecast",
+     "To show that Marie is calm"
+    ],
+    "answer": 0,
+    "explain_es": "Técnica de suspenso: Marie intenta explicar el ruido de forma natural, pero el narrador descarta esas opciones y aumenta el miedo."
+   },
+   {
+    "type": "vocab",
+    "q": "'When at last a wan light crept over the fields' — 'wan' means…",
+    "options": [
+     "sudden and loud",
+     "pale and weak",
+     "red and angry",
+     "bright and warm"
+    ],
+    "answer": 1,
+    "explain_es": "'Wan' (literario) = pálido, débil: la luz gris del amanecer."
+   },
+   {
+    "type": "vocab",
+    "q": "'the knocking settled into a remorseless rhythm' — 'remorseless' is closest to…",
+    "options": [
+     "irregular",
+     "quiet and gentle",
+     "cheerful",
+     "cruel and never stopping"
+    ],
+    "answer": 3,
+    "explain_es": "'Remorseless' = implacable, sin piedad ni pausa."
+   },
+   {
+    "type": "gap",
+    "q": "The police requested that every household ____ (keep) its doors and windows locked.",
+    "answer": "keep",
+    "explain_es": "Subjuntivo tras request: forma base sin -s. 'that every household keep its doors and windows locked'."
+   },
+   {
+    "type": "transform",
+    "q": "Rewrite with formal inversion: If he were merely lost, he would have found his way back. → Were ____, he would have found his way back.",
+    "answer": "he merely lost",
+    "explain_es": "Condicional formal: Were + sujeto (= If he were). 'Were he merely lost, he would surely have found his way back by now.'"
+   },
+   {
+    "type": "gap",
+    "q": "Restore the words left out: \"Afraid she certainly was; hysterical, ____ never.\"",
+    "answer": "she was",
+    "explain_es": "Elipsis: 'hysterical, (she was) never'. Se omite lo que ya se dijo en la primera parte."
+   }
+  ],
+  "words": 977
+ }
+]
