@@ -328,7 +328,7 @@ function MaterialTab() {
     {
       title: 'Práctica por destreza',
       items: [
-        { to: '/practice/reading', title: 'Reading', sub: '135 lecturas A1–C2 + guías', icon: BookOpen, color: 'var(--skill-reading)' },
+        { to: '/practice/reading', title: 'Reading', sub: '141 lecturas A1–C2 + guías', icon: BookOpen, color: 'var(--skill-reading)' },
         { to: '/practice/listening', title: 'Listening', sub: '121 audios A1–C2 + diálogos', icon: Headphones, color: 'var(--skill-listening)' },
         { to: '/practice/speaking', title: 'Speaking', sub: '3.600+ preguntas', icon: Mic, color: 'var(--skill-speaking)' },
         { to: '/practice/writing', title: 'Writing', sub: 'Tareas con feedback', icon: PenLine, color: 'var(--skill-writing)' },
