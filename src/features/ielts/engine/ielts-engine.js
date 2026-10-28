@@ -12445,6 +12445,10 @@ function explainAuthError(err){
   const raw = (err && err.message) || String(err || "");
   const m = raw.toLowerCase();
 
+  if(m.includes("teacher_invite") || (AUTH.authMode === "signup" && AUTH.signupRole === "teacher" && m.includes("database error"))){
+    return "That teacher invitation code is not valid, was already used or has expired. Ask the platform administrator for a new one.";
+  }
+
   if(m.includes("email not confirmed") || m.includes("email_not_confirmed")){
     return "This account exists but has never been confirmed, and the confirmation email almost certainly never arrived. "
          + "Supabase's built-in email sender only delivers to addresses belonging to the project's own team. "
@@ -12474,11 +12478,16 @@ async function doSignIn(email, password){
   if(data && data.session) await adoptSession(data.session);
 }
 
-async function doSignUp(email, password, fullName, role, classCode){
+async function doSignUp(email, password, fullName, role, classCode, inviteCode){
+  // Teacher accounts need a one-use code from the platform owner (migration 15).
+  if(role === "teacher"){
+    const { data:ok, error:chk } = await AUTH.client.rpc("check_teacher_invite", { p_code: inviteCode || "" });
+    if(!chk && ok !== true) throw new Error("TEACHER_INVITE_INVALID");
+  }
   const { data, error } = await AUTH.client.auth.signUp({
     email, password,
     options:{
-      data:{ full_name: fullName, role },
+      data: role === "teacher" ? { full_name: fullName, role, invite_code: inviteCode } : { full_name: fullName, role },
       // Without this, a confirmation email points at Supabase's default Site URL
       // (localhost:3000), which is dead for a hosted copy. Send people back to
       // wherever this page is actually running instead.
@@ -13357,6 +13366,7 @@ document.querySelectorAll(".role-btn").forEach(b=>b.addEventListener("click", ()
   AUTH.signupRole = b.dataset.role;
   document.querySelectorAll(".role-btn").forEach(x=>x.classList.toggle("active", x===b));
   document.getElementById("classCodeWrap").style.display = AUTH.signupRole === "student" ? "" : "none";
+  document.getElementById("teacherCodeWrap").style.display = AUTH.signupRole === "teacher" ? "" : "none";
 }));
 
 document.getElementById("authSubmit").addEventListener("click", async ()=>{
@@ -13375,7 +13385,9 @@ document.getElementById("authSubmit").addEventListener("click", async ()=>{
       const code = document.getElementById("authClassCode").value.trim();
       if(!name){ throw new Error("Please enter your name."); }
       if(AUTH.signupRole === "student" && !code){ throw new Error("Enter the class code your teacher gave you."); }
-      const res = await doSignUp(email, pass, name, AUTH.signupRole, code);
+      const invite = document.getElementById("authInviteCode").value.trim().toUpperCase();
+      if(AUTH.signupRole === "teacher" && !invite){ throw new Error("Enter the teacher invitation code the platform administrator gave you."); }
+      const res = await doSignUp(email, pass, name, AUTH.signupRole, code, invite);
       if(res.needsConfirm){
         st.style.color = "var(--teal)";
         st.innerHTML = (AUTH.signupRole === "student" && code

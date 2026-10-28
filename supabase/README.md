@@ -10,11 +10,11 @@ clases, sesión y el mismo cliente.
 
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
-Incluye las trece migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `14` **en orden** (no hay `10`):
-`05` y de `07` a `14` dependen de la tabla `profiles` que crea `01`.)
+Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `15` **en orden** (no hay `10`):
+`05` y de `07` a `15` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `14_submission_reviews.sql` (las nuevas: `13_c2_level.sql` y `14_submission_reviews.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `15_teacher_invites.sql` (las nuevas: `13_c2_level.sql`, `14_submission_reviews.sql` y `15_teacher_invites.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -32,8 +32,23 @@ Incluye las trece migraciones en orden y se puede re-ejecutar sin perder datos.
 | `12_notes.sql` | **Mis notas**: `student_notes`, privadas (cada cuenta solo ve las suyas; el docente no las ve). |
 | `13_c2_level.sql` | **Nivel C2**: amplía las validaciones de nivel de `portfolio_items`, `assignments` y `podcast_quizzes` para aceptar `C2`. |
 | `14_submission_reviews.sql` | **Revisión del docente**: `submission_reviews` (comentario general, comentarios sobre frases del texto, nota y, en parciales, notas por habilidad) y `review_submission()`. El estudiante ve en «Mis trabajos» las revisiones que el docente marcó como visibles. |
+| `15_teacher_invites.sql` | **Docentes por invitación**: solo la cuenta dueña (`platform_admins`) crea códigos de un solo uso (`teacher_invites`); registrarse como docente exige uno válido. Los estudiantes se registran igual que siempre. Al final del archivo está el SQL para hacerte dueña/dueño. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
+
+### 1b. Hazte dueño de la plataforma (una vez)
+
+Regístrate en la app y luego, en el SQL Editor, con **tu** correo:
+
+```sql
+insert into public.platform_admins (user_id)
+select id from auth.users where lower(email) = lower('TU_CORREO@ejemplo.com')
+on conflict do nothing;
+```
+
+Desde ese momento ves **Perfil → Códigos para docentes** (también en la Sala del docente): ahí creas un código para cada docente nuevo
+(`DOC-XXXX-XXXX`, un solo uso, vence en los días que elijas), lo copias y se lo envías. Sin código no se puede crear una cuenta docente.
+Si tu cuenta aún es de estudiante y está vacía, en Perfil aparece **Convertir en cuenta docente** (a ti no te pide código).
 
 ### 2. Autenticación
 

@@ -11,11 +11,16 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-DOS PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+TRES PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
      asignadas, Mis trabajos y quizzes de podcasts.
   2. supabase/migrations/14_submission_reviews.sql — activa la revisión
      manual del docente (sección W).
+  3. supabase/migrations/15_teacher_invites.sql — docentes solo por
+     invitación (sección X). Luego, una vez, hazte dueño con tu correo:
+       insert into public.platform_admins (user_id)
+       select id from auth.users where lower(email) = lower('TU_CORREO')
+       on conflict do nothing;
 Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
@@ -138,6 +143,25 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
 - El estudiante ve en «Mis trabajos › Revisiones de tu profe» la nota,
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
+
+X. DOCENTES SOLO POR INVITACIÓN (tú tienes el control)
+- Registrarse como «Docente» ahora pide un código de invitación
+  (DOC-XXXX-XXXX). Sin código válido la cuenta no se crea; el aviso dice
+  «no es válido, ya se usó o venció». Los estudiantes se registran igual
+  que siempre (y se unen con el código de clase de su docente).
+- Tu panel: Perfil › Administración › «Códigos para docentes» (o el botón
+  «Docentes» en la Sala del docente). Ahí:
+    · creas un código (para quién + vence en 7/30/90 días o sin vencer),
+    · copias el código o el mensaje listo para enviar por WhatsApp/correo,
+    · ves cuáles están libres, usados (por qué correo), vencidos o
+      anulados, y anulas los que ya no quieras,
+    · ves todos los docentes con su código de clase y número de estudiantes.
+- Cada código sirve una sola vez. Solo tu cuenta (platform_admins) puede
+  crear o ver códigos; nadie puede darse ese permiso desde la app.
+- Una cuenta de estudiante vacía puede pasar a docente con un código
+  (Perfil › «¿Eres docente?»). A ti no te pide código.
+- También aplica en el registro del simulador IELTS.
+- Los docentes que ya existían siguen igual.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:

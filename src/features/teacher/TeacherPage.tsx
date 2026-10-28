@@ -13,6 +13,7 @@ import {
   Gamepad2,
   GraduationCap,
   ImageIcon,
+  KeyRound,
   Headphones,
   Mic,
   PenLine,
@@ -34,6 +35,7 @@ import { IconTile } from '@/components/ui/IconTile';
 import { LevelChip, Spinner, Toggle, EmptyState } from '@/components/ui/Misc';
 import { Avatar } from '@/components/layout/Avatar';
 import { useSettings } from '@/store/settings';
+import { useAuth } from '@/store/auth';
 import { currentLevel, unitsDone, xpLevel } from '@/store/progress';
 import { evaluatePlan } from '@/lib/planner';
 import { LEVELS } from '@/content/levels';
@@ -51,6 +53,7 @@ type Sort = 'name' | 'recent' | 'xp' | 'level';
 
 export default function TeacherPage() {
   const { isTeacher, classCode, students, error, loading, reload } = useClass();
+  const isAdmin = useAuth((s) => s.profile?.is_admin === true);
   const [params, setParams] = useSearchParams();
   const tab: Tab = (['tasks', 'work', 'material', 'practice'] as const).find((t) => t === params.get('tab')) ?? 'class';
   // Remounts the task list after "Asignar tarea" in the header created one.
@@ -82,14 +85,21 @@ export default function TeacherPage() {
       title="Sala del docente"
       subtitle="El progreso de tu clase, todo el material sin restricciones y tu propio espacio para practicar."
       actions={
-        <AssignButton
-          variant="brand"
-          size="md"
-          onSaved={() => {
-            setTasksKey((k) => k + 1);
-            setParams({ tab: 'tasks' });
-          }}
-        />
+        <div className="flex items-center gap-2">
+          {isAdmin && (
+            <ButtonLink to="/admin/teachers" variant="gray" size="md" aria-label="Códigos para docentes">
+              <KeyRound size={17} /> <span className="hidden sm:inline">Docentes</span>
+            </ButtonLink>
+          )}
+          <AssignButton
+            variant="brand"
+            size="md"
+            onSaved={() => {
+              setTasksKey((k) => k + 1);
+              setParams({ tab: 'tasks' });
+            }}
+          />
+        </div>
       }
       wide
     >
