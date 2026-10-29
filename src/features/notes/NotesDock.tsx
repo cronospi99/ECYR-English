@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FlaskConical, Languages, MonitorPlay, NotebookPen } from 'lucide-react';
+import { FlaskConical, Languages, MonitorPlay, NotebookPen, StickyNote } from 'lucide-react';
 import { PageLoader } from '@/components/ui/Misc';
 import { Sheet } from '@/features/portfolio/Sheet';
 import { TranslatorHost, registerTranslatorNoteSaver, useTranslator } from '@/components/learning/Translator';
@@ -24,6 +24,7 @@ export function NotesDock() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
+  const session = useAuth((s) => !!s.session);
   const [open, setOpen] = useState(false);
   const [verbs, setVerbs] = useState(false);
   const tOpen = useTranslator((s) => s.open);
@@ -91,6 +92,11 @@ export function NotesDock() {
             title="Pantalla de clase: temporizador, ruleta, grupos… (Alt+P)"
           >
             <MonitorPlay size={20} strokeWidth={2.1} />
+          </Link>
+        )}
+        {session && !pathname.startsWith('/boards') && (
+          <Link to="/boards" className={cn(btn, 'text-ink-pink hover:bg-fill-2')} aria-label="Muro en vivo" title="Muro en vivo: tarjetas con tu clase">
+            <StickyNote size={20} strokeWidth={2.1} />
           </Link>
         )}
         {!onVerbLab && (
