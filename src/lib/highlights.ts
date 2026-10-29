@@ -17,9 +17,23 @@ import type { CSSProperties } from 'react';
  *   (U+FE03 + n). These are variation selectors, also invisible. Size 0 and
  *   font 0 are the defaults.
  *
+ * - Underline, strikethrough, text colour and line alignment (added later)
+ *   reuse the extra-colour prefix with parameters no colour uses: U+FE02 +
+ *   key (U+FE03 + 7…10) + value (U+FE03 + v). Key 7 underline (v 0/1), 8
+ *   strikethrough (0/1), 9 text colour (0 = default, else TEXT_COLORS[v]),
+ *   10 alignment (0 left, 1 centre, 2 right). No new code points: an older
+ *   version of the app reads the prefix + key as an unknown colour and skips
+ *   it, and strips the value character like any other mark, so its text and
+ *   other formatting stay intact.
+ * - A line's alignment is that of the character that starts it (the line
+ *   break before it; the first character for the first line).
+ * - Lists are plain text, no marks: "• ", "1. ", "☐ " / "☑ " at the start of
+ *   a line (optionally indented with spaces). See LIST_RE / lineInfo().
+ *
  * The marks are independent toggles (a state machine, not nested tags), so
  * bold, italic and a colour combine and overlap freely. An orphan end mark is
- * harmless; an unclosed start mark lasts to the end of the note.
+ * harmless; an unclosed start mark lasts to the end of the note. Unknown or
+ * stray marks are skipped.
  */
 export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink' | 'orange' | 'red' | 'purple' | 'teal' | 'gray' | 'brown';
 
@@ -53,6 +67,23 @@ export const FONTS: { label: string; family: string | null }[] = [
   { label: 'Microsoft · Segoe UI', family: "'Segoe UI', Calibri, Arial, sans-serif" },
   { label: 'Georgia (con serifa)', family: "Georgia, 'Times New Roman', serif" },
 ];
+/** Text colours (index = the text-colour mark's value; 0 is the normal colour). `css` adapts to light / dark; `hex` is for the clipboard. */
+export const TEXT_COLORS: { label: string; css: string | null; hex: string }[] = [
+  { label: 'Automático', css: null, hex: '' },
+  { label: 'Rojo', css: 'var(--red-ink)', hex: '#d70015' },
+  { label: 'Naranja', css: 'var(--orange-ink)', hex: '#c93400' },
+  { label: 'Verde', css: 'var(--green-ink)', hex: '#248a3d' },
+  { label: 'Azul', css: 'var(--blue-ink)', hex: '#0040dd' },
+  { label: 'Morado', css: 'var(--purple-ink)', hex: '#8944ab' },
+  { label: 'Rosa', css: 'var(--pink-ink)', hex: '#d30f45' },
+  { label: 'Turquesa', css: 'var(--teal-ink)', hex: '#0071a4' },
+  { label: 'Gris', css: 'var(--label-2)', hex: '#6e6e73' },
+];
+/** Swatch colours of TEXT_COLORS (vivid, for the palette buttons). */
+export const TEXT_SWATCH = ['var(--label)', 'var(--red)', 'var(--orange)', 'var(--green)', 'var(--blue)', 'var(--purple)', 'var(--pink)', 'var(--teal)', '#8e8e93'];
+
+export const ALIGNS = ['left', 'center', 'right'] as const;
+
 const SIZE_PREFIX = '\uFE00';
 const FONT_PREFIX = '\uFE01';
 const COLOR_PREFIX = '\uFE02';
@@ -63,11 +94,18 @@ export const BOLD_OFF = '\u206B';
 export const ITALIC_ON = '\u206C';
 export const ITALIC_OFF = '\u206D';
 
+const KEY_UNDERLINE = 7;
+const KEY_STRIKE = 8;
+const KEY_FG = 9;
+const KEY_ALIGN = 10;
+const attr = (key: number, v: number) => COLOR_PREFIX + String.fromCharCode(PARAM0 + key, PARAM0 + v);
+
 const START = new Map(HIGHLIGHTS.map((h) => [h.mark, h]));
 const START_EXT = new Map(HIGHLIGHTS.filter((h) => h.mark.length === 2).map((h) => [h.mark.charCodeAt(1) - PARAM0, h]));
 const BG = new Map(HIGHLIGHTS.map((h) => [h.id, h.bg]));
 // U+2065 (unassigned, default-ignorable) is stripped too, in case it ever shows up.
 const ANY_MARK = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/g;
+const ANY_MARK_ONE = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/;
 
 /** The note as plain text (all formatting marks dropped). */
 export const stripHighlights = (s: string) => s.replace(ANY_MARK, '');
@@ -82,15 +120,42 @@ export interface Fmt {
   size: number;
   /** Index in FONTS (0 = the app's). */
   font: number;
+  underline: boolean;
+  strike: boolean;
+  /** Index in TEXT_COLORS (0 = normal). */
+  fg: number;
+  /** Index in ALIGNS; only the character starting a line counts (see lineAlign). */
+  align: number;
 }
 
 export interface Segment extends Fmt {
   text: string;
 }
 
-export const PLAIN: Fmt = { color: null, bold: false, italic: false, size: 0, font: 0 };
-const sameFmt = (a: Fmt, b: Fmt) => a.color === b.color && a.bold === b.bold && a.italic === b.italic && a.size === b.size && a.font === b.font;
-const fmtOf = (g: Fmt): Fmt => ({ color: g.color, bold: g.bold, italic: g.italic, size: g.size, font: g.font });
+export const PLAIN: Fmt = { color: null, bold: false, italic: false, size: 0, font: 0, underline: false, strike: false, fg: 0, align: 0 };
+/** "Quitar formato": everything but the line alignment. */
+export const CLEAR: Partial<Fmt> = { color: null, bold: false, italic: false, size: 0, font: 0, underline: false, strike: false, fg: 0 };
+export const sameFmt = (a: Fmt, b: Fmt) =>
+  a.color === b.color &&
+  a.bold === b.bold &&
+  a.italic === b.italic &&
+  a.size === b.size &&
+  a.font === b.font &&
+  a.underline === b.underline &&
+  a.strike === b.strike &&
+  a.fg === b.fg &&
+  a.align === b.align;
+export const fmtOf = (g: Fmt): Fmt => ({
+  color: g.color,
+  bold: g.bold,
+  italic: g.italic,
+  size: g.size,
+  font: g.font,
+  underline: g.underline,
+  strike: g.strike,
+  fg: g.fg,
+  align: g.align,
+});
 
 /** Splits a note into stretches of the same formatting (marks dropped, empty stretches skipped). */
 export function segments(s: string): Segment[] {
@@ -114,7 +179,17 @@ export function segments(s: string): Segment[] {
         i++;
         if (ch === SIZE_PREFIX) next = { ...f, size: n < SIZES.length ? n : 0 };
         else if (ch === FONT_PREFIX) next = { ...f, font: n < FONTS.length ? n : 0 };
-        else next = START_EXT.get(n) ? { ...f, color: START_EXT.get(n)!.id } : f;
+        else if (n >= KEY_UNDERLINE) {
+          // Attribute: prefix + key + value (a missing value leaves the state alone).
+          const v = s.charCodeAt(i + 1) - PARAM0;
+          if (v >= 0 && v <= 10) {
+            i++;
+            if (n === KEY_UNDERLINE) next = { ...f, underline: v === 1 };
+            else if (n === KEY_STRIKE) next = { ...f, strike: v === 1 };
+            else if (n === KEY_FG) next = { ...f, fg: v < TEXT_COLORS.length ? v : 0 };
+            else next = { ...f, align: v < ALIGNS.length ? v : 0 };
+          } else next = f;
+        } else next = START_EXT.get(n) ? { ...f, color: START_EXT.get(n)!.id } : f;
       } else next = f;
     } else if (h) next = { ...f, color: h.id };
     else if (ch === END_MARK) next = { ...f, color: null };
@@ -122,7 +197,7 @@ export function segments(s: string): Segment[] {
     else if (ch === BOLD_OFF) next = { ...f, bold: false };
     else if (ch === ITALIC_ON) next = { ...f, italic: true };
     else if (ch === ITALIC_OFF) next = { ...f, italic: false };
-    else if (ch === '\u2065') next = f;
+    else if (ANY_MARK_ONE.test(ch)) next = f; // stray / unknown mark
     if (next) {
       flush();
       f = next;
@@ -148,6 +223,10 @@ export function serialize(segs: Segment[]): string {
     if (g.color && g.color !== cur.color) out += markOf(g.color);
     if (g.bold && !cur.bold) out += BOLD_ON;
     if (g.italic && !cur.italic) out += ITALIC_ON;
+    if (g.underline !== cur.underline) out += attr(KEY_UNDERLINE, g.underline ? 1 : 0);
+    if (g.strike !== cur.strike) out += attr(KEY_STRIKE, g.strike ? 1 : 0);
+    if (g.fg !== cur.fg) out += attr(KEY_FG, g.fg);
+    if (g.align !== cur.align) out += attr(KEY_ALIGN, g.align);
     out += g.text;
     cur = g;
   }
@@ -156,6 +235,10 @@ export function serialize(segs: Segment[]): string {
   if (cur.italic) out += ITALIC_OFF;
   if (cur.size) out += SIZE_PREFIX + String.fromCharCode(PARAM0);
   if (cur.font) out += FONT_PREFIX + String.fromCharCode(PARAM0);
+  if (cur.underline) out += attr(KEY_UNDERLINE, 0);
+  if (cur.strike) out += attr(KEY_STRIKE, 0);
+  if (cur.fg) out += attr(KEY_FG, 0);
+  if (cur.align) out += attr(KEY_ALIGN, 0);
   return out;
 }
 
@@ -231,15 +314,15 @@ export function fmtAt(s: string, pos: number): Fmt {
 }
 
 /** Whether every visible character of [a, b) is bold (or italic). Line breaks alone don't count. */
-export function rangeAll(s: string, a: number, b: number, key: 'bold' | 'italic'): boolean {
+export function rangeAll(s: string, a: number, b: number, key: 'bold' | 'italic' | 'underline' | 'strike'): boolean {
   const part = sliceSegs(segments(s), Math.min(a, b), Math.max(a, b));
   const visible = part.filter((g) => /\S/.test(g.text));
   const check = visible.length ? visible : part;
   return check.length > 0 && check.every((g) => g[key]);
 }
 
-/** The size / font shared by every visible character of [a, b), or null when they differ. */
-export function rangeValue(s: string, a: number, b: number, key: 'size' | 'font'): number | null {
+/** The size / font / text colour shared by every visible character of [a, b), or null when they differ. */
+export function rangeValue(s: string, a: number, b: number, key: 'size' | 'font' | 'fg'): number | null {
   const part = sliceSegs(segments(s), Math.min(a, b), Math.max(a, b));
   const visible = part.filter((g) => /\S/.test(g.text));
   const check = visible.length ? visible : part;
@@ -258,6 +341,9 @@ export function segStyle(g: Fmt): CSSProperties {
   }
   if (g.bold) st.fontWeight = 700;
   if (g.italic) st.fontStyle = 'italic';
+  if (g.underline || g.strike) st.textDecorationLine = [g.underline && 'underline', g.strike && 'line-through'].filter(Boolean).join(' ');
+  const fg = g.fg ? TEXT_COLORS[g.fg]?.css : null;
+  if (fg) st.color = fg;
   const em = SIZES[g.size]?.em;
   if (em) st.fontSize = `${em}em`;
   const fam = FONTS[g.font]?.family;
@@ -285,4 +371,72 @@ export function applyHighlight(s: string, start: number, end: number, color: Hig
   };
   return { text, start: rawAt(a), end: rawAt(b) };
 }
-const ANY_MARK_ONE = /[\u2060-\u2065\u206A-\u206D\uFE00-\uFE0D]/;
+
+// ------------------------------------------------------------------ lists --
+
+export type ListKind = 'bullet' | 'num' | 'check';
+export interface ListInfo {
+  kind: ListKind;
+  /** Leading spaces (2 per level). */
+  indent: number;
+  /** A ticked checklist item (☑). */
+  done: boolean;
+  /** The number of a numbered item. */
+  num: number;
+  /** Where the marker starts (after the indent) and where the item's text starts. */
+  markStart: number;
+  len: number;
+}
+
+/** "• ", "- ", "* ", "1. ", "1) ", "☐ ", "☑ " at the start of a line, after optional spaces. */
+const LIST_RE = /^( *)(?:([•*-])|(\d{1,3})([.)])|([☐☑])) /;
+export const BULLET = '•';
+export const CHECK_OFF = '☐';
+export const CHECK_ON = '☑';
+
+/** The list item a (plain-text) line starts with, if any. */
+export function listInfo(line: string): ListInfo | null {
+  const m = LIST_RE.exec(line);
+  if (!m) return null;
+  const indent = m[1]!.length;
+  const base = { indent, markStart: indent, len: m[0].length };
+  if (m[2]) return { ...base, kind: 'bullet', done: false, num: 0 };
+  if (m[3]) return { ...base, kind: 'num', done: false, num: Number(m[3]) };
+  return { ...base, kind: 'check', done: m[5] === CHECK_ON, num: 0 };
+}
+
+/** The marker text (with its space) of a list item. */
+export function listMarker(kind: ListKind, num = 1, done = false): string {
+  return kind === 'bullet' ? `${BULLET} ` : kind === 'num' ? `${num}. ` : `${done ? CHECK_ON : CHECK_OFF} `;
+}
+
+/**
+ * Renumbers numbered lists in plain text: in each run of list lines, the
+ * items at one indent count up from the first one's number. Returns the
+ * edits as [start, end, replacement] in plain offsets (last first), so a
+ * marked text can be patched with replaceRange.
+ */
+export function renumberEdits(plain: string): [number, number, string][] {
+  const edits: [number, number, string][] = [];
+  const counters = new Map<number, number>();
+  let pos = 0;
+  for (const line of plain.split('\n')) {
+    const li = listInfo(line);
+    if (!li) counters.clear();
+    else {
+      for (const k of [...counters.keys()]) if (k > li.indent) counters.delete(k);
+      if (li.kind !== 'num') counters.delete(li.indent);
+      else {
+        const prev = counters.get(li.indent);
+        const want = prev === undefined ? li.num : prev + 1;
+        counters.set(li.indent, want);
+        if (want !== li.num) {
+          const digits = String(li.num).length;
+          edits.push([pos + li.markStart, pos + li.markStart + digits, String(want)]);
+        }
+      }
+    }
+    pos += line.length + 1;
+  }
+  return edits.reverse();
+}
