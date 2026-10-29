@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useLocation, Link } from 'react-router-dom';
-import { ClipboardCheck, Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
+import { ChevronLeft, ClipboardCheck, Crown, Flame, School, Sparkles, FlaskConical } from 'lucide-react';
+import { useGoBack } from '@/lib/navBack';
 import { NAV, isActive } from './nav';
 import { Logo } from '@/components/brand/Logo';
 import { IconTile } from '@/components/ui/IconTile';
@@ -74,12 +75,26 @@ function MobileTopBar() {
   const name = useDisplayName();
   const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
   const inClass = useAuth((s) => s.profile?.role === 'student' && !!s.profile.teacher_id);
+  const { target, go } = useGoBack();
   return (
     <div className="material pt-safe hairline-b sticky top-0 z-30 lg:hidden">
       <div className="flex h-12 items-center justify-between px-4">
-        <Link to="/" aria-label="Inicio">
-          <Logo compact />
-        </Link>
+        <div className="flex min-w-0 items-center gap-1">
+          {target && (
+            <button
+              type="button"
+              onClick={go}
+              aria-label="Atrás"
+              title="Atrás"
+              className="text-ink-blue -ml-2 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-transform active:scale-90 active:bg-fill-2"
+            >
+              <ChevronLeft size={26} strokeWidth={2.5} />
+            </button>
+          )}
+          <Link to="/" aria-label="Inicio">
+            <Logo compact />
+          </Link>
+        </div>
         <div className="flex items-center gap-2">
           {isTeacher && (
             <Link
