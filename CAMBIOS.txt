@@ -11,7 +11,7 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-TRES PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+CUATRO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
      asignadas, Mis trabajos y quizzes de podcasts.
   2. supabase/migrations/14_submission_reviews.sql — activa la revisión
@@ -21,6 +21,7 @@ TRES PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
        insert into public.platform_admins (user_id)
        select id from auth.users where lower(email) = lower('TU_CORREO')
        on conflict do nothing;
+  4. supabase/migrations/16_live_boards.sql — Muro en vivo (sección Y).
 Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
@@ -162,6 +163,40 @@ X. DOCENTES SOLO POR INVITACIÓN (tú tienes el control)
   (Perfil › «¿Eres docente?»). A ti no te pide código.
 - También aplica en el registro del simulador IELTS.
 - Los docentes que ya existían siguen igual.
+
+Y. MURO EN VIVO (menú › Muro en vivo · Sala del docente › Material)
+- Jam y Padlet se solapaban, así que es UN solo muro con tres formatos:
+    · Jam: post-its de colores libres en un lienzo (se arrastran, zoom).
+    · Columnas (tipo Padlet): tú defines columnas (Ideas / Preguntas…).
+    · Historia: cada tarjeta continúa la historia (Parte 1, 2, 3…), con
+      frase de inicio; tú puedes reordenar.
+- Solo entran los estudiantes unidos a tu clase. Escriben tarjetas (texto,
+  8 colores, o un dibujo hecho en la pizarra) y dan ❤️.
+- Tus controles: 👁 mostrar/ocultar nombres (al ocultarlos, el servidor ni
+  siquiera envía los nombres a los estudiantes), 🔒 bloquear, Proyectar,
+  destacar una tarjeta en pantalla completa para todos (←/→ para pasar),
+  borrar cualquiera, exportar texto/CSV, imprimir, cerrar/reabrir.
+- Se actualiza en vivo en todos los dispositivos.
+
+Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
+- Para el proyector, a pantalla completa, con fondo a elegir (degradados,
+  patrones, color o tu imagen) y widgets que se arrastran y cambian de
+  tamaño. Varias pantallas (‹ 1/3 › +) y todo queda guardado.
+- Widgets: Temporizador (con modo visual), Cronómetro, Ruleta de nombres
+  de tu clase (sin repetir) o números, Grupos, Reloj, Semáforo, Símbolos
+  de trabajo, Nivel de ruido (micrófono), Votación, Texto, Imagen, Video
+  de YouTube, Dados, Marcador, Agenda de la clase, Dibujo, Código QR (por
+  defecto, para entrar al Muro en vivo) y Cuenta atrás.
+- Descartados: webcam (privacidad), calendario (el reloj ya da la fecha),
+  PDF, embed e hipervínculo (la mayoría de sitios no se dejan incrustar; el
+  QR cubre compartir enlaces) y stickers (decorativos).
+
+Z2. PIZARRA (Práctica › Pizarra; también dentro del Muro y la Pantalla)
+- Lápiz con presión, pincel, resaltador, borrador, bote de pintura, línea,
+  flecha, rectángulo y elipse (borde o relleno), texto, cuentagotas, 18
+  colores + personalizado, grosor y opacidad, deshacer/rehacer (Ctrl+Z),
+  fondos blanco/cuadrícula/rayado, insertar imagen y descargar PNG.
+- Reto «¿Qué dibujo?»: palabra al azar por nivel A1–C2, con 60 segundos.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:
