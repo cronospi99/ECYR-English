@@ -19,6 +19,8 @@ import {
   Check,
   Play,
   Square,
+  KeyRound,
+  ChevronRight,
 } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -105,9 +107,11 @@ function LocalHero() {
 // ----------------------------------------------------------------- account --
 
 function Account() {
-  const { session, profile, signOut, joinClass } = useAuth();
+  const { session, profile, signOut, joinClass, becomeTeacher } = useAuth();
   const [code, setCode] = useState('');
   const [msg, setMsg] = useState<string | null>(null);
+  const [invite, setInvite] = useState('');
+  const [inviteMsg, setInviteMsg] = useState<string | null>(null);
   const name = profile?.full_name || session?.user.email || 'Learner';
 
   return (
@@ -137,6 +141,12 @@ function Account() {
         )}
       </ListGroup>
 
+      {profile?.is_admin && (
+        <ListGroup header="Administración" footer="Solo tú lo ves. Sin un código tuyo nadie puede crear una cuenta docente.">
+          <ListRow to="/admin/teachers" leading={<IconTile icon={KeyRound} color="var(--purple)" />} title="Códigos para docentes" subtitle="Invita docentes y mira quién enseña" />
+        </ListGroup>
+      )}
+
       {profile?.role === 'student' && !profile.teacher_id && (
         <Card className="p-5">
           <h3 className="text-headline">Unirse a una clase</h3>
@@ -164,6 +174,41 @@ function Account() {
         </Card>
       )}
 
+      {profile?.role === 'student' && !profile.teacher_id && (
+        <details className="rounded-card bg-card shadow-card group p-5">
+          <summary className="text-headline flex cursor-pointer list-none items-center gap-2">
+            <School size={18} className="text-ink-indigo" /> ¿Eres docente?
+            <ChevronRight size={16} className="text-label-3 ml-auto transition-transform group-open:rotate-90" />
+          </summary>
+          <p className="text-label-2 mt-2 text-[14px]">
+            {profile.is_admin ? 'Como administración, puedes convertir esta cuenta sin código.' : 'Ingresa el código de invitación que te dio la administración (DOC-XXXX-XXXX).'}
+          </p>
+          <form
+            className="mt-3 flex gap-2"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const err = await becomeTeacher(invite);
+              setInviteMsg(err ?? '¡Listo! Ahora tu cuenta es docente.');
+            }}
+          >
+            {!profile.is_admin && (
+              <input
+                value={invite}
+                onChange={(e) => setInvite(e.target.value.toUpperCase())}
+                maxLength={16}
+                placeholder="DOC-XXXX-XXXX"
+                aria-label="Código de invitación docente"
+                className="bg-fill-2 h-11 min-w-0 flex-1 rounded-[12px] px-4 font-mono text-[16px] tracking-wider uppercase outline-none"
+              />
+            )}
+            <Button type="submit" variant="tinted" disabled={!profile.is_admin && invite.replace(/[^A-Z0-9]/g, '').length < 8}>
+              Convertir en docente
+            </Button>
+          </form>
+          {inviteMsg && <p className="text-label-2 mt-2 text-[14px]">{inviteMsg}</p>}
+        </details>
+      )}
+
       <Button variant="destructive" size="lg" className="w-full" onClick={() => void signOut()}>
         <LogOut size={18} /> Cerrar sesión
       </Button>
@@ -178,6 +223,7 @@ function AuthCard() {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [role, setRole] = useState<'student' | 'teacher'>('student');
+  const [inviteCode, setInviteCode] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
@@ -198,7 +244,7 @@ function AuthCard() {
     e.preventDefault();
     setBusy(true);
     setMsg(null);
-    const err = mode === 'in' ? await signIn(email, password) : await signUp({ email, password, fullName, role });
+    const err = mode === 'in' ? await signIn(email, password) : await signUp({ email, password, fullName, role, inviteCode });
     setBusy(false);
     if (err === 'confirm') setMsg({ ok: true, text: 'Cuenta creada. Revisa tu correo para confirmarla y luego inicia sesión.' });
     else if (err) setMsg({ ok: false, text: err });
@@ -250,6 +296,21 @@ function AuthCard() {
               { value: 'teacher', label: '🧑‍🏫 Docente' },
             ]}
           />
+        )}
+        {mode === 'up' && role === 'teacher' && (
+          <div>
+            <input
+              className={cn(field, 'font-mono tracking-wider uppercase')}
+              placeholder="Código de invitación (DOC-XXXX-XXXX)"
+              aria-label="Código de invitación docente"
+              value={inviteCode}
+              onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
+              required
+              maxLength={16}
+              autoComplete="off"
+            />
+            <p className="text-label-2 mt-1.5 px-1 text-[13px]">Las cuentas docentes son por invitación: pide tu código a la administración de la plataforma.</p>
+          </div>
         )}
         <Button type="submit" size="lg" className="w-full" disabled={busy}>
           {busy ? <Spinner className="h-5 w-5" /> : mode === 'in' ? 'Entrar' : 'Crear cuenta'}

@@ -45,6 +45,9 @@ export const router = createBrowserRouter([
       { path: 'portfolio', element: page(() => import('./features/portfolio/PortfolioPage')) },
       { path: 'import', element: page(() => import('./features/migrate/ImportPage')) },
       { path: 'teacher', element: page(() => import('./features/teacher/TeacherPage')) },
+      { path: 'admin/teachers', element: page(() => import('./features/admin/TeacherInvitesPage')) },
+      { path: 'boards', element: page(() => import('./features/boards/BoardsPage')) },
+      { path: 'practice/draw', element: page(() => import('./features/draw/DrawPage')) },
       { path: 'teacher/thread', element: page(() => import('./features/teacher/LessonThreadPage')) },
       { path: 'teacher/student/:id', element: page(() => import('./features/teacher/StudentPage')) },
       { path: 'tasks', element: page(() => import('./features/tasks/TasksPage')) },
@@ -67,5 +70,7 @@ export const router = createBrowserRouter([
     ] as const
   ).map(([from, to]) => ({ path: `play/${from}`, element: <Navigate to={`/learn/grammar/${to}`} replace /> })),
   // Full-screen players (no chrome)
+  { path: 'board/:id', element: page(() => import('./features/boards/BoardPage')), errorElement: <RouteError /> },
+  { path: 'teacher/screen', element: page(() => import('./features/screen/ClassroomScreenPage')), errorElement: <RouteError /> },
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);
