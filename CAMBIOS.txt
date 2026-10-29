@@ -217,6 +217,16 @@ Z2. PIZARRA (Práctica › Pizarra; también dentro del Muro y la Pantalla)
   estilo Gartic Phone: espejo ↔, ↕ o en 4, con guías en el lienzo.
 - Reto «¿Qué dibujo?»: palabra al azar por nivel A1–C2, con 60 segundos.
 
+Z3. BOTONES PARA VOLVER
+- Todas las páginas internas tienen arriba un botón «‹ Práctica», «‹ A1»,
+  «‹ Gramática»… que lleva a la pantalla de la que dependen (unidad →
+  nivel → Aprender; Listening → Práctica; examen → su nivel; muro → Inicio;
+  panel de administración → Perfil). Las pantallas principales no lo
+  necesitan.
+- En el celular, la barra superior tiene además una flecha ‹ junto al logo:
+  regresa a la pantalla anterior conservando dónde ibas (pestaña y scroll);
+  si entraste directo por un enlace, va a la pantalla de la que depende.
+
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)
 - Se abre en una ventana desde cualquier página:
   · Conjugación: busca un verbo en inglés o español, incluso con
