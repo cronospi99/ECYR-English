@@ -72,9 +72,10 @@ function Challenge() {
   const timeUp = left === 0;
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden lg:flex lg:items-center">
+      <div className="lg:w-[330px] lg:shrink-0 lg:py-3">
       <div
-        className="flex items-center gap-2.5 px-4 pt-4"
+        className="flex items-center gap-2.5 px-4 pt-4 lg:pt-0"
         style={{ color: ink(color) }}
       >
         <span className="grid h-8 w-8 place-items-center rounded-[10px]" style={{ background: tint(color, 18) }}>
@@ -109,10 +110,11 @@ function Challenge() {
           );
         })}
       </div>
+      </div>
 
-      <div className="flex gap-2 px-4 pt-3 pb-4 lg:flex-col lg:gap-3 lg:pt-4">
+      <div className="flex min-w-0 gap-2 px-4 pt-3 pb-4 lg:flex-1 lg:items-center lg:gap-3 lg:py-3 lg:pl-0">
         <div
-          className="relative grid min-h-[96px] min-w-0 flex-1 place-items-center rounded-[16px] px-3 py-3 text-center lg:min-h-[112px]"
+          className="relative grid min-h-[96px] min-w-0 flex-1 place-items-center rounded-[16px] px-3 py-3 text-center lg:min-h-[84px] lg:py-2"
           style={{ background: tint(color, 12) }}
         >
           <div>
@@ -139,7 +141,7 @@ function Challenge() {
           )}
         </div>
 
-        <div className="flex w-[104px] shrink-0 flex-col gap-2 lg:grid lg:w-auto lg:grid-cols-2">
+        <div className="flex w-[104px] shrink-0 flex-col gap-2 lg:w-[120px]">
           <button
             type="button"
             onClick={() => shuffle()}
@@ -166,13 +168,13 @@ function Challenge() {
 }
 
 export default function DrawPage() {
+  const [aspect] = useState(() => (window.innerWidth >= 1024 ? 16 / 9 : window.innerWidth >= 640 ? 4 / 3 : 3 / 4));
   return (
     <Page title="Pizarra" subtitle="Dibuja, escribe y descarga tu obra." wide>
-      <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-        <DrawingBoard className="min-w-0" maxHeight="max(380px, calc(100dvh - 290px))" />
-        <div className="order-first lg:sticky lg:top-4 lg:order-none">
-          <Challenge />
-        </div>
+      <div className="flex min-w-0 flex-col gap-4">
+        <Challenge />
+        {/* Full width on every screen: wide sheet on computers, taller one on phones. */}
+        <DrawingBoard className="min-w-0" aspect={aspect} maxHeight="9999px" />
       </div>
     </Page>
   );

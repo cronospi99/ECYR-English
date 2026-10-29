@@ -21,6 +21,7 @@ import {
   type BoardSummary,
   type CardColor,
 } from '@/lib/boards';
+import { AccessPicker, PrivateBadge } from './AccessPicker';
 
 const COLUMN_PRESETS: string[][] = [
   ['Ideas', 'Preguntas', 'Vocabulario'],
@@ -197,6 +198,7 @@ function BoardTile({ b, teacher, onClose, onReopen, onDelete }: { b: BoardSummar
             <div className="text-label-2 mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[13px] font-medium">
               <span>{L.label}</span>
               <span className="tabular-nums">🗒 {b.cards}</span>
+              <PrivateBadge count={b.member_count} />
               {!b.show_names && (
                 <span className="inline-flex items-center gap-1">
                   <EyeOff size={13} /> Anónimo
@@ -253,18 +255,19 @@ function CreateBoard({ onCancel }: { onCancel: () => void }) {
   const [prompt, setPrompt] = useState('');
   const [columns, setColumns] = useState<string[]>(COLUMN_PRESETS[0]!);
   const [showNames, setShowNames] = useState(true);
+  const [members, setMembers] = useState<string[] | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
   const cols = columns.map((c) => c.trim()).filter(Boolean);
-  const can = title.trim().length > 0 && (layout !== 'columns' || cols.length > 0) && !busy;
+  const can = title.trim().length > 0 && (layout !== 'columns' || cols.length > 0) && (members === null || members.length > 0) && !busy;
 
   const submit = async () => {
     if (!can) return;
     setBusy(true);
     setErr(null);
     try {
-      const id = await createBoard({ title, layout, prompt, columns: cols, showNames });
+      const id = await createBoard({ title, layout, prompt, columns: cols, showNames, members });
       navigate(`/board/${id}`);
     } catch (e) {
       setErr(e instanceof Error ? e.message : 'No se pudo crear.');
@@ -350,6 +353,11 @@ function CreateBoard({ onCancel }: { onCancel: () => void }) {
               <div className="text-label-2 text-[13px]">Puedes cambiarlo en vivo 👁</div>
             </div>
             <Toggle checked={showNames} onChange={setShowNames} label="Mostrar nombres" />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <span className="text-label-2 px-1 text-[13px] font-semibold">¿Quién puede entrar?</span>
+            <AccessPicker value={members} onChange={setMembers} />
           </div>
 
           {err && <p className="text-ink-red text-[14px]">{err}</p>}
@@ -457,6 +465,9 @@ function JoinCard({ b, i }: { b: BoardSummary; i: number }) {
         <div className="flex items-center gap-2 text-[13px] font-bold text-black/55">
           <span className="text-[20px]">{L.emoji}</span> {L.label}
           {b.locked && <Lock size={14} />}
+          {b.member_count !== null && b.member_count !== undefined && (
+            <span className="rounded-full bg-black/[0.08] px-2 py-0.5 text-[12px] whitespace-nowrap">{b.member_count === 1 ? '👤 Solo para ti' : '🔒 Privado'}</span>
+          )}
           <span className="flex-1" />
           <span className="tabular-nums">🗒 {b.cards}</span>
         </div>

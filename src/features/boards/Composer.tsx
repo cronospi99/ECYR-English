@@ -7,8 +7,9 @@ import { Sheet, SheetAction } from '@/features/portfolio/Sheet';
 import { Button } from '@/components/ui/Button';
 import { Spinner } from '@/components/ui/Misc';
 import { cn } from '@/lib/cn';
-import { CARD_COLORS, COLOR_STYLE, MAX_IMAGE, MAX_TEXT, type BoardLayout, type CardColor, type CardDraft } from '@/lib/boards';
+import { CARD_COLORS, CARD_SHAPES, CENTRAL, COLOR_STYLE, MAX_IMAGE, MAX_TEXT, SHAPES, type BoardLayout, type CardColor, type CardDraft, type CardShape } from '@/lib/boards';
 import { PAPER_INK } from './StickyCard';
+import { ShapeIcon } from './shapes';
 
 /** Re-encodes a drawing smaller when it is over the server's limit. */
 async function fitImage(url: string): Promise<string | null> {
@@ -56,6 +57,61 @@ export function ColorSwatches({ value, onChange }: { value: CardColor; onChange:
           {value === c && <Check size={18} strokeWidth={3} color={PAPER_INK} />}
         </button>
       ))}
+    </div>
+  );
+}
+
+/** Card shapes (+ the big "central" circle of a mind map on the Jam). */
+export function ShapePicker({
+  value,
+  central,
+  color,
+  onChange,
+  showCentral,
+}: {
+  value: CardShape;
+  central: boolean;
+  color: CardColor;
+  onChange: (shape: CardShape, central: boolean) => void;
+  showCentral: boolean;
+}) {
+  const paper = COLOR_STYLE[color];
+  return (
+    <div role="radiogroup" aria-label="Forma" className="flex flex-wrap gap-1.5">
+      {CARD_SHAPES.map((k) => {
+        const on = value === k && !central;
+        return (
+          <button
+            key={k}
+            type="button"
+            role="radio"
+            aria-checked={on}
+            aria-label={SHAPES[k].label}
+            title={SHAPES[k].label}
+            onClick={() => onChange(k, false)}
+            className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-[13px] transition-all duration-200 active:scale-90', on ? 'bg-card scale-105 shadow-[0_0_0_2.5px_var(--label)]' : 'bg-fill-2 hover:bg-fill')}
+          >
+            <ShapeIcon shape={k} fill={paper.paper} stroke={paper.edge} size={k === 'note' ? 24 : 28} />
+          </button>
+        );
+      })}
+      {showCentral && (
+        <button
+          type="button"
+          role="radio"
+          aria-checked={central}
+          onClick={() => onChange(CENTRAL.shape, true)}
+          className={cn(
+            'flex h-11 shrink-0 items-center gap-1.5 rounded-[13px] pr-3 pl-2 text-[14px] font-bold transition-all duration-200 active:scale-95',
+            central ? 'bg-card scale-105 shadow-[0_0_0_2.5px_var(--label)]' : 'bg-fill-2 hover:bg-fill',
+          )}
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-full text-[14px]" style={{ background: paper.paper, boxShadow: `inset 0 0 0 2px ${paper.edge}` }}>
+            ⭐
+          </span>
+          Central
+        </button>
+      )}
     </div>
   );
 }
@@ -123,6 +179,7 @@ export function Composer({
   columns,
   storyBefore,
   onSubmit,
+  shapes = false,
 }: {
   open: boolean;
   onClose: () => void;
@@ -132,12 +189,16 @@ export function Composer({
   columns: string[];
   /** Story: the last part, shown above so the writer continues it. */
   storyBefore?: string | null;
-  onSubmit: (d: CardDraft) => Promise<boolean>;
+  onSubmit: (d: CardDraft & { central?: boolean }) => Promise<boolean>;
+  /** Shapes are available (migration 18 ran). */
+  shapes?: boolean;
 }) {
   const [text, setText] = useState('');
   const [color, setColor] = useState<CardColor>('yellow');
   const [image, setImage] = useState<string | null>(null);
   const [col, setCol] = useState(0);
+  const [shape, setShape] = useState<CardShape>('note');
+  const [central, setCentral] = useState(false);
   const [drawing, setDrawing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -149,6 +210,8 @@ export function Composer({
     setColor(initial?.color ?? (CARD_COLORS[Math.floor(Math.random() * 6)] as CardColor));
     setImage(initial?.image ?? null);
     setCol(initial?.col ?? 0);
+    setShape(initial?.shape ?? 'note');
+    setCentral(false);
     setErr(null);
     setBusy(false);
     const t = window.setTimeout(() => area.current?.focus(), 350);
@@ -160,7 +223,7 @@ export function Composer({
   const submit = async () => {
     if (!can) return;
     setBusy(true);
-    const ok = await onSubmit({ text: text.trim(), color, image, col });
+    const ok = await onSubmit({ text: text.trim(), color, image, col, shape, central });
     setBusy(false);
     if (ok) onClose();
   };
@@ -192,7 +255,7 @@ export function Composer({
           <motion.div
             layout
             className="relative mx-auto w-full max-w-[440px] rounded-[8px] p-4 shadow-[0_2px_2px_rgb(0_0_0/0.06),0_18px_36px_-18px_rgb(0_0_0/0.45)] transition-colors duration-300 dark:brightness-[0.93]"
-            style={{ background: paper.paper, color: PAPER_INK, rotate: -1 }}
+            style={{ background: paper.paper, color: PAPER_INK, rotate: shape === 'note' ? -1 : 0, borderRadius: shape === 'round' || shape === 'circle' || central ? 28 : shape === 'note' ? 8 : 18 }}
           >
             <span aria-hidden className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 rotate-[-2deg] rounded-[2px] bg-white/60 shadow-[0_1px_2px_rgb(0_0_0/0.1)]" />
             {image && (
@@ -225,6 +288,19 @@ export function Composer({
           </motion.div>
 
           <ColorSwatches value={color} onChange={setColor} />
+
+          {shapes && (
+            <ShapePicker
+              value={shape}
+              central={central}
+              color={color}
+              showCentral={layout === 'jam'}
+              onChange={(k, c) => {
+                setShape(k);
+                setCentral(c);
+              }}
+            />
+          )}
 
           {layout === 'columns' && columns.length > 1 && (
             <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Columna">

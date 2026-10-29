@@ -4,6 +4,9 @@ import { useAuth } from '@/store/auth';
 import {
   BoardError,
   addCard,
+  addLink,
+  deleteLink,
+  updateLink,
   closeBoard,
   deleteCard,
   getBoard,
@@ -17,7 +20,10 @@ import {
   type BoardPatch,
   type CardDraft,
   type CardPatch,
+  type LinkDraft,
+  type LinkPatch,
   type LiveCard,
+  type LiveLink,
 } from '@/lib/boards';
 
 const POLL_MS = 4000;
@@ -75,8 +81,9 @@ export function useLiveBoard(id: string) {
       setBundle((prev) => {
         const drag = dragging.current;
         if (!drag || !prev) return data;
+        // Keep the card being dragged / resized where the finger is.
         const local = prev.cards.find((c) => c.id === drag);
-        return local ? { ...data, cards: data.cards.map((c) => (c.id === drag ? { ...c, x: local.x, y: local.y } : c)) } : data;
+        return local ? { ...data, cards: data.cards.map((c) => (c.id === drag ? { ...c, x: local.x, y: local.y, w: local.w, h: local.h } : c)) } : data;
       });
     } catch (e) {
       const err = e instanceof BoardError ? e : new BoardError('other', String(e));
@@ -190,6 +197,9 @@ export function useLiveBoard(id: string) {
               id: temp,
               text: d.text.trim(),
               color: d.color,
+              shape: d.shape ?? 'note',
+              w: d.w ?? null,
+              h: d.h ?? null,
               has_image: !!d.image,
               col: d.col ?? 0,
               x: d.x ?? 0,
@@ -238,10 +248,19 @@ export function useLiveBoard(id: string) {
     setBundle((b) => (b ? mapCard(cardId, (c) => ({ ...c, x, y }))(b) : b));
   }, []);
 
+  /** Resizes a card locally only (while dragging the corner). */
+  const resizeLocal = useCallback((cardId: string, w: number, h: number) => {
+    setBundle((b) => (b ? mapCard(cardId, (c) => ({ ...c, w, h }))(b) : b));
+  }, []);
+
   const remove = useCallback(
     (cardId: string) =>
       write(
-        (b) => ({ ...b, cards: b.cards.filter((c) => c.id !== cardId), board: b.board.spotlight === cardId ? { ...b.board, spotlight: null } : b.board }),
+        (b) => ({
+          ...b,
+          cards: b.cards.filter((c) => c.id !== cardId),
+          links: b.links.filter((l) => l.from !== cardId && l.to !== cardId),
+          board: b.board.spotlight === cardId ? { ...b.board, spotlight: null } : b.board }),
         () => deleteCard(cardId),
       ),
     [write],
@@ -256,8 +275,48 @@ export function useLiveBoard(id: string) {
     [write],
   );
 
+  // Arrows ------------------------------------------------------------------
+  const link = useCallback(
+    async (d: LinkDraft) => {
+      const temp = `tmp-${Math.random().toString(36).slice(2)}`;
+      const realId = await write(
+        (b) => ({ ...b, links: [...b.links, { id: temp, from: d.from, to: d.to, kind: d.kind, color: d.color, label: d.label ?? null, mine: true, pending: true }] }),
+        () => addLink(id, d),
+      );
+      if (!realId) setBundle((b) => (b ? { ...b, links: b.links.filter((l) => l.id !== temp) } : b));
+      return realId;
+    },
+    [id, write],
+  );
+
+  const patchLink = useCallback(
+    (linkId: string, p: LinkPatch) =>
+      write(
+        (b) => ({
+          ...b,
+          links: b.links.map((l): LiveLink => {
+            if (l.id !== linkId) return l;
+            const { flip, ...rest } = p;
+            const next = { ...l, ...rest };
+            return flip ? { ...next, from: l.to, to: l.from } : next;
+          }),
+        }),
+        () => updateLink(linkId, p),
+      ),
+    [write],
+  );
+
+  const unlink = useCallback(
+    (linkId: string) => write((b) => ({ ...b, links: b.links.filter((l) => l.id !== linkId) }), () => deleteLink(linkId)),
+    [write],
+  );
+
   const setBoard = useCallback(
-    (p: BoardPatch) => write((b) => ({ ...b, board: { ...b.board, ...p } }), () => updateBoard(id, p)),
+    (p: BoardPatch) =>
+      write(
+        (b) => ({ ...b, board: { ...b.board, ...p, ...('members' in p ? { member_count: p.members ? p.members.length : null } : {}) } }),
+        () => updateBoard(id, p),
+      ),
     [id, write],
   );
 
@@ -286,7 +345,11 @@ export function useLiveBoard(id: string) {
     add,
     patch,
     moveLocal,
+    resizeLocal,
     remove,
+    link,
+    patchLink,
+    unlink,
     like,
     setBoard,
     close,

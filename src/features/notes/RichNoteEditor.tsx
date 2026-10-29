@@ -1,20 +1,31 @@
 import { useCallback, useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { cn } from '@/lib/cn';
 import {
+  ALIGNS,
+  CHECK_OFF,
+  CHECK_ON,
+  CLEAR,
   fmtAt,
+  fmtOf,
   formatRange,
   isHighlightColor,
+  listInfo,
+  listMarker,
   PLAIN,
   rangeAll,
   rangeValue,
+  renumberEdits,
   replaceRange,
   segments,
   segStyle,
   serialize,
+  SIZES,
   sliceMarked,
   stripMarks,
+  TEXT_COLORS,
   type Fmt,
   type HighlightColor,
+  type ListKind,
   type Segment,
 } from '@/lib/highlights';
 
@@ -33,11 +44,31 @@ import {
  *   text model, so no browser-made markup gets in and undo is ours (a stack
  *   of {text, selection} snapshots; typing bursts are coalesced).
  * - All offsets are plain-text offsets (the DOM never contains marks).
+ * - Each line is a <div data-line> (so lines can be aligned and list items
+ *   get a hanging indent); the div carries the formatting of the line break
+ *   that starts it, so text typed into an empty line keeps that formatting.
+ * - Lists are plain-text markers ("• ", "1. ", "☐ ") handled on the text
+ *   model: Enter continues a list, Enter on an empty item ends it, Backspace
+ *   right after a marker removes it, Tab / Shift+Tab indent, a click on ☐
+ *   ticks it.
  */
 
+export type ToggleKey = 'bold' | 'italic' | 'underline' | 'strike';
+export type BlockStyle = 'normal' | 'title' | 'subtitle';
+/** Paragraph styles: a heading is a whole line in bold at a size (index in SIZES). */
+const BLOCK_SIZE: Record<Exclude<BlockStyle, 'normal'>, number> = { title: 3, subtitle: 2 };
+
 export interface RichEditorHandle {
-  /** Bold / italic on the selection; with a bare caret, for the next characters typed. */
-  toggle: (key: 'bold' | 'italic') => void;
+  /** Bold / italic / underline / strikethrough on the selection; with a bare caret, for the next characters typed. */
+  toggle: (key: ToggleKey) => void;
+  /** Text colour (index in TEXT_COLORS) of the selection; with a bare caret, for the next characters typed. */
+  setColor: (i: number) => void;
+  /** Alignment (index in ALIGNS) of the lines touched by the selection. */
+  setAlign: (i: number) => void;
+  /** Normal text / Título / Subtítulo for the lines touched by the selection. */
+  setBlock: (b: BlockStyle) => void;
+  /** Turns the lines touched by the selection into (or, when they all are, out of) a list. */
+  toggleList: (kind: ListKind) => void;
   /** Highlights (or with null, un-highlights) the selection. False when nothing is selected. */
   highlight: (color: HighlightColor | null) => boolean;
   /** Removes all formatting from the selection. False when nothing is selected. */
@@ -51,12 +82,23 @@ export interface RichEditorHandle {
 export interface FormatState {
   bold: boolean;
   italic: boolean;
-  /** Index in SIZES / FONTS of the selection (or caret); null when the selection mixes several. */
+  underline: boolean;
+  strike: boolean;
+  /** Index in SIZES / FONTS / TEXT_COLORS of the selection (or caret); null when the selection mixes several. */
   size: number | null;
   font: number | null;
+  fg: number | null;
+  /** Alignment of the (first) line. */
+  align: number;
+  /** The kind of list every touched line is in, if any. */
+  list: ListKind | null;
+  /** Paragraph style of the (first) line. */
+  block: BlockStyle;
   /** Some text is selected (not just a caret). */
   range: boolean;
 }
+
+export const EMPTY_FORMAT: FormatState = { bold: false, italic: false, underline: false, strike: false, size: 0, font: 0, fg: 0, align: 0, list: null, block: 'normal', range: false };
 
 /** Clipboard type carrying the marked text, so copy → paste between notes keeps the formatting. */
 const NOTE_MIME = 'application/x-ecyr-note';
@@ -83,37 +125,140 @@ function rawOffset(raw: string, pos: number) {
 
 // ------------------------------------------------------------ DOM render --
 
+interface Line {
+  /** Plain offset of the line's first character. */
+  start: number;
+  text: string;
+  segs: Segment[];
+  /** Formatting of the line break that starts the line (the first character for the first line). */
+  fmt: Fmt;
+}
+
+function splitLines(text: string): Line[] {
+  const segs = segments(text);
+  const lines: Line[] = [{ start: 0, text: '', segs: [], fmt: segs[0] ? fmtOf(segs[0]) : { ...PLAIN } }];
+  let pos = 0;
+  for (const g of segs) {
+    g.text.split('\n').forEach((part, i) => {
+      if (i > 0) {
+        pos += 1;
+        lines.push({ start: pos, text: '', segs: [], fmt: fmtOf(g) });
+      }
+      if (part) {
+        const L = lines[lines.length - 1]!;
+        L.segs.push({ ...g, text: part });
+        L.text += part;
+        pos += part.length;
+      }
+    });
+  }
+  return lines;
+}
+
+function setFmtAttrs(el: HTMLElement, g: Fmt) {
+  if (g.color) el.setAttribute('data-c', g.color);
+  if (g.bold) el.setAttribute('data-b', '1');
+  if (g.italic) el.setAttribute('data-i', '1');
+  if (g.underline) el.setAttribute('data-u', '1');
+  if (g.strike) el.setAttribute('data-x', '1');
+  if (g.size) el.setAttribute('data-s', String(g.size));
+  if (g.font) el.setAttribute('data-f', String(g.font));
+  if (g.fg) el.setAttribute('data-fg', String(g.fg));
+  if (g.align) el.setAttribute('data-a', String(g.align));
+}
+
+function attrFmt(el: HTMLElement): Fmt {
+  const c = el.getAttribute('data-c');
+  return {
+    color: isHighlightColor(c) ? c : null,
+    bold: el.getAttribute('data-b') === '1',
+    italic: el.getAttribute('data-i') === '1',
+    underline: el.getAttribute('data-u') === '1',
+    strike: el.getAttribute('data-x') === '1',
+    size: Number(el.getAttribute('data-s')) || 0,
+    font: Number(el.getAttribute('data-f')) || 0,
+    fg: Number(el.getAttribute('data-fg')) || 0,
+    align: Number(el.getAttribute('data-a')) || 0,
+  };
+}
+
+/** Extra width (em) of each indenting space before a list item, so levels read clearly. */
+const INDENT_SPACING = 0.55;
+
+/** Hanging indent (em) of a list item, so wrapped lines line up with the item's text. */
+function hangEm(line: string) {
+  const li = listInfo(line);
+  if (!li) return 0;
+  const mark = li.kind === 'bullet' ? 0.95 : li.kind === 'check' ? 1.6 : 0.62 * String(li.num).length + 0.62;
+  return Math.round((li.indent * (0.28 + INDENT_SPACING) + mark) * 100) / 100;
+}
+
 function buildInto(target: HTMLElement, text: string) {
   const doc = target.ownerDocument;
-  const segs = segments(text);
-  const nodes: Node[] = [];
-  for (const g of segs) {
-    const span = doc.createElement('span');
-    span.setAttribute('data-seg', '');
-    if (g.color) span.setAttribute('data-c', g.color);
-    if (g.bold) span.setAttribute('data-b', '1');
-    if (g.italic) span.setAttribute('data-i', '1');
-    if (g.size) span.setAttribute('data-s', String(g.size));
-    if (g.font) span.setAttribute('data-f', String(g.font));
-    const st = segStyle(g);
-    if (st.background) {
-      span.style.background = String(st.background);
-      span.style.borderRadius = '3px';
-      span.style.setProperty('-webkit-box-decoration-break', 'clone');
-      span.style.setProperty('box-decoration-break', 'clone');
-    }
-    if (g.bold) span.style.fontWeight = '700';
-    if (g.italic) span.style.fontStyle = 'italic';
-    if (st.fontSize) span.style.fontSize = String(st.fontSize);
-    if (st.fontFamily) span.style.fontFamily = String(st.fontFamily);
-    span.textContent = g.text;
-    nodes.push(span);
+  if (!stripMarks(text)) {
+    target.replaceChildren();
+    return;
   }
-  // A trailing line break needs something after it to show the empty last line.
-  if (segs.length && segs[segs.length - 1]!.text.endsWith('\n')) {
-    const br = doc.createElement('br');
-    br.setAttribute('data-end', '');
-    nodes.push(br);
+  const nodes: Node[] = [];
+  for (const line of splitLines(text)) {
+    const div = doc.createElement('div');
+    div.setAttribute('data-line', '');
+    setFmtAttrs(div, line.fmt);
+    if (line.fmt.align) div.style.textAlign = ALIGNS[line.fmt.align] ?? 'left';
+    const li = listInfo(line.text);
+    const done = !!li && li.kind === 'check' && li.done;
+    if (li) {
+      const em = hangEm(line.text);
+      div.style.paddingLeft = `${em}em`;
+      div.style.textIndent = `-${em}em`;
+      if (done) div.setAttribute('data-done', '');
+    }
+    // Pieces of the line, split where the list marker starts and ends.
+    let pos = 0;
+    for (const g of line.segs) {
+      const cuts = [0, g.text.length];
+      if (li) for (const c of [li.markStart, li.len]) if (c > pos && c < pos + g.text.length) cuts.push(c - pos);
+      cuts.sort((x, y) => x - y);
+      for (let k = 0; k < cuts.length - 1; k++) {
+        const a = cuts[k]!;
+        const b = cuts[k + 1]!;
+        if (b <= a) continue;
+        const piece = g.text.slice(a, b);
+        const at = pos + a;
+        const isMark = !!li && at >= li.markStart && at < li.len;
+        const isIndent = !!li && at < li.markStart;
+        const span = doc.createElement('span');
+        span.setAttribute('data-seg', '');
+        setFmtAttrs(span, g);
+        if (isMark) span.setAttribute('data-mk', li!.kind);
+        const st = segStyle(g);
+        if (st.background) {
+          span.style.background = String(st.background);
+          span.style.borderRadius = '3px';
+          span.style.setProperty('-webkit-box-decoration-break', 'clone');
+          span.style.setProperty('box-decoration-break', 'clone');
+        }
+        if (g.bold) span.style.fontWeight = '700';
+        if (g.italic) span.style.fontStyle = 'italic';
+        const deco = [st.textDecorationLine, done && !isMark && 'line-through'].filter(Boolean).join(' ');
+        if (deco) span.style.textDecorationLine = [...new Set(deco.split(' '))].join(' ');
+        if (st.color) span.style.color = String(st.color);
+        if (st.fontSize) span.style.fontSize = String(st.fontSize);
+        if (st.fontFamily) span.style.fontFamily = String(st.fontFamily);
+        if (isMark && li!.kind === 'check') {
+          span.style.color = 'var(--blue)';
+          span.style.cursor = 'pointer';
+          span.style.fontSize = `${Math.round((SIZES[g.size]?.em ?? 1) * 112) / 100}em`;
+        }
+        if (isIndent) span.style.letterSpacing = `${INDENT_SPACING}em`;
+        if (done && !isMark) span.style.opacity = '0.55';
+        span.textContent = piece;
+        div.appendChild(span);
+      }
+      pos += g.text.length;
+    }
+    if (!line.text) div.appendChild(doc.createElement('br'));
+    nodes.push(div);
   }
   target.replaceChildren(...nodes);
 }
@@ -126,6 +271,9 @@ function clipboardHtml(text: string) {
       let h = esc(g.text);
       if (g.italic) h = `<i>${h}</i>`;
       if (g.bold) h = `<b>${h}</b>`;
+      if (g.underline) h = `<u>${h}</u>`;
+      if (g.strike) h = `<s>${h}</s>`;
+      if (g.fg && TEXT_COLORS[g.fg]?.hex) h = `<span style="color:${TEXT_COLORS[g.fg]!.hex}">${h}</span>`;
       const st = segStyle(g);
       if (st.fontSize || st.fontFamily) h = `<span style="${st.fontSize ? `font-size:${String(st.fontSize)};` : ''}${st.fontFamily ? `font-family:${String(st.fontFamily).replace(/"/g, "'")}` : ''}">${h}</span>`;
       if (g.color) h = `<mark style="background:${String(segStyle(g).background)}">${h}</mark>`;
@@ -142,20 +290,18 @@ type Tok =
   | { kind: 'block'; node: HTMLElement; fmt: Fmt };
 
 function elFmt(el: HTMLElement, f: Fmt): Fmt {
-  if (el.hasAttribute('data-seg')) {
-    const c = el.getAttribute('data-c');
-    return {
-      color: isHighlightColor(c) ? c : null,
-      bold: el.getAttribute('data-b') === '1',
-      italic: el.getAttribute('data-i') === '1',
-      size: Number(el.getAttribute('data-s')) || 0,
-      font: Number(el.getAttribute('data-f')) || 0,
-    };
-  }
+  if (el.hasAttribute('data-seg') || el.hasAttribute('data-line')) return attrFmt(el);
   const out = { ...f };
   const tag = el.tagName;
   if (tag === 'B' || tag === 'STRONG') out.bold = true;
   if (tag === 'I' || tag === 'EM') out.italic = true;
+  if (tag === 'U') out.underline = true;
+  if (tag === 'S' || tag === 'STRIKE' || tag === 'DEL') out.strike = true;
+  const d = el.style?.textDecorationLine || el.style?.textDecoration;
+  if (d) {
+    out.underline = d.includes('underline');
+    out.strike = d.includes('line-through');
+  }
   const w = el.style?.fontWeight;
   if (w) out.bold = w === 'bold' || w === 'bolder' || Number(w) >= 600;
   const st = el.style?.fontStyle;
@@ -212,9 +358,14 @@ function layout(root: HTMLElement): Layout {
       const next = toks[i + 1];
       if (next && next.kind !== 'block') s = '\n';
       f = last;
-    } else if (pos > 0) {
-      s = '\n';
-      f = last;
+    } else {
+      // A block starts a new line, unless it is the first thing or opens right inside the previous block.
+      const prev = toks[i - 1];
+      if (prev && !(prev.kind === 'block' && prev.node.contains(t.node))) {
+        s = '\n';
+        if (t.node.hasAttribute('data-line')) last = t.fmt;
+        f = last;
+      }
     }
     if (s) segs.push({ text: s, ...f });
     len.push(s.length);
@@ -271,6 +422,7 @@ function plainToDom(root: HTMLElement, L: Layout, pos: number): [Node, number] {
       if (t.kind === 'block') return [t.node, 0];
     }
   }
+  for (let i = 0; i < L.toks.length; i++) if (L.toks[i]!.kind === 'block' && L.start[i] === pos) return [L.toks[i]!.node, 0];
   return [root, pos === 0 ? 0 : root.childNodes.length];
 }
 
@@ -299,6 +451,82 @@ function supportsPlaintextOnly() {
   return plaintextOnly;
 }
 
+// ------------------------------------------------------------- lines / lists --
+
+/** Plain-text bounds [start, end) of the line holding offset `pos`. */
+function lineAt(plain: string, pos: number): [number, number] {
+  const ls = pos > 0 ? plain.lastIndexOf('\n', pos - 1) + 1 : 0;
+  const nl = plain.indexOf('\n', pos);
+  return [ls, nl < 0 ? plain.length : nl];
+}
+
+/** Bounds of every line touched by [a, b]. */
+function linesIn(plain: string, a: number, b: number): [number, number][] {
+  const out: [number, number][] = [];
+  let [ls, le] = lineAt(plain, a);
+  for (;;) {
+    out.push([ls, le]);
+    if (le >= b || le >= plain.length) break;
+    ls = le + 1;
+    le = plain.indexOf('\n', ls);
+    if (le < 0) le = plain.length;
+  }
+  return out;
+}
+
+/** The range a line-level format (alignment, heading) covers: the line plus the break that starts it. */
+function lineFmtRange(plain: string, ls: number, le: number): [number, number] {
+  const start = ls > 0 ? ls - 1 : 0;
+  return [start, le > start ? le : Math.min(plain.length, start + 1)];
+}
+
+/** Formatting of the line starting at `ls` (that of the break before it, or of the first character). */
+const lineFmt = (t: string, ls: number) => (ls > 0 ? fmtAt(t, ls) : fmtAt(t, Math.min(1, stripMarks(t).length)));
+
+/** Formatting for text inserted at the start of the line [ls, le): that of its first character. */
+const headFmt = (t: string, ls: number, le: number) => fmtAt(t, le > ls ? ls + 1 : ls);
+
+type Edit = [start: number, end: number, insert: string, fmt?: Fmt];
+
+/** Applies plain-offset edits (sorted last first) to a marked text and maps a selection through them. */
+function applyEdits(t: string, edits: Edit[], sel: Sel): [string, Sel] {
+  let [a, b] = sel;
+  const map = (p: number, s: number, e: number, len: number) => (p >= e ? p + len - (e - s) : p > s ? s + Math.min(len, p - s) : p);
+  for (const [s, e, ins, f] of edits) {
+    t = replaceRange(t, s, e, ins, f ?? (e > s ? fmtAt(t, s + 1) : fmtAt(t, s)));
+    a = map(a, s, e, ins.length);
+    b = map(b, s, e, ins.length);
+  }
+  return [t, [a, b]];
+}
+
+/** Keeps numbered lists counting up after an edit. */
+function renumber(t: string, sel: Sel): [string, Sel] {
+  const edits = renumberEdits(stripMarks(t));
+  return edits.length ? applyEdits(t, edits, sel) : [t, sel];
+}
+
+/** Paragraph style of the line [ls, le) (or of `f` for an empty line). */
+function blockOf(t: string, ls: number, le: number, f: Fmt): BlockStyle {
+  let bold = f.bold;
+  let size: number | null = f.size;
+  if (le > ls) {
+    bold = rangeAll(t, ls, le, 'bold');
+    size = rangeValue(t, ls, le, 'size');
+  }
+  if (!bold) return 'normal';
+  return size === BLOCK_SIZE.title ? 'title' : size === BLOCK_SIZE.subtitle ? 'subtitle' : 'normal';
+}
+
+/** The nearest scrolling ancestor (null: the page itself). */
+function scrollParent(el: HTMLElement): HTMLElement | null {
+  for (let n = el.parentElement; n && n !== el.ownerDocument.body; n = n.parentElement) {
+    const oy = getComputedStyle(n).overflowY;
+    if ((oy === 'auto' || oy === 'scroll' || oy === 'overlay') && n.scrollHeight > n.clientHeight) return n;
+  }
+  return null;
+}
+
 // ------------------------------------------------------------ component --
 
 type Sel = [number, number];
@@ -316,6 +544,8 @@ export function RichNoteEditor({
   className,
   labelledBy,
   autoFocus = false,
+  topInset,
+  bottomInset,
   ref,
 }: {
   initial: string;
@@ -327,6 +557,9 @@ export function RichNoteEditor({
   className?: string;
   labelledBy?: string;
   autoFocus?: boolean;
+  /** What covers the top / bottom of the scroll area (a sticky toolbar, a tab bar): the caret is kept clear of it. Viewport px. */
+  topInset?: () => number;
+  bottomInset?: () => number;
   ref?: Ref<RichEditorHandle>;
 }) {
   const el = useRef<HTMLDivElement>(null);
@@ -346,8 +579,8 @@ export function RichNoteEditor({
   /** Bold / italic chosen with a bare caret, applied to what is typed next. */
   const pending = useRef<{ fmt: Fmt; base: string; at: number } | null>(null);
   const [empty, setEmpty] = useState(() => !stripMarks(initial));
-  const cb = useRef({ onChange, onFormat });
-  cb.current = { onChange, onFormat };
+  const cb = useRef({ onChange, onFormat, topInset, bottomInset });
+  cb.current = { onChange, onFormat, topInset, bottomInset };
 
   const getSel = useCallback((): Sel | null => {
     const root = el.current;
@@ -379,11 +612,64 @@ export function RichNoteEditor({
     if (!f) return;
     const [a, b] = lastSel.current;
     const t = model.current;
-    if (a !== b) f({ bold: rangeAll(t, a, b, 'bold'), italic: rangeAll(t, a, b, 'italic'), size: rangeValue(t, a, b, 'size'), font: rangeValue(t, a, b, 'font'), range: true });
-    else {
-      const p = pending.current?.fmt ?? fmtAt(t, a);
-      f({ bold: p.bold, italic: p.italic, size: p.size, font: p.font, range: false });
+    const plain = stripMarks(t);
+    const lines = linesIn(plain, a, b);
+    const [ls, le] = lines[0]!;
+    const kinds = lines.map(([s, e]) => listInfo(plain.slice(s, e))?.kind ?? null);
+    const list = kinds.every((k) => k && k === kinds[0]) ? kinds[0]! : null;
+    const p = pending.current?.fmt ?? fmtAt(t, a);
+    const align = (le === ls && pending.current ? pending.current.fmt : lineFmt(t, ls)).align;
+    const block = blockOf(t, ls, le, p);
+    if (a !== b)
+      f({
+        bold: rangeAll(t, a, b, 'bold'),
+        italic: rangeAll(t, a, b, 'italic'),
+        underline: rangeAll(t, a, b, 'underline'),
+        strike: rangeAll(t, a, b, 'strike'),
+        size: rangeValue(t, a, b, 'size'),
+        font: rangeValue(t, a, b, 'font'),
+        fg: rangeValue(t, a, b, 'fg'),
+        align,
+        list,
+        block,
+        range: true,
+      });
+    else f({ bold: p.bold, italic: p.italic, underline: p.underline, strike: p.strike, size: p.size, font: p.font, fg: p.fg, align, list, block, range: false });
+  }, []);
+
+  /** Scrolls the page / sheet so the caret is not under the sticky toolbar, a tab bar or the on-screen keyboard. */
+  const revealCaret = useCallback(() => {
+    const root = el.current;
+    const s = root?.ownerDocument.getSelection();
+    if (!root || !s?.rangeCount || !s.focusNode || !root.contains(s.focusNode)) return;
+    const doc = root.ownerDocument;
+    const win = doc.defaultView!;
+    const r = doc.createRange();
+    try {
+      r.setStart(s.focusNode, s.focusOffset);
+    } catch {
+      return;
     }
+    r.collapse(true);
+    let rect: DOMRect | undefined = r.getClientRects()[0];
+    if (!rect || (!rect.top && !rect.bottom)) {
+      const n = s.focusNode.nodeType === Node.ELEMENT_NODE ? (s.focusNode as Element) : s.focusNode.parentElement;
+      const child = n && s.focusNode.nodeType === Node.ELEMENT_NODE ? (n.childNodes[s.focusOffset] as Element | undefined) : undefined;
+      rect = (child?.getBoundingClientRect ? child : n)?.getBoundingClientRect();
+    }
+    if (!rect || (!rect.top && !rect.bottom)) return;
+    const sc = scrollParent(root);
+    const vv = win.visualViewport;
+    const port = sc ? sc.getBoundingClientRect() : { top: 0, bottom: win.innerHeight };
+    const top = Math.max(port.top, cb.current.topInset?.() ?? 0, vv ? vv.offsetTop : 0);
+    const bottom = Math.min(port.bottom, (vv ? vv.offsetTop + vv.height : win.innerHeight) - (cb.current.bottomInset?.() ?? 0));
+    const m = 12;
+    let d = 0;
+    if (rect.top < top + m) d = rect.top - top - m;
+    else if (rect.bottom > bottom - m) d = rect.bottom - bottom + m;
+    if (Math.abs(d) < 1) return;
+    if (sc) sc.scrollTop += d;
+    else win.scrollBy(0, d);
   }, []);
 
   const render = useCallback((text: string, sel: Sel | null) => {
@@ -395,7 +681,7 @@ export function RichNoteEditor({
 
   /** Sets a new model text (from a command, not from typing). */
   const commit = useCallback(
-    (next: string, sel: Sel, kind = 'other') => {
+    (next: string, sel: Sel | null, kind = 'other') => {
       const cur = model.current;
       if (next.length > maxLength) next = cur;
       const h = hist.current;
@@ -407,13 +693,16 @@ export function RichNoteEditor({
       h.kind = kind;
       h.at = Date.now();
       model.current = next;
-      el.current?.focus({ preventScroll: true });
+      // sel null: leave focus and the caret alone (e.g. ticking a checkbox while just reading).
+      if (sel) el.current?.focus({ preventScroll: true });
       render(next, sel);
+      if (!sel) lastSel.current = lastSel.current.map((p) => Math.min(p, stripMarks(next).length)) as Sel;
       setEmpty(!stripMarks(next));
       if (next !== cur) cb.current.onChange(next);
       emitFormat();
+      if (sel) requestAnimationFrame(revealCaret);
     },
-    [emitFormat, getSel, maxLength, render],
+    [emitFormat, getSel, maxLength, render, revealCaret],
   );
 
   const restore = useCallback(
@@ -502,7 +791,8 @@ export function RichNoteEditor({
     if (rerender) render(next, sel);
     else if (sel) lastSel.current = sel;
     emitFormat();
-  }, [emitFormat, maxLength, render]);
+    requestAnimationFrame(revealCaret);
+  }, [emitFormat, maxLength, render, revealCaret]);
 
   const insertText = useCallback(
     (insert: string | Segment[], kind = 'other') => {
@@ -522,9 +812,9 @@ export function RichNoteEditor({
     [commit, getSel, maxLength],
   );
 
-  /** Bold / italic on the selection; with a bare caret, for what is typed next. */
+  /** Bold / italic / underline / strikethrough on the selection; with a bare caret, for what is typed next. */
   const toggleKey = useCallback(
-    (key: 'bold' | 'italic') => {
+    (key: ToggleKey) => {
       const [a, b] = getSel() ?? lastSel.current;
       const t = model.current;
       if (a === b) {
@@ -540,9 +830,9 @@ export function RichNoteEditor({
     [commit, emitFormat, getSel, setSel],
   );
 
-  /** Size / font on the selection; with a bare caret, for what is typed next. */
+  /** Size / font / text colour on the selection; with a bare caret, for what is typed next. */
   const setKey = useCallback(
-    (key: 'size' | 'font', value: number) => {
+    (key: 'size' | 'font' | 'fg', value: number) => {
       const [a, b] = getSel() ?? lastSel.current;
       const t = model.current;
       if (a === b) {
@@ -558,12 +848,155 @@ export function RichNoteEditor({
     [commit, emitFormat, getSel, setSel],
   );
 
+  /** A line-level format (alignment, heading) on every line the selection touches. */
+  const setLines = useCallback(
+    (patch: Partial<Fmt>) => {
+      const [a, b] = getSel() ?? lastSel.current;
+      let t = model.current;
+      const plain = stripMarks(t);
+      const lines = linesIn(plain, a, b);
+      for (const [ls, le] of lines) {
+        const [s, e] = lineFmtRange(plain, ls, le);
+        if (e > s) t = formatRange(t, s, e, patch);
+      }
+      // An empty line: what is typed there next takes it too.
+      if (a === b && lines[0]![0] === lines[0]![1]) {
+        const base = pending.current?.fmt ?? fmtAt(t, a);
+        pending.current = { fmt: { ...base, ...patch }, base: stripMarks(t), at: a };
+      }
+      if (t === model.current) {
+        el.current?.focus({ preventScroll: true });
+        setSel([a, b]);
+        emitFormat();
+        return;
+      }
+      const keep = pending.current;
+      commit(t, [a, b], 'format');
+      pending.current = keep;
+      emitFormat();
+    },
+    [commit, emitFormat, getSel, setSel],
+  );
+
+  const setBlock = useCallback(
+    (bs: BlockStyle) => setLines(bs === 'normal' ? { bold: false, size: 0 } : { bold: true, size: BLOCK_SIZE[bs] }),
+    [setLines],
+  );
+
+  /** List on / off for the lines the selection touches. */
+  const toggleList = useCallback(
+    (kind: ListKind) => {
+      const sel = getSel() ?? lastSel.current;
+      const t0 = model.current;
+      const plain = stripMarks(t0);
+      let lines = linesIn(plain, sel[0], sel[1]);
+      // Several lines: blank ones stay blank.
+      if (lines.length > 1) lines = lines.filter(([s, e]) => plain.slice(s, e).trim());
+      if (!lines.length) return;
+      const infos = lines.map(([s, e]) => listInfo(plain.slice(s, e)));
+      const off = infos.every((li) => li?.kind === kind);
+      const edits: Edit[] = [];
+      lines.forEach(([ls, le], i) => {
+        const li = infos[i];
+        const mark = listMarker(kind, 1);
+        if (off) edits.push([ls + li!.markStart, ls + li!.len, '']);
+        else if (li) edits.push([ls + li.markStart, ls + li.len, mark, headFmt(t0, ls + li.markStart, le)]);
+        else {
+          const lead = plain.slice(ls, le).match(/^ */)![0].length;
+          edits.push([ls + lead, ls + lead, mark, headFmt(t0, ls + lead, le)]);
+        }
+      });
+      let [t, s2] = applyEdits(t0, edits.reverse(), sel);
+      [t, s2] = renumber(t, s2);
+      commit(t, s2, 'list');
+    },
+    [commit, getSel],
+  );
+
+  /** Enter: continues a list (or ends it on an empty item); after a heading, back to normal text. */
+  const newline = useCallback(() => {
+    let [a, b] = getSel() ?? lastSel.current;
+    let t = model.current;
+    if (a !== b) {
+      t = replaceRange(t, a, b, '');
+      b = a;
+    }
+    const plain = stripMarks(t);
+    const [ls, le] = lineAt(plain, a);
+    const line = plain.slice(ls, le);
+    const li = listInfo(line);
+    const f = pending.current?.fmt ?? fmtAt(t, a);
+    pending.current = null;
+    if (li && a >= ls + li.len) {
+      if (!line.slice(li.len).trim()) {
+        // Empty item: one level out, or out of the list.
+        const edit: Edit = li.indent ? [ls, ls + Math.min(2, li.indent), ''] : [ls, ls + li.len, ''];
+        let [t2, s2] = applyEdits(t, [edit], [a, a]);
+        [t2, s2] = renumber(t2, s2);
+        commit(t2, s2, 'list');
+        return;
+      }
+      const mark = ' '.repeat(li.indent) + listMarker(li.kind, li.num + 1);
+      let [t2, s2] = applyEdits(t, [[a, a, `\n${mark}`, f]], [a, a]);
+      s2 = [a + 1 + mark.length, a + 1 + mark.length];
+      [t2, s2] = renumber(t2, s2);
+      commit(t2, s2, 'newline');
+      return;
+    }
+    const nf = a === le && le > ls && blockOf(t, ls, le, f) !== 'normal' ? { ...f, bold: false, size: 0 } : f;
+    if (t.length + 1 > maxLength) return;
+    commit(replaceRange(t, a, a, '\n', nf), [a + 1, a + 1], 'newline');
+  }, [commit, getSel, maxLength]);
+
+  /** Tab / Shift+Tab on list lines: one level in / out. False when no list line is touched. */
+  const indent = useCallback(
+    (out: boolean) => {
+      const sel = getSel() ?? lastSel.current;
+      const t0 = model.current;
+      const plain = stripMarks(t0);
+      const lines = linesIn(plain, sel[0], sel[1]).filter(([s, e]) => listInfo(plain.slice(s, e)));
+      if (!lines.length) return false;
+      const edits: Edit[] = [];
+      for (const [ls, le] of lines) {
+        const li = listInfo(plain.slice(ls, le))!;
+        if (out) {
+          if (li.indent) edits.push([ls, ls + Math.min(2, li.indent), '']);
+        } else if (li.indent < 8) edits.push([ls, ls, '  ', headFmt(t0, ls, le)]);
+      }
+      let [t, s2] = applyEdits(t0, edits.reverse(), sel);
+      [t, s2] = renumber(t, s2);
+      commit(t, s2, 'list');
+      return true;
+    },
+    [commit, getSel],
+  );
+
+  /** ☐ ⇄ ☑ on the line starting at plain offset `ls`. */
+  const toggleCheck = useCallback(
+    (ls: number, focus: boolean) => {
+      const t = model.current;
+      const plain = stripMarks(t);
+      const [, le] = lineAt(plain, ls);
+      const li = listInfo(plain.slice(ls, le));
+      if (!li || li.kind !== 'check') return false;
+      const p = ls + li.markStart;
+      const next = replaceRange(t, p, p + 1, li.done ? CHECK_OFF : CHECK_ON, fmtAt(t, p + 1));
+      commit(next, focus ? (getSel() ?? lastSel.current) : null, 'check');
+      return true;
+    },
+    [commit, getSel],
+  );
+
   useImperativeHandle(
     ref,
     () => ({
       toggle: toggleKey,
       setSize: (i) => setKey('size', i),
       setFont: (i) => setKey('font', i),
+      setColor: (i) => setKey('fg', i),
+      setAlign: (i) => setLines({ align: i }),
+      setBlock,
+      toggleList,
       highlight: (color) => {
         const [a, b] = getSel() ?? lastSel.current;
         if (a === b) return false;
@@ -577,12 +1010,12 @@ export function RichNoteEditor({
           emitFormat();
           return false;
         }
-        commit(formatRange(model.current, a, b, PLAIN), [a, b], 'format');
+        commit(formatRange(model.current, a, b, CLEAR), [a, b], 'format');
         return true;
       },
       focus: () => el.current?.focus({ preventScroll: true }),
     }),
-    [commit, emitFormat, getSel, setKey, toggleKey],
+    [commit, emitFormat, getSel, setBlock, setKey, setLines, toggleKey, toggleList],
   );
 
   // First render, editable mode, focus.
@@ -613,14 +1046,30 @@ export function RichNoteEditor({
         return;
       }
       if (t === 'insertParagraph' || t === 'insertLineBreak') {
+        // (A hardware Enter is handled on keydown; this is the on-screen keyboard's.)
         e.preventDefault();
-        insertText('\n', 'newline');
+        newline();
         return;
       }
-      if (t === 'formatBold' || t === 'formatItalic') {
+      if (t === 'formatBold' || t === 'formatItalic' || t === 'formatUnderline' || t === 'formatStrikeThrough') {
         e.preventDefault();
-        toggleKey(t === 'formatBold' ? 'bold' : 'italic');
+        toggleKey(t === 'formatBold' ? 'bold' : t === 'formatItalic' ? 'italic' : t === 'formatUnderline' ? 'underline' : 'strike');
         return;
+      }
+      if (t === 'deleteContentBackward' && !composing.current) {
+        // Backspace right after a list marker removes the marker.
+        const sel = getSel();
+        if (sel && sel[0] === sel[1]) {
+          const plain = stripMarks(model.current);
+          const [ls, le] = lineAt(plain, sel[0]);
+          const li = listInfo(plain.slice(ls, le));
+          if (li && sel[0] === ls + li.len) {
+            e.preventDefault();
+            const [t2, s2] = renumber(...applyEdits(model.current, [[ls + li.markStart, ls + li.len, '']], sel));
+            commit(t2, s2, 'list');
+            return;
+          }
+        }
       }
       if (t.startsWith('format') || t === 'insertFromDrop' || t === 'deleteByDrag' || t === 'insertLink' || t === 'insertHorizontalRule' || t === 'insertOrderedList' || t === 'insertUnorderedList') {
         e.preventDefault();
@@ -685,15 +1134,67 @@ export function RichNoteEditor({
     const onDrop = (e: DragEvent) => e.preventDefault();
     const onKey = (e: KeyboardEvent) => {
       const mod = e.ctrlKey || e.metaKey;
+      if (e.key === 'Enter' && !mod && !e.altKey && !e.isComposing && e.keyCode !== 229) {
+        // Enter continues a list; Shift+Enter is a plain line break (contenteditable="plaintext-only" reports both as insertLineBreak).
+        e.preventDefault();
+        if (e.shiftKey) insertText('\n', 'newline');
+        else newline();
+        return;
+      }
+      if (e.key === 'Tab' && !mod && !e.altKey) {
+        // In a list: indent / outdent. Elsewhere Tab keeps moving the focus.
+        if (indent(e.shiftKey)) e.preventDefault();
+        return;
+      }
       if (!mod || e.altKey) return;
       const k = e.key.toLowerCase();
-      if (k === 'z' || (k === 'y' && !e.metaKey)) {
+      if (e.key === 'Enter') {
+        // Ctrl/⌘+Enter ticks the checklist item.
+        const s = getSel();
+        if (s) {
+          const [ls] = lineAt(stripMarks(model.current), s[0]);
+          if (toggleCheck(ls, true)) e.preventDefault();
+        }
+      } else if (k === 'z' || (k === 'y' && !e.metaKey)) {
         e.preventDefault();
         restore(k === 'y' || e.shiftKey ? 'future' : 'past');
-      } else if ((k === 'b' || k === 'i') && !e.shiftKey) {
+      } else if ((k === 'b' || k === 'i' || k === 'u') && !e.shiftKey) {
         e.preventDefault();
-        toggleKey(k === 'b' ? 'bold' : 'italic');
-      } else if (k === 'u') e.preventDefault();
+        toggleKey(k === 'b' ? 'bold' : k === 'i' ? 'italic' : 'underline');
+      } else if (e.shiftKey && (e.code === 'KeyX' || k === 'x')) {
+        e.preventDefault();
+        toggleKey('strike');
+      } else if (e.shiftKey && (e.code === 'Digit8' || e.code === 'Digit7' || e.code === 'Digit9')) {
+        e.preventDefault();
+        toggleList(e.code === 'Digit8' ? 'bullet' : e.code === 'Digit7' ? 'num' : 'check');
+      } else if (e.key === '\\' && !e.shiftKey) {
+        e.preventDefault();
+        const s = getSel() ?? lastSel.current;
+        if (s[0] !== s[1]) commit(formatRange(model.current, s[0], s[1], CLEAR), s, 'format');
+        else {
+          pending.current = null;
+          emitFormat();
+        }
+      }
+    };
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (/^(Arrow|Page|Home|End)/.test(e.key)) revealCaret();
+    };
+    // A click on ☐ / ☑ ticks it (without moving the caret there on a desktop).
+    const markOf = (e: Event) => (e.target as Element | null)?.closest?.('[data-mk="check"]') ?? null;
+    const onMouseDown = (e: MouseEvent) => {
+      if (markOf(e)) e.preventDefault();
+    };
+    const onClick = (e: MouseEvent) => {
+      const mk = markOf(e);
+      const line = mk?.closest('[data-line]');
+      if (!mk || !line || line.parentNode !== root) return;
+      e.preventDefault();
+      const idx = Array.prototype.indexOf.call(root.childNodes, line);
+      const plain = stripMarks(model.current);
+      let ls = 0;
+      for (let i = 0; i < idx; i++) ls = plain.indexOf('\n', ls) + 1;
+      toggleCheck(ls, root.ownerDocument.activeElement === root);
     };
     const onSelChange = () => {
       const s = getSel();
@@ -715,6 +1216,9 @@ export function RichNoteEditor({
     root.addEventListener('cut', onCutEv);
     root.addEventListener('drop', onDrop);
     root.addEventListener('keydown', onKey);
+    root.addEventListener('keyup', onKeyUp);
+    root.addEventListener('mousedown', onMouseDown);
+    root.addEventListener('click', onClick);
     doc.addEventListener('selectionchange', onSelChange);
     return () => {
       root.removeEventListener('beforeinput', onBeforeInput);
@@ -726,9 +1230,12 @@ export function RichNoteEditor({
       root.removeEventListener('cut', onCutEv);
       root.removeEventListener('drop', onDrop);
       root.removeEventListener('keydown', onKey);
+      root.removeEventListener('keyup', onKeyUp);
+      root.removeEventListener('mousedown', onMouseDown);
+      root.removeEventListener('click', onClick);
       doc.removeEventListener('selectionchange', onSelChange);
     };
-  }, [commit, emitFormat, getSel, insertText, reconcile, restore, toggleKey]);
+  }, [commit, emitFormat, getSel, indent, insertText, newline, reconcile, restore, revealCaret, toggleCheck, toggleKey, toggleList]);
 
   return (
     <div className="relative">

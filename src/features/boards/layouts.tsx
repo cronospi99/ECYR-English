@@ -1,8 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState, type MutableRefObject } from 'react';
+import { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowDown, ArrowUp, Minus, Plus, Scan } from 'lucide-react';
+import { ArrowDown, ArrowUp, Plus } from 'lucide-react';
 import { cn } from '@/lib/cn';
-import { CANVAS_H, CANVAS_W, CARD_W, COLOR_STYLE, between, ordered, tilt, type BoardBundle, type LiveCard } from '@/lib/boards';
+import { COLOR_STYLE, between, ordered, tilt, type BoardBundle, type LiveCard } from '@/lib/boards';
 import { StickyCard } from './StickyCard';
 
 export interface ViewProps {
@@ -34,168 +34,7 @@ function activate(fn: () => void) {
   };
 }
 
-// ==================================================================== JAM ====
-export function JamCanvas({
-  bundle,
-  images,
-  names,
-  canEdit,
-  onOpen,
-  onLike,
-  moveLocal,
-  commitMove,
-  dragging,
-  spotRef,
-  big,
-}: ViewProps & {
-  moveLocal: (id: string, x: number, y: number) => void;
-  commitMove: (id: string, x: number, y: number) => void;
-  dragging: MutableRefObject<string | null>;
-  /** Filled with a function that returns a free-ish spot in the visible area (for new cards). */
-  spotRef: MutableRefObject<(() => { x: number; y: number }) | null>;
-}) {
-  const scroller = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(1024);
-  const [zoom, setZoom] = useState(1);
-  const [top, setTop] = useState<string | null>(null);
-  const [dragId, setDragId] = useState<string | null>(null);
-  const st = useRef<{ id: string; px: number; py: number; x: number; y: number; moved: boolean; can: boolean } | null>(null);
-
-  useLayoutEffect(() => {
-    const el = scroller.current;
-    if (!el) return;
-    const ro = new ResizeObserver(() => setWidth(el.clientWidth));
-    ro.observe(el);
-    setWidth(el.clientWidth);
-    return () => ro.disconnect();
-  }, []);
-
-  const auto = width >= 900 ? Math.min(1, (width - 48) / CANVAS_W) : big ? 0.7 : 0.8;
-  const scale = Math.max(0.35, Math.min(1.6, auto * zoom));
-  const pad = width >= 900 ? 24 : 16;
-
-  spotRef.current = () => {
-    const el = scroller.current;
-    const cx = el ? (el.scrollLeft + el.clientWidth / 2 - pad) / scale : CANVAS_W / 2;
-    const cy = el ? (el.scrollTop + el.clientHeight / 2 - pad) / scale : CANVAS_H / 2;
-    const j = () => (Math.random() - 0.5) * 140;
-    return {
-      x: Math.round(Math.min(CANVAS_W - CARD_W, Math.max(0, cx - CARD_W / 2 + j()))),
-      y: Math.round(Math.min(CANVAS_H - 160, Math.max(0, cy - 80 + j()))),
-    };
-  };
-
-  const cards = ordered(bundle.cards);
-  const clampX = (x: number) => Math.round(Math.min(CANVAS_W - CARD_W, Math.max(0, x)));
-  const clampY = (y: number) => Math.round(Math.min(CANVAS_H - 80, Math.max(0, y)));
-
-  const onDown = (e: React.PointerEvent, c: LiveCard) => {
-    if (e.button !== 0) return;
-    const can = canEdit(c) && !c.pending;
-    st.current = { id: c.id, px: e.clientX, py: e.clientY, x: c.x, y: c.y, moved: false, can };
-    setTop(c.id);
-    if (can) (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-  };
-  const onMove = (e: React.PointerEvent) => {
-    const s = st.current;
-    if (!s || !s.can) return;
-    const dx = (e.clientX - s.px) / scale;
-    const dy = (e.clientY - s.py) / scale;
-    if (!s.moved && Math.hypot(dx, dy) * scale < 5) return;
-    if (!s.moved) {
-      s.moved = true;
-      dragging.current = s.id;
-      setDragId(s.id);
-    }
-    moveLocal(s.id, clampX(s.x + dx), clampY(s.y + dy));
-  };
-  const onUp = (e: React.PointerEvent, c: LiveCard) => {
-    const s = st.current;
-    st.current = null;
-    if (!s) return;
-    if (s.moved) {
-      const x = clampX(s.x + (e.clientX - s.px) / scale);
-      const y = clampY(s.y + (e.clientY - s.py) / scale);
-      dragging.current = null;
-      setDragId(null);
-      commitMove(c.id, x, y);
-    } else onOpen(c);
-  };
-  const onCancel = () => {
-    if (st.current?.moved) {
-      dragging.current = null;
-      setDragId(null);
-    }
-    st.current = null;
-  };
-
-  return (
-    <div className="relative h-full">
-      <div ref={scroller} className="h-full overflow-auto overscroll-contain" style={{ padding: pad }}>
-        <div className="relative mx-auto" style={{ width: CANVAS_W * scale, height: CANVAS_H * scale }}>
-          <div
-            className="bg-card/70 absolute top-0 left-0 origin-top-left rounded-[28px] shadow-[inset_0_0_0_1px_var(--separator)]"
-            style={{
-              width: CANVAS_W,
-              height: CANVAS_H,
-              transform: `scale(${scale})`,
-              backgroundImage: 'radial-gradient(color-mix(in srgb, var(--label) 16%, transparent) 1.4px, transparent 1.6px)',
-              backgroundSize: '28px 28px',
-            }}
-          >
-            <AnimatePresence>
-              {cards.map((c, i) => {
-                const isDrag = dragId === c.id;
-                const movable = canEdit(c) && !c.pending;
-                return (
-                  <motion.div
-                    key={c.id}
-                    data-card={c.id}
-                    initial={{ opacity: 0, scale: 0.4, left: c.x, top: c.y }}
-                    animate={{ opacity: 1, scale: isDrag ? 1.07 : 1, rotate: isDrag ? 0 : tilt(c.id), left: c.x, top: c.y }}
-                    exit={{ opacity: 0, scale: 0.4, transition: { duration: 0.2 } }}
-                    transition={isDrag ? { left: { duration: 0 }, top: { duration: 0 }, default: { type: 'spring', stiffness: 400, damping: 26 } } : { type: 'spring', stiffness: 260, damping: 24 }}
-                    whileHover={movable && !isDrag ? { scale: 1.03 } : undefined}
-                    className={cn('absolute outline-none', movable ? 'cursor-grab touch-none active:cursor-grabbing' : 'cursor-pointer')}
-                    style={{ width: CARD_W, zIndex: isDrag ? 1000 : top === c.id ? 999 : i + 1 }}
-                    onPointerDown={(e) => onDown(e, c)}
-                    onPointerMove={onMove}
-                    onPointerUp={(e) => onUp(e, c)}
-                    onPointerCancel={onCancel}
-                    onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onOpen(c)}
-                    tabIndex={0}
-                    role="button"
-                    aria-label={c.text || 'Dibujo'}
-                  >
-                    <StickyCard
-                      card={c}
-                      image={images[c.id]?.url}
-                      names={names}
-                      onLike={() => onLike(c)}
-                      tape
-                      className={cn(isDrag && 'shadow-[0_2px_4px_rgb(0_0_0/0.1),0_30px_50px_-18px_rgb(0_0_0/0.5)]')}
-                    />
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-      <div className="material-strong shadow-float absolute bottom-[max(env(safe-area-inset-bottom),16px)] left-4 z-10 flex items-center gap-0.5 rounded-full p-1">
-        <button type="button" aria-label="Alejar" onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
-          <Minus size={18} />
-        </button>
-        <button type="button" aria-label="Ajustar" onClick={() => setZoom(1)} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
-          <Scan size={17} />
-        </button>
-        <button type="button" aria-label="Acercar" onClick={() => setZoom((z) => Math.min(1.8, +(z + 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
-          <Plus size={18} />
-        </button>
-      </div>
-    </div>
-  );
-}
+export { JamCanvas } from './jam';
 
 // ================================================================ COLUMNS ====
 const COL_ACCENTS = ['var(--blue)', 'var(--orange)', 'var(--green)', 'var(--purple)', 'var(--pink)', 'var(--teal)', 'var(--yellow)', 'var(--indigo)'];
@@ -312,7 +151,7 @@ export function StoryView({ bundle, images, names, isTeacher, canAdd, onOpen, on
                 >
                   {i + 1}
                 </span>
-                <div className="min-w-0 flex-1 cursor-pointer rounded-[6px] outline-none" {...activate(() => onOpen(c))}>
+                <div className={cn('min-w-0 flex-1 cursor-pointer rounded-[6px] outline-none', c.shape !== 'note' && 'max-w-[340px]')} {...activate(() => onOpen(c))}>
                   <StickyCard
                     card={c}
                     image={images[c.id]?.url}
