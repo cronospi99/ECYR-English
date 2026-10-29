@@ -16,6 +16,8 @@ import {
   LockOpen,
   LogIn,
   MonitorPlay,
+  MoveDiagonal2,
+  UserRound,
   Pencil,
   Plus,
   Printer,
@@ -31,8 +33,11 @@ import { Sheet } from '@/features/portfolio/Sheet';
 import { cn } from '@/lib/cn';
 import {
   BOARDS_MISSING_MSG,
+  CENTRAL,
   COLOR_STYLE,
   LAYOUTS,
+  SHAPES,
+  cardBox,
   boardToCSV,
   boardToText,
   exportRows,
@@ -40,12 +45,15 @@ import {
   between,
   type BoardBundle,
   type CardDraft,
+  type CardPatch,
   type LiveCard,
+  type LiveLink,
 } from '@/lib/boards';
 import { useLiveBoard } from './useLiveBoard';
 import { Composer } from './Composer';
 import { StickyCard, LikeButton, authorLabel } from './StickyCard';
 import { ColumnsView, JamCanvas, StoryView } from './layouts';
+import { AccessSheet, PrivateBadge } from './AccessPicker';
 
 type ComposerState = { mode: 'new'; col?: number } | { mode: 'edit'; card: LiveCard } | null;
 
@@ -86,12 +94,18 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
   const [composer, setComposer] = useState<ComposerState>(null);
   const [openId, setOpenId] = useState<string | null>(null);
   const [dismissedSpot, setDismissedSpot] = useState<string | null>(null);
-  const spotRef = useRef<(() => { x: number; y: number }) | null>(null);
+  const [accessOpen, setAccessOpen] = useState(false);
+  const spotRef = useRef<((w?: number, h?: number) => { x: number; y: number }) | null>(null);
+  const selectRef = useRef<((id: string) => void) | null>(null);
 
   // The projector shows what the class may see; the teacher's own screen always shows names.
   const names = presenting ? board.show_names : isTeacher || board.show_names;
   const canAdd = !closed && (isTeacher || !board.locked) && !presenting;
   const canEdit = useCallback((c: LiveCard) => !c.pending && (isTeacher || (c.mine && !board.locked && !closed)), [isTeacher, board.locked, closed]);
+  // v2 (migration 18): resize / reshape, arrows.
+  const canResize = useCallback((c: LiveCard) => bundle.v2 && !presenting && canEdit(c), [bundle.v2, presenting, canEdit]);
+  const canLink = bundle.v2 && !closed && !presenting && (isTeacher || !board.locked);
+  const canEditLink = useCallback((l: LiveLink) => !l.pending && (isTeacher || (l.mine && !board.locked && !closed)), [isTeacher, board.locked, closed]);
   const cards = useMemo(() => ordered(bundle.cards), [bundle.cards]);
   const openCard = cards.find((c) => c.id === openId) ?? null;
   const spot = board.spotlight && board.spotlight !== dismissedSpot ? (cards.find((c) => c.id === board.spotlight) ?? null) : null;
@@ -119,18 +133,27 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
   };
 
   const startAdd = (opts?: { col?: number }) => setComposer({ mode: 'new', col: opts?.col });
-  const submit = async (d: CardDraft): Promise<boolean> => {
+  const submit = async ({ central, ...d }: CardDraft & { central?: boolean }): Promise<boolean> => {
     if (composer?.mode === 'edit') {
       const c = composer.card;
-      const patch: Parameters<typeof api.patch>[1] = { text: d.text, color: d.color };
+      const patch: CardPatch = { text: d.text, color: d.color };
       const before = api.images[c.id]?.url ?? null;
       if ((d.image ?? null) !== before) patch.image = d.image ?? null;
       if (board.layout === 'columns' && d.col !== c.col) patch.col = d.col;
+      if (bundle.v2 && central) Object.assign(patch, { shape: CENTRAL.shape, w: CENTRAL.w, h: CENTRAL.h });
+      else if (bundle.v2 && d.shape && d.shape !== c.shape) {
+        patch.shape = d.shape;
+        // A note grows with its text again; a shape gets its own size unless it was resized.
+        if (d.shape === 'note') patch.h = null;
+        else if (c.h === null) Object.assign(patch, { w: SHAPES[d.shape].w, h: SHAPES[d.shape].h });
+      }
       void api.patch(c.id, patch);
       return true;
     }
-    const spotXY = board.layout === 'jam' ? (spotRef.current?.() ?? { x: 700, y: 400 }) : { x: 0, y: 0 };
-    void api.add({ ...d, col: board.layout === 'columns' ? (d.col ?? composer?.col ?? 0) : 0, ...spotXY });
+    const size = central ? { shape: CENTRAL.shape, w: CENTRAL.w, h: CENTRAL.h } : { shape: bundle.v2 ? d.shape : undefined, w: null, h: null };
+    const box = cardBox({ shape: size.shape ?? 'note', w: size.w, h: size.h });
+    const spotXY = board.layout === 'jam' ? (spotRef.current?.(box.w, box.h ?? 160) ?? { x: 700, y: 400 }) : { x: 0, y: 0 };
+    void api.add({ ...d, ...size, col: board.layout === 'columns' ? (d.col ?? composer?.col ?? 0) : 0, ...spotXY });
     return true;
   };
 
@@ -167,6 +190,7 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         onNames={() => void api.setBoard({ show_names: !board.show_names })}
         onLock={() => void api.setBoard({ locked: !board.locked })}
         onClose={(c) => void api.close(c)}
+        onAccess={() => setAccessOpen(true)}
         say={api.say}
         images={api.images}
       />
@@ -194,8 +218,18 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
             {...viewProps}
             moveLocal={api.moveLocal}
             commitMove={(cid, x, y) => void api.patch(cid, { x, y })}
+            resizeLocal={api.resizeLocal}
+            commitResize={(cid, w, h) => void api.patch(cid, { w, h })}
             dragging={api.dragging}
             spotRef={spotRef}
+            selectRef={selectRef}
+            canResize={canResize}
+            canLink={canLink}
+            canEditLink={canEditLink}
+            onLink={(d) => void api.link(d)}
+            onPatchLink={(lid, p) => void api.patchLink(lid, p)}
+            onUnlink={(lid) => void api.unlink(lid)}
+            say={api.say}
           />
         )}
         {board.layout === 'columns' && <ColumnsView {...viewProps} />}
@@ -249,9 +283,10 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         heading={composer?.mode === 'edit' ? 'Editar tarjeta' : board.layout === 'story' ? 'Continúa la historia' : 'Nueva tarjeta'}
         initial={
           composer?.mode === 'edit'
-            ? { text: composer.card.text, color: composer.card.color, image: api.images[composer.card.id]?.url ?? null, col: composer.card.col }
+            ? { text: composer.card.text, color: composer.card.color, image: api.images[composer.card.id]?.url ?? null, col: composer.card.col, shape: composer.card.shape }
             : { col: composer?.col ?? 0 }
         }
+        shapes={bundle.v2}
         layout={board.layout}
         columns={board.columns}
         storyBefore={composer?.mode === 'new' ? lastStory : null}
@@ -266,6 +301,12 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         names={names}
         isTeacher={isTeacher}
         canEdit={openCard ? canEdit(openCard) : false}
+        canResize={!!openCard && board.layout === 'jam' && canResize(openCard)}
+        onResize={(c) => {
+          setOpenId(null);
+          selectRef.current?.(c.id);
+          api.say('Arrastra la esquina ↘');
+        }}
         onClose={() => setOpenId(null)}
         onLike={(c) => void api.like(c.id)}
         onEdit={(c) => {
@@ -308,6 +349,19 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
           />
         )}
       </AnimatePresence>
+
+      {isTeacher && bundle.v2 && (
+        <AccessSheet
+          open={accessOpen}
+          initial={board.members}
+          onClose={() => setAccessOpen(false)}
+          onSave={(members) => {
+            setAccessOpen(false);
+            void api.setBoard({ members });
+            api.say(members ? `🔒 Privado · ${members.length}` : '👥 Toda la clase');
+          }}
+        />
+      )}
 
       <AnimatePresence>
         {api.toast && (
@@ -364,6 +418,7 @@ function TopBar({
   onNames,
   onLock,
   onClose,
+  onAccess,
   say,
   images,
 }: {
@@ -377,6 +432,7 @@ function TopBar({
   onNames: () => void;
   onLock: () => void;
   onClose: (closed: boolean) => void;
+  onAccess: () => void;
   say: (m: string) => void;
   images: Record<string, { url: string }>;
 }) {
@@ -406,7 +462,14 @@ function TopBar({
         {L.emoji}
       </span>
       <div className="min-w-0 flex-1">
-        <h1 className={cn('truncate leading-tight font-bold', presenting ? 'text-[22px]' : 'text-[16px] sm:text-[17px]')}>{board.title}</h1>
+        <div className="flex min-w-0 items-center gap-1.5">
+          <h1 className={cn('truncate leading-tight font-bold', presenting ? 'text-[22px]' : 'text-[16px] sm:text-[17px]')}>{board.title}</h1>
+          {board.member_count !== null && (
+            <button type="button" onClick={onAccess} disabled={!isTeacher || presenting || !bundle.v2} title="¿Quién puede entrar?" className="hidden shrink-0 rounded-full transition-transform active:scale-95 sm:inline-flex">
+              <PrivateBadge count={board.member_count} />
+            </button>
+          )}
+        </div>
         <div className="text-label-2 flex items-center gap-1.5 text-[12px] font-medium whitespace-nowrap sm:text-[13px]">
           <span className="relative flex h-2 w-2 shrink-0">
             {live && !netDown && <span className="absolute inset-0 animate-ping rounded-full opacity-60" style={{ background: status.c }} />}
@@ -415,6 +478,11 @@ function TopBar({
           <span className="hidden sm:inline">{status.t} ·</span>
           <span className="tabular-nums">🗒 {bundle.cards.length}</span>
           <span className="tabular-nums">· 👥 {people}</span>
+          {board.member_count !== null && (
+            <button type="button" onClick={onAccess} disabled={!isTeacher || presenting || !bundle.v2} aria-label={`Privado · ${board.member_count}`} className="ml-0.5 sm:hidden">
+              <PrivateBadge count={board.member_count} short className="py-0 text-[11px]" />
+            </button>
+          )}
         </div>
       </div>
 
@@ -447,6 +515,23 @@ function TopBar({
                         transition={{ duration: 0.16 }}
                         className="bg-elevated shadow-float absolute top-12 right-0 z-50 w-60 origin-top-right overflow-hidden rounded-[16px] py-1.5"
                       >
+                        {bundle.v2 ? (
+                          <MenuItem
+                            icon={<UserRound size={18} />}
+                            onClick={() => {
+                              setMenu(false);
+                              onAccess();
+                            }}
+                          >
+                            <span className="flex-1">Quién puede entrar</span>
+                            <span className="text-label-2 text-[13px]">{board.member_count === null ? 'Todos' : `🔒 ${board.member_count}`}</span>
+                          </MenuItem>
+                        ) : (
+                          <div className="text-label-2 px-4 py-2 text-[12px] leading-snug">
+                            ✨ Formas, flechas y muros privados: ejecuta <code className="bg-fill rounded px-1">18_live_boards_v2.sql</code>
+                          </div>
+                        )}
+                        <div className="bg-separator mx-3 my-1 h-px" />
                         <MenuItem
                           icon={<Copy size={18} />}
                           onClick={() => {
@@ -531,9 +616,11 @@ function CardSheet({
   names,
   isTeacher,
   canEdit,
+  canResize,
   cards,
   onClose,
   onLike,
+  onResize,
   onEdit,
   onDelete,
   onSpotlight,
@@ -547,9 +634,11 @@ function CardSheet({
   names: boolean;
   isTeacher: boolean;
   canEdit: boolean;
+  canResize: boolean;
   cards: LiveCard[];
   onClose: () => void;
   onLike: (c: LiveCard) => void;
+  onResize: (c: LiveCard) => void;
   onEdit: (c: LiveCard) => void;
   onDelete: (c: LiveCard) => void;
   onSpotlight: (c: LiveCard) => void;
@@ -582,6 +671,11 @@ function CardSheet({
             {canEdit && (
               <Button variant="gray" onClick={() => onEdit(c)}>
                 <Pencil size={18} /> Editar
+              </Button>
+            )}
+            {canResize && (
+              <Button variant="gray" onClick={() => onResize(c)}>
+                <MoveDiagonal2 size={18} /> Tamaño
               </Button>
             )}
             {isTeacher && (

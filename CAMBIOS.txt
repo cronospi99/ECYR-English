@@ -11,7 +11,7 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-CINCO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+SEIS PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
      asignadas, Mis trabajos y quizzes de podcasts.
   2. supabase/migrations/14_submission_reviews.sql — activa la revisión
@@ -24,6 +24,8 @@ CINCO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   4. supabase/migrations/16_live_boards.sql — Muro en vivo (sección Y).
   5. supabase/migrations/17_admin_delete_users.sql — eliminar docentes y
      estudiantes desde tu panel (sección X).
+  6. supabase/migrations/18_live_boards_v2.sql — formas, tamaños, flechas
+     y muros privados en el Muro en vivo (sección Y2).
 Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
@@ -90,6 +92,14 @@ N. NOTAS: NEGRITA Y CURSIVA
 - Botones B y I (y Ctrl/⌘+B, Ctrl/⌘+I) que se combinan con los 4 colores.
   También hay un botón "Quitar todo el formato". Las notas viejas se abren
   igual y se siguen sincronizando.
+
+N3. NOTAS: BARRA FIJA Y MÁS FORMATO
+- La barra de formato se queda visible arriba aunque bajes en una nota
+  larga (en el panel lateral y en Mis notas, también en el celular).
+- Nuevo: subrayado (Ctrl+U), tachado, color de letra, Título y Subtítulo,
+  viñetas (Ctrl+Shift+8), numeración (Ctrl+Shift+7), lista de casillas ☐
+  que se marcan con un toque (Ctrl+Shift+9), alineación y «Quitar formato».
+  Enter continúa la lista; Tab sangra. Las notas antiguas se ven igual.
 
 N2. NOTAS: TAMAÑO, FUENTES Y MÁS COLORES
 - Menú de tamaño de letra (Pequeño, Normal, Grande, Muy grande, Enorme) y
@@ -185,6 +195,20 @@ Y. MURO EN VIVO (menú › Muro en vivo · Sala del docente › Material)
   borrar cualquiera, exportar texto/CSV, imprimir, cerrar/reabrir.
 - Se actualiza en vivo en todos los dispositivos.
 
+Y2. MURO EN VIVO: FORMAS, FLECHAS Y MUROS PRIVADOS
+- Tamaño y forma: cada tarjeta se agranda o achica desde su esquina (con
+  el mouse o tocándola en el celular; también «Tamaño» en su menú). Formas:
+  nota, píldora, círculo, burbuja de diálogo, nube, hexágono y rombo. El
+  texto se ajusta solo. «⭐ Central» crea un círculo grande para el tema.
+- Mapas mentales: botón «Conectar» en el lienzo Jam → toca una tarjeta y
+  luego otra. Flecha, línea o doble flecha, con color y una etiqueta corta
+  («e.g.», «because»…). Siguen a las tarjetas al moverlas. Tocando una
+  flecha la cambias de sentido, color o la borras.
+- Muros privados: al crear (o luego en ⋯ › «Quién puede entrar») eliges
+  «Toda la clase» o «Solo algunos» y marcas a los estudiantes (con
+  buscador). Los demás ni lo ven. En la lista aparece «🔒 Privado · N».
+- El Muro en vivo también está en la barra flotante de la derecha (rosado).
+
 Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
 - Para el proyector, a pantalla completa, con fondo a elegir (degradados,
   patrones, color o tu imagen) y widgets que se arrastran y cambian de
@@ -215,6 +239,7 @@ Z2. PIZARRA (Práctica › Pizarra; también dentro del Muro y la Pantalla)
   pincel arcoíris; triángulo, estrella, corazón, hexágono y globo de
   diálogo (borde o relleno); stickers (30 emojis con tamaño); y simetría
   estilo Gartic Phone: espejo ↔, ↕ o en 4, con guías en el lienzo.
+- La pizarra ahora ocupa todo el ancho (el reto quedó en una franja arriba).
 - Reto «¿Qué dibujo?»: palabra al azar por nivel A1–C2, con 60 segundos.
 
 Z3. BOTONES PARA VOLVER

@@ -11,10 +11,10 @@ clases, sesión y el mismo cliente.
 Supabase → **SQL Editor → New query** → pega **todo** [`setup.sql`](setup.sql) → **Run**.
 
 Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
-(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `17` **en orden** (no hay `10`):
-`05` y de `07` a `17` dependen de la tabla `profiles` que crea `01`.)
+(Si prefieres hacerlo por partes, ejecuta `migrations/01` … `18` **en orden** (no hay `10`):
+`05` y de `07` a `18` dependen de la tabla `profiles` que crea `01`.)
 
-> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `17_admin_delete_users.sql` (las nuevas: `13_c2_level.sql` a `17_admin_delete_users.sql`)
+> **¿Ya tenías la base creada?** Ejecuta las que te falten de `07_portfolio.sql` a `18_live_boards_v2.sql` (las nuevas: `13_c2_level.sql` a `18_live_boards_v2.sql`)
 > (o volver a pegar `setup.sql` completo: es seguro re-ejecutarlo).
 
 | Migración | Qué hace |
@@ -35,6 +35,7 @@ Incluye todas las migraciones en orden y se puede re-ejecutar sin perder datos.
 | `15_teacher_invites.sql` | **Docentes por invitación**: solo la cuenta dueña (`platform_admins`) crea códigos de un solo uso (`teacher_invites`); registrarse como docente exige uno válido. Los estudiantes se registran igual que siempre. Al final del archivo está el SQL para hacerte dueña/dueño. |
 | `16_live_boards.sql` | **Muro en vivo**: `live_boards` y `live_board_cards` (Jam, Columnas, Historia). Solo los estudiantes de la clase del docente entran; con los nombres ocultos, el servidor no envía a los estudiantes los nombres de sus compañeros. Todo por funciones; el tiempo real usa canales *broadcast* de Realtime (no hay que activar nada). |
 | `17_admin_delete_users.sql` | **Eliminar cuentas** (solo la dueña/dueño): `list_platform_students()` y `admin_delete_user()`. Borra la cuenta y todo lo suyo; los estudiantes de un docente borrado quedan sin clase, no se borran. No permite borrarte a ti ni a otra cuenta administradora. |
+| `18_live_boards_v2.sql` | **Muro en vivo v2**: forma y tamaño de cada tarjeta, flechas entre tarjetas (`live_board_links`, mapas mentales) y muros privados (`members`: solo los estudiantes elegidos entran; el resto recibe «no encontrado»). Compatible con la versión anterior de la app. |
 
 `setup.sql` se genera con `npm run db:bundle`; edita siempre `migrations/*`.
 
