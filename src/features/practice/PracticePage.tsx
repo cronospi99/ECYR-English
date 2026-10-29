@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight, Wrench, Languages, ClipboardList } from 'lucide-react';
+import { BookOpen, Headphones, Mic, PenLine, Shuffle, ChevronRight, Wrench, Languages, ClipboardList, Palette } from 'lucide-react';
 import { ExternalResources } from '@/features/library/ExternalResources';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
@@ -71,6 +71,14 @@ const AREAS = [
     body: 'Más de 1.100 phrasal verbs de A1 a C1 en mapas mentales, con traducción, 4 ejemplos cada uno y modo quiz.',
     skill: 'vocabulary' as const,
   },
+  {
+    to: '/practice/draw',
+    icon: Palette,
+    color: 'var(--purple)',
+    title: 'Pizarra',
+    body: 'Dibuja como en Paint o Gartic Phone: pinceles, relleno, figuras, texto y retos de vocabulario «¿Qué dibujo?».',
+    skill: null,
+  },
 ];
 
 export default function PracticePage() {
@@ -85,7 +93,7 @@ export default function PracticePage() {
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
                   <h3 className="text-title-3">{a.title}</h3>
-                  <span className="text-label-2 text-[13px] tabular-nums">{skillXp[a.skill] ?? 0} XP</span>
+                  {a.skill && <span className="text-label-2 text-[13px] tabular-nums">{skillXp[a.skill] ?? 0} XP</span>}
                 </div>
                 <p className="text-label-2 text-subhead mt-1 text-pretty">{a.body}</p>
               </div>

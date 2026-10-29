@@ -13,6 +13,9 @@ import {
   Gamepad2,
   GraduationCap,
   ImageIcon,
+  MonitorPlay,
+  Palette,
+  StickyNote,
   KeyRound,
   Headphones,
   Mic,
@@ -86,6 +89,9 @@ export default function TeacherPage() {
       subtitle="El progreso de tu clase, todo el material sin restricciones y tu propio espacio para practicar."
       actions={
         <div className="flex items-center gap-2">
+          <ButtonLink to="/teacher/screen" variant="gray" size="md" aria-label="Pantalla de clase">
+            <MonitorPlay size={17} /> <span className="hidden sm:inline">Pantalla</span>
+          </ButtonLink>
           {isAdmin && (
             <ButtonLink to="/admin/teachers" variant="gray" size="md" aria-label="Códigos para docentes">
               <KeyRound size={17} /> <span className="hidden sm:inline">Docentes</span>
@@ -316,6 +322,14 @@ function MaterialTab() {
     {
       title: 'Planeación de clase',
       items: [{ to: '/teacher/thread', title: 'Hilo de clase', sub: 'Una historia central por unidades + inicio y cierre de 5 min', icon: Wand2, color: 'var(--purple)' }],
+    },
+    {
+      title: 'En clase, en vivo',
+      items: [
+        { to: '/teacher/screen', title: 'Pantalla de clase', sub: 'Temporizador, ruleta, grupos, semáforo, ruido… para el proyector', icon: MonitorPlay, color: 'var(--blue)' },
+        { to: '/boards', title: 'Muro en vivo', sub: 'Jam, columnas o historia: tus estudiantes escriben tarjetas', icon: StickyNote, color: 'var(--yellow)' },
+        { to: '/practice/draw', title: 'Pizarra', sub: 'Dibujo con pinceles, relleno, figuras y texto', icon: Palette, color: 'var(--pink)' },
+      ],
     },
     {
       title: 'Cursos por nivel',
