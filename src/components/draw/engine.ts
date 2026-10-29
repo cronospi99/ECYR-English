@@ -18,7 +18,21 @@ export type Tool =
   | 'rect'
   | 'ellipse'
   | 'text'
-  | 'eyedropper';
+  | 'eyedropper'
+  | 'crayon'
+  | 'calligraphy'
+  | 'spray'
+  | 'neon'
+  | 'rainbow'
+  | 'triangle'
+  | 'star'
+  | 'heart'
+  | 'hexagon'
+  | 'bubble'
+  | 'stamp';
+
+/** Mirror drawing (Gartic-style symmetry): off, left↔right, top↕bottom, or both. */
+export type Mirror = 'off' | 'x' | 'y' | 'xy';
 
 export type Background = 'white' | 'grid' | 'lined' | 'none';
 
@@ -35,8 +49,28 @@ export interface Rect {
   h: number;
 }
 
-export const FREEHAND: Tool[] = ['pencil', 'brush', 'highlighter', 'eraser'];
-export const SHAPES: Tool[] = ['line', 'arrow', 'rect', 'ellipse'];
+export const FREEHAND: Tool[] = ['pencil', 'brush', 'highlighter', 'eraser', 'crayon', 'calligraphy', 'spray', 'neon', 'rainbow'];
+/** Freehand brushes drawn segment by segment with their own texture (no quadratic smoothing). */
+export const TEXTURED: Tool[] = ['crayon', 'calligraphy', 'spray', 'rainbow'];
+export const SHAPES: Tool[] = ['line', 'arrow', 'rect', 'ellipse', 'triangle', 'star', 'heart', 'hexagon', 'bubble'];
+/** Shapes that can be outlined or filled. */
+export const CLOSED_SHAPES: Tool[] = ['rect', 'ellipse', 'triangle', 'star', 'heart', 'hexagon', 'bubble'];
+
+/**
+ * Runs `draw` once plus once per mirror image (context in board units, board
+ * UNITS × h). Mirrors around the board's centre lines.
+ */
+export function withMirror(ctx: CanvasRenderingContext2D, mode: Mirror, h: number, draw: () => void) {
+  draw();
+  if (mode === 'off') return;
+  const flips: [number, number][] = mode === 'x' ? [[-1, 1]] : mode === 'y' ? [[1, -1]] : [[-1, 1], [1, -1], [-1, -1]];
+  for (const [sx, sy] of flips) {
+    ctx.save();
+    ctx.transform(sx, 0, 0, sy, sx < 0 ? UNITS : 0, sy < 0 ? h : 0);
+    draw();
+    ctx.restore();
+  }
+}
 
 /* ------------------------------------------------------------------ colour */
 
@@ -102,11 +136,19 @@ export interface StrokeStyle {
   color: string;
   size: number; // units
   k: number;
+  /** Rainbow brush: current hue in degrees (advanced by the caller). */
+  hue?: number;
+}
+
+/** Mixes a hex colour with white (0 = colour, 1 = white). */
+export function lighten(hex: string, t: number) {
+  const [r, g, b] = hexToRgb(hex);
+  return rgbToHex(r + (255 - r) * t, g + (255 - g) * t, b + (255 - b) * t);
 }
 
 /** Width in units for a point, using pen pressure when available. */
 export function widthAt(style: StrokeStyle, p: number, pen: boolean) {
-  if (!pen || style.tool !== 'pencil') return style.size;
+  if (!pen || (style.tool !== 'pencil' && style.tool !== 'calligraphy')) return style.size;
   return Math.max(0.6, style.size * (0.25 + p * 1.25));
 }
 
@@ -120,6 +162,11 @@ export function applyStrokeStyle(ctx: CanvasRenderingContext2D, s: StrokeStyle) 
     // Soft edge: a coloured blur around a slimmer core. shadowBlur ignores the transform → scale by k.
     ctx.shadowColor = s.color;
     ctx.shadowBlur = Math.max(2, s.size * 0.55 * s.k);
+  } else if (s.tool === 'neon') {
+    // Glowing tube: a pale core with a strong coloured halo.
+    ctx.strokeStyle = ctx.fillStyle = lighten(s.color, 0.6);
+    ctx.shadowColor = s.color;
+    ctx.shadowBlur = Math.max(6, s.size * 1.6 * s.k);
   } else {
     ctx.shadowColor = 'transparent';
     ctx.shadowBlur = 0;
@@ -128,11 +175,12 @@ export function applyStrokeStyle(ctx: CanvasRenderingContext2D, s: StrokeStyle) 
 
 /** The core width actually stroked (the brush gets its body from the blur). */
 export function coreWidth(s: StrokeStyle, w: number) {
-  return s.tool === 'brush' ? Math.max(1, w * 0.6) : w;
+  return s.tool === 'brush' ? Math.max(1, w * 0.6) : s.tool === 'neon' ? Math.max(1, w * 0.45) : w;
 }
 
 /** A single dot (tap without moving). */
 export function drawDot(ctx: CanvasRenderingContext2D, s: StrokeStyle, pt: Pt, w: number) {
+  if (TEXTURED.includes(s.tool)) return drawTextured(ctx, s, pt, pt, w);
   const r = coreWidth(s, w) / 2;
   ctx.beginPath();
   if (s.tool === 'highlighter') ctx.rect(pt.x - r, pt.y - r, r * 2, r * 2);
@@ -184,6 +232,83 @@ export function drawSegment(
   ctx.stroke();
 }
 
+/**
+ * One segment a→b of a textured brush (`a === b` for a tap). Spray and crayon
+ * use randomness, so mirror copies are similar rather than identical.
+ */
+export function drawTextured(ctx: CanvasRenderingContext2D, s: StrokeStyle, a: Pt, b: Pt, w: number) {
+  const dist = Math.hypot(b.x - a.x, b.y - a.y);
+  if (s.tool === 'spray') {
+    const r = w * 1.6;
+    const dot = Math.max(0.7, w / 12);
+    const n = Math.round(10 + w * 1.2);
+    for (let i = 0; i < n; i++) {
+      const ang = Math.random() * Math.PI * 2;
+      const rad = r * Math.sqrt(Math.random());
+      ctx.fillRect(b.x + Math.cos(ang) * rad, b.y + Math.sin(ang) * rad, dot, dot);
+    }
+  } else if (s.tool === 'crayon') {
+    // Waxy grain: many small specks along the segment, denser in the middle.
+    const steps = Math.max(1, Math.ceil(dist / Math.max(1, w * 0.25)));
+    const speck = Math.max(0.6, w / 7);
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const cx = a.x + (b.x - a.x) * t;
+      const cy = a.y + (b.y - a.y) * t;
+      const n = Math.round(4 + w * 0.9);
+      for (let j = 0; j < n; j++) {
+        if (Math.random() < 0.28) continue; // paper showing through
+        const rad = (w / 2) * Math.sqrt(Math.random());
+        const ang = Math.random() * Math.PI * 2;
+        ctx.fillRect(cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad, speck, speck);
+      }
+    }
+  } else if (s.tool === 'calligraphy') {
+    // Flat nib held at 45°: thick on one diagonal, thin on the other.
+    const nx = Math.cos(-Math.PI / 4) * (w / 2);
+    const ny = Math.sin(-Math.PI / 4) * (w / 2);
+    ctx.beginPath();
+    ctx.moveTo(a.x + nx, a.y + ny);
+    ctx.lineTo(b.x + nx, b.y + ny);
+    ctx.lineTo(b.x - nx, b.y - ny);
+    ctx.lineTo(a.x - nx, a.y - ny);
+    ctx.closePath();
+    ctx.fill();
+    ctx.lineWidth = Math.max(0.6, w * 0.08);
+    ctx.stroke();
+  } else if (s.tool === 'rainbow') {
+    const c = `hsl(${Math.round(s.hue ?? 0) % 360} 90% 55%)`;
+    ctx.strokeStyle = ctx.fillStyle = c;
+    ctx.lineWidth = w;
+    ctx.beginPath();
+    if (dist < 0.01) ctx.arc(b.x, b.y, w / 2, 0, Math.PI * 2), ctx.fill();
+    else {
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+  }
+}
+
+/* -------------------------------------------------------------- stamps */
+
+export const STAMPS = ['⭐', '❤️', '😀', '😂', '😮', '😢', '👍', '👏', '🌞', '🌧️', '❄️', '🌈', '🍎', '🍕', '🐶', '🐱', '🦋', '🌳', '🌸', '🏠', '🚗', '✈️', '⚽', '🎵', '💡', '❓', '❗', '✅', '❌', '➡️'];
+
+/** An emoji stamp centred on (x, y), `size` units tall. Returns bounds in units. */
+export function drawStamp(ctx: CanvasRenderingContext2D, emoji: string, x: number, y: number, size: number): Rect {
+  ctx.save();
+  ctx.font = `${size}px 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.shadowBlur = 0;
+  ctx.globalAlpha = 1;
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.fillText(emoji, x, y);
+  ctx.restore();
+  const r = size * 0.75;
+  return { x: x - r, y: y - r, w: r * 2, h: r * 2 };
+}
+
 /* -------------------------------------------------------------- shapes */
 
 export interface ShapeOpts {
@@ -198,7 +323,7 @@ export interface ShapeOpts {
 export function constrainEnd(tool: Tool, a: { x: number; y: number }, b: { x: number; y: number }) {
   const dx = b.x - a.x;
   const dy = b.y - a.y;
-  if (tool === 'rect' || tool === 'ellipse') {
+  if (CLOSED_SHAPES.includes(tool)) {
     const m = Math.max(Math.abs(dx), Math.abs(dy));
     return { x: a.x + Math.sign(dx || 1) * m, y: a.y + Math.sign(dy || 1) * m };
   }
@@ -258,6 +383,48 @@ export function drawShape(
     else ctx.stroke();
   } else if (o.tool === 'ellipse') {
     ctx.ellipse(x + w / 2, y + h / 2, Math.max(w / 2, 0.5), Math.max(h / 2, 0.5), 0, 0, Math.PI * 2);
+    if (o.filled) ctx.fill();
+    else ctx.stroke();
+  } else {
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+    if (o.tool === 'triangle') {
+      ctx.moveTo(cx, y);
+      ctx.lineTo(x + w, y + h);
+      ctx.lineTo(x, y + h);
+      ctx.closePath();
+    } else if (o.tool === 'star' || o.tool === 'hexagon') {
+      const pts = o.tool === 'star' ? 10 : 6;
+      for (let i = 0; i < pts; i++) {
+        const ang = -Math.PI / 2 + (i * Math.PI * 2) / pts;
+        const f = o.tool === 'star' && i % 2 ? 0.42 : 1;
+        const px = cx + Math.cos(ang) * (w / 2) * f;
+        const py = cy + Math.sin(ang) * (h / 2) * f + (o.tool === 'star' ? h * 0.05 : 0);
+        if (i) ctx.lineTo(px, py);
+        else ctx.moveTo(px, py);
+      }
+      ctx.closePath();
+    } else if (o.tool === 'heart') {
+      ctx.moveTo(cx, y + h * 0.3);
+      ctx.bezierCurveTo(cx, y, x, y, x, y + h * 0.32);
+      ctx.bezierCurveTo(x, y + h * 0.62, cx, y + h * 0.8, cx, y + h);
+      ctx.bezierCurveTo(cx, y + h * 0.8, x + w, y + h * 0.62, x + w, y + h * 0.32);
+      ctx.bezierCurveTo(x + w, y, cx, y, cx, y + h * 0.3);
+      ctx.closePath();
+    } else if (o.tool === 'bubble') {
+      // Speech bubble: rounded box over the top 78 %, tail down-left.
+      const bh = h * 0.78;
+      const r = Math.min(w, bh) * 0.22;
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + bh, r);
+      ctx.arcTo(x + w, y + bh, x, y + bh, r);
+      ctx.lineTo(x + w * 0.42, y + bh);
+      ctx.lineTo(x + w * 0.18, y + h);
+      ctx.lineTo(x + w * 0.26, y + bh);
+      ctx.arcTo(x, y + bh, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
     if (o.filled) ctx.fill();
     else ctx.stroke();
   }

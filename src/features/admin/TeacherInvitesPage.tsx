@@ -6,7 +6,9 @@ import {
   Plus,
   RefreshCw,
   School,
+  Search,
   ShieldCheck,
+  Trash2,
   Users,
   X,
 } from "lucide-react";
@@ -20,12 +22,15 @@ import { relativeTime } from "@/lib/date";
 import { cn } from "@/lib/cn";
 import {
   createInvite,
+  deleteAccount,
+  listStudents,
   inviteMessage,
   inviteStatus,
   listInvites,
   listTeachers,
   revokeInvite,
   type InviteStatus,
+  type PlatformStudent,
   type PlatformTeacher,
   type TeacherInvite,
 } from "@/lib/admin";
@@ -166,7 +171,8 @@ function Admin() {
         </div>
         <div className="space-y-6">
           <InviteList invites={invites} onChange={load} />
-          <TeacherList teachers={teachers} />
+          <TeacherList teachers={teachers} onChange={load} />
+          <StudentList teachers={teachers} onChange={load} />
         </div>
       </div>
     </Page>
@@ -448,7 +454,75 @@ function InviteList({
   );
 }
 
-function TeacherList({ teachers }: { teachers: PlatformTeacher[] | null }) {
+/** Trash button that asks once more, inline, before deleting an account. */
+function DeleteAccount({
+  id,
+  name,
+  warning,
+  onDeleted,
+}: {
+  id: string;
+  name: string;
+  warning: string;
+  onDeleted: () => void;
+}) {
+  const [ask, setAsk] = useState(false);
+  const [busy, setBusy] = useState(false);
+  if (!ask)
+    return (
+      <Button
+        variant="gray"
+        size="sm"
+        aria-label={`Eliminar a ${name}`}
+        title="Eliminar cuenta"
+        onClick={() => setAsk(true)}
+        className="text-label-2 hover:text-ink-red"
+      >
+        <Trash2 size={15} />
+      </Button>
+    );
+  return (
+    <div className="flex basis-full items-center gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] p-2 sm:basis-auto">
+      <span className="text-ink-red min-w-0 flex-1 text-[13px] leading-snug">
+        ¿Eliminar a <b>{name}</b>? {warning} No se puede deshacer.
+      </span>
+      <Button
+        variant="gray"
+        size="sm"
+        onClick={() => setAsk(false)}
+        disabled={busy}
+      >
+        No
+      </Button>
+      <button
+        type="button"
+        disabled={busy}
+        className="bg-ios-red h-8 shrink-0 rounded-full px-3.5 text-[14px] font-semibold text-white disabled:opacity-50"
+        onClick={async () => {
+          setBusy(true);
+          try {
+            await deleteAccount(id);
+            onDeleted();
+          } catch (e) {
+            window.alert((e as Error).message);
+            setBusy(false);
+          }
+        }}
+      >
+        {busy ? <Spinner className="h-4 w-4" /> : "Eliminar"}
+      </button>
+    </div>
+  );
+}
+
+function TeacherList({
+  teachers,
+  onChange,
+}: {
+  teachers: PlatformTeacher[] | null;
+  onChange: () => void;
+}) {
+  const me = useAuth((s) => s.session?.user.id);
   return (
     <Card className="p-5">
       <h3 className="text-headline">Docentes en la plataforma</h3>
@@ -459,13 +533,18 @@ function TeacherList({ teachers }: { teachers: PlatformTeacher[] | null }) {
       ) : (
         <ul className="mt-3 divide-y divide-[var(--separator)]">
           {teachers.map((t) => (
-            <li key={t.id} className="flex items-center gap-3 py-2.5">
+            <li key={t.id} className="flex flex-wrap items-center gap-3 py-2.5">
               <span className="bg-[color-mix(in_srgb,var(--orange)_15%,transparent)] text-ink-orange flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[14px] font-bold">
                 {(t.full_name || t.email || "?").trim().charAt(0).toUpperCase()}
               </span>
               <div className="min-w-0 flex-1">
                 <div className="truncate text-[15px] font-medium">
                   {t.full_name || t.email}
+                  {t.id === me && (
+                    <span className="text-label-2 ml-1.5 text-[12px] font-normal">
+                      (tú)
+                    </span>
+                  )}
                 </div>
                 <div className="text-label-2 truncate text-[13px]">
                   {t.full_name ? `${t.email} · ` : ""}
@@ -480,9 +559,139 @@ function TeacherList({ teachers }: { teachers: PlatformTeacher[] | null }) {
                 <Users size={13} className="mr-1 inline" />
                 {t.students}
               </span>
+              {t.id !== me && (
+                <DeleteAccount
+                  id={t.id}
+                  name={t.full_name || t.email || "este docente"}
+                  warning={
+                    t.students
+                      ? `Se borra su cuenta y su material; sus ${t.students} estudiantes quedan sin clase (no se borran).`
+                      : "Se borra su cuenta y su material."
+                  }
+                  onDeleted={onChange}
+                />
+              )}
             </li>
           ))}
         </ul>
+      )}
+    </Card>
+  );
+}
+
+function StudentList({
+  teachers,
+  onChange,
+}: {
+  teachers: PlatformTeacher[] | null;
+  onChange: () => void;
+}) {
+  const [students, setStudents] = useState<PlatformStudent[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [q, setQ] = useState("");
+  const [teacher, setTeacher] = useState("all");
+
+  const load = useCallback(async () => {
+    try {
+      setStudents(await listStudents());
+      setError(null);
+    } catch (e) {
+      setError((e as Error).message);
+      setStudents((v) => v ?? []);
+    }
+  }, []);
+
+  useEffect(() => {
+    void load();
+  }, [load, teachers]);
+
+  const rows = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    return (students ?? []).filter(
+      (s) =>
+        (teacher === "all" ||
+          (teacher === "none" ? !s.teacher_id : s.teacher_id === teacher)) &&
+        (!needle ||
+          `${s.full_name ?? ""} ${s.email ?? ""}`
+            .toLowerCase()
+            .includes(needle)),
+    );
+  }, [students, q, teacher]);
+
+  return (
+    <Card className="p-5">
+      <div className="flex items-center gap-2">
+        <h3 className="text-headline flex-1">Estudiantes</h3>
+        {students && (
+          <span className="text-label-2 text-[13px] tabular-nums">
+            {rows.length === students.length
+              ? students.length
+              : `${rows.length} de ${students.length}`}
+          </span>
+        )}
+      </div>
+      {error ? (
+        <p className="text-ink-red mt-3 text-[14px]">{error}</p>
+      ) : students === null ? (
+        <Spinner className="mx-auto mt-6 h-6 w-6" />
+      ) : students.length === 0 ? (
+        <p className="text-label-2 mt-4 text-[14px]">Aún no hay estudiantes.</p>
+      ) : (
+        <>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <label className="bg-fill-2 flex h-10 min-w-0 flex-1 basis-48 items-center gap-2 rounded-[12px] px-3">
+              <Search size={16} className="text-label-3 shrink-0" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Buscar nombre o correo"
+                aria-label="Buscar estudiante"
+                className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none"
+              />
+            </label>
+            <select
+              value={teacher}
+              onChange={(e) => setTeacher(e.target.value)}
+              aria-label="Filtrar por docente"
+              className="bg-fill-2 h-10 max-w-full rounded-[12px] px-3 text-[14px] font-medium outline-none"
+            >
+              <option value="all">Todos los docentes</option>
+              {(teachers ?? []).map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.full_name || t.email}
+                </option>
+              ))}
+              <option value="none">Sin clase</option>
+            </select>
+          </div>
+          <ul className="mt-2 max-h-[520px] divide-y divide-[var(--separator)] overflow-y-auto">
+            {rows.map((s) => (
+              <li key={s.id} className="flex flex-wrap items-center gap-3 py-2.5">
+                <span className="bg-[color-mix(in_srgb,var(--blue)_14%,transparent)] text-ink-blue flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-[14px] font-bold">
+                  {(s.full_name || s.email || "?").trim().charAt(0).toUpperCase()}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-[15px] font-medium">
+                    {s.full_name || s.email}
+                  </div>
+                  <div className="text-label-2 truncate text-[13px]">
+                    {s.full_name ? `${s.email} · ` : ""}
+                    {s.teacher_name ?? "sin clase"}
+                  </div>
+                </div>
+                <DeleteAccount
+                  id={s.id}
+                  name={s.full_name || s.email || "este estudiante"}
+                  warning="Se borra su cuenta con su progreso y trabajos."
+                  onDeleted={onChange}
+                />
+              </li>
+            ))}
+            {rows.length === 0 && (
+              <li className="text-label-2 py-4 text-[14px]">Nadie coincide.</li>
+            )}
+          </ul>
+        </>
       )}
     </Card>
   );
