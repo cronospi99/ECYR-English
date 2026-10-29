@@ -194,10 +194,12 @@ Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
   de trabajo, Nivel de ruido (micrófono), Votación, Texto, Imagen, Video
   de YouTube, Dados, Marcador, Agenda de la clase, Dibujo, Código QR (por
   defecto, para entrar al Muro en vivo) y Cuenta atrás.
-- Grupos a mano: toca (o arrastra) un nombre y luego el grupo donde lo
-  quieres. Queda 📌 fijado y «Mezclar» respeta los fijados y reparte al
-  resto. En ⚙ puedes asignar a cada estudiante «Grupo N» o «Al azar», y
-  «Quitar fijados». Toca el 📌 para soltar a alguien.
+- Grupos «A mano» (modo por defecto): los grupos empiezan vacíos; en cada
+  grupo buscas por nombre (sin importar tildes) y agregas solo a quien
+  quieras. Enter agrega la primera coincidencia o el nombre escrito (para
+  alguien que no está en la lista). × quita, arrastrar mueve, «Vaciar»
+  limpia. Arriba se ve cuántos van en grupos y cuántos faltan.
+- «Al azar» sigue disponible: mezcla a todos, con 📌 para fijar a alguien.
 - Acceso rápido: botón azul «Pantalla de clase» en la barra flotante de la
   derecha (encima del Verb Lab), solo para docentes, o Alt+P.
 - Descartados: webcam (privacidad), calendario (el reloj ya da la fecha),

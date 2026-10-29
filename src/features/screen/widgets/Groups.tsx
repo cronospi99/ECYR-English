@@ -1,10 +1,14 @@
-import { useState } from 'react';
-import { Pin, PinOff, Shuffle, Users, X } from 'lucide-react';
+import { useMemo, useRef, useState } from 'react';
+import { Eraser, Hand, Pin, PinOff, Plus, Search, Shuffle, Users, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { HEX, shuffle, useNames, type NameSource, type WidgetProps } from '../util';
 import { Act, Empty, inputCls, Label, Panel, Pills, Stepper } from './ui';
 
 interface D {
+  /** 'manual' (default): empty groups, the teacher searches and adds each student. 'random': everyone, shuffled. */
+  mode?: 'manual' | 'random';
+  /** Manual groups. */
+  manual?: string[][];
   source: NameSource;
   custom: string;
   by: 'count' | 'size';
@@ -39,7 +43,174 @@ export function makeGroups(names: string[], by: 'count' | 'size', n: number, pin
   return out;
 }
 
-export default function Groups({ data, set, editing, setEditing }: WidgetProps<D>) {
+const fold = (t: string) => t.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+
+export default function Groups(props: WidgetProps<D>) {
+  return (props.data.mode ?? 'manual') === 'manual' && !props.editing ? <ManualGroups {...props} /> : <RandomGroups {...props} />;
+}
+
+/** Search field at the bottom of a group card: type, pick a suggestion (or Enter adds what you typed). */
+function AddName({ pool, color, onAdd }: { pool: string[]; color: string; onAdd: (name: string) => void }) {
+  const [q, setQ] = useState('');
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLInputElement>(null);
+  const hits = useMemo(() => {
+    const f = fold(q.trim());
+    return (f ? pool.filter((x) => fold(x).includes(f)) : pool).slice(0, 6);
+  }, [q, pool]);
+  const add = (name: string) => {
+    onAdd(name);
+    setQ('');
+    ref.current?.focus();
+  };
+  return (
+    <div className="px-2 pb-2" onClick={(e) => e.stopPropagation()}>
+      <label className="bg-card flex h-10 items-center gap-2 rounded-[12px] px-3 shadow-[inset_0_0_0_1.5px_color-mix(in_srgb,var(--label)_10%,transparent)]">
+        <Search size={16} className="text-label-3 shrink-0" />
+        <input
+          ref={ref}
+          value={q}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setTimeout(() => setOpen(false), 150)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const name = hits[0] ?? q.trim();
+              if (name) add(name);
+            } else if (e.key === 'Escape') {
+              setQ('');
+              (e.target as HTMLInputElement).blur();
+            }
+          }}
+          placeholder="Buscar y agregar…"
+          aria-label="Buscar estudiante para agregar"
+          className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none"
+        />
+      </label>
+      {open && (hits.length > 0 || q.trim()) && (
+        <ul className="bg-card mt-1 overflow-hidden rounded-[12px] shadow-[0_8px_24px_-8px_rgb(0_0_0/0.3),0_0_0_0.5px_var(--separator)]">
+          {hits.map((x) => (
+            <li key={x}>
+              <button
+                type="button"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => add(x)}
+                className="hover:bg-fill-2 flex w-full items-center gap-2 px-3 py-2 text-left text-[15px] font-medium"
+              >
+                <Plus size={15} style={{ color }} className="shrink-0" />
+                <span className="truncate">{x}</span>
+              </button>
+            </li>
+          ))}
+          {!hits.length && (
+            <li>
+              <button
+                type="button"
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => add(q.trim())}
+                className="hover:bg-fill-2 text-label-2 flex w-full items-center gap-2 px-3 py-2 text-left text-[14px]"
+              >
+                <Plus size={15} className="shrink-0" /> Agregar «{q.trim()}»
+              </button>
+            </li>
+          )}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function ManualGroups({ data, set }: WidgetProps<D>) {
+  const { names } = useNames(data.source, data.custom);
+  const groups = data.manual?.length ? data.manual : [[], [], [], []];
+  const placed = new Set(groups.flat());
+  const pool = names.filter((x) => !placed.has(x));
+  const save = (next: string[][]) => set({ manual: next });
+  const resize = (k: number) => {
+    const next = groups.slice(0, k).map((g) => [...g]);
+    while (next.length < k) next.push([]);
+    save(next);
+  };
+  const addTo = (i: number, name: string) => save(groups.map((g, j) => (j === i ? [...g.filter((x) => x !== name), name] : g.filter((x) => x !== name))));
+  const remove = (name: string) => save(groups.map((g) => g.filter((x) => x !== name)));
+  const cols = groups.length <= 2 ? groups.length : groups.length <= 4 ? 2 : groups.length <= 9 ? 3 : 4;
+
+  return (
+    <div className="flex h-full flex-col">
+      <div className="flex flex-wrap items-center justify-center gap-2 px-3 pt-2 pb-2">
+        <Pills
+          value="manual"
+          onChange={(v) => set({ mode: v as 'manual' | 'random' })}
+          options={[
+            { value: 'manual', label: 'A mano' },
+            { value: 'random', label: 'Al azar' },
+          ]}
+        />
+        <Stepper value={groups.length} min={1} max={12} label="grupos" onChange={resize} />
+        <Act color="var(--red)" onClick={() => save(groups.map(() => []))} disabled={!placed.size} aria-label="Vaciar grupos">
+          <Eraser size={17} /> Vaciar
+        </Act>
+      </div>
+      <div className="bg-fill-2 text-label-2 mx-3 mb-2 flex items-center gap-2 rounded-full px-3 py-1.5 text-[13px] font-medium">
+        <Hand size={14} className="shrink-0" />
+        <span className="min-w-0 flex-1 truncate">
+          {placed.size} en grupos{names.length ? ` · ${pool.length} sin grupo` : ''} · busca y agrega, arrastra para mover
+        </span>
+      </div>
+      <div className="min-h-0 flex-1 overflow-auto px-3 pb-3">
+        <div className="grid items-start gap-2.5" style={{ gridTemplateColumns: `repeat(auto-fill, minmax(min(100%, ${cols > 2 ? 170 : 200}px), 1fr))` }}>
+          {groups.map((g, i) => {
+            const c = HEX[i % HEX.length]!;
+            return (
+              <div
+                key={i}
+                className="rounded-[16px]"
+                style={{ background: `color-mix(in srgb, ${c} 14%, var(--card))`, boxShadow: `inset 0 0 0 2px color-mix(in srgb, ${c} 40%, transparent)` }}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  const name = e.dataTransfer.getData('text/plain');
+                  if (name) addTo(i, name);
+                }}
+              >
+                <div className="flex items-center justify-between rounded-t-[16px] px-3 py-1.5 text-[15px] font-bold text-white" style={{ background: c }}>
+                  <span>Grupo {i + 1}</span>
+                  <span className="opacity-80">{g.length}</span>
+                </div>
+                <ul className="px-3 pt-2 pb-1 text-[17px] leading-snug font-semibold">
+                  {g.map((x) => (
+                    <li
+                      key={x}
+                      draggable
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData('text/plain', x);
+                        e.dataTransfer.effectAllowed = 'move';
+                      }}
+                      className="group/n -mx-1.5 flex cursor-grab items-center gap-1 rounded-[8px] px-1.5 hover:bg-[color-mix(in_srgb,var(--label)_6%,transparent)]"
+                    >
+                      <span className="min-w-0 flex-1 truncate">{x}</span>
+                      <button type="button" aria-label={`Quitar a ${x}`} title="Quitar del grupo" onClick={() => remove(x)} className="text-label-3 hover:text-ink-red shrink-0 p-0.5">
+                        <X size={15} />
+                      </button>
+                    </li>
+                  ))}
+                  {!g.length && <li className="text-label-3 py-1 text-[14px] font-medium">Vacío</li>}
+                </ul>
+                <AddName pool={pool} color={c} onAdd={(name) => addTo(i, name)} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
   const { names, src, rosterCount, loading } = useNames(data.source, data.custom);
   const by = data.by ?? 'count';
   const n = data.n ?? (by === 'count' ? 4 : 3);
@@ -62,6 +233,7 @@ export default function Groups({ data, set, editing, setEditing }: WidgetProps<D
     set({ pins: rest });
   };
   const k = groups?.length ?? groupCount(names.length, by, n);
+  const manual = (data.mode ?? 'manual') === 'manual';
 
   if (editing)
     return (
@@ -76,7 +248,8 @@ export default function Groups({ data, set, editing, setEditing }: WidgetProps<D
           ]}
         />
         {src === 'custom' && <textarea className={cn(inputCls, 'min-h-28 resize-none')} placeholder={'Un nombre por línea'} value={data.custom ?? ''} onChange={(e) => set({ custom: e.target.value, groups: null })} />}
-        {names.length > 0 && (
+        {manual && <p className="text-label-2 text-[14px]">Estos nombres aparecen al buscar en cada grupo. También puedes escribir un nombre que no esté en la lista.</p>}
+        {!manual && names.length > 0 && (
           <>
             <div className="flex items-center justify-between gap-2">
               <Label>Asignar a un grupo</Label>
@@ -113,7 +286,7 @@ export default function Groups({ data, set, editing, setEditing }: WidgetProps<D
           solid
           color="var(--blue)"
           onClick={() => {
-            make();
+            if (!manual) make();
             setEditing(false);
           }}
         >
@@ -127,6 +300,14 @@ export default function Groups({ data, set, editing, setEditing }: WidgetProps<D
   return (
     <div className="flex h-full flex-col">
       <div className="flex flex-wrap items-center justify-center gap-2 px-3 pt-2 pb-2">
+        <Pills
+          value="random"
+          onChange={(v) => set({ mode: v as 'manual' | 'random' })}
+          options={[
+            { value: 'manual', label: 'A mano' },
+            { value: 'random', label: 'Al azar' },
+          ]}
+        />
         <Pills
           value={by}
           onChange={(v) => make(v, v === 'count' ? 4 : 3)}
