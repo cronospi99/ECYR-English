@@ -1,17 +1,22 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Check, Download, ImagePlus, Redo2, Trash2, Undo2, X, Square as SquareIcon, Circle as CircleIcon, Blend } from 'lucide-react';
+import { Check, Download, ImagePlus, Redo2, Trash2, Undo2, X, Blend, FlipHorizontal2, FlipVertical2, Asterisk, Ban } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/Button';
 import {
+  CLOSED_SHAPES,
   FREEHAND,
   SHAPES,
+  STAMPS,
+  TEXTURED,
   UNITS,
   applyStrokeStyle,
   composite,
   drawDot,
   drawSegment,
   drawShape,
+  drawStamp,
   drawText,
+  drawTextured,
   exportCompressed,
   floodFill,
   hexToRgb,
@@ -21,7 +26,9 @@ import {
   toPixelRect,
   unionRect,
   widthAt,
+  withMirror,
   type Background,
+  type Mirror,
   type Pt,
   type Rect,
   type StrokeStyle,
@@ -93,6 +100,7 @@ type Stroke = {
   pen: boolean;
   bounds: Rect | null;
   style: StrokeStyle;
+  mirror: Mirror;
 };
 
 export function DrawingBoard({
@@ -120,6 +128,8 @@ export function DrawingBoard({
   const [textSize, setTextSize] = useState(44);
   const [opacity, setOpacity] = useState(1);
   const [filled, setFilled] = useState(false);
+  const [mirror, setMirror] = useState<Mirror>('off');
+  const [sticker, setSticker] = useState(STAMPS[0]!);
   const [tolerance, setTolerance] = useState(24);
   const [bg, setBg] = useState<Background>(defaultBackground);
   const [hist, setHist] = useState({ u: 0, r: 0 });
@@ -455,12 +465,19 @@ export function DrawingBoard({
       editText({ x: u.x, y: Math.max(0, u.y - textSize * 0.6), value: '' });
       return;
     }
+    if (tool === 'stamp') {
+      const ctx = ctxOf(ink)!;
+      let r: Rect = { x: 0, y: 0, w: 0, h: 0 };
+      withMirror(ctx, mirror, boardH, () => (r = unionRect(r.w ? r : null, drawStamp(ctx, sticker, u.x, u.y, textSize))));
+      commit(toPx(mirror === 'off' ? r : { x: 0, y: 0, w: UNITS, h: boardH }));
+      return;
+    }
 
     e.currentTarget.setPointerCapture(e.pointerId);
     const pen = e.pointerType === 'pen';
-    const style: StrokeStyle = { tool, color, size, k };
+    const style: StrokeStyle = { tool, color, size, k, hue: Math.random() * 360 };
     const pt: Pt = { ...u, p: pen ? e.pressure || 0.5 : 0.5 };
-    stroke.current = { pointerId: e.pointerId, tool, pts: [pt], start: u, pen, bounds: null, style };
+    stroke.current = { pointerId: e.pointerId, tool, pts: [pt], start: u, pen, bounds: null, style, mirror: FREEHAND.includes(tool) ? mirror : 'off' };
 
     const prev = previewRef.current!;
     prev.style.opacity = String(tool === 'highlighter' ? opacity * 0.42 : opacity);
@@ -471,7 +488,7 @@ export function DrawingBoard({
       ctx.save();
       applyStrokeStyle(ctx, style);
       const w = widthAt(style, pt.p, pen);
-      drawDot(ctx, style, pt, w);
+      withMirror(ctx, stroke.current.mirror, boardH, () => drawDot(ctx, style, pt, w));
       ctx.restore();
       const pad = size * 1.4 + 4;
       stroke.current.bounds = { x: u.x - pad, y: u.y - pad, w: pad * 2, h: pad * 2 };
@@ -494,8 +511,18 @@ export function DrawingBoard({
         const u = toUnits(ev);
         const last = s.pts[s.pts.length - 1];
         if (Math.hypot(u.x - last.x, u.y - last.y) < 0.6) continue;
-        s.pts.push({ ...u, p: s.pen ? ev.pressure || 0.5 : 0.5 });
-        drawSegment(ctx, s.style, s.pts, s.pen);
+        const pt: Pt = { ...u, p: s.pen ? ev.pressure || 0.5 : 0.5 };
+        s.pts.push(pt);
+        if (TEXTURED.includes(s.tool)) {
+          const w = widthAt(s.style, pt.p, s.pen);
+          // Spray: skip tiny moves so the paint doesn't pile up into a solid blob.
+          if (s.tool === 'spray' && Math.hypot(pt.x - last.x, pt.y - last.y) < w * 0.25) {
+            s.pts.pop();
+            continue;
+          }
+          withMirror(ctx, s.mirror, boardH, () => drawTextured(ctx, s.style, last, pt, w));
+          if (s.tool === 'rainbow') s.style.hue = (s.style.hue ?? 0) + Math.hypot(pt.x - last.x, pt.y - last.y) * 0.9;
+        } else withMirror(ctx, s.mirror, boardH, () => drawSegment(ctx, s.style, s.pts, s.pen));
         s.bounds = unionRect(s.bounds, { x: u.x - pad, y: u.y - pad, w: pad * 2, h: pad * 2 });
       }
       ctx.restore();
@@ -512,13 +539,14 @@ export function DrawingBoard({
     stroke.current = null;
     const ink = inkRef.current!;
     const prev = previewRef.current!;
-    if (FREEHAND.includes(s.tool) && s.pts.length > 1) {
+    if (FREEHAND.includes(s.tool) && !TEXTURED.includes(s.tool) && s.pts.length > 1) {
       const ctx = ctxOf(s.tool === 'eraser' ? ink : prev)!;
       ctx.save();
       applyStrokeStyle(ctx, s.style);
-      drawSegment(ctx, s.style, s.pts, s.pen, true);
+      withMirror(ctx, s.mirror, boardH, () => drawSegment(ctx, s.style, s.pts, s.pen, true));
       ctx.restore();
     }
+    if (s.mirror !== 'off') s.bounds = { x: 0, y: 0, w: UNITS, h: boardH };
     if (s.tool !== 'eraser' && !cancelled) {
       const ctx = ctxOf(ink)!;
       ctx.save();
@@ -605,7 +633,7 @@ export function DrawingBoard({
       if (e.key === '[' || e.key === ']') {
         e.preventDefault();
         const dir = e.key === ']' ? 1 : -1;
-        if (tool === 'text') setTextSize((v) => Math.min(TEXT_MAX, Math.max(TEXT_MIN, v + dir * 4)));
+        if (tool === 'text' || tool === 'stamp') setTextSize((v) => Math.min(TEXT_MAX, Math.max(TEXT_MIN, v + dir * 4)));
         else
           setSizes((s) => {
             const v = s[sizeTool];
@@ -634,14 +662,64 @@ export function DrawingBoard({
   };
 
   const setSize = (v: number) => {
-    if (tool === 'text') setTextSize(v);
+    if (tool === 'text' || tool === 'stamp') setTextSize(v);
     else setSizes((s) => ({ ...s, [sizeTool]: v }));
   };
 
   const palette = compact ? COMPACT_PALETTE.map((hex) => ({ hex, name: PALETTE.find((p) => p.hex === hex)?.name ?? hex })) : PALETTE;
   const inPalette = palette.some((p) => p.hex === color);
   const toolList = compact ? [COMPACT_TOOLS] : TOOL_GROUPS;
-  const showSize = FREEHAND.includes(tool) || SHAPES.includes(tool) || tool === 'text';
+  const showSize = FREEHAND.includes(tool) || SHAPES.includes(tool) || tool === 'text' || tool === 'stamp';
+  const big = tool === 'text' || tool === 'stamp';
+  const ShapeIcon = TOOLS[tool].icon;
+  const mirrorControl = FREEHAND.includes(tool) && (
+    <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Simetría">
+      {(
+        [
+          ['off', Ban, 'Sin simetría'],
+          ['x', FlipHorizontal2, 'Espejo izquierda ↔ derecha'],
+          ['y', FlipVertical2, 'Espejo arriba ↕ abajo'],
+          ['xy', Asterisk, 'Espejo en 4'],
+        ] as const
+      ).map(([m, Icon, label]) => (
+        <button
+          key={m}
+          type="button"
+          title={label}
+          aria-label={label}
+          aria-pressed={mirror === m}
+          onClick={() => setMirror(m)}
+          className={cn(
+            'grid place-items-center rounded-[9px] transition-colors',
+            compact ? 'h-10 w-10' : 'h-8 w-8',
+            mirror === m ? 'bg-card text-label shadow-[0_2px_6px_-2px_rgb(0_0_0/0.25)]' : 'text-label-2 hover:text-label',
+          )}
+        >
+          <Icon size={16} strokeWidth={2.3} />
+        </button>
+      ))}
+    </div>
+  );
+  const stickerPicker = tool === 'stamp' && (
+    <div className="flex w-full flex-wrap gap-1" role="group" aria-label="Stickers">
+      {STAMPS.map((e) => (
+        <button
+          key={e}
+          type="button"
+          aria-label={`Sticker ${e}`}
+          aria-pressed={sticker === e}
+          onClick={() => setSticker(e)}
+          className={cn(
+            'grid place-items-center rounded-[10px] transition-transform active:scale-90',
+            compact ? 'h-10 w-10 text-[22px]' : 'h-9 w-9 text-[20px]',
+            sticker === e ? 'bg-[color-mix(in_srgb,var(--blue)_18%,transparent)] ring-2 ring-[var(--blue)]' : 'hover:bg-fill-2',
+          )}
+        >
+          {e}
+        </button>
+      ))}
+    </div>
+  );
   const dot = Math.max(3, Math.min(30, size * scale * (tool === 'brush' ? 1.15 : 1)));
   const mh = maxHeight ?? (compact ? '60dvh' : '72dvh');
   const cursor =
@@ -708,7 +786,7 @@ export function DrawingBoard({
       <div className="bg-card shadow-card flex flex-col gap-2 rounded-[18px] p-2">
         <div className={cn('flex flex-wrap items-center', compact ? 'gap-1' : 'gap-1.5')}>
           {toolList.map((group, gi) => (
-            <Group key={gi} className={compact ? undefined : ['order-1', 'order-4 sm:order-2', 'order-5 sm:order-3'][gi]}>
+            <Group key={gi} className={compact ? undefined : ['order-1', 'order-4 sm:order-2', 'order-5 sm:order-3', 'order-5 sm:order-3'][gi]}>
               {group.map((t) => {
                 const M = TOOLS[t];
                 const Icon = M.icon;
@@ -765,18 +843,24 @@ export function DrawingBoard({
             ))}
             <CustomColor value={color} onChange={chooseColor} big={compact} active={!inPalette} />
           </div>
+          {mirrorControl}
+          {stickerPicker}
           {!compact && (
             <div className="flex min-w-[260px] flex-1 flex-wrap items-center gap-x-4 gap-y-2">
               {showSize && (
                 <Slider
                   className="min-w-[180px] flex-1"
-                  label={tool === 'text' ? 'Tamaño de letra ([ ])' : 'Grosor ([ ])'}
-                  value={tool === 'text' ? textSize : size}
-                  min={tool === 'text' ? TEXT_MIN : SIZE_MIN}
-                  max={tool === 'text' ? TEXT_MAX : SIZE_MAX}
+                  label={tool === 'text' ? 'Tamaño de letra ([ ])' : tool === 'stamp' ? 'Tamaño del sticker ([ ])' : 'Grosor ([ ])'}
+                  value={big ? textSize : size}
+                  min={big ? TEXT_MIN : SIZE_MIN}
+                  max={big ? TEXT_MAX : SIZE_MAX}
                   onChange={setSize}
                   preview={
-                    tool === 'text' ? (
+                    tool === 'stamp' ? (
+                      <span className="grid h-8 w-8 shrink-0 place-items-center text-[20px]" aria-hidden>
+                        {sticker}
+                      </span>
+                    ) : tool === 'text' ? (
                       <span className="text-label relative grid h-8 w-8 shrink-0 place-items-center text-[17px] font-bold" aria-hidden>
                         Aa
                         <span className="absolute inset-x-1.5 bottom-0.5 h-[3px] rounded-full" style={{ background: color }} />
@@ -787,7 +871,7 @@ export function DrawingBoard({
                   }
                 />
               )}
-              {(tool === 'rect' || tool === 'ellipse') && (
+              {CLOSED_SHAPES.includes(tool) && (
                 <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Estilo de forma">
                   {[false, true].map((f) => (
                     <button
@@ -802,11 +886,7 @@ export function DrawingBoard({
                         filled === f ? 'bg-card text-label shadow-[0_2px_6px_-2px_rgb(0_0_0/0.25)]' : 'text-label-2 hover:text-label',
                       )}
                     >
-                      {tool === 'rect' ? (
-                        <SquareIcon size={15} strokeWidth={2.4} fill={f ? 'currentColor' : 'none'} />
-                      ) : (
-                        <CircleIcon size={15} strokeWidth={2.4} fill={f ? 'currentColor' : 'none'} />
-                      )}
+                      <ShapeIcon size={15} strokeWidth={2.4} fill={f ? 'currentColor' : 'none'} />
                       {f ? 'Relleno' : 'Contorno'}
                     </button>
                   ))}
@@ -916,6 +996,12 @@ export function DrawingBoard({
           onPointerLeave={(e) => updateCursor(e, false)}
           onLostPointerCapture={(e) => finishStroke(e)}
         />
+        {mirror !== 'off' && FREEHAND.includes(tool) && (
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            {mirror !== 'y' && <div className="absolute inset-y-0 left-1/2 border-l-2 border-dashed border-[color-mix(in_srgb,var(--blue)_45%,transparent)]" />}
+            {mirror !== 'x' && <div className="absolute inset-x-0 top-1/2 border-t-2 border-dashed border-[color-mix(in_srgb,var(--blue)_45%,transparent)]" />}
+          </div>
+        )}
         <div
           ref={cursorRef}
           aria-hidden

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FlaskConical, Languages, NotebookPen } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FlaskConical, Languages, MonitorPlay, NotebookPen } from 'lucide-react';
 import { PageLoader } from '@/components/ui/Misc';
 import { Sheet } from '@/features/portfolio/Sheet';
 import { TranslatorHost, registerTranslatorNoteSaver, useTranslator } from '@/components/learning/Translator';
@@ -16,12 +16,14 @@ const VERB_LAB_PATH = '/practice/verbs';
 
 /**
  * The floating dock (bottom-right above the mobile tab bar; a vertical column
- * at the right edge on desktop): quick Verb Lab, "Mis notas" and the
+ * at the right edge on desktop): the classroom screen (teachers), quick Verb Lab, "Mis notas" and the
  * translator, available on every page of the app shell. AppShell keeps a
  * right gutter on desktop so the column never covers page content.
  */
 export function NotesDock() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
   const [open, setOpen] = useState(false);
   const [verbs, setVerbs] = useState(false);
   const tOpen = useTranslator((s) => s.open);
@@ -45,7 +47,7 @@ export function NotesDock() {
 
   const onVerbLab = pathname === VERB_LAB_PATH;
 
-  // Alt+N opens the notes, Alt+V the quick Verb Lab, from anywhere (e.code: Option+V on a Mac types √).
+  // Alt+N opens the notes, Alt+V the quick Verb Lab, Alt+P (teachers) the classroom screen, from anywhere (e.code: Option+V on a Mac types √).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!e.altKey || e.ctrlKey || e.metaKey) return;
@@ -58,11 +60,14 @@ export function NotesDock() {
         setOpen(false);
         closeT();
         setVerbs((v) => !v);
+      } else if ((e.code === 'KeyP' || e.key === 'p' || e.key === 'P') && isTeacher) {
+        e.preventDefault();
+        navigate('/teacher/screen');
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onVerbLab, closeT]);
+  }, [onVerbLab, closeT, isTeacher, navigate]);
 
   const onNotesPage = pathname === '/notes';
   const btn =
@@ -78,6 +83,16 @@ export function NotesDock() {
         role="toolbar"
         aria-label="Herramientas"
       >
+        {isTeacher && (
+          <Link
+            to="/teacher/screen"
+            className={cn(btn, 'text-ink-blue hover:bg-fill-2')}
+            aria-label="Pantalla de clase (Alt+P)"
+            title="Pantalla de clase: temporizador, ruleta, grupos… (Alt+P)"
+          >
+            <MonitorPlay size={20} strokeWidth={2.1} />
+          </Link>
+        )}
         {!onVerbLab && (
           <button
             type="button"

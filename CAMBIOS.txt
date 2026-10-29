@@ -11,7 +11,7 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-CUATRO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+CINCO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
      asignadas, Mis trabajos y quizzes de podcasts.
   2. supabase/migrations/14_submission_reviews.sql — activa la revisión
@@ -22,6 +22,8 @@ CUATRO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
        select id from auth.users where lower(email) = lower('TU_CORREO')
        on conflict do nothing;
   4. supabase/migrations/16_live_boards.sql — Muro en vivo (sección Y).
+  5. supabase/migrations/17_admin_delete_users.sql — eliminar docentes y
+     estudiantes desde tu panel (sección X).
 Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
@@ -163,6 +165,11 @@ X. DOCENTES SOLO POR INVITACIÓN (tú tienes el control)
   (Perfil › «¿Eres docente?»). A ti no te pide código.
 - También aplica en el registro del simulador IELTS.
 - Los docentes que ya existían siguen igual.
+- Eliminar cuentas: en el mismo panel, 🗑 junto a cada docente y cada
+  estudiante (lista de estudiantes con buscador y filtro por docente o
+  «Sin clase»). Pide confirmación. Se borra la cuenta y todo lo suyo; si es
+  un docente, sus estudiantes NO se borran: quedan sin clase y pueden unirse
+  a otra. No puedes borrar tu propia cuenta.
 
 Y. MURO EN VIVO (menú › Muro en vivo · Sala del docente › Material)
 - Jam y Padlet se solapaban, así que es UN solo muro con tres formatos:
@@ -187,6 +194,12 @@ Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
   de trabajo, Nivel de ruido (micrófono), Votación, Texto, Imagen, Video
   de YouTube, Dados, Marcador, Agenda de la clase, Dibujo, Código QR (por
   defecto, para entrar al Muro en vivo) y Cuenta atrás.
+- Grupos a mano: toca (o arrastra) un nombre y luego el grupo donde lo
+  quieres. Queda 📌 fijado y «Mezclar» respeta los fijados y reparte al
+  resto. En ⚙ puedes asignar a cada estudiante «Grupo N» o «Al azar», y
+  «Quitar fijados». Toca el 📌 para soltar a alguien.
+- Acceso rápido: botón azul «Pantalla de clase» en la barra flotante de la
+  derecha (encima del Verb Lab), solo para docentes, o Alt+P.
 - Descartados: webcam (privacidad), calendario (el reloj ya da la fecha),
   PDF, embed e hipervínculo (la mayoría de sitios no se dejan incrustar; el
   QR cubre compartir enlaces) y stickers (decorativos).
@@ -196,6 +209,10 @@ Z2. PIZARRA (Práctica › Pizarra; también dentro del Muro y la Pantalla)
   flecha, rectángulo y elipse (borde o relleno), texto, cuentagotas, 18
   colores + personalizado, grosor y opacidad, deshacer/rehacer (Ctrl+Z),
   fondos blanco/cuadrícula/rayado, insertar imagen y descargar PNG.
+- Más herramientas: crayón, caligrafía (plumilla a 45°), aerosol, neón,
+  pincel arcoíris; triángulo, estrella, corazón, hexágono y globo de
+  diálogo (borde o relleno); stickers (30 emojis con tamaño); y simetría
+  estilo Gartic Phone: espejo ↔, ↕ o en 4, con guías en el lienzo.
 - Reto «¿Qué dibujo?»: palabra al azar por nivel A1–C2, con 60 segundos.
 
 O. VERB LAB RÁPIDO (botón naranja arriba del de notas, Alt+V)

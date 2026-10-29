@@ -25,6 +25,15 @@ export interface PlatformTeacher {
   created_at: string;
 }
 
+export interface PlatformStudent {
+  id: string;
+  email: string | null;
+  full_name: string | null;
+  teacher_id: string | null;
+  teacher_name: string | null;
+  created_at: string;
+}
+
 export type InviteStatus = "open" | "used" | "expired" | "revoked";
 
 export function inviteStatus(i: TeacherInvite, now = Date.now()): InviteStatus {
@@ -36,10 +45,18 @@ export function inviteStatus(i: TeacherInvite, now = Date.now()): InviteStatus {
 
 const MISSING =
   "Falta activar los códigos de docente en Supabase (15_teacher_invites.sql).";
+const MISSING_17 =
+  "Falta activar la eliminación de cuentas en Supabase (17_admin_delete_users.sql).";
 
-function fail(msg: string): never {
+function fail(msg: string, missing = MISSING): never {
   if (/does not exist|schema cache|Could not find the function/i.test(msg))
-    throw new Error(MISSING);
+    throw new Error(missing);
+  if (/own account/i.test(msg))
+    throw new Error("No puedes borrar tu propia cuenta desde aquí.");
+  if (/Remove it from platform_admins/i.test(msg))
+    throw new Error(
+      "Esa cuenta también es administración; quítala primero de platform_admins.",
+    );
   if (/platform owner/i.test(msg))
     throw new Error(
       "Solo la administración de la plataforma puede hacer esto.",
@@ -62,6 +79,20 @@ export async function listTeachers(): Promise<PlatformTeacher[]> {
     ...t,
     students: Number(t.students) || 0,
   }));
+}
+
+export async function listStudents(): Promise<PlatformStudent[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase.rpc('list_platform_students');
+  if (error) fail(error.message, MISSING_17);
+  return (data ?? []) as PlatformStudent[];
+}
+
+/** Deletes the account and everything it owns. A teacher's students stay, without a class. */
+export async function deleteAccount(id: string): Promise<void> {
+  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  const { error } = await supabase.rpc('admin_delete_user', { p_user: id });
+  if (error) fail(error.message, MISSING_17);
 }
 
 export async function createInvite(

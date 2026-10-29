@@ -13,6 +13,17 @@ import {
   Square,
   SquareDashed,
   Type,
+  SprayCan,
+  Rainbow,
+  Feather,
+  Zap,
+  Triangle,
+  Star,
+  Heart,
+  Hexagon,
+  MessageCircle,
+  Smile,
+  PenTool,
   type LucideIcon,
 } from 'lucide-react';
 import type { Background, Tool } from './engine';
@@ -38,15 +49,27 @@ export const TOOLS: Record<Tool, ToolMeta> = {
   ellipse: { id: 'ellipse', label: 'Elipse', key: 'O', icon: Circle, size: 6 },
   text: { id: 'text', label: 'Texto', key: 'T', icon: Type, size: 0 },
   eyedropper: { id: 'eyedropper', label: 'Cuentagotas', key: 'I', icon: Pipette, size: 0 },
+  crayon: { id: 'crayon', label: 'Crayón', key: 'C', icon: PenTool, size: 12 },
+  calligraphy: { id: 'calligraphy', label: 'Caligrafía', key: 'K', icon: Feather, size: 14 },
+  spray: { id: 'spray', label: 'Aerosol', key: 'S', icon: SprayCan, size: 18 },
+  neon: { id: 'neon', label: 'Neón', key: 'N', icon: Zap, size: 8 },
+  rainbow: { id: 'rainbow', label: 'Arcoíris', key: 'W', icon: Rainbow, size: 14 },
+  triangle: { id: 'triangle', label: 'Triángulo', key: 'Y', icon: Triangle, size: 6 },
+  star: { id: 'star', label: 'Estrella', key: 'Q', icon: Star, size: 6 },
+  heart: { id: 'heart', label: 'Corazón', key: 'U', icon: Heart, size: 6 },
+  hexagon: { id: 'hexagon', label: 'Hexágono', key: 'X', icon: Hexagon, size: 6 },
+  bubble: { id: 'bubble', label: 'Globo de diálogo', key: 'M', icon: MessageCircle, size: 5 },
+  stamp: { id: 'stamp', label: 'Stickers', key: 'D', icon: Smile, size: 0 },
 };
 
 export const TOOL_GROUPS: Tool[][] = [
   ['pencil', 'brush', 'highlighter', 'eraser', 'fill'],
-  ['line', 'arrow', 'rect', 'ellipse'],
-  ['text', 'eyedropper'],
+  ['crayon', 'calligraphy', 'spray', 'neon', 'rainbow'],
+  ['line', 'arrow', 'rect', 'ellipse', 'triangle', 'star', 'heart', 'hexagon', 'bubble'],
+  ['text', 'stamp', 'eyedropper'],
 ];
 
-export const COMPACT_TOOLS: Tool[] = ['pencil', 'brush', 'eraser', 'fill'];
+export const COMPACT_TOOLS: Tool[] = ['pencil', 'brush', 'spray', 'rainbow', 'eraser', 'fill', 'stamp'];
 
 export const KEY_TO_TOOL: Record<string, Tool> = Object.fromEntries(
   Object.values(TOOLS).map((t) => [t.key.toLowerCase(), t.id]),
