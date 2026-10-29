@@ -9,7 +9,7 @@ interface D {
 export default function Draw({ data, set }: WidgetProps<D>) {
   return (
     <div className="h-full overflow-hidden">
-      <DrawingBoard compact className="h-full w-full" initial={data.img ?? undefined} onDone={(img) => set({ img })} doneLabel="Guardar" />
+      <DrawingBoard compact fill className="h-full w-full" initial={data.img ?? undefined} onDone={(img) => set({ img })} doneLabel="Guardar" />
     </div>
   );
 }
