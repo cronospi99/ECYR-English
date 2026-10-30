@@ -168,6 +168,37 @@ npm run build        # dist/
    la app funciona sin conexión (progreso solo en el navegador).
 3. Deploy. Cada push a `main` despliega producción y cada PR una preview.
 
+## Juegos en vivo (Class Wars, Impostor): servidor en tiempo real gratis
+
+El movimiento de los jugadores **no pasa por Supabase** (no gasta su cupo de Realtime). Pasa por un
+pequeño servidor en **Cloudflare Workers** (`relay/`) que solo reenvía mensajes entre el proyector del
+docente (que corre las reglas del juego) y los celulares. Supabase solo guarda los puntos de las cartas
+y las preguntas propias del docente.
+
+**Costo: cero.** En el plan gratuito de Cloudflare no hay cobro: si un día se pasara del límite diario,
+las conexiones se rechazan, nunca se facturan. Una partida de 30 estudiantes × 15 min usa ≈ 7 % del cupo
+diario, y el servidor descarta a cualquier dispositivo que envíe más de 30 mensajes por segundo.
+
+**Publicarlo (una sola vez, ~5 minutos):**
+
+1. Crea una cuenta gratis en <https://dash.cloudflare.com/sign-up> (no pide tarjeta).
+2. En tu computador, dentro de la carpeta del proyecto:
+   ```bash
+   cd relay
+   npm install
+   npx wrangler login      # abre el navegador para autorizar
+   npx wrangler deploy
+   ```
+   Al final muestra una dirección como `https://ecyr-relay.<tu-subdominio>.workers.dev`.
+3. En Vercel › tu proyecto › Settings › Environment Variables agrega
+   `VITE_RELAY_URL = wss://ecyr-relay.<tu-subdominio>.workers.dev` (cambia `https` por `wss`) y vuelve a desplegar.
+
+Si ya habías publicado el relay del Impostor original, sirve tal cual: usa su dirección.
+Solo hay que volver a publicar el relay si cambia la carpeta `relay/`.
+
+**Desarrollo local:** `npm run relay` (escucha en `ws://localhost:8787`) y `npm run dev`.
+Sin relay, los modos **Demo** (contra bots) de ambos juegos funcionan igual.
+
 ## Backend (Supabase)
 
 Ver [`supabase/README.md`](supabase/README.md): pegar `supabase/setup.sql` en el SQL Editor (migraciones `01`–`06`), configurar las variables `VITE_SUPABASE_*`,

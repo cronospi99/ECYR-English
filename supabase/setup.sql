@@ -3,7 +3,7 @@
 -- -----------------------------------------------------------------------------
 -- Paste this whole file into Supabase → SQL Editor → New query → Run.
 -- Safe to re-run: every statement is create-if-not-exists or drop-then-create.
--- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql, 11_podcasts.sql, 12_notes.sql, 13_c2_level.sql, 14_submission_reviews.sql, 15_teacher_invites.sql, 16_live_boards.sql, 17_admin_delete_users.sql, 18_live_boards_v2.sql
+-- Includes, in order: 01_schema.sql, 02_roles_and_tasks.sql, 03_history_visibility.sql, 04_audio_library.sql, 05_ecyr_platform.sql, 06_api_grants.sql, 07_portfolio.sql, 08_migrations_log.sql, 09_assignments.sql, 11_podcasts.sql, 12_notes.sql, 13_c2_level.sql, 14_submission_reviews.sql, 15_teacher_invites.sql, 16_live_boards.sql, 17_admin_delete_users.sql, 18_live_boards_v2.sql, 19_game_cards.sql, 20_class_wars.sql
 -- Do not edit by hand: change supabase/migrations/* and re-run the script.
 -- =============================================================================
 
@@ -4262,3 +4262,488 @@ commit;
 
 -- Tell the API about the new and changed functions right away.
 notify pgrst, 'reload schema';
+
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 19_game_cards.sql
+
+-- =============================================================================
+-- ECYR English platform — character cards for the live games (Impostor, Class Wars)
+-- -----------------------------------------------------------------------------
+-- Runs after 01–18. Safe to re-run: create-if-not-exists / drop-then-create /
+-- create-or-replace throughout, inside one transaction (if anything fails,
+-- nothing changes).
+--
+-- WHY THIS FILE EXISTS
+-- The live games use 25 characters (the teaching team, drawn in code). Every
+-- player — teacher or student — can play ALL of them. Each character card
+-- ranks up with the points its player earns while playing it:
+--
+--     bronze (0) → silver (20) → gold (60) → diamond (150)
+--
+-- (thresholds live in the app, src/features/cards/api.ts RANK_AT; the database
+-- only stores points). Gameplay itself never touches Supabase: it runs through
+-- the Cloudflare relay. Supabase is called ONCE per match, by the teacher's
+-- projector browser, when the match ends:
+--
+--   game_card_points   one row per (player, card): total points and matches.
+--   game_matches       one row per finished match (game + match id + teacher)
+--                      so the log knows who paid it.
+--   game_awards        one row per (match, player): what that player got.
+--                      Its primary key is what guarantees that the same match
+--                      never pays the same player twice — a retried or
+--                      replayed call only adds the players still missing.
+--
+-- Nobody writes these tables directly. award_game_points() is the only way
+-- in (SECURITY DEFINER), and it checks everything:
+--   * the caller is signed in and is a teacher;
+--   * p_game is 'impostor' or 'classwars'; the match id is short and plain;
+--   * a match id already used by ANOTHER teacher is refused;
+--   * each award goes to the teacher themself or to one of their students
+--     (public.is_my_student); anyone else is skipped, not paid;
+--   * the card id is one of the 25 characters (game_card_ids());
+--   * points are whole numbers, clamped to 0 … the per-award cap of the game
+--     (impostor 30, classwars 50); at most 80 awards per call (the relay's
+--     room limit) and at most 60 matches per teacher per hour.
+--
+-- WHO CAN DO WHAT
+--   student    reads their own card points and their own awards
+--   teacher    reads the card points and awards of their students and their
+--              own; pays points at the end of a match they hosted, to their
+--              own students and to themself (through award_game_points)
+--   anyone else nothing (guests play without saving)
+-- =============================================================================
+
+begin;
+
+do $$
+begin
+  if to_regclass('public.profiles') is null or to_regprocedure('public.is_my_student(uuid)') is null then
+    raise exception 'Run 01_schema.sql … 18_live_boards_v2.sql first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
+-- ============================================================= 1. TABLES ====
+create table if not exists public.game_card_points (
+  user_id     uuid not null references public.profiles(id) on delete cascade,
+  card_id     text not null,
+  points      integer not null default 0,
+  games       integer not null default 0,
+  updated_at  timestamptz not null default now(),
+  primary key (user_id, card_id)
+);
+
+create table if not exists public.game_matches (
+  game        text not null,
+  match_id    text not null,
+  teacher_id  uuid not null references public.profiles(id) on delete cascade,
+  created_at  timestamptz not null default now(),
+  primary key (game, match_id)
+);
+
+create table if not exists public.game_awards (
+  game        text not null,
+  match_id    text not null,
+  user_id     uuid not null references public.profiles(id) on delete cascade,
+  card_id     text not null,
+  points      integer not null,
+  created_at  timestamptz not null default now(),
+  primary key (game, match_id, user_id),
+  foreign key (game, match_id) references public.game_matches(game, match_id) on delete cascade
+);
+
+alter table public.game_card_points drop constraint if exists game_card_points_card;
+alter table public.game_card_points drop constraint if exists game_card_points_range;
+alter table public.game_card_points
+  add constraint game_card_points_card check (card_id ~ '^[a-z]{2,24}$');
+alter table public.game_card_points
+  add constraint game_card_points_range check (points between 0 and 10000000 and games >= 0);
+
+alter table public.game_matches drop constraint if exists game_matches_game;
+alter table public.game_matches drop constraint if exists game_matches_id;
+alter table public.game_matches
+  add constraint game_matches_game check (game in ('impostor', 'classwars'));
+alter table public.game_matches
+  add constraint game_matches_id check (match_id ~ '^[A-Za-z0-9_.:-]{4,80}$');
+
+alter table public.game_awards drop constraint if exists game_awards_card;
+alter table public.game_awards drop constraint if exists game_awards_points;
+alter table public.game_awards
+  add constraint game_awards_card check (card_id ~ '^[a-z]{2,24}$');
+alter table public.game_awards
+  add constraint game_awards_points check (points between 0 and 1000);
+
+create index if not exists game_matches_teacher_idx on public.game_matches(teacher_id, created_at desc);
+create index if not exists game_awards_user_idx     on public.game_awards(user_id, created_at desc);
+
+alter table public.game_card_points enable row level security;
+alter table public.game_matches     enable row level security;
+alter table public.game_awards      enable row level security;
+
+-- Reads only; every write goes through award_game_points().
+revoke all on public.game_card_points from anon, authenticated;
+revoke all on public.game_matches     from anon, authenticated;
+revoke all on public.game_awards      from anon, authenticated;
+grant select on public.game_card_points to authenticated;
+grant select on public.game_matches     to authenticated;
+grant select on public.game_awards      to authenticated;
+
+drop policy if exists game_card_points_select on public.game_card_points;
+drop policy if exists game_matches_select     on public.game_matches;
+drop policy if exists game_awards_select      on public.game_awards;
+
+-- Mine, or my students' (teacher).
+create policy game_card_points_select on public.game_card_points
+  for select to authenticated using (user_id = auth.uid() or public.is_my_student(user_id));
+create policy game_awards_select on public.game_awards
+  for select to authenticated using (user_id = auth.uid() or public.is_my_student(user_id));
+-- A teacher sees the matches they paid.
+create policy game_matches_select on public.game_matches
+  for select to authenticated using (teacher_id = auth.uid());
+
+-- ============================================================ 2. HELPERS ====
+-- The 25 characters (src/features/cards/teachers.ts). Add new ids here too.
+create or replace function public.game_card_ids()
+returns text[]
+language sql
+immutable
+as $$
+  select array[
+    'camila', 'sofia', 'gabriel', 'sander', 'nataly', 'anyela', 'julian', 'freddy',
+    'andres', 'angie', 'lina', 'valentina', 'esteban', 'sebastian', 'javier', 'anny',
+    'estephania', 'dager', 'liliana', 'norvey', 'mafe', 'jhonathan', 'jalbleidy',
+    'juanpablo', 'vanessa'
+  ]::text[];
+$$;
+
+-- ================================================================ 3. RPC ====
+-- p_awards: [{"user_id": uuid, "card_id": text, "points": int}, …]
+-- Returns {"match": …, "saved": [{user_id, card_id, points, total}],
+--          "skipped": [{user_id, reason}]} where reason is
+--   'invalid'       bad user id / card id / points
+--   'not_in_class'  not the caller and not one of the caller's students
+--   'already_paid'  this player already got points for this match
+--   'repeated'      the same player twice in one call (first one counts)
+create or replace function public.award_game_points(p_game text, p_match text, p_awards jsonb)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_me       uuid := auth.uid();
+  v_cap      integer;
+  v_owner    uuid;
+  v_item     jsonb;
+  v_uid      uuid;
+  v_card     text;
+  v_pts      integer;
+  v_total    integer;
+  v_seen     uuid[] := '{}';
+  v_saved    jsonb := '[]'::jsonb;
+  v_skipped  jsonb := '[]'::jsonb;
+  v_rows     integer;
+begin
+  if v_me is null then
+    raise exception 'not signed in' using errcode = '28000';
+  end if;
+  if not exists (select 1 from public.profiles where id = v_me and role = 'teacher') then
+    raise exception 'only teachers can award game points' using errcode = '42501';
+  end if;
+  v_cap := case p_game when 'impostor' then 30 when 'classwars' then 50 else null end;
+  if v_cap is null then
+    raise exception 'unknown game' using errcode = '22023';
+  end if;
+  if p_match is null or p_match !~ '^[A-Za-z0-9_.:-]{4,80}$' then
+    raise exception 'bad match id' using errcode = '22023';
+  end if;
+  if p_awards is null or jsonb_typeof(p_awards) <> 'array' then
+    raise exception 'awards must be a JSON array' using errcode = '22023';
+  end if;
+  if jsonb_array_length(p_awards) > 80 then
+    raise exception 'too many awards (max 80)' using errcode = '22023';
+  end if;
+
+  -- One row per match. Someone else's match id is refused; my own can be
+  -- called again (a retry only pays the players still missing).
+  select teacher_id into v_owner from public.game_matches where game = p_game and match_id = p_match;
+  if v_owner is null then
+    if (select count(*) from public.game_matches
+         where teacher_id = v_me and created_at > now() - interval '1 hour') >= 60 then
+      raise exception 'too many matches in the last hour' using errcode = '54000';
+    end if;
+    insert into public.game_matches (game, match_id, teacher_id)
+    values (p_game, p_match, v_me)
+    on conflict (game, match_id) do nothing;
+    select teacher_id into v_owner from public.game_matches where game = p_game and match_id = p_match;
+  end if;
+  if v_owner is distinct from v_me then
+    raise exception 'this match belongs to another teacher' using errcode = '42501';
+  end if;
+
+  for v_item in select value from jsonb_array_elements(p_awards) loop
+    v_uid := null; v_card := null; v_pts := null;
+    begin
+      v_uid  := (v_item->>'user_id')::uuid;
+      v_card := v_item->>'card_id';
+      v_pts  := round((v_item->>'points')::numeric)::integer;
+    exception when others then
+      v_uid := null;
+    end;
+    if v_uid is null or v_card is null or v_pts is null or not (v_card = any(public.game_card_ids())) then
+      v_skipped := v_skipped || jsonb_build_object('user_id', v_item->>'user_id', 'reason', 'invalid');
+      continue;
+    end if;
+    if v_uid = any(v_seen) then
+      v_skipped := v_skipped || jsonb_build_object('user_id', v_uid, 'reason', 'repeated');
+      continue;
+    end if;
+    v_seen := v_seen || v_uid;
+    if v_uid <> v_me and not public.is_my_student(v_uid) then
+      v_skipped := v_skipped || jsonb_build_object('user_id', v_uid, 'reason', 'not_in_class');
+      continue;
+    end if;
+    v_pts := greatest(0, least(v_cap, v_pts));
+
+    insert into public.game_awards (game, match_id, user_id, card_id, points)
+    values (p_game, p_match, v_uid, v_card, v_pts)
+    on conflict (game, match_id, user_id) do nothing;
+    get diagnostics v_rows = row_count;
+    if v_rows = 0 then
+      v_skipped := v_skipped || jsonb_build_object('user_id', v_uid, 'reason', 'already_paid');
+      continue;
+    end if;
+
+    insert into public.game_card_points as g (user_id, card_id, points, games, updated_at)
+    values (v_uid, v_card, v_pts, 1, now())
+    on conflict (user_id, card_id) do update
+      set points = least(10000000, g.points + excluded.points),
+          games = g.games + 1,
+          updated_at = now()
+    returning g.points into v_total;
+
+    v_saved := v_saved || jsonb_build_object('user_id', v_uid, 'card_id', v_card, 'points', v_pts, 'total', v_total);
+  end loop;
+
+  return jsonb_build_object('match', p_match, 'saved', v_saved, 'skipped', v_skipped);
+end;
+$$;
+
+-- ============================================================== 4. GRANTS ===
+revoke all on function public.game_card_ids()                         from public, anon;
+revoke all on function public.award_game_points(text, text, jsonb)    from public, anon;
+grant execute on function public.game_card_ids()                      to authenticated;
+grant execute on function public.award_game_points(text, text, jsonb) to authenticated;
+
+commit;
+
+-- Tell the API about the new tables and function right away.
+notify pgrst, 'reload schema';
+
+
+-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 20_class_wars.sql
+
+-- =============================================================================
+-- ECYR English platform — Class Wars: teachers' own question sets
+-- -----------------------------------------------------------------------------
+-- Runs after 01–19. Safe to re-run: create-if-not-exists / drop-then-create /
+-- create-or-replace throughout, inside one transaction (if anything fails,
+-- nothing changes).
+--
+-- WHY THIS FILE EXISTS
+-- Class Wars (/classwars) is a live classroom battle game. Students earn
+-- diamonds by answering multiple-choice questions. The questions come from the
+-- app's own curriculum bank (bundled with the app, no database) OR from a set
+-- the teacher wrote in the editor (/classwars/preguntas). Those sets live here:
+--
+--   class_wars_sets   one set: title (≤ 80), CEFR level, and items — a JSON
+--                     array of { "q": question (≤ 220), "o": 2–4 options
+--                     (each ≤ 90), "a": index of the correct option },
+--                     at most 200 items and ~120 KB per set, 100 sets per
+--                     teacher.
+--
+-- Gameplay itself does NOT touch the database: it runs in the teacher's
+-- projector browser and goes through the Cloudflare relay (relay/). When a
+-- match starts, the teacher's browser reads the chosen set once and sends the
+-- questions to the players' phones itself. So students never need (and never
+-- get) read access to this table — the correct answers stay out of reach of a
+-- student poking at the API.
+--
+-- Card points earned in a match are saved by the cards work (migration 19,
+-- awardGamePoints), not here.
+--
+-- WHO CAN DO WHAT
+--   teacher    lists, creates, edits and deletes their OWN sets (reads go
+--              straight to the table under RLS; writes only through
+--              save_class_wars_set() / delete_class_wars_set(), which check
+--              the role and validate every item)
+--   student    nothing (cannot see any set, not even their teacher's)
+--   anon       nothing
+-- =============================================================================
+
+begin;
+
+do $$
+begin
+  if to_regclass('public.profiles') is null then
+    raise exception 'Run 01_schema.sql … first (or use supabase/setup.sql, which includes everything).';
+  end if;
+end;
+$$;
+
+-- ========================================================== 1. VALIDATION ===
+-- true when p_items is a well-formed list of questions within the limits.
+create or replace function public.class_wars_items_ok(p_items jsonb)
+returns boolean
+language plpgsql
+immutable
+set search_path = public
+as $$
+declare
+  v_it jsonb;
+  v_n  int;
+begin
+  if p_items is null or jsonb_typeof(p_items) <> 'array' then return false; end if;
+  if jsonb_array_length(p_items) < 1 or jsonb_array_length(p_items) > 200 then return false; end if;
+  if octet_length(p_items::text) > 120000 then return false; end if;
+  for v_it in select value from jsonb_array_elements(p_items) loop
+    if jsonb_typeof(v_it) <> 'object' then return false; end if;
+    if jsonb_typeof(v_it->'q') <> 'string' or char_length(btrim(v_it->>'q')) < 1 or char_length(v_it->>'q') > 220 then return false; end if;
+    if jsonb_typeof(v_it->'o') <> 'array' then return false; end if;
+    v_n := jsonb_array_length(v_it->'o');
+    if v_n < 2 or v_n > 4 then return false; end if;
+    if exists (
+      select 1 from jsonb_array_elements(v_it->'o') o
+       where jsonb_typeof(o) <> 'string' or char_length(btrim(o #>> '{}')) < 1 or char_length(o #>> '{}') > 90
+    ) then return false; end if;
+    if jsonb_typeof(v_it->'a') <> 'number' then return false; end if;
+    if (v_it->>'a')::numeric <> floor((v_it->>'a')::numeric) or (v_it->>'a')::int < 0 or (v_it->>'a')::int >= v_n then return false; end if;
+  end loop;
+  return true;
+end;
+$$;
+
+-- Am I a teacher? (security definer, so the read policy below does not depend
+-- on what the caller may read in profiles)
+create or replace function public.class_wars_is_teacher()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (select 1 from public.profiles p where p.id = auth.uid() and p.role = 'teacher');
+$$;
+
+-- ============================================================= 2. TABLE ====
+create table if not exists public.class_wars_sets (
+  id          uuid primary key default gen_random_uuid(),
+  teacher_id  uuid not null references public.profiles(id) on delete cascade,
+  title       text not null,
+  level       text not null default 'A2',
+  items       jsonb not null default '[]'::jsonb,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+
+alter table public.class_wars_sets drop constraint if exists class_wars_sets_title_len;
+alter table public.class_wars_sets drop constraint if exists class_wars_sets_level;
+alter table public.class_wars_sets drop constraint if exists class_wars_sets_items_ok;
+alter table public.class_wars_sets
+  add constraint class_wars_sets_title_len check (char_length(btrim(title)) between 1 and 80);
+alter table public.class_wars_sets
+  add constraint class_wars_sets_level check (level in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2'));
+alter table public.class_wars_sets
+  add constraint class_wars_sets_items_ok check (public.class_wars_items_ok(items));
+
+create index if not exists class_wars_sets_teacher_idx on public.class_wars_sets(teacher_id, updated_at desc);
+
+alter table public.class_wars_sets enable row level security;
+revoke all on public.class_wars_sets from anon, authenticated;
+grant select on public.class_wars_sets to authenticated;
+
+drop policy if exists class_wars_sets_own_read on public.class_wars_sets;
+create policy class_wars_sets_own_read on public.class_wars_sets
+  for select to authenticated
+  using (teacher_id = auth.uid() and public.class_wars_is_teacher());
+
+-- ============================================================= 3. WRITES ===
+-- Create (p_id null) or replace one of my sets. Returns its id.
+create or replace function public.save_class_wars_set(
+  p_id    uuid,
+  p_title text,
+  p_level text,
+  p_items jsonb
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_id    uuid;
+  v_title text := left(btrim(coalesce(p_title, '')), 80);
+begin
+  if auth.uid() is null then
+    raise exception 'not signed in' using errcode = '28000';
+  end if;
+  if not exists (select 1 from public.profiles where id = auth.uid() and role = 'teacher') then
+    raise exception 'Only teachers can save Class Wars question sets.' using errcode = '42501';
+  end if;
+  if char_length(v_title) < 1 then
+    raise exception 'SET_TITLE: the set needs a title.';
+  end if;
+  if coalesce(p_level, '') not in ('A1', 'A2', 'B1', 'B2', 'C1', 'C2') then
+    raise exception 'SET_LEVEL: level must be A1, A2, B1, B2, C1 or C2.';
+  end if;
+  if not public.class_wars_items_ok(p_items) then
+    raise exception 'SET_ITEMS: 1–200 questions, each with text (≤ 220), 2–4 options (≤ 90) and the index of the correct one.';
+  end if;
+
+  if p_id is null then
+    if (select count(*) from public.class_wars_sets where teacher_id = auth.uid()) >= 100 then
+      raise exception 'SET_LIMIT: you already have 100 sets; delete some first.';
+    end if;
+    insert into public.class_wars_sets (teacher_id, title, level, items)
+    values (auth.uid(), v_title, p_level, p_items)
+    returning id into v_id;
+  else
+    update public.class_wars_sets
+       set title = v_title, level = p_level, items = p_items, updated_at = now()
+     where id = p_id and teacher_id = auth.uid()
+    returning id into v_id;
+    if v_id is null then
+      raise exception 'SET_NOT_FOUND: this set does not exist or is not yours.' using errcode = '42501';
+    end if;
+  end if;
+  return v_id;
+end;
+$$;
+
+create or replace function public.delete_class_wars_set(p_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if auth.uid() is null then
+    raise exception 'not signed in' using errcode = '28000';
+  end if;
+  delete from public.class_wars_sets where id = p_id and teacher_id = auth.uid();
+  if not found then
+    raise exception 'SET_NOT_FOUND: this set does not exist or is not yours.' using errcode = '42501';
+  end if;
+end;
+$$;
+
+-- ============================================================= 4. GRANTS ===
+revoke all on function public.class_wars_items_ok(jsonb)                    from public, anon, authenticated;
+revoke all on function public.class_wars_is_teacher()                      from public, anon;
+revoke all on function public.save_class_wars_set(uuid, text, text, jsonb)  from public, anon;
+revoke all on function public.delete_class_wars_set(uuid)                   from public, anon;
+grant execute on function public.class_wars_is_teacher()                      to authenticated;
+grant execute on function public.save_class_wars_set(uuid, text, text, jsonb) to authenticated;
+grant execute on function public.delete_class_wars_set(uuid)                  to authenticated;
+
+commit;

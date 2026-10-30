@@ -4,6 +4,15 @@ import { ChevronRight } from 'lucide-react';
 /** The live multiplayer games (projector + phones) and the shared character cards. */
 const LIVE = [
   {
+    to: '/classwars',
+    emoji: '⚔️',
+    title: 'Class Wars',
+    sub: 'Arena en vivo: responde para ganar diamantes, abre cajas sorpresa y usa el poder de tu profe. Hay demo contra bots.',
+    from: '#1e3a8a',
+    to2: '#16a34a',
+    accent: '#fde047',
+  },
+  {
     to: '/impostor',
     emoji: '🕵️',
     title: 'Impostor',
@@ -27,7 +36,7 @@ export function LiveGames() {
   return (
     <section className="mb-8">
       <h2 className="text-title-2 mb-3 px-1">En vivo con tu clase</h2>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {LIVE.map((g) => (
           <Link
             key={g.to}
