@@ -1,6 +1,6 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
-import { FLAG, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
+import { BOX_COOLDOWN_MS, FLAG, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
 import { BOX_EFFECTS, CHAR_IDS, POWERS, UPGRADES, WEAPONS, PJ } from '../game/defs';
 import { inBush, PROP_INFO, type GameMap, type Prop } from '../game/map';
 import type { RenderSource, RP } from '../game/client';
@@ -128,6 +128,7 @@ export class Renderer {
     const vx1 = this.cam.x + this.w / 2 / z + 40, vy1 = this.cam.y + this.h / 2 / z + 40;
     const S = this.S;
     this.drawGround(vx0, vy0, vx1, vy1, S);
+    for (const bu of src.map.burrows) if (bu.x > vx0 - 90 && bu.x < vx1 + 90 && bu.y > vy0 - 70 && bu.y < vy1 + 70) this.drawPortal(bu.x, bu.y, bu.id, now);
 
     const vis = src.vis;
     // zones + telegraphs
@@ -154,7 +155,7 @@ export class Renderer {
     }
 
     // y-sorted: tall props, bushes, boxes, players
-    type D = { y: number; k: 0 | 1 | 2; p?: Prop; b?: { x: number; y: number; born: number; id: number }; r?: RP };
+    type D = { y: number; k: 0 | 1 | 2; p?: Prop; b?: { x: number; y: number; born: number; id: number; readyAt: number }; r?: RP };
     const list: D[] = [];
     for (const p of this.tall) {
       if (p.x < vx0 - 80 || p.x > vx1 + 80 || p.y < vy0 - 20 || p.y > vy1 + 180) continue;
@@ -314,10 +315,29 @@ export class Renderer {
     this.g.drawImage(sp.c, p.x - sp.ax, p.y - sp.ay, sp.w, sp.h);
   }
 
-  private drawBox(b: { x: number; y: number; born: number; id: number }, now: number, S: number) {
+  private drawBox(b: { x: number; y: number; born: number; id: number; readyAt: number }, now: number, S: number) {
     const g = this.g;
-    const age = (now - b.born) / 1000;
-    const pop = age < 0.4 ? easeBack(age / 0.4) : 1;
+    const waiting = b.readyAt > now;
+    if (waiting) {
+      // Opened: grey and still, with a ring that fills up until it is back.
+      g.fillStyle = 'rgba(16,60,20,0.22)';
+      g.beginPath(); g.ellipse(b.x, b.y + 2, 24, 8, 0, 0, 7); g.fill();
+      const sp = boxSprite(S, true);
+      g.globalAlpha = 0.85;
+      g.drawImage(sp.c, b.x - sp.ax, b.y - 6 - sp.ay, sp.w, sp.h);
+      g.globalAlpha = 1;
+      const k = 1 - (b.readyAt - now) / BOX_COOLDOWN_MS;
+      const cy = b.y - 92;
+      g.beginPath(); g.arc(b.x, cy, 13, 0, 7); g.fillStyle = 'rgba(20,26,63,0.75)'; g.fill();
+      g.beginPath(); g.arc(b.x, cy, 13, -Math.PI / 2, -Math.PI / 2 + k * Math.PI * 2);
+      g.lineWidth = 4.5; g.strokeStyle = '#ffd23f'; g.lineCap = 'round'; g.stroke();
+      g.fillStyle = '#fff'; g.font = '900 12px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText(String(Math.ceil((b.readyAt - now) / 1000)), b.x, cy + 0.5);
+      return;
+    }
+    // Ready again: a small pop when it comes back.
+    const since = b.readyAt ? (now - b.readyAt) / 1000 : (now - b.born) / 1000;
+    const pop = since < 0.4 ? easeBack(Math.max(0, since) / 0.4) : 1;
     const bob = Math.sin(now / 300 + b.id) * 4;
     g.fillStyle = 'rgba(16,60,20,0.25)';
     g.beginPath(); g.ellipse(b.x, b.y + 2, 26 - bob * 0.6, 9, 0, 0, 7); g.fill();
@@ -326,6 +346,35 @@ export class Renderer {
     g.drawImage(sp.c, -sp.ax, -sp.ay, sp.w, sp.h);
     g.restore();
     if (Math.random() < 0.04) this.emit(b.x + (Math.random() - 0.5) * 50, b.y - 40 - Math.random() * 30, 0, -20, 0.8, 5, '#ffe066', P_STAR);
+  }
+
+  /** Animated swirl in a portal's opening (the mound itself is part of the ground layer). */
+  private drawPortal(x: number, y: number, id: number, now: number) {
+    const g = this.g;
+    const t = now / 1000 + id * 0.7;
+    g.save();
+    g.translate(x, y + 14);
+    g.beginPath(); g.ellipse(0, 0, 40, 24, 0, 0, 7);
+    const gr = g.createRadialGradient(0, 0, 2, 0, 0, 40);
+    gr.addColorStop(0, '#ffffff'); gr.addColorStop(0.25, '#c9a6ff'); gr.addColorStop(0.65, '#7b3cff'); gr.addColorStop(1, '#2a0f6b');
+    g.fillStyle = gr; g.fill();
+    g.lineWidth = 4; g.strokeStyle = '#1b1240'; g.stroke();
+    g.clip();
+    g.scale(1, 0.6);
+    g.lineCap = 'round';
+    for (let i = 0; i < 3; i++) {
+      g.beginPath();
+      const a0 = t * 2.4 + (i * Math.PI * 2) / 3;
+      for (let k = 0; k <= 20; k++) {
+        const a = a0 + k * 0.28, r = 6 + k * 1.75;
+        const px = Math.cos(a) * r, py = Math.sin(a) * r;
+        if (k) g.lineTo(px, py); else g.moveTo(px, py);
+      }
+      g.lineWidth = 4; g.strokeStyle = i === 1 ? 'rgba(100,210,255,0.85)' : 'rgba(255,255,255,0.7)'; g.stroke();
+    }
+    g.restore();
+    // a sparkle drifting up now and then
+    if (Math.random() < 0.05) this.emit(x + (Math.random() - 0.5) * 60, y + 10, 0, -40, 0.9, 5, Math.random() < 0.5 ? '#c9a6ff' : '#64d2ff', P_STAR);
   }
 
   private drawGem(gm: { x: number; y: number; v: number; born: number; fx: number; fy: number; id: number; take?: { idx: number; at: number } }, byIdx: Map<number, RP>, now: number, S: number) {
@@ -601,6 +650,7 @@ export class Renderer {
       g.beginPath(); g.moveTo(p.x - 26, hy); g.lineTo(p.x - 12, hy); g.moveTo(p.x + 12, hy); g.lineTo(p.x + 26, hy); g.moveTo(p.x, hy - 26); g.lineTo(p.x, hy - 12); g.moveTo(p.x, hy + 12); g.lineTo(p.x, hy + 26); g.stroke();
     }
     if (p.flags & FLAG.quiz) this.label(p.x, top - 14 + Math.sin(t * 3) * 2, p.flags & FLAG.combat ? '📖 ⚔' : '📖', '#fff', 18);
+    else if (p.flags & FLAG.tired) this.label(p.x, top - 14 + Math.sin(t * 2.5) * 3, '🪫 0', '#ff9f0a', 15);
     if (p.flags & FLAG.magnet && Math.random() < 0.1) this.emit(p.x + (Math.random() - 0.5) * 300, p.y + (Math.random() - 0.5) * 200, 0, 0, 0.5, 3, 'rgba(255,90,90,0.5)', P_DUST);
   }
 
@@ -725,6 +775,11 @@ export class Renderer {
         }
         case 'box': {
           this.burst(f.x, f.y - 30, 22, ['#ffd23f', '#8f6bff', '#ff5ce1', '#30d158', '#64d2ff'], P_CONF, 320, 1.0, 10, 380);
+          if (f.dia > 0) {
+            this.burst(f.x, f.y - 40, Math.min(12, 4 + Math.round(f.dia / 6)), ['#2fd3e8', '#c9f7ff', '#ffffff'], P_SHARD, 260, 0.7, 7, 260);
+            this.popup(f.idx, 0, 0, `+${f.dia} 💎`, '#7ef0ff', me && f.idx === me.idx ? 24 : 17, 1300);
+            if (me && f.idx === me.idx) sfx.gem(Math.min(10, Math.round(f.dia / 5)));
+          }
           this.ring(f.x, f.y, 90, '#ffd23f', 0.45);
           const eff = BOX_EFFECTS[f.eff];
           if (me && f.idx === me.idx) { if (eff?.id === 'trap') { sfx.trap(); this.shake(0.5); } else sfx.box(); }
@@ -732,7 +787,6 @@ export class Renderer {
             const v = near(f.x, f.y); if (v) sfx.box();
             if (eff) this.popup(-1, f.x, f.y - 70, eff.title, eff.color, 15, 1300);
           }
-          if (eff?.id === 'jackpot') { const p = byIdx.get(f.idx); if (p) this.popup(f.idx, 0, 0, `+${f.param} 💎`, '#ffe066', 22, 1300); }
           break;
         }
         case 'gem': {
@@ -754,15 +808,21 @@ export class Renderer {
         case 'ans': {
           const p = byIdx.get(f.idx);
           if (p && f.gain > 0) {
-            this.popup(f.idx, 0, 0, `+${f.gain} 💎`, '#7ef0ff', p.me ? 22 : 17, 1200);
-            if (Math.random() < 0.6) this.burst(p.x, p.y - 60, 5, ['#2fd3e8', '#ffffff'], P_SHARD, 120, 0.5, 5);
+            this.popup(f.idx, 0, 0, `+${f.gain} ⚡`, '#ffe14d', p.me ? 22 : 17, 1200);
+            if (Math.random() < 0.6) this.burst(p.x, p.y - 60, 5, ['#ffe14d', '#ffffff'], P_SPARK, 120, 0.5, 5);
           }
+          break;
+        }
+        case 'tired': {
+          const p = byIdx.get(f.idx);
+          if (p) this.popup(f.idx, 0, 0, '¡Sin energía!', '#ff9f0a', p.me ? 22 : 15, 1500);
+          if (p?.me) this.shake(0.25);
           break;
         }
         case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, `⬆ ${UPGRADES[f.up]?.icon ?? ''}`, '#ffd60a', 18, 1000); if (p.me) sfx.buy(); } break; }
         case 'tp': {
           const p = byIdx.get(f.idx);
-          const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#f29a4a' : 'rgba(255,255,255,0.85)';
+          const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
           if (f.kind === 'fix' || f.kind === 'hold') break;
           if (f.kind !== 'spawn') this.burst(f.fx, f.fy - 20, 12, col, P_DUST, 160, 0.5, 12);
           this.burst(f.x, f.y - 20, 12, col, f.kind === 'swap' || f.kind === 'rewind' ? P_STAR : P_DUST, 180, 0.5, 10);
@@ -849,13 +909,13 @@ export class Renderer {
       for (const p of map.paths) { bg.beginPath(); p.pts.forEach(([x, y], i) => (i ? bg.lineTo(x * sx, y * sy) : bg.moveTo(x * sx, y * sy))); bg.lineWidth = Math.max(2, p.w * sx); bg.strokeStyle = '#e3bb82'; bg.lineCap = 'round'; bg.stroke(); }
       for (const pd of map.ponds) { bg.beginPath(); bg.ellipse(pd.x * sx, pd.y * sy, pd.rx * sx, pd.ry * sy, 0, 0, 7); bg.fillStyle = '#3db3e8'; bg.fill(); }
       for (const p of map.props) if (p.k === 'tree' || p.k === 'pine') { bg.beginPath(); bg.arc(p.x * sx, p.y * sy, Math.max(1.5, 30 * sx), 0, 7); bg.fillStyle = '#2b7a32'; bg.fill(); }
-      for (const bu of map.burrows) { bg.beginPath(); bg.arc(bu.x * sx, bu.y * sy, Math.max(3, 40 * sx), 0, 7); bg.fillStyle = '#f29a4a'; bg.fill(); }
+      for (const bu of map.burrows) { bg.beginPath(); bg.arc(bu.x * sx, bu.y * sy, Math.max(3, 40 * sx), 0, 7); bg.fillStyle = '#9a5cff'; bg.fill(); bg.lineWidth = 1.5; bg.strokeStyle = '#ffffff'; bg.stroke(); }
       bg.strokeStyle = '#1d2a1f'; bg.lineWidth = 3; bg.strokeRect(0, 0, W, H);
       this.miniBg = b;
     }
     g.drawImage(this.miniBg, 0, 0);
-    g.fillStyle = '#ffd23f';
-    for (const b of src.vis.boxes.values()) { g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
+    const tNow = performance.now();
+    for (const b of src.vis.boxes.values()) { g.fillStyle = b.readyAt > tNow ? 'rgba(200,204,214,0.55)' : '#ffd23f'; g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
     let me: RP | null = null;
     for (const p of src.players()) {
       if (p.me) { me = p; continue; }

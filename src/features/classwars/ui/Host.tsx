@@ -92,7 +92,11 @@ function TeachersOnly() {
 /* ------------------------------------------------------------------ setup */
 function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: string[]; a: number }[], label: string) => Promise<void> }) {
   const [s, set] = useState<Setup>(() => {
-    try { return { ...DEFAULT, ...JSON.parse(localStorage.getItem('cw:setup') || '{}') }; } catch { return DEFAULT; }
+    try {
+      const v: Setup = { ...DEFAULT, ...JSON.parse(localStorage.getItem('cw:setup') || '{}') };
+      if (![500, 1000, 2000, 3000].includes(v.goal)) v.goal = DEFAULT.goal;
+      return v;
+    } catch { return DEFAULT; }
   });
   const up = (p: Partial<Setup>) => set((o) => ({ ...o, ...p }));
   const [units, setUnits] = useState<[number, string][]>([]);
@@ -145,7 +149,7 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
               <Choice on={s.mode === 'race'} onClick={() => up({ mode: 'race' })} title="Carrera" sub="Primero en llegar a la meta" />
             </div>
             {s.mode === 'race' && (
-              <div className="mt-3 flex flex-wrap gap-2">{[500, 1000, 2000, 5000].map((g) => <Pill key={g} on={s.goal === g} onClick={() => up({ goal: g })}>{g} 💎</Pill>)}</div>
+              <div className="mt-3 flex flex-wrap gap-2">{[500, 1000, 2000, 3000].map((g) => <Pill key={g} on={s.goal === g} onClick={() => up({ goal: g })}>{g} 💎</Pill>)}</div>
             )}
             <H icon={<Clock size={18} />} className="mt-4">Duración</H>
             <div className="flex flex-wrap gap-2">{[3, 5, 8, 10, 15, 20].map((m) => <Pill key={m} on={s.minutes === m} onClick={() => up({ minutes: m })}>{m} min</Pill>)}</div>
@@ -309,7 +313,7 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
             </div>
           )}
         </div>
-        <div className="mt-3 flex items-center gap-2 text-[13px] font-semibold text-white/55"><Diamond size={14} /> Responden preguntas para ganar diamantes · abren cajas sorpresa · noquean rivales para robar sus diamantes.</div>
+        <div className="mt-3 flex items-center gap-2 text-[13px] font-semibold text-white/55"><Diamond size={14} /> Todos empiezan con 1200 ⚡ de energía: caminar y disparar la gastan y solo se recarga respondiendo · los diamantes salen de las cajas sorpresa (se reactivan a los 10 s) · noquear a un rival le roba diamantes.</div>
       </div>
     </div>
   );

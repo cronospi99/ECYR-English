@@ -65,15 +65,19 @@ export function distToPath(p: Path, x: number, y: number) {
   return d;
 }
 
-export function generateMap(seed: number): GameMap {
+export function generateMap(seed: number, portals = 7): GameMap {
   const R = rng(seed);
   const W = WORLD_W, H = WORLD_H;
   const rr = (a: number, b: number) => a + R() * (b - a);
   const map: GameMap = { seed, w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
 
-  // Burrows (spawn + teleport tunnels): corners, sides and the centre plaza.
-  const spots: [number, number][] = [[0.13, 0.16], [0.5, 0.12], [0.87, 0.16], [0.12, 0.84], [0.5, 0.88], [0.88, 0.84], [0.5, 0.5]];
-  spots.forEach(([fx, fy], i) => {
+  // Portals (spawn + teleport tunnels): corners, sides and the centre plaza; bigger matches get
+  // more of them, between those, so nobody is far from one.
+  const spots: [number, number][] = [
+    [0.13, 0.16], [0.5, 0.12], [0.87, 0.16], [0.12, 0.84], [0.5, 0.88], [0.88, 0.84], [0.5, 0.5],
+    [0.29, 0.33], [0.71, 0.67], [0.71, 0.33], [0.29, 0.67], [0.08, 0.5], [0.92, 0.5], [0.31, 0.1], [0.69, 0.9], [0.69, 0.1], [0.31, 0.9],
+  ];
+  spots.slice(0, Math.max(7, Math.min(spots.length, portals))).forEach(([fx, fy], i) => {
     const x = fx * W + (i === 6 ? 0 : rr(-60, 60)), y = fy * H + (i === 6 ? 0 : rr(-40, 40));
     map.burrows.push({ id: i, x, y });
   });

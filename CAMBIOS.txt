@@ -215,12 +215,32 @@ G1. CLASS WARS (Juegos › En vivo con tu clase)
 - «Responder preguntas»: 4 colores, rachas; mientras respondes estás en una
   burbuja protectora (salvo si acabas de pelear). Noquear a alguien le roba
   30 % de sus diamantes (salen volando como gemas).
-- Tienda de mejoras: diamantes por respuesta, bono de racha, multiplicador,
-  seguro y vida máxima.
+- Tienda de mejoras (ver G1b: ahora se paga con energía).
 - Preguntas: de todo el plan de estudios (A1–C2, ~2.800) o de sets propios
   del docente (Class Wars › Mis preguntas; se pueden pegar como texto).
 - Al final: podio animado y puntos para la carta de cada estudiante.
 - Demo contra bots para probarlo sin conexión.
+
+G1b. CLASS WARS: NUEVA LÓGICA DE ENERGÍA Y PANTALLA DE INICIO
+- Todos empiezan con 1200 ⚡ de energía. Cada paso gasta energía (unos 17 por
+  segundo caminando) y cada disparo también (tiza 5, burbujeador 4, erizo 6,
+  clipadora 7, rayo 9, lanzaborradores 12, purpurina 14).
+- Con 0 de energía el personaje queda quieto: no se mueve, no ataca y no usa
+  poderes. Aparece «¡Sin energía!» con el botón «Recargar energía». Solo las
+  respuestas correctas recargan (+150 al empezar, más con mejoras y rachas).
+- Los diamantes salen de las cajas sorpresa (10–25 cada una, más con la
+  mejora; el tesoro da 40–70 extra). Las cajas ahora están fijas en el mapa
+  (26 + 1,5 por jugador, hasta 72). Al tocar una se pone gris con una cuenta
+  regresiva y vuelve a estar activa a los 10 s. Noquear a alguien sigue
+  robándole diamantes.
+- Más portales según el número de personas: 7 hasta 6 jugadores y uno más
+  por cada 3 (hasta 17), con un remolino morado animado.
+- La tienda se paga con energía: energía por pregunta, bonus de racha,
+  diamantes por caja, ahorro de energía (nuevo), seguro y vida máxima.
+- Metas del modo Carrera: 500, 1000, 2000 o 3000 💎.
+- Pantalla de inicio nueva con el arte del estadio, el logo de Class Wars y
+  botones brillantes (fondo y logo tomados de las imágenes que enviaste). Las
+  demás pantallas del juego usan el mismo estadio de fondo, oscurecido.
 
 G2. IMPOSTOR (Juegos › En vivo con tu clase)
 - El juego del repositorio NewEnglishImpostor, completo (clásico,

@@ -6,7 +6,23 @@ import { cn } from '@/lib/cn';
 import { sfx, unlockAudio } from '../render/audio';
 
 export const CW_CSS = `
-.cw-root{font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;background:radial-gradient(120% 90% at 50% 0%,#2a3577 0%,#161c45 55%,#0e1230 100%)}
+.cw-root{font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;background:linear-gradient(180deg,rgba(16,26,92,.78),rgba(14,18,48,.9)),url(/classwars/arena.webp) center bottom/cover no-repeat,#161c45}
+.cw-arena{background:url(/classwars/arena.webp) center bottom/cover no-repeat,#0a3fc0}
+.cw-arena::after{content:'';position:absolute;inset:0;background:radial-gradient(70% 55% at 50% 38%,rgba(10,30,140,.32),transparent 70%)}
+.cw-logo{filter:drop-shadow(0 10px 18px rgba(0,10,60,.45));animation:cw-float 4s ease-in-out infinite}
+.cw-bubble{background:linear-gradient(180deg,#0b1d93,#071479);border:3px solid #2f55ff;border-radius:22px;box-shadow:0 0 0 3px #0a1250,0 0 22px rgba(70,120,255,.55),inset 0 2px 0 rgba(255,255,255,.12)}
+.cw-joinbox{background:linear-gradient(180deg,rgba(14,28,110,.92),rgba(9,18,80,.92));border:3px solid transparent;background-clip:padding-box;position:relative;box-shadow:0 10px 26px rgba(0,0,40,.45)}
+.cw-joinbox::before{content:'';position:absolute;inset:-3px;border-radius:26px;padding:3px;background:linear-gradient(90deg,#ffb020,#8f6bff 30%,#3d7bff 60%,#ffb020);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,190,60,.6))}
+.cw-gbtn{font-weight:900;letter-spacing:-.01em;text-shadow:0 2px 0 rgba(0,0,0,.25);transition:transform .1s,filter .15s,box-shadow .1s;user-select:none}
+.cw-gbtn:hover{filter:brightness(1.08)}.cw-gbtn:active{transform:translateY(4px)}
+.cw-gbtn-green{background:linear-gradient(180deg,#5dff6a 0%,#22d63f 45%,#12a52c 100%);border:3px solid #9dff9a;box-shadow:0 6px 0 #0b7a20,0 10px 20px rgba(0,60,10,.4),inset 0 3px 0 rgba(255,255,255,.45)}
+.cw-gbtn-purple{background:linear-gradient(180deg,#c27bff 0%,#9a4dff 45%,#6d2fe0 100%);border:3px solid #dcb0ff;box-shadow:0 6px 0 #4a1ca8,0 10px 20px rgba(40,0,90,.4),inset 0 3px 0 rgba(255,255,255,.4)}
+.cw-gbtn-yellow{background:linear-gradient(180deg,#ffe36b 0%,#ffc21a 55%,#f0a000 100%);border:3px solid #fff1a8;box-shadow:0 5px 0 #b87400,inset 0 3px 0 rgba(255,255,255,.5);text-shadow:none}
+.cw-gbtn-glass{background:linear-gradient(180deg,rgba(40,200,90,.5),rgba(10,120,60,.55));border:3px solid #7dff9a;box-shadow:0 0 16px rgba(90,255,140,.45),0 6px 0 rgba(0,70,30,.6),inset 0 2px 0 rgba(255,255,255,.3);backdrop-filter:blur(4px)}
+.cw-gbtn:active{box-shadow:none}
+@keyframes cw-twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.cw-spark{position:absolute;color:#fff6c2;text-shadow:0 0 8px #ffe680;animation:cw-twinkle 2.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.cw-logo,.cw-spark,.cw-bob,.cw-float{animation:none}}
 .cw-title{font-weight:900;letter-spacing:-0.02em;text-shadow:0 3px 0 rgba(0,0,0,.35)}
 @keyframes cw-bob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-4%) scale(1.02,.98)}}
 .cw-bob{animation:cw-bob 1.6s ease-in-out infinite;transform-origin:50% 100%}

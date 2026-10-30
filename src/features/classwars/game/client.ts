@@ -5,7 +5,7 @@ import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
   BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, speedFromFlags,
 } from './constants';
-import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, type Ups } from './defs';
+import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
 import type { Ev } from './sim';
 import { VisualWorld } from './vis';
@@ -14,7 +14,7 @@ import { decAnswer, type Result } from './host';
 export interface RosterEntry { idx: number; peer: string; name: string; char: number; guest: boolean; bot: boolean }
 /** One player as drawn this frame. */
 export interface RP {
-  idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; flags: number; look: number;
+  idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; en: number; flags: number; look: number;
   weapon: number; ammo: number; maxHp: number; borrowed: number; charges: number; name: string; me: boolean; bot: boolean; decoy?: boolean;
 }
 export interface ServedQ { id: number; q: string; o: string[]; a: number }
@@ -144,9 +144,9 @@ export class ClientSession implements RenderSource {
     for (const [idx, peer, name, char, guest, bot] of r as [number, string, string, number, number, number][]) this.roster.set(idx, { idx, peer, name, char, guest: !!guest, bot: !!bot });
   }
 
-  private onStart(d: { seed: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[] }; paused: boolean }) {
-    if (!this.map || this.map.seed !== d.seed) {
-      this.map = generateMap(d.seed);
+  private onStart(d: { seed: number; portals?: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[] }; paused: boolean }) {
+    if (!this.map || this.map.seed !== d.seed || this.map.burrows.length !== (d.portals ?? 7)) {
+      this.map = generateMap(d.seed, d.portals ?? 7);
       this.vis = new VisualWorld(this.map);
     }
     this.salt = d.salt;
@@ -160,7 +160,7 @@ export class ClientSession implements RenderSource {
     this.vis.nameOf = (i) => this.roster.get(i)?.name ?? '?';
     this.vis.loadFull(d.full);
     const u = d.full.ups[d.you];
-    if (u) this.ups = { dpq: u[0], streak: u[1], mult: u[2], ins: u[3], hp: u[4] };
+    if (u) this.ups = upsFromArr(u);
     this.streak = d.full.streaks[d.you] ?? 0;
     this.powerReadyAt = performance.now() + (d.full.cds[d.you] ?? 0);
     this.snaps = [];
@@ -294,7 +294,7 @@ export class ClientSession implements RenderSource {
   attackPress() {
     this.input.atkC++;
     const row = this.myRow();
-    if (!row || this.quizOpen) return;
+    if (!row || this.quizOpen || row[7] & FLAG.tired) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const now = performance.now();
     if (now - this.lastFireAt < w.cd * 0.9) return;
@@ -306,7 +306,7 @@ export class ClientSession implements RenderSource {
     const row = this.myRow();
     if (!row || !this.input.held || this.quizOpen) return;
     const flags = row[7];
-    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.zen | FLAG.charm)) return;
+    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.zen | FLAG.charm | FLAG.tired)) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const cd = w.cd * (flags & FLAG.rapid ? 0.6 : 1);
     const now = performance.now();
@@ -371,7 +371,7 @@ export class ClientSession implements RenderSource {
         x: me ? this.me.x : tp ? rb[1] : lerp(ra[1], rb[1], t),
         y: me ? this.me.y : tp ? rb[2] : lerp(ra[2], rb[2], t),
         aim: me ? this.input.aim : lerpAngle(byteToAim(ra[3]), byteToAim(rb[3]), t),
-        hp: live[4], sh: live[5], dia: live[6], flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
+        hp: live[4], sh: live[5], dia: live[6], en: live[14] ?? 0, flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
         name: r?.name ?? '?', me, bot: !!r?.bot,
       });
     }
@@ -383,7 +383,7 @@ export class ClientSession implements RenderSource {
       const orow = latest.p.get(db[4]);
       out.push({
         idx: 10000 + db[0], x: lerp(d0[1], db[1], t), y: lerp(d0[2], db[2], t), aim: byteToAim(db[5]), hp: orow?.[4] ?? 100, sh: orow?.[5] ?? 0,
-        dia: orow?.[6] ?? 0, flags: FLAG.alive, look: db[3], weapon: orow?.[9] ?? 0, ammo: 0, maxHp: orow?.[11] ?? 100, borrowed: -1, charges: 0,
+        dia: orow?.[6] ?? 0, en: 1, flags: FLAG.alive, look: db[3], weapon: orow?.[9] ?? 0, ammo: 0, maxHp: orow?.[11] ?? 100, borrowed: -1, charges: 0,
         name: owner?.name ?? '?', me: false, bot: false, decoy: true,
       });
     }

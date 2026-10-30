@@ -3,10 +3,10 @@
    resolves every hit, KO, pickup, box and power, and emits compact events that go out with the
    10 Hz snapshot. */
 import {
-  BASE_SPEED, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
-  PLAYER_R, RESPAWN_MS, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, TICK_MS, aimToByte, type Fx,
+  BASE_SPEED, BOX_COOLDOWN_MS, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
+  PLAYER_R, RESPAWN_MS, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, START_ENERGY, STEP_COST, TICK_MS, aimToByte, type Fx,
 } from './constants';
-import { BOX_EFFECTS, CHAR_IDS, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upValue, type UpKey, type Ups } from './defs';
+import { BOX_EFFECTS, CHAR_IDS, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
 import { freeSpot, generateMap, hitsWall, moveCircle, resolve, type GameMap } from './map';
 
 export type Ev = (string | number)[];
@@ -25,7 +25,7 @@ export interface SimPlayer {
   tx: number; ty: number; hasT: boolean; lastAcceptT: number;
   mx: number; my: number;
   aim: number; ad: number;
-  hp: number; sh: number; dia: number;
+  hp: number; sh: number; dia: number; en: number;
   alive: boolean; respawnAt: number;
   weapon: number; ammo: number; weaponUntil: number; nextFire: number;
   attackHeld: boolean; atkC: number; powC: number; bonC: number; pendingShot: boolean;
@@ -45,12 +45,12 @@ export interface SimPlayer {
 
 interface Proj { id: number; kind: number; x: number; y: number; vx: number; vy: number; owner: number; dist: number; range: number; dmg: number; kb: number; r: number; hit: Set<number>; pierce: boolean; explode: number }
 interface Gem { id: number; x: number; y: number; v: number; lock: number; lockUntil: number }
-interface Box { id: number; x: number; y: number }
+interface Box { id: number; x: number; y: number; readyAt: number }
 interface Zone { id: number; kind: 'groove' | 'ink'; x: number; y: number; r: number; until: number; owner: number }
 interface Strike { x: number; y: number; r: number; at: number; dmg: number; kb: number; owner: number; stun: number; kind: string }
 export interface Decoy { id: number; x: number; y: number; vx: number; vy: number; until: number; owner: number; char: number; aim: number }
 
-export interface SimSettings { durationMs: number; goal: number }
+export interface SimSettings { durationMs: number; goal: number; portals?: number }
 
 export class Sim {
   map: GameMap;
@@ -68,12 +68,11 @@ export class Sim {
   ended = false;
   winner = -1;
   private nextId = 1;
-  nextBoxAt = 0;
   rand = Math.random;
   settings: SimSettings;
 
   constructor(seed: number, settings: SimSettings) {
-    this.map = generateMap(seed);
+    this.map = generateMap(seed, settings.portals);
     this.settings = settings;
   }
 
@@ -89,7 +88,7 @@ export class Sim {
       idx, ...o, connected: true,
       x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
       mx: 0, my: 0, aim: Math.PI / 2, ad: 200,
-      hp: MAX_HP, sh: MAX_SHIELD, dia: 0, alive: true, respawnAt: 0,
+      hp: MAX_HP, sh: MAX_SHIELD, dia: 0, en: START_ENERGY, alive: true, respawnAt: 0,
       weapon: 0, ammo: INF, weaponUntil: 0, nextFire: 0, attackHeld: false, atkC: 0, powC: 0, bonC: 0, pendingShot: false,
       powerReadyAt: 3000, borrowed: -1, bCharges: 0, bonusReadyAt: 0, costume: -1, costumeUntil: 0,
       fx: { invuln: this.now + SPAWN_INVULN_MS }, fv: 0, lastDmgAt: -1e9, lastCombatAt: -1e9, lastHitBy: -1,
@@ -104,9 +103,10 @@ export class Sim {
   has(p: SimPlayer, f: Fx) { return (p.fx[f] ?? 0) > this.now; }
   give(p: SimPlayer, f: Fx, ms: number) { p.fx[f] = Math.max(p.fx[f] ?? 0, this.now + ms); }
   lookChar(p: SimPlayer) { return p.costume >= 0 ? p.costume : p.char; }
-  canAct(p: SimPlayer) { return p.alive && !p.inQuiz && !this.has(p, 'stun') && !this.has(p, 'zen') && !this.has(p, 'air'); }
+  tired(p: SimPlayer) { return p.en <= 0; }
+  canAct(p: SimPlayer) { return p.alive && !p.inQuiz && !this.tired(p) && !this.has(p, 'stun') && !this.has(p, 'zen') && !this.has(p, 'air'); }
   speedMul(p: SimPlayer) {
-    if (this.has(p, 'stun') || this.has(p, 'root') || this.has(p, 'zen')) return 0;
+    if (this.tired(p) || this.has(p, 'stun') || this.has(p, 'root') || this.has(p, 'zen')) return 0;
     let m = 1;
     if (this.has(p, 'speed')) m *= 1.55;
     if (this.has(p, 'power')) m *= 1.3;
@@ -125,6 +125,7 @@ export class Sim {
     if (!p.connected) f |= FLAG.away;
     if (this.now - p.lastCombatAt < COMBAT_LOCK_MS) f |= FLAG.combat;
     if (p.sh > MAX_SHIELD) f |= FLAG.overshield;
+    if (p.en <= 0) f |= FLAG.tired;
     for (const k in p.fx) {
       const fl = FX_FLAG[k as Fx];
       if (fl && (p.fx[k as Fx] ?? 0) > this.now) f |= fl;
@@ -175,6 +176,12 @@ export class Sim {
           ny += (my / Math.max(1, l)) * speed * dt;
         }
       }
+      // Walking spends energy (knockback and jumps do not).
+      const walked = Math.hypot(nx - p.x, ny - p.y);
+      if (walked > 0.2 && !this.has(p, 'air')) {
+        this.spend(p, walked * STEP_COST);
+        if (p.en <= 0) { nx = p.x; ny = p.y; } // ran dry: this step does not happen (the phone was pinned here)
+      }
       if (Math.abs(p.vx) + Math.abs(p.vy) > 1) {
         nx += p.vx * dt;
         ny += p.vy * dt;
@@ -224,7 +231,7 @@ export class Sim {
         }
       }
       for (const b of this.boxes.values()) {
-        if ((b.x - p.x) ** 2 + (b.y - p.y) ** 2 < 42 * 42) this.openBox(p, b);
+        if (now >= b.readyAt && (b.x - p.x) ** 2 + (b.y - p.y) ** 2 < 42 * 42) this.openBox(p, b);
       }
     }
 
@@ -248,7 +255,6 @@ export class Sim {
     this.stepStrikes();
     this.stepZones();
     this.stepDecoys(dt);
-    this.spawnBoxes();
 
     if (this.settings.goal > 0) {
       const w = this.players.find((p) => p.dia >= this.settings.goal);
@@ -274,6 +280,7 @@ export class Sim {
     const def = WEAPONS[p.weapon];
     const cd = def.cd * (this.has(p, 'rapid') ? 0.6 : 1);
     p.nextFire = this.now + cd;
+    this.spend(p, def.en);
     if (p.fx.invis && this.has(p, 'invis')) { p.fx.invis = 0; this.ev(['rv', p.idx]); }
     p.lastCombatAt = this.now;
     const a = p.aim, cx = Math.cos(a), cy = Math.sin(a);
@@ -473,21 +480,38 @@ export class Sim {
     });
   }
 
-  spawnBoxes() {
-    if (this.now < this.nextBoxAt) return;
-    const active = this.players.filter((p) => p.connected).length;
-    const max = Math.min(22, 7 + Math.ceil(active * 0.6));
-    if (this.boxes.size >= max) return;
-    this.nextBoxAt = this.now + (this.boxes.size < 4 ? 600 : 3200);
-    const [x, y] = freeSpot(this.map, this.rand);
-    const b: Box = { id: this.id(), x, y };
-    this.boxes.set(b.id, b);
-    this.ev(['bx', b.id, Math.round(x), Math.round(y)]);
+  /* Energy: spent by walking and shooting, refilled only by correct answers. */
+  spend(p: SimPlayer, amount: number) {
+    if (p.en <= 0) return;
+    p.en = Math.max(0, p.en - amount * energyMul(p.ups));
+    if (p.en <= 0) {
+      p.attackHeld = false;
+      p.pendingShot = false;
+      this.ev(['ne', p.idx], true);
+      // Pin a phone's character where the host has it, so its prediction stops too.
+      if (p.peer && !p.bot) this.teleport(p, p.x, p.y, 'hold');
+    }
+  }
+
+  /** Fixed mystery boxes spread over the map. Call again with a bigger number to add more. */
+  setupBoxes(count: number) {
+    const spots = [...this.boxes.values()];
+    for (let tries = 0; this.boxes.size < count && tries < count * 40; tries++) {
+      const [x, y] = freeSpot(this.map, this.rand, 110);
+      const gap = tries < count * 25 ? 190 : 120;
+      if (spots.some((o) => (o.x - x) ** 2 + (o.y - y) ** 2 < gap * gap)) continue;
+      const b: Box = { id: this.id(), x, y, readyAt: 0 };
+      this.boxes.set(b.id, b);
+      spots.push(b);
+      this.ev(['bx', b.id, Math.round(x), Math.round(y)]);
+    }
   }
 
   openBox(p: SimPlayer, b: Box) {
-    this.boxes.delete(b.id);
+    b.readyAt = this.now + BOX_COOLDOWN_MS;
     p.boxes++;
+    // Every box holds diamonds (the only way to earn them besides picking up dropped ones).
+    let dia = Math.round((10 + Math.floor(this.rand() * 4) * 5) * upValue('box', p.ups.box));
     const total = BOX_EFFECTS.reduce((s, e) => s + e.w, 0);
     let r = this.rand() * total;
     let eff = BOX_EFFECTS[0];
@@ -520,8 +544,9 @@ export class Sim {
       case 'speed': this.give(p, 'speed', 12000); break;
       case 'magnet': this.give(p, 'magnet', 15000); break;
       case 'happy': this.give(p, 'genius', 30000); break;
-      case 'jackpot': param = 20 + Math.floor(this.rand() * 4) * 5; p.dia += param; break;
+      case 'jackpot': param = Math.round((40 + Math.floor(this.rand() * 4) * 10) * upValue('box', p.ups.box)); dia += param; break;
       case 'trap': {
+        dia = 0;
         param = Math.min(25, p.dia);
         p.dia -= param;
         if (param > 0) this.burstGems(p.x, p.y, param, p.idx, 1500);
@@ -529,7 +554,8 @@ export class Sim {
         break;
       }
     }
-    this.ev(['bo', b.id, p.idx, ei, param], true);
+    p.dia += dia;
+    this.ev(['bo', b.id, p.idx, ei, param, dia], true);
   }
 
   /* --------------------------------------------------------------- zones */
@@ -771,7 +797,7 @@ export class Sim {
   answer(p: SimPlayer, correct: boolean) {
     if (correct) {
       const gain = answerGain(p.ups, p.streak, this.has(p, 'genius'));
-      p.dia += gain;
+      p.en += gain;
       p.streak++;
       p.bestStreak = Math.max(p.bestStreak, p.streak);
       p.correct++;
@@ -790,8 +816,8 @@ export class Sim {
     const next = p.ups[k] + 1;
     if (next >= u.values.length) return false;
     const cost = u.costs[next];
-    if (p.dia < cost) return false;
-    p.dia -= cost;
+    if (p.en < cost) return false;
+    p.en -= cost;
     const oldMax = this.maxHp(p);
     p.ups[k] = next;
     if (k === 'hp') p.hp += this.maxHp(p) - oldMax;
@@ -810,7 +836,7 @@ export class Sim {
   snapshot() {
     const p = this.players.map((q) => [
       q.idx, Math.round(q.x), Math.round(q.y), aimToByte(q.aim), Math.ceil(q.hp), Math.ceil(q.sh), q.dia, this.flags(q),
-      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges,
+      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en),
     ]);
     const d = this.decoys.map((o) => [o.id, Math.round(o.x), Math.round(o.y), o.char, o.owner, aimToByte(o.aim)]);
     return { t: Math.round(this.now), p, d, r: Math.round(this.remainingMs) };
@@ -819,10 +845,10 @@ export class Sim {
   full() {
     return {
       t: Math.round(this.now),
-      boxes: [...this.boxes.values()].map((b) => [b.id, Math.round(b.x), Math.round(b.y)]),
+      boxes: [...this.boxes.values()].map((b) => [b.id, Math.round(b.x), Math.round(b.y), Math.max(0, Math.round(b.readyAt - this.now))]),
       gems: [...this.gems.values()].map((g) => [g.id, Math.round(g.x), Math.round(g.y), g.v]),
       zones: this.zones.map((z) => [z.id, z.kind === 'groove' ? 0 : 1, Math.round(z.x), Math.round(z.y), z.r, Math.round(z.until - this.now), z.owner]),
-      ups: this.players.map((q) => [q.ups.dpq, q.ups.streak, q.ups.mult, q.ups.ins, q.ups.hp]),
+      ups: this.players.map((q) => upsToArr(q.ups)),
       streaks: this.players.map((q) => q.streak),
       cds: this.players.map((q) => Math.max(0, Math.round(q.powerReadyAt - this.now))),
     };

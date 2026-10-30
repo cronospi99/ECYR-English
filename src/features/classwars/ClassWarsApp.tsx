@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Gamepad2, KeyRound, ListChecks, Play } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Gamepad2, Link2, ListChecks, Play } from 'lucide-react';
+import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { TEACHERS } from '@/features/cards/teachers';
-import { CW_CSS, Btn, Toon } from './ui/kit';
+import { CW_CSS, Toon } from './ui/kit';
+import { sfx, unlockAudio } from './render/audio';
 import { HostApp } from './ui/Host';
 import { JoinScreen, PlayScreen } from './ui/Player';
 import { DemoScreen } from './ui/Demo';
@@ -44,47 +46,69 @@ function Home() {
   const nav = useNavigate();
   const [code, setCode] = useState('');
   const [parade] = useState(() => [...TEACHERS.keys()].sort(() => Math.random() - 0.5).slice(0, 9));
+  const join = () => code.length >= 4 && nav(`/classwars/join/${code}`);
   return (
-    <div className="cw-scroll relative h-full overflow-y-auto">
-      <div className="cw-lawn absolute inset-x-0 bottom-0 h-[34%] opacity-95" />
-      <div className="absolute inset-x-0 bottom-[34%] h-10 bg-gradient-to-b from-transparent to-[#0e1230]/0" />
-      <div className="relative z-10 mx-auto flex min-h-full max-w-[980px] flex-col px-4 pt-[max(14px,env(safe-area-inset-top))]">
-        <Link to="/" className="flex w-max items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[13px] font-bold text-white/80 hover:bg-white/20"><ArrowLeft size={15} /> ECYR English</Link>
-        <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 260, damping: 18 }} className="mt-6 text-center sm:mt-10">
-          <div className="text-[13px] font-extrabold tracking-[0.3em] text-[#ffd23f] uppercase">ECYR English presenta</div>
-          <h1 className="cw-title mt-1 text-[56px] leading-[0.95] sm:text-[88px]" style={{ textShadow: '0 4px 0 #0e1230, 0 -2px 0 #0e1230, 2px 0 0 #0e1230, -2px 0 0 #0e1230, 0 10px 24px rgba(0,0,0,.45)' }}>
-            <span className="text-[#ffd23f]">CLASS</span> <span className="text-white">WARS</span>
+    <div className="relative h-full overflow-hidden">
+      {/* the arena (castle stands, banners, chests) */}
+      <div className="cw-arena pointer-events-none absolute inset-0" aria-hidden />
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        {SPARKS.map(([l, t, d, s], i) => <span key={i} className="cw-spark" style={{ left: `${l}%`, top: `${t}%`, animationDelay: `${d}s`, fontSize: s }}>✦</span>)}
+      </div>
+
+      <div className="cw-scroll absolute inset-0 overflow-x-hidden overflow-y-auto">
+      <div className="relative z-10 mx-auto flex min-h-full max-w-[1000px] flex-col px-3 pt-[max(12px,env(safe-area-inset-top))] sm:px-4">
+        <Link to="/" className="flex w-max items-center gap-1.5 rounded-full border border-white/20 bg-[#0b1a6b]/60 px-3 py-1.5 text-[13px] font-bold text-white/90 backdrop-blur hover:bg-[#0b1a6b]/80"><ArrowLeft size={15} /> ECYR English</Link>
+
+        <motion.div initial={{ y: -40, opacity: 0, scale: 0.9 }} animate={{ y: 0, opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 16 }} className="mx-auto mt-1 w-full max-w-[760px] sm:mt-0">
+          <h1 className="relative z-10">
+            <img src="/classwars/logo.webp" alt="ECYR English presenta Class Wars" width={1112} height={358} className="cw-logo block h-auto w-full select-none" draggable={false} />
           </h1>
-          <p className="mx-auto mt-3 max-w-[560px] text-[16px] font-semibold text-white/75 sm:text-[18px]">Responde en inglés para ganar diamantes 💎, abre cajas sorpresa, usa el poder de tu profe favorito… ¡y roba los diamantes de tus rivales!</p>
+          <p className="cw-bubble relative mx-auto -mt-[5.5%] w-[min(96%,max(54%,330px))] px-4 pt-[max(14px,2.6%)] pb-3 text-center text-[clamp(13.5px,1.9vw,17px)] leading-snug font-bold text-white">
+            Responde en inglés para <b className="text-[#5ff3ff]">recargar energía ⚡</b>, abre <b className="text-[#ffe14d]">cajas sorpresa</b> para ganar <b className="text-[#5ff3ff]">diamantes 💎</b>, usa el <b className="text-[#d58cff]">poder de tu profe favorito</b>… ¡y <b className="text-[#ff5c8a]">roba los diamantes de tus rivales!</b>
+          </p>
         </motion.div>
 
-        <div className="mx-auto mt-7 grid w-full max-w-[640px] grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="flex flex-col gap-2 rounded-[22px] border-2 border-white/10 bg-[#202a63]/90 p-4 sm:col-span-2 sm:flex-row sm:items-center">
-            <div className="flex items-center gap-2 text-[15px] font-black"><KeyRound size={18} /> Unirme con código</div>
+        <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.15, type: 'spring', stiffness: 240, damping: 20 }} className="mx-auto mt-5 grid w-full max-w-[640px] grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="cw-joinbox flex flex-col gap-2 rounded-[24px] p-3 sm:col-span-2 sm:flex-row sm:items-center sm:gap-3 sm:p-3.5">
+            <div className="flex items-center gap-2 pl-1 text-[14px] leading-tight font-extrabold text-white/95"><Link2 size={19} className="shrink-0" /> <span>Unirme con<br className="hidden sm:block" /> código</span></div>
             <div className="flex flex-1 gap-2">
-              <input value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))} onKeyDown={(e) => e.key === 'Enter' && code.length >= 4 && nav(`/classwars/join/${code}`)} placeholder="CÓDIGO" aria-label="Código de la partida"
-                className="h-12 min-w-0 flex-1 rounded-2xl bg-white px-4 text-center text-[22px] font-black tracking-[0.2em] text-[#1b2350] outline-none placeholder:text-[#1b2350]/30" />
-              <Btn tone="yellow" className="h-12" disabled={code.length < 4} onClick={() => nav(`/classwars/join/${code}`)}>Entrar</Btn>
+              <input value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))} onKeyDown={(e) => e.key === 'Enter' && join()} placeholder="CÓDIGO" aria-label="Código de la partida"
+                className="h-12 min-w-0 flex-1 rounded-2xl bg-white px-4 text-center text-[22px] font-black tracking-[0.2em] text-[#1b2350] shadow-[inset_0_3px_0_rgba(0,0,0,.08)] outline-none placeholder:text-[#1b2350]/30 focus:ring-4 focus:ring-[#ffd23f]/60" />
+              <button type="button" disabled={code.length < 4} onClick={() => { unlockAudio(); sfx.click(); join(); }} className="cw-gbtn cw-gbtn-yellow h-12 rounded-2xl px-6 text-[18px] text-[#3a2600] disabled:cursor-not-allowed disabled:opacity-85">Entrar</button>
             </div>
           </div>
           {teacher && (
             <>
-              <Btn big tone="green" onClick={() => nav('/classwars/crear')}><Gamepad2 /> Crear partida</Btn>
-              <Btn big tone="purple" onClick={() => nav('/classwars/preguntas')}><ListChecks /> Mis preguntas</Btn>
+              <BigBtn tone="green" icon={<Gamepad2 size={26} />} onClick={() => nav('/classwars/crear')}>Crear partida</BigBtn>
+              <BigBtn tone="purple" icon={<ListChecks size={26} />} onClick={() => nav('/classwars/preguntas')}>Mis preguntas</BigBtn>
             </>
           )}
-          <Btn big tone={teacher ? 'ghost' : 'blue'} className="sm:col-span-2" onClick={() => nav('/classwars/demo')}><Play /> Probar demo contra bots</Btn>
-        </div>
+          <BigBtn tone="glass" icon={<Play size={22} />} className="sm:col-span-2" onClick={() => nav('/classwars/demo')}>Probar demo contra bots</BigBtn>
+        </motion.div>
 
-        <div className="mt-auto flex items-end justify-center gap-0 overflow-hidden pt-8 sm:gap-2">
+        <div className="mt-auto flex items-end justify-center gap-0 overflow-hidden pt-6 sm:gap-2">
           {parade.map((ci, i) => (
-            <motion.div key={ci} initial={{ y: 120 }} animate={{ y: 0 }} transition={{ delay: 0.15 + i * 0.06, type: 'spring', stiffness: 220, damping: 16 }} className="group relative flex flex-col items-center">
-              <div className="cw-bob" style={{ animationDelay: `${i * 0.18}s` }}><Toon ci={ci} size={i === 4 ? 96 : 74} flip={i > 4} /></div>
+            <motion.div key={ci} initial={{ y: 140 }} animate={{ y: 0 }} transition={{ delay: 0.25 + i * 0.06, type: 'spring', stiffness: 220, damping: 16 }} className="group relative flex flex-col items-center">
+              <div className="cw-bob" style={{ animationDelay: `${i * 0.18}s` }}><Toon ci={ci} size={i === 4 ? 92 : 70} flip={i > 4} className="drop-shadow-[0_6px_4px_rgba(0,40,0,.35)]" /></div>
               <div className="pointer-events-none absolute -top-8 hidden rounded-lg bg-[#141a3f] px-2 py-1 text-[12px] font-extrabold whitespace-nowrap group-hover:block">{POWERS[TEACHERS[ci].id].icon} {POWERS[TEACHERS[ci].id].name}</div>
             </motion.div>
           ))}
         </div>
       </div>
+      </div>
     </div>
+  );
+}
+
+/** Twinkles in the sky: left %, top %, delay s, size. */
+const SPARKS: [number, number, number, number][] = [[8, 9, 0, 14], [22, 4, 1.2, 10], [35, 14, 0.5, 12], [64, 6, 1.8, 11], [78, 12, 0.9, 15], [91, 5, 2.4, 10], [50, 3, 1.5, 9], [15, 26, 2, 9], [86, 28, 0.3, 9]];
+
+function BigBtn({ tone, icon, children, className, onClick }: { tone: 'green' | 'purple' | 'glass'; icon: React.ReactNode; children: React.ReactNode; className?: string; onClick: () => void }) {
+  return (
+    <button type="button" onClick={() => { unlockAudio(); sfx.click(); onClick(); }} className={cn('cw-gbtn group relative flex items-center justify-center gap-3 rounded-[20px] px-6 text-white', tone === 'glass' ? 'cw-gbtn-glass h-14 text-[19px]' : `h-[66px] text-[22px] cw-gbtn-${tone}`, className)}>
+      {icon}
+      <span>{children}</span>
+      <ChevronRight size={22} strokeWidth={3} className="absolute right-4 opacity-90 transition-transform group-hover:translate-x-0.5" />
+    </button>
   );
 }

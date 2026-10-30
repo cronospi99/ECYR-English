@@ -28,6 +28,19 @@ export const BURROW_COOLDOWN = 3500;
 
 export const CHAR_SCALE = 0.56; // TeacherToon units → world px
 
+/* Energy: everyone starts with it, every step and every shot spends it, and only correct answers
+   refill it. At 0 you cannot move, shoot or use powers until you answer. */
+export const START_ENERGY = 1200;
+/** Energy per pixel walked (≈ 17 per second at base speed). */
+export const STEP_COST = 1 / 14;
+/** A touched mystery box stays grey this long, then it can be opened again. */
+export const BOX_COOLDOWN_MS = 10000;
+
+/** Portals (teleport + spawn) grow with the number of people in the match. */
+export const portalCount = (players: number) => clamp(7 + Math.ceil(Math.max(0, players - 6) / 3), 7, 17);
+/** Fixed mystery boxes on the map, more for bigger classes. */
+export const boxCount = (players: number) => clamp(Math.round(26 + players * 1.5), 26, 72);
+
 export type Fx =
   | 'speed' | 'slow' | 'root' | 'stun' | 'confuse' | 'blind' | 'charm'
   | 'invis' | 'invuln' | 'reflect' | 'barrier' | 'small' | 'regen' | 'marked'
@@ -61,6 +74,7 @@ export const FLAG = {
   away: 1 << 23,
   combat: 1 << 24,
   overshield: 1 << 25,
+  tired: 1 << 26,
 } as const;
 
 export const FX_FLAG: Partial<Record<Fx, number>> = {
@@ -72,7 +86,7 @@ export const FX_FLAG: Partial<Record<Fx, number>> = {
 
 /** Speed multiplier from status flags (client prediction uses the same rule as the host). */
 export function speedFromFlags(f: number): number {
-  if (f & (FLAG.stun | FLAG.root | FLAG.zen)) return 0;
+  if (f & (FLAG.stun | FLAG.root | FLAG.zen | FLAG.tired)) return 0;
   let m = 1;
   if (f & FLAG.speed) m *= 1.55;
   if (f & FLAG.power) m *= 1.3;

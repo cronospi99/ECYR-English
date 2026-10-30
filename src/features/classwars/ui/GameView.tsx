@@ -3,11 +3,11 @@
    mode, by the projector (HostSession). */
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BookOpen, LogOut, Map as MapIcon, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair } from 'lucide-react';
+import { BookOpen, LogOut, Map as MapIcon, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair, Zap } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TEACHERS } from '@/features/cards/teachers';
 import type { ClientSession, RenderSource, RP } from '../game/client';
-import { FLAG } from '../game/constants';
+import { FLAG, START_ENERGY } from '../game/constants';
 import { BOX_EFFECTS, CHAR_IDS, INF, POWERS, WEAPONS } from '../game/defs';
 import { hostSource, type HostSession } from '../game/host';
 import type { Fxq } from '../game/vis';
@@ -133,10 +133,11 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         case 'shield': desc = 'Escudo al máximo y +50 extra.'; break;
         case 'speed': desc = '¡Corres muchísimo más rápido!'; break;
         case 'magnet': desc = 'Atraes todos los diamantes cercanos.'; break;
-        case 'jackpot': desc = `¡+${f.param} diamantes para ti!`; break;
-        case 'happy': desc = 'Tus respuestas valen el doble durante 30 s.'; break;
+        case 'jackpot': desc = `¡Cofre lleno de diamantes!`; break;
+        case 'happy': desc = 'Tus respuestas dan el doble de energía durante 30 s.'; break;
         case 'trap': desc = f.param ? `Perdiste ${f.param} diamantes… ¡recógelos rápido!` : '¡Uy! Por suerte no tenías diamantes.'; break;
       }
+      if (f.dia > 0) desc = `+${f.dia} 💎 · ${desc}`;
       const id = ++annId.current;
       setAnn({ id, icon: e.icon, title: e.title, desc, color: e.color });
       setTimeout(() => setAnn((a) => (a?.id === id ? null : a)), 2800);
@@ -334,10 +335,24 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             <span className="text-[24px] leading-none font-black tabular-nums">{me.dia}</span>
             {goal ? <span className="text-[13px] font-bold text-white/55">/ {goal}</span> : null}
           </motion.div>
+          <Energy value={me.en} tired={!!(me.flags & FLAG.tired)} />
           <Bar value={me.hp} max={me.maxHp} color="#34d058" />
           <Bar value={me.sh} max={100} color="#2f8cff" />
         </div>
       )}
+
+      {/* out of energy: frozen until you answer */}
+      {client && me && alive && !quiz && me.flags & FLAG.tired ? (
+        <div className="absolute inset-x-0 top-[38%] z-30 flex justify-center px-4">
+          <motion.div initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 420, damping: 18 }}
+            className="w-[min(92vw,440px)] rounded-[24px] border-[3px] border-[#ff9f0a] bg-[#252b5e]/95 px-5 pt-4 pb-5 text-center shadow-[0_12px_0_rgba(0,0,0,.3)]">
+            <div className="text-[44px] leading-none">🪫</div>
+            <div className="cw-title mt-1 text-[28px] text-[#ffb547] uppercase">¡Sin energía!</div>
+            <div className="mt-1 text-[15px] font-bold text-white/85">No puedes moverte ni atacar. Responde preguntas para recargar ⚡</div>
+            <Btn tone="yellow" big className="cw-pulse mt-4 w-full" onClick={() => openQuiz('q')}><BookOpen size={22} /> Recargar energía {!mobile && <kbd className="rounded-md bg-black/20 px-1.5 text-[12px]">Q</kbd>}</Btn>
+          </motion.div>
+        </div>
+      ) : null}
 
       {/* top-center: timer */}
       <div className="pointer-events-none absolute top-[max(10px,env(safe-area-inset-top))] left-1/2 flex -translate-x-1/2 flex-col items-center gap-1">
@@ -404,11 +419,11 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
 
       {/* bottom-left: answer questions */}
       {client && !quiz && (
-        <div className={cn('absolute left-3 flex flex-col gap-2', mobile ? 'top-[150px]' : 'bottom-[max(14px,env(safe-area-inset-bottom))]')}>
+        <div className={cn('absolute left-3 flex flex-col gap-2', mobile ? 'top-[186px]' : 'bottom-[max(14px,env(safe-area-inset-bottom))]')}>
           <Btn tone="blue" big={!mobile} className={cn(mobile && 'h-12 px-4 text-[15px]')} onClick={() => openQuiz('q')} disabled={!alive}>
             <BookOpen size={mobile ? 18 : 22} /> {mobile ? 'Preguntas' : 'Responder preguntas'} {!mobile && <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">Q</kbd>}
           </Btn>
-          {!mobile && <Btn tone="purple" onClick={() => openQuiz('shop')} disabled={!alive}><Diamond size={18} /> Mejoras <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">B</kbd></Btn>}
+          {!mobile && <Btn tone="purple" onClick={() => openQuiz('shop')} disabled={!alive}><Zap size={18} /> Mejoras <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">B</kbd></Btn>}
         </div>
       )}
 
@@ -420,6 +435,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
               <Slot k="1" active label={weapon.name} onClick={() => client.attackPress()}>
                 <span className="text-[30px]">{weapon.icon}</span>
                 <span className="absolute right-1.5 bottom-0.5 text-[13px] font-black">{me.ammo === INF ? '∞' : me.ammo}</span>
+                <span className="absolute bottom-0.5 left-1.5 text-[11px] font-black text-[#ffe14d]">⚡{weapon.en}</span>
               </Slot>
               <Slot k="E" label={pw.name} cd={hud!.powerLeft / 1000} cdMax={pw.cd} color={pw.color} onClick={() => client.powerPress()}>
                 <span className="text-[30px]">{pw.icon}</span>
@@ -504,12 +520,27 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       )}
       {client && me && hud && !mobile && !quiz && (
         <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
-          WASD moverse · clic atacar · clic derecho caminar<br />E poder · R poder prestado · Q preguntas · B mejoras
+          WASD moverse · clic atacar · clic derecho caminar<br />E poder · R poder prestado · Q preguntas · B mejoras<br /><span className="text-[#ffe14d]">Cada paso y disparo gasta ⚡ · responde para recargar</span>
         </div>
       )}
     </div>
   );
 });
+
+function Energy({ value, tired }: { value: number; tired: boolean }) {
+  const k = Math.max(0, Math.min(1, value / START_ENERGY));
+  const low = value < START_ENERGY * 0.15;
+  return (
+    <div className={cn('flex w-[136px] items-center gap-1.5 rounded-xl bg-[#141a3f]/85 p-1 pr-2 shadow sm:w-[180px]', (tired || low) && 'cw-pulse')}>
+      <Zap size={17} className={cn('shrink-0', tired ? 'text-[#ff6b6b]' : 'text-[#ffe14d]')} fill="currentColor" />
+      <div className="relative h-4 flex-1 overflow-hidden rounded-lg bg-black/40">
+        <div className="absolute inset-y-0 left-0 rounded-lg transition-[width] duration-200" style={{ width: `${k * 100}%`, background: low ? 'linear-gradient(90deg,#ff6b3d,#ff9f0a)' : 'linear-gradient(90deg,#ffb800,#ffe14d)' }} />
+        <div className="absolute inset-x-0 top-0 h-1.5 bg-white/25" />
+      </div>
+      <span className={cn('min-w-[34px] text-right text-[14px] font-black tabular-nums', tired && 'text-[#ff8a8a]')}>{Math.max(0, Math.round(value))}</span>
+    </div>
+  );
+}
 
 function Bar({ value, max, color }: { value: number; max: number; color: string }) {
   const k = Math.max(0, Math.min(1, value / max));

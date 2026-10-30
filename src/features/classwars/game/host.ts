@@ -3,7 +3,7 @@
    one broadcast snapshot every 100 ms (+ urgent events), question batches on demand. */
 import { Relay, type Envelope } from '@/lib/relay';
 import { awardGamePoints, type Award } from '@/features/cards/api';
-import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, lerp } from './constants';
+import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, boxCount, lerp, portalCount } from './constants';
 import type { RenderSource, RP } from './client';
 import { CHAR_IDS, UPGRADES } from './defs';
 import { Sim, type Ev, type SimPlayer } from './sim';
@@ -139,6 +139,7 @@ export class HostSession {
             const p = this.sim.addPlayer({ peer, name, char, uid: lp.uid, guest: lp.guest, bot: false });
             idx = p.idx;
             this.peerIdx.set(peer, idx);
+            this.sim.setupBoxes(boxCount(this.sim.players.length));
             this.relay.send({ k: 'roster', r: this.roster() });
           } else {
             const p = this.sim.players[idx];
@@ -234,7 +235,7 @@ export class HostSession {
     if (!this.sim) return;
     const idx = this.peerIdx.get(peer) ?? -1;
     this.relay.send({
-      k: 'start', seed: this.seed, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
+      k: 'start', seed: this.seed, portals: this.sim.map.burrows.length, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
       full: this.sim.full(), paused: this.phase === 'paused',
     }, peer);
     if (idx >= 0) {
@@ -247,7 +248,8 @@ export class HostSession {
 
   start() {
     if (this.phase !== 'lobby') return;
-    const sim = new Sim(this.seed, { durationMs: this.cfg.durationMin * 60000, goal: this.cfg.goal });
+    const people = this.lobby.size + this.cfg.bots;
+    const sim = new Sim(this.seed, { durationMs: this.cfg.durationMin * 60000, goal: this.cfg.goal, portals: portalCount(people) });
     this.sim = sim;
     for (const lp of this.lobby.values()) {
       const p = sim.addPlayer({ peer: lp.peer, name: lp.name, char: lp.char, uid: lp.uid, guest: lp.guest, bot: false });
@@ -257,8 +259,8 @@ export class HostSession {
     for (let i = 0; i < this.cfg.bots; i++) {
       sim.addPlayer({ peer: null, name: names[i % names.length], char: Math.floor(Math.random() * CHAR_IDS.length), uid: null, guest: true, bot: true });
     }
-    // Opening boxes so the field is not empty.
-    for (let i = 0; i < 8; i++) { sim.nextBoxAt = 0; sim.spawnBoxes(); }
+    // Fixed mystery boxes all over the map (more for bigger classes).
+    sim.setupBoxes(boxCount(people));
     this.vis = new VisualWorld(sim.map);
     this.vis.nameOf = (i) => sim.players[i]?.name ?? '?';
     this.vis.apply(sim.events);
@@ -379,13 +381,13 @@ export function hostSource(h: HostSession): RenderSource {
       for (const p of sim.players) {
         if (!p.connected) continue;
         out.push({
-          idx: p.idx, x: lerp(p.px, p.x, a), y: lerp(p.py, p.y, a), aim: p.aim, hp: Math.ceil(p.hp), sh: Math.ceil(p.sh), dia: p.dia, flags: sim.flags(p),
+          idx: p.idx, x: lerp(p.px, p.x, a), y: lerp(p.py, p.y, a), aim: p.aim, hp: Math.ceil(p.hp), sh: Math.ceil(p.sh), dia: p.dia, en: Math.ceil(p.en), flags: sim.flags(p),
           look: sim.lookChar(p), weapon: p.weapon, ammo: p.ammo, maxHp: sim.maxHp(p), borrowed: p.borrowed, charges: p.bCharges, name: p.name, me: false, bot: p.bot,
         });
       }
       for (const d of sim.decoys) {
         const o = sim.players[d.owner];
-        out.push({ idx: 10000 + d.id, x: d.x, y: d.y, aim: d.aim, hp: o.hp, sh: o.sh, dia: o.dia, flags: 1, look: d.char, weapon: o.weapon, ammo: 0, maxHp: sim.maxHp(o), borrowed: -1, charges: 0, name: o.name, me: false, bot: false, decoy: true });
+        out.push({ idx: 10000 + d.id, x: d.x, y: d.y, aim: d.aim, hp: o.hp, sh: o.sh, dia: o.dia, en: 1, flags: 1, look: d.char, weapon: o.weapon, ammo: 0, maxHp: sim.maxHp(o), borrowed: -1, charges: 0, name: o.name, me: false, bot: false, decoy: true });
       }
       return out;
     },
