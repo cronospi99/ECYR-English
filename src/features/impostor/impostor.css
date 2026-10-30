@@ -1,0 +1,110 @@
+/* Impostor (ported from cronospi99/NewEnglishImpostor, "Nocturne" look).
+   Everything is scoped under the .imp root so nothing leaks into the rest of ECYR,
+   and every keyframe is prefixed imp-. The first rule undoes Tailwind's preflight
+   inside the game (back to the browser defaults the original was designed on);
+   SVG art keeps its presentation attributes, and subtrees marked .imp-keep (ECYR
+   notices, the shared character cards) keep the app's own styles. */
+.imp :where(:not(svg, svg *, .imp-keep, .imp-keep *, .ecyr-card, .ecyr-card *)){all:revert}
+.imp :where(svg){display:inline;vertical-align:baseline}
+.imp *,.imp *::before,.imp *::after{box-sizing:border-box}
+.imp{position:relative;height:100vh;height:100dvh;overflow:hidden;overscroll-behavior:none}
+.imp{margin:0;background:#22282c;color:#f2efe6;font-family:Archivo,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+.imp a{color:#f5c518;text-underline-offset:3px}
+.imp a:hover{color:#ffe06a}
+.imp :focus{outline:none}
+.imp :focus-visible{outline:3px solid #f5c518;outline-offset:2px}
+.imp ::selection{background:rgba(245,197,24,0.35)}
+.imp input{font-family:inherit}
+.imp button{white-space:nowrap;line-height:1.15;font-family:Archivo,sans-serif}
+.imp button[disabled]{opacity:0.35;cursor:not-allowed;box-shadow:none}
+
+@keyframes imp-hazardRoll{to{background-position:56px 0}}
+@keyframes imp-sirenPulse{0%,100%{opacity:.15}50%{opacity:.6}}
+@keyframes imp-shutterUp{0%{transform:translateY(0)}22%{transform:translateY(3%)}100%{transform:translateY(-102%)}}
+@keyframes imp-shutterDown{0%{transform:translateY(0)}22%{transform:translateY(-3%)}100%{transform:translateY(102%)}}
+@keyframes imp-stampIn{0%{transform:scale(1.6) rotate(-7deg);opacity:0}60%{transform:scale(.94) rotate(-2deg);opacity:1}100%{transform:scale(1) rotate(-2deg);opacity:1}}
+@keyframes imp-blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes imp-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@keyframes imp-shakeB{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@keyframes imp-confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(240px) rotate(540deg);opacity:0}}
+@keyframes imp-roomFlash{0%{opacity:0;transform:translateY(12px) scale(.96)}15%{opacity:1;transform:none}75%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
+@keyframes imp-floaty{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes imp-cardFlip{0%{transform:perspective(800px) rotateY(180deg) scale(.4);opacity:0}60%{transform:perspective(800px) rotateY(-12deg) scale(1.08);opacity:1}100%{transform:perspective(800px) rotateY(0) scale(1)}}
+@keyframes imp-scanBeam{from{top:4px}to{top:156px}}
+@keyframes imp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes imp-spin{to{transform:rotate(360deg)}}
+@keyframes imp-popIn{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.06);opacity:1}100%{transform:scale(1)}}
+@keyframes imp-flyOut{0%{transform:translate(-60vw,0) rotate(0)}100%{transform:translate(60vw,0) rotate(720deg)}}
+
+.imp .page{height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column;background:#22282c;background-image:radial-gradient(1200px 700px at 12% -10%, #333c42 0%, #22282c 60%),url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6"><circle cx="1" cy="1" r="0.6" fill="rgba(255,255,255,0.045)"/></svg>');color:#f2efe6}
+
+/* header */
+.imp .hdr{position:relative;border-bottom:3px solid #0e1113;background:linear-gradient(#3b4349,#2b3236)}
+.imp .hdr-row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 30px;flex-wrap:wrap}
+.imp .hdr-logo{width:34px;height:34px;border:3px solid #0e1113;border-radius:4px;background:#f5c518;display:flex;align-items:center;justify-content:center;font:400 18px 'Archivo Black',sans-serif;color:#0e1113;box-shadow:inset 0 -3px 0 rgba(0,0,0,0.18)}
+.imp .hdr-title{font:400 20px 'Archivo Black',sans-serif;letter-spacing:0.04em;text-transform:uppercase;color:#f2efe6;text-shadow:2px 2px 0 #0e1113}
+.imp .tag{padding:5px 10px;border:2px solid #0e1113;border-radius:3px;background:#1b2023;font:700 11px 'Space Mono',monospace;letter-spacing:0.14em;text-transform:uppercase}
+.imp .hazard{height:12px;border-top:3px solid #0e1113;background-image:repeating-linear-gradient(45deg,#f5c518 0 14px,#0e1113 14px 28px);background-size:56px 56px;animation:imp-hazardRoll 2.4s linear infinite}
+.imp .hazard-static{height:10px;background-image:repeating-linear-gradient(45deg,#f5c518 0 12px,#0e1113 12px 24px)}
+
+/* type */
+.imp .lbl{font:700 11px 'Space Mono',monospace;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,239,230,0.5)}
+.imp .lbl-y{color:#f5c518}
+.imp .kicker{display:inline-block;padding:5px 12px;border:3px solid #0e1113;border-radius:3px;background:#f07a1a;font:700 12px 'Space Mono',monospace;letter-spacing:0.18em;text-transform:uppercase;color:#0e1113}
+.imp .h1{font:400 clamp(40px,5.4vw,68px) 'Archivo Black',sans-serif;line-height:0.98;letter-spacing:-0.01em;margin:0 0 20px;text-transform:uppercase;text-shadow:4px 4px 0 #0e1113}
+.imp .h2{font:400 clamp(28px,3.4vw,44px) 'Archivo Black',sans-serif;text-transform:uppercase;line-height:1.02;margin:0 0 14px;text-shadow:3px 3px 0 #0e1113}
+.imp .lead{font-size:19px;line-height:1.6;color:rgba(242,239,230,0.74);margin:0 0 14px;max-width:40ch;text-wrap:pretty}
+
+/* surfaces */
+.imp .plate{padding:20px 22px 22px;border:3px solid #0e1113;border-radius:5px;background:linear-gradient(#3b4349,#2b3236);box-shadow:0 5px 0 #0e1113}
+.imp .well{border:3px solid #0e1113;border-radius:4px;background:#1b2023}
+.imp .rivet{position:absolute;width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#8b969c,#20262a);border:2px solid #0e1113}
+
+/* buttons */
+.imp .btn{border:3px solid #0e1113;border-radius:5px;cursor:pointer;box-shadow:0 5px 0 #0e1113;font:800 14px Archivo,sans-serif;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;transition:transform .06s}
+.imp .btn:active:not([disabled]){transform:translateY(2px)}
+.imp .btn-y{background:#f5c518;color:#0e1113}.imp .btn-y:hover{background:#ffd94a}
+.imp .btn-s{background:#4a5359;color:#f2efe6}.imp .btn-s:hover{background:#5b666d}
+.imp .btn-o{background:#f07a1a;color:#0e1113}.imp .btn-o:hover{background:#ff9038}
+.imp .btn-r{background:#b4441f;color:#fff3e0}.imp .btn-r:hover{background:#cd5326}
+.imp .btn-d{background:#2b3236;color:#f5c518}.imp .btn-d:hover{background:#3b4349}
+.imp .btn-g{background:#7bbf5a;color:#0e1113}.imp .btn-g:hover{filter:brightness(1.1)}
+.imp .btn-big{padding:16px 30px;font:400 17px 'Archivo Black',sans-serif;box-shadow:0 6px 0 #0e1113}
+.imp .btn-sm{padding:8px 14px;font-size:11px;letter-spacing:0.1em;box-shadow:0 4px 0 #0e1113;border-radius:4px}
+.imp .btn-hdr{padding:7px 14px;border-radius:4px;font:700 11px 'Space Mono',monospace;letter-spacing:0.14em;box-shadow:0 3px 0 #0e1113}
+.imp .opt{border:3px solid #0e1113;border-radius:4px;box-shadow:0 4px 0 #0e1113;cursor:pointer;padding:11px 18px;font:800 14px Archivo,sans-serif;letter-spacing:0.08em;text-transform:uppercase}
+.imp .opt:hover{filter:brightness(1.12)}
+.imp .opt.on{background:#f5c518;color:#0e1113}
+.imp .opt.off{background:#4a5359;color:#f2efe6}
+.imp .sq{width:42px;height:42px;padding:0;border:3px solid #0e1113;border-radius:4px;box-shadow:0 4px 0 #0e1113;font:800 20px Archivo,sans-serif;cursor:pointer}
+.imp .row{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+
+/* bars */
+.imp .bar{flex:1;height:14px;border:2px solid #0e1113;border-radius:3px;background:#1b2023;overflow:hidden;display:block}
+.imp .bar>span{display:block;height:100%}
+.imp .fill-y{background-image:repeating-linear-gradient(45deg,#f5c518 0 7px,#d9a800 7px 14px)}
+.imp .fill-o{background-image:repeating-linear-gradient(45deg,#f07a1a 0 7px,#c85c10 7px 14px)}
+.imp .fill-s{background-image:repeating-linear-gradient(45deg,#6d787e 0 7px,#556066 7px 14px)}
+
+/* text field */
+.imp .field{width:100%;padding:12px 14px;border:3px solid #0e1113;border-radius:4px;background:#1b2023;color:#f2efe6;font-size:17px;font-weight:600}
+.imp .field::placeholder{color:rgba(242,239,230,0.35)}
+
+@media (max-width:720px){
+  .imp .hdr-row{padding:10px 16px;gap:10px}
+  .imp .stack-sm{grid-template-columns:minmax(0,1fr)!important}
+  .imp .pad-sm{padding-left:16px!important;padding-right:16px!important}
+}
+
+/* phone in landscape: put long screens side by side instead of shrinking them */
+.imp .cust{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.imp .mtg{display:flex;flex-direction:column;gap:14px}
+.imp .mtg-col{display:flex;flex-direction:column;gap:14px;min-width:0}
+@media (orientation:landscape) and (max-height:560px){
+  .imp .cust{grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);grid-template-areas:"lbl hat" "prev hat" "color face" "btns extra";max-width:960px!important;column-gap:22px;row-gap:12px}
+  .imp .c-lbl{grid-area:lbl}.imp .c-prev{grid-area:prev}.imp .c-color{grid-area:color}.imp .c-hat{grid-area:hat}.imp .c-face{grid-area:face}.imp .c-extra{grid-area:extra}.imp .c-btns{grid-area:btns}
+  .imp .mtg{flex-direction:row;align-items:flex-start}
+  .imp .mtg>.mtg-col:first-child{flex:1.25}
+  .imp .mtg>.mtg-col:last-child{flex:1}
+}
+@media (max-width:720px),(max-height:560px){ .imp .hide-sm{display:none!important} }

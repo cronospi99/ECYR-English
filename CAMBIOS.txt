@@ -11,7 +11,7 @@ funcione en producción y algunos puntos para revisar.
 ACTUALIZACIÓN 2 · OCTUBRE 2026 — NIVEL C2, VOCABULARIO VISUAL Y MÁS
 ======================================================================
 
-SEIS PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
+OCHO PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
   1. supabase/migrations/13_c2_level.sql — acepta "C2" en tareas
      asignadas, Mis trabajos y quizzes de podcasts.
   2. supabase/migrations/14_submission_reviews.sql — activa la revisión
@@ -26,6 +26,11 @@ SEIS PASOS EN SUPABASE (SQL Editor → pegar → Run, en este orden):
      estudiantes desde tu panel (sección X).
   6. supabase/migrations/18_live_boards_v2.sql — formas, tamaños, flechas
      y muros privados en el Muro en vivo (sección Y2).
+  7. supabase/migrations/19_game_cards.sql — puntos y rangos de las cartas.
+  8. supabase/migrations/20_class_wars.sql — preguntas propias de Class Wars.
+Y UNA VEZ EN CLOUDFLARE (gratis): publicar el servidor en tiempo real de
+los juegos y poner VITE_RELAY_URL en Vercel. Pasos en README.md, sección
+«Juegos en vivo».
 Vercel no necesita cambios.
 
 K. NIVEL C2 · PROFICIENCY ("Grammar Summit")
@@ -195,6 +200,40 @@ Y. MURO EN VIVO (menú › Muro en vivo · Sala del docente › Material)
   borrar cualquiera, exportar texto/CSV, imprimir, cerrar/reabrir.
 - Se actualiza en vivo en todos los dispositivos.
 
+G1. CLASS WARS (Juegos › En vivo con tu clase)
+- Arena en vivo vista desde arriba: el docente proyecta el código/QR y los
+  estudiantes entran desde el celular o el computador. Gana quien tenga
+  más diamantes al final (o el primero en llegar a una meta).
+- Los 25 profes son personajes, todos disponibles para todos, cada uno con
+  su poder especial (Freddy: silbato turbo; Anyela: lluvia de libros;
+  Julián: café reconfortante; Jhonathan: ¡Oh là là!; Jalbleidy:
+  detención…).
+- Cajas «?»: armas (tiza, erizo, burbujeador, lanzaborradores, rayo
+  resaltador, clipadora, bomba de purpurina), PODERES DE OTROS PROFES (3
+  usos), disfraz, curación, escudo, velocidad, imán, tesoro, hora feliz y
+  trampa (−25 💎).
+- «Responder preguntas»: 4 colores, rachas; mientras respondes estás en una
+  burbuja protectora (salvo si acabas de pelear). Noquear a alguien le roba
+  30 % de sus diamantes (salen volando como gemas).
+- Tienda de mejoras: diamantes por respuesta, bono de racha, multiplicador,
+  seguro y vida máxima.
+- Preguntas: de todo el plan de estudios (A1–C2, ~2.800) o de sets propios
+  del docente (Class Wars › Mis preguntas; se pueden pegar como texto).
+- Al final: podio animado y puntos para la carta de cada estudiante.
+- Demo contra bots para probarlo sin conexión.
+
+G2. IMPOSTOR (Juegos › En vivo con tu clase)
+- El juego del repositorio NewEnglishImpostor, completo (clásico,
+  videojuego con misiones y demo con bots), ahora dentro de ECYR, sin la
+  marca anterior (dice ECYR English). Solo docentes dirigen partidas.
+
+G3. CARTAS DE PROFES (Juegos › Cartas)
+- Los 25 profes como cartas coleccionables, todas disponibles. Cada carta
+  sube de rango con los puntos que ganas jugando con ese personaje:
+  bronce (0), plata (20), oro (60) y diamante (150), con marcos metálicos,
+  brillo animado en diamante y animación al subir. El docente ve el
+  ranking de su clase. Solo el docente que dirige asigna los puntos.
+
 Y2. MURO EN VIVO: FORMAS, FLECHAS Y MUROS PRIVADOS
 - Tamaño y forma: cada tarjeta se agranda o achica desde su esquina (con
   el mouse o tocándola en el celular; también «Tamaño» en su menú). Formas:
@@ -226,6 +265,13 @@ Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
 - «Al azar» sigue disponible: mezcla a todos, con 📌 para fijar a alguien.
 - Acceso rápido: botón azul «Pantalla de clase» en la barra flotante de la
   derecha (encima del Verb Lab), solo para docentes, o Alt+P.
+- Spotify (en «Más»): pega un enlace de playlist, canción, álbum o
+  podcast, o elige «Lofi beats», «Peaceful Piano» o «Deep Focus». Con tu
+  sesión de Spotify abierta en el navegador (Premium) suenan completas; sin
+  sesión, vistas previas de 30 s. Si la red o el antivirus del equipo
+  bloquean Spotify, el widget no carga (lo avisa abajo).
+- YouTube (antes «Video»): ahora acepta también playlists y guarda tus
+  enlaces recientes para cambiar rápido; incluye «Lofi radio (en vivo)».
 - Descartados: webcam (privacidad), calendario (el reloj ya da la fecha),
   PDF, embed e hipervínculo (la mayoría de sitios no se dejan incrustar; el
   QR cubre compartir enlaces) y stickers (decorativos).

@@ -17,6 +17,7 @@ export type WidgetKind =
   | 'text'
   | 'image'
   | 'video'
+  | 'spotify'
   | 'dice'
   | 'score'
   | 'agenda'

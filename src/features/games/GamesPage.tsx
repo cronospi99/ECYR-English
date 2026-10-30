@@ -11,6 +11,7 @@ import { Segmented } from '@/components/ui/Segmented';
 import { useGames, TRACKED_GAMES } from '@/store/games';
 import { GameProgressView } from './GameProgress';
 import { GtleGallery } from '@/features/learn/inserts/Gtle';
+import { LiveGames } from './LiveGames';
 
 export default function GamesPage() {
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
@@ -46,6 +47,7 @@ export default function GamesPage() {
         <GameProgressView sessions={sessions} defenders={defenders} />
       ) : (
       <>
+      <LiveGames />
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
           <Chip active={level === 'all'} onClick={() => setLevel('all')}>

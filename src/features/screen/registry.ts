@@ -9,6 +9,7 @@ import {
   Image,
   ListChecks,
   Mic,
+  Music,
   Palette,
   PlaySquare,
   QrCode,
@@ -35,6 +36,7 @@ import Poll from './widgets/Poll';
 import Text from './widgets/Text';
 import ImageW from './widgets/ImageW';
 import Video from './widgets/Video';
+import Spotify from './widgets/Spotify';
 import Dice from './widgets/Dice';
 import Score from './widgets/Score';
 import Agenda from './widgets/Agenda';
@@ -78,7 +80,8 @@ export const WIDGETS: WidgetDef[] = [
   def({ kind: 'agenda', label: 'Agenda', icon: ListChecks, color: '#10b981', w: 360, h: 400, minW: 260, minH: 220, settings: true, Component: Agenda as never }),
   def({ kind: 'draw', label: 'Dibujo', icon: Palette, color: '#d946ef', w: 600, h: 500, minW: 320, minH: 300, bleed: true, Component: Draw as never }),
   def({ kind: 'image', label: 'Imagen', icon: Image, color: '#ec4899', w: 420, h: 320, minW: 180, minH: 140, bleed: true, Component: ImageW as never }),
-  def({ kind: 'video', label: 'Video', icon: PlaySquare, color: '#ef4444', w: 560, h: 360, minW: 280, minH: 200, settings: true, bleed: true, Component: Video as never }),
+  def({ kind: 'spotify', label: 'Spotify', icon: Music, color: '#1DB954', w: 420, h: 440, minW: 280, minH: 200, settings: true, bleed: true, Component: Spotify as never }),
+  def({ kind: 'video', label: 'YouTube', icon: PlaySquare, color: '#ef4444', w: 560, h: 360, minW: 280, minH: 200, settings: true, bleed: true, Component: Video as never }),
   def({ kind: 'qr', label: 'Código QR', icon: QrCode, color: '#334155', w: 320, h: 380, minW: 200, minH: 240, settings: true, Component: Qr as never }),
   def({ kind: 'countdown', label: 'Cuenta atrás', icon: CalendarClock, color: '#8b5cf6', w: 440, h: 260, minW: 280, minH: 180, settings: true, Component: Countdown as never }),
 ];
