@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "content:extract": "node scripts/extract-content.mjs",
-    "db:bundle": "node scripts/bundle-sql.mjs"
+    "db:bundle": "node scripts/bundle-sql.mjs",
+    "relay": "node scripts/relay-dev.mjs"
   },
   "engines": {
     "node": ">=20"

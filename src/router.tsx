@@ -72,5 +72,8 @@ export const router = createBrowserRouter([
   // Full-screen players (no chrome)
   { path: 'board/:id', element: page(() => import('./features/boards/BoardPage')), errorElement: <RouteError /> },
   { path: 'teacher/screen', element: page(() => import('./features/screen/ClassroomScreenPage')), errorElement: <RouteError /> },
+  // Live classroom games: own screens, nested routes inside each app.
+  { path: 'classwars/*', element: page(() => import('./features/classwars/ClassWarsApp')), errorElement: <RouteError /> },
+  { path: 'impostor/*', element: page(() => import('./features/impostor/ImpostorApp')), errorElement: <RouteError /> },
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);
