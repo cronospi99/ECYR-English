@@ -226,6 +226,13 @@ Z. PANTALLA DE CLASE (Sala del docente › botón «Pantalla»)
 - «Al azar» sigue disponible: mezcla a todos, con 📌 para fijar a alguien.
 - Acceso rápido: botón azul «Pantalla de clase» en la barra flotante de la
   derecha (encima del Verb Lab), solo para docentes, o Alt+P.
+- Spotify (en «Más»): pega un enlace de playlist, canción, álbum o
+  podcast, o elige «Lofi beats», «Peaceful Piano» o «Deep Focus». Con tu
+  sesión de Spotify abierta en el navegador (Premium) suenan completas; sin
+  sesión, vistas previas de 30 s. Si la red o el antivirus del equipo
+  bloquean Spotify, el widget no carga (lo avisa abajo).
+- YouTube (antes «Video»): ahora acepta también playlists y guarda tus
+  enlaces recientes para cambiar rápido; incluye «Lofi radio (en vivo)».
 - Descartados: webcam (privacidad), calendario (el reloj ya da la fecha),
   PDF, embed e hipervínculo (la mayoría de sitios no se dejan incrustar; el
   QR cubre compartir enlaces) y stickers (decorativos).
