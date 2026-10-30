@@ -54,6 +54,7 @@ export const router = createBrowserRouter([
       { path: 'learn/visuals', element: page(() => import('./features/visuals/VisualsPage')) },
       { path: 'plan', element: page(() => import('./features/plan/PlanPage')) },
       { path: 'games', element: page(() => import('./features/games/GamesPage')) },
+      { path: 'games/cards', element: page(() => import('./features/cards/CardsPage')) },
       { path: 'ielts/:mod?', element: page(() => import('./features/ielts/IeltsPage')) },
       { path: 'coach', element: page(() => import('./features/coach/CoachPage')) },
       { path: 'progress', element: page(() => import('./features/progress/ProgressPage')) },
