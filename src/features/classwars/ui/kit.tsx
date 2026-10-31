@@ -4,6 +4,7 @@ import { TeacherToon } from '@/features/cards/TeacherToon';
 import { TEACHERS } from '@/features/cards/teachers';
 import { cn } from '@/lib/cn';
 import { ICONS, ICON_INK, type IconKey } from '../game/icons';
+import { t } from '../i18n';
 import { sfx, unlockAudio } from '../render/audio';
 
 export const CW_CSS = `
@@ -119,7 +120,7 @@ export function Toon({ ci, size = 120, live = false, className, flip }: { ci: nu
   );
 }
 
-export function Loading({ text = 'Cargando…' }: { text?: string }) {
+export function Loading({ text = t('Loading…', 'Cargando…') }: { text?: string }) {
   return (
     <div className="flex flex-col items-center gap-4 py-10">
       <div className="h-12 w-12 animate-spin rounded-full border-[5px] border-white/15 border-t-[#ffd23f]" />

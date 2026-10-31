@@ -6,7 +6,7 @@ import {
   BASE_SPEED, BOX_COOLDOWN_MS, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
   PLAYER_R, RESPAWN_MS, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, START_ENERGY, STEP_COST, TICK_MS, aimToByte, type Fx,
 } from './constants';
-import { BOX_EFFECTS, CHAR_IDS, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
+import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
 import { freeSpot, generateMap, hitsWall, moveCircle, resolve, type GameMap } from './map';
 
 export type Ev = (string | number)[];
@@ -21,6 +21,8 @@ export interface SimPlayer {
   bot: boolean;
   connected: boolean;
   x: number; y: number; px: number; py: number;
+  /** Walking velocity of the last tick (px/s), for aim leading. */
+  wvx: number; wvy: number;
   vx: number; vy: number;
   tx: number; ty: number; hasT: boolean; lastAcceptT: number;
   mx: number; my: number;
@@ -83,7 +85,7 @@ export class Sim {
     const b = this.map.burrows[idx % this.map.burrows.length];
     const p: SimPlayer = {
       idx, ...o, connected: true,
-      x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
+      x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, wvx: 0, wvy: 0, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
       mx: 0, my: 0, aim: Math.PI / 2, ad: 200,
       hp: MAX_HP, sh: MAX_SHIELD, dia: 0, en: this.settings.startEnergy ?? START_ENERGY, alive: true, respawnAt: 0,
       weapon: 0, ammo: INF, weaponUntil: 0, nextFire: 0, attackHeld: false, atkC: 0, powC: 0, bonC: 0, pendingShot: false,
@@ -186,6 +188,7 @@ export class Sim {
         p.vy *= k;
       } else { p.vx = 0; p.vy = 0; }
       [p.x, p.y] = moveCircle(this.map, p.x, p.y, nx - p.x, ny - p.y);
+      p.wvx = (p.x - p.px) / dt; p.wvy = (p.y - p.py) / dt;
 
       // Regeneration.
       const maxHp = this.maxHp(p);
@@ -252,6 +255,32 @@ export class Sim {
     if (now >= this.settings.durationMs) this.ended = true;
   }
 
+  /** Aim help: if a rival is within a small angle of where you aim and in range, aim where they
+      will be when the shot arrives (speed 0 = instant / thrown to a point). */
+  assist(p: SimPlayer, speed: number, range: number, cone = 0.16): number {
+    const sx = p.x, sy = p.y - 18;
+    let best: SimPlayer | null = null, bestErr = cone;
+    for (const q of this.players) {
+      if (q === p || !q.alive || !q.connected || this.has(q, 'invis')) continue;
+      const dx = q.x - sx, dy = q.y - 22 - sy, d = Math.hypot(dx, dy);
+      if (d > range + 40 || d < 1) continue;
+      let err = Math.atan2(dy, dx) - p.aim;
+      while (err > Math.PI) err -= Math.PI * 2;
+      while (err < -Math.PI) err += Math.PI * 2;
+      // a wider cone up close, where a few degrees miss by little anyway
+      if (Math.abs(err) < bestErr * (d < 180 ? 1.6 : 1)) { bestErr = Math.abs(err); best = q; }
+    }
+    if (!best) return p.aim;
+    let tx = best.x, ty = best.y - 22;
+    if (speed > 0) {
+      for (let i = 0; i < 2; i++) {
+        const tt = Math.min(0.9, Math.hypot(tx - sx, ty - sy) / speed);
+        tx = best.x + best.wvx * tt; ty = best.y - 22 + best.wvy * tt;
+      }
+    }
+    return Math.atan2(ty - sy, tx - sx);
+  }
+
   /* ------------------------------------------------------------- weapons */
   setWeapon(p: SimPlayer, w: number) {
     const def = WEAPONS[w];
@@ -270,6 +299,7 @@ export class Sim {
     const cd = def.cd * (this.has(p, 'rapid') ? 0.6 : 1);
     p.nextFire = this.now + cd;
     this.spend(p, def.en);
+    if (def.kind !== 'melee') p.aim = this.assist(p, def.kind === 'grenade' ? 0 : def.speed, def.range);
     if (p.fx.invis && this.has(p, 'invis')) { p.fx.invis = 0; this.ev(['rv', p.idx]); }
     p.lastCombatAt = this.now;
     const a = p.aim, cx = Math.cos(a), cy = Math.sin(a);
@@ -529,52 +559,59 @@ export class Sim {
   openBox(p: SimPlayer, b: Box) {
     b.readyAt = this.now + BOX_COOLDOWN_MS;
     p.boxes++;
-    // Every box holds diamonds (the only way to earn them besides picking up dropped ones).
-    let dia = Math.round((10 + Math.floor(this.rand() * 4) * 5) * upValue('box', p.ups.box));
-    const total = BOX_EFFECTS.reduce((s, e) => s + e.w, 0);
-    let r = this.rand() * total;
-    let eff = BOX_EFFECTS[0];
-    for (const e of BOX_EFFECTS) { r -= e.w; if (r <= 0) { eff = e; break; } }
-    const ei = BOX_EFFECTS.indexOf(eff);
-    let param = 0;
-    switch (eff.id) {
-      case 'gadget': {
-        const options = [1, 2, 3, 4, 5, 6].filter((w) => w !== p.weapon);
-        param = options[Math.floor(this.rand() * options.length)];
-        this.setWeapon(p, param);
-        break;
-      }
-      case 'power': {
-        const mine = this.lookChar(p);
-        do param = Math.floor(this.rand() * CHAR_IDS.length); while (param === mine);
-        p.borrowed = param;
-        p.bCharges = 3;
-        break;
-      }
-      case 'costume': {
-        do param = Math.floor(this.rand() * CHAR_IDS.length); while (param === p.char);
-        p.costume = param;
-        p.costumeUntil = this.now + 40000;
-        this.ev(['cs', p.idx, param]);
-        break;
-      }
-      case 'healer': this.give(p, 'regen', 15000); break;
-      case 'shield': p.sh = MAX_SHIELD + 50; break;
-      case 'speed': this.give(p, 'speed', 12000); break;
-      case 'magnet': this.give(p, 'magnet', 15000); break;
-      case 'happy': this.give(p, 'genius', 30000); break;
-      case 'jackpot': param = Math.round((40 + Math.floor(this.rand() * 4) * 10) * upValue('box', p.ups.box)); dia += param; break;
-      case 'trap': {
-        dia = 0;
-        param = Math.min(25, p.dia);
-        p.dia -= param;
-        if (param > 0) this.burstGems(p.x, p.y, param, p.idx, 1500);
-        this.ev(['ex', Math.round(p.x), Math.round(p.y), 60, 'trap'], true);
-        break;
+    // 1) Diamonds: every box adds, multiplies or cuts them.
+    const oi = this.pick(DIA_OUTCOMES);
+    const o = DIA_OUTCOMES[oi];
+    let dia: number;
+    if (o.kind === 'add') dia = Math.round(o.v * upValue('box', p.ups.box));
+    else if (o.kind === 'mul') dia = Math.round(p.dia * (o.v - 1));
+    else dia = -Math.floor(p.dia * (o.v / 100) * (1 - upValue('ins', p.ups.ins) / 100));
+    p.dia += dia;
+    if (dia < 0) {
+      // what you lose spills out as gems anyone can grab (you can pick them back after 1.5 s)
+      this.burstGems(p.x, p.y, -dia, p.idx, 1500);
+      this.ev(['ex', Math.round(p.x), Math.round(p.y), 60, 'trap'], true);
+    }
+    // 2) Half of the boxes also hold an item.
+    let ei = -1, param = 0;
+    if (this.rand() < 0.5) {
+      ei = this.pick(BOX_EFFECTS);
+      switch (BOX_EFFECTS[ei].id) {
+        case 'gadget': {
+          const options = [1, 2, 3, 4, 5, 6].filter((w) => w !== p.weapon);
+          param = options[Math.floor(this.rand() * options.length)];
+          this.setWeapon(p, param);
+          break;
+        }
+        case 'power': {
+          const mine = this.lookChar(p);
+          do param = Math.floor(this.rand() * CHAR_IDS.length); while (param === mine);
+          p.borrowed = param;
+          p.bCharges = 3;
+          break;
+        }
+        case 'costume': {
+          do param = Math.floor(this.rand() * CHAR_IDS.length); while (param === p.char);
+          p.costume = param;
+          p.costumeUntil = this.now + 40000;
+          this.ev(['cs', p.idx, param]);
+          break;
+        }
+        case 'healer': this.give(p, 'regen', 15000); break;
+        case 'shield': p.sh = MAX_SHIELD + 50; break;
+        case 'speed': this.give(p, 'speed', 12000); break;
+        case 'magnet': this.give(p, 'magnet', 15000); break;
+        case 'happy': this.give(p, 'genius', 30000); break;
       }
     }
-    p.dia += dia;
-    this.ev(['bo', b.id, p.idx, ei, param, dia], true);
+    this.ev(['bo', b.id, p.idx, ei, param, dia, oi], true);
+  }
+
+  /** Weighted random index. */
+  private pick(list: { w: number }[]) {
+    let r = this.rand() * list.reduce((s, e) => s + e.w, 0);
+    for (let i = 0; i < list.length; i++) { r -= list[i].w; if (r <= 0) return i; }
+    return list.length - 1;
   }
 
   /* --------------------------------------------------------------- zones */
@@ -626,6 +663,7 @@ export class Sim {
       ci = this.lookChar(p);
     }
     const id = CHAR_IDS[ci];
+    if (POWERS[id]?.aimed) p.aim = this.assist(p, 700, 560, 0.22);
     const ok = this.runPower(p, id);
     if (!ok) { if (!borrowed) p.powerReadyAt = this.now + 1500; return; }
     if (borrowed) {

@@ -14,6 +14,7 @@ import { CharacterPicker } from './CharacterPicker';
 import { GameView } from './GameView';
 import { Podium } from './Podium';
 import { Loading } from './kit';
+import { t } from '../i18n';
 
 export function DemoScreen() {
   const profile = useAuth((s) => s.profile);
@@ -36,7 +37,7 @@ export function DemoScreen() {
       if (cancelled) return;
       const code = 'DEMO' + makeCode();
       const host = new HostSession({ code, matchId: makeId(), durationMin: minutes, startEnergy: 1200, goal: 0, maxPlayers: 1, questions: qs, source: `Demo ${level}`, bots: 7, demo: true, hostName: 'Demo' });
-      const name = (profile?.full_name ?? 'Tú').split(' ')[0];
+      const name = (profile?.full_name ?? t('You', 'Tú')).split(' ')[0];
       const client = new ClientSession(code, 'me' + makeId().slice(0, 6), name, char, null);
       made = { host, client };
       let last = '';
@@ -63,18 +64,18 @@ export function DemoScreen() {
   if (run && pair) {
     const { client } = pair;
     if (client.phase === 'playing') return <GameView client={client} onExit={() => setRun(0)} />;
-    if (client.phase === 'ended') return <Podium results={client.results} myIdx={client.myIdx} saved="Demo: los puntos de carta no se guardan." onAgain={() => setRun((r) => r + 1)} againLabel="Jugar otra vez" onExit={() => setRun(0)} exitLabel="Menú" />;
-    return <div className="grid h-full place-items-center"><Loading text="Preparando el campo…" /></div>;
+    if (client.phase === 'ended') return <Podium results={client.results} myIdx={client.myIdx} saved={t('Demo: card points are not saved.', 'Demo: los puntos de carta no se guardan.')} onAgain={() => setRun((r) => r + 1)} againLabel={t('Play again', 'Jugar otra vez')} onExit={() => setRun(0)} exitLabel={t('Menu', 'Menú')} />;
+    return <div className="grid h-full place-items-center"><Loading text={t('Getting the field ready…', 'Preparando el campo…')} /></div>;
   }
-  if (run) return <div className="grid h-full place-items-center"><Loading text="Preparando el campo…" /></div>;
+  if (run) return <div className="grid h-full place-items-center"><Loading text={t('Getting the field ready…', 'Preparando el campo…')} /></div>;
 
   return (
     <div className="flex h-full flex-col p-3 sm:p-5">
       <div className="mb-3 flex flex-wrap items-center gap-3">
-        <button type="button" onClick={() => nav('/classwars')} className="grid h-10 w-10 place-items-center rounded-full bg-white/10 hover:bg-white/20" aria-label="Volver"><ArrowLeft /></button>
+        <button type="button" onClick={() => nav('/classwars')} className="grid h-10 w-10 place-items-center rounded-full bg-white/10 hover:bg-white/20" aria-label={t('Back', 'Volver')}><ArrowLeft /></button>
         <div>
-          <h1 className="cw-title text-[24px] leading-tight sm:text-[30px]">Demo contra bots</h1>
-          <p className="text-[13px] font-semibold text-white/60">Elige personaje y nivel de las preguntas.</p>
+          <h1 className="cw-title text-[24px] leading-tight sm:text-[30px]">{t('Demo vs bots', 'Demo contra bots')}</h1>
+          <p className="text-[13px] font-semibold text-white/60">{t('Choose a character and the question level.', 'Elige personaje y nivel de las preguntas.')}</p>
         </div>
         <div className="cw-scroll -mx-1 flex w-full items-center gap-1.5 overflow-x-auto px-1 pb-1 sm:ml-auto sm:w-auto">
           {LEVELS.map((l) => (
@@ -86,8 +87,8 @@ export function DemoScreen() {
           ))}
         </div>
       </div>
-      <CharacterPicker value={char} onChange={(c) => { setChar(c); try { localStorage.setItem('cw:char', String(c)); } catch { /* ignore */ } }} onConfirm={() => setRun((r) => r + 1)} confirmLabel="¡Jugar!" />
-      <Link to="/classwars" className="sr-only">Volver</Link>
+      <CharacterPicker value={char} onChange={(c) => { setChar(c); try { localStorage.setItem('cw:char', String(c)); } catch { /* ignore */ } }} onConfirm={() => setRun((r) => r + 1)} confirmLabel={t('Play!', '¡Jugar!')} />
+      <Link to="/classwars" className="sr-only">{t('Back', 'Volver')}</Link>
     </div>
   );
 }

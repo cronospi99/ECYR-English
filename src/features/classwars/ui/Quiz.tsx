@@ -8,6 +8,7 @@ import { FLAG } from '../game/constants';
 import { UPGRADES, answerGain, upValue } from '../game/defs';
 import { sfx } from '../render/audio';
 import { Btn, Diamond, GameIcon } from './kit';
+import { num, t, tx } from '../i18n';
 
 const TILE = [
   { bg: '#d8343f', sh: '#9e1f2a' },
@@ -32,16 +33,16 @@ export function QuizOverlay({ client, onClose, tab, setTab }: { client: ClientSe
         <div className="flex items-center gap-1 rounded-full bg-black/30 py-1.5 pr-3.5 pl-2 text-[18px] font-black tabular-nums text-[#ffe14d]"><GameIcon k="bolt" size={20} />{en}</div>
         <div className="flex items-center gap-1.5 rounded-full bg-black/30 py-1.5 pr-3.5 pl-2 text-[18px] font-black tabular-nums"><Diamond size={22} />{dia}</div>
         <div className={cn('flex items-center gap-1 rounded-full px-3 py-1.5 text-[15px] font-black', client.streak >= 3 ? 'bg-[#ff7a1a] text-white' : 'bg-black/30 text-white/80')}><Flame size={16} />{client.streak}</div>
-        <div className="hidden rounded-full bg-black/30 px-3 py-1.5 text-[13px] font-bold text-white/75 md:block"><span className="inline-flex items-center gap-1">+{per} <GameIcon k="bolt" size={14} /> por acierto{genius && ' · ×2'}</span></div>
+        <div className="hidden rounded-full bg-black/30 px-3 py-1.5 text-[13px] font-bold text-white/75 md:block"><span className="inline-flex items-center gap-1">+{per} <GameIcon k="bolt" size={14} /> {t('per answer', 'por acierto')}{genius && ' · ×2'}</span></div>
         <div className="ml-auto flex rounded-full bg-black/30 p-1">
-          <button type="button" aria-label="Preguntas" onClick={() => setTab('q')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'q' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><BookOpen size={16} /><span className="hidden sm:inline">Preguntas</span></button>
-          <button type="button" aria-label="Mejoras" onClick={() => setTab('shop')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'shop' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><ShoppingBag size={16} /><span className="hidden sm:inline">Mejoras</span></button>
+          <button type="button" aria-label={t('Questions', 'Preguntas')} onClick={() => setTab('q')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'q' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><BookOpen size={16} /><span className="hidden sm:inline">{t('Questions', 'Preguntas')}</span></button>
+          <button type="button" aria-label={t('Upgrades', 'Mejoras')} onClick={() => setTab('shop')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'shop' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><ShoppingBag size={16} /><span className="hidden sm:inline">{t('Upgrades', 'Mejoras')}</span></button>
         </div>
-        <button type="button" onClick={onClose} aria-label="Volver al mapa (Esc)" className="grid h-11 w-11 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"><X size={24} /></button>
+        <button type="button" onClick={onClose} aria-label={t('Back to the map (Esc)', 'Volver al mapa (Esc)')} className="grid h-11 w-11 place-items-center rounded-full bg-white/12 text-white hover:bg-white/20"><X size={24} /></button>
       </div>
       <div className={cn('mx-3 mb-2 flex shrink-0 items-center gap-2 rounded-xl px-3 py-1.5 text-[12.5px] font-bold sm:mx-5', combat ? 'bg-[#ff4d5e]/25 text-[#ffb3ba]' : 'bg-[#30d158]/15 text-[#9df0b4]')}>
         {combat ? <ShieldAlert size={15} /> : <Shield size={15} />}
-        {combat ? '¡En combate! Eres vulnerable mientras respondes (3 s sin pelear para estar a salvo).' : 'Estás a salvo en tu burbuja de estudio. Cada acierto recarga energía y cura +5.'}
+        {combat ? t('In combat! You can be hit while answering (3 s without fighting to be safe).', '¡En combate! Eres vulnerable mientras respondes (3 s sin pelear para estar a salvo).') : t('You are safe in your study bubble. Every correct answer recharges energy and heals +5.', 'Estás a salvo en tu burbuja de estudio. Cada acierto recarga energía y cura +5.')}
       </div>
       {tab === 'q' ? <Questions client={client} /> : <Shop client={client} en={en} />}
     </div>
@@ -78,7 +79,7 @@ function Questions({ client }: { client: ClientSession }) {
     return () => window.removeEventListener('keydown', k);
   });
 
-  if (!cur) return <div className="grid flex-1 place-items-center text-[18px] font-bold text-white/70">Cargando preguntas…</div>;
+  if (!cur) return <div className="grid flex-1 place-items-center text-[18px] font-bold text-white/70">{t('Loading questions…', 'Cargando preguntas…')}</div>;
   const n = cur.o.length;
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -117,7 +118,7 @@ function Questions({ client }: { client: ClientSession }) {
               {res?.ok && (
                 <motion.div initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0, y: -30 }} transition={{ type: 'spring', stiffness: 500, damping: 18 }} className="pointer-events-none absolute inset-0 grid place-items-center">
                   <div className="flex items-center gap-3 rounded-[28px] border-4 border-white bg-[#26a34a] px-8 py-4 text-[clamp(30px,7vmin,64px)] font-black text-white shadow-[0_10px_0_#18712f]">
-                    ¡Correcto! +{res.gain} <GameIcon k="bolt" size={50} />
+                    {t('Correct!', '¡Correcto!')} +{num(res.gain)} <GameIcon k="bolt" size={50} />
                   </div>
                 </motion.div>
               )}
@@ -125,8 +126,8 @@ function Questions({ client }: { client: ClientSession }) {
           </div>
           {res && !res.ok && (
             <div className="flex shrink-0 items-center gap-3 bg-[#d8343f] px-4 py-3">
-              <div className="min-w-0 flex-1 text-[15px] font-bold sm:text-[18px]">Respuesta correcta: <span className="font-black">{cur.o[cur.a]}</span></div>
-              <Btn tone="white" onClick={next}>Seguir</Btn>
+              <div className="min-w-0 flex-1 text-[15px] font-bold sm:text-[18px]">{t('Correct answer', 'Respuesta correcta')}: <span className="font-black">{cur.o[cur.a]}</span></div>
+              <Btn tone="white" onClick={next}>{t('Next', 'Seguir')}</Btn>
             </div>
           )}
         </motion.div>
@@ -140,7 +141,7 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
   useEffect(() => { setPending(null); }, [client.ups]);
   return (
     <div className="cw-scroll min-h-0 flex-1 overflow-y-auto px-3 pb-6 sm:px-5">
-      <p className="mb-3 text-center text-[14px] font-semibold text-white/70">Invierte tu energía en mejoras: recarga más con cada pregunta, saca más diamantes de las cajas y gasta menos al moverte.</p>
+      <p className="mb-3 text-center text-[14px] font-semibold text-white/70">{t('Invest your energy in upgrades: recharge more per answer, get more diamonds from boxes and spend less when moving.', 'Invierte tu energía en mejoras: recarga más con cada pregunta, saca más diamantes de las cajas y gasta menos al moverte.')}</p>
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {UPGRADES.map((u) => {
           const lvl = client.ups[u.id];
@@ -152,8 +153,8 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
               <div className="flex items-center gap-3">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/10"><GameIcon k={u.ic} size={32} /></div>
                 <div className="min-w-0">
-                  <div className="text-[17px] leading-tight font-black">{u.name}</div>
-                  <div className="text-[12.5px] font-semibold text-white/65">{u.desc}</div>
+                  <div className="text-[17px] leading-tight font-black">{tx(u.name)}</div>
+                  <div className="text-[12.5px] font-semibold text-white/65">{tx(u.desc)}</div>
                 </div>
               </div>
               <div className="mt-3 flex gap-1">
@@ -162,7 +163,7 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
               <div className="mt-3 flex items-center gap-2">
                 <div className="text-[15px] font-extrabold">{u.fmt(upValue(u.id, lvl))}{!max && <span className="text-white/60"> → <span className="text-[#ffd23f]">{u.fmt(u.values[lvl + 1])}</span></span>}</div>
                 <Btn tone={can ? 'green' : 'ghost'} className="ml-auto h-10 px-4" disabled={!can} onClick={() => { setPending(u.id); client.buy(u.id); sfx.buy(); setTimeout(() => setPending(null), 1500); }}>
-                  {max ? 'MÁX' : <>{cost.toLocaleString('es-CO')} <GameIcon k="bolt" size={17} /></>}
+                  {max ? t('MAX', 'MÁX') : <>{num(cost)} <GameIcon k="bolt" size={17} /></>}
                 </Btn>
               </div>
             </div>

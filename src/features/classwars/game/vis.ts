@@ -3,6 +3,7 @@
    effects. The renderer drains `fx` every frame for particles, popups, shakes and sounds. */
 import { WEAPONS, PJ_LOOK } from './defs';
 import { BOX_COOLDOWN_MS, byteToAim } from './constants';
+import { t } from '../i18n';
 import { hitsWall, type GameMap } from './map';
 import type { Ev } from './sim';
 
@@ -17,7 +18,7 @@ export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAi
 export type Fxq =
   | { t: 'dmg'; idx: number; v: number; shield: boolean }
   | { t: 'ko'; idx: number; killer: number; lost: number }
-  | { t: 'box'; idx: number; x: number; y: number; eff: number; param: number; dia: number }
+  | { t: 'box'; idx: number; x: number; y: number; eff: number; param: number; dia: number; out: number }
   | { t: 'tired'; idx: number }
   | { t: 'gem'; idx: number; v: number; x: number; y: number }
   | { t: 'boom'; x: number; y: number; r: number; kind: string }
@@ -130,7 +131,8 @@ export class VisualWorld {
           this.st(n(1)).koAt = now;
           this.fx.push({ t: 'ko', idx: n(1), killer: n(2), lost: n(3) });
           const killer = n(2);
-          this.pushFeed(killer >= 0 && killer !== n(1) ? (killer === this.myIdx ? `Noqueaste a ${this.nameOf(n(1))}` : `${this.nameOf(killer)} noqueó a ${this.nameOf(n(1))}`) : `${this.nameOf(n(1))} quedó fuera de combate`, killer === this.myIdx ? '#ffd60a' : n(1) === this.myIdx ? '#ff6b6b' : '#fff');
+          const kn = this.nameOf(killer), vn = this.nameOf(n(1));
+          this.pushFeed(killer >= 0 && killer !== n(1) ? (killer === this.myIdx ? t(`You knocked out ${vn}`, `Noqueaste a ${vn}`) : t(`${kn} knocked out ${vn}`, `${kn} noqueó a ${vn}`)) : t(`${vn} is out`, `${vn} quedó fuera de combate`), killer === this.myIdx ? '#ffd60a' : n(1) === this.myIdx ? '#ff6b6b' : '#fff');
           break;
         }
         case 'tp': {
@@ -151,7 +153,7 @@ export class VisualWorld {
         case 'bo': {
           const b = this.boxes.get(n(1));
           if (b) b.readyAt = now + BOX_COOLDOWN_MS;
-          this.fx.push({ t: 'box', idx: n(2), x: b?.x ?? 0, y: b?.y ?? 0, eff: n(3), param: n(4), dia: n(5) || 0 });
+          this.fx.push({ t: 'box', idx: n(2), x: b?.x ?? 0, y: b?.y ?? 0, eff: n(3), param: n(4), dia: n(5) || 0, out: n(6) ?? 0 });
           break;
         }
         case 'ne': this.fx.push({ t: 'tired', idx: n(1) }); break;
