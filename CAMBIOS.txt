@@ -242,6 +242,35 @@ G1b. CLASS WARS: NUEVA LÓGICA DE ENERGÍA Y PANTALLA DE INICIO
   botones brillantes (fondo y logo tomados de las imágenes que enviaste). Las
   demás pantallas del juego usan el mismo estadio de fondo, oscurecido.
 
+G1c. CLASS WARS: ENERGÍA 1200, DESLIZADORES, PODERES NUEVOS, ICONOS Y MÚSICA
+- Cada respuesta correcta da 1.200 de energía (la tienda se reajustó a esa
+  escala). En «Nueva partida» hay deslizadores para la duración (2–30 min),
+  la energía inicial (200–6.000) y el máximo de jugadores.
+- Iconos propios dibujados para el juego (poderes, armas, cajas, mejoras y
+  marcador). Ya no se usan emojis en Class Wars.
+- Poderes nuevos: Gabriel lanza cartas de póker; Sander grita «Hello, my
+  dears!» (empuja y aturde, con globo de texto); Nataly y Julián lanzan una
+  laptop; Andrés da un guitarrazo; Valentina lanza un rizo que deja lento;
+  Esteban hace un ataque hacker (sin disparar ni poderes 3 s); Sebastián
+  lanza gatos que persiguen; Javier un mando de juego que aturde; Anny una
+  barra de chocolate que la cura; Estephania una pelota arcoíris que rebota;
+  Liliana un micrófono que explota en onda de sonido. Los demás siguen igual.
+- Música de fondo original generada en vivo (batería, bajo, acordes,
+  arpegios y melodía, con reverberación y compresión) que se intensifica en
+  los últimos 30 s, y efectos de sonido nuevos para los poderes. Botón de
+  música aparte del de sonido.
+- Personajes con sombreado, ojos con brillo y nariz. Cambios pedidos:
+  Gabriel piel clara, Valentina más alta, Esteban piel más morena, blusa
+  morada para Estephania, Dager sin ceño fruncido, Liliana con ojeras,
+  Norvey piel más clara y Jalbleidy piel más morena.
+- Cartas de profes: todas tienen su propio color de fondo; ninguna resalta
+  sobre las demás.
+- Plan del modo 2 («Pinta tu equipo») en docs/class-wars-modo-2.md.
+
+T1. TÉRMINOS Y TRATAMIENTO DE DATOS
+- Nueva página /legal, enlazada al pie de la pantalla de inicio: términos de
+  uso y tratamiento de datos según la Ley 1581 de 2012 (Colombia).
+
 G2. IMPOSTOR (Juegos › En vivo con tu clase)
 - El juego del repositorio NewEnglishImpostor, completo (clásico,
   videojuego con misiones y demo con bots), ahora dentro de ECYR, sin la

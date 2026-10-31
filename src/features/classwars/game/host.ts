@@ -16,6 +16,8 @@ export interface HostConfig {
   code: string;
   matchId: string;
   durationMin: number;
+  /** Energy every player starts with. */
+  startEnergy: number;
   goal: number;
   maxPlayers: number;
   questions: Q[];
@@ -235,7 +237,7 @@ export class HostSession {
     if (!this.sim) return;
     const idx = this.peerIdx.get(peer) ?? -1;
     this.relay.send({
-      k: 'start', seed: this.seed, portals: this.sim.map.burrows.length, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
+      k: 'start', seed: this.seed, portals: this.sim.map.burrows.length, en0: this.cfg.startEnergy, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
       full: this.sim.full(), paused: this.phase === 'paused',
     }, peer);
     if (idx >= 0) {
@@ -249,7 +251,7 @@ export class HostSession {
   start() {
     if (this.phase !== 'lobby') return;
     const people = this.lobby.size + this.cfg.bots;
-    const sim = new Sim(this.seed, { durationMs: this.cfg.durationMin * 60000, goal: this.cfg.goal, portals: portalCount(people) });
+    const sim = new Sim(this.seed, { durationMs: this.cfg.durationMin * 60000, goal: this.cfg.goal, portals: portalCount(people), startEnergy: this.cfg.startEnergy });
     this.sim = sim;
     for (const lp of this.lobby.values()) {
       const p = sim.addPlayer({ peer: lp.peer, name: lp.name, char: lp.char, uid: lp.uid, guest: lp.guest, bot: false });
@@ -384,10 +386,6 @@ export function hostSource(h: HostSession): RenderSource {
           idx: p.idx, x: lerp(p.px, p.x, a), y: lerp(p.py, p.y, a), aim: p.aim, hp: Math.ceil(p.hp), sh: Math.ceil(p.sh), dia: p.dia, en: Math.ceil(p.en), flags: sim.flags(p),
           look: sim.lookChar(p), weapon: p.weapon, ammo: p.ammo, maxHp: sim.maxHp(p), borrowed: p.borrowed, charges: p.bCharges, name: p.name, me: false, bot: p.bot,
         });
-      }
-      for (const d of sim.decoys) {
-        const o = sim.players[d.owner];
-        out.push({ idx: 10000 + d.id, x: d.x, y: d.y, aim: d.aim, hp: o.hp, sh: o.sh, dia: o.dia, en: 1, flags: 1, look: d.char, weapon: o.weapon, ammo: 0, maxHp: sim.maxHp(o), borrowed: -1, charges: 0, name: o.name, me: false, bot: false, decoy: true });
       }
       return out;
     },

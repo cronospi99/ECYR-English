@@ -1,11 +1,11 @@
 /* Class Wars — teacher-only editor for custom question sets (Supabase, migration 20). */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Check, FileText, Plus, Save, Trash2, Eye } from 'lucide-react';
+import { ArrowLeft, Check, FileText, Plus, Save, Trash2, Eye, Lock } from 'lucide-react';
 import { useAuth } from '@/store/auth';
 import { cn } from '@/lib/cn';
 import { LEVELS, SET_LIMITS, deleteSet, listSets, parseText, saveSet, validItem, type Q, type QSet } from '../game/questions';
-import { Btn, Loading, Panel } from './kit';
+import { Btn, Loading, Panel, GameIcon } from './kit';
 
 const TILE = ['#d8343f', '#f07a1e', '#26a34a', '#2f6fe0'];
 
@@ -21,7 +21,7 @@ export function EditorScreen() {
   if (!ready) return <div className="grid h-full place-items-center"><Loading /></div>;
   if (profile?.role !== 'teacher') return (
     <div className="grid h-full place-items-center p-4"><Panel className="max-w-[420px] p-6 text-center">
-      <div className="text-[44px]">🔒</div><h1 className="cw-title mt-2 text-[24px]">Solo para docentes</h1>
+      <Lock size={44} className="mx-auto text-[#ffd23f]" /><h1 className="cw-title mt-2 text-[24px]">Solo para docentes</h1>
       <p className="mt-2 text-[14px] font-semibold text-white/70">El editor de preguntas es para profes.</p>
       <Link to="/classwars"><Btn className="mt-4">Volver</Btn></Link>
     </Panel></div>
@@ -38,7 +38,7 @@ export function EditorScreen() {
         </div>
         {err && <p className="mb-3 rounded-xl bg-[#ff4d5e]/20 p-3 text-[14px] font-semibold text-[#ffb3ba]">No se pudieron cargar tus sets: {err}</p>}
         {sets === null ? <Loading /> : sets.length === 0 ? (
-          <Panel className="p-8 text-center"><div className="text-[44px]">📝</div><p className="mt-2 text-[16px] font-bold text-white/75">Crea tu primer set de preguntas para usarlo en Class Wars.</p></Panel>
+          <Panel className="p-8 text-center"><GameIcon k="book" size={52} className="mx-auto" /><p className="mt-2 text-[16px] font-bold text-white/75">Crea tu primer set de preguntas para usarlo en Class Wars.</p></Panel>
         ) : (
           <div className="grid gap-3 sm:grid-cols-2">
             {sets.map((s) => (

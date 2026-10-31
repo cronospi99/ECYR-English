@@ -2,6 +2,7 @@
    offscreen canvases (normal, blink, white hit-flash); props, boxes, gems and weapons are drawn
    with canvas paths into cached canvases at the current render scale. Drawing a frame is then
    just drawImage calls. */
+import { ICONS, ICON_INK, type IconKey } from '../game/icons';
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
@@ -117,6 +118,32 @@ function bake(bx: number, by: number, bw: number, bh: number, s: number, draw: (
 }
 
 const propCache = new Map<string, Sprite>();
+
+/** One of the game's icons as a sprite `size` world-px wide, centred on (0, 0). */
+export function iconSprite(k: IconKey, size: number, s: number): Sprite {
+  const key = `ic:${k}:${size}@${s}`;
+  const hit = propCache.get(key);
+  if (hit) return hit;
+  const sp = bake(-size / 2 - 2, -size / 2 - 2, size + 4, size + 4, s, (g) => {
+    g.translate(-size / 2, -size / 2);
+    g.scale(size / 32, size / 32);
+    paintIcon(g, k);
+  });
+  propCache.set(key, sp);
+  return sp;
+}
+
+export function paintIcon(g: G, k: IconKey) {
+  g.lineJoin = 'round';
+  g.lineCap = 'round';
+  for (const l of ICONS[k]) {
+    const path = new Path2D(l.d);
+    if (l.f !== 'none') { g.fillStyle = l.f; g.fill(path); }
+    g.strokeStyle = l.s ?? ICON_INK;
+    g.lineWidth = l.w ?? 2;
+    g.stroke(path);
+  }
+}
 const LEAF = ['#3f9a3a', '#4aa83f', '#3a8f45'];
 const LEAF_HI = ['#63c457', '#72cf5a', '#5cbf63'];
 

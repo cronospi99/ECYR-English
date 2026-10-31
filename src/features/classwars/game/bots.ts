@@ -1,6 +1,6 @@
 /* Class Wars — simple bot brains (demo mode and optional class fillers). They run inside the
    host simulation and drive the same SimPlayer fields a human input would. */
-import { PLAYER_R, START_ENERGY } from './constants';
+import { PLAYER_R } from './constants';
 import { UPGRADES, WEAPONS } from './defs';
 import type { Sim, SimPlayer } from './sim';
 
@@ -20,14 +20,14 @@ export function botThink(sim: Sim, p: SimPlayer) {
   if (p.inQuiz) {
     p.mx = p.my = 0;
     const threatened = now - p.lastCombatAt < 1500 && p.en > 0;
-    if ((now > b.quizUntil && p.en > 400) || threatened) { sim.setQuiz(p, false); return; }
+    if ((now > b.quizUntil && p.en > 900) || threatened) { sim.setQuiz(p, false); return; }
     if (now > b.nextAns) {
       sim.answer(p, R() < b.acc);
       b.nextAns = now + 2200 + R() * 3500;
       // Shop: the cheapest useful upgrade, keeping enough energy to keep playing.
       for (const u of [...UPGRADES].sort((x, y) => x.costs[Math.min(p.ups[x.id] + 1, x.costs.length - 1)] - y.costs[Math.min(p.ups[y.id] + 1, y.costs.length - 1)])) {
         const next = p.ups[u.id] + 1;
-        if (next < u.values.length && p.en > u.costs[next] + START_ENERGY * 0.6) { sim.buy(p, u.id); break; }
+        if (next < u.values.length && p.en > u.costs[next] + 1500) { sim.buy(p, u.id); break; }
       }
     }
     return;

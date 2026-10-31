@@ -3,6 +3,7 @@ import { useEffect, useRef, useState, type ButtonHTMLAttributes, type ReactNode 
 import { TeacherToon } from '@/features/cards/TeacherToon';
 import { TEACHERS } from '@/features/cards/teachers';
 import { cn } from '@/lib/cn';
+import { ICONS, ICON_INK, type IconKey } from '../game/icons';
 import { sfx, unlockAudio } from '../render/audio';
 
 export const CW_CSS = `
@@ -22,6 +23,10 @@ export const CW_CSS = `
 .cw-gbtn:active{box-shadow:none}
 @keyframes cw-twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 .cw-spark{position:absolute;color:#fff6c2;text-shadow:0 0 8px #ffe680;animation:cw-twinkle 2.8s ease-in-out infinite}
+.cw-range{-webkit-appearance:none;appearance:none;height:10px;border-radius:99px;outline:none;cursor:pointer}
+.cw-range::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:4px solid #ffb800;box-shadow:0 3px 0 #b87400,0 0 0 4px rgba(255,210,63,.25)}
+.cw-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid #ffb800;box-shadow:0 3px 0 #b87400}
+.cw-range:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 6px rgba(255,210,63,.5)}
 @media (prefers-reduced-motion:reduce){.cw-logo,.cw-spark,.cw-bob,.cw-float{animation:none}}
 .cw-title{font-weight:900;letter-spacing:-0.02em;text-shadow:0 3px 0 rgba(0,0,0,.35)}
 @keyframes cw-bob{0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-4%) scale(1.02,.98)}}
@@ -66,6 +71,15 @@ export function Btn({ tone = 'yellow', big, className, children, onClick, ...res
     >
       {children}
     </button>
+  );
+}
+
+/** One of the game's own icons (see game/icons.ts). */
+export function GameIcon({ k, size = 24, className }: { k: IconKey; size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="-1 -1 34 34" className={cn('inline-block shrink-0', className)} aria-hidden strokeLinejoin="round" strokeLinecap="round">
+      {ICONS[k].map((l, i) => <path key={i} d={l.d} fill={l.f} stroke={l.s ?? ICON_INK} strokeWidth={l.w ?? 2} />)}
+    </svg>
   );
 }
 

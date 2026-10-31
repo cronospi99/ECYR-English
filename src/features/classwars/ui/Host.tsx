@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import qrcode from 'qrcode-generator';
-import { ArrowLeft, Bot, Clock, Gamepad2, ListChecks, Trophy, Users, X, Pencil, Eye, Swords } from 'lucide-react';
+import { ArrowLeft, Bot, Clock, Gamepad2, ListChecks, Trophy, Users, X, Pencil, Eye, Swords, Zap } from 'lucide-react';
+import { ENERGY_RANGE, START_ENERGY } from '../game/constants';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
 import { cn } from '@/lib/cn';
@@ -16,11 +17,12 @@ import { POWERS } from '../game/defs';
 import { CharacterPicker } from './CharacterPicker';
 import { GameView } from './GameView';
 import { Podium } from './Podium';
-import { Btn, Diamond, Loading, Panel, Toon, useSessionKey } from './kit';
+import { Btn, GameIcon, Loading, Panel, Toon, useSessionKey } from './kit';
 
 interface Setup {
   mode: 'classic' | 'race';
   minutes: number;
+  energy: number;
   goal: number;
   source: 'curriculum' | 'set';
   level: Level;
@@ -32,7 +34,7 @@ interface Setup {
   bots: number;
 }
 
-const DEFAULT: Setup = { mode: 'classic', minutes: 8, goal: 1000, source: 'curriculum', level: 'A2', units: [], setId: '', maxPlayers: 40, teacherPlays: false, teacherChar: 0, bots: 0 };
+const DEFAULT: Setup = { mode: 'classic', minutes: 8, energy: START_ENERGY, goal: 1000, source: 'curriculum', level: 'A2', units: [], setId: '', maxPlayers: 40, teacherPlays: false, teacherChar: 0, bots: 0 };
 
 export function HostApp() {
   const profile = useAuth((s) => s.profile);
@@ -51,7 +53,7 @@ export function HostApp() {
   if (profile?.role !== 'teacher') return <TeachersOnly />;
   if (!host || !cfg) return <SetupScreen onCreate={async (s, questions, label) => {
     const code = makeCode();
-    const h = new HostSession({ code, matchId: crypto.randomUUID?.() ?? makeId() + makeId(), durationMin: s.minutes, goal: s.mode === 'race' ? s.goal : 0, maxPlayers: s.maxPlayers, questions, source: label, bots: s.bots, demo: false, hostName: profile.full_name ?? 'Profe' });
+    const h = new HostSession({ code, matchId: crypto.randomUUID?.() ?? makeId() + makeId(), durationMin: s.minutes, startEnergy: s.energy, goal: s.mode === 'race' ? s.goal : 0, maxPlayers: s.maxPlayers, questions, source: label, bots: s.bots, demo: false, hostName: profile.full_name ?? 'Profe' });
     setHost(h);
     setCfg(s);
     if (import.meta.env.DEV) (window as unknown as { __cwHost: unknown }).__cwHost = h;
@@ -95,6 +97,8 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
     try {
       const v: Setup = { ...DEFAULT, ...JSON.parse(localStorage.getItem('cw:setup') || '{}') };
       if (![500, 1000, 2000, 3000].includes(v.goal)) v.goal = DEFAULT.goal;
+      v.minutes = Math.min(30, Math.max(2, Number(v.minutes) || DEFAULT.minutes));
+      v.energy = Math.min(ENERGY_RANGE.max, Math.max(ENERGY_RANGE.min, Number(v.energy) || START_ENERGY));
       return v;
     } catch { return DEFAULT; }
   });
@@ -145,16 +149,15 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
           <Panel className="p-4">
             <H icon={<Trophy size={18} />}>Modo</H>
             <div className="grid grid-cols-2 gap-2">
-              <Choice on={s.mode === 'classic'} onClick={() => up({ mode: 'classic' })} title="Clásico" sub="Gana quien tenga más 💎 al final" />
+              <Choice on={s.mode === 'classic'} onClick={() => up({ mode: 'classic' })} title="Clásico" sub="Gana quien tenga más diamantes al final" />
               <Choice on={s.mode === 'race'} onClick={() => up({ mode: 'race' })} title="Carrera" sub="Primero en llegar a la meta" />
             </div>
             {s.mode === 'race' && (
-              <div className="mt-3 flex flex-wrap gap-2">{[500, 1000, 2000, 3000].map((g) => <Pill key={g} on={s.goal === g} onClick={() => up({ goal: g })}>{g} 💎</Pill>)}</div>
+              <div className="mt-3 flex flex-wrap gap-2">{[500, 1000, 2000, 3000].map((g) => <Pill key={g} on={s.goal === g} onClick={() => up({ goal: g })}><span className="inline-flex items-center gap-1">{g} <GameIcon k="gem" size={15} /></span></Pill>)}</div>
             )}
-            <H icon={<Clock size={18} />} className="mt-4">Duración</H>
-            <div className="flex flex-wrap gap-2">{[3, 5, 8, 10, 15, 20].map((m) => <Pill key={m} on={s.minutes === m} onClick={() => up({ minutes: m })}>{m} min</Pill>)}</div>
-            <H icon={<Users size={18} />} className="mt-4">Máximo de jugadores: <span className="text-[#ffd23f]">{s.maxPlayers}</span></H>
-            <input type="range" min={4} max={60} value={s.maxPlayers} onChange={(e) => up({ maxPlayers: Number(e.target.value) })} className="w-full accent-[#ffd23f]" aria-label="Máximo de jugadores" />
+            <Slider icon={<Clock size={18} />} label="Duración" value={s.minutes} min={2} max={30} fmt={(v) => `${v} min`} onChange={(minutes) => up({ minutes })} />
+            <Slider icon={<Zap size={18} />} label="Energía inicial" value={s.energy} {...ENERGY_RANGE} fmt={(v) => v.toLocaleString('es-CO')} onChange={(energy) => up({ energy })} hint="Cada respuesta correcta da 1.200 de energía." />
+            <Slider icon={<Users size={18} />} label="Máximo de jugadores" value={s.maxPlayers} min={4} max={60} fmt={String} onChange={(maxPlayers) => up({ maxPlayers })} />
             <H icon={<Bot size={18} />} className="mt-4">Bots de relleno</H>
             <div className="flex flex-wrap gap-2">{[0, 3, 6, 10].map((b) => <Pill key={b} on={s.bots === b} onClick={() => up({ bots: b })}>{b === 0 ? 'Ninguno' : b}</Pill>)}</div>
             <label className="mt-4 flex cursor-pointer items-center gap-3 rounded-2xl bg-white/5 p-3">
@@ -191,7 +194,7 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
                     <span className="text-[12px] font-bold opacity-70">{x.items.length} preg.</span>
                   </button>
                 ))}
-                <Link to="/classwars/preguntas" className="text-[14px] font-extrabold text-[#7ab8ff] hover:underline">✏️ Crear o editar mis preguntas</Link>
+                <Link to="/classwars/preguntas" className="text-[14px] font-extrabold text-[#7ab8ff] hover:underline">Crear o editar mis preguntas</Link>
               </div>
             )}
             <div className="mt-4 rounded-xl bg-black/25 px-3 py-2 text-[14px] font-bold">{qCount} preguntas disponibles</div>
@@ -224,6 +227,18 @@ function Choice({ on, onClick, title, sub }: { on: boolean; onClick: () => void;
     </button>
   );
 }
+function Slider({ icon, label, value, min, max, step = 1, fmt, onChange, hint }: { icon: React.ReactNode; label: string; value: number; min: number; max: number; step?: number; fmt: (v: number) => string; onChange: (v: number) => void; hint?: string }) {
+  const pct = ((value - min) / (max - min)) * 100;
+  return (
+    <div className="mt-4">
+      <H icon={icon}>{label}: <span className="text-[#ffd23f] tabular-nums">{fmt(value)}</span></H>
+      <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))} aria-label={label}
+        className="cw-range w-full" style={{ background: `linear-gradient(90deg,#ffd23f ${pct}%,rgba(255,255,255,.15) ${pct}%)` }} />
+      {hint && <div className="mt-1 text-[12px] font-semibold text-white/55">{hint}</div>}
+    </div>
+  );
+}
+
 function Pill({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
   return <button type="button" onClick={onClick} className={cn('h-10 rounded-xl px-4 text-[15px] font-extrabold', on ? 'bg-[#ffd23f] text-[#2a1d00] shadow-[0_3px_0_#c79a00]' : 'bg-white/10 hover:bg-white/15')}>{children}</button>;
 }
@@ -280,12 +295,13 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
         <div className="rounded-[28px] bg-white px-8 py-3 text-[64px] leading-none font-black tracking-[0.12em] text-[#1b2350] shadow-[0_8px_0_#b9c2e6] lg:text-[96px]" aria-label={`Código ${code}`}>{code}</div>
         <div className="flex items-center gap-4">
           <svg viewBox={`-2 -2 ${qr.n + 4} ${qr.n + 4}`} className="h-[150px] w-[150px] rounded-2xl bg-white lg:h-[210px] lg:w-[210px]" shapeRendering="crispEdges" role="img" aria-label={`Código QR: ${url}`}><path d={qr.d} fill="#141a3f" /></svg>
-          <div className="max-w-[200px] text-[14px] font-semibold text-white/70">o escanea el QR con el celular 📱</div>
+          <div className="max-w-[200px] text-[14px] font-semibold text-white/70">o escanea el QR con el celular</div>
         </div>
         <div className="flex flex-wrap justify-center gap-2 text-[13px] font-bold">
-          <span className="rounded-full bg-black/25 px-3 py-1">⏱ {cfg.minutes} min</span>
-          <span className="rounded-full bg-black/25 px-3 py-1">{cfg.mode === 'race' ? `🏁 Meta ${cfg.goal} 💎` : '🏆 Más diamantes gana'}</span>
-          {host.cfg.bots > 0 && <span className="rounded-full bg-black/25 px-3 py-1">🤖 {host.cfg.bots} bots</span>}
+          <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="clock" size={16} /> {cfg.minutes} min</span>
+          <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="bolt" size={16} /> {cfg.energy.toLocaleString('es-CO')} de energía</span>
+          <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1">{cfg.mode === 'race' ? <><GameIcon k="flag" size={16} /> Meta {cfg.goal} <GameIcon k="gem" size={15} /></> : <><GameIcon k="trophy" size={16} /> Más diamantes gana</>}</span>
+          {host.cfg.bots > 0 && <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="robot" size={16} /> {host.cfg.bots} bots</span>}
         </div>
       </div>
       <div className="flex min-h-0 flex-1 flex-col p-4 lg:p-8">
@@ -302,18 +318,18 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
                 <button type="button" onClick={() => host.kick(p.peer)} className="absolute top-1 right-1 hidden h-7 w-7 place-items-center rounded-full bg-[#ff4d5e] group-hover:grid" aria-label={`Expulsar a ${p.name}`}><X size={15} /></button>
                 <div className="cw-bob" style={{ animationDelay: `${(p.char % 5) * 0.2}s` }}><Toon ci={p.char} size={86} /></div>
                 <div className="mt-1 w-full truncate px-2 text-center text-[14px] font-black">{p.name}</div>
-                <div className="truncate px-2 text-[11px] font-bold text-white/55">{POWERS[TEACHERS[p.char].id].icon} {TEACHERS[p.char].name}</div>
+                <div className="truncate px-2 text-[11px] font-bold text-white/55 flex items-center justify-center gap-1"><GameIcon k={POWERS[TEACHERS[p.char].id].ic} size={14} /> {TEACHERS[p.char].name}</div>
               </motion.div>
             ))}
           </AnimatePresence>
           {players.length === 0 && (
             <div className="col-span-full flex flex-col items-center gap-2 py-16 text-center">
-              <div className="cw-float text-[56px]">📱</div>
+              <div className="cw-float"><GameIcon k="phone" size={64} /></div>
               <div className="text-[18px] font-bold text-white/70">Esperando a que se unan los estudiantes…</div>
             </div>
           )}
         </div>
-        <div className="mt-3 flex items-center gap-2 text-[13px] font-semibold text-white/55"><Diamond size={14} /> Todos empiezan con 1200 ⚡ de energía: caminar y disparar la gastan y solo se recarga respondiendo · los diamantes salen de las cajas sorpresa (se reactivan a los 10 s) · noquear a un rival le roba diamantes.</div>
+        <div className="mt-3 flex items-center gap-2 text-[13px] font-semibold text-white/55"><GameIcon k="bolt" size={16} /> Caminar y disparar gastan energía; cada respuesta correcta recarga 1.200 · los diamantes salen de las cajas sorpresa (se reactivan a los 10 s) · noquear a un rival le roba diamantes.</div>
       </div>
     </div>
   );

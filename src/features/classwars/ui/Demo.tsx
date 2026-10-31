@@ -35,7 +35,7 @@ export function DemoScreen() {
       const qs = shuffleOptions(await curriculumQuestions(level));
       if (cancelled) return;
       const code = 'DEMO' + makeCode();
-      const host = new HostSession({ code, matchId: makeId(), durationMin: minutes, goal: 0, maxPlayers: 1, questions: qs, source: `Demo ${level}`, bots: 7, demo: true, hostName: 'Demo' });
+      const host = new HostSession({ code, matchId: makeId(), durationMin: minutes, startEnergy: 1200, goal: 0, maxPlayers: 1, questions: qs, source: `Demo ${level}`, bots: 7, demo: true, hostName: 'Demo' });
       const name = (profile?.full_name ?? 'Tú').split(' ')[0];
       const client = new ClientSession(code, 'me' + makeId().slice(0, 6), name, char, null);
       made = { host, client };

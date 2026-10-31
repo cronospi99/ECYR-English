@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, ChevronRight, Gamepad2, Link2, ListChecks, Play } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Gamepad2, Link2, ListChecks, Music, Play } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { TEACHERS } from '@/features/cards/teachers';
-import { CW_CSS, Toon } from './ui/kit';
-import { sfx, unlockAudio } from './render/audio';
+import { CW_CSS, GameIcon, Toon } from './ui/kit';
+import { isMusicOn, playMusic, setMusicOn, sfx, stopMusic, unlockAudio } from './render/audio';
 import { HostApp } from './ui/Host';
 import { JoinScreen, PlayScreen } from './ui/Player';
 import { DemoScreen } from './ui/Demo';
@@ -21,7 +21,10 @@ export default function ClassWarsApp() {
     requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready')));
     const prev = document.title;
     document.title = 'Class Wars · ECYR English';
-    return () => { document.title = prev; };
+    playMusic(0);
+    const unlock = () => unlockAudio();
+    window.addEventListener('pointerdown', unlock, { once: true });
+    return () => { document.title = prev; stopMusic(); window.removeEventListener('pointerdown', unlock); };
   }, []);
   return (
     <div className="cw-root relative h-dvh w-full overflow-hidden">
@@ -57,14 +60,17 @@ function Home() {
 
       <div className="cw-scroll absolute inset-0 overflow-x-hidden overflow-y-auto">
       <div className="relative z-10 mx-auto flex min-h-full max-w-[1000px] flex-col px-3 pt-[max(12px,env(safe-area-inset-top))] sm:px-4">
-        <Link to="/" className="flex w-max items-center gap-1.5 rounded-full border border-white/20 bg-[#0b1a6b]/60 px-3 py-1.5 text-[13px] font-bold text-white/90 backdrop-blur hover:bg-[#0b1a6b]/80"><ArrowLeft size={15} /> ECYR English</Link>
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex w-max items-center gap-1.5 rounded-full border border-white/20 bg-[#0b1a6b]/60 px-3 py-1.5 text-[13px] font-bold text-white/90 backdrop-blur hover:bg-[#0b1a6b]/80"><ArrowLeft size={15} /> ECYR English</Link>
+          <MusicToggle />
+        </div>
 
         <motion.div initial={{ y: -40, opacity: 0, scale: 0.9 }} animate={{ y: 0, opacity: 1, scale: 1 }} transition={{ type: 'spring', stiffness: 220, damping: 16 }} className="mx-auto mt-1 w-full max-w-[760px] sm:mt-0">
           <h1 className="relative z-10">
             <img src="/classwars/logo.webp" alt="ECYR English presenta Class Wars" width={1112} height={358} className="cw-logo block h-auto w-full select-none" draggable={false} />
           </h1>
           <p className="cw-bubble relative mx-auto -mt-[5.5%] w-[min(96%,max(54%,330px))] px-4 pt-[max(14px,2.6%)] pb-3 text-center text-[clamp(13.5px,1.9vw,17px)] leading-snug font-bold text-white">
-            Responde en inglés para <b className="text-[#5ff3ff]">recargar energía ⚡</b>, abre <b className="text-[#ffe14d]">cajas sorpresa</b> para ganar <b className="text-[#5ff3ff]">diamantes 💎</b>, usa el <b className="text-[#d58cff]">poder de tu profe favorito</b>… ¡y <b className="text-[#ff5c8a]">roba los diamantes de tus rivales!</b>
+            Responde en inglés para <b className="text-[#5ff3ff]">recargar energía</b>, abre <b className="text-[#ffe14d]">cajas sorpresa</b> para ganar <b className="text-[#5ff3ff]">diamantes</b>, usa el <b className="text-[#d58cff]">poder de tu profe favorito</b>… ¡y <b className="text-[#ff5c8a]">roba los diamantes de tus rivales!</b>
           </p>
         </motion.div>
 
@@ -90,13 +96,23 @@ function Home() {
           {parade.map((ci, i) => (
             <motion.div key={ci} initial={{ y: 140 }} animate={{ y: 0 }} transition={{ delay: 0.25 + i * 0.06, type: 'spring', stiffness: 220, damping: 16 }} className="group relative flex flex-col items-center">
               <div className="cw-bob" style={{ animationDelay: `${i * 0.18}s` }}><Toon ci={ci} size={i === 4 ? 92 : 70} flip={i > 4} className="drop-shadow-[0_6px_4px_rgba(0,40,0,.35)]" /></div>
-              <div className="pointer-events-none absolute -top-8 hidden rounded-lg bg-[#141a3f] px-2 py-1 text-[12px] font-extrabold whitespace-nowrap group-hover:block">{POWERS[TEACHERS[ci].id].icon} {POWERS[TEACHERS[ci].id].name}</div>
+              <div className="pointer-events-none absolute -top-8 hidden rounded-lg bg-[#141a3f] px-2 py-1 text-[12px] font-extrabold whitespace-nowrap group-hover:flex items-center gap-1"><GameIcon k={POWERS[TEACHERS[ci].id].ic} size={16} /> {POWERS[TEACHERS[ci].id].name}</div>
             </motion.div>
           ))}
         </div>
       </div>
       </div>
     </div>
+  );
+}
+
+function MusicToggle() {
+  const [on, set] = useState(isMusicOn());
+  return (
+    <button type="button" onClick={() => { const v = !on; set(v); setMusicOn(v); unlockAudio(); }} aria-pressed={on} aria-label={on ? 'Apagar música' : 'Encender música'}
+      className={cn('flex items-center gap-1.5 rounded-full border border-white/20 bg-[#0b1a6b]/60 px-3 py-1.5 text-[13px] font-bold text-white/90 backdrop-blur hover:bg-[#0b1a6b]/80', !on && 'opacity-60')}>
+      <Music size={15} /> {on ? 'Música' : 'Sin música'}
+    </button>
   );
 }
 

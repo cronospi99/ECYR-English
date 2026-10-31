@@ -3,17 +3,18 @@
    mode, by the projector (HostSession). */
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BookOpen, LogOut, Map as MapIcon, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair, Zap } from 'lucide-react';
+import { BookOpen, LogOut, Map as MapIcon, Music, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TEACHERS } from '@/features/cards/teachers';
 import type { ClientSession, RenderSource, RP } from '../game/client';
-import { FLAG, START_ENERGY } from '../game/constants';
+import { FLAG } from '../game/constants';
 import { BOX_EFFECTS, CHAR_IDS, INF, POWERS, WEAPONS } from '../game/defs';
 import { hostSource, type HostSession } from '../game/host';
 import type { Fxq } from '../game/vis';
 import { Renderer, type CamMode } from '../render/renderer';
-import { isMuted, setMuted, sfx, unlockAudio } from '../render/audio';
-import { Btn, Diamond, fmtTime, useMobile } from './kit';
+import { isMuted, isMusicOn, playMusic, setMuted, setMusicOn, sfx, unlockAudio } from '../render/audio';
+import { Btn, Diamond, GameIcon, fmtTime, useMobile } from './kit';
+import type { IconKey } from '../game/icons';
 import { QuizOverlay } from './Quiz';
 
 interface Hud {
@@ -29,7 +30,7 @@ interface Hud {
   rank: number;
   total: number;
 }
-interface Announce { id: number; icon: string; title: string; desc: string; color: string }
+interface Announce { id: number; ic: IconKey; title: string; desc: string; color: string }
 
 export const GameView = memo(function GameView({ client, host, onExit, code, goal }: { client?: ClientSession; host?: HostSession; onExit: () => void; code?: string; goal?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -41,6 +42,8 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
   const [ann, setAnn] = useState<Announce | null>(null);
   const [quiz, setQuiz] = useState<false | 'q' | 'shop'>(false);
   const [muted, setMute] = useState(isMuted());
+  const [music, setMusic] = useState(isMusicOn());
+  useEffect(() => { playMusic(1); return () => playMusic(0); }, []);
   const [cam, setCam] = useState<CamMode>(client ? 'follow' : 'auto');
   const [ko, setKo] = useState<null | { at: number; killer: string; lost: number }>(null);
   const [startAt] = useState(() => performance.now());
@@ -86,6 +89,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         setHud(h);
         const sec = Math.ceil(h.remaining / 1000);
         if (sec <= 10 && sec > 0 && sec !== lastTick && !h.paused) { lastTick = sec; sfx.tick(); }
+        playMusic(h.remaining < 30000 ? 2 : 1);
       }
       } catch (e) {
         // never let one bad frame stop the game loop
@@ -100,7 +104,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
   useEffect(() => { if (rRef.current) rRef.current.mode = cam; }, [cam]);
 
   const readHud = (src: RenderSource): Hud => {
-    const players = src.players().filter((p) => !p.decoy);
+    const players = src.players();
     const me = players.find((p) => p.me) ?? null;
     const board = (client ? client.leaderboard() : host!.leaderboard()).map((b) => ({ idx: b.idx, name: b.name, char: b.char, dia: b.dia, alive: b.alive, bot: b.bot }));
     const now = performance.now();
@@ -126,8 +130,8 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       if (!e) return;
       let desc = '';
       switch (e.id) {
-        case 'gadget': { const w = WEAPONS[f.param]; desc = `${w.icon} ${w.name}: ${w.desc}`; break; }
-        case 'power': { const t = TEACHERS[f.param]; const p = POWERS[t.id]; desc = `${p.icon} ${p.name} de ${t.name} · 3 usos (tecla R)`; break; }
+        case 'gadget': { const w = WEAPONS[f.param]; desc = `${w.name}: ${w.desc}`; break; }
+        case 'power': { const t = TEACHERS[f.param]; const p = POWERS[t.id]; desc = `${p.name} de ${t.name} · 3 usos (tecla R)`; break; }
         case 'costume': { const t = TEACHERS[f.param]; desc = `¡Ahora eres ${t.name} durante 40 s… y tienes su poder!`; break; }
         case 'healer': desc = '¡Te curas automáticamente cada segundo!'; break;
         case 'shield': desc = 'Escudo al máximo y +50 extra.'; break;
@@ -137,9 +141,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         case 'happy': desc = 'Tus respuestas dan el doble de energía durante 30 s.'; break;
         case 'trap': desc = f.param ? `Perdiste ${f.param} diamantes… ¡recógelos rápido!` : '¡Uy! Por suerte no tenías diamantes.'; break;
       }
-      if (f.dia > 0) desc = `+${f.dia} 💎 · ${desc}`;
+      if (f.dia > 0) desc = `+${f.dia} diamantes · ${desc}`;
       const id = ++annId.current;
-      setAnn({ id, icon: e.icon, title: e.title, desc, color: e.color });
+      setAnn({ id, ic: e.ic, title: e.title, desc, color: e.color });
       setTimeout(() => setAnn((a) => (a?.id === id ? null : a)), 2800);
     }
     if (f.t === 'ko' && f.idx === me.idx) {
@@ -335,7 +339,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             <span className="text-[24px] leading-none font-black tabular-nums">{me.dia}</span>
             {goal ? <span className="text-[13px] font-bold text-white/55">/ {goal}</span> : null}
           </motion.div>
-          <Energy value={me.en} tired={!!(me.flags & FLAG.tired)} />
+          <Energy value={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} />
           <Bar value={me.hp} max={me.maxHp} color="#34d058" />
           <Bar value={me.sh} max={100} color="#2f8cff" />
         </div>
@@ -346,9 +350,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         <div className="absolute inset-x-0 top-[38%] z-30 flex justify-center px-4">
           <motion.div initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 420, damping: 18 }}
             className="w-[min(92vw,440px)] rounded-[24px] border-[3px] border-[#ff9f0a] bg-[#252b5e]/95 px-5 pt-4 pb-5 text-center shadow-[0_12px_0_rgba(0,0,0,.3)]">
-            <div className="text-[44px] leading-none">🪫</div>
+            <GameIcon k="batteryLow" size={52} className="mx-auto" />
             <div className="cw-title mt-1 text-[28px] text-[#ffb547] uppercase">¡Sin energía!</div>
-            <div className="mt-1 text-[15px] font-bold text-white/85">No puedes moverte ni atacar. Responde preguntas para recargar ⚡</div>
+            <div className="mt-1 text-[15px] font-bold text-white/85">No puedes moverte ni atacar. Responde preguntas para recargar energía.</div>
             <Btn tone="yellow" big className="cw-pulse mt-4 w-full" onClick={() => openQuiz('q')}><BookOpen size={22} /> Recargar energía {!mobile && <kbd className="rounded-md bg-black/20 px-1.5 text-[12px]">Q</kbd>}</Btn>
           </motion.div>
         </div>
@@ -367,6 +371,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       <div className="absolute top-[max(10px,env(safe-area-inset-top))] right-3 flex flex-col items-end gap-2">
         <div className="flex gap-2">
           {debug && <div className="rounded-lg bg-black/50 px-2 py-1 font-mono text-[11px]">{hud?.fps} fps · {hud?.quality} · {rRef.current?.workMs.toFixed(1)} ms</div>}
+          <button type="button" aria-label={music ? 'Apagar música' : 'Encender música'} title="Música" onClick={() => { const m = !music; setMusic(m); setMusicOn(m); unlockAudio(); }} className={cn('grid h-10 w-10 place-items-center rounded-xl bg-[#141a3f]/80 text-white hover:bg-[#141a3f]', !music && 'opacity-50')}><Music size={18} /></button>
           <button type="button" aria-label={muted ? 'Activar sonido' : 'Silenciar'} onClick={() => { const m = !muted; setMute(m); setMuted(m); unlockAudio(); }} className="grid h-10 w-10 place-items-center rounded-xl bg-[#141a3f]/80 text-white hover:bg-[#141a3f]">{muted ? <VolumeX size={19} /> : <Volume2 size={19} />}</button>
           {spectator && (
             <>
@@ -394,7 +399,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
           <AnimatePresence>
             {hud?.feed.map((f) => (
               <motion.div key={f.at + f.text} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ opacity: 0 }} className="max-w-[190px] truncate rounded-lg bg-black/45 px-2.5 py-1 text-[12px] font-bold sm:max-w-[260px] sm:text-[12.5px]" style={{ color: f.color }}>
-                💥 {f.text}
+                <GameIcon k="burst" size={14} className="-mt-0.5 mr-1" />{f.text}
               </motion.div>
             ))}
           </AnimatePresence>
@@ -408,7 +413,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             className="pointer-events-none absolute top-[17%] left-1/2 z-30 w-[min(92vw,520px)] -translate-x-1/2">
             <div className="relative mt-8 rounded-[20px] border-[3px] border-[#ffd23f] bg-[#252b5e] px-5 pt-10 pb-4 text-center shadow-[0_12px_0_rgba(0,0,0,.3)]">
               <div className="absolute -top-9 left-1/2 grid h-[72px] w-[72px] -translate-x-1/2 place-items-center rounded-full border-[3px] border-[#ffd23f] bg-[#252b5e] text-[34px]">
-                <div className="grid h-[54px] w-[54px] place-items-center rounded-full" style={{ background: ann.color + '44' }}>{ann.icon}</div>
+                <div className="grid h-[54px] w-[54px] place-items-center rounded-full" style={{ background: ann.color + '44' }}><GameIcon k={ann.ic} size={38} /></div>
               </div>
               <div className="cw-title text-[26px] leading-none tracking-wide uppercase sm:text-[30px]">{ann.title}</div>
               <div className="mt-2 text-[14.5px] font-bold text-white/90 sm:text-[16px]">{ann.desc}</div>
@@ -423,7 +428,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
           <Btn tone="blue" big={!mobile} className={cn(mobile && 'h-12 px-4 text-[15px]')} onClick={() => openQuiz('q')} disabled={!alive}>
             <BookOpen size={mobile ? 18 : 22} /> {mobile ? 'Preguntas' : 'Responder preguntas'} {!mobile && <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">Q</kbd>}
           </Btn>
-          {!mobile && <Btn tone="purple" onClick={() => openQuiz('shop')} disabled={!alive}><Zap size={18} /> Mejoras <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">B</kbd></Btn>}
+          {!mobile && <Btn tone="purple" onClick={() => openQuiz('shop')} disabled={!alive}><GameIcon k="arrowUp" size={18} /> Mejoras <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">B</kbd></Btn>}
         </div>
       )}
 
@@ -433,16 +438,16 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
           {!mobile && (
             <>
               <Slot k="1" active label={weapon.name} onClick={() => client.attackPress()}>
-                <span className="text-[30px]">{weapon.icon}</span>
+                <GameIcon k={weapon.ic} size={38} />
                 <span className="absolute right-1.5 bottom-0.5 text-[13px] font-black">{me.ammo === INF ? '∞' : me.ammo}</span>
-                <span className="absolute bottom-0.5 left-1.5 text-[11px] font-black text-[#ffe14d]">⚡{weapon.en}</span>
+                <span className="absolute bottom-0.5 left-1 flex items-center text-[11px] font-black text-[#ffe14d]"><GameIcon k="bolt" size={12} />{weapon.en}</span>
               </Slot>
               <Slot k="E" label={pw.name} cd={hud!.powerLeft / 1000} cdMax={pw.cd} color={pw.color} onClick={() => client.powerPress()}>
-                <span className="text-[30px]">{pw.icon}</span>
+                <GameIcon k={pw.ic} size={38} />
               </Slot>
               {borrowed && (
                 <Slot k="R" label={borrowed.name} cd={hud!.bonusLeft / 1000} cdMax={1.2} color={borrowed.color} onClick={() => client.bonusPress()}>
-                  <span className="text-[28px]">{borrowed.icon}</span>
+                  <GameIcon k={borrowed.ic} size={36} />
                   <span className="absolute right-1 bottom-0.5 rounded bg-black/40 px-1 text-[12px] font-black">×{me.charges}</span>
                 </Slot>
               )}
@@ -467,14 +472,14 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             <div className="flex flex-col items-center gap-3">
               {borrowed && (
                 <TouchBtn onDown={powerTap(true)} color={borrowed.color} cd={hud.bonusLeft / 1000} cdMax={1.2} size={54}>
-                  <span className="text-[24px]">{borrowed.icon}</span><span className="absolute -right-1 -bottom-1 rounded-full bg-black/60 px-1.5 text-[11px] font-black">×{me!.charges}</span>
+                  <GameIcon k={borrowed.ic} size={30} /><span className="absolute -right-1 -bottom-1 rounded-full bg-black/60 px-1.5 text-[11px] font-black">×{me!.charges}</span>
                 </TouchBtn>
               )}
-              <TouchBtn onDown={powerTap(false)} color={pw.color} cd={hud.powerLeft / 1000} cdMax={pw.cd} size={64}><span className="text-[28px]">{pw.icon}</span></TouchBtn>
+              <TouchBtn onDown={powerTap(false)} color={pw.color} cd={hud.powerLeft / 1000} cdMax={pw.cd} size={64}><GameIcon k={pw.ic} size={36} /></TouchBtn>
             </div>
             <div ref={atkRef} onPointerDown={atkDown} onPointerMove={atkMove} onPointerUp={atkUp} onPointerCancel={atkUp}
               className="relative grid h-[92px] w-[92px] place-items-center rounded-full border-[4px] border-white/80 bg-[#ff4d5e]/85 shadow-[0_6px_0_rgba(0,0,0,.3)] active:scale-95">
-              <span className="text-[36px]">{weapon.icon}</span>
+              <GameIcon k={weapon.ic} size={46} />
               <span className="absolute right-1 bottom-0 text-[14px] font-black">{me?.ammo === INF ? '∞' : me?.ammo}</span>
             </div>
           </div>
@@ -520,19 +525,19 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       )}
       {client && me && hud && !mobile && !quiz && (
         <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
-          WASD moverse · clic atacar · clic derecho caminar<br />E poder · R poder prestado · Q preguntas · B mejoras<br /><span className="text-[#ffe14d]">Cada paso y disparo gasta ⚡ · responde para recargar</span>
+          WASD moverse · clic atacar · clic derecho caminar<br />E poder · R poder prestado · Q preguntas · B mejoras<br /><span className="text-[#ffe14d]">Cada paso y disparo gasta energía · responde para recargar</span>
         </div>
       )}
     </div>
   );
 });
 
-function Energy({ value, tired }: { value: number; tired: boolean }) {
-  const k = Math.max(0, Math.min(1, value / START_ENERGY));
-  const low = value < START_ENERGY * 0.15;
+function Energy({ value, max, tired }: { value: number; max: number; tired: boolean }) {
+  const k = Math.max(0, Math.min(1, value / max));
+  const low = value < max * 0.15;
   return (
     <div className={cn('flex w-[136px] items-center gap-1.5 rounded-xl bg-[#141a3f]/85 p-1 pr-2 shadow sm:w-[180px]', (tired || low) && 'cw-pulse')}>
-      <Zap size={17} className={cn('shrink-0', tired ? 'text-[#ff6b6b]' : 'text-[#ffe14d]')} fill="currentColor" />
+      <GameIcon k={tired ? 'batteryLow' : 'bolt'} size={19} />
       <div className="relative h-4 flex-1 overflow-hidden rounded-lg bg-black/40">
         <div className="absolute inset-y-0 left-0 rounded-lg transition-[width] duration-200" style={{ width: `${k * 100}%`, background: low ? 'linear-gradient(90deg,#ff6b3d,#ff9f0a)' : 'linear-gradient(90deg,#ffb800,#ffe14d)' }} />
         <div className="absolute inset-x-0 top-0 h-1.5 bg-white/25" />
