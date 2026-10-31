@@ -7,11 +7,13 @@ import { RANK_AT, rankOf } from '@/features/cards/api';
 import { cn } from '@/lib/cn';
 import type { Result } from '../game/host';
 import { sfx } from '../render/audio';
-import { Btn, Diamond, Toon } from './kit';
+import { Btn, Diamond, GameIcon, Toon } from './kit';
+import { t } from '../i18n';
 
 const RANK_ES = { bronze: 'Bronce', silver: 'Plata', gold: 'Oro', diamond: 'Diamante' } as const;
+const RANK_EN = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', diamond: 'Diamond' } as const;
 
-export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel = 'Nueva partida', exitLabel = 'Salir' }: {
+export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel = t('New game', 'Nueva partida'), exitLabel = t('Leave', 'Salir') }: {
   results: Result[]; myIdx?: number; saved?: string; onAgain?: () => void; onExit: () => void; againLabel?: string; exitLabel?: string;
 }) {
   const conf = useRef<HTMLCanvasElement>(null);
@@ -52,10 +54,10 @@ export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel
       <canvas ref={conf} className="pointer-events-none absolute inset-0 z-10 h-full w-full" />
       <div className="cw-scroll relative z-0 flex-1 overflow-y-auto px-4 pt-[max(16px,env(safe-area-inset-top))] pb-36">
         <motion.h1 initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="cw-title text-center text-[34px] sm:text-[46px]">
-          🏆 ¡Fin de la partida!
+          <GameIcon k="trophy" size={44} className="-mt-2 mr-2" />{t('Game over!', '¡Fin de la partida!')}
         </motion.h1>
         {mine && (
-          <p className="mt-1 text-center text-[18px] font-extrabold text-[#ffd23f]">Quedaste #{mine.place} de {results.length}</p>
+          <p className="mt-1 text-center text-[18px] font-extrabold text-[#ffd23f]">{t(`You finished #${mine.place} of ${results.length}`, `Quedaste #${mine.place} de ${results.length}`)}</p>
         )}
         {/* podium */}
         <div className="mx-auto mt-6 flex max-w-[640px] items-end justify-center gap-2 sm:gap-4">
@@ -79,9 +81,9 @@ export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel
         {/* table */}
         <div className="mx-auto mt-0 max-w-[820px] overflow-hidden rounded-2xl border-2 border-white/10 bg-[#1b2257]">
           <div className="grid grid-cols-[26px_1fr_52px_34px_34px_34px] items-center gap-1 border-b border-white/10 px-3 py-2 text-[12px] font-extrabold tracking-wide text-white/55 uppercase sm:grid-cols-[40px_1fr_90px_60px_60px_60px_60px_90px]">
-            <span>#</span><span>Jugador</span><span className="flex items-center gap-1"><Diamond size={13} /></span>
-            <span title="Respuestas correctas"><CheckCircle2 size={15} /></span><span title="KOs"><Swords size={15} /></span><span title="Cajas"><Package size={15} /></span>
-            <span className="hidden sm:block" title="Mejor racha"><Flame size={15} /></span><span className="hidden sm:block">Puntos</span>
+            <span>#</span><span>{t('Player', 'Jugador')}</span><span className="flex items-center gap-1"><Diamond size={13} /></span>
+            <span title={t('Correct answers', 'Respuestas correctas')}><CheckCircle2 size={15} /></span><span title="KOs"><Swords size={15} /></span><span title={t('Boxes', 'Cajas')}><Package size={15} /></span>
+            <span className="hidden sm:block" title={t('Best streak', 'Mejor racha')}><Flame size={15} /></span><span className="hidden sm:block">{t('Points', 'Puntos')}</span>
           </div>
           {results.map((r, i) => (
             <motion.div key={r.idx} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 + i * 0.04 }}
@@ -101,9 +103,9 @@ export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel
           <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 1.4 }} className="mx-auto mt-4 flex max-w-[520px] items-center gap-4 rounded-2xl border-2 border-[#ffd23f]/60 bg-gradient-to-r from-[#3a2f7d] to-[#25307a] p-4">
             <Toon ci={mine.char} size={64} />
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-1.5 text-[13px] font-extrabold tracking-wide text-white/60 uppercase"><Sparkles size={14} /> Carta de {TEACHERS[mine.char]?.name}</div>
-              <div className="text-[26px] font-black text-[#ffd23f]">+{mine.points} puntos</div>
-              <div className="text-[13px] font-semibold text-white/70">{mine.guest ? 'Invitado: los puntos no se guardan. Inicia sesión para subir tus cartas de rango.' : `Rangos: Plata ${RANK_AT.silver} · Oro ${RANK_AT.gold} · Diamante ${RANK_AT.diamond} (${RANK_ES[rankOf(mine.points)]} con esta partida)`}</div>
+              <div className="flex items-center gap-1.5 text-[13px] font-extrabold tracking-wide text-white/60 uppercase"><Sparkles size={14} /> {t(`${TEACHERS[mine.char]?.name} card`, `Carta de ${TEACHERS[mine.char]?.name}`)}</div>
+              <div className="text-[26px] font-black text-[#ffd23f]">+{mine.points} {t('points', 'puntos')}</div>
+              <div className="text-[13px] font-semibold text-white/70">{mine.guest ? t('Guest: points are not saved. Sign in to rank up your cards.', 'Invitado: los puntos no se guardan. Inicia sesión para subir tus cartas de rango.') : t(`Ranks: Silver ${RANK_AT.silver} · Gold ${RANK_AT.gold} · Diamond ${RANK_AT.diamond} (${RANK_EN[rankOf(mine.points)]} with this game)`, `Rangos: Plata ${RANK_AT.silver} · Oro ${RANK_AT.gold} · Diamante ${RANK_AT.diamond} (${RANK_ES[rankOf(mine.points)]} con esta partida)`)}</div>
             </div>
           </motion.div>
         )}

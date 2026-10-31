@@ -267,6 +267,25 @@ G1c. CLASS WARS: ENERGÍA 1200, DESLIZADORES, PODERES NUEVOS, ICONOS Y MÚSICA
   sobre las demás.
 - Plan del modo 2 («Pinta tu equipo») en docs/class-wars-modo-2.md.
 
+G1d. CLASS WARS: INGLÉS, CONTROLES MÓVILES, APUNTADO Y CAJAS NUEVAS
+- El juego está en inglés por defecto; en la pantalla de inicio de Class
+  Wars hay un selector EN / ES (se recuerda en el dispositivo). El editor de
+  preguntas del docente sigue en español.
+- Los avisos en pantalla duran máximo 3,5 s (las tarjetas de caja se cierran
+  antes y se pueden cerrar tocándolas; el K.O. dura 3,5 s).
+- Celular: el joystick solo mueve; para disparar se toca al enemigo
+  (mantener el dedo sigue disparando); a la derecha queda un solo botón, el
+  poder especial (si tienes un poder prestado, aparece ahí mientras el tuyo
+  recarga). Cámara más cercana. Se corrigió el parpadeo al voltear a
+  izquierda o derecha.
+- Computador: igual que antes, se apunta con el mouse.
+- Mejor puntería: si apuntas cerca de un rival, el disparo se adelanta a
+  donde va a estar, y el disparo sale de la altura correcta.
+- Cajas: cada caja cambia tus diamantes: +5, +10, +50, +100, +500, +1000;
+  ×1,5, ×2, ×3, ×5; o −25 %, −50 %, −75 %, −90 % (lo que pierdes cae como
+  gemas; el seguro de la tienda protege parte). La mitad de las cajas trae
+  además un objeto (arma, poder prestado, disfraz, etc.).
+
 T1. TÉRMINOS Y TRATAMIENTO DE DATOS
 - Nueva página /legal, enlazada al pie de la pantalla de inicio: términos de
   uso y tratamiento de datos según la Ley 1581 de 2012 (Colombia).

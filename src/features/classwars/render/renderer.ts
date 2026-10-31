@@ -1,7 +1,8 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
 import { BOX_COOLDOWN_MS, FLAG, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
-import { BOX_EFFECTS, CHAR_IDS, POWERS, UPGRADES, WEAPONS, PJ_LOOK } from '../game/defs';
+import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
+import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
 import { inBush, PROP_INFO, type GameMap, type Prop } from '../game/map';
 import type { RenderSource, RP } from '../game/client';
@@ -14,17 +15,17 @@ import { sfx } from './audio';
 
 interface Particle { x: number; y: number; vx: number; vy: number; life: number; max: number; size: number; color: string; kind: number; rot: number; vr: number; g: number; drag: number; text?: string }
 interface Popup { x: number; y: number; text: string; color: string; size: number; born: number; life: number; idx: number; dy: number; ic?: IconKey }
-interface Anim { lx: number; ly: number; phase: number; speed: number; face: number; faceT: number; seen: number }
+interface Anim { lx: number; ly: number; phase: number; speed: number; face: number; seen: number }
 
 const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6;
 const QUAL = [
-  { dpr: 1, particles: 140, label: 'baja' },
-  { dpr: 1.5, particles: 320, label: 'media' },
-  { dpr: 2, particles: 600, label: 'alta' },
+  { dpr: 1, particles: 140, label: 'low' },
+  { dpr: 1.5, particles: 320, label: 'medium' },
+  { dpr: 2, particles: 600, label: 'high' },
 ];
-const STATUS_TEXT: Record<string, [string, string]> = {
-  stun: ['¡Aturdido!', '#ffd60a'], root: ['¡Detención!', '#ff9f0a'], confuse: ['¿Confundido?', '#64d2ff'], charm: ['♥ Encantado', '#ff7ab6'],
-  blind: ['¡Flash!', '#ffffff'], hacked: ['¡Hackeado!', '#30ff7a'], slow: ['Lento', '#bf5af2'],
+const STATUS_TEXT: Record<string, [Tx, string]> = {
+  stun: [['Stunned!', '¡Aturdido!'], '#ffd60a'], root: [['Detention!', '¡Detención!'], '#ff9f0a'], confuse: [['Confused?', '¿Confundido?'], '#64d2ff'],
+  charm: [['Charmed', 'Encantado'], '#ff7ab6'], blind: [['Flash!', '¡Flash!'], '#ffffff'], hacked: [['Hacked!', '¡Hackeado!'], '#30ff7a'], slow: [['Slowed', 'Lento'], '#bf5af2'],
 };
 
 export type CamMode = 'follow' | 'auto' | 'map';
@@ -84,7 +85,8 @@ export class Renderer {
     this.dpr = Math.min(window.devicePixelRatio || 1, QUAL[this.quality].dpr);
     this.canvas.width = Math.round(this.w * this.dpr);
     this.canvas.height = Math.round(this.h * this.dpr);
-    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 1010, 0.7, 1.25);
+    // Close, readable camera on phones and laptops alike.
+    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 840, 0.92, 1.3);
   }
 
   get qualityLabel() { return QUAL[this.quality].label; }
@@ -483,15 +485,17 @@ export class Renderer {
   private drawPlayer(p: RP, src: RenderSource, now: number, dt: number, S: number, me: RP | null) {
     const g = this.g;
     let a = this.anim.get(p.idx);
-    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, faceT: 1, seen: now }; this.anim.set(p.idx, a); }
+    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, seen: now }; this.anim.set(p.idx, a); }
     const d = Math.hypot(p.x - a.lx, p.y - a.ly);
     const sp = dt > 0 ? Math.min(600, d / dt) : 0;
     a.speed = lerp(a.speed, sp, 0.25);
     a.lx = p.x; a.ly = p.y; a.seen = now;
     const moving = a.speed > 30;
     if (moving) a.phase += dt * (8 + a.speed / 40);
-    a.face = Math.cos(p.aim) < -0.05 ? -1 : Math.cos(p.aim) > 0.05 ? 1 : a.face;
-    a.faceT = lerp(a.faceT, a.face, 1 - Math.exp(-dt * 22));
+    // Face left/right with hysteresis (no flapping when aiming near vertical) and turn instantly:
+    // a lerped flip squeezes the sprite to nothing for a few frames, which reads as a flicker.
+    const c = Math.cos(p.aim);
+    if (c < -0.35) a.face = -1; else if (c > 0.35) a.face = 1;
 
     const ps = src.vis.ps.get(p.idx);
     const alive = !!(p.flags & FLAG.alive);
@@ -542,7 +546,7 @@ export class Renderer {
     g.translate(p.x, p.y - bob - lift);
     if (spin) g.rotate(spin);
     g.rotate(tilt);
-    g.scale(a.faceT * scale / squash, scale * squash);
+    g.scale(a.face * scale / squash, scale * squash);
     if (cs.ready) {
       g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
       const hurt = ps ? now - ps.hurtAt : 1e9;
@@ -639,9 +643,9 @@ export class Renderer {
     if (p.flags & FLAG.charm) this.icon('heart', p.x + Math.sin(t * 4) * 10, top - 14, 20);
     if (p.flags & FLAG.root) {
       g.beginPath(); g.ellipse(p.x, p.y, 30, 11, 0, 0, 7); g.lineWidth = 5; g.strokeStyle = '#ff9f0a'; g.setLineDash([8, 6]); g.stroke(); g.setLineDash([]);
-      this.label(p.x, top - 14, 'DETENCIÓN', '#ff9f0a', 11);
+      this.label(p.x, top - 14, tr('DETENTION', 'DETENCIÓN'), '#ff9f0a', 11);
     }
-    if (p.flags & FLAG.hacked) this.label(p.x, top - 14, 'HACKEADO', '#30ff7a', 11);
+    if (p.flags & FLAG.hacked) this.label(p.x, top - 14, tr('HACKED', 'HACKEADO'), '#30ff7a', 11);
     if (p.flags & FLAG.quiz) {
       const by = top - 16 + Math.sin(t * 3) * 2;
       this.icon('book', p.x - (p.flags & FLAG.combat ? 12 : 0), by, 24);
@@ -794,23 +798,22 @@ export class Renderer {
           this.popup(-1, p.x, p.y - 110, 'K.O.!', '#ffd60a', 30, 1300);
           if (p.me) { this.shake(0.8); sfx.koMe(); }
           else { const v = near(p.x, p.y); if (v) { sfx.ko(); this.shake(0.2 * v); } }
-          if (me && f.killer === me.idx && f.idx !== me.idx) this.popup(me.idx, 0, 0, '¡NOQUEADO!', '#ffd60a', 24, 1300);
+          if (me && f.killer === me.idx && f.idx !== me.idx) this.popup(me.idx, 0, 0, tr('KNOCKED OUT!', '¡NOQUEADO!'), '#ffd60a', 24, 1300);
           break;
         }
         case 'box': {
+          const mine = !!me && f.idx === me.idx;
+          const o = DIA_OUTCOMES[f.out] ?? DIA_OUTCOMES[0];
           this.burst(f.x, f.y - 30, 22, ['#ffd23f', '#8f6bff', '#ff5ce1', '#30d158', '#64d2ff'], P_CONF, 320, 1.0, 10, 380);
-          if (f.dia > 0) {
-            this.burst(f.x, f.y - 40, Math.min(12, 4 + Math.round(f.dia / 6)), ['#2fd3e8', '#c9f7ff', '#ffffff'], P_SHARD, 260, 0.7, 7, 260);
-            this.popup(f.idx, 0, 0, `+${f.dia}`, '#7ef0ff', me && f.idx === me.idx ? 24 : 17, 1300, 'gem');
-            if (me && f.idx === me.idx) sfx.gem(Math.min(10, Math.round(f.dia / 5)));
-          }
-          this.ring(f.x, f.y, 90, '#ffd23f', 0.45);
-          const eff = BOX_EFFECTS[f.eff];
-          if (me && f.idx === me.idx) { if (eff?.id === 'trap') { sfx.trap(); this.shake(0.5); } else sfx.box(); }
-          else {
-            const v = near(f.x, f.y); if (v) sfx.box();
-            if (eff) this.popup(-1, f.x, f.y - 70, eff.title, eff.color, 15, 1300);
-          }
+          this.ring(f.x, f.y, 90, o.kind === 'cut' ? '#ff5b5b' : '#ffd23f', 0.45);
+          if (f.dia > 0) this.burst(f.x, f.y - 40, Math.min(18, 4 + Math.round(Math.sqrt(f.dia))), ['#2fd3e8', '#c9f7ff', '#ffffff'], P_SHARD, 260, 0.7, 7, 260);
+          // the outcome over the box (+500, ×2, −50%) and the real change over the player
+          this.popup(-1, f.x, f.y - 74, outcomeLabel(o), outcomeColor(o), o.kind === 'add' && o.v < 50 ? 17 : 24, 1400, 'gem');
+          if (f.dia) this.popup(f.idx, 0, 0, `${f.dia > 0 ? '+' : '−'}${num(Math.abs(f.dia))}`, f.dia > 0 ? '#7ef0ff' : '#ff5b5b', mine ? 24 : 17, 1300, 'gem');
+          if (mine) {
+            if (o.kind === 'cut') { sfx.trap(); this.shake(0.5); }
+            else { sfx.box(); if (f.dia > 0) sfx.gem(Math.min(12, Math.round(Math.sqrt(f.dia)))); if (o.kind === 'mul' || o.v >= 500) this.shake(0.35); }
+          } else if (near(f.x, f.y)) sfx.box();
           break;
         }
         case 'gem': {
@@ -839,11 +842,11 @@ export class Renderer {
         }
         case 'tired': {
           const p = byIdx.get(f.idx);
-          if (p) this.popup(f.idx, 0, 0, '¡Sin energía!', '#ff9f0a', p.me ? 22 : 15, 1500);
+          if (p) this.popup(f.idx, 0, 0, tr('Out of energy!', '¡Sin energía!'), '#ff9f0a', p.me ? 22 : 15, 1500);
           if (p?.me) this.shake(0.25);
           break;
         }
-        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, 'Mejora', '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
+        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
         case 'tp': {
           const p = byIdx.get(f.idx);
           const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
@@ -866,7 +869,7 @@ export class Renderer {
           if (!p) break;
           const pw = POWERS[CHAR_IDS[f.ci]];
           this.burst(p.x, p.y - 40, 12, [pw?.color ?? '#fff', '#ffffff'], P_STAR, 220, 0.6, 8);
-          if (CHAR_IDS[f.ci] !== 'sander') this.popup(f.idx, 0, 0, pw?.name ?? '', '#ffffff', 15, 1100, pw?.ic);
+          if (CHAR_IDS[f.ci] !== 'sander' && pw) this.popup(f.idx, 0, 0, tx(pw.name), '#ffffff', 15, 1100, pw.ic);
           if (CHAR_IDS[f.ci] === 'sander') { this.says.push({ idx: f.idx, text: 'Hello, my dears!', born: performance.now() }); this.shake(p.me ? 0.3 : 0); }
           const v = p.me ? 1 : near(p.x, p.y);
           if (v && !sfx.special(CHAR_IDS[f.ci])) sfx.power(f.ci);
@@ -893,8 +896,8 @@ export class Renderer {
         }
         case 'status': {
           const p = byIdx.get(f.idx);
-          const tx = STATUS_TEXT[f.s];
-          if (p && tx) { this.popup(f.idx, 0, 0, tx[0], tx[1], 16, 1000); if (p.me || near(p.x, p.y)) sfx.status(); }
+          const st = STATUS_TEXT[f.s];
+          if (p && st) { this.popup(f.idx, 0, 0, tx(st[0]), st[1], 16, 1000); if (p.me || near(p.x, p.y)) sfx.status(); }
           break;
         }
         case 'block': { const p = byIdx.get(f.idx); if (p) { this.ring(p.x, p.y - 36, 60, '#bfe6ff', 0.3); if (p.me || near(p.x, p.y)) sfx.block(); } break; }

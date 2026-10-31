@@ -18,7 +18,7 @@ export const MAX_HP = 100;
 export const MAX_SHIELD = 100;
 export const SHIELD_REGEN_DELAY = 5000;
 export const SHIELD_REGEN = 12; // per second
-export const RESPAWN_MS = 4000;
+export const RESPAWN_MS = 3500;
 export const SPAWN_INVULN_MS = 2500;
 /** Damage taken or dealt within this window keeps you vulnerable while answering. */
 export const COMBAT_LOCK_MS = 3000;

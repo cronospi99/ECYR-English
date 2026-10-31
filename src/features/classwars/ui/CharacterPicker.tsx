@@ -6,8 +6,9 @@ import { TEACHERS } from '@/features/cards/teachers';
 import { cn } from '@/lib/cn';
 import { POWERS } from '../game/defs';
 import { Btn, GameIcon, Toon } from './kit';
+import { t as tr, tx } from '../i18n';
 
-export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡Listo!', busy }: { value: number; onChange: (ci: number) => void; onConfirm?: () => void; confirmLabel?: string; busy?: boolean }) {
+export function CharacterPicker({ value, onChange, onConfirm, confirmLabel, busy }: { value: number; onChange: (ci: number) => void; onConfirm?: () => void; confirmLabel?: string; busy?: boolean }) {
   const t = TEACHERS[value];
   const pw = POWERS[t.id];
   const grid = useRef<HTMLDivElement>(null);
@@ -51,15 +52,15 @@ export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-[3px] border-[#0e1230] text-[24px]" style={{ background: pw.color }}><GameIcon k={pw.ic} size={30} /></div>
             <div className="min-w-0">
-              <div className="text-[11px] font-extrabold tracking-wider text-white/60 uppercase">Poder especial</div>
-              <div className="text-[18px] leading-tight font-black">{pw.name}</div>
+              <div className="text-[11px] font-extrabold tracking-wider text-white/60 uppercase">{tr('Special power', 'Poder especial')}</div>
+              <div className="text-[18px] leading-tight font-black">{tx(pw.name)}</div>
             </div>
             <div className="ml-auto flex items-center gap-1 rounded-full bg-black/25 px-2 py-1 text-[12px] font-bold text-white/80"><Timer size={13} />{pw.cd}s</div>
           </div>
-          <p className="mt-2 text-[13px] leading-snug font-medium text-white/85 sm:text-[13.5px]">{pw.desc}</p>
+          <p className="mt-2 text-[13px] leading-snug font-medium text-white/85 sm:text-[13.5px]">{tx(pw.desc)}</p>
         </div>
         {onConfirm && (
-          <Btn big tone="green" className="mt-2 w-full md:mt-3" onClick={onConfirm} disabled={busy}>{confirmLabel}</Btn>
+          <Btn big tone="green" className="mt-2 w-full md:mt-3" onClick={onConfirm} disabled={busy}>{confirmLabel ?? tr('Ready!', '¡Listo!')}</Btn>
         )}
       </div>
       {/* grid */}
@@ -78,7 +79,7 @@ export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡
                 on ? 'border-[#ffd23f] bg-[#3a4796] shadow-[0_0_0_3px_rgba(255,210,63,.35)]' : 'border-white/10 bg-[#253070] hover:border-white/30',
               )}
               aria-pressed={on}
-              aria-label={`${tc.name}: ${p.name}`}
+              aria-label={`${tc.name}: ${tx(p.name)}`}
             >
               <span className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full text-[13px]" style={{ background: p.color }}><GameIcon k={p.ic} size={17} /></span>
               <div className={cn('h-[64px] w-full overflow-hidden sm:h-[78px]', on && 'cw-bob')}>
