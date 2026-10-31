@@ -7,7 +7,7 @@ const LIVE = [
     to: '/classwars',
     emoji: '⚔️',
     title: 'Class Wars',
-    sub: 'Arena en vivo: responde para ganar diamantes, abre cajas sorpresa y usa el poder de tu profe. Hay demo contra bots.',
+    sub: 'Arena en vivo: responde para recargar energía, abre cajas sorpresa para ganar diamantes y usa el poder de tu profe. Hay demo contra bots.',
     from: '#1e3a8a',
     to2: '#16a34a',
     accent: '#fde047',

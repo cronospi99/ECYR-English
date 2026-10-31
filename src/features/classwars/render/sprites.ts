@@ -2,6 +2,7 @@
    offscreen canvases (normal, blink, white hit-flash); props, boxes, gems and weapons are drawn
    with canvas paths into cached canvases at the current render scale. Drawing a frame is then
    just drawImage calls. */
+import { ICONS, ICON_INK, type IconKey } from '../game/icons';
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
@@ -117,6 +118,32 @@ function bake(bx: number, by: number, bw: number, bh: number, s: number, draw: (
 }
 
 const propCache = new Map<string, Sprite>();
+
+/** One of the game's icons as a sprite `size` world-px wide, centred on (0, 0). */
+export function iconSprite(k: IconKey, size: number, s: number): Sprite {
+  const key = `ic:${k}:${size}@${s}`;
+  const hit = propCache.get(key);
+  if (hit) return hit;
+  const sp = bake(-size / 2 - 2, -size / 2 - 2, size + 4, size + 4, s, (g) => {
+    g.translate(-size / 2, -size / 2);
+    g.scale(size / 32, size / 32);
+    paintIcon(g, k);
+  });
+  propCache.set(key, sp);
+  return sp;
+}
+
+export function paintIcon(g: G, k: IconKey) {
+  g.lineJoin = 'round';
+  g.lineCap = 'round';
+  for (const l of ICONS[k]) {
+    const path = new Path2D(l.d);
+    if (l.f !== 'none') { g.fillStyle = l.f; g.fill(path); }
+    g.strokeStyle = l.s ?? ICON_INK;
+    g.lineWidth = l.w ?? 2;
+    g.stroke(path);
+  }
+}
 const LEAF = ['#3f9a3a', '#4aa83f', '#3a8f45'];
 const LEAF_HI = ['#63c457', '#72cf5a', '#5cbf63'];
 
@@ -256,25 +283,29 @@ export const PROP_SHADOW: Partial<Record<PropKind, [number, number, number]>> = 
 };
 
 /* --------------------------------------------------------- items + boxes */
-export function boxSprite(s: number): Sprite {
-  const key = `box@${s}`;
+/** The mystery box; `grey` is the opened one waiting to refill. */
+export function boxSprite(s: number, grey = false): Sprite {
+  const key = `box${grey ? 'g' : ''}@${s}`;
   const hit = propCache.get(key);
   if (hit) return hit;
+  const c = grey
+    ? { top: '#b8bcc8', bot: '#8b909e', lid: '#cdd1db', gold: '#e6e8ee', mark: '#8b909e' }
+    : { top: '#8f6bff', bot: '#5b3fd6', lid: '#a78bff', gold: '#ffd23f', mark: '#5b3fd6' };
   const sp = bake(-34, -70, 68, 76, s, (g) => {
     rr(g, -28, -54, 56, 52, 10);
     const gr = g.createLinearGradient(0, -54, 0, -2);
-    gr.addColorStop(0, '#8f6bff'); gr.addColorStop(1, '#5b3fd6');
+    gr.addColorStop(0, c.top); gr.addColorStop(1, c.bot);
     g.fillStyle = gr; g.fill(); stroke(g, 4.5);
-    g.fillStyle = '#ffd23f'; g.fillRect(-5, -54, 10, 52);
+    g.fillStyle = c.gold; g.fillRect(-5, -54, 10, 52);
     g.lineWidth = 2; g.strokeStyle = INK; g.strokeRect(-5, -54, 10, 52);
-    rr(g, -31, -62, 62, 14, 6); g.fillStyle = '#a78bff'; g.fill(); stroke(g, 4);
-    g.fillStyle = '#ffd23f'; g.fillRect(-5, -62, 10, 14); g.strokeRect(-5, -62, 10, 14);
+    rr(g, -31, -62, 62, 14, 6); g.fillStyle = c.lid; g.fill(); stroke(g, 4);
+    g.fillStyle = c.gold; g.fillRect(-5, -62, 10, 14); g.strokeRect(-5, -62, 10, 14);
     // bow
-    g.fillStyle = '#ffd23f';
+    g.fillStyle = c.gold;
     for (const d of [-1, 1]) { g.beginPath(); g.ellipse(d * 11, -66, 10, 6, d * 0.5, 0, 7); g.fill(); stroke(g, 3); }
     // question mark badge
     g.beginPath(); g.arc(0, -30, 13, 0, 7); g.fillStyle = '#ffffff'; g.fill(); stroke(g, 3);
-    g.fillStyle = '#5b3fd6'; g.font = '900 20px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 0, -29);
+    g.fillStyle = c.mark; g.font = '900 20px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 0, -29);
     g.fillStyle = 'rgba(255,255,255,0.25)'; g.fillRect(-22, -46, 6, 36);
   });
   propCache.set(key, sp);

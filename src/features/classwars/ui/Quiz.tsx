@@ -7,7 +7,7 @@ import type { ClientSession, ServedQ } from '../game/client';
 import { FLAG } from '../game/constants';
 import { UPGRADES, answerGain, upValue } from '../game/defs';
 import { sfx } from '../render/audio';
-import { Btn, Diamond } from './kit';
+import { Btn, Diamond, GameIcon } from './kit';
 
 const TILE = [
   { bg: '#d8343f', sh: '#9e1f2a' },
@@ -21,6 +21,7 @@ export function QuizOverlay({ client, onClose, tab, setTab }: { client: ClientSe
   useEffect(() => client.subscribe(() => force((n) => n + 1)), [client]); // quiz needs dia/streak/queue
   const row = client.myRow();
   const dia = row?.[6] ?? 0;
+  const en = row?.[14] ?? 0;
   const combat = !!(row && row[7] & FLAG.combat);
   const genius = !!(row && row[7] & FLAG.genius);
   const per = answerGain(client.ups, client.streak, genius);
@@ -28,9 +29,10 @@ export function QuizOverlay({ client, onClose, tab, setTab }: { client: ClientSe
   return (
     <div className="absolute inset-0 z-40 flex flex-col bg-[#10153a]/97" onPointerDown={(e) => e.stopPropagation()}>
       <div className="flex shrink-0 items-center gap-2 px-3 pt-[max(8px,env(safe-area-inset-top))] pb-2 sm:gap-3 sm:px-5">
+        <div className="flex items-center gap-1 rounded-full bg-black/30 py-1.5 pr-3.5 pl-2 text-[18px] font-black tabular-nums text-[#ffe14d]"><GameIcon k="bolt" size={20} />{en}</div>
         <div className="flex items-center gap-1.5 rounded-full bg-black/30 py-1.5 pr-3.5 pl-2 text-[18px] font-black tabular-nums"><Diamond size={22} />{dia}</div>
         <div className={cn('flex items-center gap-1 rounded-full px-3 py-1.5 text-[15px] font-black', client.streak >= 3 ? 'bg-[#ff7a1a] text-white' : 'bg-black/30 text-white/80')}><Flame size={16} />{client.streak}</div>
-        <div className="hidden rounded-full bg-black/30 px-3 py-1.5 text-[13px] font-bold text-white/75 sm:block">+{per} <Diamond size={14} className="inline -mt-0.5" /> por acierto{genius && ' · ×2'}</div>
+        <div className="hidden rounded-full bg-black/30 px-3 py-1.5 text-[13px] font-bold text-white/75 md:block"><span className="inline-flex items-center gap-1">+{per} <GameIcon k="bolt" size={14} /> por acierto{genius && ' · ×2'}</span></div>
         <div className="ml-auto flex rounded-full bg-black/30 p-1">
           <button type="button" aria-label="Preguntas" onClick={() => setTab('q')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'q' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><BookOpen size={16} /><span className="hidden sm:inline">Preguntas</span></button>
           <button type="button" aria-label="Mejoras" onClick={() => setTab('shop')} className={cn('flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[14px] font-extrabold', tab === 'shop' ? 'bg-white text-[#1b2350]' : 'text-white/80')}><ShoppingBag size={16} /><span className="hidden sm:inline">Mejoras</span></button>
@@ -39,9 +41,9 @@ export function QuizOverlay({ client, onClose, tab, setTab }: { client: ClientSe
       </div>
       <div className={cn('mx-3 mb-2 flex shrink-0 items-center gap-2 rounded-xl px-3 py-1.5 text-[12.5px] font-bold sm:mx-5', combat ? 'bg-[#ff4d5e]/25 text-[#ffb3ba]' : 'bg-[#30d158]/15 text-[#9df0b4]')}>
         {combat ? <ShieldAlert size={15} /> : <Shield size={15} />}
-        {combat ? '¡En combate! Eres vulnerable mientras respondes (3 s sin pelear para estar a salvo).' : 'Estás a salvo en tu burbuja de estudio. Cada acierto cura +5.'}
+        {combat ? '¡En combate! Eres vulnerable mientras respondes (3 s sin pelear para estar a salvo).' : 'Estás a salvo en tu burbuja de estudio. Cada acierto recarga energía y cura +5.'}
       </div>
-      {tab === 'q' ? <Questions client={client} /> : <Shop client={client} dia={dia} />}
+      {tab === 'q' ? <Questions client={client} /> : <Shop client={client} en={en} />}
     </div>
   );
 }
@@ -115,7 +117,7 @@ function Questions({ client }: { client: ClientSession }) {
               {res?.ok && (
                 <motion.div initial={{ scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0, y: -30 }} transition={{ type: 'spring', stiffness: 500, damping: 18 }} className="pointer-events-none absolute inset-0 grid place-items-center">
                   <div className="flex items-center gap-3 rounded-[28px] border-4 border-white bg-[#26a34a] px-8 py-4 text-[clamp(30px,7vmin,64px)] font-black text-white shadow-[0_10px_0_#18712f]">
-                    ¡Correcto! +{res.gain} <Diamond size={48} />
+                    ¡Correcto! +{res.gain} <GameIcon k="bolt" size={50} />
                   </div>
                 </motion.div>
               )}
@@ -133,22 +135,22 @@ function Questions({ client }: { client: ClientSession }) {
   );
 }
 
-function Shop({ client, dia }: { client: ClientSession; dia: number }) {
+function Shop({ client, en }: { client: ClientSession; en: number }) {
   const [pending, setPending] = useState<string | null>(null);
   useEffect(() => { setPending(null); }, [client.ups]);
   return (
     <div className="cw-scroll min-h-0 flex-1 overflow-y-auto px-3 pb-6 sm:px-5">
-      <p className="mb-3 text-center text-[14px] font-semibold text-white/70">Gasta tus diamantes en mejoras. ¡Gana más en cada pregunta y protege tu tesoro!</p>
+      <p className="mb-3 text-center text-[14px] font-semibold text-white/70">Invierte tu energía en mejoras: recarga más con cada pregunta, saca más diamantes de las cajas y gasta menos al moverte.</p>
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {UPGRADES.map((u) => {
           const lvl = client.ups[u.id];
           const max = lvl >= u.values.length - 1;
           const cost = max ? 0 : u.costs[lvl + 1];
-          const can = !max && dia >= cost && pending !== u.id;
+          const can = !max && en >= cost && pending !== u.id;
           return (
             <div key={u.id} className="flex flex-col rounded-2xl border-2 border-white/10 bg-[#232d6b] p-4">
               <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-[26px]">{u.icon}</div>
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/10"><GameIcon k={u.ic} size={32} /></div>
                 <div className="min-w-0">
                   <div className="text-[17px] leading-tight font-black">{u.name}</div>
                   <div className="text-[12.5px] font-semibold text-white/65">{u.desc}</div>
@@ -160,7 +162,7 @@ function Shop({ client, dia }: { client: ClientSession; dia: number }) {
               <div className="mt-3 flex items-center gap-2">
                 <div className="text-[15px] font-extrabold">{u.fmt(upValue(u.id, lvl))}{!max && <span className="text-white/60"> → <span className="text-[#ffd23f]">{u.fmt(u.values[lvl + 1])}</span></span>}</div>
                 <Btn tone={can ? 'green' : 'ghost'} className="ml-auto h-10 px-4" disabled={!can} onClick={() => { setPending(u.id); client.buy(u.id); sfx.buy(); setTimeout(() => setPending(null), 1500); }}>
-                  {max ? 'MÁX' : <>{cost} <Diamond size={18} /></>}
+                  {max ? 'MÁX' : <>{cost.toLocaleString('es-CO')} <GameIcon k="bolt" size={17} /></>}
                 </Btn>
               </div>
             </div>

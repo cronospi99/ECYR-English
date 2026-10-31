@@ -5,7 +5,7 @@ import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
   BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, speedFromFlags,
 } from './constants';
-import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, type Ups } from './defs';
+import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
 import type { Ev } from './sim';
 import { VisualWorld } from './vis';
@@ -14,13 +14,13 @@ import { decAnswer, type Result } from './host';
 export interface RosterEntry { idx: number; peer: string; name: string; char: number; guest: boolean; bot: boolean }
 /** One player as drawn this frame. */
 export interface RP {
-  idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; flags: number; look: number;
-  weapon: number; ammo: number; maxHp: number; borrowed: number; charges: number; name: string; me: boolean; bot: boolean; decoy?: boolean;
+  idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; en: number; flags: number; look: number;
+  weapon: number; ammo: number; maxHp: number; borrowed: number; charges: number; name: string; me: boolean; bot: boolean;
 }
 export interface ServedQ { id: number; q: string; o: string[]; a: number }
 
 type SnapRow = number[];
-interface Snap { t: number; p: Map<number, SnapRow>; d: number[][]; r: number }
+interface Snap { t: number; p: Map<number, SnapRow>; r: number }
 
 export interface RenderSource {
   map: GameMap;
@@ -48,6 +48,8 @@ export class ClientSession implements RenderSource {
   myIdx = -1;
   salt = 0;
   durMs = 0;
+  /** Energy everyone started with (the HUD bar's full mark). */
+  startEnergy = 1200;
   goal = 0;
   isPaused = false;
   /** Host time when we received 'start' (0 = we were there from the beginning). */
@@ -144,12 +146,13 @@ export class ClientSession implements RenderSource {
     for (const [idx, peer, name, char, guest, bot] of r as [number, string, string, number, number, number][]) this.roster.set(idx, { idx, peer, name, char, guest: !!guest, bot: !!bot });
   }
 
-  private onStart(d: { seed: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[] }; paused: boolean }) {
-    if (!this.map || this.map.seed !== d.seed) {
-      this.map = generateMap(d.seed);
+  private onStart(d: { seed: number; portals?: number; en0?: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[] }; paused: boolean }) {
+    if (!this.map || this.map.seed !== d.seed || this.map.burrows.length !== (d.portals ?? 7)) {
+      this.map = generateMap(d.seed, d.portals ?? 7);
       this.vis = new VisualWorld(this.map);
     }
     this.salt = d.salt;
+    if (d.en0) this.startEnergy = d.en0;
     this.joinedAtMs = d.full.t;
     this.durMs = d.dur;
     this.goal = d.goal;
@@ -160,7 +163,7 @@ export class ClientSession implements RenderSource {
     this.vis.nameOf = (i) => this.roster.get(i)?.name ?? '?';
     this.vis.loadFull(d.full);
     const u = d.full.ups[d.you];
-    if (u) this.ups = { dpq: u[0], streak: u[1], mult: u[2], ins: u[3], hp: u[4] };
+    if (u) this.ups = upsFromArr(u);
     this.streak = d.full.streaks[d.you] ?? 0;
     this.powerReadyAt = performance.now() + (d.full.cds[d.you] ?? 0);
     this.snaps = [];
@@ -171,7 +174,7 @@ export class ClientSession implements RenderSource {
     this.bump();
   }
 
-  private onSnap(d: { t: number; p: SnapRow[]; d: number[][]; r: number; e: Ev[] }) {
+  private onSnap(d: { t: number; p: SnapRow[]; r: number; e: Ev[] }) {
     if (this.phase !== 'playing' || !this.map) return;
     const local = performance.now();
     this.lastSnapLocal = local;
@@ -180,7 +183,7 @@ export class ClientSession implements RenderSource {
     else this.offset = off > this.offset ? lerp(this.offset, off, 0.05) : lerp(this.offset, off, 0.25);
     const p = new Map<number, SnapRow>();
     for (const row of d.p) p.set(row[0], row);
-    this.snaps.push({ t: d.t, p, d: d.d, r: d.r });
+    this.snaps.push({ t: d.t, p, r: d.r });
     if (this.snaps.length > 30) this.snaps.shift();
     const mine = p.get(this.myIdx);
     if (mine) {
@@ -262,8 +265,7 @@ export class ClientSession implements RenderSource {
         this.me.vy *= k;
       } else { this.me.vx = this.me.vy = 0; }
       if (dx || dy) {
-        if (flags & FLAG.air) { this.me.x += dx; this.me.y += dy; }
-        else [this.me.x, this.me.y] = moveCircle(this.map, this.me.x, this.me.y, dx, dy);
+        [this.me.x, this.me.y] = moveCircle(this.map, this.me.x, this.me.y, dx, dy);
       }
     }
     this.vis.update(dt);
@@ -294,7 +296,7 @@ export class ClientSession implements RenderSource {
   attackPress() {
     this.input.atkC++;
     const row = this.myRow();
-    if (!row || this.quizOpen) return;
+    if (!row || this.quizOpen || row[7] & FLAG.tired) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const now = performance.now();
     if (now - this.lastFireAt < w.cd * 0.9) return;
@@ -306,7 +308,7 @@ export class ClientSession implements RenderSource {
     const row = this.myRow();
     if (!row || !this.input.held || this.quizOpen) return;
     const flags = row[7];
-    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.zen | FLAG.charm)) return;
+    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.hacked | FLAG.charm | FLAG.tired)) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const cd = w.cd * (flags & FLAG.rapid ? 0.6 : 1);
     const now = performance.now();
@@ -371,20 +373,8 @@ export class ClientSession implements RenderSource {
         x: me ? this.me.x : tp ? rb[1] : lerp(ra[1], rb[1], t),
         y: me ? this.me.y : tp ? rb[2] : lerp(ra[2], rb[2], t),
         aim: me ? this.input.aim : lerpAngle(byteToAim(ra[3]), byteToAim(rb[3]), t),
-        hp: live[4], sh: live[5], dia: live[6], flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
+        hp: live[4], sh: live[5], dia: live[6], en: live[14] ?? 0, flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
         name: r?.name ?? '?', me, bot: !!r?.bot,
-      });
-    }
-    // Decoys (Sebastián's clone) look like a real player.
-    const da = new Map(a.d.map((x) => [x[0], x]));
-    for (const db of b.d) {
-      const d0 = da.get(db[0]) ?? db;
-      const owner = this.roster.get(db[4]);
-      const orow = latest.p.get(db[4]);
-      out.push({
-        idx: 10000 + db[0], x: lerp(d0[1], db[1], t), y: lerp(d0[2], db[2], t), aim: byteToAim(db[5]), hp: orow?.[4] ?? 100, sh: orow?.[5] ?? 0,
-        dia: orow?.[6] ?? 0, flags: FLAG.alive, look: db[3], weapon: orow?.[9] ?? 0, ammo: 0, maxHp: orow?.[11] ?? 100, borrowed: -1, charges: 0,
-        name: owner?.name ?? '?', me: false, bot: false, decoy: true,
       });
     }
     return out;

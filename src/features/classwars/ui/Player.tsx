@@ -11,7 +11,7 @@ import { POWERS } from '../game/defs';
 import { CharacterPicker } from './CharacterPicker';
 import { GameView } from './GameView';
 import { Podium } from './Podium';
-import { Btn, Loading, Panel, Toon, useSessionKey } from './kit';
+import { Btn, GameIcon, Loading, Panel, Toon, useSessionKey } from './kit';
 import { RelayNotice } from './Host';
 
 const CODE_RE = /^[A-Z0-9]{4,8}$/;
@@ -121,7 +121,7 @@ export function PlayScreen() {
       <button type="button" onClick={() => setPicking(true)} className="group relative mt-4 flex flex-col items-center rounded-[28px] border-[3px] border-[#ffd23f]/70 bg-gradient-to-b from-[#2b377d] to-[#1b2257] px-8 pt-4 pb-4">
         <div className="cw-bob"><Toon ci={char} size={130} live /></div>
         <div className="cw-title text-[24px]">{TEACHERS[char].name}</div>
-        <div className="mt-1 flex items-center gap-2 rounded-full px-3 py-1 text-[14px] font-extrabold" style={{ background: pw.color + '55' }}>{pw.icon} {pw.name}</div>
+        <div className="mt-1 flex items-center gap-2 rounded-full px-3 py-1 text-[14px] font-extrabold" style={{ background: pw.color + '55' }}><GameIcon k={pw.ic} size={20} /> {pw.name}</div>
         <div className="mt-3 flex items-center gap-1.5 rounded-full bg-[#ffd23f] px-4 py-1.5 text-[14px] font-black text-[#2a1d00] shadow-[0_4px_0_#c79a00]"><Pencil size={14} /> Cambiar personaje</div>
       </button>
       <div className="mt-6 flex w-full max-w-[640px] items-center gap-2 text-[15px] font-black"><Users size={18} /> {client.lobby.length} en la sala</div>

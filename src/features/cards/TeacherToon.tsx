@@ -95,13 +95,25 @@ function Face({ l, blink }: { l: TeacherLook; blink: boolean }) {
         ? <g stroke={K} strokeWidth={3} strokeLinecap="round" fill="none"><path d="M -15 3 Q -11 6 -7 3" /><path d="M 7 3 Q 11 6 15 3" /></g>
         : (
           <g>
-            <ellipse cx={-11} cy={ey} rx={3.8} ry={mysterious ? 3 : 4.8} fill={K} />
-            <ellipse cx={11} cy={ey} rx={3.8} ry={mysterious ? 3 : 4.8} fill={K} />
-            <circle cx={-9.8} cy={ey - 1.6} r={1.3} fill="#fff" />
-            <circle cx={12.2} cy={ey - 1.6} r={1.3} fill="#fff" />
+            {[-11, 11].map((x) => (
+              <g key={x}>
+                <ellipse cx={x} cy={ey} rx={4} ry={mysterious ? 3 : 5} fill={K} />
+                {!mysterious && <ellipse cx={x} cy={ey + 1.2} rx={2.6} ry={3.1} fill="#4a2d1c" />}
+                <circle cx={x + 1.3} cy={ey - 1.9} r={1.6} fill="#fff" />
+                <circle cx={x - 1.4} cy={ey + 2.2} r={0.7} fill="#fff" opacity={0.85} />
+              </g>
+            ))}
             {mysterious && <path d="M -16 -1 L -6 -1 M 6 -1 L 16 -1" stroke={K} strokeWidth={2.5} />}
           </g>
         )}
+      {l.bags && [-11, 11].map((x) => (
+        <g key={x}>
+          <path d={`M ${x - 6} 7.5 Q ${x} 13.5 ${x + 6} 7.5 Q ${x} 10.5 ${x - 6} 7.5 Z`} fill="#7a4a5c" opacity={0.38} />
+          <path d={`M ${x - 5} 10 Q ${x} 13 ${x + 5} 10`} fill="none" stroke={SKIN[l.skin].d} strokeWidth={1.8} strokeLinecap="round" />
+        </g>
+      ))}
+      {/* nose */}
+      <path d="M -1.5 7 Q 2.5 9.5 -0.5 11.5" fill="none" stroke={SKIN[l.skin].d} strokeWidth={2.2} strokeLinecap="round" />
       <circle cx={-18} cy={11} r={4.5} fill="#ff8f8f" opacity={l.smile === "shy" ? 0.8 : 0.45} />
       <circle cx={18} cy={11} r={4.5} fill="#ff8f8f" opacity={l.smile === "shy" ? 0.8 : 0.45} />
       {/* beard sits under the mouth */}
@@ -206,8 +218,11 @@ export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false }: { 
       <rect x={-sw + 5} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
       <rect x={1} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
       {l.outfit === "tracksuit" && <path d={`M ${-sw + 9} ${hipY + 4} L ${-sw + 9} ${-6} M ${sw - 9} ${hipY + 4} L ${sw - 9} ${-6}`} stroke="#f2efe6" strokeWidth={2.5} />}
+      <rect x={3} y={hipY + 2} width={sw * 0.45} height={legLen - 8} rx={3} fill="#000" opacity={0.16} />
       <ellipse cx={-sw / 2 + 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
       <ellipse cx={sw / 2 - 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
+      <ellipse cx={-sw / 2 - 2} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
+      <ellipse cx={sw / 2 - 4} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
       <g transform={`translate(0 ${-breathe * 0.5}) rotate(${sway * 0.4} 0 ${hipY})`}>
         {/* long hair hangs behind the shoulders */}
         <g transform={`translate(0 ${headY})`}><HairBack l={l} /></g>
@@ -227,6 +242,8 @@ export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false }: { 
           <circle cx={sw + 3} cy={shoulderY + 4 + torsoLen * 0.82} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
         </g>
         <Torso l={l} sw={sw} top={shoulderY} bottom={hipY} />
+        <rect x={sw * 0.32} y={shoulderY + 3} width={sw * 0.68 - 2} height={torsoLen - 2} rx={10} fill="#000" opacity={0.13} />
+        <rect x={-sw + 5} y={shoulderY + 4} width={sw * 0.7} height={4} rx={2} fill="#fff" opacity={0.2} />
         {/* neck */}
         <rect x={-6} y={shoulderY - 8} width={12} height={10} fill={skin.c} stroke={K} strokeWidth={3} />
         {/* props on the body */}
@@ -246,6 +263,8 @@ export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false }: { 
           <circle cx={30} cy={4} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
           {has("earrings") && <><circle cx={-30} cy={13} r={3} fill="#f5c518" stroke={K} strokeWidth={1.5} /><circle cx={30} cy={13} r={3} fill="#f5c518" stroke={K} strokeWidth={1.5} /></>}
           <ellipse cx={0} cy={2} rx={29} ry={30} fill={skin.c} stroke={K} strokeWidth={3.5} />
+          <path d="M 6 -27.6 A 29 30 0 0 1 6 31.6 Q 25 2 6 -27.6 Z" fill={skin.d} opacity={0.42} />
+          <path d="M -22 -14 Q -16 -24 -5 -26.5" fill="none" stroke="#fff" strokeWidth={3} strokeLinecap="round" opacity={0.28} />
           <path d="M -20 22 Q 0 34 20 22" fill="none" stroke={skin.d} strokeWidth={4} opacity={0.5} />
           <Face l={l} blink={blink} />
           <HairFront l={l} />

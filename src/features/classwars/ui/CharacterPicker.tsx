@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { TEACHERS } from '@/features/cards/teachers';
 import { cn } from '@/lib/cn';
 import { POWERS } from '../game/defs';
-import { Btn, Toon } from './kit';
+import { Btn, GameIcon, Toon } from './kit';
 
 export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡Listo!', busy }: { value: number; onChange: (ci: number) => void; onConfirm?: () => void; confirmLabel?: string; busy?: boolean }) {
   const t = TEACHERS[value];
@@ -49,7 +49,7 @@ export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡
         <p className="mb-2 hidden text-center text-[13px] font-semibold text-white/70 italic sm:block">“{t.about}”</p>
         <div className="w-full rounded-2xl border-2 p-3" style={{ borderColor: pw.color + '88', background: `linear-gradient(135deg, ${pw.color}33, transparent)` }}>
           <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-[3px] border-[#0e1230] text-[24px]" style={{ background: pw.color }}>{pw.icon}</div>
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border-[3px] border-[#0e1230] text-[24px]" style={{ background: pw.color }}><GameIcon k={pw.ic} size={30} /></div>
             <div className="min-w-0">
               <div className="text-[11px] font-extrabold tracking-wider text-white/60 uppercase">Poder especial</div>
               <div className="text-[18px] leading-tight font-black">{pw.name}</div>
@@ -80,7 +80,7 @@ export function CharacterPicker({ value, onChange, onConfirm, confirmLabel = '¡
               aria-pressed={on}
               aria-label={`${tc.name}: ${p.name}`}
             >
-              <span className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full text-[13px]" style={{ background: p.color }}>{p.icon}</span>
+              <span className="absolute top-1 right-1 grid h-6 w-6 place-items-center rounded-full text-[13px]" style={{ background: p.color }}><GameIcon k={p.ic} size={17} /></span>
               <div className={cn('h-[64px] w-full overflow-hidden sm:h-[78px]', on && 'cw-bob')}>
                 <Toon ci={i} size={70} className="mx-auto -mt-1 sm:hidden" />
                 <Toon ci={i} size={84} className="mx-auto -mt-1 hidden sm:block" />

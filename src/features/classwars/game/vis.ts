@@ -1,22 +1,24 @@
 /* Class Wars — the visual copy of the world that every screen keeps (players' phones and the
    projector). It is fed by the host's events: boxes, gems, projectiles, zones and one-shot
    effects. The renderer drains `fx` every frame for particles, popups, shakes and sounds. */
-import { WEAPONS, PJ } from './defs';
-import { byteToAim } from './constants';
+import { WEAPONS, PJ_LOOK } from './defs';
+import { BOX_COOLDOWN_MS, byteToAim } from './constants';
 import { hitsWall, type GameMap } from './map';
 import type { Ev } from './sim';
 
-export interface VBox { id: number; x: number; y: number; born: number }
+/** readyAt > now: somebody opened it and it is grey until then. */
+export interface VBox { id: number; x: number; y: number; born: number; readyAt: number }
 export interface VGem { id: number; x: number; y: number; v: number; born: number; fx: number; fy: number; take?: { idx: number; at: number } }
 export interface VProj { id: number; kind: number; x: number; y: number; vx: number; vy: number; range: number; dist: number; owner: number; born: number; local?: boolean }
 export interface VZone { id: number; kind: number; x: number; y: number; r: number; born: number; until: number; owner: number }
 export interface VTele { x: number; y: number; r: number; at: number; born: number; kind: number }
-export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; leap?: { fx: number; fy: number; tx: number; ty: number; at: number }; blockAt: number; statusAt: number; status: string }
+export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; blockAt: number; statusAt: number; status: string }
 
 export type Fxq =
   | { t: 'dmg'; idx: number; v: number; shield: boolean }
   | { t: 'ko'; idx: number; killer: number; lost: number }
-  | { t: 'box'; idx: number; x: number; y: number; eff: number; param: number }
+  | { t: 'box'; idx: number; x: number; y: number; eff: number; param: number; dia: number }
+  | { t: 'tired'; idx: number }
   | { t: 'gem'; idx: number; v: number; x: number; y: number }
   | { t: 'boom'; x: number; y: number; r: number; kind: string }
   | { t: 'hit'; x: number; y: number; kind: number }
@@ -28,7 +30,6 @@ export type Fxq =
   | { t: 'cone'; idx: number; aim: number; r: number; kind: number }
   | { t: 'laser'; x1: number; y1: number; x2: number; y2: number }
   | { t: 'grenade'; x1: number; y1: number; x2: number; y2: number }
-  | { t: 'decoy'; x: number; y: number }
   | { t: 'shoot'; idx: number; kind: number }
   | { t: 'status'; idx: number; s: string }
   | { t: 'block'; idx: number }
@@ -67,7 +68,7 @@ export class VisualWorld {
     const now = performance.now();
     this.boxes.clear();
     this.gems.clear();
-    for (const [id, x, y] of f.boxes) this.boxes.set(id, { id, x, y, born: now - 2000 });
+    for (const [id, x, y, left] of f.boxes) this.boxes.set(id, { id, x, y, born: now - 2000, readyAt: left ? now + left : 0 });
     for (const [id, x, y, v] of f.gems) this.gems.set(id, { id, x, y, v, born: now - 2000, fx: x, fy: y });
     this.zones = f.zones.map(([id, kind, x, y, r, left, owner]) => ({ id, kind, x, y, r, born: now, until: now + left, owner }));
   }
@@ -129,14 +130,13 @@ export class VisualWorld {
           this.st(n(1)).koAt = now;
           this.fx.push({ t: 'ko', idx: n(1), killer: n(2), lost: n(3) });
           const killer = n(2);
-          this.pushFeed(killer >= 0 && killer !== n(1) ? `${this.nameOf(killer)} noqueó a ${this.nameOf(n(1))}` : `${this.nameOf(n(1))} quedó fuera de combate`, killer === this.myIdx ? '#ffd60a' : n(1) === this.myIdx ? '#ff6b6b' : '#fff');
+          this.pushFeed(killer >= 0 && killer !== n(1) ? (killer === this.myIdx ? `Noqueaste a ${this.nameOf(n(1))}` : `${this.nameOf(killer)} noqueó a ${this.nameOf(n(1))}`) : `${this.nameOf(n(1))} quedó fuera de combate`, killer === this.myIdx ? '#ffd60a' : n(1) === this.myIdx ? '#ff6b6b' : '#fff');
           break;
         }
         case 'tp': {
           const s = this.st(n(1));
           const kind = e[5] as string;
           if (kind === 'spawn') s.spawnAt = now;
-          if (kind === 'leap') s.leap = { fx: n(6), fy: n(7), tx: n(2), ty: n(3), at: now };
           this.fx.push({ t: 'tp', idx: n(1), kind, x: n(2), y: n(3), fx: n(6), fy: n(7) });
           break;
         }
@@ -147,15 +147,15 @@ export class VisualWorld {
           this.fx.push({ t: 'gem', idx: n(2), v: n(3), x: g?.x ?? 0, y: g?.y ?? 0 });
           break;
         }
-        case 'bx': this.boxes.set(n(1), { id: n(1), x: n(2), y: n(3), born: now }); break;
+        case 'bx': this.boxes.set(n(1), { id: n(1), x: n(2), y: n(3), born: now, readyAt: 0 }); break;
         case 'bo': {
           const b = this.boxes.get(n(1));
-          this.boxes.delete(n(1));
-          this.fx.push({ t: 'box', idx: n(2), x: b?.x ?? 0, y: b?.y ?? 0, eff: n(3), param: n(4) });
+          if (b) b.readyAt = now + BOX_COOLDOWN_MS;
+          this.fx.push({ t: 'box', idx: n(2), x: b?.x ?? 0, y: b?.y ?? 0, eff: n(3), param: n(4), dia: n(5) || 0 });
           break;
         }
+        case 'ne': this.fx.push({ t: 'tired', idx: n(1) }); break;
         case 'zn': this.zones.push({ id: n(1), kind: n(2), x: n(3), y: n(4), r: n(5), born: now, until: now + n(6), owner: n(7) }); break;
-        case 'dp': this.fx.push({ t: 'decoy', x: n(2), y: n(3) }); break;
         case 'st': { const s = this.st(n(1)); s.statusAt = now; s.status = e[2] as string; this.fx.push({ t: 'status', idx: n(1), s: e[2] as string }); break; }
         case 'rv': break;
         case 'cs': this.fx.push({ t: 'costume', idx: n(1), ci: n(2) }); break;
@@ -189,12 +189,12 @@ export class VisualWorld {
   }
 }
 
+/** Trail / hit colour per projectile kind. */
 export const PROJ_LOOK: Record<number, { color: string; r: number }> = {
   0: { color: '#ffffff', r: 6 },
   2: { color: '#7fdcff', r: 9 },
   3: { color: '#ff7aa8', r: 10 },
   4: { color: '#d7ff3a', r: 7 },
   5: { color: '#cfd8dc', r: 5 },
-  [PJ.book]: { color: '#3a5bc7', r: 11 },
-  [PJ.clipboard]: { color: '#a8774a', r: 12 },
+  ...Object.fromEntries(Object.entries(PJ_LOOK).map(([k, v]) => [k, { color: v.color, r: 11 }])),
 };

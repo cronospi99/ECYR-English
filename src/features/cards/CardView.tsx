@@ -121,7 +121,7 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
   const prog = rankProgress(points);
   const rank = prog.rank;
   const L = RANK_LOOK[rank];
-  const gold = !!card.special;
+  const c = card.color;
   const num = (index ?? TEACHERS.findIndex((x) => x.id === card.id)) + 1;
   const W = width;
   const frame = Math.max(4, Math.round(W * 0.045));
@@ -175,7 +175,7 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
           zIndex: 2,
           borderRadius: Math.max(5, radius - frame),
           border: `${W < 110 ? 2 : 3}px solid ${K}`,
-          background: gold ? 'linear-gradient(135deg,#f5c518,#fff2a8 40%,#c99d00 60%,#f5c518)' : 'linear-gradient(#3b4349,#2b3236)',
+          background: `linear-gradient(135deg,${c},${mix(c, '#ffffff', 0.5)} 40%,${mix(c, '#000000', 0.22)} 62%,${c})`,
           padding: Math.max(3, W * 0.03),
           display: 'flex',
           flexDirection: 'column',
@@ -184,7 +184,7 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
         }}
       >
         {!tiny && (
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', font: `700 ${fs(0.05, 8)}px/1.1 ${MONO}`, letterSpacing: '0.06em', textTransform: 'uppercase', color: gold ? K : L.accent }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', font: `700 ${fs(0.05, 8)}px/1.1 ${MONO}`, letterSpacing: '0.06em', textTransform: 'uppercase', color: K }}>
             <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{owned ? card.role : '???'}</span>
             <span>#{String(num).padStart(2, '0')}</span>
           </div>
@@ -195,7 +195,7 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
             minHeight: 0,
             border: `${W < 110 ? 2 : 3}px solid ${K}`,
             borderRadius: Math.max(4, W * 0.035),
-            background: owned ? (gold ? 'radial-gradient(circle at 50% 40%,#fff6c8,#e9b949)' : L.portrait) : '#1b2023',
+            background: owned ? `radial-gradient(circle at 50% 40%,${mix(c, '#ffffff', 0.7)},${mix(c, '#000000', 0.12)})` : '#1b2023',
             overflow: 'hidden',
             position: 'relative',
           }}
@@ -213,8 +213,8 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
           style={{
             font: `400 ${fs(small ? 0.12 : 0.1, 10)}px/1.02 ${BLACK}`,
             textTransform: 'uppercase',
-            color: gold ? K : '#f2efe6',
-            textShadow: gold ? 'none' : `2px 2px 0 ${K}`,
+            color: K,
+            textShadow: '1px 1px 0 rgba(255,255,255,0.55)',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
@@ -223,13 +223,13 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
           {owned ? card.name : '• • •'}
         </div>}
         {W >= 160 && (
-          <div style={{ fontFamily: "Archivo, system-ui, sans-serif", fontSize: fs(0.058, 9), lineHeight: 1.28, color: gold ? '#3b2a00' : 'rgba(242,239,230,0.8)', height: '2.56em', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{owned ? card.about : ''}</div>
+          <div style={{ fontFamily: "Archivo, system-ui, sans-serif", fontSize: fs(0.058, 9), lineHeight: 1.28, color: 'rgba(14,17,19,0.82)', height: '2.56em', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}>{owned ? card.about : ''}</div>
         )}
         {showRank && !mini && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: Math.max(2, W * 0.015) }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4, font: `700 ${fs(0.052, 8)}px/1 ${MONO}`, letterSpacing: '0.04em', textTransform: 'uppercase', color: gold ? K : L.accent }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 4, font: `700 ${fs(0.052, 8)}px/1 ${MONO}`, letterSpacing: '0.04em', textTransform: 'uppercase', color: K }}>
               {!tiny && <span>{L.label}</span>}
-              <span style={{ color: gold ? K : '#f2efe6' }}>★ {points}</span>
+              <span style={{ color: K }}>★ {points}</span>
             </div>
             <RankBar points={points} height={Math.max(5, W * 0.045)} />
           </div>
@@ -242,4 +242,11 @@ export function TeacherCardView({ card, points = 0, width = 180, animate = true,
       )}
     </div>
   );
+}
+
+/** Blend a #rrggbb colour toward another by t (0–1). */
+function mix(a: string, b: string, t: number) {
+  const p = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return '#' + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, '0')).join('');
 }

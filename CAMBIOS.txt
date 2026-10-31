@@ -215,12 +215,61 @@ G1. CLASS WARS (Juegos › En vivo con tu clase)
 - «Responder preguntas»: 4 colores, rachas; mientras respondes estás en una
   burbuja protectora (salvo si acabas de pelear). Noquear a alguien le roba
   30 % de sus diamantes (salen volando como gemas).
-- Tienda de mejoras: diamantes por respuesta, bono de racha, multiplicador,
-  seguro y vida máxima.
+- Tienda de mejoras (ver G1b: ahora se paga con energía).
 - Preguntas: de todo el plan de estudios (A1–C2, ~2.800) o de sets propios
   del docente (Class Wars › Mis preguntas; se pueden pegar como texto).
 - Al final: podio animado y puntos para la carta de cada estudiante.
 - Demo contra bots para probarlo sin conexión.
+
+G1b. CLASS WARS: NUEVA LÓGICA DE ENERGÍA Y PANTALLA DE INICIO
+- Todos empiezan con 1200 ⚡ de energía. Cada paso gasta energía (unos 17 por
+  segundo caminando) y cada disparo también (tiza 5, burbujeador 4, erizo 6,
+  clipadora 7, rayo 9, lanzaborradores 12, purpurina 14).
+- Con 0 de energía el personaje queda quieto: no se mueve, no ataca y no usa
+  poderes. Aparece «¡Sin energía!» con el botón «Recargar energía». Solo las
+  respuestas correctas recargan (+150 al empezar, más con mejoras y rachas).
+- Los diamantes salen de las cajas sorpresa (10–25 cada una, más con la
+  mejora; el tesoro da 40–70 extra). Las cajas ahora están fijas en el mapa
+  (26 + 1,5 por jugador, hasta 72). Al tocar una se pone gris con una cuenta
+  regresiva y vuelve a estar activa a los 10 s. Noquear a alguien sigue
+  robándole diamantes.
+- Más portales según el número de personas: 7 hasta 6 jugadores y uno más
+  por cada 3 (hasta 17), con un remolino morado animado.
+- La tienda se paga con energía: energía por pregunta, bonus de racha,
+  diamantes por caja, ahorro de energía (nuevo), seguro y vida máxima.
+- Metas del modo Carrera: 500, 1000, 2000 o 3000 💎.
+- Pantalla de inicio nueva con el arte del estadio, el logo de Class Wars y
+  botones brillantes (fondo y logo tomados de las imágenes que enviaste). Las
+  demás pantallas del juego usan el mismo estadio de fondo, oscurecido.
+
+G1c. CLASS WARS: ENERGÍA 1200, DESLIZADORES, PODERES NUEVOS, ICONOS Y MÚSICA
+- Cada respuesta correcta da 1.200 de energía (la tienda se reajustó a esa
+  escala). En «Nueva partida» hay deslizadores para la duración (2–30 min),
+  la energía inicial (200–6.000) y el máximo de jugadores.
+- Iconos propios dibujados para el juego (poderes, armas, cajas, mejoras y
+  marcador). Ya no se usan emojis en Class Wars.
+- Poderes nuevos: Gabriel lanza cartas de póker; Sander grita «Hello, my
+  dears!» (empuja y aturde, con globo de texto); Nataly y Julián lanzan una
+  laptop; Andrés da un guitarrazo; Valentina lanza un rizo que deja lento;
+  Esteban hace un ataque hacker (sin disparar ni poderes 3 s); Sebastián
+  lanza gatos que persiguen; Javier un mando de juego que aturde; Anny una
+  barra de chocolate que la cura; Estephania una pelota arcoíris que rebota;
+  Liliana un micrófono que explota en onda de sonido. Los demás siguen igual.
+- Música de fondo original generada en vivo (batería, bajo, acordes,
+  arpegios y melodía, con reverberación y compresión) que se intensifica en
+  los últimos 30 s, y efectos de sonido nuevos para los poderes. Botón de
+  música aparte del de sonido.
+- Personajes con sombreado, ojos con brillo y nariz. Cambios pedidos:
+  Gabriel piel clara, Valentina más alta, Esteban piel más morena, blusa
+  morada para Estephania, Dager sin ceño fruncido, Liliana con ojeras,
+  Norvey piel más clara y Jalbleidy piel más morena.
+- Cartas de profes: todas tienen su propio color de fondo; ninguna resalta
+  sobre las demás.
+- Plan del modo 2 («Pinta tu equipo») en docs/class-wars-modo-2.md.
+
+T1. TÉRMINOS Y TRATAMIENTO DE DATOS
+- Nueva página /legal, enlazada al pie de la pantalla de inicio: términos de
+  uso y tratamiento de datos según la Ley 1581 de 2012 (Colombia).
 
 G2. IMPOSTOR (Juegos › En vivo con tu clase)
 - El juego del repositorio NewEnglishImpostor, completo (clásico,

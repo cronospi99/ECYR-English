@@ -16,20 +16,28 @@ export function botThink(sim: Sim, p: SimPlayer) {
   });
   if (!p.alive) { p.mx = p.my = 0; p.attackHeld = false; return; }
 
-  // Answering questions (the main income).
+  // Answering questions (the only way to refill energy).
   if (p.inQuiz) {
     p.mx = p.my = 0;
-    const threatened = now - p.lastCombatAt < 1500;
-    if (now > b.quizUntil || threatened) { sim.setQuiz(p, false); return; }
+    const threatened = now - p.lastCombatAt < 1500 && p.en > 0;
+    if ((now > b.quizUntil && p.en > 900) || threatened) { sim.setQuiz(p, false); return; }
     if (now > b.nextAns) {
       sim.answer(p, R() < b.acc);
       b.nextAns = now + 2200 + R() * 3500;
-      // Shop: the cheapest useful upgrade we can afford comfortably.
+      // Shop: the cheapest useful upgrade, keeping enough energy to keep playing.
       for (const u of [...UPGRADES].sort((x, y) => x.costs[Math.min(p.ups[x.id] + 1, x.costs.length - 1)] - y.costs[Math.min(p.ups[y.id] + 1, y.costs.length - 1)])) {
         const next = p.ups[u.id] + 1;
-        if (next < u.values.length && p.dia > u.costs[next] * 1.4) { sim.buy(p, u.id); break; }
+        if (next < u.values.length && p.en > u.costs[next] + 1500) { sim.buy(p, u.id); break; }
       }
     }
+    return;
+  }
+  // Out of energy (or nearly): go study.
+  if (p.en < 60 && now - p.lastCombatAt > 800) {
+    sim.setQuiz(p, true);
+    b.quizUntil = now + 5000 + R() * 6000;
+    b.nextQuiz = b.quizUntil + 14000 + R() * 26000;
+    b.nextAns = now + 1600;
     return;
   }
 
@@ -53,6 +61,7 @@ export function botThink(sim: Sim, p: SimPlayer) {
         if (d < best && d < 650) { best = d; bx = g.x; by = g.y; }
       }
       for (const bo of sim.boxes.values()) {
+        if (bo.readyAt > now) continue;
         const d = Math.hypot(bo.x - p.x, bo.y - p.y) - 60;
         if (d < best) { best = d; bx = bo.x; by = bo.y; }
       }

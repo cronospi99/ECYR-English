@@ -143,6 +143,12 @@ export default function HomePage() {
             <ExploreTile to="/coach" icon={Sparkles} color="var(--purple)" title="AI Coach" sub="Conversa y corrige" />
           </div>
         </div>
+
+        <footer className="text-label-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 pt-2 pb-4 text-center text-[12.5px]">
+          <span>ECYR English · proyecto libre con fines educativos</span>
+          <span aria-hidden>·</span>
+          <Link to="/legal" className="font-semibold text-[var(--blue-ink)] hover:underline">Términos y tratamiento de datos</Link>
+        </footer>
       </div>
     </Page>
   );

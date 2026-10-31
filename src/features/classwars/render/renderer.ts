@@ -1,18 +1,19 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
-import { FLAG, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
-import { BOX_EFFECTS, CHAR_IDS, POWERS, UPGRADES, WEAPONS, PJ } from '../game/defs';
+import { BOX_COOLDOWN_MS, FLAG, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
+import { BOX_EFFECTS, CHAR_IDS, POWERS, UPGRADES, WEAPONS, PJ_LOOK } from '../game/defs';
+import type { IconKey } from '../game/icons';
 import { inBush, PROP_INFO, type GameMap, type Prop } from '../game/map';
 import type { RenderSource, RP } from '../game/client';
 import type { Fxq } from '../game/vis';
 import { PROJ_LOOK } from '../game/vis';
 import { TEACHERS } from '@/features/cards/teachers';
 import { CHUNK, Ground } from './ground';
-import { INK, boxSprite, charSprites, gemSprite, gemTier, propSprite, weaponSprite, type Sprite } from './sprites';
+import { INK, boxSprite, charSprites, gemSprite, gemTier, iconSprite, propSprite, weaponSprite, type Sprite } from './sprites';
 import { sfx } from './audio';
 
 interface Particle { x: number; y: number; vx: number; vy: number; life: number; max: number; size: number; color: string; kind: number; rot: number; vr: number; g: number; drag: number; text?: string }
-interface Popup { x: number; y: number; text: string; color: string; size: number; born: number; life: number; idx: number; dy: number }
+interface Popup { x: number; y: number; text: string; color: string; size: number; born: number; life: number; idx: number; dy: number; ic?: IconKey }
 interface Anim { lx: number; ly: number; phase: number; speed: number; face: number; faceT: number; seen: number }
 
 const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6;
@@ -23,7 +24,7 @@ const QUAL = [
 ];
 const STATUS_TEXT: Record<string, [string, string]> = {
   stun: ['¡Aturdido!', '#ffd60a'], root: ['¡Detención!', '#ff9f0a'], confuse: ['¿Confundido?', '#64d2ff'], charm: ['♥ Encantado', '#ff7ab6'],
-  blind: ['¡Flash!', '#ffffff'], marked: ['Marcado', '#ff453a'], slow: ['Lento', '#bf5af2'],
+  blind: ['¡Flash!', '#ffffff'], hacked: ['¡Hackeado!', '#30ff7a'], slow: ['Lento', '#bf5af2'],
 };
 
 export type CamMode = 'follow' | 'auto' | 'map';
@@ -48,6 +49,7 @@ export class Renderer {
   private arcs: { x1: number; y1: number; x2: number; y2: number; born: number }[] = [];
   private cones: { idx: number; aim: number; r: number; kind: number; born: number; x: number; y: number }[] = [];
   private waves: { x: number; y: number; r: number; kind: number; born: number }[] = [];
+  private says: { idx: number; text: string; born: number }[] = [];
   private tags = new Map<string, Sprite>();
   private ft: number[] = [];
   private qualAt = 0;
@@ -128,6 +130,7 @@ export class Renderer {
     const vx1 = this.cam.x + this.w / 2 / z + 40, vy1 = this.cam.y + this.h / 2 / z + 40;
     const S = this.S;
     this.drawGround(vx0, vy0, vx1, vy1, S);
+    for (const bu of src.map.burrows) if (bu.x > vx0 - 90 && bu.x < vx1 + 90 && bu.y > vy0 - 70 && bu.y < vy1 + 70) this.drawPortal(bu.x, bu.y, bu.id, now);
 
     const vis = src.vis;
     // zones + telegraphs
@@ -154,7 +157,7 @@ export class Renderer {
     }
 
     // y-sorted: tall props, bushes, boxes, players
-    type D = { y: number; k: 0 | 1 | 2; p?: Prop; b?: { x: number; y: number; born: number; id: number }; r?: RP };
+    type D = { y: number; k: 0 | 1 | 2; p?: Prop; b?: { x: number; y: number; born: number; id: number; readyAt: number }; r?: RP };
     const list: D[] = [];
     for (const p of this.tall) {
       if (p.x < vx0 - 80 || p.x > vx1 + 80 || p.y < vy0 - 20 || p.y > vy1 + 180) continue;
@@ -207,9 +210,15 @@ export class Renderer {
       if (k <= 0) continue;
       const p = byIdx.get(c.idx);
       const x = p ? p.x : c.x, y = p ? p.y - 30 : c.y;
-      const half = c.kind ? 0.7 : 0.62;
+      const half = CONE_HALF[c.kind] ?? 0.7;
       g.beginPath(); g.moveTo(x, y); g.arc(x, y, c.r * (1.1 - k * 0.1), c.aim - half, c.aim + half); g.closePath();
       if (c.kind === 0) g.fillStyle = `rgba(255,255,255,${0.75 * k})`;
+      else if (c.kind === 2) {
+        g.fillStyle = `rgba(79,179,154,${0.35 * k})`; g.fill();
+        // sound rings
+        for (let i = 1; i <= 3; i++) { g.beginPath(); g.arc(x, y, c.r * (i / 3) * (1.15 - k * 0.15), c.aim - half, c.aim + half); g.lineWidth = 5 * k; g.strokeStyle = `rgba(255,255,255,${0.8 * k})`; g.stroke(); }
+        continue;
+      } else if (c.kind === 3) g.fillStyle = `rgba(255,140,60,${0.5 * k})`;
       else { const gr = g.createLinearGradient(x - c.r, y, x + c.r, y); gr.addColorStop(0, `rgba(58,91,199,${0.5 * k})`); gr.addColorStop(0.5, `rgba(255,255,255,${0.5 * k})`); gr.addColorStop(1, `rgba(226,61,79,${0.5 * k})`); g.fillStyle = gr; }
       g.fill();
     }
@@ -218,7 +227,7 @@ export class Renderer {
       const k = Math.max(0.01, (now - wv.born) / 450);
       if (k > 1) continue;
       g.beginPath(); g.ellipse(wv.x, wv.y - 20, wv.r * k, wv.r * k * 0.65, 0, 0, 7);
-      const col = wv.kind === 0 ? '255,122,182' : wv.kind === 1 ? '255,69,58' : '255,255,255';
+      const col = wv.kind === 0 ? '255,122,182' : wv.kind === 1 ? '255,69,58' : wv.kind === 3 ? '48,255,122' : '255,255,255';
       g.lineWidth = 10 * (1 - k) + 2; g.strokeStyle = `rgba(${col},${1 - k})`; g.stroke();
       g.fillStyle = `rgba(${col},${0.15 * (1 - k)})`; g.fill();
     }
@@ -264,7 +273,7 @@ export class Renderer {
       tx = WORLD_W / 2; ty = WORLD_H / 2;
       tz = Math.min(this.w / WORLD_W, this.h / WORLD_H) * 1.02;
     } else {
-      const live = players.filter((p) => p.flags & FLAG.alive && !(p.flags & FLAG.away) && !p.decoy);
+      const live = players.filter((p) => p.flags & FLAG.alive && !(p.flags & FLAG.away));
       if (live.length) {
         // focus on the busiest area: the player with most neighbours
         let best = live[0], bn = -1;
@@ -314,10 +323,29 @@ export class Renderer {
     this.g.drawImage(sp.c, p.x - sp.ax, p.y - sp.ay, sp.w, sp.h);
   }
 
-  private drawBox(b: { x: number; y: number; born: number; id: number }, now: number, S: number) {
+  private drawBox(b: { x: number; y: number; born: number; id: number; readyAt: number }, now: number, S: number) {
     const g = this.g;
-    const age = (now - b.born) / 1000;
-    const pop = age < 0.4 ? easeBack(age / 0.4) : 1;
+    const waiting = b.readyAt > now;
+    if (waiting) {
+      // Opened: grey and still, with a ring that fills up until it is back.
+      g.fillStyle = 'rgba(16,60,20,0.22)';
+      g.beginPath(); g.ellipse(b.x, b.y + 2, 24, 8, 0, 0, 7); g.fill();
+      const sp = boxSprite(S, true);
+      g.globalAlpha = 0.85;
+      g.drawImage(sp.c, b.x - sp.ax, b.y - 6 - sp.ay, sp.w, sp.h);
+      g.globalAlpha = 1;
+      const k = 1 - (b.readyAt - now) / BOX_COOLDOWN_MS;
+      const cy = b.y - 92;
+      g.beginPath(); g.arc(b.x, cy, 13, 0, 7); g.fillStyle = 'rgba(20,26,63,0.75)'; g.fill();
+      g.beginPath(); g.arc(b.x, cy, 13, -Math.PI / 2, -Math.PI / 2 + k * Math.PI * 2);
+      g.lineWidth = 4.5; g.strokeStyle = '#ffd23f'; g.lineCap = 'round'; g.stroke();
+      g.fillStyle = '#fff'; g.font = '900 12px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText(String(Math.ceil((b.readyAt - now) / 1000)), b.x, cy + 0.5);
+      return;
+    }
+    // Ready again: a small pop when it comes back.
+    const since = b.readyAt ? (now - b.readyAt) / 1000 : (now - b.born) / 1000;
+    const pop = since < 0.4 ? easeBack(Math.max(0, since) / 0.4) : 1;
     const bob = Math.sin(now / 300 + b.id) * 4;
     g.fillStyle = 'rgba(16,60,20,0.25)';
     g.beginPath(); g.ellipse(b.x, b.y + 2, 26 - bob * 0.6, 9, 0, 0, 7); g.fill();
@@ -326,6 +354,35 @@ export class Renderer {
     g.drawImage(sp.c, -sp.ax, -sp.ay, sp.w, sp.h);
     g.restore();
     if (Math.random() < 0.04) this.emit(b.x + (Math.random() - 0.5) * 50, b.y - 40 - Math.random() * 30, 0, -20, 0.8, 5, '#ffe066', P_STAR);
+  }
+
+  /** Animated swirl in a portal's opening (the mound itself is part of the ground layer). */
+  private drawPortal(x: number, y: number, id: number, now: number) {
+    const g = this.g;
+    const t = now / 1000 + id * 0.7;
+    g.save();
+    g.translate(x, y + 14);
+    g.beginPath(); g.ellipse(0, 0, 40, 24, 0, 0, 7);
+    const gr = g.createRadialGradient(0, 0, 2, 0, 0, 40);
+    gr.addColorStop(0, '#ffffff'); gr.addColorStop(0.25, '#c9a6ff'); gr.addColorStop(0.65, '#7b3cff'); gr.addColorStop(1, '#2a0f6b');
+    g.fillStyle = gr; g.fill();
+    g.lineWidth = 4; g.strokeStyle = '#1b1240'; g.stroke();
+    g.clip();
+    g.scale(1, 0.6);
+    g.lineCap = 'round';
+    for (let i = 0; i < 3; i++) {
+      g.beginPath();
+      const a0 = t * 2.4 + (i * Math.PI * 2) / 3;
+      for (let k = 0; k <= 20; k++) {
+        const a = a0 + k * 0.28, r = 6 + k * 1.75;
+        const px = Math.cos(a) * r, py = Math.sin(a) * r;
+        if (k) g.lineTo(px, py); else g.moveTo(px, py);
+      }
+      g.lineWidth = 4; g.strokeStyle = i === 1 ? 'rgba(100,210,255,0.85)' : 'rgba(255,255,255,0.7)'; g.stroke();
+    }
+    g.restore();
+    // a sparkle drifting up now and then
+    if (Math.random() < 0.05) this.emit(x + (Math.random() - 0.5) * 60, y + 10, 0, -40, 0.9, 5, Math.random() < 0.5 ? '#c9a6ff' : '#64d2ff', P_STAR);
   }
 
   private drawGem(gm: { x: number; y: number; v: number; born: number; fx: number; fy: number; id: number; take?: { idx: number; at: number } }, byIdx: Map<number, RP>, now: number, S: number) {
@@ -397,12 +454,12 @@ export class Renderer {
     g.strokeStyle = look.color; g.globalAlpha = 0.35; g.lineWidth = look.r * 1.4; g.lineCap = 'round';
     g.beginPath(); g.moveTo(0, 0); g.lineTo(-Math.cos(a) * 26, -Math.sin(a) * 26); g.stroke();
     g.globalAlpha = 1;
-    if (kind === PJ.book || kind === PJ.clipboard) {
-      g.rotate(age / 60);
-      const w = kind === PJ.book ? 22 : 20, h = kind === PJ.book ? 26 : 28;
-      g.fillStyle = look.color; g.fillRect(-w / 2, -h / 2, w, h);
-      g.lineWidth = 3; g.strokeStyle = INK; g.strokeRect(-w / 2, -h / 2, w, h);
-      g.fillStyle = kind === PJ.book ? '#f5c518' : '#ffffff'; g.fillRect(-w / 2 + 4, -h / 2 + 4, w - 8, kind === PJ.book ? 4 : h - 10);
+    const pl = PJ_LOOK[kind];
+    if (pl) {
+      if (pl.spin) g.rotate((age / 1000) * pl.spin);
+      else if (vx < 0) g.scale(-1, 1); // cats run facing where they go
+      const sp = iconSprite(pl.ic, pl.size, this.S);
+      g.drawImage(sp.c, -sp.ax, -sp.ay, sp.w, sp.h);
     } else if (kind === 2) {
       g.beginPath(); g.arc(0, 0, look.r, 0, 7); g.fillStyle = 'rgba(160,230,255,0.55)'; g.fill(); g.lineWidth = 2.5; g.strokeStyle = '#2f8fd6'; g.stroke();
       g.fillStyle = '#fff'; g.beginPath(); g.arc(-3, -3, 2.5, 0, 7); g.fill();
@@ -439,11 +496,11 @@ export class Renderer {
     const ps = src.vis.ps.get(p.idx);
     const alive = !!(p.flags & FLAG.alive);
     let alpha = 1;
-    if (p.flags & FLAG.invis) alpha = p.me ? 0.4 : (p.flags & FLAG.marked ? 0.3 : 0);
+    if (p.flags & FLAG.invis) alpha = p.me ? 0.4 : 0;
     else if (!p.me && this.map && inBush(this.map, p.x, p.y) && !(me && Math.hypot(me.x - p.x, me.y - p.y) < 120)) alpha = 0.4;
     if (p.flags & FLAG.away) alpha *= 0.35;
     if (alpha <= 0.01) return;
-    let scale = p.flags & FLAG.small ? 0.66 : 1;
+    let scale = 1;
     let lift = 0, spin = 0;
     // spawn pop
     if (ps && now - ps.spawnAt < 520) scale *= easeBack((now - ps.spawnAt) / 520);
@@ -453,9 +510,6 @@ export class Renderer {
       if (k > 1) return;
       spin = k * 10; scale *= 1 - k * 0.8; alpha *= 1 - k; lift = Math.sin(k * Math.PI) * 50;
     }
-    // leap arc
-    if (ps?.leap && now - ps.leap.at < 560) lift += Math.sin(((now - ps.leap.at) / 560) * Math.PI) * 110;
-    else if (p.flags & FLAG.air) lift += 40;
     if (p.flags & FLAG.invuln && alive && Math.floor(now / 90) % 2) alpha *= 0.55;
 
     const bob = moving ? Math.abs(Math.sin(a.phase)) * 5 : Math.sin(now / 450 + p.idx) * 1.2;
@@ -527,14 +581,8 @@ export class Renderer {
       g.beginPath(); g.arc(p.x, p.y - 36 * scale, 50 * scale, 0, 7);
       g.fillStyle = 'rgba(160,220,255,0.18)'; g.fill(); g.lineWidth = 3.5; g.strokeStyle = `rgba(200,240,255,${0.7 + Math.sin(t * 8) * 0.25})`; g.stroke();
     }
-    if (p.flags & FLAG.reflect) {
-      g.beginPath(); g.arc(p.x, p.y - 36 * scale, 46 * scale, t * 4, t * 4 + 4.5);
-      g.lineWidth = 5; g.strokeStyle = 'rgba(255,255,255,0.85)'; g.stroke();
-    }
-    if (p.flags & FLAG.zen) {
-      g.beginPath(); g.ellipse(p.x, p.y - 4, 44, 16, 0, 0, 7); g.fillStyle = `rgba(255,214,10,${0.25 + Math.sin(t * 5) * 0.1})`; g.fill();
-    }
-    if (p.flags & FLAG.speed || p.flags & FLAG.power) {
+    if (p.flags & FLAG.hacked && Math.random() < 0.3) this.emit(p.x + (Math.random() - 0.5) * 44, p.y - 20 - Math.random() * 60, 0, -50, 0.5, 11, '#30ff7a', P_TEXT, Math.random() < 0.5 ? '0' : '1');
+    if (p.flags & FLAG.speed) {
       if (moving && Math.random() < 0.5) this.emit(p.x - Math.cos(p.aim) * 10, p.y - 4, -Math.cos(p.aim) * 40, -10, 0.35, 6, 'rgba(255,255,255,0.7)', P_DUST);
     } else if (moving && Math.random() < 0.08 && this.quality > 0) this.emit(p.x, p.y, 0, -8, 0.4, 4, 'rgba(220,240,200,0.6)', P_DUST);
     if (p.flags & FLAG.regen && Math.random() < 0.08) this.emit(p.x + (Math.random() - 0.5) * 30, p.y - 30 - Math.random() * 30, 0, -30, 0.9, 12, '#30d158', P_TEXT, '+');
@@ -568,10 +616,9 @@ export class Renderer {
     const g = this.g;
     const alive = !!(p.flags & FLAG.alive);
     if (!alive) return;
-    if (p.flags & FLAG.invis && !p.me && !(p.flags & FLAG.marked)) return;
+    if (p.flags & FLAG.invis && !p.me) return;
     if (!p.me && this.map && inBush(this.map, p.x, p.y)) return;
-    const small = p.flags & FLAG.small ? 0.66 : 1;
-    const h = (TEACHERS[p.look]?.look.height ?? 1) * small;
+    const h = TEACHERS[p.look]?.look.height ?? 1;
     const tag = this.nameTag((p.name || '?').toUpperCase(), S, p.me ? '#ffffff' : p.bot ? '#e6f4ea' : '#ffffff');
     g.drawImage(tag.c, p.x - tag.ax, p.y + 8, tag.w, tag.h);
     const top = p.y - 92 * h - 8;
@@ -587,21 +634,43 @@ export class Renderer {
     }
     // status icons
     const t = now / 1000;
-    const hy = p.y - 70 * h;
     if (p.flags & FLAG.stun) for (let i = 0; i < 3; i++) { const an = t * 5 + (i / 3) * Math.PI * 2; this.star(p.x + Math.cos(an) * 22, top - 10 + Math.sin(an) * 7, 6, '#ffd60a'); }
     if (p.flags & FLAG.confuse) this.label(p.x, top - 14 + Math.sin(t * 6) * 3, '?', '#64d2ff', 22);
-    if (p.flags & FLAG.charm) this.label(p.x + Math.sin(t * 4) * 10, top - 14, '♥', '#ff7ab6', 20);
+    if (p.flags & FLAG.charm) this.icon('heart', p.x + Math.sin(t * 4) * 10, top - 14, 20);
     if (p.flags & FLAG.root) {
       g.beginPath(); g.ellipse(p.x, p.y, 30, 11, 0, 0, 7); g.lineWidth = 5; g.strokeStyle = '#ff9f0a'; g.setLineDash([8, 6]); g.stroke(); g.setLineDash([]);
       this.label(p.x, top - 14, 'DETENCIÓN', '#ff9f0a', 11);
     }
-    if (p.flags & FLAG.marked) {
-      g.lineWidth = 2.5; g.strokeStyle = 'rgba(255,69,58,0.75)';
-      g.beginPath(); g.arc(p.x, hy, 18 + Math.sin(t * 6) * 2, 0, 7); g.stroke();
-      g.beginPath(); g.moveTo(p.x - 26, hy); g.lineTo(p.x - 12, hy); g.moveTo(p.x + 12, hy); g.lineTo(p.x + 26, hy); g.moveTo(p.x, hy - 26); g.lineTo(p.x, hy - 12); g.moveTo(p.x, hy + 12); g.lineTo(p.x, hy + 26); g.stroke();
-    }
-    if (p.flags & FLAG.quiz) this.label(p.x, top - 14 + Math.sin(t * 3) * 2, p.flags & FLAG.combat ? '📖 ⚔' : '📖', '#fff', 18);
+    if (p.flags & FLAG.hacked) this.label(p.x, top - 14, 'HACKEADO', '#30ff7a', 11);
+    if (p.flags & FLAG.quiz) {
+      const by = top - 16 + Math.sin(t * 3) * 2;
+      this.icon('book', p.x - (p.flags & FLAG.combat ? 12 : 0), by, 24);
+      if (p.flags & FLAG.combat) this.icon('swords', p.x + 14, by, 22);
+    } else if (p.flags & FLAG.tired) this.icon('batteryLow', p.x, top - 16 + Math.sin(t * 2.5) * 3, 26);
+    const say = this.says.find((x) => x.idx === p.idx);
+    if (say) this.speech(p.x, top - 34, say.text, (now - say.born) / 1700);
     if (p.flags & FLAG.magnet && Math.random() < 0.1) this.emit(p.x + (Math.random() - 0.5) * 300, p.y + (Math.random() - 0.5) * 200, 0, 0, 0.5, 3, 'rgba(255,90,90,0.5)', P_DUST);
+  }
+
+  private icon(k: IconKey, x: number, y: number, size: number) {
+    const sp = iconSprite(k, size, this.S);
+    this.g.drawImage(sp.c, x - sp.ax, y - sp.ay, sp.w, sp.h);
+  }
+
+  /** Comic speech bubble (Sander's greeting); k = 0…1 of its life. */
+  private speech(x: number, y: number, text: string, k: number) {
+    if (k >= 1) { this.says = this.says.filter((s) => (performance.now() - s.born) / 1700 < 1); return; }
+    const g = this.g;
+    const sc = k < 0.12 ? easeBack(k / 0.12) : 1;
+    g.save(); g.translate(x, y); g.scale(sc, sc);
+    g.globalAlpha = k > 0.85 ? (1 - k) / 0.15 : 1;
+    g.font = '900 17px Inter, system-ui, sans-serif';
+    const w = g.measureText(text).width + 24, h = 34;
+    roundRect(g, -w / 2, -h, w, h, 14);
+    g.moveTo(-8, 0); g.lineTo(0, 12); g.lineTo(8, 0);
+    g.fillStyle = '#ffffff'; g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke();
+    g.fillStyle = '#1b2350'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, 0, -h / 2);
+    g.restore();
   }
 
   private label(x: number, y: number, text: string, color: string, size: number) {
@@ -667,8 +736,8 @@ export class Renderer {
     g.globalAlpha = 1;
   }
 
-  popup(idx: number, x: number, y: number, text: string, color: string, size = 20, life = 1100) {
-    this.pops.push({ idx, x, y, text, color, size, born: performance.now(), life, dy: 0 });
+  popup(idx: number, x: number, y: number, text: string, color: string, size = 20, life = 1100, ic?: IconKey) {
+    this.pops.push({ idx, x, y, text, color, size, born: performance.now(), life, dy: 0, ic });
     if (this.pops.length > 40) this.pops.shift();
   }
 
@@ -684,8 +753,13 @@ export class Renderer {
       g.save(); g.translate(x, y); g.scale(sc, sc);
       g.font = `900 ${p.size}px Inter, system-ui, sans-serif`;
       g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
-      g.lineWidth = 5; g.strokeStyle = 'rgba(15,25,20,0.92)'; g.strokeText(p.text, 0, 0);
-      g.fillStyle = p.color; g.fillText(p.text, 0, 0);
+      const tx = p.ic ? -(p.size * 0.62) : 0;
+      g.lineWidth = 5; g.strokeStyle = 'rgba(15,25,20,0.92)'; g.strokeText(p.text, tx, 0);
+      g.fillStyle = p.color; g.fillText(p.text, tx, 0);
+      if (p.ic) {
+        const sp = iconSprite(p.ic, Math.round(p.size * 1.15), this.S);
+        g.drawImage(sp.c, tx + g.measureText(p.text).width / 2 + 4, -sp.ay, sp.w, sp.h);
+      }
       g.restore();
     }
     g.globalAlpha = 1;
@@ -725,6 +799,11 @@ export class Renderer {
         }
         case 'box': {
           this.burst(f.x, f.y - 30, 22, ['#ffd23f', '#8f6bff', '#ff5ce1', '#30d158', '#64d2ff'], P_CONF, 320, 1.0, 10, 380);
+          if (f.dia > 0) {
+            this.burst(f.x, f.y - 40, Math.min(12, 4 + Math.round(f.dia / 6)), ['#2fd3e8', '#c9f7ff', '#ffffff'], P_SHARD, 260, 0.7, 7, 260);
+            this.popup(f.idx, 0, 0, `+${f.dia}`, '#7ef0ff', me && f.idx === me.idx ? 24 : 17, 1300, 'gem');
+            if (me && f.idx === me.idx) sfx.gem(Math.min(10, Math.round(f.dia / 5)));
+          }
           this.ring(f.x, f.y, 90, '#ffd23f', 0.45);
           const eff = BOX_EFFECTS[f.eff];
           if (me && f.idx === me.idx) { if (eff?.id === 'trap') { sfx.trap(); this.shake(0.5); } else sfx.box(); }
@@ -732,7 +811,6 @@ export class Renderer {
             const v = near(f.x, f.y); if (v) sfx.box();
             if (eff) this.popup(-1, f.x, f.y - 70, eff.title, eff.color, 15, 1300);
           }
-          if (eff?.id === 'jackpot') { const p = byIdx.get(f.idx); if (p) this.popup(f.idx, 0, 0, `+${f.param} 💎`, '#ffe066', 22, 1300); }
           break;
         }
         case 'gem': {
@@ -754,15 +832,21 @@ export class Renderer {
         case 'ans': {
           const p = byIdx.get(f.idx);
           if (p && f.gain > 0) {
-            this.popup(f.idx, 0, 0, `+${f.gain} 💎`, '#7ef0ff', p.me ? 22 : 17, 1200);
-            if (Math.random() < 0.6) this.burst(p.x, p.y - 60, 5, ['#2fd3e8', '#ffffff'], P_SHARD, 120, 0.5, 5);
+            this.popup(f.idx, 0, 0, `+${f.gain}`, '#ffe14d', p.me ? 22 : 17, 1200, 'bolt');
+            if (Math.random() < 0.6) this.burst(p.x, p.y - 60, 5, ['#ffe14d', '#ffffff'], P_SPARK, 120, 0.5, 5);
           }
           break;
         }
-        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, `⬆ ${UPGRADES[f.up]?.icon ?? ''}`, '#ffd60a', 18, 1000); if (p.me) sfx.buy(); } break; }
+        case 'tired': {
+          const p = byIdx.get(f.idx);
+          if (p) this.popup(f.idx, 0, 0, '¡Sin energía!', '#ff9f0a', p.me ? 22 : 15, 1500);
+          if (p?.me) this.shake(0.25);
+          break;
+        }
+        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, 'Mejora', '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
         case 'tp': {
           const p = byIdx.get(f.idx);
-          const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#f29a4a' : 'rgba(255,255,255,0.85)';
+          const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
           if (f.kind === 'fix' || f.kind === 'hold') break;
           if (f.kind !== 'spawn') this.burst(f.fx, f.fy - 20, 12, col, P_DUST, 160, 0.5, 12);
           this.burst(f.x, f.y - 20, 12, col, f.kind === 'swap' || f.kind === 'rewind' ? P_STAR : P_DUST, 180, 0.5, 10);
@@ -782,9 +866,10 @@ export class Renderer {
           if (!p) break;
           const pw = POWERS[CHAR_IDS[f.ci]];
           this.burst(p.x, p.y - 40, 12, [pw?.color ?? '#fff', '#ffffff'], P_STAR, 220, 0.6, 8);
-          this.popup(f.idx, 0, 0, `${pw?.icon ?? ''} ${pw?.name ?? ''}`, '#ffffff', 15, 1100);
+          if (CHAR_IDS[f.ci] !== 'sander') this.popup(f.idx, 0, 0, pw?.name ?? '', '#ffffff', 15, 1100, pw?.ic);
+          if (CHAR_IDS[f.ci] === 'sander') { this.says.push({ idx: f.idx, text: 'Hello, my dears!', born: performance.now() }); this.shake(p.me ? 0.3 : 0); }
           const v = p.me ? 1 : near(p.x, p.y);
-          if (v) { if (CHAR_IDS[f.ci] === 'freddy') sfx.whistle(); else if (CHAR_IDS[f.ci] === 'norvey') sfx.laser(); else sfx.power(f.ci); }
+          if (v && !sfx.special(CHAR_IDS[f.ci])) sfx.power(f.ci);
           break;
         }
         case 'wave': this.waves.push({ x: f.x, y: f.y, r: f.r, kind: f.kind, born: performance.now() }); if (f.kind === 0) this.burst(f.x, f.y - 40, 10, '#ff7ab6', P_TEXT, 160, 0.9, 18); break;
@@ -792,11 +877,11 @@ export class Renderer {
           const p = byIdx.get(f.idx);
           this.cones.push({ idx: f.idx, aim: f.aim, r: f.r, kind: f.kind, born: performance.now(), x: p?.x ?? 0, y: p?.y ?? 0 });
           if (p && f.kind === 1) this.popup(-1, p.x + Math.cos(f.aim) * 120, p.y - 60 + Math.sin(f.aim) * 80, 'Oh là là!', '#ffffff', 22, 900);
+          if (p && f.kind === 3) this.burst(p.x + Math.cos(f.aim) * 70, p.y - 40 + Math.sin(f.aim) * 50, 8, ['#ffd23f', '#ffffff', '#ff8c3c'], P_TEXT, 200, 0.9, 18);
           break;
         }
         case 'laser': this.lasers.push({ ...f, born: performance.now() }); this.burst(f.x2, f.y2, 8, '#ff3b30', P_SPARK, 200, 0.4, 6); break;
         case 'grenade': this.arcs.push({ ...f, born: performance.now() }); break;
-        case 'decoy': this.burst(f.x, f.y - 30, 16, ['rgba(80,80,90,0.8)', 'rgba(140,140,160,0.7)'], P_DUST, 160, 0.7, 16); break;
         case 'shoot': {
           const p = byIdx.get(f.idx);
           if (!p) break;
@@ -849,17 +934,17 @@ export class Renderer {
       for (const p of map.paths) { bg.beginPath(); p.pts.forEach(([x, y], i) => (i ? bg.lineTo(x * sx, y * sy) : bg.moveTo(x * sx, y * sy))); bg.lineWidth = Math.max(2, p.w * sx); bg.strokeStyle = '#e3bb82'; bg.lineCap = 'round'; bg.stroke(); }
       for (const pd of map.ponds) { bg.beginPath(); bg.ellipse(pd.x * sx, pd.y * sy, pd.rx * sx, pd.ry * sy, 0, 0, 7); bg.fillStyle = '#3db3e8'; bg.fill(); }
       for (const p of map.props) if (p.k === 'tree' || p.k === 'pine') { bg.beginPath(); bg.arc(p.x * sx, p.y * sy, Math.max(1.5, 30 * sx), 0, 7); bg.fillStyle = '#2b7a32'; bg.fill(); }
-      for (const bu of map.burrows) { bg.beginPath(); bg.arc(bu.x * sx, bu.y * sy, Math.max(3, 40 * sx), 0, 7); bg.fillStyle = '#f29a4a'; bg.fill(); }
+      for (const bu of map.burrows) { bg.beginPath(); bg.arc(bu.x * sx, bu.y * sy, Math.max(3, 40 * sx), 0, 7); bg.fillStyle = '#9a5cff'; bg.fill(); bg.lineWidth = 1.5; bg.strokeStyle = '#ffffff'; bg.stroke(); }
       bg.strokeStyle = '#1d2a1f'; bg.lineWidth = 3; bg.strokeRect(0, 0, W, H);
       this.miniBg = b;
     }
     g.drawImage(this.miniBg, 0, 0);
-    g.fillStyle = '#ffd23f';
-    for (const b of src.vis.boxes.values()) { g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
+    const tNow = performance.now();
+    for (const b of src.vis.boxes.values()) { g.fillStyle = b.readyAt > tNow ? 'rgba(200,204,214,0.55)' : '#ffd23f'; g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
     let me: RP | null = null;
     for (const p of src.players()) {
       if (p.me) { me = p; continue; }
-      if (!(p.flags & FLAG.alive) || p.flags & FLAG.invis || p.decoy) continue;
+      if (!(p.flags & FLAG.alive) || p.flags & FLAG.invis) continue;
       g.beginPath(); g.arc(p.x * sx, p.y * sy, 2.6, 0, 7); g.fillStyle = TEACHERS[p.look]?.look.top ?? '#fff'; g.fill();
       g.lineWidth = 1; g.strokeStyle = '#1d2a1f'; g.stroke();
     }
@@ -872,6 +957,8 @@ export class Renderer {
     g.strokeRect((this.cam.x - hw) * sx, (this.cam.y - hh) * sy, hw * 2 * sx, hh * 2 * sy);
   }
 }
+
+const CONE_HALF = [0.62, 0.7, 0.75, 1.1];
 
 function roundRect(g: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   g.beginPath();
