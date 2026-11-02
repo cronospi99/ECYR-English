@@ -1,5 +1,7 @@
 # Class Wars · Modo 2: «Pinta tu equipo» (plan)
 
+> **Estado (nov. 2026):** se implementó como **Color Clash** sobre el motor del modo 1 (vista desde arriba, 2–4 equipos, pintar caminando, con disparos y cajas-bomba), y aparte el modo **Knockback** de plataformas vistas de lado (`game/kb.ts`). La versión de plataformas pintables descrita abajo queda como idea para más adelante.
+
 Plataformas vistas de lado, por equipos. Pisar un bloque lo pinta del color de tu equipo; gana el equipo con más bloques
 pintados al acabar el tiempo. Se basa en el modo del video 2 (barra de marcador dividida, sellos «TEAM …», gotas de pintura),
 con arte y nombre propios.

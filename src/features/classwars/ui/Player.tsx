@@ -14,6 +14,7 @@ import { Podium } from './Podium';
 import { Btn, GameIcon, Loading, Panel, Toon, useSessionKey } from './kit';
 import { t, tx } from '../i18n';
 import { RelayNotice } from './Host';
+import { UnitPicker } from './UnitPicker';
 
 const CODE_RE = /^[A-Z0-9]{4,8}$/;
 const savedChar = () => { try { const v = Number(localStorage.getItem('cw:char')); return Number.isFinite(v) && v >= 0 && v < TEACHERS.length ? v : Math.floor(Math.random() * TEACHERS.length); } catch { return 0; } };
@@ -71,7 +72,7 @@ export function PlayScreen() {
   const [char, setChar] = useState(savedChar);
   const [picking, setPicking] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
-  useSessionKey(client, () => `${client?.phase}|${client?.lobby.map((l) => l.peer + l.char).join(',')}`);
+  useSessionKey(client, () => `${client?.phase}|${client?.perStudent}|${client?.unit?.lv}${client?.unit?.un}|${client?.lobby.map((l) => l.peer + l.char).join(',')}`);
 
   useEffect(() => {
     if (!ready) return;
@@ -125,6 +126,13 @@ export function PlayScreen() {
         <div className="mt-1 flex items-center gap-2 rounded-full px-3 py-1 text-[14px] font-extrabold" style={{ background: pw.color + '55' }}><GameIcon k={pw.ic} size={20} /> {tx(pw.name)}</div>
         <div className="mt-3 flex items-center gap-1.5 rounded-full bg-[#ffd23f] px-4 py-1.5 text-[14px] font-black text-[#2a1d00] shadow-[0_4px_0_#c79a00]"><Pencil size={14} /> {t('Change character', 'Cambiar personaje')}</div>
       </button>
+      {client.perStudent && (
+        <div className="mt-5 w-full max-w-[640px] rounded-[22px] border-2 border-white/10 bg-white/5 p-3">
+          <div className="mb-2 flex items-center gap-2 text-[15px] font-black"><GameIcon k="book" size={20} /> {t('Your questions: level and unit', 'Tus preguntas: nivel y unidad')}</div>
+          {!client.unit && <p className="mb-2 text-[13px] font-semibold text-white/60">{t('If you do not choose, you get the questions your teacher set.', 'Si no eliges, te salen las preguntas que puso el profe.')}</p>}
+          <UnitPicker value={client.unit} onChange={(p) => client.setUnit(p)} />
+        </div>
+      )}
       <div className="mt-6 flex w-full max-w-[640px] items-center gap-2 text-[15px] font-black"><Users size={18} /> {t(`${client.lobby.length} in the room`, `${client.lobby.length} en la sala`)}</div>
       <div className="mt-2 grid w-full max-w-[640px] grid-cols-4 gap-2 sm:grid-cols-6">
         {client.lobby.map((p) => (

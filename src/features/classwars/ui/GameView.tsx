@@ -7,7 +7,7 @@ import { BookOpen, LogOut, Map as MapIcon, Music, Pause, Play, Square, Users, Vo
 import { cn } from '@/lib/cn';
 import { TEACHERS } from '@/features/cards/teachers';
 import type { ClientSession, RenderSource, RP } from '../game/client';
-import { FLAG, RESPAWN_MS } from '../game/constants';
+import { FLAG, TEAM_COLORS, TEAM_NAMES, respawnMs, type Game } from '../game/constants';
 
 /** On-screen messages (box cards, kill feed) never stay longer than this. */
 const MSG_MS = 3500;
@@ -24,7 +24,7 @@ import { QuizOverlay } from './Quiz';
 interface Hud {
   me: RP | null;
   remaining: number;
-  board: { idx: number; name: string; char: number; dia: number; alive: boolean; bot: boolean }[];
+  board: { idx: number; name: string; char: number; dia: number; alive: boolean; bot: boolean; team: number }[];
   feed: { at: number; text: string; color: string }[];
   powerLeft: number;
   bonusLeft: number;
@@ -33,6 +33,7 @@ interface Hud {
   quality: string;
   rank: number;
   total: number;
+  teams: number[];
 }
 interface Announce { id: number; ic: IconKey; title: string; desc: string; color: string }
 
@@ -58,6 +59,8 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
   const annId = useRef(0);
 
   const spectator = !client;
+  const game: Game = client?.game ?? host?.sim?.game ?? 'arena';
+  const kb = game === 'kb', paint = game === 'paint';
 
   // Source + render loop.
   useEffect(() => {
@@ -111,7 +114,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
   const readHud = (src: RenderSource): Hud => {
     const players = src.players();
     const me = players.find((p) => p.me) ?? null;
-    const board = (client ? client.leaderboard() : host!.leaderboard()).map((b) => ({ idx: b.idx, name: b.name, char: b.char, dia: b.dia, alive: b.alive, bot: b.bot }));
+    const board = (client ? client.leaderboard() : host!.leaderboard()).map((b) => ({ idx: b.idx, name: b.name, char: b.char, dia: b.dia, alive: b.alive, bot: b.bot, team: b.team }));
     const now = performance.now();
     return {
       me,
@@ -125,12 +128,18 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       quality: rRef.current?.qualityLabel ?? '',
       rank: me ? board.findIndex((b) => b.idx === me.idx) + 1 : 0,
       total: board.length,
+      teams: src.vis.teamCells,
     };
   };
 
   const onFx = (f: Fxq, me: RP | null) => {
     if (!client || !me) return;
-    if (f.t === 'box' && f.idx === me.idx) {
+    if (f.t === 'box' && f.idx === me.idx && f.out < 0) {
+      const e = BOX_EFFECTS[f.eff];
+      const id = ++annId.current;
+      setAnn({ id, ic: e?.ic ?? 'bomb', title: t('Paint bomb!', '¡Bomba de pintura!'), desc: t(`+${num(f.dia)} cells for your team`, `+${num(f.dia)} casillas para tu equipo`) + (e ? ` · ${tx(e.title)}` : ''), color: TEAM_COLORS[me.team] ?? '#ffd23f' });
+      setTimeout(() => setAnn((a) => (a?.id === id ? null : a)), MSG_MS - 500);
+    } else if (f.t === 'box' && f.idx === me.idx) {
       // Title: the diamond outcome (+500, ×2, −50%); text: the item, if the box had one.
       const o = DIA_OUTCOMES[f.out] ?? DIA_OUTCOMES[0];
       const e = BOX_EFFECTS[f.eff];
@@ -170,7 +179,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
     let mx = 0, my = 0;
     if (k.has('a') || k.has('arrowleft')) mx -= 1;
     if (k.has('d') || k.has('arrowright')) mx += 1;
-    if (k.has('w') || k.has('arrowup')) my -= 1;
+    if (!kb && (k.has('w') || k.has('arrowup'))) my -= 1;
     if (k.has('s') || k.has('arrowdown')) my += 1;
     if (!joy.current.active) { client.input.mx = mx; client.input.my = my; }
   };
@@ -204,7 +213,8 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       }
       if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) { e.preventDefault(); keys.current.add(k); }
       if (e.repeat) return;
-      if (k === 'e' || k === ' ' || k === '2') { e.preventDefault(); client.powerPress(); }
+      if (kb && (k === 'w' || k === 'arrowup' || k === ' ')) { e.preventDefault(); client.jumpPress(); }
+      else if (k === 'e' || k === ' ' || k === '2') { e.preventDefault(); client.powerPress(); }
       else if (k === 'r' || k === '3') client.bonusPress();
       else if (k === '1') client.attackPress();
       else if (k === 'q') { e.preventDefault(); openQuiz('q'); }
@@ -216,7 +226,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
     window.addEventListener('keyup', up);
     window.addEventListener('blur', blur);
     return () => { window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', blur); };
-  }, [client, quiz, openQuiz, closeQuiz]);
+  }, [client, quiz, openQuiz, closeQuiz, kb]);
 
   // Canvas pointer: mouse aims/attacks (right click walks there); touch taps walk there.
   const onPointerDown = (e: React.PointerEvent) => {
@@ -275,7 +285,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
   };
 
   /* ----------------------------------------------------- touch sticks */
-  const joy = useRef({ active: false, id: -1, ox: 0, oy: 0, x: 0, y: 0, aiming: false, aid: -1 });
+  const joy = useRef({ active: false, id: -1, ox: 0, oy: 0, x: 0, y: 0, aiming: false, aid: -1, up: false });
   const [joyVis, setJoyVis] = useState<null | { ox: number; oy: number; x: number; y: number }>(null);
   const joyDown = (e: React.PointerEvent) => {
     e.stopPropagation();
@@ -294,6 +304,12 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
     j.x = j.ox + dx; j.y = j.oy + dy;
     client.input.mx = d > 8 ? dx / R : 0;
     client.input.my = d > 8 ? dy / R : 0;
+    if (kb) {
+      // side view: pushing the stick up jumps once (push again to double jump)
+      const up = dy < -R * 0.6;
+      if (up && !j.up) client.jumpPress();
+      j.up = up;
+    }
     client.input.target = null;
     if (!j.aiming && d > 8 && !client.input.held) client.input.aim = Math.atan2(dy, dx);
     setJoyVis({ ox: j.ox, oy: j.oy, x: j.x, y: j.y });
@@ -353,13 +369,13 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       {client && me && (
         <div className="pointer-events-none absolute top-[max(10px,env(safe-area-inset-top))] left-3 flex flex-col gap-1.5">
           <motion.div key={me.dia} initial={{ scale: 1.18 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 600, damping: 15 }} className="flex w-max items-center gap-2 rounded-2xl border-2 border-white/15 bg-[#141a3f]/85 py-1.5 pr-4 pl-2.5 shadow-lg">
-            <Diamond size={26} />
+            {paint ? <GameIcon k="brush" size={26} /> : <Diamond size={26} />}
             <span className="text-[24px] leading-none font-black tabular-nums">{me.dia}</span>
             {goal ? <span className="text-[13px] font-bold text-white/55">/ {goal}</span> : null}
           </motion.div>
           <Energy value={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} />
-          <Bar value={me.hp} max={me.maxHp} color="#34d058" />
-          <Bar value={me.sh} max={100} color="#2f8cff" />
+          {kb ? <Pct value={me.pct} /> : <><Bar value={me.hp} max={me.maxHp} color="#34d058" /><Bar value={me.sh} max={100} color="#2f8cff" /></>}
+          {paint && me.team >= 0 && <div className="w-max rounded-full px-3 py-0.5 text-[13px] font-black text-white shadow" style={{ background: TEAM_COLORS[me.team] }}>{t('Team', 'Equipo')} {tx(TEAM_NAMES[me.team])}</div>}
         </div>
       )}
 
@@ -381,6 +397,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         <div className={cn('rounded-2xl border-2 border-white/15 bg-[#141a3f]/85 px-4 py-1 text-center shadow-lg', lowTime && 'cw-pulse border-[#ff4d5e]')}>
           <div className={cn('text-[22px] leading-tight font-black tabular-nums sm:text-[26px]', lowTime && 'text-[#ff8a95]')}>{fmtTime(remaining)}</div>
         </div>
+        {paint && hud && hud.teams.length > 0 && <TeamBar cells={hud.teams} wide={spectator} />}
         {spectator && code && <div className="rounded-full bg-[#ffd23f] px-3 py-0.5 text-[13px] font-black text-[#2a1d00]">{t('Code', 'Código')}: {code}</div>}
         {client && hud && hud.rank > 0 && <div className="rounded-full bg-black/35 px-2.5 py-0.5 text-[12px] font-extrabold text-white/90">#{hud.rank} {t('of', 'de')} {hud.total}</div>}
       </div>
@@ -406,9 +423,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             {hud.board.slice(0, spectator ? 8 : 5).map((b, i) => (
               <div key={b.idx} className={cn('flex items-center gap-2 px-2.5 py-1 text-[13.5px] font-extrabold', me && b.idx === me.idx && 'bg-[#ffd23f]/25', !b.alive && 'opacity-50')}>
                 <span className={cn('w-5 text-center', i === 0 ? 'text-[#ffd23f]' : i === 1 ? 'text-[#d8e1ea]' : i === 2 ? 'text-[#e8a066]' : 'text-white/55')}>{i + 1}</span>
-                <span className="h-3 w-3 shrink-0 rounded-full border border-black/40" style={{ background: TEACHERS[b.char]?.look.top }} />
+                <span className="h-3 w-3 shrink-0 rounded-full border border-black/40" style={{ background: b.team >= 0 ? TEAM_COLORS[b.team] : TEACHERS[b.char]?.look.top }} />
                 <span className="min-w-0 flex-1 truncate">{b.name}</span>
-                <span className="flex items-center gap-1 tabular-nums">{b.dia}<Diamond size={13} /></span>
+                <span className="flex items-center gap-1 tabular-nums">{b.dia}{paint ? <GameIcon k="brush" size={13} /> : <Diamond size={13} />}</span>
               </div>
             ))}
           </div>
@@ -491,12 +508,15 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             const useB = !!borrowed && hud.powerLeft > 0;
             const sp = useB ? borrowed! : pw;
             return (
-              <div className="absolute right-5 bottom-[max(26px,env(safe-area-inset-bottom))] flex flex-col items-center gap-2">
-                <div className="pointer-events-none flex items-center gap-1 rounded-full bg-[#141a3f]/80 px-2 py-0.5 text-[12px] font-black"><GameIcon k={weapon.ic} size={18} />{me.ammo === INF ? '∞' : me.ammo}</div>
-                <TouchBtn onDown={powerTap(useB)} color={sp.color} cd={useB ? hud.bonusLeft / 1000 : hud.powerLeft / 1000} cdMax={useB ? 1.2 : pw.cd} size={84}>
-                  <GameIcon k={sp.ic} size={46} />
-                  {useB && <span className="absolute -right-1 -bottom-1 rounded-full bg-black/70 px-1.5 text-[12px] font-black">×{me.charges}</span>}
-                </TouchBtn>
+              <div className={cn('absolute right-5 bottom-[max(26px,env(safe-area-inset-bottom))] flex items-end gap-3', kb ? 'flex-row' : 'flex-col items-center')}>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="pointer-events-none flex items-center gap-1 rounded-full bg-[#141a3f]/80 px-2 py-0.5 text-[12px] font-black"><GameIcon k={weapon.ic} size={18} />{me.ammo === INF ? '∞' : me.ammo}</div>
+                  <TouchBtn onDown={powerTap(useB)} color={sp.color} cd={useB ? hud.bonusLeft / 1000 : hud.powerLeft / 1000} cdMax={useB ? 1.2 : pw.cd} size={kb ? 70 : 84}>
+                    <GameIcon k={sp.ic} size={kb ? 38 : 46} />
+                    {useB && <span className="absolute -right-1 -bottom-1 rounded-full bg-black/70 px-1.5 text-[12px] font-black">×{me.charges}</span>}
+                  </TouchBtn>
+                </div>
+                {kb && <TouchBtn onDown={(e) => { e.stopPropagation(); unlockAudio(); client.jumpPress(); }} color="#30d158" cd={0} cdMax={1} size={88}><GameIcon k="arrowUp" size={48} /></TouchBtn>}
               </div>
             );
           })()}
@@ -508,9 +528,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         <div className="pointer-events-none absolute inset-0 z-30 grid place-items-center bg-[#0e1230]/40">
           <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-[24px] border-[3px] border-[#ff4d5e] bg-[#252b5e] px-8 py-6 text-center shadow-2xl">
             <div className="cw-title text-[44px] text-[#ff8a95]">K.O.!</div>
-            <div className="text-[16px] font-bold text-white/85">{ko.killer ? t(`${ko.killer} knocked you out`, `Te noqueó ${ko.killer}`) : t('You are out', 'Quedaste fuera de combate')}</div>
-            {ko.lost > 0 && <div className="mt-1 flex items-center justify-center gap-1 text-[16px] font-extrabold text-[#7ef0ff]">−{ko.lost} <Diamond size={18} /> {t('(grab them back!)', '(¡recupéralos!)')}</div>}
-            <Respawn at={ko.at} />
+            <div className="text-[16px] font-bold text-white/85">{kb ? (ko.killer ? t(`${ko.killer} launched you off the stage`, `${ko.killer} te sacó del escenario`) : t('You fell off the stage', 'Te caíste del escenario')) : ko.killer ? t(`${ko.killer} knocked you out`, `Te noqueó ${ko.killer}`) : t('You are out', 'Quedaste fuera de combate')}</div>
+            {ko.lost > 0 && <div className="mt-1 flex items-center justify-center gap-1 text-[16px] font-extrabold text-[#7ef0ff]">−{ko.lost} <Diamond size={18} /> {!kb && t('(grab them back!)', '(¡recupéralos!)')}</div>}
+            <Respawn at={ko.at} ms={respawnMs(game)} />
           </motion.div>
         </div>
       )}
@@ -542,7 +562,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       )}
       {client && me && hud && !mobile && !quiz && (
         <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
-          {t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
+          {kb ? t('A/D move · W or Space jump (twice in the air) · S drop down · aim with the mouse · click to shoot', 'A/D moverse · W o Espacio saltar (dos veces en el aire) · S bajar · apunta con el mouse · clic disparar') : t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{kb ? t('E power · Q questions · B upgrades · knock rivals off the stage!', 'E poder · Q preguntas · B mejoras · ¡saca a los rivales del escenario!') : paint ? t('E power · Q questions · paint the lawn with your team colour!', 'E poder · Q preguntas · ¡pinta el pasto del color de tu equipo!') : t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
         </div>
       )}
     </div>
@@ -602,10 +622,10 @@ function TouchBtn({ children, onDown, color, cd, cdMax, size }: { children: Reac
   );
 }
 
-function Respawn({ at }: { at: number }) {
+function Respawn({ at, ms }: { at: number; ms: number }) {
   const [, f] = useState(0);
   useEffect(() => { const t = setInterval(() => f((n) => n + 1), 200); return () => clearInterval(t); }, []);
-  const left = Math.max(0, RESPAWN_MS - (performance.now() - at));
+  const left = Math.max(0, ms - (performance.now() - at));
   return <div className="mt-3 text-[15px] font-bold text-white/70">{t('Back in', 'Reapareces en')} {Math.ceil(left / 1000)}…</div>;
 }
 
@@ -629,3 +649,30 @@ function Countdown({ startAt }: { startAt: number }) {
   );
 }
 
+
+/** Knockback: your damage %, white → yellow → red. */
+function Pct({ value }: { value: number }) {
+  const k = Math.max(0, Math.min(1, value / 150));
+  return (
+    <motion.div key={Math.floor(value / 10)} initial={{ scale: 1.15 }} animate={{ scale: 1 }} className="flex w-max items-baseline gap-1.5 rounded-xl bg-[#141a3f]/85 px-3 py-1 shadow">
+      <span className="text-[12px] font-extrabold text-white/60 uppercase">{t('Damage', 'Daño')}</span>
+      <span className="text-[26px] leading-none font-black tabular-nums" style={{ color: `rgb(255,${Math.round(255 - k * 170)},${Math.round(255 - Math.min(1, k * 2) * 215)})` }}>{value}%</span>
+    </motion.div>
+  );
+}
+
+/** Color Clash: share of the lawn painted by each team. */
+function TeamBar({ cells, wide }: { cells: number[]; wide: boolean }) {
+  const total = Math.max(1, cells.reduce((a, b) => a + b, 0));
+  return (
+    <div className={cn('overflow-hidden rounded-full border-2 border-white/30 bg-black/40 shadow-lg', wide ? 'w-[min(60vw,520px)]' : 'w-[min(56vw,300px)]')}>
+      <div className="flex h-6">
+        {cells.map((c, i) => (
+          <div key={i} className="flex items-center justify-center text-[12px] font-black text-white transition-[width] duration-300" style={{ width: `${(c / total) * 100}%`, background: TEAM_COLORS[i], textShadow: '0 1px 2px rgba(0,0,0,.5)' }}>
+            {c / total > 0.12 ? `${Math.round((c / total) * 100)}%` : ''}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

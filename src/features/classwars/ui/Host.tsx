@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import qrcode from 'qrcode-generator';
 import { ArrowLeft, Bot, Clock, Gamepad2, ListChecks, Play, Trophy, Users, X, Pencil, Eye, Swords, Zap } from 'lucide-react';
-import { ENERGY_RANGE, START_ENERGY } from '../game/constants';
+import { BOT_LEVELS, ENERGY_RANGE, START_ENERGY, TEAM_COLORS, type Game } from '../game/constants';
 import { num, t } from '../i18n';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
@@ -13,15 +13,23 @@ import { cn } from '@/lib/cn';
 import { TEACHERS } from '@/features/cards/teachers';
 import { HostSession } from '../game/host';
 import { ClientSession } from '../game/client';
-import { LEVELS, curriculumQuestions, listSets, loadBank, shuffleOptions, type Level, type QSet } from '../game/questions';
+import { LEVELS, curriculumQuestions, listSets, loadBank, shuffleOptions, type Level, type Pick as QPick, type QSet } from '../game/questions';
 import { POWERS } from '../game/defs';
 import { CharacterPicker } from './CharacterPicker';
 import { GameView } from './GameView';
 import { Podium } from './Podium';
 import { Btn, GameIcon, Loading, Panel, Toon, useSessionKey } from './kit';
+import type { IconKey } from '../game/icons';
+
+type Mode = 'classic' | 'race' | 'paint' | 'kb';
+const MODE_GAME: Record<Mode, Game> = { classic: 'arena', race: 'arena', paint: 'paint', kb: 'kb' };
+export const BOT_LEVEL_NAMES: [string, string][] = [['Easy', 'Fácil'], ['Normal', 'Normal'], ['Hard', 'Difícil']];
 
 interface Setup {
-  mode: 'classic' | 'race';
+  mode: Mode;
+  teams: number;
+  botLevel: number;
+  perStudent: boolean;
   minutes: number;
   energy: number;
   goal: number;
@@ -35,7 +43,7 @@ interface Setup {
   bots: number;
 }
 
-const DEFAULT: Setup = { mode: 'classic', minutes: 8, energy: START_ENERGY, goal: 1000, source: 'curriculum', level: 'A2', units: [], setId: '', maxPlayers: 40, teacherPlays: false, teacherChar: 0, bots: 0 };
+const DEFAULT: Setup = { mode: 'classic', teams: 2, botLevel: 0, perStudent: true, minutes: 8, energy: START_ENERGY, goal: 1000, source: 'curriculum', level: 'A2', units: [], setId: '', maxPlayers: 40, teacherPlays: false, teacherChar: 0, bots: 0 };
 
 export function HostApp() {
   const profile = useAuth((s) => s.profile);
@@ -54,7 +62,11 @@ export function HostApp() {
   if (profile?.role !== 'teacher') return <TeachersOnly />;
   if (!host || !cfg) return <SetupScreen onCreate={async (s, questions, label) => {
     const code = makeCode();
-    const h = new HostSession({ code, matchId: crypto.randomUUID?.() ?? makeId() + makeId(), durationMin: s.minutes, startEnergy: s.energy, goal: s.mode === 'race' ? s.goal : 0, maxPlayers: s.maxPlayers, questions, source: label, bots: s.bots, demo: false, hostName: profile.full_name ?? 'Profe' });
+    const h = new HostSession({
+      code, matchId: crypto.randomUUID?.() ?? makeId() + makeId(), durationMin: s.minutes, startEnergy: s.energy, goal: s.mode === 'race' ? s.goal : 0, maxPlayers: s.maxPlayers,
+      questions, source: label, bots: s.bots, demo: false, hostName: profile.full_name ?? 'Profe',
+      game: MODE_GAME[s.mode], teams: s.teams, botLevel: s.botLevel, perStudent: s.source === 'curriculum' && s.perStudent,
+    });
     setHost(h);
     setCfg(s);
     if (import.meta.env.DEV) (window as unknown as { __cwHost: unknown }).__cwHost = h;
@@ -98,6 +110,10 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
     try {
       const v: Setup = { ...DEFAULT, ...JSON.parse(localStorage.getItem('cw:setup') || '{}') };
       if (![500, 1000, 2000, 3000].includes(v.goal)) v.goal = DEFAULT.goal;
+      if (!(v.mode in MODE_GAME)) v.mode = 'classic';
+      v.teams = Math.min(4, Math.max(2, Number(v.teams) || 2));
+      v.botLevel = Math.min(2, Math.max(0, Number(v.botLevel) || 0));
+      v.bots = Math.min(30, Math.max(0, Number(v.bots) || 0));
       v.minutes = Math.min(30, Math.max(2, Number(v.minutes) || DEFAULT.minutes));
       v.energy = Math.min(ENERGY_RANGE.max, Math.max(ENERGY_RANGE.min, Number(v.energy) || START_ENERGY));
       return v;
@@ -150,17 +166,24 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
           <Panel className="p-4">
             <H icon={<Trophy size={18} />}>{t('Mode', 'Modo')}</H>
             <div className="grid grid-cols-2 gap-2">
-              <Choice on={s.mode === 'classic'} onClick={() => up({ mode: 'classic' })} title={t('Classic', 'Clásico')} sub={t('Most diamonds at the end wins', 'Gana quien tenga más diamantes al final')} />
-              <Choice on={s.mode === 'race'} onClick={() => up({ mode: 'race' })} title={t('Race', 'Carrera')} sub={t('First to reach the goal', 'Primero en llegar a la meta')} />
+              <Choice on={s.mode === 'classic'} onClick={() => up({ mode: 'classic' })} ic="gem" title={t('Classic', 'Clásico')} sub={t('Most diamonds at the end wins', 'Gana quien tenga más diamantes al final')} />
+              <Choice on={s.mode === 'race'} onClick={() => up({ mode: 'race' })} ic="flag" title={t('Race', 'Carrera')} sub={t('First to reach the goal', 'Primero en llegar a la meta')} />
+              <Choice on={s.mode === 'paint'} onClick={() => up({ mode: 'paint' })} ic="splat" title="Color Clash" sub={t('Teams paint the lawn: most colour wins', 'Equipos pintan el pasto: gana el que más pinte')} />
+              <Choice on={s.mode === 'kb'} onClick={() => up({ mode: 'kb' })} ic="launch" title="Knockback" sub={t('Platforms: knock rivals off the stage', 'Plataformas: saca a los rivales del escenario')} />
             </div>
+            {s.mode === 'paint' && (
+              <div className="mt-3 flex flex-wrap items-center gap-2"><span className="text-[13px] font-bold text-white/60">{t('Teams', 'Equipos')}</span>{[2, 3, 4].map((n) => (
+                <Pill key={n} on={s.teams === n} onClick={() => up({ teams: n })}><span className="inline-flex items-center gap-1">{TEAM_COLORS.slice(0, n).map((c) => <span key={c} className="h-3 w-3 rounded-full" style={{ background: c }} />)}</span></Pill>
+              ))}</div>
+            )}
             {s.mode === 'race' && (
               <div className="mt-3 flex flex-wrap gap-2">{[500, 1000, 2000, 3000].map((g) => <Pill key={g} on={s.goal === g} onClick={() => up({ goal: g })}><span className="inline-flex items-center gap-1">{g} <GameIcon k="gem" size={15} /></span></Pill>)}</div>
             )}
             <Slider icon={<Clock size={18} />} label={t('Duration', 'Duración')} value={s.minutes} min={2} max={30} fmt={(v) => `${v} min`} onChange={(minutes) => up({ minutes })} />
             <Slider icon={<Zap size={18} />} label={t('Starting energy', 'Energía inicial')} value={s.energy} {...ENERGY_RANGE} fmt={num} onChange={(energy) => up({ energy })} hint={t('Every correct answer gives 1,200 energy.', 'Cada respuesta correcta da 1.200 de energía.')} />
             <Slider icon={<Users size={18} />} label={t('Max players', 'Máximo de jugadores')} value={s.maxPlayers} min={4} max={60} fmt={String} onChange={(maxPlayers) => up({ maxPlayers })} />
-            <H icon={<Bot size={18} />} className="mt-4">{t('Filler bots', 'Bots de relleno')}</H>
-            <div className="flex flex-wrap gap-2">{[0, 3, 6, 10].map((b) => <Pill key={b} on={s.bots === b} onClick={() => up({ bots: b })}>{b === 0 ? t('None', 'Ninguno') : b}</Pill>)}</div>
+            <Slider icon={<Bot size={18} />} label={t('Bots', 'Bots')} value={s.bots} min={0} max={30} fmt={(v) => (v ? String(v) : t('None', 'Ninguno'))} onChange={(bots) => up({ bots })} />
+            {s.bots > 0 && <div className="mt-2 flex flex-wrap gap-2">{BOT_LEVELS.map((_, i) => <Pill key={i} on={s.botLevel === i} onClick={() => up({ botLevel: i })}>{t(...BOT_LEVEL_NAMES[i])}</Pill>)}</div>}
             <label className="mt-4 flex cursor-pointer items-center gap-3 rounded-2xl bg-white/5 p-3">
               <input type="checkbox" checked={s.teacherPlays} onChange={(e) => up({ teacherPlays: e.target.checked })} className="h-5 w-5 accent-[#30d158]" />
               <div className="flex-1"><div className="font-extrabold">{t('I play too', 'Yo también juego')}</div><div className="text-[12.5px] font-semibold text-white/60">{t('The projector shows your character (you can switch to the overview).', 'El proyector muestra tu personaje (puedes cambiar a vista general).')}</div></div>
@@ -176,6 +199,10 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
             {s.source === 'curriculum' ? (
               <>
                 <div className="mt-3 flex flex-wrap gap-2">{LEVELS.map((l) => <Pill key={l} on={s.level === l} onClick={() => up({ level: l, units: [] })}>{l}</Pill>)}</div>
+                <label className="mt-3 flex cursor-pointer items-center gap-3 rounded-2xl bg-white/5 p-3">
+                  <input type="checkbox" checked={s.perStudent} onChange={(e) => up({ perStudent: e.target.checked })} className="h-5 w-5 accent-[#30d158]" />
+                  <div className="flex-1"><div className="font-extrabold">{t('Each student chooses level and unit', 'Cada estudiante elige nivel y unidad')}</div><div className="text-[12.5px] font-semibold text-white/60">{t('They only get questions from that unit. You can change anyone’s from the lobby. Below: the questions for those who do not choose.', 'Solo le salen preguntas de esa unidad. Puedes cambiar la de cualquiera desde la sala. Abajo: las preguntas de quien no elija.')}</div></div>
+                </label>
                 <div className="mt-3 text-[13px] font-bold text-white/60">{t('Units (empty = whole level)', 'Unidades (vacío = todo el nivel)')}</div>
                 <div className="cw-scroll mt-1 flex max-h-[190px] flex-wrap gap-1.5 overflow-y-auto">
                   {units.map(([n, title]) => {
@@ -220,10 +247,10 @@ export function RelayNotice() {
 function H({ children, icon, className }: { children: React.ReactNode; icon: React.ReactNode; className?: string }) {
   return <div className={cn('mb-2 flex items-center gap-2 text-[15px] font-black tracking-wide text-white/90 uppercase', className)}>{icon}{children}</div>;
 }
-function Choice({ on, onClick, title, sub }: { on: boolean; onClick: () => void; title: string; sub: string }) {
+function Choice({ on, onClick, title, sub, ic }: { on: boolean; onClick: () => void; title: string; sub: string; ic?: IconKey }) {
   return (
     <button type="button" onClick={onClick} className={cn('rounded-2xl border-[3px] p-3 text-left transition-colors', on ? 'border-[#ffd23f] bg-[#ffd23f]/15' : 'border-white/10 bg-white/5 hover:border-white/25')}>
-      <div className="text-[16px] font-black">{title}</div>
+      <div className="flex items-center gap-1.5 text-[16px] font-black">{ic && <GameIcon k={ic} size={20} />}{title}</div>
       <div className="text-[12.5px] font-semibold text-white/65">{sub}</div>
     </button>
   );
@@ -246,7 +273,7 @@ function Pill({ on, onClick, children }: { on: boolean; onClick: () => void; chi
 
 /* ---------------------------------------------------------------- lobby+ */
 function HostLive({ host, me, cfg, onRematch, onExit }: { host: HostSession; me: ClientSession | null; cfg: Setup; onRematch: () => void; onExit: () => void }) {
-  useSessionKey(host, () => `${host.phase}|${host.saved}|${[...host.lobby.values()].map((p) => p.peer + p.char).join(',')}`);
+  useSessionKey(host, () => `${host.phase}|${host.saved}|${[...host.lobby.values()].map((p) => p.peer + p.char + (p.pick ? p.pick.lv + p.pick.un : '')).join(',')}`);
   useSessionKey(me, () => `${me?.phase}`);
   const nav = useNavigate();
   const [view, setView] = useState<'play' | 'watch'>('play');
@@ -301,8 +328,9 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
         <div className="flex flex-wrap justify-center gap-2 text-[13px] font-bold">
           <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="clock" size={16} /> {cfg.minutes} min</span>
           <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="bolt" size={16} /> {num(cfg.energy)} {t('energy', 'de energía')}</span>
-          <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1">{cfg.mode === 'race' ? <><GameIcon k="flag" size={16} /> {t('Goal', 'Meta')} {cfg.goal} <GameIcon k="gem" size={15} /></> : <><GameIcon k="trophy" size={16} /> {t('Most diamonds wins', 'Más diamantes gana')}</>}</span>
-          {host.cfg.bots > 0 && <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="robot" size={16} /> {host.cfg.bots} bots</span>}
+          <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1">{cfg.mode === 'race' ? <><GameIcon k="flag" size={16} /> {t('Goal', 'Meta')} {cfg.goal} <GameIcon k="gem" size={15} /></> : cfg.mode === 'paint' ? <><GameIcon k="splat" size={16} /> Color Clash · {cfg.teams} {t('teams', 'equipos')}</> : cfg.mode === 'kb' ? <><GameIcon k="launch" size={16} /> Knockback</> : <><GameIcon k="trophy" size={16} /> {t('Most diamonds wins', 'Más diamantes gana')}</>}</span>
+          {host.cfg.bots > 0 && <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="robot" size={16} /> {host.cfg.bots} bots · {t(...BOT_LEVEL_NAMES[host.cfg.botLevel ?? 0])}</span>}
+          {host.cfg.perStudent && <span className="flex items-center gap-1.5 rounded-full bg-black/25 px-3 py-1"><GameIcon k="book" size={16} /> {t('Each student picks a unit', 'Cada estudiante elige unidad')}</span>}
         </div>
       </div>
       <div className="flex min-h-0 flex-1 flex-col p-4 lg:p-8">
@@ -320,6 +348,7 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
                 <div className="cw-bob" style={{ animationDelay: `${(p.char % 5) * 0.2}s` }}><Toon ci={p.char} size={86} /></div>
                 <div className="mt-1 w-full truncate px-2 text-center text-[14px] font-black">{p.name}</div>
                 <div className="truncate px-2 text-[11px] font-bold text-white/55 flex items-center justify-center gap-1"><GameIcon k={POWERS[TEACHERS[p.char].id].ic} size={14} /> {TEACHERS[p.char].name}</div>
+                {host.cfg.perStudent && <PickEdit pick={p.pick} onChange={(pk) => host.setPick(p.peer, pk)} />}
               </motion.div>
             ))}
           </AnimatePresence>
@@ -332,6 +361,28 @@ function Lobby({ host, url, cfg, onExit }: { host: HostSession; url: string; cfg
         </div>
         <div className="mt-3 flex items-center gap-2 text-[13px] font-semibold text-white/55"><GameIcon k="bolt" size={16} /> {t('Walking and shooting cost energy; every correct answer recharges 1,200 · diamonds come from mystery boxes (they come back after 10 s) · knocking out a rival steals diamonds.', 'Caminar y disparar gastan energía; cada respuesta correcta recarga 1.200 · los diamantes salen de las cajas sorpresa (se reactivan a los 10 s) · noquear a un rival le roba diamantes.')}</div>
       </div>
+    </div>
+  );
+}
+
+/** Lobby card: a student's level + unit, editable by the teacher. */
+function PickEdit({ pick, onChange }: { pick: QPick | null; onChange: (p: QPick) => void }) {
+  const [units, setUnits] = useState<[number, string][]>([]);
+  const lv = pick?.lv ?? null;
+  useEffect(() => { if (lv) void loadBank(lv).then((b) => setUnits(b.units)); }, [lv]);
+  const sel = 'h-7 rounded-lg bg-black/30 px-1 text-[11.5px] font-extrabold text-white outline-none';
+  return (
+    <div className="mt-1 flex w-full items-center justify-center gap-1 px-1.5">
+      <select aria-label={t('Level', 'Nivel')} className={sel} value={lv ?? ''} onChange={(e) => onChange({ lv: e.target.value as Level, un: 0 })}>
+        {!lv && <option value="">{t('Teacher', 'Profe')}</option>}
+        {LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
+      </select>
+      {lv && (
+        <select aria-label={t('Unit', 'Unidad')} className={cn(sel, 'min-w-0 flex-1')} value={pick?.un ?? 0} onChange={(e) => onChange({ lv, un: Number(e.target.value) })}>
+          <option value={0}>{t('All', 'Todo')}</option>
+          {units.map(([n, title]) => <option key={n} value={n}>{n}. {title}</option>)}
+        </select>
+      )}
     </div>
   );
 }

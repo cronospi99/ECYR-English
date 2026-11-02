@@ -3,6 +3,38 @@
 export const WORLD_W = 3200;
 export const WORLD_H = 2400;
 
+/** Game modes: the lawn arena (classic / race), team paint and the side-view knockback stage. */
+export type Game = 'arena' | 'paint' | 'kb';
+export const GAMES: readonly Game[] = ['arena', 'paint', 'kb'];
+
+/* Color Clash (paint): the lawn is split into cells that take the colour of whoever walks or
+   splashes on them. */
+export const PAINT_CELL = 40;
+export const PAINT_R = 46; // brush around your feet
+export const SPLAT_R = 74; // where a shot lands
+export const TEAM_COLORS = ['#ff4f7b', '#2f8cff', '#ffc21a', '#2fd17a'] as const;
+export const TEAM_DARK = ['#b81f4c', '#1557c0', '#b88400', '#14894c'] as const;
+export const TEAM_NAMES: readonly (readonly [string, string])[] = [['Pink', 'Rosado'], ['Blue', 'Azul'], ['Yellow', 'Amarillo'], ['Green', 'Verde']];
+
+/* Knockback: side view with gravity. Hits raise your damage %; the higher it is, the farther you
+   fly. Leave the stage (fall or get launched off a side) and you are out. */
+export const KB_W = 3000;
+export const KB_H = 1700;
+export const GRAVITY = 2300;
+export const JUMP_V = 860;
+export const KB_SPEED = 300;
+export const KB_HW = 16; // body half width
+export const KB_HH = 58; // body height (feet at y)
+/** Out of the stage beyond these margins. */
+export const KB_OUT = { x: 520, top: 1000, bottom: 300 } as const;
+
+/** Bot difficulty presets (the teacher picks one per match). */
+export const BOT_LEVELS = [
+  { id: 'easy', aggro: 0.12, range: 300, aimErr: 0.75, acc: [0.45, 0.65], dmg: 0.55, fire: 0.45, speed: 0.78, power: 0.006 },
+  { id: 'normal', aggro: 0.35, range: 400, aimErr: 0.42, acc: [0.55, 0.8], dmg: 0.8, fire: 0.75, speed: 0.9, power: 0.015 },
+  { id: 'hard', aggro: 0.65, range: 460, aimErr: 0.2, acc: [0.65, 0.92], dmg: 1, fire: 1, speed: 1, power: 0.03 },
+] as const;
+
 /** Host simulation rate (fixed step) and snapshot cadence. */
 export const TICK_HZ = 30;
 export const TICK_MS = 1000 / TICK_HZ;
@@ -19,6 +51,8 @@ export const MAX_SHIELD = 100;
 export const SHIELD_REGEN_DELAY = 5000;
 export const SHIELD_REGEN = 12; // per second
 export const RESPAWN_MS = 3500;
+export const KB_RESPAWN_MS = 2200;
+export const respawnMs = (g: Game) => (g === 'kb' ? KB_RESPAWN_MS : RESPAWN_MS);
 export const SPAWN_INVULN_MS = 2500;
 /** Damage taken or dealt within this window keeps you vulnerable while answering. */
 export const COMBAT_LOCK_MS = 3000;

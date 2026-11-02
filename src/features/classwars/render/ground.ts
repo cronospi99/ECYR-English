@@ -5,7 +5,7 @@ import { EDGE, type GameMap } from '../game/map';
 import { INK, PROP_SHADOW } from './sprites';
 
 export const CHUNK = 256;
-const STRIPE = 96;
+const STRIPE = 120;
 const G1 = '#4fcd4c', G2 = '#45c043';
 
 export class Ground {
@@ -57,6 +57,17 @@ export class Ground {
     }
     // grass flecks
     const R = rng((x0 * 73856093) ^ (y0 * 19349663) ^ m.seed);
+    // soft watercolour mottling (light and dark washes) on a world lattice, so chunks join seamlessly
+    const L = 170;
+    for (let ly = Math.floor((y0 - 140) / L); ly <= Math.floor((y1 + 140) / L); ly++)
+      for (let lx = Math.floor((x0 - 140) / L); lx <= Math.floor((x1 + 140) / L); lx++) {
+        const B = rng((lx * 92821) ^ (ly * 68917) ^ m.seed);
+        const x = (lx + B()) * L, y = (ly + B()) * L, r = 50 + B() * 90;
+        const c = B() < 0.5 ? '255,255,220' : '20,90,30';
+        const wash = g.createRadialGradient(x, y, 0, x, y, r);
+        wash.addColorStop(0, `rgba(${c},0.07)`); wash.addColorStop(1, `rgba(${c},0)`);
+        g.fillStyle = wash; g.fillRect(x - r, y - r, r * 2, r * 2);
+      }
     g.strokeStyle = 'rgba(30,110,40,0.28)';
     g.lineWidth = 2;
     g.lineCap = 'round';

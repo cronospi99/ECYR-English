@@ -1,7 +1,7 @@
 /* Class Wars — the lawn arena. Generated from a seed so every device builds the same map
    (only the seed travels over the network), plus collision helpers shared by the host
    simulation and the clients' movement prediction. */
-import { PLAYER_R, WORLD_H, WORLD_W, rng } from './constants';
+import { KB_H, KB_W, PAINT_CELL, PLAYER_R, WORLD_H, WORLD_W, rng, type Game } from './constants';
 
 export type PropKind =
   | 'tree' | 'pine' | 'bush' | 'pot' | 'rock' | 'crate' | 'barrel' | 'bench' | 'fenceH' | 'fenceV'
@@ -14,8 +14,14 @@ export interface Pond { x: number; y: number; rx: number; ry: number; wob: numbe
 export interface Path { pts: [number, number][]; w: number }
 export interface Burrow { id: number; x: number; y: number }
 
+/** Knockback platform: solid blocks stop you from every side; thin ones (`thin`) only from above. */
+export interface Plat { x: number; y: number; w: number; h: number; thin: boolean; v: number }
+
 export interface GameMap {
   seed: number;
+  kind: Game;
+  /** Knockback stage platforms (empty on the lawn). */
+  plats: Plat[];
   w: number;
   h: number;
   props: Prop[]; // drawn, y-sorted when tall
@@ -65,11 +71,12 @@ export function distToPath(p: Path, x: number, y: number) {
   return d;
 }
 
-export function generateMap(seed: number, portals = 7): GameMap {
+export function generateMap(seed: number, portals = 7, kind: Game = 'arena'): GameMap {
+  if (kind === 'kb') return generateStage(seed);
   const R = rng(seed);
   const W = WORLD_W, H = WORLD_H;
   const rr = (a: number, b: number) => a + R() * (b - a);
-  const map: GameMap = { seed, w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
+  const map: GameMap = { seed, kind, plats: [], w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
 
   // Portals (spawn + teleport tunnels): corners, sides and the centre plaza; bigger matches get
   // more of them, between those, so nobody is far from one.
@@ -198,6 +205,11 @@ export function generateMap(seed: number, portals = 7): GameMap {
   }
   for (const pd of map.ponds) map.colliders.push({ t: 'e', x: pd.x, y: pd.y, r: 0, hw: pd.rx * 0.94, hh: pd.ry * 0.92, tall: false });
 
+  indexColliders(map);
+  return map;
+}
+
+function indexColliders(map: GameMap) {
   map.colliders.forEach((c2, i) => {
     const ex = c2.t === 'c' ? c2.r : c2.hw, ey = c2.t === 'c' ? c2.r : c2.hh;
     for (let cx = Math.floor((c2.x - ex - PLAYER_R) / CELL); cx <= Math.floor((c2.x + ex + PLAYER_R) / CELL); cx++)
@@ -207,7 +219,58 @@ export function generateMap(seed: number, portals = 7): GameMap {
         if (arr) arr.push(i); else map.grid.set(k, [i]);
       }
   });
+}
+
+/* ------------------------------------------------------------ knockback */
+/** The floating-islands stage: a big main island, two side islands and thin ledges above, with a
+    few seeded variations. Spawn points (in `burrows`) sit above the ledges. */
+function generateStage(seed: number): GameMap {
+  const R = rng(seed);
+  const rr = (a: number, b: number) => a + R() * (b - a);
+  const W = KB_W, H = KB_H;
+  const map: GameMap = { seed, kind: 'kb', plats: [], w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
+  const solid = (cx: number, top: number, w: number, h: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: Math.round(h), thin: false, v });
+  const ledge = (cx: number, top: number, w: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: 26, thin: true, v });
+  const layout = Math.floor(R() * 3);
+  const mid = W / 2;
+  // main island
+  solid(mid, 1180, layout === 1 ? 1400 : 1560, 210);
+  // side islands
+  const side = layout === 2 ? 760 : 900;
+  solid(mid - side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
+  solid(mid + side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
+  // ledges
+  ledge(mid - 420, 900 + rr(-20, 20), rr(300, 360), 0);
+  ledge(mid + 420, 900 + rr(-20, 20), rr(300, 360), 0);
+  ledge(mid, 660 + rr(-25, 25), rr(360, 440), 1);
+  ledge(mid - 860, 720 + rr(-30, 30), rr(240, 300), 2);
+  ledge(mid + 860, 720 + rr(-30, 30), rr(240, 300), 2);
+  if (layout !== 1) { ledge(mid - 420, 440 + rr(-20, 20), 240, 3); ledge(mid + 420, 440 + rr(-20, 20), 240, 3); }
+  else ledge(mid, 420, 300, 3);
+  if (layout === 1) { solid(mid - 600, 1260, 220, 120, 1); solid(mid + 600, 1260, 220, 120, 1); }
+  // spawn points above the ledges
+  map.plats.forEach((p, i) => map.burrows.push({ id: i, x: p.x + p.w / 2, y: p.y - 140 }));
+  // solid blocks also block projectiles (thin ledges do not)
+  for (const p of map.plats) if (!p.thin) map.colliders.push({ t: 'r', x: p.x + p.w / 2, y: p.y + p.h / 2, r: 0, hw: p.w / 2, hh: p.h / 2, tall: true });
+  indexColliders(map);
   return map;
+}
+
+/* --------------------------------------------------------------- paint */
+export const paintCols = (map: GameMap) => Math.ceil(map.w / PAINT_CELL);
+export const paintRows = (map: GameMap) => Math.ceil(map.h / PAINT_CELL);
+/** 1 = this lawn cell can be painted (not under a prop, a pond or the hedge). */
+export function paintMask(map: GameMap): Uint8Array {
+  const cols = paintCols(map), rows = paintRows(map);
+  const m = new Uint8Array(cols * rows);
+  for (let cy = 0; cy < rows; cy++)
+    for (let cx = 0; cx < cols; cx++) {
+      const x = (cx + 0.5) * PAINT_CELL, y = (cy + 0.5) * PAINT_CELL;
+      if (x < EDGE || y < EDGE || x > map.w - EDGE || y > map.h - EDGE) continue;
+      const [rx, ry] = resolve(map, x, y, 6);
+      if (Math.abs(rx - x) + Math.abs(ry - y) < 1) m[cy * cols + cx] = 1;
+    }
+  return m;
 }
 
 function near(map: GameMap, x: number, y: number): number[] {
@@ -257,6 +320,7 @@ export function resolve(map: GameMap, x: number, y: number, r = PLAYER_R): [numb
     }
     if (!moved) break;
   }
+  if (map.kind === 'kb') return [x, y];
   const m = EDGE + r;
   x = x < m ? m : x > WORLD_W - m ? WORLD_W - m : x;
   y = y < m ? m : y > WORLD_H - m ? WORLD_H - m : y;
@@ -273,7 +337,8 @@ export function moveCircle(map: GameMap, x: number, y: number, dx: number, dy: n
 
 /** Does a projectile at (x, y) hit something tall (or leave the arena)? */
 export function hitsWall(map: GameMap, x: number, y: number, r = 4): boolean {
-  if (x < EDGE || y < EDGE || x > WORLD_W - EDGE || y > WORLD_H - EDGE) return true;
+  if (map.kind === 'kb') { if (x < -400 || x > map.w + 400 || y < -600 || y > map.h + 200) return true; }
+  else if (x < EDGE || y < EDGE || x > WORLD_W - EDGE || y > WORLD_H - EDGE) return true;
   for (const i of near(map, x, y)) {
     const c = map.colliders[i];
     if (!c.tall) continue;
