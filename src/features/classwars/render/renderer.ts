@@ -3,7 +3,6 @@
 import { BOX_COOLDOWN_MS, FLAG, PED_MS, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
 import { PaintLayer, Stage, pedestal } from './stage';
-import { CELL_BOX, Toon3D } from './toon3d';
 import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
@@ -80,14 +79,7 @@ export class Renderer {
     const lowEnd = (navigator.hardwareConcurrency || 4) <= 4 && /Android|iPhone|iPad/i.test(navigator.userAgent);
     if (lowEnd) this.quality = 1;
     this.resize();
-    // 3D characters (loaded in the background; 2D characters until then, or if 3D is not possible)
-    const q = typeof location !== 'undefined' ? location.search : '';
-    if (!/[?&]toons=2d/.test(q)) void Toon3D.create(/[?&]toons=3d/.test(q)).then((t) => { if (this.disposed) t?.dispose(); else this.toon = t; });
   }
-  private toon: Toon3D | null = null;
-  private disposed = false;
-  /** Free the 3D context (call when the game view goes away). */
-  dispose() { this.disposed = true; this.toon?.dispose(); this.toon = null; }
 
   setMap(map: GameMap) {
     this.map = map;
@@ -297,8 +289,6 @@ export class Renderer {
     }
 
     this.adapt(performance.now() - t0, dt);
-    this.toon?.flush(performance.now()); // the 3D characters for the next frame
-    if (this.toon?.off) { this.toon.dispose(); this.toon = null; }
   }
 
   /* ------------------------------------------------------------- camera */
@@ -604,18 +594,12 @@ export class Renderer {
     const cs = charSprites(p.look, S);
     const blink = Math.floor((now / 1000 + p.idx * 0.73) % 4.1 * 10) === 0;
     const spr = blink ? cs.blink : cs.base;
-    // 3D model, posed and rendered for this frame (null → the 2D character below)
-    const ppu = Math.round(clamp(56 * this.cam.z * this.dpr * scale, 40, this.quality === 0 ? 90 : 150) / 8) * 8;
-    const t3 = this.toon ? this.toon.get(p.idx, p.look, { alive, air, vy: a.vy, moving, speed: a.speed, hurt: ps ? now - ps.hurtAt < 380 : false, face: a.face }, ppu) : null;
     g.save();
-    g.translate(p.x, p.y - (t3 ? 0 : bob) - lift);
+    g.translate(p.x, p.y - bob - lift);
     if (spin) g.rotate(spin);
-    if (!t3) g.rotate(tilt);
-    g.scale((t3 ? 1 : a.face) * scale / squash, scale * squash);
-    if (t3) {
-      const U = 56; // world px per model unit (CHAR_SCALE × 100)
-      g.drawImage(t3.c, t3.sx, t3.sy, t3.sw, t3.sh, CELL_BOX.x0 * U, -CELL_BOX.y1 * U, (CELL_BOX.x1 - CELL_BOX.x0) * U, (CELL_BOX.y1 - CELL_BOX.y0) * U);
-    } else if (cs.ready) {
+    g.rotate(tilt);
+    g.scale(a.face * scale / squash, scale * squash);
+    if (cs.ready) {
       const hurt = ps ? now - ps.hurtAt : 1e9;
       if (hurt < 140) {
         g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
@@ -1024,8 +1008,6 @@ export class Renderer {
     const now = performance.now();
     if (now - this.qualAt < 2500 || this.ft.length < 90) return;
     const avg = this.ft.reduce((s, x) => s + x, 0) / this.ft.length;
-    // too slow: first drop the 3D characters (the biggest cost), then lower the quality
-    if (avg > 25 && this.toon && !this.toon.force) { this.toon.dispose(); this.toon = null; this.qualAt = now; this.ft = []; return; }
     if (avg > 25 && this.quality > 0) { this.quality--; this.qualAt = now; this.ft = []; this.resize(); }
     else if (avg < 14 && ms < 6 && this.quality < this.maxQuality && now - this.qualAt > 12000) { this.quality++; this.qualAt = now; this.ft = []; this.resize(); }
   }

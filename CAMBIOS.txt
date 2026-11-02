@@ -336,19 +336,26 @@ G1g. CLASS WARS: KNOCKBACK NOCTURNO
   a "Responder preguntas", aviso de "Poca energía" y sin minimapa. La ayuda
   de teclas se oculta a los 30 s (en todos los modos).
 
-G1h. CLASS WARS: PERSONAJES 3D ANIMADOS (.glb)
-- Cada profe tiene ahora un modelo 3D propio (public/classwars/toons/*.glb),
-  hecho a partir de sus rasgos de la carta (piel, pelo, ropa, gafas, barba,
-  accesorios, estatura y contextura), con animaciones de reposo (respira y
-  parpadea), caminar, saltar, caer y recibir un golpe. Se ven en tres cuartos,
-  con sombreado tipo caricatura y contorno, y giran hacia donde apuntan. Sirve
-  en los tres modos (Clásico, Color Clash y Knockback).
-- La librería 3D se carga solo al empezar una partida. Si el equipo no tiene
-  WebGL o va lento, el juego vuelve solo a los personajes 2D (que ahora
-  también mueven piernas y brazos) para que nunca se trabe. ?toons=2d o
-  ?toons=3d en la dirección fuerzan uno u otro (para pruebas).
-- Para regenerar los modelos tras cambiar un profe:
-  node --experimental-strip-types scripts/build-toons.mts
+G1h. PERSONAJES 3D DE LOS PROFES (librería .glb, galería /toons3d)
+- Librería propia de modelos 3D animados de los 25 profes, guardada para un
+  futuro juego 3D (tipo carrera sin fin): public/toons3d/<id>.glb, hecha a
+  partir de los rasgos de cada carta (piel, pelo, barba, gafas, ropa,
+  accesorios, estatura y contextura). Animaciones: reposo (respira y
+  parpadea), caminar, correr, saltar, caer, deslizarse, golpe y celebrar.
+- Pelo y barbas con forma real: cada peinado tiene su propia línea de
+  nacimiento (flequillo, raya al lado, entradas, nuca), los crespos y el afro
+  están hechos de rizos, el pelo largo cae en mechones (liso, ondulado, con
+  las puntas hacia dentro o en tirabuzones), más cola de caballo, moño,
+  flequillo de lado y cresta; barbas de sombra, corta o completa con bigote y
+  hueco para la boca. El color del pelo va de más oscuro en las puntas a más
+  claro arriba, con brillo.
+- Galería en /toons3d: ver a cada profe o a todos, girar alrededor, probar
+  cada animación y mirarlos de frente, de lado o de espalda.
+- Para usarlos en un juego: src/features/toons3d/runtime.ts (ToonActor:
+  cargar, poner en escena, play('run'), update). Para regenerarlos tras
+  cambiar un profe: node --experimental-strip-types scripts/build-toons.mts
+- Class Wars sigue con los personajes 2D de siempre (ahora mueven piernas y
+  brazos al caminar, saltar y caer); no carga nada de 3D.
 
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en

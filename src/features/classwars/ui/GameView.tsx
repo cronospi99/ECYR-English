@@ -106,7 +106,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       }
     };
     raf = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); r.dispose(); };
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [client, host]);
 

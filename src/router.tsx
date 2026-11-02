@@ -78,5 +78,6 @@ export const router = createBrowserRouter([
   { path: 'classwars/*', element: page(() => import('./features/classwars/ClassWarsApp')), errorElement: <RouteError /> },
   { path: 'impostor/*', element: page(() => import('./features/impostor/ImpostorApp')), errorElement: <RouteError /> },
   { path: 'doodle/*', element: page(() => import('./features/doodle/DoodleApp')), errorElement: <RouteError /> },
+  { path: 'toons3d', element: page(() => import('./features/toons3d/GalleryPage')), errorElement: <RouteError /> },
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);
