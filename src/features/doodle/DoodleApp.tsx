@@ -6,8 +6,8 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import qrcode from 'qrcode-generator';
-import { ArrowLeft, ChevronLeft, ChevronRight, Lightbulb, Pause, Play, SkipForward, Users } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Lightbulb, Pause, Pencil, Play, SkipForward, Users } from 'lucide-react';
+import { JoinQr } from '@/components/ui/JoinQr';
 import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
@@ -240,23 +240,15 @@ function HostScreen({ host, me, onExit }: { host: DoodleHost; me: DoodleClient; 
 
 /** Projector lobby: the code, a QR and everyone who joined. */
 function Projector({ host }: { host: DoodleHost }) {
-  const url = `${location.origin}/doodle/join/${host.code}`;
-  const qr = useMemo(() => {
-    const q = qrcode(0, 'M'); q.addData(url); q.make();
-    const n = q.getModuleCount();
-    let d = '';
-    for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) d += `M${c},${r}h1v1h-1z`;
-    return { d, n };
-  }, [url]);
   const players = [...host.lobby.values()];
   return (
     <div className="flex h-full flex-col items-center overflow-y-auto px-4 pt-6 pb-28 lg:flex-row lg:items-stretch lg:gap-8 lg:px-10">
       <div className="flex flex-col items-center justify-center gap-3 lg:w-[40%]">
         <Mascot pose="party" size={150} />
         <div className="dd-title text-[30px]">Pass the Doodle</div>
-        <div className="text-center text-[17px] font-bold text-white/85">{t('Go to', 'Entra a')} <span className="text-[#ffe36b]">{location.host}/doodle</span> {t('and use the code', 'y usa el código')}</div>
+        <div className="text-center text-[17px] font-bold text-white/85">{t('Scan the QR or go to', 'Escanea el QR o entra a')} <span className="text-[#ffe36b]">{location.host}/doodle</span> {t('and use the code', 'y usa el código')}</div>
         <div className="rounded-[28px] bg-white px-8 py-2 text-[72px] leading-none font-black tracking-[0.12em] text-[#3b2bb5] shadow-[0_8px_0_#c9c3f2]">{host.code}</div>
-        <svg viewBox={`-2 -2 ${qr.n + 4} ${qr.n + 4}`} className="h-[170px] w-[170px] rounded-2xl bg-white" shapeRendering="crispEdges" role="img" aria-label={`QR: ${url}`}><path d={qr.d} fill="#251d52" /></svg>
+        <JoinQr path="/doodle/join" code={host.code} size={180} label={t('Show the QR full screen', 'Mostrar el QR en grande')} />
       </div>
       <PlayerGrid players={players} />
     </div>
@@ -318,6 +310,16 @@ function PlayScreen({ client, code, isHost }: { client: DoodleClient; code: stri
       <Mascot pose="idle" size={130} />
       <div className="dd-title text-center text-[28px]">{client.watch ? t('Waiting for players', 'Esperando jugadores') : t(`You're in, ${client.name}!`, `¡Estás dentro, ${client.name}!`)}</div>
       <div className="text-[15px] font-bold text-white/80">{t('Room', 'Sala')} {code} · {isHost ? t('start when everyone is in', 'empieza cuando estén todos') : t('wait for the host to start', 'espera a que empiece el anfitrión')}</div>
+      {isHost && (
+        <div className="mt-3 flex items-center gap-3 rounded-[22px] bg-white/15 p-2 pr-4">
+          <JoinQr path="/doodle/join" code={code} size={112} label={t('Show the QR full screen', 'Mostrar el QR en grande')} />
+          <div>
+            <div className="text-[13px] font-extrabold text-white/80">{t('Scan to join', 'Escanea para entrar')}</div>
+            <div className="text-[40px] leading-none font-black tracking-[0.12em]">{code}</div>
+            <div className="text-[12.5px] font-bold text-white/70">{location.host}/doodle</div>
+          </div>
+        </div>
+      )}
       {!client.watch && (
         <div className="mt-3 flex items-center gap-1 rounded-2xl bg-white/15 p-1">
           <button type="button" onClick={() => { const v = (client.av + TEACHERS.length - 1) % TEACHERS.length; store('dd:av', String(v)); client.setAvatar(v); }} className="grid h-9 w-9 place-items-center rounded-full bg-white/20" aria-label={t('Previous', 'Anterior')}><ChevronLeft size={18} /></button>
@@ -331,7 +333,6 @@ function PlayScreen({ client, code, isHost }: { client: DoodleClient; code: stri
   if (ph === 'play') {
     const task = client.task;
     if (client.watch || !task) return <Watching client={client} pad={pad} />;
-    if (task.done) return <Center pad={pad}><Waiting client={client} /></Center>;
     return <TaskScreen key={task.s} client={client} pad={pad} />;
   }
   return <Reveal client={client} pad={pad} />;
@@ -396,7 +397,13 @@ function TaskScreen({ client, pad }: { client: DoodleClient; pad: string }) {
     setText(pool[Math.floor(Math.random() * pool.length)]);
   };
   return (
-    <div className={cn('flex h-full flex-col overflow-y-auto px-3 pt-[max(10px,env(safe-area-inset-top))]', pad)}>
+    <div className={cn('relative flex h-full flex-col overflow-y-auto px-3 pt-[max(10px,env(safe-area-inset-top))]', pad)}>
+      {task.done && (
+        // the board stays mounted underneath, so "Edit" brings back the drawing with its undo history
+        <div className="absolute inset-0 z-30 grid place-items-center overflow-y-auto bg-[#2a1f7a]/90 p-4 backdrop-blur-sm">
+          <Waiting client={client} />
+        </div>
+      )}
       <div className="mx-auto flex w-full max-w-[920px] flex-wrap items-center gap-x-3 gap-y-1">
         <Mascot pose={info.pose} size={52} />
         <div className="min-w-0 flex-1">
@@ -444,7 +451,20 @@ function Waiting({ client }: { client: DoodleClient }) {
       <div className="dd-title text-[26px]">{t('Nice! Waiting for the others…', '¡Bien! Esperando a los demás…')}</div>
       <div className="mt-1 text-[16px] font-bold text-white/85">{client.progress.length} / {total} {t('ready', 'listos')}</div>
       {client.task && <div className="mt-3"><Timer endsAt={client.task.endsAt} total={SPEEDS.normal[client.task.kind]} /></div>}
+      {client.task?.done && <CanEdit client={client} />}
     </div>
+  );
+}
+
+/** "Edit" button while there is still time to change the answer. */
+function CanEdit({ client }: { client: DoodleClient }) {
+  const left = useLeft(client.task?.endsAt ?? 0);
+  if (left < 2) return null;
+  const draw = client.task?.kind === 'draw';
+  return (
+    <Btn tone="white" className="mt-4" onClick={() => client.edit()}>
+      <Pencil size={18} /> {draw ? t('Edit my drawing', 'Editar mi dibujo') : t('Edit my answer', 'Editar mi respuesta')}
+    </Btn>
   );
 }
 
