@@ -1,6 +1,6 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
-import { BOX_COOLDOWN_MS, FLAG, TEAM_COLORS, TEAM_DARK, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
+import { BOX_COOLDOWN_MS, FLAG, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
 import { PaintLayer, Stage } from './stage';
 import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
@@ -78,9 +78,9 @@ export class Renderer {
 
   setMap(map: GameMap) {
     this.map = map;
-    this.ground = map.kind === 'kb' ? null : new Ground(map);
-    this.stage = map.kind === 'kb' ? new Stage(map) : null;
-    this.paintLayer = map.kind === 'paint' ? new PaintLayer(map) : null;
+    this.ground = sideView(map.kind) ? null : new Ground(map);
+    this.stage = sideView(map.kind) ? new Stage(map) : null;
+    this.paintLayer = map.kind === 'paint' && !map.tiles ? new PaintLayer(map) : null;
     this.resize();
     this.tall = map.props.filter((p) => !PROP_INFO[p.k].flat).sort((a, b) => a.y - b.y);
   }
@@ -93,7 +93,7 @@ export class Renderer {
     this.canvas.width = Math.round(this.w * this.dpr);
     this.canvas.height = Math.round(this.h * this.dpr);
     // Close, readable camera on phones and laptops alike (characters big on screen).
-    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 700, 1.08, 1.6) * (this.map?.kind === 'kb' ? 0.82 : 1);
+    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 700, 1.08, 1.6) * (this.map?.kind === 'kb' ? 0.82 : this.map?.kind === 'paint' ? 0.9 : 1);
   }
 
   get qualityLabel() { return QUAL[this.quality].label; }
@@ -138,7 +138,7 @@ export class Renderer {
     const vx0 = this.cam.x - this.w / 2 / z - 40, vy0 = this.cam.y - this.h / 2 / z - 40;
     const vx1 = this.cam.x + this.w / 2 / z + 40, vy1 = this.cam.y + this.h / 2 / z + 40;
     const S = this.S;
-    if (this.stage) this.stage.draw(g, S, vx0, vx1, vy0, vy1);
+    if (this.stage) { this.stage.draw(g, S, vx0, vx1, vy0, vy1); this.stage.paint(g, src.vis, vx0, vx1, vy0, vy1); }
     else this.drawGround(vx0, vy0, vx1, vy1, S);
     if (this.paintLayer) {
       this.paintLayer.sync(src.vis);
@@ -282,7 +282,8 @@ export class Renderer {
   private updateCamera(players: RP[], me: RP | null, dt: number) {
     const k = 1 - Math.exp(-dt * 7);
     const MW = this.map?.w ?? WORLD_W, MH = this.map?.h ?? WORLD_H;
-    const kb = this.map?.kind === 'kb';
+    const kb = !!this.map && sideView(this.map.kind);
+    const open = this.map?.kind === 'kb';
     let tx = this.cam.x, ty = this.cam.y, tz = this.baseZoom;
     if (this.mode === 'follow' && me) {
       tx = me.x + Math.cos(me.aim) * 46;
@@ -314,10 +315,10 @@ export class Renderer {
     this.cam.z = lerp(this.cam.z, tz, kk * 0.6);
     // keep inside the world when zoomed in
     const hw = this.w / 2 / this.cam.z, hh = this.h / 2 / this.cam.z;
-    const m = kb ? 260 : 60; // the stage shows some sky around it
+    const m = open ? 260 : kb ? 0 : 60; // the knockback stage shows some sky around it
     if (hw * 2 < MW + m * 2) this.cam.x = clamp(this.cam.x, hw - m, MW - hw + m);
     else this.cam.x = MW / 2;
-    if (hh * 2 < MH + m * 2) this.cam.y = clamp(this.cam.y, hh - m, MH - hh + (kb ? 40 : m));
+    if (hh * 2 < MH + m * 2) this.cam.y = clamp(this.cam.y, hh - m, MH - hh + (open ? 40 : m));
     else this.cam.y = MH / 2;
   }
 
@@ -648,7 +649,7 @@ export class Renderer {
     const ps = src.vis.ps.get(p.idx);
     // bars (others: when hurt; me: always small)
     const hurt = ps ? now - ps.hurtAt < 3000 : false;
-    if (this.stage) {
+    if (this.map?.kind === 'kb') {
       // Knockback: the damage % (white → yellow → red), bigger right after a hit
       const k = clamp(p.pct / 150, 0, 1);
       const col = `rgb(255,${Math.round(255 - k * 170)},${Math.round(255 - Math.min(1, k * 2) * 215)})`;
@@ -880,7 +881,7 @@ export class Renderer {
           if (p?.me) this.shake(0.25);
           break;
         }
-        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
+        case 'buy': { const p = byIdx.get(f.idx); if (p) { const w = f.up < 0 ? WEAPONS[f.lvl] : null; this.popup(f.idx, 0, 0, w ? tx(w.name) : tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, w ? w.ic : UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
         case 'tp': {
           const p = byIdx.get(f.idx);
           const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
@@ -970,7 +971,8 @@ export class Renderer {
       b.width = W; b.height = H;
       const bg = b.getContext('2d')!;
       bg.fillStyle = map.kind === 'kb' ? '#8fd3ff' : '#3fae47'; bg.fillRect(0, 0, W, H);
-      for (const pl of map.plats) { bg.fillStyle = pl.thin ? '#ef5a6f' : '#4cc24a'; bg.fillRect(pl.x * sx, pl.y * sy, Math.max(2, pl.w * sx), Math.max(2, pl.h * sy)); }
+      if (map.tiles) { bg.fillStyle = '#ffd3d9'; bg.fillRect(0, 0, W, H); }
+      for (const pl of map.plats) { bg.fillStyle = map.tiles ? '#ffffff' : pl.thin ? '#ef5a6f' : '#4cc24a'; bg.fillRect(pl.x * sx, pl.y * sy, Math.max(2, pl.w * sx), Math.max(2, pl.h * sy)); }
       for (const p of map.paths) { bg.beginPath(); p.pts.forEach(([x, y], i) => (i ? bg.lineTo(x * sx, y * sy) : bg.moveTo(x * sx, y * sy))); bg.lineWidth = Math.max(2, p.w * sx); bg.strokeStyle = '#e3bb82'; bg.lineCap = 'round'; bg.stroke(); }
       for (const pd of map.ponds) { bg.beginPath(); bg.ellipse(pd.x * sx, pd.y * sy, pd.rx * sx, pd.ry * sy, 0, 0, 7); bg.fillStyle = '#3db3e8'; bg.fill(); }
       for (const p of map.props) if (p.k === 'tree' || p.k === 'pine') { bg.beginPath(); bg.arc(p.x * sx, p.y * sy, Math.max(1.5, 30 * sx), 0, 7); bg.fillStyle = '#2b7a32'; bg.fill(); }
@@ -980,6 +982,8 @@ export class Renderer {
     }
     g.drawImage(this.miniBg, 0, 0);
     if (this.paintLayer) { g.globalAlpha = 0.85; g.drawImage(this.paintLayer.c, 0, 0, W, H); g.globalAlpha = 1; }
+    const pg = src.vis.paint, tl = map.tiles;
+    if (pg && tl) for (let i = 0; i < pg.length; i++) if (pg[i]) { g.fillStyle = TEAM_COLORS[pg[i] - 1]; g.fillRect((i % tl.cols) * TILE * sx, Math.floor(i / tl.cols) * TILE * sy, Math.max(1.5, TILE * sx), Math.max(1.5, TILE * sy)); }
     const tNow = performance.now();
     for (const b of src.vis.boxes.values()) { g.fillStyle = b.readyAt > tNow ? 'rgba(200,204,214,0.55)' : '#ffd23f'; g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
     let me: RP | null = null;

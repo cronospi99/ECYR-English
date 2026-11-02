@@ -1,7 +1,7 @@
 /* Class Wars — the lawn arena. Generated from a seed so every device builds the same map
    (only the seed travels over the network), plus collision helpers shared by the host
    simulation and the clients' movement prediction. */
-import { KB_H, KB_W, PAINT_CELL, PLAYER_R, WORLD_H, WORLD_W, rng, type Game } from './constants';
+import { KB_H, KB_W, PAINT_CELL, PLAYER_R, TILE, WORLD_H, WORLD_W, rng, sideView, type Game } from './constants';
 
 export type PropKind =
   | 'tree' | 'pine' | 'bush' | 'pot' | 'rock' | 'crate' | 'barrel' | 'bench' | 'fenceH' | 'fenceV'
@@ -20,8 +20,10 @@ export interface Plat { x: number; y: number; w: number; h: number; thin: boolea
 export interface GameMap {
   seed: number;
   kind: Game;
-  /** Knockback stage platforms (empty on the lawn). */
+  /** Side-view platforms (empty on the lawn). */
   plats: Plat[];
+  /** Color Clash: the block grid (1 = solid), TILE px per block. */
+  tiles?: { cols: number; rows: number; grid: Uint8Array };
   w: number;
   h: number;
   props: Prop[]; // drawn, y-sorted when tall
@@ -73,6 +75,7 @@ export function distToPath(p: Path, x: number, y: number) {
 
 export function generateMap(seed: number, portals = 7, kind: Game = 'arena'): GameMap {
   if (kind === 'kb') return generateStage(seed);
+  if (kind === 'paint') return generateBlocks(seed);
   const R = rng(seed);
   const W = WORLD_W, H = WORLD_H;
   const rr = (a: number, b: number) => a + R() * (b - a);
@@ -256,22 +259,76 @@ function generateStage(seed: number): GameMap {
   return map;
 }
 
-/* --------------------------------------------------------------- paint */
+/* ---------------------------------------------------------- Color Clash */
+/** A side-view level made of blocks, mirrored left/right so no team has a better side: a thick
+    floor, walls, a ceiling and floating rows of blocks every few rows (reachable with a jump),
+    with a few pillars and stairs. Team spawns (in `burrows`): bottom-left, bottom-right, then the
+    top corners; the rest are platform tops. */
+function generateBlocks(seed: number): GameMap {
+  const R = rng(seed);
+  const cols = 64, rows = 38;
+  const grid = new Uint8Array(cols * rows);
+  const set = (c: number, r: number) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { grid[r * cols + c] = 1; grid[r * cols + (cols - 1 - c)] = 1; } };
+  for (let c = 0; c < cols; c++) { set(c, 0); set(c, rows - 1); set(c, rows - 2); }
+  for (let r = 0; r < rows; r++) { set(0, r); set(1, r); }
+  const half = cols / 2;
+  // floating rows: a band every 4 rows, segments of 3–9 blocks with gaps you can jump across
+  for (let r = rows - 6, band = 0; r >= 4; r -= 4, band++) {
+    let c = 3 + Math.floor(R() * 4) + (band % 2) * 2;
+    while (c < half - 1) {
+      const len = 3 + Math.floor(R() * 7);
+      for (let k = 0; k < len && c + k < half; k++) set(c + k, r);
+      // sometimes a block step under one end, as stairs
+      if (R() < 0.25) set(c, r + 1);
+      c += len + 3 + Math.floor(R() * 4);
+    }
+  }
+  // pillars on the floor
+  for (let i = 0; i < 3; i++) {
+    const c = 6 + Math.floor(R() * (half - 9)), h = 1 + Math.floor(R() * 2);
+    for (let k = 0; k < h; k++) set(c, rows - 3 - k);
+  }
+  const W = cols * TILE, H = rows * TILE;
+  const map: GameMap = { seed, kind: 'paint', plats: [], tiles: { cols, rows, grid }, w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
+  // physics rectangles: runs of solid blocks per row
+  for (let r = 0; r < rows; r++)
+    for (let c = 0; c < cols;) {
+      if (!grid[r * cols + c]) { c++; continue; }
+      let e = c;
+      while (e < cols && grid[r * cols + e]) e++;
+      map.plats.push({ x: c * TILE, y: r * TILE, w: (e - c) * TILE, h: TILE, thin: false, v: r });
+      c = e;
+    }
+  // spawns: team corners first, then free platform tops
+  const top = (c: number) => { for (let r = 1; r < rows; r++) if (grid[r * cols + c] && !grid[(r - 1) * cols + c]) return r; return rows - 2; };
+  const highTop = (c: number) => { for (let r = 2; r < rows; r++) if (grid[r * cols + c] && !grid[(r - 1) * cols + c] && !grid[(r - 2) * cols + c]) return r; return rows - 2; };
+  map.burrows.push({ id: 0, x: 4 * TILE, y: (rows - 2) * TILE - 2 });
+  map.burrows.push({ id: 1, x: (cols - 4) * TILE, y: (rows - 2) * TILE - 2 });
+  let tl = 4; while (tl < half && highTop(tl) > rows / 2) tl++;
+  map.burrows.push({ id: 2, x: (tl + 0.5) * TILE, y: highTop(tl) * TILE - 2 });
+  map.burrows.push({ id: 3, x: (cols - tl - 0.5) * TILE, y: highTop(tl) * TILE - 2 });
+  for (let c = 4; c < cols - 4; c += 7) map.burrows.push({ id: map.burrows.length, x: (c + 0.5) * TILE, y: top(c) * TILE - 2 });
+  return map;
+}
+
 export const paintCols = (map: GameMap) => Math.ceil(map.w / PAINT_CELL);
 export const paintRows = (map: GameMap) => Math.ceil(map.h / PAINT_CELL);
-/** 1 = this lawn cell can be painted (not under a prop, a pond or the hedge). */
+/** 1 = this block can be painted: a solid block with air above it (you can stand on it). */
 export function paintMask(map: GameMap): Uint8Array {
   const cols = paintCols(map), rows = paintRows(map);
   const m = new Uint8Array(cols * rows);
-  for (let cy = 0; cy < rows; cy++)
-    for (let cx = 0; cx < cols; cx++) {
-      const x = (cx + 0.5) * PAINT_CELL, y = (cy + 0.5) * PAINT_CELL;
-      if (x < EDGE || y < EDGE || x > map.w - EDGE || y > map.h - EDGE) continue;
-      const [rx, ry] = resolve(map, x, y, 6);
-      if (Math.abs(rx - x) + Math.abs(ry - y) < 1) m[cy * cols + cx] = 1;
-    }
+  const g = map.tiles?.grid;
+  if (!g) return m;
+  for (let r = 1; r < rows; r++) for (let c = 0; c < cols; c++) if (g[r * cols + c] && !g[(r - 1) * cols + c]) m[r * cols + c] = 1;
   return m;
 }
+/** Is the block at (x, y) solid? */
+export const solidAt = (map: GameMap, x: number, y: number) => {
+  const t = map.tiles;
+  if (!t) return false;
+  const c = Math.floor(x / TILE), r = Math.floor(y / TILE);
+  return c < 0 || r < 0 || c >= t.cols || r >= t.rows || !!t.grid[r * t.cols + c];
+};
 
 function near(map: GameMap, x: number, y: number): number[] {
   return map.grid.get(key(Math.floor(x / CELL), Math.floor(y / CELL))) ?? [];
@@ -320,7 +377,7 @@ export function resolve(map: GameMap, x: number, y: number, r = PLAYER_R): [numb
     }
     if (!moved) break;
   }
-  if (map.kind === 'kb') return [x, y];
+  if (sideView(map.kind)) return [x, y];
   const m = EDGE + r;
   x = x < m ? m : x > WORLD_W - m ? WORLD_W - m : x;
   y = y < m ? m : y > WORLD_H - m ? WORLD_H - m : y;
@@ -337,6 +394,7 @@ export function moveCircle(map: GameMap, x: number, y: number, dx: number, dy: n
 
 /** Does a projectile at (x, y) hit something tall (or leave the arena)? */
 export function hitsWall(map: GameMap, x: number, y: number, r = 4): boolean {
+  if (map.tiles) return solidAt(map, x, y);
   if (map.kind === 'kb') { if (x < -400 || x > map.w + 400 || y < -600 || y > map.h + 200) return true; }
   else if (x < EDGE || y < EDGE || x > WORLD_W - EDGE || y > WORLD_H - EDGE) return true;
   for (const i of near(map, x, y)) {

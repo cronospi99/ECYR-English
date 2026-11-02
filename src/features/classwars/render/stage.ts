@@ -1,7 +1,7 @@
 /* Class Wars — drawing for the two newer modes: the Knockback stage (sky, parallax hills and
    clouds, floating islands and ledges, all cached per scale) and the Color Clash paint layer (a
    quarter-scale canvas of soft round blobs, redrawn only where cells changed). */
-import { PAINT_CELL, TEAM_COLORS, rng } from '../game/constants';
+import { PAINT_CELL, TEAM_COLORS, TEAM_DARK, TILE, rng } from '../game/constants';
 import { paintCols, paintRows, type GameMap, type Plat } from '../game/map';
 import type { VisualWorld } from '../game/vis';
 import { INK } from './sprites';
@@ -17,6 +17,7 @@ export class Stage {
 
   /** Screen-space sky with parallax (call before the world transform). */
   sky(g: G, w: number, h: number, camX: number, camY: number, z: number, now: number) {
+    if (this.map.tiles) return this.pastel(g, w, h, camX, camY, now);
     const gr = g.createLinearGradient(0, 0, 0, h);
     gr.addColorStop(0, '#5ab8ff'); gr.addColorStop(0.62, '#a9e0ff'); gr.addColorStop(1, '#e6f7ff');
     g.fillStyle = gr; g.fillRect(0, 0, w, h);
@@ -35,6 +36,51 @@ export class Stage {
       const x = ((base - camX * (0.15 + sc * 0.1) + now * 0.008 * sc) % 2600 + 2600) % 2600 - 300;
       this.cloud(g, x * Math.max(1, w / 2000), y - camY * 0.04, sc * Math.max(0.8, z));
     }
+  }
+
+  /** Color Clash sky: a warm pastel wash with soft brush swirls and cream clouds. */
+  private pastel(g: G, w: number, h: number, camX: number, camY: number, now: number) {
+    const gr = g.createLinearGradient(0, 0, w, h);
+    gr.addColorStop(0, '#ffc7d9'); gr.addColorStop(0.5, '#ffd9c2'); gr.addColorStop(1, '#f7c3e6');
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.save();
+    g.globalAlpha = 0.22; g.strokeStyle = '#ffffff'; g.lineWidth = 10; g.lineCap = 'round';
+    for (let i = 0; i < 9; i++) {
+      const y = ((i * 170 - camY * 0.08) % (h + 200) + h + 200) % (h + 200) - 100;
+      g.beginPath();
+      for (let x = -40; x <= w + 40; x += 30) g.lineTo(x, y + Math.sin((x + camX * 0.08) * 0.012 + i) * 26);
+      g.stroke();
+    }
+    g.restore();
+    const R = rng(this.map.seed);
+    for (let i = 0; i < 12; i++) {
+      const base = R() * 3000, y = R() * h, sc = 0.7 + R() * 0.9;
+      const x = ((base - camX * 0.2 * sc + now * 0.006 * sc) % 3200 + 3200) % 3200 - 300;
+      g.fillStyle = 'rgba(255,240,170,0.75)';
+      g.beginPath();
+      for (const [dx, dy, r] of [[0, 0, 30], [34, -14, 38], [72, 0, 30], [36, 10, 30]]) { g.moveTo(x + dx * sc + r * sc, y + dy * sc - camY * 0.05); g.arc(x + dx * sc, y + dy * sc - camY * 0.05, r * sc, 0, 7); }
+      g.fill();
+    }
+  }
+
+  /** Color Clash: painted blocks drawn over the white ones (only the visible ones). */
+  paint(g: G, vis: VisualWorld, x0: number, x1: number, y0: number, y1: number) {
+    const t = this.map.tiles, grid = vis.paint;
+    if (!t || !grid) return;
+    const c0 = Math.max(0, Math.floor(x0 / TILE)), c1 = Math.min(t.cols - 1, Math.floor(x1 / TILE));
+    const r0 = Math.max(0, Math.floor(y0 / TILE)), r1 = Math.min(t.rows - 1, Math.floor(y1 / TILE));
+    for (let r = r0; r <= r1; r++)
+      for (let c = c0; c <= c1; c++) {
+        const v = grid[r * t.cols + c];
+        if (!v) continue;
+        const x = c * TILE, y = r * TILE;
+        g.fillStyle = TEAM_COLORS[v - 1];
+        g.fillRect(x + 2, y + 2, TILE - 4, TILE - 4);
+        g.fillStyle = 'rgba(255,255,255,0.28)'; g.fillRect(x + 4, y + 4, TILE - 8, 5);
+        g.strokeStyle = TEAM_DARK[v - 1]; g.lineWidth = 2; g.strokeRect(x + 3, y + 3, TILE - 6, TILE - 6);
+        g.fillStyle = TEAM_DARK[v - 1];
+        for (const [dx, dy] of [[9, 9], [TILE - 9, 9], [9, TILE - 9], [TILE - 9, TILE - 9]]) { g.beginPath(); g.arc(x + dx, y + dy, 2, 0, 7); g.fill(); }
+      }
   }
 
   private hills(g: G, w: number, h: number, ox: number, oy: number, base: number, amp: number, color: string, f: number, seed: number) {
@@ -64,18 +110,18 @@ export class Stage {
       const key = `${p.x},${p.y}`;
       let c = this.cache.get(key);
       if (!c) { c = this.bake(p, S); this.cache.set(key, c); }
-      g.drawImage(c, p.x - PAD, p.y - PAD, p.w + PAD * 2, p.h + PAD * 2 + (p.thin ? 0 : HANG));
+      g.drawImage(c, p.x - PAD, p.y - PAD, p.w + PAD * 2, p.h + PAD * 2 + (p.thin || this.map.tiles ? 0 : HANG));
     }
   }
 
   private bake(p: Plat, S: number): HTMLCanvasElement {
     const c = document.createElement('canvas');
-    const w = p.w + PAD * 2, h = p.h + PAD * 2 + (p.thin ? 0 : HANG);
+    const w = p.w + PAD * 2, h = p.h + PAD * 2 + (p.thin || this.map.tiles ? 0 : HANG);
     c.width = Math.ceil(w * S); c.height = Math.ceil(h * S);
     const g = c.getContext('2d')!;
     g.scale(S, S);
     g.translate(PAD - p.x, PAD - p.y);
-    if (p.thin) ledge(g, p); else island(g, p);
+    if (this.map.tiles) blocks(g, p, this.map); else if (p.thin) ledge(g, p); else island(g, p);
     return c;
   }
 }
@@ -136,6 +182,28 @@ function island(g: G, p: Plat) {
   for (let px = x + 40; px < x + w - 40; px += 90 + R() * 120) {
     if (R() < 0.5) flower(g, px, y - 2, R() < 0.5 ? '#ff8fb8' : '#ffe14d');
     else clover(g, px, y - 2);
+  }
+}
+
+/** A run of white riveted blocks (Color Clash); the outline only on sides that face the air. */
+function blocks(g: G, p: Plat, map: GameMap) {
+  const t = map.tiles!;
+  const solid = (c: number, r: number) => c < 0 || r < 0 || c >= t.cols || r >= t.rows || !!t.grid[r * t.cols + c];
+  const r = Math.round(p.y / TILE);
+  for (let x = p.x; x < p.x + p.w; x += TILE) {
+    const c = Math.round(x / TILE);
+    g.fillStyle = '#f4f2fb'; g.fillRect(x, p.y, TILE, TILE);
+    g.fillStyle = '#dcd8ec'; g.fillRect(x, p.y + TILE - 7, TILE, 7);
+    g.strokeStyle = '#c3bedb'; g.lineWidth = 2; g.strokeRect(x + 3, p.y + 3, TILE - 6, TILE - 6);
+    g.fillStyle = '#a9a3c6';
+    for (const [dx, dy] of [[9, 9], [TILE - 9, 9], [9, TILE - 9], [TILE - 9, TILE - 9]]) { g.beginPath(); g.arc(x + dx, p.y + dy, 2.2, 0, 7); g.fill(); }
+    g.strokeStyle = INK; g.lineWidth = 4; g.lineCap = 'square';
+    g.beginPath();
+    if (!solid(c, r - 1)) { g.moveTo(x, p.y); g.lineTo(x + TILE, p.y); }
+    if (!solid(c, r + 1)) { g.moveTo(x, p.y + TILE); g.lineTo(x + TILE, p.y + TILE); }
+    if (!solid(c - 1, r)) { g.moveTo(x, p.y); g.lineTo(x, p.y + TILE); }
+    if (!solid(c + 1, r)) { g.moveTo(x + TILE, p.y); g.lineTo(x + TILE, p.y + TILE); }
+    g.stroke();
   }
 }
 

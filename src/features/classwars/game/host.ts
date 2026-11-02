@@ -3,7 +3,7 @@
    one broadcast snapshot every 100 ms (+ urgent events), question batches on demand. */
 import { Relay, type Envelope } from '@/lib/relay';
 import { awardGamePoints, type Award } from '@/features/cards/api';
-import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, boxCount, lerp, portalCount, type Game } from './constants';
+import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, boxCount, lerp, portalCount, sideView, type Game } from './constants';
 import type { RenderSource, RP } from './client';
 import { CHAR_IDS, UPGRADES } from './defs';
 import { Sim, type Ev, type SimPlayer } from './sim';
@@ -194,6 +194,11 @@ export class HostSession {
         if (q) this.sim.answer(p, Number(d.c) === q.a);
         break;
       }
+      case 'wb': {
+        const p = this.player(peer);
+        if (p && this.sim && this.phase === 'playing') this.sim.buyWeapon(p, Number(d.w) | 0);
+        break;
+      }
       case 'buy': {
         const p = this.player(peer);
         if (p && this.sim && this.phase === 'playing') this.sim.buy(p, d.u);
@@ -218,8 +223,8 @@ export class HostSession {
     if (d.w !== p.powC) { p.powC = d.w; sim.usePower(p, false); }
     if (d.u !== p.bonC) { p.bonC = d.u; sim.usePower(p, true); }
     if (!p.alive || d.fv !== p.fv || !Number.isFinite(d.x) || !Number.isFinite(d.y)) return;
-    if (sim.game === 'kb') {
-      // Knockback: the phone runs its own physics (falls and launches are fast); only reject teleports.
+    if (sideView(sim.game)) {
+      // Side view: the phone runs its own physics (falls and launches are fast); only reject teleports.
       const elapsed = Math.min(1200, sim.now - p.lastAcceptT);
       if (Math.hypot(d.x - p.x, d.y - p.y) > 3000 * (elapsed / 1000) + 160) { sim.teleport(p, p.x, p.y, 'fix'); return; }
       p.tx = d.x; p.ty = d.y; p.hasT = true; p.lastAcceptT = sim.now;

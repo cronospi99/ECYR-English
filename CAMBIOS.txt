@@ -305,6 +305,21 @@ G1e. CLASS WARS: MODOS COLOR CLASH Y KNOCKBACK, PREGUNTAS POR UNIDAD, BOTS
   nuevas (bloque amarillo con "?", contorno grueso), quietas y sin animación,
   y cámara más cercana en todos los modos.
 
+G1f. CLASS WARS: COLOR CLASH 2D Y ARSENAL DE KNOCKBACK
+- Color Clash ahora es un juego de plataformas 2D visto de lado (solo
+  izquierda, derecha y saltar): un nivel de bloques blancos con remaches,
+  simétrico para los equipos, cielo pastel con nubes. Al pararte en un
+  bloque se pinta del color de tu equipo (y se le puede robar al rival);
+  los disparos que pegan en un bloque también lo pintan. Las cajas son
+  bombas de pintura y dan un salto extra en el aire (se acumulan hasta 3,
+  se pierden al quedar fuera). Barra arriba con los bloques de cada equipo
+  y sello "TEAM …" al aparecer.
+- Knockback: arsenal propio que se compra una vez con energía y se equipa
+  cuando quieras, con munición ilimitada (tiza gratis, burbujeador, clips,
+  erizo, rayo resaltador, lanzaborradores y bomba de purpurina). La mejora
+  de vida se convierte en "Peso": los golpes te lanzan menos lejos. Los
+  bots también compran armas.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

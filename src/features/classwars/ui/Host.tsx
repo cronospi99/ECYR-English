@@ -168,8 +168,8 @@ function SetupScreen({ onCreate }: { onCreate: (s: Setup, q: { q: string; o: str
             <div className="grid grid-cols-2 gap-2">
               <Choice on={s.mode === 'classic'} onClick={() => up({ mode: 'classic' })} ic="gem" title={t('Classic', 'Clásico')} sub={t('Most diamonds at the end wins', 'Gana quien tenga más diamantes al final')} />
               <Choice on={s.mode === 'race'} onClick={() => up({ mode: 'race' })} ic="flag" title={t('Race', 'Carrera')} sub={t('First to reach the goal', 'Primero en llegar a la meta')} />
-              <Choice on={s.mode === 'paint'} onClick={() => up({ mode: 'paint' })} ic="splat" title="Color Clash" sub={t('Teams paint the lawn: most colour wins', 'Equipos pintan el pasto: gana el que más pinte')} />
-              <Choice on={s.mode === 'kb'} onClick={() => up({ mode: 'kb' })} ic="launch" title="Knockback" sub={t('Platforms: knock rivals off the stage', 'Plataformas: saca a los rivales del escenario')} />
+              <Choice on={s.mode === 'paint'} onClick={() => up({ mode: 'paint' })} ic="splat" title="Color Clash" sub={t('2D platforms: stand on blocks to paint them; most blocks wins', 'Plataformas 2D: párate en los bloques para pintarlos; gana quien más pinte')} />
+              <Choice on={s.mode === 'kb'} onClick={() => up({ mode: 'kb' })} ic="launch" title="Knockback" sub={t('Buy weapons, raise their % and launch them off the stage', 'Compra armas, sube su % y sácalos del escenario')} />
             </div>
             {s.mode === 'paint' && (
               <div className="mt-3 flex flex-wrap items-center gap-2"><span className="text-[13px] font-bold text-white/60">{t('Teams', 'Equipos')}</span>{[2, 3, 4].map((n) => (

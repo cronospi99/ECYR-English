@@ -1,4 +1,4 @@
-/* Class Wars — Knockback physics (side view). The same step runs in the host (bots) and on each
+/* Class Wars — side-view physics (Knockback and Color Clash). The same step runs in the host (bots) and on each
    phone (its own character's prediction), so movement feels instant and matches the host. */
 import { GRAVITY, JUMP_V, KB_HH, KB_HW, KB_OUT, KB_SPEED } from './constants';
 import type { GameMap, Plat } from './map';
@@ -6,8 +6,9 @@ import type { GameMap, Plat } from './map';
 export interface Body {
   x: number; y: number; vx: number; vy: number;
   ground: boolean;
-  /** Air jumps left (refilled on landing). */
+  /** Air jumps left (refilled to airMax on landing). */
   air: number;
+  airMax: number;
   /** Time left to still jump after walking off a ledge. */
   coyote: number;
   /** Ignore thin ledges until this (dropping through with "down"). */
@@ -16,7 +17,7 @@ export interface Body {
   t: number;
 }
 
-export const newBody = (x: number, y: number): Body => ({ x, y, vx: 0, vy: 0, ground: false, air: 1, coyote: 0, dropT: 0, t: 0 });
+export const newBody = (x: number, y: number): Body => ({ x, y, vx: 0, vy: 0, ground: false, air: 1, airMax: 1, coyote: 0, dropT: 0, t: 0 });
 
 const ACC_GROUND = 3600, ACC_AIR = 2000, MAX_FALL = 1500;
 
@@ -26,6 +27,8 @@ const ACC_GROUND = 3600, ACC_AIR = 2000, MAX_FALL = 1500;
  */
 export function kbStep(map: GameMap, b: Body, ix: number, jump: boolean, down: boolean, mul: number, dt: number) {
   b.t += dt;
+  // stuck inside a solid block (a teleport or swap put us there): pop out on top of it
+  for (const p of map.plats) if (!p.thin && overlapsX(p, b.x) && b.y > p.y + 1 && b.y - KB_HH < p.y + p.h) { b.y = p.y; b.vy = Math.min(0, b.vy); }
   const target = ix * KB_SPEED * mul;
   if (Math.abs(b.vx) <= KB_SPEED * 1.08 || Math.sign(target) === -Math.sign(b.vx)) {
     // in control: accelerate toward the stick
@@ -50,7 +53,7 @@ export function kbStep(map: GameMap, b: Body, ix: number, jump: boolean, down: b
   const ny = b.y + b.vy * dt;
   const [ry, landed, bonk] = sweepY(map.plats, b.x, b.y, ny, b.vy, b.t < b.dropT);
   b.y = ry;
-  if (landed) { b.vy = 0; b.ground = true; b.air = 1; b.coyote = 0.1; }
+  if (landed) { b.vy = 0; b.ground = true; b.air = b.airMax; b.coyote = 0.1; }
   else {
     if (bonk) b.vy = Math.max(0, b.vy);
     b.ground = false;

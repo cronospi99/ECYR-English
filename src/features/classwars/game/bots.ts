@@ -2,8 +2,9 @@
    host simulation and drive the same SimPlayer fields a human input would. */
 import { PAINT_CELL, PLAYER_R } from './constants';
 import { floorBelow } from './kb';
-import { paintCols } from './map';
-import { UPGRADES, WEAPONS } from './defs';
+import { paintCols, solidAt } from './map';
+import { TILE } from './constants';
+import { KB_ARSENAL, UPGRADES, WEAPONS } from './defs';
 import type { Sim, SimPlayer } from './sim';
 
 export const BOT_NAMES = ['Valen', 'Mateo', 'Sofi', 'Tomás', 'Isa', 'Juanes', 'Majo', 'Santi', 'Dani', 'Luci', 'Nico', 'Pau', 'Emi', 'Sara'];
@@ -27,6 +28,8 @@ export function botThink(sim: Sim, p: SimPlayer) {
     if (now > b.nextAns) {
       sim.answer(p, R() < b.acc);
       b.nextAns = now + 2200 + R() * 3500;
+      // Knockback: buy the next weapon of the arsenal when there is plenty of energy.
+      if (sim.game === 'kb') { const nx = KB_ARSENAL.find((a) => !(p.owned & (1 << a.w))); if (nx && p.en > nx.cost + 1500) sim.buyWeapon(p, nx.w); }
       // Shop: the cheapest useful upgrade, keeping enough energy to keep playing.
       for (const u of [...UPGRADES].sort((x, y) => x.costs[Math.min(p.ups[x.id] + 1, x.costs.length - 1)] - y.costs[Math.min(p.ups[y.id] + 1, y.costs.length - 1)])) {
         const next = p.ups[u.id] + 1;
@@ -120,7 +123,7 @@ export function botThink(sim: Sim, p: SimPlayer) {
     sim.usePower(p, false);
   }
 
-  if (sim.game === 'kb') { steerKb(sim, p, gx, gy, enemy); return; }
+  if (sim.side) { steerKb(sim, p, gx, gy, enemy); return; }
   let dx = gx - p.x, dy = gy - p.y;
   const dist = Math.hypot(dx, dy);
   if (dist < 6) { p.mx = p.my = 0; return; }
@@ -145,13 +148,27 @@ function steerKb(sim: Sim, p: SimPlayer, gx: number, gy: number, enemy: SimPlaye
   if (!body) return;
   const R = sim.rand;
   const main = m.plats[0];
-  const off = !floorBelow(m, p.x, p.y, 1400);
+  const off = sim.game === 'kb' && !floorBelow(m, p.x, p.y, 1400);
   if (off) {
     // recovering: steer back over the main island and jump when falling
     gx = main.x + main.w / 2;
     gy = main.y;
   } else if (!enemy && Math.abs(gx - p.x) < 40) {
     gx = p.x + (R() < 0.5 ? -1 : 1) * 300;
+  }
+  // Color Clash blocks: if the goal is higher but blocks are right overhead, walk out from under
+  // them first (to the nearest open column), then jump up past the edge.
+  let blocked = false;
+  if (m.tiles && gy < p.y - 40) {
+    const over = (x: number) => { for (let k = 1; k <= 4; k++) if (solidAt(m, x, p.y - 30 - k * TILE)) return true; return false; };
+    if (over(p.x)) {
+      blocked = true;
+      for (let d = 1; d < 14; d++) {
+        const pref = Math.sign(gx - p.x) || 1;
+        if (!over(p.x + pref * d * TILE) && !solidAt(m, p.x + pref * d * TILE, p.y - 30)) { gx = p.x + pref * (d * TILE + 10); break; }
+        if (!over(p.x - pref * d * TILE) && !solidAt(m, p.x - pref * d * TILE, p.y - 30)) { gx = p.x - pref * (d * TILE + 10); break; }
+      }
+    }
   }
   let dir = Math.abs(gx - p.x) > 18 ? Math.sign(gx - p.x) : 0;
   if (enemy && !off && Math.abs(enemy.x - p.x) < 110 && Math.abs(enemy.y - p.y) < 60) dir = 0; // close enough to hit
@@ -161,8 +178,9 @@ function steerKb(sim: Sim, p: SimPlayer, gx: number, gy: number, enemy: SimPlaye
     if (!floorBelow(m, ahead, p.y, gy > p.y + 40 ? 900 : 8)) dir = 0;
   }
   p.mx = dir;
-  if (body.ground && gy < p.y - 70 && R() < 0.08) p.jumpQ = true;
+  if (body.ground && gy < p.y - 40 && !blocked && R() < (m.tiles ? 0.3 : 0.08)) p.jumpQ = true;
   else if (!body.ground && off && body.vy > 120 && body.air > 0) p.jumpQ = true;
+  else if (m.tiles && !body.ground && body.vy > 40 && body.air > 0 && gy < p.y - 30 && !blocked) p.jumpQ = true; // use extra jumps near the top
   else if (body.ground && gy > p.y + 90 && Math.abs(gx - p.x) < 200 && R() < 0.05) p.downQ = true;
   if (enemy) p.aim = Math.atan2(enemy.y - 22 - (p.y - 18), enemy.x - p.x) + (p.brain?.aimErr ?? 0);
   else p.aim = dir < 0 ? Math.PI : 0;

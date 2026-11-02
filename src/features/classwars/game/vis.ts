@@ -173,6 +173,7 @@ export class VisualWorld {
         case 'rv': break;
         case 'cs': this.fx.push({ t: 'costume', idx: n(1), ci: n(2) }); break;
         case 'wp': this.fx.push({ t: 'weapon', idx: n(1), w: n(2) }); break;
+        case 'wb': this.fx.push({ t: 'buy', idx: n(1), up: -1, lvl: n(2) }); break;
         case 'pw': this.st(n(1)).powerAt = now; this.fx.push({ t: 'power', idx: n(1), ci: n(2) }); break;
         case 'wave': this.fx.push({ t: 'wave', x: n(1), y: n(2), r: n(3), kind: n(4) }); break;
         case 'cone': this.fx.push({ t: 'cone', idx: n(1), aim: byteToAim(n(2)), r: n(3), kind: n(4) }); break;
