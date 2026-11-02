@@ -23,7 +23,7 @@ export const TEAM_NAMES: readonly (readonly [string, string])[] = [['Pink', 'Ros
 
 /* Knockback: side view with gravity. Hits raise your damage %; the higher it is, the farther you
    fly. Leave the stage (fall or get launched off a side) and you are out. */
-export const KB_W = 3000;
+export const KB_W = 4800;
 export const KB_H = 1700;
 export const GRAVITY = 2300;
 export const JUMP_V = 860;
@@ -31,7 +31,7 @@ export const KB_SPEED = 300;
 export const KB_HW = 16; // body half width
 export const KB_HH = 58; // body height (feet at y)
 /** Out of the stage beyond these margins. */
-export const KB_OUT = { x: 520, top: 1000, bottom: 300 } as const;
+export const KB_OUT = { x: 160, top: 1000, bottom: 200 } as const;
 
 /** Bot difficulty presets (the teacher picks one per match). */
 export const BOT_LEVELS = [

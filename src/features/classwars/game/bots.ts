@@ -175,12 +175,18 @@ function steerKb(sim: Sim, p: SimPlayer, gx: number, gy: number, enemy: SimPlaye
   // do not walk off a ledge unless the goal is down there
   if (dir && body.ground && !off) {
     const ahead = p.x + dir * 46;
-    if (!floorBelow(m, ahead, p.y, gy > p.y + 40 ? 900 : 8)) dir = 0;
+    if (!floorBelow(m, ahead, p.y, gy > p.y + 40 ? 900 : 8)) {
+      // knockback: a base across the gap, toward the goal? jump for it (the second jump comes below)
+      const gap = (q: { x: number; w: number }) => (dir > 0 ? q.x - p.x : p.x - (q.x + q.w));
+      const across = !m.tiles && Math.sign(gx - p.x) === dir && Math.abs(gx - p.x) > 80 && m.plats.some((q) => gap(q) > 0 && gap(q) < 320 && q.y > p.y - 220 && q.y < p.y + 160);
+      if (across) p.jumpQ = true; else dir = 0;
+    }
   }
   p.mx = dir;
-  if (body.ground && gy < p.y - 40 && !blocked && R() < (m.tiles ? 0.3 : 0.08)) p.jumpQ = true;
+  if (p.jumpQ) { /* gap jump */ }
+  else if (body.ground && gy < p.y - 40 && !blocked && R() < (m.tiles ? 0.3 : 0.08)) p.jumpQ = true;
   else if (!body.ground && off && body.vy > 120 && body.air > 0) p.jumpQ = true;
-  else if (m.tiles && !body.ground && body.vy > 40 && body.air > 0 && gy < p.y - 30 && !blocked) p.jumpQ = true; // use extra jumps near the top
+  else if (!body.ground && body.vy > 40 && body.air > 0 && !blocked && (gy < p.y - 30 || (!m.tiles && !floorBelow(m, p.x, p.y, 320)))) p.jumpQ = true; // second jump near the top, or over the void
   else if (body.ground && gy > p.y + 90 && Math.abs(gx - p.x) < 200 && R() < 0.05) p.downQ = true;
   if (enemy) p.aim = Math.atan2(enemy.y - 22 - (p.y - 18), enemy.x - p.x) + (p.brain?.aimErr ?? 0);
   else p.aim = dir < 0 ? Math.PI : 0;

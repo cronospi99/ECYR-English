@@ -3,6 +3,7 @@
 import { BOX_COOLDOWN_MS, FLAG, PED_MS, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
 import { PaintLayer, Stage, pedestal } from './stage';
+import { CELL_BOX, Toon3D } from './toon3d';
 import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
@@ -11,13 +12,18 @@ import type { RenderSource, RP } from '../game/client';
 import type { Fxq } from '../game/vis';
 import { PROJ_LOOK } from '../game/vis';
 import { TEACHERS } from '@/features/cards/teachers';
+import { toonRig } from '@/features/cards/TeacherToon';
 import { CHUNK, Ground } from './ground';
 import { INK, boxSprite, charSprites, gemSprite, gemTier, iconSprite, propSprite, weaponSprite, type Sprite } from './sprites';
 import { sfx } from './audio';
 
 interface Particle { x: number; y: number; vx: number; vy: number; life: number; max: number; size: number; color: string; kind: number; rot: number; vr: number; g: number; drag: number; text?: string }
 interface Popup { x: number; y: number; text: string; color: string; size: number; born: number; life: number; idx: number; dy: number; ic?: IconKey }
-interface Anim { lx: number; ly: number; phase: number; speed: number; face: number; seen: number }
+interface Anim {
+  lx: number; ly: number; phase: number; speed: number; face: number; seen: number;
+  /** Smoothed vertical speed, in the air (side view), landing time, and the limb angles (legL, legR, armL, armR). */
+  vy: number; air: boolean; landAt: number; pose: number[];
+}
 
 const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6;
 const QUAL = [
@@ -74,7 +80,14 @@ export class Renderer {
     const lowEnd = (navigator.hardwareConcurrency || 4) <= 4 && /Android|iPhone|iPad/i.test(navigator.userAgent);
     if (lowEnd) this.quality = 1;
     this.resize();
+    // 3D characters (loaded in the background; 2D characters until then, or if 3D is not possible)
+    const q = typeof location !== 'undefined' ? location.search : '';
+    if (!/[?&]toons=2d/.test(q)) void Toon3D.create(/[?&]toons=3d/.test(q)).then((t) => { if (this.disposed) t?.dispose(); else this.toon = t; });
   }
+  private toon: Toon3D | null = null;
+  private disposed = false;
+  /** Free the 3D context (call when the game view goes away). */
+  dispose() { this.disposed = true; this.toon?.dispose(); this.toon = null; }
 
   setMap(map: GameMap) {
     this.map = map;
@@ -284,6 +297,8 @@ export class Renderer {
     }
 
     this.adapt(performance.now() - t0, dt);
+    this.toon?.flush(performance.now()); // the 3D characters for the next frame
+    if (this.toon?.off) { this.toon.dispose(); this.toon = null; }
   }
 
   /* ------------------------------------------------------------- camera */
@@ -505,12 +520,17 @@ export class Renderer {
   private drawPlayer(p: RP, src: RenderSource, now: number, dt: number, S: number, me: RP | null) {
     const g = this.g;
     let a = this.anim.get(p.idx);
-    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, seen: now }; this.anim.set(p.idx, a); }
+    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, seen: now, vy: 0, air: false, landAt: -1e9, pose: [0, 0, 0, 0] }; this.anim.set(p.idx, a); }
     const d = Math.hypot(p.x - a.lx, p.y - a.ly);
-    const sp = dt > 0 ? Math.min(600, d / dt) : 0;
+    const side = !!this.stage;
+    const sp = dt > 0 ? Math.min(600, (side ? Math.abs(p.x - a.lx) : d) / dt) : 0;
+    if (dt > 0 && d < 400) a.vy = lerp(a.vy, clamp((p.y - a.ly) / dt, -1600, 1600), 0.35);
     a.speed = lerp(a.speed, sp, 0.25);
     a.lx = p.x; a.ly = p.y; a.seen = now;
-    const moving = a.speed > 30;
+    const air = side && !!this.map && !!(p.flags & FLAG.alive) && !onGround(this.map, p.x, p.y) && Math.abs(a.vy) > 30;
+    if (a.air && !air) a.landAt = now;
+    a.air = air;
+    const moving = a.speed > 30 && !air;
     if (moving) a.phase += dt * (8 + a.speed / 40);
     // Face left/right with hysteresis (no flapping when aiming near vertical) and turn instantly:
     // a lerped flip squeezes the sprite to nothing for a few frames, which reads as a flicker.
@@ -536,8 +556,22 @@ export class Renderer {
     }
     if (p.flags & FLAG.invuln && alive && Math.floor(now / 90) % 2) alpha *= 0.55;
 
-    const bob = moving ? Math.abs(Math.sin(a.phase)) * 5 : Math.sin(now / 450 + p.idx) * 1.2;
-    const squash = moving ? 1 + Math.cos(a.phase * 2) * 0.05 : 1 + Math.sin(now / 450 + p.idx) * 0.015;
+    const bob = moving ? Math.abs(Math.sin(a.phase)) * 5 : air ? 0 : Math.sin(now / 450 + p.idx) * 1.2;
+    const landK = (now - a.landAt) / 170;
+    const squash = (moving ? 1 + Math.cos(a.phase * 2) * 0.05 : air ? 1 + clamp(-a.vy / 9000, -0.06, 0.08) : 1 + Math.sin(now / 450 + p.idx) * 0.015) * (landK < 1 ? 1 - 0.16 * Math.sin(landK * Math.PI) : 1);
+    // limb pose (radians, in the sprite's own space): walk cycle, jump, fall, flail when hit
+    {
+      const hurtK = ps ? (now - ps.hurtAt) / 380 : 9;
+      const t2 = now / 1000;
+      let tg: number[];
+      if (hurtK < 1) { const f = Math.sin(t2 * 40) * 0.35; tg = [0.5, -0.5, 1.9 + f, -1.9 - f]; }
+      else if (air && a.vy < -60) tg = [0.55, -0.12, 2.35, -2.35];
+      else if (air) { const f = Math.sin(t2 * 18 + p.idx) * 0.18; tg = [0.32, -0.32, 1.35 + f, -1.35 - f]; }
+      else if (moving) { const sw = Math.sin(a.phase), k = Math.min(1, a.speed / 220); tg = [sw * 0.62 * k, -sw * 0.62 * k, -sw * 0.5 * k, -sw * 0.5 * k]; }
+      else { const br = Math.sin(t2 * 2.1 + p.idx) * 0.05; tg = [0, 0, br, -br]; }
+      const kk = Math.min(1, dt * 16);
+      for (let i = 0; i < 4; i++) a.pose[i] = lerp(a.pose[i], tg[i], kk);
+    }
     const tilt = moving ? Math.sin(a.phase) * 0.07 : 0;
 
     // shadow
@@ -570,15 +604,42 @@ export class Renderer {
     const cs = charSprites(p.look, S);
     const blink = Math.floor((now / 1000 + p.idx * 0.73) % 4.1 * 10) === 0;
     const spr = blink ? cs.blink : cs.base;
+    // 3D model, posed and rendered for this frame (null → the 2D character below)
+    const ppu = Math.round(clamp(56 * this.cam.z * this.dpr * scale, 40, this.quality === 0 ? 90 : 150) / 8) * 8;
+    const t3 = this.toon ? this.toon.get(p.idx, p.look, { alive, air, vy: a.vy, moving, speed: a.speed, hurt: ps ? now - ps.hurtAt < 380 : false, face: a.face }, ppu) : null;
     g.save();
-    g.translate(p.x, p.y - bob - lift);
+    g.translate(p.x, p.y - (t3 ? 0 : bob) - lift);
     if (spin) g.rotate(spin);
-    g.rotate(tilt);
-    g.scale(a.face * scale / squash, scale * squash);
-    if (cs.ready) {
-      g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
+    if (!t3) g.rotate(tilt);
+    g.scale((t3 ? 1 : a.face) * scale / squash, scale * squash);
+    if (t3) {
+      const U = 56; // world px per model unit (CHAR_SCALE × 100)
+      g.drawImage(t3.c, t3.sx, t3.sy, t3.sw, t3.sh, CELL_BOX.x0 * U, -CELL_BOX.y1 * U, (CELL_BOX.x1 - CELL_BOX.x0) * U, (CELL_BOX.y1 - CELL_BOX.y0) * U);
+    } else if (cs.ready) {
       const hurt = ps ? now - ps.hurtAt : 1e9;
-      if (hurt < 140) { g.globalAlpha = alpha * (1 - hurt / 140); g.drawImage(cs.white.c, -spr.ax, -spr.ay, spr.w, spr.h); g.globalAlpha = alpha; }
+      if (hurt < 140) {
+        g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
+        g.globalAlpha = alpha * (1 - hurt / 140); g.drawImage(cs.white.c, -spr.ax, -spr.ay, spr.w, spr.h); g.globalAlpha = alpha;
+      } else {
+        // animated: legs turn at the hips, arms at the shoulders, the body breathes
+        const look = TEACHERS[p.look]?.look;
+        const rig = look ? toonRig(look) : null;
+        if (!rig) g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
+        else {
+          const u = spr.w / 144, P = cs.parts;
+          const breath = moving || air ? 0 : Math.sin(now / 1000 * 2.2 + p.idx) * 1.1 * u;
+          const limb = (sp: Sprite, j: readonly [number, number], ang: number, dy: number) => {
+            g.save(); g.translate(j[0] * u, j[1] * u + dy); g.rotate(ang); g.translate(-j[0] * u, -j[1] * u);
+            g.drawImage(sp.c, -sp.ax, -sp.ay, sp.w, sp.h); g.restore();
+          };
+          limb(P.legL, rig.hipL, a.pose[0], 0);
+          limb(P.legR, rig.hipR, a.pose[1], 0);
+          limb(P.armL, rig.shL, a.pose[2], -breath);
+          limb(P.armR, rig.shR, a.pose[3], -breath);
+          const body = blink ? P.bodyBlink : P.body;
+          g.drawImage(body.c, -body.ax, -body.ay - breath, body.w, body.h);
+        }
+      }
     } else {
       const look = TEACHERS[p.look]?.look;
       g.beginPath(); g.arc(0, -40, 26, 0, 7); g.fillStyle = look?.top ?? '#888'; g.fill(); g.lineWidth = 4; g.strokeStyle = INK; g.stroke();
@@ -963,6 +1024,8 @@ export class Renderer {
     const now = performance.now();
     if (now - this.qualAt < 2500 || this.ft.length < 90) return;
     const avg = this.ft.reduce((s, x) => s + x, 0) / this.ft.length;
+    // too slow: first drop the 3D characters (the biggest cost), then lower the quality
+    if (avg > 25 && this.toon && !this.toon.force) { this.toon.dispose(); this.toon = null; this.qualAt = now; this.ft = []; return; }
     if (avg > 25 && this.quality > 0) { this.quality--; this.qualAt = now; this.ft = []; this.resize(); }
     else if (avg < 14 && ms < 6 && this.quality < this.maxQuality && now - this.qualAt > 12000) { this.quality++; this.qualAt = now; this.ft = []; this.resize(); }
   }

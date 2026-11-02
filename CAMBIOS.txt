@@ -323,8 +323,10 @@ G1f. CLASS WARS: COLOR CLASH 2D Y ARSENAL DE KNOCKBACK
 G1g. CLASS WARS: KNOCKBACK NOCTURNO
 - Escenario nuevo: cielo nocturno con estrellas que titilan, nubes suaves y
   plataformas lejanas transparentes al fondo. Plataformas de bloques en 3D
-  (menta, lila, coral y celeste con franja dorada), un piso largo y muchas
-  plataformas pequeñas que se atraviesan desde abajo. Arte propio.
+  (menta, lila, coral y celeste con franja dorada). Máximo 7 bases muy
+  separadas sobre el vacío y anchas (el piso se camina de punta a punta en
+  unos 7 s); todas se alcanzan con doble salto, pero cada golpe puede
+  tumbarte. Los bots saltan entre bases. Arte propio.
 - Al reaparecer sales en el aire sobre un pedestal que desaparece a los 3 s;
   mientras tanto, pantalla "Reapareciendo…" abajo a la izquierda.
 - Nombre y % debajo de cada personaje (el % pasa de blanco a amarillo y
@@ -333,6 +335,20 @@ G1g. CLASS WARS: KNOCKBACK NOCTURNO
   1–7, también en celular), energía y arma en mano abajo a la izquierda junto
   a "Responder preguntas", aviso de "Poca energía" y sin minimapa. La ayuda
   de teclas se oculta a los 30 s (en todos los modos).
+
+G1h. CLASS WARS: PERSONAJES 3D ANIMADOS (.glb)
+- Cada profe tiene ahora un modelo 3D propio (public/classwars/toons/*.glb),
+  hecho a partir de sus rasgos de la carta (piel, pelo, ropa, gafas, barba,
+  accesorios, estatura y contextura), con animaciones de reposo (respira y
+  parpadea), caminar, saltar, caer y recibir un golpe. Se ven en tres cuartos,
+  con sombreado tipo caricatura y contorno, y giran hacia donde apuntan. Sirve
+  en los tres modos (Clásico, Color Clash y Knockback).
+- La librería 3D se carga solo al empezar una partida. Si el equipo no tiene
+  WebGL o va lento, el juego vuelve solo a los personajes 2D (que ahora
+  también mueven piernas y brazos) para que nunca se trabe. ?toons=2d o
+  ?toons=3d en la dirección fuerzan uno u otro (para pruebas).
+- Para regenerar los modelos tras cambiar un profe:
+  node --experimental-strip-types scripts/build-toons.mts
 
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en

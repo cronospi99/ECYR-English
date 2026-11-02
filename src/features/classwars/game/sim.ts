@@ -700,7 +700,7 @@ export class Sim {
   /** Fixed mystery boxes spread over the map. Call again with a bigger number to add more. */
   setupBoxes(count: number) {
     const spots = [...this.boxes.values()];
-    if (this.game === 'kb') count = Math.min(count, Math.round(this.map.plats.length * 1.3));
+    if (this.game === 'kb') count = Math.min(count, Math.round(this.map.plats.length * 2.5));
     if (this.map.tiles) count = Math.min(count, 18);
     for (let tries = 0; this.boxes.size < count && tries < count * 40; tries++) {
       const [x, y] = this.side ? this.ledgeSpot() : freeSpot(this.map, this.rand, 110);

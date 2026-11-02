@@ -193,7 +193,16 @@ function Torso({ l, sw, top, bottom }: { l: TeacherLook; sw: number; top: number
   }
 }
 
-export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false }: { look: TeacherLook; t?: number; seed?: number; silhouette?: boolean }) {
+/** Joints of a toon (feet at 0, 0): where legs and arms turn, for games that animate the parts. */
+export function toonRig(l: TeacherLook) {
+  const sw = l.build === "slim" ? 21 : l.build === "broad" ? 30 : 24;
+  const hipY = -30 * l.height;
+  const shoulderY = hipY - 42 * l.height;
+  return { sw, hipY, shoulderY, hipL: [-sw / 2 + 2, hipY + 4], hipR: [sw / 2 - 2, hipY + 4], shL: [-sw, shoulderY + 8], shR: [sw, shoulderY + 8] } as const;
+}
+export type ToonPart = "legL" | "legR" | "armL" | "armR" | "body";
+
+export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false, part }: { look: TeacherLook; t?: number; seed?: number; silhouette?: boolean; part?: ToonPart }) {
   const skin = SKIN[l.skin];
   const h = l.height;
   const legLen = 30 * h;
@@ -203,44 +212,68 @@ export function TeacherToon({ look: l, t = 0, seed = 0, silhouette = false }: { 
   const shoulderY = hipY - torsoLen;
   const headY = shoulderY - 27;
   const tt = t + seed * 1.7;
-  const breathe = Math.sin(tt * 2.2) * 1.2;
+  // a single part is drawn still (the game moves it)
+  const breathe = part ? 0 : Math.sin(tt * 2.2) * 1.2;
   const blink = (tt % 4.2) < 0.13;
-  const sway = Math.sin(tt * 1.1) * 1.5;
+  const sway = part ? 0 : Math.sin(tt * 1.1) * 1.5;
   const pants = l.outfit === "hoodieBlack" ? "#141414" : l.outfit === "suit" ? l.top : l.outfit === "tracksuit" ? l.top : "#2b3a55";
   const armSkin = l.outfit === "vest" || l.outfit === "polo";
   const sleeve = l.outfit === "vest" ? "#f2efe6" : l.outfit === "stripes" ? "#f2efe6" : l.top;
   const has = (p: string) => l.props.includes(p as never);
 
+  const legL = (
+    <g>
+      <rect x={-sw + 5} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
+      {l.outfit === "tracksuit" && <path d={`M ${-sw + 9} ${hipY + 4} L ${-sw + 9} ${-6}`} stroke="#f2efe6" strokeWidth={2.5} />}
+      <ellipse cx={-sw / 2 + 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
+      <ellipse cx={-sw / 2 - 2} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
+    </g>
+  );
+  const legR = (
+    <g>
+      <rect x={1} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
+      {l.outfit === "tracksuit" && <path d={`M ${sw - 9} ${hipY + 4} L ${sw - 9} ${-6}`} stroke="#f2efe6" strokeWidth={2.5} />}
+      <rect x={3} y={hipY + 2} width={sw * 0.45} height={legLen - 8} rx={3} fill="#000" opacity={0.16} />
+      <ellipse cx={sw / 2 - 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
+      <ellipse cx={sw / 2 - 4} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
+    </g>
+  );
+  const armL = (
+    <g transform={`rotate(${8 + sway} ${-sw} ${shoulderY + 8})`}>
+      <rect x={-sw - 9} y={shoulderY + 4} width={12} height={torsoLen * 0.82} rx={6} fill={sleeve} stroke={K} strokeWidth={3} />
+      {armSkin && <rect x={-sw - 8} y={shoulderY + 4 + torsoLen * 0.38} width={10} height={torsoLen * 0.42} rx={5} fill={skin.c} stroke={K} strokeWidth={2.5} />}
+      {has("tattoos") && <path d={`M ${-sw - 6} ${shoulderY + torsoLen * 0.5} q 3 4 6 0 m -5 7 q 3 4 6 0`} fill="none" stroke="#2b3a55" strokeWidth={1.6} />}
+      <circle cx={-sw - 3} cy={shoulderY + 4 + torsoLen * 0.82} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
+    </g>
+  );
+  const armR = (
+    <g transform={`rotate(${-8 - sway} ${sw} ${shoulderY + 8})`}>
+      <rect x={sw - 3} y={shoulderY + 4} width={12} height={torsoLen * 0.82} rx={6} fill={sleeve} stroke={K} strokeWidth={3} />
+      {armSkin && <rect x={sw - 2} y={shoulderY + 4 + torsoLen * 0.38} width={10} height={torsoLen * 0.42} rx={5} fill={skin.c} stroke={K} strokeWidth={2.5} />}
+      {has("tattoos") && <path d={`M ${sw} ${shoulderY + torsoLen * 0.52} l 5 3 l -5 3 m 1 4 q 3 3 5 0`} fill="none" stroke="#2b3a55" strokeWidth={1.6} />}
+      <circle cx={sw + 3} cy={shoulderY + 4 + torsoLen * 0.82} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
+    </g>
+  );
+  if (part === "legL") return legL;
+  if (part === "legR") return legR;
+  if (part === "armL") return armL;
+  if (part === "armR") return armR;
+  const whole = !part;
+
   const body = (
     <g>
-      <ellipse cx={0} cy={0} rx={30} ry={6} fill="rgba(0,0,0,0.3)" />
+      {whole && <ellipse cx={0} cy={0} rx={30} ry={6} fill="rgba(0,0,0,0.3)" />}
       {/* legs + shoes */}
-      <rect x={-sw + 5} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
-      <rect x={1} y={hipY} width={sw - 6} height={legLen - 4} rx={4} fill={pants} stroke={K} strokeWidth={3.5} />
-      {l.outfit === "tracksuit" && <path d={`M ${-sw + 9} ${hipY + 4} L ${-sw + 9} ${-6} M ${sw - 9} ${hipY + 4} L ${sw - 9} ${-6}`} stroke="#f2efe6" strokeWidth={2.5} />}
-      <rect x={3} y={hipY + 2} width={sw * 0.45} height={legLen - 8} rx={3} fill="#000" opacity={0.16} />
-      <ellipse cx={-sw / 2 + 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
-      <ellipse cx={sw / 2 - 1} cy={-4} rx={sw / 2 + 2} ry={6} fill="#1b2023" stroke={K} strokeWidth={3} />
-      <ellipse cx={-sw / 2 - 2} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
-      <ellipse cx={sw / 2 - 4} cy={-6.5} rx={sw / 5} ry={1.6} fill="#fff" opacity={0.3} />
+      {whole && legL}
+      {whole && legR}
       <g transform={`translate(0 ${-breathe * 0.5}) rotate(${sway * 0.4} 0 ${hipY})`}>
         {/* long hair hangs behind the shoulders */}
         <g transform={`translate(0 ${headY})`}><HairBack l={l} /></g>
         {/* hood behind the head */}
         {l.outfit === "hoodieBlack" && <path d={`M -26 ${shoulderY + 6} Q -34 ${headY - 10} 0 ${headY - 30} Q 34 ${headY - 10} 26 ${shoulderY + 6} Z`} fill="#1f1f1f" stroke={K} strokeWidth={3.5} />}
         {/* arms */}
-        <g transform={`rotate(${8 + sway} ${-sw} ${shoulderY + 8})`}>
-          <rect x={-sw - 9} y={shoulderY + 4} width={12} height={torsoLen * 0.82} rx={6} fill={sleeve} stroke={K} strokeWidth={3} />
-          {armSkin && <rect x={-sw - 8} y={shoulderY + 4 + torsoLen * 0.38} width={10} height={torsoLen * 0.42} rx={5} fill={skin.c} stroke={K} strokeWidth={2.5} />}
-          {has("tattoos") && <path d={`M ${-sw - 6} ${shoulderY + torsoLen * 0.5} q 3 4 6 0 m -5 7 q 3 4 6 0`} fill="none" stroke="#2b3a55" strokeWidth={1.6} />}
-          <circle cx={-sw - 3} cy={shoulderY + 4 + torsoLen * 0.82} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
-        </g>
-        <g transform={`rotate(${-8 - sway} ${sw} ${shoulderY + 8})`}>
-          <rect x={sw - 3} y={shoulderY + 4} width={12} height={torsoLen * 0.82} rx={6} fill={sleeve} stroke={K} strokeWidth={3} />
-          {armSkin && <rect x={sw - 2} y={shoulderY + 4 + torsoLen * 0.38} width={10} height={torsoLen * 0.42} rx={5} fill={skin.c} stroke={K} strokeWidth={2.5} />}
-          {has("tattoos") && <path d={`M ${sw} ${shoulderY + torsoLen * 0.52} l 5 3 l -5 3 m 1 4 q 3 3 5 0`} fill="none" stroke="#2b3a55" strokeWidth={1.6} />}
-          <circle cx={sw + 3} cy={shoulderY + 4 + torsoLen * 0.82} r={6} fill={skin.c} stroke={K} strokeWidth={3} />
-        </g>
+        {whole && armL}
+        {whole && armR}
         <Torso l={l} sw={sw} top={shoulderY} bottom={hipY} />
         <rect x={sw * 0.32} y={shoulderY + 3} width={sw * 0.68 - 2} height={torsoLen - 2} rx={10} fill="#000" opacity={0.13} />
         <rect x={-sw + 5} y={shoulderY + 4} width={sw * 0.7} height={4} rx={2} fill="#fff" opacity={0.2} />

@@ -225,11 +225,12 @@ function indexColliders(map: GameMap) {
 }
 
 /* ------------------------------------------------------------ knockback */
-/** The night-sky stage: one long block floor and many small floating block platforms around it,
-    mirrored left/right, with a few seeded variations. The floor and the two low side blocks are
-    solid; the small platforms let you jump up through them. Spawn points (in `burrows`) float in
-    the air above the floor (you appear on a pedestal that vanishes): 0 far left, 1 far right, 2–3
-    inner left/right, then the rest. `v` picks the platform colour. */
+/** The night-sky stage: at most 7 bases floating far apart over the void — one long solid floor
+    and small one-way platforms around it, mirrored left/right, with a few seeded variations. Every
+    gap can be crossed with a double jump (one jump rises ~160 px, both ~300 px, and a full double
+    jump carries ~360 px sideways), but the void between them makes every hit risky. Spawn points
+    (in `burrows`) float in the air above the floor (you appear on a pedestal that vanishes): 0 far
+    left, 1 far right, 2–3 inner left/right, then the rest. `v` picks the platform colour. */
 function generateStage(seed: number): GameMap {
   const R = rng(seed);
   const rr = (a: number, b: number) => a + R() * (b - a);
@@ -237,29 +238,25 @@ function generateStage(seed: number): GameMap {
   const map: GameMap = { seed, kind: 'kb', plats: [], w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
   const mid = W / 2;
   const add = (cx: number, top: number, w: number, thin: boolean, h: number, v: number) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h, thin, v });
-  const pair = (dx: number, top: number, w: number, thin: boolean, h: number, v: number) => { add(mid - dx, top, w, thin, h, v); add(mid + dx, top, w, thin, h, v); };
+  const pair = (dx: number, top: number, w: number, v: number) => { add(mid - dx, top, w, true, 72, v); add(mid + dx, top, w, true, 72, v); };
   const layout = Math.floor(R() * 3);
   const FLOOR = 1200;
-  // the long floor
-  add(mid, FLOOR, layout === 1 ? 1320 : 1520, false, 132, 2);
-  // low side blocks (solid)
-  pair(layout === 2 ? 930 : 860, 1040 + rr(-20, 20), rr(260, 320), false, 96, 1);
-  if (layout === 1) pair(800, 1380, 220, false, 96, 3); // low steps beside the floor ends (not under them)
-  // small floating platforms (one-way)
-  const j = (n: number) => n + rr(-22, 22);
-  pair(j(430), j(960), rr(230, 280), true, 72, 0);
-  add(mid, j(770), rr(340, 400), true, 72, 3);
-  pair(j(740), j(800), rr(210, 250), true, 72, 3);
-  pair(j(1190), j(900), rr(190, 230), true, 72, 0);
-  pair(j(390), j(590), rr(230, 270), true, 72, 1);
-  pair(j(910), j(570), rr(200, 240), true, 72, 2);
-  if (layout === 0) add(mid, j(400), 240, true, 72, 0);
-  else pair(j(620), j(390), 200, true, 72, 0);
-  if (layout === 2) pair(j(1250), j(620), 180, true, 72, 1);
+  const half = layout === 1 ? 950 : 1060; // floor half width (a long walk: ~7 s end to end)
+  add(mid, FLOOR, half * 2, false, 132, 2);
+  // side bases: a wide gap (~240–280 px) at about the same height as the floor
+  const sw = rr(600, 700), sGap = rr(240, 280);
+  const sdx = half + sGap + sw / 2;
+  pair(sdx, FLOOR - rr(40, 80), sw, 1);
+  // upper bases over the floor's ends (reach them by jumping up through them)
+  const uw = rr(460, 540), udx = half - uw / 2 - rr(120, 220);
+  const uy = FLOOR - rr(225, 250);
+  pair(udx, uy, uw, 3);
+  if (layout === 2) add(mid, uy - rr(220, 240), rr(560, 640), true, 72, 0); // a top base in the middle (6 in all)
+  else pair(sdx + rr(-60, 60), FLOOR - rr(275, 300), rr(420, 480), 0); // high bases over the side ones (7 in all)
   // spawn points in the air above the floor, clear of platforms
   const free = (x: number, feet: number) => !map.plats.some((p) => x + 70 > p.x && x - 70 < p.x + p.w && p.y + p.h + 10 > feet - 150 && p.y < feet + 30);
   const spots: number[] = [];
-  for (const dx of [640, 420, 200, 0, 520, 300, 100]) for (const s of dx ? [-1, 1] : [1]) if (free(mid + s * dx, FLOOR - 170)) spots.push(mid + s * dx);
+  for (const dx of [950, 600, 250, 0, 780, 420, 120]) for (const s of dx ? [-1, 1] : [1]) if (free(mid + s * dx, FLOOR - 170)) spots.push(mid + s * dx);
   const order = [...spots].sort((a, b) => a - b);
   const pick = (x: number | undefined) => { if (x === undefined) return; const i = spots.indexOf(x); if (i >= 0) spots.splice(i, 1); map.burrows.push({ id: map.burrows.length, x, y: FLOOR - 170 - 62 }); };
   pick(order[0]); pick(order[order.length - 1]); pick(order[1]); pick(order[order.length - 2]);
