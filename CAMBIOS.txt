@@ -357,6 +357,79 @@ G1h. PERSONAJES 3D DE LOS PROFES (librería .glb, galería /toons3d)
 - Class Wars sigue con los personajes 2D de siempre (ahora mueven piernas y
   brazos al caminar, saltar y caer); no carga nada de 3D.
 
+G1i. ENGLISH RUN (Juegos, tarjeta destacada; ruta /run)
+- Carrera sin fin en 3D con los modelos de los profes (estilo Subway Surfers
+  / Sonic Dash, todo propio): 3 carriles en una calle de ciudad con edificios
+  de colores, toldos, árboles, faroles, cabinas rojas y buzones.
+- Controles: deslizar en el celular (o flechas / WASD): ← → cambia de carril,
+  ↑ salta, ↓ se desliza (en el aire, baja de golpe). Esc o P = pausa; se
+  pausa sola si cambias de pestaña.
+- Obstáculos: barreras bajas (saltar), barreras altas (deslizarse), buses
+  estacionados, buses que vienen de frente (pitan) y rampas para subir y
+  correr por el techo de los buses. Chocar de frente = caída; chocar de lado
+  = tropiezo y aparece un perseguidor detrás: otro tropiezo en 5 s y te
+  atrapa. La velocidad sube poco a poco.
+- Inglés: cada ~450 m llega una PUERTA DE PALABRAS con una pregunta del nivel
+  elegido (A1 a C1–C2: traducción, opuestos, pasados, participios, plurales,
+  comparativos, make/do, preposiciones, phrasal verbs, sinónimos, formación
+  de palabras, idioms, tiempos verbales). Cada carril lleva una respuesta:
+  pasar por la correcta sube el multiplicador (hasta x10) y da monedas; la
+  incorrecta lo baja. La pregunta y las opciones también salen arriba en
+  pantalla, y una voz en inglés dice la respuesta.
+- Revivir: al caer, responde una pregunta en 10 s para seguir (2 veces por
+  carrera).
+- Monedas (en filas, arcos y sobre los buses) y poderes: imán, puntaje x2,
+  escudo (aguanta un choque) y súper salto.
+- Al final: puntaje, récord, monedas, distancia y la lista de todas tus
+  respuestas con la correcta, para repasar. Récord y monedas se guardan en el
+  dispositivo.
+- Imagen: mundo curvo (el horizonte cae como en los runners), sombreado
+  cartoon por pasos, contornos de tinta en personajes y obstáculos, sombras,
+  cielo con sol, nubes y ciudad a lo lejos, niebla, partículas (destellos,
+  polvo, confeti), cámara que sigue con suavidad, se abre con la velocidad y
+  tiembla al chocar, y líneas de velocidad. Música y efectos sintetizados (se
+  pueden apagar). Si el teléfono no da, baja la resolución y luego las
+  sombras solo.
+- Probado con un piloto automático que corre 8 km de pista generada: nunca
+  aparece un tramo imposible.
+
+G1j. YOU DRAW (Juegos › En vivo con tu clase, ruta /youdraw)
+- El profe dirige desde el proyector (no juega): crea la sala, los
+  estudiantes entran con el código o escaneando el QR (también pueden entrar
+  con el juego empezado), y en cada ronda el juego elige a un estudiante al
+  azar con una ruleta (primero a los que menos han dibujado). "Otro
+  estudiante" vuelve a sortear si el elegido no está.
+- El elegido recibe 3 palabras de su nivel (A1, A2, B1, B2, C1–C2; unas 1.460
+  palabras dibujables en total, 276–310 por nivel) y tiene 15 s para escoger
+  una. Luego dibuja en su celular (colores, 4 grosores, borrador, deshacer,
+  borrar todo) y los demás ven el dibujo en vivo en su celular y en el
+  proyector, y escriben su respuesta.
+- Ajustes antes de empezar: nivel, tiempo para dibujar (30, 60, 70 o 90 s),
+  porcentaje de letras que se revelan con el tiempo (25, 50 o 75 %) y número
+  de rondas (3 a 30).
+- Respuestas: no importan mayúsculas, tildes, guiones, espacios, a/an/the/to
+  ni la -s del plural; si está cerca, solo esa persona ve "¡está cerca!".
+  Los intentos fallidos salen en la lista de todos. Más rápido = más puntos;
+  quien dibuja gana según cuántos la adivinaron. La ronda acaba cuando todos
+  la adivinan o se acaba el tiempo.
+- El profe puede terminar un turno, pasar a la siguiente ronda (o dejarla
+  automática), sacar a alguien de la sala y terminar el juego.
+- Final: pantalla negra ("And the winners are…"), transición a rojo y podio
+  con los 3 primeros, confeti, luces y el resto de la tabla; en cada celular
+  sale "Quedaste de #N".
+
+G1k. PASS THE DOODLE: EDITAR Y QR
+- Después de "¡Listo!" se puede volver a editar el dibujo (o la frase)
+  mientras quede tiempo: el dibujo vuelve tal cual, con su historial de
+  deshacer.
+- El QR para entrar sale ahora también cuando el profe juega (antes solo en
+  modo proyector) y se puede ampliar a pantalla completa.
+
+G1l. MANTENIMIENTO
+- jsPDF actualizado a 4.2.1: se corrige la vulnerabilidad crítica que
+  marcaba npm audit (0 vulnerabilidades). El generador de PDF de tareas
+  funciona igual.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

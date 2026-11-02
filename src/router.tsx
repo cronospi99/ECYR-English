@@ -79,6 +79,7 @@ export const router = createBrowserRouter([
   { path: 'impostor/*', element: page(() => import('./features/impostor/ImpostorApp')), errorElement: <RouteError /> },
   { path: 'doodle/*', element: page(() => import('./features/doodle/DoodleApp')), errorElement: <RouteError /> },
   { path: 'youdraw/*', element: page(() => import('./features/youdraw/YouDrawApp')), errorElement: <RouteError /> },
+  { path: 'run', element: page(() => import('./features/run/RunApp')), errorElement: <RouteError /> },
   { path: 'toons3d', element: page(() => import('./features/toons3d/GalleryPage')), errorElement: <RouteError /> },
   { path: 'play/:slug', element: page(() => import('./features/games/PlayerPage')), errorElement: <RouteError /> },
 ]);
