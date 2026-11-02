@@ -34,6 +34,15 @@ const LIVE: { to: string; emoji: string; art?: ReactNode; title: string; sub: st
     accent: '#ffe36b',
   },
   {
+    to: '/youdraw',
+    emoji: '🎨',
+    title: 'You Draw',
+    sub: 'El profe dirige: un estudiante al azar dibuja una palabra de su nivel y los demás la ven en vivo y la adivinan escribiendo. Letras que se revelan, podio final.',
+    from: '#221a55',
+    to2: '#ff4757',
+    accent: '#ffd23f',
+  },
+  {
     to: '/games/cards',
     emoji: '🃏',
     title: 'Cartas de profes',
