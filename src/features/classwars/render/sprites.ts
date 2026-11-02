@@ -283,30 +283,42 @@ export const PROP_SHADOW: Partial<Record<PropKind, [number, number, number]>> = 
 };
 
 /* --------------------------------------------------------- items + boxes */
-/** The mystery box; `grey` is the opened one waiting to refill. */
+/** The mystery box: a chunky yellow "?" block seen from a little above (top face + front),
+    thick ink outline, corner rivets. `grey` is the opened one waiting to refill. */
 export function boxSprite(s: number, grey = false): Sprite {
   const key = `box${grey ? 'g' : ''}@${s}`;
   const hit = propCache.get(key);
   if (hit) return hit;
   const c = grey
-    ? { top: '#b8bcc8', bot: '#8b909e', lid: '#cdd1db', gold: '#e6e8ee', mark: '#8b909e' }
-    : { top: '#8f6bff', bot: '#5b3fd6', lid: '#a78bff', gold: '#ffd23f', mark: '#5b3fd6' };
-  const sp = bake(-34, -70, 68, 76, s, (g) => {
-    rr(g, -28, -54, 56, 52, 10);
-    const gr = g.createLinearGradient(0, -54, 0, -2);
-    gr.addColorStop(0, c.top); gr.addColorStop(1, c.bot);
+    ? { top: '#d9dce4', front: '#b3b8c4', side: '#9aa0ad', mark: '#eef0f4', rivet: '#8b909e', shade: '#8b909e' }
+    : { top: '#ffe36b', front: '#ffc928', side: '#e9a514', mark: '#ffffff', rivet: '#b9780a', shade: '#d18d0b' };
+  const sp = bake(-36, -82, 72, 88, s, (g) => {
+    const W = 56, H = 50, T = 18; // front width/height, top depth
+    const x = -W / 2, y = -H - 2;
+    // top face
+    g.beginPath(); g.moveTo(x, y); g.lineTo(x + 7, y - T); g.lineTo(x + W + 7, y - T); g.lineTo(x + W, y); g.closePath();
+    g.fillStyle = c.top; g.fill(); stroke(g, 4.5);
+    // side face
+    g.beginPath(); g.moveTo(x + W, y); g.lineTo(x + W + 7, y - T); g.lineTo(x + W + 7, y + H - T); g.lineTo(x + W, y + H); g.closePath();
+    g.fillStyle = c.side; g.fill(); stroke(g, 4.5);
+    // front face
+    rr(g, x, y, W, H, 5);
+    const gr = g.createLinearGradient(0, y, 0, y + H);
+    gr.addColorStop(0, c.front); gr.addColorStop(1, c.shade);
     g.fillStyle = gr; g.fill(); stroke(g, 4.5);
-    g.fillStyle = c.gold; g.fillRect(-5, -54, 10, 52);
-    g.lineWidth = 2; g.strokeStyle = INK; g.strokeRect(-5, -54, 10, 52);
-    rr(g, -31, -62, 62, 14, 6); g.fillStyle = c.lid; g.fill(); stroke(g, 4);
-    g.fillStyle = c.gold; g.fillRect(-5, -62, 10, 14); g.strokeRect(-5, -62, 10, 14);
-    // bow
-    g.fillStyle = c.gold;
-    for (const d of [-1, 1]) { g.beginPath(); g.ellipse(d * 11, -66, 10, 6, d * 0.5, 0, 7); g.fill(); stroke(g, 3); }
-    // question mark badge
-    g.beginPath(); g.arc(0, -30, 13, 0, 7); g.fillStyle = '#ffffff'; g.fill(); stroke(g, 3);
-    g.fillStyle = c.mark; g.font = '900 20px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('?', 0, -29);
-    g.fillStyle = 'rgba(255,255,255,0.25)'; g.fillRect(-22, -46, 6, 36);
+    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x + 5, y + 4, W - 10, 5);
+    // rivets
+    for (const [rx, ry] of [[x + 7, y + 7], [x + W - 7, y + 7], [x + 7, y + H - 7], [x + W - 7, y + H - 7]]) {
+      g.beginPath(); g.arc(rx, ry, 3, 0, 7); g.fillStyle = c.rivet; g.fill();
+    }
+    // question mark with outline
+    g.font = '900 34px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.lineJoin = 'round'; g.lineWidth = 6; g.strokeStyle = INK; g.strokeText('?', 0, y + H / 2 + 2);
+    g.fillStyle = c.mark; g.fillText('?', 0, y + H / 2 + 2);
+    // small "?" on the top face
+    g.save(); g.translate(3.5, y - T / 2); g.transform(1, 0, -0.39, 0.42, 0, 0);
+    g.font = '900 30px Inter, system-ui, sans-serif'; g.lineWidth = 5; g.strokeText('?', 0, 2); g.fillStyle = c.mark; g.fillText('?', 0, 2);
+    g.restore();
   });
   propCache.set(key, sp);
   return sp;

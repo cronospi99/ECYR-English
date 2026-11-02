@@ -3,19 +3,23 @@
    the host's 10 Hz snapshots. */
 import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
-  BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, speedFromFlags,
+  BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, speedFromFlags, type Game,
 } from './constants';
 import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
-import type { Ev } from './sim';
+import { paintSpeed, type Ev } from './sim';
+import { kbStep, newBody, type Body } from './kb';
+import { savedPick, savePick, type Pick } from './questions';
 import { VisualWorld } from './vis';
 import { decAnswer, type Result } from './host';
 
-export interface RosterEntry { idx: number; peer: string; name: string; char: number; guest: boolean; bot: boolean }
+export interface RosterEntry { idx: number; peer: string; name: string; char: number; guest: boolean; bot: boolean; team: number }
 /** One player as drawn this frame. */
 export interface RP {
   idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; en: number; flags: number; look: number;
   weapon: number; ammo: number; maxHp: number; borrowed: number; charges: number; name: string; me: boolean; bot: boolean;
+  /** Color Clash team (−1 none) and Knockback damage %. */
+  team: number; pct: number;
 }
 export interface ServedQ { id: number; q: string; o: string[]; a: number }
 
@@ -51,6 +55,13 @@ export class ClientSession implements RenderSource {
   /** Energy everyone started with (the HUD bar's full mark). */
   startEnergy = 1200;
   goal = 0;
+  game: Game = 'arena';
+  teams = 0;
+  /** This student's question level + unit (sent to the host; the teacher may change it). */
+  unit: Pick | null = savedPick();
+  /** The teacher lets each student choose their level + unit. */
+  perStudent = false;
+  teamCellsEnd: number[] = [];
   isPaused = false;
   /** Host time when we received 'start' (0 = we were there from the beginning). */
   joinedAtMs = 0;
@@ -68,7 +79,10 @@ export class ClientSession implements RenderSource {
 
   /* own prediction */
   me = { x: 0, y: 0, vx: 0, vy: 0, fv: 0, alive: true };
-  input = { mx: 0, my: 0, aim: 0, ad: 200, held: false, atkC: 0, powC: 0, bonC: 0, target: null as null | { x: number; y: number } };
+  /** Knockback: our own physics body. */
+  body: Body = newBody(0, 0);
+  input = { mx: 0, my: 0, aim: 0, ad: 200, held: false, atkC: 0, powC: 0, bonC: 0, jumpC: 0, target: null as null | { x: number; y: number } };
+  private jumpSeen = 0;
   private lastSent = { x: -1, y: -1, a: -1, ad: -1, b: -1, c: -1, w: -1, u: -1, fv: -1 };
   private lastSendAt = 0;
   quizOpen = false;
@@ -105,7 +119,9 @@ export class ClientSession implements RenderSource {
   private bump() { this.version++; this.listeners.forEach((f) => f()); }
   close() { this.off(); this.offStatus(); this.relay.close(); }
 
-  hello() { this.relay.send({ k: 'hello', name: this.name, char: this.char, uid: this.uid }, 'host'); }
+  hello() { this.relay.send({ k: 'hello', name: this.name, char: this.char, uid: this.uid, pick: this.unit }, 'host'); }
+  setUnit(p: Pick) { this.unit = p; savePick(p); this.relay.send({ k: 'unit', ...p }, 'host'); this.bump(); }
+  jumpPress() { this.input.jumpC++; }
   pick(char: number) { this.char = char; this.relay.send({ k: 'pick', char }, 'host'); this.bump(); }
 
   private onMessage(env: Envelope) {
@@ -120,9 +136,11 @@ export class ClientSession implements RenderSource {
         if (this.phase === 'connecting' || this.phase === 'lobby' || this.phase === 'ended' || this.phase === 'full') { this.phase = 'lobby'; this.myIdx = -1; }
         this.lobby = (d.players as [string, string, number, number][]).map(([peer, name, char, guest]) => ({ peer, name, char, guest: !!guest }));
         this.maxPlayers = d.max;
+        this.perStudent = !!d.ps;
         this.bump();
         break;
       case 'kick': this.phase = 'kicked'; this.bump(); break;
+      case 'unit': this.unit = { lv: d.lv, un: d.un }; savePick(this.unit); this.bump(); break;
       case 'full': if (this.phase === 'connecting') { this.phase = 'full'; this.bump(); } break;
       case 'start': this.onStart(d); break;
       case 'roster': this.setRoster(d.r); this.bump(); break;
@@ -136,6 +154,7 @@ export class ClientSession implements RenderSource {
       case 'end':
         this.results = d.res;
         this.winner = d.winner;
+        this.teamCellsEnd = d.teams ?? [];
         this.phase = 'ended';
         this.bump();
         break;
@@ -143,14 +162,17 @@ export class ClientSession implements RenderSource {
   }
 
   private setRoster(r: (string | number)[][]) {
-    for (const [idx, peer, name, char, guest, bot] of r as [number, string, string, number, number, number][]) this.roster.set(idx, { idx, peer, name, char, guest: !!guest, bot: !!bot });
+    for (const [idx, peer, name, char, guest, bot, team] of r as [number, string, string, number, number, number, number?][]) this.roster.set(idx, { idx, peer, name, char, guest: !!guest, bot: !!bot, team: team ?? -1 });
   }
 
-  private onStart(d: { seed: number; portals?: number; en0?: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[] }; paused: boolean }) {
-    if (!this.map || this.map.seed !== d.seed || this.map.burrows.length !== (d.portals ?? 7)) {
-      this.map = generateMap(d.seed, d.portals ?? 7);
+  private onStart(d: { seed: number; game?: Game; teams?: number; portals?: number; en0?: number; salt: number; dur: number; goal: number; roster: (string | number)[][]; you: number; full: { t: number; boxes: number[][]; gems: number[][]; zones: number[][]; ups: number[][]; streaks: number[]; cds: number[]; paint?: number[] | null; ts?: number[] }; paused: boolean }) {
+    const game = d.game ?? 'arena';
+    if (!this.map || this.map.seed !== d.seed || this.map.kind !== game || (game !== 'kb' && this.map.burrows.length !== (d.portals ?? 7))) {
+      this.map = generateMap(d.seed, d.portals ?? 7, game);
       this.vis = new VisualWorld(this.map);
     }
+    this.game = game;
+    this.teams = d.teams ?? 0;
     this.salt = d.salt;
     if (d.en0) this.startEnergy = d.en0;
     this.joinedAtMs = d.full.t;
@@ -187,7 +209,7 @@ export class ClientSession implements RenderSource {
     if (this.snaps.length > 30) this.snaps.shift();
     const mine = p.get(this.myIdx);
     if (mine) {
-      if (this.me.fv === -1) { this.me.x = mine[1]; this.me.y = mine[2]; this.me.fv = 0; }
+      if (this.me.fv === -1) { this.me.x = mine[1]; this.me.y = mine[2]; this.me.fv = 0; this.body = newBody(mine[1], mine[2]); }
       this.me.alive = !!(mine[7] & FLAG.alive);
     }
     this.handleOwnEvents(d.e);
@@ -200,13 +222,14 @@ export class ClientSession implements RenderSource {
       const k = e[0];
       if (e[1] !== this.myIdx) continue;
       if (k === 'kb') {
-        this.me.vx += e[2] as number;
-        this.me.vy += e[3] as number;
+        if (this.game === 'kb') { this.body.vx += e[2] as number; this.body.vy = Math.min(this.body.vy, 0) + (e[3] as number); this.body.ground = false; }
+        else { this.me.vx += e[2] as number; this.me.vy += e[3] as number; }
         this.me.fv = e[4] as number;
       } else if (k === 'tp') {
         this.me.x = e[2] as number;
         this.me.y = e[3] as number;
         this.me.vx = this.me.vy = 0;
+        Object.assign(this.body, { x: this.me.x, y: this.me.y, vx: 0, vy: 0 });
         this.me.fv = e[4] as number;
         this.input.target = null;
       } else if (k === 'an') {
@@ -244,7 +267,15 @@ export class ClientSession implements RenderSource {
     const row = this.myRow();
     const flags = row ? row[7] : FLAG.alive;
     const alive = !!(flags & FLAG.alive);
-    if (alive && !this.isPaused && this.me.fv !== -1) {
+    if (alive && !this.isPaused && this.me.fv !== -1 && this.game === 'kb') {
+      // Side view: walk left/right, jump (double jump in the air), down drops through ledges.
+      let mx = this.quizOpen ? 0 : this.input.mx;
+      if (flags & FLAG.confuse) mx = -mx;
+      const jump = this.input.jumpC !== this.jumpSeen && !this.quizOpen;
+      this.jumpSeen = this.input.jumpC;
+      kbStep(this.map, this.body, Math.abs(mx) > 0.2 ? Math.sign(mx) * Math.min(1, Math.abs(mx) * 1.4) : 0, jump, this.input.my > 0.6 && !this.quizOpen, speedFromFlags(flags), dt);
+      this.me.x = this.body.x; this.me.y = this.body.y;
+    } else if (alive && !this.isPaused && this.me.fv !== -1) {
       let mx = this.input.mx, my = this.input.my;
       if (this.input.target) {
         const dx = this.input.target.x - this.me.x, dy = this.input.target.y - this.me.y, d = Math.hypot(dx, dy);
@@ -254,7 +285,8 @@ export class ClientSession implements RenderSource {
       if (this.quizOpen) { mx = 0; my = 0; }
       if (flags & FLAG.confuse) { mx = -mx; my = -my; }
       const l = Math.hypot(mx, my);
-      const sp = BASE_SPEED * speedFromFlags(flags);
+      const team = row?.[15] ?? -1;
+      const sp = BASE_SPEED * speedFromFlags(flags) * (this.vis.paint && team >= 0 ? paintSpeed(this.vis.paint, this.map, team, this.me.x, this.me.y) : 1);
       let dx = 0, dy = 0;
       if (l > 0.05 && sp > 0) { dx = (mx / Math.max(1, l)) * sp * dt; dy = (my / Math.max(1, l)) * sp * dt; }
       if (Math.abs(this.me.vx) + Math.abs(this.me.vy) > 1) {
@@ -374,7 +406,7 @@ export class ClientSession implements RenderSource {
         y: me ? this.me.y : tp ? rb[2] : lerp(ra[2], rb[2], t),
         aim: me ? this.input.aim : lerpAngle(byteToAim(ra[3]), byteToAim(rb[3]), t),
         hp: live[4], sh: live[5], dia: live[6], en: live[14] ?? 0, flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
-        name: r?.name ?? '?', me, bot: !!r?.bot,
+        name: r?.name ?? '?', me, bot: !!r?.bot, team: live[15] ?? -1, pct: live[16] ?? 0,
       });
     }
     return out;
@@ -385,7 +417,7 @@ export class ClientSession implements RenderSource {
     if (!last) return [];
     return [...last.p.values()]
       .filter((r) => !(r[7] & FLAG.away) || r[6] > 0)
-      .map((r) => ({ idx: r[0], name: this.roster.get(r[0])?.name ?? '?', char: r[8], dia: r[6], alive: !!(r[7] & FLAG.alive), bot: !!this.roster.get(r[0])?.bot, kos: 0 }))
+      .map((r) => ({ idx: r[0], name: this.roster.get(r[0])?.name ?? '?', char: r[8], dia: r[6], alive: !!(r[7] & FLAG.alive), bot: !!this.roster.get(r[0])?.bot, kos: 0, team: r[15] ?? -1 }))
       .sort((x, y) => y.dia - x.dia);
   }
 }

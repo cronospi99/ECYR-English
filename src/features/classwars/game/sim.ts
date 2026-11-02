@@ -4,10 +4,12 @@
    10 Hz snapshot. */
 import {
   BASE_SPEED, BOX_COOLDOWN_MS, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
-  PLAYER_R, RESPAWN_MS, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, START_ENERGY, STEP_COST, TICK_MS, aimToByte, type Fx,
+  KB_SPEED, PAINT_CELL, PAINT_R, PLAYER_R, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, SPLAT_R, START_ENERGY, STEP_COST, TICK_MS,
+  BOT_LEVELS, aimToByte, respawnMs, type Fx, type Game,
 } from './constants';
 import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
-import { freeSpot, generateMap, hitsWall, moveCircle, resolve, type GameMap } from './map';
+import { freeSpot, generateMap, hitsWall, moveCircle, paintCols, paintMask, paintRows, resolve, type GameMap } from './map';
+import { kbStep, newBody, outOfStage, type Body } from './kb';
 
 export type Ev = (string | number)[];
 
@@ -40,6 +42,15 @@ export interface SimPlayer {
   streak: number; bestStreak: number; correct: number; wrong: number; kos: number; deaths: number; boxes: number;
   ups: Ups;
   burrowReadyAt: number;
+  /** Color Clash team (−1 = none). */
+  team: number;
+  /** Knockback damage %. */
+  pct: number;
+  /** Knockback physics body (bots only; phones simulate their own). */
+  body: Body | null;
+  /** Bot input for knockback: a jump / drop request this tick. */
+  jumpQ: boolean; downQ: boolean;
+  lastHitAt: number;
   /* bot brain scratch */
   brain?: Record<string, number>;
 }
@@ -50,7 +61,17 @@ interface Box { id: number; x: number; y: number; readyAt: number }
 interface Zone { id: number; x: number; y: number; r: number; until: number; owner: number }
 interface Strike { x: number; y: number; r: number; at: number; dmg: number; kb: number; owner: number; stun: number; kind: string }
 
-export interface SimSettings { durationMs: number; goal: number; portals?: number; startEnergy?: number }
+export interface SimSettings {
+  durationMs: number; goal: number; portals?: number; startEnergy?: number;
+  game?: Game;
+  /** Color Clash: number of teams (2–4). */
+  teams?: number;
+  /** Bot difficulty: index into BOT_LEVELS. */
+  botLevel?: number;
+}
+
+/** Color Clash team bases: one portal per team, in opposite corners. */
+const TEAM_BASE = [0, 5, 2, 3];
 
 export class Sim {
   map: GameMap;
@@ -69,11 +90,34 @@ export class Sim {
   private nextId = 1;
   rand = Math.random;
   settings: SimSettings;
+  game: Game;
+  teams: number;
+  /* Color Clash: cell owner (0 = none, team + 1), which cells count, changes since the last flush. */
+  paint: Uint8Array | null = null;
+  paintable: Uint8Array | null = null;
+  teamCells: number[] = [];
+  private paintDirty = new Map<number, number>();
+  private teamsSent = '';
+  winnerTeam = -1;
 
   constructor(seed: number, settings: SimSettings) {
-    this.map = generateMap(seed, settings.portals);
+    this.game = settings.game ?? 'arena';
+    this.teams = this.game === 'paint' ? Math.max(2, Math.min(4, settings.teams ?? 2)) : 0;
+    this.map = generateMap(seed, settings.portals, this.game);
     this.settings = settings;
+    if (this.game === 'paint') {
+      this.paintable = paintMask(this.map);
+      this.paint = new Uint8Array(this.paintable.length);
+      this.teamCells = Array(this.teams).fill(0);
+      // every team starts with a splash of colour around its base
+      for (let t = 0; t < this.teams; t++) { const b = this.base(t); this.paintAt(b.x, b.y + 40, 230, t, null); }
+    }
   }
+
+  get bot() { return BOT_LEVELS[Math.max(0, Math.min(2, this.settings.botLevel ?? 0))]; }
+  /** Rivals: not yourself and not your team. */
+  foe(p: SimPlayer, q: SimPlayer) { return q !== p && q.alive && q.connected && (!this.teams || q.team !== p.team); }
+  base(team: number) { return this.map.burrows[TEAM_BASE[team] % this.map.burrows.length]; }
 
   get remainingMs() { return Math.max(0, this.settings.durationMs - this.now); }
 
@@ -82,9 +126,15 @@ export class Sim {
 
   addPlayer(o: { peer: string | null; name: string; char: number; uid: string | null; guest: boolean; bot: boolean }): SimPlayer {
     const idx = this.players.length;
-    const b = this.map.burrows[idx % this.map.burrows.length];
+    let team = -1;
+    if (this.teams) {
+      const n = Array(this.teams).fill(0);
+      for (const q of this.players) if (q.team >= 0) n[q.team]++;
+      team = n.indexOf(Math.min(...n));
+    }
+    const b = team >= 0 ? this.base(team) : this.map.burrows[idx % this.map.burrows.length];
     const p: SimPlayer = {
-      idx, ...o, connected: true,
+      idx, ...o, connected: true, team, pct: 0, body: null, jumpQ: false, downQ: false, lastHitAt: -1e9,
       x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, wvx: 0, wvy: 0, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
       mx: 0, my: 0, aim: Math.PI / 2, ad: 200,
       hp: MAX_HP, sh: MAX_SHIELD, dia: 0, en: this.settings.startEnergy ?? START_ENERGY, alive: true, respawnAt: 0,
@@ -94,6 +144,10 @@ export class Sim {
       inQuiz: false, streak: 0, bestStreak: 0, correct: 0, wrong: 0, kos: 0, deaths: 0, boxes: 0, ups: freshUps(),
       burrowReadyAt: this.now + BURROW_COOLDOWN,
     };
+    if (this.game === 'kb') {
+      p.y = p.py = p.ty = b.y;
+      if (o.bot || !o.peer) p.body = newBody(p.x, p.y);
+    }
     this.players.push(p);
     return p;
   }
@@ -111,6 +165,8 @@ export class Sim {
     if (this.has(p, 'speed')) m *= 1.55;
     if (this.has(p, 'slow')) m *= 0.55;
     if (this.has(p, 'charm')) m *= 0.5;
+    if (p.bot) m *= this.bot.speed;
+    if (this.paint && p.team >= 0) m *= paintSpeed(this.paint, this.map, p.team, p.x, p.y);
     return m;
   }
   hitR(_p: SimPlayer) { return PLAYER_R; }
@@ -154,6 +210,8 @@ export class Sim {
       // Movement.
       const mul = this.speedMul(p);
       const speed = BASE_SPEED * mul;
+      if (this.game === 'kb') { this.moveKb(p, mul, dt); }
+      else {
       let nx = p.x, ny = p.y;
       if (p.peer && !p.bot) {
         if (p.hasT && mul > 0) {
@@ -188,7 +246,10 @@ export class Sim {
         p.vy *= k;
       } else { p.vx = 0; p.vy = 0; }
       [p.x, p.y] = moveCircle(this.map, p.x, p.y, nx - p.x, ny - p.y);
+      }
       p.wvx = (p.x - p.px) / dt; p.wvy = (p.y - p.py) / dt;
+      if (!p.alive) continue; // knocked off the stage this tick
+      if (this.paint && !p.inQuiz) this.paintAt(p.x, p.y, PAINT_R, p.team, p);
 
       // Regeneration.
       const maxHp = this.maxHp(p);
@@ -200,7 +261,7 @@ export class Sim {
       if (p.pendingShot || p.attackHeld) this.fire(p);
 
       // Burrows.
-      if (now >= p.burrowReadyAt) {
+      if (this.game !== 'kb' && now >= p.burrowReadyAt) {
         for (const b of this.map.burrows) {
           if (Math.hypot(b.x - p.x, b.y - p.y) < 34) {
             const others = this.map.burrows.filter((o) => o.id !== b.id);
@@ -229,7 +290,7 @@ export class Sim {
     }
 
     // Player–player separation (soft), so crowds do not stack on one pixel.
-    for (let i = 0; i < this.players.length; i++) {
+    for (let i = 0; i < (this.game === 'kb' ? 0 : this.players.length); i++) {
       const a = this.players[i];
       if (!a.alive || !a.connected) continue;
       for (let j = i + 1; j < this.players.length; j++) {
@@ -253,6 +314,66 @@ export class Sim {
       if (w) { this.winner = w.idx; this.ended = true; }
     }
     if (now >= this.settings.durationMs) this.ended = true;
+    if (this.ended && this.teams) this.winnerTeam = this.teamCells.indexOf(Math.max(...this.teamCells));
+  }
+
+  /** Knockback movement: phones report their own physics, bots run it here. Off the stage = out. */
+  private moveKb(p: SimPlayer, mul: number, dt: number) {
+    const ox = p.x;
+    if (p.body) {
+      const b = p.body;
+      const jump = p.jumpQ, down = p.downQ;
+      p.jumpQ = p.downQ = false;
+      kbStep(this.map, b, Math.max(-1, Math.min(1, p.mx)), jump, down, mul, dt);
+      p.x = b.x; p.y = b.y;
+    } else if (p.hasT) { p.x = p.tx; p.y = p.ty; }
+    // walking spends energy (flying from a hit does not)
+    const walked = Math.min(Math.abs(p.x - ox), KB_SPEED * mul * dt * 1.2);
+    if (walked > 0.2) this.spend(p, walked * STEP_COST);
+    if (outOfStage(this.map, p.x, p.y)) {
+      const by = this.now - p.lastHitAt < 7000 ? this.players[p.lastHitBy] : undefined;
+      this.ko(p, by);
+    }
+  }
+
+  /* ---------------------------------------------------------- Color Clash */
+  /** Paint the cells within r of (x, y) for a team; the painter scores one point per cell taken. */
+  paintAt(x: number, y: number, r: number, team: number, by: SimPlayer | null) {
+    const grid = this.paint, mask = this.paintable;
+    if (!grid || !mask || team < 0) return 0;
+    const cols = paintCols(this.map), rows = paintRows(this.map), v = team + 1;
+    const c0 = Math.max(0, Math.floor((x - r) / PAINT_CELL)), c1 = Math.min(cols - 1, Math.floor((x + r) / PAINT_CELL));
+    const r0 = Math.max(0, Math.floor((y - r) / PAINT_CELL)), r1 = Math.min(rows - 1, Math.floor((y + r) / PAINT_CELL));
+    let n = 0;
+    for (let cy = r0; cy <= r1; cy++)
+      for (let cx = c0; cx <= c1; cx++) {
+        const i = cy * cols + cx;
+        if (!mask[i] || grid[i] === v) continue;
+        const dx = (cx + 0.5) * PAINT_CELL - x, dy = (cy + 0.5) * PAINT_CELL - y;
+        if (dx * dx + dy * dy > r * r) continue;
+        if (grid[i]) this.teamCells[grid[i] - 1]--;
+        grid[i] = v;
+        this.teamCells[team]++;
+        this.paintDirty.set(i, v);
+        n++;
+      }
+    if (by) by.dia += n;
+    return n;
+  }
+
+  /** Paint changes since the last call, as events for the snapshot. */
+  takePaint(): Ev[] {
+    if (!this.paint) return [];
+    const out: Ev[] = [];
+    if (this.paintDirty.size) {
+      const e: Ev = ['pd'];
+      for (const [i, v] of this.paintDirty) e.push(i, v);
+      this.paintDirty.clear();
+      out.push(e);
+    }
+    const ts = this.teamCells.join(',');
+    if (ts !== this.teamsSent) { this.teamsSent = ts; out.push(['ts', ...this.teamCells]); }
+    return out;
   }
 
   /** Aim help: if a rival is within a small angle of where you aim and in range, aim where they
@@ -261,7 +382,7 @@ export class Sim {
     const sx = p.x, sy = p.y - 18;
     let best: SimPlayer | null = null, bestErr = cone;
     for (const q of this.players) {
-      if (q === p || !q.alive || !q.connected || this.has(q, 'invis')) continue;
+      if (!this.foe(p, q) || this.has(q, 'invis')) continue;
       const dx = q.x - sx, dy = q.y - 22 - sy, d = Math.hypot(dx, dy);
       if (d > range + 40 || d < 1) continue;
       let err = Math.atan2(dy, dx) - p.aim;
@@ -309,7 +430,7 @@ export class Sim {
       case 'melee': {
         this.ev(['sw', p.idx, aimToByte(a)]);
         for (const q of this.players) {
-          if (q === p || !q.alive || !q.connected) continue;
+          if (!this.foe(p, q)) continue;
           const dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy);
           if (d > def.range + this.hitR(q)) continue;
           let da = Math.atan2(dy, dx) - a;
@@ -366,8 +487,9 @@ export class Sim {
           this.ev(['rf', pr.id, Math.round(pr.x), Math.round(pr.y), aimToByte(Math.atan2(pr.vy, pr.vx))]);
           continue;
         }
+        const ow = this.players[pr.owner];
         for (const q of this.players) {
-          if (q.idx === pr.owner || !q.alive || !q.connected || pr.hit.has(q.idx)) continue;
+          if (pr.hit.has(q.idx) || !(ow ? this.foe(ow, q) : q.alive && q.connected)) continue;
           const rr = this.hitR(q) + pr.r;
           if ((q.x - pr.x) ** 2 + (q.y - 22 - pr.y) ** 2 > (rr + 8) ** 2) continue;
           if (pr.explode) { dead = true; break; }
@@ -382,6 +504,7 @@ export class Sim {
       }
       if (dead) {
         if (pr.explode) this.explode(pr.x, pr.y, pr.explode, pr.dmg, pr.kb, this.players[pr.owner], pr.kind === PJ.mic ? 'mic' : 'eraser', 0);
+        else if (this.paint) this.paintAt(pr.x, pr.y + 18, SPLAT_R, this.players[pr.owner]?.team ?? -1, this.players[pr.owner] ?? null);
         this.ev(['ph', pr.id, Math.round(pr.x), Math.round(pr.y)]);
       } else keep.push(pr);
     }
@@ -392,7 +515,8 @@ export class Sim {
   private steer(pr: Proj, dt: number) {
     let best: SimPlayer | null = null, bd = 340 * 340;
     for (const q of this.players) {
-      if (q.idx === pr.owner || !q.alive || !q.connected || pr.hit.has(q.idx) || this.has(q, 'invis')) continue;
+      const ow = this.players[pr.owner];
+      if (pr.hit.has(q.idx) || !ow || !this.foe(ow, q) || this.has(q, 'invis')) continue;
       const d = (q.x - pr.x) ** 2 + (q.y - 22 - pr.y) ** 2;
       if (d < bd) { bd = d; best = q; }
     }
@@ -419,9 +543,10 @@ export class Sim {
 
   explode(x: number, y: number, r: number, dmg: number, kb: number, owner: SimPlayer | undefined, kind: string, stun: number) {
     this.ev(['ex', Math.round(x), Math.round(y), r, kind], true);
+    if (this.paint && owner) this.paintAt(x, y, r * 1.1, owner.team, owner);
     const slow = kind === 'mic';
     for (const q of this.players) {
-      if (!q.alive || !q.connected || (owner && q.idx === owner.idx)) continue;
+      if (owner ? !this.foe(owner, q) : !q.alive || !q.connected) continue;
       const dx = q.x - x, dy = q.y - y, d = Math.hypot(dx, dy);
       if (d > r + this.hitR(q)) continue;
       const f = 1 - Math.min(1, d / (r + PLAYER_R)) * 0.5;
@@ -453,16 +578,29 @@ export class Sim {
       this.ev(['bk', q.idx]);
       return;
     }
-    const dmg = Math.max(1, Math.round(amount));
+    if (src && !this.foe(src, q) && src !== q) return;
+    const dmg = Math.max(1, Math.round(amount * (src?.bot ? this.bot.dmg : 1)));
     q.lastDmgAt = this.now;
     q.lastCombatAt = this.now;
-    if (src) { src.lastCombatAt = this.now; q.lastHitBy = src.idx; }
-    const absorbed = Math.min(q.sh, dmg);
-    q.sh -= absorbed;
-    q.hp -= dmg - absorbed;
+    if (src) { src.lastCombatAt = this.now; q.lastHitBy = src.idx; q.lastHitAt = this.now; }
+    let absorbed = 0;
+    if (this.game === 'kb') {
+      // Knockback: no health. Damage raises your %, and the % multiplies how far you fly.
+      q.pct = Math.min(999, q.pct + dmg * 0.8);
+      const l = Math.hypot(kbx, kby);
+      let dx = l ? kbx / l : 0, dy = l ? kby / l : 0;
+      if (!l && src) { const sl = Math.hypot(q.x - src.x, q.y - src.y) || 1; dx = (q.x - src.x) / sl; dy = (q.y - src.y) / sl; }
+      const mag = Math.min(2800, (220 + l * 0.7 + dmg * 5) * (1 + q.pct / 60));
+      kbx = dx * mag;
+      kby = dy * mag * 0.6 - mag * 0.5; // always launch upward a bit
+    } else {
+      absorbed = Math.min(q.sh, dmg);
+      q.sh -= absorbed;
+      q.hp -= dmg - absorbed;
+    }
     if (kbx || kby) {
-      q.vx += kbx;
-      q.vy += kby;
+      if (q.body) { q.body.vx += kbx; q.body.vy = Math.min(q.body.vy, 0) + kby; q.body.ground = false; }
+      else if (this.game !== 'kb') { q.vx += kbx; q.vy += kby; }
       q.fv++;
       this.ev(['kb', q.idx, Math.round(kbx), Math.round(kby), q.fv], true);
     }
@@ -474,7 +612,8 @@ export class Sim {
     q.hp = 0;
     q.alive = false;
     q.deaths++;
-    q.respawnAt = this.now + RESPAWN_MS;
+    q.respawnAt = this.now + respawnMs(this.game);
+    q.pct = 0;
     q.streak = 0;
     q.vx = q.vy = 0;
     q.borrowed = -1;
@@ -486,15 +625,20 @@ export class Sim {
     q.pendingShot = false;
     if (q.weapon !== 0) { q.weapon = 0; q.ammo = INF; q.weaponUntil = 0; }
     const keep = upValue('ins', q.ups.ins) / 100;
-    const lost = Math.floor(q.dia * KO_LOSS * (1 - keep));
+    // Color Clash: diamonds are your paint points, a KO does not take them.
+    const lost = this.paint ? 0 : Math.floor(q.dia * KO_LOSS * (1 - keep));
     q.dia -= lost;
     if (killer && killer !== q) killer.kos++;
     this.ev(['ko', q.idx, killer ? killer.idx : -1, lost], true);
-    if (lost > 0) this.burstGems(q.x, q.y, lost, q.idx, 900);
+    if (lost > 0) {
+      // Knockback: whoever launched you takes them (+ a bonus); on the lawn they spill as gems.
+      if (this.game === 'kb') { if (killer && killer !== q) { killer.dia += lost + 25; this.ev(['gc', 0, killer.idx, lost + 25]); } }
+      else this.burstGems(q.x, q.y, lost, q.idx, 900);
+    } else if (this.game === 'kb' && killer && killer !== q) { killer.dia += 25; this.ev(['gc', 0, killer.idx, 25]); }
   }
 
   respawn(p: SimPlayer) {
-    const b = this.map.burrows[Math.floor(this.rand() * this.map.burrows.length)];
+    const b = p.team >= 0 ? this.base(p.team) : this.map.burrows[Math.floor(this.rand() * this.map.burrows.length)];
     p.alive = true;
     p.hp = this.maxHp(p);
     p.sh = MAX_SHIELD;
@@ -507,6 +651,7 @@ export class Sim {
     const fx = p.x, fy = p.y;
     [p.x, p.y] = resolve(this.map, x, y);
     p.px = p.x; p.py = p.y;
+    if (p.body) { p.body.x = p.x; p.body.y = p.y; p.body.vx = p.body.vy = 0; }
     p.vx = p.vy = 0;
     p.tx = p.x; p.ty = p.y; p.hasT = false;
     p.fv++;
@@ -538,15 +683,16 @@ export class Sim {
       p.pendingShot = false;
       this.ev(['ne', p.idx], true);
       // Pin a phone's character where the host has it, so its prediction stops too.
-      if (p.peer && !p.bot) this.teleport(p, p.x, p.y, 'hold');
+      if (p.peer && !p.bot && this.game !== 'kb') this.teleport(p, p.x, p.y, 'hold');
     }
   }
 
   /** Fixed mystery boxes spread over the map. Call again with a bigger number to add more. */
   setupBoxes(count: number) {
     const spots = [...this.boxes.values()];
+    if (this.game === 'kb') count = Math.min(count, Math.round(this.map.plats.length * 1.3));
     for (let tries = 0; this.boxes.size < count && tries < count * 40; tries++) {
-      const [x, y] = freeSpot(this.map, this.rand, 110);
+      const [x, y] = this.game === 'kb' ? this.ledgeSpot() : freeSpot(this.map, this.rand, 110);
       const gap = tries < count * 25 ? 190 : 120;
       if (spots.some((o) => (o.x - x) ** 2 + (o.y - y) ** 2 < gap * gap)) continue;
       const b: Box = { id: this.id(), x, y, readyAt: 0 };
@@ -556,9 +702,22 @@ export class Sim {
     }
   }
 
+  /** A spot standing on a random platform (knockback boxes). */
+  private ledgeSpot(): [number, number] {
+    const pl = this.map.plats[Math.floor(this.rand() * this.map.plats.length)];
+    return [pl.x + 50 + this.rand() * Math.max(1, pl.w - 100), pl.y];
+  }
+
   openBox(p: SimPlayer, b: Box) {
     b.readyAt = this.now + BOX_COOLDOWN_MS;
     p.boxes++;
+    if (this.paint) {
+      // Color Clash: every box is a paint bomb, and half of them also hold an item.
+      const n = this.paintAt(b.x, b.y, 170, p.team, p);
+      this.ev(['ex', Math.round(b.x), Math.round(b.y), 150, 'paint'], true);
+      this.boxItem(p, b, -1, n);
+      return;
+    }
     // 1) Diamonds: every box adds, multiplies or cuts them.
     const oi = this.pick(DIA_OUTCOMES);
     const o = DIA_OUTCOMES[oi];
@@ -572,7 +731,11 @@ export class Sim {
       this.burstGems(p.x, p.y, -dia, p.idx, 1500);
       this.ev(['ex', Math.round(p.x), Math.round(p.y), 60, 'trap'], true);
     }
-    // 2) Half of the boxes also hold an item.
+    this.boxItem(p, b, oi, dia);
+  }
+
+  /** Half of the boxes also hold an item; then tell everyone what came out. */
+  private boxItem(p: SimPlayer, b: Box, oi: number, dia: number) {
     let ei = -1, param = 0;
     if (this.rand() < 0.5) {
       ei = this.pick(BOX_EFFECTS);
@@ -620,7 +783,8 @@ export class Sim {
     this.zones = this.zones.filter((z) => z.until > now);
     for (const z of this.zones) {
       for (const q of this.players) {
-        if (!q.alive || !q.connected || q.idx === z.owner) continue;
+        const ow = this.players[z.owner];
+        if (ow ? !this.foe(ow, q) : !q.alive || !q.connected) continue;
         if ((q.x - z.x) ** 2 + (q.y - z.y) ** 2 > z.r * z.r) continue;
         this.give(q, 'slow', 300);
         if (this.tick % 10 === 0) this.damage(q, 2.4, this.players[z.owner], 0, 0);
@@ -630,11 +794,11 @@ export class Sim {
 
   /* -------------------------------------------------------------- powers */
   enemiesIn(p: SimPlayer, x: number, y: number, r: number) {
-    return this.players.filter((q) => q !== p && q.alive && q.connected && (q.x - x) ** 2 + (q.y - y) ** 2 < (r + this.hitR(q)) ** 2);
+    return this.players.filter((q) => this.foe(p, q) && (q.x - x) ** 2 + (q.y - y) ** 2 < (r + this.hitR(q)) ** 2);
   }
   inCone(p: SimPlayer, range: number, half: number) {
     return this.players.filter((q) => {
-      if (q === p || !q.alive || !q.connected) return false;
+      if (!this.foe(p, q)) return false;
       const dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy);
       if (d > range + PLAYER_R) return false;
       let da = Math.atan2(dy, dx) - p.aim;
@@ -648,7 +812,7 @@ export class Sim {
     this.give(q, f, ms);
     this.ev(['st', q.idx, f]);
     // Movement locks: pin the player where the host has them, so the phone stops predicting.
-    if ((f === 'root' || f === 'stun') && q.peer && !q.bot) this.teleport(q, q.x, q.y, 'hold');
+    if ((f === 'root' || f === 'stun') && q.peer && !q.bot && this.game !== 'kb') this.teleport(q, q.x, q.y, 'hold');
   }
 
   /** Character power (own: cooldown; borrowed: charges). */
@@ -772,7 +936,7 @@ export class Sim {
           ex = nx; ey = ny;
         }
         for (const q of this.players) {
-          if (q === p || !q.alive || !q.connected) continue;
+          if (!this.foe(p, q)) continue;
           const t = Math.max(0, Math.min(1, ((q.x - p.x) * (ex - p.x) + (q.y - p.y) * (ey - p.y + 20)) / (((ex - p.x) ** 2 + (ey - p.y + 20) ** 2) || 1)));
           const d = Math.hypot(p.x + (ex - p.x) * t - q.x, p.y - 20 + (ey - p.y + 20) * t - (q.y - 20));
           if (d < this.hitR(q) + 14) this.damage(q, 30, p, cx * 160, cy * 160);
@@ -802,7 +966,7 @@ export class Sim {
       case 'vanessa': {
         let best: SimPlayer | null = null, bd = 420;
         for (const q of this.players) {
-          if (q === p || !q.alive || !q.connected || this.has(q, 'invis')) continue;
+          if (!this.foe(p, q) || this.has(q, 'invis')) continue;
           const d = Math.hypot(q.x - p.x, q.y - p.y);
           if (d < bd) { bd = d; best = q; }
         }
@@ -862,7 +1026,7 @@ export class Sim {
   snapshot() {
     const p = this.players.map((q) => [
       q.idx, Math.round(q.x), Math.round(q.y), aimToByte(q.aim), Math.ceil(q.hp), Math.ceil(q.sh), q.dia, this.flags(q),
-      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en),
+      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en), q.team, Math.round(q.pct),
     ]);
     return { t: Math.round(this.now), p, r: Math.round(this.remainingMs) };
   }
@@ -876,6 +1040,31 @@ export class Sim {
       ups: this.players.map((q) => upsToArr(q.ups)),
       streaks: this.players.map((q) => q.streak),
       cds: this.players.map((q) => Math.max(0, Math.round(q.powerReadyAt - this.now))),
+      paint: this.paint ? rle(this.paint) : null,
+      ts: this.teamCells,
     };
   }
+}
+
+/** Color Clash speed: a bit faster on your colour, slower on a rival's (the phones use it too). */
+export function paintSpeed(grid: Uint8Array, map: GameMap, team: number, x: number, y: number) {
+  const cols = paintCols(map);
+  const v = grid[Math.floor(y / PAINT_CELL) * cols + Math.floor(x / PAINT_CELL)] ?? 0;
+  return !v ? 1 : v === team + 1 ? 1.18 : 0.85;
+}
+
+/** Run-length encoding [value, count, value, count…] for the full paint grid. */
+export function rle(a: Uint8Array): number[] {
+  const out: number[] = [];
+  for (let i = 0; i < a.length;) {
+    let j = i;
+    while (j < a.length && a[j] === a[i]) j++;
+    out.push(a[i], j - i);
+    i = j;
+  }
+  return out;
+}
+export function unrle(r: number[], into: Uint8Array) {
+  let k = 0;
+  for (let i = 0; i + 1 < r.length; i += 2) { into.fill(r[i], k, k + r[i + 1]); k += r[i + 1]; }
 }

@@ -77,6 +77,10 @@ export interface DrawingBoardProps {
    * widget). The surface is contain-fitted, keeping `aspect`; `maxHeight` is ignored.
    */
   fill?: boolean;
+  /** Export size limits (default 1200 px / 300 KB); live games keep it under the relay's 64 KB. */
+  exportMax?: { side: number; bytes: number };
+  /** Filled with a function that exports the current drawing (for time-outs without “Done”). */
+  exportRef?: React.MutableRefObject<(() => string | null) | null>;
 }
 
 interface HistoryEntry {
@@ -115,6 +119,8 @@ export function DrawingBoard({
   hideDownload = false,
   onChange,
   fill = false,
+  exportMax,
+  exportRef,
 }: DrawingBoardProps) {
   const boardH = UNITS / aspect;
   const id = useMemo(() => Symbol('board'), []);
@@ -595,12 +601,14 @@ export function DrawingBoard({
     setTimeout(() => {
       const ink = inkRef.current;
       try {
-        if (ink) onDone(exportCompressed(ink, bg));
+        if (ink) onDone(exportCompressed(ink, bg, exportMax?.side, exportMax?.bytes));
       } finally {
         setBusy(false);
       }
     }, 30);
   };
+
+  if (exportRef) exportRef.current = () => { flushPending(); const ink = inkRef.current; return ink ? exportCompressed(ink, bg, exportMax?.side, exportMax?.bytes) : null; };
 
   /* ---------------------------------------------------------------- keyboard */
   const keyHandler = useRef<(e: KeyboardEvent) => void>(() => {});

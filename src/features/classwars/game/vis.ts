@@ -4,7 +4,8 @@
 import { WEAPONS, PJ_LOOK } from './defs';
 import { BOX_COOLDOWN_MS, byteToAim } from './constants';
 import { t } from '../i18n';
-import { hitsWall, type GameMap } from './map';
+import { hitsWall, paintCols, paintRows, type GameMap } from './map';
+import { unrle } from './sim';
 import type { Ev } from './sim';
 
 /** readyAt > now: somebody opened it and it is grey until then. */
@@ -51,8 +52,16 @@ export class VisualWorld {
   /** Names for the feed. */
   nameOf: (idx: number) => string = (i) => `#${i}`;
   private localSeq = 0;
+  /** Color Clash: cell owners (team + 1), cells changed since the renderer last looked, team totals. */
+  paint: Uint8Array | null = null;
+  paintDirty: number[] = [];
+  paintAll = true;
+  teamCells: number[] = [];
 
-  constructor(map: GameMap) { this.map = map; }
+  constructor(map: GameMap) {
+    this.map = map;
+    if (map.kind === 'paint') this.paint = new Uint8Array(paintCols(map) * paintRows(map));
+  }
 
   st(idx: number): PState {
     let s = this.ps.get(idx);
@@ -65,8 +74,10 @@ export class VisualWorld {
     if (this.feed.length > 6) this.feed.length = 6;
   }
 
-  loadFull(f: { boxes: number[][]; gems: number[][]; zones: number[][] }) {
+  loadFull(f: { boxes: number[][]; gems: number[][]; zones: number[][]; paint?: number[] | null; ts?: number[] }) {
     const now = performance.now();
+    if (this.paint && f.paint) { unrle(f.paint, this.paint); this.paintAll = true; }
+    if (f.ts) this.teamCells = f.ts;
     this.boxes.clear();
     this.gems.clear();
     for (const [id, x, y, left] of f.boxes) this.boxes.set(id, { id, x, y, born: now - 2000, readyAt: left ? now + left : 0 });
@@ -168,6 +179,10 @@ export class VisualWorld {
         case 'lz': this.fx.push({ t: 'laser', x1: n(1), y1: n(2), x2: n(3), y2: n(4) }); break;
         case 'an': this.fx.push({ t: 'ans', idx: n(1), gain: n(2), streak: n(3) }); break;
         case 'by': this.fx.push({ t: 'buy', idx: n(1), up: n(2), lvl: n(3) }); break;
+        case 'pd':
+          if (this.paint) for (let i = 1; i + 1 < e.length; i += 2) { this.paint[n(i)] = n(i + 1); this.paintDirty.push(n(i)); }
+          break;
+        case 'ts': this.teamCells = (e.slice(1) as number[]); break;
       }
     }
   }

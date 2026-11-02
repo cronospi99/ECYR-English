@@ -3,13 +3,13 @@
    one broadcast snapshot every 100 ms (+ urgent events), question batches on demand. */
 import { Relay, type Envelope } from '@/lib/relay';
 import { awardGamePoints, type Award } from '@/features/cards/api';
-import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, boxCount, lerp, portalCount } from './constants';
+import { SNAP_EVERY, TICK_MS, byteToAim, BASE_SPEED, boxCount, lerp, portalCount, type Game } from './constants';
 import type { RenderSource, RP } from './client';
 import { CHAR_IDS, UPGRADES } from './defs';
 import { Sim, type Ev, type SimPlayer } from './sim';
 import { botThink, BOT_NAMES } from './bots';
 import { VisualWorld } from './vis';
-import { shuffle, type Q } from './questions';
+import { curriculumQuestions, pickKey, shuffle, shuffleOptions, validPick, type Pick, type Q } from './questions';
 import { resolve } from './map';
 
 export interface HostConfig {
@@ -25,12 +25,17 @@ export interface HostConfig {
   bots: number;
   demo: boolean;
   hostName: string;
+  game?: Game;
+  teams?: number;
+  botLevel?: number;
+  /** Course questions: each student answers only the level + unit they (or the teacher) chose. */
+  perStudent?: boolean;
 }
 
-export interface LobbyPlayer { peer: string; name: string; char: number; guest: boolean; uid: string | null }
+export interface LobbyPlayer { peer: string; name: string; char: number; guest: boolean; uid: string | null; pick: Pick | null }
 export interface Result {
   idx: number; name: string; char: number; dia: number; correct: number; wrong: number; kos: number; deaths: number;
-  boxes: number; streak: number; place: number; points: number; bot: boolean; guest: boolean; peer: string | null;
+  boxes: number; streak: number; place: number; points: number; bot: boolean; guest: boolean; peer: string | null; team: number;
 }
 
 const BATCH = 8;
@@ -66,7 +71,10 @@ export class HostSession {
   version = 0;
   private listeners = new Set<() => void>();
   private peerIdx = new Map<string, number>();
-  private qBags = new Map<number, { order: number[]; pos: number; served: Set<number> }>();
+  private qBags = new Map<number, { qs: Q[]; order: number[]; pos: number; served: Set<number> }>();
+  /** Question pools per level:unit (loaded on demand) and the pick of each player in the match. */
+  private pools = new Map<string, Promise<Q[]>>();
+  private picks = new Map<number, Pick>();
   private stopTick: (() => void) | null = null;
   private acc = 0;
   private last = 0;
@@ -96,8 +104,17 @@ export class HostSession {
     if (this.lobbyTimer) return;
     this.lobbyTimer = setTimeout(() => {
       this.lobbyTimer = null;
-      this.relay.send({ k: 'lobby', players: [...this.lobby.values()].map((p) => [p.peer, p.name, p.char, p.guest ? 1 : 0]), max: this.cfg.maxPlayers });
+      this.relay.send({ k: 'lobby', players: [...this.lobby.values()].map((p) => [p.peer, p.name, p.char, p.guest ? 1 : 0]), max: this.cfg.maxPlayers, ps: this.cfg.perStudent ? 1 : 0 });
     }, 150);
+  }
+
+  /** Teacher changes a student's level/unit from the lobby. */
+  setPick(peer: string, pick: Pick) {
+    const lp = this.lobby.get(peer);
+    if (!lp) return;
+    lp.pick = pick;
+    this.relay.send({ k: 'unit', ...pick }, peer);
+    this.bump();
   }
 
   kick(peer: string) {
@@ -128,12 +145,12 @@ export class HostSession {
       case 'hello': {
         const name = String(d.name ?? '').trim().slice(0, 24) || 'Jugador';
         const char = Math.max(0, Math.min(CHAR_IDS.length - 1, Number(d.char) | 0));
-        const lp: LobbyPlayer = { peer, name, char, guest: !d.uid, uid: typeof d.uid === 'string' ? d.uid : null };
+        const lp: LobbyPlayer = { peer, name, char, guest: !d.uid, uid: typeof d.uid === 'string' ? d.uid : null, pick: validPick(d.pick) };
         if (this.phase === 'lobby') {
           if (!this.lobby.has(peer) && this.lobby.size >= this.cfg.maxPlayers) { this.relay.send({ k: 'full' }, peer); return; }
           this.lobby.set(peer, lp);
           this.lobbyChanged();
-          this.relay.send({ k: 'lobby', players: [...this.lobby.values()].map((p) => [p.peer, p.name, p.char, p.guest ? 1 : 0]), max: this.cfg.maxPlayers }, peer);
+          this.relay.send({ k: 'lobby', players: [...this.lobby.values()].map((p) => [p.peer, p.name, p.char, p.guest ? 1 : 0]), max: this.cfg.maxPlayers, ps: this.cfg.perStudent ? 1 : 0 }, peer);
         } else if (this.sim) {
           let idx = this.peerIdx.get(peer);
           if (idx === undefined) {
@@ -141,6 +158,7 @@ export class HostSession {
             const p = this.sim.addPlayer({ peer, name, char, uid: lp.uid, guest: lp.guest, bot: false });
             idx = p.idx;
             this.peerIdx.set(peer, idx);
+            if (lp.pick) this.picks.set(idx, lp.pick);
             this.sim.setupBoxes(boxCount(this.sim.players.length));
             this.relay.send({ k: 'roster', r: this.roster() });
           } else {
@@ -150,6 +168,11 @@ export class HostSession {
           this.sendStart(peer);
           this.bump();
         }
+        break;
+      }
+      case 'unit': {
+        const lp = this.lobby.get(peer), pk = validPick(d);
+        if (lp && pk && this.phase === 'lobby') { lp.pick = pk; this.bump(); }
         break;
       }
       case 'pick': {
@@ -167,7 +190,7 @@ export class HostSession {
         const qid = Number(d.q) | 0;
         if (!bag || !bag.served.has(qid)) return;
         bag.served.delete(qid);
-        const q = this.cfg.questions[qid];
+        const q = bag.qs[qid];
         if (q) this.sim.answer(p, Number(d.c) === q.a);
         break;
       }
@@ -195,6 +218,13 @@ export class HostSession {
     if (d.w !== p.powC) { p.powC = d.w; sim.usePower(p, false); }
     if (d.u !== p.bonC) { p.bonC = d.u; sim.usePower(p, true); }
     if (!p.alive || d.fv !== p.fv || !Number.isFinite(d.x) || !Number.isFinite(d.y)) return;
+    if (sim.game === 'kb') {
+      // Knockback: the phone runs its own physics (falls and launches are fast); only reject teleports.
+      const elapsed = Math.min(1200, sim.now - p.lastAcceptT);
+      if (Math.hypot(d.x - p.x, d.y - p.y) > 3000 * (elapsed / 1000) + 160) { sim.teleport(p, p.x, p.y, 'fix'); return; }
+      p.tx = d.x; p.ty = d.y; p.hasT = true; p.lastAcceptT = sim.now;
+      return;
+    }
     if (sim.speedMul(p) === 0) return;
     // Validate the reported position: no faster than the best speed buffs allow, plus slack.
     const from = p.hasT ? [p.tx, p.ty] : [p.x, p.y];
@@ -211,11 +241,27 @@ export class HostSession {
   }
 
   /* ------------------------------------------------------------- questions */
+  /** The questions a player answers: their own level + unit, or the match's set. */
+  private poolFor(idx: number): Promise<Q[]> {
+    const pk = this.cfg.perStudent ? this.picks.get(idx) : undefined;
+    if (!pk) return Promise.resolve(this.cfg.questions);
+    const key = pickKey(pk);
+    let pr = this.pools.get(key);
+    if (!pr) {
+      pr = curriculumQuestions(pk.lv, pk.un ? [pk.un] : []).then((q) => (q.length ? shuffleOptions(q) : this.cfg.questions)).catch(() => this.cfg.questions);
+      this.pools.set(key, pr);
+    }
+    return pr;
+  }
+
   private sendQuestions(peer: string | null, idx: number) {
-    const qs = this.cfg.questions;
+    void this.poolFor(idx).then((qs) => this.sendBatch(peer, idx, qs));
+  }
+
+  private sendBatch(peer: string | null, idx: number, qs: Q[]) {
     if (!qs.length) return;
     let bag = this.qBags.get(idx);
-    if (!bag) { bag = { order: shuffle(qs.map((_, i) => i)), pos: 0, served: new Set() }; this.qBags.set(idx, bag); }
+    if (!bag || bag.qs !== qs) { bag = { qs, order: shuffle(qs.map((_, i) => i)), pos: 0, served: new Set() }; this.qBags.set(idx, bag); }
     if (bag.served.size > 24) bag.served.clear();
     const items: (string | number | string[])[][] = [];
     for (let i = 0; i < BATCH; i++) {
@@ -230,14 +276,14 @@ export class HostSession {
 
   /* --------------------------------------------------------------- match */
   roster() {
-    return this.sim ? this.sim.players.map((p) => [p.idx, p.peer ?? '', p.name, p.char, p.guest ? 1 : 0, p.bot ? 1 : 0]) : [];
+    return this.sim ? this.sim.players.map((p) => [p.idx, p.peer ?? '', p.name, p.char, p.guest ? 1 : 0, p.bot ? 1 : 0, p.team]) : [];
   }
 
   private sendStart(peer: string) {
     if (!this.sim) return;
     const idx = this.peerIdx.get(peer) ?? -1;
     this.relay.send({
-      k: 'start', seed: this.seed, portals: this.sim.map.burrows.length, en0: this.cfg.startEnergy, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
+      k: 'start', seed: this.seed, game: this.sim.game, teams: this.sim.teams, portals: this.sim.map.burrows.length, en0: this.cfg.startEnergy, salt: this.salt, dur: this.cfg.durationMin * 60000, goal: this.cfg.goal, roster: this.roster(), you: idx,
       full: this.sim.full(), paused: this.phase === 'paused',
     }, peer);
     if (idx >= 0) {
@@ -251,11 +297,16 @@ export class HostSession {
   start() {
     if (this.phase !== 'lobby') return;
     const people = this.lobby.size + this.cfg.bots;
-    const sim = new Sim(this.seed, { durationMs: this.cfg.durationMin * 60000, goal: this.cfg.goal, portals: portalCount(people), startEnergy: this.cfg.startEnergy });
+    const game = this.cfg.game ?? 'arena';
+    const sim = new Sim(this.seed, {
+      durationMs: this.cfg.durationMin * 60000, goal: game === 'arena' ? this.cfg.goal : 0, portals: portalCount(people), startEnergy: this.cfg.startEnergy,
+      game, teams: this.cfg.teams, botLevel: this.cfg.botLevel,
+    });
     this.sim = sim;
     for (const lp of this.lobby.values()) {
       const p = sim.addPlayer({ peer: lp.peer, name: lp.name, char: lp.char, uid: lp.uid, guest: lp.guest, bot: false });
       this.peerIdx.set(lp.peer, p.idx);
+      if (lp.pick) this.picks.set(p.idx, lp.pick);
     }
     const names = shuffle(BOT_NAMES);
     for (let i = 0; i < this.cfg.bots; i++) {
@@ -313,6 +364,7 @@ export class HostSession {
     const sim = this.sim!;
     const events: Ev[] = sim.events;
     sim.events = [];
+    for (const e of sim.takePaint()) events.push(e);
     sim.urgent = false;
     this.lastSnapAt = performance.now();
     const snap = sim.snapshot();
@@ -328,7 +380,9 @@ export class HostSession {
     this.phase = 'ended';
     this.stopTick?.();
     this.stopTick = null;
-    const ranked = [...sim.players].sort((a, b) => b.dia - a.dia || b.correct - a.correct || b.kos - a.kos);
+    // Color Clash: the winning team first, then by paint points.
+    const teamRank = (t: number) => (sim.teams ? [...sim.teamCells].sort((a, b) => b - a).indexOf(sim.teamCells[t]) : 0);
+    const ranked = [...sim.players].sort((a, b) => teamRank(a.team) - teamRank(b.team) || b.dia - a.dia || b.correct - a.correct || b.kos - a.kos);
     this.winner = sim.winner >= 0 ? sim.winner : ranked[0]?.idx ?? -1;
     const placeBonus = [10, 7, 5];
     this.results = ranked.map((p, i) => {
@@ -336,10 +390,10 @@ export class HostSession {
       const points = 3 + Math.min(10, Math.floor(p.correct / 3)) + Math.min(5, p.kos) + (placeBonus[i] ?? (half ? 2 : 0));
       return {
         idx: p.idx, name: p.name, char: p.char, dia: p.dia, correct: p.correct, wrong: p.wrong, kos: p.kos, deaths: p.deaths,
-        boxes: p.boxes, streak: p.bestStreak, place: i + 1, points: p.bot ? 0 : points, bot: p.bot, guest: p.guest, peer: p.peer,
+        boxes: p.boxes, streak: p.bestStreak, place: i + 1, points: p.bot ? 0 : points + (sim.teams && teamRank(p.team) === 0 ? 3 : 0), bot: p.bot, guest: p.guest, peer: p.peer, team: p.team,
       };
     });
-    this.relay.send({ k: 'end', res: this.results, winner: this.winner });
+    this.relay.send({ k: 'end', res: this.results, winner: this.winner, teams: sim.teamCells });
     this.bump();
     void this.saveAwards();
   }
@@ -364,7 +418,7 @@ export class HostSession {
   /** Stats for the projector (leaderboard etc.). */
   leaderboard() {
     if (!this.sim) return [];
-    return [...this.sim.players].filter((p) => p.connected || p.dia > 0).sort((a, b) => b.dia - a.dia).map((p) => ({ idx: p.idx, name: p.name, char: p.costume >= 0 ? p.costume : p.char, dia: p.dia, alive: p.alive, bot: p.bot, kos: p.kos }));
+    return [...this.sim.players].filter((p) => p.connected || p.dia > 0).sort((a, b) => b.dia - a.dia).map((p) => ({ idx: p.idx, name: p.name, char: p.costume >= 0 ? p.costume : p.char, dia: p.dia, alive: p.alive, bot: p.bot, kos: p.kos, team: p.team }));
   }
 
   upgradeName(i: number) { return UPGRADES[i]?.name ?? ''; }
@@ -385,6 +439,7 @@ export function hostSource(h: HostSession): RenderSource {
         out.push({
           idx: p.idx, x: lerp(p.px, p.x, a), y: lerp(p.py, p.y, a), aim: p.aim, hp: Math.ceil(p.hp), sh: Math.ceil(p.sh), dia: p.dia, en: Math.ceil(p.en), flags: sim.flags(p),
           look: sim.lookChar(p), weapon: p.weapon, ammo: p.ammo, maxHp: sim.maxHp(p), borrowed: p.borrowed, charges: p.bCharges, name: p.name, me: false, bot: p.bot,
+          team: p.team, pct: Math.round(p.pct),
         });
       }
       return out;

@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
+import type { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { MASCOT_CSS, Mascot } from '@/features/doodle/Mascot';
 
 /** The live multiplayer games (projector + phones) and the shared character cards. */
-const LIVE = [
+const LIVE: { to: string; emoji: string; art?: ReactNode; title: string; sub: string; from: string; to2: string; accent: string }[] = [
   {
     to: '/classwars',
     emoji: '⚔️',
     title: 'Class Wars',
-    sub: 'Arena en vivo: responde para recargar energía, abre cajas sorpresa para ganar diamantes y usa el poder de tu profe. Hay demo contra bots.',
+    sub: 'Arena en vivo con 3 modos (clásico, Color Clash por equipos y Knockback en plataformas): responde para recargar energía y usa el poder de tu profe. Hay demo contra bots.',
     from: '#1e3a8a',
     to2: '#16a34a',
     accent: '#fde047',
@@ -20,6 +22,16 @@ const LIVE = [
     from: '#1b2023',
     to2: '#3b4349',
     accent: '#f5c518',
+  },
+  {
+    to: '/doodle',
+    emoji: '✏️',
+    art: <Mascot pose="draw" size={64} />,
+    title: 'Pass the Doodle',
+    sub: 'Escribe una frase en inglés, el siguiente la dibuja, otro describe el dibujo… y al final se revelan las historias. Con Pío, nuestra mascota.',
+    from: '#6a4cff',
+    to2: '#1fb4c9',
+    accent: '#ffe36b',
   },
   {
     to: '/games/cards',
@@ -35,6 +47,7 @@ const LIVE = [
 export function LiveGames() {
   return (
     <section className="mb-8">
+      <style>{MASCOT_CSS}</style>
       <h2 className="text-title-2 mb-3 px-1">En vivo con tu clase</h2>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {LIVE.map((g) => (
@@ -44,10 +57,12 @@ export function LiveGames() {
             className="group relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99]"
             style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to2})` }}
           >
-            <span aria-hidden className="absolute -right-6 -bottom-8 text-[120px] leading-none opacity-15 transition-transform group-hover:scale-110">
-              {g.emoji}
-            </span>
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-white/12 text-[38px] shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.15)]">{g.emoji}</span>
+            {!g.art && (
+              <span aria-hidden className="absolute -right-6 -bottom-8 text-[120px] leading-none opacity-15 transition-transform group-hover:scale-110">
+                {g.emoji}
+              </span>
+            )}
+            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-white/12 text-[38px] shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.15)]">{g.art ?? g.emoji}</span>
             <span className="relative min-w-0 flex-1">
               <span className="block text-[22px] font-extrabold tracking-tight" style={{ color: g.accent }}>
                 {g.title}

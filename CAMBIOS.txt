@@ -286,6 +286,36 @@ G1d. CLASS WARS: INGLÉS, CONTROLES MÓVILES, APUNTADO Y CAJAS NUEVAS
   gemas; el seguro de la tienda protege parte). La mitad de las cajas trae
   además un objeto (arma, poder prestado, disfraz, etc.).
 
+G1e. CLASS WARS: MODOS COLOR CLASH Y KNOCKBACK, PREGUNTAS POR UNIDAD, BOTS
+- Tres modos al crear la partida (y en la demo): Clásico/Carrera, Color
+  Clash (equipos de 2 a 4 pintan el pasto caminando, disparando y abriendo
+  cajas, que aquí son bombas de pintura; gana el equipo con más color) y
+  Knockback (escenario de islas flotantes visto de lado: los golpes suben tu
+  % de daño y, cuanto más alto, más lejos vuelas; si sales del escenario
+  quedas fuera y quien te sacó se lleva parte de tus diamantes; doble salto
+  y bajar por las plataformas delgadas). En los tres se mantiene la energía
+  y las preguntas.
+- Preguntas: se quitaron las de traducción ("… in English is…"). El docente
+  puede dejar que cada estudiante elija nivel y unidad en la sala (y cambiar
+  la de cualquiera desde su tarjeta); a cada uno solo le salen preguntas de
+  su unidad, sin mezclar con preguntas generales del nivel.
+- Bots: deslizador de 0 a 30 y dificultad Fácil / Normal / Difícil (Fácil
+  por defecto: apuntan peor, atacan menos y hacen menos daño).
+- Estilo: pasto a rayas más anchas con textura de acuarela, cajas sorpresa
+  nuevas (bloque amarillo con "?", contorno grueso), quietas y sin animación,
+  y cámara más cercana en todos los modos.
+
+G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
+- Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
+  inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así
+  por rondas; al final se revelan las historias paso a paso en todas las
+  pantallas (el anfitrión avanza o usa modo automático).
+- Cualquiera crea la sala (puede jugar o usar la pantalla solo como
+  proyector, con código y QR). Velocidad lenta/normal/rápida y número de
+  rondas. Si se acaba el tiempo se entrega lo que haya escrito o dibujado.
+- Usa la pizarra de dibujo de la app. Mascota propia: Pío, un periquito
+  verde con lápiz (diseño original, no copia de otra mascota).
+
 T1. TÉRMINOS Y TRATAMIENTO DE DATOS
 - Nueva página /legal, enlazada al pie de la pantalla de inicio: términos de
   uso y tratamiento de datos según la Ley 1581 de 2012 (Colombia).

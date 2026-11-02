@@ -28,14 +28,28 @@ export async function loadBank(level: Level): Promise<Bank> {
   return b;
 }
 
-/** Questions of a level, optionally only some units (level-wide items always count). */
+/** Questions of a level. With units, only the items of those units (nothing level-wide mixed in). */
 export async function curriculumQuestions(level: Level, units: number[] = []): Promise<Q[]> {
   const b = await loadBank(level);
   const want = new Set(units);
-  const rows = b.q.filter(([, , , us]) => !want.size || !us.length || us.some((u) => want.has(u)));
-  // When some units are chosen, keep the unit-specific items first in weight.
-  return rows.map(([q, o, a]) => ({ q, o, a }));
+  return b.q.filter(([, , , us]) => !want.size || us.some((u) => want.has(u))).map(([q, o, a]) => ({ q, o, a }));
 }
+
+/** A student's question pool: one level and one unit (0 = the whole level). */
+export interface Pick { lv: Level; un: number }
+export const pickKey = (p: Pick) => `${p.lv}:${p.un}`;
+export const validPick = (v: unknown): Pick | null => {
+  const o = v as { lv?: unknown; un?: unknown } | null;
+  if (!o || !LEVELS.includes(o.lv as Level)) return null;
+  const un = Math.max(0, Math.min(20, Number(o.un) | 0));
+  return { lv: o.lv as Level, un };
+};
+const PICK_KEY = 'cw:pick';
+/** The student's last choice, or null (= the teacher's questions). */
+export function savedPick(): Pick | null {
+  try { return validPick(JSON.parse(localStorage.getItem(PICK_KEY) || 'null')); } catch { return null; }
+}
+export function savePick(p: Pick) { try { localStorage.setItem(PICK_KEY, JSON.stringify(p)); } catch { /* ignore */ } }
 
 export function shuffle<T>(arr: T[], rand = Math.random): T[] {
   const a = [...arr];

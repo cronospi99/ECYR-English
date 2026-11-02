@@ -8,7 +8,8 @@ import { cn } from '@/lib/cn';
 import type { Result } from '../game/host';
 import { sfx } from '../render/audio';
 import { Btn, Diamond, GameIcon, Toon } from './kit';
-import { t } from '../i18n';
+import { t, tx } from '../i18n';
+import { TEAM_COLORS, TEAM_NAMES } from '../game/constants';
 
 const RANK_ES = { bronze: 'Bronce', silver: 'Plata', gold: 'Oro', diamond: 'Diamante' } as const;
 const RANK_EN = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', diamond: 'Diamond' } as const;
@@ -56,6 +57,11 @@ export function Podium({ results, myIdx = -1, saved, onAgain, onExit, againLabel
         <motion.h1 initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="cw-title text-center text-[34px] sm:text-[46px]">
           <GameIcon k="trophy" size={44} className="-mt-2 mr-2" />{t('Game over!', '¡Fin de la partida!')}
         </motion.h1>
+        {(results[0]?.team ?? -1) >= 0 && (
+          <motion.div initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 0.3, type: 'spring' }} className="mx-auto mt-2 w-max rounded-full px-6 py-2 text-[22px] font-black text-white shadow-[0_6px_0_rgba(0,0,0,.25)]" style={{ background: TEAM_COLORS[results[0].team] }}>
+            <GameIcon k="splat" size={26} className="-mt-1 mr-2" />{t(`Team ${tx(TEAM_NAMES[results[0].team])} wins!`, `¡Gana el equipo ${tx(TEAM_NAMES[results[0].team])}!`)}
+          </motion.div>
+        )}
         {mine && (
           <p className="mt-1 text-center text-[18px] font-extrabold text-[#ffd23f]">{t(`You finished #${mine.place} of ${results.length}`, `Quedaste #${mine.place} de ${results.length}`)}</p>
         )}
