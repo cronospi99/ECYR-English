@@ -3,7 +3,7 @@
    mode, by the projector (HostSession). */
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BookOpen, LogOut, Map as MapIcon, Music, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair } from 'lucide-react';
+import { BookOpen, Loader2, LogOut, Map as MapIcon, Music, Pause, Play, Square, Users, Volume2, VolumeX, Crosshair } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TEACHERS } from '@/features/cards/teachers';
 import type { ClientSession, RenderSource, RP } from '../game/client';
@@ -11,7 +11,7 @@ import { FLAG, TEAM_COLORS, TEAM_NAMES, respawnMs, type Game } from '../game/con
 
 /** On-screen messages (box cards, kill feed) never stay longer than this. */
 const MSG_MS = 3500;
-import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, POWERS, WEAPONS, outcomeColor, outcomeLabel } from '../game/defs';
+import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, KB_ARSENAL, POWERS, WEAPONS, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t, tx } from '../i18n';
 import { hostSource, type HostSession } from '../game/host';
 import type { Fxq } from '../game/vis';
@@ -215,6 +215,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) { e.preventDefault(); keys.current.add(k); }
       if (e.repeat) return;
       if (side && (k === 'w' || k === 'arrowup' || k === ' ')) { e.preventDefault(); client.jumpPress(); }
+      else if (kb && k >= '1' && k <= '9') { const w = ownedArsenal(client)[Number(k) - 1]; if (w !== undefined) client.buyWeapon(w); }
       else if (k === 'e' || k === ' ' || k === '2') { e.preventDefault(); client.powerPress(); }
       else if (k === 'r' || k === '3') client.bonusPress();
       else if (k === '1') client.attackPress();
@@ -358,7 +359,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       <canvas
         ref={canvasRef}
         className="absolute inset-0 h-full w-full"
-        style={{ cursor: client ? 'crosshair' : 'default' }}
+        style={{ cursor: client ? (kb ? RETICLE : 'crosshair') : 'default' }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -374,8 +375,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             <span className="text-[24px] leading-none font-black tabular-nums">{me.dia}</span>
             {goal ? <span className="text-[13px] font-bold text-white/55">/ {goal}</span> : null}
           </motion.div>
-          <Energy value={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} />
-          {kb ? <Pct value={me.pct} /> : <><Bar value={me.hp} max={me.maxHp} color="#34d058" /><Bar value={me.sh} max={100} color="#2f8cff" /></>}
+          {!kb && <><Energy value={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} /><Bar value={me.hp} max={me.maxHp} color="#34d058" /><Bar value={me.sh} max={100} color="#2f8cff" /></>}
           {paint && me.team >= 0 && <div className="w-max rounded-full px-3 py-0.5 text-[13px] font-black text-white shadow" style={{ background: TEAM_COLORS[me.team] }}>{t('Team', 'Equipo')} {tx(TEAM_NAMES[me.team])}</div>}
         </div>
       )}
@@ -392,6 +392,15 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
           </motion.div>
         </div>
       ) : null}
+
+      {/* running low: a reminder to answer (before you run dry) */}
+      {client && me && alive && !quiz && !(me.flags & FLAG.tired) && me.en < client.startEnergy * 0.25 && (
+        <motion.button type="button" initial={{ x: 60, opacity: 0 }} animate={{ x: 0, opacity: 1 }} onClick={() => openQuiz('q')}
+          className="absolute top-[38%] right-3 z-20 flex w-[min(78vw,280px)] items-start gap-2.5 rounded-2xl border-2 border-[#ff9f0a] bg-white px-3.5 py-3 text-left text-[#1b2350] shadow-[0_8px_0_rgba(0,0,0,.25)]">
+          <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#ff7a1a] text-[17px] font-black text-white">!</span>
+          <span><span className="block text-[17px] leading-tight font-black">{t('Low on energy', 'Poca energía')}</span><span className="text-[13.5px] font-semibold text-[#1b2350]/75">{t('Answer some questions to recharge before you run out!', '¡Responde preguntas para recargar antes de quedarte sin nada!')}</span></span>
+        </motion.button>
+      )}
 
       {/* top-center: timer */}
       <div className="pointer-events-none absolute top-[max(10px,env(safe-area-inset-top))] left-1/2 flex -translate-x-1/2 flex-col items-center gap-1">
@@ -418,7 +427,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
           )}
           {client && <button type="button" aria-label={t('Leave', 'Salir')} onClick={() => { if (confirm(t('Leave the game?', '¿Salir de la partida?'))) onExit(); }} className="grid h-10 w-10 place-items-center rounded-xl bg-[#141a3f]/80 text-white hover:bg-[#141a3f]"><LogOut size={18} /></button>}
         </div>
-        <canvas ref={miniRef} width={spectator ? 220 : mobile ? 120 : 168} height={spectator ? 165 : mobile ? 90 : 126} className="rounded-xl border-2 border-white/25 shadow-lg" style={{ width: spectator ? 220 : mobile ? 120 : 168, height: spectator ? 165 : mobile ? 90 : 126 }} />
+        {!kb && <canvas ref={miniRef} width={spectator ? 220 : mobile ? 120 : 168} height={spectator ? 165 : mobile ? 90 : 126} className="rounded-xl border-2 border-white/25 shadow-lg" style={{ width: spectator ? 220 : mobile ? 120 : 168, height: spectator ? 165 : mobile ? 90 : 126 }} />}
         {hud && (!mobile || spectator) && (
           <div className="pointer-events-none w-[220px] overflow-hidden rounded-2xl border-2 border-white/10 bg-[#141a3f]/95 shadow-lg">
             {hud.board.slice(0, spectator ? 8 : 5).map((b, i) => (
@@ -459,8 +468,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       </AnimatePresence>
 
       {/* bottom-left: answer questions */}
-      {client && !quiz && (
-        <div className={cn('absolute left-3 flex flex-col gap-2', mobile ? 'top-[186px]' : 'bottom-[max(14px,env(safe-area-inset-bottom))]')}>
+      {client && !quiz && (alive || !kb) && (
+        <div className={cn('absolute left-3 flex flex-col gap-2', mobile ? (kb ? 'top-[70px]' : 'top-[186px]') : 'bottom-[max(14px,env(safe-area-inset-bottom))]')}>
+          {kb && me && <KbStatus en={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} weapon={tx(weapon.name)} small={mobile} />}
           <Btn tone="blue" big={!mobile} className={cn(mobile && 'h-12 px-4 text-[15px]')} onClick={() => openQuiz('q')} disabled={!alive}>
             <BookOpen size={mobile ? 18 : 22} /> {mobile ? t('Questions', 'Preguntas') : t('Answer questions', 'Responder preguntas')} {!mobile && <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">Q</kbd>}
           </Btn>
@@ -470,14 +480,23 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
 
       {/* hotbar */}
       {client && me && hud && !quiz && (
-        <div className={cn('absolute flex items-end gap-2', mobile ? 'right-3 bottom-[max(14px,env(safe-area-inset-bottom))] flex-col-reverse items-end' : 'bottom-[max(14px,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2')}>
+        <div className={cn('absolute flex items-end gap-2', mobile ? (kb ? 'bottom-[max(14px,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 gap-1.5' : 'right-3 bottom-[max(14px,env(safe-area-inset-bottom))] flex-col-reverse items-end') : 'bottom-[max(14px,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2')}>
+          {kb && (!mobile || ownedArsenal(client).length > 1) && ownedArsenal(client).map((w, i, all) => {
+            const wd = WEAPONS[w];
+            return (
+              <Slot key={w} k={String(i + 1)} active={me.weapon === w} small={mobile || all.length > 4} label={tx(wd.name)} onClick={() => client.buyWeapon(w)}>
+                <GameIcon k={wd.ic} size={mobile || all.length > 4 ? 26 : 38} />
+                {!(mobile || all.length > 4) && <span className="absolute right-1.5 bottom-0.5 text-[13px] font-black">∞</span>}
+              </Slot>
+            );
+          })}
           {!mobile && (
             <>
-              <Slot k="1" active label={tx(weapon.name)} onClick={() => client.attackPress()}>
+              {!kb && <Slot k="1" active label={tx(weapon.name)} onClick={() => client.attackPress()}>
                 <GameIcon k={weapon.ic} size={38} />
                 <span className="absolute right-1.5 bottom-0.5 text-[13px] font-black">{me.ammo === INF ? '∞' : me.ammo}</span>
                 <span className="absolute bottom-0.5 left-1 flex items-center text-[11px] font-black text-[#ffe14d]"><GameIcon k="bolt" size={12} />{weapon.en}</span>
-              </Slot>
+              </Slot>}
               <Slot k="E" label={tx(pw.name)} cd={hud!.powerLeft / 1000} cdMax={pw.cd} color={pw.color} onClick={() => client.powerPress()}>
                 <GameIcon k={pw.ic} size={38} />
               </Slot>
@@ -525,12 +544,24 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       )}
 
       {/* KO card */}
-      {client && ko && !alive && (
+      {client && ko && !alive && kb && (
+        <div className="pointer-events-none absolute inset-0 z-30 bg-[#0e1230]/25">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="absolute top-[18%] left-1/2 -translate-x-1/2 text-center">
+            <div className="text-[17px] font-extrabold text-white drop-shadow-[0_2px_0_rgba(0,0,0,.5)]">{ko.killer ? t(`${ko.killer} launched you off the stage`, `${ko.killer} te sacó del escenario`) : t('You fell off the stage', 'Te caíste del escenario')}</div>
+            {ko.lost > 0 && <div className="mt-1 flex items-center justify-center gap-1 text-[16px] font-extrabold text-[#7ef0ff] drop-shadow">−{ko.lost} <Diamond size={18} /></div>}
+          </motion.div>
+          <div className="absolute bottom-[max(22px,env(safe-area-inset-bottom))] left-5 flex items-center gap-3">
+            <Loader2 size={30} className="animate-spin text-white" />
+            <span className="cw-title text-[30px] text-white drop-shadow-[0_3px_0_rgba(0,0,0,.45)]">{t('Respawning…', 'Reapareciendo…')}</span>
+          </div>
+        </div>
+      )}
+      {client && ko && !alive && !kb && (
         <div className="pointer-events-none absolute inset-0 z-30 grid place-items-center bg-[#0e1230]/40">
           <motion.div initial={{ scale: 0.5, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="rounded-[24px] border-[3px] border-[#ff4d5e] bg-[#252b5e] px-8 py-6 text-center shadow-2xl">
             <div className="cw-title text-[44px] text-[#ff8a95]">K.O.!</div>
-            <div className="text-[16px] font-bold text-white/85">{kb ? (ko.killer ? t(`${ko.killer} launched you off the stage`, `${ko.killer} te sacó del escenario`) : t('You fell off the stage', 'Te caíste del escenario')) : ko.killer ? t(`${ko.killer} knocked you out`, `Te noqueó ${ko.killer}`) : t('You are out', 'Quedaste fuera de combate')}</div>
-            {ko.lost > 0 && <div className="mt-1 flex items-center justify-center gap-1 text-[16px] font-extrabold text-[#7ef0ff]">−{ko.lost} <Diamond size={18} /> {!kb && t('(grab them back!)', '(¡recupéralos!)')}</div>}
+            <div className="text-[16px] font-bold text-white/85">{ko.killer ? t(`${ko.killer} knocked you out`, `Te noqueó ${ko.killer}`) : t('You are out', 'Quedaste fuera de combate')}</div>
+            {ko.lost > 0 && <div className="mt-1 flex items-center justify-center gap-1 text-[16px] font-extrabold text-[#7ef0ff]">−{ko.lost} <Diamond size={18} /> {t('(grab them back!)', '(¡recupéralos!)')}</div>}
             <Respawn at={ko.at} ms={respawnMs(game)} />
           </motion.div>
         </div>
@@ -564,9 +595,9 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       {client && client.net !== 'open' && (
         <div className="absolute bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-[#ff9f0a] px-4 py-1.5 text-[13px] font-extrabold text-[#2a1d00]">{t('Reconnecting…', 'Reconectando…')}</div>
       )}
-      {client && me && hud && !mobile && !quiz && (
+      {client && me && hud && !mobile && !quiz && performance.now() - startAt < 30000 && (
         <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
-          {side ? t('A/D move · W or Space jump (twice in the air) · S drop down · aim with the mouse · click to shoot', 'A/D moverse · W o Espacio saltar (dos veces en el aire) · S bajar · apunta con el mouse · clic disparar') : t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{kb ? t('E power · Q questions · B upgrades · knock rivals off the stage!', 'E poder · Q preguntas · B mejoras · ¡saca a los rivales del escenario!') : paint ? t('E power · Q questions · stand on blocks to paint them your colour! Boxes give extra jumps.', 'E poder · Q preguntas · ¡párate en los bloques para pintarlos! Las cajas dan saltos extra.') : t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
+          {side ? t('A/D move · W or Space jump (twice in the air) · S drop down · aim with the mouse · click to shoot', 'A/D moverse · W o Espacio saltar (dos veces en el aire) · S bajar · apunta con el mouse · clic disparar') : t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{kb ? t('1–7 weapons · E power · Q questions · B shop · knock rivals off the stage!', '1–7 armas · E poder · Q preguntas · B tienda · ¡saca a los rivales del escenario!') : paint ? t('E power · Q questions · stand on blocks to paint them your colour! Boxes give extra jumps.', 'E poder · Q preguntas · ¡párate en los bloques para pintarlos! Las cajas dan saltos extra.') : t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
         </div>
       )}
     </div>
@@ -601,10 +632,10 @@ function Bar({ value, max, color }: { value: number; max: number; color: string 
   );
 }
 
-function Slot({ k, children, active, label, cd = 0, cdMax = 1, color, onClick }: { k: string; children: React.ReactNode; active?: boolean; label: string; cd?: number; cdMax?: number; color?: string; onClick: () => void }) {
+function Slot({ k, children, active, label, cd = 0, cdMax = 1, color, small, onClick }: { k: string; children: React.ReactNode; active?: boolean; label: string; cd?: number; cdMax?: number; color?: string; small?: boolean; onClick: () => void }) {
   const f = cd > 0 ? Math.min(1, cd / cdMax) : 0;
   return (
-    <button type="button" onClick={onClick} title={label} className={cn('relative grid h-[74px] w-[92px] place-items-center rounded-2xl border-[3px] shadow-[0_6px_0_rgba(0,0,0,.3)]', active ? 'border-[#ffd23f] bg-gradient-to-b from-[#53d47a] to-[#2fa356]' : 'border-white/40 bg-gradient-to-b from-[#3d8bff] to-[#2a5fd0]')} style={!active && color ? { background: `linear-gradient(180deg, ${color}, #2a3577)` } : undefined}>
+    <button type="button" onClick={onClick} onPointerDown={(e) => e.stopPropagation()} title={label} className={cn('relative grid place-items-center', small ? 'h-[50px] w-[54px]' : 'h-[74px] w-[92px]', ' rounded-2xl border-[3px] shadow-[0_6px_0_rgba(0,0,0,.3)]', active ? 'border-[#ffd23f] bg-gradient-to-b from-[#53d47a] to-[#2fa356]' : 'border-white/40 bg-gradient-to-b from-[#3d8bff] to-[#2a5fd0]')} style={!active && color ? { background: `linear-gradient(180deg, ${color}, #2a3577)` } : undefined}>
       {children}
       <span className="absolute top-0.5 left-1.5 text-[12px] font-black text-white/80">{k}</span>
       {f > 0 && (
@@ -654,14 +685,26 @@ function Countdown({ startAt }: { startAt: number }) {
 }
 
 
-/** Knockback: your damage %, white → yellow → red. */
-function Pct({ value }: { value: number }) {
-  const k = Math.max(0, Math.min(1, value / 150));
+/** Knockback: the weapons you own, in arsenal order (hotbar slots 1–7). */
+function ownedArsenal(client: ClientSession): number[] {
+  const owned = client.myRow()?.[18] ?? 1;
+  return KB_ARSENAL.filter((a) => owned & (1 << a.w)).map((a) => a.w);
+}
+
+/** A round aiming reticle for the mouse (knockback). */
+const RETICLE = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="14" fill="none" stroke="#1b1f3a" stroke-width="5"/><circle cx="20" cy="20" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="20" cy="20" r="3.5" fill="#1b1f3a"/><circle cx="20" cy="20" r="1.8" fill="#fff"/></svg>')}") 20 20, crosshair`;
+
+/** Knockback, bottom left: energy left over what you started with, and the weapon in hand. */
+function KbStatus({ en, max, tired, weapon, small }: { en: number; max: number; tired: boolean; weapon: string; small: boolean }) {
+  const low = en < max * 0.2;
   return (
-    <motion.div key={Math.floor(value / 10)} initial={{ scale: 1.15 }} animate={{ scale: 1 }} className="flex w-max items-baseline gap-1.5 rounded-xl bg-[#141a3f]/85 px-3 py-1 shadow">
-      <span className="text-[12px] font-extrabold text-white/60 uppercase">{t('Damage', 'Daño')}</span>
-      <span className="text-[26px] leading-none font-black tabular-nums" style={{ color: `rgb(255,${Math.round(255 - k * 170)},${Math.round(255 - Math.min(1, k * 2) * 215)})` }}>{value}%</span>
-    </motion.div>
+    <div className="pointer-events-none drop-shadow-[0_2px_0_rgba(0,0,0,.45)]">
+      <div className={cn('flex items-center gap-1.5 font-black tabular-nums', small ? 'text-[22px]' : 'text-[34px]', (tired || low) && 'cw-pulse text-[#ffb547]')}>
+        {num(Math.max(0, Math.round(en)))}<span className={cn('text-white/70', small ? 'text-[15px]' : 'text-[20px]')}>/{num(max)}</span>
+        <GameIcon k={tired ? 'batteryLow' : 'bolt'} size={small ? 20 : 28} />
+      </div>
+      <div className={cn('cw-title -mt-1 tracking-wide text-white uppercase', small ? 'text-[13px]' : 'text-[18px]')}>{weapon}</div>
+    </div>
   );
 }
 

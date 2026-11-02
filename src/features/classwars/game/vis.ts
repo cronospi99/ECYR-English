@@ -14,7 +14,7 @@ export interface VGem { id: number; x: number; y: number; v: number; born: numbe
 export interface VProj { id: number; kind: number; x: number; y: number; vx: number; vy: number; range: number; dist: number; owner: number; born: number; local?: boolean }
 export interface VZone { id: number; kind: number; x: number; y: number; r: number; born: number; until: number; owner: number }
 export interface VTele { x: number; y: number; r: number; at: number; born: number; kind: number }
-export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; blockAt: number; statusAt: number; status: string }
+export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; spawnX: number; spawnY: number; blockAt: number; statusAt: number; status: string }
 
 export type Fxq =
   | { t: 'dmg'; idx: number; v: number; shield: boolean }
@@ -65,7 +65,7 @@ export class VisualWorld {
 
   st(idx: number): PState {
     let s = this.ps.get(idx);
-    if (!s) { s = { hurtAt: -1e9, koAt: -1e9, swingAt: -1e9, swingAim: 0, powerAt: -1e9, spawnAt: -1e9, blockAt: -1e9, statusAt: -1e9, status: '' }; this.ps.set(idx, s); }
+    if (!s) { s = { hurtAt: -1e9, koAt: -1e9, swingAt: -1e9, swingAim: 0, powerAt: -1e9, spawnAt: -1e9, spawnX: 0, spawnY: 0, blockAt: -1e9, statusAt: -1e9, status: '' }; this.ps.set(idx, s); }
     return s;
   }
 
@@ -149,7 +149,7 @@ export class VisualWorld {
         case 'tp': {
           const s = this.st(n(1));
           const kind = e[5] as string;
-          if (kind === 'spawn') s.spawnAt = now;
+          if (kind === 'spawn') { s.spawnAt = now; s.spawnX = n(2); s.spawnY = n(3); }
           this.fx.push({ t: 'tp', idx: n(1), kind, x: n(2), y: n(3), fx: n(6), fy: n(7) });
           break;
         }

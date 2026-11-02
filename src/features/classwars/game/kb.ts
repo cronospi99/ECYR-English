@@ -15,9 +15,20 @@ export interface Body {
   dropT: number;
   /** Time since start, for dropT. */
   t: number;
+  /** Spawn pedestal under the feet until pedT (knockback respawn). */
+  ped: Plat | null;
+  pedT: number;
 }
 
-export const newBody = (x: number, y: number): Body => ({ x, y, vx: 0, vy: 0, ground: false, air: 1, airMax: 1, coyote: 0, dropT: 0, t: 0 });
+export const newBody = (x: number, y: number): Body => ({ x, y, vx: 0, vy: 0, ground: false, air: 1, airMax: 1, coyote: 0, dropT: 0, t: 0, ped: null, pedT: 0 });
+
+/** Put a pedestal under the feet for `secs` (a player who just came back). */
+export function standOn(b: Body, secs: number) {
+  b.ped = { x: b.x - PED_HW, y: b.y, w: PED_HW * 2, h: 64, thin: true, v: 0 };
+  b.pedT = b.t + secs;
+  b.vy = 0;
+}
+const PED_HW = 46;
 
 const ACC_GROUND = 3600, ACC_AIR = 2000, MAX_FALL = 1500;
 
@@ -27,6 +38,7 @@ const ACC_GROUND = 3600, ACC_AIR = 2000, MAX_FALL = 1500;
  */
 export function kbStep(map: GameMap, b: Body, ix: number, jump: boolean, down: boolean, mul: number, dt: number) {
   b.t += dt;
+  const plats = b.ped && b.t < b.pedT ? [...map.plats, b.ped] : map.plats;
   // stuck inside a solid block (a teleport or swap put us there): pop out on top of it
   for (const p of map.plats) if (!p.thin && overlapsX(p, b.x) && b.y > p.y + 1 && b.y - KB_HH < p.y + p.h) { b.y = p.y; b.vy = Math.min(0, b.vy); }
   const target = ix * KB_SPEED * mul;
@@ -47,11 +59,11 @@ export function kbStep(map: GameMap, b: Body, ix: number, jump: boolean, down: b
 
   // move x, then y (axis-separated AABB)
   const nx = b.x + b.vx * dt;
-  b.x = sweepX(map.plats, b.x, nx, b.y);
+  b.x = sweepX(plats, b.x, nx, b.y);
   if (b.x !== nx) b.vx = 0;
   const wasGround = b.ground;
   const ny = b.y + b.vy * dt;
-  const [ry, landed, bonk] = sweepY(map.plats, b.x, b.y, ny, b.vy, b.t < b.dropT);
+  const [ry, landed, bonk] = sweepY(plats, b.x, b.y, ny, b.vy, b.t < b.dropT);
   b.y = ry;
   if (landed) { b.vy = 0; b.ground = true; b.air = b.airMax; b.coyote = 0.1; }
   else {

@@ -5,11 +5,11 @@
 import {
   BASE_SPEED, BOX_COOLDOWN_MS, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
   KB_SPEED, PAINT_CELL, PAINT_R, PLAYER_R, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, SPLAT_R, START_ENERGY, STEP_COST, TICK_MS,
-  BOT_LEVELS, MAX_EXTRA_JUMPS, TILE, aimToByte, respawnMs, sideView, type Fx, type Game,
+  BOT_LEVELS, MAX_EXTRA_JUMPS, PED_MS, TILE, aimToByte, respawnMs, sideView, type Fx, type Game,
 } from './constants';
 import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, KB_ARSENAL, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
 import { freeSpot, generateMap, hitsWall, moveCircle, paintCols, paintMask, paintRows, resolve, type GameMap } from './map';
-import { kbStep, newBody, outOfStage, type Body } from './kb';
+import { kbStep, newBody, outOfStage, standOn, type Body } from './kb';
 
 export type Ev = (string | number)[];
 
@@ -123,7 +123,7 @@ export class Sim {
   get bot() { return BOT_LEVELS[Math.max(0, Math.min(2, this.settings.botLevel ?? 0))]; }
   /** Rivals: not yourself and not your team. */
   foe(p: SimPlayer, q: SimPlayer) { return q !== p && q.alive && q.connected && (!this.teams || q.team !== p.team); }
-  base(team: number) { return this.map.burrows[(this.map.tiles ? team : TEAM_BASE[team]) % this.map.burrows.length]; }
+  base(team: number) { return this.map.burrows[(this.map.tiles || this.map.kind === 'kb' ? team : TEAM_BASE[team]) % this.map.burrows.length]; }
 
   get remainingMs() { return Math.max(0, this.settings.durationMs - this.now); }
 
@@ -661,7 +661,7 @@ export class Sim {
     const fx = p.x, fy = p.y;
     [p.x, p.y] = resolve(this.map, x, y);
     p.px = p.x; p.py = p.y;
-    if (p.body) { p.body.x = p.x; p.body.y = p.y; p.body.vx = p.body.vy = 0; }
+    if (p.body) { p.body.x = p.x; p.body.y = p.y; p.body.vx = p.body.vy = 0; if (kind === 'spawn' && this.game === 'kb') standOn(p.body, PED_MS / 1000); }
     p.vx = p.vy = 0;
     p.tx = p.x; p.ty = p.y; p.hasT = false;
     p.fv++;

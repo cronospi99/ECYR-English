@@ -320,6 +320,20 @@ G1f. CLASS WARS: COLOR CLASH 2D Y ARSENAL DE KNOCKBACK
   de vida se convierte en "Peso": los golpes te lanzan menos lejos. Los
   bots también compran armas.
 
+G1g. CLASS WARS: KNOCKBACK NOCTURNO
+- Escenario nuevo: cielo nocturno con estrellas que titilan, nubes suaves y
+  plataformas lejanas transparentes al fondo. Plataformas de bloques en 3D
+  (menta, lila, coral y celeste con franja dorada), un piso largo y muchas
+  plataformas pequeñas que se atraviesan desde abajo. Arte propio.
+- Al reaparecer sales en el aire sobre un pedestal que desaparece a los 3 s;
+  mientras tanto, pantalla "Reapareciendo…" abajo a la izquierda.
+- Nombre y % debajo de cada personaje (el % pasa de blanco a amarillo y
+  rojo); el arma flota al lado y gira hacia donde apuntas; cursor de mira.
+- Interfaz más limpia: barra de armas abajo con las que compraste (teclas
+  1–7, también en celular), energía y arma en mano abajo a la izquierda junto
+  a "Responder preguntas", aviso de "Poca energía" y sin minimapa. La ayuda
+  de teclas se oculta a los 30 s (en todos los modos).
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

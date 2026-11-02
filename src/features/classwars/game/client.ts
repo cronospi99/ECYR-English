@@ -3,12 +3,12 @@
    the host's 10 Hz snapshots. */
 import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
-  BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, sideView, speedFromFlags, type Game,
+  BASE_SPEED, FLAG, PED_MS, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, sideView, speedFromFlags, type Game,
 } from './constants';
 import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
 import { paintSpeed, type Ev } from './sim';
-import { kbStep, newBody, type Body } from './kb';
+import { kbStep, newBody, standOn, type Body } from './kb';
 import { savedPick, savePick, type Pick } from './questions';
 import { VisualWorld } from './vis';
 import { decAnswer, type Result } from './host';
@@ -230,6 +230,7 @@ export class ClientSession implements RenderSource {
         this.me.y = e[3] as number;
         this.me.vx = this.me.vy = 0;
         Object.assign(this.body, { x: this.me.x, y: this.me.y, vx: 0, vy: 0 });
+        if (e[5] === 'spawn' && this.game === 'kb') standOn(this.body, PED_MS / 1000);
         this.me.fv = e[4] as number;
         this.input.target = null;
       } else if (k === 'an') {

@@ -57,6 +57,8 @@ export const SHIELD_REGEN_DELAY = 5000;
 export const SHIELD_REGEN = 12; // per second
 export const RESPAWN_MS = 3500;
 export const KB_RESPAWN_MS = 2200;
+/** Knockback: how long the spawn pedestal holds you up. */
+export const PED_MS = 3000;
 export const respawnMs = (g: Game) => (g === 'kb' ? KB_RESPAWN_MS : RESPAWN_MS);
 export const SPAWN_INVULN_MS = 2500;
 /** Damage taken or dealt within this window keeps you vulnerable while answering. */

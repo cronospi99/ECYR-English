@@ -1,8 +1,8 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
-import { BOX_COOLDOWN_MS, FLAG, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
+import { BOX_COOLDOWN_MS, FLAG, PED_MS, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
-import { PaintLayer, Stage } from './stage';
+import { PaintLayer, Stage, pedestal } from './stage';
 import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
@@ -145,6 +145,14 @@ export class Renderer {
       g.globalAlpha = 0.86;
       g.drawImage(this.paintLayer.c, 0, 0, src.map.w, src.map.h);
       g.globalAlpha = 1;
+    }
+    if (src.map.kind === 'kb') {
+      // spawn pedestals (fade out in the last 400 ms)
+      for (const [, st] of src.vis.ps) {
+        const age = now - st.spawnAt;
+        if (age < 0 || age > PED_MS) continue;
+        pedestal(g, st.spawnX, st.spawnY, Math.min(1, (PED_MS - age) / 400) * Math.min(1, age / 120), 1);
+      }
     }
     if (!this.stage) for (const bu of src.map.burrows) if (bu.x > vx0 - 90 && bu.x < vx1 + 90 && bu.y > vy0 - 70 && bu.y < vy1 + 70) this.drawPortal(bu.x, bu.y, bu.id, now);
 
@@ -586,7 +594,9 @@ export class Renderer {
         const k = (now - ps.swingAt) / 220;
         if (k < 1) ang = ps.swingAim + lerp(-1.3, 1.3, easeOut(k));
       }
-      const hx = p.x + Math.cos(ang) * 18 * scale, hy = p.y - (34 + bob + lift) * scale + Math.sin(ang) * 10 * scale;
+      // knockback: the weapon floats beside the body and turns to the aim
+      const kbw = this.map?.kind === 'kb', fl = kbw ? Math.sin(now / 260 + p.idx) * 2.5 : 0;
+      const hx = p.x + Math.cos(ang) * (kbw ? 40 : 18) * scale, hy = p.y - (kbw ? 40 : 34 + bob + lift) * scale + Math.sin(ang) * (kbw ? 30 : 10) * scale + fl;
       g.save();
       g.translate(hx, hy);
       g.rotate(ang);
@@ -654,7 +664,7 @@ export class Renderer {
       const k = clamp(p.pct / 150, 0, 1);
       const col = `rgb(255,${Math.round(255 - k * 170)},${Math.round(255 - Math.min(1, k * 2) * 215)})`;
       const pulse = ps && now - ps.hurtAt < 250 ? 1.25 : 1;
-      this.label(p.x, top - 4, `${p.pct}%`, col, Math.round(18 * pulse));
+      this.label(p.x, p.y + 44, `${p.pct}%`, col, Math.round(21 * pulse), true);
     } else if (hurt || p.hp < p.maxHp || p.sh < 100) {
       const w = 46, x = p.x - w / 2;
       g.fillStyle = 'rgba(15,25,20,0.75)'; roundRect(g, x - 2, top - 2, w + 4, 11, 4); g.fill();
@@ -703,9 +713,9 @@ export class Renderer {
     g.restore();
   }
 
-  private label(x: number, y: number, text: string, color: string, size: number) {
+  private label(x: number, y: number, text: string, color: string, size: number, italic = false) {
     const g = this.g;
-    g.font = `900 ${size}px Inter, system-ui, sans-serif`;
+    g.font = `${italic ? 'italic ' : ''}900 ${size}px Inter, system-ui, sans-serif`;
     g.textAlign = 'center'; g.textBaseline = 'middle';
     g.lineWidth = 4; g.strokeStyle = 'rgba(15,25,20,0.9)'; g.lineJoin = 'round';
     g.strokeText(text, x, y);

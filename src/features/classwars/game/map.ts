@@ -225,35 +225,47 @@ function indexColliders(map: GameMap) {
 }
 
 /* ------------------------------------------------------------ knockback */
-/** The floating-islands stage: a big main island, two side islands and thin ledges above, with a
-    few seeded variations. Spawn points (in `burrows`) sit above the ledges. */
+/** The night-sky stage: one long block floor and many small floating block platforms around it,
+    mirrored left/right, with a few seeded variations. The floor and the two low side blocks are
+    solid; the small platforms let you jump up through them. Spawn points (in `burrows`) float in
+    the air above the floor (you appear on a pedestal that vanishes): 0 far left, 1 far right, 2–3
+    inner left/right, then the rest. `v` picks the platform colour. */
 function generateStage(seed: number): GameMap {
   const R = rng(seed);
   const rr = (a: number, b: number) => a + R() * (b - a);
   const W = KB_W, H = KB_H;
   const map: GameMap = { seed, kind: 'kb', plats: [], w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
-  const solid = (cx: number, top: number, w: number, h: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: Math.round(h), thin: false, v });
-  const ledge = (cx: number, top: number, w: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: 26, thin: true, v });
-  const layout = Math.floor(R() * 3);
   const mid = W / 2;
-  // main island
-  solid(mid, 1180, layout === 1 ? 1400 : 1560, 210);
-  // side islands
-  const side = layout === 2 ? 760 : 900;
-  solid(mid - side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
-  solid(mid + side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
-  // ledges
-  ledge(mid - 420, 900 + rr(-20, 20), rr(300, 360), 0);
-  ledge(mid + 420, 900 + rr(-20, 20), rr(300, 360), 0);
-  ledge(mid, 660 + rr(-25, 25), rr(360, 440), 1);
-  ledge(mid - 860, 720 + rr(-30, 30), rr(240, 300), 2);
-  ledge(mid + 860, 720 + rr(-30, 30), rr(240, 300), 2);
-  if (layout !== 1) { ledge(mid - 420, 440 + rr(-20, 20), 240, 3); ledge(mid + 420, 440 + rr(-20, 20), 240, 3); }
-  else ledge(mid, 420, 300, 3);
-  if (layout === 1) { solid(mid - 600, 1260, 220, 120, 1); solid(mid + 600, 1260, 220, 120, 1); }
-  // spawn points above the ledges
-  map.plats.forEach((p, i) => map.burrows.push({ id: i, x: p.x + p.w / 2, y: p.y - 140 }));
-  // solid blocks also block projectiles (thin ledges do not)
+  const add = (cx: number, top: number, w: number, thin: boolean, h: number, v: number) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h, thin, v });
+  const pair = (dx: number, top: number, w: number, thin: boolean, h: number, v: number) => { add(mid - dx, top, w, thin, h, v); add(mid + dx, top, w, thin, h, v); };
+  const layout = Math.floor(R() * 3);
+  const FLOOR = 1200;
+  // the long floor
+  add(mid, FLOOR, layout === 1 ? 1320 : 1520, false, 132, 2);
+  // low side blocks (solid)
+  pair(layout === 2 ? 930 : 860, 1040 + rr(-20, 20), rr(260, 320), false, 96, 1);
+  if (layout === 1) pair(800, 1380, 220, false, 96, 3); // low steps beside the floor ends (not under them)
+  // small floating platforms (one-way)
+  const j = (n: number) => n + rr(-22, 22);
+  pair(j(430), j(960), rr(230, 280), true, 72, 0);
+  add(mid, j(770), rr(340, 400), true, 72, 3);
+  pair(j(740), j(800), rr(210, 250), true, 72, 3);
+  pair(j(1190), j(900), rr(190, 230), true, 72, 0);
+  pair(j(390), j(590), rr(230, 270), true, 72, 1);
+  pair(j(910), j(570), rr(200, 240), true, 72, 2);
+  if (layout === 0) add(mid, j(400), 240, true, 72, 0);
+  else pair(j(620), j(390), 200, true, 72, 0);
+  if (layout === 2) pair(j(1250), j(620), 180, true, 72, 1);
+  // spawn points in the air above the floor, clear of platforms
+  const free = (x: number, feet: number) => !map.plats.some((p) => x + 70 > p.x && x - 70 < p.x + p.w && p.y + p.h + 10 > feet - 150 && p.y < feet + 30);
+  const spots: number[] = [];
+  for (const dx of [640, 420, 200, 0, 520, 300, 100]) for (const s of dx ? [-1, 1] : [1]) if (free(mid + s * dx, FLOOR - 170)) spots.push(mid + s * dx);
+  const order = [...spots].sort((a, b) => a - b);
+  const pick = (x: number | undefined) => { if (x === undefined) return; const i = spots.indexOf(x); if (i >= 0) spots.splice(i, 1); map.burrows.push({ id: map.burrows.length, x, y: FLOOR - 170 - 62 }); };
+  pick(order[0]); pick(order[order.length - 1]); pick(order[1]); pick(order[order.length - 2]);
+  for (const x of [...spots]) pick(x);
+  if (!map.burrows.length) map.burrows.push({ id: 0, x: mid, y: FLOOR - 232 });
+  // solid blocks also block projectiles (the one-way platforms do not)
   for (const p of map.plats) if (!p.thin) map.colliders.push({ t: 'r', x: p.x + p.w / 2, y: p.y + p.h / 2, r: 0, hw: p.w / 2, hh: p.h / 2, tall: true });
   indexColliders(map);
   return map;

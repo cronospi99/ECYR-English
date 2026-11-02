@@ -1,6 +1,7 @@
-/* Class Wars — drawing for the two newer modes: the Knockback stage (sky, parallax hills and
-   clouds, floating islands and ledges, all cached per scale) and the Color Clash paint layer (a
-   quarter-scale canvas of soft round blobs, redrawn only where cells changed). */
+/* Class Wars — drawing for the side-view modes: the Knockback stage (a starry night sky with
+   parallax stars, soft clouds and faint far-away platforms, and chunky 3D block platforms cached
+   per scale), the Color Clash level (pastel sky, riveted white blocks, painted blocks) and the
+   spawn pedestal. */
 import { PAINT_CELL, TEAM_COLORS, TEAM_DARK, TILE, rng } from '../game/constants';
 import { paintCols, paintRows, type GameMap, type Plat } from '../game/map';
 import type { VisualWorld } from '../game/vis';
@@ -15,27 +16,57 @@ export class Stage {
   private s = 0;
   constructor(map: GameMap) { this.map = map; }
 
+  private stars: [number, number, number, number, number][] = [];
+  private ghosts: [number, number, number, number][] = [];
+
   /** Screen-space sky with parallax (call before the world transform). */
   sky(g: G, w: number, h: number, camX: number, camY: number, z: number, now: number) {
     if (this.map.tiles) return this.pastel(g, w, h, camX, camY, now);
-    const gr = g.createLinearGradient(0, 0, 0, h);
-    gr.addColorStop(0, '#5ab8ff'); gr.addColorStop(0.62, '#a9e0ff'); gr.addColorStop(1, '#e6f7ff');
-    g.fillStyle = gr; g.fillRect(0, 0, w, h);
-    // sun
-    const sx = w * 0.8 - camX * 0.02, sy = h * 0.2 - camY * 0.02;
-    const sg = g.createRadialGradient(sx, sy, 10, sx, sy, 150);
-    sg.addColorStop(0, 'rgba(255,250,210,0.95)'); sg.addColorStop(0.25, 'rgba(255,240,170,0.55)'); sg.addColorStop(1, 'rgba(255,240,170,0)');
-    g.fillStyle = sg; g.fillRect(sx - 150, sy - 150, 300, 300);
-    // far hills, near hills (two parallax layers)
-    this.hills(g, w, h, camX * 0.12, camY * 0.05, h * 0.62, 90, '#9ad7c9', 0.0021, 3);
-    this.hills(g, w, h, camX * 0.25, camY * 0.1, h * 0.74, 70, '#7cc8a6', 0.0034, 7);
-    // clouds drifting
-    const R = rng(this.map.seed);
-    for (let i = 0; i < 9; i++) {
-      const base = R() * 2400, y = 40 + R() * h * 0.45, sc = 0.6 + R() * 0.8;
-      const x = ((base - camX * (0.15 + sc * 0.1) + now * 0.008 * sc) % 2600 + 2600) % 2600 - 300;
-      this.cloud(g, x * Math.max(1, w / 2000), y - camY * 0.04, sc * Math.max(0.8, z));
+    if (!this.stars.length) {
+      const R = rng(this.map.seed ^ 0x5f3a);
+      // x, y in a 1600×1000 tile, size, layer (parallax), twinkle phase
+      for (let i = 0; i < 230; i++) this.stars.push([R() * 1600, R() * 1000, R() < 0.12 ? 2 : R() < 0.45 ? 1 : 0, R() < 0.5 ? 0 : 1, R() * 6.3]);
+      for (let i = 0; i < 9; i++) this.ghosts.push([R() * 2400, 120 + R() * 700, 160 + R() * 240, Math.floor(R() * 4)]);
     }
+    const gr = g.createLinearGradient(0, 0, 0, h);
+    gr.addColorStop(0, '#16187a'); gr.addColorStop(0.45, '#2a2fd0'); gr.addColorStop(1, '#5a43d6');
+    g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    // soft violet glow drifting with the camera
+    const gx = w * 0.7 - camX * 0.03, gy = h * 0.35 - camY * 0.03, gR = Math.max(w, h) * 0.55;
+    const ng = g.createRadialGradient(gx, gy, 0, gx, gy, gR);
+    ng.addColorStop(0, 'rgba(190,120,255,0.28)'); ng.addColorStop(1, 'rgba(190,120,255,0)');
+    g.fillStyle = ng; g.fillRect(0, 0, w, h);
+    // stars: two parallax layers, a few twinkling four-point sparkles
+    const k = Math.max(1, z * 0.8);
+    for (const [sx, sy, size, layer, ph] of this.stars) {
+      const par = layer ? 0.12 : 0.05;
+      const x = (((sx * k - camX * par) % (1600 * k)) + 1600 * k) % (1600 * k);
+      const y = (((sy * k - camY * par) % (1000 * k)) + 1000 * k) % (1000 * k);
+      for (let ox = x; ox < w; ox += 1600 * k) for (let oy = y; oy < h; oy += 1000 * k) {
+        const tw = 0.55 + 0.45 * Math.sin(now * 0.002 + ph);
+        if (size === 2) sparkle(g, ox, oy, 5 * k * (0.7 + tw * 0.5), `rgba(255,255,255,${0.6 + tw * 0.4})`);
+        else { g.fillStyle = size ? `rgba(255,240,255,${0.5 + tw * 0.5})` : `rgba(200,210,255,${0.35 + tw * 0.4})`; const d = (size ? 2.4 : 1.6) * k; g.fillRect(ox - d / 2, oy - d / 2, d, d); }
+      }
+    }
+    // faint far-away platforms and clouds
+    g.save();
+    for (const [bx, by, bw, v] of this.ghosts) {
+      const x = ((bx * k - camX * 0.35) % (2600 * k) + 2600 * k) % (2600 * k) - 300 * k, y = by * k - camY * 0.2;
+      if (x > w + 50 || x + bw * k < -50) continue;
+      g.globalAlpha = 0.16;
+      block3d(g, x, y, bw * k * 0.7, 60 * k * 0.7, v, k * 0.7, false);
+    }
+    g.globalAlpha = 1;
+    const R = rng(this.map.seed);
+    g.fillStyle = 'rgba(190,170,255,0.16)';
+    for (let i = 0; i < 10; i++) {
+      const base = R() * 2600, y = 80 + R() * h * 0.85, sc = 0.7 + R() * 0.9;
+      const x = ((base - camX * (0.15 + sc * 0.08) + now * 0.006 * sc) % 2800 + 2800) % 2800 - 300;
+      g.beginPath();
+      for (const [dx, dy, r] of [[0, 0, 26], [32, -12, 32], [66, 0, 24], [34, 8, 24]]) { g.moveTo(x + dx * sc + r * sc, y + dy * sc - camY * 0.05); g.arc(x + dx * sc, y + dy * sc - camY * 0.05, r * sc, 0, 7); }
+      g.fill();
+    }
+    g.restore();
   }
 
   /** Color Clash sky: a warm pastel wash with soft brush swirls and cream clouds. */
@@ -83,106 +114,113 @@ export class Stage {
       }
   }
 
-  private hills(g: G, w: number, h: number, ox: number, oy: number, base: number, amp: number, color: string, f: number, seed: number) {
-    g.beginPath();
-    g.moveTo(0, h);
-    for (let x = 0; x <= w + 20; x += 20) {
-      const wx = x + ox;
-      const y = base - oy + Math.sin(wx * f + seed) * amp * 0.6 + Math.sin(wx * f * 2.3 + seed * 2) * amp * 0.3;
-      g.lineTo(x, y);
-    }
-    g.lineTo(w, h); g.closePath();
-    g.fillStyle = color; g.fill();
-  }
-
-  private cloud(g: G, x: number, y: number, s: number) {
-    g.fillStyle = 'rgba(255,255,255,0.9)';
-    g.beginPath();
-    for (const [dx, dy, r] of [[0, 0, 28], [30, -12, 34], [64, 0, 26], [34, 8, 26]]) { g.moveTo(x + dx * s + r * s, y + dy * s); g.arc(x + dx * s, y + dy * s, r * s, 0, 7); }
-    g.fill();
-  }
-
   /** Platforms in world space. */
   draw(g: G, S: number, x0: number, x1: number, y0: number, y1: number) {
     if (S !== this.s) { this.cache.clear(); this.s = S; }
     for (const p of this.map.plats) {
-      if (p.x > x1 || p.x + p.w < x0 || p.y > y1 + 40 || p.y + p.h + 160 < y0) continue;
+      if (p.x > x1 || p.x + p.w + PAD < x0 || p.y - PAD > y1 || p.y + p.h + PAD < y0) continue;
       const key = `${p.x},${p.y}`;
       let c = this.cache.get(key);
       if (!c) { c = this.bake(p, S); this.cache.set(key, c); }
-      g.drawImage(c, p.x - PAD, p.y - PAD, p.w + PAD * 2, p.h + PAD * 2 + (p.thin || this.map.tiles ? 0 : HANG));
+      g.drawImage(c, p.x - PAD, p.y - PAD, p.w + PAD * 2, p.h + PAD * 2);
     }
   }
 
   private bake(p: Plat, S: number): HTMLCanvasElement {
     const c = document.createElement('canvas');
-    const w = p.w + PAD * 2, h = p.h + PAD * 2 + (p.thin || this.map.tiles ? 0 : HANG);
+    const w = p.w + PAD * 2, h = p.h + PAD * 2;
     c.width = Math.ceil(w * S); c.height = Math.ceil(h * S);
     const g = c.getContext('2d')!;
     g.scale(S, S);
     g.translate(PAD - p.x, PAD - p.y);
-    if (this.map.tiles) blocks(g, p, this.map); else if (p.thin) ledge(g, p); else island(g, p);
+    if (this.map.tiles) blocks(g, p, this.map); else block3d(g, p.x, p.y, p.w, p.h, p.v, 1, true);
     return c;
   }
 }
-const PAD = 8, HANG = 120;
+const PAD = 26;
 
-/** A floating island: grass top, layered dirt, rocks hanging underneath. */
-function island(g: G, p: Plat) {
-  const R = rng(p.x * 31 + p.y);
-  const { x, y, w, h } = p;
-  // hanging rock underside
-  g.beginPath();
-  g.moveTo(x + 6, y + h - 10);
-  const n = Math.max(4, Math.round(w / 90));
-  for (let i = 0; i <= n; i++) {
-    const px = x + 6 + ((w - 12) * i) / n;
-    const depth = i === 0 || i === n ? 0 : 30 + R() * (HANG - 40) * Math.sin((i / n) * Math.PI);
-    g.lineTo(px - (w / n) * 0.25, y + h + depth * 0.6);
-    g.lineTo(px, y + h + depth);
-  }
-  g.lineTo(x + w - 6, y + h - 10);
-  g.closePath();
-  g.fillStyle = '#8a6a55'; g.fill();
-  g.lineWidth = 4; g.strokeStyle = INK; g.lineJoin = 'round'; g.stroke();
-  // dirt body
-  rr(g, x, y + 10, w, h - 10, 22);
-  const dg = g.createLinearGradient(0, y, 0, y + h);
-  dg.addColorStop(0, '#c08a55'); dg.addColorStop(1, '#94603a');
-  g.fillStyle = dg; g.fill(); g.lineWidth = 4.5; g.strokeStyle = INK; g.stroke();
-  // strata + pebbles
-  g.save(); rr(g, x, y + 10, w, h - 10, 22); g.clip();
-  g.strokeStyle = 'rgba(80,45,20,0.35)'; g.lineWidth = 3;
-  for (let k = 1; k < 4; k++) {
+/** Platform colours (front, top, side, line): mint, lilac, coral, sky. Trim is gold. */
+const PAL = [
+  ['#33c9a6', '#7df0d2', '#23947c', '#1d7d69'],
+  ['#9b6bff', '#c7a6ff', '#6e48c4', '#5a3aa6'],
+  ['#ff5a86', '#ff9db8', '#c43f66', '#a3304f'],
+  ['#3fa6ff', '#9bd2ff', '#2a77c2', '#215f9e'],
+];
+const GOLD = '#ffd23f', GOLD_D = '#c9980f';
+
+/**
+ * A chunky block platform seen slightly from above: a tiled top face (where feet stand, at y), a
+ * front of blocks, a gold trim, an inset base with gold plates, and a darker right side. Also
+ * used for the faint background platforms (detail = false) and the spawn pedestal.
+ */
+export function block3d(g: G, x: number, y: number, w: number, h: number, v: number, s: number, detail: boolean) {
+  const [front, top, side, line] = PAL[((v % 4) + 4) % 4];
+  const T = 12 * s, K = 18 * s, base = Math.min(22 * s, h * 0.3);
+  const fy = y + T, fh = Math.max(10 * s, h - T - base), by = fy + fh;
+  const bi = Math.min(16 * s, w * 0.08);
+  // base (inset, under the trim)
+  g.fillStyle = front; g.fillRect(x + bi, by, w - bi * 2, base);
+  g.fillStyle = side; g.beginPath(); g.moveTo(x + w - bi, by); g.lineTo(x + w - bi + K * 0.6, by - T * 0.6); g.lineTo(x + w - bi + K * 0.6, by + base - T * 0.6); g.lineTo(x + w - bi, by + base); g.closePath(); g.fill();
+  // right side
+  g.fillStyle = side;
+  g.beginPath(); g.moveTo(x + w, fy); g.lineTo(x + w + K, y - T); g.lineTo(x + w + K, by - T * 2 + 6 * s); g.lineTo(x + w, by + 6 * s); g.closePath(); g.fill();
+  // front
+  g.fillStyle = front; g.fillRect(x, fy, w, fh);
+  // top
+  g.fillStyle = top;
+  g.beginPath(); g.moveTo(x, fy); g.lineTo(x + w, fy); g.lineTo(x + w + K, y - T); g.lineTo(x + K, y - T); g.closePath(); g.fill();
+  // gold trim between the front and the base
+  g.fillStyle = GOLD; g.fillRect(x, by, w, 6 * s);
+  g.fillStyle = GOLD_D; g.beginPath(); g.moveTo(x + w, by); g.lineTo(x + w + K, by - T * 2); g.lineTo(x + w + K, by - T * 2 + 6 * s); g.lineTo(x + w, by + 6 * s); g.closePath(); g.fill();
+  if (detail) {
+    const n = Math.max(1, Math.round(w / (46 * s))), cw = w / n;
+    g.strokeStyle = line; g.lineWidth = 2.5 * s;
     g.beginPath();
-    const yy = y + 30 + k * (h - 30) / 4;
-    for (let px = x; px <= x + w; px += 30) g.lineTo(px, yy + Math.sin(px * 0.03 + k) * 5);
+    for (let i = 1; i < n; i++) {
+      const cx = x + i * cw;
+      g.moveTo(cx, fy); g.lineTo(cx, by); // front seams
+      g.moveTo(cx, fy); g.lineTo(cx + K, y - T); // top seams
+    }
+    const rows = Math.max(1, Math.round(fh / (40 * s)));
+    for (let r = 1; r < rows; r++) { g.moveTo(x, fy + (fh * r) / rows); g.lineTo(x + w, fy + (fh * r) / rows); }
+    g.moveTo(x + K * 0.5, y); g.lineTo(x + w + K * 0.5, y); // middle line of the top
     g.stroke();
+    // light edge on the top front, rivets, plates on the base
+    g.fillStyle = 'rgba(255,255,255,0.35)'; g.fillRect(x, fy, w, 3 * s);
+    g.fillStyle = line;
+    for (let i = 0; i < n; i++) { const cx = x + i * cw; g.beginPath(); g.arc(cx + 7 * s, fy + 8 * s, 1.8 * s, 0, 7); g.arc(cx + cw - 7 * s, fy + 8 * s, 1.8 * s, 0, 7); g.fill(); }
+    const plates = Math.max(1, Math.round((w - bi * 2) / (110 * s)));
+    for (let i = 0; i < plates; i++) {
+      const px = x + bi + ((w - bi * 2) * (i + 0.5)) / plates - 13 * s;
+      g.fillStyle = GOLD; g.fillRect(px, by + 9 * s, 26 * s, base - 12 * s);
+      g.strokeStyle = INK; g.lineWidth = 2 * s; g.strokeRect(px, by + 9 * s, 26 * s, base - 12 * s);
+      g.fillStyle = INK; g.beginPath(); g.arc(px + 5 * s, by + 9 * s + (base - 12 * s) / 2, 1.5 * s, 0, 7); g.arc(px + 21 * s, by + 9 * s + (base - 12 * s) / 2, 1.5 * s, 0, 7); g.fill();
+    }
   }
-  for (let i = 0; i < w / 40; i++) {
-    g.beginPath(); g.ellipse(x + R() * w, y + 40 + R() * (h - 50), 6 + R() * 6, 4 + R() * 3, 0, 0, 7);
-    g.fillStyle = R() < 0.5 ? '#d9b07a' : '#7e5434'; g.fill(); g.lineWidth = 2; g.strokeStyle = 'rgba(29,42,31,0.6)'; g.stroke();
-  }
+  // ink outline: the silhouette plus the edges between faces
+  g.strokeStyle = INK; g.lineWidth = (detail ? 4 : 3) * s; g.lineJoin = 'round';
+  g.beginPath();
+  g.moveTo(x, fy); g.lineTo(x + K, y - T); g.lineTo(x + w + K, y - T); g.lineTo(x + w + K, by - T * 2 + 6 * s); g.lineTo(x + w, by + 6 * s);
+  g.lineTo(x + w - bi, by + 6 * s); g.lineTo(x + w - bi, by + base); g.lineTo(x + bi, by + base); g.lineTo(x + bi, by + 6 * s); g.lineTo(x, by + 6 * s); g.closePath();
+  g.moveTo(x, fy); g.lineTo(x + w, fy); g.lineTo(x + w + K, y - T);
+  g.moveTo(x + w, fy); g.lineTo(x + w, by + 6 * s);
+  g.moveTo(x, by); g.lineTo(x + w, by);
+  g.stroke();
+}
+
+/** The spawn pedestal: a small block under a player who just came back (fades out at the end). */
+export function pedestal(g: G, x: number, y: number, alpha: number, v: number) {
+  g.save();
+  g.globalAlpha = alpha;
+  block3d(g, x - 46, y, 92, 64, v, 1, true);
   g.restore();
-  // grass cap with mowed stripes
-  rr(g, x - 4, y - 4, w + 8, 34, 16);
-  g.fillStyle = '#4cc24a'; g.fill();
-  g.save(); rr(g, x - 4, y - 4, w + 8, 34, 16); g.clip();
-  for (let sx = x - 4; sx < x + w + 4; sx += 64) { g.fillStyle = Math.floor((sx - x) / 64) % 2 ? '#43b641' : '#52cc4f'; g.fillRect(sx, y - 4, 32, 34); }
-  g.fillStyle = 'rgba(255,255,255,0.18)'; g.fillRect(x - 4, y - 4, w + 8, 7);
-  g.restore();
-  rr(g, x - 4, y - 4, w + 8, 34, 16); g.lineWidth = 4.5; g.strokeStyle = INK; g.stroke();
-  // grass tufts dripping over the edge
-  g.fillStyle = '#43b641';
-  for (let px = x + 14; px < x + w - 10; px += 26 + R() * 30) {
-    g.beginPath(); g.moveTo(px - 9, y + 28); g.quadraticCurveTo(px, y + 44 + R() * 8, px + 9, y + 28); g.closePath(); g.fill();
-    g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke();
-  }
-  // decoration on top: flowers and clover
-  for (let px = x + 40; px < x + w - 40; px += 90 + R() * 120) {
-    if (R() < 0.5) flower(g, px, y - 2, R() < 0.5 ? '#ff8fb8' : '#ffe14d');
-    else clover(g, px, y - 2);
-  }
+}
+
+function sparkle(g: G, x: number, y: number, r: number, color: string) {
+  g.fillStyle = color;
+  g.beginPath();
+  g.moveTo(x, y - r); g.quadraticCurveTo(x, y, x + r, y); g.quadraticCurveTo(x, y, x, y + r); g.quadraticCurveTo(x, y, x - r, y); g.quadraticCurveTo(x, y, x, y - r);
+  g.fill();
 }
 
 /** A run of white riveted blocks (Color Clash); the outline only on sides that face the air. */
@@ -205,56 +243,6 @@ function blocks(g: G, p: Plat, map: GameMap) {
     if (!solid(c + 1, r)) { g.moveTo(x + TILE, p.y); g.lineTo(x + TILE, p.y + TILE); }
     g.stroke();
   }
-}
-
-/** Thin ledge you can jump through from below: bricks with a gold trim, or a wooden plank. */
-function ledge(g: G, p: Plat) {
-  const { x, y, w, h } = p;
-  const brick = p.v % 2 === 0;
-  rr(g, x, y, w, h, 8);
-  g.fillStyle = brick ? '#ef5a6f' : '#c98b4f'; g.fill();
-  g.save(); rr(g, x, y, w, h, 8); g.clip();
-  if (brick) {
-    g.fillStyle = '#ffcf4a'; g.fillRect(x, y, w, 7);
-    g.strokeStyle = 'rgba(120,20,40,0.55)'; g.lineWidth = 2.5;
-    for (let r = 0; r < 2; r++) {
-      const yy = y + 7 + r * ((h - 7) / 2);
-      g.beginPath(); g.moveTo(x, yy); g.lineTo(x + w, yy); g.stroke();
-      for (let bx = x + (r ? 22 : 0); bx < x + w; bx += 44) { g.beginPath(); g.moveTo(bx, yy); g.lineTo(bx, yy + (h - 7) / 2); g.stroke(); }
-    }
-  } else {
-    g.fillStyle = 'rgba(255,255,255,0.22)'; g.fillRect(x, y, w, 6);
-    g.strokeStyle = 'rgba(90,50,20,0.5)'; g.lineWidth = 2.5;
-    for (let bx = x + 60; bx < x + w; bx += 60) { g.beginPath(); g.moveTo(bx, y + 3); g.lineTo(bx, y + h - 3); g.stroke(); }
-    g.fillStyle = 'rgba(60,35,15,0.7)';
-    for (let bx = x + 12; bx < x + w; bx += 60) { g.beginPath(); g.arc(bx, y + h / 2, 2.6, 0, 7); g.arc(bx + 36, y + h / 2, 2.6, 0, 7); g.fill(); }
-  }
-  g.restore();
-  rr(g, x, y, w, h, 8); g.lineWidth = 4; g.strokeStyle = INK; g.stroke();
-}
-
-function flower(g: G, x: number, y: number, petal: string) {
-  g.strokeStyle = INK; g.lineWidth = 2.5;
-  g.beginPath(); g.moveTo(x, y); g.lineTo(x, y - 18); g.stroke();
-  for (let i = 0; i < 5; i++) {
-    const a = (i / 5) * Math.PI * 2;
-    g.beginPath(); g.arc(x + Math.cos(a) * 6, y - 20 + Math.sin(a) * 6, 5, 0, 7); g.fillStyle = petal; g.fill(); g.stroke();
-  }
-  g.beginPath(); g.arc(x, y - 20, 4, 0, 7); g.fillStyle = '#ffb020'; g.fill(); g.stroke();
-}
-function clover(g: G, x: number, y: number) {
-  g.strokeStyle = INK; g.lineWidth = 2.5;
-  for (const [dx, dy] of [[-7, -8], [7, -8], [0, -16]]) { g.beginPath(); g.arc(x + dx, y + dy, 7, 0, 7); g.fillStyle = '#5fd25a'; g.fill(); g.stroke(); }
-}
-
-function rr(g: G, x: number, y: number, w: number, h: number, r: number) {
-  g.beginPath();
-  g.moveTo(x + r, y);
-  g.arcTo(x + w, y, x + w, y + h, r);
-  g.arcTo(x + w, y + h, x, y + h, r);
-  g.arcTo(x, y + h, x, y, r);
-  g.arcTo(x, y, x + w, y, r);
-  g.closePath();
 }
 
 /* --------------------------------------------------------------- paint */
