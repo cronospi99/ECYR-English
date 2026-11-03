@@ -98,6 +98,13 @@ export class DoodleHost {
         this.bump();
         break;
       }
+      case 'edit': {
+        // the player reopened their answer to change it: the step waits for them again
+        if (this.phase !== 'play' || Number(d.s) !== this.step || !this.order.includes(peer) || !this.done.delete(peer)) return;
+        this.relay.send({ k: 'prog', done: [...this.done] });
+        this.bump();
+        break;
+      }
     }
   }
 
@@ -233,6 +240,14 @@ export class DoodleClient {
     if (!this.task || this.task.done) return;
     this.task = { ...this.task, done: true };
     this.relay.send({ k: 'sub', s: this.task.s, v }, 'host');
+    this.bump();
+  }
+
+  /** Reopen the answer already handed in (only while the step is still open). */
+  edit() {
+    if (!this.task || !this.task.done || this.task.endsAt - Date.now() < 1500) return;
+    this.task = { ...this.task, done: false };
+    this.relay.send({ k: 'edit', s: this.task.s }, 'host');
     this.bump();
   }
 

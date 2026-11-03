@@ -5,7 +5,7 @@ import { Check, Flame, ShoppingBag, X, BookOpen, ShieldAlert, Shield } from 'luc
 import { cn } from '@/lib/cn';
 import type { ClientSession, ServedQ } from '../game/client';
 import { FLAG } from '../game/constants';
-import { UPGRADES, answerGain, upValue } from '../game/defs';
+import { KB_ARSENAL, UPGRADES, WEAPONS, answerGain, upValue } from '../game/defs';
 import { sfx } from '../render/audio';
 import { Btn, Diamond, GameIcon } from './kit';
 import { num, t, tx } from '../i18n';
@@ -142,8 +142,11 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
   return (
     <div className="cw-scroll min-h-0 flex-1 overflow-y-auto px-3 pb-6 sm:px-5">
       <p className="mb-3 text-center text-[14px] font-semibold text-white/70">{t('Invest your energy in upgrades: recharge more per answer, get more diamonds from boxes and spend less when moving.', 'Invierte tu energía en mejoras: recarga más con cada pregunta, saca más diamantes de las cajas y gasta menos al moverte.')}</p>
+      {client.game === 'kb' && <Arsenal client={client} en={en} />}
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {UPGRADES.map((u) => {
+          // Knockback has no health: the HP upgrade is "Weight" (you fly less far)
+          const kbHp = client.game === 'kb' && u.id === 'hp';
           const lvl = client.ups[u.id];
           const max = lvl >= u.values.length - 1;
           const cost = max ? 0 : u.costs[lvl + 1];
@@ -153,8 +156,8 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
               <div className="flex items-center gap-3">
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/10"><GameIcon k={u.ic} size={32} /></div>
                 <div className="min-w-0">
-                  <div className="text-[17px] leading-tight font-black">{tx(u.name)}</div>
-                  <div className="text-[12.5px] font-semibold text-white/65">{tx(u.desc)}</div>
+                  <div className="text-[17px] leading-tight font-black">{kbHp ? t('Weight', 'Peso') : tx(u.name)}</div>
+                  <div className="text-[12.5px] font-semibold text-white/65">{kbHp ? t('Heavier: hits launch you less far.', 'Más pesado: los golpes te lanzan menos lejos.') : tx(u.desc)}</div>
                 </div>
               </div>
               <div className="mt-3 flex gap-1">
@@ -167,6 +170,36 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
                 </Btn>
               </div>
             </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/** Knockback: buy weapons once with energy, then switch between the ones you own. */
+function Arsenal({ client, en }: { client: ClientSession; en: number }) {
+  const row = client.myRow();
+  const owned = row?.[18] ?? 1, cur = row?.[9] ?? 0;
+  return (
+    <div className="mx-auto mb-5 max-w-[1100px]">
+      <div className="mb-2 flex items-center gap-2 text-[15px] font-black tracking-wide uppercase"><GameIcon k="launch" size={20} /> {t('Arsenal', 'Arsenal')}</div>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+        {KB_ARSENAL.map((a) => {
+          const w = WEAPONS[a.w];
+          const has = !!(owned & (1 << a.w));
+          const on = cur === a.w;
+          const can = has ? !on : en >= a.cost;
+          return (
+            <button key={a.w} type="button" disabled={!can} onClick={() => { client.buyWeapon(a.w); sfx.buy(); }} title={tx(a.tip)}
+              className={cn('flex flex-col items-center rounded-2xl border-[3px] p-2.5 text-center transition-colors', on ? 'border-[#30d158] bg-[#30d158]/15' : has ? 'border-white/25 bg-[#232d6b] hover:border-white/50' : can ? 'border-[#ffd23f]/60 bg-[#232d6b] hover:border-[#ffd23f]' : 'border-white/10 bg-[#232d6b] opacity-60')}>
+              <GameIcon k={w.ic} size={38} />
+              <div className="mt-1 text-[14px] leading-tight font-black">{tx(w.name)}</div>
+              <div className="mt-0.5 line-clamp-2 text-[11.5px] font-semibold text-white/65">{tx(a.tip)}</div>
+              <div className={cn('mt-1.5 rounded-full px-2.5 py-0.5 text-[12.5px] font-black', on ? 'bg-[#30d158] text-white' : has ? 'bg-white/15' : 'bg-[#ffd23f] text-[#2a1d00]')}>
+                {on ? t('Equipped', 'Equipada') : has ? t('Equip', 'Equipar') : <span className="inline-flex items-center gap-0.5">{num(a.cost)}<GameIcon k="bolt" size={13} /></span>}
+              </div>
+            </button>
           );
         })}
       </div>

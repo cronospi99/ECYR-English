@@ -3,12 +3,12 @@
    the host's 10 Hz snapshots. */
 import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
-  BASE_SPEED, FLAG, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, speedFromFlags, type Game,
+  BASE_SPEED, FLAG, PED_MS, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, sideView, speedFromFlags, type Game,
 } from './constants';
 import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
 import { paintSpeed, type Ev } from './sim';
-import { kbStep, newBody, type Body } from './kb';
+import { kbStep, newBody, standOn, type Body } from './kb';
 import { savedPick, savePick, type Pick } from './questions';
 import { VisualWorld } from './vis';
 import { decAnswer, type Result } from './host';
@@ -222,7 +222,7 @@ export class ClientSession implements RenderSource {
       const k = e[0];
       if (e[1] !== this.myIdx) continue;
       if (k === 'kb') {
-        if (this.game === 'kb') { this.body.vx += e[2] as number; this.body.vy = Math.min(this.body.vy, 0) + (e[3] as number); this.body.ground = false; }
+        if (sideView(this.game)) { this.body.vx += e[2] as number; this.body.vy = Math.min(this.body.vy, 0) + (e[3] as number); this.body.ground = false; }
         else { this.me.vx += e[2] as number; this.me.vy += e[3] as number; }
         this.me.fv = e[4] as number;
       } else if (k === 'tp') {
@@ -230,6 +230,7 @@ export class ClientSession implements RenderSource {
         this.me.y = e[3] as number;
         this.me.vx = this.me.vy = 0;
         Object.assign(this.body, { x: this.me.x, y: this.me.y, vx: 0, vy: 0 });
+        if (e[5] === 'spawn' && this.game === 'kb') standOn(this.body, PED_MS / 1000);
         this.me.fv = e[4] as number;
         this.input.target = null;
       } else if (k === 'an') {
@@ -267,13 +268,16 @@ export class ClientSession implements RenderSource {
     const row = this.myRow();
     const flags = row ? row[7] : FLAG.alive;
     const alive = !!(flags & FLAG.alive);
-    if (alive && !this.isPaused && this.me.fv !== -1 && this.game === 'kb') {
+    if (alive && !this.isPaused && this.me.fv !== -1 && sideView(this.game)) {
       // Side view: walk left/right, jump (double jump in the air), down drops through ledges.
       let mx = this.quizOpen ? 0 : this.input.mx;
       if (flags & FLAG.confuse) mx = -mx;
       const jump = this.input.jumpC !== this.jumpSeen && !this.quizOpen;
       this.jumpSeen = this.input.jumpC;
-      kbStep(this.map, this.body, Math.abs(mx) > 0.2 ? Math.sign(mx) * Math.min(1, Math.abs(mx) * 1.4) : 0, jump, this.input.my > 0.6 && !this.quizOpen, speedFromFlags(flags), dt);
+      this.body.airMax = 1 + (row?.[17] ?? 0);
+      const team = row?.[15] ?? -1;
+      const mul = speedFromFlags(flags) * (this.vis.paint && team >= 0 ? paintSpeed(this.vis.paint, this.map, team, this.me.x, this.me.y) : 1);
+      kbStep(this.map, this.body, Math.abs(mx) > 0.2 ? Math.sign(mx) * Math.min(1, Math.abs(mx) * 1.4) : 0, jump, this.input.my > 0.6 && !this.quizOpen, mul, dt);
       this.me.x = this.body.x; this.me.y = this.body.y;
     } else if (alive && !this.isPaused && this.me.fv !== -1) {
       let mx = this.input.mx, my = this.input.my;
@@ -379,6 +383,8 @@ export class ClientSession implements RenderSource {
   }
 
   buy(k: string) { this.relay.send({ k: 'buy', u: k }, 'host'); }
+  /** Knockback arsenal: buy (once) or equip a weapon. */
+  buyWeapon(w: number) { this.relay.send({ k: 'wb', w }, 'host'); }
 
   /* ------------------------------------------------------------ render */
   players(): RP[] {

@@ -5,11 +5,11 @@
 import {
   BASE_SPEED, BOX_COOLDOWN_MS, BURROW_COOLDOWN, COMBAT_LOCK_MS, FLAG, FX_FLAG, HEAL_ON_CORRECT, KO_LOSS, MAX_HP, MAX_SHIELD,
   KB_SPEED, PAINT_CELL, PAINT_R, PLAYER_R, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, SPLAT_R, START_ENERGY, STEP_COST, TICK_MS,
-  BOT_LEVELS, aimToByte, respawnMs, type Fx, type Game,
+  BOT_LEVELS, MAX_EXTRA_JUMPS, PED_MS, TILE, aimToByte, respawnMs, sideView, type Fx, type Game,
 } from './constants';
-import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
+import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, KB_ARSENAL, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
 import { freeSpot, generateMap, hitsWall, moveCircle, paintCols, paintMask, paintRows, resolve, type GameMap } from './map';
-import { kbStep, newBody, outOfStage, type Body } from './kb';
+import { kbStep, newBody, outOfStage, standOn, type Body } from './kb';
 
 export type Ev = (string | number)[];
 
@@ -51,6 +51,10 @@ export interface SimPlayer {
   /** Bot input for knockback: a jump / drop request this tick. */
   jumpQ: boolean; downQ: boolean;
   lastHitAt: number;
+  /** Color Clash: extra air jumps from boxes (until KO). */
+  jumps: number;
+  /** Knockback arsenal: bit per weapon owned, and the one equipped (a box gadget returns to it). */
+  owned: number; main: number;
   /* bot brain scratch */
   brain?: Record<string, number>;
 }
@@ -110,14 +114,16 @@ export class Sim {
       this.paint = new Uint8Array(this.paintable.length);
       this.teamCells = Array(this.teams).fill(0);
       // every team starts with a splash of colour around its base
-      for (let t = 0; t < this.teams; t++) { const b = this.base(t); this.paintAt(b.x, b.y + 40, 230, t, null); }
     }
   }
 
+  get side() { return sideView(this.game); }
+  /** Top-down shots fly 18 px above the ground; side-view shots are where they are drawn. */
+  get lift() { return this.side ? 0 : 18; }
   get bot() { return BOT_LEVELS[Math.max(0, Math.min(2, this.settings.botLevel ?? 0))]; }
   /** Rivals: not yourself and not your team. */
   foe(p: SimPlayer, q: SimPlayer) { return q !== p && q.alive && q.connected && (!this.teams || q.team !== p.team); }
-  base(team: number) { return this.map.burrows[TEAM_BASE[team] % this.map.burrows.length]; }
+  base(team: number) { return this.map.burrows[(this.map.tiles || this.map.kind === 'kb' ? team : TEAM_BASE[team]) % this.map.burrows.length]; }
 
   get remainingMs() { return Math.max(0, this.settings.durationMs - this.now); }
 
@@ -134,7 +140,7 @@ export class Sim {
     }
     const b = team >= 0 ? this.base(team) : this.map.burrows[idx % this.map.burrows.length];
     const p: SimPlayer = {
-      idx, ...o, connected: true, team, pct: 0, body: null, jumpQ: false, downQ: false, lastHitAt: -1e9,
+      idx, ...o, connected: true, team, pct: 0, body: null, jumpQ: false, downQ: false, lastHitAt: -1e9, jumps: 0, owned: 1, main: 0,
       x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, wvx: 0, wvy: 0, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
       mx: 0, my: 0, aim: Math.PI / 2, ad: 200,
       hp: MAX_HP, sh: MAX_SHIELD, dia: 0, en: this.settings.startEnergy ?? START_ENERGY, alive: true, respawnAt: 0,
@@ -144,7 +150,7 @@ export class Sim {
       inQuiz: false, streak: 0, bestStreak: 0, correct: 0, wrong: 0, kos: 0, deaths: 0, boxes: 0, ups: freshUps(),
       burrowReadyAt: this.now + BURROW_COOLDOWN,
     };
-    if (this.game === 'kb') {
+    if (this.side) {
       p.y = p.py = p.ty = b.y;
       if (o.bot || !o.peer) p.body = newBody(p.x, p.y);
     }
@@ -210,7 +216,7 @@ export class Sim {
       // Movement.
       const mul = this.speedMul(p);
       const speed = BASE_SPEED * mul;
-      if (this.game === 'kb') { this.moveKb(p, mul, dt); }
+      if (this.side) { this.moveKb(p, mul, dt); }
       else {
       let nx = p.x, ny = p.y;
       if (p.peer && !p.bot) {
@@ -249,7 +255,7 @@ export class Sim {
       }
       p.wvx = (p.x - p.px) / dt; p.wvy = (p.y - p.py) / dt;
       if (!p.alive) continue; // knocked off the stage this tick
-      if (this.paint && !p.inQuiz) this.paintAt(p.x, p.y, PAINT_R, p.team, p);
+      if (this.paint && !p.inQuiz) this.paintAt(p.x, p.y + TILE / 2, PAINT_R, p.team, p); // the block under your feet
 
       // Regeneration.
       const maxHp = this.maxHp(p);
@@ -261,7 +267,7 @@ export class Sim {
       if (p.pendingShot || p.attackHeld) this.fire(p);
 
       // Burrows.
-      if (this.game !== 'kb' && now >= p.burrowReadyAt) {
+      if (!this.side && now >= p.burrowReadyAt) {
         for (const b of this.map.burrows) {
           if (Math.hypot(b.x - p.x, b.y - p.y) < 34) {
             const others = this.map.burrows.filter((o) => o.id !== b.id);
@@ -290,7 +296,7 @@ export class Sim {
     }
 
     // Player–player separation (soft), so crowds do not stack on one pixel.
-    for (let i = 0; i < (this.game === 'kb' ? 0 : this.players.length); i++) {
+    for (let i = 0; i < (this.side ? 0 : this.players.length); i++) {
       const a = this.players[i];
       if (!a.alive || !a.connected) continue;
       for (let j = i + 1; j < this.players.length; j++) {
@@ -324,13 +330,14 @@ export class Sim {
       const b = p.body;
       const jump = p.jumpQ, down = p.downQ;
       p.jumpQ = p.downQ = false;
+      b.airMax = 1 + p.jumps;
       kbStep(this.map, b, Math.max(-1, Math.min(1, p.mx)), jump, down, mul, dt);
       p.x = b.x; p.y = b.y;
     } else if (p.hasT) { p.x = p.tx; p.y = p.ty; }
     // walking spends energy (flying from a hit does not)
     const walked = Math.min(Math.abs(p.x - ox), KB_SPEED * mul * dt * 1.2);
     if (walked > 0.2) this.spend(p, walked * STEP_COST);
-    if (outOfStage(this.map, p.x, p.y)) {
+    if (this.game === 'kb' ? outOfStage(this.map, p.x, p.y) : p.y > this.map.h + 200 || p.y < -400) {
       const by = this.now - p.lastHitAt < 7000 ? this.players[p.lastHitBy] : undefined;
       this.ko(p, by);
     }
@@ -403,11 +410,12 @@ export class Sim {
   }
 
   /* ------------------------------------------------------------- weapons */
-  setWeapon(p: SimPlayer, w: number) {
+  setWeapon(p: SimPlayer, w: number, keep = false) {
+    if (w === 0 && p.main) { w = p.main; keep = true; } // a box gadget ran out: back to your own
     const def = WEAPONS[w];
     p.weapon = w;
-    p.ammo = def.ammo;
-    p.weaponUntil = def.lasts ? this.now + def.lasts * 1000 : 0;
+    p.ammo = keep ? INF : def.ammo;
+    p.weaponUntil = !keep && def.lasts ? this.now + def.lasts * 1000 : 0;
     p.nextFire = Math.min(p.nextFire, this.now + 150);
     this.ev(['wp', p.idx, w]);
   }
@@ -477,12 +485,12 @@ export class Sim {
         pr.x += (pr.vx * dt) / steps;
         pr.y += (pr.vy * dt) / steps;
         pr.dist += (Math.hypot(pr.vx, pr.vy) * dt) / steps;
-        if (hitsWall(this.map, pr.x, pr.y + 18, pr.r)) {
+        if (hitsWall(this.map, pr.x, pr.y + this.lift, pr.r)) {
           if (!pr.bounces) { dead = true; break; }
           // Bounce: flip the axis that hit the wall.
           pr.bounces--;
-          if (hitsWall(this.map, pr.x, oy + 18, pr.r)) pr.vx = -pr.vx;
-          if (hitsWall(this.map, ox, pr.y + 18, pr.r)) pr.vy = -pr.vy;
+          if (hitsWall(this.map, pr.x, oy + this.lift, pr.r)) pr.vx = -pr.vx;
+          if (hitsWall(this.map, ox, pr.y + this.lift, pr.r)) pr.vy = -pr.vy;
           pr.x = ox; pr.y = oy; pr.hit.clear();
           this.ev(['rf', pr.id, Math.round(pr.x), Math.round(pr.y), aimToByte(Math.atan2(pr.vy, pr.vx))]);
           continue;
@@ -504,7 +512,7 @@ export class Sim {
       }
       if (dead) {
         if (pr.explode) this.explode(pr.x, pr.y, pr.explode, pr.dmg, pr.kb, this.players[pr.owner], pr.kind === PJ.mic ? 'mic' : 'eraser', 0);
-        else if (this.paint) this.paintAt(pr.x, pr.y + 18, SPLAT_R, this.players[pr.owner]?.team ?? -1, this.players[pr.owner] ?? null);
+        else if (this.paint) this.paintAt(pr.x + Math.sign(pr.vx) * 8, pr.y + Math.sign(pr.vy) * 8, SPLAT_R, this.players[pr.owner]?.team ?? -1, this.players[pr.owner] ?? null);
         this.ev(['ph', pr.id, Math.round(pr.x), Math.round(pr.y)]);
       } else keep.push(pr);
     }
@@ -590,7 +598,8 @@ export class Sim {
       const l = Math.hypot(kbx, kby);
       let dx = l ? kbx / l : 0, dy = l ? kby / l : 0;
       if (!l && src) { const sl = Math.hypot(q.x - src.x, q.y - src.y) || 1; dx = (q.x - src.x) / sl; dy = (q.y - src.y) / sl; }
-      const mag = Math.min(2800, (220 + l * 0.7 + dmg * 5) * (1 + q.pct / 60));
+      // heavier (the "Weight" upgrade) = flies less far
+      const mag = Math.min(2800, (220 + l * 0.7 + dmg * 5) * (1 + q.pct / 60) * (100 / this.maxHp(q)));
       kbx = dx * mag;
       kby = dy * mag * 0.6 - mag * 0.5; // always launch upward a bit
     } else {
@@ -600,7 +609,7 @@ export class Sim {
     }
     if (kbx || kby) {
       if (q.body) { q.body.vx += kbx; q.body.vy = Math.min(q.body.vy, 0) + kby; q.body.ground = false; }
-      else if (this.game !== 'kb') { q.vx += kbx; q.vy += kby; }
+      else if (!this.side) { q.vx += kbx; q.vy += kby; }
       q.fv++;
       this.ev(['kb', q.idx, Math.round(kbx), Math.round(kby), q.fv], true);
     }
@@ -614,6 +623,7 @@ export class Sim {
     q.deaths++;
     q.respawnAt = this.now + respawnMs(this.game);
     q.pct = 0;
+    q.jumps = 0;
     q.streak = 0;
     q.vx = q.vy = 0;
     q.borrowed = -1;
@@ -623,7 +633,7 @@ export class Sim {
     q.inQuiz = false;
     q.attackHeld = false;
     q.pendingShot = false;
-    if (q.weapon !== 0) { q.weapon = 0; q.ammo = INF; q.weaponUntil = 0; }
+    if (q.weapon !== q.main) { q.weapon = q.main; q.ammo = INF; q.weaponUntil = 0; }
     const keep = upValue('ins', q.ups.ins) / 100;
     // Color Clash: diamonds are your paint points, a KO does not take them.
     const lost = this.paint ? 0 : Math.floor(q.dia * KO_LOSS * (1 - keep));
@@ -651,7 +661,7 @@ export class Sim {
     const fx = p.x, fy = p.y;
     [p.x, p.y] = resolve(this.map, x, y);
     p.px = p.x; p.py = p.y;
-    if (p.body) { p.body.x = p.x; p.body.y = p.y; p.body.vx = p.body.vy = 0; }
+    if (p.body) { p.body.x = p.x; p.body.y = p.y; p.body.vx = p.body.vy = 0; if (kind === 'spawn' && this.game === 'kb') standOn(p.body, PED_MS / 1000); }
     p.vx = p.vy = 0;
     p.tx = p.x; p.ty = p.y; p.hasT = false;
     p.fv++;
@@ -683,16 +693,17 @@ export class Sim {
       p.pendingShot = false;
       this.ev(['ne', p.idx], true);
       // Pin a phone's character where the host has it, so its prediction stops too.
-      if (p.peer && !p.bot && this.game !== 'kb') this.teleport(p, p.x, p.y, 'hold');
+      if (p.peer && !p.bot && !this.side) this.teleport(p, p.x, p.y, 'hold');
     }
   }
 
   /** Fixed mystery boxes spread over the map. Call again with a bigger number to add more. */
   setupBoxes(count: number) {
     const spots = [...this.boxes.values()];
-    if (this.game === 'kb') count = Math.min(count, Math.round(this.map.plats.length * 1.3));
+    if (this.game === 'kb') count = Math.min(count, Math.round(this.map.plats.length * 2.5));
+    if (this.map.tiles) count = Math.min(count, 18);
     for (let tries = 0; this.boxes.size < count && tries < count * 40; tries++) {
-      const [x, y] = this.game === 'kb' ? this.ledgeSpot() : freeSpot(this.map, this.rand, 110);
+      const [x, y] = this.side ? this.ledgeSpot() : freeSpot(this.map, this.rand, 110);
       const gap = tries < count * 25 ? 190 : 120;
       if (spots.some((o) => (o.x - x) ** 2 + (o.y - y) ** 2 < gap * gap)) continue;
       const b: Box = { id: this.id(), x, y, readyAt: 0 };
@@ -704,6 +715,14 @@ export class Sim {
 
   /** A spot standing on a random platform (knockback boxes). */
   private ledgeSpot(): [number, number] {
+    if (this.map.tiles) {
+      // Color Clash: on top of a block with two free blocks above it, away from the outer walls
+      const { cols, rows, grid } = this.map.tiles;
+      for (let k = 0; k < 60; k++) {
+        const c = 3 + Math.floor(this.rand() * (cols - 6)), r = 3 + Math.floor(this.rand() * (rows - 4));
+        if (grid[r * cols + c] && !grid[(r - 1) * cols + c] && !grid[(r - 2) * cols + c]) return [(c + 0.5) * TILE, r * TILE];
+      }
+    }
     const pl = this.map.plats[Math.floor(this.rand() * this.map.plats.length)];
     return [pl.x + 50 + this.rand() * Math.max(1, pl.w - 100), pl.y];
   }
@@ -713,7 +732,9 @@ export class Sim {
     p.boxes++;
     if (this.paint) {
       // Color Clash: every box is a paint bomb, and half of them also hold an item.
-      const n = this.paintAt(b.x, b.y, 170, p.team, p);
+      // …and a spring: one more jump in the air (stacks)
+      const n = this.paintAt(b.x, b.y, TILE * 3.2, p.team, p);
+      if (p.jumps < MAX_EXTRA_JUMPS) p.jumps++;
       this.ev(['ex', Math.round(b.x), Math.round(b.y), 150, 'paint'], true);
       this.boxItem(p, b, -1, n);
       return;
@@ -812,7 +833,7 @@ export class Sim {
     this.give(q, f, ms);
     this.ev(['st', q.idx, f]);
     // Movement locks: pin the player where the host has them, so the phone stops predicting.
-    if ((f === 'root' || f === 'stun') && q.peer && !q.bot && this.game !== 'kb') this.teleport(q, q.x, q.y, 'hold');
+    if ((f === 'root' || f === 'stun') && q.peer && !q.bot && !this.side) this.teleport(q, q.x, q.y, 'hold');
   }
 
   /** Character power (own: cooldown; borrowed: charges). */
@@ -1000,6 +1021,21 @@ export class Sim {
     }
   }
 
+  /** Knockback arsenal: buy a weapon with energy (once) or equip one you own. */
+  buyWeapon(p: SimPlayer, w: number): boolean {
+    const item = KB_ARSENAL.find((a) => a.w === w);
+    if (this.game !== 'kb' || !item || !p.alive) return false;
+    if (!(p.owned & (1 << w))) {
+      if (p.en < item.cost) return false;
+      p.en -= item.cost;
+      p.owned |= 1 << w;
+    }
+    p.main = w;
+    this.setWeapon(p, w, true);
+    this.ev(['wb', p.idx, w, p.owned, item.cost]);
+    return true;
+  }
+
   buy(p: SimPlayer, k: UpKey): boolean {
     const u = UPGRADES.find((x) => x.id === k);
     if (!u) return false;
@@ -1026,7 +1062,7 @@ export class Sim {
   snapshot() {
     const p = this.players.map((q) => [
       q.idx, Math.round(q.x), Math.round(q.y), aimToByte(q.aim), Math.ceil(q.hp), Math.ceil(q.sh), q.dia, this.flags(q),
-      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en), q.team, Math.round(q.pct),
+      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en), q.team, Math.round(q.pct), q.jumps, q.owned,
     ]);
     return { t: Math.round(this.now), p, r: Math.round(this.remainingMs) };
   }
@@ -1049,6 +1085,7 @@ export class Sim {
 /** Color Clash speed: a bit faster on your colour, slower on a rival's (the phones use it too). */
 export function paintSpeed(grid: Uint8Array, map: GameMap, team: number, x: number, y: number) {
   const cols = paintCols(map);
+  if (map.tiles) y += TILE / 2; // side view: the block you stand on
   const v = grid[Math.floor(y / PAINT_CELL) * cols + Math.floor(x / PAINT_CELL)] ?? 0;
   return !v ? 1 : v === team + 1 ? 1.18 : 0.85;
 }

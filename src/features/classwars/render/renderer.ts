@@ -1,8 +1,8 @@
 /* Class Wars — 60 fps canvas renderer: DPR-aware, cached ground chunks, y-sorted sprites,
    smoothed camera with shake, particles, popups and adaptive quality for slow phones. */
-import { BOX_COOLDOWN_MS, FLAG, TEAM_COLORS, TEAM_DARK, WORLD_H, WORLD_W, clamp, lerp } from '../game/constants';
+import { BOX_COOLDOWN_MS, FLAG, PED_MS, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
-import { PaintLayer, Stage } from './stage';
+import { PaintLayer, Stage, pedestal } from './stage';
 import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
@@ -11,13 +11,18 @@ import type { RenderSource, RP } from '../game/client';
 import type { Fxq } from '../game/vis';
 import { PROJ_LOOK } from '../game/vis';
 import { TEACHERS } from '@/features/cards/teachers';
+import { toonRig } from '@/features/cards/TeacherToon';
 import { CHUNK, Ground } from './ground';
 import { INK, boxSprite, charSprites, gemSprite, gemTier, iconSprite, propSprite, weaponSprite, type Sprite } from './sprites';
 import { sfx } from './audio';
 
 interface Particle { x: number; y: number; vx: number; vy: number; life: number; max: number; size: number; color: string; kind: number; rot: number; vr: number; g: number; drag: number; text?: string }
 interface Popup { x: number; y: number; text: string; color: string; size: number; born: number; life: number; idx: number; dy: number; ic?: IconKey }
-interface Anim { lx: number; ly: number; phase: number; speed: number; face: number; seen: number }
+interface Anim {
+  lx: number; ly: number; phase: number; speed: number; face: number; seen: number;
+  /** Smoothed vertical speed, in the air (side view), landing time, and the limb angles (legL, legR, armL, armR). */
+  vy: number; air: boolean; landAt: number; pose: number[];
+}
 
 const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6;
 const QUAL = [
@@ -78,9 +83,9 @@ export class Renderer {
 
   setMap(map: GameMap) {
     this.map = map;
-    this.ground = map.kind === 'kb' ? null : new Ground(map);
-    this.stage = map.kind === 'kb' ? new Stage(map) : null;
-    this.paintLayer = map.kind === 'paint' ? new PaintLayer(map) : null;
+    this.ground = sideView(map.kind) ? null : new Ground(map);
+    this.stage = sideView(map.kind) ? new Stage(map) : null;
+    this.paintLayer = map.kind === 'paint' && !map.tiles ? new PaintLayer(map) : null;
     this.resize();
     this.tall = map.props.filter((p) => !PROP_INFO[p.k].flat).sort((a, b) => a.y - b.y);
   }
@@ -93,7 +98,7 @@ export class Renderer {
     this.canvas.width = Math.round(this.w * this.dpr);
     this.canvas.height = Math.round(this.h * this.dpr);
     // Close, readable camera on phones and laptops alike (characters big on screen).
-    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 700, 1.08, 1.6) * (this.map?.kind === 'kb' ? 0.82 : 1);
+    this.baseZoom = clamp(Math.sqrt(this.w * this.h) / 700, 1.08, 1.6) * (this.map?.kind === 'kb' ? 0.82 : this.map?.kind === 'paint' ? 0.9 : 1);
   }
 
   get qualityLabel() { return QUAL[this.quality].label; }
@@ -138,13 +143,21 @@ export class Renderer {
     const vx0 = this.cam.x - this.w / 2 / z - 40, vy0 = this.cam.y - this.h / 2 / z - 40;
     const vx1 = this.cam.x + this.w / 2 / z + 40, vy1 = this.cam.y + this.h / 2 / z + 40;
     const S = this.S;
-    if (this.stage) this.stage.draw(g, S, vx0, vx1, vy0, vy1);
+    if (this.stage) { this.stage.draw(g, S, vx0, vx1, vy0, vy1); this.stage.paint(g, src.vis, vx0, vx1, vy0, vy1); }
     else this.drawGround(vx0, vy0, vx1, vy1, S);
     if (this.paintLayer) {
       this.paintLayer.sync(src.vis);
       g.globalAlpha = 0.86;
       g.drawImage(this.paintLayer.c, 0, 0, src.map.w, src.map.h);
       g.globalAlpha = 1;
+    }
+    if (src.map.kind === 'kb') {
+      // spawn pedestals (fade out in the last 400 ms)
+      for (const [, st] of src.vis.ps) {
+        const age = now - st.spawnAt;
+        if (age < 0 || age > PED_MS) continue;
+        pedestal(g, st.spawnX, st.spawnY, Math.min(1, (PED_MS - age) / 400) * Math.min(1, age / 120), 1);
+      }
     }
     if (!this.stage) for (const bu of src.map.burrows) if (bu.x > vx0 - 90 && bu.x < vx1 + 90 && bu.y > vy0 - 70 && bu.y < vy1 + 70) this.drawPortal(bu.x, bu.y, bu.id, now);
 
@@ -282,7 +295,8 @@ export class Renderer {
   private updateCamera(players: RP[], me: RP | null, dt: number) {
     const k = 1 - Math.exp(-dt * 7);
     const MW = this.map?.w ?? WORLD_W, MH = this.map?.h ?? WORLD_H;
-    const kb = this.map?.kind === 'kb';
+    const kb = !!this.map && sideView(this.map.kind);
+    const open = this.map?.kind === 'kb';
     let tx = this.cam.x, ty = this.cam.y, tz = this.baseZoom;
     if (this.mode === 'follow' && me) {
       tx = me.x + Math.cos(me.aim) * 46;
@@ -314,10 +328,10 @@ export class Renderer {
     this.cam.z = lerp(this.cam.z, tz, kk * 0.6);
     // keep inside the world when zoomed in
     const hw = this.w / 2 / this.cam.z, hh = this.h / 2 / this.cam.z;
-    const m = kb ? 260 : 60; // the stage shows some sky around it
+    const m = open ? 260 : kb ? 0 : 60; // the knockback stage shows some sky around it
     if (hw * 2 < MW + m * 2) this.cam.x = clamp(this.cam.x, hw - m, MW - hw + m);
     else this.cam.x = MW / 2;
-    if (hh * 2 < MH + m * 2) this.cam.y = clamp(this.cam.y, hh - m, MH - hh + (kb ? 40 : m));
+    if (hh * 2 < MH + m * 2) this.cam.y = clamp(this.cam.y, hh - m, MH - hh + (open ? 40 : m));
     else this.cam.y = MH / 2;
   }
 
@@ -496,12 +510,17 @@ export class Renderer {
   private drawPlayer(p: RP, src: RenderSource, now: number, dt: number, S: number, me: RP | null) {
     const g = this.g;
     let a = this.anim.get(p.idx);
-    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, seen: now }; this.anim.set(p.idx, a); }
+    if (!a) { a = { lx: p.x, ly: p.y, phase: Math.random() * 6, speed: 0, face: 1, seen: now, vy: 0, air: false, landAt: -1e9, pose: [0, 0, 0, 0] }; this.anim.set(p.idx, a); }
     const d = Math.hypot(p.x - a.lx, p.y - a.ly);
-    const sp = dt > 0 ? Math.min(600, d / dt) : 0;
+    const side = !!this.stage;
+    const sp = dt > 0 ? Math.min(600, (side ? Math.abs(p.x - a.lx) : d) / dt) : 0;
+    if (dt > 0 && d < 400) a.vy = lerp(a.vy, clamp((p.y - a.ly) / dt, -1600, 1600), 0.35);
     a.speed = lerp(a.speed, sp, 0.25);
     a.lx = p.x; a.ly = p.y; a.seen = now;
-    const moving = a.speed > 30;
+    const air = side && !!this.map && !!(p.flags & FLAG.alive) && !onGround(this.map, p.x, p.y) && Math.abs(a.vy) > 30;
+    if (a.air && !air) a.landAt = now;
+    a.air = air;
+    const moving = a.speed > 30 && !air;
     if (moving) a.phase += dt * (8 + a.speed / 40);
     // Face left/right with hysteresis (no flapping when aiming near vertical) and turn instantly:
     // a lerped flip squeezes the sprite to nothing for a few frames, which reads as a flicker.
@@ -527,8 +546,22 @@ export class Renderer {
     }
     if (p.flags & FLAG.invuln && alive && Math.floor(now / 90) % 2) alpha *= 0.55;
 
-    const bob = moving ? Math.abs(Math.sin(a.phase)) * 5 : Math.sin(now / 450 + p.idx) * 1.2;
-    const squash = moving ? 1 + Math.cos(a.phase * 2) * 0.05 : 1 + Math.sin(now / 450 + p.idx) * 0.015;
+    const bob = moving ? Math.abs(Math.sin(a.phase)) * 5 : air ? 0 : Math.sin(now / 450 + p.idx) * 1.2;
+    const landK = (now - a.landAt) / 170;
+    const squash = (moving ? 1 + Math.cos(a.phase * 2) * 0.05 : air ? 1 + clamp(-a.vy / 9000, -0.06, 0.08) : 1 + Math.sin(now / 450 + p.idx) * 0.015) * (landK < 1 ? 1 - 0.16 * Math.sin(landK * Math.PI) : 1);
+    // limb pose (radians, in the sprite's own space): walk cycle, jump, fall, flail when hit
+    {
+      const hurtK = ps ? (now - ps.hurtAt) / 380 : 9;
+      const t2 = now / 1000;
+      let tg: number[];
+      if (hurtK < 1) { const f = Math.sin(t2 * 40) * 0.35; tg = [0.5, -0.5, 1.9 + f, -1.9 - f]; }
+      else if (air && a.vy < -60) tg = [0.55, -0.12, 2.35, -2.35];
+      else if (air) { const f = Math.sin(t2 * 18 + p.idx) * 0.18; tg = [0.32, -0.32, 1.35 + f, -1.35 - f]; }
+      else if (moving) { const sw = Math.sin(a.phase), k = Math.min(1, a.speed / 220); tg = [sw * 0.62 * k, -sw * 0.62 * k, -sw * 0.5 * k, -sw * 0.5 * k]; }
+      else { const br = Math.sin(t2 * 2.1 + p.idx) * 0.05; tg = [0, 0, br, -br]; }
+      const kk = Math.min(1, dt * 16);
+      for (let i = 0; i < 4; i++) a.pose[i] = lerp(a.pose[i], tg[i], kk);
+    }
     const tilt = moving ? Math.sin(a.phase) * 0.07 : 0;
 
     // shadow
@@ -567,9 +600,30 @@ export class Renderer {
     g.rotate(tilt);
     g.scale(a.face * scale / squash, scale * squash);
     if (cs.ready) {
-      g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
       const hurt = ps ? now - ps.hurtAt : 1e9;
-      if (hurt < 140) { g.globalAlpha = alpha * (1 - hurt / 140); g.drawImage(cs.white.c, -spr.ax, -spr.ay, spr.w, spr.h); g.globalAlpha = alpha; }
+      if (hurt < 140) {
+        g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
+        g.globalAlpha = alpha * (1 - hurt / 140); g.drawImage(cs.white.c, -spr.ax, -spr.ay, spr.w, spr.h); g.globalAlpha = alpha;
+      } else {
+        // animated: legs turn at the hips, arms at the shoulders, the body breathes
+        const look = TEACHERS[p.look]?.look;
+        const rig = look ? toonRig(look) : null;
+        if (!rig) g.drawImage(spr.c, -spr.ax, -spr.ay, spr.w, spr.h);
+        else {
+          const u = spr.w / 144, P = cs.parts;
+          const breath = moving || air ? 0 : Math.sin(now / 1000 * 2.2 + p.idx) * 1.1 * u;
+          const limb = (sp: Sprite, j: readonly [number, number], ang: number, dy: number) => {
+            g.save(); g.translate(j[0] * u, j[1] * u + dy); g.rotate(ang); g.translate(-j[0] * u, -j[1] * u);
+            g.drawImage(sp.c, -sp.ax, -sp.ay, sp.w, sp.h); g.restore();
+          };
+          limb(P.legL, rig.hipL, a.pose[0], 0);
+          limb(P.legR, rig.hipR, a.pose[1], 0);
+          limb(P.armL, rig.shL, a.pose[2], -breath);
+          limb(P.armR, rig.shR, a.pose[3], -breath);
+          const body = blink ? P.bodyBlink : P.body;
+          g.drawImage(body.c, -body.ax, -body.ay - breath, body.w, body.h);
+        }
+      }
     } else {
       const look = TEACHERS[p.look]?.look;
       g.beginPath(); g.arc(0, -40, 26, 0, 7); g.fillStyle = look?.top ?? '#888'; g.fill(); g.lineWidth = 4; g.strokeStyle = INK; g.stroke();
@@ -585,7 +639,9 @@ export class Renderer {
         const k = (now - ps.swingAt) / 220;
         if (k < 1) ang = ps.swingAim + lerp(-1.3, 1.3, easeOut(k));
       }
-      const hx = p.x + Math.cos(ang) * 18 * scale, hy = p.y - (34 + bob + lift) * scale + Math.sin(ang) * 10 * scale;
+      // knockback: the weapon floats beside the body and turns to the aim
+      const kbw = this.map?.kind === 'kb', fl = kbw ? Math.sin(now / 260 + p.idx) * 2.5 : 0;
+      const hx = p.x + Math.cos(ang) * (kbw ? 40 : 18) * scale, hy = p.y - (kbw ? 40 : 34 + bob + lift) * scale + Math.sin(ang) * (kbw ? 30 : 10) * scale + fl;
       g.save();
       g.translate(hx, hy);
       g.rotate(ang);
@@ -648,12 +704,12 @@ export class Renderer {
     const ps = src.vis.ps.get(p.idx);
     // bars (others: when hurt; me: always small)
     const hurt = ps ? now - ps.hurtAt < 3000 : false;
-    if (this.stage) {
+    if (this.map?.kind === 'kb') {
       // Knockback: the damage % (white → yellow → red), bigger right after a hit
       const k = clamp(p.pct / 150, 0, 1);
       const col = `rgb(255,${Math.round(255 - k * 170)},${Math.round(255 - Math.min(1, k * 2) * 215)})`;
       const pulse = ps && now - ps.hurtAt < 250 ? 1.25 : 1;
-      this.label(p.x, top - 4, `${p.pct}%`, col, Math.round(18 * pulse));
+      this.label(p.x, p.y + 44, `${p.pct}%`, col, Math.round(21 * pulse), true);
     } else if (hurt || p.hp < p.maxHp || p.sh < 100) {
       const w = 46, x = p.x - w / 2;
       g.fillStyle = 'rgba(15,25,20,0.75)'; roundRect(g, x - 2, top - 2, w + 4, 11, 4); g.fill();
@@ -702,9 +758,9 @@ export class Renderer {
     g.restore();
   }
 
-  private label(x: number, y: number, text: string, color: string, size: number) {
+  private label(x: number, y: number, text: string, color: string, size: number, italic = false) {
     const g = this.g;
-    g.font = `900 ${size}px Inter, system-ui, sans-serif`;
+    g.font = `${italic ? 'italic ' : ''}900 ${size}px Inter, system-ui, sans-serif`;
     g.textAlign = 'center'; g.textBaseline = 'middle';
     g.lineWidth = 4; g.strokeStyle = 'rgba(15,25,20,0.9)'; g.lineJoin = 'round';
     g.strokeText(text, x, y);
@@ -880,7 +936,7 @@ export class Renderer {
           if (p?.me) this.shake(0.25);
           break;
         }
-        case 'buy': { const p = byIdx.get(f.idx); if (p) { this.popup(f.idx, 0, 0, tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
+        case 'buy': { const p = byIdx.get(f.idx); if (p) { const w = f.up < 0 ? WEAPONS[f.lvl] : null; this.popup(f.idx, 0, 0, w ? tx(w.name) : tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, w ? w.ic : UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
         case 'tp': {
           const p = byIdx.get(f.idx);
           const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
@@ -970,7 +1026,8 @@ export class Renderer {
       b.width = W; b.height = H;
       const bg = b.getContext('2d')!;
       bg.fillStyle = map.kind === 'kb' ? '#8fd3ff' : '#3fae47'; bg.fillRect(0, 0, W, H);
-      for (const pl of map.plats) { bg.fillStyle = pl.thin ? '#ef5a6f' : '#4cc24a'; bg.fillRect(pl.x * sx, pl.y * sy, Math.max(2, pl.w * sx), Math.max(2, pl.h * sy)); }
+      if (map.tiles) { bg.fillStyle = '#ffd3d9'; bg.fillRect(0, 0, W, H); }
+      for (const pl of map.plats) { bg.fillStyle = map.tiles ? '#ffffff' : pl.thin ? '#ef5a6f' : '#4cc24a'; bg.fillRect(pl.x * sx, pl.y * sy, Math.max(2, pl.w * sx), Math.max(2, pl.h * sy)); }
       for (const p of map.paths) { bg.beginPath(); p.pts.forEach(([x, y], i) => (i ? bg.lineTo(x * sx, y * sy) : bg.moveTo(x * sx, y * sy))); bg.lineWidth = Math.max(2, p.w * sx); bg.strokeStyle = '#e3bb82'; bg.lineCap = 'round'; bg.stroke(); }
       for (const pd of map.ponds) { bg.beginPath(); bg.ellipse(pd.x * sx, pd.y * sy, pd.rx * sx, pd.ry * sy, 0, 0, 7); bg.fillStyle = '#3db3e8'; bg.fill(); }
       for (const p of map.props) if (p.k === 'tree' || p.k === 'pine') { bg.beginPath(); bg.arc(p.x * sx, p.y * sy, Math.max(1.5, 30 * sx), 0, 7); bg.fillStyle = '#2b7a32'; bg.fill(); }
@@ -980,6 +1037,8 @@ export class Renderer {
     }
     g.drawImage(this.miniBg, 0, 0);
     if (this.paintLayer) { g.globalAlpha = 0.85; g.drawImage(this.paintLayer.c, 0, 0, W, H); g.globalAlpha = 1; }
+    const pg = src.vis.paint, tl = map.tiles;
+    if (pg && tl) for (let i = 0; i < pg.length; i++) if (pg[i]) { g.fillStyle = TEAM_COLORS[pg[i] - 1]; g.fillRect((i % tl.cols) * TILE * sx, Math.floor(i / tl.cols) * TILE * sy, Math.max(1.5, TILE * sx), Math.max(1.5, TILE * sy)); }
     const tNow = performance.now();
     for (const b of src.vis.boxes.values()) { g.fillStyle = b.readyAt > tNow ? 'rgba(200,204,214,0.55)' : '#ffd23f'; g.fillRect(b.x * sx - 2, b.y * sy - 2, 4, 4); }
     let me: RP | null = null;

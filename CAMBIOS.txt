@@ -305,6 +305,164 @@ G1e. CLASS WARS: MODOS COLOR CLASH Y KNOCKBACK, PREGUNTAS POR UNIDAD, BOTS
   nuevas (bloque amarillo con "?", contorno grueso), quietas y sin animación,
   y cámara más cercana en todos los modos.
 
+G1f. CLASS WARS: COLOR CLASH 2D Y ARSENAL DE KNOCKBACK
+- Color Clash ahora es un juego de plataformas 2D visto de lado (solo
+  izquierda, derecha y saltar): un nivel de bloques blancos con remaches,
+  simétrico para los equipos, cielo pastel con nubes. Al pararte en un
+  bloque se pinta del color de tu equipo (y se le puede robar al rival);
+  los disparos que pegan en un bloque también lo pintan. Las cajas son
+  bombas de pintura y dan un salto extra en el aire (se acumulan hasta 3,
+  se pierden al quedar fuera). Barra arriba con los bloques de cada equipo
+  y sello "TEAM …" al aparecer.
+- Knockback: arsenal propio que se compra una vez con energía y se equipa
+  cuando quieras, con munición ilimitada (tiza gratis, burbujeador, clips,
+  erizo, rayo resaltador, lanzaborradores y bomba de purpurina). La mejora
+  de vida se convierte en "Peso": los golpes te lanzan menos lejos. Los
+  bots también compran armas.
+
+G1g. CLASS WARS: KNOCKBACK NOCTURNO
+- Escenario nuevo: cielo nocturno con estrellas que titilan, nubes suaves y
+  plataformas lejanas transparentes al fondo. Plataformas de bloques en 3D
+  (menta, lila, coral y celeste con franja dorada). Máximo 7 bases muy
+  separadas sobre el vacío y anchas (el piso se camina de punta a punta en
+  unos 7 s); todas se alcanzan con doble salto, pero cada golpe puede
+  tumbarte. Los bots saltan entre bases. Arte propio.
+- Al reaparecer sales en el aire sobre un pedestal que desaparece a los 3 s;
+  mientras tanto, pantalla "Reapareciendo…" abajo a la izquierda.
+- Nombre y % debajo de cada personaje (el % pasa de blanco a amarillo y
+  rojo); el arma flota al lado y gira hacia donde apuntas; cursor de mira.
+- Interfaz más limpia: barra de armas abajo con las que compraste (teclas
+  1–7, también en celular), energía y arma en mano abajo a la izquierda junto
+  a "Responder preguntas", aviso de "Poca energía" y sin minimapa. La ayuda
+  de teclas se oculta a los 30 s (en todos los modos).
+
+G1h. PERSONAJES 3D DE LOS PROFES (librería .glb, galería /toons3d)
+- Librería propia de modelos 3D animados de los 25 profes, guardada para un
+  futuro juego 3D (tipo carrera sin fin): public/toons3d/<id>.glb, hecha a
+  partir de los rasgos de cada carta (piel, pelo, barba, gafas, ropa,
+  accesorios, estatura y contextura). Animaciones: reposo (respira y
+  parpadea), caminar, correr, saltar, caer, deslizarse, golpe y celebrar.
+- Pelo y barbas con forma real: cada peinado tiene su propia línea de
+  nacimiento (flequillo, raya al lado, entradas, nuca), los crespos y el afro
+  están hechos de rizos, el pelo largo cae en mechones (liso, ondulado, con
+  las puntas hacia dentro o en tirabuzones), más cola de caballo, moño,
+  flequillo de lado y cresta; barbas de sombra, corta o completa con bigote y
+  hueco para la boca. El color del pelo va de más oscuro en las puntas a más
+  claro arriba, con brillo.
+- Galería en /toons3d: ver a cada profe o a todos, girar alrededor, probar
+  cada animación y mirarlos de frente, de lado o de espalda.
+- Para usarlos en un juego: src/features/toons3d/runtime.ts (ToonActor:
+  cargar, poner en escena, play('run'), update). Para regenerarlos tras
+  cambiar un profe: node --experimental-strip-types scripts/build-toons.mts
+- Class Wars sigue con los personajes 2D de siempre (ahora mueven piernas y
+  brazos al caminar, saltar y caer); no carga nada de 3D.
+
+G1i. ENGLISH RUN (Juegos, tarjeta destacada; ruta /run)
+- Carrera sin fin en 3D con los modelos de los profes (estilo Subway Surfers
+  / Sonic Dash, todo propio): 3 carriles en una calle de ciudad con edificios
+  de colores, toldos, árboles, faroles, cabinas rojas y buzones.
+- Controles: deslizar en el celular (o flechas / WASD): ← → cambia de carril,
+  ↑ salta, ↓ se desliza (en el aire, baja de golpe). Esc o P = pausa; se
+  pausa sola si cambias de pestaña.
+- Obstáculos: barreras bajas (saltar), barreras altas (deslizarse), buses
+  estacionados, buses que vienen de frente (pitan) y rampas para subir y
+  correr por el techo de los buses. Chocar de frente = caída; chocar de lado
+  = tropiezo y aparece un perseguidor detrás: otro tropiezo en 5 s y te
+  atrapa. La velocidad sube poco a poco.
+- Inglés: cada ~450 m llega una PUERTA DE PALABRAS con una pregunta del nivel
+  elegido (A1 a C1–C2: traducción, opuestos, pasados, participios, plurales,
+  comparativos, make/do, preposiciones, phrasal verbs, sinónimos, formación
+  de palabras, idioms, tiempos verbales). Cada carril lleva una respuesta:
+  pasar por la correcta sube el multiplicador (hasta x10) y da monedas; la
+  incorrecta lo baja. La pregunta y las opciones también salen arriba en
+  pantalla, y una voz en inglés dice la respuesta.
+- Revivir: al caer, responde una pregunta en 10 s para seguir (2 veces por
+  carrera).
+- Monedas (en filas, arcos y sobre los buses) y poderes: imán, puntaje x2,
+  escudo (aguanta un choque) y súper salto.
+- Al final: puntaje, récord, monedas, distancia y la lista de todas tus
+  respuestas con la correcta, para repasar. Récord y monedas se guardan en el
+  dispositivo.
+- Imagen: mundo curvo (el horizonte cae como en los runners), sombreado
+  cartoon por pasos, contornos de tinta en personajes y obstáculos, sombras,
+  cielo con sol, nubes y ciudad a lo lejos, niebla, partículas (destellos,
+  polvo, confeti), cámara que sigue con suavidad, se abre con la velocidad y
+  tiembla al chocar, y líneas de velocidad. Música y efectos sintetizados (se
+  pueden apagar). Si el teléfono no da, baja la resolución y luego las
+  sombras solo.
+- Probado con un piloto automático que corre 8 km de pista generada: nunca
+  aparece un tramo imposible.
+
+G1i-2. PERSONAJES 3D V2 Y ESCENARIOS DE ENGLISH RUN
+- Personajes con más calidad, estilo "juguete de vinilo" (como la imagen de
+  referencia): luz suave con reflejos (material PBR con capa brillante en
+  piel, pelo, ojos y zapatos; la ropa queda mate), sin contornos de tinta.
+  Ojos grandes con iris, pupila, dos brillos y pestañas; mejillas
+  sonrojadas pintadas; nariz y orejas redondeadas; cejas más gruesas.
+- Ropa con detalle: camisas con cuello de solapas, tira de botones y
+  bolsillo; corbata con nudo; cinturón con hebilla metálica; puños en las
+  mangas; jean con costura y dobladillo; zapatos brillantes con suela;
+  manos redondeadas con pulgar. El cuerpo ahora tiene hombros (antes era
+  ovalado). Gafas rectangulares y de gato con marco redondeado; la barba
+  completa ya no tapa la cara.
+- Expresiones: sonrisa, risa, feliz (ojos ^ ^), sorpresa, guiño, triste y
+  enamorado (ojos de corazón). Las animaciones las usan solas (corre con
+  risa, se sorprende al chocar, celebra con ojos felices) y en /toons3d hay
+  botones para probar cada una.
+- Escenarios de English Run (se eligen en el menú):
+  · Ciudad: la calle de siempre, ahora con luz suave y monedas brillantes.
+  · Playa: muelle de tablones sobre el mar con olas animadas, palmeras,
+    sombrillas, casetas, torre salvavidas, velero y faro; tranvías de playa,
+    cercas para saltar y redes de voleibol para deslizarse; tablones rotos
+    (huecos) para saltar.
+  · Tejados: correr por las azoteas al atardecer saltando de edificio en
+    edificio (a veces hay una tabla para cruzar), con tanques de agua,
+    aires acondicionados, ropa colgada y contenedores con rampa.
+  · Neón: ciudad synthwave de noche con estrellas, sol a rayas, rejilla
+    brillante, torres con luces, arcos de neón, aerodeslizadores, láseres y
+    resplandor (bloom) en lo que brilla.
+- Caer en un hueco = caída (se puede revivir respondiendo). Probado con un
+  piloto automático: 8 km por escenario, 146 huecos, ninguno imposible.
+- Si el teléfono no da, primero se apaga el resplandor, luego baja la
+  resolución y por último las sombras.
+
+G1j. YOU DRAW (Juegos › En vivo con tu clase, ruta /youdraw)
+- El profe dirige desde el proyector (no juega): crea la sala, los
+  estudiantes entran con el código o escaneando el QR (también pueden entrar
+  con el juego empezado), y en cada ronda el juego elige a un estudiante al
+  azar con una ruleta (primero a los que menos han dibujado). "Otro
+  estudiante" vuelve a sortear si el elegido no está.
+- El elegido recibe 3 palabras de su nivel (A1, A2, B1, B2, C1–C2; unas 1.460
+  palabras dibujables en total, 276–310 por nivel) y tiene 15 s para escoger
+  una. Luego dibuja en su celular (colores, 4 grosores, borrador, deshacer,
+  borrar todo) y los demás ven el dibujo en vivo en su celular y en el
+  proyector, y escriben su respuesta.
+- Ajustes antes de empezar: nivel, tiempo para dibujar (30, 60, 70 o 90 s),
+  porcentaje de letras que se revelan con el tiempo (25, 50 o 75 %) y número
+  de rondas (3 a 30).
+- Respuestas: no importan mayúsculas, tildes, guiones, espacios, a/an/the/to
+  ni la -s del plural; si está cerca, solo esa persona ve "¡está cerca!".
+  Los intentos fallidos salen en la lista de todos. Más rápido = más puntos;
+  quien dibuja gana según cuántos la adivinaron. La ronda acaba cuando todos
+  la adivinan o se acaba el tiempo.
+- El profe puede terminar un turno, pasar a la siguiente ronda (o dejarla
+  automática), sacar a alguien de la sala y terminar el juego.
+- Final: pantalla negra ("And the winners are…"), transición a rojo y podio
+  con los 3 primeros, confeti, luces y el resto de la tabla; en cada celular
+  sale "Quedaste de #N".
+
+G1k. PASS THE DOODLE: EDITAR Y QR
+- Después de "¡Listo!" se puede volver a editar el dibujo (o la frase)
+  mientras quede tiempo: el dibujo vuelve tal cual, con su historial de
+  deshacer.
+- El QR para entrar sale ahora también cuando el profe juega (antes solo en
+  modo proyector) y se puede ampliar a pantalla completa.
+
+G1l. MANTENIMIENTO
+- jsPDF actualizado a 4.2.1: se corrige la vulnerabilidad crítica que
+  marcaba npm audit (0 vulnerabilidades). El generador de PDF de tareas
+  funciona igual.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

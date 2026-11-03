@@ -6,7 +6,7 @@ import { ICONS, ICON_INK, type IconKey } from '../game/icons';
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import { flushSync } from 'react-dom';
-import { TeacherToon } from '@/features/cards/TeacherToon';
+import { TeacherToon, type ToonPart } from '@/features/cards/TeacherToon';
 import { TEACHERS } from '@/features/cards/teachers';
 import { CHAR_SCALE } from '../game/constants';
 import type { PropKind } from '../game/map';
@@ -27,14 +27,14 @@ function canvas(w: number, h: number): HTMLCanvasElement {
 const VB = { x: -72, y: -196, w: 144, h: 210 };
 const svgCache = new Map<string, string>();
 
-function toonMarkup(ci: number, t: number): string {
-  const key = `${ci}:${t}`;
+function toonMarkup(ci: number, t: number, part?: ToonPart): string {
+  const key = `${ci}:${t}:${part ?? ''}`;
   const hit = svgCache.get(key);
   if (hit) return hit;
   const host = document.createElement('div');
   const root = createRoot(host);
   flushSync(() => {
-    root.render(createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', viewBox: `${VB.x} ${VB.y} ${VB.w} ${VB.h}`, width: VB.w, height: VB.h }, createElement(TeacherToon, { look: TEACHERS[ci].look, t })));
+    root.render(createElement('svg', { xmlns: 'http://www.w3.org/2000/svg', viewBox: `${VB.x} ${VB.y} ${VB.w} ${VB.h}`, width: VB.w, height: VB.h }, createElement(TeacherToon, { look: TEACHERS[ci].look, t, part })));
   });
   const s = host.innerHTML;
   root.unmount();
@@ -42,7 +42,9 @@ function toonMarkup(ci: number, t: number): string {
   return s;
 }
 
-export interface CharSprites { base: Sprite; blink: Sprite; white: Sprite; ready: boolean }
+/** Whole toon (base, blink, white flash) plus separate parts for the walk / jump animation. */
+export interface CharSprites { base: Sprite; blink: Sprite; white: Sprite; parts: Record<ToonPart | 'bodyBlink', Sprite>; ready: boolean }
+const PARTS: ToonPart[] = ['legL', 'legR', 'armL', 'armR', 'body'];
 const charCache = new Map<string, CharSprites>();
 
 function loadImage(svg: string): Promise<HTMLImageElement> {
@@ -62,13 +64,15 @@ export function charSprites(ci: number, s: number): CharSprites {
   if (hit) return hit.ready ? hit : readyByChar.get(ci) ?? hit;
   const k = CHAR_SCALE * s;
   const mk = (): Sprite => ({ c: canvas(VB.w * k, VB.h * k), ax: -VB.x * CHAR_SCALE, ay: -VB.y * CHAR_SCALE, w: VB.w * CHAR_SCALE, h: VB.h * CHAR_SCALE, s });
-  const entry: CharSprites = { base: mk(), blink: mk(), white: mk(), ready: false };
+  const entry: CharSprites = { base: mk(), blink: mk(), white: mk(), parts: { legL: mk(), legR: mk(), armL: mk(), armR: mk(), body: mk(), bodyBlink: mk() }, ready: false };
   charCache.set(key, entry);
   const fallback = readyByChar.get(ci);
   void (async () => {
     try {
-      const [a, b] = await Promise.all([loadImage(toonMarkup(ci, 1)), loadImage(toonMarkup(ci, 4.2 * 3 + 0.04))]);
-      for (const [img, sp] of [[a, entry.base], [b, entry.blink]] as const) {
+      const blinkT = 4.2 * 3 + 0.04;
+      const imgs = await Promise.all([loadImage(toonMarkup(ci, 1)), loadImage(toonMarkup(ci, blinkT)), ...PARTS.map((pt) => loadImage(toonMarkup(ci, 1, pt))), loadImage(toonMarkup(ci, blinkT, 'body'))]);
+      const targets = [entry.base, entry.blink, ...PARTS.map((pt) => entry.parts[pt]), entry.parts.bodyBlink];
+      for (const [img, sp] of imgs.map((im, i) => [im, targets[i]] as const)) {
         const g = (sp.c as HTMLCanvasElement).getContext('2d')!;
         g.drawImage(img, 0, 0, sp.c.width, sp.c.height);
       }

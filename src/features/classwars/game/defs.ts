@@ -165,3 +165,15 @@ export function answerGain(ups: Ups, streak: number, genius: boolean) {
 
 /** Multiplier on what steps and shots cost (the efficiency upgrade). */
 export const energyMul = (ups: Ups) => upValue('eff', ups.eff);
+
+/** Knockback arsenal: weapons bought once with energy (then equip them any time, unlimited ammo).
+    Same weapons as the lawn, tuned by the knockback rule (damage % × push). */
+export const KB_ARSENAL: { w: number; cost: number; tip: Tx }[] = [
+  { w: 0, cost: 0, tip: ['Fast and light: builds up damage %.', 'Rápida y ligera: sube el % de daño.'] },
+  { w: 2, cost: 2500, tip: ['A stream of bubbles that keeps rivals in the air.', 'Un chorro de burbujas que mantiene al rival en el aire.'] },
+  { w: 5, cost: 3500, tip: ['Three clips in a fan: hard to dodge.', 'Tres clips en abanico: difícil de esquivar.'] },
+  { w: 1, cost: 4500, tip: ['Close hit with a huge push: the finisher.', 'Golpe cercano con empujón enorme: para rematar.'] },
+  { w: 4, cost: 5500, tip: ['Long beam through everyone in line.', 'Rayo largo que atraviesa a todos en línea.'] },
+  { w: 3, cost: 7000, tip: ['Exploding erasers: push a whole group.', 'Borradores que explotan: empujan a un grupo.'] },
+  { w: 6, cost: 9000, tip: ['Thrown bomb with the biggest blast.', 'Bomba lanzada con la explosión más grande.'] },
+];

@@ -1,7 +1,7 @@
 /* Class Wars — the lawn arena. Generated from a seed so every device builds the same map
    (only the seed travels over the network), plus collision helpers shared by the host
    simulation and the clients' movement prediction. */
-import { KB_H, KB_W, PAINT_CELL, PLAYER_R, WORLD_H, WORLD_W, rng, type Game } from './constants';
+import { KB_H, KB_W, PAINT_CELL, PLAYER_R, TILE, WORLD_H, WORLD_W, rng, sideView, type Game } from './constants';
 
 export type PropKind =
   | 'tree' | 'pine' | 'bush' | 'pot' | 'rock' | 'crate' | 'barrel' | 'bench' | 'fenceH' | 'fenceV'
@@ -20,8 +20,10 @@ export interface Plat { x: number; y: number; w: number; h: number; thin: boolea
 export interface GameMap {
   seed: number;
   kind: Game;
-  /** Knockback stage platforms (empty on the lawn). */
+  /** Side-view platforms (empty on the lawn). */
   plats: Plat[];
+  /** Color Clash: the block grid (1 = solid), TILE px per block. */
+  tiles?: { cols: number; rows: number; grid: Uint8Array };
   w: number;
   h: number;
   props: Prop[]; // drawn, y-sorted when tall
@@ -73,6 +75,7 @@ export function distToPath(p: Path, x: number, y: number) {
 
 export function generateMap(seed: number, portals = 7, kind: Game = 'arena'): GameMap {
   if (kind === 'kb') return generateStage(seed);
+  if (kind === 'paint') return generateBlocks(seed);
   const R = rng(seed);
   const W = WORLD_W, H = WORLD_H;
   const rr = (a: number, b: number) => a + R() * (b - a);
@@ -222,56 +225,119 @@ function indexColliders(map: GameMap) {
 }
 
 /* ------------------------------------------------------------ knockback */
-/** The floating-islands stage: a big main island, two side islands and thin ledges above, with a
-    few seeded variations. Spawn points (in `burrows`) sit above the ledges. */
+/** The night-sky stage: at most 7 bases floating far apart over the void — one long solid floor
+    and small one-way platforms around it, mirrored left/right, with a few seeded variations. Every
+    gap can be crossed with a double jump (one jump rises ~160 px, both ~300 px, and a full double
+    jump carries ~360 px sideways), but the void between them makes every hit risky. Spawn points
+    (in `burrows`) float in the air above the floor (you appear on a pedestal that vanishes): 0 far
+    left, 1 far right, 2–3 inner left/right, then the rest. `v` picks the platform colour. */
 function generateStage(seed: number): GameMap {
   const R = rng(seed);
   const rr = (a: number, b: number) => a + R() * (b - a);
   const W = KB_W, H = KB_H;
   const map: GameMap = { seed, kind: 'kb', plats: [], w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
-  const solid = (cx: number, top: number, w: number, h: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: Math.round(h), thin: false, v });
-  const ledge = (cx: number, top: number, w: number, v = 0) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h: 26, thin: true, v });
-  const layout = Math.floor(R() * 3);
   const mid = W / 2;
-  // main island
-  solid(mid, 1180, layout === 1 ? 1400 : 1560, 210);
-  // side islands
-  const side = layout === 2 ? 760 : 900;
-  solid(mid - side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
-  solid(mid + side, 1010 + rr(-30, 30), rr(320, 400), 150, 1);
-  // ledges
-  ledge(mid - 420, 900 + rr(-20, 20), rr(300, 360), 0);
-  ledge(mid + 420, 900 + rr(-20, 20), rr(300, 360), 0);
-  ledge(mid, 660 + rr(-25, 25), rr(360, 440), 1);
-  ledge(mid - 860, 720 + rr(-30, 30), rr(240, 300), 2);
-  ledge(mid + 860, 720 + rr(-30, 30), rr(240, 300), 2);
-  if (layout !== 1) { ledge(mid - 420, 440 + rr(-20, 20), 240, 3); ledge(mid + 420, 440 + rr(-20, 20), 240, 3); }
-  else ledge(mid, 420, 300, 3);
-  if (layout === 1) { solid(mid - 600, 1260, 220, 120, 1); solid(mid + 600, 1260, 220, 120, 1); }
-  // spawn points above the ledges
-  map.plats.forEach((p, i) => map.burrows.push({ id: i, x: p.x + p.w / 2, y: p.y - 140 }));
-  // solid blocks also block projectiles (thin ledges do not)
+  const add = (cx: number, top: number, w: number, thin: boolean, h: number, v: number) => map.plats.push({ x: Math.round(cx - w / 2), y: Math.round(top), w: Math.round(w), h, thin, v });
+  const pair = (dx: number, top: number, w: number, v: number) => { add(mid - dx, top, w, true, 72, v); add(mid + dx, top, w, true, 72, v); };
+  const layout = Math.floor(R() * 3);
+  const FLOOR = 1200;
+  const half = layout === 1 ? 950 : 1060; // floor half width (a long walk: ~7 s end to end)
+  add(mid, FLOOR, half * 2, false, 132, 2);
+  // side bases: a wide gap (~240–280 px) at about the same height as the floor
+  const sw = rr(600, 700), sGap = rr(240, 280);
+  const sdx = half + sGap + sw / 2;
+  pair(sdx, FLOOR - rr(40, 80), sw, 1);
+  // upper bases over the floor's ends (reach them by jumping up through them)
+  const uw = rr(460, 540), udx = half - uw / 2 - rr(120, 220);
+  const uy = FLOOR - rr(225, 250);
+  pair(udx, uy, uw, 3);
+  if (layout === 2) add(mid, uy - rr(220, 240), rr(560, 640), true, 72, 0); // a top base in the middle (6 in all)
+  else pair(sdx + rr(-60, 60), FLOOR - rr(275, 300), rr(420, 480), 0); // high bases over the side ones (7 in all)
+  // spawn points in the air above the floor, clear of platforms
+  const free = (x: number, feet: number) => !map.plats.some((p) => x + 70 > p.x && x - 70 < p.x + p.w && p.y + p.h + 10 > feet - 150 && p.y < feet + 30);
+  const spots: number[] = [];
+  for (const dx of [950, 600, 250, 0, 780, 420, 120]) for (const s of dx ? [-1, 1] : [1]) if (free(mid + s * dx, FLOOR - 170)) spots.push(mid + s * dx);
+  const order = [...spots].sort((a, b) => a - b);
+  const pick = (x: number | undefined) => { if (x === undefined) return; const i = spots.indexOf(x); if (i >= 0) spots.splice(i, 1); map.burrows.push({ id: map.burrows.length, x, y: FLOOR - 170 - 62 }); };
+  pick(order[0]); pick(order[order.length - 1]); pick(order[1]); pick(order[order.length - 2]);
+  for (const x of [...spots]) pick(x);
+  if (!map.burrows.length) map.burrows.push({ id: 0, x: mid, y: FLOOR - 232 });
+  // solid blocks also block projectiles (the one-way platforms do not)
   for (const p of map.plats) if (!p.thin) map.colliders.push({ t: 'r', x: p.x + p.w / 2, y: p.y + p.h / 2, r: 0, hw: p.w / 2, hh: p.h / 2, tall: true });
   indexColliders(map);
   return map;
 }
 
-/* --------------------------------------------------------------- paint */
+/* ---------------------------------------------------------- Color Clash */
+/** A side-view level made of blocks, mirrored left/right so no team has a better side: a thick
+    floor, walls, a ceiling and floating rows of blocks every few rows (reachable with a jump),
+    with a few pillars and stairs. Team spawns (in `burrows`): bottom-left, bottom-right, then the
+    top corners; the rest are platform tops. */
+function generateBlocks(seed: number): GameMap {
+  const R = rng(seed);
+  const cols = 64, rows = 38;
+  const grid = new Uint8Array(cols * rows);
+  const set = (c: number, r: number) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { grid[r * cols + c] = 1; grid[r * cols + (cols - 1 - c)] = 1; } };
+  for (let c = 0; c < cols; c++) { set(c, 0); set(c, rows - 1); set(c, rows - 2); }
+  for (let r = 0; r < rows; r++) { set(0, r); set(1, r); }
+  const half = cols / 2;
+  // floating rows: a band every 4 rows, segments of 3–9 blocks with gaps you can jump across
+  for (let r = rows - 6, band = 0; r >= 4; r -= 4, band++) {
+    let c = 3 + Math.floor(R() * 4) + (band % 2) * 2;
+    while (c < half - 1) {
+      const len = 3 + Math.floor(R() * 7);
+      for (let k = 0; k < len && c + k < half; k++) set(c + k, r);
+      // sometimes a block step under one end, as stairs
+      if (R() < 0.25) set(c, r + 1);
+      c += len + 3 + Math.floor(R() * 4);
+    }
+  }
+  // pillars on the floor
+  for (let i = 0; i < 3; i++) {
+    const c = 6 + Math.floor(R() * (half - 9)), h = 1 + Math.floor(R() * 2);
+    for (let k = 0; k < h; k++) set(c, rows - 3 - k);
+  }
+  const W = cols * TILE, H = rows * TILE;
+  const map: GameMap = { seed, kind: 'paint', plats: [], tiles: { cols, rows, grid }, w: W, h: H, props: [], colliders: [], ponds: [], paths: [], burrows: [], bushes: [], grid: new Map() };
+  // physics rectangles: runs of solid blocks per row
+  for (let r = 0; r < rows; r++)
+    for (let c = 0; c < cols;) {
+      if (!grid[r * cols + c]) { c++; continue; }
+      let e = c;
+      while (e < cols && grid[r * cols + e]) e++;
+      map.plats.push({ x: c * TILE, y: r * TILE, w: (e - c) * TILE, h: TILE, thin: false, v: r });
+      c = e;
+    }
+  // spawns: team corners first, then free platform tops
+  const top = (c: number) => { for (let r = 1; r < rows; r++) if (grid[r * cols + c] && !grid[(r - 1) * cols + c]) return r; return rows - 2; };
+  const highTop = (c: number) => { for (let r = 2; r < rows; r++) if (grid[r * cols + c] && !grid[(r - 1) * cols + c] && !grid[(r - 2) * cols + c]) return r; return rows - 2; };
+  map.burrows.push({ id: 0, x: 4 * TILE, y: (rows - 2) * TILE - 2 });
+  map.burrows.push({ id: 1, x: (cols - 4) * TILE, y: (rows - 2) * TILE - 2 });
+  let tl = 4; while (tl < half && highTop(tl) > rows / 2) tl++;
+  map.burrows.push({ id: 2, x: (tl + 0.5) * TILE, y: highTop(tl) * TILE - 2 });
+  map.burrows.push({ id: 3, x: (cols - tl - 0.5) * TILE, y: highTop(tl) * TILE - 2 });
+  for (let c = 4; c < cols - 4; c += 7) map.burrows.push({ id: map.burrows.length, x: (c + 0.5) * TILE, y: top(c) * TILE - 2 });
+  return map;
+}
+
 export const paintCols = (map: GameMap) => Math.ceil(map.w / PAINT_CELL);
 export const paintRows = (map: GameMap) => Math.ceil(map.h / PAINT_CELL);
-/** 1 = this lawn cell can be painted (not under a prop, a pond or the hedge). */
+/** 1 = this block can be painted: a solid block with air above it (you can stand on it). */
 export function paintMask(map: GameMap): Uint8Array {
   const cols = paintCols(map), rows = paintRows(map);
   const m = new Uint8Array(cols * rows);
-  for (let cy = 0; cy < rows; cy++)
-    for (let cx = 0; cx < cols; cx++) {
-      const x = (cx + 0.5) * PAINT_CELL, y = (cy + 0.5) * PAINT_CELL;
-      if (x < EDGE || y < EDGE || x > map.w - EDGE || y > map.h - EDGE) continue;
-      const [rx, ry] = resolve(map, x, y, 6);
-      if (Math.abs(rx - x) + Math.abs(ry - y) < 1) m[cy * cols + cx] = 1;
-    }
+  const g = map.tiles?.grid;
+  if (!g) return m;
+  for (let r = 1; r < rows; r++) for (let c = 0; c < cols; c++) if (g[r * cols + c] && !g[(r - 1) * cols + c]) m[r * cols + c] = 1;
   return m;
 }
+/** Is the block at (x, y) solid? */
+export const solidAt = (map: GameMap, x: number, y: number) => {
+  const t = map.tiles;
+  if (!t) return false;
+  const c = Math.floor(x / TILE), r = Math.floor(y / TILE);
+  return c < 0 || r < 0 || c >= t.cols || r >= t.rows || !!t.grid[r * t.cols + c];
+};
 
 function near(map: GameMap, x: number, y: number): number[] {
   return map.grid.get(key(Math.floor(x / CELL), Math.floor(y / CELL))) ?? [];
@@ -320,7 +386,7 @@ export function resolve(map: GameMap, x: number, y: number, r = PLAYER_R): [numb
     }
     if (!moved) break;
   }
-  if (map.kind === 'kb') return [x, y];
+  if (sideView(map.kind)) return [x, y];
   const m = EDGE + r;
   x = x < m ? m : x > WORLD_W - m ? WORLD_W - m : x;
   y = y < m ? m : y > WORLD_H - m ? WORLD_H - m : y;
@@ -337,6 +403,7 @@ export function moveCircle(map: GameMap, x: number, y: number, dx: number, dy: n
 
 /** Does a projectile at (x, y) hit something tall (or leave the arena)? */
 export function hitsWall(map: GameMap, x: number, y: number, r = 4): boolean {
+  if (map.tiles) return solidAt(map, x, y);
   if (map.kind === 'kb') { if (x < -400 || x > map.w + 400 || y < -600 || y > map.h + 200) return true; }
   else if (x < EDGE || y < EDGE || x > WORLD_W - EDGE || y > WORLD_H - EDGE) return true;
   for (const i of near(map, x, y)) {
