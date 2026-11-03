@@ -4,7 +4,7 @@ import { PAINT_CELL, PLAYER_R } from './constants';
 import { floorBelow } from './kb';
 import { paintCols, solidAt } from './map';
 import { TILE } from './constants';
-import { KB_ARSENAL, UPGRADES, WEAPONS } from './defs';
+import { BLASTER, UPGRADES, WEAPONS } from './defs';
 import type { Sim, SimPlayer } from './sim';
 
 export const BOT_NAMES = ['Valen', 'Mateo', 'Sofi', 'Tomás', 'Isa', 'Juanes', 'Majo', 'Santi', 'Dani', 'Luci', 'Nico', 'Pau', 'Emi', 'Sara'];
@@ -28,8 +28,8 @@ export function botThink(sim: Sim, p: SimPlayer) {
     if (now > b.nextAns) {
       sim.answer(p, R() < b.acc);
       b.nextAns = now + 2200 + R() * 3500;
-      // Knockback: buy the next weapon of the arsenal when there is plenty of energy.
-      if (sim.game === 'kb') { const nx = KB_ARSENAL.find((a) => !(p.owned & (1 << a.w))); if (nx && p.en > nx.cost + 1500) sim.buyWeapon(p, nx.w); }
+      // Knockback: upgrade the pixel blaster when there is plenty of energy.
+      if (sim.game === 'kb') { const nx = BLASTER[p.lvl + 1]; if (nx && p.en > nx.cost + 1500) sim.upgradeBlaster(p); }
       // Shop: the cheapest useful upgrade, keeping enough energy to keep playing.
       for (const u of [...UPGRADES].sort((x, y) => x.costs[Math.min(p.ups[x.id] + 1, x.costs.length - 1)] - y.costs[Math.min(p.ups[y.id] + 1, y.costs.length - 1)])) {
         const next = p.ups[u.id] + 1;

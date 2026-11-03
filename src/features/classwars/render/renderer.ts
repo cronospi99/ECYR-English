@@ -3,7 +3,7 @@
 import { BOX_COOLDOWN_MS, FLAG, PED_MS, TEAM_COLORS, TEAM_DARK, TILE, WORLD_H, WORLD_W, clamp, lerp, sideView } from '../game/constants';
 import { onGround } from '../game/kb';
 import { PaintLayer, Stage, pedestal } from './stage';
-import { CHAR_IDS, DIA_OUTCOMES, POWERS, UPGRADES, WEAPONS, PJ_LOOK, outcomeColor, outcomeLabel } from '../game/defs';
+import { BLASTER, CHAR_IDS, DIA_OUTCOMES, PIXEL, POWERS, UPGRADES, WEAPONS, PJ_LOOK, blasterTier, isPixelPj, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t as tr, tx, type Tx } from '../i18n';
 import type { IconKey } from '../game/icons';
 import { inBush, PROP_INFO, type GameMap, type Prop } from '../game/map';
@@ -24,7 +24,7 @@ interface Anim {
   vy: number; air: boolean; landAt: number; pose: number[];
 }
 
-const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6;
+const P_DUST = 0, P_SPARK = 1, P_STAR = 2, P_CONF = 3, P_RING = 4, P_TEXT = 5, P_SHARD = 6, P_PIX = 7;
 const QUAL = [
   { dpr: 1, particles: 140, label: 'low' },
   { dpr: 1.5, particles: 320, label: 'medium' },
@@ -482,6 +482,12 @@ export class Renderer {
     g.beginPath(); g.moveTo(0, 0); g.lineTo(-Math.cos(a) * 26, -Math.sin(a) * 26); g.stroke();
     g.globalAlpha = 1;
     const pl = PJ_LOOK[kind];
+    if (isPixelPj(kind)) {
+      // pixel bolt: a glowing square core and a trail of squares that shrink and fade behind it
+      g.restore();
+      this.drawPixelBolt(BLASTER[kind - 40], x, y, vx, vy, age);
+      return;
+    }
     if (pl) {
       if (pl.spin) g.rotate((age / 1000) * pl.spin);
       else if (vx < 0) g.scale(-1, 1); // cats run facing where they go
@@ -504,6 +510,23 @@ export class Renderer {
       g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke();
     }
     g.restore();
+  }
+
+  private drawPixelBolt(tc: (typeof BLASTER)[number], x: number, y: number, vx: number, vy: number, age: number) {
+    const g = this.g;
+    const l = Math.hypot(vx, vy) || 1, ux = vx / l, uy = vy / l;
+    for (let i = 4; i >= 1; i--) {
+      const z = 14 - i * 2.5, d = i * 13, wob = Math.sin(age / 40 + i * 1.7) * 3;
+      g.globalAlpha = 0.75 - i * 0.15;
+      g.fillStyle = i % 2 ? tc.color : tc.light;
+      g.fillRect(Math.round(x - ux * d - uy * wob - z / 2), Math.round(y - uy * d + ux * wob - z / 2), z, z);
+    }
+    g.globalAlpha = 0.35; g.fillStyle = tc.color; g.fillRect(x - 14, y - 14, 28, 28);
+    g.globalAlpha = 1;
+    g.fillStyle = tc.dark; g.fillRect(x - 10, y - 10, 20, 20);
+    g.fillStyle = tc.color; g.fillRect(x - 7.5, y - 7.5, 15, 15);
+    g.fillStyle = '#ffffff'; g.fillRect(x - 3.5, y - 3.5, 7, 7);
+    if (this.quality > 0 && Math.random() < 0.3) this.emit(x - ux * 10, y - uy * 10, -ux * 30 + (Math.random() - 0.5) * 60, -uy * 30 + (Math.random() - 0.5) * 60, 0.3, 3 + Math.random() * 3, Math.random() < 0.5 ? tc.color : tc.light, P_PIX);
   }
 
   /* ------------------------------------------------------------- players */
@@ -633,7 +656,7 @@ export class Renderer {
     // weapon in hand
     if (alive && !(p.flags & FLAG.quiz)) {
       const w = p.weapon;
-      const wsp = weaponSprite(w, S);
+      const wsp = weaponSprite(w, S, p.lvl);
       let ang = p.aim;
       if (ps && WEAPONS[w]?.kind === 'melee') {
         const k = (now - ps.swingAt) / 220;
@@ -661,6 +684,9 @@ export class Renderer {
       g.fillStyle = 'rgba(160,220,255,0.18)'; g.fill(); g.lineWidth = 3.5; g.strokeStyle = `rgba(200,240,255,${0.7 + Math.sin(t * 8) * 0.25})`; g.stroke();
     }
     if (p.flags & FLAG.hacked && Math.random() < 0.3) this.emit(p.x + (Math.random() - 0.5) * 44, p.y - 20 - Math.random() * 60, 0, -50, 0.5, 11, '#30ff7a', P_TEXT, Math.random() < 0.5 ? '0' : '1');
+    // launched at a high %: a speed trail for a moment
+    const lps = src.vis.ps.get(p.idx);
+    if (lps && now - lps.launchAt < 650 && Math.random() < 0.8) this.emit(p.x + (Math.random() - 0.5) * 16, p.y - 30 + (Math.random() - 0.5) * 30, 0, 0, 0.45, 9 + Math.random() * 6, Math.random() < 0.5 ? 'rgba(255,255,255,0.8)' : 'rgba(255,214,10,0.7)', P_DUST);
     if (p.flags & FLAG.speed) {
       if (moving && Math.random() < 0.5) this.emit(p.x - Math.cos(p.aim) * 10, p.y - 4, -Math.cos(p.aim) * 40, -10, 0.35, 6, 'rgba(255,255,255,0.7)', P_DUST);
     } else if (moving && Math.random() < 0.08 && this.quality > 0) this.emit(p.x, p.y, 0, -8, 0.4, 4, 'rgba(220,240,200,0.6)', P_DUST);
@@ -815,6 +841,7 @@ export class Renderer {
         case P_CONF: g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.fillStyle = p.color; g.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2); g.restore(); break;
         case P_RING: g.beginPath(); g.ellipse(p.x, p.y, p.size * (1 - k), p.size * (1 - k) * 0.62, 0, 0, 7); g.lineWidth = 6 * k + 1; g.strokeStyle = p.color; g.stroke(); break;
         case P_TEXT: g.font = `900 ${p.size}px Inter, system-ui, sans-serif`; g.textAlign = 'center'; g.fillStyle = p.color; g.fillText(p.text ?? '', p.x, p.y); break;
+        case P_PIX: { const z = p.size * (1 - k * 0.55); g.fillStyle = p.color; g.fillRect(Math.round(p.x - z / 2), Math.round(p.y - z / 2), z, z); break; }
         case P_SHARD: g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.fillStyle = p.color; g.beginPath(); g.moveTo(0, -p.size); g.lineTo(p.size * 0.6, 0); g.lineTo(0, p.size); g.lineTo(-p.size * 0.6, 0); g.closePath(); g.fill(); g.restore(); break;
       }
     }
@@ -921,7 +948,20 @@ export class Renderer {
           if (v) { sfx.boom(v); this.shake(0.4 * v); }
           break;
         }
-        case 'hit': this.burst(f.x, f.y, 5, (PROJ_LOOK[f.kind] ?? PROJ_LOOK[0]).color, P_DUST, 100, 0.3, 5); break;
+        case 'hit':
+          if (isPixelPj(f.kind)) { const tc = BLASTER[f.kind - 40]; this.burst(f.x, f.y, 9, [tc.color, tc.light, '#ffffff'], P_PIX, 170, 0.35, 6); }
+          else this.burst(f.x, f.y, 5, (PROJ_LOOK[f.kind] ?? PROJ_LOOK[0]).color, P_DUST, 100, 0.3, 5);
+          break;
+        case 'reload': { const p = byIdx.get(f.idx); if (p?.me) sfx.reload(); break; }
+        case 'launch': {
+          const p = byIdx.get(f.idx);
+          if (!p) break;
+          this.ring(p.x, p.y - 30, 70, 'rgba(255,255,255,0.9)', 0.35);
+          this.burst(p.x, p.y - 30, 8, ['#ffffff', '#ffd60a'], P_STAR, 260, 0.45, 8);
+          if (p.me || near(p.x, p.y)) sfx.launch(p.me ? 1 : 0.6);
+          if (p.me) this.shake(0.25);
+          break;
+        }
         case 'ans': {
           const p = byIdx.get(f.idx);
           if (p && f.gain > 0) {
@@ -936,7 +976,14 @@ export class Renderer {
           if (p?.me) this.shake(0.25);
           break;
         }
-        case 'buy': { const p = byIdx.get(f.idx); if (p) { const w = f.up < 0 ? WEAPONS[f.lvl] : null; this.popup(f.idx, 0, 0, w ? tx(w.name) : tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, w ? w.ic : UPGRADES[f.up]?.ic ?? 'arrowUp'); if (p.me) sfx.buy(); } break; }
+        case 'buy': {
+          const p = byIdx.get(f.idx);
+          if (!p) break;
+          if (f.up < 0) { const tc = blasterTier(f.lvl); this.popup(f.idx, 0, 0, tx(tc.name), tc.color, 18, 1300, 'pixel'); this.burst(p.x, p.y - 40, 14, [tc.color, tc.light], P_PIX, 220, 0.6, 7); }
+          else this.popup(f.idx, 0, 0, tr('Upgrade', 'Mejora'), '#ffd60a', 17, 1000, UPGRADES[f.up]?.ic ?? 'arrowUp');
+          if (p.me) sfx.buy();
+          break;
+        }
         case 'tp': {
           const p = byIdx.get(f.idx);
           const col = f.kind === 'shadow' ? 'rgba(40,20,60,0.75)' : f.kind === 'swap' ? '#bf5af2' : f.kind === 'rewind' ? '#64d2ff' : f.kind === 'burrow' ? '#9a5cff' : 'rgba(255,255,255,0.85)';
@@ -980,7 +1027,10 @@ export class Renderer {
           if (!p) break;
           const v = p.me ? 1 : near(p.x, p.y) * 0.6;
           if (v) sfx.shoot(f.kind, v);
-          if (WEAPONS[f.kind]?.kind !== 'melee') this.emit(p.x + Math.cos(p.aim) * 44, p.y - 30 + Math.sin(p.aim) * 30, 0, 0, 0.15, 8, 'rgba(255,255,255,0.8)', P_DUST);
+          if (f.kind === PIXEL || isPixelPj(f.kind)) {
+            const tc = blasterTier(p.lvl), mx = p.x + Math.cos(p.aim) * 92, my = p.y - 40 + Math.sin(p.aim) * 30 + Math.sin(p.aim) * 50;
+            this.burst(mx, my, 4, [tc.light, '#ffffff'], P_PIX, 120, 0.18, 6);
+          } else if (WEAPONS[f.kind]?.kind !== 'melee') this.emit(p.x + Math.cos(p.aim) * 44, p.y - 30 + Math.sin(p.aim) * 30, 0, 0, 0.15, 8, 'rgba(255,255,255,0.8)', P_DUST);
           if (p.me && WEAPONS[f.kind]?.kind === 'explosive') this.shake(0.12);
           break;
         }

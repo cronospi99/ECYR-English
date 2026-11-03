@@ -2,6 +2,7 @@
    offscreen canvases (normal, blink, white hit-flash); props, boxes, gems and weapons are drawn
    with canvas paths into cached canvases at the current render scale. Drawing a frame is then
    just drawImage calls. */
+import { blasterTier } from '../game/defs';
 import { ICONS, ICON_INK, type IconKey } from '../game/icons';
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -355,8 +356,8 @@ export function gemSprite(v: number, s: number): Sprite {
 }
 
 /** Weapon held in the hand, drawn pointing to +x from the grip at (0,0). */
-export function weaponSprite(w: number, s: number): Sprite {
-  const key = `wpn${w}@${s}`;
+export function weaponSprite(w: number, s: number, tier = 0): Sprite {
+  const key = `wpn${w}t${w === 7 ? tier : 0}@${s}`;
   const hit = propCache.get(key);
   if (hit) return hit;
   let sp: Sprite;
@@ -407,6 +408,22 @@ export function weaponSprite(w: number, s: number): Sprite {
         rr(g, 10, -18, 10, 7, 2); g.fillStyle = '#2f3b45'; g.fill(); stroke(g, 2);
       });
       break;
+    case 7: { // pixel blaster (knockback): blocky body in its tier colour, an energy cell and a stepped muzzle
+      const tc = blasterTier(tier);
+      sp = bake(-18, -26, 76, 48, s, (g) => {
+        g.beginPath(); g.moveTo(-1, 0); g.lineTo(9, 0); g.lineTo(6, 15); g.lineTo(-4, 15); g.closePath(); g.fillStyle = '#2b3352'; g.fill(); stroke(g, 3);
+        rr(g, -13, -10, 7, 12, 2); g.fillStyle = tc.dark; g.fill(); stroke(g, 3);
+        rr(g, -8, -13, 42, 16, 3); g.fillStyle = tc.color; g.fill(); stroke(g, 3.5);
+        rr(g, -2, -20, 22, 8, 2); g.fillStyle = '#2b3352'; g.fill(); stroke(g, 3);
+        rr(g, 3, -9, 13, 8, 2); g.fillStyle = tc.light; g.fill(); stroke(g, 2.5);
+        g.fillStyle = '#ffffff'; g.fillRect(5, -7.5, 4, 3);
+        rr(g, 33, -10, 12, 10, 2); g.fillStyle = '#2b3352'; g.fill(); stroke(g, 3);
+        rr(g, 44, -12, 7, 14, 2); g.fillStyle = tc.dark; g.fill(); stroke(g, 3);
+        g.fillStyle = tc.light; g.fillRect(22, -9, 4, 4); g.fillRect(27, -5, 3, 3); g.fillRect(22, -3, 3, 3);
+        g.fillStyle = 'rgba(255,255,255,0.45)'; g.fillRect(-5, -11, 36, 2.5);
+      });
+      break;
+    }
     default: // chalk
       sp = bake(-4, -10, 40, 20, s, (g) => {
         rr(g, 0, -5, 30, 10, 4); g.fillStyle = '#ffffff'; g.fill(); stroke(g, 3);

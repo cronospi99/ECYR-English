@@ -5,7 +5,7 @@ import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import {
   BASE_SPEED, FLAG, PED_MS, INPUT_MS, INTERP_MS, aimToByte, byteToAim, lerp, lerpAngle, sideView, speedFromFlags, type Game,
 } from './constants';
-import { CHAR_IDS, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
+import { CHAR_IDS, PIXEL, PIXEL_PJ, POWERS, UPGRADES, WEAPONS, answerGain, freshUps, upsFromArr, type Ups } from './defs';
 import { generateMap, moveCircle, type GameMap } from './map';
 import { paintSpeed, type Ev } from './sim';
 import { kbStep, newBody, standOn, type Body } from './kb';
@@ -18,8 +18,8 @@ export interface RosterEntry { idx: number; peer: string; name: string; char: nu
 export interface RP {
   idx: number; x: number; y: number; aim: number; hp: number; sh: number; dia: number; en: number; flags: number; look: number;
   weapon: number; ammo: number; maxHp: number; borrowed: number; charges: number; name: string; me: boolean; bot: boolean;
-  /** Color Clash team (−1 none) and Knockback damage %. */
-  team: number; pct: number;
+  /** Color Clash team (−1 none), Knockback damage % and pixel blaster tier. */
+  team: number; pct: number; lvl: number;
 }
 export interface ServedQ { id: number; q: string; o: string[]; a: number }
 
@@ -269,7 +269,8 @@ export class ClientSession implements RenderSource {
     const flags = row ? row[7] : FLAG.alive;
     const alive = !!(flags & FLAG.alive);
     if (alive && !this.isPaused && this.me.fv !== -1 && sideView(this.game)) {
-      // Side view: walk left/right, jump (double jump in the air), down drops through ledges.
+      // Side view: walk left/right, jump (double jump in the air), down drops through ledges (not in
+      // knockback: there you only get off a platform by walking off its edge).
       let mx = this.quizOpen ? 0 : this.input.mx;
       if (flags & FLAG.confuse) mx = -mx;
       const jump = this.input.jumpC !== this.jumpSeen && !this.quizOpen;
@@ -277,7 +278,7 @@ export class ClientSession implements RenderSource {
       this.body.airMax = 1 + (row?.[17] ?? 0);
       const team = row?.[15] ?? -1;
       const mul = speedFromFlags(flags) * (this.vis.paint && team >= 0 ? paintSpeed(this.vis.paint, this.map, team, this.me.x, this.me.y) : 1);
-      kbStep(this.map, this.body, Math.abs(mx) > 0.2 ? Math.sign(mx) * Math.min(1, Math.abs(mx) * 1.4) : 0, jump, this.input.my > 0.6 && !this.quizOpen, mul, dt);
+      kbStep(this.map, this.body, Math.abs(mx) > 0.2 ? Math.sign(mx) * Math.min(1, Math.abs(mx) * 1.4) : 0, jump, this.input.my > 0.6 && !this.quizOpen && this.game !== 'kb', mul, dt);
       this.me.x = this.body.x; this.me.y = this.body.y;
     } else if (alive && !this.isPaused && this.me.fv !== -1) {
       let mx = this.input.mx, my = this.input.my;
@@ -332,7 +333,7 @@ export class ClientSession implements RenderSource {
   attackPress() {
     this.input.atkC++;
     const row = this.myRow();
-    if (!row || this.quizOpen || row[7] & FLAG.tired) return;
+    if (!row || this.quizOpen || row[7] & (FLAG.tired | FLAG.reload)) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const now = performance.now();
     if (now - this.lastFireAt < w.cd * 0.9) return;
@@ -344,7 +345,7 @@ export class ClientSession implements RenderSource {
     const row = this.myRow();
     if (!row || !this.input.held || this.quizOpen) return;
     const flags = row[7];
-    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.hacked | FLAG.charm | FLAG.tired)) return;
+    if (!(flags & FLAG.alive) || flags & (FLAG.stun | FLAG.hacked | FLAG.charm | FLAG.tired | FLAG.reload)) return;
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const cd = w.cd * (flags & FLAG.rapid ? 0.6 : 1);
     const now = performance.now();
@@ -356,7 +357,7 @@ export class ClientSession implements RenderSource {
     const w = WEAPONS[row[9]] ?? WEAPONS[0];
     const a = this.input.aim;
     if (w.kind === 'melee') { const s = this.vis.st(this.myIdx); s.swingAt = performance.now(); s.swingAim = a; }
-    else this.vis.localShot(w.id, this.me.x + Math.cos(a) * 32, this.me.y - 18 + Math.sin(a) * 32, a, this.myIdx);
+    else this.vis.localShot(w.id === PIXEL ? PIXEL_PJ + (row[18] ?? 0) : w.id, this.me.x + Math.cos(a) * 32, this.me.y - 18 + Math.sin(a) * 32, a, this.myIdx);
     this.vis.fx.push({ t: 'shoot', idx: this.myIdx, kind: w.id });
   }
   powerPress() { this.input.powC++; this.maybeSendSoon(); }
@@ -383,8 +384,8 @@ export class ClientSession implements RenderSource {
   }
 
   buy(k: string) { this.relay.send({ k: 'buy', u: k }, 'host'); }
-  /** Knockback arsenal: buy (once) or equip a weapon. */
-  buyWeapon(w: number) { this.relay.send({ k: 'wb', w }, 'host'); }
+  /** Knockback: upgrade the pixel blaster to its next tier. */
+  upgradeBlaster() { this.relay.send({ k: 'wb' }, 'host'); }
 
   /* ------------------------------------------------------------ render */
   players(): RP[] {
@@ -412,7 +413,7 @@ export class ClientSession implements RenderSource {
         y: me ? this.me.y : tp ? rb[2] : lerp(ra[2], rb[2], t),
         aim: me ? this.input.aim : lerpAngle(byteToAim(ra[3]), byteToAim(rb[3]), t),
         hp: live[4], sh: live[5], dia: live[6], en: live[14] ?? 0, flags: live[7], look: live[8], weapon: live[9], ammo: live[10], maxHp: live[11], borrowed: live[12], charges: live[13],
-        name: r?.name ?? '?', me, bot: !!r?.bot, team: live[15] ?? -1, pct: live[16] ?? 0,
+        name: r?.name ?? '?', me, bot: !!r?.bot, team: live[15] ?? -1, pct: live[16] ?? 0, lvl: live[18] ?? 0,
       });
     }
     return out;

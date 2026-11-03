@@ -133,8 +133,13 @@ export const sfx = {
     else if (kind === 3) { tone(220, 0.16, 'square', 0.08 * vol, 110); noise(0.12, 0.14 * vol, 700); }
     else if (kind === 4) { tone(1400, 0.14, 'sawtooth', 0.06 * vol, 400); tone(700, 0.14, 'sine', 0.06 * vol, 300); }
     else if (kind === 6) tone(400, 0.22, 'triangle', 0.1 * vol, 760);
+    else if (kind === 7 || (kind >= 40 && kind < 45)) { tone(1250, 0.07, 'square', 0.055 * vol, 330); tone(2500, 0.04, 'square', 0.025 * vol, 900, 0.01); noise(0.03, 0.05 * vol, 4000, 'highpass'); }
     else { noise(0.05, 0.12 * vol, 3000, 'highpass'); tone(880, 0.06, 'triangle', 0.08 * vol, 520); }
   },
+  /** Pixel blaster: magazine out, then back in. */
+  reload() { tone(300, 0.05, 'square', 0.06, 200); noise(0.04, 0.1, 2500, 'bandpass'); tone(520, 0.06, 'square', 0.06, 760, 0.18); noise(0.04, 0.12, 3000, 'bandpass', 0.2); },
+  /** Knockback: a high-% launch. */
+  launch(vol = 1) { if (throttle('launch', 90)) { noise(0.35, 0.3 * vol, 1400, 'bandpass', 0, { verb: 0.3 }); tone(260, 0.3, 'sawtooth', 0.08 * vol, 900); } },
   hit(vol = 1) { if (throttle('hit', 40)) { noise(0.09, 0.32 * vol, 2200, 'bandpass'); tone(220, 0.09, 'square', 0.07 * vol, 110); } },
   hurt() { if (throttle('hurt', 80)) { tone(320, 0.16, 'sawtooth', 0.12, 140); noise(0.1, 0.2, 1500); } },
   block() { if (throttle('block', 80)) { tone(1500, 0.12, 'sine', 0.12, 1900); tone(2250, 0.1, 'sine', 0.05, 2600, 0.02); } },

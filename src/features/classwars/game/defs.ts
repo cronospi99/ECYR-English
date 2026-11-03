@@ -81,6 +81,8 @@ export const WEAPONS: WeaponDef[] = [
   { id: 4, key: 'highlighter', name: ['Highlighter Beam', 'Rayo resaltador'], ic: 'highlighter', kind: 'pierce', dmg: 22, cd: 460, speed: 1100, range: 780, ammo: 10, kb: 130, radius: 8, color: '#d7ff3a', en: 9, desc: ['Goes through every rival in line.', 'Atraviesa a todos los rivales en línea.'] },
   { id: 5, key: 'clips', name: ['Clip Shooter', 'Clipadora'], ic: 'clip', kind: 'spread', dmg: 10, cd: 520, speed: 760, range: 430, ammo: 12, kb: 110, radius: 6, color: '#cfd8dc', en: 7, desc: ['Three paper clips in a fan per shot.', 'Tres clips en abanico de un disparo.'] },
   { id: 6, key: 'glitter', name: ['Glitter Bomb', 'Bomba de purpurina'], ic: 'glitter', kind: 'grenade', dmg: 34, cd: 820, speed: 0, range: 420, ammo: 4, kb: 430, radius: 96, color: '#ff5ce1', en: 14, desc: ['Throw it where you aim: it explodes in glitter!', 'Lánzala donde apuntas: ¡explota en purpurina!'] },
+  // Knockback only: stats here are tier 1 (see BLASTER); the magazine reloads by itself.
+  { id: 7, key: 'pixel', name: ['Pixel Blaster', 'Bláster de píxeles'], ic: 'pixel', kind: 'proj', dmg: 10, cd: 230, speed: 980, range: 680, ammo: 24, kb: 120, radius: 8, color: '#7ff6ff', en: 4, desc: ['Fires fast pixel bolts. Every hit raises the rival\'s %, and the higher it is, the farther they fly.', 'Dispara ráfagas de píxeles. Cada impacto sube el % del rival, y cuanto más alto, más lejos vuela.'] },
 ];
 
 /** Projectile kinds besides weapons (powers). Index space shared with weapon ids. */
@@ -166,14 +168,18 @@ export function answerGain(ups: Ups, streak: number, genius: boolean) {
 /** Multiplier on what steps and shots cost (the efficiency upgrade). */
 export const energyMul = (ups: Ups) => upValue('eff', ups.eff);
 
-/** Knockback arsenal: weapons bought once with energy (then equip them any time, unlimited ammo).
-    Same weapons as the lawn, tuned by the knockback rule (damage % × push). */
-export const KB_ARSENAL: { w: number; cost: number; tip: Tx }[] = [
-  { w: 0, cost: 0, tip: ['Fast and light: builds up damage %.', 'Rápida y ligera: sube el % de daño.'] },
-  { w: 2, cost: 2500, tip: ['A stream of bubbles that keeps rivals in the air.', 'Un chorro de burbujas que mantiene al rival en el aire.'] },
-  { w: 5, cost: 3500, tip: ['Three clips in a fan: hard to dodge.', 'Tres clips en abanico: difícil de esquivar.'] },
-  { w: 1, cost: 4500, tip: ['Close hit with a huge push: the finisher.', 'Golpe cercano con empujón enorme: para rematar.'] },
-  { w: 4, cost: 5500, tip: ['Long beam through everyone in line.', 'Rayo largo que atraviesa a todos en línea.'] },
-  { w: 3, cost: 7000, tip: ['Exploding erasers: push a whole group.', 'Borradores que explotan: empujan a un grupo.'] },
-  { w: 6, cost: 9000, tip: ['Thrown bomb with the biggest blast.', 'Bomba lanzada con la explosión más grande.'] },
+/** Knockback: everyone fights with the same weapon, the pixel blaster (id 7). Answers give energy,
+    and energy upgrades it through five tiers: more damage, a bigger magazine and a faster reload. */
+export const PIXEL = 7;
+/** Projectile kind of a pixel bolt = PIXEL_PJ + tier (so the bolt shows its tier colour). */
+export const PIXEL_PJ = 40;
+export const isPixelPj = (k: number) => k >= PIXEL_PJ && k < PIXEL_PJ + 5;
+export interface BlasterTier { name: Tx; color: string; light: string; dark: string; dmg: number; mag: number; reload: number; cost: number }
+export const BLASTER: BlasterTier[] = [
+  { name: ['Common', 'Común'], color: '#d9e4ee', light: '#ffffff', dark: '#8a9bab', dmg: 10, mag: 24, reload: 1.5, cost: 0 },
+  { name: ['Uncommon', 'Poco común'], color: '#3ddc84', light: '#b5ffd2', dark: '#16884b', dmg: 12, mag: 26, reload: 1.4, cost: 2500 },
+  { name: ['Rare', 'Raro'], color: '#3fa2ff', light: '#bfe2ff', dark: '#1c5fb8', dmg: 14, mag: 28, reload: 1.3, cost: 5500 },
+  { name: ['Epic', 'Épico'], color: '#b46bff', light: '#e6ccff', dark: '#6a2fb8', dmg: 16, mag: 30, reload: 1.15, cost: 9500 },
+  { name: ['Legendary', 'Legendario'], color: '#ffc63a', light: '#fff0b8', dark: '#b87800', dmg: 18, mag: 32, reload: 1, cost: 15000 },
 ];
+export const blasterTier = (lvl: number) => BLASTER[Math.max(0, Math.min(BLASTER.length - 1, lvl | 0))];

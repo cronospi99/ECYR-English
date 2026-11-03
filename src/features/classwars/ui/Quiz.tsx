@@ -5,7 +5,7 @@ import { Check, Flame, ShoppingBag, X, BookOpen, ShieldAlert, Shield } from 'luc
 import { cn } from '@/lib/cn';
 import type { ClientSession, ServedQ } from '../game/client';
 import { FLAG } from '../game/constants';
-import { KB_ARSENAL, UPGRADES, WEAPONS, answerGain, upValue } from '../game/defs';
+import { BLASTER, PIXEL, UPGRADES, WEAPONS, answerGain, blasterTier, upValue } from '../game/defs';
 import { sfx } from '../render/audio';
 import { Btn, Diamond, GameIcon } from './kit';
 import { num, t, tx } from '../i18n';
@@ -142,7 +142,7 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
   return (
     <div className="cw-scroll min-h-0 flex-1 overflow-y-auto px-3 pb-6 sm:px-5">
       <p className="mb-3 text-center text-[14px] font-semibold text-white/70">{t('Invest your energy in upgrades: recharge more per answer, get more diamonds from boxes and spend less when moving.', 'Invierte tu energía en mejoras: recarga más con cada pregunta, saca más diamantes de las cajas y gasta menos al moverte.')}</p>
-      {client.game === 'kb' && <Arsenal client={client} en={en} />}
+      {client.game === 'kb' && <BlasterShop client={client} en={en} />}
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {UPGRADES.map((u) => {
           // Knockback has no health: the HP upgrade is "Weight" (you fly less far)
@@ -177,31 +177,43 @@ function Shop({ client, en }: { client: ClientSession; en: number }) {
   );
 }
 
-/** Knockback: buy weapons once with energy, then switch between the ones you own. */
-function Arsenal({ client, en }: { client: ClientSession; en: number }) {
-  const row = client.myRow();
-  const owned = row?.[18] ?? 1, cur = row?.[9] ?? 0;
+/** Knockback: one weapon for everyone, the pixel blaster; energy upgrades it through five tiers. */
+function BlasterShop({ client, en }: { client: ClientSession; en: number }) {
+  const lvl = client.myRow()?.[18] ?? 0;
+  const cur = blasterTier(lvl), next = BLASTER[lvl + 1];
+  const can = !!next && en >= next.cost;
+  const stat = (label: string, a: string, b?: string) => (
+    <div className="rounded-xl bg-black/20 px-3 py-1.5">
+      <div className="text-[11px] font-bold text-white/55 uppercase">{label}</div>
+      <div className="text-[16px] font-black tabular-nums">{a}{b && <span className="text-[#7dff9a]"> → {b}</span>}</div>
+    </div>
+  );
   return (
     <div className="mx-auto mb-5 max-w-[1100px]">
-      <div className="mb-2 flex items-center gap-2 text-[15px] font-black tracking-wide uppercase"><GameIcon k="launch" size={20} /> {t('Arsenal', 'Arsenal')}</div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
-        {KB_ARSENAL.map((a) => {
-          const w = WEAPONS[a.w];
-          const has = !!(owned & (1 << a.w));
-          const on = cur === a.w;
-          const can = has ? !on : en >= a.cost;
-          return (
-            <button key={a.w} type="button" disabled={!can} onClick={() => { client.buyWeapon(a.w); sfx.buy(); }} title={tx(a.tip)}
-              className={cn('flex flex-col items-center rounded-2xl border-[3px] p-2.5 text-center transition-colors', on ? 'border-[#30d158] bg-[#30d158]/15' : has ? 'border-white/25 bg-[#232d6b] hover:border-white/50' : can ? 'border-[#ffd23f]/60 bg-[#232d6b] hover:border-[#ffd23f]' : 'border-white/10 bg-[#232d6b] opacity-60')}>
-              <GameIcon k={w.ic} size={38} />
-              <div className="mt-1 text-[14px] leading-tight font-black">{tx(w.name)}</div>
-              <div className="mt-0.5 line-clamp-2 text-[11.5px] font-semibold text-white/65">{tx(a.tip)}</div>
-              <div className={cn('mt-1.5 rounded-full px-2.5 py-0.5 text-[12.5px] font-black', on ? 'bg-[#30d158] text-white' : has ? 'bg-white/15' : 'bg-[#ffd23f] text-[#2a1d00]')}>
-                {on ? t('Equipped', 'Equipada') : has ? t('Equip', 'Equipar') : <span className="inline-flex items-center gap-0.5">{num(a.cost)}<GameIcon k="bolt" size={13} /></span>}
-              </div>
-            </button>
-          );
-        })}
+      <div className="mb-2 flex items-center gap-2 text-[15px] font-black tracking-wide uppercase"><GameIcon k="pixel" size={20} /> {tx(WEAPONS[PIXEL].name)}</div>
+      <div className="flex flex-col gap-3 rounded-2xl border-[3px] bg-[#232d6b] p-3 sm:flex-row sm:items-center" style={{ borderColor: cur.color }}>
+        <div className="flex items-center gap-3 sm:w-[240px]">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[#141a3f]" style={{ boxShadow: `0 0 20px ${cur.color}66 inset` }}><GameIcon k="pixel" size={46} /></div>
+          <div>
+            <div className="text-[18px] leading-tight font-black" style={{ color: cur.color }}>{tx(cur.name)}</div>
+            <div className="mt-1 flex gap-1">{BLASTER.map((b, i) => <span key={i} className="h-2.5 w-5 rounded-sm border border-black/30" style={{ background: i <= lvl ? b.color : 'rgba(255,255,255,.12)' }} />)}</div>
+            <div className="mt-1 text-[11.5px] font-semibold text-white/65">{tx(WEAPONS[PIXEL].desc)}</div>
+          </div>
+        </div>
+        <div className="grid flex-1 grid-cols-3 gap-2">
+          {stat(t('Damage %', 'Daño %'), `${cur.dmg}`, next && `${next.dmg}`)}
+          {stat(t('Magazine', 'Cargador'), `${cur.mag}`, next && `${next.mag}`)}
+          {stat(t('Reload', 'Recarga'), `${cur.reload}s`, next && `${next.reload}s`)}
+        </div>
+        <button type="button" disabled={!can} onClick={() => { client.upgradeBlaster(); sfx.buy(); }}
+          className={cn('rounded-2xl border-[3px] px-4 py-2.5 text-[15px] font-black transition-colors sm:w-[190px]', !next ? 'border-white/15 bg-white/10 text-white/60' : can ? 'border-[#ffd23f] bg-[#ffd23f] text-[#2a1d00] hover:brightness-105' : 'border-white/10 bg-white/5 text-white/50')}>
+          {!next ? t('Max tier', 'Nivel máximo') : (
+            <span className="flex flex-col items-center leading-tight">
+              <span>{t('Upgrade to', 'Mejorar a')} <span style={{ color: can ? '#2a1d00' : next.color }}>{tx(next.name)}</span></span>
+              <span className="mt-0.5 inline-flex items-center gap-0.5 text-[13px]">{num(next.cost)}<GameIcon k="bolt" size={13} /></span>
+            </span>
+          )}
+        </button>
       </div>
     </div>
   );
