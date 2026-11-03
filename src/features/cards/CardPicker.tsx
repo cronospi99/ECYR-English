@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import { TEACHERS } from './teachers';
 import { rankProgress, type CardPoints } from './api';
 import { RANK_LOOK, rankName } from './ranks';
-import { t } from '@/lib/gameLang';
 import { TeacherCardView } from './CardView';
 import { useGameFonts } from './fonts';
 
