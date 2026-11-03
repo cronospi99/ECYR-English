@@ -181,7 +181,7 @@ export class RaceGame {
     const rt = new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, samples: 4 });
     const c = new EffectComposer(this.renderer, rt);
     c.addPass(new RenderPass(this.scene, this.camera));
-    c.addPass(new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), 0.5, 0.35, 0.95));
+    c.addPass(new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), 0.5, 0.35, 1.1));
     c.addPass(new OutputPass());
     c.setPixelRatio(this.dpr);
     c.setSize(w, h);
@@ -203,11 +203,12 @@ export class RaceGame {
   async setToon(id: string) {
     this.toonId = id;
     try { localStorage.setItem('racers:toon', id); } catch { /* ignore */ }
-    const color = TOONS.find((t) => t.id === id)?.color ?? '#ff5a5a';
+    const info = TOONS.find((t) => t.id === id);
+    const color = info?.color ?? '#ff5a5a';
     const actor = await ToonActor.create(id);
     if (this.toonId !== id) { actor.dispose(); return; }
     this.view?.dispose();
-    const v = new KartView(color);
+    const v = new KartView(color, info?.name ?? '');
     v.setDriver(actor);
     this.view = v;
     this.scene.add(v.root);
@@ -357,6 +358,7 @@ export class RaceGame {
     this.sun.target.position.copy(k.pos);
     const water = this.scenery.water.material as THREE.MeshPhysicalMaterial;
     water.clearcoatRoughness = 0.05 + Math.sin(t / 900) * 0.03;
+    water.normalMap?.offset.set(t / 26000, t / 31000);
     if (this.state === 'race' || this.state === 'finish') engineSet(k.speed / KART.maxSpeed, this.state === 'race' ? inp.throttle : 0.4, !!k.drift, k.grounded, k.boostT > 0, true);
     if (this.composer) this.composer.render(dt); else this.renderer.render(this.scene, this.camera);
     this.adapt(dt, t);
@@ -425,7 +427,7 @@ export class RaceGame {
 
   /* ------------------------------------------------------------ events and effects */
   private c = new THREE.Color();
-  private v1 = new THREE.Vector3(); private v2 = new THREE.Vector3();
+  private v1 = new THREE.Vector3(); private v2 = new THREE.Vector3(); private v3 = new THREE.Vector3(); private v4 = new THREE.Vector3();
   private tips = [new THREE.Vector3(), new THREE.Vector3()];
   private handleEvents() {
     const k = this.kart;
@@ -514,6 +516,11 @@ export class RaceGame {
       const desired = this.v2.set(k.pos.x + Math.sin(a) * 5.4, k.pos.y + 1.7, k.pos.z + Math.cos(a) * 5.4);
       this.camPos.lerp(desired, 1 - Math.exp(-dt * 3));
       this.camLook.set(k.pos.x, k.pos.y + 0.75, k.pos.z);
+      // wide screens: frame the kart to the right of the menu panel
+      if (cam.aspect > 1.25) {
+        const r = this.v3.subVectors(this.camLook, this.camPos).cross(this.v4.set(0, 1, 0)).normalize();
+        this.camLook.addScaledVector(r, -Math.min(1.6, (cam.aspect - 1.1) * 1.6));
+      }
       this.fov += (52 - this.fov) * Math.min(1, dt * 3);
     } else if (this.state === 'finish') {
       this.menuA += dt * 0.35;
@@ -527,16 +534,16 @@ export class RaceGame {
       const cy = k.yaw + driftYaw * 0.5;
       const back = this.lookBack ? -1 : 1;
       const boost = k.boostT > 0 ? 1 : 0;
-      const distB = 3.9 + Math.min(0.9, k.speed * 0.02) + boost * 0.5;
-      const desired = this.v2.set(k.pos.x - Math.sin(cy) * distB * back, k.pos.y + 1.62 + (k.grounded ? 0 : 0.4), k.pos.z - Math.cos(cy) * distB * back);
+      const distB = 3.2 + Math.min(0.7, k.speed * 0.017) + boost * 0.45;
+      const desired = this.v2.set(k.pos.x - Math.sin(cy) * distB * back, k.pos.y + 1.42 + (k.grounded ? 0 : 0.35), k.pos.z - Math.cos(cy) * distB * back);
       const q = k.q;
       if (q && q.ground !== null) desired.y = Math.max(desired.y, q.ground + 1.2);
       const kk = this.state === 'countdown' ? 2.2 : 9;
       this.camPos.x += (desired.x - this.camPos.x) * Math.min(1, dt * kk);
       this.camPos.z += (desired.z - this.camPos.z) * Math.min(1, dt * kk);
       this.camPos.y += (desired.y - this.camPos.y) * Math.min(1, dt * (k.grounded ? 6 : 2.5));
-      this.camLook.copy(k.pos).addScaledVector(fwd, 3.0 * back).add(this.v2.set(0, 0.85, 0));
-      const tf = 60 + boost * 8 + Math.min(6, k.speed * 0.15);
+      this.camLook.copy(k.pos).addScaledVector(fwd, 2.6 * back).add(this.v2.set(0, 0.92, 0));
+      const tf = 58 + boost * 8 + Math.min(6, k.speed * 0.15);
       this.fov += (tf - this.fov) * Math.min(1, dt * 4);
     }
     cam.position.copy(this.camPos);

@@ -118,7 +118,6 @@ export class Track {
       const a = F[(i - 1 + N) % N].p, b = F[(i + 1) % N].p, fr = F[i];
       fr.t.set(b.x - a.x, 0, b.z - a.z).normalize();
       fr.r.crossVectors(fr.t, UP).normalize();
-      fr.slope = (b.y - a.y) / (2 * this.ds);
       fr.yaw = Math.atan2(fr.t.x, fr.t.z);
     }
     for (let i = 0; i < N; i++) {
@@ -132,8 +131,11 @@ export class Track {
     for (let i = 0; i < N; i++) {
       let c = 0;
       for (let k = -K; k <= K; k++) c += F[(i + k + N) % N].curv;
-      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -0.2, 0.2);
+      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -0.18, 0.18);
     }
+    // a banked road pivots on its low edge (raised, never sunk into the ground), then the slope
+    for (const f of F) f.p.y += Math.abs(f.bank) * (f.w + KERB);
+    for (let i = 0; i < N; i++) F[i].slope = (F[(i + 1) % N].p.y - F[(i - 1 + N) % N].p.y) / (2 * this.ds);
     // features snap to whole frames, so the meshes and the physics agree to the centimetre
     const at = (cp: number, off: number) => ((Math.round((this.cpS[cp] + off) / this.ds) * this.ds % len) + len) % len;
     const span = (l: number) => Math.max(1, Math.round(l / this.ds)) * this.ds;

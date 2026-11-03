@@ -33,7 +33,9 @@ class KGeo {
   build() { const g = mergeGeometries(this.parts, false); this.parts.forEach((p) => p.dispose()); this.parts = []; return g; }
 }
 
-const RB = (w: number, h: number, d: number, r: number) => new RoundedBoxGeometry(w, h, d, 3, r);
+/** Rounded box; small radii get fewer segments (a 3-segment box is ~1.7k vertices). */
+const RB = (w: number, h: number, d: number, r: number) => new RoundedBoxGeometry(w, h, d, r < 0.025 ? 1 : r < 0.06 ? 2 : 3, r);
+const BOX = new THREE.BoxGeometry(1, 1, 1);
 const SPH = new THREE.SphereGeometry(1, 28, 18);
 const CYL = new THREE.CylinderGeometry(1, 1, 1, 22);
 
@@ -49,6 +51,34 @@ function tyre(R: number, W: number) {
   return g;
 }
 
+/** A round number plate: white disc, coloured ring, the driver's initial. */
+function roundel(label: string, color: string) {
+  const cv = document.createElement('canvas');
+  cv.width = cv.height = 128;
+  const c = cv.getContext('2d')!;
+  c.beginPath(); c.arc(64, 64, 60, 0, 7); c.fillStyle = '#10204a'; c.fill();
+  c.beginPath(); c.arc(64, 64, 53, 0, 7); c.fillStyle = color; c.fill();
+  c.beginPath(); c.arc(64, 64, 44, 0, 7); c.fillStyle = '#ffffff'; c.fill();
+  c.fillStyle = '#10204a'; c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.font = 'italic 900 62px Inter, system-ui, sans-serif';
+  c.fillText((label || '★').slice(0, 1).toUpperCase(), 66, 69);
+  const t = new THREE.CanvasTexture(cv);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 4;
+  return t;
+}
+
+/** Radial falloff for the contact shadow. */
+function blobTex() {
+  const cv = document.createElement('canvas');
+  cv.width = cv.height = 64;
+  const c = cv.getContext('2d')!;
+  const g = c.createRadialGradient(32, 32, 4, 32, 32, 32);
+  g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.55, 'rgba(255,255,255,.6)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+  c.fillStyle = g; c.fillRect(0, 0, 64, 64);
+  return new THREE.CanvasTexture(cv);
+}
+
 export interface Wheel { pivot: THREE.Object3D; spin: THREE.Object3D; r: number; front: boolean }
 
 export class KartView {
@@ -58,6 +88,8 @@ export class KartView {
   private steering = new THREE.Group();
   readonly exhaust = [new THREE.Vector3(-0.2, 0.48, -1.2), new THREE.Vector3(0.2, 0.48, -1.2)];
   private tail: THREE.MeshBasicMaterial;
+  private decal: THREE.MeshStandardMaterial;
+  private blob: THREE.Mesh;
   private driver: ToonActor | null = null;
   private legLen = 0.4;
   private parts: Record<string, THREE.Object3D> = {};
@@ -67,40 +99,70 @@ export class KartView {
   face: Face = 'smile';
   cheer = false;
 
-  constructor(color: string) {
+  constructor(color: string, label = '') {
     this.mat = makeToonMaterial();
-    const paint = new THREE.Color(color), dark = '#1d2230', accent = new THREE.Color(color).offsetHSL(0, 0.05, 0.22), seat = '#2a2f3d';
+    const paint = new THREE.Color(color), dark = '#1d2230', accent = new THREE.Color(color).offsetHSL(0, 0.05, 0.22), deep = new THREE.Color(color).offsetHSL(0, 0, -0.16), seat = '#2a2f3d';
     const g = new KGeo();
+    // chassis tray, side pods with intakes and stripes
     g.add(RB(1.02, 0.1, 1.95, 0.04), '#2b303b', 'metal', [0, 0.17, 0]);
     for (const sx of [-1, 1]) {
       g.add(RB(0.34, 0.28, 1.08, 0.12), paint, 'paint', [sx * 0.44, 0.33, -0.02]);
+      g.add(RB(0.3, 0.08, 1.0, 0.035), deep, 'paint', [sx * 0.45, 0.215, -0.02]);
       g.add(RB(0.07, 0.02, 0.86, 0.008), '#ffffff', 'paint', [sx * 0.4, 0.473, -0.02]);
       g.add(RB(0.04, 0.02, 0.86, 0.008), accent, 'paint', [sx * 0.48, 0.47, -0.02]);
-      g.add(CYL, '#ffffff', 'paint', [sx * 0.615, 0.34, 0.05], [0, 0, Math.PI / 2], [0.12, 0.012, 0.12]);
-      g.add(CYL, accent, 'paint', [sx * 0.622, 0.34, 0.05], [0, 0, Math.PI / 2], [0.07, 0.008, 0.07]);
-      // front fenders and wing end plates
+      g.add(RB(0.2, 0.16, 0.06, 0.03), '#14161c', 'plastic', [sx * 0.47, 0.34, 0.52]);
+      for (const dy of [-0.04, 0, 0.04]) g.add(RB(0.17, 0.012, 0.02, 0.005), '#3a404c', 'metal', [sx * 0.47, 0.34 + dy, 0.555]);
+      // front suspension arm, fender and wing end plates
+      g.add(CYL, '#9aa1ab', 'metal', [sx * 0.43, 0.22, 0.62], [0, 0, Math.PI / 2], [0.025, 0.42, 0.025]);
+      g.add(CYL, '#9aa1ab', 'metal', [sx * 0.43, 0.27, 0.62], [0, 0, Math.PI / 2 + sx * 0.18], [0.018, 0.4, 0.018]);
       g.add(new THREE.TorusGeometry(0.29, 0.05, 10, 18, Math.PI), paint, 'paint', [sx * 0.64, 0.23, 0.62], [0, Math.PI / 2, 0]);
+      g.add(new THREE.TorusGeometry(0.29, 0.016, 6, 18, Math.PI), '#ffffff', 'paint', [sx * 0.64, 0.23, 0.62], [0, Math.PI / 2, 0], [1.02, 1.02, 1.6]);
       g.add(RB(0.05, 0.17, 0.32, 0.02), paint, 'paint', [sx * 0.63, 0.24, 1.02]);
+      // rear axle stub and fender lip over the big tyres
+      g.add(CYL, '#9aa1ab', 'metal', [sx * 0.5, 0.28, -0.62], [0, 0, Math.PI / 2], [0.035, 0.3, 0.035]);
+      g.add(RB(0.36, 0.05, 0.62, 0.02), paint, 'paint', [sx * 0.69, 0.6, -0.62]);
+      g.add(RB(0.37, 0.02, 0.2, 0.008), '#ffffff', 'paint', [sx * 0.69, 0.628, -0.62]);
+      g.add(RB(0.04, 0.1, 0.5, 0.015), deep, 'paint', [sx * 0.52, 0.55, -0.62]);
       // exhausts
       g.add(CYL, '#d7dce3', 'chrome', [sx * 0.2, 0.44, -1.0], [-1.3, 0, 0], [0.058, 0.44, 0.058]);
       g.add(CYL, '#30343c', 'metal', [sx * 0.2, 0.478, -1.205], [-1.3, 0, 0], [0.045, 0.02, 0.045]);
+      g.add(new THREE.TorusGeometry(0.058, 0.012, 6, 14), '#eef1f5', 'chrome', [sx * 0.2, 0.48, -1.21], [-1.3 + Math.PI / 2, 0, 0]);
       // wing struts and end plates
       g.add(RB(0.05, 0.38, 0.09, 0.015), dark, 'plastic', [sx * 0.3, 0.68, -0.9]);
-      g.add(RB(0.04, 0.24, 0.36, 0.015), dark, 'plastic', [sx * 0.6, 0.85, -0.92]);
+      g.add(RB(0.04, 0.26, 0.38, 0.015), paint, 'paint', [sx * 0.61, 0.85, -0.92]);
+      g.add(RB(0.045, 0.06, 0.39, 0.012), '#ffffff', 'paint', [sx * 0.61, 0.95, -0.92]);
+      // rear lamp housings (the lamps themselves glow, see below)
+      g.add(RB(0.2, 0.12, 0.05, 0.03), '#14161c', 'plastic', [sx * 0.34, 0.25, -1.1]);
     }
+    // nose with a white racing stripe, front bumper and splitter
     g.add(SPH, paint, 'paint', [0, 0.3, 0.6], [0, 0, 0], [0.35, 0.17, 0.58]);
     g.add(SPH, '#ffffff', 'paint', [0, 0.306, 0.61], [0, 0, 0], [0.12, 0.172, 0.56]);
+    g.add(SPH, '#14161c', 'plastic', [0, 0.25, 1.06], [0, 0, 0], [0.2, 0.06, 0.08]);
     g.add(RB(1.26, 0.07, 0.24, 0.03), dark, 'plastic', [0, 0.19, 1.03]);
+    g.add(RB(1.28, 0.02, 0.06, 0.01), accent, 'paint', [0, 0.226, 1.12]);
+    // cockpit tub, dash, seat with a painted headrest and a roll hoop
     g.add(RB(0.62, 0.25, 0.88, 0.09), dark, 'plastic', [0, 0.32, 0]);
+    g.add(RB(0.56, 0.12, 0.2, 0.05), paint, 'paint', [0, 0.46, 0.34], [0.35, 0, 0]);
     g.add(RB(0.5, 0.5, 0.12, 0.05), seat, 'fabric', [0, 0.57, -0.36], [-0.24, 0, 0]);
+    g.add(RB(0.46, 0.22, 0.13, 0.05), paint, 'paint', [0, 0.82, -0.43], [-0.24, 0, 0]);
     g.add(RB(0.48, 0.1, 0.44, 0.04), seat, 'fabric', [0, 0.38, -0.14]);
-    g.add(new THREE.TorusGeometry(0.21, 0.035, 8, 20, Math.PI), '#d7dce3', 'chrome', [0, 0.66, -0.45]);
+    g.add(new THREE.TorusGeometry(0.21, 0.035, 8, 20, Math.PI), '#d7dce3', 'chrome', [0, 0.71, -0.53]);
     g.add(CYL, '#9aa1ab', 'metal', [0, 0.47, 0.36], [0.95, 0, 0], [0.025, 0.36, 0.025]);
-    g.add(RB(0.58, 0.31, 0.38, 0.06), '#3a404c', 'metal', [0, 0.36, -0.73]);
-    for (const x of [-0.16, 0, 0.16]) g.add(CYL, '#cfd5dd', 'chrome', [x, 0.56, -0.74], [0, 0, 0], [0.05, 0.1, 0.05]);
-    g.add(RB(0.3, 0.12, 0.2, 0.04), paint, 'paint', [0, 0.62, -0.62]);
+    // engine: painted cover with vents, chrome intakes, block underneath
+    g.add(RB(0.58, 0.26, 0.38, 0.06), '#3a404c', 'metal', [0, 0.33, -0.75]);
+    g.add(RB(0.62, 0.2, 0.42, 0.08), paint, 'paint', [0, 0.5, -0.76]);
+    for (const x of [-0.18, 0.18]) for (const dz of [-0.08, 0, 0.08]) g.add(RB(0.14, 0.012, 0.035, 0.006), '#14161c', 'plastic', [x, 0.603, -0.76 + dz]);
+    for (const x of [-0.07, 0.07]) {
+      g.add(CYL, '#cfd5dd', 'chrome', [x, 0.63, -0.72], [0, 0, 0], [0.05, 0.1, 0.05]);
+      g.add(CYL, '#14161c', 'plastic', [x, 0.682, -0.72], [0, 0, 0], [0.036, 0.008, 0.036]);
+    }
     g.add(RB(1.2, 0.05, 0.32, 0.02), paint, 'paint', [0, 0.88, -0.93], [0.12, 0, 0]);
-    g.add(RB(1.12, 0.1, 0.13, 0.04), dark, 'plastic', [0, 0.2, -1.03]);
+    g.add(RB(1.12, 0.012, 0.08, 0.006), '#ffffff', 'paint', [0, 0.907, -0.9], [0.12, 0, 0]);
+    g.add(RB(1.12, 0.03, 0.08, 0.01), dark, 'plastic', [0, 0.84, -1.07], [0.5, 0, 0]);
+    // rear bumper in the body colour with a diffuser below
+    g.add(RB(1.12, 0.12, 0.13, 0.045), paint, 'paint', [0, 0.2, -1.03]);
+    g.add(RB(0.8, 0.06, 0.14, 0.02), dark, 'plastic', [0, 0.12, -1.02]);
+    for (const x of [-0.24, -0.08, 0.08, 0.24]) g.add(RB(0.015, 0.07, 0.12, 0.005), '#3a404c', 'metal', [x, 0.12, -1.04]);
     const shell = new THREE.Mesh(g.build(), this.mat);
     shell.castShadow = true;
     this.body.add(shell);
@@ -117,26 +179,45 @@ export class KartView {
     this.steering.rotation.x = -0.95;
     this.body.add(this.steering);
 
-    // lights
+    // lights: headlights, and two round tail lamps that flare when braking
     const lights = new THREE.Mesh(
       mergeGeometries([new THREE.SphereGeometry(0.05, 12, 8).translate(-0.16, 0.33, 1.08), new THREE.SphereGeometry(0.05, 12, 8).translate(0.16, 0.33, 1.08)]),
       new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.5, 1.2), toneMapped: false }),
     );
     this.body.add(lights);
     this.tail = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.8, 0.05, 0.05), toneMapped: false });
-    const tl = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.05, 0.02), this.tail);
-    tl.position.set(0, 0.27, -1.1);
+    const tl = new THREE.Mesh(mergeGeometries([-0.34, 0.34].flatMap((x) => [-0.045, 0.045].map((dx) => new THREE.CylinderGeometry(0.04, 0.04, 0.03, 14).rotateX(Math.PI / 2).translate(x + dx, 0.25, -1.13)))), this.tail);
     this.body.add(tl);
 
-    // wheels
+    // number roundels with the driver's initial (nose, both pods, rear)
+    this.decal = new THREE.MeshStandardMaterial({ map: roundel(label, color), transparent: true, alphaTest: 0.4, roughness: 0.25, polygonOffset: true, polygonOffsetFactor: -2 });
+    const disc = new THREE.PlaneGeometry(1, 1);
+    for (const [p, r, s] of [
+      [[0, 0.483, 0.6], [-Math.PI / 2 + 0.06, 0, 0], 0.2],
+      [[-0.614, 0.33, 0.06], [0, -Math.PI / 2, 0], 0.18],
+      [[0.614, 0.33, 0.06], [0, Math.PI / 2, 0], 0.18],
+      [[0, 0.5, -0.975], [0, Math.PI, 0], 0.15],
+    ] as [[number, number, number], [number, number, number], number][]) {
+      const m = new THREE.Mesh(disc, this.decal);
+      m.position.set(...p); m.rotation.set(...r); m.scale.setScalar(s);
+      this.body.add(m);
+    }
+
+    // wheels: rubber tyres with a fine tread and a white sidewall band, chrome rims
     for (const [x, y, z, r, w, front] of [[-0.64, 0.22, 0.62, 0.22, 0.2, true], [0.64, 0.22, 0.62, 0.22, 0.2, true], [-0.69, 0.28, -0.62, 0.28, 0.3, false], [0.69, 0.28, -0.62, 0.28, 0.3, false]] as const) {
       const wg = new KGeo();
       const sx = Math.sign(x);
       wg.add(tyre(r, w), '#202228', 'rubber', [0, 0, 0]);
+      wg.add(new THREE.TorusGeometry(r * 0.8, r * 0.035, 6, 32), '#e9ecef', 'rubber', [sx * w * 0.5, 0, 0], [0, Math.PI / 2, 0]);
       wg.add(CYL, '#dfe3ea', 'chrome', [0, 0, 0], [0, 0, Math.PI / 2], [r * 0.6, w * 0.82, r * 0.6]);
-      wg.add(CYL, paint, 'paint', [sx * w * 0.43, 0, 0], [0, 0, Math.PI / 2], [r * 0.2, 0.03, r * 0.2]);
-      for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2; wg.add(RB(0.02, r * 0.5, r * 0.12, 0.01), '#aab1bb', 'metal', [sx * w * 0.38, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
-      for (let k = 0; k < 16; k++) { const a = (k / 16) * Math.PI * 2; wg.add(RB(w * 0.9, 0.03, 0.05, 0.01), '#26282e', 'rubber', [0, Math.cos(a) * (r + 0.005), Math.sin(a) * (r + 0.005)], [a, 0, 0]); }
+      wg.add(CYL, '#8d949e', 'metal', [sx * w * 0.42, 0, 0], [0, 0, Math.PI / 2], [r * 0.5, 0.02, r * 0.5]);
+      wg.add(CYL, paint, 'paint', [sx * w * 0.45, 0, 0], [0, 0, Math.PI / 2], [r * 0.2, 0.03, r * 0.2]);
+      for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2; wg.add(RB(0.02, r * 0.5, r * 0.12, 0.01), '#cfd5dd', 'chrome', [sx * w * 0.44, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
+      const nT = front ? 22 : 26;
+      for (let k = 0; k < nT; k++) {
+        const a = (k / nT) * Math.PI * 2;
+        for (const side of [-1, 1]) wg.add(BOX, '#26282e', 'rubber', [side * w * 0.22, Math.cos(a + side * 0.07) * (r + 0.004), Math.sin(a + side * 0.07) * (r + 0.004)], [a + side * 0.07, side * 0.35, 0], [w * 0.4, 0.016, 0.045]);
+      }
       const pivot = new THREE.Group(), spin = new THREE.Group();
       pivot.position.set(x, y, z);
       const m = new THREE.Mesh(wg.build(), this.mat);
@@ -146,6 +227,11 @@ export class KartView {
       this.wheels.push({ pivot, spin, r, front });
     }
     this.root.add(this.body);
+
+    // soft contact shadow that stays on the ground (grounds the kart even with blurry shadow maps)
+    this.blob = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 2.7).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: blobTex(), color: 0x000000, transparent: true, opacity: 0.5, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 }));
+    this.blob.renderOrder = 1;
+    this.root.add(this.blob);
   }
 
   /** Seat a teacher in the kart. */
@@ -200,6 +286,13 @@ export class KartView {
     const rumble = k.grounded && k.speed > 4 ? (k.surface === 'kerb' ? Math.sin(t * 75) * 0.012 : k.surface === 'grass' ? (Math.random() - 0.5) * 0.03 : 0) : 0;
     this.body.position.y = rumble + this.squash * 0.3;
     this.body.scale.set(1 - this.squash * 0.25, 1 + this.squash, 1 - this.squash * 0.25);
+    // contact shadow on the ground under the kart (fades and spreads with height)
+    const h = k.q && k.q.ground !== null ? Math.max(0, k.pos.y - k.q.ground) : 8;
+    this.blob.position.y = 0.03 - h;
+    const bo = Math.max(0, 1 - h / 5);
+    (this.blob.material as THREE.MeshBasicMaterial).opacity = 0.5 * bo;
+    this.blob.scale.setScalar(1 + h * 0.12);
+    this.blob.visible = bo > 0.02;
     this.body.rotation.set(this.pitch, this.driftYaw + (k.drift ? Math.sin(t * 22) * 0.012 : 0), this.roll + this.trickA * Math.PI * 2, 'YXZ');
 
     // wheels and steering wheel
@@ -248,6 +341,8 @@ export class KartView {
     this.driver?.object.removeFromParent();
     this.root.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !o.name.startsWith('toon')) m.geometry.dispose(); });
     this.mat.dispose();
+    this.decal.map?.dispose(); this.decal.dispose();
+    const bm = this.blob.material as THREE.MeshBasicMaterial; bm.map?.dispose(); bm.dispose();
     this.root.removeFromParent();
   }
 }

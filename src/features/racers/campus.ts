@@ -76,6 +76,26 @@ function textTex(lines: string[], bg: [string, string], fg = '#ffffff', w = 1024
   return t;
 }
 
+/** Tileable ripple normals (sum of waves with whole periods across the tile). */
+function rippleTex() {
+  const N = 128, cv = document.createElement('canvas');
+  cv.width = cv.height = N;
+  const c = cv.getContext('2d')!, img = c.createImageData(N, N);
+  const H = (x: number, y: number) => {
+    const u = (x / N) * Math.PI * 2, v = (y / N) * Math.PI * 2;
+    return Math.sin(u * 3 + v * 2) * 0.5 + Math.sin(u * -2 + v * 5 + 1.3) * 0.35 + Math.sin(u * 7 - v * 3 + 0.7) * 0.18 + Math.sin(u * 5 + v * 9 + 2.1) * 0.1;
+  };
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const dx = (H(x + 1, y) - H(x - 1, y)) * 6, dy = (H(x, y + 1) - H(x, y - 1)) * 6;
+    const l = Math.hypot(dx, dy, 1), o = (y * N + x) * 4;
+    img.data[o] = (-dx / l * 0.5 + 0.5) * 255; img.data[o + 1] = (-dy / l * 0.5 + 0.5) * 255; img.data[o + 2] = (1 / l * 0.5 + 0.5) * 255; img.data[o + 3] = 255;
+  }
+  c.putImageData(img, 0, 0);
+  const t = new THREE.CanvasTexture(cv);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  return t;
+}
+
 export interface Scenery {
   group: THREE.Group;
   /** The three countdown lamps on the start gantry. */
@@ -145,9 +165,14 @@ export function buildCampus(track: Track): Scenery {
   }
 
   /* ---------------- water ---------------- */
-  const waterMat = new THREE.MeshPhysicalMaterial({ color: 0x2c9fc0, roughness: 0.06, metalness: 0, transparent: true, opacity: 0.88, clearcoat: 1, clearcoatRoughness: 0.05 });
+  const waterMat = new THREE.MeshPhysicalMaterial({ color: 0x2c9fc0, roughness: 0.06, metalness: 0, transparent: true, opacity: 0.88, clearcoat: 1, clearcoatRoughness: 0.05, normalMap: rippleTex(), normalScale: new THREE.Vector2(0.12, 0.12) });
   const wgeo = new THREE.CircleGeometry(1, 48);
   wgeo.rotateX(-Math.PI / 2);
+  {
+    // uv in metres / 6 so the ripples keep their size on the stretched disc
+    const uv = wgeo.getAttribute('uv') as THREE.BufferAttribute, P = wgeo.getAttribute('position');
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, (P.getX(i) * pond.b * 1.2) / 6, (P.getZ(i) * pond.a * 1.35) / 6);
+  }
   const water = new THREE.Mesh(wgeo, waterMat);
   water.scale.set(pond.b * 1.2, 1, pond.a * 1.35);
   water.rotation.y = Math.atan2(pond.t.x, pond.t.z);
@@ -445,7 +470,7 @@ export function buildCampus(track: Track): Scenery {
   return {
     group, lamps, water, waterY,
     dispose() {
-      group.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.geometry.dispose(); const mm = m.material as THREE.Material; mm.dispose(); } });
+      group.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.geometry.dispose(); const mm = m.material as THREE.MeshStandardMaterial; mm.map?.dispose(); mm.normalMap?.dispose(); mm.dispose(); } });
     },
   };
 }

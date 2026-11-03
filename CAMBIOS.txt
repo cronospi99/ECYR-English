@@ -531,6 +531,33 @@ G1m. CLASS WARS · KNOCKBACK: NUEVAS REGLAS Y BLÁSTER DE PÍXELES
   botón para mejorarlo; la barra inferior muestra nivel, munición y barra
   de recarga (en el celular, sobre el botón de poder).
 
+G1o. ENGLISH RACERS · PULIDO DE MODELOS Y DETALLES
+- Corrección de precisión: en las curvas peraltadas el borde interior de la
+  pista quedaba por debajo del terreno y el pasto "atravesaba" el asfalto en
+  dientes de sierra (se veía en la curva de la salida y en la chicana del
+  colegio). Ahora el peralte gira sobre el borde bajo: la pista sube por el
+  lado exterior y nunca se hunde en el terreno. La física usa los mismos
+  datos, así que el kart sigue la superficie exacta (3 vueltas con piloto
+  automático sin caídas ni choques, mismos tiempos).
+- Kart más detallado: placa con la inicial del profe en la nariz, los dos
+  costados y atrás; tomas de aire en los pontones; brazos de suspensión y
+  ejes; guardabarros traseros pintados; tapa del motor pintada con rejillas;
+  parachoques trasero del color del kart con difusor y dos pares de luces
+  redondas (se encienden más al frenar); alerón con franja blanca y placas
+  laterales pintadas; cabecera del asiento pintada; puntas de escape con
+  aro cromado.
+- Llantas nuevas: banda blanca en el costado, labrado fino en V y rines
+  cromados con tapa. Se aligeró la geometría (antes las llantas pesaban unos
+  300.000 vértices; ahora el kart completo con el profe pesa ~106.000).
+- Sombra de contacto suave bajo el kart que se queda en el piso al saltar
+  (se aclara y se agranda con la altura): el kart ya no parece flotar.
+- Cámara de carrera más cerca y más baja: el kart se ve más grande.
+  En el menú, en pantallas anchas, el kart queda a la derecha del panel.
+- Rampa del salto rediseñada: tablones de acero azul con flechas amarillas
+  (antes era un zigzag naranja muy fuerte).
+- Agua con ondas animadas (mapa de normales que se desplaza).
+- Líneas de velocidad más finas y solo en los bordes de la pantalla.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

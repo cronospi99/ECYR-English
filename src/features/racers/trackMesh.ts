@@ -61,7 +61,7 @@ export function asphaltTexture() {
 
 function checkerTexture() {
   return canvasTex(256, 32, (c) => {
-    for (let x = 0; x < 16; x++) for (let y = 0; y < 2; y++) { c.fillStyle = (x + y) % 2 ? '#111' : '#fafafa'; c.fillRect(x * 16, y * 16, 16, 16); }
+    for (let x = 0; x < 16; x++) for (let y = 0; y < 2; y++) { c.fillStyle = (x + y) % 2 ? '#15161a' : '#e9e9e6'; c.fillRect(x * 16, y * 16, 16, 16); }
   });
 }
 
@@ -160,9 +160,11 @@ export function buildTrackMeshes(track: Track, world: THREE.Material): TrackMesh
       // deck with chevrons pointing forward (yellow on orange)
       for (let j = 0; j < SEG; j++) {
         const u0 = -1 + (2 * j) / SEG, u1 = -1 + (2 * (j + 1)) / SEG, um = Math.abs((u0 + u1) / 2);
-        const chev = ((k - i0) / 3 + um * 1.1) % 1 < 0.45;
+        const ph = ((k - i0) / 4 + um * 0.9) % 1;
+        const chev = um < 0.7 && ph < 0.32;
         const edge = j === 0 || j === SEG - 1;
-        r.quad(side(a, u0 * W(a), ha + 0.01, p0), side(a, u1 * W(a), ha + 0.01, p1), side(b, u1 * W(b), hb + 0.01, p2), side(b, u0 * W(b), hb + 0.01, p3), edge ? ((k % 2) ? 0x22252d : 0xffc61a) : chev ? 0xffd23f : 0xe9781c);
+        const plank = (k - i0) % 2 ? 0x46536b : 0x3f4b62;
+        r.quad(side(a, u0 * W(a), ha + 0.01, p0), side(a, u1 * W(a), ha + 0.01, p1), side(b, u1 * W(b), hb + 0.01, p2), side(b, u0 * W(b), hb + 0.01, p3), edge ? ((k % 2) ? 0x22252d : 0xffc61a) : chev ? 0xffd23f : plank);
       }
       for (const sg of [-1, 1]) {
         r.quad(side(a, sg * W(a), 0, p0), side(b, sg * W(b), 0, p1), side(b, sg * W(b), hb + 0.01, p2), side(a, sg * W(a), ha + 0.01, p3), 0x3a3f4b);

@@ -162,13 +162,13 @@ export class SpeedLines {
         void main(){
           vec2 p = (vUv - vec2(0.5, 0.46)) * vec2(uAspect, 1.0);
           float a = atan(p.y, p.x), r = length(p);
-          float id = floor(a * 70.0 / 6.2831);
-          float lane = h(id);
-          float t = fract(uTime * (1.4 + lane * 1.8) + lane * 7.0);
-          float seg = smoothstep(t - 0.18, t, r * 0.9) * (1.0 - smoothstep(t, t + 0.02, r * 0.9));
-          float thin = 1.0 - smoothstep(0.0, 0.2, abs(fract(a * 70.0 / 6.2831) - 0.5) * 2.0 - 0.7);
-          float mask = smoothstep(0.42, 0.85, r) * step(0.6, lane);
-          float al = seg * thin * mask * uK * 0.3;
+          float L = 150.0, f = a * L / 6.2831;
+          float id = floor(f), lane = h(id);
+          float t = fract(uTime * (1.1 + lane * 1.6) + lane * 7.0) * 1.3;
+          float seg = smoothstep(t - 0.22, t, r) * (1.0 - smoothstep(t, t + 0.015, r));
+          float thin = 1.0 - smoothstep(0.08, 0.32, abs(fract(f) - 0.5));
+          float mask = smoothstep(0.5, 0.95, r) * step(0.72, lane);
+          float al = seg * thin * mask * uK * 0.24;
           gl_FragColor = vec4(1.0, 1.0, 1.0, al);
         }`,
       transparent: true, depthTest: false, depthWrite: false,
