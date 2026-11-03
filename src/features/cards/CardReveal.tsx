@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { TEACHERS } from './teachers';
 import { rankOf, rankProgress, RANKS } from './api';
-import { RANK_LOOK } from './ranks';
+import { RANK_LOOK, rankName } from './ranks';
+import { t } from '@/lib/gameLang';
 import { RankBar, RankEmblem, TeacherCardView } from './CardView';
 import { playRankUp, playTick } from './sfx';
 import { useGameFonts } from './fonts';
@@ -79,7 +80,7 @@ export function CardReveal({ cardId, points, before, onDone }: { cardId: string;
           />
         ))}
       <div className="ecyr-card-kicker" style={{ background: L.accent }}>
-        {up ? '¡Subiste de rango!' : 'Tu carta'}
+        {up ? t('Rank up!', '¡Subiste de rango!') : t('Your card', 'Tu carta')}
       </div>
       <div className="ecyr-card-flip" key={rank}>
         <TeacherCardView card={card} points={points} width={w} />
@@ -127,7 +128,7 @@ export function CardGain({ cardId, before, gained, note, onOpen }: { cardId: str
         </div>
         <RankBar points={shown} height={14} />
         <div style={{ font: "700 12px 'Space Mono', monospace", color: 'rgba(242,239,230,0.7)' }}>
-          ★ {shown} · {p.next ? `faltan ${p.left} para ${RANK_LOOK[p.next].label}` : '¡Rango máximo!'}
+          ★ {shown} · {p.next ? t(`${p.left} more for ${rankName(p.next)}`, `faltan ${p.left} para ${rankName(p.next)}`) : t('Top rank!', '¡Rango máximo!')}
         </div>
         {note && <div style={{ fontSize: 12, color: 'rgba(242,239,230,0.6)' }}>{note}</div>}
       </div>

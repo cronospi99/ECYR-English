@@ -463,6 +463,51 @@ G1l. MANTENIMIENTO
   marcaba npm audit (0 vulnerabilidades). El generador de PDF de tareas
   funciona igual.
 
+G1n. ENGLISH RACERS · FASE 1: PROTOTIPO DE MANEJO (ruta /racers)
+- Juego nuevo de carreras de karts en 3D con los profes (estilo de juego de
+  karts arcade; personajes, pistas y objetos propios). Entrada destacada en
+  Juegos › En vivo con tu clase.
+- Pista "Campus ECYR" (~1 km, 3 vueltas): recta de salida con gradas y
+  público, pórtico con semáforo de salida, curva peraltada, recta con
+  flechas de turbo, horquilla alrededor de una fuente, chicana junto al
+  colegio, colina con cresta y salto en rampa sobre un estanque (si no
+  llegas, caes al agua y un segundo después vuelves a la pista). Escenario
+  hecho en código: edificios con torre de reloj, cancha de fútbol y de
+  baloncesto, bus escolar, árboles, faroles, banderas, vallas, carteles,
+  colinas y nubes.
+- Manejo arcade a 120 pasos por segundo: aceleración, freno y reversa,
+  bordillos, pasto que frena, muros que rebotan (se roza sin perder casi
+  velocidad; solo un choque de frente frena), peralte que pega el kart a la
+  curva.
+- Derrape: botón para saltar y, manteniéndolo mientras giras, el kart
+  derrapa y carga chispas azul → naranja → morado; al soltar da un
+  mini-turbo de 0,55 / 0,95 / 1,45 s. Truco en el aire (rampas) = turbo al
+  aterrizar. Salida perfecta si aceleras justo al final de la cuenta; si
+  aceleras demasiado pronto, el kart se cala.
+- Kart propio hecho en código con el mismo material "juguete de vinilo" de
+  los personajes, del color de cada profe: llantas grandes atrás, alerón,
+  escapes con llamas de turbo, volante que gira; el profe va sentado,
+  manos al volante, se inclina en las curvas y cambia de cara (risa,
+  sorpresa al volar, feliz con turbo, celebra en la meta).
+- Efectos: chispas de colores, humo del derrape, marcas de llanta, polvo en
+  el pasto, salpicaduras, llamas, resplandor (bloom), líneas de velocidad,
+  vibración de cámara. Cámara de persecución con mirar atrás (C).
+- Sonido sintetizado: motor con cambios, chirrido al derrapar, turbos,
+  saltos, choques, cuenta regresiva, vueltas y música propia (más rápida en
+  la última vuelta).
+- Pantalla: vuelta, tiempo total y de vuelta, mejor vuelta, velocidad,
+  nivel de turbo, minimapa, avisos (¡Última vuelta!, ¡Vuelta rápida!,
+  ¡Sentido contrario!). Resultados con tiempos por vuelta y récord guardado
+  en el dispositivo. Pausa con reiniciar y volver al menú.
+- Controles: teclado (WASD/flechas, Espacio/Shift derrape, C, R, Esc),
+  control de consola, y en celular botones táctiles: flechas para girar y
+  botón de ACELERAR (como se pidió), DERRAPE y FRENO; aviso para girar el
+  celular a horizontal. Calidad automática: si el equipo no da, baja el
+  resplandor, luego la resolución y luego las sombras.
+- Probado con piloto automático (3 vueltas de ~35 s, sin caídas) y pruebas
+  del derrape, el truco, los muros y el pasto. Falta probar el manejo y el
+  rendimiento en celulares reales.
+
 G1m. CLASS WARS · KNOCKBACK: NUEVAS REGLAS Y BLÁSTER DE PÍXELES
 - Ya no se puede bajar de una plataforma con S / flecha abajo (ni con el
   joystick hacia abajo): para bajar hay que caminar hasta el borde y salir.
@@ -485,6 +530,93 @@ G1m. CLASS WARS · KNOCKBACK: NUEVAS REGLAS Y BLÁSTER DE PÍXELES
   en este modo. La tienda (B) muestra el bláster con sus estadísticas y el
   botón para mejorarlo; la barra inferior muestra nivel, munición y barra
   de recarga (en el celular, sobre el botón de poder).
+
+G1o. ENGLISH RACERS · PULIDO DE MODELOS Y DETALLES
+- Corrección de precisión: en las curvas peraltadas el borde interior de la
+  pista quedaba por debajo del terreno y el pasto "atravesaba" el asfalto en
+  dientes de sierra (se veía en la curva de la salida y en la chicana del
+  colegio). Ahora el peralte gira sobre el borde bajo: la pista sube por el
+  lado exterior y nunca se hunde en el terreno. La física usa los mismos
+  datos, así que el kart sigue la superficie exacta (3 vueltas con piloto
+  automático sin caídas ni choques, mismos tiempos).
+- Kart más detallado: placa con la inicial del profe en la nariz, los dos
+  costados y atrás; tomas de aire en los pontones; brazos de suspensión y
+  ejes; guardabarros traseros pintados; tapa del motor pintada con rejillas;
+  parachoques trasero del color del kart con difusor y dos pares de luces
+  redondas (se encienden más al frenar); alerón con franja blanca y placas
+  laterales pintadas; cabecera del asiento pintada; puntas de escape con
+  aro cromado.
+- Llantas nuevas: banda blanca en el costado, labrado fino en V y rines
+  cromados con tapa. Se aligeró la geometría (antes las llantas pesaban unos
+  300.000 vértices; ahora el kart completo con el profe pesa ~106.000).
+- Sombra de contacto suave bajo el kart que se queda en el piso al saltar
+  (se aclara y se agranda con la altura): el kart ya no parece flotar.
+- Cámara de carrera más cerca y más baja: el kart se ve más grande.
+  En el menú, en pantallas anchas, el kart queda a la derecha del panel.
+- Rampa del salto rediseñada: tablones de acero azul con flechas amarillas
+  (antes era un zigzag naranja muy fuerte).
+- Agua con ondas animadas (mapa de normales que se desplaza).
+- Líneas de velocidad más finas y solo en los bordes de la pantalla.
+
+G1p. PROFES EN 3D · VERSIÓN 3 (English Racers, English Run y galería)
+- Cada profe se revisó contra su descripción (tipo de pelo y color, gafas,
+  barba, ropa, accesorios, estatura y contextura) y se corrigió lo que no
+  se notaba: las ojeras de Liliana ahora sí se ven; el afro de Gabriel es
+  redondo, con rizos en espiral; el pelo plateado de Dager se ve gris y
+  peinado (antes parecía un gorro blanco); el corte deportivo de Freddy
+  es corto y texturizado (antes era una cresta).
+- Femenino y masculino bien marcados: ellas con pestañas largas y
+  delineado, cejas finas y arqueadas, labios rosados, nariz más pequeña,
+  mentón más fino, cintura y hombros más estrechos, y en las blusas cuello
+  redondeado, moño y mangas abullonadas. Ellos con cejas gruesas y rectas,
+  mandíbula más cuadrada, cuello más ancho, pecho en V y menos rubor.
+- Pelo con mucho más detalle: mechones con surcos y brillo en todos los
+  peinados (siguen la dirección del peinado: raya al lado, peinado hacia
+  atrás, hacia la cola o el moño), pelo largo con más mechones, capa
+  interior y variación de tono; ondas reales en el pelo ondulado; rizos en
+  espiral; cola de caballo más llena.
+- Gafas corregidas: monturas finas con la forma de cada estilo (redondas,
+  rectangulares u "ojo de gato" con las puntas hacia arriba), puente,
+  plaquetas, bisagras y patillas que llegan hasta detrás de las orejas, y
+  lentes transparentes con reflejo (antes eran aros gruesos sin vidrio y
+  con patillas cortas al aire).
+- Sin "dientes de sierra": las barbas, la barba de pocos días y los bordes
+  del pelo tenían escalones; ahora la malla es más fina, el borde entra
+  suave y la barba de pocos días va pintada sobre la piel.
+- Aretes de argolla dorados donde la descripción los menciona.
+
+G1q. TÍTULOS NUEVOS Y BORDES SUAVES (English Racers y English Run)
+- Título nuevo en los dos juegos: cinta "ENGLISH" inclinada y la palabra
+  grande en 3D (relieve, contorno, degradado brillante tipo plástico), un
+  destello que la recorre cada pocos segundos y líneas de velocidad; en
+  Racers lleva además una franja de cuadros de meta. Es vectorial: se ve
+  nítido en cualquier pantalla. En pantallas bajas (celular de lado) el
+  título se achica y se ocultan los textos de ayuda para que el botón de
+  empezar siempre quepa.
+- Bordes sin "dientes de sierra": English Run perdía el antialiasing cada
+  vez que el escenario usaba resplandor (Neón, Tejados…); ahora usa 4×
+  MSAA también ahí. Ambos juegos pueden renderizar hasta 2× de densidad en
+  pantallas nítidas (la calidad automática la baja si el equipo no da) y
+  las sombras usan mapas de 2048 también en el celular (antes 1024, con
+  bordes escalonados).
+- Las flechas de la rampa de Racers ahora son una textura suave (antes eran
+  bloques de colores con bordes escalonados).
+
+G1r. JUEGOS EN INGLÉS POR DEFECTO (con opción de español)
+- Todos los juegos abren en inglés y tienen el selector EN | ES: Class Wars
+  (incluido el editor de preguntas del profe), Impostor (antes abría en
+  español), Pass the Doodle, You Draw, English Run (menú, carreras,
+  mensajes, pausa, resultados) y English Racers (menú, controles,
+  semáforo, mensajes, pausa, resultados).
+- Una sola elección para todos: si se cambia a español en un juego (o en
+  Juegos › En vivo con tu clase, donde también está el selector), los demás
+  juegos abren en español; se guarda en el dispositivo.
+- También siguen el idioma de los juegos las tarjetas de En vivo con tu
+  clase, la página de Cartas (rangos Bronze/Silver/Gold/Diamond o Bronce/
+  Plata/Oro/Diamante, avisos y mensajes de guardado) y la revelación de
+  cartas al final de una partida.
+- El resto de la aplicación (menú lateral, lecciones, catálogo de juegos de
+  práctica) sigue en español.
 
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en

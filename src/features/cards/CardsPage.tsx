@@ -10,7 +10,9 @@ import { useAuth } from '@/store/auth';
 import { useClass } from '@/features/teacher/useClass';
 import { TEACHERS, type TeacherCard } from './teachers';
 import { RANK_AT, RANKS, loadStudentsCardPoints, rankOf, rankProgress, useMyCardPoints, type CardPoints, type CardRank, type StudentCardRow } from './api';
-import { RANK_LOOK } from './ranks';
+import { RANK_LOOK, rankName } from './ranks';
+import { t, useGameLang } from '@/lib/gameLang';
+import { GameLangToggle } from '@/components/GameLangToggle';
 import { RankBar, RankEmblem, TeacherCardView } from './CardView';
 import { useGameFonts } from './fonts';
 
@@ -21,16 +23,17 @@ export default function CardsPage() {
   useGameFonts();
   const isTeacher = useAuth((s) => s.profile?.role === 'teacher');
   const [tab, setTab] = useState<'mine' | 'class'>('mine');
+  useGameLang();
   return (
-    <Page title="Cartas" subtitle="Los 25 personajes de Impostor y Class Wars. Todas son tuyas: cada carta sube de rango con los puntos que ganas jugando con ella." wide>
+    <Page title={t('Cards', 'Cartas')} subtitle={t('The 25 characters of Impostor and Class Wars. They are all yours: each card ranks up with the points you win playing with it.', 'Los 25 personajes de Impostor y Class Wars. Todas son tuyas: cada carta sube de rango con los puntos que ganas jugando con ella.')} actions={<GameLangToggle dark={false} />} wide>
       {isTeacher && (
         <Segmented
           className="mb-5"
           value={tab}
           onChange={setTab}
           options={[
-            { value: 'mine', label: 'Mis cartas' },
-            { value: 'class', label: 'Mi clase' },
+            { value: 'mine', label: t('My cards', 'Mis cartas') },
+            { value: 'class', label: t('My class', 'Mi clase') },
           ]}
         />
       )}
@@ -67,7 +70,7 @@ function Album() {
       <div className="mb-5 grid gap-3 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,2fr)]">
         <Card className="relative overflow-hidden p-5">
           <div className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--yellow)_35%,transparent),transparent_70%)]" />
-          <div className="text-subhead text-label-2 font-medium">Puntos de carta</div>
+          <div className="text-subhead text-label-2 font-medium">{t('Card points', 'Puntos de carta')}</div>
           <div className="flex items-end gap-3">
             <div className="text-[44px] leading-none font-extrabold tabular-nums">{total}</div>
             {mine.loading && <Spinner className="mb-2 h-5 w-5" />}
@@ -76,11 +79,11 @@ function Album() {
             <button type="button" onClick={() => setZoom(best.c)} className="text-subhead text-label-2 mt-2 flex items-center gap-2 text-left">
               <RankEmblem rank={rankOf(best.p)} size={20} />
               <span>
-                Tu mejor carta: <b className="text-label">{best.c.name}</b> · {best.p} pts
+                {t('Your best card', 'Tu mejor carta')}: <b className="text-label">{best.c.name}</b> · {best.p} pts
               </span>
             </button>
           ) : (
-            <p className="text-subhead text-label-2 mt-2">Juega Impostor o Class Wars y elige la carta que quieres entrenar.</p>
+            <p className="text-subhead text-label-2 mt-2">{t('Play Impostor or Class Wars and pick the card you want to train.', 'Juega Impostor o Class Wars y elige la carta que quieres entrenar.')}</p>
           )}
           <div className="mt-4 flex flex-wrap gap-2">
             <Link to="/impostor" className="bg-[color-mix(in_srgb,var(--orange)_14%,transparent)] text-ink-orange inline-flex h-9 items-center gap-1.5 rounded-full px-3.5 text-[14px] font-semibold">
@@ -103,8 +106,8 @@ function Album() {
               <RankEmblem rank={r} size={34} />
               <div className="min-w-0">
                 <div className="text-[26px] leading-none font-extrabold tabular-nums">{counts[r]}</div>
-                <div className="text-subhead text-label-2 font-medium">{RANK_LOOK[r].label}</div>
-                <div className="text-label-3 text-[12px] font-medium sm:mt-2">{r === 'bronze' ? 'desde 0' : `desde ${RANK_AT[r]} pts`}</div>
+                <div className="text-subhead text-label-2 font-medium">{rankName(r)}</div>
+                <div className="text-label-3 text-[12px] font-medium sm:mt-2">{r === 'bronze' ? t('from 0', 'desde 0') : `${t('from', 'desde')} ${RANK_AT[r]} pts`}</div>
               </div>
             </button>
           ))}
@@ -121,11 +124,11 @@ function Album() {
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
           <Chip active={filter === 'all'} onClick={() => setFilter('all')}>
-            Todas · 25
+            {t('All', 'Todas')} · 25
           </Chip>
           {RANKS.map((r) => (
             <Chip key={r} active={filter === r} onClick={() => setFilter(r)}>
-              {RANK_LOOK[r].label} · {counts[r]}
+              {rankName(r)} · {counts[r]}
             </Chip>
           ))}
         </div>
@@ -136,20 +139,20 @@ function Album() {
           onChange={setSort}
           options={[
             { value: 'num', label: 'Nº' },
-            { value: 'points', label: 'Puntos' },
-            { value: 'name', label: 'Nombre' },
+            { value: 'points', label: t('Points', 'Puntos') },
+            { value: 'name', label: t('Name', 'Nombre') },
           ]}
         />
       </div>
 
       <div ref={grid} className="grid justify-center gap-3 sm:gap-4" style={{ gridTemplateColumns: `repeat(auto-fill, ${cw}px)` }}>
         {list.map(({ c, i, p }) => (
-          <button key={c.id} type="button" onClick={() => setZoom(c)} className="rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-4" aria-label={`${c.name}: ${RANK_LOOK[rankOf(p)].label}, ${p} puntos`}>
+          <button key={c.id} type="button" onClick={() => setZoom(c)} className="rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-4" aria-label={`${c.name}: ${rankName(rankOf(p))}, ${p} puntos`}>
             <TeacherCardView card={c} points={p} width={cw} index={i} animate={false} tilt />
           </button>
         ))}
       </div>
-      {!list.length && <EmptyState icon={<RankEmblem rank={filter === 'all' ? 'bronze' : filter} size={44} />} title="Ninguna carta en este rango" body="Sigue jugando: los puntos suben el rango de la carta que entrenas." />}
+      {!list.length && <EmptyState icon={<RankEmblem rank={filter === 'all' ? 'bronze' : filter} size={44} />} title={t('No cards at this rank', 'Ninguna carta en este rango')} body={t('Keep playing: points rank up the card you are training.', 'Sigue jugando: los puntos suben el rango de la carta que entrenas.')} />}
 
       {zoom && <CardZoom card={zoom} points={pts} onClose={() => setZoom(null)} />}
     </>
@@ -216,7 +219,7 @@ function CardZoom({ card, points, onClose }: { card: TeacherCard; points: CardPo
             </div>
           </div>
           <p className="text-footnote text-label-2 mt-2 text-[13px]">
-            {prog.next ? `Faltan ${prog.left} puntos para ${RANK_LOOK[prog.next].label}.` : '¡Rango máximo! Esta carta brilla como un diamante.'}
+            {prog.next ? t(`${prog.left} more points for ${rankName(prog.next)}.`, `Faltan ${prog.left} puntos para ${rankName(prog.next)}.`) : t('Top rank! This card shines like a diamond.', '¡Rango máximo! Esta carta brilla como un diamante.')}
           </p>
           <div className="mt-4 grid grid-cols-4 gap-1.5">
             {RANKS.map((r) => (
@@ -281,7 +284,7 @@ function ClassCards() {
       )}
       {!list.length ? (
         <Card>
-          <EmptyState icon={<Users size={40} />} title="Aún no hay estudiantes" body="Cuando tus estudiantes jueguen Impostor o Class Wars con su cuenta, aquí verás el rango de sus cartas." />
+          <EmptyState icon={<Users size={40} />} title={t('No students yet', 'Aún no hay estudiantes')} body={t('When your students play Impostor or Class Wars with their account, you will see their card ranks here.', 'Cuando tus estudiantes jueguen Impostor o Class Wars con su cuenta, aquí verás el rango de sus cartas.')} />
         </Card>
       ) : (
         <Card className="divide-separator divide-y overflow-hidden">
@@ -291,7 +294,7 @@ function ClassCards() {
               <div className="min-w-0 flex-1">
                 <div className="truncate text-[16px] font-semibold">{s.name}</div>
                 <div className="text-label-2 text-[13px]">
-                  ★ {s.total} pts · {s.games} {s.games === 1 ? 'partida' : 'partidas'}
+                  ★ {s.total} pts · {s.games} {s.games === 1 ? t('game', 'partida') : t('games', 'partidas')}
                 </div>
               </div>
               <div className="flex shrink-0 items-center gap-1.5">
@@ -305,7 +308,7 @@ function ClassCards() {
                     );
                   })
                 ) : (
-                  <span className="text-label-3 text-[13px]">Sin partidas</span>
+                  <span className="text-label-3 text-[13px]">{t('No games yet', 'Sin partidas')}</span>
                 )}
                 {s.top[0] && <RankEmblem rank={rankOf(s.top[0].points)} size={26} />}
               </div>

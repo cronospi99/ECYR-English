@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { TEACHERS } from './teachers';
 import { rankProgress, type CardPoints } from './api';
-import { RANK_LOOK } from './ranks';
+import { RANK_LOOK, rankName } from './ranks';
 import { TeacherCardView } from './CardView';
 import { useGameFonts } from './fonts';
 
@@ -78,7 +78,7 @@ export function CardPicker({ value, points, onPick, onClose, title = 'Carta que 
       </div>
       {cur && (
         <div style={{ flex: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, padding: '10px 16px calc(10px + env(safe-area-inset-bottom))', borderTop: `3px solid ${K}`, background: '#1b2023', font: "700 13px 'Space Mono', monospace" }}>
-          <span style={{ color: RANK_LOOK[cp.rank].accent }}>{cur.name} · {RANK_LOOK[cp.rank].label} · ★ {points[value] ?? 0}</span>
+          <span style={{ color: RANK_LOOK[cp.rank].accent }}>{cur.name} · {rankName(cp.rank)} · ★ {points[value] ?? 0}</span>
           <button
             type="button"
             onClick={onClose}

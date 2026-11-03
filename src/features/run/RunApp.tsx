@@ -7,6 +7,9 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Coins, Home, Music, Pause, Play, RotateCcw, Trophy, Volume2, VolumeX, MessageCircle, X, Check } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
+import { GameTitle } from '@/components/brand/GameTitle';
+import { GameLangToggle } from '@/components/GameLangToggle';
+import { num, t, useGameLang } from '@/lib/gameLang';
 import { RunGame, type Hud, type Toast } from './engine';
 import { POWER_COLORS, type PowerKind } from './gfx';
 import { prefs, setPref, unlock } from './audio';
@@ -27,7 +30,7 @@ const CSS = `
 @keyframes er-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 `;
 
-const POWER_ES: Record<PowerKind, [string, string]> = { magnet: ['Imán', 'M'], double: ['x2', '2'], shield: ['Escudo', 'S'], jump: ['Súper salto', 'J'] };
+const POWER_NAME = (k: PowerKind) => ({ magnet: t('Magnet', 'Imán'), double: 'x2', shield: t('Shield', 'Escudo'), jump: t('Super jump', 'Súper salto') })[k];
 
 const initialToon = () => { try { const v = localStorage.getItem('run:toon'); if (v && TOONS.some((t) => t.id === v)) return v; } catch { /* ignore */ } return TOONS[Math.floor(Math.random() * TOONS.length)].id; };
 const initialTheme = (): ThemeId => { try { const v = localStorage.getItem('run:theme'); if (v && v in THEMES) return v as ThemeId; } catch { /* ignore */ } return 'city'; };
@@ -63,6 +66,7 @@ export default function RunApp() {
   const [level, setLevel] = useState<RunLevel>(initialLevel);
   const [theme, setTheme] = useState<ThemeId>(initialTheme);
   const [, force] = useState(0);
+  const lang = useGameLang();
   const [err, setErr] = useState(false);
 
   useEffect(() => {
@@ -100,38 +104,39 @@ export default function RunApp() {
       {(st === 'menu' || st === 'loading') && (
         <div className="pointer-events-none absolute inset-0 flex flex-col p-3 pt-[max(12px,env(safe-area-inset-top))] pb-[max(14px,env(safe-area-inset-bottom))] sm:p-5">
           <div className="pointer-events-auto flex items-center gap-2">
-            <Link to="/games" className="grid h-11 w-11 place-items-center rounded-2xl bg-[#10204a]/60 text-white hover:bg-[#10204a]/80" aria-label="Volver"><ArrowLeft /></Link>
+            <Link to="/games" className="grid h-11 w-11 place-items-center rounded-2xl bg-[#10204a]/60 text-white hover:bg-[#10204a]/80" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
             <div className="ml-auto flex gap-1.5">
-              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label="Música"><Music size={19} /></Toggle>
-              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label="Efectos">{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
-              <Toggle on={prefs.voice} onClick={() => { setPref('voice', !prefs.voice); force((n) => n + 1); }} label="Voz en inglés"><MessageCircle size={19} /></Toggle>
+              <GameLangToggle />
+              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label={t('Music', 'Música')}><Music size={19} /></Toggle>
+              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label={t('Sound effects', 'Efectos')}>{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
+              <Toggle on={prefs.voice} onClick={() => { setPref('voice', !prefs.voice); force((n) => n + 1); }} label={t('English voice', 'Voz en inglés')}><MessageCircle size={19} /></Toggle>
             </div>
           </div>
           <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 16 }} className="mt-2 text-center sm:mt-4 sm:text-left">
-            <div className="er-logo text-[58px] sm:text-[92px]">ENGLISH<br />RUN</div>
+            <GameTitle word="RUN" theme="run" className="mx-auto block h-auto w-[190px] sm:mx-0 sm:w-[285px] [@media(max-height:520px)]:w-[120px]" />
           </motion.div>
           <div className="mt-auto flex flex-col items-center gap-3 sm:items-start">
             <div className="pointer-events-auto er-panel flex w-full max-w-[460px] flex-col gap-3 p-3">
               <div className="flex items-center gap-2">
-                <button type="button" onClick={() => pickToon(-1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label="Anterior"><ChevronLeft /></button>
+                <button type="button" onClick={() => pickToon(-1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Previous', 'Anterior')}><ChevronLeft /></button>
                 <div className="min-w-0 flex-1 text-center">
-                  <div className="text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Corredor</div>
+                  <div className="text-[12px] font-extrabold tracking-wide text-white/60 uppercase">{t('Runner', 'Corredor')}</div>
                   <div className="flex items-center justify-center gap-2 truncate text-[22px] font-black"><span className="h-3.5 w-3.5 shrink-0 rounded-full border border-black/30" style={{ background: cur.color }} />{cur.name}</div>
                 </div>
-                <button type="button" onClick={() => pickToon(1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label="Siguiente"><ChevronRight /></button>
+                <button type="button" onClick={() => pickToon(1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Next', 'Siguiente')}><ChevronRight /></button>
               </div>
               <div>
-                <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Escenario</div>
+                <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">{t('World', 'Escenario')}</div>
                 <div className="grid grid-cols-4 gap-1.5">
                   {THEME_LIST.map((th) => (
                     <button key={th.id} type="button" onClick={() => { setTheme(th.id); game?.setTheme(th.id); }} aria-pressed={theme === th.id}
                       className={cn('flex h-[54px] items-end justify-center rounded-xl pb-1 text-[12.5px] font-black shadow-[inset_0_-22px_14px_-10px_rgba(0,0,0,.55)] transition-transform', theme === th.id ? 'scale-[1.04] ring-3 ring-[#ffd23f]' : 'opacity-85 hover:opacity-100')}
-                      style={{ background: THEME_BG[th.id] }}>{th.name}</button>
+                      style={{ background: THEME_BG[th.id] }}>{t(th.nameEn, th.name)}</button>
                   ))}
                 </div>
               </div>
               <div>
-                <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Nivel de las preguntas</div>
+                <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">{t('Question level', 'Nivel de las preguntas')}</div>
                 <div className="flex gap-1.5">
                   {RUN_LEVELS.map((l) => (
                     <button key={l.id} type="button" onClick={() => setLevel(l.id)} className={cn('h-10 flex-1 rounded-xl text-[14px] font-black', level === l.id ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/10 hover:bg-white/18')}>{l.label}</button>
@@ -139,15 +144,17 @@ export default function RunApp() {
                 </div>
               </div>
               <Btn tone="green" className="h-16 w-full text-[26px]" disabled={st === 'loading'} onClick={run}>
-                {st === 'loading' ? 'Cargando…' : <><Play size={26} fill="currentColor" /> ¡CORRER!</>}
+                {st === 'loading' ? t('Loading…', 'Cargando…') : <><Play size={26} fill="currentColor" /> {t('RUN!', '¡CORRER!')}</>}
               </Btn>
               <div className="flex items-center justify-between text-[14px] font-extrabold text-white/85">
-                <span className="flex items-center gap-1.5"><Trophy size={16} className="text-[#ffd23f]" /> Récord {(hud?.best ?? 0).toLocaleString('es-CO')}</span>
-                <span className="flex items-center gap-1.5"><Coins size={16} className="text-[#ffd23f]" /> {(game?.totalCoins ?? 0).toLocaleString('es-CO')}</span>
+                <span className="flex items-center gap-1.5"><Trophy size={16} className="text-[#ffd23f]" /> {t('Record', 'Récord')} {num(hud?.best ?? 0)}</span>
+                <span className="flex items-center gap-1.5"><Coins size={16} className="text-[#ffd23f]" /> {num(game?.totalCoins ?? 0)}</span>
               </div>
             </div>
-            <div className="er-panel pointer-events-auto max-w-[460px] px-3 py-2 text-[13px] font-semibold text-white/85">
-              <b>Cómo se juega:</b> desliza (o usa las flechas) ← → para cambiar de carril, ↑ para saltar, ↓ para deslizarte. Pasa por la respuesta correcta de cada puerta para subir el multiplicador. Sube a los buses por las rampas.
+            <div className="er-panel pointer-events-auto max-w-[460px] px-3 py-2 text-[13px] font-semibold text-white/85 [@media(max-height:520px)]:hidden">
+              {lang === 'en'
+                ? <><b>How to play:</b> swipe (or use the arrows) ← → to change lanes, ↑ to jump, ↓ to slide. Run through the right answer at each gate to raise your multiplier. Climb onto the buses using the ramps.</>
+                : <><b>Cómo se juega:</b> desliza (o usa las flechas) ← → para cambiar de carril, ↑ para saltar, ↓ para deslizarte. Pasa por la respuesta correcta de cada puerta para subir el multiplicador. Sube a los buses por las rampas.</>}
             </div>
           </div>
         </div>
@@ -158,7 +165,7 @@ export default function RunApp() {
         <div className="pointer-events-none absolute inset-0 p-3 pt-[max(10px,env(safe-area-inset-top))] sm:p-4">
           <div className="flex items-start gap-2">
             <div>
-              <div className="er-num text-[34px] leading-none sm:text-[44px]">{hud.score.toLocaleString('es-CO')}</div>
+              <div className="er-num text-[34px] leading-none sm:text-[44px]">{num(hud.score)}</div>
               <div className="mt-1 flex items-center gap-1.5">
                 <motion.span key={hud.mult} initial={{ scale: 1.6 }} animate={{ scale: 1 }} className={cn('rounded-xl px-2.5 py-0.5 text-[17px] font-black shadow-[0_3px_0_rgba(0,0,0,.25)]', hud.mult > 1 ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/80 text-[#10204a]')}>x{hud.mult}</motion.span>
                 <span className="rounded-xl bg-[#10204a]/55 px-2 py-0.5 text-[13px] font-extrabold">{hud.dist} m</span>
@@ -178,7 +185,7 @@ export default function RunApp() {
             {hud.gate && st === 'run' && (
               <motion.div key={hud.gate.q} initial={{ y: -30, opacity: 0, scale: 0.9 }} animate={{ y: 0, opacity: 1, scale: 1 }} exit={{ y: -20, opacity: 0 }}
                 className="mx-auto mt-2 w-full max-w-[560px] rounded-[22px] bg-white/95 p-2 text-center text-[#10204a] shadow-[0_8px_0_rgba(16,32,74,.35)]">
-                <div className="text-[12px] font-extrabold tracking-wide text-[#00897b] uppercase">Corre por la respuesta correcta · {Math.max(0, Math.round(hud.gate.dist))} m</div>
+                <div className="text-[12px] font-extrabold tracking-wide text-[#00897b] uppercase">{t('Run through the right answer', 'Corre por la respuesta correcta')} · {Math.max(0, Math.round(hud.gate.dist))} m</div>
                 <div className="text-[21px] leading-tight font-black sm:text-[25px]">{hud.gate.q}</div>
                 <div className="mt-1.5 grid grid-cols-3 gap-1.5">
                   {hud.gate.opts.map((o, i) => (
@@ -208,14 +215,14 @@ export default function RunApp() {
             {hud.powers.map((p) => {
               const k = p.left / p.total;
               return (
-                <div key={p.kind} className="relative grid h-14 w-14 place-items-center" title={POWER_ES[p.kind][0]}>
+                <div key={p.kind} className="relative grid h-14 w-14 place-items-center" title={POWER_NAME(p.kind)}>
                   <svg viewBox="0 0 56 56" className="absolute inset-0 -rotate-90"><circle cx="28" cy="28" r="24" fill="rgba(16,32,74,.6)" stroke="rgba(255,255,255,.25)" strokeWidth="5" /><circle cx="28" cy="28" r="24" fill="none" stroke={POWER_COLORS[p.kind]} strokeWidth="5" strokeDasharray={`${k * 150.8} 150.8`} strokeLinecap="round" /></svg>
-                  <span className="relative text-[12px] font-black">{POWER_ES[p.kind][0]}</span>
+                  <span className="relative text-[12px] font-black">{POWER_NAME(p.kind)}</span>
                 </div>
               );
             })}
           </div>
-          {hud.chasing && st === 'run' && <div className="absolute right-3 bottom-[max(14px,env(safe-area-inset-bottom))] rounded-2xl bg-[#ff4757] px-3 py-1.5 text-[14px] font-black" style={{ animation: 'er-pulse .6s infinite' }}>¡Cuidado! Otro tropiezo y te atrapan</div>}
+          {hud.chasing && st === 'run' && <div className="absolute right-3 bottom-[max(14px,env(safe-area-inset-bottom))] rounded-2xl bg-[#ff4757] px-3 py-1.5 text-[14px] font-black" style={{ animation: 'er-pulse .6s infinite' }}>{t('Careful! One more trip and you are caught', '¡Cuidado! Otro tropiezo y te atrapan')}</div>}
         </div>
       )}
 
@@ -223,9 +230,10 @@ export default function RunApp() {
       {st === 'paused' && (
         <div className="absolute inset-0 grid place-items-center bg-[#10204a]/55 p-4 backdrop-blur-sm">
           <div className="er-panel flex w-full max-w-[340px] flex-col items-center gap-3 p-5">
-            <div className="er-logo text-[44px]">PAUSA</div>
-            <Btn tone="green" className="h-14 w-full text-[20px]" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> Seguir</Btn>
-            <Btn tone="ghost" className="w-full" onClick={() => game?.toMenu()}><Home size={18} /> Menú</Btn>
+            <div className="er-logo text-[44px]">{t('PAUSED', 'PAUSA')}</div>
+            <Btn tone="green" className="h-14 w-full text-[20px]" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> {t('Resume', 'Seguir')}</Btn>
+            <GameLangToggle />
+            <Btn tone="ghost" className="w-full" onClick={() => game?.toMenu()}><Home size={18} /> {t('Menu', 'Menú')}</Btn>
           </div>
         </div>
       )}
@@ -237,19 +245,19 @@ export default function RunApp() {
       {st === 'over' && hud && (
         <div className="absolute inset-0 flex items-end justify-center overflow-y-auto bg-gradient-to-t from-[#10204a]/85 via-[#10204a]/35 to-transparent p-3 pb-[max(14px,env(safe-area-inset-bottom))] sm:items-center sm:justify-end sm:p-6">
           <motion.div initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="er-panel flex w-full max-w-[440px] flex-col gap-3 p-4">
-            {hud.newBest && <motion.div initial={{ scale: 0.3, rotate: -10 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 12 }} className="self-center rounded-2xl bg-[#ffd23f] px-4 py-1 text-[20px] font-black text-[#2a1d00]">¡NUEVO RÉCORD!</motion.div>}
+            {hud.newBest && <motion.div initial={{ scale: 0.3, rotate: -10 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 12 }} className="self-center rounded-2xl bg-[#ffd23f] px-4 py-1 text-[20px] font-black text-[#2a1d00]">{t('NEW RECORD!', '¡NUEVO RÉCORD!')}</motion.div>}
             <div className="text-center">
-              <div className="text-[13px] font-extrabold tracking-wide text-white/60 uppercase">Puntaje</div>
-              <div className="er-num text-[54px] leading-none">{hud.score.toLocaleString('es-CO')}</div>
+              <div className="text-[13px] font-extrabold tracking-wide text-white/60 uppercase">{t('Score', 'Puntaje')}</div>
+              <div className="er-num text-[54px] leading-none">{num(hud.score)}</div>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center">
-              <Stat label="Récord" value={hud.best.toLocaleString('es-CO')} />
-              <Stat label="Monedas" value={String(hud.coins)} />
-              <Stat label="Distancia" value={`${hud.dist} m`} />
+              <Stat label={t('Record', 'Récord')} value={num(hud.best)} />
+              <Stat label={t('Coins', 'Monedas')} value={String(hud.coins)} />
+              <Stat label={t('Distance', 'Distancia')} value={`${hud.dist} m`} />
             </div>
             {hud.answers.length > 0 && (
               <div>
-                <div className="mb-1 text-[13px] font-extrabold tracking-wide text-white/60 uppercase">Tus respuestas ({hud.answers.filter((a) => a.ok).length}/{hud.answers.length})</div>
+                <div className="mb-1 text-[13px] font-extrabold tracking-wide text-white/60 uppercase">{t('Your answers', 'Tus respuestas')} ({hud.answers.filter((a) => a.ok).length}/{hud.answers.length})</div>
                 <div className="flex max-h-[30vh] flex-col gap-1 overflow-y-auto">
                   {hud.answers.map((a, i) => (
                     <div key={i} className={cn('flex items-center gap-2 rounded-xl px-2 py-1.5 text-[14px]', a.ok ? 'bg-[#2fd27a]/20' : 'bg-[#ff4757]/20')}>
@@ -263,8 +271,8 @@ export default function RunApp() {
               </div>
             )}
             <div className="grid grid-cols-2 gap-2">
-              <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={18} /> Menú</Btn>
-              <Btn tone="green" onClick={() => { unlock(); game?.start(); }}><RotateCcw size={18} /> Otra vez</Btn>
+              <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={18} /> {t('Menu', 'Menú')}</Btn>
+              <Btn tone="green" onClick={() => { unlock(); game?.start(); }}><RotateCcw size={18} /> {t('Again', 'Otra vez')}</Btn>
             </div>
           </motion.div>
         </div>
@@ -285,8 +293,8 @@ function Revive({ hud, onAnswer }: { hud: Hud; onAnswer: (i: number) => void }) 
   return (
     <div className="absolute inset-0 grid place-items-center bg-[#10204a]/60 p-4 backdrop-blur-sm">
       <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 18 }} className="er-panel flex w-full max-w-[480px] flex-col gap-3 p-4 text-center">
-        <div className="er-logo text-[34px]">¡SIGUE CORRIENDO!</div>
-        <div className="text-[14px] font-bold text-white/75">Responde bien para revivir ({hud.revivesLeft} {hud.revivesLeft === 1 ? 'oportunidad' : 'oportunidades'})</div>
+        <div className="er-logo text-[34px]">{t('KEEP RUNNING!', '¡SIGUE CORRIENDO!')}</div>
+        <div className="text-[14px] font-bold text-white/75">{t('Answer correctly to come back', 'Responde bien para revivir')} ({hud.revivesLeft} {hud.revivesLeft === 1 ? t('chance', 'oportunidad') : t('chances', 'oportunidades')})</div>
         <div className="rounded-2xl bg-white px-3 py-3 text-[24px] font-black text-[#10204a]">{r.q}</div>
         <div className="grid gap-2">
           {r.opts.map((o, i) => <Btn key={i} tone="white" className="h-14 text-[19px]" onClick={() => onAnswer(i)}>{o}</Btn>)}

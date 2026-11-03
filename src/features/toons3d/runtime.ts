@@ -43,6 +43,17 @@ export function makeToonMaterial(extra?: (sh: THREE.WebGLProgramParametersWithUn
   return m;
 }
 
+/** Glasses lenses: a faint tint with sharp reflections, so the eyes stay visible behind them. */
+export function makeLensMaterial(extra?: (sh: THREE.WebGLProgramParametersWithUniforms) => void) {
+  const m = new THREE.MeshPhysicalMaterial({ color: 0xe8f4ff, roughness: 0.03, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.02, transparent: true, opacity: 0.26, depthWrite: false, envMapIntensity: 1.8, side: THREE.DoubleSide });
+  if (extra) { m.onBeforeCompile = extra; m.customProgramCacheKey = () => 'lens+'; }
+  return m;
+}
+/** The lens meshes are the only see-through parts of a model. */
+export const isLens = (o: THREE.Object3D) => o.name.startsWith('lens');
+let lens: THREE.MeshPhysicalMaterial | null = null;
+export function lensMaterial() { if (!lens) lens = makeLensMaterial(); return lens; }
+
 let shared: THREE.MeshPhysicalMaterial | null = null;
 /** The shared material of every toon (soft PBR with per-part roughness). */
 export function toonMaterial(): THREE.MeshPhysicalMaterial {
@@ -57,7 +68,7 @@ export function loadToonGltf(id: string): Promise<GLTF> {
   let p = cache.get(id);
   if (!p) {
     p = loader.loadAsync(toonUrl(id)).then((g) => {
-      g.scene.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.material = toonMaterial(); m.castShadow = true; } });
+      g.scene.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { const l = isLens(m); m.material = l ? lensMaterial() : toonMaterial(); m.castShadow = !l; m.renderOrder = l ? 2 : 0; } });
       return g;
     });
     p.catch(() => cache.delete(id)); // let a later call retry

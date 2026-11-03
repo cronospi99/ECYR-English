@@ -2,6 +2,7 @@
    src/content: unit tests, vocabulary, exams, workshops, visual vocabulary) and the teacher's own
    sets (Supabase table class_wars_sets, migration 20). */
 import { supabase } from '@/lib/supabase';
+import { t } from '../i18n';
 
 export interface Q { q: string; o: string[]; a: number }
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const;
@@ -80,7 +81,7 @@ export async function listSets(): Promise<QSet[]> {
 }
 
 export async function saveSet(s: { id?: string | null; title: string; level: string; items: Q[] }): Promise<string> {
-  if (!supabase) throw new Error('Supabase no está configurado.');
+  if (!supabase) throw new Error(t('Supabase is not configured.', 'Supabase no está configurado.'));
   const { data, error } = await supabase.rpc('save_class_wars_set', {
     p_id: s.id ?? null,
     p_title: s.title.trim().slice(0, SET_LIMITS.title),
@@ -107,12 +108,12 @@ export function normaliseItems(raw: unknown): Q[] {
 }
 
 export function validItem(i: Q): string | null {
-  if (!i.q.trim()) return 'Falta la pregunta';
-  if (i.q.length > SET_LIMITS.q) return 'Pregunta demasiado larga';
+  if (!i.q.trim()) return t('The question is missing', 'Falta la pregunta');
+  if (i.q.length > SET_LIMITS.q) return t('The question is too long', 'Pregunta demasiado larga');
   const filled = i.o.filter((o) => o.trim());
-  if (filled.length < 2) return 'Necesita al menos 2 opciones';
-  if (!i.o[i.a]?.trim()) return 'Marca la respuesta correcta';
-  if (i.o.some((o) => o.length > SET_LIMITS.o)) return 'Opción demasiado larga';
+  if (filled.length < 2) return t('It needs at least 2 options', 'Necesita al menos 2 opciones');
+  if (!i.o[i.a]?.trim()) return t('Mark the right answer', 'Marca la respuesta correcta');
+  if (i.o.some((o) => o.length > SET_LIMITS.o)) return t('An option is too long', 'Opción demasiado larga');
   return null;
 }
 

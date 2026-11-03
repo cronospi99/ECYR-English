@@ -12,6 +12,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/store/auth';
 import { TEACHERS } from './teachers';
+import { t } from '@/lib/gameLang';
 
 export type CardRank = 'bronze' | 'silver' | 'gold' | 'diamond';
 
@@ -129,9 +130,10 @@ export function setLastCard(id: string) {
 const missing = (e: { code?: string; message?: string } | null) =>
   !!e && (e.code === '42P01' || e.code === 'PGRST205' || e.code === 'PGRST202' || e.code === '42883' || /could not find|does not exist|game_card_points|award_game_points/i.test(e.message ?? ''));
 
-export const NOT_READY_MSG = 'El guardado de cartas aún no está activado (falta la migración 19 en Supabase). Por ahora los puntos se ven solo en este dispositivo.';
-const OFFLINE_MSG = 'Sin conexión con la cuenta: los puntos se guardan solo en este dispositivo.';
-const GUEST_MSG = 'Juegas como invitado: tus puntos se guardan solo en este dispositivo. Entra con tu cuenta ECYR para guardarlos.';
+// notices in the games language (read when the points load)
+const notReadyMsg = () => t('Card saving is not switched on yet (migration 19 is missing in Supabase). For now the points only show on this device.', 'El guardado de cartas aún no está activado (falta la migración 19 en Supabase). Por ahora los puntos se ven solo en este dispositivo.');
+const offlineMsg = () => t('No connection to your account: points are saved on this device only.', 'Sin conexión con la cuenta: los puntos se guardan solo en este dispositivo.');
+const guestMsg = () => t('You are playing as a guest: your points are saved on this device only. Sign in with your ECYR account to keep them.', 'Juegas como invitado: tus puntos se guardan solo en este dispositivo. Entra con tu cuenta ECYR para guardarlos.');
 
 export interface CardPointsState {
   points: CardPoints;
@@ -144,11 +146,11 @@ export interface CardPointsState {
 /** The signed-in player's points per card (falls back to the local ledger). */
 export async function loadMyCardPoints(): Promise<CardPointsState> {
   const uid = useAuth.getState().session?.user.id;
-  if (!uid) return { points: localCardPoints('guest'), source: 'local', notice: GUEST_MSG };
-  if (!supabase) return { points: localCardPoints(uid), source: 'local', notice: OFFLINE_MSG };
+  if (!uid) return { points: localCardPoints('guest'), source: 'local', notice: guestMsg() };
+  if (!supabase) return { points: localCardPoints(uid), source: 'local', notice: offlineMsg() };
   try {
     const { data, error } = await supabase.from('game_card_points').select('card_id,points').eq('user_id', uid);
-    if (error) return { points: localCardPoints(uid), source: 'local', notice: missing(error) ? NOT_READY_MSG : OFFLINE_MSG };
+    if (error) return { points: localCardPoints(uid), source: 'local', notice: missing(error) ? notReadyMsg() : offlineMsg() };
     const points: CardPoints = {};
     for (const r of (data ?? []) as { card_id: string; points: number }[]) if (isCardId(r.card_id)) points[r.card_id] = r.points;
     // The cloud is the truth: refresh the mirror (keeps the counted match ids).
@@ -156,7 +158,7 @@ export async function loadMyCardPoints(): Promise<CardPointsState> {
     writeLedger(uid, { points, counted: l.counted });
     return { points, source: 'cloud' };
   } catch {
-    return { points: localCardPoints(uid), source: 'local', notice: OFFLINE_MSG };
+    return { points: localCardPoints(uid), source: 'local', notice: offlineMsg() };
   }
 }
 
@@ -164,13 +166,13 @@ export interface StudentCardRow { user_id: string; card_id: string; points: numb
 
 /** Teacher: card points of their students (RLS returns only them, plus the teacher's own). */
 export async function loadStudentsCardPoints(): Promise<{ rows: StudentCardRow[]; notice?: string }> {
-  if (!supabase || !useAuth.getState().session) return { rows: [], notice: OFFLINE_MSG };
+  if (!supabase || !useAuth.getState().session) return { rows: [], notice: offlineMsg() };
   try {
     const { data, error } = await supabase.from('game_card_points').select('user_id,card_id,points,games').order('points', { ascending: false }).limit(2000);
-    if (error) return { rows: [], notice: missing(error) ? NOT_READY_MSG : OFFLINE_MSG };
+    if (error) return { rows: [], notice: missing(error) ? notReadyMsg() : offlineMsg() };
     return { rows: ((data ?? []) as StudentCardRow[]).filter((r) => isCardId(r.card_id)) };
   } catch {
-    return { rows: [], notice: OFFLINE_MSG };
+    return { rows: [], notice: offlineMsg() };
   }
 }
 
@@ -229,14 +231,14 @@ export async function awardGamePoints(game: 'classwars' | 'impostor', matchId: s
     .map((a) => ({ user_id: a.userId, card_id: a.cardId, points: Math.min(AWARD_CAP[game], Math.max(0, Math.round(a.points))) }));
   const fail = (reason: string, message: string): AwardResult => ({ ok: false, saved: [], skipped: guests, reason, message });
   if (!send.length) return { ok: true, saved: [], skipped: guests, message: guests.length ? 'Nadie con cuenta ECYR en esta partida: los puntos no se guardan.' : 'Sin puntos que guardar.' };
-  if (!supabase) return fail('offline', 'Sin conexión con Supabase: los puntos de las cartas no se guardaron.');
+  if (!supabase) return fail('offline', t('No connection to Supabase: the card points were not saved.', 'Sin conexión con Supabase: los puntos de las cartas no se guardaron.'));
   const auth = useAuth.getState();
   if (!auth.session) return fail('signin', 'Entra con tu cuenta docente para guardar los puntos de las cartas.');
   if (auth.profile && auth.profile.role !== 'teacher') return fail('teacher', 'Solo una cuenta docente puede guardar los puntos.');
   const safeId = matchId.replace(/[^A-Za-z0-9_.:-]/g, '').slice(0, 80);
   try {
     const { data, error } = await supabase.rpc('award_game_points', { p_game: game, p_match: safeId, p_awards: send });
-    if (error) return missing(error) ? fail('migration', NOT_READY_MSG) : fail('error', 'No se pudieron guardar los puntos: ' + (error.message || 'error'));
+    if (error) return missing(error) ? fail('migration', notReadyMsg()) : fail('error', t('Could not save the points: ', 'No se pudieron guardar los puntos: ') + (error.message || 'error'));
     const res = (data ?? {}) as { saved?: { user_id: string }[]; skipped?: { user_id: string; reason: string }[] };
     const saved = (res.saved ?? []).map((r) => r.user_id);
     const skipped = [...guests, ...(res.skipped ?? []).map((r) => ({ userId: r.user_id, reason: r.reason }))];
@@ -245,9 +247,9 @@ export async function awardGamePoints(game: 'classwars' | 'impostor', matchId: s
       ok: true,
       saved,
       skipped,
-      message: `Puntos guardados para ${saved.length} ${saved.length === 1 ? 'jugador' : 'jugadores'}` + (out ? ` · ${out} fuera de tu clase` : '') + '.',
+      message: t(`Points saved for ${saved.length} ${saved.length === 1 ? 'player' : 'players'}`, `Puntos guardados para ${saved.length} ${saved.length === 1 ? 'jugador' : 'jugadores'}`) + (out ? ` · ${out} ${t('outside your class', 'fuera de tu clase')}` : '') + '.',
     };
   } catch {
-    return fail('error', 'No se pudieron guardar los puntos (sin conexión).');
+    return fail('error', t('Could not save the points (no connection).', 'No se pudieron guardar los puntos (sin conexión).'));
   }
 }

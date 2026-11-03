@@ -37,7 +37,7 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-  lang: "es",
+  lang: "en",
   level: "A2",
   impostors: 1,
   tasksPerPlayer: 4,

@@ -6,7 +6,8 @@
    from the start) and is drawn at −(z − pz), so numbers stay small however long the run lasts.
    Track pieces are hand-made patterns placed in sequence, each one always passable. */
 import * as THREE from 'three';
-import { ToonActor, type ToonClip } from '@/features/toons3d/runtime';
+import { ToonActor, isLens, type ToonClip } from '@/features/toons3d/runtime';
+import { t } from '@/lib/gameLang';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -132,7 +133,7 @@ export class RunGame {
     this.level = opts.level;
     this.theme = THEMES[opts.theme ?? 'city'];
     const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    this.dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     r.setPixelRatio(this.dpr);
     r.shadowMap.enabled = true;
     r.shadowMap.type = THREE.PCFShadowMap;
@@ -149,7 +150,7 @@ export class RunGame {
     this.sun.target.position.set(0, 0, -8);
     this.sun.castShadow = true;
     const sc = this.sun.shadow;
-    sc.mapSize.set(window.innerWidth > 900 ? 2048 : 1024, window.innerWidth > 900 ? 2048 : 1024);
+    sc.mapSize.set(2048, 2048);
     Object.assign(sc.camera, { left: -14, right: 14, top: 22, bottom: -18, near: 1, far: 60 });
     sc.bias = -0.0006; sc.normalBias = 0.03;
     s.add(this.sun, this.sun.target, this.world);
@@ -203,7 +204,7 @@ export class RunGame {
   private prepActor(a: ToonActor) {
     a.object.rotation.y = Math.PI;
     a.object.scale.setScalar(TOON_SCALE);
-    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.material = MAT.char; m.castShadow = true; } });
+    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { const l = isLens(m); m.material = l ? MAT.lens : MAT.char; m.castShadow = !l; } });
   }
 
   /** Build the current theme: sky, light, fog, scenery, floor, obstacles, sea, bloom. */
@@ -315,9 +316,10 @@ export class RunGame {
     this.composer?.dispose();
     this.composer = null;
     if (!this.theme.bloom || !this.bloomOk) return;
-    const c = new EffectComposer(this.renderer);
-    c.addPass(new RenderPass(this.scene, this.camera));
     const w = this.host.clientWidth || 1, h = this.host.clientHeight || 1;
+    // multisampled HDR target: without it, the bloom path loses the antialiasing (jagged edges)
+    const c = new EffectComposer(this.renderer, new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, samples: 4 }));
+    c.addPass(new RenderPass(this.scene, this.camera));
     c.addPass(new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), 0.7, 0.32, 0.86));
     c.addPass(new OutputPass());
     c.setPixelRatio(this.dpr);
@@ -488,7 +490,7 @@ export class RunGame {
     this.state = 'run';
     this.player?.play('run', 0.15);
     startMusic();
-    this.toast('Back in the race!', 'good');
+    this.toast(t('Back in the race!', '¡De vuelta en la carrera!'), 'good');
     this.emit(true);
   }
   private finish() {
@@ -712,9 +714,9 @@ export class RunGame {
     this.hitUntil = this.clock + 0.35;
     this.player?.play('hit', 0.05, 1.6, true);
     sfx.bump();
-    if (this.clock < this.chaseUntil) { this.toast('Caught!', 'bad'); this.die(); return; }
+    if (this.clock < this.chaseUntil) { this.toast(t('Caught!', '¡Te atraparon!'), 'bad'); this.die(); return; }
     this.chaseUntil = this.clock + 5;
-    if (fromSide) this.toast('Careful!', 'info');
+    if (fromSide) this.toast(t('Careful!', '¡Cuidado!'), 'info');
   }
   private crash(o: Ob) {
     if (this.clock < this.invUntil) return;
@@ -726,7 +728,7 @@ export class RunGame {
       this.shake = 0.35;
       sfx.shield();
       this.burst(laneX(o.lane), 1, o.z, 30, [0.5, 0.75, 1], 6, 2);
-      this.toast('Shield saved you!', 'info');
+      this.toast(t('Shield saved you!', '¡El escudo te salvó!'), 'info');
       return;
     }
     this.die();
@@ -750,14 +752,14 @@ export class RunGame {
       this.mult = Math.min(10, this.mult + 1);
       this.coinCount += 10;
       sfx.good();
-      this.toast(`Correct! ${g.q.a} · x${this.mult}`, 'good');
+      this.toast(`${t('Correct!', '¡Correcto!')} ${g.q.a} · x${this.mult}`, 'good');
       for (let i = 0; i < 4; i++) this.burst(laneX(chosen) + (rnd() - 0.5) * 2, 3 + rnd() * 2, g.z, 14, [[1, 0.85, 0.2], [0.3, 1, 0.5], [0.4, 0.8, 1], [1, 0.4, 0.7]][i], 6, 1.5);
     } else {
       paintBoard(g.gm.a[chosen], g.opts[chosen], '#ff5a67', '#ffffff', '#ffffff');
       g.gm.aTex[chosen].needsUpdate = true;
       this.mult = Math.max(1, this.mult - 1);
       sfx.bad();
-      this.toast(`The answer was: ${g.q.a}`, 'bad');
+      this.toast(`${t('The answer was', 'La respuesta era')}: ${g.q.a}`, 'bad');
       if (this.clock >= this.invUntil) { this.chaseUntil = Math.max(this.chaseUntil, this.clock + 4); this.player?.play('hit', 0.05, 1.6, true); this.hitUntil = this.clock + 0.35; }
     }
     say(g.q.a);
@@ -864,7 +866,7 @@ export class RunGame {
         if (this.pendingSlide) { this.pendingSlide = false; this.slide(); }
       }
     }
-    if (this.y < -3) { this.toast('Oops! You fell', 'bad'); this.die(); return; }
+    if (this.y < -3) { this.toast(t('Oops! You fell', '¡Uy! Te caíste'), 'bad'); this.die(); return; }
     const sliding = now < this.slideUntil;
     const h = sliding ? SLIDE_H : STAND_H;
     // obstacles
@@ -904,7 +906,7 @@ export class RunGame {
         this.active[p.kind] = now + POWER_S[p.kind];
         this.pools[p.kind].put(p.mesh);
         sfx.power();
-        const names: Record<PowerKind, string> = { magnet: 'Coin magnet!', double: 'Double score!', shield: 'Shield!', jump: 'Super jump!' };
+        const names: Record<PowerKind, string> = { magnet: t('Coin magnet!', '¡Imán de monedas!'), double: t('Double score!', '¡Puntos dobles!'), shield: t('Shield!', '¡Escudo!'), jump: t('Super jump!', '¡Súper salto!') };
         this.toast(names[p.kind], 'info');
         return false;
       }
