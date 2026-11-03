@@ -585,6 +585,23 @@ G1p. PROFES EN 3D · VERSIÓN 3 (English Racers, English Run y galería)
   suave y la barba de pocos días va pintada sobre la piel.
 - Aretes de argolla dorados donde la descripción los menciona.
 
+G1q. TÍTULOS NUEVOS Y BORDES SUAVES (English Racers y English Run)
+- Título nuevo en los dos juegos: cinta "ENGLISH" inclinada y la palabra
+  grande en 3D (relieve, contorno, degradado brillante tipo plástico), un
+  destello que la recorre cada pocos segundos y líneas de velocidad; en
+  Racers lleva además una franja de cuadros de meta. Es vectorial: se ve
+  nítido en cualquier pantalla. En pantallas bajas (celular de lado) el
+  título se achica y se ocultan los textos de ayuda para que el botón de
+  empezar siempre quepa.
+- Bordes sin "dientes de sierra": English Run perdía el antialiasing cada
+  vez que el escenario usaba resplandor (Neón, Tejados…); ahora usa 4×
+  MSAA también ahí. Ambos juegos pueden renderizar hasta 2× de densidad en
+  pantallas nítidas (la calidad automática la baja si el equipo no da) y
+  las sombras usan mapas de 2048 también en el celular (antes 1024, con
+  bordes escalonados).
+- Las flechas de la rampa de Racers ahora son una textura suave (antes eran
+  bloques de colores con bordes escalonados).
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

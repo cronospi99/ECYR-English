@@ -8,13 +8,12 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ChevronLeft, ChevronRight, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Volume2, VolumeX } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
+import { GameTitle } from '@/components/brand/GameTitle';
 import { RaceGame, fmt, type Hud, type Toast, type TouchState } from './engine';
 import { prefs, setPref, unlock } from './audio';
 
 const CSS = `
 .rc-root{font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;background:#cfe6fb}
-.rc-logo{font-weight:900;font-style:italic;letter-spacing:-.035em;line-height:.84;color:#ffd23f;-webkit-text-stroke:3px #10204a;paint-order:stroke fill;text-shadow:0 5px 0 #10204a,0 10px 0 rgba(16,32,74,.3)}
-.rc-logo b{color:#ff3d6e}
 .rc-num{font-weight:900;font-variant-numeric:tabular-nums;-webkit-text-stroke:2.5px #10204a;paint-order:stroke fill;text-shadow:0 3px 0 #10204a}
 .rc-panel{border-radius:22px;background:rgba(14,22,56,.78);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 0 1.5px rgba(255,255,255,.12)}
 .rc-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:18px;font-weight:900;transition:transform .08s}
@@ -109,8 +108,8 @@ export default function RacersApp() {
             </div>
           </div>
           <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 16 }} className="mt-1 text-center sm:mt-3 sm:text-left">
-            <div className="rc-logo text-[50px] sm:text-[86px]">ENGLISH<br /><b>RACERS</b></div>
-            <div className="mt-2 inline-block rounded-full bg-[#10204a]/70 px-3 py-1 text-[12.5px] font-extrabold tracking-wide text-white/90 uppercase">Prototipo · fase 1 · contrarreloj</div>
+            <GameTitle word="RACERS" theme="racers" className="mx-auto block h-auto w-[250px] sm:mx-0 sm:w-[430px] [@media(max-height:520px)]:w-[175px]" />
+            <div className="mt-2 inline-block rounded-full bg-[#10204a]/70 px-3 py-1 text-[12.5px] font-extrabold tracking-wide text-white/90 uppercase [@media(max-height:520px)]:hidden">Prototipo · fase 1 · contrarreloj</div>
           </motion.div>
           <div className="mt-auto flex flex-col items-center gap-3 sm:items-start">
             <div className="pointer-events-auto rc-panel flex w-full max-w-[470px] flex-col gap-3 p-3">
@@ -132,7 +131,7 @@ export default function RacersApp() {
               </div>
               <Btn tone="green" className="h-14 w-full text-[21px]" onClick={go} disabled={st === 'loading'}>{st === 'loading' ? 'Cargando…' : <><Play size={22} fill="currentColor" /> ¡A CORRER!</>}</Btn>
             </div>
-            <div className="pointer-events-auto rc-panel max-w-[470px] px-4 py-2.5 text-[12.5px] leading-relaxed font-semibold text-white/80">
+            <div className="pointer-events-auto rc-panel max-w-[470px] px-4 py-2.5 text-[12.5px] leading-relaxed font-semibold text-white/80 [@media(max-height:520px)]:hidden">
               {touchUi
                 ? <>Botón verde: acelerar · flechas: girar · <b className="text-[#ffb547]">DERRAPE</b>: mantén mientras giras para cargar el turbo (azul → naranja → morado) y suéltalo · en el aire, toca DERRAPE para hacer un truco · acelera justo cuando se apaga la última luz roja para una salida perfecta</>
                 : <><b>W/↑</b> acelerar · <b>S/↓</b> frenar · <b>A D/← →</b> girar · <b>Espacio/Shift</b> saltar y derrapar (mantén: azul → naranja → morado, suelta = turbo) · en el aire = truco · <b>C</b> mirar atrás · <b>R</b> volver a la pista · <b>Esc</b> pausa · control de consola compatible</>}

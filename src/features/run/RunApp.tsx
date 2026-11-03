@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Coins, Home, Music, Pause, Play, RotateCcw, Trophy, Volume2, VolumeX, MessageCircle, X, Check } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
+import { GameTitle } from '@/components/brand/GameTitle';
 import { RunGame, type Hud, type Toast } from './engine';
 import { POWER_COLORS, type PowerKind } from './gfx';
 import { prefs, setPref, unlock } from './audio';
@@ -108,7 +109,7 @@ export default function RunApp() {
             </div>
           </div>
           <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 16 }} className="mt-2 text-center sm:mt-4 sm:text-left">
-            <div className="er-logo text-[58px] sm:text-[92px]">ENGLISH<br />RUN</div>
+            <GameTitle word="RUN" theme="run" className="mx-auto block h-auto w-[190px] sm:mx-0 sm:w-[285px] [@media(max-height:520px)]:w-[120px]" />
           </motion.div>
           <div className="mt-auto flex flex-col items-center gap-3 sm:items-start">
             <div className="pointer-events-auto er-panel flex w-full max-w-[460px] flex-col gap-3 p-3">
@@ -146,7 +147,7 @@ export default function RunApp() {
                 <span className="flex items-center gap-1.5"><Coins size={16} className="text-[#ffd23f]" /> {(game?.totalCoins ?? 0).toLocaleString('es-CO')}</span>
               </div>
             </div>
-            <div className="er-panel pointer-events-auto max-w-[460px] px-3 py-2 text-[13px] font-semibold text-white/85">
+            <div className="er-panel pointer-events-auto max-w-[460px] px-3 py-2 text-[13px] font-semibold text-white/85 [@media(max-height:520px)]:hidden">
               <b>Cómo se juega:</b> desliza (o usa las flechas) ← → para cambiar de carril, ↑ para saltar, ↓ para deslizarte. Pasa por la respuesta correcta de cada puerta para subir el multiplicador. Sube a los buses por las rampas.
             </div>
           </div>

@@ -132,7 +132,7 @@ export class RunGame {
     this.level = opts.level;
     this.theme = THEMES[opts.theme ?? 'city'];
     const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    this.dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     r.setPixelRatio(this.dpr);
     r.shadowMap.enabled = true;
     r.shadowMap.type = THREE.PCFShadowMap;
@@ -149,7 +149,7 @@ export class RunGame {
     this.sun.target.position.set(0, 0, -8);
     this.sun.castShadow = true;
     const sc = this.sun.shadow;
-    sc.mapSize.set(window.innerWidth > 900 ? 2048 : 1024, window.innerWidth > 900 ? 2048 : 1024);
+    sc.mapSize.set(2048, 2048);
     Object.assign(sc.camera, { left: -14, right: 14, top: 22, bottom: -18, near: 1, far: 60 });
     sc.bias = -0.0006; sc.normalBias = 0.03;
     s.add(this.sun, this.sun.target, this.world);
@@ -315,9 +315,10 @@ export class RunGame {
     this.composer?.dispose();
     this.composer = null;
     if (!this.theme.bloom || !this.bloomOk) return;
-    const c = new EffectComposer(this.renderer);
-    c.addPass(new RenderPass(this.scene, this.camera));
     const w = this.host.clientWidth || 1, h = this.host.clientHeight || 1;
+    // multisampled HDR target: without it, the bloom path loses the antialiasing (jagged edges)
+    const c = new EffectComposer(this.renderer, new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, samples: 4 }));
+    c.addPass(new RenderPass(this.scene, this.camera));
     c.addPass(new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), 0.7, 0.32, 0.86));
     c.addPass(new OutputPass());
     c.setPixelRatio(this.dpr);

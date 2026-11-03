@@ -101,7 +101,7 @@ export class RaceGame {
   constructor(private host: HTMLElement, opts: { toon: string }) {
     this.toonId = opts.toon;
     const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-    this.dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     r.setPixelRatio(this.dpr);
     r.shadowMap.enabled = true;
     r.shadowMap.type = THREE.PCFShadowMap;
@@ -119,8 +119,7 @@ export class RaceGame {
     this.sky.scale.setScalar(2.6);
     s.add(this.sky, this.hemi);
     const sc = this.sun.shadow;
-    const big = window.innerWidth > 900;
-    sc.mapSize.set(big ? 2048 : 1024, big ? 2048 : 1024);
+    sc.mapSize.set(2048, 2048);
     Object.assign(sc.camera, { left: -32, right: 32, top: 32, bottom: -32, near: 1, far: 220 });
     sc.bias = -0.0005; sc.normalBias = 0.04;
     this.sun.castShadow = true;

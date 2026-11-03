@@ -59,6 +59,21 @@ export function asphaltTexture() {
   });
 }
 
+/** Ramp deck: steel planks, yellow chevrons pointing forward, black/yellow hazard edges (u across, v along). */
+function rampTexture() {
+  return canvasTex(256, 256, (c) => {
+    for (let i = 0; i < 8; i++) { c.fillStyle = i % 2 ? '#46536b' : '#3f4b62'; c.fillRect(0, i * 32, 256, 32); c.fillStyle = 'rgba(10,14,24,.45)'; c.fillRect(0, i * 32, 256, 2); }
+    c.fillStyle = '#ffd23f'; c.strokeStyle = '#10204a'; c.lineWidth = 4; c.lineJoin = 'round';
+    // a chevron pointing up the texture (= forward along the track)
+    c.beginPath(); c.moveTo(36, 168); c.lineTo(128, 66); c.lineTo(220, 168); c.lineTo(220, 238); c.lineTo(128, 136); c.lineTo(36, 238); c.closePath();
+    c.fill(); c.stroke();
+    c.save(); c.beginPath(); c.rect(0, 0, 18, 256); c.rect(238, 0, 18, 256); c.clip();
+    c.fillStyle = '#ffc61a'; c.fillRect(0, 0, 256, 256); c.fillStyle = '#1b1d24';
+    for (let y = -40; y < 300; y += 36) { c.beginPath(); c.moveTo(0, y); c.lineTo(256, y + 64); c.lineTo(256, y + 82); c.lineTo(0, y + 18); c.closePath(); c.fill(); }
+    c.restore();
+  });
+}
+
 function checkerTexture() {
   return canvasTex(256, 32, (c) => {
     for (let x = 0; x < 16; x++) for (let y = 0; y < 2; y++) { c.fillStyle = (x + y) % 2 ? '#15161a' : '#e9e9e6'; c.fillRect(x * 16, y * 16, 16, 16); }
@@ -153,19 +168,31 @@ export function buildTrackMeshes(track: Track, world: THREE.Material): TrackMesh
   for (const rp of track.ramps) {
     const i0 = Math.round(rp.s0 / track.ds), i1 = Math.round(rp.s1 / track.ds);
     const hAt = (k: number) => rp.h * Math.pow(Math.min(1, Math.max(0, (k - i0) / (i1 - i0))), 1.35);
-    const SEG = 24;
+    // deck: one textured strip (smooth chevrons and hazard edges, mipmapped)
+    {
+      const pos: number[] = [], uv: number[] = [], idx: number[] = [];
+      for (let k = i0; k <= i1; k++) {
+        const f = track.frame(k), hh = hAt(k) + 0.012, W = f.w + KERB;
+        side(f, -W, hh, p0); side(f, W, hh, p1);
+        pos.push(p0.x, p0.y, p0.z, p1.x, p1.y, p1.z);
+        const vv = ((k - i0) * track.ds) / 4.2;
+        uv.push(0, vv, 1, vv);
+        if (k < i1) { const j = (k - i0) * 2; idx.push(j, j + 1, j + 2, j + 1, j + 3, j + 2); }
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+      g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+      g.setIndex(idx);
+      g.computeVertexNormals();
+      const tex = rampTexture();
+      tex.anisotropy = 8;
+      const deck = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: 0.55, metalness: 0.25 }));
+      deck.receiveShadow = true;
+      group.add(deck);
+    }
     for (let k = i0; k < i1; k++) {
       const a = track.frame(k), b = track.frame(k + 1), ha = hAt(k), hb = hAt(k + 1);
       const W = (f: Frame) => f.w + KERB;
-      // deck with chevrons pointing forward (yellow on orange)
-      for (let j = 0; j < SEG; j++) {
-        const u0 = -1 + (2 * j) / SEG, u1 = -1 + (2 * (j + 1)) / SEG, um = Math.abs((u0 + u1) / 2);
-        const ph = ((k - i0) / 4 + um * 0.9) % 1;
-        const chev = um < 0.7 && ph < 0.32;
-        const edge = j === 0 || j === SEG - 1;
-        const plank = (k - i0) % 2 ? 0x46536b : 0x3f4b62;
-        r.quad(side(a, u0 * W(a), ha + 0.01, p0), side(a, u1 * W(a), ha + 0.01, p1), side(b, u1 * W(b), hb + 0.01, p2), side(b, u0 * W(b), hb + 0.01, p3), edge ? ((k % 2) ? 0x22252d : 0xffc61a) : chev ? 0xffd23f : plank);
-      }
       for (const sg of [-1, 1]) {
         r.quad(side(a, sg * W(a), 0, p0), side(b, sg * W(b), 0, p1), side(b, sg * W(b), hb + 0.01, p2), side(a, sg * W(a), ha + 0.01, p3), 0x3a3f4b);
         // guard rail on the ramp edges
