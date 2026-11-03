@@ -196,7 +196,7 @@ export class HostSession {
       }
       case 'wb': {
         const p = this.player(peer);
-        if (p && this.sim && this.phase === 'playing') this.sim.buyWeapon(p, Number(d.w) | 0);
+        if (p && this.sim && this.phase === 'playing') this.sim.upgradeBlaster(p);
         break;
       }
       case 'buy': {
@@ -444,7 +444,7 @@ export function hostSource(h: HostSession): RenderSource {
         out.push({
           idx: p.idx, x: lerp(p.px, p.x, a), y: lerp(p.py, p.y, a), aim: p.aim, hp: Math.ceil(p.hp), sh: Math.ceil(p.sh), dia: p.dia, en: Math.ceil(p.en), flags: sim.flags(p),
           look: sim.lookChar(p), weapon: p.weapon, ammo: p.ammo, maxHp: sim.maxHp(p), borrowed: p.borrowed, charges: p.bCharges, name: p.name, me: false, bot: p.bot,
-          team: p.team, pct: Math.round(p.pct),
+          team: p.team, pct: Math.round(p.pct), lvl: p.lvl,
         });
       }
       return out;

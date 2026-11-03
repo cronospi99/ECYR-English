@@ -463,6 +463,29 @@ G1l. MANTENIMIENTO
   marcaba npm audit (0 vulnerabilidades). El generador de PDF de tareas
   funciona igual.
 
+G1m. CLASS WARS · KNOCKBACK: NUEVAS REGLAS Y BLÁSTER DE PÍXELES
+- Ya no se puede bajar de una plataforma con S / flecha abajo (ni con el
+  joystick hacia abajo): para bajar hay que caminar hasta el borde y salir.
+  Los bots también bajan así.
+- Retroceso según el % de daño: cada impacto suma su daño al % (1 a 1) y el
+  empujón crece con el % (×1 a 0 %, ×1,8 a 50 %, ×3 a 100 %, ×4,7 a 150 %,
+  ×6,8 a 200 %, con un tope). Con poco % es un empujoncito que se puede
+  contrarrestar caminando; desde 100 % un solo disparo lanza al rival en arco
+  (el ángulo sube con el %, hasta 45° desde 120 %), con estela, anillo y
+  sonido. Medido en una plataforma plana: 0 % ≈ 15 px, 50 % ≈ 135 px,
+  100 % ≈ 430 px, 200 % ≈ 1.570 px.
+- Una sola arma para todos: el Bláster de píxeles (diseño propio, no usa
+  arte de otro juego). Dispara proyectiles cuadrados con estela de píxeles,
+  unos 4 por segundo, con cargador y recarga automática (al vaciarse, o
+  sola tras ~1,6 s sin disparar). Se mejora con energía en 5 niveles
+  (Común, Poco común, Raro, Épico y Legendario): más daño (10 → 18 %), más
+  cargador (24 → 32) y recarga más rápida (1,5 → 1 s). El arma y los
+  proyectiles toman el color del nivel.
+- Se quitó el arsenal de 7 armas (teclas 1–7) y las cajas ya no dan armas
+  en este modo. La tienda (B) muestra el bláster con sus estadísticas y el
+  botón para mejorarlo; la barra inferior muestra nivel, munición y barra
+  de recarga (en el celular, sobre el botón de poder).
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

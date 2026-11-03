@@ -99,6 +99,8 @@ export const FLAG = {
   slow: 1 << 7,
   speed: 1 << 8,
   barrier: 1 << 9,
+  /** Knockback: the pixel blaster is reloading. */
+  reload: 1 << 10,
   regen: 1 << 12,
   charm: 1 << 14,
   blind: 1 << 15,

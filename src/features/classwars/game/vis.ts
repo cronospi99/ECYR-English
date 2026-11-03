@@ -1,7 +1,7 @@
 /* Class Wars — the visual copy of the world that every screen keeps (players' phones and the
    projector). It is fed by the host's events: boxes, gems, projectiles, zones and one-shot
    effects. The renderer drains `fx` every frame for particles, popups, shakes and sounds. */
-import { WEAPONS, PJ_LOOK } from './defs';
+import { BLASTER, PIXEL_PJ, WEAPONS, PJ_LOOK, isPixelPj } from './defs';
 import { BOX_COOLDOWN_MS, byteToAim } from './constants';
 import { t } from '../i18n';
 import { hitsWall, paintCols, paintRows, type GameMap } from './map';
@@ -14,7 +14,7 @@ export interface VGem { id: number; x: number; y: number; v: number; born: numbe
 export interface VProj { id: number; kind: number; x: number; y: number; vx: number; vy: number; range: number; dist: number; owner: number; born: number; local?: boolean }
 export interface VZone { id: number; kind: number; x: number; y: number; r: number; born: number; until: number; owner: number }
 export interface VTele { x: number; y: number; r: number; at: number; born: number; kind: number }
-export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; spawnX: number; spawnY: number; blockAt: number; statusAt: number; status: string }
+export interface PState { hurtAt: number; koAt: number; swingAt: number; swingAim: number; powerAt: number; spawnAt: number; spawnX: number; spawnY: number; blockAt: number; statusAt: number; status: string; launchAt: number }
 
 export type Fxq =
   | { t: 'dmg'; idx: number; v: number; shield: boolean }
@@ -33,6 +33,8 @@ export type Fxq =
   | { t: 'laser'; x1: number; y1: number; x2: number; y2: number }
   | { t: 'grenade'; x1: number; y1: number; x2: number; y2: number }
   | { t: 'shoot'; idx: number; kind: number }
+  | { t: 'reload'; idx: number }
+  | { t: 'launch'; idx: number; v: number }
   | { t: 'status'; idx: number; s: string }
   | { t: 'block'; idx: number }
   | { t: 'costume'; idx: number; ci: number }
@@ -65,7 +67,7 @@ export class VisualWorld {
 
   st(idx: number): PState {
     let s = this.ps.get(idx);
-    if (!s) { s = { hurtAt: -1e9, koAt: -1e9, swingAt: -1e9, swingAim: 0, powerAt: -1e9, spawnAt: -1e9, spawnX: 0, spawnY: 0, blockAt: -1e9, statusAt: -1e9, status: '' }; this.ps.set(idx, s); }
+    if (!s) { s = { hurtAt: -1e9, koAt: -1e9, swingAt: -1e9, swingAim: 0, powerAt: -1e9, spawnAt: -1e9, spawnX: 0, spawnY: 0, blockAt: -1e9, statusAt: -1e9, status: '', launchAt: -1e9 }; this.ps.set(idx, s); }
     return s;
   }
 
@@ -87,7 +89,7 @@ export class VisualWorld {
 
   /** Cosmetic projectile for our own shot, shown before the host confirms it. */
   localShot(kind: number, x: number, y: number, aim: number, owner: number) {
-    const w = WEAPONS[kind];
+    const w = isPixelPj(kind) ? WEAPONS[7] : WEAPONS[kind];
     if (!w || w.kind === 'melee' || w.kind === 'grenade') return;
     const angles = w.kind === 'spread' ? [-0.22, 0, 0.22] : [0];
     for (const off of angles) {
@@ -104,7 +106,7 @@ export class VisualWorld {
       switch (k) {
         case 'pj': {
           const owner = n(6);
-          if (owner === this.myIdx && n(2) < 20) {
+          if (owner === this.myIdx && (n(2) < 20 || isPixelPj(n(2)))) {
             // replace our cosmetic copy (closest local projectile of that kind)
             let best: VProj | null = null;
             for (const p of this.projs.values()) if (p.local && p.kind === n(2) && (!best || p.born < best.born)) best = p;
@@ -135,7 +137,12 @@ export class VisualWorld {
         case 'gr': this.fx.push({ t: 'grenade', x1: n(2), y1: n(3), x2: n(4), y2: n(5) }); this.teles.push({ x: n(4), y: n(5), r: WEAPONS[6].radius, at: now + 700, born: now, kind: 1 }); break;
         case 'ex': this.fx.push({ t: 'boom', x: n(1), y: n(2), r: n(3), kind: e[4] as string }); break;
         case 'tg': this.teles.push({ x: n(1), y: n(2), r: n(3), at: now + n(4), born: now, kind: n(5) }); break;
-        case 'kb': break;
+        case 'kb': {
+          // a launch (high %): the renderer draws a speed trail and a ring for a moment
+          const v = Math.hypot(n(2), n(3));
+          if (v > 850) { this.st(n(1)).launchAt = now; this.fx.push({ t: 'launch', idx: n(1), v }); }
+          break;
+        }
         case 'dm': this.st(n(1)).hurtAt = now; this.fx.push({ t: 'dmg', idx: n(1), v: n(2), shield: n(4) === 1 }); break;
         case 'bk': this.st(n(1)).blockAt = now; this.fx.push({ t: 'block', idx: n(1) }); break;
         case 'ko': {
@@ -174,6 +181,7 @@ export class VisualWorld {
         case 'cs': this.fx.push({ t: 'costume', idx: n(1), ci: n(2) }); break;
         case 'wp': this.fx.push({ t: 'weapon', idx: n(1), w: n(2) }); break;
         case 'wb': this.fx.push({ t: 'buy', idx: n(1), up: -1, lvl: n(2) }); break;
+        case 'rl': this.fx.push({ t: 'reload', idx: n(1) }); break;
         case 'pw': this.st(n(1)).powerAt = now; this.fx.push({ t: 'power', idx: n(1), ci: n(2) }); break;
         case 'wave': this.fx.push({ t: 'wave', x: n(1), y: n(2), r: n(3), kind: n(4) }); break;
         case 'cone': this.fx.push({ t: 'cone', idx: n(1), aim: byteToAim(n(2)), r: n(3), kind: n(4) }); break;
@@ -215,4 +223,5 @@ export const PROJ_LOOK: Record<number, { color: string; r: number }> = {
   4: { color: '#d7ff3a', r: 7 },
   5: { color: '#cfd8dc', r: 5 },
   ...Object.fromEntries(Object.entries(PJ_LOOK).map(([k, v]) => [k, { color: v.color, r: 11 }])),
+  ...Object.fromEntries(BLASTER.map((b, i) => [PIXEL_PJ + i, { color: b.color, r: 8 }])),
 };

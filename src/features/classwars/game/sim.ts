@@ -7,7 +7,7 @@ import {
   KB_SPEED, PAINT_CELL, PAINT_R, PLAYER_R, SHIELD_REGEN, SHIELD_REGEN_DELAY, SPAWN_INVULN_MS, SPLAT_R, START_ENERGY, STEP_COST, TICK_MS,
   BOT_LEVELS, MAX_EXTRA_JUMPS, PED_MS, TILE, aimToByte, respawnMs, sideView, type Fx, type Game,
 } from './constants';
-import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, KB_ARSENAL, PJ, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
+import { BLASTER, BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, PIXEL, PIXEL_PJ, PJ, blasterTier, POWERS, UPGRADES, WEAPONS, answerGain, energyMul, freshUps, upValue, upsToArr, type UpKey, type Ups } from './defs';
 import { freeSpot, generateMap, hitsWall, moveCircle, paintCols, paintMask, paintRows, resolve, type GameMap } from './map';
 import { kbStep, newBody, outOfStage, standOn, type Body } from './kb';
 
@@ -53,8 +53,8 @@ export interface SimPlayer {
   lastHitAt: number;
   /** Color Clash: extra air jumps from boxes (until KO). */
   jumps: number;
-  /** Knockback arsenal: bit per weapon owned, and the one equipped (a box gadget returns to it). */
-  owned: number; main: number;
+  /** The weapon a box gadget returns to; knockback: pixel blaster tier (0–4) and reload end (0 = not reloading). */
+  main: number; lvl: number; reloadAt: number;
   /* bot brain scratch */
   brain?: Record<string, number>;
 }
@@ -140,7 +140,7 @@ export class Sim {
     }
     const b = team >= 0 ? this.base(team) : this.map.burrows[idx % this.map.burrows.length];
     const p: SimPlayer = {
-      idx, ...o, connected: true, team, pct: 0, body: null, jumpQ: false, downQ: false, lastHitAt: -1e9, jumps: 0, owned: 1, main: 0,
+      idx, ...o, connected: true, team, pct: 0, body: null, jumpQ: false, downQ: false, lastHitAt: -1e9, jumps: 0, main: 0, lvl: 0, reloadAt: 0,
       x: b.x, y: b.y + 60, px: b.x, py: b.y + 60, wvx: 0, wvy: 0, vx: 0, vy: 0, tx: b.x, ty: b.y + 60, hasT: false, lastAcceptT: 0,
       mx: 0, my: 0, aim: Math.PI / 2, ad: 200,
       hp: MAX_HP, sh: MAX_SHIELD, dia: 0, en: this.settings.startEnergy ?? START_ENERGY, alive: true, respawnAt: 0,
@@ -150,6 +150,7 @@ export class Sim {
       inQuiz: false, streak: 0, bestStreak: 0, correct: 0, wrong: 0, kos: 0, deaths: 0, boxes: 0, ups: freshUps(),
       burrowReadyAt: this.now + BURROW_COOLDOWN,
     };
+    if (this.game === 'kb') { p.weapon = p.main = PIXEL; p.ammo = BLASTER[0].mag; }
     if (this.side) {
       p.y = p.py = p.ty = b.y;
       if (o.bot || !o.peer) p.body = newBody(p.x, p.y);
@@ -186,6 +187,7 @@ export class Sim {
     if (this.now - p.lastCombatAt < COMBAT_LOCK_MS) f |= FLAG.combat;
     if (p.sh > MAX_SHIELD) f |= FLAG.overshield;
     if (p.en <= 0) f |= FLAG.tired;
+    if (p.reloadAt) f |= FLAG.reload;
     for (const k in p.fx) {
       const fl = FX_FLAG[k as Fx];
       if (fl && (p.fx[k as Fx] ?? 0) > this.now) f |= fl;
@@ -212,6 +214,11 @@ export class Sim {
       // Expiring things.
       if (p.costume >= 0 && now > p.costumeUntil) { p.costume = -1; this.ev(['cs', p.idx, -1]); }
       if (p.weapon !== 0 && p.weaponUntil && now > p.weaponUntil) this.setWeapon(p, 0);
+      if (p.weapon === PIXEL) {
+        // the magazine refills after the reload, or by itself after ~1.6 s without shooting
+        if (p.reloadAt && now >= p.reloadAt) { p.reloadAt = 0; p.ammo = blasterTier(p.lvl).mag; }
+        else if (!p.reloadAt && p.ammo < blasterTier(p.lvl).mag && now > p.nextFire + 1600) this.reload(p);
+      }
 
       // Movement.
       const mul = this.speedMul(p);
@@ -328,7 +335,7 @@ export class Sim {
     const ox = p.x;
     if (p.body) {
       const b = p.body;
-      const jump = p.jumpQ, down = p.downQ;
+      const jump = p.jumpQ, down = p.downQ && this.game !== 'kb'; // knockback: no dropping through ledges
       p.jumpQ = p.downQ = false;
       b.airMax = 1 + p.jumps;
       kbStep(this.map, b, Math.max(-1, Math.min(1, p.mx)), jump, down, mul, dt);
@@ -414,15 +421,24 @@ export class Sim {
     if (w === 0 && p.main) { w = p.main; keep = true; } // a box gadget ran out: back to your own
     const def = WEAPONS[w];
     p.weapon = w;
-    p.ammo = keep ? INF : def.ammo;
+    p.reloadAt = 0;
+    p.ammo = w === PIXEL ? blasterTier(p.lvl).mag : keep ? INF : def.ammo;
     p.weaponUntil = !keep && def.lasts ? this.now + def.lasts * 1000 : 0;
     p.nextFire = Math.min(p.nextFire, this.now + 150);
     this.ev(['wp', p.idx, w]);
   }
 
+  /** Pixel blaster: start reloading (the bolts stop until the magazine is full again). */
+  reload(p: SimPlayer) {
+    if (p.reloadAt || p.weapon !== PIXEL) return;
+    p.reloadAt = this.now + blasterTier(p.lvl).reload * 1000;
+    this.ev(['rl', p.idx]);
+  }
+
   fire(p: SimPlayer) {
     if (!this.canAct(p) || this.has(p, 'charm')) { p.pendingShot = false; return; }
     if (this.now < p.nextFire) return;
+    if (p.weapon === PIXEL && (p.reloadAt || p.ammo <= 0)) { p.pendingShot = false; return; }
     p.pendingShot = false;
     const def = WEAPONS[p.weapon];
     const cd = def.cd * (this.has(p, 'rapid') ? 0.6 : 1);
@@ -460,9 +476,11 @@ export class Sim {
         break;
       }
       default:
+        if (def.id === PIXEL) { this.spawnProj(p, PIXEL_PJ + Math.min(p.lvl, BLASTER.length - 1), sx, sy, a, def.speed, def.range, blasterTier(p.lvl).dmg, def.kb, def.radius, false, 0); break; }
         this.spawnProj(p, def.id, sx, sy, a, def.speed, def.range, def.dmg * dmgMul, def.kb, def.radius, def.kind === 'pierce', def.kind === 'explosive' ? def.radius : 0);
     }
-    if (def.ammo !== INF) {
+    if (def.id === PIXEL) { if (--p.ammo <= 0) this.reload(p); }
+    else if (def.ammo !== INF) {
       p.ammo--;
       if (p.ammo <= 0) this.setWeapon(p, 0);
     }
@@ -593,15 +611,19 @@ export class Sim {
     if (src) { src.lastCombatAt = this.now; q.lastHitBy = src.idx; q.lastHitAt = this.now; }
     let absorbed = 0;
     if (this.game === 'kb') {
-      // Knockback: no health. Damage raises your %, and the % multiplies how far you fly.
-      q.pct = Math.min(999, q.pct + dmg * 0.8);
+      // Knockback: no health. Damage raises your % one to one, and the % (counting this hit)
+      // multiplies the push: a nudge you can walk against at 0 %, a short hop near 50 %, and from
+      // 100 % on a single bolt sends you flying (×3 at 100 %, ×4.7 at 150 %, ×6.8 at 200 %).
+      q.pct = Math.min(999, q.pct + dmg);
       const l = Math.hypot(kbx, kby);
       let dx = l ? kbx / l : 0, dy = l ? kby / l : 0;
       if (!l && src) { const sl = Math.hypot(q.x - src.x, q.y - src.y) || 1; dx = (q.x - src.x) / sl; dy = (q.y - src.y) / sl; }
-      // heavier (the "Weight" upgrade) = flies less far
-      const mag = Math.min(2800, (220 + l * 0.7 + dmg * 5) * (1 + q.pct / 60) * (100 / this.maxHp(q)));
+      const f = q.pct / 100, grow = 1 + f * 1.1 + f * f * 0.9;
+      // heavier (the "Max Health" upgrade) = flies less far
+      const mag = Math.min(2600, (170 + l * 0.6 + dmg * 4) * grow * (100 / this.maxHp(q)));
+      const lift = 0.42 + 0.58 * Math.min(1, q.pct / 120); // the higher the %, the steeper the launch (45° from 120 %)
       kbx = dx * mag;
-      kby = dy * mag * 0.6 - mag * 0.5; // always launch upward a bit
+      kby = dy * mag * 0.55 - mag * lift;
     } else {
       absorbed = Math.min(q.sh, dmg);
       q.sh -= absorbed;
@@ -633,7 +655,7 @@ export class Sim {
     q.inQuiz = false;
     q.attackHeld = false;
     q.pendingShot = false;
-    if (q.weapon !== q.main) { q.weapon = q.main; q.ammo = INF; q.weaponUntil = 0; }
+    if (q.weapon !== q.main || q.main === PIXEL) { q.weapon = q.main; q.ammo = q.main === PIXEL ? blasterTier(q.lvl).mag : INF; q.weaponUntil = 0; q.reloadAt = 0; }
     const keep = upValue('ins', q.ups.ins) / 100;
     // Color Clash: diamonds are your paint points, a KO does not take them.
     const lost = this.paint ? 0 : Math.floor(q.dia * KO_LOSS * (1 - keep));
@@ -759,7 +781,7 @@ export class Sim {
   private boxItem(p: SimPlayer, b: Box, oi: number, dia: number) {
     let ei = -1, param = 0;
     if (this.rand() < 0.5) {
-      ei = this.pick(BOX_EFFECTS);
+      do ei = this.pick(BOX_EFFECTS); while (this.game === 'kb' && BOX_EFFECTS[ei].id === 'gadget'); // knockback: one weapon only
       switch (BOX_EFFECTS[ei].id) {
         case 'gadget': {
           const options = [1, 2, 3, 4, 5, 6].filter((w) => w !== p.weapon);
@@ -918,7 +940,8 @@ export class Sim {
         return true;
       }
       case 'lina':
-        if (WEAPONS[p.weapon].ammo !== INF) p.ammo = WEAPONS[p.weapon].ammo;
+        if (p.weapon === PIXEL) { p.ammo = blasterTier(p.lvl).mag; p.reloadAt = 0; }
+        else if (WEAPONS[p.weapon].ammo !== INF) p.ammo = WEAPONS[p.weapon].ammo;
         p.nextFire = this.now;
         p.sh = Math.min(MAX_SHIELD + 50, p.sh + 40);
         this.give(p, 'rapid', 6000);
@@ -1021,18 +1044,14 @@ export class Sim {
     }
   }
 
-  /** Knockback arsenal: buy a weapon with energy (once) or equip one you own. */
-  buyWeapon(p: SimPlayer, w: number): boolean {
-    const item = KB_ARSENAL.find((a) => a.w === w);
-    if (this.game !== 'kb' || !item || !p.alive) return false;
-    if (!(p.owned & (1 << w))) {
-      if (p.en < item.cost) return false;
-      p.en -= item.cost;
-      p.owned |= 1 << w;
-    }
-    p.main = w;
-    this.setWeapon(p, w, true);
-    this.ev(['wb', p.idx, w, p.owned, item.cost]);
+  /** Knockback: upgrade the pixel blaster to its next tier with energy (refills the magazine). */
+  upgradeBlaster(p: SimPlayer): boolean {
+    const next = BLASTER[p.lvl + 1];
+    if (this.game !== 'kb' || !next || !p.alive || p.en < next.cost) return false;
+    p.en -= next.cost;
+    p.lvl++;
+    this.setWeapon(p, PIXEL, true);
+    this.ev(['wb', p.idx, p.lvl, next.cost]);
     return true;
   }
 
@@ -1062,7 +1081,7 @@ export class Sim {
   snapshot() {
     const p = this.players.map((q) => [
       q.idx, Math.round(q.x), Math.round(q.y), aimToByte(q.aim), Math.ceil(q.hp), Math.ceil(q.sh), q.dia, this.flags(q),
-      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en), q.team, Math.round(q.pct), q.jumps, q.owned,
+      this.lookChar(q), q.weapon, q.ammo, this.maxHp(q), q.borrowed, q.bCharges, Math.ceil(q.en), q.team, Math.round(q.pct), q.jumps, q.lvl,
     ]);
     return { t: Math.round(this.now), p, r: Math.round(this.remainingMs) };
   }

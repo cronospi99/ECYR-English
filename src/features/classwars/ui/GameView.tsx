@@ -11,7 +11,7 @@ import { FLAG, TEAM_COLORS, TEAM_NAMES, respawnMs, type Game } from '../game/con
 
 /** On-screen messages (box cards, kill feed) never stay longer than this. */
 const MSG_MS = 3500;
-import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, KB_ARSENAL, POWERS, WEAPONS, outcomeColor, outcomeLabel } from '../game/defs';
+import { BOX_EFFECTS, CHAR_IDS, DIA_OUTCOMES, INF, POWERS, WEAPONS, blasterTier, outcomeColor, outcomeLabel } from '../game/defs';
 import { num, t, tx } from '../i18n';
 import { hostSource, type HostSession } from '../game/host';
 import type { Fxq } from '../game/vis';
@@ -215,7 +215,6 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       if (['w', 'a', 's', 'd', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(k)) { e.preventDefault(); keys.current.add(k); }
       if (e.repeat) return;
       if (side && (k === 'w' || k === 'arrowup' || k === ' ')) { e.preventDefault(); client.jumpPress(); }
-      else if (kb && k >= '1' && k <= '9') { const w = ownedArsenal(client)[Number(k) - 1]; if (w !== undefined) client.buyWeapon(w); }
       else if (k === 'e' || k === ' ' || k === '2') { e.preventDefault(); client.powerPress(); }
       else if (k === 'r' || k === '3') client.bonusPress();
       else if (k === '1') client.attackPress();
@@ -470,7 +469,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       {/* bottom-left: answer questions */}
       {client && !quiz && (alive || !kb) && (
         <div className={cn('absolute left-3 flex flex-col gap-2', mobile ? (kb ? 'top-[70px]' : 'top-[186px]') : 'bottom-[max(14px,env(safe-area-inset-bottom))]')}>
-          {kb && me && <KbStatus en={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} weapon={tx(weapon.name)} small={mobile} />}
+          {kb && me && <KbStatus en={me.en} max={client.startEnergy} tired={!!(me.flags & FLAG.tired)} weapon={tx(weapon.name)} lvl={me.lvl} small={mobile} />}
           <Btn tone="blue" big={!mobile} className={cn(mobile && 'h-12 px-4 text-[15px]')} onClick={() => openQuiz('q')} disabled={!alive}>
             <BookOpen size={mobile ? 18 : 22} /> {mobile ? t('Questions', 'Preguntas') : t('Answer questions', 'Responder preguntas')} {!mobile && <kbd className="rounded-md bg-black/25 px-1.5 text-[12px]">Q</kbd>}
           </Btn>
@@ -481,15 +480,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
       {/* hotbar */}
       {client && me && hud && !quiz && (
         <div className={cn('absolute flex items-end gap-2', mobile ? (kb ? 'bottom-[max(14px,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 gap-1.5' : 'right-3 bottom-[max(14px,env(safe-area-inset-bottom))] flex-col-reverse items-end') : 'bottom-[max(14px,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2')}>
-          {kb && (!mobile || ownedArsenal(client).length > 1) && ownedArsenal(client).map((w, i, all) => {
-            const wd = WEAPONS[w];
-            return (
-              <Slot key={w} k={String(i + 1)} active={me.weapon === w} small={mobile || all.length > 4} label={tx(wd.name)} onClick={() => client.buyWeapon(w)}>
-                <GameIcon k={wd.ic} size={mobile || all.length > 4 ? 26 : 38} />
-                {!(mobile || all.length > 4) && <span className="absolute right-1.5 bottom-0.5 text-[13px] font-black">∞</span>}
-              </Slot>
-            );
-          })}
+          {kb && !mobile && <BlasterSlot ammo={me.ammo} lvl={me.lvl} reloading={!!(me.flags & FLAG.reload)} />}
           {!mobile && (
             <>
               {!kb && <Slot k="1" active label={tx(weapon.name)} onClick={() => client.attackPress()}>
@@ -530,7 +521,7 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
             return (
               <div className={cn('absolute right-5 bottom-[max(26px,env(safe-area-inset-bottom))] flex items-end gap-3', side ? 'flex-row' : 'flex-col items-center')}>
                 <div className="flex flex-col items-center gap-2">
-                  <div className="pointer-events-none flex items-center gap-1 rounded-full bg-[#141a3f]/80 px-2 py-0.5 text-[12px] font-black"><GameIcon k={weapon.ic} size={18} />{me.ammo === INF ? '∞' : me.ammo}</div>
+                  {kb ? <AmmoPill ammo={me.ammo} lvl={me.lvl} reloading={!!(me.flags & FLAG.reload)} /> : <div className="pointer-events-none flex items-center gap-1 rounded-full bg-[#141a3f]/80 px-2 py-0.5 text-[12px] font-black"><GameIcon k={weapon.ic} size={18} />{me.ammo === INF ? '∞' : me.ammo}</div>}
                   <TouchBtn onDown={powerTap(useB)} color={sp.color} cd={useB ? hud.bonusLeft / 1000 : hud.powerLeft / 1000} cdMax={useB ? 1.2 : pw.cd} size={side ? 70 : 84}>
                     <GameIcon k={sp.ic} size={side ? 38 : 46} />
                     {useB && <span className="absolute -right-1 -bottom-1 rounded-full bg-black/70 px-1.5 text-[12px] font-black">×{me.charges}</span>}
@@ -596,8 +587,8 @@ export const GameView = memo(function GameView({ client, host, onExit, code, goa
         <div className="absolute bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-[#ff9f0a] px-4 py-1.5 text-[13px] font-extrabold text-[#2a1d00]">{t('Reconnecting…', 'Reconectando…')}</div>
       )}
       {client && me && hud && !mobile && !quiz && performance.now() - startAt < 30000 && (
-        <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
-          {side ? t('A/D move · W or Space jump (twice in the air) · S drop down · aim with the mouse · click to shoot', 'A/D moverse · W o Espacio saltar (dos veces en el aire) · S bajar · apunta con el mouse · clic disparar') : t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{kb ? t('1–7 weapons · E power · Q questions · B shop · knock rivals off the stage!', '1–7 armas · E poder · Q preguntas · B tienda · ¡saca a los rivales del escenario!') : paint ? t('E power · Q questions · stand on blocks to paint them your colour! Boxes give extra jumps.', 'E poder · Q preguntas · ¡párate en los bloques para pintarlos! Las cajas dan saltos extra.') : t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
+        <div className="pointer-events-none absolute bottom-[max(14px,env(safe-area-inset-bottom))] right-3 max-w-[calc(50%-150px)] text-right text-[11.5px] leading-snug font-semibold text-white/70 drop-shadow">
+          {kb ? t('A/D move (walk off an edge to go down) · W or Space jump, twice in the air · click to shoot', 'A/D moverse (para bajar, sal por el borde) · W o Espacio saltar, dos veces en el aire · clic disparar') : side ? t('A/D move · W or Space jump (twice in the air) · S drop down · aim with the mouse · click to shoot', 'A/D moverse · W o Espacio saltar (dos veces en el aire) · S bajar · apunta con el mouse · clic disparar') : t('WASD move · aim with the mouse · click to shoot · right click to walk', 'WASD moverse · apunta con el mouse · clic disparar · clic derecho caminar')}<br />{kb ? t('E power · Q questions · B upgrade your blaster · the higher their %, the farther they fly!', 'E poder · Q preguntas · B mejorar el bláster · ¡cuanto más % tengan, más lejos vuelan!') : paint ? t('E power · Q questions · stand on blocks to paint them your colour! Boxes give extra jumps.', 'E poder · Q preguntas · ¡párate en los bloques para pintarlos! Las cajas dan saltos extra.') : t('E power · R borrowed power · Q questions · B upgrades', 'E poder · R poder prestado · Q preguntas · B mejoras')}<br /><span className="text-[#ffe14d]">{t('Every step and shot costs energy · answer to recharge', 'Cada paso y disparo gasta energía · responde para recargar')}</span>
         </div>
       )}
     </div>
@@ -684,18 +675,46 @@ function Countdown({ startAt }: { startAt: number }) {
   );
 }
 
+/** Knockback hotbar: the pixel blaster in its tier colour, the magazine and the reload bar. */
+function BlasterSlot({ ammo, lvl, reloading }: { ammo: number; lvl: number; reloading: boolean }) {
+  const tier = blasterTier(lvl);
+  return (
+    <div className="pointer-events-none flex flex-col items-center drop-shadow-[0_3px_0_rgba(0,0,0,.35)]">
+      <div className="relative flex h-[74px] w-[118px] items-center justify-center rounded-2xl border-[3px] bg-[#141a3f]/85" style={{ borderColor: tier.color, boxShadow: `0 0 18px ${tier.color}55 inset` }}>
+        <GameIcon k="pixel" size={46} />
+        <span className="absolute top-0.5 left-1.5 text-[10.5px] font-black tracking-wide uppercase" style={{ color: tier.color }}>{tx(tier.name)}</span>
+        <span className={cn('absolute right-1.5 bottom-0.5 text-[15px] font-black tabular-nums', ammo <= 5 && !reloading && 'text-[#ffb547]')}>{reloading ? '' : ammo}<span className="text-[11px] text-white/55">/{tier.mag}</span></span>
+        {reloading && <ReloadBar secs={tier.reload} color={tier.color} />}
+      </div>
+      <div className="mt-1 max-w-[150px] truncate text-[12px] font-extrabold text-white/85">{tx(WEAPONS[7].name)}</div>
+    </div>
+  );
+}
 
-/** Knockback: the weapons you own, in arsenal order (hotbar slots 1–7). */
-function ownedArsenal(client: ClientSession): number[] {
-  const owned = client.myRow()?.[18] ?? 1;
-  return KB_ARSENAL.filter((a) => owned & (1 << a.w)).map((a) => a.w);
+/** Touch: magazine above the power button. */
+function AmmoPill({ ammo, lvl, reloading }: { ammo: number; lvl: number; reloading: boolean }) {
+  const tier = blasterTier(lvl);
+  return (
+    <div className="pointer-events-none relative flex min-w-[64px] items-center justify-center gap-1 overflow-hidden rounded-full border-2 bg-[#141a3f]/85 px-2 py-0.5 text-[12px] font-black tabular-nums" style={{ borderColor: tier.color }}>
+      <GameIcon k="pixel" size={18} />{reloading ? t('Reload', 'Recarga') : ammo}
+      {reloading && <ReloadBar secs={tier.reload} color={tier.color} />}
+    </div>
+  );
+}
+
+function ReloadBar({ secs, color }: { secs: number; color: string }) {
+  return (
+    <span className="absolute inset-x-1.5 bottom-1 h-1.5 overflow-hidden rounded-full bg-white/15">
+      <motion.span className="block h-full rounded-full" style={{ background: color }} initial={{ width: '0%' }} animate={{ width: '100%' }} transition={{ duration: secs, ease: 'linear' }} />
+    </span>
+  );
 }
 
 /** A round aiming reticle for the mouse (knockback). */
 const RETICLE = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="14" fill="none" stroke="#1b1f3a" stroke-width="5"/><circle cx="20" cy="20" r="14" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="20" cy="20" r="3.5" fill="#1b1f3a"/><circle cx="20" cy="20" r="1.8" fill="#fff"/></svg>')}") 20 20, crosshair`;
 
 /** Knockback, bottom left: energy left over what you started with, and the weapon in hand. */
-function KbStatus({ en, max, tired, weapon, small }: { en: number; max: number; tired: boolean; weapon: string; small: boolean }) {
+function KbStatus({ en, max, tired, weapon, lvl, small }: { en: number; max: number; tired: boolean; weapon: string; lvl: number; small: boolean }) {
   const low = en < max * 0.2;
   return (
     <div className="pointer-events-none drop-shadow-[0_2px_0_rgba(0,0,0,.45)]">
@@ -703,7 +722,7 @@ function KbStatus({ en, max, tired, weapon, small }: { en: number; max: number; 
         {num(Math.max(0, Math.round(en)))}<span className={cn('text-white/70', small ? 'text-[15px]' : 'text-[20px]')}>/{num(max)}</span>
         <GameIcon k={tired ? 'batteryLow' : 'bolt'} size={small ? 20 : 28} />
       </div>
-      <div className={cn('cw-title -mt-1 tracking-wide text-white uppercase', small ? 'text-[13px]' : 'text-[18px]')}>{weapon}</div>
+      <div className={cn('cw-title -mt-1 tracking-wide text-white uppercase', small ? 'text-[13px]' : 'text-[18px]')}>{weapon} <span style={{ color: blasterTier(lvl).color }}>· {tx(blasterTier(lvl).name)}</span></div>
     </div>
   );
 }
