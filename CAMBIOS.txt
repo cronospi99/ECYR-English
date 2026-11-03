@@ -558,6 +558,33 @@ G1o. ENGLISH RACERS · PULIDO DE MODELOS Y DETALLES
 - Agua con ondas animadas (mapa de normales que se desplaza).
 - Líneas de velocidad más finas y solo en los bordes de la pantalla.
 
+G1p. PROFES EN 3D · VERSIÓN 3 (English Racers, English Run y galería)
+- Cada profe se revisó contra su descripción (tipo de pelo y color, gafas,
+  barba, ropa, accesorios, estatura y contextura) y se corrigió lo que no
+  se notaba: las ojeras de Liliana ahora sí se ven; el afro de Gabriel es
+  redondo, con rizos en espiral; el pelo plateado de Dager se ve gris y
+  peinado (antes parecía un gorro blanco); el corte deportivo de Freddy
+  es corto y texturizado (antes era una cresta).
+- Femenino y masculino bien marcados: ellas con pestañas largas y
+  delineado, cejas finas y arqueadas, labios rosados, nariz más pequeña,
+  mentón más fino, cintura y hombros más estrechos, y en las blusas cuello
+  redondeado, moño y mangas abullonadas. Ellos con cejas gruesas y rectas,
+  mandíbula más cuadrada, cuello más ancho, pecho en V y menos rubor.
+- Pelo con mucho más detalle: mechones con surcos y brillo en todos los
+  peinados (siguen la dirección del peinado: raya al lado, peinado hacia
+  atrás, hacia la cola o el moño), pelo largo con más mechones, capa
+  interior y variación de tono; ondas reales en el pelo ondulado; rizos en
+  espiral; cola de caballo más llena.
+- Gafas corregidas: monturas finas con la forma de cada estilo (redondas,
+  rectangulares u "ojo de gato" con las puntas hacia arriba), puente,
+  plaquetas, bisagras y patillas que llegan hasta detrás de las orejas, y
+  lentes transparentes con reflejo (antes eran aros gruesos sin vidrio y
+  con patillas cortas al aire).
+- Sin "dientes de sierra": las barbas, la barba de pocos días y los bordes
+  del pelo tenían escalones; ahora la malla es más fina, el borde entra
+  suave y la barba de pocos días va pintada sobre la piel.
+- Aretes de argolla dorados donde la descripción los menciona.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

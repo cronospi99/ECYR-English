@@ -6,7 +6,7 @@
    from the start) and is drawn at −(z − pz), so numbers stay small however long the run lasts.
    Track pieces are hand-made patterns placed in sequence, each one always passable. */
 import * as THREE from 'three';
-import { ToonActor, type ToonClip } from '@/features/toons3d/runtime';
+import { ToonActor, isLens, type ToonClip } from '@/features/toons3d/runtime';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -203,7 +203,7 @@ export class RunGame {
   private prepActor(a: ToonActor) {
     a.object.rotation.y = Math.PI;
     a.object.scale.setScalar(TOON_SCALE);
-    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.material = MAT.char; m.castShadow = true; } });
+    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { const l = isLens(m); m.material = l ? MAT.lens : MAT.char; m.castShadow = !l; } });
   }
 
   /** Build the current theme: sky, light, fog, scenery, floor, obstacles, sea, bloom. */

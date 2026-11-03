@@ -4,7 +4,7 @@
    with a stepped toon ramp, so there is nothing to download except the teachers' models. */
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { makeToonMaterial } from '@/features/toons3d/runtime';
+import { makeLensMaterial, makeToonMaterial } from '@/features/toons3d/runtime';
 
 /* ------------------------------------------------------- curved world */
 /** x: how fast the world drops away (Subway-Surfers-style horizon); y: sideways bend. */
@@ -41,6 +41,7 @@ export const MAT = {
   world: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.82, metalness: 0 })),
   glossy: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.35, metalness: 0.05 })),
   char: makeToonMaterial((sh) => curveShader(sh)),
+  lens: makeLensMaterial((sh) => curveShader(sh)),
   coin: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.22, metalness: 0.7, emissive: 0x3a2600 })),
   /** Unlit and brighter than white where needed: neon, lights (picked up by the bloom). */
   glow: curved(new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false })),
