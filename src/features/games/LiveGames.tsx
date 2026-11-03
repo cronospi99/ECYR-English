@@ -67,6 +67,16 @@ export function LiveGames() {
         </span>
         <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]"><ChevronRight size={30} /></span>
       </Link>
+      <Link to="/racers" className="group relative mb-6 flex min-h-[150px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99] sm:p-6"
+        style={{ background: 'linear-gradient(120deg,#ff3d6e 0%,#ff8a3d 45%,#ffd23f 100%)' }}>
+        <span aria-hidden className="absolute -right-8 -bottom-16 h-64 w-64 rounded-full bg-white/15 transition-transform group-hover:scale-110" />
+        <span className="relative min-w-0 flex-1">
+          <span className="block text-[13px] font-extrabold tracking-wide text-white/90 uppercase">Nuevo · 3D · prototipo</span>
+          <span className="block text-[38px] leading-none font-black tracking-tight text-[#ffd23f] italic [-webkit-text-stroke:2px_#10204a] [paint-order:stroke_fill] [text-shadow:0_4px_0_#10204a] sm:text-[48px]">ENGLISH RACERS</span>
+          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">Carreras de karts con tu profe en 3D: derrapa para cargar turbos, salta rampas con trucos y bate tu récord en el Campus ECYR. Fase 1: contrarreloj.</span>
+        </span>
+        <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]"><ChevronRight size={30} /></span>
+      </Link>
       <h2 className="text-title-2 mb-3 px-1">En vivo con tu clase</h2>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {LIVE.map((g) => (

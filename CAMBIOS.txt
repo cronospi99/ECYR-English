@@ -463,6 +463,51 @@ G1l. MANTENIMIENTO
   marcaba npm audit (0 vulnerabilidades). El generador de PDF de tareas
   funciona igual.
 
+G1n. ENGLISH RACERS · FASE 1: PROTOTIPO DE MANEJO (ruta /racers)
+- Juego nuevo de carreras de karts en 3D con los profes (estilo de juego de
+  karts arcade; personajes, pistas y objetos propios). Entrada destacada en
+  Juegos › En vivo con tu clase.
+- Pista "Campus ECYR" (~1 km, 3 vueltas): recta de salida con gradas y
+  público, pórtico con semáforo de salida, curva peraltada, recta con
+  flechas de turbo, horquilla alrededor de una fuente, chicana junto al
+  colegio, colina con cresta y salto en rampa sobre un estanque (si no
+  llegas, caes al agua y un segundo después vuelves a la pista). Escenario
+  hecho en código: edificios con torre de reloj, cancha de fútbol y de
+  baloncesto, bus escolar, árboles, faroles, banderas, vallas, carteles,
+  colinas y nubes.
+- Manejo arcade a 120 pasos por segundo: aceleración, freno y reversa,
+  bordillos, pasto que frena, muros que rebotan (se roza sin perder casi
+  velocidad; solo un choque de frente frena), peralte que pega el kart a la
+  curva.
+- Derrape: botón para saltar y, manteniéndolo mientras giras, el kart
+  derrapa y carga chispas azul → naranja → morado; al soltar da un
+  mini-turbo de 0,55 / 0,95 / 1,45 s. Truco en el aire (rampas) = turbo al
+  aterrizar. Salida perfecta si aceleras justo al final de la cuenta; si
+  aceleras demasiado pronto, el kart se cala.
+- Kart propio hecho en código con el mismo material "juguete de vinilo" de
+  los personajes, del color de cada profe: llantas grandes atrás, alerón,
+  escapes con llamas de turbo, volante que gira; el profe va sentado,
+  manos al volante, se inclina en las curvas y cambia de cara (risa,
+  sorpresa al volar, feliz con turbo, celebra en la meta).
+- Efectos: chispas de colores, humo del derrape, marcas de llanta, polvo en
+  el pasto, salpicaduras, llamas, resplandor (bloom), líneas de velocidad,
+  vibración de cámara. Cámara de persecución con mirar atrás (C).
+- Sonido sintetizado: motor con cambios, chirrido al derrapar, turbos,
+  saltos, choques, cuenta regresiva, vueltas y música propia (más rápida en
+  la última vuelta).
+- Pantalla: vuelta, tiempo total y de vuelta, mejor vuelta, velocidad,
+  nivel de turbo, minimapa, avisos (¡Última vuelta!, ¡Vuelta rápida!,
+  ¡Sentido contrario!). Resultados con tiempos por vuelta y récord guardado
+  en el dispositivo. Pausa con reiniciar y volver al menú.
+- Controles: teclado (WASD/flechas, Espacio/Shift derrape, C, R, Esc),
+  control de consola, y en celular botones táctiles: flechas para girar y
+  botón de ACELERAR (como se pidió), DERRAPE y FRENO; aviso para girar el
+  celular a horizontal. Calidad automática: si el equipo no da, baja el
+  resplandor, luego la resolución y luego las sombras.
+- Probado con piloto automático (3 vueltas de ~35 s, sin caídas) y pruebas
+  del derrape, el truco, los muros y el pasto. Falta probar el manejo y el
+  rendimiento en celulares reales.
+
 G1m. CLASS WARS · KNOCKBACK: NUEVAS REGLAS Y BLÁSTER DE PÍXELES
 - Ya no se puede bajar de una plataforma con S / flecha abajo (ni con el
   joystick hacia abajo): para bajar hay que caminar hasta el borde y salir.
