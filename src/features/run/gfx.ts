@@ -4,6 +4,7 @@
    with a stepped toon ramp, so there is nothing to download except the teachers' models. */
 import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { makeToonMaterial } from '@/features/toons3d/runtime';
 
 /* ------------------------------------------------------- curved world */
 /** x: how fast the world drops away (Subway-Surfers-style horizon); y: sideways bend. */
@@ -13,12 +14,14 @@ const CURVE_GLSL = `
   mvPosition.x += uCurve.y * mvPosition.z * mvPosition.z;
   gl_Position = projectionMatrix * mvPosition;`;
 
-/** Bends any built-in material with the world (only where it lands on screen; shadows stay flat). */
+/** Adds the world bend to a built-in shader (only where it lands on screen; shadows stay flat). */
+export function curveShader(sh: { uniforms: Record<string, THREE.IUniform>; vertexShader: string }) {
+  sh.uniforms.uCurve = CURVE;
+  sh.vertexShader = 'uniform vec2 uCurve;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>' + CURVE_GLSL);
+}
+/** Bends any built-in material with the world. */
 export function curved<T extends THREE.Material>(m: T): T {
-  m.onBeforeCompile = (sh) => {
-    sh.uniforms.uCurve = CURVE;
-    sh.vertexShader = 'uniform vec2 uCurve;\n' + sh.vertexShader.replace('#include <project_vertex>', '#include <project_vertex>' + CURVE_GLSL);
-  };
+  m.onBeforeCompile = (sh) => curveShader(sh);
   m.customProgramCacheKey = () => 'curved';
   return m;
 }
@@ -32,62 +35,19 @@ function ramp(steps: number[]) {
   return t;
 }
 const RAMP = ramp([120, 196, 255]);
-const RAMP_CHAR = ramp([105, 180, 236, 255]);
 
+/** Soft stylised PBR (lit by the sun, the sky and an environment map), bent with the world. */
 export const MAT = {
-  world: curved(new THREE.MeshToonMaterial({ vertexColors: true, gradientMap: RAMP })),
-  char: curved(new THREE.MeshToonMaterial({ vertexColors: true, gradientMap: RAMP_CHAR })),
+  world: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.82, metalness: 0 })),
+  glossy: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.35, metalness: 0.05 })),
+  char: makeToonMaterial((sh) => curveShader(sh)),
+  coin: curved(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.22, metalness: 0.7, emissive: 0x3a2600 })),
+  /** Unlit and brighter than white where needed: neon, lights (picked up by the bloom). */
   glow: curved(new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false })),
 };
 
-/** Back-face "inverted hull" ink outline that bends with the world (works on instanced meshes too). */
-export function outlineMat(thick: number, color = 0x1a1f2e) {
-  const m = new THREE.ShaderMaterial({
-    uniforms: THREE.UniformsUtils.merge([THREE.UniformsLib.fog, { uThick: { value: thick }, uColor: { value: new THREE.Color(color) } }]),
-    vertexShader: `
-      uniform float uThick; uniform vec2 uCurve;
-      #include <fog_pars_vertex>
-      void main() {
-        vec4 p = vec4(position, 1.0); vec3 n = normal;
-        #ifdef USE_INSTANCING
-          p = instanceMatrix * p; n = mat3(instanceMatrix) * n;
-        #endif
-        vec4 mvPosition = modelViewMatrix * p;
-        vec3 nv = normalize(mat3(modelViewMatrix) * n);
-        mvPosition.xyz += nv * uThick * (1.0 + 0.012 * max(0.0, -mvPosition.z - 6.0));
-        ${CURVE_GLSL}
-        #include <fog_vertex>
-      }`,
-    fragmentShader: `
-      uniform vec3 uColor;
-      #include <fog_pars_fragment>
-      void main() {
-        gl_FragColor = vec4(uColor, 1.0);
-        #include <fog_fragment>
-        #include <colorspace_fragment>
-      }`,
-    side: THREE.BackSide,
-    fog: true,
-  });
-  m.uniforms.uCurve = CURVE;
-  return m;
-}
-export const OUTLINE = { char: outlineMat(0.016), prop: outlineMat(0.03), coin: outlineMat(0.022, 0x5a3a00) };
-
-/** Adds an outline twin to every mesh under `o`. */
-export function addOutlines(o: THREE.Object3D, mat: THREE.Material) {
-  const meshes: THREE.Mesh[] = [];
-  o.traverse((c) => { const m = c as THREE.Mesh; if (m.isMesh && !m.userData.outline) meshes.push(m); });
-  for (const m of meshes) {
-    const ol = new THREE.Mesh(m.geometry, mat);
-    ol.userData.outline = true;
-    ol.castShadow = false;
-    m.add(ol);
-  }
-}
-
 /* ---------------------------------------------------- geometry builder */
-const U = {
+export const U = {
   box: new THREE.BoxGeometry(1, 1, 1),
   cyl: new THREE.CylinderGeometry(1, 1, 1, 14),
   cyl6: new THREE.CylinderGeometry(1, 1, 1, 6),
@@ -96,8 +56,10 @@ const U = {
 };
 const _m = new THREE.Matrix4(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _p = new THREE.Vector3(), _s = new THREE.Vector3(), _c = new THREE.Color();
 
-class Geo {
+export class Geo {
   parts: THREE.BufferGeometry[] = [];
+  /** Colours are multiplied by this (> 1 makes neon that blooms). */
+  boost = 1;
   add(g: THREE.BufferGeometry, color: number, x: number, y: number, z: number, sx: number, sy: number, sz: number, rx = 0, ry = 0, rz = 0, jitter = 0) {
     const geo = g.index ? g.toNonIndexed() : g.clone();
     if (geo.getAttribute('uv')) geo.deleteAttribute('uv');
@@ -107,7 +69,8 @@ class Geo {
     if (jitter) _c.offsetHSL(0, 0, (Math.random() - 0.5) * jitter);
     const n = geo.getAttribute('position').count;
     const a = new Float32Array(n * 3);
-    for (let i = 0; i < n; i++) { a[i * 3] = _c.r; a[i * 3 + 1] = _c.g; a[i * 3 + 2] = _c.b; }
+    const k = this.boost;
+    for (let i = 0; i < n; i++) { a[i * 3] = _c.r * k; a[i * 3 + 1] = _c.g * k; a[i * 3 + 2] = _c.b * k; }
     geo.setAttribute('color', new THREE.BufferAttribute(a, 3));
     this.parts.push(geo);
     return this;
@@ -121,9 +84,9 @@ class Geo {
   build() { const g = mergeGeometries(this.parts, false); this.parts.forEach((p) => p.dispose()); g.computeBoundingSphere(); return g; }
 }
 
-const rnd = Math.random;
-const pick = <T,>(a: readonly T[]) => a[Math.floor(rnd() * a.length)];
-const shade = (hex: number, l: number) => _c.setHex(hex).offsetHSL(0, 0, l).getHex();
+export const rnd = Math.random;
+export const pick = <T,>(a: readonly T[]) => a[Math.floor(rnd() * a.length)];
+export const shade = (hex: number, l: number) => _c.setHex(hex).offsetHSL(0, 0, l).getHex();
 
 /* -------------------------------------------------------------- street */
 export const LANE = 2;
@@ -391,13 +354,12 @@ function powerIcon(kind: PowerKind) {
 /** A spinning token: coloured rim and the icon on both faces. */
 export function powerToken(kind: PowerKind) {
   const grp = new THREE.Group();
-  const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.46, 0.14, 28).rotateX(Math.PI / 2), curved(new THREE.MeshToonMaterial({ color: POWER_COLORS[kind], gradientMap: RAMP })));
+  const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.46, 0.14, 28).rotateX(Math.PI / 2), curved(new THREE.MeshStandardMaterial({ color: POWER_COLORS[kind], roughness: 0.3, metalness: 0.2 })));
   const face = curved(new THREE.MeshBasicMaterial({ map: powerIcon(kind), toneMapped: false }));
   const disc = new THREE.CircleGeometry(0.44, 28);
   const f1 = new THREE.Mesh(disc, face); f1.position.z = 0.072;
   const f2 = new THREE.Mesh(disc, face); f2.position.z = -0.072; f2.rotation.y = Math.PI;
   grp.add(rim, f1, f2);
-  rim.add(new THREE.Mesh(rim.geometry, OUTLINE.prop));
   return grp;
 }
 
@@ -410,9 +372,8 @@ export function gateMesh(): GateMesh {
   g.box(0, 5.4, 0, 9.0, 0.45, 0.4, 0x00897b);
   for (let i = 0; i < 3; i++) for (const s of [-0.75, 0.75]) g.box((i - 1) * LANE + s, 4.7, 0, 0.05, 0.75, 0.05, 0x263238);
   g.box(0, 0, 0.6, 7.0, 0.02, 0.5, 0xffffff);
-  const frame = new THREE.Mesh(g.build(), MAT.world);
+  const frame = new THREE.Mesh(g.build(), MAT.glossy);
   frame.castShadow = true;
-  addOutlines(frame, OUTLINE.prop);
   group.add(frame);
   const mk = (w: number, h: number, pw: number, ph: number) => {
     const cv = document.createElement('canvas'); cv.width = pw; cv.height = ph;
@@ -435,17 +396,19 @@ export function gateMesh(): GateMesh {
 }
 
 /* ----------------------------------------------------------------- sky */
-export const SKY = { top: 0x3b86f0, mid: 0x8cc4ff, horizon: 0xe4f2ff, fog: 0xd9ecff };
-export function skyDome() {
+export interface SkyColors { top: number; mid: number; horizon: number; fog: number; sun: [number, number, number]; sunGlow?: number; stars?: boolean }
+export function skyDome(sky: SkyColors) {
   const m = new THREE.ShaderMaterial({
-    uniforms: { top: { value: new THREE.Color(SKY.top) }, mid: { value: new THREE.Color(SKY.mid) }, hor: { value: new THREE.Color(SKY.horizon) }, sun: { value: new THREE.Vector3(0.35, 0.32, -1).normalize() } },
+    uniforms: { top: { value: new THREE.Color(sky.top) }, mid: { value: new THREE.Color(sky.mid) }, hor: { value: new THREE.Color(sky.horizon) }, sun: { value: new THREE.Vector3(...sky.sun).normalize() }, glow: { value: sky.sunGlow ?? 1 }, stars: { value: sky.stars ? 1 : 0 } },
     vertexShader: 'varying vec3 vD; void main(){ vD = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
-    fragmentShader: `uniform vec3 top, mid, hor, sun; varying vec3 vD;
+    fragmentShader: `uniform vec3 top, mid, hor, sun; uniform float glow, stars; varying vec3 vD;
+      float hash(vec3 p){ p = fract(p * 0.3183099 + 0.1); p *= 17.0; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }
       void main(){
         float h = clamp(vD.y, -0.2, 1.0);
         vec3 c = h < 0.12 ? mix(hor, mid, smoothstep(-0.02, 0.12, h)) : mix(mid, top, smoothstep(0.12, 0.7, h));
         float s = max(0.0, dot(vD, sun));
-        c += vec3(1.0, 0.92, 0.75) * (pow(s, 600.0) * 1.4 + pow(s, 12.0) * 0.18);
+        c += vec3(1.0, 0.92, 0.75) * (pow(s, 600.0) * 1.4 + pow(s, 12.0) * 0.18) * glow;
+        if (stars > 0.5) { vec3 q = floor(vD * 260.0); float st = step(0.996, hash(q)) * smoothstep(0.05, 0.4, h); c += vec3(st) * 0.9; }
         gl_FragColor = vec4(c, 1.0);
         #include <colorspace_fragment>
       }`,
@@ -456,9 +419,16 @@ export function skyDome() {
   return mesh;
 }
 
+/** A painted card at the horizon (far city, islands, mountains…). */
+export function horizonCard(draw: (c: CanvasRenderingContext2D) => void, opacity = 0.85) {
+  const tex = canvasTex(2048, 360, draw);
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(1100, 150), new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity, fog: false, depthWrite: false, toneMapped: false }));
+  m.renderOrder = -9;
+  return m;
+}
 /** Far city (clock tower, dome, big wheel, towers) painted on a card at the horizon. */
 export function skyline() {
-  const tex = canvasTex(2048, 360, (c) => {
+  return horizonCard((c) => {
     const layer = (col: string, base: number, hMin: number, hMax: number, seed: number) => {
       c.fillStyle = col;
       let r = seed * 9301 + 49297;
@@ -482,15 +452,12 @@ export function skyline() {
     c.lineWidth = 8; c.beginPath(); c.moveTo(1600, 360); c.lineTo(1640, 200); c.lineTo(1680, 360); c.stroke();
     layer('#bcd5ee', 360, 20, 80, 41);
   });
-  const m = new THREE.Mesh(new THREE.PlaneGeometry(1100, 150), new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity: 0.85, fog: false, depthWrite: false, toneMapped: false }));
-  m.renderOrder = -9;
-  return m;
 }
 
-export function cloud() {
+export function cloud(tint = 0xffffff) {
   const g = new Geo();
   const n = 5 + Math.floor(rnd() * 3);
-  for (let i = 0; i < n; i++) g.blob((i - n / 2) * 4.2 + rnd() * 2, rnd() * 2.5, rnd() * 3, 4 + rnd() * 3, i % 2 ? 0xffffff : 0xf4f8ff, 0.75);
+  for (let i = 0; i < n; i++) g.blob((i - n / 2) * 4.2 + rnd() * 2, rnd() * 2.5, rnd() * 3, 4 + rnd() * 3, i % 2 ? tint : shade(tint, -0.03), 0.75);
   const mesh = new THREE.Mesh(g.build(), new THREE.MeshToonMaterial({ vertexColors: true, gradientMap: RAMP, fog: false }));
   mesh.renderOrder = -8;
   return mesh;

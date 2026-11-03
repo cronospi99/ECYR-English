@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { OutlineEffect } from 'three/addons/effects/OutlineEffect.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { ArrowLeft, RotateCw, Users } from 'lucide-react';
 import { cn } from '@/lib/cn';
-import { TOON_CLIPS, TOON_OUTLINE, TOONS, ToonActor, type ToonClip } from './runtime';
+import { TOON_CLIPS, TOONS, ToonActor, type Face, type ToonClip } from './runtime';
 
+const FACE_ES: [Face | null, string][] = [[null, 'Automática'], ['smile', 'Sonrisa'], ['grin', 'Risa'], ['happy', 'Feliz'], ['surprised', 'Sorpresa'], ['wink', 'Guiño'], ['sad', 'Triste'], ['love', 'Enamorado']];
 const CLIP_ES: Record<ToonClip, string> = { idle: 'Reposo', walk: 'Caminar', run: 'Correr', jump: 'Saltar', fall: 'Caer', slide: 'Deslizarse', hit: 'Golpe', cheer: 'Celebrar' };
 type View = 'front' | 'back' | 'side';
 
 class Viewer {
   private renderer: THREE.WebGLRenderer;
-  private effect: OutlineEffect;
   private scene = new THREE.Scene();
   private camera = new THREE.PerspectiveCamera(30, 1, 0.05, 100);
   private controls: OrbitControls;
@@ -25,19 +25,37 @@ class Viewer {
   private ro: ResizeObserver;
   private token = 0;
   private clip: ToonClip = 'idle';
+  private face: Face | null = null;
   private span = 1;
 
   constructor(private host: HTMLElement) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+    this.renderer.toneMapping = THREE.NeutralToneMapping;
+    this.renderer.toneMappingExposure = 1.05;
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
     host.appendChild(this.renderer.domElement);
-    this.effect = new OutlineEffect(this.renderer, TOON_OUTLINE);
-    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x7480b8, 1.5));
-    const sun = new THREE.DirectionalLight(0xffffff, 2.1);
-    sun.position.set(1.6, 3, 4);
+    // studio light: soft reflections from a room, a warm key light with soft shadows, a cool rim
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.scene.environmentIntensity = 0.75;
+    pmrem.dispose();
+    this.scene.add(new THREE.HemisphereLight(0xeaf2ff, 0x5a6390, 0.6));
+    const sun = new THREE.DirectionalLight(0xfff3e2, 2.2);
+    sun.position.set(2.2, 4, 3.2);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    sun.shadow.radius = 6;
+    sun.shadow.bias = -0.0005;
+    Object.assign(sun.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6, near: 0.5, far: 20 });
     this.scene.add(sun);
-    const ground = new THREE.Mesh(new THREE.CircleGeometry(30, 48), new THREE.MeshBasicMaterial({ color: 0x2a2f6e, transparent: true, opacity: 0.35 }));
+    const rim = new THREE.DirectionalLight(0xbcd2ff, 1.2);
+    rim.position.set(-3, 2.5, -3);
+    this.scene.add(rim);
+    const ground = new THREE.Mesh(new THREE.CircleGeometry(30, 64), new THREE.MeshStandardMaterial({ color: 0x252b66, roughness: 0.9, transparent: true, opacity: 0.55 }));
     ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
     this.scene.add(ground);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
@@ -51,7 +69,7 @@ class Viewer {
       const dt = Math.min(0.05, this.clock.getDelta());
       for (const a of this.actors) a.update(dt);
       this.controls.update();
-      this.effect.render(this.scene, this.camera);
+      this.renderer.render(this.scene, this.camera);
     };
     tick();
   }
@@ -82,10 +100,17 @@ class Viewer {
       sh.position.set(a.object.position.x, 0.002, a.object.position.z);
       this.scene.add(sh);
       this.shadows.push(sh);
+      a.object.traverse((o) => { if ((o as THREE.Mesh).isMesh) o.castShadow = true; });
+      a.setFace(this.face);
       a.play(this.clip, 0);
     });
     this.span = this.actors.length > 1 ? cols : 1;
     this.view('front');
+  }
+
+  setFace(f: Face | null) {
+    this.face = f;
+    for (const a of this.actors) a.setFace(f);
   }
 
   setClip(c: ToonClip) {
@@ -120,6 +145,7 @@ export default function GalleryPage() {
   const [all, setAll] = useState(false);
   const [clip, setClip] = useState<ToonClip>('idle');
   const [spin, setSpin] = useState(false);
+  const [face, setFace] = useState<Face | null>(null);
   const [err, setErr] = useState(false);
 
   useEffect(() => {
@@ -129,6 +155,7 @@ export default function GalleryPage() {
   useEffect(() => { void viewer.current?.show(all ? TOONS.map((t) => t.id) : [TOONS[sel].id]); }, [sel, all]);
   useEffect(() => { viewer.current?.setClip(clip); }, [clip]);
   useEffect(() => { viewer.current?.spin(spin); }, [spin]);
+  useEffect(() => { viewer.current?.setFace(face); }, [face]);
 
   const btn = 'rounded-xl px-3 py-1.5 text-[13.5px] font-extrabold transition-colors';
   return (
@@ -158,6 +185,11 @@ export default function GalleryPage() {
           <div className="pointer-events-auto flex flex-wrap justify-center gap-1.5 rounded-2xl bg-[#141a3f]/85 p-1.5 shadow-lg">
             {TOON_CLIPS.map((c) => (
               <button key={c} type="button" onClick={() => setClip(c)} className={cn(btn, clip === c ? 'bg-[#30d158] text-white' : 'bg-white/10 hover:bg-white/20')}>{CLIP_ES[c]}</button>
+            ))}
+          </div>
+          <div className="pointer-events-auto flex flex-wrap justify-center gap-1.5 rounded-2xl bg-[#141a3f]/85 p-1.5 shadow-lg">
+            {FACE_ES.map(([f, label]) => (
+              <button key={label} type="button" onClick={() => setFace(f)} className={cn(btn, face === f ? 'bg-[#ff8fc0] text-[#3a0a22]' : 'bg-white/10 hover:bg-white/20')}>{label}</button>
             ))}
           </div>
           <div className="pointer-events-auto flex gap-1.5 rounded-2xl bg-[#141a3f]/85 p-1.5 shadow-lg">

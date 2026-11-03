@@ -11,6 +11,7 @@ import { RunGame, type Hud, type Toast } from './engine';
 import { POWER_COLORS, type PowerKind } from './gfx';
 import { prefs, setPref, unlock } from './audio';
 import { RUN_LEVELS, type RunLevel } from './questions';
+import { THEME_LIST, THEMES, type ThemeId } from './themes';
 
 const CSS = `
 .er-root{font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;background:#d9ecff}
@@ -29,6 +30,13 @@ const CSS = `
 const POWER_ES: Record<PowerKind, [string, string]> = { magnet: ['Imán', 'M'], double: ['x2', '2'], shield: ['Escudo', 'S'], jump: ['Súper salto', 'J'] };
 
 const initialToon = () => { try { const v = localStorage.getItem('run:toon'); if (v && TOONS.some((t) => t.id === v)) return v; } catch { /* ignore */ } return TOONS[Math.floor(Math.random() * TOONS.length)].id; };
+const initialTheme = (): ThemeId => { try { const v = localStorage.getItem('run:theme'); if (v && v in THEMES) return v as ThemeId; } catch { /* ignore */ } return 'city'; };
+const THEME_BG: Record<ThemeId, string> = {
+  city: 'linear-gradient(160deg,#5aa7ff,#e4f2ff 70%,#c4553f)',
+  beach: 'linear-gradient(170deg,#1f8ef0,#bff0ff 55%,#19aec4 56%,#f2dfae)',
+  roofs: 'linear-gradient(170deg,#2c3e8f,#f2885b 55%,#ffd59e 70%,#6a6f78)',
+  neon: 'linear-gradient(170deg,#07031c,#2b0b52 50%,#ff4f8b 72%,#1a1236)',
+};
 const initialLevel = (): RunLevel => { try { const v = localStorage.getItem('run:level'); if (v && RUN_LEVELS.some((l) => l.id === v)) return v as RunLevel; } catch { /* ignore */ } return 'A1'; };
 
 function Btn({ tone = 'yellow', className, children, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { tone?: 'yellow' | 'green' | 'white' | 'ghost' | 'red' }) {
@@ -53,6 +61,7 @@ export default function RunApp() {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [toon, setToon] = useState(initialToon);
   const [level, setLevel] = useState<RunLevel>(initialLevel);
+  const [theme, setTheme] = useState<ThemeId>(initialTheme);
   const [, force] = useState(0);
   const [err, setErr] = useState(false);
 
@@ -62,7 +71,7 @@ export default function RunApp() {
     document.title = 'English Run · ECYR English';
     let g: RunGame | null = null;
     try {
-      g = new RunGame(host.current!, { toon, level });
+      g = new RunGame(host.current!, { toon, level, theme });
       g.onHud = setHud;
       g.onToast = (t) => { setToasts((a) => [...a.slice(-2), t]); setTimeout(() => setToasts((a) => a.filter((x) => x.id !== t.id)), 1900); };
       setGame(g);
@@ -110,6 +119,16 @@ export default function RunApp() {
                   <div className="flex items-center justify-center gap-2 truncate text-[22px] font-black"><span className="h-3.5 w-3.5 shrink-0 rounded-full border border-black/30" style={{ background: cur.color }} />{cur.name}</div>
                 </div>
                 <button type="button" onClick={() => pickToon(1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label="Siguiente"><ChevronRight /></button>
+              </div>
+              <div>
+                <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Escenario</div>
+                <div className="grid grid-cols-4 gap-1.5">
+                  {THEME_LIST.map((th) => (
+                    <button key={th.id} type="button" onClick={() => { setTheme(th.id); game?.setTheme(th.id); }} aria-pressed={theme === th.id}
+                      className={cn('flex h-[54px] items-end justify-center rounded-xl pb-1 text-[12.5px] font-black shadow-[inset_0_-22px_14px_-10px_rgba(0,0,0,.55)] transition-transform', theme === th.id ? 'scale-[1.04] ring-3 ring-[#ffd23f]' : 'opacity-85 hover:opacity-100')}
+                      style={{ background: THEME_BG[th.id] }}>{th.name}</button>
+                  ))}
+                </div>
               </div>
               <div>
                 <div className="mb-1 text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Nivel de las preguntas</div>

@@ -393,6 +393,39 @@ G1i. ENGLISH RUN (Juegos, tarjeta destacada; ruta /run)
 - Probado con un piloto automático que corre 8 km de pista generada: nunca
   aparece un tramo imposible.
 
+G1i-2. PERSONAJES 3D V2 Y ESCENARIOS DE ENGLISH RUN
+- Personajes con más calidad, estilo "juguete de vinilo" (como la imagen de
+  referencia): luz suave con reflejos (material PBR con capa brillante en
+  piel, pelo, ojos y zapatos; la ropa queda mate), sin contornos de tinta.
+  Ojos grandes con iris, pupila, dos brillos y pestañas; mejillas
+  sonrojadas pintadas; nariz y orejas redondeadas; cejas más gruesas.
+- Ropa con detalle: camisas con cuello de solapas, tira de botones y
+  bolsillo; corbata con nudo; cinturón con hebilla metálica; puños en las
+  mangas; jean con costura y dobladillo; zapatos brillantes con suela;
+  manos redondeadas con pulgar. El cuerpo ahora tiene hombros (antes era
+  ovalado). Gafas rectangulares y de gato con marco redondeado; la barba
+  completa ya no tapa la cara.
+- Expresiones: sonrisa, risa, feliz (ojos ^ ^), sorpresa, guiño, triste y
+  enamorado (ojos de corazón). Las animaciones las usan solas (corre con
+  risa, se sorprende al chocar, celebra con ojos felices) y en /toons3d hay
+  botones para probar cada una.
+- Escenarios de English Run (se eligen en el menú):
+  · Ciudad: la calle de siempre, ahora con luz suave y monedas brillantes.
+  · Playa: muelle de tablones sobre el mar con olas animadas, palmeras,
+    sombrillas, casetas, torre salvavidas, velero y faro; tranvías de playa,
+    cercas para saltar y redes de voleibol para deslizarse; tablones rotos
+    (huecos) para saltar.
+  · Tejados: correr por las azoteas al atardecer saltando de edificio en
+    edificio (a veces hay una tabla para cruzar), con tanques de agua,
+    aires acondicionados, ropa colgada y contenedores con rampa.
+  · Neón: ciudad synthwave de noche con estrellas, sol a rayas, rejilla
+    brillante, torres con luces, arcos de neón, aerodeslizadores, láseres y
+    resplandor (bloom) en lo que brilla.
+- Caer en un hueco = caída (se puede revivir respondiendo). Probado con un
+  piloto automático: 8 km por escenario, 146 huecos, ninguno imposible.
+- Si el teléfono no da, primero se apaga el resplandor, luego baja la
+  resolución y por último las sombras.
+
 G1j. YOU DRAW (Juegos › En vivo con tu clase, ruta /youdraw)
 - El profe dirige desde el proyector (no juega): crea la sala, los
   estudiantes entran con el código o escaneando el QR (también pueden entrar

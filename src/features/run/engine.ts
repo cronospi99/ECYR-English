@@ -7,10 +7,12 @@
    Track pieces are hand-made patterns placed in sequence, each one always passable. */
 import * as THREE from 'three';
 import { ToonActor, type ToonClip } from '@/features/toons3d/runtime';
-import {
-  BUS, CHUNK, CURVE, LANE, MAT, OUTLINE, POWER_COLORS, RAMP_L, SKY, addOutlines, busGeo, chunkGeo, cloud, coinGeo, curved, gateMesh,
-  headlightGeo, highBarrierGeo, lowBarrierGeo, paintBoard, powerToken, rampGeo, skyDome, skyline, softDot, type GateMesh, type PowerKind,
-} from './gfx';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { BUS, CHUNK, CURVE, LANE, MAT, POWER_COLORS, RAMP_L, cloud, coinGeo, curveShader, curved, gateMesh, paintBoard, powerToken, skyDome, softDot, type GateMesh, type PowerKind } from './gfx';
+import { THEMES, TILE, type Parts, type Theme, type ThemeId } from './themes';
 import { say, setMusicIntensity, sfx, startMusic, stopMusic } from './audio';
 import { makeQuestion, type RunLevel, type RunQ } from './questions';
 
@@ -31,6 +33,8 @@ interface Coin { x: number; y: number; z: number; mag: boolean }
 interface Power { kind: PowerKind; x: number; y: number; z: number; mesh: THREE.Object3D }
 interface Gate { z: number; q: RunQ; opts: string[]; correct: number; gm: GateMesh; passed: boolean }
 interface Part { x: number; y: number; z: number; vx: number; vy: number; vz: number; life: number; max: number; r: number; g: number; b: number; grav: number }
+/** A hole in the floor of one lane, z0 → z1 (track metres, on the tile grid). */
+interface Gap { lane: number; z0: number; z1: number; plank?: boolean }
 
 const G = -38;
 const JUMP_V = Math.sqrt(2 * -G * 1.45);
@@ -58,13 +62,25 @@ export class RunGame {
   private scene = new THREE.Scene();
   private camera = new THREE.PerspectiveCamera(60, 1, 0.1, 520);
   private sun = new THREE.DirectionalLight(0xfff1d6, 2.3);
+  private hemi = new THREE.HemisphereLight(0xd8ecff, 0x8d8266, 1);
   private sky = new THREE.Group();
   private clouds: THREE.Mesh[] = [];
-  private chunkGeos: THREE.BufferGeometry[] = [];
+  private chunkParts: Parts[] = [];
   private chunks: { mesh: THREE.Mesh; z: number }[] = [];
   private pools: Record<string, Pool> = {};
   private coinMesh: THREE.InstancedMesh;
-  private coinLine: THREE.InstancedMesh;
+  /** Everything that belongs to the current theme (rebuilt when the theme changes). */
+  private world = new THREE.Group();
+  theme: Theme;
+  private floor: THREE.InstancedMesh[] = [];
+  private floorGlow: THREE.InstancedMesh[] = [];
+  private planks: THREE.InstancedMesh | null = null;
+  private water: THREE.Mesh | null = null;
+  private waterU = { uTime: { value: 0 }, uOff: { value: 0 } };
+  private gaps: Gap[] = [];
+  private composer: EffectComposer | null = null;
+  private bloomOk = true;
+  private envTex: THREE.Texture | null = null;
   private gatePool: GateMesh[] = [];
   private parts: Part[] = [];
   private partGeo = new THREE.BufferGeometry();
@@ -111,23 +127,24 @@ export class RunGame {
   private touch: { x: number; y: number; done: boolean } | null = null;
   private offs: (() => void)[] = [];
 
-  constructor(private host: HTMLElement, opts: { toon: string; level: RunLevel }) {
+  constructor(private host: HTMLElement, opts: { toon: string; level: RunLevel; theme?: ThemeId }) {
     this.toonId = opts.toon;
     this.level = opts.level;
+    this.theme = THEMES[opts.theme ?? 'city'];
     const r = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
     this.dpr = Math.min(window.devicePixelRatio || 1, 1.75);
     r.setPixelRatio(this.dpr);
     r.shadowMap.enabled = true;
-    r.shadowMap.type = THREE.PCFSoftShadowMap;
+    r.shadowMap.type = THREE.PCFShadowMap;
+    r.toneMapping = THREE.NeutralToneMapping;
     r.domElement.style.touchAction = 'none';
     r.domElement.style.display = 'block';
     host.appendChild(r.domElement);
     this.renderer = r;
 
     const s = this.scene;
-    s.background = new THREE.Color(SKY.fog);
-    s.fog = new THREE.Fog(SKY.fog, 40, 190);
-    s.add(new THREE.HemisphereLight(0xd8ecff, 0x8d8266, 1.55));
+    s.fog = new THREE.Fog(0xffffff, 40, 190);
+    s.add(this.hemi);
     this.sun.position.set(7, 14, 3);
     this.sun.target.position.set(0, 0, -8);
     this.sun.castShadow = true;
@@ -135,55 +152,14 @@ export class RunGame {
     sc.mapSize.set(window.innerWidth > 900 ? 2048 : 1024, window.innerWidth > 900 ? 2048 : 1024);
     Object.assign(sc.camera, { left: -14, right: 14, top: 22, bottom: -18, near: 1, far: 60 });
     sc.bias = -0.0006; sc.normalBias = 0.03;
-    s.add(this.sun, this.sun.target);
-
-    // sky: dome, far city, clouds — they follow the camera (infinitely far)
-    this.sky.add(skyDome());
-    const city = skyline();
-    city.position.set(0, 8, -330);
-    this.sky.add(city);
-    for (let i = 0; i < 9; i++) {
-      const c = cloud();
-      c.position.set((rnd() - 0.5) * 520, 55 + rnd() * 70, -170 - rnd() * 180);
-      c.scale.setScalar(1.2 + rnd() * 1.4);
-      this.clouds.push(c);
-      this.sky.add(c);
-    }
-    s.add(this.sky);
-
-    // street
-    for (let i = 0; i < 8; i++) this.chunkGeos.push(chunkGeo(i));
-    for (let i = 0; i < 12; i++) {
-      const m = new THREE.Mesh(this.chunkGeos[i % 8], MAT.world);
-      m.receiveShadow = true;
-      s.add(m);
-      this.chunks.push({ mesh: m, z: (i - 3) * CHUNK });
-    }
-
-    // obstacles and pick-ups
-    const mk = (geo: THREE.BufferGeometry, outline = true, extra?: (m: THREE.Mesh) => void) => () => {
-      const m = new THREE.Mesh(geo, MAT.world);
-      m.castShadow = true; m.receiveShadow = true;
-      if (outline) addOutlines(m, OUTLINE.prop);
-      extra?.(m);
-      return m;
-    };
-    const lights = headlightGeo();
-    const withLights = (m: THREE.Mesh) => { const l = new THREE.Mesh(lights, MAT.glow); l.name = 'lights'; l.visible = false; m.add(l); };
-    const bus0 = busGeo(0), bus1 = busGeo(1), low = lowBarrierGeo(), high = highBarrierGeo(), rmp = rampGeo();
-    this.pools.bus0 = new Pool(mk(bus0, true, withLights), s);
-    this.pools.bus1 = new Pool(mk(bus1, true, withLights), s);
-    this.pools.low = new Pool(mk(low), s);
-    this.pools.high = new Pool(mk(high), s);
-    this.pools.ramp = new Pool(mk(rmp), s);
+    s.add(this.sun, this.sun.target, this.world);
     for (const k of Object.keys(POWER_COLORS) as PowerKind[]) this.pools[k] = new Pool(() => powerToken(k), s);
-    const cg = coinGeo();
-    this.coinMesh = new THREE.InstancedMesh(cg, MAT.world, 320);
-    this.coinLine = new THREE.InstancedMesh(cg, OUTLINE.coin, 320);
+    this.coinMesh = new THREE.InstancedMesh(coinGeo(), MAT.coin, 320);
     this.coinMesh.castShadow = true;
-    this.coinMesh.frustumCulled = this.coinLine.frustumCulled = false;
-    this.coinMesh.count = this.coinLine.count = 0;
-    s.add(this.coinMesh, this.coinLine);
+    this.coinMesh.frustumCulled = false;
+    this.coinMesh.count = 0;
+    s.add(this.coinMesh);
+    this.buildTheme();
 
     // particles (sparkles, dust, confetti)
     const N = 360;
@@ -227,8 +203,137 @@ export class RunGame {
   private prepActor(a: ToonActor) {
     a.object.rotation.y = Math.PI;
     a.object.scale.setScalar(TOON_SCALE);
-    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !m.userData.outline) { m.material = MAT.char; m.castShadow = true; } });
-    addOutlines(a.object, OUTLINE.char);
+    a.object.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.material = MAT.char; m.castShadow = true; } });
+  }
+
+  /** Build the current theme: sky, light, fog, scenery, floor, obstacles, sea, bloom. */
+  private buildTheme() {
+    const t = this.theme, s = this.scene;
+    s.background = new THREE.Color(t.sky.fog);
+    (s.fog as THREE.Fog).color.setHex(t.sky.fog);
+    this.hemi.color.setHex(t.hemi[0]); this.hemi.groundColor.setHex(t.hemi[1]); this.hemi.intensity = t.hemi[2];
+    this.sun.color.setHex(t.sun[0]); this.sun.intensity = t.sun[1];
+    this.renderer.toneMappingExposure = t.exposure;
+    // environment light from the theme's own sky (soft colour and reflections that match it)
+    const pm = new THREE.PMREMGenerator(this.renderer);
+    const envScene = new THREE.Scene();
+    envScene.add(skyDome(t.sky));
+    const g = new THREE.Mesh(new THREE.CircleGeometry(400, 24), new THREE.MeshBasicMaterial({ color: t.hemi[1] }));
+    g.rotation.x = -Math.PI / 2; g.position.y = -5;
+    envScene.add(g);
+    this.envTex?.dispose();
+    this.envTex = pm.fromScene(envScene, 0.02, 0.1, 1000).texture;
+    pm.dispose();
+    s.environment = this.envTex;
+    s.environmentIntensity = t.env;
+
+    const w = this.world;
+    // sky that follows the camera
+    this.sky = new THREE.Group();
+    this.sky.add(skyDome(t.sky));
+    const far = t.horizon();
+    far.position.set(0, 8, -330);
+    this.sky.add(far);
+    this.clouds = [];
+    for (let i = 0; i < t.clouds; i++) {
+      const c = cloud(t.cloudTint);
+      c.position.set((rnd() - 0.5) * 520, 55 + rnd() * 70, -170 - rnd() * 180);
+      c.scale.setScalar(1.2 + rnd() * 1.4);
+      this.clouds.push(c);
+      this.sky.add(c);
+    }
+    w.add(this.sky);
+    const mesh = (p: Parts, shadow: 'cast' | 'receive' | 'both') => {
+      const m = new THREE.Mesh(p.world, MAT.world);
+      m.castShadow = shadow !== 'receive'; m.receiveShadow = shadow !== 'cast';
+      if (p.glow) { const gm = new THREE.Mesh(p.glow, MAT.glow); gm.name = 'glow'; m.add(gm); }
+      if (p.lights) { const lm = new THREE.Mesh(p.lights, MAT.glow); lm.name = 'lights'; lm.visible = false; m.add(lm); }
+      return m;
+    };
+    // scenery
+    this.chunkParts = Array.from({ length: 8 }, (_, i) => t.chunk(i));
+    this.chunks = [];
+    for (let i = 0; i < 12; i++) {
+      const m = mesh(this.chunkParts[i % 8], 'receive');
+      w.add(m);
+      this.chunks.push({ mesh: m, z: (i - 3) * CHUNK });
+    }
+    // obstacles
+    const parts = { veh0: t.vehicle(0), veh1: t.vehicle(1), low: t.low(), high: t.high(), ramp: t.ramp() };
+    for (const [k, p] of Object.entries(parts)) this.pools[k] = new Pool(() => mesh(p, 'both'), w);
+    // lane floor tiles (with gaps), a plank across gaps, the building under each tile
+    this.floor = []; this.floorGlow = []; this.planks = null;
+    if (t.tile) {
+      for (let l = 0; l < 3; l++) {
+        const p = t.tile(l);
+        const im = new THREE.InstancedMesh(p.world, MAT.world, 170);
+        im.receiveShadow = true; im.frustumCulled = false; im.count = 0;
+        w.add(im); this.floor.push(im);
+        if (p.glow) { const gm = new THREE.InstancedMesh(p.glow, MAT.glow, 170); gm.frustumCulled = false; gm.count = 0; w.add(gm); this.floorGlow[l] = gm; }
+      }
+      if (t.plank) { this.planks = new THREE.InstancedMesh(t.plank(), MAT.world, 24); this.planks.frustumCulled = false; this.planks.count = 0; this.planks.receiveShadow = true; w.add(this.planks); }
+      if (t.id === 'roofs') for (const im of this.floor) im.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(170 * 3).fill(1), 3);
+    }
+    // the sea under the boardwalk: a big wavy plane that bends with the world
+    this.water = null;
+    if (t.water !== undefined) {
+      const geo = new THREE.PlaneGeometry(420, 360, 140, 120).rotateX(-Math.PI / 2);
+      const mat = new THREE.MeshStandardMaterial({ color: t.water, roughness: 0.12, metalness: 0.05 });
+      mat.onBeforeCompile = (sh) => {
+        Object.assign(sh.uniforms, this.waterU);
+        sh.vertexShader = 'uniform float uTime; uniform float uOff;\n' + sh.vertexShader
+          .replace('#include <beginnormal_vertex>', `
+            float wz = uOff - position.z;
+            float ph1 = position.x * 0.35 + wz * 0.21 + uTime * 1.3, ph2 = position.x * 0.9 - wz * 0.6 + uTime * 1.7;
+            float dx = cos(ph1) * 0.35 * 0.14 + cos(ph2) * 0.9 * 0.05, dz = -(cos(ph1) * 0.21 * 0.14 - cos(ph2) * 0.6 * 0.05);
+            vec3 objectNormal = normalize(vec3(-dx, 1.0, -dz));`)
+          .replace('#include <begin_vertex>', 'vec3 transformed = vec3(position); transformed.y += sin(ph1) * 0.14 + sin(ph2) * 0.05;');
+        curveShader(sh);
+      };
+      mat.customProgramCacheKey = () => 'sea';
+      this.water = new THREE.Mesh(geo, mat);
+      this.water.position.set(0, -2.45, -150);
+      this.water.receiveShadow = true;
+      w.add(this.water);
+    }
+    this.setupBloom();
+  }
+
+  private disposeTheme() {
+    for (const o of this.obs) this.release(o);
+    this.obs = [];
+    const geos = new Set<THREE.BufferGeometry>();
+    this.world.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && m.geometry) geos.add(m.geometry); });
+    geos.forEach((g) => g.dispose());
+    this.world.clear();
+    for (const k of ['veh0', 'veh1', 'low', 'high', 'ramp']) delete this.pools[k];
+    this.composer?.dispose();
+    this.composer = null;
+  }
+
+  private setupBloom() {
+    this.composer?.dispose();
+    this.composer = null;
+    if (!this.theme.bloom || !this.bloomOk) return;
+    const c = new EffectComposer(this.renderer);
+    c.addPass(new RenderPass(this.scene, this.camera));
+    const w = this.host.clientWidth || 1, h = this.host.clientHeight || 1;
+    c.addPass(new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), 0.7, 0.32, 0.86));
+    c.addPass(new OutputPass());
+    c.setPixelRatio(this.dpr);
+    c.setSize(w, h);
+    this.composer = c;
+  }
+
+  /** Change the world (menu only). */
+  setTheme(id: ThemeId) {
+    if (this.theme.id === id || (this.state !== 'menu' && this.state !== 'over' && this.state !== 'loading')) return;
+    try { localStorage.setItem('run:theme', id); } catch { /* ignore */ }
+    this.disposeTheme();
+    this.theme = THEMES[id];
+    this.buildTheme();
+    this.resetTrack();
+    this.emit(true);
   }
 
   async setToon(id: string) {
@@ -248,6 +353,7 @@ export class RunGame {
     this.renderer.setSize(w, h);
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
+    this.composer?.setSize(w, h);
   }
 
   private bindInput() {
@@ -331,7 +437,8 @@ export class RunGame {
     this.lane = this.laneFrom = 1; this.x = this.prevX = 0; this.y = 0; this.vy = 0; this.grounded = true;
     this.score = 0; this.coinCount = 0; this.mult = 1; this.answers = []; this.active = {}; this.invUntil = 0; this.chaseUntil = 0;
     this.revivesLeft = 2; this.revive = null; this.reviveQ = null; this.newBest = false; this.recentQ.clear();
-    this.chunks.forEach((c, i) => { c.z = (i - 3) * CHUNK; c.mesh.geometry = this.chunkGeos[Math.floor(rnd() * 8)]; });
+    this.gaps = [];
+    this.chunks.forEach((c, i) => { c.z = (i - 3) * CHUNK; this.setChunk(c.mesh, Math.floor(rnd() * 8)); });
     this.gen();
   }
 
@@ -372,7 +479,8 @@ export class RunGame {
     this.revivesLeft--;
     this.revive = null;
     for (const o of this.obs) if (o.z < this.pz + 50 && o.z + o.len > this.pz - 3 && o.k !== 'ramp') { o.dead = true; o.mesh.visible = false; }
-    // land safely on the street
+    // land safely on the street (no holes right ahead)
+    this.gaps = this.gaps.filter((h) => h.z1 < this.pz - 2 || h.z0 > this.pz + 45);
     this.y = 0; this.vy = 0; this.grounded = true;
     for (const o of this.obs) if (o.k === 'ramp' && o.z < this.pz + 50 && o.z + o.len > this.pz - 3) { o.dead = true; o.mesh.visible = false; }
     this.invUntil = this.clock + 2.5;
@@ -394,6 +502,13 @@ export class RunGame {
     this.emit(true);
   }
 
+  private setChunk(m: THREE.Mesh, v: number) {
+    const p = this.chunkParts[v];
+    m.geometry = p.world;
+    const g = m.getObjectByName('glow') as THREE.Mesh | undefined;
+    if (g && p.glow) g.geometry = p.glow;
+  }
+
   private toast(text: string, tone: Toast['tone']) { this.onToast?.({ id: ++this.toastId, text, tone }); }
 
   /* ------------------------------------------------------- generation */
@@ -402,7 +517,7 @@ export class RunGame {
   private avail(z: number) { return [0, 1, 2].filter((l) => !(l === this.blockedLane && z < this.blockedUntil)); }
 
   private addOb(k: ObKind, lane: number, z: number, vz = 0) {
-    const kind = k === 'bus' ? (rnd() < 0.5 ? 'bus0' : 'bus1') : k;
+    const kind = k === 'bus' ? (rnd() < 0.5 ? 'veh0' : 'veh1') : k;
     const mesh = this.pools[kind].get();
     mesh.userData.pool = kind;
     const lights = mesh.getObjectByName('lights');
@@ -429,7 +544,9 @@ export class RunGame {
         const opts: [number, (z: number) => number][] = [[2, (z) => this.patCoins(z)], [3, (z) => this.patLows(z)], [2 + d, (z) => this.patHighs(z)]];
         if (!blocked) {
           opts.push([1 + 2 * d, (z) => this.patMixed(z)], [2 + d, (z) => this.patBuses(z)], [1 + d, (z) => this.patTrain(z)]);
-          if (d > 0.12) opts.push([0.5 + 1.6 * d, (z) => this.patWall(z)], [0.6 + 2 * d, (z) => this.patOncoming(z)]);
+          if (d > 0.12) opts.push([0.5 + 1.6 * d, (z) => this.patWall(z)]);
+          if (d > 0.12 && this.theme.oncoming) opts.push([0.6 + 2 * d, (z) => this.patOncoming(z)]);
+          if (this.theme.gaps !== 'none') opts.push([this.theme.gaps === 'full' ? 2.6 : 1.6 + d, (z) => this.patGap(z)]);
         }
         let r = rnd() * opts.reduce((s, o) => s + o[0], 0);
         let f = opts[0][1];
@@ -513,6 +630,22 @@ export class RunGame {
     for (let k = 0, zz = z + 6; zz < z + L - 4; zz += Math.max(11, this.speedAt(z) * 0.7), k++) this.addOb(k % 2 ? 'high' : 'low', k % 2 ? a : b, zz);
     return L;
   }
+  /** A hole in the floor (all lanes on the rooftops, sometimes with a plank; some lanes elsewhere). */
+  private patGap(z: number) {
+    const sp = this.speedAt(z);
+    const tiles = sp > 20 ? 3 : sp > 15.5 ? 2 : 1;
+    const z0 = Math.ceil((z + 6) / TILE) * TILE, z1 = z0 + tiles * TILE;
+    const full = this.theme.gaps === 'full';
+    const lanes = full ? [0, 1, 2] : shuffle([0, 1, 2]).slice(0, rnd() < 0.3 ? 3 : rnd() < 0.6 ? 2 : 1);
+    const plank = full && rnd() < 0.45 ? Math.floor(rnd() * 3) : -1;
+    for (const l of lanes) {
+      this.gaps.push({ lane: l, z0, z1, plank: l === plank });
+      if (l !== plank && rnd() < 0.65) this.coinArc(l, (z0 + z1) / 2);
+    }
+    for (let l = 0; l < 3; l++) if (!lanes.includes(l)) this.coinRow(l, z0 - 2, 3);
+    if (plank >= 0) this.coinRow(plank, z0 + 0.5, tiles + 1, 0.75, TILE);
+    return z1 - z + 6;
+  }
   private patOncoming(z: number) {
     const lanes = shuffle([0, 1, 2]);
     const o = lanes[0];
@@ -551,8 +684,19 @@ export class RunGame {
   }
 
   /* ------------------------------------------------------------ world */
+  /** Is there a hole in the floor at (x, z)? A plank across a gap only holds you near its middle. */
+  private holeAt(x: number, z: number) {
+    if (!this.gaps.length) return false;
+    const lane = Math.max(0, Math.min(2, Math.round(x / LANE) + 1));
+    for (const h of this.gaps) {
+      if (h.lane !== lane || z <= h.z0 + 0.25 || z >= h.z1 - 0.25) continue;
+      if (!h.plank || Math.abs(x - laneX(lane)) > 0.55) return true;
+    }
+    return false;
+  }
+
   private groundAt(x: number, z: number) {
-    let g = 0;
+    let g = this.holeAt(x, z) ? -60 : 0;
     for (const o of this.obs) {
       if (o.dead || (o.k !== 'bus' && o.k !== 'ramp')) continue;
       if (z < o.z || z > o.z + o.len || Math.abs(x - laneX(o.lane)) > 0.95) continue;
@@ -667,7 +811,10 @@ export class RunGame {
     this.place();
     this.updateCamera(dt);
     for (const c of this.clouds) { c.position.x += dt * 1.5; if (c.position.x > 280) c.position.x = -280; }
-    this.renderer.render(this.scene, this.camera);
+    this.waterU.uTime.value += dt;
+    this.waterU.uOff.value = this.pz;
+    if (this.composer) this.composer.render(dt);
+    else this.renderer.render(this.scene, this.camera);
     this.adapt(dt, t);
     if (t - this.hudAt > 70) { this.hudAt = t; this.emit(false); }
   }
@@ -685,7 +832,8 @@ export class RunGame {
     this.coins = this.coins.filter((c) => c.z > this.pz - 4);
     this.powersOnTrack = this.powersOnTrack.filter((p) => { if (p.z < this.pz - 4) { this.pools[p.kind].put(p.mesh); return false; } return true; });
     this.gates = this.gates.filter((g) => { if (g.z < this.pz - 20) { g.gm.group.visible = false; this.gatePool.push(g.gm); return false; } return true; });
-    for (const c of this.chunks) if (c.z + CHUNK < this.pz - 90) { c.z += this.chunks.length * CHUNK; c.mesh.geometry = this.chunkGeos[Math.floor(rnd() * 8)]; }
+    for (const c of this.chunks) if (c.z + CHUNK < this.pz - 90) { c.z += this.chunks.length * CHUNK; this.setChunk(c.mesh, Math.floor(rnd() * 8)); }
+    if (this.gaps.length && this.gaps[0].z1 < this.pz - 20) this.gaps = this.gaps.filter((h) => h.z1 > this.pz - 20);
     this.gen();
     CURVE.value.y = 0.0007 * Math.sin(this.pz / 420);
     setMusicIntensity(this.speed / 20);
@@ -716,6 +864,7 @@ export class RunGame {
         if (this.pendingSlide) { this.pendingSlide = false; this.slide(); }
       }
     }
+    if (this.y < -3) { this.toast('Oops! You fell', 'bad'); this.die(); return; }
     const sliding = now < this.slideUntil;
     const h = sliding ? SLIDE_H : STAND_H;
     // obstacles
@@ -837,18 +986,52 @@ export class RunGame {
       if (c.z - pz > 200 || n >= 320) continue;
       this.m4.compose(this.v3.set(c.x, c.y, -(c.z - pz)), this.q4, this.s3);
       this.coinMesh.setMatrixAt(n, this.m4);
-      this.coinLine.setMatrixAt(n, this.m4);
       n++;
     }
-    this.coinMesh.count = this.coinLine.count = n;
-    this.coinMesh.instanceMatrix.needsUpdate = this.coinLine.instanceMatrix.needsUpdate = true;
+    this.coinMesh.count = n;
+    this.coinMesh.instanceMatrix.needsUpdate = true;
+    if (this.floor.length) this.placeFloor();
+  }
+
+  private static TINTS = [0xffffff, 0xffe3d6, 0xe2e9ff, 0xfff0c6, 0xe4f7e6, 0xf6dddd, 0xe9e2f7].map((h) => new THREE.Color(h));
+  /** Lane tiles from just behind to far ahead, leaving out the holes (planks drawn across some). */
+  private placeFloor() {
+    const pz = this.pz, n = [0, 0, 0], q = new THREE.Quaternion(), one = new THREE.Vector3(1, 1, 1);
+    let pn = 0, seg = 0, gi = 0;
+    const holes = this.gaps;
+    const tint = this.theme.id === 'roofs';
+    for (let tz = Math.floor((pz - 12) / TILE) * TILE; tz < pz + 280; tz += TILE) {
+      // rooftops: a new building after each gap (another colour)
+      while (gi < holes.length && holes[gi].z1 <= tz) { if (holes[gi].lane === 0) seg = holes[gi].z0; gi++; }
+      for (let l = 0; l < 3; l++) {
+        const hole = holes.find((h) => h.lane === l && tz >= h.z0 && tz < h.z1);
+        this.m4.compose(this.v3.set(laneX(l), 0, -(tz - pz)), q, one);
+        if (hole) {
+          if (hole.plank && this.planks && pn < 24) this.planks.setMatrixAt(pn++, this.m4);
+          continue;
+        }
+        if (n[l] >= 170) continue;
+        this.floor[l].setMatrixAt(n[l], this.m4);
+        this.floorGlow[l]?.setMatrixAt(n[l], this.m4);
+        if (tint) this.floor[l].setColorAt(n[l], RunGame.TINTS[Math.abs(Math.round(seg * 0.37)) % RunGame.TINTS.length]);
+        n[l]++;
+      }
+    }
+    for (let l = 0; l < 3; l++) {
+      const f = this.floor[l];
+      f.count = n[l]; f.instanceMatrix.needsUpdate = true;
+      if (f.instanceColor) f.instanceColor.needsUpdate = true;
+      const gm = this.floorGlow[l];
+      if (gm) { gm.count = n[l]; gm.instanceMatrix.needsUpdate = true; }
+    }
+    if (this.planks) { this.planks.count = pn; this.planks.instanceMatrix.needsUpdate = true; }
   }
 
   private updateCamera(dt: number) {
     const st = this.state;
     const portrait = this.camera.aspect < 0.8;
     // upright phones: further away and looking lower, so the runner stands above the menu panel
-    const menu = portrait ? { x: 1.2, y: 1.9, z: -6.4, lx: 0, ly: -0.15, lz: 0 } : { x: 1.9, y: 1.7, z: -4.3, lx: 0, ly: 1.05, lz: 0 };
+    const menu = portrait ? { x: 1.2, y: 1.9, z: -6.4, lx: 0, ly: -0.15, lz: 0 } : { x: 1.2, y: 1.7, z: -4.6, lx: -1.25, ly: 1.05, lz: 0 }; // wide screens: the runner stands right of the menu
     // phones held upright: a bit further back so the lanes fit
     const run = { x: this.x * 0.72, y: (portrait ? 3.5 : 3.0) + this.y * 0.55, z: portrait ? 7.3 : 6.0, lx: this.x * 0.8, ly: 1.15 + this.y * 0.5, lz: -7 };
     let tgt = run;
@@ -893,7 +1076,8 @@ export class RunGame {
     this.qualityAt = t;
     const avg = this.frames.reduce((a, b) => a + b, 0) / this.frames.length;
     if (avg > 0.024) {
-      if (this.dpr > 0.8) { this.dpr = Math.max(0.75, this.dpr - 0.25); this.renderer.setPixelRatio(this.dpr); this.resize(); }
+      if (this.composer) { this.bloomOk = false; this.setupBloom(); }
+      else if (this.dpr > 0.8) { this.dpr = Math.max(0.75, this.dpr - 0.25); this.renderer.setPixelRatio(this.dpr); this.resize(); }
       else if (this.sun.castShadow) this.sun.castShadow = false;
       this.frames = [];
     }
@@ -919,8 +1103,9 @@ export class RunGame {
     this.offs.forEach((f) => f());
     this.player?.dispose();
     this.chaser?.dispose();
-    this.scene.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && m.geometry && !m.userData.outline) m.geometry.dispose(); });
-    this.chunkGeos.forEach((g) => g.dispose());
+    this.disposeTheme();
+    this.coinMesh.geometry.dispose();
+    this.envTex?.dispose();
     this.renderer.dispose();
     this.renderer.domElement.remove();
   }

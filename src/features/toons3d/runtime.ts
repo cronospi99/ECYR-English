@@ -6,31 +6,47 @@
      actor.object.rotation.y = Math.PI;      // run away from the camera
      actor.play('run');                      // idle, walk, run, jump, fall, slide, hit, cheer
      // every frame: actor.update(dt)
-   Render with `new OutlineEffect(renderer, TOON_OUTLINE)` for the ink outline of the gallery.
+   Light them with an environment map (scene.environment) plus a sun for the soft vinyl-toy look;
+   actor.setFace('happy') holds an expression (smile, grin, happy, surprised, wink, sad, love).
 
    The models live in public/toons3d/<id>.glb (built by scripts/build-toons.mts from the cards). */
 import * as THREE from 'three';
 import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js';
 import { TEACHERS } from '@/features/cards/teachers';
-import { TOON_FOLDER, TOON_ONCE, type ToonClip } from './meta';
+import { FACE_OFF, FACES, TOON_FOLDER, TOON_ONCE, type Face, type ToonClip } from './meta';
 
 export { TOON_CLIPS, type ToonClip } from './meta';
+export { FACES, type Face } from './meta';
 
 /** Every toon in the library (same order as the cards). */
 export const TOONS = TEACHERS.map((t, index) => ({ index, id: t.id, name: t.name, color: t.color }));
 export const toonUrl = (id: string) => `${import.meta.env.BASE_URL}${TOON_FOLDER}/${id}.glb`;
 
-/** Settings for three's OutlineEffect that match the toons' ink style. */
-export const TOON_OUTLINE = { defaultThickness: 0.006, defaultColor: [0.11, 0.16, 0.12], defaultAlpha: 1 };
 
-let shared: THREE.MeshToonMaterial | null = null;
-/** Cartoon shading (three light steps) with the models' vertex colours; shared by every toon. */
-export function toonMaterial(): THREE.MeshToonMaterial {
-  if (shared) return shared;
-  const ramp = new THREE.DataTexture(new Uint8Array([95, 95, 95, 255, 178, 178, 178, 255, 236, 236, 236, 255, 255, 255, 255, 255]), 4, 1);
-  ramp.minFilter = ramp.magFilter = THREE.NearestFilter;
-  ramp.needsUpdate = true;
-  shared = new THREE.MeshToonMaterial({ vertexColors: true, gradientMap: ramp });
+/**
+ * The models keep a material class in the vertex colour's alpha: roughness / 2 for non-metals
+ * (a < .5) and .5 + roughness / 2 for metals. This patch reads it, and keeps the clear coat (the
+ * vinyl sheen) on the smooth parts only: skin, hair, eyes, shoes, glasses.
+ */
+export function patchToonShader(sh: { fragmentShader: string }) {
+  sh.fragmentShader = sh.fragmentShader
+    .replace('#include <roughnessmap_fragment>', 'float roughnessFactor = max(0.04, vColor.a < 0.5 ? vColor.a * 2.0 : (vColor.a - 0.5) * 2.0);')
+    .replace('#include <metalnessmap_fragment>', 'float metalnessFactor = vColor.a < 0.5 ? 0.0 : 1.0;')
+    .replace('#include <lights_physical_fragment>', '#include <lights_physical_fragment>\n#ifdef USE_CLEARCOAT\n  material.clearcoat *= 1.0 - smoothstep(0.45, 0.75, roughnessFactor);\n#endif');
+}
+
+/** A new toon material; `extra` can chain more shader changes (e.g. a curved world). */
+export function makeToonMaterial(extra?: (sh: THREE.WebGLProgramParametersWithUniforms) => void) {
+  const m = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: 1, metalness: 1, clearcoat: 0.6, clearcoatRoughness: 0.32 });
+  m.onBeforeCompile = (sh) => { patchToonShader(sh); extra?.(sh); };
+  m.customProgramCacheKey = () => 'toon2' + (extra ? '+x' : '');
+  return m;
+}
+
+let shared: THREE.MeshPhysicalMaterial | null = null;
+/** The shared material of every toon (soft PBR with per-part roughness). */
+export function toonMaterial(): THREE.MeshPhysicalMaterial {
+  if (!shared) shared = makeToonMaterial();
   return shared;
 }
 
@@ -56,7 +72,10 @@ export class ToonActor {
   readonly object: THREE.Object3D;
   readonly mixer: THREE.AnimationMixer;
   private actions = new Map<ToonClip, THREE.AnimationAction>();
+  private faceParts = new Map<string, THREE.Object3D>();
   current: ToonClip | null = null;
+  /** An expression held over the clips' own (null = let the clips decide). */
+  face: Face | null = null;
 
   static async create(id: string): Promise<ToonActor> {
     return new ToonActor(id, await loadToonGltf(id));
@@ -72,7 +91,25 @@ export class ToonActor {
       if (TOON_ONCE.includes(c.name as ToonClip)) { a.setLoop(THREE.LoopOnce, 1); a.clampWhenFinished = true; }
       this.actions.set(c.name as ToonClip, a);
     }
+    for (const n of ['eyeL', 'eyeR', 'eyeLOpen', 'eyeLShut', 'eyeLHeart', 'eyeROpen', 'eyeRShut', 'eyeRHeart', 'mouthN', 'mouthO', 'mouthS', 'mouthF']) {
+      const o = this.object.getObjectByName(n);
+      if (o) this.faceParts.set(n, o);
+    }
     this.play('idle', 0);
+  }
+
+  setFace(f: Face | null) { this.face = f; }
+
+  private applyFace() {
+    const f = this.face ? FACES[this.face] : null;
+    if (!f) return;
+    const set = (n: string, on: boolean) => this.faceParts.get(n)?.scale.setScalar(on ? 1 : FACE_OFF);
+    for (const e of ['eyeL', 'eyeR'] as const) {
+      for (const v of ['Open', 'Shut', 'Heart'] as const) set(e + v, f[e] === v);
+      const w = f.wide ?? 1;
+      this.faceParts.get(e)?.scale.set(w, w, 1);
+    }
+    for (const m of ['N', 'O', 'S', 'F'] as const) set('mouth' + m, f.mouth === m);
   }
 
   /**
@@ -91,7 +128,7 @@ export class ToonActor {
     this.current = clip;
   }
 
-  update(dt: number) { this.mixer.update(dt); }
+  update(dt: number) { this.mixer.update(dt); this.applyFace(); }
 
   dispose() { this.mixer.stopAllAction(); this.object.removeFromParent(); }
 }
