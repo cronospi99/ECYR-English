@@ -15,6 +15,7 @@ import { CAMPUS, buildCampus, type Scenery } from './campus';
 import { Kart, KART, NO_INPUT, autopilot, type KartInput } from './kart';
 import { KartView } from './kartModel';
 import { Flames, Particles, Skids, SpeedLines } from './fx';
+import { t } from '@/lib/gameLang';
 import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, unlock } from './audio';
 
 export type RaceState = 'loading' | 'menu' | 'countdown' | 'race' | 'paused' | 'finish';
@@ -370,8 +371,8 @@ export class RaceGame {
     sfx.beep(true);
     const fp = this.firstPress;
     if (this.input.throttle > 0 && fp >= 0) {
-      if (fp <= 0.55) { this.kart.boost(1.3, 'start'); this.toast('¡SALIDA PERFECTA!', '#ffd23f', 'Perfect start'); }
-      else if (fp > 1.6) { this.kart.spin(0.8); this.toast('¡MUY PRONTO!', '#ff6b6b', 'Too early: wait for the last light'); }
+      if (fp <= 0.55) { this.kart.boost(1.3, 'start'); this.toast(t('PERFECT START!', '¡SALIDA PERFECTA!'), '#ffd23f'); }
+      else if (fp > 1.6) { this.kart.spin(0.8); this.toast(t('TOO EARLY!', '¡MUY PRONTO!'), '#ff6b6b', t('Wait for the last light to go out', 'Espera a que se apague la última luz')); }
     }
     this.lapStart = 0;
     this.emit();
@@ -397,9 +398,9 @@ export class RaceGame {
       else {
         const final = this.lapTimes.length === laps - 1;
         sfx.lap(final);
-        if (final) { setMusicFast(true); this.toast('¡ÚLTIMA VUELTA!', '#ff3d6e', 'Final lap'); }
-        else if (lt <= bestSoFar && this.lapTimes.length > 1) this.toast('¡VUELTA RÁPIDA!', '#7dff9a', fmt(lt));
-        else this.toast(`VUELTA ${this.lapTimes.length + 1}/${laps}`, '#ffffff', fmt(lt));
+        if (final) { setMusicFast(true); this.toast(t('FINAL LAP!', '¡ÚLTIMA VUELTA!'), '#ff3d6e'); }
+        else if (lt <= bestSoFar && this.lapTimes.length > 1) this.toast(t('FASTEST LAP!', '¡VUELTA RÁPIDA!'), '#7dff9a', fmt(lt));
+        else this.toast(`${t('LAP', 'VUELTA')} ${this.lapTimes.length + 1}/${laps}`, '#ffffff', fmt(lt));
       }
     }
     // wrong way
@@ -437,10 +438,10 @@ export class RaceGame {
         case 'boost':
           this.boostKind = e.kind;
           if (e.kind === 'pad') sfx.pad(); else sfx.boost(e.secs > 1);
-          if (e.kind === 'mini' && e.secs >= 1.4) this.toast('¡ULTRA TURBO!', '#d36bff', 'Ultra mini-turbo');
+          if (e.kind === 'mini' && e.secs >= 1.4) this.toast(t('ULTRA TURBO!', '¡ULTRA TURBO!'), '#d36bff');
           this.shake = Math.max(this.shake, 0.18);
           break;
-        case 'trick': sfx.trick(); this.toast('¡TRUCO!', '#ffd23f', 'Trick'); break;
+        case 'trick': sfx.trick(); this.toast(t('TRICK!', '¡TRUCO!'), '#ffd23f'); break;
         case 'land':
           sfx.land(e.v); this.view?.bump(e.v);
           if (e.v > 5) for (let i = 0; i < 14; i++) { const a = (i / 14) * Math.PI * 2; this.smoke.emit(k.pos.x + Math.cos(a) * 0.6, k.pos.y + 0.15, k.pos.z + Math.sin(a) * 0.6, Math.cos(a) * 4, 0.6, Math.sin(a) * 4, 0.6, 1.1, this.c.setRGB(0.92, 0.88, 0.8), { a: 0.5, drag: 3, grow: 1.6 }); }
@@ -459,7 +460,7 @@ export class RaceGame {
             sfx.splash();
             for (let i = 0; i < 40; i++) this.smoke.emit(k.pos.x, this.scenery.waterY + 0.1, k.pos.z, (Math.random() - 0.5) * 6, 4 + Math.random() * 7, (Math.random() - 0.5) * 6, 0.9, 0.6 + Math.random() * 0.6, this.c.setRGB(0.85, 0.95, 1), { a: 0.85, grav: 16, grow: 1 });
           }
-          if (this.state === 'race') this.toast('¡AL AGUA!', '#4fc3ff', 'Back on track in a second');
+          if (this.state === 'race') this.toast(t('SPLASH!', '¡AL AGUA!'), '#4fc3ff', t('Back on the track in a second', 'Vuelves a la pista en un segundo'));
           break;
         case 'spin': sfx.spin(); break;
         default: break;

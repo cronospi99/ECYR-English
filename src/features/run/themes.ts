@@ -14,6 +14,8 @@ export interface Parts { world: THREE.BufferGeometry; glow?: THREE.BufferGeometr
 export interface Theme {
   id: ThemeId;
   name: string;
+  /** English name (the games default to English). */
+  nameEn: string;
   sky: SkyColors;
   /** Sky colour, ground colour, intensity. */
   hemi: [number, number, number];
@@ -62,7 +64,7 @@ function rampIn(top: number, tread: number, edge: number, glowEdge = false): Par
 
 /* ================================================================ CITY */
 const city: Theme = {
-  id: 'city', name: 'Ciudad',
+  id: 'city', name: 'Ciudad', nameEn: 'City',
   sky: { top: 0x3b86f0, mid: 0x8cc4ff, horizon: 0xe4f2ff, fog: 0xd9ecff, sun: [0.35, 0.32, -1] },
   hemi: [0xd8ecff, 0x8d8266, 1.0], sun: [0xfff1d6, 2.6], env: 0.55, exposure: 1.05, fog: [40, 190], clouds: 9, cloudTint: 0xffffff,
   horizon: skyline,
@@ -165,7 +167,7 @@ function beachHigh(): Parts {
   return { world: build(g) };
 }
 const beach: Theme = {
-  id: 'beach', name: 'Playa',
+  id: 'beach', name: 'Playa', nameEn: 'Beach',
   sky: { top: 0x1f8ef0, mid: 0x6cc7ff, horizon: 0xd8f6ff, fog: 0xcff1ff, sun: [-0.4, 0.55, -1], sunGlow: 1.2 },
   hemi: [0xe2f6ff, 0xd8c08f, 1.1], sun: [0xfff4dc, 2.8], env: 0.6, exposure: 1.05, fog: [45, 200], clouds: 7, cloudTint: 0xffffff,
   horizon: () => horizonCard((c) => {
@@ -267,7 +269,7 @@ function roofHigh(): Parts {
   return { world: build(g) };
 }
 const roofs: Theme = {
-  id: 'roofs', name: 'Tejados',
+  id: 'roofs', name: 'Tejados', nameEn: 'Rooftops',
   sky: { top: 0x2c3e8f, mid: 0xf2885b, horizon: 0xffd59e, fog: 0xf3c79c, sun: [0.15, 0.08, -1], sunGlow: 1.5 },
   hemi: [0xffd8b0, 0x6a4f6e, 0.95], sun: [0xffc58a, 2.6], env: 0.55, exposure: 1.0, fog: [35, 175], clouds: 6, cloudTint: 0xffd9c2,
   horizon: () => horizonCard((c) => {
@@ -351,7 +353,7 @@ function neonHigh(): Parts {
   return { world: build(g), glow: build(gl) };
 }
 const neon: Theme = {
-  id: 'neon', name: 'Neón',
+  id: 'neon', name: 'Neón', nameEn: 'Neon',
   sky: { top: 0x07031c, mid: 0x2b0b52, horizon: 0xff4f8b, fog: 0x2a0b4a, sun: [0, 0.05, -1], sunGlow: 0, stars: true },
   hemi: [0xa58bff, 0x2a1450, 1.15], sun: [0xffa6e4, 1.9], env: 0.55, exposure: 1.05, fog: [30, 170], clouds: 0, cloudTint: 0xffffff,
   horizon: () => horizonCard((c) => {

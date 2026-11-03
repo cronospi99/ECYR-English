@@ -1,5 +1,6 @@
 /* Host-authoritative rules. Every function mutates the given state and returns
    messages that the host should deliver to specific players. */
+import { getGameLang } from "@/lib/gameLang";
 import { pickImpostors, shuffle, randInt } from "../shared/random";
 import { TEACHERS } from "@/features/cards/teachers";
 import { ALARM_PANELS, BELL, FUSE, RANGE, dist, spawnPoint, stations } from "./map";
@@ -21,7 +22,7 @@ export const FIRST_SABOTAGE_MS = 20000;
 
 export function createState(code: string): HostState {
   return {
-    code, phase: "lobby", settings: { ...defaultSettings }, players: [], bodies: [],
+    code, phase: "lobby", settings: { ...defaultSettings, lang: getGameLang() }, players: [], bodies: [],
     meeting: null, eject: null, winner: null, winReason: "", phaseEndsAt: 0, round: 0,
     prevImpostors: [], log: [], sabotage: null, sabotageReadyAt: 0, lastKill: null, bathLocked: false
   };

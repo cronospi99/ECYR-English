@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useParams } from "react-router-do
 import { useAuth } from "@/store/auth";
 import { isDemoCode, relayConfigured } from "@/lib/relay";
 import { useGameFonts } from "@/features/cards/fonts";
+import { setGameLang, useGameLang } from "@/lib/gameLang";
 import { Home } from "./Home";
 import { ClassicGame } from "./classic/ClassicGame";
 import { Host } from "./game/Host";
@@ -11,7 +12,6 @@ import { Demo } from "./game/Demo";
 import { Fit } from "./shared/Fit";
 import { Header } from "./shared/Header";
 import { LingoBadge } from "./game/Character";
-import { load, save } from "./shared/storage";
 import type { Lang } from "./shared/proximity";
 import "./impostor.css";
 
@@ -29,8 +29,9 @@ export default function ImpostorApp() {
     requestAnimationFrame(() => window.dispatchEvent(new Event("app:ready")));
   }, []);
   const nav = useNavigate();
-  const [lang, setLangState] = useState<Lang>(() => (load<string>("impostor.lang.v2", "es") === "en" ? "en" : "es"));
-  const setLang = (l: Lang) => { save("impostor.lang.v2", l); setLangState(l); };
+  // the shared games language (English by default)
+  const lang: Lang = useGameLang();
+  const setLang = (l: Lang) => setGameLang(l);
   const isTeacher = useAuth((s) => s.profile?.role === "teacher");
   /* paths inside the game are written as in the original ("/host", "/join/AB12");
      "/games…" and "/profile" leave the game for the rest of ECYR */

@@ -9,6 +9,8 @@ import { ArrowLeft, ChevronLeft, ChevronRight, Flag, Home, Music, Pause, Play, R
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
 import { GameTitle } from '@/components/brand/GameTitle';
+import { GameLangToggle } from '@/components/GameLangToggle';
+import { t, useGameLang } from '@/lib/gameLang';
 import { RaceGame, fmt, type Hud, type Toast, type TouchState } from './engine';
 import { prefs, setPref, unlock } from './audio';
 
@@ -63,6 +65,7 @@ export default function RacersApp() {
   const [, force] = useState(0);
   const [touchUi] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches);
   const [portrait, setPortrait] = useState(false);
+  const lang = useGameLang();
 
   useEffect(() => {
     requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready')));
@@ -89,7 +92,7 @@ export default function RacersApp() {
   const pickToon = (d: number) => { const n = TOONS[(idx + d + TOONS.length) % TOONS.length]; setToon(n.id); void game?.setToon(n.id); };
   const go = () => { unlock(); game?.start(); };
 
-  if (err) return <div className="grid h-dvh place-items-center bg-[#10204a] p-6 text-center text-[17px] font-bold text-white">Este navegador no puede mostrar 3D (WebGL).<Link to="/games" className="mt-4 underline">Volver</Link></div>;
+  if (err) return <div className="grid h-dvh place-items-center bg-[#10204a] p-6 text-center text-[17px] font-bold text-white">{t('This browser cannot show 3D (WebGL).', 'Este navegador no puede mostrar 3D (WebGL).')}<Link to="/games" className="mt-4 underline">{t('Back', 'Volver')}</Link></div>;
 
   const racing = st === 'race' || st === 'countdown';
   return (
@@ -101,40 +104,45 @@ export default function RacersApp() {
       {(st === 'menu' || st === 'loading') && (
         <div className="pointer-events-none absolute inset-0 flex flex-col p-3 pt-[max(12px,env(safe-area-inset-top))] pb-[max(14px,env(safe-area-inset-bottom))] sm:p-5">
           <div className="pointer-events-auto flex items-center gap-2">
-            <Link to="/games" className="grid h-11 w-11 place-items-center rounded-2xl bg-[#10204a]/60 text-white hover:bg-[#10204a]/80" aria-label="Volver"><ArrowLeft /></Link>
+            <Link to="/games" className="grid h-11 w-11 place-items-center rounded-2xl bg-[#10204a]/60 text-white hover:bg-[#10204a]/80" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
             <div className="ml-auto flex gap-1.5">
-              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label="Música"><Music size={19} /></Toggle>
-              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label="Efectos">{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
+              <GameLangToggle />
+              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label={t('Music', 'Música')}><Music size={19} /></Toggle>
+              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label={t('Sound effects', 'Efectos')}>{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
             </div>
           </div>
           <motion.div initial={{ y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: 'spring', stiffness: 200, damping: 16 }} className="mt-1 text-center sm:mt-3 sm:text-left">
             <GameTitle word="RACERS" theme="racers" className="mx-auto block h-auto w-[250px] sm:mx-0 sm:w-[430px] [@media(max-height:520px)]:w-[175px]" />
-            <div className="mt-2 inline-block rounded-full bg-[#10204a]/70 px-3 py-1 text-[12.5px] font-extrabold tracking-wide text-white/90 uppercase [@media(max-height:520px)]:hidden">Prototipo · fase 1 · contrarreloj</div>
+            <div className="mt-2 inline-block rounded-full bg-[#10204a]/70 px-3 py-1 text-[12.5px] font-extrabold tracking-wide text-white/90 uppercase [@media(max-height:520px)]:hidden">{t('Prototype · phase 1 · time trial', 'Prototipo · fase 1 · contrarreloj')}</div>
           </motion.div>
           <div className="mt-auto flex flex-col items-center gap-3 sm:items-start">
             <div className="pointer-events-auto rc-panel flex w-full max-w-[470px] flex-col gap-3 p-3">
               <div className="flex items-center gap-2">
-                <button type="button" onClick={() => pickToon(-1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label="Anterior"><ChevronLeft /></button>
+                <button type="button" onClick={() => pickToon(-1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Previous', 'Anterior')}><ChevronLeft /></button>
                 <div className="min-w-0 flex-1 text-center">
-                  <div className="text-[12px] font-extrabold tracking-wide text-white/60 uppercase">Piloto</div>
+                  <div className="text-[12px] font-extrabold tracking-wide text-white/60 uppercase">{t('Driver', 'Piloto')}</div>
                   <div className="flex items-center justify-center gap-2 truncate text-[22px] font-black"><span className="h-3.5 w-3.5 shrink-0 rounded-full border border-black/30" style={{ background: cur.color }} />{cur.name}</div>
                 </div>
-                <button type="button" onClick={() => pickToon(1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label="Siguiente"><ChevronRight /></button>
+                <button type="button" onClick={() => pickToon(1)} className="grid h-11 w-11 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Next', 'Siguiente')}><ChevronRight /></button>
               </div>
               <div className="flex items-center gap-3 rounded-2xl bg-white/8 px-3 py-2.5">
                 <Flag size={20} className="shrink-0 text-[#ffd23f]" />
                 <div className="min-w-0 flex-1">
-                  <div className="text-[15px] font-black">Campus ECYR · 3 vueltas</div>
-                  <div className="text-[12.5px] font-semibold text-white/65">Curva peraltada, horquilla, chicana, colina y salto sobre el estanque</div>
+                  <div className="text-[15px] font-black">{t('Campus ECYR · 3 laps', 'Campus ECYR · 3 vueltas')}</div>
+                  <div className="text-[12.5px] font-semibold text-white/65">{t('Banked curve, hairpin, chicane, hill and a jump over the pond', 'Curva peraltada, horquilla, chicana, colina y salto sobre el estanque')}</div>
                 </div>
-                {hud?.record && <div className="shrink-0 text-right text-[12px] font-bold text-white/70"><Trophy size={14} className="inline text-[#ffd23f]" /> {fmt(hud.record.total)}<br />vuelta {fmt(hud.record.lap)}</div>}
+                {hud?.record && <div className="shrink-0 text-right text-[12px] font-bold text-white/70"><Trophy size={14} className="inline text-[#ffd23f]" /> {fmt(hud.record.total)}<br />{t('lap', 'vuelta')} {fmt(hud.record.lap)}</div>}
               </div>
-              <Btn tone="green" className="h-14 w-full text-[21px]" onClick={go} disabled={st === 'loading'}>{st === 'loading' ? 'Cargando…' : <><Play size={22} fill="currentColor" /> ¡A CORRER!</>}</Btn>
+              <Btn tone="green" className="h-14 w-full text-[21px]" onClick={go} disabled={st === 'loading'}>{st === 'loading' ? t('Loading…', 'Cargando…') : <><Play size={22} fill="currentColor" /> {t('RACE!', '¡A CORRER!')}</>}</Btn>
             </div>
             <div className="pointer-events-auto rc-panel max-w-[470px] px-4 py-2.5 text-[12.5px] leading-relaxed font-semibold text-white/80 [@media(max-height:520px)]:hidden">
               {touchUi
-                ? <>Botón verde: acelerar · flechas: girar · <b className="text-[#ffb547]">DERRAPE</b>: mantén mientras giras para cargar el turbo (azul → naranja → morado) y suéltalo · en el aire, toca DERRAPE para hacer un truco · acelera justo cuando se apaga la última luz roja para una salida perfecta</>
-                : <><b>W/↑</b> acelerar · <b>S/↓</b> frenar · <b>A D/← →</b> girar · <b>Espacio/Shift</b> saltar y derrapar (mantén: azul → naranja → morado, suelta = turbo) · en el aire = truco · <b>C</b> mirar atrás · <b>R</b> volver a la pista · <b>Esc</b> pausa · control de consola compatible</>}
+                ? (lang === 'en'
+                  ? <>Green button: accelerate · arrows: steer · <b className="text-[#ffb547]">DRIFT</b>: hold it while turning to charge the turbo (blue → orange → purple), then let go · in the air, tap DRIFT for a trick · accelerate just as the last red light goes out for a perfect start</>
+                  : <>Botón verde: acelerar · flechas: girar · <b className="text-[#ffb547]">DERRAPE</b>: mantén mientras giras para cargar el turbo (azul → naranja → morado) y suéltalo · en el aire, toca DERRAPE para hacer un truco · acelera justo cuando se apaga la última luz roja para una salida perfecta</>)
+                : (lang === 'en'
+                  ? <><b>W/↑</b> accelerate · <b>S/↓</b> brake · <b>A D/← →</b> steer · <b>Space/Shift</b> hop and drift (hold: blue → orange → purple, let go = turbo) · in the air = trick · <b>C</b> look back · <b>R</b> back on track · <b>Esc</b> pause · gamepads work too</>
+                  : <><b>W/↑</b> acelerar · <b>S/↓</b> frenar · <b>A D/← →</b> girar · <b>Espacio/Shift</b> saltar y derrapar (mantén: azul → naranja → morado, suelta = turbo) · en el aire = truco · <b>C</b> mirar atrás · <b>R</b> volver a la pista · <b>Esc</b> pausa · control de consola compatible</>)}
             </div>
           </div>
         </div>
@@ -144,14 +152,14 @@ export default function RacersApp() {
       {hud && (racing || st === 'paused') && (
         <div className="pointer-events-none absolute inset-0 p-3 pt-[max(10px,env(safe-area-inset-top))] sm:p-4">
           <div className="flex items-start gap-2">
-            <button type="button" onClick={() => game?.togglePause()} className="pointer-events-auto grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#10204a]/60 text-white" aria-label="Pausa"><Pause size={20} /></button>
+            <button type="button" onClick={() => game?.togglePause()} className="pointer-events-auto grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#10204a]/60 text-white" aria-label={t('Pause', 'Pausa')}><Pause size={20} /></button>
             <div className="rc-panel px-3 py-1.5">
-              <div className="text-[11px] font-extrabold tracking-wide text-white/65 uppercase">Vuelta</div>
+              <div className="text-[11px] font-extrabold tracking-wide text-white/65 uppercase">{t('Lap', 'Vuelta')}</div>
               <div className="rc-num text-[30px] leading-none">{hud.lap}<span className="text-[18px] text-white/70">/{hud.laps}</span></div>
             </div>
             <div className="rc-panel px-3 py-1.5">
               <div className="rc-num text-[24px] leading-none">{fmt(hud.time)}</div>
-              <div className="mt-0.5 text-[12px] font-bold text-white/70 tabular-nums">Vuelta {fmt(hud.lapTime)}{hud.bestLap !== null && <span className="ml-2 text-[#7dff9a]">Mejor {fmt(hud.bestLap)}</span>}</div>
+              <div className="mt-0.5 text-[12px] font-bold text-white/70 tabular-nums">{t('Lap', 'Vuelta')} {fmt(hud.lapTime)}{hud.bestLap !== null && <span className="ml-2 text-[#7dff9a]">{t('Best', 'Mejor')} {fmt(hud.bestLap)}</span>}</div>
             </div>
             <div className="ml-auto">
               <svg viewBox="-8 -8 116 116" className="h-[92px] w-[92px] drop-shadow-[0_2px_4px_rgba(0,0,0,.35)] sm:h-[128px] sm:w-[128px]">
@@ -167,7 +175,7 @@ export default function RacersApp() {
             <div className="text-[12px] font-extrabold tracking-widest text-white/80 uppercase [text-shadow:0_2px_0_#10204a]">km/h</div>
             {hud.tier > 0 && <div className="mt-1 rounded-full px-2.5 py-0.5 text-[12px] font-black" style={{ background: TIER[hud.tier], color: '#10204a' }}>TURBO {hud.tier}</div>}
           </div>
-          {hud.wrongWay && <div className="absolute top-[35%] left-1/2 -translate-x-1/2 animate-[rc-pulse_.7s_infinite] rounded-2xl bg-[#ff3d3d] px-5 py-2 text-[22px] font-black text-white shadow-lg">¡SENTIDO CONTRARIO!</div>}
+          {hud.wrongWay && <div className="absolute top-[35%] left-1/2 -translate-x-1/2 animate-[rc-pulse_.7s_infinite] rounded-2xl bg-[#ff3d3d] px-5 py-2 text-[22px] font-black text-white shadow-lg">{t('WRONG WAY!', '¡SENTIDO CONTRARIO!')}</div>}
         </div>
       )}
 
@@ -195,15 +203,15 @@ export default function RacersApp() {
       {touchUi && racing && (
         <>
           <div className="absolute bottom-[max(18px,env(safe-area-inset-bottom))] left-4 flex gap-3">
-            <Pad k="left" game={game} label="Izquierda" className="h-[86px] w-[86px] bg-[#10204a]/55"><ChevronLeft size={46} /></Pad>
-            <Pad k="right" game={game} label="Derecha" className="h-[86px] w-[86px] bg-[#10204a]/55"><ChevronRight size={46} /></Pad>
+            <Pad k="left" game={game} label={t('Left', 'Izquierda')} className="h-[86px] w-[86px] bg-[#10204a]/55"><ChevronLeft size={46} /></Pad>
+            <Pad k="right" game={game} label={t('Right', 'Derecha')} className="h-[86px] w-[86px] bg-[#10204a]/55"><ChevronRight size={46} /></Pad>
           </div>
           <div className="absolute right-4 bottom-[max(18px,env(safe-area-inset-bottom))] flex items-end gap-3">
             <div className="flex flex-col items-center gap-3">
-              <Pad k="drift" game={game} label="Derrape" className="h-[72px] w-[72px] bg-[#ff8a1f]/85 text-[12px]">DERRAPE</Pad>
-              <Pad k="brake" game={game} label="Frenar" className="h-[54px] w-[54px] bg-[#ff4757]/80 text-[11px]">FRENO</Pad>
+              <Pad k="drift" game={game} label={t('Drift', 'Derrape')} className="h-[72px] w-[72px] bg-[#ff8a1f]/85 text-[12px]">{t('DRIFT', 'DERRAPE')}</Pad>
+              <Pad k="brake" game={game} label={t('Brake', 'Frenar')} className="h-[54px] w-[54px] bg-[#ff4757]/80 text-[11px]">{t('BRAKE', 'FRENO')}</Pad>
             </div>
-            <Pad k="gas" game={game} label="Acelerar" className="h-[104px] w-[104px] bg-[#2fd27a]/90 text-[15px]">ACELERAR</Pad>
+            <Pad k="gas" game={game} label={t('Accelerate', 'Acelerar')} className="h-[104px] w-[104px] bg-[#2fd27a]/90 text-[15px]">{t('GO', 'ACELERAR')}</Pad>
           </div>
         </>
       )}
@@ -212,13 +220,14 @@ export default function RacersApp() {
       {st === 'paused' && (
         <div className="absolute inset-0 grid place-items-center bg-[#0a1230]/55 p-4">
           <div className="rc-panel flex w-full max-w-[340px] flex-col gap-3 p-5 text-center">
-            <div className="rc-num text-[34px]">PAUSA</div>
-            <Btn tone="green" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> Continuar</Btn>
-            <Btn tone="white" onClick={() => game?.restart()}><RotateCcw size={20} /> Reiniciar carrera</Btn>
-            <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={20} /> Menú</Btn>
+            <div className="rc-num text-[34px]">{t('PAUSED', 'PAUSA')}</div>
+            <Btn tone="green" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> {t('Resume', 'Continuar')}</Btn>
+            <Btn tone="white" onClick={() => game?.restart()}><RotateCcw size={20} /> {t('Restart race', 'Reiniciar carrera')}</Btn>
+            <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={20} /> {t('Menu', 'Menú')}</Btn>
             <div className="flex justify-center gap-2">
-              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label="Música"><Music size={19} /></Toggle>
-              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label="Efectos">{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
+              <GameLangToggle />
+              <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label={t('Music', 'Música')}><Music size={19} /></Toggle>
+              <Toggle on={prefs.sfx} onClick={() => { setPref('sfx', !prefs.sfx); force((n) => n + 1); }} label={t('Sound effects', 'Efectos')}>{prefs.sfx ? <Volume2 size={19} /> : <VolumeX size={19} />}</Toggle>
             </div>
           </div>
         </div>
@@ -228,21 +237,21 @@ export default function RacersApp() {
       {st === 'finish' && hud?.results && (
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2 }} className="absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[max(14px,env(safe-area-inset-bottom))] sm:top-0 sm:items-center sm:justify-end sm:p-6">
           <div className="rc-panel w-full max-w-[380px] p-4">
-            <div className="rc-num text-center text-[36px] text-[#ffd23f]">¡META!</div>
-            <div className="text-center text-[13px] font-bold text-white/70 uppercase">Tiempo total</div>
+            <div className="rc-num text-center text-[36px] text-[#ffd23f]">{t('FINISH!', '¡META!')}</div>
+            <div className="text-center text-[13px] font-bold text-white/70 uppercase">{t('Total time', 'Tiempo total')}</div>
             <div className="rc-num text-center text-[42px] leading-none">{fmt(hud.results.total)}</div>
-            {hud.results.newBestTotal && <div className="mt-1 text-center text-[14px] font-black text-[#7dff9a]">¡Nuevo récord!</div>}
+            {hud.results.newBestTotal && <div className="mt-1 text-center text-[14px] font-black text-[#7dff9a]">{t('New record!', '¡Nuevo récord!')}</div>}
             <div className="mt-3 flex flex-col gap-1">
               {hud.results.laps.map((l, i) => (
                 <div key={i} className={cn('flex items-center justify-between rounded-xl px-3 py-1.5 text-[15px] font-bold tabular-nums', l === hud.results!.best ? 'bg-[#2fd27a]/25 text-[#b7ffcf]' : 'bg-white/8')}>
-                  <span>Vuelta {i + 1}</span><span>{fmt(l)}{l === hud.results!.best && ' ★'}</span>
+                  <span>{t('Lap', 'Vuelta')} {i + 1}</span><span>{fmt(l)}{l === hud.results!.best && ' ★'}</span>
                 </div>
               ))}
             </div>
-            {hud.record && <div className="mt-2 text-center text-[12.5px] font-semibold text-white/65">Récord: {fmt(hud.record.total)} · mejor vuelta {fmt(hud.record.lap)}</div>}
+            {hud.record && <div className="mt-2 text-center text-[12.5px] font-semibold text-white/65">{t('Record', 'Récord')}: {fmt(hud.record.total)} · {t('best lap', 'mejor vuelta')} {fmt(hud.record.lap)}</div>}
             <div className="mt-3 flex gap-2">
-              <Btn tone="green" className="flex-1" onClick={() => game?.restart()}><RotateCcw size={19} /> Otra vez</Btn>
-              <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={19} /> Menú</Btn>
+              <Btn tone="green" className="flex-1" onClick={() => game?.restart()}><RotateCcw size={19} /> {t('Again', 'Otra vez')}</Btn>
+              <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={19} /> {t('Menu', 'Menú')}</Btn>
             </div>
           </div>
         </motion.div>
@@ -250,7 +259,7 @@ export default function RacersApp() {
 
       {touchUi && portrait && (
         <div className="absolute inset-0 grid place-items-center bg-[#0a1230]/85 p-6 text-center">
-          <div><Smartphone size={54} className="mx-auto mb-3 rotate-90 text-[#ffd23f]" /><div className="text-[22px] font-black">Gira tu celular</div><div className="mt-1 text-[15px] font-semibold text-white/75">English Racers se juega en horizontal.</div></div>
+          <div><Smartphone size={54} className="mx-auto mb-3 rotate-90 text-[#ffd23f]" /><div className="text-[22px] font-black">{t('Turn your phone', 'Gira tu celular')}</div><div className="mt-1 text-[15px] font-semibold text-white/75">{t('English Racers is played in landscape.', 'English Racers se juega en horizontal.')}</div></div>
         </div>
       )}
     </div>

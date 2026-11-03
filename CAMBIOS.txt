@@ -602,6 +602,22 @@ G1q. TÍTULOS NUEVOS Y BORDES SUAVES (English Racers y English Run)
 - Las flechas de la rampa de Racers ahora son una textura suave (antes eran
   bloques de colores con bordes escalonados).
 
+G1r. JUEGOS EN INGLÉS POR DEFECTO (con opción de español)
+- Todos los juegos abren en inglés y tienen el selector EN | ES: Class Wars
+  (incluido el editor de preguntas del profe), Impostor (antes abría en
+  español), Pass the Doodle, You Draw, English Run (menú, carreras,
+  mensajes, pausa, resultados) y English Racers (menú, controles,
+  semáforo, mensajes, pausa, resultados).
+- Una sola elección para todos: si se cambia a español en un juego (o en
+  Juegos › En vivo con tu clase, donde también está el selector), los demás
+  juegos abren en español; se guarda en el dispositivo.
+- También siguen el idioma de los juegos las tarjetas de En vivo con tu
+  clase, la página de Cartas (rangos Bronze/Silver/Gold/Diamond o Bronce/
+  Plata/Oro/Diamante, avisos y mensajes de guardado) y la revelación de
+  cartas al final de una partida.
+- El resto de la aplicación (menú lateral, lecciones, catálogo de juegos de
+  práctica) sigue en español.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así
