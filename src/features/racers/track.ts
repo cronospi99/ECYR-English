@@ -22,16 +22,26 @@ export type Feature =
   | { kind: 'gap'; at: number; off: number; len: number }
   | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number };
 
+/** Something placed across the road at a control point plus an offset (m). */
+export interface Spot { at: number; off: number }
+
 export interface TrackDef {
   id: string;
   name: string;
   cps: CP[];
   features: Feature[];
   laps: number;
-  /** Multiplies the automatic banking. */
+  /** Multiplies the automatic banking, and its limit (default 0.18 m per m). */
   bank?: number;
+  bankMax?: number;
   /** Water level under gaps (falling below it = respawn). */
   waterY?: number;
+  /** Rows of item boxes across the road. */
+  items?: Spot[];
+  /** Question gates (the road splits into three answer lanes). */
+  gates?: Spot[];
+  /** Lines of coins: n coins every `gap` m (default 3.5) at lateral d, drifting by `dd` per coin. */
+  coins?: (Spot & { d: number; n: number; gap?: number; dd?: number })[];
 }
 
 export interface Frame {
@@ -84,6 +94,10 @@ export class Track {
   readonly gaps: Gap[] = [];
   readonly pads: Pad[] = [];
   readonly waterY: number;
+  /** Item box rows, question gates (distance along the road) and coins (s, d). */
+  readonly itemRows: number[] = [];
+  readonly gates: number[] = [];
+  readonly coins: { s: number; d: number }[] = [];
 
   constructor(def: TrackDef) {
     this.def = def;
@@ -131,7 +145,7 @@ export class Track {
     for (let i = 0; i < N; i++) {
       let c = 0;
       for (let k = -K; k <= K; k++) c += F[(i + k + N) % N].curv;
-      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -0.18, 0.18);
+      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -(def.bankMax ?? 0.18), def.bankMax ?? 0.18);
     }
     // a banked road pivots on its low edge (raised, never sunk into the ground), then the slope
     for (const f of F) f.p.y += Math.abs(f.bank) * (f.w + KERB);
@@ -145,6 +159,9 @@ export class Track {
       else if (f.kind === 'gap') this.gaps.push({ s0, s1: s0 + span(f.len) });
       else this.pads.push({ s0, s1: s0 + (f.len ?? 7), d: f.d, hw: (f.w ?? 3) / 2 });
     }
+    for (const r of def.items ?? []) this.itemRows.push(at(r.at, r.off));
+    for (const g of def.gates ?? []) this.gates.push(at(g.at, g.off));
+    for (const c of def.coins ?? []) for (let k = 0; k < c.n; k++) this.coins.push({ s: (at(c.at, c.off) + k * (c.gap ?? 3.5)) % len, d: c.d + k * (c.dd ?? 0) });
   }
 
   frame(i: number) { const N = this.frames.length; return this.frames[((i % N) + N) % N]; }

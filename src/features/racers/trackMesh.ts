@@ -74,6 +74,97 @@ function rampTexture() {
   });
 }
 
+/** Boardwalk: warm planks across the road, nail rows, a few darker boards, white edge paint. */
+function planksTexture() {
+  return canvasTex(512, 1024, (c) => {
+    let r = 3;
+    const rand = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+    for (let y = 0; y < 1024; y += 32) {
+      const k = rand();
+      c.fillStyle = `hsl(${30 + k * 8}, ${42 + k * 12}%, ${54 - k * 12}%)`;
+      c.fillRect(0, y, 512, 32);
+      for (let i = 0; i < 26; i++) { c.fillStyle = `rgba(90,52,20,${0.06 + rand() * 0.1})`; c.fillRect(rand() * 512, y + rand() * 30, 30 + rand() * 120, 1 + rand() * 1.5); }
+      c.fillStyle = 'rgba(40,22,8,.55)'; c.fillRect(0, y, 512, 3);
+      c.fillStyle = 'rgba(255,240,210,.18)'; c.fillRect(0, y + 3, 512, 2);
+      for (const x of [40, 256, 472]) { c.fillStyle = 'rgba(40,30,25,.55)'; c.beginPath(); c.arc(x, y + 16, 3, 0, 7); c.fill(); }
+    }
+    c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(10, 0, 9, 1024); c.fillRect(493, 0, 9, 1024);
+  });
+}
+
+/** Rooftop road: dark tarmac with yellow edge lines and painted arrows. */
+function roofTexture() {
+  return canvasTex(512, 1024, (c) => {
+    c.fillStyle = '#383c45'; c.fillRect(0, 0, 512, 1024);
+    let r = 9;
+    const rand = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+    for (let i = 0; i < 9000; i++) { const g = 45 + rand() * 40; c.fillStyle = `rgba(${g},${g + 2},${g + 8},${0.3 + rand() * 0.4})`; c.fillRect(rand() * 512, rand() * 1024, 1 + rand() * 2, 1 + rand() * 2); }
+    for (let i = 0; i < 5; i++) { c.strokeStyle = 'rgba(20,20,24,.35)'; c.lineWidth = 2; c.beginPath(); let x = rand() * 512, y = rand() * 1024; c.moveTo(x, y); for (let k = 0; k < 6; k++) { x += (rand() - 0.5) * 60; y += 30 + rand() * 40; c.lineTo(x, y); } c.stroke(); }
+    c.fillStyle = '#ffc61a'; c.fillRect(14, 0, 9, 1024); c.fillRect(489, 0, 9, 1024);
+    c.fillStyle = 'rgba(255,255,255,.75)';
+    for (let y = 120; y < 1024; y += 512) { c.beginPath(); c.moveTo(256, y); c.lineTo(296, y + 60); c.lineTo(272, y + 60); c.lineTo(272, y + 130); c.lineTo(240, y + 130); c.lineTo(240, y + 60); c.lineTo(216, y + 60); c.closePath(); c.fill(); }
+  });
+}
+
+/** Neon road: near-black glassy deck with a fine grid; its emissive twin lights the edge lines. */
+function neonTextures() {
+  const draw = (glowOnly: boolean) => (c: CanvasRenderingContext2D) => {
+    c.fillStyle = glowOnly ? '#000000' : '#120c26'; c.fillRect(0, 0, 512, 1024);
+    if (!glowOnly) {
+      c.strokeStyle = 'rgba(120,90,255,.16)'; c.lineWidth = 2;
+      for (let x = 0; x <= 512; x += 64) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 1024); c.stroke(); }
+      for (let y = 0; y <= 1024; y += 64) { c.beginPath(); c.moveTo(0, y); c.lineTo(512, y); c.stroke(); }
+    }
+    const g1 = c.createLinearGradient(0, 0, 40, 0); g1.addColorStop(0, '#00e5ff'); g1.addColorStop(1, 'rgba(0,229,255,0)');
+    c.fillStyle = g1; c.fillRect(8, 0, 34, 1024);
+    const g2 = c.createLinearGradient(512, 0, 472, 0); g2.addColorStop(0, '#ff2bd6'); g2.addColorStop(1, 'rgba(255,43,214,0)');
+    c.fillStyle = g2; c.fillRect(470, 0, 34, 1024);
+    c.fillStyle = glowOnly ? '#7a5cff' : '#5a46c8';
+    for (let y = 0; y < 1024; y += 256) c.fillRect(250, y, 12, 130);
+  };
+  return { map: canvasTex(512, 1024, draw(false)), glow: canvasTex(512, 1024, draw(true)) };
+}
+
+/** Sheer sides (u along the road, v down): building windows, pier timbers or neon panels. */
+function sideTexture(kind: 'windows' | 'pier' | 'neon') {
+  return canvasTex(256, 256, (c) => {
+    if (kind === 'windows') {
+      c.fillStyle = '#d9d2c4'; c.fillRect(0, 0, 256, 256);
+      for (let x = 0; x < 4; x++) for (let y = 0; y < 2; y++) {
+        const lit = (x * 7 + y * 3) % 5 === 0;
+        c.fillStyle = lit ? '#ffe9a8' : '#6f8fb5'; c.fillRect(12 + x * 62, 20 + y * 128, 44, 82);
+        c.fillStyle = 'rgba(255,255,255,.35)'; c.fillRect(12 + x * 62, 20 + y * 128, 44, 10);
+        c.fillStyle = '#b8b0a2'; c.fillRect(8 + x * 62, 104 + y * 128, 52, 8);
+      }
+    } else if (kind === 'pier') {
+      c.fillStyle = '#6b4a2e'; c.fillRect(0, 0, 256, 256);
+      for (let y = 0; y < 256; y += 32) { c.fillStyle = y % 64 ? '#7b5636' : '#71502f'; c.fillRect(0, y, 256, 30); }
+      c.fillStyle = '#4a321e'; for (const x of [0, 128]) c.fillRect(x, 0, 26, 256);
+      c.strokeStyle = '#3a2716'; c.lineWidth = 8; c.beginPath(); c.moveTo(26, 0); c.lineTo(128, 256); c.moveTo(154, 0); c.lineTo(256, 256); c.stroke();
+    } else {
+      c.fillStyle = '#100a22'; c.fillRect(0, 0, 256, 256);
+      c.strokeStyle = '#2a1d5c'; c.lineWidth = 4; for (let x = 0; x <= 256; x += 64) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 256); c.stroke(); }
+      c.fillStyle = '#ff2bd6'; c.fillRect(0, 18, 256, 6);
+      c.fillStyle = '#00e5ff'; c.fillRect(0, 140, 256, 3);
+    }
+  });
+}
+
+/** How a track looks: road surface, kerbs, aprons, barriers and what is under open edges. */
+export interface TrackStyle {
+  road: 'asphalt' | 'planks' | 'roof' | 'neon';
+  kerb: [number, number];
+  apron: [number, number];
+  wall: 'barrier' | 'rail' | 'parapet' | 'neon';
+  /** Open edges: an embankment down to the ground, or a sheer textured side down to baseY. */
+  edge: 'bank' | 'sheer';
+  side?: 'windows' | 'pier' | 'neon';
+  bank?: number;
+  gapFace: number;
+  baseY: number;
+}
+export const CAMPUS_STYLE: TrackStyle = { road: 'asphalt', kerb: [0xe53935, 0xf4f4f2], apron: [0x62b04a, 0x54a03f], wall: 'barrier', edge: 'bank', bank: 0x4b8a35, gapFace: 0xb9b2a3, baseY: BASE_Y };
+
 function checkerTexture() {
   return canvasTex(256, 32, (c) => {
     for (let x = 0; x < 16; x++) for (let y = 0; y < 2; y++) { c.fillStyle = (x + y) % 2 ? '#15161a' : '#e9e9e6'; c.fillRect(x * 16, y * 16, 16, 16); }
@@ -82,10 +173,11 @@ function checkerTexture() {
 
 export interface TrackMeshes { group: THREE.Group; pads: THREE.ShaderMaterial }
 
-export function buildTrackMeshes(track: Track, world: THREE.Material): TrackMeshes {
+export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackStyle = CAMPUS_STYLE): TrackMeshes {
   const group = new THREE.Group();
   const F = track.frames, N = F.length;
   const inGap = (i: number) => track.gapAt(F[i].s + track.ds * 0.5);
+  const glowT = new Tris();
 
   // asphalt (indexed, smooth)
   {
@@ -104,50 +196,110 @@ export function buildTrackMeshes(track: Track, world: THREE.Material): TrackMesh
     g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
     g.setIndex(idx);
     g.computeVertexNormals();
-    const tex = asphaltTexture();
-    tex.anisotropy = 8;
-    const road = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9, metalness: 0 }));
+    let mat: THREE.MeshStandardMaterial;
+    if (st.road === 'neon') {
+      const nt = neonTextures();
+      nt.map.anisotropy = 8; nt.glow.anisotropy = 8;
+      mat = new THREE.MeshStandardMaterial({ map: nt.map, emissiveMap: nt.glow, emissive: 0xffffff, emissiveIntensity: 1.0, roughness: 0.18, metalness: 0.4 });
+    } else {
+      const tex = st.road === 'planks' ? planksTexture() : st.road === 'roof' ? roofTexture() : asphaltTexture();
+      tex.anisotropy = 8;
+      mat = new THREE.MeshStandardMaterial({ map: tex, roughness: st.road === 'planks' ? 0.78 : 0.9, metalness: 0 });
+    }
+    const road = new THREE.Mesh(g, mat);
     road.receiveShadow = true;
     group.add(road);
   }
 
-  // kerbs, grass, embankments, barriers
+  // kerbs, aprons, barriers, embankments or sheer sides
   const t = new Tris();
   const p0 = v(), p1 = v(), p2 = v(), p3 = v();
+  const sideStrip: { pos: number[]; uv: number[] } = { pos: [], uv: [] };
+  const box = (cx: THREE.Vector3, yaw: number, sx: number, sy: number, sz: number, color: number, tris = t) => {
+    const c = Math.cos(yaw), sn = Math.sin(yaw);
+    const P = (x: number, y: number, z: number) => v(cx.x + x * c + z * sn, cx.y + y, cx.z - x * sn + z * c);
+    const hx = sx / 2, hz = sz / 2;
+    const a = [P(-hx, 0, -hz), P(hx, 0, -hz), P(hx, 0, hz), P(-hx, 0, hz)], b = [P(-hx, sy, -hz), P(hx, sy, -hz), P(hx, sy, hz), P(-hx, sy, hz)];
+    for (let k = 0; k < 4; k++) tris.quad(a[k], a[(k + 1) % 4], b[(k + 1) % 4], b[k], color);
+    tris.quad(b[0], b[1], b[2], b[3], color);
+  };
   for (let i = 0; i < N; i++) {
     if (inGap(i)) continue;
     const a = F[i], b = F[(i + 1) % N];
     const stripe = Math.floor(a.s / 2) % 2 === 0;
     for (const sg of [-1, 1]) {
-      // kerb (raised a little, red/white)
-      t.quad(side(a, sg * a.w, 0.02, p0), side(b, sg * b.w, 0.02, p1), side(b, sg * (b.w + KERB), 0.06, p2), side(a, sg * (a.w + KERB), 0.06, p3), stripe ? 0xe53935 : 0xf4f4f2);
-      // grass apron, mowed in stripes
+      t.quad(side(a, sg * a.w, 0.02, p0), side(b, sg * b.w, 0.02, p1), side(b, sg * (b.w + KERB), 0.06, p2), side(a, sg * (a.w + KERB), 0.06, p3), stripe ? st.kerb[0] : st.kerb[1]);
       const ga = a.w + KERB + a.apron, gb = b.w + KERB + b.apron;
-      const mow = Math.floor(a.s / 6) % 2 === 0 ? 0x62b04a : 0x54a03f;
+      const mow = Math.floor(a.s / 6) % 2 === 0 ? st.apron[0] : st.apron[1];
       t.quad(side(a, sg * (a.w + KERB), 0.06, p0), side(b, sg * (b.w + KERB), 0.06, p1), side(b, sg * gb, 0.04, p2), side(a, sg * ga, 0.04, p3), mow);
-      // barrier on the outer edge
+      if (st.road === 'neon') glowT.quad(side(a, sg * (a.w + KERB), 0.075, p0), side(b, sg * (b.w + KERB), 0.075, p1), side(b, sg * (b.w + KERB + 0.22), 0.075, p2), side(a, sg * (a.w + KERB + 0.22), 0.075, p3), sg < 0 ? 0x00e5ff : 0xff2bd6);
+      const wa = ga + 0.25, wb = gb + 0.25;
       if (a.wall) {
-        const wa = ga + 0.25, wb = gb + 0.25, H = 0.9, T = 0.4;
-        const panel = Math.floor(a.s / 4) % 2 === 0 ? 0xe23b3b : 0xf5f6f8;
-        t.quad(side(a, sg * wa, 0, p0), side(b, sg * wb, 0, p1), side(b, sg * wb, H, p2), side(a, sg * wa, H, p3), panel);
-        t.quad(side(a, sg * wa, H, p0), side(b, sg * wb, H, p1), side(b, sg * (wb + T), H, p2), side(a, sg * (wa + T), H, p3), 0xd7dbe2);
-        side(a, sg * (wa + T), H, p0); side(b, sg * (wb + T), H, p1);
-        p2.set(p1.x, BASE_Y, p1.z); p3.set(p0.x, BASE_Y, p0.z);
-        t.quad(p0, p1, p2, p3, 0xa9b0bb);
-        // inner face below the grass on raised parts
-        side(a, sg * wa, 0, p0); side(b, sg * wb, 0, p1);
-        if (p0.y > 0.2) { p2.set(p1.x, BASE_Y, p1.z); p3.set(p0.x, BASE_Y, p0.z); t.quad(p0, p1, p2, p3, 0x8f8a7c); }
-      } else {
-        // open edge: an embankment down to the ground
-        side(a, sg * ga, 0.04, p0); side(b, sg * gb, 0.04, p1);
-        const ha = p0.y - BASE_Y, hb = p1.y - BASE_Y;
-        if (ha > 0.1 || hb > 0.1) {
-          side(b, sg * (gb + Math.max(0.6, hb * 1.4)), 0, p2); p2.y = BASE_Y;
-          side(a, sg * (ga + Math.max(0.6, ha * 1.4)), 0, p3); p3.y = BASE_Y;
-          t.quad(p0, p1, p2, p3, 0x4b8a35);
+        if (st.wall === 'barrier') {
+          const H = 0.9, T = 0.4;
+          const panel = Math.floor(a.s / 4) % 2 === 0 ? 0xe23b3b : 0xf5f6f8;
+          t.quad(side(a, sg * wa, 0, p0), side(b, sg * wb, 0, p1), side(b, sg * wb, H, p2), side(a, sg * wa, H, p3), panel);
+          t.quad(side(a, sg * wa, H, p0), side(b, sg * wb, H, p1), side(b, sg * (wb + T), H, p2), side(a, sg * (wa + T), H, p3), 0xd7dbe2);
+        } else if (st.wall === 'parapet') {
+          const H = 1.05, T = 0.45;
+          t.quad(side(a, sg * wa, 0, p0), side(b, sg * wb, 0, p1), side(b, sg * wb, H, p2), side(a, sg * wa, H, p3), Math.floor(a.s / 8) % 2 ? 0xbfc4cc : 0xb4bac3);
+          t.quad(side(a, sg * wa, H, p0), side(b, sg * wb, H, p1), side(b, sg * (wb + T), H, p2), side(a, sg * (wa + T), H, p3), 0xe0e3e8);
+          t.quad(side(a, sg * (wa + 0.1), H + 0.55, p0), side(b, sg * (wb + 0.1), H + 0.55, p1), side(b, sg * (wb + 0.1), H + 0.62, p2), side(a, sg * (wa + 0.1), H + 0.62, p3), 0x8a919c);
+          if (i % 4 === 0) box(side(a, sg * (wa + 0.12), H), a.yaw, 0.06, 0.6, 0.06, 0x8a919c);
+        } else if (st.wall === 'rail') {
+          for (const [h, th] of [[0.9, 0.12], [0.5, 0.09]] as const) {
+            t.quad(side(a, sg * wa, h, p0), side(b, sg * wb, h, p1), side(b, sg * wb, h + th, p2), side(a, sg * wa, h + th, p3), h > 0.6 ? 0xe9dcc0 : 0xd8c8a4);
+          }
+          if (i % 3 === 0) box(side(a, sg * wa, -0.4), a.yaw, 0.2, 1.45, 0.2, 0x9a6b3f);
+        } else {
+          const H = 0.55;
+          t.quad(side(a, sg * wa, 0, p0), side(b, sg * wb, 0, p1), side(b, sg * wb, H, p2), side(a, sg * wa, H, p3), 0x1b1638);
+          t.quad(side(a, sg * wa, H, p0), side(b, sg * wb, H, p1), side(b, sg * (wb + 0.3), H, p2), side(a, sg * (wa + 0.3), H, p3), 0x241c4a);
+          glowT.quad(side(a, sg * (wa + 0.02), H + 0.3, p0), side(b, sg * (wb + 0.02), H + 0.3, p1), side(b, sg * (wb + 0.02), H + 0.42, p2), side(a, sg * (wa + 0.02), H + 0.42, p3), sg < 0 ? 0x00e5ff : 0xff2bd6);
+          if (i % 5 === 0) box(side(a, sg * (wa + 0.15), H), a.yaw, 0.1, 0.45, 0.1, 0x3a2f6e);
         }
       }
+      // under the outer edge: down to the ground
+      const outA = a.wall ? wa + (st.wall === 'barrier' ? 0.4 : st.wall === 'parapet' ? 0.45 : st.wall === 'neon' ? 0.3 : 0.1) : ga;
+      const outB = b.wall ? wb + (st.wall === 'barrier' ? 0.4 : st.wall === 'parapet' ? 0.45 : st.wall === 'neon' ? 0.3 : 0.1) : gb;
+      if (st.edge === 'bank') {
+        if (a.wall) {
+          side(a, sg * outA, 0.9, p0); side(b, sg * outB, 0.9, p1);
+          p2.set(p1.x, st.baseY, p1.z); p3.set(p0.x, st.baseY, p0.z);
+          t.quad(p0, p1, p2, p3, 0xa9b0bb);
+          side(a, sg * wa, 0, p0); side(b, sg * wb, 0, p1);
+          if (p0.y > 0.2) { p2.set(p1.x, st.baseY, p1.z); p3.set(p0.x, st.baseY, p0.z); t.quad(p0, p1, p2, p3, 0x8f8a7c); }
+        } else {
+          side(a, sg * ga, 0.04, p0); side(b, sg * gb, 0.04, p1);
+          const ha = p0.y - st.baseY, hb = p1.y - st.baseY;
+          if (ha > 0.1 || hb > 0.1) {
+            side(b, sg * (gb + Math.max(0.6, hb * 1.4)), 0, p2); p2.y = st.baseY;
+            side(a, sg * (ga + Math.max(0.6, ha * 1.4)), 0, p3); p3.y = st.baseY;
+            t.quad(p0, p1, p2, p3, st.bank ?? 0x4b8a35);
+          }
+        }
+      } else {
+        // a sheer side, textured (windows, pier timbers, neon panels)
+        side(a, sg * outA, 0.04, p0); side(b, sg * outB, 0.04, p1);
+        const q = [p0.clone(), p1.clone(), v(p1.x, st.baseY, p1.z), v(p0.x, st.baseY, p0.z)];
+        const u0 = a.s / 8, u1 = (a.s + track.ds) / 8;
+        const vv = (y: number) => (q[0].y - y) / 6.4;
+        const order = sg > 0 ? [0, 1, 2, 0, 2, 3] : [0, 2, 1, 0, 3, 2];
+        const uvs = [[u0, 0], [u1, (q[0].y - q[1].y) / 6.4], [u1, vv(st.baseY)], [u0, vv(st.baseY)]];
+        for (const k of order) { sideStrip.pos.push(q[k].x, q[k].y, q[k].z); sideStrip.uv.push(uvs[k][0], uvs[k][1]); }
+      }
     }
+  }
+  if (sideStrip.pos.length && st.side) {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(sideStrip.pos, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(sideStrip.uv, 2));
+    g.computeVertexNormals();
+    const tex = sideTexture(st.side);
+    const sm = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.8, side: THREE.DoubleSide, ...(st.side === 'neon' ? { emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.5 } : {}) });
+    const m = new THREE.Mesh(g, sm);
+    m.receiveShadow = true;
+    group.add(m);
   }
   // the faces of each gap (concrete) and under ramps
   for (const gp of track.gaps) {
@@ -155,13 +307,19 @@ export function buildTrackMeshes(track: Track, world: THREE.Material): TrackMesh
       const f = F[Math.round(s / track.ds) % N];
       const lim = f.w + KERB + f.apron + 0.6;
       side(f, -lim * dir, 0.04, p0); side(f, lim * dir, 0.04, p1);
-      p2.set(p1.x, track.waterY - 3, p1.z); p3.set(p0.x, track.waterY - 3, p0.z);
-      t.quad(p0, p1, p2, p3, 0xb9b2a3);
+      p2.set(p1.x, Math.min(track.waterY - 3, st.baseY), p1.z); p3.set(p0.x, Math.min(track.waterY - 3, st.baseY), p0.z);
+      t.quad(p0, p1, p2, p3, st.gapFace);
     }
   }
   const edges = new THREE.Mesh(t.geo(), world);
   edges.receiveShadow = true; edges.castShadow = true;
   group.add(edges);
+  if (glowT.pos.length) {
+    const g = glowT.geo();
+    const c = g.getAttribute('color') as THREE.BufferAttribute;
+    for (let i = 0; i < c.count; i++) c.setXYZ(i, c.getX(i) * 1.6, c.getY(i) * 1.6, c.getZ(i) * 1.6);
+    group.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false })));
+  }
 
   // ramps: wooden deck with hazard stripes
   const r = new Tris();

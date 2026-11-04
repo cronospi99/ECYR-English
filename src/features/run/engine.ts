@@ -12,6 +12,8 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { makeOcean, oceanGeometry, type Ocean } from './ocean';
+import { Life } from './life';
 import { BUS, CHUNK, CURVE, LANE, MAT, POWER_COLORS, RAMP_L, cloud, coinGeo, curveShader, curved, gateMesh, paintBoard, powerToken, skyDome, softDot, type GateMesh, type PowerKind } from './gfx';
 import { THEMES, TILE, type Parts, type Theme, type ThemeId } from './themes';
 import { say, setMusicIntensity, sfx, startMusic, stopMusic } from './audio';
@@ -77,7 +79,8 @@ export class RunGame {
   private floorGlow: THREE.InstancedMesh[] = [];
   private planks: THREE.InstancedMesh | null = null;
   private water: THREE.Mesh | null = null;
-  private waterU = { uTime: { value: 0 }, uOff: { value: 0 } };
+  private ocean: Ocean | null = null;
+  private life: Life | null = null;
   private gaps: Gap[] = [];
   private composer: EffectComposer | null = null;
   private bloomOk = true;
@@ -275,32 +278,26 @@ export class RunGame {
       if (t.plank) { this.planks = new THREE.InstancedMesh(t.plank(), MAT.world, 24); this.planks.frustumCulled = false; this.planks.count = 0; this.planks.receiveShadow = true; w.add(this.planks); }
       if (t.id === 'roofs') for (const im of this.floor) im.instanceColor = new THREE.InstancedBufferAttribute(new Float32Array(170 * 3).fill(1), 3);
     }
-    // the sea under the boardwalk: a big wavy plane that bends with the world
-    this.water = null;
+    // the sea beside the boardwalk: a living ocean (waves, foam on the crests and up the sand,
+    // turquoise in the shallows) that scrolls with the runner and bends with the world
+    this.water = null; this.ocean = null;
     if (t.water !== undefined) {
-      const geo = new THREE.PlaneGeometry(420, 360, 140, 120).rotateX(-Math.PI / 2);
-      const mat = new THREE.MeshStandardMaterial({ color: t.water, roughness: 0.12, metalness: 0.05 });
-      mat.onBeforeCompile = (sh) => {
-        Object.assign(sh.uniforms, this.waterU);
-        sh.vertexShader = 'uniform float uTime; uniform float uOff;\n' + sh.vertexShader
-          .replace('#include <beginnormal_vertex>', `
-            float wz = uOff - position.z;
-            float ph1 = position.x * 0.35 + wz * 0.21 + uTime * 1.3, ph2 = position.x * 0.9 - wz * 0.6 + uTime * 1.7;
-            float dx = cos(ph1) * 0.35 * 0.14 + cos(ph2) * 0.9 * 0.05, dz = -(cos(ph1) * 0.21 * 0.14 - cos(ph2) * 0.6 * 0.05);
-            vec3 objectNormal = normalize(vec3(-dx, 1.0, -dz));`)
-          .replace('#include <begin_vertex>', 'vec3 transformed = vec3(position); transformed.y += sin(ph1) * 0.14 + sin(ph2) * 0.05;');
-        curveShader(sh);
-      };
-      mat.customProgramCacheKey = () => 'sea';
-      this.water = new THREE.Mesh(geo, mat);
-      this.water.position.set(0, -2.45, -150);
+      this.ocean = makeOcean({ deep: 0x0a6aa0, shallow: 0x36e0d0, amp: 0.28, scale: 1.5, dir: [-1, 0.25], opacity: 0.95 }, (sh) => curveShader(sh));
+      // depth: none under the sand (x < -6), deepening out to sea; the boardwalk stands in shallow water
+      const geo = oceanGeometry(10, -150, 420, 360, 150, 120, (x) => THREE.MathUtils.clamp((x + 6.2) * 0.5, 0, 2) + Math.max(0, x - 2) * 0.15);
+      this.water = new THREE.Mesh(geo, this.ocean.material);
+      this.water.position.y = -2.45;
       this.water.receiveShadow = true;
       w.add(this.water);
     }
+    this.life = new Life(t.id);
+    w.add(this.life.group);
     this.setupBloom();
   }
 
   private disposeTheme() {
+    this.life?.dispose(); this.life = null;
+    this.ocean?.material.dispose(); this.ocean = null;
     for (const o of this.obs) this.release(o);
     this.obs = [];
     const geos = new Set<THREE.BufferGeometry>();
@@ -813,8 +810,8 @@ export class RunGame {
     this.place();
     this.updateCamera(dt);
     for (const c of this.clouds) { c.position.x += dt * 1.5; if (c.position.x > 280) c.position.x = -280; }
-    this.waterU.uTime.value += dt;
-    this.waterU.uOff.value = this.pz;
+    if (this.ocean) { this.ocean.uniforms.uTime.value += dt; this.ocean.uniforms.uOffset.value.set(0, -this.pz); }
+    this.life?.update(dt, this.clock, this.pz);
     if (this.composer) this.composer.render(dt);
     else this.renderer.render(this.scene, this.camera);
     this.adapt(dt, t);

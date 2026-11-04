@@ -618,6 +618,65 @@ G1r. JUEGOS EN INGLÉS POR DEFECTO (con opción de español)
 - El resto de la aplicación (menú lateral, lecciones, catálogo de juegos de
   práctica) sigue en español.
 
+G1s. ENGLISH RACERS · FASE 2: EL JUEGO COMPLETO PARA UN JUGADOR
+- Tres modos: Gran Premio (las 4 pistas seguidas, puntos por puesto
+  15-12-10-8-6-4-2-1 y podio final con los 3 primeros), Carrera (una pista)
+  y Contrarreloj (solo, guarda el récord).
+- 7 rivales: otros profes, con una versión ligera de su modelo 3D (unos
+  420 KB cada uno en vez de 1,4 MB). Siguen la trazada por dentro de las
+  curvas, frenan antes de las cerradas, derrapan para sacar mini-turbos,
+  esquivan tinta, cangrejos, cargas y láseres, buscan cajas y flechas de
+  turbo, hacen trucos en las rampas, usan objetos y se desatascan solos.
+  Tres dificultades (Fácil, Normal, Difícil) y una ayuda suave que mantiene
+  la carrera reñida. Choques entre karts (el que va con turbo empuja más).
+- Puesto en vivo (1.º a 8.º), tabla de posiciones y todos los karts en el
+  minimapa. Al final: tabla con tiempos (y puntos en el Gran Premio).
+- Objetos propios de colegio, en cajas ABC que giran sobre la pista: avión
+  de papel (persigue al de adelante), charco de tinta (lo dejas atrás y hace
+  girar), libro escudo (gira alrededor del kart y para un golpe), café ×3
+  (tres turbos) y campana del recreo (frena a todos los de adelante). Los
+  de atrás reciben mejores objetos. Ruleta en pantalla y botón OBJETO (E/X
+  en teclado, LB/X en control).
+- Monedas: hasta 10, cada una sube un poco la velocidad máxima; un golpe
+  hace perder algunas.
+- Arcos de preguntas: antes de algunas rectas la pista se pinta en 3
+  carriles de colores bajo un pórtico con la pregunta y una respuesta sobre
+  cada carril (A, B, C). En pantalla aparecen la pregunta, las respuestas y
+  el carril en que vas. Correcto = turbo grande + 3 monedas; incorrecto =
+  sin premio y se muestra la respuesta. Preguntas de English Run por nivel
+  (A1 a C1+); los bots aciertan más en Difícil. Al final se repasan todas.
+- 3 pistas nuevas, cada una con su cielo, luz y música:
+  · Bahía Soleada: malecón de tablones, dos muelles sobre el mar con salto,
+    horquilla frente al faro (con haz que gira) y una curva de arena con
+    cangrejos que cruzan. Mar vivo (olas, espuma, color según profundidad),
+    palmeras, sombrillas, salvavidas, casetas, veleros y boyas que se mecen,
+    gaviotas y delfines saltando.
+  · Tejados (atardecer): azoteas a 22-31 m, tres saltos entre edificios y
+    dos grúas que balancean cargas sobre la pista. Ciudad con ventanas
+    encendidas, tráfico abajo, helicóptero, palomas, tanques de agua,
+    antenas y helipuerto.
+  · Neón (noche): autopista elevada con curvas muy peraltadas, túnel de
+    arcos de luz, barreras láser que se encienden y apagan (media pista a la
+    vez), gran salto, piso de cuadrícula luminosa, sol retro, montañas de
+    alambre, torres de neón, hologramas y autos voladores con estelas.
+- Menú nuevo: piloto, modo, pista, nivel de inglés y dificultad. Al empezar
+  cada carrera se ve el nombre de la pista.
+- Probado con simulaciones de carreras completas en las 4 pistas y las 3
+  dificultades (8 karts, sin caídas atascadas). Falta probar en celulares
+  reales con 8 karts.
+
+G1t. ENGLISH RUN · MAR VIVO Y ESCENARIOS CON MÁS VIDA
+- Playa: el mar ahora tiene olas que avanzan hacia la orilla, espuma en las
+  crestas y en bandas sobre la arena, turquesa en lo poco profundo y azul
+  profundo mar adentro, y reflejos del sol. Además: delfines saltando,
+  veleros, un surfista, cometas sobre la arena, gente saludando y gaviotas.
+- Ciudad: gente caminando por las aceras (mueven brazos y piernas),
+  palomas y globos que suben.
+- Tejados: bandadas de pájaros, globos aerostáticos al atardecer y un
+  helicóptero que cruza.
+- Neón: autos voladores con estelas de luz, drones con luces que
+  parpadean, reflectores que barren el cielo y estrellas fugaces.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

@@ -131,16 +131,42 @@ export const sfx = {
   finish() { [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, i === 6 ? 0.8 : 0.18, 'square', 0.06, 0, i * 0.12)); noise(1.2, 0.12, 6000, 'highpass', 0.8); },
   spin() { tone(600, 0.5, 'sawtooth', 0.06, 150); },
   click() { tone(1200, 0.05, 'triangle', 0.05); },
+  box() { tone(988, 0.08, 'square', 0.05); tone(1319, 0.1, 'square', 0.05, 0, 0.06); noise(0.18, 0.12, 4000, 'highpass'); },
+  coin() { tone(1319, 0.06, 'square', 0.045); tone(1976, 0.14, 'square', 0.045, 0, 0.055); },
+  tick() { tone(1500 + Math.random() * 400, 0.03, 'triangle', 0.035); },
+  got() { tone(784, 0.09, 'triangle', 0.08); tone(1047, 0.09, 'triangle', 0.08, 0, 0.07); tone(1568, 0.16, 'triangle', 0.07, 0, 0.14); },
+  plane() { noise(0.6, 0.16, 1600, 'bandpass', 0, 600, 2); tone(520, 0.4, 'sine', 0.05, 900); },
+  ink() { noise(0.35, 0.2, 500, 'lowpass', 0, 160); tone(180, 0.25, 'sine', 0.08, 70); },
+  shield() { tone(392, 0.12, 'triangle', 0.07); tone(523, 0.12, 'triangle', 0.07, 0, 0.08); tone(784, 0.24, 'sine', 0.06, 0, 0.16); },
+  block() { tone(1100, 0.12, 'square', 0.06, 500); noise(0.25, 0.18, 2500, 'bandpass', 0, 800); },
+  coffee() { noise(0.3, 0.12, 900, 'bandpass', 0, 2600, 2); tone(220, 0.35, 'sawtooth', 0.06, 440, 0.12); },
+  bell() { for (const [f, d] of [[1568, 0], [1976, 0.02], [2637, 0.04], [1568, 0.22], [1976, 0.24], [2637, 0.26]] as const) tone(f, 0.9, 'sine', 0.06, 0, d); },
+  hit() { noise(0.4, 0.28, 700, 'bandpass', 0, 200, 0.8); tone(300, 0.45, 'sawtooth', 0.07, 90); },
+  bump() { noise(0.12, 0.14, 500, 'lowpass'); tone(120, 0.1, 'square', 0.05, 80); },
+  right() { [784, 988, 1175, 1568].forEach((f, i) => tone(f, 0.16, 'triangle', 0.08, 0, i * 0.07)); },
+  wrong() { tone(330, 0.18, 'square', 0.05, 220); tone(247, 0.3, 'square', 0.05, 160, 0.15); },
+  place(up: boolean) { tone(up ? 880 : 440, 0.08, 'triangle', 0.035, up ? 1175 : 330); },
 };
 
-/* ------------------------------------------------------------- music: 150 BPM, A minor */
+/* ------------------------------------------------------------- music: one theme per track */
 let timer: ReturnType<typeof setInterval> | null = null;
 let step = 0, nextT = 0;
 let musicWanted = false;
 export let musicFast = false;
 export function setMusicFast(v: boolean) { musicFast = v; }
-const BASS = [45, 45, 57, 45, 48, 48, 60, 48, 43, 43, 55, 43, 50, 50, 52, 55];
-const ARP = [69, 72, 76, 81, 72, 76, 79, 84, 67, 71, 74, 79, 74, 77, 81, 86];
+interface Song { bpm: number; fast: number; bass: number[]; arp: number[]; lead: OscillatorType; bassWave: OscillatorType; swing?: boolean; pad?: boolean }
+const SONGS: Record<string, Song> = {
+  // Campus: driving A minor pop-rock
+  campus: { bpm: 150, fast: 168, bass: [45, 45, 57, 45, 48, 48, 60, 48, 43, 43, 55, 43, 50, 50, 52, 55], arp: [69, 72, 76, 81, 72, 76, 79, 84, 67, 71, 74, 79, 74, 77, 81, 86], lead: 'square', bassWave: 'sawtooth' },
+  // Bay: sunny C major with a skip
+  beach: { bpm: 138, fast: 156, bass: [48, 48, 55, 48, 53, 53, 60, 53, 50, 50, 57, 50, 55, 55, 59, 55], arp: [72, 76, 79, 84, 77, 81, 84, 89, 74, 77, 81, 86, 79, 83, 86, 91], lead: 'triangle', bassWave: 'triangle', swing: true },
+  // Skyline: tense D minor
+  roofs: { bpm: 156, fast: 172, bass: [50, 50, 62, 50, 46, 46, 58, 46, 48, 48, 60, 48, 45, 45, 57, 49], arp: [74, 77, 81, 86, 70, 74, 77, 82, 72, 76, 79, 84, 69, 73, 76, 81], lead: 'square', bassWave: 'sawtooth' },
+  // Neon: synthwave F minor with a pad
+  neon: { bpm: 118, fast: 132, bass: [41, 41, 53, 41, 44, 44, 56, 44, 39, 39, 51, 39, 46, 46, 48, 51], arp: [65, 68, 72, 77, 68, 72, 75, 80, 63, 67, 70, 75, 70, 73, 77, 82], lead: 'sawtooth', bassWave: 'sawtooth', pad: true },
+};
+let song: Song = SONGS.campus;
+export function setSong(id: string) { song = SONGS[id] ?? SONGS.campus; }
 const mtof = (m: number) => 440 * Math.pow(2, (m - 69) / 12);
 function hit(t: number, f: number, dur: number, type: OscillatorType, vol: number, slide = 0) {
   const c = ctx!; const o = c.createOscillator(), g = c.createGain();
@@ -160,17 +186,21 @@ export function startMusic() {
   nextT = c.currentTime + 0.1;
   timer = setInterval(() => {
     const cc = ctx; if (!cc) return;
-    const sp = 60 / (musicFast ? 168 : 150) / 4;
+    const S = song;
+    const sp = 60 / (musicFast ? S.fast : S.bpm) / 4;
     while (nextT < cc.currentTime + 0.25) {
       const s = step % 16, bar = Math.floor(step / 16) % 4;
-      if (s % 4 === 0) hit(nextT, 150, 0.16, 'sine', 0.55, 45);
-      if (s === 4 || s === 12) { nz(nextT, 0.16, 0.22, 1600); hit(nextT, 220, 0.08, 'triangle', 0.12, 120); }
-      if (s % 2 === 1) nz(nextT, 0.04, 0.07, 7000);
-      const root = BASS[(bar * 4 + Math.floor(s / 4)) % 16];
-      if (s % 2 === 0) hit(nextT, mtof(root - 12 + (s % 4 === 2 ? 12 : 0)), 0.14, 'sawtooth', 0.11);
-      const n = ARP[(bar * 4 + (s % 4)) % 16] + (s >= 8 ? 0 : -12);
-      hit(nextT, mtof(n), 0.1, 'square', 0.035);
-      if (bar === 3 && s === 14) nz(nextT, 0.3, 0.12, 900);
+      const sw = S.swing && s % 2 === 1 ? sp * 0.28 : 0;
+      const t = nextT + sw;
+      if (s % 4 === 0) hit(t, 150, 0.16, 'sine', 0.55, 45);
+      if (s === 4 || s === 12) { nz(t, 0.16, 0.22, 1600); hit(t, 220, 0.08, 'triangle', 0.12, 120); }
+      if (s % 2 === 1) nz(t, 0.04, 0.07, 7000);
+      const root = S.bass[(bar * 4 + Math.floor(s / 4)) % 16];
+      if (s % 2 === 0) hit(t, mtof(root - 12 + (s % 4 === 2 ? 12 : 0)), 0.14, S.bassWave, 0.11);
+      const n = S.arp[(bar * 4 + (s % 4)) % 16] + (s >= 8 ? 0 : -12);
+      hit(t, mtof(n), 0.1, S.lead, S.lead === 'sawtooth' ? 0.022 : 0.035);
+      if (S.pad && s === 0) for (const k of [0, 3, 7]) hit(t, mtof(root + 12 + k), sp * 15, 'triangle', 0.018);
+      if (bar === 3 && s === 14) nz(t, 0.3, 0.12, 900);
       nextT += sp;
       step++;
     }

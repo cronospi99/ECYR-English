@@ -77,7 +77,7 @@ export function LiveGames() {
         <span className="relative min-w-0 flex-1">
           <span className="block text-[13px] font-extrabold tracking-wide text-white/90 uppercase">{t('New · 3D · prototype', 'Nuevo · 3D · prototipo')}</span>
           <span className="block text-[38px] leading-none font-black tracking-tight text-[#ffd23f] italic [-webkit-text-stroke:2px_#10204a] [paint-order:stroke_fill] [text-shadow:0_4px_0_#10204a] sm:text-[48px]">ENGLISH RACERS</span>
-          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('Kart racing with your teacher in 3D: drift to charge turbos, jump ramps with tricks and beat your record on the Campus ECYR track. Phase 1: time trial.', 'Carreras de karts con tu profe en 3D: derrapa para cargar turbos, salta rampas con trucos y bate tu récord en el Campus ECYR. Fase 1: contrarreloj.')}</span>
+          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('Kart racing with your teacher in 3D against 7 teacher rivals: 4 tracks, a Grand Prix with a podium, school items, coins and question gates — drive through the right answer for a big turbo.', 'Carreras de karts en 3D con tu profe contra 7 profes rivales: 4 pistas, Gran Premio con podio, objetos de colegio, monedas y arcos de preguntas — pasa por la respuesta correcta para un gran turbo.')}</span>
         </span>
         <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]"><ChevronRight size={30} /></span>
       </Link>

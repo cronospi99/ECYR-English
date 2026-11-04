@@ -77,8 +77,9 @@ export class Skids {
   readonly mesh: THREE.Mesh;
   private pos: Float32Array;
   private seg = 0;
-  private last: (THREE.Vector3 | null)[] = [null, null];
-  constructor(private max = 900) {
+  private last: (THREE.Vector3 | null)[];
+  constructor(private max = 900, trails = 2) {
+    this.last = Array.from({ length: trails }, () => null);
     this.pos = new Float32Array(max * 18);
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(this.pos, 3).setUsage(THREE.DynamicDrawUsage));
@@ -103,7 +104,7 @@ export class Skids {
     const attr = this.mesh.geometry.getAttribute('position') as THREE.BufferAttribute;
     attr.needsUpdate = true;
   }
-  clear() { this.pos.fill(0); (this.mesh.geometry.getAttribute('position') as THREE.BufferAttribute).needsUpdate = true; this.last = [null, null]; }
+  clear() { this.pos.fill(0); (this.mesh.geometry.getAttribute('position') as THREE.BufferAttribute).needsUpdate = true; this.last.fill(null); }
   dispose() { this.mesh.geometry.dispose(); (this.mesh.material as THREE.Material).dispose(); }
 }
 

@@ -23,8 +23,9 @@ export const KART = {
   tierBoost: [0, 0.55, 0.95, 1.45] as const,
 };
 
+export type BoostKind = 'mini' | 'pad' | 'trick' | 'start' | 'item' | 'gate';
 export type KartEvent =
-  | { e: 'hop' } | { e: 'drift'; dir: number } | { e: 'tier'; tier: number } | { e: 'boost'; secs: number; kind: 'mini' | 'pad' | 'trick' | 'start' }
+  | { e: 'hop' } | { e: 'drift'; dir: number } | { e: 'tier'; tier: number } | { e: 'boost'; secs: number; kind: BoostKind }
   | { e: 'land'; v: number } | { e: 'wall'; v: number } | { e: 'trick' } | { e: 'fall' } | { e: 'air' } | { e: 'spin' };
 
 export class Kart {
@@ -55,6 +56,9 @@ export class Kart {
   yawRate = 0;
   accelNow = 0;
   falling = false;
+  /** Top speed multiplier (coins, the bots' skill) and a slow-down timer (the recess bell). */
+  topMul = 1;
+  slowT = 0;
   private wallCd = 0;
   events: KartEvent[] = [];
 
@@ -69,7 +73,7 @@ export class Kart {
     this.vel.set(0, 0, 0);
     this.hint = -1;
     this.grounded = true;
-    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false;
+    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false; this.slowT = 0;
     this.q = tr.query(this.pos, -1);
     this.hint = this.q.i; this.s = this.q.s; this.d = this.q.d; this.safeS = this.s;
   }
@@ -78,7 +82,7 @@ export class Kart {
   /** Forward speed (negative when reversing). */
   get fwd() { return this.vel.x * Math.sin(this.yaw) + this.vel.z * Math.cos(this.yaw); }
 
-  boost(secs: number, kind: 'mini' | 'pad' | 'trick' | 'start') {
+  boost(secs: number, kind: BoostKind) {
     this.boostT = Math.max(this.boostT, secs);
     this.events.push({ e: 'boost', secs, kind });
   }
@@ -96,6 +100,7 @@ export class Kart {
     const control = this.spinT <= 0;
     this.boostT = Math.max(0, this.boostT - dt);
     this.spinT = Math.max(0, this.spinT - dt);
+    this.slowT = Math.max(0, this.slowT - dt);
     this.wallCd -= dt;
     const v0 = vf;
 
@@ -110,8 +115,9 @@ export class Kart {
 
     if (this.grounded || this.hopping) {
       const boosting = this.boostT > 0;
-      let max = boosting ? K.boostSpeed : K.maxSpeed;
+      let max = (boosting ? K.boostSpeed : K.maxSpeed) * this.topMul;
       if (grass) max = boosting ? K.maxSpeed * 0.92 : K.grassMax;
+      if (this.slowT > 0) max *= 0.5 + 0.5 * Math.max(0, 1 - this.slowT / 1.2);
       if (this.grounded) {
         if (control && inp.throttle > 0 && vf < max) vf += (K.accel * (1 - Math.pow(Math.max(0, vf) / max, 2)) + 2.5) * inp.throttle * dt;
         if (boosting && vf < max) vf = Math.min(max, vf + 34 * dt);
