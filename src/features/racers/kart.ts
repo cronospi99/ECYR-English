@@ -10,7 +10,7 @@
      trick that gives a boost on landing.
    - Walls bounce you back, grass slows you down, boost pads and turbos speed you up. */
 import * as THREE from 'three';
-import type { Query, Track } from './track';
+import { LOOP_HW, type Loop, type Query, type Track } from './track';
 
 export interface KartInput { throttle: number; brake: number; steer: number; drift: boolean }
 export const NO_INPUT: KartInput = { throttle: 0, brake: 0, steer: 0, drift: false };
@@ -23,8 +23,9 @@ export const KART = {
   tierBoost: [0, 0.55, 0.95, 1.45] as const,
 };
 
+export type BoostKind = 'mini' | 'pad' | 'trick' | 'start' | 'item' | 'gate';
 export type KartEvent =
-  | { e: 'hop' } | { e: 'drift'; dir: number } | { e: 'tier'; tier: number } | { e: 'boost'; secs: number; kind: 'mini' | 'pad' | 'trick' | 'start' }
+  | { e: 'loop' } | { e: 'loopEnd'; v: number } | { e: 'splash' } | { e: 'hop' } | { e: 'drift'; dir: number } | { e: 'tier'; tier: number } | { e: 'boost'; secs: number; kind: BoostKind }
   | { e: 'land'; v: number } | { e: 'wall'; v: number } | { e: 'trick' } | { e: 'fall' } | { e: 'air' } | { e: 'spin' };
 
 export class Kart {
@@ -40,6 +41,8 @@ export class Kart {
   /** Drift: 0 none, −1 left, +1 right; time charged and the tier reached. */
   drift = 0; driftT = 0; tier = 0;
   private hopping = false;
+  /** Holding the drift button and steering later still starts a drift (the player's kart). */
+  lateDrift = false;
   private wantDrift = false;
   private prevDrift = false;
   boostT = 0;
@@ -55,8 +58,24 @@ export class Kart {
   yawRate = 0;
   accelNow = 0;
   falling = false;
+  /** Top speed multiplier (coins, the bots' skill) and a slow-down timer (the recess bell). */
+  topMul = 1;
+  slowT = 0;
   private wallCd = 0;
   events: KartEvent[] = [];
+  /** Riding a vertical loop: which one, progress 0..1, speed, lateral offset on the ribbon, the
+      offset it came in at (blended in), and the full orientation for the model and camera. */
+  loop: Loop | null = null;
+  loopU = 0;
+  loopV = 0;
+  private loopD = 0;
+  private loopIn = 0;
+  /** The loop just ridden can't catch the kart again for a moment (it leaves at the same spot). */
+  private lastLoop: Loop | null = null;
+  private loopCd = 0;
+  orient: THREE.Quaternion | null = null;
+  private wet = false;
+  private static _f = new THREE.Vector3(); private static _u = new THREE.Vector3(); private static _x = new THREE.Vector3(); private static _m = new THREE.Matrix4();
 
   constructor(private track: Track) {}
 
@@ -69,16 +88,17 @@ export class Kart {
     this.vel.set(0, 0, 0);
     this.hint = -1;
     this.grounded = true;
-    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false;
+    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false; this.slowT = 0;
+    this.loop = null; this.orient = null;
     this.q = tr.query(this.pos, -1);
     this.hint = this.q.i; this.s = this.q.s; this.d = this.q.d; this.safeS = this.s;
   }
 
-  get speed() { return Math.hypot(this.vel.x, this.vel.z); }
+  get speed() { return this.loop ? this.loopV : Math.hypot(this.vel.x, this.vel.z); }
   /** Forward speed (negative when reversing). */
-  get fwd() { return this.vel.x * Math.sin(this.yaw) + this.vel.z * Math.cos(this.yaw); }
+  get fwd() { return this.loop ? this.loopV : this.vel.x * Math.sin(this.yaw) + this.vel.z * Math.cos(this.yaw); }
 
-  boost(secs: number, kind: 'mini' | 'pad' | 'trick' | 'start') {
+  boost(secs: number, kind: BoostKind) {
     this.boostT = Math.max(this.boostT, secs);
     this.events.push({ e: 'boost', secs, kind });
   }
@@ -88,6 +108,9 @@ export class Kart {
   step(dt: number, inp: KartInput) {
     const K = KART;
     this.steer += (inp.steer - this.steer) * Math.min(1, dt * 11);
+    if (this.loop) { this.loopStep(dt, inp); return; }
+    this.loopCd = Math.max(0, this.loopCd - dt);
+    const prevS = this.s;
     const fx = Math.sin(this.yaw), fz = Math.cos(this.yaw); // forward
     const rx = -fz, rz = fx; // right
     let vf = this.vel.x * fx + this.vel.z * fz;
@@ -96,6 +119,7 @@ export class Kart {
     const control = this.spinT <= 0;
     this.boostT = Math.max(0, this.boostT - dt);
     this.spinT = Math.max(0, this.spinT - dt);
+    this.slowT = Math.max(0, this.slowT - dt);
     this.wallCd -= dt;
     const v0 = vf;
 
@@ -107,11 +131,17 @@ export class Kart {
       else if (this.launch > 2.5 && !this.trick && this.airT > 0.05) { this.trick = true; this.trickT = 0; this.events.push({ e: 'trick' }); }
     }
     if (!inp.drift) this.wantDrift = false;
+    // the player may also hold the button first and turn afterwards (easier on touch screens)
+    if (this.lateDrift && this.grounded && !this.hopping && this.wantDrift && inp.drift && !this.drift && Math.abs(this.steer) > 0.3 && Math.abs(vf) > 10 && control) {
+      this.drift = Math.sign(this.steer); this.driftT = 0; this.tier = 0;
+      this.events.push({ e: 'drift', dir: this.drift });
+    }
 
     if (this.grounded || this.hopping) {
       const boosting = this.boostT > 0;
-      let max = boosting ? K.boostSpeed : K.maxSpeed;
+      let max = (boosting ? K.boostSpeed : K.maxSpeed) * this.topMul;
       if (grass) max = boosting ? K.maxSpeed * 0.92 : K.grassMax;
+      if (this.slowT > 0) max *= 0.5 + 0.5 * Math.max(0, 1 - this.slowT / 1.2);
       if (this.grounded) {
         if (control && inp.throttle > 0 && vf < max) vf += (K.accel * (1 - Math.pow(Math.max(0, vf) / max, 2)) + 2.5) * inp.throttle * dt;
         if (boosting && vf < max) vf = Math.min(max, vf + 34 * dt);
@@ -234,7 +264,59 @@ export class Kart {
       if (this.pos.y < (g === null ? this.track.waterY : g - 6) - 1 && !this.falling) { this.falling = true; this.events.push({ e: 'fall' }); }
     }
     if (this.grounded && q.surface === 'road' && !q.ramp && this.track.ahead(this.safeS, this.s) < 30) this.safeS = this.s;
+    // into a loop: crossing its foot going forward
+    if (this.grounded && !this.falling) for (const lp of this.track.loops) {
+      const moved = this.track.ahead(prevS, this.s), a = this.track.ahead(prevS, lp.s);
+      if (lp === this.lastLoop && this.loopCd > 0) continue;
+      if (moved > 0 && moved < 12 && a > 0 && a <= moved && this.fwd > 3) { this.enterLoop(lp); return; }
+    }
+    // shallow water: a little drag and spray
+    const wet = this.grounded && this.track.splashAt(this.s) && Math.abs(this.d) < q.w + 1;
+    if (wet) { const k = 1 - dt * 0.35; this.vel.x *= k; this.vel.z *= k; }
+    if (wet && !this.wet) this.events.push({ e: 'splash' });
+    this.wet = wet;
     if (this.grounded && q.pad) { if (this.boostT < 0.9) this.boost(1.05, 'pad'); }
+  }
+
+  private enterLoop(lp: Loop) {
+    if (this.drift) this.endDrift(true);
+    this.loop = lp; this.loopU = 0;
+    this.loopV = Math.max(this.fwd, 22);
+    this.loopIn = this.d - lp.d0;
+    this.loopD = THREE.MathUtils.clamp(this.loopIn, -LOOP_HW + 0.9, LOOP_HW - 0.9);
+    this.orient = new THREE.Quaternion();
+    this.grounded = true; this.hopping = false; this.vel.y = 0;
+    this.events.push({ e: 'loop' });
+    this.loopStep(0, { throttle: 0, brake: 0, steer: 0, drift: false });
+  }
+  /** On the ribbon: no gravity, no falling — just around (steering slides you a little across). */
+  private loopStep(dt: number, inp: KartInput) {
+    const lp = this.loop!, tr = this.track;
+    this.boostT = Math.max(0, this.boostT - dt); this.spinT = 0; this.slowT = 0;
+    const target = this.boostT > 0 ? KART.boostSpeed : Math.max(22, Math.min(KART.maxSpeed, this.loopV));
+    this.loopV += (target - this.loopV) * Math.min(1, dt * 1.5);
+    this.loopU += (this.loopV * dt) / (Math.PI * 2 * lp.r);
+    this.loopD = THREE.MathUtils.clamp(this.loopD + inp.steer * 2.5 * dt, -LOOP_HW + 0.9, LOOP_HW - 0.9);
+    const u = Math.min(1, this.loopU), b = Math.min(1, u / 0.1), bl = b * b * (3 - 2 * b);
+    const d = this.loopIn + (this.loopD - this.loopIn) * bl;
+    tr.loopPoint(lp, u, d, this.pos);
+    const F = Kart._f, Up = Kart._u, X = Kart._x;
+    const f = tr.loopBasis(lp, u, F, Up);
+    X.set(-f.r.x, 0, -f.r.z);
+    this.orient!.setFromRotationMatrix(Kart._m.makeBasis(X, Up, F));
+    this.vel.copy(F).multiplyScalar(this.loopV);
+    this.yaw = f.yaw; this.s = lp.s; this.yawRate = 0; this.accelNow = 0;
+    if (this.loopU >= 1) {
+      // out of the loop on the right-hand lane, back on the road
+      this.lastLoop = lp; this.loopCd = 1.2;
+      this.loop = null; this.orient = null;
+      this.vel.set(f.t.x * this.loopV, 0, f.t.z * this.loopV);
+      const q = tr.query(this.pos, this.hint);
+      this.q = q; this.hint = q.i; this.s = q.s; this.d = q.d; this.surface = q.surface;
+      if (q.ground !== null) this.pos.y = q.ground;
+      this.groundVy = 0; this.grounded = true;
+      this.events.push({ e: 'loopEnd', v: this.loopV });
+    }
   }
 
   private endDrift(keepHold: boolean) {

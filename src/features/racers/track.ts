@@ -20,7 +20,14 @@ export interface CP {
 export type Feature =
   | { kind: 'ramp'; at: number; off: number; len: number; h: number }
   | { kind: 'gap'; at: number; off: number; len: number }
-  | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number };
+  | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number }
+  /** A vertical 360° loop of radius r (the road must be straight there and ≥ 15 m wide). */
+  | { kind: 'loop'; at: number; off: number; r: number }
+  /** Shallow water over the road (spray, a little drag). */
+  | { kind: 'splash'; at: number; off: number; len: number };
+
+/** Something placed across the road at a control point plus an offset (m). */
+export interface Spot { at: number; off: number }
 
 export interface TrackDef {
   id: string;
@@ -28,10 +35,21 @@ export interface TrackDef {
   cps: CP[];
   features: Feature[];
   laps: number;
-  /** Multiplies the automatic banking. */
+  /** Multiplies the automatic banking, and its limit (default 0.18 m per m). */
   bank?: number;
+  bankMax?: number;
   /** Water level under gaps (falling below it = respawn). */
   waterY?: number;
+  /** Rows of item boxes across the road. */
+  items?: Spot[];
+  /** Question gates (the road splits into three answer lanes). More are added by themselves on the
+      calm stretches until there is one every ~190 m (or `gateCount` per lap). */
+  gates?: Spot[];
+  gateCount?: number;
+  /** Stretches (from a spot, `len` m long) kept free of automatic gates: hazards, tunnels… */
+  clear?: (Spot & { len: number })[];
+  /** Lines of coins: n coins every `gap` m (default 3.5) at lateral d, drifting by `dd` per coin. */
+  coins?: (Spot & { d: number; n: number; gap?: number; dd?: number })[];
 }
 
 export interface Frame {
@@ -54,6 +72,10 @@ export interface Frame {
 export interface Ramp { s0: number; s1: number; h: number }
 export interface Gap { s0: number; s1: number }
 export interface Pad { s0: number; s1: number; d: number; hw: number }
+/** A vertical loop: the ribbon starts and ends at s, entering on the left lane (d0) and leaving on
+    the right one (d0 + shift), so its two ends sit side by side. */
+export interface Loop { s: number; r: number; d0: number; shift: number }
+export const LOOP_HW = 3.2;
 
 /** What is under a point. */
 export interface Query {
@@ -83,10 +105,16 @@ export class Track {
   readonly ramps: Ramp[] = [];
   readonly gaps: Gap[] = [];
   readonly pads: Pad[] = [];
+  readonly loops: Loop[] = [];
+  readonly splashes: Gap[] = [];
   readonly waterY: number;
+  /** Item box rows, question gates (distance along the road) and coins (s, d). */
+  readonly itemRows: number[] = [];
+  readonly gates: number[] = [];
+  readonly coins: { s: number; d: number }[] = [];
 
   constructor(def: TrackDef) {
-    this.def = def;
+    this.def = { ...def };
     this.waterY = def.waterY ?? -3;
     const n = def.cps.length;
     const curve = new THREE.CatmullRomCurve3(def.cps.map((c) => new THREE.Vector3(c.x, c.y ?? 0, c.z)), true, 'centripetal');
@@ -131,7 +159,7 @@ export class Track {
     for (let i = 0; i < N; i++) {
       let c = 0;
       for (let k = -K; k <= K; k++) c += F[(i + k + N) % N].curv;
-      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -0.18, 0.18);
+      F[i].bank = THREE.MathUtils.clamp((c / (2 * K + 1)) * 5.5 * bk, -(def.bankMax ?? 0.18), def.bankMax ?? 0.18);
     }
     // a banked road pivots on its low edge (raised, never sunk into the ground), then the slope
     for (const f of F) f.p.y += Math.abs(f.bank) * (f.w + KERB);
@@ -143,8 +171,44 @@ export class Track {
       const s0 = at(f.at, f.off);
       if (f.kind === 'ramp') this.ramps.push({ s0, s1: s0 + span(f.len), h: f.h });
       else if (f.kind === 'gap') this.gaps.push({ s0, s1: s0 + span(f.len) });
+      else if (f.kind === 'loop') this.loops.push({ s: s0, r: f.r, d0: -3.9, shift: 7.8 });
+      else if (f.kind === 'splash') this.splashes.push({ s0, s1: s0 + span(f.len) });
       else this.pads.push({ s0, s1: s0 + (f.len ?? 7), d: f.d, hw: (f.w ?? 3) / 2 });
     }
+    for (const r of def.items ?? []) this.itemRows.push(at(r.at, r.off));
+    for (const g of def.gates ?? []) this.gates.push(at(g.at, g.off));
+    this.autoGates(def, at);
+    for (const c of def.coins ?? []) for (let k = 0; k < c.n; k++) this.coins.push({ s: (at(c.at, c.off) + k * (c.gap ?? 3.5)) % len, d: c.d + k * (c.dd ?? 0) });
+  }
+
+  /** More question gates on the calm stretches: straight enough for the painted lanes, away from
+      jumps, boost pads, item boxes, coins, hazards and the start, spread as evenly as possible. */
+  private autoGates(def: TrackDef, at: (cp: number, off: number) => number) {
+    const L = this.length, want = def.gateCount ?? Math.max(this.gates.length, Math.round(L / 190));
+    const near = (s: number, a: number, b: number, before: number, after: number) => { const x = this.ahead(a, s), y = this.ahead(s, a); return (x <= b - a + after) || y <= before; };
+    const blocked: [number, number][] = [];
+    for (const r of [...this.ramps, ...this.gaps]) blocked.push([r.s0, r.s1]);
+    for (const p of this.pads) blocked.push([p.s0, p.s1]);
+    for (const l of this.loops) blocked.push([l.s - 20, l.s + 25]);
+    for (const w of this.splashes) blocked.push([w.s0, w.s1]);
+    for (const c of def.clear ?? []) { const s0 = at(c.at, c.off); blocked.push([s0, s0 + c.len]); }
+    const cands: number[] = [];
+    for (let s = 40; s < L - 70; s += 2) {
+      let ok = true;
+      for (let k = -44; k <= 8 && ok; k += 2) if (Math.abs(this.frame(Math.round((s + k) / this.ds)).curv) > 0.024) ok = false;
+      for (const [a, b] of blocked) if (ok && near(s, a, b, 22, 50)) ok = false;
+      for (const r of this.itemRows) if (ok && near(s, r, r, 18, 46)) ok = false;
+      for (const c of this.coins) if (ok && near(s, c.s, c.s, 4, 44)) ok = false;
+      if (ok) cands.push(Math.round(s / this.ds) * this.ds);
+    }
+    const gap = (s: number) => this.gates.reduce((m, g) => Math.min(m, this.ahead(s, g), this.ahead(g, s)), Infinity);
+    while (this.gates.length < want && cands.length) {
+      let best = -1, bd = 0;
+      for (const c of cands) { const d = gap(c); if (d > bd) { bd = d; best = c; } }
+      if (best < 0 || bd < 120) break;
+      this.gates.push(best);
+    }
+    this.gates.sort((a, b) => a - b);
   }
 
   frame(i: number) { const N = this.frames.length; return this.frames[((i % N) + N) % N]; }
@@ -162,6 +226,25 @@ export class Track {
     return 0;
   }
   gapAt(s: number) { return this.gaps.some((g) => this.inRange(s, g.s0, g.s1) >= 0); }
+  splashAt(s: number) { return this.splashes.some((g) => this.inRange(s, g.s0, g.s1) >= 0); }
+
+  /** A point on a loop at progress u (0..1) and lateral offset d from the ribbon's centre line. */
+  loopPoint(lp: Loop, u: number, d: number, out = new THREE.Vector3()) {
+    const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2, sm = u * u * (3 - 2 * u);
+    this.pointAt(lp.s, 0, out);
+    const side = lp.d0 + lp.shift * sm + d;
+    out.x += f.t.x * Math.sin(a) * lp.r + f.r.x * side;
+    out.z += f.t.z * Math.sin(a) * lp.r + f.r.z * side;
+    out.y += lp.r * (1 - Math.cos(a));
+    return out;
+  }
+  /** The loop's frame at u: forward along the ribbon and up (towards the loop's centre). */
+  loopBasis(lp: Loop, u: number, fwd: THREE.Vector3, up: THREE.Vector3) {
+    const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2;
+    fwd.set(f.t.x * Math.cos(a), Math.sin(a), f.t.z * Math.cos(a));
+    up.set(-f.t.x * Math.sin(a), Math.cos(a), -f.t.z * Math.sin(a));
+    return f;
+  }
   padAt(s: number, d: number) { return this.pads.some((p) => this.inRange(s, p.s0, p.s1) >= 0 && Math.abs(d - p.d) <= p.hw); }
 
   /** Road position at (s, d) in the world, on the surface (without ramps). */

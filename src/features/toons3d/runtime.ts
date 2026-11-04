@@ -20,7 +20,7 @@ export { FACES, type Face } from './meta';
 
 /** Every toon in the library (same order as the cards). */
 export const TOONS = TEACHERS.map((t, index) => ({ index, id: t.id, name: t.name, color: t.color }));
-export const toonUrl = (id: string) => `${import.meta.env.BASE_URL}${TOON_FOLDER}/${id}.glb`;
+export const toonUrl = (id: string, lite = false) => `${import.meta.env.BASE_URL}${TOON_FOLDER}/${lite ? 'lite/' : ''}${id}.glb`;
 
 
 /**
@@ -63,16 +63,18 @@ export function toonMaterial(): THREE.MeshPhysicalMaterial {
 
 const loader = new GLTFLoader();
 const cache = new Map<string, Promise<GLTF>>();
-/** The parsed model (loaded once, then reused); its meshes use the toon material. */
-export function loadToonGltf(id: string): Promise<GLTF> {
-  let p = cache.get(id);
+/** The parsed model (loaded once, then reused); its meshes use the toon material. `lite` is the
+    lighter copy for distant characters (the rivals in English Racers): idle clip only. */
+export function loadToonGltf(id: string, lite = false): Promise<GLTF> {
+  const key = lite ? 'lite:' + id : id;
+  let p = cache.get(key);
   if (!p) {
-    p = loader.loadAsync(toonUrl(id)).then((g) => {
+    p = loader.loadAsync(toonUrl(id, lite)).then((g) => {
       g.scene.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { const l = isLens(m); m.material = l ? lensMaterial() : toonMaterial(); m.castShadow = !l; m.renderOrder = l ? 2 : 0; } });
       return g;
     });
-    p.catch(() => cache.delete(id)); // let a later call retry
-    cache.set(id, p);
+    p.catch(() => cache.delete(key)); // let a later call retry
+    cache.set(key, p);
   }
   return p;
 }
@@ -88,8 +90,8 @@ export class ToonActor {
   /** An expression held over the clips' own (null = let the clips decide). */
   face: Face | null = null;
 
-  static async create(id: string): Promise<ToonActor> {
-    return new ToonActor(id, await loadToonGltf(id));
+  static async create(id: string, lite = false): Promise<ToonActor> {
+    return new ToonActor(id, await (lite ? loadToonGltf(id, true).catch(() => loadToonGltf(id)) : loadToonGltf(id)));
   }
 
   private constructor(id: string, gltf: GLTF) {

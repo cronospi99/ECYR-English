@@ -4,10 +4,10 @@
    All the scenery is built in code (merged by material): school buildings with a clock tower,
    sports fields, grandstand with a crowd, trees, lamps, flags, billboards and rolling hills. */
 import * as THREE from 'three';
-import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { Geo, U, busGeo, cloud, shade } from '@/features/run/gfx';
+import { Geo, U, busGeo, shade } from '@/features/run/gfx';
 import { KERB, Track, type TrackDef } from './track';
 import { BASE_Y, side } from './trackMesh';
+import { MATS, billboards, cloudRing, disposeGroup, mergeInto, rippleTex, startGantry, type Scenery } from './scenery';
 
 export const CAMPUS: TrackDef = {
   id: 'campus',
@@ -48,62 +48,18 @@ export const CAMPUS: TrackDef = {
     { kind: 'ramp', at: 17, off: -16, len: 13, h: 2.3 },
     { kind: 'gap', at: 17, off: -3, len: 13 },
   ],
+  items: [{ at: 3, off: 0 }, { at: 10, off: 0 }, { at: 19, off: 6 }],
+  gates: [{ at: 1, off: 30 }, { at: 12, off: 18 }],
+  coins: [
+    { at: 2, off: 12, d: -2, n: 5, dd: 0.8 },
+    { at: 5, off: 6, d: 3, n: 5 },
+    { at: 8, off: 4, d: -3, n: 4, dd: 1.2 },
+    { at: 13, off: 4, d: 0, n: 6 },
+    { at: 15, off: 10, d: 2, n: 4 },
+    { at: 18, off: 16, d: -2.5, n: 5 },
+    { at: 20, off: 8, d: 2.5, n: 4 },
+  ],
 };
-
-const MATS = () => ({
-  world: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.86, metalness: 0 }),
-  glossy: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.32, metalness: 0.05 }),
-  glass: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.08, metalness: 0.2, envMapIntensity: 1.4 }),
-  glow: new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false }),
-});
-
-function textTex(lines: string[], bg: [string, string], fg = '#ffffff', w = 1024, h = 256) {
-  const cv = document.createElement('canvas');
-  cv.width = w; cv.height = h;
-  const c = cv.getContext('2d')!;
-  const g = c.createLinearGradient(0, 0, w, h);
-  g.addColorStop(0, bg[0]); g.addColorStop(1, bg[1]);
-  c.fillStyle = g; c.fillRect(0, 0, w, h);
-  c.strokeStyle = 'rgba(255,255,255,.85)'; c.lineWidth = 10; c.strokeRect(8, 8, w - 16, h - 16);
-  c.fillStyle = fg; c.textAlign = 'center'; c.textBaseline = 'middle';
-  c.shadowColor = 'rgba(0,0,0,.35)'; c.shadowOffsetY = 6;
-  const size = lines.length > 1 ? h * 0.3 : h * 0.5;
-  c.font = `italic 900 ${size}px Inter, system-ui, sans-serif`;
-  lines.forEach((l, i) => c.fillText(l, w / 2, h / 2 + (i - (lines.length - 1) / 2) * size * 1.1, w - 60));
-  const t = new THREE.CanvasTexture(cv);
-  t.colorSpace = THREE.SRGBColorSpace;
-  t.anisotropy = 4;
-  return t;
-}
-
-/** Tileable ripple normals (sum of waves with whole periods across the tile). */
-function rippleTex() {
-  const N = 128, cv = document.createElement('canvas');
-  cv.width = cv.height = N;
-  const c = cv.getContext('2d')!, img = c.createImageData(N, N);
-  const H = (x: number, y: number) => {
-    const u = (x / N) * Math.PI * 2, v = (y / N) * Math.PI * 2;
-    return Math.sin(u * 3 + v * 2) * 0.5 + Math.sin(u * -2 + v * 5 + 1.3) * 0.35 + Math.sin(u * 7 - v * 3 + 0.7) * 0.18 + Math.sin(u * 5 + v * 9 + 2.1) * 0.1;
-  };
-  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
-    const dx = (H(x + 1, y) - H(x - 1, y)) * 6, dy = (H(x, y + 1) - H(x, y - 1)) * 6;
-    const l = Math.hypot(dx, dy, 1), o = (y * N + x) * 4;
-    img.data[o] = (-dx / l * 0.5 + 0.5) * 255; img.data[o + 1] = (-dy / l * 0.5 + 0.5) * 255; img.data[o + 2] = (1 / l * 0.5 + 0.5) * 255; img.data[o + 3] = 255;
-  }
-  c.putImageData(img, 0, 0);
-  const t = new THREE.CanvasTexture(cv);
-  t.wrapS = t.wrapT = THREE.RepeatWrapping;
-  return t;
-}
-
-export interface Scenery {
-  group: THREE.Group;
-  /** The three countdown lamps on the start gantry. */
-  lamps: THREE.MeshStandardMaterial[];
-  water: THREE.Mesh;
-  waterY: number;
-  dispose(): void;
-}
 
 /** Everything around the road for this track. */
 export function buildCampus(track: Track): Scenery {
@@ -324,60 +280,16 @@ export function buildCampus(track: Track): Scenery {
   }
 
   /* ---------------- start gantry with the countdown lamps ---------------- */
-  const lamps: THREE.MeshStandardMaterial[] = [];
-  {
-    const f = F[0], ry = f.yaw;
-    const span = f.w + KERB + f.apron + 1.4;
-    const L = side(f, -span), R = side(f, span), C = side(f, 0);
-    for (const P of [L, R]) {
-      glossy.add(U.box, 0x2b2f3a, P.x, 3.8, P.z, 0.8, 7.6, 0.8, 0, ry, 0);
-      glossy.add(U.box, 0xffc61a, P.x, 0.2, P.z, 1.2, 0.4, 1.2, 0, ry, 0);
-    }
-    glossy.add(U.box, 0x2b2f3a, C.x, 7.6, C.z, span * 2 + 0.8, 1.6, 0.9, 0, ry, 0);
-    const sign = new THREE.Mesh(new THREE.PlaneGeometry(13, 3.2), new THREE.MeshStandardMaterial({ map: textTex(['ENGLISH RACERS'], ['#ff3d6e', '#ff9f1c']), roughness: 0.5, emissive: 0xffffff, emissiveIntensity: 0.12 }));
-    sign.material.emissiveMap = sign.material.map;
-    sign.position.set(C.x - f.t.x * 0.47, 8.5, C.z - f.t.z * 0.47);
-    sign.rotation.y = ry + Math.PI;
-    group.add(sign);
-    const back = sign.clone(); back.position.set(C.x + f.t.x * 0.47, 8.5, C.z + f.t.z * 0.47); back.rotation.y = ry; group.add(back);
-    for (let k = 0; k < 3; k++) {
-      const m = new THREE.MeshStandardMaterial({ color: 0x331111, emissive: 0x000000, roughness: 0.3 });
-      lamps.push(m);
-      const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 12), m);
-      const d = (k - 1) * 1.5;
-      lamp.position.set(C.x + f.r.x * d - f.t.x * 0.55, 6.5, C.z + f.r.z * d - f.t.z * 0.55);
-      group.add(lamp);
-      glossy.add(U.box, 0x1b1d24, lamp.position.x + f.t.x * 0.2, 6.5, lamp.position.z + f.t.z * 0.2, 1.1, 1.1, 0.5, 0, ry, 0);
-    }
-  }
+  const lamps = startGantry(track, group, glossy, 'ENGLISH RACERS', ['#ff3d6e', '#ff9f1c']);
 
   /* ---------------- billboards facing the road ---------------- */
-  const boards: [number, string[], [string, string]][] = [
-    [Math.round(track.cpS[3] / track.ds), ['LEARN • PLAY • WIN'], ['#2e5fa7', '#36c2ff']],
-    [Math.round(track.cpS[7] / track.ds), ['GO! GO! GO!'], ['#ff3d6e', '#ffb02e']],
-    [Math.round(track.cpS[11] / track.ds), ['ECYR ENGLISH'], ['#14915f', '#7ee08a']],
-    [Math.round(track.cpS[15] / track.ds), ['JUMP!', 'HOLD TO DRIFT'], ['#6a2fb8', '#ff5ce1']],
-    [Math.round(track.cpS[20] / track.ds), ['FINAL STRETCH'], ['#c0392b', '#ff9f1c']],
-  ];
-  for (const [i, text, bg] of boards) {
-    const f = track.frame(i);
-    const sg = f.curv > 0 ? 1 : -1; // outside of the bend
-    const P = side(f, sg * (f.w + KERB + f.apron + 3));
-    if (!clear(P.x, P.z, -2)) continue;
-    const tex = textTex(text, bg);
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(12, 3), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.55 }));
-    m.position.set(P.x, 4.6, P.z);
-    // face the road and the karts coming towards it
-    const ry = Math.atan2(-f.r.x * sg * 10 - f.t.x * 6, -f.r.z * sg * 10 - f.t.z * 6);
-    m.rotation.set(0, ry, 0);
-    m.translateZ(0.13);
-    group.add(m);
-    world.add(U.box, 0x2b2f3a, P.x, 4.6, P.z, 12.4, 3.4, 0.2, 0, ry, 0);
-    for (const k of [-1, 1]) {
-      const dx = Math.cos(ry) * 4.5 * k, dz = -Math.sin(ry) * 4.5 * k;
-      world.cyl(P.x + dx, 0, P.z + dz, 0.18, 3.0, 0x8a919c);
-    }
-  }
+  billboards(track, group, world, [
+    [3, ['LEARN • PLAY • WIN'], ['#2e5fa7', '#36c2ff']],
+    [7, ['GO! GO! GO!'], ['#ff3d6e', '#ffb02e']],
+    [11, ['ECYR ENGLISH'], ['#14915f', '#7ee08a']],
+    [15, ['JUMP!', 'HOLD TO DRIFT'], ['#6a2fb8', '#ff5ce1']],
+    [20, ['FINAL STRETCH'], ['#c0392b', '#ff9f1c']],
+  ], clear);
 
   /* ---------------- lamps, flags, tyre stacks ---------------- */
   for (let i = 8; i < F.length; i += 26) {
@@ -443,34 +355,8 @@ export function buildCampus(track: Track): Scenery {
     const a = (k / 26) * Math.PI * 2 + rand() * 0.1, r = 560 + rand() * 120;
     world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), 80 + Math.cos(a) * r, -20, 20 + Math.sin(a) * r, 90 + rand() * 70, 50 + rand() * 45, 90 + rand() * 70);
   }
-  for (let k = 0; k < 16; k++) {
-    const c = cloud() as THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
-    c.material.dispose();
-    c.material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1, emissive: 0xdfe9f5, emissiveIntensity: 0.55, fog: false });
-    const a = rand() * Math.PI * 2, r = 220 + rand() * 480;
-    c.position.set(80 + Math.cos(a) * r, 110 + rand() * 80, 20 + Math.sin(a) * r);
-    c.scale.setScalar(2.2 + rand() * 2.4);
-    c.rotation.y = rand() * 6;
-    group.add(c);
-  }
+  cloudRing(group, 80, 20, 16, rand);
 
-  // merge by material
-  const add = (geo: THREE.BufferGeometry | null, mat: THREE.Material, shadow = true) => {
-    if (!geo) return;
-    const m = new THREE.Mesh(geo, mat);
-    m.castShadow = shadow; m.receiveShadow = true;
-    group.add(m);
-  };
-  if (parts.length) { parts.push(world.build()); add(mergeGeometries(parts.map((p) => (p.index ? p.toNonIndexed() : p)), false), M.world); }
-  else add(world.build(), M.world);
-  if (glossy.parts.length) add(glossy.build(), M.glossy);
-  if (glass.parts.length) add(glass.build(), M.glass, false);
-  if (glow.parts.length) add(glow.build(), M.glow, false);
-
-  return {
-    group, lamps, water, waterY,
-    dispose() {
-      group.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) { m.geometry.dispose(); const mm = m.material as THREE.MeshStandardMaterial; mm.map?.dispose(); mm.normalMap?.dispose(); mm.dispose(); } });
-    },
-  };
+  mergeInto(group, M, { parts, world, glossy, glass, glow });
+  return { group, lamps, waters: [water], waterY, dispose: () => disposeGroup(group) };
 }

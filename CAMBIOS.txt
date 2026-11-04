@@ -618,6 +618,138 @@ G1r. JUEGOS EN INGLÉS POR DEFECTO (con opción de español)
 - El resto de la aplicación (menú lateral, lecciones, catálogo de juegos de
   práctica) sigue en español.
 
+G1s. ENGLISH RACERS · FASE 2: EL JUEGO COMPLETO PARA UN JUGADOR
+- Tres modos: Gran Premio (las 4 pistas seguidas, puntos por puesto
+  15-12-10-8-6-4-2-1 y podio final con los 3 primeros), Carrera (una pista)
+  y Contrarreloj (solo, guarda el récord).
+- 7 rivales: otros profes, con una versión ligera de su modelo 3D (unos
+  420 KB cada uno en vez de 1,4 MB). Siguen la trazada por dentro de las
+  curvas, frenan antes de las cerradas, derrapan para sacar mini-turbos,
+  esquivan tinta, cangrejos, cargas y láseres, buscan cajas y flechas de
+  turbo, hacen trucos en las rampas, usan objetos y se desatascan solos.
+  Tres dificultades (Fácil, Normal, Difícil) y una ayuda suave que mantiene
+  la carrera reñida. Choques entre karts (el que va con turbo empuja más).
+- Puesto en vivo (1.º a 8.º), tabla de posiciones y todos los karts en el
+  minimapa. Al final: tabla con tiempos (y puntos en el Gran Premio).
+- Objetos propios de colegio, en cajas ABC que giran sobre la pista: avión
+  de papel (persigue al de adelante), charco de tinta (lo dejas atrás y hace
+  girar), libro escudo (gira alrededor del kart y para un golpe), café ×3
+  (tres turbos) y campana del recreo (frena a todos los de adelante). Los
+  de atrás reciben mejores objetos. Ruleta en pantalla y botón OBJETO (E/X
+  en teclado, LB/X en control).
+- Monedas: hasta 10, cada una sube un poco la velocidad máxima; un golpe
+  hace perder algunas.
+- Arcos de preguntas: antes de algunas rectas la pista se pinta en 3
+  carriles de colores bajo un pórtico con la pregunta y una respuesta sobre
+  cada carril (A, B, C). En pantalla aparecen la pregunta, las respuestas y
+  el carril en que vas. Correcto = turbo grande + 3 monedas; incorrecto =
+  sin premio y se muestra la respuesta. Preguntas de English Run por nivel
+  (A1 a C1+); los bots aciertan más en Difícil. Al final se repasan todas.
+- 3 pistas nuevas, cada una con su cielo, luz y música:
+  · Bahía Soleada: malecón de tablones, dos muelles sobre el mar con salto,
+    horquilla frente al faro (con haz que gira) y una curva de arena con
+    cangrejos que cruzan. Mar vivo (olas, espuma, color según profundidad),
+    palmeras, sombrillas, salvavidas, casetas, veleros y boyas que se mecen,
+    gaviotas y delfines saltando.
+  · Tejados (atardecer): azoteas a 22-31 m, tres saltos entre edificios y
+    dos grúas que balancean cargas sobre la pista. Ciudad con ventanas
+    encendidas, tráfico abajo, helicóptero, palomas, tanques de agua,
+    antenas y helipuerto.
+  · Neón (noche): autopista elevada con curvas muy peraltadas, túnel de
+    arcos de luz, barreras láser que se encienden y apagan (media pista a la
+    vez), gran salto, piso de cuadrícula luminosa, sol retro, montañas de
+    alambre, torres de neón, hologramas y autos voladores con estelas.
+- Menú nuevo: piloto, modo, pista, nivel de inglés y dificultad. Al empezar
+  cada carrera se ve el nombre de la pista.
+- Probado con simulaciones de carreras completas en las 4 pistas y las 3
+  dificultades (8 karts, sin caídas atascadas). Falta probar en celulares
+  reales con 8 karts.
+
+G1t. ENGLISH RUN · MAR VIVO Y ESCENARIOS CON MÁS VIDA
+- Playa: el mar ahora tiene olas que avanzan hacia la orilla, espuma en las
+  crestas y en bandas sobre la arena, turquesa en lo poco profundo y azul
+  profundo mar adentro, y reflejos del sol. Además: delfines saltando,
+  veleros, un surfista, cometas sobre la arena, gente saludando y gaviotas.
+- Ciudad: gente caminando por las aceras (mueven brazos y piernas),
+  palomas y globos que suben.
+- Tejados: bandadas de pájaros, globos aerostáticos al atardecer y un
+  helicóptero que cruza.
+- Neón: autos voladores con estelas de luz, drones con luces que
+  parpadean, reflectores que barren el cielo y estrellas fugaces.
+
+G1u. ENGLISH RACERS · FASE 3: EN VIVO CON LA CLASE, 4 CIUDADES Y CONTROLES TÁCTILES
+- Modo en vivo (rutas /racers/class, /racers/host, /racers/join y /racers/live/CÓDIGO; tarjeta
+  "English Racers en vivo" en Juegos y botón "En vivo con la clase" en el menú de Racers).
+  El profe abre una sala en el proyector con QR y código, y elige pista (o al azar), vueltas,
+  nivel de inglés, objetos y cuánto esperar tras el primero en llegar. Los estudiantes entran
+  desde el celular con nombre y profe-piloto y corren todos en la misma pista: ven a sus
+  compañeros como karts con su nombre encima. Los aviones de papel, la tinta y la campana
+  también afectan a los compañeros.
+- Gana quien menos se equivoca y más monedas junta:
+  puntaje = aciertos × 100 − errores × 50 + monedas × 10.
+  Los puntos se suman durante toda la sesión. Hay tabla en vivo en el proyector (al tocar un
+  nombre, la cámara lo sigue), resultados por carrera, repaso de preguntas en cada celular y un
+  podio final de la clase.
+- Red: usa el mismo relay de Class Wars y You Draw (VITE_RELAY_URL), nunca Supabase. Cada
+  celular envía su kart unas 6 veces por segundo, el profe reenvía una sola instantánea con
+  todos y los golpes van directo de celular a celular. Máximo 30 estudiantes por carrera.
+- Controles táctiles: se elige "Acelera solo" (por defecto; el botón grande es DERRAPE) o
+  "Acelerar a mano" (DERRAPE queda junto a ACELERAR y también acelera). Se puede deslizar el
+  pulgar de un botón a otro sin levantarlo, y basta mantener DERRAPE y girar para derrapar.
+- Arcos de preguntas más frecuentes: además de los puestos a mano, se agregan solos en los
+  tramos rectos lejos de saltos, turbos, cajas y monedas. Ahora hay de 3 a 5 por vuelta (antes 2).
+- 4 pistas nuevas inspiradas en ciudades reales, todas con vida en movimiento:
+  · Londres: puente levadizo con salto sobre el río, torre del reloj con manecillas que giran,
+    noria gigante, parlamento gótico, buses rojos de dos pisos, taxis negros, barcos y palomas.
+  · Nueva York: plaza de pantallas animadas con público, parque con estanque y coche de caballos,
+    avenida de rascacielos con metro elevado, puente colgante, estatua con antorcha, taxis
+    amarillos, helicóptero y dirigible.
+  · Tokio (atardecer): cruce peatonal gigante con multitudes, letreros de neón, calle de faroles,
+    tren bala, horquilla de la torre roja, salto sobre un canal, cerezos con pétalos, torii,
+    pagoda, estanque de koi y volcán nevado.
+  · Río: avenida de playa con malecón de ondas, sombrillas, voleibol, surfistas y cometas;
+    subida entre casas de colores con salto; avenida del carnaval con graderías, bailarines,
+    carrozas y confeti; morros con teleférico y estatua de brazos abiertos en la montaña.
+  Comparten un kit de ciudad (tracks/city.ts): fachadas por estilo, público que salta, peatones,
+  tráfico, barcos, pájaros, banderines que ondean, pantallas, pétalos y confeti.
+  Cada ciudad tiene su música.
+- Gran Premio con dos copas: Clásica (las 4 pistas anteriores) y Mundial (las 4 ciudades).
+
+G1v. ENGLISH RACERS · FASE 4: VUELTAS DE 360°, PISTAS DE LOS DIBUJOS, GARAJE Y MÁS CALIDAD
+- Vueltas verticales de 360°:
+  · El kart sube por una cinta y da la vuelta completa boca abajo. Entra por el carril izquierdo
+    y sale por el derecho.
+  · Mientras está en la vuelta, el carril lo guía y no puede caerse. La cámara gira con el kart.
+  · En el modo en vivo, los compañeros también ven la vuelta.
+  · Las vueltas tienen torres, vigas, barandas con neón y la parte de abajo metálica.
+- Zonas de agua: lámina de agua animada sobre la pista con espuma, salpicaduras de las ruedas,
+  una ola al aterrizar y arcos de chorros de agua que cruzan la pista.
+- 3 pistas nuevas tomadas de los dibujos de un estudiante (las curvas se suavizaron con un
+  relajador automático para que sean conducibles sin perder la forma):
+  · Rizos de Agua: 2 vueltas grandes y 4 pequeñas seguidas, y cada aterrizaje cae al agua.
+    Está en un parque acuático con laguna, isla, toboganes con gente, cascada, fuentes,
+    flotadores, nadadores y motos acuáticas.
+  · Cañón: forma de "T", con la partida en la recta de arriba donde estaba la raya roja.
+    Tiene paredes de roca en capas, mesetas, cactus, plantas rodadoras, un tren de vapor sobre
+    un puente alto, globos aerostáticos, un remolino de polvo y águilas.
+  · Pico Nevado: forma de "E", con la partida en la recta de la izquierda donde estaba la raya
+    roja. Tiene pinos nevados, telesilla, esquiadores, lago congelado con patinadores, cabañas
+    con humo, muñecos de nieve y nevada.
+  · Nueva copa del Gran Premio: Acrobática (Cañón, Rizos de Agua, Pico Nevado y Tejados).
+- Garaje: las monedas de cada carrera (las que conservas, +2 por respuesta correcta y un bono
+  por puesto) van a una billetera. Con ellas se compran pintura (12 colores), llantas (cromo,
+  negras, doradas, neón), alerón (estándar, sin alerón, grande, doble) y color de las llamas
+  del turbo (incluida arcoíris). Los cambios se ven al instante sobre el kart.
+- Calidad:
+  · Asfalto nuevo sin parpadeo: grano suave en varias capas, relieve sutil, filtrado 16x,
+    líneas pintadas con borde suave y desgaste.
+  · Bordillos y barreras con textura, para que de lejos se fundan en vez de titilar.
+  · Humo esponjoso que gira, chispas con núcleo brillante, y copos, pétalos y confeti que ya no
+    se ven gigantes frente a la cámara.
+- Motor tipo moto deportiva de 4 cilindros: sube hasta unas 14.000 rpm con 6 cambios y corte
+  en cada cambio. Suena áspero y abre el tono al revolucionar, con admisión de aire, petardeo
+  al soltar a altas revoluciones, limitador en el aire y silbido del turbo.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así
