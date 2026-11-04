@@ -5,11 +5,14 @@
    question, standings, minimap with every kart), touch buttons on phones (accelerate and item
    buttons), pause, results and the podium. */
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
+import { CSS, Btn, Dot, PLACE_COL, Seg, TIER, Toggle, initialToon, useClient } from './ui';
+import { LiveClassHome, LiveHostRoute, LiveJoin, LivePlayRoute, LiveLobby, LiveResults, LivePodium, LiveScore } from './LiveScreens';
+import type { RacersClient } from './live';
 import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang } from '@/lib/gameLang';
@@ -21,66 +24,114 @@ import { LANE_COLORS, LANE_LETTERS } from './gates';
 import type { Difficulty } from './ai';
 import { prefs, setPref, unlock } from './audio';
 
-const CSS = `
-.rc-root{font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;background:#cfe6fb}
-.rc-num{font-weight:900;font-variant-numeric:tabular-nums;-webkit-text-stroke:2.5px #10204a;paint-order:stroke fill;text-shadow:0 3px 0 #10204a}
-.rc-panel{border-radius:22px;background:rgba(14,22,56,.78);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 0 1.5px rgba(255,255,255,.12)}
-.rc-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:18px;font-weight:900;transition:transform .08s}
-.rc-btn:active{transform:translateY(3px) scale(.99)}
-.rc-btn:disabled{opacity:.55}
-.rc-pad{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-.rc-scroll{overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent}
-@keyframes rc-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-@keyframes rc-spin{0%{transform:rotate(-8deg) scale(.9)}50%{transform:rotate(8deg) scale(1.05)}100%{transform:rotate(-8deg) scale(.9)}}
-`;
-
-const initialToon = () => { try { const v = localStorage.getItem('racers:toon'); if (v && TOONS.some((x) => x.id === v)) return v; } catch { /* ignore */ } return TOONS[Math.floor(Math.random() * TOONS.length)].id; };
-const TIER = ['', '#4cc3ff', '#ff9a2e', '#d36bff'];
-const PLACE_COL = ['#ffd23f', '#e3e8f0', '#e59a5c'];
-
-function Btn({ tone = 'yellow', className, children, ...rest }: React.ButtonHTMLAttributes<HTMLButtonElement> & { tone?: 'yellow' | 'green' | 'white' | 'ghost' }) {
-  const tones = {
-    yellow: 'bg-[#ffd23f] text-[#2a1d00] shadow-[0_5px_0_#c79a00]',
-    green: 'bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]',
-    white: 'bg-white text-[#10204a] shadow-[0_5px_0_#b9c6e6]',
-    ghost: 'bg-white/14 text-white hover:bg-white/22',
-  };
-  return <button type="button" {...rest} className={cn('rc-btn h-12 px-5 text-[16px]', tones[tone], className)}>{children}</button>;
-}
-function Toggle({ on, onClick, label, children }: { on: boolean; onClick: () => void; label: string; children: React.ReactNode }) {
-  return <button type="button" onClick={onClick} aria-label={label} title={label} aria-pressed={on} className={cn('grid h-11 w-11 place-items-center rounded-2xl transition-colors', on ? 'bg-white text-[#10204a]' : 'bg-[#10204a]/55 text-white/60')}>{children}</button>;
-}
-function Seg<T extends string>({ value, options, onChange }: { value: T; options: { id: T; label: string }[]; onChange: (v: T) => void }) {
+type PadKey = keyof TouchState;
+function TB({ k, els, on, className, children, label }: { k: PadKey; els: Map<PadKey, HTMLElement>; on: PadKey[]; className: string; children: React.ReactNode; label: string }) {
   return (
-    <div className="flex gap-1 rounded-2xl bg-white/8 p-1">
-      {options.map((o) => (
-        <button key={o.id} type="button" onClick={() => onChange(o.id)} aria-pressed={value === o.id}
-          className={cn('h-9 min-w-0 flex-1 truncate rounded-xl px-2 text-[13.5px] font-black transition-colors', value === o.id ? 'bg-white text-[#10204a]' : 'text-white/75 hover:bg-white/10')}>{o.label}</button>
-      ))}
+    <div ref={(el) => { if (el) els.set(k, el); else els.delete(k); }} role="button" aria-label={label}
+      className={cn('grid place-items-center rounded-full border-[3px] border-white/70 text-center leading-tight font-black text-white shadow-[0_6px_0_rgba(0,0,0,.25)] transition-transform', on.includes(k) && 'translate-y-[3px] scale-95 brightness-125', className)}>
+      {children}
     </div>
   );
 }
+type GasMode = 'auto' | 'manual';
+const initialGas = (): GasMode => { try { return localStorage.getItem('racers:gas') === 'manual' ? 'manual' : 'auto'; } catch { return 'auto'; } };
 
-/** A hold button for touch screens (each finger independent). */
-function Pad({ k, game, className, children, label }: { k: keyof TouchState; game: RaceGame | null; className?: string; children: React.ReactNode; label: string }) {
-  const [on, setOn] = useState(false);
-  const set = (v: boolean) => { setOn(v); game?.setTouch({ [k]: v }); };
+/** Touch buttons in two zones (left thumb: steer; right thumb: drift, gas, brake, item). A finger
+    can slide from one button to the next without lifting (left ↔ right, gas ↔ drift). With
+    automatic gas the big button is DRIFT; with manual gas DRIFT sits right next to GO and also
+    drives, so the thumb rolls from one to the other. */
+function TouchControls({ game, auto, solo, item, tier }: { game: RaceGame | null; auto: boolean; solo: boolean; item: string | null; tier: number }) {
+  const els = useRef(new Map<PadKey, HTMLElement>());
+  const ptrs = useRef(new Map<number, PadKey | null>());
+  const [on, setOn] = useState<PadKey[]>([]);
+  const keyAt = (x: number, y: number, prev: PadKey | null) => {
+    let best: PadKey | null = null, bd = Infinity;
+    els.current.forEach((el, k) => {
+      const r = el.getBoundingClientRect();
+      const d = Math.hypot(Math.max(r.left - x, 0, x - r.right), Math.max(r.top - y, 0, y - r.bottom));
+      if (d <= (k === prev ? 26 : 10) && d < bd) { bd = d; best = k; }
+    });
+    return best;
+  };
+  const sync = () => {
+    const s = new Set([...ptrs.current.values()].filter((k): k is PadKey => !!k));
+    setOn([...s]);
+    game?.setTouch({ left: s.has('left'), right: s.has('right'), gas: s.has('gas'), brake: s.has('brake'), drift: s.has('drift'), item: s.has('item') });
+  };
+  useEffect(() => () => { game?.setTouch({ left: false, right: false, gas: false, brake: false, drift: false, item: false }); }, [game]);
+  const zone = {
+    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); ptrs.current.set(e.pointerId, keyAt(e.clientX, e.clientY, null)); sync(); },
+    onPointerMove: (e: React.PointerEvent) => {
+      if (!ptrs.current.has(e.pointerId)) return;
+      const prev = ptrs.current.get(e.pointerId) ?? null, k = keyAt(e.clientX, e.clientY, prev);
+      if (k !== prev) { ptrs.current.set(e.pointerId, k); sync(); }
+    },
+    onPointerUp: (e: React.PointerEvent) => { ptrs.current.delete(e.pointerId); sync(); },
+    onPointerCancel: (e: React.PointerEvent) => { ptrs.current.delete(e.pointerId); sync(); },
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+  };
+  const ring = tier > 0 ? { boxShadow: `0 0 0 5px ${TIER[tier]}, 0 6px 0 rgba(0,0,0,.25)` } : undefined;
+  const itemBtn = !solo && (
+    <TB els={els.current} on={on} k="item" label={t('Use item', 'Usar objeto')} className={cn('h-[62px] w-[62px] text-[10.5px]', item ? 'bg-[#7a5cff]/90' : 'bg-[#10204a]/50 opacity-70')}>
+      {item ? <img src={itemIcon(item as Parameters<typeof itemIcon>[0])} alt="" className="h-9 w-9" /> : t('ITEM', 'OBJETO')}
+    </TB>
+  );
+  const drift = (big: boolean) => (
+    <div style={ring} className="rounded-full">
+      <TB els={els.current} on={on} k="drift" label={t('Drift', 'Derrape')} className={cn('bg-[#ff8a1f]/90', big ? 'h-[116px] w-[116px] text-[15px]' : 'h-[88px] w-[88px] text-[12.5px]')}>
+        <span>{t('DRIFT', 'DERRAPE')}<span className="block text-[10px] font-extrabold text-white/80">{t('hold + turn', 'mantén + gira')}</span></span>
+      </TB>
+    </div>
+  );
   return (
-    <button type="button" aria-label={label}
-      onPointerDown={(e) => { e.preventDefault(); (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); set(true); }}
-      onPointerUp={() => set(false)} onPointerCancel={() => set(false)} onLostPointerCapture={() => set(false)}
-      onContextMenu={(e) => e.preventDefault()}
-      className={cn('rc-pad grid place-items-center rounded-full border-[3px] border-white/70 font-black text-white shadow-[0_6px_0_rgba(0,0,0,.25)] transition-transform', on && 'translate-y-[3px] scale-95 brightness-110', className)}>
-      {children}
-    </button>
+    <>
+      <div {...zone} className="rc-pad absolute bottom-0 left-0 flex gap-3 p-4 pb-[max(18px,env(safe-area-inset-bottom))]">
+        <TB els={els.current} on={on} k="left" label={t('Left', 'Izquierda')} className="h-[88px] w-[88px] bg-[#10204a]/55"><ChevronLeft size={48} /></TB>
+        <TB els={els.current} on={on} k="right" label={t('Right', 'Derecha')} className="h-[88px] w-[88px] bg-[#10204a]/55"><ChevronRight size={48} /></TB>
+      </div>
+      <div {...zone} className="rc-pad absolute right-0 bottom-0 flex items-end gap-3 p-4 pb-[max(18px,env(safe-area-inset-bottom))]">
+        {auto ? (
+          <>
+            <div className="flex flex-col items-center gap-3">
+              {itemBtn}
+              <TB els={els.current} on={on} k="brake" label={t('Brake', 'Frenar')} className="h-[54px] w-[54px] bg-[#ff4757]/80 text-[10.5px]">{t('BRAKE', 'FRENO')}</TB>
+            </div>
+            {drift(true)}
+          </>
+        ) : (
+          <>
+            <div className="flex flex-col items-center gap-2.5">
+              <TB els={els.current} on={on} k="brake" label={t('Brake', 'Frenar')} className="h-[52px] w-[52px] bg-[#ff4757]/80 text-[10.5px]">{t('BRAKE', 'FRENO')}</TB>
+              {drift(false)}
+            </div>
+            <div className="flex flex-col items-center gap-2.5">
+              {itemBtn}
+              <TB els={els.current} on={on} k="gas" label={t('Accelerate', 'Acelerar')} className="h-[106px] w-[106px] bg-[#2fd27a]/90 text-[15px]">{t('GO', 'ACELERAR')}</TB>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
-function Dot({ color, size = 12 }: { color: string; size?: number }) {
-  return <span className="inline-block shrink-0 rounded-full border border-black/30" style={{ background: color, width: size, height: size }} />;
+
+/** Routes: the solo game, and the live class mode (teacher's screen, join, a student's game). */
+export default function RacersApp() {
+  return (
+    <Routes>
+      <Route index element={<RaceScreen />} />
+      <Route path="class" element={<LiveClassHome />} />
+      <Route path="host" element={<LiveHostRoute />} />
+      <Route path="join" element={<LiveJoin />} />
+      <Route path="join/:code" element={<LiveJoin />} />
+      <Route path="live/:code" element={<LivePlayRoute Screen={RaceScreen} />} />
+    </Routes>
+  );
 }
 
-export default function RacersApp() {
+/** The 3D game screen: solo (menu, race, results, podium), or a student's game in the live class mode. */
+function RaceScreen({ client }: { client?: RacersClient }) {
   const host = useRef<HTMLDivElement>(null);
   const [game, setGame] = useState<RaceGame | null>(null);
   const [hud, setHud] = useState<Hud | null>(null);
@@ -91,7 +142,9 @@ export default function RacersApp() {
   const [showReview, setShowReview] = useState(false);
   const [touchUi] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches);
   const [portrait, setPortrait] = useState(false);
+  const [gas, setGas] = useState<GasMode>(initialGas);
   const lang = useGameLang();
+  useClient(client);
 
   useEffect(() => {
     requestAnimationFrame(() => window.dispatchEvent(new Event('app:ready')));
@@ -99,8 +152,21 @@ export default function RacersApp() {
     document.title = 'English Racers · ECYR English';
     let g: RaceGame | null = null;
     try {
-      g = new RaceGame(host.current!, { toon });
+      g = new RaceGame(host.current!, { toon, live: client ? 'player' : undefined });
       g.onHud = setHud;
+      if (client && g.live) {
+        const gg = g;
+        g.live.out = client.out;
+        client.onGo = (cfg) => gg.startLive(cfg, client.peer);
+        client.onSnap = (l) => gg.liveSnapshot(l);
+        client.onHit = (k, f) => gg.liveHit(k, f);
+        client.onBell = (f) => gg.liveBell(f);
+        client.onInk = (f, s2, d) => gg.liveInk(f, s2, d);
+        client.onEnd = () => gg.liveEnd();
+        client.onLobby = () => gg.liveLobby();
+        client.onPodium = (tot) => { if (client.cfg) gg.livePodium(tot); };
+        if (client.racing) gg.startLive(client.cfg!, client.peer);
+      }
       g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), 1900); };
       setGame(g);
       if (import.meta.env.DEV) (window as unknown as { __racers: unknown }).__racers = g;
@@ -112,11 +178,12 @@ export default function RacersApp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => { if (hud?.state !== 'finish') setShowReview(false); }, [hud?.state]);
+  useEffect(() => { if (game) game.autoGas = touchUi && gas === 'auto'; try { localStorage.setItem('racers:gas', gas); } catch { /* ignore */ } }, [game, gas, touchUi]);
 
   const st = hud?.state ?? 'loading';
   const idx = TOONS.findIndex((x) => x.id === toon);
   const cur = TOONS[idx] ?? TOONS[0];
-  const pickToon = (d: number) => { const n = TOONS[(idx + d + TOONS.length) % TOONS.length]; setToon(n.id); void game?.setToon(n.id); };
+  const pickToon = (d: number) => { const n = TOONS[(idx + d + TOONS.length) % TOONS.length]; setToon(n.id); void game?.setToon(n.id); client?.setToon(n.id); };
   const go = () => { unlock(); game?.start(); };
   const s = game?.settings;
   const conf = (p: Parameters<RaceGame['configure']>[0]) => { game?.configure(p); force((n) => n + 1); };
@@ -129,16 +196,19 @@ export default function RacersApp() {
   const ti = hud ? trackInfo(hud.track) : TRACKS[0];
   const res = hud?.results;
   const shown = hud?.rolling ?? hud?.item ?? null;
+  const gasSeg = <Seg<GasMode> value={gas} onChange={setGas} options={[{ id: 'auto', label: t('Auto gas', 'Acelera solo') }, { id: 'manual', label: t('Manual gas', 'Acelerar a mano') }]} />;
   return (
     <div className="rc-root relative h-dvh w-full overflow-hidden select-none" onPointerDown={unlock}>
       <style>{CSS}</style>
       <div ref={host} className="absolute inset-0" />
 
       {/* ------------------------------------------------------------ menu */}
-      {(st === 'menu' || st === 'loading') && s && (
+      {client && (st === 'menu' || st === 'loading') && <LiveLobby client={client} driver={cur} onPick={pickToon} gasSeg={touchUi ? gasSeg : null} />}
+      {!client && (st === 'menu' || st === 'loading') && s && (
         <div className="pointer-events-none absolute inset-0 flex flex-col p-3 pt-[max(12px,env(safe-area-inset-top))] pb-[max(12px,env(safe-area-inset-bottom))] sm:p-5">
           <div className="pointer-events-auto flex items-center gap-2">
             <Link to="/games" className="grid h-11 w-11 place-items-center rounded-2xl bg-[#10204a]/60 text-white hover:bg-[#10204a]/80" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
+            <Link to="/racers/class" className="flex h-11 items-center gap-1.5 rounded-2xl bg-[#ff3d6e] px-3 text-[14px] font-black text-white shadow-[0_4px_0_#b3173f]"><Users size={18} /> {t('Live class', 'En vivo con la clase')}</Link>
             <div className="ml-auto flex gap-1.5">
               <GameLangToggle />
               <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label={t('Music', 'Música')}><Music size={19} /></Toggle>
@@ -199,10 +269,13 @@ export default function RacersApp() {
                   </div>
                 )}
               </div>
+              {touchUi && gasSeg}
               {s.mode === 'time' && hud?.record && <div className="flex items-center gap-2 px-1 text-[12.5px] font-bold text-white/75"><Trophy size={14} className="text-[#ffd23f]" />{t('Record', 'Récord')} {fmt(hud.record.total)} · {t('best lap', 'mejor vuelta')} {fmt(hud.record.lap)}</div>}
               <div className="px-1 text-[11.5px] leading-relaxed font-semibold text-white/65 [@media(max-height:520px)]:hidden">
                 {touchUi
-                  ? t('Green button: accelerate · arrows: steer · DRIFT: hold while turning, let go for a turbo · ITEM: use what you picked up · drive through the lane with the right answer for a big turbo.', 'Botón verde: acelerar · flechas: girar · DERRAPE: mantén mientras giras y suelta para el turbo · OBJETO: usa lo que recogiste · pasa por el carril con la respuesta correcta para un gran turbo.')
+                  ? gas === 'auto'
+                    ? t('The kart accelerates by itself · arrows: steer (slide your thumb) · big DRIFT button: hold it and turn, let go for a turbo · ITEM: use what you picked up · drive through the lane with the right answer.', 'El kart acelera solo · flechas: girar (desliza el pulgar) · botón grande DERRAPE: mantenlo y gira, suelta para el turbo · OBJETO: usa lo que recogiste · pasa por el carril con la respuesta correcta.')
+                    : t('GO: accelerate · DRIFT (next to it, also accelerates): slide your thumb onto it and turn, let go for a turbo · arrows: steer · ITEM: use it · drive through the lane with the right answer.', 'ACELERAR · DERRAPE (al lado, también acelera): desliza el pulgar hacia él y gira, suelta para el turbo · flechas: girar · OBJETO: úsalo · pasa por el carril con la respuesta correcta.')
                   : t('W/↑ accelerate · S/↓ brake · A D/← → steer · Space hop & drift (hold, let go = turbo) · E/X use item · C look back · R back on track · Esc pause · drive through the lane with the right answer for a big turbo.', 'W/↑ acelerar · S/↓ frenar · A D/← → girar · Espacio saltar y derrapar (mantén, suelta = turbo) · E/X usar objeto · C mirar atrás · R volver a la pista · Esc pausa · pasa por el carril con la respuesta correcta para un gran turbo.')}
               </div>
               {/* the start button stays in view at the bottom of the panel, even when it scrolls */}
@@ -220,7 +293,7 @@ export default function RacersApp() {
       {hud && (racing || st === 'paused') && (
         <div className="pointer-events-none absolute inset-0 p-3 pt-[max(10px,env(safe-area-inset-top))] sm:p-4">
           <div className="flex items-start gap-2">
-            <button type="button" onClick={() => game?.togglePause()} className="pointer-events-auto grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#10204a]/60 text-white" aria-label={t('Pause', 'Pausa')}><Pause size={20} /></button>
+            {!client && <button type="button" onClick={() => game?.togglePause()} className="pointer-events-auto grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#10204a]/60 text-white" aria-label={t('Pause', 'Pausa')}><Pause size={20} /></button>}
             {!solo && (
               <div className="rc-panel flex items-baseline px-3 py-1">
                 <span className="rc-num text-[38px] leading-none sm:text-[46px]" style={{ color: PLACE_COL[hud.place - 1] ?? '#ffffff' }}>{hud.place}</span>
@@ -260,8 +333,9 @@ export default function RacersApp() {
             </div>
           </div>
 
+          {hud.live && <LiveScore live={hud.live} />}
           {/* standings (screens tall enough) */}
-          {!solo && (
+          {!solo && !hud.live && (
             <div className="absolute top-[86px] left-3 hidden flex-col gap-1 sm:top-[96px] sm:left-4 [@media(min-height:560px)]:flex">
               {hud.standings.map((r, i) => (
                 <div key={i} className={cn('flex h-[24px] w-[150px] items-center gap-1.5 rounded-lg px-1.5 text-[12.5px] font-extrabold', r.me ? 'bg-white text-[#10204a]' : 'bg-[#10204a]/55 text-white')}>
@@ -317,6 +391,7 @@ export default function RacersApp() {
         <div className="pointer-events-none absolute top-[30%] left-1/2 -translate-x-1/2 text-center">
           <div className="rc-num text-[34px] whitespace-nowrap sm:text-[48px]" style={{ color: ti.color }}>{name(ti.name)}</div>
           {hud.mode === 'gp' && <div className="rc-num text-[18px] text-white">{t('Race', 'Carrera')} {hud.gpRace + 1}/4</div>}
+          {touchUi && <div className="mt-1 text-[14px] font-extrabold text-white [text-shadow:0_2px_0_#10204a]">{gas === 'auto' ? t('Hold DRIFT as the last light goes out: rocket start!', 'Mantén DERRAPE cuando se apague la última luz: ¡salida turbo!') : t('Hold GO as the last light goes out: rocket start!', 'Mantén ACELERAR cuando se apague la última luz: ¡salida turbo!')}</div>}
         </div>
       )}
 
@@ -332,23 +407,8 @@ export default function RacersApp() {
         </AnimatePresence>
       </div>
 
-      {/* touch controls (accelerate with a button) */}
-      {touchUi && racing && (
-        <>
-          <div className="absolute bottom-[max(18px,env(safe-area-inset-bottom))] left-4 flex gap-3">
-            <Pad k="left" game={game} label={t('Left', 'Izquierda')} className="h-[84px] w-[84px] bg-[#10204a]/55"><ChevronLeft size={46} /></Pad>
-            <Pad k="right" game={game} label={t('Right', 'Derecha')} className="h-[84px] w-[84px] bg-[#10204a]/55"><ChevronRight size={46} /></Pad>
-          </div>
-          <div className="absolute right-4 bottom-[max(18px,env(safe-area-inset-bottom))] flex items-end gap-3">
-            <div className="flex flex-col items-center gap-2.5">
-              {!solo && <Pad k="item" game={game} label={t('Use item', 'Usar objeto')} className={cn('h-[60px] w-[60px] text-[10.5px]', hud?.item ? 'bg-[#7a5cff]/90' : 'bg-[#10204a]/50 opacity-70')}>{hud?.item ? <img src={itemIcon(hud.item)} alt="" className="h-9 w-9" /> : t('ITEM', 'OBJETO')}</Pad>}
-              <Pad k="drift" game={game} label={t('Drift', 'Derrape')} className="h-[70px] w-[70px] bg-[#ff8a1f]/85 text-[12px]">{t('DRIFT', 'DERRAPE')}</Pad>
-              <Pad k="brake" game={game} label={t('Brake', 'Frenar')} className="h-[50px] w-[50px] bg-[#ff4757]/80 text-[10.5px]">{t('BRAKE', 'FRENO')}</Pad>
-            </div>
-            <Pad k="gas" game={game} label={t('Accelerate', 'Acelerar')} className="h-[104px] w-[104px] bg-[#2fd27a]/90 text-[15px]">{t('GO', 'ACELERAR')}</Pad>
-          </div>
-        </>
-      )}
+      {/* touch controls */}
+      {touchUi && racing && <TouchControls game={game} auto={gas === 'auto'} solo={solo} item={hud?.item ?? null} tier={hud?.tier ?? 0} />}
 
       {/* pause */}
       {st === 'paused' && (
@@ -358,6 +418,7 @@ export default function RacersApp() {
             <Btn tone="green" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> {t('Resume', 'Continuar')}</Btn>
             <Btn tone="white" onClick={() => game?.restart()}><RotateCcw size={20} /> {hud?.mode === 'gp' ? t('Restart Grand Prix', 'Reiniciar Gran Premio') : t('Restart race', 'Reiniciar carrera')}</Btn>
             <Btn tone="ghost" onClick={() => game?.toMenu()}><Home size={20} /> {t('Menu', 'Menú')}</Btn>
+            {touchUi && gasSeg}
             <div className="flex justify-center gap-2">
               <GameLangToggle />
               <Toggle on={prefs.music} onClick={() => { setPref('music', !prefs.music); force((n) => n + 1); }} label={t('Music', 'Música')}><Music size={19} /></Toggle>
@@ -368,7 +429,8 @@ export default function RacersApp() {
       )}
 
       {/* results */}
-      {st === 'finish' && hud && res && (
+      {client && st === 'finish' && hud && <LiveResults client={client} hud={hud} />}
+      {!client && st === 'finish' && hud && res && (
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }} className="absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:top-0 sm:items-center sm:justify-end sm:p-5">
           <div className="rc-panel rc-scroll flex max-h-[calc(100dvh-24px)] w-full max-w-[420px] flex-col p-4">
             {solo ? (
@@ -443,7 +505,8 @@ export default function RacersApp() {
       )}
 
       {/* podium */}
-      {st === 'podium' && hud && (
+      {client && st === 'podium' && <LivePodium client={client} />}
+      {!client && st === 'podium' && hud && (
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:top-0 sm:left-auto sm:items-center sm:p-5">
           <div className="rc-panel rc-scroll max-h-[48dvh] w-full max-w-[460px] p-4 sm:max-h-[calc(100dvh-24px)] sm:w-[360px]">
             <div className="rc-num text-center text-[26px] text-[#ffd23f] sm:text-[34px]">{t('GRAND PRIX COMPLETE!', '¡GRAN PREMIO TERMINADO!')}</div>

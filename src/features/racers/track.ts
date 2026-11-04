@@ -38,8 +38,12 @@ export interface TrackDef {
   waterY?: number;
   /** Rows of item boxes across the road. */
   items?: Spot[];
-  /** Question gates (the road splits into three answer lanes). */
+  /** Question gates (the road splits into three answer lanes). More are added by themselves on the
+      calm stretches until there is one every ~190 m (or `gateCount` per lap). */
   gates?: Spot[];
+  gateCount?: number;
+  /** Stretches (from a spot, `len` m long) kept free of automatic gates: hazards, tunnels… */
+  clear?: (Spot & { len: number })[];
   /** Lines of coins: n coins every `gap` m (default 3.5) at lateral d, drifting by `dd` per coin. */
   coins?: (Spot & { d: number; n: number; gap?: number; dd?: number })[];
 }
@@ -100,7 +104,7 @@ export class Track {
   readonly coins: { s: number; d: number }[] = [];
 
   constructor(def: TrackDef) {
-    this.def = def;
+    this.def = { ...def };
     this.waterY = def.waterY ?? -3;
     const n = def.cps.length;
     const curve = new THREE.CatmullRomCurve3(def.cps.map((c) => new THREE.Vector3(c.x, c.y ?? 0, c.z)), true, 'centripetal');
@@ -161,7 +165,36 @@ export class Track {
     }
     for (const r of def.items ?? []) this.itemRows.push(at(r.at, r.off));
     for (const g of def.gates ?? []) this.gates.push(at(g.at, g.off));
+    this.autoGates(def, at);
     for (const c of def.coins ?? []) for (let k = 0; k < c.n; k++) this.coins.push({ s: (at(c.at, c.off) + k * (c.gap ?? 3.5)) % len, d: c.d + k * (c.dd ?? 0) });
+  }
+
+  /** More question gates on the calm stretches: straight enough for the painted lanes, away from
+      jumps, boost pads, item boxes, coins, hazards and the start, spread as evenly as possible. */
+  private autoGates(def: TrackDef, at: (cp: number, off: number) => number) {
+    const L = this.length, want = def.gateCount ?? Math.max(this.gates.length, Math.round(L / 190));
+    const near = (s: number, a: number, b: number, before: number, after: number) => { const x = this.ahead(a, s), y = this.ahead(s, a); return (x <= b - a + after) || y <= before; };
+    const blocked: [number, number][] = [];
+    for (const r of [...this.ramps, ...this.gaps]) blocked.push([r.s0, r.s1]);
+    for (const p of this.pads) blocked.push([p.s0, p.s1]);
+    for (const c of def.clear ?? []) { const s0 = at(c.at, c.off); blocked.push([s0, s0 + c.len]); }
+    const cands: number[] = [];
+    for (let s = 40; s < L - 70; s += 2) {
+      let ok = true;
+      for (let k = -44; k <= 8 && ok; k += 2) if (Math.abs(this.frame(Math.round((s + k) / this.ds)).curv) > 0.024) ok = false;
+      for (const [a, b] of blocked) if (ok && near(s, a, b, 22, 50)) ok = false;
+      for (const r of this.itemRows) if (ok && near(s, r, r, 18, 46)) ok = false;
+      for (const c of this.coins) if (ok && near(s, c.s, c.s, 4, 44)) ok = false;
+      if (ok) cands.push(Math.round(s / this.ds) * this.ds);
+    }
+    const gap = (s: number) => this.gates.reduce((m, g) => Math.min(m, this.ahead(s, g), this.ahead(g, s)), Infinity);
+    while (this.gates.length < want && cands.length) {
+      let best = -1, bd = 0;
+      for (const c of cands) { const d = gap(c); if (d > bd) { bd = d; best = c; } }
+      if (best < 0 || bd < 120) break;
+      this.gates.push(best);
+    }
+    this.gates.sort((a, b) => a - b);
   }
 
   frame(i: number) { const N = this.frames.length; return this.frames[((i % N) + N) % N]; }

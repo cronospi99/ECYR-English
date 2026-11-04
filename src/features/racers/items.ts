@@ -207,9 +207,13 @@ export class ItemWorld {
 
   dropInk(owner: Racer) {
     const k = owner.kart, tr = this.track;
-    const s = (k.s - 2.8 + tr.length) % tr.length, d = k.d;
-    const q = tr.query(tr.pointAt(s, d), k.hint);
-    if (q.ground === null) return;
+    return this.dropInkAt(owner, (k.s - 2.8 + tr.length) % tr.length, k.d, k.hint);
+  }
+  /** An ink puddle at (s, d) — also the ones other students drop in the live class mode. */
+  dropInkAt(owner: Racer, s: number, d: number, hint = -1) {
+    const tr = this.track;
+    const q = tr.query(tr.pointAt(s, d), hint);
+    if (q.ground === null) return null;
     const m = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 2.6), this.inkMat);
     m.rotation.x = -Math.PI / 2;
     m.rotation.z = Math.random() * Math.PI * 2;
@@ -217,8 +221,10 @@ export class ItemWorld {
     m.position.copy(pos);
     m.scale.setScalar(0.2);
     m.renderOrder = 3;
-    this.inks.push({ mesh: m, s, d, pos, owner, age: 0, life: 30 });
+    const ink = { mesh: m, s, d, pos, owner, age: 0, life: 30 };
+    this.inks.push(ink);
     this.group.add(m);
+    return ink;
   }
 
   setShield(r: Racer, on: boolean) {
@@ -235,7 +241,9 @@ export class ItemWorld {
     this.group.add(m);
   }
 
-  update(dt: number, t: number, racers: Racer[], ev: ItemEvents, active: boolean) {
+  /** `racers` pick up boxes and coins and can be hit; `targets` (other students' karts, moved by
+      the network) can only be hit by paper planes fired here. */
+  update(dt: number, t: number, racers: Racer[], ev: ItemEvents, active: boolean, targets: Racer[] = []) {
     const tr = this.track, L = tr.length;
     // boxes: spin, bob, pop back
     for (let i = 0; i < this.boxes.length; i++) {
@@ -293,7 +301,7 @@ export class ItemWorld {
       pl.mesh.position.copy(pl.pos);
       pl.mesh.rotation.set(-0.05, pl.yaw, Math.sin(t * 7 + i) * 0.25, 'YXZ');
       let hitR: Racer | null = null;
-      for (const r of racers) {
+      for (const r of targets.length ? [...racers, ...targets] : racers) {
         if (r === pl.owner && pl.life > (pl.target ? 8.5 : 4.5)) continue;
         const k = r.kart;
         if (Math.abs(k.pos.x - pl.pos.x) < 1.6 && Math.abs(k.pos.z - pl.pos.z) < 1.6 && Math.abs(k.pos.y + 0.6 - pl.pos.y) < 1.6) { hitR = r; break; }

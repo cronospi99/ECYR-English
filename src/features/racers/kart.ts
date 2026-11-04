@@ -41,6 +41,8 @@ export class Kart {
   /** Drift: 0 none, −1 left, +1 right; time charged and the tier reached. */
   drift = 0; driftT = 0; tier = 0;
   private hopping = false;
+  /** Holding the drift button and steering later still starts a drift (the player's kart). */
+  lateDrift = false;
   private wantDrift = false;
   private prevDrift = false;
   boostT = 0;
@@ -112,6 +114,11 @@ export class Kart {
       else if (this.launch > 2.5 && !this.trick && this.airT > 0.05) { this.trick = true; this.trickT = 0; this.events.push({ e: 'trick' }); }
     }
     if (!inp.drift) this.wantDrift = false;
+    // the player may also hold the button first and turn afterwards (easier on touch screens)
+    if (this.lateDrift && this.grounded && !this.hopping && this.wantDrift && inp.drift && !this.drift && Math.abs(this.steer) > 0.3 && Math.abs(vf) > 10 && control) {
+      this.drift = Math.sign(this.steer); this.driftT = 0; this.tier = 0;
+      this.events.push({ e: 'drift', dir: this.drift });
+    }
 
     if (this.grounded || this.hopping) {
       const boosting = this.boostT > 0;

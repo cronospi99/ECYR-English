@@ -164,6 +164,14 @@ const SONGS: Record<string, Song> = {
   roofs: { bpm: 156, fast: 172, bass: [50, 50, 62, 50, 46, 46, 58, 46, 48, 48, 60, 48, 45, 45, 57, 49], arp: [74, 77, 81, 86, 70, 74, 77, 82, 72, 76, 79, 84, 69, 73, 76, 81], lead: 'square', bassWave: 'sawtooth' },
   // Neon: synthwave F minor with a pad
   neon: { bpm: 118, fast: 132, bass: [41, 41, 53, 41, 44, 44, 56, 44, 39, 39, 51, 39, 46, 46, 48, 51], arp: [65, 68, 72, 77, 68, 72, 75, 80, 63, 67, 70, 75, 70, 73, 77, 82], lead: 'sawtooth', bassWave: 'sawtooth', pad: true },
+  // London: brisk G major brit-pop
+  london: { bpm: 146, fast: 164, bass: [43, 43, 55, 43, 47, 47, 59, 47, 40, 40, 52, 40, 48, 48, 50, 52], arp: [67, 71, 74, 79, 71, 74, 78, 83, 64, 67, 71, 76, 72, 76, 79, 84], lead: 'square', bassWave: 'sawtooth' },
+  // New York: funky E minor with a swing
+  newyork: { bpm: 132, fast: 150, bass: [40, 40, 52, 43, 45, 45, 57, 47, 48, 48, 60, 50, 47, 47, 59, 50], arp: [64, 67, 71, 76, 69, 72, 76, 81, 72, 76, 79, 84, 71, 75, 78, 83], lead: 'sawtooth', bassWave: 'square', swing: true },
+  // Tokyo: bright pentatonic city pop with a pad
+  tokyo: { bpm: 140, fast: 158, bass: [45, 45, 57, 45, 41, 41, 53, 41, 43, 43, 55, 43, 40, 40, 52, 44], arp: [69, 72, 76, 81, 69, 72, 77, 81, 67, 71, 74, 79, 64, 68, 71, 76], lead: 'triangle', bassWave: 'sawtooth', pad: true },
+  // Rio: samba feel in D major
+  rio: { bpm: 152, fast: 170, bass: [38, 38, 50, 45, 43, 43, 55, 50, 45, 45, 57, 52, 40, 40, 52, 47], arp: [74, 78, 81, 86, 79, 83, 86, 91, 76, 81, 85, 88, 71, 76, 79, 83], lead: 'triangle', bassWave: 'triangle', swing: true },
 };
 let song: Song = SONGS.campus;
 export function setSong(id: string) { song = SONGS[id] ?? SONGS.campus; }

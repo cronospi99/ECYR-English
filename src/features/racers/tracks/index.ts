@@ -8,8 +8,12 @@ import { CAMPUS, buildCampus } from '../campus';
 import { BEACH, BEACH_STYLE, buildBeach } from './beach';
 import { ROOFS, ROOFS_STYLE, buildRoofs } from './roofs';
 import { NEON, NEON_STYLE, buildNeon } from './neon';
+import { LONDON, LONDON_STYLE, buildLondon } from './london';
+import { NEWYORK, NEWYORK_STYLE, buildNewYork } from './newyork';
+import { TOKYO, TOKYO_STYLE, buildTokyo } from './tokyo';
+import { RIO, RIO_STYLE, buildRio } from './rio';
 
-export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon';
+export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio';
 export interface Look {
   sky: SkyColors; fogNear: number; fogFar: number;
   sun: number; sunI: number; sunOffset: [number, number, number];
@@ -77,6 +81,50 @@ export const TRACKS: TrackInfo[] = [
       envGround: 0x2a0f50, envI: 0.9, exposure: 1.06, bloom: [0.7, 0.45, 0.82], dust: [0.5, 0.35, 0.9], water: false,
     },
     build: buildNeon,
+  },
+  {
+    id: 'london', def: LONDON, style: LONDON_STYLE, color: '#c8102e',
+    name: { en: 'London Loop', es: 'Londres' },
+    desc: { en: 'Along the river: jump the open bascule bridge, pass the giant wheel and the clock tower', es: 'Junto al río: salta el puente levadizo abierto, pasa la noria gigante y la torre del reloj' },
+    look: {
+      sky: { top: 0x4f7fb8, mid: 0x9dbedc, horizon: 0xe8eef3, fog: 0xd3dde6, sun: [0.5, 0.45, 0.6], sunGlow: 0.9 }, fogNear: 240, fogFar: 1200,
+      sun: 0xfff3e2, sunI: 2.4, sunOffset: [40, 70, 35], hemiSky: 0xd8e4f0, hemiGround: 0x8a8578, hemiI: 0.95,
+      envGround: 0x6f6a60, envI: 0.65, exposure: 1.02, bloom: [0.45, 0.35, 1.1], dust: [0.62, 0.6, 0.56], water: true,
+    },
+    build: buildLondon,
+  },
+  {
+    id: 'newyork', def: NEWYORK, style: NEWYORK_STYLE, color: '#ffc61a',
+    name: { en: 'Big Apple Dash', es: 'Nueva York' },
+    desc: { en: 'A square of giant screens, a drive through the park, an avenue of skyscrapers and a suspension bridge', es: 'Plaza de pantallas gigantes, el parque, una avenida de rascacielos y un puente colgante' },
+    look: {
+      sky: { top: 0x3f6fc0, mid: 0xf0b884, horizon: 0xffe0b8, fog: 0xf0d2b4, sun: [-0.6, 0.22, 0.6], sunGlow: 1.5 }, fogNear: 260, fogFar: 1350,
+      sun: 0xffd4a0, sunI: 2.6, sunOffset: [-50, 50, 40], hemiSky: 0xffe2c8, hemiGround: 0x7a7066, hemiI: 0.9,
+      envGround: 0x7a7066, envI: 0.7, exposure: 1.02, bloom: [0.5, 0.38, 1.05], dust: [0.62, 0.6, 0.58], water: true,
+    },
+    build: buildNewYork,
+  },
+  {
+    id: 'tokyo', def: TOKYO, style: TOKYO_STYLE, color: '#ff2bd6',
+    name: { en: 'Tokyo Drift Lights', es: 'Tokio' },
+    desc: { en: 'Dusk: a scramble crossing, lantern street, bullet trains, a red tower hairpin, a canal jump and cherry trees', es: 'Atardecer: cruce peatonal gigante, calle de faroles, tren bala, horquilla de la torre roja, salto del canal y cerezos' },
+    look: {
+      sky: { top: 0x2a2a78, mid: 0xb8609a, horizon: 0xffb48a, fog: 0xc8a0b8, sun: [-0.5, 0.1, 0.8], sunGlow: 1.8 }, fogNear: 220, fogFar: 1150,
+      sun: 0xffc0a0, sunI: 1.9, sunOffset: [-45, 35, 55], hemiSky: 0xd8b8e8, hemiGround: 0x5a4a60, hemiI: 0.95,
+      envGround: 0x4a3a58, envI: 0.75, exposure: 1.04, bloom: [0.65, 0.42, 0.9], dust: [0.6, 0.55, 0.6], water: true,
+    },
+    build: buildTokyo,
+  },
+  {
+    id: 'rio', def: RIO, style: RIO_STYLE, color: '#009c3b',
+    name: { en: 'Rio Carnival', es: 'Río' },
+    desc: { en: 'The beach avenue, a climb through colourful houses with a jump, and the carnival avenue with floats and confetti', es: 'La avenida de la playa, la subida entre casas de colores con salto y la avenida del carnaval con carrozas y confeti' },
+    look: {
+      sky: { top: 0x1a86e0, mid: 0x6cc4ff, horizon: 0xe8f6ff, fog: 0xcfe9f8, sun: [0.4, 0.6, 0.5], sunGlow: 1.3 }, fogNear: 280, fogFar: 1500,
+      sun: 0xfff2d8, sunI: 3.0, sunOffset: [35, 75, 30], hemiSky: 0xd8f0ff, hemiGround: 0xc9b88a, hemiI: 0.95,
+      envGround: 0x2a8fb8, envI: 0.7, exposure: 1.03, bloom: [0.48, 0.35, 1.1], dust: [0.86, 0.78, 0.58], water: true,
+    },
+    build: buildRio,
   },
 ];
 

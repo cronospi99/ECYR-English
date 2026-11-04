@@ -40,7 +40,7 @@ export const ROOFS: TrackDef = {
     { kind: 'gap', at: 12, off: 25, len: 9 },
   ],
   items: [{ at: 3, off: 16 }, { at: 8, off: 10 }, { at: 13, off: 20 }],
-  gates: [{ at: 4, off: 30 }, { at: 11, off: 4 }],
+  gates: [{ at: 2, off: 23 }, { at: 4, off: 30 }, { at: 11, off: 4 }],
   coins: [
     { at: 0, off: 34, d: -2.5, n: 5 },
     { at: 2, off: 30, d: 2, n: 5, dd: -0.8 },
