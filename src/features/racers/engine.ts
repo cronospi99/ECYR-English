@@ -8,6 +8,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { TOONS, ToonActor } from '@/features/toons3d/runtime';
 import { skyDome } from '@/features/run/gfx';
 import type { RunLevel } from '@/features/run/questions';
@@ -108,6 +109,9 @@ export class RaceGame {
   private envTex: THREE.Texture | null = null;
   private composer: EffectComposer | null = null;
   private bloom: UnrealBloomPass | null = null;
+  /** Speed blur: the edges of the screen smear towards the centre at high speed and on a turbo. */
+  private blur: ShaderPass | null = null;
+  private blurAmt = 0;
   private bloomOk = true;
   private worldMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.88, metalness: 0, side: THREE.DoubleSide });
   readonly racers: Racer[] = [];
@@ -142,6 +146,7 @@ export class RaceGame {
   private shake = 0;
   /** A split second of slow motion when the player is hit (or lands a big hit). */
   private hitStop = 0;
+  private hurtCam = 0;
   private keys = new Set<string>();
   private touch: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false };
   private input: KartInput = { ...NO_INPUT };
@@ -348,7 +353,7 @@ export class RaceGame {
   /* ------------------------------------------------------------ setup */
   private setupBloom() {
     this.composer?.dispose();
-    this.composer = null; this.bloom = null;
+    this.composer = null; this.bloom = null; this.blur = null;
     if (!this.bloomOk) return;
     const w = this.host.clientWidth || 1, h = this.host.clientHeight || 1;
     const rt = new THREE.WebGLRenderTarget(w, h, { type: THREE.HalfFloatType, samples: 4 });
@@ -357,6 +362,19 @@ export class RaceGame {
     const b = this.info.look.bloom;
     this.bloom = new UnrealBloomPass(new THREE.Vector2(w / 2, h / 2), b[0], b[1], b[2]);
     c.addPass(this.bloom);
+    this.blur = new ShaderPass({
+      uniforms: { tDiffuse: { value: null }, uAmt: { value: 0 } },
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: `uniform sampler2D tDiffuse; uniform float uAmt; varying vec2 vUv;
+        void main(){
+          vec2 d = vUv - vec2(0.5, 0.56); float m = smoothstep(0.12, 0.62, length(d));
+          vec4 c = texture2D(tDiffuse, vUv); vec4 acc = c; float w = 1.0;
+          for (int i = 1; i <= 7; i++) { float k = float(i) / 7.0; float wi = 1.0 - k * 0.6; acc += texture2D(tDiffuse, vUv - d * uAmt * m * k * 9.0) * wi; w += wi; }
+          gl_FragColor = mix(c, acc / w, m);
+        }`,
+    });
+    this.blur.enabled = false;
+    c.addPass(this.blur);
     c.addPass(new OutputPass());
     c.setPixelRatio(this.dpr);
     c.setSize(w, h);
@@ -1031,16 +1049,18 @@ export class RaceGame {
     const c = this.v1.copy(p); c.y += 0.9;
     const g = this.v2.copy(p); g.y += 0.12;
     const rnd = (a: number) => (Math.random() - 0.5) * a;
+    // right in front of the camera (the player's own kart) the flash and the word are smaller
+    const sz = Math.min(1, Math.max(0.5, this.camPos.distanceTo(p) / 14));
     if (kind === 'ink') {
       this.blasts.wave(g, 7, 0x6b5bff, 0.5);
       this.blasts.shreds(c, 30, [0x1d1a5c, 0x2b2580, 0x5b4bff, 0x0e0c33], 8, 7, 0.75);
-      for (let i = 0; i < 26; i++) this.smoke.emit(c.x + rnd(1), c.y + rnd(0.6), c.z + rnd(1), rnd(9), 2 + Math.random() * 5, rnd(9), 0.9 + Math.random() * 0.5, 1.1 + Math.random(), this.c.setRGB(0.16, 0.13, 0.42), { a: 0.85, grav: 9, drag: 2, grow: 1.6 });
-      this.blasts.word(this.v3.copy(c).setY(c.y + 2.6), 'SPLAT!', '#7b6bff', 3.4);
+      for (let i = 0; i < 16; i++) this.smoke.emit(c.x + rnd(1), c.y + rnd(0.6), c.z + rnd(1), rnd(9), 2 + Math.random() * 5, rnd(9), 0.8 + Math.random() * 0.4, 0.8 + Math.random() * 0.7, this.c.setRGB(0.16, 0.13, 0.42), { a: 0.8, grav: 9, drag: 2, grow: 1.3 });
+      this.blasts.word(this.v3.copy(c).setY(c.y + 2.6), 'SPLAT!', '#7b6bff', 3.4 * sz);
       return;
     }
     const big = kind === 'plane';
-    this.blasts.flash(c, big ? 3.6 : 2.6, this.c.setRGB(3, 1.5, 0.45), 0.34);
-    this.blasts.flash(c, big ? 1.9 : 1.4, this.c.setRGB(3, 3, 2.6), 0.16);
+    this.blasts.flash(c, (big ? 3.6 : 2.6) * sz, this.c.setRGB(3, 1.5, 0.45), 0.34);
+    this.blasts.flash(c, (big ? 1.9 : 1.4) * sz, this.c.setRGB(3, 3, 2.6), 0.16);
     this.blasts.wave(g, big ? 10 : 7, 0xffc875, 0.55);
     this.blasts.wave(g, big ? 5.5 : 4, 0xffffff, 0.3);
     if (big) this.blasts.shreds(c, 38, [0xffffff, 0xf4f4f2, 0x4cc3ff, 0xdfe7f5, 0x3d8bff], 11, 8);
@@ -1052,7 +1072,7 @@ export class RaceGame {
     }
     for (let i = 0; i < 26; i++) this.sparks.emit(c.x, c.y, c.z, rnd(22), 3 + Math.random() * 10, rnd(22), 0.5 + Math.random() * 0.4, 0.18, this.c.setRGB(2.4, 1.8, 0.6), { grav: 18, drag: 1 });
     for (let i = 0; i < 22; i++) this.smoke.emit(c.x + rnd(1.4), c.y + rnd(0.8), c.z + rnd(1.4), rnd(5), 2 + Math.random() * 4, rnd(5), 1.3 + Math.random() * 0.8, 1.6 + Math.random() * 1.2, this.c.setRGB(0.32, 0.3, 0.3), { a: 0.75, drag: 1.6, grow: 2.2 });
-    this.blasts.word(this.v3.copy(c).setY(c.y + 2.8), big ? 'POW!' : 'BONK!', big ? '#ff3b30' : '#ffc61a', big ? 3.8 : 3.2);
+    this.blasts.word(this.v3.copy(c).setY(c.y + 2.2 + sz), big ? 'POW!' : 'BONK!', big ? '#ff3b30' : '#ffc61a', (big ? 3.8 : 3.2) * sz);
   }
 
   /* ------------------------------------------------------------ events and effects */
@@ -1173,7 +1193,7 @@ export class RaceGame {
     }
     this.wind.update(cam, this.windK, this.c.setRGB(0.75, 0.9, 1.1));
     this.sparks.update(dt);
-    this.blasts.update(dt);
+    this.blasts.update(dt, this.camera.position);
     this.smoke.update(dt);
     const k = this.me.kart;
     const lk = this.state === 'race' && !this.spectator ? (k.boostT > 0 ? 1 : Math.max(0, (k.speed - 25) / 12)) : 0;
@@ -1274,21 +1294,28 @@ export class RaceGame {
       this.fov += (68 - this.fov) * Math.min(1, dt * 4);
     } else {
       const driftYaw = -k.drift * 0.22;
-      const cy = k.yaw + driftYaw * 0.5;
+      // thrown or spinning: the camera stays pointed down the road and pulls back to watch it
+      const hurt = k.spinT > 0 || k.tumbleT > 0;
+      this.hurtCam += ((hurt ? 1 : 0) - this.hurtCam) * Math.min(1, dt * (hurt ? 6 : 2));
+      const cy = hurt && k.q ? Math.atan2(k.q.t.x, k.q.t.z) : k.yaw + driftYaw * 0.5;
       const back = this.lookBack ? -1 : 1;
       const boost = k.boostT > 0 ? 1 : 0;
       const tv = this.spectator ? 1 : 0; // the teacher's screen: a wider TV camera
-      const distB = 3.2 + Math.min(0.7, k.speed * 0.017) + boost * 0.45 + tv * 3.2;
-      const desired = this.v2.set(k.pos.x - Math.sin(cy) * distB * back, k.pos.y + 1.42 + tv * 1.3 + (k.grounded ? 0 : 0.35), k.pos.z - Math.cos(cy) * distB * back);
+      const distB = 3.2 + Math.min(0.7, k.speed * 0.017) + boost * 0.45 + tv * 3.2 + this.hurtCam * 2.6;
+      const desired = this.v2.set(k.pos.x - Math.sin(cy) * distB * back, k.pos.y + 1.42 + tv * 1.3 + (k.grounded ? 0 : 0.35) + this.hurtCam * 1.7, k.pos.z - Math.cos(cy) * distB * back);
       if (this.snapCam) { this.camPos.copy(desired); this.snapCam = false; }
       const q = k.q;
       if (q && q.ground !== null) desired.y = Math.max(desired.y, q.ground + 1.2);
       const kk = this.state === 'countdown' ? 2.2 : 9;
       this.camPos.x += (desired.x - this.camPos.x) * Math.min(1, dt * kk);
       this.camPos.z += (desired.z - this.camPos.z) * Math.min(1, dt * kk);
-      this.camPos.y += (desired.y - this.camPos.y) * Math.min(1, dt * (k.grounded ? 6 : 2.5));
+      this.camPos.y += (desired.y - this.camPos.y) * Math.min(1, dt * (k.grounded || this.hurtCam > 0.1 ? 6 : 2.5));
       this.camLook.copy(k.pos).addScaledVector(fwd, 2.6 * back).add(this.v2.set(0, 0.92, 0));
       const tf = 58 + boost * 8 + Math.min(6, k.speed * 0.15);
+      // speed blur at the edges (stronger on a turbo)
+      const bt = this.state === 'race' ? Math.max(0, Math.min(1, (k.speed - 20) / 10)) * 0.006 + boost * 0.007 : 0;
+      this.blurAmt += (bt - this.blurAmt) * Math.min(1, dt * 4);
+      if (this.blur) { this.blur.uniforms.uAmt.value = this.blurAmt; this.blur.enabled = this.blurAmt > 0.0004; }
       this.fov += (tf - this.fov) * Math.min(1, dt * 4);
     }
     if (!k.orient && cam.up.y < 0.9999) cam.up.lerp(this.v4.set(0, 1, 0), 1 - Math.exp(-dt * 6)).normalize();

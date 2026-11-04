@@ -779,6 +779,9 @@ G1w. ENGLISH RACERS · FASE 5: CONDUCCIÓN MÁS AGRESIVA, ESPIRALES Y ATAQUES CO
   contravolantea al derrapar, levanta el puño en los saltos grandes y agita los brazos cuando
   sale volando.
 - Viento: estelas brillantes salen de las puntas del alerón a alta velocidad y con turbo.
+- Desenfoque de velocidad: los bordes de la pantalla se estiran hacia el centro a alta velocidad
+  y con más fuerza durante el turbo.
+- Cámara al recibir un golpe: se aleja, sube y mira hacia la pista para ver al kart volar y girar.
 
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en

@@ -306,7 +306,7 @@ export class Blasts {
     w.mat.map = wordTexture(text, fill); w.mat.needsUpdate = true;
     w.s.position.copy(p); w.s.visible = true;
   }
-  update(dt: number) {
+  update(dt: number, cam?: THREE.Vector3) {
     for (const f of this.flashes) {
       if (!f.m.visible) continue;
       f.t += dt; const k = f.t / f.dur;
@@ -343,7 +343,9 @@ export class Blasts {
       if (s.vy < -3.5) s.vy = -3.5;
       s.x += s.vx * dt; s.y += s.vy * dt; s.z += s.vz * dt;
       s.rx += s.wx * dt; s.ry += s.wy * dt;
-      o.position.set(s.x, s.y, s.z); o.rotation.set(s.rx, s.ry, 0); o.scale.setScalar(s.sc * Math.min(1, s.life * 3));
+      // shreds right in front of the camera shrink away instead of filling the screen
+      const near = cam ? Math.min(1, Math.max(0, (Math.hypot(s.x - cam.x, s.y - cam.y, s.z - cam.z) - 1.2) / 2.5)) : 1;
+      o.position.set(s.x, s.y, s.z); o.rotation.set(s.rx, s.ry, 0); o.scale.setScalar(s.sc * Math.min(1, s.life * 3) * near);
       o.updateMatrix(); this.shardMesh.setMatrixAt(i, o.matrix);
     }
     this.shardMesh.instanceMatrix.needsUpdate = true;
