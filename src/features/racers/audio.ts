@@ -1,5 +1,5 @@
-/* English Racers — all sound is synthesized (Web Audio, no files): a kart engine whose pitch
-   follows the speed through simulated gears, tyre screech while drifting, turbo whooshes, jump,
+/* English Racers — all sound is synthesized (Web Audio, no files): a sport-bike style engine
+   whose revs follow the speed through six gears, tyre screech while drifting, turbo whooshes, jump,
    landing and wall hits, the countdown, lap chimes and a driving music loop. */
 let ctx: AudioContext | null = null;
 let master: GainNode | null = null;
@@ -60,51 +60,106 @@ function noise(dur: number, vol: number, freq: number, type: BiquadFilterType = 
 }
 
 /* ------------------------------------------------------------- engine */
+/** A sport-bike style inline-four: revs from ~1,400 to 14,000 rpm through six gears (the firing
+    frequency is rpm/30), a raspy saw/square mix through soft clipping, a formant that opens with the
+    revs, intake hiss on throttle, a cut on every upshift, pops and crackles when you lift off at
+    high revs, a rev limiter in the air and a turbo whine while boosting. */
 class Engine {
-  private o1: OscillatorNode; private o2: OscillatorNode; private o3: OscillatorNode;
-  private filt: BiquadFilterNode; private gain: GainNode;
-  private screech: GainNode; private screechF: BiquadFilterNode; private src: AudioBufferSourceNode;
-  private rpm = 0;
-  constructor(c: AudioContext, out: AudioNode) {
-    this.o1 = c.createOscillator(); this.o1.type = 'sawtooth';
-    this.o2 = c.createOscillator(); this.o2.type = 'square';
-    this.o3 = c.createOscillator(); this.o3.type = 'sine';
+  private oF: OscillatorNode; private oH: OscillatorNode; private oS: OscillatorNode; private oSub: OscillatorNode; private am: OscillatorNode;
+  private amGain: GainNode; private formant: BiquadFilterNode; private filt: BiquadFilterNode; private gain: GainNode; private cut: GainNode;
+  private intake: GainNode; private intakeF: BiquadFilterNode; private whine: OscillatorNode; private whineG: GainNode;
+  private screech: GainNode; private screechF: BiquadFilterNode; private src: AudioBufferSourceNode; private src2: AudioBufferSourceNode;
+  private rpm = 1400; private gear = 1; private lastThrottle = 0; private popsUntil = 0; private nextPop = 0;
+  constructor(private c: AudioContext, private out: AudioNode) {
+    const osc = (type: OscillatorType) => { const o = c.createOscillator(); o.type = type; return o; };
+    this.oF = osc('sawtooth'); this.oH = osc('square'); this.oS = osc('sawtooth'); this.oSub = osc('sine'); this.am = osc('sine');
+    const mix = c.createGain(); mix.gain.value = 1;
+    const gF = c.createGain(); gF.gain.value = 0.55;
+    const gH = c.createGain(); gH.gain.value = 0.28;
+    const gS = c.createGain(); gS.gain.value = 0.22;
+    const gSub = c.createGain(); gSub.gain.value = 0.5;
+    this.oF.connect(gF).connect(mix); this.oH.connect(gH).connect(mix); this.oS.connect(gS).connect(mix);
+    // a little roughness: amplitude wobble at half the firing rate
+    this.amGain = c.createGain(); this.amGain.gain.value = 0.85;
+    const amDepth = c.createGain(); amDepth.gain.value = 0.15;
+    this.am.connect(amDepth).connect(this.amGain.gain);
     const shaper = c.createWaveShaper();
-    const curve = new Float32Array(256);
-    for (let i = 0; i < 256; i++) { const x = (i / 255) * 2 - 1; curve[i] = Math.tanh(x * 2.2); }
-    shaper.curve = curve;
-    this.filt = c.createBiquadFilter(); this.filt.type = 'lowpass'; this.filt.Q.value = 2.5;
+    const curve = new Float32Array(1024);
+    for (let i = 0; i < 1024; i++) { const x = (i / 1023) * 2 - 1; curve[i] = Math.tanh(x * 3.2) * 0.9 + x * 0.1; }
+    shaper.curve = curve; shaper.oversample = '2x';
+    this.formant = c.createBiquadFilter(); this.formant.type = 'peaking'; this.formant.Q.value = 1.6; this.formant.gain.value = 7;
+    this.filt = c.createBiquadFilter(); this.filt.type = 'lowpass'; this.filt.Q.value = 1.4;
+    const hp = c.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 35;
+    this.cut = c.createGain(); this.cut.gain.value = 1;
     this.gain = c.createGain(); this.gain.gain.value = 0;
-    const g2 = c.createGain(); g2.gain.value = 0.5;
-    const g3 = c.createGain(); g3.gain.value = 0.7;
-    this.o1.connect(shaper); this.o2.connect(g2).connect(shaper); this.o3.connect(g3).connect(this.filt);
-    shaper.connect(this.filt).connect(this.gain).connect(out);
+    mix.connect(this.amGain).connect(shaper).connect(this.formant).connect(this.filt).connect(hp).connect(this.cut).connect(this.gain).connect(out);
+    this.oSub.connect(gSub).connect(this.cut);
+    // intake hiss
+    this.src2 = c.createBufferSource(); this.src2.buffer = noiseBuffer(c); this.src2.loop = true;
+    this.intakeF = c.createBiquadFilter(); this.intakeF.type = 'bandpass'; this.intakeF.Q.value = 0.9;
+    this.intake = c.createGain(); this.intake.gain.value = 0;
+    this.src2.connect(this.intakeF).connect(this.intake).connect(out);
+    // turbo whine
+    this.whine = osc('sine'); this.whineG = c.createGain(); this.whineG.gain.value = 0;
+    this.whine.connect(this.whineG).connect(out);
+    // tyre screech
     this.src = c.createBufferSource(); this.src.buffer = noiseBuffer(c); this.src.loop = true;
     this.screechF = c.createBiquadFilter(); this.screechF.type = 'bandpass'; this.screechF.frequency.value = 1900; this.screechF.Q.value = 4;
     this.screech = c.createGain(); this.screech.gain.value = 0;
     this.src.connect(this.screechF).connect(this.screech).connect(out);
-    this.o1.start(); this.o2.start(); this.o3.start(); this.src.start();
+    for (const o of [this.oF, this.oH, this.oS, this.oSub, this.am, this.whine]) o.start();
+    this.src.start(); this.src2.start(0, 0.7);
   }
-  /** speed01: 0..1+, throttle 0..1. */
+  /** A crackle in the exhaust (lifting off at high revs). */
+  private pop(t: number) {
+    const c = this.c, s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+    s.buffer = noiseBuffer(c); f.type = 'bandpass'; f.frequency.value = 500 + Math.random() * 900; f.Q.value = 1.2;
+    const v = 0.08 + Math.random() * 0.1, d = 0.012 + Math.random() * 0.025;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(v, t + 0.002); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+    s.connect(f).connect(g).connect(this.out); s.start(t, Math.random()); s.stop(t + d + 0.02);
+  }
+  /** speed01: 0..1+ (1 = top speed), throttle 0..1. */
   set(c: AudioContext, speed01: number, throttle: number, drift: boolean, grounded: boolean, boost: boolean, on: boolean) {
     const t = c.currentTime;
-    const gears = [0.28, 0.5, 0.72, 1.0, 9];
-    let g = 0; while (speed01 > gears[g] && g < 4) g++;
-    const lo = g ? gears[g - 1] : 0, hi = gears[g];
-    let target = Math.min(1, (speed01 - lo) / Math.max(0.05, hi - lo)) * 0.8 + 0.2;
-    if (!grounded) target = Math.min(1, target + 0.25 * throttle);
-    if (speed01 < 0.04) target = 0.12 + throttle * 0.35;
-    this.rpm += (target - this.rpm) * 0.25;
-    const f = 48 + this.rpm * 85 + g * 9 + (boost ? 14 : 0);
-    this.o1.frequency.setTargetAtTime(f, t, 0.03);
-    this.o2.frequency.setTargetAtTime(f * 0.5, t, 0.03);
-    this.o3.frequency.setTargetAtTime(f * 0.25, t, 0.03);
-    this.filt.frequency.setTargetAtTime(380 + this.rpm * 1500 * (0.55 + throttle * 0.45) + (boost ? 600 : 0), t, 0.05);
-    this.gain.gain.setTargetAtTime(on ? 0.085 + throttle * 0.04 : 0, t, 0.08);
+    // gear from the speed (shift points), rpm inside the gear
+    const up = [0, 0.16, 0.3, 0.45, 0.61, 0.79, 99];
+    let g = 1; while (g < 6 && speed01 > up[g]) g++;
+    if (g > this.gear && on) { this.cut.gain.cancelScheduledValues(t); this.cut.gain.setValueAtTime(0.35, t); this.cut.gain.linearRampToValueAtTime(1, t + 0.07); }
+    this.gear = g;
+    const lo = up[g - 1], hi = Math.min(up[g], 1.25);
+    let target = g === 1 ? 1400 + (speed01 / hi) * 11000 : 6200 + ((speed01 - lo) / Math.max(0.05, hi - lo)) * 7600;
+    if (speed01 < 0.03) target = 1400 + throttle * 6500; // revving on the spot
+    if (!grounded) target = Math.max(target, 9000 + throttle * 5200); // wheels free in the air
+    if (boost) target += 600;
+    target = Math.min(14000, target * (0.92 + throttle * 0.08));
+    this.rpm += (target - this.rpm) * (target > this.rpm ? 0.22 : 0.12);
+    const limiter = this.rpm > 13700 && throttle > 0.8;
+    const f = (this.rpm / 60) * 2 * (limiter ? 0.97 + Math.random() * 0.06 : 1);
+    this.oF.frequency.setTargetAtTime(f, t, 0.02);
+    this.oH.frequency.setTargetAtTime(f * 0.5, t, 0.02);
+    this.oS.frequency.setTargetAtTime(f * 2.002, t, 0.02);
+    this.oSub.frequency.setTargetAtTime(f * 0.25, t, 0.03);
+    this.am.frequency.setTargetAtTime(f * 0.5, t, 0.03);
+    const r = this.rpm / 14000;
+    this.formant.frequency.setTargetAtTime(700 + r * 2100, t, 0.04);
+    this.filt.frequency.setTargetAtTime(500 + r * 4200 * (0.5 + throttle * 0.5) + (boost ? 900 : 0), t, 0.04);
+    this.gain.gain.setTargetAtTime(on ? (0.05 + throttle * 0.035 + r * 0.03) * (limiter && Math.random() < 0.35 ? 0.4 : 1) : 0, t, 0.05);
+    this.intakeF.frequency.setTargetAtTime(900 + r * 3500, t, 0.05);
+    this.intake.gain.setTargetAtTime(on ? throttle * (0.008 + r * 0.02) : 0, t, 0.06);
+    this.whine.frequency.setTargetAtTime(2400 + r * 2600, t, 0.08);
+    this.whineG.gain.setTargetAtTime(on && boost ? 0.012 : 0, t, 0.1);
     this.screech.gain.setTargetAtTime(on && drift && grounded ? 0.05 + speed01 * 0.03 : 0, t, 0.05);
     this.screechF.frequency.setTargetAtTime(1600 + speed01 * 700, t, 0.1);
+    // lifting off at high revs: crackles for a moment
+    if (on && this.lastThrottle > 0.6 && throttle < 0.2 && this.rpm > 8000) this.popsUntil = t + 0.55 + Math.random() * 0.3;
+    this.lastThrottle = throttle;
+    if (on && t < this.popsUntil && t >= this.nextPop) { this.pop(t + Math.random() * 0.02); this.nextPop = t + 0.04 + Math.random() * 0.09; }
   }
-  stop() { for (const o of [this.o1, this.o2, this.o3]) try { o.stop(); } catch { /* ignore */ } try { this.src.stop(); } catch { /* ignore */ } this.gain.disconnect(); this.screech.disconnect(); }
+  stop() {
+    for (const o of [this.oF, this.oH, this.oS, this.oSub, this.am, this.whine]) try { o.stop(); } catch { /* ignore */ }
+    for (const sNode of [this.src, this.src2]) try { sNode.stop(); } catch { /* ignore */ }
+    this.gain.disconnect(); this.screech.disconnect(); this.intake.disconnect(); this.whineG.disconnect();
+  }
 }
 let engine: Engine | null = null;
 export function engineSet(speed01: number, throttle: number, drift: boolean, grounded: boolean, boost: boolean, on: boolean) {

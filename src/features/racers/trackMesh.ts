@@ -41,21 +41,105 @@ function canvasTex(w: number, h: number, draw: (c: CanvasRenderingContext2D) => 
   return t;
 }
 
-/** Asphalt: fine grain, a few patches, white edge lines and a dashed centre line (u across, v along). */
+/** Tileable value noise (several octaves) on an N×N grid, values 0..1. */
+function noiseField(N: number, octaves: [number, number][], seed: number) {
+  const out = new Float32Array(N * N);
+  let r = seed;
+  const rnd = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+  for (const [cells, amp] of octaves) {
+    const L = new Float32Array(cells * cells).map(() => rnd());
+    const at = (x: number, y: number) => L[((y % cells) + cells) % cells * cells + (((x % cells) + cells) % cells)];
+    for (let y = 0; y < N; y++) {
+      const fy = (y / N) * cells, iy = Math.floor(fy), ty = fy - iy, sy = ty * ty * (3 - 2 * ty);
+      for (let x = 0; x < N; x++) {
+        const fx = (x / N) * cells, ix = Math.floor(fx), tx = fx - ix, sx = tx * tx * (3 - 2 * tx);
+        const a = at(ix, iy) + (at(ix + 1, iy) - at(ix, iy)) * sx, b = at(ix, iy + 1) + (at(ix + 1, iy + 1) - at(ix, iy + 1)) * sx;
+        out[y * N + x] += (a + (b - a) * sy) * amp;
+      }
+    }
+  }
+  return out;
+}
+
+/** Asphalt (u across the road, v along 12 m): soft aggregate in several octaves (no single-pixel
+    speckle, so it does not shimmer far away), rubbered racing lines, repair patches, a few fine
+    cracks, worn white edge lines and a dashed centre line; plus a matching normal map. */
+let asphaltCache: (THREE.CanvasTexture & { normal: THREE.CanvasTexture }) | null = null;
 export function asphaltTexture() {
-  return canvasTex(512, 1024, (c) => {
-    c.fillStyle = '#4a4f58'; c.fillRect(0, 0, 512, 1024);
-    let r = 7;
-    const rand = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
-    for (let i = 0; i < 9000; i++) { const g = 60 + rand() * 50; c.fillStyle = `rgba(${g},${g + 3},${g + 10},${0.25 + rand() * 0.4})`; c.fillRect(rand() * 512, rand() * 1024, 1 + rand() * 2.5, 1 + rand() * 2.5); }
-    for (let i = 0; i < 7; i++) { c.fillStyle = `rgba(30,32,38,${0.08 + rand() * 0.1})`; c.beginPath(); c.ellipse(rand() * 512, rand() * 1024, 30 + rand() * 80, 40 + rand() * 120, rand() * 3, 0, 7); c.fill(); }
-    // tyre lines (racing line darker)
-    const g = c.createLinearGradient(0, 0, 512, 0);
-    g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.3, 'rgba(20,22,28,.18)'); g.addColorStop(0.5, 'rgba(0,0,0,0)'); g.addColorStop(0.7, 'rgba(20,22,28,.18)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-    c.fillStyle = g; c.fillRect(0, 0, 512, 1024);
-    c.fillStyle = '#f2f2ee';
-    c.fillRect(12, 0, 7, 1024); c.fillRect(493, 0, 7, 1024);
-    c.fillRect(252, 0, 7, 380); c.fillRect(252, 512, 7, 380);
+  // built once (a disposed texture uploads again when a new track uses it)
+  if (asphaltCache) return asphaltCache;
+  const N = 1024;
+  const n = noiseField(N, [[8, 0.35], [32, 0.3], [128, 0.22], [256, 0.13]], 7);
+  const fine = noiseField(N, [[192, 0.6], [384, 0.4]], 19);
+  const cv = document.createElement('canvas');
+  cv.width = cv.height = N;
+  const c = cv.getContext('2d')!;
+  const img = c.createImageData(N, N), d = img.data;
+  for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) {
+    const i = y * N + x, u = x / N;
+    const rubber = Math.exp(-(((u - 0.3) / 0.07) ** 2)) + Math.exp(-(((u - 0.7) / 0.07) ** 2));
+    const g = 74 + (n[i] - 0.5) * 22 + (fine[i] - 0.5) * 8 - rubber * 7;
+    d[i * 4] = g - 2; d[i * 4 + 1] = g + 1; d[i * 4 + 2] = g + 7; d[i * 4 + 3] = 255;
+  }
+  c.putImageData(img, 0, 0);
+  let r = 3;
+  const rnd = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+  // repair patches and fine cracks (soft, low contrast)
+  for (let k = 0; k < 5; k++) { c.fillStyle = `rgba(40,42,48,${0.07 + rnd() * 0.06})`; const w = 80 + rnd() * 160, h = 90 + rnd() * 220; c.fillRect(rnd() * (N - w), rnd() * (N - h), w, h); }
+  c.strokeStyle = 'rgba(30,32,36,.35)'; c.lineWidth = 1.6; c.lineCap = 'round';
+  for (let k = 0; k < 6; k++) { let x = rnd() * N, y = rnd() * N; c.beginPath(); c.moveTo(x, y); for (let j = 0; j < 7; j++) { x += (rnd() - 0.5) * 50; y += 12 + rnd() * 26; c.lineTo(x, y); } c.stroke(); }
+  // painted lines: soft edges and a little wear
+  const paint = (x0: number, w: number, y0: number, y1: number) => {
+    const gr = c.createLinearGradient(x0, 0, x0 + w, 0);
+    gr.addColorStop(0, 'rgba(240,240,236,0)'); gr.addColorStop(0.18, 'rgba(240,240,236,.92)'); gr.addColorStop(0.82, 'rgba(240,240,236,.92)'); gr.addColorStop(1, 'rgba(240,240,236,0)');
+    c.fillStyle = gr; c.fillRect(x0, y0, w, y1 - y0);
+  };
+  paint(22, 14, 0, N); paint(N - 36, 14, 0, N);
+  paint(N / 2 - 7, 14, 0, 256); paint(N / 2 - 7, 14, 512, 768);
+  const wear = c.getImageData(0, 0, N, N), wd = wear.data;
+  for (let i = 0; i < N * N; i++) if (wd[i * 4] > 150) { const k = 0.82 + fine[i] * 0.18; wd[i * 4] *= k; wd[i * 4 + 1] *= k; wd[i * 4 + 2] *= k; }
+  c.putImageData(wear, 0, 0);
+  const map = new THREE.CanvasTexture(cv);
+  map.colorSpace = THREE.SRGBColorSpace;
+  map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  // normal map from the fine grain
+  const nc = document.createElement('canvas');
+  nc.width = nc.height = 512;
+  const nx = nc.getContext('2d')!, ni = nx.createImageData(512, 512), nd = ni.data;
+  const H = (x: number, y: number) => fine[(((y * 2) % N + N) % N) * N + (((x * 2) % N + N) % N)] * 0.7 + n[(((y * 2) % N + N) % N) * N + (((x * 2) % N + N) % N)] * 0.3;
+  for (let y = 0; y < 512; y++) for (let x = 0; x < 512; x++) {
+    const dx = (H(x + 1, y) - H(x - 1, y)) * 3, dy = (H(x, y + 1) - H(x, y - 1)) * 3, l = Math.hypot(dx, dy, 1), o = (y * 512 + x) * 4;
+    nd[o] = (-dx / l * 0.5 + 0.5) * 255; nd[o + 1] = (-dy / l * 0.5 + 0.5) * 255; nd[o + 2] = (1 / l * 0.5 + 0.5) * 255; nd[o + 3] = 255;
+  }
+  nx.putImageData(ni, 0, 0);
+  const normal = new THREE.CanvasTexture(nc);
+  normal.wrapS = normal.wrapT = THREE.RepeatWrapping;
+  asphaltCache = Object.assign(map, { normal });
+  return asphaltCache;
+}
+
+/** Kerb stripes (u across, v along: one stripe of each colour per tile), bevelled. */
+function kerbTexture(c0: number, c1: number) {
+  return canvasTex(64, 256, (c) => {
+    const col = (h: number) => '#' + h.toString(16).padStart(6, '0');
+    c.fillStyle = col(c0); c.fillRect(0, 0, 64, 128);
+    c.fillStyle = col(c1); c.fillRect(0, 128, 64, 128);
+    const g = c.createLinearGradient(0, 0, 64, 0);
+    g.addColorStop(0, 'rgba(0,0,0,.25)'); g.addColorStop(0.35, 'rgba(255,255,255,.12)'); g.addColorStop(0.7, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.18)');
+    c.fillStyle = g; c.fillRect(0, 0, 64, 256);
+    c.fillStyle = 'rgba(0,0,0,.12)'; c.fillRect(0, 126, 64, 4); c.fillRect(0, 0, 64, 2);
+  });
+}
+/** Barrier panels (u along: two panels per tile; v up the panel) with seams and bolts. */
+function barrierTexture() {
+  return canvasTex(256, 64, (c) => {
+    c.fillStyle = '#e23b3b'; c.fillRect(0, 0, 128, 64);
+    c.fillStyle = '#f2f3f5'; c.fillRect(128, 0, 128, 64);
+    const g = c.createLinearGradient(0, 0, 0, 64);
+    g.addColorStop(0, 'rgba(255,255,255,.22)'); g.addColorStop(0.5, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.2)');
+    c.fillStyle = g; c.fillRect(0, 0, 256, 64);
+    c.fillStyle = 'rgba(20,22,28,.45)'; c.fillRect(0, 0, 3, 64); c.fillRect(126, 0, 3, 64);
+    c.fillStyle = 'rgba(40,44,52,.5)'; for (const x of [12, 116, 140, 244]) for (const y of [14, 50]) { c.beginPath(); c.arc(x, y, 3, 0, 7); c.fill(); }
   });
 }
 
@@ -187,7 +271,7 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
       const f = F[i % N];
       side(f, -f.w, 0, a); side(f, f.w, 0, b);
       pos.push(a.x, a.y, a.z, b.x, b.y, b.z);
-      const vv = (i * track.ds) / 9;
+      const vv = (i * track.ds) / (st.road === 'asphalt' ? 12 : 9);
       uv.push(0, vv, 1, vv);
     }
     for (let i = 0; i < N; i++) if (!inGap(i)) { const k = i * 2; idx.push(k, k + 1, k + 2, k + 1, k + 3, k + 2); }
@@ -202,9 +286,15 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
       nt.map.anisotropy = 8; nt.glow.anisotropy = 8;
       mat = new THREE.MeshStandardMaterial({ map: nt.map, emissiveMap: nt.glow, emissive: 0xffffff, emissiveIntensity: 1.0, roughness: 0.18, metalness: 0.4 });
     } else {
-      const tex = st.road === 'planks' ? planksTexture() : st.road === 'roof' ? roofTexture() : asphaltTexture();
-      tex.anisotropy = 8;
-      mat = new THREE.MeshStandardMaterial({ map: tex, roughness: st.road === 'planks' ? 0.78 : 0.9, metalness: 0 });
+      if (st.road === 'asphalt') {
+        const tex = asphaltTexture();
+        tex.anisotropy = tex.normal.anisotropy = 16;
+        mat = new THREE.MeshStandardMaterial({ map: tex, normalMap: tex.normal, normalScale: new THREE.Vector2(0.28, 0.28), roughness: 0.86, metalness: 0 });
+      } else {
+        const tex = st.road === 'planks' ? planksTexture() : roofTexture();
+        tex.anisotropy = 16;
+        mat = new THREE.MeshStandardMaterial({ map: tex, roughness: st.road === 'planks' ? 0.78 : 0.9, metalness: 0 });
+      }
     }
     const road = new THREE.Mesh(g, mat);
     road.receiveShadow = true;
@@ -223,12 +313,18 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
     for (let k = 0; k < 4; k++) tris.quad(a[k], a[(k + 1) % 4], b[(k + 1) % 4], b[k], color);
     tris.quad(b[0], b[1], b[2], b[3], color);
   };
+  const kerbS: { pos: number[]; uv: number[] } = { pos: [], uv: [] }, barS: { pos: number[]; uv: number[] } = { pos: [], uv: [] };
+  /** A textured quad (a b c d, uv per corner) facing the same way as Tris.quad. */
+  const tq = (S: { pos: number[]; uv: number[] }, q: THREE.Vector3[], u: number[][]) => { for (const k of [0, 1, 2, 0, 2, 3]) { S.pos.push(q[k].x, q[k].y, q[k].z); S.uv.push(u[k][0], u[k][1]); } };
   for (let i = 0; i < N; i++) {
     if (inGap(i)) continue;
     const a = F[i], b = F[(i + 1) % N];
-    const stripe = Math.floor(a.s / 2) % 2 === 0;
     for (const sg of [-1, 1]) {
-      t.quad(side(a, sg * a.w, 0.02, p0), side(b, sg * b.w, 0.02, p1), side(b, sg * (b.w + KERB), 0.06, p2), side(a, sg * (a.w + KERB), 0.06, p3), stripe ? st.kerb[0] : st.kerb[1]);
+      {
+        const q = [side(a, sg * a.w, 0.02), side(b, sg * b.w, 0.02), side(b, sg * (b.w + KERB), 0.06), side(a, sg * (a.w + KERB), 0.06)];
+        const v0 = a.s / 4, v1 = (a.s + track.ds) / 4;
+        tq(kerbS, sg > 0 ? q : [q[1], q[0], q[3], q[2]], sg > 0 ? [[0, v0], [0, v1], [1, v1], [1, v0]] : [[0, v1], [0, v0], [1, v0], [1, v1]]);
+      }
       const ga = a.w + KERB + a.apron, gb = b.w + KERB + b.apron;
       const mow = Math.floor(a.s / 6) % 2 === 0 ? st.apron[0] : st.apron[1];
       t.quad(side(a, sg * (a.w + KERB), 0.06, p0), side(b, sg * (b.w + KERB), 0.06, p1), side(b, sg * gb, 0.04, p2), side(a, sg * ga, 0.04, p3), mow);
@@ -237,8 +333,11 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
       if (a.wall) {
         if (st.wall === 'barrier') {
           const H = 0.9, T = 0.4;
-          const panel = Math.floor(a.s / 4) % 2 === 0 ? 0xe23b3b : 0xf5f6f8;
-          t.quad(side(a, sg * wa, 0, p0), side(b, sg * wb, 0, p1), side(b, sg * wb, H, p2), side(a, sg * wa, H, p3), panel);
+          {
+            const q = [side(a, sg * wa, 0), side(b, sg * wb, 0), side(b, sg * wb, H), side(a, sg * wa, H)];
+            const u0 = a.s / 8, u1 = (a.s + track.ds) / 8;
+            tq(barS, sg > 0 ? q : [q[1], q[0], q[3], q[2]], sg > 0 ? [[u0, 1], [u1, 1], [u1, 0], [u0, 0]] : [[u1, 1], [u0, 1], [u0, 0], [u1, 0]]);
+          }
           t.quad(side(a, sg * wa, H, p0), side(b, sg * wb, H, p1), side(b, sg * (wb + T), H, p2), side(a, sg * (wa + T), H, p3), 0xd7dbe2);
         } else if (st.wall === 'parapet') {
           const H = 1.05, T = 0.45;
@@ -310,6 +409,17 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
       p2.set(p1.x, Math.min(track.waterY - 3, st.baseY), p1.z); p3.set(p0.x, Math.min(track.waterY - 3, st.baseY), p0.z);
       t.quad(p0, p1, p2, p3, st.gapFace);
     }
+  }
+  for (const [S, tex, rough] of [[kerbS, kerbTexture(st.kerb[0], st.kerb[1]), 0.6], [barS, barrierTexture(), 0.45]] as const) {
+    if (!S.pos.length) continue;
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(S.pos, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(S.uv, 2));
+    g.computeVertexNormals();
+    tex.anisotropy = 16;
+    const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex, roughness: rough, metalness: 0.05, side: THREE.DoubleSide }));
+    m.receiveShadow = true; m.castShadow = S === barS;
+    group.add(m);
   }
   const edges = new THREE.Mesh(t.geo(), world);
   edges.receiveShadow = true; edges.castShadow = true;

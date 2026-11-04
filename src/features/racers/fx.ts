@@ -2,29 +2,53 @@
    flames from the exhausts, tyre skid marks laid while drifting, and screen speed lines. */
 import * as THREE from 'three';
 
-const PV = `attribute vec3 aColor; attribute float aSize; attribute float aAlpha; uniform float uScale;
-  varying vec3 vC; varying float vA;
-  void main(){ vC = aColor; vA = aAlpha; vec4 mv = modelViewMatrix * vec4(position, 1.0); gl_PointSize = aSize * uScale / -mv.z; gl_Position = projectionMatrix * mv; }`;
-const PF_SOFT = `uniform sampler2D uTex; varying vec3 vC; varying float vA;
-  void main(){ float a = texture2D(uTex, gl_PointCoord).a * vA; if (a < 0.01) discard; gl_FragColor = vec4(vC, a); }`;
+const PV = `attribute vec3 aColor; attribute float aSize; attribute float aAlpha; attribute float aRot; uniform float uScale;
+  varying vec3 vC; varying float vA; varying float vR;
+  void main(){ vC = aColor; vA = aAlpha; vR = aRot; vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = min(aSize * uScale / -mv.z, 512.0);
+    // fade particles right in front of the camera
+    vA *= smoothstep(0.4, 2.2, -mv.z);
+    gl_Position = projectionMatrix * mv; }`;
+const PF_SOFT = `uniform sampler2D uTex; varying vec3 vC; varying float vA; varying float vR;
+  void main(){
+    vec2 q = gl_PointCoord - 0.5; float c = cos(vR), s = sin(vR);
+    vec4 t = texture2D(uTex, vec2(c * q.x - s * q.y, s * q.x + c * q.y) + 0.5);
+    float a = t.a * vA; if (a < 0.01) discard;
+    gl_FragColor = vec4(vC * mix(1.0, t.r, 0.35), a); }`;
 
+/** Sparks: a white-hot core in a soft glow. Smoke: a lumpy puff (several blobs, shaded). */
 function dotTexture(hard: boolean) {
   const cv = document.createElement('canvas');
-  cv.width = cv.height = 64;
+  cv.width = cv.height = 128;
   const c = cv.getContext('2d')!;
-  const g = c.createRadialGradient(32, 32, 0, 32, 32, 32);
-  if (hard) { g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.25, 'rgba(255,255,255,.9)'); g.addColorStop(1, 'rgba(255,255,255,0)'); }
-  else { g.addColorStop(0, 'rgba(255,255,255,.9)'); g.addColorStop(0.5, 'rgba(255,255,255,.45)'); g.addColorStop(1, 'rgba(255,255,255,0)'); }
-  c.fillStyle = g; c.fillRect(0, 0, 64, 64);
+  if (hard) {
+    const g = c.createRadialGradient(64, 64, 0, 64, 64, 64);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.12, 'rgba(255,255,255,1)'); g.addColorStop(0.3, 'rgba(255,255,255,.55)'); g.addColorStop(0.6, 'rgba(255,255,255,.14)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    c.fillStyle = g; c.fillRect(0, 0, 128, 128);
+  } else {
+    let r = 5;
+    const rnd = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+    for (let k = 0; k < 14; k++) {
+      const a = rnd() * Math.PI * 2, d = rnd() * 26, x = 64 + Math.cos(a) * d, y = 64 + Math.sin(a) * d, rad = 22 + rnd() * 18, sh = 200 + rnd() * 55;
+      const g = c.createRadialGradient(x - rad * 0.2, y - rad * 0.25, 0, x, y, rad);
+      g.addColorStop(0, `rgba(${sh},${sh},${sh},.42)`); g.addColorStop(0.6, `rgba(${sh - 30},${sh - 30},${sh - 30},.2)`); g.addColorStop(1, 'rgba(160,160,160,0)');
+      c.fillStyle = g; c.fillRect(0, 0, 128, 128);
+    }
+    // fade the square's edges so a puff never shows a corner
+    c.globalCompositeOperation = 'destination-in';
+    const m = c.createRadialGradient(64, 64, 30, 64, 64, 64);
+    m.addColorStop(0, 'rgba(0,0,0,1)'); m.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = m; c.fillRect(0, 0, 128, 128);
+  }
   return new THREE.CanvasTexture(cv);
 }
 
-interface P { x: number; y: number; z: number; vx: number; vy: number; vz: number; life: number; max: number; size: number; grow: number; r: number; g: number; b: number; a: number; grav: number; drag: number }
+interface P { x: number; y: number; z: number; vx: number; vy: number; vz: number; life: number; max: number; size: number; grow: number; r: number; g: number; b: number; a: number; grav: number; drag: number; rot: number; spin: number }
 
 export class Particles {
   readonly points: THREE.Points;
   private ps: P[] = [];
-  private pos: Float32Array; private col: Float32Array; private size: Float32Array; private alpha: Float32Array;
+  private pos: Float32Array; private col: Float32Array; private size: Float32Array; private alpha: Float32Array; private rot: Float32Array;
   private geo = new THREE.BufferGeometry();
   private next = 0;
   readonly mat: THREE.ShaderMaterial;
@@ -33,10 +57,12 @@ export class Particles {
     this.col = new Float32Array(max * 3);
     this.size = new Float32Array(max);
     this.alpha = new Float32Array(max);
+    this.rot = new Float32Array(max);
     this.geo.setAttribute('position', new THREE.BufferAttribute(this.pos, 3).setUsage(THREE.DynamicDrawUsage));
     this.geo.setAttribute('aColor', new THREE.BufferAttribute(this.col, 3).setUsage(THREE.DynamicDrawUsage));
     this.geo.setAttribute('aSize', new THREE.BufferAttribute(this.size, 1).setUsage(THREE.DynamicDrawUsage));
     this.geo.setAttribute('aAlpha', new THREE.BufferAttribute(this.alpha, 1).setUsage(THREE.DynamicDrawUsage));
+    this.geo.setAttribute('aRot', new THREE.BufferAttribute(this.rot, 1).setUsage(THREE.DynamicDrawUsage));
     this.mat = new THREE.ShaderMaterial({
       uniforms: { uScale: { value: 400 }, uTex: { value: dotTexture(additive) } },
       vertexShader: PV, fragmentShader: PF_SOFT, transparent: true, depthWrite: false,
@@ -45,12 +71,12 @@ export class Particles {
     this.points = new THREE.Points(this.geo, this.mat);
     this.points.frustumCulled = false;
     this.points.renderOrder = additive ? 5 : 4;
-    for (let i = 0; i < max; i++) this.ps.push({ x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, life: 0, max: 1, size: 1, grow: 0, r: 1, g: 1, b: 1, a: 1, grav: 0, drag: 0 });
+    for (let i = 0; i < max; i++) this.ps.push({ x: 0, y: 0, z: 0, vx: 0, vy: 0, vz: 0, life: 0, max: 1, size: 1, grow: 0, r: 1, g: 1, b: 1, a: 1, grav: 0, drag: 0, rot: 0, spin: 0 });
   }
-  emit(x: number, y: number, z: number, vx: number, vy: number, vz: number, life: number, size: number, color: THREE.Color, o: { a?: number; grav?: number; drag?: number; grow?: number } = {}) {
+  emit(x: number, y: number, z: number, vx: number, vy: number, vz: number, life: number, size: number, color: THREE.Color, o: { a?: number; grav?: number; drag?: number; grow?: number; spin?: number } = {}) {
     const p = this.ps[this.next];
     this.next = (this.next + 1) % this.max;
-    Object.assign(p, { x, y, z, vx, vy, vz, life, max: life, size, grow: o.grow ?? 0, r: color.r, g: color.g, b: color.b, a: o.a ?? 1, grav: o.grav ?? 0, drag: o.drag ?? 0 });
+    Object.assign(p, { x, y, z, vx, vy, vz, life, max: life, size, grow: o.grow ?? 0, r: color.r, g: color.g, b: color.b, a: o.a ?? 1, grav: o.grav ?? 0, drag: o.drag ?? 0, rot: Math.random() * 6.28, spin: o.spin ?? (Math.random() - 0.5) * 2 });
   }
   update(dt: number) {
     for (let i = 0; i < this.max; i++) {
@@ -65,8 +91,10 @@ export class Particles {
       this.col[i * 3] = p.r; this.col[i * 3 + 1] = p.g; this.col[i * 3 + 2] = p.b;
       this.size[i] = p.size * (1 + p.grow * (1 - k));
       this.alpha[i] = p.a * Math.min(1, k * 2.2);
+      p.rot += p.spin * dt;
+      this.rot[i] = p.rot;
     }
-    for (const n of ['position', 'aColor', 'aSize', 'aAlpha']) (this.geo.getAttribute(n) as THREE.BufferAttribute).needsUpdate = true;
+    for (const n of ['position', 'aColor', 'aSize', 'aAlpha', 'aRot']) (this.geo.getAttribute(n) as THREE.BufferAttribute).needsUpdate = true;
   }
   clear() { for (const p of this.ps) p.life = 0; }
   dispose() { this.geo.dispose(); this.mat.dispose(); (this.mat.uniforms.uTex.value as THREE.Texture).dispose(); }
