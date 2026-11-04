@@ -715,6 +715,41 @@ G1u. ENGLISH RACERS · FASE 3: EN VIVO CON LA CLASE, 4 CIUDADES Y CONTROLES TÁC
   Cada ciudad tiene su música.
 - Gran Premio con dos copas: Clásica (las 4 pistas anteriores) y Mundial (las 4 ciudades).
 
+G1v. ENGLISH RACERS · FASE 4: VUELTAS DE 360°, PISTAS DE LOS DIBUJOS, GARAJE Y MÁS CALIDAD
+- Vueltas verticales de 360°:
+  · El kart sube por una cinta y da la vuelta completa boca abajo. Entra por el carril izquierdo
+    y sale por el derecho.
+  · Mientras está en la vuelta, el carril lo guía y no puede caerse. La cámara gira con el kart.
+  · En el modo en vivo, los compañeros también ven la vuelta.
+  · Las vueltas tienen torres, vigas, barandas con neón y la parte de abajo metálica.
+- Zonas de agua: lámina de agua animada sobre la pista con espuma, salpicaduras de las ruedas,
+  una ola al aterrizar y arcos de chorros de agua que cruzan la pista.
+- 3 pistas nuevas tomadas de los dibujos de un estudiante (las curvas se suavizaron con un
+  relajador automático para que sean conducibles sin perder la forma):
+  · Rizos de Agua: 2 vueltas grandes y 4 pequeñas seguidas, y cada aterrizaje cae al agua.
+    Está en un parque acuático con laguna, isla, toboganes con gente, cascada, fuentes,
+    flotadores, nadadores y motos acuáticas.
+  · Cañón: forma de "T", con la partida en la recta de arriba donde estaba la raya roja.
+    Tiene paredes de roca en capas, mesetas, cactus, plantas rodadoras, un tren de vapor sobre
+    un puente alto, globos aerostáticos, un remolino de polvo y águilas.
+  · Pico Nevado: forma de "E", con la partida en la recta de la izquierda donde estaba la raya
+    roja. Tiene pinos nevados, telesilla, esquiadores, lago congelado con patinadores, cabañas
+    con humo, muñecos de nieve y nevada.
+  · Nueva copa del Gran Premio: Acrobática (Cañón, Rizos de Agua, Pico Nevado y Tejados).
+- Garaje: las monedas de cada carrera (las que conservas, +2 por respuesta correcta y un bono
+  por puesto) van a una billetera. Con ellas se compran pintura (12 colores), llantas (cromo,
+  negras, doradas, neón), alerón (estándar, sin alerón, grande, doble) y color de las llamas
+  del turbo (incluida arcoíris). Los cambios se ven al instante sobre el kart.
+- Calidad:
+  · Asfalto nuevo sin parpadeo: grano suave en varias capas, relieve sutil, filtrado 16x,
+    líneas pintadas con borde suave y desgaste.
+  · Bordillos y barreras con textura, para que de lejos se fundan en vez de titilar.
+  · Humo esponjoso que gira, chispas con núcleo brillante, y copos, pétalos y confeti que ya no
+    se ven gigantes frente a la cámara.
+- Motor tipo moto deportiva de 4 cilindros: sube hasta unas 14.000 rpm con 6 cambios y corte
+  en cada cambio. Suena áspero y abre el tono al revolucionar, con admisión de aire, petardeo
+  al soltar a altas revoluciones, limitador en el aire y silbido del turbo.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

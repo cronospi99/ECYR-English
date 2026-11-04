@@ -278,6 +278,7 @@ export function LiveResults({ client, hud }: { client: RacersClient; hud: Hud })
           </div>
         )}
         {hud.results && <div className="text-center text-[12.5px] font-bold text-white/60">{tname(trackInfo(hud.track).name)} · {fmt(hud.results.total)}</div>}
+        {hud.results && hud.results.earned > 0 && <div className="mt-1 flex items-center justify-center gap-1.5 text-[13px] font-black text-[#ffe27a]"><Coins size={15} />+{hud.results.earned} {t('coins for the garage', 'monedas para el garaje')}</div>}
         <div className="mt-2.5">
           {res ? <ResultTable rows={res} me={client.peer} /> : (
             <div className="rounded-xl bg-white/8 px-3 py-2.5 text-center text-[14px] font-bold text-white/80">

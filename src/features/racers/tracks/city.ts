@@ -529,7 +529,8 @@ export function fallers(c: City, box: { x: number; z: number; w: number; d: numb
         p.x += sin(uTime * 1.3 + aSeed) * 1.6; p.z += cos(uTime * 1.1 + aSeed * 1.7) * 1.6;
         vec4 mv = modelViewMatrix * vec4(p, 1.0);
         gl_Position = projectionMatrix * mv;
-        gl_PointSize = uSize / -mv.z;
+        // never a huge blob right in front of the camera
+        gl_PointSize = min(uSize / -mv.z, 14.0) * smoothstep(1.2, 4.0, -mv.z);
         vC = color; vA = 0.5 + 0.5 * sin(uTime * 5.0 + aSeed * 3.0);
       }`,
     fragmentShader: `varying vec3 vC; varying float vA;
@@ -635,7 +636,7 @@ export function fountain(c: City, x: number, y: number, z: number, opts: { n?: n
         vec3 p = position + vec3(dir.x * k, vy * t - 4.9 * t * t, dir.y * k);
         vec4 mv = modelViewMatrix * vec4(p, 1.0);
         gl_Position = projectionMatrix * mv;
-        gl_PointSize = uSize * (0.6 + aSeed.z * 0.8) / -mv.z;
+        gl_PointSize = min(uSize * (0.6 + aSeed.z * 0.8) / -mv.z, 24.0) * smoothstep(1.0, 3.5, -mv.z);
         vA = 1.0 - k * 0.6;
       }`,
     fragmentShader: `uniform vec3 uC; varying float vA; void main(){ vec2 q = gl_PointCoord - 0.5; float d = dot(q, q); if (d > 0.25) discard; gl_FragColor = vec4(uC * (1.1 - d * 2.0), vA * (1.0 - d * 3.0)); }`,

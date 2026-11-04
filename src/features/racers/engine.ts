@@ -23,16 +23,19 @@ import { ItemWorld, rollItem, ITEM_LIST } from './items';
 import { Gates, type GateSite } from './gates';
 import { makeRacer, rank, scoreOf, type ItemKind, type Racer, type RemoteSample } from './racer';
 import { t } from '@/lib/gameLang';
+import { flameColor, garage, raceEarnings, type KartStyle } from './garage';
 import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, setSong, unlock } from './audio';
 
 export type RaceState = 'loading' | 'menu' | 'countdown' | 'race' | 'paused' | 'finish' | 'podium';
 export type Mode = 'race' | 'gp' | 'time' | 'live';
-export type Cup = 'classic' | 'world';
+export type Cup = 'classic' | 'world' | 'stunt';
 export interface Settings { mode: Mode; track: TrackId; level: RunLevel; difficulty: Difficulty; cup: Cup }
 export interface ResultRow { place: number; name: string; color: string; me: boolean; time: number | null; points: number; total: number }
 export interface Review { q: string; a: string; picked: string; ok: boolean }
 export interface Results {
   total: number; laps: number[]; best: number; newBestLap: boolean; newBestTotal: boolean;
+  /** Coins this race put in the garage wallet. */
+  earned: number;
   place: number; rows: ResultRow[]; review: Review[]; right: number; wrong: number;
   /** Every racer is in (the table is final). */
   final: boolean;
@@ -72,7 +75,7 @@ const TIER_COLORS = [new THREE.Color(1.3, 1.05, 0.6), new THREE.Color(0.35, 0.8,
 const DT = 1 / 120;
 export const GP_POINTS = [15, 12, 10, 8, 6, 4, 2, 1];
 /** The two Grand Prix cups: the original four tracks, and the four world cities. */
-export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'] };
+export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'], stunt: ['canyon', 'splash', 'snow', 'roofs'] };
 const N_RIVALS = 7;
 const PODIUM_H = [1.6, 1.05, 0.65];
 const store = {
@@ -83,7 +86,7 @@ const loadSettings = (): Settings => {
   const d: Settings = { mode: 'gp', track: 'campus', level: 'A2', difficulty: 'normal', cup: 'classic' };
   try {
     const v = JSON.parse(localStorage.getItem('racers:settings') || 'null');
-    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus', cup: v.cup === 'world' ? 'world' : 'classic', mode: v.mode === 'live' ? 'gp' : v.mode ?? 'gp' };
+    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus', cup: v.cup === 'world' || v.cup === 'stunt' ? v.cup : 'classic', mode: v.mode === 'live' ? 'gp' : v.mode ?? 'gp' };
   } catch { /* ignore */ }
   return d;
 };
@@ -369,7 +372,7 @@ export class RaceGame {
     const actor = await ToonActor.create(id);
     if (this.toonId !== id) { actor.dispose(); return; }
     this.me.view?.dispose();
-    const v = new KartView(info.color, info.name);
+    const v = new KartView(info.color, info.name, garage.style);
     v.setDriver(actor);
     this.me.view = v;
     this.scene.add(v.root);
@@ -377,6 +380,21 @@ export class RaceGame {
     // the rivals must not be the same teacher
     if (!this.live && this.rivalIds.includes(id)) { this.rivalIds = []; this.rivalsReady = false; this.rivalsLoading = null; if (this.settings.mode !== 'time') void this.prepareRivals(); }
     this.emit();
+  }
+
+  /** The garage changed the kart: build it again with the new parts (same driver). */
+  setStyle(style: KartStyle) {
+    const me = this.me, old = me.view;
+    if (!old) return;
+    const info = TOONS.find((x) => x.id === this.toonId) ?? TOONS[0];
+    const actor = old.takeDriver();
+    const v = new KartView(info.color, info.name, style);
+    if (actor) v.setDriver(actor);
+    v.root.visible = old.root.visible;
+    old.dispose();
+    me.view = v;
+    this.scene.add(v.root);
+    v.update(0.016, me.kart, 0, false);
   }
 
   /** Load seven rival teachers (light models) and their karts. */
@@ -825,7 +843,9 @@ export class RaceGame {
       this.record = { lap: rec ? Math.min(rec.lap, best) : best, total: rec ? Math.min(rec.total, total) : total };
       store.set(this.track.def.id, this.record);
     }
-    this.results = { total, laps: [...me.lapTimes], best, newBestLap, newBestTotal, place: me.place, rows: [], review: [...this.review], right: me.right, wrong: me.wrong, final: false, gpRace: this.gpRace, gpOver: false };
+    const earned = raceEarnings(me.bank, me.right, me.place, this.field.length);
+    garage.earn(earned);
+    this.results = { earned, total, laps: [...me.lapTimes], best, newBestLap, newBestTotal, place: me.place, rows: [], review: [...this.review], right: me.right, wrong: me.wrong, final: false, gpRace: this.gpRace, gpOver: false };
     this.fillRows(false);
     sfx.finish();
     setMusicFast(false);
@@ -1048,7 +1068,8 @@ export class RaceGame {
       const fl = r.flames;
       const target = live && k.boostT > 0 ? Math.min(1, 0.45 + k.boostT) : 0;
       fl.level += (target - fl.level) * Math.min(1, dt * 14);
-      fl.color.copy(r.boostKind === 'mini' ? TIER_COLORS[Math.max(1, r.boostTier)] : r.boostKind === 'gate' ? this.c.setRGB(0.3, 1.8, 0.7) : r.boostKind === 'item' ? this.c.setRGB(1.5, 0.75, 0.25) : this.c.setRGB(1.4, 0.5, 0.08));
+      const own = r.player ? flameColor(garage.style.flame, tt, this.c) : null;
+      fl.color.copy(own ?? (r.boostKind === 'mini' ? TIER_COLORS[Math.max(1, r.boostTier)] : r.boostKind === 'gate' ? this.c.setRGB(0.3, 1.8, 0.7) : r.boostKind === 'item' ? this.c.setRGB(1.5, 0.75, 0.25) : this.c.setRGB(1.4, 0.5, 0.08)));
       if (fl.level > 0.02 || fl.group.visible) {
         v.exhaustWorld(r.tips);
         v.body.getWorldQuaternion(this.q1);

@@ -39,8 +39,8 @@ const STRATA = [0xc8643c, 0xd9844e, 0xb5502e, 0xe6a35f, 0xcf7448, 0xa94a2c];
 export function buildCanyon(track: Track): Scenery {
   const c = city(track, 1880);
   const { world, glossy, glow, group, rand } = c;
-  const F = track.frames, sparse = F.filter((_, i) => i % 6 === 0);
-  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y }; };
+  const F = track.frames, sparse = F.filter((_, i) => i % 3 === 0);
+  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y - Math.abs(f0.bank) * (f0.w + KERB) - 0.35 }; };
   const noise = (x: number, z: number) => Math.sin(x * 0.045) * Math.cos(z * 0.052) * 0.5 + Math.sin(x * 0.013 + z * 0.017) * 0.5;
 
   /* ---------------- the canyon: walls rise from the road to the mesa tops ---------------- */

@@ -7,12 +7,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, Wrench, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
 import { CSS, Btn, Dot, PLACE_COL, Seg, TIER, Toggle, initialToon, useClient } from './ui';
 import { LiveClassHome, LiveHostRoute, LiveJoin, LivePlayRoute, LiveLobby, LiveResults, LivePodium, LiveScore } from './LiveScreens';
 import type { RacersClient } from './live';
+import { GaragePanel } from './GarageUI';
+import { garage } from './garage';
 import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang } from '@/lib/gameLang';
@@ -143,6 +145,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const [touchUi] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches);
   const [portrait, setPortrait] = useState(false);
   const [gas, setGas] = useState<GasMode>(initialGas);
+  const [garageOpen, setGarageOpen] = useState(false);
   const lang = useGameLang();
   useClient(client);
 
@@ -220,6 +223,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
               <GameTitle word="RACERS" theme="racers" className="mx-auto block h-auto w-[230px] sm:mx-0 sm:w-[360px]" />
             </motion.div>
             <div className="pointer-events-auto rc-panel rc-scroll mt-auto flex max-h-[calc(100dvh-120px)] min-h-0 w-full max-w-[480px] flex-col gap-2.5 self-center p-3 pb-0 sm:self-start">
+              {garageOpen ? <GaragePanel game={game} onClose={() => setGarageOpen(false)} /> : <>
               {/* driver */}
               <div className="flex items-center gap-2">
                 <button type="button" onClick={() => pickToon(-1)} className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Previous', 'Anterior')}><ChevronLeft /></button>
@@ -228,6 +232,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                   <div className="flex items-center justify-center gap-2 truncate text-[20px] font-black"><Dot color={cur.color} size={14} />{cur.name}</div>
                 </div>
                 <button type="button" onClick={() => pickToon(1)} className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white/12 hover:bg-white/22" aria-label={t('Next', 'Siguiente')}><ChevronRight /></button>
+                <button type="button" onClick={() => setGarageOpen(true)} className="flex h-10 shrink-0 items-center gap-1.5 rounded-2xl bg-[#ffd23f] px-3 text-[13.5px] font-black text-[#2a1d00] shadow-[0_3px_0_#c79a00]"><Wrench size={16} />{t('Garage', 'Garaje')} <span className="flex items-center gap-0.5 text-[12px]"><Coins size={13} />{garage.coins}</span></button>
               </div>
               {/* mode */}
               <Seg<Mode> value={s.mode} onChange={(m) => conf({ mode: m })} options={[
@@ -238,7 +243,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
               {/* track(s) */}
               {s.mode === 'gp' ? (
                 <div className="rounded-2xl bg-white/8 px-3 py-2">
-                  <Seg<'classic' | 'world'> value={s.cup} onChange={(cup) => conf({ cup })} options={[{ id: 'classic', label: t('Classic Cup', 'Copa Clásica') }, { id: 'world', label: t('World Cup', 'Copa Mundial') }]} />
+                  <Seg<'classic' | 'world' | 'stunt'> value={s.cup} onChange={(cup) => conf({ cup })} options={[{ id: 'classic', label: t('Classic', 'Clásica') }, { id: 'world', label: t('World', 'Mundial') }, { id: 'stunt', label: t('Stunt', 'Acrobática') }]} />
                   <div className="mt-1.5 flex items-center gap-2 text-[14px] font-black"><Trophy size={17} className="text-[#ffd23f]" />{t('4 tracks · points for every place', '4 pistas · puntos por puesto')}</div>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
                     {CUPS[s.cup].map((id, i) => { const tr = trackInfo(id); return <span key={id} className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[12px] font-extrabold"><span className="grid h-4 w-4 place-items-center rounded-full text-[10px] text-[#10204a]" style={{ background: tr.color }}>{i + 1}</span>{name(tr.name)}</span>; })}
@@ -279,6 +284,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                     : t('GO: accelerate · DRIFT (next to it, also accelerates): slide your thumb onto it and turn, let go for a turbo · arrows: steer · ITEM: use it · drive through the lane with the right answer.', 'ACELERAR · DERRAPE (al lado, también acelera): desliza el pulgar hacia él y gira, suelta para el turbo · flechas: girar · OBJETO: úsalo · pasa por el carril con la respuesta correcta.')
                   : t('W/↑ accelerate · S/↓ brake · A D/← → steer · Space hop & drift (hold, let go = turbo) · E/X use item · C look back · R back on track · Esc pause · drive through the lane with the right answer for a big turbo.', 'W/↑ acelerar · S/↓ frenar · A D/← → girar · Espacio saltar y derrapar (mantén, suelta = turbo) · E/X usar objeto · C mirar atrás · R volver a la pista · Esc pausa · pasa por el carril con la respuesta correcta para un gran turbo.')}
               </div>
+              </>}
               {/* the start button stays in view at the bottom of the panel, even when it scrolls */}
               <div className="sticky bottom-0 -mx-3 shrink-0 rounded-b-[22px] bg-[#0e1638]/95 px-3 pt-1 pb-3">
                 <Btn tone="green" className="h-14 w-full text-[20px] [@media(max-height:520px)]:h-12" onClick={go} disabled={st === 'loading' || hud?.waiting}>
@@ -474,6 +480,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                 )}
               </>
             )}
+            {res.earned > 0 && <div className="mt-2 flex items-center justify-center gap-1.5 rounded-xl bg-[#ffd23f]/15 px-3 py-1.5 text-[13.5px] font-black text-[#ffe27a]"><Coins size={16} />+{res.earned} {t('coins for the garage', 'monedas para el garaje')}</div>}
             {/* the questions of this race */}
             {res.review.length > 0 && (
               <div className="mt-2.5">

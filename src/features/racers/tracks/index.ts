@@ -156,7 +156,7 @@ export const TRACKS: TrackInfo[] = [
     name: { en: 'Snow Peak', es: 'Pico Nevado' },
     desc: { en: 'From a student\'s drawing: the long left straight, a twisty cup, a fast spine, a hairpin finger and waves', es: 'De un dibujo: la gran recta de la izquierda, una copa de curvas, la espina rápida, un dedo en horquilla y ondas' },
     look: {
-      sky: { top: 0x3f7fd8, mid: 0xa8d0f4, horizon: 0xf2f8ff, fog: 0xe4eef8, sun: [0.4, 0.45, 0.6], sunGlow: 1.1 }, fogNear: 220, fogFar: 1200,
+      sky: { top: 0x3f7fd8, mid: 0xa8d0f4, horizon: 0xf2f8ff, fog: 0xe4eef8, sun: [0.4, 0.45, 0.6], sunGlow: 1.1 }, fogNear: 320, fogFar: 1500,
       sun: 0xffffff, sunI: 2.6, sunOffset: [40, 70, 40], hemiSky: 0xe8f2ff, hemiGround: 0xc8d4e2, hemiI: 1.05,
       envGround: 0xdde6f0, envI: 0.8, exposure: 0.98, bloom: [0.4, 0.35, 1.15], dust: [0.95, 0.97, 1.0], water: false,
     },

@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { makeToonMaterial, type ToonActor, type Face } from '@/features/toons3d/runtime';
+import { RIM_COLORS, type KartStyle } from './garage';
 import type { Kart } from './kart';
 
 /** Material classes (alpha): < .5 non-metal with roughness a·2; ≥ .5 metal with roughness (a−.5)·2. */
@@ -99,8 +100,9 @@ export class KartView {
   face: Face = 'smile';
   cheer = false;
 
-  constructor(color: string, label = '') {
+  constructor(color0: string, label = '', style?: Partial<KartStyle>) {
     this.mat = makeToonMaterial();
+    const color = style?.paint ?? color0, wing = style?.wing ?? 'std', [rim, rim2] = RIM_COLORS[style?.rim ?? 'chrome'];
     const paint = new THREE.Color(color), dark = '#1d2230', accent = new THREE.Color(color).offsetHSL(0, 0.05, 0.22), deep = new THREE.Color(color).offsetHSL(0, 0, -0.16), seat = '#2a2f3d';
     const g = new KGeo();
     // chassis tray, side pods with intakes and stripes
@@ -128,9 +130,12 @@ export class KartView {
       g.add(CYL, '#30343c', 'metal', [sx * 0.2, 0.478, -1.205], [-1.3, 0, 0], [0.045, 0.02, 0.045]);
       g.add(new THREE.TorusGeometry(0.058, 0.012, 6, 14), '#eef1f5', 'chrome', [sx * 0.2, 0.48, -1.21], [-1.3 + Math.PI / 2, 0, 0]);
       // wing struts and end plates
-      g.add(RB(0.05, 0.38, 0.09, 0.015), dark, 'plastic', [sx * 0.3, 0.68, -0.9]);
-      g.add(RB(0.04, 0.26, 0.38, 0.015), paint, 'paint', [sx * 0.61, 0.85, -0.92]);
-      g.add(RB(0.045, 0.06, 0.39, 0.012), '#ffffff', 'paint', [sx * 0.61, 0.95, -0.92]);
+      if (wing !== 'none') {
+        const ws = wing === 'big' ? 1.22 : 1, wh = wing === 'big' ? 0.16 : wing === 'twin' ? 0.1 : 0;
+        g.add(RB(0.05, 0.38 + wh, 0.09, 0.015), dark, 'plastic', [sx * 0.3, 0.68 + wh / 2, -0.9]);
+        g.add(RB(0.04, 0.26 + wh * 1.4, 0.38 * ws, 0.015), paint, 'paint', [sx * 0.61 * ws, 0.85 + wh * 0.6, -0.92]);
+        g.add(RB(0.045, 0.06, 0.39 * ws, 0.012), '#ffffff', 'paint', [sx * 0.61 * ws, 0.95 + wh * 1.3, -0.92]);
+      }
       // rear lamp housings (the lamps themselves glow, see below)
       g.add(RB(0.2, 0.12, 0.05, 0.03), '#14161c', 'plastic', [sx * 0.34, 0.25, -1.1]);
     }
@@ -156,9 +161,14 @@ export class KartView {
       g.add(CYL, '#cfd5dd', 'chrome', [x, 0.63, -0.72], [0, 0, 0], [0.05, 0.1, 0.05]);
       g.add(CYL, '#14161c', 'plastic', [x, 0.682, -0.72], [0, 0, 0], [0.036, 0.008, 0.036]);
     }
-    g.add(RB(1.2, 0.05, 0.32, 0.02), paint, 'paint', [0, 0.88, -0.93], [0.12, 0, 0]);
-    g.add(RB(1.12, 0.012, 0.08, 0.006), '#ffffff', 'paint', [0, 0.907, -0.9], [0.12, 0, 0]);
-    g.add(RB(1.12, 0.03, 0.08, 0.01), dark, 'plastic', [0, 0.84, -1.07], [0.5, 0, 0]);
+    if (wing !== 'none') {
+      const ws = wing === 'big' ? 1.22 : 1, y = wing === 'big' ? 1.04 : 0.88;
+      g.add(RB(1.2 * ws, 0.05, 0.32 * (wing === 'big' ? 1.2 : 1), 0.02), paint, 'paint', [0, y, -0.93], [0.12, 0, 0]);
+      g.add(RB(1.12 * ws, 0.012, 0.08, 0.006), '#ffffff', 'paint', [0, y + 0.027, -0.9], [0.12, 0, 0]);
+      g.add(RB(1.12 * ws, 0.03, 0.08, 0.01), dark, 'plastic', [0, y - 0.04, -1.07], [0.5, 0, 0]);
+      // the twin wing: a second element above, in the accent colour
+      if (wing === 'twin') { g.add(RB(1.22, 0.04, 0.24, 0.02), accent, 'paint', [0, 1.06, -0.98], [0.2, 0, 0]); g.add(RB(1.14, 0.012, 0.06, 0.006), '#ffffff', 'paint', [0, 1.083, -0.96], [0.2, 0, 0]); }
+    }
     // rear bumper in the body colour with a diffuser below
     g.add(RB(1.12, 0.12, 0.13, 0.045), paint, 'paint', [0, 0.2, -1.03]);
     g.add(RB(0.8, 0.06, 0.14, 0.02), dark, 'plastic', [0, 0.12, -1.02]);
@@ -209,10 +219,10 @@ export class KartView {
       const sx = Math.sign(x);
       wg.add(tyre(r, w), '#202228', 'rubber', [0, 0, 0]);
       wg.add(new THREE.TorusGeometry(r * 0.8, r * 0.035, 6, 32), '#e9ecef', 'rubber', [sx * w * 0.5, 0, 0], [0, Math.PI / 2, 0]);
-      wg.add(CYL, '#dfe3ea', 'chrome', [0, 0, 0], [0, 0, Math.PI / 2], [r * 0.6, w * 0.82, r * 0.6]);
+      wg.add(CYL, rim, 'chrome', [0, 0, 0], [0, 0, Math.PI / 2], [r * 0.6, w * 0.82, r * 0.6]);
       wg.add(CYL, '#8d949e', 'metal', [sx * w * 0.42, 0, 0], [0, 0, Math.PI / 2], [r * 0.5, 0.02, r * 0.5]);
       wg.add(CYL, paint, 'paint', [sx * w * 0.45, 0, 0], [0, 0, Math.PI / 2], [r * 0.2, 0.03, r * 0.2]);
-      for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2; wg.add(RB(0.02, r * 0.5, r * 0.12, 0.01), '#cfd5dd', 'chrome', [sx * w * 0.44, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
+      for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2; wg.add(RB(0.02, r * 0.5, r * 0.12, 0.01), rim2, 'chrome', [sx * w * 0.44, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
       const nT = front ? 22 : 26;
       for (let k = 0; k < nT; k++) {
         const a = (k / nT) * Math.PI * 2;
@@ -233,6 +243,9 @@ export class KartView {
     this.blob.renderOrder = 1;
     this.root.add(this.blob);
   }
+
+  /** Take the driver out (to seat them in a new kart: the garage). */
+  takeDriver() { const d = this.driver; if (d) d.object.removeFromParent(); this.driver = null; return d; }
 
   /** Seat a teacher in the kart. */
   setDriver(actor: ToonActor) {

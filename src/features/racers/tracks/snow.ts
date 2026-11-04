@@ -35,8 +35,8 @@ export const SNOW_STYLE: TrackStyle = { road: 'asphalt', kerb: [0xd32f2f, 0xf4f4
 export function buildSnow(track: Track): Scenery {
   const c = city(track, 1924);
   const { world, glossy, group, rand } = c;
-  const F = track.frames, sparse = F.filter((_, i) => i % 6 === 0);
-  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y }; };
+  const F = track.frames, sparse = F.filter((_, i) => i % 3 === 0);
+  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y - Math.abs(f0.bank) * (f0.w + KERB) - 0.35 }; };
   const lake = { x: 40, z: 40, r: 26 };
   const hills = (x: number, z: number) => 6 * Math.sin(x * 0.018) * Math.cos(z * 0.021) + 10 + Math.max(0, Math.hypot(x, z * 1.2) - 220) * 0.35;
   const ground = (x: number, z: number) => {
@@ -108,7 +108,7 @@ export function buildSnow(track: Track): Scenery {
     c.updates.push((_, t) => { for (let k = 0; k < n; k++) { const u = ((t * 0.02 + k / n) % 1), up = u < 0.5, w = up ? u * 2 : 2 - u * 2, side2 = up ? 1.6 : -1.6; o.position.set(A.x + (B.x - A.x) * w + Math.cos(ry) * side2, A.y + (B.y - A.y) * w, A.z + (B.z - A.z) * w - Math.sin(ry) * side2); o.rotation.set(0, ry + (up ? 0 : Math.PI), Math.sin(t * 2 + k) * 0.05); o.updateMatrix(); chairs.setMatrixAt(k, o.matrix); } chairs.instanceMatrix.needsUpdate = true; });
     strollers(c, [[-150, -320, -250, -240], [-170, -330, -240, -230], [-140, -300, -230, -250]], 14, (x, z) => ground(x, z));
   }
-  fallers(c, { x: 0, z: 0, w: 520, d: 420, y0: 0, h: 40 }, 4200, [0xffffff, 0xf2f8ff], 0.32, 1.6);
+  fallers(c, { x: 0, z: 0, w: 520, d: 420, y0: 0, h: 40 }, 2600, [0xffffff, 0xf2f8ff], 0.24, 1.6);
 
   /* ---------------- start, people, signs ---------------- */
   const lampsM = startGantry(track, group, glossy, 'SNOW PEAK', ['#2f6fd0', '#7fd3ff'], 0x1b1d24, 0xd32f2f);
