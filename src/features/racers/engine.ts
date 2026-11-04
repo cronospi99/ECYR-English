@@ -27,7 +27,8 @@ import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, setSon
 
 export type RaceState = 'loading' | 'menu' | 'countdown' | 'race' | 'paused' | 'finish' | 'podium';
 export type Mode = 'race' | 'gp' | 'time' | 'live';
-export interface Settings { mode: Mode; track: TrackId; level: RunLevel; difficulty: Difficulty }
+export type Cup = 'classic' | 'world';
+export interface Settings { mode: Mode; track: TrackId; level: RunLevel; difficulty: Difficulty; cup: Cup }
 export interface ResultRow { place: number; name: string; color: string; me: boolean; time: number | null; points: number; total: number }
 export interface Review { q: string; a: string; picked: string; ok: boolean }
 export interface Results {
@@ -70,7 +71,8 @@ export interface TouchState { left: boolean; right: boolean; gas: boolean; brake
 const TIER_COLORS = [new THREE.Color(1.3, 1.05, 0.6), new THREE.Color(0.35, 0.8, 2.0), new THREE.Color(2.0, 0.85, 0.2), new THREE.Color(1.6, 0.45, 2.0)];
 const DT = 1 / 120;
 export const GP_POINTS = [15, 12, 10, 8, 6, 4, 2, 1];
-export const GP_TRACKS: TrackId[] = ['campus', 'beach', 'roofs', 'neon'];
+/** The two Grand Prix cups: the original four tracks, and the four world cities. */
+export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'] };
 const N_RIVALS = 7;
 const PODIUM_H = [1.6, 1.05, 0.65];
 const store = {
@@ -78,10 +80,10 @@ const store = {
   set(id: string, v: { lap: number; total: number }) { try { localStorage.setItem('racers:best:' + id, JSON.stringify(v)); } catch { /* ignore */ } },
 };
 const loadSettings = (): Settings => {
-  const d: Settings = { mode: 'gp', track: 'campus', level: 'A2', difficulty: 'normal' };
+  const d: Settings = { mode: 'gp', track: 'campus', level: 'A2', difficulty: 'normal', cup: 'classic' };
   try {
     const v = JSON.parse(localStorage.getItem('racers:settings') || 'null');
-    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus' };
+    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus', cup: v.cup === 'world' ? 'world' : 'classic', mode: v.mode === 'live' ? 'gp' : v.mode ?? 'gp' };
   } catch { /* ignore */ }
   return d;
 };
@@ -198,7 +200,7 @@ export class RaceGame {
 
     const pInfo = TOONS.find((x) => x.id === opts.toon) ?? TOONS[0];
     if (this.live) this.settings = { ...this.settings, mode: 'live' };
-    this.loadTrack(this.settings.mode === 'gp' || this.live ? 'campus' : this.settings.track, false);
+    this.loadTrack(this.live ? 'campus' : this.settings.mode === 'gp' ? this.cup[0] : this.settings.track, false);
     this.me = makeRacer(0, this.track, pInfo, true, this.newFlames());
     this.racers.push(this.me);
     this.placeGrid();
@@ -409,6 +411,8 @@ export class RaceGame {
   }
 
   private showRivals(on: boolean) { for (const r of this.racers) if (!r.player) { if (r.view) r.view.root.visible = on; r.flames.group.visible = false; } }
+  /** The tracks of the chosen Grand Prix cup. */
+  get cup() { return CUPS[this.settings.cup]; }
   private get field() {
     if (this.live) return this.live.role === 'spectator' ? this.racers.filter((r) => r.remote) : this.racers;
     return this.settings.mode === 'time' ? [this.me] : this.racers;
@@ -423,7 +427,7 @@ export class RaceGame {
     const prev = this.settings;
     this.settings = { ...prev, ...s };
     try { localStorage.setItem('racers:settings', JSON.stringify(this.settings)); } catch { /* ignore */ }
-    const want = this.settings.mode === 'gp' ? 'campus' : this.settings.track;
+    const want = this.settings.mode === 'gp' ? this.cup[0] : this.settings.track;
     const changedTrack = want !== this.info.id;
     if (changedTrack) this.loadTrack(want);
     if (s.mode && s.mode !== prev.mode) {
@@ -498,7 +502,7 @@ export class RaceGame {
     if (this.state === 'menu') {
       this.gpRace = 0;
       for (const r of this.racers) r.points = 0;
-      if (this.settings.mode === 'gp') this.loadTrack(GP_TRACKS[0], false);
+      if (this.settings.mode === 'gp') this.loadTrack(this.cup[0], false);
     }
     this.begin();
   }
@@ -528,9 +532,9 @@ export class RaceGame {
   /** Grand Prix: on to the next track (or the podium after the last one). */
   nextRace() {
     if (this.state !== 'finish' || this.settings.mode !== 'gp' || !this.results?.final) return;
-    if (this.gpRace >= GP_TRACKS.length - 1) { this.showPodium(); return; }
+    if (this.gpRace >= this.cup.length - 1) { this.showPodium(); return; }
     this.gpRace++;
-    this.loadTrack(GP_TRACKS[this.gpRace], false);
+    this.loadTrack(this.cup[this.gpRace], false);
     this.begin();
   }
   restart() {
@@ -544,7 +548,7 @@ export class RaceGame {
     this.state = 'menu';
     this.gpRace = 0;
     this.clearPodium();
-    const want = this.settings.mode === 'gp' ? 'campus' : this.settings.track;
+    const want = this.live ? this.info.id : this.settings.mode === 'gp' ? this.cup[0] : this.settings.track;
     this.loadTrack(want);
     this.showRivals(this.settings.mode !== 'time');
     stopMusic();
@@ -842,7 +846,7 @@ export class RaceGame {
     }
     rank(field);
     if (this.settings.mode === 'gp') for (const r of field) r.points += GP_POINTS[r.place - 1] ?? 0;
-    if (this.results) { this.results.final = true; this.results.gpOver = this.settings.mode === 'gp' && this.gpRace >= GP_TRACKS.length - 1; }
+    if (this.results) { this.results.final = true; this.results.gpOver = this.settings.mode === 'gp' && this.gpRace >= this.cup.length - 1; }
     this.fillRows(true);
     this.emit();
   }

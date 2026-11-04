@@ -24,6 +24,7 @@ export const RIO: TrackDef = {
     { kind: 'boost', at: 10, off: 30, d: 0 },
   ],
   items: [{ at: 2, off: 20 }, { at: 6, off: 6 }, { at: 10, off: 60 }, { at: 13, off: 20 }],
+  gates: [{ at: 1, off: 8 }, { at: 4, off: 24 }, { at: 10, off: 7 }, { at: 13, off: 0 }],
   coins: [
     { at: 0, off: 20, d: 2.5, n: 6 },
     { at: 3, off: 10, d: -1.5, n: 5, dd: 0.6 },
@@ -67,7 +68,7 @@ export function buildRio(track: Track): Scenery {
   /* ---------------- terrain (cut where the road climbs), beach, sea ---------------- */
   const terrain = (x: number, z: number) => {
     let y = hill(x, z);
-    if (z < -16) y = THREE.MathUtils.lerp(-0.3, -6, THREE.MathUtils.smoothstep(z, -40, -70));
+    if (z < -16) y = THREE.MathUtils.lerp(-0.3, -6, THREE.MathUtils.smoothstep(-z, 40, 70));
     let best = Infinity, fy = 0, fw = 14;
     for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; fy = f.p.y; fw = f.w + KERB + f.apron + 1; } }
     const dRoad = best - fw;
@@ -150,8 +151,10 @@ export function buildRio(track: Track): Scenery {
   /* ---------------- the mountain with the open-armed statue ---------------- */
   {
     const x = -330, z = 470;
-    world.add(new THREE.ConeGeometry(1, 1, 24), 0x3f7a3a, x, 90, z, 150, 180, 140);
-    world.add(new THREE.ConeGeometry(1, 1, 16), 0x4f8a42, x + 20, 150, z - 10, 50, 80, 50);
+    world.add(U.blob, 0x3f7a3a, x, 20, z, 170, 120, 150, 0.3, 0.6, 0);
+    world.add(U.blob, 0x4a8340, x + 60, 30, z + 60, 120, 110, 120, 0.8, 0.2, 0);
+    world.add(U.blob, 0x4f8a42, x + 20, 120, z - 10, 60, 72, 55, 0.4, 1.1, 0);
+    world.add(U.blob, 0x8a7f72, x + 20, 172, z - 10, 16, 20, 16, 0.2, 0.4, 0);
     world.add(U.box, 0xd8d4cc, x + 20, 191, z - 10, 8, 4, 8);
     world.add(new THREE.ConeGeometry(1, 1, 12), 0xf4f2ee, x + 20, 205, z - 10, 3.2, 26, 3.2);
     world.add(U.box, 0xf4f2ee, x + 20, 212, z - 10, 28, 2.4, 2.2);

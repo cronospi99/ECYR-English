@@ -580,11 +580,11 @@ export function lanterns(c: City, s0: number, s1: number, every: number, colors:
     const f = tr.frame(Math.round(s / tr.ds)), span = f.w + KERB + f.apron + 1;
     const A = side(f, -span), B = side(f, span);
     c.world.cyl(A.x, A.y, A.z, 0.1, h + 0.4, 0x3a2a24); c.world.cyl(B.x, B.y, B.z, 0.1, h + 0.4, 0x3a2a24);
-    const sg = new Geo(); sg.boost = 1.8;
+    const sg = new Geo(); sg.boost = 1.15;
     const n = Math.round(span * 2 / 2.2);
     for (let k = 1; k < n; k++) {
       const u = k / n, y = A.y + h - Math.sin(u * Math.PI) * 1.1 - 0.7;
-      sg.add(U.ball, colors[k % colors.length], A.x + (B.x - A.x) * u, y, A.z + (B.z - A.z) * u, 0.42, 0.55, 0.42);
+      sg.add(U.ball, colors[k % colors.length], A.x + (B.x - A.x) * u, y, A.z + (B.z - A.z) * u, 0.34, 0.46, 0.34);
     }
     const mesh = new THREE.Mesh(sg.build(), m);
     c.group.add(mesh);

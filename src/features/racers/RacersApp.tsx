@@ -17,7 +17,7 @@ import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang } from '@/lib/gameLang';
 import { RUN_LEVELS } from '@/features/run/questions';
-import { GP_TRACKS, RaceGame, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
+import { CUPS, RaceGame, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
 import { TRACKS, trackInfo } from './tracks';
 import { ITEMS, itemIcon } from './items';
 import { LANE_COLORS, LANE_LETTERS } from './gates';
@@ -238,17 +238,18 @@ function RaceScreen({ client }: { client?: RacersClient }) {
               {/* track(s) */}
               {s.mode === 'gp' ? (
                 <div className="rounded-2xl bg-white/8 px-3 py-2">
-                  <div className="flex items-center gap-2 text-[14px] font-black"><Trophy size={17} className="text-[#ffd23f]" />{t('4 tracks · points for every place', '4 pistas · puntos por puesto')}</div>
+                  <Seg<'classic' | 'world'> value={s.cup} onChange={(cup) => conf({ cup })} options={[{ id: 'classic', label: t('Classic Cup', 'Copa Clásica') }, { id: 'world', label: t('World Cup', 'Copa Mundial') }]} />
+                  <div className="mt-1.5 flex items-center gap-2 text-[14px] font-black"><Trophy size={17} className="text-[#ffd23f]" />{t('4 tracks · points for every place', '4 pistas · puntos por puesto')}</div>
                   <div className="mt-1.5 flex flex-wrap gap-1.5">
-                    {GP_TRACKS.map((id, i) => { const tr = trackInfo(id); return <span key={id} className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[12px] font-extrabold"><span className="grid h-4 w-4 place-items-center rounded-full text-[10px] text-[#10204a]" style={{ background: tr.color }}>{i + 1}</span>{name(tr.name)}</span>; })}
+                    {CUPS[s.cup].map((id, i) => { const tr = trackInfo(id); return <span key={id} className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[12px] font-extrabold"><span className="grid h-4 w-4 place-items-center rounded-full text-[10px] text-[#10204a]" style={{ background: tr.color }}>{i + 1}</span>{name(tr.name)}</span>; })}
                   </div>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-1.5">
                   {TRACKS.map((tr) => (
                     <button key={tr.id} type="button" onClick={() => conf({ track: tr.id })} aria-pressed={s.track === tr.id}
-                      className={cn('flex min-w-0 items-center gap-2 rounded-2xl px-2.5 py-2 text-left transition-colors', s.track === tr.id ? 'bg-white text-[#10204a]' : 'bg-white/8 hover:bg-white/14')}>
-                      <span className="h-8 w-1.5 shrink-0 rounded-full" style={{ background: tr.color }} />
+                      className={cn('flex min-w-0 items-center gap-2 rounded-2xl px-2.5 py-2 text-left transition-colors [@media(max-height:520px)]:py-1', s.track === tr.id ? 'bg-white text-[#10204a]' : 'bg-white/8 hover:bg-white/14')}>
+                      <span className="h-8 w-1.5 shrink-0 rounded-full [@media(max-height:520px)]:h-5" style={{ background: tr.color }} />
                       <span className="min-w-0"><span className="block truncate text-[14px] font-black">{name(tr.name)}</span><span className={cn('block truncate text-[11px] font-semibold [@media(max-height:520px)]:hidden', s.track === tr.id ? 'text-[#10204a]/60' : 'text-white/55')}>{name(tr.desc)}</span></span>
                     </button>
                   ))}

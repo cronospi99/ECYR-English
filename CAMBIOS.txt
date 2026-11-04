@@ -677,6 +677,44 @@ G1t. ENGLISH RUN · MAR VIVO Y ESCENARIOS CON MÁS VIDA
 - Neón: autos voladores con estelas de luz, drones con luces que
   parpadean, reflectores que barren el cielo y estrellas fugaces.
 
+G1u. ENGLISH RACERS · FASE 3: EN VIVO CON LA CLASE, 4 CIUDADES Y CONTROLES TÁCTILES
+- Modo en vivo (rutas /racers/class, /racers/host, /racers/join y /racers/live/CÓDIGO; tarjeta
+  "English Racers en vivo" en Juegos y botón "En vivo con la clase" en el menú de Racers).
+  El profe abre una sala en el proyector con QR y código, y elige pista (o al azar), vueltas,
+  nivel de inglés, objetos y cuánto esperar tras el primero en llegar. Los estudiantes entran
+  desde el celular con nombre y profe-piloto y corren todos en la misma pista: ven a sus
+  compañeros como karts con su nombre encima. Los aviones de papel, la tinta y la campana
+  también afectan a los compañeros.
+- Gana quien menos se equivoca y más monedas junta:
+  puntaje = aciertos × 100 − errores × 50 + monedas × 10.
+  Los puntos se suman durante toda la sesión. Hay tabla en vivo en el proyector (al tocar un
+  nombre, la cámara lo sigue), resultados por carrera, repaso de preguntas en cada celular y un
+  podio final de la clase.
+- Red: usa el mismo relay de Class Wars y You Draw (VITE_RELAY_URL), nunca Supabase. Cada
+  celular envía su kart unas 6 veces por segundo, el profe reenvía una sola instantánea con
+  todos y los golpes van directo de celular a celular. Máximo 30 estudiantes por carrera.
+- Controles táctiles: se elige "Acelera solo" (por defecto; el botón grande es DERRAPE) o
+  "Acelerar a mano" (DERRAPE queda junto a ACELERAR y también acelera). Se puede deslizar el
+  pulgar de un botón a otro sin levantarlo, y basta mantener DERRAPE y girar para derrapar.
+- Arcos de preguntas más frecuentes: además de los puestos a mano, se agregan solos en los
+  tramos rectos lejos de saltos, turbos, cajas y monedas. Ahora hay de 3 a 5 por vuelta (antes 2).
+- 4 pistas nuevas inspiradas en ciudades reales, todas con vida en movimiento:
+  · Londres: puente levadizo con salto sobre el río, torre del reloj con manecillas que giran,
+    noria gigante, parlamento gótico, buses rojos de dos pisos, taxis negros, barcos y palomas.
+  · Nueva York: plaza de pantallas animadas con público, parque con estanque y coche de caballos,
+    avenida de rascacielos con metro elevado, puente colgante, estatua con antorcha, taxis
+    amarillos, helicóptero y dirigible.
+  · Tokio (atardecer): cruce peatonal gigante con multitudes, letreros de neón, calle de faroles,
+    tren bala, horquilla de la torre roja, salto sobre un canal, cerezos con pétalos, torii,
+    pagoda, estanque de koi y volcán nevado.
+  · Río: avenida de playa con malecón de ondas, sombrillas, voleibol, surfistas y cometas;
+    subida entre casas de colores con salto; avenida del carnaval con graderías, bailarines,
+    carrozas y confeti; morros con teleférico y estatua de brazos abiertos en la montaña.
+  Comparten un kit de ciudad (tracks/city.ts): fachadas por estilo, público que salta, peatones,
+  tráfico, barcos, pájaros, banderines que ondean, pantallas, pétalos y confeti.
+  Cada ciudad tiene su música.
+- Gran Premio con dos copas: Clásica (las 4 pistas anteriores) y Mundial (las 4 ciudades).
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

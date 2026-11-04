@@ -45,15 +45,16 @@ const inPark = (x: number, z: number) => x > 22 && x < 175 && z > 92 && z < 250;
 const SCREEN_COLORS = ['#ff2d55', '#ffd60a', '#30d158', '#0a84ff', '#bf5af2', '#ff9f0a'];
 const WORDS = ['HELLO NEW YORK!', 'WORD OF THE DAY: BRAVE', 'SPEAK ENGLISH!', 'BROADWAY TONIGHT', 'I ♥ ENGLISH', 'BIG APPLE DASH', 'PAST • PRESENT • FUTURE', 'HOW ARE YOU?', 'GO GO GO!'];
 function drawScreen(seed: number) {
-  return (g: CanvasRenderingContext2D, t: number, w: number, h: number) => {
-    const k = Math.floor(t / 3 + seed) % 4, c1 = SCREEN_COLORS[(seed + Math.floor(t / 3)) % 6], c2 = SCREEN_COLORS[(seed + 2 + Math.floor(t / 3)) % 6];
+  return (g: CanvasRenderingContext2D, t0: number, w: number, h: number) => {
+    const t = Number.isFinite(t0) ? Math.abs(t0) : 0, step = Math.floor(t / 3);
+    const k = (step + seed) % 4, c1 = SCREEN_COLORS[(seed + step) % 6], c2 = SCREEN_COLORS[(seed + 2 + step) % 6];
     const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, c1); gr.addColorStop(1, c2);
     g.fillStyle = gr; g.fillRect(0, 0, w, h);
     g.fillStyle = 'rgba(255,255,255,.18)';
     if (k === 0) for (let i = 0; i < 6; i++) { g.beginPath(); g.arc(((t * 40 + i * 60) % (w + 80)) - 40, h / 2 + Math.sin(t * 2 + i) * h * 0.3, h * 0.2, 0, Math.PI * 2); g.fill(); }
     if (k === 1) for (let i = 0; i < 10; i++) g.fillRect(0, ((i * h) / 10 + t * 30) % h, w, h / 20);
     if (k === 2) { g.save(); g.translate(w / 2, h / 2); g.rotate(t); for (let i = 0; i < 8; i++) { g.rotate(Math.PI / 4); g.fillRect(0, -4, w, 8); } g.restore(); }
-    const txt = WORDS[(seed + Math.floor(t / 3)) % WORDS.length];
+    const txt = WORDS[(seed + step) % WORDS.length];
     g.font = `italic 900 ${Math.round(h * 0.34)}px Inter, system-ui, sans-serif`;
     g.textBaseline = 'middle';
     const tw = g.measureText(txt).width;

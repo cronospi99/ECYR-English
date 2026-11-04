@@ -24,6 +24,7 @@ export const TOKYO: TrackDef = {
     { kind: 'gap', at: 12, off: 27, len: 8 },
   ],
   items: [{ at: 1, off: 30 }, { at: 5, off: 10 }, { at: 8, off: 30 }, { at: 14, off: 8 }],
+  gates: [{ at: 2, off: 19 }, { at: 4, off: 30 }, { at: 8, off: -3 }, { at: 9, off: 32 }],
   coins: [
     { at: 0, off: 20, d: -2.5, n: 5 },
     { at: 3, off: 10, d: 2, n: 5, dd: -0.8 },
