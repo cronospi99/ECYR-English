@@ -20,7 +20,11 @@ export interface CP {
 export type Feature =
   | { kind: 'ramp'; at: number; off: number; len: number; h: number }
   | { kind: 'gap'; at: number; off: number; len: number }
-  | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number };
+  | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number }
+  /** A vertical 360° loop of radius r (the road must be straight there and ≥ 15 m wide). */
+  | { kind: 'loop'; at: number; off: number; r: number }
+  /** Shallow water over the road (spray, a little drag). */
+  | { kind: 'splash'; at: number; off: number; len: number };
 
 /** Something placed across the road at a control point plus an offset (m). */
 export interface Spot { at: number; off: number }
@@ -68,6 +72,10 @@ export interface Frame {
 export interface Ramp { s0: number; s1: number; h: number }
 export interface Gap { s0: number; s1: number }
 export interface Pad { s0: number; s1: number; d: number; hw: number }
+/** A vertical loop: the ribbon starts and ends at s, entering on the left lane (d0) and leaving on
+    the right one (d0 + shift), so its two ends sit side by side. */
+export interface Loop { s: number; r: number; d0: number; shift: number }
+export const LOOP_HW = 3.2;
 
 /** What is under a point. */
 export interface Query {
@@ -97,6 +105,8 @@ export class Track {
   readonly ramps: Ramp[] = [];
   readonly gaps: Gap[] = [];
   readonly pads: Pad[] = [];
+  readonly loops: Loop[] = [];
+  readonly splashes: Gap[] = [];
   readonly waterY: number;
   /** Item box rows, question gates (distance along the road) and coins (s, d). */
   readonly itemRows: number[] = [];
@@ -161,6 +171,8 @@ export class Track {
       const s0 = at(f.at, f.off);
       if (f.kind === 'ramp') this.ramps.push({ s0, s1: s0 + span(f.len), h: f.h });
       else if (f.kind === 'gap') this.gaps.push({ s0, s1: s0 + span(f.len) });
+      else if (f.kind === 'loop') this.loops.push({ s: s0, r: f.r, d0: -3.9, shift: 7.8 });
+      else if (f.kind === 'splash') this.splashes.push({ s0, s1: s0 + span(f.len) });
       else this.pads.push({ s0, s1: s0 + (f.len ?? 7), d: f.d, hw: (f.w ?? 3) / 2 });
     }
     for (const r of def.items ?? []) this.itemRows.push(at(r.at, r.off));
@@ -177,6 +189,8 @@ export class Track {
     const blocked: [number, number][] = [];
     for (const r of [...this.ramps, ...this.gaps]) blocked.push([r.s0, r.s1]);
     for (const p of this.pads) blocked.push([p.s0, p.s1]);
+    for (const l of this.loops) blocked.push([l.s - 20, l.s + 25]);
+    for (const w of this.splashes) blocked.push([w.s0, w.s1]);
     for (const c of def.clear ?? []) { const s0 = at(c.at, c.off); blocked.push([s0, s0 + c.len]); }
     const cands: number[] = [];
     for (let s = 40; s < L - 70; s += 2) {
@@ -212,6 +226,25 @@ export class Track {
     return 0;
   }
   gapAt(s: number) { return this.gaps.some((g) => this.inRange(s, g.s0, g.s1) >= 0); }
+  splashAt(s: number) { return this.splashes.some((g) => this.inRange(s, g.s0, g.s1) >= 0); }
+
+  /** A point on a loop at progress u (0..1) and lateral offset d from the ribbon's centre line. */
+  loopPoint(lp: Loop, u: number, d: number, out = new THREE.Vector3()) {
+    const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2, sm = u * u * (3 - 2 * u);
+    this.pointAt(lp.s, 0, out);
+    const side = lp.d0 + lp.shift * sm + d;
+    out.x += f.t.x * Math.sin(a) * lp.r + f.r.x * side;
+    out.z += f.t.z * Math.sin(a) * lp.r + f.r.z * side;
+    out.y += lp.r * (1 - Math.cos(a));
+    return out;
+  }
+  /** The loop's frame at u: forward along the ribbon and up (towards the loop's centre). */
+  loopBasis(lp: Loop, u: number, fwd: THREE.Vector3, up: THREE.Vector3) {
+    const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2;
+    fwd.set(f.t.x * Math.cos(a), Math.sin(a), f.t.z * Math.cos(a));
+    up.set(-f.t.x * Math.sin(a), Math.cos(a), -f.t.z * Math.sin(a));
+    return f;
+  }
   padAt(s: number, d: number) { return this.pads.some((p) => this.inRange(s, p.s0, p.s1) >= 0 && Math.abs(d - p.d) <= p.hw); }
 
   /** Road position at (s, d) in the world, on the surface (without ramps). */

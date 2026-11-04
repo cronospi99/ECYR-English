@@ -32,13 +32,14 @@ export const cleanName = (s: unknown) => String(s ?? '').replace(/\s+/g, ' ').tr
 
 function packState(s: LiveState) {
   const r2 = (v: number) => Math.round(v * 100) / 100;
-  return [r2(s.x), r2(s.y), r2(s.z), Math.round(s.yaw * 1000) / 1000, Math.round(s.spd * 10) / 10, s.drift, s.flags, Math.round(s.dist * 10) / 10, s.fin ? 1 : 0, Math.round(s.ft * 100) / 100, s.bank, s.right, s.wrong];
+  return [r2(s.x), r2(s.y), r2(s.z), Math.round(s.yaw * 1000) / 1000, Math.round(s.spd * 10) / 10, s.drift, s.flags, Math.round(s.dist * 10) / 10, s.fin ? 1 : 0, Math.round(s.ft * 100) / 100, s.bank, s.right, s.wrong, s.li, Math.round(s.lu * 1000) / 1000];
 }
 function unpackState(a: unknown): LiveState | null {
   if (!Array.isArray(a) || a.length < 13) return null;
   return {
     x: num(a[0]), y: num(a[1]), z: num(a[2]), yaw: num(a[3], -10, 10), spd: num(a[4], -80, 80), drift: Math.sign(num(a[5], -1, 1)), flags: num(a[6], 0, 15) | 0,
     dist: num(a[7], -2000, 1e5), fin: !!a[8], ft: num(a[9], 0, 3600), bank: num(a[10], 0, 9999) | 0, right: num(a[11], 0, 999) | 0, wrong: num(a[12], 0, 999) | 0,
+    li: a.length > 13 ? Math.round(num(a[13], -1, 20)) : -1, lu: a.length > 14 ? num(a[14], 0, 1) : 0,
   };
 }
 

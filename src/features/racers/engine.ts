@@ -55,7 +55,7 @@ export interface Toast { id: number; text: string; sub?: string; color: string }
 export interface LiveEntry { peer: string; name: string; toon: string }
 export interface LiveCfg { track: TrackId; laps: number; level: RunLevel; items: boolean; roster: LiveEntry[]; race: number }
 /** This student's kart, sent to the teacher's screen a few times a second. */
-export interface LiveState { x: number; y: number; z: number; yaw: number; spd: number; drift: number; flags: number; dist: number; fin: boolean; ft: number; bank: number; right: number; wrong: number }
+export interface LiveState { x: number; y: number; z: number; yaw: number; spd: number; drift: number; flags: number; dist: number; fin: boolean; ft: number; bank: number; right: number; wrong: number; /** Loop being ridden (-1 none) and progress. */ li: number; lu: number }
 export interface LiveFinish { time: number; right: number; wrong: number; bank: number; done: boolean }
 /** What the game sends out (the network layer delivers it). */
 export interface LiveOut {
@@ -217,7 +217,8 @@ export class RaceGame {
     this.last = performance.now();
     const tick = (tm: number) => {
       this.raf = requestAnimationFrame(tick);
-      const dt = Math.min(0.05, (tm - this.last) / 1000);
+      // (the first frame's timestamp can be a little before `last`: never a negative step)
+      const dt = Math.max(0, Math.min(0.05, (tm - this.last) / 1000));
       this.last = tm;
       this.frame(dt, tm);
     };
@@ -599,7 +600,7 @@ export class RaceGame {
     if (this.live?.role === 'player' && this.live.out && (this.state === 'countdown' || this.state === 'race' || this.state === 'finish') && tm - this.liveSendAt > (this.me.finished ? 400 : 150)) {
       this.liveSendAt = tm;
       const me = this.me, mk = me.kart;
-      this.live.out.state({ x: mk.pos.x, y: mk.pos.y, z: mk.pos.z, yaw: mk.yaw, spd: mk.fwd, drift: mk.drift, flags: (mk.boostT > 0 ? 1 : 0) | (mk.spinT > 0 ? 2 : 0) | (!mk.grounded ? 4 : 0) | (me.shield ? 8 : 0), dist: me.dist, fin: me.finished, ft: me.finishT, bank: me.bank, right: me.right, wrong: me.wrong });
+      this.live.out.state({ x: mk.pos.x, y: mk.pos.y, z: mk.pos.z, yaw: mk.yaw, spd: mk.fwd, drift: mk.drift, flags: (mk.boostT > 0 ? 1 : 0) | (mk.spinT > 0 ? 2 : 0) | (!mk.grounded ? 4 : 0) | (me.shield ? 8 : 0), dist: me.dist, fin: me.finished, ft: me.finishT, bank: me.bank, right: me.right, wrong: me.wrong, li: mk.loop ? this.track.loops.indexOf(mk.loop) : -1, lu: mk.loop ? mk.loopU : 0 });
     }
     if (this.state === 'podium') this.podiumFrame(dt);
     this.scenery?.update?.(dt, this.time);
@@ -626,6 +627,7 @@ export class RaceGame {
     this.sun.target.position.copy(focus);
     for (const w of this.scenery?.waters ?? []) { const m = w.material as THREE.MeshPhysicalMaterial; m.normalMap?.offset.set(tm / 26000, tm / 31000); }
     for (const o of this.scenery?.oceans ?? []) o.uTime.value = this.time;
+    for (const o of this.meshes?.oceans ?? []) o.uTime.value = this.time;
     if (this.spectator) engineSet(0, 0, false, true, false, false);
     else if (this.state === 'race' || this.state === 'finish') engineSet(k.speed / KART.maxSpeed, this.state === 'race' ? inp.throttle : 0.4, !!k.drift, k.grounded, k.boostT > 0, true);
     if (this.composer) this.composer.render(dt); else this.renderer.render(this.scene, this.camera);
@@ -996,6 +998,15 @@ export class RaceGame {
             break;
           }
           case 'spin': if (r.player) sfx.spin(); break;
+          case 'loop': if (r.player) { sfx.boost(true); this.toast('360°!', '#00e5ff'); this.shake = Math.max(this.shake, 0.12); } break;
+          case 'loopEnd':
+          case 'splash': {
+            // a burst of water when landing in it (or driving in)
+            if (!this.track.splashAt(k.s) && e.e === 'loopEnd') { if (r.player) sfx.land(6); break; }
+            if (r.player) { sfx.splash(); this.shake = Math.max(this.shake, 0.12); }
+            for (let i = 0; i < (e.e === 'loopEnd' ? 46 : 26); i++) { const a = Math.random() * Math.PI * 2, sp = 2 + Math.random() * 5; this.smoke.emit(k.pos.x, k.pos.y + 0.2, k.pos.z, Math.cos(a) * sp, 3 + Math.random() * 6, Math.sin(a) * sp, 0.7 + Math.random() * 0.5, 0.5 + Math.random() * 0.6, this.c.setRGB(0.82, 0.94, 1), { a: 0.85, grav: 15, grow: 0.8 }); }
+            break;
+          }
           default: break;
         }
       }
@@ -1023,6 +1034,10 @@ export class RaceGame {
             if (Math.random() < (r.player ? 0.5 : 0.25)) this.smoke.emit(p.x, p.y + 0.2, p.z, -fwdX * 2 + (Math.random() - 0.5), 0.6 + Math.random() * 0.5, -fwdZ * 2 + (Math.random() - 0.5), 0.7, 0.9, this.c.setRGB(0.93, 0.93, 0.95), { a: 0.3, drag: 1.5, grow: 1.8 });
             if (!r.remote) this.skids.mark(trail, this.v2.set(p.x, p.y + 0.03, p.z));
           } else if (!r.remote) this.skids.mark(trail, null);
+          // spray from the tyres in the water
+          if (k.grounded && k.speed > 5 && this.track.splashAt(k.s) && Math.random() < (r.player ? 0.9 : 0.45)) {
+            for (let j = 0; j < 2; j++) this.smoke.emit(p.x, p.y + 0.15, p.z, -fwdX * 3 + sd * 2.5 + (Math.random() - 0.5) * 2, 2.5 + Math.random() * 3.5, -fwdZ * 3 + (Math.random() - 0.5) * 2, 0.55, 0.32 + Math.random() * 0.3, this.c.setRGB(0.85, 0.95, 1), { a: 0.8, grav: 14, grow: 1.2 });
+          }
           if (k.grounded && k.surface === 'grass' && k.speed > 5 && Math.random() < (r.player ? 0.6 : 0.3)) {
             const g = this.info.look.dust;
             this.smoke.emit(p.x, p.y + 0.2, p.z, -fwdX * 2 + (Math.random() - 0.5) * 2, 1 + Math.random(), -fwdZ * 2 + (Math.random() - 0.5) * 2, 0.6, 0.8, this.c.setRGB(g[0], g[1], g[2]), { a: 0.55, drag: 2, grow: 1.5, grav: 1 });
@@ -1054,6 +1069,7 @@ export class RaceGame {
     this.lines.mesh.visible = u.uK.value > 0.02;
   }
   private q1 = new THREE.Quaternion();
+  private m1 = new THREE.Matrix4();
 
   /* ------------------------------------------------------------ podium */
   private clearPodium() {
@@ -1133,6 +1149,15 @@ export class RaceGame {
       this.camPos.lerp(desired, 1 - Math.exp(-dt * 2.5));
       this.camLook.set(k.pos.x, k.pos.y + 0.8, k.pos.z);
       this.fov += (58 - this.fov) * Math.min(1, dt * 2);
+    } else if (k.orient) {
+      // around a loop: stay behind and roll with the kart
+      const F = this.v3.set(0, 0, 1).applyQuaternion(k.orient), Up = this.v4.set(0, 1, 0).applyQuaternion(k.orient);
+      const dist = this.spectator ? 7 : 4.2;
+      const desired = this.v2.copy(k.pos).addScaledVector(F, -dist).addScaledVector(Up, this.spectator ? 2.6 : 1.5);
+      this.camPos.lerp(desired, 1 - Math.exp(-dt * 16));
+      this.camLook.copy(k.pos).addScaledVector(F, 2.6).addScaledVector(Up, 0.9);
+      cam.up.lerp(Up, 1 - Math.exp(-dt * 10)).normalize();
+      this.fov += (68 - this.fov) * Math.min(1, dt * 4);
     } else {
       const driftYaw = -k.drift * 0.22;
       const cy = k.yaw + driftYaw * 0.5;
@@ -1152,6 +1177,7 @@ export class RaceGame {
       const tf = 58 + boost * 8 + Math.min(6, k.speed * 0.15);
       this.fov += (tf - this.fov) * Math.min(1, dt * 4);
     }
+    if (!k.orient && cam.up.y < 0.9999) cam.up.lerp(this.v4.set(0, 1, 0), 1 - Math.exp(-dt * 6)).normalize();
     cam.position.copy(this.camPos);
     if (this.shake > 0) {
       cam.position.x += (Math.random() - 0.5) * this.shake;
@@ -1318,6 +1344,15 @@ export class RaceGame {
       if (sh !== r.shield) { r.shield = sh; this.items?.setShield(r, sh); }
       k.q = this.track.query(k.pos, k.hint);
       k.hint = k.q.i; k.s = k.q.s; k.d = k.q.d; k.surface = k.q.surface;
+      // riding a loop: orientation from the ribbon
+      const lp = c.li >= 0 ? this.track.loops[c.li] : undefined;
+      if (lp) {
+        const u = a.li === c.li ? a.lu + (c.lu - a.lu) * f : c.lu;
+        const F = this.v3, Up = this.v4, fr = this.track.loopBasis(lp, Math.min(1, u), F, Up);
+        k.orient ??= new THREE.Quaternion();
+        k.orient.setFromRotationMatrix(this.m1.makeBasis(this.v2.set(-fr.r.x, 0, -fr.r.z), Up, F));
+        k.grounded = true;
+      } else k.orient = null;
       r.dist = a.dist + (c.dist - a.dist) * f;
       r.prevS = k.s;
     }

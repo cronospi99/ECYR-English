@@ -2,7 +2,8 @@
    embankments down to the ground, barriers, ramps, the sides of the gaps, the start line and the
    animated boost pads. Everything is built from the same frames the physics uses. */
 import * as THREE from 'three';
-import { KERB, type Frame, type Track } from './track';
+import { KERB, LOOP_HW, type Frame, type Track } from './track';
+import { makeOcean } from '@/features/run/ocean';
 
 export const BASE_Y = -0.06;
 
@@ -255,7 +256,7 @@ function checkerTexture() {
   });
 }
 
-export interface TrackMeshes { group: THREE.Group; pads: THREE.ShaderMaterial }
+export interface TrackMeshes { group: THREE.Group; pads: THREE.ShaderMaterial; oceans: { uTime: { value: number } }[] }
 
 export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackStyle = CAMPUS_STYLE): TrackMeshes {
   const group = new THREE.Group();
@@ -527,5 +528,103 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
     g.setIndex(idx);
     group.add(new THREE.Mesh(g, pads));
   }
-  return { group, pads };
+  const oceans = buildLoopsAndWater(track, group, world);
+  return { group, pads, oceans };
+}
+
+/** Vertical loops (an asphalt ribbon with railings, neon edges, an outer shell and a gantry that
+    holds it) and the shallow water laid over the road in the splash zones. */
+function buildLoopsAndWater(track: Track, group: THREE.Group, world: THREE.Material) {
+  const oceans: { uTime: { value: number } }[] = [];
+  const t = new Tris(), glow = new Tris();
+  const F = new THREE.Vector3(), Up = new THREE.Vector3(), a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), d = new THREE.Vector3();
+  for (const lp of track.loops) {
+    const n = Math.ceil((Math.PI * 2 * lp.r) / 0.5), pos: number[] = [], nor: number[] = [], uv: number[] = [], idx: number[] = [];
+    const P = (u: number, dd: number, h: number, out: THREE.Vector3) => { track.loopPoint(lp, u, dd, out); track.loopBasis(lp, u, F, Up); return out.addScaledVector(Up, h); };
+    for (let k = 0; k <= n; k++) {
+      const u = k / n;
+      track.loopBasis(lp, u, F, Up);
+      for (const dd of [-LOOP_HW, LOOP_HW]) { P(u, dd, 0.035, a); pos.push(a.x, a.y, a.z); nor.push(Up.x, Up.y, Up.z); uv.push(dd < 0 ? 0.08 : 0.92, (u * Math.PI * 2 * lp.r) / 12); }
+      if (k < n) { const q = k * 2; idx.push(q, q + 2, q + 1, q + 1, q + 2, q + 3); }
+      if (k === n) break;
+      const u1 = (k + 1) / n, stripe = k % 8 < 4;
+      for (const sg of [-1, 1]) {
+        const e = sg * LOOP_HW;
+        // railing (inside), its neon top, the outer side and the shell underneath
+        t.quad(P(u, e, 0.03, a), P(u1, e, 0.03, b), P(u1, e, 0.85, c), P(u, e, 0.85, d), stripe ? 0xf5f6f8 : 0xe23b3b);
+        glow.quad(P(u, e, 0.85, a), P(u1, e, 0.85, b), P(u1, e, 0.97, c), P(u, e, 0.97, d), sg < 0 ? 0x00e5ff : 0xff2bd6);
+        t.quad(P(u, e + sg * 0.25, -0.5, a), P(u1, e + sg * 0.25, -0.5, b), P(u1, e + sg * 0.25, 0.97, c), P(u, e + sg * 0.25, 0.97, d), 0x3a4152);
+      }
+      t.quad(P(u, -LOOP_HW - 0.25, -0.5, a), P(u1, -LOOP_HW - 0.25, -0.5, b), P(u1, LOOP_HW + 0.25, -0.5, c), P(u, LOOP_HW + 0.25, -0.5, d), k % 6 === 0 ? 0xffc61a : 0x4a5263);
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    g.setIndex(idx);
+    const tex = asphaltTexture();
+    // a little self-light: the inside of the loop faces away from the sun most of the way round
+    const road = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: tex, normalMap: tex.normal, normalScale: new THREE.Vector2(0.28, 0.28), roughness: 0.8, side: THREE.DoubleSide, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.35 }));
+    road.receiveShadow = true; road.castShadow = true;
+    group.add(road);
+    // the gantry: two towers beside the loop and a beam over it, with struts to the ribbon's sides
+    // the towers stand outside the walls (karts never drive through them)
+    const f = track.frame(Math.round(lp.s / track.ds)), mid = lp.d0 + lp.shift / 2, out = f.w + KERB + f.apron + 1.4 - Math.abs(mid);
+    const box = (cx: THREE.Vector3, sx: number, sy: number, sz: number, col: number) => {
+      const cs = Math.cos(f.yaw), sn = Math.sin(f.yaw), hx = sx / 2, hz = sz / 2;
+      const Q = (x: number, y: number, z: number) => new THREE.Vector3(cx.x + x * cs + z * sn, cx.y + y, cx.z - x * sn + z * cs);
+      const lo = [Q(-hx, 0, -hz), Q(hx, 0, -hz), Q(hx, 0, hz), Q(-hx, 0, hz)], hi = [Q(-hx, sy, -hz), Q(hx, sy, -hz), Q(hx, sy, hz), Q(-hx, sy, hz)];
+      for (let k = 0; k < 4; k++) t.quad(lo[k], lo[(k + 1) % 4], hi[(k + 1) % 4], hi[k], col);
+      t.quad(hi[0], hi[1], hi[2], hi[3], col);
+    };
+    const base = side(f, mid);
+    for (const sg of [-1, 1]) {
+      const C = side(f, mid + sg * out);
+      box(C, 1.4, lp.r * 2 + 2.4, 1.4, 0x3a4152);
+      // struts to the ribbon's upright side nearest this tower (entry side left, exit side right)
+      const edge = LOOP_HW + 2.7;
+      for (const h of [lp.r * 0.6, lp.r, lp.r * 1.4]) {
+        const B = side(f, mid + sg * (out + edge) / 2);
+        B.x += f.t.x * (sg < 0 ? 1 : -1) * Math.sqrt(Math.max(0, lp.r * lp.r - (h - lp.r) ** 2));
+        B.z += f.t.z * (sg < 0 ? 1 : -1) * Math.sqrt(Math.max(0, lp.r * lp.r - (h - lp.r) ** 2));
+        B.y += h;
+        box(B, out - edge + 0.4, 0.35, 0.35, 0xffc61a);
+      }
+    }
+    base.y += lp.r * 2 + 2.4;
+    box(base, out * 2 + 1.4, 1.1, 1.6, 0x3a4152);
+  }
+  if (t.pos.length) {
+    const m = new THREE.Mesh(t.geo(), world);
+    m.castShadow = true; m.receiveShadow = true;
+    group.add(m);
+  }
+  if (glow.pos.length) {
+    const g = glow.geo();
+    const cc = g.getAttribute('color') as THREE.BufferAttribute;
+    for (let i = 0; i < cc.count; i++) cc.setXYZ(i, cc.getX(i) * 1.7, cc.getY(i) * 1.7, cc.getZ(i) * 1.7);
+    group.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, toneMapped: false, side: THREE.DoubleSide })));
+  }
+  // splash zones: a sheet of moving water over the road (foam at both ends)
+  for (const w of track.splashes) {
+    const pos: number[] = [], dep: number[] = [], idx: number[] = [];
+    const i0 = Math.round(w.s0 / track.ds), i1 = Math.round(w.s1 / track.ds);
+    for (let i = i0; i <= i1; i++) {
+      const f = track.frame(i), e = Math.min(i - i0, i1 - i) * track.ds;
+      for (const sg of [-1, 1]) { side(f, sg * (f.w + KERB + 0.4), 0.08, a); pos.push(a.x, a.y, a.z); dep.push(Math.min(0.9, 0.12 + e * 0.12)); }
+      if (i < i1) { const q = (i - i0) * 2; idx.push(q, q + 2, q + 1, q + 1, q + 2, q + 3); }
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('aDepth', new THREE.Float32BufferAttribute(dep, 1));
+    g.setIndex(idx);
+    g.computeVertexNormals();
+    const o = makeOcean({ deep: 0x1688b8, shallow: 0x4fd8e8, amp: 0.06, scale: 0.22, dir: [1, 0.3], opacity: 0.82 });
+    o.material.side = THREE.DoubleSide;
+    const m = new THREE.Mesh(g, o.material);
+    m.renderOrder = 2;
+    group.add(m);
+    oceans.push(o.uniforms);
+  }
+  return oceans;
 }

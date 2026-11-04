@@ -225,6 +225,12 @@ const SONGS: Record<string, Song> = {
   newyork: { bpm: 132, fast: 150, bass: [40, 40, 52, 43, 45, 45, 57, 47, 48, 48, 60, 50, 47, 47, 59, 50], arp: [64, 67, 71, 76, 69, 72, 76, 81, 72, 76, 79, 84, 71, 75, 78, 83], lead: 'sawtooth', bassWave: 'square', swing: true },
   // Tokyo: bright pentatonic city pop with a pad
   tokyo: { bpm: 140, fast: 158, bass: [45, 45, 57, 45, 41, 41, 53, 41, 43, 43, 55, 43, 40, 40, 52, 44], arp: [69, 72, 76, 81, 69, 72, 77, 81, 67, 71, 74, 79, 64, 68, 71, 76], lead: 'triangle', bassWave: 'sawtooth', pad: true },
+  // Splash Loops: bouncy F major summer pop
+  splash: { bpm: 148, fast: 166, bass: [41, 41, 53, 41, 46, 46, 58, 46, 43, 43, 55, 43, 48, 48, 50, 52], arp: [77, 81, 84, 89, 82, 86, 89, 94, 79, 83, 86, 91, 84, 88, 91, 96], lead: 'square', bassWave: 'triangle', swing: true },
+  // Canyon: dusty A minor with a twang
+  canyon: { bpm: 136, fast: 154, bass: [45, 45, 52, 45, 43, 43, 50, 43, 41, 41, 48, 41, 40, 40, 47, 44], arp: [69, 72, 76, 81, 67, 71, 74, 79, 65, 69, 72, 77, 64, 68, 71, 76], lead: 'sawtooth', bassWave: 'triangle' },
+  // Snow: crisp C major with a pad
+  snow: { bpm: 144, fast: 162, bass: [48, 48, 55, 48, 45, 45, 52, 45, 41, 41, 48, 41, 43, 43, 50, 47], arp: [72, 76, 79, 84, 69, 72, 76, 81, 65, 69, 72, 77, 67, 71, 74, 79], lead: 'triangle', bassWave: 'sawtooth', pad: true },
   // Rio: samba feel in D major
   rio: { bpm: 152, fast: 170, bass: [38, 38, 50, 45, 43, 43, 55, 50, 45, 45, 57, 52, 40, 40, 52, 47], arp: [74, 78, 81, 86, 79, 83, 86, 91, 76, 81, 85, 88, 71, 76, 79, 83], lead: 'triangle', bassWave: 'triangle', swing: true },
 };

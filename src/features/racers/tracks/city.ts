@@ -592,3 +592,58 @@ export function lanterns(c: City, s0: number, s1: number, every: number, colors:
   }
   c.updates.push((_, t) => { strings.forEach((s, i) => { s.mesh.position.y = Math.sin(t * 1.6 + i) * 0.08; }); });
 }
+
+/** Natural ground: a vertex-coloured plane with a height function (hills, valleys, snow, sand). */
+export function terrain(c: City, o: { cx: number; cz: number; size: number; n?: number; y: (x: number, z: number) => number; color: (x: number, z: number, y: number) => number; rough?: number }) {
+  const n = o.n ?? 170, g = new THREE.PlaneGeometry(o.size, o.size, n, n);
+  g.rotateX(-Math.PI / 2);
+  g.translate(o.cx, 0, o.cz);
+  const P = g.getAttribute('position'), col = new Float32Array(P.count * 3), cc = new THREE.Color();
+  for (let i = 0; i < P.count; i++) {
+    const x = P.getX(i), z = P.getZ(i), y = o.y(x, z);
+    P.setY(i, y);
+    const k = Math.sin(x * 0.13) * Math.cos(z * 0.11) * 0.5 + Math.sin(x * 0.037 + z * 0.041) * 0.5;
+    cc.setHex(o.color(x, z, y)).offsetHSL(0, 0, k * 0.035);
+    col.set([cc.r, cc.g, cc.b], i * 3);
+  }
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  g.computeVertexNormals();
+  const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: o.rough ?? 0.95 }));
+  m.receiveShadow = true;
+  c.group.add(m);
+  return m;
+}
+
+/** Fountain jets: drops flying in arcs from (x, y, z) — straight up, or towards (tx, tz). */
+export function fountain(c: City, x: number, y: number, z: number, opts: { n?: number; h?: number; spread?: number; to?: [number, number]; color?: number; size?: number } = {}) {
+  const n = opts.n ?? 220, h = opts.h ?? 8, sp = opts.spread ?? 0.6;
+  const seed = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) seed.set([c.rand(), c.rand(), c.rand()], i * 3);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(n * 3), 3));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 3));
+  const to = opts.to ? new THREE.Vector2(opts.to[0] - x, opts.to[1] - z) : new THREE.Vector2();
+  const col = new THREE.Color(opts.color ?? 0xdff6ff);
+  const mat = new THREE.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uH: { value: h }, uSp: { value: sp }, uTo: { value: to }, uC: { value: col }, uSize: { value: (opts.size ?? 0.28) * 320 } },
+    vertexShader: `uniform float uTime, uH, uSp, uSize; uniform vec2 uTo; attribute vec3 aSeed; varying float vA;
+      void main(){
+        float T = 2.0 * sqrt(2.0 * uH / 9.8);              // time in the air
+        float t = mod(uTime + aSeed.x * T, T), k = t / T;
+        float vy = sqrt(2.0 * 9.8 * uH) * (0.85 + aSeed.y * 0.15);
+        vec2 dir = uTo + vec2(aSeed.y - 0.5, aSeed.z - 0.5) * uSp * 4.0;
+        vec3 p = position + vec3(dir.x * k, vy * t - 4.9 * t * t, dir.y * k);
+        vec4 mv = modelViewMatrix * vec4(p, 1.0);
+        gl_Position = projectionMatrix * mv;
+        gl_PointSize = uSize * (0.6 + aSeed.z * 0.8) / -mv.z;
+        vA = 1.0 - k * 0.6;
+      }`,
+    fragmentShader: `uniform vec3 uC; varying float vA; void main(){ vec2 q = gl_PointCoord - 0.5; float d = dot(q, q); if (d > 0.25) discard; gl_FragColor = vec4(uC * (1.1 - d * 2.0), vA * (1.0 - d * 3.0)); }`,
+    transparent: true, depthWrite: false,
+  });
+  const pts = new THREE.Points(g, mat);
+  pts.position.set(x, y, z);
+  pts.frustumCulled = false;
+  c.group.add(pts);
+  c.updates.push((_, t) => { mat.uniforms.uTime.value = t; });
+}

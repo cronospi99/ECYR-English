@@ -60,6 +60,7 @@ export interface RemoteSample {
   /** Bits: 1 boost, 2 spin, 4 air, 8 shield; drift −1/0/1. */
   drift: number; flags: number;
   dist: number; fin: boolean; ft: number; bank: number; right: number; wrong: number;
+  li: number; lu: number;
 }
 
 /** Live class score: right answers, wrong answers and the coins kept. */

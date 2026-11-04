@@ -12,8 +12,11 @@ import { LONDON, LONDON_STYLE, buildLondon } from './london';
 import { NEWYORK, NEWYORK_STYLE, buildNewYork } from './newyork';
 import { TOKYO, TOKYO_STYLE, buildTokyo } from './tokyo';
 import { RIO, RIO_STYLE, buildRio } from './rio';
+import { SPLASH, SPLASH_STYLE, buildSplash } from './splash';
+import { CANYON, CANYON_STYLE, buildCanyon } from './canyon';
+import { SNOW, SNOW_STYLE, buildSnow } from './snow';
 
-export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio';
+export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio' | 'splash' | 'canyon' | 'snow';
 export interface Look {
   sky: SkyColors; fogNear: number; fogFar: number;
   sun: number; sunI: number; sunOffset: [number, number, number];
@@ -125,6 +128,39 @@ export const TRACKS: TrackInfo[] = [
       envGround: 0x2a8fb8, envI: 0.7, exposure: 1.03, bloom: [0.48, 0.35, 1.1], dust: [0.86, 0.78, 0.58], water: true,
     },
     build: buildRio,
+  },
+  {
+    id: 'splash', def: SPLASH, style: SPLASH_STYLE, color: '#00d2ff',
+    name: { en: 'Splash Loops', es: 'Rizos de Agua' },
+    desc: { en: 'Six 360° loops (two big, four in a row) and every landing splashes into water', es: 'Seis vueltas de 360° (dos grandes y cuatro seguidas) y cada aterrizaje cae al agua' },
+    look: {
+      sky: { top: 0x1786e6, mid: 0x6fd0ff, horizon: 0xeafcff, fog: 0xd2f0fb, sun: [0.35, 0.6, 0.55], sunGlow: 1.3 }, fogNear: 280, fogFar: 1400,
+      sun: 0xfff4dc, sunI: 3.0, sunOffset: [35, 75, 35], hemiSky: 0xdaf4ff, hemiGround: 0x9ccf7a, hemiI: 0.95,
+      envGround: 0x2aa0c8, envI: 0.75, exposure: 1.03, bloom: [0.5, 0.36, 1.05], dust: [0.86, 0.8, 0.6], water: true,
+    },
+    build: buildSplash,
+  },
+  {
+    id: 'canyon', def: CANYON, style: CANYON_STYLE, color: '#ff7a1a',
+    name: { en: 'Canyon Run', es: 'Cañón' },
+    desc: { en: 'From a student\'s drawing: a long straight, two fingers down into the canyon and three humps', es: 'De un dibujo: una gran recta, dos dedos que bajan al cañón y tres jorobas' },
+    look: {
+      sky: { top: 0x3a7fd0, mid: 0x9cc8f0, horizon: 0xffe0b0, fog: 0xf0d2a8, sun: [0.5, 0.5, 0.5], sunGlow: 1.4 }, fogNear: 260, fogFar: 1300,
+      sun: 0xffe6c0, sunI: 3.0, sunOffset: [45, 70, 30], hemiSky: 0xffe8cc, hemiGround: 0xb5502e, hemiI: 0.9,
+      envGround: 0xb5602e, envI: 0.65, exposure: 1.02, bloom: [0.45, 0.35, 1.1], dust: [0.82, 0.6, 0.42], water: false,
+    },
+    build: buildCanyon,
+  },
+  {
+    id: 'snow', def: SNOW, style: SNOW_STYLE, color: '#7fd3ff',
+    name: { en: 'Snow Peak', es: 'Pico Nevado' },
+    desc: { en: 'From a student\'s drawing: the long left straight, a twisty cup, a fast spine, a hairpin finger and waves', es: 'De un dibujo: la gran recta de la izquierda, una copa de curvas, la espina rápida, un dedo en horquilla y ondas' },
+    look: {
+      sky: { top: 0x3f7fd8, mid: 0xa8d0f4, horizon: 0xf2f8ff, fog: 0xe4eef8, sun: [0.4, 0.45, 0.6], sunGlow: 1.1 }, fogNear: 220, fogFar: 1200,
+      sun: 0xffffff, sunI: 2.6, sunOffset: [40, 70, 40], hemiSky: 0xe8f2ff, hemiGround: 0xc8d4e2, hemiI: 1.05,
+      envGround: 0xdde6f0, envI: 0.8, exposure: 0.98, bloom: [0.4, 0.35, 1.15], dust: [0.95, 0.97, 1.0], water: false,
+    },
+    build: buildSnow,
   },
 ];
 

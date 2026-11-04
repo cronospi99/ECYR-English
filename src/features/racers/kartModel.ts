@@ -273,7 +273,8 @@ export class KartView {
       const pitch = -Math.atan2(k.vel.y, Math.max(6, k.speed)) * 0.55;
       this.qc.copy(this.qa).multiply(this.qb.setFromAxisAngle(this.ax, pitch));
     }
-    this.root.quaternion.slerp(this.qc, 1 - Math.exp(-dt * (k.grounded ? 16 : 5)));
+    if (k.orient) this.qc.copy(k.orient); // riding a loop: the ribbon decides
+    this.root.quaternion.slerp(this.qc, 1 - Math.exp(-dt * (k.orient ? 40 : k.grounded ? 16 : 5)));
 
     // body: drift angle, lean, pitch, squash, kerb rumble, trick roll
     this.driftYaw += (-k.drift * 0.38 - this.driftYaw) * Math.min(1, dt * 7);
