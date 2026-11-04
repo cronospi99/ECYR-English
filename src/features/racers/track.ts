@@ -21,8 +21,9 @@ export type Feature =
   | { kind: 'ramp'; at: number; off: number; len: number; h: number }
   | { kind: 'gap'; at: number; off: number; len: number }
   | { kind: 'boost'; at: number; off: number; d: number; len?: number; w?: number }
-  /** A vertical 360° loop of radius r (the road must be straight there and ≥ 15 m wide). */
-  | { kind: 'loop'; at: number; off: number; r: number }
+  /** A 360° loop of radius r (the road must be straight there and ≥ 15 m wide); `tilt` (rad, + = to
+      the right) leans its top over to one side. */
+  | { kind: 'loop'; at: number; off: number; r: number; tilt?: number }
   /** Shallow water over the road (spray, a little drag). */
   | { kind: 'splash'; at: number; off: number; len: number };
 
@@ -50,6 +51,69 @@ export interface TrackDef {
   clear?: (Spot & { len: number })[];
   /** Lines of coins: n coins every `gap` m (default 3.5) at lateral d, drifting by `dd` per coin. */
   coins?: (Spot & { d: number; n: number; gap?: number; dd?: number })[];
+  /** Descending spirals (filled in by `withSpiral`): the centre of each loop, its radius and the
+      road height at its top, for the scenery (a peak in the middle). */
+  spirals?: { x: number; z: number; r: number; top: number }[];
+}
+
+/** A descending spiral: the road swings out to one side, winds once round a circle while dropping
+    `drop` metres, passes under its own way in on a bridge and carries on along the same line. */
+export interface SpiralOpts {
+  /** +1 winds to the left of the direction of travel, −1 to the right. */
+  side: 1 | -1;
+  drop: number;
+  /** Swing-out angle (deg), its radius, the straight bits and the loop's radius (m). */
+  a?: number; r1?: number; s1?: number; R?: number;
+  /** Control points before the spiral over which the road climbs to the top. */
+  climb?: number;
+}
+/** The track with a descending spiral after control point `at` (the road must run straight there
+    for ~60 m); later features, items, gates and coins keep their places. */
+export function withSpiral(def: TrackDef, at: number, o: SpiralOpts): TrackDef {
+  const cps = def.cps, n = cps.length;
+  const A = cps[at], B = cps[at + 1];
+  const tl = Math.hypot(B.x - A.x, B.z - A.z), ux = (B.x - A.x) / tl, uz = (B.z - A.z) / tl;
+  const lx = -uz * o.side, lz = ux * o.side; // the side the loop goes to
+  const a = ((o.a ?? 40) * Math.PI) / 180, r1 = o.r1 ?? 30, s1 = o.s1 ?? 30, R = o.R ?? 26;
+  // the centre line, by integrating the curvature: swing out, straight, round the loop, straight, back
+  const segs: [number, number][] = [[1 / r1, a * r1], [0, s1], [1 / R, (Math.PI * 2 - 2 * a) * R], [0, s1], [1 / r1, a * r1]];
+  const pts: { u: number; v: number; s: number }[] = [{ u: 0, v: 0, s: 0 }];
+  let u = 0, v = 0, h = 0, sAcc = 0, cu = 0, cv = 0;
+  segs.forEach(([k, len], si) => {
+    const m = Math.max(1, Math.round(len)), d = len / m;
+    for (let i = 0; i < m; i++) { h += k * d; u += Math.cos(h) * d; v += Math.sin(h) * d; sAcc += d; pts.push({ u, v, s: sAcc }); }
+    if (si === 2) { cu = u - Math.sin(h) * R; cv = v + Math.cos(h) * R; }
+  });
+  const total = sAcc, end = u;
+  // control points on the straight that the spiral replaces
+  let m = 0;
+  while (at + 1 + m < n - 1) { const c = cps[at + 1 + m]; if ((c.x - A.x) * ux + (c.z - A.z) * uz < end + 8) m++; else break; }
+  const yA = A.y ?? 0, yEnd = cps[at + 1 + m].y ?? 0;
+  const climb = o.climb ?? 10;
+  const sm = (t: number) => t * t * (3 - 2 * t);
+  const out: CP[] = cps.slice(0, at + 1).map((c, i) => {
+    const k = i - (at - climb);
+    return k > 0 ? { ...c, y: (c.y ?? 0) + o.drop * sm(Math.min(1, k / climb)) } : { ...c };
+  });
+  const step = 9, sp: CP[] = [];
+  for (let d = step; d < total - step * 0.6; d += step) {
+    const p = pts[Math.min(pts.length - 1, Math.round((d / total) * (pts.length - 1)))];
+    const f = p.s / total;
+    sp.push({ x: A.x + ux * p.u + lx * p.v, z: A.z + uz * p.u + lz * p.v, y: yA + o.drop + (yEnd - yA - o.drop) * f, w: A.w, apron: Math.min(A.apron ?? 6, 1.5), wall: true });
+  }
+  const shift = sp.length - m;
+  const re = (i: number) => (i <= at ? i : i <= at + m ? at : i + shift);
+  const top = yA + o.drop;
+  return {
+    ...def,
+    cps: [...out, ...sp, ...cps.slice(at + 1 + m)],
+    features: def.features.map((f) => ({ ...f, at: re(f.at) })),
+    items: def.items?.map((x) => ({ ...x, at: re(x.at) })),
+    gates: def.gates?.map((x) => ({ ...x, at: re(x.at) })),
+    clear: [...(def.clear ?? []).map((x) => ({ ...x, at: re(x.at) })), { at, off: -10, len: total + 30 }],
+    coins: def.coins?.map((x) => ({ ...x, at: re(x.at) })),
+    spirals: [...(def.spirals ?? []), { x: A.x + ux * cu + lx * cv, z: A.z + uz * cu + lz * cv, r: R, top }],
+  };
 }
 
 export interface Frame {
@@ -67,14 +131,17 @@ export interface Frame {
   /** Signed curvature (rad/m, + = turning left). */
   curv: number;
   yaw: number;
+  /** Over another stretch of road (a bridge: no embankment underneath). */
+  bridge: boolean;
 }
 
 export interface Ramp { s0: number; s1: number; h: number }
 export interface Gap { s0: number; s1: number }
 export interface Pad { s0: number; s1: number; d: number; hw: number }
 /** A vertical loop: the ribbon starts and ends at s, entering on the left lane (d0) and leaving on
-    the right one (d0 + shift), so its two ends sit side by side. */
-export interface Loop { s: number; r: number; d0: number; shift: number }
+    the right one (d0 + shift), so its two ends sit side by side. A tilted loop leans over to one side
+    (most at the top, none at its feet). */
+export interface Loop { s: number; r: number; d0: number; shift: number; tilt: number }
 export const LOOP_HW = 3.2;
 
 /** What is under a point. */
@@ -139,7 +206,7 @@ export class Track {
       const s = i * this.ds;
       while (j < dense.length - 2 && dense[j + 1].len < s) j++;
       const A = dense[j], B = dense[j + 1], f = (s - A.len) / Math.max(1e-6, B.len - A.len);
-      this.frames.push({ s, p: A.p.clone().lerp(B.p, f), t: new THREE.Vector3(), r: new THREE.Vector3(), slope: 0, bank: 0, w: A.w + (B.w - A.w) * f, apron: A.apron + (B.apron - A.apron) * f, wall: (f < 0.5 ? A.wall : B.wall) === 1, curv: 0, yaw: 0 });
+      this.frames.push({ s, p: A.p.clone().lerp(B.p, f), t: new THREE.Vector3(), r: new THREE.Vector3(), slope: 0, bank: 0, w: A.w + (B.w - A.w) * f, apron: A.apron + (B.apron - A.apron) * f, wall: (f < 0.5 ? A.wall : B.wall) === 1, curv: 0, yaw: 0, bridge: false });
     }
     const F = this.frames;
     for (let i = 0; i < N; i++) {
@@ -164,6 +231,19 @@ export class Track {
     // a banked road pivots on its low edge (raised, never sunk into the ground), then the slope
     for (const f of F) f.p.y += Math.abs(f.bank) * (f.w + KERB);
     for (let i = 0; i < N; i++) F[i].slope = (F[(i + 1) % N].p.y - F[(i - 1 + N) % N].p.y) / (2 * this.ds);
+    // bridges: stretches that pass over another stretch of road (a spiral's way in)
+    const reach = (f: Frame) => f.w + KERB + f.apron + 1.5;
+    const over: number[] = [];
+    for (let i = 0; i < N; i += 2) {
+      const a = F[i];
+      for (let j = 0; j < N; j += 2) {
+        const b = F[j], along = Math.abs(a.s - b.s);
+        if (Math.min(along, len - along) < 40 || b.p.y > a.p.y - 4) continue;
+        const dx = a.p.x - b.p.x, dz = a.p.z - b.p.z, r = reach(a) + reach(b) + 2;
+        if (dx * dx + dz * dz < r * r) { over.push(i); break; }
+      }
+    }
+    for (const i of over) for (let k = -8; k <= 8; k++) F[(i + k + N) % N].bridge = true;
     // features snap to whole frames, so the meshes and the physics agree to the centimetre
     const at = (cp: number, off: number) => ((Math.round((this.cpS[cp] + off) / this.ds) * this.ds % len) + len) % len;
     const span = (l: number) => Math.max(1, Math.round(l / this.ds)) * this.ds;
@@ -171,7 +251,7 @@ export class Track {
       const s0 = at(f.at, f.off);
       if (f.kind === 'ramp') this.ramps.push({ s0, s1: s0 + span(f.len), h: f.h });
       else if (f.kind === 'gap') this.gaps.push({ s0, s1: s0 + span(f.len) });
-      else if (f.kind === 'loop') this.loops.push({ s: s0, r: f.r, d0: -3.9, shift: 7.8 });
+      else if (f.kind === 'loop') this.loops.push({ s: s0, r: f.r, d0: -3.9, shift: 7.8, tilt: f.tilt ?? 0 });
       else if (f.kind === 'splash') this.splashes.push({ s0, s1: s0 + span(f.len) });
       else this.pads.push({ s0, s1: s0 + (f.len ?? 7), d: f.d, hw: (f.w ?? 3) / 2 });
     }
@@ -232,17 +312,28 @@ export class Track {
   loopPoint(lp: Loop, u: number, d: number, out = new THREE.Vector3()) {
     const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2, sm = u * u * (3 - 2 * u);
     this.pointAt(lp.s, 0, out);
-    const side = lp.d0 + lp.shift * sm + d;
-    out.x += f.t.x * Math.sin(a) * lp.r + f.r.x * side;
-    out.z += f.t.z * Math.sin(a) * lp.r + f.r.z * side;
-    out.y += lp.r * (1 - Math.cos(a));
+    const side = lp.d0 + lp.shift * sm + d, h = lp.r * (1 - Math.cos(a)), fw = lp.r * Math.sin(a);
+    // the loop's plane turns about the road's centre line by the tilt (up → up·cos + right·sin)
+    const T = lp.tilt * Math.sin(Math.PI * u), ct = Math.cos(T), st = Math.sin(T);
+    out.x += f.t.x * fw + f.r.x * (st * h + ct * side);
+    out.z += f.t.z * fw + f.r.z * (st * h + ct * side);
+    out.y += ct * h - st * side;
     return out;
   }
+  private _la = new THREE.Vector3(); private _lb = new THREE.Vector3();
   /** The loop's frame at u: forward along the ribbon and up (towards the loop's centre). */
   loopBasis(lp: Loop, u: number, fwd: THREE.Vector3, up: THREE.Vector3) {
     const f = this.frame(Math.round(lp.s / this.ds)), a = u * Math.PI * 2;
-    fwd.set(f.t.x * Math.cos(a), Math.sin(a), f.t.z * Math.cos(a));
-    up.set(-f.t.x * Math.sin(a), Math.cos(a), -f.t.z * Math.sin(a));
+    if (!lp.tilt) {
+      fwd.set(f.t.x * Math.cos(a), Math.sin(a), f.t.z * Math.cos(a));
+      up.set(-f.t.x * Math.sin(a), Math.cos(a), -f.t.z * Math.sin(a));
+      return f;
+    }
+    const e = 0.002;
+    fwd.subVectors(this.loopPoint(lp, u + e, 0, this._la), this.loopPoint(lp, u - e, 0, this._lb)).normalize();
+    const T = lp.tilt * Math.sin(Math.PI * u), ct = Math.cos(T), st = Math.sin(T), sa = Math.sin(a), ca = Math.cos(a);
+    up.set(-f.t.x * sa + f.r.x * st * ca, ct * ca, -f.t.z * sa + f.r.z * st * ca);
+    up.addScaledVector(fwd, -up.dot(fwd)).normalize();
     return f;
   }
   padAt(s: number, d: number) { return this.pads.some((p) => this.inRange(s, p.s0, p.s1) >= 0 && Math.abs(d - p.d) <= p.hw); }

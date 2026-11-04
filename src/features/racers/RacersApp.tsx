@@ -133,11 +133,39 @@ export default function RacersApp() {
 }
 
 /** The 3D game screen: solo (menu, race, results, podium), or a student's game in the live class mode. */
+/** A white flash with a red rim (a big hit), or blots of ink running down the screen. */
+function SplatOverlay({ kind }: { kind: 'ink' | 'hit' }) {
+  const [blots] = useState(() => Array.from({ length: kind === 'ink' ? 6 : 0 }, (_, i) => ({ x: 8 + ((i * 37 + Math.random() * 30) % 84), y: 10 + ((i * 53 + Math.random() * 40) % 70), s: 120 + Math.random() * 160, r: Math.random() * 360, d: i * 0.04 })));
+  if (kind === 'hit') return (
+    <motion.div className="pointer-events-none absolute inset-0 z-30" initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.45, ease: 'easeOut' }}
+      style={{ background: 'radial-gradient(circle at 50% 55%, rgba(255,255,255,.85) 0%, rgba(255,240,200,.35) 35%, rgba(255,40,40,.45) 85%)' }} />
+  );
+  return (
+    <div className="pointer-events-none absolute inset-0 z-30 overflow-hidden">
+      {blots.map((b, i) => (
+        <motion.svg key={i} viewBox="-60 -60 120 160" className="absolute" style={{ left: `${b.x}%`, top: `${b.y}%`, width: b.s, height: b.s * 1.33, marginLeft: -b.s / 2, marginTop: -b.s / 2 }}
+          initial={{ scale: 0.2, opacity: 0, rotate: b.r }} animate={{ scale: [0.2, 1.15, 1], opacity: [0, 0.96, 0.96, 0], y: [0, 0, 26] }}
+          transition={{ duration: 2.5, times: [0, 0.08, 0.7, 1], delay: b.d, ease: 'easeOut' }}>
+          <g fill="#14123f">
+            <circle r="34" />
+            {Array.from({ length: 9 }, (_, k) => { const a = (k / 9) * Math.PI * 2 + i; const d = 30 + ((k * 7 + i * 3) % 12); return <circle key={k} cx={Math.cos(a) * d} cy={Math.sin(a) * d} r={8 + ((k * 5 + i) % 9)} />; })}
+            {Array.from({ length: 6 }, (_, k) => { const a = (k / 6) * Math.PI * 2 + i * 0.7; return <circle key={'d' + k} cx={Math.cos(a) * 52} cy={Math.sin(a) * 52} r={3 + (k % 3) * 2} />; })}
+            <rect x="-6" y="20" width="9" height={40 + (i % 3) * 18} rx="4.5" />
+            <rect x="12" y="18" width="7" height={26 + (i % 2) * 20} rx="3.5" />
+          </g>
+          <ellipse cx="-12" cy="-14" rx="10" ry="6" fill="#3a36a0" opacity="0.6" />
+        </motion.svg>
+      ))}
+    </div>
+  );
+}
+
 function RaceScreen({ client }: { client?: RacersClient }) {
   const host = useRef<HTMLDivElement>(null);
   const [game, setGame] = useState<RaceGame | null>(null);
   const [hud, setHud] = useState<Hud | null>(null);
   const [toasts, setToasts] = useState<Toast[]>([]);
+  const [splat, setSplat] = useState<{ id: number; kind: 'ink' | 'hit' } | null>(null);
   const [toon, setToon] = useState(initialToon);
   const [err, setErr] = useState(false);
   const [, force] = useState(0);
@@ -170,6 +198,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
         client.onPodium = (tot) => { if (client.cfg) gg.livePodium(tot); };
         if (client.racing) gg.startLive(client.cfg!, client.peer);
       }
+      g.onSplat = (kind) => { const id = Date.now() + Math.random(); setSplat({ id, kind }); setTimeout(() => setSplat((x) => (x?.id === id ? null : x)), kind === 'ink' ? 2600 : 450); };
       g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), 1900); };
       setGame(g);
       if (import.meta.env.DEV) (window as unknown as { __racers: unknown }).__racers = g;
@@ -401,6 +430,9 @@ function RaceScreen({ client }: { client?: RacersClient }) {
           {touchUi && <div className="mt-1 text-[14px] font-extrabold text-white [text-shadow:0_2px_0_#10204a]">{gas === 'auto' ? t('Hold DRIFT as the last light goes out: rocket start!', 'Mantén DERRAPE cuando se apague la última luz: ¡salida turbo!') : t('Hold GO as the last light goes out: rocket start!', 'Mantén ACELERAR cuando se apague la última luz: ¡salida turbo!')}</div>}
         </div>
       )}
+
+      {/* hit flash and ink over the screen */}
+      {splat && <SplatOverlay key={splat.id} kind={splat.kind} />}
 
       {/* toasts */}
       <div className="pointer-events-none absolute top-[36%] left-1/2 flex -translate-x-1/2 flex-col items-center gap-1">

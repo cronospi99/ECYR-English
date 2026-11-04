@@ -88,7 +88,7 @@ export class Kart {
     this.vel.set(0, 0, 0);
     this.hint = -1;
     this.grounded = true;
-    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false; this.slowT = 0;
+    this.drift = 0; this.driftT = 0; this.tier = 0; this.boostT = 0; this.spinT = 0; this.tumbleT = 0; this.trick = false; this.airT = 0; this.falling = false; this.hopping = false; this.wantDrift = false; this.slowT = 0;
     this.loop = null; this.orient = null;
     this.q = tr.query(this.pos, -1);
     this.hint = this.q.i; this.s = this.q.s; this.d = this.q.d; this.safeS = this.s;
@@ -104,6 +104,20 @@ export class Kart {
   }
 
   spin(secs = 0.9) { this.spinT = secs; this.drift = 0; this.tier = 0; this.events.push({ e: 'spin' }); }
+  /** Barrel roll left after a big hit (seconds, for the model), and which way it rolls. */
+  tumbleT = 0;
+  tumbleDir = 1;
+  /** A big hit: most of the speed gone, spinning, and (up > 0) thrown up in the air rolling over. */
+  knock(up: number, keep: number, secs: number, side = 0) {
+    this.spin(secs);
+    this.vel.x *= keep; this.vel.z *= keep;
+    if (side) { this.vel.x += Math.cos(this.yaw) * side; this.vel.z -= Math.sin(this.yaw) * side; }
+    if (up > 0 && !this.loop && !this.falling) {
+      this.vel.y = up; this.grounded = false; this.hopping = false; this.wantDrift = false;
+      this.airT = 0; this.trick = false; this.launch = 0;
+      this.tumbleT = Math.min(0.9, (2 * up) / KART.gravity + 0.05); this.tumbleDir = Math.random() < 0.5 ? -1 : 1;
+    }
+  }
 
   step(dt: number, inp: KartInput) {
     const K = KART;
@@ -119,6 +133,7 @@ export class Kart {
     const control = this.spinT <= 0;
     this.boostT = Math.max(0, this.boostT - dt);
     this.spinT = Math.max(0, this.spinT - dt);
+    this.tumbleT = Math.max(0, this.tumbleT - dt);
     this.slowT = Math.max(0, this.slowT - dt);
     this.wallCd -= dt;
     const v0 = vf;
@@ -302,7 +317,7 @@ export class Kart {
     tr.loopPoint(lp, u, d, this.pos);
     const F = Kart._f, Up = Kart._u, X = Kart._x;
     const f = tr.loopBasis(lp, u, F, Up);
-    X.set(-f.r.x, 0, -f.r.z);
+    X.crossVectors(Up, F).normalize();
     this.orient!.setFromRotationMatrix(Kart._m.makeBasis(X, Up, F));
     this.vel.copy(F).multiplyScalar(this.loopV);
     this.yaw = f.yaw; this.s = lp.s; this.yawRate = 0; this.accelNow = 0;

@@ -14,8 +14,8 @@ import { birds, boats, building, bunting, city, crowd, done, fillGrid, gridLanes
 export const NEWYORK: TrackDef = {
   id: 'newyork', name: 'Big Apple Dash', laps: 3, waterY: -3,
   cps: [
-    { x: 0, z: -90 }, { x: 0, z: -20 }, { x: 4, z: 40 }, { x: 10, z: 80 }, { x: 34, z: 106, apron: 5 }, { x: 30, z: 140, apron: 5 }, { x: 50, z: 175, apron: 5 }, { x: 90, z: 192 }, { x: 128, z: 185 }, { x: 150, z: 160 },
-    { x: 152, z: 100 }, { x: 152, z: 20 }, { x: 150, z: -60 }, { x: 138, z: -105 }, { x: 110, z: -135, y: 2, apron: 2 }, { x: 75, z: -145, y: 5, apron: 1.5 }, { x: 35, z: -145, y: 5, apron: 1.5 }, { x: 8, z: -138, y: 2, apron: 2 }, { x: -6, z: -120 },
+    { x: 0, z: -90 }, { x: 0, z: -20 }, { x: 4, z: 40 }, { x: 10, z: 80 }, { x: 29, z: 107.4, apron: 5 }, { x: 30, z: 140, apron: 5 }, { x: 50, z: 175, apron: 5 }, { x: 90, z: 192 }, { x: 128, z: 185 }, { x: 150, z: 160 },
+    { x: 152, z: 100 }, { x: 152, z: 20 }, { x: 150, z: -60 }, { x: 138, z: -105 }, { x: 110, z: -135, y: 2, apron: 2 }, { x: 75, z: -145, y: 5, apron: 1.5 }, { x: 35, z: -145, y: 5, apron: 1.5 }, { x: 8, z: -138, y: 2, apron: 2 }, { x: -4, z: -119 },
   ],
   features: [
     { kind: 'boost', at: 0, off: 30, d: -2.5 },

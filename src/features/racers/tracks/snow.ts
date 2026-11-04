@@ -5,17 +5,19 @@
    down the slopes, skaters on a frozen lake, cabins with smoking chimneys, snowmen and falling snow. */
 import * as THREE from 'three';
 import { Geo, U, shade } from '@/features/run/gfx';
-import { KERB, type CP, type Track, type TrackDef } from '../track';
+import { KERB, withSpiral, type CP, type Track, type TrackDef } from '../track';
 import { side, type TrackStyle } from '../trackMesh';
 import { billboards, cloudRing, startGantry, type Scenery } from '../scenery';
 import { birds, bunting, city, crowd, done, fallers, lamps, roadsideSpots, strollers, terrain, walkers } from './city';
 
-const PTS: [number, number][] = [[-147,18.1],[-147,6.1],[-147.1,-5.9],[-147.3,-17.9],[-147.4,-29.9],[-147.6,-41.9],[-147.7,-53.9],[-147.8,-65.9],[-147.9,-77.9],[-147.9,-89.9],[-147.3,-101.8],[-145.4,-113.5],[-141.4,-124.1],[-134.5,-131.6],[-125.5,-133.5],[-117.1,-129],[-111.6,-119.9],[-109.2,-108.7],[-108.9,-96.8],[-109.5,-84.9],[-110.4,-72.9],[-111.3,-61],[-112,-49],[-112,-37],[-110.9,-25.4],[-107.4,-15],[-100.7,-8.6],[-92.5,-8.8],[-85.2,-15.3],[-78.7,-23.9],[-70.6,-29.6],[-60.7,-30.5],[-50.6,-30.3],[-42.5,-34.1],[-39.3,-42.6],[-41.7,-52.4],[-48.7,-60.7],[-58,-67.1],[-66.4,-74],[-70.9,-83],[-69.4,-92.6],[-62.5,-99.9],[-52.5,-102.9],[-41.9,-101.3],[-32.8,-95.3],[-26.2,-86.1],[-21.1,-75.5],[-16,-64.7],[-10.4,-54.2],[-3.6,-44.5],[4.7,-36.3],[14.6,-30],[25.6,-25.8],[37.2,-23.5],[49.1,-22.7],[61.1,-22.7],[73,-22.8],[85,-22.5],[96.9,-22],[108.6,-22.4],[119.2,-25.6],[127.1,-32.7],[131.5,-42.8],[133,-54.3],[133.3,-66.1],[134.7,-77.3],[138.8,-85.4],[145.5,-86.7],[151.9,-80.7],[156.2,-70.6],[158.3,-59],[159,-47.1],[158.8,-35.1],[158.7,-23.1],[158.8,-11.1],[159.1,0.9],[159.5,12.8],[160,24.8],[160.7,36.8],[161.5,48.8],[162.1,60.7],[162.1,72.7],[160.8,84.4],[157.5,94.9],[152,101.4],[145.6,100.4],[140.7,92.6],[138.1,81.6],[136.9,69.8],[135.9,57.9],[133.6,46.9],[128.4,39],[120.4,37.4],[111.6,41.4],[102.2,45.7],[91.8,46.8],[80.8,46.8],[69.8,48.9],[59,50.9],[48.1,49.9],[37.2,47.3],[26,46.1],[14.9,45.3],[4.2,42.2],[-6.2,38.8],[-15.9,39.1],[-22.5,45.2],[-24.9,55.3],[-25.1,66.8],[-26.2,78],[-30.8,86.6],[-38.4,89.6],[-45.8,85.5],[-50.2,76.3],[-51.8,64.9],[-53.5,53.7],[-57.9,45.1],[-65.6,42.3],[-74.6,45.8],[-83.1,53.1],[-90,62.2],[-94.3,72.9],[-96.1,84.5],[-96.6,96.4],[-97.1,108.4],[-98.7,120.1],[-102.3,131],[-108.8,140],[-118,145.3],[-128.4,145.5],[-137.9,140.8],[-144.9,132.3],[-148.8,121.5],[-150.3,109.8],[-150.5,97.9],[-150.1,85.9],[-149.4,74],[-148.6,62],[-147.8,50],[-147.3,38],[-147,26.1]];
+const PTS: [number, number][] = [[-176.4,21.7],[-176.4,7.3],[-176.5,-7.1],[-176.8,-21.5],[-176.9,-35.9],[-177.1,-50.3],[-177.2,-64.7],[-177.4,-79.1],[-177.5,-93.5],[-177.5,-107.9],[-176.8,-122.2],[-174.5,-136.2],[-168.2,-145.2],[-160,-149.5],[-151.4,-150.4],[-143,-147.3],[-135.6,-141.1],[-131,-130.4],[-130.7,-116.2],[-131.4,-101.9],[-132.5,-87.5],[-133.6,-73.2],[-134.4,-58.8],[-134.4,-44.4],[-131.4,-33],[-125.5,-25.8],[-118.4,-21.3],[-110.5,-20.5],[-102.4,-22.8],[-94.4,-28.7],[-84.4,-34.6],[-72.8,-36.6],[-65,-40.5],[-58.9,-46.2],[-55.9,-53.8],[-56,-62.5],[-60.4,-71.7],[-69.6,-80.5],[-76.2,-89.4],[-78.4,-99],[-76.4,-108.2],[-70.5,-115.7],[-61.6,-120.6],[-50.3,-120.5],[-39.4,-114.4],[-31.4,-103.3],[-23.7,-91.6],[-17.4,-78.3],[-12.5,-65],[-4.3,-53.4],[5.6,-43.6],[17.5,-36],[30.7,-31],[44.6,-28.2],[58.9,-27.2],[73.3,-27.2],[87.6,-27.4],[102,-27],[116.3,-26.4],[130.3,-26.9],[142.4,-31.4],[150.2,-40.3],[152.9,-51.9],[153.9,-65.5],[156.3,-76],[161.8,-83.3],[168.6,-87.7],[175.8,-88.6],[183.2,-86],[190.3,-80.5],[194.8,-70.4],[194.9,-56.3],[193.4,-41.7],[190.5,-27.7],[190.6,-13.3],[190.9,1.1],[191.4,15.4],[192,29.8],[192.8,44.2],[196.2,57.9],[198.8,72.3],[199.6,86.4],[195.8,96.8],[189.3,102.8],[182.2,106],[175,105.6],[167.9,101.8],[161.8,94.8],[158.5,84.4],[156.6,70.7],[153.5,62.4],[148.2,56.1],[141,52.8],[132.7,52.2],[122.6,54.8],[110.2,56.2],[97,56.2],[83.8,58.7],[70.8,61.1],[57.7,59.9],[44.6,56.8],[31.2,55.3],[17.9,54.4],[5,50.6],[-6.8,48.3],[-16.9,50.4],[-24.5,56.8],[-28.9,66.4],[-29.4,76.8],[-33.9,86],[-40.3,91.3],[-47.6,93.3],[-55.4,91.7],[-62.8,87],[-68.4,78.6],[-71.3,70.9],[-76.4,65],[-83.3,62.1],[-91.6,62.2],[-100.3,65.9],[-108,74.6],[-113.2,87.5],[-115.3,101.4],[-115.9,115.7],[-116.5,130.1],[-118.4,144.1],[-122.8,157.2],[-130.6,168],[-141.6,174.4],[-154.1,174.6],[-165.5,169],[-173.9,158.8],[-178.6,145.8],[-180.4,131.8],[-180.6,117.5],[-180.1,103.1],[-179.3,88.8],[-178.3,74.4],[-177.4,60],[-176.8,45.6],[-176.4,31.3]];
+/** The layout was scaled up by SC (and its tightest curves opened) after drawing; heights keep the drawing's coordinates. */
+const SC = 1.2;
 const roadH = (x: number, z: number) => 3 + 4 * Math.sin(x * 0.011 + 0.6) * Math.cos(z * 0.009);
 
-export const SNOW: TrackDef = {
+export const SNOW: TrackDef = withSpiral({
   id: 'snow', name: 'Snow Peak', laps: 2, waterY: -30,
-  cps: PTS.map(([x, z]) => ({ x, z, y: roadH(x, z), w: 6.5, apron: 3 } as CP)),
+  cps: PTS.map(([x, z]) => ({ x, z, y: roadH(x / SC, z / SC), w: 6.5, apron: 3 } as CP)),
   features: [
     { kind: 'boost', at: 6, off: 0, d: 0 },
     { kind: 'boost', at: 60, off: 0, d: -2 },
@@ -28,7 +30,7 @@ export const SNOW: TrackDef = {
     { at: 3, off: 0, d: 2, n: 5 }, { at: 30, off: 0, d: 0, n: 5 }, { at: 48, off: 0, d: -2, n: 5 }, { at: 70, off: 0, d: 1.5, n: 5, dd: -0.6 },
     { at: 96, off: 0, d: 0, n: 5 }, { at: 110, off: 0, d: -2, n: 5 }, { at: 134, off: 0, d: 2, n: 5 },
   ],
-};
+}, 134, { side: -1, drop: 13 });
 
 export const SNOW_STYLE: TrackStyle = { road: 'asphalt', kerb: [0xd32f2f, 0xf4f4f2], apron: [0xf2f6fb, 0xe8eef6], wall: 'barrier', edge: 'bank', bank: 0xdfe8f2, gapFace: 0xb9c4d0, baseY: -24 };
 
@@ -36,8 +38,14 @@ export function buildSnow(track: Track): Scenery {
   const c = city(track, 1924);
   const { world, glossy, group, rand } = c;
   const F = track.frames, sparse = F.filter((_, i) => i % 3 === 0);
-  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y - Math.abs(f0.bank) * (f0.w + KERB) - 0.35 }; };
-  const lake = { x: 40, z: 40, r: 26 };
+  // (under a bridge the ground follows the lower road)
+  const nearest = (x: number, z: number) => {
+    let best = Infinity, f0 = sparse[0], low: typeof f0 | null = null;
+    for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } if (d < f.w + KERB + f.apron + 5 && (!low || f.p.y < low.p.y)) low = f; }
+    const g = low ?? f0;
+    return { d: best - (f0.w + KERB + f0.apron), y: g.p.y - Math.abs(g.bank) * (g.w + KERB) - 0.35 };
+  };
+  const lake = { x: 40 * SC, z: 40 * SC, r: 26 };
   const hills = (x: number, z: number) => 6 * Math.sin(x * 0.018) * Math.cos(z * 0.021) + 10 + Math.max(0, Math.hypot(x, z * 1.2) - 220) * 0.35;
   const ground = (x: number, z: number) => {
     const n = nearest(x, z), lk = Math.hypot(x - lake.x, z - lake.z);
@@ -79,8 +87,17 @@ export function buildSnow(track: Track): Scenery {
     if (n.d < 4 || Math.hypot(x - lake.x, z - lake.z) < lake.r + 3 || rand() < Math.min(0.6, n.d / 120)) continue;
     pine(x, z, 0.9 + rand() * 0.8);
   }
+  // a rocky snow peak in the middle of the spiral, with a flag on top
+  for (const sp of track.def.spirals ?? []) {
+    const gy = ground(sp.x, sp.z), h = sp.top - gy + 16;
+    world.add(new THREE.ConeGeometry(1, 1, 11), 0x8e9db4, sp.x, gy + h / 2 - 1, sp.z, 13, h, 12);
+    world.add(new THREE.ConeGeometry(1, 1, 11), 0xf8fbff, sp.x, gy + h * 0.8 - 1, sp.z, 6.6, h * 0.42, 6.2);
+    world.add(U.cyl, 0x3a3f4b, sp.x, gy + h + 1.4, sp.z, 0.12, 5, 0.12);
+    world.add(U.box, 0xd32f2f, sp.x + 1.1, gy + h + 3.2, sp.z, 2.2, 1.3, 0.06);
+  }
   const smokes: THREE.Vector3[] = [];
-  for (const [x, z] of [[-90, -60], [120, -120], [-40, 150], [160, 80], [10, -150]] as const) {
+  for (const [x0, z0] of [[-90, -60], [120, -120], [-40, 150], [160, 80], [10, -150]] as const) {
+    const x = x0 * SC, z = z0 * SC;
     if (nearest(x, z).d < 8) continue;
     const y = ground(x, z);
     world.add(U.box, 0x7a4a2c, x, y + 2, z, 8, 4, 6);
@@ -99,16 +116,16 @@ export function buildSnow(track: Track): Scenery {
 
   /* ---------------- chairlift and skiers on the slope ---------------- */
   {
-    const A = new THREE.Vector3(-260, 0, -230), B = new THREE.Vector3(-150, 0, -330);
+    const A = new THREE.Vector3(-260 * SC, 0, -230 * SC), B = new THREE.Vector3(-150 * SC, 0, -330 * SC);
     A.y = ground(A.x, A.z) + 9; B.y = ground(B.x, B.z) + 9;
     for (let k = 0; k <= 6; k++) { const u = k / 6, x = A.x + (B.x - A.x) * u, z = A.z + (B.z - A.z) * u, gy = ground(x, z), top = A.y + (B.y - A.y) * u; world.add(U.box, 0x6b7280, x, (gy + top) / 2, z, 0.6, top - gy, 0.6); world.add(U.box, 0x6b7280, x, top, z, 4, 0.4, 0.4, 0, Math.atan2(B.x - A.x, B.z - A.z) + Math.PI / 2, 0); }
     const n = 16, chairs = new THREE.InstancedMesh(new Geo().add(U.box, 0x2f6fd0, 0, -1.6, 0, 1.6, 0.2, 0.8).add(U.box, 0x2f6fd0, 0, -1.2, -0.35, 1.6, 0.8, 0.1).add(U.box, 0x3a3f4b, 0, -0.8, 0, 0.06, 1.6, 0.06).build(), new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.5 }), n);
     group.add(chairs);
     const o = new THREE.Object3D(), ry = Math.atan2(B.x - A.x, B.z - A.z);
     c.updates.push((_, t) => { for (let k = 0; k < n; k++) { const u = ((t * 0.02 + k / n) % 1), up = u < 0.5, w = up ? u * 2 : 2 - u * 2, side2 = up ? 1.6 : -1.6; o.position.set(A.x + (B.x - A.x) * w + Math.cos(ry) * side2, A.y + (B.y - A.y) * w, A.z + (B.z - A.z) * w - Math.sin(ry) * side2); o.rotation.set(0, ry + (up ? 0 : Math.PI), Math.sin(t * 2 + k) * 0.05); o.updateMatrix(); chairs.setMatrixAt(k, o.matrix); } chairs.instanceMatrix.needsUpdate = true; });
-    strollers(c, [[-150, -320, -250, -240], [-170, -330, -240, -230], [-140, -300, -230, -250]], 14, (x, z) => ground(x, z));
+    strollers(c, ([[-150, -320, -250, -240], [-170, -330, -240, -230], [-140, -300, -230, -250]] as const).map((r) => r.map((v) => v * SC) as [number, number, number, number]), 14, (x, z) => ground(x, z));
   }
-  fallers(c, { x: 0, z: 0, w: 520, d: 420, y0: 0, h: 40 }, 2600, [0xffffff, 0xf2f8ff], 0.24, 1.6);
+  fallers(c, { x: 0, z: 0, w: 520 * SC, d: 420 * SC, y0: 0, h: 40 }, 2600, [0xffffff, 0xf2f8ff], 0.24, 1.6);
 
   /* ---------------- start, people, signs ---------------- */
   const lampsM = startGantry(track, group, glossy, 'SNOW PEAK', ['#2f6fd0', '#7fd3ff'], 0x1b1d24, 0xd32f2f);

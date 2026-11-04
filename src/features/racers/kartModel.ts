@@ -80,7 +80,7 @@ function blobTex() {
   return new THREE.CanvasTexture(cv);
 }
 
-export interface Wheel { pivot: THREE.Object3D; spin: THREE.Object3D; r: number; front: boolean }
+export interface Wheel { pivot: THREE.Object3D; spin: THREE.Object3D; r: number; w: number; front: boolean; base: THREE.Vector3 }
 
 export class KartView {
   readonly root = new THREE.Group();
@@ -97,6 +97,10 @@ export class KartView {
   private mat: THREE.MeshPhysicalMaterial;
   private squash = 0; private squashV = 0;
   private driftYaw = 0; private roll = 0; private pitch = 0; private trickA = 0;
+  /** A barrel roll after a big hit (progress 0..1 over `tumble0` seconds) and the dizzy stars. */
+  private tumbleA = 0; private tumble0 = 0; private wasTumble = 0;
+  private lean = 0; private surge = 0;
+  private stars = new THREE.Group(); private starMat: THREE.MeshBasicMaterial; private dizzy = 0;
   face: Face = 'smile';
   cheer = false;
 
@@ -132,6 +136,7 @@ export class KartView {
       // wing struts and end plates
       if (wing !== 'none') {
         const ws = wing === 'big' ? 1.22 : 1, wh = wing === 'big' ? 0.16 : wing === 'twin' ? 0.1 : 0;
+        this.wingTip = [0.64 * ws, 0.98 + wh * 1.3, -0.92];
         g.add(RB(0.05, 0.38 + wh, 0.09, 0.015), dark, 'plastic', [sx * 0.3, 0.68 + wh / 2, -0.9]);
         g.add(RB(0.04, 0.26 + wh * 1.4, 0.38 * ws, 0.015), paint, 'paint', [sx * 0.61 * ws, 0.85 + wh * 0.6, -0.92]);
         g.add(RB(0.045, 0.06, 0.39 * ws, 0.012), '#ffffff', 'paint', [sx * 0.61 * ws, 0.95 + wh * 1.3, -0.92]);
@@ -234,9 +239,18 @@ export class KartView {
       m.castShadow = true;
       spin.add(m); pivot.add(spin);
       this.body.add(pivot);
-      this.wheels.push({ pivot, spin, r, front });
+      this.wheels.push({ pivot, spin, r, w, front, base: new THREE.Vector3(x, y, z) });
     }
     this.root.add(this.body);
+
+    // dizzy stars that circle over the driver's head after a hit
+    const shape = new THREE.Shape();
+    for (let k = 0; k < 10; k++) { const a = (k / 10) * Math.PI * 2 + Math.PI / 2, r = k % 2 ? 0.07 : 0.17; if (k) shape.lineTo(Math.cos(a) * r, Math.sin(a) * r); else shape.moveTo(Math.cos(a) * r, Math.sin(a) * r); }
+    const sg = new THREE.ExtrudeGeometry(shape, { depth: 0.04, bevelEnabled: false }).translate(0, 0, -0.02);
+    this.starMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 1.9, 0.4), toneMapped: false });
+    for (let k = 0; k < 4; k++) this.stars.add(new THREE.Mesh(sg, this.starMat));
+    this.stars.visible = false;
+    this.body.add(this.stars);
 
     // soft contact shadow that stays on the ground (grounds the kart even with blurry shadow maps)
     this.blob = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 2.7).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: blobTex(), color: 0x000000, transparent: true, opacity: 0.5, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 }));
@@ -298,7 +312,8 @@ export class KartView {
     if (k.trick) this.trickA = Math.min(1, k.trickT / 0.36);
     else if (this.trickA > 0) this.trickA = this.trickA >= 1 ? 0 : Math.min(1, this.trickA + dt / 0.36);
     const rumble = k.grounded && k.speed > 4 ? (k.surface === 'kerb' ? Math.sin(t * 75) * 0.012 : k.surface === 'grass' ? (Math.random() - 0.5) * 0.03 : 0) : 0;
-    this.body.position.y = rumble + this.squash * 0.3;
+    const suspY = rumble + this.squash * 0.3;
+    this.body.position.y = suspY;
     this.body.scale.set(1 - this.squash * 0.25, 1 + this.squash, 1 - this.squash * 0.25);
     // contact shadow on the ground under the kart (fades and spreads with height)
     const h = k.q && k.q.ground !== null ? Math.max(0, k.pos.y - k.q.ground) : 8;
@@ -307,14 +322,40 @@ export class KartView {
     (this.blob.material as THREE.MeshBasicMaterial).opacity = 0.5 * bo;
     this.blob.scale.setScalar(1 + h * 0.12);
     this.blob.visible = bo > 0.02;
-    this.body.rotation.set(this.pitch, this.driftYaw + (k.drift ? Math.sin(t * 22) * 0.012 : 0), this.roll + this.trickA * Math.PI * 2, 'YXZ');
+    // thrown by a hit: one full barrel roll while in the air, lifted so the driver clears the road
+    if (k.tumbleT > 0 && this.wasTumble <= 0) { this.tumble0 = k.tumbleT; this.tumbleA = 0; }
+    this.wasTumble = k.tumbleT;
+    if (k.tumbleT > 0) this.tumbleA = 1 - k.tumbleT / Math.max(0.05, this.tumble0);
+    else if (this.tumbleA > 0) this.tumbleA = this.tumbleA >= 1 ? 0 : Math.min(1, this.tumbleA + dt * 3);
+    const tum = this.tumbleA > 0 ? (1 - Math.pow(1 - this.tumbleA, 2)) * Math.PI * 2 * k.tumbleDir : 0;
+    if (this.tumbleA > 0) this.body.position.y += Math.sin(this.tumbleA * Math.PI) * 0.95;
+    this.body.rotation.set(this.pitch, this.driftYaw + (k.drift ? Math.sin(t * 22) * 0.012 : 0), this.roll + this.trickA * Math.PI * 2 + tum, 'YXZ');
+    // dizzy stars while spinning out (and a moment after)
+    this.dizzy = k.spinT > 0 ? 1 : Math.max(0, this.dizzy - dt * 1.4);
+    this.stars.visible = this.dizzy > 0.02;
+    if (this.stars.visible) {
+      this.stars.position.set(0, 1.62, -0.16);
+      this.stars.children.forEach((m, i) => {
+        const a = t * 7 + (i / 4) * Math.PI * 2;
+        m.position.set(Math.cos(a) * 0.42, Math.sin(t * 9 + i * 1.7) * 0.06, Math.sin(a) * 0.42);
+        m.rotation.set(0, -a + Math.PI / 2, 0);
+        m.scale.setScalar(Math.min(1, this.dizzy * 1.5));
+      });
+    }
+    // suspension: the chassis squashes and rumbles, the wheels keep their size and stay down
+    const sy = 1 + this.squash, sxz = 1 - this.squash * 0.25;
+    for (const w of this.wheels) {
+      w.pivot.scale.set(1 / sxz, 1 / sy, 1 / sxz);
+      w.pivot.position.set(w.base.x / sxz, (w.base.y - suspY) / sy, w.base.z / sxz);
+    }
+    if (!k.orient && this.tumbleA <= 0) this.keepOnRoad(k);
 
     // wheels and steering wheel
     for (const w of this.wheels) {
       w.spin.rotation.x += (k.fwd * dt) / w.r;
       if (w.front) w.pivot.rotation.y = -k.steer * 0.42 + (k.drift ? k.drift * 0.25 : 0);
     }
-    this.steering.rotation.z = k.steer * 1.3;
+    this.steering.rotation.z = k.steer * 1.6 - k.drift * 0.5;
     this.tail.color.setRGB(braking ? 2.4 : 0.8, 0.06, 0.06);
 
     // the driver: sitting, hands on the wheel, leaning into turns
@@ -323,26 +364,70 @@ export class KartView {
       d.setFace(this.face);
       d.update(dt);
       const P = this.parts, st = k.steer;
-      P.hips?.rotation.set(0, 0, 0);
+      // the driver rides the kart: leans hard into turns (more in a drift), is pushed back by a
+      // boost and forward by the brakes, bobs with the suspension, flails when thrown
+      const leanT = THREE.MathUtils.clamp(st * 0.3 + k.drift * 0.22, -0.5, 0.5);
+      this.lean += (leanT - this.lean) * Math.min(1, dt * 7);
+      const gT = k.boostT > 0 ? 0.28 : THREE.MathUtils.clamp(-k.accelNow * 0.012, -0.18, 0.22);
+      this.surge += (gT - this.surge) * Math.min(1, dt * 5);
+      const flail = this.tumbleA > 0 || (k.spinT > 0 && !k.grounded);
+      P.hips?.rotation.set(0, 0, this.lean * 0.3);
       P.legL?.rotation.set(-1.42, 0, -0.07);
       P.legR?.rotation.set(-1.42, 0, 0.07);
-      P.chest?.rotation.set(k.boostT > 0 ? 0.12 : -0.06, -st * 0.14, st * 0.14 - this.roll * 1.5);
+      P.chest?.rotation.set(-0.06 + this.surge - this.squash * 1.2, -st * 0.2 - k.drift * 0.12, this.lean - this.roll * 1.5);
       if (this.cheer) {
         const w = Math.sin(t * 9) * 0.25;
         P.armL?.rotation.set(0, 0, 2.5 + w);
         P.armR?.rotation.set(0, 0, -2.5 + w);
-      } else {
+      } else if (flail) {
+        P.armL?.rotation.set(Math.sin(t * 26) * 0.6, 0, 2.2 + Math.sin(t * 31) * 0.5);
+        P.armR?.rotation.set(Math.cos(t * 27) * 0.6, 0, -2.2 + Math.cos(t * 29) * 0.5);
+      } else if (!k.grounded && k.airT > 0.35 && k.speed > 8) {
+        // big air: one fist up
         P.armL?.rotation.set(-1.12 + st * 0.28, 0, 0.3);
-        P.armR?.rotation.set(-1.12 - st * 0.28, 0, -0.3);
+        P.armR?.rotation.set(0, 0, -2.6 + Math.sin(t * 12) * 0.15);
+      } else {
+        P.armL?.rotation.set(-1.12 + st * 0.34, 0, 0.3 + Math.max(0, st) * 0.2);
+        P.armR?.rotation.set(-1.12 - st * 0.34, 0, -0.3 - Math.max(0, -st) * 0.2);
       }
-      P.head?.rotation.set(0.06, -st * 0.32, 0);
+      P.head?.rotation.set(0.06 - this.surge * 0.8, -st * 0.45 - k.drift * 0.25, -this.lean * 0.5);
     }
+  }
+
+  private _w = new THREE.Vector3(); private _m = new THREE.Matrix4(); private _n = new THREE.Vector3();
+  /** Never let a tyre dip into the road: lean, pitch, squash or the body catching up with a bank
+      can push one below the surface, so lift the whole kart by the deepest one. */
+  private keepOnRoad(k: Kart) {
+    const q = k.q;
+    if (!q || q.ground === null) return;
+    const n = this._n.set(-(q.slope * q.t.x + q.bank * q.r.x), 1, -(q.slope * q.t.z + q.bank * q.r.z)).normalize();
+    const above = (k.pos.y - q.ground) * n.y;
+    if (above > 1.2) return;
+    this.body.updateMatrix();
+    let low = Infinity;
+    for (const w of this.wheels) {
+      w.pivot.updateMatrix();
+      this._m.multiplyMatrices(this.body.matrix, w.pivot.matrix);
+      for (const ex of [-w.w * 0.5, 0, w.w * 0.5]) for (const ez of [-0.35, 0, 0.35]) {
+        this._w.set(ex, -w.r * Math.cos(ez * 2), w.r * Math.sin(ez * 2)).applyMatrix4(this._m).applyQuaternion(this.root.quaternion);
+        low = Math.min(low, this._w.dot(n));
+      }
+    }
+    const pen = -(low + above);
+    if (pen > 0) this.root.position.addScaledVector(n, pen);
   }
 
   /** World positions of the exhaust tips. */
   exhaustWorld(out: THREE.Vector3[]) {
     this.body.updateWorldMatrix(true, false);
     for (let i = 0; i < 2; i++) out[i].copy(this.exhaust[i]).applyMatrix4(this.body.matrixWorld);
+    return out;
+  }
+  /** World positions of the rear wing's tips (where the wind ribbons stream from). */
+  private wingTip: [number, number, number] = [0.66, 0.98, -0.95];
+  wingWorld(out: THREE.Vector3[]) {
+    this.body.updateWorldMatrix(true, false);
+    for (let i = 0; i < 2; i++) out[i].set((i ? 1 : -1) * this.wingTip[0], this.wingTip[1], this.wingTip[2]).applyMatrix4(this.body.matrixWorld);
     return out;
   }
   /** World position of a rear tyre's contact patch (side −1 / +1). */
@@ -354,7 +439,7 @@ export class KartView {
   dispose() {
     this.driver?.object.removeFromParent();
     this.root.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !o.name.startsWith('toon')) m.geometry.dispose(); });
-    this.mat.dispose();
+    this.mat.dispose(); this.starMat.dispose();
     this.decal.map?.dispose(); this.decal.dispose();
     const bm = this.blob.material as THREE.MeshBasicMaterial; bm.map?.dispose(); bm.dispose();
     this.root.removeFromParent();

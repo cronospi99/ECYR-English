@@ -143,6 +143,14 @@ export const sfx = {
   bell() { for (const [f, d] of [[1568, 0], [1976, 0.02], [2637, 0.04], [1568, 0.22], [1976, 0.24], [2637, 0.26]] as const) tone(f, 0.9, 'sine', 0.06, 0, d); },
   hit() { noise(0.4, 0.28, 700, 'bandpass', 0, 200, 0.8); tone(300, 0.45, 'sawtooth', 0.07, 90); },
   bump() { noise(0.12, 0.14, 500, 'lowpass'); tone(120, 0.1, 'square', 0.05, 80); },
+  /** A big cartoon explosion: a cracking boom with a low thump falling away. */
+  blast() { noise(0.9, 0.5, 1800, 'lowpass', 0, 120, 0.7); noise(0.18, 0.3, 4200, 'highpass'); tone(95, 0.7, 'sine', 0.3, 32); tone(190, 0.25, 'square', 0.08, 60); },
+  /** A wet splat (ink). */
+  splat() { noise(0.45, 0.32, 700, 'lowpass', 0, 140, 1.4); tone(240, 0.3, 'sine', 0.12, 60); tone(520, 0.12, 'triangle', 0.05, 200, 0.03); },
+  /** Karts slamming into each other. */
+  bam(v: number) { const k = Math.min(1, v / 14); noise(0.25, 0.2 + k * 0.3, 900, 'bandpass', 0, 260, 0.9); tone(110, 0.22, 'square', 0.06 + k * 0.08, 55); },
+  /** Something flung high: a rising whistle. */
+  whoosh() { noise(0.5, 0.16, 900, 'bandpass', 0, 3400, 3); },
   right() { [784, 988, 1175, 1568].forEach((f, i) => tone(f, 0.16, 'triangle', 0.08, 0, i * 0.07)); },
   wrong() { tone(330, 0.18, 'square', 0.05, 220); tone(247, 0.3, 'square', 0.05, 160, 0.15); },
   place(up: boolean) { tone(up ? 880 : 440, 0.08, 'triangle', 0.035, up ? 1175 : 330); },

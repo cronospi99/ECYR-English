@@ -17,7 +17,7 @@ import type { Scenery } from './scenery';
 import { TRACKS, trackInfo, type TrackId, type TrackInfo } from './tracks';
 import { Kart, KART, NO_INPUT, autopilot, type KartInput } from './kart';
 import { KartView } from './kartModel';
-import { Flames, Particles, Skids, SpeedLines } from './fx';
+import { Blasts, Flames, Particles, Ribbons, Skids, SpeedLines } from './fx';
 import { Bot, SKILL, racingLine, type Difficulty, type Line, type Obstacle } from './ai';
 import { ItemWorld, rollItem, ITEM_LIST } from './items';
 import { Gates, type GateSite } from './gates';
@@ -112,8 +112,12 @@ export class RaceGame {
   private worldMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.88, metalness: 0, side: THREE.DoubleSide });
   readonly racers: Racer[] = [];
   readonly me: Racer;
-  private sparks = new Particles(1000, true);
-  private smoke = new Particles(800, false);
+  private sparks = new Particles(1400, true);
+  private blasts = new Blasts();
+  private wind = new Ribbons(20);
+  private windK: number[] = [];
+  private wingTips = [new THREE.Vector3(), new THREE.Vector3()];
+  private smoke = new Particles(1100, false);
   private skids = new Skids(2200, 16);
   private lines = new SpeedLines();
   private dpr: number;
@@ -136,6 +140,8 @@ export class RaceGame {
   private clock = 0;
   private finishWait = 0;
   private shake = 0;
+  /** A split second of slow motion when the player is hit (or lands a big hit). */
+  private hitStop = 0;
   private keys = new Set<string>();
   private touch: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false };
   private input: KartInput = { ...NO_INPUT };
@@ -173,6 +179,8 @@ export class RaceGame {
 
   onHud: ((h: Hud) => void) | null = null;
   onToast: ((t: Toast) => void) | null = null;
+  /** Full-screen splashes for the player: ink over the screen, a white flash on a big hit. */
+  onSplat: ((kind: 'ink' | 'hit') => void) | null = null;
   private toastId = 0;
   private hudAt = 0;
 
@@ -199,7 +207,7 @@ export class RaceGame {
     sc.bias = -0.0005; sc.normalBias = 0.04;
     this.sun.castShadow = true;
     s.add(this.sun, this.sun.target);
-    s.add(this.sparks.points, this.smoke.points, this.skids.mesh, this.lines.mesh);
+    s.add(this.sparks.points, this.smoke.points, this.skids.mesh, this.lines.mesh, this.blasts.group, this.wind.mesh);
 
     const pInfo = TOONS.find((x) => x.id === opts.toon) ?? TOONS[0];
     if (this.live) this.settings = { ...this.settings, mode: 'live' };
@@ -223,7 +231,10 @@ export class RaceGame {
       // (the first frame's timestamp can be a little before `last`: never a negative step)
       const dt = Math.max(0, Math.min(0.05, (tm - this.last) / 1000));
       this.last = tm;
-      this.frame(dt, tm);
+      // hit-stop: a few frames in slow motion
+      let step = dt;
+      if (this.hitStop > 0) { this.hitStop = Math.max(0, this.hitStop - dt); step = dt * 0.22; }
+      this.frame(step, tm);
     };
     this.raf = requestAnimationFrame(tick);
   }
@@ -323,7 +334,7 @@ export class RaceGame {
       if (r.view) { r.view.root.visible = r.player || this.settings.mode !== 'time'; r.view.update(0.016, r.kart, 0, false); }
     });
     this.items?.reset();
-    this.skids.clear(); this.sparks.clear(); this.smoke.clear();
+    this.skids.clear(); this.sparks.clear(); this.smoke.clear(); this.blasts.clear(); this.wind.clear();
     rank(this.field);
   }
   private gridOrder() {
@@ -753,7 +764,22 @@ export class RaceGame {
       const imp = rel * 0.95;
       a.vel.x -= nx * imp * (wa / (wa + wb)); a.vel.z -= nz * imp * (wa / (wa + wb));
       b.vel.x += nx * imp * (wb / (wa + wb)); b.vel.z += nz * imp * (wb / (wa + wb));
-      if ((rs[i].player || rs[j].player) && rel > 2.5) { sfx.bump(); this.shake = Math.max(this.shake, Math.min(0.2, rel * 0.02)); }
+      const mine = rs[i].player || rs[j].player;
+      if (rel > 4) {
+        // metal on metal: sparks at the contact, and a boosting kart rams the other one aside
+        const cx = (a.pos.x + b.pos.x) / 2, cy = (a.pos.y + b.pos.y) / 2 + 0.45, cz = (a.pos.z + b.pos.z) / 2;
+        for (let n = 0; n < Math.min(26, 6 + rel * 1.5); n++) this.sparks.emit(cx, cy, cz, (Math.random() - 0.5) * 10 - nz * (Math.random() - 0.5) * 8, 1 + Math.random() * 4, (Math.random() - 0.5) * 10 + nx * (Math.random() - 0.5) * 8, 0.3 + Math.random() * 0.3, 0.16, this.c.setRGB(2.4, 1.6, 0.5), { grav: 16, drag: 1.5 });
+        const victim = wa < wb ? rs[j] : wb < wa ? rs[i] : null;
+        if (victim && rel > 7 && !victim.remote && victim.hurtT <= 0 && !victim.kart.loop) {
+          const sg = victim === rs[j] ? 1 : -1;
+          victim.kart.knock(3.2, 0.8, 0.55);
+          victim.kart.vel.x += nx * sg * 6; victim.kart.vel.z += nz * sg * 6;
+          victim.hurtT = 0.8;
+          if (mine || this.camPos.distanceTo(victim.kart.pos) < 30) this.blasts.word(this.v3.set(cx, cy + 2.2, cz), 'BAM!', '#ff9f0a', 2.8, 0.7);
+          if (victim.player) this.onSplat?.('hit');
+        }
+        if (mine) { sfx.bam(rel); this.shake = Math.max(this.shake, Math.min(0.5, rel * 0.04)); if (rel > 9) this.hitStop = Math.max(this.hitStop, 0.04); }
+      } else if (mine && rel > 2.5) { sfx.bump(); this.shake = Math.max(this.shake, Math.min(0.2, rel * 0.02)); }
     }
   }
 
@@ -930,12 +956,17 @@ export class RaceGame {
           if (o === r || o.place >= r.place || o.finished) continue;
           rang++;
           this.items?.ring(o);
+          this.blasts.word(this.v3.copy(o.kart.pos).setY(o.kart.pos.y + 3), 'DING!', '#ffd23f', 2.6, 0.8);
+          this.blasts.wave(this.v2.copy(o.kart.pos).setY(o.kart.pos.y + 0.12), 4, 0xffd23f, 0.4);
+          if (!o.remote && !o.shield && o.kart.grounded && !o.kart.loop) { o.kart.vel.y = 5.5; o.kart.grounded = false; o.kart.tumbleT = 0; }
           if (o.remote) { if (o.peer) victims.push(o.peer); continue; }
           if (o.shield) { this.breakShield(o); continue; }
           o.kart.slowT = 1.4;
           if (o.coins > 0) { o.coins--; o.bank = Math.max(0, o.bank - 1); }
           if (o.player) { this.toast(t('RECESS BELL!', '¡CAMPANA DEL RECREO!'), '#ffd23f', `${t('rung by', 'la tocó')} ${r.name}`); this.shake = Math.max(this.shake, 0.25); }
         }
+        // the ringer sends out golden shock rings
+        { const g = this.v2.copy(r.kart.pos); g.y += 0.15; this.blasts.wave(g, 30, 0xffd23f, 0.9); this.blasts.wave(g, 18, 0xffffff, 0.6); g.y += 1; this.blasts.flash(g, 2.4, this.c.setRGB(2.6, 2, 0.4), 0.3); }
         if (r.player || field.some((o) => o.player && o.place < r.place)) sfx.bell();
         if (r.player && rang) this.toast(t('DING DING!', '¡DING DING!'), '#ffd23f', `${rang} ${t('slowed down', 'frenados')}`);
         if (r.player && victims.length) this.live?.out?.bell(victims);
@@ -950,33 +981,78 @@ export class RaceGame {
     r.shield = false;
     this.items?.setShield(r, false);
     const k = r.kart;
-    for (let i = 0; i < 16; i++) this.sparks.emit(k.pos.x, k.pos.y + 0.8, k.pos.z, (Math.random() - 0.5) * 7, Math.random() * 5, (Math.random() - 0.5) * 7, 0.5, 0.22, this.c.setRGB(0.6, 2, 0.9), { grav: 9, drag: 1 });
-    if (r.player) sfx.block();
+    for (let i = 0; i < 24; i++) this.sparks.emit(k.pos.x, k.pos.y + 0.8, k.pos.z, (Math.random() - 0.5) * 10, Math.random() * 6, (Math.random() - 0.5) * 10, 0.5, 0.26, this.c.setRGB(0.6, 2, 0.9), { grav: 9, drag: 1 });
+    const c = this.v1.copy(k.pos); c.y += 0.9;
+    this.blasts.flash(c, 2.6, this.c.setRGB(0.6, 2.4, 1.1), 0.28);
+    this.blasts.shreds(c, 26, [0xfaf4e2, 0xffffff, 0x1f9d55, 0xffd23f], 8, 7, 0.85);
+    this.blasts.word(this.v3.copy(c).setY(c.y + 2.4), 'BLOCK!', '#2fd27a', 3);
+    if (r.player) { sfx.block(); this.shake = Math.max(this.shake, 0.25); }
     r.hurtT = 0.8;
   }
 
   private hit(r: Racer, kind: 'plane' | 'ink' | 'hazard', by: Racer | null) {
     if (r.hurtT > 0 || r.finished) return;
-    // another student's kart: their own game spins it (only my planes reach them from here)
-    if (r.remote) { if (kind === 'plane' && r.peer && by?.player) { this.live?.out?.hit(r.peer, kind); sfx.got(); this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name); } r.hurtT = 1.8; return; }
-    if (r.shield && kind !== 'hazard') { this.breakShield(r); return; }
     const k = r.kart;
-    k.spin(kind === 'plane' ? 1.1 : 0.9);
-    r.hurtT = 1.8;
+    // another student's kart: their own game throws it (only my planes reach them from here)
+    if (r.remote) {
+      if (kind === 'plane' && r.peer && by?.player) { this.live?.out?.hit(r.peer, kind); sfx.got(); this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name); this.boom(k.pos, kind); this.hitStop = Math.max(this.hitStop, 0.05); }
+      r.hurtT = 1.8; return;
+    }
+    if (r.shield && kind !== 'hazard') { this.breakShield(r); return; }
+    // thrown up rolling (plane, hazard) or a long wild spin-out (ink)
+    if (kind === 'plane') k.knock(9.5, 0.3, 1.5);
+    else if (kind === 'hazard') k.knock(6.5, 0.45, 1.15);
+    else k.knock(0, 0.8, 1.6);
+    r.hurtT = 2;
     const lost = Math.min(r.coins, kind === 'hazard' ? 2 : 3);
     r.coins -= lost;
     r.bank = Math.max(0, r.bank - lost);
-    for (let i = 0; i < lost; i++) this.sparks.emit(k.pos.x, k.pos.y + 0.8, k.pos.z, (Math.random() - 0.5) * 6, 4 + Math.random() * 3, (Math.random() - 0.5) * 6, 0.9, 0.35, this.c.setRGB(2, 1.5, 0.2), { grav: 14 });
-    for (let i = 0; i < 10; i++) this.smoke.emit(k.pos.x, k.pos.y + 0.5, k.pos.z, (Math.random() - 0.5) * 4, 1 + Math.random() * 2, (Math.random() - 0.5) * 4, 0.6, 0.8, kind === 'ink' ? this.c.setRGB(0.2, 0.18, 0.5) : this.c.setRGB(0.95, 0.95, 0.97), { a: 0.6, drag: 2, grow: 1.4 });
+    for (let i = 0; i < lost * 2; i++) this.sparks.emit(k.pos.x, k.pos.y + 0.8, k.pos.z, (Math.random() - 0.5) * 9, 5 + Math.random() * 4, (Math.random() - 0.5) * 9, 1, 0.45, this.c.setRGB(2.2, 1.6, 0.2), { grav: 16 });
+    this.boom(k.pos, kind);
     if (r.player) {
+      if (kind === 'ink') sfx.splat(); else { sfx.blast(); sfx.whoosh(); }
       sfx.hit();
-      this.shake = Math.max(this.shake, 0.35);
+      this.shake = Math.max(this.shake, kind === 'ink' ? 0.45 : 0.8);
+      this.hitStop = Math.max(this.hitStop, kind === 'ink' ? 0.06 : 0.12);
+      this.fov += kind === 'ink' ? 5 : 11;
+      this.onSplat?.(kind === 'ink' ? 'ink' : 'hit');
       const what = kind === 'plane' ? t('Paper plane!', '¡Avión de papel!') : kind === 'ink' ? t('Ink!', '¡Tinta!') : t('Watch out!', '¡Cuidado!');
       this.toast(what, '#ff8a8a', by ? `${t('from', 'de')} ${by.name}` : undefined);
-    } else if (by?.player) {
-      sfx.got();
-      this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name);
+    } else {
+      // a hit close to the camera shakes it too
+      const dist = this.camPos.distanceTo(k.pos);
+      if (dist < 45) { if (kind === 'ink') sfx.splat(); else sfx.blast(); this.shake = Math.max(this.shake, 0.35 * (1 - dist / 45)); }
+      if (by?.player) { sfx.got(); this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name); this.hitStop = Math.max(this.hitStop, 0.05); }
     }
+  }
+
+  /** What a hit looks like: a cartoon explosion (paper plane, hazard) or a burst of ink. */
+  private boom(p: THREE.Vector3, kind: 'plane' | 'ink' | 'hazard') {
+    const c = this.v1.copy(p); c.y += 0.9;
+    const g = this.v2.copy(p); g.y += 0.12;
+    const rnd = (a: number) => (Math.random() - 0.5) * a;
+    if (kind === 'ink') {
+      this.blasts.wave(g, 7, 0x6b5bff, 0.5);
+      this.blasts.shreds(c, 30, [0x1d1a5c, 0x2b2580, 0x5b4bff, 0x0e0c33], 8, 7, 0.75);
+      for (let i = 0; i < 26; i++) this.smoke.emit(c.x + rnd(1), c.y + rnd(0.6), c.z + rnd(1), rnd(9), 2 + Math.random() * 5, rnd(9), 0.9 + Math.random() * 0.5, 1.1 + Math.random(), this.c.setRGB(0.16, 0.13, 0.42), { a: 0.85, grav: 9, drag: 2, grow: 1.6 });
+      this.blasts.word(this.v3.copy(c).setY(c.y + 2.6), 'SPLAT!', '#7b6bff', 3.4);
+      return;
+    }
+    const big = kind === 'plane';
+    this.blasts.flash(c, big ? 3.6 : 2.6, this.c.setRGB(3, 1.5, 0.45), 0.34);
+    this.blasts.flash(c, big ? 1.9 : 1.4, this.c.setRGB(3, 3, 2.6), 0.16);
+    this.blasts.wave(g, big ? 10 : 7, 0xffc875, 0.55);
+    this.blasts.wave(g, big ? 5.5 : 4, 0xffffff, 0.3);
+    if (big) this.blasts.shreds(c, 38, [0xffffff, 0xf4f4f2, 0x4cc3ff, 0xdfe7f5, 0x3d8bff], 11, 8);
+    else this.blasts.shreds(c, 22, [0xffc61a, 0x3a4152, 0xffffff], 8, 7, 0.8);
+    // fireball: hot sparks that swell, then rolling dark smoke
+    for (let i = 0; i < 34; i++) {
+      const a = Math.random() * Math.PI * 2, v = 2 + Math.random() * 6;
+      this.sparks.emit(c.x, c.y, c.z, Math.cos(a) * v, 1.5 + Math.random() * 6, Math.sin(a) * v, 0.35 + Math.random() * 0.3, 1.2 + Math.random() * 1.4, this.c.setRGB(2.4, 0.9 + Math.random() * 0.8, 0.15), { drag: 4, grow: 1.2 });
+    }
+    for (let i = 0; i < 26; i++) this.sparks.emit(c.x, c.y, c.z, rnd(22), 3 + Math.random() * 10, rnd(22), 0.5 + Math.random() * 0.4, 0.18, this.c.setRGB(2.4, 1.8, 0.6), { grav: 18, drag: 1 });
+    for (let i = 0; i < 22; i++) this.smoke.emit(c.x + rnd(1.4), c.y + rnd(0.8), c.z + rnd(1.4), rnd(5), 2 + Math.random() * 4, rnd(5), 1.3 + Math.random() * 0.8, 1.6 + Math.random() * 1.2, this.c.setRGB(0.32, 0.3, 0.3), { a: 0.75, drag: 1.6, grow: 2.2 });
+    this.blasts.word(this.v3.copy(c).setY(c.y + 2.8), big ? 'POW!' : 'BONK!', big ? '#ff3b30' : '#ffc61a', big ? 3.8 : 3.2);
   }
 
   /* ------------------------------------------------------------ events and effects */
@@ -1037,10 +1113,20 @@ export class RaceGame {
   private effects(dt: number, tt: number) {
     const live = this.state === 'race' || this.state === 'finish' || this.state === 'countdown';
     const cam = this.camera.position;
+    let wi = 0;
     for (const r of this.field) {
       const k = r.kart, v = r.view;
       if (!v) continue;
       const near = r.player || Math.abs(k.pos.x - cam.x) + Math.abs(k.pos.z - cam.z) < 90;
+      // wind ribbons off the wing tips at speed
+      if (wi < 10) {
+        const fast = k.boostT > 0 ? 1 : THREE.MathUtils.clamp((k.speed - 19) / 7, 0, 1);
+        const show = live && fast > 0 && !k.falling && Math.abs(k.pos.x - cam.x) + Math.abs(k.pos.z - cam.z) < 60;
+        this.windK[wi] = (this.windK[wi] ?? 0) + ((show ? fast * (r.player ? 0.55 : 0.4) : 0) - (this.windK[wi] ?? 0)) * Math.min(1, dt * 6);
+        if (show) { v.wingWorld(this.wingTips); this.wind.push(wi * 2, this.wingTips[0]); this.wind.push(wi * 2 + 1, this.wingTips[1]); }
+        else { this.wind.push(wi * 2, null); this.wind.push(wi * 2 + 1, null); }
+        wi++;
+      }
       if (live && near) {
         v.root.updateMatrixWorld(true);
         const fwdX = Math.sin(k.yaw), fwdZ = Math.cos(k.yaw);
@@ -1080,7 +1166,14 @@ export class RaceGame {
       // rung by the bell: gold sparks over the kart while it is slowed
       if (k.slowT > 0 && near && Math.random() < 0.4) this.sparks.emit(k.pos.x, k.pos.y + 1.6, k.pos.z, (Math.random() - 0.5) * 2, 1, (Math.random() - 0.5) * 2, 0.4, 0.2, this.c.setRGB(2, 1.6, 0.3), { drag: 2 });
     }
+    // paper planes leave a contrail and a few sparkles
+    if (this.items) for (const pl of this.items.planes) {
+      this.smoke.emit(pl.pos.x, pl.pos.y, pl.pos.z, (Math.random() - 0.5) * 0.4, 0.3, (Math.random() - 0.5) * 0.4, 0.7, 0.45, this.c.setRGB(1, 1, 1), { a: 0.55, grow: 2.2, drag: 2 });
+      if (Math.random() < 0.5) this.sparks.emit(pl.pos.x, pl.pos.y, pl.pos.z, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, 0.35, 0.2, this.c.setRGB(0.6, 1.4, 2.4), { drag: 2 });
+    }
+    this.wind.update(cam, this.windK, this.c.setRGB(0.75, 0.9, 1.1));
     this.sparks.update(dt);
+    this.blasts.update(dt);
     this.smoke.update(dt);
     const k = this.me.kart;
     const lk = this.state === 'race' && !this.spectator ? (k.boostT > 0 ? 1 : Math.max(0, (k.speed - 25) / 12)) : 0;
@@ -1369,9 +1462,10 @@ export class RaceGame {
       const lp = c.li >= 0 ? this.track.loops[c.li] : undefined;
       if (lp) {
         const u = a.li === c.li ? a.lu + (c.lu - a.lu) * f : c.lu;
-        const F = this.v3, Up = this.v4, fr = this.track.loopBasis(lp, Math.min(1, u), F, Up);
+        const F = this.v3, Up = this.v4;
+        this.track.loopBasis(lp, Math.min(1, u), F, Up);
         k.orient ??= new THREE.Quaternion();
-        k.orient.setFromRotationMatrix(this.m1.makeBasis(this.v2.set(-fr.r.x, 0, -fr.r.z), Up, F));
+        k.orient.setFromRotationMatrix(this.m1.makeBasis(this.v2.crossVectors(Up, F).normalize(), Up, F));
         k.grounded = true;
       } else k.orient = null;
       r.dist = a.dist + (c.dist - a.dist) * f;
@@ -1437,7 +1531,7 @@ export class RaceGame {
     this.gates?.dispose();
     this.clearPodium();
     this.meshes?.group.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) m.geometry.dispose(); });
-    this.sparks.dispose(); this.smoke.dispose(); this.skids.dispose(); this.lines.dispose();
+    this.sparks.dispose(); this.smoke.dispose(); this.blasts.dispose(); this.wind.dispose(); this.skids.dispose(); this.lines.dispose();
     this.composer?.dispose();
     this.envTex?.dispose();
     this.worldMat.dispose();

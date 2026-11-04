@@ -749,6 +749,37 @@ G1v. ENGLISH RACERS · FASE 4: VUELTAS DE 360°, PISTAS DE LOS DIBUJOS, GARAJE Y
 - Motor: se probó un sonido tipo moto deportiva, pero a pedido se volvió al sonido de motor
   original del kart (tono que sube con la velocidad y los cambios).
 
+G1w. ENGLISH RACERS · FASE 5: CONDUCCIÓN MÁS AGRESIVA, ESPIRALES Y ATAQUES CON MÁS IMPACTO
+- El kart ya no se hunde en el asfalto: las llantas se apoyan siempre sobre la pista (al derrapar,
+  al inclinarse, al aterrizar). El chasis se comprime sobre la suspensión y las ruedas quedan abajo.
+- Curvas más abiertas:
+  · Cañón y Pico Nevado se agrandaron un poco y sus horquillas pasaron de ~7 m a ~15 m de radio,
+    conservando la forma de los dibujos.
+  · Campus, Nueva York, Tokio y Rizos de Agua abrieron sus curvas más cerradas (a ~20 m).
+- Rizos inclinados: en Rizos de Agua dos vueltas se inclinan hacia la derecha y dos hacia la
+  izquierda (la parte de arriba se va hacia un lado). Las vigas van de la torre a la cinta.
+- Espirales en descenso: Pico Nevado (alrededor de un pico nevado con bandera) y el Cañón
+  (alrededor de una torre de roca a franjas). La pista sube, da una vuelta completa bajando
+  13 m y pasa por debajo de su propia entrada por un puente con pilares (~9–10 m de altura libre).
+- Ataques más violentos y expresivos:
+  · Avión de papel: explosión de dibujo animado (destello, bola de fuego, humo, onda expansiva,
+    papelitos volando) y el rótulo "POW!". El kart golpeado sale volando, da una vuelta de
+    campana en el aire y aterriza girando con estrellas de mareo.
+  · Tinta: "SPLAT!", salpicadura morada y manchas de tinta que chorrean por la pantalla del
+    jugador golpeado. El kart da un trompo largo.
+  · Campana: anillos dorados que salen de quien la toca; los de adelante dan un salto con "DING!".
+  · Libro escudo: al romperse vuelan las páginas con "BLOCK!".
+  · Choques entre karts: chispas al rozar; un kart con turbo embiste al otro, lo saca de lado
+    y lo hace girar ("BAM!").
+  · Para el jugador: sacudida fuerte de cámara, un instante de cámara lenta, destello blanco
+    con borde rojo y nuevos sonidos (explosión, salpicadura, golpe metálico, silbido).
+  · Los aviones dejan estela.
+- El piloto interactúa más con el kart: se inclina fuerte en las curvas (más al derrapar), la
+  aceleración lo empuja hacia atrás y el freno hacia adelante, gira la cabeza hacia la curva,
+  contravolantea al derrapar, levanta el puño en los saltos grandes y agita los brazos cuando
+  sale volando.
+- Viento: estelas brillantes salen de las puntas del alerón a alta velocidad y con turbo.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así
