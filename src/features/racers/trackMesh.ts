@@ -362,7 +362,18 @@ export function buildTrackMeshes(track: Track, world: THREE.Material, st: TrackS
       // under the outer edge: down to the ground
       const outA = a.wall ? wa + (st.wall === 'barrier' ? 0.4 : st.wall === 'parapet' ? 0.45 : st.wall === 'neon' ? 0.3 : 0.1) : ga;
       const outB = b.wall ? wb + (st.wall === 'barrier' ? 0.4 : st.wall === 'parapet' ? 0.45 : st.wall === 'neon' ? 0.3 : 0.1) : gb;
-      if (st.edge === 'bank') {
+      if (a.bridge || b.bridge) {
+        // a bridge deck: a painted fascia and the slab's underside (the road below stays open)
+        t.quad(side(a, sg * outA, 0.06, p0), side(b, sg * outB, 0.06, p1), side(b, sg * outB, -1.1, p2), side(a, sg * outA, -1.1, p3), Math.floor(a.s / 6) % 2 ? 0x2f6fd0 : 0x3d7fe0);
+        if (sg > 0) t.quad(side(a, outA, -1.1, p0), side(b, outB, -1.1, p1), side(b, -outB, -1.1, p2), side(a, -outA, -1.1, p3), 0x8d96a3);
+        // piers every 12 m, where they stand clear of the road underneath
+        if (i % 12 === 0) {
+          const P = side(a, sg * (outA - 0.6), -1.1);
+          let free = true;
+          for (let j = 0; j < N && free; j += 2) { const f = F[j]; if (f.p.y < a.p.y - 3 && Math.hypot(P.x - f.p.x, P.z - f.p.z) < f.w + KERB + f.apron + 2) free = false; }
+          if (free) { const top = P.y; P.y = st.baseY; box(P, a.yaw, 1.1, top - st.baseY, 1.1, 0x9aa3ad); }
+        }
+      } else if (st.edge === 'bank') {
         if (a.wall) {
           side(a, sg * outA, 0.9, p0); side(b, sg * outB, 0.9, p1);
           p2.set(p1.x, st.baseY, p1.z); p3.set(p0.x, st.baseY, p0.z);
@@ -577,18 +588,30 @@ function buildLoopsAndWater(track: Track, group: THREE.Group, world: THREE.Mater
       for (let k = 0; k < 4; k++) t.quad(lo[k], lo[(k + 1) % 4], hi[(k + 1) % 4], hi[k], col);
       t.quad(hi[0], hi[1], hi[2], hi[3], col);
     };
+    // a square beam between two points
+    const beam = (p0: THREE.Vector3, p1: THREE.Vector3, th: number, col: number) => {
+      const ax = new THREE.Vector3().subVectors(p1, p0), len = ax.length();
+      if (len < 0.05) return;
+      ax.divideScalar(len);
+      const s1 = new THREE.Vector3().crossVectors(ax, Math.abs(ax.y) > 0.9 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(th / 2);
+      const s2 = new THREE.Vector3().crossVectors(ax, s1).normalize().multiplyScalar(th / 2);
+      const cn = [s1.clone().add(s2), s1.clone().sub(s2), s1.clone().negate().sub(s2), s1.clone().negate().add(s2)];
+      for (let k = 0; k < 4; k++) { const m = cn[k], n2 = cn[(k + 1) % 4]; t.quad(p0.clone().add(m), p0.clone().add(n2), p1.clone().add(n2), p1.clone().add(m), col); }
+    };
     const base = side(f, mid);
     for (const sg of [-1, 1]) {
       const C = side(f, mid + sg * out);
       box(C, 1.4, lp.r * 2 + 2.4, 1.4, 0x3a4152);
-      // struts to the ribbon's upright side nearest this tower (entry side left, exit side right)
-      const edge = LOOP_HW + 2.7;
+      // struts from the tower to the ribbon's side nearest it (entry side left, exit side right)
       for (const h of [lp.r * 0.6, lp.r, lp.r * 1.4]) {
-        const B = side(f, mid + sg * (out + edge) / 2);
-        B.x += f.t.x * (sg < 0 ? 1 : -1) * Math.sqrt(Math.max(0, lp.r * lp.r - (h - lp.r) ** 2));
-        B.z += f.t.z * (sg < 0 ? 1 : -1) * Math.sqrt(Math.max(0, lp.r * lp.r - (h - lp.r) ** 2));
-        B.y += h;
-        box(B, out - edge + 0.4, 0.35, 0.35, 0xffc61a);
+        let bu = 0, be = Infinity;
+        for (let k = 1; k < 60; k++) {
+          const u = sg < 0 ? k / 120 : 0.5 + k / 120;
+          const e = Math.abs(track.loopPoint(lp, u, sg * (LOOP_HW + 0.3), a).y - C.y - h);
+          if (e < be) { be = e; bu = u; }
+        }
+        track.loopPoint(lp, bu, sg * (LOOP_HW + 0.3), b);
+        beam(c.set(C.x, b.y, C.z), b, 0.35, 0xffc61a);
       }
     }
     base.y += lp.r * 2 + 2.4;

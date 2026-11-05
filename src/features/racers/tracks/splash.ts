@@ -13,19 +13,20 @@ import { birds, boats, bunting, city, crowd, done, fountain, lamps, roadsideSpot
 
 /** The doodle, traced (pixels of the 2× drawing; the start is on the top straight). */
 const PX: [number, number, number?, number?][] = [
-  [760, 382], [900, 365], [985, 325], [1040, 262, 2], [1090, 212, 5], [1140, 200, 6], [1200, 232, 5], [1260, 295, 2], [1335, 326], [1400, 316, 0, 8], [1470, 306, 0, 8], [1540, 298], [1622, 352],
+  [760, 382], [900, 365], [985, 325], [1040, 262, 2], [1090, 215, 5], [1141, 205, 6], [1200, 232, 5], [1260, 295, 2], [1335, 326], [1400, 316, 0, 8], [1470, 306, 0, 8], [1540, 300], [1622, 352],
   [1645, 430], [1652, 520], [1615, 590], [1520, 628], [1380, 640], [1250, 645, 0, 8], [1150, 662], [1080, 680, 0, 8], [980, 705], [880, 716, 0, 8], [780, 728], [680, 736, 0, 8], [560, 746],
-  [420, 752], [300, 728], [200, 676], [120, 612], [66, 548], [58, 490], [92, 456], [170, 444], [270, 434], [380, 402], [505, 385, 0, 8], [620, 384],
+  [420, 752], [300, 728], [200, 676], [120, 612], [79, 551], [82, 502], [110, 465], [170, 444], [270, 434], [380, 402], [505, 385, 0, 8], [620, 384],
 ];
 const SC = 0.28;
 
-const LOOPS: [number, number, number][] = [[9, 10, 11], [18, 0, 7], [20, 0, 7], [22, 0, 7], [24, 0, 7], [35, 14, 11]];
+/** Loops: control point, offset, radius and tilt (rad, + leans the top over to the right). */
+const LOOPS: [number, number, number, number][] = [[9, 10, 11, 0.34], [18, 0, 7, 0], [20, 0, 7, 0.3], [22, 0, 7, 0], [24, 0, 7, -0.3], [35, 14, 11, -0.34]];
 
 export const SPLASH: TrackDef = {
   id: 'splash', name: 'Splash Loops', laps: 2, waterY: -2.5,
   cps: PX.map(([x, z, y, w]) => ({ x: (x - 850) * SC, z: (z - 480) * SC, ...(y ? { y } : {}), ...(w ? { w, apron: 2 } : {}) } as CP)),
   features: [
-    ...LOOPS.map(([at, off, r]) => ({ kind: 'loop' as const, at, off, r })),
+    ...LOOPS.map(([at, off, r, tilt]) => ({ kind: 'loop' as const, at, off, r, tilt })),
     ...LOOPS.map(([at, off, r]) => ({ kind: 'splash' as const, at, off: off + (r > 8 ? 3 : 2), len: r > 8 ? 16 : 12 })),
     { kind: 'boost', at: 9, off: -4, d: -3.9 },
     { kind: 'boost', at: 35, off: 2, d: -3.9 },

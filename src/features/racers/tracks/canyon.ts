@@ -6,18 +6,20 @@
    dust devil. */
 import * as THREE from 'three';
 import { Geo, U } from '@/features/run/gfx';
-import { KERB, type CP, type Track, type TrackDef } from '../track';
+import { KERB, withSpiral, type CP, type Track, type TrackDef } from '../track';
 import { side, type TrackStyle } from '../trackMesh';
 import { billboards, cloudRing, startGantry, type Scenery } from '../scenery';
 import { birds, bunting, city, crowd, done, lamps, roadsideSpots, terrain, walkers } from './city';
 
-const PTS: [number, number][] = [[87.4,-93.3],[99.3,-94.6],[111.2,-96.1],[123.1,-97.5],[135.1,-98.7],[147,-99.6],[158.7,-99.3],[169.5,-96.5],[177.7,-90],[181.1,-80.7],[178.7,-71],[171.4,-63.3],[161.2,-58.5],[149.9,-55.4],[139.1,-51.5],[130.3,-44.8],[124.4,-35.2],[121.5,-24],[120.7,-12.2],[121.1,-0.3],[121.9,11.7],[123,23.6],[124.2,35.6],[125.5,47.5],[126.8,59.4],[127.3,71.3],[126,82.9],[121.9,93.2],[114.5,100.2],[104.8,101.9],[95.7,97.8],[89.2,89.2],[85.6,78.3],[83.9,66.6],[83,54.6],[81.8,42.7],[79.8,30.9],[77,19.3],[73,8.3],[67.1,-0.6],[59.4,-4.4],[52.1,-0.9],[47.9,8.2],[46.6,19.6],[46.5,31.4],[45.7,43],[42,53.1],[34.7,59.4],[25.8,59.6],[18.5,53.5],[14.7,43.5],[13.6,31.9],[13.6,19.9],[13.8,7.9],[13.9,-4.1],[13.2,-15.9],[10.7,-27],[5.3,-35],[-2.5,-36.8],[-9.9,-31.7],[-16.5,-23],[-24.3,-15],[-34.3,-9.7],[-45.7,-6.6],[-57.3,-4.2],[-68.6,-1.1],[-78.5,4.4],[-85.9,12.7],[-91.5,22.9],[-97.5,32.8],[-105.5,40.9],[-115.6,46.3],[-126.8,48.3],[-138.3,47.3],[-149.3,43.4],[-159.2,37.2],[-167.5,28.9],[-174,19.1],[-178.5,8.3],[-180.9,-3.2],[-181.2,-15],[-179.1,-26.3],[-174.3,-35.4],[-167.5,-38.8],[-161.4,-34.6],[-157.6,-25.1],[-154.2,-14.3],[-148.6,-5.3],[-140.2,-1.1],[-131.5,-3.5],[-125.4,-11.4],[-122.6,-22.2],[-122.3,-34],[-122.8,-45.9],[-122.9,-57.8],[-121.2,-69],[-116.2,-77.4],[-108.2,-80.3],[-100.3,-76.2],[-94.6,-67.3],[-89.5,-57.5],[-82.6,-51.1],[-74.7,-51.5],[-68.4,-58.5],[-64.7,-69],[-61.6,-80.3],[-56.7,-90.5],[-49.1,-97.7],[-39.5,-99.6],[-29.8,-96],[-20.5,-89.6],[-10.6,-84.7],[0.4,-83.4],[12,-84.9],[23.7,-87.1],[35.6,-88.8],[47.5,-90],[59.5,-91],[71.4,-91.9],[83.4,-92.9]];
+const PTS: [number, number][] = [[113.6,-121.3],[129.1,-123],[144.6,-124.9],[160,-126.8],[175.6,-128.3],[191.1,-129.5],[206.3,-129.1],[220.3,-125.5],[230.9,-116.9],[235.1,-104.9],[232.3,-92.3],[222.8,-82.3],[209.6,-76],[194.9,-72],[180.8,-67],[169.4,-58.2],[161.7,-45.8],[158,-31.2],[156.9,-15.9],[157.4,-0.4],[158.5,15.2],[159.9,30.7],[161.5,46.3],[163.2,61.8],[164.8,77.2],[165.5,92.7],[163.8,107.8],[158.5,121.2],[148.6,129.7],[136.3,131.9],[124.4,127.1],[116,116],[111.3,101.8],[109.1,86.6],[107.9,71],[106.3,55.5],[103.7,40.2],[100.5,25.1],[94.6,15.7],[86.9,11.2],[79,9.6],[71.5,11.9],[65,17.5],[60.5,27.5],[60.5,40.8],[57.3,52.6],[51,59.9],[43.4,63.8],[35.2,63.9],[27.5,60.1],[21.1,53.2],[17.7,41.5],[17.7,25.9],[17.9,10.3],[18.1,-5.3],[16.8,-20.2],[11.3,-29.6],[4.1,-35.3],[-4.2,-37.1],[-12.8,-35],[-21.5,-29.9],[-31.6,-19.5],[-44.6,-12.6],[-59.4,-8.6],[-74.5,-5.5],[-89.2,-1.4],[-102,5.7],[-111.7,16.5],[-119,29.8],[-126.8,42.6],[-137.2,53.2],[-150.3,60.2],[-164.8,62.8],[-179.8,61.5],[-194.1,56.4],[-207,48.4],[-217.8,37.6],[-226.2,24.8],[-232.1,10.8],[-235.9,-3.8],[-236.6,-15.9],[-231.8,-26],[-224.9,-31.4],[-217.5,-33.5],[-210.1,-31.8],[-202.9,-27.1],[-197.4,-19.3],[-190.1,-14.1],[-181.6,-11.7],[-172.9,-13.4],[-165,-18.8],[-159.4,-28.9],[-159,-44.2],[-159.6,-59.7],[-159.8,-75.1],[-155.1,-85.3],[-148,-91.1],[-139.8,-93.4],[-131.2,-91.8],[-123,-87.5],[-115.3,-81.4],[-107.1,-78.2],[-98.9,-78.8],[-91.2,-83.3],[-84.5,-90.8],[-80.1,-104.4],[-73.7,-117.7],[-63.8,-126.8],[-51.3,-129.2],[-38.7,-124.8],[-26.7,-116.5],[-13.8,-110.1],[0.5,-108.4],[15.6,-110.4],[30.8,-113.2],[46.3,-115.4],[61.8,-117],[77.4,-118.3],[92.8,-119.5],[108.4,-120.8]];
 /** Road height: the fingers go down into the canyon, the humps rise a little. */
+/** The layout was scaled up by SC (and its tightest curves opened) after drawing; heights keep the drawing's coordinates. */
+const SC = 1.3;
 const roadH = (x: number, z: number) => -7 * THREE.MathUtils.smoothstep(z, -45, 70) + 3.5 * Math.exp(-((x + 125) ** 2 + (z + 35) ** 2) / 2600);
 
-export const CANYON: TrackDef = {
+export const CANYON: TrackDef = withSpiral({
   id: 'canyon', name: 'Canyon Run', laps: 2, waterY: -30,
-  cps: PTS.map(([x, z]) => ({ x, z, y: roadH(x, z), w: 6.5, apron: 3 } as CP)),
+  cps: PTS.map(([x, z]) => ({ x, z, y: roadH(x / SC, z / SC), w: 6.5, apron: 3 } as CP)),
   features: [
     { kind: 'boost', at: 4, off: 0, d: 0 },
     { kind: 'boost', at: 30, off: 0, d: -2 },
@@ -30,7 +32,7 @@ export const CANYON: TrackDef = {
     { at: 2, off: 0, d: -2, n: 5 }, { at: 24, off: 0, d: 2, n: 5 }, { at: 40, off: 0, d: 0, n: 5 }, { at: 56, off: 0, d: -1.5, n: 5, dd: 0.6 },
     { at: 68, off: 0, d: 1.5, n: 5 }, { at: 88, off: 0, d: 0, n: 5 }, { at: 114, off: 0, d: 2, n: 5 },
   ],
-};
+}, 113, { side: -1, drop: 13 });
 
 export const CANYON_STYLE: TrackStyle = { road: 'asphalt', kerb: [0xff7a1a, 0xf4f4f2], apron: [0xe2b27c, 0xd9a670], wall: 'rail', edge: 'bank', bank: 0xc8643c, gapFace: 0xb5502e, baseY: -24 };
 
@@ -40,7 +42,13 @@ export function buildCanyon(track: Track): Scenery {
   const c = city(track, 1880);
   const { world, glossy, glow, group, rand } = c;
   const F = track.frames, sparse = F.filter((_, i) => i % 3 === 0);
-  const nearest = (x: number, z: number) => { let best = Infinity, f0 = sparse[0]; for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } } return { d: best - (f0.w + KERB + f0.apron), y: f0.p.y - Math.abs(f0.bank) * (f0.w + KERB) - 0.35 }; };
+  // (under a bridge the ground follows the lower road)
+  const nearest = (x: number, z: number) => {
+    let best = Infinity, f0 = sparse[0], low: typeof f0 | null = null;
+    for (const f of sparse) { const d = Math.hypot(x - f.p.x, z - f.p.z); if (d < best) { best = d; f0 = f; } if (d < f.w + KERB + f.apron + 5 && (!low || f.p.y < low.p.y)) low = f; }
+    const g = low ?? f0;
+    return { d: best - (f0.w + KERB + f0.apron), y: g.p.y - Math.abs(g.bank) * (g.w + KERB) - 0.35 };
+  };
   const noise = (x: number, z: number) => Math.sin(x * 0.045) * Math.cos(z * 0.052) * 0.5 + Math.sin(x * 0.013 + z * 0.017) * 0.5;
 
   /* ---------------- the canyon: walls rise from the road to the mesa tops ---------------- */
@@ -65,6 +73,12 @@ export function buildCanyon(track: Track): Scenery {
     const y0 = ground(x, z), hh = 6 + rand() * 8;
     for (let j = 0; j < 4; j++) world.add(U.blob, STRATA[(k + j) % STRATA.length], x, y0 + (j + 0.5) * hh / 4, z, 1.6 - j * 0.2, hh / 7, 1.6 - j * 0.2);
     world.add(U.blob, 0x8a4a2c, x, y0 + hh + 0.4, z, 2.2, 0.8, 2.2);
+  }
+  // a striped rock tower in the middle of the spiral
+  for (const sp of track.def.spirals ?? []) {
+    const gy = ground(sp.x, sp.z), h = sp.top - gy + 14;
+    for (let j = 0; j < 7; j++) world.add(U.cyl, STRATA[j % STRATA.length], sp.x, gy + (j + 0.5) * h / 7, sp.z, 12 - j * 0.7, h / 7 + 0.05, 11 - j * 0.6);
+    world.add(U.cyl, 0xd29a5c, sp.x, gy + h + 0.4, sp.z, 8.4, 0.8, 7.6);
   }
   // cacti on the canyon floor and the mesas
   const cactus = (x: number, z: number, s: number) => {

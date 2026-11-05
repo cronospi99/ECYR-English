@@ -208,3 +208,205 @@ export class SpeedLines {
   }
   dispose() { this.mesh.geometry.dispose(); this.mat.dispose(); }
 }
+
+/** Comic words that pop over an impact (POW!, SPLAT!…): drawn once per word. */
+const wordCache = new Map<string, THREE.CanvasTexture>();
+function wordTexture(text: string, fill: string) {
+  const key = text + fill;
+  let t = wordCache.get(key);
+  if (t) return t;
+  const cv = document.createElement('canvas');
+  cv.width = 512; cv.height = 256;
+  const c = cv.getContext('2d')!;
+  // a jagged burst behind the word
+  c.translate(256, 128);
+  c.beginPath();
+  for (let i = 0; i < 28; i++) { const a = (i / 28) * Math.PI * 2, r = i % 2 ? 92 : 124 + (i % 4) * 6; c.lineTo(Math.cos(a) * r * 1.9, Math.sin(a) * r * 0.95); }
+  c.closePath();
+  c.fillStyle = '#ffffff'; c.fill();
+  c.lineWidth = 12; c.strokeStyle = '#10204a'; c.stroke();
+  c.rotate(-0.08);
+  c.font = '900 120px Inter, system-ui, sans-serif';
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  c.lineJoin = 'round'; c.lineWidth = 22; c.strokeStyle = '#10204a'; c.strokeText(text, 0, 8);
+  c.fillStyle = fill; c.fillText(text, 0, 8);
+  t = new THREE.CanvasTexture(cv);
+  t.colorSpace = THREE.SRGBColorSpace;
+  wordCache.set(key, t);
+  return t;
+}
+
+interface Flash { m: THREE.Mesh; mat: THREE.MeshBasicMaterial; t: number; dur: number; r: number }
+interface Wave { m: THREE.Mesh; mat: THREE.MeshBasicMaterial; t: number; dur: number; r: number }
+interface Word { s: THREE.Sprite; mat: THREE.SpriteMaterial; t: number; dur: number; size: number; y0: number }
+interface Shard { x: number; y: number; z: number; vx: number; vy: number; vz: number; rx: number; ry: number; wx: number; wy: number; life: number; sc: number }
+
+/** Big hits: a flash of light, a shock ring rolling over the ground, shreds of paper (or pages,
+    or ink) flying and tumbling, and a comic word popping out. */
+export class Blasts {
+  readonly group = new THREE.Group();
+  private flashes: Flash[] = [];
+  private waves: Wave[] = [];
+  private words: Word[] = [];
+  private shards: Shard[] = [];
+  private shardMesh: THREE.InstancedMesh;
+  private nextShard = 0;
+  private sphere = new THREE.SphereGeometry(1, 20, 14);
+  private ring = new THREE.RingGeometry(0.78, 1, 64).rotateX(-Math.PI / 2);
+  private o = new THREE.Object3D();
+  private col = new THREE.Color();
+  constructor(private maxShards = 260) {
+    for (let i = 0; i < 6; i++) {
+      const mat = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false });
+      const m = new THREE.Mesh(this.sphere, mat); m.visible = false; m.renderOrder = 6;
+      this.flashes.push({ m, mat, t: 1, dur: 1, r: 1 }); this.group.add(m);
+    }
+    for (let i = 0; i < 10; i++) {
+      const mat = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: -4 });
+      const m = new THREE.Mesh(this.ring, mat); m.visible = false; m.renderOrder = 6;
+      this.waves.push({ m, mat, t: 1, dur: 1, r: 1 }); this.group.add(m);
+    }
+    for (let i = 0; i < 6; i++) {
+      const mat = new THREE.SpriteMaterial({ transparent: true, depthTest: false, depthWrite: false, toneMapped: false });
+      const s = new THREE.Sprite(mat); s.visible = false; s.renderOrder = 9;
+      this.words.push({ s, mat, t: 1, dur: 1, size: 1, y0: 0 }); this.group.add(s);
+    }
+    this.shardMesh = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.42, 0.3), new THREE.MeshStandardMaterial({ roughness: 0.7, side: THREE.DoubleSide }), maxShards);
+    this.shardMesh.frustumCulled = false;
+    this.shardMesh.castShadow = true;
+    for (let i = 0; i < maxShards; i++) { this.shards.push({ x: 0, y: -999, z: 0, vx: 0, vy: 0, vz: 0, rx: 0, ry: 0, wx: 0, wy: 0, life: 0, sc: 1 }); this.shardMesh.setColorAt(i, this.col.set(0xffffff)); }
+    this.group.add(this.shardMesh);
+  }
+  private pick<T extends { t: number; dur: number }>(a: T[]) { let best = a[0]; for (const x of a) if (x.t / x.dur > best.t / best.dur) best = x; return best; }
+  /** A ball of light that swells and fades. */
+  flash(p: THREE.Vector3, r: number, color: THREE.ColorRepresentation, dur = 0.32) {
+    const f = this.pick(this.flashes);
+    f.t = 0; f.dur = dur; f.r = r; f.mat.color.set(color); f.m.position.copy(p); f.m.visible = true;
+  }
+  /** A ring rolling out over the ground (or tilted to `up`). */
+  wave(p: THREE.Vector3, r: number, color: THREE.ColorRepresentation, dur = 0.55, up?: THREE.Vector3) {
+    const w = this.pick(this.waves);
+    w.t = 0; w.dur = dur; w.r = r; w.mat.color.set(color); w.m.position.copy(p); w.m.visible = true;
+    if (up) w.m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), up); else w.m.quaternion.identity();
+  }
+  /** Shreds flying out from p (colours picked at random from the list). */
+  shreds(p: THREE.Vector3, n: number, colors: THREE.ColorRepresentation[], speed = 9, up = 7, size = 1) {
+    for (let k = 0; k < n; k++) {
+      const i = this.nextShard; this.nextShard = (this.nextShard + 1) % this.maxShards;
+      const s = this.shards[i], a = Math.random() * Math.PI * 2, v = speed * (0.35 + Math.random() * 0.65);
+      Object.assign(s, { x: p.x, y: p.y, z: p.z, vx: Math.cos(a) * v, vy: up * (0.5 + Math.random()), vz: Math.sin(a) * v, rx: Math.random() * 6, ry: Math.random() * 6, wx: (Math.random() - 0.5) * 22, wy: (Math.random() - 0.5) * 22, life: 1.1 + Math.random() * 0.9, sc: size * (0.6 + Math.random() * 0.8) });
+      this.shardMesh.setColorAt(i, this.col.set(colors[k % colors.length]));
+    }
+    if (this.shardMesh.instanceColor) this.shardMesh.instanceColor.needsUpdate = true;
+  }
+  /** A comic word over p. */
+  word(p: THREE.Vector3, text: string, fill: string, size = 3.2, dur = 0.9) {
+    const w = this.pick(this.words);
+    w.t = 0; w.dur = dur; w.size = size; w.y0 = p.y;
+    w.mat.map = wordTexture(text, fill); w.mat.needsUpdate = true;
+    w.s.position.copy(p); w.s.visible = true;
+  }
+  update(dt: number, cam?: THREE.Vector3) {
+    for (const f of this.flashes) {
+      if (!f.m.visible) continue;
+      f.t += dt; const k = f.t / f.dur;
+      if (k >= 1) { f.m.visible = false; continue; }
+      f.m.scale.setScalar(f.r * (0.35 + 0.65 * (1 - Math.pow(1 - k, 3))));
+      f.mat.opacity = Math.pow(1 - k, 1.6);
+    }
+    for (const w of this.waves) {
+      if (!w.m.visible) continue;
+      w.t += dt; const k = w.t / w.dur;
+      if (k >= 1) { w.m.visible = false; continue; }
+      w.m.scale.setScalar(0.5 + w.r * (1 - Math.pow(1 - k, 2.4)));
+      w.mat.opacity = 0.95 * (1 - k);
+    }
+    for (const w of this.words) {
+      if (!w.s.visible) continue;
+      w.t += dt; const k = w.t / w.dur;
+      if (k >= 1) { w.s.visible = false; continue; }
+      // pop in with an overshoot, hang, then fade while rising
+      const pop = k < 0.18 ? Math.sin((k / 0.18) * Math.PI * 0.5) * 1.25 : 1.25 - Math.min(0.25, (k - 0.18) * 1.6);
+      w.s.scale.set(w.size * pop, w.size * pop * 0.5, 1);
+      w.s.position.y = w.y0 + k * 1.6;
+      w.mat.opacity = k < 0.7 ? 1 : 1 - (k - 0.7) / 0.3;
+      w.mat.rotation = Math.sin(k * 20) * 0.06 * (1 - k);
+    }
+    const o = this.o;
+    for (let i = 0; i < this.maxShards; i++) {
+      const s = this.shards[i];
+      if (s.life <= 0) { if (s.y > -900) { s.y = -999; o.position.set(0, -999, 0); o.scale.setScalar(0.0001); o.updateMatrix(); this.shardMesh.setMatrixAt(i, o.matrix); } continue; }
+      s.life -= dt;
+      const dr = Math.exp(-2.2 * dt);
+      s.vx *= dr; s.vz *= dr; s.vy = s.vy * dr - 13 * dt;
+      // paper flutters: falling slowly once it has lost its push
+      if (s.vy < -3.5) s.vy = -3.5;
+      s.x += s.vx * dt; s.y += s.vy * dt; s.z += s.vz * dt;
+      s.rx += s.wx * dt; s.ry += s.wy * dt;
+      // shreds right in front of the camera shrink away instead of filling the screen
+      const near = cam ? Math.min(1, Math.max(0, (Math.hypot(s.x - cam.x, s.y - cam.y, s.z - cam.z) - 1.2) / 2.5)) : 1;
+      o.position.set(s.x, s.y, s.z); o.rotation.set(s.rx, s.ry, 0); o.scale.setScalar(s.sc * Math.min(1, s.life * 3) * near);
+      o.updateMatrix(); this.shardMesh.setMatrixAt(i, o.matrix);
+    }
+    this.shardMesh.instanceMatrix.needsUpdate = true;
+  }
+  clear() { for (const f of this.flashes) f.m.visible = false; for (const w of this.waves) w.m.visible = false; for (const w of this.words) w.s.visible = false; for (const s of this.shards) s.life = 0; }
+  dispose() {
+    this.sphere.dispose(); this.ring.dispose(); this.shardMesh.geometry.dispose(); (this.shardMesh.material as THREE.Material).dispose();
+    for (const f of this.flashes) f.mat.dispose(); for (const w of this.waves) w.mat.dispose(); for (const w of this.words) w.mat.dispose();
+  }
+}
+
+/** Wind: thin glowing ribbons streaming off the rear wing tips at speed (each kart has two). */
+export class Ribbons {
+  readonly mesh: THREE.Mesh;
+  private pts: THREE.Vector3[][];
+  private n: number[];
+  private pos: Float32Array; private col: Float32Array;
+  private a = new THREE.Vector3(); private b = new THREE.Vector3(); private sd = new THREE.Vector3();
+  constructor(private trails = 20, private len = 22, private width = 0.07) {
+    this.pts = Array.from({ length: trails }, () => Array.from({ length: len }, () => new THREE.Vector3()));
+    this.n = new Array(trails).fill(0);
+    const nv = trails * len * 2;
+    this.pos = new Float32Array(nv * 3); this.col = new Float32Array(nv * 3);
+    const idx: number[] = [];
+    for (let t = 0; t < trails; t++) for (let j = 0; j < len - 1; j++) { const q = (t * len + j) * 2; idx.push(q, q + 2, q + 1, q + 1, q + 2, q + 3); }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(this.pos, 3).setUsage(THREE.DynamicDrawUsage));
+    g.setAttribute('color', new THREE.BufferAttribute(this.col, 3).setUsage(THREE.DynamicDrawUsage));
+    g.setIndex(idx);
+    this.mesh = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, toneMapped: false }));
+    this.mesh.frustumCulled = false;
+    this.mesh.renderOrder = 5;
+  }
+  /** Add the newest point of trail i (null fades it out). */
+  push(i: number, p: THREE.Vector3 | null) {
+    if (i >= this.trails) return;
+    if (!p) { this.n[i] = Math.max(0, this.n[i] - 2); return; }
+    const P = this.pts[i];
+    const last = P.pop()!; last.copy(p); P.unshift(last);
+    this.n[i] = Math.min(this.len, this.n[i] + 1);
+  }
+  update(cam: THREE.Vector3, strength: number[], color: THREE.Color) {
+    const pos = this.pos, col = this.col;
+    for (let t = 0; t < this.trails; t++) {
+      const P = this.pts[t], n = this.n[t], k = strength[t >> 1] ?? 0;
+      for (let j = 0; j < this.len; j++) {
+        const v = (t * this.len + j) * 6;
+        if (j >= n || n < 3) { for (let q = 0; q < 6; q++) col[v + q] = 0; pos[v] = pos[v + 3] = P[0].x; pos[v + 1] = pos[v + 4] = P[0].y; pos[v + 2] = pos[v + 5] = P[0].z; continue; }
+        const p = P[j], a = P[Math.max(0, j - 1)], b = P[Math.min(n - 1, j + 1)];
+        this.a.subVectors(a, b); this.b.subVectors(cam, p);
+        this.sd.crossVectors(this.a, this.b).normalize().multiplyScalar(this.width * (1 - j / n * 0.6));
+        pos[v] = p.x + this.sd.x; pos[v + 1] = p.y + this.sd.y; pos[v + 2] = p.z + this.sd.z;
+        pos[v + 3] = p.x - this.sd.x; pos[v + 4] = p.y - this.sd.y; pos[v + 5] = p.z - this.sd.z;
+        const f = k * Math.sin(Math.PI * Math.min(1, (j + 0.5) / n)) * (j === 0 ? 0 : 1);
+        for (const o of [0, 3]) { col[v + o] = color.r * f; col[v + o + 1] = color.g * f; col[v + o + 2] = color.b * f; }
+      }
+    }
+    const g = this.mesh.geometry;
+    (g.getAttribute('position') as THREE.BufferAttribute).needsUpdate = true;
+    (g.getAttribute('color') as THREE.BufferAttribute).needsUpdate = true;
+  }
+  clear() { this.n.fill(0); }
+  dispose() { this.mesh.geometry.dispose(); (this.mesh.material as THREE.Material).dispose(); }
+}
