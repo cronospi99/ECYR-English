@@ -1,6 +1,8 @@
 /* English Racers — live class mode (phase 3). The teacher's screen (RacersHost) opens a room with a
    code and a QR; the students join from their phones (RacersClient) with a name and a driver.
-   The teacher picks the track, laps, English level and items and starts the race: every phone
+   By default it is a Grand Prix on random tracks (3–6 races, each one starts by itself a few
+   seconds after the results, the points add up, a podium at the end); a single race on a chosen
+   track is the other option. The teacher picks laps, English level and items: every phone
    drives its own kart and sees the classmates as karts moving on the same track. The winner is
    whoever makes the fewest mistakes at the question gates and keeps the most coins:
    score = right × 100 − wrong × 50 + coins × 10 (also added up over the session).
@@ -17,12 +19,26 @@ import { scoreOf } from './racer';
 
 export const MAX_STUDENTS = 30;
 const SNAP_MS = 160;
+/** Seconds on the results before the next Grand Prix race (and before the final podium). */
+export const GP_NEXT_S = 20, GP_PODIUM_S = 15;
+/** Distinct random tracks for a Grand Prix. */
+export function rollGp(n: number): TrackId[] {
+  const ids = TRACKS.map((x) => x.id);
+  for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]]; }
+  return ids.slice(0, Math.max(1, Math.min(ids.length, n)));
+}
 
 export type LivePhase = 'lobby' | 'race' | 'results' | 'podium';
-export interface LiveSettings { track: TrackId | 'random'; laps: number; level: RunLevel; items: boolean; /** Seconds the others get after the first one finishes. */ wait: number }
+export interface LiveSettings {
+  /** A Grand Prix on random tracks (the default) or one race. */
+  mode: 'gp' | 'single'; races: number;
+  track: TrackId | 'random'; laps: number; level: RunLevel; items: boolean; /** Seconds the others get after the first one finishes. */ wait: number;
+}
+/** The Grand Prix being raced: its tracks and how many have started. */
+export interface LiveGp { tracks: TrackId[]; round: number }
 export interface LivePlayer { peer: string; name: string; toon: string; online: boolean; total: number }
 export interface LiveResult { peer: string; name: string; toon: string; right: number; wrong: number; bank: number; score: number; total: number; time: number; done: boolean; place: number }
-export interface LivePub { ph: LivePhase; set: LiveSettings; players: LivePlayer[]; race: number; track: TrackId | null; left: number; results: LiveResult[] | null }
+export interface LivePub { ph: LivePhase; set: LiveSettings; players: LivePlayer[]; race: number; track: TrackId | null; left: number; results: LiveResult[] | null; gp: LiveGp | null; /** ms until the next race (or the podium) starts by itself; 0 = not scheduled. */ next: number }
 export type Snap = Omit<LiveState, never> & { peer: string };
 
 type Wire = { k: string; [x: string]: unknown };
@@ -50,7 +66,12 @@ export class RacersHost {
   readonly relay: Relay;
   readonly code: string;
   phase: LivePhase = 'lobby';
-  set: LiveSettings = { track: 'random', laps: 2, level: 'A2', items: true, wait: 45 };
+  set: LiveSettings = { mode: 'gp', races: 4, track: 'random', laps: 2, level: 'A2', items: true, wait: 45 };
+  /** The tracks of the next Grand Prix (shown in the lobby; shuffle for others). */
+  plan: TrackId[] = rollGp(4);
+  gp: LiveGp | null = null;
+  /** When the next race (or the podium) starts by itself (ms epoch, 0 = it waits for the teacher). */
+  nextAt = 0;
   players = new Map<string, P>();
   race = 0;
   cfg: LiveCfg | null = null;
@@ -85,8 +106,13 @@ export class RacersHost {
   get list() { return [...this.players.values()].sort((a, b) => a.joinedAt - b.joinedAt); }
   get online() { return this.list.filter((p) => p.online); }
   get left() { return this.endsAt ? Math.max(0, this.endsAt - Date.now()) : 0; }
+  get nextIn() { return this.nextAt ? Math.max(0, this.nextAt - Date.now()) : 0; }
+  /** The Grand Prix has more races to go. */
+  get gpOn() { return !!this.gp && this.gp.round < this.gp.tracks.length; }
+  /** The track of the next Grand Prix race. */
+  get gpNext(): TrackId | null { return this.gp && this.gp.round < this.gp.tracks.length ? this.gp.tracks[this.gp.round] : null; }
   pub(): LivePub {
-    return { ph: this.phase, set: this.set, players: this.list.map(({ peer, name, toon, online, total }) => ({ peer, name, toon, online, total })), race: this.race, track: this.cfg?.track ?? null, left: this.left, results: this.results };
+    return { ph: this.phase, set: this.set, players: this.list.map(({ peer, name, toon, online, total }) => ({ peer, name, toon, online, total })), race: this.race, track: this.cfg?.track ?? null, left: this.left, results: this.results, gp: this.gp, next: this.nextIn };
   }
   /** Live scores during the race (best first). */
   live() {
@@ -98,14 +124,30 @@ export class RacersHost {
     }).sort((a, b) => b.score - a.score || b.dist - a.dist);
   }
 
-  configure(p: Partial<LiveSettings>) { if (this.phase === 'race') return; this.set = { ...this.set, ...p }; this.bump(); }
+  configure(p: Partial<LiveSettings>) {
+    if (this.phase === 'race') return;
+    this.set = { ...this.set, ...p };
+    if (p.races && p.races !== this.plan.length && !this.gp) this.plan = rollGp(p.races);
+    this.bump();
+  }
+  /** Other random tracks for the next Grand Prix. */
+  shuffle() { if (!this.gp) { this.plan = rollGp(this.set.races); this.bump(); } }
   kick(peer: string) { this.relay.send({ k: 'kick' }, peer); this.players.delete(peer); this.bump(); }
 
   start() {
     if (this.phase === 'race') return;
     const roster: LiveEntry[] = this.online.slice(0, MAX_STUDENTS).map((p) => ({ peer: p.peer, name: p.name, toon: p.toon }));
     if (!roster.length) return;
-    const track = this.set.track === 'random' ? TRACKS[Math.floor(Math.random() * TRACKS.length)].id : this.set.track;
+    let track: TrackId;
+    if (this.set.mode === 'gp') {
+      // a new Grand Prix: everybody starts from 0 points
+      if (!this.gpOn) { this.gp = { tracks: [...this.plan], round: 0 }; for (const p of this.players.values()) p.total = 0; }
+      track = this.gp!.tracks[this.gp!.round++];
+    } else {
+      this.gp = null;
+      track = this.set.track === 'random' ? TRACKS[Math.floor(Math.random() * TRACKS.length)].id : this.set.track;
+    }
+    this.nextAt = 0;
     this.race++;
     this.cfg = { track, laps: this.set.laps, level: this.set.level, items: this.set.items, roster, race: this.race };
     this.phase = 'race';
@@ -139,12 +181,25 @@ export class RacersHost {
     this.results = rows;
     this.phase = 'results';
     this.endsAt = 0;
+    // the Grand Prix goes on by itself: the next race, or the podium after the last one
+    if (this.gp) this.nextAt = Date.now() + (this.gpOn ? GP_NEXT_S : GP_PODIUM_S) * 1000;
     this.relay.send({ k: 'res', r: this.race, rows });
     this.bump();
   }
-  toLobby() { if (this.phase === 'race') return; this.phase = 'lobby'; this.results = null; this.onLobby?.(); this.bump(); }
+  /** Results: on with the Grand Prix now (next race, or the podium after the last one). */
+  next() { if (this.phase !== 'results') return; this.nextAt = 0; if (this.gpOn) this.start(); else this.podium(); }
+  /** Results: stop the clock (the teacher wants to talk about the answers). */
+  hold() { this.nextAt = 0; this.bump(); }
+  toLobby() {
+    if (this.phase === 'race') return;
+    this.phase = 'lobby'; this.results = null; this.nextAt = 0;
+    if (!this.gpOn) { this.gp = null; this.plan = rollGp(this.set.races); }
+    this.onLobby?.(); this.bump();
+  }
   podium() {
     if (this.phase === 'race') return;
+    this.nextAt = 0;
+    if (this.gp) this.gp = { ...this.gp, round: this.gp.tracks.length }; // (a podium ends the Grand Prix)
     const totals: Record<string, number> = {};
     for (const p of this.players.values()) totals[p.peer] = p.total;
     this.phase = 'podium';
@@ -164,6 +219,10 @@ export class RacersHost {
       if (list.length) this.onSnap?.(list);
       if (this.endsAt && Date.now() >= this.endsAt) this.endRace();
       this.listeners.forEach((f) => f());
+    }
+    if (this.phase === 'results' && this.nextAt) {
+      if (Date.now() >= this.nextAt) this.next();
+      else this.listeners.forEach((f) => f());
     }
     if (this.dirty) { this.dirty = false; this.relay.send({ k: 'pub', st: this.pub() }); }
   }
@@ -230,6 +289,8 @@ export class RacersClient {
   cfg: LiveCfg | null = null;
   results: LiveResult[] | null = null;
   totals: Record<string, number> | null = null;
+  /** When the teacher's next race starts by itself (this phone's clock, 0 = not scheduled). */
+  nextAt = 0;
   private fresh = true;
   private listeners = new Set<() => void>();
   private offs: (() => void)[] = [];
@@ -277,6 +338,7 @@ export class RacersClient {
         if (!fromHost) return;
         const prev = this.pub;
         this.pub = d.st as LivePub;
+        this.nextAt = this.pub.next > 0 ? Date.now() + num(this.pub.next, 0, 120000) : 0;
         if (this.pub.ph === 'lobby' && prev && prev.ph !== 'lobby') { this.results = null; this.totals = null; this.onLobby?.(); }
         this.bump();
         break;

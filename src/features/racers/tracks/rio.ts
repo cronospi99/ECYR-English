@@ -14,7 +14,7 @@ import { birds, boats, building, bunting, city, crowd, done, fallers, fillGrid, 
 export const RIO: TrackDef = {
   id: 'rio', name: 'Rio Carnival', laps: 3,
   cps: [
-    { x: -120, z: 0 }, { x: -30, z: 2 }, { x: 60, z: 0 }, { x: 110, z: 10 }, { x: 135, z: 45, y: 2 }, { x: 120, z: 85, y: 6 }, { x: 80, z: 95, y: 9 }, { x: 55, z: 125, y: 11 }, { x: 40, z: 160, y: 11 },
+    { x: -120, z: 0 }, { x: -30, z: 2 }, { x: 60, z: 0 }, { x: 110, z: 10 }, { x: 127.8, z: 44.6, y: 2 }, { x: 111.8, z: 77.4, y: 6 }, { x: 80, z: 95, y: 9 }, { x: 55, z: 125, y: 11 }, { x: 40, z: 160, y: 11 },
     { x: 0, z: 185, y: 5 }, { x: -40, z: 195 }, { x: -150, z: 195 }, { x: -185, z: 170 }, { x: -195, z: 120 }, { x: -190, z: 60 }, { x: -170, z: 20 },
   ],
   features: [

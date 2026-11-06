@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Play, Square, Trophy, Users, Volume2, VolumeX, Wifi, WifiOff, X } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, Shuffle, SkipForward, Square, Trophy, Users, Volume2, VolumeX, Wifi, WifiOff, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
 import { GameTitle } from '@/components/brand/GameTitle';
@@ -15,7 +15,7 @@ import { t, useGameLang } from '@/lib/gameLang';
 import { RUN_LEVELS } from '@/features/run/questions';
 import { RaceGame, fmt, ordinal, type Hud } from './engine';
 import { TRACKS, trackInfo, type TrackId } from './tracks';
-import { RacersHost, RacersClient, cleanName, type LivePlayer } from './live';
+import { GP_NEXT_S, RacersHost, RacersClient, cleanName, type LivePlayer, type LivePub } from './live';
 import { SCORE } from './racer';
 import { CSS, Btn, Dot, PLACE_COL, Seg, Toggle, initialToon, useClient } from './ui';
 import { prefs, setPref, unlock } from './audio';
@@ -67,7 +67,7 @@ export function LiveClassHome() {
           <GameTitle word="RACERS" theme="racers" className="mt-2 h-auto w-[260px] sm:w-[380px]" />
           <div className="mt-1 rounded-full bg-[#ffd23f] px-4 py-1 text-[15px] font-black text-[#2a1d00]">{t('LIVE WITH YOUR CLASS', 'EN VIVO CON TU CLASE')}</div>
           <p className="mt-3 max-w-[560px] text-center text-[16px] font-bold text-white/85">
-            {t('The teacher opens a room on the projector, the students scan the QR and everybody races on the same track. Every gate is a question.', 'El profe abre una sala en el proyector, los estudiantes escanean el QR y todos corren en la misma pista. Cada arco es una pregunta.')}
+            {t('The teacher opens a room on the projector, the students scan the QR and everybody races together: a Grand Prix on random tracks, points adding up race after race. Every gate is a question.', 'El profe abre una sala en el proyector, los estudiantes escanean el QR y todos corren juntos: un Gran Premio en pistas al azar, con puntos que se suman carrera tras carrera. Cada arco es una pregunta.')}
           </p>
           <div className="rc-panel mt-4 px-4 py-2.5"><Rule /></div>
           <div className="mt-5 grid w-full max-w-[540px] gap-3 sm:grid-cols-2">
@@ -168,6 +168,30 @@ export function LivePlayRoute({ Screen }: { Screen: (p: { client: RacersClient }
   return <Screen client={client} />;
 }
 
+/** A countdown that re-renders itself while the next race is scheduled. */
+function useCountdown(at: number) {
+  const [, force] = useState(0);
+  useEffect(() => { if (!at) return; const id = setInterval(() => force((n) => n + 1), 500); return () => clearInterval(id); }, [at]);
+  return at ? Math.max(0, Math.ceil((at - Date.now()) / 1000)) : 0;
+}
+/** "Grand Prix · race 2 of 4" (or null for a single race). */
+function gpLabel(pub: LivePub | null) {
+  const gp = pub?.gp; if (!gp) return null;
+  return `${t('Grand Prix', 'Gran Premio')} · ${t('race', 'carrera')} ${Math.max(1, gp.round)} ${t('of', 'de')} ${gp.tracks.length}`;
+}
+/** What comes next in the Grand Prix, with the seconds left. */
+function GpNext({ client }: { client: RacersClient }) {
+  const secs = useCountdown(client.nextAt), gp = client.pub?.gp;
+  if (!gp || client.pub?.ph !== 'results') return null;
+  const more = gp.round < gp.tracks.length, nxt = more ? trackInfo(gp.tracks[gp.round]) : null;
+  return (
+    <div className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#ffd23f] px-3 py-2 text-[14px] font-black text-[#2a1d00]">
+      {more ? <><Flag size={16} />{t('Next', 'Siguiente')}: {tname(nxt!.name)} ({gp.round + 1}/{gp.tracks.length})</> : <><Trophy size={16} />{t('Grand Prix podium', 'Podio del Gran Premio')}</>}
+      {secs > 0 && <span className="rounded-full bg-black/15 px-2 tabular-nums">{secs} s</span>}
+    </div>
+  );
+}
+
 /** The student's waiting room (over the 3D view of their kart). */
 export function LiveLobby({ client, driver, onPick, gasSeg }: { client: RacersClient; driver: { name: string; color: string }; onPick: (d: number) => void; gasSeg: ReactNode }) {
   useGameLang();
@@ -177,9 +201,9 @@ export function LiveLobby({ client, driver, onPick, gasSeg }: { client: RacersCl
   const others = (pub?.players ?? []).filter((p) => p.online);
   let status: ReactNode;
   if (client.net !== 'open' || !pub) status = <>{t('Connecting to room', 'Conectando a la sala')} <b>{client.code}</b>…</>;
-  else if (pub.ph === 'race') status = t('A race is on. You will join the next one!', 'Hay una carrera en curso. ¡Entras en la siguiente!');
+  else if (pub.ph === 'race') status = pub.gp ? t('A Grand Prix race is on. You will join the next one!', 'Hay una carrera del Gran Premio en curso. ¡Entras en la siguiente!') : t('A race is on. You will join the next one!', 'Hay una carrera en curso. ¡Entras en la siguiente!');
   else if (pub.ph === 'results' || pub.ph === 'podium') status = t('Results on the big screen. Get ready for the next race!', 'Resultados en la pantalla grande. ¡Prepárate para la siguiente!');
-  else status = t("You're in! Your teacher will start the race.", '¡Ya estás! Tu profe va a empezar la carrera.');
+  else status = pub.set.mode === 'gp' ? t("You're in! Your teacher will start the Grand Prix: several tracks, points add up.", '¡Ya estás! Tu profe va a empezar el Gran Premio: varias pistas, los puntos se suman.') : t("You're in! Your teacher will start the race.", '¡Ya estás! Tu profe va a empezar la carrera.');
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col p-3 pt-[max(12px,env(safe-area-inset-top))] pb-[max(12px,env(safe-area-inset-bottom))] sm:p-5">
       <div className="pointer-events-auto flex items-center gap-2">
@@ -277,7 +301,7 @@ export function LiveResults({ client, hud }: { client: RacersClient; hud: Hud })
             <span className="rc-num text-[24px]">= {live.score}</span>
           </div>
         )}
-        {hud.results && <div className="text-center text-[12.5px] font-bold text-white/60">{tname(trackInfo(hud.track).name)} · {fmt(hud.results.total)}</div>}
+        {hud.results && <div className="text-center text-[12.5px] font-bold text-white/60">{gpLabel(client.pub) && <>{gpLabel(client.pub)} · </>}{tname(trackInfo(hud.track).name)} · {fmt(hud.results.total)}</div>}
         {hud.results && hud.results.earned > 0 && <div className="mt-1 flex items-center justify-center gap-1.5 text-[13px] font-black text-[#ffe27a]"><Coins size={15} />+{hud.results.earned} {t('coins for the garage', 'monedas para el garaje')}</div>}
         <div className="mt-2.5">
           {res ? <ResultTable rows={res} me={client.peer} /> : (
@@ -304,7 +328,8 @@ export function LiveResults({ client, hud }: { client: RacersClient; hud: Hud })
             )}
           </div>
         )}
-        <div className="mt-3 text-center text-[12.5px] font-bold text-white/60">{t('Your teacher starts the next race from the big screen.', 'Tu profe empieza la siguiente carrera desde la pantalla grande.')}</div>
+        <GpNext client={client} />
+        {!client.pub?.gp && <div className="mt-3 text-center text-[12.5px] font-bold text-white/60">{t('Your teacher starts the next race from the big screen.', 'Tu profe empieza la siguiente carrera desde la pantalla grande.')}</div>}
       </div>
     </motion.div>
   );
@@ -330,7 +355,7 @@ export function LivePodium({ client }: { client: RacersClient }) {
   return (
     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="absolute inset-x-0 bottom-0 flex justify-center p-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:top-0 sm:left-auto sm:items-center sm:p-5">
       <div className="rc-panel rc-scroll max-h-[48dvh] w-full max-w-[460px] p-4 sm:max-h-[calc(100dvh-24px)] sm:w-[360px]">
-        <div className="rc-num text-center text-[26px] text-[#ffd23f] sm:text-[32px]">{t('CLASS PODIUM', 'PODIO DE LA CLASE')}</div>
+        <div className="rc-num text-center text-[26px] text-[#ffd23f] sm:text-[32px]">{client.pub?.gp ? t('GRAND PRIX PODIUM', 'PODIO DEL GRAN PREMIO') : t('CLASS PODIUM', 'PODIO DE LA CLASE')}</div>
         <div className="mt-2"><TotalsList players={players} me={client.peer} /></div>
       </div>
     </motion.div>
@@ -404,7 +429,7 @@ function HostScreen({ host }: { host: RacersHost }) {
         </div>
         {ph === 'race' && ti && (
           <div className="rc-panel px-3 py-1.5">
-            <div className="text-[11px] font-extrabold tracking-wide text-white/60 uppercase">{t('Race', 'Carrera')} {host.race} · {host.cfg!.laps} {t('laps', 'vueltas')}</div>
+            <div className="text-[11px] font-extrabold tracking-wide text-white/60 uppercase">{host.gp ? `${t('Grand Prix', 'Gran Premio')} · ${t('race', 'carrera')} ${host.gp.round}/${host.gp.tracks.length}` : `${t('Race', 'Carrera')} ${host.race}`} · {host.cfg!.laps} {t('laps', 'vueltas')}</div>
             <div className="text-[18px] leading-tight font-black" style={{ color: ti.color }}>{tname(ti.name)}</div>
           </div>
         )}
@@ -424,6 +449,28 @@ function HostScreen({ host }: { host: RacersHost }) {
               <div className="rc-panel w-full px-3 py-2"><Rule className="justify-center" /></div>
             </div>
             <div className="rc-panel flex flex-col gap-3 p-4">
+              <div className="grid gap-2 sm:grid-cols-2">
+                <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Mode', 'Modo')}</div>
+                  <Seg<'gp' | 'single'> value={set.mode} onChange={(m) => host.configure({ mode: m })} options={[{ id: 'gp', label: t('Grand Prix', 'Gran Premio') }, { id: 'single', label: t('One race', 'Una carrera') }]} /></div>
+                {set.mode === 'gp' && <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Races', 'Carreras')}</div>
+                  <Seg value={String(set.races) as '4'} onChange={(v) => host.configure({ races: Number(v) })} options={['3', '4', '5', '6'].map((v) => ({ id: v as '4', label: v }))} /></div>}
+              </div>
+              {set.mode === 'gp' ? (
+                <div className="rounded-2xl bg-white/8 p-2.5">
+                  <div className="mb-1.5 flex items-center justify-between gap-2 px-0.5">
+                    <span className="text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{host.gpOn ? t('Grand Prix in progress', 'Gran Premio en curso') : t('Random tracks', 'Pistas al azar')}</span>
+                    {!host.gpOn && <button type="button" onClick={() => host.shuffle()} className="inline-flex items-center gap-1 rounded-full bg-white/14 px-2.5 py-1 text-[12px] font-black hover:bg-white/24"><Shuffle size={13} /> {t('Shuffle', 'Otras pistas')}</button>}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(host.gp && host.gpOn ? host.gp.tracks : host.plan).map((id, i) => { const tr = trackInfo(id); const done = !!host.gp && host.gpOn && i < host.gp.round; return (
+                      <span key={id + i} className={cn('inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[12.5px] font-extrabold', done && 'opacity-45')}>
+                        <span className="grid h-4 w-4 place-items-center rounded-full text-[10px] text-[#10204a]" style={{ background: tr.color }}>{done ? <Check size={11} /> : i + 1}</span>{tname(tr.name)}
+                      </span>
+                    ); })}
+                  </div>
+                  <div className="mt-1.5 px-0.5 text-[12px] font-bold text-white/60">{t(`Each race starts by itself ${GP_NEXT_S} s after the results (you can pause it). Points add up; podium at the end.`, `Cada carrera empieza sola ${GP_NEXT_S} s después de los resultados (puedes pausar). Los puntos se suman; podio al final.`)}</div>
+                </div>
+              ) : (
               <div>
                 <div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Track', 'Pista')}</div>
                 <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
@@ -435,6 +482,7 @@ function HostScreen({ host }: { host: RacersHost }) {
                   ))}
                 </div>
               </div>
+              )}
               <div className="grid gap-2 sm:grid-cols-2">
                 <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('English level', 'Nivel de inglés')}</div>
                   <Seg value={set.level} onChange={(l) => host.configure({ level: l })} options={RUN_LEVELS.map((l) => ({ id: l.id, label: l.id }))} /></div>
@@ -459,7 +507,7 @@ function HostScreen({ host }: { host: RacersHost }) {
                 )}
               </div>
               <div className="mt-auto flex gap-2">
-                <Btn tone="green" className="h-14 flex-1 text-[20px]" disabled={!online.length || host.net !== 'open'} onClick={() => { unlock(); host.start(); }}><Play size={22} fill="currentColor" /> {t('START RACE', 'EMPEZAR CARRERA')}</Btn>
+                <Btn tone="green" className="h-14 flex-1 text-[20px]" disabled={!online.length || host.net !== 'open'} onClick={() => { unlock(); host.start(); }}><Play size={22} fill="currentColor" /> {set.mode !== 'gp' ? t('START RACE', 'EMPEZAR CARRERA') : host.gpOn ? `${t('CONTINUE', 'SEGUIR')} · ${host.gp!.round + 1}/${host.gp!.tracks.length}` : t('START GRAND PRIX', 'EMPEZAR GRAN PREMIO')}</Btn>
                 {host.race > 0 && <Btn tone="ghost" className="h-14" onClick={() => host.podium()}><Trophy size={19} /> {t('Podium', 'Podio')}</Btn>}
               </div>
             </div>
@@ -498,14 +546,25 @@ function HostScreen({ host }: { host: RacersHost }) {
       {ph === 'results' && host.results && (
         <div className="absolute inset-0 grid place-items-center overflow-y-auto bg-[#0a1230]/55 p-3 pt-[76px]">
           <div className="rc-panel w-full max-w-[640px] p-4">
-            <div className="rc-num text-center text-[30px] text-[#ffd23f]">{t('RESULTS', 'RESULTADOS')} · {t('Race', 'Carrera')} {host.race}</div>
-            {ti && <div className="mb-2 text-center text-[13px] font-bold text-white/65">{tname(ti.name)}</div>}
+            <div className="rc-num text-center text-[30px] text-[#ffd23f]">{t('RESULTS', 'RESULTADOS')} · {host.gp ? `${host.gp.round}/${host.gp.tracks.length}` : `${t('Race', 'Carrera')} ${host.race}`}</div>
+            {ti && <div className="mb-2 text-center text-[13px] font-bold text-white/65">{host.gp ? `${t('Grand Prix', 'Gran Premio')} · ` : ''}{tname(ti.name)}</div>}
             <ResultTable rows={host.results} />
             <Rule className="mt-2 justify-center" />
-            <div className="mt-3 flex gap-2">
-              <Btn tone="green" className="flex-1" onClick={() => host.toLobby()}><Flag size={19} /> {t('Next race', 'Siguiente carrera')}</Btn>
-              <Btn tone="yellow" onClick={() => host.podium()}><Trophy size={19} /> {t('Final podium', 'Podio final')}</Btn>
-            </div>
+            {host.gp ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                <Btn tone={host.gpOn ? 'green' : 'yellow'} className="min-w-[220px] flex-1" onClick={() => host.next()}>
+                  {host.gpOn ? <><SkipForward size={19} /> {t('Next', 'Siguiente')}: {tname(trackInfo(host.gpNext!).name)} ({host.gp.round + 1}/{host.gp.tracks.length})</> : <><Trophy size={19} /> {t('Grand Prix podium', 'Podio del Gran Premio')}</>}
+                  {host.nextAt > 0 && <span className="rounded-full bg-black/15 px-2 py-0.5 text-[14px] tabular-nums">{Math.ceil(host.nextIn / 1000)} s</span>}
+                </Btn>
+                {host.nextAt > 0 && <Btn tone="white" onClick={() => host.hold()}><Pause size={18} /> {t('Wait', 'Esperar')}</Btn>}
+                {host.gpOn && <Btn tone="ghost" onClick={() => host.podium()}><Trophy size={19} /> {t('End here', 'Terminar aquí')}</Btn>}
+              </div>
+            ) : (
+              <div className="mt-3 flex gap-2">
+                <Btn tone="green" className="flex-1" onClick={() => host.toLobby()}><Flag size={19} /> {t('Next race', 'Siguiente carrera')}</Btn>
+                <Btn tone="yellow" onClick={() => host.podium()}><Trophy size={19} /> {t('Final podium', 'Podio final')}</Btn>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -514,10 +573,10 @@ function HostScreen({ host }: { host: RacersHost }) {
       {ph === 'podium' && (
         <div className="absolute inset-x-0 bottom-0 flex justify-center p-3 sm:top-0 sm:left-auto sm:items-center sm:p-5">
           <div className="rc-panel rc-scroll max-h-[50dvh] w-full max-w-[460px] p-4 sm:max-h-[calc(100dvh-110px)] sm:w-[380px]">
-            <div className="rc-num text-center text-[28px] text-[#ffd23f]">{t('CLASS PODIUM', 'PODIO DE LA CLASE')}</div>
+            <div className="rc-num text-center text-[28px] text-[#ffd23f]">{host.gp ? t('GRAND PRIX PODIUM', 'PODIO DEL GRAN PREMIO') : t('CLASS PODIUM', 'PODIO DE LA CLASE')}</div>
             <div className="mt-2"><TotalsList players={host.ranking()} /></div>
             <div className="mt-3 flex gap-2">
-              <Btn tone="green" className="flex-1" onClick={() => host.toLobby()}><Flag size={19} /> {t('Another race', 'Otra carrera')}</Btn>
+              <Btn tone="green" className="flex-1" onClick={() => host.toLobby()}><Flag size={19} /> {host.set.mode === 'gp' ? t('New Grand Prix', 'Nuevo Gran Premio') : t('Another race', 'Otra carrera')}</Btn>
               <Link to="/racers/class"><Btn tone="ghost"><Home size={19} /></Btn></Link>
             </div>
           </div>

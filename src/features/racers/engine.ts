@@ -70,7 +70,8 @@ export interface LiveOut {
   bell(victims: string[]): void;
 }
 export interface LiveRow { name: string; color: string; me: boolean; score: number; right: number; wrong: number; bank: number; fin: boolean }
-export interface TouchState { left: boolean; right: boolean; gas: boolean; brake: boolean; drift: boolean; item: boolean }
+export interface TouchState { left: boolean; right: boolean; gas: boolean; brake: boolean; drift: boolean; item: boolean; /** Analog steering from the slider pad (−1 left … 1 right, 0 none). */ steer: number }
+export const TOUCH_OFF: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false, steer: 0 };
 
 const TIER_COLORS = [new THREE.Color(1.3, 1.05, 0.6), new THREE.Color(0.35, 0.8, 2.0), new THREE.Color(2.0, 0.85, 0.2), new THREE.Color(1.6, 0.45, 2.0)];
 const DT = 1 / 120;
@@ -147,8 +148,11 @@ export class RaceGame {
   /** A split second of slow motion when the player is hit (or lands a big hit). */
   private hitStop = 0;
   private hurtCam = 0;
-  private keys = new Set<string>();
-  private touch: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false };
+  /** Keys held, by physical key (e.code) → action: a key always lifts what it pressed. */
+  private keys = new Map<string, string>();
+  private touch: TouchState = { ...TOUCH_OFF };
+  /** Short vibrations on phones (drift levels, hits, walls). */
+  haptics = false;
   private input: KartInput = { ...NO_INPUT };
   private itemPressed = false;
   private lookBack = false;
@@ -491,41 +495,60 @@ export class RaceGame {
 
   /* ------------------------------------------------------------ input */
   private bindInput() {
-    const map: Record<string, string> = { arrowup: 'gas', w: 'gas', arrowdown: 'brake', s: 'brake', arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', ' ': 'drift', shift: 'drift', k: 'drift', c: 'back', e: 'item', x: 'item', l: 'item', control: 'item' };
+    // by physical key (e.code), so Shift, Caps Lock or the keyboard layout never change which
+    // key lifts what; e.key only as a fallback for old browsers
+    const CODES: Record<string, string> = {
+      ArrowUp: 'gas', KeyW: 'gas', ArrowDown: 'brake', KeyS: 'brake', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right',
+      Space: 'drift', ShiftLeft: 'drift', ShiftRight: 'drift', KeyK: 'drift', KeyC: 'back', KeyE: 'item', KeyX: 'item', KeyL: 'item', ControlLeft: 'item', ControlRight: 'item',
+    };
+    const KEYS: Record<string, string> = { arrowup: 'gas', w: 'gas', arrowdown: 'brake', s: 'brake', arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', ' ': 'drift', shift: 'drift', k: 'drift', c: 'back', e: 'item', x: 'item', l: 'item', control: 'item' };
+    const id = (e: KeyboardEvent) => e.code || 'key:' + e.key.toLowerCase();
+    const act = (e: KeyboardEvent) => CODES[e.code] ?? KEYS[e.key.toLowerCase()];
     const down = (e: KeyboardEvent) => {
-      const k = e.key.toLowerCase();
-      if (map[k]) { this.keys.add(map[k]); if (k.startsWith('arrow') || k === ' ') e.preventDefault(); unlock(); }
+      const a = act(e), k = e.key.toLowerCase();
+      if (a && !e.metaKey) { this.keys.set(id(e), a); if (k.startsWith('arrow') || k === ' ') e.preventDefault(); unlock(); }
       if (e.repeat) return;
       if (k === 'escape' || k === 'p') this.togglePause();
       if (k === 'r' && this.state === 'race') this.respawn(this.me);
       if (k === 'enter' && this.state === 'menu') this.start();
     };
-    const up = (e: KeyboardEvent) => { const k = e.key.toLowerCase(); if (map[k]) this.keys.delete(map[k]); };
-    const blur = () => { this.keys.clear(); if (this.state === 'race') this.togglePause(); };
+    const up = (e: KeyboardEvent) => {
+      this.keys.delete(id(e));
+      // (a key let go while ⌘ is held sends no keyup on a Mac: drop everything with ⌘)
+      if (e.key === 'Meta' || e.key === 'OS') this.keys.clear();
+    };
+    const lost = () => { this.keys.clear(); this.touch = { ...TOUCH_OFF }; };
+    const blur = () => { lost(); if (this.state === 'race') this.togglePause(); };
+    const vis = () => { if (document.hidden) blur(); };
     window.addEventListener('keydown', down);
     window.addEventListener('keyup', up);
     window.addEventListener('blur', blur);
-    this.offs.push(() => { window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', blur); });
+    window.addEventListener('pagehide', lost);
+    document.addEventListener('visibilitychange', vis);
+    this.offs.push(() => { window.removeEventListener('keydown', down); window.removeEventListener('keyup', up); window.removeEventListener('blur', blur); window.removeEventListener('pagehide', lost); document.removeEventListener('visibilitychange', vis); });
   }
 
   setTouch(tt: Partial<TouchState>) { Object.assign(this.touch, tt); unlock(); }
+  /** A short vibration (phones that have it). */
+  buzz(ms: number | number[]) { if (this.haptics) try { navigator.vibrate?.(ms); } catch { /* ignore */ } }
 
   private readInput() {
-    const k = this.keys, tc = this.touch;
-    let steer = (k.has('right') || tc.right ? 1 : 0) - (k.has('left') || tc.left ? 1 : 0);
-    let gas = k.has('gas') || tc.gas ? 1 : 0, brake = k.has('brake') || tc.brake ? 1 : 0;
-    let drift = k.has('drift') || tc.drift;
+    const tc = this.touch, held = new Set(this.keys.values());
+    let steer = (held.has('right') || tc.right ? 1 : 0) - (held.has('left') || tc.left ? 1 : 0);
+    if (!steer && tc.steer) steer = tc.steer;
+    let gas = held.has('gas') || tc.gas ? 1 : 0, brake = held.has('brake') || tc.brake ? 1 : 0;
+    let drift = held.has('drift') || tc.drift;
     // on touch screens the drift button also drives; with automatic gas the kart always does
     // (not during the countdown: hold the big button there for a rocket start)
     if (tc.drift) gas = 1;
     if (this.autoGas && this.state !== 'countdown' && !brake) gas = 1;
-    let item = k.has('item') || tc.item;
-    this.lookBack = k.has('back');
+    let item = held.has('item') || tc.item;
+    this.lookBack = held.has('back');
     const pads = typeof navigator !== 'undefined' && navigator.getGamepads ? navigator.getGamepads() : [];
     for (const p of pads) {
       if (!p) continue;
       const ax = p.axes[0] ?? 0;
-      if (Math.abs(ax) > 0.15) steer = ax;
+      if (Math.abs(ax) > 0.15) steer = Math.sign(ax) * Math.min(1, (Math.abs(ax) - 0.15) / 0.75);
       if (p.buttons[14]?.pressed) steer = -1;
       if (p.buttons[15]?.pressed) steer = 1;
       gas = Math.max(gas, p.buttons[0]?.pressed ? 1 : 0, p.buttons[7]?.value ?? 0);
@@ -571,6 +594,7 @@ export class RaceGame {
     this.scenery?.lamps.forEach((m) => { m.color.setHex(0x331111); m.emissive.setHex(0); });
     this.gates?.sites.forEach((g) => this.gates!.ask(g));
     setMusicFast(false);
+    setSong(this.info.id); // the track's song from the top
     startMusic();
     this.lastPlace = this.me.place;
     this.emit();
@@ -1034,6 +1058,7 @@ export class RaceGame {
       this.hitStop = Math.max(this.hitStop, kind === 'ink' ? 0.06 : 0.12);
       this.fov += kind === 'ink' ? 5 : 11;
       this.onSplat?.(kind === 'ink' ? 'ink' : 'hit');
+      this.buzz(kind === 'ink' ? 40 : [60, 40, 90]);
       const what = kind === 'plane' ? t('Paper plane!', '¡Avión de papel!') : kind === 'ink' ? t('Ink!', '¡Tinta!') : t('Watch out!', '¡Cuidado!');
       this.toast(what, '#ff8a8a', by ? `${t('from', 'de')} ${by.name}` : undefined);
     } else {
@@ -1083,7 +1108,7 @@ export class RaceGame {
       const k = r.kart;
       for (const e of k.events) {
         switch (e.e) {
-          case 'tier': r.boostTier = e.tier; if (r.player) sfx.tier(e.tier); break;
+          case 'tier': r.boostTier = e.tier; if (r.player) { sfx.tier(e.tier); this.buzz(10 + e.tier * 8); } break;
           case 'boost':
             r.boostKind = e.kind;
             if (!r.player) break;
@@ -1099,7 +1124,7 @@ export class RaceGame {
             if (e.v > 5) for (let i = 0; i < 14; i++) { const a = (i / 14) * Math.PI * 2; this.smoke.emit(k.pos.x + Math.cos(a) * 0.6, k.pos.y + 0.15, k.pos.z + Math.sin(a) * 0.6, Math.cos(a) * 4, 0.6, Math.sin(a) * 4, 0.6, 1.1, this.c.setRGB(0.92, 0.88, 0.8), { a: 0.5, drag: 3, grow: 1.6 }); }
             break;
           case 'wall': {
-            if (r.player) { sfx.wall(e.v); this.shake = Math.max(this.shake, Math.min(0.4, e.v * 0.03)); if (r.view) r.view.face = 'surprised'; }
+            if (r.player) { sfx.wall(e.v); if (e.v > 6) this.buzz(22); this.shake = Math.max(this.shake, Math.min(0.4, e.v * 0.03)); if (r.view) r.view.face = 'surprised'; }
             const q = k.q;
             if (q) for (let i = 0; i < 12; i++) this.sparks.emit(k.pos.x + q.r.x * Math.sign(q.d) * 0.9, k.pos.y + 0.4, k.pos.z + q.r.z * Math.sign(q.d) * 0.9, (Math.random() - 0.5) * 8, Math.random() * 5, (Math.random() - 0.5) * 8, 0.35, 0.18, this.c.setRGB(2, 1.4, 0.5), { grav: 14, drag: 1 });
             break;
@@ -1517,7 +1542,8 @@ export class RaceGame {
   liveInk(from: string, s: number, d: number) { const by = this.byPeer(from); if (by && this.state === 'race') this.items?.dropInkAt(by, s, d); }
   /** The teacher ended the race: stop where I am (the score counts what I did). */
   liveEnd() {
-    if (this.spectator || this.state !== 'race' || this.me.finished) return;
+    // (also from the countdown: a slow phone still on the grid gets the results like everyone)
+    if (this.spectator || (this.state !== 'race' && this.state !== 'countdown') || this.me.finished) return;
     this.me.finished = true;
     this.me.finishT = this.raceT;
     rank(this.field);

@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, Wrench, X } from 'lucide-react';
+import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, Wind, Wrench, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
 import { CSS, Btn, Dot, PLACE_COL, Seg, TIER, Toggle, initialToon, useClient } from './ui';
@@ -19,96 +19,189 @@ import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang } from '@/lib/gameLang';
 import { RUN_LEVELS } from '@/features/run/questions';
-import { CUPS, RaceGame, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
+import { CUPS, RaceGame, TOUCH_OFF, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
 import { TRACKS, trackInfo } from './tracks';
 import { ITEMS, itemIcon } from './items';
 import { LANE_COLORS, LANE_LETTERS } from './gates';
 import type { Difficulty } from './ai';
 import { prefs, setPref, unlock } from './audio';
 
-type PadKey = keyof TouchState;
-function TB({ k, els, on, className, children, label }: { k: PadKey; els: Map<PadKey, HTMLElement>; on: PadKey[]; className: string; children: React.ReactNode; label: string }) {
+type PadKey = Exclude<keyof TouchState, 'steer'>;
+const PAD_KEYS: PadKey[] = ['left', 'right', 'gas', 'brake', 'drift', 'item'];
+
+function TB({ k, els, on, className, children, label, hint }: { k: PadKey; els: Map<PadKey, HTMLElement>; on: PadKey[]; className: string; children: React.ReactNode; label: string; hint?: string }) {
   return (
     <div ref={(el) => { if (el) els.set(k, el); else els.delete(k); }} role="button" aria-label={label}
-      className={cn('grid place-items-center rounded-full border-[3px] border-white/70 text-center leading-tight font-black text-white shadow-[0_6px_0_rgba(0,0,0,.25)] transition-transform', on.includes(k) && 'translate-y-[3px] scale-95 brightness-125', className)}>
+      className={cn('relative grid place-items-center rounded-full border-[3px] border-white/70 text-center leading-tight font-black text-white shadow-[0_6px_0_rgba(0,0,0,.25)] transition-transform duration-75', on.includes(k) && 'translate-y-[3px] scale-95 border-white brightness-125', className)}>
       {children}
+      {hint && <span className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 animate-[rc-pulse_1.2s_infinite] rounded-full bg-[#10204a]/80 px-2 py-0.5 text-[10.5px] font-extrabold whitespace-nowrap text-[#ffd23f]">{hint}</span>}
     </div>
   );
 }
 type GasMode = 'auto' | 'manual';
+type SteerMode = 'slider' | 'buttons';
 const initialGas = (): GasMode => { try { return localStorage.getItem('racers:gas') === 'manual' ? 'manual' : 'auto'; } catch { return 'auto'; } };
+const initialSteer = (): SteerMode => { try { return localStorage.getItem('racers:steer') === 'buttons' ? 'buttons' : 'slider'; } catch { return 'slider'; } };
 
-/** Touch buttons in two zones (left thumb: steer; right thumb: drift, gas, brake, item). A finger
-    can slide from one button to the next without lifting (left ↔ right, gas ↔ drift). With
-    automatic gas the big button is DRIFT; with manual gas DRIFT sits right next to GO and also
-    drives, so the thumb rolls from one to the other. */
-function TouchControls({ game, auto, solo, item, tier }: { game: RaceGame | null; auto: boolean; solo: boolean; item: string | null; tier: number }) {
+/** Touch controls in two zones. Left thumb: a steering slider (the further from the middle, the
+    harder the turn; the knob follows the thumb) or two arrow buttons. Right thumb: DRIFT, brake,
+    item (and GO with manual gas); a finger slides from one button to the next without lifting.
+    A finger the browser forgets to report lifting (a system gesture, a notification, the app
+    switcher) is dropped as soon as the screen says it is no longer there, so nothing stays held. */
+function TouchControls({ game, auto, solo, item, tier, steerMode, hints }: { game: RaceGame | null; auto: boolean; solo: boolean; item: string | null; tier: number; steerMode: SteerMode; hints: boolean }) {
   const els = useRef(new Map<PadKey, HTMLElement>());
-  const ptrs = useRef(new Map<number, PadKey | null>());
+  const ptrs = useRef(new Map<number, { k: PadKey | null; x: number; y: number }>());
+  const steerPtr = useRef<{ id: number; x: number; y: number } | null>(null);
+  const pad = useRef<HTMLDivElement>(null), knob = useRef<HTMLDivElement>(null), fill = useRef<HTMLDivElement>(null);
+  const held = useRef<PadKey[]>([]);
   const [on, setOn] = useState<PadKey[]>([]);
   const keyAt = (x: number, y: number, prev: PadKey | null) => {
     let best: PadKey | null = null, bd = Infinity;
     els.current.forEach((el, k) => {
       const r = el.getBoundingClientRect();
       const d = Math.hypot(Math.max(r.left - x, 0, x - r.right), Math.max(r.top - y, 0, y - r.bottom));
-      if (d <= (k === prev ? 26 : 10) && d < bd) { bd = d; best = k; }
+      if (d <= (k === prev ? 26 : 12) && d < bd) { bd = d; best = k; }
     });
     return best;
   };
   const sync = () => {
-    const s = new Set([...ptrs.current.values()].filter((k): k is PadKey => !!k));
-    setOn([...s]);
+    const s = new Set<PadKey>();
+    for (const p of ptrs.current.values()) if (p.k) s.add(p.k);
+    const list = PAD_KEYS.filter((k) => s.has(k));
+    if (list.some((k) => !held.current.includes(k))) game?.buzz(7);
+    if (list.join() !== held.current.join()) { held.current = list; setOn(list); }
     game?.setTouch({ left: s.has('left'), right: s.has('right'), gas: s.has('gas'), brake: s.has('brake'), drift: s.has('drift'), item: s.has('item') });
   };
-  useEffect(() => () => { game?.setTouch({ left: false, right: false, gas: false, brake: false, drift: false, item: false }); }, [game]);
+  /* the steering slider */
+  const steerAt = (x: number) => {
+    const el = pad.current; if (!el) return;
+    const r = el.getBoundingClientRect(), hw = r.width / 2;
+    const v = Math.max(-1, Math.min(1, (x - r.left - hw) / (hw * 0.8))), a = Math.abs(v);
+    const out = a < 0.1 ? 0 : Math.sign(v) * Math.pow((a - 0.1) / 0.9, 1.15);
+    const kx = Math.max(-hw + 40, Math.min(hw - 40, x - r.left - hw));
+    if (knob.current) knob.current.style.transform = `translateX(${kx}px) scale(${out ? 1.06 : 1})`;
+    if (fill.current) { fill.current.style.opacity = String(Math.abs(out)); fill.current.style.background = `linear-gradient(${out < 0 ? 270 : 90}deg, transparent 45%, rgba(255,210,63,.75))`; }
+    game?.setTouch({ steer: out });
+  };
+  const steerOff = () => {
+    steerPtr.current = null;
+    if (knob.current) knob.current.style.transform = 'translateX(0px)';
+    if (fill.current) fill.current.style.opacity = '0';
+    game?.setTouch({ steer: 0 });
+  };
+  useEffect(() => {
+    const clearAll = () => { ptrs.current.clear(); steerOff(); sync(); };
+    // every finger still on the screen is in e.touches: anything we hold that is not near one of
+    // them was lifted without a pointerup reaching us
+    const check = (e: TouchEvent) => {
+      if (!e.touches.length) { if (ptrs.current.size || steerPtr.current) clearAll(); return; }
+      const pts = Array.from(e.touches, (tt) => [tt.clientX, tt.clientY] as const);
+      const near = (x: number, y: number) => pts.some(([a, b]) => Math.hypot(a - x, b - y) < 90);
+      let ch = false;
+      for (const [id, p] of ptrs.current) if (!near(p.x, p.y)) { ptrs.current.delete(id); ch = true; }
+      const sp = steerPtr.current;
+      if (sp && !near(sp.x, sp.y)) steerOff();
+      if (ch) sync();
+    };
+    const vis = () => { if (document.hidden) clearAll(); };
+    window.addEventListener('touchend', check, { passive: true });
+    window.addEventListener('touchcancel', check, { passive: true });
+    window.addEventListener('blur', clearAll);
+    document.addEventListener('visibilitychange', vis);
+    return () => {
+      window.removeEventListener('touchend', check); window.removeEventListener('touchcancel', check);
+      window.removeEventListener('blur', clearAll); document.removeEventListener('visibilitychange', vis);
+      game?.setTouch({ ...TOUCH_OFF });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [game]);
+  const drop = (id: number) => { if (ptrs.current.delete(id)) sync(); if (steerPtr.current?.id === id) steerOff(); };
   const zone = {
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); ptrs.current.set(e.pointerId, keyAt(e.clientX, e.clientY, null)); sync(); },
-    onPointerMove: (e: React.PointerEvent) => {
-      if (!ptrs.current.has(e.pointerId)) return;
-      const prev = ptrs.current.get(e.pointerId) ?? null, k = keyAt(e.clientX, e.clientY, prev);
-      if (k !== prev) { ptrs.current.set(e.pointerId, k); sync(); }
+    onPointerDown: (e: React.PointerEvent) => {
+      e.preventDefault();
+      try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* ignore */ }
+      ptrs.current.set(e.pointerId, { k: keyAt(e.clientX, e.clientY, null), x: e.clientX, y: e.clientY }); sync();
     },
-    onPointerUp: (e: React.PointerEvent) => { ptrs.current.delete(e.pointerId); sync(); },
-    onPointerCancel: (e: React.PointerEvent) => { ptrs.current.delete(e.pointerId); sync(); },
+    onPointerMove: (e: React.PointerEvent) => {
+      const p = ptrs.current.get(e.pointerId); if (!p) return;
+      p.x = e.clientX; p.y = e.clientY;
+      const k = keyAt(e.clientX, e.clientY, p.k);
+      if (k !== p.k) { p.k = k; sync(); }
+    },
+    onPointerUp: (e: React.PointerEvent) => drop(e.pointerId),
+    onPointerCancel: (e: React.PointerEvent) => drop(e.pointerId),
+    onLostPointerCapture: (e: React.PointerEvent) => drop(e.pointerId),
     onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
   };
-  const ring = tier > 0 ? { boxShadow: `0 0 0 5px ${TIER[tier]}, 0 6px 0 rgba(0,0,0,.25)` } : undefined;
+  const steerZone = {
+    onPointerDown: (e: React.PointerEvent) => {
+      e.preventDefault();
+      try { (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); } catch { /* ignore */ }
+      steerPtr.current = { id: e.pointerId, x: e.clientX, y: e.clientY }; steerAt(e.clientX);
+    },
+    onPointerMove: (e: React.PointerEvent) => { const sp = steerPtr.current; if (sp?.id !== e.pointerId) return; sp.x = e.clientX; sp.y = e.clientY; steerAt(e.clientX); },
+    onPointerUp: (e: React.PointerEvent) => drop(e.pointerId),
+    onPointerCancel: (e: React.PointerEvent) => drop(e.pointerId),
+    onLostPointerCapture: (e: React.PointerEvent) => drop(e.pointerId),
+    onContextMenu: (e: React.MouseEvent) => e.preventDefault(),
+  };
+  const ring = tier > 0 ? { boxShadow: `0 0 0 5px ${TIER[tier]}, 0 0 22px 6px ${TIER[tier]}, 0 6px 0 rgba(0,0,0,.25)` } : undefined;
   const itemBtn = !solo && (
-    <TB els={els.current} on={on} k="item" label={t('Use item', 'Usar objeto')} className={cn('h-[62px] w-[62px] text-[10.5px]', item ? 'bg-[#7a5cff]/90' : 'bg-[#10204a]/50 opacity-70')}>
-      {item ? <img src={itemIcon(item as Parameters<typeof itemIcon>[0])} alt="" className="h-9 w-9" /> : t('ITEM', 'OBJETO')}
+    <TB els={els.current} on={on} k="item" label={t('Use item', 'Usar objeto')} hint={hints && item ? t('use it!', '¡úsalo!') : undefined} className={cn('h-[66px] w-[66px] text-[10.5px]', item ? 'bg-[#7a5cff]/90 shadow-[0_0_18px_rgba(160,130,255,.8),0_6px_0_rgba(0,0,0,.25)]' : 'bg-[#10204a]/45 opacity-70')}>
+      {item ? <img src={itemIcon(item as Parameters<typeof itemIcon>[0])} alt="" className="h-10 w-10" /> : t('ITEM', 'OBJETO')}
     </TB>
   );
+  const brake = (big: boolean) => (
+    <TB els={els.current} on={on} k="brake" label={t('Brake', 'Frenar')} hint={hints ? t('brake', 'frenar') : undefined} className={cn('bg-[#ff4757]/80', big ? 'h-[60px] w-[60px] text-[11px]' : 'h-[56px] w-[56px] text-[10.5px]')}>{t('BRAKE', 'FRENO')}</TB>
+  );
   const drift = (big: boolean) => (
-    <div style={ring} className="rounded-full">
-      <TB els={els.current} on={on} k="drift" label={t('Drift', 'Derrape')} className={cn('bg-[#ff8a1f]/90', big ? 'h-[116px] w-[116px] text-[15px]' : 'h-[88px] w-[88px] text-[12.5px]')}>
-        <span>{t('DRIFT', 'DERRAPE')}<span className="block text-[10px] font-extrabold text-white/80">{t('hold + turn', 'mantén + gira')}</span></span>
+    <div style={ring} className="rounded-full transition-shadow">
+      <TB els={els.current} on={on} k="drift" label={t('Drift', 'Derrape')} hint={hints ? t('hold + turn = turbo', 'mantén + gira = turbo') : undefined} className={cn('bg-[#ff8a1f]/90', big ? 'h-[122px] w-[122px] text-[16px]' : 'h-[92px] w-[92px] text-[13px]')}>
+        <span className="flex flex-col items-center"><Wind size={big ? 26 : 20} strokeWidth={2.6} />{t('DRIFT', 'DERRAPE')}<span className="block text-[10px] font-extrabold text-white/85">{t('hold + turn', 'mantén + gira')}</span></span>
       </TB>
     </div>
   );
   return (
     <>
-      <div {...zone} className="rc-pad absolute bottom-0 left-0 flex gap-3 p-4 pb-[max(18px,env(safe-area-inset-bottom))]">
-        <TB els={els.current} on={on} k="left" label={t('Left', 'Izquierda')} className="h-[88px] w-[88px] bg-[#10204a]/55"><ChevronLeft size={48} /></TB>
-        <TB els={els.current} on={on} k="right" label={t('Right', 'Derecha')} className="h-[88px] w-[88px] bg-[#10204a]/55"><ChevronRight size={48} /></TB>
-      </div>
-      <div {...zone} className="rc-pad absolute right-0 bottom-0 flex items-end gap-3 p-4 pb-[max(18px,env(safe-area-inset-bottom))]">
+      {steerMode === 'slider' ? (
+        <div {...steerZone} className="rc-pad absolute bottom-0 left-0 p-3 pt-10 pr-10 pb-[max(16px,env(safe-area-inset-bottom))]">
+          <div ref={pad} className="relative flex h-[96px] w-[min(250px,40vw)] min-w-[190px] items-center justify-between overflow-hidden rounded-full border-[3px] border-white/60 bg-[#10204a]/50 px-2 shadow-[0_6px_0_rgba(0,0,0,.25)]">
+            <div ref={fill} className="pointer-events-none absolute inset-0 opacity-0" />
+            <ChevronLeft size={40} className="relative text-white/80" />
+            <span className="pointer-events-none absolute top-2 bottom-2 left-1/2 w-[3px] -translate-x-1/2 rounded-full bg-white/25" />
+            <ChevronRight size={40} className="relative text-white/80" />
+            <div className="pointer-events-none absolute inset-0 grid place-items-center">
+              <div ref={knob} className="grid h-[74px] w-[74px] place-items-center rounded-full border-[3px] border-white bg-white/90 text-[#10204a] shadow-[0_4px_10px_rgba(0,0,0,.35)] transition-transform duration-[40ms]">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2.2" /><path d="M12 14.2V21M9.9 11.3 3.6 9.6M14.1 11.3l6.3-1.7" /></svg>
+              </div>
+            </div>
+          </div>
+          {hints && <span className="pointer-events-none absolute top-1 left-1/2 -translate-x-1/2 animate-[rc-pulse_1.2s_infinite] rounded-full bg-[#10204a]/80 px-2.5 py-0.5 text-[11px] font-extrabold whitespace-nowrap text-[#ffd23f]">{t('◀ slide your thumb to steer ▶', '◀ desliza el pulgar para girar ▶')}</span>}
+        </div>
+      ) : (
+        <div {...zone} className="rc-pad absolute bottom-0 left-0 flex gap-3 p-4 pt-10 pb-[max(18px,env(safe-area-inset-bottom))]">
+          <TB els={els.current} on={on} k="left" label={t('Left', 'Izquierda')} hint={hints ? t('steer', 'girar') : undefined} className="h-[92px] w-[92px] bg-[#10204a]/55"><ChevronLeft size={50} /></TB>
+          <TB els={els.current} on={on} k="right" label={t('Right', 'Derecha')} className="h-[92px] w-[92px] bg-[#10204a]/55"><ChevronRight size={50} /></TB>
+        </div>
+      )}
+      <div {...zone} className="rc-pad absolute right-0 bottom-0 flex items-end gap-3 p-4 pt-10 pb-[max(18px,env(safe-area-inset-bottom))]">
         {auto ? (
           <>
             <div className="flex flex-col items-center gap-3">
               {itemBtn}
-              <TB els={els.current} on={on} k="brake" label={t('Brake', 'Frenar')} className="h-[54px] w-[54px] bg-[#ff4757]/80 text-[10.5px]">{t('BRAKE', 'FRENO')}</TB>
+              {brake(true)}
             </div>
             {drift(true)}
           </>
         ) : (
           <>
             <div className="flex flex-col items-center gap-2.5">
-              <TB els={els.current} on={on} k="brake" label={t('Brake', 'Frenar')} className="h-[52px] w-[52px] bg-[#ff4757]/80 text-[10.5px]">{t('BRAKE', 'FRENO')}</TB>
+              {brake(false)}
               {drift(false)}
             </div>
             <div className="flex flex-col items-center gap-2.5">
               {itemBtn}
-              <TB els={els.current} on={on} k="gas" label={t('Accelerate', 'Acelerar')} className="h-[106px] w-[106px] bg-[#2fd27a]/90 text-[15px]">{t('GO', 'ACELERAR')}</TB>
+              <TB els={els.current} on={on} k="gas" label={t('Accelerate', 'Acelerar')} hint={hints ? t('hold to go', 'mantén para avanzar') : undefined} className="h-[110px] w-[110px] bg-[#2fd27a]/90 text-[15px]">{t('GO', 'ACELERAR')}</TB>
             </div>
           </>
         )}
@@ -173,6 +266,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const [touchUi] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches);
   const [portrait, setPortrait] = useState(false);
   const [gas, setGas] = useState<GasMode>(initialGas);
+  const [steerMode, setSteerMode] = useState<SteerMode>(initialSteer);
   const [garageOpen, setGarageOpen] = useState(false);
   const lang = useGameLang();
   useClient(client);
@@ -210,7 +304,8 @@ function RaceScreen({ client }: { client?: RacersClient }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => { if (hud?.state !== 'finish') setShowReview(false); }, [hud?.state]);
-  useEffect(() => { if (game) game.autoGas = touchUi && gas === 'auto'; try { localStorage.setItem('racers:gas', gas); } catch { /* ignore */ } }, [game, gas, touchUi]);
+  useEffect(() => { if (game) { game.autoGas = touchUi && gas === 'auto'; game.haptics = touchUi; } try { localStorage.setItem('racers:gas', gas); } catch { /* ignore */ } }, [game, gas, touchUi]);
+  useEffect(() => { try { localStorage.setItem('racers:steer', steerMode); } catch { /* ignore */ } }, [steerMode]);
 
   const st = hud?.state ?? 'loading';
   const idx = TOONS.findIndex((x) => x.id === toon);
@@ -228,7 +323,12 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const ti = hud ? trackInfo(hud.track) : TRACKS[0];
   const res = hud?.results;
   const shown = hud?.rolling ?? hud?.item ?? null;
-  const gasSeg = <Seg<GasMode> value={gas} onChange={setGas} options={[{ id: 'auto', label: t('Auto gas', 'Acelera solo') }, { id: 'manual', label: t('Manual gas', 'Acelerar a mano') }]} />;
+  const gasSeg = (
+    <div className="flex flex-col gap-1.5">
+      <Seg<GasMode> value={gas} onChange={setGas} options={[{ id: 'auto', label: t('Auto gas', 'Acelera solo') }, { id: 'manual', label: t('Manual gas', 'Acelerar a mano') }]} />
+      <Seg<SteerMode> value={steerMode} onChange={setSteerMode} options={[{ id: 'slider', label: t('Steer: slider', 'Girar: deslizador') }, { id: 'buttons', label: t('Steer: arrows', 'Girar: flechas') }]} />
+    </div>
+  );
   return (
     <div className="rc-root relative h-dvh w-full overflow-hidden select-none" onPointerDown={unlock}>
       <style>{CSS}</style>
@@ -309,8 +409,8 @@ function RaceScreen({ client }: { client?: RacersClient }) {
               <div className="px-1 text-[11.5px] leading-relaxed font-semibold text-white/65 [@media(max-height:520px)]:hidden">
                 {touchUi
                   ? gas === 'auto'
-                    ? t('The kart accelerates by itself · arrows: steer (slide your thumb) · big DRIFT button: hold it and turn, let go for a turbo · ITEM: use what you picked up · drive through the lane with the right answer.', 'El kart acelera solo · flechas: girar (desliza el pulgar) · botón grande DERRAPE: mantenlo y gira, suelta para el turbo · OBJETO: usa lo que recogiste · pasa por el carril con la respuesta correcta.')
-                    : t('GO: accelerate · DRIFT (next to it, also accelerates): slide your thumb onto it and turn, let go for a turbo · arrows: steer · ITEM: use it · drive through the lane with the right answer.', 'ACELERAR · DERRAPE (al lado, también acelera): desliza el pulgar hacia él y gira, suelta para el turbo · flechas: girar · OBJETO: úsalo · pasa por el carril con la respuesta correcta.')
+                    ? t('The kart accelerates by itself · left thumb: steer (the further from the middle, the harder it turns) · big DRIFT button: hold it and turn, let go for a turbo · ITEM: use what you picked up · drive through the lane with the right answer.', 'El kart acelera solo · pulgar izquierdo: girar (cuanto más lejos del centro, más gira) · botón grande DERRAPE: mantenlo y gira, suelta para el turbo · OBJETO: usa lo que recogiste · pasa por el carril con la respuesta correcta.')
+                    : t('GO: accelerate · DRIFT (next to it, also accelerates): slide your thumb onto it and turn, let go for a turbo · left thumb: steer · ITEM: use it · drive through the lane with the right answer.', 'ACELERAR · DERRAPE (al lado, también acelera): desliza el pulgar hacia él y gira, suelta para el turbo · pulgar izquierdo: girar · OBJETO: úsalo · pasa por el carril con la respuesta correcta.')
                   : t('W/↑ accelerate · S/↓ brake · A D/← → steer · Space hop & drift (hold, let go = turbo) · E/X use item · C look back · R back on track · Esc pause · drive through the lane with the right answer for a big turbo.', 'W/↑ acelerar · S/↓ frenar · A D/← → girar · Espacio saltar y derrapar (mantén, suelta = turbo) · E/X usar objeto · C mirar atrás · R volver a la pista · Esc pausa · pasa por el carril con la respuesta correcta para un gran turbo.')}
               </div>
               </>}
@@ -447,7 +547,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
       </div>
 
       {/* touch controls */}
-      {touchUi && racing && <TouchControls game={game} auto={gas === 'auto'} solo={solo} item={hud?.item ?? null} tier={hud?.tier ?? 0} />}
+      {touchUi && racing && <TouchControls game={game} auto={gas === 'auto'} solo={solo} item={hud?.item ?? null} tier={hud?.tier ?? 0} steerMode={steerMode} hints={st === 'countdown'} />}
 
       {/* pause */}
       {st === 'paused' && (

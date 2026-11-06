@@ -16,8 +16,8 @@ export interface KartInput { throttle: number; brake: number; steer: number; dri
 export const NO_INPUT: KartInput = { throttle: 0, brake: 0, steer: 0, drift: false };
 
 export const KART = {
-  maxSpeed: 27, boostSpeed: 37, accel: 17, brake: 34, reverse: 9, coast: 5,
-  turn: 2.25, grip: 14, driftGrip: 5.5, grassMax: 12.5, grassGrip: 8,
+  maxSpeed: 27, boostSpeed: 37, accel: 21, brake: 34, reverse: 9, coast: 5,
+  turn: 2.45, grip: 14, driftGrip: 5.5, grassMax: 12.5, grassGrip: 8,
   gravity: 27, hop: 3.6, radius: 0.8,
   tiers: [0.7, 1.55, 2.5] as const,
   tierBoost: [0, 0.55, 0.95, 1.45] as const,
@@ -121,7 +121,8 @@ export class Kart {
 
   step(dt: number, inp: KartInput) {
     const K = KART;
-    this.steer += (inp.steer - this.steer) * Math.min(1, dt * 11);
+    // the wheel turns in a little slower than it comes back (smooth on keys, quick to straighten)
+    this.steer += (inp.steer - this.steer) * Math.min(1, dt * (Math.abs(inp.steer) > Math.abs(this.steer) ? 10 : 15));
     if (this.loop) { this.loopStep(dt, inp); return; }
     this.loopCd = Math.max(0, this.loopCd - dt);
     const prevS = this.s;
@@ -158,7 +159,8 @@ export class Kart {
       if (grass) max = boosting ? K.maxSpeed * 0.92 : K.grassMax;
       if (this.slowT > 0) max *= 0.5 + 0.5 * Math.max(0, 1 - this.slowT / 1.2);
       if (this.grounded) {
-        if (control && inp.throttle > 0 && vf < max) vf += (K.accel * (1 - Math.pow(Math.max(0, vf) / max, 2)) + 2.5) * inp.throttle * dt;
+        // strong pull off the line that fades towards top speed
+        if (control && inp.throttle > 0 && vf < max) vf += (K.accel * (1 - Math.pow(Math.max(0, vf) / max, 2.2)) + 4) * inp.throttle * dt;
         if (boosting && vf < max) vf = Math.min(max, vf + 34 * dt);
         if (vf > max) vf -= (vf - max) * Math.min(1, dt * (grass ? 3.5 : 1.6));
         if (control && inp.brake > 0) {
@@ -172,8 +174,9 @@ export class Kart {
       // steering
       const sp = Math.min(1, Math.abs(vf) / 5) * Math.sign(vf || 1);
       if (!control) this.yawRate = 11 * (this.spinT > 0 ? 1 : 0);
-      else if (this.drift) this.yawRate = -this.drift * (1.0 + 0.95 * this.steer * this.drift) * sp;
-      else this.yawRate = -this.steer * K.turn * sp * (1 - 0.42 * Math.min(1, Math.abs(vf) / K.maxSpeed));
+      // drifting: steering into the turn tightens it, steering out widens it (it never just slides straight)
+      else if (this.drift) this.yawRate = -this.drift * (1.15 + 0.8 * this.steer * this.drift) * sp;
+      else this.yawRate = -this.steer * K.turn * sp * (1 - 0.34 * Math.min(1, Math.abs(vf) / K.maxSpeed));
     } else {
       this.yawRate = -this.steer * 0.9; // a little air control
     }

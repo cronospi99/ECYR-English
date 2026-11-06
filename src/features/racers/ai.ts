@@ -139,7 +139,7 @@ export class Bot {
     let cmax = 0;
     for (let x = 4; x < v * 1.05 + 10; x += 2) cmax = Math.max(cmax, Math.abs(this.curvAt(k.s + x)));
     const turn = this.drifting ? 1.9 : KART.turn;
-    const vT = turn / (cmax + (this.drifting ? 0 : (KART.turn * 0.42) / KART.maxSpeed));
+    const vT = turn / (cmax + (this.drifting ? 0 : (KART.turn * 0.34) / KART.maxSpeed));
     let throttle = 1, brake = 0;
     if (v > vT + 2) { throttle = 0; if (v > vT + 5) brake = 1; }
 

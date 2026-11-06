@@ -783,6 +783,54 @@ G1w. ENGLISH RACERS · FASE 5: CONDUCCIÓN MÁS AGRESIVA, ESPIRALES Y ATAQUES CO
   y con más fuerza durante el turbo.
 - Cámara al recibir un golpe: se aleja, sube y mira hacia la pista para ver al kart volar y girar.
 
+G1x. ENGLISH RACERS · FASE 6: CONTROLES, MANEJO, BANDA SONORA Y GRAN PREMIO EN VIVO
+- Botón de derrape que se quedaba pegado (corregido):
+  · En celulares, si el sistema "perdía" un dedo (un gesto del sistema, una notificación, el
+    cambio de app, deslizar fuera de la pantalla) el botón seguía apretado. Ahora, cada vez que
+    un dedo se levanta, el juego compara con los dedos que de verdad siguen en la pantalla y
+    suelta lo que ya no está. También se suelta todo al salir de la app o perder el foco.
+  · En teclado las teclas se leen por su posición física: Shift, Bloq Mayús o la distribución
+    del teclado ya no impiden que se suelte la tecla (y en Mac, soltar ⌘ suelta todo).
+- Controles táctiles más intuitivos:
+  · Volante deslizante (por defecto): el pulgar izquierdo se desliza sobre una barra; cuanto
+    más lejos del centro, más gira el kart (giro proporcional, con una zona muerta en el medio).
+    Se puede volver a las flechas en el menú ("Girar: flechas").
+  · Botones más grandes con icono; el derrape brilla del color de la carga del turbo y el
+    objeto se ilumina cuando tienes uno.
+  · Durante la cuenta atrás aparecen etiquetas sobre cada control ("desliza el pulgar para
+    girar", "mantén + gira = turbo", "frenar").
+  · Vibración corta en celulares al subir el nivel del derrape, al chocar y al recibir un golpe.
+- Mejor manejo:
+  · Arranque más fuerte (llega a velocidad alta antes) y un poco más de giro a alta velocidad.
+  · El volante entra un poco más suave y vuelve más rápido al centro (más fácil de corregir).
+  · Derrape más controlable: girar hacia la curva la cierra y girar hacia afuera la abre, sin
+    quedarse recto deslizando.
+  · Los bots usan el mismo cálculo de velocidad en curva.
+- Banda sonora propia para cada pista (generada en el navegador, sin archivos): cada canción
+  tiene tonalidad, tempo, acordes de estrofa, subida, coro y puente, una melodía con motivo
+  propio, batería, bajo e instrumentos de su estilo:
+  · Campus: pop-rock · Bahía Soleada: ska con steel drum · Tejados: drum & bass ·
+    Neón: synthwave · Londres: brit-pop · Nueva York: funk con metales · Tokio: city pop con
+    campanas · Río: samba (surdo, tamborim, agogô y flauta) · Rizos de Agua: surf pop ·
+    Cañón: western con guitarra twang · Pico Nevado: cascabeles y cajita musical.
+  · Estructura: intro, estrofa, subida, coro, estrofa, coro, puente, coro y vuelve. En la
+    última vuelta salta al coro, más rápida y medio tono más alta. Eco y reverberación.
+  · Cada carrera empieza su canción desde el principio.
+- Modo en vivo con la clase: Gran Premio con pistas al azar por defecto.
+  · El profe elige 3, 4, 5 o 6 carreras; las pistas salen al azar y sin repetir (botón
+    "Otras pistas" para sortear de nuevo). "Una carrera" sigue disponible.
+  · Tras los resultados, la siguiente carrera empieza sola en 20 s (el profe puede pausar con
+    "Esperar", avanzar ya o terminar ahí). Al final, el podio del Gran Premio sale solo.
+  · Los puntos se suman durante el Gran Premio (empiezan de 0 en cada Gran Premio nuevo).
+  · Los estudiantes ven "Gran Premio · carrera 2 de 4" y la próxima pista con la cuenta atrás.
+- Curvas aún más abiertas en todas las pistas (radio mínimo):
+  · Campus, Nueva York, Londres, Tejados, Río: ~28 m · Rizos de Agua y Bahía Soleada: ~27 m
+    (la horquilla oeste de la bahía es ahora un arco redondo) · Neón y Tokio: ~25 m ·
+    Cañón y Pico Nevado: ~21 m (antes ~15 m), suavizando las curvas cortas seguidas de los
+    dibujos sin perder su forma. Antes iban de 15 a 22 m.
+  · Se comprobó en simulación que todas las pistas se completan sin caídas, que los 6 rizos se
+    recorren y que los puentes de las espirales siguen con ~9 m de altura libre.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así
