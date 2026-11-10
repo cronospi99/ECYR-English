@@ -62,7 +62,7 @@ export function buildTokyo(track: Track): Scenery {
   /* ---------------- canal under the jump ---------------- */
   const gp = track.gaps[0], gs = (gp.s0 + gp.s1) / 2, gf = track.frame(Math.round(gs / track.ds));
   const canalZ = gf.p.z, inCanal = (x: number, z: number, m = 0) => Math.abs(z - canalZ) < 7 + m && x > 40 && x < 150;
-  ground(c, { cx: 60, cz: 0, size: 1150, step: 30, gx: 0, gz: 0, y: (x, z) => (inCanal(x, z, -2) ? -4 : -0.08), color: (x, z) => (inCanal(x, z, 1) ? 0x8f8a80 : 0xffffff), walk: '#b3b1ad', asphalt: '#3d3f46' });
+  ground(c, { cx: 60, cz: 110, size: 1300, step: 30, gx: 0, gz: 0, y: (x, z) => (inCanal(x, z, -2) ? -4 : -0.08), color: (x, z) => (inCanal(x, z, 1) ? 0x8f8a80 : 0xffffff), walk: '#b3b1ad', asphalt: '#3d3f46' });
   {
     const w = new THREE.Mesh(new THREE.PlaneGeometry(110, 14).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ color: 0x2f6f86, roughness: 0.05, clearcoat: 1, normalMap: rippleTex(), normalScale: new THREE.Vector2(0.2, 0.2), transparent: true, opacity: 0.9 }));
     w.position.set(95, -1.6, canalZ);
@@ -73,7 +73,7 @@ export function buildTokyo(track: Track): Scenery {
   /* ---------------- the city: concrete blocks with neon signs ---------------- */
   const park = (x: number, z: number) => x > 20 && x < 160 && z > -150 && z < -40;
   const plaza = (x: number, z: number) => Math.abs(x) < 46 && z > 20 && z < 80;
-  fillGrid(c, { x0: -420, x1: 520, z0: -420, z1: 440, step: 30, street: 9 }, (x, z) => {
+  fillGrid(c, { x0: -420, x1: 520, z0: -330, z1: 650, step: 30, street: 9 }, (x, z) => {
     if (park(x, z) || plaza(x, z) || inCanal(x, z, 6) || Math.abs(x - 205) < 10) return null;
     const d = Math.hypot(x - 60, z), r = rand();
     return { kind: r < 0.55 ? 'concrete' : r < 0.8 ? 'office' : 'glass', h: 12 + rand() * 18 + Math.max(0, 250 - d) * 0.12 + (rand() < 0.08 ? 40 : 0), roof: 'flat', tint: [0xffffff, 0xf0e8f4, 0xe6eef6, 0xf6eee4][Math.floor(rand() * 4)] };
@@ -94,8 +94,10 @@ export function buildTokyo(track: Track): Scenery {
     world.cyl(P.x, 0, P.z, 0.12, 3.3 + (i % 3), 0x3a3f4b);
   };
   let si = 0;
-  for (let s = 10; s < track.cpS[2]; s += 11) { signAt(s, -1, si++); signAt(s + 5, 1, si++); }
-  for (let s = track.cpS[3]; s < track.cpS[5]; s += 12) { signAt(s, -1, si++); signAt(s + 6, 1, si++); }
+  for (let s = 10; s < track.oS[2]; s += 11) { signAt(s, -1, si++); signAt(s + 5, 1, si++); }
+  // (the lantern street: the first stretch of the long way round)
+  const lan0 = track.oS[2] + 40, lan1 = lan0 + 170;
+  for (let s = lan0; s < lan1; s += 12) { signAt(s, -1, si++); signAt(s + 6, 1, si++); }
   c.updates.push((_, t) => { signMats.forEach((m, i) => { const f = 0.75 + 0.25 * Math.sin(t * (2 + (i % 3)) + i) * (i % 5 === 0 ? (Math.sin(t * 13 + i) > 0.6 ? 0 : 1) : 1); m.color.setScalar(f); }); });
 
   /* ---------------- the scramble crossing: zebra stripes, screens, crowds crossing ---------------- */
@@ -125,8 +127,8 @@ export function buildTokyo(track: Track): Scenery {
   }
 
   /* ---------------- lantern street ---------------- */
-  lanterns(c, track.cpS[3] - 10, track.cpS[5] + 6, 9, [0xff3b30, 0xffffff, 0xff3b30, 0xffb020]);
-  crowd(c, roadsideSpots(c, track.cpS[3], track.cpS[5], { rows: 2, every: 1.6 }));
+  lanterns(c, lan0 - 10, lan1 + 6, 9, [0xff3b30, 0xffffff, 0xff3b30, 0xffb020]);
+  crowd(c, roadsideSpots(c, lan0, lan1, { rows: 2, every: 1.6 }));
 
   /* ---------------- viaduct and bullet trains ---------------- */
   {
@@ -178,7 +180,7 @@ export function buildTokyo(track: Track): Scenery {
   fallers(c, { x: 90, z: -95, w: 150, d: 120, y0: 0, h: 14 }, 900, [0xffc4d8, 0xffb0cc, 0xffffff, 0xffd6e4], 0.3, 1.0);
   {
     // the big red gate over the road
-    const s = track.cpS[14] + 4, f = track.frame(Math.round(s / track.ds)), span = f.w + KERB + f.apron + 1.5;
+    const s = track.oS[14] + 4, f = track.frame(Math.round(s / track.ds)), span = f.w + KERB + f.apron + 1.5;
     const red = 0xe23a24;
     for (const sg of [-1, 1]) { const P = side(f, sg * span); world.add(U.cyl, red, P.x, 5.5, P.z, 0.7, 11, 0.7); world.add(U.cyl, 0x1b1d24, P.x, 0.4, P.z, 0.85, 0.8, 0.85); }
     const C = side(f, 0);
@@ -226,7 +228,7 @@ export function buildTokyo(track: Track): Scenery {
   ], c.clear);
   lamps(c, 24, 0x2b2f3a, 0xfff0d0);
   walkers(c, 70);
-  traffic(c, gridLanes(c, { x0: -420, x1: 520, z0: -420, z1: 440, step: 30 }, (x, z) => park(x, z) || plaza(x, z) || inCanal(x, z, 4)), [
+  traffic(c, gridLanes(c, { x0: -420, x1: 520, z0: -330, z1: 650, step: 30 }, (x, z) => park(x, z) || plaza(x, z) || inCanal(x, z, 4)), [
     { kind: 'car', colors: [0xf4f4f2, 0x2b2f3a, 0xd32f2f, 0x9aa0a8, 0x3d8bff], n: 34 },
     { kind: 'taxi', colors: [0x1b5e20, 0x1b1d24, 0xffc61a], n: 16, speed: 10 },
     { kind: 'bus', colors: [0x3fa9f5, 0xf4f4f2], n: 6, speed: 8 },

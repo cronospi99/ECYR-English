@@ -179,7 +179,7 @@ export function gridLanes(c: City, a: { x0: number; x1: number; z0: number; z1: 
 
 /** Ground: a big plane with streets painted on (aligned with a building grid), tinted by colour(x, z). */
 export function ground(c: City, o: { cx: number; cz: number; size: number; step: number; gx: number; gz: number; y?: (x: number, z: number) => number; color?: (x: number, z: number) => number; asphalt?: string; walk?: string }) {
-  const n = 160, g = new THREE.PlaneGeometry(o.size, o.size, n, n);
+  const n = Math.max(160, Math.round(o.size / 6.5)), g = new THREE.PlaneGeometry(o.size, o.size, n, n);
   g.rotateX(-Math.PI / 2);
   g.translate(o.cx, -0.08, o.cz);
   const P = g.getAttribute('position'), uv = g.getAttribute('uv') as THREE.BufferAttribute, col = new Float32Array(P.count * 3), cc = new THREE.Color();

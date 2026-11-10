@@ -15,7 +15,8 @@ import { TOONS } from '@/features/toons3d/runtime';
 import type { RunLevel } from '@/features/run/questions';
 import { TRACKS, type TrackId } from './tracks';
 import type { LiveCfg, LiveEntry, LiveFinish, LiveOut, LiveState } from './engine';
-import { scoreOf } from './racer';
+import { scoreOf, type HitKind } from './racer';
+const HIT_KINDS: HitKind[] = ['plane', 'ink', 'chalk', 'storm', 'burst'];
 
 export const MAX_STUDENTS = 30;
 const SNAP_MS = 160;
@@ -297,7 +298,8 @@ export class RacersClient {
   /** The student's game. */
   onGo: ((cfg: LiveCfg) => void) | null = null;
   onSnap: ((list: Snap[]) => void) | null = null;
-  onHit: ((kind: 'plane' | 'ink', from: string) => void) | null = null;
+  onHit: ((kind: HitKind, from: string) => void) | null = null;
+  onZone: ((from: string, s: number, d: number) => void) | null = null;
   onBell: ((from: string) => void) | null = null;
   onInk: ((from: string, s: number, d: number) => void) | null = null;
   onEnd: (() => void) | null = null;
@@ -325,6 +327,7 @@ export class RacersClient {
     hit: (peer, kind) => this.relay.send({ k: 'hit', kind }, peer),
     ink: (s, d) => this.relay.send({ k: 'ink', s: Math.round(s * 10) / 10, d: Math.round(d * 100) / 100 }),
     bell: (victims) => { for (const v of victims) this.relay.send({ k: 'bell' }, v); },
+    zone: (s, d) => this.relay.send({ k: 'zone', s: Math.round(s * 10) / 10, d: Math.round(d * 100) / 100 }),
   };
 
   private inRace(peer: string) { return !!this.cfg?.roster.some((e) => e.peer === peer); }
@@ -372,7 +375,8 @@ export class RacersClient {
       case 'kick': if (fromHost) { this.status = 'kicked'; this.relay.close(); this.bump(); } break;
       case 'full': if (fromHost) { this.status = 'full'; this.relay.close(); this.bump(); } break;
       // from other students
-      case 'hit': if (this.inRace(from) && (d.kind === 'plane' || d.kind === 'ink')) this.onHit?.(d.kind, from); break;
+      case 'hit': if (this.inRace(from) && HIT_KINDS.includes(d.kind as HitKind)) this.onHit?.(d.kind as HitKind, from); break;
+      case 'zone': if (this.inRace(from)) this.onZone?.(from, num(d.s, 0, 1e5), num(d.d, -30, 30)); break;
       case 'bell': if (this.inRace(from)) this.onBell?.(from); break;
       case 'ink': if (this.inRace(from)) this.onInk?.(from, num(d.s, 0, 1e5), num(d.d, -30, 30)); break;
     }

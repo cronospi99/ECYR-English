@@ -15,6 +15,7 @@ import { RIO, RIO_STYLE, buildRio } from './rio';
 import { SPLASH, SPLASH_STYLE, buildSplash } from './splash';
 import { CANYON, CANYON_STYLE, buildCanyon } from './canyon';
 import { SNOW, SNOW_STYLE, buildSnow } from './snow';
+import { LONG } from './detours';
 
 export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio' | 'splash' | 'canyon' | 'snow';
 export interface Look {
@@ -42,7 +43,7 @@ export interface TrackInfo {
 
 export const TRACKS: TrackInfo[] = [
   {
-    id: 'campus', def: CAMPUS, style: CAMPUS_STYLE, color: '#2fd27a',
+    id: 'campus', def: LONG.campus(CAMPUS), style: CAMPUS_STYLE, color: '#2fd27a',
     name: { en: 'ECYR Campus', es: 'Campus ECYR' },
     desc: { en: 'Banked curve, hairpin, chicane, hill and a jump over the pond', es: 'Curva peraltada, horquilla, chicana, colina y salto sobre el estanque' },
     look: {
@@ -53,7 +54,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildCampus,
   },
   {
-    id: 'beach', def: BEACH, style: BEACH_STYLE, color: '#36c2ff',
+    id: 'beach', def: LONG.beach(BEACH), style: BEACH_STYLE, color: '#36c2ff',
     name: { en: 'Sunny Bay', es: 'Bahía Soleada' },
     desc: { en: 'Boardwalk, two piers over the sea with a jump, a lighthouse hairpin and crabs on the sand', es: 'Malecón, dos muelles sobre el mar con salto, horquilla del faro y cangrejos en la arena' },
     look: {
@@ -64,7 +65,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildBeach,
   },
   {
-    id: 'roofs', def: ROOFS, style: ROOFS_STYLE, color: '#ff9f1c',
+    id: 'roofs', def: LONG.roofs(ROOFS), style: ROOFS_STYLE, color: '#ff9f1c',
     name: { en: 'Skyline Rush', es: 'Tejados' },
     desc: { en: 'Rooftops at sunset: three jumps between buildings and cranes swinging over the road', es: 'Azoteas al atardecer: tres saltos entre edificios y grúas que cruzan la pista' },
     look: {
@@ -75,7 +76,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildRoofs,
   },
   {
-    id: 'neon', def: NEON, style: NEON_STYLE, color: '#ff2bd6',
+    id: 'neon', def: LONG.neon(NEON), style: NEON_STYLE, color: '#ff2bd6',
     name: { en: 'Neon Drive', es: 'Neón' },
     desc: { en: 'Night highway: steep banked curves, a tunnel of light, laser gates and a big jump', es: 'Autopista nocturna: curvas muy peraltadas, túnel de luz, barreras láser y un gran salto' },
     look: {
@@ -86,7 +87,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildNeon,
   },
   {
-    id: 'london', def: LONDON, style: LONDON_STYLE, color: '#c8102e',
+    id: 'london', def: LONG.london(LONDON), style: LONDON_STYLE, color: '#c8102e',
     name: { en: 'London Loop', es: 'Londres' },
     desc: { en: 'Along the river: jump the open bascule bridge, pass the giant wheel and the clock tower', es: 'Junto al río: salta el puente levadizo abierto, pasa la noria gigante y la torre del reloj' },
     look: {
@@ -97,7 +98,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildLondon,
   },
   {
-    id: 'newyork', def: NEWYORK, style: NEWYORK_STYLE, color: '#ffc61a',
+    id: 'newyork', def: LONG.newyork(NEWYORK), style: NEWYORK_STYLE, color: '#ffc61a',
     name: { en: 'Big Apple Dash', es: 'Nueva York' },
     desc: { en: 'A square of giant screens, a drive through the park, an avenue of skyscrapers and a suspension bridge', es: 'Plaza de pantallas gigantes, el parque, una avenida de rascacielos y un puente colgante' },
     look: {
@@ -108,7 +109,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildNewYork,
   },
   {
-    id: 'tokyo', def: TOKYO, style: TOKYO_STYLE, color: '#ff2bd6',
+    id: 'tokyo', def: LONG.tokyo(TOKYO), style: TOKYO_STYLE, color: '#ff2bd6',
     name: { en: 'Tokyo Drift Lights', es: 'Tokio' },
     desc: { en: 'Dusk: a scramble crossing, lantern street, bullet trains, a red tower hairpin, a canal jump and cherry trees', es: 'Atardecer: cruce peatonal gigante, calle de faroles, tren bala, horquilla de la torre roja, salto del canal y cerezos' },
     look: {
@@ -119,7 +120,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildTokyo,
   },
   {
-    id: 'rio', def: RIO, style: RIO_STYLE, color: '#009c3b',
+    id: 'rio', def: LONG.rio(RIO), style: RIO_STYLE, color: '#009c3b',
     name: { en: 'Rio Carnival', es: 'Río' },
     desc: { en: 'The beach avenue, a climb through colourful houses with a jump, and the carnival avenue with floats and confetti', es: 'La avenida de la playa, la subida entre casas de colores con salto y la avenida del carnaval con carrozas y confeti' },
     look: {
@@ -130,7 +131,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildRio,
   },
   {
-    id: 'splash', def: SPLASH, style: SPLASH_STYLE, color: '#00d2ff',
+    id: 'splash', def: LONG.splash(SPLASH), style: SPLASH_STYLE, color: '#00d2ff',
     name: { en: 'Splash Loops', es: 'Rizos de Agua' },
     desc: { en: 'Six 360° loops (two big, four in a row) and every landing splashes into water', es: 'Seis vueltas de 360° (dos grandes y cuatro seguidas) y cada aterrizaje cae al agua' },
     look: {

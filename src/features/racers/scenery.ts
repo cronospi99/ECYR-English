@@ -102,7 +102,7 @@ export function startGantry(track: Track, group: THREE.Group, glossy: Geo, title
 /** Billboards on the outside of the bends at the given control points. */
 export function billboards(track: Track, group: THREE.Group, world: Geo, list: [number, string[], [string, string]][], clear: (x: number, z: number, r: number) => boolean, pole = 0x8a919c) {
   for (const [cp, text, bg] of list) {
-    const f = track.frame(Math.round(track.cpS[cp % track.cpS.length] / track.ds));
+    const f = track.frame(Math.round(track.oS[cp % track.cpS.length] / track.ds));
     const sg = f.curv > 0 ? 1 : -1;
     const P = side(f, sg * (f.w + KERB + f.apron + 3));
     if (!clear(P.x, P.z, -2)) continue;

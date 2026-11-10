@@ -69,6 +69,25 @@ function roundel(label: string, color: string) {
   return t;
 }
 
+/** A line of lettering (the driver's name on the wing, the strip on the pods). */
+function banner(text: string, fg: string, bg: string, small = false) {
+  const cv = document.createElement('canvas');
+  cv.width = 512; cv.height = small ? 76 : 108;
+  const c = cv.getContext('2d')!;
+  c.fillStyle = bg; c.fillRect(0, 0, cv.width, cv.height);
+  c.textAlign = 'center'; c.textBaseline = 'middle';
+  let px = small ? 54 : 84;
+  c.font = `italic 900 ${px}px Inter, system-ui, sans-serif`;
+  while (c.measureText(text).width > 480 && px > 20) { px -= 4; c.font = `italic 900 ${px}px Inter, system-ui, sans-serif`; }
+  c.lineJoin = 'round'; c.lineWidth = px * 0.16; c.strokeStyle = '#10204a';
+  c.strokeText(text, 256, cv.height / 2 + 3);
+  c.fillStyle = fg; c.fillText(text, 256, cv.height / 2 + 3);
+  const t = new THREE.CanvasTexture(cv);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  return t;
+}
+
 /** Radial falloff for the contact shadow. */
 function blobTex() {
   const cv = document.createElement('canvas');
@@ -99,7 +118,10 @@ export class KartView {
   private driftYaw = 0; private roll = 0; private pitch = 0; private trickA = 0;
   /** A barrel roll after a big hit (progress 0..1 over `tumble0` seconds) and the dizzy stars. */
   private tumbleA = 0; private tumble0 = 0; private wasTumble = 0;
-  private lean = 0; private surge = 0;
+  private lean = 0; private surge = 0; private glowK = 0.4;
+  private glow!: THREE.MeshBasicMaterial; private under!: THREE.Mesh;
+  private extra: THREE.Material[] = []; private extraTex: THREE.Texture[] = [];
+  private scarf: THREE.Mesh;
   private stars = new THREE.Group(); private starMat: THREE.MeshBasicMaterial; private dizzy = 0;
   face: Face = 'smile';
   cheer = false;
@@ -178,6 +200,64 @@ export class KartView {
     g.add(RB(1.12, 0.12, 0.13, 0.045), paint, 'paint', [0, 0.2, -1.03]);
     g.add(RB(0.8, 0.06, 0.14, 0.02), dark, 'plastic', [0, 0.12, -1.02]);
     for (const x of [-0.24, -0.08, 0.08, 0.24]) g.add(RB(0.015, 0.07, 0.12, 0.005), '#3a404c', 'metal', [x, 0.12, -1.04]);
+    /* ---- fine detail: front wing, bargeboards, mirrors, suspension, engine dress-up, harness ---- */
+    const carbon = '#191b21', steel = '#9aa1ab', red = '#e23a24', gold = '#e8b93c';
+    // front wing: main plane, two flaps, end plates with a coloured edge, nose pylons
+    g.add(RB(1.36, 0.025, 0.2, 0.01), carbon, 'plastic', [0, 0.115, 1.2]);
+    g.add(RB(1.3, 0.02, 0.12, 0.008), paint, 'paint', [0, 0.15, 1.16], [-0.22, 0, 0]);
+    g.add(RB(1.24, 0.016, 0.08, 0.006), '#ffffff', 'paint', [0, 0.185, 1.1], [-0.42, 0, 0]);
+    for (const sx of [-1, 1]) {
+      g.add(RB(0.025, 0.15, 0.3, 0.01), carbon, 'plastic', [sx * 0.68, 0.165, 1.17]);
+      g.add(RB(0.03, 0.03, 0.3, 0.01), accent, 'paint', [sx * 0.68, 0.245, 1.17]);
+      g.add(RB(0.03, 0.09, 0.14, 0.01), carbon, 'plastic', [sx * 0.1, 0.17, 1.12], [0.35, 0, 0]);
+      // bargeboard and side skirt with a coloured lip
+      g.add(RB(0.025, 0.15, 0.3, 0.01), carbon, 'plastic', [sx * 0.58, 0.25, 0.47], [0, sx * 0.3, 0]);
+      g.add(RB(0.04, 0.05, 1.06, 0.015), carbon, 'plastic', [sx * 0.63, 0.17, -0.02]);
+      g.add(RB(0.012, 0.014, 1.02, 0.004), accent, 'paint', [sx * 0.652, 0.198, -0.02]);
+      // mirror on a stalk (chrome glass, painted shell)
+      g.add(CYL, steel, 'metal', [sx * 0.37, 0.56, 0.36], [0, 0, sx * -0.7], [0.012, 0.16, 0.012]);
+      g.add(RB(0.13, 0.075, 0.05, 0.02), paint, 'paint', [sx * 0.45, 0.63, 0.37], [0, sx * -0.25, 0]);
+      g.add(RB(0.105, 0.052, 0.012, 0.004), '#e6edf5', 'chrome', [sx * 0.447, 0.63, 0.343], [0, sx * -0.25, 0]);
+      // front coil-over: yellow spring round a damper, pushrod to the upright
+      for (let k = 0; k < 6; k++) g.add(new THREE.TorusGeometry(0.032, 0.008, 5, 12), gold, 'paint', [sx * (0.3 + k * 0.02), 0.34 - k * 0.012, 0.62], [0, Math.PI / 2, 0.5 * sx]);
+      g.add(CYL, '#30343c', 'metal', [sx * 0.35, 0.31, 0.62], [0, 0, sx * 1.05], [0.016, 0.2, 0.016]);
+      g.add(CYL, steel, 'metal', [sx * 0.5, 0.2, 0.7], [0.3, 0, Math.PI / 2], [0.012, 0.3, 0.012]);
+      // rear coil-over beside the engine
+      for (let k = 0; k < 6; k++) g.add(new THREE.TorusGeometry(0.036, 0.009, 5, 12), red, 'paint', [sx * 0.37, 0.3 + k * 0.022, -0.5 - k * 0.012], [Math.PI / 2 - 0.5, 0, 0]);
+      g.add(CYL, '#30343c', 'metal', [sx * 0.37, 0.36, -0.53], [-0.5, 0, 0], [0.018, 0.22, 0.018]);
+      // exhaust heat bands and a bracket
+      for (const dz of [-0.9, -1.0, -1.1]) g.add(new THREE.TorusGeometry(0.06, 0.008, 5, 14), '#7d6a52', 'metal', [sx * 0.2, 0.44 + (dz + 1) * -0.27, dz], [-1.3 + Math.PI / 2, 0, 0]);
+      g.add(RB(0.02, 0.1, 0.02, 0.006), steel, 'metal', [sx * 0.2, 0.37, -0.98]);
+      // harness: two red belts over the seat back down to the buckle
+      g.add(RB(0.055, 0.5, 0.012, 0.004), red, 'fabric', [sx * 0.11, 0.6, -0.295], [-0.24, 0, sx * 0.06]);
+      g.add(RB(0.05, 0.012, 0.3, 0.004), red, 'fabric', [sx * 0.12, 0.436, -0.1], [0, sx * 0.2, 0]);
+      // tow eyes, body fasteners
+      g.add(new THREE.TorusGeometry(0.035, 0.01, 5, 12), red, 'paint', [sx * 0.42, 0.14, -1.1]);
+      for (const z of [-0.42, -0.14, 0.14, 0.42]) g.add(SPH, '#dfe4ea', 'chrome', [sx * 0.615, 0.4, z - 0.02], [0, 0, 0], [0.011, 0.011, 0.011]);
+      // roll hoop braces
+      g.add(CYL, '#d7dce3', 'chrome', [sx * 0.2, 0.66, -0.66], [-0.75, 0, sx * 0.12], [0.016, 0.34, 0.016]);
+    }
+    g.add(RB(0.07, 0.03, 0.05, 0.01), '#d7dce3', 'chrome', [0, 0.44, 0.04]);
+    // brake calipers (they stay put while the discs turn)
+    for (const sx of [-1, 1]) { g.add(RB(0.03, 0.07, 0.11, 0.012), red, 'paint', [sx * 0.555, 0.31, -0.62 - 0.1]); }
+    // dash: a little screen and three switches
+    g.add(RB(0.2, 0.09, 0.02, 0.008), '#0c1420', 'plastic', [0, 0.535, 0.31], [0.35, 0, 0]);
+    for (const x of [-0.16, 0.16]) g.add(CYL, x < 0 ? red : '#2fd27a', 'plastic', [x, 0.525, 0.31], [0.35 + Math.PI / 2, 0, 0], [0.014, 0.02, 0.014]);
+    // engine dress-up: finned cam covers, pulley and belt, air filter, plug leads, fuel cap
+    for (const x of [-0.19, 0.19]) for (let k = 0; k < 5; k++) g.add(RB(0.16, 0.035, 0.018, 0.004), '#b9c0ca', 'chrome', [x, 0.615, -0.9 + k * 0.03]);
+    g.add(CYL, steel, 'metal', [0.31, 0.36, -0.75], [0, 0, Math.PI / 2], [0.07, 0.03, 0.07]);
+    g.add(CYL, steel, 'metal', [0.31, 0.24, -0.86], [0, 0, Math.PI / 2], [0.045, 0.03, 0.045]);
+    g.add(RB(0.012, 0.05, 0.2, 0.004), '#14161c', 'rubber', [0.325, 0.3, -0.81], [0.82, 0, 0]);
+    g.add(new THREE.ConeGeometry(0.075, 0.13, 16, 1, true), '#c94f3a', 'fabric', [0, 0.68, -0.6], [-Math.PI / 2, 0, 0]);
+    g.add(CYL, '#d7dce3', 'chrome', [0, 0.68, -0.665], [Math.PI / 2, 0, 0], [0.078, 0.014, 0.078]);
+    for (const x of [-0.07, 0.07]) g.add(new THREE.TorusGeometry(0.06, 0.006, 4, 10, Math.PI), red, 'rubber', [x * 1.9, 0.64, -0.72], [0, Math.PI / 2, 0]);
+    g.add(CYL, '#d7dce3', 'chrome', [-0.24, 0.61, -0.62], [0, 0, 0], [0.03, 0.02, 0.03]);
+    // aerial with a pennant
+    g.add(CYL, '#30343c', 'metal', [-0.27, 0.9, -1.0], [-0.12, 0, 0], [0.006, 0.7, 0.006]);
+    g.add(new THREE.ConeGeometry(0.05, 0.16, 3), accent, 'paint', [-0.27, 1.21, -1.12], [-Math.PI / 2, 0, Math.PI / 2], [1, 1, 0.25]);
+    // number-plate holder and a fine pinstripe round the nose
+    g.add(RB(0.3, 0.1, 0.012, 0.004), '#f4f4f2', 'plastic', [0, 0.335, -1.098]);
+    g.add(new THREE.TorusGeometry(0.33, 0.006, 4, 28, Math.PI), accent, 'paint', [0, 0.31, 0.62], [Math.PI / 2 - 0.02, 0, 0], [1, 1.72, 1]);
     const shell = new THREE.Mesh(g.build(), this.mat);
     shell.castShadow = true;
     this.body.add(shell);
@@ -200,8 +280,41 @@ export class KartView {
       new THREE.MeshBasicMaterial({ color: new THREE.Color(1.6, 1.5, 1.2), toneMapped: false }),
     );
     this.body.add(lights);
+    // LED rings round the headlights, light strips along the pods and a glow under the floor
+    this.glow = new THREE.MeshBasicMaterial({ color: new THREE.Color(color).offsetHSL(0, 0.2, 0.1).multiplyScalar(1.9), toneMapped: false });
+    const leds: THREE.BufferGeometry[] = [];
+    for (const sx of [-1, 1]) {
+      leds.push(new THREE.TorusGeometry(0.066, 0.01, 6, 20).translate(sx * 0.16, 0.33, 1.075));
+      leds.push(new THREE.BoxGeometry(0.012, 0.016, 0.9).translate(sx * 0.615, 0.265, -0.02));
+      leds.push(new THREE.BoxGeometry(0.2, 0.012, 0.012).translate(sx * 0.4, 0.165, 1.135));
+    }
+    const ledM = new THREE.Mesh(mergeGeometries(leds), this.glow);
+    this.body.add(ledM);
+    leds.forEach((l) => l.dispose());
+    this.under = new THREE.Mesh(new THREE.PlaneGeometry(2.3, 3.3).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: blobTex(), color: new THREE.Color(color).offsetHSL(0, 0.2, 0.08), transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false, polygonOffset: true, polygonOffsetFactor: -4 }));
+    this.under.renderOrder = 2;
+    this.root.add(this.under);
+    // a tinted wind deflector in front of the wheel
+    const screen = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.33, 0.16, 20, 1, true, -0.9, 1.8).translate(0, 0.6, 0.12), new THREE.MeshPhysicalMaterial({ color: new THREE.Color(color).offsetHSL(0, -0.2, 0.25), roughness: 0.08, metalness: 0, transparent: true, opacity: 0.38, side: THREE.DoubleSide, clearcoat: 1, depthWrite: false }));
+    screen.renderOrder = 3;
+    this.body.add(screen);
+    this.extra.push(screen.material as THREE.Material);
+    // the driver's name across the rear wing and a sponsor strip on each pod
+    if (wing !== 'none') {
+      const ws = wing === 'big' ? 1.22 : 1, y = wing === 'big' ? 1.04 : 0.88;
+      const nm = new THREE.MeshStandardMaterial({ map: banner((label || 'ENGLISH').toUpperCase(), '#ffffff', 'rgba(0,0,0,0)'), transparent: true, alphaTest: 0.35, roughness: 0.3, polygonOffset: true, polygonOffsetFactor: -2 });
+      const pl = new THREE.Mesh(new THREE.PlaneGeometry(0.95 * ws, 0.2), nm);
+      pl.position.set(0, y + 0.03, -0.935); pl.rotation.set(-Math.PI / 2 + 0.12, 0, Math.PI);
+      this.body.add(pl);
+      this.extra.push(nm); this.extraTex.push(nm.map!);
+    }
+    {
+      const sm = new THREE.MeshStandardMaterial({ map: banner('ENGLISH RACERS', '#ffffff', 'rgba(0,0,0,0)', true), transparent: true, alphaTest: 0.35, roughness: 0.3, polygonOffset: true, polygonOffsetFactor: -2 });
+      for (const sx of [-1, 1]) { const pl = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.075), sm); pl.position.set(sx * 0.613, 0.4, -0.3); pl.rotation.y = sx * Math.PI / 2; this.body.add(pl); }
+      this.extra.push(sm); this.extraTex.push(sm.map!);
+    }
     this.tail = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.8, 0.05, 0.05), toneMapped: false });
-    const tl = new THREE.Mesh(mergeGeometries([-0.34, 0.34].flatMap((x) => [-0.045, 0.045].map((dx) => new THREE.CylinderGeometry(0.04, 0.04, 0.03, 14).rotateX(Math.PI / 2).translate(x + dx, 0.25, -1.13)))), this.tail);
+    const tl = new THREE.Mesh(mergeGeometries(([-0.34, 0.34].flatMap((x) => [-0.045, 0.045].map((dx) => new THREE.CylinderGeometry(0.04, 0.04, 0.03, 14).rotateX(Math.PI / 2).translate(x + dx, 0.25, -1.13))) as THREE.BufferGeometry[]).concat([new THREE.BoxGeometry(0.4, 0.014, 0.014).translate(0, 0.255, -1.1), new THREE.BoxGeometry(0.03, 0.05, 0.02).translate(0, 0.7, -0.5)])), this.tail);
     this.body.add(tl);
 
     // number roundels with the driver's initial (nose, both pods, rear)
@@ -228,6 +341,13 @@ export class KartView {
       wg.add(CYL, '#8d949e', 'metal', [sx * w * 0.42, 0, 0], [0, 0, Math.PI / 2], [r * 0.5, 0.02, r * 0.5]);
       wg.add(CYL, paint, 'paint', [sx * w * 0.45, 0, 0], [0, 0, Math.PI / 2], [r * 0.2, 0.03, r * 0.2]);
       for (let k = 0; k < 5; k++) { const a = (k / 5) * Math.PI * 2; wg.add(RB(0.02, r * 0.5, r * 0.12, 0.01), rim2, 'chrome', [sx * w * 0.44, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
+      // rim lip, ten thin spokes behind the five, centre lock nut, valve; brake disc and caliper
+      wg.add(new THREE.TorusGeometry(r * 0.6, r * 0.03, 6, 28), rim, 'chrome', [sx * w * 0.42, 0, 0], [0, Math.PI / 2, 0]);
+      for (let k = 0; k < 10; k++) { const a = (k / 10) * Math.PI * 2 + 0.31; wg.add(RB(0.012, r * 0.52, r * 0.045, 0.004), rim, 'chrome', [sx * w * 0.4, Math.cos(a) * r * 0.3, Math.sin(a) * r * 0.3], [a, 0, 0]); }
+      wg.add(new THREE.CylinderGeometry(r * 0.11, r * 0.11, 0.03, 6), '#e23a24', 'paint', [sx * (w * 0.45 + 0.022), 0, 0], [0, 0, Math.PI / 2]);
+      wg.add(CYL, '#14161c', 'rubber', [sx * w * 0.4, r * 0.52, 0], [0, 0, Math.PI / 2], [0.008, 0.03, 0.008]);
+      wg.add(CYL, '#8d949e', 'metal', [-sx * w * 0.36, 0, 0], [0, 0, Math.PI / 2], [r * 0.5, 0.012, r * 0.5]);
+      for (let k = 0; k < 8; k++) { const a = (k / 8) * Math.PI * 2; wg.add(CYL, '#3a404c', 'metal', [-sx * (w * 0.36 + 0.007), Math.cos(a) * r * 0.36, Math.sin(a) * r * 0.36], [0, 0, Math.PI / 2], [r * 0.035, 0.004, r * 0.035]); }
       const nT = front ? 22 : 26;
       for (let k = 0; k < nT; k++) {
         const a = (k / nT) * Math.PI * 2;
@@ -242,6 +362,18 @@ export class KartView {
       this.wheels.push({ pivot, spin, r, w, front, base: new THREE.Vector3(x, y, z) });
     }
     this.root.add(this.body);
+
+    // the driver's scarf (placed when a driver sits down)
+    {
+      const sg = new THREE.PlaneGeometry(0.15, 1, 2, 8);
+      const sm = new THREE.MeshStandardMaterial({ color: new THREE.Color(color).offsetHSL(0.5, 0.1, 0.12), roughness: 0.8, side: THREE.DoubleSide });
+      this.scarf = new THREE.Mesh(sg, sm);
+      this.scarf.visible = false;
+      this.scarf.castShadow = true;
+      this.scarf.frustumCulled = false;
+      this.body.add(this.scarf);
+      this.extra.push(sm);
+    }
 
     // dizzy stars that circle over the driver's head after a hit
     const shape = new THREE.Shape();
@@ -280,6 +412,13 @@ export class KartView {
     o.traverse((m) => { if ((m as THREE.Mesh).isMesh) m.castShadow = true; });
     this.body.add(o);
     actor.play('idle', 0);
+    // a racing scarf tied round the neck: it streams out behind with the speed
+    if (this.parts.head) {
+      this.body.updateWorldMatrix(true, true);
+      const neck = this.body.worldToLocal(this.parts.head.getWorldPosition(new THREE.Vector3()));
+      this.scarf.position.set(neck.x, neck.y + 0.02, neck.z - 0.13);
+      this.scarf.visible = true;
+    }
   }
 
   bump(impact: number) { this.squashV -= Math.min(5, impact * 0.5); }
@@ -322,6 +461,12 @@ export class KartView {
     (this.blob.material as THREE.MeshBasicMaterial).opacity = 0.5 * bo;
     this.blob.scale.setScalar(1 + h * 0.12);
     this.blob.visible = bo > 0.02;
+    // the glow under the floor follows the ground too and flares with a turbo
+    this.under.position.y = 0.05 - h;
+    this.under.visible = bo > 0.02;
+    const um = this.under.material as THREE.MeshBasicMaterial;
+    this.glowK += ((k.boostT > 0 ? 1 : k.drift ? 0.75 : 0.4) - this.glowK) * Math.min(1, dt * 6);
+    um.opacity = bo * this.glowK * (0.75 + 0.1 * Math.sin(t * 9));
     // thrown by a hit: one full barrel roll while in the air, lifted so the driver clears the road
     if (k.tumbleT > 0 && this.wasTumble <= 0) { this.tumble0 = k.tumbleT; this.tumbleA = 0; }
     this.wasTumble = k.tumbleT;
@@ -358,6 +503,15 @@ export class KartView {
     this.steering.rotation.z = k.steer * 1.6 - k.drift * 0.5;
     this.tail.color.setRGB(braking ? 2.4 : 0.8, 0.06, 0.06);
 
+    if (this.scarf.visible) {
+      const P = this.scarf.geometry.getAttribute('position') as THREE.BufferAttribute, v = Math.min(1, Math.abs(k.speed) / 24);
+      for (let r = 0; r <= 8; r++) {
+        const u = r / 8, wave = Math.sin(t * (9 + v * 9) - r * 0.9) * u;
+        const y = -u * 0.5 * (1 - v) + wave * 0.05 * v + u * 0.1 * v, z = -u * (0.12 + 0.75 * v), x = Math.sin(t * 7 - r * 0.7) * 0.05 * u * v + this.lean * 0.5 * u - k.yawRate * 0.12 * u * v;
+        for (let cI = 0; cI < 3; cI++) P.setXYZ(r * 3 + cI, x + (cI - 1) * 0.075 * (1 - u * 0.3), y + (cI - 1) * 0.02 * wave, z);
+      }
+      P.needsUpdate = true;
+    }
     // the driver: sitting, hands on the wheel, leaning into turns
     const d = this.driver;
     if (d) {
@@ -439,7 +593,9 @@ export class KartView {
   dispose() {
     this.driver?.object.removeFromParent();
     this.root.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !o.name.startsWith('toon')) m.geometry.dispose(); });
-    this.mat.dispose(); this.starMat.dispose();
+    this.mat.dispose(); this.starMat.dispose(); this.glow.dispose();
+    this.extra.forEach((m) => m.dispose()); this.extraTex.forEach((x) => x.dispose());
+    { const um = this.under.material as THREE.MeshBasicMaterial; um.map?.dispose(); um.dispose(); }
     this.decal.map?.dispose(); this.decal.dispose();
     const bm = this.blob.material as THREE.MeshBasicMaterial; bm.map?.dispose(); bm.dispose();
     this.root.removeFromParent();

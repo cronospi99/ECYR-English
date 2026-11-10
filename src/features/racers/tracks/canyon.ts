@@ -162,8 +162,8 @@ export function buildCanyon(track: Track): Scenery {
     [64, ['HUMP!'], ['#2f6fd0', '#36c2ff']],
     [96, ['HANG ON!'], ['#14915f', '#7ee08a']],
   ], c.clear, 0x8a5a36);
-  crowd(c, roadsideSpots(c, 6, track.cpS[6], { rows: 3, sides: [-1] }));
-  bunting(c, 8, track.cpS[6], 18, [0xff7a1a, 0xffc61a, 0xb5302e, 0x2f6fd0]);
+  crowd(c, roadsideSpots(c, 6, track.oS[6], { rows: 3, sides: [-1] }));
+  bunting(c, 8, track.oS[6], 18, [0xff7a1a, 0xffc61a, 0xb5302e, 0x2f6fd0]);
   lamps(c, 34, 0x3a2a24, 0xffd890);
   walkers(c, 30);
   void glow;

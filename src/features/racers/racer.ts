@@ -7,7 +7,11 @@ import type { Flames } from './fx';
 import type { Bot } from './ai';
 import type { Track } from './track';
 
-export type ItemKind = 'plane' | 'ink' | 'book' | 'coffee' | 'bell';
+export type ItemKind = 'plane' | 'chalk' | 'burst' | 'storm' | 'ink' | 'book' | 'coffee' | 'bell';
+/** What can hit a racer. */
+export type HitKind = 'plane' | 'ink' | 'chalk' | 'storm' | 'burst';
+/** How many power-ups a racer can carry (the one in hand plus the ones waiting). */
+export const SLOTS = 3;
 
 export interface Racer {
   idx: number;
@@ -30,6 +34,8 @@ export interface Racer {
   coins: number;
   item: ItemKind | null;
   itemN: number;
+  /** The power-ups waiting behind the one in hand. */
+  bag: { kind: ItemKind; n: number }[];
   /** Item roulette time left (s). */
   roll: number;
   /** A book shield is up. */
@@ -72,7 +78,7 @@ export function makeRacer(idx: number, track: Track, info: { id: string; name: s
     idx, toonId: info.id, name: info.name, color: info.color, player,
     kart: new Kart(track), view: null, flames, bot: null,
     dist: 0, prevS: 0, lapTimes: [], lapStart: 0, finished: false, finishT: 0, place: idx + 1,
-    coins: 0, item: null, itemN: 0, roll: 0, shield: false, hurtT: 0, respawnAt: 0, wrongT: 0, stuckT: 0,
+    coins: 0, item: null, itemN: 0, bag: [], roll: 0, shield: false, hurtT: 0, respawnAt: 0, wrongT: 0, stuckT: 0,
     tips: [new THREE.Vector3(), new THREE.Vector3()], boostKind: 'pad', boostTier: 1, points: 0, right: 0, wrong: 0, bank: 0, peer: null, remote: null,
   };
 }
