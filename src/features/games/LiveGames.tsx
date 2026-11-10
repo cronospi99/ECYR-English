@@ -2,65 +2,63 @@ import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { MASCOT_CSS, Mascot } from '@/features/doodle/Mascot';
+import { Logo } from '@/features/youdraw/Logo';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang, type Tx } from '@/lib/gameLang';
 
-/** The live multiplayer games (projector + phones) and the shared character cards. */
-const LIVE: { to: string; emoji: string; art?: ReactNode; title: Tx; sub: Tx; from: string; to2: string; accent: string }[] = [
+/** Stroked italic wordmark used by the 3D games (English Run, English Racers). */
+const WORD = 'block leading-none font-black tracking-tight text-[#ffd23f] italic [-webkit-text-stroke:2px_#10204a] [paint-order:stroke_fill] [text-shadow:0_4px_0_#10204a]';
+const TITLE = 'block text-[26px] leading-none font-black tracking-tight [text-shadow:0_3px_0_rgb(0_0_0/0.25)]';
+
+/** Translated text that follows the games-language toggle (safe to build outside render). */
+function Tt({ x }: { x: Tx }) { useGameLang(); return <>{t(...x)}</>; }
+
+/** The live multiplayer games (projector + phones) and the shared character cards: each with its own logo. */
+const LIVE: { to: string; art?: ReactNode; logo: ReactNode; sub: Tx; from: string; to2: string }[] = [
   {
     to: '/classwars',
-    emoji: '⚔️',
-    title: ['Class Wars', 'Class Wars'],
-    sub: ['A live arena with 3 modes (classic, Color Clash in teams and Knockback on platforms): answer to recharge energy and use your teacher\'s power. There is a demo against bots.', 'Arena en vivo con 3 modos (clásico, Color Clash por equipos y Knockback en plataformas): responde para recargar energía y usa el poder de tu profe. Hay demo contra bots.'],
+    logo: <img src="/classwars/logo.webp" alt="Class Wars" width={1112} height={358} className="block h-auto w-[220px] max-w-full drop-shadow-[0_6px_10px_rgb(0_10_60/0.4)] select-none" draggable={false} />,
+    sub: ['Live arena · 3 modes', 'Arena en vivo · 3 modos'],
     from: '#1e3a8a',
     to2: '#16a34a',
-    accent: '#fde047',
   },
   {
     to: '/racers/class',
-    emoji: '🏎️',
-    title: ['English Racers Live', 'English Racers en vivo'],
-    sub: ['Everybody races on the same track from their phone (QR). Every gate is a question: fewest mistakes plus most coins wins.', 'Todos corren en la misma pista desde su celular (QR). Cada arco es una pregunta: gana quien menos se equivoca y más monedas junta.'],
+    logo: <span className="flex flex-wrap items-center gap-2"><span className={`${WORD} text-[24px] whitespace-nowrap`}>ENGLISH RACERS</span><span className="rounded-md bg-[#ff3d6e] px-1.5 py-0.5 text-[12px] font-black tracking-wide not-italic shadow-[0_2px_0_#10204a]">LIVE</span></span>,
+    sub: ['The whole class races from their phones', 'Toda la clase corre desde el celular'],
     from: '#ff3d6e',
     to2: '#3b1d7a',
-    accent: '#ffd23f',
   },
   {
     to: '/impostor',
-    emoji: '🕵️',
-    title: ['Impostor', 'Impostor'],
-    sub: ['English missions around the academy… and someone is addicted to their phone. Classic, videogame and demo.', 'Misiones de inglés en la academia… y alguien es adicto al celular. Clásico, videojuego y demo.'],
+    logo: <span className="flex items-center gap-2"><span className="grid h-9 w-9 place-items-center rounded border-[3px] border-[#0e1113] bg-[#f5c518] text-[20px] font-black text-[#0e1113] shadow-[inset_0_-3px_0_rgb(0_0_0/0.18)]">?</span><span className="text-[28px] leading-none font-black tracking-wide text-[#f5c518] uppercase">Impostor</span></span>,
+    sub: ['English missions… and an impostor', 'Misiones en inglés… y un impostor'],
     from: '#1b2023',
     to2: '#3b4349',
-    accent: '#f5c518',
   },
   {
     to: '/doodle',
-    emoji: '✏️',
     art: <Mascot pose="draw" size={64} />,
-    title: ['Pass the Doodle', 'Pass the Doodle'],
-    sub: ['Write a sentence in English, the next player draws it, another describes the drawing… and the stories are revealed at the end. With Pío, our mascot.', 'Escribe una frase en inglés, el siguiente la dibuja, otro describe el dibujo… y al final se revelan las historias. Con Pío, nuestra mascota.'],
+    logo: <span className={`${TITLE} text-[#ffe36b]`}>Pass the Doodle</span>,
+    sub: ['Write, draw, describe… and laugh', 'Escribe, dibuja, describe… y ríe'],
     from: '#6a4cff',
     to2: '#1fb4c9',
-    accent: '#ffe36b',
   },
   {
     to: '/youdraw',
-    emoji: '🎨',
-    title: ['You Draw', 'You Draw'],
-    sub: ['The teacher leads: a random student draws a word from their level and the rest watch it live and type their guesses. Letters are revealed, final podium.', 'El profe dirige: un estudiante al azar dibuja una palabra de su nivel y los demás la ven en vivo y la adivinan escribiendo. Letras que se revelan, podio final.'],
+    art: <Logo size={56} />,
+    logo: <span className={`${TITLE} text-white`}>You Draw</span>,
+    sub: ['One draws, everyone guesses', 'Uno dibuja, todos adivinan'],
     from: '#221a55',
     to2: '#ff4757',
-    accent: '#ffd23f',
   },
   {
     to: '/games/cards',
-    emoji: '🃏',
-    title: ['Teacher cards', 'Cartas de profes'],
-    sub: ['All 25 characters. Level each card up from bronze to diamond by playing with it.', 'Los 25 personajes. Sube cada carta de bronce a diamante jugando con ella.'],
+    art: <span className="text-[38px]">🃏</span>,
+    logo: <span className={`${TITLE} text-[#fff2a8]`}><Tt x={['Teacher cards', 'Cartas de profes']} /></span>,
+    sub: ['25 characters, bronze to diamond', '25 personajes, de bronce a diamante'],
     from: '#5b3a12',
     to2: '#c99d00',
-    accent: '#fff2a8',
   },
 ];
 
@@ -70,23 +68,23 @@ export function LiveGames() {
     <section className="mb-8">
       <style>{MASCOT_CSS}</style>
       <div className="mb-3 flex items-center justify-end gap-2 px-1 text-[13px] font-semibold text-label-2">{t('Games language', 'Idioma de los juegos')} <GameLangToggle dark={false} /></div>
-      <Link to="/run" className="group relative mb-6 flex min-h-[150px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99] sm:p-6"
+      <Link to="/run" className="group relative mb-6 flex min-h-[120px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99] sm:p-6"
         style={{ background: 'linear-gradient(120deg,#2f7df0 0%,#58b3ff 45%,#ffb347 100%)' }}>
         <span aria-hidden className="absolute -right-8 -bottom-16 h-64 w-64 rounded-full bg-white/15 transition-transform group-hover:scale-110" />
         <span className="relative min-w-0 flex-1">
           <span className="block text-[13px] font-extrabold tracking-wide text-white/85 uppercase">{t('New · 3D', 'Nuevo · 3D')}</span>
-          <span className="block text-[38px] leading-none font-black tracking-tight text-[#ffd23f] italic [-webkit-text-stroke:2px_#10204a] [paint-order:stroke_fill] [text-shadow:0_4px_0_#10204a] sm:text-[48px]">ENGLISH RUN</span>
-          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('Run through the city with your teacher in 3D: dodge buses and barriers, grab coins and power-ups, and run through the right answer to multiply your score. Questions from A1 to C2.', 'Corre por la ciudad con tu profe en 3D: esquiva buses y barreras, recoge monedas y poderes, y pasa por la respuesta correcta para multiplicar tu puntaje. Preguntas de A1 a C2.')}</span>
+          <span className={`${WORD} text-[38px] sm:text-[48px]`}>ENGLISH RUN</span>
+          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('Run, dodge and pick the right answer · A1–C2', 'Corre, esquiva y elige la respuesta correcta · A1–C2')}</span>
         </span>
         <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]"><ChevronRight size={30} /></span>
       </Link>
-      <Link to="/racers" className="group relative mb-6 flex min-h-[150px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99] sm:p-6"
+      <Link to="/racers" className="group relative mb-6 flex min-h-[120px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99] sm:p-6"
         style={{ background: 'linear-gradient(120deg,#ff3d6e 0%,#ff8a3d 45%,#ffd23f 100%)' }}>
         <span aria-hidden className="absolute -right-8 -bottom-16 h-64 w-64 rounded-full bg-white/15 transition-transform group-hover:scale-110" />
         <span className="relative min-w-0 flex-1">
           <span className="block text-[13px] font-extrabold tracking-wide text-white/90 uppercase">{t('New · 3D · prototype', 'Nuevo · 3D · prototipo')}</span>
-          <span className="block text-[38px] leading-none font-black tracking-tight text-[#ffd23f] italic [-webkit-text-stroke:2px_#10204a] [paint-order:stroke_fill] [text-shadow:0_4px_0_#10204a] sm:text-[48px]">ENGLISH RACERS</span>
-          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('Kart racing with your teacher in 3D against 7 teacher rivals or live with your whole class (QR): 11 tracks (London, New York, Tokyo, Rio and a stunt track with 360° loops among them), a garage for your kart, a Grand Prix with a podium, school items, coins and question gates — drive through the right answer for a big turbo.', 'Carreras de karts en 3D con tu profe contra 7 profes rivales o en vivo con toda tu clase (QR): 11 pistas (entre ellas Londres, Nueva York, Tokio, Río y una acrobática con vueltas de 360°), garaje para tu kart, Gran Premio con podio, objetos de colegio, monedas y arcos de preguntas — pasa por la respuesta correcta para un gran turbo.')}</span>
+          <span className={`${WORD} text-[38px] sm:text-[48px]`}>ENGLISH RACERS</span>
+          <span className="mt-2 block max-w-[560px] text-[15px] leading-snug font-semibold text-white">{t('3D karts · 11 tracks · solo or with your class', 'Karts en 3D · 11 pistas · solo o con tu clase')}</span>
         </span>
         <span className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2fd27a] text-[#062a15] shadow-[0_5px_0_#16924d]"><ChevronRight size={30} /></span>
       </Link>
@@ -96,20 +94,13 @@ export function LiveGames() {
           <Link
             key={g.to}
             to={g.to}
-            className="group relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99]"
+            className="group relative flex min-h-[112px] items-center gap-4 overflow-hidden rounded-card p-5 text-white shadow-card transition-transform active:scale-[0.99]"
             style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to2})` }}
           >
-            {!g.art && (
-              <span aria-hidden className="absolute -right-6 -bottom-8 text-[120px] leading-none opacity-15 transition-transform group-hover:scale-110">
-                {g.emoji}
-              </span>
-            )}
-            <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-white/12 text-[38px] shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.15)]">{g.art ?? g.emoji}</span>
+            {g.art && <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[18px] bg-white/12 shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.15)]">{g.art}</span>}
             <span className="relative min-w-0 flex-1">
-              <span className="block text-[22px] font-extrabold tracking-tight" style={{ color: g.accent }}>
-                {t(...g.title)}
-              </span>
-              <span className="mt-0.5 block text-[14px] leading-snug text-white/80">{t(...g.sub)}</span>
+              {g.logo}
+              <span className="mt-1.5 block text-[14px] leading-snug font-semibold text-white/80">{t(...g.sub)}</span>
             </span>
             <ChevronRight className="relative shrink-0 text-white/60" />
           </Link>
