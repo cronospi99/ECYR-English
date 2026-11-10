@@ -62,7 +62,7 @@ export function buildSnow(track: Track): Scenery {
   };
 
   /* ---------------- snowy ground, the frozen lake, far peaks ---------------- */
-  terrain(c, { cx: 0, cz: 0, size: 1000, n: 190, y: ground, rough: 0.7, color: (x, z, y) => { const n = nearest(x, z); return n.d < 1.5 ? 0xd9e2ec : y > 22 ? 0xf8fbff : shade(0xf0f5fb, Math.sin(x * 0.07 + z * 0.05) * 0.02 - 0.01); } });
+  terrain(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1000, track.box.span + 300), n: 215, y: ground, rough: 0.7, color: (x, z, y) => { const n = nearest(x, z); return n.d < 1.5 ? 0xd9e2ec : y > 22 ? 0xf8fbff : shade(0xf0f5fb, Math.sin(x * 0.07 + z * 0.05) * 0.02 - 0.01); } });
   {
     const ly = iceY;
     const ice = new THREE.Mesh(new THREE.CircleGeometry(lake.r, 40).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ color: 0xbfe4f5, roughness: 0.08, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.05 }));

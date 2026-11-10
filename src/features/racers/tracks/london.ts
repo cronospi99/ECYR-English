@@ -52,7 +52,7 @@ export function buildLondon(track: Track): Scenery {
   const F = track.frames;
 
   /* ---------------- ground, river, embankments ---------------- */
-  ground(c, { cx: -40, cz: -150, size: 1300, step: 30, gx: 0, gz: 0, y: (x, z) => (inRiver(x, z, -7) ? -6 : -0.08), color: (x, z) => (inRiver(x, z, 2) ? 0x9a9488 : 0xffffff), walk: '#bdb8ad', asphalt: '#474a51' });
+  ground(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1300, track.box.span + 520), step: 30, gx: 0, gz: 0, y: (x, z) => (inRiver(x, z, -7) ? -6 : -0.08), color: (x, z) => (inRiver(x, z, 2) ? 0x9a9488 : 0xffffff), walk: '#bdb8ad', asphalt: '#474a51' });
   const water = makeOcean({ deep: 0x3b5d66, shallow: 0x5f8a86, foam: 0xdfe8e6, amp: 0.12, scale: 0.55, dir: [1, 0.15], opacity: 0.96 });
   const wgeo = oceanGeometry(0, 0, 1000, 70, 200, 14, (x, z) => 2 + (RW - Math.abs(z - riverZ(x))) * 0.4);
   { const P = wgeo.getAttribute('position'); for (let i = 0; i < P.count; i++) P.setZ(i, P.getZ(i) * (RW + 1) / 35 + riverZ(P.getX(i))); }

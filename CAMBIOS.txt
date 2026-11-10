@@ -870,6 +870,24 @@ G1y. ENGLISH RACERS · FASE 7: PISTAS LARGAS, PODERES TIPO "COMBATE", KARTS CON 
    carreras completas con 7 bots, y un barrido de rayos sobre la calzada de cada pista para
    detectar objetos que la atraviesen.
 
+G1z. ENGLISH RACERS · FASE 8: PISTAS AÚN MÁS LARGAS, VUELTAS Y BOTS A ELEGIR, CORRECCIONES
+   Errores corregidos:
+   - "WRONG WAY" falso y kart hundido en el asfalto: la consulta de la pista devolvía vectores
+     compartidos, así que cada kart leía la dirección/inclinación del último kart consultado
+     (un rival en otro tramo). Ahora cada consulta devuelve sus propios vectores. El aviso de
+     sentido contrario además exige ir hacia delante perdiendo terreno, en el suelo y sin trompo.
+   - Menú de pausa: en pantallas bajas no se podía desplazar; ahora hace scroll completo.
+   - Carteles de respuesta (CORRECT! / NOT QUITE) duran la mitad (0,95 s).
+   Pistas (las 11, ahora 2,5-3,4 km por vuelta):
+   - Cada una gana un segundo tramo: espiral + cabeza ancha + eses (Campus, Rooftop, Tokio,
+     Splash), eses con colina y recta larga (Sunny Bay, Neon, Río, Canyon, Snow) o manzanas en
+     ángulo recto (Londres; Nueva York con otra espiral). Vuelta de referencia: 95-145 s.
+   Opciones:
+   - Vueltas (1-5) y cantidad de bots (0-7) en el menú principal; ninguna pista fija ya sus
+     vueltas. Los récords de contrarreloj se guardan por pista y número de vueltas.
+   - En vivo con la clase: el profe elige vueltas (1-5) y bots (0-7). Cada celular conduce
+     sus propios bots (no cuentan para el puntaje de la clase ni salen en la pantalla del profe).
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

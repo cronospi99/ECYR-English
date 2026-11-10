@@ -107,12 +107,14 @@ export function buildRoofs(track: Track): Scenery {
 
   /* ---------------- street level ---------------- */
   {
-    const g = new THREE.PlaneGeometry(1400, 1400);
+    const E = track.box, S = Math.max(1400, E.r * 2 + 1100);
+    const g = new THREE.PlaneGeometry(S, S);
     g.rotateX(-Math.PI / 2);
     const uv = g.getAttribute('uv') as THREE.BufferAttribute;
-    for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * 1400 / 48, uv.getY(i) * 1400 / 48);
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * S / 48, uv.getY(i) * S / 48);
     const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: streetTex(), roughness: 0.92 }));
-    m.position.set(70, 0, 40);
+    // (in step with the 48 m street pattern the traffic follows)
+    m.position.set(-630 + S / 2 + Math.round((E.cx + 630 - S / 2) / 48) * 48, 0, 740 - S / 2 + Math.round((E.cz - 740 + S / 2) / 48) * 48);
     m.receiveShadow = true;
     group.add(m);
   }
@@ -210,9 +212,9 @@ export function buildRoofs(track: Track): Scenery {
 
   /* ---------------- far skyline ---------------- */
   for (let k = 0; k < 70; k++) {
-    const a = rand() * Math.PI * 2, r = 520 + rand() * 260;
+    const a = rand() * Math.PI * 2, r = track.box.r + 170 + rand() * 260;
     const w = 20 + rand() * 30, h = 40 + rand() * 110;
-    world.add(U.box, shade(0x8c7f94, (rand() - 0.5) * 0.12), 70 + Math.cos(a) * r, h / 2, 40 + Math.sin(a) * r, w, h, w * (0.7 + rand() * 0.6));
+    world.add(U.box, shade(0x8c7f94, (rand() - 0.5) * 0.12), track.box.cx + Math.cos(a) * r, h / 2, track.box.cz + Math.sin(a) * r, w, h, w * (0.7 + rand() * 0.6));
   }
 
   /* ---------------- start gantry, rooftop billboards, clouds ---------------- */

@@ -33,7 +33,7 @@ export type LivePhase = 'lobby' | 'race' | 'results' | 'podium';
 export interface LiveSettings {
   /** A Grand Prix on random tracks (the default) or one race. */
   mode: 'gp' | 'single'; races: number;
-  track: TrackId | 'random'; laps: number; level: RunLevel; items: boolean; /** Seconds the others get after the first one finishes. */ wait: number;
+  track: TrackId | 'random'; laps: number; level: RunLevel; items: boolean; /** Rival teachers driven by every phone (0–7). */ bots: number; /** Seconds the others get after the first one finishes. */ wait: number;
 }
 /** The Grand Prix being raced: its tracks and how many have started. */
 export interface LiveGp { tracks: TrackId[]; round: number }
@@ -67,7 +67,7 @@ export class RacersHost {
   readonly relay: Relay;
   readonly code: string;
   phase: LivePhase = 'lobby';
-  set: LiveSettings = { mode: 'gp', races: 4, track: 'random', laps: 2, level: 'A2', items: true, wait: 45 };
+  set: LiveSettings = { mode: 'gp', races: 4, track: 'random', laps: 2, level: 'A2', items: true, bots: 0, wait: 45 };
   /** The tracks of the next Grand Prix (shown in the lobby; shuffle for others). */
   plan: TrackId[] = rollGp(4);
   gp: LiveGp | null = null;
@@ -150,7 +150,7 @@ export class RacersHost {
     }
     this.nextAt = 0;
     this.race++;
-    this.cfg = { track, laps: this.set.laps, level: this.set.level, items: this.set.items, roster, race: this.race };
+    this.cfg = { track, laps: this.set.laps, level: this.set.level, items: this.set.items, bots: this.set.bots, roster, race: this.race };
     this.phase = 'race';
     this.states.clear(); this.fins.clear();
     this.endsAt = 0; this.results = null;

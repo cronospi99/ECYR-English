@@ -95,7 +95,7 @@ export function buildBeach(track: Track): Scenery {
     return y;
   };
   {
-    const S = 1400, n = 190, cx = 110, cz = 30;
+    const E = track.box, S = Math.max(1400, E.span + 560), n = Math.round(S / 7.4), cx = E.cx, cz = E.cz;
     const geo = new THREE.PlaneGeometry(S, S, n, n);
     geo.rotateX(-Math.PI / 2);
     geo.translate(cx, 0, cz);
@@ -259,7 +259,7 @@ export function buildBeach(track: Track): Scenery {
 
   /* ---------------- distant headlands ---------------- */
   for (let k = 0; k < 14; k++) {
-    const a = Math.PI * 0.1 + (k / 13) * Math.PI * 0.8, r = 780 + rand() * 120;
+    const a = Math.PI * 0.1 + (k / 13) * Math.PI * 0.8, r = Math.max(780, 30 - track.box.z0 + 330, track.box.x1 * 0.85 + 260, -track.box.x0 + 300) + rand() * 120;
     world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), 20 + Math.cos(a) * r * 1.2, -30, 30 - Math.sin(a) * r, 120 + rand() * 80, 60 + rand() * 50, 110 + rand() * 60);
   }
   for (const [x, z, s] of [[-420, 520, 1], [520, 560, 1.3], [80, 760, 0.8]] as const) world.add(U.blob, 0x5e9a62, x, -18, z, 70 * s, 34 * s, 50 * s);

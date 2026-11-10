@@ -31,7 +31,9 @@ import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, setSon
 export type RaceState = 'loading' | 'menu' | 'countdown' | 'race' | 'paused' | 'finish' | 'podium';
 export type Mode = 'race' | 'gp' | 'time' | 'live';
 export type Cup = 'classic' | 'world' | 'stunt';
-export interface Settings { mode: Mode; track: TrackId; level: RunLevel; difficulty: Difficulty; cup: Cup }
+export interface Settings { mode: Mode; track: TrackId; level: RunLevel; difficulty: Difficulty; cup: Cup; /** Laps per race and how many rival teachers (0–7). */ laps: number; bots: number }
+export const MAX_LAPS = 5, MAX_BOTS = 7;
+const whole = (v: unknown, lo: number, hi: number, d: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, Math.round(v))) : d);
 export interface ResultRow { place: number; name: string; color: string; me: boolean; time: number | null; points: number; total: number }
 export interface Review { q: string; a: string; picked: string; ok: boolean }
 export interface Results {
@@ -54,11 +56,11 @@ export interface Hud {
   /** Live class mode: my score and everybody's, best first. */
   live: { score: number; right: number; wrong: number; bank: number; rows: LiveRow[]; spectator: boolean; focus: string } | null;
 }
-export interface Toast { id: number; text: string; sub?: string; color: string }
+export interface Toast { id: number; text: string; sub?: string; color: string; /** Gone in half the time (answers at a gate). */ brief?: boolean }
 
 /* ---- live class mode: the race as the network sees it ---- */
 export interface LiveEntry { peer: string; name: string; toon: string }
-export interface LiveCfg { track: TrackId; laps: number; level: RunLevel; items: boolean; roster: LiveEntry[]; race: number }
+export interface LiveCfg { track: TrackId; laps: number; level: RunLevel; items: boolean; bots?: number; roster: LiveEntry[]; race: number }
 /** This student's kart, sent to the teacher's screen a few times a second. */
 export interface LiveState { x: number; y: number; z: number; yaw: number; spd: number; drift: number; flags: number; dist: number; fin: boolean; ft: number; bank: number; right: number; wrong: number; /** Loop being ridden (-1 none) and progress. */ li: number; lu: number }
 export interface LiveFinish { time: number; right: number; wrong: number; bank: number; done: boolean }
@@ -87,15 +89,17 @@ export const GP_POINTS = [15, 12, 10, 8, 6, 4, 2, 1];
 export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'], stunt: ['canyon', 'splash', 'snow', 'roofs'] };
 const N_RIVALS = 7;
 const PODIUM_H = [1.6, 1.05, 0.65];
+/** Records are kept per track and number of laps (and start again when the tracks are redrawn). */
+const recKey = (def: { id: string; laps: number }) => `${def.id}:v8:${def.laps}`;
 const store = {
   get(id: string): { lap: number; total: number } | null { try { const v = JSON.parse(localStorage.getItem('racers:best:' + id) || 'null'); return v && typeof v.lap === 'number' ? v : null; } catch { return null; } },
   set(id: string, v: { lap: number; total: number }) { try { localStorage.setItem('racers:best:' + id, JSON.stringify(v)); } catch { /* ignore */ } },
 };
 const loadSettings = (): Settings => {
-  const d: Settings = { mode: 'gp', track: 'campus', level: 'A2', difficulty: 'normal', cup: 'classic' };
+  const d: Settings = { mode: 'gp', track: 'campus', level: 'A2', difficulty: 'normal', cup: 'classic', laps: 2, bots: MAX_BOTS };
   try {
     const v = JSON.parse(localStorage.getItem('racers:settings') || 'null');
-    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus', cup: v.cup === 'world' || v.cup === 'stunt' ? v.cup : 'classic', mode: v.mode === 'live' ? 'gp' : v.mode ?? 'gp' };
+    if (v && typeof v === 'object') return { ...d, ...v, track: TRACKS.some((x) => x.id === v.track) ? v.track : 'campus', cup: v.cup === 'world' || v.cup === 'stunt' ? v.cup : 'classic', mode: v.mode === 'live' ? 'gp' : v.mode ?? 'gp', laps: whole(v.laps, 1, MAX_LAPS, 2), bots: whole(v.bots, 0, MAX_BOTS, MAX_BOTS) };
   } catch { /* ignore */ }
   return d;
 };
@@ -258,7 +262,7 @@ export class RaceGame {
   }
 
   private newFlames() { const f = new Flames(); this.scene.add(f.group); return f; }
-  private bias(r: Racer) { return ((r.idx - 1) / (N_RIVALS - 1)) * 2 - 1; }
+  private bias(r: Racer) { return (((r.idx - 1) % N_RIVALS) / (N_RIVALS - 1)) * 2 - 1; }
 
   /* ------------------------------------------------------------ track */
   /** Build a track (road, scenery, items, gates, sky and light) and put the karts on the grid. */
@@ -275,6 +279,7 @@ export class RaceGame {
     if (this.gates) { this.scene.remove(this.gates.group); this.gates.dispose(); }
     this.clearPodium();
     this.track = new Track(info.def);
+    this.track.def.laps = this.live ? this.liveLaps : this.settings.laps;
     this.line = racingLine(this.track);
     for (const r of this.racers) {
       r.kart = new Kart(this.track);
@@ -290,7 +295,7 @@ export class RaceGame {
     this.gates = new Gates(this.track, this.settings.level);
     this.scene.add(this.gates.group);
     this.applyLook();
-    this.record = store.get(this.track.def.id);
+    this.record = store.get(recKey(this.track.def));
     // minimap outline (square box so the shape keeps its proportions)
     let x0 = Infinity, z0 = Infinity, x1 = -Infinity, z1 = -Infinity;
     for (const f of this.track.frames) { x0 = Math.min(x0, f.p.x); x1 = Math.max(x1, f.p.x); z0 = Math.min(z0, f.p.z); z1 = Math.max(z1, f.p.z); }
@@ -442,11 +447,11 @@ export class RaceGame {
     v.update(0.016, me.kart, 0, false);
   }
 
-  /** Load seven rival teachers (light models) and their karts. */
+  /** Load the rival teachers (light models) and their karts. */
   prepareRivals(): Promise<void> {
-    if (this.rivalsReady && this.rivalIds.length) return Promise.resolve();
+    if (this.rivalsReady) return Promise.resolve();
     if (this.rivalsLoading) return this.rivalsLoading;
-    const pool = TOONS.filter((x) => x.id !== this.toonId).sort(() => Math.random() - 0.5).slice(0, N_RIVALS);
+    const pool = TOONS.filter((x) => x.id !== this.toonId).sort(() => Math.random() - 0.5).slice(0, this.settings.bots);
     this.rivalIds = pool.map((x) => x.id);
     const want = this.rivalIds.join();
     this.rivalsLoading = (async () => {
@@ -490,6 +495,7 @@ export class RaceGame {
     if (this.state !== 'menu' && this.state !== 'loading') return;
     const prev = this.settings;
     this.settings = { ...prev, ...s };
+    this.settings.laps = whole(this.settings.laps, 1, MAX_LAPS, 2); this.settings.bots = whole(this.settings.bots, 0, MAX_BOTS, MAX_BOTS);
     try { localStorage.setItem('racers:settings', JSON.stringify(this.settings)); } catch { /* ignore */ }
     const want = this.settings.mode === 'gp' ? this.cup[0] : this.settings.track;
     const changedTrack = want !== this.info.id;
@@ -501,6 +507,8 @@ export class RaceGame {
       this.placeGrid();
     }
     if (s.level && this.gates) this.gates.setLevel(s.level);
+    if (this.settings.laps !== this.track.def.laps) { this.track.def.laps = this.settings.laps; this.record = store.get(recKey(this.track.def)); }
+    if (this.settings.bots !== prev.bots) { this.rivalIds = []; this.rivalsReady = false; this.rivalsLoading = null; if (this.settings.mode !== 'time') void this.prepareRivals(); }
     if (s.difficulty) for (const r of this.racers) if (r.bot) r.bot = new Bot(SKILL[s.difficulty], this.bias(r), this.track, this.line!);
     this.emit();
   }
@@ -664,7 +672,7 @@ export class RaceGame {
     if (r.player) { this.skids.mark(0, null); this.skids.mark(1, null); sfx.respawn(); }
   }
 
-  private toast(text: string, color: string, sub?: string) { this.onToast?.({ id: ++this.toastId, text, color, sub }); }
+  private toast(text: string, color: string, sub?: string, brief = false) { this.onToast?.({ id: ++this.toastId, text, color, sub, brief }); }
 
   /* ------------------------------------------------------------ frame */
   private frame(dt: number, tm: number) {
@@ -895,8 +903,9 @@ export class RaceGame {
     }
     const q = k.q;
     if (r.player && q && this.state === 'race') {
+      // facing back down the road and really losing ground (never while spinning, flying or in a loop)
       const dot = Math.sin(k.yaw) * q.t.x + Math.cos(k.yaw) * q.t.z;
-      r.wrongT = dot < -0.3 && k.speed > 4 ? r.wrongT + dt : 0;
+      r.wrongT = dot < -0.3 && k.fwd > 4 && delta < 0 && k.grounded && k.spinT <= 0 && !k.loop ? r.wrongT + dt : Math.max(0, r.wrongT - dt * 4);
     }
   }
 
@@ -908,8 +917,8 @@ export class RaceGame {
     if (!r.player) return;
     this.review.push({ q: g.q.q, a: g.q.a, picked: g.answers[lane], ok });
     gt.flash(g, ok);
-    if (ok) { sfx.right(); this.toast(t('CORRECT!', '¡CORRECTO!'), '#5cff8a', t('Turbo + 3 coins', 'Turbo + 3 monedas')); }
-    else { sfx.wrong(); this.toast(t('NOT QUITE', 'CASI'), '#ff8a8a', `${t('Answer', 'Respuesta')}: ${g.q.a}`); }
+    if (ok) { sfx.right(); this.toast(t('CORRECT!', '¡CORRECTO!'), '#5cff8a', t('Turbo + 3 coins', 'Turbo + 3 monedas'), true); }
+    else { sfx.wrong(); this.toast(t('NOT QUITE', 'CASI'), '#ff8a8a', `${t('Answer', 'Respuesta')}: ${g.q.a}`, true); }
     // a new question for the next lap, once the player is clear of the gate
     setTimeout(() => { if (this.gates === gt) gt.ask(g); }, 900);
   }
@@ -931,7 +940,7 @@ export class RaceGame {
     const newBestLap = timed && (!rec || best < rec.lap), newBestTotal = timed && (!rec || total < rec.total);
     if (timed) {
       this.record = { lap: rec ? Math.min(rec.lap, best) : best, total: rec ? Math.min(rec.total, total) : total };
-      store.set(this.track.def.id, this.record);
+      store.set(recKey(this.track.def), this.record);
     }
     const earned = raceEarnings(me.bank, me.right, me.place, this.field.length);
     garage.earn(earned);
@@ -1498,13 +1507,14 @@ export class RaceGame {
       rivalsReady: this.rivalsReady || this.settings.mode === 'time', waiting: this.pendingStart, gpRace: this.gpRace, mapPath: this.mapPath,
       live: this.live ? {
         score: scoreOf(me), right: me.right, wrong: me.wrong, bank: me.bank, spectator: !!this.spectator, focus: this.spectator ? this.focus?.name ?? '' : '',
-        rows: field.map((r) => ({ name: r.name, color: r.color, me: r.player, score: scoreOf(r), right: r.right, wrong: r.wrong, bank: r.bank, fin: r.finished })).sort((a, b) => b.score - a.score || Number(b.fin) - Number(a.fin)),
+        rows: field.filter((r) => !r.bot).map((r) => ({ name: r.name, color: r.color, me: r.player, score: scoreOf(r), right: r.right, wrong: r.wrong, bank: r.bank, fin: r.finished })).sort((a, b) => b.score - a.score || Number(b.fin) - Number(a.fin)),
       } : null,
     });
   }
 
   /* ------------------------------------------------------------ live class mode */
   private liveOrder: Racer[] = [];
+  private liveLaps = 2;
   private snapCam = false;
   private byPeer(peer: string) { return this.racers.find((r) => r.peer === peer) ?? null; }
 
@@ -1536,6 +1546,22 @@ export class RaceGame {
     void ToonActor.create(info.id, true).then((a) => { if (r.view === v && this.racers.includes(r)) v.setDriver(a); else a.dispose(); }).catch(() => { /* kart without a driver */ });
     return r;
   }
+  /** Rival teachers in a class race: each phone drives its own (they fill the track, hit and get
+      hit, but only the students count for the class score). */
+  private liveBots(cfg: LiveCfg, order: Racer[]) {
+    const n = whole(cfg.bots, 0, MAX_BOTS, 0);
+    const taken = new Set([this.toonId, ...cfg.roster.map((e) => e.toon)]);
+    const free = TOONS.filter((x) => !taken.has(x.id)), pool = [...free, ...TOONS.filter((x) => taken.has(x.id) && x.id !== this.toonId)].slice(0, n);
+    pool.forEach((p) => {
+      const r = makeRacer(order.length + 1, this.track, p, false, this.newFlames());
+      const v = new KartView(p.color, p.name);
+      r.view = v;
+      this.scene.add(v.root);
+      void ToonActor.create(p.id, true).then((a) => { if (r.view === v && this.racers.includes(r)) v.setDriver(a); else a.dispose(); }).catch(() => { /* kart without a driver */ });
+      r.bot = new Bot(SKILL.normal, this.bias(r), this.track, this.line!);
+      this.racers.push(r); order.push(r);
+    });
+  }
   private dropRacer(r: Racer) {
     this.items?.setShield(r, false);
     r.view?.dispose(); r.view = null;
@@ -1545,7 +1571,7 @@ export class RaceGame {
   /** The teacher started a race: this track, these students (`me` = my id; null on the teacher's screen). */
   startLive(cfg: LiveCfg, me: string | null) {
     this.settings = { ...this.settings, level: cfg.level, mode: 'live' };
-    this.liveItems = cfg.items;
+    this.liveItems = cfg.items; this.liveLaps = cfg.laps;
     // the bots of a solo game never race here
     for (const r of this.racers) if (!r.player && !r.remote) this.dropRacer(r);
     const keep = new Map(this.racers.filter((r) => r.remote && r.peer).map((r) => [r.peer!, r]));
@@ -1560,6 +1586,7 @@ export class RaceGame {
     this.racers.length = 0;
     this.racers.push(this.me, ...order.filter((r) => r !== this.me));
     this.liveOrder = order;
+    if (me) this.liveBots(cfg, order);
     for (const r of this.racers) if (r.view) r.view.root.visible = r.player ? !this.spectator : true;
     this.loadTrack(cfg.track, false);
     this.track.def.laps = cfg.laps;
@@ -1661,6 +1688,9 @@ export class RaceGame {
   }
   /** Final podium (session totals by student id). */
   livePodium(totals: Record<string, number>) {
+    // (each phone's own bots leave: the podium is the students')
+    for (const r of this.racers.filter((x) => x.bot)) this.dropRacer(r);
+    const keep = this.racers.filter((x) => !x.bot); this.racers.length = 0; this.racers.push(...keep); this.liveOrder = this.liveOrder.filter((x) => !x.bot);
     for (const r of this.field) r.points = totals[r.peer ?? ''] ?? 0;
     this.showPodium();
   }

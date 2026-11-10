@@ -43,6 +43,17 @@ export function Seg<T extends string>({ value, options, onChange }: { value: T; 
   );
 }
 
+/** A number with − and + (laps, rivals). */
+export function Stepper({ value, min, max, onChange, label }: { value: number; min: number; max: number; onChange: (v: number) => void; label: string }) {
+  const b = 'grid h-9 w-10 shrink-0 place-items-center rounded-xl text-[20px] font-black leading-none text-white hover:bg-white/14 disabled:opacity-30';
+  return (
+    <div className="flex items-center gap-1 rounded-2xl bg-white/8 p-1" role="group" aria-label={label}>
+      <button type="button" className={b} disabled={value <= min} onClick={() => onChange(value - 1)} aria-label={`${label} −`}>−</button>
+      <div className="min-w-0 flex-1 text-center text-[16px] font-black tabular-nums" aria-live="polite">{value}</div>
+      <button type="button" className={b} disabled={value >= max} onClick={() => onChange(value + 1)} aria-label={`${label} +`}>+</button>
+    </div>
+  );
+}
 
 export function Dot({ color, size = 12 }: { color: string; size?: number }) {
   return <span className="inline-block shrink-0 rounded-full border border-black/30" style={{ background: color, width: size, height: size }} />;

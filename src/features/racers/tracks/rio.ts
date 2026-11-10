@@ -76,7 +76,7 @@ export function buildRio(track: Track): Scenery {
     // (where the road dips a little under street level the ground goes down with it)
     return Math.max(y, z < -16 ? -6 : dRoad < 4 ? Math.min(-0.08, fy - 0.3) : -0.08);
   };
-  ground(c, { cx: -110, cz: 110, size: 1300, step: 30, gx: 0, gz: 0, y: terrain, color: (x, z) => (z < -14 ? 0xf0dcae : hill(x, z) > 3 ? 0xc9e0a8 : 0xffffff), walk: '#c9c4b8', asphalt: '#45484e' });
+  ground(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1300, track.box.span + 520), step: 30, gx: 0, gz: 0, y: terrain, color: (x, z) => (z < -14 ? 0xf0dcae : hill(x, z) > 3 ? 0xc9e0a8 : 0xffffff), walk: '#c9c4b8', asphalt: '#45484e' });
   {
     const sand = new THREE.Mesh(new THREE.PlaneGeometry(1100, 30).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xf0dcae, roughness: 1 }));
     sand.position.set(0, -0.12, -31);
@@ -151,7 +151,8 @@ export function buildRio(track: Track): Scenery {
 
   /* ---------------- the mountain with the open-armed statue ---------------- */
   {
-    const x = -330, z = 470;
+    // (south of everything the road does)
+    const x = -330, z = Math.max(470, track.box.z1 + 250);
     world.add(U.blob, 0x3f7a3a, x, 20, z, 170, 120, 150, 0.3, 0.6, 0);
     world.add(U.blob, 0x4a8340, x + 60, 30, z + 60, 120, 110, 120, 0.8, 0.2, 0);
     world.add(U.blob, 0x4f8a42, x + 20, 120, z - 10, 60, 72, 55, 0.4, 1.1, 0);

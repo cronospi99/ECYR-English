@@ -133,14 +133,15 @@ export interface Corner { x: number; z: number; r?: number; y?: number; spiral?:
 /** The track with a new stretch between control points `at` and `at + 1 + drop` (the `drop` points
     in between go away): straights joined by round corners. Features, items, gates and coins after it
     keep their places; `add` brings new ones, placed by corner number (0 = the first corner). */
-export function withDetour(def: TrackDef, at: number, drop: number, corners: Corner[], add: { local?: 'out' | 'in'; lead?: number; w?: number; apron?: number; features?: Feature[]; items?: Spot[]; coins?: NonNullable<TrackDef['coins']>; clear?: NonNullable<TrackDef['clear']> } = {}): TrackDef {
+export function withDetour(def: TrackDef, at: number, drop: number, corners: Corner[], add: { local?: 'out' | 'in' | 'left' | 'right'; lead?: number; w?: number; apron?: number; features?: Feature[]; items?: Spot[]; coins?: NonNullable<TrackDef['coins']>; clear?: NonNullable<TrackDef['clear']> } = {}): TrackDef {
   const cps = def.cps, A = cps[at], B = cps[(at + 1 + drop) % cps.length];
   if (add.local) {
     // corners given along the chord A→B (x) and away from it (z), out of the track or into it
     const D = Math.hypot(B.x - A.x, B.z - A.z), ux = (B.x - A.x) / D, uz = (B.z - A.z) / D;
     let mx = 0, mz = 0;
     for (const c of cps) { mx += c.x / cps.length; mz += c.z / cps.length; }
-    const sg = (((A.x + B.x) / 2 - mx) * -uz + ((A.z + B.z) / 2 - mz) * ux > 0 ? 1 : -1) * (add.local === 'out' ? 1 : -1);
+    // (…or to the left or right of the way from A to B)
+    const sg = add.local === 'right' ? 1 : add.local === 'left' ? -1 : (((A.x + B.x) / 2 - mx) * -uz + ((A.z + B.z) / 2 - mz) * ux > 0 ? 1 : -1) * (add.local === 'out' ? 1 : -1);
     corners = corners.map((c) => ({ ...c, x: A.x + ux * c.x - uz * sg * c.z, z: A.z + uz * c.x + ux * sg * c.z }));
   }
   // the stretch leaves A the way the road reaches it and meets B the way the road leaves it
@@ -402,6 +403,17 @@ export class Track {
     this.gates.sort((a, b) => a - b);
   }
 
+  private _box?: { x0: number; x1: number; z0: number; z1: number; cx: number; cz: number; span: number; r: number };
+  /** Where the road is: its box, the middle, the longer side and the radius that holds it all (what
+      the scenery sizes its ground and horizon by). */
+  get box() {
+    if (!this._box) {
+      let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
+      for (const f of this.frames) { x0 = Math.min(x0, f.p.x); x1 = Math.max(x1, f.p.x); z0 = Math.min(z0, f.p.z); z1 = Math.max(z1, f.p.z); }
+      this._box = { x0, x1, z0, z1, cx: (x0 + x1) / 2, cz: (z0 + z1) / 2, span: Math.max(x1 - x0, z1 - z0), r: Math.hypot(x1 - x0, z1 - z0) / 2 };
+    }
+    return this._box;
+  }
   frame(i: number) { const N = this.frames.length; return this.frames[((i % N) + N) % N]; }
   /** Distance from a to b going forward (0..length). */
   ahead(a: number, b: number) { const L = this.length; return (((b - a) % L) + L) % L; }
@@ -499,6 +511,7 @@ export class Track {
     ground += ramp;
     if (gap || (!wall && ad > limit + 0.6)) ground = null;
     const surface = ground === null ? 'air' : ad <= w ? 'road' : ad <= w + KERB ? 'kerb' : 'grass';
-    return { i, s, d, ground, p: P, t: T, r: R, slope, bank, w, apron, wall, surface, limit, ramp: ramp > 0, pad: ground !== null && this.padAt(s, d) };
+    // (fresh vectors: every kart keeps its own answer while the others ask)
+    return { i, s, d, ground, p: P.clone(), t: T.clone(), r: R.clone(), slope, bank, w, apron, wall, surface, limit, ramp: ramp > 0, pad: ground !== null && this.padAt(s, d) };
   }
 }

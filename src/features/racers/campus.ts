@@ -65,7 +65,7 @@ export const CAMPUS: TrackDef = {
 export function buildCampus(track: Track): Scenery {
   const M = MATS();
   const group = new THREE.Group();
-  const F = track.frames;
+  const F = track.frames, E = track.box;
   const near = F.filter((_, i) => i % 2 === 0);
   /** Free of the road, its grass and its walls (plus r). */
   const clear = (x: number, z: number, r: number) => near.every((f) => Math.hypot(x - f.p.x, z - f.p.z) > f.w + KERB + f.apron + 2 + r);
@@ -89,10 +89,10 @@ export function buildCampus(track: Track): Scenery {
 
   /* ---------------- terrain: grass, rolling hills away from the road, the pond basin ---------------- */
   {
-    const S = 1100, n = 150;
+    const S = Math.max(1100, E.span + 520), n = Math.round(S / 7.3);
     const geo = new THREE.PlaneGeometry(S, S, n, n);
     geo.rotateX(-Math.PI / 2);
-    const cx = 80, cz = 20;
+    const cx = E.cx, cz = E.cz;
     geo.translate(cx, 0, cz);
     const pos = geo.getAttribute('position');
     const col = new Float32Array(pos.count * 3);
@@ -334,8 +334,8 @@ export function buildCampus(track: Track): Scenery {
     }
   };
   let trees = 0;
-  for (let tries = 0; tries < 2600 && trees < 240; tries++) {
-    const x = -140 + rand() * 420, z = -230 + rand() * 470;
+  for (let tries = 0; tries < 9000 && trees < 420; tries++) {
+    const x = E.x0 - 90 + rand() * (E.x1 - E.x0 + 180), z = E.z0 - 90 + rand() * (E.z1 - E.z0 + 180);
     const dr = distRoad(x, z);
     if (dr < 12 || dr > 120 || inPond(x, z) < 1.7 || !clear(x, z, 2)) continue;
     // keep the buildings' and fields' plots clear
@@ -352,10 +352,10 @@ export function buildCampus(track: Track): Scenery {
 
   /* ---------------- far hills and clouds ---------------- */
   for (let k = 0; k < 26; k++) {
-    const a = (k / 26) * Math.PI * 2 + rand() * 0.1, r = 700 + rand() * 120;
-    world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), 80 + Math.cos(a) * r, -20, 20 + Math.sin(a) * r, 90 + rand() * 70, 50 + rand() * 45, 90 + rand() * 70);
+    const a = (k / 26) * Math.PI * 2 + rand() * 0.1, r = E.r + 270 + rand() * 120;
+    world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), E.cx + Math.cos(a) * r, -20, E.cz + Math.sin(a) * r, 90 + rand() * 70, 50 + rand() * 45, 90 + rand() * 70);
   }
-  cloudRing(group, 80, 20, 16, rand);
+  cloudRing(group, E.cx, E.cz, 16, rand);
 
   mergeInto(group, M, { parts, world, glossy, glass, glow });
   return { group, lamps, waters: [water], waterY, dispose: () => disposeGroup(group) };
