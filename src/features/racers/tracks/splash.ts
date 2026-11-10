@@ -56,7 +56,7 @@ export function buildSplash(track: Track): Scenery {
   const inside = (x: number, z: number) => { let k = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, zi] = poly[i], [xj, zj] = poly[j]; if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) k = !k; } return k; };
   const edgeDist = (x: number, z: number) => { let m = Infinity; for (let i = 0; i < poly.length; i += 2) m = Math.min(m, Math.hypot(x - poly[i][0], z - poly[i][1])); return m; };
   terrain(c, {
-    cx: 190, cz: 60, size: 1300, n: 200,
+    cx: track.box.cx, cz: track.box.cz, size: Math.max(1300, track.box.span + 540), n: 220,
     y: (x, z) => (inside(x, z) ? -0.4 - Math.min(2.6, edgeDist(x, z) * 0.18) : -0.08 + Math.max(0, edgeDist(x, z) - 110) * 0.08),
     color: (x, z, y) => (y < -0.3 ? 0xd9c79a : inside(x, z) || edgeDist(x, z) < 5 ? 0xeedcae : 0x6cc35a),
   });

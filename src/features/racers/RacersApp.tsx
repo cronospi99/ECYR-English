@@ -11,7 +11,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { ArrowLeft, Check, ChevronLeft, ChevronRight, Coins, Flag, Home, Music, Pause, Play, RotateCcw, Smartphone, Trophy, Users, Volume2, VolumeX, Wind, Wrench, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOONS } from '@/features/toons3d/runtime';
-import { CSS, Btn, Dot, PLACE_COL, Seg, TIER, Toggle, initialToon, useClient } from './ui';
+import { CSS, Btn, Dot, PLACE_COL, Seg, Stepper, TIER, Toggle, initialToon, useClient } from './ui';
 import { LiveClassHome, LiveHostRoute, LiveJoin, LivePlayRoute, LiveLobby, LiveResults, LivePodium, LiveScore } from './LiveScreens';
 import type { RacersClient } from './live';
 import { GaragePanel } from './GarageUI';
@@ -20,8 +20,8 @@ import { GameTitle } from '@/components/brand/GameTitle';
 import { GameLangToggle } from '@/components/GameLangToggle';
 import { t, useGameLang } from '@/lib/gameLang';
 import { RUN_LEVELS } from '@/features/run/questions';
-import { CUPS, RaceGame, TOUCH_OFF, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
-import { TRACKS, trackInfo } from './tracks';
+import { CUPS, MAX_BOTS, MAX_LAPS, RaceGame, TOUCH_OFF, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
+import { TRACKS, trackInfo, trackLength } from './tracks';
 import { ITEMS, itemIcon } from './items';
 import type { ItemKind } from './racer';
 import { LANE_COLORS, LANE_LETTERS } from './gates';
@@ -296,7 +296,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
         if (client.racing) gg.startLive(client.cfg!, client.peer);
       }
       g.onSplat = (kind) => { const id = Date.now() + Math.random(); setSplat({ id, kind }); setTimeout(() => setSplat((x) => (x?.id === id ? null : x)), kind === 'ink' ? 2600 : 450); };
-      g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), 1900); };
+      g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), x.brief ? 950 : 1900); };
       setGame(g);
       if (import.meta.env.DEV || location.search.includes('rdebug')) Object.assign(window, { __racers: g, __THREE: THREE });
     } catch { setErr(true); }
@@ -406,6 +406,19 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                     <Seg<Difficulty> value={s.difficulty} onChange={(d) => conf({ difficulty: d })} options={[
                       { id: 'easy', label: t('Easy', 'Fácil') }, { id: 'normal', label: t('Normal', 'Normal') }, { id: 'hard', label: t('Hard', 'Difícil') },
                     ]} />
+                  </div>
+                )}
+              </div>
+              {/* laps and how many rivals */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className={s.mode === 'time' ? 'col-span-2' : ''}>
+                  <div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Laps', 'Vueltas')}{s.mode !== 'gp' && <span className="ml-1 normal-case text-white/45">· {((trackLength(s.track) * s.laps) / 1000).toFixed(1)} km</span>}</div>
+                  <Stepper value={s.laps} min={1} max={MAX_LAPS} onChange={(laps) => conf({ laps })} label={t('Laps', 'Vueltas')} />
+                </div>
+                {s.mode !== 'time' && (
+                  <div>
+                    <div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Bots', 'Bots')}</div>
+                    <Stepper value={s.bots} min={0} max={MAX_BOTS} onChange={(bots) => conf({ bots })} label={t('Bots', 'Bots')} />
                   </div>
                 )}
               </div>
@@ -565,8 +578,9 @@ function RaceScreen({ client }: { client?: RacersClient }) {
 
       {/* pause */}
       {st === 'paused' && (
-        <div className="absolute inset-0 grid place-items-center bg-[#0a1230]/55 p-4">
-          <div className="rc-panel flex w-full max-w-[340px] flex-col gap-3 p-5 text-center">
+        <div className="rc-scroll absolute inset-0 flex overflow-x-hidden overscroll-contain bg-[#0a1230]/55 p-4 pt-[max(16px,env(safe-area-inset-top))] pb-[max(16px,env(safe-area-inset-bottom))] [touch-action:pan-y] [-webkit-overflow-scrolling:touch]">
+          {/* (margin auto centres it and, on a short screen, lets the whole panel scroll into view) */}
+          <div className="rc-panel m-auto flex w-full max-w-[340px] flex-col gap-3 p-5 text-center [@media(max-height:480px)]:gap-2 [@media(max-height:480px)]:p-3">
             <div className="rc-num text-[34px]">{t('PAUSED', 'PAUSA')}</div>
             <Btn tone="green" onClick={() => game?.togglePause()}><Play size={20} fill="currentColor" /> {t('Resume', 'Continuar')}</Btn>
             <Btn tone="white" onClick={() => game?.restart()}><RotateCcw size={20} /> {hud?.mode === 'gp' ? t('Restart Grand Prix', 'Reiniciar Gran Premio') : t('Restart race', 'Reiniciar carrera')}</Btn>

@@ -80,7 +80,7 @@ export function buildNewYork(track: Track): Scenery {
   const { world, glossy, glow, group, rand } = c;
 
   /* ---------------- ground, bay and sea ---------------- */
-  ground(c, { cx: 150, cz: 0, size: 1320, step: 34, gx: 0, gz: 0, y: (x, z) => (inBay(x, z, 6) || z < -300 ? -7 : -0.08), color: (x, z) => (inBay(x, z, -3) || z < -296 ? 0x9a9488 : 0xffffff), walk: '#bab7b0', asphalt: '#3f4248' });
+  ground(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1300, track.box.span + 520), step: 34, gx: 0, gz: 0, y: (x, z) => (inBay(x, z, 6) || z < -300 ? -7 : -0.08), color: (x, z) => (inBay(x, z, -3) || z < -296 ? 0x9a9488 : 0xffffff), walk: '#bab7b0', asphalt: '#3f4248' });
   const sea = makeOcean({ deep: 0x1f5d86, shallow: 0x3f8fae, amp: 0.22, scale: 1.1, dir: [0.2, 1] });
   const sgeo = oceanGeometry(75, -460, 1200, 680, 120, 70, (x, z) => (inBay(x, z) || z < -300 ? 3 + Math.min(20, (-120 - z) * 0.1) : 0));
   const sm = new THREE.Mesh(sgeo, sea.material);

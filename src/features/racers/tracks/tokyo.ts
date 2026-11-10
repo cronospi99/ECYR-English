@@ -62,7 +62,7 @@ export function buildTokyo(track: Track): Scenery {
   /* ---------------- canal under the jump ---------------- */
   const gp = track.gaps[0], gs = (gp.s0 + gp.s1) / 2, gf = track.frame(Math.round(gs / track.ds));
   const canalZ = gf.p.z, inCanal = (x: number, z: number, m = 0) => Math.abs(z - canalZ) < 7 + m && x > 40 && x < 150;
-  ground(c, { cx: 60, cz: 110, size: 1300, step: 30, gx: 0, gz: 0, y: (x, z) => (inCanal(x, z, -2) ? -4 : -0.08), color: (x, z) => (inCanal(x, z, 1) ? 0x8f8a80 : 0xffffff), walk: '#b3b1ad', asphalt: '#3d3f46' });
+  ground(c, { cx: track.box.cx, cz: track.box.cz, size: Math.max(1300, track.box.span + 520), step: 30, gx: 0, gz: 0, y: (x, z) => (inCanal(x, z, -2) ? -4 : -0.08), color: (x, z) => (inCanal(x, z, 1) ? 0x8f8a80 : 0xffffff), walk: '#b3b1ad', asphalt: '#3d3f46' });
   {
     const w = new THREE.Mesh(new THREE.PlaneGeometry(110, 14).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ color: 0x2f6f86, roughness: 0.05, clearcoat: 1, normalMap: rippleTex(), normalScale: new THREE.Vector2(0.2, 0.2), transparent: true, opacity: 0.9 }));
     w.position.set(95, -1.6, canalZ);

@@ -13,11 +13,11 @@ import { JoinQr } from '@/components/ui/JoinQr';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
 import { t, useGameLang } from '@/lib/gameLang';
 import { RUN_LEVELS } from '@/features/run/questions';
-import { RaceGame, fmt, ordinal, type Hud } from './engine';
+import { MAX_BOTS, MAX_LAPS, RaceGame, fmt, ordinal, type Hud } from './engine';
 import { TRACKS, trackInfo, type TrackId } from './tracks';
 import { GP_NEXT_S, RacersHost, RacersClient, cleanName, type LivePlayer, type LivePub } from './live';
 import { SCORE } from './racer';
-import { CSS, Btn, Dot, PLACE_COL, Seg, Toggle, initialToon, useClient } from './ui';
+import { CSS, Btn, Dot, PLACE_COL, Seg, Stepper, Toggle, initialToon, useClient } from './ui';
 import { prefs, setPref, unlock } from './audio';
 
 const toonOf = (id: string) => TOONS.find((x) => x.id === id) ?? TOONS[0];
@@ -487,7 +487,9 @@ function HostScreen({ host }: { host: RacersHost }) {
                 <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('English level', 'Nivel de inglés')}</div>
                   <Seg value={set.level} onChange={(l) => host.configure({ level: l })} options={RUN_LEVELS.map((l) => ({ id: l.id, label: l.id }))} /></div>
                 <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Laps', 'Vueltas')}</div>
-                  <Seg value={String(set.laps) as '1' | '2' | '3'} onChange={(v) => host.configure({ laps: Number(v) })} options={[{ id: '1', label: '1' }, { id: '2', label: '2' }, { id: '3', label: '3' }]} /></div>
+                  <Stepper value={set.laps} min={1} max={MAX_LAPS} onChange={(laps) => host.configure({ laps })} label={t('Laps', 'Vueltas')} /></div>
+                <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Bots on every phone', 'Bots en cada celular')}</div>
+                  <Stepper value={set.bots} min={0} max={MAX_BOTS} onChange={(bots) => host.configure({ bots })} label={t('Bots', 'Bots')} /></div>
                 <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('Items', 'Objetos')}</div>
                   <Seg value={set.items ? 'on' : 'off'} onChange={(v) => host.configure({ items: v === 'on' })} options={[{ id: 'on', label: t('On', 'Sí') }, { id: 'off', label: t('Off', 'No') }]} /></div>
                 <div><div className="mb-1 px-1 text-[11.5px] font-extrabold tracking-wide text-white/60 uppercase">{t('After the first finishes', 'Tras el primero en llegar')}</div>

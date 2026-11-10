@@ -15,7 +15,7 @@ import { RIO, RIO_STYLE, buildRio } from './rio';
 import { SPLASH, SPLASH_STYLE, buildSplash } from './splash';
 import { CANYON, CANYON_STYLE, buildCanyon } from './canyon';
 import { SNOW, SNOW_STYLE, buildSnow } from './snow';
-import { LONG } from './detours';
+import { LONG, LONGER } from './detours';
 
 export type TrackId = 'campus' | 'beach' | 'roofs' | 'neon' | 'london' | 'newyork' | 'tokyo' | 'rio' | 'splash' | 'canyon' | 'snow';
 export interface Look {
@@ -43,7 +43,7 @@ export interface TrackInfo {
 
 export const TRACKS: TrackInfo[] = [
   {
-    id: 'campus', def: LONG.campus(CAMPUS), style: CAMPUS_STYLE, color: '#2fd27a',
+    id: 'campus', def: LONGER.campus(LONG.campus(CAMPUS)), style: CAMPUS_STYLE, color: '#2fd27a',
     name: { en: 'ECYR Campus', es: 'Campus ECYR' },
     desc: { en: 'Banked curve, hairpin, chicane, hill and a jump over the pond', es: 'Curva peraltada, horquilla, chicana, colina y salto sobre el estanque' },
     look: {
@@ -54,7 +54,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildCampus,
   },
   {
-    id: 'beach', def: LONG.beach(BEACH), style: BEACH_STYLE, color: '#36c2ff',
+    id: 'beach', def: LONGER.beach(LONG.beach(BEACH)), style: BEACH_STYLE, color: '#36c2ff',
     name: { en: 'Sunny Bay', es: 'Bahía Soleada' },
     desc: { en: 'Boardwalk, two piers over the sea with a jump, a lighthouse hairpin and crabs on the sand', es: 'Malecón, dos muelles sobre el mar con salto, horquilla del faro y cangrejos en la arena' },
     look: {
@@ -65,7 +65,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildBeach,
   },
   {
-    id: 'roofs', def: LONG.roofs(ROOFS), style: ROOFS_STYLE, color: '#ff9f1c',
+    id: 'roofs', def: LONGER.roofs(LONG.roofs(ROOFS)), style: ROOFS_STYLE, color: '#ff9f1c',
     name: { en: 'Skyline Rush', es: 'Tejados' },
     desc: { en: 'Rooftops at sunset: three jumps between buildings and cranes swinging over the road', es: 'Azoteas al atardecer: tres saltos entre edificios y grúas que cruzan la pista' },
     look: {
@@ -76,7 +76,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildRoofs,
   },
   {
-    id: 'neon', def: LONG.neon(NEON), style: NEON_STYLE, color: '#ff2bd6',
+    id: 'neon', def: LONGER.neon(LONG.neon(NEON)), style: NEON_STYLE, color: '#ff2bd6',
     name: { en: 'Neon Drive', es: 'Neón' },
     desc: { en: 'Night highway: steep banked curves, a tunnel of light, laser gates and a big jump', es: 'Autopista nocturna: curvas muy peraltadas, túnel de luz, barreras láser y un gran salto' },
     look: {
@@ -87,7 +87,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildNeon,
   },
   {
-    id: 'london', def: LONG.london(LONDON), style: LONDON_STYLE, color: '#c8102e',
+    id: 'london', def: LONGER.london(LONG.london(LONDON)), style: LONDON_STYLE, color: '#c8102e',
     name: { en: 'London Loop', es: 'Londres' },
     desc: { en: 'Along the river: jump the open bascule bridge, pass the giant wheel and the clock tower', es: 'Junto al río: salta el puente levadizo abierto, pasa la noria gigante y la torre del reloj' },
     look: {
@@ -98,7 +98,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildLondon,
   },
   {
-    id: 'newyork', def: LONG.newyork(NEWYORK), style: NEWYORK_STYLE, color: '#ffc61a',
+    id: 'newyork', def: LONGER.newyork(LONG.newyork(NEWYORK)), style: NEWYORK_STYLE, color: '#ffc61a',
     name: { en: 'Big Apple Dash', es: 'Nueva York' },
     desc: { en: 'A square of giant screens, a drive through the park, an avenue of skyscrapers and a suspension bridge', es: 'Plaza de pantallas gigantes, el parque, una avenida de rascacielos y un puente colgante' },
     look: {
@@ -109,7 +109,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildNewYork,
   },
   {
-    id: 'tokyo', def: LONG.tokyo(TOKYO), style: TOKYO_STYLE, color: '#ff2bd6',
+    id: 'tokyo', def: LONGER.tokyo(LONG.tokyo(TOKYO)), style: TOKYO_STYLE, color: '#ff2bd6',
     name: { en: 'Tokyo Drift Lights', es: 'Tokio' },
     desc: { en: 'Dusk: a scramble crossing, lantern street, bullet trains, a red tower hairpin, a canal jump and cherry trees', es: 'Atardecer: cruce peatonal gigante, calle de faroles, tren bala, horquilla de la torre roja, salto del canal y cerezos' },
     look: {
@@ -120,7 +120,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildTokyo,
   },
   {
-    id: 'rio', def: LONG.rio(RIO), style: RIO_STYLE, color: '#009c3b',
+    id: 'rio', def: LONGER.rio(LONG.rio(RIO)), style: RIO_STYLE, color: '#009c3b',
     name: { en: 'Rio Carnival', es: 'Río' },
     desc: { en: 'The beach avenue, a climb through colourful houses with a jump, and the carnival avenue with floats and confetti', es: 'La avenida de la playa, la subida entre casas de colores con salto y la avenida del carnaval con carrozas y confeti' },
     look: {
@@ -131,7 +131,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildRio,
   },
   {
-    id: 'splash', def: LONG.splash(SPLASH), style: SPLASH_STYLE, color: '#00d2ff',
+    id: 'splash', def: LONGER.splash(LONG.splash(SPLASH)), style: SPLASH_STYLE, color: '#00d2ff',
     name: { en: 'Splash Loops', es: 'Rizos de Agua' },
     desc: { en: 'Six 360° loops (two big, four in a row) and every landing splashes into water', es: 'Seis vueltas de 360° (dos grandes y cuatro seguidas) y cada aterrizaje cae al agua' },
     look: {
@@ -142,7 +142,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildSplash,
   },
   {
-    id: 'canyon', def: CANYON, style: CANYON_STYLE, color: '#ff7a1a',
+    id: 'canyon', def: LONGER.canyon(CANYON), style: CANYON_STYLE, color: '#ff7a1a',
     name: { en: 'Canyon Run', es: 'Cañón' },
     desc: { en: 'From a student\'s drawing: a long straight, two fingers down into the canyon and three humps', es: 'De un dibujo: una gran recta, dos dedos que bajan al cañón y tres jorobas' },
     look: {
@@ -153,7 +153,7 @@ export const TRACKS: TrackInfo[] = [
     build: buildCanyon,
   },
   {
-    id: 'snow', def: SNOW, style: SNOW_STYLE, color: '#7fd3ff',
+    id: 'snow', def: LONGER.snow(SNOW), style: SNOW_STYLE, color: '#7fd3ff',
     name: { en: 'Snow Peak', es: 'Pico Nevado' },
     desc: { en: 'From a student\'s drawing: the long left straight, a twisty cup, a fast spine, a hairpin finger and waves', es: 'De un dibujo: la gran recta de la izquierda, una copa de curvas, la espina rápida, un dedo en horquilla y ondas' },
     look: {
@@ -166,3 +166,14 @@ export const TRACKS: TrackInfo[] = [
 ];
 
 export function trackInfo(id: TrackId): TrackInfo { return TRACKS.find((x) => x.id === id) ?? TRACKS[0]; }
+const LEN = new Map<string, number>();
+/** About how long a lap is (m), for the menu. */
+export function trackLength(id: TrackId) {
+  let l = LEN.get(id);
+  if (l === undefined) {
+    const c = trackInfo(id).def.cps;
+    l = c.reduce((a, p, i) => { const q = c[(i + 1) % c.length]; return a + Math.hypot(q.x - p.x, q.z - p.z, (q.y ?? 0) - (p.y ?? 0)); }, 0) * 1.015;
+    LEN.set(id, l);
+  }
+  return l;
+}

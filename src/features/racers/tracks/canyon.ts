@@ -58,12 +58,12 @@ export function buildCanyon(track: Track): Scenery {
     return n.y - 0.25 + (plateau - n.y) * wall * (0.85 + 0.15 * Math.sin(x * 0.3 + z * 0.2));
   };
   terrain(c, {
-    cx: 0, cz: 0, size: 1000, n: 190, y: ground,
+    cx: track.box.cx, cz: track.box.cz, size: Math.max(1000, track.box.span + 300), n: 215, y: ground,
     color: (x, z, y) => { const n = nearest(x, z); if (n.d < 4) return 0xe0b07a; if (y > 23 + noise(x, z) * 8 - 0.5) return 0xd29a5c; return STRATA[Math.abs(Math.floor(y / 2.6)) % STRATA.length]; },
   });
   // hoodoos and mesas far away
   for (let k = 0; k < 26; k++) {
-    const a = rand() * Math.PI * 2, r = 280 + rand() * 180, x = Math.cos(a) * r, z = Math.sin(a) * r, h = 40 + rand() * 50, w = 25 + rand() * 40;
+    const a = rand() * Math.PI * 2, r = track.box.r + 20 + rand() * 180, x = track.box.cx + Math.cos(a) * r, z = track.box.cz + Math.sin(a) * r, h = 40 + rand() * 50, w = 25 + rand() * 40;
     world.add(U.cyl, STRATA[k % STRATA.length], x, h / 2, z, w, h, w * (0.7 + rand() * 0.5));
     world.add(U.cyl, 0xd29a5c, x, h + 0.5, z, w * 1.02, 1, w * (0.72 + rand() * 0.5));
   }

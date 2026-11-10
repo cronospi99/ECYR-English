@@ -106,7 +106,7 @@ export function buildNeon(track: Track): Scenery {
   /* ---------------- glowing grid floor, the sun, wireframe mountains ---------------- */
   const grid = gridMaterial();
   {
-    const g = new THREE.PlaneGeometry(2400, 2400);
+    const g = new THREE.PlaneGeometry(3600, 3600);
     g.rotateX(-Math.PI / 2);
     const m = new THREE.Mesh(g, grid);
     m.position.set(-60, GROUND_Y, 40);
