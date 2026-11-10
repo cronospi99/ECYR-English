@@ -298,7 +298,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
       g.onSplat = (kind) => { const id = Date.now() + Math.random(); setSplat({ id, kind }); setTimeout(() => setSplat((x) => (x?.id === id ? null : x)), kind === 'ink' ? 2600 : 450); };
       g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), 1900); };
       setGame(g);
-      if (import.meta.env.DEV) Object.assign(window, { __racers: g, __THREE: THREE });
+      if (import.meta.env.DEV || location.search.includes('rdebug')) Object.assign(window, { __racers: g, __THREE: THREE });
     } catch { setErr(true); }
     const orient = () => setPortrait(window.innerHeight > window.innerWidth * 1.05);
     orient();

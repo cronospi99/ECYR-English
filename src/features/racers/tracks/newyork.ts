@@ -97,7 +97,7 @@ export function buildNewYork(track: Track): Scenery {
     const f = track.frame(Math.round(s / track.ds));
     if (!inBay(f.p.x, f.p.z, -2)) continue;
     const C = side(f, 0);
-    world.add(U.box, 0x6d6a63, C.x, C.y - 0.8, C.z, (f.w + KERB + f.apron + 0.6) * 2, 1.4, 2.1, 0, f.yaw, 0);
+    world.add(U.box, 0x6d6a63, C.x, C.y - 0.8 - Math.abs(f.bank) * (f.w + KERB), C.z, (f.w + KERB + f.apron + 0.6) * 2, 1.4, 2.1, 0, f.yaw, 0);
   }
   const T1 = bridgeTower(c, track.oS[14] + 10), T2 = bridgeTower(c, track.oS[15] + 25);
   {
@@ -147,7 +147,7 @@ export function buildNewYork(track: Track): Scenery {
   });
   // an art-deco giant with stepped tiers and a mast, and one with a shiny crown
   { const x = 240, z = 60; building(c, 'office', x, z, 30, 30, 90, 0, { roof: 'none', tint: 0xf2ead8 }); building(c, 'office', x, z, 22, 22, 125, 0, { roof: 'none', tint: 0xf2ead8 }); building(c, 'office', x, z, 14, 14, 150, 0, { roof: 'flat', tint: 0xf2ead8 }); glossy.add(U.cyl, 0xd8dde4, x, 165, z, 1.6, 30, 1.6); glow.add(U.ball, 0xff3030, x, 181, z, 0.6, 0.6, 0.6); }
-  { const x = 220, z = 180; building(c, 'office', x, z, 22, 22, 110, 0, { roof: 'none', tint: 0xeef2f6 }); for (let k = 0; k < 6; k++) glossy.add(new THREE.ConeGeometry(1, 1, 4), 0xe8eef6, x, 114 + k * 4, z, 10 - k * 1.5, 6, 10 - k * 1.5, 0, Math.PI / 4, 0); glossy.add(U.cyl, 0xe8eef6, x, 145, z, 0.4, 14, 0.4); }
+  { const x = 215, z = 240; building(c, 'office', x, z, 22, 22, 110, 0, { roof: 'none', tint: 0xeef2f6 }); for (let k = 0; k < 6; k++) glossy.add(new THREE.ConeGeometry(1, 1, 4), 0xe8eef6, x, 114 + k * 4, z, 10 - k * 1.5, 6, 10 - k * 1.5, 0, Math.PI / 4, 0); glossy.add(U.cyl, 0xe8eef6, x, 145, z, 0.4, 14, 0.4); }
   // the square: billboard towers with animated screens and a crowd
   {
     const list: Parameters<typeof screens>[1] = [];
@@ -189,7 +189,8 @@ export function buildNewYork(track: Track): Scenery {
   /* ---------------- elevated train next to the east avenue ---------------- */
   {
     const x = 188, z0 = -90, z1 = 230, y = 9;
-    for (let z = z0; z <= z1; z += 16) { world.add(U.box, 0x5a5f6a, x - 2, y / 2, z, 0.8, y, 0.8); world.add(U.box, 0x5a5f6a, x + 2, y / 2, z, 0.8, y, 0.8); }
+    // (the long way round passes under the line twice: no pillars on the road)
+    for (let z = z0; z <= z1; z += 16) for (const dx of [-2, 2]) if (c.clear(x + dx, z, 0.5)) world.add(U.box, 0x5a5f6a, x + dx, y / 2, z, 0.8, y, 0.8);
     world.add(U.box, 0x4a4f5a, x, y + 0.3, (z0 + z1) / 2, 6, 0.8, z1 - z0);
     const tg = new Geo();
     for (let k = 0; k < 5; k++) { tg.add(U.box, 0xb8c0cc, 0, 1.6, k * 15.5, 3, 3, 15); tg.add(U.box, 0x24324a, 0, 2.1, k * 15.5, 3.04, 1.0, 13.6); tg.add(U.box, 0x7a2f8f, 0, 0.9, k * 15.5, 3.04, 0.3, 15); }

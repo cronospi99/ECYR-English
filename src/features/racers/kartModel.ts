@@ -121,6 +121,7 @@ export class KartView {
   private lean = 0; private surge = 0; private glowK = 0.4;
   private glow!: THREE.MeshBasicMaterial; private under!: THREE.Mesh;
   private extra: THREE.Material[] = []; private extraTex: THREE.Texture[] = [];
+  private scarf: THREE.Mesh;
   private stars = new THREE.Group(); private starMat: THREE.MeshBasicMaterial; private dizzy = 0;
   face: Face = 'smile';
   cheer = false;
@@ -362,6 +363,18 @@ export class KartView {
     }
     this.root.add(this.body);
 
+    // the driver's scarf (placed when a driver sits down)
+    {
+      const sg = new THREE.PlaneGeometry(0.15, 1, 2, 8);
+      const sm = new THREE.MeshStandardMaterial({ color: new THREE.Color(color).offsetHSL(0.5, 0.1, 0.12), roughness: 0.8, side: THREE.DoubleSide });
+      this.scarf = new THREE.Mesh(sg, sm);
+      this.scarf.visible = false;
+      this.scarf.castShadow = true;
+      this.scarf.frustumCulled = false;
+      this.body.add(this.scarf);
+      this.extra.push(sm);
+    }
+
     // dizzy stars that circle over the driver's head after a hit
     const shape = new THREE.Shape();
     for (let k = 0; k < 10; k++) { const a = (k / 10) * Math.PI * 2 + Math.PI / 2, r = k % 2 ? 0.07 : 0.17; if (k) shape.lineTo(Math.cos(a) * r, Math.sin(a) * r); else shape.moveTo(Math.cos(a) * r, Math.sin(a) * r); }
@@ -399,6 +412,13 @@ export class KartView {
     o.traverse((m) => { if ((m as THREE.Mesh).isMesh) m.castShadow = true; });
     this.body.add(o);
     actor.play('idle', 0);
+    // a racing scarf tied round the neck: it streams out behind with the speed
+    if (this.parts.head) {
+      this.body.updateWorldMatrix(true, true);
+      const neck = this.body.worldToLocal(this.parts.head.getWorldPosition(new THREE.Vector3()));
+      this.scarf.position.set(neck.x, neck.y + 0.02, neck.z - 0.13);
+      this.scarf.visible = true;
+    }
   }
 
   bump(impact: number) { this.squashV -= Math.min(5, impact * 0.5); }
@@ -483,6 +503,15 @@ export class KartView {
     this.steering.rotation.z = k.steer * 1.6 - k.drift * 0.5;
     this.tail.color.setRGB(braking ? 2.4 : 0.8, 0.06, 0.06);
 
+    if (this.scarf.visible) {
+      const P = this.scarf.geometry.getAttribute('position') as THREE.BufferAttribute, v = Math.min(1, Math.abs(k.speed) / 24);
+      for (let r = 0; r <= 8; r++) {
+        const u = r / 8, wave = Math.sin(t * (9 + v * 9) - r * 0.9) * u;
+        const y = -u * 0.5 * (1 - v) + wave * 0.05 * v + u * 0.1 * v, z = -u * (0.12 + 0.75 * v), x = Math.sin(t * 7 - r * 0.7) * 0.05 * u * v + this.lean * 0.5 * u - k.yawRate * 0.12 * u * v;
+        for (let cI = 0; cI < 3; cI++) P.setXYZ(r * 3 + cI, x + (cI - 1) * 0.075 * (1 - u * 0.3), y + (cI - 1) * 0.02 * wave, z);
+      }
+      P.needsUpdate = true;
+    }
     // the driver: sitting, hands on the wheel, leaning into turns
     const d = this.driver;
     if (d) {

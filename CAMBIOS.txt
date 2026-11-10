@@ -831,6 +831,45 @@ G1x. ENGLISH RACERS · FASE 6: CONTROLES, MANEJO, BANDA SONORA Y GRAN PREMIO EN 
   · Se comprobó en simulación que todas las pistas se completan sin caídas, que los 6 rizos se
     recorren y que los puentes de las espirales siguen con ~9 m de altura libre.
 
+G1y. ENGLISH RACERS · FASE 7: PISTAS LARGAS, PODERES TIPO "COMBATE", KARTS CON MÁS DETALLE
+   Pistas (las 9 dibujadas a mano eran óvalos de ~0,8-1 km; ahora 1,8-2,4 km, 2 vueltas):
+   - Cada pista conserva su trazado y sus monumentos y le crece un tramo nuevo por un lado:
+     eses, curvas amplias, horquillas, cuestas y una espiral descendente con puente (Neon Drive
+     tiene dos). Nueva York hace un recorrido de manzanas en ángulo recto; Río sube al barrio
+     del oeste; Sunny Bay se alarga por la arena hacia el este; Splash Loops alarga la laguna.
+   - Radio mínimo de los tramos nuevos ~28-34 m (curvas hechas con arcos exactos).
+   - Ciudad, suelo y terreno de cada pista se ampliaron para cubrir el tramo nuevo.
+   - Luces en todas las pistas: paneles de flechas que se encienden en secuencia por fuera
+     de cada curva, arcos de luz sobre las rectas y una torre-faro en el centro de cada espiral.
+   - Tiempos de vuelta de referencia (piloto automático): 70-100 s.
+   Poderes (inspirados en la mecánica de los juegos de carreras de combate; diseños propios):
+   - Se llevan hasta 3 poderes: el que está en la mano y dos en espera (Q o tocar las casillas
+     pequeñas = pasar al siguiente). E/X dispara hacia delante; F, o el freno + objeto, o el
+     botón de la flecha junto a la casilla, dispara hacia ATRÁS.
+   - Nuevos: Tizas ×3 (disparos rectos y rápidos por el carril), Borrador explosivo (onda
+     alrededor del kart que lanza a los rivales cercanos y borra los disparos que venían),
+     Tormenta sorpresa (tres cúpulas eléctricas que caen delante de los líderes).
+   - Avión de papel hacia atrás (vuela recto), tinta hacia delante (lanzada a 24 m).
+   - Los bots usan los poderes nuevos (y disparan atrás si el rival viene pegado).
+   - En vivo con la clase: los golpes y las cúpulas se envían a los demás alumnos.
+   Karts y pilotos:
+   - Kart con mucho más detalle: alerón delantero con derivas, deflectores, espejos,
+     amortiguadores con muelle, discos y pinzas de freno, radios finos, motor con tapas y
+     filtro, arneses, antena con banderín, parabrisas tintado, aros LED en los faros, tiras de
+     luz en los pontones, barra de luz trasera y resplandor bajo el suelo que crece con el turbo.
+   - El nombre del piloto va rotulado en el alerón trasero; bufanda que ondea con la velocidad.
+   - En computadores con memoria suficiente los rivales usan el modelo completo del profe.
+   Errores gráficos corregidos:
+   - Snow Peak: las montañas del fondo ya no invaden la pista (se atravesaba una ladera) y el
+     lago helado se colocó en el hueco más amplio entre carreteras (antes pisaba la calzada).
+   - Sunny Bay: las vigas del muelle ya no cruzan la calzada en las curvas peraltadas.
+   - Londres y Nueva York: la losa del puente ya no asoma por el lado bajo del peralte.
+   - Río: el suelo ya no asoma donde la carretera baja de la colina.
+   - Nueva York: los pilares del tren elevado no caen sobre la carretera.
+   Verificado: recorrido automático de las 11 pistas por 3 carriles sin caídas ni choques,
+   carreras completas con 7 bots, y un barrido de rayos sobre la calzada de cada pista para
+   detectar objetos que la atraviesen.
+
 G4. PASS THE DOODLE (Juegos › En vivo con tu clase, ruta /doodle)
 - Juego nuevo tipo "teléfono roto" dibujado: cada uno escribe una frase en
   inglés, el siguiente la dibuja, otro describe el dibujo en inglés, y así

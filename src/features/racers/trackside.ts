@@ -44,11 +44,11 @@ export class Trackside {
     if (spots.length) {
       const mat = new THREE.MeshBasicMaterial({ map: arrowTex(), toneMapped: false, side: THREE.DoubleSide });
       this.mats.push(mat);
-      const m = new THREE.InstancedMesh(new THREE.PlaneGeometry(2.7, 1.35), mat, spots.length);
+      const m = new THREE.InstancedMesh(new THREE.PlaneGeometry(3.4, 1.7), mat, spots.length);
       spots.forEach((sp, k) => {
         const f = F[sp.i], d = sp.sg * (f.w + KERB + f.apron + 0.75);
         const p = track.pointAt(f.s, d);
-        o.position.set(p.x, f.p.y + 1.95, p.z);
+        o.position.set(p.x, f.p.y + 2.2, p.z);
         // facing the karts that come round the bend, turned a little towards the road
         o.rotation.set(0, f.yaw + Math.PI + sp.sg * 0.55, 0);
         o.scale.set(sp.sg, 1, 1);

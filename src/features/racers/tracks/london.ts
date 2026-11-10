@@ -77,7 +77,7 @@ export function buildLondon(track: Track): Scenery {
       const f = track.frame(Math.round(s / track.ds));
       if (!inRiver(f.p.x, f.p.z, 1) || track.gapAt(s)) continue;
       const C = side(f, 0);
-      world.add(U.box, 0x8d8576, C.x, C.y - 0.75, C.z, (f.w + KERB + f.apron + 0.6) * 2, 1.3, 2.1, 0, f.yaw, 0);
+      world.add(U.box, 0x8d8576, C.x, C.y - 0.75 - Math.abs(f.bank) * (f.w + KERB), C.z, (f.w + KERB + f.apron + 0.6) * 2, 1.3, 2.1, 0, f.yaw, 0);
     }
   }
   // stone bridge piers (west bridge) and the bascule bridge's two towers (east)

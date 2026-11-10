@@ -95,7 +95,9 @@ export function buildTokyo(track: Track): Scenery {
   };
   let si = 0;
   for (let s = 10; s < track.oS[2]; s += 11) { signAt(s, -1, si++); signAt(s + 5, 1, si++); }
-  for (let s = track.oS[3]; s < track.oS[5]; s += 12) { signAt(s, -1, si++); signAt(s + 6, 1, si++); }
+  // (the lantern street: the first stretch of the long way round)
+  const lan0 = track.oS[2] + 40, lan1 = lan0 + 170;
+  for (let s = lan0; s < lan1; s += 12) { signAt(s, -1, si++); signAt(s + 6, 1, si++); }
   c.updates.push((_, t) => { signMats.forEach((m, i) => { const f = 0.75 + 0.25 * Math.sin(t * (2 + (i % 3)) + i) * (i % 5 === 0 ? (Math.sin(t * 13 + i) > 0.6 ? 0 : 1) : 1); m.color.setScalar(f); }); });
 
   /* ---------------- the scramble crossing: zebra stripes, screens, crowds crossing ---------------- */
@@ -125,8 +127,8 @@ export function buildTokyo(track: Track): Scenery {
   }
 
   /* ---------------- lantern street ---------------- */
-  lanterns(c, track.oS[3] - 10, track.oS[5] + 6, 9, [0xff3b30, 0xffffff, 0xff3b30, 0xffb020]);
-  crowd(c, roadsideSpots(c, track.oS[3], track.oS[5], { rows: 2, every: 1.6 }));
+  lanterns(c, lan0 - 10, lan1 + 6, 9, [0xff3b30, 0xffffff, 0xff3b30, 0xffb020]);
+  crowd(c, roadsideSpots(c, lan0, lan1, { rows: 2, every: 1.6 }));
 
   /* ---------------- viaduct and bullet trains ---------------- */
   {

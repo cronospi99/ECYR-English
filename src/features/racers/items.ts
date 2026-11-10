@@ -191,7 +191,7 @@ export class ItemWorld {
   private glowGeo = new THREE.CapsuleGeometry(0.42, 2.6, 4, 10).rotateX(Math.PI / 2);
   private glowMats = [0xff5fa2, 0x5fd0ff, 0xfff27a].map((c) => new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false }));
   private domeGeo = new THREE.SphereGeometry(1, 28, 12, 0, Math.PI * 2, 0, Math.PI / 2);
-  private domeMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.75, 0.55, 2.2), transparent: true, opacity: 0.3, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, toneMapped: false });
+  private domeMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(0.4, 0.22, 1.5), transparent: true, opacity: 0.3, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, toneMapped: false });
   private arcMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(2.2, 2, 3), transparent: true, opacity: 0.95, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide, toneMapped: false });
   private arcGeo = boltGeo();
   private zoneRing = new THREE.RingGeometry(0.9, 1, 40).rotateX(-Math.PI / 2);

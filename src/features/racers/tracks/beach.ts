@@ -95,7 +95,7 @@ export function buildBeach(track: Track): Scenery {
     return y;
   };
   {
-    const S = 1200, n = 170, cx = 10, cz = 30;
+    const S = 1400, n = 190, cx = 110, cz = 30;
     const geo = new THREE.PlaneGeometry(S, S, n, n);
     geo.rotateX(-Math.PI / 2);
     geo.translate(cx, 0, cz);
@@ -133,7 +133,8 @@ export function buildBeach(track: Track): Scenery {
   for (let i = 0; i < F.length; i += 4) {
     const f = F[i];
     if (f.p.y < 1.2 || track.gapAt(f.s)) continue;
-    for (const sg of [-1, 1]) {
+    // (no piles under a bridge: they would stand on the road below)
+    if (!f.bridge) for (const sg of [-1, 1]) {
       const P = side(f, sg * (f.w + KERB + f.apron + 0.3));
       const gy = groundY(P.x, P.z);
       const h = P.y - gy + 0.2;
@@ -143,7 +144,7 @@ export function buildBeach(track: Track): Scenery {
     }
     if (i % 8 === 0) {
       const A = side(f, -(f.w + KERB + f.apron + 0.3)), B = side(f, f.w + KERB + f.apron + 0.3);
-      world.add(U.box, 0x5a3c24, (A.x + B.x) / 2, A.y - 0.9, (A.z + B.z) / 2, Math.hypot(A.x - B.x, A.z - B.z), 0.2, 0.2, 0, f.yaw, 0);
+      world.add(U.box, 0x5a3c24, (A.x + B.x) / 2, Math.min(A.y, B.y) - 0.9, (A.z + B.z) / 2, Math.hypot(A.x - B.x, A.z - B.z), 0.2, 0.2, 0, f.yaw, 0);
     }
     // bunting poles along the piers
     if (i % 24 === 0) for (const sg of [-1, 1]) {
