@@ -55,6 +55,9 @@ export interface BotCtx {
   place: number;
   item: ItemKind | null;
   itemN: number;
+  /** Rivals within reach of an eraser blast, and how far the next kart ahead is to one side (m). */
+  near: number;
+  aheadD: number;
   racing: boolean;
 }
 
@@ -185,7 +188,10 @@ export class Bot {
     switch (c.item) {
       case 'book': return true;
       case 'bell': return c.place > 1 || this.holdT > 10;
-      case 'plane': return c.aheadGap < 85 || this.holdT > 9;
+      case 'plane': return c.aheadGap < 85 || c.behindGap < 18 || this.holdT > 9;
+      case 'chalk': if ((c.aheadGap < 55 && Math.abs(c.aheadD) < 2.2 && cmax < 0.012) || (c.behindGap < 30 && cmax < 0.012) || this.holdT > 12) { if (c.t - this.lastCoffee > 0.35) { this.lastCoffee = c.t; return true; } } return false;
+      case 'burst': return c.near > 0 || this.holdT > 14;
+      case 'storm': return c.place > 1 || this.holdT > 8;
       case 'ink': return c.behindGap < 26 || this.holdT > 7;
       case 'coffee': if (cmax < 0.02 && c.t - this.lastCoffee > 1.3) { this.lastCoffee = c.t; return true; } return false;
       default: return false;

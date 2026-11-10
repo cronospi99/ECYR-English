@@ -258,7 +258,7 @@ export function buildBeach(track: Track): Scenery {
 
   /* ---------------- distant headlands ---------------- */
   for (let k = 0; k < 14; k++) {
-    const a = Math.PI * 0.1 + (k / 13) * Math.PI * 0.8, r = 620 + rand() * 120;
+    const a = Math.PI * 0.1 + (k / 13) * Math.PI * 0.8, r = 780 + rand() * 120;
     world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), 20 + Math.cos(a) * r * 1.2, -30, 30 - Math.sin(a) * r, 120 + rand() * 80, 60 + rand() * 50, 110 + rand() * 60);
   }
   for (const [x, z, s] of [[-420, 520, 1], [520, 560, 1.3], [80, 760, 0.8]] as const) world.add(U.blob, 0x5e9a62, x, -18, z, 70 * s, 34 * s, 50 * s);
@@ -352,7 +352,7 @@ export function buildBeach(track: Track): Scenery {
   }
   const crabGeo = crabG.build();
   for (const [cp, off] of [[15, 8], [16, 2], [17, 6]] as const) {
-    const s = (track.cpS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
+    const s = (track.oS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
     const h: Hazard = { s, d: 0, hs: 0.5, hd: 0.6, on: true, kind: 'crab' };
     const m = new THREE.Mesh(crabGeo, lifeMat);
     m.castShadow = true;

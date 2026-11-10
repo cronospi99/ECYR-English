@@ -45,19 +45,26 @@ export function buildSnow(track: Track): Scenery {
     const g = low ?? f0;
     return { d: best - (f0.w + KERB + f0.apron), y: g.p.y - Math.abs(g.bank) * (g.w + KERB) - 0.35 };
   };
-  const lake = { x: 40 * SC, z: 40 * SC, r: 26 };
+  // the frozen lake sits in the widest gap between the roads (never under one)
+  const lake = { x: -40, z: 0, r: 26 };
+  { let bd = 0; for (let x = -120; x <= 120; x += 10) for (let z = -100; z <= 100; z += 10) { const d = nearest(x, z).d - Math.hypot(x, z) * 0.1; if (d > bd) { bd = d; lake.x = x; lake.z = z; } } lake.r = Math.min(26, bd - 14); }
   const hills = (x: number, z: number) => 6 * Math.sin(x * 0.018) * Math.cos(z * 0.021) + 10 + Math.max(0, Math.hypot(x, z * 1.2) - 220) * 0.35;
+  const natural = (x: number, z: number) => { const n = nearest(x, z); return n.y - 0.25 + (hills(x, z) - n.y) * THREE.MathUtils.smoothstep(n.d, 4, 30); };
+  // the ice lies below the lowest point of the shore; the lake bed dips under it
+  let iceY = natural(lake.x, lake.z);
+  for (let k = 0; k < 24; k++) { const a = (k / 24) * Math.PI * 2; iceY = Math.min(iceY, natural(lake.x + Math.cos(a) * (lake.r + 8), lake.z + Math.sin(a) * (lake.r + 8))); }
+  iceY -= 0.3;
   const ground = (x: number, z: number) => {
-    const n = nearest(x, z), lk = Math.hypot(x - lake.x, z - lake.z);
-    let y = n.y - 0.25 + (hills(x, z) - n.y) * THREE.MathUtils.smoothstep(n.d, 4, 30);
-    if (lk < lake.r + 8) y = Math.min(y, THREE.MathUtils.lerp(n.y - 1.5, y, THREE.MathUtils.smoothstep(lk, lake.r, lake.r + 8)));
+    const lk = Math.hypot(x - lake.x, z - lake.z);
+    let y = natural(x, z);
+    if (lk < lake.r + 8) y = Math.min(y, THREE.MathUtils.lerp(iceY - 1.2, y, THREE.MathUtils.smoothstep(lk, lake.r + 1, lake.r + 8)));
     return y;
   };
 
   /* ---------------- snowy ground, the frozen lake, far peaks ---------------- */
   terrain(c, { cx: 0, cz: 0, size: 1000, n: 190, y: ground, rough: 0.7, color: (x, z, y) => { const n = nearest(x, z); return n.d < 1.5 ? 0xd9e2ec : y > 22 ? 0xf8fbff : shade(0xf0f5fb, Math.sin(x * 0.07 + z * 0.05) * 0.02 - 0.01); } });
   {
-    const ly = ground(lake.x, lake.z) + 0.05;
+    const ly = iceY;
     const ice = new THREE.Mesh(new THREE.CircleGeometry(lake.r, 40).rotateX(-Math.PI / 2), new THREE.MeshPhysicalMaterial({ color: 0xbfe4f5, roughness: 0.08, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.05 }));
     ice.position.set(lake.x, ly, lake.z);
     ice.receiveShadow = true;
@@ -67,7 +74,10 @@ export function buildSnow(track: Track): Scenery {
     strollers(c, ring, 18, () => ly);
   }
   for (let k = 0; k < 18; k++) {
-    const a = rand() * Math.PI * 2, r = 330 + rand() * 150, x = Math.cos(a) * r, z = Math.sin(a) * r, h = 90 + rand() * 110, w = 70 + rand() * 60;
+    const a = rand() * Math.PI * 2, h = 90 + rand() * 110, w = 70 + rand() * 60;
+    // (far enough out that no slope of the peak reaches the road)
+    let r = 330 + rand() * 150, x = 0, z = 0;
+    for (; r < 900; r += 25) { x = Math.cos(a) * r; z = Math.sin(a) * r; if (sparse.every((f) => Math.hypot(f.p.x - x, f.p.z - z) > w + 45)) break; }
     world.add(new THREE.ConeGeometry(1, 1, 9), 0x8e9db4, x, h / 2, z, w, h, w * 0.9);
     world.add(new THREE.ConeGeometry(1, 1, 9), 0xf8fbff, x, h * 0.78, z, w * 0.45, h * 0.44, w * 0.41);
   }
@@ -135,8 +145,8 @@ export function buildSnow(track: Track): Scenery {
     [80, ['BRRR!'], ['#6a2fb8', '#7fd3ff']],
     [118, ['HOT COCOA', 'AHEAD'], ['#7a4a2c', '#d9a24a']],
   ], c.clear);
-  crowd(c, roadsideSpots(c, 6, track.cpS[8], { rows: 3, sides: [1] }), true);
-  bunting(c, 8, track.cpS[8], 18, [0xd32f2f, 0xf4f4f2, 0x2f6fd0]);
+  crowd(c, roadsideSpots(c, 6, track.oS[8], { rows: 3, sides: [1] }), true);
+  bunting(c, 8, track.oS[8], 18, [0xd32f2f, 0xf4f4f2, 0x2f6fd0]);
   lamps(c, 32, 0x2b2f3a, 0xfff0c8);
   walkers(c, 30);
   birds(c, 0, 0, 140, 50, 10, 0x2b2f3a);

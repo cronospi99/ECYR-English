@@ -52,7 +52,7 @@ export function buildLondon(track: Track): Scenery {
   const F = track.frames;
 
   /* ---------------- ground, river, embankments ---------------- */
-  ground(c, { cx: 0, cz: 0, size: 1100, step: 30, gx: 0, gz: 0, y: (x, z) => (inRiver(x, z, -7) ? -6 : -0.08), color: (x, z) => (inRiver(x, z, 2) ? 0x9a9488 : 0xffffff), walk: '#bdb8ad', asphalt: '#474a51' });
+  ground(c, { cx: -40, cz: -150, size: 1300, step: 30, gx: 0, gz: 0, y: (x, z) => (inRiver(x, z, -7) ? -6 : -0.08), color: (x, z) => (inRiver(x, z, 2) ? 0x9a9488 : 0xffffff), walk: '#bdb8ad', asphalt: '#474a51' });
   const water = makeOcean({ deep: 0x3b5d66, shallow: 0x5f8a86, foam: 0xdfe8e6, amp: 0.12, scale: 0.55, dir: [1, 0.15], opacity: 0.96 });
   const wgeo = oceanGeometry(0, 0, 1000, 70, 200, 14, (x, z) => 2 + (RW - Math.abs(z - riverZ(x))) * 0.4);
   { const P = wgeo.getAttribute('position'); for (let i = 0; i < P.count; i++) P.setZ(i, P.getZ(i) * (RW + 1) / 35 + riverZ(P.getX(i))); }
@@ -71,7 +71,7 @@ export function buildLondon(track: Track): Scenery {
   }
 
   /* ---------------- the two bridges: deck underside, piers, the bascule towers ---------------- */
-  const bridgeS = (cp0: number, cp1: number) => [track.cpS[cp0] - 12, track.cpS[cp1] + 12];
+  const bridgeS = (cp0: number, cp1: number) => [track.oS[cp0] - 12, track.oS[cp1] + 12];
   for (const [a, b] of [bridgeS(3, 7), bridgeS(16, 20)]) {
     for (let s = a; s < b; s += 2) {
       const f = track.frame(Math.round(s / track.ds));
@@ -82,7 +82,7 @@ export function buildLondon(track: Track): Scenery {
   }
   // stone bridge piers (west bridge) and the bascule bridge's two towers (east)
   for (const z of [-12, 12]) {
-    const s = track.cpS[18] + z * -1;
+    const s = track.oS[18] + z * -1;
     const f = track.frame(Math.round(s / track.ds)), C = side(f, 0);
     world.add(U.box, 0xb8ad94, C.x, C.y / 2 - 2.2, C.z, (f.w + KERB + f.apron) * 2 + 2, C.y + 1.6, 3.2, 0, f.yaw, 0);
     world.add(new THREE.CylinderGeometry(0.5, 0.5, 1, 3), 0xb8ad94, C.x, -2.2, C.z, 3.2, (f.w + KERB + f.apron) * 2 + 2, 2.2, 0, f.yaw, Math.PI / 2);
@@ -117,7 +117,7 @@ export function buildLondon(track: Track): Scenery {
     world.add(U.box, stone, C.x, C.y + 9.5, C.z, span * 2, 2.4, 3.6, 0, f.yaw, 0);
     return f;
   };
-  const tA = towerAt(track.cpS[4] + 3), tB = towerAt(track.cpS[5] + 14);
+  const tA = towerAt(track.oS[4] + 3), tB = towerAt(track.oS[5] + 14);
   // high walkways between the towers (blue lattice)
   for (const sg of [-1, 1]) for (const y of [22, 25]) {
     const P = side(tA, sg * (tA.w + KERB + tA.apron + 2.8)), Q = side(tB, sg * (tB.w + KERB + tB.apron + 2.8));
@@ -205,7 +205,7 @@ export function buildLondon(track: Track): Scenery {
   /* ---------------- the city: brick and stone blocks, a park, the skyline ---------------- */
   const park = (x: number, z: number) => x > -330 && x < -200 && z > 60 && z < 200;
   const busy = (x: number, z: number) => inRiver(x, z, 10) || park(x, z) || (x > -175 && x < -20 && z > 60 && z < 98) || (Math.hypot(x + 40, z + 36) < 34) || (Math.hypot(x + 136, z - 30) < 14);
-  fillGrid(c, { x0: -420, x1: 420, z0: -420, z1: 420, step: 30, street: 9 }, (x, z) => {
+  fillGrid(c, { x0: -450, x1: 390, z0: -660, z1: 330, step: 30, street: 9 }, (x, z) => {
     if (busy(x, z)) return null;
     const far = Math.hypot(x, z) > 300, r = rand();
     if (r < 0.55) return { kind: 'brick', h: 9 + rand() * 7 + (far ? 8 : 0), roof: rand() < 0.6 ? 'pitched' : 'flat', roofColor: 0x5a4a44, tint: [0xffffff, 0xf0d8c8, 0xe0c8b8][Math.floor(rand() * 3)] };
@@ -237,16 +237,16 @@ export function buildLondon(track: Track): Scenery {
     [14, ['FANCY A CUPPA?'], ['#14915f', '#7ee08a']],
     [16, ['KEEP CALM', 'AND DRIVE ON'], ['#c8102e', '#012169']],
   ], c.clear);
-  crowd(c, roadsideSpots(c, 6, track.cpS[2], { sides: [-1], rows: 3 }));
-  crowd(c, roadsideSpots(c, track.cpS[9], track.cpS[10] + 10, { rows: 2 }));
-  crowd(c, roadsideSpots(c, track.cpS[12], track.cpS[13] + 20, { sides: [1], rows: 2 }));
-  bunting(c, 10, track.cpS[2], 22, [0xc8102e, 0xffffff, 0x012169]);
-  bunting(c, track.cpS[11], track.cpS[13], 24, [0xc8102e, 0xffffff, 0x012169]);
+  crowd(c, roadsideSpots(c, 6, track.oS[2], { sides: [-1], rows: 3 }));
+  crowd(c, roadsideSpots(c, track.oS[9], track.oS[10] + 10, { rows: 2 }));
+  crowd(c, roadsideSpots(c, track.oS[12], track.oS[13] + 20, { sides: [1], rows: 2 }));
+  bunting(c, 10, track.oS[2], 22, [0xc8102e, 0xffffff, 0x012169]);
+  bunting(c, track.oS[11], track.oS[13], 24, [0xc8102e, 0xffffff, 0x012169]);
   lamps(c, 28, 0x1f2a24, 0xffe2a0, (f) => !inRiver(f.p.x, f.p.z, 2));
   walkers(c, 70, (f) => !inRiver(f.p.x, f.p.z, 4));
 
   /* ---------------- life: buses and cabs, boats, pigeons ---------------- */
-  traffic(c, gridLanes(c, { x0: -420, x1: 420, z0: -420, z1: 420, step: 30 }, (x, z) => inRiver(x, z, 8) || park(x, z)), [
+  traffic(c, gridLanes(c, { x0: -450, x1: 390, z0: -660, z1: 330, step: 30 }, (x, z) => inRiver(x, z, 8) || park(x, z)), [
     { kind: 'double', colors: [0xd32f2f], n: 16, speed: 8 },
     { kind: 'cab', colors: [0x1b1d24, 0x22252c], n: 22, speed: 10 },
     { kind: 'car', colors: [0xf4f4f2, 0x3d8bff, 0x2b2f3a, 0x9aa0a8, 0x14915f], n: 30 },

@@ -18,11 +18,12 @@ import type { Scenery } from './scenery';
 import { TRACKS, trackInfo, type TrackId, type TrackInfo } from './tracks';
 import { Kart, KART, NO_INPUT, autopilot, type KartInput } from './kart';
 import { KartView } from './kartModel';
+import { Trackside } from './trackside';
 import { Blasts, Flames, Particles, Ribbons, Skids, SpeedLines } from './fx';
 import { Bot, SKILL, racingLine, type Difficulty, type Line, type Obstacle } from './ai';
 import { ItemWorld, rollItem, ITEM_LIST } from './items';
 import { Gates, type GateSite } from './gates';
-import { makeRacer, rank, scoreOf, type ItemKind, type Racer, type RemoteSample } from './racer';
+import { SLOTS, makeRacer, rank, scoreOf, type HitKind, type ItemKind, type Racer, type RemoteSample } from './racer';
 import { t } from '@/lib/gameLang';
 import { flameColor, garage, raceEarnings, type KartStyle } from './garage';
 import { engineSet, engineStop, sfx, startMusic, stopMusic, setMusicFast, setSong, unlock } from './audio';
@@ -45,7 +46,7 @@ export interface Results {
 export interface Hud {
   state: RaceState; count: number; lap: number; laps: number; time: number; lapTime: number; lapTimes: number[]; bestLap: number | null;
   speed: number; tier: number; boost: boolean; wrongWay: boolean; results: Results | null; x: number; z: number; yaw: number; record: { lap: number; total: number } | null;
-  mode: Mode; track: TrackId; place: number; n: number; coins: number; item: ItemKind | null; itemN: number; rolling: ItemKind | null; shield: boolean;
+  mode: Mode; track: TrackId; place: number; n: number; coins: number; item: ItemKind | null; itemN: number; bag: ItemKind[]; rolling: ItemKind | null; shield: boolean;
   q: { text: string; answers: string[]; dist: number; lane: number } | null;
   dots: { x: number; z: number; color: string; me: boolean }[];
   standings: { name: string; color: string; me: boolean; points: number }[];
@@ -65,16 +66,22 @@ export interface LiveFinish { time: number; right: number; wrong: number; bank: 
 export interface LiveOut {
   state(s: LiveState): void;
   finish(f: LiveFinish): void;
-  hit(peer: string, kind: 'plane' | 'ink'): void;
+  hit(peer: string, kind: HitKind): void;
+  zone(s: number, d: number): void;
   ink(s: number, d: number): void;
   bell(victims: string[]): void;
 }
 export interface LiveRow { name: string; color: string; me: boolean; score: number; right: number; wrong: number; bank: number; fin: boolean }
-export interface TouchState { left: boolean; right: boolean; gas: boolean; brake: boolean; drift: boolean; item: boolean; /** Analog steering from the slider pad (−1 left … 1 right, 0 none). */ steer: number }
-export const TOUCH_OFF: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false, steer: 0 };
+export interface TouchState { left: boolean; right: boolean; gas: boolean; brake: boolean; drift: boolean; item: boolean; itemBack: boolean; swap: boolean; /** Analog steering from the slider pad (−1 left … 1 right, 0 none). */ steer: number }
+export const TOUCH_OFF: TouchState = { left: false, right: false, gas: false, brake: false, drift: false, item: false, itemBack: false, swap: false, steer: 0 };
 
 const TIER_COLORS = [new THREE.Color(1.3, 1.05, 0.6), new THREE.Color(0.35, 0.8, 2.0), new THREE.Color(2.0, 0.85, 0.2), new THREE.Color(1.6, 0.45, 2.0)];
 const DT = 1 / 120;
+/** Rivals get the full-detail teacher models on computers with memory to spare (the light ones elsewhere). */
+const nav = typeof navigator !== 'undefined' ? (navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } }) : null;
+const FULL_RIVALS = !!nav && (nav.deviceMemory ?? 4) >= 8 && !nav.connection?.saveData && typeof matchMedia !== 'undefined' && matchMedia('(pointer: fine)').matches;
+/** Reach of the eraser blast (m). */
+const BURST_R = 9.5;
 export const GP_POINTS = [15, 12, 10, 8, 6, 4, 2, 1];
 /** The two Grand Prix cups: the original four tracks, and the four world cities. */
 export const CUPS: Record<Cup, TrackId[]> = { classic: ['campus', 'beach', 'roofs', 'neon'], world: ['london', 'newyork', 'tokyo', 'rio'], stunt: ['canyon', 'splash', 'snow', 'roofs'] };
@@ -101,6 +108,7 @@ export class RaceGame {
   info!: TrackInfo;
   private meshes: TrackMeshes | null = null;
   private scenery: Scenery | null = null;
+  private trackside: Trackside | null = null;
   private items: ItemWorld | null = null;
   private gates: Gates | null = null;
   private line: Line | null = null;
@@ -172,6 +180,7 @@ export class RaceGame {
   private podium: THREE.Group | null = null;
   private podiumS = 30;
   private rollShow: ItemKind | null = null;
+  private swapPressed = false;
   private lastPlace = 8;
   autoDrive = false;
   /** Live class mode: a student's game ('player') or the teacher's screen ('spectator'). */
@@ -262,6 +271,7 @@ export class RaceGame {
       this.meshes.group.traverse((o) => { const m = o as THREE.Mesh; if (!m.isMesh) return; m.geometry.dispose(); const mm = m.material as THREE.MeshStandardMaterial; if (mm !== this.worldMat) { mm.map?.dispose(); mm.emissiveMap?.dispose(); mm.dispose(); } });
     }
     if (this.scenery) { this.scene.remove(this.scenery.group); this.scenery.dispose(); }
+    this.trackside?.dispose();
     if (this.gates) { this.scene.remove(this.gates.group); this.gates.dispose(); }
     this.clearPodium();
     this.track = new Track(info.def);
@@ -274,6 +284,8 @@ export class RaceGame {
     this.scene.add(this.meshes.group);
     this.scenery = info.build(this.track);
     this.scene.add(this.scenery.group);
+    this.trackside = new Trackside(this.track, info.color, { beacons: id !== 'snow' && id !== 'canyon' });
+    this.scene.add(this.trackside.group);
     this.buildItems();
     this.gates = new Gates(this.track, this.settings.level);
     this.scene.add(this.gates.group);
@@ -335,7 +347,7 @@ export class RaceGame {
       const s = L - 7 - row * 6.5 - (k % 2) * 3;
       r.kart.place(s, sd * 2.5);
       r.dist = s - L; r.prevS = r.kart.s;
-      r.lapTimes = []; r.lapStart = 0; r.finished = false; r.finishT = 0; r.coins = 0; r.item = null; r.itemN = 0; r.roll = 0;
+      r.lapTimes = []; r.lapStart = 0; r.finished = false; r.finishT = 0; r.coins = 0; r.item = null; r.itemN = 0; r.bag = []; r.roll = 0;
       r.shield = false; r.hurtT = 0; r.respawnAt = 0; r.wrongT = 0; r.stuckT = 0; r.right = 0; r.wrong = 0; r.bank = 0;
       if (r.remote) r.remote.length = 0;
       r.kart.topMul = 1;
@@ -438,7 +450,7 @@ export class RaceGame {
     this.rivalIds = pool.map((x) => x.id);
     const want = this.rivalIds.join();
     this.rivalsLoading = (async () => {
-      const actors = await Promise.all(pool.map((p) => ToonActor.create(p.id, true).catch(() => null)));
+      const actors = await Promise.all(pool.map((p) => ToonActor.create(p.id, !FULL_RIVALS).catch(() => null)));
       if (want !== this.rivalIds.join()) { actors.forEach((a) => a?.dispose()); return; }
       for (const r of this.racers.filter((x) => !x.player)) { r.view?.dispose(); r.flames.group.removeFromParent(); r.flames.dispose(); }
       this.racers.length = 1;
@@ -499,14 +511,14 @@ export class RaceGame {
     // key lifts what; e.key only as a fallback for old browsers
     const CODES: Record<string, string> = {
       ArrowUp: 'gas', KeyW: 'gas', ArrowDown: 'brake', KeyS: 'brake', ArrowLeft: 'left', KeyA: 'left', ArrowRight: 'right', KeyD: 'right',
-      Space: 'drift', ShiftLeft: 'drift', ShiftRight: 'drift', KeyK: 'drift', KeyC: 'back', KeyE: 'item', KeyX: 'item', KeyL: 'item', ControlLeft: 'item', ControlRight: 'item',
+      Space: 'drift', ShiftLeft: 'drift', ShiftRight: 'drift', KeyK: 'drift', KeyC: 'back', KeyE: 'item', KeyX: 'item', KeyL: 'item', ControlLeft: 'item', ControlRight: 'item', KeyQ: 'swap', Tab: 'swap', KeyF: 'itemBack', KeyZ: 'itemBack',
     };
-    const KEYS: Record<string, string> = { arrowup: 'gas', w: 'gas', arrowdown: 'brake', s: 'brake', arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', ' ': 'drift', shift: 'drift', k: 'drift', c: 'back', e: 'item', x: 'item', l: 'item', control: 'item' };
+    const KEYS: Record<string, string> = { arrowup: 'gas', w: 'gas', arrowdown: 'brake', s: 'brake', arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', ' ': 'drift', shift: 'drift', k: 'drift', c: 'back', e: 'item', x: 'item', l: 'item', q: 'swap', tab: 'swap', f: 'itemBack', z: 'itemBack', control: 'item' };
     const id = (e: KeyboardEvent) => e.code || 'key:' + e.key.toLowerCase();
     const act = (e: KeyboardEvent) => CODES[e.code] ?? KEYS[e.key.toLowerCase()];
     const down = (e: KeyboardEvent) => {
       const a = act(e), k = e.key.toLowerCase();
-      if (a && !e.metaKey) { this.keys.set(id(e), a); if (k.startsWith('arrow') || k === ' ') e.preventDefault(); unlock(); }
+      if (a && !e.metaKey) { this.keys.set(id(e), a); if (k.startsWith('arrow') || k === ' ' || k === 'tab') e.preventDefault(); unlock(); }
       if (e.repeat) return;
       if (k === 'escape' || k === 'p') this.togglePause();
       if (k === 'r' && this.state === 'race') this.respawn(this.me);
@@ -542,7 +554,7 @@ export class RaceGame {
     // (not during the countdown: hold the big button there for a rocket start)
     if (tc.drift) gas = 1;
     if (this.autoGas && this.state !== 'countdown' && !brake) gas = 1;
-    let item = held.has('item') || tc.item;
+    let item = held.has('item') || tc.item, itemBack = held.has('itemBack') || tc.itemBack, swap = held.has('swap') || tc.swap;
     this.lookBack = held.has('back');
     const pads = typeof navigator !== 'undefined' && navigator.getGamepads ? navigator.getGamepads() : [];
     for (const p of pads) {
@@ -554,13 +566,18 @@ export class RaceGame {
       gas = Math.max(gas, p.buttons[0]?.pressed ? 1 : 0, p.buttons[7]?.value ?? 0);
       brake = Math.max(brake, p.buttons[1]?.pressed ? 1 : 0, p.buttons[6]?.value ?? 0);
       drift = drift || !!p.buttons[5]?.pressed;
-      item = item || !!(p.buttons[4]?.pressed || p.buttons[2]?.pressed);
+      item = item || !!p.buttons[2]?.pressed;
+      itemBack = itemBack || !!p.buttons[4]?.pressed;
+      swap = swap || !!p.buttons[13]?.pressed || !!p.buttons[12]?.pressed;
       if (p.buttons[3]?.pressed) this.lookBack = true;
       if (p.buttons[9]?.pressed && this.state === 'menu') this.start();
     }
     this.input = { throttle: gas, brake, steer: THREE.MathUtils.clamp(steer, -1, 1), drift };
-    if (item && !this.itemPressed && this.state === 'race') this.useItem(this.me);
-    this.itemPressed = item;
+    // the item button fires forwards; with the brake held (or the back button) it fires backwards
+    if ((item || itemBack) && !this.itemPressed && this.state === 'race') this.useItem(this.me, itemBack || brake > 0.5 || this.lookBack);
+    this.itemPressed = item || itemBack;
+    if (swap && !this.swapPressed && this.state === 'race') this.swapItem(this.me);
+    this.swapPressed = swap;
     return this.input;
   }
 
@@ -675,6 +692,7 @@ export class RaceGame {
     }
     if (this.state === 'podium') this.podiumFrame(dt);
     this.scenery?.update?.(dt, this.time);
+    this.trackside?.update(this.time);
     this.items?.update(dt, this.time, this.live ? this.local : field, this.itemEvents, this.state === 'race' || this.state === 'finish', this.live ? field.filter((r) => r.remote) : []);
     this.gates?.update(dt, this.time);
 
@@ -757,9 +775,12 @@ export class RaceGame {
         const out = r.bot.drive(k, {
           t: this.clock, gate: g ? { s: g.g.s, lanes: g.g.lanes, correct: g.g.correct, id: g.g.id * 100000 + g.g.round * 10 + lap } : null,
           obstacles, boxes, pads, aheadGap: ahead, behindGap: behind, place: r.place, item: r.item, itemN: r.itemN, racing: this.state === 'race' && !r.finished,
+          near: r.item === 'burst' ? field.filter((o) => o !== r && !o.finished && o.kart.pos.distanceTo(k.pos) < BURST_R * 0.8).length : 0,
+          aheadD: ix > 0 ? ranked[ix - 1].kart.d - k.d : 99,
         });
         i = r.finished ? { ...out, throttle: 0.6, drift: false } : out;
-        if (out.useItem && !r.finished && this.state === 'race') this.useItem(r);
+        // (planes and chalk go backwards when the kart to hit is the one right behind)
+        if (out.useItem && !r.finished && this.state === 'race') this.useItem(r, (r.item === 'chalk' || r.item === 'plane') && behind < 30 && (ahead > 60 || (r.item === 'chalk' && Math.abs(ranked[ix - 1]?.kart.d - k.d) > 2.2)));
       }
       k.step(dt, i);
     }
@@ -784,6 +805,7 @@ export class RaceGame {
   private obstacles(): Obstacle[] {
     const out: Obstacle[] = [];
     for (const ik of this.items?.inks ?? []) out.push({ s: ik.s, d: ik.d, r: 1.3 });
+    for (const z of this.items?.zones ?? []) out.push({ s: z.s, d: z.d, r: z.r * 0.8 });
     // lasers switch on without much warning: the bots keep to the free half either way
     for (const h of this.scenery?.hazards ?? []) if (h.on || h.kind === 'laser') out.push({ s: h.s, d: h.d, r: h.hd + 0.4 });
     return out;
@@ -956,36 +978,66 @@ export class RaceGame {
   private itemEvents = {
     box: (r: Racer) => {
       if (r.player) sfx.box();
-      if (r.item || r.roll > 0) return;
-      r.roll = r.player ? 1.5 : 0.8;
+      if ((r.item ? 1 : 0) + r.bag.length >= SLOTS || r.roll > 0) return;
+      r.roll = r.player ? (r.item ? 0.9 : 1.5) : 0.8;
     },
     coin: (r: Racer) => { r.coins = Math.min(10, r.coins + 1); r.bank++; if (r.player) sfx.coin(); },
-    hit: (r: Racer, kind: 'plane' | 'ink', by: Racer | null) => this.hit(r, kind, by),
+    hit: (r: Racer, kind: HitKind, by: Racer | null) => this.hit(r, kind, by),
   };
 
   private giveItem(r: Racer) {
     const n = this.field.length;
-    const it = rollItem(n > 1 ? (r.place - 1) / (n - 1) : 0.5);
-    r.item = it;
-    r.itemN = it === 'coffee' ? 3 : 1;
+    const it = rollItem(n > 1 ? (r.place - 1) / (n - 1) : 0.5, []);
+    const slot = { kind: it, n: it === 'coffee' || it === 'chalk' ? 3 : 1 };
+    if (!r.item) { r.item = slot.kind; r.itemN = slot.n; } else r.bag.push(slot);
     if (r.player) sfx.got();
   }
 
-  useItem(r: Racer) {
+  /** The next power-up comes to hand (the one in hand goes to the back of the queue). */
+  swapItem(r: Racer) {
+    if (!r.item || !r.bag.length) return;
+    r.bag.push({ kind: r.item, n: r.itemN });
+    const nx = r.bag.shift()!;
+    r.item = nx.kind; r.itemN = nx.n;
+    if (r.player) sfx.click();
+  }
+
+  useItem(r: Racer, back = false) {
     const it = r.item;
-    if (!it || r.roll > 0 || r.kart.falling) return;
-    const field = this.field;
+    if (!it || r.kart.falling) return;
+    if (r.roll > 0 && !r.item) return;
+    const field = this.field, k = r.kart;
+    const dir: 1 | -1 = back ? -1 : 1;
     switch (it) {
       case 'plane': {
         const ranked = rank(field);
         const ix = ranked.indexOf(r);
         const target = ix > 0 ? ranked[ix - 1] : null;
-        this.items?.firePlane(r, target);
-        if (r.player || target?.player) sfx.plane();
+        this.items?.firePlane(r, target, dir);
+        if (r.player || target?.player || this.camPos.distanceTo(k.pos) < 40) sfx.plane();
+        break;
+      }
+      case 'chalk': {
+        this.items?.fireShot(r, dir, r.itemN);
+        const m = this.v1.copy(k.pos); m.y += 0.8;
+        this.blasts.flash(m, 1.1, this.c.setRGB(2.6, 1.2, 1.8), 0.14);
+        if (r.player) { sfx.shot(); this.shake = Math.max(this.shake, 0.12); this.fov += 2; } else if (this.camPos.distanceTo(k.pos) < 45) sfx.shot();
+        break;
+      }
+      case 'burst': this.burst(r); break;
+      case 'storm': {
+        // domes land on the road ahead of the leaders (ahead of this kart when it leads)
+        const ranked = rank(field).filter((o) => !o.finished && o !== r && o.place < r.place).slice(0, 3);
+        const L = this.track.length;
+        if (!ranked.length) for (let i = 0; i < 3; i++) this.dropZone(r, k.s + (back ? -(16 + i * 16) : 34 + i * 20), (i - 1) * 4.5);
+        else for (let i = 0; i < 3; i++) { const o = ranked[i % ranked.length]; this.dropZone(r, (o.kart.s + 26 + Math.max(0, o.kart.speed) * 0.9 + (i >= ranked.length ? 22 * Math.ceil(i / ranked.length) : 0)) % L, o.kart.d + (i >= ranked.length ? (i % 2 ? 4 : -4) : 0)); }
+        if (r.player || ranked.some((o) => o.player)) sfx.storm();
+        if (ranked.some((o) => o.player)) this.toast(t('POP QUIZ STORM!', '¡TORMENTA SORPRESA!'), '#a78bff', `${t('from', 'de')} ${r.name}`);
         break;
       }
       case 'ink': {
-        const ink = this.items?.dropInk(r);
+        // (dropped behind; fired "backwards" it is lobbed ahead instead, into the path of the kart in front)
+        const ink = this.items?.dropInk(r, back ? 1 : -1);
         if (r.player) { sfx.ink(); if (ink) this.live?.out?.ink(ink.s, ink.d); }
         break;
       }
@@ -1016,7 +1068,44 @@ export class RaceGame {
       }
     }
     r.itemN--;
-    if (r.itemN <= 0) { r.item = null; r.itemN = 0; }
+    if (r.itemN <= 0) {
+      const nx = r.bag.shift();
+      r.item = nx?.kind ?? null; r.itemN = nx?.n ?? 0;
+    }
+  }
+
+  private dropZone(r: Racer, s: number, d: number) {
+    const z = this.items?.addZone(r, s, d);
+    if (z && r.player) this.live?.out?.zone(z.s, z.d);
+  }
+
+  /** The eraser blast: a shock wave all round the kart. Whoever is close is thrown aside, and the
+      planes, chalk and ink near it are wiped out. */
+  private burst(r: Racer) {
+    const k = r.kart, c = this.v1.copy(k.pos); c.y += 0.7;
+    const g = this.v2.copy(k.pos); g.y += 0.14;
+    this.blasts.flash(c, 4.2, this.c.setRGB(3, 1.6, 0.5), 0.3);
+    this.blasts.wave(g, BURST_R + 2, 0xff8a3c, 0.5);
+    this.blasts.wave(g, BURST_R * 0.7, 0xffffff, 0.34);
+    this.blasts.wave(g, BURST_R * 0.4, 0xffd23f, 0.22);
+    this.blasts.shreds(c, 30, [0xffffff, 0xf4f4f2, 0xff8a3c, 0x3a4152], 13, 5, 0.8);
+    for (let i = 0; i < 40; i++) { const a = (i / 40) * Math.PI * 2; this.smoke.emit(c.x + Math.cos(a) * 1.2, c.y - 0.3, c.z + Math.sin(a) * 1.2, Math.cos(a) * 20, 1 + Math.random() * 2, Math.sin(a) * 20, 0.5 + Math.random() * 0.3, 0.9, this.c.setRGB(0.95, 0.95, 0.92), { a: 0.6, drag: 3.5, grow: 2 }); }
+    const wiped = this.items?.wipe(k.pos, BURST_R + 3, r) ?? 0;
+    let n = 0;
+    for (const o of this.field) {
+      if (o === r || o.finished || o.kart.falling) continue;
+      const dx = o.kart.pos.x - k.pos.x, dz = o.kart.pos.z - k.pos.z, d = Math.hypot(dx, dz);
+      if (d > BURST_R || Math.abs(o.kart.pos.y - k.pos.y) > 3.5) continue;
+      n++;
+      this.hit(o, 'burst', r);
+      if (!o.remote && o.hurtT > 1) { const f = 10 * (1 - d / (BURST_R * 1.6)) / Math.max(0.5, d); o.kart.vel.x += dx * f; o.kart.vel.z += dz * f; }
+    }
+    k.vel.y = Math.max(k.vel.y, 0);
+    r.hurtT = Math.max(r.hurtT, 0.6);
+    const close = this.camPos.distanceTo(k.pos) < 50;
+    if (r.player || close) { sfx.burst(); this.shake = Math.max(this.shake, r.player ? 0.5 : 0.3); }
+    if (r.player) { this.fov += 6; this.buzz(50); if (n || wiped) this.toast(t('WIPED OUT!', '¡BORRADOS!'), '#ff8a3c', n ? `${n} ${t('thrown aside', 'por los aires')}` : t('shots erased', 'disparos borrados')); }
+    if (close) this.blasts.word(this.v3.copy(c).setY(c.y + 2.8), 'WHAM!', '#ff8a3c', 3.4);
   }
 
   private breakShield(r: Racer) {
@@ -1032,21 +1121,24 @@ export class RaceGame {
     r.hurtT = 0.8;
   }
 
-  private hit(r: Racer, kind: 'plane' | 'ink' | 'hazard', by: Racer | null) {
+  private hit(r: Racer, kind: HitKind | 'hazard', by: Racer | null) {
     if (r.hurtT > 0 || r.finished) return;
     const k = r.kart;
     // another student's kart: their own game throws it (only my planes reach them from here)
     if (r.remote) {
-      if (kind === 'plane' && r.peer && by?.player) { this.live?.out?.hit(r.peer, kind); sfx.got(); this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name); this.boom(k.pos, kind); this.hitStop = Math.max(this.hitStop, 0.05); }
+      if (kind !== 'ink' && kind !== 'hazard' && r.peer && by?.player) { this.live?.out?.hit(r.peer, kind); sfx.got(); this.toast(t('HIT!', '¡LE DISTE!'), '#7dff9a', r.name); this.boom(k.pos, kind); this.hitStop = Math.max(this.hitStop, 0.05); }
       r.hurtT = 1.8; return;
     }
     if (r.shield && kind !== 'hazard') { this.breakShield(r); return; }
     // thrown up rolling (plane, hazard) or a long wild spin-out (ink)
     if (kind === 'plane') k.knock(9.5, 0.3, 1.5);
     else if (kind === 'hazard') k.knock(6.5, 0.45, 1.15);
+    else if (kind === 'chalk') k.knock(4.2, 0.55, 0.85, (Math.random() < 0.5 ? -1 : 1) * 4);
+    else if (kind === 'burst') k.knock(6, 0.6, 1.1);
+    else if (kind === 'storm') { k.knock(3.4, 0.45, 1.25); k.slowT = Math.max(k.slowT, 1.8); }
     else k.knock(0, 0.8, 1.6);
-    r.hurtT = 2;
-    const lost = Math.min(r.coins, kind === 'hazard' ? 2 : 3);
+    r.hurtT = kind === 'chalk' ? 1.2 : 2;
+    const lost = Math.min(r.coins, kind === 'hazard' || kind === 'storm' ? 2 : kind === 'chalk' ? 1 : 3);
     r.coins -= lost;
     r.bank = Math.max(0, r.bank - lost);
     for (let i = 0; i < lost * 2; i++) this.sparks.emit(k.pos.x, k.pos.y + 0.8, k.pos.z, (Math.random() - 0.5) * 9, 5 + Math.random() * 4, (Math.random() - 0.5) * 9, 1, 0.45, this.c.setRGB(2.2, 1.6, 0.2), { grav: 16 });
@@ -1059,7 +1151,7 @@ export class RaceGame {
       this.fov += kind === 'ink' ? 5 : 11;
       this.onSplat?.(kind === 'ink' ? 'ink' : 'hit');
       this.buzz(kind === 'ink' ? 40 : [60, 40, 90]);
-      const what = kind === 'plane' ? t('Paper plane!', '¡Avión de papel!') : kind === 'ink' ? t('Ink!', '¡Tinta!') : t('Watch out!', '¡Cuidado!');
+      const what = kind === 'plane' ? t('Paper plane!', '¡Avión de papel!') : kind === 'ink' ? t('Ink!', '¡Tinta!') : kind === 'chalk' ? t('Chalk shot!', '¡Tizazo!') : kind === 'burst' ? t('Eraser blast!', '¡Borrador explosivo!') : kind === 'storm' ? t('Zapped!', '¡Calambrazo!') : t('Watch out!', '¡Cuidado!');
       this.toast(what, '#ff8a8a', by ? `${t('from', 'de')} ${by.name}` : undefined);
     } else {
       // a hit close to the camera shakes it too
@@ -1070,7 +1162,7 @@ export class RaceGame {
   }
 
   /** What a hit looks like: a cartoon explosion (paper plane, hazard) or a burst of ink. */
-  private boom(p: THREE.Vector3, kind: 'plane' | 'ink' | 'hazard') {
+  private boom(p: THREE.Vector3, kind: HitKind | 'hazard') {
     const c = this.v1.copy(p); c.y += 0.9;
     const g = this.v2.copy(p); g.y += 0.12;
     const rnd = (a: number) => (Math.random() - 0.5) * a;
@@ -1083,7 +1175,23 @@ export class RaceGame {
       this.blasts.word(this.v3.copy(c).setY(c.y + 2.6), 'SPLAT!', '#7b6bff', 3.4 * sz);
       return;
     }
-    const big = kind === 'plane';
+    if (kind === 'storm') {
+      this.blasts.flash(c, 3 * sz, this.c.setRGB(1.6, 1.3, 3.2), 0.3);
+      this.blasts.flash(c, 1.5 * sz, this.c.setRGB(3, 3, 3.2), 0.14);
+      this.blasts.wave(g, 8, 0xa78bff, 0.5);
+      for (let i = 0; i < 44; i++) this.sparks.emit(c.x, c.y, c.z, rnd(26), 2 + Math.random() * 12, rnd(26), 0.35 + Math.random() * 0.4, 0.2, this.c.setRGB(1.7, 1.5, 3), { grav: 14, drag: 1.5 });
+      this.blasts.word(this.v3.copy(c).setY(c.y + 2.6), 'ZAP!', '#b9a4ff', 3.6 * sz);
+      return;
+    }
+    if (kind === 'chalk') {
+      this.blasts.flash(c, 2.2 * sz, this.c.setRGB(3, 1.6, 2.2), 0.22);
+      this.blasts.wave(g, 5.5, 0xff8fc0, 0.4);
+      this.blasts.shreds(c, 18, [0xffffff, 0xff5fa2, 0x5fd0ff, 0xfff27a], 9, 6, 0.6);
+      for (let i = 0; i < 18; i++) this.smoke.emit(c.x + rnd(1), c.y + rnd(0.6), c.z + rnd(1), rnd(7), 1 + Math.random() * 4, rnd(7), 0.7 + Math.random() * 0.4, 0.9 + Math.random() * 0.8, this.c.setRGB(0.96, 0.94, 0.95), { a: 0.7, drag: 2.4, grow: 1.6 });
+      this.blasts.word(this.v3.copy(c).setY(c.y + 2.4), 'CRACK!', '#ff5fa2', 3 * sz);
+      return;
+    }
+    const big = kind === 'plane' || kind === 'burst';
     this.blasts.flash(c, (big ? 3.6 : 2.6) * sz, this.c.setRGB(3, 1.5, 0.45), 0.34);
     this.blasts.flash(c, (big ? 1.9 : 1.4) * sz, this.c.setRGB(3, 3, 2.6), 0.16);
     this.blasts.wave(g, big ? 10 : 7, 0xffc875, 0.55);
@@ -1383,7 +1491,7 @@ export class RaceGame {
       time: me.finished ? me.finishT : this.raceT, lapTime: this.raceT - me.lapStart, lapTimes: me.lapTimes, bestLap: me.lapTimes.length ? Math.min(...me.lapTimes) : null,
       speed: Math.round(k.speed * 3.6 * 1.25), tier: k.drift ? k.tier : 0, boost: k.boostT > 0, wrongWay: me.wrongT > 1.2,
       results: this.results, x: (k.pos.x - mb.x0) / mb.w, z: (k.pos.z - mb.z0) / mb.h, yaw: k.yaw, record: this.record,
-      mode: this.settings.mode, track: this.info.id, place: me.place, n: field.length, coins: me.coins, item: me.item, itemN: me.itemN,
+      mode: this.settings.mode, track: this.info.id, place: me.place, n: field.length, coins: me.coins, item: me.item, itemN: me.itemN, bag: me.bag.map((b) => b.kind),
       rolling: me.roll > 0 ? this.rollShow : null, shield: me.shield, q,
       dots: field.map((r) => ({ x: (r.kart.pos.x - mb.x0) / mb.w, z: (r.kart.pos.z - mb.z0) / mb.h, color: r.color, me: r.player })),
       standings: ranked.map((r) => ({ name: r.name, color: r.color, me: r.player, points: r.points })),
@@ -1525,7 +1633,9 @@ export class RaceGame {
     }
   }
   /** Another student's paper plane reached me. */
-  liveHit(kind: 'plane' | 'ink', from: string) { if (this.state === 'race') this.hit(this.me, kind, this.byPeer(from)); }
+  liveHit(kind: HitKind, from: string) { if (this.state === 'race') this.hit(this.me, kind, this.byPeer(from)); }
+  /** Another student's storm dome lands on my road. */
+  liveZone(from: string, s: number, d: number) { const by = this.byPeer(from); if (this.state === 'race' && by) this.items?.addZone(by, s, d); }
   /** Another student rang the recess bell (I was ahead of them). */
   liveBell(from: string) {
     const me = this.me, by = this.byPeer(from);
@@ -1580,6 +1690,7 @@ export class RaceGame {
     this.offs.forEach((f) => f());
     for (const r of this.racers) { r.view?.dispose(); r.flames.dispose(); }
     this.scenery?.dispose();
+    this.trackside?.dispose();
     this.items?.dispose();
     this.gates?.dispose();
     this.clearPodium();

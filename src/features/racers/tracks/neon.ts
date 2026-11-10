@@ -186,7 +186,7 @@ export function buildNeon(track: Track): Scenery {
     toneMapped: false,
   });
   {
-    const s0 = track.cpS[9] + 6, s1 = track.cpS[10] - 4;
+    const s0 = track.oS[9] + 6, s1 = track.oS[10] - 4;
     const pos: number[] = [], col: number[] = [], ph: number[] = [];
     const c = new THREE.Color();
     let n = 0;
@@ -229,7 +229,7 @@ export function buildNeon(track: Track): Scenery {
   const lasers: { beams: THREE.Mesh[]; mat: THREE.MeshBasicMaterial; h: Hazard; ph: number }[] = [];
   const laserGeo = new THREE.BoxGeometry(1, 0.09, 0.09);
   [[7, 14, -1], [7, 34, 1], [8, 12, -1]].forEach(([cp, off, sg], i) => {
-    const s = (track.cpS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
+    const s = (track.oS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
     const w = f.w + KERB;
     const d0 = sg < 0 ? -w : 0, d1 = sg < 0 ? 0 : w;
     const h: Hazard = { s, d: (d0 + d1) / 2, hs: 0.35, hd: w / 2, on: false, kind: 'laser' };

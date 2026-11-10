@@ -312,7 +312,7 @@ export function buildCampus(track: Track): Scenery {
     world.cyl(P.x, 0, P.z, 0.08, 7, 0xe8ecf0);
     world.add(U.box, flagCols[k % 5], P.x + f.t.x * 1.0, 6.2, P.z + f.t.z * 1.0, 0.04, 1.2, 2, 0, f.yaw, 0);
   }
-  const hp = track.frame(Math.round(track.cpS[7] / track.ds));
+  const hp = track.frame(Math.round(track.oS[7] / track.ds));
   for (let k = -6; k <= 6; k++) {
     const f = track.frame(Math.round(hp.s / track.ds) + k * 3);
     const P = side(f, -(f.w + KERB + f.apron + 1.2));
@@ -352,7 +352,7 @@ export function buildCampus(track: Track): Scenery {
 
   /* ---------------- far hills and clouds ---------------- */
   for (let k = 0; k < 26; k++) {
-    const a = (k / 26) * Math.PI * 2 + rand() * 0.1, r = 560 + rand() * 120;
+    const a = (k / 26) * Math.PI * 2 + rand() * 0.1, r = 700 + rand() * 120;
     world.add(U.blob, shade(0x6aa86a, (rand() - 0.5) * 0.08), 80 + Math.cos(a) * r, -20, 20 + Math.sin(a) * r, 90 + rand() * 70, 50 + rand() * 45, 90 + rand() * 70);
   }
   cloudRing(group, 80, 20, 16, rand);

@@ -243,7 +243,7 @@ export function buildRoofs(track: Track): Scenery {
   const hazards: Hazard[] = [];
   const cranes: { jib: THREE.Mesh; cable: THREE.Mesh; load: THREE.Mesh; h: Hazard; tower: THREE.Vector3; top: number; w: number; ph: number; sp: number }[] = [];
   for (const [cp, off, sg] of [[2, 14, 1], [7, 6, -1]] as const) {
-    const s = (track.cpS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
+    const s = (track.oS[cp] + off) % track.length, f = track.frame(Math.round(s / track.ds));
     const T = side(f, sg * (f.w + KERB + f.apron + 7));
     const top = f.p.y + 16;
     const tg = new Geo();

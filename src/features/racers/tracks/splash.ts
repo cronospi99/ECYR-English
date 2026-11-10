@@ -56,8 +56,8 @@ export function buildSplash(track: Track): Scenery {
   const inside = (x: number, z: number) => { let k = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, zi] = poly[i], [xj, zj] = poly[j]; if ((zi > z) !== (zj > z) && x < ((xj - xi) * (z - zi)) / (zj - zi) + xi) k = !k; } return k; };
   const edgeDist = (x: number, z: number) => { let m = Infinity; for (let i = 0; i < poly.length; i += 2) m = Math.min(m, Math.hypot(x - poly[i][0], z - poly[i][1])); return m; };
   terrain(c, {
-    cx: 0, cz: 20, size: 900,
-    y: (x, z) => (inside(x, z) ? -0.4 - Math.min(2.6, edgeDist(x, z) * 0.18) : -0.08 + Math.max(0, Math.hypot(x, z * 1.6) - 260) * 0.08),
+    cx: 190, cz: 60, size: 1300, n: 200,
+    y: (x, z) => (inside(x, z) ? -0.4 - Math.min(2.6, edgeDist(x, z) * 0.18) : -0.08 + Math.max(0, edgeDist(x, z) - 110) * 0.08),
     color: (x, z, y) => (y < -0.3 ? 0xd9c79a : inside(x, z) || edgeDist(x, z) < 5 ? 0xeedcae : 0x6cc35a),
   });
   let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
@@ -159,9 +159,9 @@ export function buildSplash(track: Track): Scenery {
   const sands: [number, number, number, number][] = [];
   for (let i = 0; i < poly.length; i += 6) { const [ax, az] = poly[i], [bx, bz] = poly[(i + 6) % poly.length]; sands.push([ax, az, bx, bz]); }
   strollers(c, sands, 70);
-  crowd(c, roadsideSpots(c, 4, track.cpS[2], { sides: [-1], rows: 4 }));
-  crowd(c, roadsideSpots(c, track.cpS[17], track.cpS[25], { sides: [-1], rows: 2, every: 1.6 }));
-  bunting(c, 6, track.cpS[2], 16, [0x1e90ff, 0xffc61a, 0xff3b30, 0x2fd27a]);
+  crowd(c, roadsideSpots(c, 4, track.oS[2], { sides: [-1], rows: 4 }));
+  crowd(c, roadsideSpots(c, track.oS[17], track.oS[25], { sides: [-1], rows: 2, every: 1.6 }));
+  bunting(c, 6, track.oS[2], 16, [0x1e90ff, 0xffc61a, 0xff3b30, 0x2fd27a]);
   walkers(c, 50, (f) => !track.splashAt(f.s));
   lamps(c, 30, 0xf4f4f2, 0xfff2c0);
 

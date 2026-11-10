@@ -75,7 +75,7 @@ export function buildRio(track: Track): Scenery {
     if (dRoad < 40) y = Math.min(y, fy - 0.4 + Math.max(0, dRoad) * 0.55);
     return Math.max(y, z < -16 ? -6 : -0.08);
   };
-  ground(c, { cx: 0, cz: 80, size: 1150, step: 30, gx: 0, gz: 0, y: terrain, color: (x, z) => (z < -14 ? 0xf0dcae : hill(x, z) > 3 ? 0xc9e0a8 : 0xffffff), walk: '#c9c4b8', asphalt: '#45484e' });
+  ground(c, { cx: -60, cz: 190, size: 1300, step: 30, gx: 0, gz: 0, y: terrain, color: (x, z) => (z < -14 ? 0xf0dcae : hill(x, z) > 3 ? 0xc9e0a8 : 0xffffff), walk: '#c9c4b8', asphalt: '#45484e' });
   {
     const sand = new THREE.Mesh(new THREE.PlaneGeometry(1100, 30).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xf0dcae, roughness: 1 }));
     sand.position.set(0, -0.12, -31);
@@ -173,14 +173,14 @@ export function buildRio(track: Track): Scenery {
   }
 
   /* ---------------- the city: beachfront towers and blocks ---------------- */
-  fillGrid(c, { x0: -420, x1: 480, z0: 30, z1: 460, step: 30, street: 8 }, (x, z) => {
+  fillGrid(c, { x0: -480, x1: 420, z0: 30, z1: 720, step: 30, street: 8 }, (x, z) => {
     if (hill(x, z) > 2 || (x > -160 && x < -20 && z > 160 && z < 235)) return null;
     const front = z < 70, r = rand();
     return { kind: front ? (r < 0.6 ? 'office' : 'pastel') : r < 0.5 ? 'pastel' : 'concrete', h: front ? 28 + rand() * 26 : 10 + rand() * 14, roof: 'flat', tint: front ? [0xffffff, 0xf4f0e6, 0xe8f2f6][Math.floor(rand() * 3)] : PASTEL[Math.floor(rand() * PASTEL.length)] };
   });
 
   /* ---------------- the carnival avenue: grandstands, dancers, floats, confetti ---------------- */
-  const s0 = track.cpS[10] + 2, s1 = track.cpS[11] - 2;
+  const s0 = track.oS[10] + 2, s1 = track.oS[11] - 2;
   for (let s = s0; s < s1; s += 4) {
     const f = track.frame(Math.round(s / track.ds));
     for (const sg of [-1, 1]) for (let r = 0; r < 7; r++) {
@@ -231,7 +231,7 @@ export function buildRio(track: Track): Scenery {
   }
   lamps(c, 26, 0x2b2f3a, 0xffe7b0);
   walkers(c, 70);
-  traffic(c, gridLanes(c, { x0: -420, x1: 480, z0: 30, z1: 460, step: 30 }, (x, z) => hill(x, z) > 1.5 || (x > -170 && x < -10 && z > 150 && z < 240)), [
+  traffic(c, gridLanes(c, { x0: -480, x1: 420, z0: 30, z1: 720, step: 30 }, (x, z) => hill(x, z) > 1.5 || (x > -170 && x < -10 && z > 150 && z < 240)), [
     { kind: 'car', colors: [0xf4f4f2, 0xffd60a, 0x30d158, 0x0a84ff, 0xff3b30], n: 30 },
     { kind: 'bus', colors: [0x009c3b, 0xffdf00, 0xf4f4f2], n: 8, speed: 8 },
     { kind: 'van', colors: [0xf4f4f2, 0xff9f0a], n: 8 },

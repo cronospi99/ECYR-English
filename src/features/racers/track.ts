@@ -54,6 +54,8 @@ export interface TrackDef {
   /** Descending spirals (filled in by `withSpiral`): the centre of each loop, its radius and the
       road height at its top, for the scenery (a peak in the middle). */
   spirals?: { x: number; z: number; r: number; top: number }[];
+  /** Where each control point of the first drawing is now (detours and spirals add points). */
+  orig?: number[];
 }
 
 /** A descending spiral: the road swings out to one side, winds once round a circle while dropping
@@ -66,6 +68,10 @@ export interface SpiralOpts {
   a?: number; r1?: number; s1?: number; R?: number;
   /** Control points before the spiral over which the road climbs to the top. */
   climb?: number;
+  /** …or metres of road (takes over from `climb`). */
+  climbM?: number;
+  /** In a detour: straight points to pass before the spiral starts. */
+  skip?: number;
 }
 /** The track with a descending spiral after control point `at` (the road must run straight there
     for ~60 m); later features, items, gates and coins keep their places. */
@@ -91,9 +97,12 @@ export function withSpiral(def: TrackDef, at: number, o: SpiralOpts): TrackDef {
   const yA = A.y ?? 0, yEnd = cps[at + 1 + m].y ?? 0;
   const climb = o.climb ?? 10;
   const sm = (t: number) => t * t * (3 - 2 * t);
+  // the climb before it: over `climb` control points, or over `climbM` metres of road
+  const back: number[] = [];
+  for (let i = at, d = 0; i >= 0; i--) { back[i] = d; if (i > 0) d += Math.hypot(cps[i].x - cps[i - 1].x, cps[i].z - cps[i - 1].z); }
   const out: CP[] = cps.slice(0, at + 1).map((c, i) => {
-    const k = i - (at - climb);
-    return k > 0 ? { ...c, y: (c.y ?? 0) + o.drop * sm(Math.min(1, k / climb)) } : { ...c };
+    const f = o.climbM ? 1 - back[i] / o.climbM : (i - (at - climb)) / climb;
+    return f > 0 ? { ...c, y: (c.y ?? 0) + o.drop * sm(Math.min(1, f)) } : { ...c };
   });
   const step = 9, sp: CP[] = [];
   for (let d = step; d < total - step * 0.6; d += step) {
@@ -113,9 +122,108 @@ export function withSpiral(def: TrackDef, at: number, o: SpiralOpts): TrackDef {
     clear: [...(def.clear ?? []).map((x) => ({ ...x, at: re(x.at) })), { at, off: -10, len: total + 30 }],
     coins: def.coins?.map((x) => ({ ...x, at: re(x.at) })),
     spirals: [...(def.spirals ?? []), { x: A.x + ux * cu + lx * cv, z: A.z + uz * cu + lz * cv, r: R, top }],
+    orig: (def.orig ?? cps.map((_, i) => i)).map(re),
   };
 }
 
+/** A corner of a detour: the road runs straight from corner to corner and rounds each one with an
+    arc of radius `r` (default 34 m). `y` sets the road height there; `spiral` puts a descending
+    spiral on the straight that leaves this corner (it must be ≥ 130 m long). */
+export interface Corner { x: number; z: number; r?: number; y?: number; spiral?: SpiralOpts }
+/** The track with a new stretch between control points `at` and `at + 1 + drop` (the `drop` points
+    in between go away): straights joined by round corners. Features, items, gates and coins after it
+    keep their places; `add` brings new ones, placed by corner number (0 = the first corner). */
+export function withDetour(def: TrackDef, at: number, drop: number, corners: Corner[], add: { local?: 'out' | 'in'; lead?: number; w?: number; apron?: number; features?: Feature[]; items?: Spot[]; coins?: NonNullable<TrackDef['coins']>; clear?: NonNullable<TrackDef['clear']> } = {}): TrackDef {
+  const cps = def.cps, A = cps[at], B = cps[(at + 1 + drop) % cps.length];
+  if (add.local) {
+    // corners given along the chord A→B (x) and away from it (z), out of the track or into it
+    const D = Math.hypot(B.x - A.x, B.z - A.z), ux = (B.x - A.x) / D, uz = (B.z - A.z) / D;
+    let mx = 0, mz = 0;
+    for (const c of cps) { mx += c.x / cps.length; mz += c.z / cps.length; }
+    const sg = (((A.x + B.x) / 2 - mx) * -uz + ((A.z + B.z) / 2 - mz) * ux > 0 ? 1 : -1) * (add.local === 'out' ? 1 : -1);
+    corners = corners.map((c) => ({ ...c, x: A.x + ux * c.x - uz * sg * c.z, z: A.z + uz * c.x + ux * sg * c.z }));
+  }
+  // the stretch leaves A the way the road reaches it and meets B the way the road leaves it
+  const lead = add.lead ?? 36;
+  if (lead > 0) {
+    const N = cps.length, b = at + 1 + drop;
+    const tan = (i: number) => { const p = cps[(i - 1 + N) % N], q = cps[(i + 1) % N], l = Math.hypot(q.x - p.x, q.z - p.z); return { x: (q.x - p.x) / l, z: (q.z - p.z) / l }; };
+    const ta = tan(at), tb = tan(b);
+    corners = [{ x: A.x + ta.x * lead, z: A.z + ta.z * lead, r: 80 }, ...corners, { x: B.x - tb.x * lead, z: B.z - tb.z * lead, r: 80 }];
+  }
+  const P = [{ x: A.x, z: A.z }, ...corners, { x: B.x, z: B.z }];
+  const out: (CP & { c?: number })[] = [];
+  const dist: number[] = []; // distance along the detour of each new point
+  let run = 0, prev = { x: A.x, z: A.z };
+  const push = (x: number, z: number, c?: number) => { run += Math.hypot(x - prev.x, z - prev.z); prev = { x, z }; out.push({ x, z, c }); dist.push(run); };
+  const firstOf: number[] = [], lastOf: number[] = [], cornerRun: number[] = [];
+  let last = { x: A.x, z: A.z }; // where the previous arc ended
+  const straight = (to: { x: number; z: number }, lead: boolean, tail: boolean) => {
+    const L = Math.hypot(to.x - last.x, to.z - last.z);
+    if (L < 1) return;
+    const ux = (to.x - last.x) / L, uz = (to.z - last.z) / L;
+    const ds: number[] = [];
+    if (lead && L > 30) ds.push(11);
+    const a0 = lead ? 11 : 0, a1 = tail ? L - 11 : L, n = Math.floor((a1 - a0) / 48);
+    for (let k = 1; k <= n; k++) ds.push(a0 + ((a1 - a0) * k) / (n + 1));
+    if (tail && L > 30) ds.push(L - 11);
+    for (const d of ds) push(last.x + ux * d, last.z + uz * d);
+  };
+  for (let i = 1; i < P.length - 1; i++) {
+    const p0 = P[i - 1], p = P[i], p1 = P[i + 1], c = corners[i - 1];
+    const l0 = Math.hypot(p.x - p0.x, p.z - p0.z), l1 = Math.hypot(p1.x - p.x, p1.z - p.z);
+    const ux = (p.x - p0.x) / l0, uz = (p.z - p0.z) / l0, vx = (p1.x - p.x) / l1, vz = (p1.z - p.z) / l1;
+    const cross = ux * vz - uz * vx, th = Math.atan2(cross, ux * vx + uz * vz), ath = Math.abs(th);
+    firstOf.push(out.length);
+    if (ath < 0.03) { straight(p, i > 1, false); push(p.x, p.z, i - 1); last = p; cornerRun.push(run); lastOf.push(out.length - 2); continue; }
+    const half = Math.tan(ath / 2), T = Math.min((c.r ?? 34) * half, l0 * (i === 1 ? 0.92 : 0.48), l1 * (i === P.length - 2 ? 0.92 : 0.48)), R = T / half;
+    const sx = p.x - ux * T, sz = p.z - uz * T, sg = Math.sign(th);
+    straight({ x: sx, z: sz }, i > 1, true);
+    const cx = sx - uz * sg * R, cz = sz + ux * sg * R, a0 = Math.atan2(sz - cz, sx - cx), n = Math.max(2, Math.ceil(ath / 0.33));
+    for (let k = 0; k <= n; k++) { const a = a0 + (th * k) / n; push(cx + Math.cos(a) * R, cz + Math.sin(a) * R, k === Math.floor(n / 2) ? i - 1 : undefined); }
+    cornerRun.push(dist[out.length - 1 - Math.ceil(n / 2)] ?? run);
+    lastOf.push(out.length - 1);
+    last = { x: p.x + vx * T, z: p.z + vz * T };
+  }
+  const leave = out.length;
+  straight(B, true, Math.hypot(B.x - last.x, B.z - last.z) > 60);
+  const total = run + Math.hypot(B.x - prev.x, B.z - prev.z);
+  // heights: straight lines between the corners that give one (and the two ends)
+  const keys: [number, number][] = [[0, A.y ?? 0]];
+  corners.forEach((c, i) => { if (c.y !== undefined) keys.push([cornerRun[i], c.y]); });
+  keys.push([total, B.y ?? 0]);
+  const sm = (t: number) => t * t * (3 - 2 * t);
+  out.forEach((o, i) => {
+    let k = 0;
+    while (k < keys.length - 2 && keys[k + 1][0] < dist[i]) k++;
+    const f = (dist[i] - keys[k][0]) / Math.max(1, keys[k + 1][0] - keys[k][0]);
+    o.y = keys[k][1] + (keys[k + 1][1] - keys[k][1]) * sm(Math.min(1, Math.max(0, f)));
+    o.w = add.w ?? A.w; o.apron = add.apron ?? Math.min(A.apron ?? 6, 4); o.wall = true;
+    delete o.c;
+  });
+  const shift = out.length - drop;
+  const re = (i: number) => (i <= at ? i : i <= at + drop ? at : i + shift);
+  const loc = <T extends { at: number }>(x: T): T => ({ ...x, at: at + 1 + (firstOf[x.at] ?? leave) });
+  let res: TrackDef = {
+    ...def,
+    cps: [...cps.slice(0, at + 1), ...out, ...cps.slice(at + 1 + drop)],
+    features: [...def.features.map((f) => ({ ...f, at: re(f.at) })), ...(add.features ?? []).map(loc)],
+    items: [...(def.items ?? []).map((x) => ({ ...x, at: re(x.at) })), ...(add.items ?? []).map(loc)],
+    gates: def.gates?.map((x) => ({ ...x, at: re(x.at) })),
+    clear: [...(def.clear ?? []).map((x) => ({ ...x, at: re(x.at) })), ...(add.clear ?? []).map(loc)],
+    coins: [...(def.coins ?? []).map((x) => ({ ...x, at: re(x.at) })), ...(add.coins ?? []).map(loc)],
+    orig: (def.orig ?? cps.map((_, i) => i)).map(re),
+  };
+  // spirals, last one first so the earlier ones keep their places
+  for (let i = corners.length - 1; i >= 0; i--) {
+    const sp = corners[i].spiral;
+    if (!sp) continue;
+    // the lead point of the straight after this corner's arc gives the direction
+    const a = at + 1 + lastOf[i] + 1;
+    res = withSpiral(res, a + (sp.skip ?? 0), { climbM: 170, ...sp });
+  }
+  return res;
+}
 export interface Frame {
   s: number;
   p: THREE.Vector3;
@@ -169,6 +277,8 @@ export class Track {
   readonly length: number;
   readonly ds: number;
   readonly cpS: number[] = [];
+  /** Distance along the road of each control point of the first drawing (what the scenery goes by). */
+  readonly oS: number[];
   readonly ramps: Ramp[] = [];
   readonly gaps: Gap[] = [];
   readonly pads: Pad[] = [];
@@ -197,6 +307,7 @@ export class Track {
       dense.push({ p, w: smooth(a.w ?? 7, b.w ?? 7, f), apron: smooth(a.apron ?? 6, b.apron ?? 6, f), wall: f < 0.5 ? (a.wall === false ? 0 : 1) : (b.wall === false ? 0 : 1), len });
     }
     this.cpS.length = n;
+    this.oS = (def.orig ?? def.cps.map((_, i) => i)).map((i) => this.cpS[i]);
     this.length = len;
     const N = Math.round(len);
     this.ds = len / N;

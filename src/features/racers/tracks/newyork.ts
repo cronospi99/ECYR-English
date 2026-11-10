@@ -80,7 +80,7 @@ export function buildNewYork(track: Track): Scenery {
   const { world, glossy, glow, group, rand } = c;
 
   /* ---------------- ground, bay and sea ---------------- */
-  ground(c, { cx: 60, cz: 0, size: 1200, step: 34, gx: 0, gz: 0, y: (x, z) => (inBay(x, z, 6) || z < -300 ? -7 : -0.08), color: (x, z) => (inBay(x, z, -3) || z < -296 ? 0x9a9488 : 0xffffff), walk: '#bab7b0', asphalt: '#3f4248' });
+  ground(c, { cx: 150, cz: 0, size: 1320, step: 34, gx: 0, gz: 0, y: (x, z) => (inBay(x, z, 6) || z < -300 ? -7 : -0.08), color: (x, z) => (inBay(x, z, -3) || z < -296 ? 0x9a9488 : 0xffffff), walk: '#bab7b0', asphalt: '#3f4248' });
   const sea = makeOcean({ deep: 0x1f5d86, shallow: 0x3f8fae, amp: 0.22, scale: 1.1, dir: [0.2, 1] });
   const sgeo = oceanGeometry(75, -460, 1200, 680, 120, 70, (x, z) => (inBay(x, z) || z < -300 ? 3 + Math.min(20, (-120 - z) * 0.1) : 0));
   const sm = new THREE.Mesh(sgeo, sea.material);
@@ -93,13 +93,13 @@ export function buildNewYork(track: Track): Scenery {
   }
 
   /* ---------------- the suspension bridge ---------------- */
-  for (let s = track.cpS[14] - 6; s < track.cpS[17] + 6; s += 2) {
+  for (let s = track.oS[14] - 6; s < track.oS[17] + 6; s += 2) {
     const f = track.frame(Math.round(s / track.ds));
     if (!inBay(f.p.x, f.p.z, -2)) continue;
     const C = side(f, 0);
     world.add(U.box, 0x6d6a63, C.x, C.y - 0.8, C.z, (f.w + KERB + f.apron + 0.6) * 2, 1.4, 2.1, 0, f.yaw, 0);
   }
-  const T1 = bridgeTower(c, track.cpS[14] + 10), T2 = bridgeTower(c, track.cpS[15] + 25);
+  const T1 = bridgeTower(c, track.oS[14] + 10), T2 = bridgeTower(c, track.oS[15] + 25);
   {
     // main cables (strings of links) and vertical suspenders, both sides
     const steps = 40;
@@ -137,7 +137,7 @@ export function buildNewYork(track: Track): Scenery {
 
   /* ---------------- the city: glass towers, a few landmarks, the square of screens ---------------- */
   const square = (x: number, z: number) => Math.abs(x) < 40 && z > -30 && z < 75;
-  fillGrid(c, { x0: -440, x1: 520, z0: -280, z1: 460, step: 34, street: 10 }, (x, z) => {
+  fillGrid(c, { x0: -372, x1: 682, z0: -280, z1: 460, step: 34, street: 10 }, (x, z) => {
     if (inBay(x, z, 12) || z < -290 || inPark(x, z) || square(x, z) || Math.abs(x - 188) < 9) return null;
     const d = Math.hypot(x - 80, z - 20), r = rand();
     const h = 22 + rand() * 30 + Math.max(0, 260 - d) * 0.22 + (rand() < 0.1 ? 60 : 0);
@@ -152,7 +152,7 @@ export function buildNewYork(track: Track): Scenery {
   {
     const list: Parameters<typeof screens>[1] = [];
     for (const [z, sg, i] of [[-6, -1, 0], [10, 1, 1], [24, -1, 2], [40, 1, 3], [52, -1, 4], [66, 1, 5]] as const) {
-      const f = track.frame(Math.round((track.cpS[0] + 90 + z) / track.ds)), dd = sg * (f.w + KERB + f.apron + 9);
+      const f = track.frame(Math.round((track.oS[0] + 90 + z) / track.ds)), dd = sg * (f.w + KERB + f.apron + 9);
       const P = side(f, dd);
       building(c, 'glass', P.x + f.r.x * sg * 8, P.z + f.r.z * sg * 8, 16, 14, 46 + i * 6, 0, { roof: 'flat', tint: 0xd8e6f4 });
       const ry = f.yaw + (sg > 0 ? Math.PI / 2 : -Math.PI / 2);
@@ -162,8 +162,8 @@ export function buildNewYork(track: Track): Scenery {
       world.add(U.box, 0x2b2f3a, P.x + f.r.x * sg * 0.6, 17, P.z + f.r.z * sg * 0.6, 1, 34, 14, 0, f.yaw, 0);
     }
     screens(c, list, 10);
-    crowd(c, roadsideSpots(c, track.cpS[0] + 70, track.cpS[3] - 4, { rows: 3, every: 1.1 }));
-    bunting(c, track.cpS[0] + 60, track.cpS[3], 18, [0xff2d55, 0xffd60a, 0x0a84ff, 0x30d158]);
+    crowd(c, roadsideSpots(c, track.oS[0] + 70, track.oS[3] - 4, { rows: 3, every: 1.1 }));
+    bunting(c, track.oS[0] + 60, track.oS[3], 18, [0xff2d55, 0xffd60a, 0x0a84ff, 0x30d158]);
   }
 
   /* ---------------- the park: lawn, trees, pond, joggers, a horse carriage ---------------- */
@@ -184,7 +184,7 @@ export function buildNewYork(track: Track): Scenery {
     group.add(carriage);
     c.updates.push((_, t) => { const a = t * 0.12; carriage.position.set(95 + Math.cos(a) * 25, Math.abs(Math.sin(t * 6)) * 0.05, 140 + Math.sin(a) * 25); carriage.rotation.y = -a; });
   }
-  crowd(c, roadsideSpots(c, track.cpS[5], track.cpS[7], { rows: 1, every: 2.6 }), false);
+  crowd(c, roadsideSpots(c, track.oS[5], track.oS[7], { rows: 1, every: 2.6 }), false);
 
   /* ---------------- elevated train next to the east avenue ---------------- */
   {
@@ -209,10 +209,10 @@ export function buildNewYork(track: Track): Scenery {
   ], c.clear);
   lamps(c, 26, 0x2b2f3a, 0xfff0c8, (f) => !inBay(f.p.x, f.p.z, -4));
   walkers(c, 80, (f) => !inBay(f.p.x, f.p.z, -6));
-  crowd(c, roadsideSpots(c, track.cpS[10], track.cpS[12], { rows: 1, every: 3 }), false);
+  crowd(c, roadsideSpots(c, track.oS[10], track.oS[12], { rows: 1, every: 3 }), false);
 
   /* ---------------- life: taxis, ferries, helicopter, blimp, birds ---------------- */
-  traffic(c, gridLanes(c, { x0: -440, x1: 520, z0: -280, z1: 460, step: 34 }, (x, z) => inBay(x, z, 10) || z < -290 || inPark(x, z)), [
+  traffic(c, gridLanes(c, { x0: -372, x1: 682, z0: -280, z1: 460, step: 34 }, (x, z) => inBay(x, z, 10) || z < -290 || inPark(x, z)), [
     { kind: 'taxi', colors: [0xffc61a, 0xffcf33], n: 40, speed: 10 },
     { kind: 'bus', colors: [0x2f6fd0, 0xf4f4f2], n: 8, speed: 8 },
     { kind: 'car', colors: [0x2b2f3a, 0xf4f4f2, 0x9aa0a8, 0xd32f2f], n: 22 },

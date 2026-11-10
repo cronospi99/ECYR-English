@@ -4,6 +4,7 @@
    race. Menu (driver, mode, track, level, difficulty), HUD (place, lap, times, coins, item,
    question, standings, minimap with every kart), touch buttons on phones (accelerate and item
    buttons), pause, results and the podium. */
+import * as THREE from 'three';
 import { useEffect, useRef, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
@@ -22,6 +23,7 @@ import { RUN_LEVELS } from '@/features/run/questions';
 import { CUPS, RaceGame, TOUCH_OFF, fmt, ordinal, type Hud, type Mode, type Toast, type TouchState } from './engine';
 import { TRACKS, trackInfo } from './tracks';
 import { ITEMS, itemIcon } from './items';
+import type { ItemKind } from './racer';
 import { LANE_COLORS, LANE_LETTERS } from './gates';
 import type { Difficulty } from './ai';
 import { prefs, setPref, unlock } from './audio';
@@ -287,6 +289,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
         client.onHit = (k, f) => gg.liveHit(k, f);
         client.onBell = (f) => gg.liveBell(f);
         client.onInk = (f, s2, d) => gg.liveInk(f, s2, d);
+        client.onZone = (f, s2, d) => gg.liveZone(f, s2, d);
         client.onEnd = () => gg.liveEnd();
         client.onLobby = () => gg.liveLobby();
         client.onPodium = (tot) => { if (client.cfg) gg.livePodium(tot); };
@@ -295,7 +298,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
       g.onSplat = (kind) => { const id = Date.now() + Math.random(); setSplat({ id, kind }); setTimeout(() => setSplat((x) => (x?.id === id ? null : x)), kind === 'ink' ? 2600 : 450); };
       g.onToast = (x) => { setToasts((a) => [...a.slice(-2), x]); setTimeout(() => setToasts((a) => a.filter((y) => y.id !== x.id)), 1900); };
       setGame(g);
-      if (import.meta.env.DEV) (window as unknown as { __racers: unknown }).__racers = g;
+      if (import.meta.env.DEV) Object.assign(window, { __racers: g, __THREE: THREE });
     } catch { setErr(true); }
     const orient = () => setPortrait(window.innerHeight > window.innerWidth * 1.05);
     orient();
@@ -322,7 +325,9 @@ function RaceScreen({ client }: { client?: RacersClient }) {
   const solo = hud?.mode === 'time';
   const ti = hud ? trackInfo(hud.track) : TRACKS[0];
   const res = hud?.results;
-  const shown = hud?.rolling ?? hud?.item ?? null;
+  const shown = hud?.item ?? hud?.rolling ?? null;
+  // the waiting power-ups (and the roulette of the one on its way)
+  const waiting: (ItemKind | null)[] = hud ? [...hud.bag, ...(hud.item && hud.rolling ? [hud.rolling] : [])] : [];
   const gasSeg = (
     <div className="flex flex-col gap-1.5">
       <Seg<GasMode> value={gas} onChange={setGas} options={[{ id: 'auto', label: t('Auto gas', 'Acelera solo') }, { id: 'manual', label: t('Manual gas', 'Acelerar a mano') }]} />
@@ -411,7 +416,7 @@ function RaceScreen({ client }: { client?: RacersClient }) {
                   ? gas === 'auto'
                     ? t('The kart accelerates by itself · left thumb: steer (the further from the middle, the harder it turns) · big DRIFT button: hold it and turn, let go for a turbo · ITEM: use what you picked up · drive through the lane with the right answer.', 'El kart acelera solo · pulgar izquierdo: girar (cuanto más lejos del centro, más gira) · botón grande DERRAPE: mantenlo y gira, suelta para el turbo · OBJETO: usa lo que recogiste · pasa por el carril con la respuesta correcta.')
                     : t('GO: accelerate · DRIFT (next to it, also accelerates): slide your thumb onto it and turn, let go for a turbo · left thumb: steer · ITEM: use it · drive through the lane with the right answer.', 'ACELERAR · DERRAPE (al lado, también acelera): desliza el pulgar hacia él y gira, suelta para el turbo · pulgar izquierdo: girar · OBJETO: úsalo · pasa por el carril con la respuesta correcta.')
-                  : t('W/↑ accelerate · S/↓ brake · A D/← → steer · Space hop & drift (hold, let go = turbo) · E/X use item · C look back · R back on track · Esc pause · drive through the lane with the right answer for a big turbo.', 'W/↑ acelerar · S/↓ frenar · A D/← → girar · Espacio saltar y derrapar (mantén, suelta = turbo) · E/X usar objeto · C mirar atrás · R volver a la pista · Esc pausa · pasa por el carril con la respuesta correcta para un gran turbo.')}
+                  : t('W/↑ accelerate · S/↓ brake · A D/← → steer · Space hop & drift (hold, let go = turbo) · E/X use power-up (up to 3: Q next one, F fire backwards) · C look back · R back on track · Esc pause · drive through the lane with the right answer for a big turbo.', 'W/↑ acelerar · S/↓ frenar · A D/← → girar · Espacio saltar y derrapar (mantén, suelta = turbo) · E/X usar poder (hasta 3: Q siguiente, F disparar atrás) · C mirar atrás · R volver a la pista · Esc pausa · pasa por el carril con la respuesta correcta para un gran turbo.')}
               </div>
               </>}
               {/* the start button stays in view at the bottom of the panel, even when it scrolls */}
@@ -447,11 +452,20 @@ function RaceScreen({ client }: { client?: RacersClient }) {
             {/* item slot and coins */}
             {!solo && (
               <div className="mx-auto flex items-center gap-2">
-                <div className={cn('relative grid h-[62px] w-[62px] place-items-center rounded-[20px] border-[3px] bg-[#10204a]/70 sm:h-[72px] sm:w-[72px]', shown ? 'border-white' : 'border-white/30')}>
-                  {shown && <img src={itemIcon(shown)} alt={name(ITEMS[shown])} className={cn('h-[78%] w-[78%]', hud.rolling && 'animate-[rc-spin_.25s_linear_infinite]')} />}
+                {hud.item && <button type="button" onClick={() => game?.useItem(game.me, true)} className="pointer-events-auto grid h-9 w-9 place-items-center rounded-xl border-2 border-white/60 bg-[#10204a]/70 text-white active:scale-90" aria-label={t('Fire backwards', 'Disparar hacia atrás')} title={t('Fire backwards (F)', 'Disparar hacia atrás (F)')}><ChevronLeft size={20} className="-rotate-90" /></button>}
+                <div className={cn('relative grid h-[62px] w-[62px] place-items-center rounded-[20px] border-[3px] bg-[#10204a]/70 sm:h-[72px] sm:w-[72px]', shown ? 'border-white' : 'border-white/30')} style={shown && hud.item ? { boxShadow: `0 0 18px ${ITEMS[shown].color}` } : undefined}>
+                  {shown && <img src={itemIcon(shown)} alt={name(ITEMS[shown])} className={cn('h-[78%] w-[78%]', !hud.item && hud.rolling && 'animate-[rc-spin_.25s_linear_infinite]')} />}
                   {hud.item && hud.itemN > 1 && <span className="rc-num absolute -right-2 -bottom-2 text-[20px]">×{hud.itemN}</span>}
                   {hud.item && !touchUi && <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-md bg-white px-1.5 text-[10px] font-black text-[#10204a]">E</span>}
                 </div>
+                <button type="button" onClick={() => game?.swapItem(game.me)} disabled={!hud.bag.length} className="pointer-events-auto relative flex flex-col gap-1 active:scale-95" aria-label={t('Next power-up', 'Siguiente poder')}>
+                  {[0, 1].map((i) => (
+                    <span key={i} className={cn('grid h-[29px] w-[29px] place-items-center rounded-[10px] border-2 bg-[#10204a]/70 sm:h-[34px] sm:w-[34px]', waiting[i] ? 'border-white/80' : 'border-white/25')}>
+                      {waiting[i] && <img src={itemIcon(waiting[i]!)} alt="" className={cn('h-[80%] w-[80%]', i >= hud.bag.length && 'animate-[rc-spin_.25s_linear_infinite]')} />}
+                    </span>
+                  ))}
+                  {hud.bag.length > 0 && !touchUi && <span className="absolute -right-2 top-1/2 -translate-y-1/2 rounded-md bg-white px-1 text-[10px] font-black text-[#10204a]">Q</span>}
+                </button>
                 <div className="rc-panel flex items-center gap-1 px-2.5 py-1.5">
                   <Coins size={18} className="text-[#ffd23f]" />
                   <span className="rc-num text-[22px] leading-none" style={{ color: hud.coins >= 10 ? '#ffd23f' : '#fff' }}>{hud.coins}</span>
