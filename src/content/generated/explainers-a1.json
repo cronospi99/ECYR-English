@@ -54,7 +54,7 @@
     "timeline": {"type": "none", "label_es": "No depende del tiempo: es el orden de la pregunta"},
     "compare": {"es": "¿Eres colombiano?", "en": "Are you Colombian?", "note_es": "En español basta con la entonación; en inglés el verbo be pasa delante del sujeto."},
     "mistake": {"wrong": "You are from Cali?", "right": "Are you from Cali?", "why_es": "En la pregunta, am/is/are va antes del sujeto."},
-    "tip_es": "Pregunta = voltea: you are → are you? Respuesta corta: Yes, I am. / No, I'm not."
+    "tip_es": "Pregunta = voltea: you are → are you? Respuesta corta: Yes, I am. / No, I’m not."
   },
   "A1-2-0": {
     "icon": "🔁",
@@ -110,7 +110,7 @@
     },
     "timeline": {"type": "habit", "label_es": "Rutina con hora y día fijos"},
     "compare": {"es": "Llego a las tres el lunes.", "en": "I arrive at three on Monday.", "note_es": "En español decimos a las tres y el lunes; en inglés at three y on Monday, sin artículo."},
-    "mistake": {"wrong": "in three o'clock", "right": "at three o'clock", "why_es": "Para la hora del reloj siempre se usa at."},
+    "mistake": {"wrong": "in three o’clock", "right": "at three o’clock", "why_es": "Para la hora del reloj siempre se usa at."},
     "tip_es": "De pequeño a grande: at (hora), on (día o fecha), in (mes, año, parte del día)."
   },
   "A1-3-0": {
@@ -313,7 +313,7 @@
     "timeline": {"type": "habit", "label_es": "Se repite: siempre, a veces, nunca"},
     "compare": {"es": "Siempre estoy cansado.", "en": "I am always tired.", "note_es": "En español siempre puede ir al inicio; en inglés va después de am/is/are y antes de los otros verbos."},
     "mistake": {"wrong": "I always am tired.", "right": "I am always tired.", "why_es": "Con to be, el adverbio va después: am always."},
-    "tip_es": "Verbo normal: always + verbo (I always study). Con be: be + always (I'm always late)."
+    "tip_es": "Verbo normal: always + verbo (I always study). Con be: be + always (I’m always late)."
   },
   "A1-6-1": {
     "icon": "📊",
@@ -532,13 +532,13 @@
       "title_es": "Negativa con yet",
       "parts": [
         {"role": "subject", "label_es": "sujeto", "en": "We"},
-        {"role": "neg", "label_es": "have + not", "en": "haven't"},
+        {"role": "neg", "label_es": "have + not", "en": "haven’t"},
         {"role": "verb", "label_es": "participio", "en": "packed"},
         {"role": "object", "label_es": "complemento", "en": "our bags"},
         {"role": "time", "label_es": "yet (todavía)", "en": "yet"},
         {"role": "end", "label_es": "punto", "en": "."}
       ],
-      "example": {"en": "We haven't packed our bags yet.", "es": "Todavía no hemos empacado las maletas."}
+      "example": {"en": "We haven’t packed our bags yet.", "es": "Todavía no hemos empacado las maletas."}
     },
     "timeline": {"type": "past-to-now", "label_es": "Del pasado hasta ahora: importa el resultado"},
     "compare": {"es": "Ya comí.", "en": "I have already eaten.", "note_es": "En Colombia decimos ya comí, en pasado; en inglés, con already, se usa have + participio."},
@@ -600,7 +600,7 @@
       "example": {"en": "It was cheap, so we bought two.", "es": "Estaba barato, así que compramos dos."}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: describe y conecta ideas"},
-    "compare": {"es": "Es muy bonito, pero un poco caro.", "en": "It's very nice, but a bit expensive.", "note_es": "Como en español, el adverbio va antes del adjetivo. Ojo: un poco = a bit, y en inglés siempre va it's."},
+    "compare": {"es": "Es muy bonito, pero un poco caro.", "en": "It’s very nice, but a bit expensive.", "note_es": "Como en español, el adverbio va antes del adjetivo. Ojo: un poco = a bit, y en inglés siempre va it’s."},
     "mistake": {"wrong": "The food is very excellent.", "right": "The food is excellent.", "why_es": "Excellent ya es fuerte: no lleva very."},
     "tip_es": "and = y, but = pero, so = así que, because = porque. El adverbio siempre va antes del adjetivo."
   },
@@ -636,15 +636,15 @@
   "A1-12-0": {
     "icon": "🗺️",
     "purpose_es": "Para recomendar de forma general y amable.",
-    "idea_es": "Muchas recomendaciones usan to + verbo después de una frase fija (It's a good idea to...) o de verbos como need, try, want.",
+    "idea_es": "Muchas recomendaciones usan to + verbo después de una frase fija (It’s a good idea to...) o de verbos como need, try, want.",
     "formula": [
-      {"role": "be", "label_es": "it is", "en": "It's"},
+      {"role": "be", "label_es": "it is", "en": "It’s"},
       {"role": "complement", "label_es": "frase fija", "en": "a good idea"},
       {"role": "verb", "label_es": "to + verbo", "en": "to arrive"},
       {"role": "time", "label_es": "cuándo", "en": "twenty minutes early"},
       {"role": "end", "label_es": "punto", "en": "."}
     ],
-    "example": {"en": "It's a good idea to arrive twenty minutes early.", "es": "Es buena idea llegar veinte minutos antes."},
+    "example": {"en": "It’s a good idea to arrive twenty minutes early.", "es": "Es buena idea llegar veinte minutos antes."},
     "formula2": {
       "title_es": "Verbo + to",
       "parts": [
@@ -657,9 +657,9 @@
       "example": {"en": "You need to bring your ID.", "es": "Necesitas traer tu documento."}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: es una recomendación"},
-    "compare": {"es": "Es buena idea reservar.", "en": "It's a good idea to book.", "note_es": "En español no hay sujeto ni to; en inglés empieza con it's y el verbo lleva to delante."},
+    "compare": {"es": "Es buena idea reservar.", "en": "It’s a good idea to book.", "note_es": "En español no hay sujeto ni to; en inglés empieza con it’s y el verbo lleva to delante."},
     "mistake": {"wrong": "I recommend to visit the museum.", "right": "I recommend visiting the museum.", "why_es": "Recommend no va con to + verbo: usa -ing."},
-    "tip_es": "Frases clave: It's a good idea to..., You need to..., The best way is to... + verbo."
+    "tip_es": "Frases clave: It’s a good idea to..., You need to..., The best way is to... + verbo."
   },
   "A1-12-1": {
     "icon": "🙏",
@@ -713,14 +713,14 @@
       "example": {"en": "Neither do I.", "es": "Yo tampoco."}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: es estar de acuerdo"},
-    "compare": {"es": "Soy de Bogotá. —Yo también.", "en": "I'm from Bogotá. — So am I.", "note_es": "Yo también no se traduce palabra por palabra: so + el mismo ayudante de la primera frase + sujeto."},
-    "mistake": {"wrong": "I don't like fish. — Me too.", "right": "I don't like fish. — Me neither.", "why_es": "A una frase negativa se responde con neither, no con too."},
-    "tip_es": "Copia el ayudante: I'm → So am I. I can → So can I. I don't → Neither do I."
+    "compare": {"es": "Soy de Bogotá. —Yo también.", "en": "I’m from Bogotá. — So am I.", "note_es": "Yo también no se traduce palabra por palabra: so + el mismo ayudante de la primera frase + sujeto."},
+    "mistake": {"wrong": "I don’t like fish. — Me too.", "right": "I don’t like fish. — Me neither.", "why_es": "A una frase negativa se responde con neither, no con too."},
+    "tip_es": "Copia el ayudante: I’m → So am I. I can → So can I. I don’t → Neither do I."
   },
   "A1-13-1": {
     "icon": "🛎️",
     "purpose_es": "Para pedir y ofrecer cosas con cortesía.",
-    "idea_es": "Would hace que el pedido suene educado e indirecto. Nunca cambia de forma. I would casi siempre se acorta: I'd.",
+    "idea_es": "Would hace que el pedido suene educado e indirecto. Nunca cambia de forma. I would casi siempre se acorta: I’d.",
     "formula": [
       {"role": "modal", "label_es": "would", "en": "Would"},
       {"role": "subject", "label_es": "sujeto", "en": "you"},
@@ -734,17 +734,17 @@
     "formula2": {
       "title_es": "Pedir algo",
       "parts": [
-        {"role": "subject", "label_es": "I would", "en": "I'd"},
+        {"role": "subject", "label_es": "I would", "en": "I’d"},
         {"role": "verb", "label_es": "like", "en": "like"},
         {"role": "object", "label_es": "lo que pides", "en": "two tickets"},
         {"role": "complement", "label_es": "cortesía", "en": "please"},
         {"role": "end", "label_es": "punto", "en": "."}
       ],
-      "example": {"en": "I'd like two tickets, please.", "es": "Quisiera dos boletas, por favor."}
+      "example": {"en": "I’d like two tickets, please.", "es": "Quisiera dos boletas, por favor."}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: es un pedido educado"},
-    "compare": {"es": "Quiero dos boletas.", "en": "I'd like two tickets, please.", "note_es": "Quiero suena normal en español; en inglés I want es brusco al pedir. Usa I'd like."},
-    "mistake": {"wrong": "I'd like going to the cinema.", "right": "I'd like to go to the cinema.", "why_es": "Después de would like va to + verbo, no -ing."},
+    "compare": {"es": "Quiero dos boletas.", "en": "I’d like two tickets, please.", "note_es": "Quiero suena normal en español; en inglés I want es brusco al pedir. Usa I’d like."},
+    "mistake": {"wrong": "I’d like going to the cinema.", "right": "I’d like to go to the cinema.", "why_es": "Después de would like va to + verbo, no -ing."},
     "tip_es": "Would you mind + -ing? Si aceptas, responde Not at all (no me molesta)."
   },
   "A1-14-0": {
@@ -791,12 +791,12 @@
     "formula2": {
       "title_es": "Respuesta",
       "parts": [
-        {"role": "be", "label_es": "it is", "en": "It's"},
+        {"role": "be", "label_es": "it is", "en": "It’s"},
         {"role": "complement", "label_es": "número + unidad", "en": "about 200 kilometres"},
         {"role": "adjective", "label_es": "adjetivo", "en": "long"},
         {"role": "end", "label_es": "punto", "en": "."}
       ],
-      "example": {"en": "It's about 200 kilometres long.", "es": "Mide unos 200 kilómetros de largo."}
+      "example": {"en": "It’s about 200 kilometres long.", "es": "Mide unos 200 kilómetros de largo."}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: son medidas"},
     "compare": {"es": "¿Cuánto mide él?", "en": "How tall is he?", "note_es": "Cuánto mide no se dice con how much: en inglés va how + adjetivo (tall, long, high)."},
@@ -808,29 +808,29 @@
     "purpose_es": "Para hablar de planes y citas futuras.",
     "idea_es": "Be going to + verbo = intención. Am/is/are + -ing = cita ya acordada, casi siempre con hora y lugar.",
     "formula": [
-      {"role": "subject", "label_es": "sujeto + am", "en": "I'm"},
+      {"role": "subject", "label_es": "sujeto + am", "en": "I’m"},
       {"role": "aux", "label_es": "going to", "en": "going to"},
       {"role": "verb", "label_es": "verbo base", "en": "study"},
       {"role": "object", "label_es": "complemento", "en": "medicine"},
       {"role": "time", "label_es": "cuándo", "en": "next year"},
       {"role": "end", "label_es": "punto", "en": "."}
     ],
-    "example": {"en": "I'm going to study medicine next year.", "es": "Voy a estudiar medicina el próximo año."},
+    "example": {"en": "I’m going to study medicine next year.", "es": "Voy a estudiar medicina el próximo año."},
     "formula2": {
       "title_es": "Cita acordada",
       "parts": [
-        {"role": "subject", "label_es": "sujeto + are", "en": "We're"},
+        {"role": "subject", "label_es": "sujeto + are", "en": "We’re"},
         {"role": "verb", "label_es": "verbo + -ing", "en": "meeting"},
         {"role": "object", "label_es": "con quién", "en": "the teacher"},
         {"role": "time", "label_es": "cuándo", "en": "at four on Friday"},
         {"role": "end", "label_es": "punto", "en": "."}
       ],
-      "example": {"en": "We're meeting the teacher at four on Friday.", "es": "Nos vemos con la profesora el viernes a las cuatro."}
+      "example": {"en": "We’re meeting the teacher at four on Friday.", "es": "Nos vemos con la profesora el viernes a las cuatro."}
     },
     "timeline": {"type": "future-plan", "label_es": "Plan o cita ya decidida"},
-    "compare": {"es": "Voy a estudiar esta noche.", "en": "I'm going to study tonight.", "note_es": "Voy a = I'm going to. El am/is/are es obligatorio: I going to está mal."},
-    "mistake": {"wrong": "I going to study tonight.", "right": "I'm going to study tonight.", "why_es": "Going to necesita am, is o are antes."},
-    "tip_es": "Intención: be going to + verbo. Cita con hora y lugar: am/is/are + -ing (I'm meeting Ana at six)."
+    "compare": {"es": "Voy a estudiar esta noche.", "en": "I’m going to study tonight.", "note_es": "Voy a = I’m going to. El am/is/are es obligatorio: I going to está mal."},
+    "mistake": {"wrong": "I going to study tonight.", "right": "I’m going to study tonight.", "why_es": "Going to necesita am, is o are antes."},
+    "tip_es": "Intención: be going to + verbo. Cita con hora y lugar: am/is/are + -ing (I’m meeting Ana at six)."
   },
   "A1-15-1": {
     "icon": "📩",
@@ -860,7 +860,7 @@
       "example": {"en": "Can you say that again, please?", "es": "¿Puedes repetir eso, por favor?"}
     },
     "timeline": {"type": "none", "label_es": "No es de tiempo: es pasar un mensaje"},
-    "compare": {"es": "Dile que llego tarde.", "en": "Tell him that I'm late.", "note_es": "Decir puede ser tell o say. Con persona (dile, dime) va tell: tell him, tell me."},
+    "compare": {"es": "Dile que llego tarde.", "en": "Tell him that I’m late.", "note_es": "Decir puede ser tell o say. Con persona (dile, dime) va tell: tell him, tell me."},
     "mistake": {"wrong": "She said me that she was late.", "right": "She told me that she was late.", "why_es": "Say no lleva persona después; con persona se usa tell."},
     "tip_es": "Tell + persona (tell me, tell Ana). Say + palabras (say hello, say that again)."
   },
@@ -909,13 +909,13 @@
     "formula2": {
       "title_es": "Deseo amable",
       "parts": [
-        {"role": "subject", "label_es": "I would", "en": "I'd"},
+        {"role": "subject", "label_es": "I would", "en": "I’d"},
         {"role": "verb", "label_es": "like", "en": "like"},
         {"role": "verb", "label_es": "to + verbo", "en": "to learn"},
         {"role": "object", "label_es": "complemento", "en": "another language"},
         {"role": "end", "label_es": "punto", "en": "."}
       ],
-      "example": {"en": "I'd like to learn another language.", "es": "Me gustaría aprender otro idioma."}
+      "example": {"en": "I’d like to learn another language.", "es": "Me gustaría aprender otro idioma."}
     },
     "timeline": {"type": "future-plan", "label_es": "Planes y deseos para el futuro"},
     "compare": {"es": "Quiero viajar.", "en": "I want to travel.", "note_es": "En español el segundo verbo va solo; en inglés lleva to delante: want to travel."},

@@ -779,6 +779,44 @@
      "example": "Luckily, nobody was hurt."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro suena el hablante?",
+   "from": "lo dudo",
+   "to": "sin duda",
+   "items": [
+    {
+     "word": "supposedly",
+     "value": 15,
+     "example": "**Supposedly**, the app is free.",
+     "es": "supuestamente (lo dudo)"
+    },
+    {
+     "word": "apparently",
+     "value": 35,
+     "example": "**Apparently**, he resigned.",
+     "es": "por lo visto"
+    },
+    {
+     "word": "presumably",
+     "value": 55,
+     "example": "**Presumably**, they will appeal.",
+     "es": "es de suponer"
+    },
+    {
+     "word": "clearly / obviously",
+     "value": 85,
+     "example": "**Clearly**, the plan failed.",
+     "es": "claramente"
+    },
+    {
+     "word": "undoubtedly",
+     "value": 100,
+     "example": "**Undoubtedly**, she is the best.",
+     "es": "sin duda"
+    }
+   ]
   }
  ],
  "C1-5-1": [
@@ -1596,6 +1634,44 @@
      "label": "There is / are",
      "sentence": "**There is** a table and two chairs. / **There are** two chairs and a table.",
      "change": "Concuerda con el primer sustantivo."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "De ninguno a todos",
+   "from": "ninguno",
+   "to": "todos",
+   "items": [
+    {
+     "word": "none of",
+     "value": 0,
+     "example": "**None of** the data **is** new.",
+     "es": "nada / ninguno"
+    },
+    {
+     "word": "few of",
+     "value": 20,
+     "example": "**Few of** the students **agree**.",
+     "es": "pocos"
+    },
+    {
+     "word": "a number of",
+     "value": 50,
+     "example": "**A number of** people **were** late.",
+     "es": "varios (verbo plural)"
+    },
+    {
+     "word": "the majority of",
+     "value": 80,
+     "example": "**The majority of** voters **support** it.",
+     "es": "la mayoría"
+    },
+    {
+     "word": "each / every one of",
+     "value": 100,
+     "example": "**Each of** the teams **has** a coach.",
+     "es": "cada uno (verbo singular)"
     }
    ]
   }

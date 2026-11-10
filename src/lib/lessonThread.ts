@@ -1,21 +1,22 @@
 /**
- * Class thread engine (teachers only). Given a CEFR level, one or more units of
- * that level and an optional topic, it builds ONE central thread (a story, a
- * mystery, some gossip…) where each unit is a branch that feeds it, plus a
- * 5-minute opener and a 5-minute closer. Levels are never mixed.
+ * Class thread engine (teachers only). Given a CEFR level, the grammar topics
+ * chosen in one or more of its units and an optional subject, it builds ONE
+ * central piece (a reading, gossip, a news story…) and unfolds every topic from
+ * it, plus a 5-minute opener and a 5-minute closer. Levels are never mixed.
  *
- * Two ways to build it: `buildLocal` (no network: story seeds + the units'
- * own vocabulary and grammar) and `buildWithAi` (Gemini through the class's
- * `gemini` Edge Function, which writes the story at the level; it falls back to
- * the local plan if the call or its answer fails).
+ * Two ways to build it: `buildLocal` (no network: a draft made of the topics'
+ * own model sentences) and `buildWithAi` (Gemini through the class's `gemini`
+ * Edge Function writes the piece at the level and marks each topic's sentences;
+ * it falls back to the local plan if the call or its answer fails).
  */
 import type { CefrLevel, Unit } from '@/content/types';
 import { generate } from './examAi';
 import { audienceOf, describeMix, dominant, energizerForMix, hookForMix, type Audience, type Energizer, type Mix } from './engagement';
 
-export type ThreadStyle = 'story' | 'mystery' | 'gossip' | 'news' | 'diary' | 'trip';
+export type ThreadStyle = 'reading' | 'story' | 'mystery' | 'gossip' | 'news' | 'diary' | 'trip';
 
 export const STYLES: { id: ThreadStyle; label: string; emoji: string; en: string }[] = [
+  { id: 'reading', label: 'Lectura', emoji: '📚', en: 'a short magazine-style reading about one clear subject: a surprising fact, a person as an example and a closing thought' },
   { id: 'story', label: 'Cuento', emoji: '📖', en: 'a short story with a small problem and a happy or surprising end' },
   { id: 'mystery', label: 'Misterio', emoji: '🕵️', en: 'a light mystery: something goes missing and clues appear unit by unit' },
   { id: 'gossip', label: 'Chisme', emoji: '☕', en: 'friendly gossip about people everyone in the class could know, kept kind and harmless' },
@@ -45,6 +46,13 @@ export interface Chapter {
   /** What the teacher does with it. */
   cue: string;
   questions: string[];
+  /** The selected grammar topic this branch unfolds, and its sentences in the central text. */
+  topic: string;
+  examples: string[];
+  /** What students should notice about the topic in those sentences. */
+  notice: string;
+  /** A short task that reuses the topic inside the central theme. */
+  practice: string;
 }
 
 export interface Thread {
@@ -53,8 +61,9 @@ export interface Thread {
   style: ThreadStyle;
   title: string;
   premise: string;
-  /** The whole story at the level (AI only). */
-  story?: string;
+  /** The central piece everything unfolds from (a reading, a piece of gossip, a news story…). English at the
+      level when written by the AI; a draft made of the topics' model sentences when local. */
+  story: string;
   characters: { name: string; role: string }[];
   chapters: Chapter[];
   opener: Activity;
@@ -72,6 +81,8 @@ export interface Thread {
 export interface ThreadInput {
   level: CefrLevel;
   units: Unit[];
+  /** Grammar topics chosen in each unit (indexes into `unit.grammar`); a unit without an entry brings them all. */
+  points?: Record<number, number[]>;
   topic: string;
   style: ThreadStyle;
   mix: Mix;
@@ -92,6 +103,13 @@ interface Seed {
 }
 
 const SEEDS: Record<ThreadStyle, Seed[]> = {
+  reading: [
+    {
+      title: (t) => (t ? `Everybody Is Talking About ${t}` : 'Three Things Nobody Tells You'),
+      premise: (a, b) => `Una lectura de revista escrita por ${a} con ayuda de ${b}: un dato curioso, un caso real y una opinión.`,
+      beats: ['el dato que sorprende', 'el caso de una persona', 'causas y consecuencias', 'opinión y pregunta al lector'],
+    },
+  ],
   story: [
     {
       title: (t) => (t ? `The Day Everything Changed · ${t}` : 'The Day Everything Changed'),
@@ -235,38 +253,68 @@ export function stageOf(i: number, n: number) {
 
 const CUES = ['Cuéntala en 3 frases; ellos adivinan qué sigue.', 'Haz una pregunta y deja que la clase invente el detalle.', 'Pausa en el momento clave: ¿qué pasa ahora?', 'Que la cuenten en parejas con las palabras de la unidad.'];
 
-export function buildLocal({ level, units, topic, style, mix, seed }: ThreadInput): Thread {
+/** How the local draft of the central piece opens, by kind (plain English every level can follow). */
+const FRAMES: Record<ThreadStyle, (a: string, b: string, c: string, t: string) => string> = {
+  reading: (a, b, _c, t) => `Everybody talks about ${t}. ${a} wrote a short article about it for the school magazine, and ${b} helped. This is what they wrote.`,
+  story: (a, b) => `It was a normal day until ${a} got a strange message. ${b} was there too. This is what happened.`,
+  mystery: (a, b, c) => `Something is missing, and nobody knows why. ${a} and ${b} look for clues. ${c} knows something.`,
+  gossip: (a, b, c) => `“Have you heard about ${c}?” ${a} asks ${b}. “No! Tell me everything.”`,
+  news: (a, b, c) => `BREAKING NEWS. Something happened in town this morning. ${a} saw it, ${b} is the reporter and ${c} gives an interview.`,
+  diary: (a, b) => `Dear diary, it’s ${a} again. A lot is happening, and ${b} is part of it.`,
+  trip: (a, b, c) => `${a} and ${b} are on a trip, but ${c} changes the plan.`,
+};
+const NOTICE = ['¿Qué tienen en común estas frases? Que lo digan con sus palabras.', '¿Qué palabra o forma se repite? ¿Qué cambia el significado?', '¿Quién lo dice en el texto y para qué lo usa?'];
+const PRACTICE: Record<'low' | 'mid' | 'high', string[]> = {
+  low: ['Cambian una de las frases para hablar de sí mismos.', 'Dicen una frase nueva sobre un personaje con esta forma.'],
+  mid: ['Agregan una frase al texto con esta estructura.', 'Le responden a un personaje usando esta estructura.'],
+  high: ['Reescriben un párrafo desde otro punto de vista con esta estructura.', 'Debaten la idea central: cada intervención usa la estructura.'],
+};
+const plain = (x: string) => x.replace(/[*_`]/g, '').replace(/\s+—\s+.*$/, '').trim();
+
+/** The grammar topics of a unit that take part (all of them unless some were chosen). */
+export function pointsOf(u: Unit, points?: Record<number, number[]>) {
+  const idx = points?.[u.n];
+  return idx?.length ? u.grammar.filter((_, i) => idx.includes(i)) : u.grammar;
+}
+
+export function buildLocal({ level, units, points, topic, style, mix, seed }: ThreadInput): Thread {
   const audience = dominant(mix);
   const seedPlan = pick(SEEDS[style], seed);
   const [a, b, c] = pick(audienceOf(audience).names, seed + 1);
-  const chapters: Chapter[] = units.map((u, i) => {
+  const flat = units.flatMap((u) => pointsOf(u, points).map((g, k) => ({ u, g, first: k === 0 })));
+  const chapters: Chapter[] = flat.map(({ u, g, first }, i) => {
     const beat = seedPlan.beats[Math.min(i, seedPlan.beats.length - 1)]!;
-    const vocab = u.vocab.slice(0, 6).map((v) => clean(v.term));
-    const grammar = u.grammar.map((g) => g.name);
-    const gram = grammar[0] ?? unitName(u);
+    const vocab = first ? u.vocab.slice(0, 6).map((v) => clean(v.term)) : [];
+    const terms = u.vocab.slice(0, 6).map((v) => clean(v.term));
     const qs = QUESTIONS[band(level)];
-    const questions = [0, 1].map((k) => pick(qs, seed + i + k)({ a: pick([a, b], i + k), term: vocab[k % Math.max(1, vocab.length)] ?? 'story', gram: grammar[k % Math.max(1, grammar.length)] ?? gram, topic: u.theme.toLowerCase() }));
+    const questions = [0, 1].map((k) => pick(qs, seed + i + k)({ a: pick([a, b], i + k), term: terms[(i + k) % Math.max(1, terms.length)] ?? 'story', gram: g.name, topic: u.theme.toLowerCase() }));
     return {
       unit: u.n,
       unitTitle: unitName(u),
-      link: i === 0 ? 'Abre el hilo' : `Sigue de «${unitName(units[i - 1]!)}»`,
-      stage: stageOf(i, units.length),
+      link: i === 0 ? 'Abre el tema' : `Sale de «${flat[i - 1]!.g.name}»`,
+      stage: stageOf(i, flat.length),
       scene: beat.charAt(0).toUpperCase() + beat.slice(1) + '.',
       vocab,
-      grammar,
+      grammar: [g.name],
       cue: pick(CUES, seed + i),
       questions,
+      topic: g.name,
+      examples: (g.examples ?? []).slice(0, 2).map(plain).filter(Boolean),
+      notice: pick(NOTICE, seed + i),
+      practice: pick(PRACTICE[band(level)], seed + i),
     };
   });
+  const story = [FRAMES[style](a, b, c, topic || units[0]?.theme.toLowerCase() || 'this'), ...chapters.filter((ch) => ch.examples.length).map((ch) => ch.examples.join(' ')), 'What happens next? You decide.'].join('\n');
   const allTerms = chapters.flatMap((c) => c.vocab);
   const last = units[units.length - 1]!;
-  const closerBase = { a, gram: chapters[chapters.length - 1]?.grammar[0] ?? unitName(last), terms: chapters[chapters.length - 1]?.vocab ?? allTerms, level, topic };
+  const closerBase = { a, gram: chapters[chapters.length - 1]?.grammar[0] ?? unitName(last), terms: allTerms, level, topic };
   return {
     source: 'local',
     level,
     style,
     title: seedPlan.title(topic),
     premise: seedPlan.premise(a, b, c, topic || unitName(units[0]!)),
+    story,
     characters: [
       { name: a, role: 'protagonista' },
       { name: b, role: 'amigo/a o compañero/a' },
@@ -276,7 +324,7 @@ export function buildLocal({ level, units, topic, style, mix, seed }: ThreadInpu
     opener: pick(OPENERS, seed)({ a, first: unitName(units[0]!), level }),
     closer: pick(CLOSERS, seed + 2)(closerBase),
     tips: [
-      'Cuenta tú la historia; ellos completan los detalles.',
+      'Lean primero el texto central completo; luego un tema a la vez.',
       `Si se desvían: «And what about ${a}?»`,
       'Cierra con una pregunta abierta: la próxima clase empieza sola.',
     ],
@@ -289,26 +337,26 @@ export function buildLocal({ level, units, topic, style, mix, seed }: ThreadInpu
 
 // ----------------------------------------------------------------- Gemini --
 
-const SHAPE = `{"title":"English title","premise":"ONE short sentence in Spanish","story":"the whole thread in English, one short paragraph per chapter, each starting with 'Chapter N · <unit title>' on its own line","characters":[{"name":"","role":"Spanish, a few words"}],"chapters":[{"unit":0,"link":"Spanish, max 6 words: how it follows the previous chapter","scene":"ONE sentence in English at the level: what happens","cue":"Spanish, max 14 words: what the teacher does","questions":["2 short English questions that need the unit's vocabulary or grammar"]}],"opener":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"closer":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"tips":["2 tips in Spanish, max 10 words each"],"hook":"Spanish, max 20 words: a 30-second attention grabber that starts the class","energizer":{"title":"","minutes":2,"how":"Spanish, max 20 words: a 1–2 minute movement or competition break using the units"}}`;
+const SHAPE = `{"title":"English title","premise":"ONE short sentence in Spanish: what the piece is about","story":"the central piece in English, 3–5 short paragraphs separated by \\n","characters":[{"name":"","role":"Spanish, a few words"}],"chapters":[{"topic":"the grammar topic, as given","examples":["2–3 sentences copied EXACTLY from the story that use this topic"],"notice":"Spanish, max 16 words: what students should notice in those sentences","practice":"Spanish, max 16 words: a task that reuses the topic inside this piece","cue":"Spanish, max 14 words: what the teacher does","questions":["2 short English questions about the piece that need this topic to answer"]}],"opener":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"closer":{"title":"","minutes":5,"steps":[{"min":1,"text":"Spanish, max 10 words"}],"questions":["1–2 short English questions"]},"tips":["2 tips in Spanish, max 10 words each"],"hook":"Spanish, max 20 words: a 30-second attention grabber that starts the class","energizer":{"title":"","minutes":2,"how":"Spanish, max 20 words: a 1–2 minute movement or competition break using the topics"}}`;
 
-function prompt({ level, units, topic, style, mix }: ThreadInput) {
+const WORDS: Record<CefrLevel, string> = { A1: '90–130', A2: '120–170', B1: '170–230', B2: '220–290', C1: '260–340', C2: '300–380' };
+
+function prompt({ level, units, points, topic, style, mix }: ThreadInput) {
   const st = STYLES.find((s) => s.id === style)!;
-  const list = units
-    .map((u) => `- Unit ${u.n} "${unitName(u)}" (theme: ${u.theme}). Vocabulary: ${u.vocab.slice(0, 10).map((v) => v.term).join('; ')}. Grammar: ${u.grammar.map((g) => g.name).join('; ')}.`)
-    .join('\n');
-  return `You design lesson plans for an English teacher whose students are Spanish speakers at CEFR ${level} ONLY (never mix other levels).
-Build ONE central thread in the form of ${st.en}. Each unit below is a branch that nourishes the thread, in this order, so the lesson flows naturally instead of jumping between topics.
-${topic ? `The teacher wants this topic or idea in the thread: "${topic}".\n` : ''}Units:
-${list}
+  const topics = units.flatMap((u) => pointsOf(u, points).map((g) => `- "${g.name}" (unit ${u.n}, ${unitName(u)})${g.short ? `: ${g.short}` : ''}`)).join('\n');
+  const vocab = units.map((u) => u.vocab.slice(0, 8).map((v) => v.term).join('; ')).join('; ');
+  return `You design lessons for an English teacher whose students are Spanish speakers at CEFR ${level} ONLY (never mix other levels).
+Write ONE central piece in the form of ${st.en}. The whole class unfolds from this single piece: every grammar topic below must appear in it naturally, at least twice, so the teacher can read it once and then break it down topic by topic.
+${topic ? `The teacher wants this subject or idea: "${topic}".\n` : ''}Grammar topics (keep this order in "chapters", one chapter per topic):
+${topics}
+Useful vocabulary from those units (reuse some): ${vocab}.
 
 Rules:
-- English text (story, scene, questions) must be strictly at ${level}: vocabulary and grammar a ${level} student can read; reuse the units' vocabulary and grammar naturally.
-- The class: ${describeMix(mix)}. Characters, situations and humour must hook THEM and keep the energy up; nothing offensive; fictional people only, never real ones.
-- One chapter per unit, in the order given, with the "unit" number as given.
-- "opener" (start of class, recalls or sets up the thread) and "closer" (end of class activity or questions) must each fit in 5 minutes or less: the steps' minutes must add up to the activity's minutes (≤ 5).
-- Teacher instructions in Spanish; student-facing language in English.
-- Be brief and concrete: the teacher reads this in seconds before class. The story: about 60–90 words per chapter.
-- 2 or 3 steps per activity.
+- The piece: ${WORDS[level]} words, strictly ${level} language, one clear subject from start to end. Set it anywhere in the world (vary cities and countries; not only Latin America).
+- "examples" must be sentences copied character by character from the piece.
+- The class: ${describeMix(mix)}. Subject, people and humour must hook THEM; nothing offensive; fictional people only, never real ones.
+- "opener" and "closer" must each fit in 5 minutes or less: the steps' minutes must add up to the activity's minutes (≤ 5). 2 or 3 steps each.
+- Teacher instructions in Spanish; student-facing language in English. Be brief and concrete.
 Return ONLY valid JSON, no markdown, in this shape:
 ${SHAPE}`;
 }
@@ -331,6 +379,7 @@ const renameActivity = (a: Activity, f: (t: string) => string): Activity => ({ .
 function parseAi(text: string, local: Thread): Thread {
   const o = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1)) as Record<string, unknown>;
   const rows = Array.isArray(o.chapters) ? (o.chapters as Record<string, unknown>[]) : [];
+  const story = str(o.story);
   const characters = Array.isArray(o.characters)
     ? (o.characters as Record<string, unknown>[]).map((c) => ({ name: str(c.name), role: str(c.role) })).filter((c) => c.name).slice(0, 5)
     : [];
@@ -338,22 +387,24 @@ function parseAi(text: string, local: Thread): Thread {
   const names = local.characters.map((c, i) => [c.name, characters[i]?.name] as const).filter((x): x is readonly [string, string] => !!x[1]);
   const rename = (t: string) => names.reduce((acc, [from, to]) => acc.split(from).join(to), t);
   const chapters: Chapter[] = local.chapters.map((lc, i) => {
-    const r = rows.find((x) => Number(x.unit) === lc.unit) ?? (rows.length === local.chapters.length ? rows[i] : undefined) ?? {};
+    const r = rows.find((x) => str(x.topic).toLowerCase() === lc.topic.toLowerCase()) ?? rows[i] ?? {};
+    const found = strs(r.examples, 3).filter((x) => story.includes(x));
     return {
       ...lc,
-      link: str(r.link) || rename(lc.link),
-      scene: str(r.scene) || rename(lc.scene),
+      examples: found.length ? found : strs(r.examples, 3),
+      notice: str(r.notice) || lc.notice,
+      practice: str(r.practice) || lc.practice,
       cue: str(r.cue) || rename(lc.cue),
       questions: strs(r.questions, 3).length ? strs(r.questions, 3) : lc.questions.map(rename),
     };
   });
-  if (!str(o.story) && !rows.length) throw new Error('empty');
+  if (!story) throw new Error('empty');
   return {
     ...local,
     source: 'ia',
     title: str(o.title) || local.title,
     premise: str(o.premise) || local.premise,
-    story: str(o.story) || undefined,
+    story,
     characters: characters.length ? characters : local.characters,
     chapters,
     opener: activity(o.opener, renameActivity(local.opener, rename)),
@@ -392,13 +443,15 @@ export function threadToText(t: Thread): string {
     'INICIO DE CLASE',
     act(t.opener),
     '',
-    ...(t.story ? ['HISTORIA', t.story, ''] : []),
+    `TEXTO CENTRAL${t.source === 'local' ? ' (borrador)' : ''}`,
+    t.story,
+    '',
     ...t.chapters.flatMap((c) => [
-      `UNIDAD ${c.unit} · ${c.unitTitle}`,
-      `  ${c.link}`,
-      `  ${c.scene}`,
-      `  Vocabulario: ${c.vocab.join(', ')}`,
-      `  Gramática: ${c.grammar.join(' / ')}`,
+      `${c.topic} · U${c.unit} ${c.unitTitle}`,
+      ...c.examples.map((x) => `  “${x}”`),
+      `  Notar: ${c.notice}`,
+      `  Practicar: ${c.practice}`,
+      ...(c.vocab.length ? [`  Vocabulario: ${c.vocab.join(', ')}`] : []),
       `  Cómo guiarla: ${c.cue}`,
       ...c.questions.map((q) => `  ? ${q}`),
       '',

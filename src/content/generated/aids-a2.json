@@ -758,6 +758,44 @@
      "note": "Las dos sirven; won’t suena más a promesa."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro es el futuro?",
+   "from": "no creo",
+   "to": "decidido",
+   "items": [
+    {
+     "word": "probably won’t",
+     "value": 15,
+     "example": "I **probably won’t** go out.",
+     "es": "probablemente no"
+    },
+    {
+     "word": "might / maybe I’ll",
+     "value": 40,
+     "example": "I **might** stay home.",
+     "es": "tal vez"
+    },
+    {
+     "word": "I think I’ll",
+     "value": 60,
+     "example": "**I think I’ll** order pizza.",
+     "es": "creo que voy a (lo decido ahora)"
+    },
+    {
+     "word": "will probably",
+     "value": 75,
+     "example": "She**'ll probably** call later.",
+     "es": "probablemente"
+    },
+    {
+     "word": "be going to",
+     "value": 95,
+     "example": "I**'m going to** study medicine.",
+     "es": "plan ya decidido"
+    }
+   ]
   }
  ],
  "A2-5-1": [
@@ -1539,6 +1577,38 @@
      "a": "If you heat water to 100°, it boils.",
      "b": "If you call me, I’ll answer.",
      "note": "Condicional cero = verdad general; primer condicional = situación concreta."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro es el resultado?",
+   "from": "poco probable",
+   "to": "seguro",
+   "items": [
+    {
+     "word": "might",
+     "value": 35,
+     "example": "If it rains, we **might** cancel.",
+     "es": "puede que"
+    },
+    {
+     "word": "may",
+     "value": 45,
+     "example": "If you ask, she **may** help.",
+     "es": "es posible que"
+    },
+    {
+     "word": "will probably",
+     "value": 75,
+     "example": "If we leave now, we**'ll probably** arrive on time.",
+     "es": "probablemente"
+    },
+    {
+     "word": "will",
+     "value": 95,
+     "example": "If you heat ice, it **will** melt.",
+     "es": "seguro"
     }
    ]
   }
@@ -2404,6 +2474,50 @@
      "a": "You’re supposed to wear a badge.",
      "b": "You have to wear a badge.",
      "note": "supposed to = se espera; have to = regla obligatoria."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "De prohibido a obligatorio",
+   "from": "prohibido",
+   "to": "obligatorio",
+   "items": [
+    {
+     "word": "mustn’t / can’t",
+     "value": 0,
+     "example": "You **mustn’t** smoke here.",
+     "es": "prohibido"
+    },
+    {
+     "word": "aren’t allowed to",
+     "value": 10,
+     "example": "You **aren’t allowed to** park here.",
+     "es": "no se permite"
+    },
+    {
+     "word": "don’t have to",
+     "value": 40,
+     "example": "You **don’t have to** pay.",
+     "es": "no es necesario"
+    },
+    {
+     "word": "can / are allowed to",
+     "value": 55,
+     "example": "You **can** take photos.",
+     "es": "permitido"
+    },
+    {
+     "word": "have to",
+     "value": 90,
+     "example": "You **have to** wear a helmet.",
+     "es": "obligatorio (norma)"
+    },
+    {
+     "word": "must",
+     "value": 100,
+     "example": "You **must** show your passport.",
+     "es": "obligatorio (muy fuerte)"
     }
    ]
   }

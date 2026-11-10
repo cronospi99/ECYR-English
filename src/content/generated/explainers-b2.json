@@ -2,7 +2,7 @@
  "B2-1-0": {
   "icon": "🔗",
   "purpose_es": "Para hablar de gustos, hábitos y acciones después de ciertos verbos.",
-  "idea_es": "Después de verbos como enjoy, avoid, mind, keep o can't stand, y después de cualquier preposición, el verbo va en -ing.",
+  "idea_es": "Después de verbos como enjoy, avoid, mind, keep o can’t stand, y después de cualquier preposición, el verbo va en -ing.",
   "formula": [
    {
     "role": "subject",
@@ -50,7 +50,7 @@
     {
      "role": "be",
      "label_es": "sujeto + be",
-     "en": "They're"
+     "en": "They’re"
     },
     {
      "role": "adjective",
@@ -79,7 +79,7 @@
     }
    ],
    "example": {
-    "en": "They're good at getting along with everyone.",
+    "en": "They’re good at getting along with everyone.",
     "es": "Son buenos para llevarse bien con todos."
    }
   },
@@ -93,8 +93,8 @@
    "note_es": "En español usamos el infinitivo (pasar); en inglés, después de enjoy, va -ing: spending."
   },
   "mistake": {
-   "wrong": "I'm interested in to learn English.",
-   "right": "I'm interested in learning English.",
+   "wrong": "I’m interested in to learn English.",
+   "right": "I’m interested in learning English.",
    "why_es": "Después de una preposición (in, at, of) siempre va -ing, nunca to."
   },
   "tip_es": "Preposición a la vista = verbo en -ing. Y recuerda la lista: enjoy, avoid, mind, keep, finish."
@@ -297,7 +297,7 @@
  "B2-2-1": {
   "icon": "🕵️",
   "purpose_es": "Para sacar conclusiones sobre el pasado según lo que ves ahora.",
-  "idea_es": "Modal + have + participio. El modal muestra qué tan seguro estás: must have (casi seguro), might have (quizás), can't have (imposible).",
+  "idea_es": "Modal + have + participio. El modal muestra qué tan seguro estás: must have (casi seguro), might have (quizás), can’t have (imposible).",
   "formula": [
    {
     "role": "subject",
@@ -345,7 +345,7 @@
     {
      "role": "modal",
      "label_es": "modal negativo",
-     "en": "can't"
+     "en": "can’t"
     },
     {
      "role": "aux",
@@ -369,7 +369,7 @@
     }
    ],
    "example": {
-    "en": "It can't have been the cat.",
+    "en": "It can’t have been the cat.",
     "es": "No pudo haber sido el gato."
    }
   },
@@ -387,7 +387,7 @@
    "right": "He must have forgotten his keys.",
    "why_es": "\"Must of\" suena igual, pero no existe: siempre es must have."
   },
-  "tip_es": "Imagina un termómetro: must have = 90 %, might have = 50 %, can't have = 0 %."
+  "tip_es": "Imagina un termómetro: must have = 90 %, might have = 50 %, can’t have = 0 %."
  },
  "B2-3-0": {
   "icon": "📍",
@@ -782,7 +782,7 @@
    {
     "role": "be",
     "label_es": "sujeto + be",
-    "en": "it's"
+    "en": "it’s"
    },
    {
     "role": "adjective",
@@ -811,7 +811,7 @@
    }
   ],
   "example": {
-   "en": "As long as it's quiet, I can focus anywhere.",
+   "en": "As long as it’s quiet, I can focus anywhere.",
    "es": "Mientras haya silencio, me puedo concentrar en cualquier parte."
   },
   "formula2": {
@@ -835,7 +835,7 @@
     {
      "role": "be",
      "label_es": "sujeto + be",
-     "en": "I'm"
+     "en": "I’m"
     },
     {
      "role": "adjective",
@@ -854,7 +854,7 @@
     }
    ],
    "example": {
-    "en": "Unless I sleep eight hours, I'm groggy all day.",
+    "en": "Unless I sleep eight hours, I’m groggy all day.",
     "es": "Si no duermo ocho horas, ando atontado todo el día."
    }
   },
@@ -864,25 +864,25 @@
   },
   "compare": {
    "es": "Como madrugo, hago mis reuniones temprano.",
-   "en": "Since I'm an early bird, I have my meetings early.",
+   "en": "Since I’m an early bird, I have my meetings early.",
    "note_es": "El \"como\" de causa al inicio se dice since o as, no like ni how."
   },
   "mistake": {
-   "wrong": "Unless I don't sleep, I'm tired.",
-   "right": "Unless I sleep, I'm tired.",
-   "why_es": "Unless ya significa \"si no\"; con don't se vuelve doble negación."
+   "wrong": "Unless I don’t sleep, I’m tired.",
+   "right": "Unless I sleep, I’m tired.",
+   "why_es": "Unless ya significa \"si no\"; con don’t se vuelve doble negación."
   },
   "tip_es": "Unless = if not. Cambia \"si no\" por unless y deja el verbo en positivo."
  },
  "B2-5-0": {
   "icon": "💬",
   "purpose_es": "Para opinar sobre una acción en general, sin culpar a nadie.",
-  "idea_es": "It ocupa el lugar del sujeto y la acción va después con to: It's rude to interrupt. Para nombrar a alguien, agrega for him o of you.",
+  "idea_es": "It ocupa el lugar del sujeto y la acción va después con to: It’s rude to interrupt. Para nombrar a alguien, agrega for him o of you.",
   "formula": [
    {
     "role": "be",
     "label_es": "it + be",
-    "en": "It's"
+    "en": "It’s"
    },
    {
     "role": "adjective",
@@ -911,7 +911,7 @@
    }
   ],
   "example": {
-   "en": "It's important to listen carefully before replying.",
+   "en": "It’s important to listen carefully before replying.",
    "es": "Es importante escuchar con atención antes de responder."
   },
   "formula2": {
@@ -920,7 +920,7 @@
     {
      "role": "be",
      "label_es": "it + be",
-     "en": "It's"
+     "en": "It’s"
     },
     {
      "role": "adjective",
@@ -954,7 +954,7 @@
     }
    ],
    "example": {
-    "en": "It's hard for him to say sorry.",
+    "en": "It’s hard for him to say sorry.",
     "es": "A él le cuesta pedir perdón."
    }
   },
@@ -964,15 +964,15 @@
   },
   "compare": {
    "es": "Es importante escuchar con atención.",
-   "en": "It's important to listen carefully.",
+   "en": "It’s important to listen carefully.",
    "note_es": "En español no hace falta sujeto; en inglés necesitas It al inicio y to antes del verbo."
   },
   "mistake": {
    "wrong": "Is important to listen.",
-   "right": "It's important to listen.",
+   "right": "It’s important to listen.",
    "why_es": "El inglés siempre necesita sujeto: no olvides It."
   },
-  "tip_es": "Fórmula mágica: It's + adjetivo + to + verbo. Nunca empieces con \"Is important\"."
+  "tip_es": "Fórmula mágica: It’s + adjetivo + to + verbo. Nunca empieces con \"Is important\"."
  },
  "B2-5-1": {
   "icon": "🏃",
@@ -1219,12 +1219,12 @@
   },
   "compare": {
    "es": "Llevo semanas investigando el caso.",
-   "en": "I've been investigating the case for weeks.",
+   "en": "I’ve been investigating the case for weeks.",
    "note_es": "\"Llevo + tiempo + -ando/-iendo\" se dice con have been + -ing + for."
   },
   "mistake": {
-   "wrong": "I've been reading three articles.",
-   "right": "I've read three articles.",
+   "wrong": "I’ve been reading three articles.",
+   "right": "I’ve read three articles.",
    "why_es": "Si dices cuántos, usa la forma simple: el foco es el resultado."
   },
   "tip_es": "¿Cuántos? Simple. ¿Cuánto tiempo? Continuo. \"Llevo...\" casi siempre es have been + -ing."
@@ -1308,7 +1308,7 @@
    {
     "role": "aux",
     "label_es": "auxiliar negativo",
-    "en": "doesn't"
+    "en": "doesn’t"
    },
    {
     "role": "subject",
@@ -1322,7 +1322,7 @@
    }
   ],
   "example": {
-   "en": "Technology moves fast, doesn't it?",
+   "en": "Technology moves fast, doesn’t it?",
    "es": "La tecnología avanza rápido, ¿cierto?"
   },
   "formula2": {
@@ -1331,7 +1331,7 @@
     {
      "role": "subject",
      "label_es": "sujeto + have",
-     "en": "You've"
+     "en": "You’ve"
     },
     {
      "role": "verb",
@@ -1346,7 +1346,7 @@
     {
      "role": "aux",
      "label_es": "auxiliar negativo",
-     "en": "haven't"
+     "en": "haven’t"
     },
     {
      "role": "subject",
@@ -1360,7 +1360,7 @@
     }
    ],
    "example": {
-    "en": "You've seen the new update, haven't you?",
+    "en": "You’ve seen the new update, haven’t you?",
     "es": "Ya viste la nueva actualización, ¿verdad?"
    }
   },
@@ -1370,25 +1370,25 @@
   },
   "compare": {
    "es": "Esta app recoge datos, ¿no?",
-   "en": "This app collects data, doesn't it?",
+   "en": "This app collects data, doesn’t it?",
    "note_es": "El español usa siempre \"¿no?\" o \"¿verdad?\"; el inglés cambia la coletilla según el auxiliar y el sujeto."
   },
   "mistake": {
-   "wrong": "This app collects data, isn't it?",
-   "right": "This app collects data, doesn't it?",
+   "wrong": "This app collects data, isn’t it?",
+   "right": "This app collects data, doesn’t it?",
    "why_es": "Collects no tiene auxiliar visible: la coletilla usa does, no is."
   },
-  "tip_es": "Busca el auxiliar y dale la vuelta: is → isn't, have → haven't; sin auxiliar → do, does o did."
+  "tip_es": "Busca el auxiliar y dale la vuelta: is → isn’t, have → haven’t; sin auxiliar → do, does o did."
  },
  "B2-7-1": {
   "icon": "🤔",
   "purpose_es": "Para mostrar sorpresa u opinar con amabilidad, buscando acuerdo.",
-  "idea_es": "Una pregunta negativa no busca información: suaviza una opinión o invita a estar de acuerdo. Usa la contracción al inicio: Isn't it...?",
+  "idea_es": "Una pregunta negativa no busca información: suaviza una opinión o invita a estar de acuerdo. Usa la contracción al inicio: Isn’t it...?",
   "formula": [
    {
     "role": "question",
     "label_es": "auxiliar negativo",
-    "en": "Isn't"
+    "en": "Isn’t"
    },
    {
     "role": "subject",
@@ -1422,16 +1422,16 @@
    }
   ],
   "example": {
-   "en": "Isn't it worrying how much data they collect?",
+   "en": "Isn’t it worrying how much data they collect?",
    "es": "¿No es preocupante cuántos datos recogen?"
   },
   "formula2": {
-   "title_es": "Con Don't you think",
+   "title_es": "Con Don’t you think",
    "parts": [
     {
      "role": "question",
      "label_es": "pregunta negativa",
-     "en": "Don't you think"
+     "en": "Don’t you think"
     },
     {
      "role": "subject",
@@ -1460,7 +1460,7 @@
     }
    ],
    "example": {
-    "en": "Don't you think children get phones too early?",
+    "en": "Don’t you think children get phones too early?",
     "es": "¿No crees que los niños tienen celular demasiado pronto?"
    }
   },
@@ -1470,15 +1470,15 @@
   },
   "compare": {
    "es": "¿No te parece raro?",
-   "en": "Don't you think it's strange?",
-   "note_es": "Como en español, la negación suaviza la opinión. Solo cuida la contracción: Don't you, Isn't it."
+   "en": "Don’t you think it’s strange?",
+   "note_es": "Como en español, la negación suaviza la opinión. Solo cuida la contracción: Don’t you, Isn’t it."
   },
   "mistake": {
    "wrong": "Is not it worrying?",
-   "right": "Isn't it worrying?",
-   "why_es": "Al inicio va la contracción: Isn't it, no \"Is not it\"."
+   "right": "Isn’t it worrying?",
+   "why_es": "Al inicio va la contracción: Isn’t it, no \"Is not it\"."
   },
-  "tip_es": "Para opinar sin sonar agresivo, empieza con Isn't it... o Don't you think...?"
+  "tip_es": "Para opinar sin sonar agresivo, empieza con Isn’t it... o Don’t you think...?"
  },
  "B2-7-2": {
   "icon": "🔒",
@@ -2114,7 +2114,7 @@
    {
     "role": "modal",
     "label_es": "sujeto + would",
-    "en": "I'd"
+    "en": "I’d"
    },
    {
     "role": "verb",
@@ -2128,7 +2128,7 @@
    }
   ],
   "example": {
-   "en": "If I were you, I'd tell the truth.",
+   "en": "If I were you, I’d tell the truth.",
    "es": "Si yo fuera tú, diría la verdad."
   },
   "timeline": {
@@ -2137,15 +2137,15 @@
   },
   "compare": {
    "es": "Si tuviera más tiempo, haría voluntariado.",
-   "en": "If I had more time, I'd volunteer.",
+   "en": "If I had more time, I’d volunteer.",
    "note_es": "\"Tuviera\" = had (pasado) y \"haría\" = would + verbo. El español usa subjuntivo; el inglés, pasado."
   },
   "mistake": {
-   "wrong": "If I would have time, I'd volunteer.",
-   "right": "If I had time, I'd volunteer.",
+   "wrong": "If I would have time, I’d volunteer.",
+   "right": "If I had time, I’d volunteer.",
    "why_es": "Would va solo en el resultado, nunca en la parte del if."
   },
-  "tip_es": "\"Si tuviera\" = If I had; \"haría\" = I'd do. Would nunca va junto a if."
+  "tip_es": "\"Si tuviera\" = If I had; \"haría\" = I’d do. Would nunca va junto a if."
  },
  "B2-11-1": {
   "icon": "🌠",
@@ -2260,7 +2260,7 @@
    {
     "role": "subject",
     "label_es": "sujeto + will",
-    "en": "I'll"
+    "en": "I’ll"
    },
    {
     "role": "aux",
@@ -2284,7 +2284,7 @@
    }
   ],
   "example": {
-   "en": "By next year, I'll have visited five new countries.",
+   "en": "By next year, I’ll have visited five new countries.",
    "es": "Para el próximo año, habré visitado cinco países nuevos."
   },
   "formula2": {
@@ -2298,7 +2298,7 @@
     {
      "role": "subject",
      "label_es": "sujeto + will",
-     "en": "we'll"
+     "en": "we’ll"
     },
     {
      "role": "aux",
@@ -2322,7 +2322,7 @@
     }
    ],
    "example": {
-    "en": "By June, we'll have been travelling for six months.",
+    "en": "By June, we’ll have been travelling for six months.",
     "es": "Para junio, llevaremos seis meses viajando."
    }
   },
@@ -2332,12 +2332,12 @@
   },
   "compare": {
    "es": "Cuando llegues, ya se habrán instalado.",
-   "en": "They'll have settled in by the time you arrive.",
+   "en": "They’ll have settled in by the time you arrive.",
    "note_es": "\"Habrán + participio\" = will have + participio. Pero después de by the time el verbo va en presente."
   },
   "mistake": {
-   "wrong": "By the time you will arrive, we'll have left.",
-   "right": "By the time you arrive, we'll have left.",
+   "wrong": "By the time you will arrive, we’ll have left.",
+   "right": "By the time you arrive, we’ll have left.",
    "why_es": "Tras by the time, when o before, el verbo va en presente, sin will."
   },
   "tip_es": "Busca \"by\": by June, by then, by the time... Es la señal del future perfect."
@@ -2355,7 +2355,7 @@
    {
     "role": "aux",
     "label_es": "sujeto + had",
-    "en": "we'd"
+    "en": "we’d"
    },
    {
     "role": "verb",
@@ -2365,7 +2365,7 @@
    {
     "role": "modal",
     "label_es": "sujeto + would",
-    "en": "we'd"
+    "en": "we’d"
    },
    {
     "role": "verb",
@@ -2384,7 +2384,7 @@
    }
   ],
   "example": {
-   "en": "If we'd left earlier, we'd be there by now.",
+   "en": "If we’d left earlier, we’d be there by now.",
    "es": "Si hubiéramos salido antes, ya estaríamos allá."
   },
   "formula2": {
@@ -2413,7 +2413,7 @@
     {
      "role": "modal",
      "label_es": "modal + have",
-     "en": "wouldn't have"
+     "en": "wouldn’t have"
     },
     {
      "role": "verb",
@@ -2427,7 +2427,7 @@
     }
    ],
    "example": {
-    "en": "If she were more organised, she wouldn't have missed the flight.",
+    "en": "If she were more organised, she wouldn’t have missed the flight.",
     "es": "Si fuera más organizada, no habría perdido el vuelo."
    }
   },
@@ -2437,7 +2437,7 @@
   },
   "compare": {
    "es": "Si hubiera ahorrado, ahora estaría viajando.",
-   "en": "If I had saved, I'd be travelling now.",
+   "en": "If I had saved, I’d be travelling now.",
    "note_es": "Igual que en español: \"hubiera ahorrado\" (pasado) + \"estaría\" (presente). Elige cada mitad por su tiempo."
   },
   "mistake": {

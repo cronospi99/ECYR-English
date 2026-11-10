@@ -102,7 +102,7 @@
  "B1-1-1": {
   "icon": "😤",
   "purpose_es": "Para decir cómo te hace sentir una situación.",
-  "idea_es": "Empieza con tu reacción (It bothers me / It's frustrating) y después explica la situación con when + presente simple.",
+  "idea_es": "Empieza con tu reacción (It bothers me / It’s frustrating) y después explica la situación con when + presente simple.",
   "formula": [
    {
     "role": "subject",
@@ -150,7 +150,7 @@
     {
      "role": "subject",
      "label_es": "it + be",
-     "en": "It's"
+     "en": "It’s"
     },
     {
      "role": "adjective",
@@ -179,7 +179,7 @@
     }
    ],
    "example": {
-    "en": "It's frustrating when nobody replies.",
+    "en": "It’s frustrating when nobody replies.",
     "es": "Es frustrante cuando nadie responde."
    }
   },
@@ -720,7 +720,7 @@
     {
      "role": "neg",
      "label_es": "had + not",
-     "en": "hadn't"
+     "en": "hadn’t"
     },
     {
      "role": "verb",
@@ -739,7 +739,7 @@
     }
    ],
    "example": {
-    "en": "They hadn't told anyone.",
+    "en": "They hadn’t told anyone.",
     "es": "No le habían dicho a nadie."
    }
   },
@@ -857,12 +857,12 @@
  "B1-5-1": {
   "icon": "👞",
   "purpose_es": "Para hablar de lo que se espera según las costumbres.",
-  "idea_es": "It's the custom to = tradición. Be supposed to / be expected to = lo que se espera de alguien. It's (not) acceptable to = si está bien visto.",
+  "idea_es": "It’s the custom to = tradición. Be supposed to / be expected to = lo que se espera de alguien. It’s (not) acceptable to = si está bien visto.",
   "formula": [
    {
     "role": "subject",
     "label_es": "sujeto + be",
-    "en": "You're"
+    "en": "You’re"
    },
    {
     "role": "modal",
@@ -886,7 +886,7 @@
    }
   ],
   "example": {
-   "en": "You're supposed to take off your shoes.",
+   "en": "You’re supposed to take off your shoes.",
    "es": "Se supone que debes quitarte los zapatos."
   },
   "formula2": {
@@ -895,7 +895,7 @@
     {
      "role": "subject",
      "label_es": "it + be",
-     "en": "It's"
+     "en": "It’s"
     },
     {
      "role": "noun",
@@ -924,7 +924,7 @@
     }
    ],
    "example": {
-    "en": "It's the custom to take a small gift.",
+    "en": "It’s the custom to take a small gift.",
     "es": "Es costumbre llevar un pequeño regalo."
    }
   },
@@ -934,12 +934,12 @@
   },
   "compare": {
    "es": "Se supone que llegamos a las ocho.",
-   "en": "We're supposed to arrive at eight.",
+   "en": "We’re supposed to arrive at eight.",
    "note_es": "'Se supone que' = be supposed to. Ojo: 'I was supposed to' suele significar que no lo hiciste."
   },
   "mistake": {
    "wrong": "You are suppose to arrive early.",
-   "right": "You're supposed to arrive early.",
+   "right": "You’re supposed to arrive early.",
    "why_es": "Siempre es supposed, con -d, aunque casi no se escuche."
   },
   "tip_es": "Piensa en 'se supone que' = supposed to. Si sí lo hiciste por obligación, usa 'had to'."
@@ -947,7 +947,7 @@
  "B1-6-0": {
   "icon": "🛠️",
   "purpose_es": "Para describir daños y fallas en objetos.",
-  "idea_es": "Hay dos caminos: participio como adjetivo (The screen is cracked) o un sustantivo que nombra el problema (There's a crack in the screen).",
+  "idea_es": "Hay dos caminos: participio como adjetivo (The screen is cracked) o un sustantivo que nombra el problema (There’s a crack in the screen).",
   "formula": [
    {
     "role": "subject",
@@ -980,7 +980,7 @@
     {
      "role": "subject",
      "label_es": "hay",
-     "en": "There's"
+     "en": "There’s"
     },
     {
      "role": "noun",
@@ -999,7 +999,7 @@
     }
    ],
    "example": {
-    "en": "There's a crack in the screen.",
+    "en": "There’s a crack in the screen.",
     "es": "Hay una grieta en la pantalla."
    }
   },
@@ -1292,12 +1292,12 @@
  "B1-8-0": {
   "icon": "🔀",
   "purpose_es": "Para decir qué prefieres hacer.",
-  "idea_es": "I'd rather + verbo base (+ than). I'd prefer + to + verbo. Para lo que haga otra persona: I'd rather you + pasado.",
+  "idea_es": "I’d rather + verbo base (+ than). I’d prefer + to + verbo. Para lo que haga otra persona: I’d rather you + pasado.",
   "formula": [
    {
     "role": "subject",
     "label_es": "yo + would",
-    "en": "I'd"
+    "en": "I’d"
    },
    {
     "role": "modal",
@@ -1326,7 +1326,7 @@
    }
   ],
   "example": {
-   "en": "I'd rather walk than drive.",
+   "en": "I’d rather walk than drive.",
    "es": "Prefiero caminar que manejar."
   },
   "formula2": {
@@ -1335,7 +1335,7 @@
     {
      "role": "subject",
      "label_es": "yo + would",
-     "en": "I'd"
+     "en": "I’d"
     },
     {
      "role": "verb",
@@ -1364,7 +1364,7 @@
     }
    ],
    "example": {
-    "en": "I'd prefer to stay here.",
+    "en": "I’d prefer to stay here.",
     "es": "Preferiría quedarme aquí."
    }
   },
@@ -1374,12 +1374,12 @@
   },
   "compare": {
    "es": "Prefiero el té al café.",
-   "en": "I'd prefer tea to coffee.",
+   "en": "I’d prefer tea to coffee.",
    "note_es": "Con prefer la comparación usa 'to', parecido a tu 'al'. Con rather, usa 'than'."
   },
   "mistake": {
    "wrong": "I prefer stay here than go out.",
-   "right": "I'd rather stay here than go out.",
+   "right": "I’d rather stay here than go out.",
    "why_es": "Rather + verbo base + than; prefer + to + verbo. Nunca 'prefer than'."
   },
   "tip_es": "Rather va con than (las dos tienen 'th'); prefer va con to."
@@ -1587,7 +1587,7 @@
  "B1-9-1": {
   "icon": "💡",
   "purpose_es": "Para proponer ideas de forma natural.",
-  "idea_es": "We could + verbo propone. How about + -ing propone una actividad. Why don't we + verbo base invita a aceptar. It might be better to suena impersonal.",
+  "idea_es": "We could + verbo propone. How about + -ing propone una actividad. Why don’t we + verbo base invita a aceptar. It might be better to suena impersonal.",
   "formula": [
    {
     "role": "question",
@@ -1620,7 +1620,7 @@
     {
      "role": "question",
      "label_es": "¿por qué no...?",
-     "en": "Why don't we"
+     "en": "Why don’t we"
     },
     {
      "role": "verb",
@@ -1639,7 +1639,7 @@
     }
    ],
    "example": {
-    "en": "Why don't we ask them?",
+    "en": "Why don’t we ask them?",
     "es": "¿Por qué no les preguntamos?"
    }
   },
@@ -1649,7 +1649,7 @@
   },
   "compare": {
    "es": "¿Por qué no lo mandamos a revisar?",
-   "en": "Why don't we have it checked?",
+   "en": "Why don’t we have it checked?",
    "note_es": "'¿Por qué no...?' funciona igual en inglés, con verbo base y sin to."
   },
   "mistake": {
@@ -1657,7 +1657,7 @@
    "right": "I suggest asking them.",
    "why_es": "Suggest nunca va con 'us to': usa suggest + -ing o suggest (that) we ask."
   },
-  "tip_es": "How about + -ing; Why don't we + verbo base. ¡No los mezcles!"
+  "tip_es": "How about + -ing; Why don’t we + verbo base. ¡No los mezcles!"
  },
  "B1-10-0": {
   "icon": "🔮",
@@ -1672,7 +1672,7 @@
    {
     "role": "subject",
     "label_es": "yo + will",
-    "en": "I'll"
+    "en": "I’ll"
    },
    {
     "role": "be",
@@ -1696,7 +1696,7 @@
    }
   ],
   "example": {
-   "en": "This time tomorrow I'll be flying to Bogotá.",
+   "en": "This time tomorrow I’ll be flying to Bogotá.",
    "es": "Mañana a esta hora estaré volando a Bogotá."
   },
   "formula2": {
@@ -1710,7 +1710,7 @@
     {
      "role": "subject",
      "label_es": "yo + will",
-     "en": "I'll"
+     "en": "I’ll"
     },
     {
      "role": "aux",
@@ -1734,7 +1734,7 @@
     }
    ],
    "example": {
-    "en": "By December I'll have finished the course.",
+    "en": "By December I’ll have finished the course.",
     "es": "Para diciembre ya habré terminado el curso."
    }
   },
@@ -1744,12 +1744,12 @@
   },
   "compare": {
    "es": "Para junio ya habré terminado.",
-   "en": "By June I'll have finished.",
+   "en": "By June I’ll have finished.",
    "note_es": "Igual que 'habré + participio': will have + participio. 'Para' + fecha = by."
   },
   "mistake": {
-   "wrong": "By the time you will arrive, we'll have started.",
-   "right": "By the time you arrive, we'll have started.",
+   "wrong": "By the time you will arrive, we’ll have started.",
+   "right": "By the time you arrive, we’ll have started.",
    "why_es": "Después de by the time o when va presente, no will."
   },
   "tip_es": "By + fecha casi siempre pide will have + participio: 'para entonces ya habré...'."
@@ -1795,7 +1795,7 @@
     {
      "role": "subject",
      "label_es": "yo + have",
-     "en": "I've"
+     "en": "I’ve"
     },
     {
      "role": "verb",
@@ -1824,7 +1824,7 @@
     }
    ],
    "example": {
-    "en": "I've worked here since March.",
+    "en": "I’ve worked here since March.",
     "es": "Trabajo aquí desde marzo."
    }
   },
@@ -1834,12 +1834,12 @@
   },
   "compare": {
    "es": "Vivo aquí desde hace seis años.",
-   "en": "I've lived here for six years.",
+   "en": "I’ve lived here for six years.",
    "note_es": "'Desde hace' + duración es for + present perfect. En inglés no se dice 'I live here since...'."
   },
   "mistake": {
    "wrong": "I live here since two years ago.",
-   "right": "I've lived here for two years.",
+   "right": "I’ve lived here for two years.",
    "why_es": "For + duración, since + punto de inicio, y con present perfect."
   },
   "tip_es": "Ago va al final, como 'atrás': two years ago = dos años atrás."
@@ -1867,7 +1867,7 @@
    {
     "role": "subject",
     "label_es": "yo + will",
-    "en": "I'll"
+    "en": "I’ll"
    },
    {
     "role": "verb",
@@ -1886,7 +1886,7 @@
    }
   ],
   "example": {
-   "en": "As soon as I finish, I'll call you.",
+   "en": "As soon as I finish, I’ll call you.",
    "es": "En cuanto termine, te llamo."
   },
   "formula2": {
@@ -1934,12 +1934,12 @@
   },
   "compare": {
    "es": "Cuando llegue, te aviso.",
-   "en": "When I arrive, I'll let you know.",
+   "en": "When I arrive, I’ll let you know.",
    "note_es": "Donde el español usa subjuntivo (llegue, termine), el inglés usa presente simple: when I arrive."
   },
   "mistake": {
-   "wrong": "I'll call you when I will arrive.",
-   "right": "I'll call you when I arrive.",
+   "wrong": "I’ll call you when I will arrive.",
+   "right": "I’ll call you when I arrive.",
    "why_es": "En la cláusula de tiempo va presente, nunca will."
   },
   "tip_es": "Si en español usas subjuntivo después de 'cuando' o 'en cuanto', en inglés pon presente simple."
@@ -2042,7 +2042,7 @@
    "right": "If I had known, I would have come.",
    "why_es": "Nada de would en la parte del if: usa had + participio."
   },
-  "tip_es": "'Should've' suena como 'should of', pero siempre se escribe should have."
+  "tip_es": "'Should’ve' suena como 'should of', pero siempre se escribe should have."
  },
  "B1-12-0": {
   "icon": "📦",
@@ -2242,7 +2242,7 @@
  "B1-13-0": {
   "icon": "🔎",
   "purpose_es": "Para deducir qué pasó, según la evidencia.",
-  "idea_es": "Must have + participio = estoy casi seguro. May / might / could have = tal vez. Can't have = es imposible.",
+  "idea_es": "Must have + participio = estoy casi seguro. May / might / could have = tal vez. Can’t have = es imposible.",
   "formula": [
    {
     "role": "subject",
@@ -2285,7 +2285,7 @@
     {
      "role": "neg",
      "label_es": "imposible",
-     "en": "can't"
+     "en": "can’t"
     },
     {
      "role": "aux",
@@ -2309,7 +2309,7 @@
     }
    ],
    "example": {
-    "en": "She can't have received the alert.",
+    "en": "She can’t have received the alert.",
     "es": "Ella no pudo haber recibido la alerta."
    }
   },
@@ -2323,11 +2323,11 @@
    "note_es": "'Debió (de) haber' para suponer = must have + participio."
   },
   "mistake": {
-   "wrong": "He mustn't have known.",
-   "right": "He can't have known.",
-   "why_es": "Para decir 'es imposible que', usa can't have, no mustn't have."
+   "wrong": "He mustn’t have known.",
+   "right": "He can’t have known.",
+   "why_es": "Para decir 'es imposible que', usa can’t have, no mustn’t have."
   },
-  "tip_es": "Escala de certeza: must have (90 %), might have (50 %), can't have (0 %)."
+  "tip_es": "Escala de certeza: must have (90 %), might have (50 %), can’t have (0 %)."
  },
  "B1-13-1": {
   "icon": "🤦",
@@ -2650,7 +2650,7 @@
     {
      "role": "neg",
      "label_es": "prohibido",
-     "en": "mustn't"
+     "en": "mustn’t"
     },
     {
      "role": "be",
@@ -2669,7 +2669,7 @@
     }
    ],
    "example": {
-    "en": "Passwords mustn't be shared.",
+    "en": "Passwords mustn’t be shared.",
     "es": "Las contraseñas no se deben compartir."
    }
   },
@@ -2697,7 +2697,7 @@
    {
     "role": "subject",
     "label_es": "sujeto + be",
-    "en": "That's"
+    "en": "That’s"
    },
    {
     "role": "complement",
@@ -2707,7 +2707,7 @@
    {
     "role": "neg",
     "label_es": "tag negativo",
-    "en": "isn't"
+    "en": "isn’t"
    },
    {
     "role": "subject",
@@ -2721,7 +2721,7 @@
    }
   ],
   "example": {
-   "en": "That's the real problem, isn't it?",
+   "en": "That’s the real problem, isn’t it?",
    "es": "Ese es el verdadero problema, ¿no?"
   },
   "formula2": {
@@ -2735,7 +2735,7 @@
     {
      "role": "verb",
      "label_es": "frase negativa",
-     "en": "haven't signed"
+     "en": "haven’t signed"
     },
     {
      "role": "object",
@@ -2759,7 +2759,7 @@
     }
    ],
    "example": {
-    "en": "You haven't signed the log, have you?",
+    "en": "You haven’t signed the log, have you?",
     "es": "No has firmado el registro, ¿cierto?"
    }
   },
@@ -2769,15 +2769,15 @@
   },
   "compare": {
    "es": "Trabajas arriba, ¿verdad?",
-   "en": "You work upstairs, don't you?",
+   "en": "You work upstairs, don’t you?",
    "note_es": "En español basta '¿verdad?' o '¿no?'; en inglés el tag usa el auxiliar de la frase (aquí do)."
   },
   "mistake": {
-   "wrong": "You're coming, no?",
-   "right": "You're coming, aren't you?",
+   "wrong": "You’re coming, no?",
+   "right": "You’re coming, aren’t you?",
    "why_es": "En inglés no se usa ', no?': repite el auxiliar con la polaridad contraria."
   },
-  "tip_es": "Piensa en un espejo: lo positivo se vuelve negativo y lo negativo, positivo. Y ojo: I'm..., aren't I?"
+  "tip_es": "Piensa en un espejo: lo positivo se vuelve negativo y lo negativo, positivo. Y ojo: I’m..., aren’t I?"
  },
  "B1-16-0": {
   "icon": "🏆",
@@ -2787,7 +2787,7 @@
    {
     "role": "subject",
     "label_es": "yo + have",
-    "en": "I've"
+    "en": "I’ve"
    },
    {
     "role": "verb",
@@ -2811,7 +2811,7 @@
    }
   ],
   "example": {
-   "en": "I've led three projects so far this year.",
+   "en": "I’ve led three projects so far this year.",
    "es": "Este año he dirigido tres proyectos hasta ahora."
   },
   "formula2": {
@@ -2867,7 +2867,7 @@
  "B1-16-1": {
   "icon": "🏁",
   "purpose_es": "Para hablar de metas que quieres lograr antes de una fecha.",
-  "idea_es": "Will have + participio = estará hecho antes de la fecha. I'd like to have + participio = lo que te gustaría haber logrado (un deseo).",
+  "idea_es": "Will have + participio = estará hecho antes de la fecha. I’d like to have + participio = lo que te gustaría haber logrado (un deseo).",
   "formula": [
    {
     "role": "time",
@@ -2877,7 +2877,7 @@
    {
     "role": "subject",
     "label_es": "yo + will",
-    "en": "I'll"
+    "en": "I’ll"
    },
    {
     "role": "aux",
@@ -2901,7 +2901,7 @@
    }
   ],
   "example": {
-   "en": "By the end of next year I'll have completed both certifications.",
+   "en": "By the end of next year I’ll have completed both certifications.",
    "es": "Para finales del próximo año habré completado ambas certificaciones."
   },
   "formula2": {
@@ -2910,7 +2910,7 @@
     {
      "role": "subject",
      "label_es": "yo + would",
-     "en": "I'd"
+     "en": "I’d"
     },
     {
      "role": "verb",
@@ -2935,7 +2935,7 @@
     {
      "role": "time",
      "label_es": "fecha límite",
-     "en": "by the time I'm thirty"
+     "en": "by the time I’m thirty"
     },
     {
      "role": "end",
@@ -2944,7 +2944,7 @@
     }
    ],
    "example": {
-    "en": "I'd like to have moved into management by the time I'm thirty.",
+    "en": "I’d like to have moved into management by the time I’m thirty.",
     "es": "Me gustaría haber pasado a gerencia antes de los treinta."
    }
   },
@@ -2954,14 +2954,14 @@
   },
   "compare": {
    "es": "Me gustaría haber visitado más países para entonces.",
-   "en": "I'd like to have visited more countries by then.",
+   "en": "I’d like to have visited more countries by then.",
    "note_es": "'Me gustaría haber + participio' = would like to have + participio."
   },
   "mistake": {
-   "wrong": "By the time I will finish, I'll have saved enough.",
-   "right": "By the time I finish, I'll have saved enough.",
+   "wrong": "By the time I will finish, I’ll have saved enough.",
+   "right": "By the time I finish, I’ll have saved enough.",
    "why_es": "Después de by the time, el verbo va en presente."
   },
-  "tip_es": "By + fecha = 'para + fecha'. Para diciembre habré... = By December I'll have..."
+  "tip_es": "By + fecha = 'para + fecha'. Para diciembre habré... = By December I’ll have..."
  }
 }

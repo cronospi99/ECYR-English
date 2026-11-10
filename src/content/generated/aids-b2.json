@@ -779,6 +779,44 @@
      "note": "La primera: solo si hace frío. La segunda: la llevo por si acaso."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan estricta es la condición?",
+   "from": "abierta",
+   "to": "única condición",
+   "items": [
+    {
+     "word": "if",
+     "value": 30,
+     "example": "I’ll go **if** I have time.",
+     "es": "si"
+    },
+    {
+     "word": "as long as",
+     "value": 60,
+     "example": "You can stay **as long as** you’re quiet.",
+     "es": "mientras / siempre que"
+    },
+    {
+     "word": "provided (that)",
+     "value": 75,
+     "example": "We’ll sign **provided that** the price drops.",
+     "es": "siempre y cuando (formal)"
+    },
+    {
+     "word": "unless",
+     "value": 85,
+     "example": "I won’t go **unless** you come.",
+     "es": "a menos que"
+    },
+    {
+     "word": "only if",
+     "value": 100,
+     "example": "I’ll tell you **only if** you promise.",
+     "es": "solo si"
+    }
+   ]
   }
  ],
  "B2-5-0": [
@@ -1679,6 +1717,26 @@
      "note": "En preguntas y negativas se escribe “use to”, sin -d."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "Hábitos del pasado: ¿cuál sirve?",
+   "from": "solo acciones",
+   "to": "acciones y estados",
+   "items": [
+    {
+     "word": "would",
+     "value": 40,
+     "example": "Dad **would** take us fishing.",
+     "es": "acciones repetidas"
+    },
+    {
+     "word": "used to",
+     "value": 100,
+     "example": "We **used to** live by the river.",
+     "es": "acciones y estados"
+    }
+   ]
   }
  ],
  "B2-10-0": [
@@ -1997,6 +2055,38 @@
      "a": "I wish you would call more.",
      "b": "I hope you call more.",
      "note": "“Wish + would” es una queja; “hope” es una esperanza real."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "De posible a imposible",
+   "from": "aún puede pasar",
+   "to": "ya no tiene remedio",
+   "items": [
+    {
+     "word": "I hope + present",
+     "value": 10,
+     "example": "**I hope** she calls.",
+     "es": "espero (posible)"
+    },
+    {
+     "word": "I wish + would",
+     "value": 40,
+     "example": "**I wish** he **would** listen.",
+     "es": "ojalá cambiara (me molesta)"
+    },
+    {
+     "word": "I wish + past",
+     "value": 65,
+     "example": "**I wish** I **had** more time.",
+     "es": "ojalá (irreal ahora)"
+    },
+    {
+     "word": "I wish / if only + past perfect",
+     "value": 100,
+     "example": "**If only** I **had studied**.",
+     "es": "ojalá hubiera (pasado, sin remedio)"
     }
    ]
   }

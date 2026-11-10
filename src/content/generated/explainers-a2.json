@@ -83,9 +83,9 @@
       "note_es": "En español el verbo cambia (fuiste); en inglés el pasado lo lleva did y go se queda en forma base."
     },
     "mistake": {
-      "wrong": "She didn't worked late.",
-      "right": "She didn't work late.",
-      "why_es": "El pasado ya está en didn't; el verbo va en forma base."
+      "wrong": "She didn’t worked late.",
+      "right": "She didn’t work late.",
+      "why_es": "El pasado ya está en didn’t; el verbo va en forma base."
     },
     "tip_es": "Un solo marcador de pasado por frase: did + verbo base, o el verbo en pasado. Nunca los dos."
   },
@@ -372,7 +372,7 @@
       {
         "role": "be",
         "label_es": "is + not",
-        "en": "isn't"
+        "en": "isn’t"
       },
       {
         "role": "adjective",
@@ -391,7 +391,7 @@
       }
     ],
     "example": {
-      "en": "The flat isn't big enough.",
+      "en": "The flat isn’t big enough.",
       "es": "El apartamento no es lo suficientemente grande."
     },
     "formula2": {
@@ -400,7 +400,7 @@
         {
           "role": "subject",
           "label_es": "hay",
-          "en": "There's"
+          "en": "There’s"
         },
         {
           "role": "complement",
@@ -434,7 +434,7 @@
         }
       ],
       "example": {
-        "en": "There's too much noise and not enough parking.",
+        "en": "There’s too much noise and not enough parking.",
         "es": "Hay demasiado ruido y no hay suficiente parqueadero."
       }
     },
@@ -444,12 +444,12 @@
     },
     "compare": {
       "es": "No es suficientemente rápido.",
-      "en": "It isn't fast enough.",
+      "en": "It isn’t fast enough.",
       "note_es": "En español suficiente va antes del adjetivo; en inglés enough va después: fast enough."
     },
     "mistake": {
-      "wrong": "It isn't enough fast.",
-      "right": "It isn't fast enough.",
+      "wrong": "It isn’t enough fast.",
+      "right": "It isn’t fast enough.",
       "why_es": "Enough va después del adjetivo y antes del sustantivo."
     },
     "tip_es": "Adjetivo + enough (big enough), enough + sustantivo (enough time). Enough cambia de lado."
@@ -629,8 +629,8 @@
     },
     "compare": {
       "es": "Ya terminé el informe.",
-      "en": "I've already finished the report.",
-      "note_es": "En Colombia decimos \"ya terminé\"; en inglés already sin fecha pide present perfect: I've already finished."
+      "en": "I’ve already finished the report.",
+      "note_es": "En Colombia decimos \"ya terminé\"; en inglés already sin fecha pide present perfect: I’ve already finished."
     },
     "mistake": {
       "wrong": "I have visited them last summer.",
@@ -829,7 +829,7 @@
     },
     "compare": {
       "es": "Esa caja se ve pesada. Te ayudo.",
-      "en": "That box looks heavy. I'll help you.",
+      "en": "That box looks heavy. I’ll help you.",
       "note_es": "En español ofrecemos ayuda en presente (te ayudo); en inglés una oferta del momento lleva will."
     },
     "mistake": {
@@ -842,7 +842,7 @@
   "A2-5-1": {
     "icon": "🧭",
     "purpose_es": "Para decir qué es obligatorio, qué no lo es y qué recomiendas.",
-    "idea_es": "Have to / must = no hay opción. Don't have to = no es necesario. Should = te lo recomiendo. Had better = hazlo o habrá problemas.",
+    "idea_es": "Have to / must = no hay opción. Don’t have to = no es necesario. Should = te lo recomiendo. Had better = hazlo o habrá problemas.",
     "formula": [
       {
         "role": "subject",
@@ -914,20 +914,20 @@
     },
     "compare": {
       "es": "No tienes que pagar nada.",
-      "en": "You don't have to pay anything.",
-      "note_es": "No tienes que = don't have to (eres libre). No debes = mustn't (está prohibido)."
+      "en": "You don’t have to pay anything.",
+      "note_es": "No tienes que = don’t have to (eres libre). No debes = mustn’t (está prohibido)."
     },
     "mistake": {
       "wrong": "You must to show your ID.",
       "right": "You must show your ID.",
       "why_es": "Must y should van sin to; have to sí lleva to."
     },
-    "tip_es": "Don't have to = libertad; mustn't = prohibición. Si los cambias, cambias todo el mensaje."
+    "tip_es": "Don’t have to = libertad; mustn’t = prohibición. Si los cambias, cambias todo el mensaje."
   },
   "A2-6-0": {
     "icon": "🔌",
     "purpose_es": "Para usar verbos de dos partes y aceptar lo que te piden.",
-    "idea_es": "Algunos verbos llevan partícula (turn off, look after). Con pronombre, los separables se parten: turn it off. Para aceptar un pedido, di I'll...",
+    "idea_es": "Algunos verbos llevan partícula (turn off, look after). Con pronombre, los separables se parten: turn it off. Para aceptar un pedido, di I’ll...",
     "formula": [
       {
         "role": "modal",
@@ -975,7 +975,7 @@
         {
           "role": "subject",
           "label_es": "sujeto + will",
-          "en": "I'll"
+          "en": "I’ll"
         },
         {
           "role": "verb",
@@ -999,7 +999,7 @@
         }
       ],
       "example": {
-        "en": "Sure, I'll turn it down.",
+        "en": "Sure, I’ll turn it down.",
         "es": "Claro, ya le bajo."
       }
     },
@@ -1117,7 +1117,7 @@
   "A2-7-0": {
     "icon": "🎯",
     "purpose_es": "Para decir para qué haces algo o para qué sirve un objeto.",
-    "idea_es": "Propósito de una acción: to + verbo (I called to confirm). Función de un objeto: for + -ing (it's for cleaning). Nunca for + to.",
+    "idea_es": "Propósito de una acción: to + verbo (I called to confirm). Función de un objeto: for + -ing (it’s for cleaning). Nunca for + to.",
     "formula": [
       {
         "role": "subject",
@@ -1212,7 +1212,7 @@
   "A2-7-1": {
     "icon": "💡",
     "purpose_es": "Para dar instrucciones y sugerencias sin sonar mandón.",
-    "idea_es": "El imperativo es el verbo base sin sujeto: Open the app. Para suavizarlo usa Try + -ing, It's a good idea to... o Let's.",
+    "idea_es": "El imperativo es el verbo base sin sujeto: Open the app. Para suavizarlo usa Try + -ing, It’s a good idea to... o Let’s.",
     "formula": [
       {
         "role": "verb",
@@ -1255,7 +1255,7 @@
         {
           "role": "subject",
           "label_es": "frase inicial",
-          "en": "It's a good idea"
+          "en": "It’s a good idea"
         },
         {
           "role": "verb",
@@ -1274,7 +1274,7 @@
         }
       ],
       "example": {
-        "en": "It's a good idea to write down the error message.",
+        "en": "It’s a good idea to write down the error message.",
         "es": "Es buena idea anotar el mensaje de error."
       }
     },
@@ -1292,7 +1292,7 @@
       "right": "I suggest calling support.",
       "why_es": "Suggest no va con persona + to: usa -ing o that you call."
     },
-    "tip_es": "Para sonar amable: Try + -ing, Make sure..., Let's... Así la orden se vuelve consejo."
+    "tip_es": "Para sonar amable: Try + -ing, Make sure..., Let’s... Así la orden se vuelve consejo."
   },
   "A2-8-0": {
     "icon": "📆",
@@ -1421,7 +1421,7 @@
         {
           "role": "subject",
           "label_es": "sujeto + will",
-          "en": "I'll"
+          "en": "I’ll"
         },
         {
           "role": "verb",
@@ -1440,7 +1440,7 @@
         }
       ],
       "example": {
-        "en": "When I arrive, I'll call you.",
+        "en": "When I arrive, I’ll call you.",
         "es": "Cuando llegue, te llamo."
       }
     },
@@ -1450,12 +1450,12 @@
     },
     "compare": {
       "es": "Te aviso apenas sepa algo.",
-      "en": "I'll let you know as soon as I hear something.",
+      "en": "I’ll let you know as soon as I hear something.",
       "note_es": "El español usa subjuntivo (sepa); el inglés usa presente después de as soon as, nunca will."
     },
     "mistake": {
-      "wrong": "When I will arrive, I'll call you.",
-      "right": "When I arrive, I'll call you.",
+      "wrong": "When I will arrive, I’ll call you.",
+      "right": "When I arrive, I’ll call you.",
       "why_es": "En la parte de tiempo (when, before...) no va will: usa presente."
     },
     "tip_es": "Will va una sola vez, en la acción principal. Después de when, before, after o as soon as: presente."
@@ -1516,7 +1516,7 @@
         {
           "role": "subject",
           "label_es": "sujeto + am",
-          "en": "I'm"
+          "en": "I’m"
         },
         {
           "role": "aux",
@@ -1540,7 +1540,7 @@
         }
       ],
       "example": {
-        "en": "Next year I'm going to move closer to the office.",
+        "en": "Next year I’m going to move closer to the office.",
         "es": "El próximo año me voy a mudar más cerca de la oficina."
       }
     },
@@ -1550,8 +1550,8 @@
     },
     "compare": {
       "es": "Antes no leía mucho; ahora leo un libro al mes.",
-      "en": "I didn't use to read much; now I read a book a month.",
-      "note_es": "Cada parte lleva su propio tiempo y su marcador: didn't use to... now..."
+      "en": "I didn’t use to read much; now I read a book a month.",
+      "note_es": "Cada parte lleva su propio tiempo y su marcador: didn’t use to... now..."
     },
     "mistake": {
       "wrong": "Before I live in Cali, now I live in Bogotá.",
@@ -1583,7 +1583,7 @@
       {
         "role": "subject",
         "label_es": "sujeto + will",
-        "en": "we'll"
+        "en": "we’ll"
       },
       {
         "role": "verb",
@@ -1597,7 +1597,7 @@
       }
     ],
     "example": {
-      "en": "If it rains, we'll cancel.",
+      "en": "If it rains, we’ll cancel.",
       "es": "Si llueve, cancelamos."
     },
     "formula2": {
@@ -1611,7 +1611,7 @@
         {
           "role": "modal",
           "label_es": "will + not",
-          "en": "won't"
+          "en": "won’t"
         },
         {
           "role": "verb",
@@ -1640,7 +1640,7 @@
         }
       ],
       "example": {
-        "en": "We won't get tickets unless we book this week.",
+        "en": "We won’t get tickets unless we book this week.",
         "es": "No conseguiremos boletas si no reservamos esta semana."
       }
     },
@@ -1650,12 +1650,12 @@
     },
     "compare": {
       "es": "Si tengo tiempo, te ayudo.",
-      "en": "If I have time, I'll help you.",
+      "en": "If I have time, I’ll help you.",
       "note_es": "Como en español, después de si va presente. La diferencia: el resultado en inglés suele llevar will."
     },
     "mistake": {
-      "wrong": "If I will have time, I'll help you.",
-      "right": "If I have time, I'll help you.",
+      "wrong": "If I will have time, I’ll help you.",
+      "right": "If I have time, I’ll help you.",
       "why_es": "Después de if va presente, no will."
     },
     "tip_es": "If y will no se sientan juntos: will va en la otra mitad de la frase."
@@ -1663,7 +1663,7 @@
   "A2-10-0": {
     "icon": "🤝",
     "purpose_es": "Para hablar de gustos y responder \"yo también\" o \"yo no\".",
-    "idea_es": "Después de like, love, enjoy, hate o can't stand va -ing. Para responder, repite solo el auxiliar: So do I, Neither can I, I don't.",
+    "idea_es": "Después de like, love, enjoy, hate o can’t stand va -ing. Para responder, repite solo el auxiliar: So do I, Neither can I, I don’t.",
     "formula": [
       {
         "role": "subject",
@@ -1673,7 +1673,7 @@
       {
         "role": "verb",
         "label_es": "verbo de gusto",
-        "en": "can't stand"
+        "en": "can’t stand"
       },
       {
         "role": "verb",
@@ -1692,7 +1692,7 @@
       }
     ],
     "example": {
-      "en": "I can't stand working late.",
+      "en": "I can’t stand working late.",
       "es": "No soporto trabajar hasta tarde."
     },
     "formula2": {
@@ -1738,7 +1738,7 @@
       "right": "So do I.",
       "why_es": "Después de so / neither, el auxiliar va antes del sujeto."
     },
-    "tip_es": "Copia el auxiliar de la otra persona: I can't... Neither can I. I love... So do I."
+    "tip_es": "Copia el auxiliar de la otra persona: I can’t... Neither can I. I love... So do I."
   },
   "A2-10-1": {
     "icon": "🔗",
@@ -1981,7 +1981,7 @@
         {
           "role": "be",
           "label_es": "are + not",
-          "en": "aren't"
+          "en": "aren’t"
         },
         {
           "role": "verb",
@@ -2000,7 +2000,7 @@
         }
       ],
       "example": {
-        "en": "Mobile phones aren't allowed during the exam.",
+        "en": "Mobile phones aren’t allowed during the exam.",
         "es": "No se permiten celulares durante el examen."
       }
     },
@@ -2205,12 +2205,12 @@
     },
     "compare": {
       "es": "Llevo una hora esperando.",
-      "en": "I've been waiting for an hour.",
-      "note_es": "\"Llevo + tiempo + -ndo\" se dice have been + -ing + for. No uses el presente: I'm waiting."
+      "en": "I’ve been waiting for an hour.",
+      "note_es": "\"Llevo + tiempo + -ndo\" se dice have been + -ing + for. No uses el presente: I’m waiting."
     },
     "mistake": {
       "wrong": "I am waiting since nine.",
-      "right": "I've been waiting since nine.",
+      "right": "I’ve been waiting since nine.",
       "why_es": "Con since / for y algo que sigue, usa have been + -ing."
     },
     "tip_es": "¿En español dirías \"llevo...\"? Casi siempre es have / has been + -ing."
@@ -2266,12 +2266,12 @@
     },
     "compare": {
       "es": "Estoy aburrido.",
-      "en": "I'm bored.",
-      "note_es": "En español \"aburrido\" sirve para los dos; en inglés I'm boring dice que tú aburres a los demás."
+      "en": "I’m bored.",
+      "note_es": "En español \"aburrido\" sirve para los dos; en inglés I’m boring dice que tú aburres a los demás."
     },
     "mistake": {
-      "wrong": "I'm very interesting in the job.",
-      "right": "I'm very interested in the job.",
+      "wrong": "I’m very interesting in the job.",
+      "right": "I’m very interested in the job.",
       "why_es": "La persona que siente el interés va con -ed."
     },
     "tip_es": "Cosas -ing, personas -ed: The film is boring. I am bored."
@@ -2384,7 +2384,7 @@
   "A2-14-0": {
     "icon": "🕵️",
     "purpose_es": "Para deducir algo y mostrar qué tan seguro estás.",
-    "idea_es": "Must = casi seguro que sí. May / might / could = es posible. Can't = casi seguro que no. Todos van con verbo base.",
+    "idea_es": "Must = casi seguro que sí. May / might / could = es posible. Can’t = casi seguro que no. Todos van con verbo base.",
     "formula": [
       {
         "role": "subject",
@@ -2426,8 +2426,8 @@
         },
         {
           "role": "modal",
-          "label_es": "can't",
-          "en": "can't"
+          "label_es": "can’t",
+          "en": "can’t"
         },
         {
           "role": "verb",
@@ -2446,7 +2446,7 @@
         }
       ],
       "example": {
-        "en": "That can't be right.",
+        "en": "That can’t be right.",
         "es": "Eso no puede estar bien."
       }
     },
@@ -2457,19 +2457,19 @@
     "compare": {
       "es": "Debe de estar almorzando.",
       "en": "She must be at lunch.",
-      "note_es": "\"Debe de\" (deducción) = must be. Para \"no puede ser\" usa can't, no mustn't."
+      "note_es": "\"Debe de\" (deducción) = must be. Para \"no puede ser\" usa can’t, no mustn’t."
     },
     "mistake": {
-      "wrong": "He mustn't be the manager.",
-      "right": "He can't be the manager.",
-      "why_es": "Para deducir que algo no es cierto se usa can't."
+      "wrong": "He mustn’t be the manager.",
+      "right": "He can’t be the manager.",
+      "why_es": "Para deducir que algo no es cierto se usa can’t."
     },
-    "tip_es": "Escala: must (casi 100 %) > might / could (50 %) > can't (casi 0 %)."
+    "tip_es": "Escala: must (casi 100 %) > might / could (50 %) > can’t (casi 0 %)."
   },
   "A2-14-1": {
     "icon": "🚦",
     "purpose_es": "Para decir qué se permite, qué es obligatorio y qué está prohibido.",
-    "idea_es": "Permiso: can, may, be allowed to. Obligación: must, have to. Prohibición: mustn't, can't. Ojo: don't have to = no es necesario.",
+    "idea_es": "Permiso: can, may, be allowed to. Obligación: must, have to. Prohibición: mustn’t, can’t. Ojo: don’t have to = no es necesario.",
     "formula": [
       {
         "role": "subject",
@@ -2479,7 +2479,7 @@
       {
         "role": "modal",
         "label_es": "prohibición",
-        "en": "mustn't"
+        "en": "mustn’t"
       },
       {
         "role": "verb",
@@ -2503,7 +2503,7 @@
       }
     ],
     "example": {
-      "en": "You mustn't leave the door open.",
+      "en": "You mustn’t leave the door open.",
       "es": "No puedes dejar la puerta abierta."
     },
     "formula2": {
@@ -2555,11 +2555,11 @@
       "note_es": "El \"se puede\" impersonal pasa a una persona en inglés: Are we allowed to...? o Can I...?"
     },
     "mistake": {
-      "wrong": "You don't have to smoke here.",
-      "right": "You mustn't smoke here.",
-      "why_es": "Para prohibir usa mustn't o can't; don't have to = no es necesario."
+      "wrong": "You don’t have to smoke here.",
+      "right": "You mustn’t smoke here.",
+      "why_es": "Para prohibir usa mustn’t o can’t; don’t have to = no es necesario."
     },
-    "tip_es": "Semáforo: can = verde, have to = amarillo, mustn't = rojo."
+    "tip_es": "Semáforo: can = verde, have to = amarillo, mustn’t = rojo."
   },
   "A2-15-0": {
     "icon": "💭",
@@ -2632,7 +2632,7 @@
         {
           "role": "subject",
           "label_es": "sujeto + would",
-          "en": "I'd"
+          "en": "I’d"
         },
         {
           "role": "verb",
@@ -2646,7 +2646,7 @@
         }
       ],
       "example": {
-        "en": "If I were you, I'd talk to her.",
+        "en": "If I were you, I’d talk to her.",
         "es": "Yo que tú, hablaría con ella."
       }
     },

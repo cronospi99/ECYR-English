@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import type { GrammarChart } from '@/content/types';
 import type { KeySpec } from './formula';
 import { Hl, ink, tint } from './ui';
@@ -5,10 +7,15 @@ import { Hl, ink, tint } from './ui';
 /**
  * Colour-banded table: tinted header in the unit colour, first column as a
  * coloured band, zebra rows. Below `sm` every row becomes a small stacked card
- * so nothing scrolls sideways on a phone.
+ * so nothing scrolls sideways on a phone. Long tables open with their first
+ * rows only (the essentials come first); a button shows the rest.
  */
+const SHORT = 4;
 export function ColorTable({ chart, color, spec }: { chart: GrammarChart; color: string; spec?: KeySpec }) {
-  const { cols, rows, title } = chart;
+  const { cols, title } = chart;
+  const [all, setAll] = useState(false);
+  const long = chart.rows.length > SHORT + 1;
+  const rows = long && !all ? chart.rows.slice(0, SHORT) : chart.rows;
   return (
     <figure className="overflow-hidden rounded-[18px]" style={{ boxShadow: `inset 0 0 0 1px ${tint(color, 22)}` }}>
       {title && (
@@ -74,6 +81,18 @@ export function ColorTable({ chart, color, spec }: { chart: GrammarChart; color:
           </li>
         ))}
       </ul>
+      {long && (
+        <button
+          type="button"
+          onClick={() => setAll(!all)}
+          aria-expanded={all}
+          className="flex min-h-10 w-full items-center justify-center gap-1.5 px-4 py-2 text-[13.5px] font-semibold"
+          style={{ background: tint(color, 9), color: ink(color) }}
+        >
+          {all ? 'Ver menos' : `Ver la tabla completa (${chart.rows.length} filas)`}
+          <ChevronDown size={15} className={all ? 'rotate-180 transition-transform' : 'transition-transform'} />
+        </button>
+      )}
     </figure>
   );
 }
