@@ -119,6 +119,21 @@ N2. NOTAS: TAMAÑO, FUENTES Y MÁS COLORES
   Google Fonts.
 - Las notas anteriores se abren igual y todo sigue guardándose como texto.
 
+G9. PASS THE DOODLE Y YOU DRAW: AVATARES DE ANIMALES Y MÚSICA
+- Ya no se usan los personajes de los profes. Cada estudiante arma su avatar al
+  entrar: 12 animales (gato, perro, oso, conejo, zorro, panda, rana, cerdo, búho,
+  pingüino, león, ajolote), 8 colores, 12 cosas en la cabeza (sombrero de copa,
+  corona, gorro con hélice, cuernos vikingos, cuerno de unicornio, aureola,
+  banano, huevo frito…) y 11 en la cara (gafas de corazón, monóculo, bigote,
+  parche pirata, nariz de payaso, gafas 3D, chicle, ojos locos…). Botón
+  «Sorpréndeme» para uno al azar. Se puede cambiar en la sala de espera.
+- Música de fondo «Hoodie Weather», solo en la pantalla del anfitrión
+  (proyector), nunca en los celulares. Botón de nota musical para quitarla.
+  Se usa solo un fragmento de 58 s en bucle (public/audio/hoodie-weather.mp3).
+- Créditos de la canción en la portada de cada juego y en la sala de espera del
+  proyector. El nombre del artista y su enlace se ponen en
+  src/features/games/music.tsx (TRACK.author y TRACK.url).
+
 U2. UNIDADES: CONVERSACIONES DEL MUNDO, ESCALAS Y TABLAS MÁS CORTAS
 - 177 conversaciones nuevas: una más por cada tema gramatical de A1 a C2 (ahora 3 por
   tema). Todas ocurren fuera de Colombia (Tokio, Nairobi, Lisboa, Seúl, Lagos, Sídney,

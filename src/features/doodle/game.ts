@@ -5,6 +5,7 @@
    Network: the room creator's browser runs DoodleHost (authoritative) and talks to every player
    (DoodleClient, including the creator's own) through the shared relay. Drawings travel as
    compressed WebP data URLs under the relay's 64 KB message limit. */
+import { cleanAv } from '@/features/games/pet';
 import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 
 export type Kind = 'write' | 'draw' | 'describe';
@@ -67,7 +68,7 @@ export class DoodleHost {
       case 'watch': this.relay.send(this.lobbyMsg(), peer); if (this.phase !== 'play') this.sendShow(peer); break;
       case 'hello': {
         const name = String(d.name ?? '').trim().slice(0, 20) || 'Player';
-        const av = Math.max(0, Math.min(24, Number(d.av) | 0));
+        const av = cleanAv(d.av);
         this.gone.delete(peer);
         if (this.phase === 'lobby') {
           if (this.lobby.size >= 40 && !this.lobby.has(peer)) { this.relay.send({ k: 'full' }, peer); return; }

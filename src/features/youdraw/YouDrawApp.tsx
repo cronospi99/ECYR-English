@@ -7,12 +7,13 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowLeft, Check, ChevronLeft, ChevronRight, Crown, Eraser, Pencil, Play, Redo2, Send, SkipForward, Trash2, Undo2, Users, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowLeft, Check, Crown, Eraser, Pencil, Play, Redo2, Send, SkipForward, Trash2, Undo2, Users, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
-import { TEACHERS } from '@/features/cards/teachers';
-import { TeacherToon } from '@/features/cards/TeacherToon';
+import { PetFace, PetMaker } from '@/features/games/PetAvatar';
+import { savedPet, storePet } from '@/features/games/pet';
+import { MusicBtn, MusicCredit, useGameMusic } from '@/features/games/music';
 import { JoinQr } from '@/components/ui/JoinQr';
 import { setLang, t, useLang } from '@/features/classwars/i18n';
 import { CHOOSE_SECS, INK_COLORS, INK_H, INK_SIZES, INK_W, YD_REVEALS, YD_TIMES, YdClient, YdHost, type FeedE, type Ink, type PubPlayer, type Stroke } from './game';
@@ -49,7 +50,6 @@ function Btn({ tone = 'red', className, children, ...rest }: React.ButtonHTMLAtt
 }
 
 const savedName = () => { try { return localStorage.getItem('dd:name') ?? ''; } catch { return ''; } };
-const savedAv = () => { try { const v = Number(localStorage.getItem('dd:av')); return Number.isInteger(v) && v >= 0 && v < TEACHERS.length ? v : Math.floor(Math.random() * TEACHERS.length); } catch { return 0; } };
 const store = (k: string, v: string) => { try { localStorage.setItem(k, v); } catch { /* ignore */ } };
 
 function useSub(x: { subscribe: (f: () => void) => () => void } | null) {
@@ -100,14 +100,7 @@ function Logo({ size = 64 }: { size?: number }) {
   );
 }
 
-function Face({ ci, size }: { ci: number; size: number }) {
-  const look = TEACHERS[ci]?.look ?? TEACHERS[0].look;
-  return (
-    <svg viewBox="-64 -186 128 128" width={size} height={size} className="shrink-0" aria-hidden>
-      <TeacherToon look={look} t={1 + ci * 0.37} />
-    </svg>
-  );
-}
+const Face = ({ ci, size }: { ci: number; size: number }) => <PetFace av={ci} size={size} />;
 
 function LangSwitch() {
   const lang = useLang();
@@ -173,6 +166,7 @@ function Home() {
           ))}
         </div>
         <p className="mt-6 text-center text-[13.5px] font-bold text-white/60">{YD_LEVELS.map((l) => `${l.label}: ${YD_WORDS[l.id].length}`).join(' · ')} {t('words', 'palabras')}</p>
+        <MusicCredit className="mt-5" />
         {!relayConfigured() && <p className="mt-4 rounded-2xl bg-black/30 px-4 py-3 text-center text-[14px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>}
       </div>
     </div>
@@ -186,10 +180,9 @@ function Join() {
   const profile = useAuth((s) => s.profile);
   const [code, setCode] = useState((param ?? '').toUpperCase());
   const [name, setName] = useState(() => savedName() || (profile?.full_name ?? '').split(' ')[0] || '');
-  const [av, setAv] = useState(savedAv);
+  const [av, setAv] = useState(savedPet);
   const ok = /^[A-Z0-9]{4,8}$/.test(code) && name.trim().length >= 2;
-  const go = () => { if (!ok) return; store('dd:name', name.trim()); store('dd:av', String(av)); nav(`/youdraw/play/${code}`); };
-  const n = TEACHERS.length;
+  const go = () => { if (!ok) return; store('dd:name', name.trim()); storePet(av); nav(`/youdraw/play/${code}`); };
   return (
     <Center>
       <div className="yd-card w-full max-w-[440px] p-6">
@@ -202,15 +195,9 @@ function Join() {
         <input id="yd-code" value={code} onChange={(e) => setCode(e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 8))} placeholder="ABCD" autoCapitalize="characters" autoComplete="off" onKeyDown={(e) => e.key === 'Enter' && go()}
           className="mt-1 h-16 w-full rounded-2xl border-[3px] border-[#ddd6ff] text-center text-[38px] font-black tracking-[0.2em] text-[#1d1840] outline-none focus:border-[#ff4757]" />
         <div className="mt-4 mb-1 text-[13px] font-extrabold tracking-wide text-[#7a70b8] uppercase">{t('You', 'Tú')}</div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1">
-            <button type="button" onClick={() => setAv((av + n - 1) % n)} className="grid h-9 w-9 place-items-center rounded-full bg-[#eeeaff] text-[#2a2170]" aria-label={t('Previous', 'Anterior')}><ChevronLeft size={18} /></button>
-            <Face ci={av} size={78} />
-            <button type="button" onClick={() => setAv((av + 1) % n)} className="grid h-9 w-9 place-items-center rounded-full bg-[#eeeaff] text-[#2a2170]" aria-label={t('Next', 'Siguiente')}><ChevronRight size={18} /></button>
-          </div>
-          <input value={name} onChange={(e) => setName(e.target.value.slice(0, 18))} placeholder={t('Your name', 'Tu nombre')} aria-label={t('Your name', 'Tu nombre')} autoFocus={!!param}
-            className="h-12 min-w-0 flex-1 rounded-2xl border-[3px] border-[#ddd6ff] bg-white px-4 text-[18px] font-extrabold text-[#1d1840] outline-none focus:border-[#ff4757]" onKeyDown={(e) => e.key === 'Enter' && go()} />
-        </div>
+        <input value={name} onChange={(e) => setName(e.target.value.slice(0, 18))} placeholder={t('Your name', 'Tu nombre')} aria-label={t('Your name', 'Tu nombre')} autoFocus={!!param}
+          className="h-12 w-full rounded-2xl border-[3px] border-[#ddd6ff] bg-white px-4 text-[18px] font-extrabold text-[#1d1840] outline-none focus:border-[#ff4757]" onKeyDown={(e) => e.key === 'Enter' && go()} />
+        <div className="mt-2"><PetMaker av={av} onChange={setAv} /></div>
         <Btn tone="red" className="mt-5 h-14 w-full text-[19px]" disabled={!ok} onClick={go}>{t('Join!', '¡Entrar!')}</Btn>
       </div>
     </Center>
@@ -570,6 +557,7 @@ function Chip({ on, children, onClick }: { on: boolean; children: ReactNode; onC
 
 function HostScreen({ host, onExit }: { host: YdHost; onExit: () => void }) {
   useSub(host);
+  useGameMusic();
   const ph = host.phase;
   const players = host.list;
   const online = players.filter((p) => p.online);
@@ -592,6 +580,7 @@ function HostScreen({ host, onExit }: { host: YdHost; onExit: () => void }) {
       {ph !== 'lobby' && ph !== 'end' && <button type="button" onClick={() => { if (confirm(t('End the game now and show the winners?', '¿Terminar el juego y mostrar los ganadores?'))) host.endGame(); }} className="rounded-xl bg-white/10 px-3 py-2 text-[13px] font-extrabold hover:bg-white/20">{t('End game', 'Terminar juego')}</button>}
       {ph === 'end' && <Btn tone="yellow" className="h-11" onClick={() => host.again()}>{t('Play again', 'Jugar otra vez')}</Btn>}
       <MuteBtn />
+      <MusicBtn />
       <button type="button" onClick={() => { if (confirm(t('Close the room?', '¿Cerrar la sala?'))) onExit(); }} className="rounded-xl bg-white/10 px-3 py-2 text-[13px] font-extrabold hover:bg-white/20">{t('Close', 'Cerrar')}</button>
     </div>
   );
@@ -606,6 +595,7 @@ function HostScreen({ host, onExit }: { host: YdHost; onExit: () => void }) {
           <div className="rounded-[26px] bg-white px-8 py-2 text-[66px] leading-none font-black tracking-[0.12em] text-[#2a2170] shadow-[0_8px_0_#c9c3f2]">{host.code}</div>
           <JoinQr path="/youdraw/join" code={host.code} size={190} label={t('Show the QR full screen', 'Mostrar el QR en grande')} />
           <div className="text-[13px] font-bold text-white/60">{t('Students can also join after the game starts.', 'Los estudiantes también pueden entrar con el juego empezado.')}</div>
+          <MusicCredit />
         </div>
         <div className="flex min-h-0 flex-1 flex-col gap-4">
           <div className="yd-card p-4">
@@ -740,7 +730,7 @@ function PlayRoute() {
     let peer = '';
     try { peer = sessionStorage.getItem('yd:peer:' + code) ?? ''; } catch { /* ignore */ }
     if (!peer) { peer = 'p' + makeId(); try { sessionStorage.setItem('yd:peer:' + code, peer); } catch { /* ignore */ } }
-    const c = new YdClient(code.toUpperCase(), peer, name, savedAv());
+    const c = new YdClient(code.toUpperCase(), peer, name, savedPet());
     c.onSound = (s) => sfx[s]();
     setClient(c);
     if (import.meta.env.DEV) (window as unknown as { __ydc: unknown }).__ydc = c;
@@ -764,17 +754,12 @@ function PlayScreen({ client, code }: { client: YdClient; code: string }) {
   const mine = st.drawer === client.peer;
 
   if (st.ph === 'lobby') {
-    const n = TEACHERS.length;
     return (
       <div className="flex h-full flex-col items-center overflow-y-auto px-4 pt-8 pb-6 text-center">
         <Logo size={80} />
         <div className="yd-title mt-2 text-[28px]">{t(`You're in, ${client.name}!`, `¡Estás dentro, ${client.name}!`)}</div>
         <div className="text-[15px] font-bold text-white/75">{t('Room', 'Sala')} {code} · {t('wait for the teacher to start', 'espera a que el profe empiece')}</div>
-        <div className="mt-4 flex items-center gap-1 rounded-2xl bg-white/12 p-1">
-          <button type="button" onClick={() => { const v = (client.av + n - 1) % n; store('dd:av', String(v)); client.setAvatar(v); }} className="grid h-9 w-9 place-items-center rounded-full bg-white/15" aria-label={t('Previous', 'Anterior')}><ChevronLeft size={18} /></button>
-          <Face ci={client.av} size={92} />
-          <button type="button" onClick={() => { const v = (client.av + 1) % n; store('dd:av', String(v)); client.setAvatar(v); }} className="grid h-9 w-9 place-items-center rounded-full bg-white/15" aria-label={t('Next', 'Siguiente')}><ChevronRight size={18} /></button>
-        </div>
+        <div className="mt-4 w-full max-w-[420px]"><PetMaker av={client.av} onChange={(v) => { storePet(v); client.setAvatar(v); }} dark /></div>
         <div className="mt-5 flex items-center gap-2 text-[16px] font-black"><Users size={18} /> {st.players.filter((p) => p.online).length} {t('in the room', 'en la sala')}</div>
         <div className="mt-2 flex max-w-[520px] flex-wrap justify-center gap-1.5">
           {st.players.map((p) => <div key={p.peer} className="flex items-center gap-1 rounded-full bg-white/10 py-0.5 pr-2.5 pl-0.5"><Face ci={p.av} size={26} /><span className="text-[13px] font-black">{p.name}</span></div>)}

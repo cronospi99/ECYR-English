@@ -6,6 +6,7 @@
    Network: the teacher's browser runs YdHost (authoritative) and talks to every phone (YdClient)
    through the shared relay. The relay drops anything above ~30 messages/s per socket, so the host
    batches the drawing, the guess feed and the public state into one broadcast every FLUSH_MS. */
+import { cleanAv } from '@/features/games/pet';
 import { Relay, type Envelope, type NetStatus } from '@/lib/relay';
 import { YD_WORDS, type YdLevel } from './words';
 
@@ -226,7 +227,7 @@ export class YdHost {
 
   private hello(peer: string, d: Record<string, unknown>) {
     const name = String(d.name ?? '').replace(/\s+/g, ' ').trim().slice(0, 18) || 'Player';
-    const av = Math.max(0, Math.min(24, Number(d.av) | 0));
+    const av = cleanAv(d.av);
     let p = this.players.get(peer);
     if (!p) {
       if (this.players.size >= MAX_PLAYERS) { this.relay.send({ k: 'full' }, peer); return; }
