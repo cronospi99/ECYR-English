@@ -1230,6 +1230,38 @@
      "note": "Con otra persona, el verbo va en pasado aunque hable del futuro."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "Fuerza de la preferencia",
+   "from": "me da igual",
+   "to": "lo prefiero mucho",
+   "items": [
+    {
+     "word": "I don’t mind",
+     "value": 10,
+     "example": "**I don’t mind** either way.",
+     "es": "me da igual"
+    },
+    {
+     "word": "I’d prefer to",
+     "value": 60,
+     "example": "**I’d prefer to** study online.",
+     "es": "preferiría (formal)"
+    },
+    {
+     "word": "I’d rather",
+     "value": 70,
+     "example": "**I’d rather** stay home.",
+     "es": "prefiero (hablado)"
+    },
+    {
+     "word": "I’d much rather",
+     "value": 95,
+     "example": "**I’d much rather** walk than drive.",
+     "es": "prefiero mil veces"
+    }
+   ]
   }
  ],
  "B1-8-1": [
@@ -1544,6 +1576,44 @@
      "a": "Will you be using the car tonight?",
      "b": "Will you use the car tonight?",
      "note": "La primera pregunta por planes con cortesía; la segunda puede sonar a petición."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan seguro es el pronóstico?",
+   "from": "lo dudo",
+   "to": "seguro",
+   "items": [
+    {
+     "word": "probably won’t",
+     "value": 15,
+     "example": "People **probably won’t** use cash.",
+     "es": "probablemente no"
+    },
+    {
+     "word": "might / may",
+     "value": 45,
+     "example": "We **might** live on Mars.",
+     "es": "puede que"
+    },
+    {
+     "word": "will probably",
+     "value": 75,
+     "example": "Cars **will probably** drive themselves.",
+     "es": "probablemente"
+    },
+    {
+     "word": "will",
+     "value": 90,
+     "example": "Cities **will** grow.",
+     "es": "seguro"
+    },
+    {
+     "word": "will have + participle",
+     "value": 95,
+     "example": "By 2050 we **will have found** a cure.",
+     "es": "ya cumplido para esa fecha"
     }
    ]
   }

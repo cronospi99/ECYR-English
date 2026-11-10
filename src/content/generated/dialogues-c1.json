@@ -1,6 +1,50 @@
 {
  "C1-1-0": [
   {
+   "title": "The merger",
+   "titleEs": "La fusión",
+   "scene": "🏢 En una oficina de Fráncfort: Katrin y Olu comentan los rumores de una fusión.",
+   "cast": [
+    {
+     "name": "Katrin",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Olu",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Katrin",
+     "line": "Word is the deal fell through at the last minute.",
+     "es": "Dicen que el negocio se cayó a última hora."
+    },
+    {
+     "sp": "Olu",
+     "line": "I heard they called it off because the numbers didn’t add up.",
+     "es": "Oí que lo cancelaron porque las cifras no cuadraban."
+    },
+    {
+     "sp": "Katrin",
+     "line": "Management will try to play it down, of course.",
+     "es": "La gerencia va a tratar de restarle importancia, claro."
+    },
+    {
+     "sp": "Olu",
+     "line": "We’ll have to put up with another restructuring, then.",
+     "es": "Entonces nos va a tocar aguantar otra reestructuración."
+    },
+    {
+     "sp": "Katrin",
+     "line": "Let’s see how it pans out before we start looking around.",
+     "es": "Veamos cómo resulta antes de empezar a buscar por otro lado."
+    }
+   ]
+  },
+  {
    "title": "A friendship on the rocks",
    "titleEs": "Una amistad en crisis",
    "scene": "☕ En un café de Chapinero: dos amigas hablan de una pelea con una amiga en común.",
@@ -24,32 +68,32 @@
     },
     {
      "sp": "Valentina",
-     "line": "Not really. We fell out over the wedding plans and she's been giving me the cold shoulder ever since.",
+     "line": "Not really. We fell out over the wedding plans and she’s been giving me the cold shoulder ever since.",
      "es": "No mucho. Nos peleamos por los planes del matrimonio y desde entonces me ha estado ignorando."
     },
     {
      "sp": "Chloe",
-     "line": "Honestly, I don't know how you put up with her moods.",
+     "line": "Honestly, I don’t know how you put up with her moods.",
      "es": "La verdad, no sé cómo le aguantas los cambios de humor."
     },
     {
      "sp": "Valentina",
-     "line": "I've always looked up to her, that's why. She's been through a lot.",
+     "line": "I’ve always looked up to her, that’s why. She’s been through a lot.",
      "es": "Siempre la he admirado, por eso. Ha pasado por mucho."
     },
     {
      "sp": "Chloe",
-     "line": "Still, you can't keep bottling it up. Why don't you sit down and talk it over?",
+     "line": "Still, you can’t keep bottling it up. Why don’t you sit down and talk it over?",
      "es": "Aun así, no puedes seguir guardándotelo. ¿Por qué no se sientan y lo hablan?"
     },
     {
      "sp": "Valentina",
-     "line": "I've been putting it off for weeks. Every time I bring it up, she clams up.",
+     "line": "I’ve been putting it off for weeks. Every time I bring it up, she clams up.",
      "es": "Llevo semanas aplazándolo. Cada vez que saco el tema, se cierra."
     },
     {
      "sp": "Chloe",
-     "line": "Then don't let it drag on. Call her tonight and get it over with.",
+     "line": "Then don’t let it drag on. Call her tonight and get it over with.",
      "es": "Entonces no dejes que se alargue. Llámala esta noche y sal de eso de una vez."
     }
    ]
@@ -78,7 +122,7 @@
     },
     {
      "sp": "Andrés",
-     "line": "Eventually. At first they wouldn't budge, but I pointed out that we could easily turn to their competitors.",
+     "line": "Eventually. At first they wouldn’t budge, but I pointed out that we could easily turn to their competitors.",
      "es": "Al final sí. Al principio no se movían, pero les hice ver que fácilmente podíamos recurrir a la competencia."
     },
     {
@@ -88,28 +132,72 @@
     },
     {
      "sp": "Andrés",
-     "line": "If they did, they didn't let on. They came up with a ten percent discount on the spot.",
+     "line": "If they did, they didn’t let on. They came up with a ten percent discount on the spot.",
      "es": "Si se dieron cuenta, no lo dejaron ver. Salieron con un descuento del diez por ciento ahí mismo."
     },
     {
      "sp": "Ben",
-     "line": "Great. Let's not rule out renegotiating next year, though.",
+     "line": "Great. Let’s not rule out renegotiating next year, though.",
      "es": "Genial. Aunque no descartemos renegociar el próximo año."
     },
     {
      "sp": "Andrés",
-     "line": "Agreed. I'll draw up the contract and send it over by Friday.",
+     "line": "Agreed. I’ll draw up the contract and send it over by Friday.",
      "es": "De acuerdo. Redacto el contrato y lo mando para el viernes."
     },
     {
      "sp": "Ben",
-     "line": "Just make sure they don't back out at the last minute.",
+     "line": "Just make sure they don’t back out at the last minute.",
      "es": "Solo asegúrate de que no se echen para atrás a última hora."
     }
    ]
   }
  ],
  "C1-1-1": [
+  {
+   "title": "The sabbatical",
+   "titleEs": "El año sabático",
+   "scene": "🧗 En Wellington: Aroha considera tomarse un año libre y lo habla con Stefan.",
+   "cast": [
+    {
+     "name": "Aroha",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Stefan",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Aroha",
+     "line": "I’m considering taking a year off to hike the Andes.",
+     "es": "Estoy pensando en tomarme un año para recorrer los Andes."
+    },
+    {
+     "sp": "Stefan",
+     "line": "Can you afford to stop working for that long?",
+     "es": "¿Te alcanza para dejar de trabajar tanto tiempo?"
+    },
+    {
+     "sp": "Aroha",
+     "line": "I’ve managed to save enough. I just dread telling my boss.",
+     "es": "Logré ahorrar lo suficiente. Lo que me aterra es decírselo a mi jefa."
+    },
+    {
+     "sp": "Stefan",
+     "line": "She tends to react badly, but it’s worth asking.",
+     "es": "Ella suele reaccionar mal, pero vale la pena preguntar."
+    },
+    {
+     "sp": "Aroha",
+     "line": "I’d regret not having tried.",
+     "es": "Me arrepentiría de no haberlo intentado."
+    }
+   ]
+  },
   {
    "title": "Burnout and boundaries",
    "titleEs": "Agotamiento y límites",
@@ -134,27 +222,27 @@
     },
     {
      "sp": "Catalina",
-     "line": "I'd suggest keeping a diary for a week. Most people are surprised to see how little they rest.",
+     "line": "I’d suggest keeping a diary for a week. Most people are surprised to see how little they rest.",
      "es": "Sugeriría llevar un diario durante una semana. La mayoría se sorprende al ver lo poco que descansa."
     },
     {
      "sp": "Oliver",
-     "line": "And once they've noticed the pattern?",
+     "line": "And once they’ve noticed the pattern?",
      "es": "¿Y una vez que han notado el patrón?"
     },
     {
      "sp": "Catalina",
-     "line": "They need to stop answering emails after eight. If they can't, they should at least try muting notifications.",
+     "line": "They need to stop answering emails after eight. If they can’t, they should at least try muting notifications.",
      "es": "Tienen que dejar de responder correos después de las ocho. Si no pueden, al menos deberían probar silenciando las notificaciones."
     },
     {
      "sp": "Oliver",
-     "line": "Some people say they can't afford to switch off.",
+     "line": "Some people say they can’t afford to switch off.",
      "es": "Algunos dicen que no se pueden dar el lujo de desconectarse."
     },
     {
      "sp": "Catalina",
-     "line": "I understand, but refusing to rest rarely pays off. I remember telling a client that, and she's since managed to cut her hours.",
+     "line": "I understand, but refusing to rest rarely pays off. I remember telling a client that, and she’s since managed to cut her hours.",
      "es": "Lo entiendo, pero negarse a descansar rara vez rinde frutos. Recuerdo habérselo dicho a una clienta, y desde entonces ha logrado reducir sus horas."
     },
     {
@@ -164,7 +252,7 @@
     },
     {
      "sp": "Catalina",
-     "line": "Exactly. And don't avoid asking for help when you need it.",
+     "line": "Exactly. And don’t avoid asking for help when you need it.",
      "es": "Exacto. Y no eviten pedir ayuda cuando la necesiten."
     }
    ]
@@ -188,12 +276,12 @@
    "lines": [
     {
      "sp": "Sofía",
-     "line": "Did you remember to book the restaurant for my mum's birthday?",
+     "line": "Did you remember to book the restaurant for my mum’s birthday?",
      "es": "¿Te acordaste de reservar el restaurante para el cumpleaños de mi mamá?"
     },
     {
      "sp": "Jack",
-     "line": "I remember calling them, but I don't remember confirming the time.",
+     "line": "I remember calling them, but I don’t remember confirming the time.",
      "es": "Me acuerdo de haberlos llamado, pero no de haber confirmado la hora."
     },
     {
@@ -213,18 +301,62 @@
     },
     {
      "sp": "Jack",
-     "line": "I'll call straight away. I regret not writing it down.",
+     "line": "I’ll call straight away. I regret not writing it down.",
      "es": "Llamo de inmediato. Me arrepiento de no haberlo anotado."
     },
     {
      "sp": "Sofía",
-     "line": "And I regret to say that's the second time this month.",
+     "line": "And I regret to say that’s the second time this month.",
      "es": "Y lamento decirte que es la segunda vez este mes."
     }
    ]
   }
  ],
  "C1-2-0": [
+  {
+   "title": "The style consultant",
+   "titleEs": "La asesora de imagen",
+   "scene": "👔 En Milán: la asesora Chiara aconseja a Ibrahim antes de una entrevista.",
+   "cast": [
+    {
+     "name": "Chiara",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Ibrahim",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Chiara",
+     "line": "I’d advise you to avoid wearing black from head to toe.",
+     "es": "Te aconsejo evitar ir de negro de pies a cabeza."
+    },
+    {
+     "sp": "Ibrahim",
+     "line": "My partner keeps urging me to buy a tie.",
+     "es": "Mi pareja no deja de insistirme en que compre una corbata."
+    },
+    {
+     "sp": "Chiara",
+     "line": "Don’t let anyone talk you into something you dislike.",
+     "es": "No dejes que nadie te convenza de algo que no te gusta."
+    },
+    {
+     "sp": "Ibrahim",
+     "line": "I can’t help feeling overdressed in a suit.",
+     "es": "No puedo evitar sentirme demasiado elegante con traje."
+    },
+    {
+     "sp": "Chiara",
+     "line": "Then I suggest trying a jacket and remembering to smile.",
+     "es": "Entonces sugiero probar una chaqueta y acordarte de sonreír."
+    }
+   ]
+  },
   {
    "title": "The dress code debate",
    "titleEs": "El debate sobre el código de vestimenta",
@@ -249,7 +381,7 @@
     },
     {
      "sp": "Daniela",
-     "line": "You're joking. They used to let us dress casually at the end of the week.",
+     "line": "You’re joking. They used to let us dress casually at the end of the week.",
      "es": "Estás bromeando. Antes nos dejaban vestirnos informal al final de la semana."
     },
     {
@@ -259,7 +391,7 @@
     },
     {
      "sp": "Daniela",
-     "line": "So now they're making all of us pay for one pair of shoes?",
+     "line": "So now they’re making all of us pay for one pair of shoes?",
      "es": "¿Y ahora nos van a hacer pagar a todos por un par de zapatos?"
     },
     {
@@ -269,12 +401,12 @@
     },
     {
      "sp": "Daniela",
-     "line": "I'd advise them to explain the reasoning first. People resent being made to comply without a reason.",
+     "line": "I’d advise them to explain the reasoning first. People resent being made to comply without a reason.",
      "es": "Les aconsejaría que primero explicaran el porqué. A la gente le molesta que la obliguen a cumplir sin una razón."
     },
     {
      "sp": "James",
-     "line": "I heard the partners discussing it, actually. They're not all convinced.",
+     "line": "I heard the partners discussing it, actually. They’re not all convinced.",
      "es": "De hecho, oí a los socios discutiéndolo. No todos están convencidos."
     }
    ]
@@ -303,7 +435,7 @@
     },
     {
      "sp": "Isabela",
-     "line": "I watched him do it. He wouldn't let anyone leave until the light was perfect.",
+     "line": "I watched him do it. He wouldn’t let anyone leave until the light was perfect.",
      "es": "Lo vi hacerlo. No dejaba que nadie se fuera hasta que la luz estuviera perfecta."
     },
     {
@@ -336,6 +468,50 @@
  ],
  "C1-2-1": [
   {
+   "title": "What I really want",
+   "titleEs": "Lo que de verdad quiero",
+   "scene": "🎨 En un estudio de diseño en Buenos Aires: Malena y Hiroshi discuten una marca.",
+   "cast": [
+    {
+     "name": "Malena",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Hiroshi",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Malena",
+     "line": "What the client wants is something bold.",
+     "es": "Lo que el cliente quiere es algo atrevido."
+    },
+    {
+     "sp": "Hiroshi",
+     "line": "What worries me is the colour. It looks dated.",
+     "es": "Lo que me preocupa es el color. Se ve anticuado."
+    },
+    {
+     "sp": "Malena",
+     "line": "What we need to do is simplify the logo.",
+     "es": "Lo que tenemos que hacer es simplificar el logo."
+    },
+    {
+     "sp": "Hiroshi",
+     "line": "What I’d change first is the font.",
+     "es": "Lo primero que cambiaría es la letra."
+    },
+    {
+     "sp": "Malena",
+     "line": "What matters most is that people remember it.",
+     "es": "Lo que más importa es que la gente lo recuerde."
+    }
+   ]
+  },
+  {
    "title": "Reviewing a fashion show",
    "titleEs": "Reseñando un desfile",
    "scene": "👗 En Colombiamoda, Medellín: dos periodistas de moda comentan una colección.",
@@ -364,17 +540,17 @@
     },
     {
      "sp": "Lucy",
-     "line": "Agreed. What I wasn't sure about was the tailoring.",
+     "line": "Agreed. What I wasn’t sure about was the tailoring.",
      "es": "De acuerdo. Lo que no me convenció fue la sastrería."
     },
     {
      "sp": "Mariana",
-     "line": "Really? What she's done is reinvent the traditional ruana for the city.",
+     "line": "Really? What she’s done is reinvent the traditional ruana for the city.",
      "es": "¿En serio? Lo que ella hizo fue reinventar la ruana tradicional para la ciudad."
     },
     {
      "sp": "Lucy",
-     "line": "What I'd have liked to see is a bit more restraint in the accessories.",
+     "line": "What I’d have liked to see is a bit more restraint in the accessories.",
      "es": "Lo que me hubiera gustado ver es un poco más de mesura en los accesorios."
     },
     {
@@ -418,7 +594,7 @@
     },
     {
      "sp": "Hannah",
-     "line": "And what do you think you'd bring to the team?",
+     "line": "And what do you think you’d bring to the team?",
      "es": "¿Y qué crees que le aportarías al equipo?"
     },
     {
@@ -443,13 +619,57 @@
     },
     {
      "sp": "Sebastián",
-     "line": "All I need is two weeks' notice for my current employer.",
+     "line": "All I need is two weeks’ notice for my current employer.",
      "es": "Lo único que necesito son dos semanas de preaviso para mi empleador actual."
     }
    ]
   }
  ],
  "C1-3-0": [
+  {
+   "title": "The breakthrough",
+   "titleEs": "El avance",
+   "scene": "🔬 En un laboratorio de Basilea: la doctora Meier le explica un hallazgo al periodista Sanjay.",
+   "cast": [
+    {
+     "name": "Meier",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Sanjay",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sanjay",
+     "line": "Is this a breakthrough or just a promising result?",
+     "es": "¿Es un avance o solo un resultado prometedor?"
+    },
+    {
+     "sp": "Meier",
+     "line": "It’s a real step forward. The drug we tested slows the disease.",
+     "es": "Es un verdadero paso adelante. El medicamento que probamos frena la enfermedad."
+    },
+    {
+     "sp": "Sanjay",
+     "line": "Will patients have access to the treatment soon?",
+     "es": "¿Los pacientes tendrán acceso al tratamiento pronto?"
+    },
+    {
+     "sp": "Meier",
+     "line": "Science takes time. The trials alone will last a decade.",
+     "es": "La ciencia toma tiempo. Solo los ensayos durarán una década."
+    },
+    {
+     "sp": "Sanjay",
+     "line": "So hope is justified, but the hype isn’t.",
+     "es": "Entonces la esperanza se justifica, pero el alboroto no."
+    }
+   ]
+  },
   {
    "title": "A scientific breakthrough",
    "titleEs": "Un avance científico",
@@ -474,7 +694,7 @@
     },
     {
      "sp": "Mark",
-     "line": "We've developed a test that detects dengue in an hour. The test costs less than a cup of coffee.",
+     "line": "We’ve developed a test that detects dengue in an hour. The test costs less than a cup of coffee.",
      "es": "Desarrollamos una prueba que detecta el dengue en una hora. La prueba cuesta menos que un tinto."
     },
     {
@@ -484,7 +704,7 @@
     },
     {
      "sp": "Mark",
-     "line": "It's the only one that doesn't need a laboratory. Rural clinics can use it on the spot.",
+     "line": "It’s the only one that doesn’t need a laboratory. Rural clinics can use it on the spot.",
      "es": "Es la única que no necesita laboratorio. Los centros de salud rurales la pueden usar en el sitio."
     },
     {
@@ -494,12 +714,12 @@
     },
     {
      "sp": "Mark",
-     "line": "We're starting a trial in a hospital in Leticia next month.",
+     "line": "We’re starting a trial in a hospital in Leticia next month.",
      "es": "El próximo mes empezamos un ensayo en un hospital de Leticia."
     },
     {
      "sp": "Paula",
-     "line": "And what's the biggest obstacle?",
+     "line": "And what’s the biggest obstacle?",
      "es": "¿Y cuál es el mayor obstáculo?"
     },
     {
@@ -533,7 +753,7 @@
     },
     {
      "sp": "Mateo",
-     "line": "The main library is, but only until four. There's also a small one in the engineering building.",
+     "line": "The main library is, but only until four. There’s also a small one in the engineering building.",
      "es": "La biblioteca central sí, pero solo hasta las cuatro. También hay una pequeña en el edificio de ingeniería."
     },
     {
@@ -543,12 +763,12 @@
     },
     {
      "sp": "Mateo",
-     "line": "Ha! You'll get used to it. Have you been to the gym yet?",
+     "line": "Ha! You’ll get used to it. Have you been to the gym yet?",
      "es": "¡Ja! Te vas a acostumbrar. ¿Ya fuiste al gimnasio?"
     },
     {
      "sp": "Emma",
-     "line": "Not yet. I've had an hour free all week, and I spent it at the bank.",
+     "line": "Not yet. I’ve had an hour free all week, and I spent it at the bank.",
      "es": "Todavía no. He tenido una hora libre en toda la semana y la pasé en el banco."
     },
     {
@@ -565,6 +785,50 @@
   }
  ],
  "C1-3-1": [
+  {
+   "title": "Working abroad",
+   "titleEs": "Trabajar afuera",
+   "scene": "🛫 En Doha: Elif y Ruairi hablan de su vida de expatriados.",
+   "cast": [
+    {
+     "name": "Elif",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Ruairi",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Elif",
+     "line": "Having lived in five countries, I adapt quickly.",
+     "es": "Como he vivido en cinco países, me adapto rápido."
+    },
+    {
+     "sp": "Ruairi",
+     "line": "Arriving here in August, I nearly melted.",
+     "es": "Al llegar aquí en agosto, casi me derrito."
+    },
+    {
+     "sp": "Elif",
+     "line": "Not speaking Arabic, I rely on colleagues a lot.",
+     "es": "Como no hablo árabe, dependo mucho de mis colegas."
+    },
+    {
+     "sp": "Ruairi",
+     "line": "Being the only Irishman in the office, I get all the jokes.",
+     "es": "Al ser el único irlandés de la oficina, me caen todos los chistes."
+    },
+    {
+     "sp": "Elif",
+     "line": "Having said that, I wouldn’t change a thing.",
+     "es": "Dicho esto, no cambiaría nada."
+    }
+   ]
+  },
   {
    "title": "An unexpected discovery",
    "titleEs": "Un descubrimiento inesperado",
@@ -609,7 +873,7 @@
     },
     {
      "sp": "Natalia",
-     "line": "Thinking back, it was the right call. We'd have been embarrassed.",
+     "line": "Thinking back, it was the right call. We’d have been embarrassed.",
      "es": "Pensándolo bien, fue la decisión correcta. Habríamos quedado mal."
     },
     {
@@ -681,6 +945,50 @@
  ],
  "C1-4-0": [
   {
+   "title": "Fact-checking",
+   "titleEs": "Verificación de datos",
+   "scene": "📡 En una agencia de noticias de Nairobi: Wambui y Jesper revisan una nota.",
+   "cast": [
+    {
+     "name": "Wambui",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Jesper",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Wambui",
+     "line": "The ministry claims that unemployment has fallen.",
+     "es": "El ministerio afirma que el desempleo ha bajado."
+    },
+    {
+     "sp": "Jesper",
+     "line": "Economists argue that the figures are misleading.",
+     "es": "Los economistas sostienen que las cifras engañan."
+    },
+    {
+     "sp": "Wambui",
+     "line": "The report suggests that young people gave up looking.",
+     "es": "El informe sugiere que los jóvenes dejaron de buscar."
+    },
+    {
+     "sp": "Jesper",
+     "line": "The minister denied that anything had been hidden.",
+     "es": "El ministro negó que se hubiera ocultado algo."
+    },
+    {
+     "sp": "Wambui",
+     "line": "Then we should point out that he refused to share the data.",
+     "es": "Entonces deberíamos señalar que se negó a compartir los datos."
+    }
+   ]
+  },
+  {
    "title": "Superstitions at the office",
    "titleEs": "Supersticiones en la oficina",
    "scene": "🪞 En una oficina de Medellín: dos colegas comentan lo que dijo un compañero supersticioso.",
@@ -704,7 +1012,7 @@
     },
     {
      "sp": "Camila",
-     "line": "He told me he wouldn't sign the contract because it was Tuesday the thirteenth.",
+     "line": "He told me he wouldn’t sign the contract because it was Tuesday the thirteenth.",
      "es": "Me dijo que no iba a firmar el contrato porque era martes trece."
     },
     {
@@ -729,7 +1037,7 @@
     },
     {
      "sp": "Tom",
-     "line": "She told him she didn't believe in that kind of thing.",
+     "line": "She told him she didn’t believe in that kind of thing.",
      "es": "Ella le dijo que no creía en ese tipo de cosas."
     }
    ]
@@ -788,13 +1096,57 @@
     },
     {
      "sp": "Alejandro",
-     "line": "Then one of them isn't telling the truth.",
+     "line": "Then one of them isn’t telling the truth.",
      "es": "Entonces uno de los dos no está diciendo la verdad."
     }
    ]
   }
  ],
  "C1-4-1": [
+  {
+   "title": "It is said that…",
+   "titleEs": "Se dice que…",
+   "scene": "🏺 En un museo de El Cairo: el guía Mahmoud habla con Ingrid.",
+   "cast": [
+    {
+     "name": "Mahmoud",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Ingrid",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mahmoud",
+     "line": "It is believed that the tomb was built in ten years.",
+     "es": "Se cree que la tumba se construyó en diez años."
+    },
+    {
+     "sp": "Ingrid",
+     "line": "Wasn’t it thought to be cursed?",
+     "es": "¿No se pensaba que estaba maldita?"
+    },
+    {
+     "sp": "Mahmoud",
+     "line": "It was once reported that visitors had fallen ill.",
+     "es": "Alguna vez se informó que algunos visitantes se habían enfermado."
+    },
+    {
+     "sp": "Ingrid",
+     "line": "And the queen is said to have ruled alone.",
+     "es": "Y se dice que la reina gobernó sola."
+    },
+    {
+     "sp": "Mahmoud",
+     "line": "She is now known to have had a co-ruler.",
+     "es": "Ahora se sabe que tuvo un corregente."
+    }
+   ]
+  },
   {
    "title": "Legends of the Andes",
    "titleEs": "Leyendas de los Andes",
@@ -849,7 +1201,7 @@
     },
     {
      "sp": "Ben",
-     "line": "It's widely assumed that's why swimming is forbidden!",
+     "line": "It’s widely assumed that’s why swimming is forbidden!",
      "es": "¡Se supone que por eso está prohibido nadar!"
     }
    ]
@@ -873,7 +1225,7 @@
    "lines": [
     {
      "sp": "Natalia",
-     "line": "You can't write that the mayor took the money. We can't prove it.",
+     "line": "You can’t write that the mayor took the money. We can’t prove it.",
      "es": "No puedes escribir que el alcalde se robó la plata. No lo podemos probar."
     },
     {
@@ -898,7 +1250,7 @@
     },
     {
      "sp": "Juan Pablo",
-     "line": "What about his assistant? She's believed to have destroyed the documents.",
+     "line": "What about his assistant? She’s believed to have destroyed the documents.",
      "es": "¿Y su asistente? Se cree que ella destruyó los documentos."
     },
     {
@@ -908,13 +1260,57 @@
     },
     {
      "sp": "Juan Pablo",
-     "line": "Got it. It's understood that the prosecutor will comment tomorrow.",
+     "line": "Got it. It’s understood that the prosecutor will comment tomorrow.",
      "es": "Entendido. Se entiende que el fiscal hará declaraciones mañana."
     }
    ]
   }
  ],
  "C1-5-0": [
+  {
+   "title": "Frankly speaking",
+   "titleEs": "Francamente",
+   "scene": "🎙️ En un pódcast grabado en Toronto: Naomi entrevista al urbanista Luca.",
+   "cast": [
+    {
+     "name": "Naomi",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Luca",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Naomi",
+     "line": "Frankly, do cycle lanes change anything?",
+     "es": "Francamente, ¿las ciclorrutas cambian algo?"
+    },
+    {
+     "sp": "Luca",
+     "line": "Clearly they do. Unfortunately, the results take years.",
+     "es": "Claramente sí. Por desgracia, los resultados tardan años."
+    },
+    {
+     "sp": "Naomi",
+     "line": "Surprisingly, shops seem to earn more.",
+     "es": "Sorprendentemente, parece que el comercio gana más."
+    },
+    {
+     "sp": "Luca",
+     "line": "Apparently so. Predictably, drivers complained at first.",
+     "es": "Por lo visto sí. Como era de esperarse, los conductores se quejaron al principio."
+    },
+    {
+     "sp": "Naomi",
+     "line": "Hopefully, other cities will follow.",
+     "es": "Ojalá otras ciudades hagan lo mismo."
+    }
+   ]
+  },
   {
    "title": "After the premiere",
    "titleEs": "Después del estreno",
@@ -939,7 +1335,7 @@
     },
     {
      "sp": "Isabela",
-     "line": "Surprisingly, I didn't mind it. The cinematography was stunning.",
+     "line": "Surprisingly, I didn’t mind it. The cinematography was stunning.",
      "es": "Sorprendentemente, no me molestó. La fotografía era impresionante."
     },
     {
@@ -949,12 +1345,12 @@
     },
     {
      "sp": "Isabela",
-     "line": "Apparently, it's her first feature film. She was discovered in a theatre group in Cali.",
+     "line": "Apparently, it’s her first feature film. She was discovered in a theatre group in Cali.",
      "es": "Al parecer, es su primer largometraje. La descubrieron en un grupo de teatro en Cali."
     },
     {
      "sp": "Oliver",
-     "line": "Unfortunately, the script didn't do her justice.",
+     "line": "Unfortunately, the script didn’t do her justice.",
      "es": "Desafortunadamente, el guion no le hizo justicia."
     },
     {
@@ -998,7 +1394,7 @@
     },
     {
      "sp": "Hannah",
-     "line": "That's great news. And costs?",
+     "line": "That’s great news. And costs?",
      "es": "Excelente noticia. ¿Y los costos?"
     },
     {
@@ -1013,12 +1409,12 @@
     },
     {
      "sp": "Carlos",
-     "line": "Ideally, we'd sign a new contract before December.",
+     "line": "Ideally, we’d sign a new contract before December.",
      "es": "Lo ideal sería firmar un nuevo contrato antes de diciembre."
     },
     {
      "sp": "Hannah",
-     "line": "Realistically, that won't happen until January.",
+     "line": "Realistically, that won’t happen until January.",
      "es": "Siendo realistas, eso no va a pasar antes de enero."
     },
     {
@@ -1030,6 +1426,50 @@
   }
  ],
  "C1-5-1": [
+  {
+   "title": "Such a mess",
+   "titleEs": "Semejante lío",
+   "scene": "🧾 En Atenas: Dimitra y Kwesi salen de una oficina pública.",
+   "cast": [
+    {
+     "name": "Dimitra",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Kwesi",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Dimitra",
+     "line": "The queue was so long that I read half a novel.",
+     "es": "La fila era tan larga que me leí media novela."
+    },
+    {
+     "sp": "Kwesi",
+     "line": "It was such a slow process that people brought lunch.",
+     "es": "Era un trámite tan lento que la gente llevó almuerzo."
+    },
+    {
+     "sp": "Dimitra",
+     "line": "There were so many forms that I lost count.",
+     "es": "Había tantos formularios que perdí la cuenta."
+    },
+    {
+     "sp": "Kwesi",
+     "line": "The clerk gave me so little information that I had to come back.",
+     "es": "El funcionario me dio tan poca información que me tocó volver."
+    },
+    {
+     "sp": "Dimitra",
+     "line": "It was such a relief to finish that I nearly cried.",
+     "es": "Fue tal alivio terminar que casi lloro."
+    }
+   ]
+  },
   {
    "title": "A terrible film",
    "titleEs": "Una película pésima",
@@ -1059,7 +1499,7 @@
     },
     {
      "sp": "Zoe",
-     "line": "There were so many characters that I couldn't remember their names.",
+     "line": "There were so many characters that I couldn’t remember their names.",
      "es": "Había tantos personajes que no me acordaba de sus nombres."
     },
     {
@@ -1069,7 +1509,7 @@
     },
     {
      "sp": "Zoe",
-     "line": "It had such terrible reviews that I don't know why we went.",
+     "line": "It had such terrible reviews that I don’t know why we went.",
      "es": "Tenía unas críticas tan malas que no sé por qué fuimos."
     },
     {
@@ -1079,7 +1519,7 @@
     },
     {
      "sp": "Zoe",
-     "line": "Next time, I'll choose. I've wasted so much money on bad films this year.",
+     "line": "Next time, I’ll choose. I’ve wasted so much money on bad films this year.",
      "es": "La próxima vez escojo yo. He gastado tanta plata en películas malas este año."
     }
    ]
@@ -1146,6 +1586,50 @@
  ],
  "C1-6-0": [
   {
+   "title": "The more, the better",
+   "titleEs": "Entre más, mejor",
+   "scene": "🎶 En Leipzig: la profesora de violín Anneliese habla con su alumno Chen.",
+   "cast": [
+    {
+     "name": "Anneliese",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Chen",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Anneliese",
+     "line": "The more you practise, the easier it gets.",
+     "es": "Entre más practicas, más fácil se vuelve."
+    },
+    {
+     "sp": "Chen",
+     "line": "But the harder I try, the worse I sound.",
+     "es": "Pero entre más me esfuerzo, peor sueno."
+    },
+    {
+     "sp": "Anneliese",
+     "line": "The more tense you are, the less the bow obeys.",
+     "es": "Entre más tenso estás, menos te obedece el arco."
+    },
+    {
+     "sp": "Chen",
+     "line": "So the slower I play, the better?",
+     "es": "¿Entonces entre más despacio toque, mejor?"
+    },
+    {
+     "sp": "Anneliese",
+     "line": "Exactly. The sooner you accept that, the faster you’ll improve.",
+     "es": "Exacto. Entre más pronto lo aceptes, más rápido vas a mejorar."
+    }
+   ]
+  },
+  {
    "title": "Learning the guitar",
    "titleEs": "Aprendiendo a tocar guitarra",
    "scene": "🎸 En una escuela de música en Medellín: un estudiante habla con su profesora.",
@@ -1174,12 +1658,12 @@
     },
     {
      "sp": "Mateo",
-     "line": "And the chords? I'm so slow at changing them.",
+     "line": "And the chords? I’m so slow at changing them.",
      "es": "¿Y los acordes? Soy muy lento para cambiarlos."
     },
     {
      "sp": "Lucy",
-     "line": "The slower you start, the faster you'll eventually play.",
+     "line": "The slower you start, the faster you’ll eventually play.",
      "es": "Cuanto más despacio empieces, más rápido vas a tocar al final."
     },
     {
@@ -1194,12 +1678,12 @@
     },
     {
      "sp": "Mateo",
-     "line": "I'm getting more and more impatient, though.",
+     "line": "I’m getting more and more impatient, though.",
      "es": "Aunque me estoy impacientando cada vez más."
     },
     {
      "sp": "Lucy",
-     "line": "The more relaxed you are, the better you'll sound. Trust me.",
+     "line": "The more relaxed you are, the better you’ll sound. Trust me.",
      "es": "Cuanto más relajado estés, mejor vas a sonar. Créeme."
     }
    ]
@@ -1223,7 +1707,7 @@
    "lines": [
     {
      "sp": "Nick",
-     "line": "The more bands we book, the more tickets we'll sell.",
+     "line": "The more bands we book, the more tickets we’ll sell.",
      "es": "Cuantas más bandas contratemos, más boletas vamos a vender."
     },
     {
@@ -1243,7 +1727,7 @@
     },
     {
      "sp": "Nick",
-     "line": "The cheaper the early tickets, the faster they'll sell out.",
+     "line": "The cheaper the early tickets, the faster they’ll sell out.",
      "es": "Cuanto más baratas las primeras boletas, más rápido se van a agotar."
     },
     {
@@ -1253,13 +1737,57 @@
     },
     {
      "sp": "Nick",
-     "line": "The smaller, the better? Maybe you're right.",
+     "line": "The smaller, the better? Maybe you’re right.",
      "es": "¿Entre más pequeño, mejor? Tal vez tengas razón."
     }
    ]
   }
  ],
  "C1-6-1": [
+  {
+   "title": "Typical Grandpa",
+   "titleEs": "Típico del abuelo",
+   "scene": "👴 En Cork: Aoife y su primo Declan recuerdan a su abuelo.",
+   "cast": [
+    {
+     "name": "Aoife",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Declan",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Aoife",
+     "line": "He’ll sit by the window for hours, even now.",
+     "es": "Se sienta junto a la ventana por horas, todavía hoy."
+    },
+    {
+     "sp": "Declan",
+     "line": "He would tell the same story every Christmas.",
+     "es": "Contaba la misma historia todas las Navidades."
+    },
+    {
+     "sp": "Aoife",
+     "line": "And he will insist on walking to the shop in the rain.",
+     "es": "Y se empeña en ir caminando a la tienda bajo la lluvia."
+    },
+    {
+     "sp": "Declan",
+     "line": "As a child, I would wait for him at the gate.",
+     "es": "De niño yo lo esperaba en la reja."
+    },
+    {
+     "sp": "Aoife",
+     "line": "He’d bring sweets and he wouldn’t tell Mum.",
+     "es": "Traía dulces y no le decía a mamá."
+    }
+   ]
+  },
   {
    "title": "Annoying habits",
    "titleEs": "Hábitos irritantes",
@@ -1279,12 +1807,12 @@
    "lines": [
     {
      "sp": "Mark",
-     "line": "How's it going with your new flatmate?",
+     "line": "How’s it going with your new flatmate?",
      "es": "¿Cómo te va con tu nuevo compañero de apartamento?"
     },
     {
      "sp": "Paula",
-     "line": "He's nice, but he'll play the same song on repeat for hours.",
+     "line": "He’s nice, but he’ll play the same song on repeat for hours.",
      "es": "Es buena gente, pero pone la misma canción una y otra vez durante horas."
     },
     {
@@ -1304,12 +1832,12 @@
     },
     {
      "sp": "Paula",
-     "line": "Mine will clean, to be fair. He'll spend Sunday mornings scrubbing the kitchen.",
+     "line": "Mine will clean, to be fair. He’ll spend Sunday mornings scrubbing the kitchen.",
      "es": "El mío sí limpia, para ser justos. Se pasa los domingos por la mañana fregando la cocina."
     },
     {
      "sp": "Mark",
-     "line": "Then you've got a good deal. Mine would never wash a single cup.",
+     "line": "Then you’ve got a good deal. Mine would never wash a single cup.",
      "es": "Entonces te fue bien. La mía nunca lavaba ni una taza."
     }
    ]
@@ -1333,7 +1861,7 @@
    "lines": [
     {
      "sp": "Grace",
-     "line": "Do you remember those holidays at Grandpa's house?",
+     "line": "Do you remember those holidays at Grandpa’s house?",
      "es": "¿Te acuerdas de esas vacaciones en la casa del abuelo?"
     },
     {
@@ -1371,6 +1899,50 @@
  ],
  "C1-7-0": [
   {
+   "title": "The colleague",
+   "titleEs": "El colega",
+   "scene": "🧑‍💼 En una empresa de Ámsterdam: Femke y Rashid hablan del nuevo.",
+   "cast": [
+    {
+     "name": "Femke",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Rashid",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Femke",
+     "line": "The man we hired last month is brilliant.",
+     "es": "El hombre que contratamos el mes pasado es brillante."
+    },
+    {
+     "sp": "Rashid",
+     "line": "Is he the one who redesigned the app?",
+     "es": "¿Es el que rediseñó la aplicación?"
+    },
+    {
+     "sp": "Femke",
+     "line": "Yes. The team he leads, which has only four people, beat every deadline.",
+     "es": "Sí. El equipo que dirige, que solo tiene cuatro personas, cumplió todos los plazos."
+    },
+    {
+     "sp": "Rashid",
+     "line": "The project I’m working on needs someone like that.",
+     "es": "El proyecto en el que estoy trabajando necesita a alguien así."
+    },
+    {
+     "sp": "Femke",
+     "line": "Ask the manager, whose office is next to mine.",
+     "es": "Pregúntale a la gerente, cuya oficina queda al lado de la mía."
+    }
+   ]
+  },
+  {
    "title": "Selling the family home",
    "titleEs": "Vendiendo la casa familiar",
    "scene": "🏡 En Popayán: dos hermanos recorren la casa donde crecieron antes de venderla.",
@@ -1389,7 +1961,7 @@
    "lines": [
     {
      "sp": "Julián",
-     "line": "I can't believe this is the house we grew up in.",
+     "line": "I can’t believe this is the house we grew up in.",
      "es": "No puedo creer que esta sea la casa en la que crecimos."
     },
     {
@@ -1404,7 +1976,7 @@
     },
     {
      "sp": "Catalina",
-     "line": "Everything Mum said about this place was true. It's full of memories.",
+     "line": "Everything Mum said about this place was true. It’s full of memories.",
      "es": "Todo lo que mamá decía de este lugar era cierto. Está lleno de recuerdos."
     },
     {
@@ -1414,12 +1986,12 @@
     },
     {
      "sp": "Catalina",
-     "line": "Yes. The family whose house they're leaving is our cousins' friends, actually.",
+     "line": "Yes. The family whose house they’re leaving is our cousins’ friends, actually.",
      "es": "Sí. De hecho, la familia de la que vienen es amiga de nuestros primos."
     },
     {
      "sp": "Julián",
-     "line": "Then it's going to people we can trust. That's all I wanted.",
+     "line": "Then it’s going to people we can trust. That’s all I wanted.",
      "es": "Entonces queda en manos de gente en la que podemos confiar. Es lo único que quería."
     }
    ]
@@ -1468,18 +2040,62 @@
     },
     {
      "sp": "Diego",
-     "line": "That's something my agent mentioned too.",
+     "line": "That’s something my agent mentioned too.",
      "es": "Eso es algo que también mencionó mi agente."
     },
     {
      "sp": "Natalia",
-     "line": "Then it's a change everyone who reads it will appreciate.",
+     "line": "Then it’s a change everyone who reads it will appreciate.",
      "es": "Entonces es un cambio que todos los que lo lean van a agradecer."
     }
    ]
   }
  ],
  "C1-7-1": [
+  {
+   "title": "As if",
+   "titleEs": "Como si",
+   "scene": "😒 En Hong Kong: Mei y Arturo hablan de un compañero presumido.",
+   "cast": [
+    {
+     "name": "Mei",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Arturo",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mei",
+     "line": "He talks as if he owned the company.",
+     "es": "Habla como si fuera el dueño de la empresa."
+    },
+    {
+     "sp": "Arturo",
+     "line": "And he acts as though nobody else had ideas.",
+     "es": "Y actúa como si nadie más tuviera ideas."
+    },
+    {
+     "sp": "Mei",
+     "line": "I don’t like the way he interrupts people.",
+     "es": "No me gusta la forma en que interrumpe a la gente."
+    },
+    {
+     "sp": "Arturo",
+     "line": "It looks like he’s getting promoted, though.",
+     "es": "Pero parece que lo van a ascender."
+    },
+    {
+     "sp": "Mei",
+     "line": "He smiled as if he had already heard the news.",
+     "es": "Sonrió como si ya hubiera oído la noticia."
+    }
+   ]
+  },
   {
    "title": "The new manager",
    "titleEs": "El nuevo gerente",
@@ -1524,7 +2140,7 @@
     },
     {
      "sp": "Mariana",
-     "line": "Don't take it personally. As I said yesterday, he's just nervous.",
+     "line": "Don’t take it personally. As I said yesterday, he’s just nervous.",
      "es": "No te lo tomes personal. Como dije ayer, está nervioso."
     },
     {
@@ -1553,12 +2169,12 @@
    "lines": [
     {
      "sp": "Ryan",
-     "line": "It looks as though the rain isn't going to stop today.",
+     "line": "It looks as though the rain isn’t going to stop today.",
      "es": "Parece que la lluvia no va a parar hoy."
     },
     {
      "sp": "Sofía",
-     "line": "I feel as if I've been stuck in this hostel for a week.",
+     "line": "I feel as if I’ve been stuck in this hostel for a week.",
      "es": "Siento como si llevara una semana encerrada en este hostal."
     },
     {
@@ -1568,7 +2184,7 @@
     },
     {
      "sp": "Sofía",
-     "line": "It is, apparently, when the sun's out. Do it the way the guide said: start early.",
+     "line": "It is, apparently, when the sun’s out. Do it the way the guide said: start early.",
      "es": "Lo es, al parecer, cuando hace sol. Hazlo como dijo el guía: sal temprano."
     },
     {
@@ -1578,7 +2194,7 @@
     },
     {
      "sp": "Sofía",
-     "line": "Well, you're complaining as though it were my fault.",
+     "line": "Well, you’re complaining as though it were my fault.",
      "es": "Bueno, te quejas como si fuera culpa mía."
     },
     {
@@ -1590,6 +2206,50 @@
   }
  ],
  "C1-8-0": [
+  {
+   "title": "The handover",
+   "titleEs": "El empalme",
+   "scene": "📂 En una ONG en Ginebra: Solange deja su cargo y le explica todo a Tomasz.",
+   "cast": [
+    {
+     "name": "Solange",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Tomasz",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Solange",
+     "line": "I’ve sent you the files. I sent them to Maria too.",
+     "es": "Te mandé los archivos. Se los mandé también a María."
+    },
+    {
+     "sp": "Tomasz",
+     "line": "Could you explain the budget to me?",
+     "es": "¿Me podrías explicar el presupuesto?"
+    },
+    {
+     "sp": "Solange",
+     "line": "Sure. I’ll describe the process to you step by step.",
+     "es": "Claro. Te describo el proceso paso a paso."
+    },
+    {
+     "sp": "Tomasz",
+     "line": "Who do I give the reports to?",
+     "es": "¿A quién le entrego los informes?"
+    },
+    {
+     "sp": "Solange",
+     "line": "Hand them to the director. And lend Maria your notes.",
+     "es": "Entrégaselos a la directora. Y préstale tus apuntes a María."
+    }
+   ]
+  },
   {
    "title": "A refund at the shop",
    "titleEs": "Una devolución en la tienda",
@@ -1614,7 +2274,7 @@
     },
     {
      "sp": "Oliver",
-     "line": "I'm sorry. Could you show me the receipt?",
+     "line": "I’m sorry. Could you show me the receipt?",
      "es": "Lo siento. ¿Me puede mostrar la factura?"
     },
     {
@@ -1634,7 +2294,7 @@
     },
     {
      "sp": "Oliver",
-     "line": "Of course. We'll send the money to your card within five days.",
+     "line": "Of course. We’ll send the money to your card within five days.",
      "es": "Claro. Le enviaremos el dinero a su tarjeta en cinco días."
     },
     {
@@ -1644,7 +2304,7 @@
     },
     {
      "sp": "Oliver",
-     "line": "Certainly. I'll print it for you right now.",
+     "line": "Certainly. I’ll print it for you right now.",
      "es": "Claro. Se la imprimo ya mismo."
     }
    ]
@@ -1683,7 +2343,7 @@
     },
     {
      "sp": "Santiago",
-     "line": "Sure. I'll also show you the charts I made.",
+     "line": "Sure. I’ll also show you the charts I made.",
      "es": "Claro. También te muestro las gráficas que hice."
     },
     {
@@ -1693,7 +2353,7 @@
     },
     {
      "sp": "Santiago",
-     "line": "I'll ask IT to lend us one. Should I bring the client some coffee?",
+     "line": "I’ll ask IT to lend us one. Should I bring the client some coffee?",
      "es": "Le pido a sistemas que nos preste uno. ¿Le llevo café al cliente?"
     },
     {
@@ -1703,13 +2363,57 @@
     },
     {
      "sp": "Santiago",
-     "line": "Will do. I'll suggest a short break to them halfway through, too.",
+     "line": "Will do. I’ll suggest a short break to them halfway through, too.",
      "es": "Listo. También les voy a sugerir una pausa corta a mitad de la reunión."
     }
    ]
   }
  ],
  "C1-8-1": [
+  {
+   "title": "The committee insists",
+   "titleEs": "El comité insiste",
+   "scene": "⚖️ En una universidad de Boston: la decana Okoye habla con el profesor Lindqvist.",
+   "cast": [
+    {
+     "name": "Okoye",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Lindqvist",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Okoye",
+     "line": "The committee insists that every student submit the form.",
+     "es": "El comité insiste en que cada estudiante entregue el formulario."
+    },
+    {
+     "sp": "Lindqvist",
+     "line": "I’d recommend that the deadline be extended.",
+     "es": "Yo recomendaría que se ampliara el plazo."
+    },
+    {
+     "sp": "Okoye",
+     "line": "It’s essential that nobody be excluded.",
+     "es": "Es fundamental que nadie quede excluido."
+    },
+    {
+     "sp": "Lindqvist",
+     "line": "The students asked that the exam take place online.",
+     "es": "Los estudiantes pidieron que el examen se hiciera en línea."
+    },
+    {
+     "sp": "Okoye",
+     "line": "I suggest that we discuss it on Monday.",
+     "es": "Sugiero que lo discutamos el lunes."
+    }
+   ]
+  },
   {
    "title": "A formal complaint",
    "titleEs": "Una queja formal",
@@ -1744,7 +2448,7 @@
     },
     {
      "sp": "Alejandro",
-     "line": "Then it's essential that I speak to him before he checks out.",
+     "line": "Then it’s essential that I speak to him before he checks out.",
      "es": "Entonces es fundamental que yo hable con él antes de que haga el check-out."
     },
     {
@@ -1754,18 +2458,18 @@
     },
     {
      "sp": "Alejandro",
-     "line": "Understood. And I'd ask that the night staff be reminded of the procedure.",
+     "line": "Understood. And I’d ask that the night staff be reminded of the procedure.",
      "es": "Entendido. Y pediría que se le recuerde el procedimiento al personal de la noche."
     },
     {
      "sp": "Emma",
-     "line": "I'll propose that every receipt be checked twice from now on.",
+     "line": "I’ll propose that every receipt be checked twice from now on.",
      "es": "Voy a proponer que de ahora en adelante cada factura se revise dos veces."
     }
    ]
   },
   {
-   "title": "Doctor's orders",
+   "title": "Doctor’s orders",
    "titleEs": "Órdenes médicas",
    "scene": "🩺 En una clínica de Medellín: una médica habla con el hijo de un paciente.",
    "cast": [
@@ -1783,17 +2487,17 @@
    "lines": [
     {
      "sp": "Catalina",
-     "line": "Your father's recovering well, but I recommend that he stay another night.",
+     "line": "Your father’s recovering well, but I recommend that he stay another night.",
      "es": "Su papá se está recuperando bien, pero recomiendo que se quede otra noche."
     },
     {
      "sp": "Liam",
-     "line": "He'll hate that. He insisted that he be discharged today.",
+     "line": "He’ll hate that. He insisted that he be discharged today.",
      "es": "Lo va a odiar. Insistió en que le dieran de alta hoy."
     },
     {
      "sp": "Catalina",
-     "line": "I understand, but it's vital that his blood pressure be monitored.",
+     "line": "I understand, but it’s vital that his blood pressure be monitored.",
      "es": "Lo entiendo, pero es vital que le monitoreen la presión."
     },
     {
@@ -1803,7 +2507,7 @@
     },
     {
      "sp": "Catalina",
-     "line": "It's important that he take the medication every morning and avoid salt.",
+     "line": "It’s important that he take the medication every morning and avoid salt.",
      "es": "Es importante que tome el medicamento todas las mañanas y evite la sal."
     },
     {
@@ -1813,13 +2517,57 @@
     },
     {
      "sp": "Catalina",
-     "line": "I'd suggest that he not return for at least a fortnight.",
+     "line": "I’d suggest that he not return for at least a fortnight.",
      "es": "Le sugeriría que no volviera por lo menos en dos semanas."
     }
    ]
   }
  ],
  "C1-9-0": [
+  {
+   "title": "Wherever you go",
+   "titleEs": "Dondequiera que vayas",
+   "scene": "🎒 En un hostal de Katmandú: Tenzin aconseja a la mochilera Paula.",
+   "cast": [
+    {
+     "name": "Tenzin",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Paula",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tenzin",
+     "line": "Wherever you go, carry water.",
+     "es": "Dondequiera que vayas, lleva agua."
+    },
+    {
+     "sp": "Paula",
+     "line": "Whenever I travel alone, I tell someone my route.",
+     "es": "Siempre que viajo sola, le aviso a alguien mi ruta."
+    },
+    {
+     "sp": "Tenzin",
+     "line": "Good. Where the path splits, take the left one.",
+     "es": "Bien. Donde el camino se divide, toma el de la izquierda."
+    },
+    {
+     "sp": "Paula",
+     "line": "When I reach the village, I’ll message you.",
+     "es": "Cuando llegue al pueblo, te escribo."
+    },
+    {
+     "sp": "Tenzin",
+     "line": "Whenever you feel dizzy, stop and rest.",
+     "es": "Cada vez que te sientas mareada, para y descansa."
+    }
+   ]
+  },
   {
    "title": "Turtle watching in La Guajira",
    "titleEs": "Avistamiento de tortugas en La Guajira",
@@ -1854,7 +2602,7 @@
     },
     {
      "sp": "Laura",
-     "line": "Usually when the tide is high, at night. But they'll nest wherever the sand is warm enough.",
+     "line": "Usually when the tide is high, at night. But they’ll nest wherever the sand is warm enough.",
      "es": "Normalmente cuando la marea está alta, de noche. Pero anidan donde sea que la arena esté lo suficientemente caliente."
     },
     {
@@ -1869,7 +2617,7 @@
     },
     {
      "sp": "Nick",
-     "line": "And the plastic? Wherever I look, there's rubbish.",
+     "line": "And the plastic? Wherever I look, there’s rubbish.",
      "es": "¿Y el plástico? Mire donde mire, hay basura."
     },
     {
@@ -1903,7 +2651,7 @@
     },
     {
      "sp": "Felipe",
-     "line": "Great. I'm in Bogotá now, but I visit my parents in Villa de Leyva whenever I can.",
+     "line": "Great. I’m in Bogotá now, but I visit my parents in Villa de Leyva whenever I can.",
      "es": "Genial. Ahora estoy en Bogotá, pero visito a mis papás en Villa de Leyva siempre que puedo."
     },
     {
@@ -1918,7 +2666,7 @@
     },
     {
      "sp": "Grace",
-     "line": "To the shared folder. Upload them whenever they're ready.",
+     "line": "To the shared folder. Upload them whenever they’re ready.",
      "es": "A la carpeta compartida. Súbelos cuando estén listos."
     },
     {
@@ -1935,6 +2683,50 @@
   }
  ],
  "C1-9-1": [
+  {
+   "title": "Whatever it takes",
+   "titleEs": "Lo que haga falta",
+   "scene": "🏆 En Río de Janeiro: la entrenadora Luana motiva al nadador Henrik.",
+   "cast": [
+    {
+     "name": "Luana",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Henrik",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Luana",
+     "line": "Whoever trains hardest will make the team.",
+     "es": "El que más duro entrene entrará al equipo."
+    },
+    {
+     "sp": "Henrik",
+     "line": "I’ll do whatever you ask.",
+     "es": "Haré lo que me pidas."
+    },
+    {
+     "sp": "Luana",
+     "line": "Whatever happens on Sunday, be proud.",
+     "es": "Pase lo que pase el domingo, siéntete orgulloso."
+    },
+    {
+     "sp": "Henrik",
+     "line": "Whoever wins deserves it.",
+     "es": "Quien gane se lo merece."
+    },
+    {
+     "sp": "Luana",
+     "line": "Eat whatever the nutritionist recommends, and sleep.",
+     "es": "Come lo que recomiende la nutricionista, y duerme."
+    }
+   ]
+  },
   {
    "title": "Running a rescue centre",
    "titleEs": "Dirigiendo un centro de rescate",
@@ -2018,7 +2810,7 @@
     },
     {
      "sp": "Andrés",
-     "line": "And whatever they promise now, the budget won't allow it.",
+     "line": "And whatever they promise now, the budget won’t allow it.",
      "es": "Y prometan lo que prometan ahora, el presupuesto no lo va a permitir."
     },
     {
@@ -2046,7 +2838,51 @@
  ],
  "C1-10-0": [
   {
-   "title": "Colombia's languages",
+   "title": "The exhibition",
+   "titleEs": "La exposición",
+   "scene": "🖼️ En una galería de Ciudad del Cabo: la curadora Zinhle habla con Matthias.",
+   "cast": [
+    {
+     "name": "Zinhle",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Matthias",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zinhle",
+     "line": "The paintings were being hung when the lights failed.",
+     "es": "Estaban colgando los cuadros cuando falló la luz."
+    },
+    {
+     "sp": "Matthias",
+     "line": "Has everything been insured?",
+     "es": "¿Ya se aseguró todo?"
+    },
+    {
+     "sp": "Zinhle",
+     "line": "Yes. The catalogue is being printed and will be delivered tomorrow.",
+     "es": "Sí. El catálogo se está imprimiendo y lo entregan mañana."
+    },
+    {
+     "sp": "Matthias",
+     "line": "The artist ought to have been told about the delay.",
+     "es": "Se le debió haber avisado a la artista del retraso."
+    },
+    {
+     "sp": "Zinhle",
+     "line": "She was informed, and she got paid in advance.",
+     "es": "Se le informó, y le pagaron por adelantado."
+    }
+   ]
+  },
+  {
+   "title": "Colombia’s languages",
    "titleEs": "Las lenguas de Colombia",
    "scene": "🗣️ En un pódcast cultural grabado en Bogotá: una lingüista habla de las lenguas indígenas.",
    "cast": [
@@ -2128,7 +2964,7 @@
     },
     {
      "sp": "Natalia",
-     "line": "Almost. It's being proofread this week. I'm having it checked by a professional editor.",
+     "line": "Almost. It’s being proofread this week. I’m having it checked by a professional editor.",
      "es": "Casi. Lo están revisando esta semana. Lo estoy haciendo corregir con un editor profesional."
     },
     {
@@ -2148,7 +2984,7 @@
     },
     {
      "sp": "Natalia",
-     "line": "It's already been done. It was translated by a colleague.",
+     "line": "It’s already been done. It was translated by a colleague.",
      "es": "Ya está hecho. Lo tradujo una colega."
     },
     {
@@ -2160,6 +2996,50 @@
   }
  ],
  "C1-10-1": [
+  {
+   "title": "The survey",
+   "titleEs": "La encuesta",
+   "scene": "📊 En una consultora de Kuala Lumpur: Aisyah y Viktor leen resultados.",
+   "cast": [
+    {
+     "name": "Aisyah",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Viktor",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Aisyah",
+     "line": "The majority of employees want flexible hours.",
+     "es": "La mayoría de los empleados quiere horario flexible."
+    },
+    {
+     "sp": "Viktor",
+     "line": "A number of managers are against it.",
+     "es": "Varios gerentes están en contra."
+    },
+    {
+     "sp": "Aisyah",
+     "line": "The number of complaints has doubled.",
+     "es": "El número de quejas se ha duplicado."
+    },
+    {
+     "sp": "Viktor",
+     "line": "Each of the teams has a different schedule.",
+     "es": "Cada uno de los equipos tiene un horario distinto."
+    },
+    {
+     "sp": "Aisyah",
+     "line": "None of the information was shared, and a third of the staff are unhappy.",
+     "es": "No se compartió nada de la información y un tercio del personal está inconforme."
+    }
+   ]
+  },
   {
    "title": "Exam results",
    "titleEs": "Resultados de los exámenes",
@@ -2189,7 +3069,7 @@
     },
     {
      "sp": "Oliver",
-     "line": "The number of failures is higher than last year, isn't it?",
+     "line": "The number of failures is higher than last year, isn’t it?",
      "es": "El número de reprobados es más alto que el año pasado, ¿no?"
     },
     {
@@ -2268,7 +3148,7 @@
     },
     {
      "sp": "Zoe",
-     "line": "There's a lot of work ahead, then.",
+     "line": "There’s a lot of work ahead, then.",
      "es": "Entonces hay mucho trabajo por delante."
     },
     {
@@ -2280,6 +3160,50 @@
   }
  ],
  "C1-11-0": [
+  {
+   "title": "A well-known face",
+   "titleEs": "Una cara conocida",
+   "scene": "🎭 En Londres: Imogen y Babak ven llegar a un actor a un estreno.",
+   "cast": [
+    {
+     "name": "Imogen",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Babak",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Imogen",
+     "line": "He’s that well-known, award-winning actor.",
+     "es": "Es ese actor muy conocido y premiado."
+    },
+    {
+     "sp": "Babak",
+     "line": "The soft-spoken one with the old-fashioned suits?",
+     "es": "¿El de voz suave y trajes anticuados?"
+    },
+    {
+     "sp": "Imogen",
+     "line": "Yes. He’s surprisingly down-to-earth.",
+     "es": "Sí. Es sorprendentemente sencillo."
+    },
+    {
+     "sp": "Babak",
+     "line": "I read he’s quite absent-minded and always late.",
+     "es": "Leí que es bastante distraído y siempre llega tarde."
+    },
+    {
+     "sp": "Imogen",
+     "line": "But hard-working. This is a three-hour, low-budget film.",
+     "es": "Pero trabajador. Esta es una película de tres horas y bajo presupuesto."
+    }
+   ]
+  },
   {
    "title": "Recruiting a team leader",
    "titleEs": "Reclutando un líder de equipo",
@@ -2304,12 +3228,12 @@
     },
     {
      "sp": "Valentina",
-     "line": "She's a quick-thinking, well-organised professional with a ten-year track record.",
+     "line": "She’s a quick-thinking, well-organised professional with a ten-year track record.",
      "es": "Es una profesional ágil para pensar, muy organizada y con diez años de trayectoria."
     },
     {
      "sp": "Mark",
-     "line": "And she's worked for a world-famous tech company, hasn't she?",
+     "line": "And she’s worked for a world-famous tech company, hasn’t she?",
      "es": "Y ha trabajado para una empresa de tecnología mundialmente famosa, ¿no?"
     },
     {
@@ -2319,7 +3243,7 @@
     },
     {
      "sp": "Mark",
-     "line": "That's a deal-breaker for some investors.",
+     "line": "That’s a deal-breaker for some investors.",
      "es": "Eso es un factor decisivo para algunos inversionistas."
     },
     {
@@ -2334,7 +3258,7 @@
     },
     {
      "sp": "Valentina",
-     "line": "Then let's offer her the job. A highly respected leader is worth a short working week.",
+     "line": "Then let’s offer her the job. A highly respected leader is worth a short working week.",
      "es": "Entonces ofrezcámosle el puesto a ella. Una líder muy respetada vale una semana laboral corta."
     }
    ]
@@ -2358,7 +3282,7 @@
    "lines": [
     {
      "sp": "Ryan",
-     "line": "What's the concept behind the menu?",
+     "line": "What’s the concept behind the menu?",
      "es": "¿Cuál es el concepto detrás del menú?"
     },
     {
@@ -2373,7 +3297,7 @@
     },
     {
      "sp": "Daniela",
-     "line": "It's a six-hour recipe from my grandmother. She was a self-taught cook from Cauca.",
+     "line": "It’s a six-hour recipe from my grandmother. She was a self-taught cook from Cauca.",
      "es": "Es una receta de seis horas de mi abuela. Era una cocinera autodidacta del Cauca."
     },
     {
@@ -2401,6 +3325,50 @@
  ],
  "C1-11-1": [
   {
+   "title": "The best-kept secret",
+   "titleEs": "El secreto mejor guardado",
+   "scene": "🍜 En Taipéi: Yu-ting lleva a Fernando a un restaurante escondido.",
+   "cast": [
+    {
+     "name": "Yu-ting",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Fernando",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Yu-ting",
+     "line": "This is the best-kept secret in the city.",
+     "es": "Este es el secreto mejor guardado de la ciudad."
+    },
+    {
+     "sp": "Fernando",
+     "line": "It’s the worst-lit restaurant I’ve ever seen.",
+     "es": "Es el restaurante peor iluminado que he visto."
+    },
+    {
+     "sp": "Yu-ting",
+     "line": "But it has the longest-running kitchen in the district.",
+     "es": "Pero tiene la cocina que lleva más tiempo abierta en el distrito."
+    },
+    {
+     "sp": "Fernando",
+     "line": "And the most mouth-watering smell.",
+     "es": "Y el olor que más abre el apetito."
+    },
+    {
+     "sp": "Yu-ting",
+     "line": "Try the fastest-selling dish before it’s gone.",
+     "es": "Prueba el plato que más rápido se vende antes de que se acabe."
+    }
+   ]
+  },
+  {
    "title": "An awards ceremony",
    "titleEs": "Una ceremonia de premios",
    "scene": "🏆 En los premios de periodismo en Bogotá: dos presentadores anuncian a los ganadores.",
@@ -2424,7 +3392,7 @@
     },
     {
      "sp": "Isabela",
-     "line": "She's also one of the best-known faces on Colombian television.",
+     "line": "She’s also one of the best-known faces on Colombian television.",
      "es": "También es una de las caras más conocidas de la televisión colombiana."
     },
     {
@@ -2434,12 +3402,12 @@
     },
     {
      "sp": "Isabela",
-     "line": "And she's arguably the most highly respected journalist in the region.",
+     "line": "And she’s arguably the most highly respected journalist in the region.",
      "es": "Y es posiblemente la periodista más respetada de la región."
     },
     {
      "sp": "Tom",
-     "line": "Before we hand it over, let's remember last year's winner, a far less well-known reporter from Chocó.",
+     "line": "Before we hand it over, let’s remember last year’s winner, a far less well-known reporter from Chocó.",
      "es": "Antes de entregarlo, recordemos al ganador del año pasado, un periodista mucho menos conocido del Chocó."
     },
     {
@@ -2488,7 +3456,7 @@
     },
     {
      "sp": "Laura",
-     "line": "They're among the best-paid in the sector, which attracts the most highly qualified staff.",
+     "line": "They’re among the best-paid in the sector, which attracts the most highly qualified staff.",
      "es": "Están entre los mejor pagados del sector, lo que atrae al personal más calificado."
     },
     {
@@ -2498,7 +3466,7 @@
     },
     {
      "sp": "Laura",
-     "line": "It's less well-known, but its graduates are the most sought-after by employers.",
+     "line": "It’s less well-known, but its graduates are the most sought-after by employers.",
      "es": "Es menos conocida, pero sus egresados son los más solicitados por los empleadores."
     },
     {
@@ -2508,13 +3476,57 @@
     },
     {
      "sp": "Laura",
-     "line": "Exactly. It's the longest-established program in the region.",
+     "line": "Exactly. It’s the longest-established program in the region.",
      "es": "Exacto. Es el programa con más trayectoria de la región."
     }
    ]
   }
  ],
  "C1-12-0": [
+  {
+   "title": "Had I known",
+   "titleEs": "De haberlo sabido",
+   "scene": "🚆 En una estación de Zúrich: Noémie y Tariq perdieron una conexión.",
+   "cast": [
+    {
+     "name": "Noémie",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Tariq",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Noémie",
+     "line": "Had I known about the strike, I’d have taken the bus.",
+     "es": "De haber sabido del paro, habría tomado el bus."
+    },
+    {
+     "sp": "Tariq",
+     "line": "Should the next train be cancelled, we’ll rent a car.",
+     "es": "Si llegan a cancelar el próximo tren, alquilamos un carro."
+    },
+    {
+     "sp": "Noémie",
+     "line": "Were I in charge, I’d warn passengers earlier.",
+     "es": "Si yo estuviera a cargo, les avisaría antes a los pasajeros."
+    },
+    {
+     "sp": "Tariq",
+     "line": "Had we left at seven, we’d be there by now.",
+     "es": "Si hubiéramos salido a las siete, ya estaríamos allá."
+    },
+    {
+     "sp": "Noémie",
+     "line": "Should you need coffee, I’m buying.",
+     "es": "Si necesitas café, yo invito."
+    }
+   ]
+  },
   {
    "title": "A board meeting",
    "titleEs": "Una junta directiva",
@@ -2544,7 +3556,7 @@
     },
     {
      "sp": "Catalina",
-     "line": "Fair point. Were I in your position, though, I'd propose a new plan today.",
+     "line": "Fair point. Were I in your position, though, I’d propose a new plan today.",
      "es": "Es justo. Aunque, si yo estuviera en su lugar, propondría un nuevo plan hoy."
     },
     {
@@ -2559,7 +3571,7 @@
     },
     {
      "sp": "Alejandro",
-     "line": "Considerably. Had they announced them earlier, we wouldn't be having this discussion.",
+     "line": "Considerably. Had they announced them earlier, we wouldn’t be having this discussion.",
      "es": "Considerablemente. Si los hubieran anunciado antes, no estaríamos teniendo esta discusión."
     },
     {
@@ -2608,7 +3620,7 @@
     },
     {
      "sp": "Mateo",
-     "line": "Isn't that a bit defensive?",
+     "line": "Isn’t that a bit defensive?",
      "es": "¿No suena un poco a la defensiva?"
     },
     {
@@ -2618,13 +3630,57 @@
     },
     {
      "sp": "Mateo",
-     "line": "Perfect. Should they not reply by Friday, I'll call them.",
+     "line": "Perfect. Should they not reply by Friday, I’ll call them.",
      "es": "Perfecto. Si no responden para el viernes, los llamo."
     }
    ]
   }
  ],
  "C1-12-1": [
+  {
+   "title": "On one condition",
+   "titleEs": "Con una condición",
+   "scene": "📝 En una editorial de Barcelona: la editora Montse negocia con el autor Ansel.",
+   "cast": [
+    {
+     "name": "Montse",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Ansel",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Montse",
+     "line": "We’ll publish it provided that you cut fifty pages.",
+     "es": "Lo publicamos siempre que recortes cincuenta páginas."
+    },
+    {
+     "sp": "Ansel",
+     "line": "I’ll agree as long as the ending stays.",
+     "es": "Acepto siempre y cuando el final se quede."
+    },
+    {
+     "sp": "Montse",
+     "line": "Unless you change the title, it won’t sell.",
+     "es": "A menos que cambies el título, no se va a vender."
+    },
+    {
+     "sp": "Ansel",
+     "line": "Suppose I keep it; what happens?",
+     "es": "Supongamos que lo dejo; ¿qué pasa?"
+    },
+    {
+     "sp": "Montse",
+     "line": "Only if the cover is strong will it work. Otherwise, we both lose.",
+     "es": "Solo si la carátula es fuerte va a funcionar. De lo contrario, perdemos los dos."
+    }
+   ]
+  },
   {
    "title": "Negotiating a bonus",
    "titleEs": "Negociando una bonificación",
@@ -2644,7 +3700,7 @@
    "lines": [
     {
      "sp": "Jack",
-     "line": "You'll get the full bonus as long as you hit the quarterly target.",
+     "line": "You’ll get the full bonus as long as you hit the quarterly target.",
      "es": "Vas a recibir la bonificación completa siempre y cuando cumplas la meta trimestral."
     },
     {
@@ -2659,17 +3715,17 @@
     },
     {
      "sp": "Mariana",
-     "line": "Fair. Unless the market collapses, that shouldn't be a problem.",
+     "line": "Fair. Unless the market collapses, that shouldn’t be a problem.",
      "es": "Me parece justo. A menos que el mercado colapse, eso no debería ser un problema."
     },
     {
      "sp": "Jack",
-     "line": "I'll put it in writing in case there's any confusion later.",
+     "line": "I’ll put it in writing in case there’s any confusion later.",
      "es": "Lo voy a poner por escrito por si hay alguna confusión más adelante."
     },
     {
      "sp": "Mariana",
-     "line": "Thanks. Even if I don't reach it, I'd like a review in June.",
+     "line": "Thanks. Even if I don’t reach it, I’d like a review in June.",
      "es": "Gracias. Aunque no la alcance, quisiera una revisión en junio."
     },
     {
@@ -2698,7 +3754,7 @@
    "lines": [
     {
      "sp": "Felipe",
-     "line": "You can join the group provided that you've had your yellow fever vaccine.",
+     "line": "You can join the group provided that you’ve had your yellow fever vaccine.",
      "es": "Te puedes unir al grupo siempre que tengas la vacuna de la fiebre amarilla."
     },
     {
@@ -2718,7 +3774,7 @@
     },
     {
      "sp": "Felipe",
-     "line": "We'll keep walking unless the river is too high to cross.",
+     "line": "We’ll keep walking unless the river is too high to cross.",
      "es": "Seguiremos caminando a menos que el río esté demasiado crecido para cruzarlo."
     },
     {
@@ -2728,12 +3784,12 @@
     },
     {
      "sp": "Felipe",
-     "line": "As long as you stay where the guides can see you, it's fine.",
+     "line": "As long as you stay where the guides can see you, it’s fine.",
      "es": "Mientras te quedes donde los guías te puedan ver, no hay problema."
     },
     {
      "sp": "Chloe",
-     "line": "Great. I'll take some cash in case I want to buy anything in the villages.",
+     "line": "Great. I’ll take some cash in case I want to buy anything in the villages.",
      "es": "Genial. Voy a llevar algo de efectivo por si quiero comprar algo en los pueblos."
     }
    ]

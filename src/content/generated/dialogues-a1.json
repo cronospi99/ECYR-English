@@ -1,6 +1,55 @@
 {
  "A1-1-0": [
   {
+   "title": "First day in Toronto",
+   "titleEs": "Primer día en Toronto",
+   "scene": "🍁 En una escuela de idiomas en Toronto: Aiko, de Japón, conoce a Kwame, de Ghana.",
+   "cast": [
+    {
+     "name": "Aiko",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Kwame",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Aiko",
+     "line": "Hi, I’m Aiko. I’m from Japan. What’s your name?",
+     "es": "Hola, soy Aiko. Soy de Japón. ¿Cómo te llamas?"
+    },
+    {
+     "sp": "Kwame",
+     "line": "My name is Kwame. I’m from Ghana.",
+     "es": "Me llamo Kwame. Soy de Ghana."
+    },
+    {
+     "sp": "Aiko",
+     "line": "Is this your first day?",
+     "es": "¿Es tu primer día?"
+    },
+    {
+     "sp": "Kwame",
+     "line": "Yes, it is. Our teacher is Mrs. Lee. Her class is in room 4.",
+     "es": "Sí. Nuestra profesora es la señora Lee. Su clase es en el salón 4."
+    },
+    {
+     "sp": "Aiko",
+     "line": "Are your friends in this class too?",
+     "es": "¿Tus amigos también están en esta clase?"
+    },
+    {
+     "sp": "Kwame",
+     "line": "No, they aren’t. Their class is in the afternoon.",
+     "es": "No. Su clase es por la tarde."
+    }
+   ]
+  },
+  {
    "title": "The first day of school",
    "titleEs": "El primer día de clases",
    "scene": "🏫 En un colegio de Medellín: un papá conoce a la profesora nueva.",
@@ -105,6 +154,55 @@
   }
  ],
  "A1-1-1": [
+  {
+   "title": "At the hostel in Lisbon",
+   "titleEs": "En el hostal de Lisboa",
+   "scene": "🛎️ En la recepción de un hostal en Lisboa: Noor llega y Mateus la recibe.",
+   "cast": [
+    {
+     "name": "Noor",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Mateus",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mateus",
+     "line": "Good evening! What’s your last name?",
+     "es": "¡Buenas noches! ¿Cuál es tu apellido?"
+    },
+    {
+     "sp": "Noor",
+     "line": "It’s Rahman. Where is my room?",
+     "es": "Es Rahman. ¿Dónde está mi habitación?"
+    },
+    {
+     "sp": "Mateus",
+     "line": "It’s on the second floor. Are you here for the festival?",
+     "es": "Está en el segundo piso. ¿Vienes al festival?"
+    },
+    {
+     "sp": "Noor",
+     "line": "Yes, I am. When is breakfast?",
+     "es": "Sí. ¿A qué hora es el desayuno?"
+    },
+    {
+     "sp": "Mateus",
+     "line": "It’s from seven to ten. Is this your bag?",
+     "es": "Es de siete a diez. ¿Esta es tu maleta?"
+    },
+    {
+     "sp": "Noor",
+     "line": "No, it isn’t. Who is that man? Maybe it’s his.",
+     "es": "No. ¿Quién es ese señor? Tal vez es de él."
+    }
+   ]
+  },
   {
    "title": "Where is room 204?",
    "titleEs": "¿Dónde queda el salón 204?",
@@ -220,6 +318,55 @@
   }
  ],
  "A1-2-0": [
+  {
+   "title": "A nurse in Nairobi",
+   "titleEs": "Una enfermera en Nairobi",
+   "scene": "🩺 Videollamada entre dos amigos por internet: Ingrid, en Oslo, le pregunta a Baraka por su trabajo en Nairobi.",
+   "cast": [
+    {
+     "name": "Ingrid",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Baraka",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ingrid",
+     "line": "What do you do, Baraka?",
+     "es": "¿A qué te dedicas, Baraka?"
+    },
+    {
+     "sp": "Baraka",
+     "line": "I’m a nurse. I work in a hospital in Nairobi.",
+     "es": "Soy enfermero. Trabajo en un hospital en Nairobi."
+    },
+    {
+     "sp": "Ingrid",
+     "line": "What time do you start work?",
+     "es": "¿A qué hora empiezas a trabajar?"
+    },
+    {
+     "sp": "Baraka",
+     "line": "I start at six in the morning. Where does your sister work?",
+     "es": "Empiezo a las seis de la mañana. ¿Dónde trabaja tu hermana?"
+    },
+    {
+     "sp": "Ingrid",
+     "line": "She works in a bakery. How do you go to work?",
+     "es": "Trabaja en una panadería. ¿Cómo vas al trabajo?"
+    },
+    {
+     "sp": "Baraka",
+     "line": "I take the bus. What does she make at the bakery?",
+     "es": "Tomo el bus. ¿Qué hace ella en la panadería?"
+    }
+   ]
+  },
   {
    "title": "A day in the life",
    "titleEs": "Un día cualquiera",
@@ -341,6 +488,55 @@
  ],
  "A1-2-1": [
   {
+   "title": "Different time zones",
+   "titleEs": "Husos horarios distintos",
+   "scene": "🌏 Dos compañeras de un curso en línea: Mei está en Singapur y Olivia en Vancouver.",
+   "cast": [
+    {
+     "name": "Mei",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Olivia",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Mei",
+     "line": "What time is it in Vancouver?",
+     "es": "¿Qué hora es en Vancouver?"
+    },
+    {
+     "sp": "Olivia",
+     "line": "It’s seven o’clock in the evening. I have class at eight.",
+     "es": "Son las siete de la noche. Tengo clase a las ocho."
+    },
+    {
+     "sp": "Mei",
+     "line": "Here it’s ten in the morning! I study in the afternoon.",
+     "es": "¡Aquí son las diez de la mañana! Yo estudio por la tarde."
+    },
+    {
+     "sp": "Olivia",
+     "line": "Do you work on Saturdays?",
+     "es": "¿Trabajas los sábados?"
+    },
+    {
+     "sp": "Mei",
+     "line": "Yes, from nine to noon. On Sundays I sleep late.",
+     "es": "Sí, de nueve a mediodía. Los domingos duermo hasta tarde."
+    },
+    {
+     "sp": "Olivia",
+     "line": "Me too! I get up around eleven on weekends.",
+     "es": "¡Yo también! Me levanto como a las once los fines de semana."
+    }
+   ]
+  },
+  {
    "title": "An appointment with the doctor",
    "titleEs": "Una cita con el médico",
    "scene": "🏥 En una clínica de Cali: Diego pide una cita por teléfono.",
@@ -450,6 +646,55 @@
   }
  ],
  "A1-3-0": [
+  {
+   "title": "At the Grand Bazaar",
+   "titleEs": "En el Gran Bazar",
+   "scene": "🧿 En un mercado de Estambul: Chloe busca recuerdos y Emre vende.",
+   "cast": [
+    {
+     "name": "Chloe",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Emre",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Chloe",
+     "line": "Excuse me, how much is this lamp?",
+     "es": "Disculpe, ¿cuánto cuesta esta lámpara?"
+    },
+    {
+     "sp": "Emre",
+     "line": "This one is forty euros. That one over there is twenty.",
+     "es": "Esta cuesta cuarenta euros. Aquella de allá cuesta veinte."
+    },
+    {
+     "sp": "Chloe",
+     "line": "And these cups? Are these handmade?",
+     "es": "¿Y estas tazas? ¿Son hechas a mano?"
+    },
+    {
+     "sp": "Emre",
+     "line": "Yes, they are. Those plates are handmade too.",
+     "es": "Sí. Aquellos platos también son hechos a mano."
+    },
+    {
+     "sp": "Chloe",
+     "line": "I like those. How much are they?",
+     "es": "Me gustan esos. ¿Cuánto cuestan?"
+    },
+    {
+     "sp": "Emre",
+     "line": "Those are ten euros each. This is my best price!",
+     "es": "Esos cuestan diez euros cada uno. ¡Este es mi mejor precio!"
+    }
+   ]
+  },
   {
    "title": "At the fruit market",
    "titleEs": "En la plaza de mercado",
@@ -561,6 +806,55 @@
  ],
  "A1-3-1": [
   {
+   "title": "Two phones in Seoul",
+   "titleEs": "Dos celulares en Seúl",
+   "scene": "📱 En una tienda de tecnología en Seúl: Liam compara celulares con la vendedora Ji-woo.",
+   "cast": [
+    {
+     "name": "Liam",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Ji-woo",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Liam",
+     "line": "Which phone is better, the black one or the white one?",
+     "es": "¿Cuál celular es mejor, el negro o el blanco?"
+    },
+    {
+     "sp": "Ji-woo",
+     "line": "The black one is faster, but it’s more expensive.",
+     "es": "El negro es más rápido, pero es más caro."
+    },
+    {
+     "sp": "Liam",
+     "line": "Is the white one smaller?",
+     "es": "¿El blanco es más pequeño?"
+    },
+    {
+     "sp": "Ji-woo",
+     "line": "Yes, and it’s lighter. The battery is better than the black one’s.",
+     "es": "Sí, y es más liviano. La batería es mejor que la del negro."
+    },
+    {
+     "sp": "Liam",
+     "line": "Hmm. The white one is cheaper and prettier.",
+     "es": "Mmm. El blanco es más barato y más bonito."
+    },
+    {
+     "sp": "Ji-woo",
+     "line": "It’s more popular with students too.",
+     "es": "También es más popular entre los estudiantes."
+    }
+   ]
+  },
+  {
    "title": "Cartagena or Santa Marta?",
    "titleEs": "¿Cartagena o Santa Marta?",
    "scene": "🏖️ Luisa y Carlos escogen a dónde ir de vacaciones.",
@@ -670,6 +964,55 @@
   }
  ],
  "A1-4-0": [
+  {
+   "title": "K-pop or jazz?",
+   "titleEs": "¿K-pop o jazz?",
+   "scene": "🎧 En un tren en Berlín: Sofia y Dae-ho hablan de música.",
+   "cast": [
+    {
+     "name": "Sofia",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Dae-ho",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Sofia",
+     "line": "Do you like K-pop, Dae-ho?",
+     "es": "¿Te gusta el K-pop, Dae-ho?"
+    },
+    {
+     "sp": "Dae-ho",
+     "line": "Yes, I love it. What kind of music do you like?",
+     "es": "Sí, me encanta. ¿Qué tipo de música te gusta?"
+    },
+    {
+     "sp": "Sofia",
+     "line": "I like jazz. My brother plays it. Do you know him?",
+     "es": "Me gusta el jazz. Mi hermano lo toca. ¿Lo conoces?"
+    },
+    {
+     "sp": "Dae-ho",
+     "line": "No, I don’t know him. Who is your favorite singer?",
+     "es": "No, no lo conozco. ¿Quién es tu cantante favorito?"
+    },
+    {
+     "sp": "Sofia",
+     "line": "Nina Simone. My parents love her too.",
+     "es": "Nina Simone. A mis papás también les encanta."
+    },
+    {
+     "sp": "Dae-ho",
+     "line": "I don’t know her songs. Can you play them for me?",
+     "es": "No conozco sus canciones. ¿Me las pones?"
+    }
+   ]
+  },
   {
    "title": "The new manager",
    "titleEs": "El nuevo jefe",
@@ -786,6 +1129,55 @@
  ],
  "A1-4-1": [
   {
+   "title": "An invitation in Sydney",
+   "titleEs": "Una invitación en Sídney",
+   "scene": "🏄 En Sídney: Jack invita a Priya a un concierto en la playa.",
+   "cast": [
+    {
+     "name": "Jack",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Priya",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Jack",
+     "line": "Would you like to go to a concert on Saturday?",
+     "es": "¿Te gustaría ir a un concierto el sábado?"
+    },
+    {
+     "sp": "Priya",
+     "line": "I’d love to! Where is it?",
+     "es": "¡Me encantaría! ¿Dónde es?"
+    },
+    {
+     "sp": "Jack",
+     "line": "It’s at Bondi Beach. Would you like to have dinner first?",
+     "es": "En Bondi Beach. ¿Te gustaría cenar antes?"
+    },
+    {
+     "sp": "Priya",
+     "line": "I’d like to, but I need to work until seven.",
+     "es": "Me gustaría, pero tengo que trabajar hasta las siete."
+    },
+    {
+     "sp": "Jack",
+     "line": "No problem. Would you like to meet at eight?",
+     "es": "No hay problema. ¿Te gustaría que nos viéramos a las ocho?"
+    },
+    {
+     "sp": "Priya",
+     "line": "Yes, I would. See you there!",
+     "es": "Sí. ¡Nos vemos allá!"
+    }
+   ]
+  },
+  {
    "title": "Dinner in Cali",
    "titleEs": "Una cena en Cali",
    "scene": "🍽️ En un restaurante de Cali: el mesero atiende a Carolina.",
@@ -901,6 +1293,55 @@
  ],
  "A1-5-0": [
   {
+   "title": "A call from Cairo",
+   "titleEs": "Una llamada desde El Cairo",
+   "scene": "📞 Hana llama desde El Cairo a su hermano Omar, que estudia en Londres.",
+   "cast": [
+    {
+     "name": "Hana",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Omar",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hana",
+     "line": "Hi, Omar! What are you doing?",
+     "es": "¡Hola, Omar! ¿Qué estás haciendo?"
+    },
+    {
+     "sp": "Omar",
+     "line": "I’m cooking dinner. Are you calling from home?",
+     "es": "Estoy cocinando la cena. ¿Estás llamando desde la casa?"
+    },
+    {
+     "sp": "Hana",
+     "line": "Yes, I am. Mom and Dad are watching a football match.",
+     "es": "Sí. Mamá y papá están viendo un partido de fútbol."
+    },
+    {
+     "sp": "Omar",
+     "line": "Is it raining in Cairo?",
+     "es": "¿Está lloviendo en El Cairo?"
+    },
+    {
+     "sp": "Hana",
+     "line": "No, it isn’t. Are you studying a lot these days?",
+     "es": "No. ¿Estás estudiando mucho estos días?"
+    },
+    {
+     "sp": "Omar",
+     "line": "Yes, I’m taking four classes. And I’m working on weekends.",
+     "es": "Sí, estoy tomando cuatro clases. Y estoy trabajando los fines de semana."
+    }
+   ]
+  },
+  {
    "title": "Sunday at home",
    "titleEs": "Domingo en la casa",
    "scene": "📞 Gloria está de viaje y llama a su hijo Pablo a la casa.",
@@ -1015,6 +1456,55 @@
   }
  ],
  "A1-5-1": [
+  {
+   "title": "Families around the world",
+   "titleEs": "Familias del mundo",
+   "scene": "👨‍👩‍👧 En una clase en Dublín: Yuki y Ahmed comparan las familias de sus países.",
+   "cast": [
+    {
+     "name": "Yuki",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Ahmed",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Yuki",
+     "line": "In Japan, a lot of young people live alone.",
+     "es": "En Japón, muchos jóvenes viven solos."
+    },
+    {
+     "sp": "Ahmed",
+     "line": "Really? In Egypt, nearly all young people live with their parents.",
+     "es": "¿En serio? En Egipto, casi todos los jóvenes viven con sus papás."
+    },
+    {
+     "sp": "Yuki",
+     "line": "Do many families have pets?",
+     "es": "¿Muchas familias tienen mascotas?"
+    },
+    {
+     "sp": "Ahmed",
+     "line": "Not many. Few people have dogs in my city.",
+     "es": "No muchas. Pocas personas tienen perros en mi ciudad."
+    },
+    {
+     "sp": "Yuki",
+     "line": "In my building, all the families have a cat!",
+     "es": "¡En mi edificio todas las familias tienen un gato!"
+    },
+    {
+     "sp": "Ahmed",
+     "line": "And no one has a big garden, right?",
+     "es": "Y nadie tiene un jardín grande, ¿cierto?"
+    }
+   ]
+  },
   {
    "title": "A big family lunch",
    "titleEs": "Un almuerzo familiar grande",
@@ -1136,6 +1626,55 @@
  ],
  "A1-6-0": [
   {
+   "title": "Winter in Reykjavik",
+   "titleEs": "Invierno en Reikiavik",
+   "scene": "❄️ Dos amigos por chat de voz: Thabo, en Ciudad del Cabo, le pregunta a Freya por su rutina en Islandia.",
+   "cast": [
+    {
+     "name": "Thabo",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Freya",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Thabo",
+     "line": "Do you ever go swimming in winter?",
+     "es": "¿Alguna vez vas a nadar en invierno?"
+    },
+    {
+     "sp": "Freya",
+     "line": "Yes, I often swim in hot pools. I never swim in the sea!",
+     "es": "Sí, a menudo nado en piscinas termales. ¡Nunca nado en el mar!"
+    },
+    {
+     "sp": "Thabo",
+     "line": "I always run on the beach in the morning.",
+     "es": "Yo siempre corro en la playa por la mañana."
+    },
+    {
+     "sp": "Freya",
+     "line": "Nice! I usually go to the gym. I hardly ever run outside.",
+     "es": "¡Qué bien! Yo normalmente voy al gimnasio. Casi nunca corro afuera."
+    },
+    {
+     "sp": "Thabo",
+     "line": "Do you sometimes play team sports?",
+     "es": "¿A veces practicas deportes de equipo?"
+    },
+    {
+     "sp": "Freya",
+     "line": "Sometimes. I play handball twice a week.",
+     "es": "A veces. Juego balonmano dos veces por semana."
+    }
+   ]
+  },
+  {
    "title": "Healthy habits",
    "titleEs": "Hábitos saludables",
    "scene": "🏋️ En un gimnasio de Medellín: Catalina y Hernán hablan de sus rutinas.",
@@ -1250,6 +1789,55 @@
   }
  ],
  "A1-6-1": [
+  {
+   "title": "Sports day in Auckland",
+   "titleEs": "Día deportivo en Auckland",
+   "scene": "🏉 En un club deportivo de Auckland: el entrenador Manu entrevista a Elena, que es nueva.",
+   "cast": [
+    {
+     "name": "Manu",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Elena",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Manu",
+     "line": "How often do you exercise, Elena?",
+     "es": "¿Con qué frecuencia haces ejercicio, Elena?"
+    },
+    {
+     "sp": "Elena",
+     "line": "Three times a week.",
+     "es": "Tres veces por semana."
+    },
+    {
+     "sp": "Manu",
+     "line": "How well do you swim?",
+     "es": "¿Qué tan bien nadas?"
+    },
+    {
+     "sp": "Elena",
+     "line": "Pretty well. But I don’t play rugby very well.",
+     "es": "Bastante bien. Pero no juego rugby muy bien."
+    },
+    {
+     "sp": "Manu",
+     "line": "How long do you spend at the gym?",
+     "es": "¿Cuánto tiempo pasas en el gimnasio?"
+    },
+    {
+     "sp": "Elena",
+     "line": "About an hour. How good are you at tennis, coach?",
+     "es": "Más o menos una hora. ¿Qué tan bueno es usted para el tenis, entrenador?"
+    }
+   ]
+  },
   {
    "title": "At the tennis club",
    "titleEs": "En el club de tenis",
@@ -1366,6 +1954,55 @@
  ],
  "A1-7-0": [
   {
+   "title": "A weekend in Marrakech",
+   "titleEs": "Un fin de semana en Marrakech",
+   "scene": "🐪 El lunes en una oficina de Madrid: Lucas le pregunta a Fatima por su viaje.",
+   "cast": [
+    {
+     "name": "Lucas",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Fatima",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Lucas",
+     "line": "Did you have a good weekend?",
+     "es": "¿Tuviste un buen fin de semana?"
+    },
+    {
+     "sp": "Fatima",
+     "line": "Yes! I went to Marrakech with my cousins.",
+     "es": "¡Sí! Fui a Marrakech con mis primos."
+    },
+    {
+     "sp": "Lucas",
+     "line": "What did you do there?",
+     "es": "¿Qué hicieron allá?"
+    },
+    {
+     "sp": "Fatima",
+     "line": "We visited the old market and ate a lot. Did you stay home?",
+     "es": "Visitamos el mercado antiguo y comimos mucho. ¿Tú te quedaste en casa?"
+    },
+    {
+     "sp": "Lucas",
+     "line": "Yes, I did. I didn’t go out. I watched three films.",
+     "es": "Sí. No salí. Vi tres películas."
+    },
+    {
+     "sp": "Fatima",
+     "line": "We didn’t sleep much, but we had a great time.",
+     "es": "No dormimos mucho, pero la pasamos muy bien."
+    }
+   ]
+  },
+  {
    "title": "The weekend in Guatapé",
    "titleEs": "El fin de semana en Guatapé",
    "scene": "🪨 Lunes en la oficina: Viviana le pregunta a Jorge por su fin de semana.",
@@ -1475,6 +2112,55 @@
   }
  ],
  "A1-7-1": [
+  {
+   "title": "Born in Mumbai",
+   "titleEs": "Nacido en Bombay",
+   "scene": "🎂 En una fiesta en Nueva York: Ravi y Anya hablan de su infancia.",
+   "cast": [
+    {
+     "name": "Ravi",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Anya",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ravi",
+     "line": "Where were you born, Anya?",
+     "es": "¿Dónde naciste, Anya?"
+    },
+    {
+     "sp": "Anya",
+     "line": "I was born in Kyiv. Were you born here in New York?",
+     "es": "Nací en Kiev. ¿Tú naciste aquí en Nueva York?"
+    },
+    {
+     "sp": "Ravi",
+     "line": "No, I wasn’t. I was born in Mumbai.",
+     "es": "No. Nací en Bombay."
+    },
+    {
+     "sp": "Anya",
+     "line": "Was your school big?",
+     "es": "¿Tu colegio era grande?"
+    },
+    {
+     "sp": "Ravi",
+     "line": "It was huge! There were sixty students in my class.",
+     "es": "¡Era enorme! Había sesenta estudiantes en mi clase."
+    },
+    {
+     "sp": "Anya",
+     "line": "Wow. My classes were small, and my teachers were very strict.",
+     "es": "Guau. Mis clases eran pequeñas y mis profesores eran muy estrictos."
+    }
+   ]
+  },
   {
    "title": "The concert",
    "titleEs": "El concierto",
@@ -1591,6 +2277,55 @@
  ],
  "A1-8-0": [
   {
+   "title": "New in Amsterdam",
+   "titleEs": "Nueva en Ámsterdam",
+   "scene": "🚲 En una calle de Ámsterdam: Zara acaba de mudarse y le pregunta a su vecino Daan.",
+   "cast": [
+    {
+     "name": "Zara",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Daan",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Zara",
+     "line": "Excuse me, is there a supermarket near here?",
+     "es": "Disculpa, ¿hay un supermercado cerca de aquí?"
+    },
+    {
+     "sp": "Daan",
+     "line": "Yes, there’s one on the corner, next to the bank.",
+     "es": "Sí, hay uno en la esquina, al lado del banco."
+    },
+    {
+     "sp": "Zara",
+     "line": "Are there any parks?",
+     "es": "¿Hay parques?"
+    },
+    {
+     "sp": "Daan",
+     "line": "There are two. One is behind the library.",
+     "es": "Hay dos. Uno queda detrás de la biblioteca."
+    },
+    {
+     "sp": "Zara",
+     "line": "And is there a gym?",
+     "es": "¿Y hay un gimnasio?"
+    },
+    {
+     "sp": "Daan",
+     "line": "There isn’t a gym, but there’s a pool across from the station.",
+     "es": "No hay gimnasio, pero hay una piscina frente a la estación."
+    }
+   ]
+  },
+  {
    "title": "A tourist in Cartagena",
    "titleEs": "Una turista en Cartagena",
    "scene": "🏰 En la ciudad amurallada de Cartagena: Emily le pide ayuda a Wilson.",
@@ -1705,6 +2440,55 @@
   }
  ],
  "A1-8-1": [
+  {
+   "title": "Cooking in Bangkok",
+   "titleEs": "Cocinando en Bangkok",
+   "scene": "🍜 En una clase de cocina en Bangkok: la chef Malee le enseña a Peter.",
+   "cast": [
+    {
+     "name": "Malee",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Peter",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Peter",
+     "line": "How much rice do we need?",
+     "es": "¿Cuánto arroz necesitamos?"
+    },
+    {
+     "sp": "Malee",
+     "line": "Two cups. And how many eggs are there?",
+     "es": "Dos tazas. ¿Y cuántos huevos hay?"
+    },
+    {
+     "sp": "Peter",
+     "line": "There are a few. Is there any garlic?",
+     "es": "Hay unos pocos. ¿Hay ajo?"
+    },
+    {
+     "sp": "Malee",
+     "line": "There’s a lot. But there isn’t much oil.",
+     "es": "Hay mucho. Pero no hay mucho aceite."
+    },
+    {
+     "sp": "Peter",
+     "line": "How many chillies do you want?",
+     "es": "¿Cuántos ajíes quiere?"
+    },
+    {
+     "sp": "Malee",
+     "line": "Not many! Just a little chilli for you.",
+     "es": "¡No muchos! Solo un poquito de ají para ti."
+    }
+   ]
+  },
   {
    "title": "Party shopping",
    "titleEs": "Compras para la fiesta",
@@ -1826,6 +2610,55 @@
  ],
  "A1-9-0": [
   {
+   "title": "Meeting at the airport",
+   "titleEs": "Encuentro en el aeropuerto",
+   "scene": "🛬 Por teléfono: Tariq va a recoger en el aeropuerto de Dubái a la prima de Lena.",
+   "cast": [
+    {
+     "name": "Tariq",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Lena",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tariq",
+     "line": "What does your cousin look like?",
+     "es": "¿Cómo es tu prima?"
+    },
+    {
+     "sp": "Lena",
+     "line": "She’s tall and she has short red hair.",
+     "es": "Es alta y tiene el pelo corto y rojo."
+    },
+    {
+     "sp": "Tariq",
+     "line": "How old is she?",
+     "es": "¿Cuántos años tiene?"
+    },
+    {
+     "sp": "Lena",
+     "line": "She’s in her twenties. She wears glasses.",
+     "es": "Tiene veintitantos. Usa gafas."
+    },
+    {
+     "sp": "Tariq",
+     "line": "How tall is she?",
+     "es": "¿Qué tan alta es?"
+    },
+    {
+     "sp": "Lena",
+     "line": "About 1.80. And what color is your car?",
+     "es": "Como 1,80. ¿Y de qué color es tu carro?"
+    }
+   ]
+  },
+  {
    "title": "A friend at the airport",
    "titleEs": "Una amiga en el aeropuerto",
    "scene": "✈️ Lina le pide a Mauricio que recoja a su amiga en el aeropuerto El Dorado.",
@@ -1940,6 +2773,55 @@
   }
  ],
  "A1-9-1": [
+  {
+   "title": "Who is who?",
+   "titleEs": "¿Quién es quién?",
+   "scene": "🎉 En una boda en Lagos: Chidi le muestra a Emma quién es quién.",
+   "cast": [
+    {
+     "name": "Chidi",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Emma",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Emma",
+     "line": "Who’s the man wearing the green suit?",
+     "es": "¿Quién es el señor que lleva el traje verde?"
+    },
+    {
+     "sp": "Chidi",
+     "line": "That’s my uncle. He’s the one dancing with the bride.",
+     "es": "Es mi tío. Es el que está bailando con la novia."
+    },
+    {
+     "sp": "Emma",
+     "line": "And the woman sitting near the door?",
+     "es": "¿Y la señora sentada cerca de la puerta?"
+    },
+    {
+     "sp": "Chidi",
+     "line": "The one holding the baby? She’s my sister.",
+     "es": "¿La que tiene el bebé? Es mi hermana."
+    },
+    {
+     "sp": "Emma",
+     "line": "Who are the kids running around the tables?",
+     "es": "¿Quiénes son los niños que corren alrededor de las mesas?"
+    },
+    {
+     "sp": "Chidi",
+     "line": "The ones wearing white are my nephews.",
+     "es": "Los que van de blanco son mis sobrinos."
+    }
+   ]
+  },
   {
    "title": "Who’s who at the wedding",
    "titleEs": "¿Quién es quién en el matrimonio?",
@@ -2056,6 +2938,55 @@
  ],
  "A1-10-0": [
   {
+   "title": "Three days in Kyoto",
+   "titleEs": "Tres días en Kioto",
+   "scene": "⛩️ En un hostal de Kioto: Marco y Sara revisan su lista.",
+   "cast": [
+    {
+     "name": "Marco",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Sara",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Marco",
+     "line": "Have you visited the Golden Temple yet?",
+     "es": "¿Ya visitaste el Templo Dorado?"
+    },
+    {
+     "sp": "Sara",
+     "line": "Yes, I’ve already seen it. It’s beautiful.",
+     "es": "Sí, ya lo vi. Es hermoso."
+    },
+    {
+     "sp": "Marco",
+     "line": "Have you tried ramen yet?",
+     "es": "¿Ya probaste el ramen?"
+    },
+    {
+     "sp": "Sara",
+     "line": "No, I haven’t tried it yet. Have you?",
+     "es": "No, todavía no lo he probado. ¿Y tú?"
+    },
+    {
+     "sp": "Marco",
+     "line": "I’ve already eaten it three times!",
+     "es": "¡Yo ya lo he comido tres veces!"
+    },
+    {
+     "sp": "Sara",
+     "line": "I haven’t bought any souvenirs yet. Let’s go today.",
+     "es": "Todavía no he comprado recuerdos. Vamos hoy."
+    }
+   ]
+  },
+  {
    "title": "Ready for the party?",
    "titleEs": "¿Todo listo para la fiesta?",
    "scene": "🎂 En la casa: Claudia y su hijo Esteban revisan los preparativos de un cumpleaños.",
@@ -2170,6 +3101,55 @@
   }
  ],
  "A1-10-1": [
+  {
+   "title": "Have you ever…?",
+   "titleEs": "¿Alguna vez…?",
+   "scene": "🌋 En un café de Wellington: Aroha y Diego hablan de viajes.",
+   "cast": [
+    {
+     "name": "Aroha",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Diego",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Aroha",
+     "line": "Have you ever been to Asia?",
+     "es": "¿Alguna vez has estado en Asia?"
+    },
+    {
+     "sp": "Diego",
+     "line": "Yes, I have. I went to Vietnam in 2022.",
+     "es": "Sí. Fui a Vietnam en 2022."
+    },
+    {
+     "sp": "Aroha",
+     "line": "Did you like it?",
+     "es": "¿Te gustó?"
+    },
+    {
+     "sp": "Diego",
+     "line": "I loved it. Have you ever climbed a volcano?",
+     "es": "Me encantó. ¿Alguna vez has subido a un volcán?"
+    },
+    {
+     "sp": "Aroha",
+     "line": "Yes, I climbed one last summer. It was hard!",
+     "es": "Sí, subí a uno el verano pasado. ¡Fue duro!"
+    },
+    {
+     "sp": "Diego",
+     "line": "I’ve never done that. I’ve only seen them in photos.",
+     "es": "Yo nunca he hecho eso. Solo los he visto en fotos."
+    }
+   ]
+  },
   {
    "title": "Island holidays",
    "titleEs": "Vacaciones en la isla",
@@ -2286,6 +3266,55 @@
  ],
  "A1-11-0": [
   {
+   "title": "Prague or Vienna?",
+   "titleEs": "¿Praga o Viena?",
+   "scene": "🏰 En una agencia de viajes: Hugo le pide consejo a Nadia.",
+   "cast": [
+    {
+     "name": "Hugo",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Nadia",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Hugo",
+     "line": "Is Prague very expensive?",
+     "es": "¿Praga es muy cara?"
+    },
+    {
+     "sp": "Nadia",
+     "line": "No, it’s fairly cheap, and it’s really beautiful.",
+     "es": "No, es bastante barata y es realmente hermosa."
+    },
+    {
+     "sp": "Hugo",
+     "line": "And Vienna?",
+     "es": "¿Y Viena?"
+    },
+    {
+     "sp": "Nadia",
+     "line": "It’s extremely clean, but it’s pretty expensive.",
+     "es": "Es extremadamente limpia, pero es bastante cara."
+    },
+    {
+     "sp": "Hugo",
+     "line": "Is it too cold in December?",
+     "es": "¿Hace demasiado frío en diciembre?"
+    },
+    {
+     "sp": "Nadia",
+     "line": "It’s very cold, however the Christmas markets are amazing.",
+     "es": "Hace mucho frío; sin embargo, los mercados de Navidad son increíbles."
+    }
+   ]
+  },
+  {
    "title": "The new restaurant",
    "titleEs": "El restaurante nuevo",
    "scene": "🍲 Natalia le pregunta a Felipe por un restaurante de la Zona G en Bogotá.",
@@ -2400,6 +3429,55 @@
   }
  ],
  "A1-11-1": [
+  {
+   "title": "Tips for Rio",
+   "titleEs": "Consejos para Río",
+   "scene": "🏖️ Por mensaje de voz: Erik va a viajar a Río y Camila, que vive allá, lo aconseja.",
+   "cast": [
+    {
+     "name": "Erik",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Camila",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Erik",
+     "line": "What can I do in Rio in three days?",
+     "es": "¿Qué puedo hacer en Río en tres días?"
+    },
+    {
+     "sp": "Camila",
+     "line": "You can take the cable car to Sugarloaf Mountain.",
+     "es": "Puedes subir en teleférico al Pan de Azúcar."
+    },
+    {
+     "sp": "Erik",
+     "line": "Should I rent a car?",
+     "es": "¿Debería alquilar un carro?"
+    },
+    {
+     "sp": "Camila",
+     "line": "No, you shouldn’t. You should use the metro.",
+     "es": "No. Deberías usar el metro."
+    },
+    {
+     "sp": "Erik",
+     "line": "Can I swim at the beach in June?",
+     "es": "¿Puedo nadar en la playa en junio?"
+    },
+    {
+     "sp": "Camila",
+     "line": "You can, but you should bring a jacket for the evenings.",
+     "es": "Puedes, pero deberías llevar una chaqueta para las noches."
+    }
+   ]
+  },
   {
    "title": "One day in Medellín",
    "titleEs": "Un día en Medellín",
@@ -2521,6 +3599,55 @@
  ],
  "A1-12-0": [
   {
+   "title": "A cold in Stockholm",
+   "titleEs": "Un resfriado en Estocolmo",
+   "scene": "🤧 En una farmacia de Estocolmo: Kofi no se siente bien y Astrid lo atiende.",
+   "cast": [
+    {
+     "name": "Kofi",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Astrid",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Kofi",
+     "line": "I have a terrible cold. What should I do?",
+     "es": "Tengo un resfriado terrible. ¿Qué debo hacer?"
+    },
+    {
+     "sp": "Astrid",
+     "line": "It’s important to rest. It’s a good idea to drink hot tea.",
+     "es": "Es importante descansar. Es buena idea tomar té caliente."
+    },
+    {
+     "sp": "Kofi",
+     "line": "Is it helpful to take vitamin C?",
+     "es": "¿Sirve tomar vitamina C?"
+    },
+    {
+     "sp": "Astrid",
+     "line": "Yes, and it’s useful to sleep a lot.",
+     "es": "Sí, y es útil dormir mucho."
+    },
+    {
+     "sp": "Kofi",
+     "line": "I have a meeting tomorrow.",
+     "es": "Tengo una reunión mañana."
+    },
+    {
+     "sp": "Astrid",
+     "line": "It’s better to stay home. It’s not good to work when you’re sick.",
+     "es": "Es mejor quedarse en casa. No es bueno trabajar cuando estás enfermo."
+    }
+   ]
+  },
+  {
    "title": "Festival tips",
    "titleEs": "Consejos para el festival",
    "scene": "🎶 Santiago va a ir a un festival de música en Bogotá y Daniela le da consejos.",
@@ -2635,6 +3762,55 @@
   }
  ],
  "A1-12-1": [
+  {
+   "title": "At the chemist’s",
+   "titleEs": "En la droguería",
+   "scene": "💊 En una farmacia de Edimburgo: Yara pide ayuda al farmaceuta Callum.",
+   "cast": [
+    {
+     "name": "Yara",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Callum",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Yara",
+     "line": "Can I have something for a headache, please?",
+     "es": "¿Me da algo para el dolor de cabeza, por favor?"
+    },
+    {
+     "sp": "Callum",
+     "line": "Of course. You should try these tablets.",
+     "es": "Claro. Debería probar estas pastillas."
+    },
+    {
+     "sp": "Yara",
+     "line": "Could I have a small box?",
+     "es": "¿Me podría dar una caja pequeña?"
+    },
+    {
+     "sp": "Callum",
+     "line": "Sure. You could also drink more water.",
+     "es": "Claro. También podría tomar más agua."
+    },
+    {
+     "sp": "Yara",
+     "line": "Can you give me something for a cough too?",
+     "es": "¿Me puede dar algo para la tos también?"
+    },
+    {
+     "sp": "Callum",
+     "line": "Yes. You should take this syrup at night.",
+     "es": "Sí. Debería tomar este jarabe por la noche."
+    }
+   ]
+  },
   {
    "title": "The printer",
    "titleEs": "La impresora",
@@ -2751,6 +3927,55 @@
  ],
  "A1-13-0": [
   {
+   "title": "Street food in Mexico City",
+   "titleEs": "Comida callejera en Ciudad de México",
+   "scene": "🌮 En un puesto de tacos: Ben y Akira descubren que tienen gustos parecidos.",
+   "cast": [
+    {
+     "name": "Ben",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Akira",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Ben",
+     "line": "I love spicy food.",
+     "es": "Me encanta la comida picante."
+    },
+    {
+     "sp": "Akira",
+     "line": "So do I! But I can’t eat very hot chillies.",
+     "es": "¡A mí también! Pero no puedo comer ají muy picante."
+    },
+    {
+     "sp": "Ben",
+     "line": "Neither can I. I’m not a fan of onions.",
+     "es": "Yo tampoco. No soy fan de la cebolla."
+    },
+    {
+     "sp": "Akira",
+     "line": "I’m not either. I like tacos with pineapple.",
+     "es": "Yo tampoco. Me gustan los tacos con piña."
+    },
+    {
+     "sp": "Ben",
+     "line": "I do too! I don’t like them without lime.",
+     "es": "¡A mí también! No me gustan sin limón."
+    },
+    {
+     "sp": "Akira",
+     "line": "Neither do I. Let’s order four.",
+     "es": "A mí tampoco. Pidamos cuatro."
+    }
+   ]
+  },
+  {
    "title": "We have a lot in common",
    "titleEs": "Tenemos mucho en común",
    "scene": "🚇 En el metro de Medellín: Carolina y Julián descubren que se parecen mucho.",
@@ -2865,6 +4090,55 @@
   }
  ],
  "A1-13-1": [
+  {
+   "title": "A café in Paris",
+   "titleEs": "Un café en París",
+   "scene": "🥐 En un café de París: Amara pide y el mesero Louis la atiende.",
+   "cast": [
+    {
+     "name": "Amara",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Louis",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Louis",
+     "line": "Good morning. What would you like?",
+     "es": "Buenos días. ¿Qué desea?"
+    },
+    {
+     "sp": "Amara",
+     "line": "I’d like a croissant and a coffee, please.",
+     "es": "Quisiera un croissant y un café, por favor."
+    },
+    {
+     "sp": "Louis",
+     "line": "Would you like milk in your coffee?",
+     "es": "¿Desea leche en el café?"
+    },
+    {
+     "sp": "Amara",
+     "line": "Yes, please. And I’ll have an orange juice.",
+     "es": "Sí, por favor. Y voy a tomar un jugo de naranja."
+    },
+    {
+     "sp": "Louis",
+     "line": "Would you like anything else?",
+     "es": "¿Desea algo más?"
+    },
+    {
+     "sp": "Amara",
+     "line": "No, thanks. I’d like the bill, please.",
+     "es": "No, gracias. Quisiera la cuenta, por favor."
+    }
+   ]
+  },
   {
    "title": "Checking in",
    "titleEs": "Llegando al hotel",
@@ -2986,6 +4260,55 @@
  ],
  "A1-14-0": [
   {
+   "title": "The biggest and the coldest",
+   "titleEs": "La más grande y la más fría",
+   "scene": "🗺️ En un concurso de geografía en una escuela de Nairobi: Wanjiru pregunta y Finn responde.",
+   "cast": [
+    {
+     "name": "Wanjiru",
+     "voice": "female",
+     "accent": "au"
+    },
+    {
+     "name": "Finn",
+     "voice": "male",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Wanjiru",
+     "line": "Which is larger, Canada or China?",
+     "es": "¿Cuál es más grande, Canadá o China?"
+    },
+    {
+     "sp": "Finn",
+     "line": "Canada is larger, but Russia is the largest country in the world.",
+     "es": "Canadá es más grande, pero Rusia es el país más grande del mundo."
+    },
+    {
+     "sp": "Wanjiru",
+     "line": "Correct! What’s the longest river in Africa?",
+     "es": "¡Correcto! ¿Cuál es el río más largo de África?"
+    },
+    {
+     "sp": "Finn",
+     "line": "The Nile. Is it longer than the Amazon?",
+     "es": "El Nilo. ¿Es más largo que el Amazonas?"
+    },
+    {
+     "sp": "Wanjiru",
+     "line": "Good question! And what’s the coldest continent?",
+     "es": "¡Buena pregunta! ¿Y cuál es el continente más frío?"
+    },
+    {
+     "sp": "Finn",
+     "line": "Antarctica. It’s the driest one too.",
+     "es": "La Antártida. También es el más seco."
+    }
+   ]
+  },
+  {
    "title": "Geography quiz",
    "titleEs": "Concurso de geografía",
    "scene": "🗺️ En un colegio de Bogotá: la profesora hace un concurso de preguntas.",
@@ -3100,6 +4423,55 @@
   }
  ],
  "A1-14-1": [
+  {
+   "title": "How high is it?",
+   "titleEs": "¿Qué tan alto es?",
+   "scene": "🏔️ En Katmandú: la guía Pema responde las preguntas de Oliver antes de una caminata.",
+   "cast": [
+    {
+     "name": "Pema",
+     "voice": "female",
+     "accent": "us"
+    },
+    {
+     "name": "Oliver",
+     "voice": "male",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Oliver",
+     "line": "How high is Mount Everest?",
+     "es": "¿Qué tan alto es el Everest?"
+    },
+    {
+     "sp": "Pema",
+     "line": "It’s 8,849 meters high.",
+     "es": "Mide 8.849 metros."
+    },
+    {
+     "sp": "Oliver",
+     "line": "How far is the first camp from here?",
+     "es": "¿A qué distancia está el primer campamento?"
+    },
+    {
+     "sp": "Pema",
+     "line": "About 60 kilometers. How heavy is your bag?",
+     "es": "Como a 60 kilómetros. ¿Cuánto pesa tu morral?"
+    },
+    {
+     "sp": "Oliver",
+     "line": "Twelve kilos. How cold is it at night?",
+     "es": "Doce kilos. ¿Cuánto frío hace por la noche?"
+    },
+    {
+     "sp": "Pema",
+     "line": "It’s about minus ten. How long is your holiday?",
+     "es": "Como diez bajo cero. ¿Cuánto duran tus vacaciones?"
+    }
+   ]
+  },
   {
    "title": "Up to Monserrate",
    "titleEs": "Subiendo a Monserrate",
@@ -3221,6 +4593,55 @@
  ],
  "A1-15-0": [
   {
+   "title": "Plans for Friday",
+   "titleEs": "Planes para el viernes",
+   "scene": "🎆 En Hong Kong: Wei y Isabel planean el fin de semana.",
+   "cast": [
+    {
+     "name": "Wei",
+     "voice": "male",
+     "accent": "uk"
+    },
+    {
+     "name": "Isabel",
+     "voice": "female",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Wei",
+     "line": "What are you doing on Friday night?",
+     "es": "¿Qué vas a hacer el viernes por la noche?"
+    },
+    {
+     "sp": "Isabel",
+     "line": "I’m having dinner with my team. Why?",
+     "es": "Voy a cenar con mi equipo. ¿Por qué?"
+    },
+    {
+     "sp": "Wei",
+     "line": "I’m going to watch the fireworks at the harbour.",
+     "es": "Voy a ver los fuegos artificiales en el puerto."
+    },
+    {
+     "sp": "Isabel",
+     "line": "Are you going to take photos?",
+     "es": "¿Vas a tomar fotos?"
+    },
+    {
+     "sp": "Wei",
+     "line": "Yes, I am. Are you working on Saturday?",
+     "es": "Sí. ¿Trabajas el sábado?"
+    },
+    {
+     "sp": "Isabel",
+     "line": "No, I’m not. I’m going to sleep all morning!",
+     "es": "No. ¡Voy a dormir toda la mañana!"
+    }
+   ]
+  },
+  {
    "title": "Weekend in Cartagena",
    "titleEs": "Fin de semana en Cartagena",
    "scene": "💬 Por WhatsApp: Luciana le pregunta a Mateo por sus planes.",
@@ -3330,6 +4751,55 @@
   }
  ],
  "A1-15-1": [
+  {
+   "title": "A message for Dr. Okafor",
+   "titleEs": "Un recado para la doctora Okafor",
+   "scene": "☎️ En una clínica de Abuya: Henrik llama y la recepcionista Ngozi toma el recado.",
+   "cast": [
+    {
+     "name": "Henrik",
+     "voice": "male",
+     "accent": "au"
+    },
+    {
+     "name": "Ngozi",
+     "voice": "female",
+     "accent": "us"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Henrik",
+     "line": "Could I speak to Dr. Okafor, please?",
+     "es": "¿Podría hablar con la doctora Okafor, por favor?"
+    },
+    {
+     "sp": "Ngozi",
+     "line": "She’s busy right now. Can I take a message?",
+     "es": "Está ocupada en este momento. ¿Le dejo un recado?"
+    },
+    {
+     "sp": "Henrik",
+     "line": "Yes. Please tell her that the meeting is at three.",
+     "es": "Sí. Por favor dígale que la reunión es a las tres."
+    },
+    {
+     "sp": "Ngozi",
+     "line": "Of course. Could you tell me your name?",
+     "es": "Claro. ¿Me podría decir su nombre?"
+    },
+    {
+     "sp": "Henrik",
+     "line": "Henrik Berg. Would you ask her to call me back?",
+     "es": "Henrik Berg. ¿Le podría pedir que me devuelva la llamada?"
+    },
+    {
+     "sp": "Ngozi",
+     "line": "Sure. I’ll tell her to call you before two.",
+     "es": "Claro. Le digo que lo llame antes de las dos."
+    }
+   ]
+  },
   {
    "title": "Can I take a message?",
    "titleEs": "¿Le dejo un mensaje?",
@@ -3451,6 +4921,55 @@
  ],
  "A1-16-0": [
   {
+   "title": "A new life in Melbourne",
+   "titleEs": "Una vida nueva en Melbourne",
+   "scene": "🦘 En Melbourne: Tomás se encuentra con Leila, una antigua compañera.",
+   "cast": [
+    {
+     "name": "Tomás",
+     "voice": "male",
+     "accent": "us"
+    },
+    {
+     "name": "Leila",
+     "voice": "female",
+     "accent": "uk"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Tomás",
+     "line": "Leila! Do you live in Melbourne now?",
+     "es": "¡Leila! ¿Ahora vives en Melbourne?"
+    },
+    {
+     "sp": "Leila",
+     "line": "Yes, I moved here two years ago. I work at a museum.",
+     "es": "Sí, me mudé hace dos años. Trabajo en un museo."
+    },
+    {
+     "sp": "Tomás",
+     "line": "Have you learned to surf?",
+     "es": "¿Has aprendido a surfear?"
+    },
+    {
+     "sp": "Leila",
+     "line": "Not yet, but I’ve made a lot of friends.",
+     "es": "Todavía no, pero he hecho muchos amigos."
+    },
+    {
+     "sp": "Tomás",
+     "line": "I arrived last week. I haven’t found a flat yet.",
+     "es": "Yo llegué la semana pasada. Todavía no he encontrado apartamento."
+    },
+    {
+     "sp": "Leila",
+     "line": "My neighbour rents rooms. I see her every day.",
+     "es": "Mi vecina alquila habitaciones. La veo todos los días."
+    }
+   ]
+  },
+  {
    "title": "Back in Medellín",
    "titleEs": "De vuelta en Medellín",
    "scene": "🏙️ Alberto le cuenta a Beatriz cómo ha cambiado la ciudad donde creció.",
@@ -3570,6 +5089,55 @@
   }
  ],
  "A1-16-1": [
+  {
+   "title": "After graduation",
+   "titleEs": "Después del grado",
+   "scene": "🎓 En una universidad de Varsovia: Kasia y Emeka hablan de sus planes.",
+   "cast": [
+    {
+     "name": "Kasia",
+     "voice": "female",
+     "accent": "uk"
+    },
+    {
+     "name": "Emeka",
+     "voice": "male",
+     "accent": "au"
+    }
+   ],
+   "lines": [
+    {
+     "sp": "Kasia",
+     "line": "What do you want to do after graduation?",
+     "es": "¿Qué quieres hacer después de graduarte?"
+    },
+    {
+     "sp": "Emeka",
+     "line": "I’d like to work in Canada. I hope to find a job in Toronto.",
+     "es": "Me gustaría trabajar en Canadá. Espero encontrar trabajo en Toronto."
+    },
+    {
+     "sp": "Kasia",
+     "line": "I plan to travel for a year.",
+     "es": "Yo planeo viajar un año."
+    },
+    {
+     "sp": "Emeka",
+     "line": "Where do you want to go?",
+     "es": "¿A dónde quieres ir?"
+    },
+    {
+     "sp": "Kasia",
+     "line": "I’d love to see South America. I want to learn Spanish.",
+     "es": "Me encantaría conocer Suramérica. Quiero aprender español."
+    },
+    {
+     "sp": "Emeka",
+     "line": "I need to save money first. I hope to visit you there!",
+     "es": "Yo primero necesito ahorrar. ¡Espero visitarte allá!"
+    }
+   ]
+  },
   {
    "title": "After school",
    "titleEs": "Después del colegio",

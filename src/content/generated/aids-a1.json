@@ -1915,6 +1915,38 @@
      "note": "Ninguno lleva -s: he should, he can."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "Fuerza del consejo",
+   "from": "posibilidad",
+   "to": "consejo firme",
+   "items": [
+    {
+     "word": "can",
+     "value": 30,
+     "example": "You **can** visit the museum.",
+     "es": "puedes (una opción)"
+    },
+    {
+     "word": "could",
+     "value": 40,
+     "example": "You **could** take a boat tour.",
+     "es": "podrías (una idea)"
+    },
+    {
+     "word": "should",
+     "value": 75,
+     "example": "You **should** try the local food.",
+     "es": "deberías (lo recomiendo)"
+    },
+    {
+     "word": "shouldn’t",
+     "value": 85,
+     "example": "You **shouldn’t** miss the old town.",
+     "es": "no deberías"
+    }
+   ]
   }
  ],
  "A1-12-0": [
@@ -2295,6 +2327,32 @@
      "note": "good → better → the best. Nunca the most best."
     }
    ]
+  },
+  {
+   "kind": "scale",
+   "title": "De menos a más",
+   "from": "poco",
+   "to": "lo máximo",
+   "items": [
+    {
+     "word": "big",
+     "value": 25,
+     "example": "Lima is **big**.",
+     "es": "grande"
+    },
+    {
+     "word": "bigger than",
+     "value": 60,
+     "example": "Tokyo is **bigger than** Lima.",
+     "es": "más grande que"
+    },
+    {
+     "word": "the biggest",
+     "value": 100,
+     "example": "Tokyo is **the biggest** city.",
+     "es": "la más grande"
+    }
+   ]
   }
  ],
  "A1-14-1": [
@@ -2464,6 +2522,32 @@
      "a": "Are you going to study tonight?",
      "b": "Are you studying tonight?",
      "note": "Las dos preguntan por planes; la segunda suena a algo ya organizado."
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "title": "¿Qué tan fijo es el plan?",
+   "from": "solo una idea",
+   "to": "ya está organizado",
+   "items": [
+    {
+     "word": "I want to",
+     "value": 20,
+     "example": "I **want to** travel one day.",
+     "es": "quiero (un deseo)"
+    },
+    {
+     "word": "I’m going to",
+     "value": 65,
+     "example": "I**'m going to** visit my aunt.",
+     "es": "voy a (ya lo decidí)"
+    },
+    {
+     "word": "I’m + -ing",
+     "value": 90,
+     "example": "I**'m flying** to Lima on Friday.",
+     "es": "hora y pasaje listos"
     }
    ]
   }

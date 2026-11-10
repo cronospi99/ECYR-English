@@ -119,6 +119,30 @@ N2. NOTAS: TAMAÑO, FUENTES Y MÁS COLORES
   Google Fonts.
 - Las notas anteriores se abren igual y todo sigue guardándose como texto.
 
+U2. UNIDADES: CONVERSACIONES DEL MUNDO, ESCALAS Y TABLAS MÁS CORTAS
+- 177 conversaciones nuevas: una más por cada tema gramatical de A1 a C2 (ahora 3 por
+  tema). Todas ocurren fuera de Colombia (Tokio, Nairobi, Lisboa, Seúl, Lagos, Sídney,
+  El Cairo, Reikiavik, Toronto…) con personajes de muchos países, y salen primero.
+- 15 escalas visuales nuevas (línea con las palabras ubicadas de menos a más): fuerza del
+  consejo, qué tan fijo es un plan, certeza del futuro, de prohibido a obligatorio,
+  condición más o menos estricta, de posible a imposible (wish), certeza del hablante,
+  de ninguno a todos, etc. Con las 45 que ya había son 60.
+- Tablas: las de más de 5 filas abren con las 4 primeras y un botón «Ver la tabla
+  completa». No se borró contenido.
+- Estilo: apóstrofos unificados (’) en conversaciones, explicaciones, ayudas y unidades
+  (antes se mezclaban ' y ’): 1.219 correcciones. Comillas de cita unificadas en C2.
+
+V0. HILO DE CLASE · NUEVA LÓGICA: TEMAS → TEXTO CENTRAL → DESGLOSE
+- Ahora se eligen TEMAS gramaticales (hasta 6, de una o varias unidades del mismo nivel),
+  no unidades completas.
+- Sale un TEXTO CENTRAL del tipo elegido (Lectura —nuevo—, cuento, misterio, chisme,
+  noticia, diario, viaje). «Con IA» lo escribe completo al nivel, con cada tema al menos
+  dos veces y ambientado en cualquier lugar del mundo. «Generar» (sin IA) arma un
+  borrador con las frases modelo de cada tema.
+- Cada tema tiene un color: sus frases quedan resaltadas en el texto y debajo sale su
+  tarjeta (frases del texto, qué notar, cómo practicarlo, preguntas, vocabulario).
+- Se conservan gancho, apertura, energizante, reto por equipos y cierre.
+
 V. HILO DE CLASE (solo docentes · Sala del docente › Material)
 - Nivel (sin mezclar) + 1 a 4 unidades + tema opcional + tipo de hilo
   (cuento, misterio, chisme, noticia, diario, viaje).

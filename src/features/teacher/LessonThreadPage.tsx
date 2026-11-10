@@ -1,6 +1,6 @@
 import { Fragment, lazy, Suspense, useMemo, useState } from 'react';
 
-import { Check, ChevronDown, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, Minus, Plus, School, Sparkles, Trophy, Users, Wand2, Zap } from 'lucide-react';
+import { Check, Clipboard, Dices, DoorClosed, DoorOpen, Lightbulb, Minus, Plus, School, Sparkles, Trophy, Users, Wand2, Zap } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 import { Card } from '@/components/ui/Card';
 import { Button, ButtonLink } from '@/components/ui/Button';
@@ -20,18 +20,20 @@ import { AUDIENCES, EMPTY_MIX, balanceTeams, isIntergenerational, mixTotal, sugg
 const TeamChallenge = lazy(() => import('./TeamChallenge').then((m) => ({ default: m.TeamChallenge })));
 import { ink, tint } from '@/lib/color';
 
-const MAX_UNITS = 4;
-const STAGE_EMOJI: Record<string, string> = { Inicio: '🌱', Nudo: '🌿', Giro: '🌀', Desenlace: '🌳', 'Todo en uno': '🌳' };
+const MAX_TOPICS = 6;
+/** One colour per selected topic: the same in the central text and in its card. */
+const TOPIC_COLORS = ['var(--blue)', 'var(--orange)', 'var(--green)', 'var(--pink)', 'var(--purple)', 'var(--teal)'];
 
 /**
- * Class thread (teachers only): one level, up to four of its units and an
- * optional topic become one story, each unit a branch, with a 5-minute opener
- * and closer. Shown as a thread: opener → branches → closer.
+ * Class thread (teachers only): one level and up to six grammar topics of its
+ * units become ONE central piece (a reading, gossip, a news story…) and the
+ * class unfolds from it: opener → the piece → one card per topic → closer.
  */
 export default function LessonThreadPage() {
   const { isTeacher } = useClass();
   const [level, setLevel] = useState<CefrLevel>('A1');
-  const [picked, setPicked] = useState<number[]>([1]);
+  /** Chosen grammar topics: unit number → indexes into its grammar list. */
+  const [points, setPoints] = useState<Record<number, number[]>>({ 1: [0] });
   const [topic, setTopic] = useState('');
   const [style, setStyle] = useState<ThreadStyle>('story');
   const [mix, setMix] = useState<Mix>({ ...EMPTY_MIX, teens: 12 });
@@ -42,7 +44,8 @@ export default function LessonThreadPage() {
   const [error, setError] = useState<string | null>(null);
   const [game, setGame] = useState(false);
   const { data: book, loading } = useAsync(() => loadLevel(level), [level]);
-  const units = useMemo(() => (book?.units ?? []).filter((u) => picked.includes(u.n)).sort((a, b) => a.n - b.n), [book, picked]);
+  const units = useMemo(() => (book?.units ?? []).filter((u) => points[u.n]?.length).sort((a, b) => a.n - b.n), [book, points]);
+  const count = Object.values(points).reduce((n, a) => n + a.length, 0);
   const color = levelMeta(level)?.color ?? 'var(--purple)';
 
   if (!isTeacher)
@@ -58,9 +61,13 @@ export default function LessonThreadPage() {
       </Page>
     );
 
-  const toggle = (n: number) =>
-    setPicked((p) => (p.includes(n) ? (p.length > 1 ? p.filter((x) => x !== n) : p) : p.length >= MAX_UNITS ? [...p.slice(1), n] : [...p, n]));
-  const input = (s: number) => ({ level, units, topic: topic.trim(), style, mix, seed: s });
+  const toggle = (n: number, i: number) =>
+    setPoints((p) => {
+      const cur = p[n] ?? [];
+      if (cur.includes(i)) return count > 1 ? { ...p, [n]: cur.filter((x) => x !== i) } : p;
+      return count >= MAX_TOPICS ? p : { ...p, [n]: [...cur, i].sort((a, b) => a - b) };
+    });
+  const input = (s: number) => ({ level, units, points, topic: topic.trim(), style, mix, seed: s });
   const local = (s = seed) => {
     setError(null);
     setThread(buildLocal(input(s)));
@@ -79,7 +86,7 @@ export default function LessonThreadPage() {
   };
 
   return (
-    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Una historia que engancha, varias unidades, un reto por equipos y cierre en 5 minutos." wide>
+    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Eliges los temas; sale un texto central (lectura, chisme, noticia…) y de ahí se desglosa cada uno." wide>
       <Card className="mb-6 space-y-4 p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-3">
           <div className="no-scrollbar overflow-x-auto">
@@ -87,7 +94,7 @@ export default function LessonThreadPage() {
               value={level}
               onChange={(l) => {
                 setLevel(l);
-                setPicked([1]);
+                setPoints({ 1: [0] });
                 setThread(null);
               }}
               options={CEFR_LEVELS.map((l) => ({ value: l, label: l }))}
@@ -118,30 +125,40 @@ export default function LessonThreadPage() {
         ) : (
           <div>
             <div className="text-label-2 mb-2 text-[12px] font-semibold tracking-wide uppercase">
-              Unidades · {picked.length}/{MAX_UNITS}
+              Temas · {count}/{MAX_TOPICS}
             </div>
-            <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 lg:grid-cols-6">
+            <div className="max-h-[320px] space-y-1 overflow-y-auto pr-1">
               {book.units.map((u) => {
-                const k = picked.indexOf(u.n);
-                const on = k >= 0;
+                const on = points[u.n] ?? [];
                 return (
-                  <button
-                    key={u.n}
-                    type="button"
-                    aria-pressed={on}
-                    onClick={() => toggle(u.n)}
-                    title={u.theme}
-                    className={cn('flex min-w-0 items-center gap-2 rounded-[12px] p-1.5 pr-2.5 text-left text-[13px] transition-colors', on ? 'font-semibold' : 'bg-fill-2/60 hover:bg-fill-2')}
-                    style={on ? { background: tint(color, 16), boxShadow: `inset 0 0 0 1.5px ${color}` } : undefined}
-                  >
+                  <div key={u.n} className="flex items-start gap-2">
                     <span
-                      className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
-                      style={on ? { background: ink(color), color: '#fff' } : { background: 'var(--fill-2)' }}
+                      title={u.theme}
+                      className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
+                      style={on.length ? { background: ink(color), color: '#fff' } : { background: 'var(--fill-2)' }}
                     >
-                      {on ? k + 1 : u.n}
+                      {u.n}
                     </span>
-                    <span className="truncate">{unitTitle(u.title)}</span>
-                  </button>
+                    <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+                      <span className="text-label-2 w-full truncate text-[12px] sm:w-36">{unitTitle(u.title)}</span>
+                      {u.grammar.map((g, i) => {
+                        const sel = on.includes(i);
+                        return (
+                          <button
+                            key={g.name}
+                            type="button"
+                            aria-pressed={sel}
+                            disabled={!sel && count >= MAX_TOPICS}
+                            onClick={() => toggle(u.n, i)}
+                            className={cn('min-h-8 rounded-full px-3 py-1 text-left text-[13px] transition-colors disabled:opacity-40', sel ? 'font-semibold' : 'bg-fill-2/60 hover:bg-fill-2')}
+                            style={sel ? { background: tint(color, 16), boxShadow: `inset 0 0 0 1.5px ${color}` } : undefined}
+                          >
+                            {g.name}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -160,7 +177,7 @@ export default function LessonThreadPage() {
           <Button onClick={() => local()} disabled={!units.length || !total}>
             <Wand2 size={17} /> Generar
           </Button>
-          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || !total || busy || !supabase} title="Gemini escribe la historia completa al nivel">
+          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || !total || busy || !supabase} title="Gemini escribe el texto central completo al nivel">
             <Sparkles size={17} /> {busy ? 'Escribiendo…' : 'Con IA'}
           </Button>
         </div>
@@ -189,7 +206,7 @@ export default function LessonThreadPage() {
             mix={thread.mix}
             level={thread.level}
             vocab={thread.chapters.flatMap((c) => c.vocab)}
-            grammar={thread.chapters.flatMap((c) => c.grammar)}
+            grammar={thread.chapters.map((c) => c.topic)}
             onClose={() => setGame(false)}
           />
         </Suspense>
@@ -249,20 +266,26 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
         </div>
       </div>
 
-      {t.story && (
-        <details className="bg-card shadow-card group mt-4 rounded-[18px] p-4">
-          <summary className="flex cursor-pointer list-none items-center gap-2 font-semibold">
-            📖 Leer la historia <ChevronDown size={16} className="text-label-2 ml-auto transition-transform group-open:rotate-180" />
-          </summary>
-          <div className="mt-3 space-y-2 text-[15.5px] leading-relaxed">
-            {t.story.split(/\n+/).map((p, i) => (
-              <p key={i} className={/^(chapter|capítulo)\b/i.test(p) ? 'pt-1 text-[13px] font-semibold uppercase' : undefined} style={/^(chapter|capítulo)\b/i.test(p) ? { color: ink(color) } : undefined}>
-                {p}
-              </p>
-            ))}
-          </div>
-        </details>
-      )}
+      <Card className="mt-4 p-4 sm:p-5">
+        <div className="flex flex-wrap items-center gap-2">
+          <h3 className="text-headline">
+            {st.emoji} Texto central
+          </h3>
+          {t.source === 'local' && <span className="bg-fill-2 text-label-2 rounded-full px-2 py-0.5 text-[12px]">Borrador con frases modelo · «Con IA» lo escribe completo</span>}
+        </div>
+        <div className="mt-3 space-y-2.5 text-[16px] leading-relaxed">
+          {t.story.split(/\n+/).map((p, i) => (
+            <p key={i}>{marked(p, t.chapters)}</p>
+          ))}
+        </div>
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {t.chapters.map((c, i) => (
+            <span key={i} className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[12.5px] font-medium" style={{ background: tint(topicColor(i), 16), color: ink(topicColor(i)) }}>
+              <span aria-hidden className="h-2 w-2 rounded-full" style={{ background: topicColor(i) }} /> {c.topic}
+            </span>
+          ))}
+        </div>
+      </Card>
 
       {/* The thread: a line with the opener, one node per unit, the closer. */}
       <ol className="relative mt-6 space-y-4 pl-9">
@@ -271,9 +294,9 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
           <Moment label="Abrir clase" a={t.opener} color={color} />
         </Node>
         {t.chapters.map((c, i) => (
-          <Fragment key={c.unit}>
-            <Node icon={<span className="text-[15px]">{STAGE_EMOJI[c.stage] ?? '🌿'}</span>} color={color} soft>
-              <Branch c={c} color={color} />
+          <Fragment key={i}>
+            <Node icon={<span className="text-[13px] font-bold">{i + 1}</span>} color={topicColor(i)} soft>
+              <Branch c={c} color={topicColor(i)} />
             </Node>
             {i === Math.max(0, Math.ceil(t.chapters.length / 2) - 1) && (
               <Node icon={<Zap size={16} />} color="var(--orange)">
@@ -378,49 +401,72 @@ function Moment({ label, a, color }: { label: string; a: Activity; color: string
   );
 }
 
-/** One unit = one branch of the story. */
+const topicColor = (i: number) => TOPIC_COLORS[i % TOPIC_COLORS.length]!;
+
+/** A paragraph of the central piece with each topic's sentences marked in its colour. */
+function marked(p: string, chapters: Chapter[]): React.ReactNode[] {
+  const hits = chapters
+    .flatMap((c, i) => c.examples.map((x) => ({ at: p.indexOf(x), len: x.length, i })))
+    .filter((h) => h.at >= 0 && h.len > 0)
+    .sort((a, b) => a.at - b.at);
+  const out: React.ReactNode[] = [];
+  let pos = 0;
+  for (const h of hits) {
+    if (h.at < pos) continue;
+    if (h.at > pos) out.push(p.slice(pos, h.at));
+    out.push(
+      <mark key={h.at} className="rounded-[5px] px-0.5 text-inherit" style={{ background: tint(topicColor(h.i), 22), boxShadow: `inset 0 -2px 0 ${topicColor(h.i)}` }}>
+        {p.slice(h.at, h.at + h.len)}
+      </mark>,
+    );
+    pos = h.at + h.len;
+  }
+  if (pos < p.length) out.push(p.slice(pos));
+  return out;
+}
+
+/** One selected topic, unfolded from the central piece. */
 function Branch({ c, color }: { c: Chapter; color: string }) {
   return (
     <Card className="p-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="rounded-full px-2 py-0.5 text-[11px] font-bold tracking-wide uppercase" style={{ background: tint(color, 16), color: ink(color) }}>
-          {c.stage}
-        </span>
-        <span className="text-label-2 text-[13px]">
+      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <h3 className="text-headline" style={{ color: ink(color) }}>
+          {c.topic}
+        </h3>
+        <span className="text-label-2 text-[12.5px]">
           U{c.unit} · {c.unitTitle}
         </span>
       </div>
-      <p className="mt-2 text-[16px] leading-snug font-semibold text-pretty">{c.scene}</p>
-      <div className="mt-2.5 flex flex-wrap gap-1.5">
-        {c.vocab.slice(0, 6).map((v) => (
-          <span key={v} className="bg-fill-2 rounded-full px-2.5 py-0.5 text-[13px]">
-            {v}
-          </span>
-        ))}
-        {c.grammar.map((g) => (
-          <span key={g} className="rounded-full px-2.5 py-0.5 text-[13px] font-medium" style={{ background: tint(color, 14), color: ink(color) }}>
-            {g}
-          </span>
-        ))}
-      </div>
-      <p className="text-label-2 mt-2.5 text-[13.5px]">👉 {c.cue}</p>
-      <ul className="mt-2 space-y-1">
-        {c.questions.map((q) => (
-          <li key={q} className="text-[14.5px]">
-            <span aria-hidden className="mr-1.5">
-              ❓
+      {c.examples.length > 0 && (
+        <ul className="mt-2 space-y-1 border-l-[3px] pl-3" style={{ borderColor: color }}>
+          {c.examples.map((x) => (
+            <li key={x} className="text-[15.5px] leading-snug">
+              {x}
+            </li>
+          ))}
+        </ul>
+      )}
+      <dl className="mt-3 grid gap-x-3 gap-y-1.5 text-[14.5px] sm:grid-cols-[auto_1fr]">
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Notar</dt>
+        <dd>{c.notice}</dd>
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Practicar</dt>
+        <dd>{c.practice}</dd>
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Preguntar</dt>
+        <dd>{c.questions.join(' · ')}</dd>
+      </dl>
+      {c.vocab.length > 0 && (
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {c.vocab.map((v) => (
+            <span key={v} className="bg-fill-2 rounded-full px-2.5 py-0.5 text-[13px]">
+              {v}
             </span>
-            {q}
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      )}
     </Card>
   );
 }
 
-// -------------------------------------------------------------- class mix --
-
-/** How many students of each age group: a stepper per group. */
 function MixPicker({ mix, onChange, color }: { mix: Mix; onChange: (m: Mix) => void; color: string }) {
   const total = mixTotal(mix);
   const set = (id: keyof Mix, n: number) => onChange({ ...mix, [id]: Math.max(0, Math.min(60, n)) });

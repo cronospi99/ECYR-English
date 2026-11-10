@@ -12,7 +12,7 @@
    {
     "role": "modal",
     "label_es": "modal negativo",
-    "en": "just can't"
+    "en": "just can’t"
    },
    {
     "role": "verb",
@@ -41,7 +41,7 @@
    }
   ],
   "example": {
-   "en": "I just can't put up with rude behaviour.",
+   "en": "I just can’t put up with rude behaviour.",
    "es": "Simplemente no soporto la mala educación."
   },
   "formula2": {
@@ -79,7 +79,7 @@
   },
   "compare": {
    "es": "No soporto a la gente grosera.",
-   "en": "I can't put up with rude people.",
+   "en": "I can’t put up with rude people.",
    "note_es": "Donde el español tiene un solo verbo (soportar), el inglés usa verbo + partículas."
   },
   "mistake": {
@@ -1032,7 +1032,7 @@
    {
     "role": "modal",
     "label_es": "sujeto + will",
-    "en": "He'll"
+    "en": "He’ll"
    },
    {
     "role": "verb",
@@ -1061,7 +1061,7 @@
    }
   ],
   "example": {
-   "en": "He'll listen to the same album on repeat for weeks.",
+   "en": "He’ll listen to the same album on repeat for weeks.",
    "es": "Es capaz de escuchar el mismo álbum en bucle durante semanas."
   },
   "formula2": {
@@ -1665,7 +1665,7 @@
     {
      "role": "modal",
      "label_es": "sujeto + will",
-     "en": "We'll"
+     "en": "We’ll"
     },
     {
      "role": "verb",
@@ -1694,7 +1694,7 @@
     }
    ],
    "example": {
-    "en": "We'll support whoever protects the reserve.",
+    "en": "We’ll support whoever protects the reserve.",
     "es": "Apoyaremos a quien proteja la reserva."
    }
   },
@@ -2182,7 +2182,7 @@
    {
     "role": "modal",
     "label_es": "sujeto + will",
-    "en": "You'll"
+    "en": "You’ll"
    },
    {
     "role": "verb",
@@ -2216,7 +2216,7 @@
    }
   ],
   "example": {
-   "en": "You'll get the bonus as long as you hit the target.",
+   "en": "You’ll get the bonus as long as you hit the target.",
    "es": "Recibirás el bono siempre que cumplas la meta."
   },
   "formula2": {
@@ -2268,8 +2268,8 @@
    "note_es": "\"Por si (acaso)\" = in case, no if. In case es precaución; if es condición."
   },
   "mistake": {
-   "wrong": "You'll get the bonus as long as you will hit the target.",
-   "right": "You'll get the bonus as long as you hit the target.",
+   "wrong": "You’ll get the bonus as long as you will hit the target.",
+   "right": "You’ll get the bonus as long as you hit the target.",
    "why_es": "Tras as long as, unless o in case, el futuro va en presente."
   },
   "tip_es": "Siempre que = as long as. Por si acaso = in case. A menos que = unless (sin otro not)."

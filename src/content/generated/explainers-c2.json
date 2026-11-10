@@ -84,12 +84,12 @@
   },
   "compare": {
    "es": "Llevo años queriendo llamarte.",
-   "en": "I've been meaning to call you for years.",
+   "en": "I’ve been meaning to call you for years.",
    "note_es": "“Llevar + gerundio” suele pasar al inglés como present perfect continuous, nunca como presente simple."
   },
   "mistake": {
-   "wrong": "I've been writing three emails this morning.",
-   "right": "I've written three emails this morning.",
+   "wrong": "I’ve been writing three emails this morning.",
+   "right": "I’ve written three emails this morning.",
    "why_es": "Con una cantidad terminada (three emails) va el perfecto simple: el continuo no cuenta unidades."
   },
   "tip_es": "Pregúntate: ¿cuento lo que logré (simple) o lo que he estado haciendo (continuo)? Con números y veces, usa siempre el simple."
@@ -289,12 +289,12 @@
   },
   "compare": {
    "es": "Estás siendo muy injusto.",
-   "en": "You're being very unfair.",
+   "en": "You’re being very unfair.",
    "note_es": "El español también distingue “eres” (carácter) y “estás siendo” (conducta ahora); el inglés lo marca con be vs. be being."
   },
   "mistake": {
-   "wrong": "I'm knowing her since school.",
-   "right": "I've known her since school.",
+   "wrong": "I’m knowing her since school.",
+   "right": "I’ve known her since school.",
    "why_es": "Know no tiene uso dinámico: es siempre un estado. Con duración hasta hoy va en present perfect simple."
   },
   "tip_es": "Si puedes sustituir el verbo por uno de acción (consider, date, sample, behave), probablemente admite -ing con ese significado."
@@ -350,7 +350,7 @@
     {
      "role": "be",
      "label_es": "be (negativo)",
-     "en": "wasn't"
+     "en": "wasn’t"
     },
     {
      "role": "complement",
@@ -374,7 +374,7 @@
     }
    ],
    "example": {
-    "en": "It wasn't the facts that misled us.",
+    "en": "It wasn’t the facts that misled us.",
     "es": "No fueron los hechos los que nos engañaron."
    }
   },
@@ -392,7 +392,7 @@
    "right": "It was in 2010 that I first heard her speak.",
    "why_es": "En un it-cleft que destaca un tiempo o lugar con preposición, se usa that; when o where son incorrectos."
   },
-  "tip_es": "Usa what-clefts para abrir un argumento (What concerns me is…) e it-clefts para rebatir (It isn't X that…, it's Y)."
+  "tip_es": "Usa what-clefts para abrir un argumento (What concerns me is…) e it-clefts para rebatir (It isn’t X that…, it’s Y)."
  },
  "C2-2-1": {
   "icon": "📣",
@@ -587,7 +587,7 @@
  "C2-3-0": {
   "icon": "🕵️",
   "purpose_es": "Para especular con precisión sobre el presente, el pasado y el futuro.",
-  "idea_es": "El modal indica cuánta certeza tienes (must > may well > might > can't); la forma que sigue indica el momento: infinitivo (ahora o futuro), be + -ing (en curso), have + participio (pasado).",
+  "idea_es": "El modal indica cuánta certeza tienes (must > may well > might > can’t); la forma que sigue indica el momento: infinitivo (ahora o futuro), be + -ing (en curso), have + participio (pasado).",
   "formula": [
    {
     "role": "subject",
@@ -668,16 +668,16 @@
    "note_es": "“Deber de” es deducción y “deber” sin de, obligación; el inglés usa must para ambas y el contexto decide."
   },
   "mistake": {
-   "wrong": "He mustn't have heard the alarm.",
-   "right": "He can't have heard the alarm.",
-   "why_es": "La deducción negativa en pasado se expresa con can't o couldn't have; mustn't expresa prohibición."
+   "wrong": "He mustn’t have heard the alarm.",
+   "right": "He can’t have heard the alarm.",
+   "why_es": "La deducción negativa en pasado se expresa con can’t o couldn’t have; mustn’t expresa prohibición."
   },
   "tip_es": "Primero el momento: ¿ahora? infinitivo; ¿pasado? have + participio. Después elige el modal según tu seguridad."
  },
  "C2-3-1": {
   "icon": "⏪",
   "purpose_es": "Para juzgar el pasado: lo que fue innecesario, lo que lamentas y lo que pudo haber sido.",
-  "idea_es": "Needn't have + participio = lo hiciste y no hacía falta. Didn't need to + infinitivo = no era necesario (normalmente no se hizo). Should, could y might have + participio valoran algo que no ocurrió.",
+  "idea_es": "Needn’t have + participio = lo hiciste y no hacía falta. Didn’t need to + infinitivo = no era necesario (normalmente no se hizo). Should, could y might have + participio valoran algo que no ocurrió.",
   "formula": [
    {
     "role": "subject",
@@ -686,8 +686,8 @@
    },
    {
     "role": "modal",
-    "label_es": "needn't",
-    "en": "needn't"
+    "label_es": "needn’t",
+    "en": "needn’t"
    },
    {
     "role": "aux",
@@ -711,11 +711,11 @@
    }
   ],
   "example": {
-   "en": "You needn't have booked a table.",
+   "en": "You needn’t have booked a table.",
    "es": "No hacía falta que reservaras mesa (y la reservaste)."
   },
   "formula2": {
-   "title_es": "No era necesario: didn't need to",
+   "title_es": "No era necesario: didn’t need to",
    "parts": [
     {
      "role": "subject",
@@ -725,7 +725,7 @@
     {
      "role": "aux",
      "label_es": "did not",
-     "en": "didn't"
+     "en": "didn’t"
     },
     {
      "role": "verb",
@@ -754,7 +754,7 @@
     }
    ],
    "example": {
-    "en": "We didn't need to book because it was empty.",
+    "en": "We didn’t need to book because it was empty.",
     "es": "No tuvimos que reservar porque estaba vacío."
    }
   },
@@ -764,20 +764,20 @@
   },
   "compare": {
    "es": "No hacía falta que vinieras.",
-   "en": "You needn't have come.",
-   "note_es": "El español usa la misma frase en los dos casos; el inglés distingue si la persona vino (needn't have) o si no se sabe (didn't need to)."
+   "en": "You needn’t have come.",
+   "note_es": "El español usa la misma frase en los dos casos; el inglés distingue si la persona vino (needn’t have) o si no se sabe (didn’t need to)."
   },
   "mistake": {
-   "wrong": "I needn't have to pay.",
-   "right": "I needn't have paid.",
-   "why_es": "Needn't funciona como modal: va con have + participio, sin to."
+   "wrong": "I needn’t have to pay.",
+   "right": "I needn’t have paid.",
+   "why_es": "Needn’t funciona como modal: va con have + participio, sin to."
   },
-  "tip_es": "Visualiza la acción: si ocurrió y fue inútil, needn't have; si no ocurrió porque no hacía falta, didn't need to."
+  "tip_es": "Visualiza la acción: si ocurrió y fue inútil, needn’t have; si no ocurrió porque no hacía falta, didn’t need to."
  },
  "C2-3-2": {
   "icon": "🔮",
   "purpose_es": "Para suponer con seguridad y para describir comportamientos típicos (o irritantes).",
-  "idea_es": "Will no siempre es futuro: That'll be Ana = estoy casi seguro de que es Ana. Will y would también describen lo típico de alguien; pronunciados con acento, expresan fastidio.",
+  "idea_es": "Will no siempre es futuro: That’ll be Ana = estoy casi seguro de que es Ana. Will y would también describen lo típico de alguien; pronunciados con acento, expresan fastidio.",
   "formula": [
    {
     "role": "subject",
@@ -859,7 +859,7 @@
   },
   "compare": {
    "es": "Será el cartero.",
-   "en": "That'll be the postman.",
+   "en": "That’ll be the postman.",
    "note_es": "El futuro de probabilidad del español (será, estará) equivale casi exactamente a will de suposición."
   },
   "mistake": {
@@ -1698,7 +1698,7 @@
    "note_es": "“De + infinitivo compuesto” es el equivalente formal más cercano a la inversión con Had."
   },
   "mistake": {
-   "wrong": "Hadn't we acted, the forest would have burned.",
+   "wrong": "Hadn’t we acted, the forest would have burned.",
    "right": "Had we not acted, the forest would have burned.",
    "why_es": "En la inversión condicional la negación no se contrae: Had we not, Were it not, Should you not."
   },
@@ -1809,12 +1809,12 @@
   },
   "compare": {
    "es": "Iré, a menos que llueva.",
-   "en": "I'll go unless it rains.",
-   "note_es": "Unless ya contiene la negación: no digas “unless it doesn't rain”."
+   "en": "I’ll go unless it rains.",
+   "note_es": "Unless ya contiene la negación: no digas “unless it doesn’t rain”."
   },
   "mistake": {
-   "wrong": "Unless you don't pay, you can't enter.",
-   "right": "Unless you pay, you can't enter.",
+   "wrong": "Unless you don’t pay, you can’t enter.",
+   "right": "Unless you pay, you can’t enter.",
    "why_es": "Unless significa “if not”: añadir otra negación invierte el sentido."
   },
   "tip_es": "Para condiciones estrictas en contratos usa provided that u on condition that; en la conversación, as long as."
@@ -2217,7 +2217,7 @@
  "C2-8-1": {
   "icon": "💭",
   "purpose_es": "Para expresar deseos, arrepentimientos, quejas y preferencias sobre situaciones irreales.",
-  "idea_es": "Tras wish, if only, it's time, would rather (+ otro sujeto) y as if, el tiempo retrocede un paso: presente → past simple, pasado → past perfect. Es pasado en la forma, no en el significado.",
+  "idea_es": "Tras wish, if only, it’s time, would rather (+ otro sujeto) y as if, el tiempo retrocede un paso: presente → past simple, pasado → past perfect. Es pasado en la forma, no en el significado.",
   "formula": [
    {
     "role": "subject",
@@ -2255,7 +2255,7 @@
    "es": "Ojalá la ley fuera más justa."
   },
   "formula2": {
-   "title_es": "It's high time + pasado",
+   "title_es": "It’s high time + pasado",
    "parts": [
     {
      "role": "subject",
@@ -2303,9 +2303,9 @@
    "note_es": "“Ojalá + pluscuamperfecto de subjuntivo” corresponde a wish / if only + past perfect."
   },
   "mistake": {
-   "wrong": "It's time we go home.",
-   "right": "It's time we went home.",
-   "why_es": "Tras it's time + sujeto, el verbo va en pasado aunque hable del presente."
+   "wrong": "It’s time we go home.",
+   "right": "It’s time we went home.",
+   "why_es": "Tras it’s time + sujeto, el verbo va en pasado aunque hable del presente."
   },
   "tip_es": "Retrocede un tiempo: si la realidad es presente, usa pasado; si es pasado, past perfect. Para quejarte de otros, wish + would."
  },
@@ -2789,7 +2789,7 @@
   },
   "compare": {
    "es": "El año que viene llevaré diez años trabajando aquí.",
-   "en": "Next year I'll have been working here for ten years.",
+   "en": "Next year I’ll have been working here for ten years.",
    "note_es": "“Llevar + tiempo + gerundio” en futuro pasa a will have been + -ing."
   },
   "mistake": {
@@ -2899,7 +2899,7 @@
   },
   "compare": {
    "es": "Ni de lejos es tan buena como la original.",
-   "en": "It's nowhere near as good as the original.",
+   "en": "It’s nowhere near as good as the original.",
    "note_es": "“Ni de lejos” o “ni mucho menos” = nowhere near / not nearly."
   },
   "mistake": {
