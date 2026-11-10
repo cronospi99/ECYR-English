@@ -11,9 +11,10 @@ import { JoinQr } from '@/components/ui/JoinQr';
 import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
-import { TEACHERS } from '@/features/cards/teachers';
 import { DrawingBoard } from '@/components/draw/DrawingBoard';
-import { TeacherToon } from '@/features/cards/TeacherToon';
+import { PetFace, PetMaker } from '@/features/games/PetAvatar';
+import { savedPet, storePet } from '@/features/games/pet';
+import { MusicBtn, MusicCredit, useGameMusic } from '@/features/games/music';
 import { setLang, t, useLang } from '@/features/classwars/i18n';
 import { DoodleClient, DoodleHost, IDEAS, MAX_DRAWING, SPEEDS, TEXT_MAX, type Kind, type Shown, type Speed } from './game';
 import { MASCOT_CSS, Mascot, PioLoading } from './Mascot';
@@ -42,7 +43,6 @@ function Btn({ tone = 'yellow', className, children, ...rest }: React.ButtonHTML
 }
 
 const savedName = () => { try { return localStorage.getItem('dd:name') ?? ''; } catch { return ''; } };
-const savedAv = () => { try { const raw = localStorage.getItem('dd:av'); const v = raw === null ? NaN : Number(raw); return Number.isInteger(v) && v >= 0 && v < TEACHERS.length ? v : Math.floor(Math.random() * TEACHERS.length); } catch { return 0; } };
 const store = (k: string, v: string) => { try { localStorage.setItem(k, v); } catch { /* ignore */ } };
 
 function useSub(x: { subscribe: (f: () => void) => () => void } | null) {
@@ -106,6 +106,7 @@ function Home() {
             </div>
           ))}
         </div>
+        <MusicCredit className="mt-6" />
         {!relayConfigured() && <p className="mt-6 rounded-2xl bg-black/25 px-4 py-3 text-center text-[14px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>}
       </div>
     </div>
@@ -114,16 +115,11 @@ function Home() {
 
 /* ------------------------------------------------------- name + avatar form */
 function Identity({ name, setName, av, setAv }: { name: string; setName: (s: string) => void; av: number; setAv: (n: number) => void }) {
-  const n = TEACHERS.length;
   return (
-    <div className="flex items-center gap-3">
-      <div className="flex items-center gap-1">
-        <button type="button" onClick={() => setAv((av + n - 1) % n)} className="grid h-9 w-9 place-items-center rounded-full bg-[#ece8ff] text-[#3b2bb5]" aria-label={t('Previous', 'Anterior')}><ChevronLeft size={18} /></button>
-        <Face ci={av} size={80} />
-        <button type="button" onClick={() => setAv((av + 1) % n)} className="grid h-9 w-9 place-items-center rounded-full bg-[#ece8ff] text-[#3b2bb5]" aria-label={t('Next', 'Siguiente')}><ChevronRight size={18} /></button>
-      </div>
+    <div className="flex flex-col gap-2">
       <input value={name} onChange={(e) => setName(e.target.value.slice(0, 20))} placeholder={t('Your name', 'Tu nombre')} aria-label={t('Your name', 'Tu nombre')}
-        className="h-12 min-w-0 flex-1 rounded-2xl border-[3px] border-[#ddd6ff] bg-white px-4 text-[18px] font-extrabold text-[#251d52] outline-none focus:border-[#7b5cff]" />
+        className="h-12 w-full rounded-2xl border-[3px] border-[#ddd6ff] bg-white px-4 text-[18px] font-extrabold text-[#251d52] outline-none focus:border-[#7b5cff]" />
+      <PetMaker av={av} onChange={setAv} />
     </div>
   );
 }
@@ -134,9 +130,9 @@ function Join() {
   const profile = useAuth((s) => s.profile);
   const [code, setCode] = useState((param ?? '').toUpperCase());
   const [name, setName] = useState(() => savedName() || (profile?.full_name ?? '').split(' ')[0] || '');
-  const [av, setAv] = useState(savedAv);
+  const [av, setAv] = useState(savedPet);
   const ok = /^[A-Z0-9]{4,8}$/.test(code) && name.trim().length >= 2;
-  const go = () => { if (!ok) return; store('dd:name', name.trim()); store('dd:av', String(av)); nav(`/doodle/play/${code}`); };
+  const go = () => { if (!ok) return; store('dd:name', name.trim()); storePet(av); nav(`/doodle/play/${code}`); };
   return (
     <div className="grid h-full place-items-center overflow-y-auto p-4">
       <div className="dd-card w-full max-w-[440px] p-6">
@@ -161,7 +157,7 @@ function Create() {
   const profile = useAuth((s) => s.profile);
   const nav = useNavigate();
   const [name, setName] = useState(() => savedName() || (profile?.full_name ?? '').split(' ')[0] || '');
-  const [av, setAv] = useState(savedAv);
+  const [av, setAv] = useState(savedPet);
   const [plays, setPlays] = useState(true);
   const [room, setRoom] = useState<{ host: DoodleHost; me: DoodleClient } | null>(null);
   useEffect(() => () => { room?.me.close(); room?.host.close(); }, [room]);
@@ -182,7 +178,7 @@ function Create() {
         </label>
         {plays && <div className="mt-4"><Identity name={name} setName={setName} av={av} setAv={setAv} /></div>}
         <Btn tone="green" className="mt-5 h-14 w-full text-[19px]" disabled={!ok || !relayConfigured()} onClick={() => {
-          store('dd:name', name.trim()); store('dd:av', String(av));
+          store('dd:name', name.trim()); storePet(av);
           const code = makeCode();
           const host = new DoodleHost(code);
           const me = new DoodleClient(code, 'p' + makeId(), name.trim() || 'Host', av, !plays);
@@ -196,6 +192,7 @@ function Create() {
 
 function HostScreen({ host, me, onExit }: { host: DoodleHost; me: DoodleClient; onExit: () => void }) {
   useSub(host);
+  useGameMusic();
   const [speed, setSpeed] = useState<Speed>('normal');
   const [steps, setSteps] = useState(6);
   const [auto, setAuto] = useState(false);
@@ -227,6 +224,7 @@ function HostScreen({ host, me, onExit }: { host: DoodleHost; me: DoodleClient; 
         </>
       )}
       {host.phase === 'end' && <Btn tone="yellow" className="h-11" onClick={() => host.again()}>{t('Play again', 'Jugar otra vez')}</Btn>}
+      <MusicBtn />
       <button type="button" onClick={() => { if (confirm(t('Close the room?', '¿Cerrar la sala?'))) onExit(); }} className="rounded-xl bg-white/10 px-3 py-2 text-[13px] font-extrabold hover:bg-white/20">{t('Close', 'Cerrar')}</button>
     </div>
   );
@@ -249,6 +247,7 @@ function Projector({ host }: { host: DoodleHost }) {
         <div className="text-center text-[17px] font-bold text-white/85">{t('Scan the QR or go to', 'Escanea el QR o entra a')} <span className="text-[#ffe36b]">{location.host}/doodle</span> {t('and use the code', 'y usa el código')}</div>
         <div className="rounded-[28px] bg-white px-8 py-2 text-[72px] leading-none font-black tracking-[0.12em] text-[#3b2bb5] shadow-[0_8px_0_#c9c3f2]">{host.code}</div>
         <JoinQr path="/doodle/join" code={host.code} size={180} label={t('Show the QR full screen', 'Mostrar el QR en grande')} />
+        <MusicCredit />
       </div>
       <PlayerGrid players={players} />
     </div>
@@ -287,7 +286,7 @@ function PlayRoute() {
     let peer = '';
     try { peer = sessionStorage.getItem('dd:peer:' + code) ?? ''; } catch { /* ignore */ }
     if (!peer) { peer = 'p' + makeId(); try { sessionStorage.setItem('dd:peer:' + code, peer); } catch { /* ignore */ } }
-    const c = new DoodleClient(code.toUpperCase(), peer, name, savedAv());
+    const c = new DoodleClient(code.toUpperCase(), peer, name, savedPet());
     setClient(c);
     if (import.meta.env.DEV) (window as unknown as { __ddc: unknown }).__ddc = c;
     return () => c.close();
@@ -321,11 +320,7 @@ function PlayScreen({ client, code, isHost }: { client: DoodleClient; code: stri
         </div>
       )}
       {!client.watch && (
-        <div className="mt-3 flex items-center gap-1 rounded-2xl bg-white/15 p-1">
-          <button type="button" onClick={() => { const v = (client.av + TEACHERS.length - 1) % TEACHERS.length; store('dd:av', String(v)); client.setAvatar(v); }} className="grid h-9 w-9 place-items-center rounded-full bg-white/20" aria-label={t('Previous', 'Anterior')}><ChevronLeft size={18} /></button>
-          <Face ci={client.av} size={68} />
-          <button type="button" onClick={() => { const v = (client.av + 1) % TEACHERS.length; store('dd:av', String(v)); client.setAvatar(v); }} className="grid h-9 w-9 place-items-center rounded-full bg-white/20" aria-label={t('Next', 'Siguiente')}><ChevronRight size={18} /></button>
-        </div>
+        <div className="mt-3 w-full max-w-[420px]"><PetMaker av={client.av} onChange={(v) => { storePet(v); client.setAvatar(v); }} dark /></div>
       )}
       <div className="w-full max-w-[900px]"><PlayerGrid players={client.players} /></div>
     </div>
@@ -338,15 +333,7 @@ function PlayScreen({ client, code, isHost }: { client: DoodleClient; code: stri
   return <Reveal client={client} pad={pad} />;
 }
 
-/** A player's face: the teacher character, cropped to head and shoulders. */
-function Face({ ci, size }: { ci: number; size: number }) {
-  const look = TEACHERS[ci]?.look ?? TEACHERS[0].look;
-  return (
-    <svg viewBox="-64 -186 128 128" width={size} height={size} className="shrink-0" aria-hidden>
-      <TeacherToon look={look} t={1 + ci * 0.37} />
-    </svg>
-  );
-}
+const Face = ({ ci, size }: { ci: number; size: number }) => <PetFace av={ci} size={size} />;
 
 function Center({ children, pad = '' }: { children: ReactNode; pad?: string }) {
   return <div className={cn('grid h-full place-items-center overflow-y-auto p-4', pad)}>{children}</div>;
