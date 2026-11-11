@@ -201,6 +201,21 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G11. PORTADAS ANIMADAS, MÁS IMPOSTORAS, MÚSICA DE IMPOSTOR Y DIAGRAMAS
+- Notas: el juego de modales ya no reacciona al teclado mientras escribes en
+  una nota (ni con Verb Lab o el traductor abiertos).
+- Diagramas hechos a código en "See it" de 31 puntos de gramática: embudo
+  IN/ON/AT (tiempo y lugar), líneas de tiempo, this/that, escalera de
+  comparativos, frascos de cantidad, escalera de condicionales y reported speech.
+- Too Good To Be True: carátula en Juegos, portada nueva con personajes
+  animados, explosión y fundido a blanco al empezar; se elige cuántas
+  impostoras por tablero y cuántos tableros; fundido a negro y podio al final;
+  banco ampliado (unas 60 impostoras y 64 palabras reales por nivel).
+- Impostor: música original en modo clásico y modo videojuego (botón ♪).
+- You Draw: portada nueva, lista de intentos que se desliza sola, y las
+  herramientas de Pass the Doodle (pincel, aerosol, arcoíris, balde, stickers,
+  rehacer).
+
 G10. TWO TRUTHS & A LIE (NUEVO MODO) Y TOO GOOD TO BE TRUE (NUEVO JUEGO)
 - Two Truths & a Lie: el modo Colombia sigue igual y hay un modo nuevo,
   «Pop & World», con 150 rondas de A1 a C1 en 5 categorías: superhéroes,

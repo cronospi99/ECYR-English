@@ -15,12 +15,14 @@ import { BONUS, FUNCTION_BY_ID, FUNCTION_QUIZ, TRAPS, type BonusQuestion } from 
 import { awardModals, shuffle, useModalsArcade, useSfx } from './arcade';
 import { Ring } from './components';
 
-/** Listens for keys while mounted, ignoring typing in inputs. */
+/** Listens for keys while mounted, ignoring typing in inputs, the note editor and anything under an open sheet. */
 function useKeys(handler: (key: string) => void) {
   useEffect(() => {
     const on = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null;
-      if (e.metaKey || e.ctrlKey || e.altKey || (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      if (e.metaKey || e.ctrlKey || e.altKey || (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))) return;
+      // A sheet on top (notes, Verb Lab, translator) owns the keyboard: the note editor is contenteditable, not an input.
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) return;
       handler(e.key);
     };
     window.addEventListener('keydown', on);

@@ -1,3 +1,4 @@
+import { useImpostorMusic } from "../shared/music";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import { ui, topics, type Entry } from "../shared/words";
 import { randInt, shuffle, range, pickImpostors } from "../shared/random";
@@ -85,6 +86,7 @@ const mono = (size: number, extra: CSSProperties = {}): CSSProperties => ({ font
 const black = (size: string, extra: CSSProperties = {}): CSSProperties => ({ font: `400 ${size} 'Archivo Black',sans-serif`, ...extra });
 
 export function ClassicGame({ lang, setLang, onExit }: { lang: Lang; setLang: (l: Lang) => void; onExit: () => void }) {
+  useImpostorMusic("sneak");
   const [s, setS] = useState<S>(() => initial(lang));
   const [hist, setHist] = useState<S[]>([]);
   const ref = useRef(s);
