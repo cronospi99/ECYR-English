@@ -201,6 +201,24 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+G10. TWO TRUTHS & A LIE (NUEVO MODO) Y TOO GOOD TO BE TRUE (NUEVO JUEGO)
+- Two Truths & a Lie: el modo Colombia sigue igual y hay un modo nuevo,
+  «Pop & World», con 150 rondas de A1 a C1 en 5 categorías: superhéroes,
+  cantantes y música, cine y series, viajes por el mundo, cultura pop y
+  videojuegos. Se elige en la portada (botones Colombia / Pop & World).
+  Botón «End game» durante la partida.
+- Too Good To Be True ahora es «impostor words»: por nivel (A1–C2) salen 16
+  palabras en tarjetas; algunas son inventadas o imitan palabras reales.
+  Por turnos (toda la clase o 2–4 equipos) se toca la que creen impostora:
+  acierto +100; si la palabra es real, deben dar un sinónimo (el docente
+  marca ✓ sin perder puntos o ✗ −50; puede ver sinónimos sugeridos).
+  Cada tablero termina cuando se descubren todas las impostoras; el
+  siguiente trae más impostoras y más parecidas a palabras reales.
+  C1 y C2 usan palabras académicas con su traducción al español.
+  Botón «End game» y resumen con todas las palabras, traducciones y sinónimos.
+- Música de fondo pegajosa en los dos juegos (melodías originales generadas
+  en el navegador, sin archivos ni derechos); botón ♪ para quitarla.
+
 X3. INTERFAZ EN INGLÉS Y AYUDAS EN ESPAÑOL POR NIVEL
 - Toda la interfaz de la app pasó a inglés (menús, botones, avisos, mensajes de
   error, planes, tareas, notas, muros, administración, términos legales).

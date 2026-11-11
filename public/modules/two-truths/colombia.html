@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../_bridge/ecyr-bridge.js" data-slug="two-truths-colombia"></script>
 <script src="./support.js"></script>
+<script src="./pop-data.js"></script>
+<script src="../_arcade/loopmusic.js" data-tune="sunny"></script>
 </head>
 <body>
 <x-dc>
@@ -41,9 +43,14 @@ button { font-family: inherit; }
 
     <div style="display:flex;flex-direction:column;gap:clamp(6px,1.8vh,30px);min-width:0;">
       <div>
-        <div style="font-weight:800;font-size:clamp(11px,min(1.05vw,1.9vh),19px);letter-spacing:0.22em;text-transform:uppercase;color:#B42A63;">Colombia edition · English A1 → C1</div>
+        <div style="font-weight:800;font-size:clamp(11px,min(1.05vw,1.9vh),19px);letter-spacing:0.22em;text-transform:uppercase;color:#B42A63;">{{ editionLabel }}</div>
         <h1 style="font-family:'Chango',sans-serif;font-weight:400;font-size:clamp(24px,min(4.8vw,8vh),104px);line-height:0.98;letter-spacing:-0.01em;margin:clamp(6px,1vh,16px) 0 0;color:#2A1A12;">Two truths<br /><span style="color:#C23B22;">&amp; a lie</span></h1>
-        <p style="font-size:clamp(13px,min(1.35vw,2.4vh),26px);line-height:1.4;font-weight:500;max-width:720px;margin:clamp(8px,1.4vh,20px) 0 0;color:#5B4232;text-wrap:pretty;">Spin the sphere. Three sentences about Colombia appear: two are true, one is a lie. Find the lie.</p>
+        <p style="font-size:clamp(13px,min(1.35vw,2.4vh),26px);line-height:1.4;font-weight:500;max-width:720px;margin:clamp(8px,1.4vh,20px) 0 0;color:#5B4232;text-wrap:pretty;">Spin the sphere. Three sentences about {{ introAbout }} appear: two are true, one is a lie. Find the lie.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(8px,1.4vh,18px);">
+          <sc-for list="{{ editions }}" as="ed" hint-placeholder-count="2">
+            <button onClick="{{ ed.onClick }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:{{ ed.bg }};color:{{ ed.fg }};box-shadow:3px 3px 0 #2A1A12;padding:0 clamp(14px,1.4vw,24px);min-height:clamp(34px,5vh,52px);font-weight:800;font-size:clamp(12px,min(1vw,1.9vh),18px);">{{ ed.label }}</button>
+          </sc-for>
+        </div>
       </div>
 
       <div style="display:flex;flex-direction:column;gap:clamp(4px,1vh,12px);">
@@ -94,6 +101,7 @@ button { font-family: inherit; }
         <span style="font-weight:800;font-size:clamp(13px,1vw,18px);letter-spacing:0.12em;text-transform:uppercase;color:#B42A63;">Level {{ level }}</span>
       </div>
       <div style="display:flex;align-items:center;gap:clamp(8px,1vw,16px);">
+        <button onClick="{{ endNow }}" style="cursor:pointer;appearance:none;border:3px solid #2A1A12;border-radius:999px;background:#FFFBF2;color:#C23B22;box-shadow:3px 3px 0 #2A1A12;padding:6px clamp(12px,1.1vw,18px);font-weight:800;font-size:clamp(12px,0.95vw,16px);letter-spacing:0.08em;text-transform:uppercase;">End game</button>
         <sc-for list="{{ teams }}" as="t" hint-placeholder-count="2">
           <div style="display:flex;align-items:center;gap:10px;padding:8px clamp(14px,1.2vw,20px);border:3px solid #2A1A12;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};">
             <span style="font-weight:800;font-size:clamp(12px,0.95vw,17px);letter-spacing:0.1em;text-transform:uppercase;">{{ t.name }}</span>
@@ -229,7 +237,7 @@ const LEVELS = ["A1", "A2", "B1", "B2", "C1"];
 const PTS = { A1: 10, A2: 20, B1: 30, B2: 40, C1: 50 };
 const GREEN = "#2F7A2E", RED = "#C23B22";
 
-const CATS = [
+const CATS_CO = [
   { id: "science", name: "Science", color: "#137C76", ink: CREAM },
   { id: "culture", name: "Culture", color: "#B42A63", ink: CREAM },
   { id: "geography", name: "Geography", color: "#E9A21B", ink: INK },
@@ -240,7 +248,7 @@ const CATS = [
 ];
 
 // [level, true, true, lie, correction]
-const DATA = {
+const DATA_CO = {
   science: [
     ["A1", "Colombia is close to the equator.", "Bogotá is a very high city in the mountains.", "Colombia has four seasons every year: spring, summer, autumn and winter.", "Colombia is near the equator, so it has dry seasons and rainy seasons, not four seasons."],
     ["A1", "Colombia has many volcanoes.", "Coffee is a plant, and it grows very well in Colombia.", "Colombia has no deserts.", "Colombia has deserts, for example in La Guajira and the Tatacoa Desert in Huila."],
@@ -483,7 +491,14 @@ const EXTRA = {
     ["C1", "Totó la Momposina has taken the music of the Colombian Caribbean to audiences worldwide.", "She performed in Stockholm when García Márquez received the Nobel Prize in 1982.", "She rose to fame through Bogotá’s rock scene in the 1980s.", "Her music comes from traditional Caribbean genres such as cumbia and bullerengue, learned in her family’s region by the Magdalena River."]
   ]
 };
-Object.keys(EXTRA).forEach(function (k) { DATA[k] = DATA[k].concat(EXTRA[k]); });
+Object.keys(EXTRA).forEach(function (k) { DATA_CO[k] = DATA_CO[k].concat(EXTRA[k]); });
+// Edition: ?set=pop swaps Colombia for pop culture, superheroes, music, movies and world travel (pop-data.js).
+const SET = (function () { try { return new URLSearchParams(location.search).get("set") === "pop" && window.TTL_POP ? "pop" : "colombia"; } catch (e) { return "colombia"; } })();
+const CATS = SET === "pop" ? window.TTL_POP.cats : CATS_CO;
+const DATA = SET === "pop" ? window.TTL_POP.data : DATA_CO;
+function goEdition(set) {
+  try { const q = new URLSearchParams(location.search); if (set === "pop") q.set("set", "pop"); else q.delete("set"); location.search = q.toString(); } catch (e) {}
+}
 const TOTAL = CATS.reduce(function (n, c) { return n + DATA[c.id].length; }, 0);
 const PER_LEVEL = Math.min.apply(null, LEVELS.map(function (l) { return CATS.reduce(function (n, c) { return n + DATA[c.id].filter(function (r) { return r[0] === l; }).length; }, 0); }));
 const ROSTER_KEY = "ttl-colombia-roster";
@@ -533,7 +548,7 @@ class Component extends DCLogic {
     this._rep = { on: true, t0: Date.now(), levels: levels, cat: this.state.cat, asked: 0, timeouts: 0, perLevel: {} };
     window.ECYRBridge && window.ECYRBridge.start({
       level: levels[levels.length - 1], mode: this.bridgeMode(),
-      meta: { category: this.state.cat, levels: levels, rounds: deck.length, teamMode: this.teamMode(), timerSeconds: this.seconds() }
+      meta: { set: SET, category: this.state.cat, levels: levels, rounds: deck.length, teamMode: this.teamMode(), timerSeconds: this.seconds() }
     });
   }
   reportAnswer(r, ok, timedOut) {
@@ -925,6 +940,13 @@ class Component extends DCLogic {
       endTitle: endTitle,
       endLine: s.caught + " of " + total + " lies caught" + (team ? "  ·  " + tn[0] + " " + s.scores[0] + " — " + tn[1] + " " + s.scores[1] : "  ·  " + s.scores[0] + " points"),
       again: this.again, restart: this.restart,
+      editionLabel: SET === "pop" ? "Pop & World edition · English A1 → C1" : "Colombia edition · English A1 → C1",
+      introAbout: SET === "pop" ? "superheroes, music, movies, travel and pop culture" : "Colombia",
+      editions: [["colombia", "🇨🇴 Colombia"], ["pop", "🌍 Pop & World"]].map(function (e) {
+        const on = SET === e[0];
+        return { label: e[1], bg: on ? INK : "#FFFBF2", fg: on ? CREAM : INK, onClick: function () { if (!on) goEdition(e[0]); } };
+      }),
+      endNow: () => { if (this.state.phase !== "play") return; if (!window.confirm("End the game now and see the results?")) return; this.setState({ phase: "end" }); this.reportEnd(false); },
       hasBoard: boardTop.length > 0, board: boardTop,
       showRoster: s.showRoster, rosterGroups: rosterGroups,
       rosterLabel: rosterCount ? "Students · " + rosterCount : "Add student names",
