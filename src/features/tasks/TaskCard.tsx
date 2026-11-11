@@ -88,7 +88,7 @@ export function TaskCard({
               aria-controls={textId}
               onClick={() => setOpen((v) => !v)}
             >
-              {open ? 'Ver menos' : 'Ver más'}
+              {open ? 'See less' : 'See more'}
             </button>
           )}
         </div>
@@ -109,26 +109,26 @@ export function TaskCard({
         )}
         {!finished && auto && (
           <span className="text-label-2 inline-flex items-center gap-1">
-            <Sparkles size={14} className="text-ink-purple" aria-hidden /> Se marca sola al completarla
+            <Sparkles size={14} className="text-ink-purple" aria-hidden /> It is ticked off automatically when completed
           </span>
         )}
         {a.requires_submission && !finished && (
           <span className="text-label-2 inline-flex items-center gap-1">
-            <Upload size={14} aria-hidden /> Requiere entrega
+            <Upload size={14} aria-hidden /> Requires hand-in
           </span>
         )}
       </div>
 
       {s?.portfolio_item_id && (
         <Link to="/portfolio" className="text-ink-blue text-footnote mt-2 inline-flex items-center gap-1 font-semibold hover:opacity-70">
-          <FileCheck2 size={14} aria-hidden /> Ver el trabajo entregado
+          <FileCheck2 size={14} aria-hidden /> View the submitted work
         </Link>
       )}
 
       {(s?.teacher_feedback || (s?.reviewed_at && s.score != null)) && (
         <div className="bg-fill-2 mt-3 rounded-[12px] p-3">
           <div className="text-footnote text-label-2 flex items-center gap-1.5 font-semibold">
-            <MessageSquareText size={14} aria-hidden /> Tu profesor
+            <MessageSquareText size={14} aria-hidden /> Your teacher
             {s.score != null && (
               <span className="text-label ml-auto rounded-full bg-[color-mix(in_srgb,var(--green)_16%,transparent)] px-2 py-0.5 tabular-nums">
                 {Math.round(s.score * 10) / 10} / 100
@@ -149,32 +149,32 @@ export function TaskCard({
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {to && !finished && (
             <ButtonLink to={to} size="sm" variant="filled">
-              <Play size={14} fill="currentColor" aria-hidden /> Empezar
+              <Play size={14} fill="currentColor" aria-hidden /> Start
             </ButtonLink>
           )}
           {!finished &&
             (a.requires_submission ? (
               <Button size="sm" variant="tinted" onClick={onSubmit} disabled={busy}>
-                <Upload size={15} aria-hidden /> Entregar
+                <Upload size={15} aria-hidden /> Hand in
               </Button>
             ) : (
               <Button size="sm" variant="tinted" onClick={() => run(onMarkDone)} disabled={busy}>
-                {busy ? <Spinner className="h-4 w-4" /> : <Check size={15} strokeWidth={2.6} aria-hidden />} Marcar como hecha
+                {busy ? <Spinner className="h-4 w-4" /> : <Check size={15} strokeWidth={2.6} aria-hidden />} Mark as done
               </Button>
             ))}
           {finished && s?.via === 'manual' && !s.reviewed_at && (
             <Button size="sm" variant="plain" onClick={() => run(onUndo)} disabled={busy}>
-              <RotateCcw size={14} aria-hidden /> Deshacer
+              <RotateCcw size={14} aria-hidden /> Undo
             </Button>
           )}
           {finished && s?.via === 'submission' && (
             <Button size="sm" variant="plain" onClick={onSubmit} disabled={busy}>
-              <Upload size={14} aria-hidden /> Entregar otra versión
+              <Upload size={14} aria-hidden /> Hand in another version
             </Button>
           )}
           {finished && to && (
             <ButtonLink to={to} size="sm" variant="gray">
-              Repasar
+              Review
             </ButtonLink>
           )}
         </div>

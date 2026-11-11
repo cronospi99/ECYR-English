@@ -57,7 +57,7 @@ export function LinkForm({
           }}
         >
           <input className={inputCls} value={url} onChange={(e) => setUrl(e.target.value)} placeholder={placeholder} aria-label={prompt} inputMode="url" />
-          <Act solid color={color} type="submit" aria-label="Mostrar">
+          <Act solid color={color} type="submit" aria-label="Show">
             <Link2 size={18} />
           </Act>
         </form>
@@ -65,7 +65,7 @@ export function LinkForm({
           <div className="flex w-full max-w-md flex-col items-start gap-1.5">
             <Label>
               <History size={12} className="mr-1 inline" />
-              Recientes
+              Recent
             </Label>
             <div className="flex flex-wrap gap-1.5">
               {recent.map((r) => (
@@ -83,7 +83,7 @@ export function LinkForm({
         )}
         {!!presets?.length && (
           <div className="flex w-full max-w-md flex-col items-start gap-1.5">
-            <Label>Para la clase</Label>
+            <Label>For the class</Label>
             <div className="flex flex-wrap gap-1.5">
               {presets.map((r) => (
                 <button key={r.url} type="button" className={`${chip} pr-3`} onClick={() => go(r.url)}>

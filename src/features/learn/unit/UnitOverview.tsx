@@ -122,10 +122,10 @@ export function UnitOverview({
   const Icon = unitIcon(u);
   const world = u.world && !u.world.includes('/') ? u.world : null;
   const steps: { tab: StepTab; label: string; icon: LucideIcon; color: string; value: string }[] = [
-    { tab: 'vocab', label: 'Vocabulario', icon: BookOpen, color: 'var(--blue)', value: `${u.vocab.length} palabras` },
-    { tab: 'grammar', label: 'Gramática', icon: Wand2, color: 'var(--purple)', value: `${u.grammar.length} ${u.grammar.length === 1 ? 'punto' : 'puntos'}` },
-    { tab: 'practice', label: 'Práctica', icon: Repeat, color: 'var(--green)', value: `${practiceCount} preguntas` },
-    { tab: 'produce', label: 'Producción', icon: Mic, color: 'var(--orange)', value: `${(u.speaking?.length ?? 0) + (u.writing ? 1 : 0)} tareas` },
+    { tab: 'vocab', label: 'Vocabulary', icon: BookOpen, color: 'var(--blue)', value: `${u.vocab.length} words` },
+    { tab: 'grammar', label: 'Grammar', icon: Wand2, color: 'var(--purple)', value: `${u.grammar.length} ${u.grammar.length === 1 ? 'point' : 'points'}` },
+    { tab: 'practice', label: 'Practice', icon: Repeat, color: 'var(--green)', value: `${practiceCount} questions` },
+    { tab: 'produce', label: 'Production', icon: Mic, color: 'var(--orange)', value: `${(u.speaking?.length ?? 0) + (u.writing ? 1 : 0)} tasks` },
   ];
 
   return (
@@ -136,14 +136,14 @@ export function UnitOverview({
           <Icon size={168} strokeWidth={1.2} className="pointer-events-none absolute -top-5 -right-6 text-white/15" aria-hidden />
           <div className="relative flex items-center gap-4">
             <span className="inline-flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-[18px] bg-white/20 text-white shadow-[inset_0_0_0_1.5px_rgb(255_255_255/0.35)]">
-              <span className="text-[10px] font-bold tracking-[0.12em] uppercase opacity-80">Unidad</span>
+              <span className="text-[10px] font-bold tracking-[0.12em] uppercase opacity-80">Unit</span>
               <span className="text-[26px] leading-none font-bold">{u.n}</span>
             </span>
             <div className="min-w-0 text-white">
               {world && <div className="truncate text-[12px] font-bold tracking-[0.08em] uppercase opacity-80">{world}</div>}
               <div className="text-[19px] leading-tight font-bold text-balance sm:text-[22px]">{u.theme}</div>
               {(u.classes || u.pages) && (
-                <div className="mt-1 text-[13px] opacity-80">{u.classes ? `Clases ${u.classes}` : `Páginas ${u.pages}`}</div>
+                <div className="mt-1 text-[13px] opacity-80">{u.classes ? `Clases ${u.classes}` : `Pages ${u.pages}`}</div>
               )}
             </div>
           </div>
@@ -157,7 +157,7 @@ export function UnitOverview({
             </span>
             <div className="min-w-0">
               <div className="text-[11px] font-bold tracking-[0.08em] uppercase" style={{ color: ink(color) }}>
-                Lo que podrás hacer
+                What you’ll be able to do
               </div>
               <p className="text-[15px] leading-snug font-medium text-pretty">{u.overview.outcome}</p>
             </div>
@@ -168,7 +168,7 @@ export function UnitOverview({
       {/* goals */}
       <section aria-labelledby="ov-goals">
         <h3 id="ov-goals" className="text-headline mb-3 flex items-center gap-2 px-1">
-          <Target size={18} className="text-ink-blue" aria-hidden /> Objetivos
+          <Target size={18} className="text-ink-blue" aria-hidden /> Goals
         </h3>
         <ul className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {u.overview.goals.map((g) => {
@@ -188,7 +188,7 @@ export function UnitOverview({
       {/* roadmap */}
       <section aria-labelledby="ov-road">
         <h3 id="ov-road" className="text-headline mb-3 flex items-center gap-2 px-1">
-          <Compass size={18} className="text-ink-green" aria-hidden /> Tu ruta
+          <Compass size={18} className="text-ink-green" aria-hidden /> Your route
         </h3>
         <ol className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
           {steps.map((s, k) => (
@@ -207,7 +207,7 @@ export function UnitOverview({
                 <span className="text-[16px] font-semibold">{s.label}</span>
                 <span className="text-label-2 -mt-1.5 text-[13px]">{s.value}</span>
                 <span className="mt-auto inline-flex items-center text-[13px] font-semibold" style={{ color: ink(s.color) }}>
-                  Ir <ChevronRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+                  Go <ChevronRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </button>
               {k < steps.length - 1 && (
@@ -221,7 +221,7 @@ export function UnitOverview({
           ))}
         </ol>
         <Button variant="brand" size="lg" className="mt-4 w-full sm:w-auto" onClick={() => onGo('vocab')}>
-          Empezar la lección <ChevronRight size={18} />
+          Start the lesson <ChevronRight size={18} />
         </Button>
       </section>
 
@@ -231,7 +231,7 @@ export function UnitOverview({
       {u.tips && u.tips.length > 0 && (
         <section aria-labelledby="ov-tips">
           <h3 id="ov-tips" className="text-headline mb-3 flex items-center gap-2 px-1">
-            <Lightbulb size={18} className="text-ios-yellow" aria-hidden /> Tips rápidos
+            <Lightbulb size={18} className="text-ios-yellow" aria-hidden /> Quick tips
           </h3>
           <ul className="no-scrollbar -mx-4 flex snap-x scroll-px-4 gap-2.5 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-3">
             {u.tips.map((t, k) => (

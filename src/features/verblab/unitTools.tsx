@@ -29,17 +29,17 @@ const RULES: { test: RegExp; tools: Tool[]; label: string }[] = [
   },
   {
     test: /present perfect|past participle|participles|passive|future perfect|should have|would have|past modals|have something done|past perfect/i,
-    label: 'Participios',
+    label: 'Participles',
     tools: [{ kind: 'irregular' }, { kind: 'forms', field: 'part', only: 'irregular' }],
   },
   {
     test: /gerund|infinitive|verb patterns|verbs \+ infinitives|would rather/i,
-    label: 'Patrones verbales',
+    label: 'Verb patterns',
     tools: [{ kind: 'pattern', id: 1 }, { kind: 'pattern', id: 2 }, { kind: 'pattern-quiz', id: 'q1' }],
   },
-  { test: /by \+ gerund|prepositions? .*gerund|need \+ gerund/i, label: 'Preposición + gerundio', tools: [{ kind: 'pattern', id: 6 }, { kind: 'pattern-quiz', id: 'q3' }] },
-  { test: /reported speech|reporting clauses|tell.*say/i, label: 'Verbos de reporte', tools: [{ kind: 'pattern', id: 7 }, { kind: 'pattern-quiz', id: 'q3' }] },
-  { test: /review of verb patterns|gerund & infinitive constructions/i, label: 'Ambas formas', tools: [{ kind: 'pattern', id: 9 }, { kind: 'pattern', id: 10 }, { kind: 'pattern-quiz', id: 'q5' }] },
+  { test: /by \+ gerund|prepositions? .*gerund|need \+ gerund/i, label: 'Preposition + gerund', tools: [{ kind: 'pattern', id: 6 }, { kind: 'pattern-quiz', id: 'q3' }] },
+  { test: /reported speech|reporting clauses|tell.*say/i, label: 'Reporting verbs', tools: [{ kind: 'pattern', id: 7 }, { kind: 'pattern-quiz', id: 'q3' }] },
+  { test: /review of verb patterns|gerund & infinitive constructions/i, label: 'Both forms', tools: [{ kind: 'pattern', id: 9 }, { kind: 'pattern', id: 10 }, { kind: 'pattern-quiz', id: 'q5' }] },
   { test: /phrasal verbs|two-part verbs/i, label: 'Phrasal verbs', tools: [{ kind: 'phrasal' }] },
 ];
 
@@ -82,7 +82,7 @@ export function UnitVerbTools({ unit }: { unit: Unit }) {
           <Wrench size={22} className="text-ink-orange" /> Verb Lab
         </h3>
         <Link to="/practice/verbs" className="text-ink-blue inline-flex items-center text-[15px] font-medium">
-          Abrir el laboratorio completo <ChevronRight size={16} />
+          Open the full lab <ChevronRight size={16} />
         </Link>
       </div>
       {groups.length > 1 && (
@@ -96,7 +96,7 @@ export function UnitVerbTools({ unit }: { unit: Unit }) {
         </div>
       )}
       {!data ? (
-        <Card className="text-label-2 p-6 text-center">Cargando herramientas…</Card>
+        <Card className="text-label-2 p-6 text-center">Loading tools…</Card>
       ) : (
         <div className="space-y-4">
           {g.tools.map((t, i) => (

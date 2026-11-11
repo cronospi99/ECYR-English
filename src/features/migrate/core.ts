@@ -114,11 +114,11 @@ export function fnv1a(s: string): string {
 
 /** Parses JSON text with a size guard. Never evaluates anything. */
 export function parseJsonText(text: string): { ok: true; value: unknown } | { ok: false; error: string } {
-  if (text.length > MAX_FILE_BYTES) return { ok: false, error: 'El archivo es demasiado grande (máximo 15 MB).' };
+  if (text.length > MAX_FILE_BYTES) return { ok: false, error: 'The file is too large (maximum 15 MB).' };
   try {
     return { ok: true, value: JSON.parse(text) as unknown };
   } catch {
-    return { ok: false, error: 'El archivo no es un JSON válido.' };
+    return { ok: false, error: 'The file is not valid JSON.' };
   }
 }
 
@@ -443,7 +443,7 @@ export function parseIeltsSession(input: unknown): { ok: true; data: IeltsSessio
     v = p.value;
   }
   if (!isObj(v) || !isObj(v._meta) || v._meta.app !== SESSION_APP)
-    return { ok: false, error: 'No es un archivo de sesión del IELTS Simulator (falta "_meta.app").' };
+    return { ok: false, error: 'It is not an IELTS Simulator session file (missing "_meta.app").' };
 
   const data: IeltsSessionData = {
     _meta: { app: SESSION_APP, exportedAt: isoDate(v._meta.exportedAt) },
@@ -587,7 +587,7 @@ export function parseEcyrProgress(input: unknown): { ok: true; file: EcyrProgres
   }
   if (isObj(v) && isObj(v.state) && typeof v.state.xp === 'number') v = v.state; // learner_state row
   if (!isObj(v) || typeof v.xp !== 'number' || !isObj(v.units))
-    return { ok: false, error: 'El archivo no es un progreso válido de ECYR English.' };
+    return { ok: false, error: 'The file is not a valid ECYR English progress file.' };
 
   const skillXp = {} as Record<Skill, number>;
   const sx = isObj(v.skillXp) ? v.skillXp : {};

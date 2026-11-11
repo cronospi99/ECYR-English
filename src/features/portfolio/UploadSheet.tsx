@@ -189,14 +189,14 @@ function SheetShell({
       <div className="text-footnote text-label-2 mb-1 flex items-center justify-between">
         <span className="inline-flex items-center gap-1.5">
           <Spinner className="h-3.5 w-3.5" />
-          {busy.stage === 'upload' ? 'Subiendo archivo…' : 'Guardando…'}
+          {busy.stage === 'upload' ? 'Uploading file…' : 'Saving…'}
         </span>
         {busy.stage === 'upload' && <span className="tabular-nums">{Math.round(busy.progress * 100)} %</span>}
       </div>
       <div
         className="bg-fill h-1.5 overflow-hidden rounded-full"
         role="progressbar"
-        aria-label="Progreso de la subida"
+        aria-label="Upload progress"
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(busy.progress * 100)}
@@ -216,13 +216,13 @@ function SheetShell({
     <Sheet
       open={open}
       onClose={onClose}
-      title={editing ? 'Editar trabajo' : 'Subir trabajo'}
-      closeLabel="Cancelar"
+      title={editing ? 'Edit work' : 'Upload work'}
+      closeLabel="Cancel"
       dismissible={!busy}
       banner={banner}
       trailing={
         <SheetAction type="submit" form={formId} bold disabled={!valid || Boolean(busy)}>
-          {editing ? 'Guardar' : 'Subir'}
+          {editing ? 'Save' : 'Up'}
         </SheetAction>
       }
     >
@@ -234,8 +234,8 @@ function SheetShell({
             value={f.mode}
             onChange={(mode) => setF((x) => ({ ...x, mode, kind: !x.kindTouched && mode === 'text' ? 'writing' : x.kind }))}
             options={[
-              { value: 'file', label: 'Archivo' },
-              { value: 'text', label: 'Pegar texto' },
+              { value: 'file', label: 'File' },
+              { value: 'text', label: 'Paste text' },
             ]}
           />
         )}
@@ -246,7 +246,7 @@ function SheetShell({
             <div className="min-w-0 flex-1">
               <div className="text-subhead truncate font-medium">{item.file_name}</div>
               <div className="text-footnote text-label-2">
-                {formatBytes(item.file_size)} · el archivo no se puede cambiar; elimina y vuelve a subir si hace falta.
+                {formatBytes(item.file_size)} · the file cannot be changed; delete it and upload again if needed.
               </div>
             </div>
           </div>
@@ -284,7 +284,7 @@ function SheetShell({
                   onClick={() => set('file', null)}
                   disabled={Boolean(busy)}
                   className="bg-fill text-label-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-full hover:opacity-70"
-                  aria-label="Quitar archivo"
+                  aria-label="Remove file"
                 >
                   <X size={16} strokeWidth={2.5} />
                 </button>
@@ -308,12 +308,12 @@ function SheetShell({
                   <CloudUpload size={24} aria-hidden />
                 </span>
                 <span className="text-headline">
-                  <span className="text-ink-blue sm:hidden">Elige un archivo</span>
+                  <span className="text-ink-blue sm:hidden">Choose a file</span>
                   <span className="hidden sm:inline">
-                    Arrastra un archivo o <span className="text-ink-blue">elige uno</span>
+                    Drag a file or <span className="text-ink-blue">choose one</span>
                   </span>
                 </span>
-                <span className="text-footnote text-label-2 max-w-[360px] text-pretty">{ACCEPT_HUMAN}. Máximo 20 MB.</span>
+                <span className="text-footnote text-label-2 max-w-[360px] text-pretty">{ACCEPT_HUMAN}. Maximum 20 MB.</span>
               </button>
             )}
             {fileError && (
@@ -325,13 +325,13 @@ function SheetShell({
         )}
 
         {textEditable && (editing ? item?.text_content != null || !item?.file_path : f.mode === 'text') && (
-          <Field label="Texto" htmlFor={ids.text} hint={`${f.text.length.toLocaleString('es')} / ${MAX_TEXT_CHARS.toLocaleString('es')}`} hintBad={textTooLong}>
+          <Field label="Text" htmlFor={ids.text} hint={`${f.text.length.toLocaleString('en')} / ${MAX_TEXT_CHARS.toLocaleString('en')}`} hintBad={textTooLong}>
             <textarea
               id={ids.text}
               value={f.text}
               onChange={(e) => set('text', e.target.value)}
               rows={8}
-              placeholder="Pega aquí tu redacción, ensayo o respuesta…"
+              placeholder="Paste your essay, composition or answer here…"
               className={cn(inputCls, 'min-h-[180px] resize-y py-3 leading-[22px]')}
             />
           </Field>
@@ -340,7 +340,7 @@ function SheetShell({
         {/* ---- kind */}
         <fieldset>
           <legend className={labelCls} id={ids.kind}>
-            Tipo de trabajo
+            Type of work
           </legend>
           <div role="radiogroup" aria-labelledby={ids.kind} className="flex flex-wrap gap-2">
             {PORTFOLIO_KINDS.map((k) => {
@@ -369,7 +369,7 @@ function SheetShell({
         </fieldset>
 
         {/* ---- title */}
-        <Field label="Título" htmlFor={ids.title} required>
+        <Field label="Title" htmlFor={ids.title} required>
           <input
             id={ids.title}
             value={f.title}
@@ -384,27 +384,27 @@ function SheetShell({
 
         {/* ---- level + skill */}
         <ChipPicker
-          label="Nivel"
+          label="Level"
           id={ids.level}
           value={f.level}
           onChange={(v) => set('level', v as Form['level'])}
-          options={[{ value: '', label: 'Sin nivel' }, ...PORTFOLIO_LEVELS.map((l) => ({ value: l, label: l }))]}
+          options={[{ value: '', label: 'No level' }, ...PORTFOLIO_LEVELS.map((l) => ({ value: l, label: l }))]}
         />
         <ChipPicker
-          label="Habilidad"
+          label="Skill"
           id={ids.skill}
           value={f.skill}
           onChange={(v) => set('skill', v as Form['skill'])}
-          options={[{ value: '', label: 'Ninguna' }, ...PORTFOLIO_SKILLS.map((s) => ({ value: s, label: SKILL_LABEL[s] }))]}
+          options={[{ value: '', label: 'None' }, ...PORTFOLIO_SKILLS.map((s) => ({ value: s, label: SKILL_LABEL[s] }))]}
         />
 
         {/* ---- date + score */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Fecha en que lo hiciste" htmlFor={ids.date}>
+          <Field label="Date you did it" htmlFor={ids.date}>
             <input id={ids.date} type="date" value={f.doneAt} max={today()} onChange={(e) => set('doneAt', e.target.value)} className={cn(inputCls, 'min-w-0')} />
           </Field>
           <Field
-            label="Nota obtenida (opcional)"
+            label="Grade obtained (optional)"
             htmlFor={ids.score}
             hint={scoreInvalid ? (f.scale === 'band' ? 'De 0 a 9' : 'De 0 a 100') : undefined}
             hintBad={scoreInvalid}
@@ -434,14 +434,14 @@ function SheetShell({
         </div>
 
         {/* ---- description */}
-        <Field label="Descripción (opcional)" htmlFor={ids.desc}>
+        <Field label="Description (optional)" htmlFor={ids.desc}>
           <textarea
             id={ids.desc}
             value={f.description}
             maxLength={2000}
             onChange={(e) => set('description', e.target.value)}
             rows={3}
-            placeholder="¿De qué trata? ¿Para qué clase o examen fue?"
+            placeholder="What is it about? Which class or exam was it for?"
             className={cn(inputCls, 'resize-y py-3 leading-[22px]')}
           />
         </Field>

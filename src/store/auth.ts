@@ -61,16 +61,16 @@ export const useAuth = create<AuthState>()((set, get) => ({
   },
 
   signIn: async (email, password) => {
-    if (!supabase) return 'Las cuentas no están configuradas en este despliegue.';
+    if (!supabase) return 'Accounts are not configured in this deployment.';
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     return error ? friendly(error.message) : null;
   },
 
   signUp: async ({ email, password, fullName, role, inviteCode }) => {
-    if (!supabase) return 'Las cuentas no están configuradas en este despliegue.';
+    if (!supabase) return 'Accounts are not configured in this deployment.';
     const invite_code = role === 'teacher' ? (inviteCode ?? '').trim().toUpperCase() : undefined;
     if (role === 'teacher') {
-      if (!invite_code) return 'Para crear una cuenta docente necesitas el código de invitación que te da la administración.';
+      if (!invite_code) return 'To create a teacher account you need the invitation code the admin gives you.';
       const { data: ok, error } = await supabase.rpc('check_teacher_invite', { p_code: invite_code });
       if (!error && ok !== true) return INVITE_INVALID;
     }
@@ -92,7 +92,7 @@ export const useAuth = create<AuthState>()((set, get) => ({
   },
 
   becomeTeacher: async (code) => {
-    if (!supabase) return 'Sin conexión con el servidor.';
+    if (!supabase) return 'No connection to the server.';
     const { error } = await supabase.rpc('switch_role', { p_role: 'teacher', p_code: code.trim().toUpperCase() || null });
     if (error) return /TEACHER_INVITE/.test(error.message) ? INVITE_INVALID : friendly(error.message);
     await get().loadProfile();
@@ -100,7 +100,7 @@ export const useAuth = create<AuthState>()((set, get) => ({
   },
 
   joinClass: async (code) => {
-    if (!supabase) return 'Sin conexión con el servidor.';
+    if (!supabase) return 'No connection to the server.';
     const { error } = await supabase.rpc('join_class', { p_code: code.trim().toUpperCase() });
     if (error) return friendly(error.message);
     await get().loadProfile();
@@ -108,13 +108,13 @@ export const useAuth = create<AuthState>()((set, get) => ({
   },
 }));
 
-const INVITE_INVALID = 'Ese código de docente no es válido, ya se usó o venció. Pide uno nuevo a la administración.';
+const INVITE_INVALID = 'That teacher code is not valid, was already used or has expired. Ask the admin for a new one.';
 
 function friendly(msg: string) {
-  if (/already in use as a/i.test(msg)) return 'Esta cuenta ya tiene actividad con su rol actual. Crea una cuenta nueva para el otro rol.';
-  if (/invalid login/i.test(msg)) return 'Correo o contraseña incorrectos.';
-  if (/already registered/i.test(msg)) return 'Ese correo ya tiene una cuenta. Inicia sesión.';
-  if (/password should be/i.test(msg)) return 'La contraseña debe tener al menos 6 caracteres.';
-  if (/email not confirmed/i.test(msg)) return 'Confirma tu correo antes de iniciar sesión.';
+  if (/already in use as a/i.test(msg)) return 'This account already has activity with its current role. Create a new account for the other role.';
+  if (/invalid login/i.test(msg)) return 'Wrong email or password.';
+  if (/already registered/i.test(msg)) return 'That email already has an account. Sign in.';
+  if (/password should be/i.test(msg)) return 'The password must be at least 6 characters.';
+  if (/email not confirmed/i.test(msg)) return 'Confirm your email before signing in.';
   return msg;
 }

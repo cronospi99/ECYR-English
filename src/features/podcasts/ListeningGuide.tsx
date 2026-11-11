@@ -63,41 +63,41 @@ const GUIDE: Record<CefrLevel, GuideLevel> = {
   },
   B2: {
     plan: [
-      'Escucha 1: a velocidad normal, sin pausas, para la idea general y el tono.',
-      'Escucha 2: anota detalles, opiniones y cómo las justifican.',
+      'Listen 1: at normal speed, no pauses, for the main idea and the tone.',
+      'Listen 2: note details, opinions and how they justify them.',
     ],
     predictions: 2,
-    expect: 'Escribe 5 palabras, colocaciones o expresiones que esperas escuchar.',
-    whileTask: 'Distingue hechos de opiniones. Anota expresiones idiomáticas con su minuto.',
-    ideasHint: 'En inglés; incluye al menos un detalle o ejemplo por idea.',
-    summary: 'Resume el episodio en 3–4 frases en inglés, como para un compañero que no lo escuchó.',
-    extra: { q: '¿Qué opina el hablante y cómo lo sabes? ¿Cuál es tu opinión? (60–80 palabras en inglés)', lines: 4 },
-    checks: [...BASE_CHECKS, 'Identifiqué la opinión o actitud de los hablantes.', 'Puedo explicar los argumentos principales en inglés.'],
+    expect: 'Write 5 words, collocations or expressions you expect to hear.',
+    whileTask: 'Tell facts from opinions. Note idiomatic expressions with their minute.',
+    ideasHint: 'In English; include at least one detail or example per idea.',
+    summary: 'Summarise the episode in 3–4 sentences in English, as if for a classmate who didn’t listen to it.',
+    extra: { q: 'What does the speaker think and how do you know? What is your opinion? (60–80 words in English)', lines: 4 },
+    checks: [...BASE_CHECKS, 'I identified the speakers’ opinion or attitude.', 'I can explain the main arguments in English.'],
   },
   C1: {
-    plan: ['Escucha 1: a 1× o 1,25×, de corrido, como un podcast real.', 'Escucha 2: vuelve a los fragmentos clave y analiza lenguaje y argumentos.'],
+    plan: ['Listen 1: at 1× or 1.25×, straight through, like a real podcast.', 'Listen 2: go back to the key fragments and analyse the language and the arguments.'],
     predictions: 2,
-    expect: 'Escribe 5 expresiones avanzadas o términos del tema que esperas oír.',
-    whileTask: 'Anota argumentos, matices, humor o ironía, y expresiones idiomáticas con su minuto.',
-    ideasHint: 'En inglés, con precisión: ideas, matices y evidencia.',
-    summary: 'Escribe un resumen de 60–80 palabras en inglés con las ideas y su conexión.',
-    extra: { q: 'Respuesta crítica (80–120 palabras): ¿qué tan convincente fue? ¿Qué faltó o qué añadirías?', lines: 5 },
+    expect: 'Write 5 advanced expressions or terms on the topic that you expect to hear.',
+    whileTask: 'Note arguments, nuances, humour or irony, and idiomatic expressions with their minute.',
+    ideasHint: 'In English, precisely: ideas, nuances and evidence.',
+    summary: 'Write a 60–80 word summary in English with the ideas and how they connect.',
+    extra: { q: 'Critical response (80–120 words): how convincing was it? What was missing or what would you add?', lines: 5 },
     checks: [
       ...BASE_CHECKS,
-      'Capté matices: humor, ironía, registro o acento.',
-      'Puedo resumir y criticar los argumentos en inglés.',
-      'Entendí sin necesitar la velocidad lenta.',
+      'I caught nuances: humour, irony, register or accent.',
+      'I can summarise and critique the arguments in English.',
+      'I understood without needing the slow speed.',
     ],
   },
   C2: {
-    plan: ['Escucha 1: a 1,25× o 1,5×, sin pausas, como un hablante experto.', 'Escucha 2: analiza retórica, ironía, implicaturas y registro; compáralo con otra fuente.'],
+    plan: ['Listen 1: at 1.25× or 1.5×, no pauses, like an expert speaker.', 'Listen 2: analyse rhetoric, irony, implicatures and register; compare it with another source.'],
     predictions: 2,
-    expect: 'Escribe 5 expresiones idiomáticas, colocaciones o términos técnicos que esperas oír.',
-    whileTask: 'Anota la postura de cada hablante, lo que se insinúa sin decirse y las expresiones con su minuto.',
-    ideasHint: 'En inglés, con precisión y concisión: tesis, matices, evidencia y tono.',
-    summary: 'Escribe un resumen de 80–100 palabras en inglés que sintetice y evalúe las ideas.',
-    extra: { q: 'Evaluación crítica (120–160 palabras): ¿qué supuestos tiene el argumento? ¿Cómo lo rebatirías?', lines: 6 },
-    checks: [...BASE_CHECKS, 'Capté implicaturas, ironía y cambios de registro.', 'Puedo evaluar críticamente los argumentos en inglés.', 'Entendí a velocidad real, con acentos variados.'],
+    expect: 'Write 5 idioms, collocations or technical terms you expect to hear.',
+    whileTask: 'Note each speaker’s stance, what is hinted without being said, and the expressions with their minute.',
+    ideasHint: 'In English, precisely and concisely: thesis, nuances, evidence and tone.',
+    summary: 'Write an 80–100 word summary in English that synthesises and evaluates the ideas.',
+    extra: { q: 'Critical evaluation (120–160 words): what assumptions does the argument make? How would you rebut it?', lines: 6 },
+    checks: [...BASE_CHECKS, 'I caught implicatures, irony and changes of register.', 'I can critically evaluate the arguments in English.', 'I understood at real speed, with varied accents.'],
   },
 };
 
@@ -203,17 +203,17 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
 
   return (
     <div className="space-y-4">
-      <Step n={1} title="Antes de escuchar">
-        <p className="text-label-2 text-[14px]">Lee el título y la descripción del episodio.</p>
-        <Label>{g.predictions === 1 ? '¿De qué crees que trata? Escribe una predicción.' : `¿De qué crees que trata? Escribe ${g.predictions} predicciones.`}</Label>
+      <Step n={1} title="Before listening">
+        <p className="text-label-2 text-[14px]">Read the episode’s title and description.</p>
+        <Label>{g.predictions === 1 ? 'What do you think it is about? Write a prediction.' : `What do you think it is about? Write ${g.predictions} predictions.`}</Label>
         {n.predict.map((v, i) => (
-          <input key={i} value={v} onChange={(e) => set({ predict: n.predict.map((x, k) => (k === i ? e.target.value : x)) })} placeholder={`Predicción ${i + 1}…`} className={cn(field, 'mt-2')} />
+          <input key={i} value={v} onChange={(e) => set({ predict: n.predict.map((x, k) => (k === i ? e.target.value : x)) })} placeholder={`Prediction ${i + 1}…`} className={cn(field, 'mt-2')} />
         ))}
         <Label>{g.expect}</Label>
         <input value={n.expect} onChange={(e) => set({ expect: e.target.value })} placeholder="word, word, word…" autoCapitalize="off" className={cn(field, 'mt-2')} />
       </Step>
 
-      <Step n={2} title="Mientras escuchas">
+      <Step n={2} title="While listening">
         <ul className="text-label-2 list-disc space-y-1 pl-5 text-[14px] leading-snug">
           {g.plan.map((p) => (
             <li key={p}>{p}</li>
@@ -221,17 +221,17 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
         </ul>
         {long && (
           <div className="mt-3">
-            <Label>Este episodio dura {fmtDuration(ep.durationMs)}: elige un fragmento de 5–10 minutos.</Label>
+            <Label>This episode lasts {fmtDuration(ep.durationMs)}: pick a 5–10 minute fragment.</Label>
             <div className="mt-2 flex flex-wrap items-center gap-2 text-[14px]">
-              Desde
-              <TimeField value={n.from} onChange={(from) => set({ from })} now={now} label="Inicio del fragmento" />
+              From
+              <TimeField value={n.from} onChange={(from) => set({ from })} now={now} label="Fragment start" />
               hasta
-              <TimeField value={n.to} onChange={(to) => set({ to })} now={now} label="Fin del fragmento" />
+              <TimeField value={n.to} onChange={(to) => set({ to })} now={now} label="Fragment end" />
             </div>
           </div>
         )}
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-          <Label className="mt-0">Notas</Label>
+          <Label className="mt-0">Notes</Label>
           <Button
             size="sm"
             variant="tinted"
@@ -240,22 +240,22 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
               set({ notes: n.notes && !n.notes.endsWith('\n') ? `${n.notes}\n${stamp}` : `${n.notes}${stamp}` });
             }}
           >
-            <Clock size={14} /> Marcar minuto
+            <Clock size={14} /> Mark minute
           </Button>
         </div>
         <p className="text-label-2 mt-1 text-[13px]">{g.whileTask}</p>
         <textarea value={n.notes} onChange={(e) => set({ notes: e.target.value })} rows={5} placeholder="[2:15] weather — rainy season…" className={cn(field, 'mt-2 resize-y')} />
       </Step>
 
-      <Step n={3} title="Después de escuchar">
+      <Step n={3} title="After listening">
         <Label>Escribe 3 ideas principales</Label>
         <p className="text-label-2 text-[13px]">{g.ideasHint}</p>
         {n.ideas.map((v, i) => (
           <input key={i} value={v} onChange={(e) => set({ ideas: n.ideas.map((x, k) => (k === i ? e.target.value : x)) })} placeholder={`Idea ${i + 1}…`} className={cn(field, 'mt-2')} />
         ))}
 
-        <Label>5 palabras nuevas</Label>
-        <p className="text-label-2 text-[13px]">La palabra o expresión en inglés y lo que significa (búscala si hace falta).</p>
+        <Label>5 new words</Label>
+        <p className="text-label-2 text-[13px]">The word or expression in English and what it means (look it up if needed).</p>
         <div className="mt-1 space-y-2">
           {n.words.map(([en, es], i) => (
             <div key={i} className="grid grid-cols-2 gap-2">
@@ -263,15 +263,15 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
                 value={en}
                 onChange={(e) => set({ words: n.words.map((w, k) => (k === i ? [e.target.value, w[1]] : w)) })}
                 placeholder={`Palabra ${i + 1}`}
-                aria-label={`Palabra nueva ${i + 1} en inglés`}
+                aria-label={`New word ${i + 1} in English`}
                 autoCapitalize="off"
                 className={field}
               />
               <input
                 value={es}
                 onChange={(e) => set({ words: n.words.map((w, k) => (k === i ? [w[0], e.target.value] : w)) })}
-                placeholder="Significado"
-                aria-label={`Significado de la palabra ${i + 1}`}
+                placeholder="Meaning"
+                aria-label={`Meaning of word ${i + 1}`}
                 className={field}
               />
             </div>
@@ -288,7 +288,7 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
         )}
       </Step>
 
-      <Step n={4} title="Autoevaluación">
+      <Step n={4} title="Self-assessment">
         <div className="space-y-2">
           {g.checks.map((c, i) => {
             const on = n.checks[i];
@@ -315,22 +315,22 @@ export function ListeningGuide({ ep, level, now }: { ep: PodcastEpisode; level: 
         </div>
         <p className="text-label-2 mt-3 text-[13px]">
           {checks < g.checks.length / 2
-            ? 'Consejo: vuelve a escuchar a menor velocidad o elige un episodio más corto.'
+            ? 'Tip: listen again at a lower speed or pick a shorter episode.'
             : checks === g.checks.length
-              ? '¡Excelente! Prueba un episodio de un nivel más alto.'
-              : 'Vas bien: repite los fragmentos que marcaste y revisa tus palabras nuevas.'}
+              ? 'Excellent! Try an episode from a higher level.'
+              : 'You’re doing well: repeat the fragments you marked and review your new words.'}
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <Button onClick={finish} disabled={!ideas && !checks}>
-            <Check size={16} /> Terminé la guía
+            <Check size={16} /> I finished the guide
           </Button>
           <Button variant="gray" onClick={() => (setN(emptyNotes(g)), setDone(false))}>
-            <RotateCcw size={15} /> Borrar
+            <RotateCcw size={15} /> Clear
           </Button>
-          {done && <span className="text-ink-green text-[14px] font-semibold">¡Guardado en tu progreso! 🎧</span>}
+          {done && <span className="text-ink-green text-[14px] font-semibold">Saved to your progress! 🎧</span>}
         </div>
       </Step>
-      <p className="text-label-2 px-1 text-[12px]">Tus notas se guardan como borrador en este dispositivo.</p>
+      <p className="text-label-2 px-1 text-[12px]">Your notes are saved as a draft on this device.</p>
     </div>
   );
 }
@@ -373,21 +373,21 @@ export function guideSheet(ep: PodcastEpisode, level: CefrLevel, showName: strin
     title: ep.title,
     subtitle: `Listening · Podcast · ${level} · ${showName}`,
     level,
-    intro: `Listen to the episode in ECYR English (Práctica → Listening → Podcasts) or on Apple Podcasts${ep.durationMs ? ` (${fmtDuration(ep.durationMs)})` : ''}.`,
+    intro: `Listen to the episode in ECYR English (Practice → Listening → Podcasts) or on Apple Podcasts${ep.durationMs ? ` (${fmtDuration(ep.durationMs)})` : ''}.`,
     sections: [
-      { kind: 'text', title: 'Plan de escucha', paragraphs: [...g.plan, ...(long ? ['Elige un fragmento de 5–10 minutos y anota el minuto de inicio y de fin.'] : [])] },
+      { kind: 'text', title: 'Listening plan', paragraphs: [...g.plan, ...(long ? ['Pick a 5–10 minute fragment and note the start and end minute.'] : [])] },
       {
         kind: 'write',
-        title: '1. Antes de escuchar',
-        items: [...Array.from({ length: g.predictions }, (_, i) => ({ q: `Predicción ${i + 1}: ¿de qué crees que trata?` })), { q: g.expect }],
+        title: '1. Before listening',
+        items: [...Array.from({ length: g.predictions }, (_, i) => ({ q: `Prediction ${i + 1}: what do you think it is about?` })), { q: g.expect }],
         lines: 1,
       },
-      { kind: 'write', title: '2. Mientras escuchas: notas con el minuto', items: [{ q: g.whileTask }], lines: 6 },
-      { kind: 'write', title: '3. Después de escuchar: 3 ideas principales', items: [{ q: 'Idea 1' }, { q: 'Idea 2' }, { q: 'Idea 3' }], lines: 1 },
-      { kind: 'write', title: '5 palabras nuevas (inglés → significado)', items: Array.from({ length: 5 }, (_, i) => ({ q: `${i + 1}. ________________  →  ________________` })), lines: 0 },
-      { kind: 'write', title: 'Resumen', items: [{ q: g.summary }, ...(g.extra ? [{ q: g.extra.q }] : [])], lines: 3 },
-      { kind: 'text', title: '4. Autoevaluación (marca lo que lograste)', paragraphs: g.checks.map((c) => `[  ]  ${c}`) },
+      { kind: 'write', title: '2. While you listen: notes with the minute', items: [{ q: g.whileTask }], lines: 6 },
+      { kind: 'write', title: '3. After listening: 3 main ideas', items: [{ q: 'Idea 1' }, { q: 'Idea 2' }, { q: 'Idea 3' }], lines: 1 },
+      { kind: 'write', title: '5 new words (English → meaning)', items: Array.from({ length: 5 }, (_, i) => ({ q: `${i + 1}. ________________  →  ________________` })), lines: 0 },
+      { kind: 'write', title: 'Summary', items: [{ q: g.summary }, ...(g.extra ? [{ q: g.extra.q }] : [])], lines: 3 },
+      { kind: 'text', title: '4. Self-assessment (tick what you achieved)', paragraphs: g.checks.map((c) => `[  ]  ${c}`) },
     ],
-    credits: `Audio: "${showName}"${publisher ? `, ${publisher}` : ''}, vía Apple Podcasts. Contenido de terceros, reproducido desde su fuente oficial; todos los derechos pertenecen a sus autores. Guía de ECYR English.`,
+    credits: `Audio: "${showName}"${publisher ? `, ${publisher}` : ''}, via Apple Podcasts. Third-party content, played from its official source; all rights belong to their authors. ECYR English guide.`,
   };
 }

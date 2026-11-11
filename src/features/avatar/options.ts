@@ -17,39 +17,39 @@ const ids = <T extends readonly { id: string }[]>(list: T) => list.map((o) => o.
 // ------------------------------------------------------------- background --
 
 export const BACKGROUNDS = [
-  { id: 'sky', label: 'Cielo', css: '#B3D6FB', swatch: '#B3D6FB' },
-  { id: 'blue', label: 'Azul', css: '#86BEFB', swatch: '#86BEFB' },
-  { id: 'periwinkle', label: 'Pervinca', css: '#B5C1FA', swatch: '#B5C1FA' },
-  { id: 'lavender', label: 'Lavanda', css: '#D3C6FA', swatch: '#D3C6FA' },
-  { id: 'lilac', label: 'Lila', css: '#DDB4F3', swatch: '#DDB4F3' },
-  { id: 'pink', label: 'Rosa', css: '#F9B8D4', swatch: '#F9B8D4' },
-  { id: 'peach', label: 'Melocotón', css: '#FCCDB0', swatch: '#FCCDB0' },
-  { id: 'cream', label: 'Crema', css: '#F5DFC2', swatch: '#F5DFC2' },
-  { id: 'lemon', label: 'Limón', css: '#F8EAA6', swatch: '#F8EAA6' },
-  { id: 'mint', label: 'Menta', css: '#BFEED3', swatch: '#BFEED3' },
-  { id: 'cloud', label: 'Nube', css: '#E5E5EA', swatch: '#E5E5EA' },
-  { id: 'graphite', label: 'Grafito', css: '#3A3A3C', swatch: '#3A3A3C' },
+  { id: 'sky', label: 'Sky', css: '#B3D6FB', swatch: '#B3D6FB' },
+  { id: 'blue', label: 'Blue', css: '#86BEFB', swatch: '#86BEFB' },
+  { id: 'periwinkle', label: 'Periwinkle', css: '#B5C1FA', swatch: '#B5C1FA' },
+  { id: 'lavender', label: 'Lavender', css: '#D3C6FA', swatch: '#D3C6FA' },
+  { id: 'lilac', label: 'Lilac', css: '#DDB4F3', swatch: '#DDB4F3' },
+  { id: 'pink', label: 'Pink', css: '#F9B8D4', swatch: '#F9B8D4' },
+  { id: 'peach', label: 'Peach', css: '#FCCDB0', swatch: '#FCCDB0' },
+  { id: 'cream', label: 'Cream', css: '#F5DFC2', swatch: '#F5DFC2' },
+  { id: 'lemon', label: 'Lemon', css: '#F8EAA6', swatch: '#F8EAA6' },
+  { id: 'mint', label: 'Mint', css: '#BFEED3', swatch: '#BFEED3' },
+  { id: 'cloud', label: 'Cloud', css: '#E5E5EA', swatch: '#E5E5EA' },
+  { id: 'graphite', label: 'Graphite', css: '#3A3A3C', swatch: '#3A3A3C' },
   { id: 'brand', label: 'ECYR', css: 'linear-gradient(135deg,#1565E0,#8A47E6)', swatch: 'linear-gradient(135deg,#1565E0,#8A47E6)' },
-  { id: 'ocean', label: 'Océano', css: 'linear-gradient(135deg,#1F86B8,#4F63BE)', swatch: 'linear-gradient(135deg,#1F86B8,#4F63BE)' },
-  { id: 'sunset', label: 'Atardecer', css: 'linear-gradient(135deg,#FFB88C,#FF6A88)', swatch: 'linear-gradient(135deg,#FFB88C,#FF6A88)' },
-  { id: 'candy', label: 'Algodón', css: 'linear-gradient(135deg,#FBC2EB,#A6C1EE)', swatch: 'linear-gradient(135deg,#FBC2EB,#A6C1EE)' },
+  { id: 'ocean', label: 'Ocean', css: 'linear-gradient(135deg,#1F86B8,#4F63BE)', swatch: 'linear-gradient(135deg,#1F86B8,#4F63BE)' },
+  { id: 'sunset', label: 'Sunset', css: 'linear-gradient(135deg,#FFB88C,#FF6A88)', swatch: 'linear-gradient(135deg,#FFB88C,#FF6A88)' },
+  { id: 'candy', label: 'Cotton', css: 'linear-gradient(135deg,#FBC2EB,#A6C1EE)', swatch: 'linear-gradient(135deg,#FBC2EB,#A6C1EE)' },
   { id: 'aurora', label: 'Aurora', css: 'linear-gradient(135deg,#84FAB0,#8FD3F4)', swatch: 'linear-gradient(135deg,#84FAB0,#8FD3F4)' },
-  { id: 'night', label: 'Noche', css: 'linear-gradient(135deg,#232A4D,#5B3A8C)', swatch: 'linear-gradient(135deg,#232A4D,#5B3A8C)' },
+  { id: 'night', label: 'Night', css: 'linear-gradient(135deg,#232A4D,#5B3A8C)', swatch: 'linear-gradient(135deg,#232A4D,#5B3A8C)' },
 ] as const;
 export type BgId = (typeof BACKGROUNDS)[number]['id'];
 export const BG_IDS = ids(BACKGROUNDS);
 
 export const RINGS = [
-  { id: 'none', label: 'Sin aro' },
+  { id: 'none', label: 'No ring' },
   { id: 'brand', label: 'ECYR' },
-  { id: 'level', label: 'Nivel' },
-  { id: 'gold', label: 'Oro' },
+  { id: 'level', label: 'Level' },
+  { id: 'gold', label: 'Gold' },
 ] as const satisfies readonly Opt[];
 export type RingId = (typeof RINGS)[number]['id'];
 export const RING_IDS = ids(RINGS);
 
 export const SHAPES = [
-  { id: 'circle', label: 'Círculo' },
+  { id: 'circle', label: 'Circle' },
   { id: 'squircle', label: 'Squircle' },
 ] as const satisfies readonly Opt[];
 export type ShapeId = (typeof SHAPES)[number]['id'];
@@ -86,134 +86,134 @@ export const portraitSrc = (id: PortraitId) => `/avatars/${id}.webp`;
 // ---------------------------------------------------------------- builder --
 
 export const SKINS = [
-  { id: 'porcelain', label: 'Porcelana', color: '#FBE3D6' },
-  { id: 'ivory', label: 'Marfil', color: '#F6D2BC' },
-  { id: 'sand', label: 'Arena', color: '#EDBF9E' },
-  { id: 'honey', label: 'Miel', color: '#DDA47C' },
-  { id: 'caramel', label: 'Caramelo', color: '#C68658' },
-  { id: 'bronze', label: 'Bronce', color: '#A66B44' },
-  { id: 'umber', label: 'Canela', color: '#7F4E31' },
-  { id: 'ebony', label: 'Ébano', color: '#5C3723' },
+  { id: 'porcelain', label: 'Porcelain', color: '#FBE3D6' },
+  { id: 'ivory', label: 'Ivory', color: '#F6D2BC' },
+  { id: 'sand', label: 'Sand', color: '#EDBF9E' },
+  { id: 'honey', label: 'Honey', color: '#DDA47C' },
+  { id: 'caramel', label: 'Caramel', color: '#C68658' },
+  { id: 'bronze', label: 'Bronze', color: '#A66B44' },
+  { id: 'umber', label: 'Cinnamon', color: '#7F4E31' },
+  { id: 'ebony', label: 'Ebony', color: '#5C3723' },
 ] as const satisfies readonly ColorOpt[];
 
 export const FACES = [
-  { id: 'round', label: 'Redonda' },
-  { id: 'oval', label: 'Ovalada' },
-  { id: 'square', label: 'Cuadrada' },
+  { id: 'round', label: 'Round' },
+  { id: 'oval', label: 'Oval' },
+  { id: 'square', label: 'Square' },
 ] as const satisfies readonly Opt[];
 
 export const HAIRS = [
-  { id: 'short', label: 'Corto' },
-  { id: 'sidepart', label: 'Raya al lado' },
-  { id: 'curly', label: 'Rizos cortos' },
-  { id: 'buzz', label: 'Rapado' },
-  { id: 'long', label: 'Largo liso' },
-  { id: 'wavy', label: 'Largo ondulado' },
-  { id: 'bun', label: 'Moño' },
-  { id: 'ponytail', label: 'Coleta' },
+  { id: 'short', label: 'Short' },
+  { id: 'sidepart', label: 'Side part' },
+  { id: 'curly', label: 'Short curls' },
+  { id: 'buzz', label: 'Shaved' },
+  { id: 'long', label: 'Long straight' },
+  { id: 'wavy', label: 'Long wavy' },
+  { id: 'bun', label: 'Bun' },
+  { id: 'ponytail', label: 'Ponytail' },
   { id: 'bob', label: 'Bob' },
-  { id: 'curlylong', label: 'Rizos largos' },
+  { id: 'curlylong', label: 'Long curls' },
   { id: 'afro', label: 'Afro' },
-  { id: 'bald', label: 'Calvo' },
+  { id: 'bald', label: 'Bald' },
 ] as const satisfies readonly Opt[];
 
 export const HAIR_COLORS = [
-  { id: 'black', label: 'Negro', color: '#24201F' },
-  { id: 'darkbrown', label: 'Castaño oscuro', color: '#45302A' },
-  { id: 'brown', label: 'Castaño', color: '#7A4E33' },
-  { id: 'auburn', label: 'Caoba', color: '#9C4428' },
-  { id: 'ginger', label: 'Pelirrojo', color: '#D0733A' },
-  { id: 'blonde', label: 'Rubio', color: '#E2B871' },
-  { id: 'platinum', label: 'Platino', color: '#EFE2C8' },
-  { id: 'gray', label: 'Gris', color: '#A9A9AD' },
-  { id: 'pink', label: 'Rosa', color: '#F08BB4' },
-  { id: 'blue', label: 'Azul', color: '#4F7CF0' },
-  { id: 'purple', label: 'Violeta', color: '#8E5BE0' },
-  { id: 'mint', label: 'Menta', color: '#5CCFB4' },
+  { id: 'black', label: 'Black', color: '#24201F' },
+  { id: 'darkbrown', label: 'Dark chestnut', color: '#45302A' },
+  { id: 'brown', label: 'Chestnut', color: '#7A4E33' },
+  { id: 'auburn', label: 'Mahogany', color: '#9C4428' },
+  { id: 'ginger', label: 'Red', color: '#D0733A' },
+  { id: 'blonde', label: 'Blond', color: '#E2B871' },
+  { id: 'platinum', label: 'Platinum', color: '#EFE2C8' },
+  { id: 'gray', label: 'Grey', color: '#A9A9AD' },
+  { id: 'pink', label: 'Pink', color: '#F08BB4' },
+  { id: 'blue', label: 'Blue', color: '#4F7CF0' },
+  { id: 'purple', label: 'Violet', color: '#8E5BE0' },
+  { id: 'mint', label: 'Mint', color: '#5CCFB4' },
 ] as const satisfies readonly ColorOpt[];
 
 export const BROWS = [
-  { id: 'natural', label: 'Naturales' },
-  { id: 'thick', label: 'Gruesas' },
-  { id: 'arched', label: 'Arqueadas' },
-  { id: 'straight', label: 'Rectas' },
+  { id: 'natural', label: 'Natural' },
+  { id: 'thick', label: 'Thick' },
+  { id: 'arched', label: 'Arched' },
+  { id: 'straight', label: 'Straight' },
 ] as const satisfies readonly Opt[];
 
 export const EYES = [
-  { id: 'round', label: 'Abiertos' },
-  { id: 'lashes', label: 'Pestañas' },
-  { id: 'happy', label: 'Felices' },
-  { id: 'wink', label: 'Guiño' },
-  { id: 'sleepy', label: 'Relajados' },
+  { id: 'round', label: 'Wide open' },
+  { id: 'lashes', label: 'Tabs' },
+  { id: 'happy', label: 'Happy' },
+  { id: 'wink', label: 'Wink' },
+  { id: 'sleepy', label: 'Relaxed' },
 ] as const satisfies readonly Opt[];
 
 export const EYE_COLORS = [
-  { id: 'dark', label: 'Oscuros', color: '#2B1D16' },
-  { id: 'brown', label: 'Marrones', color: '#6B3E22' },
-  { id: 'hazel', label: 'Avellana', color: '#8A6A2E' },
-  { id: 'green', label: 'Verdes', color: '#4E8A4A' },
-  { id: 'blue', label: 'Azules', color: '#3F7FC4' },
-  { id: 'gray', label: 'Grises', color: '#6E7F8C' },
+  { id: 'dark', label: 'Dark', color: '#2B1D16' },
+  { id: 'brown', label: 'Brown', color: '#6B3E22' },
+  { id: 'hazel', label: 'Hazel', color: '#8A6A2E' },
+  { id: 'green', label: 'Green', color: '#4E8A4A' },
+  { id: 'blue', label: 'Blue', color: '#3F7FC4' },
+  { id: 'gray', label: 'Grey', color: '#6E7F8C' },
 ] as const satisfies readonly ColorOpt[];
 
 export const MOUTHS = [
-  { id: 'smile', label: 'Sonrisa' },
-  { id: 'grin', label: 'Risa' },
-  { id: 'smirk', label: 'Pícara' },
+  { id: 'smile', label: 'Smile' },
+  { id: 'grin', label: 'Laugh' },
+  { id: 'smirk', label: 'Mischievous' },
   { id: 'neutral', label: 'Neutral' },
-  { id: 'wow', label: '¡Wow!' },
+  { id: 'wow', label: 'Wow!' },
 ] as const satisfies readonly Opt[];
 
 export const FACIAL_HAIRS = [
-  { id: 'none', label: 'Ninguno' },
-  { id: 'stubble', label: 'Barba de días' },
-  { id: 'beard', label: 'Barba' },
-  { id: 'moustache', label: 'Bigote' },
+  { id: 'none', label: 'None' },
+  { id: 'stubble', label: 'Stubble' },
+  { id: 'beard', label: 'Beard' },
+  { id: 'moustache', label: 'Moustache' },
 ] as const satisfies readonly Opt[];
 
 export const GLASSES = [
-  { id: 'none', label: 'Sin gafas' },
-  { id: 'round', label: 'Redondas' },
-  { id: 'square', label: 'Cuadradas' },
-  { id: 'sunglasses', label: 'De sol' },
+  { id: 'none', label: 'No glasses' },
+  { id: 'round', label: 'Round' },
+  { id: 'square', label: 'Square' },
+  { id: 'sunglasses', label: 'Sunglasses' },
 ] as const satisfies readonly Opt[];
 
 export const HEADWEAR = [
-  { id: 'none', label: 'Nada' },
-  { id: 'cap', label: 'Gorra' },
-  { id: 'beanie', label: 'Gorro' },
-  { id: 'headband', label: 'Diadema' },
+  { id: 'none', label: 'Nothing' },
+  { id: 'cap', label: 'Cap' },
+  { id: 'beanie', label: 'Hat' },
+  { id: 'headband', label: 'Headband' },
 ] as const satisfies readonly Opt[];
 
 export const EARRINGS = [
-  { id: 'none', label: 'Sin pendientes' },
-  { id: 'studs', label: 'Botones' },
-  { id: 'hoops', label: 'Aros' },
+  { id: 'none', label: 'No earrings' },
+  { id: 'studs', label: 'Buttons' },
+  { id: 'hoops', label: 'Hoops' },
 ] as const satisfies readonly Opt[];
 
 export const CLOTHES = [
-  { id: 'hoodie', label: 'Sudadera' },
-  { id: 'sweater', label: 'Jersey' },
-  { id: 'turtleneck', label: 'Cuello alto' },
-  { id: 'tshirt', label: 'Camiseta' },
-  { id: 'shirt', label: 'Camisa' },
+  { id: 'hoodie', label: 'Hoodie' },
+  { id: 'sweater', label: 'Sweater' },
+  { id: 'turtleneck', label: 'Turtleneck' },
+  { id: 'tshirt', label: 'T-shirt' },
+  { id: 'shirt', label: 'Shirt' },
   { id: 'blazer', label: 'Blazer' },
-  { id: 'denim', label: 'Chaqueta vaquera' },
+  { id: 'denim', label: 'Denim jacket' },
 ] as const satisfies readonly Opt[];
 
 export const CLOTH_COLORS = [
-  { id: 'black', label: 'Negro', color: '#232326' },
-  { id: 'white', label: 'Blanco', color: '#F4F4F2' },
-  { id: 'cream', label: 'Crema', color: '#EEE4D3' },
-  { id: 'gray', label: 'Gris', color: '#A4A6AD' },
-  { id: 'navy', label: 'Marino', color: '#27365F' },
-  { id: 'blue', label: 'Azul', color: '#2F7BF5' },
-  { id: 'skyblue', label: 'Celeste', color: '#A9C8EE' },
-  { id: 'red', label: 'Rojo', color: '#E2463F' },
-  { id: 'green', label: 'Verde', color: '#3E9A6A' },
-  { id: 'mustard', label: 'Mostaza', color: '#E2A932' },
-  { id: 'pink', label: 'Rosa', color: '#F29BBE' },
-  { id: 'purple', label: 'Violeta', color: '#7E5BD6' },
+  { id: 'black', label: 'Black', color: '#232326' },
+  { id: 'white', label: 'White', color: '#F4F4F2' },
+  { id: 'cream', label: 'Cream', color: '#EEE4D3' },
+  { id: 'gray', label: 'Grey', color: '#A4A6AD' },
+  { id: 'navy', label: 'Navy', color: '#27365F' },
+  { id: 'blue', label: 'Blue', color: '#2F7BF5' },
+  { id: 'skyblue', label: 'Light blue', color: '#A9C8EE' },
+  { id: 'red', label: 'Red', color: '#E2463F' },
+  { id: 'green', label: 'Green', color: '#3E9A6A' },
+  { id: 'mustard', label: 'Mustard', color: '#E2A932' },
+  { id: 'pink', label: 'Pink', color: '#F29BBE' },
+  { id: 'purple', label: 'Violet', color: '#7E5BD6' },
 ] as const satisfies readonly ColorOpt[];
 
 export type SkinId = (typeof SKINS)[number]['id'];

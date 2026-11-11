@@ -54,7 +54,7 @@ export function ModuleFrame({
       {!loaded && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white/80">
           <Spinner className="h-8 w-8" />
-          <span className="text-[15px]">Cargando {title}…</span>
+          <span className="text-[15px]">Loading {title}…</span>
         </div>
       )}
       <iframe
@@ -75,7 +75,7 @@ export function ModuleFrame({
               onClick={() => (window.history.length > 1 ? navigate(-1) : navigate(backTo))}
               className="text-label flex h-9 items-center gap-0.5 rounded-full pr-3 pl-1.5 text-[15px] font-semibold hover:bg-fill-2"
             >
-              <ChevronLeft size={22} strokeWidth={2.5} /> Salir
+              <ChevronLeft size={22} strokeWidth={2.5} /> Exit
             </button>
             <span className="bg-separator h-5 w-px" />
             <span className="flex items-center gap-2 px-3 text-[14px] font-semibold">
@@ -83,16 +83,16 @@ export function ModuleFrame({
               <span className="max-w-[34vw] truncate">{title}</span>
             </span>
             <span className="bg-separator h-5 w-px" />
-            <IconBtn label="Recargar" onClick={() => frame.current?.contentWindow?.location.reload()}>
+            <IconBtn label="Reload" onClick={() => frame.current?.contentWindow?.location.reload()}>
               <RotateCw size={17} />
             </IconBtn>
-            <IconBtn label={full ? 'Salir de pantalla completa' : 'Pantalla completa'} onClick={toggleFull}>
+            <IconBtn label={full ? 'Exit full screen' : 'Full screen'} onClick={toggleFull}>
               {full ? <Shrink size={17} /> : <Expand size={17} />}
             </IconBtn>
-            <IconBtn label="Abrir en pestaña nueva" onClick={() => window.open(src, '_blank', 'noopener')}>
+            <IconBtn label="Open in a new tab" onClick={() => window.open(src, '_blank', 'noopener')}>
               <ExternalLink size={17} />
             </IconBtn>
-            <IconBtn label="Ocultar controles" onClick={() => setCollapsed(true)}>
+            <IconBtn label="Hide controls" onClick={() => setCollapsed(true)}>
               <Minus size={17} />
             </IconBtn>
           </div>
@@ -133,8 +133,8 @@ function FloatingHandle({ onOpen }: { onOpen: () => void }) {
   return (
     <button
       type="button"
-      aria-label="Mostrar controles"
-      title="Mostrar controles (arrastra para mover)"
+      aria-label="Show controls"
+      title="Show controls (drag to move)"
       style={{ left: clamp(pos.x, pos.y).x, top: clamp(pos.x, pos.y).y }}
       className="material-strong text-label absolute flex h-11 w-11 touch-none items-center justify-center rounded-full opacity-70 shadow-float transition-opacity hover:opacity-100"
       onPointerDown={(e) => {

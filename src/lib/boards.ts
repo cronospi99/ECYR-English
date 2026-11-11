@@ -36,14 +36,14 @@ export type CardColor = (typeof CARD_COLORS)[number];
 
 /** Post-it pastels: the paper stays light in both themes (dark ink on it). */
 export const COLOR_STYLE: Record<CardColor, { paper: string; edge: string; label: string }> = {
-  yellow: { paper: '#fff3a3', edge: '#f5d94a', label: 'Amarillo' },
-  orange: { paper: '#ffd9b0', edge: '#f7ae63', label: 'Naranja' },
-  pink: { paper: '#ffd0e0', edge: '#f590b4', label: 'Rosa' },
-  purple: { paper: '#e5d6ff', edge: '#b799f5', label: 'Lila' },
-  blue: { paper: '#cfe6ff', edge: '#86b9f2', label: 'Azul' },
+  yellow: { paper: '#fff3a3', edge: '#f5d94a', label: 'Yellow' },
+  orange: { paper: '#ffd9b0', edge: '#f7ae63', label: 'Orange' },
+  pink: { paper: '#ffd0e0', edge: '#f590b4', label: 'Pink' },
+  purple: { paper: '#e5d6ff', edge: '#b799f5', label: 'Lilac' },
+  blue: { paper: '#cfe6ff', edge: '#86b9f2', label: 'Blue' },
   teal: { paper: '#c4f1ec', edge: '#6fd2c6', label: 'Aqua' },
-  green: { paper: '#d6f5c4', edge: '#93d674', label: 'Verde' },
-  gray: { paper: '#ececf1', edge: '#c3c3cc', label: 'Gris' },
+  green: { paper: '#d6f5c4', edge: '#93d674', label: 'Green' },
+  gray: { paper: '#ececf1', edge: '#c3c3cc', label: 'Grey' },
 };
 
 // ---------------------------------------------------------------- shapes ----
@@ -68,13 +68,13 @@ export interface ShapeInfo {
 }
 
 export const SHAPES: Record<CardShape, ShapeInfo> = {
-  note: { label: 'Nota', w: CARD_W, h: null, aspect: null, inset: ['14px', '14px', '14px', '14px'] },
-  round: { label: 'Píldora', w: 240, h: 120, aspect: null, inset: ['max(10px, 11%)', 'max(18px, 13%)', 'max(10px, 11%)', 'max(18px, 13%)'] },
-  circle: { label: 'Círculo', w: 210, h: 210, aspect: 1.55, inset: ['16%', '15%', '16%', '15%'] },
-  bubble: { label: 'Burbuja', w: 240, h: 170, aspect: 1.6, inset: ['9%', '8%', '27%', '8%'] },
-  cloud: { label: 'Nube', w: 260, h: 180, aspect: 1.7, inset: ['21%', '17%', '17%', '17%'] },
-  hexagon: { label: 'Hexágono', w: 240, h: 200, aspect: 1.5, inset: ['10%', '20%', '10%', '20%'] },
-  diamond: { label: 'Rombo', w: 240, h: 240, aspect: 1.6, inset: ['25%', '24%', '25%', '24%'] },
+  note: { label: 'Note', w: CARD_W, h: null, aspect: null, inset: ['14px', '14px', '14px', '14px'] },
+  round: { label: 'Pill', w: 240, h: 120, aspect: null, inset: ['max(10px, 11%)', 'max(18px, 13%)', 'max(10px, 11%)', 'max(18px, 13%)'] },
+  circle: { label: 'Circle', w: 210, h: 210, aspect: 1.55, inset: ['16%', '15%', '16%', '15%'] },
+  bubble: { label: 'Bubble', w: 240, h: 170, aspect: 1.6, inset: ['9%', '8%', '27%', '8%'] },
+  cloud: { label: 'Cloud', w: 260, h: 180, aspect: 1.7, inset: ['21%', '17%', '17%', '17%'] },
+  hexagon: { label: 'Hexagon', w: 240, h: 200, aspect: 1.5, inset: ['10%', '20%', '10%', '20%'] },
+  diamond: { label: 'Diamond', w: 240, h: 240, aspect: 1.6, inset: ['25%', '24%', '25%', '24%'] },
 };
 
 /** The "Tarjeta central" of a mind map: a big circle. */
@@ -120,9 +120,9 @@ export interface LiveLink {
 }
 
 export const LAYOUTS: Record<BoardLayout, { label: string; emoji: string; hint: string; color: string }> = {
-  jam: { label: 'Jam', emoji: '🗒️', hint: 'Notas libres en un lienzo', color: 'var(--yellow)' },
-  columns: { label: 'Columnas', emoji: '🧱', hint: 'Tarjetas por columnas', color: 'var(--blue)' },
-  story: { label: 'Historia', emoji: '📖', hint: 'Una cadena: cada tarjeta continúa', color: 'var(--purple)' },
+  jam: { label: 'Jam', emoji: '🗒️', hint: 'Free notes on a canvas', color: 'var(--yellow)' },
+  columns: { label: 'Columns', emoji: '🧱', hint: 'Cards in columns', color: 'var(--blue)' },
+  story: { label: 'Story', emoji: '📖', hint: 'A chain: each card continues the last', color: 'var(--purple)' },
 };
 
 export interface BoardSummary {
@@ -201,8 +201,8 @@ export interface BoardBundle {
 
 export type BoardErrorKind = 'offline' | 'missing' | 'not_found' | 'closed' | 'locked' | 'denied' | 'network' | 'other';
 
-export const BOARDS_MISSING_MSG = 'Falta activar el Muro en vivo: ejecuta supabase/migrations/16_live_boards.sql en Supabase → SQL Editor.';
-export const BOARDS_V2_MSG = 'Falta actualizar el muro: ejecuta supabase/migrations/18_live_boards_v2.sql en Supabase → SQL Editor.';
+export const BOARDS_MISSING_MSG = 'Live Board needs to be enabled: run supabase/migrations/16_live_boards.sql in Supabase → SQL Editor.';
+export const BOARDS_V2_MSG = 'The board needs updating: run supabase/migrations/18_live_boards_v2.sql in Supabase → SQL Editor.';
 
 export class BoardError extends Error {
   constructor(
@@ -220,28 +220,28 @@ function friendly(e: unknown): BoardError {
   if ((code === 'PGRST202' || code === '42883') && /live_link|p_members|p_shape/i.test(msg)) return new BoardError('missing', BOARDS_V2_MSG);
   if (code === 'PGRST202' || code === '42883' || code === '42P01' || (/live_(board|card)/i.test(msg) && /could not find|does not exist|schema cache/i.test(msg)))
     return new BoardError('missing', BOARDS_MISSING_MSG);
-  if (/BOARD_CLOSED/.test(msg)) return new BoardError('closed', 'Tu profe cerró este muro.');
-  if (/BOARD_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'Este muro no existe o no es de tu clase.');
-  if (/CARD_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'Esa tarjeta ya no existe.');
-  if (/BOARD_LOCKED/.test(msg)) return new BoardError('locked', 'El muro está bloqueado 🔒');
-  if (/CARD_LIMIT/.test(msg)) return new BoardError('other', /full/.test(msg) ? 'El muro está lleno (400 tarjetas).' : 'Máximo 40 tarjetas por persona.');
-  if (/LINK_EXISTS/.test(msg)) return new BoardError('other', 'Ya están conectadas.');
-  if (/LINK_LIMIT/.test(msg)) return new BoardError('other', /full/.test(msg) ? 'Demasiadas flechas (300).' : 'Máximo 60 flechas por persona.');
-  if (/LINK_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'Esa flecha ya no existe.');
-  if (/LINK_CARDS/.test(msg)) return new BoardError('other', 'Elige dos tarjetas distintas.');
+  if (/BOARD_CLOSED/.test(msg)) return new BoardError('closed', 'Your teacher closed this board.');
+  if (/BOARD_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'This board doesn’t exist or isn’t for your class.');
+  if (/CARD_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'That card no longer exists.');
+  if (/BOARD_LOCKED/.test(msg)) return new BoardError('locked', 'The board is locked 🔒');
+  if (/CARD_LIMIT/.test(msg)) return new BoardError('other', /full/.test(msg) ? 'The board is full (400 cards).' : 'Maximum 40 cards per person.');
+  if (/LINK_EXISTS/.test(msg)) return new BoardError('other', 'They are already connected.');
+  if (/LINK_LIMIT/.test(msg)) return new BoardError('other', /full/.test(msg) ? 'Too many arrows (300).' : 'Maximum 60 arrows per person.');
+  if (/LINK_NOT_FOUND/.test(msg)) return new BoardError('not_found', 'That arrow no longer exists.');
+  if (/LINK_CARDS/.test(msg)) return new BoardError('other', 'Pick two different cards.');
   if (/BOARD_LIMIT/.test(msg)) return new BoardError('other', 'Tienes 50 muros abiertos: cierra alguno primero.');
-  if (/text_len/.test(msg)) return new BoardError('other', `Máximo ${MAX_TEXT} caracteres.`);
-  if (/has_content/.test(msg)) return new BoardError('other', 'Escribe algo o haz un dibujo.');
-  if (/cards_image/.test(msg)) return new BoardError('other', 'El dibujo es demasiado grande.');
-  if (/title_len/.test(msg)) return new BoardError('other', 'Ponle un título (máx. 120).');
-  if (/Only teachers/i.test(msg)) return new BoardError('denied', 'Solo los docentes pueden crear muros.');
-  if (/only|own cards|own arrows|permission denied|42501/i.test(msg)) return new BoardError('denied', 'No tienes permiso para hacer esto.');
-  if (/failed to fetch|network|load failed/i.test(msg)) return new BoardError('network', 'Sin conexión. Reintentando…');
-  return new BoardError('other', msg || 'Algo salió mal.');
+  if (/text_len/.test(msg)) return new BoardError('other', `Maximum ${MAX_TEXT} characters.`);
+  if (/has_content/.test(msg)) return new BoardError('other', 'Write something or make a drawing.');
+  if (/cards_image/.test(msg)) return new BoardError('other', 'The drawing is too big.');
+  if (/title_len/.test(msg)) return new BoardError('other', 'Give it a title (max. 120).');
+  if (/Only teachers/i.test(msg)) return new BoardError('denied', 'Only teachers can create boards.');
+  if (/only|own cards|own arrows|permission denied|42501/i.test(msg)) return new BoardError('denied', 'You don’t have permission to do this.');
+  if (/failed to fetch|network|load failed/i.test(msg)) return new BoardError('network', 'No connection. Retrying…');
+  return new BoardError('other', msg || 'Something went wrong.');
 }
 
 async function rpc<T>(fn: string, args: Record<string, unknown> = {}): Promise<T> {
-  if (!supabase) throw new BoardError('offline', 'Necesitas conexión para usar el muro en vivo.');
+  if (!supabase) throw new BoardError('offline', 'You need a connection to use the live board.');
   let res;
   try {
     res = await supabase.rpc(fn, args);
@@ -296,7 +296,7 @@ const num = (v: unknown): number | null => (v === null || v === undefined || v =
 
 export async function getBoard(id: string): Promise<BoardBundle> {
   const raw = await rpc<(Omit<BoardBundle, 'links' | 'v2'> & { links?: LiveLink[] }) | null>('get_live_board', { p_board: id });
-  if (!raw?.board) throw new BoardError('not_found', 'Este muro no existe o no es de tu clase.');
+  if (!raw?.board) throw new BoardError('not_found', 'This board doesn’t exist or isn’t for your class.');
   const b = raw.board;
   const cards = (Array.isArray(raw.cards) ? raw.cards : []).map((c) => ({
       ...c,
@@ -502,7 +502,7 @@ export function exportRows(bundle: BoardBundle, names: boolean) {
     color: COLOR_STYLE[c.color].label,
     likes: c.likes,
     drawing: c.has_image ? 'sí' : '',
-    date: new Date(c.created_at).toLocaleString('es'),
+    date: new Date(c.created_at).toLocaleString('en'),
   }));
 }
 
@@ -537,7 +537,7 @@ export function boardToCSV(bundle: BoardBundle, names: boolean): string {
     const safe = /^[=+\-@]/.test(s) ? `'${s}` : s;
     return /[",\n;]/.test(safe) ? `"${safe.replace(/"/g, '""')}"` : safe;
   };
-  const head = ['#', bundle.board.layout === 'columns' ? 'Columna' : bundle.board.layout === 'story' ? 'Parte' : '', 'Texto', ...(names ? ['Autor'] : []), 'Color', 'Likes', 'Dibujo', 'Fecha'];
+  const head = ['#', bundle.board.layout === 'columns' ? 'Column' : bundle.board.layout === 'story' ? 'Part' : '', 'Text', ...(names ? ['Author'] : []), 'Color', 'Likes', 'Drawing', 'Date'];
   const rows = exportRows(bundle, names).map((r) => [r.n, r.group, r.text, ...(names ? [r.author] : []), r.color, r.likes, r.drawing, r.date]);
   return '﻿' + [head, ...rows].map((row) => row.map(esc).join(',')).join('\n');
 }

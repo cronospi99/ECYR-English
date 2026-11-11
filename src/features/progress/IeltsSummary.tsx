@@ -29,7 +29,7 @@ export function IeltsSummary({ data, own = false }: { data: IeltsSnapshot; own?:
             {data.overall != null ? data.overall.toFixed(1) : '–'}
           </span>
           <span className="text-label-2 pb-1.5 text-[13px]">
-            {data.overall != null ? `Overall · ≈ ${bandToCefr(data.overall)}` : 'Sin módulos calificados'}
+            {data.overall != null ? `Overall · ≈ ${bandToCefr(data.overall)}` : 'No graded modules'}
           </span>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -44,14 +44,14 @@ export function IeltsSummary({ data, own = false }: { data: IeltsSnapshot; own?:
         </div>
         {own && (
           <Link to="/ielts/progress" className="text-ink-indigo mt-4 inline-block text-[14px] font-semibold">
-            Ver progreso en el simulador
+            See progress in the simulator
           </Link>
         )}
       </Card>
       <Card className="pb-2">
-        <CardHeader title="Historial de intentos" subtitle={`${data.history.length} intentos registrados`} />
+        <CardHeader title="Attempt history" subtitle={`${data.history.length} attempts recorded`} />
         {data.history.length === 0 ? (
-          <EmptyState icon={<Award size={40} />} title="Sin intentos aún" body={own ? 'Haz un módulo del simulador o migra tu progreso anterior.' : undefined} />
+          <EmptyState icon={<Award size={40} />} title="No attempts yet" body={own ? 'Do a simulator module or migrate your previous progress.' : undefined} />
         ) : (
           <ul className="mt-2 max-h-[340px] overflow-y-auto">
             {data.history.map((h, i) => (

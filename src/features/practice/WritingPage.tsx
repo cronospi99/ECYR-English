@@ -51,9 +51,9 @@ export default function WritingPage() {
 
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
+      back={{ to: '/practice', label: 'Practice' }}
       title="Writing"
-      subtitle="Varias tareas por unidad, con criterios concretos y una respuesta modelo. El AI Coach te da feedback detallado."
+      subtitle="Several tasks per unit, with specific criteria and a model answer. The AI Coach gives you detailed feedback."
     >
       <div className="no-scrollbar -mx-1 mb-5 flex items-center gap-2 overflow-x-auto px-1 py-1">
         {CEFR_LEVELS.map((l) => (
@@ -61,7 +61,7 @@ export default function WritingPage() {
             {l}
           </Chip>
         ))}
-        {!loading && total > 0 && <span className="text-label-2 ml-auto shrink-0 pl-2 text-[13px]">{total} tareas</span>}
+        {!loading && total > 0 && <span className="text-label-2 ml-auto shrink-0 pl-2 text-[13px]">{total} tasks</span>}
       </div>
       {loading || !u ? (
         <PageLoader />
@@ -87,7 +87,7 @@ export default function WritingPage() {
                   </span>
                   <span
                     className={cn('shrink-0 rounded-full px-2 py-0.5 text-[12px] font-semibold tabular-nums', active ? 'bg-white/20 text-white' : 'bg-fill-2 text-label-2')}
-                    title={`${x.tasks.length} tareas${s ? ` · ${s} con borrador` : ''}`}
+                    title={`${x.tasks.length} tasks${s ? ` · ${s} with draft` : ''}`}
                   >
                     {s ? `${s}/${x.tasks.length}` : x.tasks.length}
                   </span>
@@ -100,10 +100,10 @@ export default function WritingPage() {
               <div className="text-label-2 mb-4 flex flex-wrap items-center gap-2 text-[13px]">
                 <LevelChip level={level} />
                 <span className="font-semibold">
-                  Unidad {u.n} · {unitTitle(u.title)}
+                  Unit {u.n} · {unitTitle(u.title)}
                 </span>
                 <span className="text-label-3">·</span>
-                <span>{u.tasks.length} tareas</span>
+                <span>{u.tasks.length} tasks</span>
               </div>
               <WritingTasksPanel
                 key={`${level}-${u.n}`}

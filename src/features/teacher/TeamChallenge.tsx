@@ -82,7 +82,7 @@ export function TeamChallenge({ audience, mix, level, vocab, grammar, onClose }:
   const leader = Math.max(...scores.slice(0, teams));
 
   return (
-    <div className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[#0b0b1e] text-white" role="dialog" aria-modal="true" aria-label="Reto por equipos">
+    <div className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-[#0b0b1e] text-white" role="dialog" aria-modal="true" aria-label="Team challenge">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,#5e2bff55,transparent_45%),radial-gradient(circle_at_85%_90%,#ff2d8a44,transparent_45%)]" />
       <header className="relative flex items-center gap-3 p-4">
         <span className="truncate text-[13px] font-bold tracking-widest uppercase opacity-70">
@@ -97,7 +97,7 @@ export function TeamChallenge({ audience, mix, level, vocab, grammar, onClose }:
             </button>
           ))}
         </div>
-        <button type="button" onClick={onClose} aria-label="Cerrar (Esc)" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
+        <button type="button" onClick={onClose} aria-label="Close (Esc)" className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
           <X size={20} />
         </button>
       </header>
@@ -114,17 +114,17 @@ export function TeamChallenge({ audience, mix, level, vocab, grammar, onClose }:
           >
             <div className="text-[64px] leading-none sm:text-[88px]">{card.emoji}</div>
             <div className="mt-3 text-[14px] font-bold tracking-widest uppercase opacity-70">
-              {card.kind} · +{card.points} {card.points === 1 ? 'punto' : 'puntos'}
+              {card.kind} · +{card.points} {card.points === 1 ? 'point' : 'points'}
             </div>
             <p className="mt-3 text-[28px] leading-tight font-bold text-balance sm:text-[44px]">{card.task}</p>
           </motion.div>
         </AnimatePresence>
 
         <div className="flex items-center gap-5">
-          <button type="button" onClick={() => setLeft(card.seconds)} aria-label="Reiniciar tiempo" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
+          <button type="button" onClick={() => setLeft(card.seconds)} aria-label="Reset time" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
             <RotateCcw size={20} />
           </button>
-          <button type="button" onClick={() => setRunning((r) => !r)} aria-label={running ? 'Pausar' : 'Empezar'} className="relative h-[128px] w-[128px]">
+          <button type="button" onClick={() => setRunning((r) => !r)} aria-label={running ? 'Pause' : 'Start'} className="relative h-[128px] w-[128px]">
             <svg viewBox="0 0 128 128" className="absolute inset-0 -rotate-90">
               <circle cx="64" cy="64" r={R} fill="none" stroke="rgba(255,255,255,.12)" strokeWidth="10" />
               <circle cx="64" cy="64" r={R} fill="none" stroke={left <= 5 ? '#ff453a' : '#30d158'} strokeWidth="10" strokeLinecap="round" strokeDasharray={C} strokeDashoffset={C * (1 - pct)} style={{ transition: 'stroke-dashoffset 1s linear, stroke .3s' }} />
@@ -134,7 +134,7 @@ export function TeamChallenge({ audience, mix, level, vocab, grammar, onClose }:
               <span className="mt-1 opacity-70">{running ? <Pause size={16} /> : <Play size={16} />}</span>
             </span>
           </button>
-          <button type="button" onClick={next} aria-label="Siguiente reto" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
+          <button type="button" onClick={next} aria-label="Next challenge" className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20">
             <SkipForward size={20} />
           </button>
         </div>

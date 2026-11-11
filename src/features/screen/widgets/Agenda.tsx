@@ -17,10 +17,10 @@ interface D {
 
 const DEFAULT: Item[] = [
   { id: 'a', time: "5'", text: 'Warm-up', done: false },
-  { id: 'b', time: "15'", text: 'Vocabulario nuevo', done: false },
-  { id: 'c', time: "15'", text: 'Práctica en parejas', done: false },
-  { id: 'd', time: "10'", text: 'Juego / reto', done: false },
-  { id: 'e', time: "5'", text: 'Cierre y tarea', done: false },
+  { id: 'b', time: "15'", text: 'New vocabulary', done: false },
+  { id: 'c', time: "15'", text: 'Pair practice', done: false },
+  { id: 'd', time: "10'", text: 'Game / challenge', done: false },
+  { id: 'e', time: "5'", text: 'Closing and homework', done: false },
 ];
 
 export default function Agenda({ data, set, editing }: WidgetProps<D>) {
@@ -41,7 +41,7 @@ export default function Agenda({ data, set, editing }: WidgetProps<D>) {
           >
             <button
               type="button"
-              aria-label={it.done ? 'Marcar pendiente' : 'Marcar hecho'}
+              aria-label={it.done ? 'Mark pending' : 'Mark done'}
               onClick={() => upd(it.id, { done: !it.done })}
               className={cn('grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 transition-colors', it.done ? 'border-transparent bg-[var(--green)] text-white' : 'border-[var(--label-3)]')}
             >
@@ -50,8 +50,8 @@ export default function Agenda({ data, set, editing }: WidgetProps<D>) {
             {editing ? (
               <>
                 <input value={it.time} onChange={(e) => upd(it.id, { time: e.target.value })} aria-label="Tiempo" className="bg-card w-16 rounded-[8px] px-2 py-1 text-[15px] font-semibold outline-none" />
-                <input value={it.text} onChange={(e) => upd(it.id, { text: e.target.value })} aria-label="Paso" className="bg-card min-w-0 flex-1 rounded-[8px] px-2 py-1 text-[17px] outline-none" />
-                <button type="button" aria-label="Quitar" onClick={() => set({ items: items.filter((x) => x.id !== it.id) })} className="text-ink-red shrink-0">
+                <input value={it.text} onChange={(e) => upd(it.id, { text: e.target.value })} aria-label="Step" className="bg-card min-w-0 flex-1 rounded-[8px] px-2 py-1 text-[17px] outline-none" />
+                <button type="button" aria-label="Remove" onClick={() => set({ items: items.filter((x) => x.id !== it.id) })} className="text-ink-red shrink-0">
                   <Trash2 size={18} />
                 </button>
               </>
@@ -66,12 +66,12 @@ export default function Agenda({ data, set, editing }: WidgetProps<D>) {
       </ol>
       <div className="flex justify-center gap-2 px-3 pb-3">
         {editing && (
-          <Act color="var(--blue)" onClick={() => set({ items: [...items, { id: uid(), time: "5'", text: 'Nuevo paso', done: false }] })}>
-            <Plus size={18} /> Paso
+          <Act color="var(--blue)" onClick={() => set({ items: [...items, { id: uid(), time: "5'", text: 'New step', done: false }] })}>
+            <Plus size={18} /> Step
           </Act>
         )}
         <Act color="var(--label)" disabled={!doneCount} onClick={() => set({ items: items.map((x) => ({ ...x, done: false })) })}>
-          <RotateCcw size={18} /> Reiniciar
+          <RotateCcw size={18} /> Restart
         </Act>
       </div>
     </div>

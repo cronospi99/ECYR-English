@@ -7,9 +7,9 @@ interface D {
 }
 
 const LIGHTS: { id: L; hex: string; label: string }[] = [
-  { id: 'red', hex: '#ff3b30', label: 'Alto' },
-  { id: 'yellow', hex: '#ffcc00', label: 'Atención' },
-  { id: 'green', hex: '#34c759', label: 'Adelante' },
+  { id: 'red', hex: '#ff3b30', label: 'High' },
+  { id: 'yellow', hex: '#ffcc00', label: 'Attention' },
+  { id: 'green', hex: '#34c759', label: 'Forward' },
 ];
 
 export default function Traffic({ data, set }: WidgetProps<D>) {

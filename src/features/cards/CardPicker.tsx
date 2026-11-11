@@ -12,7 +12,7 @@ const K = '#0e1113';
  * "Carta que entrenas": full-screen chooser with all 25 characters and their
  * ranks. Tap a card to pick it. Used in the Impostor and Class Wars lobbies.
  */
-export function CardPicker({ value, points, onPick, onClose, title = 'Carta que entrenas', subtitle = 'Los puntos de esta partida suben el rango de la carta que elijas.' }: {
+export function CardPicker({ value, points, onPick, onClose, title = 'Card you train', subtitle = 'The points from this game raise the rank of the card you choose.' }: {
   value: string;
   points: CardPoints;
   onPick: (id: string) => void;
@@ -52,7 +52,7 @@ export function CardPicker({ value, points, onPick, onClose, title = 'Carta que 
         <button
           type="button"
           onClick={onClose}
-          aria-label="Cerrar"
+          aria-label="Close"
           style={{ flex: 'none', width: 44, height: 44, border: `3px solid ${K}`, borderRadius: 6, background: '#4a5359', color: '#f2efe6', boxShadow: `0 4px 0 ${K}`, font: "400 20px 'Archivo Black', sans-serif", cursor: 'pointer' }}
         >
           ✕
@@ -66,7 +66,7 @@ export function CardPicker({ value, points, onPick, onClose, title = 'Carta que 
               type="button"
               onClick={() => onPick(c.id)}
               aria-pressed={c.id === value}
-              aria-label={`${c.name}: ${points[c.id] ?? 0} puntos`}
+              aria-label={`${c.name}: ${points[c.id] ?? 0} points`}
               style={{ padding: 0, border: 0, background: 'transparent', cursor: 'pointer', borderRadius: 10, transition: 'transform .12s' }}
               onPointerEnter={(e) => (e.currentTarget.style.transform = 'translateY(-3px)')}
               onPointerLeave={(e) => (e.currentTarget.style.transform = '')}
@@ -84,7 +84,7 @@ export function CardPicker({ value, points, onPick, onClose, title = 'Carta que 
             onClick={onClose}
             style={{ border: `3px solid ${K}`, borderRadius: 5, background: '#f5c518', color: K, boxShadow: `0 4px 0 ${K}`, padding: '9px 18px', font: "800 13px Archivo, sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase', cursor: 'pointer' }}
           >
-            Listo
+            Done
           </button>
         </div>
       )}

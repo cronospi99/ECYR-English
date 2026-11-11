@@ -287,4 +287,4 @@ export const fileName = (title: string) =>
     .replace(/[^a-z0-9]+/gi, '-')
     .replace(/^-|-$/g, '')
     .toLowerCase()
-    .slice(0, 60) || 'tarea'}.pdf`;
+    .slice(0, 60) || 'task'}.pdf`;

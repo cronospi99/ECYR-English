@@ -26,11 +26,11 @@ function Sidebar() {
   return (
     <aside className="material fixed inset-y-0 left-0 z-30 hidden w-[264px] flex-col border-r border-separator lg:flex">
       <div className="px-6 pt-7 pb-6">
-        <Link to="/" aria-label="ECYR English — inicio">
+        <Link to="/" aria-label="ECYR English — home">
           <Logo />
         </Link>
       </div>
-      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3" aria-label="Principal">
+      <nav className="flex-1 space-y-0.5 overflow-y-auto px-3" aria-label="Main">
         {NAV.filter((n) => (!n.teacherOnly || profile?.role === 'teacher') && !(n.studentOnly && profile?.role === 'teacher')).map((item) => {
           const active = isActive(pathname, item.to);
           return (
@@ -56,11 +56,11 @@ function Sidebar() {
             <div className="text-label-2 flex items-center gap-1 text-[12px]">
               {profile?.role === 'teacher' ? (
                 <>
-                  <Crown size={12} className="text-ink-orange" /> Docente
+                  <Crown size={12} className="text-ink-orange" /> Teacher
                 </>
               ) : (
                 <>
-                  <Flame size={12} className="text-ink-orange" /> Racha de {streak} {streak === 1 ? 'día' : 'días'}
+                  <Flame size={12} className="text-ink-orange" /> Streak of {streak} {streak === 1 ? 'day' : 'days'}
                 </>
               )}
             </div>
@@ -84,14 +84,14 @@ function MobileTopBar() {
             <button
               type="button"
               onClick={go}
-              aria-label="Atrás"
-              title="Atrás"
+              aria-label="Back"
+              title="Back"
               className="text-ink-blue -ml-2 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-transform active:scale-90 active:bg-fill-2"
             >
               <ChevronLeft size={26} strokeWidth={2.5} />
             </button>
           )}
-          <Link to="/" aria-label="Inicio">
+          <Link to="/" aria-label="Home">
             <Logo compact />
           </Link>
         </div>
@@ -99,7 +99,7 @@ function MobileTopBar() {
           {isTeacher && (
             <Link
               to="/teacher"
-              aria-label="Sala del docente"
+              aria-label="Teacher room"
               className="text-ink-orange inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--orange)_14%,transparent)]"
             >
               <School size={16} />
@@ -108,7 +108,7 @@ function MobileTopBar() {
           {inClass && (
             <Link
               to="/tasks"
-              aria-label="Mis tareas"
+              aria-label="My tasks"
               className="text-ink-red inline-flex h-8 w-8 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_13%,transparent)]"
             >
               <ClipboardCheck size={16} />
@@ -120,7 +120,7 @@ function MobileTopBar() {
           >
             <Sparkles size={15} /> Coach
           </Link>
-          <Link to="/profile" aria-label="Perfil">
+          <Link to="/profile" aria-label="Profile">
             <Avatar name={name} size={32} />
           </Link>
         </div>
@@ -133,7 +133,7 @@ function TabBar() {
   const { pathname } = useLocation();
   return (
     <nav
-      aria-label="Pestañas"
+      aria-label="Tabs"
       className="material-strong hairline-t pb-safe fixed inset-x-0 bottom-0 z-30 lg:hidden"
     >
       <div className="mx-auto flex h-[52px] max-w-lg items-stretch">
@@ -167,9 +167,9 @@ function SandboxBanner() {
   return (
     <div role="status" className="sticky top-12 z-20 flex items-center justify-center gap-2 bg-[color-mix(in_srgb,var(--orange)_16%,var(--bg))] px-4 py-2 text-[13px] font-medium lg:top-0">
       <FlaskConical size={15} className="text-ink-orange shrink-0" />
-      <span>Modo práctica libre: no se guarda tu progreso.</span>
+      <span>Free practice mode: your progress is not saved.</span>
       <button type="button" className="text-ink-blue font-semibold" onClick={() => set({ practiceSandbox: false })}>
-        Desactivar
+        Turn off
       </button>
     </div>
   );

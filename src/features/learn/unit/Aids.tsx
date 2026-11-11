@@ -3,6 +3,7 @@
  * changes step by step, words on a scale, a "¿cuál uso?" decision, picture cards
  * and minimal pairs. Text inside **double asterisks** is highlighted.
  */
+import { Es } from './Es';
 import { Fragment, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowRight, GitFork, Images, Lightbulb, Ruler, Shuffle, Split, Wand2, type LucideIcon } from 'lucide-react';
@@ -36,11 +37,11 @@ export function Marked({ text, color, className, invert = false }: { text: strin
 }
 
 const KIND: Record<Aid['kind'], { label: string; icon: LucideIcon }> = {
-  transform: { label: 'Paso a paso', icon: Shuffle },
-  scale: { label: 'En una escala', icon: Ruler },
-  choose: { label: '¿Cuál uso?', icon: GitFork },
-  pictures: { label: 'En dibujos', icon: Images },
-  pairs: { label: 'Parecidas, no iguales', icon: Split },
+  transform: { label: 'Step by step', icon: Shuffle },
+  scale: { label: 'On a scale', icon: Ruler },
+  choose: { label: 'Which one do I use?', icon: GitFork },
+  pictures: { label: 'In drawings', icon: Images },
+  pairs: { label: 'Similar, not the same', icon: Split },
 };
 
 /** Fades children in once as they scroll into view (still when reduced motion is on). */
@@ -72,7 +73,7 @@ export function Aids({ aids, color }: { aids?: Aid[]; color: string }) {
 }
 
 function AidCard({ aid, color }: { aid: Aid; color: string }) {
-  const { label, icon: Icon } = KIND[aid.kind] ?? { label: 'Ayuda visual', icon: Wand2 };
+  const { label, icon: Icon } = KIND[aid.kind] ?? { label: 'Visual aid', icon: Wand2 };
   return (
     <section className="overflow-hidden rounded-[20px]" style={{ background: tint(color, 5), boxShadow: `inset 0 0 0 1px ${tint(color, 20)}` }}>
       <header className="flex items-center gap-2.5 px-4 pt-3.5 pb-1">
@@ -198,7 +199,7 @@ function Scale({ aid, color }: { aid: Extract<Aid, { kind: 'scale' }>; color: st
                 <span className="text-[12px] font-semibold tabular-nums" style={{ color: ink(color) }}>
                   {x.v}%
                 </span>
-                {x.es && <span className="text-label-2 text-[13px]">{x.es}</span>}
+                {x.es && <Es part="example"><span className="text-label-2 text-[13px]">{x.es}</span></Es>}
               </span>
               <span className="mt-0.5 block text-[15px] leading-snug text-pretty">
                 <Marked text={x.example} color={color} />
@@ -271,7 +272,7 @@ function Pictures({ aid, color }: { aid: Extract<Aid, { kind: 'pictures' }>; col
           <span className="mt-2 text-[16px] leading-tight font-bold text-balance">
             <Marked text={x.en} color={color} />
           </span>
-          <span className="text-label-2 mt-0.5 text-[13px] leading-snug text-balance">{x.es}</span>
+          <Es part="example"><span className="text-label-2 mt-0.5 text-[13px] leading-snug text-balance">{x.es}</span></Es>
           <SpeakButton text={plain(x.en)} size={15} className="absolute top-1 right-1" />
         </Appear>
       ))}
@@ -292,7 +293,7 @@ function Pairs({ aid }: { aid: Extract<Aid, { kind: 'pairs' }> }) {
             <PairSide text={p.a} color={A} tag="A" />
             <span
               className="bg-fill-2 text-label-2 mx-auto inline-flex h-8 w-8 items-center justify-center rounded-full text-[18px] font-bold"
-              aria-label="no es igual a"
+              aria-label="is not the same as"
             >
               ≠
             </span>

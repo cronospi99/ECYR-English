@@ -176,15 +176,15 @@ function ExamRunner({ exam }: { exam: Exam }) {
 
   if (phase === 'intro')
     return (
-      <Page back={back} eyebrow={`${levelName(exam.level)} · ${exam.kind === 'final' ? 'Examen final' : `Parcial ${exam.n}`}`} title={exam.title} subtitle={exam.intro_es}>
+      <Page back={back} eyebrow={`${levelName(exam.level)} · ${exam.kind === 'final' ? 'Final exam' : `Parcial ${exam.n}`}`} title={exam.title} subtitle={exam.intro_es}>
         <div className="mx-auto max-w-2xl space-y-4">
           <Card className="p-5">
             <div className="flex flex-wrap gap-4 text-[15px]">
               <span className="inline-flex items-center gap-1.5">
-                <Clock size={17} className="text-ink-blue" /> {exam.minutes} minutos sugeridos
+                <Clock size={17} className="text-ink-blue" /> {exam.minutes} suggested minutes
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <FileText size={17} className="text-ink-blue" /> Unidades {exam.units[0]}–{exam.units[exam.units.length - 1]}
+                <FileText size={17} className="text-ink-blue" /> Units {exam.units[0]}–{exam.units[exam.units.length - 1]}
               </span>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -199,31 +199,31 @@ function ExamRunner({ exam }: { exam: Exam }) {
               ))}
             </div>
             <ul className="text-label-2 mt-4 list-disc space-y-1 pl-5 text-[14px]">
-              <li>Cada habilidad vale lo mismo (1/6 de la nota). Nota sobre 5,0: apruebas con 3,0 ({PASS_PCT}%).</li>
-              <li>El audio del listening se puede escuchar {MAX_PLAYS} veces, como en un examen real.</li>
-              <li>Writing y speaking los califica la IA al entregar (con sesión iniciada); tu docente recibe tus respuestas.</li>
-              <li>Tus respuestas se guardan en este navegador mientras presentas el examen.</li>
+              <li>Each skill is worth the same (1/6 of the grade). Grade out of 5.0: you pass with 3.0 ({PASS_PCT}%).</li>
+              <li>The listening audio can be played {MAX_PLAYS} times, as in a real exam.</li>
+              <li>Writing and speaking are graded by the AI on submit (when signed in); your teacher receives your answers.</li>
+              <li>Your answers are saved in this browser while you take the exam.</li>
             </ul>
-            {sandbox && <p className="text-ink-orange mt-3 text-[13px] font-semibold">Modo práctica docente: el resultado no se registra.</p>}
+            {sandbox && <p className="text-ink-orange mt-3 text-[13px] font-semibold">Teacher practice mode: the result is not recorded.</p>}
           </Card>
           {best && (
             <Card className="flex items-center gap-3 p-4">
               <Trophy size={22} className="text-ink-orange" />
               <span className="text-[15px]">
-                Mejor resultado: <b>{best.best.grade.toFixed(1).replace('.', ',')}</b> ({best.best.pct}%) · {best.attempts} {best.attempts === 1 ? 'intento' : 'intentos'}
+                Best result: <b>{best.best.grade.toFixed(1)}</b> ({best.best.pct}%) · {best.attempts} {best.attempts === 1 ? 'attempt' : 'attempts'}
               </span>
             </Card>
           )}
           <div className="flex flex-wrap gap-3">
             {saved ? (
               <>
-                <Button onClick={() => start(false)}>Continuar donde quedaste</Button>
+                <Button onClick={() => start(false)}>Continue where you left off</Button>
                 <Button variant="gray" onClick={() => start(true)}>
-                  Empezar de nuevo
+                  Start over
                 </Button>
               </>
             ) : (
-              <Button onClick={() => start(true)}>Empezar el examen</Button>
+              <Button onClick={() => start(true)}>Start the exam</Button>
             )}
           </div>
         </div>
@@ -235,8 +235,8 @@ function ExamRunner({ exam }: { exam: Exam }) {
       <Page back={back} title={exam.title}>
         <Card className="mx-auto flex max-w-md flex-col items-center gap-3 p-8 text-center">
           <Loader2 size={34} className="text-ink-blue animate-spin" />
-          <div className="text-headline">Calificando tu examen…</div>
-          <p className="text-label-2 text-[14px]">La IA está leyendo tu writing y escuchando tus respuestas de speaking. Puede tardar un minuto.</p>
+          <div className="text-headline">Grading your exam…</div>
+          <p className="text-label-2 text-[14px]">The AI is reading your writing and listening to your speaking answers. It may take a minute.</p>
         </Card>
       </Page>
     );
@@ -244,7 +244,7 @@ function ExamRunner({ exam }: { exam: Exam }) {
   if (phase === 'done' && outcome) return <Results exam={exam} draft={draft} outcome={outcome} back={back} onRetry={() => (setOutcome(null), setTakes(exam.speaking.prompts.map(() => ({}))), start(true))} />;
 
   return (
-    <Page back={back} eyebrow={`${levelName(exam.level)} · ${exam.kind === 'final' ? 'Examen final' : `Parcial ${exam.n}`}`} title={exam.title}>
+    <Page back={back} eyebrow={`${levelName(exam.level)} · ${exam.kind === 'final' ? 'Final exam' : `Parcial ${exam.n}`}`} title={exam.title}>
       <div className="material sticky top-12 z-20 -mx-4 mb-5 px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[14px] lg:px-2">
         <div className="flex items-center gap-2">
           <div className="no-scrollbar flex min-w-0 flex-1 gap-1.5 overflow-x-auto">
@@ -318,7 +318,7 @@ function ExamRunner({ exam }: { exam: Exam }) {
             </Button>
           ) : (
             <Button onClick={() => setConfirm(true)}>
-              <Send size={16} /> Entregar examen
+              <Send size={16} /> Submit exam
             </Button>
           )}
         </div>
@@ -332,17 +332,17 @@ function ExamRunner({ exam }: { exam: Exam }) {
               return (
                 <>
                   <div className="text-headline flex items-center gap-2">
-                    <AlertTriangle size={18} className="text-ink-orange" /> ¿Entregar el examen?
+                    <AlertTriangle size={18} className="text-ink-orange" /> Submit the exam?
                   </div>
                   <p className="text-label-2 mt-1 text-[14px]">
                     {missing.length
-                      ? `Te falta completar: ${missing.map((s) => s.label).join(', ')}. Lo que no respondas cuenta como incorrecto.`
-                      : 'Respondiste todas las secciones. Después de entregar verás tu nota y las respuestas correctas.'}
+                      ? `You still need to complete: ${missing.map((s) => s.label).join(', ')}. Anything you don’t answer counts as wrong.`
+                      : 'You answered every section. After submitting you’ll see your grade and the correct answers.'}
                   </p>
                   <div className="mt-3 flex gap-2">
-                    <Button onClick={submit}>Sí, entregar</Button>
+                    <Button onClick={submit}>Yes, submit</Button>
                     <Button variant="gray" onClick={() => setConfirm(false)}>
-                      Seguir revisando
+                      Keep reviewing
                     </Button>
                   </div>
                 </>
@@ -358,15 +358,15 @@ function ExamRunner({ exam }: { exam: Exam }) {
 function sectionSize(e: Exam, s: ExamSection) {
   switch (s) {
     case 'listening':
-      return `${e.listening.questions.length} preguntas`;
+      return `${e.listening.questions.length} questions`;
     case 'reading':
-      return `${e.reading.questions.length} preguntas`;
+      return `${e.reading.questions.length} questions`;
     case 'grammar':
-      return `${e.grammar.length} preguntas`;
+      return `${e.grammar.length} questions`;
     case 'vocabulary':
-      return `${e.vocabulary.length} preguntas`;
+      return `${e.vocabulary.length} questions`;
     case 'writing':
-      return `${e.writing.minWords}–${e.writing.maxWords} palabras`;
+      return `${e.writing.minWords}–${e.writing.maxWords} words`;
     case 'speaking':
       return `${e.speaking.prompts.length} respuestas orales`;
   }
@@ -382,7 +382,7 @@ function Timer({ startedAt, minutes }: { startedAt: number; minutes: number }) {
   const m = Math.floor(Math.abs(left) / 60);
   const s = Math.abs(left) % 60;
   return (
-    <span className={cn('bg-fill-2 inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1.5 text-[13px] font-semibold tabular-nums', left < 0 && 'text-ink-red')} title="Tiempo sugerido restante">
+    <span className={cn('bg-fill-2 inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1.5 text-[13px] font-semibold tabular-nums', left < 0 && 'text-ink-red')} title="Suggested time left">
       <Clock size={13} /> {left < 0 ? '+' : ''}
       {m}:{String(s).padStart(2, '0')}
     </span>
@@ -420,10 +420,10 @@ function ListeningPlayer({ exam, plays, onPlay, reveal = false }: { exam: Exam; 
           <div className="text-label-2 text-[13px]">{L.speakers.map((s) => s.name).join(' · ')}</div>
         </div>
         <Button onClick={play} disabled={!playing && !reveal && left <= 0} variant={playing ? 'gray' : 'filled'}>
-          {playing ? <Square size={15} fill="currentColor" /> : <Volume2 size={17} />} {playing ? 'Detener' : reveal ? 'Escuchar' : left > 0 ? `Escuchar (${left})` : 'Sin reproducciones'}
+          {playing ? <Square size={15} fill="currentColor" /> : <Volume2 size={17} />} {playing ? 'Stop' : reveal ? 'Listen' : left > 0 ? `Escuchar (${left})` : 'No plays'}
         </Button>
       </div>
-      {!reveal && <p className="text-label-2 mt-3 text-[13px]">Lee las preguntas antes de escuchar. Puedes reproducir el audio {MAX_PLAYS} veces; detenerlo cuenta como una reproducción.</p>}
+      {!reveal && <p className="text-label-2 mt-3 text-[13px]">Read the questions before listening. You can play the audio {MAX_PLAYS} times; stopping it counts as a play.</p>}
       {reveal && (
         <div className="mt-4 space-y-1.5">
           {L.lines.map((l, i) => (
@@ -491,9 +491,9 @@ function WritingTask({ exam, text, onChange }: { exam: Exam; text: string; onCha
         className="bg-fill-2 placeholder:text-label-3 mt-4 w-full rounded-[14px] p-4 text-[16px] leading-relaxed outline-none focus:ring-2"
       />
       <div className={cn('mt-1 text-right text-[13px] font-semibold tabular-nums', inRange ? 'text-ink-green' : 'text-label-2')}>
-        {n} palabras · objetivo {W.minWords}–{W.maxWords}
+        {n} words · target {W.minWords}–{W.maxWords}
       </div>
-      <p className="text-label-2 mt-2 text-[12.5px]">En el examen no hay traductor ni corrector: escribe con lo que sabes.</p>
+      <p className="text-label-2 mt-2 text-[12.5px]">There is no translator or spell-checker in the exam: write with what you know.</p>
     </Card>
   );
 }
@@ -558,7 +558,7 @@ function SpeakingPrompt({
         media.current = mr;
         mr.start();
       } catch {
-        setError('Permite el acceso al micrófono para responder.');
+        setError('Allow microphone access to answer.');
         return;
       }
     }
@@ -577,7 +577,7 @@ function SpeakingPrompt({
       r.start();
     }
     if (!canRecord && !Recognition) {
-      setError('Este navegador no puede grabar audio. Prueba con Chrome o Safari actualizados.');
+      setError('This browser can’t record audio. Try an up-to-date Chrome or Safari.');
       return;
     }
     setRec(true);
@@ -596,7 +596,7 @@ function SpeakingPrompt({
           <div className="mt-3 flex flex-wrap items-center gap-3">
             <Button onClick={rec ? stop : start} variant={rec ? 'destructive' : take.blob || transcript ? 'gray' : 'filled'}>
               {rec ? <Square size={14} fill="currentColor" /> : take.blob || transcript ? <RotateCcw size={15} /> : <Mic size={16} />}
-              {rec ? 'Terminar' : take.blob || transcript ? 'Grabar de nuevo' : 'Grabar respuesta'}
+              {rec ? 'Finish' : take.blob || transcript ? 'Record again' : 'Record answer'}
             </Button>
             <span className={cn('text-[13px] font-semibold tabular-nums', secs > prompt.seconds ? 'text-ink-orange' : 'text-label-2')}>
               {rec ? `● ${secs}s` : ''} / ~{prompt.seconds}s
@@ -622,13 +622,13 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
       <div className="mx-auto max-w-3xl space-y-4">
         <Card className="overflow-hidden">
           <div className={cn('p-6 text-white', passed ? 'bg-[linear-gradient(135deg,#1f8a3d,#1a7f92)]' : 'bg-[linear-gradient(135deg,#c2410c,#be185d)]')}>
-            <div className="text-[14px] font-semibold opacity-90">{passed ? '¡Aprobaste!' : 'Aún no alcanzas el 3,0'}</div>
+            <div className="text-[14px] font-semibold opacity-90">{passed ? 'You passed!' : 'You haven’t reached 3.0 yet'}</div>
             <div className="mt-1 flex items-end gap-3">
-              <span className="text-[56px] leading-none font-extrabold tabular-nums">{result.grade.toFixed(1).replace('.', ',')}</span>
+              <span className="text-[56px] leading-none font-extrabold tabular-nums">{result.grade.toFixed(1)}</span>
               <span className="mb-1.5 text-[18px] font-semibold opacity-90">/ 5,0 · {result.pct}%</span>
             </div>
             {Object.values(result.sections).some((v) => v === null) && (
-              <p className="mt-2 text-[13px] opacity-90">Una parte quedó pendiente de calificación por tu docente: la nota se calculó con las demás secciones.</p>
+              <p className="mt-2 text-[13px] opacity-90">One part is pending grading by your teacher: the grade was calculated with the other sections.</p>
             )}
           </div>
           <div className="space-y-3 p-5">
@@ -641,7 +641,7 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
                       {s.emoji} {s.label}
                     </span>
                     <span className="text-label-2 inline-flex items-center gap-1.5 tabular-nums">
-                      {v === null || v === undefined ? 'Pendiente (docente)' : `${v}%`} <Eye size={14} />
+                      {v === null || v === undefined ? 'Pending (teacher)' : `${v}%`} <Eye size={14} />
                     </span>
                   </div>
                   <ProgressBar value={(v ?? 0) / 100} color={s.color} className="mt-1.5" height={7} />
@@ -653,7 +653,7 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
 
         {errors.length > 0 && (
           <Card className="p-4 text-[13.5px]">
-            <div className="text-ink-orange font-semibold">La IA no pudo calificar algunas partes</div>
+            <div className="text-ink-orange font-semibold">The AI could not grade some parts</div>
             <ul className="text-label-2 mt-1 list-disc pl-5">
               {errors.map((e) => (
                 <li key={e}>{e}</li>
@@ -664,7 +664,7 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
 
         {review && OBJECTIVE.includes(review as Objective) && (
           <div>
-            <h3 className="text-title-3 mb-2">Revisión · {EXAM_SECTIONS.find((s) => s.id === review)!.label}</h3>
+            <h3 className="text-title-3 mb-2">Review · {EXAM_SECTIONS.find((s) => s.id === review)!.label}</h3>
             {review === 'listening' && <ListeningPlayer exam={exam} plays={0} reveal />}
             {review === 'reading' && <ReadingText exam={exam} />}
             <QuestionList questions={questionsOf(exam, review as Objective)} answers={draft.answers[review as Objective]} onAnswer={() => undefined} checked />
@@ -672,11 +672,11 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
         )}
         {review === 'writing' && (
           <Card className="space-y-3 p-5">
-            <h3 className="text-title-3">Tu writing</h3>
+            <h3 className="text-title-3">Your writing</h3>
             <p className="bg-fill-2 rounded-[12px] p-3 text-[15px] whitespace-pre-wrap">{draft.writing || '— (sin respuesta)'}</p>
             {writing && <Feedback m={writing} />}
             <details>
-              <summary className="text-ink-blue cursor-pointer text-[14px] font-semibold">Ver un modelo de respuesta</summary>
+              <summary className="text-ink-blue cursor-pointer text-[14px] font-semibold">See a model answer</summary>
               <p className="mt-2 text-[15px] whitespace-pre-wrap">{exam.writing.model}</p>
             </details>
           </Card>
@@ -694,11 +694,11 @@ function Results({ exam, draft, outcome, back, onRetry }: { exam: Exam; draft: D
             ))}
           </div>
         )}
-        {!review && <p className="text-label-2 text-center text-[13.5px]">Toca una sección para revisar tus respuestas y las explicaciones.</p>}
+        {!review && <p className="text-label-2 text-center text-[13.5px]">Tap a section to review your answers and the explanations.</p>}
 
         <div className="flex flex-wrap gap-3">
           <Button variant="gray" onClick={onRetry}>
-            <RotateCcw size={16} /> Presentar de nuevo
+            <RotateCcw size={16} /> Take it again
           </Button>
           <Link to={back.to} className="text-ink-blue inline-flex items-center px-2 text-[15px] font-semibold">
             Volver a {back.label}
@@ -713,7 +713,7 @@ function Feedback({ m }: { m: ExamMark }) {
   return (
     <div className="text-[14px]">
       <div className="font-semibold">
-        IA: {m.score}/100{m.level ? ` · nivel estimado ${m.level}` : ''}
+        AI: {m.score}/100{m.level ? ` · nivel estimado ${m.level}` : ''}
       </div>
       {m.summary && <p className="text-label-2 mt-1">{m.summary}</p>}
       {m.corrections.length > 0 && (
@@ -734,10 +734,10 @@ function Feedback({ m }: { m: ExamMark }) {
 async function sendToTeacher(exam: Exam, draft: Draft, result: ExamResult, writing: ExamMark | null, speaking: (ExamMark | null)[]) {
   const sheet = [
     `## ${exam.title} · ${levelName(exam.level)}`,
-    `**Nota:** ${result.grade.toFixed(1).replace('.', ',')} / 5,0 (${result.pct}%)`,
+    `**Grade:** ${result.grade.toFixed(1)} / 5,0 (${result.pct}%)`,
     ...EXAM_SECTIONS.map((s) => {
       const v = result.sections[s.id];
-      return `- ${s.label}: ${v === null || v === undefined ? 'pendiente de calificación' : `${v}%`}`;
+      return `- ${s.label}: ${v === null || v === undefined ? 'pending grading' : `${v}%`}`;
     }),
   ].join('\n');
   const report = { exam: exam.id, level: exam.level, pct: result.pct, grade: result.grade, sections: result.sections };
@@ -745,7 +745,7 @@ async function sendToTeacher(exam: Exam, draft: Draft, result: ExamResult, writi
     module: 'writing',
     task: `exam:${exam.id}`,
     prompt: `${exam.title} — Writing: ${exam.writing.prompt}`,
-    content: draft.writing.trim() || '(El estudiante no escribió el writing.)',
+    content: draft.writing.trim() || '(The student did not write the writing.)',
     report: { ...report, feedback: [sheet, writing ? `### Writing\n${markMarkdown(writing)}` : ''].filter(Boolean).join('\n\n') },
   });
   for (const [i, p] of exam.speaking.prompts.entries()) {

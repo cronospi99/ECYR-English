@@ -23,7 +23,7 @@ export function IrregularPatterns({ compact = false }: { compact?: boolean }) {
   return (
     <div className="space-y-5">
       <Card className="p-5">
-        <h3 className="text-title-3">Irregulares por patrones</h3>
+        <h3 className="text-title-3">Irregulars by pattern</h3>
         <p className="text-label-2 mt-1 text-[14.5px] text-pretty">
           No memorices 200 verbos en orden alfabético: el orden alfabético no enseña nada. Agrúpalos por la relación entre sus tres columnas
           (base · pasado · participio) y por cómo suenan. Primero lee el código; el código solo ya evita la mayoría de errores.
@@ -39,13 +39,13 @@ export function IrregularPatterns({ compact = false }: { compact?: boolean }) {
         </div>
         {!compact && (
           <details className="mt-4">
-            <summary className="text-ink-blue cursor-pointer text-[14.5px] font-semibold">¿Para qué sirve la tercera columna?</summary>
+            <summary className="text-ink-blue cursor-pointer text-[14.5px] font-semibold">What is the third column for?</summary>
             <div className="mt-2 overflow-x-auto">
               <table className="w-full text-left text-[14px]">
                 <tbody>
                   <tr className="border-separator border-b">
                     <td className="py-1.5 pr-3 font-semibold">Past simple</td>
-                    <td className="py-1.5 pr-3">columna 2</td>
+                    <td className="py-1.5 pr-3">column 2</td>
                     <td className="text-label-2 py-1.5 italic">I saw her yesterday.</td>
                   </tr>
                   {COLUMN3.map(([a, b, c]) => (
@@ -74,16 +74,16 @@ export function IrregularPatterns({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <>
           <Card className="p-5">
-            <h3 className="text-title-3">Pares confusos y trampas</h3>
+            <h3 className="text-title-3">Confusing pairs and traps</h3>
             <div className="mt-3 overflow-x-auto">
               <table className="w-full min-w-[560px] text-left text-[14px]">
                 <thead className="text-label-2 text-[12px] uppercase">
                   <tr>
                     <th className="pb-1.5">Base</th>
-                    <th className="pb-1.5">Pasado</th>
-                    <th className="pb-1.5">Participio</th>
-                    <th className="pb-1.5">Significado</th>
-                    <th className="pb-1.5">Cómo distinguirlos</th>
+                    <th className="pb-1.5">Past</th>
+                    <th className="pb-1.5">Participle</th>
+                    <th className="pb-1.5">Meaning</th>
+                    <th className="pb-1.5">How to tell them apart</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -109,7 +109,7 @@ export function IrregularPatterns({ compact = false }: { compact?: boolean }) {
           </Card>
 
           <Card className="p-5">
-            <h3 className="text-title-3">Laboratorio de pronunciación</h3>
+            <h3 className="text-title-3">Pronunciation lab</h3>
             <div className="mt-3 grid gap-2 md:grid-cols-2">
               {SOUND_LAB.map((s) => (
                 <div key={s.family} className="bg-fill-2 rounded-[14px] p-3">
@@ -122,7 +122,7 @@ export function IrregularPatterns({ compact = false }: { compact?: boolean }) {
                 </div>
               ))}
             </div>
-            <h4 className="text-headline mt-5">Pares mínimos</h4>
+            <h4 className="text-headline mt-5">Minimal pairs</h4>
             <p className="text-label-2 text-[13.5px]">Toca cada par y repítelo dos veces exagerando la diferencia. Luego di solo uno y que tu compañero adivine cuál.</p>
             <div className="mt-2 space-y-2">
               {MINIMAL_PAIRS.map(([focus, pairs]) => (
@@ -168,7 +168,7 @@ function GroupCard({ g, open, onToggle }: { g: IrregularGroup; open: boolean; on
         <div className="space-y-4 px-4 pb-5">
           <p className="text-[15px]">{g.summary}</p>
           <div className="rounded-[14px] p-3 text-[14.5px]" style={{ background: tint(g.color, 10) }}>
-            <b>★ Truco:</b> {g.trick}
+            <b>★ Tip:</b> {g.trick}
           </div>
           {g.families.map((f) => (
             <div key={f.title}>
@@ -235,7 +235,7 @@ export function CodeSorter() {
     const n = i + 1;
     setI(n);
     setPicked(null);
-    if (n >= round.length) award({ kind: 'game', title: 'Irregulares por patrones', skill: 'grammar', xp: 10, score: right * 10, ref: 'verblab:patterns-code' });
+    if (n >= round.length) award({ kind: 'game', title: 'Irregulars by pattern', skill: 'grammar', xp: 10, score: right * 10, ref: 'verblab:patterns-code' });
   };
   const restart = () => {
     setSeed(Math.floor(Math.random() * 1e5));
@@ -248,8 +248,8 @@ export function CodeSorter() {
     <Card className="p-5">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h3 className="text-title-3">¿Qué código tiene?</h3>
-          <p className="text-label-2 text-[14px]">Lee el verbo y elige su patrón antes de ver las formas.</p>
+          <h3 className="text-title-3">What code does it have?</h3>
+          <p className="text-label-2 text-[14px]">Read the verb and pick its pattern before seeing the forms.</p>
         </div>
         <span className="text-[15px] font-bold tabular-nums">
           {right}/{Math.min(i + (picked ? 1 : 0), round.length)}
@@ -261,7 +261,7 @@ export function CodeSorter() {
             {right}/10 {right === 10 ? '🏆' : right >= 7 ? '👏' : '💪'}
           </span>
           <Button variant="gray" onClick={restart}>
-            <Shuffle size={16} /> Otra ronda
+            <Shuffle size={16} /> Another round
           </Button>
         </div>
       ) : (
@@ -272,7 +272,7 @@ export function CodeSorter() {
               <div className="mt-1 text-center text-[17px]">
                 {item.v[0]} · {item.v[1]} · <b>{item.v[2]}</b> —{' '}
                 <span className={picked === item.code ? 'text-ink-green font-bold' : 'text-ink-red font-bold'}>
-                  {picked === item.code ? '¡Correcto!' : `Es ${CODE_INFO[item.code].label}`}
+                  {picked === item.code ? 'Correct!' : `Es ${CODE_INFO[item.code].label}`}
                 </span>
               </div>
             )}
@@ -294,7 +294,7 @@ export function CodeSorter() {
             </div>
             {picked && (
               <div className="mt-4 text-center">
-                <Button onClick={next}>{i + 1 < round.length ? 'Siguiente' : 'Ver resultado'}</Button>
+                <Button onClick={next}>{i + 1 < round.length ? 'Next' : 'See result'}</Button>
               </div>
             )}
           </div>

@@ -184,10 +184,10 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
     };
     r.onerror = (e) => {
       if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
-        setError('Permite el micrófono en tu navegador para hablar con el coach.');
+        setError('Allow the microphone in your browser to talk to the coach.');
         stopSession();
       } else if (e.error === 'language-not-supported' && spanishRef.current) {
-        setNotice('Tu navegador no reconoce español aquí; escucho en inglés.');
+        setNotice('Your browser doesn’t recognise Spanish here; I’m listening in English.');
         setSpanish(false);
         spanishRef.current = false;
       }
@@ -207,14 +207,14 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
         listen();
       } else {
         restarts.current = 0;
-        setNotice('¿Sigues ahí? Toca el micrófono para seguir hablando.');
+        setNotice('Still there? Tap the microphone to keep talking.');
         pause();
       }
     };
     try {
       r.start();
     } catch {
-      setError('No se pudo iniciar el micrófono.');
+      setError('Could not start the microphone.');
       stopSession();
     }
   };
@@ -223,7 +223,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
     try {
       if (!stream.current) stream.current = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
     } catch {
-      setError('Permite el micrófono en tu navegador para hablar con el coach.');
+      setError('Allow the microphone in your browser to talk to the coach.');
       stopSession();
       return;
     }
@@ -244,7 +244,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
           else listen();
         })
         .catch((e: unknown) => {
-          setError(e instanceof Error ? e.message : 'No se pudo transcribir tu voz.');
+          setError(e instanceof Error ? e.message : 'Could not transcribe your voice.');
           pause();
         });
     };
@@ -277,7 +277,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
       if (!spoke && now - started > 12_000) {
         mr.ondataavailable = null;
         stopListening(false);
-        setNotice('¿Sigues ahí? Toca el micrófono para seguir hablando.');
+        setNotice('Still there? Tap the microphone to keep talking.');
         return pause();
       }
       meterLoop.current = requestAnimationFrame(tick);
@@ -300,18 +300,18 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
       if (r.english_version) prefetchTts(r.english_version, defaultPersona().edge, rateFor(speechRate));
       const userTurns = turnsRef.current.filter((t) => t.role === 'user').length;
       if (userTurns % 3 === 1) {
-        award({ kind: 'coach', title: 'Conversación por voz con el AI Coach', skill: 'speaking', xp: 5, level: levelRef.current, ref: 'coach:voice' });
+        award({ kind: 'coach', title: 'Voice conversation with the AI Coach', skill: 'speaking', xp: 5, level: levelRef.current, ref: 'coach:voice' });
       }
       // They answered in Spanish and were shown the English: listen in English for the repeat.
       if ((r.student_spanish || isEs) && r.english_version && spanishRef.current) {
         setSpanish(false);
         spanishRef.current = false;
-        setNotice('Ahora repítelo en inglés: te escucho en inglés.');
+        setNotice('Now say it again in English: I’m listening in English.');
       }
       say(r.reply, r.tip_es || undefined);
     } catch (e) {
       if (!active.current) return;
-      setError(e instanceof CoachError ? e.message : 'No se pudo contactar al coach.');
+      setError(e instanceof CoachError ? e.message : 'Could not reach the coach.');
       pause();
     }
   };
@@ -322,11 +322,11 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
     const list = turnsRef.current;
     const userTurns = list.filter((t) => t.role === 'user');
     if (userTurns.length < 2) return;
-    const content = list.map((t) => `${t.role === 'user' ? 'Estudiante' : 'Coach'}: ${t.text}`).join('\n');
+    const content = list.map((t) => `${t.role === 'user' ? 'Student' : 'Coach'}: ${t.text}`).join('\n');
     void saveWork({
       module: 'speaking',
       task: 'coach:live',
-      prompt: 'AI Coach · conversación por voz',
+      prompt: 'AI Coach · voice conversation',
       content,
       report: { turns: userTurns.length, level: levelRef.current, spanishTurns: userTurns.filter((t) => t.spanish).length },
     }).catch(() => undefined);
@@ -396,7 +396,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
   const toggleSpanish = (v: boolean) => {
     setSpanish(v);
     spanishRef.current = v;
-    setNotice(v ? 'Te escucho en español: te diré cómo decirlo en inglés.' : null);
+    setNotice(v ? 'I’m listening in Spanish: I’ll tell you how to say it in English.' : null);
     // Restart recognition in the new language right away.
     if (phaseRef.current === 'listening' && Recognition) {
       stopListening(false);
@@ -411,15 +411,15 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
   const label =
     shown === 'listening'
       ? spanish
-        ? 'Escuchando (español)…'
-        : 'Escuchando…'
+        ? 'Listening (Spanish)…'
+        : 'Listening…'
       : shown === 'thinking'
-        ? 'Pensando…'
+        ? 'Thinking…'
         : shown === 'speaking'
-          ? 'Hablando… toca para interrumpir'
+          ? 'Speaking… tap to interrupt'
           : turns.length
-            ? 'En pausa · toca para seguir'
-            : 'Toca para empezar a hablar';
+            ? 'Paused · tap to continue'
+            : 'Tap to start talking';
   const color = shown === 'listening' ? 'var(--red)' : shown === 'speaking' ? 'var(--purple)' : shown === 'thinking' ? 'var(--orange)' : 'var(--blue)';
   const userTurns = turns.filter((t) => t.role === 'user').length;
 
@@ -427,12 +427,12 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
     <Card className="flex h-[calc(100dvh-330px)] min-h-[480px] flex-col overflow-hidden lg:h-[calc(100dvh-300px)]">
       <div className="hairline-b flex flex-wrap items-center justify-between gap-3 px-4 py-2.5">
         <div className="flex items-center gap-2 text-[15px] font-semibold">
-          <Mic size={16} className="text-ink-red" /> Conversación por voz
+          <Mic size={16} className="text-ink-red" /> Voice conversation
         </div>
         <label className="flex items-center gap-2 text-[14px]">
           <Languages size={16} className="text-ink-green" />
-          Hablo en español
-          <Toggle checked={spanish} onChange={toggleSpanish} label="Hablo en español" />
+          I’m speaking Spanish
+          <Toggle checked={spanish} onChange={toggleSpanish} label="I’m speaking Spanish" />
         </label>
       </div>
 
@@ -440,15 +440,15 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
         {!supported ? (
           <div className="flex h-full flex-col items-center justify-center text-center">
             <div className="text-[56px]">🎙️</div>
-            <h3 className="text-title-3 mt-2">Tu navegador no permite usar el micrófono</h3>
-            <p className="text-label-2 mt-1 max-w-sm text-[15px]">Prueba con Chrome, Edge o Safari actualizados, o usa el chat escrito.</p>
+            <h3 className="text-title-3 mt-2">Your browser doesn’t allow using the microphone</h3>
+            <p className="text-label-2 mt-1 max-w-sm text-[15px]">Try an up-to-date Chrome, Edge or Safari, or use the written chat.</p>
           </div>
         ) : turns.length === 0 ? (
           <div className="flex h-full flex-col items-center justify-center text-center">
             <div className="text-[56px]">🗣️</div>
-            <h3 className="text-title-3 mt-2">Habla con el coach, sin escribir</h3>
+            <h3 className="text-title-3 mt-2">Talk to the coach, no typing</h3>
             <p className="text-label-2 mt-1 max-w-md text-[15px]">
-              Toca el micrófono y habla en inglés. El coach te responde en voz alta y vuelve a escucharte. Si no sabes cómo decir algo, activa “Hablo en español”.
+              Tap the microphone and speak in English. The coach answers out loud and listens again. If you don’t know how to say something, turn on “I’m speaking Spanish”.
             </p>
           </div>
         ) : (
@@ -486,7 +486,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
           <div className="w-24 text-right">
             {turns.length > 0 && phase === 'idle' && (
               <Button variant="gray" size="sm" onClick={restart}>
-                Nueva
+                New
               </Button>
             )}
           </div>
@@ -514,7 +514,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
           <div className="w-24">
             {phase !== 'idle' && (
               <Button variant="destructive" size="sm" onClick={stopSession}>
-                <Square size={12} fill="currentColor" /> Terminar
+                <Square size={12} fill="currentColor" /> Finish
               </Button>
             )}
           </div>
@@ -522,7 +522,7 @@ export function VoiceCoach({ level }: { level: CefrLevel }) {
         <div className="text-[14px] font-semibold" style={{ color: ink(color) }} role="status">
           {label}
         </div>
-        {userTurns > 0 && <div className="text-label-2 text-[12px]">{userTurns === 1 ? '1 turno' : `${userTurns} turnos`} · se guarda en tus trabajos al terminar</div>}
+        {userTurns > 0 && <div className="text-label-2 text-[12px]">{userTurns === 1 ? '1 turn' : `${userTurns} turns`} · saved to your work when you finish</div>}
       </div>
     </Card>
   );
@@ -543,7 +543,7 @@ function Bubble({ t }: { t: Turn }) {
     return (
       <motion.div initial={{ opacity: 0, y: 6, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} className="flex flex-col items-end">
         <div className="bg-ios-blue max-w-[85%] rounded-[20px] rounded-br-[6px] px-4 py-2.5 text-[16px] whitespace-pre-wrap text-white">{t.text}</div>
-        {t.spanish && <span className="text-label-2 mt-0.5 mr-2 text-[11px]">🇨🇴 en español</span>}
+        {t.spanish && <span className="text-label-2 mt-0.5 mr-2 text-[11px]">🇨🇴 in Spanish</span>}
       </motion.div>
     );
   }
@@ -556,7 +556,7 @@ function Bubble({ t }: { t: Turn }) {
       {(t.english_version || t.tip_es) && (
         <div className="max-w-[85%] rounded-[16px] px-3.5 py-2.5 text-[14px]" style={{ background: tint('var(--yellow)', 16) }}>
           <div className="flex items-center gap-1.5 text-[12px] font-semibold tracking-wide uppercase" style={{ color: ink('var(--orange)') }}>
-            <Lightbulb size={13} /> {t.spanish ? 'En inglés puedes decir' : 'Más natural'}
+            <Lightbulb size={13} /> {t.spanish ? 'In English you can say' : 'More natural'}
           </div>
           {t.english_version && (
             <div className="mt-1 flex items-center gap-1 text-[16px] font-semibold">

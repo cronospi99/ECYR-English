@@ -41,7 +41,7 @@ export function Sheet(props: SheetProps) {
 const FOCUSABLE =
   'button:not([disabled]):not([tabindex="-1"]), [href], input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), audio[controls], [tabindex="0"]';
 
-function SheetBody({ onClose, title, leading, trailing, banner, dismissible = true, closeLabel = 'Cerrar', className, children }: SheetProps) {
+function SheetBody({ onClose, title, leading, trailing, banner, dismissible = true, closeLabel = 'Close', className, children }: SheetProps) {
   const desktop = useIsDesktop();
   const sheet = useRef<HTMLDivElement>(null);
   const titleId = useId();

@@ -43,7 +43,7 @@ import { ink } from '@/lib/color';
 
 const key = (a: string, s: string) => `${a}:${s}`;
 const errText = (e: unknown) => (e instanceof Error ? e.message : String(e));
-const nameOf = (s: StudentLite | undefined) => s?.full_name || s?.email || 'Estudiante';
+const nameOf = (s: StudentLite | undefined) => s?.full_name || s?.email || 'Student';
 
 // ------------------------------------------------------------------ data --
 
@@ -143,17 +143,17 @@ export function AssignmentsManager({ className }: { className?: string }) {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <h2 id="assignments-title" className="text-title-2 flex items-center gap-2">
-            <ClipboardList size={22} className="text-ink-blue" aria-hidden /> Tareas
+            <ClipboardList size={22} className="text-ink-blue" aria-hidden /> Tasks
           </h2>
-          <p className="text-subhead text-label-2">Asigna trabajo a tu clase y mira quién lo completó.</p>
+          <p className="text-subhead text-label-2">Assign work to your class and see who completed it.</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="gray" size="sm" onClick={() => void reload()} disabled={loading} aria-label="Actualizar">
+          <Button variant="gray" size="sm" onClick={() => void reload()} disabled={loading} aria-label="Refresh">
             <RefreshCw size={15} className={loading ? 'animate-spin' : undefined} aria-hidden />
           </Button>
           {!(error && isTasksMissing(error)) && (
             <Button variant="brand" size="sm" onClick={() => setSheet({ open: true, a: null })} disabled={!data}>
-              <Plus size={16} strokeWidth={2.6} aria-hidden /> Nueva tarea
+              <Plus size={16} strokeWidth={2.6} aria-hidden /> New task
             </Button>
           )}
         </div>
@@ -178,7 +178,7 @@ export function AssignmentsManager({ className }: { className?: string }) {
             {error}
           </p>
           <Button className="mt-3" size="sm" variant="tinted" onClick={() => void reload()}>
-            Reintentar
+            Retry
           </Button>
         </Card>
       ) : !data ? (
@@ -189,16 +189,16 @@ export function AssignmentsManager({ className }: { className?: string }) {
         <Card>
           <EmptyState
             icon={<ClipboardList size={44} strokeWidth={1.6} />}
-            title={data.assignments.length ? 'Nada en este filtro' : 'Aún no has asignado tareas'}
+            title={data.assignments.length ? 'Nothing in this filter' : 'You haven’t assigned tasks yet'}
             body={
               data.assignments.length
-                ? 'Cambia el filtro para ver el resto.'
-                : 'Crea una tarea para toda la clase o para algunos estudiantes: una unidad, un juego, una práctica o una entrega.'
+                ? 'Change the filter to see the rest.'
+                : 'Create a task for the whole class or for some students: a unit, a game, a practice or a hand-in.'
             }
             action={
               !data.assignments.length && (
                 <Button variant="brand" onClick={() => setSheet({ open: true, a: null })}>
-                  <Plus size={16} aria-hidden /> Nueva tarea
+                  <Plus size={16} aria-hidden /> New task
                 </Button>
               )
             }
@@ -289,14 +289,14 @@ function AssignmentRow({
           <div className="text-footnote text-label-2 mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
             {a.level && <LevelChip level={a.level} className="h-5 px-2 text-[11px]" />}
             <span className="inline-flex items-center gap-1">
-              <Users size={13} aria-hidden /> {a.audience === 'class' ? 'Toda la clase' : `${a.targets?.length ?? 0} estudiante${a.targets?.length === 1 ? '' : 's'}`}
+              <Users size={13} aria-hidden /> {a.audience === 'class' ? 'Whole class' : `${a.targets?.length ?? 0} student${a.targets?.length === 1 ? '' : 's'}`}
             </span>
             <span className="inline-flex items-center gap-1 font-medium" style={{ color: ink(DUE_COLOR[due.tone]) }} title={due.exact || undefined}>
               <CalendarClock size={13} aria-hidden /> {due.label}
             </span>
             {a.requires_submission && (
               <span className="inline-flex items-center gap-1">
-                <Upload size={13} aria-hidden /> Con entrega
+                <Upload size={13} aria-hidden /> With hand-in
               </span>
             )}
           </div>
@@ -310,9 +310,9 @@ function AssignmentRow({
           </div>
           <p className="text-caption text-label-2 mt-1">
             {t.total === 0
-              ? 'Sin estudiantes asignados'
+              ? 'No students assigned'
               : [
-                  `${finished} hecha${finished === 1 ? '' : 's'}`,
+                  `${finished} done`,
                   t.late ? `${t.late} tarde` : '',
                   t.overdue ? `${t.overdue} sin entregar` : '',
                   t.excused ? `${t.excused} eximida${t.excused === 1 ? '' : 's'}` : '',
@@ -329,7 +329,7 @@ function AssignmentRow({
         aria-controls={detailId}
         className="text-ink-blue hairline-t hover:bg-fill-2/60 flex h-11 w-full items-center justify-center gap-1 text-[15px] font-semibold"
       >
-        {open ? 'Ocultar estudiantes' : 'Ver estudiantes'}
+        {open ? 'Hide students' : 'See students'}
         <ChevronDown size={17} className={cn('transition-transform', open && 'rotate-180')} aria-hidden />
       </button>
       {open && (
@@ -372,15 +372,15 @@ function ConfirmDelete({ a, onClose, onDeleted }: { a: Assignment | null; onClos
     }
   };
   return (
-    <Sheet open={Boolean(a)} onClose={onClose} dismissible={!busy} title="Eliminar tarea" closeLabel="Cancelar" className="sm:max-w-[440px]">
+    <Sheet open={Boolean(a)} onClose={onClose} dismissible={!busy} title="Delete task" closeLabel="Cancel" className="sm:max-w-[440px]">
       <div className="space-y-4 p-5 text-center">
         <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_14%,transparent)] text-ink-red">
           <Trash2 size={22} aria-hidden />
         </span>
         <p className="text-body">
-          ¿Eliminar <strong>“{a?.title}”</strong>?
+          Delete <strong>“{a?.title}”</strong>?
         </p>
-        <p className="text-subhead text-label-2">Desaparece para tus estudiantes junto con su estado y tus comentarios. Los trabajos que subieron siguen en su portafolio.</p>
+        <p className="text-subhead text-label-2">It disappears for your students along with its status and your comments. The work they uploaded stays in their portfolio.</p>
         {err && (
           <p className="text-ink-red text-footnote" role="alert">
             {err}
@@ -388,10 +388,10 @@ function ConfirmDelete({ a, onClose, onDeleted }: { a: Assignment | null; onClos
         )}
         <div className="flex flex-col gap-2 sm:flex-row-reverse">
           <Button variant="destructive" className="flex-1" onClick={() => void go()} disabled={busy}>
-            {busy ? <Spinner className="h-4 w-4" /> : 'Eliminar'}
+            {busy ? <Spinner className="h-4 w-4" /> : 'Delete'}
           </Button>
           <Button variant="gray" className="flex-1" onClick={onClose} disabled={busy}>
-            Cancelar
+            Cancel
           </Button>
         </div>
       </div>
@@ -466,7 +466,7 @@ export function AssignmentDetail({
     );
   if (!a)
     return own ? (
-      <p className="text-label-2 text-subhead p-4">Esta tarea ya no existe.</p>
+      <p className="text-label-2 text-subhead p-4">This task no longer exists.</p>
     ) : (
       <div className="text-label-2 flex justify-center p-6">
         <Spinner />
@@ -482,7 +482,7 @@ export function AssignmentDetail({
     .sort((x, y) => order[effectiveStatus(a, x.s, now)] - order[effectiveStatus(a, y.s, now)] || nameOf(byId.get(x.sid)).localeCompare(nameOf(byId.get(y.sid))));
 
   const body = !rows.length ? (
-    <p className="text-subhead text-label-2 p-4">{roster.length ? 'Ningún estudiante tiene asignada esta tarea.' : 'Aún no hay estudiantes en tu clase.'}</p>
+    <p className="text-subhead text-label-2 p-4">{roster.length ? 'No student has this task assigned.' : 'There are no students in your class yet.'}</p>
   ) : (
     <ul>
       {rows.map(({ sid, s }) => (
@@ -591,14 +591,14 @@ function StatusRow({
           <div className="text-footnote text-label-2 mt-0.5 flex flex-wrap gap-x-3">
             {s?.done_at && <span>{formatDate(s.done_at)}</span>}
             {s?.via && <span>{VIA_LABEL[s.via]}</span>}
-            {!s?.done_at && isAutoDetectable(a) && eff !== 'excused' && <span>Se marcará sola al completarla</span>}
+            {!s?.done_at && isAutoDetectable(a) && eff !== 'excused' && <span>It will be ticked off automatically when completed</span>}
           </div>
           {s?.student_note && <p className="text-subhead text-label-2 mt-1.5 border-l-2 border-[var(--separator)] pl-2 italic">“{s.student_note}”</p>}
           {item && (
             <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
               {item.file_path && (
                 <button type="button" onClick={() => void openFile()} className="text-ink-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70">
-                  <ExternalLink size={13} aria-hidden /> {item.file_name || 'Abrir archivo'}
+                  <ExternalLink size={13} aria-hidden /> {item.file_name || 'Open file'}
                 </button>
               )}
               {item.text_content && (
@@ -608,12 +608,12 @@ function StatusRow({
                   aria-expanded={showText}
                   className="text-ink-blue text-footnote inline-flex items-center gap-1 font-semibold hover:opacity-70"
                 >
-                  <FileText size={13} aria-hidden /> {showText ? 'Ocultar texto' : `Leer “${item.title}”`}
+                  <FileText size={13} aria-hidden /> {showText ? 'Hide text' : `Leer “${item.title}”`}
                 </button>
               )}
             </div>
           )}
-          {s?.portfolio_item_id && !item && <p className="text-footnote text-label-3 mt-1">Entregó un trabajo (no disponible).</p>}
+          {s?.portfolio_item_id && !item && <p className="text-footnote text-label-3 mt-1">Handed in a work (not available).</p>}
           {fileErr && (
             <p className="text-ink-red text-footnote mt-1" role="alert">
               {fileErr}
@@ -629,7 +629,7 @@ function StatusRow({
           )}
         </div>
         <Button size="sm" variant={open ? 'gray' : 'tinted'} onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls={panelId} className="shrink-0">
-          {open ? 'Cerrar' : s?.reviewed_at ? 'Editar' : 'Revisar'}
+          {open ? 'Close' : s?.reviewed_at ? 'Edit' : 'Review'}
         </Button>
       </div>
       {open && (
@@ -685,7 +685,7 @@ function ReviewForm({ a, studentId, s, onSaved }: { a: Assignment; studentId: st
       <div>
         <div className="flex items-baseline justify-between">
           <label htmlFor={ids.fb} className={labelCls}>
-            Comentario
+            Comment
           </label>
           <span className={cn('text-caption mb-1.5 px-1 tabular-nums', feedback.length > MAX_FEEDBACK ? 'text-ink-red' : 'text-label-2')}>
             {feedback.length}/{MAX_FEEDBACK}
@@ -696,14 +696,14 @@ function ReviewForm({ a, studentId, s, onSaved }: { a: Assignment; studentId: st
           rows={3}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
-          placeholder="Qué hizo bien y qué debe mejorar."
+          placeholder="What they did well and what to improve."
           className={cn(inputCls, 'h-auto min-h-[84px] resize-y py-3 leading-[22px]')}
         />
       </div>
       <div className="flex flex-wrap items-end gap-3">
         <div>
           <label htmlFor={ids.sc} className={labelCls}>
-            Nota (0–100)
+            Grade (0–100)
           </label>
           <input
             id={ids.sc}
@@ -719,11 +719,11 @@ function ReviewForm({ a, studentId, s, onSaved }: { a: Assignment; studentId: st
           />
         </div>
         <label className="flex h-11 items-center gap-2">
-          <Toggle checked={excused} onChange={setExcused} label="Eximir de esta tarea" />
-          <span className="text-subhead">Eximir</span>
+          <Toggle checked={excused} onChange={setExcused} label="Exempt from this task" />
+          <span className="text-subhead">Exempt</span>
         </label>
         <Button type="submit" size="md" className="ml-auto" disabled={busy || scoreBad || feedback.length > MAX_FEEDBACK}>
-          {busy ? <Spinner className="h-4 w-4" /> : 'Guardar'}
+          {busy ? <Spinner className="h-4 w-4" /> : 'Save'}
         </Button>
       </div>
       {err && (
@@ -791,9 +791,9 @@ export function StudentAssignments({ studentId, className }: { studentId: string
         <div className="flex items-center gap-3">
           <IconTile icon={ClipboardList} color="var(--blue)" size={34} />
           <div className="min-w-0 flex-1">
-            <h3 className="text-headline">Tareas</h3>
+            <h3 className="text-headline">Tasks</h3>
             <p className="text-footnote text-label-2">
-              {views.length ? `${done} de ${denom} hechas${overdue ? ` · ${overdue} vencida${overdue === 1 ? '' : 's'}` : ''}` : 'Sin tareas asignadas'}
+              {views.length ? `${done} de ${denom} hechas${overdue ? ` · ${overdue} vencida${overdue === 1 ? '' : 's'}` : ''}` : 'No tasks assigned'}
             </p>
           </div>
         </div>

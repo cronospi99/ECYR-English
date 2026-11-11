@@ -99,7 +99,7 @@ export function CustomColor({
 }) {
   return (
     <label
-      title="Color personalizado"
+      title="Custom colour"
       className={cn(
         'relative grid shrink-0 cursor-pointer place-items-center rounded-full transition-transform duration-150 hover:scale-110',
         big ? 'h-9 w-9' : 'h-7 w-7',
@@ -112,7 +112,7 @@ export function CustomColor({
       <span className="block rounded-full ring-2 ring-white" style={{ background: value, width: '55%', height: '55%' }} />
       <input
         type="color"
-        aria-label="Color personalizado"
+        aria-label="Custom colour"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="absolute inset-0 h-full w-full cursor-pointer opacity-0"

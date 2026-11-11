@@ -28,23 +28,23 @@ export default function LevelPage() {
 
   return (
     <Page
-      back={{ to: '/learn', label: 'Aprender' }}
+      back={{ to: '/learn', label: 'Learn' }}
       eyebrow={`${meta.book} · ${meta.name}`}
       title={`${meta.id} · ${meta.nameEs}`}
       subtitle={meta.description}
       actions={
         meta.module && (
           <ButtonLink to={`/play/${meta.module}`} variant="tinted">
-            <BookOpen size={17} /> Libro interactivo
+            <BookOpen size={17} /> Interactive book
           </ButtonLink>
         )
       }
     >
       <Card className="mb-6 p-5">
         <div className="flex items-center justify-between text-[15px]">
-          <span className="font-semibold">Progreso del nivel</span>
+          <span className="font-semibold">Level progress</span>
           <span className="text-label-2 tabular-nums">
-            {c.done}/{c.total} unidades · {Math.round(c.ratio * 100)}%
+            {c.done}/{c.total} units · {Math.round(c.ratio * 100)}%
           </span>
         </div>
         <ProgressBar value={c.ratio} color={meta.color} className="mt-3" height={8} />
@@ -53,7 +53,7 @@ export default function LevelPage() {
       {loading || !data ? (
         <PageLoader />
       ) : (
-        <ListGroup header={`${data.units.length} unidades · parcial cada 4 unidades`}>
+        <ListGroup header={`${data.units.length} units · midterm every 4 units`}>
           {data.units.map((u) => {
             const done = units[`${meta.id}-${u.n}`];
             const exam = exams.after.get(u.n);
@@ -77,7 +77,7 @@ export default function LevelPage() {
                       <CheckCircle2 size={18} /> {done.score}%
                     </span>
                   ) : (
-                    <span className={cn('text-[13px]')}>{u.vocab.length} palabras</span>
+                    <span className={cn('text-[13px]')}>{u.vocab.length} words</span>
                   )
                 }
               />

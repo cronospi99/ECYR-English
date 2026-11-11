@@ -53,7 +53,7 @@ function TopicView({ unit, topic, next, course }: Found) {
   return (
     <Page
       back={{ to: '/learn/foundations', label: 'Foundations' }}
-      eyebrow={course ? `Pre-A1 · Unidad ${Number(unit.n)} · ${unit.es}` : 'A1 · Tema de práctica'}
+      eyebrow={course ? `Pre-A1 · Unit ${Number(unit.n)} · ${unit.es}` : 'A1 · Practice topic'}
       title={topic.title}
       subtitle={topic.kicker}
       actions={
@@ -67,7 +67,7 @@ function TopicView({ unit, topic, next, course }: Found) {
       {interactive.length > 0 && (
         <div className="material sticky top-12 z-20 -mx-4 mb-5 px-4 py-3 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[14px]">
           <div className="text-label-2 mb-1.5 flex justify-between text-[13px]">
-            <span>Ejercicios</span>
+            <span>Exercises</span>
             <span className="tabular-nums">
               {answered}/{interactive.length}
             </span>
@@ -80,10 +80,9 @@ function TopicView({ unit, topic, next, course }: Found) {
         {home && (
           <Link to={unitPath(home.unitKey)} className="bg-card flex items-center gap-3 rounded-[18px] p-4 shadow-card transition-transform active:scale-[0.99]">
             <div className="min-w-0 flex-1">
-              <div className="text-label-2 text-[13px]">Este tema ahora forma parte de</div>
+              <div className="text-label-2 text-[13px]">This topic is now part of</div>
               <div className="text-headline">
-                {home.unitKey.replace('-', ' · Unidad ')} · lección de gramática {home.point + 1}
-              </div>
+                {home.unitKey.replace('-', ' · Unit ')} · grammar lesson {home.point + 1} </div>
             </div>
             <ArrowRight className="text-ink-blue shrink-0" size={20} />
           </Link>
@@ -99,8 +98,8 @@ function TopicView({ unit, topic, next, course }: Found) {
           <Card className="flex items-center gap-4 p-5">
             <Trophy className="text-ios-yellow shrink-0" size={36} />
             <div className="flex-1">
-              <div className="text-headline">¡Tema completado! · {avg}%</div>
-              <div className="text-label-2 text-[14px]">Has ganado XP y avanzado en tu racha.</div>
+              <div className="text-headline">Topic completed! · {avg}%</div>
+              <div className="text-label-2 text-[14px]">You earned XP and kept your streak going.</div>
             </div>
           </Card>
         )}
@@ -108,7 +107,7 @@ function TopicView({ unit, topic, next, course }: Found) {
         {next && (
           <Link to={`/learn/foundations/${next.topic.id}`} className="bg-card flex items-center gap-3 rounded-[18px] p-4 shadow-card transition-transform active:scale-[0.99]">
             <div className="flex-1">
-              <div className="text-label-2 text-[13px]">Siguiente tema</div>
+              <div className="text-label-2 text-[13px]">Next topic</div>
               <div className="text-headline">{next.topic.title}</div>
             </div>
             <ChevronRight className="text-label-3" />

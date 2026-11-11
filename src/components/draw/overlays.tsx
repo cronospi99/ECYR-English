@@ -51,8 +51,8 @@ export function TextEditor({
     <textarea
       ref={ref}
       value={draft.value}
-      aria-label="Escribe tu texto"
-      placeholder="Escribe…"
+      aria-label="Type your text"
+      placeholder="Type…"
       spellCheck={false}
       onChange={(e) => onChange(e.target.value)}
       onBlur={onCommit}
@@ -173,13 +173,13 @@ export function StampOverlay({
           onClick={onCommit}
           className="bg-ios-blue flex h-9 items-center gap-1.5 rounded-full px-3.5 text-[14px] font-semibold text-white"
         >
-          <Check size={17} strokeWidth={2.6} /> Fijar
+          <Check size={17} strokeWidth={2.6} /> Pin
         </button>
         <button
           type="button"
           onClick={onCancel}
-          aria-label="Quitar imagen"
-          title="Quitar imagen"
+          aria-label="Remove image"
+          title="Remove image"
           className="text-label hover:bg-fill grid h-9 w-9 place-items-center rounded-full"
         >
           <X size={18} strokeWidth={2.4} />

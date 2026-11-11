@@ -109,7 +109,7 @@ type Stroke = {
 
 export function DrawingBoard({
   onDone,
-  doneLabel = 'Listo',
+  doneLabel = 'Ready',
   initial,
   aspect = 4 / 3,
   compact = false,
@@ -681,13 +681,13 @@ export function DrawingBoard({
   const big = tool === 'text' || tool === 'stamp';
   const ShapeIcon = TOOLS[tool].icon;
   const mirrorControl = FREEHAND.includes(tool) && (
-    <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Simetría">
+    <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Symmetry">
       {(
         [
-          ['off', Ban, 'Sin simetría'],
-          ['x', FlipHorizontal2, 'Espejo izquierda ↔ derecha'],
-          ['y', FlipVertical2, 'Espejo arriba ↕ abajo'],
-          ['xy', Asterisk, 'Espejo en 4'],
+          ['off', Ban, 'No symmetry'],
+          ['x', FlipHorizontal2, 'Mirror left ↔ right'],
+          ['y', FlipVertical2, 'Mirror top ↕ bottom'],
+          ['xy', Asterisk, '4-way mirror'],
         ] as const
       ).map(([m, Icon, label]) => (
         <button
@@ -751,10 +751,10 @@ export function DrawingBoard({
 
   const historyButtons = (
     <Group className={compact ? 'ml-auto' : 'order-2 sm:order-5'}>
-      <ToolButton big={compact} label="Deshacer (Ctrl+Z)" onClick={undo} disabled={hist.u === 0}>
+      <ToolButton big={compact} label="Undo (Ctrl+Z)" onClick={undo} disabled={hist.u === 0}>
         <Undo2 size={compact ? 22 : 19} strokeWidth={2.2} />
       </ToolButton>
-      <ToolButton big={compact} label="Rehacer (Ctrl+Shift+Z)" onClick={redo} disabled={hist.r === 0}>
+      <ToolButton big={compact} label="Redo (Ctrl+Shift+Z)" onClick={redo} disabled={hist.r === 0}>
         <Redo2 size={compact ? 22 : 19} strokeWidth={2.2} />
       </ToolButton>
     </Group>
@@ -767,15 +767,15 @@ export function DrawingBoard({
         onClick={clearAll}
         className={cn('bg-ios-red rounded-[12px] px-3 text-[14px] font-semibold text-white', compact ? 'h-11' : 'h-9 sm:h-10')}
       >
-        ¿Borrar todo?
+        Clear everything?
       </button>
-      <ToolButton big={compact} label="Cancelar" onClick={() => setConfirmClear(false)}>
+      <ToolButton big={compact} label="Cancel" onClick={() => setConfirmClear(false)}>
         <X size={18} strokeWidth={2.4} />
       </ToolButton>
     </Group>
   ) : (
     <Group className={compact ? undefined : 'order-3 sm:order-7'}>
-      <ToolButton big={compact} label="Borrar todo" onClick={() => setConfirmClear(true)} disabled={hist.u === 0 && !hasBase.current}>
+      <ToolButton big={compact} label="Clear all" onClick={() => setConfirmClear(true)} disabled={hist.u === 0 && !hasBase.current}>
         <Trash2 size={compact ? 22 : 19} strokeWidth={2.1} />
       </ToolButton>
     </Group>
@@ -830,11 +830,11 @@ export function DrawingBoard({
           {historyButtons}
           {!compact && (
             <Group className="order-6">
-              <ToolButton label="Insertar imagen" onClick={() => fileRef.current?.click()}>
+              <ToolButton label="Insert image" onClick={() => fileRef.current?.click()}>
                 <ImagePlus size={19} strokeWidth={2.1} />
               </ToolButton>
               {!hideDownload && (
-                <ToolButton label="Descargar PNG" onClick={download}>
+                <ToolButton label="Download PNG" onClick={download}>
                   <Download size={19} strokeWidth={2.1} />
                 </ToolButton>
               )}
@@ -845,7 +845,7 @@ export function DrawingBoard({
 
         {/* ------------------------------------------------ properties */}
         <div className={cn('flex flex-wrap items-center gap-x-4 gap-y-2', compact ? 'px-0.5' : 'px-1')}>
-          <div className={cn('flex flex-wrap items-center', compact ? 'gap-2' : 'gap-1.5')} role="group" aria-label="Colores">
+          <div className={cn('flex flex-wrap items-center', compact ? 'gap-2' : 'gap-1.5')} role="group" aria-label="Colours">
             {palette.map((p) => (
               <Swatch key={p.hex} hex={p.hex} name={p.name} big={compact} active={color === p.hex} onClick={() => chooseColor(p.hex)} />
             ))}
@@ -858,7 +858,7 @@ export function DrawingBoard({
               {showSize && (
                 <Slider
                   className="min-w-[180px] flex-1"
-                  label={tool === 'text' ? 'Tamaño de letra ([ ])' : tool === 'stamp' ? 'Tamaño del sticker ([ ])' : 'Grosor ([ ])'}
+                  label={tool === 'text' ? 'Brush size ([ ])' : tool === 'stamp' ? 'Sticker size ([ ])' : 'Thickness ([ ])'}
                   value={big ? textSize : size}
                   min={big ? TEXT_MIN : SIZE_MIN}
                   max={big ? TEXT_MAX : SIZE_MAX}
@@ -880,13 +880,13 @@ export function DrawingBoard({
                 />
               )}
               {CLOSED_SHAPES.includes(tool) && (
-                <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Estilo de forma">
+                <div className="bg-fill-2 flex items-center gap-0.5 rounded-[11px] p-0.5" role="group" aria-label="Shape style">
                   {[false, true].map((f) => (
                     <button
                       key={String(f)}
                       type="button"
-                      title={f ? 'Relleno' : 'Contorno'}
-                      aria-label={f ? 'Relleno' : 'Contorno'}
+                      title={f ? 'Fill' : 'Outline'}
+                      aria-label={f ? 'Fill' : 'Outline'}
                       aria-pressed={filled === f}
                       onClick={() => setFilled(f)}
                       className={cn(
@@ -895,7 +895,7 @@ export function DrawingBoard({
                       )}
                     >
                       <ShapeIcon size={15} strokeWidth={2.4} fill={f ? 'currentColor' : 'none'} />
-                      {f ? 'Relleno' : 'Contorno'}
+                      {f ? 'Fill' : 'Outline'}
                     </button>
                   ))}
                 </div>
@@ -903,7 +903,7 @@ export function DrawingBoard({
               {tool === 'fill' && (
                 <Slider
                   className="min-w-[180px] flex-1"
-                  label="Tolerancia del relleno"
+                  label="Fill tolerance"
                   value={tolerance}
                   min={0}
                   max={100}
@@ -919,7 +919,7 @@ export function DrawingBoard({
               {tool !== 'eraser' && tool !== 'eyedropper' && (
                 <Slider
                   className="min-w-[150px] flex-1"
-                  label="Opacidad"
+                  label="Opacity"
                   value={Math.round(opacity * 100)}
                   min={10}
                   max={100}
@@ -941,7 +941,7 @@ export function DrawingBoard({
                   }
                 />
               )}
-              <div className="ml-auto flex items-center gap-0.5" role="group" aria-label="Fondo">
+              <div className="ml-auto flex items-center gap-0.5" role="group" aria-label="Background">
                 {BACKGROUNDS.map((b) => {
                   const Icon = b.icon;
                   return (
@@ -995,7 +995,7 @@ export function DrawingBoard({
           ref={previewRef}
           className="absolute inset-0 h-full w-full touch-none"
           style={{ cursor }}
-          aria-label="Lienzo de dibujo"
+          aria-label="Drawing canvas"
           role="img"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
@@ -1057,7 +1057,7 @@ export function DrawingBoard({
         <div className="flex justify-end">
           <Button variant="brand" size={compact && !fill ? 'lg' : 'md'} onClick={done} disabled={busy} className={cn(compact && 'w-full sm:w-auto')}>
             <Check size={19} strokeWidth={2.6} />
-            {busy ? 'Guardando…' : doneLabel}
+            {busy ? 'Saving…' : doneLabel}
           </Button>
         </div>
       )}

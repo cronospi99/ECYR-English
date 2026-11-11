@@ -65,9 +65,9 @@ const field =
   'bg-fill-2 placeholder:text-label-3 h-12 w-full rounded-[12px] px-4 text-[16px] outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]';
 
 const fmtDate = (iso: string | null | undefined) =>
-  iso ? new Date(iso).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+  iso ? new Date(iso).toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
 const fmtDateTime = (iso: string) =>
-  new Date(iso).toLocaleString('es', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  new Date(iso).toLocaleString('en', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
 export default function ImportPage() {
   const [refresh, setRefresh] = useState(0);
@@ -76,11 +76,11 @@ export default function ImportPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <ArrowRightLeft size={15} className="text-ink-indigo" /> Tu historial, en un solo sitio
+          <ArrowRightLeft size={15} className="text-ink-indigo" /> Your history, in one place
         </span>
       }
-      title="Importar y migrar"
-      subtitle="Trae lo que ya hiciste antes —en el IELTS Simulator o en otro dispositivo— y se mostrará como tu propio progreso."
+      title="Import and migrate"
+      subtitle="Bring what you did before — in the IELTS Simulator or on another device — and it will show as your own progress."
     >
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:items-start">
         <div className="flex min-w-0 flex-col gap-5">
@@ -210,7 +210,7 @@ function SignInPrompt({ text }: { text: string }) {
     <div className="bg-fill-2 flex flex-col items-start gap-3 rounded-[14px] p-4 sm:flex-row sm:items-center">
       <p className="text-subhead text-label-2 flex-1">{text}</p>
       <ButtonLink to="/profile" size="sm">
-        <LogIn size={16} /> Iniciar sesión
+        <LogIn size={16} /> Sign in
       </ButtonLink>
     </div>
   );
@@ -219,12 +219,12 @@ function SignInPrompt({ text }: { text: string }) {
 // ------------------------------------------------------- 1. old account ----
 
 const STEPS: { id: MigrateStepId; label: string }[] = [
-  { id: 'prepare', label: 'Revisando tu cuenta nueva' },
-  { id: 'progress', label: 'Bandas e historial' },
-  { id: 'submissions', label: 'Writings y speakings corregidos' },
-  { id: 'profile', label: 'Nombre del perfil' },
-  { id: 'log', label: 'Comentarios, tareas y registro' },
-  { id: 'local', label: 'Simulador y XP en este dispositivo' },
+  { id: 'prepare', label: 'Checking your new account' },
+  { id: 'progress', label: 'Bands and history' },
+  { id: 'submissions', label: 'Corrected writings and speakings' },
+  { id: 'profile', label: 'Profile name' },
+  { id: 'log', label: 'Comments, tasks and log' },
+  { id: 'local', label: 'Simulator and XP on this device' },
 ];
 
 function StepIcon({ s }: { s?: StepStatus }) {
@@ -269,7 +269,7 @@ function AccountCard({ onDone }: { onDone: () => void }) {
     const r = await migrateOldIelts(dump.dump, (id, s, note) => setSteps((prev) => ({ ...prev, [id]: { s, note } })));
     setResult(r);
     if (!r.ok) {
-      setError(r.error ?? 'No se pudo completar la migración.');
+      setError(r.error ?? 'The migration could not be completed.');
       setPhase('preview');
       return;
     }
@@ -290,20 +290,20 @@ function AccountCard({ onDone }: { onDone: () => void }) {
       <CardTitle
         icon={Award}
         color="var(--indigo)"
-        title="Migrar desde IELTS Simulator (cuenta)"
-        subtitle="Si usabas el IELTS Simulator con tu propia cuenta, trae todo a ECYR English en dos pasos."
+        title="Migrate from IELTS Simulator (account)"
+        subtitle="If you used the IELTS Simulator with your own account, bring everything to ECYR English in two steps."
       />
 
       {phase === 'form' || phase === 'connecting' ? (
         <>
           <ul className="text-subhead text-label-2 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
             {[
-              [Trophy, 'Tus bandas por módulo'],
-              [History, 'El historial de intentos'],
-              [PenLine, 'Writings y speakings corregidos'],
-              [MessageSquare, 'Comentarios del docente'],
-              [ClipboardList, 'Tareas asignadas'],
-              [Sparkles, 'XP por cada intento'],
+              [Trophy, 'Your bands per module'],
+              [History, 'Attempt history'],
+              [PenLine, 'Corrected writings and speakings'],
+              [MessageSquare, 'Teacher comments'],
+              [ClipboardList, 'Assigned tasks'],
+              [Sparkles, 'XP for each attempt'],
             ].map(([Icon, t]) => {
               const I = Icon as LucideIcon;
               return (
@@ -315,16 +315,16 @@ function AccountCard({ onDone }: { onDone: () => void }) {
           </ul>
 
           {!isSupabaseConfigured ? (
-            <Notice tone="warn">Las cuentas no están configuradas en este despliegue, así que no se puede migrar una cuenta.</Notice>
+            <Notice tone="warn">Accounts are not configured in this deployment, so an account cannot be migrated.</Notice>
           ) : !session ? (
-            <SignInPrompt text="Primero inicia sesión (o crea tu cuenta) en ECYR English: ahí es donde guardaremos lo que traigas." />
+            <SignInPrompt text="First sign in (or create your account) in ECYR English: that is where we will save what you bring." />
           ) : (
             <form className="flex flex-col gap-2.5" onSubmit={connect} autoComplete="off">
-              <div className="text-footnote text-label-2 px-1 font-semibold uppercase tracking-wide">Paso 1 · Tu cuenta del IELTS Simulator</div>
+              <div className="text-footnote text-label-2 px-1 font-semibold uppercase tracking-wide">Step 1 · Your IELTS Simulator account</div>
               <input
                 className={field}
                 type="email"
-                placeholder="Correo de esa cuenta"
+                placeholder="Email of that account"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -335,7 +335,7 @@ function AccountCard({ onDone }: { onDone: () => void }) {
                 <input
                   className={cn(field, 'pr-12')}
                   type={show ? 'text' : 'password'}
-                  placeholder="Contraseña de esa cuenta"
+                  placeholder="That account’s password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -346,7 +346,7 @@ function AccountCard({ onDone }: { onDone: () => void }) {
                   type="button"
                   onClick={() => setShow((v) => !v)}
                   className="text-label-2 absolute top-1/2 right-2 -translate-y-1/2 rounded-full p-2 hover:opacity-70"
-                  aria-label={show ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                  aria-label={show ? 'Hide password' : 'Show password'}
                 >
                   {show ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -354,15 +354,14 @@ function AccountCard({ onDone }: { onDone: () => void }) {
               {error && <Notice tone="error">{error}</Notice>}
               <Button type="submit" size="lg" disabled={phase === 'connecting' || !email || !password}>
                 {phase === 'connecting' ? <Spinner className="h-5 w-5" /> : <KeyRound size={18} />}
-                {phase === 'connecting' ? 'Conectando…' : 'Conectar y ver qué hay'}
+                {phase === 'connecting' ? 'Connecting…' : 'Connect and see what’s there'}
               </Button>
               <p className="text-footnote text-label-2 flex gap-1.5 px-1">
                 <ShieldCheck size={15} className="text-ink-green mt-px shrink-0" />
-                Sólo leemos tus propios datos y cerramos esa sesión al terminar. Tu contraseña no se guarda y tu sesión de ECYR no cambia.
+                We only read your own data and close that session when done. Your password is not stored and your ECYR session does not change.
               </p>
               <p className="text-footnote text-label-2 px-1">
-                ¿Entrabas con Google? Esas cuentas no tienen contraseña: usa el <b>archivo de sesión</b> (a la derecha) o crea una contraseña en la app original con
-                «¿Olvidaste tu contraseña?» y vuelve aquí.
+                Did you sign in with Google? Those accounts have no password: use the <b>session file</b> (on the right) or create a password in the original app with “Forgot your password?” and come back here.
               </p>
             </form>
           )}
@@ -376,16 +375,16 @@ function AccountCard({ onDone }: { onDone: () => void }) {
       {phase === 'preview' && dump && (
         <>
           {error && <Notice tone="error">{error}</Notice>}
-          <div className="text-footnote text-label-2 px-1 font-semibold uppercase tracking-wide">Paso 2 · Pasarlo a tu cuenta</div>
+          <div className="text-footnote text-label-2 px-1 font-semibold uppercase tracking-wide">Step 2 · Move it to your account</div>
           <div className="flex flex-col gap-2 sm:flex-row">
             <Button size="lg" className="sm:flex-1" onClick={() => void migrate()}>
-              <ArrowRightLeft size={18} /> Migrar todo
+              <ArrowRightLeft size={18} /> Migrate everything
             </Button>
             <Button size="lg" variant="gray" onClick={reset}>
-              Cancelar
+              Cancel
             </Button>
           </div>
-          <p className="text-footnote text-label-2 px-1">Puedes repetirlo cuando quieras: lo que ya esté aquí no se duplica.</p>
+          <p className="text-footnote text-label-2 px-1">You can repeat it whenever you like: what is already here is not duplicated.</p>
         </>
       )}
 
@@ -405,13 +404,10 @@ function AccountCard({ onDone }: { onDone: () => void }) {
         <>
           <Notice tone="ok">
             {result.alreadyDone ? (
-              'Ya estaba todo migrado: no había nada nuevo que copiar.'
+              'Everything was already migrated: there was nothing new to copy.'
             ) : (
               <>
-                ¡Listo! {result.historyAdded} intentos nuevos en tu historial, {result.submissionsInserted} trabajos corregidos copiados
-                {result.submissionsSkipped ? ` (${result.submissionsSkipped} ya estaban)` : ''}, {result.feedback} comentarios y {result.homework} tareas guardados
-                {result.xpAwarded ? ` y +${result.xpAwarded} XP` : ''}.{result.nameSet ? ' También pusimos tu nombre en el perfil.' : ''}
-              </>
+                Done! {result.historyAdded} new attempts in your history, {result.submissionsInserted} corrected works copied {result.submissionsSkipped ? ` (${result.submissionsSkipped} were already there)` : ''}, {result.feedback} comments and {result.homework} tasks saved {result.xpAwarded ? ` and +${result.xpAwarded} XP` : ''}.{result.nameSet ? ' We also set your name in your profile.' : ''} </>
             )}
           </Notice>
           <Bands scores={result.scores} />
@@ -422,14 +418,14 @@ function AccountCard({ onDone }: { onDone: () => void }) {
           ))}
           <div className="flex flex-col gap-2 sm:flex-row">
             <ButtonLink to="/ielts/progress" className="sm:flex-1">
-              <Award size={18} /> Ver progreso IELTS
+              <Award size={18} /> See IELTS progress
             </ButtonLink>
             <ButtonLink to="/progress" variant="tinted" className="sm:flex-1">
-              <Trophy size={18} /> Mi progreso
+              <Trophy size={18} /> My progress
             </ButtonLink>
           </div>
           <Button variant="plain" size="sm" className="self-center" onClick={reset}>
-            Migrar otra cuenta
+            Migrate another account
           </Button>
         </>
       )}
@@ -438,8 +434,8 @@ function AccountCard({ onDone }: { onDone: () => void }) {
 }
 
 function OldPreview({ dump, counts, newRole }: { dump: OldIeltsDump; counts: OldIeltsCounts; newRole: 'student' | 'teacher' | null }) {
-  const name = dump.profile?.full_name?.trim() || dump.source.email || 'Sin nombre';
-  const role = dump.profile?.role === 'teacher' ? 'Docente' : 'Estudiante';
+  const name = dump.profile?.full_name?.trim() || dump.source.email || 'No name';
+  const role = dump.profile?.role === 'teacher' ? 'Teacher' : 'Student';
   return (
     <div className="flex flex-col gap-3">
       <div className="bg-fill-2 flex items-center gap-3 rounded-[14px] p-3">
@@ -456,13 +452,13 @@ function OldPreview({ dump, counts, newRole }: { dump: OldIeltsDump; counts: Old
       </div>
       <Bands scores={dump.progress.scores} />
       <div className="grid grid-cols-2 gap-2">
-        <Stat icon={History} color="var(--orange)" label="Intentos en el historial" value={counts.history} />
-        <Stat icon={PenLine} color="var(--skill-writing)" label="Writings corregidos" value={counts.writing} />
-        <Stat icon={Mic} color="var(--skill-speaking)" label="Speakings corregidos" value={counts.speaking} />
+        <Stat icon={History} color="var(--orange)" label="Attempts in the history" value={counts.history} />
+        <Stat icon={PenLine} color="var(--skill-writing)" label="Corrected writings" value={counts.writing} />
+        <Stat icon={Mic} color="var(--skill-speaking)" label="Corrected speakings" value={counts.speaking} />
         <Stat
           icon={BookOpen}
           color="var(--skill-reading)"
-          label="Hojas de Reading / Listening"
+          label="Reading / Listening sheets"
           value={
             <span className="inline-flex items-center gap-1">
               {counts.reading + counts.listening}
@@ -470,14 +466,14 @@ function OldPreview({ dump, counts, newRole }: { dump: OldIeltsDump; counts: Old
             </span>
           }
         />
-        <Stat icon={MessageSquare} color="var(--teal)" label="Comentarios del docente" value={counts.feedback} />
-        <Stat icon={ClipboardList} color="var(--pink)" label="Tareas" value={counts.homework} />
+        <Stat icon={MessageSquare} color="var(--teal)" label="Teacher comments" value={counts.feedback} />
+        <Stat icon={ClipboardList} color="var(--pink)" label="Tasks" value={counts.homework} />
       </div>
       {oldIeltsIsSameProject() && (
-        <Notice>ECYR English usa la misma base de datos que el IELTS Simulator: si es la misma cuenta, tu progreso ya está aquí.</Notice>
+        <Notice>ECYR English uses the same database as the IELTS Simulator: if it is the same account, your progress is already here.</Notice>
       )}
       {newRole === 'teacher' && dump.profile?.role !== 'teacher' && (
-        <Notice tone="warn">Tu cuenta de ECYR es de docente: el simulador sólo muestra bandas e historial en cuentas de estudiante.</Notice>
+        <Notice tone="warn">Your ECYR account is a teacher account: the simulator only shows bands and history on student accounts.</Notice>
       )}
       {dump.warnings.map((w) => (
         <Notice key={w} tone="warn">
@@ -517,7 +513,7 @@ function SessionFileCard({ onDone }: { onDone: () => void }) {
     setBusy(true);
     const r = await importIeltsSession(file.data, file.summary);
     setBusy(false);
-    if (!r.ok) return setError(r.error ?? 'No se pudo importar la sesión.');
+    if (!r.ok) return setError(r.error ?? 'The session could not be imported.');
     setResult(r);
     setFile(null);
     onDone();
@@ -529,39 +525,39 @@ function SessionFileCard({ onDone }: { onDone: () => void }) {
       <CardTitle
         icon={FileBraces}
         color="var(--orange)"
-        title="Archivo de sesión del IELTS Simulator"
-        subtitle="El .json que guardaste con «Sesión → Guardar archivo»: borradores, transcripciones, informes y exámenes generados."
+        title="IELTS Simulator session file"
+        subtitle="The .json you saved with “Session → Save file”: drafts, transcripts, reports and generated exams."
       />
-      {!file && !result && <DropZone label="Elegir archivo .json" hint="o arrástralo aquí · máx. 15 MB" onFile={(f) => void pick(f)} busy={busy} />}
+      {!file && !result && <DropZone label="Choose .json file" hint="or drag it here · max 15 MB" onFile={(f) => void pick(f)} busy={busy} />}
       {error && <Notice tone="error">{error}</Notice>}
 
       {file && s && (
         <div className="flex flex-col gap-3">
           <div className="text-footnote text-label-2 truncate px-1">
-            {file.name} · guardado el {fmtDate(s.exportedAt)}
+            {file.name} · saved on {fmtDate(s.exportedAt)}
             {s.candNo ? ` · candidato ${s.candNo}` : ''}
           </div>
           <Bands scores={s.scores} />
           <div className="grid grid-cols-2 gap-2">
-            <Stat icon={History} color="var(--orange)" label="Intentos en el historial" value={s.history} />
+            <Stat icon={History} color="var(--orange)" label="Attempts in the history" value={s.history} />
             <Stat icon={PenLine} color="var(--skill-writing)" label={`Borradores (${s.writingWords} pal.)`} value={s.writingDrafts} />
-            <Stat icon={Award} color="var(--indigo)" label="Informes de Writing" value={s.writingReports} />
-            <Stat icon={Mic} color="var(--skill-speaking)" label="Transcripciones" value={s.speakingTranscripts} />
+            <Stat icon={Award} color="var(--indigo)" label="Writing reports" value={s.writingReports} />
+            <Stat icon={Mic} color="var(--skill-speaking)" label="Transcripts" value={s.speakingTranscripts} />
             <Stat
               icon={Sparkles}
               color="var(--pink)"
-              label="Exámenes generados"
+              label="Generated exams"
               value={s.generated.listeningParts + s.generated.readingPassages + (s.generated.writing ? 1 : 0) + (s.generated.speaking ? 1 : 0)}
             />
-            <Stat icon={BookOpen} color="var(--teal)" label="Palabras guardadas" value={s.savedWords} />
+            <Stat icon={BookOpen} color="var(--teal)" label="Saved words" value={s.savedWords} />
           </div>
-          {!session && <Notice>Sin sesión iniciada se importa sólo en este navegador. Inicia sesión para guardarlo también en tu cuenta.</Notice>}
+          {!session && <Notice>Without being signed in it is imported only into this browser. Sign in to save it to your account too.</Notice>}
           <div className="flex flex-col gap-2 sm:flex-row">
             <Button size="lg" className="sm:flex-1" disabled={busy} onClick={() => void run()}>
-              {busy ? <Spinner className="h-5 w-5" /> : <FileUp size={18} />} Importar sesión
+              {busy ? <Spinner className="h-5 w-5" /> : <FileUp size={18} />} Import session
             </Button>
             <Button size="lg" variant="gray" disabled={busy} onClick={() => setFile(null)}>
-              Cancelar
+              Cancel
             </Button>
           </div>
         </div>
@@ -570,15 +566,8 @@ function SessionFileCard({ onDone }: { onDone: () => void }) {
       {result && (
         <>
           <Notice tone="ok">
-            Sesión importada: {result.historyAdded} intentos nuevos{result.xpAwarded ? ` y +${result.xpAwarded} XP` : ''}.{' '}
-            {result.session === 'applied'
-              ? 'El simulador ya la tiene cargada.'
-              : result.session === 'queued'
-                ? 'Tus borradores e informes aparecerán la próxima vez que abras el simulador.'
-                : ''}
-            {result.synced ? ' Guardado también en tu cuenta.' : ''}
-          </Notice>
-          {result.dropped.length > 0 && <Notice tone="warn">No cabía todo en este navegador; se omitieron: {result.dropped.join(', ')}.</Notice>}
+            Session imported: {result.historyAdded} new attempts{result.xpAwarded ? ` and +${result.xpAwarded} XP` : ''}.{' '} {result.session === 'applied' ? 'The simulator already has it loaded.' : result.session === 'queued' ? 'Your drafts and reports will appear the next time you open the simulator.' : ''} {result.synced ? ' Also saved to your account.' : ''} </Notice>
+          {result.dropped.length > 0 && <Notice tone="warn">Not everything fit in this browser; these were skipped: {result.dropped.join(', ')}.</Notice>}
           {result.warnings.map((w) => (
             <Notice key={w} tone="warn">
               {w}
@@ -586,10 +575,10 @@ function SessionFileCard({ onDone }: { onDone: () => void }) {
           ))}
           <div className="flex flex-col gap-2 sm:flex-row">
             <ButtonLink to="/ielts" className="sm:flex-1">
-              <Award size={18} /> Abrir el simulador
+              <Award size={18} /> Open the simulator
             </ButtonLink>
             <Button variant="gray" onClick={() => setResult(null)}>
-              Importar otro
+              Import another
             </Button>
           </div>
         </>
@@ -626,7 +615,7 @@ function EcyrFileCard({ onDone }: { onDone: () => void }) {
     setBusy(true);
     const r = await importEcyrProgress(file.data);
     setBusy(false);
-    if (!r.ok) return setError(r.error ?? 'No se pudo combinar el progreso.');
+    if (!r.ok) return setError(r.error ?? 'The progress could not be merged.');
     setResult(r);
     setFile(null);
     onDone();
@@ -638,33 +627,33 @@ function EcyrFileCard({ onDone }: { onDone: () => void }) {
       <CardTitle
         icon={Trophy}
         color="var(--green)"
-        title="Progreso de ECYR English (.json)"
-        subtitle="La copia que exportaste desde Perfil → Datos. Se combina con lo que ya tienes; nunca lo reemplaza."
+        title="ECYR English progress (.json)"
+        subtitle="The copy you exported from Profile → Data. It is merged with what you already have; it never replaces it."
       />
-      {!file && !result && <DropZone label="Elegir progreso .json" hint="ecyr-progreso-AAAA-MM-DD.json" onFile={(f) => void pick(f)} busy={busy} />}
+      {!file && !result && <DropZone label="Choose progress .json" hint="ecyr-progreso-AAAA-MM-DD.json" onFile={(f) => void pick(f)} busy={busy} />}
       {error && <Notice tone="error">{error}</Notice>}
       {file && s && (
         <div className="flex flex-col gap-3">
           <div className="text-footnote text-label-2 truncate px-1">
-            {file.name} · actualizado el {fmtDate(s.updatedAt)}
+            {file.name} · updated on {fmtDate(s.updatedAt)}
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <Stat icon={Sparkles} color="var(--yellow)" label="XP" value={s.xp.toLocaleString('es')} />
-            <Stat icon={BookOpen} color="var(--blue)" label="Unidades completadas" value={s.units} />
-            <Stat icon={History} color="var(--orange)" label="Actividades" value={s.activity} />
-            <Stat icon={Trophy} color="var(--red)" label="Mejor racha (días)" value={s.streakBest} />
+            <Stat icon={Sparkles} color="var(--yellow)" label="XP" value={s.xp.toLocaleString('en')} />
+            <Stat icon={BookOpen} color="var(--blue)" label="Units completed" value={s.units} />
+            <Stat icon={History} color="var(--orange)" label="Activities" value={s.activity} />
+            <Stat icon={Trophy} color="var(--red)" label="Best streak (days)" value={s.streakBest} />
           </div>
           {(s.hasPlan || s.hasAvatar) && (
             <p className="text-footnote text-label-2 px-1">
-              Incluye {[s.hasPlan && 'plan de estudio', s.hasAvatar && 'avatar'].filter(Boolean).join(' y ')} (se aplica sólo si es más reciente que el tuyo).
+              Includes {[s.hasPlan && 'study plan', s.hasAvatar && 'avatar'].filter(Boolean).join(' and ')} (applied only if newer than yours).
             </p>
           )}
           <div className="flex flex-col gap-2 sm:flex-row">
             <Button size="lg" className="sm:flex-1" disabled={busy} onClick={() => void run()}>
-              {busy ? <Spinner className="h-5 w-5" /> : <ArrowRightLeft size={18} />} Combinar con mi progreso
+              {busy ? <Spinner className="h-5 w-5" /> : <ArrowRightLeft size={18} />} Merge with my progress
             </Button>
             <Button size="lg" variant="gray" disabled={busy} onClick={() => setFile(null)}>
-              Cancelar
+              Cancel
             </Button>
           </div>
         </div>
@@ -672,10 +661,7 @@ function EcyrFileCard({ onDone }: { onDone: () => void }) {
       {result && (
         <>
           <Notice tone="ok">
-            Progreso combinado: tenías {result.xpBefore.toLocaleString('es')} XP y ahora {result.xpAfter.toLocaleString('es')} XP.
-            {result.planApplied ? ' Plan de estudio actualizado.' : ''}
-            {result.avatarApplied ? ' Avatar actualizado.' : ''}
-          </Notice>
+            Progress merged: you had {result.xpBefore.toLocaleString('en')} XP and now {result.xpAfter.toLocaleString('en')} XP. {result.planApplied ? ' Study plan updated.' : ''} {result.avatarApplied ? ' Avatar updated.' : ''} </Notice>
           {result.warnings.map((w) => (
             <Notice key={w} tone="warn">
               {w}
@@ -683,10 +669,10 @@ function EcyrFileCard({ onDone }: { onDone: () => void }) {
           ))}
           <div className="flex flex-col gap-2 sm:flex-row">
             <ButtonLink to="/progress" className="sm:flex-1">
-              <Trophy size={18} /> Ver mi progreso
+              <Trophy size={18} /> See my progress
             </ButtonLink>
             <Button variant="gray" onClick={() => setResult(null)}>
-              Importar otro
+              Import another
             </Button>
           </div>
         </>
@@ -699,8 +685,8 @@ function EcyrFileCard({ onDone }: { onDone: () => void }) {
 
 function PortfolioCard() {
   return (
-    <ListGroup header="Trabajos ya realizados" footer="Sube redacciones, audios o proyectos que hiciste fuera de la plataforma para tenerlos junto a tu progreso.">
-      <ListRow leading={<IconTile icon={Briefcase} color="var(--purple)" />} title="Mis trabajos" subtitle="Tu portafolio de trabajos" to="/portfolio" />
+    <ListGroup header="Work already done" footer="Upload essays, audios or projects you made outside the platform to keep them next to your progress.">
+      <ListRow leading={<IconTile icon={Briefcase} color="var(--purple)" />} title="My work" subtitle="Your portfolio of work" to="/portfolio" />
     </ListGroup>
   );
 }
@@ -708,9 +694,9 @@ function PortfolioCard() {
 // -------------------------------------------------------------- 5. history ---
 
 const SOURCE_META: Record<MigrationLogRow['source'], { label: string; icon: LucideIcon; color: string }> = {
-  'ielts-account': { label: 'Cuenta del IELTS Simulator', icon: Award, color: 'var(--indigo)' },
-  'ielts-session-file': { label: 'Archivo de sesión del IELTS', icon: FileBraces, color: 'var(--orange)' },
-  'ecyr-progress-file': { label: 'Progreso de ECYR English', icon: Trophy, color: 'var(--green)' },
+  'ielts-account': { label: 'IELTS Simulator account', icon: Award, color: 'var(--indigo)' },
+  'ielts-session-file': { label: 'IELTS session file', icon: FileBraces, color: 'var(--orange)' },
+  'ecyr-progress-file': { label: 'ECYR English progress', icon: Trophy, color: 'var(--green)' },
 };
 
 function describeCounts(row: MigrationLogRow) {
@@ -718,16 +704,16 @@ function describeCounts(row: MigrationLogRow) {
   const parts: string[] = [];
   if (row.source === 'ecyr-progress-file') {
     if (c.xp != null) parts.push(`${c.xp} XP`);
-    if (c.units != null) parts.push(`${c.units} unidades`);
+    if (c.units != null) parts.push(`${c.units} units`);
     if (c.activity != null) parts.push(`${c.activity} actividades`);
   } else {
-    if (c.historyAdded != null) parts.push(`${c.historyAdded} intentos`);
-    if (c.submissions) parts.push(`${c.submissions} trabajos`);
+    if (c.historyAdded != null) parts.push(`${c.historyAdded} attempts`);
+    if (c.submissions) parts.push(`${c.submissions} works`);
     if (c.feedback) parts.push(`${c.feedback} comentarios`);
-    if (c.homework) parts.push(`${c.homework} tareas`);
+    if (c.homework) parts.push(`${c.homework} tasks`);
     if (c.xp) parts.push(`+${c.xp} XP`);
   }
-  return parts.join(' · ') || 'Sin cambios';
+  return parts.join(' · ') || 'No changes';
 }
 
 function HistoryList({ refresh }: { refresh: number }) {
@@ -751,21 +737,21 @@ function HistoryList({ refresh }: { refresh: number }) {
 
   if (!isSupabaseConfigured)
     return (
-      <ListGroup header="Migraciones anteriores">
-        <ListRow leading={<IconTile icon={CloudOff} color="var(--label-3)" />} title="Sin conexión" subtitle="El historial se guarda en tu cuenta." />
+      <ListGroup header="Previous migrations">
+        <ListRow leading={<IconTile icon={CloudOff} color="var(--label-3)" />} title="Offline" subtitle="The history is saved to your account." />
       </ListGroup>
     );
   if (!session)
     return (
-      <ListGroup header="Migraciones anteriores">
-        <ListRow leading={<IconTile icon={History} color="var(--label-3)" />} title="Inicia sesión para ver tu historial" to="/profile" />
+      <ListGroup header="Previous migrations">
+        <ListRow leading={<IconTile icon={History} color="var(--label-3)" />} title="Sign in to see your history" to="/profile" />
       </ListGroup>
     );
 
   return (
-    <ListGroup header="Migraciones anteriores" footer={state.missing ? 'El servidor aún no tiene la tabla migrations_log (08_migrations_log.sql).' : undefined}>
+    <ListGroup header="Previous migrations" footer={state.missing ? 'The server doesn’t have the migrations_log table yet (08_migrations_log.sql).' : undefined}>
       {state.loading && !state.rows.length ? (
-        <ListRow leading={<Spinner className="text-label-2" />} title="Cargando…" />
+        <ListRow leading={<Spinner className="text-label-2" />} title="Loading…" />
       ) : state.rows.length ? (
         state.rows.map((r) => {
           const m = SOURCE_META[r.source] ?? SOURCE_META['ielts-account'];
@@ -781,7 +767,7 @@ function HistoryList({ refresh }: { refresh: number }) {
       ) : (
         <ListRow
           leading={<IconTile icon={History} color="var(--label-3)" />}
-          title={state.error && !state.missing ? 'No se pudo cargar' : 'Aún no has importado nada'}
+          title={state.error && !state.missing ? 'Could not load' : 'You haven’t imported anything yet'}
           subtitle={state.error && !state.missing ? state.error : undefined}
         />
       )}

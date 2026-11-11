@@ -26,7 +26,7 @@ import { EpisodeView } from './EpisodeView';
 const isLevel = (v: string | null): v is CefrLevel => !!v && (CEFR_LEVELS as readonly string[]).includes(v);
 
 /**
- * Práctica → Listening → Podcasts: real shows for learners, by level.
+ * Practice → Listening → Podcasts: real shows for learners, by level.
  * Navigation lives in the URL (?pod=<show>&ep=<episode>&lv=<level>) so the
  * back button and shared links work.
  */
@@ -64,10 +64,9 @@ export function PodcastsTab() {
           <Mic size={22} />
         </span>
         <div className="min-w-0 text-[14px] leading-snug">
-          <div className="text-[16px] font-bold">Podcasts reales para cada nivel</div>
+          <div className="text-[16px] font-bold">Real podcasts for every level</div>
           <p className="text-label-2 mt-0.5">
-            Programas para estudiantes de inglés publicados en Apple Podcasts. Se reproducen desde su fuente oficial, con una guía de escucha y preguntas hechas
-            por IA. Con datos móviles, un episodio usa ≈ 0,5–1 MB por minuto.
+            Shows for English learners published on Apple Podcasts. They play from their official source, with a listening guide and AI-made questions. On mobile data, an episode uses ≈ 0.5–1 MB per minute.
           </p>
         </div>
       </Card>
@@ -115,7 +114,7 @@ function ShowCard({ def, i, onOpen }: { def: PodcastShowDef; i: number; onOpen: 
         <span className="mt-1 block text-[16px] leading-snug font-bold">{show?.name ?? def.label}</span>
         {show?.artist && <span className="text-label-2 block truncate text-[12.5px]">{show.artist}</span>}
         <span className="text-label-2 mt-1 block text-[13px] leading-snug">
-          {off ? (error ? 'No se pudo cargar ahora. Revisa tu conexión.' : 'No está disponible en Apple Podcasts en este momento.') : def.about_es}
+          {off ? (error ? 'Could not load right now. Check your connection.' : 'It is not available on Apple Podcasts right now.') : def.about_es}
         </span>
       </span>
     </motion.button>
@@ -156,7 +155,7 @@ function ShowSearch({ level, onOpen }: { level: CefrLevel; onOpen: (s: PodcastSh
       setResults(await searchShows(term));
     } catch (e) {
       setResults(null);
-      setError(e instanceof Error ? e.message : 'No se pudo buscar ahora.');
+      setError(e instanceof Error ? e.message : 'Could not search right now.');
     } finally {
       setBusy(false);
     }
@@ -166,7 +165,7 @@ function ShowSearch({ level, onOpen }: { level: CefrLevel; onOpen: (s: PodcastSh
     <section className="mt-8">
       <h2 className="text-[17px] font-bold">Buscar otro podcast</h2>
       <p className="text-label-2 mt-1 text-[13.5px]">
-        Cualquier programa de Apple Podcasts (sin contenido explícito). Se abrirá con la guía y el quiz de nivel {level}.
+        Any Apple Podcasts show (no explicit content). It will open with the level {level} guide and quiz.
       </p>
       <form
         className="mt-3 flex gap-2"
@@ -181,22 +180,22 @@ function ShowSearch({ level, onOpen }: { level: CefrLevel; onOpen: (s: PodcastSh
             value={term}
             onChange={(e) => setTerm(e.target.value)}
             placeholder="p. ej. science, history, football…"
-            aria-label="Buscar podcast"
+            aria-label="Search podcast"
             enterKeyHint="search"
             className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none"
           />
           {term && (
-            <button type="button" onClick={() => (setTerm(''), setResults(null))} aria-label="Borrar búsqueda" className="text-label-3">
+            <button type="button" onClick={() => (setTerm(''), setResults(null))} aria-label="Clear search" className="text-label-3">
               <X size={16} />
             </button>
           )}
         </div>
         <Button type="submit" disabled={busy || term.trim().length < 2}>
-          {busy ? <Spinner className="h-4 w-4" /> : 'Buscar'}
+          {busy ? <Spinner className="h-4 w-4" /> : 'Search'}
         </Button>
       </form>
       {error && <p className="text-ink-red mt-2 text-[14px]">{error}</p>}
-      {results && !results.length && <p className="text-label-2 mt-3 text-[14px]">No encontramos podcasts con esa búsqueda.</p>}
+      {results && !results.length && <p className="text-label-2 mt-3 text-[14px]">We found no podcasts for that search.</p>}
       {!!results?.length && (
         <div className="mt-3 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((s) => (
@@ -238,8 +237,8 @@ function ShowView({ collectionId, level, onBack, onOpen }: { collectionId: numbe
         <PageLoader />
       ) : error || !data ? (
         <Card className="p-6">
-          <h3 className="text-title-3">No se pudo abrir este podcast</h3>
-          <p className="text-label-2 mt-1 text-[14.5px]">{error?.message ?? 'Inténtalo de nuevo en un momento.'}</p>
+          <h3 className="text-title-3">This podcast could not be opened</h3>
+          <p className="text-label-2 mt-1 text-[14.5px]">{error?.message ?? 'Try again in a moment.'}</p>
         </Card>
       ) : (
         <>
@@ -254,14 +253,14 @@ function ShowView({ collectionId, level, onBack, onOpen }: { collectionId: numbe
               </div>
               {data.show?.url && (
                 <a href={data.show.url} target="_blank" rel="noopener noreferrer" className="text-ink-blue mt-2 inline-flex items-center gap-1 text-[14px] font-semibold">
-                  Ver en Apple Podcasts <ExternalLink size={13} />
+                  View on Apple Podcasts <ExternalLink size={13} />
                 </a>
               )}
             </div>
           </Card>
 
-          <h3 className="mt-6 mb-3 text-[20px] font-bold">Episodios recientes</h3>
-          {!data.episodes.length && <p className="text-label-2">Este podcast no tiene episodios de audio disponibles ahora.</p>}
+          <h3 className="mt-6 mb-3 text-[20px] font-bold">Recent episodes</h3>
+          {!data.episodes.length && <p className="text-label-2">This podcast has no audio episodes available right now.</p>}
           <div className="space-y-2.5">
             {data.episodes.slice(0, count).map((e) => {
               const pos = positions[e.key];
@@ -280,7 +279,7 @@ function ShowView({ collectionId, level, onBack, onOpen }: { collectionId: numbe
                     <span className="block text-[15.5px] leading-snug font-semibold">{e.title}</span>
                     <span className="text-label-2 mt-0.5 block text-[12.5px]">
                       {[fmtDate(e.date), fmtDuration(e.durationMs)].filter(Boolean).join(' · ')}
-                      {pos?.done ? <span className="text-ink-green font-semibold"> · ✓ escuchado</span> : pct > 2 ? ` · ${pct}% escuchado` : ''}
+                      {pos?.done ? <span className="text-ink-green font-semibold"> · ✓ listened</span> : pct > 2 ? ` · ${pct}% escuchado` : ''}
                     </span>
                     {e.description && <span className="text-label-2 mt-1 line-clamp-2 text-[13px] leading-snug">{e.description}</span>}
                   </span>
@@ -290,11 +289,11 @@ function ShowView({ collectionId, level, onBack, onOpen }: { collectionId: numbe
           </div>
           {data.episodes.length > count && (
             <Button variant="gray" className="mt-3" onClick={() => setCount((c) => c + 15)}>
-              Mostrar más
+              Show more
             </Button>
           )}
           <p className="text-label-2 mt-6 text-[12px]">
-            Contenido de terceros, reproducido desde su fuente oficial; todos los derechos pertenecen a sus autores.
+            Third-party content, played from its official source; all rights belong to their authors.
           </p>
         </>
       )}

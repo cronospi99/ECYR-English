@@ -30,56 +30,56 @@ export const ACADEMIC_GROUPS: {
   {
     id: 'research',
     emoji: '🔬',
-    es: 'Investigar',
+    es: 'Research',
     en: 'Research process',
     color: 'var(--blue)',
   },
   {
     id: 'analysis',
     emoji: '🧩',
-    es: 'Analizar e interpretar',
+    es: 'Analyse and interpret',
     en: 'Analysis',
     color: 'var(--indigo)',
   },
   {
     id: 'trends',
     emoji: '📈',
-    es: 'Tendencias y cifras',
+    es: 'Trends and figures',
     en: 'Change & trends',
     color: 'var(--teal)',
   },
   {
     id: 'cause',
     emoji: '⚙️',
-    es: 'Causa y efecto',
+    es: 'Cause and effect',
     en: 'Cause & effect',
     color: 'var(--orange)',
   },
   {
     id: 'argument',
     emoji: '⚖️',
-    es: 'Argumentar y evaluar',
+    es: 'Argue and evaluate',
     en: 'Argument',
     color: 'var(--red)',
   },
   {
     id: 'reporting',
     emoji: '📚',
-    es: 'Citar y reportar',
+    es: 'Quote and report',
     en: 'Reporting sources',
     color: 'var(--purple)',
   },
   {
     id: 'comparison',
     emoji: '🔀',
-    es: 'Comparar y relacionar',
+    es: 'Compare and relate',
     en: 'Comparison',
     color: 'var(--green)',
   },
   {
     id: 'structure',
     emoji: '🧱',
-    es: 'Organizar y concluir',
+    es: 'Organise and conclude',
     en: 'Structuring a text',
     color: 'var(--pink)',
   },
@@ -128,9 +128,9 @@ export function AcademicVerbs() {
     <div className="space-y-5">
       <div className="brand-gradient relative overflow-hidden rounded-[24px] p-5 text-white sm:p-6">
         <div className="text-[13px] font-semibold tracking-wide uppercase opacity-85">C1 · Academic English</div>
-        <h2 className="mt-1 text-[24px] leading-tight font-extrabold sm:text-[28px]">{data.length} verbos para escribir y hablar como en la universidad</h2>
+        <h2 className="mt-1 text-[24px] leading-tight font-extrabold sm:text-[28px]">{data.length} verbs for writing and speaking like at university</h2>
         <p className="mt-1.5 max-w-2xl text-[15px] opacity-90">
-          Agrupados por lo que hacen en un texto. Toca uno para ver su significado, su patrón, colocaciones y la palabra común que reemplaza.
+          Grouped by what they do in a text. Tap one to see its meaning, its pattern, collocations and the common word it replaces.
         </p>
         <span className="pointer-events-none absolute -right-3 -bottom-6 text-[110px] leading-none opacity-20 select-none" aria-hidden>
           🎓
@@ -183,11 +183,11 @@ export function AcademicVerbs() {
           <input
             value={q}
             onChange={(e) => (setQ(e.target.value), setLimit(60))}
-            placeholder="Busca: verbo, significado, colocación o palabra común…"
+            placeholder="Search: verb, meaning, collocation or common word…"
             className="placeholder:text-label-3 h-full flex-1 bg-transparent text-[16px] outline-none"
           />
         </label>
-        {group !== 'all' && <Chip onClick={() => setGroup('all')}>Ver todos · {data.length}</Chip>}
+        {group !== 'all' && <Chip onClick={() => setGroup('all')}>See all · {data.length}</Chip>}
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
@@ -231,11 +231,11 @@ export function AcademicVerbs() {
       {list.length > limit && (
         <div className="text-center">
           <Button variant="gray" onClick={() => setLimit((l) => l + 90)}>
-            Ver más ({list.length - limit})
+            See more ({list.length - limit})
           </Button>
         </div>
       )}
-      {!list.length && <p className="text-label-2 py-10 text-center">No hay verbos con esa búsqueda.</p>}
+      {!list.length && <p className="text-label-2 py-10 text-center">There are no verbs for that search.</p>}
       {openVerb && (
         <VerbBubble
           verb={openVerb}
@@ -285,9 +285,9 @@ function RegisterQuiz({ verbs, group }: { verbs: AcademicVerb[]; group: Academic
         <div className="mt-1 text-[22px] font-bold">
           {score}/{pool.length}
         </div>
-        <p className="text-label-2 mt-1 text-[15px]">{score >= 8 ? '¡Escribes con registro académico!' : 'Repasa las tarjetas y vuelve a intentarlo.'}</p>
+        <p className="text-label-2 mt-1 text-[15px]">{score >= 8 ? 'You write in an academic register!' : 'Review the cards and try again.'}</p>
         <Button className="mt-4" onClick={restart}>
-          <RotateCcw size={16} /> Otra ronda
+          <RotateCcw size={16} /> Another round
         </Button>
       </Card>
     );
@@ -309,7 +309,7 @@ function RegisterQuiz({ verbs, group }: { verbs: AcademicVerb[]; group: Academic
       const final = score + (right ? 1 : 0);
       award({
         kind: 'flashcards',
-        title: 'Verb Lab · verbos académicos C1',
+        title: 'Verb Lab · C1 academic verbs',
         skill: 'vocabulary',
         xp: 5 + final * 2,
         level: 'C1',
@@ -322,8 +322,8 @@ function RegisterQuiz({ verbs, group }: { verbs: AcademicVerb[]; group: Academic
     <Card className="p-5">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-[17px] font-bold">Sube de registro</div>
-          <div className="text-label-2 text-[13px]">¿Qué verbo académico reemplaza la palabra común?</div>
+          <div className="text-[17px] font-bold">Raise the register</div>
+          <div className="text-label-2 text-[13px]">Which academic verb replaces the common word?</div>
         </div>
         <span className="text-label-2 text-[13px] tabular-nums">
           {i + 1}/{pool.length} · ✓ {score}
@@ -370,7 +370,7 @@ function RegisterQuiz({ verbs, group }: { verbs: AcademicVerb[]; group: Academic
             <b className="text-label">{v.en}</b> — {v.def}
           </p>
           <Button size="sm" onClick={() => (setI((n) => n + 1), setPicked(null))}>
-            {i + 1 === pool.length ? 'Ver resultado' : 'Siguiente'}
+            {i + 1 === pool.length ? 'See result' : 'Next'}
           </Button>
         </div>
       )}

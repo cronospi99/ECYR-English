@@ -40,7 +40,7 @@ export function useLiveBoard(id: string) {
   const myName = useAuth((s) => s.profile?.full_name ?? null);
 
   const [bundle, setBundle] = useState<BoardBundle | null>(null);
-  const [fatal, setFatal] = useState<BoardError | null>(supabase ? null : new BoardError('offline', 'Necesitas conexión para usar el muro en vivo.'));
+  const [fatal, setFatal] = useState<BoardError | null>(supabase ? null : new BoardError('offline', 'You need a connection to use the live board.'));
   const [netDown, setNetDown] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [live, setLive] = useState(false);
@@ -168,7 +168,7 @@ export function useLiveBoard(id: string) {
         channel.current?.ping();
         return r;
       } catch (e) {
-        say(e instanceof Error ? e.message : 'No se pudo guardar.');
+        say(e instanceof Error ? e.message : 'Could not save.');
         return undefined;
       } finally {
         inflight.current--;
@@ -329,7 +329,7 @@ export function useLiveBoard(id: string) {
     [id, write],
   );
 
-  const shownFatal = fatal ?? (ready && !signedIn ? new BoardError('denied', 'Inicia sesión para entrar al muro.') : null);
+  const shownFatal = fatal ?? (ready && !signedIn ? new BoardError('denied', 'Sign in to join the board.') : null);
   return {
     bundle,
     fatal: shownFatal,

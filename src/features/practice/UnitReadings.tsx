@@ -24,15 +24,15 @@ export function UnitReadings({ level, unit }: { level: CefrLevel; unit: number }
   return (
     <section ref={top} className="scroll-mt-20 lg:scroll-mt-4">
       {open ? (
-        <Reader key={open.id} r={open} onBack={() => go(null)} backLabel="Lecturas de la unidad" />
+        <Reader key={open.id} r={open} onBack={() => go(null)} backLabel="Unit readings" />
       ) : (
         <>
           <div className="mb-3 flex items-baseline justify-between gap-3">
             <h3 className="flex items-center gap-2 text-[20px] font-bold">
-              <BookOpen size={19} className="text-ink-blue" /> Lecturas de la unidad
+              <BookOpen size={19} className="text-ink-blue" /> Unit readings
             </h3>
             <span className="text-label-2 text-[13px]">
-              {read}/{data.length} leídas
+              {read}/{data.length} read
             </span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">

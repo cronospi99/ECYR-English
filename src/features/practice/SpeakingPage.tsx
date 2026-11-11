@@ -57,13 +57,13 @@ export default function SpeakingPage() {
 
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
+      back={{ to: '/practice', label: 'Practice' }}
       title="Speaking"
-      subtitle="Responde en voz alta o sube un audio grabado. La IA puede transcribirlo y corregirte."
+      subtitle="Answer out loud or upload a recorded audio. The AI can transcribe it and correct you."
       actions={
         <>
           <TranslatorButton />
-          <AssignButton preset={{ source: 'practice', practice: 'speaking', title: 'Speaking: responde preguntas en voz alta' }} />
+          <AssignButton preset={{ source: 'practice', practice: 'speaking', title: 'Speaking: answer questions out loud' }} />
         </>
       }
     >
@@ -87,7 +87,7 @@ export default function SpeakingPage() {
           </div>
           <div className="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto px-1 py-1">
             <Chip active={topic === 'all'} onClick={() => (setTopic('all'), setI(0))}>
-              Todos los temas
+              All topics
             </Chip>
             {data.map((t) => (
               <Chip key={t.id} active={topic === t.id} onClick={() => (setTopic(t.id), setI(0))}>
@@ -192,12 +192,12 @@ function PromptCard({
         mr.ondataavailable = (e) => e.data.size && chunks.push(e.data);
         mr.onstop = () => {
           stream.getTracks().forEach((t) => t.stop());
-          if (chunks.length) keep(new Blob(chunks, { type: mr.mimeType || 'audio/webm' }), 'Grabación');
+          if (chunks.length) keep(new Blob(chunks, { type: mr.mimeType || 'audio/webm' }), 'Recording');
         };
         media.current = mr;
         mr.start();
       } catch {
-        setError('Permite el acceso al micrófono para grabar.');
+        setError('Allow microphone access to record.');
         return;
       }
     }
@@ -217,7 +217,7 @@ function PromptCard({
         e.error !== 'no-speech' &&
         e.error !== 'aborted' &&
         !canRecord &&
-        setError(e.error === 'not-allowed' ? 'Permite el acceso al micrófono para grabar.' : 'No se pudo reconocer el audio.');
+        setError(e.error === 'not-allowed' ? 'Allow microphone access to record.' : 'The audio could not be recognised.');
       // Without a recorder the recogniser is the take: its end is the end.
       r.onend = () => !media.current && setListening(false);
       rec.current = r;
@@ -228,8 +228,8 @@ function PromptCard({
 
   const onFile = (f: File | undefined) => {
     if (!f) return;
-    if (!isAudioFile(f)) return setError(`"${f.name}" no es un archivo de audio.`);
-    if (f.size > MAX_ANSWER_AUDIO) return setError(`El archivo pesa ${(f.size / 1048576).toFixed(1)} MB; el máximo es 18 MB.`);
+    if (!isAudioFile(f)) return setError(`"${f.name}" is not an audio file.`);
+    if (f.size > MAX_ANSWER_AUDIO) return setError(`The file weighs ${(f.size / 1048576).toFixed(1)} MB; the maximum is 18 MB.`);
     setError(null);
     setTranscript('');
     keep(f, f.name);
@@ -292,7 +292,7 @@ function PromptCard({
           </div>
           <p className="mt-4 text-[24px] leading-snug font-semibold text-balance">{p.q}</p>
           <button type="button" onClick={() => speak(p.q)} className="mt-3 inline-flex items-center gap-1.5 text-[14px] opacity-90 hover:opacity-100">
-            <Volume2 size={16} /> Escuchar pregunta
+            <Volume2 size={16} /> Listen to question
           </button>
         </div>
         <div className="p-6">
@@ -301,7 +301,7 @@ function PromptCard({
               <button
                 type="button"
                 onClick={listening ? stop : start}
-                aria-label={listening ? 'Detener grabación' : 'Grabar respuesta'}
+                aria-label={listening ? 'Stop recording' : 'Record answer'}
                 className={cn(
                   'flex h-20 w-20 items-center justify-center rounded-full text-white shadow-float transition-transform active:scale-95',
                   listening ? 'bg-ios-red animate-pulse' : 'bg-ios-orange',
@@ -309,11 +309,11 @@ function PromptCard({
               >
                 {listening ? <MicOff size={32} /> : <Mic size={32} />}
               </button>
-              <p className="text-label-2 mt-2 text-[13px]">{listening ? 'Grabando… toca para terminar' : 'Toca para responder'}</p>
+              <p className="text-label-2 mt-2 text-[13px]">{listening ? 'Recording… tap to finish' : 'Tap to answer'}</p>
             </div>
           ) : (
             <p className="text-label-2 text-center text-[14px]">
-              Tu navegador no permite grabar aquí. Responde en voz alta, o graba con tu celular y sube el audio.
+              Your browser doesn’t allow recording here. Answer out loud, or record with your phone and upload the audio.
             </p>
           )}
 
@@ -339,8 +339,8 @@ function PromptCard({
               <Upload size={18} />
             </span>
             <span className="min-w-0">
-              <span className="block text-[15px] font-semibold">{audio ? 'Reemplazar con otro audio' : 'Subir un audio grabado'}</span>
-              <span className="text-label-2 block text-[12.5px]">Arrastra el archivo o toca para elegirlo · MP3, M4A, WAV, OGG · hasta 18 MB</span>
+              <span className="block text-[15px] font-semibold">{audio ? 'Replace with another audio' : 'Upload a recorded audio'}</span>
+              <span className="text-label-2 block text-[12.5px]">Drag the file or tap to choose it · MP3, M4A, WAV, OGG · up to 18 MB</span>
             </span>
             <input
               ref={fileRef}
@@ -359,7 +359,7 @@ function PromptCard({
               <audio controls src={audio.url} className="w-full" />
               {!fb && (
                 <Button className="mt-3 w-full" variant="tinted" onClick={assess} disabled={aiBusy}>
-                  <Sparkles size={16} /> {aiBusy ? 'La IA está escuchando…' : 'Transcribir y corregir con IA'}
+                  <Sparkles size={16} /> {aiBusy ? 'The AI is listening…' : 'Transcribe and correct with AI'}
                 </Button>
               )}
               {aiError && <p className="text-ink-red mt-2 text-[13px]">{aiError}</p>}
@@ -368,34 +368,34 @@ function PromptCard({
 
           {transcript && !fb && (
             <div className="bg-fill-2 mt-4 rounded-[14px] p-4">
-              <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Dijiste</div>
+              <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">You said</div>
               <p className="text-[16px]">{transcript}</p>
             </div>
           )}
           {fb && <FeedbackView fb={fb} />}
           {savedForTeacher && hasTeacher && (
             <p role="status" className="text-ink-green mt-3 flex items-center justify-center gap-1.5 text-[13px] font-semibold">
-              <Check size={15} aria-hidden /> Transcripción enviada · tu docente puede verla
+              <Check size={15} aria-hidden /> Transcript sent · your teacher can see it
             </p>
           )}
           {error && <p className="text-ink-red mt-3 text-center text-[14px]">{error}</p>}
           {reveal && (
             <div className="mt-4 rounded-[14px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-4">
-              <div className="text-ink-green mb-1 text-[12px] font-semibold uppercase">Respuesta modelo</div>
+              <div className="text-ink-green mb-1 text-[12px] font-semibold uppercase">Model answer</div>
               <p className="text-[16px]">{p.a}</p>
             </div>
           )}
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {!reveal && (
               <Button variant="gray" onClick={() => setReveal(true)}>
-                <Eye size={16} /> Ver respuesta
+                <Eye size={16} /> See answer
               </Button>
             )}
             <Button onClick={next} disabled={listening}>
-              Siguiente
+              Next
             </Button>
             <Button variant="plain" onClick={onShuffle}>
-              <Shuffle size={16} /> Mezclar
+              <Shuffle size={16} /> Shuffle
             </Button>
           </div>
         </div>
@@ -409,8 +409,8 @@ function FeedbackView({ fb }: { fb: SpeakingFeedback }) {
     <div className="mt-4 space-y-3">
       <div className="bg-fill-2 rounded-[14px] p-4">
         <div className="text-label-2 mb-1 flex items-center justify-between text-[12px] font-semibold uppercase">
-          <span>La IA escuchó</span>
-          {fb.level && <span className="bg-ios-blue rounded-full px-2 py-0.5 text-[11px] text-white normal-case">Nivel estimado {fb.level}</span>}
+          <span>The AI heard</span>
+          {fb.level && <span className="bg-ios-blue rounded-full px-2 py-0.5 text-[11px] text-white normal-case">Estimated level {fb.level}</span>}
         </div>
         <p className="text-[16px]">{fb.transcript || '—'}</p>
       </div>
@@ -428,8 +428,8 @@ function FeedbackView({ fb }: { fb: SpeakingFeedback }) {
       {fb.better && (
         <div className="rounded-[14px] bg-[color-mix(in_srgb,var(--purple)_9%,transparent)] p-4">
           <div className="mb-1 flex items-center justify-between text-[12px] font-semibold uppercase" style={{ color: 'var(--purple-ink)' }}>
-            <span>Así sonaría más natural</span>
-            <button type="button" onClick={() => speak(fb.better, { rate: 0.92 })} aria-label="Escuchar versión mejorada" className="text-ink-blue">
+            <span>This would sound more natural</span>
+            <button type="button" onClick={() => speak(fb.better, { rate: 0.92 })} aria-label="Listen to the improved version" className="text-ink-blue">
               <Volume2 size={16} />
             </button>
           </div>

@@ -23,7 +23,7 @@ type PageMode = CoachMode | 'voice';
 const STARTERS: Record<CoachMode, string[]> = {
   chat: ['Let’s talk about my weekend', 'Practice a job interview with me', 'Ask me questions about travel', 'Role-play: ordering food in a restaurant'],
   correct: ['Yesterday I go to the cinema with my friends and we watch a very good movie.', 'I am agree with you but I think is more better study in the morning.'],
-  explain: ['¿Cuándo uso present perfect y cuándo past simple?', 'Diferencia entre “make” y “do”', 'Explícame los condicionales con ejemplos', '¿Cómo uso “used to”?'],
+  explain: ['When do I use present perfect and when past simple?', 'Difference between “make” and “do”', 'Explain conditionals to me with examples', 'How do I use “used to”?'],
   'writing-feedback': [],
 };
 
@@ -69,10 +69,10 @@ export default function CoachPage() {
       const reply = await askCoach({ messages: next, mode, level });
       setMessages([...next, { role: 'model', text: reply || '…' }]);
       if (next.filter((m) => m.role === 'user').length % 3 === 1) {
-        award({ kind: 'coach', title: 'Conversación con el AI Coach', skill: mode === 'chat' ? 'speaking' : 'grammar', xp: 5, level, ref: `coach:${mode}` });
+        award({ kind: 'coach', title: 'Conversation with the AI Coach', skill: mode === 'chat' ? 'speaking' : 'grammar', xp: 5, level, ref: `coach:${mode}` });
       }
     } catch (e) {
-      setError(e instanceof CoachError ? e.message : 'No se pudo contactar al coach.');
+      setError(e instanceof CoachError ? e.message : 'Could not reach the coach.');
     } finally {
       setBusy(false);
     }
@@ -87,12 +87,12 @@ export default function CoachPage() {
           <Sparkles className="text-ink-purple" /> AI Coach
         </span>
       }
-      subtitle="Tu tutor personal: conversa en inglés, corrige tus frases y entiende la gramática a tu nivel."
+      subtitle="Your personal tutor: chat in English, get your sentences corrected and understand grammar at your level."
       actions={
         pageMode !== 'voice' &&
         messages.length > 0 && (
           <Button variant="gray" size="sm" onClick={() => setMessages([])}>
-            <Trash2 size={14} /> Nueva conversación
+            <Trash2 size={14} /> New conversation
           </Button>
         )
       }
@@ -102,10 +102,10 @@ export default function CoachPage() {
           value={pageMode}
           onChange={setPageMode}
           options={[
-            { value: 'chat', label: 'Conversar' },
-            { value: 'voice', label: <span className="inline-flex items-center gap-1"><Mic size={13} /> Voz</span> },
-            { value: 'correct', label: 'Corregir' },
-            { value: 'explain', label: 'Explicar' },
+            { value: 'chat', label: 'Chat' },
+            { value: 'voice', label: <span className="inline-flex items-center gap-1"><Mic size={13} /> Voice</span> },
+            { value: 'correct', label: 'Correct' },
+            { value: 'explain', label: 'Explain' },
           ]}
         />
         <div className="flex gap-1.5">
@@ -127,15 +127,15 @@ export default function CoachPage() {
           {gated ? (
             <div className="flex h-full flex-col items-center justify-center text-center">
               <div className="text-[64px]">🤖</div>
-              <h3 className="text-title-3 mt-2">Inicia sesión para chatear</h3>
+              <h3 className="text-title-3 mt-2">Sign in to chat</h3>
               <p className="text-label-2 mt-1 max-w-sm text-[15px]">
                 {isSupabaseConfigured
-                  ? 'El coach usa la IA de tu clase de forma segura: tu cuenta protege la clave y tu cuota.'
-                  : 'Este despliegue aún no tiene Supabase configurado (variables VITE_SUPABASE_*).'}
+                  ? 'The coach uses your class AI securely: your account protects the key and your quota.'
+                  : 'This deployment doesn’t have Supabase configured yet (VITE_SUPABASE_* variables).'}
               </p>
               {isSupabaseConfigured && (
                 <ButtonLink to="/profile" className="mt-5">
-                  <LogIn size={16} /> Iniciar sesión
+                  <LogIn size={16} /> Sign in
                 </ButtonLink>
               )}
             </div>
@@ -143,7 +143,7 @@ export default function CoachPage() {
             <div className="flex h-full flex-col items-center justify-center text-center">
               <div className="text-[56px]">👋</div>
               <h3 className="text-title-3 mt-2">
-                {mode === 'chat' ? 'Hi! What would you like to talk about?' : mode === 'correct' ? 'Escribe una frase y la corrijo' : '¿Qué tema quieres entender?'}
+                {mode === 'chat' ? 'Hi! What would you like to talk about?' : mode === 'correct' ? 'Write a sentence and I’ll correct it' : 'What topic do you want to understand?'}
               </h3>
               <div className="mt-5 flex max-w-xl flex-wrap justify-center gap-2">
                 {STARTERS[mode].map((s) => (
@@ -216,13 +216,13 @@ export default function CoachPage() {
             }}
             disabled={gated}
             rows={1}
-            placeholder={gated ? 'Inicia sesión para escribir…' : mode === 'correct' ? 'Pega tu frase o párrafo…' : 'Escribe un mensaje…'}
+            placeholder={gated ? 'Sign in to write…' : mode === 'correct' ? 'Paste your sentence or paragraph…' : 'Type a message…'}
             className="bg-fill-2 placeholder:text-label-3 max-h-40 min-h-[40px] flex-1 resize-none rounded-[20px] px-4 py-2.5 text-[16px] outline-none"
           />
           <button
             type="submit"
             disabled={gated || busy || !input.trim()}
-            aria-label="Enviar"
+            aria-label="Send"
             className="bg-ios-blue flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white transition-opacity disabled:opacity-30"
           >
             <ArrowUp size={20} strokeWidth={2.6} />

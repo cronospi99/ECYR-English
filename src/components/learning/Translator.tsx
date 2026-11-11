@@ -176,7 +176,7 @@ export async function translate(q: string, from: Lang): Promise<Translation> {
   const out = (await viaMyMemory(text, from, to)) ?? (await viaAi(text, from, to).catch(() => null));
   if (!out) {
     const signedIn = Boolean(supabase && (await supabase.auth.getSession()).data.session);
-    throw new Error(signedIn ? 'No se pudo traducir ahora. Revisa tu conexión e inténtalo de nuevo.' : 'No se pudo traducir ahora. Revisa tu conexión (o inicia sesión para usar la IA de la clase).');
+    throw new Error(signedIn ? 'Could not translate right now. Check your connection and try again.' : 'Could not translate right now. Check your connection (or sign in to use the class AI).');
   }
   cache.set(key, out);
   return out;
@@ -210,7 +210,7 @@ function writeRecent(list: Recent[]) {
 
 // ---------------------------------------------------------------- panel --
 
-const LANG_NAME: Record<Lang, string> = { en: 'inglés', es: 'español' };
+const LANG_NAME: Record<Lang, string> = { en: 'English', es: 'Spanish' };
 
 /** Hook for "save to notes": the notes feature registers itself here (keeps this file free of feature imports). */
 let saveToNotes: ((text: string) => void) | null = null;
@@ -310,12 +310,12 @@ function TranslatorPanel() {
       <div className="hairline-b flex items-center gap-2 px-4 py-2.5">
         <Languages size={18} className="text-ink-indigo shrink-0" aria-hidden />
         <h2 id={titleId} className="text-headline min-w-0 flex-1">
-          Traductor
+          Translator
         </h2>
         <button
           type="button"
           onClick={close}
-          aria-label="Cerrar traductor"
+          aria-label="Close translator"
           className="text-label-2 hover:bg-fill-2 inline-flex h-8 w-8 items-center justify-center rounded-full"
         >
           <X size={18} />
@@ -323,7 +323,7 @@ function TranslatorPanel() {
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pt-3 pb-4">
-        <div className="mb-2 flex items-center gap-1.5" role="radiogroup" aria-label="Dirección">
+        <div className="mb-2 flex items-center gap-1.5" role="radiogroup" aria-label="Direction">
           {(
             [
               ['auto', 'Auto'],
@@ -348,8 +348,8 @@ function TranslatorPanel() {
           <button
             type="button"
             onClick={swap}
-            aria-label="Invertir dirección"
-            title="Invertir"
+            aria-label="Swap direction"
+            title="Swap"
             className="text-ink-blue hover:bg-fill-2 ml-auto inline-flex h-7 w-7 items-center justify-center rounded-full"
           >
             <ArrowLeftRight size={15} />
@@ -357,7 +357,7 @@ function TranslatorPanel() {
         </div>
 
         <label htmlFor={inputId} className="sr-only">
-          Palabra o frase para traducir
+          Word or phrase to translate
         </label>
         <textarea
           id={inputId}
@@ -369,11 +369,11 @@ function TranslatorPanel() {
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) e.preventDefault();
           }}
-          placeholder="Escribe una palabra o frase (inglés o español)…"
+          placeholder="Type a word or phrase (English or Spanish)…"
           className="bg-fill-2 placeholder:text-label-3 focus:ring-ios-blue/40 w-full resize-none rounded-[12px] px-3 py-2.5 text-[16px] leading-snug outline-none focus:ring-2"
         />
         <div className="text-label-2 mt-1 flex justify-between text-[12px]">
-          <span>{q.trim() ? `${dir === 'auto' ? 'Detectado' : 'De'}: ${LANG_NAME[from]} → ${LANG_NAME[from === 'en' ? 'es' : 'en']}` : 'Inglés ↔ español'}</span>
+          <span>{q.trim() ? `${dir === 'auto' ? 'Detected' : 'De'}: ${LANG_NAME[from]} → ${LANG_NAME[from === 'en' ? 'es' : 'en']}` : 'English ↔ Spanish'}</span>
           <span className="tabular-nums">
             {q.length}/{MAX_TRANSLATE}
           </span>
@@ -382,7 +382,7 @@ function TranslatorPanel() {
         <div aria-live="polite" className="mt-3">
           {busy && !res && (
             <div className="text-label-2 flex items-center gap-2 text-[14px]">
-              <Spinner className="h-4 w-4" /> Traduciendo…
+              <Spinner className="h-4 w-4" /> Translating…
             </div>
           )}
           {error && <p className="text-ink-red text-[14px]">{error}</p>}
@@ -390,7 +390,7 @@ function TranslatorPanel() {
             <div className={cn('rounded-[14px] bg-[color-mix(in_srgb,var(--indigo)_10%,transparent)] p-3 transition-opacity', busy && 'opacity-60')}>
               <p className="text-[17px] leading-snug font-semibold break-words">{res.text}</p>
               {res.alternatives.length > 0 && (
-                <p className="text-label-2 mt-1 text-[13px] break-words">También: {res.alternatives.join(' · ')}</p>
+                <p className="text-label-2 mt-1 text-[13px] break-words">Also: {res.alternatives.join(' · ')}</p>
               )}
               <div className="mt-2 flex flex-wrap items-center gap-1.5">
                 {english && (
@@ -398,9 +398,9 @@ function TranslatorPanel() {
                     type="button"
                     onClick={() => speak(english)}
                     className="bg-card text-ink-blue shadow-card inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold"
-                    aria-label={`Escuchar en inglés: ${english}`}
+                    aria-label={`Listen in English: ${english}`}
                   >
-                    <Play size={13} fill="currentColor" /> Escuchar
+                    <Play size={13} fill="currentColor" /> Listen
                   </button>
                 )}
                 <button
@@ -411,7 +411,7 @@ function TranslatorPanel() {
                   }}
                   className="bg-card text-label shadow-card inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium"
                 >
-                  <Copy size={13} /> {copied ? 'Copiado' : 'Copiar'}
+                  <Copy size={13} /> {copied ? 'Copied' : 'Copy'}
                 </button>
                 {saveToNotes && (
                   <button
@@ -423,10 +423,10 @@ function TranslatorPanel() {
                     disabled={noted}
                     className="bg-card text-label shadow-card inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-medium disabled:opacity-60"
                   >
-                    <NotebookPen size={13} /> {noted ? 'En tus notas ✓' : 'A mis notas'}
+                    <NotebookPen size={13} /> {noted ? 'In your notes ✓' : 'To my notes'}
                   </button>
                 )}
-                <span className="text-label-3 ml-auto text-[11px]">{res.via === 'ai' ? 'IA de la clase' : 'MyMemory'}</span>
+                <span className="text-label-3 ml-auto text-[11px]">{res.via === 'ai' ? 'Class AI' : 'MyMemory'}</span>
               </div>
             </div>
           )}
@@ -436,7 +436,7 @@ function TranslatorPanel() {
           <div className="mt-4">
             <div className="text-label-2 mb-1 flex items-center justify-between text-[12px] font-semibold uppercase">
               <span className="inline-flex items-center gap-1">
-                <History size={13} aria-hidden /> Recientes
+                <History size={13} aria-hidden /> Recent
               </span>
               <button
                 type="button"
@@ -446,7 +446,7 @@ function TranslatorPanel() {
                   writeRecent([]);
                 }}
               >
-                Borrar
+                Clear
               </button>
             </div>
             <ul className="space-y-0.5">
@@ -484,7 +484,7 @@ export function TranslatorHost() {
 }
 
 /** Small "Traductor" button for output tasks (writing, speaking, coach). */
-export function TranslatorButton({ className, label = 'Traductor' }: { className?: string; label?: string }) {
+export function TranslatorButton({ className, label = 'Translator' }: { className?: string; label?: string }) {
   const open = useTranslator((s) => s.open);
   const hosts = useTranslator((s) => s.hosts);
   const toggle = useTranslator((s) => s.toggle);

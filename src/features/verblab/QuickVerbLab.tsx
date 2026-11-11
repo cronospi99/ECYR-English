@@ -49,7 +49,7 @@ export default function QuickVerbLab({ onNavigate }: { onNavigate?: () => void }
           value={tab}
           onChange={setTab}
           options={[
-            { value: 'conj', label: 'Conjugación' },
+            { value: 'conj', label: 'Conjugation' },
             { value: 'phrasal', label: 'Phrasal verbs' },
           ]}
           className="flex w-full"
@@ -94,7 +94,7 @@ function SearchBox({ value, onChange, placeholder, onEnter }: { value: string; o
         spellCheck={false}
       />
       {value && (
-        <button type="button" onClick={() => (onChange(''), ref.current?.focus())} className="text-label-2 -mr-1 rounded-full p-1 hover:bg-fill" aria-label="Borrar búsqueda">
+        <button type="button" onClick={() => (onChange(''), ref.current?.focus())} className="text-label-2 -mr-1 rounded-full p-1 hover:bg-fill" aria-label="Clear search">
           <X size={15} />
         </button>
       )}
@@ -148,14 +148,14 @@ function ConjugationPane() {
   return (
     <>
       <div className="shrink-0 px-4 pt-3 pb-2">
-        <SearchBox value={q} onChange={setQ} placeholder="Busca un verbo: go, went, comer…" onEnter={() => results[0] && pick(results[0].en)} />
+        <SearchBox value={q} onChange={setQ} placeholder="Search a verb: go, went, comer…" onEnter={() => results[0] && pick(results[0].en)} />
       </div>
       <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4">
         {loading || !data ? (
           <PageLoader />
         ) : q.trim() ? (
           results.length ? (
-            <ul className="space-y-1 pt-1" aria-label="Resultados">
+            <ul className="space-y-1 pt-1" aria-label="Results">
               {results.map((v) => (
                 <li key={v.en}>
                   <button type="button" onClick={() => pick(v.en)} className="hover:bg-fill-2 flex w-full items-center gap-3 rounded-[12px] px-2.5 py-2 text-left">
@@ -173,13 +173,13 @@ function ConjugationPane() {
               ))}
             </ul>
           ) : (
-            <p className="text-label-2 py-10 text-center text-[15px]">No encontré ese verbo. Prueba con su forma base (go, eat…) o en español.</p>
+            <p className="text-label-2 py-10 text-center text-[15px]">I couldn’t find that verb. Try its base form (go, eat…) or in Spanish.</p>
           )
         ) : verb ? (
           <VerbConjugation key={verb.en} verb={verb} />
         ) : (
           <div className="pt-2">
-            <p className="text-label-2 mb-3 text-[15px]">Escribe un verbo en inglés (cualquier forma) o en español, o elige uno:</p>
+            <p className="text-label-2 mb-3 text-[15px]">Type a verb in English (any form) or in Spanish, or pick one:</p>
             <div className="flex flex-wrap gap-2">
               {COMMON.filter((en) => verbs.some((v) => v.en === en)).map((en) => (
                 <button key={en} type="button" onClick={() => pick(en)} className="bg-fill-2 hover:bg-fill h-9 rounded-full px-3.5 text-[15px] font-medium">
@@ -229,20 +229,20 @@ function VerbConjugation({ verb }: { verb: LabVerb }) {
           type="button"
           onClick={() => speak(`${spoken(verb.en)}. ${spoken(verb.past)}. ${spoken(verb.part)}.`, { rate: 0.85 })}
           className="brand-gradient inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold text-white"
-          aria-label="Escuchar las 3 formas"
+          aria-label="Listen to all 3 forms"
         >
-          <Play size={13} fill="currentColor" /> 3 formas
+          <Play size={13} fill="currentColor" /> 3 forms
         </button>
       </div>
 
       <VerbFormsTrack verb={verb} className="mt-3" />
 
       <div className="mt-2 grid grid-cols-2 gap-1.5">
-        <FormPill label="3.ª persona" sub="he / she / it" word={s3} />
+        <FormPill label="3rd person" sub="he / she / it" word={s3} />
         <FormPill label="-ing" sub={ing.why} word={ing.form} />
       </div>
 
-      <h3 className="text-label-2 mt-5 mb-2 text-[12px] font-bold tracking-wide uppercase">Conjugación</h3>
+      <h3 className="text-label-2 mt-5 mb-2 text-[12px] font-bold tracking-wide uppercase">Conjugation</h3>
       <div className="no-scrollbar -mx-4 mb-2 flex gap-1.5 overflow-x-auto px-4" role="radiogroup" aria-label="Sujeto">
         {PERSONS.map((p) => (
           <button
@@ -278,7 +278,7 @@ function VerbConjugation({ verb }: { verb: LabVerb }) {
 
       {ex && (
         <>
-          <h3 className="text-label-2 mt-5 mb-2 text-[12px] font-bold tracking-wide uppercase">Ejemplos</h3>
+          <h3 className="text-label-2 mt-5 mb-2 text-[12px] font-bold tracking-wide uppercase">Examples</h3>
           <VerbFormExamples verb={verb} ex={ex} />
         </>
       )}
@@ -378,7 +378,7 @@ function PhrasalPane() {
       {items.length > limit && (
         <div className="mt-3 text-center">
           <button type="button" onClick={() => setLimit((l) => l + 60)} className="bg-fill-2 hover:bg-fill h-9 rounded-full px-4 text-[14px] font-semibold">
-            Ver más ({items.length - limit})
+            See more ({items.length - limit})
           </button>
         </div>
       )}
@@ -388,7 +388,7 @@ function PhrasalPane() {
   return (
     <>
       <div className="shrink-0 px-4 pt-3 pb-2">
-        <SearchBox value={q} onChange={setQ} placeholder="Busca: give up, rendirse, look…" />
+        <SearchBox value={q} onChange={setQ} placeholder="Search: give up, rendirse, look…" />
       </div>
       <div ref={scroller} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-4">
         {loading || !data ? (
@@ -403,17 +403,17 @@ function PhrasalPane() {
                 style={{ background: famMatch.grad }}
               >
                 <span className="text-[22px] leading-none">{famMatch.emoji}</span>
-                <span className="flex-1 text-[15px] font-bold">Familia «{famMatch.verb.toLowerCase()}» · {famMatch.items.length}</span>
+                <span className="flex-1 text-[15px] font-bold">Family «{famMatch.verb.toLowerCase()}» · {famMatch.items.length}</span>
                 <ArrowRight size={16} aria-hidden />
               </button>
             )}
-            {results.length ? list(results) : <p className="text-label-2 py-10 text-center text-[15px]">Sin coincidencias. Prueba con el verbo base (get, look…) o en español.</p>}
+            {results.length ? list(results) : <p className="text-label-2 py-10 text-center text-[15px]">No matches. Try the base verb (get, look…) or in Spanish.</p>}
           </>
         ) : current ? (
           <>
             <div className="mb-3 flex items-center gap-2">
               <button type="button" onClick={() => goFamily(null)} className="text-ink-blue -ml-1 inline-flex h-9 items-center gap-0.5 rounded-[10px] pr-2 text-[15px] hover:opacity-70">
-                <ChevronLeft size={20} strokeWidth={2.4} aria-hidden /> Familias
+                <ChevronLeft size={20} strokeWidth={2.4} aria-hidden /> Families
               </button>
               <span className="ml-auto flex items-center gap-2 rounded-full py-1 pr-3 pl-1.5 text-[14px] font-bold text-white" style={{ background: current.grad }}>
                 <span className="text-[18px] leading-none">{current.emoji}</span> {current.verb.toLowerCase()} · {current.items.length}
@@ -423,7 +423,7 @@ function PhrasalPane() {
           </>
         ) : (
           <>
-            <p className="text-label-2 mb-3 text-[15px]">Elige un verbo base para ver su familia, o busca arriba.</p>
+            <p className="text-label-2 mb-3 text-[15px]">Pick a base verb to see its family, or search above.</p>
             <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
               {families.map((f) => (
                 <button
@@ -468,7 +468,7 @@ function PhrasalRow({ item, family, open, onToggle }: { item: MindItem; family: 
       {open && (
         <div className="px-3 pb-3">
           <button type="button" onClick={() => speak(item.pv, { rate: 0.85 })} className="text-ink-blue mb-2 inline-flex items-center gap-1.5 text-[14px] font-semibold">
-            <Volume2 size={15} /> Escuchar
+            <Volume2 size={15} /> Listen
           </button>
           <PhrasalInfo item={item} color={family.color} />
         </div>

@@ -76,4 +76,4 @@ export async function loadVisualTopic(level: CefrLevel, id: string): Promise<Vis
   return (await loadVisualTopics(level)).find((t) => t.id === id) ?? null;
 }
 
-export const VISUAL_CREDIT = 'Imágenes e íconos: Freepik / Flaticon (presentaciones de clase con plantilla de Slidesgo).';
+export const VISUAL_CREDIT = 'Images and icons: Freepik / Flaticon (class presentations with a Slidesgo template).';

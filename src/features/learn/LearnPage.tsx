@@ -17,7 +17,7 @@ export default function LearnPage() {
   const preDone = PREA1_TOPICS.filter((id) => topics[id]).length;
 
   return (
-    <Page title="Aprender" subtitle="Tu ruta de Pre-A1 a C2. Cada nivel es un tramo de la montaña: completa unidades para subir." wide>
+    <Page title="Learn" subtitle="Your route from Pre-A1 to C2. Each level is a stretch of the mountain: complete units to climb." wide>
       <Card className="relative mb-6 overflow-hidden">
         <MountainClimb wide progress={climb} />
         <div className="material absolute top-4 left-4 rounded-[16px] px-4 py-3">
@@ -36,9 +36,9 @@ export default function LearnPage() {
           </div>
           <div className="min-w-0 flex-1">
             <div className="text-ink-indigo text-[12px] font-bold tracking-wide uppercase">A1 – C2</div>
-            <div className="text-title-3">Gramática interactiva</div>
+            <div className="text-title-3">Interactive grammar</div>
             <p className="text-label-2 text-subhead line-clamp-2">
-              Time Machine, Time &amp; Family, Modal Verbs y Verb Lab: explicaciones con práctica y corrección al instante.
+              Time Machine, Time &amp; Family, Modal Verbs and Verb Lab: explanations with practice and instant feedback.
             </p>
           </div>
           <ChevronRight className="text-label-3 shrink-0" />
@@ -54,10 +54,10 @@ export default function LearnPage() {
             ))}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-ink-pink text-[12px] font-bold tracking-wide uppercase">Infografías</div>
-            <div className="text-title-3">Biblioteca visual</div>
+            <div className="text-ink-pink text-[12px] font-bold tracking-wide uppercase">Infographics</div>
+            <div className="text-title-3">Visual library</div>
             <p className="text-label-2 text-subhead line-clamp-2">
-              Tiempos verbales, condicionales, modales y vocabulario en imágenes, listos para proyectar en clase.
+              Verb tenses, conditionals, modals and vocabulary in pictures, ready to project in class.
             </p>
           </div>
           <ChevronRight className="text-label-3 shrink-0" />
@@ -81,7 +81,7 @@ export default function LearnPage() {
                 </ProgressRing>
               </div>
               <span className="absolute right-5 bottom-3 inline-flex items-center gap-1 rounded-full bg-white/25 px-2.5 py-0.5 text-[11px] font-semibold">
-                Empieza aquí
+                Start here
               </span>
             </div>
             <div className="p-5">
@@ -96,7 +96,7 @@ export default function LearnPage() {
               </ul>
               <div className="mt-4 flex items-center justify-between text-[13px]">
                 <span className="text-label-2 inline-flex items-center gap-1.5">
-                  <MonitorPlay size={14} /> También en versión cómic
+                  <MonitorPlay size={14} /> Also in comic version
                 </span>
                 <span className="font-semibold tabular-nums">
                   {preDone}/{PREA1_TOPICS.length} temas
@@ -117,7 +117,7 @@ export default function LearnPage() {
                     <div>
                       <div className="text-[44px] leading-none font-extrabold tracking-tight">{l.id}</div>
                       <div className="mt-1 text-[15px] font-semibold">
-                        {l.nameEs} · {l.name}
+                        {l.name}
                       </div>
                     </div>
                     <ProgressRing value={c.ratio} size={58} stroke={6} color="#fff" className="[&_circle:first-child]:stroke-white/25">
@@ -126,7 +126,7 @@ export default function LearnPage() {
                   </div>
                   {isCurrent && (
                     <span className="absolute right-5 bottom-3 inline-flex items-center gap-1 rounded-full bg-white/25 px-2.5 py-0.5 text-[11px] font-semibold">
-                      <Sparkles size={12} /> Tu nivel
+                      <Sparkles size={12} /> Your level
                     </span>
                   )}
                 </div>
@@ -145,7 +145,7 @@ export default function LearnPage() {
                       <BookOpenText size={14} /> {l.book}
                     </span>
                     <span className="font-semibold tabular-nums">
-                      {c.done}/{c.total} unidades
+                      {c.done}/{c.total} units
                     </span>
                   </div>
                   <ProgressBar value={c.ratio} color={l.color} className="mt-2" />

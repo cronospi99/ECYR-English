@@ -48,10 +48,10 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
 
   return (
     <div className="flex flex-col gap-3">
-      <div role="radiogroup" aria-label="Quién puede entrar" className="grid grid-cols-2 gap-2">
+      <div role="radiogroup" aria-label="Who can join" className="grid grid-cols-2 gap-2">
         {[
-          { on: !some, icon: <Users size={22} />, title: 'Toda la clase', sub: students ? `${roster.length} estudiantes` : 'Como siempre', tone: 'var(--green)', pick: () => onChange(null) },
-          { on: some, icon: <Lock size={21} />, title: 'Solo algunos', sub: some ? `${chosen.size} ${chosen.size === 1 ? 'elegido' : 'elegidos'}` : 'Privado, 1 a 1…', tone: 'var(--indigo)', pick: () => !some && onChange([]) },
+          { on: !some, icon: <Users size={22} />, title: 'Whole class', sub: students ? `${roster.length} students` : 'As usual', tone: 'var(--green)', pick: () => onChange(null) },
+          { on: some, icon: <Lock size={21} />, title: 'Only some', sub: some ? `${chosen.size} ${chosen.size === 1 ? 'elegido' : 'elegidos'}` : 'Private, 1 to 1…', tone: 'var(--indigo)', pick: () => !some && onChange([]) },
         ].map((o) => (
           <button
             key={o.title}
@@ -80,9 +80,9 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
               <div className="flex items-center gap-2">
                 <label className="bg-card flex h-10 min-w-0 flex-1 items-center gap-2 rounded-[12px] px-3">
                   <Search size={17} className="text-label-3 shrink-0" />
-                  <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar estudiante" aria-label="Buscar estudiante" className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none" />
+                  <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search student" aria-label="Search student" className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none" />
                   {q && (
-                    <button type="button" aria-label="Borrar búsqueda" onClick={() => setQ('')} className="text-label-3">
+                    <button type="button" aria-label="Clear search" onClick={() => setQ('')} className="text-label-3">
                       <X size={16} />
                     </button>
                   )}
@@ -93,7 +93,7 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
                   disabled={!shown.length}
                   className="text-ink-blue h-10 shrink-0 rounded-[12px] px-2.5 text-[14px] font-semibold disabled:opacity-40"
                 >
-                  {chosen.size && shown.length && shown.every((s) => chosen.has(s.profile.id)) ? 'Ninguno' : 'Todos'}
+                  {chosen.size && shown.length && shown.every((s) => chosen.has(s.profile.id)) ? 'None' : 'All'}
                 </button>
               </div>
               <div className="flex max-h-[264px] flex-col overflow-y-auto overscroll-contain">
@@ -102,13 +102,13 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
                     <Spinner className="h-6 w-6" />
                   </div>
                 ) : !roster.length ? (
-                  <p className="text-label-2 px-3 py-5 text-center text-[14px]">{error ? 'No se pudo cargar tu clase.' : 'Aún no tienes estudiantes. Comparte tu código de clase.'}</p>
+                  <p className="text-label-2 px-3 py-5 text-center text-[14px]">{error ? 'Could not load your class.' : 'You don’t have students yet. Share your class code.'}</p>
                 ) : !shown.length ? (
-                  <p className="text-label-2 px-3 py-5 text-center text-[14px]">Sin resultados</p>
+                  <p className="text-label-2 px-3 py-5 text-center text-[14px]">No results</p>
                 ) : (
                   shown.map((s) => {
                     const on = chosen.has(s.profile.id);
-                    const name = s.profile.full_name?.trim() || s.profile.email?.split('@')[0] || 'Estudiante';
+                    const name = s.profile.full_name?.trim() || s.profile.email?.split('@')[0] || 'Student';
                     return (
                       <button
                         key={s.profile.id}
@@ -137,7 +137,7 @@ export function AccessPicker({ value, onChange }: { value: string[] | null; onCh
                 )}
               </div>
             </div>
-            {chosen.size === 0 && <p className="text-ink-orange mt-2 px-1 text-[13px] font-semibold">Elige al menos un estudiante 👆</p>}
+            {chosen.size === 0 && <p className="text-ink-orange mt-2 px-1 text-[13px] font-semibold">Pick at least one student 👆</p>}
           </motion.div>
         )}
       </AnimatePresence>
@@ -157,11 +157,11 @@ export function AccessSheet({ open, initial, onClose, onSave }: { open: boolean;
     <Sheet
       open={open}
       onClose={onClose}
-      title="¿Quién puede entrar?"
-      closeLabel="Cancelar"
+      title="Who can join?"
+      closeLabel="Cancel"
       trailing={
         <SheetAction bold disabled={!can} onClick={() => onSave(value)}>
-          Guardar
+          Save
         </SheetAction>
       }
     >

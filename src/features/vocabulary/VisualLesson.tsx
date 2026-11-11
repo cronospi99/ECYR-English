@@ -124,7 +124,7 @@ function Figures({ topic }: { topic: VisualTopic }) {
     <Card className="overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-2 p-4 pb-3">
         <h4 className="text-headline flex items-center gap-2">
-          <ImageIcon size={18} style={{ color: ink(topic.color) }} /> Mira la infografía
+          <ImageIcon size={18} style={{ color: ink(topic.color) }} /> See the infographic
         </h4>
         {figs.length > 1 && (
           <div className="no-scrollbar -mx-1 flex max-w-full gap-1.5 overflow-x-auto px-1 py-0.5">
@@ -139,7 +139,7 @@ function Figures({ topic }: { topic: VisualTopic }) {
       <a href={f.src} target="_blank" rel="noreferrer" className="group relative block bg-white" aria-label={`Abrir en grande: ${f.title}`}>
         <img src={f.src} alt={f.title} loading="lazy" width={f.w} height={f.h} className="mx-auto block h-auto max-h-[70vh] w-auto max-w-full" />
         <span className="material absolute right-3 bottom-3 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-semibold opacity-90">
-          <Expand size={13} /> Ver en grande
+          <Expand size={13} /> View large
         </span>
       </a>
       <div className="text-label-2 px-4 py-2.5 text-[13px]">
@@ -218,7 +218,7 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
           {score}/{rounds.length} {score === rounds.length ? '🏆' : score >= rounds.length * 0.7 ? '👏' : '💪'}
         </span>
         <Button variant="gray" onClick={restart}>
-          <Shuffle size={16} /> Jugar otra vez
+          <Shuffle size={16} /> Play again
         </Button>
       </div>
     );
@@ -236,9 +236,9 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
         <>
           <div className="mb-3 flex flex-wrap items-center gap-3">
             <Button onClick={() => speak(said(r.target))} style={{ background: color }} className="text-white">
-              <Volume2 size={17} /> Escuchar
+              <Volume2 size={17} /> Listen
             </Button>
-            <span className="text-label-2 text-[14px]">{r.target.def ? 'Escucha y elige el significado.' : 'Escucha y toca la imagen correcta.'}</span>
+            <span className="text-label-2 text-[14px]">{r.target.def ? 'Listen and choose the meaning.' : 'Listen and tap the correct picture.'}</span>
           </div>
           {r.target.def ? (
             <div className="grid gap-2 sm:grid-cols-2">
@@ -283,7 +283,7 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
             />
           ) : (
             <div className="rounded-[16px] p-4" style={{ background: tint(color, 10) }}>
-              <div className="text-label-2 text-[12px] font-bold tracking-wide uppercase">Significado</div>
+              <div className="text-label-2 text-[12px] font-bold tracking-wide uppercase">Meaning</div>
               <div className="mt-1 text-[18px] leading-snug font-semibold">{r.target.def ?? r.target.es}</div>
               <div className="mt-2 text-[28px] leading-none">{r.target.emoji ?? ''}</div>
             </div>
@@ -306,7 +306,7 @@ function PickGame({ topic, mode }: { topic: VisualTopic; mode: Exclude<Mode, 'ga
             <b>{r.flagQ ? `${r.target.en} → ${r.target.nat}` : r.target.en}</b> <span className="text-label-2">= {r.target.es}</span>
           </p>
           <Button size="sm" onClick={next}>
-            {i + 1 < rounds.length ? 'Siguiente' : 'Ver resultado'}
+            {i + 1 < rounds.length ? 'Next' : 'See result'}
           </Button>
         </motion.div>
       )}
@@ -359,12 +359,12 @@ function GapPractice({ topic }: { topic: VisualTopic }) {
   const [round, setRound] = useState(0);
   const qs = useMemo(() => gapQuestions(topic), [round, topic.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const done = useAwardOnce(topic, 'completa');
-  if (qs.length < 3) return <p className="text-label-2 text-[14px]">Este tema se practica mejor escuchando: prueba «Escucha y elige».</p>;
+  if (qs.length < 3) return <p className="text-label-2 text-[14px]">This topic is best practised by listening: try “Listen and choose”.</p>;
   return (
     <div>
       <div className="mb-2 flex justify-end">
         <Button size="sm" variant="plain" onClick={() => setRound((r) => r + 1)}>
-          <Shuffle size={15} /> Otras frases
+          <Shuffle size={15} /> Other phrases
         </Button>
       </div>
       <QuestionSet key={round} questions={qs} color={topic.color} onChecked={done} />
@@ -391,17 +391,17 @@ function Practice({ topic }: { topic: VisualTopic }) {
   const canGap = topic.items.filter((x) => !x.nogap && x.form).length >= 3;
   const modes: { value: Mode; label: ReactNode }[] = [
     abstract
-      ? { value: 'meaning', label: <span className="inline-flex items-center gap-1.5"><Sparkles size={14} /> Significado</span> }
-      : topic.extra !== 'spelling' && { value: 'picture' as Mode, label: <span className="inline-flex items-center gap-1.5"><ImageIcon size={14} /> Imagen</span> },
-    { value: 'listen', label: <span className="inline-flex items-center gap-1.5"><Headphones size={14} /> Escucha</span> },
-    canGap && { value: 'gap' as Mode, label: <span className="inline-flex items-center gap-1.5"><PenLine size={14} /> Completa</span> },
+      ? { value: 'meaning', label: <span className="inline-flex items-center gap-1.5"><Sparkles size={14} /> Meaning</span> }
+      : topic.extra !== 'spelling' && { value: 'picture' as Mode, label: <span className="inline-flex items-center gap-1.5"><ImageIcon size={14} /> Image</span> },
+    { value: 'listen', label: <span className="inline-flex items-center gap-1.5"><Headphones size={14} /> Listen</span> },
+    canGap && { value: 'gap' as Mode, label: <span className="inline-flex items-center gap-1.5"><PenLine size={14} /> Complete</span> },
   ].filter(Boolean) as { value: Mode; label: ReactNode }[];
   const [mode, setMode] = useState<Mode>(modes[0]!.value);
   return (
     <Card className="p-4 sm:p-5">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h4 className="text-title-3 flex items-center gap-2">
-          <Sparkles size={20} style={{ color: ink(topic.color) }} /> Practica
+          <Sparkles size={20} style={{ color: ink(topic.color) }} /> Practise
         </h4>
         <div className="no-scrollbar max-w-full overflow-x-auto">
           <Segmented<Mode> size="sm" value={mode} onChange={setMode} options={modes} />
@@ -440,7 +440,7 @@ export function VisualLesson({ topic, header = true }: { topic: VisualTopic; hea
             {header && (
               <div className="flex flex-wrap items-center gap-2">
                 <LevelChip level={topic.level} />
-                <span className="text-label-2 text-[13px] font-semibold">{topic.items.length} palabras</span>
+                <span className="text-label-2 text-[13px] font-semibold">{topic.items.length} words</span>
               </div>
             )}
             <h3 className="mt-1 text-[22px] leading-tight font-extrabold" style={{ color: ink(color) }}>
@@ -456,7 +456,7 @@ export function VisualLesson({ topic, header = true }: { topic: VisualTopic; hea
             )}
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <Button size="sm" variant="tinted" onClick={() => speak(topic.items.map((x) => said(x)).join('. ') + '.')}>
-                <Volume2 size={15} /> Escuchar todas
+                <Volume2 size={15} /> Listen to all
               </Button>
               <PdfButton build={() => topicWorksheet(topic)} />
             </div>
@@ -476,7 +476,7 @@ export function VisualLesson({ topic, header = true }: { topic: VisualTopic; hea
           ))}
         </div>
       )}
-      <p className="text-label-2 px-1 text-[13px]">Toca una tarjeta para escucharla y ver el ejemplo.</p>
+      <p className="text-label-2 px-1 text-[13px]">Tap a card to listen and see the example.</p>
       <motion.div layout className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {items.map((w) => (
           <WordCard key={w.id} w={w} color={color} open={open === w.id} onToggle={() => setOpen(open === w.id ? null : w.id)} />

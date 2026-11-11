@@ -39,10 +39,10 @@ function WorkshopList({ all }: { all: Workshop[] }) {
   const list = all.filter((w) => level === 'all' || w.level === level);
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
-      eyebrow="Gramática por niveles"
-      title="Talleres"
-      subtitle={`${all.length} talleres de A1 a C1: explicación corta, errores típicos, cuatro tipos de ejercicio y tarea en PDF.`}
+      back={{ to: '/practice', label: 'Practice' }}
+      eyebrow="Grammar by level"
+      title="Workshops"
+      subtitle={`${all.length} workshops from A1 to C1: short explanation, typical mistakes, four exercise types and PDF task.`}
       wide
     >
       <div className="no-scrollbar -mx-1 mb-4 flex gap-2 overflow-x-auto px-1 py-1">
@@ -55,7 +55,7 @@ function WorkshopList({ all }: { all: Workshop[] }) {
           </Chip>
         ))}
       </div>
-      {!all.length && <p className="text-label-2">Los talleres se están preparando.</p>}
+      {!all.length && <p className="text-label-2">The workshops are being prepared.</p>}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((w, i) => {
           const color = LEVEL_COLOR[w.level] ?? 'var(--blue)';
@@ -69,7 +69,7 @@ function WorkshopList({ all }: { all: Workshop[] }) {
                   <span className="min-w-0 flex-1">
                     <span className="flex items-center gap-2">
                       <LevelChip level={w.level} />
-                      {doneIds.has(w.id) && <span className="text-ink-green text-[12px] font-semibold">✓ Hecho</span>}
+                      {doneIds.has(w.id) && <span className="text-ink-green text-[12px] font-semibold">✓ Done</span>}
                     </span>
                     <span className="mt-1 block truncate text-[16px] font-bold">{w.title}</span>
                     <span className="text-label-2 block truncate text-[13px]">{w.titleEs}</span>
@@ -110,7 +110,7 @@ function WorkshopView({ w }: { w: Workshop }) {
 
   return (
     <Page
-      back={{ to: '/practice/workshops', label: 'Talleres' }}
+      back={{ to: '/practice/workshops', label: 'Workshops' }}
       eyebrow={`Taller · ${w.level}`}
       title={`${w.emoji} ${w.title}`}
       subtitle={w.titleEs}
@@ -123,7 +123,7 @@ function WorkshopView({ w }: { w: Workshop }) {
 
         <section className="space-y-3">
           <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
-            <BookOpen size={16} /> La regla
+            <BookOpen size={16} /> The rule
           </h2>
           {w.rules.map((r, i) => (
             <Card key={i} className="p-4">
@@ -169,7 +169,7 @@ function WorkshopView({ w }: { w: Workshop }) {
         {w.mistakes.length > 0 && (
           <section className="space-y-2">
             <h2 className="text-ink-orange flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase">
-              <AlertTriangle size={16} /> Errores típicos
+              <AlertTriangle size={16} /> Typical mistakes
             </h2>
             <div className="grid gap-2 sm:grid-cols-2">
               {w.mistakes.map((m, i) => (
@@ -186,9 +186,9 @@ function WorkshopView({ w }: { w: Workshop }) {
         <section>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="flex items-center gap-2 text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
-              <Dumbbell size={16} /> Practica
+              <Dumbbell size={16} /> Practise
             </h2>
-            {cur && <PdfButton label="Solo este ejercicio" build={() => workshopSheet(w, [cur])} />}
+            {cur && <PdfButton label="Only this exercise" build={() => workshopSheet(w, [cur])} />}
           </div>
           <div className="no-scrollbar mb-4 overflow-x-auto">
             <Segmented size="sm" value={String(set)} onChange={(v) => setSet(Number(v))} options={w.sets.map((s, i) => ({ value: String(i), label: `${i + 1}. ${s.title}` }))} />

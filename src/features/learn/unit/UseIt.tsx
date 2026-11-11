@@ -3,6 +3,7 @@
  * extra ones), the drill as self-check cards with model answers, the contrast
  * chart as side-by-side cards and the pronunciation note with playable chips.
  */
+import { useEsVisibility } from './Es';
 import { Fragment, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Check, ChevronRight, Eye, ListOrdered, MessagesSquare, Mic, Play, RotateCcw, Scale, Table2, Trophy, Volume2, X } from 'lucide-react';
@@ -38,10 +39,10 @@ export function UseIt({
   const nDlg = (g.dialogue?.length ? 1 : 0) + (dialogues?.length ?? 0);
   const drillItems = drill?.items.length ? drill.items : g.drill?.items;
   const opts = [
-    nDlg > 0 && { value: 'dialogue' as const, label: nDlg > 1 ? `Diálogos · ${nDlg}` : 'Diálogo', icon: MessagesSquare },
+    nDlg > 0 && { value: 'dialogue' as const, label: nDlg > 1 ? `Dialogues · ${nDlg}` : 'Dialogue', icon: MessagesSquare },
     drillItems && drillItems.length > 0 && { value: 'drill' as const, label: 'Drill', icon: ListOrdered },
-    g.contrast && { value: 'contrast' as const, label: 'Contraste', icon: Scale },
-    g.sound && { value: 'sound' as const, label: 'Sonido', icon: Volume2 },
+    g.contrast && { value: 'contrast' as const, label: 'Contrast', icon: Scale },
+    g.sound && { value: 'sound' as const, label: 'Sound', icon: Volume2 },
   ].filter(Boolean) as { value: UseTab; label: string; icon: typeof Mic }[];
   const [tab, setTab] = useState<UseTab | null>(null);
   if (!opts.length) return null;
@@ -49,10 +50,10 @@ export function UseIt({
   return (
     <section>
       <Kicker icon={MessagesSquare} color={color}>
-        Úsalo
+        Use it
       </Kicker>
       {opts.length > 1 && (
-        <div role="tablist" aria-label="Formas de practicar" className="no-scrollbar -mx-1 mb-3.5 flex gap-1.5 overflow-x-auto px-1 pb-0.5">
+        <div role="tablist" aria-label="Ways to practise" className="no-scrollbar -mx-1 mb-3.5 flex gap-1.5 overflow-x-auto px-1 pb-0.5">
           {opts.map((o) => {
             const on = o.value === cur;
             return (
@@ -83,15 +84,16 @@ export function UseIt({
 // ------------------------------------------------------------- dialogues --
 
 function Dialogues({ g, spec, color, extra = [] }: { g: GrammarPoint; spec: KeySpec; color: string; extra?: ExtraDialogue[] }) {
+  const esTitles = useEsVisibility('example') !== 'hide';
   const list = useMemo(
     () => [
-      ...(g.dialogue?.length ? [{ key: 'book', label: '📖 Del libro', title: undefined, subtitle: undefined, scene: undefined, cast: undefined, lines: g.dialogue }] : []),
+      ...(g.dialogue?.length ? [{ key: 'book', label: '📖 From the book', title: undefined, subtitle: undefined, scene: undefined, cast: undefined, lines: g.dialogue }] : []),
       ...extra.map((d, k) => {
         const emoji = d.scene.match(/^\p{Extended_Pictographic}️?/u)?.[0];
-        return { key: `x${k}`, label: `${emoji ?? '💬'} ${d.titleEs || d.title}`, title: d.title, subtitle: d.titleEs, scene: d.scene, cast: d.cast, lines: d.lines };
+        return { key: `x${k}`, label: `${emoji ?? '💬'} ${(esTitles && d.titleEs) || d.title}`, title: d.title, subtitle: esTitles ? d.titleEs : undefined, scene: d.scene, cast: d.cast, lines: d.lines };
       }),
     ],
-    [g.dialogue, extra],
+    [g.dialogue, extra, esTitles],
   );
   const [i, setI] = useState(0);
   const d = list[Math.min(i, list.length - 1)];
@@ -99,7 +101,7 @@ function Dialogues({ g, spec, color, extra = [] }: { g: GrammarPoint; spec: KeyS
   return (
     <div>
       {list.length > 1 && (
-        <div className="no-scrollbar -mx-1 mb-3 flex gap-1.5 overflow-x-auto px-1 pb-0.5" role="group" aria-label="Elegir diálogo">
+        <div className="no-scrollbar -mx-1 mb-3 flex gap-1.5 overflow-x-auto px-1 pb-0.5" role="group" aria-label="Choose dialogue">
           {list.map((x, k) => {
             const on = x.key === d.key;
             return (
@@ -274,9 +276,9 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
             <div className="mt-2 text-[20px] font-bold">
               {ok} de {n} bien
             </div>
-            <p className="text-label-2 mt-1 text-[14px]">{ok === n ? '¡Perfecto! Ya lo dominas.' : ok / n >= 0.7 ? 'Muy bien. Repite las que fallaste.' : 'Vuelve a intentarlo: mira bien la parte resaltada.'}</p>
+            <p className="text-label-2 mt-1 text-[14px]">{ok === n ? 'Perfect! You’ve mastered it.' : ok / n >= 0.7 ? 'Very good. Repeat the ones you missed.' : 'Vuelve a intentarlo: mira bien la parte resaltada.'}</p>
             <button type="button" onClick={restart} className="bg-card shadow-card mt-4 inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-[15px] font-semibold">
-              <RotateCcw size={16} aria-hidden /> Repetir
+              <RotateCcw size={16} aria-hidden /> Repeat
             </button>
           </motion.div>
         ) : (
@@ -291,7 +293,7 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
           >
             <div className="px-4 pt-3.5 pb-3">
               <div className="text-[12px] font-bold tracking-[0.06em] uppercase" style={{ color: ink(color) }}>
-                Frase {k + 1} de {n}
+                Sentence {k + 1} de {n}
               </div>
               <div className="mt-1.5 flex items-start gap-1">
                 <p className="min-w-0 flex-1 text-[18px] leading-snug font-semibold text-pretty">
@@ -300,14 +302,14 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
                 {!/_{2,}/.test(item) && <SpeakButton text={cleanItem(item)} size={16} />}
               </div>
               <div className="text-label-2 mt-2.5 flex items-center gap-1.5 text-[13px]">
-                <Mic size={14} aria-hidden /> Dilo en voz alta o escríbelo:
+                <Mic size={14} aria-hidden /> Say it out loud or type it:
               </div>
               <input
                 value={typed}
                 onChange={(e) => setTyped(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && setShown(true)}
-                placeholder="Escribe tu respuesta (opcional)"
-                aria-label="Tu respuesta"
+                placeholder="Type your answer (optional)"
+                aria-label="Your answer"
                 autoComplete="off"
                 autoCapitalize="off"
                 spellCheck={false}
@@ -317,7 +319,7 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
             {shown ? (
               <motion.div initial={reduce ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="px-4 pt-3 pb-4" style={{ background: tint('var(--green)', 8) }}>
                 <div className="text-ink-green flex items-center gap-1.5 text-[12px] font-bold tracking-[0.06em] uppercase">
-                  <Check size={14} aria-hidden /> Respuesta modelo
+                  <Check size={14} aria-hidden /> Model answer
                 </div>
                 <div className="mt-1 flex items-start gap-1">
                   <p className="min-w-0 flex-1 text-[18px] leading-snug font-semibold text-pretty">
@@ -335,9 +337,9 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
                 </div>
                 {typed.trim() && (
                   <p className={cn('mt-1.5 text-[14px] font-semibold', match ? 'text-ink-green' : 'text-label-2')}>
-                    {match ? '¡Escribiste exactamente eso!' : (
+                    {match ? 'You typed exactly that!' : (
                       <>
-                        Tú: <span className="font-normal">{typed}</span>
+                        You: <span className="font-normal">{typed}</span>
                       </>
                     )}
                   </p>
@@ -349,7 +351,7 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
                     className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] text-[15px] font-semibold text-white"
                     style={{ background: deep('var(--green)') }}
                   >
-                    <Check size={17} aria-hidden /> Lo dije bien
+                    <Check size={17} aria-hidden /> I said it right
                   </button>
                   <button
                     type="button"
@@ -357,7 +359,7 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
                     className="inline-flex h-11 items-center justify-center gap-1.5 rounded-[12px] text-[15px] font-semibold"
                     style={{ background: tint('var(--red)', 13), color: ink('var(--red)') }}
                   >
-                    <X size={17} aria-hidden /> Me equivoqué
+                    <X size={17} aria-hidden /> I got it wrong
                   </button>
                 </div>
               </motion.div>
@@ -369,10 +371,10 @@ function DrillCards({ items, answers, color }: { items: string[]; answers: strin
                   className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-[12px] text-[15px] font-semibold text-white"
                   style={{ background: deep(color) }}
                 >
-                  <Eye size={17} aria-hidden /> Ver respuesta
+                  <Eye size={17} aria-hidden /> See answer
                 </button>
                 <button type="button" onClick={() => mark(false)} className="text-label-2 inline-flex h-11 items-center gap-0.5 rounded-[12px] px-3 text-[14px] font-semibold">
-                  Saltar <ChevronRight size={15} aria-hidden />
+                  Skip <ChevronRight size={15} aria-hidden />
                 </button>
               </div>
             )}
@@ -413,7 +415,7 @@ function Contrast({ chart, spec }: { chart: GrammarChart; spec: KeySpec }) {
           onClick={() => setTable((t) => !t)}
           className="bg-fill-2 hover:bg-fill inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold transition-colors"
         >
-          <Table2 size={14} aria-hidden /> {table ? 'Ver tarjetas' : 'Ver tabla'}
+          <Table2 size={14} aria-hidden /> {table ? 'See cards' : 'See table'}
         </button>
       </div>
       {table ? (
@@ -569,7 +571,7 @@ function Sound({ text }: { text: string }) {
         <div className="space-y-3 px-4 pt-4">
           {phrases.length > 0 && (
             <div>
-              <div className="text-ink-purple mb-1.5 text-[11px] font-bold tracking-[0.07em] uppercase">Escucha y repite</div>
+              <div className="text-ink-purple mb-1.5 text-[11px] font-bold tracking-[0.07em] uppercase">Listen and repeat</div>
               <div className="flex flex-wrap gap-2">
                 {phrases.map((p, k) => (
                   <button
@@ -593,7 +595,7 @@ function Sound({ text }: { text: string }) {
           )}
           {ipa.length > 0 && (
             <div>
-              <div className="text-ink-purple mb-1.5 text-[11px] font-bold tracking-[0.07em] uppercase">Así suena</div>
+              <div className="text-ink-purple mb-1.5 text-[11px] font-bold tracking-[0.07em] uppercase">This is how it sounds</div>
               <div className="flex flex-wrap gap-1.5">
                 {ipa.map((s) => (
                   <span key={s} className="rounded-[10px] px-2.5 py-1 font-mono text-[15px] font-semibold" style={{ background: tint(purple, 16), color: ink(purple, 66) }}>

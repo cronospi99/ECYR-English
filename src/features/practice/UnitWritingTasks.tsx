@@ -35,7 +35,7 @@ export function WritingTaskTabs({ tasks, value, onChange }: { tasks: UnitWriting
     if (d < 0 || d + on.offsetWidth > el.clientWidth) el.scrollLeft += d - 4;
   }, [value]);
   return (
-    <div ref={box} role="tablist" aria-label="Tareas de writing" className="no-scrollbar -mx-1 flex snap-x gap-2 overflow-x-auto px-1 py-1 sm:grid sm:grid-cols-2 sm:overflow-visible">
+    <div ref={box} role="tablist" aria-label="Writing tasks" className="no-scrollbar -mx-1 flex snap-x gap-2 overflow-x-auto px-1 py-1 sm:grid sm:grid-cols-2 sm:overflow-visible">
       {tasks.map((t, i) => {
         const active = t.k === value;
         const c = taskColor(t.k);
@@ -58,8 +58,8 @@ export function WritingTaskTabs({ tasks, value, onChange }: { tasks: UnitWriting
             </span>
             <span className="min-w-0">
               <span className="flex items-center gap-1.5 text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(c) }}>
-                <span className="truncate">{t.book ? 'Tarea principal' : (t.genre ?? 'Writing')}</span>
-                {started && <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: c }} aria-label="Borrador guardado" />}
+                <span className="truncate">{t.book ? 'Main task' : (t.genre ?? 'Writing')}</span>
+                {started && <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: c }} aria-label="Draft saved" />}
               </span>
               <span className="line-clamp-2 text-[14px] leading-snug font-medium">{t.title}</span>
             </span>
@@ -80,14 +80,14 @@ function ModelAnswer({ model, storageKey, color }: { model: string; storageKey: 
       <div className="mt-5 rounded-[14px] p-4" style={{ background: tint(color, 10) }}>
         <div className="mb-2 flex items-center justify-between gap-3">
           <span className="text-[13px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
-            Respuesta modelo
+            Model answer
           </span>
           <Button variant="plain" size="sm" onClick={() => setState('hidden')} className="px-2">
-            <EyeOff size={15} /> Ocultar
+            <EyeOff size={15} /> Hide
           </Button>
         </div>
         <p className="text-[15px] leading-relaxed whitespace-pre-line text-pretty">{model}</p>
-        <p className="text-label-2 mt-3 text-[13px]">Es un ejemplo, no la única respuesta correcta. Compara la estructura y las expresiones con tu texto.</p>
+        <p className="text-label-2 mt-3 text-[13px]">It is an example, not the only correct answer. Compare the structure and expressions with your text.</p>
       </div>
     );
 
@@ -96,22 +96,22 @@ function ModelAnswer({ model, storageKey, color }: { model: string; storageKey: 
       {state === 'confirm' ? (
         <>
           <p className="text-[14px] text-pretty">
-            Aún no has escrito mucho. Aprendes más si intentas tu propia versión primero y luego la comparas. ¿Quieres ver el modelo de todos modos?
+            You haven’t written much yet. You learn more if you try your own version first and then compare it. Do you want to see the model anyway?
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Button variant="gray" size="sm" onClick={() => setState('shown')}>
-              <Eye size={15} /> Ver de todos modos
+              <Eye size={15} /> See it anyway
             </Button>
             <Button variant="plain" size="sm" onClick={() => setState('hidden')}>
-              Seguir escribiendo
+              Keep writing
             </Button>
           </div>
         </>
       ) : (
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-label-2 min-w-0 flex-1 text-[14px] text-pretty">Escribe tu versión primero; después compárala con una respuesta modelo.</p>
+          <p className="text-label-2 min-w-0 flex-1 text-[14px] text-pretty">Write your version first; then compare it with a model answer.</p>
           <Button variant="tinted" size="sm" onClick={reveal}>
-            <Eye size={15} /> Ver modelo
+            <Eye size={15} /> See model
           </Button>
         </div>
       )}
@@ -126,11 +126,11 @@ export function WritingTaskDetail({ unit, task, taskRef }: { unit: UnitWriting; 
     <div>
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full px-2.5 py-0.5 text-[12px] font-bold tracking-wide uppercase" style={{ background: tint(c, 14), color: ink(c) }}>
-          {task.genre ?? 'Tarea principal'}
+          {task.genre ?? 'Main task'}
         </span>
         {task.book && task.genre && (
           <span className="text-label-2 bg-fill-2 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[12px] font-semibold">
-            <BookOpen size={12} /> Principal
+            <BookOpen size={12} /> Main
           </span>
         )}
         {task.length && (
@@ -145,7 +145,7 @@ export function WritingTaskDetail({ unit, task, taskRef }: { unit: UnitWriting; 
       <p className="mt-2 text-[16px] text-pretty">{task.brief}</p>
       {task.briefEs && (
         <p className="text-label-2 mt-2 flex items-start gap-2 text-[14px] text-pretty">
-          <Languages size={15} className="mt-0.5 shrink-0" aria-label="En español" /> {task.briefEs}
+          <Languages size={15} className="mt-0.5 shrink-0" aria-label="In Spanish" /> {task.briefEs}
         </p>
       )}
       <WritingPad
@@ -177,7 +177,7 @@ export function WritingTasksPanel({
   const [own, setOwn] = useState(unit.tasks[0]?.k ?? 0);
   const value = k ?? own;
   const task = unit.tasks.find((t) => t.k === value) ?? unit.tasks[0];
-  if (!task) return <p className="text-label-2 text-[15px]">Esta unidad todavía no tiene tareas de writing.</p>;
+  if (!task) return <p className="text-label-2 text-[15px]">This unit doesn’t have writing tasks yet.</p>;
   return (
     <div>
       {unit.tasks.length > 1 && (
@@ -200,7 +200,7 @@ export function UnitWritingTasks({ level, unit }: { level: CefrLevel; unit: numb
         <IconTile icon={PenLine} color="var(--purple)" size={34} />
         <div className="min-w-0">
           <h3 className="text-title-3 leading-tight">Writing</h3>
-          {data && <p className="text-label-2 text-[13px]">{data.tasks.length} {data.tasks.length === 1 ? 'tarea' : 'tareas'} · con respuesta modelo</p>}
+          {data && <p className="text-label-2 text-[13px]">{data.tasks.length} {data.tasks.length === 1 ? 'task' : 'tasks'} · with model answer</p>}
         </div>
       </div>
       {loading || !data ? (

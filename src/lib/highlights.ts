@@ -38,25 +38,25 @@ import type { CSSProperties } from 'react';
 export type HighlightColor = 'yellow' | 'green' | 'blue' | 'pink' | 'orange' | 'red' | 'purple' | 'teal' | 'gray' | 'brown';
 
 export const HIGHLIGHTS: { id: HighlightColor; label: string; mark: string; bg: string }[] = [
-  { id: 'yellow', label: 'Amarillo', mark: '\u2061', bg: 'color-mix(in srgb, #ffd60a 55%, transparent)' },
-  { id: 'green', label: 'Verde', mark: '\u2062', bg: 'color-mix(in srgb, #30d158 40%, transparent)' },
-  { id: 'blue', label: 'Azul', mark: '\u2063', bg: 'color-mix(in srgb, #64d2ff 45%, transparent)' },
-  { id: 'pink', label: 'Rosa', mark: '\u2064', bg: 'color-mix(in srgb, #ff6fb5 40%, transparent)' },
-  { id: 'orange', label: 'Naranja', mark: '\uFE02\uFE04', bg: 'color-mix(in srgb, #ff9f0a 45%, transparent)' },
-  { id: 'red', label: 'Rojo', mark: '\uFE02\uFE05', bg: 'color-mix(in srgb, #ff453a 38%, transparent)' },
-  { id: 'purple', label: 'Morado', mark: '\uFE02\uFE06', bg: 'color-mix(in srgb, #bf5af2 38%, transparent)' },
-  { id: 'teal', label: 'Turquesa', mark: '\uFE02\uFE07', bg: 'color-mix(in srgb, #40c8c8 45%, transparent)' },
-  { id: 'gray', label: 'Gris', mark: '\uFE02\uFE08', bg: 'color-mix(in srgb, #8e8e93 40%, transparent)' },
-  { id: 'brown', label: 'Café', mark: '\uFE02\uFE09', bg: 'color-mix(in srgb, #a2845e 45%, transparent)' },
+  { id: 'yellow', label: 'Yellow', mark: '\u2061', bg: 'color-mix(in srgb, #ffd60a 55%, transparent)' },
+  { id: 'green', label: 'Green', mark: '\u2062', bg: 'color-mix(in srgb, #30d158 40%, transparent)' },
+  { id: 'blue', label: 'Blue', mark: '\u2063', bg: 'color-mix(in srgb, #64d2ff 45%, transparent)' },
+  { id: 'pink', label: 'Pink', mark: '\u2064', bg: 'color-mix(in srgb, #ff6fb5 40%, transparent)' },
+  { id: 'orange', label: 'Orange', mark: '\uFE02\uFE04', bg: 'color-mix(in srgb, #ff9f0a 45%, transparent)' },
+  { id: 'red', label: 'Red', mark: '\uFE02\uFE05', bg: 'color-mix(in srgb, #ff453a 38%, transparent)' },
+  { id: 'purple', label: 'Purple', mark: '\uFE02\uFE06', bg: 'color-mix(in srgb, #bf5af2 38%, transparent)' },
+  { id: 'teal', label: 'Turquoise', mark: '\uFE02\uFE07', bg: 'color-mix(in srgb, #40c8c8 45%, transparent)' },
+  { id: 'gray', label: 'Grey', mark: '\uFE02\uFE08', bg: 'color-mix(in srgb, #8e8e93 40%, transparent)' },
+  { id: 'brown', label: 'Brown', mark: '\uFE02\uFE09', bg: 'color-mix(in srgb, #a2845e 45%, transparent)' },
 ];
 
 /** Text sizes (index = the size mark's parameter; 0 is the normal size). */
 export const SIZES: { label: string; em: number | null }[] = [
   { label: 'Normal', em: null },
-  { label: 'Pequeño', em: 0.82 },
+  { label: 'Small', em: 0.82 },
   { label: 'Grande', em: 1.3 },
-  { label: 'Muy grande', em: 1.7 },
-  { label: 'Enorme', em: 2.3 },
+  { label: 'Very large', em: 1.7 },
+  { label: 'Huge', em: 2.3 },
 ];
 
 /** Fonts (index = the font mark's parameter; 0 is the app's own). */
@@ -65,19 +65,19 @@ export const FONTS: { label: string; family: string | null }[] = [
   { label: 'Google · Roboto', family: "Roboto, 'Google Sans', Arial, sans-serif" },
   { label: 'Apple · San Francisco', family: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif" },
   { label: 'Microsoft · Segoe UI', family: "'Segoe UI', Calibri, Arial, sans-serif" },
-  { label: 'Georgia (con serifa)', family: "Georgia, 'Times New Roman', serif" },
+  { label: 'Georgia (serif)', family: "Georgia, 'Times New Roman', serif" },
 ];
 /** Text colours (index = the text-colour mark's value; 0 is the normal colour). `css` adapts to light / dark; `hex` is for the clipboard. */
 export const TEXT_COLORS: { label: string; css: string | null; hex: string }[] = [
-  { label: 'Automático', css: null, hex: '' },
-  { label: 'Rojo', css: 'var(--red-ink)', hex: '#d70015' },
-  { label: 'Naranja', css: 'var(--orange-ink)', hex: '#c93400' },
-  { label: 'Verde', css: 'var(--green-ink)', hex: '#248a3d' },
-  { label: 'Azul', css: 'var(--blue-ink)', hex: '#0040dd' },
-  { label: 'Morado', css: 'var(--purple-ink)', hex: '#8944ab' },
-  { label: 'Rosa', css: 'var(--pink-ink)', hex: '#d30f45' },
-  { label: 'Turquesa', css: 'var(--teal-ink)', hex: '#0071a4' },
-  { label: 'Gris', css: 'var(--label-2)', hex: '#6e6e73' },
+  { label: 'Automatic', css: null, hex: '' },
+  { label: 'Red', css: 'var(--red-ink)', hex: '#d70015' },
+  { label: 'Orange', css: 'var(--orange-ink)', hex: '#c93400' },
+  { label: 'Green', css: 'var(--green-ink)', hex: '#248a3d' },
+  { label: 'Blue', css: 'var(--blue-ink)', hex: '#0040dd' },
+  { label: 'Purple', css: 'var(--purple-ink)', hex: '#8944ab' },
+  { label: 'Pink', css: 'var(--pink-ink)', hex: '#d30f45' },
+  { label: 'Turquoise', css: 'var(--teal-ink)', hex: '#0071a4' },
+  { label: 'Grey', css: 'var(--label-2)', hex: '#6e6e73' },
 ];
 /** Swatch colours of TEXT_COLORS (vivid, for the palette buttons). */
 export const TEXT_SWATCH = ['var(--label)', 'var(--red)', 'var(--orange)', 'var(--green)', 'var(--blue)', 'var(--purple)', 'var(--pink)', 'var(--teal)', '#8e8e93'];

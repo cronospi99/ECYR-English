@@ -18,9 +18,9 @@ const SOUND: Record<EdSound, { label: string; color: string; tip: string }> = {
 };
 
 const STAGES = [
-  { key: 'base', label: 'Presente', sub: 'base form', color: 'var(--green)' },
-  { key: 'past', label: 'Pasado', sub: 'past simple', color: 'var(--blue)' },
-  { key: 'part', label: 'Participio', sub: 'past participle', color: 'var(--purple)' },
+  { key: 'base', label: 'Present', sub: 'base form', color: 'var(--green)' },
+  { key: 'past', label: 'Past', sub: 'past simple', color: 'var(--blue)' },
+  { key: 'part', label: 'Participle', sub: 'past participle', color: 'var(--purple)' },
 ] as const;
 
 /** Speaks "dreamed / dreamt" as two words, not "slash". */
@@ -139,7 +139,7 @@ export function VerbBubble({
           {showEs && <div className="text-label-2 text-[14px]">{verb.es}</div>}
           {academic?.us && <div className="text-label-3 text-[12px]">US: {academic.us}</div>}
         </div>
-        <button type="button" onClick={onClose} className="bg-fill-2 hover:bg-fill flex h-9 w-9 shrink-0 items-center justify-center rounded-full" aria-label="Cerrar">
+        <button type="button" onClick={onClose} className="bg-fill-2 hover:bg-fill flex h-9 w-9 shrink-0 items-center justify-center rounded-full" aria-label="Close">
           <X size={17} />
         </button>
       </div>
@@ -158,10 +158,10 @@ export function VerbBubble({
           onClick={() => speak(`${spoken(verb.en)}. ${spoken(verb.past)}. ${spoken(verb.part)}.`, { rate: 0.85 })}
           className="brand-gradient inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-[14px] font-semibold text-white"
         >
-          <Play size={14} fill="currentColor" /> Escuchar las 3 formas
+          <Play size={14} fill="currentColor" /> Listen to all 3 forms
         </button>
         <button type="button" onClick={onToggleSaved} className="bg-fill-2 hover:bg-fill inline-flex h-10 items-center gap-1.5 rounded-full px-4 text-[14px] font-semibold">
-          <Star size={15} fill={saved ? 'currentColor' : 'none'} className={saved ? 'text-ios-yellow' : ''} /> {saved ? 'En mi lista' : 'Guardar'}
+          <Star size={15} fill={saved ? 'currentColor' : 'none'} className={saved ? 'text-ios-yellow' : ''} /> {saved ? 'On my list' : 'Save'}
         </button>
       </div>
     </motion.div>
@@ -266,7 +266,7 @@ function AcademicPanel({ a }: { a: AcademicVerb }) {
         <div className="flex items-center gap-2 rounded-[12px] px-3 py-2 text-[13.5px]" style={{ background: 'color-mix(in srgb, var(--green) 10%, transparent)' }}>
           <ArrowUpRight size={16} className="text-ink-green shrink-0" />
           <span>
-            Sube de registro: <span className="text-label-2 line-through decoration-1">{a.informal}</span> → <b className="text-ink-green">{a.en}</b>
+            Raise the register: <span className="text-label-2 line-through decoration-1">{a.informal}</span> → <b className="text-ink-green">{a.en}</b>
           </span>
         </div>
       )}

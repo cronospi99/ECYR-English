@@ -41,14 +41,14 @@ export default function Stopwatch({ data, set, focused }: WidgetProps<D>) {
         </ol>
       )}
       <div className="flex items-center justify-center gap-2 p-3">
-        <Act solid color={running ? 'var(--orange)' : 'var(--green)'} onClick={toggle} className="px-5" aria-label={running ? 'Pausar' : 'Iniciar'}>
+        <Act solid color={running ? 'var(--orange)' : 'var(--green)'} onClick={toggle} className="px-5" aria-label={running ? 'Pause' : 'Start'}>
           {running ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" />}
-          {running ? 'Pausa' : 'Iniciar'}
+          {running ? 'Pause' : 'Start'}
         </Act>
-        <Act color="var(--blue)" disabled={!running} onClick={() => set({ laps: [...laps, t].slice(-99) })} aria-label="Vuelta">
-          <Flag size={18} /> Vuelta
+        <Act color="var(--blue)" disabled={!running} onClick={() => set({ laps: [...laps, t].slice(-99) })} aria-label="Lap">
+          <Flag size={18} /> Lap
         </Act>
-        <Act color="var(--label)" disabled={!t} onClick={() => set({ startedAt: null, acc: 0, laps: [] })} aria-label="Reiniciar">
+        <Act color="var(--label)" disabled={!t} onClick={() => set({ startedAt: null, acc: 0, laps: [] })} aria-label="Restart">
           <RotateCcw size={18} />
         </Act>
       </div>

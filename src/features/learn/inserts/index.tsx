@@ -110,5 +110,5 @@ export function UnitInserts({ unitKey, section }: { unitKey: string; section: 'v
 }
 
 export function TopicInserts({ topicId }: { topicId: string }) {
-  return <Inserts list={TOPIC_INSERTS[topicId]} title="Más para practicar" />;
+  return <Inserts list={TOPIC_INSERTS[topicId]} title="More to practise" />;
 }

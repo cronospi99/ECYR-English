@@ -4,62 +4,51 @@ import type { ReactNode } from 'react';
 import { FileText, ShieldCheck } from 'lucide-react';
 import { Page } from '@/components/ui/Page';
 
-const UPDATED = '31 de octubre de 2026';
+const UPDATED = 'October 31, 2026';
 
 export default function LegalPage() {
   return (
-    <Page title="Términos y datos personales" subtitle={`Última actualización: ${UPDATED}`} back={{ to: '/', label: 'Inicio' }}>
+    <Page title="Terms and personal data" subtitle={`Last updated: ${UPDATED}`} back={{ to: '/', label: 'Home' }}>
       <div className="mx-auto flex max-w-[780px] flex-col gap-4 pb-10 text-[15px] leading-relaxed">
-        <Block icon={<FileText size={20} />} title="Términos y condiciones de uso">
-          <Item n="1" t="Qué es ECYR English">
-            Es un proyecto libre, gratuito y sin ánimo de lucro. Su único propósito es educativo: orientar y acompañar a los estudiantes en su aprendizaje de inglés. Es
-            una herramienta de apoyo al estudio y no reemplaza la guía de sus docentes.
+        <Block icon={<FileText size={20} />} title="Terms and conditions of use">
+          <Item n="1" t="What ECYR English is">
+            It is a free, non-profit project. Its only purpose is educational: to guide and support students in learning English. It is a study aid and does not replace the guidance of their teachers.
           </Item>
-          <Item n="2" t="Uso adecuado">
-            Al usarla te comprometes a tratar con respeto a los demás y a publicar solo contenido apropiado para un ambiente escolar (muros en vivo, dibujos, notas y juegos). Los
-            docentes pueden moderar, ocultar o borrar contenido de sus clases.
+          <Item n="2" t="Appropriate use">
+            By using it you agree to treat others with respect and to post only content suitable for a school environment (live boards, drawings, notes and games). Teachers can moderate, hide or delete content in their classes.
           </Item>
-          <Item n="3" t="Contenidos">
-            Los materiales son propios o de terceros que se citan con sus créditos, y se usan solo con fines educativos. Si eres titular de un contenido y quieres que se retire,
-            avísanos y lo quitaremos.
+          <Item n="3" t="Content">
+            The materials are our own or third-party materials credited to their authors, and are used for educational purposes only. If you own a piece of content and want it removed, let us know and we will take it down.
           </Item>
-          <Item n="4" t="Sin garantías">
-            La plataforma se ofrece tal como está. Trabajamos para que funcione bien, pero puede tener fallas o pausas, y algunas funciones dependen de servicios externos.
+          <Item n="4" t="No warranties">
+            The platform is provided as is. We work to keep it running well, but it may have faults or pauses, and some features depend on external services.
           </Item>
-          <Item n="5" t="Cambios">Estos términos pueden actualizarse; la fecha de arriba indica la versión vigente.</Item>
+          <Item n="5" t="Changes">These terms may be updated; the date above shows the current version.</Item>
         </Block>
 
-        <Block icon={<ShieldCheck size={20} />} title="Tratamiento de datos personales">
+        <Block icon={<ShieldCheck size={20} />} title="Personal data handling">
           <p>
-            Cumplimos la Ley Estatutaria 1581 de 2012 y el Decreto 1377 de 2013 (compilado en el Decreto 1074 de 2015) sobre protección de datos personales en Colombia.
+            We comply with Statutory Law 1581 of 2012 and Decree 1377 of 2013 (compiled in Decree 1074 of 2015) on personal data protection in Colombia.
           </p>
-          <Item n="1" t="No recopilamos datos con otros fines">
-            ECYR English no recopila datos con fines comerciales, publicitarios ni de perfilamiento, no vende ni comparte información con terceros y no usa cookies de
-            publicidad ni rastreadores.
+          <Item n="1" t="We do not collect data for any other purpose">
+            ECYR English does not collect data for commercial, advertising or profiling purposes, does not sell or share information with third parties, and does not use advertising cookies or trackers.
           </Item>
-          <Item n="2" t="Lo único que se guarda">
-            Sin cuenta, tu progreso queda solo en tu dispositivo. Si creas una cuenta, se guarda lo mínimo para que funcione: nombre, correo, rol (estudiante o docente), tu
-            progreso y lo que tú decidas enviar a tu docente o subir a tu portafolio. Solo tú, tu docente y el administrador de la plataforma pueden verlo.
+          <Item n="2" t="The only things we store">
+            Without an account, your progress stays only on your device. If you create an account, only the minimum needed to make it work is saved: name, email, role (student or teacher), your progress and whatever you choose to send to your teacher or upload to your portfolio. Only you, your teacher and the platform administrator can see it.
           </Item>
-          <Item n="3" t="Voz y datos sensibles">
-            Las grabaciones y todo lo que dices al micrófono se usan solo durante la actividad y se eliminan en el momento en que cambias a otra sección de la aplicación. No se
-            guardan en nuestros servidores. El reconocimiento de voz lo hace tu navegador (por ejemplo, Chrome usa servicios de Google). Solo se conserva lo que tú decidas
-            enviar, como el texto de una respuesta para tu docente.
+          <Item n="3" t="Voice and sensitive data">
+            Recordings and everything you say into the microphone are used only during the activity and are deleted the moment you switch to another section of the app. They are not stored on our servers. Speech recognition is done by your browser (for example, Chrome uses Google services). Only what you choose to send, such as the text of an answer for your teacher, is kept.
           </Item>
-          <Item n="4" t="Servicios externos">
-            Algunas funciones (voces naturales, AI Coach) envían el texto necesario a un servicio externo solo para generar la respuesta en ese momento. La plataforma no
-            guarda ese contenido.
+          <Item n="4" t="External services">
+            Some features (natural voices, AI Coach) send the necessary text to an external service only to generate the response at that moment. The platform does not store that content.
           </Item>
-          <Item n="5" t="Niñas, niños y adolescentes">
-            Como la usan estudiantes menores de edad, su información se trata respetando su interés superior y sus derechos fundamentales (artículo 7 de la Ley 1581).
-            Recomendamos que padres y acudientes conozcan la herramienta.
+          <Item n="5" t="Children and teenagers">
+            Because it is used by students under the age of majority, their information is handled respecting their best interests and fundamental rights (article 7 of Law 1581). We recommend that parents and guardians get to know the tool.
           </Item>
-          <Item n="6" t="Tus derechos">
-            Puedes conocer, actualizar, rectificar y pedir que se borren tus datos, revocar tu autorización, saber cómo se usan y presentar quejas ante la Superintendencia de
-            Industria y Comercio (artículo 8 de la Ley 1581). Para hacerlo, escríbele a tu docente o al administrador de la plataforma: puede eliminar tu cuenta con todos
-            sus datos.
+          <Item n="6" t="Your rights">
+            You can access, update, correct and ask for your data to be deleted, revoke your authorisation, find out how it is used and file complaints with the Superintendence of Industry and Commerce (article 8 of Law 1581). To do so, write to your teacher or to the platform administrator: they can delete your account with all its data.
           </Item>
-          <Item n="7" t="Seguridad">Los datos de las cuentas se guardan en una base de datos con acceso restringido: cada persona solo puede leer lo que le corresponde.</Item>
+          <Item n="7" t="Security">Account data is stored in a restricted-access database: each person can only read what belongs to them.</Item>
         </Block>
       </div>
     </Page>

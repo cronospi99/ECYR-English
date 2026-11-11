@@ -109,7 +109,7 @@ export async function saveWork(w: WorkInput): Promise<SaveWorkResult> {
       });
       if (error) {
         console.warn('[work] save failed:', error.message);
-        return { ok: false, error: /failed to fetch|network/i.test(error.message) ? 'Sin conexión. Inténtalo de nuevo.' : 'No se pudo enviar tu trabajo.' };
+        return { ok: false, error: /failed to fetch|network/i.test(error.message) ? 'No connection. Try again.' : 'Could not send your work.' };
       }
       writeSent({ ...readSent(), [fp]: Date.now() });
       return { ok: true, saved: true };
@@ -118,6 +118,6 @@ export async function saveWork(w: WorkInput): Promise<SaveWorkResult> {
     }
   } catch (e) {
     console.warn('[work] save failed:', e);
-    return { ok: false, error: 'No se pudo enviar tu trabajo.' };
+    return { ok: false, error: 'Could not send your work.' };
   }
 }

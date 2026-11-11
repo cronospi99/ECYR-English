@@ -29,9 +29,9 @@ import type { ViewProps } from './layouts';
 const SPRING = { type: 'spring' as const, stiffness: 260, damping: 24 };
 const PICK_COLORS: LinkColor[] = ['ink', 'blue', 'red', 'green', 'orange', 'purple'];
 const KIND_ICON: Record<LinkKind, { icon: ReactNode; label: string }> = {
-  arrow: { icon: <ArrowRight size={18} strokeWidth={2.6} />, label: 'Flecha' },
-  line: { icon: <Minus size={18} strokeWidth={2.6} />, label: 'Línea' },
-  double: { icon: <ArrowLeftRight size={18} strokeWidth={2.4} />, label: 'Doble flecha' },
+  arrow: { icon: <ArrowRight size={18} strokeWidth={2.6} />, label: 'Arrow' },
+  line: { icon: <Minus size={18} strokeWidth={2.6} />, label: 'Line' },
+  double: { icon: <ArrowLeftRight size={18} strokeWidth={2.4} />, label: 'Double arrow' },
 };
 
 const f1 = (n: number) => n.toFixed(1);
@@ -215,8 +215,8 @@ export function JamCanvas({
     if (from === c.id) return setFrom(null);
     const exists = bundle.links.some((l) => (l.from === from && l.to === c.id) || (l.from === c.id && l.to === from));
     setFrom(null);
-    if (exists) return say('Ya están conectadas');
-    if (bundle.links.length >= 300) return say('Demasiadas flechas (300).');
+    if (exists) return say('Already connected');
+    if (bundle.links.length >= 300) return say('Too many arrows (300).');
     onLink({ from, to: c.id, kind, color });
   };
 
@@ -380,7 +380,7 @@ export function JamCanvas({
   const linkTransition = (l: LiveLink) => (moving && (l.from === moving || l.to === moving) ? { duration: 0 } : SPRING);
   const pickLink = (l: LiveLink) => {
     if (tool) return;
-    if (!canEditLink(l)) return say('Solo quien la dibujó puede cambiarla');
+    if (!canEditLink(l)) return say('Only the person who drew it can change it');
     setSel(null);
     setSelLink(l.id);
   };
@@ -493,7 +493,7 @@ export function JamCanvas({
                     onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (tool ? tapConnect(c) : onOpen(c))}
                     tabIndex={0}
                     role="button"
-                    aria-label={c.text || 'Dibujo'}
+                    aria-label={c.text || 'Drawing'}
                   >
                     <StickyCard
                       card={c}
@@ -517,8 +517,8 @@ export function JamCanvas({
                     {resizable && (
                       <button
                         type="button"
-                        aria-label="Cambiar tamaño"
-                        title="Arrastra para cambiar el tamaño"
+                        aria-label="Resize"
+                        title="Drag to resize"
                         tabIndex={showHandle ? 0 : -1}
                         className={cn(
                           'absolute z-[3] flex cursor-nwse-resize touch-none items-center justify-center rounded-full bg-white text-[#1f1f24] shadow-[0_2px_8px_-1px_rgb(0_0_0/0.35)] transition-opacity duration-150',
@@ -558,12 +558,12 @@ export function JamCanvas({
                 <motion.span key={from ? 'b' : 'a'} initial={{ scale: 0.5 }} animate={{ scale: 1 }} className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--blue)] text-[14px] text-white">
                   {from ? '2' : '1'}
                 </motion.span>
-                {from ? 'Ahora toca otra' : 'Toca una tarjeta'}
+                {from ? 'Now tap another' : 'Tap a card'}
               </span>
               <KindPicker value={kind} onChange={setKind} />
               <ColorDots value={color} onChange={setColor} />
               <button type="button" onClick={() => setTool(false)} className="bg-label text-bg flex h-9 items-center gap-1 rounded-full px-3.5 text-[14px] font-bold">
-                <Check size={16} strokeWidth={3} /> Listo
+                <Check size={16} strokeWidth={3} /> Done
               </button>
             </motion.div>
           )}
@@ -584,13 +584,13 @@ export function JamCanvas({
 
       <div className="absolute bottom-[max(env(safe-area-inset-bottom),16px)] left-4 z-10 flex items-center gap-2">
         <div className="material-strong shadow-float flex items-center gap-0.5 rounded-full p-1">
-          <button type="button" aria-label="Alejar" onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
+          <button type="button" aria-label="Zoom out" onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
             <Minus size={18} />
           </button>
-          <button type="button" aria-label="Ajustar" onClick={() => setZoom(1)} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
+          <button type="button" aria-label="Fit" onClick={() => setZoom(1)} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
             <Scan size={17} />
           </button>
-          <button type="button" aria-label="Acercar" onClick={() => setZoom((z) => Math.min(1.8, +(z + 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
+          <button type="button" aria-label="Zoom in" onClick={() => setZoom((z) => Math.min(1.8, +(z + 0.15).toFixed(2)))} className="hover:bg-fill-2 flex h-10 w-10 items-center justify-center rounded-full">
             <Plus size={18} />
           </button>
         </div>
@@ -608,7 +608,7 @@ export function JamCanvas({
             className={cn('shadow-float flex h-12 items-center gap-2 rounded-full pr-4 pl-3 text-[15px] font-bold transition-colors', tool ? 'bg-[var(--blue)] text-white' : 'material-strong text-label')}
           >
             <Waypoints size={20} strokeWidth={2.4} />
-            Conectar
+            Connect
           </motion.button>
         )}
       </div>
@@ -619,7 +619,7 @@ export function JamCanvas({
 // ------------------------------------------------------------ link tools ----
 function KindPicker({ value, onChange }: { value: LinkKind; onChange: (k: LinkKind) => void }) {
   return (
-    <div role="radiogroup" aria-label="Tipo de conexión" className="bg-fill-2 flex rounded-full p-0.5">
+    <div role="radiogroup" aria-label="Connection type" className="bg-fill-2 flex rounded-full p-0.5">
       {(Object.keys(KIND_ICON) as LinkKind[]).map((k) => (
         <button
           key={k}
@@ -640,14 +640,14 @@ function KindPicker({ value, onChange }: { value: LinkKind; onChange: (k: LinkKi
 
 function ColorDots({ value, onChange }: { value: LinkColor; onChange: (c: LinkColor) => void }) {
   return (
-    <div role="radiogroup" aria-label="Color de la flecha" className="flex items-center gap-1">
+    <div role="radiogroup" aria-label="Arrow colour" className="flex items-center gap-1">
       {PICK_COLORS.map((c) => (
         <button
           key={c}
           type="button"
           role="radio"
           aria-checked={value === c}
-          aria-label={c === 'ink' ? 'Negro' : c}
+          aria-label={c === 'ink' ? 'Black' : c}
           onClick={() => onChange(c)}
           className={cn('h-7 w-7 rounded-full transition-transform active:scale-90', value === c && 'scale-110 ring-[2.5px] ring-[var(--label)] ring-offset-2 ring-offset-[var(--bg)]')}
           style={{ background: LINK_INK[c] }}
@@ -662,10 +662,10 @@ function LinkBar({ link, onPatch, onDelete, onClose }: { link: LiveLink; onPatch
   useEffect(() => setLabel(link.label ?? ''), [link.label]);
   const ends = (
     <>
-      <button type="button" aria-label="Borrar flecha" onClick={onDelete} disabled={link.pending} className="text-ink-red flex h-9 w-9 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_13%,transparent)] disabled:opacity-35">
+      <button type="button" aria-label="Delete arrow" onClick={onDelete} disabled={link.pending} className="text-ink-red flex h-9 w-9 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--red)_13%,transparent)] disabled:opacity-35">
         <Trash2 size={17} />
       </button>
-      <button type="button" aria-label="Cerrar" onClick={onClose} className="text-label-2 hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full">
+      <button type="button" aria-label="Close" onClick={onClose} className="text-label-2 hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full">
         <X size={18} />
       </button>
     </>
@@ -681,11 +681,11 @@ function LinkBar({ link, onPatch, onDelete, onClose }: { link: LiveLink; onPatch
       exit={{ opacity: 0, y: -12, scale: 0.96 }}
       className="material-strong shadow-float pointer-events-auto flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1.5 rounded-[22px] px-2.5 py-2"
       role="toolbar"
-      aria-label="Flecha"
+      aria-label="Arrow"
     >
       <div className="flex items-center gap-2">
         <KindPicker value={link.kind} onChange={(kind) => onPatch({ kind })} />
-        <button type="button" aria-label="Invertir dirección" title="Invertir" disabled={link.kind === 'line' || link.pending} onClick={() => onPatch({ flip: true })} className="bg-fill-2 text-label flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-35">
+        <button type="button" aria-label="Swap direction" title="Swap" disabled={link.kind === 'line' || link.pending} onClick={() => onPatch({ flip: true })} className="bg-fill-2 text-label flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-35">
           <ArrowRightLeft size={17} />
         </button>
         <span className="flex items-center gap-2 sm:hidden">{ends}</span>
@@ -700,8 +700,8 @@ function LinkBar({ link, onPatch, onDelete, onClose }: { link: LiveLink; onPatch
           onKeyDown={(e) => {
             if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
           }}
-          placeholder="Etiqueta"
-          aria-label="Etiqueta"
+          placeholder="Label"
+          aria-label="Label"
           disabled={link.pending}
           className="placeholder:text-label-3 w-[92px] bg-transparent text-[14px] font-semibold outline-none sm:w-[120px]"
         />

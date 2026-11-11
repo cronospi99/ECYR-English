@@ -155,7 +155,7 @@ export function Clamp({ text, lines = 2, className, render }: { text: string; li
       </p>
       {(overflows || open) && (
         <button type="button" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="text-ink-blue mt-1 text-[14px] font-semibold">
-          {open ? 'Leer menos' : 'Leer más'}
+          {open ? 'Read less' : 'Read more'}
         </button>
       )}
     </div>
@@ -166,7 +166,7 @@ export function Clamp({ text, lines = 2, className, render }: { text: string; li
 export function RoleLegend({ roles }: { roles: Role[] }) {
   if (!roles.length) return null;
   return (
-    <ul className="text-label-2 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[12px]" aria-label="Leyenda de colores">
+    <ul className="text-label-2 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[12px]" aria-label="Colour key">
       {roles.map((r) => (
         <li key={r} className="inline-flex items-center gap-1.5">
           <span className="h-2.5 w-2.5 rounded-full" style={{ background: ROLE_INFO[r].color }} aria-hidden />

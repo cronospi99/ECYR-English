@@ -77,7 +77,7 @@ export function ShapePicker({
 }) {
   const paper = COLOR_STYLE[color];
   return (
-    <div role="radiogroup" aria-label="Forma" className="flex flex-wrap gap-1.5">
+    <div role="radiogroup" aria-label="Shape" className="flex flex-wrap gap-1.5">
       {CARD_SHAPES.map((k) => {
         const on = value === k && !central;
         return (
@@ -142,20 +142,20 @@ export function DrawModal({ open, initial, onClose, onDone }: { open: boolean; i
           transition={{ duration: 0.22 }}
           role="dialog"
           aria-modal="true"
-          aria-label="Dibujar"
+          aria-label="Draw"
         >
           <div className="material hairline-b flex h-14 shrink-0 items-center gap-2 px-3">
             <button type="button" onClick={onClose} className="text-ink-blue h-10 rounded-[10px] px-2 text-[17px] hover:opacity-70">
-              Cancelar
+              Cancel
             </button>
-            <h2 className="text-headline flex-1 text-center">🎨 Dibujo</h2>
+            <h2 className="text-headline flex-1 text-center">🎨 Drawing</h2>
             <span className="w-[84px]" />
           </div>
           <div className="min-h-0 flex-1 overflow-y-auto p-3 sm:p-6">
             <DrawingBoard
               className="mx-auto w-full max-w-[920px]"
               onDone={onDone}
-              doneLabel="Usar dibujo"
+              doneLabel="Use drawing"
               initial={initial ?? undefined}
               aspect={4 / 3}
               compact={narrow}
@@ -237,10 +237,10 @@ export function Composer({
         open={open}
         onClose={onClose}
         title={heading}
-        closeLabel="Cancelar"
+        closeLabel="Cancel"
         trailing={
           <SheetAction bold disabled={!can} onClick={() => void submit()}>
-            {busy ? <Spinner className="h-4 w-4" /> : 'Publicar'}
+            {busy ? <Spinner className="h-4 w-4" /> : 'Post'}
           </SheetAction>
         }
       >
@@ -260,12 +260,12 @@ export function Composer({
             <span aria-hidden className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 rotate-[-2deg] rounded-[2px] bg-white/60 shadow-[0_1px_2px_rgb(0_0_0/0.1)]" />
             {image && (
               <div className="relative mb-3 overflow-hidden rounded-[6px] bg-white/80" style={{ aspectRatio: '4 / 3' }}>
-                <img src={image} alt="Tu dibujo" className="h-full w-full object-contain" />
+                <img src={image} alt="Your drawing" className="h-full w-full object-contain" />
                 <div className="absolute top-2 right-2 flex gap-1.5">
-                  <button type="button" onClick={() => setDrawing(true)} aria-label="Editar dibujo" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white">
+                  <button type="button" onClick={() => setDrawing(true)} aria-label="Edit drawing" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white">
                     <Pencil size={16} />
                   </button>
-                  <button type="button" onClick={() => setImage(null)} aria-label="Quitar dibujo" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white">
+                  <button type="button" onClick={() => setImage(null)} aria-label="Remove drawing" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white">
                     <X size={18} />
                   </button>
                 </div>
@@ -280,8 +280,8 @@ export function Composer({
               }}
               rows={image ? 2 : 5}
               maxLength={MAX_TEXT}
-              aria-label="Texto de la tarjeta"
-              placeholder={layout === 'story' ? 'And then…' : 'Escribe tu idea…'}
+              aria-label="Card text"
+              placeholder={layout === 'story' ? 'And then…' : 'Type your idea…'}
               className="font-rounded w-full resize-none bg-transparent text-[20px] leading-[1.35] font-semibold outline-none placeholder:text-black/35"
             />
             <div className={cn('text-right text-[12px] font-semibold tabular-nums', left < 20 ? 'text-[#c8102e]' : 'text-black/40')}>{left}</div>
@@ -303,7 +303,7 @@ export function Composer({
           )}
 
           {layout === 'columns' && columns.length > 1 && (
-            <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Columna">
+            <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Column">
               {columns.map((name, i) => (
                 <button
                   key={i}
@@ -321,10 +321,10 @@ export function Composer({
 
           <div className="flex flex-wrap items-center gap-2">
             <Button type="button" variant="tinted" onClick={() => setDrawing(true)} className="flex-1 sm:flex-none">
-              <Paintbrush size={18} /> {image ? 'Editar dibujo' : 'Dibujar'}
+              <Paintbrush size={18} /> {image ? 'Edit drawing' : 'Draw'}
             </Button>
             <Button type="button" variant="brand" disabled={!can} onClick={() => void submit()} className="flex-1">
-              {busy ? <Spinner className="h-5 w-5" /> : 'Publicar'}
+              {busy ? <Spinner className="h-5 w-5" /> : 'Post'}
             </Button>
           </div>
           {err && <p className="text-ink-red text-[14px]">{err}</p>}
@@ -338,7 +338,7 @@ export function Composer({
           setDrawing(false);
           void fitImage(url).then((ok) => {
             if (ok) setImage(ok);
-            else setErr('El dibujo es demasiado grande. Prueba con menos detalle.');
+            else setErr('The drawing is too big. Try with less detail.');
           });
         }}
       />

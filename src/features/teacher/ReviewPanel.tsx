@@ -110,11 +110,11 @@ export function AnnotatedText({ text, notes, onAdd, active, onPick, color }: { t
                   if (e.key === 'Enter') add();
                   if (e.key === 'Escape') setSel(null);
                 }}
-                placeholder="Tu comentario…"
+                placeholder="Your comment…"
                 maxLength={500}
                 className="min-w-0 flex-1 bg-transparent px-1.5 text-[14px] outline-none"
               />
-              <button type="button" onClick={add} aria-label="Guardar comentario" className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white" style={{ background: ink(color) }}>
+              <button type="button" onClick={add} aria-label="Save comment" className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white" style={{ background: ink(color) }}>
                 <Check size={15} />
               </button>
             </div>
@@ -126,7 +126,7 @@ export function AnnotatedText({ text, notes, onAdd, active, onPick, color }: { t
               className="shadow-float inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[13px] font-semibold text-white"
               style={{ background: ink(color) }}
             >
-              <MessageSquarePlus size={15} /> Comentar
+              <MessageSquarePlus size={15} /> Comment
             </button>
           )}
         </div>
@@ -197,8 +197,8 @@ export function ReviewPanel({
     <div className="space-y-3">
       <div>
         <div className="text-label-2 mb-1 flex items-center justify-between text-[12px] font-semibold uppercase">
-          <span>Texto del estudiante</span>
-          <span className="font-normal normal-case">Selecciona palabras para comentar</span>
+          <span>Student’s text</span>
+          <span className="font-normal normal-case">Select words to comment on</span>
         </div>
         <AnnotatedText text={text} notes={notes} onAdd={(n) => setNotes((l) => [...l, n])} active={active} onPick={setActive} color={color} />
       </div>
@@ -218,7 +218,7 @@ export function ReviewPanel({
               <span className="min-w-0 flex-1">
                 <span className="text-label-2 italic">“{n.quote.length > 60 ? `${n.quote.slice(0, 60)}…` : n.quote}”</span> <span className="font-medium">{n.note}</span>
               </span>
-              <button type="button" onClick={() => setNotes((l) => l.filter((_, k) => k !== i))} aria-label="Borrar comentario" className="text-label-3 hover:text-ink-red shrink-0">
+              <button type="button" onClick={() => setNotes((l) => l.filter((_, k) => k !== i))} aria-label="Delete comment" className="text-label-3 hover:text-ink-red shrink-0">
                 <Trash2 size={15} />
               </button>
             </li>
@@ -228,7 +228,7 @@ export function ReviewPanel({
 
       <div className="rounded-[16px] p-3" style={{ background: tint(color, 8) }}>
         <div className="mb-2 text-[12px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
-          Revisión del docente
+          Teacher’s review
         </div>
         {exam ? (
           <>
@@ -241,7 +241,7 @@ export function ReviewPanel({
                     <span aria-hidden>{s.emoji}</span>
                     <span className="min-w-0 flex-1 text-[13px] leading-tight">
                       <span className="block font-semibold">{s.label}</span>
-                      <span className="text-label-2 block text-[11px]">{ai == null ? 'IA: pendiente' : `IA: ${ai}%`}</span>
+                      <span className="text-label-2 block text-[11px]">{ai == null ? 'AI: pending' : `IA: ${ai}%`}</span>
                     </span>
                     <input
                       value={v ?? ''}
@@ -265,13 +265,13 @@ export function ReviewPanel({
                   {fmt(grade)}
                 </span>
                 <span className="text-label-2 text-[14px]">/ 5,0 · {pct}%</span>
-                {aiGrade != null && Math.abs(aiGrade - grade) >= 0.05 && <span className="text-label-2 text-[13px] line-through">IA: {fmt(aiGrade)}</span>}
+                {aiGrade != null && Math.abs(aiGrade - grade) >= 0.05 && <span className="text-label-2 text-[13px] line-through">AI: {fmt(aiGrade)}</span>}
               </div>
             )}
           </>
         ) : (
           <label className="flex items-center gap-2 text-[14px]">
-            Nota (opcional)
+            Note (optional)
             <input
               value={score}
               onChange={(e) => setScore(e.target.value.replace(/\D/g, '').slice(0, 3))}
@@ -287,12 +287,12 @@ export function ReviewPanel({
           onChange={(e) => setComment(e.target.value)}
           maxLength={4000}
           rows={3}
-          placeholder="Comentario general para el estudiante…"
+          placeholder="General comment for the student…"
           className="bg-card placeholder:text-label-3 mt-2.5 w-full resize-y rounded-[12px] p-2.5 text-[14.5px] outline-none focus:ring-2"
         />
         <div className="mt-2 flex flex-wrap items-center gap-3">
           <label className="flex items-center gap-2 text-[13.5px]">
-            <Toggle checked={notify} onChange={setNotify} label="Visible para el estudiante" /> {notify ? 'Visible para el estudiante' : 'Borrador (solo tú)'}
+            <Toggle checked={notify} onChange={setNotify} label="Visible to the student" /> {notify ? 'Visible to the student' : 'Draft (only you)'}
           </label>
           <span className="ml-auto flex items-center gap-2">
             {review && (
@@ -305,13 +305,13 @@ export function ReviewPanel({
                   setScore('');
                   setSections({ ...(exam?.sections ?? {}) });
                 }}
-                title="Vaciar la revisión (luego guarda)"
+                title="Clear the review (then save)"
               >
-                <X size={15} /> Vaciar
+                <X size={15} /> Clear
               </Button>
             )}
             <Button size="sm" onClick={() => void save()} disabled={state === 'saving'}>
-              {state === 'saved' ? <Check size={15} /> : null} {state === 'saving' ? 'Guardando…' : state === 'saved' ? 'Guardado' : 'Guardar revisión'}
+              {state === 'saved' ? <Check size={15} /> : null} {state === 'saving' ? 'Saving…' : state === 'saved' ? 'Saved' : 'Save review'}
             </Button>
           </span>
         </div>

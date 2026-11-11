@@ -140,34 +140,34 @@ export default function Random({ data, set, focused, editing, setEditing }: Widg
   if (editing)
     return (
       <Panel>
-        <Label>Modo</Label>
-        <Pills value={mode} onChange={(v) => set({ mode: v })} options={[{ value: 'name', label: 'Nombres' }, { value: 'number', label: 'Número' }]} />
+        <Label>Mode</Label>
+        <Pills value={mode} onChange={(v) => set({ mode: v })} options={[{ value: 'name', label: 'Names' }, { value: 'number', label: 'Number' }]} />
         {mode === 'name' ? (
           <>
-            <Label>Lista</Label>
+            <Label>List</Label>
             <Pills
               value={src}
               onChange={(v) => set({ source: v, removed: [] })}
               options={[
-                { value: 'class', label: `Mi clase (${loading ? '…' : rosterCount})` },
-                { value: 'custom', label: 'Lista propia' },
+                { value: 'class', label: `My class (${loading ? '…' : rosterCount})` },
+                { value: 'custom', label: 'Own list' },
               ]}
             />
-            {src === 'custom' && <textarea className={cn(inputCls, 'min-h-28 flex-1 resize-none')} placeholder={'Un nombre por línea\nAna\nLuis\nSofía'} value={data.custom ?? ''} onChange={(e) => set({ custom: e.target.value, removed: [] })} />}
+            {src === 'custom' && <textarea className={cn(inputCls, 'min-h-28 flex-1 resize-none')} placeholder={'One name per line\nAna\nLuis\nSofía'} value={data.custom ?? ''} onChange={(e) => set({ custom: e.target.value, removed: [] })} />}
             <label className="flex items-center justify-between gap-3 text-[15px] font-medium">
               No repetir (quitar elegido)
-              <Toggle checked={!!data.noRepeat} onChange={(v) => set({ noRepeat: v, removed: [] })} label="No repetir" />
+              <Toggle checked={!!data.noRepeat} onChange={(v) => set({ noRepeat: v, removed: [] })} label="No repeats" />
             </label>
           </>
         ) : (
           <div className="flex items-center gap-2">
-            <input type="number" className={inputCls} value={min} onChange={(e) => set({ min: Number(e.target.value) || 0 })} aria-label="Mínimo" />
+            <input type="number" className={inputCls} value={min} onChange={(e) => set({ min: Number(e.target.value) || 0 })} aria-label="Minimum" />
             <span className="text-label-2">a</span>
-            <input type="number" className={inputCls} value={max} onChange={(e) => set({ max: Number(e.target.value) || 0 })} aria-label="Máximo" />
+            <input type="number" className={inputCls} value={max} onChange={(e) => set({ max: Number(e.target.value) || 0 })} aria-label="Maximum" />
           </div>
         )}
         <Act solid color="var(--blue)" onClick={() => setEditing(false)}>
-          Listo
+          Done
         </Act>
       </Panel>
     );
@@ -185,7 +185,7 @@ export default function Random({ data, set, focused, editing, setEditing }: Widg
         </div>
         <div className="flex justify-center p-3">
           <Act solid color="var(--purple)" onClick={spin} disabled={spinning} className="px-6">
-            <Dices size={20} /> Número
+            <Dices size={20} /> Number
           </Act>
         </div>
       </div>
@@ -195,18 +195,18 @@ export default function Random({ data, set, focused, editing, setEditing }: Widg
     <div className="flex h-full flex-col">
       <div className="relative flex min-h-0 flex-1 items-center justify-center p-3">
         {names.length ? (
-          <button type="button" onClick={spin} className="flex h-full max-w-full items-center justify-center" aria-label="Girar ruleta">
+          <button type="button" onClick={spin} className="flex h-full max-w-full items-center justify-center" aria-label="Spin the wheel">
             <Wheel names={names} rot={rot} spinning={spinning} />
           </button>
         ) : (
-          <Empty icon={<Users size={40} />} text={all.length ? '¡Ya salieron todos!' : src === 'class' ? (loading ? 'Cargando tu clase…' : 'Tu clase no tiene estudiantes. Escribe una lista propia.') : 'Escribe los nombres de tu lista.'}>
+          <Empty icon={<Users size={40} />} text={all.length ? 'Everyone has been picked!' : src === 'class' ? (loading ? 'Loading your class…' : 'Your class has no students. Type your own list.') : 'Type the names on your list.'}>
             {all.length ? (
               <Act color="var(--blue)" onClick={() => set({ removed: [] })}>
-                <RotateCcw size={18} /> Reiniciar
+                <RotateCcw size={18} /> Restart
               </Act>
             ) : (
               <Act color="var(--blue)" onClick={() => setEditing(true)}>
-                Editar lista
+                Edit list
               </Act>
             )}
           </Empty>
@@ -222,7 +222,7 @@ export default function Random({ data, set, focused, editing, setEditing }: Widg
               onClick={() => setWinner(null)}
             >
               <div className="bg-card relative max-w-full rounded-[24px] px-[6cqw] py-[5cqh] text-center shadow-[0_20px_60px_-10px_rgb(0_0_0/0.45)]">
-                <button type="button" aria-label="Cerrar" className="text-label-3 absolute top-2 right-2 p-1">
+                <button type="button" aria-label="Close" className="text-label-3 absolute top-2 right-2 p-1">
                   <X size={20} />
                 </button>
                 <div className="text-[clamp(14px,5cqmin,22px)]">🎉</div>
@@ -236,10 +236,10 @@ export default function Random({ data, set, focused, editing, setEditing }: Widg
       </div>
       <div className="flex items-center justify-center gap-2 px-3 pb-3">
         <Act solid color="var(--pink)" onClick={spin} disabled={spinning || !names.length} className="px-6">
-          <Shuffle size={20} /> Girar
+          <Shuffle size={20} /> Spin
         </Act>
         {data.noRepeat && (
-          <Act color="var(--label)" onClick={() => set({ removed: [] })} disabled={!removed.length} title="Reiniciar lista">
+          <Act color="var(--label)" onClick={() => set({ removed: [] })} disabled={!removed.length} title="Reset list">
             <RotateCcw size={18} /> {names.length}/{all.length}
           </Act>
         )}

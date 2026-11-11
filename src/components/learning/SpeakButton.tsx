@@ -14,7 +14,7 @@ export function SpeakButton({ text, className, size = 18 }: { text: string; clas
   return (
     <button
       type="button"
-      aria-label={phase === 'idle' ? `Escuchar: ${text}` : 'Detener'}
+      aria-label={phase === 'idle' ? `Escuchar: ${text}` : 'Stop'}
       aria-busy={phase === 'loading'}
       onClick={(e) => {
         e.stopPropagation();

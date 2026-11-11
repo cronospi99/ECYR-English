@@ -119,7 +119,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           type="button"
           onClick={() => skip(-5)}
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20"
-          aria-label="Retroceder 5 segundos"
+          aria-label="Back 5 seconds"
         >
           <span className="relative flex items-center justify-center">
             <RotateCcw size={20} />
@@ -130,7 +130,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           type="button"
           onClick={() => skip(-10)}
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20"
-          aria-label="Retroceder 10 segundos"
+          aria-label="Back 10 seconds"
         >
           <span className="relative flex items-center justify-center">
             <RotateCcw size={20} />
@@ -141,7 +141,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           type="button"
           onClick={toggle}
           className="shadow-float flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-[#1c1c1e]"
-          aria-label={playing ? 'Pausar' : 'Reproducir'}
+          aria-label={playing ? 'Pause' : 'Play'}
         >
           {waiting && playing ? <Spinner className="h-7 w-7" /> : playing ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" className="ml-1" />}
         </button>
@@ -149,7 +149,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           type="button"
           onClick={() => skip(10)}
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20"
-          aria-label="Adelantar 10 segundos"
+          aria-label="Forward 10 seconds"
         >
           <span className="relative flex items-center justify-center">
             <RotateCw size={20} />
@@ -161,7 +161,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           value={rate}
           onChange={(e) => setRate(e.target.value)}
           className="rounded-full bg-white/20 px-2.5 py-1.5 text-[13px] font-semibold text-white outline-none [&>option]:text-[#1c1c1e]"
-          aria-label="Velocidad"
+          aria-label="Speed"
         >
           {RATES.map((r) => (
             <option key={r} value={r}>
@@ -175,7 +175,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
           time={t}
           duration={d}
           tone="onColor"
-          label="Posición del episodio"
+          label="Episode position"
           onToggle={toggle}
           onSeek={(v) => {
             setT(v);
@@ -186,7 +186,7 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
       </div>
       {resumed !== null && !error && (
         <div className="mt-2 flex flex-wrap items-center gap-2 text-[12.5px] opacity-95">
-          Continúas en {fmtClock(resumed)}.
+          You continue at {fmtClock(resumed)}.
           <button
             type="button"
             className="font-semibold underline underline-offset-2"
@@ -196,13 +196,13 @@ export function EpisodePlayer({ ep, handle, defaultRate = '1' }: { ep: PodcastEp
               setResumed(null);
             }}
           >
-            Empezar desde el inicio
+            Start from the beginning
           </button>
         </div>
       )}
       {error && (
         <div className="mt-3 rounded-[12px] bg-black/25 px-3 py-2 text-[13px] leading-snug">
-          No se pudo cargar el audio desde la fuente original. Revisa tu conexión o ábrelo en Apple Podcasts.
+          The audio could not be loaded from the original source. Check your connection or open it in Apple Podcasts.
         </div>
       )}
     </div>

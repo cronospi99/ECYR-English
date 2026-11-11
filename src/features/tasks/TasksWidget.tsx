@@ -21,8 +21,8 @@ export function TasksWidget({ className }: { className?: string }) {
         <Link to="/tasks" className="flex items-center gap-3 px-5 py-4">
           <IconTile icon={ClipboardList} color="var(--blue)" size={36} />
           <div className="min-w-0 flex-1">
-            <h3 className="text-headline">Tareas</h3>
-            <p className="text-subhead text-label-2">Tu docente aún no te ha asignado tareas. Aparecerán aquí.</p>
+            <h3 className="text-headline">Tasks</h3>
+            <p className="text-subhead text-label-2">Your teacher hasn’t assigned you tasks yet. They will appear here.</p>
           </div>
           <ChevronRight size={20} className="text-label-3" aria-hidden />
         </Link>
@@ -36,11 +36,11 @@ export function TasksWidget({ className }: { className?: string }) {
       <Link to="/tasks" className="flex items-center gap-3 px-5 pt-5">
         <IconTile icon={ClipboardList} color="var(--blue)" size={36} />
         <div className="min-w-0 flex-1">
-          <h3 className="text-title-3">Tareas</h3>
+          <h3 className="text-title-3">Tasks</h3>
           <p className="text-subhead text-label-2">
             {t.pending.length
               ? `${t.pending.length} pendiente${t.pending.length === 1 ? '' : 's'}${overdue ? ` · ${overdue} vencida${overdue === 1 ? '' : 's'}` : ''}`
-              : 'Todo al día'}
+              : 'All caught up'}
           </p>
         </div>
         <ChevronRight size={20} className="text-label-3" aria-hidden />
@@ -67,7 +67,7 @@ export function TasksWidget({ className }: { className?: string }) {
         </ul>
       ) : (
         <p className="text-subhead text-label-2 flex items-center gap-2 px-5 py-3">
-          <CheckCheck size={18} className="text-ink-green" aria-hidden /> No tienes tareas pendientes.
+          <CheckCheck size={18} className="text-ink-green" aria-hidden /> You have no pending tasks.
         </p>
       )}
     </Card>

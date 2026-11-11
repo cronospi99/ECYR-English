@@ -14,10 +14,10 @@ export function RouteError() {
   return (
     <div className="flex min-h-dvh flex-col items-center justify-center gap-4 p-8 text-center">
       <TriangleAlert size={44} className="text-ink-orange" />
-      <h1 className="text-title-2">Algo salió mal</h1>
-      <p className="text-label-2 max-w-md">{err?.message ?? 'Error inesperado.'}</p>
+      <h1 className="text-title-2">Something went wrong</h1>
+      <p className="text-label-2 max-w-md">{err?.message ?? 'Unexpected error.'}</p>
       <Link to="/" className="text-ink-blue font-semibold">
-        Volver al inicio
+        Back to home
       </Link>
     </div>
   );

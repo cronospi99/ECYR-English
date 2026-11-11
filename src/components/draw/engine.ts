@@ -685,7 +685,7 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
     const img = new Image();
     if (!src.startsWith('data:') && !src.startsWith('blob:')) img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('No se pudo cargar la imagen'));
+    img.onerror = () => reject(new Error('The image could not be loaded'));
     img.src = src;
   });
 }

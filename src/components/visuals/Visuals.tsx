@@ -7,7 +7,7 @@ import { visualUrl, type Visual } from '@/content/visuals';
 import { cn } from '@/lib/cn';
 import { ink, tint } from '@/lib/color';
 
-const KIND_LABEL: Record<Visual['kind'], string> = { grammar: 'Gramática', vocabulary: 'Vocabulario', functions: 'Funciones' };
+const KIND_LABEL: Record<Visual['kind'], string> = { grammar: 'Grammar', vocabulary: 'Vocabulary', functions: 'Functions' };
 
 /** Thumbnail card that opens the full-screen viewer. */
 export function VisualCard({ v, onOpen, focus, size = 'md' }: { v: Visual; onOpen: () => void; focus?: string; size?: 'sm' | 'md' | 'lg' }) {
@@ -20,7 +20,7 @@ export function VisualCard({ v, onOpen, focus, size = 'md' }: { v: Visual; onOpe
         'group bg-card shadow-card relative block overflow-hidden rounded-[20px] text-left transition-transform active:scale-[0.99]',
         size === 'sm' ? 'w-[180px] shrink-0' : size === 'lg' ? 'w-full' : 'w-[260px] shrink-0 sm:w-[300px]',
       )}
-      aria-label={`Ver infografía: ${v.title}`}
+      aria-label={`View infographic: ${v.title}`}
     >
       <div className={cn('bg-fill-2 relative overflow-hidden', portrait ? 'aspect-[4/5]' : 'aspect-[3/2]')}>
         <img
@@ -57,7 +57,7 @@ export function VisualCard({ v, onOpen, focus, size = 'md' }: { v: Visual; onOpe
  * `featured` shows the first one large (used where it carries the explanation).
  */
 export function VisualSet({
-  title = 'Apoyo visual',
+  title = 'Visual support',
   subtitle,
   items,
   featured = false,
@@ -108,7 +108,7 @@ function srcSet(v: Visual) {
  */
 export function VisualFigure({
   items,
-  title = 'En imágenes',
+  title = 'In pictures',
   color = 'var(--pink)',
   className,
 }: {
@@ -146,10 +146,10 @@ export function VisualFigure({
             <span className="text-label-2 mr-1 hidden text-[13px] tabular-nums sm:inline">
               {k + 1} / {n}
             </span>
-            <FigBtn label="Imagen anterior" onClick={() => go(-1)}>
+            <FigBtn label="Previous image" onClick={() => go(-1)}>
               <ChevronLeft size={17} />
             </FigBtn>
-            <FigBtn label="Imagen siguiente" onClick={() => go(1)}>
+            <FigBtn label="Next image" onClick={() => go(1)}>
               <ChevronRight size={17} />
             </FigBtn>
           </span>
@@ -191,7 +191,7 @@ export function VisualFigure({
           />
         </AnimatePresence>
         <span className="material absolute right-2.5 bottom-2.5 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-semibold">
-          <Maximize2 size={13} aria-hidden /> Toca para ampliar
+          <Maximize2 size={13} aria-hidden /> Tap to enlarge
         </span>
       </button>
       <figcaption className="flex items-start gap-3 px-3.5 pt-2.5 pb-3">
@@ -203,7 +203,7 @@ export function VisualFigure({
           </span>
         </span>
         {n > 1 && (
-          <span className="mt-1.5 flex shrink-0 gap-1.5" role="group" aria-label="Elegir imagen">
+          <span className="mt-1.5 flex shrink-0 gap-1.5" role="group" aria-label="Choose image">
             {items.map((x, j) => (
               <button
                 key={x.id}
@@ -324,20 +324,20 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Visual[]; 
               <div className="truncate text-[16px] font-semibold">{v.title}</div>
               <div className="truncate text-[12px] text-white/65">{v.titleEs}</div>
             </div>
-            <IconBtn label="Alejar" onClick={() => zoom(1 / 1.4)} disabled={scale <= 1}>
+            <IconBtn label="Zoom out" onClick={() => zoom(1 / 1.4)} disabled={scale <= 1}>
               <Minus size={18} />
             </IconBtn>
-            <button type="button" onClick={reset} className="w-12 text-center text-[13px] tabular-nums text-white/80" aria-label="Restablecer zoom">
+            <button type="button" onClick={reset} className="w-12 text-center text-[13px] tabular-nums text-white/80" aria-label="Reset zoom">
               {Math.round(scale * 100)}%
             </button>
-            <IconBtn label="Acercar" onClick={() => zoom(1.4)} disabled={scale >= 5}>
+            <IconBtn label="Zoom in" onClick={() => zoom(1.4)} disabled={scale >= 5}>
               <Plus size={18} />
             </IconBtn>
             <a
               href={visualUrl(v)}
               download={`${v.id}.webp`}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-white/12 hover:bg-white/20"
-              aria-label="Descargar"
+              aria-label="Download"
             >
               <Download size={18} />
             </a>
@@ -346,7 +346,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Visual[]; 
               type="button"
               onClick={onClose}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-white/12 hover:bg-white/20"
-              aria-label="Cerrar"
+              aria-label="Close"
             >
               <X size={20} />
             </button>
@@ -375,9 +375,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Visual[]; 
             )}
           </div>
           <div className="pb-safe px-4 py-2 text-center text-[12px] text-white/55">
-            Doble toque o pellizca para acercar · arrastra para moverte
-            {items.length > 1 && ` · ${index! + 1} de ${items.length}`}
-          </div>
+            Double-tap or pinch to zoom · drag to move {items.length > 1 && ` · ${index! + 1} of ${items.length}`} </div>
         </motion.div>
       )}
     </AnimatePresence>,
@@ -409,7 +407,7 @@ function NavBtn({ side, onClick }: { side: 'left' | 'right'; onClick: () => void
       }}
       onPointerDown={(e) => e.stopPropagation()}
       onDoubleClick={(e) => e.stopPropagation()}
-      aria-label={side === 'left' ? 'Anterior' : 'Siguiente'}
+      aria-label={side === 'left' ? 'Previous' : 'Next'}
       className={cn(
         'absolute top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/14 hover:bg-white/25',
         side === 'left' ? 'left-3' : 'right-3',

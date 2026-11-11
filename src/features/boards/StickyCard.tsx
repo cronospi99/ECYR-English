@@ -10,9 +10,9 @@ export const PAPER_INK = '#1f1f24';
 
 /** Who wrote it, as the viewer may see it. Null = say nothing (hidden). */
 export function authorLabel(c: LiveCard, names: boolean): string | null {
-  if (c.by_teacher) return 'Profe';
-  if (c.mine) return 'Tú';
-  return names ? c.author_name || 'Estudiante' : null;
+  if (c.by_teacher) return 'Teacher';
+  if (c.mine) return 'You';
+  return names ? c.author_name || 'Student' : null;
 }
 
 export function LikeButton({ card, onLike, big = false, floating = false }: { card: LiveCard; onLike?: () => void; big?: boolean; floating?: boolean }) {
@@ -26,7 +26,7 @@ export function LikeButton({ card, onLike, big = false, floating = false }: { ca
       }}
       disabled={!onLike || card.pending}
       aria-pressed={card.liked}
-      aria-label={card.liked ? 'Quitar me gusta' : 'Me gusta'}
+      aria-label={card.liked ? 'Remove like' : 'Like'}
       className={cn(
         'inline-flex shrink-0 items-center gap-1 rounded-full font-semibold transition-colors disabled:opacity-60',
         big ? 'h-11 px-4 text-[17px]' : 'h-7 px-2 text-[13px]',
@@ -128,7 +128,7 @@ function Note({ card, image, names, onLike, tape, badge, big, fill, className, s
             className={cn('w-full overflow-hidden rounded-[4px] bg-white/70', !big && 'max-w-[300px]', fill && 'min-h-0 shrink')}
             style={{ aspectRatio: '4 / 3', ...(fill ? { maxHeight: '70%' } : {}) }}
           >
-            {image ? <img src={image} alt="Dibujo" draggable={false} className="h-full w-full object-contain" /> : <div className="h-full w-full animate-pulse bg-black/5" />}
+            {image ? <img src={image} alt="Drawing" draggable={false} className="h-full w-full object-contain" /> : <div className="h-full w-full animate-pulse bg-black/5" />}
           </div>
         )}
         {card.text && (
@@ -181,7 +181,7 @@ function Shaped({ card, shape, image, names, onLike, tape, badge, fill, classNam
         {badge && <div className="flex shrink-0">{badge}</div>}
         {card.has_image && (
           <div className="min-h-0 w-full max-w-[220px] shrink overflow-hidden rounded-[6px] bg-white/70" style={{ aspectRatio: '4 / 3', maxHeight: card.text ? '58%' : '100%' }}>
-            {image ? <img src={image} alt="Dibujo" draggable={false} className="h-full w-full object-contain" /> : <div className="h-full w-full animate-pulse bg-black/5" />}
+            {image ? <img src={image} alt="Drawing" draggable={false} className="h-full w-full object-contain" /> : <div className="h-full w-full animate-pulse bg-black/5" />}
           </div>
         )}
         {card.text && (

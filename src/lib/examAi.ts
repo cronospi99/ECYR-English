@@ -17,12 +17,12 @@ export interface ExamMark {
 }
 
 export async function generate(parts: unknown[]): Promise<string> {
-  if (!supabase) throw new Error('La calificación con IA necesita conexión con el servidor.');
+  if (!supabase) throw new Error('AI grading needs a connection to the server.');
   const { data: s } = await supabase.auth.getSession();
-  if (!s.session) throw new Error('Inicia sesión para que la IA califique esta parte.');
+  if (!s.session) throw new Error('Sign in so the AI can grade this part.');
   const { data, error } = await supabase.functions.invoke('gemini', { body: { op: 'generate', contents: [{ parts }] } });
   if (error) {
-    let message = 'No se pudo contactar al servicio de IA de la clase.';
+    let message = 'Could not reach the class AI service.';
     try {
       const body = await (error as { context?: Response }).context?.json();
       if (body?.error?.message) message = body.error.message;
@@ -49,7 +49,7 @@ function parse(text: string): ExamMark {
       transcript: o.transcript === undefined ? undefined : String(o.transcript),
     };
   } catch {
-    throw new Error('La IA respondió en un formato inesperado.');
+    throw new Error('The AI replied in an unexpected format.');
   }
 }
 

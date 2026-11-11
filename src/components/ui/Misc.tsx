@@ -76,7 +76,7 @@ export function Chip({
 
 export function Spinner({ className }: { className?: string }) {
   return (
-    <span className={cn('inline-block h-5 w-5', className)} role="status" aria-label="Cargando">
+    <span className={cn('inline-block h-5 w-5', className)} role="status" aria-label="Loading">
       <svg viewBox="0 0 24 24" className="h-full w-full animate-spin [animation-duration:0.9s]">
         {Array.from({ length: 8 }).map((_, i) => (
           <rect

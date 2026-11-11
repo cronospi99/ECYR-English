@@ -137,34 +137,34 @@ export const SKILL_INFO: Record<Skill, { label: string; color: string }> = {
   reading: { label: 'Reading', color: 'var(--skill-reading)' },
   writing: { label: 'Writing', color: 'var(--skill-writing)' },
   speaking: { label: 'Speaking', color: 'var(--skill-speaking)' },
-  grammar: { label: 'Gramática', color: 'var(--indigo)' },
-  vocabulary: { label: 'Vocabulario', color: 'var(--teal)' },
+  grammar: { label: 'Grammar', color: 'var(--indigo)' },
+  vocabulary: { label: 'Vocabulary', color: 'var(--teal)' },
 };
 
 export const GOAL_INFO: Record<PlanGoal, { label: string; short: string; description: string }> = {
   advance: {
-    label: 'Avanzar en mi nivel',
-    short: 'Avance',
-    description: 'Unidades nuevas de tu nivel con práctica de las destrezas que elijas.',
+    label: 'Advance in my level',
+    short: 'Advance',
+    description: 'New units from your level with practice of the skills you choose.',
   },
   review: {
-    label: 'Repasar lo visto',
-    short: 'Repaso',
-    description: 'Vuelve a las unidades que elijas (o a las de nota más baja) hasta dominarlas.',
+    label: 'Review what was covered',
+    short: 'Review',
+    description: 'Go back to the units you choose (or the lowest-scoring ones) until you master them.',
   },
   exam: {
-    label: 'Preparar el IELTS',
+    label: 'Prepare for the IELTS',
     short: 'IELTS',
-    description: 'Módulos del simulador por destreza y un mock test al cerrar la semana.',
+    description: 'Simulator modules by skill and a mock test to close the week.',
   },
   balanced: {
-    label: 'Plan equilibrado',
-    short: 'Equilibrado',
-    description: 'Un poco de todo: una unidad nueva, repaso y las cuatro destrezas.',
+    label: 'Balanced plan',
+    short: 'Balanced',
+    description: 'A bit of everything: a new unit, review and the four skills.',
   },
 };
 
-export const WEEKDAYS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'] as const;
+export const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as const;
 
 export const defaultPrefs = (level: CefrLevel): PlanPrefs => ({
   goal: 'advance',
@@ -283,8 +283,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'g-time-machine',
       skill: 'grammar',
       minutes: 15,
-      title: 'Time Machine: fechas y pasado simple',
-      detail: 'Meses, ordinales, años y verbos en pasado.',
+      title: 'Time Machine: dates and past simple',
+      detail: 'Months, ordinals, years and past verbs.',
       to: '/learn/grammar/time-machine',
       match: { refPrefix: ['grammar:time-machine'] },
     });
@@ -293,7 +293,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'g-time-family',
       skill: 'grammar',
       minutes: 15,
-      title: 'Time & Family: la hora y el genitivo ’s',
+      title: 'Time & Family: the time and the genitive ’s',
       to: '/learn/grammar/time-family',
       match: { refPrefix: ['grammar:time-family'] },
     });
@@ -302,8 +302,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'g-modals',
       skill: 'grammar',
       minutes: 15,
-      title: 'Modal Verbs: usa el modal correcto',
-      detail: 'Habilidad, permiso, obligación, consejo y deducción.',
+      title: 'Modal Verbs: use the right modal',
+      detail: 'Ability, permission, obligation, advice and deduction.',
       to: '/learn/grammar/modals',
       match: { refPrefix: ['grammar:modals'] },
     });
@@ -312,7 +312,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'g-forms',
       skill: 'grammar',
       minutes: 10,
-      title: 'Verb Lab: quiz de formas verbales',
+      title: 'Verb Lab: verb forms quiz',
       to: '/practice/verbs?tab=quiz',
       match: { refs: ['verblab:quiz'] },
     });
@@ -321,8 +321,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'g-patterns',
       skill: 'grammar',
       minutes: 15,
-      title: 'Verb Lab: patrones verbales',
-      detail: 'Gerundio o infinitivo, reported speech y más.',
+      title: 'Verb Lab: verb patterns',
+      detail: 'Gerund or infinitive, reported speech and more.',
       to: '/practice/verbs?tab=patterns',
       match: { refs: ['verblab:patterns'] },
     });
@@ -345,8 +345,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'v-flashcards',
       skill: 'vocabulary',
       minutes: 10,
-      title: 'Flashcards del vocabulario de tu unidad',
-      detail: 'Repasa todas las tarjetas con audio.',
+      title: 'Flashcards of your unit’s vocabulary',
+      detail: 'Review all the cards with audio.',
       to: '/learn',
       match: { refs: ['vocab:flashcards'] },
     },
@@ -356,7 +356,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'v-phrasal',
       skill: 'vocabulary',
       minutes: 10,
-      title: 'Quiz de phrasal verbs',
+      title: 'Phrasal verbs quiz',
       to: '/practice/phrasal-verbs',
       match: { refs: ['practice:phrasal'] },
     });
@@ -365,7 +365,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
       key: 'v-ed',
       skill: 'vocabulary',
       minutes: 10,
-      title: 'Verb Lab: pronunciación de -ed',
+      title: 'Verb Lab: -ed pronunciation',
       to: '/practice/verbs?tab=ed',
       match: { refs: ['verblab:ed'] },
     });
@@ -390,8 +390,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           key: 'l-dictation',
           skill: 'listening',
           minutes: 15,
-          title: `Dictado: un diálogo ${L}`,
-          detail: 'Escucha, escribe y compara.',
+          title: `Dictation: a dialogue ${L}`,
+          detail: 'Listen, write and compare.',
           to: '/practice/listening',
           match: { refs: ['practice:listening'] },
         },
@@ -401,8 +401,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           key: 'r-reading',
           skill: 'reading',
           minutes: 15,
-          title: L === 'A1' ? 'Lectura: una historia corta' : 'Lectura: una guía de viaje',
-          detail: 'Lee y responde las preguntas.',
+          title: L === 'A1' ? 'Reading: a short story' : 'Reading: a travel guide',
+          detail: 'Read and answer the questions.',
           to: '/practice/reading',
           match: { refPrefix: ['reading:'] },
         },
@@ -412,8 +412,8 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           key: 'w-task',
           skill: 'writing',
           minutes: 20,
-          title: 'Writing: un texto corto con feedback',
-          detail: 'Usa la gramática de tu unidad.',
+          title: 'Writing: a short text with feedback',
+          detail: 'Use your unit’s grammar.',
           to: '/practice/writing',
           match: { refs: ['practice:writing', 'coach:correct', 'coach:writing-feedback'] },
         },
@@ -423,7 +423,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           key: 's-questions',
           skill: 'speaking',
           minutes: 10,
-          title: 'Speaking: responde 3 preguntas en voz alta',
+          title: 'Speaking: answer 3 questions out loud',
           to: '/practice/speaking',
           match: { refs: ['practice:speaking'] },
         },
@@ -431,7 +431,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
           key: 's-coach',
           skill: 'speaking',
           minutes: 10,
-          title: 'Conversa 10 minutos con el AI Coach',
+          title: 'Talk for 10 minutes with the AI Coach',
           to: '/coach',
           match: { refs: ['coach:chat'] },
         },
@@ -443,7 +443,7 @@ function drills(level: CefrLevel, ctx: PlanContext, prefs: PlanPrefs, rand: () =
         key: `i-${skill}`,
         skill,
         minutes: skill === 'writing' || skill === 'reading' ? 30 : 20,
-        title: `IELTS ${cap(skill)}: práctica cronometrada`,
+        title: `IELTS ${cap(skill)}: timed practice`,
         to: `/ielts/${skill}`,
         match: { refs: [`ielts:${skill}`] },
       });
@@ -467,7 +467,7 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
   const out: Template[] = [];
   const unitPair = (level: CefrLevel, n: number, title: string, review: boolean): Template[] => {
     const key = `${level}-${n}`;
-    const name = `${level} · Unidad ${n}${title ? `: ${cap(title)}` : ''}`;
+    const name = `${level} · Unit ${n}${title ? `: ${cap(title)}` : ''}`;
     return review
       ? [
           {
@@ -475,7 +475,7 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
             skill: 'grammar',
             minutes: 15,
             title: `Repaso ${name}`,
-            detail: 'Relee la gramática y los errores comunes.',
+            detail: 'Re-read the grammar and the common mistakes.',
             to: `/learn/${lower(level)}/${n}?tab=grammar`,
             match: { refs: [`unit:${key}`] },
             core: true,
@@ -484,8 +484,8 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
             key: `rv-p-${key}`,
             skill: 'grammar',
             minutes: 15,
-            title: `Quiz de repaso: ${level} · Unidad ${n}`,
-            detail: `Supera tu nota${ctx.units[key] ? ` (${ctx.units[key]!.score}%)` : ''}.`,
+            title: `Review quiz: ${level} · Unit ${n}`,
+            detail: `Beat your score${ctx.units[key] ? ` (${ctx.units[key]!.score}%)` : ''}.`,
             to: `/learn/${lower(level)}/${n}?tab=practice`,
             match: { refs: [`unit:${key}`] },
             core: true,
@@ -496,8 +496,8 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
             key: `u-v-${key}`,
             skill: 'vocabulary',
             minutes: 20,
-            title: `${name} — vocabulario y gramática`,
-            detail: 'Estudia las palabras con flashcards y la gramática.',
+            title: `${name} — vocabulary and grammar`,
+            detail: 'Study the words with flashcards and the grammar.',
             to: `/learn/${lower(level)}/${n}?tab=vocab`,
             match: { refs: ['vocab:flashcards', `unit:${key}`] },
             core: true,
@@ -506,8 +506,8 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
             key: `u-p-${key}`,
             skill: 'grammar',
             minutes: 20,
-            title: `${name} — práctica`,
-            detail: 'Completa el quiz para marcar la unidad.',
+            title: `${name} — practice`,
+            detail: 'Complete the quiz to mark the unit.',
             to: `/learn/${lower(level)}/${n}?tab=practice`,
             match: { refs: [`unit:${key}`] },
             core: true,
@@ -558,8 +558,8 @@ function coreTasks(prefs: PlanPrefs, ctx: PlanContext, budget: number): Template
         key: `x-${s}`,
         skill: s,
         minutes: s === 'writing' || s === 'reading' ? 35 : 25,
-        title: `IELTS ${cap(s)}: módulo completo`,
-        detail: 'Hazlo con tiempo real y revisa la banda.',
+        title: `IELTS ${cap(s)}: full module`,
+        detail: 'Do it in real time and check the band.',
         to: `/ielts/${s}`,
         match: { refs: [`ielts:${s}`] },
         core: true,
@@ -590,7 +590,7 @@ export function generatePlan(prefs: PlanPrefs, ctx: PlanContext): WeekPlan {
       skill: 'reading',
       minutes: Math.min(60, minutes),
       title: 'Mock test IELTS',
-      detail: 'Simulacro para medir tu banda de la semana.',
+      detail: 'Mock exam to measure your band of the week.',
       to: '/ielts/mock',
       match: { refPrefix: ['ielts:'] },
       core: true,
@@ -600,8 +600,8 @@ export function generatePlan(prefs: PlanPrefs, ctx: PlanContext): WeekPlan {
       key: 'game',
       skill: 'speaking',
       minutes: 15,
-      title: 'Juego de la semana',
-      detail: 'Elige un juego y practica sin presión.',
+      title: 'Game of the week',
+      detail: 'Pick a game and practise without pressure.',
       to: '/games',
       match: { refPrefix: ['game:'] },
     });
@@ -675,7 +675,7 @@ export function generatePlan(prefs: PlanPrefs, ctx: PlanContext): WeekPlan {
   const level = prefs.level;
   const title =
     prefs.goal === 'exam'
-      ? 'Semana IELTS'
+      ? 'IELTS week'
       : `${GOAL_INFO[prefs.goal].short} ${level}${focus.length ? ` · ${focus.map((f) => SKILL_INFO[f].label).join(' y ')}` : ''}`;
 
   return {
@@ -840,11 +840,11 @@ export function recommend(input: {
   for (const p of top)
     out.push({
       tone: 'strength',
-      title: `${SKILL_INFO[p.skill].label} es tu punto fuerte`,
+      title: `${SKILL_INFO[p.skill].label} is your strong point`,
       text:
         p.avgScore != null
-          ? `${p.avgScore}% de acierto en ${p.sessions} sesiones recientes. Sube el reto con contenido de ${nextLevel(level)}.`
-          : `Llevas ${p.xp} XP en esta destreza. Mantén el ritmo y sube el reto.`,
+          ? `${p.avgScore}% accuracy over ${p.sessions} recent sessions. Raise the challenge with ${nextLevel(level)} content.`
+          : `You have ${p.xp} XP in this skill. Keep the pace and raise the challenge.`,
     });
 
   // This week's skills that are being skipped.
@@ -854,15 +854,15 @@ export function recommend(input: {
       if (st.planned >= 2 && st.done / st.planned < 0.5 && ev.dueByToday > 0)
         out.push({
           tone: 'improve',
-          title: `${SKILL_INFO[s].label}: ${st.done} de ${st.planned} tareas`,
-          text: 'Es la destreza que más estás saltando esta semana. Prueba hacerla primero, cuando tienes más energía.',
+          title: `${SKILL_INFO[s].label}: ${st.done} of ${st.planned} tasks`,
+          text: 'It is the skill you skip the most this week. Try doing it first, when you have more energy.',
         });
       const avg = st.scores.length ? st.scores.reduce((x, y) => x + y, 0) / st.scores.length : null;
       if (avg != null && avg < 60)
         out.push({
           tone: 'improve',
-          title: `${SKILL_INFO[s].label}: ${Math.round(avg)}% de acierto`,
-          text: 'Repite las actividades con calma y revisa las explicaciones antes de volver al quiz.',
+          title: `${SKILL_INFO[s].label}: ${Math.round(avg)}% accuracy`,
+          text: 'Repeat the activities calmly and review the explanations before going back to the quiz.',
         });
     }
   }
@@ -877,10 +877,10 @@ export function recommend(input: {
       title: `Refuerza ${SKILL_INFO[weak.skill].label}`,
       text:
         weak.sessions === 0
-          ? 'No la has practicado en los últimos 30 días. Inclúyela en tu próximo plan.'
-          : `Es tu destreza más baja${weak.avgScore != null ? ` (${weak.avgScore}%)` : ''}. Dale más minutos la próxima semana.`,
+          ? 'You haven’t practised it in the last 30 days. Include it in your next plan.'
+          : `It is your lowest skill${weak.avgScore != null ? ` (${weak.avgScore}%)` : ''}. Give it more minutes next week.`,
       to: `/practice/${weak.skill}`,
-      cta: 'Practicar ahora',
+      cta: 'Practise now',
     });
 
   // Units worth reviewing.
@@ -892,10 +892,10 @@ export function recommend(input: {
     const [lv, n] = k.split('-');
     out.push({
       tone: 'tip',
-      title: `Repasa ${lv} · Unidad ${n}`,
-      text: `Tu mejor nota es ${c.score}%. Un repaso corto la sube por encima del 80%.`,
+      title: `Review ${lv} · Unit ${n}`,
+      text: `Your best grade is ${c.score}%. A short review brings it above 80%.`,
       to: `/learn/${lv!.toLowerCase()}/${n}?tab=practice`,
-      cta: 'Repasar',
+      cta: 'Review',
     });
   }
 
@@ -904,14 +904,14 @@ export function recommend(input: {
     if (ev.status === 'complete')
       out.push({
         tone: 'strength',
-        title: '¡Semana completada!',
-        text: 'Cumpliste todo el plan. La próxima semana puedes subir 10 minutos por día o sumar un día.',
+        title: 'Week completed!',
+        text: 'You completed the whole plan. Next week you can add 10 minutes per day or add a day.',
       });
     else if (ev.status === 'behind')
       out.push({
         tone: 'tip',
-        title: 'Vas un poco atrás',
-        text: `Llevas ${ev.doneByToday} de ${ev.dueByToday} tareas previstas hasta hoy. Mejor 15 minutos diarios que una maratón el domingo.`,
+        title: 'You’re a bit behind',
+        text: `You’ve done ${ev.doneByToday} of ${ev.dueByToday} planned tasks up to today. Better 15 minutes a day than a Sunday marathon.`,
       });
   }
   const last = history.slice(0, 3);
@@ -921,21 +921,21 @@ export function recommend(input: {
     if (avg < 0.5)
       out.push({
         tone: 'tip',
-        title: 'Ajusta el plan a tu semana real',
-        text: `Tus últimas semanas cerraron al ${Math.round(avg * 100)}%. Un plan más corto que sí terminas avanza más que uno largo a medias.`,
+        title: 'Adjust the plan to your real week',
+        text: `Your last weeks closed at ${Math.round(avg * 100)}%. A shorter plan you actually finish gets you further than a long half-done one.`,
       });
     else if (avg >= 0.9)
       out.push({
         tone: 'strength',
-        title: 'Constancia de cumbre',
-        text: `Promedias ${Math.round(avg * 100)}% en tus últimas semanas. ¡Esa constancia es lo que te lleva a la cima!`,
+        title: 'Summit certificate',
+        text: `You average ${Math.round(avg * 100)}% over your last weeks. That consistency is what takes you to the summit!`,
       });
   }
   if (levelRatio >= 0.8 && level !== 'C2')
     out.push({
       tone: 'tip',
       title: `Casi terminas ${level}`,
-      text: `Ya completaste el ${Math.round(levelRatio * 100)}% de ${level}. Tu próximo plan puede empezar ${nextLevel(level)}.`,
+      text: `You have already completed ${Math.round(levelRatio * 100)}% of ${level}. Your next plan can start ${nextLevel(level)}.`,
       to: `/learn/${nextLevel(level).toLowerCase()}`,
       cta: `Ver ${nextLevel(level)}`,
     });

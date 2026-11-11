@@ -12,28 +12,28 @@ export const EXTERNAL_RESOURCES = [
     name: 'ELC Study Zone · University of Victoria',
     url: 'https://continuingstudies.uvic.ca/elc/studyzone/',
     emoji: '🎧',
-    what: 'Lecturas y audios por niveles (200–500) con ejercicios de comprensión, gramática y vocabulario.',
+    what: 'Readings and audios by level (200–500) with comprehension, grammar and vocabulary exercises.',
     owner: '© University of Victoria, English Language Centre',
   },
   {
     name: 'Test English',
     url: 'https://test-english.com/',
     emoji: '📝',
-    what: 'Gramática, vocabulario, reading, listening y writing de A1 a C1, organizados por nivel y tema.',
+    what: 'Grammar, vocabulary, reading, listening and writing from A1 to C1, organised by level and topic.',
     owner: '© Test-English.com',
   },
   {
     name: 'Games to Learn English',
     url: 'https://www.gamestolearnenglish.com/',
     emoji: '🎮',
-    what: 'Juegos en línea para practicar vocabulario, gramática y ortografía.',
+    what: 'Online games to practise vocabulary, grammar and spelling.',
     owner: '© Games to Learn English',
   },
   {
     name: 'Englishan · Linking words',
     url: 'https://englishan.com/',
     emoji: '🔗',
-    what: 'Infografía de conectores que sirvió de base para la lista de linking words.',
+    what: 'Connectors infographic that was the basis for the linking words list.',
     owner: '© englishan.com',
   },
 ] as const;
@@ -41,10 +41,9 @@ export const EXTERNAL_RESOURCES = [
 export function ExternalResources({ className, compact = false }: { className?: string; compact?: boolean }) {
   return (
     <section className={className}>
-      <h2 className="text-[17px] font-bold">Más práctica en la web</h2>
+      <h2 className="text-[17px] font-bold">More practice on the web</h2>
       <p className="text-label-2 mt-1 text-[13.5px]">
-        Las lecturas, audios, talleres y juegos de ECYR English son material original. Estos sitios inspiraron su organización; su contenido les pertenece y se
-        abre en su página.
+        The readings, audios, workshops and games of ECYR English are original material. These sites inspired their organisation; their content belongs to them and opens on their page.
       </p>
       <div className={cn('mt-3 grid gap-2.5', compact ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-4')}>
         {EXTERNAL_RESOURCES.map((r) => (

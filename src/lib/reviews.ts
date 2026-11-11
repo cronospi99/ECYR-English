@@ -45,7 +45,7 @@ export async function loadReviews(ids: string[]): Promise<{ reviews: Record<stri
 }
 
 export async function saveReview(id: string, d: ReviewDraft, title?: string): Promise<Review | null> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { data, error } = await supabase.rpc('review_submission', {
     p_submission: id,
     p_comment: d.comment ?? '',
@@ -57,7 +57,7 @@ export async function saveReview(id: string, d: ReviewDraft, title?: string): Pr
     p_shared: d.shared,
   });
   if (error) {
-    if (/review_submission|does not exist|schema cache/i.test(error.message)) throw new Error('Falta activar las revisiones en Supabase (14_submission_reviews.sql).');
+    if (/review_submission|does not exist|schema cache/i.test(error.message)) throw new Error('Reviews need to be enabled in Supabase (14_submission_reviews.sql).');
     throw new Error(error.message);
   }
   return (data as Review | null) ?? null;

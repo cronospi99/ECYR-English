@@ -231,7 +231,7 @@ function SongBlock({ b }: { b: CourseBlock }) {
   return (
     <Section b={b}>
       <Button size="sm" variant="tinted" onClick={() => play()}>
-        <Play size={14} fill="currentColor" /> Reproducir
+        <Play size={14} fill="currentColor" /> Play
       </Button>
       <div className="mt-4 space-y-2">
         {lines.map((l, i) => (
@@ -267,7 +267,7 @@ function DialogueBlock({ b }: { b: CourseBlock }) {
   return (
     <Section b={b}>
       <Button size="sm" variant="tinted" onClick={() => play()}>
-        <Volume2 size={14} /> Escuchar diálogo
+        <Volume2 size={14} /> Listen to the dialogue
       </Button>
       <div className="mt-4 space-y-2">
         {lines.map((l, k) => {
@@ -299,7 +299,7 @@ function ReadingBlock({ b }: { b: CourseBlock }) {
   return (
     <Section b={b}>
       <Button size="sm" variant="tinted" onClick={() => speak(paras.join(' '), { rate: 0.9 })}>
-        <Volume2 size={14} /> Leer en voz alta
+        <Volume2 size={14} /> Read aloud
       </Button>
       <div className="mt-4 space-y-3 text-[17px] leading-[1.7]">
         {paras.map((p, i) => (
@@ -390,10 +390,10 @@ function TraceBlock({ b }: { b: CourseBlock }) {
       </div>
       <div className="mt-3 flex justify-center gap-2">
         <Button size="sm" variant="gray" onClick={clear}>
-          <Eraser size={14} /> Borrar
+          <Eraser size={14} /> Clear
         </Button>
         <Button size="sm" variant="tinted" onClick={() => speak(letter)}>
-          <Volume2 size={14} /> Escuchar
+          <Volume2 size={14} /> Listen
         </Button>
       </div>
     </Section>
@@ -469,7 +469,7 @@ function MatchBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
           })}
         </div>
       </div>
-      {matched.size === pairs.length && <Done text={`¡Completado! ${mistakes} ${mistakes === 1 ? 'error' : 'errores'}.`} />}
+      {matched.size === pairs.length && <Done text={`Completed! ${mistakes} ${mistakes === 1 ? 'mistake' : 'mistakes'}.`} />}
     </Section>
   );
 }
@@ -506,7 +506,7 @@ function OrderBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
             {words[i]}
           </button>
         ))}
-        {!built.length && <span className="text-label-3 self-center px-2 text-[14px]">Toca las palabras en orden…</span>}
+        {!built.length && <span className="text-label-3 self-center px-2 text-[14px]">Tap the words in order…</span>}
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {pool.map(({ w, i }) =>
@@ -527,14 +527,14 @@ function OrderBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
       </div>
       <div className="mt-4 flex gap-2">
         <Button size="sm" onClick={check} disabled={built.length !== words.length || result === true}>
-          Comprobar
+          Check
         </Button>
         <Button size="sm" variant="gray" onClick={() => (setBuilt([]), setResult(null))}>
-          <RotateCcw size={14} /> Reiniciar
+          <RotateCcw size={14} /> Restart
         </Button>
       </div>
-      {result === true && <Done text={str(b.why) || '¡Correcto!'} />}
-      {result === false && <Miss text="Casi. Revisa el orden e inténtalo otra vez." />}
+      {result === true && <Done text={str(b.why) || 'Correct!'} />}
+      {result === false && <Miss text="Almost. Check the order and try again." />}
     </Section>
   );
 }
@@ -580,7 +580,7 @@ function BlankBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
             </div>
             {checked && !ok(i) && (
               <div className="text-label-2 mt-1 text-[13px]">
-                Respuesta: <b className="text-label">{it.a}</b>
+                Answer: <b className="text-label">{it.a}</b>
                 {it.why && ` — ${it.why}`}
               </div>
             )}
@@ -588,7 +588,7 @@ function BlankBlock({ b, onResult }: { b: CourseBlock; onResult: OnResult }) {
         ))}
       </ol>
       <Button size="sm" className="mt-4" onClick={check}>
-        Comprobar
+        Check
       </Button>
     </Section>
   );

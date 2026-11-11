@@ -60,12 +60,13 @@ export function parseLearnerState(state: unknown) {
   };
 }
 
-export async function loadClass(teacherId: string): Promise<{ students: StudentData[]; error: string | null }> {
-  if (!supabase) return { students: [], error: 'Las cuentas no están configuradas en este despliegue.' };
+export async function loadClass(_teacherId: string): Promise<{ students: StudentData[]; error: string | null }> {
+  if (!supabase) return { students: [], error: 'Accounts are not configured in this deployment.' };
   const { data: profiles, error } = await supabase
     .from('profiles')
     .select('id,email,full_name,created_at')
-    .eq('teacher_id', teacherId)
+    // RLS returns the teacher's own row plus their students (main and shared).
+    .eq('role', 'student')
     .order('full_name', { ascending: true });
   if (error) return { students: [], error: error.message };
   const rows = (profiles ?? []) as StudentRow[];
@@ -118,4 +119,24 @@ export async function loadSubmissionReport(id: string): Promise<unknown> {
   if (!supabase) return null;
   const { data } = await supabase.from('submissions').select('report').eq('id', id).maybeSingle();
   return (data as { report?: unknown } | null)?.report ?? null;
+}
+
+export interface SharedStudent { id: string; email: string | null; full_name: string | null; teacher_name: string | null }
+
+/** Students the owner opened to every teacher and that are not in this class yet. */
+export async function listSharedStudents(): Promise<SharedStudent[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase.rpc('list_shared_students');
+  if (error) {
+    if (/does not exist|schema cache|Could not find the function/i.test(error.message)) return [];
+    throw new Error(error.message);
+  }
+  return (data ?? []) as SharedStudent[];
+}
+
+/** Adds an opened student to the signed-in teacher's class (no approval needed). */
+export async function claimSharedStudent(id: string): Promise<void> {
+  if (!supabase) throw new Error('No connection to the server.');
+  const { error } = await supabase.rpc('claim_shared_student', { p_student: id });
+  if (error) throw new Error(error.message);
 }

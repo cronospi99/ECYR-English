@@ -9,8 +9,8 @@ import { ArrowLeft, RotateCw, Users } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { TOON_CLIPS, TOONS, ToonActor, type Face, type ToonClip } from './runtime';
 
-const FACE_ES: [Face | null, string][] = [[null, 'Automática'], ['smile', 'Sonrisa'], ['grin', 'Risa'], ['happy', 'Feliz'], ['surprised', 'Sorpresa'], ['wink', 'Guiño'], ['sad', 'Triste'], ['love', 'Enamorado']];
-const CLIP_ES: Record<ToonClip, string> = { idle: 'Reposo', walk: 'Caminar', run: 'Correr', jump: 'Saltar', fall: 'Caer', slide: 'Deslizarse', hit: 'Golpe', cheer: 'Celebrar' };
+const FACE_ES: [Face | null, string][] = [[null, 'Automatic'], ['smile', 'Smile'], ['grin', 'Laugh'], ['happy', 'Happy'], ['surprised', 'Surprise'], ['wink', 'Wink'], ['sad', 'Sad'], ['love', 'In love']];
+const CLIP_ES: Record<ToonClip, string> = { idle: 'Rest', walk: 'Walk', run: 'Run', jump: 'Jump', fall: 'Fall', slide: 'Slide', hit: 'Hit', cheer: 'Celebrate' };
 type View = 'front' | 'back' | 'side';
 
 class Viewer {
@@ -162,13 +162,13 @@ export default function GalleryPage() {
     <div className="flex h-dvh flex-col bg-[#141a3f] text-white md:flex-row">
       <aside className="flex shrink-0 flex-col gap-2 border-white/10 p-3 md:w-[230px] md:border-r">
         <div className="flex items-center gap-2">
-          <Link to="/games" className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20" aria-label="Volver"><ArrowLeft size={18} /></Link>
+          <Link to="/games" className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 hover:bg-white/20" aria-label="Back"><ArrowLeft size={18} /></Link>
           <div>
             <div className="text-[17px] leading-tight font-black">Personajes 3D</div>
-            <div className="text-[12px] font-semibold text-white/60">{TOONS.length} profes · modelos .glb</div>
+            <div className="text-[12px] font-semibold text-white/60">{TOONS.length} teachers · .glb models</div>
           </div>
         </div>
-        <button type="button" onClick={() => setAll(!all)} className={cn(btn, 'flex items-center justify-center gap-1.5', all ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/10 hover:bg-white/20')}><Users size={16} /> {all ? 'Ver uno' : 'Ver a todos'}</button>
+        <button type="button" onClick={() => setAll(!all)} className={cn(btn, 'flex items-center justify-center gap-1.5', all ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/10 hover:bg-white/20')}><Users size={16} /> {all ? 'See one' : 'See everyone'}</button>
         <div className="flex gap-1.5 overflow-x-auto pb-1 md:flex-col md:overflow-y-auto">
           {TOONS.map((t, i) => (
             <button key={t.id} type="button" onClick={() => { setSel(i); setAll(false); }}
@@ -180,7 +180,7 @@ export default function GalleryPage() {
       </aside>
       <main className="relative min-h-0 flex-1">
         <div ref={host} className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,#3a43d8_0%,#1d2280_60%,#141a3f_100%)]" />
-        {err && <div className="absolute inset-0 grid place-items-center p-6 text-center text-[15px] font-bold">Este navegador no puede mostrar 3D (WebGL).</div>}
+        {err && <div className="absolute inset-0 grid place-items-center p-6 text-center text-[15px] font-bold">This browser can’t display 3D (WebGL).</div>}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col items-center gap-2 p-3">
           <div className="pointer-events-auto flex flex-wrap justify-center gap-1.5 rounded-2xl bg-[#141a3f]/85 p-1.5 shadow-lg">
             {TOON_CLIPS.map((c) => (
@@ -194,9 +194,9 @@ export default function GalleryPage() {
           </div>
           <div className="pointer-events-auto flex gap-1.5 rounded-2xl bg-[#141a3f]/85 p-1.5 shadow-lg">
             {(['front', 'side', 'back'] as View[]).map((v) => (
-              <button key={v} type="button" onClick={() => viewer.current?.view(v)} className={cn(btn, 'bg-white/10 hover:bg-white/20')}>{v === 'front' ? 'Frente' : v === 'side' ? 'Lado' : 'Espalda'}</button>
+              <button key={v} type="button" onClick={() => viewer.current?.view(v)} className={cn(btn, 'bg-white/10 hover:bg-white/20')}>{v === 'front' ? 'Front' : v === 'side' ? 'Side' : 'Back'}</button>
             ))}
-            <button type="button" onClick={() => setSpin(!spin)} className={cn(btn, 'flex items-center gap-1', spin ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/10 hover:bg-white/20')}><RotateCw size={15} /> Girar</button>
+            <button type="button" onClick={() => setSpin(!spin)} className={cn(btn, 'flex items-center gap-1', spin ? 'bg-[#ffd23f] text-[#2a1d00]' : 'bg-white/10 hover:bg-white/20')}><RotateCw size={15} /> Spin</button>
           </div>
         </div>
       </main>

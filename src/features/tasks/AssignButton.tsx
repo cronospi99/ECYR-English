@@ -15,8 +15,8 @@ export type { AssignPreset } from './AssignmentSheet';
 function suggestTitle(p?: AssignPreset | null) {
   if (!p) return undefined;
   if (p.title) return p.title;
-  if (p.source === 'unit' && p.level && p.unit) return `${p.level} · Unidad ${p.unit}`;
-  if (p.source === 'practice' && p.practice) return `Práctica de ${p.practice === 'phrasal' ? 'phrasal verbs' : p.practice === 'verbs' ? 'verbos' : p.practice}`;
+  if (p.source === 'unit' && p.level && p.unit) return `${p.level} · Unit ${p.unit}`;
+  if (p.source === 'practice' && p.practice) return `Practice: ${p.practice === 'phrasal' ? 'phrasal verbs' : p.practice === 'verbs' ? 'verbs' : p.practice}`;
   if (p.source === 'ielts' && p.ielts) return `IELTS · ${p.ielts}`;
   return undefined;
 }
@@ -30,7 +30,7 @@ type State = { kind: 'idle' } | { kind: 'loading' } | { kind: 'ready'; students:
  */
 export function AssignButton({
   preset,
-  label = 'Asignar tarea',
+  label = 'Assign task',
   variant = 'tinted',
   size = 'sm',
   className,
@@ -72,9 +72,9 @@ export function AssignButton({
         </Button>
         {done && (
           <span role="status" className="text-ink-green inline-flex items-center gap-1 text-[13px] font-semibold">
-            <Check size={14} aria-hidden /> Tarea asignada ·{' '}
+            <Check size={14} aria-hidden /> Task assigned ·{' '}
             <Link to="/teacher?tab=tasks" className="text-ink-blue">
-              Ver
+              View
             </Link>
           </span>
         )}
@@ -93,7 +93,7 @@ export function AssignButton({
         />
       )}
       {(state.kind === 'missing' || state.kind === 'error') && (
-        <Sheet open={open} onClose={close} title="Asignar tarea">
+        <Sheet open={open} onClose={close} title="Assign task">
           <div className="p-4 sm:p-5">
             {state.kind === 'missing' ? (
               <MissingTasksCard bare onRetry={() => void start()} />
@@ -103,7 +103,7 @@ export function AssignButton({
                   {state.message}
                 </p>
                 <Button className="mt-3" size="sm" variant="tinted" onClick={() => void start()}>
-                  Reintentar
+                  Retry
                 </Button>
               </div>
             )}

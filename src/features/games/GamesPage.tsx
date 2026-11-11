@@ -33,14 +33,14 @@ export default function GamesPage() {
   const books = MODULES.filter((m) => m.kind === 'book' || m.kind === 'course');
 
   return (
-    <Page title="Juegos" subtitle="Aprende jugando: concursos, ruletas, dilemas y misiones para practicar solo o en clase." wide>
+    <Page title="Games" subtitle="Learn by playing: quizzes, wheels, dilemmas and missions to practise alone or in class." wide>
       <Segmented
         className="mb-5"
         value={tab}
         onChange={(t) => setParams(t === 'games' ? {} : { tab: t })}
         options={[
-          { value: 'games', label: 'Juegos' },
-          { value: 'progress', label: 'Mi progreso' },
+          { value: 'games', label: 'Games' },
+          { value: 'progress', label: 'My progress' },
         ]}
       />
       {tab === 'progress' ? (
@@ -51,7 +51,7 @@ export default function GamesPage() {
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
           <Chip active={level === 'all'} onClick={() => setLevel('all')}>
-            Todos los niveles
+            All levels
           </Chip>
           {CEFR_LEVELS.map((l) => (
             <Chip key={l} active={level === l} onClick={() => setLevel(l)}>
@@ -62,13 +62,13 @@ export default function GamesPage() {
         <div className="bg-separator mx-1 hidden h-6 w-px sm:block" />
         <div className="flex gap-2">
           <Chip active={mode === 'all'} onClick={() => setMode('all')}>
-            Todos
+            All
           </Chip>
           <Chip active={mode === 'solo'} onClick={() => setMode('solo')}>
-            Individual
+            Solo
           </Chip>
           <Chip active={mode === 'class'} onClick={() => setMode('class')}>
-            En clase
+            In class
           </Chip>
         </div>
       </div>
@@ -80,10 +80,10 @@ export default function GamesPage() {
       </div>
 
       <h2 className="text-title-2 mt-10 mb-1 px-1">Games to Learn English</h2>
-      <p className="text-label-2 mb-3 px-1 text-[14px]">Juegos de vocabulario y gramática A1–A2 de gamestolearnenglish.com. También aparecen dentro de las lecciones donde se estudia cada tema.</p>
+      <p className="text-label-2 mb-3 px-1 text-[14px]">Vocabulary and grammar games A1–A2 from gamestolearnenglish.com. They also appear inside the lessons where each topic is studied.</p>
       <GtleGallery />
 
-      <h2 className="text-title-2 mt-10 mb-3 px-1">Libros y cursos interactivos</h2>
+      <h2 className="text-title-2 mt-10 mb-3 px-1">Interactive books and courses</h2>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {books.map((g) => (
           <GameCard key={g.slug} g={g} plays={playsOf(g.slug)} />
@@ -135,7 +135,7 @@ export function GameCard({ g, plays }: { g: ModuleEntry; plays: number }) {
               )}
               <span className="inline-flex items-center gap-1">
                 {g.mode === 'solo' ? <User size={12} /> : <Users size={12} />}
-                {g.mode === 'solo' ? 'Individual' : g.mode === 'class' ? 'Clase' : 'Ambos'}
+                {g.mode === 'solo' ? 'Solo' : g.mode === 'class' ? 'Class' : 'Both'}
               </span>
               {plays > 0 && <span>· {plays}×</span>}
             </span>

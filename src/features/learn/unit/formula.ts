@@ -19,7 +19,7 @@ export const ROLE_INFO: Record<Role, { label: string; color: string }> = {
   obj: { label: 'Complemento', color: 'var(--orange)' },
   time: { label: 'Tiempo', color: 'var(--indigo)' },
   conn: { label: 'Conector', color: 'var(--teal)' },
-  clause: { label: 'Oración', color: 'var(--cyan)' },
+  clause: { label: 'Sentence', color: 'var(--cyan)' },
   key: { label: 'Palabra clave', color: 'var(--pink)' },
 };
 

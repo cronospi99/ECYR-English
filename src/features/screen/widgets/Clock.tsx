@@ -41,7 +41,7 @@ export default function Clock({ data, set, editing }: WidgetProps<D>) {
   const h24 = data.h24 ?? true;
   const h = now.getHours();
   const hh = h24 ? pad(h) : String(h % 12 || 12);
-  const date = now.toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'long' });
+  const date = now.toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long' });
 
   return (
     <div className="flex h-full flex-col">
@@ -66,7 +66,7 @@ export default function Clock({ data, set, editing }: WidgetProps<D>) {
       </div>
       {editing && (
         <div className="flex flex-wrap justify-center gap-2 px-3 pb-3">
-          <Pills value={mode} onChange={(v) => set({ mode: v })} options={[{ value: 'digital', label: 'Digital' }, { value: 'analog', label: 'Agujas' }, { value: 'both', label: 'Ambos' }]} />
+          <Pills value={mode} onChange={(v) => set({ mode: v })} options={[{ value: 'digital', label: 'Digital' }, { value: 'analog', label: 'Hands' }, { value: 'both', label: 'Both' }]} />
           <Pills value={h24 ? 24 : 12} onChange={(v) => set({ h24: v === 24 })} options={[{ value: 24, label: '24 h' }, { value: 12, label: '12 h' }]} />
         </div>
       )}

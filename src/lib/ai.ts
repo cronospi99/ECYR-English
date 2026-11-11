@@ -18,9 +18,9 @@ export class CoachError extends Error {
 
 /** Calls the `coach` function with the user's session; errors become CoachError. */
 async function invokeCoach(body: Record<string, unknown>): Promise<Record<string, unknown>> {
-  if (!supabase) throw new CoachError('El coach necesita conexión con el servidor (Supabase no está configurado).', 'offline');
+  if (!supabase) throw new CoachError('The coach needs a connection to the server (Supabase is not configured).', 'offline');
   const { data: s } = await supabase.auth.getSession();
-  if (!s.session) throw new CoachError('Inicia sesión para hablar con el AI Coach.', 'signed_out');
+  if (!s.session) throw new CoachError('Sign in to talk to the AI Coach.', 'signed_out');
 
   const { data, error } = await supabase.functions.invoke('coach', { body });
   if (error) {

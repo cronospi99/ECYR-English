@@ -4,11 +4,11 @@ import { cn } from '@/lib/cn';
 import type { WidgetProps } from '../util';
 
 export const SYMBOLS: { id: string; label: string; en: string; icon: LucideIcon; color: string }[] = [
-  { id: 'silence', label: 'Silencio', en: 'Silence', icon: VolumeX, color: '#ef4444' },
-  { id: 'whisper', label: 'Susurrar', en: 'Whisper', icon: Ear, color: '#f59e0b' },
-  { id: 'partner', label: 'Pregunta a un compañero', en: 'Ask a partner', icon: MessagesSquare, color: '#3b82f6' },
-  { id: 'team', label: 'Trabajo en equipo', en: 'Teamwork', icon: Handshake, color: '#22c55e' },
-  { id: 'hand', label: 'Levanta la mano', en: 'Raise your hand', icon: Hand, color: '#a855f7' },
+  { id: 'silence', label: 'Silence', en: 'Silence', icon: VolumeX, color: '#ef4444' },
+  { id: 'whisper', label: 'Whisper', en: 'Whisper', icon: Ear, color: '#f59e0b' },
+  { id: 'partner', label: 'Ask a classmate', en: 'Ask a partner', icon: MessagesSquare, color: '#3b82f6' },
+  { id: 'team', label: 'Teamwork', en: 'Teamwork', icon: Handshake, color: '#22c55e' },
+  { id: 'hand', label: 'Raise your hand', en: 'Raise your hand', icon: Hand, color: '#a855f7' },
 ];
 
 interface D {

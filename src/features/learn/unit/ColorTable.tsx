@@ -89,7 +89,7 @@ export function ColorTable({ chart, color, spec }: { chart: GrammarChart; color:
           className="flex min-h-10 w-full items-center justify-center gap-1.5 px-4 py-2 text-[13.5px] font-semibold"
           style={{ background: tint(color, 9), color: ink(color) }}
         >
-          {all ? 'Ver menos' : `Ver la tabla completa (${chart.rows.length} filas)`}
+          {all ? 'See less' : `See the full table (${chart.rows.length} rows)`}
           <ChevronDown size={15} className={all ? 'rotate-180 transition-transform' : 'transition-transform'} />
         </button>
       )}

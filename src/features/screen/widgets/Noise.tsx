@@ -84,15 +84,15 @@ export default function Noise({ data, set }: WidgetProps<D>) {
         icon={status === 'denied' || status === 'unsupported' ? <MicOff size={44} className="text-ink-red" /> : <Mic size={44} className="text-ink-teal" />}
         text={
           status === 'denied'
-            ? 'Sin permiso de micrófono. Actívalo en el candado de la barra del navegador.'
+            ? 'No microphone permission. Enable it with the padlock in the browser bar.'
             : status === 'unsupported'
-              ? 'Este navegador no permite usar el micrófono aquí.'
-              : 'Mide el ruido de la clase con el micrófono.'
+              ? 'This browser doesn’t allow using the microphone here.'
+              : 'Measures the class noise with the microphone.'
         }
       >
         {status !== 'unsupported' && (
           <Act solid color="var(--teal)" onClick={() => void start()} disabled={status === 'asking'}>
-            <Mic size={18} /> {status === 'denied' ? 'Reintentar' : status === 'asking' ? 'Esperando…' : 'Activar micrófono'}
+            <Mic size={18} /> {status === 'denied' ? 'Retry' : status === 'asking' ? 'Waiting…' : 'Turn on microphone'}
           </Act>
         )}
       </Empty>
@@ -108,9 +108,9 @@ export default function Noise({ data, set }: WidgetProps<D>) {
         </span>
         {alert && (
           <span className="font-rounded text-ink-red leading-tight font-black" style={{ fontSize: 'min(16cqh, 9cqw)' }}>
-            ¡Shhh!
+            Shhh!
             <br />
-            Más bajo
+            Lower
           </span>
         )}
       </div>
@@ -122,11 +122,11 @@ export default function Noise({ data, set }: WidgetProps<D>) {
         <div className="absolute inset-y-0 w-1 -translate-x-1/2 rounded-full bg-label" style={{ left: `${threshold}%` }} />
       </div>
       <label className="flex items-center gap-3 text-[13px] font-semibold">
-        <span className="text-label-2 shrink-0">Límite</span>
-        <input type="range" min={10} max={95} value={threshold} onChange={(e) => set({ threshold: Number(e.target.value) })} className="flex-1 accent-[var(--red)]" aria-label="Límite de ruido" />
+        <span className="text-label-2 shrink-0">Limit</span>
+        <input type="range" min={10} max={95} value={threshold} onChange={(e) => set({ threshold: Number(e.target.value) })} className="flex-1 accent-[var(--red)]" aria-label="Noise limit" />
       </label>
       <div className="flex items-center justify-between gap-2">
-        <span className={cn('text-[14px] font-semibold', over ? 'text-ink-red' : 'text-label-2')}>Alertas: {count}</span>
+        <span className={cn('text-[14px] font-semibold', over ? 'text-ink-red' : 'text-label-2')}>Alerts: {count}</span>
         <div className="flex gap-2">
           <Act color="var(--label)" onClick={() => set({ sound: !sound })} className="h-9 text-[13px]">
             {sound ? '🔔 Sonido' : '🔕 Mudo'}
@@ -139,7 +139,7 @@ export default function Noise({ data, set }: WidgetProps<D>) {
               setStatus('off');
               setLevel(0);
             }}
-            aria-label="Detener micrófono"
+            aria-label="Stop microphone"
           >
             <Square size={14} fill="currentColor" />
           </Act>

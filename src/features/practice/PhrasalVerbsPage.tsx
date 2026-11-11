@@ -35,12 +35,12 @@ export default function PhrasalVerbsPage() {
 
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
+      back={{ to: '/practice', label: 'Practice' }}
       title="Phrasal Verbs"
-      subtitle={`${data?.length ?? 1143} phrasal verbs organizados por nivel y familia.`}
+      subtitle={`${data?.length ?? 1143} phrasal verbs organised by level and family.`}
       actions={
         <ButtonLink to="/play/phrasal-roulette" variant="tinted">
-          🎡 Jugar la ruleta
+          🎡 Play the wheel
         </ButtonLink>
       }
     >
@@ -51,7 +51,7 @@ export default function PhrasalVerbsPage() {
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
               <Chip active={level === 'all'} onClick={() => setLevel('all')}>
-                Todos
+                All
               </Chip>
               {CEFR_LEVELS.map((l) => (
                 <Chip key={l} active={level === l} onClick={() => setLevel(l)}>
@@ -67,7 +67,7 @@ export default function PhrasalVerbsPage() {
                 setRound((r) => r + 1);
               }}
               options={[
-                { value: 'browse', label: 'Explorar' },
+                { value: 'browse', label: 'Explore' },
                 { value: 'quiz', label: 'Quiz' },
               ]}
             />
@@ -75,7 +75,7 @@ export default function PhrasalVerbsPage() {
           {mode === 'quiz' && (
           <div className="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto px-1 py-1">
             <Chip active={family === 'all'} onClick={() => setFamily('all')}>
-              Todas las familias
+              All families
             </Chip>
             {families.map((f) => (
               <Chip key={f} active={family === f} onClick={() => setFamily(f)}>
@@ -91,7 +91,7 @@ export default function PhrasalVerbsPage() {
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder="Busca un phrasal verb, su significado o su traducción…"
+                placeholder="Look up a phrasal verb, its meaning or its translation…"
                 className="placeholder:text-label-3 h-full flex-1 bg-transparent text-[16px] outline-none"
               />
             </label>
@@ -101,7 +101,7 @@ export default function PhrasalVerbsPage() {
             shown.length ? (
               <PhrasalExplorer families={familiesFromList(shown)} />
             ) : (
-              <p className="text-label-2">No hay phrasal verbs con ese filtro.</p>
+              <p className="text-label-2">There are no phrasal verbs with that filter.</p>
             )
           ) : (
             <Card className="mx-auto max-w-2xl p-6">
@@ -111,11 +111,11 @@ export default function PhrasalVerbsPage() {
                   items={quiz}
                   title={`Phrasal verbs ${level === 'all' ? '' : level}`}
                   onFinish={(score) =>
-                    award({ kind: 'flashcards', title: 'Quiz de phrasal verbs', skill: 'vocabulary', xp: 10 + Math.round(score / 10), score, ref: 'practice:phrasal' })
+                    award({ kind: 'flashcards', title: 'Phrasal verbs quiz', skill: 'vocabulary', xp: 10 + Math.round(score / 10), score, ref: 'practice:phrasal' })
                   }
                 />
               ) : (
-                <p className="text-label-2">Elige un filtro con más phrasal verbs para el quiz.</p>
+                <p className="text-label-2">Pick a filter with more phrasal verbs for the quiz.</p>
               )}
             </Card>
           )}

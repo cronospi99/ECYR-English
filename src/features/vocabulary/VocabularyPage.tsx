@@ -24,10 +24,10 @@ const VisualVocab = lazy(() => import('./VisualVocab').then((m) => ({ default: m
 
 type Tab = 'visual' | 'linking' | 'adjectives' | 'adverbs';
 const TABS: { value: Tab; label: string }[] = [
-  { value: 'visual', label: '🖼️ Vocabulario visual' },
+  { value: 'visual', label: '🖼️ Visual vocabulary' },
   { value: 'linking', label: '🔗 Linking words' },
-  { value: 'adjectives', label: '🎨 Adjetivos' },
-  { value: 'adverbs', label: '⚡ Adverbios' },
+  { value: 'adjectives', label: '🎨 Adjectives' },
+  { value: 'adverbs', label: '⚡ Adverbs' },
 ];
 
 export default function VocabularyPage() {
@@ -35,10 +35,10 @@ export default function VocabularyPage() {
   const tab = (TABS.find((t) => t.value === params.get('tab'))?.value ?? 'visual') as Tab;
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
-      eyebrow="Palabras que hacen fluido tu inglés"
-      title="Vocabulario"
-      subtitle="Vocabulario con imágenes por nivel (A1–C2), conectores para unir ideas, cientos de adjetivos y adverbios por tipo, con ejemplos, audio, quiz y tarea en PDF."
+      back={{ to: '/practice', label: 'Practice' }}
+      eyebrow="Words that make your English flow"
+      title="Vocabulary"
+      subtitle="Vocabulary with pictures by level (A1–C2), connectors to join ideas, hundreds of adjectives and adverbs by type, with examples, audio, quiz and PDF task."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">
@@ -171,7 +171,7 @@ function WordGrid({ words, color }: { words: Word[]; color: string }) {
       {words.length > limit && (
         <div className="mt-4 text-center">
           <button type="button" className="bg-fill rounded-full px-4 py-2 text-[14px] font-semibold" onClick={() => setLimit((l) => l + 120)}>
-            Ver más ({words.length - limit})
+            See more ({words.length - limit})
           </button>
         </div>
       )}
@@ -233,7 +233,7 @@ function Quiz({ title, make, color, refId, pdf }: { title: string; make: () => L
         </div>
         <div className="flex gap-2">
           <button type="button" className="bg-fill-2 rounded-full px-3 py-1.5 text-[13px] font-semibold" onClick={() => setRound((r) => r + 1)}>
-            Otras preguntas
+            Other questions
           </button>
           <PdfButton build={() => pdf(questions)} />
         </div>
@@ -259,7 +259,7 @@ function Linking() {
   const { data, loading } = useAsync(loadLinking, []);
   const [sel, setSel] = useState('addition');
   if (loading || !data) return <PageLoader />;
-  if (!data.length) return <p className="text-label-2">Los conectores se están preparando.</p>;
+  if (!data.length) return <p className="text-label-2">The connectors are being prepared.</p>;
   const g = data.find((x) => x.id === sel) ?? data[0]!;
   const toWord = (c: LinkingCategory) => (x: LinkingCategory['items'][number]): Word => ({
     w: x.w,
@@ -292,7 +292,7 @@ function Linking() {
           </Card>
           <WordGrid words={words} color={g.color} />
           <Quiz
-            title={`¿Qué conector va? · ${g.en}`}
+            title={`Which connector fits? · ${g.en}`}
             color={g.color}
             refId={`linking:${g.id}`}
             make={() => gapQuiz(words, others, 8)}
@@ -322,7 +322,7 @@ function Adjectives() {
   const [sel, setSel] = useState('all');
   const [q, setQ] = useState('');
   if (loading || !data) return <PageLoader />;
-  if (!data.length) return <p className="text-label-2">La lista de adjetivos se está preparando.</p>;
+  if (!data.length) return <p className="text-label-2">The adjectives list is being prepared.</p>;
   const toWord = (x: AdjectiveCategory['items'][number]): Word => ({
     w: x.w,
     es: x.es,
@@ -357,7 +357,7 @@ function Adjectives() {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Busca un adjetivo en inglés o español…"
+            placeholder="Search an adjective in English or Spanish…"
             className="placeholder:text-label-3 h-full flex-1 bg-transparent text-[16px] outline-none"
           />
         </label>
@@ -376,13 +376,13 @@ function Adjectives() {
       {cat?.tip_es && <p className="text-label-2 mb-3 text-[14px]">💡 {cat.tip_es}</p>}
       {cuts.length > 0 && (
         <Card className="mb-4 p-4">
-          <GrammarCuts cuts={cuts} color={color} title="En imágenes" bleed={false} />
+          <GrammarCuts cuts={cuts} color={color} title="In pictures" bleed={false} />
         </Card>
       )}
       <WordGrid words={words} color={color} />
       {sel === 'all' && !n && (
         <Card className="mt-6 p-5">
-          <div className="text-[18px] font-bold">El orden de los adjetivos</div>
+          <div className="text-[18px] font-bold">Adjective order</div>
           <p className="text-label-2 mt-1 text-[14px]">Cuando usas varios adjetivos antes de un sustantivo, siguen este orden (nunca como en español: el sustantivo va al final).</p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {ORDER.map(([k, ex], i) => (
@@ -400,7 +400,7 @@ function Adjectives() {
         </Card>
       )}
       <Quiz
-        title={cat ? `Completa con el adjetivo · ${cat.en}` : 'Completa con el adjetivo'}
+        title={cat ? `Complete with the adjective · ${cat.en}` : 'Complete with the adjective'}
         color={color}
         refId={`adjectives:${cat?.id ?? 'all'}`}
         make={() => gapQuiz(cat ? words : shuffle(allWords).slice(0, 60), allWords, 8)}
@@ -416,14 +416,14 @@ function Adverbs() {
   const { data, loading } = useAsync(loadAdverbs, []);
   const [sel, setSel] = useState('manner');
   if (loading || !data) return <PageLoader />;
-  if (!data.length) return <p className="text-label-2">Los adverbios se están preparando.</p>;
+  if (!data.length) return <p className="text-label-2">The adverbs are being prepared.</p>;
   const t = data.find((x) => x.id === sel) ?? data[0]!;
   const toWord = (x: AdverbType['items'][number]): Word => ({
     w: x.w,
     es: x.es,
     ex: x.ex,
     level: x.level,
-    badges: [x.from ? `de ${x.from}` : '', x.expr ? 'expresión' : ''].filter(Boolean),
+    badges: [x.from ? `de ${x.from}` : '', x.expr ? 'expression' : ''].filter(Boolean),
   });
   const words = t.items.map(toWord);
   const others = data.filter((x) => x.id !== t.id).flatMap((x) => x.items.map(toWord));
@@ -446,10 +446,10 @@ function Adverbs() {
             </div>
             <PdfButton build={() => sheet(t.en, t.es, t.rule_es, words, gapQuiz(words, others, 10))} />
           </Card>
-          <p className="text-label-2 mb-3 text-[13px]">Toca una tarjeta para ver el ejemplo y escucharlo.</p>
+          <p className="text-label-2 mb-3 text-[13px]">Tap a card to see the example and listen to it.</p>
           <WordGrid words={words} color={t.color} />
           <Quiz
-            title={`¿Qué adverbio va? · ${t.en}`}
+            title={`Which adverb fits? · ${t.en}`}
             color={t.color}
             refId={`adverbs:${t.id}`}
             make={() => gapQuiz(words, others, 8)}

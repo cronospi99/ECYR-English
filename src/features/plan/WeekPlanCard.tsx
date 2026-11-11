@@ -21,16 +21,16 @@ export function WeekPlanCard() {
       <Card className="relative overflow-hidden p-5">
         <div className="flex items-center gap-2">
           <CalendarRange size={20} className="text-ink-blue" />
-          <h3 className="text-title-3">Tu plan semanal</h3>
+          <h3 className="text-title-3">Your weekly plan</h3>
         </div>
         <p className="text-label-2 text-subhead mt-1 max-w-[34ch]">
-          Elige qué quieres avanzar o repasar, cuántos días y minutos. Armamos tu semana y medimos tu avance.
+          Choose what you want to advance or review, how many days and minutes. We’ll build your week and measure your progress.
         </p>
         <ol className="mt-4 space-y-2.5">
           {[
-            ['Elige tu objetivo', 'Avanzar, repasar, IELTS o equilibrado'],
-            ['Ajusta tu semana', 'Destrezas, días y minutos por día'],
-            ['Estudia y mide', 'Las tareas se marcan solas y recibes recomendaciones'],
+            ['Choose your goal', 'Advance, review, IELTS or balanced'],
+            ['Adjust your week', 'Skills, days and minutes per day'],
+            ['Study and measure', 'Tasks are ticked off on their own and you get recommendations'],
           ].map(([t, d], i) => (
             <li key={t} className="flex items-start gap-3">
               <span className="bg-fill-2 text-ink-blue flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[13px] font-bold">{i + 1}</span>
@@ -42,7 +42,7 @@ export function WeekPlanCard() {
           ))}
         </ol>
         <ButtonLink to="/plan" variant="brand" className="mt-5">
-          <Wand2 size={17} /> Crear mi plan
+          <Wand2 size={17} /> Create my plan
         </ButtonLink>
       </Card>
     );
@@ -63,10 +63,10 @@ export function WeekPlanCard() {
           <h3 className="text-title-3 truncate">{plan.title}</h3>
           <p className="text-label-2 text-subhead">
             {ended
-              ? 'Semana terminada · arma la siguiente'
+              ? 'Week finished · build the next one'
               : todays.length
-                ? `Hoy: ${doneToday} de ${todays.length} tareas`
-                : 'Hoy es día libre'}
+                ? `Today: ${doneToday} of ${todays.length} tasks`
+                : 'Today is a free day'}
           </p>
         </div>
         <ChevronRight size={20} className="text-label-3" />
@@ -82,7 +82,7 @@ export function WeekPlanCard() {
                   type="button"
                   onClick={() => st?.via !== 'auto' && toggle(t.id)}
                   aria-pressed={done}
-                  aria-label={done ? 'Hecha' : 'Marcar como hecha'}
+                  aria-label={done ? 'Done' : 'Mark as done'}
                   className={cn(
                     'flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-full border-[1.5px]',
                     done ? 'border-transparent text-white' : 'border-label-3',

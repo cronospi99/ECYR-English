@@ -15,10 +15,10 @@ export function MissingTasksCard({ className, onRetry, bare = false }: { classNa
         <Database size={20} aria-hidden />
       </span>
       <div className="min-w-0 flex-1">
-        <h3 className="text-headline">Falta activar Tareas</h3>
+        <h3 className="text-headline">Tasks need to be enabled</h3>
         <p className="text-subhead text-label-2 mt-0.5">
           Ejecuta <code className="bg-fill text-label rounded px-1 text-[0.92em] break-all">{FILE}</code> en Supabase → <b className="text-label">SQL Editor</b> (o vuelve a pegar{' '}
-          <code className="bg-fill text-label rounded px-1 text-[0.92em]">supabase/setup.sql</code>, que es seguro re-ejecutar). Después recarga esta página.
+          <code className="bg-fill text-label rounded px-1 text-[0.92em]">supabase/setup.sql</code>, which is safe to re-run). Then reload this page.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Button
@@ -30,11 +30,11 @@ export function MissingTasksCard({ className, onRetry, bare = false }: { classNa
               setTimeout(() => setCopied(false), 1500);
             }}
           >
-            <Copy size={14} aria-hidden /> {copied ? 'Copiado' : 'Copiar ruta del archivo'}
+            <Copy size={14} aria-hidden /> {copied ? 'Copied' : 'Copy file path'}
           </Button>
           {onRetry && (
             <Button size="sm" variant="tinted" onClick={onRetry}>
-              Ya lo ejecuté · reintentar
+              I already ran it · retry
             </Button>
           )}
         </div>

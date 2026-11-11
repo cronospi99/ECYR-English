@@ -121,7 +121,7 @@ export function WritingPad({
       // Kept for the teacher with the AI feedback (silently; never blocks the UI).
       void send(reply, false);
     } catch (e) {
-      setError(e instanceof CoachError ? e.message : 'No se pudo obtener feedback.');
+      setError(e instanceof CoachError ? e.message : 'Could not get feedback.');
     } finally {
       setBusy(false);
     }
@@ -129,7 +129,7 @@ export function WritingPad({
 
   const selfCheck = () => {
     award({ kind: 'writing', title, skill: 'writing', xp: 15, level: level as CefrLevel, ref: 'practice:writing' });
-    setFeedback('✅ Texto guardado. Revisa la lista de criterios y marca los que cumples.');
+    setFeedback('✅ Text saved. Check the criteria list and tick the ones you meet.');
     setFeedbackFor(null);
   };
 
@@ -139,12 +139,12 @@ export function WritingPad({
         value={text}
         onChange={(e) => setText(e.target.value)}
         rows={8}
-        placeholder="Escribe tu texto en inglés aquí…"
-        aria-label="Tu texto en inglés"
+        placeholder="Write your text in English here…"
+        aria-label="Your text in English"
         className="bg-fill-2 placeholder:text-label-3 focus:ring-ios-blue/40 w-full resize-y rounded-[14px] p-4 text-[16px] leading-relaxed outline-none focus:ring-2"
       />
       <div className="text-label-2 mt-1 flex flex-wrap items-center justify-between gap-2 text-[13px]">
-        <span>{words} palabras · guardado automáticamente</span>
+        <span>{words} words · saved automatically</span>
         <TranslatorButton />
       </div>
 
@@ -175,26 +175,26 @@ export function WritingPad({
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <Button variant="brand" onClick={getFeedback} disabled={busy || words < 10}>
-          {busy ? <Spinner className="h-4 w-4" /> : <Sparkles size={16} />} Feedback con IA
+          {busy ? <Spinner className="h-4 w-4" /> : <Sparkles size={16} />} AI feedback
         </Button>
         <Button variant="gray" onClick={selfCheck} disabled={words < 10}>
-          Autoevaluar
+          Self-assess
         </Button>
         {hasTeacher &&
           (sent ? (
             <span role="status" className="text-ink-green inline-flex h-11 items-center gap-1.5 px-1 text-[15px] font-semibold">
-              <Check size={17} strokeWidth={2.6} aria-hidden /> Enviado ✓ · tu docente puede verlo
+              <Check size={17} strokeWidth={2.6} aria-hidden /> Sent ✓ · your teacher can see it
             </span>
           ) : (
             <Button variant="tinted" onClick={() => void send(feedbackFor === text ? feedback : null, true)} disabled={sending || words < 10}>
-              {sending ? <Spinner className="h-4 w-4" /> : <Send size={16} aria-hidden />} Enviar a mi docente
+              {sending ? <Spinner className="h-4 w-4" /> : <Send size={16} aria-hidden />} Send to my teacher
             </Button>
           ))}
       </div>
       {hasTeacher && (
         <p className="text-label-2 mt-2 flex items-start gap-1.5 text-[12.5px]">
           <Eye size={14} className="mt-px shrink-0" aria-hidden />
-          Tu docente puede ver los textos que envías y los que corriges con la IA.
+          Your teacher can see the texts you submit and the ones you correct with AI.
         </p>
       )}
       {sendError && <p className="text-ink-red mt-2 text-[14px]">{sendError}</p>}

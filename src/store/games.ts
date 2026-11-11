@@ -108,19 +108,19 @@ export function validateSession(raw: Record<string, unknown>, live: LiveSession 
   let asked = num(raw.asked, 0, 1000);
   let correct = num(raw.correct, 0, 1000);
   if (asked === undefined || correct === undefined) {
-    reasons.push('Datos incompletos');
+    reasons.push('Incomplete data');
     asked = asked ?? live?.asked ?? 0;
     correct = correct ?? live?.correct ?? 0;
   }
-  if (correct > asked) reasons.push('Más aciertos que preguntas');
+  if (correct > asked) reasons.push('More correct answers than questions');
   const seconds = (Date.parse(endedAt) - Date.parse(startedAt)) / 1000;
-  if (!Number.isFinite(seconds) || seconds < 0) reasons.push('Fechas inválidas');
+  if (!Number.isFinite(seconds) || seconds < 0) reasons.push('Invalid dates');
   const participation = meta?.kind === 'participation';
   // Live answers are the platform's own record: the final numbers must agree.
   if (live && !participation && live.asked > 0 && (Math.abs(live.asked - asked) > 1 || Math.abs(live.correct - correct) > 1))
-    reasons.push('El resultado no coincide con las respuestas registradas');
+    reasons.push('The result doesn’t match the recorded answers');
   if (rules && Number.isFinite(seconds) && seconds > 0 && asked / (seconds / 60) > rules.maxPerMinute && asked >= 5)
-    reasons.push('Respuestas demasiado rápidas');
+    reasons.push('Answers too fast');
   const score = participation ? undefined : num(raw.score, 0, 100);
   const stars = num(raw.stars, 0, 3);
   const mode = raw.mode === 'class' || live?.mode === 'class' ? 'class' : 'solo';
@@ -132,7 +132,7 @@ export function validateSession(raw: Record<string, unknown>, live: LiveSession 
   else if (abandoned && !(rules?.leftCounts && asked >= rules.minAnswers)) status = 'abandoned';
   else if (rules && (asked < rules.minAnswers || seconds < rules.minSeconds)) {
     status = 'invalid';
-    reasons.push(asked < rules.minAnswers ? `Menos de ${rules.minAnswers} respuestas` : `Partida de menos de ${rules.minSeconds} s`);
+    reasons.push(asked < rules.minAnswers ? `Menos de ${rules.minAnswers} respuestas` : `Game shorter than ${rules.minSeconds} s`);
   }
 
   return {

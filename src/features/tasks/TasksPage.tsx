@@ -18,7 +18,7 @@ export { TasksWidget } from './TasksWidget';
 
 const eyebrow = (
   <span className="inline-flex items-center gap-1.5">
-    <ClipboardList size={15} className="text-ink-blue" aria-hidden /> Tareas
+    <ClipboardList size={15} className="text-ink-blue" aria-hidden /> Tasks
   </span>
 );
 
@@ -42,18 +42,18 @@ export default function TasksPage() {
       setSubmitErr(null);
       await t.markDone(v.a.id, { via: 'submission', portfolioItemId: item.id });
     } catch (e) {
-      setSubmitErr(`Tu trabajo quedó guardado en "Mis trabajos", pero no se pudo marcar la tarea: ${e instanceof Error ? e.message : String(e)}`);
+      setSubmitErr(`Your work was saved in "My work", but the task could not be marked: ${e instanceof Error ? e.message : String(e)}`);
     }
   };
 
   return (
     <Page
       eyebrow={eyebrow}
-      title="Mis tareas"
-      subtitle="Lo que te asignó tu profesor. Muchas se marcan solas cuando completas la actividad en la plataforma."
+      title="My tasks"
+      subtitle="What your teacher assigned you. Many are ticked off automatically when you complete the activity on the platform."
       actions={
-        <Button variant="gray" size="sm" onClick={() => void t.reload()} disabled={t.loading} aria-label="Actualizar tareas">
-          <RefreshCw size={15} className={t.loading ? 'animate-spin' : undefined} aria-hidden /> Actualizar
+        <Button variant="gray" size="sm" onClick={() => void t.reload()} disabled={t.loading} aria-label="Refresh tasks">
+          <RefreshCw size={15} className={t.loading ? 'animate-spin' : undefined} aria-hidden /> Refresh
         </Button>
       }
     >
@@ -62,18 +62,18 @@ export default function TasksPage() {
       ) : t.error ? (
         <Card className="mx-auto max-w-xl p-6 text-center">
           <p className="text-ink-red text-body" role="alert">
-            {isTasksMissing(t.error) ? 'Tu docente aún no ha activado Tareas en la plataforma. Avísale: falta un paso de configuración (09_assignments.sql).' : t.error}
+            {isTasksMissing(t.error) ? 'Your teacher hasn’t enabled Tasks on the platform yet. Let them know: a setup step is missing (09_assignments.sql).' : t.error}
           </p>
           <Button className="mt-4" variant="tinted" onClick={() => void t.reload()}>
-            Reintentar
+            Retry
           </Button>
         </Card>
       ) : (
         <div className="space-y-8">
           <div className="grid grid-cols-3 gap-3 sm:max-w-[520px]">
-            <Stat value={t.pending.length} label="Pendientes" color="var(--blue)" />
-            <Stat value={overdue} label="Vencidas" color={overdue ? 'var(--red)' : 'var(--label-3)'} />
-            <Stat value={t.finished.length} label="Entregadas" color="var(--green)" />
+            <Stat value={t.pending.length} label="Earrings" color="var(--blue)" />
+            <Stat value={overdue} label="Overdue" color={overdue ? 'var(--red)' : 'var(--label-3)'} />
+            <Stat value={t.finished.length} label="Handed in" color="var(--green)" />
           </div>
 
           {submitErr && (
@@ -84,7 +84,7 @@ export default function TasksPage() {
 
           <section aria-labelledby="tasks-pending">
             <SectionTitle>
-              <span id="tasks-pending">Pendientes</span>
+              <span id="tasks-pending">Earrings</span>
             </SectionTitle>
             {t.pending.length ? (
               <div className="grid gap-3 lg:grid-cols-2">
@@ -102,8 +102,8 @@ export default function TasksPage() {
               <Card>
                 <EmptyState
                   icon={<CheckCheck size={44} strokeWidth={1.6} />}
-                  title="¡Todo al día!"
-                  body={t.finished.length ? 'No tienes tareas pendientes. Buen trabajo.' : 'Tu profesor aún no te ha asignado tareas. Aparecerán aquí.'}
+                  title="All caught up!"
+                  body={t.finished.length ? 'You have no pending tasks. Good job.' : 'Your teacher hasn’t assigned you tasks yet. They will appear here.'}
                 />
               </Card>
             )}
@@ -112,7 +112,7 @@ export default function TasksPage() {
           {t.finished.length > 0 && (
             <section aria-labelledby="tasks-done">
               <SectionTitle>
-                <span id="tasks-done">Entregadas</span>
+                <span id="tasks-done">Handed in</span>
               </SectionTitle>
               <div className="grid gap-3 lg:grid-cols-2">
                 {t.finished.map((v) => (
@@ -150,36 +150,36 @@ function Gate({ kind }: { kind: 'offline' | 'signed-out' | 'teacher' | 'no-class
   const copy = {
     offline: {
       icon: <CloudOff size={22} aria-hidden />,
-      title: 'Necesita conexión con el servidor',
-      body: 'Este despliegue funciona sin cuentas, así que no hay tareas de profesor. Tu progreso sigue guardado en este navegador.',
-      cta: 'Ir a mi perfil',
+      title: 'Needs a connection to the server',
+      body: 'This deployment works without accounts, so there are no teacher tasks. Your progress is still saved in this browser.',
+      cta: 'Go to my profile',
       to: '/profile',
     },
     'signed-out': {
       icon: <Lock size={22} aria-hidden />,
-      title: 'Inicia sesión para ver tus tareas',
-      body: 'Tu profesor puede asignarte unidades, juegos, prácticas o entregas. Las verás aquí, y muchas se marcan solas cuando las completas.',
-      cta: 'Iniciar sesión o crear cuenta',
+      title: 'Sign in to see your tasks',
+      body: 'Your teacher can assign you units, games, practice or hand-ins. You’ll see them here, and many are ticked off automatically when you complete them.',
+      cta: 'Sign in or create an account',
       to: '/profile',
     },
     'no-class': {
       icon: <Users size={22} aria-hidden />,
-      title: 'Únete a la clase de tu profesor',
-      body: 'Pídele a tu profesor el código de su clase y escríbelo en tu perfil. Después verás aquí las tareas que te asigne.',
-      cta: 'Unirme con un código',
+      title: 'Join your teacher’s class',
+      body: 'Ask your teacher for their class code and type it in your profile. Then you’ll see the tasks they assign you here.',
+      cta: 'Join with a code',
       to: '/profile',
     },
     teacher: {
       icon: <School size={22} aria-hidden />,
-      title: 'Las tareas se crean desde la Sala del docente',
-      body: 'Asigna tareas a toda tu clase o a estudiantes concretos y sigue quién las completó.',
-      cta: 'Ir a la Sala del docente',
+      title: 'Tasks are created from the Teacher room',
+      body: 'Assign tasks to your whole class or to specific students and follow who completed them.',
+      cta: 'Go to the Teacher room',
       to: '/teacher',
     },
   }[kind];
   const kinds = ['unit', 'game', 'writing', 'listening', 'grammar', 'ielts'] as const;
   return (
-    <Page eyebrow={eyebrow} title="Mis tareas">
+    <Page eyebrow={eyebrow} title="My tasks">
       <Card className="mx-auto max-w-[560px] overflow-hidden">
         <div className="brand-gradient relative flex h-32 items-end justify-center gap-2 overflow-hidden pb-5" aria-hidden>
           {kinds.map((k, i) => (

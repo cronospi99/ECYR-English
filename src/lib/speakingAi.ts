@@ -53,10 +53,10 @@ Give at most 5 corrections, the most important first; [] if there are none. If t
 
 /** Transcribes and comments a recorded answer through the class's `gemini` Edge Function. */
 export async function assessSpokenAnswer(audio: Blob, question: string, level: string): Promise<SpeakingFeedback> {
-  if (!supabase) throw new Error('La IA necesita conexión con el servidor (Supabase no está configurado).');
+  if (!supabase) throw new Error('The AI needs a connection to the server (Supabase is not configured).');
   const { data: s } = await supabase.auth.getSession();
-  if (!s.session) throw new Error('Inicia sesión para que la IA escuche tu respuesta.');
-  if (audio.size > MAX_ANSWER_AUDIO) throw new Error('El audio supera 18 MB. Recórtalo o expórtalo como MP3.');
+  if (!s.session) throw new Error('Sign in so the AI can listen to your answer.');
+  if (audio.size > MAX_ANSWER_AUDIO) throw new Error('The audio exceeds 18 MB. Trim it or export it as MP3.');
 
   const data = await toBase64(audio);
   const { data: res, error } = await supabase.functions.invoke('gemini', {
@@ -70,7 +70,7 @@ export async function assessSpokenAnswer(audio: Blob, question: string, level: s
     },
   });
   if (error) {
-    let message = 'No se pudo contactar al servicio de IA de la clase.';
+    let message = 'Could not reach the class AI service.';
     try {
       const body = await (error as { context?: Response }).context?.json();
       if (body?.error?.message) message = body.error.message;
@@ -99,7 +99,7 @@ export async function assessSpokenAnswer(audio: Blob, question: string, level: s
       better: String(out.better ?? ''),
     };
   } catch {
-    throw new Error('La IA respondió en un formato inesperado. Inténtalo de nuevo.');
+    throw new Error('The AI replied in an unexpected format. Try again.');
   }
 }
 
