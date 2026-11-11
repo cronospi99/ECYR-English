@@ -10,6 +10,8 @@ import NotFound from '../NotFound';
 /** Team games that can also be played by one learner (they report 'solo' then). */
 const SOLO_CAPABLE = new Set(['two-truths-colombia', 'too-good-to-be-true']);
 
+declare const __BUILD_ID__: string;
+
 export default function PlayerPage() {
   const { slug = '' } = useParams();
   const m = moduleBySlug(slug);
@@ -28,6 +30,7 @@ export default function PlayerPage() {
   const backTo = m.kind === 'book' ? `/learn/${m.levels[0]!.toLowerCase()}` : m.kind === 'course' ? '/learn/foundations' : '/games';
   // A learner playing a team game on their own device plays solo (and is graded);
   // a teacher runs it for the class on the projector.
-  const src = SOLO_CAPABLE.has(m.slug) && role !== 'teacher' ? `${m.src}?mode=solo` : m.src;
+  // v=<build> makes the browser fetch the module again after every deploy (they are plain HTML files with a fixed address).
+  const src = `${m.src}?v=${__BUILD_ID__}${SOLO_CAPABLE.has(m.slug) && role !== 'teacher' ? '&mode=solo' : ''}`;
   return <ModuleFrame src={src} title={m.title} backTo={backTo} accent={m.accent} />;
 }

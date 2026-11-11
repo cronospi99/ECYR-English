@@ -19,6 +19,8 @@ function apiInDev(): Plugin {
 }
 
 export default defineConfig({
+  // Changes on every build: added to the game modules' address so a new deploy is never served from the browser cache.
+  define: { __BUILD_ID__: JSON.stringify(Date.now().toString(36)) },
   plugins: [react(), tailwindcss(), apiInDev()],
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
