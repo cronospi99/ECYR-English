@@ -16,7 +16,7 @@ import { Page } from "@/components/ui/Page";
 import { Card } from "@/components/ui/Card";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Segmented } from "@/components/ui/Segmented";
-import { Spinner } from "@/components/ui/Misc";
+import { Spinner, Toggle } from "@/components/ui/Misc";
 import { useAuth } from "@/store/auth";
 import { relativeTime } from "@/lib/date";
 import { cn } from "@/lib/cn";
@@ -29,6 +29,9 @@ import {
   listInvites,
   listTeachers,
   revokeInvite,
+  setStudentShared,
+  shareStudent,
+  unshareStudent,
   type InviteStatus,
   type PlatformStudent,
   type PlatformTeacher,
@@ -676,9 +679,10 @@ function StudentList({
                   </div>
                   <div className="text-label-2 truncate text-[13px]">
                     {s.full_name ? `${s.email} · ` : ""}
-                    {s.teacher_name ?? "sin clase"}
+                    {[s.teacher_name ?? "sin clase", ...s.extra_teachers.map((x) => x.name ?? "docente")].join(" + ")}
                   </div>
                 </div>
+                <ShareControls student={s} teachers={teachers ?? []} onChange={onChange} />
                 <DeleteAccount
                   id={s.id}
                   name={s.full_name || s.email || "este estudiante"}
@@ -694,5 +698,74 @@ function StudentList({
         </>
       )}
     </Card>
+  );
+}
+
+/** Owner only: who else teaches this student, and whether any teacher can add them. */
+function ShareControls({
+  student,
+  teachers,
+  onChange,
+}: {
+  student: PlatformStudent;
+  teachers: PlatformTeacher[];
+  onChange: () => void | Promise<void>;
+}) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const has = new Set([student.teacher_id, ...student.extra_teachers.map((x) => x.id)]);
+  const free = teachers.filter((t) => !has.has(t.id));
+  const run = async (f: () => Promise<void>) => {
+    setBusy(true);
+    setError(null);
+    try {
+      await f();
+      await onChange();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="flex basis-full flex-wrap items-center gap-2 pl-12">
+      {student.extra_teachers.map((x) => (
+        <span key={x.id} className="bg-fill-2 flex items-center gap-1 rounded-full py-0.5 pr-1 pl-2.5 text-[12.5px] font-medium">
+          {x.name ?? "docente"}
+          <button
+            type="button"
+            disabled={busy}
+            aria-label={`Quitar a ${x.name ?? "docente"} de este estudiante`}
+            className="text-label-2 hover:text-ink-red rounded-full p-0.5"
+            onClick={() => void run(() => unshareStudent(student.id, x.id))}
+          >
+            <X size={13} />
+          </button>
+        </span>
+      ))}
+      <select
+        value=""
+        disabled={busy || free.length === 0}
+        aria-label="Añadir otro docente a este estudiante"
+        onChange={(e) => e.target.value && void run(() => shareStudent(student.id, e.target.value))}
+        className="bg-fill-2 h-8 max-w-[200px] rounded-[10px] px-2 text-[12.5px] font-medium outline-none"
+      >
+        <option value="">+ Compartir con docente…</option>
+        {free.map((t) => (
+          <option key={t.id} value={t.id}>
+            {t.full_name || t.email}
+          </option>
+        ))}
+      </select>
+      <label className="text-label-2 flex items-center gap-1.5 text-[12.5px]">
+        <Toggle
+          checked={student.shared}
+          onChange={(v) => void run(() => setStudentShared(student.id, v))}
+          label="Abierto a todos los docentes"
+        />
+        Abierto a todos los docentes
+      </label>
+      {error && <span className="text-ink-red basis-full text-[12.5px]">{error}</span>}
+    </div>
   );
 }

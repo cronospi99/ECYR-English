@@ -201,6 +201,26 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+X2. ESTUDIANTES COMPARTIDOS ENTRE DOCENTES (requiere 21_shared_students.sql)
+- Un estudiante ahora puede estar en la clase de varios docentes: cada uno le
+  asigna tareas y ve su progreso, trabajos y portafolio; el estudiante hace
+  las tareas de todos. El docente «principal» sigue siendo el de su código de
+  clase; los demás son extra.
+- Solo tu cuenta (administración) comparte: Perfil › Administración ›
+  Estudiantes. Debajo de cada estudiante: «+ Compartir con docente…» (añade
+  otro docente), una × para quitarlo y el interruptor «Abierto a todos los
+  docentes».
+- Cuando abres a un estudiante, cualquier docente (todos tienen código de
+  invitación) lo ve en Sala del docente › Clase › «Estudiantes compartidos» y
+  lo añade con «Añadir a mi clase», sin pedir permiso. Ese docente nunca puede
+  compartir por su cuenta a alguien que no esté abierto.
+- Un docente puede quitar al estudiante de SU clase sin afectar a los demás
+  (si era el principal, pasa a ser principal el siguiente). Si el estudiante
+  sale de su clase, sale de todas.
+- Hay que pegar de nuevo supabase/setup.sql (o ejecutar el 21) en Supabase.
+  Probado en un Postgres 16 local con las cuentas de admin, 2 docentes y 2
+  estudiantes; el panel no se ha probado en el navegador.
+
 X. DOCENTES SOLO POR INVITACIÓN (tú tienes el control)
 - Registrarse como «Docente» ahora pide un código de invitación
   (DOC-XXXX-XXXX). Sin código válido la cuenta no se crea; el aviso dice

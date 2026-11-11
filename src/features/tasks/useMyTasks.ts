@@ -61,7 +61,7 @@ export function useMyTasks() {
     setLoading(true);
     setError(null);
     try {
-      const [a, s] = await Promise.all([listForMe(profile?.teacher_id), myStatus()]);
+      const [a, s] = await Promise.all([listForMe(), myStatus()]);
       const map = Object.fromEntries(s.map((r) => [r.assignment_id, r]));
       setAssignments(a);
       setStatuses(map);

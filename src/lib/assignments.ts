@@ -345,8 +345,8 @@ export async function listMyAssignments(): Promise<Assignment[]> {
 
 /** Students of the signed-in teacher (light: no progress documents). */
 export async function listMyStudents(): Promise<StudentLite[]> {
-  const uid = await myId();
-  const { data, error } = await client().from('profiles').select('id,full_name,email').eq('teacher_id', uid).order('full_name', { ascending: true });
+  await myId();
+  const { data, error } = await client().from('profiles').select('id,full_name,email').eq('role', 'student').order('full_name', { ascending: true });
   if (error) throw friendly(error, 'No se pudo cargar la clase.');
   return (data ?? []) as StudentLite[];
 }
@@ -464,10 +464,9 @@ export async function review(
 // ---- student ----
 
 /** Assignments addressed to the signed-in student (RLS: their teacher's, class-wide or targeted). */
-export async function listForMe(teacherId?: string | null): Promise<Assignment[]> {
-  let q = client().from(A).select('*');
-  if (teacherId) q = q.eq('teacher_id', teacherId);
-  const { data, error } = await q.order('due_at', { ascending: true, nullsFirst: false }).order('created_at', { ascending: false });
+export async function listForMe(): Promise<Assignment[]> {
+  // RLS: the tasks of every teacher whose class the student is in.
+  const { data, error } = await client().from(A).select('*').order('due_at', { ascending: true, nullsFirst: false }).order('created_at', { ascending: false });
   if (error) throw friendly(error, 'No se pudieron cargar tus tareas.');
   return (data ?? []).map(normA);
 }

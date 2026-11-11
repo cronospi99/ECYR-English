@@ -50,6 +50,7 @@ import { useClass } from './useClass';
 import { AssignmentsManager } from '@/features/tasks/teacher';
 import { AssignButton } from '@/features/tasks/AssignButton';
 import { ClassWork } from './WorkList';
+import { SharedPool } from './SharedPool';
 
 type Tab = 'class' | 'tasks' | 'work' | 'material' | 'practice';
 type Sort = 'name' | 'recent' | 'xp' | 'level';
@@ -216,6 +217,8 @@ function ClassTab({
         <Kpi icon={CalendarRange} color="var(--green)" label="Activos esta semana" value={String(active)} />
         <Kpi icon={AlertTriangle} color="var(--orange)" label="Resultados por revisar" value={String(flagged)} hint="Partidas que no pasaron la validación" />
       </div>
+
+      <SharedPool onAdded={reload} />
 
       <Card className="overflow-hidden">
         <div className="flex flex-wrap items-center gap-2 p-3">
