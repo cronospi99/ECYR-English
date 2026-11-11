@@ -36,6 +36,7 @@ import { EsProvider } from './Es';
 import { firstSentence, highlight, keySpec, noteParts, parsePair, type KeySpec, type Seg } from './formula';
 import { FormulaBlock } from './FormulaBlock';
 import { ColorTable } from './ColorTable';
+import { Diagrams, hasDiagrams } from './Diagrams';
 import { Aids } from './Aids';
 import { UseIt } from './UseIt';
 import { Disclosure, Hl, Kicker, QuoteText, ink, tint } from './ui';
@@ -220,7 +221,9 @@ export function GrammarLesson({
         </>
       ),
     });
-  if (g.examples?.length || g.more?.length || figures.length || aids?.length)
+  const pointKey = unitKey ? `${unitKey}-${index}` : undefined;
+  const diagrams = hasDiagrams(pointKey);
+  if (g.examples?.length || g.more?.length || figures.length || aids?.length || diagrams)
     steps.push({
       key: 'see',
       title: 'See it',
@@ -230,12 +233,15 @@ export function GrammarLesson({
         <>
           <Examples g={g} spec={spec} color={color} />
           <VisualFigure items={figures} title="Grammar in pictures" color={color} />
-          {aids && aids.length > 0 && (
+          {((aids && aids.length > 0) || diagrams) && (
             <section>
               <Kicker icon={Wand2} color={color}>
                 In diagrams
               </Kicker>
-              <Aids aids={aids} color={color} />
+              <div className="space-y-4">
+                <Diagrams pointKey={pointKey} />
+                <Aids aids={aids} color={color} />
+              </div>
             </section>
           )}
         </>

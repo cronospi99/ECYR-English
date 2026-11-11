@@ -7,7 +7,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowLeft, Check, Crown, Eraser, Pencil, Play, Redo2, Send, SkipForward, Trash2, Undo2, Users, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowLeft, Brush, Check, Crown, Eraser, GraduationCap, PaintBucket, Radio, Timer, User, Pencil, Rainbow, Smile, SprayCan, Play, Redo2, Send, SkipForward, Trash2, Undo2, Users, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useAuth } from '@/store/auth';
 import { makeCode, makeId, relayConfigured } from '@/lib/relay';
@@ -16,7 +16,7 @@ import { savedPet, storePet } from '@/features/games/pet';
 import { MusicBtn, MusicCredit, useGameMusic } from '@/features/games/music';
 import { JoinQr } from '@/components/ui/JoinQr';
 import { setLang, t, useLang } from '@/features/classwars/i18n';
-import { CHOOSE_SECS, INK_COLORS, INK_H, INK_SIZES, INK_W, YD_REVEALS, YD_TIMES, YdClient, YdHost, type FeedE, type Ink, type PubPlayer, type Stroke } from './game';
+import { CHOOSE_SECS, INK_COLORS, INK_H, INK_SIZES, INK_STAMPS, INK_W, inkSize, inkTool, inkW, type InkTool, YD_REVEALS, YD_TIMES, YdClient, YdHost, type FeedE, type Ink, type PubPlayer, type Stroke } from './game';
 import { YD_LEVELS, YD_WORDS } from './words';
 import { isMuted, setMuted, sfx, unlockAudio } from './sfx';
 import { Logo } from './Logo';
@@ -36,6 +36,10 @@ const CSS = `
 @keyframes yd-pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.15);opacity:1}100%{transform:scale(1)}}
 @keyframes yd-fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
 @keyframes yd-sweep{0%{transform:rotate(-28deg)}50%{transform:rotate(28deg)}100%{transform:rotate(-28deg)}}
+@keyframes yd-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2.2%) rotate(-1.6deg)}}
+.yd-home{background:radial-gradient(70% 60% at 50% 38%,#2b2674 0%,#211c5e 60%,#1a1650 100%)}
+.yd-pencil{transform-origin:55% 90%;animation:yd-float 3.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.yd-pencil{animation:none}}
 @keyframes yd-glow{0%,100%{opacity:.55}50%{opacity:1}}
 `;
 
@@ -72,7 +76,7 @@ export default function YouDrawApp() {
     return () => { document.title = prev; };
   }, []);
   return (
-    <div className="yd-root relative h-dvh w-full overflow-hidden" onPointerDown={unlockAudio}>
+    <div className="yd-root fixed inset-0 h-dvh w-full overflow-hidden overscroll-none" onPointerDown={unlockAudio}>
       <style>{CSS}</style>
       <div className="relative h-full">
         <Routes>
@@ -125,38 +129,52 @@ function Loading({ text, sub }: { text: string; sub?: string }) {
 
 /* ------------------------------------------------------------------ home */
 function Home() {
+  const steps = [
+    { n: 1, icon: User, edge: '#ff5a76', h: t('A random student', 'Un estudiante al azar'), p: t('The game picks who draws and gives 3 words of the class level.', 'El juego elige quién dibuja y le da 3 palabras del nivel.') },
+    { n: 2, icon: Radio, edge: '#4aa3ff', h: t('Draw it live', 'Dibuja en vivo'), p: t('Everyone sees the drawing on their phone as it is made.', 'Todos ven el dibujo en su celular mientras se hace.') },
+    { n: 3, icon: Timer, edge: '#2fe0c8', h: t('Guess fast', 'Adivina rápido'), p: t('Type the word. Letters appear as time runs out. Faster = more points.', 'Escribe la palabra. Aparecen letras con el tiempo. Más rápido = más puntos.') },
+  ];
   return (
-    <div className="h-full overflow-y-auto px-4 pt-[max(14px,env(safe-area-inset-top))] pb-10">
-      <div className="mx-auto flex max-w-[780px] flex-col items-center">
-        <div className="flex w-full items-center justify-between">
-          <Link to="/games" className="grid h-10 w-10 place-items-center rounded-full bg-white/12 hover:bg-white/20" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
-          <LangSwitch />
+    <div className="yd-home relative h-full overflow-hidden">
+      {/* the classroom art sits at both sides on wide screens: the pencil floats, the rest stays put */}
+      <div className="pointer-events-none absolute bottom-0 left-0 hidden aspect-[570/841] w-[29vw] max-w-[570px] select-none xl:block" aria-hidden>
+        <img src="/youdraw/left.webp" alt="" className="absolute inset-0 h-full w-full" />
+        <img src="/youdraw/pencil.webp" alt="" className="yd-pencil absolute" style={{ left: '25.09%', top: '14.74%', width: '70.18%', height: '46.85%' }} />
+      </div>
+      <img src="/youdraw/right.webp" alt="" aria-hidden className="pointer-events-none absolute right-0 bottom-0 hidden aspect-[580/841] w-[29.5vw] max-w-[580px] select-none xl:block" />
+      <div className="relative h-full overflow-y-auto overscroll-contain px-4 pt-[max(14px,env(safe-area-inset-top))] pb-10">
+        <div className="mx-auto flex max-w-[820px] flex-col items-center xl:max-w-[min(820px,47vw)]">
+          <div className="flex w-full items-center justify-between">
+            <Link to="/games" className="grid h-10 w-10 place-items-center rounded-full bg-white/12 hover:bg-white/20" aria-label={t('Back', 'Volver')}><ArrowLeft /></Link>
+            <LangSwitch />
+          </div>
+          <motion.h1 initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: 'spring', stiffness: 240, damping: 15 }} className="-mt-2 w-full">
+            <img src="/youdraw/logo.webp" alt="You Draw" width={710} height={254} className="mx-auto h-auto w-[min(100%,600px)]" />
+          </motion.h1>
+          <p className="-mt-1 max-w-[640px] text-center text-[17px] leading-snug font-semibold text-white/90 sm:text-[19px]">
+            {t('The teacher runs the game. One student draws a word in English, everyone else watches it appear live and races to guess it.', 'El profe dirige el juego. Un estudiante dibuja una palabra en inglés y los demás la ven aparecer en vivo y corren a adivinarla.')}
+          </p>
+          <div className="mt-6 grid w-full max-w-[660px] gap-3 sm:grid-cols-2">
+            <Link to="/youdraw/host"><Btn tone="red" className="h-[68px] w-full text-[20px]"><GraduationCap size={26} /> {t("I'm the teacher", 'Soy el profe')}</Btn></Link>
+            <Link to="/youdraw/join"><Btn tone="white" className="h-[68px] w-full text-[20px] text-[#3b2bb5]"><Users size={24} /> {t('Join with a code', 'Unirme con código')}</Btn></Link>
+          </div>
+          <div className="mt-8 grid w-full gap-3 sm:grid-cols-3">
+            {steps.map((s) => (
+              <div key={s.n} className="rounded-[22px] p-4" style={{ background: `linear-gradient(160deg, ${s.edge}26, rgba(20,16,70,.55))`, boxShadow: `inset 0 0 0 2px ${s.edge}, 0 0 22px ${s.edge}33` }}>
+                <div className="flex items-center gap-3">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#ff4757] text-[17px] font-black shadow-[0_3px_0_rgba(0,0,0,.25)]">{s.n}</span>
+                  <s.icon size={30} strokeWidth={2.4} />
+                  {s.n === 2 && <span className="rounded-md bg-[#ff4757] px-1.5 py-0.5 text-[12px] font-black tracking-wide">LIVE</span>}
+                </div>
+                <div className="mt-2 text-[19px] leading-tight font-black">{s.h}</div>
+                <div className="mt-1 text-[14px] leading-snug font-semibold text-white/80">{s.p}</div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 rounded-full bg-black/25 px-5 py-2 text-center text-[13.5px] font-bold text-white/85 shadow-[inset_0_0_0_1.5px_rgba(255,255,255,.12)]">{YD_LEVELS.map((l) => `${l.label}: ${YD_WORDS[l.id].length}`).join(' • ')} {t('words', 'palabras')}</p>
+          <MusicCredit className="mt-5" />
+          {!relayConfigured() && <p className="mt-4 rounded-2xl bg-black/30 px-4 py-3 text-center text-[14px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>}
         </div>
-        <motion.div initial={{ scale: 0.6, rotate: -20 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 260, damping: 14 }} className="mt-4"><Logo size={120} /></motion.div>
-        <h1 className="yd-title mt-2 text-center text-[52px] leading-none sm:text-[68px]">You Draw</h1>
-        <p className="mt-3 max-w-[560px] text-center text-[17px] font-bold text-white/80">
-          {t('The teacher runs the game. One student draws a word in English, everyone else watches it appear live and races to guess it.', 'El profe dirige el juego. Un estudiante dibuja una palabra en inglés y los demás la ven aparecer en vivo y corren a adivinarla.')}
-        </p>
-        <div className="mt-6 grid w-full max-w-[540px] gap-3 sm:grid-cols-2">
-          <Link to="/youdraw/host"><Btn tone="red" className="h-16 w-full text-[19px]">{t("I'm the teacher", 'Soy el profe')}</Btn></Link>
-          <Link to="/youdraw/join"><Btn tone="white" className="h-16 w-full text-[19px]">{t('Join with a code', 'Unirme con código')}</Btn></Link>
-        </div>
-        <div className="mt-8 grid w-full gap-3 sm:grid-cols-3">
-          {[
-            { n: 1, h: t('A random student', 'Un estudiante al azar'), p: t('The game picks who draws and gives 3 words of the class level.', 'El juego elige quién dibuja y le da 3 palabras del nivel.') },
-            { n: 2, h: t('Draw it live', 'Dibuja en vivo'), p: t('Everyone sees the drawing on their phone as it is made.', 'Todos ven el dibujo en su celular mientras se hace.') },
-            { n: 3, h: t('Guess fast', 'Adivina rápido'), p: t('Type the word. Letters appear as time runs out. Faster = more points.', 'Escribe la palabra. Aparecen letras con el tiempo. Más rápido = más puntos.') },
-          ].map((s) => (
-            <div key={s.n} className="yd-glass p-4">
-              <div className="grid h-9 w-9 place-items-center rounded-full bg-[#ff4757] text-[17px] font-black">{s.n}</div>
-              <div className="mt-2 text-[18px] font-black">{s.h}</div>
-              <div className="text-[14px] font-semibold text-white/75">{s.p}</div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-[13.5px] font-bold text-white/60">{YD_LEVELS.map((l) => `${l.label}: ${YD_WORDS[l.id].length}`).join(' · ')} {t('words', 'palabras')}</p>
-        <MusicCredit className="mt-5" />
-        {!relayConfigured() && <p className="mt-4 rounded-2xl bg-black/30 px-4 py-3 text-center text-[14px] font-bold">{t('The live game server is not set up in this deployment (VITE_RELAY_URL).', 'El servidor de juego en vivo no está configurado en este despliegue (VITE_RELAY_URL).')}</p>}
       </div>
     </div>
   );
@@ -195,6 +213,35 @@ function Join() {
 
 /* ------------------------------------------------------------- drawing */
 /** Draws an Ink (white paper, 4:3) and keeps up with it stroke by stroke. */
+/** Paint bucket: fills the area around (x, y) that has the same colour, a little past the soft edge of the lines. */
+function flood(cv: HTMLCanvasElement, g: CanvasRenderingContext2D, x: number, y: number, hex: string) {
+  const W = cv.width, H = cv.height;
+  const x0 = Math.min(W - 1, Math.max(0, Math.round(x))), y0 = Math.min(H - 1, Math.max(0, Math.round(y)));
+  let img: ImageData;
+  try { img = g.getImageData(0, 0, W, H); } catch { return; }
+  const d = img.data, n = parseInt(hex.slice(1), 16), fr = (n >> 16) & 255, fg = (n >> 8) & 255, fb = n & 255;
+  const o = (y0 * W + x0) * 4, tr = d[o]!, tg = d[o + 1]!, tb = d[o + 2]!;
+  if (Math.abs(tr - fr) + Math.abs(tg - fg) + Math.abs(tb - fb) < 12) return;
+  const same = (i: number) => Math.abs(d[i]! - tr) + Math.abs(d[i + 1]! - tg) + Math.abs(d[i + 2]! - tb) <= 90;
+  const seen = new Uint8Array(W * H);
+  const stack = [x0, y0];
+  while (stack.length) {
+    const cy = stack.pop()!, cx = stack.pop()!;
+    let l = cx;
+    while (l >= 0 && !seen[cy * W + l] && same((cy * W + l) * 4)) l--;
+    l++;
+    let up = false, dn = false;
+    for (let i = l; i < W && !seen[cy * W + i] && same((cy * W + i) * 4); i++) {
+      const q = (cy * W + i) * 4;
+      seen[cy * W + i] = 1;
+      if (cy > 0) { const a = !seen[(cy - 1) * W + i] && same(q - W * 4); if (a && !up) stack.push(i, cy - 1); up = a; }
+      if (cy < H - 1) { const a = !seen[(cy + 1) * W + i] && same(q + W * 4); if (a && !dn) stack.push(i, cy + 1); dn = a; }
+    }
+  }
+  for (let i = 0; i < seen.length; i++) if (seen[i]) { d[i * 4] = fr; d[i * 4 + 1] = fg; d[i * 4 + 2] = fb; d[i * 4 + 3] = 255; }
+  g.putImageData(img, 0, 0);
+}
+
 function InkCanvas({ ink, className, children }: { ink: Ink; className?: string; children?: ReactNode }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -205,15 +252,50 @@ function InkCanvas({ ink, className, children }: { ink: Ink; className?: string;
     const seg = (s: Stroke, from: number) => {
       const p = s.p;
       if (!p.length) return;
-      const lw = Math.max(1, INK_SIZES[s.w] * k);
+      const tool = inkTool(s.w);
+      const size = INK_SIZES[inkSize(s.w)];
+      if (tool === 'fill') { if (from === 0) flood(cv, g, p[0] * k, p[1] * k, INK_COLORS[s.c] ?? '#000'); return; }
+      if (tool === 'stamp') {
+        if (from > 0) return;
+        g.font = `${Math.round(size * 4.2 * k + 30 * k)}px system-ui, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+        g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#000';
+        g.fillText(INK_STAMPS[s.c] ?? '⭐', p[0] * k, p[1] * k);
+        return;
+      }
+      const lw = Math.max(1, size * k);
       g.strokeStyle = g.fillStyle = INK_COLORS[s.c];
       g.lineWidth = lw;
-      if (p.length === 2) { g.beginPath(); g.arc(p[0] * k, p[1] * k, lw / 2, 0, Math.PI * 2); g.fill(); return; }
+      if (tool === 'spray') {
+        // Dots around every point. The scatter comes from the stroke id and the point index, so every screen paints the same dots.
+        const r = lw * 1.3 + 6 * k;
+        for (let i = from; i < p.length; i += 2) {
+          let seed = (s.id * 9301 + i * 49297 + 233280) >>> 0;
+          for (let n = 0; n < 9; n++) {
+            seed = (seed * 1664525 + 1013904223) >>> 0; const a = (seed / 4294967296) * Math.PI * 2;
+            seed = (seed * 1664525 + 1013904223) >>> 0; const d = Math.sqrt(seed / 4294967296) * r;
+            g.fillRect(p[i] * k + Math.cos(a) * d, p[i + 1] * k + Math.sin(a) * d, Math.max(1, 1.6 * k), Math.max(1, 1.6 * k));
+          }
+        }
+        return;
+      }
+      if (p.length === 2) {
+        if (tool === 'rainbow') g.fillStyle = `hsl(${(s.id * 37) % 360} 92% 55%)`;
+        g.beginPath(); g.arc(p[0] * k, p[1] * k, lw / 2, 0, Math.PI * 2); g.fill(); return;
+      }
       const st = Math.max(0, from - 2);
+      if (tool === 'rainbow') {
+        for (let i = st + 2; i < p.length; i += 2) {
+          g.strokeStyle = `hsl(${(s.id * 37 + i * 5) % 360} 92% 55%)`;
+          g.beginPath(); g.moveTo(p[i - 2] * k, p[i - 1] * k); g.lineTo(p[i] * k, p[i + 1] * k); g.stroke();
+        }
+        return;
+      }
+      if (tool === 'brush') { g.lineWidth = lw * 1.5; g.shadowColor = INK_COLORS[s.c]; g.shadowBlur = lw * 0.9; }
       g.beginPath();
       g.moveTo(p[st] * k, p[st + 1] * k);
       for (let i = st + 2; i < p.length; i += 2) g.lineTo(p[i] * k, p[i + 1] * k);
       g.stroke();
+      g.shadowBlur = 0;
     };
     const full = () => {
       g.fillStyle = '#fff';
@@ -254,11 +336,24 @@ function InkCanvas({ ink, className, children }: { ink: Ink; className?: string;
   );
 }
 
-/** The drawer's pad: draw with finger, pen or mouse; colours, sizes, eraser, undo, clear. */
+const PAD_TOOLS: { id: InkTool | 'eraser'; icon: typeof Pencil; en: string; es: string }[] = [
+  { id: 'pencil', icon: Pencil, en: 'Pencil', es: 'Lápiz' },
+  { id: 'brush', icon: Brush, en: 'Soft brush', es: 'Pincel suave' },
+  { id: 'spray', icon: SprayCan, en: 'Spray', es: 'Aerosol' },
+  { id: 'rainbow', icon: Rainbow, en: 'Rainbow', es: 'Arcoíris' },
+  { id: 'eraser', icon: Eraser, en: 'Eraser', es: 'Borrador' },
+  { id: 'fill', icon: PaintBucket, en: 'Fill bucket', es: 'Balde de pintura' },
+  { id: 'stamp', icon: Smile, en: 'Stickers', es: 'Stickers' },
+];
+
+/** The drawer's pad: draw with finger, pen or mouse. Same tools as Pass the Doodle: pencil, soft brush, spray, rainbow, eraser, fill bucket and stickers, plus colours, sizes, undo, redo and clear. */
 function DrawPad({ client, maxH }: { client: YdClient; maxH: string }) {
   const [c, setC] = useState(0);
   const [w, setW] = useState(1);
-  const [eraser, setEraser] = useState(false);
+  const [tool, setTool] = useState<InkTool | 'eraser'>('pencil');
+  const [stamp, setStamp] = useState(0);
+  const [, bump] = useState(0);
+  const redo = useRef<Stroke[]>([]);
   const id = useRef(Math.floor(Date.now() / 7) % 1_000_000_000);
   const cur = useRef<{ id: number; x: number; y: number } | null>(null);
   const box = useRef<HTMLDivElement>(null);
@@ -266,15 +361,19 @@ function DrawPad({ client, maxH }: { client: YdClient; maxH: string }) {
     const r = box.current!.getBoundingClientRect();
     return [Math.round(((e.clientX - r.left) / r.width) * INK_W), Math.round(((e.clientY - r.top) / r.height) * INK_H)];
   };
-  const col = eraser ? 1 : c;
+  // the eraser is a white pencil
+  const col = tool === 'eraser' ? 1 : tool === 'stamp' ? stamp : c;
+  const wv = inkW(w, tool === 'eraser' ? 'pencil' : tool);
   const down = (e: React.PointerEvent) => {
     if (e.button > 0) return;
     e.preventDefault();
-    (e.target as Element).setPointerCapture?.(e.pointerId);
     const [x, y] = pt(e);
     const sid = ++id.current;
+    if (redo.current.length) { redo.current = []; bump((n) => n + 1); }
+    client.draw(sid, col, wv, [x, y]);
+    if (tool === 'fill' || tool === 'stamp') return; // one tap, no stroke
+    (e.target as Element).setPointerCapture?.(e.pointerId);
     cur.current = { id: sid, x, y };
-    client.draw(sid, col, w, [x, y]);
   };
   const move = (e: React.PointerEvent) => {
     const s = cur.current;
@@ -289,33 +388,59 @@ function DrawPad({ client, maxH }: { client: YdClient; maxH: string }) {
       pts.push(sx, sy);
       s.x = sx; s.y = sy;
     }
-    if (pts.length) client.draw(s.id, col, w, pts);
+    if (pts.length) client.draw(s.id, col, wv, pts);
   };
   const up = (e: React.PointerEvent) => {
     const s = cur.current;
-    if (s) { const [x, y] = pt(e); if ((x - s.x) ** 2 + (y - s.y) ** 2 >= 4) client.draw(s.id, col, w, [x, y]); }
+    if (s) { const [x, y] = pt(e); if ((x - s.x) ** 2 + (y - s.y) ** 2 >= 4) client.draw(s.id, col, wv, [x, y]); }
     cur.current = null;
   };
+  const undo = () => {
+    const last = client.ink.strokes[client.ink.strokes.length - 1];
+    if (!last) return;
+    redo.current.push({ ...last, p: [...last.p] });
+    client.undo();
+    bump((n) => n + 1);
+  };
+  const again = () => {
+    const s = redo.current.pop();
+    if (!s) return;
+    const sid = ++id.current;
+    for (let i = 0; i < s.p.length; i += 800) client.draw(sid, s.c, s.w, s.p.slice(i, i + 800));
+    bump((n) => n + 1);
+  };
+  const tb = (on: boolean) => cn('grid h-9 w-9 place-items-center rounded-xl', on ? 'bg-white text-[#1d1840]' : 'bg-white/10');
   return (
     <div className="flex w-full flex-col items-center gap-2">
       <div ref={box} className="w-full touch-none select-none" style={{ maxWidth: `calc(${maxH} * 4 / 3)` }} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onLostPointerCapture={() => { cur.current = null; }}>
-        <InkCanvas ink={client.ink} className="cursor-crosshair" />
+        <InkCanvas ink={client.ink} className={tool === 'fill' || tool === 'stamp' ? 'cursor-pointer' : 'cursor-crosshair'} />
       </div>
-      <div className="flex w-full max-w-[760px] flex-wrap items-center justify-center gap-1.5 rounded-[18px] bg-black/25 p-1.5">
-        {INK_COLORS.map((hex, i) => (
-          <button key={hex} type="button" onClick={() => { setC(i); setEraser(false); }} aria-label={`${t('Colour', 'Color')} ${i + 1}`}
-            className={cn('h-8 w-8 rounded-full border-2 transition-transform', !eraser && c === i ? 'scale-110 border-white ring-2 ring-[#ff4757]' : 'border-white/40')} style={{ background: hex }} />
-        ))}
-        <span className="mx-1 h-7 w-px bg-white/20" />
-        {INK_SIZES.map((s, i) => (
-          <button key={s} type="button" onClick={() => setW(i)} aria-label={`${t('Size', 'Tamaño')} ${i + 1}`} className={cn('grid h-9 w-9 place-items-center rounded-xl', w === i ? 'bg-white text-[#1d1840]' : 'bg-white/10')}>
-            <span className="rounded-full bg-current" style={{ width: 4 + i * 5, height: 4 + i * 5 }} />
-          </button>
-        ))}
-        <span className="mx-1 h-7 w-px bg-white/20" />
-        <button type="button" onClick={() => setEraser(!eraser)} aria-label={t('Eraser', 'Borrador')} className={cn('grid h-9 w-9 place-items-center rounded-xl', eraser ? 'bg-white text-[#1d1840]' : 'bg-white/10')}><Eraser size={18} /></button>
-        <button type="button" onClick={() => client.undo()} aria-label={t('Undo', 'Deshacer')} className="grid h-9 w-9 place-items-center rounded-xl bg-white/10"><Undo2 size={18} /></button>
-        <button type="button" onClick={() => { if (client.ink.strokes.length && confirm(t('Clear the drawing?', '¿Borrar todo el dibujo?'))) client.clearInk(); }} aria-label={t('Clear', 'Borrar todo')} className="grid h-9 w-9 place-items-center rounded-xl bg-white/10"><Trash2 size={18} /></button>
+      <div className="flex w-full max-w-[760px] flex-col gap-1.5 rounded-[18px] bg-black/25 p-1.5">
+        <div className="flex flex-wrap items-center justify-center gap-1.5">
+          {PAD_TOOLS.map((x) => (
+            <button key={x.id} type="button" onClick={() => setTool(x.id)} aria-label={t(x.en, x.es)} title={t(x.en, x.es)} aria-pressed={tool === x.id} className={tb(tool === x.id)}><x.icon size={18} /></button>
+          ))}
+          <span className="mx-1 h-7 w-px bg-white/20" />
+          {INK_SIZES.map((s, i) => (
+            <button key={s} type="button" onClick={() => setW(i)} aria-label={`${t('Size', 'Tamaño')} ${i + 1}`} className={tb(w === i)}>
+              <span className="rounded-full bg-current" style={{ width: 4 + i * 5, height: 4 + i * 5 }} />
+            </button>
+          ))}
+          <span className="mx-1 h-7 w-px bg-white/20" />
+          <button type="button" onClick={undo} disabled={!client.ink.strokes.length} aria-label={t('Undo', 'Deshacer')} className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 disabled:opacity-40"><Undo2 size={18} /></button>
+          <button type="button" onClick={again} disabled={!redo.current.length} aria-label={t('Redo', 'Rehacer')} className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 disabled:opacity-40"><Redo2 size={18} /></button>
+          <button type="button" onClick={() => { if (client.ink.strokes.length && confirm(t('Clear the drawing?', '¿Borrar todo el dibujo?'))) { redo.current = []; client.clearInk(); bump((n) => n + 1); } }} aria-label={t('Clear', 'Borrar todo')} className="grid h-9 w-9 place-items-center rounded-xl bg-white/10"><Trash2 size={18} /></button>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-1.5">
+          {tool === 'stamp'
+            ? INK_STAMPS.map((em, i) => (
+              <button key={em} type="button" onClick={() => setStamp(i)} aria-label={`Sticker ${em}`} className={cn('grid h-9 w-9 place-items-center rounded-xl text-[20px]', stamp === i ? 'bg-white' : 'bg-white/10')}>{em}</button>
+            ))
+            : INK_COLORS.map((hex, i) => (
+              <button key={hex} type="button" onClick={() => { setC(i); if (tool === 'eraser') setTool('pencil'); }} aria-label={`${t('Colour', 'Color')} ${i + 1}`}
+                className={cn('h-8 w-8 rounded-full border-2 transition-transform', tool !== 'eraser' && c === i ? 'scale-110 border-white ring-2 ring-[#ff4757]' : 'border-white/40', tool === 'rainbow' && 'opacity-40')} style={{ background: hex }} />
+            ))}
+        </div>
       </div>
     </div>
   );
@@ -360,7 +485,7 @@ function FeedList({ feed, max = 40, small }: { feed: FeedE[]; max?: number; smal
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => { ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: 'smooth' }); }, [feed.length]);
   return (
-    <div ref={ref} className={cn('flex min-h-0 flex-col gap-1 overflow-y-auto', small ? 'text-[13.5px]' : 'text-[15px]')}>
+    <div ref={ref} className={cn('flex h-full min-h-0 touch-pan-y flex-col gap-1 overflow-y-auto overscroll-contain [-webkit-overflow-scrolling:touch]', small ? 'text-[13.5px]' : 'text-[15px]')}>
       {feed.slice(-max).map((e, i) => (
         <div key={i} className={cn('flex items-center gap-2 rounded-xl px-2 py-1', e.ok ? 'bg-[#2fd27a]/20 text-[#9ff5c4]' : e.sys ? 'text-white/60 italic' : 'bg-white/6')}>
           {e.av !== undefined && <Face ci={e.av} size={small ? 22 : 28} />}
@@ -673,9 +798,9 @@ function HostScreen({ host, onExit }: { host: YdHost; onExit: () => void }) {
             </div>
           </div>
         </div>
-        <div className="yd-glass order-3 flex min-h-[140px] flex-col p-2 lg:w-[290px]">
+        <div className="yd-glass order-3 flex max-h-[42dvh] min-h-[140px] flex-col p-2 lg:max-h-none lg:w-[290px]">
           <div className="mb-1 px-1 text-[14px] font-black text-white/70">{t('Guesses', 'Intentos')}</div>
-          <FeedList feed={host.feed} />
+          <div className="min-h-0 flex-1"><FeedList feed={host.feed} /></div>
         </div>
       </div>
     );
@@ -854,7 +979,7 @@ function GuessBox({ client }: { client: YdClient }) {
   }
   return (
     <div className="flex w-full max-w-[640px] min-h-0 flex-1 flex-col gap-1.5">
-      <div className="min-h-0 flex-1 rounded-2xl bg-black/20 p-1.5"><FeedList feed={client.feed} max={20} small /></div>
+      <div className="min-h-[64px] flex-1 basis-0 overflow-hidden rounded-2xl bg-black/20 p-1.5"><FeedList feed={client.feed} max={20} small /></div>
       <AnimatePresence>{client.close_ && <motion.div initial={{ y: 10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ opacity: 0 }} className="rounded-xl bg-[#ffd23f] px-3 py-1.5 text-center text-[15px] font-black text-[#2a1d00]">“{client.close_}” {t('is close!', '¡está cerca!')}</motion.div>}</AnimatePresence>
       <form className="flex gap-2" onSubmit={(e) => { e.preventDefault(); send(); }}>
         <input value={g} onChange={(e) => setG(e.target.value.slice(0, 40))} placeholder={t('Type your guess…', 'Escribe tu respuesta…')} aria-label={t('Your guess', 'Tu respuesta')} autoComplete="off" autoCorrect="off" autoCapitalize="none" spellCheck={false} enterKeyHint="send"

@@ -116,6 +116,7 @@ export const MODULES: ModuleEntry[] = [
       '16 words on the board, some of them invented or look-alike fakes. Teams take turns to spot the impostors; a wrong guess can be saved with a synonym. Every board gets trickier. C1–C2 use academic words with Spanish translations.',
     kind: 'game',
     src: '/modules/two-truths/too-good-to-be-true.html',
+    cover: '/covers/too-good-to-be-true.webp',
     levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
     skills: ['speaking', 'reading'],
     topics: ['Vocabulary', 'Spelling', 'Synonyms'],

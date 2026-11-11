@@ -24,6 +24,14 @@ const MAX_POINTS = 24_000;
 export const INK_W = 1000, INK_H = 750;
 export const INK_COLORS = ['#1b1b1f', '#ffffff', '#8a8f98', '#e53935', '#ff8f00', '#fdd835', '#43a047', '#1b5e20', '#29b6f6', '#1e40af', '#8e24aa', '#f06292', '#795548', '#f5c49a'];
 export const INK_SIZES = [4, 9, 18, 36];
+/** Drawing tools. A stroke's `w` carries both: size + INK_SIZES.length × tool (so old strokes are pencil). */
+export const INK_TOOLS = ['pencil', 'brush', 'spray', 'rainbow', 'fill', 'stamp'] as const;
+export type InkTool = (typeof INK_TOOLS)[number];
+/** Stickers for the stamp tool (its `c` is the sticker, not a colour): reactions and signs, never objects. */
+export const INK_STAMPS = ['⭐', '❤️', '😀', '😢', '😡', '😱', '👍', '👎', '➡️', '⬆️', '❓', '❗', '✅', '❌'];
+export const inkW = (size: number, tool: InkTool) => size + INK_SIZES.length * INK_TOOLS.indexOf(tool);
+export const inkSize = (w: number) => w % INK_SIZES.length;
+export const inkTool = (w: number): InkTool => INK_TOOLS[Math.floor(w / INK_SIZES.length)] ?? 'pencil';
 export interface Stroke { id: number; c: number; w: number; p: number[] }
 /** One drawing operation: points added to a stroke, undo, or clear. */
 export type InkOp = [number, number, number, number[]] | ['u'] | ['x'];
@@ -62,7 +70,7 @@ function cleanOp(op: unknown): InkOp | null {
   if (op[0] === 'u' || op[0] === 'x') return [op[0]];
   const [id, c, w, p] = op;
   if (!Number.isInteger(id) || !Number.isInteger(c) || !Number.isInteger(w) || !Array.isArray(p)) return null;
-  if (c < 0 || c >= INK_COLORS.length || w < 0 || w >= INK_SIZES.length || p.length % 2 || p.length > 1200) return null;
+  if (c < 0 || c >= INK_COLORS.length || w < 0 || w >= INK_SIZES.length * INK_TOOLS.length || p.length % 2 || p.length > 1200) return null;
   const pts: number[] = [];
   for (let i = 0; i < p.length; i += 2) {
     const x = Number(p[i]), y = Number(p[i + 1]);
@@ -500,7 +508,7 @@ export class YdClient {
     if (!this.drawing || this.ink.points >= MAX_POINTS) return;
     this.ink.add(id, c, w, p);
     const last = this.outbox[this.outbox.length - 1];
-    if (last && last[0] === id) (last as [number, number, number, number[]])[3].push(...p);
+    if (last && last[0] === id && (last as [number, number, number, number[]])[3].length + p.length <= 1000) (last as [number, number, number, number[]])[3].push(...p);
     else this.outbox.push([id, c, w, [...p]]);
   }
   undo() { if (this.drawing) { this.ink.undo(); this.outbox.push(['u']); } }

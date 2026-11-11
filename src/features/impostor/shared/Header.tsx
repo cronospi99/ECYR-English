@@ -1,3 +1,5 @@
+import { MusicToggle } from "./music";
+
 export function Header({
   phase,
   chips = [],
@@ -29,6 +31,7 @@ export function Header({
           {chips.map((c) => (
             <span key={c} className="tag" style={{ color: "rgba(242,239,230,0.62)" }}>{c}</span>
           ))}
+          <MusicToggle />
           {onBack && (
             <button type="button" className="btn btn-d btn-hdr" onClick={onBack} disabled={backDisabled} title={backTitle}>{backLabel}</button>
           )}

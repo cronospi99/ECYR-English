@@ -1,3 +1,4 @@
+import { useImpostorMusic } from "../shared/music";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { qrDataUrl } from "./qr";
 import { awardGamePoints, type Award } from "@/features/cards/api";
@@ -33,6 +34,7 @@ function restore(): { code: string; hostId: string; state: HostState } {
 }
 
 export function Host({ onExit, demo = false, onPhase }: { onExit: () => void; demo?: boolean; onPhase?: (phase: string) => void }) {
+  useImpostorMusic("arcade");
   const init = useRef(demo ? { code: "DEMO", hostId: "host-demo", state: E.createState("DEMO") } : restore()).current;
   const [s, setS] = useState<HostState>(init.state);
   const ref = useRef(s);
