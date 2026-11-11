@@ -22,7 +22,7 @@ export interface RankLook {
 
 export const RANK_LOOK: Record<CardRank, RankLook> = {
   bronze: {
-    label: 'Bronce',
+    label: 'Bronze',
     labelEn: 'Bronze',
     en: 'Bronze',
     metal: 'linear-gradient(135deg,#6e3c1a 0%,#c9864c 18%,#8f5428 36%,#f2c38e 52%,#7a4520 70%,#d79a5f 86%,#6e3c1a 100%)',
@@ -33,7 +33,7 @@ export const RANK_LOOK: Record<CardRank, RankLook> = {
     gem: ['#f6cf9f', '#c47a3d', '#6e3c1a'],
   },
   silver: {
-    label: 'Plata',
+    label: 'Silver',
     labelEn: 'Silver',
     en: 'Silver',
     metal: 'linear-gradient(135deg,#6c7680 0%,#dfe5ea 18%,#8e9aa6 36%,#ffffff 52%,#76818b 70%,#c9d1d8 86%,#6c7680 100%)',
@@ -44,7 +44,7 @@ export const RANK_LOOK: Record<CardRank, RankLook> = {
     gem: ['#ffffff', '#aeb8c2', '#5d6872'],
   },
   gold: {
-    label: 'Oro',
+    label: 'Gold',
     labelEn: 'Gold',
     en: 'Gold',
     metal: 'linear-gradient(135deg,#8a5d00 0%,#f5c518 16%,#b8860b 33%,#fff3b8 50%,#a87400 67%,#ffe27a 84%,#8a5d00 100%)',
@@ -55,7 +55,7 @@ export const RANK_LOOK: Record<CardRank, RankLook> = {
     gem: ['#fff6c8', '#f5c518', '#8a5d00'],
   },
   diamond: {
-    label: 'Diamante',
+    label: 'Diamond',
     labelEn: 'Diamond',
     en: 'Diamond',
     metal: 'linear-gradient(135deg,#5ec8ff 0%,#ffffff 14%,#a78bfa 30%,#e0f7ff 44%,#5eead4 58%,#c4b5fd 72%,#ffffff 86%,#5ec8ff 100%)',

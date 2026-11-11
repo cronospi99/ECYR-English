@@ -25,15 +25,15 @@ export default function CardsPage() {
   const [tab, setTab] = useState<'mine' | 'class'>('mine');
   useGameLang();
   return (
-    <Page title={t('Cards', 'Cartas')} subtitle={t('The 25 characters of Impostor and Class Wars. They are all yours: each card ranks up with the points you win playing with it.', 'Los 25 personajes de Impostor y Class Wars. Todas son tuyas: cada carta sube de rango con los puntos que ganas jugando con ella.')} actions={<GameLangToggle dark={false} />} wide>
+    <Page title={t('Cards', 'Cards')} subtitle={t('The 25 characters of Impostor and Class Wars. They are all yours: each card ranks up with the points you win playing with it.', 'The 25 characters of Impostor and Class Wars. They’re all yours: each card ranks up with the points you earn playing with it.')} actions={<GameLangToggle dark={false} />} wide>
       {isTeacher && (
         <Segmented
           className="mb-5"
           value={tab}
           onChange={setTab}
           options={[
-            { value: 'mine', label: t('My cards', 'Mis cartas') },
-            { value: 'class', label: t('My class', 'Mi clase') },
+            { value: 'mine', label: t('My cards', 'My cards') },
+            { value: 'class', label: t('My class', 'My class') },
           ]}
         />
       )}
@@ -70,7 +70,7 @@ function Album() {
       <div className="mb-5 grid gap-3 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,2fr)]">
         <Card className="relative overflow-hidden p-5">
           <div className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--yellow)_35%,transparent),transparent_70%)]" />
-          <div className="text-subhead text-label-2 font-medium">{t('Card points', 'Puntos de carta')}</div>
+          <div className="text-subhead text-label-2 font-medium">{t('Card points', 'Card points')}</div>
           <div className="flex items-end gap-3">
             <div className="text-[44px] leading-none font-extrabold tabular-nums">{total}</div>
             {mine.loading && <Spinner className="mb-2 h-5 w-5" />}
@@ -79,11 +79,11 @@ function Album() {
             <button type="button" onClick={() => setZoom(best.c)} className="text-subhead text-label-2 mt-2 flex items-center gap-2 text-left">
               <RankEmblem rank={rankOf(best.p)} size={20} />
               <span>
-                {t('Your best card', 'Tu mejor carta')}: <b className="text-label">{best.c.name}</b> · {best.p} pts
+                {t('Your best card', 'Your best card')}: <b className="text-label">{best.c.name}</b> · {best.p} pts
               </span>
             </button>
           ) : (
-            <p className="text-subhead text-label-2 mt-2">{t('Play Impostor or Class Wars and pick the card you want to train.', 'Juega Impostor o Class Wars y elige la carta que quieres entrenar.')}</p>
+            <p className="text-subhead text-label-2 mt-2">{t('Play Impostor or Class Wars and pick the card you want to train.', 'Play Impostor or Class Wars and pick the card you want to train.')}</p>
           )}
           <div className="mt-4 flex flex-wrap gap-2">
             <Link to="/impostor" className="bg-[color-mix(in_srgb,var(--orange)_14%,transparent)] text-ink-orange inline-flex h-9 items-center gap-1.5 rounded-full px-3.5 text-[14px] font-semibold">
@@ -124,7 +124,7 @@ function Album() {
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 py-1">
           <Chip active={filter === 'all'} onClick={() => setFilter('all')}>
-            {t('All', 'Todas')} · 25
+            {t('All', 'All')} · 25
           </Chip>
           {RANKS.map((r) => (
             <Chip key={r} active={filter === r} onClick={() => setFilter(r)}>
@@ -139,20 +139,20 @@ function Album() {
           onChange={setSort}
           options={[
             { value: 'num', label: 'Nº' },
-            { value: 'points', label: t('Points', 'Puntos') },
-            { value: 'name', label: t('Name', 'Nombre') },
+            { value: 'points', label: t('Points', 'Dots') },
+            { value: 'name', label: t('Name', 'Name') },
           ]}
         />
       </div>
 
       <div ref={grid} className="grid justify-center gap-3 sm:gap-4" style={{ gridTemplateColumns: `repeat(auto-fill, ${cw}px)` }}>
         {list.map(({ c, i, p }) => (
-          <button key={c.id} type="button" onClick={() => setZoom(c)} className="rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-4" aria-label={`${c.name}: ${rankName(rankOf(p))}, ${p} puntos`}>
+          <button key={c.id} type="button" onClick={() => setZoom(c)} className="rounded-[12px] focus-visible:outline-2 focus-visible:outline-offset-4" aria-label={`${c.name}: ${rankName(rankOf(p))}, ${p} points`}>
             <TeacherCardView card={c} points={p} width={cw} index={i} animate={false} tilt />
           </button>
         ))}
       </div>
-      {!list.length && <EmptyState icon={<RankEmblem rank={filter === 'all' ? 'bronze' : filter} size={44} />} title={t('No cards at this rank', 'Ninguna carta en este rango')} body={t('Keep playing: points rank up the card you are training.', 'Sigue jugando: los puntos suben el rango de la carta que entrenas.')} />}
+      {!list.length && <EmptyState icon={<RankEmblem rank={filter === 'all' ? 'bronze' : filter} size={44} />} title={t('No cards at this rank', 'No card at this rank')} body={t('Keep playing: points rank up the card you are training.', 'Keep playing: the points raise the rank of the card you train.')} />}
 
       {zoom && <CardZoom card={zoom} points={pts} onClose={() => setZoom(null)} />}
     </>
@@ -202,7 +202,7 @@ function CardZoom({ card, points, onClose }: { card: TeacherCard; points: CardPo
       <div onClick={(e) => e.stopPropagation()} className={`ecyr-card-pop relative flex items-center gap-6 ${wide ? 'flex-row' : 'flex-col gap-4'}`}>
         <TeacherCardView card={card} points={p} width={Math.max(160, cw)} tilt />
         <div className="bg-card shadow-card rounded-card w-[min(340px,calc(100vw-32px))] p-5">
-          <button type="button" onClick={onClose} aria-label="Cerrar" className="bg-fill-2 text-label-2 absolute top-0 right-0 grid h-9 w-9 translate-x-1/3 -translate-y-1/3 place-items-center rounded-full shadow-card sm:static sm:float-right sm:translate-x-0 sm:translate-y-0">
+          <button type="button" onClick={onClose} aria-label="Close" className="bg-fill-2 text-label-2 absolute top-0 right-0 grid h-9 w-9 translate-x-1/3 -translate-y-1/3 place-items-center rounded-full shadow-card sm:static sm:float-right sm:translate-x-0 sm:translate-y-0">
             <X size={18} />
           </button>
           <div className="text-subhead text-label-2 font-medium">{card.role}</div>
@@ -219,7 +219,7 @@ function CardZoom({ card, points, onClose }: { card: TeacherCard; points: CardPo
             </div>
           </div>
           <p className="text-footnote text-label-2 mt-2 text-[13px]">
-            {prog.next ? t(`${prog.left} more points for ${rankName(prog.next)}.`, `Faltan ${prog.left} puntos para ${rankName(prog.next)}.`) : t('Top rank! This card shines like a diamond.', '¡Rango máximo! Esta carta brilla como un diamante.')}
+            {prog.next ? t(`${prog.left} more points for ${rankName(prog.next)}.`, `Faltan ${prog.left} puntos para ${rankName(prog.next)}.`) : t('Top rank! This card shines like a diamond.', 'Max rank! This card shines like a diamond.')}
           </p>
           <div className="mt-4 grid grid-cols-4 gap-1.5">
             {RANKS.map((r) => (
@@ -262,7 +262,7 @@ function ClassCards() {
       (students ?? [])
         .map((s) => {
           const own = (byStudent.get(s.profile.id) ?? []).slice().sort((a, b) => b.points - a.points);
-          return { id: s.profile.id, name: s.profile.full_name || s.profile.email || 'Estudiante', total: own.reduce((a, b) => a + b.points, 0), games: own.reduce((a, b) => a + b.games, 0), top: own.slice(0, 3) };
+          return { id: s.profile.id, name: s.profile.full_name || s.profile.email || 'Student', total: own.reduce((a, b) => a + b.points, 0), games: own.reduce((a, b) => a + b.games, 0), top: own.slice(0, 3) };
         })
         .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name, 'es')),
     [students, byStudent],
@@ -284,7 +284,7 @@ function ClassCards() {
       )}
       {!list.length ? (
         <Card>
-          <EmptyState icon={<Users size={40} />} title={t('No students yet', 'Aún no hay estudiantes')} body={t('When your students play Impostor or Class Wars with their account, you will see their card ranks here.', 'Cuando tus estudiantes jueguen Impostor o Class Wars con su cuenta, aquí verás el rango de sus cartas.')} />
+          <EmptyState icon={<Users size={40} />} title={t('No students yet', 'No students yet')} body={t('When your students play Impostor or Class Wars with their account, you will see their card ranks here.', 'When your students play Impostor or Class Wars with their account, you’ll see their card ranks here.')} />
         </Card>
       ) : (
         <Card className="divide-separator divide-y overflow-hidden">
@@ -308,7 +308,7 @@ function ClassCards() {
                     );
                   })
                 ) : (
-                  <span className="text-label-3 text-[13px]">{t('No games yet', 'Sin partidas')}</span>
+                  <span className="text-label-3 text-[13px]">{t('No games yet', 'No games')}</span>
                 )}
                 {s.top[0] && <RankEmblem rank={rankOf(s.top[0].points)} size={26} />}
               </div>

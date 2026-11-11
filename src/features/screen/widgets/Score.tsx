@@ -11,8 +11,8 @@ interface D {
 }
 
 const DEFAULT: Team[] = [
-  { name: 'Equipo 1', score: 0 },
-  { name: 'Equipo 2', score: 0 },
+  { name: 'Team 1', score: 0 },
+  { name: 'Team 2', score: 0 },
 ];
 
 export default function Score({ data, set, editing }: WidgetProps<D>) {
@@ -33,15 +33,15 @@ export default function Score({ data, set, editing }: WidgetProps<D>) {
                 {t.score}
               </span>
               <div className="flex w-full justify-center gap-2">
-                <button type="button" aria-label="Restar punto" onClick={() => upd(i, { score: t.score - 1 })} className="bg-card grid h-11 flex-1 place-items-center rounded-full shadow-card active:scale-95">
+                <button type="button" aria-label="Subtract point" onClick={() => upd(i, { score: t.score - 1 })} className="bg-card grid h-11 flex-1 place-items-center rounded-full shadow-card active:scale-95">
                   <Minus size={20} />
                 </button>
-                <button type="button" aria-label="Sumar punto" onClick={() => upd(i, { score: t.score + 1 })} className="grid h-11 flex-[2] place-items-center rounded-full text-white active:scale-95" style={{ background: c }}>
+                <button type="button" aria-label="Add point" onClick={() => upd(i, { score: t.score + 1 })} className="grid h-11 flex-[2] place-items-center rounded-full text-white active:scale-95" style={{ background: c }}>
                   <Plus size={22} strokeWidth={3} />
                 </button>
               </div>
               {editing && teams.length > 1 && (
-                <button type="button" aria-label="Quitar equipo" onClick={() => set({ teams: teams.filter((_, j) => j !== i) })} className="text-ink-red absolute top-2 left-2">
+                <button type="button" aria-label="Remove team" onClick={() => set({ teams: teams.filter((_, j) => j !== i) })} className="text-ink-red absolute top-2 left-2">
                   <Trash2 size={18} />
                 </button>
               )}
@@ -52,11 +52,11 @@ export default function Score({ data, set, editing }: WidgetProps<D>) {
       <div className="flex justify-center gap-2 px-3 pb-3">
         {teams.length < 6 && (
           <Act color="var(--blue)" onClick={() => set({ teams: [...teams, { name: `Equipo ${teams.length + 1}`, score: 0 }] })}>
-            <Plus size={18} /> Equipo
+            <Plus size={18} /> Team
           </Act>
         )}
         <Act color="var(--label)" onClick={() => set({ teams: teams.map((t) => ({ ...t, score: 0 })) })} disabled={!teams.some((t) => t.score)}>
-          <RotateCcw size={18} /> Ceros
+          <RotateCcw size={18} /> Zeros
         </Act>
       </div>
     </div>

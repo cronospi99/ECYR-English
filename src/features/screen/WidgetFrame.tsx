@@ -114,14 +114,14 @@ function Frame({ w, def, area, stacked, focused }: { w: WidgetInstance; def: Wid
         </span>
         <span className="text-label-2 min-w-0 flex-1 truncate text-[14px] font-semibold">{def.label}</span>
         {def.settings && !w.min && (
-          <button type="button" aria-label="Ajustes" aria-pressed={editing} onClick={() => setEditing(!editing)} className={cn('grid h-8 w-8 place-items-center rounded-full transition-colors', editing ? 'bg-label text-bg' : 'text-label-2 hover:bg-fill-2')}>
+          <button type="button" aria-label="Settings" aria-pressed={editing} onClick={() => setEditing(!editing)} className={cn('grid h-8 w-8 place-items-center rounded-full transition-colors', editing ? 'bg-label text-bg' : 'text-label-2 hover:bg-fill-2')}>
             <Settings2 size={17} />
           </button>
         )}
-        <button type="button" aria-label={w.min ? 'Restaurar' : 'Minimizar'} onClick={() => patch(w.id, { min: !w.min })} className="text-label-2 hover:bg-fill-2 grid h-8 w-8 place-items-center rounded-full">
+        <button type="button" aria-label={w.min ? 'Restore' : 'Minimise'} onClick={() => patch(w.id, { min: !w.min })} className="text-label-2 hover:bg-fill-2 grid h-8 w-8 place-items-center rounded-full">
           {w.min ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
         </button>
-        <button type="button" aria-label="Cerrar" onClick={() => remove(w.id)} className="text-label-2 hover:bg-[color-mix(in_srgb,var(--red)_14%,transparent)] hover:text-ink-red grid h-8 w-8 place-items-center rounded-full">
+        <button type="button" aria-label="Close" onClick={() => remove(w.id)} className="text-label-2 hover:bg-[color-mix(in_srgb,var(--red)_14%,transparent)] hover:text-ink-red grid h-8 w-8 place-items-center rounded-full">
           <X size={18} />
         </button>
       </header>
@@ -134,7 +134,7 @@ function Frame({ w, def, area, stacked, focused }: { w: WidgetInstance; def: Wid
         <>
           <div onPointerDown={(e) => down(e, 'e')} onPointerMove={move} onPointerUp={up} onPointerCancel={up} className="absolute top-12 right-0 bottom-6 w-2 cursor-ew-resize touch-none" />
           <div onPointerDown={(e) => down(e, 's')} onPointerMove={move} onPointerUp={up} onPointerCancel={up} className="absolute right-6 bottom-0 left-6 h-2 cursor-ns-resize touch-none" />
-          <div onPointerDown={(e) => down(e, 'se')} onPointerMove={move} onPointerUp={up} onPointerCancel={up} aria-hidden className="absolute right-0 bottom-0 h-6 w-6 cursor-nwse-resize touch-none" title="Cambiar tamaño">
+          <div onPointerDown={(e) => down(e, 'se')} onPointerMove={move} onPointerUp={up} onPointerCancel={up} aria-hidden className="absolute right-0 bottom-0 h-6 w-6 cursor-nwse-resize touch-none" title="Resize">
             <svg viewBox="0 0 24 24" className="text-label-3 absolute right-1 bottom-1 h-3.5 w-3.5">
               <path d="M20 8 8 20M20 14l-6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
             </svg>

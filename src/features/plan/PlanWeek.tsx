@@ -28,7 +28,7 @@ export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: 
 
   return (
     <Card className="overflow-hidden">
-      <div className="no-scrollbar flex gap-1.5 overflow-x-auto p-3 sm:justify-between sm:p-4" role="tablist" aria-label="Días del plan">
+      <div className="no-scrollbar flex gap-1.5 overflow-x-auto p-3 sm:justify-between sm:p-4" role="tablist" aria-label="Plan days">
         {days.map((d) => {
           const dt = dateOf(d);
           const list = plan.tasks.filter((t) => t.day === d);
@@ -66,7 +66,7 @@ export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: 
       </div>
       <div className="border-separator border-t">
         <div className="flex items-baseline justify-between px-5 pt-4 pb-1">
-          <h3 className="text-headline">{sentence(dateOf(sel).toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'long' }))}</h3>
+          <h3 className="text-headline">{sentence(dateOf(sel).toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long' }))}</h3>
           {tasks.length > 0 && (
             <span className="text-label-2 text-[13px] tabular-nums">{tasks.reduce((n, t) => n + t.minutes, 0)} min</span>
           )}
@@ -80,11 +80,11 @@ export function PlanWeek({ plan, ev, readOnly = false }: { plan: WeekPlan; ev?: 
             </AnimatePresence>
           </ul>
         ) : (
-          <p className="text-label-2 px-5 pt-1 pb-5 text-[15px]">Día libre. ¡Descansar también es parte del plan!</p>
+          <p className="text-label-2 px-5 pt-1 pb-5 text-[15px]">Free day. Resting is part of the plan too!</p>
         )}
         {overdue.length > 0 && (
           <div className="border-separator border-t pt-3 pb-2">
-            <div className="text-ink-orange px-5 pb-1 text-[13px] font-semibold">Pendientes de días anteriores</div>
+            <div className="text-ink-orange px-5 pb-1 text-[13px] font-semibold">Pending from earlier days</div>
             <ul>
               {overdue.map((t) => (
                 <TaskRow key={t.id} t={t} ev={ev} showDay readOnly={readOnly} />
@@ -112,8 +112,8 @@ function TaskRow({ t, ev, showDay, readOnly }: { t: PlanTask; ev?: PlanEvaluatio
           onClick={() => !auto && !readOnly && toggle(t.id)}
           disabled={readOnly}
           aria-pressed={done}
-          aria-label={done ? (auto ? 'Completada automáticamente' : 'Marcar como pendiente') : 'Marcar como hecha'}
-          title={auto ? 'Detectada automáticamente' : undefined}
+          aria-label={done ? (auto ? 'Completed automatically' : 'Mark as pending') : 'Mark as done'}
+          title={auto ? 'Detected automatically' : undefined}
           className={cn(
             'flex h-[26px] w-[26px] shrink-0 items-center justify-center rounded-full border-[1.5px] transition-colors',
             done ? 'border-transparent text-white' : 'border-label-3 hover:border-ios-blue',
@@ -135,8 +135,8 @@ function TaskRow({ t, ev, showDay, readOnly }: { t: PlanTask; ev?: PlanEvaluatio
           <span className="inline-flex items-center gap-0.5">
             <Clock size={11} /> {t.minutes} min
           </span>
-          {showDay && <span>{dateOf(t.day).toLocaleDateString('es', { weekday: 'short', day: 'numeric' })}</span>}
-          {auto && <span className="text-ink-green font-medium">Detectada{typeof st?.score === 'number' ? ` · ${st.score}%` : ''}</span>}
+          {showDay && <span>{dateOf(t.day).toLocaleDateString('en', { weekday: 'short', day: 'numeric' })}</span>}
+          {auto && <span className="text-ink-green font-medium">Detected{typeof st?.score === 'number' ? ` · ${st.score}%` : ''}</span>}
           {t.detail && !done && <span className="hidden truncate sm:inline">{t.detail}</span>}
         </span>
       </Link>

@@ -48,24 +48,24 @@ export function inviteStatus(i: TeacherInvite, now = Date.now()): InviteStatus {
 }
 
 const MISSING =
-  "Falta activar los códigos de docente en Supabase (15_teacher_invites.sql).";
+  "Teacher codes need to be enabled in Supabase (15_teacher_invites.sql).";
 const MISSING_21 =
-  "Falta activar los estudiantes compartidos en Supabase (21_shared_students.sql).";
+  "Shared students need to be enabled in Supabase (21_shared_students.sql).";
 const MISSING_17 =
-  "Falta activar la eliminación de cuentas en Supabase (17_admin_delete_users.sql).";
+  "Account deletion needs to be enabled in Supabase (17_admin_delete_users.sql).";
 
 function fail(msg: string, missing = MISSING): never {
   if (/does not exist|schema cache|Could not find the function/i.test(msg))
     throw new Error(missing);
   if (/own account/i.test(msg))
-    throw new Error("No puedes borrar tu propia cuenta desde aquí.");
+    throw new Error("You can’t delete your own account from here.");
   if (/Remove it from platform_admins/i.test(msg))
     throw new Error(
-      "Esa cuenta también es administración; quítala primero de platform_admins.",
+      "That account is also an admin; remove it from platform_admins first.",
     );
   if (/platform owner/i.test(msg))
     throw new Error(
-      "Solo la administración de la plataforma puede hacer esto.",
+      "Only the platform admin can do this.",
     );
   throw new Error(msg);
 }
@@ -96,28 +96,28 @@ export async function listStudents(): Promise<PlatformStudent[]> {
 
 /** Owner only: adds a teacher to a student (the student keeps their other teachers). */
 export async function shareStudent(student: string, teacher: string): Promise<void> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { error } = await supabase.rpc('admin_share_student', { p_student: student, p_teacher: teacher });
   if (error) fail(error.message, MISSING_21);
 }
 
 /** Owner only: takes one teacher out of a student's teachers. */
 export async function unshareStudent(student: string, teacher: string): Promise<void> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { error } = await supabase.rpc('admin_unshare_student', { p_student: student, p_teacher: teacher });
   if (error) fail(error.message, MISSING_21);
 }
 
 /** Owner only: opens (or closes) a student so any teacher can add them to their class. */
 export async function setStudentShared(student: string, shared: boolean): Promise<void> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { error } = await supabase.rpc('admin_set_student_shared', { p_student: student, p_shared: shared });
   if (error) fail(error.message, MISSING_21);
 }
 
 /** Deletes the account and everything it owns. A teacher's students stay, without a class. */
 export async function deleteAccount(id: string): Promise<void> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { error } = await supabase.rpc('admin_delete_user', { p_user: id });
   if (error) fail(error.message, MISSING_17);
 }
@@ -126,7 +126,7 @@ export async function createInvite(
   note: string,
   days: number,
 ): Promise<TeacherInvite> {
-  if (!supabase) throw new Error("Sin conexión con el servidor.");
+  if (!supabase) throw new Error("No connection to the server.");
   const { data, error } = await supabase.rpc("create_teacher_invite", {
     p_note: note.trim() || null,
     p_days: days,
@@ -136,7 +136,7 @@ export async function createInvite(
 }
 
 export async function revokeInvite(code: string): Promise<void> {
-  if (!supabase) throw new Error("Sin conexión con el servidor.");
+  if (!supabase) throw new Error("No connection to the server.");
   const { error } = await supabase.rpc("revoke_teacher_invite", {
     p_code: code,
   });
@@ -149,8 +149,8 @@ export function inviteMessage(
   origin = window.location.origin,
 ): string {
   const until = i.expires_at
-    ? ` (vence el ${new Date(i.expires_at).toLocaleDateString("es")})`
+    ? ` (vence el ${new Date(i.expires_at).toLocaleDateString('en')})`
     : "";
   const name = i.note?.split(/[—,(\-]/)[0].trim();
-  return `Hola${name ? ` ${name}` : ""}: te invito como docente a ECYR English.\n1. Entra a ${origin}/profile → Registrarse → Docente.\n2. Usa este código de invitación${until}: ${i.code}\nEs de un solo uso.`;
+  return `Hello${name ? ` ${name}` : ""}: I’m inviting you as a teacher to ECYR English.\n1. Go to ${origin}/profile → Sign up → Teacher.\n2. Use this invitation code${until}: ${i.code}\nIt can only be used once.`;
 }

@@ -13,7 +13,7 @@ import { ink } from '@/lib/color';
 export function GrammarCuts({
   cuts,
   color = 'var(--blue)',
-  title = 'La gramática en imágenes',
+  title = 'Grammar in pictures',
   bleed = true,
 }: {
   cuts: (Visual & { parent: Visual })[];

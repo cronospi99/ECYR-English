@@ -78,7 +78,7 @@ export default function BoardPage() {
     return (
       <div className="bg-bg text-label-2 relative flex h-dvh flex-col items-center justify-center gap-3">
         <Spinner className="h-8 w-8" />
-        <span className="text-[15px]">Abriendo el muro…</span>
+        <span className="text-[15px]">Opening the board…</span>
       </div>
     );
   if (fatal && (fatal.kind === 'closed' || fatal.kind === 'not_found')) return <FatalState kind={fatal.kind} message={fatal.message} />;
@@ -206,9 +206,9 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
               💭 {board.prompt}
             </motion.div>
           )}
-          {closed && <Pill tone="var(--red)">Cerrado</Pill>}
-          {!isTeacher && board.locked && <Pill tone="var(--orange)">🔒 Bloqueado</Pill>}
-          {!isTeacher && !board.show_names && <Pill tone="var(--indigo)">🙈 Anónimo</Pill>}
+          {closed && <Pill tone="var(--red)">Closed</Pill>}
+          {!isTeacher && board.locked && <Pill tone="var(--orange)">🔒 Locked</Pill>}
+          {!isTeacher && !board.show_names && <Pill tone="var(--indigo)">🙈 Anonymous</Pill>}
         </div>
       ) : null}
 
@@ -240,8 +240,8 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
             <motion.div animate={{ rotate: [-6, 6, -6], y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="text-[56px]">
               🗒️
             </motion.div>
-            <p className="text-title-3">¡Sé el primero!</p>
-            {canAdd && <p className="text-label-2 text-[15px]">Toca + para añadir una idea</p>}
+            <p className="text-title-3">Be the first!</p>
+            {canAdd && <p className="text-label-2 text-[15px]">Tap + to add an idea</p>}
           </div>
         )}
       </main>
@@ -249,7 +249,7 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
       {canAdd && board.layout === 'jam' && (
         <motion.button
           type="button"
-          aria-label="Añadir tarjeta"
+          aria-label="Add card"
           onClick={() => startAdd()}
           initial={{ scale: 0, rotate: -90 }}
           animate={{ scale: 1, rotate: 0 }}
@@ -259,13 +259,13 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
           className="brand-gradient fixed right-5 bottom-[max(env(safe-area-inset-bottom),20px)] z-20 flex h-16 items-center gap-2 rounded-full px-5 text-white shadow-[0_14px_34px_-10px_rgb(47_107_255/0.75)] sm:right-8 sm:bottom-8"
         >
           <Plus size={30} strokeWidth={2.6} />
-          <span className="hidden pr-1 text-[17px] font-bold sm:inline">Añadir</span>
+          <span className="hidden pr-1 text-[17px] font-bold sm:inline">Add</span>
         </motion.button>
       )}
       {canAdd && board.layout !== 'jam' && (
         <motion.button
           type="button"
-          aria-label="Añadir tarjeta"
+          aria-label="Add card"
           onClick={() => startAdd(board.layout === 'columns' ? { col: 0 } : undefined)}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -280,7 +280,7 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
       <Composer
         open={composer !== null}
         onClose={() => setComposer(null)}
-        heading={composer?.mode === 'edit' ? 'Editar tarjeta' : board.layout === 'story' ? 'Continúa la historia' : 'Nueva tarjeta'}
+        heading={composer?.mode === 'edit' ? 'Edit card' : board.layout === 'story' ? 'Continue the story' : 'New card'}
         initial={
           composer?.mode === 'edit'
             ? { text: composer.card.text, color: composer.card.color, image: api.images[composer.card.id]?.url ?? null, col: composer.card.col, shape: composer.card.shape }
@@ -305,7 +305,7 @@ function Board({ api, bundle }: { api: ReturnType<typeof useLiveBoard>; bundle: 
         onResize={(c) => {
           setOpenId(null);
           selectRef.current?.(c.id);
-          api.say('Arrastra la esquina ↘');
+          api.say('Drag the corner ↘');
         }}
         onClose={() => setOpenId(null)}
         onLike={(c) => void api.like(c.id)}
@@ -440,16 +440,16 @@ function TopBar({
   const L = LAYOUTS[board.layout];
   const [menu, setMenu] = useState(false);
   const people = online && online > 0 ? online : bundle.authors;
-  const status = netDown ? { c: 'var(--red)', t: 'Sin conexión' } : live ? { c: 'var(--green)', t: 'En vivo' } : { c: 'var(--orange)', t: 'Actualizando' };
+  const status = netDown ? { c: 'var(--red)', t: 'Offline' } : live ? { c: 'var(--green)', t: 'Live' } : { c: 'var(--orange)', t: 'Updating' };
 
   return (
     <header className="material-strong hairline-b relative z-30 flex h-[60px] shrink-0 items-center gap-1.5 px-2 sm:gap-2 sm:px-4">
       {presenting ? (
         <button type="button" onClick={() => onPresent(false)} className="hover:bg-fill-2 flex h-10 items-center gap-1 rounded-full pr-3 pl-2 text-[15px] font-semibold">
-          <X size={20} /> Salir
+          <X size={20} /> Exit
         </button>
       ) : (
-        <Link to="/boards" aria-label="Volver a muros" className="text-ink-blue hover:bg-fill-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+        <Link to="/boards" aria-label="Back to boards" className="text-ink-blue hover:bg-fill-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
           <ChevronLeft size={26} strokeWidth={2.4} />
         </Link>
       )}
@@ -465,7 +465,7 @@ function TopBar({
         <div className="flex min-w-0 items-center gap-1.5">
           <h1 className={cn('truncate leading-tight font-bold', presenting ? 'text-[22px]' : 'text-[16px] sm:text-[17px]')}>{board.title}</h1>
           {board.member_count !== null && (
-            <button type="button" onClick={onAccess} disabled={!isTeacher || presenting || !bundle.v2} title="¿Quién puede entrar?" className="hidden shrink-0 rounded-full transition-transform active:scale-95 sm:inline-flex">
+            <button type="button" onClick={onAccess} disabled={!isTeacher || presenting || !bundle.v2} title="Who can join?" className="hidden shrink-0 rounded-full transition-transform active:scale-95 sm:inline-flex">
               <PrivateBadge count={board.member_count} />
             </button>
           )}
@@ -488,19 +488,19 @@ function TopBar({
 
       {isTeacher && (
         <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
-          <IconBtn label={board.show_names ? 'Ocultar nombres' : 'Mostrar nombres'} onClick={onNames} active={!board.show_names} tone="var(--indigo)" wideLabel={board.show_names ? 'Nombres' : 'Anónimo'}>
+          <IconBtn label={board.show_names ? 'Hide names' : 'Show names'} onClick={onNames} active={!board.show_names} tone="var(--indigo)" wideLabel={board.show_names ? 'Names' : 'Anonymous'}>
             {board.show_names ? <Eye size={20} /> : <EyeOff size={20} />}
           </IconBtn>
           {!presenting && (
             <>
-              <IconBtn label={board.locked ? 'Desbloquear' : 'Bloquear'} onClick={onLock} active={board.locked} tone="var(--orange)" wideLabel={board.locked ? 'Bloqueado' : 'Abierto'}>
+              <IconBtn label={board.locked ? 'Unlock' : 'Lock'} onClick={onLock} active={board.locked} tone="var(--orange)" wideLabel={board.locked ? 'Locked' : 'Open'}>
                 {board.locked ? <Lock size={19} /> : <LockOpen size={19} />}
               </IconBtn>
-              <IconBtn label="Proyectar" onClick={() => onPresent(true)} wideLabel="Proyectar">
+              <IconBtn label="Project" onClick={() => onPresent(true)} wideLabel="Project">
                 <MonitorPlay size={20} />
               </IconBtn>
               <div className="relative">
-                <IconBtn label="Más opciones" onClick={() => setMenu((m) => !m)} active={menu}>
+                <IconBtn label="More options" onClick={() => setMenu((m) => !m)} active={menu}>
                   <Ellipsis size={20} />
                 </IconBtn>
                 <AnimatePresence>
@@ -523,8 +523,8 @@ function TopBar({
                               onAccess();
                             }}
                           >
-                            <span className="flex-1">Quién puede entrar</span>
-                            <span className="text-label-2 text-[13px]">{board.member_count === null ? 'Todos' : `🔒 ${board.member_count}`}</span>
+                            <span className="flex-1">Who can join</span>
+                            <span className="text-label-2 text-[13px]">{board.member_count === null ? 'All' : `🔒 ${board.member_count}`}</span>
                           </MenuItem>
                         ) : (
                           <div className="text-label-2 px-4 py-2 text-[12px] leading-snug">
@@ -537,12 +537,12 @@ function TopBar({
                           onClick={() => {
                             setMenu(false);
                             void navigator.clipboard?.writeText(boardToText(bundle, true)).then(
-                              () => say('Texto copiado ✓'),
-                              () => say('No se pudo copiar'),
+                              () => say('Text copied ✓'),
+                              () => say('Could not copy'),
                             );
                           }}
                         >
-                          Copiar como texto
+                          Copy as text
                         </MenuItem>
                         <MenuItem
                           icon={<Download size={18} />}
@@ -551,7 +551,7 @@ function TopBar({
                             download(`${slug(board.title)}.csv`, boardToCSV(bundle, true), 'text/csv;charset=utf-8');
                           }}
                         >
-                          Descargar CSV
+                          Download CSV
                         </MenuItem>
                         <MenuItem
                           icon={<Printer size={18} />}
@@ -560,7 +560,7 @@ function TopBar({
                             printBoard(bundle, images);
                           }}
                         >
-                          Imprimir
+                          Print
                         </MenuItem>
                         <div className="bg-separator mx-3 my-1 h-px" />
                         {board.closed_at ? (
@@ -571,7 +571,7 @@ function TopBar({
                               onClose(false);
                             }}
                           >
-                            Reabrir muro
+                            Reopen board
                           </MenuItem>
                         ) : (
                           <MenuItem
@@ -582,7 +582,7 @@ function TopBar({
                               onClose(true);
                             }}
                           >
-                            Cerrar muro
+                            Close board
                           </MenuItem>
                         )}
                       </motion.div>
@@ -651,7 +651,7 @@ function CardSheet({
   const c = card ?? last.current;
   useEffect(() => setConfirm(false), [card?.id]);
   const { board } = bundle;
-  const title = board.layout === 'story' ? `Parte ${index + 1}` : board.layout === 'columns' && c ? (board.columns[c.col] ?? 'Tarjeta') : 'Tarjeta';
+  const title = board.layout === 'story' ? `Parte ${index + 1}` : board.layout === 'columns' && c ? (board.columns[c.col] ?? 'Card') : 'Card';
   const who = c ? authorLabel(c, names) : null;
 
   return (
@@ -663,34 +663,34 @@ function CardSheet({
           </div>
           <div className="text-label-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[14px]">
             {who && <span className="text-label font-semibold">✍️ {who}</span>}
-            {!who && !names && <span>🙈 Anónimo</span>}
-            <span>{new Date(c.created_at).toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' })}</span>
+            {!who && !names && <span>🙈 Anonymous</span>}
+            <span>{new Date(c.created_at).toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' })}</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <LikeButton card={c} onLike={() => onLike(c)} big />
             {canEdit && (
               <Button variant="gray" onClick={() => onEdit(c)}>
-                <Pencil size={18} /> Editar
+                <Pencil size={18} /> Edit
               </Button>
             )}
             {canResize && (
               <Button variant="gray" onClick={() => onResize(c)}>
-                <MoveDiagonal2 size={18} /> Tamaño
+                <MoveDiagonal2 size={18} /> Size
               </Button>
             )}
             {isTeacher && (
               <Button variant="tinted" onClick={() => onSpotlight(c)}>
-                <Focus size={18} /> Proyectar
+                <Focus size={18} /> Project
               </Button>
             )}
             {canEdit &&
               (confirm ? (
                 <Button variant="destructive" onClick={() => onDelete(c)}>
-                  <Trash2 size={18} /> ¿Seguro?
+                  <Trash2 size={18} /> Sure?
                 </Button>
               ) : (
-                <Button variant="destructive" onClick={() => setConfirm(true)} aria-label="Eliminar">
-                  <Trash2 size={18} /> Eliminar
+                <Button variant="destructive" onClick={() => setConfirm(true)} aria-label="Delete">
+                  <Trash2 size={18} /> Delete
                 </Button>
               ))}
           </div>
@@ -715,10 +715,10 @@ function CardSheet({
           {isTeacher && board.layout === 'story' && cards.length > 1 && (
             <div className="flex justify-center gap-2">
               <Button variant="gray" size="sm" disabled={index <= 0} onClick={() => onReorder(c, between(cards[index - 2]?.position, cards[index - 1]!.position))}>
-                <ArrowLeft size={16} className="rotate-90" /> Antes
+                <ArrowLeft size={16} className="rotate-90" /> Before
               </Button>
               <Button variant="gray" size="sm" disabled={index >= cards.length - 1} onClick={() => onReorder(c, between(cards[index + 1]!.position, cards[index + 2]?.position))}>
-                <ArrowRight size={16} className="rotate-90" /> Después
+                <ArrowRight size={16} className="rotate-90" /> Later
               </Button>
             </div>
           )}
@@ -772,7 +772,7 @@ function Spotlight({
       exit={{ opacity: 0 }}
       role="dialog"
       aria-modal="true"
-      aria-label="Tarjeta en foco"
+      aria-label="Focused card"
     >
       <div className="absolute inset-0 bg-black/70 backdrop-blur-md" onClick={onClose} aria-hidden />
       <div className="relative flex w-full max-w-[880px] flex-col items-center gap-5">
@@ -791,15 +791,15 @@ function Spotlight({
         </AnimatePresence>
         <div className="flex items-center gap-2">
           {isTeacher && total > 1 && (
-            <button type="button" aria-label="Anterior" onClick={() => onStep(-1)} className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25">
+            <button type="button" aria-label="Previous" onClick={() => onStep(-1)} className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25">
               <ArrowLeft size={22} />
             </button>
           )}
           <button type="button" onClick={onClose} className="flex h-12 items-center gap-2 rounded-full bg-white px-5 text-[16px] font-bold text-black">
-            <X size={20} /> {isTeacher ? 'Quitar foco' : 'Cerrar'}
+            <X size={20} /> {isTeacher ? 'Remove focus' : 'Close'}
           </button>
           {isTeacher && total > 1 && (
-            <button type="button" aria-label="Siguiente" onClick={() => onStep(1)} className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25">
+            <button type="button" aria-label="Next" onClick={() => onStep(1)} className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white hover:bg-white/25">
               <ArrowRight size={22} />
             </button>
           )}
@@ -812,14 +812,14 @@ function Spotlight({
 // ----------------------------------------------------------- full states ----
 function FatalState({ kind, message }: { kind: string; message: string }) {
   const map: Record<string, { icon: ReactNode; title: string; tone: string }> = {
-    offline: { icon: <WifiOff size={34} />, title: 'Necesitas conexión', tone: 'var(--orange)' },
-    network: { icon: <WifiOff size={34} />, title: 'Sin conexión', tone: 'var(--orange)' },
-    missing: { icon: <Database size={34} />, title: 'Falta activar el muro', tone: 'var(--purple)' },
-    closed: { icon: <Archive size={34} />, title: 'Muro cerrado', tone: 'var(--red)' },
-    not_found: { icon: <span className="text-[34px]">🔍</span>, title: 'No encontramos este muro', tone: 'var(--blue)' },
-    denied: { icon: <LogIn size={34} />, title: 'Inicia sesión', tone: 'var(--blue)' },
+    offline: { icon: <WifiOff size={34} />, title: 'You need a connection', tone: 'var(--orange)' },
+    network: { icon: <WifiOff size={34} />, title: 'Offline', tone: 'var(--orange)' },
+    missing: { icon: <Database size={34} />, title: 'The board needs to be enabled', tone: 'var(--purple)' },
+    closed: { icon: <Archive size={34} />, title: 'Board closed', tone: 'var(--red)' },
+    not_found: { icon: <span className="text-[34px]">🔍</span>, title: 'We couldn’t find this board', tone: 'var(--blue)' },
+    denied: { icon: <LogIn size={34} />, title: 'Sign in', tone: 'var(--blue)' },
   };
-  const m = map[kind] ?? { icon: <span className="text-[34px]">😕</span>, title: 'Algo salió mal', tone: 'var(--red)' };
+  const m = map[kind] ?? { icon: <span className="text-[34px]">😕</span>, title: 'Something went wrong', tone: 'var(--red)' };
   return (
     <div className="bg-bg text-label relative flex h-dvh items-center justify-center p-6">
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="bg-card shadow-card flex w-full max-w-[420px] flex-col items-center gap-3 rounded-[28px] p-8 text-center">
@@ -838,10 +838,10 @@ function FatalState({ kind, message }: { kind: string; message: string }) {
         </p>
         <div className="mt-2 flex gap-2">
           {kind === 'denied' ? (
-            <ButtonLink to="/profile">Iniciar sesión</ButtonLink>
+            <ButtonLink to="/profile">Sign in</ButtonLink>
           ) : (
             <ButtonLink to="/boards" variant="gray">
-              <ChevronLeft size={18} /> Muros
+              <ChevronLeft size={18} /> Boards
             </ButtonLink>
           )}
         </div>

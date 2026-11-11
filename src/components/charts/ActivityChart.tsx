@@ -39,13 +39,13 @@ export function ActivityChart({
   const bw = Math.min(18, step * 0.55);
   const y = (v: number) => pad.t + ih - (v / max) * ih;
   const ticks = [0, Math.round(max / 2), Math.round(max)];
-  const fmt = (k: string) => new Date(k + 'T00:00:00').toLocaleDateString('es', { weekday: 'narrow' });
+  const fmt = (k: string) => new Date(k + 'T00:00:00').toLocaleDateString('en', { weekday: 'narrow' });
   // On narrow charts with many days, label every other bar so labels never collide.
   const labelEvery = step < 18 ? 3 : step < 26 ? 2 : 1;
 
   return (
     <div ref={box} className="relative">
-      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="block max-w-full" role="img" aria-label={`XP diaria de los últimos ${days} días`}>
+      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="block max-w-full" role="img" aria-label={`Daily XP over the last ${days} days`}>
         {ticks.map((t) => (
           <g key={t}>
             <line x1={pad.l} x2={W - pad.r} y1={y(t)} y2={y(t)} stroke="var(--separator)" strokeWidth="1" />
@@ -119,7 +119,7 @@ export function ActivityChart({
           }}
         >
           <div className="text-label-2">
-            {new Date(keys[hover]! + 'T00:00:00').toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'short' })}
+            {new Date(keys[hover]! + 'T00:00:00').toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'short' })}
           </div>
           <div className="font-semibold">{values[hover]} XP</div>
         </div>

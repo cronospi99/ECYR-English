@@ -105,8 +105,8 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
         </div>
       )}
       <div className="mb-3 flex flex-wrap items-center gap-2">
-        {!bare && !title && <div className="text-label-2 mr-auto text-[12px] font-semibold tracking-wide uppercase">Diálogo</div>}
-        <ul className="mr-auto flex flex-wrap gap-1.5" aria-label="Personajes">
+        {!bare && !title && <div className="text-label-2 mr-auto text-[12px] font-semibold tracking-wide uppercase">Dialogue</div>}
+        <ul className="mr-auto flex flex-wrap gap-1.5" aria-label="Characters">
           {[...people.entries()].map(([n, p]) => (
             <li key={n} className="inline-flex items-center gap-1.5 rounded-full py-0.5 pr-2.5 pl-0.5 text-[13px] font-semibold" style={{ background: tint(p.color, 12), color: ink(p.color) }}>
               <Avatar name={n} color={p.color} size={22} />
@@ -125,7 +125,7 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
             className={cn('inline-flex h-8 items-center gap-1.5 rounded-full px-3 text-[13px] font-semibold transition-colors', !showEs && 'bg-fill-2')}
             style={showEs ? { background: tint('var(--indigo)', 16), color: ink('var(--indigo)') } : undefined}
           >
-            <Languages size={14} aria-hidden /> {showEs ? 'Ocultar traducción' : 'Ver traducción'}
+            <Languages size={14} aria-hidden /> {showEs ? 'Hide translation' : 'Show translation'}
           </button>
         )}
       </div>
@@ -134,7 +134,7 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
           compact
           player={player}
           speeds={[]}
-          label={title ? `Diálogo "${title}": posición` : 'Posición del diálogo'}
+          label={title ? `Dialogue "${title}": position` : 'Dialogue position'}
           onPlay={() => {
             run.current++;
             setPlaying(null);

@@ -42,7 +42,7 @@ export default function HomePage() {
           <span className="brand-text">Go For It!</span> 🏔️
         </>
       }
-      subtitle="Tu escalada de A1 a C2, paso a paso."
+      subtitle="Your climb from A1 to C2, step by step."
       wide
     >
       <div className="space-y-5">
@@ -50,13 +50,13 @@ export default function HomePage() {
         <Card className="relative overflow-hidden">
           <div className="relative" style={{ ...SKY_VARS, background: 'var(--sky-a)' }}>
             <div className="pointer-events-none relative px-4 pt-4 sm:absolute sm:top-0 sm:left-0 sm:p-6">
-              <div className="text-label-2 text-[13px] font-medium sm:text-subhead">Tu nivel actual</div>
+              <div className="text-label-2 text-[13px] font-medium sm:text-subhead">Your current level</div>
               <div className="mt-0.5 flex items-end gap-3">
                 <span className="text-[52px] leading-[0.9] font-extrabold tracking-[-0.05em] sm:text-[80px]">{level}</span>
                 <div className="pb-1 sm:pb-2">
                   <div className="text-[15px] font-semibold sm:text-headline">{LEVELS.find((l) => l.id === level)?.nameEs}</div>
                   <div className="text-label-2 text-[12px] sm:text-footnote">
-                    {lvl.done}/{lvl.total} unidades
+                    {lvl.done}/{lvl.total} units
                   </div>
                 </div>
               </div>
@@ -70,21 +70,21 @@ export default function HomePage() {
                   Meta <span className="text-label font-bold">{target}</span>
                   <span className="mx-1.5">·</span>
                   {levelsToGo > 0
-                    ? `${levelsToGo} ${levelsToGo === 1 ? 'nivel' : 'niveles'} por delante`
-                    : '¡Estás en tu nivel meta!'}
+                    ? `${levelsToGo} ${levelsToGo === 1 ? 'level' : 'levels'} to go`
+                    : 'You’re at your goal level!'}
                 </span>
-                <span className="text-label-2 tabular-nums">{Math.round(climb * 100)}% de la montaña</span>
+                <span className="text-label-2 tabular-nums">{Math.round(climb * 100)}% of the mountain</span>
               </div>
               <ProgressBar value={climb} color="linear-gradient(90deg,var(--brand-from),var(--brand-to))" height={8} />
             </div>
             <div className="flex shrink-0 flex-wrap gap-2">
               {next.unit && (
                 <ButtonLink to={nextTo} variant="brand" className="flex-1 md:flex-none">
-                  <Play size={16} fill="currentColor" /> Continuar: {next.level} · U{next.unit.n}
+                  <Play size={16} fill="currentColor" /> Continue: {next.level} · U{next.unit.n}
                 </ButtonLink>
               )}
               <ButtonLink to="/progress" variant="gray" className="flex-1 md:flex-none">
-                Ver progreso
+                See progress
               </ButtonLink>
             </div>
           </div>
@@ -93,10 +93,10 @@ export default function HomePage() {
         {/* Compact stats strip */}
         <Card className="overflow-hidden">
           <dl className="bg-separator grid grid-cols-2 gap-px sm:grid-cols-4">
-            <Stat icon={Flame} color="var(--orange)" label="Racha" value={`${p.streak.current} d`} sub={`Mejor: ${p.streak.best} d`} />
-            <Stat icon={Zap} color="var(--yellow)" label="Hoy" value={`${today} XP`} sub={`Meta: ${p.dailyGoal} XP`} progress={today / p.dailyGoal} />
-            <Stat icon={Trophy} color="var(--purple)" label="Rango" value={`Nv. ${rank.rank}`} sub={`${rank.into}/${rank.need} XP`} progress={rank.ratio} />
-            <Stat icon={Check} color="var(--green)" label="Unidades" value={`${Object.keys(p.units).length}`} sub="completadas" />
+            <Stat icon={Flame} color="var(--orange)" label="Streak" value={`${p.streak.current} d`} sub={`Mejor: ${p.streak.best} d`} />
+            <Stat icon={Zap} color="var(--yellow)" label="Today" value={`${today} XP`} sub={`Meta: ${p.dailyGoal} XP`} progress={today / p.dailyGoal} />
+            <Stat icon={Trophy} color="var(--purple)" label="Rank" value={`Nv. ${rank.rank}`} sub={`${rank.into}/${rank.need} XP`} progress={rank.ratio} />
+            <Stat icon={Check} color="var(--green)" label="Units" value={`${Object.keys(p.units).length}`} sub="completadas" />
           </dl>
         </Card>
 
@@ -106,7 +106,7 @@ export default function HomePage() {
           <WeekPlanCard />
           <Card className="p-5">
             <h3 className="text-title-3">Empieza a practicar</h3>
-            <p className="text-label-2 text-subhead mt-0.5">Sigue tu ruta o elige una destreza.</p>
+            <p className="text-label-2 text-subhead mt-0.5">Follow your route or pick a skill.</p>
             {next.unit && (
               <Link
                 to={nextTo}
@@ -117,7 +117,7 @@ export default function HomePage() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[17px] font-semibold">
-                    {next.level} · Unidad {next.unit.n}
+                    {next.level} · Unit {next.unit.n}
                   </span>
                   <span className="block truncate text-[13px] opacity-85">{titleCase(next.unit.title)}</span>
                 </span>
@@ -135,19 +135,19 @@ export default function HomePage() {
 
         {/* Explore: one compact row instead of four big cards */}
         <div>
-          <h2 className="text-title-3 mb-3 px-1">Explora</h2>
+          <h2 className="text-title-3 mb-3 px-1">Explore</h2>
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
             <ExploreTile to="/ielts" icon={Award} color="var(--indigo)" title="IELTS Simulator" sub={ieltsLine()} />
-            <ExploreTile to="/learn/grammar" icon={Sigma} color="var(--teal)" title="Gramática" sub="Fechas, la hora, modales" />
-            <ExploreTile to="/games" icon={Gamepad2} color="var(--pink)" title="Juegos" sub={`${GAMES.length} para practicar`} />
-            <ExploreTile to="/coach" icon={Sparkles} color="var(--purple)" title="AI Coach" sub="Conversa y corrige" />
+            <ExploreTile to="/learn/grammar" icon={Sigma} color="var(--teal)" title="Grammar" sub="Dates, time, modals" />
+            <ExploreTile to="/games" icon={Gamepad2} color="var(--pink)" title="Games" sub={`${GAMES.length} to practise`} />
+            <ExploreTile to="/coach" icon={Sparkles} color="var(--purple)" title="AI Coach" sub="Chat and correct" />
           </div>
         </div>
 
         <footer className="text-label-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 pt-2 pb-4 text-center text-[12.5px]">
-          <span>ECYR English · proyecto libre con fines educativos</span>
+          <span>ECYR English · free project for educational purposes</span>
           <span aria-hidden>·</span>
-          <Link to="/legal" className="font-semibold text-[var(--blue-ink)] hover:underline">Términos y tratamiento de datos</Link>
+          <Link to="/legal" className="font-semibold text-[var(--blue-ink)] hover:underline">Terms and data handling</Link>
         </footer>
       </div>
     </Page>
@@ -161,19 +161,19 @@ function TeacherCard() {
       <div className="flex flex-wrap items-center gap-4">
         <IconTile icon={School} color="var(--orange)" size={44} />
         <div className="min-w-0 flex-1">
-          <h3 className="text-title-3">Sala del docente</h3>
-          <p className="text-label-2 text-subhead mt-0.5">Asigna tareas, revisa los trabajos de tu clase y sigue su progreso.</p>
+          <h3 className="text-title-3">Teacher room</h3>
+          <p className="text-label-2 text-subhead mt-0.5">Assign tasks, review your class’s work and follow their progress.</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <AssignButton variant="brand" size="md" />
           <ButtonLink to="/teacher?tab=work" variant="gray">
-            <PenLine size={16} aria-hidden /> Trabajos
+            <PenLine size={16} aria-hidden /> Work
           </ButtonLink>
           <ButtonLink to="/teacher?tab=tasks" variant="gray">
-            <ClipboardList size={16} aria-hidden /> Tareas
+            <ClipboardList size={16} aria-hidden /> Tasks
           </ButtonLink>
           <ButtonLink to="/teacher" variant="gray">
-            Mi clase
+            My class
           </ButtonLink>
         </div>
       </div>
@@ -183,7 +183,7 @@ function TeacherCard() {
 
 function ieltsLine() {
   const ielts = readIelts();
-  return ielts.overall != null ? `Banda estimada ${ielts.overall.toFixed(1)}` : 'Haz tu primer mock test';
+  return ielts.overall != null ? `Banda estimada ${ielts.overall.toFixed(1)}` : 'Take your first mock test';
 }
 
 const titleCase = (s: string) => s.charAt(0) + s.slice(1).toLowerCase();
@@ -241,7 +241,7 @@ function QuickTile({ to, icon, color, title }: { to: string; icon: typeof Flame;
       <IconTile icon={icon} color={color} size={38} soft />
       <span className="min-w-0">
         <span className="block text-[15px] font-semibold">{title}</span>
-        <span className="text-label-2 block text-[12px]">Practicar</span>
+        <span className="text-label-2 block text-[12px]">Practise</span>
       </span>
     </Link>
   );

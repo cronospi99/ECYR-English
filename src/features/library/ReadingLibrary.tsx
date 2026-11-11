@@ -16,25 +16,25 @@ import type { Worksheet } from '@/lib/worksheet';
 import { cn } from '@/lib/cn';
 
 export const GENRE_ES: Record<string, string> = {
-  story: 'Historia',
-  email: 'Correo',
-  article: 'Artículo',
-  news: 'Noticia',
-  biography: 'Biografía',
+  story: 'Story',
+  email: 'Email',
+  article: 'Article',
+  news: 'News',
+  biography: 'Biography',
   blog: 'Blog',
-  review: 'Reseña',
-  interview: 'Entrevista',
-  notice: 'Aviso',
-  guide: 'Guía',
-  opinion: 'Opinión',
-  science: 'Ciencia',
-  report: 'Informe',
-  essay: 'Ensayo',
-  ad: 'Anuncio',
-  profile: 'Perfil',
-  message: 'Mensaje',
-  diary: 'Diario',
-  letter: 'Carta',
+  review: 'Review',
+  interview: 'Interview',
+  notice: 'Notice',
+  guide: 'Guide',
+  opinion: 'Opinion',
+  science: 'Science',
+  report: 'Report',
+  essay: 'Essay',
+  ad: 'Announcement',
+  profile: 'Profile',
+  message: 'Message',
+  diary: 'Diary',
+  letter: 'Letter',
 };
 export const minutes = (words: number) => Math.max(1, Math.round(words / 130));
 
@@ -64,7 +64,7 @@ export function ReadingLibrary() {
       </div>
       <div className="no-scrollbar -mx-1 mb-4 flex gap-2 overflow-x-auto px-1 py-1">
         <Chip active={genre === 'all'} onClick={() => setGenre('all')}>
-          Todos los tipos
+          All types
         </Chip>
         {genres.map((g) => (
           <Chip key={g} active={genre === g} onClick={() => setGenre(g)}>
@@ -72,10 +72,9 @@ export function ReadingLibrary() {
           </Chip>
         ))}
       </div>
-      {!data.length && <p className="text-label-2">Las lecturas se están preparando.</p>}
+      {!data.length && <p className="text-label-2">The readings are being prepared.</p>}
       <p className="text-label-2 mb-3 text-[12.5px]">
-        Textos originales de ECYR English. Las personas, empresas, estudios y cifras de las noticias, informes e historias son ficticios, salvo en las
-        biografías y temas históricos.
+        Original texts by ECYR English. The people, companies, studies and figures in the news, reports and stories are fictional, except in the biographies and historical topics.
       </p>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((r, i) => (
@@ -107,10 +106,10 @@ export function ReadingCard({ r, i = 0, onOpen }: { r: LibReading; i?: number; o
         </span>
         <span className="mt-1 block text-[16px] leading-snug font-bold">{r.title}</span>
         <span className="text-label-2 mt-0.5 flex items-center gap-1 text-[12.5px]">
-          {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} preguntas
+          {r.topic} · <Clock size={12} /> {minutes(r.words)} min · {r.questions.length} questions
         </span>
         {r.focus && <span className="text-ink-indigo mt-1 block text-[12px] font-semibold">🎯 {r.focus}</span>}
-        {r.advisory && <span className="text-ink-orange mt-0.5 block text-[11.5px] font-semibold">⚠︎ Tema adulto</span>}
+        {r.advisory && <span className="text-ink-orange mt-0.5 block text-[11.5px] font-semibold">⚠︎ Adult topic</span>}
       </span>
     </motion.button>
   );
@@ -127,12 +126,12 @@ export function readingSheet(r: LibReading): Worksheet {
       { kind: 'words', title: 'Glossary', items: r.glossary.map(([en, es]) => ({ en, es })) },
       ...questionsToSections(r.questions),
     ],
-    credits: 'Texto original de ECYR English.',
+    credits: 'Original text by ECYR English.',
   };
 }
 
 /** The full reader: glossed text with read-aloud, glossary, questions and the PDF worksheet. */
-export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading; onBack: () => void; backLabel?: string }) {
+export function Reader({ r, onBack, backLabel = 'Library' }: { r: LibReading; onBack: () => void; backLabel?: string }) {
   const [reading, setReading] = useState<number | null>(null);
   const [gloss, setGloss] = useState<string | null>(null);
   const completeReading = useProgress((s) => s.completeReading);
@@ -182,23 +181,23 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
           <div className="flex items-center gap-2 text-[13px] font-semibold opacity-90">
             <span className="rounded-full bg-white/20 px-2 py-0.5">{r.level}</span> {GENRE_ES[r.genre] ?? r.genre} · {r.topic} · {minutes(r.words)} min
           </div>
-          {r.focus && <div className="mt-1.5 inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[12.5px] font-semibold">🎯 Gramática: {r.focus}</div>}
+          {r.focus && <div className="mt-1.5 inline-block rounded-full bg-white/20 px-2.5 py-0.5 text-[12.5px] font-semibold">🎯 Grammar: {r.focus}</div>}
           <h2 className="mt-2 text-[26px] leading-tight font-extrabold">
             {r.emoji} {r.title}
           </h2>
-          <p className="mt-1 text-[13px] opacity-85">Toca las palabras subrayadas para ver su traducción.</p>
+          <p className="mt-1 text-[13px] opacity-85">Tap the underlined words to see their translation.</p>
           <button
             type="button"
             onClick={readAll}
             className="mt-3 inline-flex h-9 items-center gap-1.5 rounded-full bg-white/20 px-3.5 text-[14px] font-semibold backdrop-blur-sm transition-colors hover:bg-white/30"
           >
-            {all ? <Square size={14} fill="currentColor" /> : <Volume2 size={16} />} {all ? 'Detener' : 'Escuchar toda la lectura'}
+            {all ? <Square size={14} fill="currentColor" /> : <Volume2 size={16} />} {all ? 'Stop' : 'Listen to the whole reading'}
           </button>
           {r.advisory && <p className="mt-3 rounded-[10px] bg-black/20 px-3 py-1.5 text-[12.5px]">⚠︎ {r.advisory}</p>}
         </div>
         {r.marks && (
           <div className="hairline-b flex flex-wrap items-center gap-1.5 px-5 py-3 sm:px-6">
-            <span className="text-label-2 mr-1 text-[12px] font-bold tracking-wide uppercase">Resalta</span>
+            <span className="text-label-2 mr-1 text-[12px] font-bold tracking-wide uppercase">Highlight</span>
             {Object.entries(r.marks).map(([k, m]) => (
               <button
                 key={k}
@@ -225,7 +224,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
               <p className="flex-1 text-[17px] leading-[1.7]">
                 {r.marks ? <Marked text={p} marks={r.marks} on={layers} terms={terms} onTap={setGloss} /> : <Glossed text={p} terms={terms} onTap={setGloss} />}
               </p>
-              <button type="button" onClick={() => read(i)} className="text-ink-blue mt-1 h-8 w-8 shrink-0 rounded-full hover:bg-fill-2" aria-label={reading === i ? 'Detener' : 'Escuchar párrafo'}>
+              <button type="button" onClick={() => read(i)} className="text-ink-blue mt-1 h-8 w-8 shrink-0 rounded-full hover:bg-fill-2" aria-label={reading === i ? 'Stop' : 'Listen to the paragraph'}>
                 {reading === i ? <Square size={15} className="mx-auto" /> : <Volume2 size={16} className="mx-auto" />}
               </button>
             </div>
@@ -247,7 +246,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
       {r.glossary.length > 0 && (
         <Card className="mt-4 p-5">
           <div className="text-label-2 mb-2 flex items-center gap-2 text-[12px] font-bold tracking-wide uppercase">
-            <BookOpen size={14} /> Glosario
+            <BookOpen size={14} /> Glossary
           </div>
           <div className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
             {r.glossary.map(([en, es]) => (
@@ -259,7 +258,7 @@ export function Reader({ r, onBack, backLabel = 'Biblioteca' }: { r: LibReading;
         </Card>
       )}
 
-      <h3 className="mt-6 mb-2 text-[20px] font-bold">Preguntas</h3>
+      <h3 className="mt-6 mb-2 text-[20px] font-bold">Questions</h3>
       <QuestionSet
         questions={r.questions}
         onChecked={(right, total) => completeReading(`lib-${r.id}`, Math.round((right / total) * 100), r.title, r.level)}

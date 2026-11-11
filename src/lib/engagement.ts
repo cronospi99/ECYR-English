@@ -10,7 +10,7 @@ export type Audience = 'kids' | 'teens' | 'young' | 'adults';
 export const AUDIENCES: { id: Audience; label: string; ages: string; emoji: string; ai: string; names: [string, string, string][] }[] = [
   {
     id: 'kids',
-    label: 'Niños',
+    label: 'Children',
     ages: '10–13',
     emoji: '🧒',
     ai: 'children aged 10–13: pets, school, cartoons, games, superheroes, animals; playful, simple, lots of movement',
@@ -21,7 +21,7 @@ export const AUDIENCES: { id: Audience; label: string; ages: string; emoji: stri
   },
   {
     id: 'teens',
-    label: 'Adolescentes',
+    label: 'Teenagers',
     ages: '14–17',
     emoji: '🎧',
     ai: 'teenagers aged 14–17 who may not want to be in class: social media, viral videos, gaming, music, sports, friendships and drama; fast, funny, competitive, a little rebellious, never childish',
@@ -32,7 +32,7 @@ export const AUDIENCES: { id: Audience; label: string; ages: string; emoji: stri
   },
   {
     id: 'young',
-    label: 'Jóvenes adultos',
+    label: 'Young adults',
     ages: '18–30',
     emoji: '🎓',
     ai: 'young adults aged 18–30: university, first jobs, dating, travel, apps, side hustles, roommates; witty and real',
@@ -43,7 +43,7 @@ export const AUDIENCES: { id: Audience; label: string; ages: string; emoji: stri
   },
   {
     id: 'adults',
-    label: 'Adultos',
+    label: 'Adults',
     ages: '30–70',
     emoji: '☕',
     ai: 'adults aged 30–70: work, family, health, travel, neighbours, memories and real-life decisions; warm, respectful, useful for real life, humour without being childish',
@@ -61,21 +61,21 @@ const pick = <T>(a: T[], n: number) => a[((n % a.length) + a.length) % a.length]
 /** A 30-second hook to grab attention before anything else. */
 const HOOKS: Record<Audience, ((name: string) => string)[]> = {
   kids: [
-    (n) => `Entra susurrando: «Shh… ${n} has a secret». No digas más hasta que pregunten.`,
-    () => 'Esconde un objeto en una bolsa: que adivinen qué es con preguntas de sí/no.',
+    (n) => `Come in whispering: “Shh… ${n} has a secret”. Say nothing more until they ask.`,
+    () => 'Hide an object in a bag: they guess what it is with yes/no questions.',
   ],
   teens: [
-    (n) => `Proyecta un «mensaje» falso de ${n}: «Don’t tell anyone…». Lee solo la primera línea.`,
-    () => 'Pon 10 s de una canción de moda sin decir por qué; la primera pregunta de clase sale de ahí.',
-    () => 'Empieza con un reto: «Nadie aquí puede decir 5 palabras de hoy en 10 segundos». Que lo intenten.',
+    (n) => `Project a fake “message” from ${n}: “Don’t tell anyone…”. Read only the first line.`,
+    () => 'Play 10 s of a trending song without saying why; the first question of the class comes from there.',
+    () => 'Start with a challenge: “Nobody here can say 5 words from today in 10 seconds”. Let them try.',
   ],
   young: [
-    (n) => `Muestra un «chat» de ${n} con un error gracioso: ¿qué pasó?`,
-    () => 'Pregunta relámpago: «¿Qué harías con 1 millón… pero solo en inglés?». 30 s en parejas.',
+    (n) => `Show a “chat” from ${n} with a funny mistake: what happened?`,
+    () => 'Lightning question: “What would you do with 1 million… but only in English?”. 30 s in pairs.',
   ],
   adults: [
-    (n) => `Cuenta en una frase algo que le pasó a ${n} «esta mañana» y pregunta: ¿les ha pasado?`,
-    () => 'Una foto de un lugar o un objeto cotidiano: ¿dónde es? ¿qué recuerdo les trae?',
+    (n) => `Tell in one sentence something that happened to ${n} “this morning” and ask: has it happened to you?`,
+    () => 'A photo of a place or an everyday object: where is it? What memory does it bring back?',
   ],
 };
 
@@ -92,21 +92,21 @@ export interface Energizer {
 /** A 1–2 minute brain break for the middle of the class (movement, voice, competition). */
 const ENERGIZERS: Record<Audience, Energizer[]> = {
   kids: [
-    { title: 'Simon says (con el vocabulario)', minutes: 2, how: 'Simon says… touch something «red», jump if it’s a verb. El que se equivoca ayuda a dirigir.' },
-    { title: 'Mímica relámpago', minutes: 2, how: 'Un niño actúa una palabra de hoy; el grupo grita la palabra en inglés.' },
+    { title: 'Simon says (with the vocabulary)', minutes: 2, how: 'Simon says… touch something “red”, jump if it’s a verb. Whoever gets it wrong helps lead.' },
+    { title: 'Lightning mime', minutes: 2, how: 'A child acts out a word from today; the group shouts the word in English.' },
   ],
   teens: [
-    { title: 'Stand up if…', minutes: 2, how: 'Frases con la gramática de hoy («Stand up if you have ever…»). Se paran o se sientan: rápido.' },
-    { title: 'Duelo de 10 segundos', minutes: 2, how: 'Dos voluntarios, una categoría (food, verbs…): gana quien diga más palabras en 10 s.' },
-    { title: 'Esquinas', minutes: 2, how: 'Cada esquina es una opción (A/B/C/D). Lees una pregunta y se mueven a su respuesta.' },
+    { title: 'Stand up if…', minutes: 2, how: 'Sentences with today’s grammar (“Stand up if you have ever…”). They stand or sit: fast.' },
+    { title: '10-second duel', minutes: 2, how: 'Two volunteers, one category (food, verbs…): whoever says more words in 10 s wins.' },
+    { title: 'Corners', minutes: 2, how: 'Each corner is an option (A/B/C/D). You read a question and they move to their answer.' },
   ],
   young: [
-    { title: 'Esquinas de opinión', minutes: 2, how: 'Agree / disagree en paredes opuestas; 2 personas defienden su lado en una frase.' },
-    { title: 'Speed chat', minutes: 2, how: 'Parejas de 30 s con una pregunta; al sonido, rotan.' },
+    { title: 'Opinion corners', minutes: 2, how: 'Agree / disagree on opposite walls; 2 people defend their side in one sentence.' },
+    { title: 'Speed chat', minutes: 2, how: '30 s pairs with a question; at the sound, they rotate.' },
   ],
   adults: [
-    { title: 'Ronda de manos', minutes: 1, how: 'Levanten la mano si… (frases de la vida real con la gramática de hoy) y comenten 1.' },
-    { title: 'Speed chat', minutes: 2, how: 'Parejas de 30 s con una pregunta de la vida real; al sonido, cambian de compañero.' },
+    { title: 'Show of hands', minutes: 1, how: 'Raise your hand if… (real-life sentences with today’s grammar) and comment on 1.' },
+    { title: 'Speed chat', minutes: 2, how: '30 s pairs with a real-life question; at the sound, they change partner.' },
   ],
 };
 
@@ -134,17 +134,17 @@ export function challengeDeck(audience: Audience, level: CefrLevel, vocab: strin
   const w = (k: number) => vocab[(seed + k) % Math.max(1, vocab.length)] ?? 'English';
   const g = (k: number) => grammar[(seed + k) % Math.max(1, grammar.length)] ?? 'today’s grammar';
   const cards: Challenge[] = [
-    { kind: 'Rápido', emoji: '⚡', task: `Say 5 words from today’s unit.`, seconds: t(15), points: 1 },
-    { kind: 'Mímica', emoji: '🎭', task: `Act out “${w(0)}”. Your team guesses.`, seconds: t(30), points: 2 },
-    { kind: 'Dibujo', emoji: '✏️', task: `Draw “${w(1)}” on the board. No letters!`, seconds: t(40), points: 2 },
-    { kind: 'Frase', emoji: '💬', task: `Make a sentence with “${w(2)}” and “${w(3)}”.`, seconds: t(30), points: 2 },
-    { kind: 'Gramática', emoji: '🧩', task: low ? `One sentence with: ${g(0)}.` : `Two sentences with: ${g(0)}. One must be a question.`, seconds: t(40), points: 3 },
-    { kind: 'Tabú', emoji: '🚫', task: `Explain “${w(4)}” without saying it.`, seconds: t(40), points: 3 },
-    { kind: 'Historia', emoji: '📖', task: `Continue the class story in one sentence using “${w(5)}”.`, seconds: t(30), points: 2 },
-    { kind: 'Robo', emoji: '🦹', task: `Steal: answer the last question another team missed.`, seconds: t(20), points: 2 },
+    { kind: 'Quick', emoji: '⚡', task: `Say 5 words from today’s unit.`, seconds: t(15), points: 1 },
+    { kind: 'Mime', emoji: '🎭', task: `Act out “${w(0)}”. Your team guesses.`, seconds: t(30), points: 2 },
+    { kind: 'Drawing', emoji: '✏️', task: `Draw “${w(1)}” on the board. No letters!`, seconds: t(40), points: 2 },
+    { kind: 'Sentence', emoji: '💬', task: `Make a sentence with “${w(2)}” and “${w(3)}”.`, seconds: t(30), points: 2 },
+    { kind: 'Grammar', emoji: '🧩', task: low ? `One sentence with: ${g(0)}.` : `Two sentences with: ${g(0)}. One must be a question.`, seconds: t(40), points: 3 },
+    { kind: 'Taboo', emoji: '🚫', task: `Explain “${w(4)}” without saying it.`, seconds: t(40), points: 3 },
+    { kind: 'Story', emoji: '📖', task: `Continue the class story in one sentence using “${w(5)}”.`, seconds: t(30), points: 2 },
+    { kind: 'Steal', emoji: '🦹', task: `Steal: answer the last question another team missed.`, seconds: t(20), points: 2 },
   ];
   if (audience === 'teens') cards.push({ kind: 'Viral', emoji: '📱', task: `Write a 6-word “post” about the story with “${w(6)}”.`, seconds: 40, points: 3 });
-  if (audience === 'kids') cards.push({ kind: 'Congela', emoji: '🧊', task: `Everyone freezes! First to say a word from today unfreezes the team.`, seconds: 15, points: 1 });
+  if (audience === 'kids') cards.push({ kind: 'Freeze', emoji: '🧊', task: `Everyone freezes! First to say a word from today unfreezes the team.`, seconds: 15, points: 1 });
   if (audience === 'young' || audience === 'adults') cards.push({ kind: 'Debate', emoji: '🎤', task: `30-second opinion: is the main character right? Use “${w(6)}”.`, seconds: 45, points: 3 });
   // Deterministic shuffle.
   return cards
@@ -187,14 +187,14 @@ export function describeMix(m: Mix): string {
 }
 
 const MIXED_ENERGIZERS: Energizer[] = [
-  { title: 'Esquinas', minutes: 2, how: 'Cada esquina es una opción (A/B/C/D); se mueven a su respuesta y uno de cada esquina explica.' },
-  { title: 'Parejas cruzadas', minutes: 2, how: 'Parejas de edades distintas: 30 s cada uno para contar algo con la gramática de hoy.' },
-  { title: 'Mímica por equipos mixtos', minutes: 2, how: 'Un joven actúa y un adulto adivina (y al revés) con las palabras de hoy.' },
+  { title: 'Corners', minutes: 2, how: 'Each corner is an option (A/B/C/D); they move to their answer and one from each corner explains.' },
+  { title: 'Crossed pairs', minutes: 2, how: 'Pairs of different ages: 30 s each to tell something with today’s grammar.' },
+  { title: 'Mime in mixed teams', minutes: 2, how: 'A young person acts and an adult guesses (and the other way round) with today’s words.' },
 ];
 
 const MIXED_HOOKS: ((name: string) => string)[] = [
-  (n) => `Pregunta: «¿Quién creen que es ${n}?». Que respondan un joven y un adulto: dos versiones de la misma historia.`,
-  () => 'Muestra un objeto que todas las edades conocen (un celular viejo, una llave) y pregunta qué historia esconde.',
+  (n) => `Ask: “Who do you think ${n} is?”. Have a young person and an adult answer: two versions of the same story.`,
+  () => 'Show an object that all ages know (an old phone, a key) and ask what story it hides.',
 ];
 
 export const hookForMix = (m: Mix, name: string, seed: number) => (isIntergenerational(m) ? pick(MIXED_HOOKS, seed)(name) : hookFor(dominant(m), name, seed));

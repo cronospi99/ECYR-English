@@ -75,7 +75,7 @@ export default function Dice({ data, set, focused }: WidgetProps<D>) {
   const sum = values.reduce((a, b) => a + b, 0);
   return (
     <div className="flex h-full flex-col">
-      <button type="button" onClick={roll} aria-label="Lanzar dados" className="grid min-h-0 flex-1 place-items-center gap-[3%] p-4" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
+      <button type="button" onClick={roll} aria-label="Roll dice" className="grid min-h-0 flex-1 place-items-center gap-[3%] p-4" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
         {values.map((v, i) => (
           <div key={i} className="flex aspect-square h-full max-h-full max-w-full items-center justify-center">
             <Die v={v} color={COLORS[i % COLORS.length]!} rolling={rolling} />
@@ -85,7 +85,7 @@ export default function Dice({ data, set, focused }: WidgetProps<D>) {
       <div className="flex flex-wrap items-center justify-center gap-2 px-3 pb-3">
         <Stepper value={n} min={1} max={6} onChange={(k) => set({ n: k })} label="🎲" />
         <Act solid color="var(--orange)" onClick={roll} className="px-5">
-          <Dices size={20} /> Lanzar
+          <Dices size={20} /> Roll
         </Act>
         {n > 1 && !rolling && <span className="font-rounded text-[22px] font-black tabular-nums">= {sum}</span>}
       </div>

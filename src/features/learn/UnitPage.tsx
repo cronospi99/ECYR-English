@@ -70,7 +70,7 @@ export default function UnitPage() {
       back={{ to: `/learn/${level}`, label: meta.id }}
       eyebrow={
         <span className="inline-flex items-center gap-2">
-          <LevelChip level={meta.id} /> Unidad {u.n}
+          <LevelChip level={meta.id} /> Unit {u.n}
           {u.world && !u.world.includes('/') && <span className="text-label-3">· {u.world}</span>}
         </span>
       }
@@ -94,11 +94,11 @@ export default function UnitPage() {
             onChange={setTab}
             className="material min-w-full sm:min-w-0"
             options={[
-              { value: 'overview', label: 'Resumen' },
-              { value: 'vocab', label: 'Vocabulario' },
-              { value: 'grammar', label: 'Gramática' },
-              { value: 'practice', label: 'Práctica' },
-              { value: 'produce', label: 'Producción' },
+              { value: 'overview', label: 'Summary' },
+              { value: 'vocab', label: 'Vocabulary' },
+              { value: 'grammar', label: 'Grammar' },
+              { value: 'practice', label: 'Practice' },
+              { value: 'produce', label: 'Production' },
             ]}
           />
         </div>
@@ -110,7 +110,7 @@ export default function UnitPage() {
             u={u}
             practiceCount={practiceItems(u).length + vocabItems(u).length}
             onGo={setTab}
-            extra={plan && plan.overview.length > 0 && <VisualFigure items={plan.overview} title="Para empezar" color={u.color} className="max-w-3xl" />}
+            extra={plan && plan.overview.length > 0 && <VisualFigure items={plan.overview} title="To start" color={u.color} className="max-w-3xl" />}
           />
         )}
         {tab === 'vocab' && (
@@ -133,7 +133,7 @@ export default function UnitPage() {
             onFinish={(score) =>
               score >= 70
                 ? completeUnit(meta.id, u.n, score, `${meta.id} · ${unitTitle(u.title)}`)
-                : award({ kind: 'unit', title: `Práctica: ${meta.id} · ${unitTitle(u.title)}`, skill: 'grammar', xp: 5, score, level: meta.id, ref: `unit:${meta.id}-${u.n}` })
+                : award({ kind: 'unit', title: `Practice: ${meta.id} · ${unitTitle(u.title)}`, skill: 'grammar', xp: 5, score, level: meta.id, ref: `unit:${meta.id}-${u.n}` })
             }
           />
         )}
@@ -143,14 +143,14 @@ export default function UnitPage() {
       <div className="mt-10 flex items-center justify-between gap-3">
         {prev ? (
           <Link to={`/learn/${level}/${prev.n}`} onClick={() => setTab('overview')} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-medium">
-            <ChevronLeft size={18} /> Unidad {prev.n}
+            <ChevronLeft size={18} /> Unit {prev.n}
           </Link>
         ) : (
           <span />
         )}
         {next && (
           <Link to={`/learn/${level}/${next.n}`} onClick={() => setTab('overview')} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-medium">
-            Unidad {next.n} <ChevronRight size={18} />
+            Unit {next.n} <ChevronRight size={18} />
           </Link>
         )}
       </div>
@@ -166,19 +166,19 @@ function Vocabulary({ items, visuals, color }: { items: VocabItem[]; visuals?: V
     <div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-title-3 flex items-center gap-2">
-          <IconTile icon={BookOpen} color="var(--blue)" size={28} /> {items.length} palabras y expresiones
+          <IconTile icon={BookOpen} color="var(--blue)" size={28} /> {items.length} words and expressions
         </h2>
         <Segmented
           size="sm"
           value={mode}
           onChange={setMode}
           options={[
-            { value: 'list', label: 'Tarjetas' },
+            { value: 'list', label: 'Cards' },
             { value: 'cards', label: 'Flashcards' },
           ]}
         />
       </div>
-      {visuals && visuals.length > 0 && <VisualFigure items={visuals} title="Mira y aprende" color={color} className="mb-5 max-w-3xl" />}
+      {visuals && visuals.length > 0 && <VisualFigure items={visuals} title="Look and learn" color={color} className="mb-5 max-w-3xl" />}
       {mode === 'list' ? <VocabGrid items={items} /> : <Flashcards items={items} />}
     </div>
   );
@@ -192,7 +192,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
   const go = (d: number) => {
     setFlip(false);
     const n = (i + d + items.length) % items.length;
-    if (d > 0 && n === 0) award({ kind: 'flashcards', title: 'Flashcards de vocabulario', skill: 'vocabulary', xp: 10, ref: 'vocab:flashcards' });
+    if (d > 0 && n === 0) award({ kind: 'flashcards', title: 'Vocabulary flashcards', skill: 'vocabulary', xp: 10, ref: 'vocab:flashcards' });
     setI(n);
   };
   return (
@@ -201,7 +201,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
         type="button"
         onClick={() => setFlip((f) => !f)}
         className="relative block aspect-[4/3] w-full [perspective:1200px]"
-        aria-label="Voltear tarjeta"
+        aria-label="Flip card"
       >
         <motion.div
           className="relative h-full w-full [transform-style:preserve-3d]"
@@ -211,7 +211,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
           <div className="brand-gradient absolute inset-0 flex flex-col items-center justify-center rounded-[28px] p-6 text-white shadow-float [backface-visibility:hidden]">
             <div className="text-[34px] font-bold tracking-tight">{v.term}</div>
             {v.pos && <div className="mt-1 text-[15px] italic opacity-80">{v.pos}</div>}
-            <div className="mt-6 text-[13px] opacity-70">Toca para ver el significado</div>
+            <div className="mt-6 text-[13px] opacity-70">Tap to see the meaning</div>
           </div>
           <div className="bg-card absolute inset-0 flex flex-col items-center justify-center rounded-[28px] p-6 text-center shadow-float [backface-visibility:hidden] [transform:rotateY(180deg)]">
             <div className="text-[19px] font-semibold text-pretty">{v.def}</div>
@@ -220,7 +220,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
         </motion.div>
       </button>
       <div className="mt-5 flex items-center justify-between">
-        <Button variant="gray" onClick={() => go(-1)} aria-label="Anterior">
+        <Button variant="gray" onClick={() => go(-1)} aria-label="Previous">
           <ChevronLeft size={18} />
         </Button>
         <div className="flex items-center gap-3">
@@ -229,7 +229,7 @@ function Flashcards({ items }: { items: VocabItem[] }) {
             {i + 1} / {items.length}
           </span>
         </div>
-        <Button variant="gray" onClick={() => go(1)} aria-label="Siguiente">
+        <Button variant="gray" onClick={() => go(1)} aria-label="Next">
           <ChevronRight size={18} />
         </Button>
       </div>
@@ -281,17 +281,17 @@ function Practice({ u, onFinish }: { u: Unit; onFinish: (score: number) => void 
       <div className="flex flex-wrap items-center gap-3 px-1">
         <IconTile icon={Repeat} color="var(--green)" size={36} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-title-3">Práctica de la unidad</h2>
+          <h2 className="text-title-3">Unit practice</h2>
           <p className="text-label-2 text-[14px]">
-            {items.length} preguntas · {grammarN} de gramática y {items.length - grammarN} de vocabulario
+            {items.length} questions · {grammarN} grammar and {items.length - grammarN} vocabulary
           </p>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-semibold" style={{ background: tint('var(--yellow)', 22), color: ink('var(--orange)') }}>
-          <Trophy size={14} aria-hidden /> 70% para completar
+          <Trophy size={14} aria-hidden /> 70% to complete
         </span>
       </div>
       <Card className="p-6">
-        <Quiz key={u.n} items={items} onFinish={onFinish} title="Práctica de la unidad" />
+        <Quiz key={u.n} items={items} onFinish={onFinish} title="Unit practice" />
       </Card>
     </div>
   );
@@ -326,7 +326,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
     { value: 'writing', label: '✍️ Writing' },
     { value: 'reading', label: '📖 Reading' },
     { value: 'listening', label: '🎧 Listening' },
-    ...(u.dynamics?.length || u.homework ? [{ value: 'class' as const, label: '👥 Clase' }] : []),
+    ...(u.dynamics?.length || u.homework ? [{ value: 'class' as const, label: '👥 Class' }] : []),
   ];
   const skill = skills.find((k) => k.value === params.get('skill'))?.value ?? skills[0]!.value;
   const setSkill = (k: Skill) =>
@@ -345,7 +345,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
       <div className="grid gap-5 [&>*]:min-w-0">
         {skill === 'speaking' && u.speaking && u.speaking.length > 0 && (
           <Card className="p-6">
-            <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'tarea' : 'tareas'}`} />
+            <SectionHead icon={Mic} color="var(--orange)" title="Speaking" meta={`${u.speaking.length} ${u.speaking.length === 1 ? 'task' : 'tasks'}`} />
             <ol className="space-y-2.5">
               {u.speaking.map((s, k) => {
                 const c = KIND_COLORS[k % KIND_COLORS.length]!;
@@ -367,7 +367,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
               })}
             </ol>
             <ButtonLink to="/practice/speaking" variant="tinted" className="mt-4">
-              <Mic size={17} /> Practicar speaking con micrófono
+              <Mic size={17} /> Practise speaking with the microphone
             </ButtonLink>
           </Card>
         )}
@@ -380,7 +380,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
 
         {skill === 'class' && u.dynamics && u.dynamics.length > 0 && (
           <Card className="p-6">
-            <SectionHead icon={Users} color="var(--teal)" title="Dinámicas para clase" meta={`${u.dynamics.length} actividades`} />
+            <SectionHead icon={Users} color="var(--teal)" title="Classroom activities" meta={`${u.dynamics.length} actividades`} />
             <div className="grid gap-3 md:grid-cols-2">
               {u.dynamics.map((d) => (
                 <div key={d.name} className="bg-fill-2 rounded-[14px] p-4" style={{ boxShadow: 'inset 3px 0 0 var(--teal)' }}>
@@ -401,7 +401,7 @@ function Produce({ u, levelId }: { u: Unit; levelId: string }) {
           <Card className="flex items-start gap-3 p-6">
             <IconTile icon={ClipboardList} color="var(--blue)" size={34} />
             <div className="min-w-0">
-              <h3 className="text-headline">Tarea · {u.homework.title}</h3>
+              <h3 className="text-headline">Homework · {u.homework.title}</h3>
               <p className="text-label-2 mt-1 text-[15px] text-pretty">{u.homework.task}</p>
             </div>
           </Card>

@@ -18,7 +18,7 @@ const RANGES: { value: Range; label: string }[] = [
   { value: 'hundred', label: '1–100' },
   { value: 'big', label: 'Grandes' },
   { value: 'teen', label: '-teen / -ty' },
-  { value: 'build', label: 'Construir' },
+  { value: 'build', label: 'Build' },
 ];
 
 const NUMS: Record<Exclude<Range, 'teen' | 'build'>, number[]> = {
@@ -93,10 +93,10 @@ export function NumberChartBlock({ b }: { b: CourseBlock }) {
             {cardinal(sel, true) !== cardinal(sel) && <div className="text-label-2 mt-0.5 text-[12px]">UK: {word(sel, mode, true)}</div>}
           </div>
           <div className="flex shrink-0 flex-col gap-1">
-            <Button size="sm" variant="tinted" onClick={() => speak(word(sel, mode), { accent: 'en-US', rate: 0.85 })} aria-label="Escuchar en inglés americano">
+            <Button size="sm" variant="tinted" onClick={() => speak(word(sel, mode), { accent: 'en-US', rate: 0.85 })} aria-label="Listen in American English">
               <Volume2 size={14} /> US
             </Button>
-            <Button size="sm" variant="gray" onClick={() => speak(word(sel, mode, true), { accent: 'en-GB', rate: 0.85 })} aria-label="Escuchar en inglés británico">
+            <Button size="sm" variant="gray" onClick={() => speak(word(sel, mode, true), { accent: 'en-GB', rate: 0.85 })} aria-label="Listen in British English">
               <Volume2 size={14} /> UK
             </Button>
           </div>
@@ -136,7 +136,7 @@ export function NumberChartBlock({ b }: { b: CourseBlock }) {
       ) : range === 'build' ? (
         <div className="mt-4">
           <label className="text-label-2 text-[13px] font-medium" htmlFor="num-build">
-            Escribe un número (hasta 999,999,999,999)
+            Type a number (up to 999,999,999,999)
           </label>
           <div className="mt-1 flex gap-2">
             <input
@@ -147,7 +147,7 @@ export function NumberChartBlock({ b }: { b: CourseBlock }) {
               className="bg-fill-2 h-12 min-w-0 flex-1 rounded-[12px] px-4 text-[22px] font-bold tabular-nums outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]"
             />
             <Button onClick={() => speak(word(built, mode), { rate: 0.85 })}>
-              <Volume2 size={16} /> Oír
+              <Volume2 size={16} /> Listen
             </Button>
           </div>
           <div className="mt-4 space-y-2">
@@ -288,9 +288,9 @@ export function NumberGameBlock({ b, onResult }: { b: CourseBlock; onResult: OnR
           <div className="text-[44px] font-extrabold tabular-nums">
             {score}/{total}
           </div>
-          <Done text={score === total ? '¡Perfecto! Tienes muy buen oído para los números.' : 'Buen trabajo. Repite el juego para mejorar tu oído.'} />
+          <Done text={score === total ? 'Perfect! You have a great ear for numbers.' : 'Good job. Play again to train your ear.'} />
           <Button className="mt-4" variant="tinted" onClick={restart}>
-            <RotateCcw size={16} /> Jugar otra vez
+            <RotateCcw size={16} /> Play again
           </Button>
         </div>
       ) : (
@@ -298,13 +298,13 @@ export function NumberGameBlock({ b, onResult }: { b: CourseBlock; onResult: OnR
           <>
             <div className="text-label-2 flex justify-between text-[13px]">
               <span>
-                Ronda {k + 1} de {total}
+                Round {k + 1} de {total}
               </span>
-              <span className="tabular-nums">Aciertos: {score}</span>
+              <span className="tabular-nums">Correct: {score}</span>
             </div>
             <div className="mt-3 flex justify-center">
               <Button size="lg" onClick={() => play()}>
-                <Volume2 size={20} /> Escuchar
+                <Volume2 size={20} /> Listen
               </Button>
             </div>
             <div className="mt-4 grid grid-cols-2 gap-2">
@@ -328,11 +328,11 @@ export function NumberGameBlock({ b, onResult }: { b: CourseBlock; onResult: OnR
             {picked && (
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-label-2 text-[14px]">
-                  {picked === r.answer ? '¡Correcto! ' : `Era ${r.answer}. `}
+                  {picked === r.answer ? 'Correct! ' : `Era ${r.answer}. `}
                   {r.hint}
                 </p>
                 <Button size="sm" onClick={next}>
-                  {k + 1 < total ? 'Siguiente' : 'Ver resultado'}
+                  {k + 1 < total ? 'Next' : 'See result'}
                 </Button>
               </div>
             )}

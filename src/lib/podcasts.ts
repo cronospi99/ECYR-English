@@ -49,7 +49,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['voa', 'voice of america'],
     label: 'English in a Minute (VOA)',
     length: '1 min',
-    about_es: 'Una expresión cotidiana explicada en un minuto, con ejemplos claros y lentos.',
+    about_es: 'An everyday expression explained in a minute, with clear, slow examples.',
   },
   {
     id: 'easy-stories-in-english',
@@ -58,7 +58,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['easy stories in english'],
     label: 'Easy Stories in English',
     length: '10–25 min',
-    about_es: 'Cuentos narrados despacio, con episodios marcados desde principiante.',
+    about_es: 'Stories narrated slowly, with episodes marked from beginner.',
   },
   {
     id: 'coffee-break-english',
@@ -67,7 +67,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['coffee break english'],
     label: 'Coffee Break English',
     length: '15–20 min',
-    about_es: 'Lecciones paso a paso de Radio Lingua, con explicaciones y repetición.',
+    about_es: 'Step-by-step lessons from Radio Lingua, with explanations and repetition.',
   },
   // A2 — everyday language, slow and clear.
   {
@@ -77,7 +77,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['daily easy english'],
     label: 'Daily Easy English Expression',
     length: '5–10 min',
-    about_es: 'Una expresión útil al día, explicada con calma y muchos ejemplos.',
+    about_es: 'One useful expression a day, explained calmly with plenty of examples.',
   },
   {
     id: 'bbc-english-we-speak',
@@ -87,7 +87,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['bbc'],
     label: 'The English We Speak (BBC)',
     length: '3–4 min',
-    about_es: 'Expresiones y jerga actuales del inglés británico en mini diálogos.',
+    about_es: 'Current British English expressions and slang in mini dialogues.',
   },
   {
     id: 'voa-learning-english-broadcast',
@@ -97,7 +97,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['voa', 'voice of america'],
     label: 'Learning English Broadcast (VOA)',
     length: '30 min',
-    about_es: 'Noticias del día leídas en inglés lento y con vocabulario sencillo.',
+    about_es: 'Today’s news read in slow English with simple vocabulary.',
   },
   // B1 — natural topics at a comfortable pace.
   {
@@ -108,7 +108,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['bbc'],
     label: '6 Minute English (BBC)',
     length: '6 min',
-    about_es: 'Dos presentadores conversan sobre un tema y explican 6 palabras clave.',
+    about_es: 'Two presenters chat about a topic and explain 6 key words.',
   },
   {
     id: 'voa-words-and-their-stories',
@@ -118,7 +118,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['voa', 'voice of america'],
     label: 'Words and Their Stories (VOA)',
     length: '5–10 min',
-    about_es: 'El origen y el uso de expresiones del inglés americano, en inglés pausado.',
+    about_es: 'The origin and use of American English expressions, in slow English.',
   },
   {
     id: 'eslpod',
@@ -128,7 +128,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['eslpod', 'esl pod'],
     label: 'ESL Podcast (ESLPod)',
     length: '15–20 min',
-    about_es: 'Un diálogo lento y luego la explicación detallada de su vocabulario.',
+    about_es: 'A slow dialogue followed by a detailed explanation of its vocabulary.',
   },
   {
     id: 'speak-english-now',
@@ -137,7 +137,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['speak english now'],
     label: 'Speak English Now Podcast',
     length: '15–20 min',
-    about_es: 'Inglés conversacional y pronunciación para ganar fluidez.',
+    about_es: 'Conversational English and pronunciation to gain fluency.',
   },
   // B2 — real conversation at near-natural speed.
   {
@@ -147,7 +147,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['all ears english'],
     label: 'All Ears English',
     length: '15–20 min',
-    about_es: 'Conversaciones naturales sobre inglés real, cultura y comunicación.',
+    about_es: 'Natural conversations about real English, culture and communication.',
   },
   {
     id: 'culips',
@@ -156,7 +156,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     name: ['culips'],
     label: 'Culips English Podcast',
     length: '20–30 min',
-    about_es: 'Hablantes nativos conversan y explican expresiones y matices del inglés.',
+    about_es: 'Native speakers chat and explain expressions and nuances of English.',
   },
   {
     id: 'curious-minds',
@@ -166,7 +166,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['leonardo english'],
     label: 'English Learning for Curious Minds',
     length: '20–30 min',
-    about_es: 'Historia, ciencia y cultura contadas en inglés claro para estudiantes avanzados.',
+    about_es: 'History, science and culture told in clear English for advanced students.',
   },
   // C1 — native-speed and long-form.
   {
@@ -177,7 +177,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['luke thompson'],
     label: "Luke's English Podcast",
     length: '30–120 min',
-    about_es: 'Episodios largos y espontáneos en inglés británico, con humor y cultura.',
+    about_es: 'Long, spontaneous episodes in British English, with humour and culture.',
   },
   {
     id: 'npr-news-now',
@@ -187,7 +187,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['npr'],
     label: 'NPR News Now',
     length: '5 min',
-    about_es: 'Boletín de noticias real a velocidad nativa, actualizado cada hora.',
+    about_es: 'A real news bulletin at native speed, updated every hour.',
   },
   {
     id: 'the-indicator',
@@ -197,7 +197,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['npr'],
     label: 'The Indicator (NPR)',
     length: '10 min',
-    about_es: 'Economía cotidiana explicada en 10 minutos por periodistas de NPR.',
+    about_es: 'Everyday economics explained in 10 minutes by NPR journalists.',
   },
   {
     id: 'ted-talks-daily',
@@ -207,7 +207,7 @@ export const PODCAST_SHOWS: PodcastShowDef[] = [
     artist: ['ted'],
     label: 'TED Talks Daily',
     length: '10–20 min',
-    about_es: 'Una charla TED al día: ideas, ciencia y sociedad en inglés auténtico.',
+    about_es: 'One TED talk a day: ideas, science and society in authentic English.',
   },
 ];
 
@@ -278,7 +278,7 @@ function jsonp(url: string, ms: number): Promise<ItunesResponse> {
     };
     const timer = setTimeout(() => {
       clean();
-      reject(new PodcastError('Apple Podcasts tardó demasiado en responder. Inténtalo de nuevo.', 'timeout'));
+      reject(new PodcastError('Apple Podcasts took too long to respond. Try again.', 'timeout'));
     }, ms);
     w[name] = (data: ItunesResponse) => {
       clean();
@@ -287,7 +287,7 @@ function jsonp(url: string, ms: number): Promise<ItunesResponse> {
     };
     s.onerror = () => {
       clean();
-      reject(new PodcastError('No se pudo conectar con Apple Podcasts.', 'server'));
+      reject(new PodcastError('Could not connect to Apple Podcasts.', 'server'));
     };
     s.src = `${url}&callback=${name}`;
     s.async = true;
@@ -299,7 +299,7 @@ async function itunes(path: 'search' | 'lookup', params: Record<string, string |
   const qs = new URLSearchParams({ country: COUNTRY, ...Object.fromEntries(Object.entries(params).map(([k, v]) => [k, String(v)])) });
   const url = `${API}/${path}?${qs}`;
   if (typeof navigator !== 'undefined' && navigator.onLine === false) {
-    throw new PodcastError('Sin conexión a internet: los podcasts se escuchan en línea.', 'offline');
+    throw new PodcastError('No internet connection: podcasts are listened to online.', 'offline');
   }
   if (!jsonpOnly) {
     const ctrl = new AbortController();
@@ -308,7 +308,7 @@ async function itunes(path: 'search' | 'lookup', params: Record<string, string |
       const r = await fetch(url, { signal: ctrl.signal });
       if (r.ok) return (await r.json()) as ItunesResponse;
       if (r.status === 403 || r.status === 429) {
-        throw new PodcastError('Apple Podcasts limitó las consultas por un momento. Espera un minuto e inténtalo de nuevo.', 'server');
+        throw new PodcastError('Apple Podcasts limited requests for a moment. Wait a minute and try again.', 'server');
       }
     } catch (e) {
       if (e instanceof PodcastError) throw e;
@@ -374,7 +374,7 @@ function toEpisode(r: Raw, show: PodcastShow | null): PodcastEpisode | null {
     key: `itunes:${collectionId}:${trackId}`,
     trackId,
     collectionId,
-    title: str(r.trackName).trim() || 'Episodio',
+    title: str(r.trackName).trim() || 'Episode',
     description: plain(str(r.description) || str(r.shortDescription)).slice(0, 4000),
     date: str(r.releaseDate),
     durationMs: num(r.trackTimeMillis),
@@ -452,7 +452,7 @@ export function listEpisodes(collectionId: number, limit = 50): Promise<{ show: 
   const p = itunes('lookup', { id: collectionId, media: 'podcast', entity: 'podcastEpisode', limit: Math.min(200, limit) })
     .then((res) => {
       const rows = res.results ?? [];
-      if (!rows.length) throw new PodcastError('Este podcast no está disponible en Apple Podcasts ahora mismo.', 'not_found');
+      if (!rows.length) throw new PodcastError('This podcast isn’t available on Apple Podcasts right now.', 'not_found');
       const head = rows.find((r) => str(r.wrapperType) !== 'podcastEpisode' && str(r.kind) !== 'podcast-episode');
       const show = head ? toShow(head) : null;
       const episodes = rows
@@ -501,7 +501,7 @@ export function fmtDuration(ms: number) {
 
 export function fmtDate(iso: string) {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' });
+  return Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
 // --------------------------------------------------------- resume position --
@@ -611,14 +611,14 @@ export async function fetchQuizzes(key: string): Promise<PodcastQuizRow[]> {
 
 /** Asks the `podcast` Edge Function to listen to the episode and write questions (or return the stored ones). */
 export async function generateQuiz(ep: PodcastEpisode, level: CefrLevel): Promise<PodcastQuiz> {
-  if (!supabase) throw new PodcastError('Las preguntas con IA necesitan conexión con el servidor de la plataforma.', 'offline');
+  if (!supabase) throw new PodcastError('AI questions need a connection to the platform server.', 'offline');
   const { data: s } = await supabase.auth.getSession();
-  if (!s.session) throw new PodcastError('Inicia sesión para generar preguntas con IA.', 'signed_out');
+  if (!s.session) throw new PodcastError('Sign in to generate AI questions.', 'signed_out');
   const { data, error } = await supabase.functions.invoke('podcast', {
     body: { op: 'generate', collectionId: ep.collectionId, trackId: ep.trackId, level },
   });
   if (error) {
-    let message = 'No se pudo contactar al servicio de IA. Usa la guía de escucha mientras tanto.';
+    let message = 'Could not reach the AI service. Use the listening guide in the meantime.';
     let code: PodcastError['code'] = 'server';
     try {
       const body = await (error as { context?: Response }).context?.json();
@@ -630,6 +630,6 @@ export async function generateQuiz(ep: PodcastEpisode, level: CefrLevel): Promis
     throw new PodcastError(message, code);
   }
   const quiz = cleanQuiz((data as { quiz?: unknown })?.quiz);
-  if (!quiz) throw new PodcastError('La IA respondió en un formato inesperado. Inténtalo de nuevo.', 'ai');
+  if (!quiz) throw new PodcastError('The AI replied in an unexpected format. Try again.', 'ai');
   return quiz;
 }

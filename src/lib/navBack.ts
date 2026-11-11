@@ -12,23 +12,23 @@ export interface BackTarget {
 }
 
 const LABELS: Record<string, string> = {
-  '/': 'Inicio',
-  '/learn': 'Aprender',
-  '/learn/grammar': 'Gramática',
+  '/': 'Home',
+  '/learn': 'Learn',
+  '/learn/grammar': 'Grammar',
   '/learn/foundations': 'Foundations',
-  '/practice': 'Práctica',
-  '/practice/workshops': 'Talleres',
-  '/teacher': 'Sala del docente',
+  '/practice': 'Practice',
+  '/practice/workshops': 'Workshops',
+  '/teacher': 'Teacher room',
   '/ielts': 'IELTS',
-  '/games': 'Juegos',
-  '/profile': 'Perfil',
+  '/games': 'Games',
+  '/profile': 'Profile',
 };
 
 /** Screens whose parent is not simply "one segment up". */
 const SPECIAL: Record<string, BackTarget> = {
-  '/admin/teachers': { to: '/profile', label: 'Perfil' },
-  '/import': { to: '/profile', label: 'Perfil' },
-  '/boards': { to: '/', label: 'Inicio' },
+  '/admin/teachers': { to: '/profile', label: 'Profile' },
+  '/import': { to: '/profile', label: 'Profile' },
+  '/boards': { to: '/', label: 'Home' },
 };
 
 const LEVEL = /^\/learn\/(a1|a2|b1|b2|c1|c2)$/i;
@@ -41,12 +41,12 @@ export function parentOf(pathname: string): BackTarget | null {
   // Exams belong to a level: /exams/a1-final → /learn/a1.
   if (parts[0] === 'exams') {
     const lvl = /^(a1|a2|b1|b2|c1|c2)/i.exec(parts[1] ?? '')?.[1];
-    return lvl ? { to: `/learn/${lvl.toLowerCase()}`, label: lvl.toUpperCase() } : { to: '/learn', label: 'Aprender' };
+    return lvl ? { to: `/learn/${lvl.toLowerCase()}`, label: lvl.toUpperCase() } : { to: '/learn', label: 'Learn' };
   }
   const up = '/' + parts.slice(0, -1).join('/');
   if (LEVEL.test(up)) return { to: up, label: up.split('/').pop()!.toUpperCase() };
   if (LABELS[up]) return { to: up, label: LABELS[up]! };
-  return parentOf(up) ?? { to: '/', label: 'Inicio' };
+  return parentOf(up) ?? { to: '/', label: 'Home' };
 }
 
 /**

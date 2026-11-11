@@ -70,14 +70,14 @@ export type PortfolioPatch = Partial<Omit<PortfolioDraft, 'source'>>;
 // ------------------------------------------------------------- UI metadata --
 
 export const KIND_INFO: Record<PortfolioKind, { label: string; plural: string; icon: LucideIcon; color: string }> = {
-  writing: { label: 'Escrito', plural: 'Escritos', icon: PenLine, color: 'var(--purple)' },
-  homework: { label: 'Tarea', plural: 'Tareas', icon: NotebookPen, color: 'var(--blue)' },
-  test: { label: 'Examen', plural: 'Exámenes', icon: ClipboardCheck, color: 'var(--red)' },
-  project: { label: 'Proyecto', plural: 'Proyectos', icon: FolderKanban, color: 'var(--teal)' },
-  certificate: { label: 'Certificado', plural: 'Certificados', icon: Award, color: 'var(--orange)' },
+  writing: { label: 'Writing', plural: 'Writings', icon: PenLine, color: 'var(--purple)' },
+  homework: { label: 'Task', plural: 'Tasks', icon: NotebookPen, color: 'var(--blue)' },
+  test: { label: 'Exam', plural: 'Exams', icon: ClipboardCheck, color: 'var(--red)' },
+  project: { label: 'Project', plural: 'Projects', icon: FolderKanban, color: 'var(--teal)' },
+  certificate: { label: 'Certificate', plural: 'Certificates', icon: Award, color: 'var(--orange)' },
   audio: { label: 'Audio', plural: 'Audios', icon: Mic, color: 'var(--pink)' },
-  image: { label: 'Foto', plural: 'Fotos', icon: Image, color: 'var(--green)' },
-  other: { label: 'Otro', plural: 'Otros', icon: FileIcon, color: '#8e8e93' },
+  image: { label: 'Photo', plural: 'Photos', icon: Image, color: 'var(--green)' },
+  other: { label: 'Other', plural: 'Others', icon: FileIcon, color: '#8e8e93' },
 };
 
 export const SKILL_LABEL: Record<PortfolioSkill, string> = {
@@ -85,8 +85,8 @@ export const SKILL_LABEL: Record<PortfolioSkill, string> = {
   reading: 'Reading',
   writing: 'Writing',
   speaking: 'Speaking',
-  grammar: 'Gramática',
-  vocabulary: 'Vocabulario',
+  grammar: 'Grammar',
+  vocabulary: 'Vocabulary',
 };
 
 export function formatScore(score: number | null, scale: ScoreScale | null): string | null {
@@ -153,7 +153,7 @@ export const ACCEPT_ATTR = Object.keys(EXT_TYPES)
   .map((e) => '.' + e)
   .join(',');
 
-export const ACCEPT_HUMAN = 'PDF, Word, ODT, TXT, MD, RTF, imágenes (PNG, JPG, WEBP, HEIC), audio (MP3, M4A, WAV, OGG, WEBM) o MP4';
+export const ACCEPT_HUMAN = 'PDF, Word, ODT, TXT, MD, RTF, images (PNG, JPG, WEBP, HEIC), audio (MP3, M4A, WAV, OGG, WEBM) or MP4';
 
 export function extOf(name: string): string {
   const m = /\.([a-z0-9]+)$/i.exec(name);
@@ -164,15 +164,15 @@ export type FileCheck = { ok: true; contentType: string; kind: PortfolioKind | n
 
 /** Size, type and name checks. Browsers often report '' for .md / .heic, so the extension decides. */
 export function validatePortfolioFile(file: File): FileCheck {
-  if (file.size === 0) return { ok: false, error: 'El archivo está vacío.' };
+  if (file.size === 0) return { ok: false, error: 'The file is empty.' };
   if (file.size > MAX_FILE_BYTES)
-    return { ok: false, error: `El archivo pesa ${formatBytes(file.size)}; el máximo es 20 MB.` };
+    return { ok: false, error: `The file weighs ${formatBytes(file.size)}; the maximum is 20 MB.` };
   const ext = extOf(file.name);
   const fromExt = EXT_TYPES[ext];
   const reported = file.type.toLowerCase();
   const contentType = ALLOWED_TYPES.has(reported) ? reported : fromExt;
   if (!contentType || (!fromExt && !ALLOWED_TYPES.has(reported)))
-    return { ok: false, error: `Este tipo de archivo no se admite. Usa ${ACCEPT_HUMAN}.` };
+    return { ok: false, error: `This file type is not supported. Use ${ACCEPT_HUMAN}.` };
   return { ok: true, contentType, kind: kindForType(contentType) };
 }
 
@@ -202,7 +202,7 @@ const TABLE = 'portfolio_items';
 const BUCKET = 'portfolio';
 
 function client() {
-  if (!supabase) throw new Error('Las cuentas no están configuradas en este despliegue.');
+  if (!supabase) throw new Error('Accounts are not configured in this deployment.');
   return supabase;
 }
 
@@ -211,15 +211,15 @@ function friendly(e: unknown, fallback: string): Error {
   const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: unknown }).message) : String(e ?? '');
   const code = e && typeof e === 'object' && 'code' in e ? String((e as { code: unknown }).code) : '';
   if (code === 'PGRST205' || code === '42P01' || (/portfolio_items|bucket not found/i.test(msg) && /not find|not found|does not exist/i.test(msg)))
-    return new Error('El servidor aún no tiene "Mis trabajos". Pide al administrador ejecutar supabase/migrations/07_portfolio.sql.');
-  if (/object not found/i.test(msg)) return new Error('El archivo ya no existe.');
-  if (/payload too large|exceeded the maximum|too large/i.test(msg)) return new Error('El archivo supera el máximo de 20 MB.');
-  if (/mime type|invalid_mime|not supported/i.test(msg)) return new Error('Este tipo de archivo no se admite.');
+    return new Error('The server doesn’t have “My work” yet. Ask the admin to run supabase/migrations/07_portfolio.sql.');
+  if (/object not found/i.test(msg)) return new Error('The file no longer exists.');
+  if (/payload too large|exceeded the maximum|too large/i.test(msg)) return new Error('The file exceeds the 20 MB maximum.');
+  if (/mime type|invalid_mime|not supported/i.test(msg)) return new Error('This file type is not supported.');
   if (/row-level security|permission denied|42501|not from a student in your class/i.test(msg))
-    return new Error('No tienes permiso para hacer esto.');
-  if (/band score/i.test(msg)) return new Error('Una banda IELTS va de 0 a 9.');
-  if (/between 0 and 100/i.test(msg)) return new Error('La nota va de 0 a 100.');
-  if (/failed to fetch|network/i.test(msg)) return new Error('Sin conexión. Revisa tu internet e inténtalo de nuevo.');
+    return new Error('You don’t have permission to do this.');
+  if (/band score/i.test(msg)) return new Error('An IELTS band goes from 0 to 9.');
+  if (/between 0 and 100/i.test(msg)) return new Error('The grade goes from 0 to 100.');
+  if (/failed to fetch|network/i.test(msg)) return new Error('No connection. Check your internet and try again.');
   return new Error(msg || fallback);
 }
 
@@ -239,7 +239,7 @@ function clean(d: PortfolioPatch): Record<string, unknown> {
   }
   if (d.text_content !== undefined) {
     const t = d.text_content?.replace(/\s+$/, '') || null;
-    if (t && t.length > MAX_TEXT_CHARS) throw new Error(`El texto es demasiado largo (máximo ${MAX_TEXT_CHARS.toLocaleString('es')} caracteres).`);
+    if (t && t.length > MAX_TEXT_CHARS) throw new Error(`The text is too long (maximum ${MAX_TEXT_CHARS.toLocaleString('en')} characters).`);
     out.text_content = t;
   }
   return out;
@@ -248,7 +248,7 @@ function clean(d: PortfolioPatch): Record<string, unknown> {
 /** All items of one user, newest first. Works for the owner and for their teacher. */
 export async function listPortfolio(userId: string): Promise<PortfolioItem[]> {
   const { data, error } = await client().from(TABLE).select('*').eq('user_id', userId).order('created_at', { ascending: false });
-  if (error) throw friendly(error, 'No se pudieron cargar los trabajos.');
+  if (error) throw friendly(error, 'Could not load the work.');
   return (data ?? []).map(normalize);
 }
 
@@ -266,8 +266,8 @@ export async function createPortfolioItem(draft: PortfolioDraft, file?: File | n
   const sb = client();
   const { data: auth } = await sb.auth.getSession();
   const uid = auth.session?.user.id;
-  if (!uid) throw new Error('Inicia sesión para subir trabajos.');
-  if (!draft.title.trim()) throw new Error('Ponle un título a tu trabajo.');
+  if (!uid) throw new Error('Sign in to upload work.');
+  if (!draft.title.trim()) throw new Error('Give your work a title.');
 
   const row: Record<string, unknown> = { ...clean(draft), user_id: uid, source: draft.source ?? 'upload' };
   let path: string | null = null;
@@ -288,7 +288,7 @@ export async function createPortfolioItem(draft: PortfolioDraft, file?: File | n
   const { data, error } = await sb.from(TABLE).insert(row).select('*').single();
   if (error) {
     if (path) await sb.storage.from(BUCKET).remove([path]).catch(() => undefined);
-    throw friendly(error, 'No se pudo guardar el trabajo.');
+    throw friendly(error, 'Could not save the work.');
   }
   return normalize(data);
 }
@@ -296,9 +296,9 @@ export async function createPortfolioItem(draft: PortfolioDraft, file?: File | n
 /** Edits the owner-editable metadata (not the file, not the review). */
 export async function updatePortfolioItem(id: string, patch: PortfolioPatch): Promise<PortfolioItem> {
   const body = clean(patch);
-  if ('title' in body && !body.title) throw new Error('El título no puede quedar vacío.');
+  if ('title' in body && !body.title) throw new Error('The title cannot be empty.');
   const { data, error } = await client().from(TABLE).update(body).eq('id', id).select('*').single();
-  if (error) throw friendly(error, 'No se pudieron guardar los cambios.');
+  if (error) throw friendly(error, 'Could not save the changes.');
   return normalize(data);
 }
 
@@ -306,7 +306,7 @@ export async function updatePortfolioItem(id: string, patch: PortfolioPatch): Pr
 export async function removePortfolioItem(item: Pick<PortfolioItem, 'id' | 'file_path'>): Promise<void> {
   const sb = client();
   const { error } = await sb.from(TABLE).delete().eq('id', item.id);
-  if (error) throw friendly(error, 'No se pudo eliminar.');
+  if (error) throw friendly(error, 'Could not delete.');
   if (item.file_path) await sb.storage.from(BUCKET).remove([item.file_path]).catch(() => undefined);
 }
 
@@ -315,7 +315,7 @@ export async function portfolioSignedUrl(path: string, opts: { download?: string
   const { data, error } = await client()
     .storage.from(BUCKET)
     .createSignedUrl(path, 60 * 60, opts.download ? { download: opts.download } : undefined);
-  if (error || !data?.signedUrl) throw friendly(error, 'No se pudo abrir el archivo.');
+  if (error || !data?.signedUrl) throw friendly(error, 'Could not open the file.');
   return data.signedUrl;
 }
 
@@ -323,7 +323,7 @@ export async function portfolioSignedUrl(path: string, opts: { download?: string
 export async function portfolioSignedUrls(paths: string[]): Promise<Record<string, string>> {
   if (!paths.length) return {};
   const { data, error } = await client().storage.from(BUCKET).createSignedUrls(paths, 60 * 60);
-  if (error) throw friendly(error, 'No se pudieron cargar las vistas previas.');
+  if (error) throw friendly(error, 'Could not load the previews.');
   const out: Record<string, string> = {};
   for (const r of data ?? []) if (r.path && r.signedUrl && !r.error) out[r.path] = r.signedUrl;
   return out;
@@ -336,7 +336,7 @@ export async function reviewPortfolioItem(id: string, note: string | null, score
     p_note: note?.trim() || null,
     p_score: score != null && Number.isFinite(score) ? score : null,
   });
-  if (error) throw friendly(error, 'No se pudo guardar la revisión.');
+  if (error) throw friendly(error, 'Could not save the review.');
   return normalize(data);
 }
 
@@ -372,7 +372,7 @@ async function uploadObject(path: string, file: File, contentType: string, token
   const sb = client();
   if (!supabaseConfig || typeof XMLHttpRequest === 'undefined') {
     const { error } = await sb.storage.from(BUCKET).upload(path, file, { contentType, upsert: false });
-    if (error) throw friendly(error, 'No se pudo subir el archivo.');
+    if (error) throw friendly(error, 'Could not upload the file.');
     opts.onProgress?.(1);
     return;
   }
@@ -401,10 +401,10 @@ async function uploadObject(path: string, file: File, contentType: string, token
         /* not JSON */
       }
       const message = xhr.status === 413 ? 'Payload too large' : body.message || body.error || `HTTP ${xhr.status}`;
-      reject(friendly({ message }, 'No se pudo subir el archivo.'));
+      reject(friendly({ message }, 'Could not upload the file.'));
     };
-    xhr.onerror = () => reject(friendly({ message: 'network' }, 'No se pudo subir el archivo.'));
-    xhr.onabort = () => reject(new Error('Subida cancelada.'));
+    xhr.onerror = () => reject(friendly({ message: 'network' }, 'Could not upload the file.'));
+    xhr.onabort = () => reject(new Error('Upload cancelled.'));
     opts.signal?.addEventListener('abort', () => xhr.abort(), { once: true });
     xhr.send(file);
   });

@@ -31,7 +31,7 @@ const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 /** "B1-4-2" → "B1 · U4 · #2", "B1-4" → "B1 · U4", "A1" → "A1". */
 function refDetail(r: string) {
   const m = /^(pre-?a1|a1|a2|b1|b2|c1|c2)(?:-(\d+))?(?:-(\d+))?$/i.exec(r);
-  if (m) return [m[1]!.toUpperCase(), m[2] && `Unidad ${m[2]}`, m[3] && `#${m[3]}`].filter(Boolean).join(' · ');
+  if (m) return [m[1]!.toUpperCase(), m[2] && `Unit ${m[2]}`, m[3] && `#${m[3]}`].filter(Boolean).join(' · ');
   return r.replace(/[-_:]+/g, ' ').trim();
 }
 
@@ -42,14 +42,14 @@ export function humanTask(module: string, task: string | null): string {
   let m: RegExpExecArray | null;
   if (!t) return MODULES.includes(module) ? `IELTS Simulator · ${skill}` : skill;
   if ((m = /^unit:(.+)$/i.exec(t))) return `Curso · ${refDetail(m[1]!)}`;
-  if ((m = /^practice:(writing|speaking|reading|listening)(?::(.+))?$/i.exec(t))) return `Práctica de ${cap(m[1]!)}${m[2] ? ` · ${refDetail(m[2])}` : ''}`;
+  if ((m = /^practice:(writing|speaking|reading|listening)(?::(.+))?$/i.exec(t))) return `Practice: ${cap(m[1]!)}${m[2] ? ` · ${refDetail(m[2])}` : ''}`;
   if ((m = /^exam:(prea1|a1|a2|b1|b2|c1|c2)-(m(\d)|final)(?::speaking-(\d))?$/i.exec(t)))
-    return `${m[2]!.toLowerCase() === 'final' ? 'Parcial final' : `Parcial ${m[3]}`} · ${m[1]!.toLowerCase() === 'prea1' ? 'Pre-A1' : m[1]!.toUpperCase()}${m[4] ? ` · Speaking ${m[4]}` : ''}`;
-  if (t === 'coach:live') return 'AI Coach · conversación en vivo';
+    return `${m[2]!.toLowerCase() === 'final' ? 'Final midterm' : `Parcial ${m[3]}`} · ${m[1]!.toLowerCase() === 'prea1' ? 'Pre-A1' : m[1]!.toUpperCase()}${m[4] ? ` · Speaking ${m[4]}` : ''}`;
+  if (t === 'coach:live') return 'AI Coach · live conversation';
   if ((m = /^coach(?::(.+))?$/i.exec(t))) return `AI Coach${m[1] ? ` · ${m[1].replace(/[-_]+/g, ' ')}` : ''}`;
   if ((m = /^task\s*([12])$/i.exec(t))) return `IELTS · Writing Task ${m[1]}`;
   if ((m = /^part\s*([123])$/i.exec(t))) return `IELTS · Speaking Part ${m[1]}`;
-  if (t === 'practice') return `IELTS · práctica de ${skill}`;
+  if (t === 'practice') return `IELTS · ${skill} practice`;
   if ((m = /^topic:(.+)$/i.exec(t))) return `Pre-A1 · ${m[1]!.replace(/[-_]+/g, ' ')}`;
   if ((m = /^(grammar|reading|game|workshop|foundations):(.+)$/i.exec(t))) return `${cap(m[1]!)} · ${m[2]!.replace(/[-_]+/g, ' ')}`;
   return t;
@@ -105,7 +105,7 @@ const MOD_META: Record<string, { icon: typeof PenLine; color: string; label: str
 };
 
 const words = (s: string | null) => (s?.trim() ? s.trim().split(/\s+/).length : 0);
-const dateFmt = (iso: string) => new Date(iso).toLocaleString('es', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+const dateFmt = (iso: string) => new Date(iso).toLocaleString('en', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
 // --------------------------------------------------------------- list --
 
@@ -168,13 +168,13 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
                   <span className={cn('text-[14px]', name ? 'text-label-2' : 'font-semibold')}>{humanTask(x.module, x.task)}</span>
                   {rv && (
                     <span className="text-ink-green inline-flex items-center gap-1 text-[12px] font-bold">
-                      <CheckCircle2 size={13} aria-hidden /> {rv.shared ? 'Revisado' : 'Borrador'}
+                      <CheckCircle2 size={13} aria-hidden /> {rv.shared ? 'Reviewed' : 'Draft'}
                       {rv.grade != null ? ` · ${rv.grade.toFixed(1).replace('.', ',')}/5` : rv.score != null ? ` · ${rv.score}/100` : ''}
                       {rv.notes.length > 0 && ` · ${rv.notes.length} 💬`}
                     </span>
                   )}
                   {x.band != null && (
-                    <span className="text-ink-indigo text-[12px] font-bold tabular-nums">Banda {Number(x.band).toFixed(1)}</span>
+                    <span className="text-ink-indigo text-[12px] font-bold tabular-nums">Band {Number(x.band).toFixed(1)}</span>
                   )}
                 </span>
                 {x.prompt && <span className="text-label-2 block truncate text-[13px]">{x.prompt}</span>}
@@ -195,21 +195,21 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
                   <span>{dateFmt(x.created_at)}</span>
                   {linkStudent && name && (
                     <Link to={`/teacher/student/${x.student_id}?tab=work`} className="text-ink-blue inline-flex items-center font-semibold">
-                      Ver estudiante <ChevronRight size={14} aria-hidden />
+                      View student <ChevronRight size={14} aria-hidden />
                     </Link>
                   )}
                 </div>
                 {x.prompt && (
                   <div>
-                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Consigna</div>
+                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Prompt</div>
                     <p className="text-[14px] whitespace-pre-wrap">{x.prompt}</p>
                   </div>
                 )}
                 {reviewsOff && (
                   <div>
-                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">{x.module === 'speaking' ? 'Transcripción' : 'Texto del estudiante'}</div>
+                    <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">{x.module === 'speaking' ? 'Transcript' : 'Student’s text'}</div>
                     <p className="bg-fill-2 max-h-[420px] overflow-y-auto rounded-[12px] p-3 text-[15px] leading-relaxed whitespace-pre-wrap">{x.content || '—'}</p>
-                    <p className="text-label-2 mt-1 text-[12px]">Para comentar y cambiar notas, activa las revisiones en Supabase (14_submission_reviews.sql).</p>
+                    <p className="text-label-2 mt-1 text-[12px]">To comment and change grades, enable reviews in Supabase (14_submission_reviews.sql).</p>
                   </div>
                 )}
                 {!reviewsOff && rep !== undefined && rep !== null && (
@@ -231,17 +231,17 @@ function WorkItems({ list, names, linkStudent }: { list: Submission[]; names?: M
                   />
                 )}
                 <div>
-                  <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">Feedback de la IA</div>
+                  <div className="text-label-2 mb-1 text-[12px] font-semibold uppercase">AI feedback</div>
                   {rep === undefined || rep === null ? (
                     <div className="text-label-2 flex items-center gap-2 text-[13px]">
-                      <Spinner className="h-4 w-4" /> Cargando…
+                      <Spinner className="h-4 w-4" /> Loading…
                     </div>
                   ) : rep ? (
                     <div className="max-h-[420px] overflow-y-auto rounded-[12px] bg-[color-mix(in_srgb,var(--purple)_8%,transparent)] p-3 text-[14.5px]">
                       <Markdown text={rep} />
                     </div>
                   ) : (
-                    <p className="text-label-2 text-[13px]">Sin feedback de IA (el estudiante lo envió directamente).</p>
+                    <p className="text-label-2 text-[13px]">No AI feedback (the student sent it directly).</p>
                   )}
                 </div>
               </div>
@@ -271,7 +271,7 @@ function FilterBar({ filter, setFilter, list, onReload, loading }: { filter: Fil
           { value: 'speaking', label: `Speaking (${n('speaking')})` },
         ]}
       />
-      <Button variant="gray" size="sm" className="ml-auto" onClick={onReload} disabled={loading} aria-label="Actualizar trabajos">
+      <Button variant="gray" size="sm" className="ml-auto" onClick={onReload} disabled={loading} aria-label="Refresh work">
         <RefreshCw size={15} className={loading ? 'animate-spin' : undefined} aria-hidden />
       </Button>
     </div>
@@ -304,11 +304,11 @@ export function StudentWork({ studentId, source = 'all', className }: { studentI
   return (
     <Card className={cn('overflow-hidden', className)}>
       <CardHeader
-        title={source === 'ielts' ? 'Writings y speakings del IELTS Simulator' : 'Writing y Speaking'}
+        title={source === 'ielts' ? 'Writings and speakings from the IELTS Simulator' : 'Writing and Speaking'}
         subtitle={
           source === 'ielts'
-            ? 'Incluye los migrados del IELTS Simulator original'
-            : 'Textos y transcripciones que el estudiante hizo en la plataforma (unidades, práctica, AI Coach e IELTS), con el feedback de la IA.'
+            ? 'Includes those migrated from the original IELTS Simulator'
+            : 'Texts and transcripts the student made on the platform (units, practice, AI Coach and IELTS), with the AI feedback.'
         }
       />
       {source !== 'ielts' && <FilterBar filter={filter} setFilter={setFilter} list={list} onReload={() => setN((x) => x + 1)} loading={loading} />}
@@ -319,8 +319,8 @@ export function StudentWork({ studentId, source = 'all', className }: { studentI
       ) : shown.length === 0 ? (
         <EmptyState
           icon={<PenLine size={40} strokeWidth={1.6} />}
-          title={list.length ? 'Nada en este filtro' : 'Aún no hay trabajos'}
-          body={list.length ? undefined : 'Cuando el estudiante pida feedback a la IA, envíe un texto o responda en Speaking, aparecerá aquí.'}
+          title={list.length ? 'Nothing in this filter' : 'There is no work yet'}
+          body={list.length ? undefined : 'When the student asks the AI for feedback, submits a text or answers in Speaking, it will appear here.'}
         />
       ) : (
         <div className={source === 'ielts' ? 'mt-3' : undefined}>
@@ -338,7 +338,7 @@ export function ClassWork({ students, limit = 80, compact = false, className }: 
   const [filter, setFilter] = useState<Filter>('all');
   const [n, setN] = useState(0);
   const ids = useMemo(() => (students ?? []).map((s) => s.profile.id), [students]);
-  const names = useMemo(() => new Map((students ?? []).map((s) => [s.profile.id, s.profile.full_name || s.profile.email || 'Estudiante'])), [students]);
+  const names = useMemo(() => new Map((students ?? []).map((s) => [s.profile.id, s.profile.full_name || s.profile.email || 'Student'])), [students]);
   const idKey = ids.join(',');
 
   useEffect(() => {
@@ -361,12 +361,12 @@ export function ClassWork({ students, limit = 80, compact = false, className }: 
   return (
     <Card className={cn('overflow-hidden', className)}>
       <CardHeader
-        title="Trabajos recientes"
-        subtitle="Lo último que escribieron o dijeron tus estudiantes, con el feedback de la IA."
+        title="Recent work"
+        subtitle="The latest things your students wrote or said, with the AI feedback."
         action={
           compact && (
             <Link to="/teacher?tab=work" className="text-ink-blue shrink-0 text-[15px] font-semibold">
-              Ver todos
+              See all
             </Link>
           )
         }
@@ -379,8 +379,8 @@ export function ClassWork({ students, limit = 80, compact = false, className }: 
       ) : shown.length === 0 ? (
         <EmptyState
           icon={<PenLine size={40} strokeWidth={1.6} />}
-          title={list.length ? 'Nada en este filtro' : 'Aún no hay trabajos'}
-          body={list.length ? undefined : 'Los textos y transcripciones que envíen tus estudiantes aparecerán aquí.'}
+          title={list.length ? 'Nothing in this filter' : 'There is no work yet'}
+          body={list.length ? undefined : 'The texts and transcripts your students send will appear here.'}
         />
       ) : (
         <div className={compact ? 'mt-3' : undefined}>

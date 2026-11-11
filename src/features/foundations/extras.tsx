@@ -16,7 +16,7 @@ import { cardinal } from './numbers';
 type Reg = 'formal' | 'neutral' | 'informal';
 const REG: Record<Reg, { label: string; color: string }> = {
   formal: { label: 'Formal', color: 'var(--indigo)' },
-  neutral: { label: 'Neutro', color: 'var(--teal)' },
+  neutral: { label: 'Neutral', color: 'var(--teal)' },
   informal: { label: 'Informal', color: 'var(--orange)' },
 };
 
@@ -69,19 +69,19 @@ export function PhrasebookBlock({ b }: { b: CourseBlock }) {
           value={reg}
           onChange={setReg}
           options={[
-            { value: 'all', label: 'Todos' },
+            { value: 'all', label: 'All' },
             { value: 'formal', label: 'Formal' },
-            { value: 'neutral', label: 'Neutro' },
+            { value: 'neutral', label: 'Neutral' },
             { value: 'informal', label: 'Informal' },
           ]}
         />
         {playing === null ? (
           <Button size="sm" variant="tinted" onClick={() => playAll()} disabled={!shown.length}>
-            <Play size={14} fill="currentColor" /> Escuchar {shown.length}
+            <Play size={14} fill="currentColor" /> Listen {shown.length}
           </Button>
         ) : (
           <Button size="sm" variant="gray" onClick={stop}>
-            <Square size={12} fill="currentColor" /> Detener
+            <Square size={12} fill="currentColor" /> Stop
           </Button>
         )}
       </div>
@@ -113,7 +113,7 @@ export function PhrasebookBlock({ b }: { b: CourseBlock }) {
             </ul>
           </div>
         ))}
-        {!groups.length && <p className="text-label-2 text-[14px]">No hay expresiones con ese filtro.</p>}
+        {!groups.length && <p className="text-label-2 text-[14px]">There are no expressions with that filter.</p>}
       </div>
     </Section>
   );
@@ -229,7 +229,7 @@ export function SpellerBlock({ b }: { b: CourseBlock }) {
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
-          aria-label="Texto para deletrear"
+          aria-label="Text to spell"
           autoCapitalize="off"
           autoCorrect="off"
           spellCheck={false}
@@ -237,7 +237,7 @@ export function SpellerBlock({ b }: { b: CourseBlock }) {
           className="bg-fill-2 h-11 min-w-0 flex-1 rounded-[12px] px-3 text-[16px] font-medium outline-none focus:ring-2 focus:ring-[color-mix(in_srgb,var(--blue)_40%,transparent)]"
         />
         <Button onClick={say} disabled={!tokens.length}>
-          <Volume2 size={16} /> Deletrear
+          <Volume2 size={16} /> Spell
         </Button>
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5">
@@ -272,10 +272,10 @@ export function SpellerBlock({ b }: { b: CourseBlock }) {
 // ----------------------------------------------------------------- scene ----
 
 const SETS = [
-  { id: 'class', label: 'Clase', items: { ns: ['📕', 'book', 'libro'], np: ['✏️', 'pencils', 'lápices'], fs: ['🕰️', 'clock', 'reloj'], fp: ['🪑', 'chairs', 'sillas'] } },
+  { id: 'class', label: 'Class', items: { ns: ['📕', 'book', 'libro'], np: ['✏️', 'pencils', 'lápices'], fs: ['🕰️', 'clock', 'reloj'], fp: ['🪑', 'chairs', 'sillas'] } },
   { id: 'street', label: 'Calle', items: { ns: ['🐶', 'dog', 'perro'], np: ['🌷', 'flowers', 'flores'], fs: ['🚌', 'bus', 'bus'], fp: ['🌳', 'trees', 'árboles'] } },
-  { id: 'clothes', label: 'Ropa', items: { ns: ['🧢', 'cap', 'gorra'], np: ['👟', 'sneakers', 'tenis'], fs: ['🧥', 'jacket', 'chaqueta'], fp: ['👗', 'dresses', 'vestidos'] } },
-  { id: 'food', label: 'Comida', items: { ns: ['☕', 'coffee', 'café'], np: ['🍌', 'bananas', 'bananos'], fs: ['🍕', 'pizza', 'pizza'], fp: ['🥭', 'mangoes', 'mangos'] } },
+  { id: 'clothes', label: 'Clothes', items: { ns: ['🧢', 'cap', 'gorra'], np: ['👟', 'sneakers', 'tenis'], fs: ['🧥', 'jacket', 'chaqueta'], fp: ['👗', 'dresses', 'vestidos'] } },
+  { id: 'food', label: 'Food', items: { ns: ['☕', 'coffee', 'café'], np: ['🍌', 'bananas', 'bananos'], fs: ['🍕', 'pizza', 'pizza'], fp: ['🥭', 'mangoes', 'mangos'] } },
 ] as const;
 
 type Slot = 'ns' | 'np' | 'fs' | 'fp';

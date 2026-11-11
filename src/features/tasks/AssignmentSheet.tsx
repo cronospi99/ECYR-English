@@ -167,12 +167,12 @@ export function AssignmentSheet({
   const auto = isAutoDetectable({ target: built.target, requires_submission: f.requiresSubmission });
 
   const problems = {
-    title: !f.title.trim() ? 'Escribe un título.' : f.title.length > MAX_TITLE ? `Máximo ${MAX_TITLE} caracteres.` : null,
-    unit: p.source === 'unit' && !p.unit ? 'Elige una unidad.' : null,
-    link: p.source === 'custom' && !validateTo(p.customTo.trim()) ? 'Debe ser una ruta de la plataforma que empiece por "/", p. ej. /practice/reading.' : null,
-    min: p.minScore.trim() !== '' && !(Number(p.minScore) >= 0 && Number(p.minScore) <= 100) ? 'Entre 0 y 100.' : null,
-    due: f.hasDue && (!f.dueDate || !f.dueTime) ? 'Indica fecha y hora.' : null,
-    students: f.audience === 'students' && !f.students.length ? 'Elige al menos un estudiante.' : null,
+    title: !f.title.trim() ? 'Write a title.' : f.title.length > MAX_TITLE ? `Maximum ${MAX_TITLE} characters.` : null,
+    unit: p.source === 'unit' && !p.unit ? 'Pick a unit.' : null,
+    link: p.source === 'custom' && !validateTo(p.customTo.trim()) ? 'It must be a platform path starting with "/", e.g. /practice/reading.' : null,
+    min: p.minScore.trim() !== '' && !(Number(p.minScore) >= 0 && Number(p.minScore) <= 100) ? 'Between 0 and 100.' : null,
+    due: f.hasDue && (!f.dueDate || !f.dueTime) ? 'Enter date and time.' : null,
+    students: f.audience === 'students' && !f.students.length ? 'Pick at least one student.' : null,
   };
   const invalid = Object.values(problems).some(Boolean) || f.instructions.length > MAX_INSTRUCTIONS;
 
@@ -213,15 +213,15 @@ export function AssignmentSheet({
       open={open}
       onClose={onClose}
       dismissible={!busy}
-      title={assignment ? 'Editar tarea' : 'Nueva tarea'}
+      title={assignment ? 'Edit task' : 'New task'}
       leading={
         <SheetAction onClick={onClose} disabled={busy}>
-          Cancelar
+          Cancel
         </SheetAction>
       }
       trailing={
         <SheetAction type="submit" form={formId} bold disabled={busy}>
-          {busy ? <Spinner className="h-4 w-4" /> : assignment ? 'Guardar' : 'Asignar'}
+          {busy ? <Spinner className="h-4 w-4" /> : assignment ? 'Save' : 'Assign'}
         </SheetAction>
       }
     >
@@ -232,25 +232,25 @@ export function AssignmentSheet({
           </p>
         )}
 
-        <Field label="Título" htmlFor={ids.title} required error={show('title')} hint={`${f.title.length}/${MAX_TITLE}`}>
+        <Field label="Title" htmlFor={ids.title} required error={show('title')} hint={`${f.title.length}/${MAX_TITLE}`}>
           <input
             id={ids.title}
             value={f.title}
             maxLength={MAX_TITLE}
             onChange={(e) => set('title', e.target.value)}
-            placeholder="p. ej. Practica la unidad 3"
+            placeholder="e.g. Practise unit 3"
             className={inputCls}
             aria-invalid={Boolean(show('title'))}
           />
         </Field>
 
-        <Field label="Instrucciones (opcional)" htmlFor={ids.instr} hint={`${f.instructions.length}/${MAX_INSTRUCTIONS}`} error={f.instructions.length > MAX_INSTRUCTIONS ? 'Demasiado largo.' : null}>
+        <Field label="Instructions (optional)" htmlFor={ids.instr} hint={`${f.instructions.length}/${MAX_INSTRUCTIONS}`} error={f.instructions.length > MAX_INSTRUCTIONS ? 'Too long.' : null}>
           <textarea
             id={ids.instr}
             rows={3}
             value={f.instructions}
             onChange={(e) => set('instructions', e.target.value)}
-            placeholder="Qué deben hacer y cómo lo vas a evaluar."
+            placeholder="What they must do and how you will assess it."
             className={cn(inputCls, 'h-auto min-h-[88px] resize-y py-3 leading-[22px]')}
           />
         </Field>
@@ -258,7 +258,7 @@ export function AssignmentSheet({
         {/* ---- what to do */}
         <fieldset className="space-y-4">
           <legend className={labelCls} id={ids.src}>
-            Qué deben hacer
+            What they must do
           </legend>
           <div role="radiogroup" aria-labelledby={ids.src} className="flex flex-wrap gap-2">
             {sources.map((s) => (
@@ -281,7 +281,7 @@ export function AssignmentSheet({
           {p.source === 'unit' && (
             <>
               <div className="grid grid-cols-[110px_minmax(0,1fr)] gap-3">
-                <Field label="Nivel" htmlFor={ids.level}>
+                <Field label="Level" htmlFor={ids.level}>
                   <select id={ids.level} value={p.level} onChange={(e) => setP({ level: e.target.value as CefrLevel, unit: null })} className={inputCls}>
                     {LEVELS.map((l) => (
                       <option key={l.id} value={l.id}>
@@ -290,7 +290,7 @@ export function AssignmentSheet({
                     ))}
                   </select>
                 </Field>
-                <Field label="Unidad" htmlFor={ids.unit} error={show('unit')}>
+                <Field label="Unit" htmlFor={ids.unit} error={show('unit')}>
                   <select
                     id={ids.unit}
                     value={p.unit ?? ''}
@@ -299,7 +299,7 @@ export function AssignmentSheet({
                     disabled={book.loading}
                     aria-invalid={Boolean(show('unit'))}
                   >
-                    <option value="">{book.loading ? 'Cargando…' : 'Elige una unidad'}</option>
+                    <option value="">{book.loading ? 'Loading…' : 'Pick a unit'}</option>
                     {units.map((u) => (
                       <option key={u.n} value={u.n}>
                         {u.n}. {unitTitle(u.title)}
@@ -309,14 +309,14 @@ export function AssignmentSheet({
                 </Field>
               </div>
               <div>
-                <span className={labelCls}>Parte</span>
+                <span className={labelCls}>Part</span>
                 <Segmented<UnitTab> className="w-full" size="sm" value={p.unitTab} onChange={(unitTab) => setP({ unitTab })} options={UNIT_TABS} />
               </div>
             </>
           )}
 
           {p.source === 'grammar' && (
-            <Field label="Módulo" htmlFor={ids.item}>
+            <Field label="Module" htmlFor={ids.item}>
               <select id={ids.item} value={p.grammar} onChange={(e) => setP({ grammar: e.target.value })} className={inputCls}>
                 {GRAMMAR_OPTIONS.map((g) => (
                   <option key={g.id} value={g.id}>
@@ -328,7 +328,7 @@ export function AssignmentSheet({
           )}
 
           {p.source === 'practice' && (
-            <Field label="Práctica" htmlFor={ids.item}>
+            <Field label="Practice" htmlFor={ids.item}>
               <select id={ids.item} value={p.practice} onChange={(e) => setP({ practice: e.target.value })} className={inputCls}>
                 {PRACTICE_OPTIONS.map((o) => (
                   <option key={o.id} value={o.id}>
@@ -340,7 +340,7 @@ export function AssignmentSheet({
           )}
 
           {p.source === 'game' && (
-            <Field label="Juego" htmlFor={ids.item}>
+            <Field label="Game" htmlFor={ids.item}>
               <select id={ids.item} value={p.game} onChange={(e) => setP({ game: e.target.value })} className={inputCls}>
                 {GAME_OPTIONS.map((o) => (
                   <option key={o.id} value={o.id}>
@@ -352,7 +352,7 @@ export function AssignmentSheet({
           )}
 
           {p.source === 'ielts' && (
-            <Field label="Módulo IELTS" htmlFor={ids.item}>
+            <Field label="IELTS module" htmlFor={ids.item}>
               <select id={ids.item} value={p.ielts} onChange={(e) => setP({ ielts: e.target.value })} className={inputCls}>
                 {IELTS_OPTIONS.map((o) => (
                   <option key={o.id} value={o.id}>
@@ -364,7 +364,7 @@ export function AssignmentSheet({
           )}
 
           {p.source === 'custom' && (
-            <Field label="Enlace dentro de la plataforma (opcional)" htmlFor={ids.link} error={show('link')}>
+            <Field label="Link inside the platform (optional)" htmlFor={ids.link} error={show('link')}>
               <input
                 id={ids.link}
                 value={p.customTo}
@@ -380,7 +380,7 @@ export function AssignmentSheet({
           )}
 
           {p.source !== 'custom' && (
-            <Field label="Nota mínima para darla por hecha (opcional)" htmlFor={ids.min} error={show('min')}>
+            <Field label="Minimum grade to count it as done (optional)" htmlFor={ids.min} error={show('min')}>
               <input
                 id={ids.min}
                 type="number"
@@ -389,7 +389,7 @@ export function AssignmentSheet({
                 inputMode="numeric"
                 value={p.minScore}
                 onChange={(e) => setP({ minScore: e.target.value })}
-                placeholder="Cualquier nota"
+                placeholder="Any grade"
                 className={cn(inputCls, 'max-w-[200px]')}
               />
             </Field>
@@ -400,22 +400,22 @@ export function AssignmentSheet({
             <span>
               {built.target.label && <strong className="text-label block font-semibold">{built.target.label}</strong>}
               {auto
-                ? 'Se marcará sola cuando el estudiante complete esta actividad después de asignarla.'
+                ? 'It will be ticked off automatically when the student completes this activity after it is assigned.'
                 : f.requiresSubmission
-                  ? 'El estudiante la entrega subiendo un archivo o texto desde "Mis trabajos".'
-                  : 'El estudiante la marcará como hecha.'}
+                  ? 'The student hands it in by uploading a file or text from “My work”.'
+                  : 'The student will mark it as done.'}
             </span>
           </div>
         </fieldset>
 
-        <Field label="Nivel (opcional)" htmlFor={ids.lvl}>
+        <Field label="Level (optional)" htmlFor={ids.lvl}>
           <select
             id={ids.lvl}
             value={level ?? 'none'}
             onChange={(e) => set('levelOverride', e.target.value as CefrLevel | 'none')}
             className={cn(inputCls, 'max-w-[200px]')}
           >
-            <option value="none">Sin nivel</option>
+            <option value="none">No level</option>
             {LEVELS.map((l) => (
               <option key={l.id} value={l.id}>
                 {l.id} · {l.nameEs}
@@ -426,20 +426,20 @@ export function AssignmentSheet({
 
         {/* ---- due date */}
         <div className="space-y-3">
-          <ToggleRow label="Fecha límite" checked={f.hasDue} onChange={(v) => set('hasDue', v)} />
+          <ToggleRow label="Deadline" checked={f.hasDue} onChange={(v) => set('hasDue', v)} />
           {f.hasDue && (
             <div className="grid grid-cols-[minmax(0,1fr)_120px] gap-3">
-              <Field label="Día" htmlFor={ids.date} error={show('due')}>
+              <Field label="Day" htmlFor={ids.date} error={show('due')}>
                 <input id={ids.date} type="date" value={f.dueDate} onChange={(e) => set('dueDate', e.target.value)} className={cn(inputCls, 'min-w-0')} />
               </Field>
-              <Field label="Hora" htmlFor={ids.time}>
+              <Field label="Time" htmlFor={ids.time}>
                 <input id={ids.time} type="time" value={f.dueTime} onChange={(e) => set('dueTime', e.target.value)} className={cn(inputCls, 'min-w-0')} />
               </Field>
             </div>
           )}
           <ToggleRow
-            label="Requiere entrega"
-            hint="Archivo o texto desde “Mis trabajos”"
+            label="Requires hand-in"
+            hint="File or text from “My work”"
             checked={f.requiresSubmission}
             onChange={(v) => set('requiresSubmission', v)}
           />
@@ -447,14 +447,14 @@ export function AssignmentSheet({
 
         {/* ---- audience */}
         <div className="space-y-3">
-          <span className={labelCls}>Para</span>
+          <span className={labelCls}>For</span>
           <Segmented<AssignmentAudience>
             className="w-full"
             value={f.audience}
             onChange={(v) => set('audience', v)}
             options={[
-              { value: 'class', label: 'Toda la clase' },
-              { value: 'students', label: 'Elegir estudiantes' },
+              { value: 'class', label: 'Whole class' },
+              { value: 'students', label: 'Choose students' },
             ]}
           />
           {f.audience === 'students' && (
@@ -470,7 +470,7 @@ export function AssignmentSheet({
                       className="text-ink-blue text-footnote font-semibold hover:opacity-70"
                       onClick={() => set('students', f.students.length === students.length ? [] : students.map((s) => s.id))}
                     >
-                      {f.students.length === students.length ? 'Quitar todos' : 'Elegir todos'}
+                      {f.students.length === students.length ? 'Remove all' : 'Select all'}
                     </button>
                   </div>
                   <ul className="bg-card dark:bg-elevated max-h-[260px] overflow-y-auto rounded-[14px] shadow-card">
@@ -486,7 +486,7 @@ export function AssignmentSheet({
                               className="accent-[var(--blue)] h-5 w-5 shrink-0"
                             />
                             <span className="min-w-0 flex-1">
-                              <span className="text-body block truncate">{s.full_name || s.email || 'Estudiante'}</span>
+                              <span className="text-body block truncate">{s.full_name || s.email || 'Student'}</span>
                               {s.full_name && s.email && <span className="text-footnote text-label-2 block truncate">{s.email}</span>}
                             </span>
                           </label>
@@ -497,7 +497,7 @@ export function AssignmentSheet({
                 </>
               ) : (
                 <p className="text-footnote text-label-2 flex items-center gap-1.5 px-1">
-                  <UserCheck size={14} aria-hidden /> Aún no hay estudiantes en tu clase.
+                  <UserCheck size={14} aria-hidden /> There are no students in your class yet.
                 </p>
               )}
             </div>

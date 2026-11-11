@@ -183,11 +183,11 @@ export type DueTone = 'none' | 'overdue' | 'soon' | 'normal';
 
 /** "vence mañana", "venció hace 2 días"… with a tone for colour: overdue (red), < 48 h (orange). */
 export function dueInfo(due: string | null | undefined, now = new Date()): { tone: DueTone; label: string; exact: string } {
-  if (!due) return { tone: 'none', label: 'Sin fecha límite', exact: '' };
+  if (!due) return { tone: 'none', label: 'No deadline', exact: '' };
   const d = new Date(due);
   const diff = d.getTime() - now.getTime();
-  const exact = d.toLocaleString('es', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-  const rtf = new Intl.RelativeTimeFormat('es', { numeric: 'auto' });
+  const exact = d.toLocaleString('en', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
   const abs = Math.abs(diff);
   const rel =
     abs < 3_600_000
@@ -195,7 +195,7 @@ export function dueInfo(due: string | null | undefined, now = new Date()): { ton
       : abs < 86_400_000
         ? rtf.format(Math.round(diff / 3_600_000), 'hour')
         : rtf.format(dayDiff(now, d), 'day');
-  if (diff < 0) return { tone: 'overdue', label: `Venció ${rel}`, exact };
+  if (diff < 0) return { tone: 'overdue', label: `Was due ${rel}`, exact };
   return { tone: diff < 48 * 3_600_000 ? 'soon' : 'normal', label: `Vence ${rel}`, exact };
 }
 
@@ -228,19 +228,19 @@ const T = 'assignment_targets';
 const S = 'assignment_status';
 
 function client() {
-  if (!supabase) throw new Error('Las cuentas no están configuradas en este despliegue.');
+  if (!supabase) throw new Error('Accounts are not configured in this deployment.');
   return supabase;
 }
 
 async function myId(): Promise<string> {
   const { data } = await client().auth.getSession();
   const uid = data.session?.user.id;
-  if (!uid) throw new Error('Inicia sesión para ver tus tareas.');
+  if (!uid) throw new Error('Sign in to see your tasks.');
   return uid;
 }
 
 /** Shown when 09_assignments.sql has not been run on the project. */
-export const TASKS_MISSING_MSG = 'Falta activar Tareas: ejecuta supabase/migrations/09_assignments.sql en Supabase → SQL Editor.';
+export const TASKS_MISSING_MSG = 'Tasks need to be enabled: run supabase/migrations/09_assignments.sql in Supabase → SQL Editor.';
 
 /** The assignments tables (or review_assignment()) do not exist on the server yet. */
 export class TasksMissingError extends Error {
@@ -268,17 +268,17 @@ export function isTasksMissing(e: unknown): boolean {
 function friendly(e: unknown, fallback: string): Error {
   const msg = e && typeof e === 'object' && 'message' in e ? String((e as { message: unknown }).message) : String(e ?? '');
   if (isTasksMissing(e)) return new TasksMissingError();
-  if (/must be handed in/i.test(msg)) return new Error('Esta tarea se entrega con un trabajo de tu portafolio.');
-  if (/one of your own items/i.test(msg)) return new Error('Solo puedes entregar trabajos de tu propio portafolio.');
-  if (/excused this task/i.test(msg)) return new Error('Tu profesor te eximió de esta tarea.');
-  if (/only the teacher can excuse/i.test(msg)) return new Error('Solo el profesor puede eximir una tarea.');
-  if (/not assigned to (you|this student)|not in your class/i.test(msg)) return new Error('Esa tarea no está asignada a este estudiante.');
-  if (/assignments_target_valid/i.test(msg)) return new Error('El enlace de la tarea debe ser una ruta de la plataforma (empieza por "/").');
-  if (/assignments_title_len/i.test(msg)) return new Error(`El título debe tener entre 1 y ${MAX_TITLE} caracteres.`);
-  if (/between 0 and 100|assignment_status_score/i.test(msg)) return new Error('La nota va de 0 a 100.');
-  if (/too long|_len/i.test(msg)) return new Error('El texto es demasiado largo.');
-  if (/row-level security|permission denied|42501/i.test(msg)) return new Error('No tienes permiso para hacer esto.');
-  if (/failed to fetch|network/i.test(msg)) return new Error('Sin conexión. Revisa tu internet e inténtalo de nuevo.');
+  if (/must be handed in/i.test(msg)) return new Error('This task is handed in with a work from your portfolio.');
+  if (/one of your own items/i.test(msg)) return new Error('You can only hand in work from your own portfolio.');
+  if (/excused this task/i.test(msg)) return new Error('Your teacher exempted you from this task.');
+  if (/only the teacher can excuse/i.test(msg)) return new Error('Only the teacher can exempt a task.');
+  if (/not assigned to (you|this student)|not in your class/i.test(msg)) return new Error('That task is not assigned to this student.');
+  if (/assignments_target_valid/i.test(msg)) return new Error('The task link must be a platform path (starting with "/").');
+  if (/assignments_title_len/i.test(msg)) return new Error(`The title must be between 1 and ${MAX_TITLE} characters.`);
+  if (/between 0 and 100|assignment_status_score/i.test(msg)) return new Error('The grade goes from 0 to 100.');
+  if (/too long|_len/i.test(msg)) return new Error('The text is too long.');
+  if (/row-level security|permission denied|42501/i.test(msg)) return new Error('You don’t have permission to do this.');
+  if (/failed to fetch|network/i.test(msg)) return new Error('No connection. Check your internet and try again.');
   return new Error(msg || fallback);
 }
 
@@ -298,14 +298,14 @@ function cleanDraft(d: Partial<AssignmentDraft>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   if (d.title !== undefined) {
     const t = d.title.trim();
-    if (!t) throw new Error('Ponle un título a la tarea.');
+    if (!t) throw new Error('Give the task a title.');
     out.title = t.slice(0, MAX_TITLE);
   }
   if (d.instructions !== undefined) out.instructions = d.instructions?.trim().slice(0, MAX_INSTRUCTIONS) || null;
   if (d.kind !== undefined) out.kind = d.kind;
   if (d.target !== undefined) {
     const t = d.target ?? {};
-    if (!validateTo(t.to)) throw new Error('El enlace debe ser una ruta de la plataforma, por ejemplo /learn/a1/3.');
+    if (!validateTo(t.to)) throw new Error('The link must be a platform path, for example /learn/a1/3.');
     const target: AssignmentTarget = {};
     if (t.to) target.to = t.to;
     if (t.refs?.length) target.refs = t.refs.filter(Boolean);
@@ -327,7 +327,7 @@ function cleanDraft(d: Partial<AssignmentDraft>): Record<string, unknown> {
 /** Cheap check that the Tareas tables exist (true) — throws TasksMissingError / a friendly error otherwise. */
 export async function tasksReady(): Promise<true> {
   const { error } = await client().from(A).select('id').limit(1);
-  if (error) throw friendly(error, 'No se pudo comprobar Tareas.');
+  if (error) throw friendly(error, 'Could not check Tasks.');
   return true;
 }
 
@@ -339,7 +339,7 @@ export async function listMyAssignments(): Promise<Assignment[]> {
     .select('*, assignment_targets(student_id)')
     .eq('teacher_id', uid)
     .order('created_at', { ascending: false });
-  if (error) throw friendly(error, 'No se pudieron cargar las tareas.');
+  if (error) throw friendly(error, 'Could not load the tasks.');
   return (data ?? []).map(normA);
 }
 
@@ -347,7 +347,7 @@ export async function listMyAssignments(): Promise<Assignment[]> {
 export async function listMyStudents(): Promise<StudentLite[]> {
   await myId();
   const { data, error } = await client().from('profiles').select('id,full_name,email').eq('role', 'student').order('full_name', { ascending: true });
-  if (error) throw friendly(error, 'No se pudo cargar la clase.');
+  if (error) throw friendly(error, 'Could not load the class.');
   return (data ?? []) as StudentLite[];
 }
 
@@ -356,7 +356,7 @@ export async function createAssignment(d: AssignmentDraft): Promise<Assignment> 
   const uid = await myId();
   const row = { ...cleanDraft(d), teacher_id: uid };
   const { data, error } = await sb.from(A).insert(row).select('*').single();
-  if (error) throw friendly(error, 'No se pudo crear la tarea.');
+  if (error) throw friendly(error, 'Could not create the task.');
   const created = normA(data);
   if (created.audience === 'students') {
     try {
@@ -371,7 +371,7 @@ export async function createAssignment(d: AssignmentDraft): Promise<Assignment> 
 
 export async function updateAssignment(id: string, patch: Partial<AssignmentDraft>): Promise<Assignment> {
   const { data, error } = await client().from(A).update(cleanDraft(patch)).eq('id', id).select('*, assignment_targets(student_id)').single();
-  if (error) throw friendly(error, 'No se pudieron guardar los cambios.');
+  if (error) throw friendly(error, 'Could not save the changes.');
   const a = normA(data);
   if (patch.students !== undefined && a.audience === 'students') a.targets = await setTargets(id, patch.students);
   return a;
@@ -379,7 +379,7 @@ export async function updateAssignment(id: string, patch: Partial<AssignmentDraf
 
 export async function deleteAssignment(id: string): Promise<void> {
   const { error } = await client().from(A).delete().eq('id', id);
-  if (error) throw friendly(error, 'No se pudo eliminar la tarea.');
+  if (error) throw friendly(error, 'Could not delete the task.');
 }
 
 /** Makes the target list exactly `studentIds` (adds and removes as needed). Returns the final list. */
@@ -387,17 +387,17 @@ export async function setTargets(id: string, studentIds: string[]): Promise<stri
   const sb = client();
   const want = [...new Set(studentIds)];
   const { data, error } = await sb.from(T).select('student_id').eq('assignment_id', id);
-  if (error) throw friendly(error, 'No se pudieron guardar los estudiantes.');
+  if (error) throw friendly(error, 'Could not save the students.');
   const have = new Set((data ?? []).map((r) => r.student_id as string));
   const add = want.filter((s) => !have.has(s));
   const remove = [...have].filter((s) => !want.includes(s));
   if (remove.length) {
     const r = await sb.from(T).delete().eq('assignment_id', id).in('student_id', remove);
-    if (r.error) throw friendly(r.error, 'No se pudieron guardar los estudiantes.');
+    if (r.error) throw friendly(r.error, 'Could not save the students.');
   }
   if (add.length) {
     const r = await sb.from(T).insert(add.map((student_id) => ({ assignment_id: id, student_id })));
-    if (r.error) throw friendly(r.error, 'No se pudieron guardar los estudiantes.');
+    if (r.error) throw friendly(r.error, 'Could not save the students.');
   }
   return want;
 }
@@ -406,14 +406,14 @@ export async function setTargets(id: string, studentIds: string[]): Promise<stri
 export async function classStatus(assignmentIds: string[]): Promise<AssignmentStatus[]> {
   if (!assignmentIds.length) return [];
   const { data, error } = await client().from(S).select('*').in('assignment_id', assignmentIds);
-  if (error) throw friendly(error, 'No se pudo cargar el avance de la clase.');
+  if (error) throw friendly(error, 'Could not load the class progress.');
   return (data ?? []).map(normS);
 }
 
 /** Status rows of one student across the teacher's assignments. */
 export async function studentStatus(studentId: string): Promise<AssignmentStatus[]> {
   const { data, error } = await client().from(S).select('*').eq('student_id', studentId);
-  if (error) throw friendly(error, 'No se pudo cargar el avance del estudiante.');
+  if (error) throw friendly(error, 'Could not load the student’s progress.');
   return (data ?? []).map(normS);
 }
 
@@ -437,7 +437,7 @@ export async function submissionItems(ids: string[]): Promise<Record<string, Sub
     .from('portfolio_items')
     .select('id,user_id,title,kind,text_content,file_path,file_name,file_type,created_at')
     .in('id', want);
-  if (error) throw friendly(error, 'No se pudieron cargar las entregas.');
+  if (error) throw friendly(error, 'Could not load the hand-ins.');
   return Object.fromEntries(((data ?? []) as SubmissionItem[]).map((r) => [r.id, r]));
 }
 
@@ -457,7 +457,7 @@ export async function review(
     p_score: r.score != null && Number.isFinite(r.score) ? r.score : null,
     p_excused: r.excused ?? null,
   });
-  if (error) throw friendly(error, 'No se pudo guardar la revisión.');
+  if (error) throw friendly(error, 'Could not save the review.');
   return normS(data);
 }
 
@@ -467,14 +467,14 @@ export async function review(
 export async function listForMe(): Promise<Assignment[]> {
   // RLS: the tasks of every teacher whose class the student is in.
   const { data, error } = await client().from(A).select('*').order('due_at', { ascending: true, nullsFirst: false }).order('created_at', { ascending: false });
-  if (error) throw friendly(error, 'No se pudieron cargar tus tareas.');
+  if (error) throw friendly(error, 'Could not load your tasks.');
   return (data ?? []).map(normA);
 }
 
 export async function myStatus(): Promise<AssignmentStatus[]> {
   const uid = await myId();
   const { data, error } = await client().from(S).select('*').eq('student_id', uid);
-  if (error) throw friendly(error, 'No se pudo cargar el estado de tus tareas.');
+  if (error) throw friendly(error, 'Could not load the status of your tasks.');
   return (data ?? []).map(normS);
 }
 
@@ -495,7 +495,7 @@ export async function markDone(
   if (o.portfolioItemId !== undefined) row.portfolio_item_id = o.portfolioItemId;
   if (o.note !== undefined) row.student_note = o.note?.trim().slice(0, MAX_NOTE) || null;
   const { data, error } = await client().from(S).upsert(row, { onConflict: 'assignment_id,student_id' }).select('*').single();
-  if (error) throw friendly(error, 'No se pudo marcar la tarea.');
+  if (error) throw friendly(error, 'Could not mark the task.');
   return normS(data);
 }
 
@@ -507,7 +507,7 @@ export async function markPending(assignmentId: string): Promise<AssignmentStatu
     .upsert({ assignment_id: assignmentId, student_id: uid, status: 'pending' }, { onConflict: 'assignment_id,student_id' })
     .select('*')
     .single();
-  if (error) throw friendly(error, 'No se pudo deshacer.');
+  if (error) throw friendly(error, 'Could not undo.');
   return normS(data);
 }
 
@@ -517,7 +517,7 @@ export async function saveDetected(updates: StatusUpdate[]): Promise<AssignmentS
   const uid = await myId();
   const rows = updates.map((u) => ({ ...u, student_id: uid }));
   const { data, error } = await client().from(S).upsert(rows, { onConflict: 'assignment_id,student_id' }).select('*');
-  if (error) throw friendly(error, 'No se pudo guardar el avance de tus tareas.');
+  if (error) throw friendly(error, 'Could not save the progress of your tasks.');
   return (data ?? []).map(normS);
 }
 

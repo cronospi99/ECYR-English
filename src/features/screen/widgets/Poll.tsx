@@ -12,13 +12,13 @@ interface D {
 }
 
 const PRESETS: { label: string; opts: string[] }[] = [
-  { label: 'Sí / No', opts: ['Sí 👍', 'No 👎'] },
-  { label: 'Sí / No / Quizás', opts: ['Sí 👍', 'No 👎', 'Quizás 🤔'] },
+  { label: 'Yes / No', opts: ['Yes 👍', 'No 👎'] },
+  { label: 'Yes / No / Maybe', opts: ['Yes 👍', 'No 👎', 'Maybe 🤔'] },
   { label: 'A B C D', opts: ['A', 'B', 'C', 'D'] },
   { label: '😀 😐 😟', opts: ['😀', '😐', '😟'] },
 ];
 
-export const DEFAULT_POLL: D = { q: '¿Entendieron?', options: PRESETS[1]!.opts.map((label) => ({ label, count: 0 })) };
+export const DEFAULT_POLL: D = { q: 'Did you understand?', options: PRESETS[1]!.opts.map((label) => ({ label, count: 0 })) };
 
 export default function Poll({ data, set, editing, setEditing }: WidgetProps<D>) {
   const q = data.q ?? DEFAULT_POLL.q;
@@ -30,8 +30,8 @@ export default function Poll({ data, set, editing, setEditing }: WidgetProps<D>)
   if (editing)
     return (
       <Panel>
-        <Label>Pregunta</Label>
-        <input className={inputCls} value={q} onChange={(e) => set({ q: e.target.value })} placeholder="Escribe la pregunta" />
+        <Label>Question</Label>
+        <input className={inputCls} value={q} onChange={(e) => set({ q: e.target.value })} placeholder="Type the question" />
         <div className="flex flex-wrap gap-1.5">
           {PRESETS.map((p) => (
             <button key={p.label} type="button" className="bg-fill-2 hover:bg-fill h-8 rounded-full px-3 text-[13px] font-semibold" onClick={() => set({ options: p.opts.map((label) => ({ label, count: 0 })) })}>
@@ -39,12 +39,12 @@ export default function Poll({ data, set, editing, setEditing }: WidgetProps<D>)
             </button>
           ))}
         </div>
-        <Label>Opciones</Label>
+        <Label>Options</Label>
         {options.map((o, i) => (
           <div key={i} className="flex items-center gap-2">
             <span className="h-4 w-4 shrink-0 rounded-full" style={{ background: HEX[i % HEX.length] }} />
-            <input className={inputCls} value={o.label} onChange={(e) => upd(i, { label: e.target.value })} aria-label={`Opción ${i + 1}`} />
-            <button type="button" aria-label="Quitar" disabled={options.length <= 2} onClick={() => set({ options: options.filter((_, j) => j !== i) })} className="text-ink-red grid h-10 w-10 shrink-0 place-items-center disabled:opacity-30">
+            <input className={inputCls} value={o.label} onChange={(e) => upd(i, { label: e.target.value })} aria-label={`Option ${i + 1}`} />
+            <button type="button" aria-label="Remove" disabled={options.length <= 2} onClick={() => set({ options: options.filter((_, j) => j !== i) })} className="text-ink-red grid h-10 w-10 shrink-0 place-items-center disabled:opacity-30">
               <Trash2 size={18} />
             </button>
           </div>
@@ -52,11 +52,11 @@ export default function Poll({ data, set, editing, setEditing }: WidgetProps<D>)
         <div className="flex gap-2">
           {options.length < 6 && (
             <Act color="var(--blue)" onClick={() => set({ options: [...options, { label: String.fromCharCode(65 + options.length), count: 0 }] })}>
-              <Plus size={18} /> Opción
+              <Plus size={18} /> Option
             </Act>
           )}
           <Act solid color="var(--blue)" className="ml-auto" onClick={() => setEditing(false)}>
-            Listo
+            Done
           </Act>
         </div>
       </Panel>
@@ -97,7 +97,7 @@ export default function Poll({ data, set, editing, setEditing }: WidgetProps<D>)
       <div className="flex items-center justify-between">
         <span className="text-label-2 text-[14px] font-semibold">Total: {total}</span>
         <Act color="var(--label)" className="h-9" onClick={() => set({ options: options.map((o) => ({ ...o, count: 0 })) })} disabled={!total}>
-          <RotateCcw size={16} /> Reiniciar
+          <RotateCcw size={16} /> Restart
         </Act>
       </div>
     </div>

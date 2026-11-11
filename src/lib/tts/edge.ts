@@ -100,8 +100,8 @@ export function edgeAvailable(): boolean {
 
 /** Why natural voices are not available, for the settings screen (null when they are). */
 export function edgeIssue(): string | null {
-  if (!supabase) return 'Necesita conexión con el servidor.';
-  if (!useAuth.getState().session) return 'Inicia sesión para usar las voces naturales.';
+  if (!supabase) return 'Needs a connection to the server.';
+  if (!useAuth.getState().session) return 'Sign in to use the natural voices.';
   return null;
 }
 
@@ -314,25 +314,25 @@ export interface TtsDiagnosis {
 }
 
 const FIX: Record<string, string> = {
-  not_configured: 'Falta TTS_SIGNING_SECRET en Vercel, o falta volver a desplegar (Redeploy) después de agregarla. Revisa que esté marcada para Production y Preview.',
-  not_found: 'Este sitio no tiene la función /api/tts desplegada. Revisa que el despliegue venga de la rama con los cambios (main ya actualizado).',
-  signed_out: 'La sesión no es válida para la función: cierra sesión y vuelve a entrar. Si sigue, revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en Vercel.',
-  limit: 'Se alcanzó el límite de audios nuevos de esta hora. Prueba más tarde.',
-  bad_signature: 'La firma no coincide: suele pasar si TTS_SIGNING_SECRET cambió entre dos despliegues. Vuelve a desplegar y recarga la página.',
-  upstream_handshake: 'Microsoft rechazó la conexión desde Vercel por las dos vías (lectura en voz alta de Edge y Azure). Pásale el detalle a quien mantiene la app.',
-  upstream_no_audio: 'Microsoft respondió sin audio para esa voz.',
-  upstream_timeout: 'Microsoft tardó demasiado en responder desde Vercel.',
-  upstream_network: 'Vercel no pudo conectarse con el servicio de voces de Microsoft.',
+  not_configured: 'TTS_SIGNING_SECRET is missing in Vercel, or you need to redeploy after adding it. Check that it is ticked for Production and Preview.',
+  not_found: 'This site doesn’t have the /api/tts function deployed. Check that the deployment comes from the branch with the changes (main already updated).',
+  signed_out: 'The session isn’t valid for the function: sign out and sign in again. If it persists, check VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in Vercel.',
+  limit: 'The limit of new audios for this hour was reached. Try later.',
+  bad_signature: 'The signature doesn’t match: it usually happens if TTS_SIGNING_SECRET changed between two deployments. Redeploy and reload the page.',
+  upstream_handshake: 'Microsoft rejected the connection from Vercel both ways (Edge read-aloud and Azure). Pass the details to whoever maintains the app.',
+  upstream_no_audio: 'Microsoft replied without audio for that voice.',
+  upstream_timeout: 'Microsoft took too long to respond from Vercel.',
+  upstream_network: 'Vercel could not connect to Microsoft’s voice service.',
 };
 
 /** Runs the whole path once (session → signature → audio), bypassing caches and pauses, and says where it fails. */
 export async function diagnoseTts(): Promise<TtsDiagnosis> {
-  if (!supabase) return { ok: false, step: 'config', message: 'La app no tiene Supabase configurado en este despliegue (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY).' };
+  if (!supabase) return { ok: false, step: 'config', message: 'The app doesn’t have Supabase configured in this deployment (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY).' };
   const token = (await supabase.auth.getSession()).data.session?.access_token;
-  if (!token) return { ok: false, step: 'session', code: 'signed_out', message: 'Inicia sesión: solo los usuarios con sesión pueden generar voces naturales.' };
+  if (!token) return { ok: false, step: 'session', code: 'signed_out', message: 'Sign in: only signed-in users can generate natural voices.' };
   const item = { t: `Hello! This is the natural voice test, ${new Date().toISOString().slice(11, 19)}.`, v: 'en-US-AvaMultilingualNeural', r: 0 };
   const explain = async (r: Response | null, step: string): Promise<TtsDiagnosis> => {
-    if (!r) return { ok: false, step, code: 'network', message: 'No hubo respuesta de /api/tts (sin conexión o bloqueado por el navegador).' };
+    if (!r) return { ok: false, step, code: 'network', message: 'There was no response from /api/tts (offline or blocked by the browser).' };
     let code = `http_${r.status}`;
     let server = '';
     let detail = '';
@@ -354,11 +354,11 @@ export async function diagnoseTts(): Promise<TtsDiagnosis> {
   }).catch(() => null);
   if (!signed?.ok) return explain(signed, 'sign');
   const sig = ((await signed.json()) as { sigs?: (string | null)[] }).sigs?.[0];
-  if (!sig) return { ok: false, step: 'sign', code: 'rejected', message: 'La función no firmó el texto de prueba.' };
+  if (!sig) return { ok: false, step: 'sign', code: 'rejected', message: 'The function didn’t sign the test text.' };
   const audio = await fetch(`${ENDPOINT}?${new URLSearchParams({ v: item.v, r: '0', p: '0', t: item.t, s: sig })}`).catch(() => null);
   if (!audio?.ok) return explain(audio, 'audio');
   const blob = await audio.blob();
-  if (blob.size < 128) return { ok: false, step: 'audio', code: 'empty', message: 'Llegó un audio vacío.' };
+  if (blob.size < 128) return { ok: false, step: 'audio', code: 'empty', message: 'An empty audio arrived.' };
   blockedUntil = 0;
   return { ok: true, step: 'play', message: `Funciona: voz natural generada (${Math.round(blob.size / 1024)} KB).`, url: URL.createObjectURL(blob) };
 }

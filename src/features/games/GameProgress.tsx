@@ -9,10 +9,10 @@ import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
 
 const STATUS: Record<SessionStatus, { label: string; color: string; icon: typeof CheckCircle2 }> = {
-  valid: { label: 'Válida', color: 'var(--green)', icon: CheckCircle2 },
-  class: { label: 'En clase', color: 'var(--indigo)', icon: Users },
-  abandoned: { label: 'Abandonada', color: 'var(--orange)', icon: DoorOpen },
-  invalid: { label: 'No válida', color: 'var(--red)', icon: CircleSlash },
+  valid: { label: 'Valid', color: 'var(--green)', icon: CheckCircle2 },
+  class: { label: 'In class', color: 'var(--indigo)', icon: Users },
+  abandoned: { label: 'Abandoned', color: 'var(--orange)', icon: DoorOpen },
+  invalid: { label: 'Invalid', color: 'var(--red)', icon: CircleSlash },
 };
 
 type Defenders = { stars: Record<string, Record<string, number>>; asked: number; correct: number } | null;
@@ -33,10 +33,10 @@ export function GameProgressView({ sessions, defenders, compact = false }: { ses
     <div className="space-y-5">
       <Card className="overflow-hidden">
         <dl className="bg-separator grid grid-cols-2 gap-px sm:grid-cols-4">
-          <Summary label="Partidas válidas" value={String(valid.length)} />
-          <Summary label="XP de juegos" value={String(xp)} />
-          <Summary label="Juegos jugados" value={`${all.filter((g) => g.sessions.length).length}/${slugs.length}`} />
-          <Summary label="Resultados válidos" value={validity != null ? `${validity}%` : '–'} hint="De las partidas individuales" />
+          <Summary label="Valid games" value={String(valid.length)} />
+          <Summary label="Game XP" value={String(xp)} />
+          <Summary label="Games played" value={`${all.filter((g) => g.sessions.length).length}/${slugs.length}`} />
+          <Summary label="Valid results" value={validity != null ? `${validity}%` : '–'} hint="From solo games" />
         </dl>
       </Card>
       <div className={cn('grid gap-4', !compact && 'lg:grid-cols-2')}>
@@ -46,9 +46,7 @@ export function GameProgressView({ sessions, defenders, compact = false }: { ses
       </div>
       <p className="text-label-2 flex items-start gap-2 px-1 text-[13px]">
         <ShieldCheck size={16} className="text-ink-green mt-0.5 shrink-0" />
-        Cada resultado se valida: debe coincidir con las respuestas registradas en vivo, con números posibles y un ritmo realista. Las
-        partidas en clase se guardan sin nota. Star Medic Jeopardy y Phrasal Verb Roulette son dinámicas grupales y no se registran
-        por alumno.
+        Each result is validated: it must match the answers recorded live, with possible numbers and a realistic pace. Class games are saved without a score. Star Medic Jeopardy and Phrasal Verb Roulette are group activities and are not recorded per student.
       </p>
     </div>
   );
@@ -79,34 +77,34 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
         <div className="min-w-0 flex-1">
           <div className="truncate text-[16px] font-semibold">{m?.title ?? g.slug}</div>
           <div className="text-label-2 text-[12px]">
-            {rules.graded ? 'Con puntuación' : 'Participación'} · {g.lastAt ? `última ${relativeTime(g.lastAt)}` : 'sin partidas'}
+            {rules.graded ? 'With a score' : 'Participation'} · {g.lastAt ? `last ${relativeTime(g.lastAt)}` : 'sin partidas'}
           </div>
         </div>
         <Link to={`/play/${g.slug}`} className="text-ink-blue shrink-0 text-[14px] font-semibold">
-          Jugar
+          Play
         </Link>
       </div>
 
       <div className="grid grid-cols-4 gap-2 px-4 pb-3 text-center">
-        <Mini label="Válidas" value={String(g.plays)} />
+        <Mini label="Valid" value={String(g.plays)} />
         {rules.graded ? (
           <>
-            <Mini label="Mejor" value={g.best != null ? `${g.best}%` : '–'} />
+            <Mini label="Best" value={g.best != null ? `${g.best}%` : '–'} />
             <Mini label="Media" value={g.avg != null ? `${g.avg}%` : '–'} />
-            <Mini label="Precisión" value={g.accuracy != null ? `${g.accuracy}%` : '–'} />
+            <Mini label="Accuracy" value={g.accuracy != null ? `${g.accuracy}%` : '–'} />
           </>
         ) : (
           <>
-            <Mini label="Completadas" value={String(g.wins)} />
-            <Mini label={g.slug === 'earth-modals' ? 'Países' : 'Dilemas'} value={String(g.answered)} />
-            <Mini label="En clase" value={String(g.classSessions)} />
+            <Mini label="Completed" value={String(g.wins)} />
+            <Mini label={g.slug === 'earth-modals' ? 'Countries' : 'Dilemmas'} value={String(g.answered)} />
+            <Mini label="In class" value={String(g.classSessions)} />
           </>
         )}
       </div>
 
       {g.trend.length > 1 && (
         <div className="px-4 pb-3">
-          <div className="flex h-12 items-end gap-1" role="img" aria-label={`Últimos puntajes: ${g.trend.join(', ')}`}>
+          <div className="flex h-12 items-end gap-1" role="img" aria-label={`Latest scores: ${g.trend.join(', ')}`}>
             {g.trend.map((v, i) => (
               <div key={i} className="flex-1 rounded-t-[4px]" style={{ height: `${Math.max(6, v)}%`, background: m?.accent ?? 'var(--blue)', opacity: 0.35 + (i / g.trend.length) * 0.65 }} />
             ))}
@@ -143,7 +141,7 @@ function GameCard({ g, defenders }: { g: ReturnType<typeof statsFor>; defenders:
                 <span className="text-label-2 w-20 shrink-0">{relativeTime(s.endedAt)}</span>
                 {s.level && <LevelChip level={s.level} className="h-5 px-2 text-[10px]" />}
                 <span className="min-w-0 flex-1 truncate">
-                  {s.unit ? `Unidad ${s.unit} · ` : ''}
+                  {s.unit ? `Unit ${s.unit} · ` : ''}
                   {s.meta?.kind === 'participation' ? `${s.asked} completados` : `${s.correct}/${s.asked}`}
                   {s.stars != null && ` · ${'★'.repeat(s.stars)}`}
                   {s.reasons?.length ? ` · ${s.reasons[0]}` : ''}
@@ -173,7 +171,7 @@ function Mini({ label, value }: { label: string; value: string }) {
 function DefendersStars({ stars }: { stars: Record<string, Record<string, number>> }) {
   return (
     <div className="px-4 pb-3">
-      <div className="text-label-2 mb-1.5 text-[12px] font-semibold">Estrellas por unidad</div>
+      <div className="text-label-2 mb-1.5 text-[12px] font-semibold">Stars per unit</div>
       <div className="space-y-1.5">
         {Object.entries(stars)
           .sort(([a], [b]) => a.localeCompare(b))
@@ -184,7 +182,7 @@ function DefendersStars({ stars }: { stars: Record<string, Record<string, number
                 {Object.entries(units)
                   .sort(([a], [b]) => Number(a) - Number(b))
                   .map(([u, n]) => (
-                    <span key={u} className="bg-fill-2 inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11px] tabular-nums" title={`Unidad ${u}: ${n} estrellas`}>
+                    <span key={u} className="bg-fill-2 inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-[11px] tabular-nums" title={`Unit ${u}: ${n} stars`}>
                       {u}
                       <Star size={10} className={n ? 'text-ios-yellow fill-current' : 'text-label-3'} />
                       {n}

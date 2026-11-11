@@ -20,7 +20,7 @@ export default function ImageW({ data, set }: WidgetProps<D>) {
     try {
       set({ src: await fileToDataUrl(f, 1400, 0.8) });
     } catch {
-      setErr('No se pudo leer la imagen.');
+      setErr('The image could not be read.');
     }
   };
 
@@ -43,18 +43,18 @@ export default function ImageW({ data, set }: WidgetProps<D>) {
         <>
           <img src={data.src} alt="" className="h-full w-full" style={{ objectFit: data.cover ? 'cover' : 'contain' }} draggable={false} />
           <div className="absolute right-2 bottom-2 flex gap-1.5 opacity-70 transition-opacity hover:opacity-100">
-            <Act solid color="rgb(0 0 0 / .55)" className="h-9 min-w-9 px-2.5" onClick={() => set({ cover: !data.cover })} aria-label={data.cover ? 'Ajustar' : 'Llenar'}>
+            <Act solid color="rgb(0 0 0 / .55)" className="h-9 min-w-9 px-2.5" onClick={() => set({ cover: !data.cover })} aria-label={data.cover ? 'Fit' : 'Fill'}>
               {data.cover ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
             </Act>
-            <Act solid color="rgb(0 0 0 / .55)" className="h-9 min-w-9 px-2.5" onClick={() => input.current?.click()} aria-label="Cambiar imagen">
+            <Act solid color="rgb(0 0 0 / .55)" className="h-9 min-w-9 px-2.5" onClick={() => input.current?.click()} aria-label="Change image">
               <Upload size={16} />
             </Act>
           </div>
         </>
       ) : (
-        <Empty icon={<ImagePlus size={44} className="text-ink-pink" />} text={err ?? 'Sube o arrastra una imagen'}>
+        <Empty icon={<ImagePlus size={44} className="text-ink-pink" />} text={err ?? 'Upload or drag an image'}>
           <Act solid color="var(--pink)" onClick={() => input.current?.click()}>
-            <Upload size={18} /> Subir imagen
+            <Upload size={18} /> Upload image
           </Act>
         </Empty>
       )}

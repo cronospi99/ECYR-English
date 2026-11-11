@@ -103,10 +103,10 @@ export function WardrobeBlock({ b }: { b: CourseBlock }) {
       <div className="mt-1 flex flex-wrap items-center justify-between gap-2">
         <label className="flex items-center gap-2 text-[14px]">
           <input type="checkbox" checked={onlyDiff} onChange={(e) => setOnlyDiff(e.target.checked)} className="accent-[var(--orange)] h-4 w-4" />
-          Solo las que cambian US ≠ UK ({diffCount})
+          Only the ones that change US ≠ UK ({diffCount})
         </label>
         <a href={`/visuals/${meta.visual}.webp`} target="_blank" rel="noreferrer" className="text-ink-blue inline-flex items-center gap-1 text-[14px] font-medium hover:opacity-70">
-          Infografía completa <ExternalLink size={14} />
+          Full infographic <ExternalLink size={14} />
         </a>
       </div>
 
@@ -128,12 +128,12 @@ export function WardrobeBlock({ b }: { b: CourseBlock }) {
             <button type="button" onClick={() => speak(sel.us, { accent: 'en-US', rate: 0.9 })} className="mt-1 flex items-center gap-2 text-left">
               <span className="text-[13px]" aria-hidden>🇺🇸</span>
               <span className="text-[20px] leading-tight font-bold">{cap(sel.us)}</span>
-              <Volume2 size={16} className="text-ink-blue shrink-0" aria-label="Escuchar en inglés americano" />
+              <Volume2 size={16} className="text-ink-blue shrink-0" aria-label="Listen in American English" />
             </button>
             <button type="button" onClick={() => speak(sel.uk ?? sel.us, { accent: 'en-GB', rate: 0.9 })} className="mt-1 flex items-center gap-2 text-left">
               <span className="text-[13px]" aria-hidden>🇬🇧</span>
               <span className={cn('text-[18px] leading-tight font-semibold', sel.uk && 'text-ink-orange')}>{cap(sel.uk ?? sel.us)}</span>
-              <Volume2 size={16} className="text-ink-blue shrink-0" aria-label="Escuchar en inglés británico" />
+              <Volume2 size={16} className="text-ink-blue shrink-0" aria-label="Listen in British English" />
             </button>
             <div className="text-label-2 mt-1 text-[14px]">{sel.es}</div>
             {sel.cat !== 'outfit' && (
@@ -204,9 +204,9 @@ function Finish({ score, total, onAgain }: { score: number; total: number; onAga
       <div className="text-[44px] font-extrabold tabular-nums">
         {score}/{total}
       </div>
-      <Done text={score === total ? '¡Perfecto!' : 'Buen trabajo. Juega otra vez con prendas nuevas.'} />
+      <Done text={score === total ? 'Perfect!' : 'Buen trabajo. Juega otra vez con prendas nuevas.'} />
       <Button className="mt-4" variant="tinted" onClick={onAgain}>
-        <RotateCcw size={16} /> Jugar otra vez
+        <RotateCcw size={16} /> Play again
       </Button>
     </div>
   );
@@ -264,13 +264,13 @@ function ListenGame({ b, pool, rounds, onResult }: { b: CourseBlock; pool: Cloth
     <Section b={b}>
       <div className="text-label-2 flex justify-between text-[13px]">
         <span>
-          Ronda {k + 1} de {list.length}
+          Round {k + 1} de {list.length}
         </span>
-        <span className="tabular-nums">Aciertos: {score}</span>
+        <span className="tabular-nums">Correct: {score}</span>
       </div>
       <div className="mt-3 flex items-center justify-center gap-3">
         <Button size="lg" onClick={() => say()}>
-          <Volume2 size={20} /> Escuchar
+          <Volume2 size={20} /> Listen
         </Button>
         <span className="text-label-2 text-[13px]">{r.uk ? '🇬🇧 British English' : '🇺🇸 American English'}</span>
       </div>
@@ -286,7 +286,7 @@ function ListenGame({ b, pool, rounds, onResult }: { b: CourseBlock; pool: Cloth
                 setPicked(o.id);
                 if (right) setScore((s) => s + 1);
               }}
-              aria-label={picked ? o.us : `Opción ${r.options.indexOf(o) + 1}`}
+              aria-label={picked ? o.us : `Option ${r.options.indexOf(o) + 1}`}
               className={cn(
                 'bg-fill-2 aspect-square rounded-[16px] p-1.5 transition-all',
                 picked && right && 'ring-ios-green ring-4',
@@ -302,12 +302,12 @@ function ListenGame({ b, pool, rounds, onResult }: { b: CourseBlock; pool: Cloth
       {picked && (
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className="text-[14px]">
-            {picked === r.target.id ? '¡Correcto! ' : 'Era: '}
+            {picked === r.target.id ? 'Correct! ' : 'Era: '}
             <b>{r.uk ? r.target.uk : r.target.us}</b>
             {r.target.uk && <span className="text-label-2"> · US {r.target.us} / UK {r.target.uk}</span>} · {r.target.es}
           </p>
           <Button size="sm" onClick={next}>
-            {k + 1 < list.length ? 'Siguiente' : 'Ver resultado'}
+            {k + 1 < list.length ? 'Next' : 'See result'}
           </Button>
         </div>
       )}
@@ -360,7 +360,7 @@ function MatchGame({ b, pool, size, onResult }: { b: CourseBlock; pool: Clothing
             type="button"
             disabled={done.has(it.id)}
             onClick={() => setSel(it.id)}
-            aria-label={done.has(it.id) ? it.us : 'Imagen de una prenda'}
+            aria-label={done.has(it.id) ? it.us : 'Picture of a garment'}
             className={cn('bg-fill-2 aspect-[4/5] rounded-[14px] p-1 transition-all', sel === it.id && 'ring-ios-blue ring-4', done.has(it.id) && 'opacity-40')}
           >
             <Tile it={it} />
@@ -388,9 +388,9 @@ function MatchGame({ b, pool, size, onResult }: { b: CourseBlock; pool: Clothing
       {!sel && done.size < items.length && <p className="text-label-2 mt-3 text-[13px]">Primero toca una imagen.</p>}
       {done.size === items.length && (
         <>
-          <Done text={`¡Completado! ${mistakes} ${mistakes === 1 ? 'error' : 'errores'}.`} />
+          <Done text={`Completed! ${mistakes} ${mistakes === 1 ? 'mistake' : 'mistakes'}.`} />
           <Button className="mt-3" size="sm" variant="tinted" onClick={restart}>
-            <RotateCcw size={14} /> Otra ronda
+            <RotateCcw size={14} /> Another round
           </Button>
         </>
       )}
@@ -471,7 +471,7 @@ function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: Cl
         <span>
           Persona {k + 1} de {game.length}
         </span>
-        <span className="tabular-nums">Aciertos: {score}</span>
+        <span className="tabular-nums">Correct: {score}</span>
       </div>
       <div className="mt-3 flex items-center gap-3">
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-[34px]" style={{ background: tint('var(--purple)', 14) }} aria-hidden>
@@ -479,7 +479,7 @@ function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: Cl
         </span>
         <button type="button" onClick={() => speak(q)} className="flex items-center gap-2 text-left">
           <span className="text-title-3">{q}</span>
-          <Volume2 size={18} className="text-ink-blue shrink-0" aria-label="Escuchar la pregunta" />
+          <Volume2 size={18} className="text-ink-blue shrink-0" aria-label="Listen to the question" />
         </button>
       </div>
       <div className="mt-3 grid max-w-md grid-cols-3 gap-2">
@@ -515,10 +515,10 @@ function WearingGame({ b, items, rounds, onResult }: { b: CourseBlock; items: Cl
       {picked && (
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <p className="text-label-2 text-[14px]">
-            {r.p.pro === 'she' ? 'She' : 'He'} is wearing… = {r.p.pro === 'she' ? 'Ella' : 'Él'} lleva puesto… Plurales sin a / an.
+            {r.p.pro === 'she' ? 'She' : 'He'} is wearing… = {r.p.pro === 'she' ? 'She' : 'He'} lleva puesto… Plurales sin a / an.
           </p>
           <Button size="sm" onClick={next}>
-            {k + 1 < game.length ? 'Siguiente' : 'Ver resultado'}
+            {k + 1 < game.length ? 'Next' : 'See result'}
           </Button>
         </div>
       )}

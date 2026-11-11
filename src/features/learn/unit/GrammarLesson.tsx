@@ -73,7 +73,7 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
   return (
     <div>
       {points.length > 1 && (
-        <div role="tablist" aria-label="Puntos de gramática" className="mb-4 grid gap-2.5 sm:grid-cols-2">
+        <div role="tablist" aria-label="Grammar points" className="mb-4 grid gap-2.5 sm:grid-cols-2">
           {points.map((p, k) => {
             const on = k === i;
             return (
@@ -194,14 +194,14 @@ export function GrammarLesson({
   if (explainer || g.rule || formN)
     steps.push({
       key: 'understand',
-      title: 'Entiende',
-      sub: explainer ? 'La idea, la fórmula y cuándo se usa' : 'La regla y la fórmula',
+      title: 'Understand',
+      sub: explainer ? 'The idea, the formula and when it is used' : 'The rule and the formula',
       icon: Lightbulb,
       body: explainer ? (
         <>
           <ExplainerCard e={explainer} color={color} />
           {formN > 0 && (
-            <Disclosure summary="Todas las estructuras" icon={Sigma} color={color} meta={`${formN} ${formN === 1 ? 'fórmula' : 'fórmulas'} del libro, con colores`}>
+            <Disclosure summary="All the structures" icon={Sigma} color={color} meta={`${formN} ${formN === 1 ? 'formula' : 'formulas'} from the book, in colour`}>
               <FormulaBlock form={g.form!} spec={spec} color={color} bare />
             </Disclosure>
           )}
@@ -220,17 +220,17 @@ export function GrammarLesson({
   if (g.examples?.length || g.more?.length || figures.length || aids?.length)
     steps.push({
       key: 'see',
-      title: 'Míralo',
-      sub: 'Ejemplos, imágenes y esquemas',
+      title: 'See it',
+      sub: 'Examples, pictures and diagrams',
       icon: Eye,
       body: (
         <>
           <Examples g={g} spec={spec} color={color} />
-          <VisualFigure items={figures} title="La gramática en imágenes" color={color} />
+          <VisualFigure items={figures} title="Grammar in pictures" color={color} />
           {aids && aids.length > 0 && (
             <section>
               <Kicker icon={Wand2} color={color}>
-                En esquemas
+                In diagrams
               </Kicker>
               <Aids aids={aids} color={color} />
             </section>
@@ -241,15 +241,15 @@ export function GrammarLesson({
   if (g.chart || g.notes?.length || g.watch)
     steps.push({
       key: 'remember',
-      title: 'Recuerda',
-      sub: 'Tabla, claves y el error típico',
+      title: 'Remember',
+      sub: 'Table, keys and the typical mistake',
       icon: Table2,
       body: (
         <>
           {g.chart && (
             <section>
               <Kicker icon={Table2} color={color}>
-                Tabla
+                Table
               </Kicker>
               <ColorTable chart={g.chart} color={color} spec={spec} />
             </section>
@@ -262,8 +262,8 @@ export function GrammarLesson({
   if (hasCheck || hasUse)
     steps.push({
       key: 'practice',
-      title: 'Practica',
-      sub: 'Ponte a prueba y úsalo en contexto',
+      title: 'Practise',
+      sub: 'Test yourself and use it in context',
       icon: Target,
       body: (
         <>
@@ -279,13 +279,12 @@ export function GrammarLesson({
       {/* hero */}
       <header className="relative px-5 pt-5 pb-4 sm:px-6" style={{ background: `linear-gradient(160deg, ${tint(color, 18)}, transparent 80%)` }}>
         <div className="text-[12px] font-bold tracking-[0.08em] uppercase" style={{ color: ink(color) }}>
-          Gramática · {index + 1} de {total}
-        </div>
+          Grammar · {index + 1} of {total} </div>
         <h3 className="text-title-2 mt-1 text-balance">{g.name}</h3>
         {summary && (
           <div className="bg-card/80 mt-3 flex items-start gap-2 rounded-[14px] py-2 pr-1.5 pl-3 shadow-[0_1px_2px_rgb(0_0_0/0.05)]">
             <span className="min-w-0 flex-1">
-              <span className="text-label-2 block text-[11px] font-bold tracking-[0.06em] uppercase">En una frase</span>
+              <span className="text-label-2 block text-[11px] font-bold tracking-[0.06em] uppercase">In one sentence</span>
               <span className="text-[16px] font-medium text-pretty">
                 <Hl text={summary} spec={spec} />
               </span>
@@ -304,10 +303,10 @@ export function GrammarLesson({
           {unitKey && <FoundationExtras unitKey={unitKey} pointIndex={index} pointName={g.name} color={color} />}
           {(g.deep || deepRule) && (
             <Disclosure
-              summary="Explicación a fondo"
+              summary="In-depth explanation"
               icon={BookOpen}
               color={color}
-              meta={`Para profundizar · ${Math.max(1, Math.round(`${deepRule ? g.rule : ''} ${g.deep ?? ''}`.split(/\s+/).length / 200))} min de lectura`}
+              meta={`To go deeper · ${Math.max(1, Math.round(`${deepRule ? g.rule : ''} ${g.deep ?? ''}`.split(/\s+/).length / 200))} min read`}
             >
               <div className="space-y-3 text-[15px] leading-relaxed">
                 {deepRule && (
@@ -333,7 +332,7 @@ export function GrammarLesson({
 /** "1 Entiende → 2 Míralo → …": jumps to each step of the lesson. */
 function StepNav({ steps, base, color }: { steps: StepDef[]; base: string; color: string }) {
   return (
-    <nav aria-label="Pasos de la lección" className="mt-4">
+    <nav aria-label="Lesson steps" className="mt-4">
       <ol className="grid gap-1.5" style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
         {steps.map((st, k) => (
           <li key={st.key} className="relative">
@@ -371,7 +370,7 @@ function Step({ id, n, step, color, last }: { id: string; n: number; step: StepD
         <div className="min-w-0">
           <h4 id={`${id}-h`} className="text-[19px] leading-tight font-bold">
             <span className="mr-1.5 text-[12px] font-bold tracking-[0.08em] uppercase" style={{ color: ink(color) }}>
-              Paso {n} ·
+              Step {n} ·
             </span>
             {step.title}
           </h4>
@@ -392,7 +391,7 @@ function NextPoint({ next, onNext, color }: { next: GrammarPoint; onNext: () => 
       style={{ background: tint(color, 12) }}
     >
       <span className="min-w-0 flex-1">
-        <span className="text-label-2 block text-[12px] font-bold tracking-wide uppercase">Siguiente punto</span>
+        <span className="text-label-2 block text-[12px] font-bold tracking-wide uppercase">Next point</span>
         <span className="block truncate text-[16px] font-semibold">{next.name}</span>
       </span>
       <ChevronRight size={20} style={{ color: ink(color) }} aria-hidden />
@@ -410,7 +409,7 @@ function Examples({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: s
   return (
     <section>
       <Kicker icon={Quote} color={color} action={<span className="text-label-2 text-[13px] tabular-nums">{all.length}</span>}>
-        Ejemplos
+        Examples
       </Kicker>
       <ul className="grid gap-2 sm:grid-cols-2">
         {shown.map((e, k) => (
@@ -430,7 +429,7 @@ function Examples({ g, spec, color }: { g: GrammarPoint; spec: KeySpec; color: s
       </ul>
       {all.length > n && (
         <button type="button" onClick={() => setN(all.length)} className="text-ink-blue mt-2.5 inline-flex items-center gap-1 text-[15px] font-semibold">
-          <Plus size={16} aria-hidden /> Ver {all.length - n} más
+          <Plus size={16} aria-hidden /> See {all.length - n} more
         </button>
       )}
     </section>
@@ -453,7 +452,7 @@ function Notes({ notes, color }: { notes: string[]; color: string }) {
   return (
     <section>
       <Kicker icon={Lightbulb} color={color}>
-        Claves
+        Keys
       </Kicker>
       <ul className="space-y-2">
         {notes.map((n) => (
@@ -477,7 +476,7 @@ function Note({ note }: { note: string }) {
         <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} className="flex w-full items-start gap-3 px-3.5 py-3 text-left">
           <NoteIcon icon={Icon} color={color} />
           <span className="min-w-0 flex-1 text-[15px] leading-snug font-medium text-pretty">{head2}</span>
-          <span className="text-ink-blue mt-0.5 shrink-0 text-[13px] font-semibold">{open ? 'Menos' : 'Detalles'}</span>
+          <span className="text-ink-blue mt-0.5 shrink-0 text-[13px] font-semibold">{open ? 'Less' : 'Details'}</span>
         </button>
       ) : (
         <div className="flex items-start gap-3 px-3.5 py-3">
@@ -512,7 +511,7 @@ function PairChip({ text, ok = false }: { text: string; ok?: boolean }) {
   const c = ok ? 'var(--green)' : 'var(--red)';
   return (
     <span className="inline-flex items-center gap-1 rounded-full py-0.5 pr-2.5 pl-1.5 text-[14px] font-semibold" style={{ background: tint(c, 13), color: ink(c) }}>
-      {ok ? <Check size={14} aria-label="Correcto" /> : <X size={14} aria-label="Incorrecto" />}
+      {ok ? <Check size={14} aria-label="Correct" /> : <X size={14} aria-label="Incorrect" />}
       <span className={ok ? undefined : 'line-through decoration-[1.5px]'}>{text}</span>
     </span>
   );
@@ -527,7 +526,7 @@ function Watch({ text, compact = false }: { text: string; compact?: boolean }) {
   return (
     <section>
       <Kicker icon={AlertTriangle} color={orange}>
-        Cuidado
+        Careful
       </Kicker>
       {pair && pair.wrong ? (
         <div className="overflow-hidden rounded-[16px]" style={{ boxShadow: `inset 0 0 0 1px ${tint(orange, 30)}` }}>
@@ -556,7 +555,7 @@ function WrongRight({ text, wrong = false }: { text: string; wrong?: boolean }) 
   return (
     <div className="flex items-start gap-2.5 px-4 py-3" style={{ background: tint(c, 9) }}>
       <span className="mt-px inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white" style={{ background: deep(c) }}>
-        {wrong ? <X size={14} strokeWidth={3} aria-label="Incorrecto" /> : <Check size={14} strokeWidth={3} aria-label="Correcto" />}
+        {wrong ? <X size={14} strokeWidth={3} aria-label="Incorrect" /> : <Check size={14} strokeWidth={3} aria-label="Correct" />}
       </span>
       <span className={cn('text-[16px] font-semibold text-pretty', wrong && 'line-through decoration-2')} style={{ color: ink(c), textDecorationColor: tint(c, 60) }}>
         {text}
@@ -572,7 +571,7 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
   return (
     <section>
       <Kicker icon={Eye} color="var(--purple)" action={<span className="text-label-2 text-[13px] tabular-nums">{open.size}/{fixes.length}</span>}>
-        Ponte a prueba: ¿qué está mal?
+        Test yourself: what’s wrong?
       </Kicker>
       <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {fixes.map((f, k) => {
@@ -587,19 +586,19 @@ function FixCheck({ fixes }: { fixes: NonNullable<GrammarPoint['fix']> }) {
                 style={on ? { background: tint('var(--green)', 9) } : undefined}
               >
                 <span className={cn('flex items-start gap-2 text-[15px]', on && 'text-label-2 line-through decoration-[var(--red)]')}>
-                  <X size={16} className="text-ink-red mt-0.5 shrink-0" aria-label="Incorrecto" />
+                  <X size={16} className="text-ink-red mt-0.5 shrink-0" aria-label="Incorrect" />
                   {f.wrong}
                 </span>
                 {on ? (
                   <motion.span initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-2 block">
                     <span className="flex items-start gap-2 text-[15px] font-semibold" style={{ color: ink('var(--green)') }}>
-                      <Check size={16} className="mt-0.5 shrink-0" aria-label="Correcto" />
+                      <Check size={16} className="mt-0.5 shrink-0" aria-label="Correct" />
                       {f.right}
                     </span>
                     <span className="text-label-2 mt-1 block pl-6 text-[13px] leading-snug">{f.why}</span>
                   </motion.span>
                 ) : (
-                  <span className="text-ink-blue mt-2 pl-6 text-[13px] font-semibold">Toca para corregir</span>
+                  <span className="text-ink-blue mt-2 pl-6 text-[13px] font-semibold">Tap to correct</span>
                 )}
               </button>
             </li>
@@ -626,7 +625,7 @@ function BlankCheck({ items }: { items: Seg[][] }) {
   return (
     <section>
       <Kicker icon={Eye} color="var(--purple)" action={<span className="text-label-2 text-[13px] tabular-nums">{open.size}/{items.length}</span>}>
-        Ponte a prueba: ¿qué palabra falta?
+        Test yourself: which word is missing?
       </Kicker>
       <ul className="space-y-2">
         {items.map((segs, k) => {
@@ -637,7 +636,7 @@ function BlankCheck({ items }: { items: Seg[][] }) {
               <button
                 type="button"
                 aria-expanded={on}
-                aria-label={on ? undefined : 'Frase con huecos. Toca para ver la respuesta'}
+                aria-label={on ? undefined : 'Sentence with gaps. Tap to see the answer'}
                 onClick={() => setOpen((s) => new Set([...s, k]))}
                 className="bg-fill-2 w-full rounded-[14px] px-3.5 py-3 text-left text-[16px] leading-relaxed"
               >

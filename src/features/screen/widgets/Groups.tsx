@@ -86,8 +86,8 @@ function AddName({ pool, color, onAdd }: { pool: string[]; color: string; onAdd:
               (e.target as HTMLInputElement).blur();
             }
           }}
-          placeholder="Buscar y agregar…"
-          aria-label="Buscar estudiante para agregar"
+          placeholder="Search and add…"
+          aria-label="Search a student to add"
           className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none"
         />
       </label>
@@ -146,19 +146,19 @@ function ManualGroups({ data, set }: WidgetProps<D>) {
           value="manual"
           onChange={(v) => set({ mode: v as 'manual' | 'random' })}
           options={[
-            { value: 'manual', label: 'A mano' },
-            { value: 'random', label: 'Al azar' },
+            { value: 'manual', label: 'Manual' },
+            { value: 'random', label: 'Random' },
           ]}
         />
         <Stepper value={groups.length} min={1} max={12} label="grupos" onChange={resize} />
-        <Act color="var(--red)" onClick={() => save(groups.map(() => []))} disabled={!placed.size} aria-label="Vaciar grupos">
-          <Eraser size={17} /> Vaciar
+        <Act color="var(--red)" onClick={() => save(groups.map(() => []))} disabled={!placed.size} aria-label="Clear groups">
+          <Eraser size={17} /> Clear
         </Act>
       </div>
       <div className="bg-fill-2 text-label-2 mx-3 mb-2 flex items-center gap-2 rounded-full px-3 py-1.5 text-[13px] font-medium">
         <Hand size={14} className="shrink-0" />
         <span className="min-w-0 flex-1 truncate">
-          {placed.size} en grupos{names.length ? ` · ${pool.length} sin grupo` : ''} · busca y agrega, arrastra para mover
+          {placed.size} in groups{names.length ? ` · ${pool.length} without a group` : ''} · search and add, drag to move
         </span>
       </div>
       <div className="min-h-0 flex-1 overflow-auto px-3 pb-3">
@@ -178,7 +178,7 @@ function ManualGroups({ data, set }: WidgetProps<D>) {
                 }}
               >
                 <div className="flex items-center justify-between rounded-t-[16px] px-3 py-1.5 text-[15px] font-bold text-white" style={{ background: c }}>
-                  <span>Grupo {i + 1}</span>
+                  <span>Group {i + 1}</span>
                   <span className="opacity-80">{g.length}</span>
                 </div>
                 <ul className="px-3 pt-2 pb-1 text-[17px] leading-snug font-semibold">
@@ -193,12 +193,12 @@ function ManualGroups({ data, set }: WidgetProps<D>) {
                       className="group/n -mx-1.5 flex cursor-grab items-center gap-1 rounded-[8px] px-1.5 hover:bg-[color-mix(in_srgb,var(--label)_6%,transparent)]"
                     >
                       <span className="min-w-0 flex-1 truncate">{x}</span>
-                      <button type="button" aria-label={`Quitar a ${x}`} title="Quitar del grupo" onClick={() => remove(x)} className="text-label-3 hover:text-ink-red shrink-0 p-0.5">
+                      <button type="button" aria-label={`Quitar a ${x}`} title="Remove from group" onClick={() => remove(x)} className="text-label-3 hover:text-ink-red shrink-0 p-0.5">
                         <X size={15} />
                       </button>
                     </li>
                   ))}
-                  {!g.length && <li className="text-label-3 py-1 text-[14px] font-medium">Vacío</li>}
+                  {!g.length && <li className="text-label-3 py-1 text-[14px] font-medium">Empty</li>}
                 </ul>
                 <AddName pool={pool} color={c} onAdd={(name) => addTo(i, name)} />
               </div>
@@ -238,17 +238,17 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
   if (editing)
     return (
       <Panel>
-        <Label>Nombres</Label>
+        <Label>Names</Label>
         <Pills
           value={src}
           onChange={(v) => set({ source: v, groups: null })}
           options={[
-            { value: 'class', label: `Mi clase (${loading ? '…' : rosterCount})` },
-            { value: 'custom', label: 'Lista propia' },
+            { value: 'class', label: `My class (${loading ? '…' : rosterCount})` },
+            { value: 'custom', label: 'Own list' },
           ]}
         />
-        {src === 'custom' && <textarea className={cn(inputCls, 'min-h-28 resize-none')} placeholder={'Un nombre por línea'} value={data.custom ?? ''} onChange={(e) => set({ custom: e.target.value, groups: null })} />}
-        {manual && <p className="text-label-2 text-[14px]">Estos nombres aparecen al buscar en cada grupo. También puedes escribir un nombre que no esté en la lista.</p>}
+        {src === 'custom' && <textarea className={cn(inputCls, 'min-h-28 resize-none')} placeholder={'One name per line'} value={data.custom ?? ''} onChange={(e) => set({ custom: e.target.value, groups: null })} />}
+        {manual && <p className="text-label-2 text-[14px]">These names appear when searching in each group. You can also type a name that isn’t in the list.</p>}
         {!manual && names.length > 0 && (
           <>
             <div className="flex items-center justify-between gap-2">
@@ -270,10 +270,10 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
                     className="bg-fill-2 h-9 rounded-full px-3 text-[14px] font-semibold outline-none"
                     style={pins[x] != null && pins[x]! < k ? { background: HEX[pins[x]! % HEX.length], color: '#fff' } : undefined}
                   >
-                    <option value="">Al azar</option>
+                    <option value="">Random</option>
                     {Array.from({ length: k }, (_, i) => (
                       <option key={i} value={i}>
-                        Grupo {i + 1}
+                        Group {i + 1}
                       </option>
                     ))}
                   </select>
@@ -290,7 +290,7 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
             setEditing(false);
           }}
         >
-          Listo
+          Done
         </Act>
       </Panel>
     );
@@ -304,21 +304,21 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
           value="random"
           onChange={(v) => set({ mode: v as 'manual' | 'random' })}
           options={[
-            { value: 'manual', label: 'A mano' },
-            { value: 'random', label: 'Al azar' },
+            { value: 'manual', label: 'Manual' },
+            { value: 'random', label: 'Random' },
           ]}
         />
         <Pills
           value={by}
           onChange={(v) => make(v, v === 'count' ? 4 : 3)}
           options={[
-            { value: 'count', label: 'Nº grupos' },
-            { value: 'size', label: 'Por grupo' },
+            { value: 'count', label: 'No. of groups' },
+            { value: 'size', label: 'Per group' },
           ]}
         />
         <Stepper value={n} min={1} max={by === 'count' ? 12 : 20} onChange={(k) => make(by, k)} />
-        <Act solid color="var(--green)" onClick={() => make()} disabled={!names.length} aria-label="Mezclar">
-          <Shuffle size={18} /> Mezclar
+        <Act solid color="var(--green)" onClick={() => make()} disabled={!names.length} aria-label="Shuffle">
+          <Shuffle size={18} /> Shuffle
         </Act>
       </div>
       {groups?.length ? (
@@ -326,30 +326,29 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
           {picked ? (
             <>
               <span className="min-w-0 flex-1 truncate">
-                Toca un grupo para mover a <b>{picked}</b>
+                Tap a group to move to <b>{picked}</b>
               </span>
-              <button type="button" aria-label="Cancelar" onClick={() => setPicked(null)}>
+              <button type="button" aria-label="Cancel" onClick={() => setPicked(null)}>
                 <X size={16} />
               </button>
             </>
           ) : (
             <span className="min-w-0 flex-1 truncate">
-              Toca o arrastra un nombre para cambiarlo de grupo{pinned ? ` · 📌 ${pinned} fijados (no se mezclan)` : ''}
-            </span>
+              Tap or drag a name to change its group{pinned ? ` · 📌 ${pinned} pinned (not shuffled)` : ''} </span>
           )}
         </div>
       ) : null}
       <div className="min-h-0 flex-1 overflow-auto px-3 pb-3">
         {!names.length ? (
-          <Empty icon={<Users size={40} />} text={src === 'class' ? (loading ? 'Cargando tu clase…' : 'Tu clase no tiene estudiantes. Usa una lista propia.') : 'Escribe los nombres.'}>
+          <Empty icon={<Users size={40} />} text={src === 'class' ? (loading ? 'Loading your class…' : 'Your class has no students. Use your own list.') : 'Type the names.'}>
             <Act color="var(--blue)" onClick={() => setEditing(true)}>
-              Editar nombres
+              Edit names
             </Act>
           </Empty>
         ) : !groups?.length ? (
           <Empty icon={<Users size={40} />} text={`${names.length} nombres listos`}>
             <Act solid color="var(--green)" onClick={() => make()}>
-              <Shuffle size={18} /> Hacer grupos
+              <Shuffle size={18} /> Make groups
             </Act>
           </Empty>
         ) : (
@@ -370,7 +369,7 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
                   }}
                 >
                   <div className="flex items-center justify-between px-3 py-1.5 text-[15px] font-bold text-white" style={{ background: c }}>
-                    <span>Grupo {i + 1}</span>
+                    <span>Group {i + 1}</span>
                     <span className="opacity-80">{g.length}</span>
                   </div>
                   <ul className="px-3 py-2 text-[17px] leading-snug font-semibold">
@@ -393,7 +392,7 @@ function RandomGroups({ data, set, editing, setEditing }: WidgetProps<D>) {
                           <button
                             type="button"
                             aria-label={`Soltar a ${x}`}
-                            title="Fijado: no se mezcla. Toca para soltar."
+                            title="Pinned: not shuffled. Tap to release."
                             className="group/pin shrink-0 opacity-70 hover:opacity-100"
                             onClick={(e) => {
                               e.stopPropagation();

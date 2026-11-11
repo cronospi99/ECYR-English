@@ -12,7 +12,7 @@ type Kind = 'all' | Visual['kind'];
 
 const MODULE_NAME: Record<string, string> = { modals: 'Modal Verbs', 'time-machine': 'Time Machine', 'time-family': 'Time & Family', verbs: 'Verb Lab' };
 const PRACTICE_NAME: Record<string, string> = { reading: 'Reading', listening: 'Listening', speaking: 'Speaking', writing: 'Writing', 'phrasal-verbs': 'Phrasal Verbs' };
-const SECTION: Record<string, string> = { overview: 'resumen', vocab: 'vocabulario', grammar: 'gramática' };
+const SECTION: Record<string, string> = { overview: 'resumen', vocab: 'vocabulario', grammar: 'grammar' };
 
 function placeLink(p: VisualPlace): { to: string; label: string } {
   if ('unit' in p) {
@@ -21,7 +21,7 @@ function placeLink(p: VisualPlace): { to: string; label: string } {
     return { to: `/learn/${lv!.toLowerCase()}/${n}${tab}`, label: `${lv} · U${n} · ${SECTION[p.section]}` };
   }
   if ('module' in p) return { to: p.module === 'verbs' ? '/practice/verbs' : `/learn/grammar/${p.module}`, label: MODULE_NAME[p.module] ?? p.module };
-  if ('guide' in p) return { to: '/practice/reading', label: `Guía: ${p.guide}` };
+  if ('guide' in p) return { to: '/practice/reading', label: `Guide: ${p.guide}` };
   return { to: `/practice/${p.practice}`, label: PRACTICE_NAME[p.practice] ?? p.practice };
 }
 
@@ -42,9 +42,9 @@ export default function VisualsPage() {
 
   return (
     <Page
-      back={{ to: '/learn', label: 'Aprender' }}
-      title="Biblioteca visual"
-      subtitle="Infografías para explicar y repasar de un vistazo. Cada una aparece también en las unidades donde se enseña ese tema; ábrelas a pantalla completa para proyectarlas en clase."
+      back={{ to: '/learn', label: 'Learn' }}
+      title="Visual library"
+      subtitle="Infographics to explain and review at a glance. Each one also appears in the units where that topic is taught; open them full screen to project them in class."
       wide
     >
       <div className="mb-5 flex flex-wrap items-center gap-2">
@@ -53,8 +53,8 @@ export default function VisualsPage() {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar tema (conditionals, get…)"
-            aria-label="Buscar infografía"
+            placeholder="Search topic (conditionals, get…)"
+            aria-label="Search infographic"
             className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[16px] outline-none"
           />
         </label>
@@ -63,16 +63,16 @@ export default function VisualsPage() {
           value={kind}
           onChange={setKind}
           options={[
-            { value: 'all', label: 'Todas' },
-            { value: 'grammar', label: 'Gramática' },
-            { value: 'vocabulary', label: 'Vocabulario' },
-            { value: 'functions', label: 'Funciones' },
+            { value: 'all', label: 'All' },
+            { value: 'grammar', label: 'Grammar' },
+            { value: 'vocabulary', label: 'Vocabulary' },
+            { value: 'functions', label: 'Functions' },
           ]}
         />
       </div>
       <div className="no-scrollbar -mx-1 mb-5 flex gap-2 overflow-x-auto px-1 py-1">
         <Chip active={level === 'all'} onClick={() => setLevel('all')}>
-          Todos los niveles
+          All levels
         </Chip>
         {CEFR_LEVELS.map((l) => (
           <Chip key={l} active={level === l} onClick={() => setLevel(l)}>
@@ -82,7 +82,7 @@ export default function VisualsPage() {
       </div>
 
       {list.length === 0 ? (
-        <p className="text-label-2 py-16 text-center">No hay infografías con esos filtros.</p>
+        <p className="text-label-2 py-16 text-center">There are no infographics with those filters.</p>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {list.map((v, i) => (

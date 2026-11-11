@@ -36,11 +36,11 @@ export function Marked({ text, color, className, invert = false }: { text: strin
 }
 
 const KIND: Record<Aid['kind'], { label: string; icon: LucideIcon }> = {
-  transform: { label: 'Paso a paso', icon: Shuffle },
-  scale: { label: 'En una escala', icon: Ruler },
-  choose: { label: '¿Cuál uso?', icon: GitFork },
-  pictures: { label: 'En dibujos', icon: Images },
-  pairs: { label: 'Parecidas, no iguales', icon: Split },
+  transform: { label: 'Step by step', icon: Shuffle },
+  scale: { label: 'On a scale', icon: Ruler },
+  choose: { label: 'Which one do I use?', icon: GitFork },
+  pictures: { label: 'In drawings', icon: Images },
+  pairs: { label: 'Similar, not the same', icon: Split },
 };
 
 /** Fades children in once as they scroll into view (still when reduced motion is on). */
@@ -72,7 +72,7 @@ export function Aids({ aids, color }: { aids?: Aid[]; color: string }) {
 }
 
 function AidCard({ aid, color }: { aid: Aid; color: string }) {
-  const { label, icon: Icon } = KIND[aid.kind] ?? { label: 'Ayuda visual', icon: Wand2 };
+  const { label, icon: Icon } = KIND[aid.kind] ?? { label: 'Visual aid', icon: Wand2 };
   return (
     <section className="overflow-hidden rounded-[20px]" style={{ background: tint(color, 5), boxShadow: `inset 0 0 0 1px ${tint(color, 20)}` }}>
       <header className="flex items-center gap-2.5 px-4 pt-3.5 pb-1">
@@ -292,7 +292,7 @@ function Pairs({ aid }: { aid: Extract<Aid, { kind: 'pairs' }> }) {
             <PairSide text={p.a} color={A} tag="A" />
             <span
               className="bg-fill-2 text-label-2 mx-auto inline-flex h-8 w-8 items-center justify-center rounded-full text-[18px] font-bold"
-              aria-label="no es igual a"
+              aria-label="is not the same as"
             >
               ≠
             </span>

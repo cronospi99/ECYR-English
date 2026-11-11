@@ -110,10 +110,10 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
   if (error && !items.length)
     return (
       <div className="bg-card rounded-card p-6 text-center shadow-card" role="alert">
-        <p className="text-headline">No se pudieron cargar los trabajos</p>
+        <p className="text-headline">The work could not be loaded</p>
         <p className="text-subhead text-label-2 mx-auto mt-1 max-w-md">{error}</p>
         <Button variant="gray" size="sm" className="mt-4" onClick={() => void reload()}>
-          <RotateCw size={15} aria-hidden /> Reintentar
+          <RotateCw size={15} aria-hidden /> Retry
         </Button>
       </div>
     );
@@ -123,16 +123,16 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
       <div className="bg-card rounded-card shadow-card">
         <EmptyState
           icon={<FolderOpen size={44} strokeWidth={1.6} />}
-          title={owner ? 'Aún no has subido trabajos' : 'Todavía no hay trabajos'}
+          title={owner ? 'You haven’t uploaded any work yet' : 'There is no work yet'}
           body={
             owner
-              ? 'Sube redacciones, tareas, exámenes, certificados, audios o fotos de tu cuaderno. Tu profesor podrá verlos y revisarlos.'
-              : 'Cuando este estudiante suba trabajos aparecerán aquí.'
+              ? 'Upload essays, assignments, exams, certificates, audios or photos of your notebook. Your teacher will be able to see and review them.'
+              : 'When this student uploads work it will appear here.'
           }
           action={
             owner && onAdd ? (
               <Button variant="brand" onClick={onAdd}>
-                Subir mi primer trabajo
+                Upload my first work
               </Button>
             ) : undefined
           }
@@ -143,12 +143,12 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
   return (
     <div className="min-w-0">
       {/* ---- counts by kind (also the kind filter) */}
-      <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pt-1 pb-3" role="group" aria-label="Filtrar por tipo">
+      <div className="no-scrollbar -mx-1 flex gap-2 overflow-x-auto px-1 pt-1 pb-3" role="group" aria-label="Filter by type">
         <KindTile
           active={kind === 'all'}
           onClick={() => setKind('all')}
           count={items.length}
-          label={reviewed ? `Todos · ${reviewed} revisado${reviewed === 1 ? '' : 's'}` : 'Todos'}
+          label={reviewed ? `Todos · ${reviewed} revisado${reviewed === 1 ? '' : 's'}` : 'All'}
         />
         {PORTFOLIO_KINDS.filter((k) => counts[k] > 0).map((k) => (
           <KindTile
@@ -165,27 +165,27 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
       {/* ---- search + skill + level */}
       <div className="mb-5 grid grid-cols-2 gap-2 sm:flex">
         <label htmlFor={ids.q} className="relative col-span-2 min-w-0 sm:flex-1">
-          <span className="sr-only">Buscar</span>
+          <span className="sr-only">Search</span>
           <Search size={17} className="text-label-2 pointer-events-none absolute top-1/2 left-3 -translate-y-1/2" aria-hidden />
           <input
             id={ids.q}
             type="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar por título, nota…"
+            placeholder="Search by title, grade…"
             className={cn(inputCls, 'h-10 pl-9')}
           />
         </label>
-        <Select id={ids.skill} label="Habilidad" value={skill} onChange={setSkill}>
-          <option value="">Todas las habilidades</option>
+        <Select id={ids.skill} label="Skill" value={skill} onChange={setSkill}>
+          <option value="">All skills</option>
           {PORTFOLIO_SKILLS.map((s) => (
             <option key={s} value={s}>
               {SKILL_LABEL[s]}
             </option>
           ))}
         </Select>
-        <Select id={ids.level} label="Nivel" value={level} onChange={setLevel}>
-          <option value="">Todos los niveles</option>
+        <Select id={ids.level} label="Level" value={level} onChange={setLevel}>
+          <option value="">All levels</option>
           {PORTFOLIO_LEVELS.map((l) => (
             <option key={l} value={l}>
               {l}
@@ -204,12 +204,12 @@ export function PortfolioListView({ state, owner = false, canReview = false, onE
         <div className="bg-card rounded-card shadow-card">
           <EmptyState
             icon={<Search size={40} strokeWidth={1.6} />}
-            title="Nada coincide"
-            body="Prueba con otra búsqueda o quita los filtros."
+            title="Nothing matches"
+            body="Try another search or remove the filters."
             action={
               filtering ? (
                 <Button variant="gray" size="sm" onClick={clear}>
-                  Quitar filtros
+                  Remove filters
                 </Button>
               ) : undefined
             }
@@ -436,7 +436,7 @@ function ItemCard({
             <span
               className="text-footnote shrink-0 rounded-full px-2 py-0.5 font-semibold tabular-nums"
               style={{ background: `color-mix(in srgb, ${info.color} 14%, transparent)`, color: ink(info.color) }}
-              title="Nota que obtuviste"
+              title="Grade you got"
             >
               {score}
             </span>
@@ -454,10 +454,10 @@ function ItemCard({
           {item.source !== 'upload' && <span className="text-label-3">importado</span>}
           {item.reviewed_at ? (
             <span className="text-ink-green inline-flex items-center gap-0.5 font-semibold">
-              <CheckCircle2 size={13} aria-hidden /> Revisado
+              <CheckCircle2 size={13} aria-hidden /> Reviewed
             </span>
           ) : canReview ? (
-            <span className="text-ink-orange font-semibold">Sin revisar</span>
+            <span className="text-ink-orange font-semibold">Not reviewed</span>
           ) : null}
         </div>
 
@@ -468,7 +468,7 @@ function ItemCard({
           <div className="mt-2.5 rounded-[12px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] px-3 py-2.5">
             <div className="text-footnote flex flex-wrap items-center justify-between gap-x-2 gap-y-0.5">
               <span className="text-ink-green inline-flex items-center gap-1 font-semibold">
-                <GraduationCap size={14} aria-hidden /> {canReview ? 'Tu revisión' : 'Revisión del profesor'}
+                <GraduationCap size={14} aria-hidden /> {canReview ? 'Your review' : 'Teacher’s review'}
               </span>
               <span className="text-label-2">
                 {item.teacher_score != null && (
@@ -485,7 +485,7 @@ function ItemCard({
 
         {audioUrl && (
           <audio src={audioUrl} controls autoPlay className="mt-2.5 h-10 w-full" aria-label={`Audio: ${item.title}`}>
-            Tu navegador no puede reproducir este audio.
+            Your browser can’t play this audio.
           </audio>
         )}
 
@@ -494,55 +494,54 @@ function ItemCard({
           <div className="mt-3 flex flex-wrap gap-1.5">
             {item.text_content && (
               <Act icon={BookOpen} onClick={onRead}>
-                Leer
+                Read
               </Act>
             )}
             {isAudio && (
               <Act icon={Headphones} onClick={listen} busy={busy === 'listen'} pressed={Boolean(audioUrl)}>
-                {audioUrl ? 'Ocultar' : 'Escuchar'}
+                {audioUrl ? 'Hide' : 'Listen'}
               </Act>
             )}
             {item.file_path && !isAudio && (
               <Act icon={ExternalLink} onClick={open} busy={busy === 'open'}>
-                Abrir
+                Open
               </Act>
             )}
             {item.file_path && (
               <Act icon={Download} onClick={download} busy={busy === 'download'} label={`Descargar ${item.file_name ?? ''}`}>
-                Descargar
+                Download
               </Act>
             )}
             {canReview && (
               <Act icon={MessageSquareText} onClick={() => setReviewing(true)} tone="blue">
-                {item.reviewed_at ? 'Editar revisión' : 'Revisar'}
+                {item.reviewed_at ? 'Edit review' : 'Review'}
               </Act>
             )}
             {owner && onEdit && (
               <Act icon={Pencil} onClick={() => onEdit(item)}>
-                Editar
+                Edit
               </Act>
             )}
             {owner && (
               <Act icon={Trash2} onClick={() => setConfirm(true)} tone="red" label={`Eliminar ${item.title}`}>
-                Eliminar
+                Delete
               </Act>
             )}
           </div>
         )}
 
         {confirm && (
-          <div className="mt-3 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_8%,transparent)] p-3" role="alertdialog" aria-label="Confirmar eliminación">
-            <p className="text-subhead font-medium">¿Eliminar este trabajo?</p>
+          <div className="mt-3 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_8%,transparent)] p-3" role="alertdialog" aria-label="Confirm deletion">
+            <p className="text-subhead font-medium">Delete this work?</p>
             <p className="text-footnote text-label-2">
-              {item.file_path ? 'Se borrará también el archivo. ' : ''}
-              {item.reviewed_at ? 'Tu profesor ya no verá su revisión. ' : ''}No se puede deshacer.
+              {item.file_path ? 'The file will be deleted too. ' : ''} {item.reviewed_at ? 'Your teacher will no longer see their review. ' : ''}This cannot be undone.
             </p>
             <div className="mt-2.5 flex gap-2">
               <Button size="sm" variant="gray" onClick={() => setConfirm(false)} disabled={busy === 'delete'} autoFocus>
-                Cancelar
+                Cancel
               </Button>
               <Button size="sm" variant="destructive" onClick={remove} disabled={busy === 'delete'}>
-                {busy === 'delete' ? <Spinner className="h-4 w-4" /> : <Trash2 size={15} aria-hidden />} Eliminar
+                {busy === 'delete' ? <Spinner className="h-4 w-4" /> : <Trash2 size={15} aria-hidden />} Delete
               </Button>
             </div>
           </div>
@@ -641,7 +640,7 @@ function ReviewForm({ item, onCancel, onSaved }: { item: PortfolioItem; onCancel
     >
       <div>
         <label htmlFor={noteId} className="text-footnote text-label-2 mb-1 block font-medium">
-          Comentario para el estudiante
+          Comment for the student
         </label>
         <textarea
           id={noteId}
@@ -650,14 +649,14 @@ function ReviewForm({ item, onCancel, onSaved }: { item: PortfolioItem; onCancel
           maxLength={4000}
           rows={3}
           autoFocus
-          placeholder="Qué está bien, qué mejorar…"
+          placeholder="What is good, what to improve…"
           className={cn(inputCls, 'resize-y py-2.5 leading-[22px]')}
         />
       </div>
       <div className="flex flex-wrap items-end gap-2">
         <div className="w-[130px]">
           <label htmlFor={scoreId} className="text-footnote text-label-2 mb-1 block font-medium">
-            {band ? 'Banda (0–9)' : 'Nota (0–100)'}
+            {band ? 'Band (0–9)' : 'Grade (0–100)'}
           </label>
           <input
             id={scoreId}
@@ -672,14 +671,14 @@ function ReviewForm({ item, onCancel, onSaved }: { item: PortfolioItem; onCancel
         <div className="ml-auto flex flex-wrap gap-2">
           {item.reviewed_at && (
             <Button type="button" size="sm" variant="plain" className="text-ink-red" onClick={() => void save(true)} disabled={busy}>
-              Quitar
+              Remove
             </Button>
           )}
           <Button type="button" size="sm" variant="gray" onClick={onCancel} disabled={busy}>
-            Cancelar
+            Cancel
           </Button>
           <Button type="submit" size="sm" disabled={busy || bad || (!note.trim() && n == null)}>
-            {busy ? <Spinner className="h-4 w-4" /> : <Check size={15} aria-hidden />} Guardar
+            {busy ? <Spinner className="h-4 w-4" /> : <Check size={15} aria-hidden />} Save
           </Button>
         </div>
       </div>
@@ -716,12 +715,12 @@ export function ReaderSheet({ item, onClose }: { item: PortfolioItem | null; onC
       open={Boolean(item)}
       onClose={onClose}
       title={shown?.title ?? ''}
-      closeLabel="Cerrar"
+      closeLabel="Close"
       trailing={
         <SheetAction onClick={copy}>
           <span className="inline-flex items-center gap-1">
             {copied ? <Check size={17} aria-hidden /> : <Copy size={17} aria-hidden />}
-            {copied ? 'Copiado' : 'Copiar'}
+            {copied ? 'Copied' : 'Copy'}
           </span>
         </SheetAction>
       }
@@ -735,7 +734,7 @@ export function ReaderSheet({ item, onClose }: { item: PortfolioItem | null; onC
             {shown.level && <LevelChip level={shown.level} className="h-5 px-2 text-[11px]" />}
             <span>{fmtDate(shown.done_at ?? shown.created_at)}</span>
             <span>
-              {words.toLocaleString('es')} palabra{words === 1 ? '' : 's'}
+              {words.toLocaleString('en')} {words === 1 ? 'word' : 'words'}
             </span>
           </div>
           <article lang="en" className="text-[17px] leading-[28px] break-words whitespace-pre-wrap">
@@ -744,11 +743,7 @@ export function ReaderSheet({ item, onClose }: { item: PortfolioItem | null; onC
           {shown.teacher_note && (
             <div className="mt-6 rounded-[14px] bg-[color-mix(in_srgb,var(--green)_10%,transparent)] p-3.5">
               <div className="text-footnote text-ink-green mb-1 inline-flex items-center gap-1 font-semibold">
-                <GraduationCap size={14} aria-hidden /> Revisión del profesor
-                {shown.teacher_score != null && (
-                  <span className="text-label ml-1">{formatScore(shown.teacher_score, shown.score_scale === 'band' ? 'band' : 'percent')}</span>
-                )}
-              </div>
+                <GraduationCap size={14} aria-hidden /> Teacher’s review {shown.teacher_score != null && ( <span className="text-label ml-1">{formatScore(shown.teacher_score, shown.score_scale === 'band' ? 'band' : 'percent')}</span> )} </div>
               <p className="text-subhead whitespace-pre-wrap">{shown.teacher_note}</p>
             </div>
           )}
@@ -774,7 +769,7 @@ function parseDate(s: string) {
 function fmtDate(s: string) {
   const d = parseDate(s);
   const sameYear = d.getFullYear() === new Date().getFullYear();
-  return d.toLocaleDateString('es', { day: 'numeric', month: 'short', ...(sameYear ? {} : { year: 'numeric' }) });
+  return d.toLocaleDateString('en', { day: 'numeric', month: 'short', ...(sameYear ? {} : { year: 'numeric' }) });
 }
 
 function groupByMonth(items: PortfolioItem[]) {
@@ -786,7 +781,7 @@ function groupByMonth(items: PortfolioItem[]) {
     const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
     let g = out[out.length - 1];
     if (!g || g.key !== key) {
-      const label = d.toLocaleDateString('es', { month: 'long', year: 'numeric' });
+      const label = d.toLocaleDateString('en', { month: 'long', year: 'numeric' });
       g = { key, label: label.charAt(0).toUpperCase() + label.slice(1), items: [] };
       out.push(g);
     }

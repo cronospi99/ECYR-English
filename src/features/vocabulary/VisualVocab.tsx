@@ -12,7 +12,7 @@ import { currentLevel, useProgress } from '@/store/progress';
 import { ink } from '@/lib/color';
 import { VisualLesson } from './VisualLesson';
 
-const LEVEL_ES: Record<CefrLevel, string> = { A1: 'Principiante', A2: 'Básico', B1: 'Intermedio', B2: 'Intermedio alto', C1: 'Avanzado', C2: 'Maestría' };
+const LEVEL_ES: Record<CefrLevel, string> = { A1: 'Beginner', A2: 'Basic', B1: 'Intermediate', B2: 'Upper intermediate', C1: 'Advanced', C2: 'Mastery' };
 
 function TopicCard({ t, onOpen, i }: { t: VisualTopic; onOpen: () => void; i: number }) {
   const preview = t.items.filter((x) => x.img || x.emoji).slice(0, 4);
@@ -96,7 +96,7 @@ export function VisualVocab() {
           {topic ? (
             <motion.div key={topic.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
               <button type="button" onClick={() => go({ topic: null })} className="text-ink-blue mb-3 -ml-1 inline-flex items-center text-[15px] font-semibold hover:opacity-70">
-                <ChevronLeft size={20} /> Temas de {level}
+                <ChevronLeft size={20} /> Topics of {level}
               </button>
               <VisualLesson topic={topic} />
               <OtherTopics topics={data} current={topic.id} onOpen={(id) => go({ topic: id })} />
@@ -110,7 +110,7 @@ export function VisualVocab() {
                   ))}
                 </div>
               ) : (
-                <Card className="text-label-2 p-6 text-center">Los temas de este nivel se están preparando.</Card>
+                <Card className="text-label-2 p-6 text-center">The topics for this level are being prepared.</Card>
               )}
             </motion.div>
           )}
@@ -125,7 +125,7 @@ function OtherTopics({ topics, current, onOpen }: { topics: VisualTopic[]; curre
   if (!rest.length) return null;
   return (
     <div className="mt-8">
-      <h3 className="text-title-3 mb-3 px-1">Más temas de este nivel</h3>
+      <h3 className="text-title-3 mb-3 px-1">More topics from this level</h3>
       <div className="no-scrollbar -mx-4 flex gap-2.5 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
         {rest.map((t) => (
           <button

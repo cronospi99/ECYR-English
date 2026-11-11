@@ -29,7 +29,7 @@ export function usePlayerState(player: SeekablePlayer): PlayerSnapshot {
 
 export type ScrubTone = 'onColor' | 'plain';
 
-const DEVICE_HINT = 'Con la voz del dispositivo, al saltar el audio empieza desde el inicio de la frase más cercana.';
+const DEVICE_HINT = 'With the device voice, skipping in the audio starts from the beginning of the nearest sentence.';
 
 /**
  * The progress bar on its own: click or drag to a second, or use the keys
@@ -45,7 +45,7 @@ export function SeekBar({
   hint,
   tone = 'plain',
   color = 'var(--blue)',
-  label = 'Posición del audio',
+  label = 'Audio position',
   right,
 }: {
   time: number;
@@ -178,7 +178,7 @@ function Back({ sec, onClick, tone, size = 40 }: { sec: number; onClick: () => v
       onClick={onClick}
       className={cn('flex shrink-0 items-center justify-center rounded-full transition-transform active:scale-95', tone === 'onColor' ? 'bg-white/20' : 'bg-fill-2 text-label')}
       style={{ width: size, height: size }}
-      aria-label={`Retroceder ${sec} segundos`}
+      aria-label={`Back ${sec} seconds`}
       title={`Retroceder ${sec} s`}
     >
       <span className="relative flex items-center justify-center">
@@ -236,8 +236,8 @@ export function AudioScrubber({
         'h-8 min-w-[52px] shrink-0 rounded-full px-2.5 text-[13px] font-semibold tabular-nums transition-colors',
         onColor ? 'bg-white/20' : 'bg-fill-2 text-label',
       )}
-      aria-label={`Velocidad ${String(s.speed).replace('.', ',')}×. Toca para cambiarla`}
-      title="Velocidad"
+      aria-label={`Speed ${String(s.speed)}×. Tap to change it`}
+      title="Speed"
     >
       {String(s.speed).replace('.', ',')}×
     </button>
@@ -248,7 +248,7 @@ export function AudioScrubber({
       onClick={toggle}
       className={cn('flex shrink-0 items-center justify-center rounded-full transition-transform active:scale-95', onColor ? 'shadow-float bg-white text-[#1c1c1e]' : 'text-white')}
       style={{ width: size, height: size, background: onColor ? undefined : deep(color) }}
-      aria-label={live ? 'Pausar' : s.status === 'ended' ? 'Escuchar otra vez' : 'Reproducir'}
+      aria-label={live ? 'Pause' : s.status === 'ended' ? 'Listen again' : 'Play'}
     >
       {s.status === 'loading' ? (
         <Spinner className={size > 48 ? 'h-7 w-7' : 'h-4 w-4'} />
@@ -294,8 +294,8 @@ export function AudioScrubber({
             type="button"
             onClick={() => player.seek(0)}
             className={cn('flex h-10 w-10 shrink-0 items-center justify-center rounded-full', onColor ? 'bg-white/20' : 'bg-fill-2 text-label')}
-            aria-label="Desde el inicio"
-            title="Desde el inicio"
+            aria-label="From the start"
+            title="From the start"
           >
             <SkipBack size={18} aria-hidden />
           </button>

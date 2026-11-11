@@ -64,7 +64,7 @@ export function ColumnsView({ bundle, images, names, canAdd, onOpen, onLike, onA
               {canAdd && (
                 <button
                   type="button"
-                  aria-label={`Añadir en ${name}`}
+                  aria-label={`Add in ${name}`}
                   onClick={() => onAdd({ col: i })}
                   className="flex h-9 w-9 items-center justify-center rounded-full text-white transition-transform active:scale-90"
                   style={{ background: `color-mix(in srgb, ${accent} 78%, #000)` }}
@@ -96,7 +96,7 @@ export function ColumnsView({ bundle, images, names, canAdd, onOpen, onLike, onA
                   onClick={() => onAdd({ col: i })}
                   className="text-label-2 hover:bg-fill flex h-14 shrink-0 items-center justify-center gap-1.5 rounded-[14px] border-2 border-dashed border-[var(--separator)] text-[15px] font-semibold transition-colors"
                 >
-                  <Plus size={18} /> Añadir
+                  <Plus size={18} /> Add
                 </button>
               )}
             </div>
@@ -135,7 +135,7 @@ export function StoryView({ bundle, images, names, isTeacher, canAdd, onOpen, on
           <div className="flex items-start gap-3">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--purple)_80%,#000)] text-[18px] text-white sm:h-12 sm:w-12 sm:text-[22px]">📖</span>
             <div className="bg-card shadow-card min-w-0 flex-1 rounded-[18px] px-5 py-4">
-              <div className="text-ink-purple text-[12px] font-bold tracking-wide uppercase">Inicio</div>
+              <div className="text-ink-purple text-[12px] font-bold tracking-wide uppercase">Home</div>
               <p className={cn('font-rounded mt-1 font-semibold italic', big ? 'text-[30px] leading-[1.3]' : 'text-[19px] leading-[1.35]')}>{bundle.board.prompt}</p>
             </div>
           </div>
@@ -157,16 +157,16 @@ export function StoryView({ bundle, images, names, isTeacher, canAdd, onOpen, on
                     image={images[c.id]?.url}
                     names={names}
                     onLike={() => onLike(c)}
-                    badge={<span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[11px] font-bold tracking-wide text-black/55 uppercase">Parte {i + 1}</span>}
+                    badge={<span className="rounded-full bg-black/[0.07] px-2 py-0.5 text-[11px] font-bold tracking-wide text-black/55 uppercase">Part {i + 1}</span>}
                     style={big ? { fontSize: 22 } : undefined}
                   />
                 </div>
                 {isTeacher && cards.length > 1 && (
                   <div className="flex shrink-0 flex-col gap-1">
-                    <button type="button" aria-label="Subir" disabled={i === 0} onClick={() => move(i, -1)} className="bg-fill hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-30">
+                    <button type="button" aria-label="Up" disabled={i === 0} onClick={() => move(i, -1)} className="bg-fill hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-30">
                       <ArrowUp size={17} />
                     </button>
-                    <button type="button" aria-label="Bajar" disabled={i === cards.length - 1} onClick={() => move(i, 1)} className="bg-fill hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-30">
+                    <button type="button" aria-label="Down" disabled={i === cards.length - 1} onClick={() => move(i, 1)} className="bg-fill hover:bg-fill-2 flex h-9 w-9 items-center justify-center rounded-full disabled:opacity-30">
                       <ArrowDown size={17} />
                     </button>
                   </div>
@@ -183,7 +183,7 @@ export function StoryView({ bundle, images, names, isTeacher, canAdd, onOpen, on
               onClick={() => onAdd()}
               className="text-ink-purple flex h-16 w-full items-center justify-center gap-2 rounded-[18px] border-2 border-dashed border-[color-mix(in_srgb,var(--purple)_45%,transparent)] text-[17px] font-bold transition-colors hover:bg-[color-mix(in_srgb,var(--purple)_8%,transparent)]"
             >
-              <Plus size={20} strokeWidth={2.6} /> {cards.length ? 'Continúa la historia' : 'Escribe la primera parte'}
+              <Plus size={20} strokeWidth={2.6} /> {cards.length ? 'Continue the story' : 'Write the first part'}
             </button>
           </>
         )}

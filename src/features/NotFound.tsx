@@ -8,9 +8,9 @@ export default function NotFound() {
     <Page>
       <EmptyState
         icon={<Compass size={56} />}
-        title="Página no encontrada"
-        body="Este camino no está en el mapa. Volvamos a la ruta principal."
-        action={<ButtonLink to="/">Ir al inicio</ButtonLink>}
+        title="Page not found"
+        body="This path is not on the map. Let’s get back to the main route."
+        action={<ButtonLink to="/">Go home</ButtonLink>}
       />
     </Page>
   );

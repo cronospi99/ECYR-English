@@ -78,10 +78,10 @@ function TeachersOnly() {
         <span className="grid h-14 w-14 place-items-center rounded-[16px] bg-[color-mix(in_srgb,var(--orange)_16%,transparent)] text-ink-orange">
           <Lock size={28} />
         </span>
-        <h1 className="text-title-2">Solo docentes</h1>
-        <p className="text-subhead text-label-2">La pantalla de clase es para proyectar desde una cuenta docente.</p>
+        <h1 className="text-title-2">Teachers only</h1>
+        <p className="text-subhead text-label-2">The class screen is for projecting from a teacher account.</p>
         <ButtonLink to="/profile" variant="tinted" className="mt-1 w-full">
-          Ir a mi perfil
+          Go to my profile
         </ButtonLink>
       </div>
     </div>
@@ -111,7 +111,7 @@ function Screen() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = 'Pantalla de clase · ECYR';
+    document.title = 'Class screen · ECYR';
     return () => {
       document.title = prev;
     };
@@ -156,7 +156,7 @@ function Screen() {
       <AnimatePresence>
         {saveError && (
           <motion.div initial={{ y: -40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -40, opacity: 0 }} className="material-strong text-ink-red absolute top-3 left-1/2 z-[9999] -translate-x-1/2 rounded-full px-4 py-2 text-[14px] font-semibold shadow-card">
-            No se pudo guardar: quita alguna imagen grande
+            Could not save: remove a large image
           </motion.div>
         )}
       </AnimatePresence>
@@ -192,7 +192,7 @@ function Welcome({ onAdd, light }: { onAdd: (k: WidgetKind) => void; light?: boo
   return (
     <div className="pointer-events-none absolute inset-0 grid place-items-center p-4 max-[719px]:relative max-[719px]:min-h-[60vh]">
       <div className={cn('pointer-events-auto flex flex-col items-center gap-4 text-center', light ? 'text-[#0f172a]' : 'text-white')}>
-        <p className="font-rounded text-[clamp(28px,5vw,64px)] leading-none font-black drop-shadow-[0_2px_12px_rgb(0_0_0/0.25)]">Pantalla de clase</p>
+        <p className="font-rounded text-[clamp(28px,5vw,64px)] leading-none font-black drop-shadow-[0_2px_12px_rgb(0_0_0/0.25)]">Class screen</p>
         <div className="flex flex-wrap justify-center gap-2">
           {quick.map((k) => {
             const d = widgetDef(k)!;
@@ -264,7 +264,7 @@ function Dock({ pop, setPop, onAdd, compact }: { pop: null | 'more' | 'bg'; setP
               className="bg-card/95 absolute left-1/2 z-[9991] backdrop-blur-xl max-h-[calc(100dvh-120px)] w-[min(560px,calc(100vw-24px))] -translate-x-1/2 overflow-auto rounded-[22px] p-3 shadow-[0_20px_60px_-10px_rgb(0_0_0/0.5)]"
               style={{ bottom: DOCK + 4 }}
               role="dialog"
-              aria-label={pop === 'bg' ? 'Fondo' : 'Más widgets'}
+              aria-label={pop === 'bg' ? 'Background' : 'More widgets'}
             >
               {pop === 'more' ? (
                 <>
@@ -282,19 +282,19 @@ function Dock({ pop, setPop, onAdd, compact }: { pop: null | 'more' | 'bg'; setP
       </AnimatePresence>
 
       <div className="absolute inset-x-0 bottom-0 z-[9992] flex items-end gap-2 px-2 pb-2 sm:px-3" style={{ height: DOCK }}>
-        <nav aria-label="Herramientas" className="material-strong no-scrollbar mx-auto flex max-w-full min-w-0 items-center overflow-x-auto rounded-[22px] px-1.5 py-1 shadow-[0_12px_40px_-10px_rgb(0_0_0/0.45)]">
-          <DockBtn to="/teacher" icon={<House size={20} />} label="Inicio" />
-          <DockBtn icon={<Palette size={20} />} label="Fondo" color="linear-gradient(135deg,#f97316,#ec4899,#6366f1)" active={pop === 'bg'} onClick={() => setPop(pop === 'bg' ? null : 'bg')} />
+        <nav aria-label="Tools" className="material-strong no-scrollbar mx-auto flex max-w-full min-w-0 items-center overflow-x-auto rounded-[22px] px-1.5 py-1 shadow-[0_12px_40px_-10px_rgb(0_0_0/0.45)]">
+          <DockBtn to="/teacher" icon={<House size={20} />} label="Home" />
+          <DockBtn icon={<Palette size={20} />} label="Background" color="linear-gradient(135deg,#f97316,#ec4899,#6366f1)" active={pop === 'bg'} onClick={() => setPop(pop === 'bg' ? null : 'bg')} />
           {sep}
           {main.map((w) => (
             <DockBtn key={w.kind} icon={<w.icon size={20} strokeWidth={2.3} />} label={w.label} color={w.color} onClick={() => onAdd(w.kind)} />
           ))}
-          <DockBtn icon={<Ellipsis size={22} />} label="Más" active={pop === 'more'} onClick={() => setPop(pop === 'more' ? null : 'more')} />
+          <DockBtn icon={<Ellipsis size={22} />} label="More" active={pop === 'more'} onClick={() => setPop(pop === 'more' ? null : 'more')} />
           {sep}
-          {fs.supported && <DockBtn icon={fs.full ? <Minimize size={20} /> : <Maximize size={20} />} label={fs.full ? 'Salir' : 'Pantalla'} onClick={fs.toggle} />}
+          {fs.supported && <DockBtn icon={fs.full ? <Minimize size={20} /> : <Maximize size={20} />} label={fs.full ? 'Exit' : 'Screen'} onClick={fs.toggle} />}
           <DockBtn
             icon={<Eraser size={20} />}
-            label={confirm ? '¿Seguro?' : 'Limpiar'}
+            label={confirm ? 'Sure?' : 'Clear'}
             danger={confirm}
             onClick={() => {
               if (!count) return;
@@ -354,9 +354,9 @@ function BgPicker() {
   );
   return (
     <div className="space-y-3">
-      {swatches('Degradados', GRADIENTS)}
-      {swatches('Patrones', PATTERNS)}
-      {swatches('Colores', SOLIDS)}
+      {swatches('Gradients', GRADIENTS)}
+      {swatches('Patterns', PATTERNS)}
+      {swatches('Colours', SOLIDS)}
       <div className="flex flex-wrap items-center gap-2 pt-1">
         <input
           ref={input}
@@ -377,9 +377,9 @@ function BgPicker() {
           }}
         />
         <button type="button" onClick={() => input.current?.click()} className="bg-[color-mix(in_srgb,var(--blue)_15%,transparent)] text-ink-blue flex h-11 items-center gap-2 rounded-full px-4 text-[15px] font-semibold">
-          {busy ? <Spinner className="h-4 w-4" /> : <ImageUp size={18} />} Tu imagen
+          {busy ? <Spinner className="h-4 w-4" /> : <ImageUp size={18} />} Your image
         </button>
-        {bg.startsWith('img:') && <img src={bg.slice(4)} alt="Fondo actual" className="h-11 w-16 rounded-[10px] object-cover ring-label ring-[3px]" />}
+        {bg.startsWith('img:') && <img src={bg.slice(4)} alt="Current background" className="h-11 w-16 rounded-[10px] object-cover ring-label ring-[3px]" />}
       </div>
     </div>
   );
@@ -400,23 +400,23 @@ function Pager() {
   const btn = 'grid h-10 w-10 place-items-center rounded-full text-label transition-colors hover:bg-fill-2 disabled:opacity-30 active:scale-90';
   return (
     <div className="material-strong flex shrink-0 items-center gap-0.5 rounded-[22px] p-1 shadow-[0_12px_40px_-10px_rgb(0_0_0/0.45)]">
-      <button type="button" className={btn} aria-label="Pantalla anterior" disabled={cur === 0} onClick={() => go(cur - 1)}>
+      <button type="button" className={btn} aria-label="Previous screen" disabled={cur === 0} onClick={() => go(cur - 1)}>
         <ChevronLeft size={20} />
       </button>
       <span className="text-label min-w-10 text-center text-[15px] font-bold tabular-nums" aria-live="polite">
         {cur + 1}/{n}
       </span>
-      <button type="button" className={btn} aria-label="Pantalla siguiente" disabled={cur >= n - 1} onClick={() => go(cur + 1)}>
+      <button type="button" className={btn} aria-label="Next screen" disabled={cur >= n - 1} onClick={() => go(cur + 1)}>
         <ChevronRight size={20} />
       </button>
-      <button type="button" className={btn} aria-label="Nueva pantalla" onClick={addScene}>
+      <button type="button" className={btn} aria-label="New screen" onClick={addScene}>
         <Plus size={20} />
       </button>
       {n > 1 && (
         <button
           type="button"
           className={cn(btn, confirm ? 'w-auto bg-[var(--red)] px-3 text-[13px] font-bold text-white hover:bg-[var(--red)]' : 'text-ink-red')}
-          aria-label="Borrar esta pantalla"
+          aria-label="Delete this screen"
           onClick={() => {
             if (confirm) {
               removeScene();
@@ -424,7 +424,7 @@ function Pager() {
             } else setConfirm(true);
           }}
         >
-          {confirm ? '¿Borrar?' : <Trash2 size={18} />}
+          {confirm ? 'Delete?' : <Trash2 size={18} />}
         </button>
       )}
     </div>

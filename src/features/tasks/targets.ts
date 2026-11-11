@@ -10,21 +10,21 @@ import type { AssignmentKind, AssignmentTarget } from '@/lib/assignments';
 export type PickerSource = 'unit' | 'grammar' | 'practice' | 'game' | 'ielts' | 'custom';
 
 export const SOURCE_LABEL: Record<PickerSource, string> = {
-  unit: 'Unidad',
-  grammar: 'Gramática',
-  practice: 'Práctica',
-  game: 'Juego',
+  unit: 'Unit',
+  grammar: 'Grammar',
+  practice: 'Practice',
+  game: 'Game',
   ielts: 'IELTS',
-  custom: 'Otra',
+  custom: 'Another',
 };
 
 export type UnitTab = 'overview' | 'vocab' | 'grammar' | 'practice';
 
 export const UNIT_TABS: { value: UnitTab; label: string }[] = [
-  { value: 'overview', label: 'Completa' },
-  { value: 'vocab', label: 'Vocabulario' },
-  { value: 'grammar', label: 'Gramática' },
-  { value: 'practice', label: 'Práctica' },
+  { value: 'overview', label: 'Complete' },
+  { value: 'vocab', label: 'Vocabulary' },
+  { value: 'grammar', label: 'Grammar' },
+  { value: 'practice', label: 'Practice' },
 ];
 
 export interface PracticeOption {
@@ -37,13 +37,13 @@ export interface PracticeOption {
 }
 
 export const PRACTICE_OPTIONS: PracticeOption[] = [
-  { id: 'listening', label: 'Listening · dictados', to: '/practice/listening', kind: 'listening', refs: ['practice:listening'] },
-  { id: 'reading', label: 'Reading · una lectura', to: '/practice/reading', kind: 'reading', refPrefix: ['reading:'] },
-  { id: 'writing', label: 'Writing · texto con feedback', to: '/practice/writing', kind: 'writing', refs: ['practice:writing', 'coach:correct', 'coach:writing-feedback'] },
-  { id: 'speaking', label: 'Speaking · grabar respuesta', to: '/practice/speaking', kind: 'speaking', refs: ['practice:speaking'] },
+  { id: 'listening', label: 'Listening · dictations', to: '/practice/listening', kind: 'listening', refs: ['practice:listening'] },
+  { id: 'reading', label: 'Reading · a reading', to: '/practice/reading', kind: 'reading', refPrefix: ['reading:'] },
+  { id: 'writing', label: 'Writing · text with feedback', to: '/practice/writing', kind: 'writing', refs: ['practice:writing', 'coach:correct', 'coach:writing-feedback'] },
+  { id: 'speaking', label: 'Speaking · record answer', to: '/practice/speaking', kind: 'speaking', refs: ['practice:speaking'] },
   { id: 'phrasal', label: 'Phrasal verbs · quiz', to: '/practice/phrasal-verbs', kind: 'practice', refs: ['practice:phrasal'] },
-  { id: 'verbs', label: 'Verb Lab · quiz de formas', to: '/practice/verbs?tab=quiz', kind: 'practice', refs: ['verblab:quiz'] },
-  { id: 'coach', label: 'AI Coach · conversación', to: '/coach', kind: 'speaking', refPrefix: ['coach:'] },
+  { id: 'verbs', label: 'Verb Lab · forms quiz', to: '/practice/verbs?tab=quiz', kind: 'practice', refs: ['verblab:quiz'] },
+  { id: 'coach', label: 'AI Coach · conversation', to: '/coach', kind: 'speaking', refPrefix: ['coach:'] },
 ];
 
 export const IELTS_OPTIONS: { id: string; label: string; refs?: string[]; refPrefix?: string[] }[] = [
@@ -51,7 +51,7 @@ export const IELTS_OPTIONS: { id: string; label: string; refs?: string[]; refPre
   { id: 'reading', label: 'Reading', refs: ['ielts:reading'] },
   { id: 'writing', label: 'Writing', refs: ['ielts:writing'] },
   { id: 'speaking', label: 'Speaking', refs: ['ielts:speaking'] },
-  { id: 'mock', label: 'Mock test (cualquier módulo)', refPrefix: ['ielts:'] },
+  { id: 'mock', label: 'Mock test (any module)', refPrefix: ['ielts:'] },
 ];
 
 export const GRAMMAR_OPTIONS = GRAMMAR_MODULES.map((m) => ({ id: m.slug, label: m.title, to: m.to, refPrefix: [m.ref], levels: m.levels }));
@@ -87,14 +87,14 @@ export function buildTarget(p: PickerState): { kind: AssignmentKind; target: Ass
           to: `/learn/${p.level.toLowerCase()}/${p.unit}${p.unitTab === 'overview' ? '' : `?tab=${p.unitTab}`}`,
           refs: p.unitTab === 'vocab' ? [`unit:${key}`, 'vocab:flashcards'] : [`unit:${key}`],
           minScore,
-          label: `${p.level} · Unidad ${p.unit}${p.unitTitle ? ` · ${p.unitTitle}` : ''}${p.unitTab === 'overview' ? '' : ` · ${tab.label}`}`,
+          label: `${p.level} · Unit ${p.unit}${p.unitTitle ? ` · ${p.unitTitle}` : ''}${p.unitTab === 'overview' ? '' : ` · ${tab.label}`}`,
           level: p.level,
         },
       };
     }
     case 'grammar': {
       const g = GRAMMAR_OPTIONS.find((x) => x.id === p.grammar) ?? GRAMMAR_OPTIONS[0]!;
-      return { kind: 'grammar', level: null, target: { to: g.to, refPrefix: g.refPrefix, minScore, label: `Gramática · ${g.label}` } };
+      return { kind: 'grammar', level: null, target: { to: g.to, refPrefix: g.refPrefix, minScore, label: `Grammar · ${g.label}` } };
     }
     case 'practice': {
       const o = PRACTICE_OPTIONS.find((x) => x.id === p.practice) ?? PRACTICE_OPTIONS[0]!;

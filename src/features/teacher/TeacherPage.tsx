@@ -65,15 +65,15 @@ export default function TeacherPage() {
 
   if (!isTeacher)
     return (
-      <Page title="Sala del docente">
+      <Page title="Teacher room">
         <Card className="mx-auto max-w-xl p-6 text-center">
           <School size={40} className="text-ink-orange mx-auto" />
-          <h2 className="text-title-3 mt-3">Solo para docentes</h2>
+          <h2 className="text-title-3 mt-3">Teachers only</h2>
           <p className="text-label-2 mt-1">
-            Entra con una cuenta de docente para ver el progreso de tu clase, el material completo y tu espacio de práctica libre.
+            Sign in with a teacher account to see your class’s progress, the full material and your own free-practice space.
           </p>
           <ButtonLink to="/profile" className="mt-4">
-            Ir a mi perfil
+            Go to my profile
           </ButtonLink>
         </Card>
       </Page>
@@ -83,19 +83,19 @@ export default function TeacherPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <School size={15} className="text-ink-orange" /> Docente
+          <School size={15} className="text-ink-orange" /> Teacher
         </span>
       }
-      title="Sala del docente"
-      subtitle="El progreso de tu clase, todo el material sin restricciones y tu propio espacio para practicar."
+      title="Teacher room"
+      subtitle="Your class’s progress, all the material without restrictions and your own space to practise."
       actions={
         <div className="flex items-center gap-2">
-          <ButtonLink to="/teacher/screen" variant="gray" size="md" aria-label="Pantalla de clase">
-            <MonitorPlay size={17} /> <span className="hidden sm:inline">Pantalla</span>
+          <ButtonLink to="/teacher/screen" variant="gray" size="md" aria-label="Class screen">
+            <MonitorPlay size={17} /> <span className="hidden sm:inline">Screen</span>
           </ButtonLink>
           {isAdmin && (
-            <ButtonLink to="/admin/teachers" variant="gray" size="md" aria-label="Códigos para docentes">
-              <KeyRound size={17} /> <span className="hidden sm:inline">Docentes</span>
+            <ButtonLink to="/admin/teachers" variant="gray" size="md" aria-label="Teacher codes">
+              <KeyRound size={17} /> <span className="hidden sm:inline">Teachers</span>
             </ButtonLink>
           )}
           <AssignButton
@@ -115,11 +115,11 @@ export default function TeacherPage() {
           value={tab}
           onChange={(t) => setParams(t === 'class' ? {} : { tab: t })}
           options={[
-            { value: 'class', label: 'Mi clase' },
-            { value: 'tasks', label: 'Tareas' },
-            { value: 'work', label: 'Trabajos' },
+            { value: 'class', label: 'My class' },
+            { value: 'tasks', label: 'Tasks' },
+            { value: 'work', label: 'Work' },
             { value: 'material', label: 'Material' },
-            { value: 'practice', label: 'Práctica libre' },
+            { value: 'practice', label: 'Free practice' },
           ]}
         />
       </div>
@@ -193,14 +193,14 @@ function ClassTab({
     <div className="space-y-5">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <Card className="p-4">
-          <div className="text-label-2 text-[13px] font-medium">Código de clase</div>
+          <div className="text-label-2 text-[13px] font-medium">Class code</div>
           <div className="mt-1 flex items-center gap-2">
             <span className="font-mono text-[24px] font-bold tracking-[0.18em]">{classCode ?? '—'}</span>
             {classCode && (
               <button
                 type="button"
                 className="text-ink-blue rounded-full p-1.5 hover:bg-fill-2"
-                aria-label="Copiar código"
+                aria-label="Copy code"
                 onClick={() => {
                   void navigator.clipboard?.writeText(classCode);
                   setCopied(true);
@@ -211,11 +211,11 @@ function ClassTab({
               </button>
             )}
           </div>
-          <div className="text-label-2 text-[12px]">{copied ? '¡Copiado!' : 'Tus estudiantes lo usan en Perfil → Unirme a una clase'}</div>
+          <div className="text-label-2 text-[12px]">{copied ? 'Copied!' : 'Your students use it in Profile → Join a class'}</div>
         </Card>
-        <Kpi icon={Users} color="var(--blue)" label="Estudiantes" value={String(students?.length ?? 0)} />
-        <Kpi icon={CalendarRange} color="var(--green)" label="Activos esta semana" value={String(active)} />
-        <Kpi icon={AlertTriangle} color="var(--orange)" label="Resultados por revisar" value={String(flagged)} hint="Partidas que no pasaron la validación" />
+        <Kpi icon={Users} color="var(--blue)" label="Students" value={String(students?.length ?? 0)} />
+        <Kpi icon={CalendarRange} color="var(--green)" label="Active this week" value={String(active)} />
+        <Kpi icon={AlertTriangle} color="var(--orange)" label="Results to review" value={String(flagged)} hint="Games that didn’t pass validation" />
       </div>
 
       <SharedPool onAdded={reload} />
@@ -227,9 +227,9 @@ function ClassTab({
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Buscar estudiante"
+              placeholder="Search student"
               className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[16px] outline-none"
-              aria-label="Buscar estudiante"
+              aria-label="Search student"
             />
           </label>
           <Segmented<Sort>
@@ -237,26 +237,26 @@ function ClassTab({
             value={sort}
             onChange={setSort}
             options={[
-              { value: 'recent', label: 'Recientes' },
-              { value: 'name', label: 'Nombre' },
+              { value: 'recent', label: 'Recent' },
+              { value: 'name', label: 'Name' },
               { value: 'xp', label: 'XP' },
-              { value: 'level', label: 'Nivel' },
+              { value: 'level', label: 'Level' },
             ]}
           />
-          <Button variant="gray" size="sm" onClick={() => void reload()} disabled={loading} aria-label="Actualizar">
+          <Button variant="gray" size="sm" onClick={() => void reload()} disabled={loading} aria-label="Refresh">
             {loading ? <Spinner className="h-4 w-4" /> : <RefreshCw size={15} />}
           </Button>
         </div>
         {error && <p className="text-ink-red px-4 pb-3 text-[13px]">{error}</p>}
         {students === null ? (
           <div className="text-label-2 flex items-center justify-center gap-2 py-12">
-            <Spinner className="h-5 w-5" /> Cargando tu clase…
+            <Spinner className="h-5 w-5" /> Loading your class…
           </div>
         ) : rows.length === 0 ? (
           <EmptyState
             icon={<Users size={44} />}
-            title={students.length ? 'Sin coincidencias' : 'Aún no hay estudiantes'}
-            body={students.length ? undefined : 'Comparte tu código de clase. Cuando se unan, aquí verás su progreso.'}
+            title={students.length ? 'No matches' : 'No students yet'}
+            body={students.length ? undefined : 'Share your class code. When they join, you’ll see their progress here.'}
           />
         ) : (
           <ul className="border-separator divide-separator divide-y border-t">
@@ -269,14 +269,14 @@ function ClassTab({
                       <span className="truncate text-[16px] font-semibold">{s.profile.full_name || s.profile.email}</span>
                       <LevelChip level={st.level} />
                       {st.flagged > 0 && (
-                        <span className="text-ink-orange inline-flex items-center gap-0.5 text-[12px] font-semibold" title="Resultados no válidos">
+                        <span className="text-ink-orange inline-flex items-center gap-0.5 text-[12px] font-semibold" title="Invalid results">
                           <AlertTriangle size={13} /> {st.flagged}
                         </span>
                       )}
                     </div>
                     <div className="text-label-2 mt-0.5 flex flex-wrap gap-x-3 gap-y-0.5 text-[12px]">
                       <span>{st.xp} XP · Nv. {st.rank}</span>
-                      <span>{st.units} unidades</span>
+                      <span>{st.units} units</span>
                       <span>🔥 {st.streak} d</span>
                       {st.plan != null && <span>Plan {st.plan}%</span>}
                       {st.ielts != null && <span>IELTS {st.ielts.toFixed(1)}</span>}
@@ -323,64 +323,64 @@ interface Item {
 function MaterialTab() {
   const groups: { title: string; items: Item[] }[] = [
     {
-      title: 'Planeación de clase',
-      items: [{ to: '/teacher/thread', title: 'Hilo de clase', sub: 'Una historia central por unidades + inicio y cierre de 5 min', icon: Wand2, color: 'var(--purple)' }],
+      title: 'Class planning',
+      items: [{ to: '/teacher/thread', title: 'Class thread', sub: 'A central story across units + a 5-minute opening and closing', icon: Wand2, color: 'var(--purple)' }],
     },
     {
-      title: 'En clase, en vivo',
+      title: 'In class, live',
       items: [
-        { to: '/teacher/screen', title: 'Pantalla de clase', sub: 'Temporizador, ruleta, grupos, semáforo, ruido… para el proyector', icon: MonitorPlay, color: 'var(--blue)' },
-        { to: '/boards', title: 'Muro en vivo', sub: 'Jam, columnas o historia: tus estudiantes escriben tarjetas', icon: StickyNote, color: 'var(--yellow)' },
-        { to: '/practice/draw', title: 'Pizarra', sub: 'Dibujo con pinceles, relleno, figuras y texto', icon: Palette, color: 'var(--pink)' },
+        { to: '/teacher/screen', title: 'Class screen', sub: 'Timer, wheel, groups, traffic light, noise… for the projector', icon: MonitorPlay, color: 'var(--blue)' },
+        { to: '/boards', title: 'Live board', sub: 'Jam, columns or story: your students write cards', icon: StickyNote, color: 'var(--yellow)' },
+        { to: '/practice/draw', title: 'Whiteboard', sub: 'Drawing with brushes, fill, shapes and text', icon: Palette, color: 'var(--pink)' },
       ],
     },
     {
-      title: 'Cursos por nivel',
+      title: 'Courses by level',
       items: [
-        { to: '/learn/foundations', title: 'Pre-A1 · Foundations', sub: 'Alfabeto, saludos, números, to be…', icon: BookOpen, color: 'var(--red)' },
-        ...LEVELS.map((l) => ({ to: `/learn/${l.id.toLowerCase()}`, title: `${l.id} · ${l.book}`, sub: `${l.units} unidades · ${l.nameEs}`, icon: GraduationCap, color: l.color })),
+        { to: '/learn/foundations', title: 'Pre-A1 · Foundations', sub: 'Alphabet, greetings, numbers, to be…', icon: BookOpen, color: 'var(--red)' },
+        ...LEVELS.map((l) => ({ to: `/learn/${l.id.toLowerCase()}`, title: `${l.id} · ${l.book}`, sub: `${l.units} units · ${l.nameEs}`, icon: GraduationCap, color: l.color })),
       ],
     },
     {
-      title: 'Gramática y herramientas',
+      title: 'Grammar and tools',
       items: [
-        { to: '/learn/grammar/time-machine', title: 'Time Machine', sub: 'Fechas, años y pasado', icon: Sigma, color: 'var(--teal)' },
-        { to: '/learn/grammar/time-family', title: 'Time & Family', sub: 'La hora y el genitivo', icon: Sigma, color: 'var(--mint)' },
-        { to: '/learn/grammar/modals', title: 'Modal Verbs', sub: 'Modales y semi-modales', icon: Sigma, color: 'var(--yellow)' },
-        { to: '/practice/workshops', title: 'Talleres + tareas PDF', sub: '52 talleres A1–C1 imprimibles', icon: Sigma, color: 'var(--indigo)' },
-        { to: '/practice/verbs', title: 'Verb Lab', sub: '1.000+ verbos, C1 académicos, -ed', icon: Wrench, color: 'var(--orange)' },
-        { to: '/learn/visuals', title: 'Biblioteca visual', sub: 'Infografías para proyectar', icon: ImageIcon, color: 'var(--pink)' },
+        { to: '/learn/grammar/time-machine', title: 'Time Machine', sub: 'Dates, years and the past', icon: Sigma, color: 'var(--teal)' },
+        { to: '/learn/grammar/time-family', title: 'Time & Family', sub: 'Time and the genitive', icon: Sigma, color: 'var(--mint)' },
+        { to: '/learn/grammar/modals', title: 'Modal Verbs', sub: 'Modals and semi-modals', icon: Sigma, color: 'var(--yellow)' },
+        { to: '/practice/workshops', title: 'Workshops + PDF tasks', sub: '52 talleres A1–C1 imprimibles', icon: Sigma, color: 'var(--indigo)' },
+        { to: '/practice/verbs', title: 'Verb Lab', sub: '1,000+ verbs, C1 academic, -ed', icon: Wrench, color: 'var(--orange)' },
+        { to: '/learn/visuals', title: 'Visual library', sub: 'Infographics to project', icon: ImageIcon, color: 'var(--pink)' },
       ],
     },
     {
-      title: 'Práctica por destreza',
+      title: 'Practice by skill',
       items: [
-        { to: '/practice/reading', title: 'Reading', sub: '141 lecturas A1–C2 + guías', icon: BookOpen, color: 'var(--skill-reading)' },
-        { to: '/practice/listening', title: 'Listening', sub: '121 audios A1–C2 + diálogos', icon: Headphones, color: 'var(--skill-listening)' },
-        { to: '/practice/speaking', title: 'Speaking', sub: '3.600+ preguntas', icon: Mic, color: 'var(--skill-speaking)' },
-        { to: '/practice/writing', title: 'Writing', sub: 'Tareas con feedback', icon: PenLine, color: 'var(--skill-writing)' },
-        { to: '/practice/phrasal-verbs', title: 'Phrasal Verbs', sub: '1.100+ con ejemplos y quiz', icon: Dumbbell, color: 'var(--pink)' },
-        { to: '/practice/vocabulary', title: 'Vocabulario', sub: 'Conectores, adjetivos, adverbios', icon: BookOpen, color: 'var(--purple)' },
+        { to: '/practice/reading', title: 'Reading', sub: '141 readings A1–C2 + guides', icon: BookOpen, color: 'var(--skill-reading)' },
+        { to: '/practice/listening', title: 'Listening', sub: '121 audios A1–C2 + dialogues', icon: Headphones, color: 'var(--skill-listening)' },
+        { to: '/practice/speaking', title: 'Speaking', sub: '3,600+ questions', icon: Mic, color: 'var(--skill-speaking)' },
+        { to: '/practice/writing', title: 'Writing', sub: 'Tasks with feedback', icon: PenLine, color: 'var(--skill-writing)' },
+        { to: '/practice/phrasal-verbs', title: 'Phrasal Verbs', sub: '1,100+ with examples and quiz', icon: Dumbbell, color: 'var(--pink)' },
+        { to: '/practice/vocabulary', title: 'Vocabulary', sub: 'Connectors, adjectives, adverbs', icon: BookOpen, color: 'var(--purple)' },
       ],
     },
     {
-      title: 'Juegos y dinámicas de clase',
-      items: GAMES.map((g) => ({ to: `/play/${g.slug}`, title: g.title, sub: g.mode === 'class' ? 'Dinámica grupal' : g.subtitle, icon: Gamepad2, color: g.accent })),
+      title: 'Games and class activities',
+      items: GAMES.map((g) => ({ to: `/play/${g.slug}`, title: g.title, sub: g.mode === 'class' ? 'Group activity' : g.subtitle, icon: Gamepad2, color: g.accent })),
     },
     {
-      title: 'Libros interactivos',
+      title: 'Interactive books',
       items: MODULES.filter((m) => m.kind === 'book').map((m) => ({ to: `/play/${m.slug}`, title: m.title, sub: m.subtitle, icon: BookOpen, color: m.accent })),
     },
     {
-      title: 'IELTS y herramientas docentes',
+      title: 'IELTS and teacher tools',
       items: [
-        { to: '/ielts', title: 'IELTS Simulator', sub: 'Mock tests y práctica', icon: Award, color: 'var(--indigo)' },
-        { to: '/ielts/class', title: 'Mi clase (IELTS)', sub: 'Tareas, comentarios e historial', icon: Users, color: 'var(--green)' },
-        { to: '/ielts/descriptors', title: 'Descriptores de banda', sub: 'Criterios oficiales', icon: Award, color: 'var(--label-2)' },
-        { to: '/coach', title: 'AI Coach', sub: 'Conversación y corrección', icon: Sparkles, color: 'var(--purple)' },
-        { to: '/plan', title: 'Planes semanales', sub: 'Genera planes de estudio', icon: CalendarRange, color: 'var(--indigo)' },
-        { to: '/portfolio', title: 'Mis trabajos', sub: 'Archivos y escritos', icon: FolderOpen, color: 'var(--teal)' },
-        { to: '/import', title: 'Importar y migrar', sub: 'IELTS Simulator y archivos', icon: FileUp, color: 'var(--indigo)' },
+        { to: '/ielts', title: 'IELTS Simulator', sub: 'Mock tests and practice', icon: Award, color: 'var(--indigo)' },
+        { to: '/ielts/class', title: 'My class (IELTS)', sub: 'Tasks, comments and history', icon: Users, color: 'var(--green)' },
+        { to: '/ielts/descriptors', title: 'Band descriptors', sub: 'Official criteria', icon: Award, color: 'var(--label-2)' },
+        { to: '/coach', title: 'AI Coach', sub: 'Conversation and correction', icon: Sparkles, color: 'var(--purple)' },
+        { to: '/plan', title: 'Weekly plans', sub: 'Generate study plans', icon: CalendarRange, color: 'var(--indigo)' },
+        { to: '/portfolio', title: 'My work', sub: 'Files and writing', icon: FolderOpen, color: 'var(--teal)' },
+        { to: '/import', title: 'Import and migrate', sub: 'IELTS Simulator and files', icon: FileUp, color: 'var(--indigo)' },
       ],
     },
   ];
@@ -416,16 +416,15 @@ function PracticeTab() {
       <Card className={cn('p-5', sandbox && 'shadow-[inset_0_0_0_2px_var(--orange)]')}>
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-title-3">Modo práctica libre</h2>
+            <h2 className="text-title-3">Free practice mode</h2>
             <p className="text-label-2 mt-1 max-w-prose text-[15px]">
-              Prueba cualquier lección, quiz, juego o simulacro como lo haría un estudiante, sin que se guarde nada: no suma XP, no marca
-              unidades, no registra partidas ni afecta tus estadísticas. Ideal para preparar una clase.
+              Try any lesson, quiz, game or mock exam as a student would, without anything being saved: it earns no XP, marks no units, records no games and doesn’t affect your statistics. Ideal for preparing a class.
             </p>
           </div>
-          <Toggle checked={sandbox} onChange={(v) => set({ practiceSandbox: v })} label="Modo práctica libre" />
+          <Toggle checked={sandbox} onChange={(v) => set({ practiceSandbox: v })} label="Free practice mode" />
         </div>
         <p className={cn('mt-3 text-[13px] font-semibold', sandbox ? 'text-ink-orange' : 'text-label-2')}>
-          {sandbox ? 'Activo: verás un aviso arriba mientras practicas.' : 'Desactivado: tu actividad se registra normalmente.'}
+          {sandbox ? 'On: you’ll see a notice at the top while you practise.' : 'Off: your activity is recorded normally.'}
         </p>
       </Card>
       <MaterialTab />

@@ -35,20 +35,20 @@ function Portfolio({ uid, hasTeacher, isTeacher }: { uid: string; hasTeacher: bo
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portafolio
+          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portfolio
         </span>
       }
-      title="Mis trabajos"
+      title="My work"
       subtitle={
         isTeacher
-          ? 'Guarda aquí tus propios materiales y trabajos.'
+          ? 'Keep your own materials and work here.'
           : hasTeacher
-            ? 'Sube lo que ya hiciste — redacciones, tareas, exámenes, certificados, audios o fotos de tu cuaderno. Tu profesor puede verlos y dejarte una revisión.'
-            : 'Sube lo que ya hiciste — redacciones, tareas, exámenes, certificados, audios o fotos de tu cuaderno — y tenlo todo en tu cuenta.'
+            ? 'Upload what you’ve already done — essays, assignments, exams, certificates, audios or photos of your notebook. Your teacher can see them and leave you a review.'
+            : 'Upload what you’ve already done — essays, assignments, exams, certificates, audios or photos of your notebook — and keep it all in your account.'
       }
       actions={
         <Button variant="brand" onClick={openNew}>
-          <Plus size={18} strokeWidth={2.5} aria-hidden /> Subir trabajo
+          <Plus size={18} strokeWidth={2.5} aria-hidden /> Upload work
         </Button>
       }
     >
@@ -70,10 +70,10 @@ function NeedsAccount({ offline }: { offline: boolean }) {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portafolio
+          <Briefcase size={15} className="text-ink-blue" aria-hidden /> Portfolio
         </span>
       }
-      title="Mis trabajos"
+      title="My work"
     >
       <Card className="mx-auto max-w-[560px] overflow-hidden">
         <div className="brand-gradient relative flex h-32 items-end justify-center gap-2 overflow-hidden pb-5" aria-hidden>
@@ -87,14 +87,14 @@ function NeedsAccount({ offline }: { offline: boolean }) {
           <span className="bg-card text-label-2 relative z-10 mx-auto -mt-12 mb-3 flex h-12 w-12 items-center justify-center rounded-full shadow-card ring-4 ring-[var(--card)]">
             {offline ? <CloudOff size={22} aria-hidden /> : <Lock size={22} aria-hidden />}
           </span>
-          <h2 className="text-title-2">{offline ? 'Necesita conexión con el servidor' : 'Guarda tus trabajos en tu cuenta'}</h2>
+          <h2 className="text-title-2">{offline ? 'Needs a connection to the server' : 'Save your work in your account'}</h2>
           <p className="text-body text-label-2 mx-auto mt-2 max-w-[420px] text-pretty">
             {offline
-              ? 'Este despliegue funciona sin cuentas, así que no hay dónde guardar archivos. Tu progreso de lecciones sigue guardado en este navegador.'
-              : 'Sube redacciones, tareas, exámenes, certificados, audios y fotos de tu cuaderno. Quedan privados en tu cuenta y solo tu profesor puede verlos y revisarlos.'}
+              ? 'This deployment works without accounts, so there is nowhere to save files. Your lesson progress is still saved in this browser.'
+              : 'Upload essays, assignments, exams, certificates, audios and photos of your notebook. They stay private in your account and only your teacher can see and review them.'}
           </p>
           <ButtonLink to="/profile" variant="brand" size="lg" className="mt-5 w-full sm:w-auto">
-            {offline ? 'Ir a mi perfil' : 'Iniciar sesión o crear cuenta'}
+            {offline ? 'Go to my profile' : 'Sign in or create an account'}
           </ButtonLink>
         </div>
       </Card>

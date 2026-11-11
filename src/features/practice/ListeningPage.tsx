@@ -35,9 +35,9 @@ export default function ListeningPage() {
   };
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
+      back={{ to: '/practice', label: 'Practice' }}
       title="Listening"
-      subtitle="Entrena el oído con diálogos, entrevistas, podcasts y dictados."
+      subtitle="Train your ear with dialogues, interviews, podcasts and dictations."
       wide={tab === 'library' || tab === 'podcasts'}
     >
       {!inTrack && (
@@ -46,10 +46,10 @@ export default function ListeningPage() {
             value={tab}
             onChange={setTab}
             options={[
-              { value: 'library', label: 'Biblioteca A1–C2' },
+              { value: 'library', label: 'Library A1–C2' },
               { value: 'podcasts', label: 'Podcasts' },
-              { value: 'dialogues', label: 'Diálogos y dictado' },
-              { value: 'months', label: 'Audio real · Meses' },
+              { value: 'dialogues', label: 'Dialogues and dictation' },
+              { value: 'months', label: 'Real audio · Months' },
             ]}
           />
         </div>
@@ -186,7 +186,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
           <h3 className="text-title-3">{clip.title}</h3>
         </div>
         <div className="flex gap-2">
-          <Button variant="gray" onClick={() => setShow((s) => !s)} aria-label={show ? 'Ocultar transcripción' : 'Ver transcripción'}>
+          <Button variant="gray" onClick={() => setShow((s) => !s)} aria-label={show ? 'Hide transcript' : 'Show transcript'}>
             {show ? <EyeOff size={16} /> : <Eye size={16} />}
           </Button>
         </div>
@@ -196,13 +196,13 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
         compact
         player={player}
         speeds={[]}
-        label={`Posición en "${clip.title}"`}
+        label={`Position in "${clip.title}"`}
         onPlay={() => setPlaying(null)}
         className="mt-4"
       />
 
       <p className="text-label-2 mt-4 text-[14px]">
-        <Headphones size={14} className="mr-1 inline" /> Escucha y escribe la palabra que falta en cada línea. Toca 🔊 para repetir una línea.
+        <Headphones size={14} className="mr-1 inline" /> Listen and type the missing word in each line. Tap 🔊 to repeat a line.
       </p>
 
       <ol className="mt-4 space-y-3">
@@ -215,7 +215,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
             <li key={i} className={cn('rounded-[14px] p-3 transition-colors', current === i ? 'bg-[color-mix(in_srgb,var(--blue)_10%,transparent)]' : 'bg-fill-2')}>
               <div className="mb-1 flex items-center gap-2">
                 <span className="text-label-2 text-[12px] font-semibold">{l.sp}</span>
-                <button type="button" onClick={() => play(i)} className="text-ink-blue" aria-label="Repetir línea">
+                <button type="button" onClick={() => play(i)} className="text-ink-blue" aria-label="Repeat line">
                   <Volume2 size={15} />
                 </button>
               </div>
@@ -229,7 +229,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
                     setAnswers(n);
                     setChecked(false);
                   }}
-                  aria-label={`Palabra que falta, línea ${i + 1}`}
+                  aria-label={`Missing word, line ${i + 1}`}
                   autoCapitalize="off"
                   spellCheck={false}
                   className={cn(
@@ -239,13 +239,13 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
                 />
                 {show || checked ? after : after.replace(/[^\s]/g, '·')}
               </div>
-              {checked && !ok && <div className="text-label-2 mt-1 text-[13px]">Era: <b className="text-label">{gap}</b></div>}
+              {checked && !ok && <div className="text-label-2 mt-1 text-[13px]">Was: <b className="text-label">{gap}</b></div>}
             </li>
           );
         })}
       </ol>
       <div className="mt-4 flex gap-2">
-        <Button onClick={check}>Comprobar</Button>
+        <Button onClick={check}>Check</Button>
         <Button
           variant="gray"
           onClick={() => {
@@ -253,7 +253,7 @@ function DialoguePlayer({ clip, level }: { clip: Clip; level: CefrLevel }) {
             setChecked(false);
           }}
         >
-          <RotateCcw size={15} /> Reiniciar
+          <RotateCcw size={15} /> Restart
         </Button>
       </div>
     </Card>
@@ -277,7 +277,7 @@ function Months() {
       const opts = new Set([MONTH_NAMES[idx]!]);
       while (opts.size < 4) opts.add(MONTH_NAMES[Math.floor(Math.random() * 12)]!);
       const options = [...opts].sort(() => Math.random() - 0.5);
-      return { m, q: '¿De qué mes habla el audio?', options, answer: options.indexOf(MONTH_NAMES[idx]!) };
+      return { m, q: 'Which month does the audio talk about?', options, answer: options.indexOf(MONTH_NAMES[idx]!) };
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [round]);
@@ -285,8 +285,8 @@ function Months() {
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_420px]">
       <Card className="p-6">
-        <h3 className="text-title-3">Los 12 meses en Colombia</h3>
-        <p className="text-label-2 mt-1 text-[14px]">Grabaciones del juego Time Machine: escucha cada mes y su celebración.</p>
+        <h3 className="text-title-3">The 12 months in Colombia</h3>
+        <p className="text-label-2 mt-1 text-[14px]">Recordings from the Time Machine game: listen to each month and its celebration.</p>
         <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {MONTHS.map((m, i) => (
             <MonthTile key={m} m={m} name={MONTH_NAMES[i]!} />
@@ -294,14 +294,14 @@ function Months() {
         </div>
       </Card>
       <Card className="p-6">
-        <h3 className="text-title-3 mb-4">Quiz de audio</h3>
+        <h3 className="text-title-3 mb-4">Audio quiz</h3>
         <QuizWithAudio
           key={round}
           items={items}
-          onFinish={(score) => award({ kind: 'listening', title: 'Quiz: meses del año', skill: 'listening', xp: 10 + Math.round(score / 10), score, level: 'A1', ref: 'practice:listening' })}
+          onFinish={(score) => award({ kind: 'listening', title: 'Quiz: months of the year', skill: 'listening', xp: 10 + Math.round(score / 10), score, level: 'A1', ref: 'practice:listening' })}
         />
         <Button variant="plain" className="mt-2" onClick={() => setRound((r) => r + 1)}>
-          Nuevas preguntas
+          New questions
         </Button>
       </Card>
     </div>
@@ -346,7 +346,7 @@ function QuizWithAudio({ items, onFinish }: { items: (QuizItem & { m: string })[
         <Button size="sm" onClick={() => void audio.current?.play()}>
           <Play size={14} fill="currentColor" /> Escuchar audio
         </Button>
-        <span className="text-label-2 text-[13px]">Pregunta {Math.min(i + 1, items.length)}</span>
+        <span className="text-label-2 text-[13px]">Question {Math.min(i + 1, items.length)}</span>
         <audio ref={audio} src={`/grammar/time-machine/audio/${items[Math.min(i, items.length - 1)]!.m}.m4a`} preload="auto" />
       </div>
       <QuizTracker items={items} onIndex={setI} onFinish={onFinish} />

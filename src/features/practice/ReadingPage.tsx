@@ -48,7 +48,7 @@ async function loadReadings(): Promise<Reading[]> {
             title: String(b.title ?? '').replace(/^Reading:\s*/, ''),
             level: 'A1',
             kind: 'story',
-            subtitle: `${t.title} · Unidad ${u.n}`,
+            subtitle: `${t.title} · Unit ${u.n}`,
             paras: paras.map((p) => ({ en: p })),
             glossary: vocab,
             quiz: vocab.map(([en, es], k) => {
@@ -58,7 +58,7 @@ async function loadReadings(): Promise<Reading[]> {
               );
               const rot = k % opts.length;
               const options = [...opts.slice(rot), ...opts.slice(0, rot)];
-              return { q: `En el texto, ¿qué significa “${en}”?`, options, answer: options.indexOf(es) };
+              return { q: `In the text, what does “${en}” mean?`, options, answer: options.indexOf(es) };
             }),
           };
         }),
@@ -94,7 +94,7 @@ async function loadReadings(): Promise<Reading[]> {
       title: `Travelling in ${g.name}`,
       level: 'A2',
       kind: 'travel',
-      subtitle: `${g.capital} · ${g.visitors} visitantes al año`,
+      subtitle: `${g.capital} · ${g.visitors} visitors a year`,
       paras,
       quiz,
     };
@@ -116,17 +116,17 @@ export default function ReadingPage() {
 
   const list = data.filter((r) => r.kind === tab);
   return (
-    <Page back={{ to: '/practice', label: 'Práctica' }} title="Reading" subtitle="Lee, escucha y comprueba lo que entendiste." wide={tab === 'library' || tab === 'unit'}>
+    <Page back={{ to: '/practice', label: 'Practice' }} title="Reading" subtitle="Read, listen and check what you understood." wide={tab === 'library' || tab === 'unit'}>
       {!params.get('lib') && !params.get('ur') && (
         <div className="no-scrollbar mb-5 overflow-x-auto">
           <Segmented
             value={tab}
             onChange={setTab}
             options={[
-              { value: 'library', label: 'Biblioteca A1–C2' },
-              { value: 'unit', label: 'Por unidad' },
-              { value: 'story', label: 'Historias A1' },
-              { value: 'travel', label: 'Guías de viaje' },
+              { value: 'library', label: 'Library A1–C2' },
+              { value: 'unit', label: 'By unit' },
+              { value: 'story', label: 'A1 stories' },
+              { value: 'travel', label: 'Travel guides' },
             ]}
           />
         </div>
@@ -139,7 +139,7 @@ export default function ReadingPage() {
       ) : tab === 'unit' ? (
         <UnitBrowser />
       ) : (
-      <ListGroup header={`${list.length} lecturas`}>
+      <ListGroup header={`${list.length} readings`}>
         {list.map((r) => (
           <ListRow
             key={r.id}
@@ -189,7 +189,7 @@ function UnitBrowser() {
   const open = all.find((r) => r.id === params.get('ur'));
   if (open) {
     const n = Object.entries(data![1]).find(([, rs]) => rs.includes(open))?.[0];
-    return <Reader key={open.id} r={open} backLabel="Por unidad" onBack={() => setParams({ tab: 'unit', lvl, ...(n ? { u: n } : {}) })} />;
+    return <Reader key={open.id} r={open} backLabel="By unit" onBack={() => setParams({ tab: 'unit', lvl, ...(n ? { u: n } : {}) })} />;
   }
   const color = levelMeta(lvl)!.color;
   const units = data?.[0].units.filter((u) => data[1][String(u.n)]?.length) ?? [];
@@ -206,11 +206,11 @@ function UnitBrowser() {
       {loading || !data ? (
         <PageLoader />
       ) : !units.length ? (
-        <p className="text-label-2">Las lecturas por unidad de este nivel se están preparando.</p>
+        <p className="text-label-2">The readings by unit for this level are being prepared.</p>
       ) : (
         <>
           <p className="text-label-2 mb-4 text-[13px]">
-            {all.length} lecturas originales escritas con el tema, el vocabulario y la gramática de cada unidad de {data[0].book}.
+            {all.length} original readings written with the topic, vocabulary and grammar of each unit of {data[0].book}.
           </p>
           <div className="grid gap-x-5 gap-y-6 lg:grid-cols-2">
             {units.map((u) => (
@@ -252,7 +252,7 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
     <Page
       eyebrow={
         <button type="button" onClick={onBack} className="text-ink-blue">
-          ‹ Lecturas
+          ‹ Readings
         </button>
       }
       title={r.title}
@@ -260,24 +260,24 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
       actions={
         <>
           <Button variant="tinted" size="sm" onClick={() => speak(r.paras.map((p) => p.en).join('. '), { rate: 0.92 })}>
-            <Volume2 size={15} /> Escuchar
+            <Volume2 size={15} /> Listen
           </Button>
           <Button variant="gray" size="sm" onClick={stopSpeaking}>
-            Parar
+            Stop
           </Button>
         </>
       }
     >
       {r.guide && (
         <div className="-mt-6 mb-5">
-          <VisualsFor title="Esta guía en una infografía" where={(p) => 'guide' in p && p.guide === r.guide} />
+          <VisualsFor title="This guide as an infographic" where={(p) => 'guide' in p && p.guide === r.guide} />
         </div>
       )}
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_400px]">
         <Card className="p-6">
           {r.kind === 'travel' && showEs && (
             <label className="text-label-2 mb-4 flex items-center gap-2 text-[14px]">
-              <input type="checkbox" checked={es} onChange={(e) => setEs(e.target.checked)} /> Mostrar traducción
+              <input type="checkbox" checked={es} onChange={(e) => setEs(e.target.checked)} /> Show translation
             </label>
           )}
           <div className="space-y-4 text-[17px] leading-[1.7]">
@@ -306,7 +306,7 @@ function ReadingView({ r, onBack }: { r: Reading; onBack: () => void }) {
         </Card>
         <div>
           <Card className="p-5 lg:sticky lg:top-6">
-            <h3 className="text-title-3 mb-4">Comprensión</h3>
+            <h3 className="text-title-3 mb-4">Comprehension</h3>
             <Quiz key={r.id} items={r.quiz} onFinish={(score) => complete(r.id, score, r.title, r.level)} />
           </Card>
         </div>

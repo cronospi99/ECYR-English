@@ -33,17 +33,17 @@ export default function StudentPage() {
   if (!isTeacher) return <NotFound />;
   if (!students)
     return (
-      <Page back={{ to: '/teacher', label: 'Mi clase' }}>
-        <div className="text-label-2 flex items-center justify-center gap-2 py-20">{loading && <Spinner className="h-5 w-5" />} Cargando…</div>
+      <Page back={{ to: '/teacher', label: 'My class' }}>
+        <div className="text-label-2 flex items-center justify-center gap-2 py-20">{loading && <Spinner className="h-5 w-5" />} Loading…</div>
       </Page>
     );
   const s = students.find((x) => x.profile.id === id);
   if (!s) return <NotFound />;
-  const name = s.profile.full_name || s.profile.email || 'Estudiante';
+  const name = s.profile.full_name || s.profile.email || 'Student';
   const level = currentLevel(s.progress.units);
 
   return (
-    <Page back={{ to: '/teacher', label: 'Mi clase' }} wide>
+    <Page back={{ to: '/teacher', label: 'My class' }} wide>
       <div className="mb-6 flex flex-wrap items-center gap-4">
         <Avatar name={name} config={s.avatar} size={72} />
         <div className="min-w-0 flex-1">
@@ -55,13 +55,13 @@ export default function StudentPage() {
                 <Mail size={14} /> {s.profile.email}
               </a>
             )}
-            <span>{s.syncedAt ? `Sincronizado ${relativeTime(s.syncedAt)}` : 'Aún no ha sincronizado progreso'}</span>
+            <span>{s.syncedAt ? `Sincronizado ${relativeTime(s.syncedAt)}` : 'Hasn’t synced progress yet'}</span>
           </div>
         </div>
         <AssignButton
           variant="brand"
           size="md"
-          label={`Asignar tarea a ${name.split(/[\s@]/)[0] || 'este estudiante'}`}
+          label={`Assign a task to ${name.split(/[\s@]/)[0] || 'this student'}`}
           preset={{ students: [s.profile.id] }}
           onSaved={() => tab === 'tasks' && setParams({ tab: 'tasks', r: String(Date.now()) })}
         />
@@ -71,12 +71,12 @@ export default function StudentPage() {
           value={tab}
           onChange={(t) => setParams(t === 'overview' ? {} : { tab: t })}
           options={[
-            { value: 'overview', label: 'Progreso' },
-            { value: 'tasks', label: 'Tareas' },
+            { value: 'overview', label: 'Progress' },
+            { value: 'tasks', label: 'Tasks' },
             { value: 'plan', label: 'Plan' },
-            { value: 'games', label: 'Juegos' },
+            { value: 'games', label: 'Games' },
             { value: 'ielts', label: 'IELTS' },
-            { value: 'work', label: 'Trabajos' },
+            { value: 'work', label: 'Work' },
           ]}
         />
       </div>
@@ -99,7 +99,7 @@ export default function StudentPage() {
         <div className="space-y-6">
           <StudentWork studentId={s.profile.id} />
           <section>
-            <h2 className="text-title-3 mb-3 px-1">Archivos y entregas (Mis trabajos)</h2>
+            <h2 className="text-title-3 mb-3 px-1">Files and hand-ins (My work)</h2>
             <PortfolioList userId={s.profile.id} canReview />
           </section>
         </div>
@@ -110,7 +110,7 @@ export default function StudentPage() {
 
 function PlanTab({ s }: { s: NonNullable<ReturnType<typeof useClass>['students']>[number] }) {
   const plan = s.plan?.current;
-  if (!plan) return <EmptyState icon={<FileUp size={40} />} title="Sin plan activo" body="Este estudiante no ha creado un plan semanal." />;
+  if (!plan) return <EmptyState icon={<FileUp size={40} />} title="No active plan" body="This student hasn’t created a weekly plan." />;
   const ev = evaluatePlan(plan, s.progress.activity, s.plan!.manual);
   return (
     <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
@@ -125,14 +125,12 @@ function PlanTab({ s }: { s: NonNullable<ReturnType<typeof useClass>['students']
             <span className="shrink-0 font-bold tabular-nums">{Math.round(ev.ratio * 100)}%</span>
           </div>
           <div className="text-label-2 mt-2 text-[13px]">
-            {ev.done}/{ev.total} tareas · {ev.minutesDone}/{ev.minutesPlanned} min · {ev.activeDays} días activos
-            {ev.avgScore != null ? ` · acierto ${ev.avgScore}%` : ''}
-          </div>
+            {ev.done}/{ev.total} tasks · {ev.minutesDone}/{ev.minutesPlanned} min · {ev.activeDays} active days {ev.avgScore != null ? ` · ${ev.avgScore}% accuracy` : ''} </div>
         </Card>
         <PlanWeek plan={plan} ev={ev} readOnly />
       </div>
       <Card className="pb-5">
-        <CardHeader title="Por destreza" />
+        <CardHeader title="By skill" />
         <ul className="mt-3 space-y-3 px-5">
           {ALL_SKILLS.filter((k) => ev.bySkill[k].planned).map((k) => (
             <li key={k}>
@@ -148,7 +146,7 @@ function PlanTab({ s }: { s: NonNullable<ReturnType<typeof useClass>['students']
         </ul>
         {s.plan!.history.length > 0 && (
           <>
-            <div className="text-label-2 mt-5 px-5 text-[12px] font-semibold uppercase">Semanas anteriores</div>
+            <div className="text-label-2 mt-5 px-5 text-[12px] font-semibold uppercase">Previous weeks</div>
             <ul className="mt-1">
               {s.plan!.history.slice(0, 6).map((h) => (
                 <li key={h.id} className="flex justify-between gap-2 px-5 py-1.5 text-[13px]">
@@ -165,9 +163,9 @@ function PlanTab({ s }: { s: NonNullable<ReturnType<typeof useClass>['students']
 }
 
 const SOURCE_LABEL: Record<string, string> = {
-  'ielts-account': 'Cuenta del IELTS Simulator',
-  'ielts-session-file': 'Archivo de sesión IELTS',
-  'ecyr-progress-file': 'Archivo de progreso ECYR',
+  'ielts-account': 'IELTS Simulator account',
+  'ielts-session-file': 'IELTS session file',
+  'ecyr-progress-file': 'ECYR progress file',
 };
 
 /** Imports and migrations the student ran (from public.migrations_log). */
@@ -190,7 +188,7 @@ function Migrations({ userId }: { userId: string }) {
   if (!rows.length) return null;
   return (
     <Card className="mt-5 pb-2">
-      <CardHeader title="Progreso importado" subtitle="Migraciones e importaciones de este estudiante" />
+      <CardHeader title="Imported progress" subtitle="Migrations and imports of this student" />
       <ul className="mt-2">
         {rows.map((r) => (
           <li key={r.id} className="flex items-center justify-between gap-3 px-5 py-2 text-[14px]">

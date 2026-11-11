@@ -38,13 +38,13 @@ export default function FoundationsPage() {
 
   return (
     <Page
-      back={{ to: '/learn', label: 'Aprender' }}
-      eyebrow="Pre-A1 · Antes de empezar A1"
+      back={{ to: '/learn', label: 'Learn' }}
+      eyebrow="Pre-A1 · Before starting A1"
       title="Foundations"
-      subtitle="Las bases del inglés explicadas en español: alfabeto, saludos, to be, posesivos, números, signos, demostrativos, preguntas, la ropa y el genitivo sajón."
+      subtitle="English basics explained in Spanish: alphabet, greetings, to be, possessives, numbers, signs, demonstratives, questions, clothes and the Saxon genitive."
       actions={
         <ButtonLink to="/play/a1-foundations" variant="tinted">
-          <MonitorPlay size={17} /> Versión cómic
+          <MonitorPlay size={17} /> Comic version
         </ButtonLink>
       }
     >
@@ -55,7 +55,7 @@ export default function FoundationsPage() {
           <Card className="mb-6 overflow-hidden">
             <div className={cn('flex items-center gap-4 bg-gradient-to-br p-5 text-white', PREA1.tint)}>
               <div className="min-w-0 flex-1">
-                <div className="text-[13px] font-bold tracking-wide uppercase opacity-90">Progreso del curso</div>
+                <div className="text-[13px] font-bold tracking-wide uppercase opacity-90">Course progress</div>
                 <div className="text-[28px] leading-tight font-extrabold tabular-nums">
                   {done}/{total} temas
                 </div>
@@ -94,7 +94,7 @@ export default function FoundationsPage() {
           {exams.all.length > 0 && (
             <div className="mt-8">
               <h2 className="text-title-3">Evaluaciones Pre-A1</h2>
-              <p className="text-label-2 mt-1 mb-3 text-[15px]">Un parcial al terminar la unidad 4 y el parcial final del nivel: listening, reading, writing, speaking, gramática y vocabulario.</p>
+              <p className="text-label-2 mt-1 mb-3 text-[15px]">A midterm after unit 4 and the level’s final exam: listening, reading, writing, speaking, grammar and vocabulary.</p>
               <div className="grid gap-3 md:grid-cols-2">
                 {exams.all.map((e) => (
                   <ExamRow key={e.id} exam={e} color="var(--green)" />
@@ -105,10 +105,9 @@ export default function FoundationsPage() {
 
           {movedUnits.length > 0 && (
             <div className="mt-8">
-              <h2 className="text-title-3">¿Y los otros temas del curso anterior?</h2>
+              <h2 className="text-title-3">And the other topics from the old course?</h2>
               <p className="text-label-2 mt-1 mb-4 text-[15px] text-pretty">
-                Present simple, pasado, comparativos, can, there is… ahora están dentro de la lección de gramática de A1 o A2 donde se estudian, como «Práctica
-                interactiva».
+                Present simple, past, comparatives, can, there is… are now inside the A1 or A2 grammar lesson where they are studied, as “Interactive practice”.
               </p>
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 [&>*]:min-w-0">
                 {movedUnits.map(([key, list]) => (
@@ -118,7 +117,7 @@ export default function FoundationsPage() {
                         key={t.id}
                         to={unitPath(key)}
                         title={t.title}
-                        subtitle={`Lección de gramática ${t.point + 1}`}
+                        subtitle={`Grammar lesson ${t.point + 1}`}
                         trailing={topics[t.id] ? <CheckCircle2 size={18} className="text-ink-green" /> : undefined}
                       />
                     ))}

@@ -40,7 +40,7 @@ export function FoundationExtras({ unitKey, pointIndex, color }: { unitKey: stri
       {review.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 text-[14px]">
           <span className="text-label-2 inline-flex items-center gap-1.5">
-            <GraduationCap size={16} aria-hidden /> Repasa en Pre-A1:
+            <GraduationCap size={16} aria-hidden /> Review in Pre-A1:
           </span>
           {review.map((id) => (
             <Link
@@ -65,13 +65,11 @@ function InlineTopic({ topic, color }: { topic: CourseTopic; color: string }) {
     <Disclosure
       summary={
         <span className="inline-flex items-center gap-2">
-          Práctica interactiva · {topic.title}
-          {done && <CheckCircle2 size={16} className="text-ink-green" aria-label={`Completado ${done.score}%`} />}
-        </span>
+          Interactive practice · {topic.title} {done && <CheckCircle2 size={16} className="text-ink-green" aria-label={`Completed ${done.score}%`} />} </span>
       }
       icon={Puzzle}
       color={color}
-      meta={`${exercises} ${exercises === 1 ? 'ejercicio' : 'ejercicios'} con corrección · tablas y ejemplos en español`}
+      meta={`${exercises} ${exercises === 1 ? 'exercise' : 'exercises'} with feedback · tables and examples in Spanish`}
     >
       <TopicBody topic={topic} color={color} />
     </Disclosure>
@@ -85,7 +83,7 @@ function TopicBody({ topic, color }: { topic: CourseTopic; color: string }) {
       {interactive.length > 0 && (
         <div>
           <div className="text-label-2 mb-1 flex justify-between text-[12px]">
-            <span>Ejercicios</span>
+            <span>Exercises</span>
             <span className="tabular-nums">
               {answered}/{interactive.length}
             </span>
@@ -96,7 +94,7 @@ function TopicBody({ topic, color }: { topic: CourseTopic; color: string }) {
       {topic.blocks.map((b, i) => (
         <Block key={`${topic.id}-${i}`} block={b} onResult={onResult(i)} />
       ))}
-      {allDone && <p className="text-ink-green text-[14px] font-semibold">¡Práctica completada! · {avg}%</p>}
+      {allDone && <p className="text-ink-green text-[14px] font-semibold">Practice completed! · {avg}%</p>}
     </div>
   );
 }

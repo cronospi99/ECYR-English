@@ -127,7 +127,7 @@ export const ieltsTts = {
       root = createRoot(host);
       roots.set(host, root);
     }
-    root.render(createElement(AudioScrubber, { player: p, color: 'var(--indigo)', speeds: [1, 0.9, 0.8], restart: true, label: 'Posición de la sección', onPlay: () => o.onPlay?.() }));
+    root.render(createElement(AudioScrubber, { player: p, color: 'var(--indigo)', speeds: [1, 0.9, 0.8], restart: true, label: 'Section position', onPlay: () => o.onPlay?.() }));
     return { playbackRate: 1, pause: () => p.pause() };
   },
 

@@ -11,7 +11,7 @@ interface D {
   recent?: Recent[];
 }
 
-const NAMES: Record<Kind, string> = { track: 'Canción', album: 'Álbum', playlist: 'Playlist', artist: 'Artista', episode: 'Episodio', show: 'Podcast' };
+const NAMES: Record<Kind, string> = { track: 'Song', album: 'Album', playlist: 'Playlist', artist: 'Artist', episode: 'Episode', show: 'Podcast' };
 
 /** Spotify item from an open.spotify.com link (any locale prefix) or a spotify: URI. */
 export function parseSpotify(input: string): { kind: Kind; id: string } | null {
@@ -41,9 +41,9 @@ export default function Spotify({ data, set, editing, setEditing }: WidgetProps<
       <LinkForm
         icon={<Music size={44} style={{ color: '#1DB954' }} />}
         color="#1DB954"
-        prompt="Pega un enlace de Spotify (playlist, canción, álbum o podcast)"
+        prompt="Paste a Spotify link (playlist, song, album or podcast)"
         placeholder="https://open.spotify.com/playlist/…"
-        error="Ese enlace no parece de Spotify."
+        error="That link doesn’t look like Spotify."
         presets={PRESETS}
         recent={data.recent}
         onSubmit={(url) => {
@@ -57,7 +57,7 @@ export default function Spotify({ data, set, editing, setEditing }: WidgetProps<
         onForget={(url) => set({ recent: (data.recent ?? []).filter((r) => r.url !== url) })}
         footer={
           <p className="text-label-3 max-w-md text-[12px] leading-snug">
-            Con tu sesión de Spotify abierta en este navegador (Premium) suenan las canciones completas; sin sesión, vistas previas de 30 s.
+            With your Spotify session open in this browser (Premium), full songs play; without a session, 30 s previews.
           </p>
         }
       />
@@ -68,11 +68,11 @@ export default function Spotify({ data, set, editing, setEditing }: WidgetProps<
       <iframe
         className="min-h-0 w-full flex-1"
         src={`https://open.spotify.com/embed/${data.kind}/${data.id}?utm_source=generator`}
-        title="Reproductor de Spotify"
+        title="Spotify player"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       />
-      <p className="px-3 py-1 text-center text-[11px] text-white/45">¿No carga? Tu red o el antivirus del equipo pueden bloquear Spotify.</p>
+      <p className="px-3 py-1 text-center text-[11px] text-white/45">Not loading? Your network or your computer’s antivirus may be blocking Spotify.</p>
     </div>
   );
 }

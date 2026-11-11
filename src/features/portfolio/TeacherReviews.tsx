@@ -24,7 +24,7 @@ export function TeacherReviews() {
   return (
     <section className="mb-6">
       <h2 className="text-title-3 mb-2 flex items-center gap-2 px-1">
-        <GraduationCap size={20} className="text-ink-indigo" /> Revisiones de tu profe
+        <GraduationCap size={20} className="text-ink-indigo" /> Your teacher’s reviews
       </h2>
       <ul className="bg-card shadow-card divide-separator divide-y overflow-hidden rounded-[18px]">
         {list.map((r) => {
@@ -40,8 +40,8 @@ export function TeacherReviews() {
                   {r.grade != null ? fmt(r.grade) : r.score != null ? r.score : '💬'}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[15px] font-semibold">{r.title || 'Trabajo revisado'}</span>
-                  <span className="text-label-2 block truncate text-[13px]">{r.comment || `${r.notes.length} comentarios en tu texto`}</span>
+                  <span className="block truncate text-[15px] font-semibold">{r.title || 'Work reviewed'}</span>
+                  <span className="text-label-2 block truncate text-[13px]">{r.comment || `${r.notes.length} comments on your text`}</span>
                 </span>
                 <span className="text-label-2 shrink-0 text-[12px]">{relativeTime(r.updated_at)}</span>
                 <ChevronDown size={16} className={cn('text-label-3 shrink-0 transition-transform', isOpen && 'rotate-180')} />

@@ -28,14 +28,14 @@ export default function ProgressPage() {
   const tab: Tab = (['games', 'ielts'] as const).find((t) => t === params.get('tab')) ?? 'general';
 
   return (
-    <Page title="Progreso" subtitle="Cada unidad completada es un paso más hacia la cima." wide>
+    <Page title="Progress" subtitle="Every completed unit is another step towards the summit." wide>
       <div className="no-scrollbar mb-5 overflow-x-auto">
         <Segmented<Tab>
           value={tab}
           onChange={(t) => setParams(t === 'general' ? {} : { tab: t })}
           options={[
             { value: 'general', label: 'General' },
-            { value: 'games', label: 'Juegos' },
+            { value: 'games', label: 'Games' },
             { value: 'ielts', label: 'IELTS' },
           ]}
         />
@@ -44,8 +44,8 @@ export default function ProgressPage() {
         <>
           <ProgressOverview p={p} editable />
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <LinkCard to="/portfolio" icon={FolderOpen} color="var(--teal)" title="Mis trabajos" text="Escritos, tareas y trabajos que ya hiciste, con la revisión de tu docente." />
-            <LinkCard to="/import" icon={FileUp} color="var(--indigo)" title="Importar y migrar" text="Trae tu progreso del IELTS Simulator original o de otro dispositivo." />
+            <LinkCard to="/portfolio" icon={FolderOpen} color="var(--teal)" title="My work" text="Writing, assignments and work you’ve already done, with your teacher’s review." />
+            <LinkCard to="/import" icon={FileUp} color="var(--indigo)" title="Import and migrate" text="Bring your progress from the original IELTS Simulator or from another device." />
           </div>
         </>
       )}
@@ -88,26 +88,26 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
         <div className="material absolute top-4 left-4 flex items-center gap-3 rounded-[16px] px-4 py-3">
           <Mountain className="text-ink-indigo" />
           <div>
-            <div className="text-label-2 text-[12px]">Altura alcanzada</div>
+            <div className="text-label-2 text-[12px]">Height reached</div>
             <div className="text-[24px] leading-tight font-extrabold tabular-nums">{Math.round(climb * 100)}%</div>
           </div>
         </div>
         <div className="material absolute top-4 right-4 rounded-[16px] px-4 py-3 text-right">
-          <div className="text-label-2 text-[12px]">Nivel actual</div>
+          <div className="text-label-2 text-[12px]">Current level</div>
           <div className="text-[24px] leading-tight font-extrabold">{level}</div>
         </div>
       </Card>
 
       <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat icon={Zap} color="var(--yellow)" label="XP total" value={p.xp.toLocaleString('es')} />
+        <Stat icon={Zap} color="var(--yellow)" label="XP total" value={p.xp.toLocaleString('en')} />
         <Stat icon={Trophy} color="var(--purple)" label={`Rango ${rank.rank}`} value={`${rank.into}/${rank.need}`} progress={rank.ratio} />
-        <Stat icon={Flame} color="var(--orange)" label="Racha actual" value={`${p.streak.current} días`} />
-        <Stat icon={Flame} color="var(--red)" label="Mejor racha" value={`${p.streak.best} días`} />
+        <Stat icon={Flame} color="var(--orange)" label="Current streak" value={`${p.streak.current} days`} />
+        <Stat icon={Flame} color="var(--red)" label="Best streak" value={`${p.streak.best} days`} />
       </div>
 
       <div className="grid gap-5 lg:grid-cols-2">
         <Card className="pb-5">
-          <CardHeader title="Por nivel" subtitle="Unidades completadas en cada tramo" />
+          <CardHeader title="By level" subtitle="Units completed in each stretch" />
           <div className="space-y-4 px-5 pt-4">
             {LEVELS.map((l) => {
               const c = levelCompletion(p.units, l.id);
@@ -128,7 +128,7 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
           </div>
         </Card>
         <Card className="pb-5">
-          <CardHeader title="Habilidades" subtitle="XP acumulada por destreza" />
+          <CardHeader title="Skills" subtitle="XP earned by skill" />
           <div className="px-4 pt-6">
             <SkillRings skillXp={p.skillXp} goal={500} />
           </div>
@@ -144,7 +144,7 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
           </div>
         </Card>
         <Card className="pb-4 lg:col-span-2">
-          <CardHeader title="Actividad" subtitle="XP diaria · últimos 30 días" />
+          <CardHeader title="Activity" subtitle="Daily XP · last 30 days" />
           <div className="px-4 pt-2">
             <ActivityChart daily={p.dailyXp} goal={p.dailyGoal} days={30} />
           </div>
@@ -153,10 +153,10 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
         {editable && (
         <Card className="p-5">
           <h3 className="text-title-3 mb-1 flex items-center gap-2">
-            <Target size={20} className="text-ink-blue" /> Metas
+            <Target size={20} className="text-ink-blue" /> Goals
           </h3>
-          <p className="text-label-2 mb-4 text-[14px]">Ajusta tu nivel objetivo y tu meta diaria de XP.</p>
-          <div className="text-[13px] font-semibold">Nivel objetivo</div>
+          <p className="text-label-2 mb-4 text-[14px]">Adjust your target level and your daily XP goal.</p>
+          <div className="text-[13px] font-semibold">Target level</div>
           <Segmented<CefrLevel>
             className="mt-2 w-full"
             value={p.targetLevel}
@@ -174,9 +174,9 @@ export function ProgressOverview({ p, editable = false }: { p: ProgressData; edi
         )}
 
         <Card className={editable ? 'pb-2' : 'pb-2 lg:col-span-2'}>
-          <CardHeader title="Historial" subtitle={`${p.activity.length} actividades`} />
+          <CardHeader title="History" subtitle={`${p.activity.length} actividades`} />
           {p.activity.length === 0 ? (
-            <EmptyState icon={<Mountain size={44} />} title="Aún no hay actividad" body="Completa tu primera unidad para empezar a escalar." />
+            <EmptyState icon={<Mountain size={44} />} title="No activity yet" body="Complete your first unit to start climbing." />
           ) : (
             <ul className="mt-2 max-h-[360px] overflow-y-auto">
               {p.activity.map((a) => (

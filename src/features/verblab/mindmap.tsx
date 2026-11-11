@@ -178,7 +178,7 @@ function MindMap({ family, onClose }: { family: MindFamily; onClose: () => void 
     <motion.div
       role="dialog"
       aria-modal="true"
-      aria-label={`Mapa de phrasal verbs con ${family.verb}`}
+      aria-label={`Phrasal verb map with ${family.verb}`}
       className="fixed inset-0 z-[90] flex flex-col text-white"
       style={{ background: `radial-gradient(120% 90% at 50% 40%, color-mix(in srgb, ${family.color} 55%, #0b1026), #0b1026)` }}
       initial={{ opacity: 0 }}
@@ -191,7 +191,7 @@ function MindMap({ family, onClose }: { family: MindFamily; onClose: () => void 
           type="button"
           onClick={onClose}
           className="flex h-10 w-10 items-center justify-center rounded-full bg-white/12 hover:bg-white/22"
-          aria-label="Volver"
+          aria-label="Back"
         >
           <ArrowLeft size={20} />
         </button>
@@ -199,7 +199,7 @@ function MindMap({ family, onClose }: { family: MindFamily; onClose: () => void 
           <div className="text-[20px] leading-tight font-extrabold">{family.verb}</div>
           <div className="text-[12px] text-white/70">{family.items.length} phrasal verbs</div>
         </div>
-        <div className="ml-auto hidden text-[13px] text-white/70 sm:block">Toca una burbuja para ver significado y ejemplos</div>
+        <div className="ml-auto hidden text-[13px] text-white/70 sm:block">Tap a bubble to see the meaning and examples</div>
       </div>
       <div ref={canvas} className={cn('relative flex-1', wide ? 'overflow-hidden' : 'overflow-y-auto overscroll-contain')}>
         {size.w > 0 && (
@@ -309,10 +309,10 @@ function PhrasalDetail({ family, index, onIndex, onClose }: { family: MindFamily
               onClick={() => sayAll([it.pv, ...examples])}
               className="text-ink-blue mt-1 inline-flex items-center gap-1.5 text-[14px] font-semibold"
             >
-              <Volume2 size={15} /> Escuchar todo
+              <Volume2 size={15} /> Listen to all
             </button>
           </div>
-          <button type="button" onClick={onClose} className="bg-fill-2 hover:bg-fill flex h-9 w-9 shrink-0 items-center justify-center rounded-full" aria-label="Cerrar">
+          <button type="button" onClick={onClose} className="bg-fill-2 hover:bg-fill flex h-9 w-9 shrink-0 items-center justify-center rounded-full" aria-label="Close">
             <X size={18} />
           </button>
         </div>
@@ -353,13 +353,13 @@ export function PhrasalInfo({ item: it, color, examples }: { item: MindItem; col
     <>
       <div className="mt-4 rounded-[16px] p-4" style={{ background: `color-mix(in srgb, ${color} 12%, var(--card))` }}>
         <div className="text-[11px] font-bold tracking-wide uppercase" style={{ color: ink(color) }}>
-          Significado
+          Meaning
         </div>
         <p className="mt-0.5 text-[17px] font-semibold">{it.def}</p>
         {it.es && showEs && <p className="text-label-2 mt-1 text-[14px]">🇪🇸 {it.es}</p>}
       </div>
 
-      <div className="text-label-2 mt-4 mb-2 text-[11px] font-bold tracking-wide uppercase">Ejemplos</div>
+      <div className="text-label-2 mt-4 mb-2 text-[11px] font-bold tracking-wide uppercase">Examples</div>
       <ul className="space-y-2">
         {list.map((e, k) => (
           <motion.li

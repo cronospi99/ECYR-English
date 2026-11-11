@@ -22,9 +22,9 @@ export function UnitListenings({ level, unit }: { level: CefrLevel; unit: number
   if (!data.length)
     return (
       <Card className="flex flex-col items-start gap-3 p-6">
-        <p className="text-label-2 text-[15px]">Esta unidad aún no tiene listenings propios. Practica con la biblioteca de audios de tu nivel.</p>
+        <p className="text-label-2 text-[15px]">This unit has no listenings of its own yet. Practise with the audio library for your level.</p>
         <ButtonLink to="/practice/listening" variant="tinted">
-          <Headphones size={17} /> Ir a la biblioteca de listening
+          <Headphones size={17} /> Go to the listening library
         </ButtonLink>
       </Card>
     );
@@ -40,12 +40,12 @@ export function UnitListenings({ level, unit }: { level: CefrLevel; unit: number
   return (
     <section ref={top} className="scroll-mt-20 lg:scroll-mt-4">
       {open ? (
-        <TrackPlayer key={open.id} t={open} onBack={() => go(null)} backLabel="Listenings de la unidad" />
+        <TrackPlayer key={open.id} t={open} onBack={() => go(null)} backLabel="Unit listenings" />
       ) : (
         <>
           <div className="mb-3 flex items-baseline justify-between gap-3">
             <h3 className="flex items-center gap-2 text-[20px] font-bold">
-              <Headphones size={19} className="text-ink-blue" /> Listenings de la unidad
+              <Headphones size={19} className="text-ink-blue" /> Unit listenings
             </h3>
             <span className="text-label-2 text-[13px]">
               {done}/{data.length} hechos

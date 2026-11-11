@@ -118,20 +118,20 @@ function readKeySet(k: string): Set<string> {
 function friendlyAuth(e: { message?: string; status?: number; code?: string; name?: string } | null | undefined): string {
   const msg = e?.message ?? '';
   if (e?.code === 'invalid_credentials' || /invalid login/i.test(msg))
-    return 'Correo o contraseña incorrectos para tu cuenta del IELTS Simulator. Si entrabas con Google, usa la opción de archivo de sesión o crea una contraseña en la app original («¿Olvidaste tu contraseña?»).';
+    return 'Wrong email or password for your IELTS Simulator account. If you signed in with Google, use the session file option or create a password in the original app (“Forgot your password?”).';
   if (e?.code === 'email_not_confirmed' || /email not confirmed/i.test(msg))
-    return 'Esa cuenta del IELTS Simulator nunca confirmó su correo. Abre el enlace de confirmación que te llegó (o pide otro en la app original) y vuelve a intentarlo.';
-  if (e?.status === 429 || /rate limit|too many/i.test(msg)) return 'Demasiados intentos seguidos. Espera un minuto y vuelve a probar.';
+    return 'That IELTS Simulator account never confirmed its email. Open the confirmation link you received (or ask for another in the original app) and try again.';
+  if (e?.status === 429 || /rate limit|too many/i.test(msg)) return 'Too many attempts in a row. Wait a minute and try again.';
   if (e?.name === 'AuthRetryableFetchError' || /fetch|network|load failed/i.test(msg) || e?.status === 0)
-    return 'No se pudo conectar con el IELTS Simulator. Revisa tu conexión a internet e inténtalo de nuevo.';
-  return msg || 'No se pudo iniciar sesión en el IELTS Simulator.';
+    return 'Could not connect to the IELTS Simulator. Check your internet connection and try again.';
+  return msg || 'Could not sign in to the IELTS Simulator.';
 }
 
 function friendlyDb(e: PostgrestError | { message?: string; code?: string } | null | undefined, what: string): string {
   const msg = e?.message ?? '';
-  if (e?.code === '42501' || /permission denied|row-level security/i.test(msg)) return `${what}: permiso denegado por la base de datos.`;
-  if (e?.code === 'PGRST205' || e?.code === '42P01' || /does not exist|schema cache/i.test(msg)) return `${what}: falta la tabla en la base de datos.`;
-  if (/fetch|network/i.test(msg)) return `${what}: sin conexión.`;
+  if (e?.code === '42501' || /permission denied|row-level security/i.test(msg)) return `${what}: permission denied by the database.`;
+  if (e?.code === 'PGRST205' || e?.code === '42P01' || /does not exist|schema cache/i.test(msg)) return `${what}: the table is missing in the database.`;
+  if (/fetch|network/i.test(msg)) return `${what}: offline.`;
   return `${what}: ${msg || 'error desconocido'}.`;
 }
 const isMissingTable = (e: { code?: string; message?: string } | null) =>
@@ -206,14 +206,14 @@ export async function connectOldIelts(
   email: string,
   password: string,
 ): Promise<{ ok: true; dump: OldIeltsDump; counts: OldIeltsCounts } | { ok: false; error: string }> {
-  if (!email.trim() || !password) return { ok: false, error: 'Escribe el correo y la contraseña de tu cuenta del IELTS Simulator.' };
+  if (!email.trim() || !password) return { ok: false, error: 'Type the email and password of your IELTS Simulator account.' };
   let client: SupabaseClient;
   try {
     client = createClient(OLD_IELTS.url, OLD_IELTS.anonKey, {
       auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'ecyr-old-ielts' },
     });
   } catch {
-    return { ok: false, error: 'No se pudo preparar la conexión con el IELTS Simulator.' };
+    return { ok: false, error: 'Could not prepare the connection with the IELTS Simulator.' };
   }
   let signedIn = false;
   try {
@@ -228,8 +228,8 @@ export async function connectOldIelts(
       client.from('progress').select('scores,history,updated_at').eq('student_id', uid).maybeSingle(),
       client.rpc('can_see_my_history'),
     ]);
-    if (prof.error) warnings.push(friendlyDb(prof.error, 'Perfil'));
-    if (prog.error) warnings.push(friendlyDb(prog.error, 'Bandas e historial'));
+    if (prof.error) warnings.push(friendlyDb(prof.error, 'Profile'));
+    if (prog.error) warnings.push(friendlyDb(prog.error, 'Bands and history'));
     // null = the project predates 03_history_visibility (history always visible).
     const historyVisible = vis.error ? null : vis.data === true;
 
@@ -243,11 +243,11 @@ export async function connectOldIelts(
           .range(a, b),
       sanitizeSubmissionRow,
     );
-    if (subs.error) warnings.push(friendlyDb(subs.error, 'Writings y speakings'));
+    if (subs.error) warnings.push(friendlyDb(subs.error, 'Writings and speakings'));
     const submissionsHidden = historyVisible === false;
     if (submissionsHidden)
       warnings.push(
-        'Tu docente tiene desactivado el historial en el IELTS Simulator, así que la base de datos no nos deja leer tus writings y speakings corregidos. Pídele que lo active un momento (Mi clase → Historial) y vuelve a conectar; tus bandas e historial sí se migran.',
+        'Your teacher has turned off history in the IELTS Simulator, so the database doesn’t let us read your corrected writings and speakings. Ask them to turn it on for a moment (My class → History) and connect again; your bands and history are migrated anyway.',
       );
 
     const [fb, hw] = await Promise.all([
@@ -267,12 +267,12 @@ export async function connectOldIelts(
         sanitizeHomeworkRow,
       ),
     ]);
-    if (fb.error) warnings.push(friendlyDb(fb.error, 'Comentarios del docente'));
-    if (hw.error) warnings.push(friendlyDb(hw.error, 'Tareas'));
+    if (fb.error) warnings.push(friendlyDb(fb.error, 'Teacher comments'));
+    if (hw.error) warnings.push(friendlyDb(hw.error, 'Tasks'));
 
     const profile = sanitizeProfileRow(prof.data);
     if (profile?.role === 'teacher')
-      warnings.push('Esa cuenta es de docente: no tiene bandas ni writings propios. Tus estudiantes deben unirse a tu clase con el nuevo código.');
+      warnings.push('That account is a teacher account: it has no bands or writings of its own. Your students must join your class with the new code.');
     const row = (prog.data ?? null) as { scores?: unknown; history?: unknown; updated_at?: unknown } | null;
 
     const dump: OldIeltsDump = {
@@ -316,18 +316,18 @@ async function loadPrevLogs(): Promise<{ logs: PrevLog[]; available: boolean }> 
 }
 
 async function insertLog(source: MigrationSource, summary: Record<string, unknown>, payload: unknown): Promise<string | null> {
-  if (!supabase) return 'Sin conexión.';
+  if (!supabase) return 'Offline.';
   const uid = useAuth.getState().session?.user.id;
-  if (!uid) return 'Sin sesión.';
+  if (!uid) return 'Not signed in.';
   const { error } = await supabase.from('migrations_log').insert({ user_id: uid, source, summary, payload });
-  return error ? friendlyDb(error, 'Registro de migración') : null;
+  return error ? friendlyDb(error, 'Migration log') : null;
 }
 
 /** The signed-in user's IELTS `progress` row in the new project. */
 async function readNewProgress(uid: string): Promise<{ data: IeltsProgressLike; error: string | null }> {
   if (!supabase) return { data: { scores: emptyScores(), history: [] }, error: null };
   const { data, error } = await supabase.from('progress').select('scores,history').eq('student_id', uid).maybeSingle();
-  if (error) return { data: { scores: emptyScores(), history: [] }, error: friendlyDb(error, 'Progreso IELTS') };
+  if (error) return { data: { scores: emptyScores(), history: [] }, error: friendlyDb(error, 'IELTS progress') };
   const r = (data ?? {}) as { scores?: unknown; history?: unknown };
   return { data: { scores: sanitizeIeltsScores(r.scores), history: sanitizeIeltsHistory(r.history) }, error: null };
 }
@@ -337,7 +337,7 @@ async function writeNewProgress(uid: string, p: { scores: IeltsScores; history: 
   const { error } = await supabase
     .from('progress')
     .upsert({ student_id: uid, scores: p.scores, history: p.history.slice(0, HISTORY_CAP), updated_at: new Date().toISOString() });
-  return error ? friendlyDb(error, 'Progreso IELTS') : null;
+  return error ? friendlyDb(error, 'IELTS progress') : null;
 }
 
 interface EngineState {
@@ -470,10 +470,10 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
     warnings: [...dump.warnings],
   };
   const uid = useAuth.getState().session?.user.id;
-  if (!supabase || !uid) return { ...res, error: 'Inicia sesión en ECYR English para migrar.' };
+  if (!supabase || !uid) return { ...res, error: 'Sign in to ECYR English to migrate.' };
   if (oldIeltsIsSameProject() && dump.source.userId === uid)
-    return { ...res, error: 'Es la misma cuenta con la que ya has entrado: tu progreso del IELTS ya está aquí.' };
-  if (running) return { ...res, error: 'Ya hay una migración en curso.' };
+    return { ...res, error: 'It is the same account you have already signed in with: your IELTS progress is already here.' };
+  if (running) return { ...res, error: 'A migration is already in progress.' };
   running = true;
   try {
     // ---- prepare: what is already here?
@@ -497,12 +497,12 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
         },
       );
       if (ex.error) {
-        step('prepare', 'error', friendlyDb(ex.error, 'Writings existentes'));
-        return { ...res, error: friendlyDb(ex.error, 'Writings existentes') };
+        step('prepare', 'error', friendlyDb(ex.error, 'Existing writings'));
+        return { ...res, error: friendlyDb(ex.error, 'Existing writings') };
       }
       ex.rows.forEach((k) => existingKeys.add(k));
     }
-    if (!prev.available) res.warnings.push('El registro de migraciones (08_migrations_log.sql) no está instalado en el servidor; se migra igual, pero sin historial de migraciones.');
+    if (!prev.available) res.warnings.push('The migration log (08_migrations_log.sql) isn’t installed on the server; it migrates anyway, but without migration history.');
     step('prepare', 'done');
 
     // ---- progress: bands + history
@@ -519,16 +519,16 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
       step('progress', 'error', pErr);
       return { ...res, error: pErr };
     }
-    step('progress', 'done', `${merged.added.length} intentos nuevos`);
+    step('progress', 'done', `${merged.added.length} new attempts`);
 
     // ---- submissions
     step('submissions', 'running');
     const migratedKeys = new Set<string>();
     if (dump.submissionsHidden && !dump.submissions.length) {
-      step('submissions', 'skipped', 'historial oculto por tu docente');
+      step('submissions', 'skipped', 'history hidden by your teacher');
     } else if (!canRead && !prev.available) {
-      res.warnings.push('No se copiaron los writings/speakings: en tu cuenta nueva el historial está oculto y sin el registro de migraciones no podemos evitar duplicados.');
-      step('submissions', 'skipped', 'no se puede comprobar duplicados');
+      res.warnings.push('The writings/speakings were not copied: in your new account the history is hidden and without the migration log we can’t avoid duplicates.');
+      step('submissions', 'skipped', 'duplicates can’t be checked');
     } else {
       const plan = planSubmissions(dump.submissions, existingKeys);
       res.submissionsSkipped = plan.skipped;
@@ -540,7 +540,7 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
       const flush = async () => {
         if (!batch.length) return null;
         const { error } = await supabase!.from('submissions').insert(batch);
-        if (error) return friendlyDb(error, 'Writings y speakings');
+        if (error) return friendlyDb(error, 'Writings and speakings');
         res.submissionsInserted += batch.length;
         batchKeys.forEach((k) => migratedKeys.add(k));
         batch = [];
@@ -560,7 +560,7 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
       }
       if (!subErr) subErr = await flush();
       if (subErr) {
-        res.warnings.push(`${subErr} Se copiaron ${res.submissionsInserted}; vuelve a migrar para completar (no se duplicará nada).`);
+        res.warnings.push(`${subErr} ${res.submissionsInserted} were copied; migrate again to complete (nothing will be duplicated).`);
         step('submissions', 'error', subErr);
       } else step('submissions', 'done', `${res.submissionsInserted} copiados, ${res.submissionsSkipped} ya estaban`);
     }
@@ -571,7 +571,7 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
     const oldName = dump.profile?.full_name?.trim();
     if (oldName && !prof?.full_name?.trim()) {
       const { error } = await supabase.from('profiles').update({ full_name: oldName.slice(0, 120) }).eq('id', uid);
-      if (error) res.warnings.push(friendlyDb(error, 'Nombre'));
+      if (error) res.warnings.push(friendlyDb(error, 'Name'));
       else {
         res.nameSet = true;
         void useAuth.getState().loadProfile();
@@ -619,7 +619,7 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
       }
       if (jsonSize(payload) > LOG_MAX_BYTES) payload.mergedHistory = fullHistory.slice(0, 300);
       const summary = {
-        label: 'Cuenta del IELTS Simulator',
+        label: 'IELTS Simulator account',
         oldUserId: dump.source.userId,
         oldEmail: dump.source.email,
         counts: {
@@ -657,7 +657,7 @@ export async function migrateOldIelts(dump: OldIeltsDump, onStep?: (id: MigrateS
     res.ok = true;
     return res;
   } catch (e) {
-    return { ...res, error: friendlyDb(e as { message?: string }, 'Migración') };
+    return { ...res, error: friendlyDb(e as { message?: string }, 'Migration') };
   } finally {
     running = false;
   }
@@ -670,12 +670,12 @@ export function parseIeltsSessionFile(json: unknown) {
 
 /** Reads a File as text with the 15 MB guard (before reading a byte of it). */
 export async function readJsonFile(file: File): Promise<{ ok: true; value: unknown } | { ok: false; error: string }> {
-  if (file.size > MAX_FILE_BYTES) return { ok: false, error: 'El archivo es demasiado grande (máximo 15 MB).' };
-  if (file.size === 0) return { ok: false, error: 'El archivo está vacío.' };
+  if (file.size > MAX_FILE_BYTES) return { ok: false, error: 'The file is too large (maximum 15 MB).' };
+  if (file.size === 0) return { ok: false, error: 'The file is empty.' };
   try {
     return parseJsonText(await file.text());
   } catch {
-    return { ok: false, error: 'No se pudo leer el archivo.' };
+    return { ok: false, error: 'The file could not be read.' };
   }
 }
 
@@ -720,7 +720,7 @@ export async function importIeltsSession(data: IeltsSessionData, summary?: Ielts
     logged: false,
     warnings: [],
   };
-  if (running) return { ...res, error: 'Ya hay una importación en curso.' };
+  if (running) return { ...res, error: 'An import is already in progress.' };
   running = true;
   try {
     const signedIn = !!(supabase && uid);
@@ -751,7 +751,7 @@ export async function importIeltsSession(data: IeltsSessionData, summary?: Ielts
         api.importSession(toEngine);
         res.session = 'applied';
       } catch {
-        res.warnings.push('El simulador no pudo aplicar la sesión ahora; se aplicará la próxima vez que lo abras.');
+        res.warnings.push('The simulator couldn’t apply the session now; it will be applied the next time you open it.');
       }
     }
     if (res.session !== 'applied') {
@@ -763,11 +763,11 @@ export async function importIeltsSession(data: IeltsSessionData, summary?: Ielts
       }
       if (!ok) {
         toEngine = dropFromSession(toEngine, 'banks');
-        res.dropped.push('exámenes generados');
+        res.dropped.push('generated exams');
         ok = lsSet(PENDING_KEY, JSON.stringify(toEngine));
       }
       res.session = ok ? 'queued' : 'failed';
-      if (!ok) res.warnings.push('El navegador no tiene espacio para guardar la sesión completa; sólo se importaron las bandas y el historial.');
+      if (!ok) res.warnings.push('The browser doesn’t have space to save the full session; only the bands and history were imported.');
     }
 
     // XP once per new attempt (skip whatever any earlier import already paid).
@@ -780,7 +780,7 @@ export async function importIeltsSession(data: IeltsSessionData, summary?: Ielts
       const seenHash = prev.logs.some((l) => l.source === 'ielts-session-file' && l.summary.hash === hash);
       if (!seenHash || awards.length || merged.added.length) {
         const summ = {
-          label: 'Archivo de sesión del IELTS',
+          label: 'IELTS session file',
           hash,
           counts: {
             bands: Object.values(merged.scores).filter((x) => x !== null).length,
@@ -804,7 +804,7 @@ export async function importIeltsSession(data: IeltsSessionData, summary?: Ielts
     res.ok = true;
     return res;
   } catch (e) {
-    return { ...res, error: friendlyDb(e as { message?: string }, 'Importación') };
+    return { ...res, error: friendlyDb(e as { message?: string }, 'Import') };
   } finally {
     running = false;
   }
@@ -886,7 +886,7 @@ export async function importEcyrProgress(file: EcyrProgressFile): Promise<EcyrIm
         const err = await insertLog(
           'ecyr-progress-file',
           {
-            label: 'Progreso de ECYR English',
+            label: 'ECYR English progress',
             hash: file.summary.hash,
             counts: { xp: file.summary.xp, units: file.summary.units, topics: file.summary.topics, activity: file.summary.activity },
           },
@@ -899,7 +899,7 @@ export async function importEcyrProgress(file: EcyrProgressFile): Promise<EcyrIm
     res.ok = true;
     return res;
   } catch (e) {
-    return { ...res, error: (e as Error).message || 'No se pudo combinar el progreso.' };
+    return { ...res, error: (e as Error).message || 'The progress could not be merged.' };
   }
 }
 
@@ -919,6 +919,6 @@ export async function listMigrations(): Promise<{ rows: MigrationLogRow[]; error
     .select('id,source,created_at,label:summary->>label,counts:summary->counts')
     .order('created_at', { ascending: false })
     .limit(20);
-  if (error) return { rows: [], error: friendlyDb(error, 'Historial de migraciones'), missing: isMissingTable(error) };
+  if (error) return { rows: [], error: friendlyDb(error, 'Migration history'), missing: isMissingTable(error) };
   return { rows: (data ?? []) as unknown as MigrationLogRow[], error: null, missing: false };
 }

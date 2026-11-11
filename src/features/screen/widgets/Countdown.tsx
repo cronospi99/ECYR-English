@@ -19,14 +19,14 @@ function defaultAt() {
 
 export default function Countdown({ data, set, editing, setEditing }: WidgetProps<D>) {
   const now = useNow(true, 1000);
-  const title = data.title ?? 'Examen';
+  const title = data.title ?? 'Exam';
   const at = data.at ?? defaultAt();
   const target = new Date(at).getTime();
   const left = Number.isFinite(target) ? Math.max(0, target - now) : 0;
   const s = Math.floor(left / 1000);
   const parts: [number, string][] = [
-    [Math.floor(s / 86400), 'días'],
-    [Math.floor((s % 86400) / 3600), 'horas'],
+    [Math.floor(s / 86400), 'days'],
+    [Math.floor((s % 86400) / 3600), 'hours'],
     [Math.floor((s % 3600) / 60), 'min'],
     [s % 60, 'seg'],
   ];
@@ -34,12 +34,12 @@ export default function Countdown({ data, set, editing, setEditing }: WidgetProp
   if (editing)
     return (
       <Panel>
-        <Label>Evento</Label>
-        <input className={inputCls} value={title} onChange={(e) => set({ title: e.target.value })} aria-label="Evento" />
-        <Label>Fecha y hora</Label>
-        <input type="datetime-local" className={inputCls} value={at} onChange={(e) => set({ at: e.target.value })} aria-label="Fecha y hora" />
+        <Label>Event</Label>
+        <input className={inputCls} value={title} onChange={(e) => set({ title: e.target.value })} aria-label="Event" />
+        <Label>Date and time</Label>
+        <input type="datetime-local" className={inputCls} value={at} onChange={(e) => set({ at: e.target.value })} aria-label="Date and time" />
         <Act solid color="var(--blue)" onClick={() => setEditing(false)}>
-          Listo
+          Done
         </Act>
       </Panel>
     );
@@ -64,11 +64,11 @@ export default function Countdown({ data, set, editing, setEditing }: WidgetProp
         </div>
       ) : (
         <div className="text-ink-orange flex items-center gap-3 font-black" style={{ fontSize: 'min(20cqh, 10cqw)' }}>
-          <PartyPopper style={{ width: '1em', height: '1em' }} /> ¡Hoy!
+          <PartyPopper style={{ width: '1em', height: '1em' }} /> Today!
         </div>
       )}
       <div className="text-label-2 font-semibold first-letter:uppercase" style={{ fontSize: 'min(7cqh, 4.5cqw)' }}>
-        {Number.isFinite(target) ? new Date(target).toLocaleString('es', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : ''}
+        {Number.isFinite(target) ? new Date(target).toLocaleString('en', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : ''}
       </div>
     </div>
   );

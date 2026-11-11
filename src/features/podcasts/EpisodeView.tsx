@@ -16,7 +16,7 @@ import { AiQuiz } from './AiQuiz';
 // Deep enough behind white text (and its 85% captions) in both themes.
 const HERO = `linear-gradient(135deg, ${deep('var(--skill-listening)', 80)}, color-mix(in srgb, var(--skill-listening) 40%, #3a1d9e))`;
 
-export const RIGHTS = 'Contenido de terceros, reproducido desde su fuente oficial; todos los derechos pertenecen a sus autores.';
+export const RIGHTS = 'Third-party content, played from its official source; all rights belong to their authors.';
 
 async function findEpisode(collectionId: number, trackId: number) {
   const first = await listEpisodes(collectionId);
@@ -37,11 +37,11 @@ export function EpisodeView({ collectionId, trackId, level, onBack }: { collecti
       ) : !data?.ep ? (
         <>
           <Button variant="plain" onClick={onBack} className="mb-4">
-            <ArrowLeft size={16} /> Episodios
+            <ArrowLeft size={16} /> Episodes
           </Button>
           <Card className="p-6">
-            <h3 className="text-title-3">No encontramos este episodio</h3>
-            <p className="text-label-2 mt-1 text-[14.5px]">{error?.message ?? 'Puede que el podcast lo haya retirado. Elige otro de la lista.'}</p>
+            <h3 className="text-title-3">We couldn’t find this episode</h3>
+            <p className="text-label-2 mt-1 text-[14.5px]">{error?.message ?? 'The podcast may have removed it. Pick another from the list.'}</p>
           </Card>
         </>
       ) : (
@@ -64,9 +64,9 @@ function Episode({ ep, show, level: initial, onBack }: { ep: PodcastEpisode; sho
     <>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <Button variant="plain" onClick={onBack}>
-          <ArrowLeft size={16} /> Episodios
+          <ArrowLeft size={16} /> Episodes
         </Button>
-        <PdfButton build={() => guideSheet(ep, level, showName, publisher)} label="Guía en PDF" />
+        <PdfButton build={() => guideSheet(ep, level, showName, publisher)} label="PDF guide" />
       </div>
 
       <Card className="overflow-hidden">
@@ -94,29 +94,29 @@ function Episode({ ep, show, level: initial, onBack }: { ep: PodcastEpisode; sho
               </p>
               {ep.description.length > 180 && (
                 <button type="button" onClick={() => setMore((m) => !m)} className="text-ink-blue mt-1 text-[14px] font-semibold">
-                  {more ? 'Ver menos' : 'Ver más'}
+                  {more ? 'See less' : 'See more'}
                 </button>
               )}
             </div>
           )}
           {minutes > 20 && (
             <p className="bg-fill-2 rounded-[12px] px-3 py-2 text-[13.5px] leading-snug">
-              ⏱️ Este episodio dura {fmtDuration(ep.durationMs)}. Trabaja con un fragmento de 5–10 minutos: no hace falta escucharlo completo para aprender.
+              ⏱️ This episode lasts {fmtDuration(ep.durationMs)}. Work with a 5–10 minute fragment: you don’t need to listen to the whole thing to learn.
             </p>
           )}
           <div className="bg-fill-2 rounded-[14px] p-3.5 text-[13px] leading-snug">
-            <div className="text-label-2 text-[11.5px] font-bold tracking-wide uppercase">Créditos</div>
+            <div className="text-label-2 text-[11.5px] font-bold tracking-wide uppercase">Credits</div>
             <div className="mt-1 text-[14px] font-semibold">{showName}</div>
             {publisher && <div className="text-label-2">{publisher}</div>}
             <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
               {ep.link && (
                 <a href={ep.link} target="_blank" rel="noopener noreferrer" className="text-ink-blue inline-flex items-center gap-1 font-semibold">
-                  Abrir en Apple Podcasts <ExternalLink size={12} />
+                  Open in Apple Podcasts <ExternalLink size={12} />
                 </a>
               )}
               {show?.url && show.url !== ep.link && (
                 <a href={show.url} target="_blank" rel="noopener noreferrer" className="text-ink-blue inline-flex items-center gap-1 font-semibold">
-                  Página del programa <ExternalLink size={12} />
+                  Show page <ExternalLink size={12} />
                 </a>
               )}
             </div>
@@ -126,19 +126,19 @@ function Episode({ ep, show, level: initial, onBack }: { ep: PodcastEpisode; sho
       </Card>
 
       <div className="mt-6 mb-3 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-[20px] font-bold">Actividades</h3>
+        <h3 className="text-[20px] font-bold">Activities</h3>
         <Segmented
           size="sm"
           value={mode}
           onChange={setMode}
           options={[
-            { value: 'guide', label: 'Guía de escucha' },
-            { value: 'quiz', label: 'Preguntas IA' },
+            { value: 'guide', label: 'Listening guide' },
+            { value: 'quiz', label: 'AI questions' },
           ]}
         />
       </div>
       <div className="mb-4 flex flex-wrap items-center gap-2">
-        <span className="text-label-2 text-[13px] font-semibold">Nivel de las actividades</span>
+        <span className="text-label-2 text-[13px] font-semibold">Activity level</span>
         <Segmented size="sm" value={level} onChange={setLevel} options={CEFR_LEVELS.map((l) => ({ value: l, label: l }))} />
       </div>
       {mode === 'guide' ? (

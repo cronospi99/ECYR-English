@@ -10,13 +10,13 @@ import { QuoteText, ink, tint } from './ui';
 export function posInfo(pos?: string): { key: string; label: string; color: string } {
   const p = (pos ?? '').toLowerCase();
   if (/phrasal/.test(p)) return { key: 'phrasal', label: 'Phrasal verb', color: 'var(--indigo)' };
-  if (/idiom|expression|phrase|collocation|chunk/.test(p)) return { key: 'expr', label: 'Expresión', color: 'var(--teal)' };
+  if (/idiom|expression|phrase|collocation|chunk/.test(p)) return { key: 'expr', label: 'Expression', color: 'var(--teal)' };
   if (/^verb|verb$|\bverb\b/.test(p)) return { key: 'verb', label: 'Verbo', color: 'var(--green)' };
   if (/adverb/.test(p)) return { key: 'adv', label: 'Adverbio', color: 'var(--purple)' };
   if (/adjective|adj/.test(p)) return { key: 'adj', label: 'Adjetivo', color: 'var(--orange)' };
   if (/noun/.test(p)) return { key: 'noun', label: 'Sustantivo', color: 'var(--blue)' };
-  if (!p) return { key: 'other', label: 'Otro', color: 'var(--pink)' };
-  return { key: 'other', label: 'Otro', color: 'var(--pink)' };
+  if (!p) return { key: 'other', label: 'Other', color: 'var(--pink)' };
+  return { key: 'other', label: 'Other', color: 'var(--pink)' };
 }
 
 /** Visual grid of word cards with a part-of-speech filter; tap a card for use, examples and collocations. */
@@ -37,8 +37,8 @@ export function VocabGrid({ items }: { items: VocabItem[] }) {
   return (
     <div>
       {groups.length > 1 && (
-        <div className="mb-4 flex flex-wrap gap-1.5" role="group" aria-label="Filtrar por categoría">
-          <FilterChip on={!filter} onClick={() => setFilter(null)} color="var(--label-2)" label="Todas" n={items.length} />
+        <div className="mb-4 flex flex-wrap gap-1.5" role="group" aria-label="Filter by category">
+          <FilterChip on={!filter} onClick={() => setFilter(null)} color="var(--label-2)" label="All" n={items.length} />
           {groups.map(([k, g]) => (
             <FilterChip key={k} on={filter === k} onClick={() => setFilter(filter === k ? null : k)} color={g.color} label={g.label} n={g.n} />
           ))}
@@ -103,7 +103,7 @@ function WordCard({ v }: { v: VocabItem }) {
           onClick={() => setOpen((o) => !o)}
           className="text-ink-blue mt-auto flex items-center gap-1 px-5 pt-2.5 pb-3.5 text-[13px] font-semibold"
         >
-          {open ? 'Menos' : 'Uso y ejemplos'}
+          {open ? 'Less' : 'Use and examples'}
           <ChevronDown size={15} className={cn('transition-transform', open && 'rotate-180')} aria-hidden />
         </button>
       )}
@@ -129,7 +129,7 @@ function WordCard({ v }: { v: VocabItem }) {
               )}
               {v.colloc && (
                 <div className="flex items-start gap-1.5">
-                  <Link2 size={14} className="text-label-2 mt-1 shrink-0" aria-label="Colocaciones" />
+                  <Link2 size={14} className="text-label-2 mt-1 shrink-0" aria-label="Collocations" />
                   <div className="flex flex-wrap gap-1">
                     {v.colloc.split(/\s*·\s*/).map((c) => (
                       <span key={c} className="bg-fill-2 rounded-full px-2 py-0.5 text-[13px]">

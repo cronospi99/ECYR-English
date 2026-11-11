@@ -65,7 +65,7 @@ export function CardReveal({ cardId, points, before, onDone }: { cardId: string;
     <div
       className="ecyr-card-reveal"
       role="dialog"
-      aria-label={up ? `Nuevo rango: ${L.label}` : card.name}
+      aria-label={up ? `New rank: ${L.label}` : card.name}
       onClick={onDone}
       style={{ background: `radial-gradient(circle at 50% 45%, color-mix(in srgb, ${L.accent} 45%, #0e1113) 0%, #0e1113 68%)` }}
     >
@@ -80,7 +80,7 @@ export function CardReveal({ cardId, points, before, onDone }: { cardId: string;
           />
         ))}
       <div className="ecyr-card-kicker" style={{ background: L.accent }}>
-        {up ? t('Rank up!', '¡Subiste de rango!') : t('Your card', 'Tu carta')}
+        {up ? t('Rank up!', 'You ranked up!') : t('Your card', 'Your card')}
       </div>
       <div className="ecyr-card-flip" key={rank}>
         <TeacherCardView card={card} points={points} width={w} />
@@ -93,7 +93,7 @@ export function CardReveal({ cardId, points, before, onDone }: { cardId: string;
         </div>
       )}
       <h2 className="ecyr-card-title" style={{ color: L.accent }}>{up ? L.label : card.name}</h2>
-      <div className="ecyr-card-hint">Toca para continuar</div>
+      <div className="ecyr-card-hint">Tap to continue</div>
     </div>,
     document.body,
   );
@@ -121,14 +121,14 @@ export function CardGain({ cardId, before, gained, note, onOpen }: { cardId: str
     >
       <TeacherCardView card={card} points={shown} width={84} animate={false} />
       <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <div style={{ font: "700 11px 'Space Mono', monospace", letterSpacing: '0.14em', textTransform: 'uppercase', color: L.accent }}>Carta que entrenas</div>
+        <div style={{ font: "700 11px 'Space Mono', monospace", letterSpacing: '0.14em', textTransform: 'uppercase', color: L.accent }}>Card you train</div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
           <span style={{ font: "400 24px 'Archivo Black', sans-serif", textTransform: 'uppercase' }}>{card.name}</span>
           <span style={{ font: "400 22px 'Archivo Black', sans-serif", color: '#7bbf5a' }}>+{gained}</span>
         </div>
         <RankBar points={shown} height={14} />
         <div style={{ font: "700 12px 'Space Mono', monospace", color: 'rgba(242,239,230,0.7)' }}>
-          ★ {shown} · {p.next ? t(`${p.left} more for ${rankName(p.next)}`, `faltan ${p.left} para ${rankName(p.next)}`) : t('Top rank!', '¡Rango máximo!')}
+          ★ {shown} · {p.next ? t(`${p.left} more for ${rankName(p.next)}`, `faltan ${p.left} para ${rankName(p.next)}`) : t('Top rank!', 'Max rank!')}
         </div>
         {note && <div style={{ fontSize: 12, color: 'rgba(242,239,230,0.6)' }}>{note}</div>}
       </div>

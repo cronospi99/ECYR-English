@@ -187,20 +187,20 @@ const Thumb = ({ bg, children }: { bg: BgId; children: ReactNode }) => (
 // ------------------------------------------------------------------ rows --
 
 const BUILDER_ROWS: { key: keyof BuilderParams; label: string; kind: 'swatch' | 'full' | 'face' }[] = [
-  { key: 'skin', label: 'Tono de piel', kind: 'swatch' },
-  { key: 'face', label: 'Forma de cara', kind: 'full' },
-  { key: 'hair', label: 'Peinado', kind: 'full' },
-  { key: 'hairColor', label: 'Color de pelo', kind: 'swatch' },
-  { key: 'brows', label: 'Cejas', kind: 'face' },
-  { key: 'eyes', label: 'Ojos', kind: 'face' },
-  { key: 'eyeColor', label: 'Color de ojos', kind: 'swatch' },
-  { key: 'mouth', label: 'Expresión', kind: 'face' },
-  { key: 'facialHair', label: 'Vello facial', kind: 'face' },
-  { key: 'glasses', label: 'Gafas', kind: 'face' },
-  { key: 'headwear', label: 'Gorro', kind: 'full' },
-  { key: 'earrings', label: 'Pendientes', kind: 'face' },
-  { key: 'clothing', label: 'Ropa', kind: 'full' },
-  { key: 'clothingColor', label: 'Color de ropa', kind: 'swatch' },
+  { key: 'skin', label: 'Skin tone', kind: 'swatch' },
+  { key: 'face', label: 'Face shape', kind: 'full' },
+  { key: 'hair', label: 'Hairstyle', kind: 'full' },
+  { key: 'hairColor', label: 'Hair colour', kind: 'swatch' },
+  { key: 'brows', label: 'Eyebrows', kind: 'face' },
+  { key: 'eyes', label: 'Eyes', kind: 'face' },
+  { key: 'eyeColor', label: 'Eye colour', kind: 'swatch' },
+  { key: 'mouth', label: 'Expression', kind: 'face' },
+  { key: 'facialHair', label: 'Facial hair', kind: 'face' },
+  { key: 'glasses', label: 'Glasses', kind: 'face' },
+  { key: 'headwear', label: 'Hat', kind: 'full' },
+  { key: 'earrings', label: 'Earrings', kind: 'face' },
+  { key: 'clothing', label: 'Clothes', kind: 'full' },
+  { key: 'clothingColor', label: 'Clothes colour', kind: 'swatch' },
 ];
 
 function BuilderRows({ d, set }: { d: Draft; set: (b: BuilderParams) => void }) {
@@ -208,7 +208,7 @@ function BuilderRows({ d, set }: { d: Draft; set: (b: BuilderParams) => void }) 
   return (
     <div className="space-y-5">
       <Picker
-        label="Personajes"
+        label="Characters"
         value={presetIdx >= 0 ? String(presetIdx) : ''}
         onChange={(v) => set(PRESETS[Number(v)]!.params)}
         items={PRESETS.map((p, i) => ({
@@ -255,14 +255,14 @@ function FrameRows({ d, setFrame, name }: { d: Draft; setFrame: (f: AvatarFrame)
   return (
     <div className="space-y-5">
       <Picker
-        label="Fondo"
+        label="Background"
         value={d.frame.bg}
         onChange={(bg) => setFrame({ ...d.frame, bg })}
         size={40}
         items={BACKGROUNDS.map((b) => ({ id: b.id, label: b.label, node: <Swatch css={b.swatch} /> }))}
       />
       <Picker
-        label="Aro"
+        label="Ring"
         value={d.frame.ring}
         onChange={(ring) => setFrame({ ...d.frame, ring })}
         size={52}
@@ -273,7 +273,7 @@ function FrameRows({ d, setFrame, name }: { d: Draft; setFrame: (f: AvatarFrame)
         }))}
       />
       <Picker
-        label="Forma"
+        label="Shape"
         value={d.frame.shape}
         onChange={(shape) => setFrame({ ...d.frame, shape })}
         size={52}
@@ -389,10 +389,10 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
           <div className="bg-label-3 mx-auto mt-2 h-[5px] w-9 rounded-full sm:hidden" aria-hidden />
           <div className="flex h-12 items-center justify-between px-3">
             <button type="button" onClick={onClose} className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] hover:opacity-70">
-              Cancelar
+              Cancel
             </button>
             <h2 id={titleId} className="text-headline">
-              Editar avatar
+              Edit avatar
             </h2>
             <button
               type="button"
@@ -402,7 +402,7 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
               }}
               className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] font-semibold hover:opacity-70"
             >
-              Guardar
+              Save
             </button>
           </div>
         </div>
@@ -418,16 +418,16 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
               onClick={shuffle}
               className="bg-fill text-label inline-flex h-8 items-center gap-1.5 rounded-full px-3.5 text-[14px] font-semibold transition-transform active:scale-95"
             >
-              <Shuffle size={15} aria-hidden /> Aleatorio
+              <Shuffle size={15} aria-hidden /> Random
             </button>
             <Segmented<Tab>
               className="mt-1 w-full max-w-[420px]"
               value={d.tab}
               onChange={(tab) => setD((x) => ({ ...x, tab }))}
               options={[
-                { value: 'portrait', label: 'Retratos' },
-                { value: 'builder', label: 'Crear' },
-                { value: 'initials', label: 'Iniciales' },
+                { value: 'portrait', label: 'Portraits' },
+                { value: 'builder', label: 'Create' },
+                { value: 'initials', label: 'Initials' },
               ]}
             />
           </div>
@@ -435,7 +435,7 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
           <div className="space-y-6 pb-2">
             {d.tab === 'portrait' && (
               <Picker
-                label="Elige un retrato"
+                label="Pick a portrait"
                 grid
                 value={d.portrait}
                 onChange={(portrait) => setD((x) => ({ ...x, portrait }))}
@@ -453,7 +453,7 @@ function EditorSheet({ onClose, name }: { onClose: () => void; name: string }) {
             {d.tab === 'builder' && <BuilderRows d={d} set={(builder) => setD((x) => ({ ...x, builder }))} />}
             {d.tab === 'initials' && (
               <p className="text-label-2 px-5 text-center text-[14px]">
-                Tus iniciales <span className="text-label font-semibold">{initialsOf(name)}</span> sobre el fondo que elijas.
+                Your initials <span className="text-label font-semibold">{initialsOf(name)}</span> over the background you choose.
               </p>
             )}
             <div className="hairline-t mx-5" />

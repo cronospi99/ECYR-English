@@ -118,7 +118,7 @@ export function QuestionSet({
                     <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} className="mt-2.5 text-[13.5px] leading-snug">
                       <span className={cn('inline-flex items-center gap-1 font-semibold', v === 'wrong' ? 'text-ink-red' : 'text-ink-green')}>
                         {v === 'wrong' ? <X size={15} /> : <Check size={15} />}
-                        {v === 'right' ? 'Correcto' : v === 'almost' ? 'Casi: revisa la ortografía' : 'Respuesta:'}
+                        {v === 'right' ? 'Correct' : v === 'almost' ? 'Almost: check your spelling' : 'Answer:'}
                       </span>{' '}
                       {v !== 'right' && <b>{rightAnswer(q)}</b>}
                       {q.explain_es && <span className="text-label-2 block">{q.explain_es}</span>}
@@ -147,7 +147,7 @@ export function QuestionSet({
               {right}/{questions.length} {right === questions.length ? '🏆' : right >= questions.length * 0.7 ? '👏' : '💪'}
             </span>
             <Button variant="gray" onClick={() => (setAnswers(questions.map(() => undefined)), setChecked(false))}>
-              <RotateCcw size={16} /> Intentar de nuevo
+              <RotateCcw size={16} /> Try again
             </Button>
           </>
         )}
@@ -198,7 +198,7 @@ export function QuestionList({
                     <div className="mt-2.5 text-[13.5px] leading-snug">
                       <span className={cn('inline-flex items-center gap-1 font-semibold', v === 'wrong' ? 'text-ink-red' : 'text-ink-green')}>
                         {v === 'wrong' ? <X size={15} /> : <Check size={15} />}
-                        {v === 'right' ? 'Correcto' : v === 'almost' ? 'Casi: revisa la ortografía' : 'Respuesta:'}
+                        {v === 'right' ? 'Correct' : v === 'almost' ? 'Almost: check your spelling' : 'Answer:'}
                       </span>{' '}
                       {v !== 'right' && <b>{rightAnswer(q)}</b>}
                       {q.explain_es && <span className="text-label-2 block">{q.explain_es}</span>}
@@ -281,7 +281,7 @@ function Body({ q, a, set, checked, ng, color }: { q: LibQuestion; a: Answer; se
               value={(a as string) ?? ''}
               onChange={(e) => set(e.target.value)}
               disabled={checked}
-              aria-label="Respuesta"
+              aria-label="Answer"
               autoCapitalize="off"
               autoCorrect="off"
               spellCheck={false}
@@ -309,7 +309,7 @@ function Typed({ q, a, set, checked }: { q: LibQuestion; a: Answer; set: (a: Ans
         value={(a as string) ?? ''}
         onChange={(e) => set(e.target.value)}
         disabled={checked}
-        placeholder="Escribe tu respuesta…"
+        placeholder="Type your answer…"
         autoCapitalize="off"
         autoCorrect="off"
         spellCheck={false}
@@ -341,7 +341,7 @@ function Tiles({ q, a, set, checked, color }: { q: LibQuestion; a: string[]; set
             </button>
           ))
         ) : (
-          <span className="text-label-3 px-1 py-1 text-[13px]">Toca las palabras en orden…</span>
+          <span className="text-label-3 px-1 py-1 text-[13px]">Tap the words in order…</span>
         )}
       </div>
       <div className="mt-2 flex flex-wrap gap-1.5">

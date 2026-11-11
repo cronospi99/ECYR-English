@@ -108,30 +108,30 @@ export function NotesPanel({ variant, onNavigate, startNew = false }: { variant:
             id={searchId}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar en mis notas"
+            placeholder="Search my notes"
             className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[16px] outline-none"
             type="search"
           />
         </label>
         <Button size="sm" variant="filled" onClick={newNote} className="h-10 rounded-[11px]">
-          <Plus size={16} strokeWidth={2.6} aria-hidden /> Nueva
+          <Plus size={16} strokeWidth={2.6} aria-hidden /> New
         </Button>
       </div>
       {shown.length === 0 ? (
         <EmptyState
           icon={<NotebookPen size={40} strokeWidth={1.6} />}
-          title={notes.length ? 'Sin coincidencias' : 'Aún no tienes notas'}
-          body={notes.length ? 'Prueba con otra palabra.' : 'Apunta palabras, reglas o dudas mientras estudias. Cada nota recuerda la página donde la escribiste.'}
+          title={notes.length ? 'No matches' : 'You don’t have notes yet'}
+          body={notes.length ? 'Try another word.' : 'Write down words, rules or doubts while you study. Each note remembers the page where you wrote it.'}
           action={
             !notes.length && (
               <Button variant="tinted" onClick={newNote}>
-                <Plus size={16} aria-hidden /> Escribir una nota
+                <Plus size={16} aria-hidden /> Write a note
               </Button>
             )
           }
         />
       ) : (
-        <ul className="px-2 pb-2" aria-label="Mis notas">
+        <ul className="px-2 pb-2" aria-label="My notes">
           {shown.map((n) => (
             <li key={n.id}>
               <button
@@ -174,7 +174,7 @@ export function NotesPanel({ variant, onNavigate, startNew = false }: { variant:
         </div>
         {/* No overflow clipping here: it would stop the format bar from sticking while the page scrolls. */}
         <div className={cn('bg-card shadow-card rounded-card min-w-0', !editor && 'hidden lg:flex lg:items-center lg:justify-center')}>
-          {editor ?? <p className="text-label-2 p-6 text-center text-[15px]">Elige una nota o escribe una nueva.</p>}
+          {editor ?? <p className="text-label-2 p-6 text-center text-[15px]">Pick a note or write a new one.</p>}
         </div>
       </div>
     );
@@ -307,11 +307,11 @@ function NoteEditor({
       <div className="hairline-b flex min-h-[48px] items-center gap-2 px-3 py-1.5">
         {showBack && (
           <button type="button" onClick={onBack} className="text-ink-blue -ml-1 inline-flex h-9 items-center gap-0.5 rounded-[10px] pr-2 text-[16px] hover:opacity-70">
-            <ChevronLeft size={22} strokeWidth={2.4} aria-hidden /> Notas
+            <ChevronLeft size={22} strokeWidth={2.4} aria-hidden /> Notes
           </button>
         )}
         <span className="text-label-2 min-w-0 flex-1 truncate text-[12px]" aria-live="polite">
-          {latest.current.id ? (saved ? `Guardado${note ? ` · ${relativeTime(note.updatedAt)}` : ''}` : 'Guardando…') : 'Nueva nota'}
+          {latest.current.id ? (saved ? `Guardado${note ? ` · ${relativeTime(note.updatedAt)}` : ''}` : 'Saving…') : 'New note'}
         </span>
         {latest.current.id &&
           (confirm ? (
@@ -326,7 +326,7 @@ function NoteEditor({
                   onBack();
                 }}
               >
-                Eliminar
+                Delete
               </Button>
               <Button size="sm" variant="gray" onClick={() => setConfirm(false)}>
                 No
@@ -336,7 +336,7 @@ function NoteEditor({
             <button
               type="button"
               onClick={() => setConfirm(true)}
-              aria-label="Eliminar nota"
+              aria-label="Delete note"
               className="text-ink-red hover:bg-fill-2 inline-flex h-9 w-9 items-center justify-center rounded-full"
             >
               <Trash2 size={17} />
@@ -349,7 +349,7 @@ function NoteEditor({
             to={page.path}
             onClick={onNavigate}
             className="text-ink-blue inline-flex max-w-full items-center gap-1.5 rounded-full bg-[color-mix(in_srgb,var(--blue)_11%,transparent)] px-2.5 py-1 text-[13px] font-medium"
-            title="Volver a la página donde escribiste esta nota"
+            title="Go back to the page where you wrote this note"
           >
             <MapPin size={13} className="shrink-0" aria-hidden /> <span className="truncate">{page.title}</span>
           </Link>
@@ -357,7 +357,7 @@ function NoteEditor({
       )}
       <FormatBar editor={editor} fmt={fmt} barRef={bar} variant={variant} />
       <span id={labelId} className="sr-only">
-        Texto de la nota
+        Note text
       </span>
       <div className="min-h-[260px] flex-1">
         <RichNoteEditor
@@ -368,7 +368,7 @@ function NoteEditor({
           maxLength={MAX_NOTE_BODY}
           labelledBy={labelId}
           autoFocus
-          placeholder="Escribe tu nota… (la primera línea es el título)"
+          placeholder="Write your note… (the first line is the title)"
           className={cn(NOTE_TEXT, 'min-h-[260px]')}
           topInset={() => bar.current?.getBoundingClientRect().bottom ?? 0}
           bottomInset={variant === 'page' ? tabBarHeight : undefined}
@@ -377,7 +377,7 @@ function NoteEditor({
       <div className="text-label-2 flex justify-between gap-3 px-4 pb-3 text-[12px]">
         <SyncLine />
         <span className="shrink-0 tabular-nums">
-          {stripHighlights(text).length.toLocaleString('es')}/{MAX_NOTE_BODY.toLocaleString('es')}
+          {stripHighlights(text).length.toLocaleString('en')}/{MAX_NOTE_BODY.toLocaleString('en')}
         </span>
       </div>
     </div>
@@ -388,7 +388,7 @@ const NOTE_TEXT = 'whitespace-pre-wrap break-words px-4 py-3 text-[16px] leading
 
 /** Height of the mobile tab bar covering the bottom of the page (0 when hidden). */
 function tabBarHeight() {
-  const n = document.querySelector('nav[aria-label="Pestañas"]');
+  const n = document.querySelector('nav[aria-label="Tabs"]');
   if (!n || getComputedStyle(n).display === 'none') return 0;
   return Math.max(0, window.innerHeight - n.getBoundingClientRect().top);
 }
@@ -491,20 +491,20 @@ function FormatBar({
   }, [menu, barRef]);
   const mac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
   const kb_ = mac ? '⌘' : 'Ctrl+';
-  const sh = mac ? '⇧⌘' : 'Ctrl+Mayús+';
+  const sh = mac ? '⇧⌘' : 'Ctrl+Shift+';
   const ed = () => editor.current;
   const paint = (color: HighlightColor | null) => {
     setMenu(null);
     if (color) setPen(color);
     if (!ed()?.highlight(color)) {
-      setHint('Selecciona primero el texto que quieres resaltar.');
+      setHint('Select the text you want to highlight first.');
       ed()?.focus();
     } else setHint(null);
   };
   const clear = () => {
     setMenu(null);
     if (!ed()?.clearFormat()) {
-      setHint('Selecciona el texto al que quieres quitar el formato.');
+      setHint('Select the text you want to remove formatting from.');
       ed()?.focus();
     } else setHint(null);
   };
@@ -529,9 +529,9 @@ function FormatBar({
   const alignBtns = (
     <>
       {[
-        { i: 0, Icon: AlignLeft, label: 'Alinear a la izquierda' },
-        { i: 1, Icon: AlignCenter, label: 'Centrar' },
-        { i: 2, Icon: AlignRight, label: 'Alinear a la derecha' },
+        { i: 0, Icon: AlignLeft, label: 'Align left' },
+        { i: 1, Icon: AlignCenter, label: 'Centre' },
+        { i: 2, Icon: AlignRight, label: 'Align right' },
       ].map(({ i, Icon, label }) => (
         <Tool key={i} label={label} pressed={fmt.align === i} onClick={() => ed()?.setAlign(i)}>
           <Icon size={17} />
@@ -546,7 +546,7 @@ function FormatBar({
       <div
         ref={barRef}
         role="toolbar"
-        aria-label="Formato del texto"
+        aria-label="Text formatting"
         onKeyDown={onKeyDown}
         style={{ '--kb': `${kb}px` } as CSSProperties}
         className={cn(
@@ -573,34 +573,34 @@ function FormatBar({
             <Strikethrough size={17} strokeWidth={2.4} />
           </Tool>
           {sep}
-          <Tool label="Color del texto" expanded={menu === 'fg'} onClick={() => setMenu(menu === 'fg' ? null : 'fg')}>
+          <Tool label="Text colour" expanded={menu === 'fg'} onClick={() => setMenu(menu === 'fg' ? null : 'fg')}>
             <span className="flex flex-col items-center leading-none" aria-hidden>
               <span className="text-[16px] font-bold">A</span>
               <span className="mt-[2px] h-[3px] w-4 rounded-full" style={{ background: fgCss }} />
             </span>
           </Tool>
-          <Tool label="Resaltador" expanded={menu === 'hl'} onClick={() => setMenu(menu === 'hl' ? null : 'hl')}>
+          <Tool label="Highlighter" expanded={menu === 'hl'} onClick={() => setMenu(menu === 'hl' ? null : 'hl')}>
             <span className="flex flex-col items-center leading-none" aria-hidden>
               <Highlighter size={15} />
               <span className="mt-[2px] h-[3px] w-4 rounded-full" style={{ background: penBg }} />
             </span>
           </Tool>
           {sep}
-          <Tool label={`Viñetas (${sh}8)`} pressed={fmt.list === 'bullet'} onClick={() => list('bullet')}>
+          <Tool label={`Bullets (${sh}8)`} pressed={fmt.list === 'bullet'} onClick={() => list('bullet')}>
             <List size={18} />
           </Tool>
           <Tool label={`Lista numerada (${sh}7)`} pressed={fmt.list === 'num'} onClick={() => list('num')}>
             <ListOrdered size={18} />
           </Tool>
-          <Tool label={`Lista de tareas (${sh}9)`} pressed={fmt.list === 'check'} onClick={() => list('check')}>
+          <Tool label={`Checklist (${sh}9)`} pressed={fmt.list === 'check'} onClick={() => list('check')}>
             <ListChecks size={18} />
           </Tool>
           <span className="hidden items-center @min-[480px]:flex">
             {sep}
-            <Tool label="Título" pressed={fmt.block === 'title'} onClick={() => block('title')}>
+            <Tool label="Title" pressed={fmt.block === 'title'} onClick={() => block('title')}>
               <Heading1 size={18} />
             </Tool>
-            <Tool label="Subtítulo" pressed={fmt.block === 'subtitle'} onClick={() => block('subtitle')}>
+            <Tool label="Subtitle" pressed={fmt.block === 'subtitle'} onClick={() => block('subtitle')}>
               <Heading2 size={18} />
             </Tool>
           </span>
@@ -612,7 +612,7 @@ function FormatBar({
             </Tool>
           </span>
           <span className="min-w-1 flex-1" />
-          <Tool label="Más opciones de formato" expanded={menu === 'more'} onClick={() => setMenu(menu === 'more' ? null : 'more')}>
+          <Tool label="More formatting options" expanded={menu === 'more'} onClick={() => setMenu(menu === 'more' ? null : 'more')}>
             <Ellipsis size={18} />
           </Tool>
         </div>
@@ -623,7 +623,7 @@ function FormatBar({
         )}
 
         {menu === 'fg' && (
-          <Pop label="Paleta de color del texto" anchor="Color del texto">
+          <Pop label="Text colour palette" anchor="Text colour">
             <div className="grid grid-cols-5 gap-1.5">
               {TEXT_COLORS.map((c, i) => (
                 <button
@@ -651,7 +651,7 @@ function FormatBar({
         )}
 
         {menu === 'hl' && (
-          <Pop label="Colores del resaltador" anchor="Resaltador">
+          <Pop label="Highlighter colours" anchor="Highlighter">
             <div className="grid grid-cols-6 gap-1.5">
               {HIGHLIGHTS.map((h) => (
                 <button
@@ -671,8 +671,8 @@ function FormatBar({
                 type="button"
                 onMouseDown={keep}
                 onClick={() => paint(null)}
-                title="Quitar resaltado"
-                aria-label="Quitar resaltado"
+                title="Remove highlight"
+                aria-label="Remove highlight"
                 className="bg-fill-2 hover:bg-fill text-label-2 inline-flex h-9 w-9 items-center justify-center rounded-full"
               >
                 <Eraser size={16} />
@@ -682,17 +682,17 @@ function FormatBar({
         )}
 
         {menu === 'more' && (
-          <Pop label="Más opciones de formato" wide>
+          <Pop label="More formatting options" wide>
             <div className="flex flex-col gap-2.5">
               <div className="flex flex-wrap items-center gap-1 @min-[480px]:hidden">
                 <Seg label="Normal" pressed={fmt.block === 'normal'} onClick={() => ed()?.setBlock('normal')}>
                   <span className="text-[13px]">Normal</span>
                 </Seg>
-                <Seg label="Título" pressed={fmt.block === 'title'} onClick={() => ed()?.setBlock('title')}>
-                  <Heading1 size={16} /> <span className="text-[13px]">Título</span>
+                <Seg label="Title" pressed={fmt.block === 'title'} onClick={() => ed()?.setBlock('title')}>
+                  <Heading1 size={16} /> <span className="text-[13px]">Title</span>
                 </Seg>
-                <Seg label="Subtítulo" pressed={fmt.block === 'subtitle'} onClick={() => ed()?.setBlock('subtitle')}>
-                  <Heading2 size={16} /> <span className="text-[13px]">Subtítulo</span>
+                <Seg label="Subtitle" pressed={fmt.block === 'subtitle'} onClick={() => ed()?.setBlock('subtitle')}>
+                  <Heading2 size={16} /> <span className="text-[13px]">Subtitle</span>
                 </Seg>
               </div>
               <div className="flex items-center gap-1 @min-[620px]:hidden">
@@ -706,15 +706,15 @@ function FormatBar({
                 </Tool>
               </div>
               <div className="grid grid-cols-2 gap-1.5">
-                <label className="bg-fill-2 text-label flex h-9 min-w-0 items-center gap-1 rounded-[10px] pl-2" title="Tamaño de letra">
+                <label className="bg-fill-2 text-label flex h-9 min-w-0 items-center gap-1 rounded-[10px] pl-2" title="Font size">
                   <ALargeSmall size={16} className="text-label-2 shrink-0" aria-hidden />
                   <select
                     value={fmt.size ?? ''}
                     onChange={(e) => ed()?.setSize(Number(e.target.value))}
-                    aria-label="Tamaño de letra"
+                    aria-label="Font size"
                     className="h-full min-w-0 flex-1 bg-transparent pr-1 text-[14px] outline-none"
                   >
-                    {fmt.size === null && <option value="">Mixto</option>}
+                    {fmt.size === null && <option value="">Mixed</option>}
                     {SIZES.map((z, i) => (
                       <option key={z.label} value={i}>
                         {z.label}
@@ -722,15 +722,15 @@ function FormatBar({
                     ))}
                   </select>
                 </label>
-                <label className="bg-fill-2 text-label flex h-9 min-w-0 items-center gap-1 rounded-[10px] pl-2" title="Tipo de letra">
+                <label className="bg-fill-2 text-label flex h-9 min-w-0 items-center gap-1 rounded-[10px] pl-2" title="Typeface">
                   <Type size={15} className="text-label-2 shrink-0" aria-hidden />
                   <select
                     value={fmt.font ?? ''}
                     onChange={(e) => ed()?.setFont(Number(e.target.value))}
-                    aria-label="Fuente"
+                    aria-label="Font"
                     className="h-full min-w-0 flex-1 bg-transparent pr-1 text-[14px] outline-none"
                   >
-                    {fmt.font === null && <option value="">Mixta</option>}
+                    {fmt.font === null && <option value="">Mixed</option>}
                     {FONTS.map((f, i) => (
                       <option key={f.label} value={i}>
                         {f.label}
@@ -835,14 +835,14 @@ function SyncLine({ className }: { className?: string }) {
   const status = useNotesSync((s) => s.status);
   const cloud = uid && (status === 'synced' || status === 'syncing');
   const text = !uid
-    ? 'Solo en este navegador · inicia sesión para guardarlas en la nube'
+    ? 'Only in this browser · sign in to save them to the cloud'
     : status === 'missing'
-      ? 'Solo en este navegador · falta activar la nube (12_notes.sql)'
+      ? 'Only in this browser · the cloud needs to be enabled (12_notes.sql)'
       : status === 'error'
-        ? 'Sin conexión · se sincronizarán luego'
+        ? 'Offline · they will sync later'
         : status === 'syncing'
-          ? 'Sincronizando…'
-          : 'En la nube · solo tú puedes verlas';
+          ? 'Syncing…'
+          : 'In the cloud · only you can see them';
   return (
     <p className={cn('text-label-2 flex min-w-0 items-center gap-1.5 text-[12px]', className)}>
       {cloud ? <Cloud size={13} className="shrink-0" aria-hidden /> : <CloudOff size={13} className="shrink-0" aria-hidden />}

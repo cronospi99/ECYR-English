@@ -11,14 +11,14 @@ const TenseLab = lazy(() => import('@/features/grammar/tenses/TenseTools').then(
 
 type Tab = 'verbs' | 'irregular' | 'academic' | 'ed' | 'quiz' | 'tenses' | 'phrasal' | 'patterns';
 const TABS: { value: Tab; label: string }[] = [
-  { value: 'verbs', label: 'Verbos' },
-  { value: 'irregular', label: 'Irregulares por patrones' },
-  { value: 'academic', label: '🎓 C1 académicos' },
-  { value: 'ed', label: 'Pronunciación -ed' },
-  { value: 'quiz', label: 'Quiz de formas' },
-  { value: 'tenses', label: '⏱ Tiempos verbales' },
+  { value: 'verbs', label: 'Verbs' },
+  { value: 'irregular', label: 'Irregulars by pattern' },
+  { value: 'academic', label: '🎓 C1 academic' },
+  { value: 'ed', label: '-ed pronunciation' },
+  { value: 'quiz', label: 'Forms quiz' },
+  { value: 'tenses', label: '⏱ Verb tenses' },
   { value: 'phrasal', label: 'Phrasal verbs' },
-  { value: 'patterns', label: 'Patrones' },
+  { value: 'patterns', label: 'Patterns' },
 ];
 
 export default function VerbLabPage() {
@@ -26,10 +26,10 @@ export default function VerbLabPage() {
   const tab = (TABS.find((t) => t.value === params.get('tab'))?.value ?? 'verbs') as Tab;
   return (
     <Page
-      back={{ to: '/practice', label: 'Práctica' }}
-      eyebrow="Herramientas para enseñar y aprender verbos"
+      back={{ to: '/practice', label: 'Practice' }}
+      eyebrow="Tools for teaching and learning verbs"
       title="Verb Lab"
-      subtitle="Más de 1.400 verbos con sus tres formas, una sección de verbos académicos C1, los sonidos de -ed, familias de phrasal verbs y los 10 patrones verbales del inglés."
+      subtitle="More than 1,400 verbs with their three forms, a C1 academic verbs section, the -ed sounds, phrasal verb families and the 10 English verb patterns."
       wide
     >
       <div className="no-scrollbar mb-5 overflow-x-auto">

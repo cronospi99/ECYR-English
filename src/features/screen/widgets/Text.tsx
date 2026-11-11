@@ -28,23 +28,23 @@ export default function Text({ data, set, editing }: WidgetProps<D>) {
       <textarea
         value={data.text ?? ''}
         onChange={(e) => set({ text: e.target.value })}
-        placeholder="Escribe aquí…"
-        aria-label="Texto"
+        placeholder="Type here…"
+        aria-label="Text"
         className={cn('min-h-0 w-full flex-1 resize-none bg-transparent p-4 leading-[1.2] outline-none placeholder:opacity-40', data.bold !== false && 'font-bold', data.center && 'text-center')}
         style={{ fontSize: SIZES[size], color: 'inherit' }}
       />
       {editing && (
         <div className="flex flex-wrap items-center gap-1.5 bg-black/5 px-3 py-2">
-          <button type="button" aria-label="Más pequeño" onClick={() => set({ size: Math.max(0, size - 1) })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
+          <button type="button" aria-label="Smaller" onClick={() => set({ size: Math.max(0, size - 1) })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
             <Minus size={16} />
           </button>
-          <button type="button" aria-label="Más grande" onClick={() => set({ size: Math.min(SIZES.length - 1, size + 1) })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
+          <button type="button" aria-label="Bigger" onClick={() => set({ size: Math.min(SIZES.length - 1, size + 1) })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
             <Plus size={16} />
           </button>
-          <button type="button" aria-label="Negrita" aria-pressed={data.bold !== false} onClick={() => set({ bold: data.bold === false })} className={cn('grid h-9 w-9 place-items-center rounded-full text-black', data.bold !== false ? 'bg-white' : 'bg-white/50')}>
+          <button type="button" aria-label="Bold" aria-pressed={data.bold !== false} onClick={() => set({ bold: data.bold === false })} className={cn('grid h-9 w-9 place-items-center rounded-full text-black', data.bold !== false ? 'bg-white' : 'bg-white/50')}>
             <Bold size={16} />
           </button>
-          <button type="button" aria-label="Centrar" onClick={() => set({ center: !data.center })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
+          <button type="button" aria-label="Centre" onClick={() => set({ center: !data.center })} className="grid h-9 w-9 place-items-center rounded-full bg-white/70 text-black">
             {data.center ? <AlignLeft size={16} /> : <AlignCenter size={16} />}
           </button>
           <span className="mx-1 h-6 w-px bg-black/15" />

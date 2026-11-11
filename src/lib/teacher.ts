@@ -61,7 +61,7 @@ export function parseLearnerState(state: unknown) {
 }
 
 export async function loadClass(_teacherId: string): Promise<{ students: StudentData[]; error: string | null }> {
-  if (!supabase) return { students: [], error: 'Las cuentas no están configuradas en este despliegue.' };
+  if (!supabase) return { students: [], error: 'Accounts are not configured in this deployment.' };
   const { data: profiles, error } = await supabase
     .from('profiles')
     .select('id,email,full_name,created_at')
@@ -136,7 +136,7 @@ export async function listSharedStudents(): Promise<SharedStudent[]> {
 
 /** Adds an opened student to the signed-in teacher's class (no approval needed). */
 export async function claimSharedStudent(id: string): Promise<void> {
-  if (!supabase) throw new Error('Sin conexión con el servidor.');
+  if (!supabase) throw new Error('No connection to the server.');
   const { error } = await supabase.rpc('claim_shared_student', { p_student: id });
   if (error) throw new Error(error.message);
 }

@@ -39,25 +39,25 @@ import {
 } from "@/lib/admin";
 
 const EXPIRY = [
-  { value: "7", label: "7 días" },
-  { value: "30", label: "30 días" },
-  { value: "90", label: "90 días" },
-  { value: "0", label: "Sin vencer" },
+  { value: "7", label: "7 days" },
+  { value: "30", label: "30 days" },
+  { value: "90", label: "90 days" },
+  { value: "0", label: "No expiry" },
 ] as const;
 type Expiry = (typeof EXPIRY)[number]["value"];
 
 const STATUS: Record<InviteStatus, { label: string; cls: string }> = {
   open: {
-    label: "Disponible",
+    label: "Available",
     cls: "text-ink-green bg-[color-mix(in_srgb,var(--green)_14%,transparent)]",
   },
   used: {
-    label: "Usado",
+    label: "Used",
     cls: "text-ink-blue bg-[color-mix(in_srgb,var(--blue)_14%,transparent)]",
   },
-  expired: { label: "Vencido", cls: "text-label-2 bg-fill-2" },
+  expired: { label: "Expired", cls: "text-label-2 bg-fill-2" },
   revoked: {
-    label: "Anulado",
+    label: "Revoked",
     cls: "text-ink-red bg-[color-mix(in_srgb,var(--red)_12%,transparent)]",
   },
 };
@@ -68,20 +68,19 @@ export default function TeacherInvitesPage() {
 
   if (!profile?.is_admin)
     return (
-      <Page title="Docentes">
+      <Page title="Teachers">
         <Card className="mx-auto max-w-xl p-6 text-center">
           {loading ? (
             <Spinner className="mx-auto h-8 w-8" />
           ) : (
             <ShieldCheck size={40} className="text-ink-purple mx-auto" />
           )}
-          <h2 className="text-title-3 mt-3">Solo administración</h2>
+          <h2 className="text-title-3 mt-3">Admin only</h2>
           <p className="text-label-2 mt-1">
-            Aquí la administración de la plataforma crea los códigos con los que
-            se registran los docentes nuevos.
+            Here the platform admin creates the codes new teachers sign up with.
           </p>
           <ButtonLink to="/profile" className="mt-4">
-            Ir a mi perfil
+            Go to my profile
           </ButtonLink>
         </Card>
       </Page>
@@ -119,19 +118,19 @@ function Admin() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <ShieldCheck size={15} className="text-ink-purple" /> Administración
+          <ShieldCheck size={15} className="text-ink-purple" /> Admin
         </span>
       }
-      title="Docentes"
-      subtitle="Solo con un código tuyo se crea una cuenta docente. Los estudiantes se registran como siempre."
+      title="Teachers"
+      subtitle="A teacher account is only created with one of your codes. Students sign up as usual."
       actions={
         <Button
           variant="gray"
           size="sm"
           onClick={() => void load()}
-          aria-label="Actualizar"
+          aria-label="Refresh"
         >
-          <RefreshCw size={15} /> Actualizar
+          <RefreshCw size={15} /> Refresh
         </Button>
       }
     >
@@ -146,13 +145,13 @@ function Admin() {
           icon={Users}
           color="var(--blue)"
           value={teachers?.reduce((a, t) => a + t.students, 0)}
-          label="estudiantes"
+          label="students"
         />
         <Stat
           icon={KeyRound}
           color="var(--purple)"
           value={invites ? open : undefined}
-          label="códigos libres"
+          label="free codes"
         />
       </div>
 
@@ -221,7 +220,7 @@ function NewInvite({ onCreated }: { onCreated: (i: TeacherInvite) => void }) {
   return (
     <Card className="p-5">
       <h3 className="text-headline flex items-center gap-2">
-        <Plus size={18} className="text-ink-purple" /> Nuevo código
+        <Plus size={18} className="text-ink-purple" /> New code
       </h3>
       <form
         className="mt-3 space-y-3"
@@ -242,13 +241,13 @@ function NewInvite({ onCreated }: { onCreated: (i: TeacherInvite) => void }) {
           value={note}
           onChange={(e) => setNote(e.target.value)}
           maxLength={200}
-          placeholder="Para quién (ej. Laura — sede norte)"
-          aria-label="Para quién es el código"
+          placeholder="Who is it for (e.g. Laura — north campus)"
+          aria-label="Who the code is for"
           className="bg-fill-2 placeholder:text-label-3 h-11 w-full rounded-[12px] px-4 text-[16px] outline-none"
         />
         <div>
           <div className="text-label-2 mb-1.5 text-[13px] font-medium">
-            Vence en
+            Expires in
           </div>
           <Segmented<Expiry>
             className="w-full"
@@ -264,8 +263,7 @@ function NewInvite({ onCreated }: { onCreated: (i: TeacherInvite) => void }) {
           className="w-full"
           disabled={busy}
         >
-          {busy ? <Spinner className="h-5 w-5" /> : <KeyRound size={17} />}{" "}
-          Crear código
+          {busy ? <Spinner className="h-5 w-5" /> : <KeyRound size={17} />}{" "} Create code
         </Button>
         {err && <p className="text-ink-red text-[14px]">{err}</p>}
       </form>
@@ -302,14 +300,13 @@ function FreshCode({
       <button
         type="button"
         onClick={onClose}
-        aria-label="Cerrar"
+        aria-label="Close"
         className="text-label-3 hover:text-label absolute top-3 right-3 p-1"
       >
         <X size={18} />
       </button>
       <div className="text-label-2 text-[13px] font-medium">
-        Código listo{invite.note ? ` · ${invite.note}` : ""}
-      </div>
+        Code ready{invite.note ? ` · ${invite.note}` : ""} </div>
       <div className="mt-2 font-mono text-[28px] font-bold tracking-[0.12em] break-all select-all sm:text-[32px]">
         {invite.code}
       </div>
@@ -322,10 +319,10 @@ function FreshCode({
           size="md"
           onClick={() => copy("code", invite.code)}
         >
-          {copied === "code" ? <Check size={16} /> : <Copy size={16} />} Código
+          {copied === "code" ? <Check size={16} /> : <Copy size={16} />} Code
         </Button>
         <Button variant="filled" size="md" onClick={() => copy("msg", msg)}>
-          {copied === "msg" ? <Check size={16} /> : <Copy size={16} />} Mensaje
+          {copied === "msg" ? <Check size={16} /> : <Copy size={16} />} Message
         </Button>
       </div>
     </Card>
@@ -349,14 +346,14 @@ function InviteList({
   return (
     <Card className="p-5">
       <div className="flex items-center gap-3">
-        <h3 className="text-headline flex-1">Códigos</h3>
+        <h3 className="text-headline flex-1">Codes</h3>
         <Segmented
           size="sm"
           value={filter}
           onChange={setFilter}
           options={[
-            { value: "open", label: "Libres" },
-            { value: "all", label: "Todos" },
+            { value: "open", label: "Free" },
+            { value: "all", label: "All" },
           ]}
         />
       </div>
@@ -365,8 +362,8 @@ function InviteList({
       ) : rows.length === 0 ? (
         <p className="text-label-2 mt-4 text-[14px]">
           {filter === "open"
-            ? "No hay códigos libres. Crea uno para invitar a un docente."
-            : "Todavía no has creado códigos."}
+            ? "There are no free codes. Create one to invite a teacher."
+            : "You haven’t created any codes yet."}
         </p>
       ) : (
         <ul className="mt-3 divide-y divide-[var(--separator)]">
@@ -396,11 +393,11 @@ function InviteList({
                   </div>
                   <div className="text-label-2 truncate text-[13px]">
                     {st === "used"
-                      ? `${i.used_email ?? "Cuenta"} · ${relativeTime(i.used_at ?? i.created_at)}`
+                      ? `${i.used_email ?? "Account"} · ${relativeTime(i.used_at ?? i.created_at)}`
                       : [
                           i.note,
                           i.expires_at && st === "open"
-                            ? `vence ${new Date(i.expires_at).toLocaleDateString("es")}`
+                            ? `vence ${new Date(i.expires_at).toLocaleDateString('en')}`
                             : null,
                           relativeTime(i.created_at),
                         ]
@@ -414,7 +411,7 @@ function InviteList({
                       variant="gray"
                       size="sm"
                       onClick={() => copy(i.code, inviteMessage(i))}
-                      aria-label={`Copiar invitación ${i.code}`}
+                      aria-label={`Copy invitation ${i.code}`}
                     >
                       {copied === i.code ? (
                         <Check size={15} />
@@ -430,7 +427,7 @@ function InviteList({
                       onClick={async () => {
                         if (
                           !window.confirm(
-                            `¿Anular ${i.code}? Ya no servirá para registrarse.`,
+                            `Revoke ${i.code}? It will no longer work for signing up.`,
                           )
                         )
                           return;
@@ -477,7 +474,7 @@ function DeleteAccount({
         variant="gray"
         size="sm"
         aria-label={`Eliminar a ${name}`}
-        title="Eliminar cuenta"
+        title="Delete account"
         onClick={() => setAsk(true)}
         className="text-label-2 hover:text-ink-red"
       >
@@ -487,7 +484,7 @@ function DeleteAccount({
   return (
     <div className="flex basis-full items-center gap-2 rounded-[12px] bg-[color-mix(in_srgb,var(--red)_10%,transparent)] p-2 sm:basis-auto">
       <span className="text-ink-red min-w-0 flex-1 text-[13px] leading-snug">
-        ¿Eliminar a <b>{name}</b>? {warning} No se puede deshacer.
+        Delete <b>{name}</b>? {warning} This cannot be undone.
       </span>
       <Button
         variant="gray"
@@ -512,7 +509,7 @@ function DeleteAccount({
           }
         }}
       >
-        {busy ? <Spinner className="h-4 w-4" /> : "Eliminar"}
+        {busy ? <Spinner className="h-4 w-4" /> : "Delete"}
       </button>
     </div>
   );
@@ -528,11 +525,11 @@ function TeacherList({
   const me = useAuth((s) => s.session?.user.id);
   return (
     <Card className="p-5">
-      <h3 className="text-headline">Docentes en la plataforma</h3>
+      <h3 className="text-headline">Teachers on the platform</h3>
       {teachers === null ? (
         <Spinner className="mx-auto mt-6 h-6 w-6" />
       ) : teachers.length === 0 ? (
-        <p className="text-label-2 mt-4 text-[14px]">Aún no hay docentes.</p>
+        <p className="text-label-2 mt-4 text-[14px]">There are no teachers yet.</p>
       ) : (
         <ul className="mt-3 divide-y divide-[var(--separator)]">
           {teachers.map((t) => (
@@ -545,7 +542,7 @@ function TeacherList({
                   {t.full_name || t.email}
                   {t.id === me && (
                     <span className="text-label-2 ml-1.5 text-[12px] font-normal">
-                      (tú)
+                      (you)
                     </span>
                   )}
                 </div>
@@ -554,7 +551,7 @@ function TeacherList({
                   {t.class_code ? (
                     <span className="font-mono">{t.class_code}</span>
                   ) : (
-                    "sin código"
+                    "no code"
                   )}
                 </div>
               </div>
@@ -568,8 +565,8 @@ function TeacherList({
                   name={t.full_name || t.email || "este docente"}
                   warning={
                     t.students
-                      ? `Se borra su cuenta y su material; sus ${t.students} estudiantes quedan sin clase (no se borran).`
-                      : "Se borra su cuenta y su material."
+                      ? `Their account and material are deleted; their ${t.students} students are left without a class (they are not deleted).`
+                      : "Their account and material are deleted."
                   }
                   onDeleted={onChange}
                 />
@@ -624,7 +621,7 @@ function StudentList({
   return (
     <Card className="p-5">
       <div className="flex items-center gap-2">
-        <h3 className="text-headline flex-1">Estudiantes</h3>
+        <h3 className="text-headline flex-1">Students</h3>
         {students && (
           <span className="text-label-2 text-[13px] tabular-nums">
             {rows.length === students.length
@@ -638,7 +635,7 @@ function StudentList({
       ) : students === null ? (
         <Spinner className="mx-auto mt-6 h-6 w-6" />
       ) : students.length === 0 ? (
-        <p className="text-label-2 mt-4 text-[14px]">Aún no hay estudiantes.</p>
+        <p className="text-label-2 mt-4 text-[14px]">There are no students yet.</p>
       ) : (
         <>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -647,24 +644,24 @@ function StudentList({
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder="Buscar nombre o correo"
-                aria-label="Buscar estudiante"
+                placeholder="Search name or email"
+                aria-label="Search student"
                 className="placeholder:text-label-3 min-w-0 flex-1 bg-transparent text-[15px] outline-none"
               />
             </label>
             <select
               value={teacher}
               onChange={(e) => setTeacher(e.target.value)}
-              aria-label="Filtrar por docente"
+              aria-label="Filter by teacher"
               className="bg-fill-2 h-10 max-w-full rounded-[12px] px-3 text-[14px] font-medium outline-none"
             >
-              <option value="all">Todos los docentes</option>
+              <option value="all">All teachers</option>
               {(teachers ?? []).map((t) => (
                 <option key={t.id} value={t.id}>
                   {t.full_name || t.email}
                 </option>
               ))}
-              <option value="none">Sin clase</option>
+              <option value="none">No class</option>
             </select>
           </div>
           <ul className="mt-2 max-h-[520px] divide-y divide-[var(--separator)] overflow-y-auto">
@@ -685,14 +682,14 @@ function StudentList({
                 <ShareControls student={s} teachers={teachers ?? []} onChange={onChange} />
                 <DeleteAccount
                   id={s.id}
-                  name={s.full_name || s.email || "este estudiante"}
-                  warning="Se borra su cuenta con su progreso y trabajos."
+                  name={s.full_name || s.email || "this student"}
+                  warning="Their account is deleted along with their progress and work."
                   onDeleted={onChange}
                 />
               </li>
             ))}
             {rows.length === 0 && (
-              <li className="text-label-2 py-4 text-[14px]">Nadie coincide.</li>
+              <li className="text-label-2 py-4 text-[14px]">No matches.</li>
             )}
           </ul>
         </>
@@ -735,7 +732,7 @@ function ShareControls({
           <button
             type="button"
             disabled={busy}
-            aria-label={`Quitar a ${x.name ?? "docente"} de este estudiante`}
+            aria-label={`Remove ${x.name ?? "teacher"} from this student`}
             className="text-label-2 hover:text-ink-red rounded-full p-0.5"
             onClick={() => void run(() => unshareStudent(student.id, x.id))}
           >
@@ -746,11 +743,11 @@ function ShareControls({
       <select
         value=""
         disabled={busy || free.length === 0}
-        aria-label="Añadir otro docente a este estudiante"
+        aria-label="Add another teacher to this student"
         onChange={(e) => e.target.value && void run(() => shareStudent(student.id, e.target.value))}
         className="bg-fill-2 h-8 max-w-[200px] rounded-[10px] px-2 text-[12.5px] font-medium outline-none"
       >
-        <option value="">+ Compartir con docente…</option>
+        <option value="">+ Share with teacher…</option>
         {free.map((t) => (
           <option key={t.id} value={t.id}>
             {t.full_name || t.email}
@@ -761,9 +758,9 @@ function ShareControls({
         <Toggle
           checked={student.shared}
           onChange={(v) => void run(() => setStudentShared(student.id, v))}
-          label="Abierto a todos los docentes"
+          label="Open to all teachers"
         />
-        Abierto a todos los docentes
+        Open to all teachers
       </label>
       {error && <span className="text-ink-red basis-full text-[12.5px]">{error}</span>}
     </div>

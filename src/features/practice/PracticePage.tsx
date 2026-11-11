@@ -12,7 +12,7 @@ const AREAS = [
     icon: BookOpen,
     color: 'var(--skill-reading)',
     title: 'Reading',
-    body: 'Biblioteca de lecturas originales A1–C2 (noticias, entrevistas, ciencia, opinión…) con glosario y preguntas, más 32 guías de viaje.',
+    body: 'Library of original A1–C2 readings (news, interviews, science, opinion…) with glossary and questions, plus 32 travel guides.',
     skill: 'reading' as const,
   },
   {
@@ -20,7 +20,7 @@ const AREAS = [
     icon: Headphones,
     color: 'var(--skill-listening)',
     title: 'Listening',
-    body: 'Biblioteca de audios A1–C2 con varias voces y acentos (diálogos, podcasts, clases, anuncios), preguntas tipo IELTS y dictados.',
+    body: 'Library of A1–C2 audios with several voices and accents (dialogues, podcasts, classes, announcements), IELTS-style questions and dictations.',
     skill: 'listening' as const,
   },
   {
@@ -28,7 +28,7 @@ const AREAS = [
     icon: Mic,
     color: 'var(--skill-speaking)',
     title: 'Speaking',
-    body: '3.600+ preguntas por nivel y tema. Responde con tu micrófono y compara con la respuesta modelo.',
+    body: '3,600+ questions by level and topic. Answer with your microphone and compare with the model answer.',
     skill: 'speaking' as const,
   },
   {
@@ -36,23 +36,23 @@ const AREAS = [
     icon: PenLine,
     color: 'var(--skill-writing)',
     title: 'Writing',
-    body: 'Tareas de escritura de cada unidad con criterios de evaluación y feedback del AI Coach.',
+    body: 'Writing tasks for every unit with assessment criteria and AI Coach feedback.',
     skill: 'writing' as const,
   },
   {
     to: '/practice/vocabulary',
     icon: Languages,
     color: 'var(--pink)',
-    title: 'Vocabulario',
-    body: 'Linking words por función, cientos de adjetivos por categoría y adverbios por tipo, con ejemplos, audio, quiz y tarea en PDF.',
+    title: 'Vocabulary',
+    body: 'Linking words by function, hundreds of adjectives by category and adverbs by type, with examples, audio, quiz and PDF task.',
     skill: 'vocabulary' as const,
   },
   {
     to: '/practice/workshops',
     icon: ClipboardList,
     color: 'var(--teal)',
-    title: 'Talleres de gramática',
-    body: 'Un taller por tema de A1 a C1: la regla, errores típicos, cuatro tipos de ejercicio y la tarea lista en PDF.',
+    title: 'Grammar workshops',
+    body: 'One workshop per topic from A1 to C1: the rule, typical mistakes, four exercise types and the task ready as a PDF.',
     skill: 'grammar' as const,
   },
   {
@@ -60,7 +60,7 @@ const AREAS = [
     icon: Wrench,
     color: 'var(--indigo)',
     title: 'Verb Lab',
-    body: 'Más de 1.000 verbos con sus 3 formas, 384 verbos académicos C1, pronunciación de -ed, quiz cronometrado, phrasal verbs por familias y los 10 patrones verbales.',
+    body: 'More than 1,000 verbs with their 3 forms, 384 C1 academic verbs, -ed pronunciation, a timed quiz, phrasal verbs by family and the 10 verb patterns.',
     skill: 'grammar' as const,
   },
   {
@@ -68,15 +68,15 @@ const AREAS = [
     icon: Shuffle,
     color: 'var(--orange)',
     title: 'Phrasal Verbs',
-    body: 'Más de 1.100 phrasal verbs de A1 a C1 en mapas mentales, con traducción, 4 ejemplos cada uno y modo quiz.',
+    body: 'More than 1,100 phrasal verbs from A1 to C1 in mind maps, with translation, 4 examples each and quiz mode.',
     skill: 'vocabulary' as const,
   },
   {
     to: '/practice/draw',
     icon: Palette,
     color: 'var(--purple)',
-    title: 'Pizarra',
-    body: 'Dibuja como en Paint o Gartic Phone: pinceles, relleno, figuras, texto y retos de vocabulario «¿Qué dibujo?».',
+    title: 'Whiteboard',
+    body: 'Draw like in Paint or Gartic Phone: brushes, fill, shapes, text and “What’s the drawing?” vocabulary challenges.',
     skill: null,
   },
 ];
@@ -84,7 +84,7 @@ const AREAS = [
 export default function PracticePage() {
   const skillXp = useProgress((s) => s.skillXp);
   return (
-    <Page title="Práctica" subtitle="Entrena cada destreza por separado. Todo suma XP y te acerca a la cima.">
+    <Page title="Practice" subtitle="Train each skill separately. Everything earns XP and brings you closer to the summit.">
       <div className="grid gap-4 md:grid-cols-2">
         {AREAS.map((a) => (
           <Link key={a.to} to={a.to}>

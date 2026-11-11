@@ -16,13 +16,13 @@ import { audienceOf, describeMix, dominant, energizerForMix, hookForMix, type Au
 export type ThreadStyle = 'reading' | 'story' | 'mystery' | 'gossip' | 'news' | 'diary' | 'trip';
 
 export const STYLES: { id: ThreadStyle; label: string; emoji: string; en: string }[] = [
-  { id: 'reading', label: 'Lectura', emoji: '📚', en: 'a short magazine-style reading about one clear subject: a surprising fact, a person as an example and a closing thought' },
-  { id: 'story', label: 'Cuento', emoji: '📖', en: 'a short story with a small problem and a happy or surprising end' },
-  { id: 'mystery', label: 'Misterio', emoji: '🕵️', en: 'a light mystery: something goes missing and clues appear unit by unit' },
-  { id: 'gossip', label: 'Chisme', emoji: '☕', en: 'friendly gossip about people everyone in the class could know, kept kind and harmless' },
-  { id: 'news', label: 'Noticia', emoji: '📰', en: 'a news story that develops: headline, witnesses, reactions, follow-up' },
-  { id: 'diary', label: 'Diario', emoji: '📓', en: 'a character’s diary, one entry per unit, where life changes little by little' },
-  { id: 'trip', label: 'Viaje', emoji: '🧳', en: 'a trip with a goal, where each stop brings a new situation' },
+  { id: 'reading', label: 'Reading', emoji: '📚', en: 'a short magazine-style reading about one clear subject: a surprising fact, a person as an example and a closing thought' },
+  { id: 'story', label: 'Story', emoji: '📖', en: 'a short story with a small problem and a happy or surprising end' },
+  { id: 'mystery', label: 'Mystery', emoji: '🕵️', en: 'a light mystery: something goes missing and clues appear unit by unit' },
+  { id: 'gossip', label: 'Gossip', emoji: '☕', en: 'friendly gossip about people everyone in the class could know, kept kind and harmless' },
+  { id: 'news', label: 'News', emoji: '📰', en: 'a news story that develops: headline, witnesses, reactions, follow-up' },
+  { id: 'diary', label: 'Diary', emoji: '📓', en: 'a character’s diary, one entry per unit, where life changes little by little' },
+  { id: 'trip', label: 'Trip', emoji: '🧳', en: 'a trip with a goal, where each stop brings a new situation' },
 ];
 
 export interface Activity {
@@ -106,55 +106,55 @@ const SEEDS: Record<ThreadStyle, Seed[]> = {
   reading: [
     {
       title: (t) => (t ? `Everybody Is Talking About ${t}` : 'Three Things Nobody Tells You'),
-      premise: (a, b) => `Una lectura de revista escrita por ${a} con ayuda de ${b}: un dato curioso, un caso real y una opinión.`,
-      beats: ['el dato que sorprende', 'el caso de una persona', 'causas y consecuencias', 'opinión y pregunta al lector'],
+      premise: (a, b) => `A magazine reading written by ${a} with help from ${b}: a curious fact, a real case and an opinion.`,
+      beats: ['the surprising fact', 'one person’s case', 'causas y consecuencias', 'opinion and a question for the reader'],
     },
   ],
   story: [
     {
       title: (t) => (t ? `The Day Everything Changed · ${t}` : 'The Day Everything Changed'),
-      premise: (a, b) => `${a} recibe una invitación misteriosa y decide con ${b} si ir.`,
-      beats: ['presentar a los personajes y su situación', 'aparece una complicación inesperada', 'los personajes toman una decisión o hacen un plan', 'final sorpresa o reflexión'],
+      premise: (a, b) => `${a} receives a mysterious invitation and decides with ${b} whether to go.`,
+      beats: ['introduce the characters and their situation', 'an unexpected complication appears', 'the characters make a decision or a plan', 'surprise ending or reflection'],
     },
     {
       title: () => 'A Small Problem in the Neighbourhood',
-      premise: (a, b, c) => `${a} y ${b} descubren que ${c}, su vecino, se va del barrio.`,
-      beats: ['mostrar el barrio y a los personajes', 'descubrir el problema', 'organizar la ayuda', 'resolver y celebrar'],
+      premise: (a, b, c) => `${a} and ${b} find out that ${c}, their neighbour, is leaving the neighbourhood.`,
+      beats: ['show the neighbourhood and the characters', 'descubrir el problema', 'organizar la ayuda', 'resolver y celebrar'],
     },
   ],
   mystery: [
     {
       title: () => 'The Missing Bag',
-      premise: (a, b, c) => `La mochila de ${a} desapareció; ${b} ayuda y ${c} parece saber algo.`,
-      beats: ['qué pasó y quiénes estaban', 'primera pista y primeras sospechas', 'segunda pista que cambia la teoría', 'se revela la verdad'],
+      premise: (a, b, c) => `${a}’s backpack disappeared; ${b} helps and ${c} seems to know something.`,
+      beats: ['what happened and who was there', 'primera pista y primeras sospechas', 'a second clue that changes the theory', 'the truth is revealed'],
     },
   ],
   gossip: [
     {
       title: () => 'Did You Hear About…?',
-      premise: (a, b, c) => `${a} le cuenta a ${b} un chisme sobre ${c}. Cada unidad lo hace crecer… o lo desmiente.`,
-      beats: ['el chisme empieza', 'detalles y rumores (¿quién dijo qué?)', 'versiones que se contradicen', 'la verdad sale a la luz'],
+      premise: (a, b, c) => `${a} tells ${b} a piece of gossip about ${c}. Each unit makes it grow… or denies it.`,
+      beats: ['el chisme empieza', 'details and rumours (who said what?)', 'versions that contradict each other', 'the truth comes out'],
     },
   ],
   news: [
     {
       title: () => 'Breaking News from Town',
-      premise: (a, b, c) => `Algo pasó en el pueblo: ${a} lo vio, ${b} lo reporta y ${c} da la entrevista.`,
-      beats: ['titular y hechos básicos', 'testigos y detalles', 'reacciones y opiniones', 'seguimiento: qué pasó después'],
+      premise: (a, b, c) => `Something happened in town: ${a} saw it, ${b} reports it and ${c} gives the interview.`,
+      beats: ['headline and basic facts', 'testigos y detalles', 'reacciones y opiniones', 'follow-up: what happened next'],
     },
   ],
   diary: [
     {
       title: () => 'Dear Diary…',
-      premise: (a, b) => `El diario de ${a}: una entrada por unidad, y ${b} cambia su vida.`,
-      beats: ['primera entrada: quién soy y cómo es mi vida', 'algo nuevo llega', 'un problema o un cambio', 'mirar atrás y hacer planes'],
+      premise: (a, b) => `${a}’s diary: one entry per unit, and ${b} changes their life.`,
+      beats: ['first entry: who I am and what my life is like', 'something new arrives', 'a problem or a change', 'looking back and making plans'],
     },
   ],
   trip: [
     {
       title: () => 'The Trip We Almost Missed',
-      premise: (a, b, c) => `${a} y ${b} viajan a un evento; ${c} los obliga a parar. Cada unidad, una escala.`,
-      beats: ['preparar y salir', 'primera parada y primer problema', 'pedir ayuda y cambiar el plan', 'llegar (o casi) y contar el viaje'],
+      premise: (a, b, c) => `${a} and ${b} travel to an event; ${c} makes them stop. Each unit, a stopover.`,
+      beats: ['preparar y salir', 'primera parada y primer problema', 'ask for help and change the plan', 'arrive (or almost) and tell the trip'],
     },
   ],
 };
@@ -180,21 +180,21 @@ const band = (l: CefrLevel) => (l === 'A1' || l === 'A2' ? 'low' : l === 'B1' ? 
 
 const OPENERS: ((n: { a: string; first: string; level: CefrLevel }) => Activity)[] = [
   ({ a }) => ({
-    title: 'Previously on… (inicio con el hilo)',
+    title: 'Previously on… (start with the thread)',
     minutes: 5,
     steps: [
-      { min: 1, text: `Escribe «${a}…» en el tablero: ¿qué pasa?` },
-      { min: 2, text: 'En parejas: lo que recuerdan (o imaginan) del hilo.' },
-      { min: 2, text: 'Un estudiante lo cuenta; anota 3 palabras clave.' },
+      { min: 1, text: `Write “${a}…” on the board: what happens?` },
+      { min: 2, text: 'In pairs: what they remember (or imagine) from the thread.' },
+      { min: 2, text: 'One student tells it; note 3 key words.' },
     ],
     questions: [],
   }),
   ({ first }) => ({
-    title: 'Objeto misterioso',
+    title: 'Mystery object',
     minutes: 4,
     steps: [
-      { min: 1, text: `Muestra un objeto de «${first}»: Whose is it?` },
-      { min: 3, text: 'Parejas inventan el dueño y por qué importa.' },
+      { min: 1, text: `Show an object from “${first}”: Whose is it?` },
+      { min: 3, text: 'Pairs invent the owner and why it matters.' },
     ],
     questions: [],
   }),
@@ -202,42 +202,42 @@ const OPENERS: ((n: { a: string; first: string; level: CefrLevel }) => Activity)
 
 const CLOSERS: ((n: { a: string; gram: string; terms: string[]; level: CefrLevel; topic: string }) => Activity)[] = [
   ({ a, gram, terms }) => ({
-    title: 'Cadena de frases',
+    title: 'Sentence chain',
     minutes: 5,
     steps: [
-      { min: 1, text: `Continúan la historia de ${a}: una frase cada uno.` },
-      { min: 3, text: `Cada frase usa ${gram} o: ${terms.slice(0, 3).join(', ')}.` },
-      { min: 1, text: 'Leen la versión final; corrige un solo error.' },
+      { min: 1, text: `They continue ${a}’s story: one sentence each.` },
+      { min: 3, text: `Each sentence uses ${gram} or: ${terms.slice(0, 3).join(', ')}.` },
+      { min: 1, text: 'They read the final version; correct just one mistake.' },
     ],
     questions: [`What happens next to ${a}?`, `Which word from today helped you most?`],
   }),
   ({ a, level }) => ({
-    title: 'Silla caliente',
+    title: 'Hot seat',
     minutes: 5,
     steps: [
-      { min: 1, text: `Un voluntario es ${a}; el resto prepara preguntas.` },
-      { min: 3, text: `Entrevista a ${a}${level === 'A1' || level === 'A2' ? ' (respuestas de una frase)' : ' (que justifique con because)'}.` },
-      { min: 1, text: 'Cada uno dice algo nuevo que sabe.' },
+      { min: 1, text: `A volunteer is ${a}; the rest prepare questions.` },
+      { min: 3, text: `Entrevista a ${a}${level === 'A1' || level === 'A2' ? ' (one-sentence answers)' : ' (that they justify with because)'}.` },
+      { min: 1, text: 'Each one says something new they know.' },
     ],
     questions: [`How do you feel, ${a}?`, `What are you going to do tomorrow?`],
   }),
   ({ a, gram }) => ({
-    title: 'Ticket de salida 3-2-1',
+    title: '3-2-1 exit ticket',
     minutes: 4,
     steps: [
-      { min: 1, text: '3 palabras · 2 frases · 1 pregunta al personaje.' },
-      { min: 2, text: 'Intercambian y corrigen una frase.' },
-      { min: 1, text: 'Lee dos y anuncia cómo sigue mañana.' },
+      { min: 1, text: '3 words · 2 sentences · 1 question for the character.' },
+      { min: 2, text: 'They swap and correct one sentence.' },
+      { min: 1, text: 'Read two and announce how it continues tomorrow.' },
     ],
     questions: [`Make a sentence about ${a} with: ${gram}.`],
   }),
   ({ a }) => ({
-    title: 'Predicción: ¿qué pasará?',
+    title: 'Prediction: what will happen?',
     minutes: 5,
     steps: [
       { min: 1, text: `What is going to happen to ${a}?` },
-      { min: 3, text: 'Parejas escriben 2 predicciones y votan.' },
-      { min: 1, text: 'La ganadora abre la próxima clase.' },
+      { min: 3, text: 'Pairs write 2 predictions and vote.' },
+      { min: 1, text: 'The winner opens the next class.' },
     ],
     questions: [`What will ${a} do?`, `Do you think ${a} is right?`],
   }),
@@ -245,13 +245,13 @@ const CLOSERS: ((n: { a: string; gram: string; terms: string[]; level: CefrLevel
 
 /** Where a chapter sits in the arc. */
 export function stageOf(i: number, n: number) {
-  if (n === 1) return 'Todo en uno';
-  if (i === 0) return 'Inicio';
-  if (i === n - 1) return 'Desenlace';
-  return n === 4 && i === 2 ? 'Giro' : 'Nudo';
+  if (n === 1) return 'All in one';
+  if (i === 0) return 'Home';
+  if (i === n - 1) return 'Resolution';
+  return n === 4 && i === 2 ? 'Twist' : 'Knot';
 }
 
-const CUES = ['Cuéntala en 3 frases; ellos adivinan qué sigue.', 'Haz una pregunta y deja que la clase invente el detalle.', 'Pausa en el momento clave: ¿qué pasa ahora?', 'Que la cuenten en parejas con las palabras de la unidad.'];
+const CUES = ['Tell it in 3 sentences; they guess what comes next.', 'Ask a question and let the class invent the detail.', 'Pause at the key moment: what happens now?', 'Have them retell it in pairs with the words of the unit.'];
 
 /** How the local draft of the central piece opens, by kind (plain English every level can follow). */
 const FRAMES: Record<ThreadStyle, (a: string, b: string, c: string, t: string) => string> = {
@@ -263,11 +263,11 @@ const FRAMES: Record<ThreadStyle, (a: string, b: string, c: string, t: string) =
   diary: (a, b) => `Dear diary, it’s ${a} again. A lot is happening, and ${b} is part of it.`,
   trip: (a, b, c) => `${a} and ${b} are on a trip, but ${c} changes the plan.`,
 };
-const NOTICE = ['¿Qué tienen en común estas frases? Que lo digan con sus palabras.', '¿Qué palabra o forma se repite? ¿Qué cambia el significado?', '¿Quién lo dice en el texto y para qué lo usa?'];
+const NOTICE = ['What do these sentences have in common? Have them say it in their own words.', 'Which word or form repeats? What changes the meaning?', 'Who says it in the text and what do they use it for?'];
 const PRACTICE: Record<'low' | 'mid' | 'high', string[]> = {
-  low: ['Cambian una de las frases para hablar de sí mismos.', 'Dicen una frase nueva sobre un personaje con esta forma.'],
-  mid: ['Agregan una frase al texto con esta estructura.', 'Le responden a un personaje usando esta estructura.'],
-  high: ['Reescriben un párrafo desde otro punto de vista con esta estructura.', 'Debaten la idea central: cada intervención usa la estructura.'],
+  low: ['They change one of the sentences to talk about themselves.', 'They say a new sentence about a character with this form.'],
+  mid: ['They add a sentence to the text with this structure.', 'They answer a character using this structure.'],
+  high: ['They rewrite a paragraph from another point of view with this structure.', 'They debate the central idea: each turn uses the structure.'],
 };
 const plain = (x: string) => x.replace(/[*_`]/g, '').replace(/\s+—\s+.*$/, '').trim();
 
@@ -291,7 +291,7 @@ export function buildLocal({ level, units, points, topic, style, mix, seed }: Th
     return {
       unit: u.n,
       unitTitle: unitName(u),
-      link: i === 0 ? 'Abre el tema' : `Sale de «${flat[i - 1]!.g.name}»`,
+      link: i === 0 ? 'Open the topic' : `Sale de «${flat[i - 1]!.g.name}»`,
       stage: stageOf(i, flat.length),
       scene: beat.charAt(0).toUpperCase() + beat.slice(1) + '.',
       vocab,
@@ -317,16 +317,16 @@ export function buildLocal({ level, units, points, topic, style, mix, seed }: Th
     story,
     characters: [
       { name: a, role: 'protagonista' },
-      { name: b, role: 'amigo/a o compañero/a' },
-      { name: c, role: 'personaje que complica o ayuda' },
+      { name: b, role: 'friend or classmate' },
+      { name: c, role: 'character who complicates or helps' },
     ],
     chapters,
     opener: pick(OPENERS, seed)({ a, first: unitName(units[0]!), level }),
     closer: pick(CLOSERS, seed + 2)(closerBase),
     tips: [
-      'Lean primero el texto central completo; luego un tema a la vez.',
-      `Si se desvían: «And what about ${a}?»`,
-      'Cierra con una pregunta abierta: la próxima clase empieza sola.',
+      'Read the whole central text first; then one topic at a time.',
+      `If they drift: “And what about ${a}?”`,
+      'Close with an open question: the next class starts by itself.',
     ],
     audience,
     mix,
@@ -425,7 +425,7 @@ export async function buildWithAi(input: ThreadInput): Promise<Thread> {
   try {
     return parseAi(text, local);
   } catch {
-    throw new Error('La IA respondió en un formato inesperado. Intenta de nuevo o usa el plan sin IA.');
+    throw new Error('The AI replied in an unexpected format. Try again or use the plan without AI.');
   }
 }
 
@@ -452,7 +452,7 @@ export function threadToText(t: Thread): string {
       `  Notar: ${c.notice}`,
       `  Practicar: ${c.practice}`,
       ...(c.vocab.length ? [`  Vocabulario: ${c.vocab.join(', ')}`] : []),
-      `  Cómo guiarla: ${c.cue}`,
+      `  How to guide it: ${c.cue}`,
       ...c.questions.map((q) => `  ? ${q}`),
       '',
     ]),

@@ -26,7 +26,7 @@ function useStoredFlag(key: string, initial: boolean) {
 }
 
 /** "Tarea en PDF": builds a printable worksheet of whatever is on screen. */
-export function PdfButton({ build, label = 'Tarea en PDF', size = 'sm' }: { build: () => Worksheet; label?: string; size?: 'sm' | 'md' }) {
+export function PdfButton({ build, label = 'PDF task', size = 'sm' }: { build: () => Worksheet; label?: string; size?: 'sm' | 'md' }) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +53,7 @@ export function PdfButton({ build, label = 'Tarea en PDF', size = 'sm' }: { buil
       downloadBlob(await worksheetPdf(ws, { answerKey, studentFields: fields, teacher: teacher.trim() || undefined }), fileName(ws.title));
       setOpen(false);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'No se pudo crear el PDF.');
+      setError(e instanceof Error ? e.message : 'The PDF could not be created.');
     } finally {
       setBusy(false);
     }
@@ -66,7 +66,7 @@ export function PdfButton({ build, label = 'Tarea en PDF', size = 'sm' }: { buil
       </Button>
       {open &&
         createPortal(
-          <div className="fixed inset-0 z-[95] flex items-end justify-center sm:items-center" role="dialog" aria-modal="true" aria-label="Crear tarea en PDF">
+          <div className="fixed inset-0 z-[95] flex items-end justify-center sm:items-center" role="dialog" aria-modal="true" aria-label="Create PDF task">
             <motion.div className="absolute inset-0 bg-black/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} onClick={() => setOpen(false)} />
             <motion.div
               initial={{ y: 40, opacity: 0 }}
@@ -74,28 +74,28 @@ export function PdfButton({ build, label = 'Tarea en PDF', size = 'sm' }: { buil
               className="bg-card pb-safe relative w-full max-w-md rounded-t-[24px] p-5 shadow-float sm:rounded-[24px]"
             >
               <div className="flex items-center justify-between">
-                <div className="text-[19px] font-bold">Tarea en PDF</div>
-                <button type="button" onClick={() => setOpen(false)} className="bg-fill-2 flex h-8 w-8 items-center justify-center rounded-full" aria-label="Cerrar">
+                <div className="text-[19px] font-bold">PDF task</div>
+                <button type="button" onClick={() => setOpen(false)} className="bg-fill-2 flex h-8 w-8 items-center justify-center rounded-full" aria-label="Close">
                   <X size={16} />
                 </button>
               </div>
-              <p className="text-label-2 mt-1 text-[14px]">Una hoja lista para imprimir o enviar, con los ejercicios de esta actividad.</p>
+              <p className="text-label-2 mt-1 text-[14px]">A printable or shareable sheet with this activity’s exercises.</p>
               <div className="mt-4 space-y-3">
-                <Toggle on={answerKey} set={setAnswerKey} label="Incluir la clave de respuestas" sub="En una página aparte al final, para el docente." />
-                <Toggle on={fields} set={setFields} label="Campos de nombre, fecha y nota" />
+                <Toggle on={answerKey} set={setAnswerKey} label="Include the answer key" sub="On a separate page at the end, for the teacher." />
+                <Toggle on={fields} set={setFields} label="Name, date and score fields" />
                 <label className="block">
-                  <span className="text-label-2 text-[13px] font-semibold">Docente (opcional)</span>
+                  <span className="text-label-2 text-[13px] font-semibold">Teacher (optional)</span>
                   <input
                     value={teacher}
                     onChange={(e) => setTeacher(e.target.value)}
-                    placeholder="Tu nombre"
+                    placeholder="Your name"
                     className="bg-fill-2 placeholder:text-label-3 mt-1 w-full rounded-[10px] px-3 py-2 text-[15px] outline-none"
                   />
                 </label>
               </div>
               {error && <p className="text-ink-red mt-3 text-[13px]">{error}</p>}
               <Button className="mt-5 w-full" onClick={make} disabled={busy}>
-                {busy ? <Loader2 size={16} className="animate-spin" /> : <FileDown size={16} />} Descargar PDF
+                {busy ? <Loader2 size={16} className="animate-spin" /> : <FileDown size={16} />} Download PDF
               </Button>
             </motion.div>
           </div>,

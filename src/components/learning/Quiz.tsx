@@ -82,17 +82,17 @@ export function Quiz({
         <h3 className="text-title-2 mt-5 flex items-center gap-2">
           {passed ? (
             <>
-              <Trophy className="text-ios-yellow" /> ¡Excelente trabajo!
+              <Trophy className="text-ios-yellow" /> Great job!
             </>
           ) : (
-            'Buen intento'
+            'Good try'
           )}
         </h3>
         <p className="text-label-2 mt-1">
-          {correct} de {items.length} correctas. {passed ? 'Has ganado XP y avanzado en la montaña.' : `Necesitas ${passMark}% para dominarlo. ¡Inténtalo de nuevo!`}
+          {correct} de {items.length} correctas. {passed ? 'You earned XP and climbed the mountain.' : `You need ${passMark}% to master it. Try again!`}
         </p>
         <Button variant="gray" className="mt-6" onClick={restart}>
-          <RotateCcw size={16} /> Repetir
+          <RotateCcw size={16} /> Repeat
         </Button>
       </div>
     );
@@ -160,12 +160,12 @@ export function Quiz({
                       : 'bg-[color-mix(in_srgb,var(--orange)_12%,transparent)]',
                   )}
                 >
-                  <span className="font-semibold">{picked === item.answer ? '¡Correcto! ' : 'Ojo: '}</span>
+                  <span className="font-semibold">{picked === item.answer ? 'Correct! ' : 'Careful: '}</span>
                   {item.explain}
                 </div>
               )}
               <Button className="mt-4 w-full" size="lg" onClick={next}>
-                {i + 1 >= items.length ? 'Ver resultado' : 'Siguiente'}
+                {i + 1 >= items.length ? 'See result' : 'Next'}
               </Button>
             </motion.div>
           )}

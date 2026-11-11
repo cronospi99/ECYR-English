@@ -21,15 +21,15 @@ export function lastNDays(n: number): string[] {
 
 export const greeting = (d: Date = new Date()) => {
   const h = d.getHours();
-  if (h < 12) return 'Buenos días';
-  if (h < 19) return 'Buenas tardes';
-  return 'Buenas noches';
+  if (h < 12) return 'Good morning';
+  if (h < 19) return 'Good afternoon';
+  return 'Good night';
 };
 
 export const relativeTime = (iso: string) => {
   const diff = (Date.now() - new Date(iso).getTime()) / 1000;
-  const rtf = new Intl.RelativeTimeFormat('es', { numeric: 'auto' });
-  if (diff < 60) return 'ahora';
+  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+  if (diff < 60) return 'now';
   if (diff < 3600) return rtf.format(-Math.round(diff / 60), 'minute');
   if (diff < 86400) return rtf.format(-Math.round(diff / 3600), 'hour');
   return rtf.format(-Math.round(diff / 86400), 'day');

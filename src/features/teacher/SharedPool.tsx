@@ -30,8 +30,8 @@ export function SharedPool({ onAdded }: { onAdded: () => void | Promise<void> })
   };
   return (
     <Card className="p-4">
-      <h3 className="text-headline">Estudiantes compartidos</h3>
-      <p className="text-label-2 text-[13px]">La administración los abrió a todos los docentes. Al añadirlos, verás su progreso y podrás asignarles tareas; ellos seguirán con sus otros docentes.</p>
+      <h3 className="text-headline">Shared students</h3>
+      <p className="text-label-2 text-[13px]">The admin opened them to all teachers. When you add them, you’ll see their progress and be able to assign them tasks; they will keep their other teachers.</p>
       {error && <p className="text-ink-red mt-2 text-[13px]">{error}</p>}
       <ul className="mt-2 divide-y divide-[var(--separator)]">
         {rows.map((r) => (
@@ -41,7 +41,7 @@ export function SharedPool({ onAdded }: { onAdded: () => void | Promise<void> })
               <div className="text-label-2 truncate text-[12.5px]">{r.full_name ? `${r.email} · ` : ''}{r.teacher_name ?? 'sin clase'}</div>
             </div>
             <Button variant="gray" size="sm" disabled={busy === r.id} onClick={() => void add(r.id)}>
-              <UserPlus size={15} /> Añadir a mi clase
+              <UserPlus size={15} /> Add to my class
             </Button>
           </li>
         ))}

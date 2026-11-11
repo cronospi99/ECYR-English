@@ -136,8 +136,8 @@ export function PetFace({ av, size, pet }: { av?: number; size: number; pet?: Pe
 const TABS = [
   { k: 'a', en: 'Animal', es: 'Animal' },
   { k: 'c', en: 'Colour', es: 'Color' },
-  { k: 'h', en: 'Hat', es: 'Cabeza' },
-  { k: 'f', en: 'Face', es: 'Cara' },
+  { k: 'h', en: 'Hat', es: 'Head' },
+  { k: 'f', en: 'Face', es: 'Face' },
 ] as const;
 const SIZES = { a: ANIMALS.length, c: FURS.length, h: HATS.length, f: FACES.length };
 
@@ -160,7 +160,7 @@ export function PetMaker({ av, onChange, dark }: { av: number; onChange: (av: nu
             ))}
           </div>
           <button type="button" onClick={() => onChange(randomPet())} className={cn('flex h-9 items-center justify-center gap-1.5 rounded-xl text-[13px] font-black', dark ? 'bg-white/15 text-white' : 'bg-white text-[#3b2bb5]')}>
-            <Dices size={16} /> {t('Surprise me', 'Sorpréndeme')}
+            <Dices size={16} /> {t('Surprise me', 'Surprise me')}
           </button>
         </div>
       </div>

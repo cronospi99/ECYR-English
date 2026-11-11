@@ -102,14 +102,14 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
 
   const toggleSaved = (en: string) => setSaved((s) => (s.includes(en) ? s.filter((x) => x !== en) : [...s, en]));
   const FILTERS: [Filter, string][] = [
-    ['all', `Todos · ${data.verbs.length}`],
-    ['c1', `🎓 C1 académicos · ${data.verbs.filter((v) => v.c1).length}`],
-    ['irregular', 'Irregulares'],
-    ['regular', 'Regulares'],
+    ['all', `All · ${data.verbs.length}`],
+    ['c1', `🎓 C1 academic · ${data.verbs.filter((v) => v.c1).length}`],
+    ['irregular', 'Irregulars'],
+    ['regular', 'Regulars'],
     ['t', '-ed /t/'],
     ['d', '-ed /d/'],
     ['id', '-ed /ɪd/'],
-    ['saved', `★ Mi lista · ${saved.length}`],
+    ['saved', `★ My list · ${saved.length}`],
   ];
 
   return (
@@ -122,7 +122,7 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
             setQ(e.target.value);
             setLimit(60);
           }}
-          placeholder="Busca un verbo en inglés o español…"
+          placeholder="Search a verb in English or Spanish…"
           className="placeholder:text-label-3 h-full flex-1 bg-transparent text-[16px] outline-none"
         />
       </label>
@@ -162,11 +162,11 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
                 {v.type === 'irregular' ? 'Irr' : 'Reg'}
               </span>
               {v.c1 && (
-                <span className="absolute bottom-2 left-2 text-[11px]" title="C1 académico" aria-label="C1 académico">
+                <span className="absolute bottom-2 left-2 text-[11px]" title="C1 academic" aria-label="C1 academic">
                   🎓
                 </span>
               )}
-              {saved.includes(v.en) && <Star size={13} fill="currentColor" className="text-ios-yellow absolute top-2 right-2" aria-label="En mi lista" />}
+              {saved.includes(v.en) && <Star size={13} fill="currentColor" className="text-ios-yellow absolute top-2 right-2" aria-label="On my list" />}
               <span className="text-[40px] leading-none drop-shadow-[0_2px_3px_rgb(0_0_0/0.12)]">{v.emoji}</span>
               <span className="mt-1.5 max-w-full truncate text-[17px] font-bold">{v.en}</span>
               <span className="text-label-2 max-w-full truncate text-[12px]">
@@ -190,11 +190,11 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
       {list.length > limit && (
         <div className="mt-4 text-center">
           <Button variant="gray" onClick={() => setLimit((l) => l + 90)}>
-            Ver más ({list.length - limit})
+            See more ({list.length - limit})
           </Button>
         </div>
       )}
-      {!list.length && <p className="text-label-2 py-10 text-center">No hay verbos con ese filtro.</p>}
+      {!list.length && <p className="text-label-2 py-10 text-center">There are no verbs with that filter.</p>}
     </div>
   );
 }
@@ -204,13 +204,13 @@ export function VerbExplorer({ data, initialFilter = 'all' }: { data: VerbLabDat
 const ED_RULES: { sound: EdSound; title: string; rule: string; desc: string }[] = [
   {
     sound: 't',
-    title: 'Final sordo',
+    title: 'Voiceless ending',
     rule: 'Si el verbo termina en un sonido sordo: p, k, s, ch, sh, f, x.',
     desc: 'La garganta no vibra en la última letra: la "-ed" suena como una T seca.',
   },
   {
     sound: 'd',
-    title: 'Final sonoro',
+    title: 'Voiced ending',
     rule: 'Si el verbo termina en vocal o en un sonido sonoro: b, g, l, m, n, r, v, z…',
     desc: 'Las cuerdas vocales vibran: la "-ed" suena como una D suave, sin sílaba extra.',
   },
@@ -255,7 +255,7 @@ export function EdSoundRules({ data }: { data: VerbLabData }) {
 }
 
 /** Hear a regular past form, choose its -ed sound. */
-export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido de -ed' }: { data: VerbLabData; rounds?: number; title?: string }) {
+export function EdSoundDrill({ data, rounds = 10, title = 'Classify the -ed sound' }: { data: VerbLabData; rounds?: number; title?: string }) {
   const say = useSpeak();
   const award = useProgress((s) => s.award);
   const [seed, setSeed] = useState(0);
@@ -277,7 +277,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
   };
   const next = () => {
     if (i + 1 >= pool.length) {
-      award({ kind: 'flashcards', title: 'Verb Lab · sonidos de -ed', skill: 'vocabulary', xp: 5 + score, ref: 'verblab:ed' });
+      award({ kind: 'flashcards', title: 'Verb Lab · -ed sounds', skill: 'vocabulary', xp: 5 + score, ref: 'verblab:ed' });
     }
     setI(i + 1);
     setPicked(null);
@@ -291,7 +291,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
           {score}/{pool.length} correctas
         </p>
         <Button className="mt-4" variant="gray" onClick={() => (setSeed((x) => x + 1), setI(0), setScore(0))}>
-          <RotateCcw size={15} /> Otra ronda
+          <RotateCcw size={15} /> Another round
         </Button>
       </Card>
     );
@@ -308,7 +308,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
       <div className="flex items-center justify-center gap-3 py-2">
         <span className="text-[30px]">{v.emoji}</span>
         <span className="text-[30px] font-bold tracking-tight">{v.past}</span>
-        <button type="button" onClick={() => say(v.past)} className="text-ink-blue rounded-full p-2 hover:bg-fill-2" aria-label="Escuchar">
+        <button type="button" onClick={() => say(v.past)} className="text-ink-blue rounded-full p-2 hover:bg-fill-2" aria-label="Listen">
           <Volume2 size={22} />
         </button>
       </div>
@@ -336,7 +336,7 @@ export function EdSoundDrill({ data, rounds = 10, title = 'Clasifica el sonido d
             <b className="text-label">{v.en}</b> → {v.past} suena {SOUND_LABEL[v.sound!]}
           </p>
           <Button size="sm" onClick={next}>
-            Siguiente
+            Next
           </Button>
         </div>
       )}
@@ -401,7 +401,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
     setState((s) => {
       const n = { score: s.score + (ok ? 10 + Math.round(left * 10) : 0), streak: ok ? s.streak + 1 : 0, round: s.round + 1 };
       if (n.score > hi.score || n.streak > hi.streak) setHi({ score: Math.max(hi.score, n.score), streak: Math.max(hi.streak, n.streak) });
-      if (n.round % 10 === 0) award({ kind: 'flashcards', title: 'Verb Lab · quiz de formas', skill: 'grammar', xp: Math.round(n.score / 20) + 5, ref: 'verblab:quiz' });
+      if (n.round % 10 === 0) award({ kind: 'flashcards', title: 'Verb Lab · forms quiz', skill: 'grammar', xp: Math.round(n.score / 20) + 5, ref: 'verblab:quiz' });
       return n;
     });
   };
@@ -410,24 +410,24 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
     <Card className="overflow-hidden">
       <div className="text-label-2 flex flex-wrap items-center gap-x-4 gap-y-1 px-5 pt-4 text-[13px]">
         <span>
-          Puntos <b className="text-label tabular-nums">{state.score}</b> (máx. {hi.score})
+          Dots <b className="text-label tabular-nums">{state.score}</b> (max {hi.score})
         </span>
         <span>
-          Racha <b className="text-label tabular-nums">{state.streak}</b> (máx. {hi.streak})
+          Streak <b className="text-label tabular-nums">{state.streak}</b> (max {hi.streak})
         </span>
         <span>
-          Ronda <b className="text-label tabular-nums">{state.round + (q ? 1 : 0)}</b>
+          Round <b className="text-label tabular-nums">{state.round + (q ? 1 : 0)}</b>
         </span>
       </div>
       {!q ? (
         <div className="flex flex-col items-center px-6 py-10 text-center">
           <Timer size={40} className="text-ink-blue" />
-          <h4 className="text-title-3 mt-3">Viaje en el tiempo</h4>
+          <h4 className="text-title-3 mt-3">Time travel</h4>
           <p className="text-label-2 mt-1 max-w-sm text-[15px]">
-            Aparece un verbo: elige su {fixedField === 'part' ? 'participio' : fixedField === 'past' ? 'pasado' : 'pasado o participio'} antes de 12 segundos. Responder rápido suma más puntos.
+            A verb appears: pick its {fixedField === 'part' ? 'participle' : fixedField === 'past' ? 'past' : 'past or participle'} within 12 seconds. Answering fast earns more points.
           </p>
           <Button className="mt-5" variant="brand" onClick={newQuestion}>
-            Empezar
+            Start
           </Button>
         </div>
       ) : (
@@ -469,7 +469,7 @@ export function VerbFormsQuiz({ data, only = 'all', field: fixedField }: { data:
                 {q.v.en} → <b>{q.v.past}</b> → <b>{q.v.part}</b>
               </p>
               <Button size="sm" onClick={newQuestion}>
-                Siguiente
+                Next
               </Button>
             </div>
           )}
@@ -499,7 +499,7 @@ export function PhrasalFamilies({ data, family }: { data: VerbLabData; family?: 
         }),
       }));
   }, [data, family, all]);
-  return <PhrasalExplorer families={families} intro={family ? undefined : 'Toca un verbo para abrir su mapa: cada burbuja es un phrasal verb con su significado y ejemplos.'} />;
+  return <PhrasalExplorer families={families} intro={family ? undefined : 'Tap a verb to open its map: each bubble is a phrasal verb with its meaning and examples.'} />;
 }
 
 // ---------------------------------------------------------- verb patterns --
@@ -526,7 +526,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
             {p.icon}
           </span>
           <div className="min-w-0">
-            <div className="text-label-2 text-[12px] font-semibold">PATRÓN {p.id}</div>
+            <div className="text-label-2 text-[12px] font-semibold">PATTERN {p.id}</div>
             <h4 className="text-title-3">
               <RichText html={p.title} />
             </h4>
@@ -561,7 +561,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
         <ul className="space-y-2">
           {p.examples.map(([ex, why], i) => (
             <li key={i} className="bg-fill-2 flex items-start gap-2 rounded-[12px] p-3">
-              <button type="button" onClick={() => say(stripTags(ex))} className="text-ink-blue mt-0.5" aria-label="Escuchar ejemplo">
+              <button type="button" onClick={() => say(stripTags(ex))} className="text-ink-blue mt-0.5" aria-label="Listen to example">
                 <Volume2 size={15} />
               </button>
               <div>
@@ -579,7 +579,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
         {!compact && p.groups.length > 0 && (
           <div>
             <button type="button" onClick={() => setListOpen((o) => !o)} className="text-ink-blue inline-flex items-center gap-1 text-[15px] font-semibold">
-              {p.listTitle?.replace(/^\S+\s/, '') ?? 'Lista completa'} {p.count && <span className="text-label-2 font-normal">· {p.count}</span>}
+              {p.listTitle?.replace(/^\S+\s/, '') ?? 'Full list'} {p.count && <span className="text-label-2 font-normal">· {p.count}</span>}
               <ChevronDown size={16} className={cn('transition-transform', listOpen && 'rotate-180')} />
             </button>
             {listOpen && (
@@ -648,7 +648,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
 
         {!compact && p.notes && p.notes.length > 0 && (
           <div>
-            <div className="text-label-2 mb-2 text-[12px] font-semibold uppercase">{p.noteTitle?.replace(/^\S+\s/, '') ?? 'Notas'}</div>
+            <div className="text-label-2 mb-2 text-[12px] font-semibold uppercase">{p.noteTitle?.replace(/^\S+\s/, '') ?? 'Notes'}</div>
             <ul className="space-y-1.5">
               {p.notes.map((n, i) => (
                 <li key={i} className="flex gap-2 text-[14px]">
@@ -664,7 +664,7 @@ export function PatternCard({ p, compact = false }: { p: VerbPattern; compact?: 
 
         {p.exceptions && p.exceptions.length > 0 && (
           <div className="space-y-2">
-            <div className="text-label-2 text-[12px] font-semibold uppercase">Errores comunes</div>
+            <div className="text-label-2 text-[12px] font-semibold uppercase">Common mistakes</div>
             {(compact ? p.exceptions.slice(0, 3) : p.exceptions).map(([wrong, right, why], i) => (
               <div key={i} className="bg-fill-2 rounded-[12px] p-3 text-[14px]">
                 <div className="text-ink-red">
@@ -758,7 +758,7 @@ export function PatternQuizCard({ data, quizId }: { data: VerbLabData; quizId: s
             {score}/{quiz.questions.length} correctas
           </span>
           <Button size="sm" variant="gray" onClick={() => setAnswers({})}>
-            <RotateCcw size={14} /> Repetir
+            <RotateCcw size={14} /> Repeat
           </Button>
         </div>
       )}
@@ -788,7 +788,7 @@ export function VerbPatterns({ data }: { data: VerbLabData }) {
       </Card>
       <div className="space-y-5">
         <PatternCard p={p} />
-        <h3 className="text-title-3 px-1">Practica los patrones</h3>
+        <h3 className="text-title-3 px-1">Practise the patterns</h3>
         <div className="grid gap-4 xl:grid-cols-2">
           {data.patterns.quizzes.map((q) => (
             <PatternQuizCard key={q.id} data={data} quizId={q.id} />

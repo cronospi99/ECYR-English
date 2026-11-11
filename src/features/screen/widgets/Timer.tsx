@@ -81,13 +81,13 @@ export default function Timer({ data, set, focused }: WidgetProps<D>) {
               <div key={i} className="contents">
                 {i === 2 && <span className="text-label-3 font-bold" style={{ fontSize: 'min(30cqh, 18cqw)' }}>:</span>}
                 <div className="flex flex-col items-center">
-                  <button type="button" aria-label="Subir" onClick={() => bump(i, 1)} className="text-label-2 hover:bg-fill-2 grid place-items-center rounded-full active:scale-90" style={{ width: 'min(16cqw,22cqh)', height: 'min(11cqw,16cqh)' }}>
+                  <button type="button" aria-label="Up" onClick={() => bump(i, 1)} className="text-label-2 hover:bg-fill-2 grid place-items-center rounded-full active:scale-90" style={{ width: 'min(16cqw,22cqh)', height: 'min(11cqw,16cqh)' }}>
                     <ChevronUp style={{ width: '70%', height: '70%' }} />
                   </button>
                   <span className="font-rounded leading-none font-bold tabular-nums" style={{ fontSize: 'min(40cqh, 22cqw)' }}>
                     {v}
                   </span>
-                  <button type="button" aria-label="Bajar" onClick={() => bump(i, -1)} className="text-label-2 hover:bg-fill-2 grid place-items-center rounded-full active:scale-90" style={{ width: 'min(16cqw,22cqh)', height: 'min(11cqw,16cqh)' }}>
+                  <button type="button" aria-label="Down" onClick={() => bump(i, -1)} className="text-label-2 hover:bg-fill-2 grid place-items-center rounded-full active:scale-90" style={{ width: 'min(16cqw,22cqh)', height: 'min(11cqw,16cqh)' }}>
                     <ChevronDown style={{ width: '70%', height: '70%' }} />
                   </button>
                 </div>
@@ -105,7 +105,7 @@ export default function Timer({ data, set, focused }: WidgetProps<D>) {
               <circle cx="50" cy="50" r="4" fill="var(--card)" stroke="var(--label-3)" />
             </svg>
             <span className="font-rounded font-bold tabular-nums" style={{ fontSize: 'min(12cqh, 12cqw)', color }}>
-              {data.done ? '¡Tiempo!' : fmt(left + 999)}
+              {data.done ? 'Time’s up!' : fmt(left + 999)}
             </span>
           </div>
         ) : (
@@ -115,7 +115,7 @@ export default function Timer({ data, set, focused }: WidgetProps<D>) {
               {frac > 0.002 && <circle cx="50" cy="50" r="45" fill="none" stroke={color} strokeWidth="6" strokeLinecap="round" pathLength="1" strokeDasharray="1" strokeDashoffset={1 - frac} style={{ transition: 'stroke-dashoffset .15s linear, stroke .3s' }} />}
             </svg>
             <span className="font-rounded relative font-bold tabular-nums" style={{ fontSize: data.done ? 'min(17cqmin, 13cqw)' : 'min(24cqmin, 19cqw)', color: data.done ? color : undefined }}>
-              {data.done ? '¡Tiempo!' : fmt(left + 999)}
+              {data.done ? 'Time’s up!' : fmt(left + 999)}
             </span>
           </div>
         )}
@@ -127,16 +127,16 @@ export default function Timer({ data, set, focused }: WidgetProps<D>) {
               {p}′
             </button>
           ))}
-        <Act solid color={running ? 'var(--orange)' : 'var(--green)'} onClick={toggle} aria-label={running ? 'Pausar' : 'Iniciar'} className="px-5">
+        <Act solid color={running ? 'var(--orange)' : 'var(--green)'} onClick={toggle} aria-label={running ? 'Pause' : 'Start'} className="px-5">
           {running ? <Pause size={20} fill="currentColor" /> : data.done ? <Bell size={20} /> : <Play size={20} fill="currentColor" />}
-          <span className="hidden sm:inline">{running ? 'Pausa' : data.done ? 'OK' : 'Iniciar'}</span>
+          <span className="hidden sm:inline">{running ? 'Pause' : data.done ? 'OK' : 'Start'}</span>
         </Act>
         {!idle && (
-          <Act color="var(--label)" onClick={reset} aria-label="Reiniciar">
+          <Act color="var(--label)" onClick={reset} aria-label="Restart">
             <RotateCcw size={18} />
           </Act>
         )}
-        <Act color="var(--purple)" onClick={() => set({ visual: !visual })} aria-label={visual ? 'Modo números' : 'Modo visual'} title={visual ? 'Números' : 'Visual'}>
+        <Act color="var(--purple)" onClick={() => set({ visual: !visual })} aria-label={visual ? 'Numbers mode' : 'Visual mode'} title={visual ? 'Numbers' : 'Visual'}>
           {visual ? <Hash size={18} /> : <PieChart size={18} />}
         </Act>
       </div>

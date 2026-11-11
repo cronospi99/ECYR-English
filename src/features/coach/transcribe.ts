@@ -21,13 +21,13 @@ Keep their mistakes; do not translate or correct. Respond ONLY with raw JSON, no
 "lang" is "es" when most of it is Spanish. If there is no intelligible speech, return {"text":"","lang":"en"}.`;
 
 export async function transcribeTurn(audio: Blob): Promise<Transcript> {
-  if (!supabase) throw new Error('La IA necesita conexión con el servidor.');
+  if (!supabase) throw new Error('The AI needs a connection to the server.');
   const data = await toBase64(audio);
   const { data: res, error } = await supabase.functions.invoke('gemini', {
     body: { op: 'generate', contents: [{ parts: [{ text: PROMPT }, { inline_data: { mime_type: audioMime(audio), data } }] }] },
   });
   if (error) {
-    let message = 'No se pudo transcribir tu voz.';
+    let message = 'Could not transcribe your voice.';
     try {
       const body = await (error as { context?: Response }).context?.json();
       if (body?.error?.message) message = body.error.message;

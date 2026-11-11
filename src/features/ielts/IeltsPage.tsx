@@ -32,17 +32,17 @@ import './styles/ielts-skin.css';
 import { ink } from '@/lib/color';
 
 const SECTIONS: { mod: IeltsModule; label: string; icon: LucideIcon; color: string; only?: 'teacher' | 'student' }[] = [
-  { mod: 'dashboard', label: 'Inicio', icon: Home, color: 'var(--indigo)' },
+  { mod: 'dashboard', label: 'Home', icon: Home, color: 'var(--indigo)' },
   { mod: 'listening', label: 'Listening', icon: Headphones, color: 'var(--skill-listening)' },
   { mod: 'reading', label: 'Reading', icon: BookOpen, color: 'var(--skill-reading)' },
   { mod: 'writing', label: 'Writing', icon: PenLine, color: 'var(--skill-writing)' },
   { mod: 'speaking', label: 'Speaking', icon: Mic, color: 'var(--skill-speaking)' },
-  { mod: 'practice', label: 'Práctica libre', icon: Target, color: 'var(--pink)' },
+  { mod: 'practice', label: 'Free practice', icon: Target, color: 'var(--pink)' },
   { mod: 'mock', label: 'Mock test', icon: ClipboardList, color: 'var(--red)' },
-  { mod: 'progress', label: 'Progreso', icon: TrendingUp, color: 'var(--teal)' },
-  { mod: 'history', label: 'Mi historial', icon: History, color: 'var(--orange)', only: 'student' },
-  { mod: 'class', label: 'Mi clase', icon: GraduationCap, color: 'var(--green)', only: 'teacher' },
-  { mod: 'descriptors', label: 'Descriptores', icon: Scale, color: 'var(--label-2)' },
+  { mod: 'progress', label: 'Progress', icon: TrendingUp, color: 'var(--teal)' },
+  { mod: 'history', label: 'My history', icon: History, color: 'var(--orange)', only: 'student' },
+  { mod: 'class', label: 'My class', icon: GraduationCap, color: 'var(--green)', only: 'teacher' },
+  { mod: 'descriptors', label: 'Descriptors', icon: Scale, color: 'var(--label-2)' },
 ];
 const VALID = new Set(SECTIONS.map((s) => s.mod));
 const SKILL_OF: Record<string, Skill> = { listening: 'listening', reading: 'reading', writing: 'writing', speaking: 'speaking' };
@@ -192,7 +192,7 @@ export default function IeltsPage() {
       wide
     >
       <nav
-        aria-label="Secciones del IELTS"
+        aria-label="IELTS sections"
         className="no-scrollbar material sticky top-12 z-20 -mx-4 mb-5 flex gap-1.5 overflow-x-auto px-4 py-2 sm:-mx-6 sm:px-6 lg:top-0 lg:mx-0 lg:rounded-[16px] lg:px-2"
       >
         {visible.map((s) => {
@@ -218,12 +218,12 @@ export default function IeltsPage() {
         <div className="flex flex-col items-center gap-3 py-20 text-center">
           <TriangleAlert size={40} className="text-ink-orange" />
           <p className="text-label-2 max-w-md">{error}</p>
-          <Button onClick={() => window.location.reload()}>Reintentar</Button>
+          <Button onClick={() => window.location.reload()}>Retry</Button>
         </div>
       ) : (
         !ready && (
           <div className="text-label-2 flex items-center justify-center gap-3 py-24">
-            <Spinner className="h-6 w-6" /> Preparando el simulador…
+            <Spinner className="h-6 w-6" /> Preparing the simulator…
           </div>
         )
       )}

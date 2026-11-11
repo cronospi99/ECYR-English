@@ -28,14 +28,14 @@ import { usePlanState } from './usePlanState';
 import { ink } from '@/lib/color';
 
 const STATUS: Record<PlanEvaluation['status'], { label: string; color: string }> = {
-  upcoming: { label: 'Por empezar', color: 'var(--label-2)' },
-  'on-track': { label: 'Al día', color: 'var(--green)' },
-  behind: { label: 'Vas atrás', color: 'var(--orange)' },
-  complete: { label: '¡Completado!', color: 'var(--blue)' },
-  finished: { label: 'Semana terminada', color: 'var(--purple)' },
+  upcoming: { label: 'Not started', color: 'var(--label-2)' },
+  'on-track': { label: 'On track', color: 'var(--green)' },
+  behind: { label: 'Falling behind', color: 'var(--orange)' },
+  complete: { label: 'Completed!', color: 'var(--blue)' },
+  finished: { label: 'Week finished', color: 'var(--purple)' },
 };
 
-const fmt = (k: string) => new Date(k + 'T00:00:00').toLocaleDateString('es', { day: 'numeric', month: 'short' });
+const fmt = (k: string) => new Date(k + 'T00:00:00').toLocaleDateString('en', { day: 'numeric', month: 'short' });
 
 export default function PlanPage() {
   const { plan, ev, profile, recs, history, level } = usePlanState();
@@ -54,19 +54,19 @@ export default function PlanPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <CalendarRange size={15} className="text-ink-blue" /> Plan de estudio semanal
+          <CalendarRange size={15} className="text-ink-blue" /> Weekly study plan
         </span>
       }
-      title={showWizard ? (plan ? 'Nuevo plan' : 'Crea tu plan') : 'Tu semana'}
+      title={showWizard ? (plan ? 'New plan' : 'Create your plan') : 'Your week'}
       subtitle={
         showWizard
-          ? 'Dinos qué quieres crear o repasar y armamos tu semana con tareas reales de la plataforma. Medimos tu avance solo.'
+          ? 'Tell us what you want to create or review and we’ll build your week with real tasks from the platform. We measure your progress automatically.'
           : undefined
       }
       actions={
         plan && !showWizard ? (
           <Button variant="gray" size="sm" onClick={() => startNew(false)}>
-            <Plus size={16} /> Nuevo plan
+            <Plus size={16} /> New plan
           </Button>
         ) : undefined
       }
@@ -134,12 +134,12 @@ function Overview({ plan, ev, onNext, onClose }: { plan: WeekPlan; ev: PlanEvalu
             </span>
           </div>
           <h2 className="text-title-2 mt-1.5">{plan.title}</h2>
-          {plan.prefs.note && <p className="text-label-2 text-subhead mt-0.5">Propósito: {plan.prefs.note}</p>}
+          {plan.prefs.note && <p className="text-label-2 text-subhead mt-0.5">Goal: {plan.prefs.note}</p>}
           <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <Stat label="Tareas" value={`${ev.done}/${ev.total}`} />
-            <Stat label="Minutos" value={`${ev.minutesDone}/${ev.minutesPlanned}`} />
-            <Stat label="Días activos" value={String(ev.activeDays)} />
-            <Stat label="Acierto medio" value={ev.avgScore != null ? `${ev.avgScore}%` : '–'} />
+            <Stat label="Tasks" value={`${ev.done}/${ev.total}`} />
+            <Stat label="Minutes" value={`${ev.minutesDone}/${ev.minutesPlanned}`} />
+            <Stat label="Active days" value={String(ev.activeDays)} />
+            <Stat label="Average accuracy" value={ev.avgScore != null ? `${ev.avgScore}%` : '–'} />
           </dl>
         </div>
       </div>
@@ -148,16 +148,16 @@ function Overview({ plan, ev, onNext, onClose }: { plan: WeekPlan; ev: PlanEvalu
           <Trophy className="text-ios-yellow shrink-0" size={26} />
           <p className="flex-1 text-[15px]">
             {ev.status === 'complete'
-              ? '¡Cumpliste todo el plan! Genera la próxima semana: el motor ajusta minutos y destrezas a tus resultados.'
-              : `La semana terminó con ${Math.round(ev.ratio * 100)}% completado. Arma la siguiente, adaptada a cómo te fue.`}
+              ? 'You completed the whole plan! Generate next week: the engine adjusts minutes and skills to your results.'
+              : `The week ended ${Math.round(ev.ratio * 100)}% complete. Build the next one, adapted to how it went.`}
           </p>
           <div className="flex gap-2">
             <Button variant="brand" size="sm" onClick={onNext}>
-              <Sparkles size={15} /> Próxima semana
+              <Sparkles size={15} /> Next week
             </Button>
             {ev.status === 'finished' && (
               <Button variant="gray" size="sm" onClick={onClose}>
-                Archivar
+                Archive
               </Button>
             )}
           </div>
@@ -180,7 +180,7 @@ function SkillBreakdown({ ev }: { ev: PlanEvaluation }) {
   const rows = ALL_SKILLS.filter((s) => ev.bySkill[s].planned > 0);
   return (
     <Card className="pb-5">
-      <CardHeader title="Avance por destreza" subtitle="Tareas hechas y acierto de esta semana" />
+      <CardHeader title="Progress by skill" subtitle="Tasks done and accuracy this week" />
       <ul className="mt-4 space-y-3.5 px-5">
         {rows.map((s) => {
           const st = ev.bySkill[s];
@@ -190,7 +190,7 @@ function SkillBreakdown({ ev }: { ev: PlanEvaluation }) {
               <div className="mb-1.5 flex items-baseline justify-between gap-2 text-[14px]">
                 <span className="font-semibold">{SKILL_INFO[s].label}</span>
                 <span className="text-label-2 tabular-nums">
-                  {st.done}/{st.planned} tareas{avg != null ? ` · ${avg}%` : ''}
+                  {st.done}/{st.planned} tasks{avg != null ? ` · ${avg}%` : ''}
                 </span>
               </div>
               <ProgressBar value={st.done / st.planned} color={SKILL_INFO[s].color} height={8} />
@@ -203,17 +203,17 @@ function SkillBreakdown({ ev }: { ev: PlanEvaluation }) {
 }
 
 const TONE: Record<Recommendation['tone'], { icon: typeof Star; color: string; label: string }> = {
-  strength: { icon: Star, color: 'var(--green)', label: 'Fortaleza' },
-  improve: { icon: TrendingUp, color: 'var(--orange)', label: 'A mejorar' },
-  tip: { icon: Lightbulb, color: 'var(--blue)', label: 'Sugerencia' },
+  strength: { icon: Star, color: 'var(--green)', label: 'Strength' },
+  improve: { icon: TrendingUp, color: 'var(--orange)', label: 'To improve' },
+  tip: { icon: Lightbulb, color: 'var(--blue)', label: 'Suggestion' },
 };
 
 function Recommendations({ recs }: { recs: Recommendation[] }) {
   return (
     <Card className="pb-3">
-      <CardHeader title="Recomendaciones" subtitle="Según tu plan y tus resultados" />
+      <CardHeader title="Recommendations" subtitle="Based on your plan and your results" />
       {recs.length === 0 ? (
-        <p className="text-label-2 px-5 pt-3 pb-2 text-[15px]">Completa algunas tareas y aquí verás tus puntos fuertes y qué reforzar.</p>
+        <p className="text-label-2 px-5 pt-3 pb-2 text-[15px]">Complete some tasks and you’ll see your strengths and what to reinforce here.</p>
       ) : (
         <ul className="mt-2">
           {recs.map((r) => {
@@ -233,7 +233,7 @@ function Recommendations({ recs }: { recs: Recommendation[] }) {
                   <p className="text-label-2 text-[13px] leading-snug">{r.text}</p>
                   {r.to && (
                     <Link to={r.to} className="text-ink-blue mt-1 inline-flex items-center gap-1 text-[13px] font-semibold">
-                      {r.cta ?? 'Ir'} <ArrowRight size={13} />
+                      {r.cta ?? 'Go'} <ArrowRight size={13} />
                     </Link>
                   )}
                 </div>
@@ -250,7 +250,7 @@ function Strengths({ profile }: { profile: SkillInsight[] }) {
   const sorted = [...profile].sort((a, b) => (b.strength ?? -1) - (a.strength ?? -1));
   return (
     <Card className="pb-5">
-      <CardHeader title="Tu perfil de destrezas" subtitle="Últimos 30 días · acierto y práctica" />
+      <CardHeader title="Your skills profile" subtitle="Last 30 days · accuracy and practice" />
       <ul className="mt-4 space-y-3 px-5">
         {sorted.map((p) => (
           <li key={p.skill} className="grid grid-cols-[92px_minmax(0,1fr)_40px] items-center gap-3 text-[13px]">
@@ -260,7 +260,7 @@ function Strengths({ profile }: { profile: SkillInsight[] }) {
           </li>
         ))}
       </ul>
-      <p className="text-label-3 mt-3 px-5 text-[12px]">“–” = aún no hay suficientes datos.</p>
+      <p className="text-label-3 mt-3 px-5 text-[12px]">“–” = not enough data yet.</p>
     </Card>
   );
 }
@@ -270,8 +270,8 @@ function History({ history }: { history: PlanSummary[] }) {
   const weeks = history.slice(0, 8).reverse();
   return (
     <Card className="pb-4">
-      <CardHeader title="Semanas anteriores" subtitle="% del plan completado" />
-      <div className="mt-4 flex h-28 items-end gap-2 px-5" role="img" aria-label="Historial de cumplimiento semanal">
+      <CardHeader title="Previous weeks" subtitle="% of the plan completed" />
+      <div className="mt-4 flex h-28 items-end gap-2 px-5" role="img" aria-label="Weekly completion history">
         {weeks.map((h) => {
           const r = h.total ? h.done / h.total : 0;
           return (

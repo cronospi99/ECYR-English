@@ -37,7 +37,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'english-tenses',
     title: 'English Tenses',
-    titleEs: 'Los 5 tiempos clave: uso, estructura y línea de tiempo',
+    titleEs: 'The 5 key tenses: use, structure and timeline',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -53,7 +53,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'past-tenses',
     title: 'Past Tenses in English',
-    titleEs: 'Los 4 pasados: uso, estructura, ejemplos y línea de tiempo',
+    titleEs: 'The 4 past tenses: use, structure, examples and timeline',
     w: 1199,
     h: 1312,
     levels: ['A1', 'A2', 'B1', 'B2'],
@@ -71,7 +71,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'present-perfect-vs-past-simple',
     title: 'Present Perfect vs Past Simple',
-    titleEs: 'Cuándo usar cada uno, con marcadores de tiempo y ejemplos',
+    titleEs: 'When to use each one, with time markers and examples',
     w: 1024,
     h: 1536,
     levels: ['A1', 'A2', 'B1', 'B2'],
@@ -87,7 +87,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'all-conditionals',
     title: 'All the Conditionals',
-    titleEs: 'Cero, primero, segundo, tercero y mixtos en una sola vista',
+    titleEs: 'Zero, first, second, third and mixed in a single view',
     w: 1024,
     h: 1536,
     levels: ['A2', 'B1', 'B2', 'C1'],
@@ -136,7 +136,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'modals-machu-picchu',
     title: 'Can, Should & Must · Machu Picchu',
-    titleEs: 'Permiso, consejo y obligación en un destino real',
+    titleEs: 'Permission, advice and obligation in a real destination',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -151,7 +151,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'modals-santorini',
     title: 'Can, Should & Must · Santorini',
-    titleEs: 'Permiso, consejo y obligación en un destino real',
+    titleEs: 'Permission, advice and obligation in a real destination',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -167,7 +167,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'modals-kyoto',
     title: 'Can, Should & Must · Kyoto',
-    titleEs: 'Permiso, consejo y obligación en un destino real',
+    titleEs: 'Permission, advice and obligation in a real destination',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -183,7 +183,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'uses-of-get',
     title: 'The Many Uses of GET',
-    titleEs: '12 significados de get con ejemplos y combinaciones frecuentes',
+    titleEs: '12 meanings of get with examples and frequent combinations',
     w: 1024,
     h: 1536,
     levels: ['A2', 'B1', 'B2'],
@@ -198,7 +198,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'describing-problems',
     title: 'Describing Problems',
-    titleEs: 'Daños y averías: participios como adjetivos, sustantivos, need + -ing / to be done y keep + -ing',
+    titleEs: 'Damage and breakdowns: participles as adjectives, nouns, need + -ing / to be done and keep + -ing',
     w: 1536,
     h: 1024,
     levels: ['B1'],
@@ -213,7 +213,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'physical-appearance',
     title: 'Physical Appearance Adjectives',
-    titleEs: '42 formas de describir a una persona, con dibujos',
+    titleEs: '42 ways to describe a person, with drawings',
     w: 1024,
     h: 1536,
     levels: ['A1', 'A2'],
@@ -229,7 +229,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'house-appliances-furniture',
     title: 'Parts of the House · Appliances & Furniture',
-    titleEs: 'Electrodomésticos y muebles con sus partes señaladas',
+    titleEs: 'Appliances and furniture with their parts labelled',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2', 'B1'],
@@ -244,7 +244,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'clothing-winter',
     title: 'Winter Clothing Vocabulary',
-    titleEs: '25 prendas de invierno con su nombre en inglés de EE. UU. y del Reino Unido',
+    titleEs: '25 winter garments with their US and UK English names',
     w: 1536,
     h: 1024,
     levels: ['A1'],
@@ -255,7 +255,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'clothing-autumn',
     title: 'Autumn Clothing Vocabulary',
-    titleEs: 'Ropa de otoño: suéteres, chaquetas, pantalones y botas (US / UK)',
+    titleEs: 'Autumn clothes: sweaters, jackets, trousers and boots (US / UK)',
     w: 1536,
     h: 1024,
     levels: ['A1'],
@@ -266,7 +266,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'clothing-spring',
     title: 'Spring Clothing Vocabulary',
-    titleEs: 'Ropa de primavera: chaquetas ligeras, vestidos, faldas y zapatos (US / UK)',
+    titleEs: 'Spring clothes: light jackets, dresses, skirts and shoes (US / UK)',
     w: 1536,
     h: 1024,
     levels: ['A1'],
@@ -277,7 +277,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'clothing-summer',
     title: 'Summer Clothing Vocabulary',
-    titleEs: 'Ropa de verano y de playa: camisetas, shorts, vestidos de baño y sandalias (US / UK)',
+    titleEs: 'Summer and beach clothes: T-shirts, shorts, swimsuits and sandals (US / UK)',
     w: 1536,
     h: 1024,
     levels: ['A1'],
@@ -288,7 +288,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'clothing-colombia',
     title: 'Colombian Clothing Outfits',
-    titleEs: 'Prendas y trajes típicos de Colombia en inglés: vueltiao, ruana, pollera, llanero, palenquera',
+    titleEs: 'Typical Colombian garments and costumes in English: vueltiao, ruana, pollera, llanero, palenquera',
     w: 1536,
     h: 1024,
     levels: ['A1'],
@@ -302,7 +302,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'prepositions-place',
     title: 'Prepositions of Place',
-    titleEs: '60 preposiciones de lugar con dibujo y ejemplo: in, on, under, between, opposite, at the top of…',
+    titleEs: '60 prepositions of place with a drawing and an example: in, on, under, between, opposite, at the top of…',
     w: 1374,
     h: 1145,
     levels: ['A1', 'A2'],
@@ -316,7 +316,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'prepositions-place-movement',
     title: 'Prepositions of Place and Movement',
-    titleEs: 'Lugar (dónde está algo) frente a movimiento (hacia dónde va): into, onto, through, across, along…',
+    titleEs: 'Place (where something is) versus movement (where it is going): into, onto, through, across, along…',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2', 'B1'],
@@ -330,7 +330,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'family-living-room',
     title: 'The Ortiz Family at Home',
-    titleEs: 'Tres generaciones en la sala: grandparents, parents, uncle, cousin, son, daughter',
+    titleEs: 'Three generations in the living room: grandparents, parents, uncle, cousin, son, daughter',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -342,7 +342,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'family-garden',
     title: 'The Herrera Family in the Garden',
-    titleEs: 'Una familia con sus mascotas: grandparents, uncle, cousin, son, daughter, dog and cat',
+    titleEs: 'A family with their pets: grandparents, uncle, cousin, son, daughter, dog and cat',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -354,7 +354,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'family-multicultural',
     title: 'A Multicultural Family',
-    titleEs: 'Una familia de varios países: aunt, uncle, grandparents, cousin y sus orígenes',
+    titleEs: 'A family from several countries: aunt, uncle, grandparents, cousin and their origins',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2', 'B2'],
@@ -366,7 +366,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'shops-city',
     title: 'Shops in a City',
-    titleEs: 'Tiendas y lugares de la ciudad, de básico a avanzado: bakery, pharmacy, post office, skyscraper, highway…',
+    titleEs: 'Shops and places in the city, from basic to advanced: bakery, pharmacy, post office, skyscraper, highway…',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2'],
@@ -380,7 +380,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'health-symptoms',
     title: 'Health Symptoms and Advice',
-    titleEs: 'Síntomas (headache, fever, sore throat…), vocabulario de salud y modales para dar consejos',
+    titleEs: 'Symptoms (headache, fever, sore throat…), health vocabulary and modals for giving advice',
     w: 1216,
     h: 1294,
     levels: ['A1', 'A2'],
@@ -394,7 +394,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'house-vs-apartment',
     title: 'House vs Apartment',
-    titleEs: 'Dos viviendas en arriendo con precio, servicios, estrato, habitaciones y baños: para comparar',
+    titleEs: 'Two rental homes with price, utilities, socioeconomic stratum, bedrooms and bathrooms: to compare',
     w: 1536,
     h: 1024,
     levels: ['A1', 'A2', 'B1'],
@@ -406,7 +406,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'house-vs-apartment-photos',
     title: 'House vs Apartment: Inside',
-    titleEs: 'Por dentro: sala, cocina, habitación y baño, y lo mejor de cada una (jardín, garaje, gimnasio, piscina, ascensor)',
+    titleEs: 'Inside: living room, kitchen, bedroom and bathroom, and the best of each one (garden, garage, gym, pool, lift)',
     w: 1402,
     h: 1122,
     levels: ['A1', 'A2', 'B1'],
@@ -417,7 +417,7 @@ export const VISUALS: Visual[] = [
   {
     id: 'loft-vs-toscana',
     title: 'Loft vs Tuscan House',
-    titleEs: 'Un loft urbano y una casa estilo toscano: precios, estrato, espacios y ventajas de cada una',
+    titleEs: 'An urban loft and a Tuscan-style house: prices, stratum, spaces and the advantages of each',
     w: 1536,
     h: 1024,
     levels: ['A2', 'B1', 'B2'],

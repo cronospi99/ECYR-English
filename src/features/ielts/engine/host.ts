@@ -101,7 +101,7 @@ function loadScript(src: string) {
     s.async = true;
     s.dataset.ixSrc = src;
     s.onload = () => resolve();
-    s.onerror = () => reject(new Error(`No se pudo cargar ${src}`));
+    s.onerror = () => reject(new Error(`Could not load ${src}`));
     document.head.appendChild(s);
   });
 }
@@ -135,7 +135,7 @@ export async function mountIelts(container: HTMLElement): Promise<IeltsApi> {
       const s = document.createElement('script');
       s.textContent = code;
       document.head.appendChild(s);
-      if (!window.__ieltsBoot || !window.__ielts) throw new Error('El motor IELTS no arrancó.');
+      if (!window.__ieltsBoot || !window.__ielts) throw new Error('The IELTS engine did not start.');
       await window.__ieltsBoot();
       return window.__ielts;
     })();

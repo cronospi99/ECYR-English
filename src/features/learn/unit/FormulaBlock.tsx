@@ -8,7 +8,7 @@ import { deep } from '@/lib/color';
 const POL: Record<Exclude<Polarity, null>, { sym: string; color: string; label: string }> = {
   '+': { sym: '+', color: 'var(--green)', label: 'Afirmativa' },
   '-': { sym: '−', color: 'var(--red)', label: 'Negativa' },
-  '?': { sym: '?', color: 'var(--blue)', label: 'Pregunta' },
+  '?': { sym: '?', color: 'var(--blue)', label: 'Question' },
   '-?': { sym: '−?', color: 'var(--orange)', label: 'Negativa y pregunta' },
 };
 
@@ -110,7 +110,7 @@ function Row({ line, spec, color }: { line: FormLine; spec?: KeySpec; color: str
               <span key={i} className="bg-fill-2 inline-flex flex-wrap items-center gap-1 rounded-[10px] px-2 py-1 text-[15px]">
                 {c.map((x, j) => (
                   <Fragment key={j}>
-                    {j > 0 && <ArrowRight size={13} className="text-label-3" aria-label="se convierte en" />}
+                    {j > 0 && <ArrowRight size={13} className="text-label-3" aria-label="becomes" />}
                     <span className={j === c.length - 1 ? 'font-semibold' : undefined} style={j > 0 ? { color: ink(color) } : undefined}>
                       <Hl text={x} spec={spec} />
                     </span>
@@ -162,10 +162,10 @@ export function FormulaBlock({ form, spec, color, bare = false }: { form: string
   }, [lines]);
   if (!lines.length) return null;
   return (
-    <section aria-label="Fórmula">
+    <section aria-label="Formula">
       {!bare && (
         <Kicker icon={Sigma} color={color}>
-          Fórmula
+          Formula
         </Kicker>
       )}
       <div className="rounded-[18px] p-3 sm:p-4" style={{ background: tint(color, 6), boxShadow: `inset 0 0 0 1px ${tint(color, 18)}` }}>

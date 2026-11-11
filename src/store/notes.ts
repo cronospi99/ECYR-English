@@ -173,5 +173,5 @@ export function visibleNotes(notes: Note[], uid: string | null) {
 /** First line of a note, for list rows. */
 export function noteTitle(n: Pick<Note, 'body'>) {
   const line = stripHighlights(n.body).trim().split('\n')[0]?.trim() ?? '';
-  return line ? (line.length > 80 ? `${line.slice(0, 80)}…` : line) : 'Nota vacía';
+  return line ? (line.length > 80 ? `${line.slice(0, 80)}…` : line) : 'Empty note';
 }

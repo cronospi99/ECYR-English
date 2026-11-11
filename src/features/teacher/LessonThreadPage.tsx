@@ -50,12 +50,12 @@ export default function LessonThreadPage() {
 
   if (!isTeacher)
     return (
-      <Page title="Hilo de clase">
+      <Page title="Class thread">
         <Card className="mx-auto max-w-md p-6 text-center">
           <School size={40} className="text-ink-orange mx-auto" />
-          <h2 className="text-title-3 mt-3">Solo para docentes</h2>
+          <h2 className="text-title-3 mt-3">Teachers only</h2>
           <ButtonLink to="/profile" className="mt-4">
-            Ir a mi perfil
+            Go to my profile
           </ButtonLink>
         </Card>
       </Page>
@@ -86,7 +86,7 @@ export default function LessonThreadPage() {
   };
 
   return (
-    <Page back={{ to: '/teacher?tab=material', label: 'Sala del docente' }} eyebrow="Solo docentes" title="Hilo de clase" subtitle="Eliges los temas; sale un texto central (lectura, chisme, noticia…) y de ahí se desglosa cada uno." wide>
+    <Page back={{ to: '/teacher?tab=material', label: 'Teacher room' }} eyebrow="Teachers only" title="Class thread" subtitle="You pick the topics; a central text (reading, gossip, news…) comes out and each topic is broken down from it." wide>
       <Card className="mb-6 space-y-4 p-4 sm:p-5">
         <div className="flex flex-wrap items-center gap-3">
           <div className="no-scrollbar overflow-x-auto">
@@ -100,7 +100,7 @@ export default function LessonThreadPage() {
               options={CEFR_LEVELS.map((l) => ({ value: l, label: l }))}
             />
           </div>
-          <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Tipo de hilo">
+          <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Thread type">
             {STYLES.map((s) => (
               <button
                 key={s.id}
@@ -170,15 +170,15 @@ export default function LessonThreadPage() {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             maxLength={120}
-            aria-label="Tema o idea (opcional)"
-            placeholder="Tema o idea (opcional): una fiesta sorpresa, un viaje…"
+            aria-label="Topic or idea (optional)"
+            placeholder="Topic or idea (optional): a surprise party, a trip…"
             className="bg-fill-2 placeholder:text-label-3 h-10 min-w-0 flex-1 basis-60 rounded-[12px] px-3.5 text-[15px] outline-none focus:ring-2"
           />
           <Button onClick={() => local()} disabled={!units.length || !total}>
-            <Wand2 size={17} /> Generar
+            <Wand2 size={17} /> Generate
           </Button>
-          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || !total || busy || !supabase} title="Gemini escribe el texto central completo al nivel">
-            <Sparkles size={17} /> {busy ? 'Escribiendo…' : 'Con IA'}
+          <Button variant="tinted" onClick={() => void withAi()} disabled={!units.length || !total || busy || !supabase} title="Gemini writes the full central text at the right level">
+            <Sparkles size={17} /> {busy ? 'Writing…' : 'With AI'}
           </Button>
         </div>
         {error && (
@@ -256,10 +256,10 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
             </span>
           ))}
           <span className="ml-auto flex gap-1.5">
-            <button type="button" onClick={onAnother} title="Otra idea" aria-label="Otra idea" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
+            <button type="button" onClick={onAnother} title="Another idea" aria-label="Another idea" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
               <Dices size={17} />
             </button>
-            <button type="button" onClick={() => void copy()} title="Copiar plan" aria-label="Copiar plan" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
+            <button type="button" onClick={() => void copy()} title="Copy plan" aria-label="Copy plan" className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 hover:bg-white/25">
               {copied ? <Check size={17} /> : <Clipboard size={17} />}
             </button>
           </span>
@@ -271,7 +271,7 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
           <h3 className="text-headline">
             {st.emoji} Texto central
           </h3>
-          {t.source === 'local' && <span className="bg-fill-2 text-label-2 rounded-full px-2 py-0.5 text-[12px]">Borrador con frases modelo · «Con IA» lo escribe completo</span>}
+          {t.source === 'local' && <span className="bg-fill-2 text-label-2 rounded-full px-2 py-0.5 text-[12px]">Draft with model sentences · “With AI” writes it in full</span>}
         </div>
         <div className="mt-3 space-y-2.5 text-[16px] leading-relaxed">
           {t.story.split(/\n+/).map((p, i) => (
@@ -291,7 +291,7 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
       <ol className="relative mt-6 space-y-4 pl-9">
         <span aria-hidden className="absolute top-3 bottom-3 left-[15px] w-[3px] rounded-full" style={{ background: tint(color, 35) }} />
         <Node icon={<DoorOpen size={16} />} color={color}>
-          <Moment label="Abrir clase" a={t.opener} color={color} />
+          <Moment label="Opening" a={t.opener} color={color} />
         </Node>
         {t.chapters.map((c, i) => (
           <Fragment key={i}>
@@ -324,14 +324,14 @@ function Plan({ t, color, onAnother, onChallenge }: { t: Thread; color: string; 
               🏆
             </span>
             <span className="min-w-0">
-              <span className="block text-[18px] font-bold">Reto por equipos</span>
-              <span className="block text-[14px] opacity-85">Mímica, tabú, dibujo, duelos… con el vocabulario de hoy. Proyéctalo.</span>
+              <span className="block text-[18px] font-bold">Team challenge</span>
+              <span className="block text-[14px] opacity-85">Mime, taboo, drawing, duels… with today’s vocabulary. Project it.</span>
             </span>
           </button>
           <TeamsPreview mix={t.mix} />
         </Node>
         <Node icon={<DoorClosed size={16} />} color={color}>
-          <Moment label="Cerrar clase" a={t.closer} color={color} />
+          <Moment label="Closing" a={t.closer} color={color} />
         </Node>
       </ol>
 
@@ -396,7 +396,7 @@ function Moment({ label, a, color }: { label: string; a: Activity; color: string
           ))}
         </div>
       )}
-      <span className="sr-only">{total} minutos</span>
+      <span className="sr-only">{total} minutes</span>
     </Card>
   );
 }
@@ -447,11 +447,11 @@ function Branch({ c, color }: { c: Chapter; color: string }) {
         </ul>
       )}
       <dl className="mt-3 grid gap-x-3 gap-y-1.5 text-[14.5px] sm:grid-cols-[auto_1fr]">
-        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Notar</dt>
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Notice</dt>
         <dd>{c.notice}</dd>
-        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Practicar</dt>
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Practise</dt>
         <dd>{c.practice}</dd>
-        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Preguntar</dt>
+        <dt className="text-label-2 text-[12px] font-semibold tracking-wide uppercase sm:pt-0.5">Ask</dt>
         <dd>{c.questions.join(' · ')}</dd>
       </dl>
       {c.vocab.length > 0 && (
@@ -473,8 +473,8 @@ function MixPicker({ mix, onChange, color }: { mix: Mix; onChange: (m: Mix) => v
   return (
     <div>
       <div className="text-label-2 mb-2 flex items-center gap-1.5 text-[12px] font-semibold tracking-wide uppercase">
-        <Users size={14} /> Estudiantes · {total}
-        {isIntergenerational(mix) && <span className="bg-fill-2 text-label rounded-full px-2 py-0.5 text-[11px] normal-case">Grupo intergeneracional</span>}
+        <Users size={14} /> Students · {total}
+        {isIntergenerational(mix) && <span className="bg-fill-2 text-label rounded-full px-2 py-0.5 text-[11px] normal-case">Mixed-age group</span>}
       </div>
       <div className="grid grid-cols-2 gap-1.5 md:grid-cols-4">
         {AUDIENCES.map((a) => {
@@ -492,7 +492,7 @@ function MixPicker({ mix, onChange, color }: { mix: Mix; onChange: (m: Mix) => v
                 </span>
                 <span className="min-w-0 leading-tight">
                   <span className="block text-[13.5px] font-semibold">{a.label}</span>
-                  <span className="text-label-2 block text-[11.5px]">{a.ages} años</span>
+                  <span className="text-label-2 block text-[11.5px]">{a.ages} years</span>
                 </span>
               </span>
               <span className="flex items-center justify-center gap-1">
@@ -509,11 +509,11 @@ function MixPicker({ mix, onChange, color }: { mix: Mix; onChange: (m: Mix) => v
                   value={n}
                   onChange={(e) => set(a.id, Number(e.target.value.replace(/\D/g, '')) || 0)}
                   inputMode="numeric"
-                  aria-label={`Número de ${a.label.toLowerCase()}`}
+                  aria-label={`Number of ${a.label.toLowerCase()}`}
                   className="w-8 bg-transparent text-center text-[15px] font-bold tabular-nums outline-none"
                   style={on ? { color: ink(color) } : undefined}
                 />
-                <button type="button" onClick={() => set(a.id, n + 1)} aria-label={`Más ${a.label.toLowerCase()}`} className="bg-card inline-flex h-7 w-7 items-center justify-center rounded-full">
+                <button type="button" onClick={() => set(a.id, n + 1)} aria-label={`More ${a.label.toLowerCase()}`} className="bg-card inline-flex h-7 w-7 items-center justify-center rounded-full">
                   <Plus size={14} />
                 </button>
               </span>
@@ -548,7 +548,7 @@ function TeamsPreview({ mix }: { mix: Mix }) {
   return (
     <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[13px]">
       <span className="text-label-2 font-semibold">
-        {n} equipos para {total}:
+        {n} teams for {total}:
       </span>
       {teams.map((t, k) => (
         <span key={k} className="bg-card shadow-card inline-flex items-center gap-1 rounded-full px-2.5 py-1">

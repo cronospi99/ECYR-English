@@ -35,7 +35,7 @@ export function parseYouTube(url: string): { id: string | null; list: string | n
   }
 }
 
-const PRESETS: Recent[] = [{ label: '🎧 Lofi radio (en vivo)', url: 'https://www.youtube.com/watch?v=jfKfPfyJRdk' }];
+const PRESETS: Recent[] = [{ label: '🎧 Lofi radio (live)', url: 'https://www.youtube.com/watch?v=jfKfPfyJRdk' }];
 
 export default function Video({ data, set, editing, setEditing }: WidgetProps<D>) {
   if ((!data.id && !data.list) || editing)
@@ -43,9 +43,9 @@ export default function Video({ data, set, editing, setEditing }: WidgetProps<D>
       <LinkForm
         icon={<PlaySquare size={44} className="text-ink-red" />}
         color="var(--red)"
-        prompt="Pega un enlace de YouTube (video o playlist)"
+        prompt="Paste a YouTube link (video or playlist)"
         placeholder="https://youtu.be/…"
-        error="Ese enlace no parece de YouTube."
+        error="That link doesn’t look like YouTube."
         presets={PRESETS}
         recent={data.recent}
         onSubmit={(url) => {

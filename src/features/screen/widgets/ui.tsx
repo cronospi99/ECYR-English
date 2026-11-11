@@ -28,14 +28,14 @@ export function Act({
 export function Stepper({ value, onChange, min = 1, max = 99, label }: { value: number; onChange: (n: number) => void; min?: number; max?: number; label?: ReactNode }) {
   return (
     <div className="bg-fill-2 inline-flex h-11 items-center gap-1 rounded-full p-1">
-      <button type="button" aria-label="Menos" onClick={() => onChange(Math.max(min, value - 1))} className="bg-card grid h-9 w-9 place-items-center rounded-full shadow-card active:scale-95">
+      <button type="button" aria-label="Less" onClick={() => onChange(Math.max(min, value - 1))} className="bg-card grid h-9 w-9 place-items-center rounded-full shadow-card active:scale-95">
         <Minus size={18} />
       </button>
       <span className="min-w-12 px-1 text-center text-[17px] font-bold tabular-nums">
         {value}
         {label && <span className="text-label-2 ml-1 text-[13px] font-medium">{label}</span>}
       </span>
-      <button type="button" aria-label="Más" onClick={() => onChange(Math.min(max, value + 1))} className="bg-card grid h-9 w-9 place-items-center rounded-full shadow-card active:scale-95">
+      <button type="button" aria-label="More" onClick={() => onChange(Math.min(max, value + 1))} className="bg-card grid h-9 w-9 place-items-center rounded-full shadow-card active:scale-95">
         <Plus size={18} />
       </button>
     </div>

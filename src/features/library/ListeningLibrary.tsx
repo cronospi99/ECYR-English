@@ -20,21 +20,21 @@ import { cn } from '@/lib/cn';
 import { ink } from '@/lib/color';
 
 const KIND_ES: Record<string, string> = {
-  dialogue: 'Diálogo',
-  conversation: 'Conversación',
-  monologue: 'Monólogo',
-  voicemail: 'Mensaje de voz',
-  announcement: 'Anuncio',
-  interview: 'Entrevista',
+  dialogue: 'Dialogue',
+  conversation: 'Conversation',
+  monologue: 'Monologue',
+  voicemail: 'Voice message',
+  announcement: 'Announcement',
+  interview: 'Interview',
   podcast: 'Podcast',
-  'phone-call': 'Llamada',
-  news: 'Noticias',
-  'radio-report': 'Reportaje',
-  instructions: 'Instrucciones',
-  lecture: 'Clase',
+  'phone-call': 'Phone call',
+  news: 'News',
+  'radio-report': 'Report',
+  instructions: 'Instructions',
+  lecture: 'Class',
   debate: 'Debate',
-  tour: 'Visita guiada',
-  seminar: 'Seminario',
+  tour: 'Guided tour',
+  seminar: 'Seminar',
 };
 const SPEAKER_COLORS = ['var(--blue)', 'var(--orange)', 'var(--purple)', 'var(--green)'];
 const words = (t: LibTrack) => t.lines.reduce((n, l) => n + l.text.split(/\s+/).length, 0);
@@ -62,7 +62,7 @@ export function ListeningLibrary() {
           </Chip>
         ))}
       </div>
-      {!data.length && <p className="text-label-2">Los audios se están preparando.</p>}
+      {!data.length && <p className="text-label-2">The audios are being prepared.</p>}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((t, i) => (
           <TrackCard key={t.id} t={t} i={i} done={doneIds.has(t.id)} onOpen={() => setParams({ track: t.id })} />
@@ -110,17 +110,17 @@ export function trackSheet(t: LibTrack): Worksheet {
     title: t.title,
     subtitle: `Listening · ${t.level} · ${t.topic}`,
     level: t.level,
-    intro: `Listen to the track in ECYR English (Práctica → Listening → Biblioteca → "${t.title}"), then answer. You can listen twice.`,
+    intro: `Listen to the track in ECYR English (Practice → Listening → Library → "${t.title}"), then answer. You can listen twice.`,
     sections: [
       ...questionsToSections(t.questions),
       ...(t.dictation?.length ? [{ kind: 'write' as const, title: 'Dictation: write what you hear', items: t.dictation.map((d) => ({ q: '', answer: d })), lines: 2 }] : []),
     ],
-    credits: 'Audio y guion originales de ECYR English.',
+    credits: 'Original audio and script by ECYR English.',
   };
 }
 
 function Player({ t, onBack }: { t: LibTrack; onBack: () => void }) {
-  return <TrackPlayer t={t} onBack={onBack} backLabel="Biblioteca" />;
+  return <TrackPlayer t={t} onBack={onBack} backLabel="Library" />;
 }
 
 /**
@@ -169,18 +169,18 @@ export function TrackPlayer({ t, onBack, backLabel }: { t: LibTrack; onBack: () 
             player={player}
             tone="onColor"
             restart
-            label={`Posición en "${t.title}"`}
+            label={`Position in "${t.title}"`}
             onPlay={(before) => (before.status === 'idle' || before.status === 'ended' || before.time < 0.3) && setPlays((n) => n + 1)}
             right={
               <span>
-                {line < 0 ? `${t.lines.length} intervenciones` : `${line + 1} / ${t.lines.length}`} · escuchado {plays}×
+                {line < 0 ? `${t.lines.length} intervenciones` : `${line + 1} / ${t.lines.length}`} · listened {plays}×
               </span>
             }
           />
         </div>
         <div className="p-4 sm:p-5">
           <Button variant="gray" size="sm" onClick={() => setShow((x) => !x)}>
-            {show ? <EyeOff size={15} /> : <Eye size={15} />} {show ? 'Ocultar transcripción' : 'Ver transcripción'}
+            {show ? <EyeOff size={15} /> : <Eye size={15} />} {show ? 'Hide transcript' : 'Show transcript'}
           </Button>
           {show && (
             <div className="mt-3 space-y-1">
@@ -192,7 +192,7 @@ export function TrackPlayer({ t, onBack, backLabel }: { t: LibTrack; onBack: () 
                     type="button"
                     onClick={() => player.seek(player.lineStart?.(i) ?? 0)}
                     aria-current={line === i || undefined}
-                    title="Escuchar desde aquí"
+                    title="Listen from here"
                     className={cn('flex w-full gap-2 rounded-[12px] px-3 py-2 text-left transition-colors', line === i ? 'bg-fill-2' : 'hover:bg-fill-2')}
                     style={line === i ? { boxShadow: `inset 3px 0 0 ${color}` } : undefined}
                   >
@@ -209,15 +209,15 @@ export function TrackPlayer({ t, onBack, backLabel }: { t: LibTrack; onBack: () 
       </Card>
 
       <div className="mt-6 mb-3 flex items-center justify-between gap-2">
-        <h3 className="text-[20px] font-bold">Actividades</h3>
+        <h3 className="text-[20px] font-bold">Activities</h3>
         {t.dictation?.length ? (
           <Segmented
             size="sm"
             value={mode}
             onChange={setMode}
             options={[
-              { value: 'questions', label: 'Preguntas' },
-              { value: 'dictation', label: 'Dictado' },
+              { value: 'questions', label: 'Questions' },
+              { value: 'dictation', label: 'Dictation' },
             ]}
           />
         ) : null}
@@ -250,7 +250,7 @@ function Dictation({ t }: { t: LibTrack }) {
           <Card key={i} className="p-4">
             <div className="flex items-center gap-2">
               <Button size="sm" variant="tinted" onClick={() => speakAs(d, speakerOf(d), { rate: 0.85 })}>
-                <Volume2 size={15} /> Frase {i + 1}
+                <Volume2 size={15} /> Sentence {i + 1}
               </Button>
               {checked && (v === 'wrong' ? <X className="text-ink-red" size={18} /> : <Check className="text-ink-green" size={18} />)}
             </div>
@@ -258,7 +258,7 @@ function Dictation({ t }: { t: LibTrack }) {
               value={vals[i]}
               onChange={(e) => setVals((s) => s.map((x, k) => (k === i ? e.target.value : x)))}
               rows={2}
-              placeholder="Escribe lo que escuchas…"
+              placeholder="Write what you hear…"
               className="bg-fill-2 placeholder:text-label-3 mt-2 w-full resize-none rounded-[10px] px-3 py-2 text-[15px] outline-none"
             />
             {checked && v !== 'right' && <p className="text-label-2 mt-1 text-[14px]">✓ {d}</p>}
@@ -266,7 +266,7 @@ function Dictation({ t }: { t: LibTrack }) {
         );
       })}
       <Button onClick={() => setChecked(true)} disabled={vals.every((v) => !v.trim())}>
-        <Check size={16} /> Comprobar
+        <Check size={16} /> Check
       </Button>
     </div>
   );

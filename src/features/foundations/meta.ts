@@ -21,11 +21,11 @@ export const PREA1_TOPICS = [
 
 export const PREA1 = {
   title: 'Foundations',
-  nameEs: 'Inicial',
+  nameEs: 'Starter',
   color: 'var(--red)',
   tint: 'from-[#d6202b] to-[#c25e00]',
-  description: 'Antes de A1: el alfabeto, saludos, to be, números, signos, preguntas y la ropa, explicados en español.',
-  canDo: ['Saludar, presentarte y despedirte', 'Deletrear, contar y dar precios', 'Hacer preguntas sencillas'],
+  description: 'Before A1: the alphabet, greetings, to be, numbers, signs, questions and clothes, explained in Spanish.',
+  canDo: ['Greeting, introducing yourself and saying goodbye', 'Spelling, counting and giving prices', 'Asking simple questions'],
 };
 
 /** A grammar point: `${level}-${unit}` + index of the point in that unit. */

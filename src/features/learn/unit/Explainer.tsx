@@ -101,7 +101,7 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
       <div className="grid gap-3 sm:grid-cols-2">
         {e.compare && (
           <div className="bg-fill-2 rounded-[16px] p-3.5">
-            <div className="text-label-2 mb-2 text-[11px] font-bold tracking-wide uppercase">Español → inglés</div>
+            <div className="text-label-2 mb-2 text-[11px] font-bold tracking-wide uppercase">Spanish → English</div>
             <div className="flex items-start gap-2 text-[15px]">
               <span className="shrink-0" aria-hidden>
                 🇨🇴
@@ -121,7 +121,7 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
         )}
         {e.mistake && (
           <div className="rounded-[16px] p-3.5" style={{ background: 'color-mix(in srgb, var(--orange) 9%, transparent)' }}>
-            <div className="text-ink-orange mb-2 text-[11px] font-bold tracking-wide uppercase">Error típico</div>
+            <div className="text-ink-orange mb-2 text-[11px] font-bold tracking-wide uppercase">Typical mistake</div>
             <div className="flex items-start gap-2 text-[15px]">
               <X size={17} className="text-ink-red mt-0.5 shrink-0" />
               <span className="text-label-2 line-through decoration-1">{e.mistake.wrong}</span>
@@ -155,7 +155,7 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
   const chips = parts.filter((p) => p.role !== 'end');
   return (
     <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)] sm:p-4">
-      <div className="text-label-2 mb-2.5 text-[11px] font-bold tracking-wide uppercase">{title ?? 'Fórmula'}</div>
+      <div className="text-label-2 mb-2.5 text-[11px] font-bold tracking-wide uppercase">{title ?? 'Formula'}</div>
       <div className="flex flex-wrap items-center gap-y-2">
         {chips.map((c, i) => {
           const col = ROLE[c.role] ?? 'var(--blue)';
@@ -211,7 +211,7 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
 // --------------------------------------------------------------- timeline --
 
 const TL_TEXT: Record<Exclude<TimelineType, 'none'>, string> = {
-  habit: 'Se repite siempre',
+  habit: 'It always repeats',
   now: 'Está pasando ahora',
   'past-point': 'Terminó en un momento del pasado',
   'past-span': 'Estaba en progreso en el pasado',
@@ -318,7 +318,7 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
 
   return (
     <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)]">
-      <div className="text-label-2 text-[11px] font-bold tracking-wide uppercase">Línea de tiempo</div>
+      <div className="text-label-2 text-[11px] font-bold tracking-wide uppercase">Timeline</div>
       <svg viewBox={`0 0 ${W} 92`} className="mt-1 h-auto w-full max-w-[440px]" role="img" aria-label={label || TL_TEXT[type]}>
         <defs>
           <marker id={`${uid}a`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
@@ -332,7 +332,7 @@ function Timeline({ type, label, color }: { type: Exclude<TimelineType, 'none'>;
         <line x1={NOW} y1={Y - 16} x2={NOW} y2={Y + 14} strokeWidth={2.5} strokeDasharray="3 3" style={{ stroke: 'var(--label)' }} />
         <rect x={NOW - 26} y={Y + 31} width={52} height={17} rx={8.5} style={{ fill: 'var(--label)' }} />
         <text x={NOW} y={Y + 43.5} textAnchor="middle" fontSize="11" fontWeight={800} style={{ fill: 'var(--card)' }}>
-          AHORA
+          NOW
         </text>
         <text x={14} y={Y + 43.5} fontSize="11.5" fontWeight={700} style={{ fill: 'var(--label-2)' }}>
           ← PASADO

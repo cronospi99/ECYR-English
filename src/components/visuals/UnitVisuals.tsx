@@ -3,9 +3,9 @@ import { unitVisualPlan, visualsWhere, type UnitSection, type VisualPlace } from
 import { VisualFigure, VisualSet } from './Visuals';
 
 const TITLES: Record<UnitSection, string> = {
-  overview: 'Para empezar',
-  vocab: 'Mira y aprende',
-  grammar: 'La gramática en una imagen',
+  overview: 'To start',
+  vocab: 'Look and learn',
+  grammar: 'Grammar in one picture',
 };
 
 /**

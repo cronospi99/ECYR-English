@@ -8,11 +8,11 @@ export default function NotesPage() {
     <Page
       eyebrow={
         <span className="inline-flex items-center gap-1.5">
-          <NotebookPen size={15} className="text-ink-yellow" aria-hidden /> Notas privadas
+          <NotebookPen size={15} className="text-ink-yellow" aria-hidden /> Private notes
         </span>
       }
-      title="Mis notas"
-      subtitle="Apuntes que solo tú puedes ver. Se guardan solas mientras escribes y recuerdan la página donde las tomaste."
+      title="My notes"
+      subtitle="Notes only you can see. They save themselves as you type and remember the page where you took them."
       wide
     >
       <NotesPanel variant="page" />

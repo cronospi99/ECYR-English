@@ -81,10 +81,10 @@ function Challenge() {
         <span className="grid h-8 w-8 place-items-center rounded-[10px]" style={{ background: tint(color, 18) }}>
           <Sparkles size={17} strokeWidth={2.4} />
         </span>
-        <div className="text-headline text-label">Reto · ¿Qué dibujo?</div>
+        <div className="text-headline text-label">Challenge · What’s the drawing?</div>
       </div>
 
-      <div className="mt-3 grid grid-cols-6 gap-1 px-4" role="tablist" aria-label="Nivel">
+      <div className="mt-3 grid grid-cols-6 gap-1 px-4" role="tablist" aria-label="Level">
         {LEVELS.map((lv) => {
           const c = levelMeta(lv)?.color ?? 'var(--blue)';
           const active = lv === level;
@@ -125,10 +125,10 @@ function Challenge() {
               type="button"
               onClick={() => setShowEs((v) => !v)}
               className="text-subhead text-label-2 mt-1.5 inline-flex items-center gap-1.5 hover:opacity-70"
-              aria-label={showEs ? 'Ocultar traducción' : 'Ver en español'}
+              aria-label={showEs ? 'Hide translation' : 'Show in Spanish'}
             >
               {showEs ? <EyeOff size={15} /> : <Eye size={15} />}
-              {showEs ? word[1] : 'Ver en español'}
+              {showEs ? word[1] : 'Show in Spanish'}
             </button>
           </div>
           {left !== null && (
@@ -147,7 +147,7 @@ function Challenge() {
             onClick={() => shuffle()}
             className="bg-fill-2 text-label flex h-11 items-center justify-center gap-2 rounded-[12px] text-[15px] font-semibold transition-transform active:scale-[0.97]"
           >
-            <Shuffle size={18} strokeWidth={2.3} /> Otra
+            <Shuffle size={18} strokeWidth={2.3} /> Another
           </button>
           <button
             type="button"
@@ -156,10 +156,10 @@ function Challenge() {
               'flex h-11 items-center justify-center gap-2 rounded-[12px] text-[15px] font-semibold tabular-nums transition-transform active:scale-[0.97]',
               timeUp ? 'bg-ios-red text-white' : left !== null ? 'bg-label text-bg' : 'bg-fill-2 text-label',
             )}
-            aria-label={left === null ? 'Empezar 60 segundos' : 'Parar el tiempo'}
+            aria-label={left === null ? 'Start 60 seconds' : 'Stop the time'}
           >
             {timeUp ? <RotateCcw size={18} strokeWidth={2.3} /> : <Timer size={18} strokeWidth={2.3} />}
-            {timeUp ? '¡Tiempo!' : left !== null ? `${left} s` : '60 s'}
+            {timeUp ? 'Time’s up!' : left !== null ? `${left} s` : '60 s'}
           </button>
         </div>
       </div>
@@ -170,7 +170,7 @@ function Challenge() {
 export default function DrawPage() {
   const [aspect] = useState(() => (window.innerWidth >= 1024 ? 16 / 9 : window.innerWidth >= 640 ? 4 / 3 : 3 / 4));
   return (
-    <Page title="Pizarra" subtitle="Dibuja, escribe y descarga tu obra." wide>
+    <Page title="Whiteboard" subtitle="Draw, write and download your work." wide>
       <div className="flex min-w-0 flex-col gap-4">
         <Challenge />
         {/* Full width on every screen: wide sheet on computers, taller one on phones. */}

@@ -103,12 +103,10 @@ export function PlanWizard({
     return (
       <div className="space-y-5">
         <Card className="p-5 sm:p-6">
-          <div className="text-label-2 text-subhead font-medium">Vista previa</div>
+          <div className="text-label-2 text-subhead font-medium">Preview</div>
           <h2 className="text-title-2 mt-0.5">{preview.title}</h2>
           <p className="text-label-2 text-subhead mt-1">
-            {preview.tasks.length} tareas · {preview.tasks.reduce((n, t) => n + t.minutes, 0)} min en {new Set(preview.tasks.map((t) => t.day)).size} días
-            {preview.prefs.note ? ` · ${preview.prefs.note}` : ''}
-          </p>
+            {preview.tasks.length} tasks · {preview.tasks.reduce((n, t) => n + t.minutes, 0)} min over {new Set(preview.tasks.map((t) => t.day)).size} days {preview.prefs.note ? ` · ${preview.prefs.note}` : ''} </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button
               variant="brand"
@@ -120,7 +118,7 @@ export function PlanWizard({
               <Check size={18} /> Empezar este plan
             </Button>
             <Button variant="gray" onClick={() => setPreview(null)}>
-              Ajustar
+              Fit
             </Button>
           </div>
         </Card>
@@ -130,8 +128,8 @@ export function PlanWizard({
 
   return (
     <div className="max-w-3xl space-y-5">
-      <Section n={1} title="¿Qué quieres lograr esta semana?">
-        <div className="grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Objetivo">
+      <Section n={1} title="What do you want to achieve this week?">
+        <div className="grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Goal">
           {(Object.keys(GOAL_INFO) as PlanGoal[]).map((g) => {
             const Icon = GOAL_ICON[g];
             const active = prefs.goal === g;
@@ -162,7 +160,7 @@ export function PlanWizard({
         </div>
       </Section>
 
-      <Section n={2} title="Nivel">
+      <Section n={2} title="Level">
         <Segmented<CefrLevel>
           value={prefs.level}
           onChange={(l) => {
@@ -176,8 +174,8 @@ export function PlanWizard({
       {(prefs.goal === 'review' || prefs.goal === 'balanced') && (
         <Section
           n={3}
-          title="¿Qué quieres repasar?"
-          hint="Elige unidades o déjalo vacío: el motor escoge las de nota más baja."
+          title="What do you want to review?"
+          hint="Pick units or leave it empty: the engine chooses the ones with the lowest score."
         >
           {!books[prefs.level] ? (
             <Spinner className="h-5 w-5" />
@@ -220,8 +218,8 @@ export function PlanWizard({
 
       <Section
         n={prefs.goal === 'review' || prefs.goal === 'balanced' ? 4 : 3}
-        title="Destrezas a reforzar"
-        hint={prefs.focus.length ? 'Tendrán el doble de tareas.' : `Automático: reforzaremos ${suggested.map((s) => SKILL_INFO[s].label).join(' y ')}.`}
+        title="Skills to reinforce"
+        hint={prefs.focus.length ? 'They will get double the tasks.' : `Automatic: we’ll reinforce ${suggested.map((s) => SKILL_INFO[s].label).join(' and ')}.`}
       >
         <div className="flex flex-wrap gap-2">
           {ALL_SKILLS.map((s) => {
@@ -247,10 +245,10 @@ export function PlanWizard({
         </div>
       </Section>
 
-      <Section n={prefs.goal === 'review' || prefs.goal === 'balanced' ? 5 : 4} title="Tu semana">
+      <Section n={prefs.goal === 'review' || prefs.goal === 'balanced' ? 5 : 4} title="Your week">
         <div className="space-y-4">
           <div>
-            <div className="text-label-2 mb-2 text-[13px] font-medium">Días de estudio</div>
+            <div className="text-label-2 mb-2 text-[13px] font-medium">Study days</div>
             <div className="flex flex-wrap gap-2">
               {[1, 2, 3, 4, 5, 6, 0].map((d) => {
                 const on = prefs.days.includes(d);
@@ -273,7 +271,7 @@ export function PlanWizard({
             </div>
           </div>
           <div>
-            <div className="text-label-2 mb-2 text-[13px] font-medium">Minutos por día</div>
+            <div className="text-label-2 mb-2 text-[13px] font-medium">Minutes per day</div>
             <Segmented<string>
               value={String(prefs.minutes)}
               onChange={(m) => set('minutes', Number(m))}
@@ -283,28 +281,28 @@ export function PlanWizard({
           <div className="divide-separator divide-y">
             <label className="flex items-center justify-between gap-3 py-2.5">
               <span>
-                <span className="block text-[15px]">Incluir un juego</span>
-                <span className="text-label-2 block text-[12px]">Práctica sin presión al final de la semana.</span>
+                <span className="block text-[15px]">Include a game</span>
+                <span className="text-label-2 block text-[12px]">Pressure-free practice at the end of the week.</span>
               </span>
-              <Toggle checked={prefs.includeGames} onChange={(v) => set('includeGames', v)} label="Incluir un juego" />
+              <Toggle checked={prefs.includeGames} onChange={(v) => set('includeGames', v)} label="Include a game" />
             </label>
             {prefs.goal !== 'exam' && (
               <label className="flex items-center justify-between gap-3 py-2.5">
                 <span>
-                  <span className="block text-[15px]">Práctica IELTS</span>
-                  <span className="text-label-2 block text-[12px]">Añade módulos del simulador (B1 en adelante).</span>
+                  <span className="block text-[15px]">IELTS practice</span>
+                  <span className="text-label-2 block text-[12px]">Adds simulator modules (B1 onwards).</span>
                 </span>
-                <Toggle checked={prefs.includeIelts} onChange={(v) => set('includeIelts', v)} label="Práctica IELTS" />
+                <Toggle checked={prefs.includeIelts} onChange={(v) => set('includeIelts', v)} label="IELTS practice" />
               </label>
             )}
           </div>
           <label className="block">
-            <span className="text-label-2 mb-1.5 block text-[13px] font-medium">Propósito (opcional)</span>
+            <span className="text-label-2 mb-1.5 block text-[13px] font-medium">Goal (optional)</span>
             <input
               value={prefs.note ?? ''}
               maxLength={60}
               onChange={(e) => set('note', e.target.value)}
-              placeholder="Ej. entrevista de trabajo, viaje, examen del colegio…"
+              placeholder="E.g. job interview, trip, school exam…"
               className="bg-fill-2 placeholder:text-label-3 h-11 w-full rounded-[12px] px-3.5 text-[16px] outline-none focus:shadow-[inset_0_0_0_2px_var(--blue)]"
             />
           </label>
@@ -313,15 +311,15 @@ export function PlanWizard({
 
       <div className="flex flex-wrap items-center gap-2">
         <Button variant="brand" size="lg" onClick={() => void build()} disabled={busy || prefs.days.length === 0}>
-          {busy ? <Spinner className="h-5 w-5" /> : <Wand2 size={19} />} Generar mi plan
+          {busy ? <Spinner className="h-5 w-5" /> : <Wand2 size={19} />} Generate my plan
         </Button>
         {onCancel && (
           <Button variant="gray" size="lg" onClick={onCancel}>
-            Cancelar
+            Cancel
           </Button>
         )}
         <span className="text-label-2 inline-flex items-center gap-1.5 text-[13px]">
-          <BookOpenCheck size={15} /> Las tareas se marcan solas cuando las completas.
+          <BookOpenCheck size={15} /> Tasks are ticked off on their own when you complete them.
         </span>
       </div>
     </div>

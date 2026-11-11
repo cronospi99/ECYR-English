@@ -82,20 +82,20 @@ export function NotesDock() {
           'bottom-[calc(env(safe-area-inset-bottom)+60px)] lg:right-1 lg:bottom-5 lg:flex-col lg:p-0.5',
         )}
         role="toolbar"
-        aria-label="Herramientas"
+        aria-label="Tools"
       >
         {isTeacher && (
           <Link
             to="/teacher/screen"
             className={cn(btn, 'text-ink-blue hover:bg-fill-2')}
-            aria-label="Pantalla de clase (Alt+P)"
-            title="Pantalla de clase: temporizador, ruleta, grupos… (Alt+P)"
+            aria-label="Class screen (Alt+P)"
+            title="Class screen: timer, wheel, groups… (Alt+P)"
           >
             <MonitorPlay size={20} strokeWidth={2.1} />
           </Link>
         )}
         {session && !pathname.startsWith('/boards') && (
-          <Link to="/boards" className={cn(btn, 'text-ink-pink hover:bg-fill-2')} aria-label="Muro en vivo" title="Muro en vivo: tarjetas con tu clase">
+          <Link to="/boards" className={cn(btn, 'text-ink-pink hover:bg-fill-2')} aria-label="Live board" title="Live board: cards with your class">
             <StickyNote size={20} strokeWidth={2.1} />
           </Link>
         )}
@@ -108,8 +108,8 @@ export function NotesDock() {
               setOpen(false);
               setVerbs(true);
             }}
-            aria-label="Verb Lab: conjugación y phrasal verbs (Alt+V)"
-            title="Verb Lab: conjugación y phrasal verbs (Alt+V)"
+            aria-label="Verb Lab: conjugation and phrasal verbs (Alt+V)"
+            title="Verb Lab: conjugation and phrasal verbs (Alt+V)"
             aria-haspopup="dialog"
           >
             <FlaskConical size={20} strokeWidth={2.1} />
@@ -124,8 +124,8 @@ export function NotesDock() {
               setVerbs(false);
               setOpen(true);
             }}
-            aria-label="Mis notas (Alt+N)"
-            title="Mis notas (Alt+N)"
+            aria-label="My notes (Alt+N)"
+            title="My notes (Alt+N)"
             aria-haspopup="dialog"
           >
             <NotebookPen size={20} strokeWidth={2.1} />
@@ -136,8 +136,8 @@ export function NotesDock() {
           className={cn(btn, 'text-ink-indigo hover:bg-fill-2', tOpen && 'bg-[color-mix(in_srgb,var(--indigo)_16%,transparent)]')}
           onMouseDown={(e) => e.preventDefault()}
           onClick={toggleT}
-          aria-label="Traductor"
-          title="Traductor inglés ↔ español"
+          aria-label="Translator"
+          title="English ↔ Spanish translator"
           aria-expanded={tOpen}
           aria-haspopup="dialog"
         >
@@ -156,10 +156,10 @@ export function NotesDock() {
       <Sheet
         open={open}
         onClose={() => setOpen(false)}
-        title="Mis notas"
+        title="My notes"
         trailing={
           <Link to="/notes" className="text-ink-blue h-9 rounded-[10px] px-2 text-[17px] leading-9 whitespace-nowrap hover:opacity-70">
-            Ver todo
+            See all
           </Link>
         }
       >
