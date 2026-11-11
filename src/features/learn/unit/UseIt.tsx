@@ -3,6 +3,7 @@
  * extra ones), the drill as self-check cards with model answers, the contrast
  * chart as side-by-side cards and the pronunciation note with playable chips.
  */
+import { useEsVisibility } from './Es';
 import { Fragment, useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, Check, ChevronRight, Eye, ListOrdered, MessagesSquare, Mic, Play, RotateCcw, Scale, Table2, Trophy, Volume2, X } from 'lucide-react';
@@ -83,15 +84,16 @@ export function UseIt({
 // ------------------------------------------------------------- dialogues --
 
 function Dialogues({ g, spec, color, extra = [] }: { g: GrammarPoint; spec: KeySpec; color: string; extra?: ExtraDialogue[] }) {
+  const esTitles = useEsVisibility('example') !== 'hide';
   const list = useMemo(
     () => [
       ...(g.dialogue?.length ? [{ key: 'book', label: '📖 From the book', title: undefined, subtitle: undefined, scene: undefined, cast: undefined, lines: g.dialogue }] : []),
       ...extra.map((d, k) => {
         const emoji = d.scene.match(/^\p{Extended_Pictographic}️?/u)?.[0];
-        return { key: `x${k}`, label: `${emoji ?? '💬'} ${d.titleEs || d.title}`, title: d.title, subtitle: d.titleEs, scene: d.scene, cast: d.cast, lines: d.lines };
+        return { key: `x${k}`, label: `${emoji ?? '💬'} ${(esTitles && d.titleEs) || d.title}`, title: d.title, subtitle: esTitles ? d.titleEs : undefined, scene: d.scene, cast: d.cast, lines: d.lines };
       }),
     ],
-    [g.dialogue, extra],
+    [g.dialogue, extra, esTitles],
   );
   const [i, setI] = useState(0);
   const d = list[Math.min(i, list.length - 1)];

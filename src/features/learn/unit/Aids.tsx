@@ -3,6 +3,7 @@
  * changes step by step, words on a scale, a "¿cuál uso?" decision, picture cards
  * and minimal pairs. Text inside **double asterisks** is highlighted.
  */
+import { Es } from './Es';
 import { Fragment, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowRight, GitFork, Images, Lightbulb, Ruler, Shuffle, Split, Wand2, type LucideIcon } from 'lucide-react';
@@ -198,7 +199,7 @@ function Scale({ aid, color }: { aid: Extract<Aid, { kind: 'scale' }>; color: st
                 <span className="text-[12px] font-semibold tabular-nums" style={{ color: ink(color) }}>
                   {x.v}%
                 </span>
-                {x.es && <span className="text-label-2 text-[13px]">{x.es}</span>}
+                {x.es && <Es part="example"><span className="text-label-2 text-[13px]">{x.es}</span></Es>}
               </span>
               <span className="mt-0.5 block text-[15px] leading-snug text-pretty">
                 <Marked text={x.example} color={color} />
@@ -271,7 +272,7 @@ function Pictures({ aid, color }: { aid: Extract<Aid, { kind: 'pictures' }>; col
           <span className="mt-2 text-[16px] leading-tight font-bold text-balance">
             <Marked text={x.en} color={color} />
           </span>
-          <span className="text-label-2 mt-0.5 text-[13px] leading-snug text-balance">{x.es}</span>
+          <Es part="example"><span className="text-label-2 mt-0.5 text-[13px] leading-snug text-balance">{x.es}</span></Es>
           <SpeakButton text={plain(x.en)} size={15} className="absolute top-1 right-1" />
         </Appear>
       ))}

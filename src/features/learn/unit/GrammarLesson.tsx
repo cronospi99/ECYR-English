@@ -32,6 +32,7 @@ import { VisualFigure } from '@/components/visuals/Visuals';
 import { FoundationExtras } from '@/features/foundations/inline';
 import { cn } from '@/lib/cn';
 import { ExplainerCard, type Explainer } from './Explainer';
+import { EsProvider } from './Es';
 import { firstSentence, highlight, keySpec, noteParts, parsePair, type KeySpec, type Seg } from './formula';
 import { FormulaBlock } from './FormulaBlock';
 import { ColorTable } from './ColorTable';
@@ -71,6 +72,7 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
   if (!g) return null;
   const key = `${unitKey}-${i}`;
   return (
+    <EsProvider unitKey={unitKey}>
     <div>
       {points.length > 1 && (
         <div role="tablist" aria-label="Grammar points" className="mb-4 grid gap-2.5 sm:grid-cols-2">
@@ -129,6 +131,7 @@ export function GrammarLessons({ points, color, unitKey }: { points: GrammarPoin
         </AnimatePresence>
       </div>
     </div>
+    </EsProvider>
   );
 }
 

@@ -1,3 +1,4 @@
+import { useEsVisibility } from './Es';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Languages, Volume2 } from 'lucide-react';
@@ -68,7 +69,8 @@ export function Dialogue({ lines, spec, bare = false, cast, title, subtitle, sce
     const who = people.get(sp)!.who;
     return { ...who, persona: voices.get(who.name)?.id };
   };
-  const hasEs = lines.some((l) => l.es);
+  const esVis = useEsVisibility('example');
+  const hasEs = esVis !== 'hide' && lines.some((l) => l.es);
   const speech = canSpeak();
   // The whole conversation on a scrubbable timeline: the next segment loads while the current one plays.
   const player = usePlayer(

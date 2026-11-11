@@ -13,6 +13,8 @@ export type VoiceEngine = 'auto' | 'natural' | 'device';
 interface SettingsState {
   theme: ThemePref;
   spanishHints: boolean;
+  /** "auto": Spanish lesson help shrinks with the level (from the middle of B1); "always": full help everywhere. */
+  esHelp: 'auto' | 'always';
   accent: 'en-US' | 'en-GB';
   speechRate: number;
   voiceEngine: VoiceEngine;
@@ -40,6 +42,7 @@ export const useSettings = create<SettingsState>()(
     (set) => ({
       theme: 'system',
       spanishHints: true,
+      esHelp: 'auto',
       accent: 'en-US',
       speechRate: 0.95,
       voiceEngine: 'auto',

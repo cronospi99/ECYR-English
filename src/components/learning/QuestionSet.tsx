@@ -1,3 +1,4 @@
+import { Es } from '@/features/learn/unit/Es';
 import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Check, RotateCcw, X } from 'lucide-react';
@@ -121,7 +122,7 @@ export function QuestionSet({
                         {v === 'right' ? 'Correct' : v === 'almost' ? 'Almost: check your spelling' : 'Answer:'}
                       </span>{' '}
                       {v !== 'right' && <b>{rightAnswer(q)}</b>}
-                      {q.explain_es && <span className="text-label-2 block">{q.explain_es}</span>}
+                      {q.explain_es && <Es part="explain"><span className="text-label-2 block">{q.explain_es}</span></Es>}
                     </motion.div>
                   )}
                 </div>
@@ -201,7 +202,7 @@ export function QuestionList({
                         {v === 'right' ? 'Correct' : v === 'almost' ? 'Almost: check your spelling' : 'Answer:'}
                       </span>{' '}
                       {v !== 'right' && <b>{rightAnswer(q)}</b>}
-                      {q.explain_es && <span className="text-label-2 block">{q.explain_es}</span>}
+                      {q.explain_es && <Es part="explain"><span className="text-label-2 block">{q.explain_es}</span></Es>}
                     </div>
                   )}
                 </div>

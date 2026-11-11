@@ -201,6 +201,27 @@ W. REVISIÓN MANUAL DEL DOCENTE (Sala del docente › Trabajos)
   las notas por habilidad, el comentario y sus frases resaltadas con cada
   corrección. El texto original del estudiante nunca se modifica.
 
+X3. INTERFAZ EN INGLÉS Y AYUDAS EN ESPAÑOL POR NIVEL
+- Toda la interfaz de la app pasó a inglés (menús, botones, avisos, mensajes de
+  error, planes, tareas, notas, muros, administración, términos legales).
+  Fechas y números con formato inglés; <html lang="en">.
+- Las explicaciones de las lecciones siguen en español, con un tope que baja
+  con el nivel (src/features/learn/unit/Es.tsx):
+    · Pre A1 – B1 unidad 8: todo en español.
+    · B1 unidades 9–16 y B2 1–4: se mantiene la explicación; las traducciones
+      de ejemplos quedan tras un botón «ES».
+    · B2 5–12 y C1 1–4: solo propósito e idea en español; notas, errores,
+      trucos y etiquetas de la fórmula tras «ES» (etiquetas en inglés).
+    · C1 5–10 y C2 1–4: solo la frase de propósito; la idea tras «ES»; sin
+      traducciones de ejemplos ni de diálogos.
+    · C2 5–10: nada visible; un botón «ES» muestra el propósito.
+- Perfil › «Always show Spanish help» devuelve la ayuda completa en todas las
+  unidades (para quien la necesite).
+- Todavía en español: los módulos de Gramática interactiva (Time Machine,
+  Time & Family, Modal Verbs, Do/Make, Tenses), los «insertos» de A1–A2, el
+  Verb Lab de patrones, las explicaciones de las preguntas generadas y el
+  shell del IELTS Simulator.
+
 X2. ESTUDIANTES COMPARTIDOS ENTRE DOCENTES (requiere 21_shared_students.sql)
 - Un estudiante ahora puede estar en la clase de varios docentes: cada uno le
   asigna tareas y ve su progreso, trabajos y portafolio; el estudiante hace

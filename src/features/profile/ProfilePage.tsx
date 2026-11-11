@@ -359,6 +359,12 @@ function Preferences() {
           title="Spanish hints"
           trailing={<Toggle checked={s.spanishHints} onChange={(v) => s.set({ spanishHints: v })} label="Spanish hints" />}
         />
+        <ListRow
+          leading={<IconTile icon={Languages} color="var(--teal)" />}
+          title="Always show Spanish help"
+          subtitle="From the middle of B1 the Spanish explanations get shorter. Turn this on to keep them in full."
+          trailing={<Toggle checked={s.esHelp === 'always'} onChange={(v) => s.set({ esHelp: v ? 'always' : 'auto' })} label="Always show Spanish help" />}
+        />
         <div className="flex items-center gap-3 px-4 py-2.5 shadow-[inset_0_-0.5px_0_var(--separator)]">
           <IconTile icon={Volume2} color="var(--blue)" />
           <span className="text-body flex-1">Accent</span>

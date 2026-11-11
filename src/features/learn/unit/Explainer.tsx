@@ -5,6 +5,7 @@
  * and one trick. Shown before the full lesson so the class is not a wall of text.
  * Content: src/content/generated/explainers-<level>.json, keyed "A1-2-0".
  */
+import { Es, useEsVisibility } from './Es';
 import { useId } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowDown, ArrowRight, Check, Lightbulb, X } from 'lucide-react';
@@ -80,6 +81,7 @@ const ROLE: Record<Role, string> = {
 };
 
 export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
+  const vis = useEsVisibility('example');
   return (
     <div className="space-y-4">
       {/* what for */}
@@ -88,8 +90,10 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
           {e.icon}
         </span>
         <div className="min-w-0">
-          <div className="text-[17px] leading-snug font-bold text-balance">{e.purpose_es}</div>
-          <p className="text-label-2 mt-0.5 text-[15px] leading-snug text-pretty">{e.idea_es}</p>
+          <div className="text-[17px] leading-snug font-bold text-balance"><Es part="purpose">{e.purpose_es}</Es></div>
+          <Es part="idea">
+            <p className="text-label-2 mt-0.5 text-[15px] leading-snug text-pretty">{e.idea_es}</p>
+          </Es>
         </div>
       </div>
 
@@ -99,7 +103,7 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
       {e.timeline && e.timeline.type !== 'none' && <Timeline type={e.timeline.type} label={e.timeline.label_es} color={color} />}
 
       <div className="grid gap-3 sm:grid-cols-2">
-        {e.compare && (
+        {e.compare && vis !== 'hide' && (
           <div className="bg-fill-2 rounded-[16px] p-3.5">
             <div className="text-label-2 mb-2 text-[11px] font-bold tracking-wide uppercase">Spanish → English</div>
             <div className="flex items-start gap-2 text-[15px]">
@@ -116,7 +120,7 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
               <span className="flex-1">{e.compare.en}</span>
               <SpeakButton text={e.compare.en} size={15} />
             </div>
-            <p className="text-label-2 mt-2 text-[13px] leading-snug">{e.compare.note_es}</p>
+            <Es part="extra"><p className="text-label-2 mt-2 text-[13px] leading-snug">{e.compare.note_es}</p></Es>
           </div>
         )}
         {e.mistake && (
@@ -131,19 +135,21 @@ export function ExplainerCard({ e, color }: { e: Explainer; color: string }) {
               <Check size={17} className="text-ink-green mt-0.5 shrink-0" />
               <span>{e.mistake.right}</span>
             </div>
-            <p className="text-label-2 mt-2 text-[13px] leading-snug">{e.mistake.why_es}</p>
+            <Es part="extra"><p className="text-label-2 mt-2 text-[13px] leading-snug">{e.mistake.why_es}</p></Es>
           </div>
         )}
       </div>
 
       {e.tip_es && (
+        <Es part="extra">
         <div className="flex items-start gap-2.5 rounded-[14px] px-3.5 py-3 text-[14.5px] leading-snug" style={{ background: 'color-mix(in srgb, var(--yellow) 16%, transparent)' }}>
           <Lightbulb size={18} className="mt-0.5 shrink-0" style={{ color: 'color-mix(in srgb, var(--yellow) 60%, var(--label))' }} />
           <span>
-            <b>Truco: </b>
+            <b>Tip: </b>
             {e.tip_es.replace(/^truco:\s*/i, '')}
           </span>
         </div>
+      </Es>
       )}
     </div>
   );
@@ -155,7 +161,7 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
   const chips = parts.filter((p) => p.role !== 'end');
   return (
     <div className="bg-card rounded-[18px] p-3.5 shadow-[inset_0_0_0_1px_var(--separator)] sm:p-4">
-      <div className="text-label-2 mb-2.5 text-[11px] font-bold tracking-wide uppercase">{title ?? 'Formula'}</div>
+      <div className="text-label-2 mb-2.5 text-[11px] font-bold tracking-wide uppercase"><Es part="label" fallback="Formula">{title ?? 'Formula'}</Es></div>
       <div className="flex flex-wrap items-center gap-y-2">
         {chips.map((c, i) => {
           const col = ROLE[c.role] ?? 'var(--blue)';
@@ -184,7 +190,7 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
                   className="w-full rounded-t-[11px] px-2.5 pt-1 pb-0.5 text-center text-[11px] font-bold tracking-wide whitespace-nowrap text-white uppercase"
                   style={{ background: deep(col, 58) }}
                 >
-                  {c.label_es}
+                  <Es part="label" fallback={c.role}>{c.label_es}</Es>
                 </span>
                 <span
                   className="w-full rounded-b-[11px] px-3 py-1.5 text-center text-[17px] leading-tight font-bold whitespace-nowrap"
@@ -200,7 +206,7 @@ function Formula({ parts, example, title }: { parts: Chip[]; example: { en: stri
       <div className="mt-3.5 flex items-start gap-2 border-t border-[var(--separator)] pt-3">
         <span className="flex-1">
           <span className="block text-[16.5px] font-semibold">{example.en}</span>
-          <span className="text-label-2 block text-[13.5px]">{example.es}</span>
+          <Es part="example"><span className="text-label-2 block text-[13.5px]">{example.es}</span></Es>
         </span>
         <SpeakButton text={example.en} size={16} />
       </div>
