@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../_bridge/ecyr-bridge.js" data-slug="earth-modals"></script>
+<script src="../_bridge/ecyr-fx.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -24,28 +25,99 @@
   .em-scroll::-webkit-scrollbar{width:8px}
   .em-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:8px}
   .em-scroll::-webkit-scrollbar-track{background:transparent}
+
+  /* ---- Front page: artwork stage with live light ---- */
+  .co-front{position:absolute;inset:0;z-index:40;overflow:hidden;background:#03060f}
+  .co-back{position:absolute;inset:-6%;background:url(./art/stage.webp) center/cover;filter:blur(28px) brightness(.6)}
+  .co-stage{position:absolute;inset:0;margin:auto;width:min(100vw,177.78dvh);aspect-ratio:16/9;container-type:inline-size;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,.7)}
+  .co-l{position:absolute;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
+  .co-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+  .co-stage i{position:absolute;display:block;pointer-events:none}
+  .co-star{border-radius:50%;background:#eaf6ff;box-shadow:0 0 .5cqw #9fd8ff;animation:coTw 3s ease-in-out infinite}
+  .co-shoot{left:70%;top:4%;width:8cqw;height:.12cqw;border-radius:99px;background:linear-gradient(90deg,transparent,#fff);rotate:155deg;opacity:0;animation:coShoot 11s ease-in infinite}
+  .co-globe{position:absolute;left:34.1%;top:2.6%;width:42.4%;aspect-ratio:1;border-radius:50%;overflow:hidden;pointer-events:none}
+  .co-shine{inset:0;background:linear-gradient(100deg,transparent 38%,rgba(190,225,255,.22) 50%,transparent 62%);background-size:300% 100%;animation:coShine 9s linear infinite;mix-blend-mode:screen}
+  .co-night{inset:0;background:radial-gradient(circle at 30% 35%,rgba(255,214,120,.16),transparent 45%);animation:coBreath 5s ease-in-out infinite;mix-blend-mode:screen}
+  .co-halo{left:31.5%;top:-2%;width:47.6%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,transparent 86%,rgba(70,170,255,.55) 91%,transparent 100%);animation:coBreath 4s ease-in-out infinite;mix-blend-mode:screen}
+  .co-orbits path{fill:none;stroke:rgba(255,214,120,.9);stroke-width:1.6;stroke-dasharray:3 9;stroke-linecap:round;animation:coDash 2.4s linear infinite;filter:drop-shadow(0 0 3px rgba(255,200,90,.9))}
+  .co-pin{width:3.2cqw;height:3.2cqw;margin:-1.1cqw 0 0 -1.6cqw;border-radius:50%;border:.14cqw solid rgba(255,214,110,.95);box-shadow:0 0 1cqw rgba(255,200,80,.8);opacity:0;animation:coPin 2.6s ease-out infinite}
+  .co-ring{left:27%;top:72%;width:57%;height:22%;border-radius:50%;border:.16cqw solid rgba(90,200,255,.8);box-shadow:0 0 1.4cqw rgba(60,170,255,.8),inset 0 0 1.4cqw rgba(60,170,255,.5);opacity:0;animation:coRing 2.8s ease-out infinite}
+  .co-scan{overflow:hidden;border-radius:1cqw;-webkit-mask:linear-gradient(#000,#000);mask:linear-gradient(#000,#000)}
+  .co-scan::after{content:"";position:absolute;left:0;right:0;top:0;height:16%;background:linear-gradient(180deg,transparent,rgba(120,220,255,.16),transparent);animation:coScan 4.5s linear infinite}
+  .co-glint{left:92.6%;top:79.5%;width:5cqw;height:5cqw;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(140,200,255,.4) 40%,transparent 70%);clip-path:polygon(50% 0,56% 44%,100% 50%,56% 56%,50% 100%,44% 56%,0 50%,44% 44%);animation:coGlint 5s ease-in-out infinite}
+  .co-row{position:absolute;left:4.4%;width:23.8%;height:5.2%;appearance:none;border:.1cqw solid transparent;border-radius:.7cqw;background:transparent;cursor:pointer;padding:0;transition:background .15s ease,border-color .15s ease,box-shadow .15s ease}
+  .co-row:hover,.co-row:focus-visible{background:rgba(90,200,255,.16);border-color:rgba(120,220,255,.9);box-shadow:0 0 1.2cqw rgba(80,190,255,.6);outline:none}
+  .co-lang{position:absolute;left:88.1%;top:3%;width:9.8%;height:5.4%;display:flex;gap:.25cqw;padding:.25cqw;border-radius:99px;background:rgba(6,14,34,.82);border:.1cqw solid rgba(150,190,255,.45)}
+  .co-lang button{flex:1;appearance:none;border:0;border-radius:99px;font:700 1.15cqw/1 'Space Grotesk',sans-serif;letter-spacing:.04em;cursor:pointer;transition:all .16s ease}
+  .co-start{position:absolute;appearance:none;border:0;padding:0;margin:0;background:center/100% 100% no-repeat transparent;cursor:pointer;animation:coStart 2.2s ease-in-out infinite;transition:transform .18s cubic-bezier(.3,1.5,.5,1);-webkit-tap-highlight-color:transparent}
+  .co-start:hover{transform:scale(1.045)}
+  .co-start:active{transform:scale(.97)}
+  .co-start:focus-visible,.co-lang button:focus-visible{outline:.22cqw solid #fff;outline-offset:.2cqw}
+  @keyframes coTw{0%,100%{opacity:.15}50%{opacity:1}}
+  @keyframes coShoot{0%,88%{translate:0 0;opacity:0}90%{opacity:1}100%{translate:-20cqw 9cqw;opacity:0}}
+  @keyframes coShine{from{background-position:150% 0}to{background-position:-150% 0}}
+  @keyframes coBreath{0%,100%{opacity:.45}50%{opacity:1}}
+  @keyframes coDash{to{stroke-dashoffset:-24}}
+  @keyframes coPin{0%{scale:.2;opacity:.95}100%{scale:1.5;opacity:0}}
+  @keyframes coRing{0%{scale:.55;opacity:.9}100%{scale:1.12;opacity:0}}
+  @keyframes coScan{from{translate:0 -100%}to{translate:0 700%}}
+  @keyframes coGlint{0%,70%,100%{scale:0;opacity:0;rotate:0deg}82%{scale:1;opacity:1;rotate:40deg}}
+  @keyframes coPlane{0%,100%{translate:0 0;rotate:0deg}50%{translate:.5cqw -.5cqw;rotate:-3deg}}
+  @keyframes coStart{0%,100%{filter:drop-shadow(0 0 .5cqw rgba(255,190,60,.5))}50%{filter:drop-shadow(0 0 1.7cqw rgba(255,205,90,1)) brightness(1.08)}}
+  @media (prefers-reduced-motion:reduce){.co-stage *,.co-start{animation:none !important}}
+  /* ---- Explorer in the artwork's holographic language ---- */
+  .em-panel{background:linear-gradient(160deg,rgba(10,26,64,.78),rgba(4,10,28,.86));border:1px solid rgba(90,190,255,.55);border-radius:14px;box-shadow:0 0 22px rgba(40,140,255,.28),inset 0 0 26px rgba(40,120,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .em-title{font-style:italic;font-weight:700;background:linear-gradient(180deg,#fff 20%,#8fd0ff 55%,#3b8dff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(70,160,255,.5))}
 </style>
 </helmet>
-<div style="position:fixed;inset:0;font-family:'Space Grotesk',system-ui,sans-serif;color:#eef1f7;background:radial-gradient(130% 130% at 72% 12%,#0b1020 0%,#05070f 52%,#02030a 100%)">
+<div style="position:fixed;inset:0;font-family:'Space Grotesk',system-ui,sans-serif;color:#eef1f7;background:radial-gradient(130% 130% at 72% 12%,rgba(14,26,64,.55) 0%,rgba(4,7,18,.78) 52%,rgba(2,3,10,.9) 100%), url(./art/space.webp) center/cover #03060f">
 
   <div id="em-globe" style="position:absolute;inset:0;z-index:1;cursor:grab;touch-action:none"></div>
+
+
+  <sc-if value="{{ isFront }}" hint-placeholder-val="{{ true }}">
+    <div class="co-front">
+      <div class="co-back"></div>
+      <div class="co-stage">
+        <img class="co-l" src="./art/stage.webp" alt="" draggable="false" style="inset:0;width:100%;height:100%;" />
+        <i class="co-star" style="left:46.4%;top:17.4%;width:0.12cqw;height:0.12cqw;animation-duration:4.1s;animation-delay:-0.0s;"></i><i class="co-star" style="left:50.3%;top:40.5%;width:0.11cqw;height:0.11cqw;animation-duration:3.3s;animation-delay:-2.5s;"></i><i class="co-star" style="left:5.0%;top:17.7%;width:0.23cqw;height:0.23cqw;animation-duration:3.0s;animation-delay:-2.9s;"></i><i class="co-star" style="left:16.4%;top:11.5%;width:0.12cqw;height:0.12cqw;animation-duration:3.2s;animation-delay:-3.7s;"></i><i class="co-star" style="left:58.9%;top:35.1%;width:0.17cqw;height:0.17cqw;animation-duration:3.8s;animation-delay:-0.4s;"></i><i class="co-star" style="left:29.5%;top:30.7%;width:0.23cqw;height:0.23cqw;animation-duration:2.9s;animation-delay:-0.4s;"></i><i class="co-star" style="left:27.1%;top:10.2%;width:0.15cqw;height:0.15cqw;animation-duration:4.0s;animation-delay:-0.8s;"></i><i class="co-star" style="left:87.9%;top:39.7%;width:0.11cqw;height:0.11cqw;animation-duration:2.8s;animation-delay:-2.0s;"></i><i class="co-star" style="left:3.3%;top:19.7%;width:0.26cqw;height:0.26cqw;animation-duration:2.1s;animation-delay:-2.4s;"></i><i class="co-star" style="left:12.9%;top:26.5%;width:0.26cqw;height:0.26cqw;animation-duration:2.3s;animation-delay:-0.0s;"></i><i class="co-star" style="left:9.2%;top:24.7%;width:0.10cqw;height:0.10cqw;animation-duration:2.0s;animation-delay:-2.0s;"></i><i class="co-star" style="left:91.3%;top:19.5%;width:0.17cqw;height:0.17cqw;animation-duration:3.5s;animation-delay:-0.4s;"></i><i class="co-star" style="left:57.8%;top:8.6%;width:0.21cqw;height:0.21cqw;animation-duration:4.4s;animation-delay:-0.2s;"></i><i class="co-star" style="left:55.4%;top:27.7%;width:0.13cqw;height:0.13cqw;animation-duration:2.5s;animation-delay:-4.0s;"></i><i class="co-star" style="left:98.8%;top:6.3%;width:0.23cqw;height:0.23cqw;animation-duration:4.4s;animation-delay:-0.9s;"></i><i class="co-star" style="left:60.9%;top:2.9%;width:0.17cqw;height:0.17cqw;animation-duration:3.6s;animation-delay:-2.4s;"></i><i class="co-star" style="left:76.9%;top:4.8%;width:0.16cqw;height:0.16cqw;animation-duration:4.1s;animation-delay:-2.3s;"></i><i class="co-star" style="left:45.2%;top:18.7%;width:0.28cqw;height:0.28cqw;animation-duration:3.4s;animation-delay:-0.1s;"></i><i class="co-star" style="left:79.3%;top:15.5%;width:0.18cqw;height:0.18cqw;animation-duration:2.4s;animation-delay:-1.8s;"></i><i class="co-star" style="left:32.8%;top:4.9%;width:0.21cqw;height:0.21cqw;animation-duration:2.1s;animation-delay:-3.1s;"></i><i class="co-star" style="left:3.5%;top:35.4%;width:0.25cqw;height:0.25cqw;animation-duration:3.1s;animation-delay:-2.8s;"></i><i class="co-star" style="left:25.3%;top:33.5%;width:0.18cqw;height:0.18cqw;animation-duration:2.4s;animation-delay:-3.9s;"></i><i class="co-star" style="left:40.3%;top:17.4%;width:0.25cqw;height:0.25cqw;animation-duration:2.8s;animation-delay:-2.7s;"></i><i class="co-star" style="left:17.8%;top:38.1%;width:0.15cqw;height:0.15cqw;animation-duration:1.9s;animation-delay:-3.9s;"></i><i class="co-star" style="left:17.9%;top:42.6%;width:0.28cqw;height:0.28cqw;animation-duration:3.4s;animation-delay:-0.0s;"></i><i class="co-star" style="left:7.0%;top:10.2%;width:0.17cqw;height:0.17cqw;animation-duration:3.5s;animation-delay:-3.9s;"></i><i class="co-star" style="left:35.7%;top:7.2%;width:0.20cqw;height:0.20cqw;animation-duration:2.2s;animation-delay:-0.3s;"></i><i class="co-star" style="left:55.5%;top:31.6%;width:0.11cqw;height:0.11cqw;animation-duration:3.0s;animation-delay:-2.8s;"></i><i class="co-star" style="left:75.9%;top:17.9%;width:0.26cqw;height:0.26cqw;animation-duration:2.3s;animation-delay:-2.9s;"></i><i class="co-star" style="left:76.6%;top:39.7%;width:0.19cqw;height:0.19cqw;animation-duration:2.1s;animation-delay:-0.2s;"></i><i class="co-star" style="left:52.8%;top:8.6%;width:0.21cqw;height:0.21cqw;animation-duration:2.0s;animation-delay:-3.1s;"></i><i class="co-star" style="left:22.8%;top:1.6%;width:0.13cqw;height:0.13cqw;animation-duration:3.0s;animation-delay:-2.2s;"></i><i class="co-star" style="left:39.1%;top:8.6%;width:0.19cqw;height:0.19cqw;animation-duration:4.4s;animation-delay:-2.1s;"></i><i class="co-star" style="left:93.2%;top:2.3%;width:0.28cqw;height:0.28cqw;animation-duration:4.2s;animation-delay:-2.2s;"></i><i class="co-star" style="left:52.3%;top:24.6%;width:0.26cqw;height:0.26cqw;animation-duration:2.0s;animation-delay:-2.6s;"></i><i class="co-star" style="left:54.1%;top:14.2%;width:0.23cqw;height:0.23cqw;animation-duration:3.7s;animation-delay:-0.4s;"></i><i class="co-star" style="left:69.6%;top:21.0%;width:0.19cqw;height:0.19cqw;animation-duration:3.5s;animation-delay:-0.2s;"></i><i class="co-star" style="left:60.1%;top:17.4%;width:0.26cqw;height:0.26cqw;animation-duration:2.4s;animation-delay:-3.3s;"></i><i class="co-star" style="left:72.5%;top:28.5%;width:0.26cqw;height:0.26cqw;animation-duration:1.9s;animation-delay:-2.4s;"></i><i class="co-star" style="left:61.1%;top:30.8%;width:0.17cqw;height:0.17cqw;animation-duration:2.0s;animation-delay:-0.8s;"></i>
+        <i class="co-shoot"></i>
+        <div class="co-globe"><i class="co-shine"></i><i class="co-night"></i></div>
+        <i class="co-halo"></i>
+        <svg class="co-l co-orbits" viewBox="0 0 1280 720" style="inset:0;width:100%;height:100%;" aria-hidden="true"><path d="M410 300 C 380 420, 470 470, 600 400 S 920 300, 1030 260 C 1040 200, 990 160, 930 150" /><path d="M606 40 C 720 20, 860 40, 892 92" /><path d="M590 240 C 640 300, 760 330, 800 385" /></svg>
+        <i class="co-pin" style="left:47.34%;top:5.00%;animation-delay:-0.00s;"></i><i class="co-pin" style="left:41.25%;top:20.00%;animation-delay:-0.37s;"></i><i class="co-pin" style="left:69.61%;top:12.50%;animation-delay:-0.74s;"></i><i class="co-pin" style="left:73.44%;top:20.83%;animation-delay:-1.11s;"></i><i class="co-pin" style="left:45.94%;top:33.06%;animation-delay:-1.48s;"></i><i class="co-pin" style="left:55.16%;top:42.64%;animation-delay:-1.85s;"></i><i class="co-pin" style="left:62.50%;top:53.47%;animation-delay:-2.22s;"></i>
+        <i class="co-ring"></i><i class="co-ring" style="animation-delay:-1.4s;"></i>
+        <i class="co-scan" style="left:3%;top:29.5%;width:26.8%;height:50%;"></i>
+        <i class="co-scan" style="left:83%;top:14.5%;width:15.6%;height:37%;animation-delay:-2s;"></i>
+        <i class="co-glint"></i>
+        <img class="co-l" src="./art/plane.webp" alt="" draggable="false" style="left:33.385%;top:14.259%;width:4.688%;height:5.278%;animation:coPlane 5s ease-in-out infinite;" />
+        <h1 class="co-sr">Around the World in 32 Countries. Modal verbs field guide.</h1>
+        <button type="button" class="co-row" onClick="{{ frontRow0 }}" aria-label="Open country number 1" style="top:35.56%;"></button><button type="button" class="co-row" onClick="{{ frontRow1 }}" aria-label="Open country number 2" style="top:40.97%;"></button><button type="button" class="co-row" onClick="{{ frontRow2 }}" aria-label="Open country number 3" style="top:46.25%;"></button><button type="button" class="co-row" onClick="{{ frontRow3 }}" aria-label="Open country number 4" style="top:51.39%;"></button><button type="button" class="co-row" onClick="{{ frontRow4 }}" aria-label="Open country number 5" style="top:56.67%;"></button><button type="button" class="co-row" onClick="{{ frontRow5 }}" aria-label="Open country number 6" style="top:61.67%;"></button><button type="button" class="co-row" onClick="{{ frontRow6 }}" aria-label="Open country number 7" style="top:66.81%;"></button><button type="button" class="co-row" onClick="{{ frontRow7 }}" aria-label="Open country number 8" style="top:71.94%;"></button>
+        <div class="co-lang">
+          <button type="button" onClick="{{ setEn }}" aria-pressed="{{ enOn }}" style="{{ coEn }}">EN</button>
+          <button type="button" onClick="{{ setEs }}" aria-pressed="{{ esOn }}" style="{{ coEs }}">ES</button>
+        </div>
+        <button type="button" class="co-start" onClick="{{ startExploring }}" aria-label="Start exploring" style="left:79.583%;top:56.111%;width:18.906%;height:10.741%;background-image:url(./art/start.webp);"></button>
+      </div>
+    </div>
+  </sc-if>
 
   <!-- Header -->
   <div style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:flex-start;justify-content:space-between;padding:26px 30px;pointer-events:none">
     <div>
       <div style="font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#ffd27a;font-weight:600">{{ t.eyebrow }}</div>
-      <div style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-top:5px">{{ t.title }}</div>
+      <div class="em-title" style="font-size:clamp(24px,2.7vw,40px);letter-spacing:-.01em;margin-top:5px">{{ t.title }}</div>
       <div style="font-size:13px;color:rgba(238,241,247,.55);margin-top:4px;max-width:460px;line-height:1.5">{{ t.subtitle }}</div>
     </div>
-    <div style="display:flex;gap:3px;padding:4px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);pointer-events:auto">
+    <div style="display:flex;gap:3px;padding:4px;border-radius:99px;background:rgba(6,14,34,.82);border:1px solid rgba(150,190,255,.45);pointer-events:auto">
       <button onClick="{{ setEn }}" style="{{ enBtnStyle }}">EN</button>
       <button onClick="{{ setEs }}" style="{{ esBtnStyle }}">ES</button>
     </div>
   </div>
 
   <!-- Sidebar -->
-  <div class="em-scroll" style="position:absolute;top:128px;left:24px;bottom:24px;width:242px;z-index:5;overflow-y:auto;padding:6px 8px 6px 2px">
-    <div style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(238,241,247,.4);font-weight:600;padding:0 6px 10px">{{ t.mostVisited }}</div>
+  <div class="em-scroll em-panel" style="position:absolute;top:142px;left:24px;bottom:66px;width:262px;z-index:5;overflow-y:auto;padding:14px 10px 10px">
+    <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#6fd6ff;font-weight:700;padding:0 6px 10px;border-bottom:1px solid rgba(90,190,255,.3);margin-bottom:8px;text-shadow:0 0 10px rgba(80,190,255,.7)">▮▮▮ {{ t.mostVisited }}</div>
     <div style="display:flex;flex-direction:column;gap:4px">
       <sc-for list="{{ countries }}" as="c" hint-placeholder-count="12">
         <button onClick="{{ c.onClick }}" style="{{ c.rowStyle }}" style-hover="background:rgba(255,255,255,.09);border-color:rgba(255,210,122,.35)">
@@ -126,7 +198,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { selectedIndex: null, open: false, lang: "en" };
+  state = { selectedIndex: null, open: false, lang: "en", front: true };
 
   get DATA() { return window.EM_COUNTRIES || []; }
 
@@ -208,8 +280,8 @@ class Component extends DCLogic {
         photoLabel: t.photo + " · " + (lang === "es" ? c.photoEs : c.photo)
       };
     }
-    const seg = (active) => "font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;padding:6px 13px;border-radius:9px;border:none;cursor:pointer;transition:all .16s ease;" +
-      (active ? "background:#ffd27a;color:#0a0d16" : "background:transparent;color:rgba(238,241,247,.6)");
+    const seg = (active) => "font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;padding:7px 15px;border-radius:99px;border:none;cursor:pointer;transition:all .16s ease;" +
+      (active ? "background:linear-gradient(180deg,#ffe08a,#f5b324);color:#1a1204;box-shadow:0 0 12px rgba(255,200,70,.6)" : "background:transparent;color:rgba(238,241,247,.6)");
     return {
       t,
       countries: this.DATA.map((c, i) => ({
@@ -217,12 +289,26 @@ class Component extends DCLogic {
         onClick: () => this.select(i),
         rowStyle: "display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 11px;border-radius:11px;font-family:inherit;color:#eef1f7;cursor:pointer;transition:all .16s ease;border:1px solid " +
           ((this.state.open && this.state.selectedIndex === i)
-            ? "rgba(255,210,122,.5);background:rgba(255,210,122,.14)"
+            ? "rgba(255,214,120,.95);background:rgba(255,200,90,.16);box-shadow:0 0 14px rgba(255,200,80,.45)"
             : "rgba(255,255,255,.06);background:rgba(255,255,255,.03)")
       })),
       sel,
       panelTransform: this.state.open ? "translateX(0)" : "translateX(102%)",
       onClose: () => this.setState({ open: false }),
+      isFront: this.state.front,
+      startExploring: () => this.leaveFront(null),
+      frontRow0: () => this.leaveFront(0),
+      frontRow1: () => this.leaveFront(1),
+      frontRow2: () => this.leaveFront(2),
+      frontRow3: () => this.leaveFront(3),
+      frontRow4: () => this.leaveFront(4),
+      frontRow5: () => this.leaveFront(5),
+      frontRow6: () => this.leaveFront(6),
+      frontRow7: () => this.leaveFront(7),
+      enOn: lang === "en" ? "true" : "false", esOn: lang === "es" ? "true" : "false",
+      coEn: lang === "en" ? "background:linear-gradient(180deg,#ffe08a,#f5b324);color:#1a1204;box-shadow:0 0 12px rgba(255,200,70,.6)" : "background:transparent;color:#cfe0ff",
+      coEs: lang === "es" ? "background:linear-gradient(180deg,#ffe08a,#f5b324);color:#1a1204;box-shadow:0 0 12px rgba(255,200,70,.6)" : "background:transparent;color:#cfe0ff",
+      toFront: () => { const go = () => this.setState({ front: true, open: false }); window.ECYRFx ? window.ECYRFx.fade("black", go, { in: 320, out: 500 }) : go(); },
       setEn: () => this.setState({ lang: "en" }),
       setEs: () => this.setState({ lang: "es" }),
       enBtnStyle: seg(lang === "en"),
@@ -263,7 +349,12 @@ class Component extends DCLogic {
     return cv;
   }
 
+  leaveFront(i) {
+    const go = () => { this.setState({ front: false }); window.ECYRFx && window.ECYRFx.compact(true); if (i != null) setTimeout(() => this.select(i), 650); };
+    window.ECYRFx ? window.ECYRFx.fade("black", go, { in: 520, hold: 200, out: 900 }) : go();
+  }
   componentDidMount() {
+    window.ECYRFx && window.ECYRFx.nav({ pos: 'bl', theme: "--nav-bg:rgba(6,16,40,.8);--nav-fg:#dff1ff;--nav-bd:rgba(110,200,255,.8);--nav-radius:12px;--nav-shadow:0 0 14px rgba(60,170,255,.5);--nav-hover:rgba(30,90,200,.9);--nav-font:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:.06em" });
     if (window.__emPagehide) window.removeEventListener("pagehide", window.__emPagehide);
     window.__emPagehide = () => this.reportEnd(true);
     window.addEventListener("pagehide", window.__emPagehide);
