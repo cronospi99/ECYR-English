@@ -32,6 +32,11 @@
   window.ECYRBridge = {
     embedded: embedded,
     setSlug: function (s) { slug = s; },
+    /** Leave the game and go back to the platform's Games menu. */
+    exit: function () {
+      if (!embedded) { location.href = '/games'; return; }
+      try { window.parent.postMessage({ source: 'ecyr-game', v: 1, type: 'exit', slug: slug }, location.origin); } catch (e) { /* ignore */ }
+    },
     start: function (meta) {
       session = null;
       var s = ensure(meta);

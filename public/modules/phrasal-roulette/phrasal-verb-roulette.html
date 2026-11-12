@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../_bridge/ecyr-fx.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -37,6 +38,34 @@
   @keyframes shake { 0%,100%{transform:translateX(0);} 20%{transform:translateX(-9px);} 40%{transform:translateX(9px);} 60%{transform:translateX(-5px);} 80%{transform:translateX(5px);} }
   @keyframes sheen { 0%{ transform:translateX(-140%) skewX(-18deg); } 100%{ transform:translateX(340%) skewX(-18deg); } }
   @keyframes spinSlow { from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+
+  /* ---- Title screen: the artwork, cut in layers and moved in 8-bit steps ---- */
+  .pf { position:absolute; inset:0; z-index:20; overflow:hidden; image-rendering:auto; }
+  .pf-l { position:absolute; display:block; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+  .pf-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); margin:0; }
+  .pf i { position:absolute; display:block; pointer-events:none; }
+  .pf-wheel { animation:spinSlow 26s linear infinite; }
+  .pf-bulb { width:14px; height:14px; margin:-7px 0 0 -7px; border-radius:50%; background:#fff; box-shadow:0 0 14px 5px rgba(255,236,150,.95); animation:pfBulb 1s steps(1) infinite; mix-blend-mode:screen; }
+  .pf-px { width:10px; height:10px; box-shadow:0 0 0 2px rgba(0,0,0,.25); animation:pfPx 2.2s steps(4) infinite; }
+  .pf-btn { position:absolute; appearance:none; border:0; padding:0; margin:0; background:center/100% 100% no-repeat transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:filter .1s steps(2); }
+  .pf-tile { animation:pfIn .5s steps(5) both; }
+  .pf-btn:hover { transform:translateY(-8px); filter:brightness(1.18) drop-shadow(0 8px 0 rgba(0,0,0,.35)); }
+  .pf-btn:active { transform:translateY(4px); filter:brightness(.92); }
+  .pf-btn:focus-visible { outline:6px solid #fff; outline-offset:4px; }
+  .pf-start { animation:pfStart 1s steps(2) infinite; }
+  .pf-insert { position:absolute; left:0; right:0; top:93.2%; text-align:center; font:16px/1 'Press Start 2P',monospace; color:#fff; text-shadow:3px 3px 0 #000; letter-spacing:3px; animation:blink 1.1s steps(1) infinite; pointer-events:none; }
+  @keyframes pfHop { 0%,100% { translate:0 0; } 50% { translate:0 -6px; } }
+  @keyframes pfDrift { from { translate:-28px 0; } to { translate:28px 0; } }
+  @keyframes pfTwinkle { 0%,100% { scale:1; opacity:1; } 50% { scale:.55; opacity:.6; } }
+  @keyframes pfCoin { 0%,100% { transform:scaleX(1); } 50% { transform:scaleX(.12); } }
+  @keyframes pfBump { 0%,84%,100% { translate:0 0; } 90% { translate:0 -14px; } }
+  @keyframes pfSquash { 0%,100% { transform:scale(1,1); } 50% { transform:scale(1.06,.93); } }
+  @keyframes pfTick { 0%,100% { rotate:0deg; } 50% { rotate:-7deg; } }
+  @keyframes pfBulb { 0%,100% { opacity:1; } 50% { opacity:.15; } }
+  @keyframes pfPx { 0%,100% { scale:0; } 50% { scale:1; } }
+  @keyframes pfStart { 0%,100% { scale:1; filter:brightness(1); } 50% { scale:1.03; filter:brightness(1.12); } }
+  @keyframes pfIn { from { translate:0 40px; opacity:0; } to { translate:0 0; opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { .pf * { animation:none !important; } }
 </style>
 </helmet>
 
@@ -60,18 +89,50 @@
         </div>
       </div>
     </sc-if>
-    <button onClick="{{ toggleAudioPanel }}" style="font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 16px; border:5px solid #000; box-shadow:0 5px 0 #000; display:flex; align-items:center; gap:10px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;"><span style="font-size:20px;">{{ audioIcon }}</span>{{ audioBtnLabel }}</button>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button onClick="{{ toGames }}" title="Back to the Games menu" style="font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 14px; border:5px solid #000; box-shadow:0 5px 0 #000; display:flex; align-items:center; gap:8px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;">&lt; GAMES</button>
+      <button onClick="{{ toggleAudioPanel }}" style="font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 16px; border:5px solid #000; box-shadow:0 5px 0 #000; display:flex; align-items:center; gap:10px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;"><span style="font-size:20px;">{{ audioIcon }}</span>{{ audioBtnLabel }}</button>
+      <button onClick="{{ toFull }}" title="Full screen" style="font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 14px; border:5px solid #000; box-shadow:0 5px 0 #000; display:flex; align-items:center; gap:8px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;">FULL</button>
+      <button onClick="{{ toFront }}" title="Title screen" style="display:{{ titleBtn }}; font-family:'Press Start 2P',monospace; font-size:11px; padding:13px 14px; border:5px solid #000; box-shadow:0 5px 0 #000; align-items:center; gap:8px; background:{{ t.panel }}; color:{{ t.accent }};" style-active="transform:translateY(4px); box-shadow:0 1px 0 #000;">TITLE</button>
+    </div>
   </div>
 
   <sc-if value="{{ popShown }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute; left:50%; top:46%; z-index:60; pointer-events:none; font-family:'Press Start 2P',monospace; font-size:74px; animation:floatUp 1.1s ease-out forwards; color:{{ popColor }}; text-shadow:6px 6px 0 #000;">{{ popText }}</div>
   </sc-if>
 
-  <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ true }}">
+  <sc-if value="{{ isFront }}" hint-placeholder-val="{{ true }}">
+    <div class="pf">
+      <img class="pf-l" src="./art/stage.webp" alt="" draggable="false" style="inset:0;width:100%;height:100%;" />
+      <img class="pf-l" src="./art/cloudA.webp" alt="" draggable="false" style="left:5.938%;top:11.759%;width:13.229%;height:8.889%;animation:pfDrift 14s steps(14) infinite alternate;" />
+      <img class="pf-l" src="./art/cloudB.webp" alt="" draggable="false" style="left:84.688%;top:8.796%;width:13.698%;height:9.815%;animation:pfDrift 18s steps(18) infinite alternate-reverse;" />
+      <img class="pf-l" src="./art/star.webp" alt="" draggable="false" style="left:32.552%;top:3.241%;width:3.438%;height:7.13%;animation:pfTwinkle 1.6s steps(4) infinite;" />
+      <img class="pf-l" src="./art/pad.webp" alt="" draggable="false" style="left:43.333%;top:2.407%;width:12.344%;height:10.556%;animation:pfHop 1.2s steps(2) infinite;" />
+      <i class="pf-px" style="left:47.5%;top:23.7%;animation-delay:-2.8s;background:#ffe14a;"></i><i class="pf-px" style="left:47.5%;top:34.6%;animation-delay:-0.6s;background:#ff7bd0;"></i><i class="pf-px" style="left:48.7%;top:25.7%;animation-delay:-0.6s;background:#ffe14a;"></i><i class="pf-px" style="left:39.8%;top:6.4%;animation-delay:-2.4s;background:#ff7bd0;"></i><i class="pf-px" style="left:57.0%;top:25.0%;animation-delay:-1.2s;background:#ffe14a;"></i><i class="pf-px" style="left:58.0%;top:25.8%;animation-delay:-0.5s;background:#fff;"></i><i class="pf-px" style="left:67.2%;top:5.3%;animation-delay:-0.1s;background:#fff;"></i><i class="pf-px" style="left:55.2%;top:31.8%;animation-delay:-1.0s;background:#ff7bd0;"></i><i class="pf-px" style="left:67.8%;top:22.2%;animation-delay:-1.9s;background:#ffe14a;"></i><i class="pf-px" style="left:24.2%;top:6.1%;animation-delay:-2.0s;background:#ffe14a;"></i><i class="pf-px" style="left:75.9%;top:39.8%;animation-delay:-2.5s;background:#ff7bd0;"></i><i class="pf-px" style="left:37.2%;top:31.0%;animation-delay:-1.5s;background:#fff;"></i>
+      <img class="pf-l" src="./art/coinA.webp" alt="" draggable="false" style="left:5.521%;top:23.704%;width:4.01%;height:7.5%;animation:pfCoin 1.1s steps(6) infinite, pfHop 1.1s steps(2) infinite;" />
+      <img class="pf-l" src="./art/coinB.webp" alt="" draggable="false" style="left:94.271%;top:81.296%;width:3.75%;height:7.037%;animation:pfCoin 1.3s steps(6) -.4s infinite;" />
+      <img class="pf-l" src="./art/blockA.webp" alt="" draggable="false" style="left:5.208%;top:31.759%;width:4.531%;height:7.593%;animation:pfBump 3.4s steps(3) infinite;" />
+      <img class="pf-l" src="./art/blockB.webp" alt="" draggable="false" style="left:19.896%;top:89.537%;width:5.156%;height:8.611%;animation:pfBump 4.2s steps(3) -1.6s infinite;" />
+      <img class="pf-l" src="./art/shroom.webp" alt="" draggable="false" style="left:5.99%;top:88.426%;width:5.625%;height:9.537%;animation:pfSquash 1.4s steps(2) infinite;transform-origin:50% 100%;" />
+      <img class="pf-l" src="./art/teacher.webp" alt="" draggable="false" style="left:1.354%;top:42.87%;width:26.25%;height:43.519%;animation:pfHop 0.9s steps(2) infinite;" />
+      <img class="pf-l pf-wheel" src="./art/wheel.webp" alt="" draggable="false" style="left:74.635%;top:31.667%;width:24.948%;height:44.352%;" />
+      <i class="pf-bulb" style="left:98.63%;top:53.80%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:97.75%;top:61.65%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:95.25%;top:68.32%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:91.50%;top:72.77%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:87.08%;top:74.33%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:82.66%;top:72.77%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:78.92%;top:68.32%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:76.41%;top:61.65%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:75.53%;top:53.80%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:76.41%;top:45.94%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:78.92%;top:39.28%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:82.66%;top:34.83%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:87.08%;top:33.26%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:91.50%;top:34.83%;animation-delay:-0.5s;"></i><i class="pf-bulb" style="left:95.25%;top:39.28%;animation-delay:0.0s;"></i><i class="pf-bulb" style="left:97.75%;top:45.94%;animation-delay:-0.5s;"></i>
+      <img class="pf-l" src="./art/pointer.webp" alt="" draggable="false" style="left:85.417%;top:25.556%;width:4.531%;height:10.556%;animation:pfTick .5s steps(2) infinite;transform-origin:50% 20%;" />
+      <h1 class="pf-sr">Phrasal Verb Roulette. Spin the wheel, get a phrasal verb, build your own sentence, win coins!</h1>
+      <button type="button" class="pf-btn pf-tile" onClick="{{ frontPractice }}" aria-label="Practice: relaxed solo turns" title="Practice: relaxed solo turns" style="left:26.406%;top:62.037%;width:8.802%;height:14.444%;background-image:url(./art/practice.webp);animation-delay:0.00s;"></button>
+      <button type="button" class="pf-btn pf-tile" onClick="{{ frontLearn }}" aria-label="Learn: every aid on, no penalties" title="Learn: every aid on, no penalties" style="left:36.198%;top:62.315%;width:8.594%;height:14.167%;background-image:url(./art/learn.webp);animation-delay:0.12s;"></button>
+      <button type="button" class="pf-btn pf-tile" onClick="{{ frontCompete }}" aria-label="Compete: wagers, multipliers and penalties" title="Compete: wagers, multipliers and penalties" style="left:45.781%;top:62.407%;width:8.594%;height:14.074%;background-image:url(./art/compete.webp);animation-delay:0.24s;"></button>
+      <button type="button" class="pf-btn pf-tile" onClick="{{ frontTeams }}" aria-label="Teams: two teams take turns" title="Teams: two teams take turns" style="left:55.208%;top:62.037%;width:8.75%;height:14.444%;background-image:url(./art/teams.webp);animation-delay:0.36s;"></button>
+      <button type="button" class="pf-btn pf-tile" onClick="{{ frontRewards }}" aria-label="Rewards: set a real-world prize" title="Rewards: set a real-world prize" style="left:64.792%;top:62.315%;width:8.802%;height:14.167%;background-image:url(./art/rewards.webp);animation-delay:0.48s;"></button>
+      <button type="button" class="pf-btn pf-start" onClick="{{ frontStart }}" aria-label="Start game" style="left:35.26%;top:79.444%;width:29.427%;height:12.13%;background-image:url(./art/start.webp);"></button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}">
   <div style="position:relative; height:100%; padding:26px 40px 100px; display:flex; flex-direction:column;">
 
     <div style="text-align:center; margin-bottom:22px;">
-      <div style="display:inline-block; position:relative; overflow:hidden; background:#000; border:6px solid {{ t.accent }}; padding:16px 40px; box-shadow:10px 10px 0 rgba(0,0,0,.45); animation:floaty 5s ease-in-out infinite;">
+      <div style="display:inline-block; position:relative; overflow:hidden; background:#171a52; border:6px solid #E5258C; outline:5px solid #000; padding:16px 40px; box-shadow:10px 10px 0 rgba(0,0,0,.45); animation:floaty 5s ease-in-out infinite;">
         <h1 style="margin:0; font-family:'Press Start 2P',monospace; font-size:38px; line-height:1.35; letter-spacing:1px; color:{{ t.accent }}; text-shadow:5px 5px 0 {{ t.titleShadow }};">PHRASAL VERB ROULETTE</h1>
         <div style="position:absolute; top:0; bottom:0; left:0; width:70px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent); animation:sheen 4.5s ease-in-out infinite;"></div>
       </div>
@@ -159,7 +220,7 @@
 
         <h2 style="margin:26px 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">8 · REAL-WORLD PRIZE</h2>
         <p style="margin:0 0 14px; font-size:16px; color:{{ t.muted }};">What the winner actually gets. Shown on the scoreboard and on the podium.</p>
-        <input value="{{ prizeInput }}" onChange="{{ onPrizeChange }}" placeholder="e.g. No homework this weekend" style="width:100%; box-sizing:border-box; font-size:19px; font-weight:600; padding:14px; border:5px solid #000; background:#fff; color:#111; outline:none;" />
+        <input data-prize="1" value="{{ prizeInput }}" onChange="{{ onPrizeChange }}" placeholder="e.g. No homework this weekend" style="width:100%; box-sizing:border-box; font-size:19px; font-weight:600; padding:14px; border:5px solid #000; background:#fff; color:#111; outline:none;" />
 
         <h2 style="margin:26px 0 6px; font-family:'Press Start 2P',monospace; font-size:17px; color:{{ t.accent }};">9 · PLAYERS</h2>
         <p style="margin:0 0 14px; font-size:16px; color:{{ t.muted }};">Type a name and press Enter. Minimum 2.</p>
@@ -497,10 +558,10 @@
 const THEMES = {
   overworld: {
     label: 'OVERWORLD', swatch: 'linear-gradient(#5C94FC,#9AD0FF 60%,#C84C0C 60%)',
-    sky: 'linear-gradient(#5C94FC 0%,#7FB2FF 58%,#9AD0FF 100%)',
-    panel: '#1b1035', panel2: '#2c1c52', muted: '#b9a9e0', text: '#e6ddff',
-    accent: '#FBD000', accentInk: '#000', titleShadow: '#C84C0C', subInk: '#0b2a4a',
-    ground: '#C84C0C', ground2: '#8F3608', groundEdge: '#2b0f04',
+    sky: 'linear-gradient(#1c86f2 0%,#3aa0ff 55%,#7cc6ff 100%)',
+    panel: '#171a52', panel2: '#3b2a90', muted: '#cdc4ff', text: '#ffffff',
+    accent: '#FFD21F', accentInk: '#000', titleShadow: '#E8780C', subInk: '#0b1f4a',
+    ground: '#8a4a22', ground2: '#5f2f12', groundEdge: '#3fae2a',
     good: '#00A651', bad: '#E52521', alt: '#4a3a72', hi: '#3a2a68',
     card: '#ffffff', cardInk: '#1b1035', taskBg: '#FFF4C2', taskInk: '#8F3608', defBg: '#EAF3FF', defInk: '#0b2a4a',
     deco: [
@@ -603,7 +664,7 @@ const CONTEXTS = [
 
 class Component extends DCLogic {
   state = {
-    screen: 'menu', pool: [], nameInput: '', students: [],
+    screen: 'menu', front: true, pool: [], nameInput: '', students: [],
     levels: ['A1', 'A2'], rounds: 10, sound: true, randomOrder: false,
     sfxVol: 80, audioOpen: false,
     theme: 'overworld', wagerOn: true, multOn: true, aidsPer: 3, penalty: 5,
@@ -625,6 +686,15 @@ class Component extends DCLogic {
     return true;
   };
 
+  fx(color, fn, o) { window.ECYRFx ? window.ECYRFx.fade(color, fn, o) : fn(); }
+  // From the title screen into the set-up: a tile only preloads a way of playing.
+  leaveFront(preset, label, focusPrize) {
+    this.fx('white', () => {
+      this.setState(Object.assign({ front: false }, preset || {}));
+      if (label) setTimeout(() => this.showPop(label, '#FBD000'), 500);
+      if (focusPrize) setTimeout(() => { const el = document.querySelector('[data-prize]'); if (el) el.focus(); }, 700);
+    }, { in: 380, hold: 120, out: 620 });
+  }
   componentDidMount() {
     try {
       const a = JSON.parse(localStorage.getItem('pvr-audio') || 'null');
@@ -1092,7 +1162,17 @@ class Component extends DCLogic {
 
     return {
       scale: s.scale, t: t, deco: t.deco,
-      isMenu: s.screen === 'menu', isGame: s.screen === 'game', isPodium: s.screen === 'podium',
+      titleBtn: !s.front && s.screen === 'menu' ? 'flex' : 'none',
+      isFront: s.front && s.screen === 'menu', frontStart: () => this.leaveFront(),
+      frontPractice: () => this.leaveFront({ teamsOn: false, wagerOn: false, multOn: false, penalty: 0 }, 'PRACTICE'),
+      frontLearn: () => this.leaveFront({ teamsOn: false, wagerOn: false, multOn: false, penalty: 0, aidsPer: 5 }, 'LEARN'),
+      frontCompete: () => this.leaveFront({ wagerOn: true, multOn: true, penalty: 10, aidsPer: 2 }, 'COMPETE'),
+      frontTeams: () => this.leaveFront({ teamsOn: true, teamCount: 2 }, 'TEAMS'),
+      frontRewards: () => this.leaveFront({}, 'SET A PRIZE', true),
+      toFront: () => this.fx('black', () => this.setState({ front: true })),
+      toGames: () => { window.ECYRFx ? window.ECYRFx.exit() : (location.href = '/games'); },
+      toFull: () => { window.ECYRFx && window.ECYRFx.fullscreen(); },
+      isMenu: !s.front && s.screen === 'menu', isGame: s.screen === 'game', isPodium: s.screen === 'podium',
       popShown: !!s.pop, popText: s.pop ? s.pop.text : '', popColor: s.pop ? s.pop.color : '#fff',
 
       levelChips: ['A1', 'A2', 'B1', 'B2', 'C1'].map(id => {
@@ -1163,7 +1243,7 @@ class Component extends DCLogic {
         },
         remove: () => this.setState({ students: s.students.filter((_, j) => j !== i) })
       })),
-      startGame: this.startGame,
+      startGame: () => { const st = this.state; if (st.students.length < 2 || !st.levels.length) return; this.fx('black', () => this.startGame(), { in: 420, hold: 160, out: 650 }); },
       cantStart: s.students.length < 2 || !s.levels.length,
       startBg: (s.students.length < 2 || !s.levels.length) ? '#6b6b6b' : t.accent,
       startHint: s.students.length < 2 ? 'Add at least 2 players to begin'

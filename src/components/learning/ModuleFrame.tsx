@@ -14,11 +14,14 @@ export function ModuleFrame({
   title,
   backTo,
   accent = 'var(--blue)',
+  immersive = false,
 }: {
   src: string;
   title: string;
   backTo: string;
   accent?: string;
+  /** Games draw their own "back to Games" and full-screen buttons: no platform bar over them. */
+  immersive?: boolean;
 }) {
   const navigate = useNavigate();
   const frame = useRef<HTMLIFrameElement>(null);
@@ -44,6 +47,19 @@ export function ModuleFrame({
     };
   }, [title]);
 
+  // A game asks to leave through its own back button (public/modules/_bridge/ecyr-fx.js).
+  useEffect(() => {
+    const onMsg = (e: MessageEvent) => {
+      if (e.origin !== window.location.origin || e.source !== frame.current?.contentWindow) return;
+      const d = e.data as { source?: string; type?: string } | null;
+      if (d?.source !== 'ecyr-game' || d.type !== 'exit') return;
+      if (document.fullscreenElement) void document.exitFullscreen();
+      navigate(backTo);
+    };
+    window.addEventListener('message', onMsg);
+    return () => window.removeEventListener('message', onMsg);
+  }, [navigate, backTo]);
+
   const toggleFull = () => {
     if (document.fullscreenElement) void document.exitFullscreen();
     else void shell.current?.requestFullscreen?.();
@@ -65,7 +81,7 @@ export function ModuleFrame({
         allow="microphone; autoplay; fullscreen; clipboard-write; speaker-selection"
         className={cn('h-full w-full border-0 transition-opacity duration-500', loaded ? 'opacity-100' : 'opacity-0')}
       />
-      {collapsed ? (
+      {immersive ? null : collapsed ? (
         <FloatingHandle onOpen={() => setCollapsed(false)} />
       ) : (
         <div className="pb-safe pointer-events-none absolute inset-x-0 bottom-0 flex justify-center p-4">

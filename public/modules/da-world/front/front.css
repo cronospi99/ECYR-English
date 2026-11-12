@@ -1,0 +1,30 @@
+/* Da World — illustrated front page (see front.js) */
+.dwf { position:fixed; inset:0; z-index:5; overflow:hidden; background:#f3dcc0; }
+.dwf-back { position:absolute; inset:-6%; background:url(/modules/da-world/front/stage.webp) center/cover; filter:blur(26px) brightness(.92); }
+.dwf-stage { position:absolute; inset:0; margin:auto; width:min(100vw,177.78dvh); aspect-ratio:16/9; container-type:inline-size; overflow:hidden; box-shadow:0 0 70px rgba(90,50,10,.35); }
+.dwf-l { position:absolute; display:block; pointer-events:none; user-select:none; -webkit-user-drag:none; }
+.dwf-stage i { position:absolute; display:block; pointer-events:none; }
+.dwf-sun { left:20%; top:-40%; width:80%; aspect-ratio:1; border-radius:50%; background:repeating-conic-gradient(from 0deg,rgba(255,246,200,.2) 0deg 6deg,transparent 6deg 18deg); -webkit-mask:radial-gradient(closest-side,#000 15%,transparent 75%); mask:radial-gradient(closest-side,#000 15%,transparent 75%); mix-blend-mode:screen; animation:dwfSpin 100s linear infinite; }
+.dwf-water { left:86.5%; top:25%; width:9%; height:11%; background:radial-gradient(closest-side,rgba(255,255,255,.75),transparent 70%); mix-blend-mode:screen; animation:dwfPulse 1.4s ease-in-out infinite; }
+.dwf-shine { left:35%; top:5%; width:31%; height:21%; background:linear-gradient(105deg,transparent 44%,rgba(255,255,255,.75) 50%,transparent 56%); background-size:280% 100%; mix-blend-mode:overlay; animation:dwfShine 5.5s ease-in-out infinite; }
+.dwf-pin { left:53.6%; top:1.2%; width:3.6%; aspect-ratio:1; border-radius:50%; border:.16cqw solid rgba(240,70,60,.9); opacity:0; animation:dwfPing 2.2s ease-out infinite; }
+.dwf-spark { width:2cqw; height:2cqw; background:radial-gradient(closest-side,#fff,#ffd45a 40%,transparent 72%); clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%); animation:dwfSpark 2.8s ease-in-out infinite; }
+.dwf-mote { width:.38cqw; height:.38cqw; border-radius:50%; background:#fff7cf; box-shadow:0 0 .7cqw #ffe9a0; opacity:0; animation:dwfMote 8s linear infinite; }
+.dwf-leaf { top:-4%; width:1.2cqw; height:.65cqw; border-radius:0 100% 0 100%; background:linear-gradient(135deg,#b6e05a,#5fa42a); animation:dwfLeaf 11s linear infinite; }
+.dwf-hot { position:absolute; appearance:none; border:0; padding:0; margin:0; background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background .16s ease, box-shadow .16s ease, transform .14s ease; }
+.dwf-hot:hover, .dwf-hot:focus-visible { background:rgba(255,255,255,.2); box-shadow:inset 0 0 0 .26cqw #fff, 0 0 0 .2cqw rgba(232,130,60,.9), 0 1cqw 2.4cqw rgba(120,70,20,.35); transform:translateY(-.5%); outline:none; }
+.dwf-hot:active { transform:translateY(.4%) scale(.99); background:rgba(120,70,20,.08); }
+.dwf-links { position:absolute; left:0; right:0; top:94.3%; display:flex; justify-content:center; gap:1cqw; }
+.dwf-link { appearance:none; cursor:pointer; font:800 1.05cqw/1 inherit; color:#5a3518; background:#fff7e6; border:.12cqw solid #e2c9a0; border-radius:99px; padding:.55cqw 1.2cqw; box-shadow:0 .3cqw 0 #d9b98a; transition:transform .14s ease, background .14s ease; }
+.dwf-link:hover { background:#ffe9b8; transform:translateY(-8%); }
+.menu-screen.ecyr-chooser > .menu-panel { visibility:hidden; }
+@keyframes dwfSpin { to { rotate:360deg; } }
+@keyframes dwfSway { 0%,100% { rotate:-1deg; scale:1 1; } 50% { rotate:1.2deg; scale:1 1.012; } }
+@keyframes dwfPulse { 0%,100% { opacity:.25; scale:.9; } 50% { opacity:.8; scale:1.05; } }
+@keyframes dwfShine { 0%,60% { background-position:130% 0; } 100% { background-position:-60% 0; } }
+@keyframes dwfPing { 0% { scale:.3; opacity:.95; } 100% { scale:1.5; opacity:0; } }
+@keyframes dwfSpark { 0%,100% { scale:0; opacity:0; rotate:0deg; } 50% { scale:1; opacity:1; rotate:45deg; } }
+@keyframes dwfMote { 0% { translate:0 0; opacity:0; } 20% { opacity:.9; } 100% { translate:var(--dx) -10cqw; opacity:0; } }
+@keyframes dwfLeaf { 0% { translate:0 0; rotate:0deg; opacity:0; } 10% { opacity:.9; } 100% { translate:var(--dx) 62cqw; rotate:500deg; opacity:0; } }
+@media (max-aspect-ratio: 1/1) { .dwf { display:none; } .menu-screen.ecyr-chooser > .menu-panel { visibility:visible; } }
+@media (prefers-reduced-motion: reduce) { .dwf-stage * { animation:none !important; } }

@@ -32,5 +32,5 @@ export default function PlayerPage() {
   // a teacher runs it for the class on the projector.
   // v=<build> makes the browser fetch the module again after every deploy (they are plain HTML files with a fixed address).
   const src = `${m.src}?v=${__BUILD_ID__}${SOLO_CAPABLE.has(m.slug) && role !== 'teacher' ? '&mode=solo' : ''}`;
-  return <ModuleFrame src={src} title={m.title} backTo={backTo} accent={m.accent} />;
+  return <ModuleFrame src={src} title={m.title} backTo={backTo} accent={m.accent} immersive={m.kind === 'game'} />;
 }
